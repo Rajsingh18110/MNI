@@ -1,5 +1,5 @@
 import { computed } from 'vue';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 
 /**
  * Gates the "private credentials" surfaces (per-user self-connect via the seeded

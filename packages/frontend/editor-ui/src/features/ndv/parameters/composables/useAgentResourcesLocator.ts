@@ -1,6 +1,6 @@
 import { ref, computed, type Ref } from 'vue';
-import { useRootStore } from '@n8n/stores/useRootStore';
-import type { AgentJsonConfig } from '@n8n/api-types';
+import { useRootStore } from '@MNI/stores/useRootStore';
+import type { AgentJsonConfig } from '@MNI/api-types';
 import {
 	listAgentsPage,
 	getAgent,

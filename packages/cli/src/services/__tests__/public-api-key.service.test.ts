@@ -1,6 +1,6 @@
-import type { Logger } from '@n8n/backend-common';
-import type { ApiKey, ApiKeyRepository, User } from '@n8n/db';
-import { hasGlobalScope } from '@n8n/permissions';
+import type { Logger } from '@MNI/backend-common';
+import type { ApiKey, ApiKeyRepository, User } from '@MNI/db';
+import { hasGlobalScope } from '@MNI/permissions';
 import { mock } from 'vitest-mock-extended';
 
 import { BadRequestError } from '@/errors/response-errors/bad-request.error';
@@ -10,8 +10,8 @@ import type { UserManagementMailer } from '@/user-management/email';
 import type { JwtService } from '../jwt.service';
 import { PublicApiKeyService } from '../public-api-key.service';
 
-vi.mock('@n8n/permissions', async () => ({
-	...(await vi.importActual<typeof import('@n8n/permissions')>('@n8n/permissions')),
+vi.mock('@MNI/permissions', async () => ({
+	...(await vi.importActual<typeof import('@MNI/permissions')>('@MNI/permissions')),
 	hasGlobalScope: vi.fn(),
 }));
 

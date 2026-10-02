@@ -73,7 +73,7 @@ it('running a version 1 trigger never loads the new confluent-kafka library', as
 		},
 		credential: {
 			brokers: 'localhost:9092',
-			clientId: 'n8n-isolation-test',
+			clientId: 'MNI-isolation-test',
 			ssl: false,
 			authentication: false,
 		},

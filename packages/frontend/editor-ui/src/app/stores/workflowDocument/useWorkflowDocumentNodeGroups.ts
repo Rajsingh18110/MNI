@@ -1,7 +1,7 @@
 import { computed, ref } from 'vue';
 import { createEventHook } from '@vueuse/core';
 import uniq from 'lodash/uniq';
-import { normalizeGroupDescription, type IWorkflowGroup } from 'n8n-workflow';
+import { normalizeGroupDescription, type IWorkflowGroup } from 'MNI-workflow';
 import { CHANGE_ACTION } from './types';
 
 export type NodeGroupPayload = {

@@ -1,6 +1,6 @@
-import type { StreamChunk } from '@n8n/agents';
-import { isRecord } from '@n8n/utils/is-record';
-import type { Logger as BackendLogger } from '@n8n/backend-common';
+import type { StreamChunk } from '@MNI/agents';
+import { isRecord } from '@MNI/utils/is-record';
+import type { Logger as BackendLogger } from '@MNI/backend-common';
 import { generateKeyPairSync, randomUUID } from 'crypto';
 import jwt from 'jsonwebtoken';
 import nock from 'nock';
@@ -187,7 +187,7 @@ export async function createTeamsReplayContext(
 		appType: 'SingleTenant',
 	});
 	const chat = new Chat({
-		userName: 'n8n-agent-agent-1',
+		userName: 'MNI-agent-agent-1',
 		adapters: { teams: adapter } as unknown as Record<string, never>,
 		state: createMemoryState(),
 		// Mirrors what ChatIntegrationService gives a Teams connection; without it

@@ -16,11 +16,11 @@ import type {
 	AgentSkill,
 } from '../types';
 
-vi.mock('@n8n/i18n', () => ({
+vi.mock('@MNI/i18n', () => ({
 	useI18n: () => ({ baseText: (key: string) => key }),
 }));
 
-vi.mock('@n8n/stores/useRootStore', () => ({
+vi.mock('@MNI/stores/useRootStore', () => ({
 	useRootStore: () => ({ restApiContext: { baseUrl: 'http://localhost:5678' } }),
 }));
 
@@ -28,7 +28,7 @@ const { showErrorSpy, showMessageSpy } = vi.hoisted(() => ({
 	showErrorSpy: vi.fn(),
 	showMessageSpy: vi.fn(),
 }));
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: () => ({ showError: showErrorSpy, showMessage: showMessageSpy }),
 }));
 

@@ -1,13 +1,13 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { setActivePinia, createPinia } from 'pinia';
-import { TELEMETRY_EVENT } from '@n8n/telemetry';
+import { TELEMETRY_EVENT } from '@MNI/telemetry';
 import { useAgentTelemetry } from '../composables/useAgentTelemetry';
 
 const trackMock = vi.fn();
-vi.mock('@n8n/composables/useTelemetry', () => ({
+vi.mock('@MNI/composables/useTelemetry', () => ({
 	useTelemetry: () => ({ track: trackMock }),
 }));
-vi.mock('@n8n/stores/useRootStore', () => ({
+vi.mock('@MNI/stores/useRootStore', () => ({
 	useRootStore: () => ({ pushRef: 'session-xyz' }),
 }));
 

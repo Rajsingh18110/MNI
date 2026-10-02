@@ -5,8 +5,8 @@ import {
 	AddUsersToProjectDto,
 	ChangeUserRoleInProject,
 	ListProjectsQueryDto,
-} from '@n8n/api-types';
-import { AuthenticatedRequest } from '@n8n/db';
+} from '@MNI/api-types';
+import { AuthenticatedRequest } from '@MNI/db';
 import {
 	Get,
 	Post,
@@ -19,8 +19,8 @@ import {
 	Body,
 	Param,
 	Query,
-} from '@n8n/decorators';
-import { combineScopes, getAuthPrincipalScopes } from '@n8n/permissions';
+} from '@MNI/decorators';
+import { combineScopes, getAuthPrincipalScopes } from '@MNI/permissions';
 import { Response } from 'express';
 
 import { BadRequestError } from '@/errors/response-errors/bad-request.error';

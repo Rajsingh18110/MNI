@@ -1,8 +1,8 @@
 import type { Mock } from 'vitest';
-import { mockInstance } from '@n8n/backend-test-utils';
-import { PrometheusMetricsConfig } from '@n8n/config';
+import { mockInstance } from '@MNI/backend-test-utils';
+import { PrometheusMetricsConfig } from '@MNI/config';
 import { mock } from 'vitest-mock-extended';
-import type { StorageConfig } from 'n8n-core';
+import type { StorageConfig } from 'MNI-core';
 import promClient from 'prom-client';
 
 import { DURATION_BUCKETS_SECONDS, SIZE_BUCKETS_BYTES } from '../constant';
@@ -14,7 +14,7 @@ vi.mock('prom-client');
 
 describe('PrometheusExecutionDataMetricsService', () => {
 	const config = mockInstance(PrometheusMetricsConfig, {
-		prefix: 'n8n_',
+		prefix: 'MNI_',
 		includeExecutionDataMetrics: true,
 		includeWorkflowIdLabel: false,
 	});
@@ -31,7 +31,7 @@ describe('PrometheusExecutionDataMetricsService', () => {
 
 	beforeEach(() => {
 		Object.assign(config, {
-			prefix: 'n8n_',
+			prefix: 'MNI_',
 			includeExecutionDataMetrics: true,
 			includeWorkflowIdLabel: false,
 		});
@@ -66,7 +66,7 @@ describe('PrometheusExecutionDataMetricsService', () => {
 			service.init();
 
 			expect(promClient.Counter).toHaveBeenCalledWith({
-				name: 'n8n_execution_data_reads_total',
+				name: 'MNI_execution_data_reads_total',
 				help: 'Total number of execution data reads.',
 				labelNames: ['mode', 'result'],
 			});
@@ -76,7 +76,7 @@ describe('PrometheusExecutionDataMetricsService', () => {
 			service.init();
 
 			expect(promClient.Counter).toHaveBeenCalledWith({
-				name: 'n8n_execution_data_writes_total',
+				name: 'MNI_execution_data_writes_total',
 				help: 'Total number of execution data writes.',
 				labelNames: ['mode', 'result'],
 			});
@@ -86,7 +86,7 @@ describe('PrometheusExecutionDataMetricsService', () => {
 			service.init();
 
 			expect(promClient.Counter).toHaveBeenCalledWith({
-				name: 'n8n_execution_data_unreadable_bundles_total',
+				name: 'MNI_execution_data_unreadable_bundles_total',
 				help: 'Total number of execution data bundles that were missing or corrupt on read.',
 				labelNames: ['mode'],
 			});
@@ -96,7 +96,7 @@ describe('PrometheusExecutionDataMetricsService', () => {
 			service.init();
 
 			expect(promClient.Histogram).toHaveBeenCalledWith({
-				name: 'n8n_execution_data_read_duration_seconds',
+				name: 'MNI_execution_data_read_duration_seconds',
 				help: 'Execution data read duration in seconds (fetch + deserialize).',
 				labelNames: ['mode'],
 				buckets: DURATION_BUCKETS_SECONDS,
@@ -107,7 +107,7 @@ describe('PrometheusExecutionDataMetricsService', () => {
 			service.init();
 
 			expect(promClient.Histogram).toHaveBeenCalledWith({
-				name: 'n8n_execution_data_write_duration_seconds',
+				name: 'MNI_execution_data_write_duration_seconds',
 				help: 'Execution data write duration in seconds.',
 				labelNames: ['mode'],
 				buckets: DURATION_BUCKETS_SECONDS,
@@ -118,7 +118,7 @@ describe('PrometheusExecutionDataMetricsService', () => {
 			service.init();
 
 			expect(promClient.Histogram).toHaveBeenCalledWith({
-				name: 'n8n_execution_data_write_size_bytes',
+				name: 'MNI_execution_data_write_size_bytes',
 				help: 'Logical byte size of the JSON execution data bundle written (excludes binary data).',
 				labelNames: ['mode'],
 				buckets: SIZE_BUCKETS_BYTES,
@@ -129,7 +129,7 @@ describe('PrometheusExecutionDataMetricsService', () => {
 			service.init();
 
 			expect(promClient.Counter).toHaveBeenCalledWith({
-				name: 'n8n_execution_data_write_bytes_total',
+				name: 'MNI_execution_data_write_bytes_total',
 				help: 'Total execution data bytes written, by storage mode.',
 				labelNames: ['mode'],
 			});
@@ -140,7 +140,7 @@ describe('PrometheusExecutionDataMetricsService', () => {
 			service.init();
 
 			expect(promClient.Counter).toHaveBeenCalledWith({
-				name: 'n8n_execution_data_write_bytes_total',
+				name: 'MNI_execution_data_write_bytes_total',
 				help: 'Total execution data bytes written, by storage mode.',
 				labelNames: ['mode', 'workflow_id'],
 			});
@@ -150,7 +150,7 @@ describe('PrometheusExecutionDataMetricsService', () => {
 			service.init();
 
 			expect(promClient.Gauge).toHaveBeenCalledWith({
-				name: 'n8n_execution_data_storage_mode',
+				name: 'MNI_execution_data_storage_mode',
 				help: 'Configured execution data storage mode (1 for the active mode, 0 otherwise).',
 				labelNames: ['mode'],
 			});

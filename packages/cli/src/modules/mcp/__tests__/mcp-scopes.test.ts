@@ -1,16 +1,16 @@
-import { INSTANCE_ACTIVITY_CONTEXT_FLAG } from '@n8n/api-types';
-import { LicenseState, ModuleRegistry } from '@n8n/backend-common';
-import { mockInstance, mockLogger } from '@n8n/backend-test-utils';
-import { EndpointsConfig, ExecutionsConfig, GlobalConfig, WorkflowsConfig } from '@n8n/config';
+import { INSTANCE_ACTIVITY_CONTEXT_FLAG } from '@MNI/api-types';
+import { LicenseState, ModuleRegistry } from '@MNI/backend-common';
+import { mockInstance, mockLogger } from '@MNI/backend-test-utils';
+import { EndpointsConfig, ExecutionsConfig, GlobalConfig, WorkflowsConfig } from '@MNI/config';
 import {
 	ExecutionRepository,
 	GLOBAL_MEMBER_ROLE,
 	ProjectRepository,
 	SharedWorkflowRepository,
 	User,
-} from '@n8n/db';
-import { registerWorkflowPreviewApp } from '@n8n/mcp-apps/server';
-import { InstanceSettings } from 'n8n-core';
+} from '@MNI/db';
+import { registerWorkflowPreviewApp } from '@MNI/mcp-apps/server';
+import { InstanceSettings } from 'MNI-core';
 
 import { McpPostSaveMetricsService } from '../mcp-post-save-metrics.service';
 import {
@@ -51,7 +51,7 @@ import { NodeResourceExplorerService } from '@/services/node-resource-explorer.s
 import { ProjectService } from '@/services/project.service.ee';
 import { RoleService } from '@/services/role.service';
 import { TagService } from '@/services/tag.service';
-import { UrlService } from '@n8n/backend-services';
+import { UrlService } from '@MNI/backend-services';
 import { Telemetry } from '@/telemetry';
 import { WorkflowRunner } from '@/workflow-runner';
 import { WorkflowCreationService } from '@/workflows/workflow-creation.service';
@@ -60,8 +60,8 @@ import { WorkflowHistoryService } from '@/workflows/workflow-history/workflow-hi
 import { WorkflowPublishedDataService } from '@/workflows/workflow-published-data.service';
 import { WorkflowService } from '@/workflows/workflow.service';
 
-vi.mock('@n8n/mcp-apps/server', async (importOriginal) => ({
-	...(await importOriginal<typeof import('@n8n/mcp-apps/server')>()),
+vi.mock('@MNI/mcp-apps/server', async (importOriginal) => ({
+	...(await importOriginal<typeof import('@MNI/mcp-apps/server')>()),
 	registerWorkflowPreviewApp: vi.fn(),
 }));
 
@@ -139,8 +139,8 @@ describe('getAllowedToolNames', () => {
 		expect(getAllowedToolNames(['agent:execute'])).toEqual(new Set(['call_agent']));
 	});
 
-	it('exposes the renamed list_n8n_gateway_services tool via credential:read', () => {
-		expect(getAllowedToolNames(['credential:read'])).toContain('list_n8n_gateway_services');
+	it('exposes the renamed list_MNI_gateway_services tool via credential:read', () => {
+		expect(getAllowedToolNames(['credential:read'])).toContain('list_MNI_gateway_services');
 	});
 });
 

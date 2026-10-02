@@ -1,5 +1,5 @@
-import type { IRestApiContext } from '@n8n/rest-api-client';
-import { makeRestApiRequest } from '@n8n/rest-api-client';
+import type { IRestApiContext } from '@MNI/rest-api-client';
+import { makeRestApiRequest } from '@MNI/rest-api-client';
 
 import {
 	createPreference,
@@ -9,7 +9,7 @@ import {
 	updatePreference,
 } from './context.api';
 
-vi.mock('@n8n/rest-api-client', () => ({
+vi.mock('@MNI/rest-api-client', () => ({
 	makeRestApiRequest: vi.fn(),
 }));
 

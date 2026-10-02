@@ -1,6 +1,6 @@
-import { TagRepository } from '@n8n/db';
-import { Service } from '@n8n/di';
-import { isTriggerNode } from 'n8n-workflow';
+import { TagRepository } from '@MNI/db';
+import { Service } from '@MNI/di';
+import { isTriggerNode } from 'MNI-workflow';
 
 import { NodeTypes } from '@/node-types';
 
@@ -26,7 +26,7 @@ export class WorkflowHookContextService {
 	/**
 	 * Determines whether the given node type is a trigger.
 	 *
-	 * @param type - Fully-qualified node type name (e.g. `n8n-nodes-base.manualTrigger`).
+	 * @param type - Fully-qualified node type name (e.g. `MNI-nodes-base.manualTrigger`).
 	 * @param typeVersion - Node type version to resolve; defaults to the latest registered version.
 	 * @returns `true` if the resolved node type is a trigger, `false` otherwise —
 	 * including when the node type cannot be resolved, e.g. it is not registered

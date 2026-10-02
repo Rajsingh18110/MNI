@@ -4,7 +4,7 @@ import {
 	type IExecuteFunctions,
 	type INode,
 	type WorkflowTestData,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import snowflake from 'snowflake-sdk';
 import { mock } from 'vitest-mock-extended';
 
@@ -54,7 +54,7 @@ function executeQueryWorkflow(
 				parameters: {},
 				id: 'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
 				name: 'When clicking "Execute Workflow"',
-				type: 'n8n-nodes-base.manualTrigger',
+				type: 'MNI-nodes-base.manualTrigger',
 				typeVersion: 1,
 				position: [460, 460],
 			},
@@ -62,7 +62,7 @@ function executeQueryWorkflow(
 				parameters: { operation: 'executeQuery', query, options: { queryReplacement } },
 				id: 'c3d4e5f6-a7b8-9012-cdef-123456789012',
 				name: 'Snowflake',
-				type: 'n8n-nodes-base.snowflake',
+				type: 'MNI-nodes-base.snowflake',
 				typeVersion: 1,
 				position: [680, 460],
 				credentials: { snowflake: { id: '1', name: 'Snowflake account' } },

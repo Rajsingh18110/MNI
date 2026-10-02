@@ -1,9 +1,9 @@
-import type { Folder, User } from '@n8n/db';
-import { chunkIds, FolderRepository } from '@n8n/db';
-import { Service } from '@n8n/di';
-import { hasGlobalScope, type Scope } from '@n8n/permissions';
-import type { FindOptionsWhere } from '@n8n/typeorm';
-import { In } from '@n8n/typeorm';
+import type { Folder, User } from '@MNI/db';
+import { chunkIds, FolderRepository } from '@MNI/db';
+import { Service } from '@MNI/di';
+import { hasGlobalScope, type Scope } from '@MNI/permissions';
+import type { FindOptionsWhere } from '@MNI/typeorm';
+import { In } from '@MNI/typeorm';
 
 import { RoleService } from '@/services/role.service';
 

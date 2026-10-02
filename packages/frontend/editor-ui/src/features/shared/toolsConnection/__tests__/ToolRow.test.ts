@@ -52,7 +52,7 @@ const baseNode: NodeConnectionItem = {
 	title: 'OpenAI',
 	description: 'Talk to GPT',
 	status: 'none',
-	nodeTypeName: '@n8n/n8n-nodes-langchain.openAi',
+	nodeTypeName: '@MNI/MNI-nodes-langchain.openAi',
 };
 
 const connectedMcp: McpServerConnectionItem = {

@@ -1,4 +1,4 @@
-import type { AgentMessageAuthor } from '@n8n/api-types';
+import type { AgentMessageAuthor } from '@MNI/api-types';
 import type { Mock } from 'vitest';
 
 import type { ChatIntegrationActionExecutor } from '../../integration-action-executor';

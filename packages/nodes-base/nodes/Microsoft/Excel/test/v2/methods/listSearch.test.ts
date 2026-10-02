@@ -1,5 +1,5 @@
-import type { ILoadOptionsFunctions, INode } from 'n8n-workflow';
-import { NodeOperationError } from 'n8n-workflow';
+import type { ILoadOptionsFunctions, INode } from 'MNI-workflow';
+import { NodeOperationError } from 'MNI-workflow';
 import type { MockedFunction } from 'vitest';
 import { mock } from 'vitest-mock-extended';
 

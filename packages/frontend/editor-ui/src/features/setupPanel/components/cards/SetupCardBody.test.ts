@@ -7,7 +7,7 @@ import SetupCardBody from './SetupCardBody.vue';
 import type { NodeSetupState } from '@/features/setupPanel/setupPanel.types';
 import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';
 import type { INodeUi } from '@/Interface';
-import { jsonParse } from 'n8n-workflow';
+import { jsonParse } from 'MNI-workflow';
 
 vi.mock('@/features/ndv/parameters/components/ParameterInputList.vue', () => ({
 	default: {
@@ -54,7 +54,7 @@ const NODE_PROPERTIES = [
 const createState = (overrides: Partial<NodeSetupState> = {}): NodeSetupState => ({
 	node: createTestNode({
 		name: 'TestNode',
-		type: 'n8n-nodes-base.openAi',
+		type: 'MNI-nodes-base.openAi',
 		parameters: {},
 	}) as INodeUi,
 	parameterIssues: { param1: ['Required'], param2: ['Required'] },

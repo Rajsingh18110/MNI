@@ -11,8 +11,8 @@ import type {
 	INodeTypeDescription,
 	IWebhookResponseData,
 	JsonObject,
-} from 'n8n-workflow';
-import { NodeApiError, NodeConnectionTypes, randomString } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeApiError, NodeConnectionTypes, randomString } from 'MNI-workflow';
 
 import type {
 	ITypeformAnswer,
@@ -180,7 +180,7 @@ export class TypeformTrigger implements INodeType {
 				const webhookUrl = this.getNodeWebhookUrl('default');
 
 				const formId = this.getNodeParameter('formId') as string;
-				const webhookId = 'n8n-' + randomString(10).toLowerCase();
+				const webhookId = 'MNI-' + randomString(10).toLowerCase();
 
 				const endpoint = `forms/${formId}/webhooks/${webhookId}`;
 

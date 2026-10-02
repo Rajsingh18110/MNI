@@ -8,9 +8,9 @@ import { mockedStore } from '@/__tests__/utils';
 import { createProjectListItem, createTestProject } from '../__tests__/utils';
 import ProjectsNavigation from './ProjectNavigation.vue';
 import { useProjectsStore } from '../projects.store';
-import { useSettingsStore } from '@n8n/stores/settings.store';
-import { useUsersStore } from '@n8n/stores/users.store';
-import { useRBACStore } from '@n8n/stores/rbac.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
+import { useUsersStore } from '@MNI/stores/users.store';
+import { useRBACStore } from '@MNI/stores/rbac.store';
 import { useInstanceAiStore } from '@/features/ai/instanceAi/instanceAi.store';
 import { INSTANCE_AI_THREAD_VIEW } from '@/features/ai/instanceAi/constants';
 
@@ -28,7 +28,7 @@ vi.mock('vue-router', async () => {
 	};
 });
 
-vi.mock('@n8n/composables/useToast', () => {
+vi.mock('@MNI/composables/useToast', () => {
 	const showMessage = vi.fn();
 	const showError = vi.fn();
 	return {

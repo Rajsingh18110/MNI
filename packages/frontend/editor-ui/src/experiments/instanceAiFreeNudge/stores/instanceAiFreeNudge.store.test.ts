@@ -1,6 +1,6 @@
 import { createPinia, setActivePinia } from 'pinia';
 import { ref } from 'vue';
-import { TELEMETRY_EVENT } from '@n8n/telemetry';
+import { TELEMETRY_EVENT } from '@MNI/telemetry';
 
 import { INSTANCE_AI_FREE_NUDGE_EXPERIMENT } from '@/app/constants/experiments';
 
@@ -14,11 +14,11 @@ const { track, useStorage, getVariant } = vi.hoisted(() => ({
 const storageRef = ref<string | null>(null);
 useStorage.mockReturnValue(storageRef);
 
-vi.mock('@n8n/composables/useTelemetry', () => ({
+vi.mock('@MNI/composables/useTelemetry', () => ({
 	useTelemetry: () => ({ track }),
 }));
 
-vi.mock('@n8n/composables/useStorage', () => ({ useStorage }));
+vi.mock('@MNI/composables/useStorage', () => ({ useStorage }));
 
 vi.mock('@/app/stores/posthog.store', () => ({
 	usePostHog: () => ({ getVariant }),
@@ -72,7 +72,7 @@ describe('instanceAiFreeNudge store', () => {
 			expect(store.treatmentVariant).toBe(treatmentVariant);
 			expect(store.shouldShowNudge).toBe(shouldShowNudge);
 			expect(store.shouldTrackExposure).toBe(shouldTrackExposure);
-			expect(useStorage).toHaveBeenCalledWith('N8N_INSTANCE_AI_FREE_NUDGE_DISMISSED');
+			expect(useStorage).toHaveBeenCalledWith('MNI_INSTANCE_AI_FREE_NUDGE_DISMISSED');
 		},
 	);
 

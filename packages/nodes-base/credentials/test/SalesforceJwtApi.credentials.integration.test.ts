@@ -1,7 +1,7 @@
-import { startServer, type LocalServer } from '@n8n/backend-network/testing';
-import { SsrfProtectionConfig } from '@n8n/config';
-import { Container } from '@n8n/di';
-import type { IHttpRequestHelper } from 'n8n-workflow';
+import { startServer, type LocalServer } from '@MNI/backend-network/testing';
+import { SsrfProtectionConfig } from '@MNI/config';
+import { Container } from '@MNI/di';
+import type { IHttpRequestHelper } from 'MNI-workflow';
 import type { IncomingHttpHeaders } from 'node:http';
 
 import { SalesforceJwtApi } from '../SalesforceJwtApi.credentials';
@@ -9,7 +9,7 @@ import { SalesforceJwtApi } from '../SalesforceJwtApi.credentials';
 vi.mock('jsonwebtoken', () => ({
 	default: { sign: vi.fn(() => 'signed-jwt') },
 }));
-vi.mock('@n8n/utils/format-pem-block', () => ({
+vi.mock('@MNI/utils/format-pem-block', () => ({
 	formatPemBlock: (key: string) => key,
 }));
 

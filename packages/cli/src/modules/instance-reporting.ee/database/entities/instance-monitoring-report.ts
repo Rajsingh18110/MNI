@@ -1,5 +1,5 @@
-import { DateTimeColumn, JsonColumn, WithTimestamps } from '@n8n/db';
-import { Column, Entity, Index, PrimaryColumn } from '@n8n/typeorm';
+import { DateTimeColumn, JsonColumn, WithTimestamps } from '@MNI/db';
+import { Column, Entity, Index, PrimaryColumn } from '@MNI/typeorm';
 
 /** One measurement in a report; the shape the receiver accepts. */
 export type InstanceReportDataPoint =

@@ -1,5 +1,5 @@
-import type { INode } from 'n8n-workflow';
-import { NodeOperationError, UserError } from 'n8n-workflow';
+import type { INode } from 'MNI-workflow';
+import { NodeOperationError, UserError } from 'MNI-workflow';
 
 import {
 	createMessage,
@@ -327,7 +327,7 @@ describe('Test MicrosoftOutlookV2, validateMailbox', () => {
 	const node: INode = {
 		id: 'test-node',
 		name: 'Microsoft Outlook',
-		type: 'n8n-nodes-base.microsoftOutlook',
+		type: 'MNI-nodes-base.microsoftOutlook',
 		typeVersion: 2,
 		position: [0, 0],
 		parameters: {},

@@ -2,7 +2,7 @@ import { describe, it, expect } from 'vitest';
 import { computed, shallowRef } from 'vue';
 import { createTestNode } from '@/__tests__/mocks';
 import type { INodeUi } from '@/Interface';
-import type { INodeConnections } from 'n8n-workflow';
+import type { INodeConnections } from 'MNI-workflow';
 import {
 	useWorkflowDocumentNodesIssues,
 	type WorkflowDocumentNodesIssuesDeps,

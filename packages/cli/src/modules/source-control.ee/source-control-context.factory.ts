@@ -1,8 +1,8 @@
-import { ProjectRepository, WorkflowRepository } from '@n8n/db';
-import type { Project, User, WorkflowEntity } from '@n8n/db';
-import { Service } from '@n8n/di';
-import { hasGlobalScope } from '@n8n/permissions';
-import { In, type FindOptionsWhere } from '@n8n/typeorm';
+import { ProjectRepository, WorkflowRepository } from '@MNI/db';
+import type { Project, User, WorkflowEntity } from '@MNI/db';
+import { Service } from '@MNI/di';
+import { hasGlobalScope } from '@MNI/permissions';
+import { In, type FindOptionsWhere } from '@MNI/typeorm';
 
 import { SourceControlContext } from './types/source-control-context';
 

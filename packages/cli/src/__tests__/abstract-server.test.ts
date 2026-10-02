@@ -1,6 +1,6 @@
-import { GlobalConfig } from '@n8n/config';
-import { DbConnection } from '@n8n/db';
-import { Container } from '@n8n/di';
+import { GlobalConfig } from '@MNI/config';
+import { DbConnection } from '@MNI/db';
+import { Container } from '@MNI/di';
 import type express from 'express';
 import type * as http from 'node:http';
 import { mock } from 'vitest-mock-extended';

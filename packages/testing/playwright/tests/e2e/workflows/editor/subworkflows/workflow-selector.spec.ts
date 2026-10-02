@@ -25,7 +25,7 @@ test.describe(
 						{
 							id: 'execute-workflow-trigger',
 							name: 'When Executed by Another Workflow',
-							type: 'n8n-nodes-base.executeWorkflowTrigger',
+							type: 'MNI-nodes-base.executeWorkflowTrigger',
 							position: [0, 0] as [number, number],
 							parameters: {},
 							typeVersion: 1,

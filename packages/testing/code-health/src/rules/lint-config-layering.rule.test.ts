@@ -7,10 +7,10 @@ import type { CodeHealthContext } from '../context.js';
 import { LintConfigLayeringRule } from './lint-config-layering.rule.js';
 
 const HEAD = `import { defineConfig } from 'eslint/config';
-import { backendConfig } from '@n8n/eslint-config/backend';
+import { backendConfig } from '@MNI/eslint-config/backend';
 `;
 
-const OXLINT_HEAD = `import { baseConfig } from '@n8n/oxlint-config/base';
+const OXLINT_HEAD = `import { baseConfig } from '@MNI/oxlint-config/base';
 import { defineConfig } from 'oxlint';
 `;
 
@@ -88,7 +88,7 @@ export default defineConfig(backendConfig, {
 				`${HEAD}
 export default defineConfig(backendConfig, {
 	files: ['src/legacy/thing.ts'],
-	rules: { 'n8n-local-rules/no-uncentralized-http': 'off' },
+	rules: { 'MNI-local-rules/no-uncentralized-http': 'off' },
 });
 `,
 			);
@@ -143,12 +143,12 @@ export default defineConfig({
 
 		it('an exempt package', async () => {
 			writePackage(
-				'packages/frontend/@n8n/eslint-plugin-design-system',
+				'packages/frontend/@MNI/eslint-plugin-design-system',
 				"import tseslint from 'typescript-eslint';\nexport default tseslint.config();\n",
 			);
 
 			expect(
-				await analyze({ exempt: ['packages/frontend/@n8n/eslint-plugin-design-system'] }),
+				await analyze({ exempt: ['packages/frontend/@MNI/eslint-plugin-design-system'] }),
 			).toEqual([]);
 		});
 	});
@@ -261,7 +261,7 @@ export default defineConfig(backendConfig, {
 		it('two shared layers at once', async () => {
 			writePackage(
 				'packages/a',
-				`${HEAD}import { frontendConfig } from '@n8n/eslint-config/frontend';\n
+				`${HEAD}import { frontendConfig } from '@MNI/eslint-config/frontend';\n
 export default defineConfig(backendConfig, frontendConfig);
 `,
 			);
@@ -276,7 +276,7 @@ export default defineConfig(backendConfig, frontendConfig);
 			writePackage(
 				'packages/a',
 				`import { defineConfig } from 'eslint/config';
-import { nodeConfig } from '@n8n/eslint-config/node';
+import { nodeConfig } from '@MNI/eslint-config/node';
 
 export default defineConfig(nodeConfig);
 `,
@@ -285,7 +285,7 @@ export default defineConfig(nodeConfig);
 			const violations = await analyze();
 
 			expect(violations).toHaveLength(2);
-			expect(violations[0]).toContain("'@n8n/eslint-config/node', which no longer exists");
+			expect(violations[0]).toContain("'@MNI/eslint-config/node', which no longer exists");
 			expect(violations[1]).toContain('does not extend a shared ESLint layer');
 		});
 

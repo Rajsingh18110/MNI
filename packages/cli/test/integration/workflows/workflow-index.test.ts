@@ -1,16 +1,16 @@
-import { Logger } from '@n8n/backend-common';
+import { Logger } from '@MNI/backend-common';
 import {
 	testDb,
 	createWorkflow,
 	createWorkflowHistory,
 	setActiveVersion,
-} from '@n8n/backend-test-utils';
-import { WorkflowsConfig } from '@n8n/config';
-import type { IWorkflowDb } from '@n8n/db';
-import { WorkflowDependencyRepository, WorkflowRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
-import { ErrorReporter, Tracing } from 'n8n-core';
-import type { INode } from 'n8n-workflow';
+} from '@MNI/backend-test-utils';
+import { WorkflowsConfig } from '@MNI/config';
+import type { IWorkflowDb } from '@MNI/db';
+import { WorkflowDependencyRepository, WorkflowRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
+import { ErrorReporter, Tracing } from 'MNI-core';
+import type { INode } from 'MNI-workflow';
 import { v4 as uuid } from 'uuid';
 
 import { EventService } from '@/events/event.service';
@@ -78,7 +78,7 @@ describe('WorkflowIndexService Integration', () => {
 				{
 					id: 'node-1',
 					name: 'HTTP Request',
-					type: 'n8n-nodes-base.httpRequest',
+					type: 'MNI-nodes-base.httpRequest',
 					typeVersion: 1,
 					position: [250, 300] as [number, number],
 					parameters: {},
@@ -108,7 +108,7 @@ describe('WorkflowIndexService Integration', () => {
 			{
 				id: 'node-2',
 				name: 'Slack',
-				type: 'n8n-nodes-base.slack',
+				type: 'MNI-nodes-base.slack',
 				typeVersion: 2,
 				position: [250, 300] as [number, number],
 				parameters: {},
@@ -169,7 +169,7 @@ describe('WorkflowIndexService Integration', () => {
 					{
 						id: 'node-1',
 						name: 'HTTP Request',
-						type: 'n8n-nodes-base.httpRequest',
+						type: 'MNI-nodes-base.httpRequest',
 						typeVersion: 1,
 						position: [250, 300] as [number, number],
 						parameters: {},
@@ -203,7 +203,7 @@ describe('WorkflowIndexService Integration', () => {
 					workflowId,
 					workflowVersionId: 1,
 					dependencyType: 'nodeType',
-					dependencyKey: 'n8n-nodes-base.httpRequest',
+					dependencyKey: 'MNI-nodes-base.httpRequest',
 					dependencyInfo: {
 						nodeId: 'node-1',
 						nodeVersion: 1,
@@ -232,7 +232,7 @@ describe('WorkflowIndexService Integration', () => {
 					workflowId: workflow.id,
 					publishedVersionId: null,
 					dependencyType: 'nodeType',
-					dependencyKey: 'n8n-nodes-base.httpRequest',
+					dependencyKey: 'MNI-nodes-base.httpRequest',
 					dependencyInfo: {
 						nodeId: 'node-1',
 						nodeVersion: 1,
@@ -244,7 +244,7 @@ describe('WorkflowIndexService Integration', () => {
 					workflowId: workflow.id,
 					publishedVersionId,
 					dependencyType: 'nodeType',
-					dependencyKey: 'n8n-nodes-base.slack',
+					dependencyKey: 'MNI-nodes-base.slack',
 					dependencyInfo: {
 						nodeId: 'node-2',
 						nodeVersion: 2,
@@ -258,7 +258,7 @@ describe('WorkflowIndexService Integration', () => {
 		const httpRequestNode: INode = {
 			id: 'node-1',
 			name: 'HTTP Request',
-			type: 'n8n-nodes-base.httpRequest',
+			type: 'MNI-nodes-base.httpRequest',
 			typeVersion: 1,
 			position: [0, 0],
 			parameters: {},
@@ -267,7 +267,7 @@ describe('WorkflowIndexService Integration', () => {
 		const webhookNode: INode = {
 			id: 'node-2',
 			name: 'Webhook',
-			type: 'n8n-nodes-base.webhook',
+			type: 'MNI-nodes-base.webhook',
 			typeVersion: 1,
 			position: [200, 0],
 			parameters: { path: 'my-webhook' },
@@ -276,7 +276,7 @@ describe('WorkflowIndexService Integration', () => {
 		const manualTriggerNode: INode = {
 			id: 'node-3',
 			name: 'Manual Trigger',
-			type: 'n8n-nodes-base.manualTrigger',
+			type: 'MNI-nodes-base.manualTrigger',
 			typeVersion: 1,
 			position: [400, 0],
 			parameters: {},
@@ -317,11 +317,11 @@ describe('WorkflowIndexService Integration', () => {
 
 			// Draft index should reflect the modified nodes
 			const draftNodeTypes = getDependencyKeys(draftDeps, 'nodeType').sort();
-			expect(draftNodeTypes).toEqual(['n8n-nodes-base.manualTrigger']);
+			expect(draftNodeTypes).toEqual(['MNI-nodes-base.manualTrigger']);
 
 			// Published index should reflect the original published nodes
 			const publishedNodeTypes = getDependencyKeys(publishedDeps, 'nodeType').sort();
-			expect(publishedNodeTypes).toEqual(['n8n-nodes-base.httpRequest', 'n8n-nodes-base.webhook']);
+			expect(publishedNodeTypes).toEqual(['MNI-nodes-base.httpRequest', 'MNI-nodes-base.webhook']);
 			expect(getDependencyKeys(publishedDeps, 'webhookPath')).toContain('my-webhook');
 		});
 	});

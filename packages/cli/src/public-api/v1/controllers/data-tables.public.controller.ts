@@ -6,8 +6,8 @@ import {
 	PublicApiListDataTableQueryDto,
 	UpdateDataTablePublicDto,
 	dataTableIdParamSchema,
-} from '@n8n/api-types';
-import type { AuthenticatedRequest } from '@n8n/db';
+} from '@MNI/api-types';
+import type { AuthenticatedRequest } from '@MNI/db';
 import {
 	ApiDescription,
 	ApiErrorResponse,
@@ -24,7 +24,7 @@ import {
 	ProjectScope,
 	PublicApiController,
 	Query,
-} from '@n8n/decorators';
+} from '@MNI/decorators';
 import type { Response } from 'express';
 
 import { BadRequestError } from '@/errors/response-errors/bad-request.error';

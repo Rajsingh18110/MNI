@@ -1,4 +1,4 @@
-import type { INode, IWorkflowIssues } from 'n8n-workflow';
+import type { INode, IWorkflowIssues } from 'MNI-workflow';
 
 import { WorkflowHasIssuesError } from '../workflow-has-issues.error';
 
@@ -14,7 +14,7 @@ describe('WorkflowHasIssuesError', () => {
 			'HTTP Request': {
 				id: '1',
 				name: 'HTTP Request',
-				type: 'n8n-nodes-base.httpRequest',
+				type: 'MNI-nodes-base.httpRequest',
 				typeVersion: 4.2,
 				position: [0, 0],
 				parameters: {},
@@ -25,7 +25,7 @@ describe('WorkflowHasIssuesError', () => {
 			[
 				"The 'HTTP Request' node has issues:",
 				'- Parameter "URL" is required.',
-				'- Node Type "n8n-nodes-base.httpRequest" is not known.',
+				'- Node Type "MNI-nodes-base.httpRequest" is not known.',
 			].join('\n'),
 		);
 	});

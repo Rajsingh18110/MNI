@@ -3,7 +3,7 @@ import type {
 	IDataObject,
 	INodeListSearchResult,
 	INodeListSearchItems,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { googleApiRequest, googleApiRequestAllItems } from './GenericFunctions';
 

@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-vi.mock('@n8n/instance-ai', () => ({
+vi.mock('@MNI/instance-ai', () => ({
 	workflowLoopStateSchema: z.string(),
 	attemptRecordSchema: z.object({}),
 	workflowBuildOutcomeSchema: z.string(),
@@ -26,7 +26,7 @@ vi.mock('@n8n/instance-ai', () => ({
 	}),
 }));
 
-import type { InstanceAiTraceContext } from '@n8n/instance-ai';
+import type { InstanceAiTraceContext } from '@MNI/instance-ai';
 
 import { TraceReplayState } from '../trace-replay-state';
 

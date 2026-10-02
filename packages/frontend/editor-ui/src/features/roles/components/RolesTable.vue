@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { usePageRedirectionHelper } from '@/app/composables/usePageRedirectionHelper';
 import { CUSTOM_ROLES_DOCS_URL } from '@/app/constants';
-import { useSettingsStore } from '@n8n/stores/settings.store';
-import { N8nActionToggle, N8nButton, N8nDatatable, N8nIcon, N8nText } from '@n8n/design-system';
-import type { DatatableColumn } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
-import type { Role } from '@n8n/permissions';
+import { useSettingsStore } from '@MNI/stores/settings.store';
+import { N8nActionToggle, N8nButton, N8nDatatable, N8nIcon, N8nText } from '@MNI/design-system';
+import type { DatatableColumn } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
+import type { Role } from '@MNI/permissions';
 import dateformat from 'dateformat';
 import { computed, useCssModule } from 'vue';
 import { RouterLink } from 'vue-router';

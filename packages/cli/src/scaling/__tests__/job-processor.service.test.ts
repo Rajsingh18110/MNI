@@ -1,16 +1,16 @@
 import { DynamicStructuredTool } from '@langchain/core/tools';
-import type { Logger } from '@n8n/backend-common';
-import type { ExecutionsConfig } from '@n8n/config';
-import type { IExecutionResponse, ExecutionRepository, Project } from '@n8n/db';
-import { WorkflowPublishHistoryRepository } from '@n8n/db';
+import type { Logger } from '@MNI/backend-common';
+import type { ExecutionsConfig } from '@MNI/config';
+import type { IExecutionResponse, ExecutionRepository, Project } from '@MNI/db';
+import { WorkflowPublishHistoryRepository } from '@MNI/db';
 import type {
 	WorkflowExecute as ActualWorkflowExecute,
 	BinaryDataConfig,
 	BinaryDataService,
 	InstanceSettings,
-} from 'n8n-core';
-import { ENCODED_BUFFER_KEY, ExternalSecretsProxy, StructuredToolkit } from 'n8n-core';
-import { mockInstance } from 'n8n-core/test/utils';
+} from 'MNI-core';
+import { ENCODED_BUFFER_KEY, ExternalSecretsProxy, StructuredToolkit } from 'MNI-core';
+import { mockInstance } from 'MNI-core/test/utils';
 import {
 	type IPinData,
 	type IRun,
@@ -29,7 +29,7 @@ import {
 	type WorkflowExecuteMode,
 	type ExecutionError,
 	WorkflowExpression,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import type PCancelable from 'p-cancelable';
 import type { Mock, MockedClass, MockInstance } from 'vitest';
 import { mock } from 'vitest-mock-extended';
@@ -70,8 +70,8 @@ mockInstance(OwnershipService, {
 });
 
 const processRunExecutionDataMock = vi.fn();
-vi.mock('n8n-core', async () => {
-	const original = await vi.importActual<typeof import('n8n-core')>('n8n-core');
+vi.mock('MNI-core', async () => {
+	const original = await vi.importActual<typeof import('MNI-core')>('MNI-core');
 
 	// Mock class constructor and prototype methods
 	return {
@@ -441,7 +441,7 @@ describe('JobProcessor', () => {
 	it.each(['manual', 'evaluation', 'trigger'] satisfies WorkflowExecuteMode[])(
 		'should use workflowExecute to process a job with mode %p with execution data',
 		async (mode) => {
-			const { WorkflowExecute } = await import('n8n-core');
+			const { WorkflowExecute } = await import('MNI-core');
 			// Type it correctly so we can use mock methods later
 			const MockedWorkflowExecute = WorkflowExecute as MockedClass<typeof ActualWorkflowExecute>;
 			MockedWorkflowExecute.mockClear();
@@ -734,7 +734,7 @@ describe('JobProcessor', () => {
 		it('should execute tool node and send result for MCP Trigger with tool call', async () => {
 			const executionRepository = mock<ExecutionRepository>();
 			const executionPersistence = mock<ExecutionPersistence>();
-			const toolNode = { name: 'tool-node', type: 'n8n-nodes-base.tool' };
+			const toolNode = { name: 'tool-node', type: 'MNI-nodes-base.tool' };
 			executionPersistence.findSingleExecution.mockResolvedValueOnce(
 				mock<IExecutionResponse>({
 					mode: 'trigger',
@@ -912,7 +912,7 @@ describe('JobProcessor', () => {
 			const executionPersistence = mock<ExecutionPersistence>();
 			const toolNode = {
 				name: 'HTTP Request',
-				type: 'n8n-nodes-base.httpRequestTool',
+				type: 'MNI-nodes-base.httpRequestTool',
 				typeVersion: 4.4,
 				parameters: {},
 				position: [0, 0] as [number, number],
@@ -1014,7 +1014,7 @@ describe('JobProcessor', () => {
 			const executionPersistence = mock<ExecutionPersistence>();
 			const toolNode = {
 				name: 'HTTP Request',
-				type: 'n8n-nodes-base.httpRequestTool',
+				type: 'MNI-nodes-base.httpRequestTool',
 				typeVersion: 4.4,
 				parameters: {},
 				position: [0, 0] as [number, number],
@@ -1048,7 +1048,7 @@ describe('JobProcessor', () => {
 			relay.assertFitsInline.mockImplementation(() => {
 				throw new WebhookResponseTooLargeError(
 					'The response is too large to be sent back from the worker (limit is 1 MiB)',
-					{ description: 'Raise N8N_WEBHOOK_RESPONSE_RELAY_SIZE_MAX.' },
+					{ description: 'Raise MNI_WEBHOOK_RESPONSE_RELAY_SIZE_MAX.' },
 				);
 			});
 
@@ -1097,7 +1097,7 @@ describe('JobProcessor', () => {
 		describe('expression isolate for tool calls', () => {
 			const toolNode = {
 				name: 'HTTP Request',
-				type: 'n8n-nodes-base.httpRequestTool',
+				type: 'MNI-nodes-base.httpRequestTool',
 				typeVersion: 4.4,
 				parameters: {},
 				position: [0, 0] as [number, number],
@@ -1221,7 +1221,7 @@ describe('JobProcessor', () => {
 			const executionPersistence = mock<ExecutionPersistence>();
 			const toolNode = {
 				name: 'Tool HTTP Request',
-				type: '@n8n/n8n-nodes-langchain.toolHttpRequest',
+				type: '@MNI/MNI-nodes-langchain.toolHttpRequest',
 				typeVersion: 1,
 				parameters: {},
 				position: [0, 0] as [number, number],
@@ -1315,7 +1315,7 @@ describe('JobProcessor', () => {
 		describe('MCP toolkit execution on the worker', () => {
 			const toolNode = {
 				name: 'Remote Tools',
-				type: '@n8n/n8n-nodes-langchain.mcpClientTool',
+				type: '@MNI/MNI-nodes-langchain.mcpClientTool',
 				typeVersion: 1.4,
 				parameters: {},
 				position: [0, 0] as [number, number],
@@ -1448,7 +1448,7 @@ describe('JobProcessor', () => {
 		describe('MCP request context on the worker', () => {
 			const toolNode = {
 				name: 'Calculator',
-				type: '@n8n/n8n-nodes-langchain.toolCalculator',
+				type: '@MNI/MNI-nodes-langchain.toolCalculator',
 				typeVersion: 1,
 				parameters: {},
 				position: [0, 0] as [number, number],
@@ -1471,7 +1471,7 @@ describe('JobProcessor', () => {
 					nodes: [
 						...triggerNames.map((name) => ({
 							name,
-							type: '@n8n/n8n-nodes-langchain.mcpTrigger',
+							type: '@MNI/MNI-nodes-langchain.mcpTrigger',
 							typeVersion: 2,
 							parameters: {},
 							position: [0, 0] as [number, number],
@@ -1600,7 +1600,7 @@ describe('JobProcessor', () => {
 			const executionPersistence = mock<ExecutionPersistence>();
 			const toolNode = {
 				name: 'Tool HTTP Request',
-				type: '@n8n/n8n-nodes-langchain.toolHttpRequest',
+				type: '@MNI/MNI-nodes-langchain.toolHttpRequest',
 				typeVersion: 1,
 				parameters: {},
 				position: [0, 0] as [number, number],
@@ -1692,14 +1692,14 @@ describe('JobProcessor', () => {
 			const executionPersistence = mock<ExecutionPersistence>();
 			const toolNode = {
 				name: 'Calculator',
-				type: '@n8n/n8n-nodes-langchain.toolCalculator',
+				type: '@MNI/MNI-nodes-langchain.toolCalculator',
 				typeVersion: 1,
 				parameters: {},
 				position: [0, 0] as [number, number],
 			};
 			const triggerNode = {
 				name: 'MCP Server Trigger',
-				type: '@n8n/n8n-nodes-langchain.mcpTrigger',
+				type: '@MNI/MNI-nodes-langchain.mcpTrigger',
 				typeVersion: 1,
 				parameters: {},
 				position: [200, 0] as [number, number],
@@ -1802,7 +1802,7 @@ describe('JobProcessor', () => {
 			const executionPersistence = mock<ExecutionPersistence>();
 			const toolNode = {
 				name: 'Calculator',
-				type: '@n8n/n8n-nodes-langchain.toolCalculator',
+				type: '@MNI/MNI-nodes-langchain.toolCalculator',
 				typeVersion: 1,
 				parameters: {},
 				position: [0, 0] as [number, number],
@@ -1887,7 +1887,7 @@ describe('JobProcessor', () => {
 			const executionPersistence = mock<ExecutionPersistence>();
 			const toolNode = {
 				name: 'Calculator',
-				type: '@n8n/n8n-nodes-langchain.toolCalculator',
+				type: '@MNI/MNI-nodes-langchain.toolCalculator',
 				typeVersion: 1,
 				parameters: {},
 				position: [0, 0] as [number, number],
@@ -1987,7 +1987,7 @@ describe('JobProcessor', () => {
 			const executionPersistence = mock<ExecutionPersistence>();
 			const toolNode = {
 				name: 'Calculator',
-				type: '@n8n/n8n-nodes-langchain.toolCalculator',
+				type: '@MNI/MNI-nodes-langchain.toolCalculator',
 				typeVersion: 1,
 				parameters: {},
 				position: [0, 0] as [number, number],
@@ -2077,7 +2077,7 @@ describe('JobProcessor', () => {
 			const executionPersistence = mock<ExecutionPersistence>();
 			const toolNode = {
 				name: 'Calculator',
-				type: '@n8n/n8n-nodes-langchain.toolCalculator',
+				type: '@MNI/MNI-nodes-langchain.toolCalculator',
 				typeVersion: 1,
 				parameters: {},
 				position: [0, 0] as [number, number],
@@ -2156,7 +2156,7 @@ describe('JobProcessor', () => {
 			const toolNode = {
 				id: 'calc-node',
 				name: 'Calculator',
-				type: '@n8n/n8n-nodes-langchain.toolCalculator',
+				type: '@MNI/MNI-nodes-langchain.toolCalculator',
 				typeVersion: 1,
 				parameters: {},
 				position: [0, 0] as [number, number],

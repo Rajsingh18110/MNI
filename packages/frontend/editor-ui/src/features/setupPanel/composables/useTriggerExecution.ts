@@ -1,5 +1,5 @@
 import { computed, toValue, type MaybeRef } from 'vue';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 
 import type { INodeUi } from '@/Interface';
 import { useNodeExecution, type UseNodeExecutionOptions } from '@/app/composables/useNodeExecution';

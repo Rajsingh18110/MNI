@@ -9,9 +9,9 @@ import CredentialCard from './CredentialCard.vue';
 import type { CredentialsResource } from '@/Interface';
 import type { ProjectSharingData } from '@/features/collaboration/projects/projects.types';
 import { useProjectsStore } from '@/features/collaboration/projects/projects.store';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { useCredentialsStore } from '../credentials.store';
-import type { FrontendSettings } from '@n8n/api-types';
+import type { FrontendSettings } from '@MNI/api-types';
 import type { ICredentialsResponse } from '../credentials.types';
 import { MODAL_CONFIRM } from '@/app/constants';
 
@@ -34,7 +34,7 @@ vi.mock('@/app/composables/useMessage', () => ({
 
 const showMessage = vi.fn();
 const showError = vi.fn();
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: () => ({
 		showMessage,
 		showError,
@@ -67,7 +67,7 @@ describe('CredentialCard', () => {
 		settingsStore = useSettingsStore();
 		settingsStore.settings = {
 			envFeatureFlags: {
-				N8N_ENV_FEAT_DYNAMIC_CREDENTIALS: true,
+				MNI_ENV_FEAT_DYNAMIC_CREDENTIALS: true,
 			},
 			activeModules: ['dynamic-credentials'],
 		} as unknown as FrontendSettings;

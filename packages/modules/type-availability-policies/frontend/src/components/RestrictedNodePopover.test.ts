@@ -1,4 +1,4 @@
-import { createComponentRenderer } from '@n8n/frontend-test-utils';
+import { createComponentRenderer } from '@MNI/frontend-test-utils';
 import { screen, waitFor } from '@testing-library/vue';
 import userEvent from '@testing-library/user-event';
 import { afterEach, beforeEach, describe, it, expect } from 'vitest';

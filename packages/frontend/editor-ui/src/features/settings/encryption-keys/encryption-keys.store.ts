@@ -1,6 +1,6 @@
 import { computed, ref } from 'vue';
 import { defineStore } from 'pinia';
-import { useRootStore } from '@n8n/stores/useRootStore';
+import { useRootStore } from '@MNI/stores/useRootStore';
 
 import * as encryptionKeysApi from './encryption-keys.api';
 import {

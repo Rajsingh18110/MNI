@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import type { ContextMenuAction } from '@/features/shared/contextMenu/composables/useContextMenuItems';
 import type { IWorkflowDb } from '@/Interface';
-import type { EventBus } from '@n8n/utils/event-bus';
-import { createEventBus } from '@n8n/utils/event-bus';
+import type { EventBus } from '@MNI/utils/event-bus';
+import { createEventBus } from '@MNI/utils/event-bus';
 import type { ViewportTransform } from '@vue-flow/core';
 import { getRectOfNodes, useVueFlow } from '@vue-flow/core';
 import { throttledRef } from '@vueuse/core';

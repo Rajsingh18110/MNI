@@ -1,15 +1,15 @@
-import type { Project, SharedCredentials, User } from '@n8n/db';
+import type { Project, SharedCredentials, User } from '@MNI/db';
 import {
 	CredentialsEntity,
 	CredentialsRepository,
 	chunkIds,
 	SharedCredentialsRepository,
-} from '@n8n/db';
-import { Service } from '@n8n/di';
-import { hasGlobalScope } from '@n8n/permissions';
-import type { CredentialSharingRole, ProjectRole, Scope } from '@n8n/permissions';
-import type { EntityManager, FindOptionsWhere } from '@n8n/typeorm';
-import { In } from '@n8n/typeorm';
+} from '@MNI/db';
+import { Service } from '@MNI/di';
+import { hasGlobalScope } from '@MNI/permissions';
+import type { CredentialSharingRole, ProjectRole, Scope } from '@MNI/permissions';
+import type { EntityManager, FindOptionsWhere } from '@MNI/typeorm';
+import { In } from '@MNI/typeorm';
 
 import { RoleService } from '@/services/role.service';
 

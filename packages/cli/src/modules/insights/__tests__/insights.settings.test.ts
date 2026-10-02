@@ -1,4 +1,4 @@
-import type { LicenseState } from '@n8n/backend-common';
+import type { LicenseState } from '@MNI/backend-common';
 import type { Mocked } from 'vitest';
 import { mock } from 'vitest-mock-extended';
 

@@ -2,7 +2,7 @@
 import LogsViewExecutionSummary from '@/features/execution/logs/components/LogsViewExecutionSummary.vue';
 import LogsPanelHeader from '@/features/execution/logs/components/LogsPanelHeader.vue';
 import LogsViewRunData from '@/features/execution/logs/components/LogsViewRunData.vue';
-import { useResizablePanel } from '@n8n/design-system';
+import { useResizablePanel } from '@MNI/design-system';
 import {
 	type LatestNodeInfo,
 	type LogEntry,
@@ -11,7 +11,7 @@ import {
 	isNodeLog,
 } from '@/features/execution/logs/logs.types';
 import NodeIcon from '@/app/components/NodeIcon.vue';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';
 import LogsViewNodeName from '@/features/execution/logs/components/LogsViewNodeName.vue';
 import { computed, ref, useTemplateRef, watch } from 'vue';
@@ -35,7 +35,7 @@ import {
 	N8nResizeWrapper,
 	N8nSelect,
 	N8nText,
-} from '@n8n/design-system';
+} from '@MNI/design-system';
 import { useMessageAgentSessionLink } from '@/features/agents/composables/useMessageAgentSessionLink';
 const MIN_IO_PANEL_WIDTH = 200;
 
@@ -106,7 +106,7 @@ const container = useTemplateRef<HTMLElement>('container');
 const resizer = useResizablePanel({
 	container,
 	width: {
-		localStorageKey: 'N8N_LOGS_INPUT_PANEL_WIDTH',
+		localStorageKey: 'MNI_LOGS_INPUT_PANEL_WIDTH',
 		defaultSize: function getDefaultWidth(size) {
 			return size / 2;
 		},

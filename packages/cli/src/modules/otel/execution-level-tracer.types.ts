@@ -1,4 +1,4 @@
-import type { ExecutionStatus, WorkflowExecuteMode, INode } from 'n8n-workflow';
+import type { ExecutionStatus, WorkflowExecuteMode, INode } from 'MNI-workflow';
 
 import type { CrashDetector } from '@/events/maps/relay.event-map';
 

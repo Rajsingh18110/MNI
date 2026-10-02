@@ -17,9 +17,9 @@ export function useFixedCollectionItemState(
 	{ defaultWrapperExpanded = false } = {},
 ) {
 	const storageKey = toValue(key);
-	const expandedStorageKey = `n8n-fixed-collection-expanded-${storageKey}`;
-	const wrapperStorageKey = `n8n-fixed-collection-wrapper-${storageKey}`;
-	const stableIndexesStorageKey = `n8n-fixed-collection-stable-indexes-${storageKey}`;
+	const expandedStorageKey = `MNI-fixed-collection-expanded-${storageKey}`;
+	const wrapperStorageKey = `MNI-fixed-collection-wrapper-${storageKey}`;
+	const stableIndexesStorageKey = `MNI-fixed-collection-stable-indexes-${storageKey}`;
 
 	const itemMetadata = ref<Record<string, ItemMetadata[]>>({});
 

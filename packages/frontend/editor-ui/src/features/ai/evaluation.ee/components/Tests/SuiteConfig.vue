@@ -2,7 +2,7 @@
 import { computed, watch } from 'vue';
 import { storeToRefs } from 'pinia';
 import { useDebounceFn } from '@vueuse/core';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import {
 	N8nActionDropdown,
 	N8nButton,
@@ -10,9 +10,9 @@ import {
 	N8nOption,
 	N8nSelect,
 	N8nText,
-} from '@n8n/design-system';
+} from '@MNI/design-system';
 
-import { getDebounceTime } from '@n8n/composables/useDebounce';
+import { getDebounceTime } from '@MNI/composables/useDebounce';
 import { DEBOUNCE_TIME } from '@/app/constants';
 import { useEvaluationsWizardSidepanelStore } from '../../wizardSidepanel.store';
 import { useTestCasePersistence } from '../../composables/useTestCasePersistence';

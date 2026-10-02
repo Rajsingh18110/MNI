@@ -26,7 +26,7 @@ COPY gh-shim.sh /usr/local/bin/gh
 RUN chmod +x /usr/local/bin/gitcredential-refresh.sh /usr/local/bin/gh
 
 # VS Code terminals load secrets here because they do not read profile.d.
-RUN echo '[ "${N8N_SKIP_CODESPACE_SECRETS:-}" = "1" ] || . /usr/local/lib/codespaces-env.sh' >> /etc/bash.bashrc
+RUN echo '[ "${MNI_SKIP_CODESPACE_SECRETS:-}" = "1" ] || . /usr/local/lib/codespaces-env.sh' >> /etc/bash.bashrc
 
 COPY tmux.conf /etc/tmux.conf
 

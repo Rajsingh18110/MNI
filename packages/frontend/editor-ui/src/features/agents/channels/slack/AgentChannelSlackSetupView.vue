@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { N8nLoading } from '@n8n/design-system';
+import { N8nLoading } from '@MNI/design-system';
 import { computed, ref, watch } from 'vue';
 
 import AgentChannelSlackManagedSetup from '../../components/AgentChannelSlackManagedSetup.vue';

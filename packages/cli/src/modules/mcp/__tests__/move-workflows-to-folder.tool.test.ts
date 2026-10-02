@@ -1,6 +1,6 @@
-import { mockInstance } from '@n8n/backend-test-utils';
-import { User } from '@n8n/db';
-import { PROJECT_ROOT } from 'n8n-workflow';
+import { mockInstance } from '@MNI/backend-test-utils';
+import { User } from '@MNI/db';
+import { PROJECT_ROOT } from 'MNI-workflow';
 
 import { FolderFinderService } from '@/services/folder-finder.service';
 import { Telemetry } from '@/telemetry';
@@ -88,7 +88,7 @@ describe('move-workflows-to-folder MCP tool', () => {
 		);
 		expect(mocks.workflowService.update).toHaveBeenCalledWith(user, expect.anything(), 'wf-1', {
 			parentFolderId: 'folder-1',
-			source: 'n8n-mcp',
+			source: 'MNI-mcp',
 		});
 		expect(result.isError).toBeUndefined();
 		expect(result.structuredContent).toEqual({
@@ -137,7 +137,7 @@ describe('move-workflows-to-folder MCP tool', () => {
 		expect(mocks.folderFinderService.findFoldersByIdsForUser).not.toHaveBeenCalled();
 		expect(mocks.workflowService.update).toHaveBeenCalledWith(user, expect.anything(), 'wf-1', {
 			parentFolderId: PROJECT_ROOT,
-			source: 'n8n-mcp',
+			source: 'MNI-mcp',
 		});
 		expect(result.structuredContent).toEqual({
 			moved: [{ workflowId: 'wf-1', name: 'My workflow' }],

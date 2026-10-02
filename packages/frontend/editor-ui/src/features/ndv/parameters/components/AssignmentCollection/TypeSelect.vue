@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import { useI18n } from '@n8n/i18n';
-import type { BaseTextKey } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
+import type { BaseTextKey } from '@MNI/i18n';
 import { ASSIGNMENT_TYPES } from './constants';
 import { computed, useCssModule } from 'vue';
 import { Primitive } from 'reka-ui';
 
-import { N8nIcon } from '@n8n/design-system';
-import { N8nDropdownMenu, type DropdownMenuItemProps } from '@n8n/design-system';
+import { N8nIcon } from '@MNI/design-system';
+import { N8nDropdownMenu, type DropdownMenuItemProps } from '@MNI/design-system';
 
 interface Props {
 	modelValue: string;

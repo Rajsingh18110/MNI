@@ -6,8 +6,8 @@ import type {
 	INodeListSearchItems,
 	INodeListSearchResult,
 	JsonObject,
-} from 'n8n-workflow';
-import { NodeApiError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeApiError } from 'MNI-workflow';
 
 import { CURRENT_VERSION } from '../helpers/constants';
 import type {

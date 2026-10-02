@@ -1,6 +1,6 @@
 import { SchemaRegistry } from '@kafkajs/confluent-schema-registry';
-import type { INodeTypeBaseDescription, IRun, Logger } from 'n8n-workflow';
-import { TriggerCloseError, UserError } from 'n8n-workflow';
+import type { INodeTypeBaseDescription, IRun, Logger } from 'MNI-workflow';
+import { TriggerCloseError, UserError } from 'MNI-workflow';
 import type { Mock, Mocked } from 'vitest';
 import { mock } from 'vitest-mock-extended';
 
@@ -54,7 +54,7 @@ const baseDescription: INodeTypeBaseDescription = {
 
 const credential = {
 	brokers: 'localhost:9092',
-	clientId: 'n8n-kafka',
+	clientId: 'MNI-kafka',
 	ssl: false,
 	authentication: false,
 };
@@ -426,7 +426,7 @@ describe('manualRunGroupId', () => {
 		const first = manualRunGroupId('orders-consumer', true);
 		const second = manualRunGroupId('orders-consumer', true);
 
-		expect(first).toMatch(/^orders-consumer-n8n-manual-.+/);
+		expect(first).toMatch(/^orders-consumer-MNI-manual-.+/);
 		expect(first).not.toBe('orders-consumer');
 		// Two editors testing at once must not land in the same group either.
 		expect(second).not.toBe(first);
@@ -444,7 +444,7 @@ describe('explainManualRunGroupDenial', () => {
 
 		expect(result).not.toBe(denial);
 		expect(result).toBeInstanceOf(UserError);
-		expect((result as UserError).description).toContain('orders-consumer-n8n-manual-');
+		expect((result as UserError).description).toContain('orders-consumer-MNI-manual-');
 		// The original stays reachable rather than being replaced outright.
 		expect((result as UserError).cause).toBe(denial);
 	});
@@ -750,7 +750,7 @@ describe('KafkaTriggerV2 Node', () => {
 					message: expect.stringContaining(
 						'Kafka refused the consumer group used for a test run',
 					) as string,
-					description: expect.stringContaining('orders-consumer-n8n-manual-') as string,
+					description: expect.stringContaining('orders-consumer-MNI-manual-') as string,
 				});
 				expect(started.emitError).not.toHaveBeenCalled();
 			});
@@ -1012,7 +1012,7 @@ describe('KafkaTriggerV2 Node', () => {
 
 			expect(emitError).toHaveBeenCalledTimes(1);
 			expect((emitError.mock.calls[0][0] as UserError).description).toContain(
-				'orders-consumer-n8n-manual-',
+				'orders-consumer-MNI-manual-',
 			);
 		});
 
@@ -1047,7 +1047,7 @@ describe('KafkaTriggerV2 Node', () => {
 			// Sharing the group would let this run commit offsets for messages the
 			// activated workflow never received.
 			expect(groupId).not.toBe('orders-consumer');
-			expect(groupId).toMatch(/^orders-consumer-n8n-manual-.+/);
+			expect(groupId).toMatch(/^orders-consumer-MNI-manual-.+/);
 		});
 
 		it('waits for the next message rather than replaying the topic', async () => {

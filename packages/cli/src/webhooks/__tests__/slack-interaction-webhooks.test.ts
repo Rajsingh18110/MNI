@@ -1,8 +1,8 @@
-import type { IExecutionResponse } from '@n8n/db';
+import type { IExecutionResponse } from '@MNI/db';
 import type express from 'express';
-import type { InstanceSettings } from 'n8n-core';
-import { buildHitlCallbackReference, isSlackInteractionRequest } from 'n8n-core';
-import type { IWorkflowBase } from 'n8n-workflow';
+import type { InstanceSettings } from 'MNI-core';
+import { buildHitlCallbackReference, isSlackInteractionRequest } from 'MNI-core';
+import type { IWorkflowBase } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import type { EventService } from '@/events/event.service';
@@ -82,7 +82,7 @@ describe('SlackInteractionWebhooks', () => {
 	const waitingExecutionWithNode = (
 		nodeId: string,
 		lastNodeExecuted = 'SlackNode',
-		nodeType = 'n8n-nodes-base.slack',
+		nodeType = 'MNI-nodes-base.slack',
 	) =>
 		mock<IExecutionResponse>({
 			status: 'waiting',
@@ -247,7 +247,7 @@ describe('SlackInteractionWebhooks', () => {
 		const req = createRequest(reference);
 		const { res, status } = createResponse();
 		executionPersistence.findSingleExecution.mockResolvedValue(
-			waitingExecutionWithNode('node-1', 'SlackNode', 'n8n-nodes-base.telegram'),
+			waitingExecutionWithNode('node-1', 'SlackNode', 'MNI-nodes-base.telegram'),
 		);
 
 		const result = await slackInteractionWebhooks.executeWebhook(req, res);
@@ -293,8 +293,8 @@ describe('SlackInteractionWebhooks', () => {
 		const reference = buildHitlCallbackReference('exec-1', 'a', TEST_HMAC_SECRET);
 		const req = createRequest(reference);
 		// Assign real cookie values after construction so the deep mock does not proxy them.
-		req.headers = { cookie: 'n8n-auth=token; n8n-browserId=bid; other=keep' };
-		req.cookies = { 'n8n-auth': 'token', 'n8n-browserId': 'bid', other: 'keep' };
+		req.headers = { cookie: 'MNI-auth=token; MNI-browserId=bid; other=keep' };
+		req.cookies = { 'MNI-auth': 'token', 'MNI-browserId': 'bid', other: 'keep' };
 		const { res } = createResponse();
 		executionPersistence.findSingleExecution.mockResolvedValue(waitingExecutionWithNode('node-1'));
 

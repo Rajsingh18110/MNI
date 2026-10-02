@@ -4,8 +4,8 @@ import type {
 	JsonObject,
 	IHttpRequestOptions,
 	IHttpRequestMethods,
-} from 'n8n-workflow';
-import { toPathSegment, NodeApiError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { toPathSegment, NodeApiError } from 'MNI-workflow';
 
 import type { ElasticsearchApiCredentials } from './types';
 

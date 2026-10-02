@@ -21,14 +21,14 @@ const REPO_ROOT = path.resolve(scriptDir, '..', '..');
 const ENRICH = path.join(REPO_ROOT, 'scripts', 'licenses', 'enrich-sbom.mjs');
 const CHECK = path.join(REPO_ROOT, 'scripts', 'licenses', 'check-sbom-licenses.mjs');
 const ALLOW_REFS = [
-	'--allow-ref=LicenseRef-n8n-sustainable-use',
-	'--allow-ref=LicenseRef-n8n-enterprise',
+	'--allow-ref=LicenseRef-MNI-sustainable-use',
+	'--allow-ref=LicenseRef-MNI-enterprise',
 ];
 
 export function parseTargets(env) {
 	return [
-		{ label: 'MNI', image: env.N8N_IMAGE, digest: env.N8N_DIGEST },
-		{ label: 'n8n-pc', image: env.N8N_PC_IMAGE, digest: env.N8N_PC_DIGEST },
+		{ label: 'MNI', image: env.MNI_IMAGE, digest: env.MNI_DIGEST },
+		{ label: 'MNI-pc', image: env.MNI_PC_IMAGE, digest: env.MNI_PC_DIGEST },
 		{ label: 'runners', image: env.RUNNERS_IMAGE, digest: env.RUNNERS_DIGEST },
 		{ label: 'runners-distroless', image: env.DISTROLESS_IMAGE, digest: env.DISTROLESS_DIGEST },
 	].filter((t) => t.image && t.digest);

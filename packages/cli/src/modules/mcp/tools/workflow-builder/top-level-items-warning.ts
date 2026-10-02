@@ -1,9 +1,9 @@
-import type { IConnections, INode, IWorkflowGroup } from 'n8n-workflow';
+import type { IConnections, INode, IWorkflowGroup } from 'MNI-workflow';
 import {
 	formatTopLevelItemsMessage,
 	summarizeTopLevelItems,
 	TOP_LEVEL_ITEMS_OVER_CEILING_CODE,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 export type TopLevelItemsWarning = { code: string; message: string };
 

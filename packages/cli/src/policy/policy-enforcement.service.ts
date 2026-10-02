@@ -10,16 +10,16 @@ import type {
 	WorkflowTransferContext,
 	PolicyCleared,
 	PolicySubject,
-} from '@n8n/decorators';
+} from '@MNI/decorators';
 import {
 	credentialContentSubject,
 	credentialSubject,
 	workflowContentSubject,
 	workflowSubject,
-} from '@n8n/decorators';
-import { mintPolicyCleared } from '@n8n/decorators/policy-internal';
-import { Service } from '@n8n/di';
-import { UnexpectedError } from 'n8n-workflow';
+} from '@MNI/decorators';
+import { mintPolicyCleared } from '@MNI/decorators/policy-internal';
+import { Service } from '@MNI/di';
+import { UnexpectedError } from 'MNI-workflow';
 
 import type { PolicyContext, PolicyEnforcementBackend } from './policy-enforcement-backend';
 import { hasViolations, PolicyViolationError } from './policy-violation.error';

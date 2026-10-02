@@ -1,5 +1,5 @@
-import type { RuntimeSkill } from '@n8n/agents';
-import { ASK_QUESTIONS_TOOL_NAME } from '@n8n/api-types';
+import type { RuntimeSkill } from '@MNI/agents';
+import { ASK_QUESTIONS_TOOL_NAME } from '@MNI/api-types';
 
 import { INITIAL_BUILD_NOTE } from '../prompts/initial-build.prompt';
 
@@ -40,14 +40,14 @@ requests must use \`config.webSearch\` according to the system prompt's
 web-search rules. Do not search integrations or nodes for
 these requests.
 
-Never add the retired \`@n8n/n8n-nodes-langchain.toolHttpRequest\`. When the
+Never add the retired \`@MNI/MNI-nodes-langchain.toolHttpRequest\`. When the
 user explicitly requests the HTTP Request Tool or direct HTTP, API, or
-specific-page fetching, use only \`n8n-nodes-base.httpRequestTool\`.
+specific-page fetching, use only \`MNI-nodes-base.httpRequestTool\`.
 
 ### Mandatory HTTP Request URL Gate
 
 Use only an exact URL explicitly supplied by the user for
-\`n8n-nodes-base.httpRequestTool\`. If the user has not supplied one, you MUST
+\`MNI-nodes-base.httpRequestTool\`. If the user has not supplied one, you MUST
 ask which URL the tool should fetch. During an initial build, mark this setup
 as blocked and include the URL question in the single trailing \`finish_setup\`
 call; add the tool with the returned URL after the user answers. On later
@@ -72,7 +72,7 @@ conventions. Never add an incomplete tool or use a placeholder URL.
 - Use the tool node id from discovery, usually ending in \`Tool\`.
 - Put fixed values in \`nodeParameters\`; use complete MNI expressions for values the agent should decide at runtime:
   \`={{ $fromAI('message', 'The message to send', 'string') }}\`.
-- \`n8n-nodes-base.httpRequestTool\` requires a fixed \`nodeParameters.url\`; it
+- \`MNI-nodes-base.httpRequestTool\` requires a fixed \`nodeParameters.url\`; it
   does not work with a dynamic or model-selected URL. Never use \`$fromAI\` in
   the URL; use it only in other request fields.
 - For stable dynamic selectors, load \`agent-builder-resource-locators\` and
@@ -101,9 +101,9 @@ with the \`agent-builder-resource-locators\` skill, \`ask_credential\`, and
 \`get_resource_locator_options\`; write the returned \`parameterValue\` into
 \`nodeParameters\`.
 
-- \`={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('fieldName', 'What value to provide', 'string') }}\`
-- \`={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('count', 'How many items', 'number') }}\`
-- \`={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('enabled', 'Whether to enable this option', 'boolean') }}\`
+- \`={{ /*MNI-auto-generated-fromAI-override*/ $fromAI('fieldName', 'What value to provide', 'string') }}\`
+- \`={{ /*MNI-auto-generated-fromAI-override*/ $fromAI('count', 'How many items', 'number') }}\`
+- \`={{ /*MNI-auto-generated-fromAI-override*/ $fromAI('enabled', 'Whether to enable this option', 'boolean') }}\`
 - \`={{ $now.toISO() }}\` for current date/time.
 - \`={{ $today }}\` for the start of today.
 

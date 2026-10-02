@@ -1,0 +1,16 @@
+{
+	"extends": "@MNI/typescript-config/tsconfig.frontend.json",
+	"compilerOptions": {
+		"rootDirs": [".", "../composables/src"],
+		"noEmit": true,
+		"moduleResolution": "bundler",
+		"types": ["vite/client", "unplugin-icons/types/vue", "vitest/globals"],
+		"paths": {
+			"@MNI/design-system*": ["./src*"],
+			"@MNI/composables*": ["../composables/src*"],
+			"@MNI/frontend-utils*": ["../frontend-utils/src*"],
+			"@MNI/utils*": ["../../../@MNI/utils/src*"]
+		}
+	},
+	"include": ["src/**/*.ts", "src/**/*.vue"]
+}

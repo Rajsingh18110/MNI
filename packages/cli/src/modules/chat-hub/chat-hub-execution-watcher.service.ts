@@ -1,11 +1,11 @@
-import { Logger } from '@n8n/backend-common';
-import { type IExecutionResponse } from '@n8n/db';
+import { Logger } from '@MNI/backend-common';
+import { type IExecutionResponse } from '@MNI/db';
 import {
 	OnLifecycleEvent,
 	type WorkflowExecuteAfterContext,
 	type WorkflowExecuteResumeContext,
-} from '@n8n/decorators';
-import { Service } from '@n8n/di';
+} from '@MNI/decorators';
+import { Service } from '@MNI/di';
 import { v4 as uuidv4 } from 'uuid';
 
 import { ChatExecutionManager } from '@/chat/chat-execution-manager';

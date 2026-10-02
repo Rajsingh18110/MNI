@@ -1,7 +1,7 @@
 import { computed, defineAsyncComponent, type Component, type Ref } from 'vue';
-import type { NodePropertyTypes } from 'n8n-workflow';
-import { parameterInputRegistry } from '@n8n/frontend-module-sdk';
-import type { ParameterInputCapabilities } from '@n8n/frontend-module-sdk';
+import type { NodePropertyTypes } from 'MNI-workflow';
+import { parameterInputRegistry } from '@MNI/frontend-module-sdk';
+import type { ParameterInputCapabilities } from '@MNI/frontend-module-sdk';
 
 import { isResourceLocatorParameterType } from '@/features/ndv/shared/ndv.utils';
 

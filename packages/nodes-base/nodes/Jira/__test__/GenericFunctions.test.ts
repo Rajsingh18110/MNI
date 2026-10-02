@@ -1,5 +1,5 @@
 import { type DeepMockProxy, mockDeep } from 'vitest-mock-extended';
-import type { IDataObject, IExecuteFunctions, INodeParameterResourceLocator } from 'n8n-workflow';
+import type { IDataObject, IExecuteFunctions, INodeParameterResourceLocator } from 'MNI-workflow';
 
 import {
 	handlePagination,

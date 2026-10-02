@@ -2,22 +2,22 @@ import { authorizationHandler } from '@modelcontextprotocol/sdk/server/auth/hand
 import { clientRegistrationHandler } from '@modelcontextprotocol/sdk/server/auth/handlers/register.js';
 import { revocationHandler } from '@modelcontextprotocol/sdk/server/auth/handlers/revoke.js';
 import { tokenHandler } from '@modelcontextprotocol/sdk/server/auth/handlers/token.js';
-import { Logger } from '@n8n/backend-common';
-import { GlobalConfig } from '@n8n/config';
-import { Time } from '@n8n/constants';
+import { Logger } from '@MNI/backend-common';
+import { GlobalConfig } from '@MNI/config';
+import { Time } from '@MNI/constants';
 import {
 	createIpRateLimit,
 	Get,
 	Options,
 	RootLevelController,
 	StaticRouterMetadata,
-} from '@n8n/decorators';
-import { Container } from '@n8n/di';
+} from '@MNI/decorators';
+import { Container } from '@MNI/di';
 import type { Response, Request, RequestHandler, Router } from 'express';
 
 import type { ProtectedResource } from '@/services/protected-resource.registry';
 import { ProtectedResourceRegistry } from '@/services/protected-resource.registry';
-import { UrlService } from '@n8n/backend-services';
+import { UrlService } from '@MNI/backend-services';
 
 import { OAuthServerConfig } from './oauth-server.config';
 import { OAuthServerService } from './oauth-server.service';

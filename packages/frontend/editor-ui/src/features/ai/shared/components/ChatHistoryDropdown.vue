@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { getRelativeDate } from '@/features/ai/chatHub/chat.utils';
-import { N8nActionDropdown, N8nDropdownMenu, N8nIconButton, N8nText } from '@n8n/design-system';
-import type { ActionDropdownItem, DropdownMenuItemProps } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+import { N8nActionDropdown, N8nDropdownMenu, N8nIconButton, N8nText } from '@MNI/design-system';
+import type { ActionDropdownItem, DropdownMenuItemProps } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 import { useEventListener } from '@vueuse/core';
 import { computed, onBeforeUnmount, ref, useId } from 'vue';
 
@@ -257,7 +257,7 @@ defineExpose({ highlightFirstItem, focusTrigger });
 
 <style lang="scss" module>
 .menuContent {
-	width: var(--n8n--dropdown-menu-width);
+	width: var(--MNI--dropdown-menu-width);
 }
 
 .itemLabel {

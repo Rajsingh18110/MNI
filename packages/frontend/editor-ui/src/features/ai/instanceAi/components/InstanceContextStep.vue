@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { N8nAiActivityStep } from '@n8n/design-system';
+import { N8nAiActivityStep } from '@MNI/design-system';
 import { computed } from 'vue';
 
 import { useInstanceContextLabel, type InstanceContextEntry } from '../instanceContextLabels';

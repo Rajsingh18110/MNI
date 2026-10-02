@@ -1,8 +1,8 @@
-import type { BuiltTool } from '@n8n/agents';
-import type { Logger } from '@n8n/backend-common';
-import type { CustomFetch, HttpTransport, OutboundHttp } from '@n8n/backend-network';
-import type { CredentialsEntity, User } from '@n8n/db';
-import { QueryFailedError } from '@n8n/typeorm';
+import type { BuiltTool } from '@MNI/agents';
+import type { Logger } from '@MNI/backend-common';
+import type { CustomFetch, HttpTransport, OutboundHttp } from '@MNI/backend-network';
+import type { CredentialsEntity, User } from '@MNI/db';
+import { QueryFailedError } from '@MNI/typeorm';
 import { mock } from 'vitest-mock-extended';
 
 import type { CredentialsFinderService } from '@/credentials/credentials-finder.service';
@@ -32,7 +32,7 @@ const {
 	mcpClientListToolsMock: vi.fn<() => Promise<BuiltTool[]>>(),
 }));
 
-vi.mock('@n8n/agents', () => ({
+vi.mock('@MNI/agents', () => ({
 	McpClient: vi.fn(function (configs: unknown) {
 		mcpClientConstructorMock(configs);
 		return {

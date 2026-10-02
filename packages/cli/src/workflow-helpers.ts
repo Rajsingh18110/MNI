@@ -1,7 +1,7 @@
-import { MAX_PINNED_DATA_SIZE, MAX_WORKFLOW_SIZE, MAX_EXPECTED_REQUEST_SIZE } from '@n8n/api-types';
-import { CredentialsRepository } from '@n8n/db';
-import type { WorkflowEntity, WorkflowHistory } from '@n8n/db';
-import { Container } from '@n8n/di';
+import { MAX_PINNED_DATA_SIZE, MAX_WORKFLOW_SIZE, MAX_EXPECTED_REQUEST_SIZE } from '@MNI/api-types';
+import { CredentialsRepository } from '@MNI/db';
+import type { WorkflowEntity, WorkflowHistory } from '@MNI/db';
+import { Container } from '@MNI/di';
 import {
 	dropInvalidWorkflowGroups,
 	formatWorkflowStructureIssuePath,
@@ -25,7 +25,7 @@ import {
 	type GetNodeTypeForGrouping,
 	type NodeGroupRuleOptions,
 	type WorkflowStructureIssue,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import { v4 as uuid } from 'uuid';
 
 import { BadRequestError } from '@/errors/response-errors/bad-request.error';
@@ -152,7 +152,7 @@ export function resolveNodeWebhookIds(workflow: IWorkflowBase, nodeTypes: INodeT
 /**
  * Validates nodeGroups on the save path, rejecting with a `BadRequestError`.
  *
- * The rules and messages live in `validateWorkflowGroups` (n8n-workflow), the
+ * The rules and messages live in `validateWorkflowGroups` (MNI-workflow), the
  * single source of truth shared with validate-time surfaces; this wrapper throws
  * the first violation, preserving the historical throw-on-first behavior. See
  * that function for the basic-vs-full checks contract (`getNodeType: null` runs

@@ -4,7 +4,7 @@ import ts from 'typescript';
 import type { Alias } from 'vite';
 import { describe, expect, it } from 'vitest';
 
-import { frontendAliases, modulePackages, sourcePackages } from '@n8n/frontend-vite-config';
+import { frontendAliases, modulePackages, sourcePackages } from '@MNI/frontend-vite-config';
 
 import { editorUiAliases } from './aliases.mjs';
 
@@ -13,7 +13,7 @@ const editorUiDir = process.cwd();
 const packagesDir = resolve(editorUiDir, '..', '..');
 const repoRoot = resolve(packagesDir, '..');
 
-const MODULE_TSCONFIG = join(repoRoot, 'packages', '@n8n', 'typescript-config');
+const MODULE_TSCONFIG = join(repoRoot, 'packages', '@MNI', 'typescript-config');
 
 /** A tsconfig file is JSONC. The frontend ones carry only whole-line `//` comments. */
 const readTsconfig = (file: string) =>
@@ -25,7 +25,7 @@ const readTsconfig = (file: string) =>
 	) as { compilerOptions?: { paths?: Record<string, string[]> } };
 
 /**
- * This function treats the short `"@n8n/x*"` form as the `"@n8n/x"` plus `"@n8n/x/*"` pair. That
+ * This function treats the short `"@MNI/x*"` form as the `"@MNI/x"` plus `"@MNI/x/*"` pair. That
  * holds for the directory each maps to, but not for how TypeScript resolves a bare specifier — see
  * `resolves the bare specifier of every entry package to src` below.
  */
@@ -35,7 +35,7 @@ const pathsByPackage = (file: string) => {
 
 	for (const [key, [target]] of Object.entries(paths)) {
 		const name = key.replace(/\/?\*$/, '');
-		if (!name.startsWith('@n8n/')) continue;
+		if (!name.startsWith('@MNI/')) continue;
 
 		const resolved = resolve(dirname(file), target.replace(/\/?\*$/, ''));
 		byPackage.set(name, resolved.endsWith('.ts') ? dirname(resolved) : resolved);
@@ -89,7 +89,7 @@ describe('editor-ui vite aliases', () => {
 		const pathed = [...editorUiPaths.keys()]
 			// This is the browser stub of editor-ui. It is not a package that the frontend reads from
 			// source.
-			.filter((name) => name !== '@n8n/expression-runtime');
+			.filter((name) => name !== '@MNI/expression-runtime');
 
 		expect(pathed.filter((name) => !aliased.has(name))).toEqual([]);
 	});
@@ -105,22 +105,22 @@ describe('editor-ui vite aliases', () => {
 	});
 
 	/**
-	 * The short `"@n8n/x*"` form maps a bare specifier to a directory, which TS declines. Node
+	 * The short `"@MNI/x*"` form maps a bare specifier to a directory, which TS declines. Node
 	 * resolution then reads the `exports` of the package and returns its `dist`, while the bundle
-	 * reads `src`. The fix is an explicit pair: `"@n8n/x": [".../src/index.ts"]` beside `"@n8n/x/*"`.
+	 * reads `src`. The fix is an explicit pair: `"@MNI/x": [".../src/index.ts"]` beside `"@MNI/x/*"`.
 	 */
 	it('resolves the bare specifier of every entry package to src', () => {
 		// Each still resolves to `dist` for the typecheck while the bundle reads `src`. Give a package
 		// the explicit pair and delete it here; expect new type errors, since `dist` declarations are
 		// looser than the source they come from.
 		const KNOWN_DIST_FALLBACK = new Set([
-			'@n8n/api-types',
-			'@n8n/chat',
-			'@n8n/chat-hub',
-			'@n8n/constants',
-			'@n8n/i18n',
-			'@n8n/rest-api-client',
-			'@n8n/stores',
+			'@MNI/api-types',
+			'@MNI/chat',
+			'@MNI/chat-hub',
+			'@MNI/constants',
+			'@MNI/i18n',
+			'@MNI/rest-api-client',
+			'@MNI/stores',
 		]);
 
 		const probe = join(editorUiDir, 'src', 'app', 'App.vue');
@@ -146,15 +146,15 @@ describe('editor-ui vite aliases', () => {
 		expect(offenders).toEqual([]);
 	});
 
-	it('resolves @n8n/tournament from source', () => {
-		// `n8n-workflow` brings in this package. Nothing declares it, so it is not in
+	it('resolves @MNI/tournament from source', () => {
+		// `MNI-workflow` brings in this package. Nothing declares it, so it is not in
 		// `sourcePackages`. Its `dist` is CJS. The dev server gives a parse error for a named export.
 		// The build loses tree-shaking and adds approximately 397 kB.
-		expect(resolveSpecifier('@n8n/tournament', aliases)).toBe(
-			'packages/@n8n/tournament/src/index.ts',
+		expect(resolveSpecifier('@MNI/tournament', aliases)).toBe(
+			'packages/@MNI/tournament/src/index.ts',
 		);
-		expect(resolveSpecifier('@n8n/tournament/ast', aliases)).toBe(
-			'packages/@n8n/tournament/src/ast',
+		expect(resolveSpecifier('@MNI/tournament/ast', aliases)).toBe(
+			'packages/@MNI/tournament/src/ast',
 		);
 	});
 
@@ -180,10 +180,10 @@ describe('editor-ui vite aliases', () => {
 	});
 
 	it('resolves a package and its subpaths independently of entry order', () => {
-		// One open pattern `^@n8n/chat(.+)$` also matches `@n8n/chat-hub/…`.
-		expect(resolveSpecifier('@n8n/chat-hub/api', aliases)).toBe('packages/@n8n/chat-hub/src/api');
-		expect(resolveSpecifier('@n8n/chat-hub/api', [...aliases].reverse())).toBe(
-			'packages/@n8n/chat-hub/src/api',
+		// One open pattern `^@MNI/chat(.+)$` also matches `@MNI/chat-hub/…`.
+		expect(resolveSpecifier('@MNI/chat-hub/api', aliases)).toBe('packages/@MNI/chat-hub/src/api');
+		expect(resolveSpecifier('@MNI/chat-hub/api', [...aliases].reverse())).toBe(
+			'packages/@MNI/chat-hub/src/api',
 		);
 	});
 });

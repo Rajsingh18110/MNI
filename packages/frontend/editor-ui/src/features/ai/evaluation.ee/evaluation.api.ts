@@ -5,10 +5,10 @@ import type {
 	MetricScale,
 	StartTestRunPayload,
 	UpsertEvaluationConfigDto,
-} from '@n8n/api-types';
-import type { IRestApiContext } from '@n8n/rest-api-client';
-import { makeRestApiRequest, request } from '@n8n/rest-api-client';
-import type { JsonObject } from 'n8n-workflow';
+} from '@MNI/api-types';
+import type { IRestApiContext } from '@MNI/rest-api-client';
+import { makeRestApiRequest, request } from '@MNI/rest-api-client';
+import type { JsonObject } from 'MNI-workflow';
 
 export interface TestRunRecord {
 	id: string;
@@ -84,7 +84,7 @@ export const getTestRun = async (context: IRestApiContext, params: GetTestRunPar
 	);
 };
 
-// FE alias of the shared payload contract from @n8n/api-types. Re-exporting
+// FE alias of the shared payload contract from @MNI/api-types. Re-exporting
 // instead of duplicating the shape avoids silent drift between FE and BE.
 export type StartTestRunOptions = StartTestRunPayload;
 

@@ -1,4 +1,4 @@
-import { type IDataObject, type IExecuteFunctions, NodeOperationError } from 'n8n-workflow';
+import { type IDataObject, type IExecuteFunctions, NodeOperationError } from 'MNI-workflow';
 
 import { escapeODataValue } from '@utils/query-escaping';
 

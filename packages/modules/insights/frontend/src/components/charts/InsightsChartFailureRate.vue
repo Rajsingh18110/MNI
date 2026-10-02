@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { useI18n } from '@n8n/i18n';
-import { smartDecimal } from '@n8n/utils/number/smart-decimal';
+import { useI18n } from '@MNI/i18n';
+import { smartDecimal } from '@MNI/utils/number/smart-decimal';
 import { useCssVar } from '@vueuse/core';
 import type { ChartData } from 'chart.js';
 import { computed } from 'vue';

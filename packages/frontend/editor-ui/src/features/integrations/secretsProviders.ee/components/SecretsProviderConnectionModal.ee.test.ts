@@ -4,12 +4,12 @@ import { createComponentRenderer } from '@/__tests__/render';
 import { createTestingPinia } from '@pinia/testing';
 import SecretsProviderConnectionModal from './SecretsProviderConnectionModal.ee.vue';
 import { SECRETS_PROVIDER_CONNECTION_MODAL_KEY } from '@/app/constants';
-import { STORES } from '@n8n/stores';
+import { STORES } from '@MNI/stores';
 import type {
 	SecretProviderTypeResponse,
 	ConnectionProjectSummary,
 	SecretProviderConnection,
-} from '@n8n/api-types';
+} from '@MNI/api-types';
 import { vi } from 'vitest';
 import { nextTick } from 'vue';
 import { createProjectListItem } from '@/features/collaboration/projects/__tests__/utils';

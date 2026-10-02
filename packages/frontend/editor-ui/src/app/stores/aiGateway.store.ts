@@ -1,9 +1,9 @@
 import { computed, ref } from 'vue';
 import { defineStore } from 'pinia';
-import type { INode } from 'n8n-workflow';
-import type { AiGatewayConfigDto, AiGatewayUsageEntry } from '@n8n/api-types';
-import { STORES } from '@n8n/stores';
-import { useRootStore } from '@n8n/stores/useRootStore';
+import type { INode } from 'MNI-workflow';
+import type { AiGatewayConfigDto, AiGatewayUsageEntry } from '@MNI/api-types';
+import { STORES } from '@MNI/stores';
+import { useRootStore } from '@MNI/stores/useRootStore';
 
 import {
 	getGatewayConfig,

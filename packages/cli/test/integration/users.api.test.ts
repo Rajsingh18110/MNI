@@ -8,8 +8,8 @@ import {
 	randomCredentialPayload,
 	testDb,
 	mockInstance,
-} from '@n8n/backend-test-utils';
-import type { Project, PublicUser, User } from '@n8n/db';
+} from '@MNI/backend-test-utils';
+import type { Project, PublicUser, User } from '@MNI/db';
 import {
 	FolderRepository,
 	GLOBAL_ADMIN_ROLE,
@@ -22,8 +22,8 @@ import {
 	SharedCredentialsRepository,
 	SharedWorkflowRepository,
 	UserRepository,
-} from '@n8n/db';
-import { Container } from '@n8n/di';
+} from '@MNI/db';
+import { Container } from '@MNI/di';
 import { createFolder } from '@test-integration/db/folders';
 import { createRole } from '@test-integration/db/roles';
 import { v4 as uuid } from 'uuid';

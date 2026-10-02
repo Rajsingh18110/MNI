@@ -43,8 +43,8 @@ import { createTestingPinia } from '@pinia/testing';
 
 import { mock } from 'vitest-mock-extended';
 import type { ViewStack } from './composables/useViewStacks';
-import { NodeConnectionTypes, SEND_AND_WAIT_OPERATION } from 'n8n-workflow';
-import type { NodeCreatorTag } from '@n8n/design-system';
+import { NodeConnectionTypes, SEND_AND_WAIT_OPERATION } from 'MNI-workflow';
+import type { NodeCreatorTag } from '@MNI/design-system';
 import {
 	AGENT_NODE_TYPE,
 	AGENT_TOOL_NODE_TYPE,
@@ -65,9 +65,9 @@ import {
 } from '@/app/constants';
 import { useAiGatewayStore } from '@/app/stores/aiGateway.store';
 import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 
-vi.mock('@n8n/stores/settings.store', () => ({
+vi.mock('@MNI/stores/settings.store', () => ({
 	useSettingsStore: vi.fn(() => ({ settings: {}, isAskAiEnabled: true })),
 }));
 
@@ -194,7 +194,7 @@ describe('NodeCreator - utils', () => {
 					name: 'SampleNode',
 				},
 				description: 'Sample description',
-				name: 'n8n-nodes-preview-test.SampleNode',
+				name: 'MNI-nodes-preview-test.SampleNode',
 				group: ['transform'],
 				outputs: ['main'],
 			},
@@ -204,7 +204,7 @@ describe('NodeCreator - utils', () => {
 					name: 'OtherNode',
 				},
 				description: 'Other node description',
-				name: 'n8n-nodes-preview-test.OtherNode',
+				name: 'MNI-nodes-preview-test.OtherNode',
 				group: ['transform'],
 				outputs: ['main'],
 			},
@@ -214,15 +214,15 @@ describe('NodeCreator - utils', () => {
 			const result = filterAndSearchNodes(mergedNodes, 'sample');
 
 			expect(result.length).toEqual(1);
-			expect(result[0].key).toEqual('n8n-nodes-preview-test.SampleNode');
+			expect(result[0].key).toEqual('MNI-nodes-preview-test.SampleNode');
 		});
 
 		test('should return two nodes', () => {
 			const result = filterAndSearchNodes(mergedNodes, 'node');
 
 			expect(result.length).toEqual(2);
-			expect(result[1].key).toEqual('n8n-nodes-preview-test.SampleNode');
-			expect(result[0].key).toEqual('n8n-nodes-preview-test.OtherNode');
+			expect(result[1].key).toEqual('MNI-nodes-preview-test.SampleNode');
+			expect(result[0].key).toEqual('MNI-nodes-preview-test.OtherNode');
 		});
 
 		test('should return [] when in HITL subcategory', () => {
@@ -236,7 +236,7 @@ describe('NodeCreator - utils', () => {
 					displayName: 'Instagram Tool',
 					defaults: { name: 'Instagram' },
 					description: 'Instagram as tool',
-					name: '@mookielianhd/n8n-nodes-preview-instagram.instagramTool',
+					name: '@mookielianhd/MNI-nodes-preview-instagram.instagramTool',
 					group: ['transform'],
 					outputs: ['ai_tool'],
 				},
@@ -244,7 +244,7 @@ describe('NodeCreator - utils', () => {
 					displayName: 'Instagram',
 					defaults: { name: 'Instagram' },
 					description: 'Instagram node',
-					name: '@mookielianhd/n8n-nodes-preview-instagram.instagram',
+					name: '@mookielianhd/MNI-nodes-preview-instagram.instagram',
 					group: ['transform'],
 					outputs: ['main'],
 				},
@@ -252,7 +252,7 @@ describe('NodeCreator - utils', () => {
 					displayName: 'Other Tool',
 					defaults: { name: 'OtherTool' },
 					description: 'Other tool',
-					name: 'n8n-nodes-preview-other.otherTool',
+					name: 'MNI-nodes-preview-other.otherTool',
 					group: ['transform'],
 					outputs: [{ type: 'ai_tool' }],
 				},
@@ -260,7 +260,7 @@ describe('NodeCreator - utils', () => {
 					displayName: 'Acme Language Model',
 					defaults: { name: 'AcmeLM' },
 					description: 'Community language model',
-					name: 'n8n-nodes-preview-acme.acmeLanguageModel',
+					name: 'MNI-nodes-preview-acme.acmeLanguageModel',
 					group: ['transform'],
 					outputs: ['ai_languageModel'],
 				},
@@ -273,7 +273,7 @@ describe('NodeCreator - utils', () => {
 				});
 
 				expect(result).toHaveLength(1);
-				expect(result[0].key).toEqual('@mookielianhd/n8n-nodes-preview-instagram.instagramTool');
+				expect(result[0].key).toEqual('@mookielianhd/MNI-nodes-preview-instagram.instagramTool');
 			});
 
 			test('supports object-form outputs when matching the picker connection type', () => {
@@ -283,7 +283,7 @@ describe('NodeCreator - utils', () => {
 				});
 
 				expect(result).toHaveLength(1);
-				expect(result[0].key).toEqual('n8n-nodes-preview-other.otherTool');
+				expect(result[0].key).toEqual('MNI-nodes-preview-other.otherTool');
 			});
 
 			test('in the Language Model picker surfaces only AiLanguageModel-output nodes', () => {
@@ -293,7 +293,7 @@ describe('NodeCreator - utils', () => {
 				});
 
 				expect(result).toHaveLength(1);
-				expect(result[0].key).toEqual('n8n-nodes-preview-acme.acmeLanguageModel');
+				expect(result[0].key).toEqual('MNI-nodes-preview-acme.acmeLanguageModel');
 			});
 
 			test('does not leak AiTool nodes into the Language Model picker', () => {
@@ -328,7 +328,7 @@ describe('NodeCreator - utils', () => {
 						displayName: 'Dynamic Outputs Node',
 						defaults: { name: 'Dynamic' },
 						description: 'Node with dynamically computed outputs',
-						name: 'n8n-nodes-preview-dynamic.dynamic',
+						name: 'MNI-nodes-preview-dynamic.dynamic',
 						group: ['transform'],
 						// INodeTypeDescription.outputs can be an expression string, not an array
 						outputs:
@@ -351,7 +351,7 @@ describe('NodeCreator - utils', () => {
 			setActivePinia(createTestingPinia());
 		});
 		const nodeCreateElement: NodeCreateElement = {
-			key: 'n8n-nodes-preview-test.OtherNode',
+			key: 'MNI-nodes-preview-test.OtherNode',
 			properties: {
 				defaults: {
 					name: 'OtherNode',
@@ -359,12 +359,12 @@ describe('NodeCreator - utils', () => {
 				description: 'Other node description',
 				displayName: 'Other Node',
 				group: ['transform'],
-				name: 'n8n-nodes-preview-test.OtherNode',
+				name: 'MNI-nodes-preview-test.OtherNode',
 				outputs: ['main'],
 			},
 			subcategory: '*',
 			type: 'node',
-			uuid: 'n8n-nodes-preview-test.OtherNode-32f238f0-2b05-47ce-b43d-7fab6d7ba3cb',
+			uuid: 'MNI-nodes-preview-test.OtherNode-32f238f0-2b05-47ce-b43d-7fab6d7ba3cb',
 		};
 
 		test('should return "community-node" view stack', () => {
@@ -374,16 +374,16 @@ describe('NodeCreator - utils', () => {
 				communityNodeDetails: {
 					description: 'Other node description',
 					installed: false,
-					key: 'n8n-nodes-preview-test.OtherNode',
+					key: 'MNI-nodes-preview-test.OtherNode',
 					nodeIcon: undefined,
-					packageName: 'n8n-nodes-test',
+					packageName: 'MNI-nodes-test',
 					title: 'Other Node',
 					official: false,
 				},
 				hasSearch: false,
 				items: [
 					{
-						key: 'n8n-nodes-preview-test.OtherNode',
+						key: 'MNI-nodes-preview-test.OtherNode',
 						properties: {
 							defaults: {
 								name: 'OtherNode',
@@ -391,12 +391,12 @@ describe('NodeCreator - utils', () => {
 							description: 'Other node description',
 							displayName: 'Other Node',
 							group: ['transform'],
-							name: 'n8n-nodes-preview-test.OtherNode',
+							name: 'MNI-nodes-preview-test.OtherNode',
 							outputs: ['main'],
 						},
 						subcategory: '*',
 						type: 'node',
-						uuid: 'n8n-nodes-preview-test.OtherNode-32f238f0-2b05-47ce-b43d-7fab6d7ba3cb',
+						uuid: 'MNI-nodes-preview-test.OtherNode-32f238f0-2b05-47ce-b43d-7fab6d7ba3cb',
 					},
 				],
 				mode: 'community-node',
@@ -409,13 +409,13 @@ describe('NodeCreator - utils', () => {
 		test('should return "actions" view stack', () => {
 			const nodeActions: ActionTypeDescription[] = [
 				{
-					name: 'n8n-nodes-preview-test.OtherNode',
+					name: 'MNI-nodes-preview-test.OtherNode',
 					group: ['trigger'],
 					codex: {
 						label: 'Log Actions',
 						categories: ['Actions'],
 					},
-					iconUrl: 'icons/n8n-nodes-preview-test/dist/nodes/Test/test.svg',
+					iconUrl: 'icons/MNI-nodes-preview-test/dist/nodes/Test/test.svg',
 					outputs: ['main'],
 					defaults: {
 						name: 'LogSnag',
@@ -433,13 +433,13 @@ describe('NodeCreator - utils', () => {
 					displayName: 'Publish an event',
 				},
 				{
-					name: 'n8n-nodes-preview-test.OtherNode',
+					name: 'MNI-nodes-preview-test.OtherNode',
 					group: ['trigger'],
 					codex: {
 						label: 'Insight Actions',
 						categories: ['Actions'],
 					},
-					iconUrl: 'icons/n8n-nodes-preview-test/dist/nodes/Test/test.svg',
+					iconUrl: 'icons/MNI-nodes-preview-test/dist/nodes/Test/test.svg',
 					outputs: ['main'],
 					defaults: {
 						name: 'LogSnag',
@@ -468,16 +468,16 @@ describe('NodeCreator - utils', () => {
 				communityNodeDetails: {
 					description: 'Other node description',
 					installed: false,
-					key: 'n8n-nodes-preview-test.OtherNode',
+					key: 'MNI-nodes-preview-test.OtherNode',
 					nodeIcon: undefined,
-					packageName: 'n8n-nodes-test',
+					packageName: 'MNI-nodes-test',
 					title: 'Other Node',
 					official: false,
 				},
 				hasSearch: false,
 				items: [
 					{
-						key: 'n8n-nodes-preview-test.OtherNode',
+						key: 'MNI-nodes-preview-test.OtherNode',
 						properties: {
 							actionKey: 'publish',
 							codex: {
@@ -495,8 +495,8 @@ describe('NodeCreator - utils', () => {
 								},
 							},
 							group: ['trigger'],
-							iconUrl: 'icons/n8n-nodes-preview-test/dist/nodes/Test/test.svg',
-							name: 'n8n-nodes-preview-test.OtherNode',
+							iconUrl: 'icons/MNI-nodes-preview-test/dist/nodes/Test/test.svg',
+							name: 'MNI-nodes-preview-test.OtherNode',
 							outputs: ['main'],
 							values: {
 								operation: 'publish',
@@ -507,7 +507,7 @@ describe('NodeCreator - utils', () => {
 						uuid: expect.any(String),
 					},
 					{
-						key: 'n8n-nodes-preview-test.OtherNode',
+						key: 'MNI-nodes-preview-test.OtherNode',
 						properties: {
 							actionKey: 'publish',
 							codex: {
@@ -525,8 +525,8 @@ describe('NodeCreator - utils', () => {
 								},
 							},
 							group: ['trigger'],
-							iconUrl: 'icons/n8n-nodes-preview-test/dist/nodes/Test/test.svg',
-							name: 'n8n-nodes-preview-test.OtherNode',
+							iconUrl: 'icons/MNI-nodes-preview-test/dist/nodes/Test/test.svg',
+							name: 'MNI-nodes-preview-test.OtherNode',
 							outputs: ['main'],
 							values: {
 								operation: 'publish',
@@ -602,7 +602,7 @@ describe('NodeCreator - utils', () => {
 						label: 'Test Actions',
 						categories: ['Actions'],
 					},
-					iconUrl: 'icons/n8n-nodes-preview-test/dist/nodes/Test/test.svg',
+					iconUrl: 'icons/MNI-nodes-preview-test/dist/nodes/Test/test.svg',
 					outputs: ['main'],
 					defaults: {
 						name: 'TestAction',
@@ -624,7 +624,7 @@ describe('NodeCreator - utils', () => {
 						label: 'Discord Actions',
 						categories: ['Actions'],
 					},
-					iconUrl: 'icons/n8n-nodes-preview-test/dist/nodes/Test/test.svg',
+					iconUrl: 'icons/MNI-nodes-preview-test/dist/nodes/Test/test.svg',
 					outputs: ['main'],
 					defaults: {
 						name: 'DiscordAction',
@@ -651,7 +651,7 @@ describe('NodeCreator - utils', () => {
 						label: 'Microsoft Teams Actions',
 						categories: ['Actions'],
 					},
-					iconUrl: 'icons/n8n-nodes-preview-test/dist/nodes/Test/test.svg',
+					iconUrl: 'icons/MNI-nodes-preview-test/dist/nodes/Test/test.svg',
 					outputs: ['main'],
 					defaults: {
 						name: 'MicrosoftTeamsAction',
@@ -939,13 +939,13 @@ describe('NodeCreator - utils', () => {
 			// Preview community nodes carry a `-preview` token; the gateway config
 			// only lists the canonical name, so the token must be stripped.
 			vi.mocked(useAiGatewayStore).mockReturnValue({
-				isNodeSupported: vi.fn((name: string) => name === '@vendor/n8n-nodes-connect.connect'),
+				isNodeSupported: vi.fn((name: string) => name === '@vendor/MNI-nodes-connect.connect'),
 				isNodeTypeVersionSupported: vi.fn(() => true),
 				creditsLabelKey: 'generic.freeCredits',
 			} as unknown as ReturnType<typeof useAiGatewayStore>);
 
 			const [result] = finalizeItems([
-				makeGatewayNode('@vendor/n8n-nodes-preview-connect.connect'),
+				makeGatewayNode('@vendor/MNI-nodes-preview-connect.connect'),
 			]) as NodeCreateElement[];
 			expect(result.properties.tag).toEqual({ text: expect.any(String), pill: true });
 		});
@@ -1261,8 +1261,8 @@ describe('NodeCreator - utils', () => {
 		// The boost must apply to both core and community nodes as long as they are
 		// listed as AI Gateway-supported.
 		it('should boost both core and community Connect nodes above a non-Connect node', () => {
-			const core = makeNode('n8n-nodes-base.brave', 'Brave', ['serp']);
-			const community = makeNode('@mendable/n8n-nodes-firecrawl.firecrawl', 'Firecrawl', ['serp']);
+			const core = makeNode('MNI-nodes-base.brave', 'Brave', ['serp']);
+			const community = makeNode('@mendable/MNI-nodes-firecrawl.firecrawl', 'Firecrawl', ['serp']);
 			const plain = makeNode('plainNode', 'Plain Node', ['serp']);
 			mockStores({ supportedNodes: [core.key, community.key] });
 
@@ -1378,16 +1378,16 @@ describe('NodeCreator - utils', () => {
 
 	describe('getSendAndWaitNodes', () => {
 		const hitlNode = mockSimplifiedNodeType({
-			name: 'n8n-nodes-base.slack',
+			name: 'MNI-nodes-base.slack',
 			codex: { categories: ['Communication', HUMAN_IN_THE_LOOP_CATEGORY] },
 		});
 		const otherNode = mockSimplifiedNodeType({
-			name: 'n8n-nodes-base.httpRequest',
+			name: 'MNI-nodes-base.httpRequest',
 			codex: { categories: ['Core Nodes'] },
 		});
 
 		it('returns the names of nodes in the HITL category', () => {
-			expect(getSendAndWaitNodes([hitlNode, otherNode])).toEqual(['n8n-nodes-base.slack']);
+			expect(getSendAndWaitNodes([hitlNode, otherNode])).toEqual(['MNI-nodes-base.slack']);
 		});
 
 		it('returns an empty array when there are no nodes', () => {
@@ -1398,7 +1398,7 @@ describe('NodeCreator - utils', () => {
 	describe('getHumanInTheLoopCallout', () => {
 		it('builds a subcategory tile targeting the HITL view with its send-and-wait nodes', () => {
 			const hitlNode = mockSimplifiedNodeType({
-				name: 'n8n-nodes-base.slack',
+				name: 'MNI-nodes-base.slack',
 				codex: { categories: [HUMAN_IN_THE_LOOP_CATEGORY] },
 			});
 
@@ -1410,14 +1410,14 @@ describe('NodeCreator - utils', () => {
 				properties: { title: HITL_SUBCATEGORY, icon: 'badge-check' },
 			});
 			expect(callout.properties.sections).toEqual([
-				expect.objectContaining({ key: 'sendAndWait', items: ['n8n-nodes-base.slack'] }),
+				expect.objectContaining({ key: 'sendAndWait', items: ['MNI-nodes-base.slack'] }),
 			]);
 		});
 	});
 
 	describe('getRootSearchCallouts', () => {
 		const hitlNode = mockSimplifiedNodeType({
-			name: 'n8n-nodes-base.slack',
+			name: 'MNI-nodes-base.slack',
 			codex: { categories: [HUMAN_IN_THE_LOOP_CATEGORY] },
 		});
 
@@ -1450,17 +1450,17 @@ describe('node item restriction lookups', () => {
 	});
 
 	it('reports a restricted type with its scope', () => {
-		mockRestrictedNodeTypes({ 'n8n-nodes-base.gmail': 'project' });
+		mockRestrictedNodeTypes({ 'MNI-nodes-base.gmail': 'project' });
 
-		expect(getNodeItemRestriction('n8n-nodes-base.gmail')).toMatchObject({ scope: 'project' });
-		expect(isNodeItemRestricted('n8n-nodes-base.gmail')).toBe(true);
-		expect(isNodeItemRestricted('n8n-nodes-base.slack')).toBe(false);
+		expect(getNodeItemRestriction('MNI-nodes-base.gmail')).toMatchObject({ scope: 'project' });
+		expect(isNodeItemRestricted('MNI-nodes-base.gmail')).toBe(true);
+		expect(isNodeItemRestricted('MNI-nodes-base.slack')).toBe(false);
 	});
 
 	it('maps a credential-only node to the HTTP Request node it wraps', () => {
-		mockRestrictedNodeTypes({ 'n8n-nodes-base.httpRequest': 'instance' });
+		mockRestrictedNodeTypes({ 'MNI-nodes-base.httpRequest': 'instance' });
 
-		expect(isNodeItemRestricted('n8n-creds-base.sysdigApi')).toBe(true);
+		expect(isNodeItemRestricted('MNI-creds-base.sysdigApi')).toBe(true);
 	});
 });
 

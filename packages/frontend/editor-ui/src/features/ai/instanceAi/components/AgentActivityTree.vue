@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import type { InstanceAiAgentNode } from '@n8n/api-types';
+import type { InstanceAiAgentNode } from '@MNI/api-types';
 import AgentTimeline from './AgentTimeline.vue';
 
 /**

@@ -38,7 +38,7 @@ async function createProtectedWebhook(api: ApiHelpers): Promise<ProtectedWebhook
 					},
 					id: nanoid(),
 					name: 'Webhook',
-					type: 'n8n-nodes-base.webhook',
+					type: 'MNI-nodes-base.webhook',
 					typeVersion: 2.1,
 					position: [0, 0],
 				},

@@ -1,5 +1,5 @@
-import { STORES } from '@n8n/stores';
-import type { ChatHubLLMProvider } from '@n8n/api-types';
+import { STORES } from '@MNI/stores';
+import type { ChatHubLLMProvider } from '@MNI/api-types';
 import { nanoid } from 'nanoid';
 import { defineStore } from 'pinia';
 import { computed, ref } from 'vue';
@@ -12,7 +12,7 @@ import type { IExecutionResponse } from '@/features/execution/executions/executi
 export type WizardStep = 0 | 1 | 2 | 3;
 
 // Stored as the chat-hub provider key ('openai'); persistence converts to
-// the langchain node-type form ('@n8n/n8n-nodes-langchain.lmChatOpenAi').
+// the langchain node-type form ('@MNI/MNI-nodes-langchain.lmChatOpenAi').
 export type JudgeSelection = {
 	provider: ChatHubLLMProvider;
 	credentialId: string;

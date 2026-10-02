@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import type { WorkerStatus } from '@n8n/api-types';
+import type { WorkerStatus } from '@MNI/api-types';
 import WorkerAccordion from './WorkerAccordion.vue';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import { memAsGb, memAsMb } from '@/features/settings/orchestration.ee/orchestration.utils';
 
 const props = defineProps<{

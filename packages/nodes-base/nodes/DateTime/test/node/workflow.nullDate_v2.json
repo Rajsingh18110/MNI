@@ -5,7 +5,7 @@
 			"parameters": {},
 			"id": "62bb450c-f2e3-41c9-9894-a954d2c5e115",
 			"name": "When clicking \"Execute Workflow\"",
-			"type": "n8n-nodes-base.manualTrigger",
+			"type": "MNI-nodes-base.manualTrigger",
 			"typeVersion": 1,
 			"position": [1600, 740]
 		},
@@ -17,7 +17,7 @@
 			},
 			"id": "47e4ce5b-2365-4987-a058-ae21964d135d",
 			"name": "Code",
-			"type": "n8n-nodes-testing.testData",
+			"type": "MNI-nodes-testing.testData",
 			"typeVersion": 1,
 			"position": [1820, 740]
 		},
@@ -29,7 +29,7 @@
 			},
 			"id": "9af21b91-9db6-40cd-98ee-ee969eb0a348",
 			"name": "Date & Time",
-			"type": "n8n-nodes-base.dateTime",
+			"type": "MNI-nodes-base.dateTime",
 			"typeVersion": 2,
 			"position": [2040, 740]
 		}

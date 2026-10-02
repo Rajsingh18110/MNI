@@ -1,5 +1,5 @@
-import { Logger } from '@n8n/backend-common';
-import { Get, Post, RestController, GlobalScope, Middleware } from '@n8n/decorators';
+import { Logger } from '@MNI/backend-common';
+import { Get, Post, RestController, GlobalScope, Middleware } from '@MNI/decorators';
 import { Request, Response, NextFunction } from 'express';
 
 import { NotFoundError } from '@/errors/response-errors/not-found.error';

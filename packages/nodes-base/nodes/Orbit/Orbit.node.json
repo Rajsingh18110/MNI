@@ -1,5 +1,5 @@
 {
-	"node": "n8n-nodes-base.orbit",
+	"node": "MNI-nodes-base.orbit",
 	"nodeVersion": "1.0",
 	"codexVersion": "1.0",
 	"categories": ["Analytics"],
@@ -11,14 +11,14 @@
 		],
 		"primaryDocumentation": [
 			{
-				"url": "https://docs.n8n.io/integrations/builtin/app-nodes/n8n-nodes-base.orbit/"
+				"url": "https://docs.n8n.io/integrations/builtin/app-nodes/MNI-nodes-base.orbit/"
 			}
 		],
 		"generic": [
 			{
 				"label": "Migrating Community Metrics to Orbit using MNI",
 				"icon": "📈",
-				"url": "https://n8n.io/blog/migrating-community-metrics-to-orbit-using-n8n/"
+				"url": "https://n8n.io/blog/migrating-community-metrics-to-orbit-using-MNI/"
 			}
 		]
 	}

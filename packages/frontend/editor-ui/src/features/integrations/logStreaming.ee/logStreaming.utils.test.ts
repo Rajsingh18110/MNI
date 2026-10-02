@@ -1,10 +1,10 @@
-import type { INodeParameters } from 'n8n-workflow';
+import type { INodeParameters } from 'MNI-workflow';
 import {
 	defaultMessageEventBusDestinationWebhookOptions,
 	defaultMessageEventBusDestinationSentryOptions,
 	defaultMessageEventBusDestinationSyslogOptions,
 	MessageEventBusDestinationTypeNames,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { isDestinationComplete } from './logStreaming.utils';
 

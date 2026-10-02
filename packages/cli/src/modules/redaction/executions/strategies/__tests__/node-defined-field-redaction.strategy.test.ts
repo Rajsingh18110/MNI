@@ -1,6 +1,6 @@
-import { Logger } from '@n8n/backend-common';
-import { mockInstance } from '@n8n/backend-test-utils';
-import type { IRedactedFieldMarker } from 'n8n-workflow';
+import { Logger } from '@MNI/backend-common';
+import { mockInstance } from '@MNI/backend-test-utils';
+import type { IRedactedFieldMarker } from 'MNI-workflow';
 
 import type { RedactableExecution } from '@/executions/execution-redaction';
 import { NodeTypes } from '@/node-types';
@@ -66,7 +66,7 @@ describe('NodeDefinedFieldRedactionStrategy', () => {
 	let strategy: NodeDefinedFieldRedactionStrategy;
 
 	const mockNodeDescription = (sensitiveOutputFields: string[]) => ({
-		name: 'n8n-nodes-base.webhook',
+		name: 'MNI-nodes-base.webhook',
 		sensitiveOutputFields,
 	});
 
@@ -86,7 +86,7 @@ describe('NodeDefinedFieldRedactionStrategy', () => {
 			} as ReturnType<typeof nodeTypes.getByNameAndVersion>);
 
 			const execution = makeExecution(
-				[{ name: 'Webhook', type: 'n8n-nodes-base.webhook', typeVersion: 1 }],
+				[{ name: 'Webhook', type: 'MNI-nodes-base.webhook', typeVersion: 1 }],
 				{
 					Webhook: [
 						{
@@ -124,7 +124,7 @@ describe('NodeDefinedFieldRedactionStrategy', () => {
 			} as ReturnType<typeof nodeTypes.getByNameAndVersion>);
 
 			const execution = makeExecution(
-				[{ name: 'Webhook', type: 'n8n-nodes-base.webhook', typeVersion: 1 }],
+				[{ name: 'Webhook', type: 'MNI-nodes-base.webhook', typeVersion: 1 }],
 				{
 					Webhook: [
 						{
@@ -167,8 +167,8 @@ describe('NodeDefinedFieldRedactionStrategy', () => {
 
 			const execution = makeExecution(
 				[
-					{ name: 'NodeA', type: 'n8n-nodes-base.webhook', typeVersion: 1 },
-					{ name: 'NodeB', type: 'n8n-nodes-base.httpRequest', typeVersion: 1 },
+					{ name: 'NodeA', type: 'MNI-nodes-base.webhook', typeVersion: 1 },
+					{ name: 'NodeB', type: 'MNI-nodes-base.httpRequest', typeVersion: 1 },
 				],
 				{
 					NodeA: [{ data: { main: [[{ json: { headers: { authorization: 'secret' } } }]] } }],
@@ -198,12 +198,12 @@ describe('NodeDefinedFieldRedactionStrategy', () => {
 
 		it('leaves items unchanged for a node with no sensitiveOutputFields', async () => {
 			nodeTypes.getByNameAndVersion.mockReturnValue({
-				description: { name: 'n8n-nodes-base.set', sensitiveOutputFields: [] as string[] },
+				description: { name: 'MNI-nodes-base.set', sensitiveOutputFields: [] as string[] },
 			} as ReturnType<typeof nodeTypes.getByNameAndVersion>);
 
 			const original = { name: 'Alice' };
 			const execution = makeExecution(
-				[{ name: 'Set', type: 'n8n-nodes-base.set', typeVersion: 1 }],
+				[{ name: 'Set', type: 'MNI-nodes-base.set', typeVersion: 1 }],
 				{ Set: [{ data: { main: [[{ json: { name: 'Alice' } }]] } }] },
 			);
 
@@ -220,7 +220,7 @@ describe('NodeDefinedFieldRedactionStrategy', () => {
 			} as ReturnType<typeof nodeTypes.getByNameAndVersion>);
 
 			const execution = makeExecution(
-				[{ name: 'Webhook', type: 'n8n-nodes-base.webhook', typeVersion: 1 }],
+				[{ name: 'Webhook', type: 'MNI-nodes-base.webhook', typeVersion: 1 }],
 				{
 					Webhook: [
 						{
@@ -243,7 +243,7 @@ describe('NodeDefinedFieldRedactionStrategy', () => {
 			} as ReturnType<typeof nodeTypes.getByNameAndVersion>);
 
 			const execution = makeExecution(
-				[{ name: 'Webhook', type: 'n8n-nodes-base.webhook', typeVersion: 1 }],
+				[{ name: 'Webhook', type: 'MNI-nodes-base.webhook', typeVersion: 1 }],
 				{
 					Webhook: [
 						{
@@ -275,7 +275,7 @@ describe('NodeDefinedFieldRedactionStrategy', () => {
 			} as ReturnType<typeof nodeTypes.getByNameAndVersion>);
 
 			const execution = makeExecution(
-				[{ name: 'Webhook', type: 'n8n-nodes-base.webhook', typeVersion: 1 }],
+				[{ name: 'Webhook', type: 'MNI-nodes-base.webhook', typeVersion: 1 }],
 				{
 					Webhook: [
 						{
@@ -299,7 +299,7 @@ describe('NodeDefinedFieldRedactionStrategy', () => {
 			} as ReturnType<typeof nodeTypes.getByNameAndVersion>);
 
 			const execution = makeExecution(
-				[{ name: 'CredCheck', type: 'n8n-nodes-base.dynamicCredentialCheck', typeVersion: 1 }],
+				[{ name: 'CredCheck', type: 'MNI-nodes-base.dynamicCredentialCheck', typeVersion: 1 }],
 				{
 					CredCheck: [
 						{
@@ -346,7 +346,7 @@ describe('NodeDefinedFieldRedactionStrategy', () => {
 			} as ReturnType<typeof nodeTypes.getByNameAndVersion>);
 
 			const execution = makeExecution(
-				[{ name: 'Node', type: 'n8n-nodes-base.webhook', typeVersion: 1 }],
+				[{ name: 'Node', type: 'MNI-nodes-base.webhook', typeVersion: 1 }],
 				{ Node: [{ data: { main: [[{ json: { other: 'data' } }]] } }] },
 			);
 
@@ -362,7 +362,7 @@ describe('NodeDefinedFieldRedactionStrategy', () => {
 			} as ReturnType<typeof nodeTypes.getByNameAndVersion>);
 
 			const execution = makeExecution(
-				[{ name: 'Node', type: 'n8n-nodes-base.webhook', typeVersion: 1 }],
+				[{ name: 'Node', type: 'MNI-nodes-base.webhook', typeVersion: 1 }],
 				{ Node: [{ data: { main: [[{ json: { items: 'not-an-array' } }]] } }] },
 			);
 
@@ -380,7 +380,7 @@ describe('NodeDefinedFieldRedactionStrategy', () => {
 			});
 
 			const execution = makeExecution(
-				[{ name: 'Webhook', type: 'n8n-nodes-base.webhook', typeVersion: 1 }],
+				[{ name: 'Webhook', type: 'MNI-nodes-base.webhook', typeVersion: 1 }],
 				{ Webhook: [{ data: { main: [[{ json: { headers: { authorization: 'secret' } } }]] } }] },
 			);
 
@@ -405,8 +405,8 @@ describe('NodeDefinedFieldRedactionStrategy', () => {
 
 			const execution = makeExecution(
 				[
-					{ name: 'BadNode', type: 'n8n-nodes-base.unknown', typeVersion: 1 },
-					{ name: 'Webhook', type: 'n8n-nodes-base.webhook', typeVersion: 1 },
+					{ name: 'BadNode', type: 'MNI-nodes-base.unknown', typeVersion: 1 },
+					{ name: 'Webhook', type: 'MNI-nodes-base.webhook', typeVersion: 1 },
 				],
 				{
 					BadNode: [{ data: { main: [[{ json: { secret: 'sensitive' } }]] } }],
@@ -439,7 +439,7 @@ describe('NodeDefinedFieldRedactionStrategy', () => {
 			} as ReturnType<typeof nodeTypes.getByNameAndVersion>);
 
 			const execution = makeExecution(
-				[{ name: 'Webhook', type: 'n8n-nodes-base.webhook', typeVersion: 1 }],
+				[{ name: 'Webhook', type: 'MNI-nodes-base.webhook', typeVersion: 1 }],
 				{ Webhook: [{ data: { main: [[{ json: { headers: { authorization: 'secret' } } }]] } }] },
 			);
 

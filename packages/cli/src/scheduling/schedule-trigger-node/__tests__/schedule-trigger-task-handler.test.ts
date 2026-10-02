@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/unbound-method */
 /* eslint-disable @typescript-eslint/naming-convention -- item keys are pinned to the legacy ScheduleTrigger emit shape */
-import type { Logger } from '@n8n/backend-common';
-import type { GlobalConfig } from '@n8n/config';
-import type { ExecutionEntity, ExecutionRepository, Project } from '@n8n/db';
-import { createDispatchReporter, type ClaimedTask } from '@n8n/scheduler';
-import type { ErrorReporter } from 'n8n-core';
-import type { INode, IWorkflowBase, IWorkflowExecuteAdditionalData } from 'n8n-workflow';
-import { UnexpectedError } from 'n8n-workflow';
+import type { Logger } from '@MNI/backend-common';
+import type { GlobalConfig } from '@MNI/config';
+import type { ExecutionEntity, ExecutionRepository, Project } from '@MNI/db';
+import { createDispatchReporter, type ClaimedTask } from '@MNI/scheduler';
+import type { ErrorReporter } from 'MNI-core';
+import type { INode, IWorkflowBase, IWorkflowExecuteAdditionalData } from 'MNI-workflow';
+import { UnexpectedError } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import { DuplicateExecutionError } from '@/errors/duplicate-execution.error';

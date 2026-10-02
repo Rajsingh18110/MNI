@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { computed, onBeforeUnmount, onMounted, ref } from 'vue';
 import { useRouter } from 'vue-router';
-import { useI18n } from '@n8n/i18n';
-import { capabilities, capabilityRegistry } from '@n8n/frontend-module-sdk';
+import { useI18n } from '@MNI/i18n';
+import { capabilities, capabilityRegistry } from '@MNI/frontend-module-sdk';
 import { ElSwitch } from 'element-plus';
-import type { OAuthClientResponseDto } from '@n8n/api-types';
+import type { OAuthClientResponseDto } from '@MNI/api-types';
 import {
 	N8nButton,
 	N8nDialog,
@@ -17,10 +17,10 @@ import {
 	N8nSettingsRowConfigure,
 	N8nSettingsRowGroup,
 	N8nSettingsSection,
-} from '@n8n/design-system';
+} from '@MNI/design-system';
 
 import { useDocumentTitle } from '@/app/composables/useDocumentTitle';
-import { useToast } from '@n8n/composables/useToast';
+import { useToast } from '@MNI/composables/useToast';
 import MCPEmptyState from '@/features/ai/mcpAccess/components/MCPEmptyState.vue';
 import McpAllowedCallbackUrlsDialog from '@/features/ai/mcpAccess/components/McpAllowedCallbackUrlsDialog.vue';
 import McpConnectClientDialog from '@/features/ai/mcpAccess/components/McpConnectClientDialog.vue';
@@ -37,7 +37,7 @@ import {
 	MCP_WORKFLOWS_VIEW,
 } from '@/features/ai/mcpAccess/mcp.constants';
 import { useMCPStore } from '@/features/ai/mcpAccess/mcp.store';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { hasPermission } from '@/app/utils/rbac/permissions';
 
 import { UNKNOWN_COUNT_VALUE } from '@/features/ai/mcpAccess/mcp.constants';

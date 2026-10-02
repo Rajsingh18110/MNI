@@ -5,7 +5,7 @@
 			"parameters": {},
 			"id": "2e1ec8f6-a2e2-4aa9-909c-d0a279584131",
 			"name": "When clicking \"Execute Workflow\"",
-			"type": "n8n-nodes-base.manualTrigger",
+			"type": "MNI-nodes-base.manualTrigger",
 			"typeVersion": 1,
 			"position": [820, 380]
 		},
@@ -34,7 +34,7 @@
 			},
 			"id": "86f2a240-3acf-45c2-b97f-63dd655d296b",
 			"name": "Microsoft Excel 365",
-			"type": "n8n-nodes-base.microsoftExcel",
+			"type": "MNI-nodes-base.microsoftExcel",
 			"typeVersion": 2,
 			"position": [1100, 260],
 			"credentials": {

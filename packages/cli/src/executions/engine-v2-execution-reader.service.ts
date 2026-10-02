@@ -1,19 +1,19 @@
-import type { IExecutionResponse } from '@n8n/db';
-import { Service } from '@n8n/di';
+import type { IExecutionResponse } from '@MNI/db';
+import { Service } from '@MNI/di';
 import type {
 	ExecutionListItem,
 	ExecutionSnapshot,
 	ExecutionStatus,
 	SearchExecutionsRequest,
-} from '@n8n/engine';
+} from '@MNI/engine';
 import type {
 	ExecutionStatus as ExecutionStatusV1,
 	IRunExecutionData,
 	WorkflowExecuteMode,
 	ExecutionSummary,
 	Workflow,
-} from 'n8n-workflow';
-import { UserError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { UserError } from 'MNI-workflow';
 
 import { EngineDataPlaneProxyService } from '@/services/engine-data-plane-proxy.service';
 
@@ -153,9 +153,9 @@ export class EngineV2ExecutionReader {
 		const workflow = asWorkflowSnapshot(snapshot.workflow);
 		if (!workflow) return undefined;
 
-		// Lazily imported: a top-level import would pull `@n8n/engine` into every
+		// Lazily imported: a top-level import would pull `@MNI/engine` into every
 		// MNI process, including ones with the module off.
-		const { toV1RunExecutionData } = await import('@n8n/node-engine-compatibility');
+		const { toV1RunExecutionData } = await import('@MNI/node-engine-compatibility');
 
 		return this.toExecutionResponse(
 			snapshot,

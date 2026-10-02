@@ -6,8 +6,8 @@ import {
 	N8nCallout,
 	N8nIcon,
 	N8nMarkdownEditor,
-} from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+} from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 import { computed, toRef } from 'vue';
 import type { ToolCall } from '@/features/ai/shared/agentsChat/types';
 import AiReasoningBlock from '@/features/ai/shared/components/AiReasoningBlock.vue';

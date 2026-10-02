@@ -6,7 +6,7 @@ import {
 	type IWorkflowMetadata,
 	type NodeOperationError,
 	type NodeParameterValueType,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import type { Mock } from 'vitest';
 import type { MockProxy } from 'vitest-mock-extended';
 import { mock } from 'vitest-mock-extended';
@@ -102,7 +102,7 @@ describe('Test MicrosoftTeamsV2, prepareMessage', () => {
 			body: {
 				contentType: 'html',
 				content:
-					'hi<br><br><em> Powered by <a href="https://n8n.example.com/workflow/wf-1?utm_source=n8n-internal&utm_medium=powered_by&utm_campaign=n8n-nodes-base.microsoftTeams_instance-1">this MNI workflow</a> </em>',
+					'hi<br><br><em> Powered by <a href="https://n8n.example.com/workflow/wf-1?utm_source=MNI-internal&utm_medium=powered_by&utm_campaign=MNI-nodes-base.microsoftTeams_instance-1">this MNI workflow</a> </em>',
 			},
 		});
 	});

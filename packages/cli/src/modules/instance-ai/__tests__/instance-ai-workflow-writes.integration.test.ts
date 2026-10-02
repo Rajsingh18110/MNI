@@ -1,15 +1,15 @@
-import { LicenseState } from '@n8n/backend-common';
+import { LicenseState } from '@MNI/backend-common';
 import {
 	createWorkflow,
 	mockInstance,
 	shareWorkflowWithUsers,
 	testDb,
-} from '@n8n/backend-test-utils';
-import type { User } from '@n8n/db';
-import { WorkflowRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
-import type { WorkflowJSON } from '@n8n/workflow-sdk';
-import type { IWorkflowBase } from 'n8n-workflow';
+} from '@MNI/backend-test-utils';
+import type { User } from '@MNI/db';
+import { WorkflowRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
+import type { WorkflowJSON } from '@MNI/workflow-sdk';
+import type { IWorkflowBase } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import { ActiveWorkflowManager } from '@/active-workflow-manager';

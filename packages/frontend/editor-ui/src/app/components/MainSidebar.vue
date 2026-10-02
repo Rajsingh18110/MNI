@@ -1,18 +1,18 @@
 <script setup lang="ts">
 import { computed, onBeforeUnmount, onMounted, ref, nextTick, watch } from 'vue';
 import { useRouter } from 'vue-router';
-import { useI18n } from '@n8n/i18n';
-import { N8nScrollArea, N8nResizeWrapper, type IMenuItem } from '@n8n/design-system';
+import { useI18n } from '@MNI/i18n';
+import { N8nScrollArea, N8nResizeWrapper, type IMenuItem } from '@MNI/design-system';
 import { ABOUT_MODAL_KEY, VIEWS, WHATS_NEW_MODAL_KEY } from '@/app/constants';
 import { EXTERNAL_LINKS } from '@/app/constants/externalLinks';
 import { hasPermission } from '@/app/utils/rbac/permissions';
-import { useRootStore } from '@n8n/stores/useRootStore';
-import { useCloudPlanStore } from '@n8n/stores/cloudPlan.store';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useRootStore } from '@MNI/stores/useRootStore';
+import { useCloudPlanStore } from '@MNI/stores/cloudPlan.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { useTemplatesStore } from '@/features/workflows/templates/templates.store';
 import { useUIStore } from '@/app/stores/ui.store';
-import { useVersionsStore } from '@n8n/stores/versions.store';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
+import { useVersionsStore } from '@MNI/stores/versions.store';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
 import { useBugReporting } from '@/app/composables/useBugReporting';
 import { usePageRedirectionHelper } from '@/app/composables/usePageRedirectionHelper';
 import { useKeybindings } from '@/app/composables/useKeybindings';
@@ -144,76 +144,7 @@ const mainMenuItems = computed<IMenuItem[]>(() => [
 			settingsStore.isModuleActive('insights') &&
 			hasPermission(['rbac'], { rbac: { scope: 'insights:list' } }),
 	},
-	{
-		id: 'help',
-		icon: 'circle-help',
-		label: i18n.baseText('mainSidebar.help'),
-		notification: showWhatsNewNotification.value,
-		position: 'bottom',
-		children: [
-			{
-				id: 'quickstart',
-				icon: 'video',
-				label: i18n.baseText('mainSidebar.helpMenuItems.quickstart'),
-				link: {
-					href: EXTERNAL_LINKS.QUICKSTART_VIDEO,
-					target: '_blank',
-				},
-			},
-			{
-				id: 'docs',
-				icon: 'book',
-				label: i18n.baseText('mainSidebar.helpMenuItems.documentation'),
-				link: {
-					href: EXTERNAL_LINKS.DOCUMENTATION,
-					target: '_blank',
-				},
-			},
-			{
-				id: 'forum',
-				icon: 'users',
-				label: i18n.baseText('mainSidebar.helpMenuItems.forum'),
-				link: {
-					href: EXTERNAL_LINKS.FORUM,
-					target: '_blank',
-				},
-			},
-			{
-				id: 'examples',
-				icon: 'graduation-cap',
-				label: i18n.baseText('mainSidebar.helpMenuItems.course'),
-				link: {
-					href: EXTERNAL_LINKS.COURSES,
-					target: '_blank',
-				},
-			},
-			{
-				id: 'contact-support',
-				icon: 'life-buoy',
-				label: i18n.baseText('mainSidebar.helpMenuItems.contactSupport'),
-				available: settingsStore.isCloudDeployment,
-				link: {
-					href: EXTERNAL_LINKS.SUPPORT,
-					target: '_blank',
-				},
-			},
-			{
-				id: 'report-bug',
-				icon: 'bug',
-				label: i18n.baseText('mainSidebar.helpMenuItems.reportBug'),
-				link: {
-					href: getReportingURL(),
-					target: '_blank',
-				},
-			},
-			{
-				id: 'about',
-				icon: 'info',
-				label: i18n.baseText('mainSidebar.aboutN8n'),
-				position: 'bottom',
-			},
-		],
-	},
+
 	{
 		id: 'settings',
 		label: i18n.baseText('mainSidebar.settings'),
@@ -312,7 +243,7 @@ const handleSelect = (key: string) => {
 			void pageRedirectionHelper.goToDashboard();
 			break;
 		}
-		case 'settings-n8n-connect': {
+		case 'settings-MNI-connect': {
 			void handleSettingsItemSelect(key);
 			break;
 		}

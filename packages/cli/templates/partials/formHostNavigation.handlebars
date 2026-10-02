@@ -30,7 +30,7 @@ function requestHostNavigation(type, target) {
 
 // Move to another page of this form.
 function navigateTo(target) {
-	if (isShellHosted && isHostNavigable(target)) requestHostNavigation('n8n-form-navigate', target);
+	if (isShellHosted && isHostNavigable(target)) requestHostNavigation('MNI-form-navigate', target);
 	else window.location.replace(target);
 }
 {{#if withRedirect}}
@@ -38,7 +38,7 @@ function navigateTo(target) {
 // Leave for the redirect the form's author configured. The form is finished, so this
 // takes the whole tab, which is where a form rendered without the shell ends up too.
 function redirectTo(target) {
-	if (isShellHosted) requestHostNavigation('n8n-form-redirect', target);
+	if (isShellHosted) requestHostNavigation('MNI-form-redirect', target);
 	else window.location.replace(target);
 }
 {{/if}}

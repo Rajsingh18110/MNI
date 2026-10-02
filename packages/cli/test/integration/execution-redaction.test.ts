@@ -4,8 +4,8 @@ import {
 	createWorkflow,
 	testDb,
 	mockInstance,
-} from '@n8n/backend-test-utils';
-import type { User } from '@n8n/db';
+} from '@MNI/backend-test-utils';
+import type { User } from '@MNI/db';
 import { stringify } from 'flatted';
 import type {
 	IBinaryKeyData,
@@ -14,8 +14,8 @@ import type {
 	IRunExecutionData,
 	IWorkflowBase,
 	WorkflowExecuteMode,
-} from 'n8n-workflow';
-import { createRunExecutionData, NodeApiError, NodeOperationError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { createRunExecutionData, NodeApiError, NodeOperationError } from 'MNI-workflow';
 
 import { ConcurrencyControlService } from '@/concurrency/concurrency-control.service';
 import { WaitTracker } from '@/wait-tracker';
@@ -70,7 +70,7 @@ const BINARY_DATA = {
 const STACK_NODE: INode = {
 	id: 'node-1',
 	name: 'Test Node',
-	type: 'n8n-nodes-base.httpRequest',
+	type: 'MNI-nodes-base.httpRequest',
 	typeVersion: 1,
 	position: [0, 0],
 	parameters: {},
@@ -567,7 +567,7 @@ describe('GET /executions/:id — Execution Redaction', () => {
 		const mockNode: INode = {
 			id: 'node-1',
 			name: 'Test Node',
-			type: 'n8n-nodes-base.httpRequest',
+			type: 'MNI-nodes-base.httpRequest',
 			typeVersion: 1,
 			position: [0, 0],
 			parameters: {},

@@ -1,5 +1,5 @@
 import { describe, expect, it, beforeEach, vi } from 'vitest';
-import { GROUP_DESCRIPTION_MAX_LENGTH } from 'n8n-workflow';
+import { GROUP_DESCRIPTION_MAX_LENGTH } from 'MNI-workflow';
 
 import { useWorkflowDocumentNodeGroups } from './useWorkflowDocumentNodeGroups';
 

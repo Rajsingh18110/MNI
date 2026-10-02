@@ -1,6 +1,6 @@
-import { GLOBAL_OWNER_ROLE, type IWorkflowDb } from '@n8n/db';
-import type { InstanceSettings } from 'n8n-core';
-import type { INode, IRun, IWorkflowBase, IWorkflowExecutionDataProcess } from 'n8n-workflow';
+import { GLOBAL_OWNER_ROLE, type IWorkflowDb } from '@MNI/db';
+import type { InstanceSettings } from 'MNI-core';
+import type { INode, IRun, IWorkflowBase, IWorkflowExecutionDataProcess } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import type { MessageEventBus } from '@/eventbus/message-event-bus/message-event-bus';
@@ -54,8 +54,8 @@ describe('LogStreamingEventRelay', () => {
 			});
 		});
 
-		it('should log on `n8n-package-imported` event', () => {
-			const event: RelayEventMap['n8n-package-imported'] = {
+		it('should log on `MNI-package-imported` event', () => {
+			const event: RelayEventMap['MNI-package-imported'] = {
 				user: {
 					id: 'user-import',
 					email: 'importer@example.com',
@@ -133,10 +133,10 @@ describe('LogStreamingEventRelay', () => {
 				},
 			};
 
-			eventService.emit('n8n-package-imported', event);
+			eventService.emit('MNI-package-imported', event);
 
 			expect(eventBus.sendAuditEvent).toHaveBeenCalledWith({
-				eventName: 'n8n.audit.n8n-package.import.success',
+				eventName: 'n8n.audit.MNI-package.import.success',
 				payload: {
 					userId: 'user-import',
 					_email: 'importer@example.com',
@@ -176,8 +176,8 @@ describe('LogStreamingEventRelay', () => {
 			});
 		});
 
-		it('should log on `n8n-package-exported` event', () => {
-			const event: RelayEventMap['n8n-package-exported'] = {
+		it('should log on `MNI-package-exported` event', () => {
+			const event: RelayEventMap['MNI-package-exported'] = {
 				user: {
 					id: 'user-export',
 					email: 'exporter@example.com',
@@ -202,10 +202,10 @@ describe('LogStreamingEventRelay', () => {
 				includeArchivedWorkflows: false,
 			};
 
-			eventService.emit('n8n-package-exported', event);
+			eventService.emit('MNI-package-exported', event);
 
 			expect(eventBus.sendAuditEvent).toHaveBeenCalledWith({
-				eventName: 'n8n.audit.n8n-package.export.success',
+				eventName: 'n8n.audit.MNI-package.export.success',
 				payload: {
 					userId: 'user-export',
 					_email: 'exporter@example.com',
@@ -219,8 +219,8 @@ describe('LogStreamingEventRelay', () => {
 			});
 		});
 
-		it('should log on `n8n-package-export-failed` event', () => {
-			const event: RelayEventMap['n8n-package-export-failed'] = {
+		it('should log on `MNI-package-export-failed` event', () => {
+			const event: RelayEventMap['MNI-package-export-failed'] = {
 				user: {
 					id: 'user-export',
 					email: 'exporter@example.com',
@@ -232,10 +232,10 @@ describe('LogStreamingEventRelay', () => {
 				workflowIds: ['wf-stilton'],
 			};
 
-			eventService.emit('n8n-package-export-failed', event);
+			eventService.emit('MNI-package-export-failed', event);
 
 			expect(eventBus.sendAuditEvent).toHaveBeenCalledWith({
-				eventName: 'n8n.audit.n8n-package.export.failed',
+				eventName: 'n8n.audit.MNI-package.export.failed',
 				payload: {
 					userId: 'user-export',
 					_email: 'exporter@example.com',
@@ -249,8 +249,8 @@ describe('LogStreamingEventRelay', () => {
 			});
 		});
 
-		it('should log on `n8n-package-import-failed` event', () => {
-			const event: RelayEventMap['n8n-package-import-failed'] = {
+		it('should log on `MNI-package-import-failed` event', () => {
+			const event: RelayEventMap['MNI-package-import-failed'] = {
 				user: {
 					id: 'user-import',
 					email: 'importer@example.com',
@@ -262,10 +262,10 @@ describe('LogStreamingEventRelay', () => {
 				projectId: 'proj-brie',
 			};
 
-			eventService.emit('n8n-package-import-failed', event);
+			eventService.emit('MNI-package-import-failed', event);
 
 			expect(eventBus.sendAuditEvent).toHaveBeenCalledWith({
-				eventName: 'n8n.audit.n8n-package.import.failed',
+				eventName: 'n8n.audit.MNI-package.import.failed',
 				payload: {
 					userId: 'user-import',
 					_email: 'importer@example.com',
@@ -1154,14 +1154,14 @@ describe('LogStreamingEventRelay', () => {
 					{
 						id: 'node1',
 						name: 'Start Node',
-						type: 'n8n-nodes-base.manualTrigger',
+						type: 'MNI-nodes-base.manualTrigger',
 						typeVersion: 1,
 						position: [100, 200],
 					},
 					{
 						id: 'node2',
 						name: 'HTTP Request',
-						type: 'n8n-nodes-base.httpRequest',
+						type: 'MNI-nodes-base.httpRequest',
 						typeVersion: 1,
 						position: [300, 200],
 					},
@@ -1175,7 +1175,7 @@ describe('LogStreamingEventRelay', () => {
 				nodeName: 'HTTP Request',
 				workflow,
 				nodeId: 'node2',
-				nodeType: 'n8n-nodes-base.httpRequest',
+				nodeType: 'MNI-nodes-base.httpRequest',
 			};
 
 			eventService.emit('node-pre-execute', event);
@@ -1187,7 +1187,7 @@ describe('LogStreamingEventRelay', () => {
 					nodeName: 'HTTP Request',
 					workflowId: 'wf303',
 					workflowName: 'Test Workflow with Nodes',
-					nodeType: 'n8n-nodes-base.httpRequest',
+					nodeType: 'MNI-nodes-base.httpRequest',
 					nodeId: 'node2',
 				},
 			});
@@ -1203,14 +1203,14 @@ describe('LogStreamingEventRelay', () => {
 					{
 						id: 'node1',
 						name: 'Start Node',
-						type: 'n8n-nodes-base.manualTrigger',
+						type: 'MNI-nodes-base.manualTrigger',
 						typeVersion: 1,
 						position: [100, 200],
 					},
 					{
 						id: 'node2',
 						name: 'HTTP Response',
-						type: 'n8n-nodes-base.httpResponse',
+						type: 'MNI-nodes-base.httpResponse',
 						typeVersion: 1,
 						position: [300, 200],
 					},
@@ -1224,7 +1224,7 @@ describe('LogStreamingEventRelay', () => {
 				nodeName: 'HTTP Response',
 				workflow,
 				nodeId: 'node2',
-				nodeType: 'n8n-nodes-base.httpResponse',
+				nodeType: 'MNI-nodes-base.httpResponse',
 			};
 
 			eventService.emit('node-post-execute', event);
@@ -1236,7 +1236,7 @@ describe('LogStreamingEventRelay', () => {
 					nodeName: 'HTTP Response',
 					workflowId: 'wf404',
 					workflowName: 'Test Workflow with Completed Node',
-					nodeType: 'n8n-nodes-base.httpResponse',
+					nodeType: 'MNI-nodes-base.httpResponse',
 					nodeId: 'node2',
 				},
 			});
@@ -1738,7 +1738,7 @@ describe('LogStreamingEventRelay', () => {
 					lastName: 'Updater',
 					role: { slug: 'global:admin' },
 				},
-				packageName: 'n8n-nodes-awesome-package',
+				packageName: 'MNI-nodes-awesome-package',
 				packageVersionCurrent: '1.0.0',
 				packageVersionNew: '1.1.0',
 				packageNodeNames: ['AwesomeNode1', 'AwesomeNode2'],
@@ -1756,7 +1756,7 @@ describe('LogStreamingEventRelay', () => {
 					_firstName: 'Package',
 					_lastName: 'Updater',
 					globalRole: 'global:admin',
-					packageName: 'n8n-nodes-awesome-package',
+					packageName: 'MNI-nodes-awesome-package',
 					packageVersionCurrent: '1.0.0',
 					packageVersionNew: '1.1.0',
 					packageNodeNames: ['AwesomeNode1', 'AwesomeNode2'],
@@ -1775,8 +1775,8 @@ describe('LogStreamingEventRelay', () => {
 					lastName: 'User',
 					role: { slug: 'global:admin' },
 				},
-				inputString: 'n8n-nodes-custom-package',
-				packageName: 'n8n-nodes-custom-package',
+				inputString: 'MNI-nodes-custom-package',
+				packageName: 'MNI-nodes-custom-package',
 				success: true,
 				packageVersion: '1.0.0',
 				packageNodeNames: ['CustomNode1', 'CustomNode2'],
@@ -1794,8 +1794,8 @@ describe('LogStreamingEventRelay', () => {
 					_firstName: 'Admin',
 					_lastName: 'User',
 					globalRole: 'global:admin',
-					inputString: 'n8n-nodes-custom-package',
-					packageName: 'n8n-nodes-custom-package',
+					inputString: 'MNI-nodes-custom-package',
+					packageName: 'MNI-nodes-custom-package',
 					success: true,
 					packageVersion: '1.0.0',
 					packageNodeNames: ['CustomNode1', 'CustomNode2'],
@@ -1814,7 +1814,7 @@ describe('LogStreamingEventRelay', () => {
 					lastName: 'Deleter',
 					role: { slug: 'global:admin' },
 				},
-				packageName: 'n8n-nodes-awesome-package',
+				packageName: 'MNI-nodes-awesome-package',
 				packageVersion: '1.0.0',
 				packageNodeNames: ['AwesomeNode1', 'AwesomeNode2'],
 				packageAuthor: 'John Doe',
@@ -1831,7 +1831,7 @@ describe('LogStreamingEventRelay', () => {
 					_firstName: 'Package',
 					_lastName: 'Deleter',
 					globalRole: 'global:admin',
-					packageName: 'n8n-nodes-awesome-package',
+					packageName: 'MNI-nodes-awesome-package',
 					packageVersion: '1.0.0',
 					packageNodeNames: ['AwesomeNode1', 'AwesomeNode2'],
 					packageAuthor: 'John Doe',
@@ -2436,7 +2436,7 @@ describe('LogStreamingEventRelay', () => {
 				nodeName: 'Memory',
 				workflowId: 'wf123',
 				workflowName: 'My Workflow',
-				nodeType: 'n8n-nodes-base.memory',
+				nodeType: 'MNI-nodes-base.memory',
 			};
 
 			eventService.emit('ai-messages-retrieved-from-memory', payload);
@@ -2454,7 +2454,7 @@ describe('LogStreamingEventRelay', () => {
 				nodeName: 'Memory',
 				workflowId: 'wf789',
 				workflowName: 'My Workflow',
-				nodeType: 'n8n-nodes-base.memory',
+				nodeType: 'MNI-nodes-base.memory',
 			};
 
 			eventService.emit('ai-message-added-to-memory', payload);
@@ -2472,7 +2472,7 @@ describe('LogStreamingEventRelay', () => {
 				nodeName: 'Output Parser',
 				workflowId: 'wf456',
 				workflowName: 'My Workflow',
-				nodeType: 'n8n-nodes-base.outputParser',
+				nodeType: 'MNI-nodes-base.outputParser',
 			};
 
 			eventService.emit('ai-output-parsed', payload);
@@ -2490,7 +2490,7 @@ describe('LogStreamingEventRelay', () => {
 				nodeName: 'Retriever',
 				workflowId: 'wf123',
 				workflowName: 'My Workflow',
-				nodeType: 'n8n-nodes-base.retriever',
+				nodeType: 'MNI-nodes-base.retriever',
 			};
 
 			eventService.emit('ai-documents-retrieved', payload);
@@ -2508,7 +2508,7 @@ describe('LogStreamingEventRelay', () => {
 				nodeName: 'Embeddings',
 				workflowId: 'wf789',
 				workflowName: 'My Workflow',
-				nodeType: 'n8n-nodes-base.embeddings',
+				nodeType: 'MNI-nodes-base.embeddings',
 			};
 
 			eventService.emit('ai-document-embedded', payload);
@@ -2526,7 +2526,7 @@ describe('LogStreamingEventRelay', () => {
 				nodeName: 'Embeddings',
 				workflowId: 'wf456',
 				workflowName: 'My Workflow',
-				nodeType: 'n8n-nodes-base.embeddings',
+				nodeType: 'MNI-nodes-base.embeddings',
 			};
 
 			eventService.emit('ai-query-embedded', payload);
@@ -2544,7 +2544,7 @@ describe('LogStreamingEventRelay', () => {
 				nodeName: 'Embeddings',
 				workflowId: 'wf789',
 				workflowName: 'My Workflow',
-				nodeType: 'n8n-nodes-base.embeddings',
+				nodeType: 'MNI-nodes-base.embeddings',
 			};
 
 			eventService.emit('ai-document-processed', payload);
@@ -2562,7 +2562,7 @@ describe('LogStreamingEventRelay', () => {
 				nodeName: 'Text Splitter',
 				workflowId: 'wf789',
 				workflowName: 'My Workflow',
-				nodeType: 'n8n-nodes-base.textSplitter',
+				nodeType: 'MNI-nodes-base.textSplitter',
 			};
 
 			eventService.emit('ai-text-split', payload);
@@ -2580,7 +2580,7 @@ describe('LogStreamingEventRelay', () => {
 				nodeName: 'Tool',
 				workflowId: 'wf456',
 				workflowName: 'My Workflow',
-				nodeType: 'n8n-nodes-base.tool',
+				nodeType: 'MNI-nodes-base.tool',
 			};
 
 			eventService.emit('ai-tool-called', payload);
@@ -2598,7 +2598,7 @@ describe('LogStreamingEventRelay', () => {
 				nodeName: 'Vector Store',
 				workflowId: 'wf123',
 				workflowName: 'My Workflow',
-				nodeType: 'n8n-nodes-base.vectorStore',
+				nodeType: 'MNI-nodes-base.vectorStore',
 			};
 
 			eventService.emit('ai-vector-store-searched', payload);
@@ -2616,7 +2616,7 @@ describe('LogStreamingEventRelay', () => {
 				nodeName: 'OpenAI',
 				workflowId: 'wf789',
 				workflowName: 'My Workflow',
-				nodeType: 'n8n-nodes-base.openai',
+				nodeType: 'MNI-nodes-base.openai',
 			};
 
 			eventService.emit('ai-llm-generated-output', payload);
@@ -2634,7 +2634,7 @@ describe('LogStreamingEventRelay', () => {
 				nodeName: 'OpenAI',
 				workflowId: 'wf123',
 				workflowName: 'My Workflow',
-				nodeType: 'n8n-nodes-base.openai',
+				nodeType: 'MNI-nodes-base.openai',
 			};
 
 			eventService.emit('ai-llm-errored', payload);
@@ -2652,7 +2652,7 @@ describe('LogStreamingEventRelay', () => {
 				nodeName: 'Vector Store',
 				workflowId: 'wf789',
 				workflowName: 'My Workflow',
-				nodeType: 'n8n-nodes-base.vectorStore',
+				nodeType: 'MNI-nodes-base.vectorStore',
 			};
 
 			eventService.emit('ai-vector-store-populated', payload);
@@ -2670,7 +2670,7 @@ describe('LogStreamingEventRelay', () => {
 				nodeName: 'Vector Store',
 				workflowId: 'wf123',
 				workflowName: 'My Workflow',
-				nodeType: 'n8n-nodes-base.vectorStore',
+				nodeType: 'MNI-nodes-base.vectorStore',
 			};
 
 			eventService.emit('ai-vector-store-updated', payload);

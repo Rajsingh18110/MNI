@@ -11,7 +11,7 @@ import {
  * Creates release in GitHub.
  *
  * Required env variables:
- *	- RELEASE_TAG	 - Release tag on git e.g. n8n@2.13.0
+ *	- RELEASE_TAG	 - Release tag on git e.g. MNI@2.13.0
  *	- BODY - Body of the release. Contains release notes etc.
  *	- IS_PRE_RELEASE - If releasing in pre-release. Currently only for beta track.
  *	- MAKE_LATEST - If released version should be marked as latest on GitHub

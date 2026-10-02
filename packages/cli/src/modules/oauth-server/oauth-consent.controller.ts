@@ -1,8 +1,8 @@
-import { Logger } from '@n8n/backend-common';
-import type { AuthenticatedRequest } from '@n8n/db';
-import { Body, Get, Post, RestController } from '@n8n/decorators';
+import { Logger } from '@MNI/backend-common';
+import type { AuthenticatedRequest } from '@MNI/db';
+import { Body, Get, Post, RestController } from '@MNI/decorators';
 import type { Response } from 'express';
-import { UserError } from 'n8n-workflow';
+import { UserError } from 'MNI-workflow';
 
 import { ApproveConsentRequestDto } from './dto/approve-consent-request.dto';
 import { OAuthConsentService } from './oauth-consent.service';

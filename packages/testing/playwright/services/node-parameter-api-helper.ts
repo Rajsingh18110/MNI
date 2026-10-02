@@ -1,4 +1,4 @@
-import type { OptionsRequestDto } from '@n8n/api-types';
+import type { OptionsRequestDto } from '@MNI/api-types';
 import type { APIResponse } from '@playwright/test';
 
 import type { ApiHelpers } from './api-helper';

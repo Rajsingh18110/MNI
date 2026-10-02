@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { N8nButton, N8nLoading, N8nText } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+import { N8nButton, N8nLoading, N8nText } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 import { useResizeObserver } from '@vueuse/core';
 import { storeToRefs } from 'pinia';
 import { onMounted, ref, watch } from 'vue';
@@ -222,7 +222,7 @@ onMounted(() => {
 </template>
 
 <style lang="scss" module>
-@use '@n8n/design-system/css/mixins/motion';
+@use '@MNI/design-system/css/mixins/motion';
 
 .feed {
 	/* Set here so the list, its rail and the composer share them. */

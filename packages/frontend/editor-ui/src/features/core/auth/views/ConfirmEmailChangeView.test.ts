@@ -4,7 +4,7 @@ import { createTestingPinia } from '@pinia/testing';
 import { fireEvent, waitFor } from '@testing-library/vue';
 import { VIEWS } from '@/app/constants';
 import ConfirmEmailChangeView from './ConfirmEmailChangeView.vue';
-import { useUsersStore } from '@n8n/stores/users.store';
+import { useUsersStore } from '@MNI/stores/users.store';
 
 const { push, replace, routerState } = vi.hoisted(() => ({
 	push: vi.fn(),
@@ -26,7 +26,7 @@ const { showError, showMessage } = vi.hoisted(() => ({
 	showMessage: vi.fn(),
 }));
 
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: () => ({ showError, showMessage }),
 }));
 

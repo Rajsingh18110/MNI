@@ -8,7 +8,7 @@
 		{
 			"parameters": {},
 			"name": "Start",
-			"type": "n8n-nodes-base.manualTrigger",
+			"type": "MNI-nodes-base.manualTrigger",
 			"typeVersion": 1,
 			"position": [250, 300],
 			"id": "04b33b0d-9424-4705-955d-c4a8087c055c"
@@ -17,11 +17,11 @@
 			"parameters": {
 				"url": "=https://n8n.io/{{Date.now()}}",
 				"additionalFields": {
-					"title": "n8n-ulr with random suffix"
+					"title": "MNI-ulr with random suffix"
 				}
 			},
 			"name": "Yourls",
-			"type": "n8n-nodes-base.yourls",
+			"type": "MNI-nodes-base.yourls",
 			"typeVersion": 1,
 			"position": [500, 300],
 			"credentials": {
@@ -38,7 +38,7 @@
 				"shortUrl": "={{$node[\"Yourls\"].json[\"shorturl\"]}}"
 			},
 			"name": "Yourls1",
-			"type": "n8n-nodes-base.yourls",
+			"type": "MNI-nodes-base.yourls",
 			"typeVersion": 1,
 			"position": [700, 300],
 			"credentials": {
@@ -55,7 +55,7 @@
 				"shortUrl": "={{$node[\"Yourls\"].json[\"shorturl\"]}}"
 			},
 			"name": "Yourls2",
-			"type": "n8n-nodes-base.yourls",
+			"type": "MNI-nodes-base.yourls",
 			"typeVersion": 1,
 			"position": [900, 300],
 			"credentials": {

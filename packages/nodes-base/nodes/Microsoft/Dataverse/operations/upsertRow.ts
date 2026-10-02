@@ -1,5 +1,5 @@
-import type { IDataObject } from 'n8n-workflow';
-import { NodeOperationError } from 'n8n-workflow';
+import type { IDataObject } from 'MNI-workflow';
+import { NodeOperationError } from 'MNI-workflow';
 
 import { type DataverseHeaders } from '../GenericFunctions';
 import {

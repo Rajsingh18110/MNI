@@ -1,4 +1,4 @@
-import type { ErrorReporter, FsByteStoreService } from 'n8n-core';
+import type { ErrorReporter, FsByteStoreService } from 'MNI-core';
 import { mock } from 'vitest-mock-extended';
 
 import { AgentExecutionLogStore } from '../agent-execution-log-store';

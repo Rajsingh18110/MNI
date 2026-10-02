@@ -1,4 +1,4 @@
-import { resolvePromptCaching, type ProviderCapabilities } from '@n8n/api-types';
+import { resolvePromptCaching, type ProviderCapabilities } from '@MNI/api-types';
 
 import type { AgentJsonConfig } from '../types';
 

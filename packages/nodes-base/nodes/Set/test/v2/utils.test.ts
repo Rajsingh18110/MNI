@@ -1,7 +1,7 @@
 import { DateTime } from 'luxon';
 import get from 'lodash/get';
-import { constructExecutionMetaData } from 'n8n-core';
-import type { IDataObject, IExecuteFunctions, IGetNodeParameterOptions, INode } from 'n8n-workflow';
+import { constructExecutionMetaData } from 'MNI-core';
+import type { IDataObject, IExecuteFunctions, IGetNodeParameterOptions, INode } from 'MNI-workflow';
 
 import type { SetNodeOptions } from '../../v2/helpers/interfaces';
 import {
@@ -14,7 +14,7 @@ import {
 export const node: INode = {
 	id: '11',
 	name: 'Edit Fields',
-	type: 'n8n-nodes-base.set',
+	type: 'MNI-nodes-base.set',
 	typeVersion: 3,
 	position: [42, 42],
 	parameters: {

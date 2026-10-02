@@ -1,8 +1,8 @@
 import { effectScope, shallowReactive } from 'vue';
 import { camelCase } from 'change-case';
-import type { INode } from 'n8n-workflow';
-import { i18n } from '@n8n/i18n';
-import { useToast } from '@n8n/composables/useToast';
+import type { INode } from 'MNI-workflow';
+import { i18n } from '@MNI/i18n';
+import { useToast } from '@MNI/composables/useToast';
 import { TIME } from '@/app/constants/durations';
 import { listenForModalChanges, useUIStore } from '@/app/stores/ui.store';
 import {
@@ -166,7 +166,7 @@ export function useMcpServerConnect() {
 		return {
 			id: server.slug,
 			name: server.slug,
-			type: `@n8n/mcp-registry.${camelCase(server.slug)}`,
+			type: `@MNI/mcp-registry.${camelCase(server.slug)}`,
 			typeVersion: 1.1,
 			position: [0, 0],
 			parameters: {},

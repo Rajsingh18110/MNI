@@ -1,4 +1,4 @@
-import { sleep } from '@n8n/utils/sleep';
+import { sleep } from '@MNI/utils/sleep';
 
 import { ConcurrencyQueue } from '../concurrency-queue';
 

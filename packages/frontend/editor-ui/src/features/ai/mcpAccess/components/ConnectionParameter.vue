@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { useI18n } from '@n8n/i18n';
-import { useClipboard } from '@n8n/composables/useClipboard';
-import { N8nButton, N8nTooltip, N8nInfoTip, N8nInput, N8nLoading } from '@n8n/design-system';
+import { useI18n } from '@MNI/i18n';
+import { useClipboard } from '@MNI/composables/useClipboard';
+import { N8nButton, N8nTooltip, N8nInfoTip, N8nInput, N8nLoading } from '@MNI/design-system';
 import { MCP_TOOLTIP_DELAY } from '@/features/ai/mcpAccess/mcp.constants';
 
 type Props = {
@@ -102,7 +102,7 @@ const handleCopy = async (value: string) => {
 		cursor: pointer;
 		padding-top: 1px;
 
-		:global(.n8n-info-tip) {
+		:global(.MNI-info-tip) {
 			display: flex;
 		}
 	}
@@ -138,7 +138,7 @@ const handleCopy = async (value: string) => {
 		display: flex;
 		align-items: center;
 
-		:global(.n8n-input__wrapper) {
+		:global(.MNI-input__wrapper) {
 			--input--border--shadow: 0 0 0 0 transparent;
 			--input--border--shadow--hover: 0 0 0 0 transparent;
 			--input--border--shadow--focus: 0 0 0 0 transparent;
@@ -149,7 +149,7 @@ const handleCopy = async (value: string) => {
 		}
 	}
 
-	:global(.n8n-input) {
+	:global(.MNI-input) {
 		flex: 1;
 		align-items: center;
 

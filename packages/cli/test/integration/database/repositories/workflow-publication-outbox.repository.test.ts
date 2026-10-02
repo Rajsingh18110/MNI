@@ -1,12 +1,12 @@
-import { createActiveWorkflow, createWorkflow, newWorkflow, testDb } from '@n8n/backend-test-utils';
-import { WorkflowsConfig } from '@n8n/config';
-import { UNPUBLISH_VERSION_SENTINEL } from '@n8n/db';
+import { createActiveWorkflow, createWorkflow, newWorkflow, testDb } from '@MNI/backend-test-utils';
+import { WorkflowsConfig } from '@MNI/config';
+import { UNPUBLISH_VERSION_SENTINEL } from '@MNI/db';
 import {
 	WorkflowPublicationOutboxRepository,
 	WorkflowPublicationRetryStateRepository,
 	WorkflowRepository,
-} from '@n8n/db';
-import { Container } from '@n8n/di';
+} from '@MNI/db';
+import { Container } from '@MNI/di';
 import assert from 'node:assert';
 
 describe('WorkflowPublicationOutboxRepository', () => {

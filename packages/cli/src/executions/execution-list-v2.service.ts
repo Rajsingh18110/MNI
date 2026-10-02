@@ -1,9 +1,9 @@
-import { compareExecutionListItems } from '@n8n/api-types';
-import type { ExecutionSummaries } from '@n8n/db';
-import { ExecutionListRepository, ExecutionRepository } from '@n8n/db';
-import { Service } from '@n8n/di';
-import { hasGlobalScope } from '@n8n/permissions';
-import type { ExecutionSummary } from 'n8n-workflow';
+import { compareExecutionListItems } from '@MNI/api-types';
+import type { ExecutionSummaries } from '@MNI/db';
+import { ExecutionListRepository, ExecutionRepository } from '@MNI/db';
+import { Service } from '@MNI/di';
+import { hasGlobalScope } from '@MNI/permissions';
+import type { ExecutionSummary } from 'MNI-workflow';
 import assert from 'node:assert';
 
 import { EngineDataPlaneProxyService } from '@/services/engine-data-plane-proxy.service';

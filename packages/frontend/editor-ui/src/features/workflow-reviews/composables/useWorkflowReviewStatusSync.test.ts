@@ -1,4 +1,4 @@
-import type { PushMessage } from '@n8n/api-types';
+import type { PushMessage } from '@MNI/api-types';
 import { createTestingPinia } from '@pinia/testing';
 import { setActivePinia } from 'pinia';
 import { defineComponent, h, nextTick, ref } from 'vue';

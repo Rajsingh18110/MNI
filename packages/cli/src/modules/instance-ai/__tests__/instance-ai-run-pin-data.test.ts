@@ -1,5 +1,5 @@
-import type { INode, IPinData } from 'n8n-workflow';
-import { FORM_TRIGGER_NODE_TYPE, WEBHOOK_NODE_TYPE } from 'n8n-workflow';
+import type { INode, IPinData } from 'MNI-workflow';
+import { FORM_TRIGGER_NODE_TYPE, WEBHOOK_NODE_TYPE } from 'MNI-workflow';
 
 import {
 	buildInstanceAiRunPinDataPlan,

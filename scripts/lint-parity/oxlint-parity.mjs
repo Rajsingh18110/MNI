@@ -4,8 +4,8 @@
  *
  * Run `snapshot.mjs` on a tree where the package still uses ESLint, then this
  * against the oxlint config:
- *   node scripts/lint-parity/snapshot.mjs --out /tmp/before.json --only packages/@n8n/errors
- *   node scripts/lint-parity/oxlint-parity.mjs --pkg packages/@n8n/errors --eslint /tmp/before.json
+ *   node scripts/lint-parity/snapshot.mjs --out /tmp/before.json --only packages/@MNI/errors
+ *   node scripts/lint-parity/oxlint-parity.mjs --pkg packages/@MNI/errors --eslint /tmp/before.json
  *
  * Exits non-zero on a rule oxlint enforces that ESLint did not, and on a rule
  * ESLint enforced that is missing from oxlint and from `oxlint-gap.json`. A gap
@@ -63,7 +63,7 @@ const JS_PLUGIN_NAMESPACES = new Set([
 	'import-x-alias',
 	'lodash',
 	'unused-imports',
-	'n8n-local-rules',
+	'MNI-local-rules',
 ]);
 
 function splitId(id) {

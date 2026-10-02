@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import type { INodeUi } from '@/Interface';
-import type { IconName } from '@n8n/design-system';
+import type { IconName } from '@MNI/design-system';
 
-import { N8nIcon, N8nText } from '@n8n/design-system';
+import { N8nIcon, N8nText } from '@MNI/design-system';
 
 interface Props {
 	node: INodeUi | null;

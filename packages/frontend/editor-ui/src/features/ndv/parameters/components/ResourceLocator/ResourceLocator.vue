@@ -1,17 +1,17 @@
 <script setup lang="ts">
-import type { ResourceLocatorRequestDto, ActionResultRequestDto } from '@n8n/api-types';
+import type { ResourceLocatorRequestDto, ActionResultRequestDto } from '@MNI/api-types';
 import type { IResourceLocatorResultExpanded, IUpdateInformation } from '@/Interface';
 import DraggableTarget from '@/app/components/DraggableTarget.vue';
 import ExpressionParameterInput from '../ExpressionParameterInput.vue';
 import ParameterIssues from '../ParameterIssues.vue';
-import { useDebounce } from '@n8n/composables/useDebounce';
-import { useI18n } from '@n8n/i18n';
-import type { BaseTextKey } from '@n8n/i18n';
+import { useDebounce } from '@MNI/composables/useDebounce';
+import { useI18n } from '@MNI/i18n';
+import type { BaseTextKey } from '@MNI/i18n';
 import { useWorkflowHelpers } from '@/app/composables/useWorkflowHelpers';
 import { ndvEventBus } from '@/features/ndv/shared/ndv.eventBus';
 import { injectNDVStore } from '@/features/ndv/shared/ndv.store';
 import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';
-import { useRootStore } from '@n8n/stores/useRootStore';
+import { useRootStore } from '@MNI/stores/useRootStore';
 import { useUIStore } from '@/app/stores/ui.store';
 import {
 	getAppNameFromNodeName,
@@ -19,9 +19,9 @@ import {
 	hasOnlyListMode as hasOnlyListModeUtil,
 } from '@/app/utils/nodeTypesUtils';
 import stringify from 'fast-json-stable-stringify';
-import type { EventBus } from '@n8n/utils/event-bus';
-import { createEventBus } from '@n8n/utils/event-bus';
-import { extractPlaceholderLabels, isPlaceholderValue } from '@n8n/utils/placeholder';
+import type { EventBus } from '@MNI/utils/event-bus';
+import { createEventBus } from '@MNI/utils/event-bus';
+import { extractPlaceholderLabels, isPlaceholderValue } from '@MNI/utils/placeholder';
 import {
 	isResourceLocatorValue,
 	type INode,
@@ -32,7 +32,7 @@ import {
 	type INodePropertyMode,
 	type INodePropertyModeTypeOptions,
 	type NodeParameterValue,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import {
 	computed,
 	inject,
@@ -45,7 +45,7 @@ import {
 	watch,
 } from 'vue';
 import ResourceLocatorDropdown from './ResourceLocatorDropdown.vue';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
 import { computedAsync, onClickOutside, type VueInstance } from '@vueuse/core';
 import {
 	buildValueFromOverride,
@@ -75,7 +75,7 @@ import {
 	N8nOption,
 	N8nSelect,
 	N8nText,
-} from '@n8n/design-system';
+} from '@MNI/design-system';
 /**
  * Regular expression to check if the error message contains credential-related phrases.
  */
@@ -309,7 +309,7 @@ const urlValue = computedAsync(async () => {
 		const id = typeof raw === 'string' ? raw.trim() : '';
 		if (!id || id.includes('{{') || id.includes('}}')) return null;
 		const table = await dataTableStore.fetchDataTableById(id);
-		// Resolve via the router so the link honours the configured base path (N8N_PATH).
+		// Resolve via the router so the link honours the configured base path (MNI_PATH).
 		return table
 			? router.resolve({
 					name: DATA_TABLE_DETAILS,

@@ -1,4 +1,4 @@
-import type { WorkflowReviewActivityEntry, WorkflowReviewActivityType } from '@n8n/api-types';
+import type { WorkflowReviewActivityEntry, WorkflowReviewActivityType } from '@MNI/api-types';
 import type { Component } from 'vue';
 
 import WorkflowReviewActivityComment from './activity-entries/WorkflowReviewActivityComment.vue';

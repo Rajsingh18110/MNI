@@ -2,7 +2,7 @@ import { createTestingPinia } from '@pinia/testing';
 import { flushPromises, mount } from '@vue/test-utils';
 import { nextTick } from 'vue';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import type { INode, INodePropertyOptions } from 'n8n-workflow';
+import type { INode, INodePropertyOptions } from 'MNI-workflow';
 import type { TestingPinia } from '@pinia/testing';
 
 import { mockedStore } from '@/__tests__/utils';
@@ -10,7 +10,7 @@ import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';
 import AgentToolConfigMcpApprovalSetting from '../components/AgentToolConfigMcpApprovalSetting.vue';
 import type { AgentJsonMcpServerConfig } from '../types';
 
-vi.mock('@n8n/i18n', () => {
+vi.mock('@MNI/i18n', () => {
 	const translations: Record<string, string> = {
 		'agents.toolConfig.mcpApproval.disabled': 'Disabled',
 		'agents.toolConfig.mcpApproval.askAll': 'Ask all',
@@ -22,7 +22,7 @@ vi.mock('@n8n/i18n', () => {
 	return { useI18n: () => i18n, i18n, i18nInstance: { install: vi.fn() } };
 });
 
-vi.mock('@n8n/design-system', async () => {
+vi.mock('@MNI/design-system', async () => {
 	const { defineComponent, inject, provide } = await import('vue');
 
 	const N8nSelect = defineComponent({
@@ -102,7 +102,7 @@ function mcpNode(parameters: Partial<INode['parameters']> = {}): INode {
 	return {
 		id: 'mcp-node-id',
 		name: 'github',
-		type: '@n8n/n8n-nodes-langchain.mcpClientTool',
+		type: '@MNI/MNI-nodes-langchain.mcpClientTool',
 		typeVersion: 1.2,
 		parameters: {
 			endpointUrl: 'https://mcp.example.com',
@@ -159,7 +159,7 @@ describe('AgentToolConfigMcpApprovalSetting', () => {
 
 		expect(nodeTypesStore.getNodeParameterOptions).toHaveBeenCalledWith({
 			nodeTypeAndVersion: {
-				name: '@n8n/n8n-nodes-langchain.mcpClientTool',
+				name: '@MNI/MNI-nodes-langchain.mcpClientTool',
 				version: 1.2,
 			},
 			path: 'parameters.includeTools',

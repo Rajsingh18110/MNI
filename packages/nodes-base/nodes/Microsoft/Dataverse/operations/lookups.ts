@@ -1,5 +1,5 @@
-import type { IDataObject, IExecuteFunctions } from 'n8n-workflow';
-import { NodeOperationError, setSafeObjectProperty } from 'n8n-workflow';
+import type { IDataObject, IExecuteFunctions } from 'MNI-workflow';
+import { NodeOperationError, setSafeObjectProperty } from 'MNI-workflow';
 
 import { escapeODataValue } from '../../../../utils/query-escaping';
 import { dataverseApiRequest } from '../GenericFunctions';

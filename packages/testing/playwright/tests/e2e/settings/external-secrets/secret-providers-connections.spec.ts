@@ -15,7 +15,7 @@ test.describe(
 		const PROVIDER_TYPE = 'awsSecretsManager';
 
 		test.beforeEach(async ({ MNI, services }) => {
-			// N8N_ENV_FEAT_EXTERNAL_SECRETS_FOR_PROJECTS is set at container startup
+			// MNI_ENV_FEAT_EXTERNAL_SECRETS_FOR_PROJECTS is set at container startup
 			// via the external-secrets capability config
 
 			// Enable the external secrets license feature

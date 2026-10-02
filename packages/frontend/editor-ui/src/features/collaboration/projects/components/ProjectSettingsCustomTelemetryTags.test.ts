@@ -4,7 +4,7 @@ import { vi } from 'vitest';
 import ProjectSettingsCustomTelemetryTags from './ProjectSettingsCustomTelemetryTags.vue';
 import { createComponentRenderer } from '@/__tests__/render';
 
-vi.mock('@n8n/design-system', async (importOriginal) => {
+vi.mock('@MNI/design-system', async (importOriginal) => {
 	const original = await importOriginal<object>();
 	return {
 		...original,

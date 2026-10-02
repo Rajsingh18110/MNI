@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { useBuilderStore, type WorkflowBuilderJourneyEventType } from '../../builder.store';
-import { useUsersStore } from '@n8n/stores/users.store';
+import { useUsersStore } from '@MNI/stores/users.store';
 import { useWorkflowHistoryStore } from '@/features/workflows/workflowHistory/workflowHistory.store';
 import { useHistoryStore } from '@/app/stores/history.store';
 import { useCollaborationStore } from '@/features/collaboration/collaboration/collaboration.store';
@@ -8,18 +8,18 @@ import { useWorkflowSaveStore } from '@/app/stores/workflowSave.store';
 import { AutoSaveState, VIEWS } from '@/app/constants';
 import { computed, watch, ref, nextTick, useSlots, provide } from 'vue';
 import { useInjectWorkflowId } from '@/app/composables/useInjectWorkflowId';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
-import { useI18n } from '@n8n/i18n';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
+import { useI18n } from '@MNI/i18n';
 import { useWorkflowExecutionStateStore } from '@/app/stores/workflowExecutionState.store';
 import {
 	useWorkflowDocumentStore,
 	createWorkflowDocumentId,
 } from '@/app/stores/workflowDocument.store';
 import { useRoute, useRouter } from 'vue-router';
-import type { ChatUI, RatingFeedback, WorkflowSuggestion } from '@n8n/design-system';
-import { isTaskAbortedMessage, isWorkflowUpdatedMessage } from '@n8n/design-system';
+import type { ChatUI, RatingFeedback, WorkflowSuggestion } from '@MNI/design-system';
+import { isTaskAbortedMessage, isWorkflowUpdatedMessage } from '@MNI/design-system';
 import { nodeViewEventBus } from '@/app/event-bus';
-import { jsonParse } from 'n8n-workflow';
+import { jsonParse } from 'MNI-workflow';
 import ExecuteMessage from './ExecuteMessage.vue';
 import NotificationPermissionBanner from './NotificationPermissionBanner.vue';
 import ChatVersionCard from './ChatVersionCard.vue';
@@ -34,21 +34,21 @@ import { isChatNode } from '@/app/utils/aiUtils';
 import { useLogsStore } from '@/app/stores/logs.store';
 import { usePageRedirectionHelper } from '@/app/composables/usePageRedirectionHelper';
 import { useBrowserNotifications } from '@/app/composables/useBrowserNotifications';
-import { useToast } from '@n8n/composables/useToast';
+import { useToast } from '@MNI/composables/useToast';
 import { useDocumentVisibility } from '@/app/composables/useDocumentVisibility';
 import { WORKFLOW_SUGGESTIONS } from '@/app/constants/workflowSuggestions';
 import { useWorkflowUpdate } from '@/app/composables/useWorkflowUpdate';
 import { canvasEventBus } from '@/features/workflows/canvas/canvas.eventBus';
 import { useErrorHandler } from '@/app/composables/useErrorHandler';
-import type { WorkflowDataUpdate } from '@n8n/rest-api-client/api/workflows';
+import type { WorkflowDataUpdate } from '@MNI/rest-api-client/api/workflows';
 import shuffle from 'lodash/shuffle';
 import { useAssistantStore } from '@/features/ai/assistant/assistant.store';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { useChatPanelStateStore } from '@/features/ai/assistant/chatPanelState.store';
 import { useReviewChanges } from '@/features/ai/assistant/composables/useReviewChanges';
 import { watchExecutionCompletion } from '@/features/ai/assistant/composables/useExecutionWatcher';
 
-import { N8nAskAssistantChat, N8nInfoTip } from '@n8n/design-system';
+import { N8nAskAssistantChat, N8nInfoTip } from '@MNI/design-system';
 import BuildModeEmptyState from './BuildModeEmptyState.vue';
 import { AiBuilderScrollToBottomKey } from '@/app/constants/injectionKeys';
 import {

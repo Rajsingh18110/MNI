@@ -1,5 +1,5 @@
 import RefParser from '@apidevtools/json-schema-ref-parser';
-import { API_KEY_RESOURCES, type ApiKeyScope } from '@n8n/permissions';
+import { API_KEY_RESOURCES, type ApiKeyScope } from '@MNI/permissions';
 import fs from 'node:fs';
 import path from 'node:path';
 import yaml from 'yaml';

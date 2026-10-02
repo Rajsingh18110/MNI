@@ -27,7 +27,7 @@ export const kent: Service<KentResult> = {
 
 	async start(network: StartedNetwork, projectName: string): Promise<KentResult> {
 		const container = await GenericContainer.fromDockerfile(DOCKERFILE_PATH)
-			.build('n8n-kent:local', { deleteOnExit: false })
+			.build('MNI-kent:local', { deleteOnExit: false })
 			.then(
 				async (image) =>
 					await image
@@ -61,9 +61,9 @@ export const kent: Service<KentResult> = {
 
 	env(result: KentResult): Record<string, string> {
 		return {
-			N8N_SENTRY_DSN: result.meta.sentryDsn,
-			N8N_FRONTEND_SENTRY_DSN: result.meta.frontendDsn,
-			N8N_SENTRY_TRACES_SAMPLE_RATE: '1.0',
+			MNI_SENTRY_DSN: result.meta.sentryDsn,
+			MNI_FRONTEND_SENTRY_DSN: result.meta.frontendDsn,
+			MNI_SENTRY_TRACES_SAMPLE_RATE: '1.0',
 			ENVIRONMENT: 'test',
 			DEPLOYMENT_NAME: 'e2e-test-deployment',
 		};

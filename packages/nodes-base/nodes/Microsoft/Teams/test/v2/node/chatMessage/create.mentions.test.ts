@@ -32,7 +32,7 @@ describe('Test MicrosoftTeamsV2, chatMessage => create with mentions', () => {
 					'<at id="0">Ada &amp; Byron</at> Hello!<br><br><em> Powered by <a href="',
 				) &&
 				content.includes(
-					'utm_source=n8n-internal&utm_medium=powered_by&utm_campaign=n8n-nodes-base.microsoftTeams',
+					'utm_source=MNI-internal&utm_medium=powered_by&utm_campaign=MNI-nodes-base.microsoftTeams',
 				) &&
 				content.endsWith('">this MNI workflow</a> </em>') &&
 				mentions.length === 1 &&
@@ -57,7 +57,7 @@ describe('Test MicrosoftTeamsV2, chatMessage => create with mentions', () => {
 			body: {
 				contentType: 'html',
 				content:
-					'<at id="0">Ada &amp; Byron</at> Hello!<br>\n<br>\n<em> Powered by <a href="http://localhost:5678/workflow/i3NYGF0LXV4qDFV9?utm_source=n8n-internal&amp;utm_medium=powered_by&amp;utm_campaign=n8n-nodes-base.microsoftTeams">this MNI workflow</a> </em>',
+					'<at id="0">Ada &amp; Byron</at> Hello!<br>\n<br>\n<em> Powered by <a href="http://localhost:5678/workflow/i3NYGF0LXV4qDFV9?utm_source=MNI-internal&amp;utm_medium=powered_by&amp;utm_campaign=MNI-nodes-base.microsoftTeams">this MNI workflow</a> </em>',
 			},
 			attachments: [],
 			mentions: [

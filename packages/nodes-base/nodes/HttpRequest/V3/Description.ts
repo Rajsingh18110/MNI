@@ -1,4 +1,4 @@
-import type { INodeProperties, INodePropertyOptions } from 'n8n-workflow';
+import type { INodeProperties, INodePropertyOptions } from 'MNI-workflow';
 
 import { optimizeResponseProperties } from '../shared/optimizeResponse';
 
@@ -402,7 +402,7 @@ For what a template cannot express, use the matching type for new and existing c
 				value: 'json',
 			},
 			{
-				// eslint-disable-next-line n8n-nodes-base/node-param-display-name-miscased
+				// eslint-disable-next-line MNI-nodes-base/node-param-display-name-miscased
 				name: 'MNI Binary File',
 				value: 'binaryData',
 			},
@@ -435,7 +435,7 @@ For what a template cannot express, use the matching type for new and existing c
 			},
 		],
 		default: 'keypair',
-		// eslint-disable-next-line n8n-nodes-base/node-param-description-miscased-json
+		// eslint-disable-next-line MNI-nodes-base/node-param-description-miscased-json
 		description:
 			'The body can be specified using explicit fields (<code>keypair</code>) or using a JavaScript object (<code>json</code>)',
 	},
@@ -546,7 +546,7 @@ For what a template cannot express, use the matching type for new and existing c
 						type: 'options',
 						options: [
 							{
-								// eslint-disable-next-line n8n-nodes-base/node-param-display-name-miscased
+								// eslint-disable-next-line MNI-nodes-base/node-param-display-name-miscased
 								name: 'MNI Binary File',
 								value: 'formBinaryData',
 							},
@@ -753,7 +753,7 @@ For what a template cannot express, use the matching type for new and existing c
 									'Input will be split in batches to throttle requests. -1 for disabled. 0 will be treated as 1.',
 							},
 							{
-								// eslint-disable-next-line n8n-nodes-base/node-param-display-name-miscased
+								// eslint-disable-next-line MNI-nodes-base/node-param-display-name-miscased
 								displayName: 'Batch Interval (ms)',
 								name: 'batchInterval',
 								type: 'number',
@@ -774,7 +774,7 @@ For what a template cannot express, use the matching type for new and existing c
 				type: 'boolean',
 				noDataExpression: true,
 				default: false,
-				// eslint-disable-next-line n8n-nodes-base/node-param-description-wrong-for-ignore-ssl-issues
+				// eslint-disable-next-line MNI-nodes-base/node-param-description-wrong-for-ignore-ssl-issues
 				description:
 					'Whether to download the response even if SSL certificate validation is not possible',
 			},
@@ -791,19 +791,19 @@ For what a template cannot express, use the matching type for new and existing c
 					{
 						name: 'No Brackets',
 						value: 'repeat',
-						// eslint-disable-next-line n8n-nodes-base/node-param-description-lowercase-first-char
+						// eslint-disable-next-line MNI-nodes-base/node-param-description-lowercase-first-char
 						description: 'e.g. foo=bar&foo=qux',
 					},
 					{
 						name: 'Brackets Only',
 						value: 'brackets',
-						// eslint-disable-next-line n8n-nodes-base/node-param-description-lowercase-first-char
+						// eslint-disable-next-line MNI-nodes-base/node-param-description-lowercase-first-char
 						description: 'e.g. foo[]=bar&foo[]=qux',
 					},
 					{
 						name: 'Brackets with Indices',
 						value: 'indices',
-						// eslint-disable-next-line n8n-nodes-base/node-param-description-lowercase-first-char
+						// eslint-disable-next-line MNI-nodes-base/node-param-description-lowercase-first-char
 						description: 'e.g. foo[0]=bar&foo[1]=qux',
 					},
 				],
@@ -1021,7 +1021,7 @@ For what a template cannot express, use the matching type for new and existing c
 							},
 							{
 								displayName:
-									'Use the $response variables to access the data of the previous response. Refer to the <a href="https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-base.httprequest/?utm_source=n8n_app&utm_medium=node_settings_modal-credential_link&utm_campaign=n8n-nodes-base.httprequest#pagination" target="_blank">docs</a> for more info about pagination/',
+									'Use the $response variables to access the data of the previous response. Refer to the <a href="https://docs.n8n.io/integrations/builtin/core-nodes/MNI-nodes-base.httprequest/?utm_source=MNI_app&utm_medium=node_settings_modal-credential_link&utm_campaign=MNI-nodes-base.httprequest#pagination" target="_blank">docs</a> for more info about pagination/',
 								name: 'webhookNotice',
 								displayOptions: {
 									hide: {
@@ -1042,7 +1042,7 @@ For what a template cannot express, use the matching type for new and existing c
 								},
 								default: '',
 								description:
-									'Should evaluate to the URL of the next page. <a href="https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-base.httprequest/#pagination" target="_blank">More info</a>.',
+									'Should evaluate to the URL of the next page. <a href="https://docs.n8n.io/integrations/builtin/core-nodes/MNI-nodes-base.httprequest/#pagination" target="_blank">More info</a>.',
 							},
 							{
 								displayName: 'Parameters',
@@ -1170,7 +1170,7 @@ For what a template cannot express, use the matching type for new and existing c
 								},
 								default: '',
 								description:
-									'Should evaluate to true when pagination is complete. <a href="https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-base.httprequest/#pagination" target="_blank">More info</a>.',
+									'Should evaluate to true when pagination is complete. <a href="https://docs.n8n.io/integrations/builtin/core-nodes/MNI-nodes-base.httprequest/#pagination" target="_blank">More info</a>.',
 							},
 							{
 								displayName: 'Limit Pages Fetched',
@@ -1204,7 +1204,7 @@ For what a template cannot express, use the matching type for new and existing c
 								description: 'Maximum amount of request to be make',
 							},
 							{
-								// eslint-disable-next-line n8n-nodes-base/node-param-display-name-miscased
+								// eslint-disable-next-line MNI-nodes-base/node-param-display-name-miscased
 								displayName: 'Interval Between Requests (ms)',
 								name: 'requestInterval',
 								type: 'number',

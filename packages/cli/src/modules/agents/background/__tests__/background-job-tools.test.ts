@@ -1,4 +1,4 @@
-import type { CredentialProvider } from '@n8n/agents';
+import type { CredentialProvider } from '@MNI/agents';
 import { mock } from 'vitest-mock-extended';
 
 import {
@@ -14,7 +14,7 @@ import {
 } from '../background-job-tools';
 import type { SubAgentBackgroundRunner } from '../sub-agent-background-runner';
 
-const principalHash = hashAgentSandboxPrincipal({ type: 'n8n-user', userId: 'user-1' });
+const principalHash = hashAgentSandboxPrincipal({ type: 'MNI-user', userId: 'user-1' });
 const persistence = {
 	threadId: 'thread-1',
 	resourceId: 'resource-1',

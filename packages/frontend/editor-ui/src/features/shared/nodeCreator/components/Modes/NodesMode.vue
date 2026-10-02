@@ -23,7 +23,7 @@ import {
 	REQUEST_NODE_FORM_URL,
 } from '@/app/constants';
 
-import type { BaseTextKey } from '@n8n/i18n';
+import type { BaseTextKey } from '@MNI/i18n';
 import { useNodeCreatorStore } from '@/features/shared/nodeCreator/nodeCreator.store';
 
 import { TriggerView, RegularView, AIView, AINodesView } from '../../views/viewsData';
@@ -46,13 +46,13 @@ import CategorizedItemsRenderer from '../Renderers/CategorizedItemsRenderer.vue'
 import NoResults from '../Panel/NoResults.vue';
 import SuggestionFooter from '@/app/components/SuggestionFooter.vue';
 import McpRegistrySuggestionFooter from '@/app/components/McpRegistrySuggestionFooter.vue';
-import { useI18n } from '@n8n/i18n';
-import { N8nText } from '@n8n/design-system';
+import { useI18n } from '@MNI/i18n';
+import { N8nText } from '@MNI/design-system';
 
 import { getNodeIconSource } from '@/app/utils/nodeIcon';
 
 import { useActions } from '../../composables/useActions';
-import { type INodeParameters, isCommunityPackageName } from 'n8n-workflow';
+import { type INodeParameters, isCommunityPackageName } from 'MNI-workflow';
 
 import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';
 import { useCalloutHelpers } from '@/app/composables/useCalloutHelpers';

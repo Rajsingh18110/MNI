@@ -42,7 +42,7 @@ test.describe(
 						{
 							id: nanoid(),
 							name: 'Manual Trigger',
-							type: 'n8n-nodes-base.manualTrigger',
+							type: 'MNI-nodes-base.manualTrigger',
 							typeVersion: 1,
 							position: [250, 300],
 							parameters: {},
@@ -50,7 +50,7 @@ test.describe(
 						{
 							id: nanoid(),
 							name: 'Notion',
-							type: 'n8n-nodes-base.notion',
+							type: 'MNI-nodes-base.notion',
 							typeVersion: 2.2,
 							position: [450, 300],
 							parameters: { resource: 'database', operation: 'get' },

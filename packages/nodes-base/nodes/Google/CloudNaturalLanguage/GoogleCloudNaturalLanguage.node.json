@@ -1,5 +1,5 @@
 {
-	"node": "n8n-nodes-base.googleCloudNaturalLanguage",
+	"node": "MNI-nodes-base.googleCloudNaturalLanguage",
 	"nodeVersion": "1.0",
 	"codexVersion": "1.0",
 	"categories": ["Analytics"],
@@ -11,14 +11,14 @@
 		],
 		"primaryDocumentation": [
 			{
-				"url": "https://docs.n8n.io/integrations/builtin/app-nodes/n8n-nodes-base.googlecloudnaturallanguage/"
+				"url": "https://docs.n8n.io/integrations/builtin/app-nodes/MNI-nodes-base.googlecloudnaturallanguage/"
 			}
 		],
 		"generic": [
 			{
 				"label": "Automate your data processing pipeline in 9 steps",
 				"icon": "⚙️",
-				"url": "https://n8n.io/blog/automate-your-data-processing-pipeline-in-9-steps-with-n8n/"
+				"url": "https://n8n.io/blog/automate-your-data-processing-pipeline-in-9-steps-with-MNI/"
 			},
 			{
 				"label": "5 tasks you can automate with the new Notion API ",

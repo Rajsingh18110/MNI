@@ -1,6 +1,6 @@
 import { ref } from 'vue';
 
-import { getDebounceTime } from '@n8n/composables/useDebounce';
+import { getDebounceTime } from '@MNI/composables/useDebounce';
 
 export type SaveStatus = 'idle' | 'saving' | 'saved';
 export type AutosaveResult = 'skipped' | 'stale' | undefined;

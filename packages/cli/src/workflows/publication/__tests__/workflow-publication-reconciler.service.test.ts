@@ -1,12 +1,12 @@
-import type { Logger } from '@n8n/backend-common';
-import type { WorkflowsConfig } from '@n8n/config';
+import type { Logger } from '@MNI/backend-common';
+import type { WorkflowsConfig } from '@MNI/config';
 import type {
 	WorkflowEntity,
 	WorkflowPublicationOutbox,
 	WorkflowPublicationOutboxRepository,
 	WorkflowPublicationTriggerStatusRepository,
 	WorkflowRepository,
-} from '@n8n/db';
+} from '@MNI/db';
 import { mock } from 'vitest-mock-extended';
 import type {
 	ActiveWorkflowTriggers,
@@ -14,7 +14,7 @@ import type {
 	InstanceSettings,
 	Span,
 	Tracing,
-} from 'n8n-core';
+} from 'MNI-core';
 
 import type { EventService } from '@/events/event.service';
 import type { NonWebhookTriggerRegistrar } from '@/workflows/triggers/non-webhook-trigger-registrar';

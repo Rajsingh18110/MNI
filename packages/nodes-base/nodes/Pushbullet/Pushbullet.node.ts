@@ -7,8 +7,8 @@ import type {
 	INodePropertyOptions,
 	INodeType,
 	INodeTypeDescription,
-} from 'n8n-workflow';
-import { NodeConnectionTypes } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeConnectionTypes } from 'MNI-workflow';
 
 import { pushbulletApiRequest, pushbulletApiRequestAllItems } from './GenericFunctions';
 
@@ -308,7 +308,7 @@ export class Pushbullet implements INodeType {
 						name: 'active',
 						type: 'boolean',
 						default: false,
-						// eslint-disable-next-line n8n-nodes-base/node-param-description-boolean-without-whether
+						// eslint-disable-next-line MNI-nodes-base/node-param-description-boolean-without-whether
 						description: "Don't return deleted pushes",
 					},
 					{

@@ -1,5 +1,5 @@
 import type { Ref } from 'vue';
-import type { Workflow, WorkflowExpression } from 'n8n-workflow';
+import type { Workflow, WorkflowExpression } from 'MNI-workflow';
 
 // --- Composable ---
 

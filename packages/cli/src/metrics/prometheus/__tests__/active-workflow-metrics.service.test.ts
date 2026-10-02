@@ -1,6 +1,6 @@
-import { mockInstance } from '@n8n/backend-test-utils';
-import { PrometheusMetricsConfig } from '@n8n/config';
-import type { WorkflowRepository } from '@n8n/db';
+import { mockInstance } from '@MNI/backend-test-utils';
+import { PrometheusMetricsConfig } from '@MNI/config';
+import type { WorkflowRepository } from '@MNI/db';
 import { mock } from 'vitest-mock-extended';
 import promClient from 'prom-client';
 
@@ -12,7 +12,7 @@ vi.mock('prom-client');
 
 describe('PrometheusActiveWorkflowMetricsService', () => {
 	const config = mockInstance(PrometheusMetricsConfig, {
-		prefix: 'n8n_',
+		prefix: 'MNI_',
 		activeWorkflowCountInterval: 30,
 	});
 	const workflowRepository = mock<WorkflowRepository>();
@@ -20,7 +20,7 @@ describe('PrometheusActiveWorkflowMetricsService', () => {
 	let service: PrometheusActiveWorkflowMetricsService;
 
 	beforeEach(() => {
-		Object.assign(config, { prefix: 'n8n_', activeWorkflowCountInterval: 30 });
+		Object.assign(config, { prefix: 'MNI_', activeWorkflowCountInterval: 30 });
 		service = new PrometheusActiveWorkflowMetricsService(config, workflowRepository, cacheService);
 	});
 
@@ -40,7 +40,7 @@ describe('PrometheusActiveWorkflowMetricsService', () => {
 			service.init();
 
 			expect(promClient.Gauge).toHaveBeenCalledWith({
-				name: 'n8n_active_workflow_count',
+				name: 'MNI_active_workflow_count',
 				help: 'Total number of active workflows.',
 				collect: expect.any(Function) as unknown,
 			});

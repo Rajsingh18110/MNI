@@ -1,16 +1,16 @@
 import type { Mock } from 'vitest';
-import { safeJoinPath, type Logger } from '@n8n/backend-common';
+import { safeJoinPath, type Logger } from '@MNI/backend-common';
 import type {
 	CredentialsRepository,
 	SharedWorkflowRepository,
 	TagRepository,
 	UserRepository,
 	WorkflowRepository,
-} from '@n8n/db';
-import { type DataSource, type EntityManager } from '@n8n/typeorm';
+} from '@MNI/db';
+import { type DataSource, type EntityManager } from '@MNI/typeorm';
 import { readdir, readFile } from 'fs/promises';
 import { mock } from 'vitest-mock-extended';
-import type { Cipher } from 'n8n-core';
+import type { Cipher } from 'MNI-core';
 
 import type { DataTableDDLService } from '@/modules/data-table/data-table-ddl.service';
 import type { WorkflowIndexService } from '@/modules/workflow-index/workflow-index.service';
@@ -30,13 +30,13 @@ vi.mock('fs', async (importOriginal) => ({
 	existsSync: vi.fn(),
 }));
 
-vi.mock('@n8n/backend-common', async (importOriginal) => ({
-	...(await importOriginal<typeof import('@n8n/backend-common')>()),
+vi.mock('@MNI/backend-common', async (importOriginal) => ({
+	...(await importOriginal<typeof import('@MNI/backend-common')>()),
 	safeJoinPath: vi.fn(),
 }));
 
-vi.mock('@n8n/db', async (importOriginal) => ({
-	...(await importOriginal<typeof import('@n8n/db')>()),
+vi.mock('@MNI/db', async (importOriginal) => ({
+	...(await importOriginal<typeof import('@MNI/db')>()),
 	CredentialsRepository: mock<CredentialsRepository>(),
 	TagRepository: mock<TagRepository>(),
 	DataSource: mock<DataSource>(),
@@ -828,7 +828,7 @@ describe('ImportService', () => {
 			const dbMigrations = [{ id: '1', timestamp: '1000', name: 'TestMigration' }];
 
 			// @ts-expect-error Accessing private property for testing
-			mockDataSource.options = { type: 'sqlite', entityPrefix: 'n8n_' };
+			mockDataSource.options = { type: 'sqlite', entityPrefix: 'MNI_' };
 
 			vi.mocked(readFile).mockResolvedValue(migrationsContent);
 			vi.mocked(mockDataSource.query).mockResolvedValue(dbMigrations);
@@ -836,7 +836,7 @@ describe('ImportService', () => {
 			await expect(importService.validateMigrations('/test/input')).resolves.not.toThrow();
 
 			expect(mockDataSource.query).toHaveBeenCalledWith(
-				'SELECT * FROM "n8n_migrations" ORDER BY timestamp DESC LIMIT 1',
+				'SELECT * FROM "MNI_migrations" ORDER BY timestamp DESC LIMIT 1',
 			);
 		});
 
@@ -1069,13 +1069,13 @@ describe('ImportService', () => {
 
 		it('should respect the table prefix when querying the registry', async () => {
 			// @ts-expect-error overriding for the test
-			mockDataSource.options = { type: 'sqlite', entityPrefix: 'n8n_' };
+			mockDataSource.options = { type: 'sqlite', entityPrefix: 'MNI_' };
 			mockEntityManager.query = vi.fn().mockResolvedValue([]);
 
 			await importService.dropExistingDataTableUserTables(mockEntityManager);
 
 			expect(mockEntityManager.query).toHaveBeenCalledWith(
-				expect.stringContaining('"n8n_data_table"'),
+				expect.stringContaining('"MNI_data_table"'),
 			);
 		});
 	});
@@ -1303,7 +1303,7 @@ describe('ImportService', () => {
 		}
 
 		function makeExecuteWorkflowNode(id: string, calleeId: string) {
-			return makeNode(id, 'n8n-nodes-base.executeWorkflow', {
+			return makeNode(id, 'MNI-nodes-base.executeWorkflow', {
 				workflowId: calleeId,
 			});
 		}
@@ -1398,7 +1398,7 @@ describe('ImportService', () => {
 		});
 
 		it('should handle resource-locator workflowId format in nodes', () => {
-			const node = makeNode('n1', 'n8n-nodes-base.executeWorkflow', {
+			const node = makeNode('n1', 'MNI-nodes-base.executeWorkflow', {
 				workflowId: { __rl: true, value: 'B', mode: 'list' },
 			});
 			const workflows = [makeWorkflow('A', [node]), makeWorkflow('B')];

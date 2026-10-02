@@ -1,5 +1,5 @@
 import { readFileSync } from 'fs';
-import { jsonParse } from 'n8n-workflow';
+import { jsonParse } from 'MNI-workflow';
 import { join } from 'path';
 
 import { runSharedChannelIntegrationContract } from './helpers/channel-integration-contract';

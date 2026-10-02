@@ -1,17 +1,17 @@
-import { Memoized } from '@n8n/decorators';
+import { Memoized } from '@MNI/decorators';
 import callsites from 'callsites';
 import glob from 'fast-glob';
 import { mock } from './mock-extended';
 import isEmpty from 'lodash/isEmpty';
-import { createDeferredPromise } from '@n8n/utils/promise/deferred-promise';
+import { createDeferredPromise } from '@MNI/utils/promise/deferred-promise';
 import type {
 	ICredentialDataDecryptedObject,
 	IRun,
 	IWorkflowBase,
 	IWorkflowExecuteAdditionalData,
 	WorkflowTestData,
-} from 'n8n-workflow';
-import { createRunExecutionData, UnexpectedError, Workflow } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { createRunExecutionData, UnexpectedError, Workflow } from 'MNI-workflow';
 import nock from 'nock';
 import { readFileSync, mkdtempSync, existsSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
@@ -92,7 +92,7 @@ export class NodeTestHarness {
 
 	@Memoized
 	get temporaryDir() {
-		const dir = mkdtempSync(path.join(tmpdir(), 'n8n-'));
+		const dir = mkdtempSync(path.join(tmpdir(), 'MNI-'));
 		afterAll(() => rmSync(dir, { recursive: true }));
 		return dir;
 	}

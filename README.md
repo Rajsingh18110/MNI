@@ -4,7 +4,7 @@
 
 Fair-code platform to build and deploy AI agents and workflows. Combine a visual canvas with custom code, run it self-hosted or in the cloud, and connect to 1500+ integrations. AI automation you can trust with real work, from prototype to production.
 
-*(This is the MNI fork of n8n. MNI is built upon the upstream MNI architecture.)*
+*(This is the MNI fork of MNI. MNI is built upon the upstream MNI architecture.)*
 
 ## Key Capabilities
 
@@ -29,7 +29,7 @@ Or deploy manually with Docker:
 
 ```
 docker volume create mni_data
-docker run -it --rm --name mni -p 5678:5678 -v mni_data:/home/node/.n8n your_registry/mni
+docker run -it --rm --name mni -p 5678:5678 -v mni_data:/home/node/.MNI your_registry/mni
 ```
 
 Access the editor at http://localhost:5678
@@ -50,7 +50,7 @@ Need help? Our upstream community forum is the place to get support and connect 
 
 ## License
 
-MNI is a fork of n8n. MNI is [fair-code](https://faircode.io) distributed under the [Sustainable Use License](https://github.com/n8n-io/n8n/blob/master/LICENSE.md) and [MNI Enterprise License](https://github.com/n8n-io/n8n/blob/master/LICENSE_EE.md).
+MNI is a fork of MNI. MNI is [fair-code](https://faircode.io) distributed under the [Sustainable Use License](https://github.com/MNI-io/MNI/blob/master/LICENSE.md) and [MNI Enterprise License](https://github.com/MNI-io/MNI/blob/master/LICENSE_EE.md).
 
 - **Source Available**: Always visible source code
 - **Self-Hostable**: Deploy anywhere
@@ -60,4 +60,4 @@ Additional information about the license model can be found in the upstream [doc
 
 ## Contributing
 
-Found a bug 🐛 or have a feature idea ✨? Check our [Contributing Guide](https://github.com/n8n-io/n8n/blob/master/CONTRIBUTING.md) for a setup guide & best practices.
+Found a bug 🐛 or have a feature idea ✨? Check our [Contributing Guide](https://github.com/MNI-io/MNI/blob/master/CONTRIBUTING.md) for a setup guide & best practices.

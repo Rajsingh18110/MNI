@@ -1,5 +1,5 @@
 import { randomBytes } from 'crypto';
-import type { IHookFunctions, IWebhookFunctions } from 'n8n-workflow';
+import type { IHookFunctions, IWebhookFunctions } from 'MNI-workflow';
 
 import { CalTrigger } from '../CalTrigger.node';
 import { verifySignature } from '../CalTriggerHelpers';

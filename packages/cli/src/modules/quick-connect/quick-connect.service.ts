@@ -1,6 +1,6 @@
-import { Logger } from '@n8n/backend-common';
-import type { User } from '@n8n/db';
-import { Container, Service } from '@n8n/di';
+import { Logger } from '@MNI/backend-common';
+import type { User } from '@MNI/db';
+import { Container, Service } from '@MNI/di';
 
 import { BadRequestError } from '@/errors/response-errors/bad-request.error';
 

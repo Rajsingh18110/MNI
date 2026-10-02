@@ -6,8 +6,8 @@ import type {
 	INodePropertyOptions,
 	INodeType,
 	INodeTypeDescription,
-} from 'n8n-workflow';
-import { NodeConnectionTypes } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeConnectionTypes } from 'MNI-workflow';
 
 import { googleApiRequest } from './GenericFunctions';
 
@@ -20,7 +20,7 @@ export class GoogleTranslate implements INodeType {
 	description: INodeTypeDescription = {
 		displayName: 'Google Translate',
 		name: 'googleTranslate',
-		// eslint-disable-next-line n8n-nodes-base/node-class-description-icon-not-svg
+		// eslint-disable-next-line MNI-nodes-base/node-class-description-icon-not-svg
 		icon: 'file:googletranslate.png',
 		group: ['input', 'output'],
 		version: [1, 2],
@@ -81,7 +81,7 @@ export class GoogleTranslate implements INodeType {
 				type: 'options',
 				options: [
 					{
-						// eslint-disable-next-line n8n-nodes-base/node-param-display-name-miscased
+						// eslint-disable-next-line MNI-nodes-base/node-param-display-name-miscased
 						name: 'OAuth2 (recommended)',
 						value: 'oAuth2',
 					},
@@ -147,7 +147,7 @@ export class GoogleTranslate implements INodeType {
 				},
 			},
 			{
-				// eslint-disable-next-line n8n-nodes-base/node-param-display-name-wrong-for-dynamic-options
+				// eslint-disable-next-line MNI-nodes-base/node-param-display-name-wrong-for-dynamic-options
 				displayName: 'Translate To',
 				name: 'translateTo',
 				type: 'options',

@@ -1,11 +1,11 @@
-import type { InstanceAiAdminSettingsResponse, InstanceAiProviderConnection } from '@n8n/api-types';
+import type { InstanceAiAdminSettingsResponse, InstanceAiProviderConnection } from '@MNI/api-types';
 
 import { buildSetupSnapshot } from '../instanceAiSetup.telemetry';
 
 const baseSettings = {
 	enabled: true,
 	sandboxEnabled: false,
-	sandboxProvider: 'n8n-sandbox',
+	sandboxProvider: 'MNI-sandbox',
 	daytonaCredentialId: null,
 	n8nSandboxCredentialId: null,
 	searchCredentialId: null,
@@ -79,7 +79,7 @@ describe('buildSetupSnapshot', () => {
 			model_provider: null,
 			model_name: 'gpt-4',
 			sandbox_source: 'env',
-			sandbox_type: 'n8n-sandbox',
+			sandbox_type: 'MNI-sandbox',
 			web_search_source: 'env',
 			web_search_provider: 'brave',
 		});

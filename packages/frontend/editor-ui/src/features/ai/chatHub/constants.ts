@@ -2,7 +2,7 @@ import type {
 	ChatHubLLMProvider,
 	ChatHubProvider,
 	ChatHubVectorStoreProvider,
-} from '@n8n/api-types';
+} from '@MNI/api-types';
 
 // Route and view identifiers
 export const CHAT_VIEW = 'chat';

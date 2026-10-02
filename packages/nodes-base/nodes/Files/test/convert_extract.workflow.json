@@ -5,7 +5,7 @@
       "parameters": {},
       "id": "35cce987-aa4f-4738-bfcd-b85098948341",
       "name": "When clicking \"Execute Workflow\"",
-      "type": "n8n-nodes-base.manualTrigger",
+      "type": "MNI-nodes-base.manualTrigger",
       "typeVersion": 1,
       "position": [
         680,
@@ -46,7 +46,7 @@
       },
       "id": "13305747-c966-4f46-90b3-ffff6835b714",
       "name": "Edit Fields",
-      "type": "n8n-nodes-base.set",
+      "type": "MNI-nodes-base.set",
       "typeVersion": 3.2,
       "position": [
         980,
@@ -59,7 +59,7 @@
       },
       "id": "b08b269d-0735-4dc4-b5a7-7870f5e115f9",
       "name": "Convert to File",
-      "type": "n8n-nodes-base.convertToFile",
+      "type": "MNI-nodes-base.convertToFile",
       "typeVersion": 1,
       "position": [
         1380,
@@ -73,7 +73,7 @@
       },
       "id": "c68c209f-771f-4d25-b832-3d55ee97e6ff",
       "name": "Convert to File1",
-      "type": "n8n-nodes-base.convertToFile",
+      "type": "MNI-nodes-base.convertToFile",
       "typeVersion": 1,
       "position": [
         1380,
@@ -87,7 +87,7 @@
       },
       "id": "2b6f27ed-a4dc-4a29-905f-f0a921ea6ee7",
       "name": "Convert to File2",
-      "type": "n8n-nodes-base.convertToFile",
+      "type": "MNI-nodes-base.convertToFile",
       "typeVersion": 1,
       "position": [
         1380,
@@ -102,7 +102,7 @@
       },
       "id": "cd482d12-7547-4eb6-880b-bd2c31ef06d5",
       "name": "Convert to File3",
-      "type": "n8n-nodes-base.convertToFile",
+      "type": "MNI-nodes-base.convertToFile",
       "typeVersion": 1,
       "position": [
         1380,
@@ -116,7 +116,7 @@
       },
       "id": "1fd693e3-4286-49f4-ba45-70584c1d67f7",
       "name": "Convert to File5",
-      "type": "n8n-nodes-base.convertToFile",
+      "type": "MNI-nodes-base.convertToFile",
       "typeVersion": 1,
       "position": [
         1380,
@@ -129,7 +129,7 @@
       },
       "id": "636866e9-ca0d-44a3-b27a-90cf33e26485",
       "name": "Extract From File",
-      "type": "n8n-nodes-base.extractFromFile",
+      "type": "MNI-nodes-base.extractFromFile",
       "typeVersion": 1,
       "position": [
         1600,
@@ -143,7 +143,7 @@
       },
       "id": "5c66b2ea-94b2-4a1b-a34d-acb07fe33e13",
       "name": "Extract From File1",
-      "type": "n8n-nodes-base.extractFromFile",
+      "type": "MNI-nodes-base.extractFromFile",
       "typeVersion": 1,
       "position": [
         1600,
@@ -157,7 +157,7 @@
       },
       "id": "a03752f0-e3bb-4dd3-9aae-dc4d1471c281",
       "name": "Extract From File2",
-      "type": "n8n-nodes-base.extractFromFile",
+      "type": "MNI-nodes-base.extractFromFile",
       "typeVersion": 1,
       "position": [
         1600,
@@ -171,7 +171,7 @@
       },
       "id": "eb10c006-60d7-4842-b9e5-a364f42dd1ab",
       "name": "Extract From File3",
-      "type": "n8n-nodes-base.extractFromFile",
+      "type": "MNI-nodes-base.extractFromFile",
       "typeVersion": 1,
       "position": [
         1600,
@@ -185,7 +185,7 @@
       },
       "id": "64c98172-2a77-4e83-b19b-232899df8113",
       "name": "Extract From File4",
-      "type": "n8n-nodes-base.extractFromFile",
+      "type": "MNI-nodes-base.extractFromFile",
       "typeVersion": 1,
       "position": [
         1600,
@@ -199,7 +199,7 @@
       },
       "id": "edbfd57e-d36b-470d-9e8d-9c7f67c131b4",
       "name": "Convert to File6",
-      "type": "n8n-nodes-base.convertToFile",
+      "type": "MNI-nodes-base.convertToFile",
       "typeVersion": 1,
       "position": [
         1380,
@@ -213,7 +213,7 @@
       },
       "id": "86713806-8dc6-45ec-a710-e80b839ec193",
       "name": "Extract From File5",
-      "type": "n8n-nodes-base.extractFromFile",
+      "type": "MNI-nodes-base.extractFromFile",
       "typeVersion": 1,
       "position": [
         1600,
@@ -235,7 +235,7 @@
       },
       "id": "c205d380-2459-4d16-bb56-f862c53c25de",
       "name": "Edit Fields1",
-      "type": "n8n-nodes-base.set",
+      "type": "MNI-nodes-base.set",
       "typeVersion": 3.2,
       "position": [
         980,
@@ -250,7 +250,7 @@
       },
       "id": "3f5fe04c-63cf-47d0-a7ca-d427b95a0c52",
       "name": "Convert to File7",
-      "type": "n8n-nodes-base.convertToFile",
+      "type": "MNI-nodes-base.convertToFile",
       "typeVersion": 1,
       "position": [
         1380,
@@ -264,7 +264,7 @@
       },
       "id": "dbb4eae0-f0ee-4453-aed7-7d8322974c94",
       "name": "Extract From File6",
-      "type": "n8n-nodes-base.extractFromFile",
+      "type": "MNI-nodes-base.extractFromFile",
       "typeVersion": 1,
       "position": [
         1600,
@@ -278,7 +278,7 @@
       },
       "id": "e3bf810d-7795-4663-82d1-768f76adc0d9",
       "name": "Convert to File8",
-      "type": "n8n-nodes-base.convertToFile",
+      "type": "MNI-nodes-base.convertToFile",
       "typeVersion": 1,
       "position": [
         1380,
@@ -292,7 +292,7 @@
       },
       "id": "7713d273-2d51-4e3e-8ac9-9a4e6013c690",
       "name": "Extract From File7",
-      "type": "n8n-nodes-base.extractFromFile",
+      "type": "MNI-nodes-base.extractFromFile",
       "typeVersion": 1,
       "position": [
         1600,
@@ -306,7 +306,7 @@
       },
       "id": "631b29cb-dcde-42cc-a514-45622923dab6",
       "name": "Convert to File9",
-      "type": "n8n-nodes-base.convertToFile",
+      "type": "MNI-nodes-base.convertToFile",
       "typeVersion": 1,
       "position": [
         1380,
@@ -320,7 +320,7 @@
       },
       "id": "168b6586-c89d-4b0e-880e-4ddb8ea7cb2f",
       "name": "Extract From File8",
-      "type": "n8n-nodes-base.extractFromFile",
+      "type": "MNI-nodes-base.extractFromFile",
       "typeVersion": 1,
       "position": [
         1600,
@@ -339,7 +339,7 @@
       },
       "id": "2ba4acd9-2677-4b25-9379-48433ac5e9cc",
       "name": "Convert to File10",
-      "type": "n8n-nodes-base.convertToFile",
+      "type": "MNI-nodes-base.convertToFile",
       "typeVersion": 1,
       "position": [
         1380,
@@ -353,7 +353,7 @@
       },
       "id": "c0179d40-7de0-4e42-a6bf-97c5bb764665",
       "name": "Extract From File9",
-      "type": "n8n-nodes-base.extractFromFile",
+      "type": "MNI-nodes-base.extractFromFile",
       "typeVersion": 1,
       "position": [
         1600,
@@ -375,7 +375,7 @@
       },
       "id": "8ee98090-f3b0-41d5-8122-d27e5559738f",
       "name": "Edit Fields2",
-      "type": "n8n-nodes-base.set",
+      "type": "MNI-nodes-base.set",
       "typeVersion": 3.2,
       "position": [
         1820,

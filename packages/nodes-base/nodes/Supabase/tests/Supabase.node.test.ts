@@ -8,7 +8,7 @@ import {
 	type IPairedItemData,
 	NodeOperationError,
 	UserError,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import type { Mock } from 'vitest';
 import { mock, mockDeep } from 'vitest-mock-extended';
 
@@ -732,7 +732,7 @@ describe('Test Supabase Node', () => {
 
 				const tables = await node.methods.loadOptions.getTables.call(mockLoadOptionsFunctions);
 
-				// eslint-disable-next-line n8n-nodes-base/node-param-display-name-miscased
+				// eslint-disable-next-line MNI-nodes-base/node-param-display-name-miscased
 				expect(tables).toEqual([{ name: 'table', value: 'table' }]);
 			});
 		});
@@ -756,9 +756,9 @@ describe('Test Supabase Node', () => {
 					await node.methods.loadOptions.getTableColumns.call(mockLoadOptionsFunctions);
 
 				expect(columns).toEqual([
-					// eslint-disable-next-line n8n-nodes-base/node-param-display-name-miscased, n8n-nodes-base/node-param-display-name-miscased-id
+					// eslint-disable-next-line MNI-nodes-base/node-param-display-name-miscased, MNI-nodes-base/node-param-display-name-miscased-id
 					{ name: 'id - (integer)', value: 'id' },
-					// eslint-disable-next-line n8n-nodes-base/node-param-display-name-miscased
+					// eslint-disable-next-line MNI-nodes-base/node-param-display-name-miscased
 					{ name: 'email - (string)', value: 'email' },
 				]);
 			});
@@ -805,9 +805,9 @@ describe('Test Supabase Node', () => {
 
 				for (const columns of publicSchemaColumns) {
 					expect(columns).toEqual([
-						// eslint-disable-next-line n8n-nodes-base/node-param-display-name-miscased, n8n-nodes-base/node-param-display-name-miscased-id
+						// eslint-disable-next-line MNI-nodes-base/node-param-display-name-miscased, MNI-nodes-base/node-param-display-name-miscased-id
 						{ name: 'id - (integer)', value: 'id' },
-						// eslint-disable-next-line n8n-nodes-base/node-param-display-name-miscased
+						// eslint-disable-next-line MNI-nodes-base/node-param-display-name-miscased
 						{ name: 'email - (string)', value: 'email' },
 					]);
 				}

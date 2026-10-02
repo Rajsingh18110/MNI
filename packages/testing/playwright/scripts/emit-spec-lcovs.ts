@@ -4,8 +4,8 @@
  * `TN:`. These feed the impact map, letting a git diff select the E2E specs that
  * exercise the touched frontend code.
  *
- * Thin wrapper: the generic build kernel lives in @n8n/test-impact; this script
- * supplies the n8n-specific input dir + monocart coverage options, and feeds the
+ * Thin wrapper: the generic build kernel lives in @MNI/test-impact; this script
+ * supplies the MNI-specific input dir + monocart coverage options, and feeds the
  * raw page.coverage directly into the report.
  *
  * Frontend only: backend coverage is a shared worker-scoped process with no
@@ -15,7 +15,7 @@ import { createReadStream } from 'node:fs';
 import { join } from 'node:path';
 import { createInterface } from 'node:readline';
 
-import { emitPerSpecLcovs } from '@n8n/test-impact';
+import { emitPerSpecLcovs } from '@MNI/test-impact';
 import type { CoverageReport } from 'monocart-coverage-reports';
 
 import { addV8CoverageInBatches, BY_SPEC_DIR, coverageOptions } from '../coverage-options';

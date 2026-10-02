@@ -25,11 +25,11 @@ vi.mock('vue-router', async (importOriginal) => {
 	};
 });
 
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: () => mockToast,
 }));
 
-vi.mock('@n8n/i18n', async (importOriginal) => ({
+vi.mock('@MNI/i18n', async (importOriginal) => ({
 	...(await importOriginal()),
 	useI18n: () => ({
 		baseText: (key: string) => {

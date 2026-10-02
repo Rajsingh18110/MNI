@@ -1,13 +1,13 @@
-import type { Logger } from '@n8n/backend-common';
-import { mockLogger } from '@n8n/backend-test-utils';
-import type { GlobalConfig } from '@n8n/config';
-import type { SettingsRepository } from '@n8n/db';
+import type { Logger } from '@MNI/backend-common';
+import { mockLogger } from '@MNI/backend-test-utils';
+import type { GlobalConfig } from '@MNI/config';
+import type { SettingsRepository } from '@MNI/db';
 import { LicenseManager } from '@n8n_io/license-sdk';
-import type { InstanceSettings } from 'n8n-core';
+import type { InstanceSettings } from 'MNI-core';
 import type { MockedClass } from 'vitest';
 import { mock } from 'vitest-mock-extended';
 
-import { N8N_VERSION } from '@/constants';
+import { MNI_VERSION } from '@/constants';
 import { License } from '@/license';
 
 vi.mock('@n8n_io/license-sdk');
@@ -58,7 +58,7 @@ describe('License', () => {
 				offlineMode: false,
 				renewOnInit: true,
 				deviceFingerprint: expect.any(Function),
-				productIdentifier: `n8n-${N8N_VERSION}`,
+				productIdentifier: `MNI-${MNI_VERSION}`,
 				loadCertStr: expect.any(Function),
 				saveCertStr: expect.any(Function),
 				onFeatureChange: expect.any(Function),
@@ -90,7 +90,7 @@ describe('License', () => {
 				offlineMode: true,
 				renewOnInit: false,
 				deviceFingerprint: expect.any(Function),
-				productIdentifier: `n8n-${N8N_VERSION}`,
+				productIdentifier: `MNI-${MNI_VERSION}`,
 				loadCertStr: expect.any(Function),
 				saveCertStr: expect.any(Function),
 				onFeatureChange: expect.any(Function),
@@ -436,7 +436,7 @@ describe('License', () => {
 	});
 
 	describe('init', () => {
-		it('when leader main with N8N_LICENSE_AUTO_RENEW_ENABLED=true, should enable renewal', async () => {
+		it('when leader main with MNI_LICENSE_AUTO_RENEW_ENABLED=true, should enable renewal', async () => {
 			const globalConfig = mock<GlobalConfig>({
 				license: { ...licenseConfig, autoRenewalEnabled: true },
 			});
@@ -456,17 +456,17 @@ describe('License', () => {
 
 		it.each([
 			{
-				scenario: 'when leader main with N8N_LICENSE_AUTO_RENEW_ENABLED=false',
+				scenario: 'when leader main with MNI_LICENSE_AUTO_RENEW_ENABLED=false',
 				isLeader: true,
 				autoRenewalEnabled: false,
 			},
 			{
-				scenario: 'when follower main with N8N_LICENSE_AUTO_RENEW_ENABLED=true',
+				scenario: 'when follower main with MNI_LICENSE_AUTO_RENEW_ENABLED=true',
 				isLeader: false,
 				autoRenewalEnabled: true,
 			},
 			{
-				scenario: 'when follower main with N8N_LICENSE_AUTO_RENEW_ENABLED=false',
+				scenario: 'when follower main with MNI_LICENSE_AUTO_RENEW_ENABLED=false',
 				isLeader: false,
 				autoRenewalEnabled: false,
 			},
@@ -494,7 +494,7 @@ describe('License', () => {
 			},
 		);
 
-		it('when CLI command with N8N_LICENSE_AUTO_RENEW_ENABLED=true, should enable renewal', async () => {
+		it('when CLI command with MNI_LICENSE_AUTO_RENEW_ENABLED=true, should enable renewal', async () => {
 			const globalConfig = mock<GlobalConfig>({
 				license: { ...licenseConfig, autoRenewalEnabled: true },
 			});

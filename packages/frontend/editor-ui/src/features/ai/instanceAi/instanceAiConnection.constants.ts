@@ -2,7 +2,7 @@ import type {
 	INSTANCE_AI_MODEL_CREDENTIAL_TYPES,
 	INSTANCE_AI_SEARCH_CREDENTIAL_TYPES,
 	InstanceAiSandboxProvider,
-} from '@n8n/api-types';
+} from '@MNI/api-types';
 
 import { SANDBOX_PROVIDER_LABELS } from './constants';
 
@@ -56,8 +56,8 @@ export const INSTANCE_AI_MODEL_PROVIDERS = [
 
 export const INSTANCE_AI_SANDBOX_PROVIDERS = [
 	{
-		id: 'n8n-sandbox',
-		label: SANDBOX_PROVIDER_LABELS['n8n-sandbox'],
+		id: 'MNI-sandbox',
+		label: SANDBOX_PROVIDER_LABELS['MNI-sandbox'],
 		onboardingLabel: 'MNI Sandbox',
 	},
 	{ id: 'daytona', label: SANDBOX_PROVIDER_LABELS.daytona, onboardingLabel: 'Daytona' },

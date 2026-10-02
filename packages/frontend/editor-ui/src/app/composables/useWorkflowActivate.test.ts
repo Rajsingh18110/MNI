@@ -1,6 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { setActivePinia, createPinia } from 'pinia';
-import type { PushMessage } from '@n8n/api-types';
+import type { PushMessage } from '@MNI/api-types';
 import { useWorkflowActivate } from './useWorkflowActivate';
 import { WORKFLOW_ACTIVE_MODAL_KEY } from '@/app/constants';
 
@@ -94,7 +94,7 @@ const mockSettingsImpl = vi.hoisted(() => ({
 	isMultiMain: false,
 }));
 
-vi.mock('@n8n/stores/settings.store', () => ({
+vi.mock('@MNI/stores/settings.store', () => ({
 	useSettingsStore: vi.fn(() => mockSettingsImpl),
 }));
 
@@ -127,13 +127,13 @@ vi.mock('@/app/composables/useExternalHooks', () => ({
 	useExternalHooks: vi.fn().mockReturnValue({ run: mockExternalHooksRun }),
 }));
 
-vi.mock('@n8n/composables/useTelemetry', () => ({
+vi.mock('@MNI/composables/useTelemetry', () => ({
 	useTelemetry: vi.fn().mockReturnValue({ track: vi.fn() }),
 }));
 
 const mockShowError = vi.hoisted(() => vi.fn());
 
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: vi.fn().mockReturnValue({ showError: mockShowError, showMessage: vi.fn() }),
 }));
 
@@ -150,7 +150,7 @@ vi.mock('@/app/composables/usePolicyViolationToast', () => ({
 // Models the "Don't show again" flag of the activation success modal.
 const mockActivationStorageFlag = vi.hoisted(() => ({ value: undefined as string | undefined }));
 
-vi.mock('@n8n/composables/useStorage', () => ({
+vi.mock('@MNI/composables/useStorage', () => ({
 	useStorage: vi.fn().mockReturnValue(mockActivationStorageFlag),
 }));
 
@@ -158,7 +158,7 @@ vi.mock('@/app/composables/useActivationError', () => ({
 	useActivationError: vi.fn().mockReturnValue({ errorMessage: { value: '' } }),
 }));
 
-vi.mock('@n8n/i18n', () => ({
+vi.mock('@MNI/i18n', () => ({
 	useI18n: vi.fn().mockReturnValue({ baseText: vi.fn().mockReturnValue('') }),
 }));
 

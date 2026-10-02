@@ -56,7 +56,7 @@ body:
     validations:
       required: true
   - type: input
-    id: n8n-version
+    id: MNI-version
     attributes:
       label: MNI version
       placeholder: ex. 1.25.0

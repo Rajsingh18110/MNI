@@ -1,4 +1,4 @@
-import type { BaseTextKey } from '@n8n/i18n';
+import type { BaseTextKey } from '@MNI/i18n';
 
 import { INSTANCE_AI_PROMPT_SUGGESTIONS_V2 } from '@/experiments/instanceAiPromptSuggestionsV2/suggestions';
 

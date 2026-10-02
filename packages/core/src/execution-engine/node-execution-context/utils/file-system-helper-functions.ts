@@ -4,16 +4,16 @@ import {
 	pathComponents,
 	pathSegmentsBetween,
 	safeJoinPath,
-} from '@n8n/backend-common';
-import { SecurityConfig } from '@n8n/config';
-import { Container } from '@n8n/di';
-import { NodeOperationError } from 'n8n-workflow';
+} from '@MNI/backend-common';
+import { SecurityConfig } from '@MNI/config';
+import { Container } from '@MNI/di';
+import { NodeOperationError } from 'MNI-workflow';
 import type {
 	FileSystemHelperFunctions,
 	INode,
 	PinnedDirectory,
 	ResolvedFilePath,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import type { PathLike } from 'node:fs';
 import { constants } from 'node:fs';
 import {
@@ -30,7 +30,7 @@ import { posix, dirname, basename, join } from 'node:path';
 
 import {
 	BINARY_DATA_STORAGE_PATH,
-	BLOCK_FILE_ACCESS_TO_N8N_FILES,
+	BLOCK_FILE_ACCESS_TO_MNI_FILES,
 	CONFIG_FILES,
 	CUSTOM_EXTENSION_ENV,
 	UM_EMAIL_TEMPLATES_INVITE,
@@ -86,7 +86,7 @@ function isFilePatternBlocked(resolvedFilePath: ResolvedFilePath): boolean {
 		.filter((pattern) => pattern)
 		.some((pattern) => {
 			try {
-				// eslint-disable-next-line n8n-local-rules/no-dynamic-regexp -- env var patterns
+				// eslint-disable-next-line MNI-local-rules/no-dynamic-regexp -- env var patterns
 				return new RegExp(pattern, 'mi').test(normalizedPath);
 			} catch {
 				return true;
@@ -126,7 +126,7 @@ async function ensureParentDirectoryWithoutFollowingSymlinks(
 
 function isFilePathBlocked(resolvedFilePath: ResolvedFilePath): boolean {
 	const allowedPaths = getAllowedPaths();
-	const blockFileAccessToN8nFiles = process.env[BLOCK_FILE_ACCESS_TO_N8N_FILES] !== 'false';
+	const blockFileAccessToN8nFiles = process.env[BLOCK_FILE_ACCESS_TO_MNI_FILES] !== 'false';
 
 	const restrictedPaths = blockFileAccessToN8nFiles ? getN8nRestrictedPaths() : [];
 	if (

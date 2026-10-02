@@ -57,14 +57,14 @@ jobs:
 
       - name: Export Node Types
         run: |
-          ./packages/cli/bin/MNI export:nodes --output ./packages/@n8n/ai-workflow-builder.ee/evaluations/nodes.json
+          ./packages/cli/bin/MNI export:nodes --output ./packages/@MNI/ai-workflow-builder.ee/evaluations/nodes.json
 
       - name: Run Discovery Evals
         id: eval
-        working-directory: packages/@n8n/instance-ai
+        working-directory: packages/@MNI/instance-ai
         env:
           ANTHROPIC_API_KEY: ${{ secrets.EVALS_ANTHROPIC_KEY }}
-          N8N_ENABLED_MODULES: agents,instance-ai
+          MNI_ENABLED_MODULES: agents,instance-ai
           LANGSMITH_TRACING: 'true'
           LANGSMITH_ENDPOINT: ${{ secrets.EVALS_LANGSMITH_ENDPOINT }}
           LANGSMITH_API_KEY: ${{ secrets.EVALS_LANGSMITH_API_KEY }}
@@ -81,7 +81,7 @@ jobs:
           pnpm eval:discovery "${EVAL_ARGS[@]}" 2>&1 | tee discovery-eval-output.txt
 
       - name: Post eval results to PR
-        if: ${{ always() && github.event.pull_request.number && hashFiles('packages/@n8n/instance-ai/discovery-eval-output.txt') != '' }}
+        if: ${{ always() && github.event.pull_request.number && hashFiles('packages/@MNI/instance-ai/discovery-eval-output.txt') != '' }}
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           EVAL_OUTCOME: ${{ steps.eval.outcome }}
@@ -101,7 +101,7 @@ jobs:
             echo "<details><summary>Eval output</summary>"
             echo ""
             echo '```'
-            cat packages/@n8n/instance-ai/discovery-eval-output.txt
+            cat packages/@MNI/instance-ai/discovery-eval-output.txt
             echo '```'
             echo ""
             echo "</details>"
@@ -121,5 +121,5 @@ jobs:
         uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0
         with:
           name: instance-ai-discovery-eval-results
-          path: packages/@n8n/instance-ai/discovery-eval-output.txt
+          path: packages/@MNI/instance-ai/discovery-eval-output.txt
           retention-days: 14

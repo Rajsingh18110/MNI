@@ -1,4 +1,4 @@
-import type { BuiltTool } from '@n8n/agents';
+import type { BuiltTool } from '@MNI/agents';
 
 import { buildToolRegistry } from '../tool-registry';
 
@@ -50,14 +50,14 @@ describe('buildToolRegistry', () => {
 		const r = buildToolRegistry([
 			mkTool('http-tool', {
 				kind: 'node',
-				nodeType: 'n8n-nodes-base.httpRequest',
+				nodeType: 'MNI-nodes-base.httpRequest',
 				nodeTypeVersion: 4.2,
 				displayName: 'HTTP Request',
 			}),
 		]);
 		expect(r.get('http-tool')).toEqual({
 			kind: 'node',
-			nodeType: 'n8n-nodes-base.httpRequest',
+			nodeType: 'MNI-nodes-base.httpRequest',
 			nodeTypeVersion: 4.2,
 			nodeDisplayName: 'HTTP Request',
 		});

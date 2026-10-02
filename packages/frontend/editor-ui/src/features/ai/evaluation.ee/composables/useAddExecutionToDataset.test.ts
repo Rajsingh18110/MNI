@@ -1,6 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { ref } from 'vue';
-import type { EvaluationConfigDto } from '@n8n/api-types';
+import type { EvaluationConfigDto } from '@MNI/api-types';
 
 import { ADD_EXECUTION_TO_DATASET_MODAL_KEY } from '@/app/constants';
 

@@ -1,6 +1,6 @@
 import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue';
 import { refDebounced } from '@vueuse/core';
-import { getDebounceTime } from '@n8n/composables/useDebounce';
+import { getDebounceTime } from '@MNI/composables/useDebounce';
 import { useIntersectionObserver } from '@/app/composables/useIntersectionObserver';
 import { DEBOUNCE_TIME } from '@/app/constants';
 import { useInstanceAiStore } from '../instanceAi.store';

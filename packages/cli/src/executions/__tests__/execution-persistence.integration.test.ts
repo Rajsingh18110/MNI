@@ -1,8 +1,8 @@
-import { createWorkflow, testDb } from '@n8n/backend-test-utils';
-import { ExecutionDataRepository, ExecutionRepository } from '@n8n/db';
-import type { IExecutionResponse } from '@n8n/db';
-import { Container } from '@n8n/di';
-import { createEmptyRunExecutionData } from 'n8n-workflow';
+import { createWorkflow, testDb } from '@MNI/backend-test-utils';
+import { ExecutionDataRepository, ExecutionRepository } from '@MNI/db';
+import type { IExecutionResponse } from '@MNI/db';
+import { Container } from '@MNI/di';
+import { createEmptyRunExecutionData } from 'MNI-workflow';
 
 import { DbStore } from '@/executions/execution-data/db-store';
 import { MissingExecutionDataError } from '@/executions/execution-data/missing-execution-data.error';

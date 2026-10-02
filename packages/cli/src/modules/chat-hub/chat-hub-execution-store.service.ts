@@ -1,11 +1,11 @@
-import type { ChatHubConversationModel, ChatMessageId, ChatSessionId } from '@n8n/api-types';
-import { Logger } from '@n8n/backend-common';
-import { ChatHubConfig, ExecutionsConfig, GlobalConfig } from '@n8n/config';
-import { Time } from '@n8n/constants';
-import { OnShutdown } from '@n8n/decorators';
-import { Service } from '@n8n/di';
+import type { ChatHubConversationModel, ChatMessageId, ChatSessionId } from '@MNI/api-types';
+import { Logger } from '@MNI/backend-common';
+import { ChatHubConfig, ExecutionsConfig, GlobalConfig } from '@MNI/config';
+import { Time } from '@MNI/constants';
+import { OnShutdown } from '@MNI/decorators';
+import { Service } from '@MNI/di';
 import type { Cluster, Redis } from 'ioredis';
-import { InstanceSettings } from 'n8n-core';
+import { InstanceSettings } from 'MNI-core';
 
 import { RedisClientService } from '@/services/redis-client.service';
 

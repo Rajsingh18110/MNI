@@ -1,6 +1,6 @@
 import { computed, nextTick, reactive, ref, triggerRef, watch } from 'vue';
 import { v4 as uuidv4 } from 'uuid';
-import { ResponseError } from '@n8n/rest-api-client';
+import { ResponseError } from '@MNI/rest-api-client';
 import {
 	buildDataTablesSessionGrantKey,
 	buildExecuteNodeSessionGrantKey,
@@ -31,18 +31,18 @@ import {
 	type AgentRunState,
 	type InstanceAiRunLimitReason,
 	type AiPreferencesAppliedPayload,
-} from '@n8n/api-types';
-import { isRecord } from '@n8n/utils/is-record';
-import { useRootStore } from '@n8n/stores/useRootStore';
+} from '@MNI/api-types';
+import { isRecord } from '@MNI/utils/is-record';
+import { useRootStore } from '@MNI/stores/useRootStore';
 import { useInstanceAiSettingsStore } from './instanceAiSettings.store';
 import {
 	redactTelemetryProperties,
 	TELEMETRY_EVENT,
 	type InferTelemetryProps,
-} from '@n8n/telemetry';
-import { useToast } from '@n8n/composables/useToast';
-import { useI18n } from '@n8n/i18n';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
+} from '@MNI/telemetry';
+import { useToast } from '@MNI/composables/useToast';
+import { useI18n } from '@MNI/i18n';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
 import { useWorkflowsListStore } from '@/app/stores/workflowsList.store';
 import type { IExecutionResponse } from '@/features/execution/executions/executions.types';
 import type { IWorkflowDb } from '@/Interface';
@@ -937,7 +937,7 @@ export function createThreadRuntime(
 	// --- Session "Always allow" ---
 	// Thread-scoped: cleared by `resetState()` so grants don't leak when the
 	// runtime is disposed and recreated. Prefer shared builders from
-	// `@n8n/api-types` so UI keys match persisted thread grants:
+	// `@MNI/api-types` so UI keys match persisted thread grants:
 	// `executions:run:<id>`, `executions:run-step:<id>:<node>`,
 	// `workflows:update:<id>`, `data-tables:<action>`.
 	// Fallback for other tools: `${toolName}:${args.action ?? ''}`.
@@ -1855,7 +1855,7 @@ export function createThreadRuntime(
 			// Surface the server's UserError text when present (e.g. "This
 			// confirmation was lost when the assistant restarted") so the user
 			// sees the actual reason instead of a generic "Try again". UserError
-			// from `n8n-workflow` is mapped to a 400 with the message in the
+			// from `MNI-workflow` is mapped to a 400 with the message in the
 			// response body — `ResponseError.message` exposes that here.
 			const status = error instanceof ResponseError ? error.httpStatusCode : undefined;
 			if (status === 400) {

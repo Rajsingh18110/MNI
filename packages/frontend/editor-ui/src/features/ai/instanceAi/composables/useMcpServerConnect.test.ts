@@ -10,13 +10,13 @@ import type { ICredentialsResponse } from '@/features/credentials/credentials.ty
 import { InstanceAiMcpConnection, useInstanceAiMcpStore } from '../instanceAiMcp.store';
 import { useMcpServerConnect } from './useMcpServerConnect';
 
-vi.mock('@n8n/i18n', async (importOriginal) => ({
+vi.mock('@MNI/i18n', async (importOriginal) => ({
 	...(await importOriginal<object>()),
 	i18n: { baseText: (key: string) => key },
 }));
 
 const { mockShowMessage } = vi.hoisted(() => ({ mockShowMessage: vi.fn() }));
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: () => ({ showMessage: mockShowMessage, showError: vi.fn() }),
 }));
 
@@ -341,7 +341,7 @@ describe('useMcpServerConnect', () => {
 				showAuthSelector: true,
 				contextNode: {
 					name: 'git-hub',
-					type: '@n8n/mcp-registry.gitHub',
+					type: '@MNI/mcp-registry.gitHub',
 					typeVersion: 1.1,
 				},
 			});

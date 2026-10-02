@@ -1,4 +1,4 @@
-import { Delete, Get, Patch, Post, RestController, GlobalScope } from '@n8n/decorators';
+import { Delete, Get, Patch, Post, RestController, GlobalScope } from '@MNI/decorators';
 
 import { NodeRequest } from '@/requests';
 

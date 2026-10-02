@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 import { computed } from 'vue';
 import { useRouter } from 'vue-router';
-import { useI18n } from '@n8n/i18n';
-import { isRecord } from '@n8n/utils/is-record';
+import { useI18n } from '@MNI/i18n';
+import { isRecord } from '@MNI/utils/is-record';
 import VueMarkdown from 'vue-markdown-render';
 import {
 	N8nButton,
@@ -14,8 +14,8 @@ import {
 	N8nCodeBlock,
 	N8nIcon,
 	N8nTooltip,
-} from '@n8n/design-system';
-import type { IconName } from '@n8n/design-system';
+} from '@MNI/design-system';
+import type { IconName } from '@MNI/design-system';
 import { convertToDisplayDate } from '@/app/utils/formatters/dateFormatter';
 import { VIEWS } from '@/app/constants/navigation';
 import { parseIntegrationActionCard } from '@/features/ai/shared/agentsChat/n8nChatInteraction';
@@ -474,7 +474,7 @@ const workflowFormOutput = computed((): { formUrl: string; message: string } | n
 </template>
 
 <style module lang="scss">
-@use '@n8n/design-system/css/mixins/markdown';
+@use '@MNI/design-system/css/mixins/markdown';
 
 .backgroundJobs {
 	padding-inline-start: var(--spacing--md);

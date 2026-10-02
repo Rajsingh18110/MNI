@@ -1,22 +1,22 @@
-import type { AgentEvalRunSummary } from '@n8n/api-types';
-import { Logger, ModuleRegistry } from '@n8n/backend-common';
-import { GlobalConfig } from '@n8n/config';
-import type { AgentEvalDataset, AgentEvalResult, User } from '@n8n/db';
+import type { AgentEvalRunSummary } from '@MNI/api-types';
+import { Logger, ModuleRegistry } from '@MNI/backend-common';
+import { GlobalConfig } from '@MNI/config';
+import type { AgentEvalDataset, AgentEvalResult, User } from '@MNI/db';
 import {
 	AgentEvalDatasetRepository,
 	AgentEvalResultRepository,
 	AgentEvalRunRepository,
-} from '@n8n/db';
-import { Service } from '@n8n/di';
-import { InstanceSettings } from 'n8n-core';
+} from '@MNI/db';
+import { Service } from '@MNI/di';
+import { InstanceSettings } from 'MNI-core';
 import type {
 	DataTableColumnJsType,
 	DataTableRow,
 	IDataObject,
 	JsonObject,
 	JsonValue,
-} from 'n8n-workflow';
-import { jsonParse, jsonStringify } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { jsonParse, jsonStringify } from 'MNI-workflow';
 import pLimit from 'p-limit';
 
 import { ConcurrencyControlService } from '@/concurrency/concurrency-control.service';

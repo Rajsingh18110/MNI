@@ -1,6 +1,6 @@
-import type { BreakingChangeVersion, MigrationFindingStatus } from '@n8n/api-types';
-import { DateTimeColumn, WithTimestamps } from '@n8n/db';
-import type { WorkflowEntity } from '@n8n/db';
+import type { BreakingChangeVersion, MigrationFindingStatus } from '@MNI/api-types';
+import { DateTimeColumn, WithTimestamps } from '@MNI/db';
+import type { WorkflowEntity } from '@MNI/db';
 import {
 	Column,
 	Entity,
@@ -9,7 +9,7 @@ import {
 	ManyToOne,
 	PrimaryGeneratedColumn,
 	type Relation,
-} from '@n8n/typeorm';
+} from '@MNI/typeorm';
 
 /**
  * One breaking-change finding: one workflow x one rule x one target version.

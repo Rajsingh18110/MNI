@@ -1,5 +1,5 @@
-import type { AuthenticatedRequest, Project } from '@n8n/db';
-import type { Role } from '@n8n/permissions';
+import type { AuthenticatedRequest, Project } from '@MNI/db';
+import type { Role } from '@MNI/permissions';
 import { mock } from 'vitest-mock-extended';
 
 import { NotFoundError } from '@/errors/response-errors/not-found.error';

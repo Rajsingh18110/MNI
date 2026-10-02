@@ -7,15 +7,15 @@ import { INSTANCE_AI_VIEW } from '@/features/ai/instanceAi/constants';
 import { RESOURCE_CENTER_EXPERIMENT } from '@/app/constants/experiments';
 
 import { setupServer } from '@/__tests__/server';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { usePostHog } from '@/app/stores/posthog.store';
-import { useRBACStore } from '@n8n/stores/rbac.store';
-import { useNotificationsStore } from '@n8n/stores/notifications.store';
-import { useRootStore } from '@n8n/stores/useRootStore';
-import { useUsersStore } from '@n8n/stores/users.store';
-import { get } from '@n8n/rest-api-client';
+import { useRBACStore } from '@MNI/stores/rbac.store';
+import { useNotificationsStore } from '@MNI/stores/notifications.store';
+import { useRootStore } from '@MNI/stores/useRootStore';
+import { useUsersStore } from '@MNI/stores/users.store';
+import { get } from '@MNI/rest-api-client';
 import { useSessionExpiryStore } from '@/app/stores/sessionExpiry.store';
-import type { Scope } from '@n8n/permissions';
+import type { Scope } from '@MNI/permissions';
 import type { RouteRecordName } from 'vue-router';
 import type { MockInstance } from 'vitest';
 import * as init from '@/app/init';
@@ -189,7 +189,7 @@ describe('router', () => {
 
 			settingsStore.settings.activeModules = ['dynamic-credentials'];
 			settingsStore.settings.envFeatureFlags = {
-				N8N_ENV_FEAT_DYNAMIC_CREDENTIALS: true,
+				MNI_ENV_FEAT_DYNAMIC_CREDENTIALS: true,
 			} as typeof settingsStore.settings.envFeatureFlags;
 			rbacStore.setGlobalScopes(scopes);
 
@@ -217,10 +217,10 @@ describe('router', () => {
 		expect(router.currentRoute.value.name).toBe(VIEWS.WORKFLOWS);
 	});
 
-	test('should redirect the old n8n-connect settings path to Gateway credits settings', async () => {
+	test('should redirect the old MNI-connect settings path to Gateway credits settings', async () => {
 		settingsStore.settings.aiGateway = { enabled: true, budget: 0, cloudUbbEnabled: false };
 
-		await router.push('/settings/n8n-connect');
+		await router.push('/settings/MNI-connect');
 
 		expect(router.currentRoute.value.name).toBe(VIEWS.AI_GATEWAY_SETTINGS);
 	});

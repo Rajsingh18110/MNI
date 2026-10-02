@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/unbound-method -- mock-based tests intentionally reference unbound methods */
-import type { UserRepository } from '@n8n/db';
+import type { UserRepository } from '@MNI/db';
 import { mock } from 'vitest-mock-extended';
 
 import type { CacheService } from '@/services/cache/cache.service';

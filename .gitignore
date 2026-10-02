@@ -32,7 +32,7 @@ packages/**/.turbo
 *.swp
 CHANGELOG-*.md
 *.mdx
-!packages/frontend/@n8n/design-system/**/*.mdx
+!packages/frontend/@MNI/design-system/**/*.mdx
 build-storybook.log
 build.log
 tcr-dry.log
@@ -50,9 +50,9 @@ packages/testing/playwright/a11y-report
 packages/testing/playwright/test-results
 packages/testing/playwright/results.xml
 packages/testing/playwright/eval-results.json
-packages/@n8n/instance-ai/eval-results.json
-packages/@n8n/instance-ai/.eval-output/
-packages/@n8n/instance-ai/eval-pr-comment.md
+packages/@MNI/instance-ai/eval-results.json
+packages/@MNI/instance-ai/.eval-output/
+packages/@MNI/instance-ai/eval-pr-comment.md
 packages/testing/playwright/.playwright-browsers
 packages/testing/playwright/.playwright-cli
 test-results/
@@ -86,12 +86,12 @@ packages/cli/src/commands/export/outputs
 .cursor/
 .superset
 .conductor
-.n8n
+.MNI
 lefthook-local.yml
 IMPROVEMENTS.md
 .playwright-mcp
 stryker.log
 
 # Generated migration indexes (scripts/generate-migration-index.mjs)
-packages/@n8n/db/src/migrations/sqlite/index.ts
-packages/@n8n/db/src/migrations/postgresdb/index.ts
+packages/@MNI/db/src/migrations/sqlite/index.ts
+packages/@MNI/db/src/migrations/postgresdb/index.ts

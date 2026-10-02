@@ -1,6 +1,6 @@
-import type { Logger } from '@n8n/backend-common';
-import type { HttpRequestClient, OutboundHttp } from '@n8n/backend-network';
-import type { GlobalConfig } from '@n8n/config';
+import type { Logger } from '@MNI/backend-common';
+import type { HttpRequestClient, OutboundHttp } from '@MNI/backend-network';
+import type { GlobalConfig } from '@MNI/config';
 import { mock } from 'vitest-mock-extended';
 
 import {

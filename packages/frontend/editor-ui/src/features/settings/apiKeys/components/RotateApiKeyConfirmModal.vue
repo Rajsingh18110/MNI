@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 import { computed } from 'vue';
-import { useI18n } from '@n8n/i18n';
-import type { ApiKey } from '@n8n/api-types';
-import { N8nAlertDialog } from '@n8n/design-system';
+import { useI18n } from '@MNI/i18n';
+import type { ApiKey } from '@MNI/api-types';
+import { N8nAlertDialog } from '@MNI/design-system';
 
 const props = defineProps<{
 	apiKey: ApiKey | null;

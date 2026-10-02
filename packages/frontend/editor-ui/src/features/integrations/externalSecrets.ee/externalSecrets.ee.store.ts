@@ -1,13 +1,13 @@
 import { computed, reactive } from 'vue';
 import { defineStore } from 'pinia';
 import { EnterpriseEditionFeature } from '@/app/constants';
-import { useRootStore } from '@n8n/stores/useRootStore';
-import { useSettingsStore } from '@n8n/stores/settings.store';
-import * as externalSecretsApi from '@n8n/rest-api-client';
-import { connectProvider } from '@n8n/rest-api-client';
-import { useRBACStore } from '@n8n/stores/rbac.store';
+import { useRootStore } from '@MNI/stores/useRootStore';
+import { useSettingsStore } from '@MNI/stores/settings.store';
+import * as externalSecretsApi from '@MNI/rest-api-client';
+import { connectProvider } from '@MNI/rest-api-client';
+import { useRBACStore } from '@MNI/stores/rbac.store';
 import { useProjectsStore } from '@/features/collaboration/projects/projects.store';
-import type { ExternalSecretsProvider } from '@n8n/api-types';
+import type { ExternalSecretsProvider } from '@MNI/api-types';
 
 /**
  * Transforms flat dot-notated secret keys into a nested object structure.

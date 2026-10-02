@@ -1,19 +1,19 @@
-import { Logger } from '@n8n/backend-common';
+import { Logger } from '@MNI/backend-common';
 import {
 	type HttpRequestClient,
 	isConnectionRefusedError,
 	isTransportFailure,
 	OutboundHttp,
-} from '@n8n/backend-network';
-import { Time } from '@n8n/constants';
-import { Container } from '@n8n/di';
+} from '@MNI/backend-network';
+import { Time } from '@MNI/constants';
+import { Container } from '@MNI/di';
 import {
 	type IDataObject,
 	type IHttpRequestMethods,
 	type IHttpRequestOptions,
 	type IN8nHttpFullResponse,
 	type INodeProperties,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import pLimit from 'p-limit';
 
 import { DOCS_HELP_NOTICE } from '../constants';

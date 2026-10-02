@@ -4,7 +4,7 @@ import {
 	createWorkflow,
 	testDb,
 	randomCredentialPayload,
-} from '@n8n/backend-test-utils';
+} from '@MNI/backend-test-utils';
 import {
 	CredentialsEntity,
 	CredentialsRepository,
@@ -12,8 +12,8 @@ import {
 	SharedWorkflowRepository,
 	UserRepository,
 	GLOBAL_OWNER_ROLE,
-} from '@n8n/db';
-import { Container } from '@n8n/di';
+} from '@MNI/db';
+import { Container } from '@MNI/di';
 
 import { Reset } from '@/commands/user-management/reset';
 import { LoadNodesAndCredentials } from '@/load-nodes-and-credentials';

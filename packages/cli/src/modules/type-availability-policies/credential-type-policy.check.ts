@@ -1,5 +1,5 @@
-import { LicenseState } from '@n8n/backend-common';
-import { LICENSE_FEATURES } from '@n8n/constants';
+import { LicenseState } from '@MNI/backend-common';
+import { LICENSE_FEATURES } from '@MNI/constants';
 import type {
 	ContentImportContext,
 	CredentialDecryptContext,
@@ -12,8 +12,8 @@ import type {
 	WorkflowSaveContext,
 	WorkflowStartContext,
 	WorkflowTransferContext,
-} from '@n8n/decorators';
-import { PolicyCheck } from '@n8n/decorators';
+} from '@MNI/decorators';
+import { PolicyCheck } from '@MNI/decorators';
 
 import { CREDENTIAL_TYPES_KIND } from './constants';
 import {

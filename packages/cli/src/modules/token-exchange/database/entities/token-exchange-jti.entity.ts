@@ -1,5 +1,5 @@
-import { DateTimeColumn } from '@n8n/db';
-import { Entity, PrimaryColumn } from '@n8n/typeorm';
+import { DateTimeColumn } from '@MNI/db';
+import { Entity, PrimaryColumn } from '@MNI/typeorm';
 
 @Entity('token_exchange_jti')
 export class TokenExchangeJti {

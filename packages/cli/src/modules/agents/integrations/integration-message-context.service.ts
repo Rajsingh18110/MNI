@@ -1,8 +1,8 @@
-import type { ToolContext } from '@n8n/agents';
-import { Logger } from '@n8n/backend-common';
-import { Service } from '@n8n/di';
-import { isRecord } from '@n8n/utils/is-record';
-import { jsonParse } from 'n8n-workflow';
+import type { ToolContext } from '@MNI/agents';
+import { Logger } from '@MNI/backend-common';
+import { Service } from '@MNI/di';
+import { isRecord } from '@MNI/utils/is-record';
+import { jsonParse } from 'MNI-workflow';
 
 import type {
 	IntegrationMessageContext,

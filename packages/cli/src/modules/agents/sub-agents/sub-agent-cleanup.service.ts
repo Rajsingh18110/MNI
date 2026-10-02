@@ -1,5 +1,5 @@
-import { Logger } from '@n8n/backend-common';
-import { Service } from '@n8n/di';
+import { Logger } from '@MNI/backend-common';
+import { Service } from '@MNI/di';
 
 import { AgentRuntimeCacheService } from '../agent-runtime-cache.service';
 import type { Agent } from '../entities/agent.entity';

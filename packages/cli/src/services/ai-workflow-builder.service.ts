@@ -1,33 +1,33 @@
-import type { ResourceLocatorCallbackFactory } from '@n8n/ai-workflow-builder';
+import type { ResourceLocatorCallbackFactory } from '@MNI/ai-workflow-builder';
 import {
 	AiWorkflowBuilderService,
 	createPassthroughSsrfGuard,
 	ChatPayload,
-} from '@n8n/ai-workflow-builder';
-import { Logger } from '@n8n/backend-common';
-import { OutboundHttp, SsrfProtectionService } from '@n8n/backend-network';
-import { GlobalConfig, SsrfProtectionConfig } from '@n8n/config';
-import { BUILTIN_NODES_PACKAGES } from '@n8n/constants';
-import { Service } from '@n8n/di';
+} from '@MNI/ai-workflow-builder';
+import { Logger } from '@MNI/backend-common';
+import { OutboundHttp, SsrfProtectionService } from '@MNI/backend-network';
+import { GlobalConfig, SsrfProtectionConfig } from '@MNI/config';
+import { BUILTIN_NODES_PACKAGES } from '@MNI/constants';
+import { Service } from '@MNI/di';
 import { AiAssistantClient } from '@n8n_io/ai-assistant-sdk';
 import * as fs from 'fs';
-import { InstanceSettings } from 'n8n-core';
+import { InstanceSettings } from 'MNI-core';
 import type {
 	INodeCredentials,
 	INodeParameters,
 	INodeTypeNameVersion,
 	IUser,
 	ITelemetryTrackProperties,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import * as path from 'path';
 
-import { N8N_VERSION } from '@/constants';
+import { MNI_VERSION } from '@/constants';
 import { License } from '@/license';
 import { LoadNodesAndCredentials } from '@/load-nodes-and-credentials';
 import { WorkflowBuilderSessionRepository } from '@/modules/workflow-builder';
 import { Push } from '@/push';
 import { DynamicNodeParametersService } from '@/services/dynamic-node-parameters.service';
-import { UrlService } from '@n8n/backend-services';
+import { UrlService } from '@MNI/backend-services';
 import { Telemetry } from '@/telemetry';
 import { createAiProxyFetch } from '@/utils/ai-proxy-fetch';
 import { getBase } from '@/workflow-execute-additional-data';
@@ -96,7 +96,7 @@ export class WorkflowBuilderService {
 				licenseCert,
 				consumerId,
 				baseUrl,
-				n8nVersion: N8N_VERSION,
+				n8nVersion: MNI_VERSION,
 				instanceId: this.instanceSettings.instanceId,
 			});
 
@@ -176,7 +176,7 @@ export class WorkflowBuilderService {
 			this.logger,
 			this.instanceSettings.instanceId,
 			this.urlService.getInstanceBaseUrl(),
-			N8N_VERSION,
+			MNI_VERSION,
 			onCreditsUpdated,
 			onTelemetryEvent,
 			this.resolveBuiltinNodeDefinitionDirs(),

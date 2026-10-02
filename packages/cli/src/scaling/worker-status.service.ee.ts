@@ -1,12 +1,12 @@
-import { WorkerStatus } from '@n8n/api-types';
-import { GlobalConfig } from '@n8n/config';
-import { OnPubSubEvent } from '@n8n/decorators';
-import { Service } from '@n8n/di';
-import { InstanceSettings } from 'n8n-core';
+import { WorkerStatus } from '@MNI/api-types';
+import { GlobalConfig } from '@MNI/config';
+import { OnPubSubEvent } from '@MNI/decorators';
+import { Service } from '@MNI/di';
+import { InstanceSettings } from 'MNI-core';
 import os from 'node:os';
 import process from 'node:process';
 
-import { N8N_VERSION } from '@/constants';
+import { MNI_VERSION } from '@/constants';
 import { Push } from '@/push';
 
 import { JobProcessor } from './job-processor';
@@ -98,7 +98,7 @@ export class WorkerStatusService {
 					internal: net.internal,
 				})),
 			),
-			version: N8N_VERSION,
+			version: MNI_VERSION,
 			poolName: resolveWorkerPoolName(this.globalConfig.queue.workerPool),
 			queueName: resolveQueueName(
 				this.instanceSettings.instanceType,

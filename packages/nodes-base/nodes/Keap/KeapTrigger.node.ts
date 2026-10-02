@@ -8,8 +8,8 @@ import type {
 	INodeType,
 	INodeTypeDescription,
 	IWebhookResponseData,
-} from 'n8n-workflow';
-import { NodeConnectionTypes } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeConnectionTypes } from 'MNI-workflow';
 
 import { keapApiRequest } from './GenericFunctions';
 
@@ -17,7 +17,7 @@ export class KeapTrigger implements INodeType {
 	description: INodeTypeDescription = {
 		displayName: 'Keap Trigger',
 		name: 'keapTrigger',
-		// eslint-disable-next-line n8n-nodes-base/node-class-description-icon-not-svg
+		// eslint-disable-next-line MNI-nodes-base/node-class-description-icon-not-svg
 		icon: 'file:keap.png',
 		group: ['trigger'],
 		version: 1,

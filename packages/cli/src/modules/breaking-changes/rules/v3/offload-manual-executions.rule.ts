@@ -1,5 +1,5 @@
-import { ExecutionsConfig } from '@n8n/config';
-import { BreakingChangeRule } from '@n8n/decorators';
+import { ExecutionsConfig } from '@MNI/config';
+import { BreakingChangeRule } from '@MNI/decorators';
 
 import { NOT_AFFECTED_INSTANCE } from '../../detection-report';
 import type {

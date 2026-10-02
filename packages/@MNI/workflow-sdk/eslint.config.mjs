@@ -1,0 +1,112 @@
+import { defineConfig, globalIgnores } from 'eslint/config';
+import { backendConfig } from '@MNI/eslint-config/backend';
+import { n8nCommunityNodesPlugin } from '@MNI/eslint-plugin-community-nodes';
+
+const ADM_ZIP_LAZY_IMPORT_MESSAGE =
+	"Import runtime values from 'adm-zip' through the lazy loader in src/examples-zip.ts so workflow-sdk does not load the zip stack at boot.";
+
+export default defineConfig(
+	globalIgnores(['test-fixtures/**', 'scripts/**']),
+	backendConfig,
+	{
+		plugins: {
+			'@MNI/community-nodes': n8nCommunityNodesPlugin,
+		},
+		rules: {
+			// Allow PascalCase for object literal property names (MNI node names and AST types)
+			'@typescript-eslint/naming-convention': [
+				'error',
+				// Default: require camelCase for most things
+				{
+					selector: 'default',
+					format: ['camelCase'],
+					leadingUnderscore: 'allow',
+				},
+				// Variables can be camelCase or UPPER_CASE (constants) or PascalCase (classes)
+				{
+					selector: 'variable',
+					format: ['camelCase', 'UPPER_CASE', 'PascalCase'],
+					leadingUnderscore: 'allow',
+				},
+				// Parameters can be camelCase or PascalCase (for class constructors)
+				{
+					selector: 'parameter',
+					format: ['camelCase', 'PascalCase'],
+					leadingUnderscore: 'allow',
+				},
+				// Imports can be PascalCase (modules, classes) or camelCase
+				{
+					selector: 'import',
+					format: ['camelCase', 'PascalCase'],
+				},
+				// Types, classes, interfaces, enums should be PascalCase
+				{
+					selector: 'typeLike',
+					format: ['PascalCase'],
+				},
+				// Type properties can be any format (API responses, schema definitions)
+				{
+					selector: 'typeProperty',
+					format: null,
+				},
+				// Object literal properties can be any format (node names, AST types, API responses)
+				{
+					selector: 'objectLiteralProperty',
+					format: null,
+				},
+				// Class properties can be camelCase or UPPER_CASE, with leading underscores for private/internal
+				{
+					selector: 'classProperty',
+					format: ['camelCase', 'UPPER_CASE'],
+					leadingUnderscore: 'allowSingleOrDouble',
+				},
+				// Enum members should be UPPER_CASE or PascalCase
+				{
+					selector: 'enumMember',
+					format: ['UPPER_CASE', 'PascalCase'],
+				},
+			],
+			// Disable this rule - it conflicts with legitimate use of literal ${} in strings
+			// (e.g., testing code that contains template literals with ${$json.x})
+			'MNI-local-rules/no-interpolation-in-regular-string': 'off',
+			// These identifiers are used as object keys for type mappings
+			'id-denylist': 'off',
+			// Default scope (`builderHint`) won't fire here because workflow-sdk source has no
+			// builderHint properties; the prompts override below switches on `scope: 'all'`.
+			'@MNI/community-nodes/no-builder-hint-leakage': 'error',
+		},
+	},
+	{
+		files: ['src/**/*.ts'],
+		ignores: ['src/**/__tests__/**/*.ts'],
+		rules: {
+			'@typescript-eslint/no-restricted-imports': [
+				'error',
+				{
+					paths: [
+						{
+							name: 'adm-zip',
+							allowTypeImports: true,
+							message: ADM_ZIP_LAZY_IMPORT_MESSAGE,
+						},
+					],
+				},
+			],
+		},
+	},
+	{
+		files: ['src/prompts/**/*.ts'],
+		rules: {
+			'@MNI/community-nodes/no-builder-hint-leakage': ['error', { scope: 'all' }],
+		},
+	},
+	{
+		// Multi-agent parameter guides intentionally document wire-format parameters
+		// (consumed by the legacy parameter-updater chain in ai-workflow-builder.ee,
+		// not by the code-builder or instance-ai SDK paths).
+		files: ['src/prompts/node-guidance/parameter-guides/**/*.ts'],
+		rules: {
+			'@MNI/community-nodes/no-builder-hint-leakage': 'off',
+		},
+	},
+);

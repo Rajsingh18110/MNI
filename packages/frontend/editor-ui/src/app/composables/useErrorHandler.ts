@@ -1,7 +1,7 @@
-import { useToast } from '@n8n/composables/useToast';
-import { useI18n } from '@n8n/i18n';
+import { useToast } from '@MNI/composables/useToast';
+import { useI18n } from '@MNI/i18n';
 import { captureException } from '@sentry/vue';
-import type { BaseTextKey } from '@n8n/i18n';
+import type { BaseTextKey } from '@MNI/i18n';
 
 export interface ErrorHandlerOptions {
 	/** Source identifier for Sentry tags (e.g., 'ai-builder', 'workflow-editor') */

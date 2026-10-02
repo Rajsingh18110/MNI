@@ -11,22 +11,22 @@ describe('isCredSharingEnabled', () => {
 		process.env = originalEnv;
 	});
 
-	it('should return true when N8N_ENV_FEAT_CRED_SHARING is "true"', () => {
-		process.env.N8N_ENV_FEAT_CRED_SHARING = 'true';
+	it('should return true when MNI_ENV_FEAT_CRED_SHARING is "true"', () => {
+		process.env.MNI_ENV_FEAT_CRED_SHARING = 'true';
 
 		expect(isCredSharingEnabled()).toBe(true);
 	});
 
-	it('should return false when N8N_ENV_FEAT_CRED_SHARING is unset', () => {
-		delete process.env.N8N_ENV_FEAT_CRED_SHARING;
+	it('should return false when MNI_ENV_FEAT_CRED_SHARING is unset', () => {
+		delete process.env.MNI_ENV_FEAT_CRED_SHARING;
 
 		expect(isCredSharingEnabled()).toBe(false);
 	});
 
 	it.each(['false', 'TRUE', '1', ''])(
-		'should return false when N8N_ENV_FEAT_CRED_SHARING is %p',
+		'should return false when MNI_ENV_FEAT_CRED_SHARING is %p',
 		(value) => {
-			process.env.N8N_ENV_FEAT_CRED_SHARING = value;
+			process.env.MNI_ENV_FEAT_CRED_SHARING = value;
 
 			expect(isCredSharingEnabled()).toBe(false);
 		},

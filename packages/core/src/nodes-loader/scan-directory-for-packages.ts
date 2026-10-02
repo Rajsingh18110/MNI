@@ -1,7 +1,7 @@
-import { Logger } from '@n8n/backend-common';
-import { Container } from '@n8n/di';
+import { Logger } from '@MNI/backend-common';
+import { Container } from '@MNI/di';
 import glob from 'fast-glob';
-import { checkNodesApiVersion, N8N_NODES_API_VERSION, type NodeLoader } from 'n8n-workflow';
+import { checkNodesApiVersion, MNI_NODES_API_VERSION, type NodeLoader } from 'MNI-workflow';
 import path from 'path';
 
 import { LazyPackageDirectoryLoader } from './lazy-package-directory-loader';
@@ -26,8 +26,8 @@ export async function scanDirectoryForPackages(
 	};
 
 	const installedPackagePaths = [
-		...(await glob('n8n-nodes-*', globOptions)),
-		...(await glob('@*/n8n-nodes-*', { ...globOptions, deep: 2 })),
+		...(await glob('MNI-nodes-*', globOptions)),
+		...(await glob('@*/MNI-nodes-*', { ...globOptions, deep: 2 })),
 	];
 
 	const logger = Container.get(Logger);
@@ -49,7 +49,7 @@ export async function scanDirectoryForPackages(
 				const requirement =
 					check.reason === 'malformed'
 						? `an invalid n8nNodesApiVersion (${JSON.stringify(check.declared)})`
-						: `node API version ${String(check.declared)}, but this MNI version supports up to ${N8N_NODES_API_VERSION}`;
+						: `node API version ${String(check.declared)}, but this MNI version supports up to ${MNI_NODES_API_VERSION}`;
 				logger.warn(
 					`Skipping package "${loader.packageName}": it requires ${requirement}. Upgrade MNI to use this package, or uninstall it in Settings > Community nodes.`,
 				);

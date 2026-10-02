@@ -1,6 +1,6 @@
 import { mock } from 'vitest-mock-extended';
-import type { IExecuteFunctions, INode, INodeExecutionData, IPairedItemData } from 'n8n-workflow';
-import { NodeOperationError } from 'n8n-workflow';
+import type { IExecuteFunctions, INode, INodeExecutionData, IPairedItemData } from 'MNI-workflow';
+import { NodeOperationError } from 'MNI-workflow';
 import pgPromise from 'pg-promise';
 
 import type {
@@ -37,7 +37,7 @@ const node: INode = {
 	id: '1',
 	name: 'Postgres node',
 	typeVersion: 2,
-	type: 'n8n-nodes-base.postgres',
+	type: 'MNI-nodes-base.postgres',
 	position: [60, 760],
 	parameters: {
 		operation: 'executeQuery',
@@ -142,7 +142,7 @@ describe('Test PostgresV2, parsePostgresError', () => {
 	});
 
 	it('should update message with syntax error', () => {
-		// eslint-disable-next-line n8n-local-rules/no-unneeded-backticks
+		// eslint-disable-next-line MNI-local-rules/no-unneeded-backticks
 		const errorMessage = String.raw`syntax error at or near "select"`;
 		const error = new Error();
 		error.message = errorMessage;

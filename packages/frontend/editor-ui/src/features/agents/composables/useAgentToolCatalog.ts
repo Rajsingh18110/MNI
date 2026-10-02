@@ -3,12 +3,12 @@ import {
 	NodeConnectionTypes,
 	isCommunityPackageName,
 	type INodeTypeDescription,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import {
 	AGENT_BUILDER_HIDDEN_AVAILABLE_TOOL_NODE_TYPES,
 	getWorkflowToolIncompatibilityReason,
 	type WorkflowToolIncompatibilityReason,
-} from '@n8n/api-types';
+} from '@MNI/api-types';
 import nodePopularity from 'virtual:node-popularity-data';
 
 import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';

@@ -1,4 +1,4 @@
-import { deepCopy, type INodeTypeDescription } from 'n8n-workflow';
+import { deepCopy, type INodeTypeDescription } from 'MNI-workflow';
 
 import {
 	getMcpRegistryCredentialTypeName,
@@ -476,7 +476,7 @@ describe('serverToCredentialDescription', () => {
 			name: 'notionMcpOAuth2Api',
 			displayName: 'Notion MCP OAuth2',
 			extends: ['mcpOAuth2Api'],
-			icon: 'node:@n8n/mcp-registry.notion',
+			icon: 'node:@MNI/mcp-registry.notion',
 			properties: [
 				{
 					displayName: 'Use Dynamic Client Registration',
@@ -558,7 +558,7 @@ describe('serverToCredentialDescription', () => {
 				name: 'slackMcpOAuth2Api',
 				displayName: 'Slack MCP OAuth2',
 				extends: ['slackOAuth2Api'],
-				icon: 'node:@n8n/mcp-registry.slack',
+				icon: 'node:@MNI/mcp-registry.slack',
 				properties: [
 					{
 						displayName: 'authUrl',
@@ -681,7 +681,7 @@ describe('serverToCredentialDescription', () => {
 				name: 'gmailMcpOAuth2Api',
 				displayName: 'Gmail MCP OAuth2',
 				extends: ['gmailOAuth2'],
-				icon: 'node:@n8n/mcp-registry.gmail',
+				icon: 'node:@MNI/mcp-registry.gmail',
 				properties: [
 					{
 						displayName: 'Allowed HTTP Request Domains',
@@ -720,7 +720,7 @@ describe('serverToCredentialDescription', () => {
 				name: 'databricksGenieMcpOAuth2Api',
 				displayName: 'Databricks Genie MCP OAuth2',
 				extends: ['databricksOAuth2Api'],
-				icon: 'node:@n8n/mcp-registry.databricksGenie',
+				icon: 'node:@MNI/mcp-registry.databricksGenie',
 				properties: [
 					{ displayName: 'scope', name: 'scope', type: 'hidden', default: 'genie offline_access' },
 					{

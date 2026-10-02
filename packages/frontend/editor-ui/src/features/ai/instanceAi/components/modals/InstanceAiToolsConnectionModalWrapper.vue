@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed, onBeforeUnmount, provide, ref, watch, type Component } from 'vue';
 import { useUIStore } from '@/app/stores/ui.store';
-import { useToast } from '@n8n/composables/useToast';
-import { i18n } from '@n8n/i18n';
+import { useToast } from '@MNI/composables/useToast';
+import { i18n } from '@MNI/i18n';
 import { useCredentialsStore } from '@/features/credentials/credentials.store';
 import { CREDENTIAL_EDIT_MODAL_KEY } from '@/features/credentials/credentials.constants';
 import DefaultDetailBody from '@/features/shared/toolsConnection/DefaultDetailBody.vue';
@@ -30,8 +30,8 @@ import type {
 	InstanceAiMcpConnectionToolResponse,
 	McpRegistryServerResponse,
 	McpRegistryServerToolResponse,
-} from '@n8n/api-types';
-import type { BaseTextKey } from '@n8n/i18n';
+} from '@MNI/api-types';
+import type { BaseTextKey } from '@MNI/i18n';
 
 import { iconForTool } from '../../toolIcons';
 import BrowserUseSetupContent from './BrowserUseSetupContent.vue';

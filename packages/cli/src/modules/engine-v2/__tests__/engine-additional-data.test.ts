@@ -1,11 +1,11 @@
-import type { SsrfProtectionService } from '@n8n/backend-network';
-import type { GlobalConfig, SsrfProtectionConfig } from '@n8n/config';
-import { UnimplementedError } from '@n8n/engine';
-import type { ICredentialsHelper } from 'n8n-workflow';
+import type { SsrfProtectionService } from '@MNI/backend-network';
+import type { GlobalConfig, SsrfProtectionConfig } from '@MNI/config';
+import { UnimplementedError } from '@MNI/engine';
+import type { ICredentialsHelper } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import type { EventService } from '@/events/event.service';
-import type { UrlService } from '@n8n/backend-services';
+import type { UrlService } from '@MNI/backend-services';
 
 import { EngineAdditionalDataBuilder } from '../engine-additional-data';
 

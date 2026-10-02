@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { useI18n } from '@n8n/i18n';
-import type { MetricScale } from '@n8n/api-types';
-import { N8nIcon, N8nText, N8nTooltip } from '@n8n/design-system';
+import { useI18n } from '@MNI/i18n';
+import type { MetricScale } from '@MNI/api-types';
+import { N8nIcon, N8nText, N8nTooltip } from '@MNI/design-system';
 import {
 	formatMetricLabel,
 	formatMetricPercent,

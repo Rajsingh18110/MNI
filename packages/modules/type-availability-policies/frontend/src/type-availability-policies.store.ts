@@ -1,6 +1,6 @@
-import type { NodeTypeAvailability } from '@n8n/api-types';
-import { useSettingsStore } from '@n8n/stores/settings.store';
-import { useRootStore } from '@n8n/stores/useRootStore';
+import type { NodeTypeAvailability } from '@MNI/api-types';
+import { useSettingsStore } from '@MNI/stores/settings.store';
+import { useRootStore } from '@MNI/stores/useRootStore';
 import { defineStore } from 'pinia';
 import { computed, ref, shallowRef } from 'vue';
 

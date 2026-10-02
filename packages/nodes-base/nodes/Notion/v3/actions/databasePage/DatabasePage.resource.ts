@@ -3,8 +3,8 @@ import type {
 	IExecuteFunctions,
 	INodeExecutionData,
 	INodeProperties,
-} from 'n8n-workflow';
-import { toPathSegment, NodeOperationError, setSafeObjectProperty } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { toPathSegment, NodeOperationError, setSafeObjectProperty } from 'MNI-workflow';
 
 import { dataSourceSearchFilterDescriptions, mapDataSourceFilters } from './DataSourceFilters';
 import { downloadFiles, type FileRecord } from '../../../shared/GenericFunctions';

@@ -1,6 +1,6 @@
-import { Logger } from '@n8n/backend-common';
-import { mockInstance } from '@n8n/backend-test-utils';
-import { TaskRunnersConfig } from '@n8n/config';
+import { Logger } from '@MNI/backend-common';
+import { mockInstance } from '@MNI/backend-test-utils';
+import { TaskRunnersConfig } from '@MNI/config';
 import type { ChildProcess, SpawnOptions } from 'node:child_process';
 import { EventEmitter } from 'node:events';
 import { mock, type MockProxy } from 'vitest-mock-extended';
@@ -145,13 +145,13 @@ describe('TaskRunnerProcess', () => {
 			'PATH',
 			'NODE_FUNCTION_ALLOW_BUILTIN',
 			'NODE_FUNCTION_ALLOW_EXTERNAL',
-			'N8N_SENTRY_DSN',
-			'N8N_VERSION',
+			'MNI_SENTRY_DSN',
+			'MNI_VERSION',
 			'ENVIRONMENT',
 			'DEPLOYMENT_NAME',
 			'NODE_PATH',
 			'GENERIC_TIMEZONE',
-			'N8N_RUNNERS_INSECURE_MODE',
+			'MNI_RUNNERS_INSECURE_MODE',
 		])('should propagate %s from env as is', async (envVar) => {
 			authService.createGrantToken.mockResolvedValue('grantToken');
 			process.env[envVar] = 'custom value';
@@ -205,7 +205,7 @@ describe('TaskRunnerProcess', () => {
 			await taskRunnerProcess.start();
 
 			const { env } = spawnMock.mock.calls[0][2] as SpawnOptions;
-			expect(authService.createGrantToken).toHaveBeenCalledWith(env!.N8N_RUNNERS_ID);
+			expect(authService.createGrantToken).toHaveBeenCalledWith(env!.MNI_RUNNERS_ID);
 		});
 
 		it('should not inherit env keys from Object.prototype', async () => {
@@ -224,7 +224,7 @@ describe('TaskRunnerProcess', () => {
 			}
 		});
 
-		it('should pass N8N_RUNNERS_TASK_TIMEOUT if set', async () => {
+		it('should pass MNI_RUNNERS_TASK_TIMEOUT if set', async () => {
 			authService.createGrantToken.mockResolvedValue('grantToken');
 			runnerConfig.taskTimeout = 123;
 
@@ -233,12 +233,12 @@ describe('TaskRunnerProcess', () => {
 			const options = spawnMock.mock.calls[0][2] as SpawnOptions;
 			expect(options.env).toEqual(
 				expect.objectContaining({
-					N8N_RUNNERS_TASK_TIMEOUT: '123',
+					MNI_RUNNERS_TASK_TIMEOUT: '123',
 				}),
 			);
 		});
 
-		it('should pass N8N_RUNNERS_HEARTBEAT_INTERVAL if set', async () => {
+		it('should pass MNI_RUNNERS_HEARTBEAT_INTERVAL if set', async () => {
 			authService.createGrantToken.mockResolvedValue('grantToken');
 			runnerConfig.heartbeatInterval = 456;
 
@@ -247,7 +247,7 @@ describe('TaskRunnerProcess', () => {
 			const options = spawnMock.mock.calls[0][2] as SpawnOptions;
 			expect(options.env).toEqual(
 				expect.objectContaining({
-					N8N_RUNNERS_HEARTBEAT_INTERVAL: '456',
+					MNI_RUNNERS_HEARTBEAT_INTERVAL: '456',
 				}),
 			);
 		});
@@ -260,7 +260,7 @@ describe('TaskRunnerProcess', () => {
 			expect(spawnMock.mock.calls[0].at(1)).toEqual([
 				'--disallow-code-generation-from-strings',
 				'--disable-proto=delete',
-				expect.stringContaining('/packages/@n8n/task-runner/dist/start.js'),
+				expect.stringContaining('/packages/@MNI/task-runner/dist/start.js'),
 			]);
 		});
 
@@ -277,7 +277,7 @@ describe('TaskRunnerProcess', () => {
 			await insecureTaskRunnerProcess.start();
 
 			expect(spawnMock.mock.calls[0].at(1)).toEqual([
-				expect.stringContaining('/packages/@n8n/task-runner/dist/start.js'),
+				expect.stringContaining('/packages/@MNI/task-runner/dist/start.js'),
 			]);
 		});
 	});
@@ -529,7 +529,7 @@ describe('TaskRunnerProcess', () => {
 		/** ID the runner in the nth spawned process was told to identify as. */
 		const assignedRunnerId = (spawnIndex: number) => {
 			const { env } = spawnMock.mock.calls[spawnIndex][2] as SpawnOptions;
-			return env!.N8N_RUNNERS_ID as string;
+			return env!.MNI_RUNNERS_ID as string;
 		};
 
 		const report = (event: (typeof RESTART_EVENTS)[number], runnerId: string) => {

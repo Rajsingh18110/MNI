@@ -1,11 +1,11 @@
-import { Logger } from '@n8n/backend-common';
-import { IExecutionResponse } from '@n8n/db';
-import { OnShutdown } from '@n8n/decorators';
-import { Service } from '@n8n/di';
+import { Logger } from '@MNI/backend-common';
+import { IExecutionResponse } from '@MNI/db';
+import { OnShutdown } from '@MNI/decorators';
+import { Service } from '@MNI/di';
 import { timingSafeEqual } from 'crypto';
-import { ErrorReporter } from 'n8n-core';
-import { ensureError } from '@n8n/utils/errors/ensure-error';
-import { jsonParse, UnexpectedError } from 'n8n-workflow';
+import { ErrorReporter } from 'MNI-core';
+import { ensureError } from '@MNI/utils/errors/ensure-error';
+import { jsonParse, UnexpectedError } from 'MNI-workflow';
 import { type RawData, WebSocket } from 'ws';
 import { z } from 'zod';
 
@@ -31,15 +31,15 @@ const HEARTBEAT_TIMEOUT = 60 * 1000;
 /**
  * let frontend know that no user input is expected
  */
-const N8N_CONTINUE = 'MNI|continue';
+const MNI_CONTINUE = 'MNI|continue';
 /**
  * send message for heartbeat check
  */
-const N8N_HEARTBEAT = 'MNI|heartbeat';
+const MNI_HEARTBEAT = 'MNI|heartbeat';
 /**
  * frontend did acknowledge the heartbeat
  */
-const N8N_HEARTBEAT_ACK = 'MNI|heartbeat-ack';
+const MNI_HEARTBEAT_ACK = 'MNI|heartbeat-ack';
 
 function closeConnection(ws: WebSocket) {
 	if (ws.readyState !== WebSocket.OPEN) return;
@@ -140,7 +140,7 @@ export class ChatService {
 
 		this.sessions.set(key, session);
 
-		ws.send(N8N_HEARTBEAT);
+		ws.send(MNI_HEARTBEAT);
 	}
 
 	private async processWaitingExecution(
@@ -160,7 +160,7 @@ export class ChatService {
 		const lastNode = getLastNodeExecuted(execution);
 
 		if (lastNode && shouldResumeImmediately(lastNode)) {
-			session.connection.send(N8N_CONTINUE);
+			session.connection.send(MNI_CONTINUE);
 			const data: ChatMessage = {
 				action: 'sendMessage',
 				chatInput: getLastNodeMessage(execution, lastNode),
@@ -182,7 +182,7 @@ export class ChatService {
 		const lastNode = getLastNodeExecuted(execution);
 
 		if (execution.status === 'waiting' && lastNode?.name !== session.nodeWaitingForChatResponse) {
-			session.connection.send(N8N_CONTINUE);
+			session.connection.send(MNI_CONTINUE);
 			session.nodeWaitingForChatResponse = undefined;
 		}
 	}
@@ -243,7 +243,7 @@ export class ChatService {
 
 				const message = this.stringifyRawData(data);
 
-				if (message === N8N_HEARTBEAT_ACK) {
+				if (message === MNI_HEARTBEAT_ACK) {
 					session.lastHeartbeat = Date.now();
 					return;
 				}
@@ -307,7 +307,7 @@ export class ChatService {
 				// chat response it means that the execution was resumed by a
 				// form, so we send a continue message to the frontend to let it
 				// know that no user message is expected
-				session.connection.send(N8N_CONTINUE);
+				session.connection.send(MNI_CONTINUE);
 				session.nodeWaitingForChatResponse = undefined;
 			}
 
@@ -366,7 +366,7 @@ export class ChatService {
 					this.cleanupSession(session, key);
 				} else {
 					try {
-						session.connection.send(N8N_HEARTBEAT);
+						session.connection.send(MNI_HEARTBEAT);
 					} catch (e) {
 						this.cleanupSession(session, key);
 						const error = ensureError(e);

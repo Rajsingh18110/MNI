@@ -1,5 +1,5 @@
-import type { IDataObject, IExecuteFunctions } from 'n8n-workflow';
-import { NodeApiError, NodeOperationError } from 'n8n-workflow';
+import type { IDataObject, IExecuteFunctions } from 'MNI-workflow';
+import { NodeApiError, NodeOperationError } from 'MNI-workflow';
 
 import type { ConfluenceBodyEnvelope } from './bodyEnvelope';
 import { confluenceApiRequest } from '../../transport';

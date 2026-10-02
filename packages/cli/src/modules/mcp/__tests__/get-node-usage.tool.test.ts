@@ -1,4 +1,4 @@
-import type { User } from '@n8n/db';
+import type { User } from '@MNI/db';
 import { mock } from 'vitest-mock-extended';
 
 import type { WorkflowDependencyQueryService } from '@/modules/workflow-index/workflow-dependency-query.service';
@@ -26,14 +26,14 @@ describe('get_node_usage', () => {
 		const { tool, dependencies } = harness();
 		dependencies.getNodeTypeUsage.mockResolvedValue({
 			workflowsInScope: 42,
-			nodeTypes: [{ nodeType: 'n8n-nodes-base.httpRequest', workflowCount: 30 }],
+			nodeTypes: [{ nodeType: 'MNI-nodes-base.httpRequest', workflowCount: 30 }],
 		});
 
 		const payload = payloadOf(await tool.handler({}, mock()));
 
 		expect(payload).toEqual({
 			workflowsInScope: 42,
-			nodeTypes: [{ nodeType: 'n8n-nodes-base.httpRequest', workflowCount: 30 }],
+			nodeTypes: [{ nodeType: 'MNI-nodes-base.httpRequest', workflowCount: 30 }],
 		});
 	});
 
@@ -50,7 +50,7 @@ describe('get_node_usage', () => {
 			],
 		});
 
-		const payload = payloadOf(await tool.handler({ nodeType: 'n8n-nodes-base.slack' }, mock()));
+		const payload = payloadOf(await tool.handler({ nodeType: 'MNI-nodes-base.slack' }, mock()));
 
 		expect(payload).toEqual({
 			workflowsInScope: 42,
@@ -83,12 +83,12 @@ describe('get_node_usage', () => {
 		const { tool, dependencies } = harness();
 
 		await tool.handler(
-			{ nodeType: 'n8n-nodes-base.slack', projectId: 'project-1', limit: 5_000 },
+			{ nodeType: 'MNI-nodes-base.slack', projectId: 'project-1', limit: 5_000 },
 			mock(),
 		);
 
 		expect(dependencies.getNodeTypeUsage).toHaveBeenCalledWith(user, {
-			nodeType: 'n8n-nodes-base.slack',
+			nodeType: 'MNI-nodes-base.slack',
 			projectId: 'project-1',
 			limit: 100,
 		});

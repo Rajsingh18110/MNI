@@ -1,6 +1,6 @@
-import type { CommunityNodeType } from '@n8n/api-types';
-import type { Logger } from '@n8n/backend-common';
-import type { InstanceSettingsLoaderConfig } from '@n8n/config';
+import type { CommunityNodeType } from '@MNI/api-types';
+import type { Logger } from '@MNI/backend-common';
+import type { InstanceSettingsLoaderConfig } from '@MNI/config';
 import { mock } from 'vitest-mock-extended';
 
 import { IncompatibleNodesApiVersionError } from '@/errors/response-errors/incompatible-nodes-api-version.error';
@@ -31,7 +31,7 @@ describe('CommunityPackagesLifecycleService', () => {
 	const eventService = mock<EventService>();
 	const communityNodeTypesService = mock<CommunityNodeTypesService>();
 	const instanceSettings = mock<{ nodesDownloadDir: string }>({
-		nodesDownloadDir: '/tmp/n8n-nodes-download',
+		nodesDownloadDir: '/tmp/MNI-nodes-download',
 	});
 	const communityPackagesConfig = mock<CommunityPackagesConfig>({
 		unverifiedEnabled: true,
@@ -71,17 +71,17 @@ describe('CommunityPackagesLifecycleService', () => {
 			communityNodeTypesService.findVetted.mockResolvedValue(undefined);
 
 			await expect(
-				lifecycle.install({ name: 'n8n-nodes-test', verify: true, version: '1.0.0' }, user, 'ui'),
-			).rejects.toThrow('Package n8n-nodes-test is not vetted for installation');
+				lifecycle.install({ name: 'MNI-nodes-test', verify: true, version: '1.0.0' }, user, 'ui'),
+			).rejects.toThrow('Package MNI-nodes-test is not vetted for installation');
 
-			expect(communityNodeTypesService.findVetted).toHaveBeenCalledWith('n8n-nodes-test');
+			expect(communityNodeTypesService.findVetted).toHaveBeenCalledWith('MNI-nodes-test');
 		});
 
 		it.each(['echo "hello"', '1.a.b', '0.1.29#;ls'])(
 			'should throw error if version is invalid',
 			async (version) => {
 				await expect(
-					lifecycle.install({ name: 'n8n-nodes-test', verify: true, version }, user, 'ui'),
+					lifecycle.install({ name: 'MNI-nodes-test', verify: true, version }, user, 'ui'),
 				).rejects.toThrow(`Invalid version: ${version}`);
 			},
 		);
@@ -97,8 +97,8 @@ describe('CommunityPackagesLifecycleService', () => {
 				}),
 			);
 			communityPackagesService.parseNpmPackageName.mockReturnValue({
-				rawString: 'n8n-nodes-test',
-				packageName: 'n8n-nodes-test',
+				rawString: 'MNI-nodes-test',
+				packageName: 'MNI-nodes-test',
 				version: '1.1.1',
 			});
 			communityPackagesService.findInstalledPackage.mockResolvedValue(null);
@@ -112,13 +112,13 @@ describe('CommunityPackagesLifecycleService', () => {
 			);
 
 			await lifecycle.install(
-				{ name: 'n8n-nodes-test', verify: true, version: '1.0.0' },
+				{ name: 'MNI-nodes-test', verify: true, version: '1.0.0' },
 				user,
 				'ui',
 			);
 
 			expect(communityPackagesService.installPackage).toHaveBeenCalledWith(
-				'n8n-nodes-test',
+				'MNI-nodes-test',
 				'1.0.0',
 				'checksum',
 			);
@@ -132,14 +132,14 @@ describe('CommunityPackagesLifecycleService', () => {
 
 		it('should reject install when the package is already installed and loaded', async () => {
 			communityPackagesService.parseNpmPackageName.mockReturnValue({
-				rawString: 'n8n-nodes-test',
-				packageName: 'n8n-nodes-test',
+				rawString: 'MNI-nodes-test',
+				packageName: 'MNI-nodes-test',
 				version: undefined,
 			});
 			communityPackagesService.findInstalledPackage.mockResolvedValue(mockPackage('1.0.0'));
 			communityPackagesService.isPackageLoaded.mockReturnValue(true);
 
-			await expect(lifecycle.install({ name: 'n8n-nodes-test' }, user, 'ui')).rejects.toThrow(
+			await expect(lifecycle.install({ name: 'MNI-nodes-test' }, user, 'ui')).rejects.toThrow(
 				'already installed',
 			);
 
@@ -152,8 +152,8 @@ describe('CommunityPackagesLifecycleService', () => {
 			// was rejected with "already installed" instead of being repaired. It now derives
 			// that from the installed row itself, so the raw name's shape doesn't matter.
 			communityPackagesService.parseNpmPackageName.mockReturnValue({
-				rawString: 'n8n-nodes-test@1.0.0',
-				packageName: 'n8n-nodes-test',
+				rawString: 'MNI-nodes-test@1.0.0',
+				packageName: 'MNI-nodes-test',
 				version: '1.0.0',
 			});
 			communityPackagesService.findInstalledPackage.mockResolvedValue(mockPackage('1.0.0'));
@@ -163,10 +163,10 @@ describe('CommunityPackagesLifecycleService', () => {
 				mock<InstalledPackages>({ installedNodes: [] }),
 			);
 
-			await lifecycle.install({ name: 'n8n-nodes-test@1.0.0' }, user, 'ui');
+			await lifecycle.install({ name: 'MNI-nodes-test@1.0.0' }, user, 'ui');
 
 			expect(communityPackagesService.installPackage).toHaveBeenCalledWith(
-				'n8n-nodes-test',
+				'MNI-nodes-test',
 				'1.0.0',
 				undefined,
 			);
@@ -174,13 +174,13 @@ describe('CommunityPackagesLifecycleService', () => {
 
 		it('should reject with BadRequestError when package name parsing fails', async () => {
 			communityPackagesService.parseNpmPackageName.mockImplementationOnce(() => {
-				throw new Error('Package name "n8n-nodes-invalid" is not allowed');
+				throw new Error('Package name "MNI-nodes-invalid" is not allowed');
 			});
 
-			const promise = lifecycle.install({ name: 'n8n-nodes-invalid' }, user, 'ui');
+			const promise = lifecycle.install({ name: 'MNI-nodes-invalid' }, user, 'ui');
 
 			await expect(promise).rejects.toBeInstanceOf(BadRequestError);
-			await expect(promise).rejects.toThrow('Package name "n8n-nodes-invalid" is not allowed');
+			await expect(promise).rejects.toThrow('Package name "MNI-nodes-invalid" is not allowed');
 			expect(communityPackagesService.installPackage).not.toHaveBeenCalled();
 		});
 	});
@@ -190,8 +190,8 @@ describe('CommunityPackagesLifecycleService', () => {
 			mock<CommunityNodeType>({ checksum: 'checksum' }),
 		);
 		communityPackagesService.parseNpmPackageName.mockReturnValue({
-			rawString: 'n8n-nodes-test',
-			packageName: 'n8n-nodes-test',
+			rawString: 'MNI-nodes-test',
+			packageName: 'MNI-nodes-test',
 			version: undefined,
 		});
 		communityPackagesService.findInstalledPackage.mockResolvedValue(null);
@@ -207,7 +207,7 @@ describe('CommunityPackagesLifecycleService', () => {
 			),
 		);
 
-		const promise = lifecycle.install({ name: 'n8n-nodes-test', verify: true }, user, 'ui');
+		const promise = lifecycle.install({ name: 'MNI-nodes-test', verify: true }, user, 'ui');
 		await expect(promise).rejects.toBeInstanceOf(IncompatibleNodesApiVersionError);
 		await expect(promise).rejects.toMatchObject({
 			httpStatusCode: 400,
@@ -225,20 +225,20 @@ describe('CommunityPackagesLifecycleService', () => {
 	describe('uninstall', () => {
 		it('should reject with BadRequestError when package name parsing fails', async () => {
 			communityPackagesService.parseNpmPackageName.mockImplementationOnce(() => {
-				throw new Error('Package name "n8n-nodes-invalid" is not allowed');
+				throw new Error('Package name "MNI-nodes-invalid" is not allowed');
 			});
 
-			const promise = lifecycle.uninstall('n8n-nodes-invalid', user, 'notFound');
+			const promise = lifecycle.uninstall('MNI-nodes-invalid', user, 'notFound');
 
 			await expect(promise).rejects.toBeInstanceOf(BadRequestError);
-			await expect(promise).rejects.toThrow('Package name "n8n-nodes-invalid" is not allowed');
+			await expect(promise).rejects.toThrow('Package name "MNI-nodes-invalid" is not allowed');
 			expect(communityPackagesService.removePackage).not.toHaveBeenCalled();
 		});
 	});
 
 	describe('listInstalledPackages', () => {
 		const installedPackage = mock<InstalledPackages>({
-			packageName: 'n8n-nodes-test',
+			packageName: 'MNI-nodes-test',
 			installedVersion: '1.0.0',
 			installedNodes: [],
 		});
@@ -254,7 +254,7 @@ describe('CommunityPackagesLifecycleService', () => {
 
 			expect(mockedExecuteNpmCommand).toHaveBeenCalledWith(['outdated', '--json'], {
 				doNotHandleError: true,
-				cwd: '/tmp/n8n-nodes-download',
+				cwd: '/tmp/MNI-nodes-download',
 			});
 		});
 
@@ -278,14 +278,14 @@ describe('CommunityPackagesLifecycleService', () => {
 			// Update detection in this mode is handled by the frontend via Strapi version comparison.
 			communityPackagesConfig.unverifiedEnabled = false;
 			const vettedPackage = mock<InstalledPackages>({
-				packageName: 'n8n-nodes-elevenlabs',
+				packageName: 'MNI-nodes-elevenlabs',
 				installedVersion: '0.2.2',
 				installedNodes: [],
 			});
 			communityPackagesService.getAllInstalledPackages.mockResolvedValue([vettedPackage]);
 			// Simulate real matchPackagesWithUpdates: without updates arg, returns packages without updateAvailable
 			const returnedPackage = {
-				packageName: 'n8n-nodes-elevenlabs',
+				packageName: 'MNI-nodes-elevenlabs',
 				installedVersion: '0.2.2',
 				installedNodes: [],
 			};
@@ -318,7 +318,7 @@ describe('CommunityPackagesLifecycleService', () => {
 			communityPackagesService.matchPackagesWithUpdates.mockReturnValue([installedPackage]);
 
 			const npmOutdatedOutput = JSON.stringify({
-				'n8n-nodes-test': { current: '1.0.0', wanted: '2.0.0', latest: '2.0.0' },
+				'MNI-nodes-test': { current: '1.0.0', wanted: '2.0.0', latest: '2.0.0' },
 			});
 			mockedExecuteNpmCommand.mockRejectedValue(
 				Object.assign(new Error(), { code: 1, stdout: npmOutdatedOutput }),
@@ -328,7 +328,7 @@ describe('CommunityPackagesLifecycleService', () => {
 
 			expect(communityPackagesService.matchPackagesWithUpdates).toHaveBeenCalledWith(
 				[installedPackage],
-				{ 'n8n-nodes-test': { current: '1.0.0', wanted: '2.0.0', latest: '2.0.0' } },
+				{ 'MNI-nodes-test': { current: '1.0.0', wanted: '2.0.0', latest: '2.0.0' } },
 			);
 		});
 	});
@@ -341,14 +341,14 @@ describe('CommunityPackagesLifecycleService', () => {
 			communityPackagesService.findInstalledPackage.mockResolvedValue(previouslyInstalledPackage);
 			communityPackagesService.updatePackage.mockResolvedValue(newInstalledPackage);
 			communityPackagesService.parseNpmPackageName.mockReturnValue({
-				rawString: 'n8n-nodes-test',
-				packageName: 'n8n-nodes-test',
+				rawString: 'MNI-nodes-test',
+				packageName: 'MNI-nodes-test',
 				version: undefined,
 			});
 
 			const result = await lifecycle.update(
 				{
-					name: 'n8n-nodes-test',
+					name: 'MNI-nodes-test',
 					version: '2.0.0',
 					checksum: 'a893hfdsy7399',
 				},
@@ -357,7 +357,7 @@ describe('CommunityPackagesLifecycleService', () => {
 			);
 
 			expect(communityPackagesService.updatePackage).toHaveBeenCalledWith(
-				'n8n-nodes-test',
+				'MNI-nodes-test',
 				previouslyInstalledPackage,
 				'2.0.0',
 				'a893hfdsy7399',
@@ -371,7 +371,7 @@ describe('CommunityPackagesLifecycleService', () => {
 			async (version) => {
 				await expect(
 					lifecycle.update(
-						{ name: 'n8n-nodes-test', version, checksum: 'a893hfdsy7399' },
+						{ name: 'MNI-nodes-test', version, checksum: 'a893hfdsy7399' },
 						user,
 						'badRequest',
 					),
@@ -384,11 +384,11 @@ describe('CommunityPackagesLifecycleService', () => {
 
 			await expect(
 				lifecycle.update(
-					{ name: 'n8n-nodes-test', version: '2.0.0', verify: true },
+					{ name: 'MNI-nodes-test', version: '2.0.0', verify: true },
 					user,
 					'badRequest',
 				),
-			).rejects.toThrow('Package n8n-nodes-test is not vetted for installation');
+			).rejects.toThrow('Package MNI-nodes-test is not vetted for installation');
 		});
 
 		it('should update with checksum when verify is true and version matches latest', async () => {
@@ -404,19 +404,19 @@ describe('CommunityPackagesLifecycleService', () => {
 			communityPackagesService.findInstalledPackage.mockResolvedValue(previouslyInstalledPackage);
 			communityPackagesService.updatePackage.mockResolvedValue(newInstalledPackage);
 			communityPackagesService.parseNpmPackageName.mockReturnValue({
-				rawString: 'n8n-nodes-test',
-				packageName: 'n8n-nodes-test',
+				rawString: 'MNI-nodes-test',
+				packageName: 'MNI-nodes-test',
 				version: undefined,
 			});
 
 			await lifecycle.update(
-				{ name: 'n8n-nodes-test', version: '2.0.0', verify: true },
+				{ name: 'MNI-nodes-test', version: '2.0.0', verify: true },
 				user,
 				'badRequest',
 			);
 
 			expect(communityPackagesService.updatePackage).toHaveBeenCalledWith(
-				'n8n-nodes-test',
+				'MNI-nodes-test',
 				previouslyInstalledPackage,
 				'2.0.0',
 				'vetted-checksum',
@@ -436,19 +436,19 @@ describe('CommunityPackagesLifecycleService', () => {
 			communityPackagesService.findInstalledPackage.mockResolvedValue(previouslyInstalledPackage);
 			communityPackagesService.updatePackage.mockResolvedValue(newInstalledPackage);
 			communityPackagesService.parseNpmPackageName.mockReturnValue({
-				rawString: 'n8n-nodes-test',
-				packageName: 'n8n-nodes-test',
+				rawString: 'MNI-nodes-test',
+				packageName: 'MNI-nodes-test',
 				version: undefined,
 			});
 
 			await lifecycle.update(
-				{ name: 'n8n-nodes-test', version: '1.0.0', verify: true },
+				{ name: 'MNI-nodes-test', version: '1.0.0', verify: true },
 				user,
 				'badRequest',
 			);
 
 			expect(communityPackagesService.updatePackage).toHaveBeenCalledWith(
-				'n8n-nodes-test',
+				'MNI-nodes-test',
 				previouslyInstalledPackage,
 				'1.0.0',
 				'v1-checksum',
@@ -459,7 +459,7 @@ describe('CommunityPackagesLifecycleService', () => {
 			communityPackagesService.findInstalledPackage.mockResolvedValue(null);
 
 			await expect(
-				lifecycle.update({ name: 'n8n-nodes-missing', version: '1.0.0' }, user, 'notFound'),
+				lifecycle.update({ name: 'MNI-nodes-missing', version: '1.0.0' }, user, 'notFound'),
 			).rejects.toMatchObject({ httpStatusCode: 404 });
 		});
 
@@ -467,7 +467,7 @@ describe('CommunityPackagesLifecycleService', () => {
 			communityPackagesService.findInstalledPackage.mockResolvedValue(null);
 
 			await expect(
-				lifecycle.update({ name: 'n8n-nodes-missing', version: '1.0.0' }, user, 'badRequest'),
+				lifecycle.update({ name: 'MNI-nodes-missing', version: '1.0.0' }, user, 'badRequest'),
 			).rejects.toBeInstanceOf(BadRequestError);
 		});
 
@@ -475,13 +475,13 @@ describe('CommunityPackagesLifecycleService', () => {
 			communityPackagesService.findInstalledPackage.mockResolvedValue(mockPackage('1.0.0'));
 			communityPackagesService.updatePackage.mockRejectedValue(
 				new IncompatibleNodesApiVersionError(
-					"This community node isn't compatible with your version of n8n. Update MNI to use it.",
+					"This community node isn't compatible with your version of MNI. Update MNI to use it.",
 					{ requiredNodesApiVersion: 3, supportedNodesApiVersion: 1 },
 				),
 			);
 
 			const promise = lifecycle.update(
-				{ name: 'n8n-nodes-test', version: '2.0.0' },
+				{ name: 'MNI-nodes-test', version: '2.0.0' },
 				user,
 				'badRequest',
 			);
@@ -494,8 +494,8 @@ describe('CommunityPackagesLifecycleService', () => {
 
 		it('should keep the still-loaded previous version on a compatibility rejection', async () => {
 			communityPackagesService.parseNpmPackageName.mockReturnValue({
-				rawString: 'n8n-nodes-test',
-				packageName: 'n8n-nodes-test',
+				rawString: 'MNI-nodes-test',
+				packageName: 'MNI-nodes-test',
 				version: undefined,
 			});
 			communityPackagesService.findInstalledPackage.mockResolvedValue(mockPackage('1.0.0'));
@@ -507,7 +507,7 @@ describe('CommunityPackagesLifecycleService', () => {
 			);
 
 			await expect(
-				lifecycle.update({ name: 'n8n-nodes-test', version: '2.0.0' }, user, 'badRequest'),
+				lifecycle.update({ name: 'MNI-nodes-test', version: '2.0.0' }, user, 'badRequest'),
 			).rejects.toBeInstanceOf(IncompatibleNodesApiVersionError);
 
 			// The check runs before the previous version is unloaded, so its node types

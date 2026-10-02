@@ -1,5 +1,5 @@
-import { useToast } from '@n8n/composables/useToast';
-import { useNotificationsStore } from '@n8n/stores/notifications.store';
+import { useToast } from '@MNI/composables/useToast';
+import { useNotificationsStore } from '@MNI/stores/notifications.store';
 import { createTestingPinia } from '@pinia/testing';
 import { setActivePinia } from 'pinia';
 
@@ -8,7 +8,7 @@ import { registerToastNotifier } from '@/app/init/toastNotifier';
 /**
  * This is bootstrap wiring, not a re-export: the notifier registered here is
  * what makes package-side `useToast` render anything at all, and it is where
- * notification suppression lives — `@n8n/composables` sits below the stores tier
+ * notification suppression lives — `@MNI/composables` sits below the stores tier
  * and cannot read the store itself.
  *
  * So this is the only place the suppression matrix can be verified end to end.
@@ -22,13 +22,13 @@ describe('registerToastNotifier', () => {
 		setActivePinia(createTestingPinia({ stubActions: false }));
 
 		const appEl = document.createElement('div');
-		appEl.id = 'n8n-app';
+		appEl.id = 'MNI-app';
 		document.body.appendChild(appEl);
 	});
 
 	afterEach(() => {
 		// Takes the rendered notifications with it, so each test starts clean.
-		document.getElementById('n8n-app')?.remove();
+		document.getElementById('MNI-app')?.remove();
 	});
 
 	function suppress(options?: { allowErrors: boolean }) {

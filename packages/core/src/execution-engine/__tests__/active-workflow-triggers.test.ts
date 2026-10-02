@@ -1,6 +1,6 @@
-import type { Logger } from '@n8n/backend-common';
-import { Container } from '@n8n/di';
-import { createDeferredPromise } from '@n8n/utils/promise/deferred-promise';
+import type { Logger } from '@MNI/backend-common';
+import { Container } from '@MNI/di';
+import { createDeferredPromise } from '@MNI/utils/promise/deferred-promise';
 import type {
 	INode,
 	INodeExecutionData,
@@ -11,13 +11,13 @@ import type {
 	WorkflowExecuteMode,
 	TriggerTime,
 	CronExpression,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import {
 	LoggerProxy,
 	TriggerCloseError,
 	WorkflowActivationError,
 	WorkflowDeactivationError,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import type { Mock } from 'vitest';
 import { mock } from 'vitest-mock-extended';
 

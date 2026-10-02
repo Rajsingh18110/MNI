@@ -1,4 +1,4 @@
-import type { ICredentialType, INodeProperties } from 'n8n-workflow';
+import type { ICredentialType, INodeProperties } from 'MNI-workflow';
 
 export class GoToWebinarOAuth2Api implements ICredentialType {
 	name = 'goToWebinarOAuth2Api';

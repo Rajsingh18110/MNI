@@ -1,7 +1,7 @@
 import { ref } from 'vue';
 import { describe, test, expect, vi } from 'vitest';
 import { useResponseFeedback } from '../useResponseFeedback';
-import type { InstanceAiMessage, InstanceAiAgentNode } from '@n8n/api-types';
+import type { InstanceAiMessage, InstanceAiAgentNode } from '@MNI/api-types';
 
 // ---------------------------------------------------------------------------
 // Factories

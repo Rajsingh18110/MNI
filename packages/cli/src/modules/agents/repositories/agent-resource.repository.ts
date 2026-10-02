@@ -1,7 +1,7 @@
-import { Service } from '@n8n/di';
-import { DataSource, Repository } from '@n8n/typeorm';
-import { isRecord } from '@n8n/utils/is-record';
-import { jsonParse } from 'n8n-workflow';
+import { Service } from '@MNI/di';
+import { DataSource, Repository } from '@MNI/typeorm';
+import { isRecord } from '@MNI/utils/is-record';
+import { jsonParse } from 'MNI-workflow';
 
 import { AgentResourceEntity } from '../entities/agent-resource.entity';
 

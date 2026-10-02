@@ -1,10 +1,10 @@
-import { Logger } from '@n8n/backend-common';
-import { ExecutionRepository } from '@n8n/db';
-import { OnLeaderStepdown, OnLeaderTakeover } from '@n8n/decorators';
-import { Service } from '@n8n/di';
-import { InstanceSettings } from 'n8n-core';
-import { ensureError } from '@n8n/utils/errors/ensure-error';
-import { sleep } from '@n8n/utils/sleep';
+import { Logger } from '@MNI/backend-common';
+import { ExecutionRepository } from '@MNI/db';
+import { OnLeaderStepdown, OnLeaderTakeover } from '@MNI/decorators';
+import { Service } from '@MNI/di';
+import { InstanceSettings } from 'MNI-core';
+import { ensureError } from '@MNI/utils/errors/ensure-error';
+import { sleep } from '@MNI/utils/sleep';
 import {
 	isTerminalExecutionStatus,
 	UnexpectedError,
@@ -12,7 +12,7 @@ import {
 	type IRun,
 	type IWorkflowExecutionDataProcess,
 	type RelatedExecution,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { ActiveExecutions } from '@/active-executions';
 import { ExecutionAlreadyResumingError } from '@/errors/execution-already-resuming.error';

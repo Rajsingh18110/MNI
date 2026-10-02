@@ -88,7 +88,7 @@ describe('useWorkflowSetupSections', () => {
 
 	it('resolves hidden parameter defaults from the node type', () => {
 		nodeTypesStore.getNodeType.mockReturnValue({
-			name: 'n8n-nodes-base.httpRequest',
+			name: 'MNI-nodes-base.httpRequest',
 			properties: [
 				{ displayName: 'Method', name: 'method', type: 'options', default: 'GET' },
 				{ displayName: 'URL', name: 'url', type: 'string', default: '' },
@@ -115,7 +115,7 @@ describe('useWorkflowSetupSections', () => {
 				node: {
 					id: 'slack',
 					name: 'Get Channel History',
-					type: 'n8n-nodes-base.slack',
+					type: 'MNI-nodes-base.slack',
 					parameters: {
 						channelId: {
 							__rl: true,
@@ -154,7 +154,7 @@ describe('useWorkflowSetupSections', () => {
 				node: {
 					id: 'slack',
 					name: 'Get Channel History',
-					type: 'n8n-nodes-base.slack',
+					type: 'MNI-nodes-base.slack',
 					parameters: { channelId },
 				},
 				editableParameters: [
@@ -291,8 +291,8 @@ describe('useWorkflowSetupSections', () => {
 		expect(sections.value).toHaveLength(1);
 		expect(sections.value[0]).toMatchObject({ id: 'First:httpBasicAuth', targetNodeName: 'First' });
 		expect(sections.value[0].credentialTargetNodes).toEqual([
-			{ id: 'first', name: 'First', type: 'n8n-nodes-base.httpRequest' },
-			{ id: 'second', name: 'Second', type: 'n8n-nodes-base.httpRequest' },
+			{ id: 'first', name: 'First', type: 'MNI-nodes-base.httpRequest' },
+			{ id: 'second', name: 'Second', type: 'MNI-nodes-base.httpRequest' },
 		]);
 	});
 
@@ -442,11 +442,11 @@ describe('useWorkflowSetupSections', () => {
 	it('groups non-HTTP requests only by credential type', () => {
 		const setupRequests = ref([
 			makeSetupRequest({
-				node: { id: 'first', name: 'First', type: 'n8n-nodes-base.slack' },
+				node: { id: 'first', name: 'First', type: 'MNI-nodes-base.slack' },
 				credentialType: 'slackApi',
 			}),
 			makeSetupRequest({
-				node: { id: 'second', name: 'Second', type: 'n8n-nodes-base.slack' },
+				node: { id: 'second', name: 'Second', type: 'MNI-nodes-base.slack' },
 				credentialType: 'slackApi',
 			}),
 		]);

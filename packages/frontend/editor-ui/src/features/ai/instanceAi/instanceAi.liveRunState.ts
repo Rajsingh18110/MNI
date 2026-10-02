@@ -4,7 +4,7 @@ import type {
 	InstanceAiMessage,
 	InstanceAiThreadStatusResponse,
 	InstanceAiToolCallState,
-} from '@n8n/api-types';
+} from '@MNI/api-types';
 
 export function isOrchestratorLive(
 	status: Pick<InstanceAiThreadStatusResponse, 'hasActiveRun' | 'isSuspended'>,

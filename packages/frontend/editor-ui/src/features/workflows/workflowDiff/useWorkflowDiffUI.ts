@@ -1,9 +1,9 @@
 import type { IWorkflowDb, INodeUi } from '@/Interface';
-import type { IWorkflowSettings } from 'n8n-workflow';
-import { NodeDiffStatus } from 'n8n-workflow';
+import type { IWorkflowSettings } from 'MNI-workflow';
+import { NodeDiffStatus } from 'MNI-workflow';
 import { computed, ref, type Ref, type ComputedRef } from 'vue';
 import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import { STICKY_NODE_TYPE } from '@/app/constants';
 
 export type SettingsChange = {

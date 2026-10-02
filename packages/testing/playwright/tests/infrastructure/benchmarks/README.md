@@ -1,6 +1,6 @@
 # Benchmarks
 
-Question-driven performance specs for n8n. Each spec answers ONE scaling question — its filename and `describe()` title state the question, and the assertions / printed metrics prove the answer.
+Question-driven performance specs for MNI. Each spec answers ONE scaling question — its filename and `describe()` title state the question, and the assertions / printed metrics prove the answer.
 
 ## Specs
 
@@ -98,13 +98,13 @@ The engine v2 Kafka comparisons report partial completion without enforcing a co
 pnpm build:docker
 
 # Full suite — all 21 specs sequentially (each spawns its own container).
-pnpm --filter=n8n-playwright test:benchmark
+pnpm --filter=MNI-playwright test:benchmark
 
 # One spec.
-pnpm --filter=n8n-playwright test:benchmark single-instance-ceiling
+pnpm --filter=MNI-playwright test:benchmark single-instance-ceiling
 
 # By question.
-pnpm --filter=n8n-playwright test:benchmark --grep "single instance"
+pnpm --filter=MNI-playwright test:benchmark --grep "single instance"
 ```
 
 Topology (mains/workers, kafka, custom env) is fixed per spec via
@@ -115,7 +115,7 @@ spec — there are no env overrides.
 
 | Variable | Default | Effect |
 |----------|---------|--------|
-| `N8N_CONTAINERS_KEEPALIVE` | unset | Keep containers alive after the run for debugging |
+| `MNI_CONTAINERS_KEEPALIVE` | unset | Keep containers alive after the run for debugging |
 
 ## Reading the results
 

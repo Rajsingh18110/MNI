@@ -1,6 +1,6 @@
 import escapeRegExp from 'lodash/escapeRegExp';
 import startCase from 'lodash/startCase';
-import { CREDENTIAL_BLANKING_VALUE, jsonParse } from 'n8n-workflow';
+import { CREDENTIAL_BLANKING_VALUE, jsonParse } from 'MNI-workflow';
 
 /**
  * Helpers for Templated Custom Auth (`httpTemplatedCustomAuth`) credentials:
@@ -114,7 +114,7 @@ export function storedPlaceholderValue(displayed: string): string {
 /** Trim a pasted value and strip a duplicated template prefix. Expressions
  *  (external-secrets references) pass through untouched. */
 export function cleanPlaceholderValue(template: unknown, name: string, value: string): string {
-	// Same check as n8n-workflow's isExpression, whose `expr is string` predicate
+	// Same check as MNI-workflow's isExpression, whose `expr is string` predicate
 	// would narrow the string argument to never on the non-expression path.
 	if (value.startsWith('=')) return value;
 	let cleaned = value.trim();

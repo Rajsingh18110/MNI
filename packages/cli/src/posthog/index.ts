@@ -10,16 +10,16 @@ import {
 	GROUPS_WITH_MANY_BOUNDARIES_FLAG,
 	INSTANCE_AI_FOLDER_EXPLORATION_ENABLED_VARIANT,
 	INSTANCE_AI_FOLDER_EXPLORATION_FLAG,
-} from '@n8n/api-types';
-import { GlobalConfig } from '@n8n/config';
-import type { PublicUser } from '@n8n/db';
-import { Service } from '@n8n/di';
+} from '@MNI/api-types';
+import { GlobalConfig } from '@MNI/config';
+import type { PublicUser } from '@MNI/db';
+import { Service } from '@MNI/di';
 import type { Application } from 'express';
-import { InstanceSettings } from 'n8n-core';
-import type { FeatureFlagPayloads, FeatureFlags, ITelemetryTrackProperties } from 'n8n-workflow';
+import { InstanceSettings } from 'MNI-core';
+import type { FeatureFlagPayloads, FeatureFlags, ITelemetryTrackProperties } from 'MNI-workflow';
 import type { AllFlagsOptions, FeatureFlagEvaluations, PostHog } from 'posthog-node';
 
-import { N8N_VERSION } from '@/constants';
+import { MNI_VERSION } from '@/constants';
 
 /**
  * PostHog group type for instance-level properties.
@@ -178,7 +178,7 @@ export class PostHogClient {
 					personProperties: {
 						created_at_timestamp: user.createdAt.getTime().toString(),
 						instance_id: instanceId,
-						version_cli: N8N_VERSION,
+						version_cli: MNI_VERSION,
 					},
 					...(instanceId && { groups: { [POSTHOG_GROUP_TYPE_INSTANCE]: instanceId } }),
 				},

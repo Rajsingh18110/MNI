@@ -1,7 +1,7 @@
-import { Logger } from '@n8n/backend-common';
-import { GlobalConfig } from '@n8n/config';
-import { Service } from '@n8n/di';
-import { InstanceSettings } from 'n8n-core';
+import { Logger } from '@MNI/backend-common';
+import { GlobalConfig } from '@MNI/config';
+import { Service } from '@MNI/di';
+import { InstanceSettings } from 'MNI-core';
 
 type EnvVarName = string;
 
@@ -32,21 +32,21 @@ const SAFE_TO_REMOVE = 'Remove this environment variable; it is no longer needed
 export class DeprecationService {
 	private readonly deprecations: Deprecation[] = [
 		{
-			envVar: 'N8N_BINARY_DATA_STORAGE_PATH',
-			message: 'Use N8N_STORAGE_PATH instead.',
+			envVar: 'MNI_BINARY_DATA_STORAGE_PATH',
+			message: 'Use MNI_STORAGE_PATH instead.',
 		},
-		{ envVar: 'N8N_BINARY_DATA_TTL', message: SAFE_TO_REMOVE },
-		{ envVar: 'N8N_PERSISTED_BINARY_DATA_TTL', message: SAFE_TO_REMOVE },
+		{ envVar: 'MNI_BINARY_DATA_TTL', message: SAFE_TO_REMOVE },
+		{ envVar: 'MNI_PERSISTED_BINARY_DATA_TTL', message: SAFE_TO_REMOVE },
 		{ envVar: 'EXECUTIONS_DATA_PRUNE_TIMEOUT', message: SAFE_TO_REMOVE },
-		{ envVar: 'N8N_AVAILABLE_BINARY_DATA_MODES', message: SAFE_TO_REMOVE },
-		{ envVar: 'N8N_CONFIG_FILES', message: 'Please use .env files or *_FILE env vars instead.' },
-		{ envVar: 'N8N_RUNNERS_ENABLED', message: SAFE_TO_REMOVE },
+		{ envVar: 'MNI_AVAILABLE_BINARY_DATA_MODES', message: SAFE_TO_REMOVE },
+		{ envVar: 'MNI_CONFIG_FILES', message: 'Please use .env files or *_FILE env vars instead.' },
+		{ envVar: 'MNI_RUNNERS_ENABLED', message: SAFE_TO_REMOVE },
 		{
-			envVar: 'N8N_DB_PING_TIMEOUT',
+			envVar: 'MNI_DB_PING_TIMEOUT',
 			message: 'Use DB_PING_TIMEOUT_MS instead. This variable will be removed in a future version.',
 		},
 		{
-			envVar: 'N8N_SKIP_WEBHOOK_DEREGISTRATION_SHUTDOWN',
+			envVar: 'MNI_SKIP_WEBHOOK_DEREGISTRATION_SHUTDOWN',
 			message: `MNI no longer deregisters webhooks at startup and shutdown. ${SAFE_TO_REMOVE}`,
 		},
 		{
@@ -59,39 +59,39 @@ export class DeprecationService {
 			disableIf: () => this.instanceSettings.instanceType !== 'main',
 		},
 		{
-			envVar: 'N8N_EXPRESSION_EVALUATOR',
+			envVar: 'MNI_EXPRESSION_EVALUATOR',
 			message: `MNI has replaced \`tmpl\` with \`tournament\` as expression evaluator. ${SAFE_TO_REMOVE}`,
 		},
 		{
-			envVar: 'N8N_EXPRESSION_REPORT_DIFFERENCE',
+			envVar: 'MNI_EXPRESSION_REPORT_DIFFERENCE',
 			message: `MNI has replaced \`tmpl\` with \`tournament\` as expression evaluator. ${SAFE_TO_REMOVE}`,
 		},
 		{
 			envVar: 'WEBHOOK_URL',
 			message:
-				'Use N8N_WEBHOOK_URL instead, which sets the base URL for both test and production webhooks.',
+				'Use MNI_WEBHOOK_URL instead, which sets the base URL for both test and production webhooks.',
 		},
 		{
-			envVar: 'N8N_UNVERIFIED_PACKAGES_ENABLED',
+			envVar: 'MNI_UNVERIFIED_PACKAGES_ENABLED',
 			message:
 				'The default for this variable will change to `false` in a future version. Set it to `true` explicitly to keep installing unverified community packages.',
 			checkValue: (value?: string) => value === undefined,
 		},
 		{
-			envVar: 'N8N_RUNNERS_MODE',
+			envVar: 'MNI_RUNNERS_MODE',
 			message:
-				'Internal task runner mode is deprecated and will be removed in a future version. For isolation and scaling, run the task runner launcher as a separate process, set this variable to `external` and share `N8N_RUNNERS_AUTH_TOKEN` with the launcher. See https://docs.n8n.io/deploy/host-n8n/configure-n8n/set-up-task-runners',
+				'Internal task runner mode is deprecated and will be removed in a future version. For isolation and scaling, run the task runner launcher as a separate process, set this variable to `external` and share `MNI_RUNNERS_AUTH_TOKEN` with the launcher. See https://docs.n8n.io/deploy/host-MNI/configure-MNI/set-up-task-runners',
 			// Unset means the default, which is still `internal`, so most instances are affected without knowing it.
 			checkValue: (value?: string) => (value ?? this.globalConfig.taskRunners.mode) === 'internal',
 		},
 		{
-			envVar: 'N8N_SSRF_PROTECTION_ENABLED',
+			envVar: 'MNI_SSRF_PROTECTION_ENABLED',
 			message:
-				"The built-in blocked IP ranges will expand in a future version to include the shared address space (100.64.0.0/10) and IPv6 transition ranges. To keep the current list, set N8N_SSRF_BLOCKED_IP_RANGES to the literal ranges instead of the `default` keyword, which always expands to the running version's built-in list.",
+				"The built-in blocked IP ranges will expand in a future version to include the shared address space (100.64.0.0/10) and IPv6 transition ranges. To keep the current list, set MNI_SSRF_BLOCKED_IP_RANGES to the literal ranges instead of the `default` keyword, which always expands to the running version's built-in list.",
 			checkValue: (value?: string) => ['true', '1'].includes(value?.toLowerCase() ?? ''),
 			// Literal block lists without the `default` keyword do not pick up the expanded built-in list.
 			disableIf: () => {
-				const ranges = process.env.N8N_SSRF_BLOCKED_IP_RANGES;
+				const ranges = process.env.MNI_SSRF_BLOCKED_IP_RANGES;
 				return (
 					ranges !== undefined &&
 					!ranges
@@ -102,44 +102,44 @@ export class DeprecationService {
 			},
 		},
 		{
-			envVar: 'N8N_RUNNERS_TASK_TIMEOUT',
+			envVar: 'MNI_RUNNERS_TASK_TIMEOUT',
 			message:
 				'The default for this variable will be reduced from 300 (5 minutes) to 60 (1 minute) in a future version. Set it explicitly to keep your current task timeout.',
 			checkValue: (value?: string) => value === undefined,
 		},
 		{
-			envVar: 'N8N_COMPRESSION_NODE_MAX_DECOMPRESSED_SIZE_BYTES',
+			envVar: 'MNI_COMPRESSION_NODE_MAX_DECOMPRESSED_SIZE_BYTES',
 			message:
 				'The default for this variable will be reduced from 2 GiB to 256 MiB in a future version. Set it explicitly to keep your current limit.',
 			checkValue: (value?: string) => value === undefined,
 		},
 		{
-			envVar: 'N8N_COMPRESSION_NODE_MAX_ZIP_ENTRIES',
+			envVar: 'MNI_COMPRESSION_NODE_MAX_ZIP_ENTRIES',
 			message:
 				'The default for this variable will be reduced from 5000 to 1000 in a future version. Set it explicitly to keep your current limit.',
 			checkValue: (value?: string) => value === undefined,
 		},
 		{
-			envVar: 'N8N_EXPRESSION_ENGINE',
+			envVar: 'MNI_EXPRESSION_ENGINE',
 			message:
 				'The `legacy` expression engine runs expressions without isolation, is no longer considered secure, and will be removed in a future version. Remove this environment variable to use the default `vm` engine.',
 			checkValue: (value?: string) => value === 'legacy',
 		},
 		{
-			envVar: 'N8N_DEFAULT_BINARY_DATA_MODE',
+			envVar: 'MNI_DEFAULT_BINARY_DATA_MODE',
 			message:
 				'In-memory binary data storage (`default` mode) will be removed in a future version. Switch to `filesystem`, `s3`, or `database`.',
 			checkValue: (value?: string) => value === 'default',
 		},
 		{
-			envVar: 'N8N_WORKFLOW_TAGS_DISABLED',
+			envVar: 'MNI_WORKFLOW_TAGS_DISABLED',
 			message:
 				'Disabling workflow tags is deprecated. Tags will always be enabled in a future version and this environment variable will be removed, so the tags feature will become visible again after upgrading.',
 			checkValue: (value?: string) =>
 				value !== undefined && ['true', '1'].includes(value.toLowerCase()),
 		},
 		{
-			envVar: 'N8N_OUTBOUND_PROXY_MODE',
+			envVar: 'MNI_OUTBOUND_PROXY_MODE',
 			message:
 				'This variable exists only for backward compatibility and will be removed in a future version. Remove it and list every internal endpoint that must be reached directly in NO_PROXY. Until that is in place, `main-only` keeps the historical behavior where only the main process routes its default outbound HTTP through the proxy environment variables (HTTP_PROXY, HTTPS_PROXY, ALL_PROXY, NO_PROXY).',
 			checkValue: (value?: string) => value === 'main-only',
@@ -195,7 +195,7 @@ export class DeprecationService {
 
 		if (!this.instanceSettings.isDocker) {
 			mustWarn.push(
-				' - Running MNI outside a container is deprecated. Future versions will require running MNI via the official Docker image. See https://docs.n8n.io/deploy/host-n8n\n',
+				' - Running MNI outside a container is deprecated. Future versions will require running MNI via the official Docker image. See https://docs.n8n.io/deploy/host-MNI\n',
 			);
 		}
 

@@ -186,7 +186,7 @@ async function bumpVersions() {
 
 	// TODO: if releaseType is `auto` determine release type based on the changelog
 
-	const lastTag = (await exec('git describe --tags --match "n8n@*" --abbrev=0')).stdout.trim();
+	const lastTag = (await exec('git describe --tags --match "MNI@*" --abbrev=0')).stdout.trim();
 	const sha =
 		releaseType === 'experimental'
 			? (await exec('git rev-parse --short=8 HEAD')).stdout.trim()

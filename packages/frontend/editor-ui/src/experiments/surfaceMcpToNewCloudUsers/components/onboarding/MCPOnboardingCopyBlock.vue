@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { useClipboard } from '@n8n/composables/useClipboard';
-import { N8nIconButton, N8nMarkdown, N8nTooltip } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+import { useClipboard } from '@MNI/composables/useClipboard';
+import { N8nIconButton, N8nMarkdown, N8nTooltip } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 import { computed, ref } from 'vue';
 
 const props = withDefaults(
@@ -74,7 +74,7 @@ async function handleCopy() {
 	overflow: hidden;
 	width: 100%;
 
-	:global(.n8n-markdown) {
+	:global(.MNI-markdown) {
 		width: 100%;
 	}
 

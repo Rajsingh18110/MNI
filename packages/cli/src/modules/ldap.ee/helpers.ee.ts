@@ -1,5 +1,5 @@
-import type { LdapConfig, ConnectionSecurity } from '@n8n/constants';
-import type { AuthProviderSyncHistory } from '@n8n/db';
+import type { LdapConfig, ConnectionSecurity } from '@MNI/constants';
+import type { AuthProviderSyncHistory } from '@MNI/db';
 import {
 	AuthIdentity,
 	User,
@@ -7,11 +7,11 @@ import {
 	AuthProviderSyncHistoryRepository,
 	UserRepository,
 	GLOBAL_MEMBER_ROLE,
-} from '@n8n/db';
-import { Container } from '@n8n/di';
+} from '@MNI/db';
+import { Container } from '@MNI/di';
 import { validate } from 'jsonschema';
 import type { Entry as LdapUser } from 'ldapts';
-import { randomString } from 'n8n-workflow';
+import { randomString } from 'MNI-workflow';
 
 import { BINARY_AD_ATTRIBUTES, LDAP_CONFIG_SCHEMA } from './constants';
 

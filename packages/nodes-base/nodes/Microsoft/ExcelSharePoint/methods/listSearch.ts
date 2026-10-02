@@ -4,8 +4,8 @@ import type {
 	INodeListSearchItems,
 	INodeListSearchResult,
 	INodeParameterResourceLocator,
-} from 'n8n-workflow';
-import { NodeApiError, NodeOperationError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeApiError, NodeOperationError } from 'MNI-workflow';
 
 import { SERVICE_PRINCIPAL_AUTH } from '../helpers/constants';
 import { isWorkbookFile, workbookSearchEndpoint } from '../helpers/workbookSearch';

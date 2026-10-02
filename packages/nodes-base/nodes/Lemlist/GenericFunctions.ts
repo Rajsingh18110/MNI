@@ -6,7 +6,7 @@ import type {
 	ILoadOptionsFunctions,
 	IHttpRequestMethods,
 	IRequestOptions,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 /**
  * Make an authenticated API request to Lemlist.

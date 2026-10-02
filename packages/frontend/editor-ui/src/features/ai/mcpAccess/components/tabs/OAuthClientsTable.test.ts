@@ -35,7 +35,7 @@ vi.mock('@/features/ai/mcpAccess/mcp.store', () => ({
 	useMCPStore: () => mockMcpStore,
 }));
 
-vi.mock('@n8n/stores/rbac.store', () => ({
+vi.mock('@MNI/stores/rbac.store', () => ({
 	useRBACStore: () => ({
 		hasScope: mockHasScope,
 	}),
@@ -66,7 +66,7 @@ describe('OAuthClientsTable', () => {
 				},
 			});
 
-			expect(container.querySelector('.n8n-loading')).toBeInTheDocument();
+			expect(container.querySelector('.MNI-loading')).toBeInTheDocument();
 			expect(queryByTestId('oauth-clients-data-table')).not.toBeInTheDocument();
 		});
 	});
@@ -227,11 +227,11 @@ describe('OAuthClientsTable', () => {
 	describe('Search and filters', () => {
 		beforeEach(() => {
 			// disable the search debounce so assertions can run synchronously
-			sessionStorage.setItem('N8N_DEBOUNCE_MULTIPLIER', '0');
+			sessionStorage.setItem('MNI_DEBOUNCE_MULTIPLIER', '0');
 		});
 
 		afterEach(() => {
-			sessionStorage.removeItem('N8N_DEBOUNCE_MULTIPLIER');
+			sessionStorage.removeItem('MNI_DEBOUNCE_MULTIPLIER');
 		});
 
 		it('should emit the debounced search term so the parent can filter server-side', async () => {

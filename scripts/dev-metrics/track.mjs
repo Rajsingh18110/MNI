@@ -5,7 +5,7 @@
  * Invoked fire-and-forget (backgrounded) by the shim (shadow-shim.sh) that
  * replaces each tracked binary, after every shadowed command run inside an MNI
  * checkout. It records the binary, its raw argv, wall-clock duration and exit
- * code, plus a static machine profile (CPU/RAM/OS), to the `n8n-dev` RudderStack
+ * code, plus a static machine profile (CPU/RAM/OS), to the `MNI-dev` RudderStack
  * workspace under a weekly-rotating anonymous id, so we can see which commands
  * are used, how long they take, roughly how many developers run them each week,
  * and the specs of the machines they build on.
@@ -13,13 +13,13 @@
  * Today only `pnpm` is shadowed; add another CLI to SHADOWED_BINARIES in setup.mjs.
  *
  * Nothing is sent unless the developer granted consent via
- * scripts/dev-metrics/setup.mjs (stored in ~/.n8n/dev/dev-telemetry.json).
+ * scripts/dev-metrics/setup.mjs (stored in ~/.MNI/dev/dev-telemetry.json).
  *
  * Input from the shim: the command's argv as this script's own arguments, plus
- *   N8N_DEV_TRACK_BIN   the shadowed binary, e.g. "pnpm"
- *   N8N_DEV_TRACK_MS    wall-clock duration in ms
- *   N8N_DEV_TRACK_CODE  exit code
- *   N8N_DEV_TRACK_CWD   directory the command ran in
+ *   MNI_DEV_TRACK_BIN   the shadowed binary, e.g. "pnpm"
+ *   MNI_DEV_TRACK_MS    wall-clock duration in ms
+ *   MNI_DEV_TRACK_CODE  exit code
+ *   MNI_DEV_TRACK_CWD   directory the command ran in
  *
  * The argv is sent as `args` (an array, boundaries preserved) after sanitizing:
  * on the first secret-carrying word (`config`, `login`, …) — a subcommand or an
@@ -28,26 +28,26 @@
  * so paths don't de-anonymize the developer.
  * `dir` is repo-relative. Errors are swallowed so tracking never disrupts a workflow.
  */
-// n8n-track-version: 1 — bump on change; setup.mjs never downgrades the installed copy.
+// MNI-track-version: 1 — bump on change; setup.mjs never downgrades the installed copy.
 import { execFileSync } from 'node:child_process';
 import { randomUUID } from 'node:crypto';
 import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 import { cpus, freemem, homedir, release, totalmem } from 'node:os';
 import { dirname, join, parse, relative } from 'node:path';
 
-// Telemetry goes to the `n8n-dev` RudderStack workspace via its HTTP tracking
+// Telemetry goes to the `MNI-dev` RudderStack workspace via its HTTP tracking
 // API. Defaults are that workspace's data plane + HTTP source write key — like
 // MNI's product keys these are client-side and safe to ship; override via env.
 // Source resourceId: 3GX55bj9H9f9KpUG8AgMJlfymnf
 const RUDDERSTACK_URL =
-	process.env.N8N_DEV_METRICS_RUDDERSTACK_URL ?? 'https://nnrry.dataplane.rudderstack.com';
+	process.env.MNI_DEV_METRICS_RUDDERSTACK_URL ?? 'https://nnrry.dataplane.rudderstack.com';
 const RUDDERSTACK_KEY =
-	process.env.N8N_DEV_METRICS_RUDDERSTACK_KEY ?? '3GX55Y0O8vJnXnesPItW1BWffbN';
+	process.env.MNI_DEV_METRICS_RUDDERSTACK_KEY ?? '3GX55Y0O8vJnXnesPItW1BWffbN';
 const EVENT_NAME = 'dev:cli_command';
 const SCHEMA_VERSION = 1;
 const POST_TIMEOUT_MS = 2000;
 
-/** Walk up from `start` to the MNI monorepo root (package.json name === n8n-monorepo). */
+/** Walk up from `start` to the MNI monorepo root (package.json name === MNI-monorepo). */
 function findMonorepoRoot(start) {
 	let dir = start;
 	const { root } = parse(dir);
@@ -56,7 +56,7 @@ function findMonorepoRoot(start) {
 		if (existsSync(pkgPath)) {
 			try {
 				const pkg = JSON.parse(readFileSync(pkgPath, 'utf8'));
-				if (pkg?.name === 'n8n-monorepo') return { dir, pkg };
+				if (pkg?.name === 'MNI-monorepo') return { dir, pkg };
 			} catch {
 				// ignore unreadable/invalid package.json and keep walking up
 			}
@@ -75,7 +75,7 @@ function detectBinaryVersion(bin) {
 			stdio: ['ignore', 'pipe', 'ignore'],
 			// Mark as active so this probe passes straight through the shim
 			// instead of triggering another tracked invocation.
-			env: { ...process.env, N8N_DEV_SHIM_ACTIVE: '1' },
+			env: { ...process.env, MNI_DEV_SHIM_ACTIVE: '1' },
 		});
 		const m = out.match(/\d+\.\d+(?:\.\d+)?(?:[-+][\w.]+)?/);
 		return m && m[0].length <= 40 ? m[0] : null;
@@ -99,8 +99,8 @@ function isoWeek(date) {
 }
 
 function statePath() {
-	const userFolder = process.env.N8N_USER_FOLDER ?? homedir();
-	return join(userFolder, '.n8n', 'dev', 'dev-telemetry.json');
+	const userFolder = process.env.MNI_USER_FOLDER ?? homedir();
+	return join(userFolder, '.MNI', 'dev', 'dev-telemetry.json');
 }
 
 function readState() {
@@ -224,9 +224,9 @@ function sanitizeArgs(args) {
 }
 
 async function main() {
-	if (process.env.N8N_DEV_TELEMETRY === '0') return; // runtime kill switch
+	if (process.env.MNI_DEV_TELEMETRY === '0') return; // runtime kill switch
 
-	const cwd = process.env.N8N_DEV_TRACK_CWD ?? process.cwd();
+	const cwd = process.env.MNI_DEV_TRACK_CWD ?? process.cwd();
 	const repo = findMonorepoRoot(cwd);
 	if (!repo) return; // only track commands run inside an MNI checkout
 
@@ -235,7 +235,7 @@ async function main() {
 
 	// Lifecycle events (e.g. opt-in) fired by setup.mjs reuse this sender. They
 	// carry only the common, anonymous properties — no command/binary/duration.
-	const customEvent = process.env.N8N_DEV_EVENT;
+	const customEvent = process.env.MNI_DEV_EVENT;
 	if (customEvent) {
 		if (!/^dev:[a-z_]+$/.test(customEvent)) return; // only our own event names
 		await sendEvent(customEvent, currentAnonId(state), {
@@ -250,10 +250,10 @@ async function main() {
 		return;
 	}
 
-	const binary = process.env.N8N_DEV_TRACK_BIN || 'pnpm';
+	const binary = process.env.MNI_DEV_TRACK_BIN || 'pnpm';
 	const binaryVersion = detectBinaryVersion(binary);
-	const durationMs = Number.parseInt(process.env.N8N_DEV_TRACK_MS ?? '', 10);
-	const exitCode = Number.parseInt(process.env.N8N_DEV_TRACK_CODE ?? '', 10);
+	const durationMs = Number.parseInt(process.env.MNI_DEV_TRACK_MS ?? '', 10);
+	const exitCode = Number.parseInt(process.env.MNI_DEV_TRACK_CODE ?? '', 10);
 	// Repo-relative dir (e.g. "packages/cli", "." at root) — never an absolute path.
 	const dir = relative(repo.dir, cwd) || '.';
 

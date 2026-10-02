@@ -1,6 +1,6 @@
-import type { JSONObject, ToolContext } from '@n8n/agents';
-import { isRecord } from '@n8n/utils/is-record';
-import { jsonParse } from 'n8n-workflow';
+import type { JSONObject, ToolContext } from '@MNI/agents';
+import { isRecord } from '@MNI/utils/is-record';
+import { jsonParse } from 'MNI-workflow';
 
 import type {
 	IntegrationMessageContext,

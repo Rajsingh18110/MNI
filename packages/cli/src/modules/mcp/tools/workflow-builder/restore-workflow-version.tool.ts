@@ -1,5 +1,5 @@
-import { type User, WorkflowEntity } from '@n8n/db';
-import { ensureError } from '@n8n/utils/errors/ensure-error';
+import { type User, WorkflowEntity } from '@MNI/db';
+import { ensureError } from '@MNI/utils/errors/ensure-error';
 import z from 'zod';
 
 import type { CollaborationService } from '@/collaboration/collaboration.service';
@@ -103,7 +103,7 @@ export const createRestoreWorkflowVersionTool = (
 
 			const updatedWorkflow = await workflowService.update(user, workflowUpdateData, workflowId, {
 				forceSave: true,
-				source: 'n8n-mcp',
+				source: 'MNI-mcp',
 				versionName: versionMetadata.name,
 				versionDescription: versionMetadata.description,
 			});

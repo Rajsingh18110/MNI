@@ -1,9 +1,9 @@
-import { CONTEXT_PREFERENCES_ENABLED_VARIANT, CONTEXT_PREFERENCES_FLAG } from '@n8n/api-types';
-import type { ModuleRegistry } from '@n8n/backend-common';
-import type { GlobalConfig } from '@n8n/config';
-import type { User } from '@n8n/db';
-import { hasGlobalScope } from '@n8n/permissions';
-import type { FeatureFlags } from 'n8n-workflow';
+import { CONTEXT_PREFERENCES_ENABLED_VARIANT, CONTEXT_PREFERENCES_FLAG } from '@MNI/api-types';
+import type { ModuleRegistry } from '@MNI/backend-common';
+import type { GlobalConfig } from '@MNI/config';
+import type { User } from '@MNI/db';
+import { hasGlobalScope } from '@MNI/permissions';
+import type { FeatureFlags } from 'MNI-workflow';
 
 import type { CommunityPackagesConfig } from '@/modules/community-packages/community-packages.config';
 

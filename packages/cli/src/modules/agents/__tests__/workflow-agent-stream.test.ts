@@ -1,5 +1,5 @@
-import { SKILL_LOAD_TOOL_NAME, type StreamChunk } from '@n8n/agents';
-import type { IWorkflowExecuteAdditionalData } from 'n8n-workflow';
+import { SKILL_LOAD_TOOL_NAME, type StreamChunk } from '@MNI/agents';
+import type { IWorkflowExecuteAdditionalData } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import {

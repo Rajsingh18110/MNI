@@ -6,7 +6,7 @@ const { generateTitleForRun, patchThread } = vi.hoisted(() => ({
 	patchThread: vi.fn(),
 }));
 
-vi.mock('@n8n/instance-ai', async () => {
+vi.mock('@MNI/instance-ai', async () => {
 	const { z } = await vi.importActual<{ z: typeof zType }>('zod');
 	return {
 		McpClientManager: class {
@@ -41,7 +41,7 @@ vi.mock('@n8n/instance-ai', async () => {
 	};
 });
 
-import type { ModelConfig } from '@n8n/instance-ai';
+import type { ModelConfig } from '@MNI/instance-ai';
 
 import { withCurrentDateTime, AUTO_FOLLOW_UP_MESSAGE } from '../internal-messages';
 import { InstanceAiService } from '../instance-ai.service';

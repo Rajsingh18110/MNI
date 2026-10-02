@@ -1,6 +1,6 @@
-import { OutboundHttp } from '@n8n/backend-network';
-import type { HttpRequestClient } from '@n8n/backend-network';
-import { Container } from '@n8n/di';
+import { OutboundHttp } from '@MNI/backend-network';
+import type { HttpRequestClient } from '@MNI/backend-network';
+import { Container } from '@MNI/di';
 
 export const TOKEN_REQUEST_TIMEOUT = 30_000;
 

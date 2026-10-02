@@ -23,7 +23,7 @@ function makeNode(id: string): INodeUi {
 	return {
 		id,
 		name: id,
-		type: 'n8n-nodes-base.noOp',
+		type: 'MNI-nodes-base.noOp',
 		typeVersion: 1,
 		position: [0, 0],
 		parameters: {},

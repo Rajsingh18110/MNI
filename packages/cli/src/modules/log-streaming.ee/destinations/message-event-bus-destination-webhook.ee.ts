@@ -1,15 +1,15 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 
-import type { OutboundHttp } from '@n8n/backend-network';
+import type { OutboundHttp } from '@MNI/backend-network';
 import {
 	LOGSTREAMING_DEFAULT_MAX_FREE_SOCKETS,
 	LOGSTREAMING_DEFAULT_MAX_SOCKETS,
 	LOGSTREAMING_DEFAULT_MAX_TOTAL_SOCKETS,
 	LOGSTREAMING_DEFAULT_SOCKET_TIMEOUT_MS,
-} from '@n8n/constants';
-import { Container } from '@n8n/di';
-import { ExternalSecretsProxy } from 'n8n-core';
-import { jsonParse, MessageEventBusDestinationTypeNames } from 'n8n-workflow';
+} from '@MNI/constants';
+import { Container } from '@MNI/di';
+import { ExternalSecretsProxy } from 'MNI-core';
+import { jsonParse, MessageEventBusDestinationTypeNames } from 'MNI-workflow';
 import type {
 	MessageEventBusDestinationOptions,
 	MessageEventBusDestinationWebhookParameterItem,
@@ -18,7 +18,7 @@ import type {
 	MessageEventBusDestinationWebhookOptions,
 	IHttpRequestMethods,
 	IHttpRequestOptions,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { CredentialsHelper } from '@/credentials-helper';
 import type {

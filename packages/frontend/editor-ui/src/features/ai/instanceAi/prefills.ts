@@ -4,11 +4,11 @@ import {
 	type InstanceAiPrefillType,
 	type InstanceAiPrefillTypeReported,
 	type InstanceAiPrefillPayload,
-} from '@n8n/api-types';
+} from '@MNI/api-types';
 
 /**
  * Editor-side plumbing for the pre-fill taxonomy. The list of types lives in
- * `@n8n/api-types` (`INSTANCE_AI_PREFILL_TYPES`), beside the thread-source
+ * `@MNI/api-types` (`INSTANCE_AI_PREFILL_TYPES`), beside the thread-source
  * taxonomy and the request schemas that enforce it; this module holds the
  * pieces only the editor needs and re-exports the vocabulary so call sites have
  * one import.

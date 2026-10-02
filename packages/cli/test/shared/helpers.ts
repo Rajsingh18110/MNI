@@ -3,7 +3,7 @@ import {
 	type IDataObject,
 	type ITaskData,
 	type NodeConnectionType,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 type TaskData = {
 	data: IDataObject;

@@ -7,18 +7,18 @@ import type {
 	AiPreferenceScope,
 	AiPreferenceSource,
 	AiPreferencesAppliedPayload,
-} from '@n8n/api-types';
-import { AI_PREFERENCE_MAX_PER_SCOPE, aiPreferenceTargetOf } from '@n8n/api-types';
-import type { AiPreference, Project, ProjectRelation, User } from '@n8n/db';
+} from '@MNI/api-types';
+import { AI_PREFERENCE_MAX_PER_SCOPE, aiPreferenceTargetOf } from '@MNI/api-types';
+import type { AiPreference, Project, ProjectRelation, User } from '@MNI/db';
 import {
 	AiPreferenceRepository,
 	ProjectRelationRepository,
 	ProjectRepository,
 	UserRepository,
-} from '@n8n/db';
-import { Service } from '@n8n/di';
-import type { Scope } from '@n8n/permissions';
-import { hasGlobalScope } from '@n8n/permissions';
+} from '@MNI/db';
+import { Service } from '@MNI/di';
+import type { Scope } from '@MNI/permissions';
+import { hasGlobalScope } from '@MNI/permissions';
 import { randomUUID } from 'node:crypto';
 
 import { AiPreferenceScopeFullError } from '@/errors/response-errors/ai-preference-scope-full.error';

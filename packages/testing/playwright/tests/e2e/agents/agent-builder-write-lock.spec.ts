@@ -5,7 +5,7 @@ import { expect, test } from '../../../fixtures/base';
 test.use({
 	capability: {
 		env: {
-			N8N_ENABLED_MODULES: 'agents',
+			MNI_ENABLED_MODULES: 'agents',
 			TEST_ISOLATION: 'agent-builder-write-lock',
 		},
 	},

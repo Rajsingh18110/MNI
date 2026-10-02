@@ -14,9 +14,9 @@
 !dist/task-runner-javascript
 !dist/task-runner-javascript/**
 !packages
-!packages/@n8n
-!packages/@n8n/task-runner-python
-!packages/@n8n/task-runner-python/**
+!packages/@MNI
+!packages/@MNI/task-runner-python
+!packages/@MNI/task-runner-python/**
 
 # === Docker build files (entrypoints, configs) ===
 !docker
@@ -24,9 +24,9 @@
 !docker/images/mni
 !docker/images/mni/docker-entrypoint.sh
 !docker/images/runners
-!docker/images/runners/n8n-task-runners.json
+!docker/images/runners/MNI-task-runners.json
 
-# === benchmark image (packages/@n8n/benchmark/Dockerfile) ===
+# === benchmark image (packages/@MNI/benchmark/Dockerfile) ===
 !package.json
 !pnpm-lock.yaml
 !pnpm-workspace.yaml
@@ -34,8 +34,8 @@
 !patches/**
 !scripts
 !scripts/**
-!packages/@n8n/benchmark
-!packages/@n8n/benchmark/**
-!packages/@n8n/typescript-config
-!packages/@n8n/typescript-config/**
+!packages/@MNI/benchmark
+!packages/@MNI/benchmark/**
+!packages/@MNI/typescript-config
+!packages/@MNI/typescript-config/**
 

@@ -1,13 +1,13 @@
-import { PrometheusMetricsConfig } from '@n8n/config';
-import { Service } from '@n8n/di';
+import { PrometheusMetricsConfig } from '@MNI/config';
+import { Service } from '@MNI/di';
 import promClient from 'prom-client';
 import semverParse from 'semver/functions/parse';
 
-import { N8N_VERSION } from '@/constants';
+import { MNI_VERSION } from '@/constants';
 
 import type { PrometheusMetricsCollector } from './base';
 
-/** Exposes `n8n_version_info` gauge labeled with semver components (major, minor, patch). */
+/** Exposes `MNI_version_info` gauge labeled with semver components (major, minor, patch). */
 @Service()
 export class PrometheusVersionMetricsService implements PrometheusMetricsCollector {
 	constructor(private readonly config: PrometheusMetricsConfig) {}
@@ -17,7 +17,7 @@ export class PrometheusVersionMetricsService implements PrometheusMetricsCollect
 	}
 
 	init() {
-		const n8nVersion = semverParse(N8N_VERSION ?? '0.0.0');
+		const n8nVersion = semverParse(MNI_VERSION ?? '0.0.0');
 
 		if (n8nVersion) {
 			const versionGauge = new promClient.Gauge({

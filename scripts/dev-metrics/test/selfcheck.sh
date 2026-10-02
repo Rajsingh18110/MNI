@@ -20,20 +20,20 @@ T=$(mktemp -d); UF="$T/uf-o'brien"; BIN="$T/bin-o'brien"
 mkdir -p "$UF" "$BIN"
 printf '#!/bin/sh\ncase "$1" in --version) echo 9.9.9; exit 0;; esac\necho "REAL $*"\nexit 7\n' > "$BIN/pnpm"
 chmod +x "$BIN/pnpm"
-export N8N_USER_FOLDER="$UF" N8N_DEV_METRICS_RUDDERSTACK_URL="http://localhost:$PORT" PATH="$BIN:$PATH"
+export MNI_USER_FOLDER="$UF" MNI_DEV_METRICS_RUDDERSTACK_URL="http://localhost:$PORT" PATH="$BIN:$PATH"
 
 fail() { echo "FAIL: $1"; exit 1; }
 
 node "$SRC/setup.mjs" --enable >/dev/null
-grep -q "n8n-shadow-shim-version" "$BIN/pnpm" || fail "shim not installed"
-grep -q "REAL" "$BIN/pnpm.n8n-real" || fail "original not saved"
+grep -q "MNI-shadow-shim-version" "$BIN/pnpm" || fail "shim not installed"
+grep -q "REAL" "$BIN/pnpm.MNI-real" || fail "original not saved"
 
 cd "$REPO"
 rc=0; out=$(sh -c "pnpm build \"$HOME/secretpath\"" 2>&1) || rc=$?
 [ "$rc" -eq 7 ] || fail "exit code not preserved (got $rc)"
 echo "$out" | grep -q "REAL build $HOME/secretpath" || fail "real binary did not run"
 
-N8N_DEV_SHIM_ACTIVE=1 sh -c 'pnpm test' >/dev/null 2>&1 || true   # must not track
+MNI_DEV_SHIM_ACTIVE=1 sh -c 'pnpm test' >/dev/null 2>&1 || true   # must not track
 
 # A sensitive subcommand: args up to it are kept, everything after is redacted.
 sh -c 'pnpm --filter foo config set //registry.npmjs.org/:_authToken supersecrettoken' >/dev/null 2>&1 || true
@@ -42,7 +42,7 @@ sh -c 'pnpm --filter foo config set //registry.npmjs.org/:_authToken supersecret
 sh -c 'pnpm install --config.//registry.npmjs.org/:_authToken=typosecrettoken' >/dev/null 2>&1 || true
 
 node "$SRC/setup.mjs" --enable >/dev/null                        # idempotent
-[ -e "$BIN/pnpm.n8n-real.n8n-real" ] && fail "double-saved on re-enable"
+[ -e "$BIN/pnpm.MNI-real.MNI-real" ] && fail "double-saved on re-enable"
 
 sleep 1
 n=$(grep -c '"event":"dev:cli_command"' "$EV" || true)
@@ -60,21 +60,21 @@ grep -q '"cpu_cores"' "$EV" || fail "machine info not captured"
 
 node "$SRC/setup.mjs" --reset >/dev/null
 grep -q "REAL" "$BIN/pnpm" || fail "original not restored"
-grep -q "n8n-shadow-shim-version" "$BIN/pnpm" && fail "shim left after reset"
-[ -e "$BIN/pnpm.n8n-real" ] && fail ".n8n-real left after reset"
+grep -q "MNI-shadow-shim-version" "$BIN/pnpm" && fail "shim left after reset"
+[ -e "$BIN/pnpm.MNI-real" ] && fail ".MNI-real left after reset"
 
 # Regression: a package-manager upgrade (a fresh binary dropped over the shim,
-# with the previous .n8n-real left behind) must re-shim the NEW binary — not
+# with the previous .MNI-real left behind) must re-shim the NEW binary — not
 # silently run the stale sibling and downgrade the developer.
 (
 	B2="$T/bin2-o'brien"; mkdir -p "$B2"
 	printf '#!/bin/sh\necho "OLD $*"\n' > "$B2/pnpm"; chmod +x "$B2/pnpm"
-	export N8N_USER_FOLDER="$T/uf2" N8N_DEV_TELEMETRY=0 PATH="$B2:$PATH"
+	export MNI_USER_FOLDER="$T/uf2" MNI_DEV_TELEMETRY=0 PATH="$B2:$PATH"
 	node "$SRC/setup.mjs" --enable >/dev/null
 	printf '#!/bin/sh\necho "NEW $*"\n' > "$B2/pnpm"; chmod +x "$B2/pnpm"  # simulate upgrade
 	node "$SRC/setup.mjs" --enable >/dev/null
 	out=$(pnpm probe 2>&1) || true
-	echo "$out" | grep -q "NEW probe" || fail "upgrade downgraded via stale .n8n-real"
+	echo "$out" | grep -q "NEW probe" || fail "upgrade downgraded via stale .MNI-real"
 )
 
 # Regression: never shim a binary inside pnpm's own management dirs (the
@@ -86,18 +86,18 @@ grep -q "n8n-shadow-shim-version" "$BIN/pnpm" && fail "shim left after reset"
 	mkdir -p "$STORE" "$DUR"
 	printf '#!/bin/sh\necho "STORE $*"\n' > "$STORE/pnpm"; chmod +x "$STORE/pnpm"
 	printf '#!/bin/sh\necho "DURABLE $*"\n' > "$DUR/pnpm"; chmod +x "$DUR/pnpm"
-	export N8N_USER_FOLDER="$T/uf3" N8N_DEV_TELEMETRY=0 PNPM_HOME="$PH" PATH="$STORE:$DUR:$PATH"
+	export MNI_USER_FOLDER="$T/uf3" MNI_DEV_TELEMETRY=0 PNPM_HOME="$PH" PATH="$STORE:$DUR:$PATH"
 	node "$SRC/setup.mjs" --enable >/dev/null
-	grep -q "n8n-shadow-shim-version" "$STORE/pnpm" && fail "pnpm-managed store binary was shimmed"
-	grep -q "n8n-shadow-shim-version" "$DUR/pnpm" || fail "durable binary not shimmed behind a store binary"
+	grep -q "MNI-shadow-shim-version" "$STORE/pnpm" && fail "pnpm-managed store binary was shimmed"
+	grep -q "MNI-shadow-shim-version" "$DUR/pnpm" || fail "durable binary not shimmed behind a store binary"
 
 	# Simulate an older setup that shimmed the store binary: re-enable must heal it.
-	mv "$STORE/pnpm" "$STORE/pnpm.n8n-real"
-	sed "s|__N8N_BIN__|pnpm|;s|__N8N_REAL__|$STORE/pnpm.n8n-real|;s|__N8N_BINDIR__|$STORE|;s|__N8N_TRACKER__|/nonexistent|" \
+	mv "$STORE/pnpm" "$STORE/pnpm.MNI-real"
+	sed "s|__MNI_BIN__|pnpm|;s|__MNI_REAL__|$STORE/pnpm.MNI-real|;s|__MNI_BINDIR__|$STORE|;s|__MNI_TRACKER__|/nonexistent|" \
 		"$SRC/shadow-shim.sh" > "$STORE/pnpm"
 	chmod +x "$STORE/pnpm"
 	node "$SRC/setup.mjs" --enable >/dev/null
-	grep -q "n8n-shadow-shim-version" "$STORE/pnpm" && fail "pre-existing store shim not healed"
+	grep -q "MNI-shadow-shim-version" "$STORE/pnpm" && fail "pre-existing store shim not healed"
 	out=$("$STORE/pnpm" probe 2>&1) || true
 	echo "$out" | grep -q "STORE probe" || fail "store binary not restored to the original"
 )
@@ -110,11 +110,11 @@ grep -q "n8n-shadow-shim-version" "$BIN/pnpm" && fail "shim left after reset"
 	mkdir -p "$TOOLS" "$MANAGED"
 	printf '#!/bin/sh\necho "TOOLS $*"\n' > "$TOOLS/pnpm"; chmod +x "$TOOLS/pnpm"
 	printf '#!/bin/sh\necho "MANAGED $*"\n' > "$MANAGED/pnpm"; chmod +x "$MANAGED/pnpm"
-	export N8N_USER_FOLDER="$T/uf4" N8N_DEV_TELEMETRY=0 PATH="$MANAGED:$TOOLS:$PATH"
+	export MNI_USER_FOLDER="$T/uf4" MNI_DEV_TELEMETRY=0 PATH="$MANAGED:$TOOLS:$PATH"
 	unset PNPM_HOME
 	node "$SRC/setup.mjs" --enable >/dev/null
-	grep -q "n8n-shadow-shim-version" "$MANAGED/pnpm" && fail "managed .tools binary was shimmed without PNPM_HOME"
-	grep -q "n8n-shadow-shim-version" "$TOOLS/pnpm" || fail "durable binary under unrelated .tools not shimmed"
+	grep -q "MNI-shadow-shim-version" "$MANAGED/pnpm" && fail "managed .tools binary was shimmed without PNPM_HOME"
+	grep -q "MNI-shadow-shim-version" "$TOOLS/pnpm" || fail "durable binary under unrelated .tools not shimmed"
 )
 
 # Regression: a heal failure (unwritable managed dir) must not abort the
@@ -123,15 +123,15 @@ grep -q "n8n-shadow-shim-version" "$BIN/pnpm" && fail "shim left after reset"
 	PH="$T/ph3"; STORE="$PH/store/v11/links/@/pnpm/9.9.9/hash/bin"; DUR="$T/bin4"
 	mkdir -p "$STORE" "$DUR"
 	printf '#!/bin/sh\necho "DURABLE $*"\n' > "$DUR/pnpm"; chmod +x "$DUR/pnpm"
-	printf '#!/bin/sh\necho "STORE-REAL $*"\n' > "$STORE/pnpm.n8n-real"; chmod +x "$STORE/pnpm.n8n-real"
-	sed "s|__N8N_BIN__|pnpm|;s|__N8N_REAL__|$STORE/pnpm.n8n-real|;s|__N8N_BINDIR__|$STORE|;s|__N8N_TRACKER__|/nonexistent|" \
+	printf '#!/bin/sh\necho "STORE-REAL $*"\n' > "$STORE/pnpm.MNI-real"; chmod +x "$STORE/pnpm.MNI-real"
+	sed "s|__MNI_BIN__|pnpm|;s|__MNI_REAL__|$STORE/pnpm.MNI-real|;s|__MNI_BINDIR__|$STORE|;s|__MNI_TRACKER__|/nonexistent|" \
 		"$SRC/shadow-shim.sh" > "$STORE/pnpm"
 	chmod +x "$STORE/pnpm"
 	chmod a-w "$STORE"  # healing the store shim cannot rename here
-	export N8N_USER_FOLDER="$T/uf5" N8N_DEV_TELEMETRY=0 PNPM_HOME="$PH" PATH="$STORE:$DUR:$PATH"
+	export MNI_USER_FOLDER="$T/uf5" MNI_DEV_TELEMETRY=0 PNPM_HOME="$PH" PATH="$STORE:$DUR:$PATH"
 	node "$SRC/setup.mjs" --enable >/dev/null
 	chmod u+w "$STORE"  # so cleanup can remove the temp dir
-	grep -q "n8n-shadow-shim-version" "$DUR/pnpm" || fail "heal failure aborted the durable shim install"
+	grep -q "MNI-shadow-shim-version" "$DUR/pnpm" || fail "heal failure aborted the durable shim install"
 )
 
 rm -rf "$T" "$EV"

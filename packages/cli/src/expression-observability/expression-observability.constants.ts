@@ -1,4 +1,4 @@
-export const TRACER_NAME = 'n8n-expression-runtime';
+export const TRACER_NAME = 'MNI-expression-runtime';
 
 export const ATTRIBUTE = {
 	EXPRESSION_ENGINE: 'expression.engine',

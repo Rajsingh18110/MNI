@@ -7,10 +7,10 @@ import userEvent from '@testing-library/user-event';
 
 import ResolversView from './ResolversView.vue';
 import { useUIStore } from '@/app/stores/ui.store';
-import { useRootStore } from '@n8n/stores/useRootStore';
+import { useRootStore } from '@MNI/stores/useRootStore';
 import { CREDENTIAL_RESOLVER_EDIT_MODAL_KEY, MODAL_CONFIRM, MODAL_CANCEL } from '@/app/constants';
-import * as restApiClient from '@n8n/rest-api-client';
-import type { CredentialResolver, CredentialResolverType } from '@n8n/api-types';
+import * as restApiClient from '@MNI/rest-api-client';
+import type { CredentialResolver, CredentialResolverType } from '@MNI/api-types';
 
 const clickActionToggle = async (actionToggle: Element) => {
 	await userEvent.click(within(actionToggle as HTMLElement).getByRole('button'));
@@ -26,14 +26,14 @@ vi.mock('@/app/composables/useMessage', () => ({
 	}),
 }));
 
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: () => ({
 		showError: mockShowError,
 		showMessage: mockShowMessage,
 	}),
 }));
 
-vi.mock('@n8n/rest-api-client', async (importOriginal) => {
+vi.mock('@MNI/rest-api-client', async (importOriginal) => {
 	const actual = await importOriginal<typeof restApiClient>();
 	return {
 		...actual,
@@ -112,7 +112,7 @@ describe('ResolversView', () => {
 
 			// The loading component should be visible
 			await waitFor(() => {
-				expect(container.querySelector('.n8n-loading')).toBeInTheDocument();
+				expect(container.querySelector('.MNI-loading')).toBeInTheDocument();
 			});
 		});
 	});

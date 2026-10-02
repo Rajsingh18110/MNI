@@ -1,4 +1,4 @@
-import type { CommunityNodeType } from '@n8n/api-types';
+import type { CommunityNodeType } from '@MNI/api-types';
 import semver from 'semver';
 
 export async function findVettedCommunityNodeAttributes(

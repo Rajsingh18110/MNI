@@ -1,7 +1,7 @@
 import type { MockProxy } from 'vitest-mock-extended';
 import { mock } from 'vitest-mock-extended';
-import type { IExecuteFunctions, INodeExecutionData } from 'n8n-workflow';
-import { NodeOperationError } from 'n8n-workflow';
+import type { IExecuteFunctions, INodeExecutionData } from 'MNI-workflow';
+import { NodeOperationError } from 'MNI-workflow';
 import { Readable } from 'stream';
 
 import { HelpScout } from './HelpScout.node';
@@ -64,7 +64,7 @@ describe('HelpScout Node', () => {
 
 			mockExecuteFunctions.getNode.mockReturnValue({
 				name: 'HelpScout',
-				type: 'n8n-nodes-base.helpScout',
+				type: 'MNI-nodes-base.helpScout',
 				typeVersion: 1,
 				id: 'test-node-id',
 			} as any);
@@ -145,7 +145,7 @@ describe('HelpScout Node', () => {
 
 			mockExecuteFunctions.getNode.mockReturnValue({
 				name: 'HelpScout',
-				type: 'n8n-nodes-base.helpScout',
+				type: 'MNI-nodes-base.helpScout',
 				typeVersion: 1,
 				id: 'test-node-id',
 			} as any);
@@ -219,7 +219,7 @@ describe('HelpScout Node', () => {
 
 			mockExecuteFunctions.getNode.mockReturnValue({
 				name: 'HelpScout',
-				type: 'n8n-nodes-base.helpScout',
+				type: 'MNI-nodes-base.helpScout',
 				typeVersion: 1,
 				id: 'test-node-id',
 			} as any);
@@ -294,7 +294,7 @@ describe('HelpScout Node', () => {
 
 			mockExecuteFunctions.getNode.mockReturnValue({
 				name: 'HelpScout',
-				type: 'n8n-nodes-base.helpScout',
+				type: 'MNI-nodes-base.helpScout',
 				typeVersion: 1,
 				id: 'test-node-id',
 			} as any);
@@ -345,7 +345,7 @@ describe('HelpScout Node', () => {
 
 			mockExecuteFunctions.getNode.mockReturnValue({
 				name: 'HelpScout',
-				type: 'n8n-nodes-base.helpScout',
+				type: 'MNI-nodes-base.helpScout',
 				typeVersion: 1,
 				id: 'test-node-id',
 			} as any);
@@ -407,7 +407,7 @@ describe('HelpScout Node', () => {
 
 			mockExecuteFunctions.getNode.mockReturnValue({
 				name: 'HelpScout',
-				type: 'n8n-nodes-base.helpScout',
+				type: 'MNI-nodes-base.helpScout',
 				typeVersion: 1,
 				id: 'test-node-id',
 			} as any);
@@ -457,7 +457,7 @@ describe('HelpScout Node', () => {
 
 			mockExecuteFunctions.getNode.mockReturnValue({
 				name: 'HelpScout',
-				type: 'n8n-nodes-base.helpScout',
+				type: 'MNI-nodes-base.helpScout',
 				typeVersion: 1,
 				id: 'test-node-id',
 			} as any);

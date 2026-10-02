@@ -1,9 +1,9 @@
-import type { WorkflowHistory } from '@n8n/db';
-import { WorkflowRepository, WorkflowHistoryRepository } from '@n8n/db';
-import { Command } from '@n8n/decorators';
-import { Container } from '@n8n/di';
+import type { WorkflowHistory } from '@MNI/db';
+import { WorkflowRepository, WorkflowHistoryRepository } from '@MNI/db';
+import { Command } from '@MNI/decorators';
+import { Container } from '@MNI/di';
 import fs from 'fs';
-import { UserError } from 'n8n-workflow';
+import { UserError } from 'MNI-workflow';
 import path from 'path';
 import { z } from 'zod';
 

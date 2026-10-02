@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useStorage } from '@n8n/composables/useStorage';
+import { useStorage } from '@MNI/composables/useStorage';
 import { saveAs } from 'file-saver';
 import NodeSettingsHint from '@/features/ndv/settings/components/NodeSettingsHint.vue';
 import RunDataHints from '@/features/ndv/runData/components/RunDataHints.vue';
@@ -14,13 +14,13 @@ import type {
 	NodeError,
 	NodeHint,
 	NodeConnectionType,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import {
 	isTerminalExecutionStatus,
 	parseErrorMetadata,
 	NodeConnectionTypes,
 	NodeHelpers,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import { computed, defineAsyncComponent, onBeforeUnmount, onMounted, ref, toRef, watch } from 'vue';
 
 import type { INodeUi, IRunDataDisplayMode, ITab } from '@/Interface';
@@ -50,19 +50,19 @@ import { useInjectWorkflowId } from '@/app/composables/useInjectWorkflowId';
 import { useRunWorkflow } from '@/app/composables/useRunWorkflow';
 import RunDataPinButton from './RunDataPinButton.vue';
 import { useExternalHooks } from '@/app/composables/useExternalHooks';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import { useNodeHelpers } from '@/app/composables/useNodeHelpers';
 import { useNodeType } from '@/app/composables/useNodeType';
 import type { PinDataSource, UnpinDataSource } from '@/app/composables/usePinnedData';
 import { usePinnedData } from '@/app/composables/usePinnedData';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
-import { useToast } from '@n8n/composables/useToast';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
+import { useToast } from '@MNI/composables/useToast';
 import { dataPinningEventBus } from '@/app/event-bus';
 import { ndvEventBus } from '@/features/ndv/shared/ndv.eventBus';
 import { injectNDVStore } from '@/features/ndv/shared/ndv.store';
 import { useAiSimulatedDataGuard } from '@/app/composables/useAiSimulatedDataGuard';
 import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';
-import { useRootStore } from '@n8n/stores/useRootStore';
+import { useRootStore } from '@MNI/stores/useRootStore';
 import { useSourceControlStore } from '@/features/integrations/sourceControl.ee/sourceControl.store';
 import { useCollaborationStore } from '@/features/collaboration/collaboration/collaboration.store';
 import { injectWorkflowExecutionStateStore } from '@/app/stores/workflowExecutionState.store';
@@ -99,7 +99,7 @@ import {
 	N8nTabs,
 	N8nText,
 	N8nTooltip,
-} from '@n8n/design-system';
+} from '@MNI/design-system';
 import { injectWorkflowDocumentStore } from '@/app/stores/workflowDocument.store';
 
 const LazyRunDataTable = defineAsyncComponent(async () => await import('./RunDataTable.vue'));
@@ -1736,7 +1736,7 @@ defineExpose({ enterEditMode });
 			<div v-if="props.calloutMessage || $slots['callout-message']" :class="$style.hintCallout">
 				<N8nCallout theme="info" data-test-id="run-data-callout">
 					<slot name="callout-message">
-						<N8nText v-n8n-html="props.calloutMessage" size="small"></N8nText>
+						<N8nText v-MNI-html="props.calloutMessage" size="small"></N8nText>
 					</slot>
 				</N8nCallout>
 			</div>
@@ -2132,7 +2132,7 @@ defineExpose({ enterEditMode });
 							})
 						"
 					>
-						<span v-n8n-html="i18n.baseText('ndv.tooMuchData.message')" />
+						<span v-MNI-html="i18n.baseText('ndv.tooMuchData.message')" />
 					</NDVEmptyState>
 
 					<div :class="$style.warningActions">

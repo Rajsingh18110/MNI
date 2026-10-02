@@ -1,9 +1,9 @@
 import type { Mock } from 'vitest';
-import type { Logger } from '@n8n/backend-common';
-import type { ExecutionsConfig } from '@n8n/config';
-import type { User } from '@n8n/db';
+import type { Logger } from '@MNI/backend-common';
+import type { ExecutionsConfig } from '@MNI/config';
+import type { User } from '@MNI/db';
 import { mock } from 'vitest-mock-extended';
-import type { BinaryDataService } from 'n8n-core';
+import type { BinaryDataService } from 'MNI-core';
 import type {
 	IConnections,
 	INode,
@@ -11,8 +11,8 @@ import type {
 	IRun,
 	IWorkflowBase,
 	INodeTypeDescription,
-} from 'n8n-workflow';
-import { NodeConnectionTypes, TimeoutExecutionCancelledError, UserError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeConnectionTypes, TimeoutExecutionCancelledError, UserError } from 'MNI-workflow';
 
 import type { ActiveExecutions } from '@/active-executions';
 import type { LoadNodesAndCredentials } from '@/load-nodes-and-credentials';
@@ -28,7 +28,7 @@ import type { WorkflowStaticDataService } from '@/workflows/workflow-static-data
 // Mocks — must be before the import of the class under test
 // ---------------------------------------------------------------------------
 
-vi.mock('@n8n/instance-ai', () => ({
+vi.mock('@MNI/instance-ai', () => ({
 	createEvalAgent: vi.fn(),
 	extractText: vi.fn(),
 }));
@@ -69,18 +69,18 @@ vi.mock('../llm-wire-server', () => {
 });
 
 const mockRestoreNoProxy = vi.fn();
-vi.mock('@n8n/backend-network/proxy', () => ({
+vi.mock('@MNI/backend-network/proxy', () => ({
 	ensureHostsBypassProxy: vi.fn(() => mockRestoreNoProxy),
 }));
-vi.mock('@n8n/workflow-sdk', async (importOriginal) => ({
-	...(await importOriginal<typeof import('@n8n/workflow-sdk')>()),
+vi.mock('@MNI/workflow-sdk', async (importOriginal) => ({
+	...(await importOriginal<typeof import('@MNI/workflow-sdk')>()),
 	normalizePinData: vi.fn((pd: unknown) => pd),
 }));
 
 // Same constructor-protocol gotcha — use a class so `new Workflow()` returns an instance with `getStartNode`.
 const mockGetStartNode = vi.fn();
-vi.mock('n8n-workflow', async () => {
-	const actual = await vi.importActual<typeof import('n8n-workflow')>('n8n-workflow');
+vi.mock('MNI-workflow', async () => {
+	const actual = await vi.importActual<typeof import('MNI-workflow')>('MNI-workflow');
 	class MockWorkflow {
 		nodes: Record<string, unknown>;
 		connections: IConnections;
@@ -140,7 +140,7 @@ function makeWorkflowEntity(overrides: Partial<IWorkflowBase> = {}) {
 			{
 				id: 'node-1',
 				name: 'Webhook',
-				type: 'n8n-nodes-base.webhook',
+				type: 'MNI-nodes-base.webhook',
 				typeVersion: 1,
 				position: [0, 0],
 				parameters: {},
@@ -148,7 +148,7 @@ function makeWorkflowEntity(overrides: Partial<IWorkflowBase> = {}) {
 			{
 				id: 'node-2',
 				name: 'HTTP Request',
-				type: 'n8n-nodes-base.httpRequest',
+				type: 'MNI-nodes-base.httpRequest',
 				typeVersion: 1,
 				position: [200, 0],
 				parameters: {},
@@ -193,7 +193,7 @@ function makeStartNode(): INode {
 	return {
 		id: 'node-1',
 		name: 'Webhook',
-		type: 'n8n-nodes-base.webhook',
+		type: 'MNI-nodes-base.webhook',
 		typeVersion: 1,
 		position: [0, 0] as [number, number],
 		parameters: {},
@@ -278,7 +278,7 @@ describe('EvalExecutionService', () => {
 		// Default: kill-switch enabled. Tests that need it off flip this.
 		postHogClient.getFeatureFlags.mockResolvedValue({});
 
-		const proxyModule = (await import('@n8n/backend-network/proxy')) as unknown as {
+		const proxyModule = (await import('@MNI/backend-network/proxy')) as unknown as {
 			ensureHostsBypassProxy: Mock;
 		};
 		proxyModule.ensureHostsBypassProxy.mockImplementation(() => mockRestoreNoProxy);
@@ -484,7 +484,7 @@ describe('EvalExecutionService', () => {
 				({
 					id: 'node-2',
 					name: 'HTTP Request',
-					type: 'n8n-nodes-base.httpRequest',
+					type: 'MNI-nodes-base.httpRequest',
 					typeVersion: 1,
 					position: [200, 0],
 					parameters: { project: { __rl: true, mode: 'id', value: 'IT' } },
@@ -495,7 +495,7 @@ describe('EvalExecutionService', () => {
 
 			function mockIdLocatorNodeType() {
 				nodeTypes.getByNameAndVersion.mockImplementation((nodeType) => {
-					if (nodeType !== 'n8n-nodes-base.httpRequest') {
+					if (nodeType !== 'MNI-nodes-base.httpRequest') {
 						return { description: { properties: [] } as unknown as INodeTypeDescription } as never;
 					}
 					return {
@@ -569,7 +569,7 @@ describe('EvalExecutionService', () => {
 			const readNode = {
 				id: 'node-3',
 				name: 'Read Pending Tasks',
-				type: 'n8n-nodes-base.dataTable',
+				type: 'MNI-nodes-base.dataTable',
 				typeVersion: 1.1,
 				position: [400, 0],
 				parameters: {
@@ -670,7 +670,7 @@ describe('EvalExecutionService', () => {
 			const bypassNode = {
 				id: 'node-3',
 				name: 'Only New Jobs',
-				type: 'n8n-nodes-base.dataTable',
+				type: 'MNI-nodes-base.dataTable',
 				typeVersion: 1,
 				position: [400, 0],
 				parameters: {},
@@ -693,7 +693,7 @@ describe('EvalExecutionService', () => {
 			const bypassNode = {
 				id: 'node-3',
 				name: 'Read Data Table',
-				type: 'n8n-nodes-base.dataTable',
+				type: 'MNI-nodes-base.dataTable',
 				typeVersion: 1,
 				position: [400, 0],
 				parameters: {},
@@ -973,7 +973,7 @@ describe('EvalExecutionService', () => {
 			});
 
 			it('tears down the wire server when NO_PROXY patching throws after boot', async () => {
-				const proxyModule = (await import('@n8n/backend-network/proxy')) as unknown as {
+				const proxyModule = (await import('@MNI/backend-network/proxy')) as unknown as {
 					ensureHostsBypassProxy: Mock;
 				};
 				proxyModule.ensureHostsBypassProxy.mockImplementationOnce(() => {
@@ -1002,7 +1002,7 @@ describe('EvalExecutionService', () => {
 						rootName: 'Agent',
 						url: 'https://api.openai.com/v1/chat/completions',
 						method: 'POST',
-						nodeType: '@n8n/n8n-nodes-langchain.lmChatOpenAi',
+						nodeType: '@MNI/MNI-nodes-langchain.lmChatOpenAi',
 						requestBody: { model: 'gpt-4o', messages: [] },
 						mockResponse: { content: 'hello from mock' },
 					});
@@ -1017,7 +1017,7 @@ describe('EvalExecutionService', () => {
 					{
 						url: 'https://api.openai.com/v1/chat/completions',
 						method: 'POST',
-						nodeType: '@n8n/n8n-nodes-langchain.lmChatOpenAi',
+						nodeType: '@MNI/MNI-nodes-langchain.lmChatOpenAi',
 						requestBody: { model: 'gpt-4o', messages: [] },
 						mockResponse: { content: 'hello from mock' },
 					},
@@ -1040,7 +1040,7 @@ describe('EvalExecutionService', () => {
 						rootName: 'Agent',
 						url: 'https://api.openai.com/v1/chat/completions',
 						method: 'POST',
-						nodeType: '@n8n/n8n-nodes-langchain.lmChatOpenAi',
+						nodeType: '@MNI/MNI-nodes-langchain.lmChatOpenAi',
 						requestBody: { model: 'gpt-4o', messages: [] },
 						mockResponse: { content: 'reply' },
 					});
@@ -1088,7 +1088,7 @@ describe('EvalExecutionService', () => {
 						rootName: 'Agent',
 						url: 'https://api.openai.com/v1/chat/completions',
 						method: 'POST',
-						nodeType: '@n8n/n8n-nodes-langchain.lmChatOpenAi',
+						nodeType: '@MNI/MNI-nodes-langchain.lmChatOpenAi',
 						requestBody: { model: 'gpt-4o', messages: [] },
 						mockResponse: {
 							tool_calls: [{ id: 'c1', function: { name: 'getOrder', arguments: '{}' } }],
@@ -1108,7 +1108,7 @@ describe('EvalExecutionService', () => {
 						{
 							id: 'tool-node',
 							name: 'Get Order Tool',
-							type: 'n8n-nodes-base.httpRequestTool',
+							type: 'MNI-nodes-base.httpRequestTool',
 							typeVersion: 1,
 							position: [0, 0],
 							parameters: {},
@@ -1124,7 +1124,7 @@ describe('EvalExecutionService', () => {
 				expect(result.nodeResults['Agent']).toBeDefined();
 				expect(result.nodeResults['Agent'].interceptedRequests).toHaveLength(1);
 				expect(result.nodeResults['Agent'].interceptedRequests[0].nodeType).toBe(
-					'@n8n/n8n-nodes-langchain.lmChatOpenAi',
+					'@MNI/MNI-nodes-langchain.lmChatOpenAi',
 				);
 
 				// Tool HTTP attributed to the tool node, NOT to the Agent.
@@ -1134,7 +1134,7 @@ describe('EvalExecutionService', () => {
 					'https://orders.example.com/v1/orders/42',
 				);
 				expect(result.nodeResults['Get Order Tool'].interceptedRequests[0].nodeType).toBe(
-					'n8n-nodes-base.httpRequestTool',
+					'MNI-nodes-base.httpRequestTool',
 				);
 				expect(result.nodeResults['Get Order Tool'].executionMode).toBe('mocked');
 
@@ -1172,7 +1172,7 @@ describe('EvalExecutionService', () => {
 						{
 							id: 'node-2',
 							name: 'HTTP Request',
-							type: 'n8n-nodes-base.httpRequest',
+							type: 'MNI-nodes-base.httpRequest',
 							typeVersion: 1,
 							position: [0, 0],
 							parameters: {},
@@ -1214,7 +1214,7 @@ describe('EvalExecutionService', () => {
 						{
 							id: 'broken-node',
 							name: 'Transcribe Audio',
-							type: 'n8n-nodes-base.openAi',
+							type: 'MNI-nodes-base.openAi',
 							typeVersion: 1.1,
 							position: [0, 0],
 							parameters: {},
@@ -1253,7 +1253,7 @@ describe('EvalExecutionService', () => {
 						rootName: 'HTTP Request',
 						url: 'https://api.openai.com/v1/chat/completions',
 						method: 'POST',
-						nodeType: '@n8n/n8n-nodes-langchain.lmChatOpenAi',
+						nodeType: '@MNI/MNI-nodes-langchain.lmChatOpenAi',
 						requestBody: { model: 'gpt-4o', messages: [] },
 						mockResponse: { content: 'reply' },
 					});
@@ -1275,7 +1275,7 @@ describe('EvalExecutionService', () => {
 		it('keeps missing required parameters visible as failed config issues after synthesis', async () => {
 			workflowFinderService.findWorkflowForUser.mockResolvedValue(makeWorkflowEntity() as never);
 			nodeTypes.getByNameAndVersion.mockImplementation((nodeType) => {
-				if (nodeType !== 'n8n-nodes-base.httpRequest') {
+				if (nodeType !== 'MNI-nodes-base.httpRequest') {
 					return {
 						description: { properties: [] } as unknown as INodeTypeDescription,
 					} as never;
@@ -1337,7 +1337,7 @@ describe('EvalExecutionService', () => {
 						{
 							id: 'node-2',
 							name: 'Graph Node',
-							type: 'n8n-nodes-base.httpRequest',
+							type: 'MNI-nodes-base.httpRequest',
 							typeVersion: 1,
 							position: [200, 0],
 							parameters: {
@@ -1369,7 +1369,7 @@ describe('EvalExecutionService', () => {
 						{
 							id: 'node-2',
 							name: 'Resource Node',
-							type: 'n8n-nodes-base.httpRequest',
+							type: 'MNI-nodes-base.httpRequest',
 							typeVersion: 1,
 							position: [200, 0],
 							parameters: {
@@ -1838,7 +1838,7 @@ describe('EvalExecutionService', () => {
 			return {
 				id: 'node-dt',
 				name: 'Get Rows',
-				type: 'n8n-nodes-base.dataTable',
+				type: 'MNI-nodes-base.dataTable',
 				typeVersion: 1,
 				position: [200, 0],
 				parameters: { resource: 'row', operation, dataTableId },
@@ -1856,7 +1856,7 @@ describe('EvalExecutionService', () => {
 			// Mirrors the real predicate: only `get` emits stored rows.
 			emitsDataTableRowsMock.mockImplementation(
 				(node: INode) =>
-					node.type === 'n8n-nodes-base.dataTable' &&
+					node.type === 'MNI-nodes-base.dataTable' &&
 					(node.parameters as { operation?: string } | undefined)?.operation === 'get',
 			);
 			ownershipService.getWorkflowProjectCached.mockResolvedValue({ id: 'proj-1' } as never);

@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import type { DateValue } from '@internationalized/date';
 import { getLocalTimeZone, parseDate, today } from '@internationalized/date';
-import type { InsightsSummaryType } from '@n8n/api-types';
-import { useDocumentTitle } from '@n8n/composables/useDocumentTitle';
-import { useToast } from '@n8n/composables/useToast';
-import { N8nHeading, N8nSpinner } from '@n8n/design-system';
-import { componentRegistry, type SlotProjectSelection } from '@n8n/frontend-module-sdk';
-import { useI18n } from '@n8n/i18n';
-import { ResponseError } from '@n8n/rest-api-client/utils';
+import type { InsightsSummaryType } from '@MNI/api-types';
+import { useDocumentTitle } from '@MNI/composables/useDocumentTitle';
+import { useToast } from '@MNI/composables/useToast';
+import { N8nHeading, N8nSpinner } from '@MNI/design-system';
+import { componentRegistry, type SlotProjectSelection } from '@MNI/frontend-module-sdk';
+import { useI18n } from '@MNI/i18n';
+import { ResponseError } from '@MNI/rest-api-client/utils';
 import { computed, defineAsyncComponent, onMounted, ref, shallowRef, watch } from 'vue';
 import { useRoute } from 'vue-router';
 

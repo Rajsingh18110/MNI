@@ -1,5 +1,5 @@
-import type { Logger } from '@n8n/backend-common';
-import { PackageDirectoryLoader } from 'n8n-core';
+import type { Logger } from '@MNI/backend-common';
+import { PackageDirectoryLoader } from 'MNI-core';
 import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
@@ -9,7 +9,7 @@ import { LoadNodesAndCredentials } from '@/load-nodes-and-credentials';
 import { NodeTypes } from '@/node-types';
 
 /**
- * Regression test for https://github.com/n8n-io/n8n/issues/38263
+ * Regression test for https://github.com/MNI-io/MNI/issues/38263
  *
  * `PackageDirectoryLoader` stores a package-relative `sourcePath` for every node
  * it loads (`dist/nodes/Fixture/Fixture.node.js`). When the locale is not `en`,
@@ -19,7 +19,7 @@ import { NodeTypes } from '@/node-types';
  * translation" instead of failing the request.
  */
 describe('NodeTypes translations', () => {
-	const PACKAGE_NAME = 'n8n-nodes-fixture';
+	const PACKAGE_NAME = 'MNI-nodes-fixture';
 	const NODE_TYPE = `${PACKAGE_NAME}.fixture`;
 
 	const nodeSource = `
@@ -50,7 +50,7 @@ describe('NodeTypes translations', () => {
 	let nodeTypes: NodeTypes;
 
 	beforeEach(async () => {
-		tmpRoot = mkdtempSync(join(tmpdir(), 'n8n-node-translations-'));
+		tmpRoot = mkdtempSync(join(tmpdir(), 'MNI-node-translations-'));
 		packageDir = join(tmpRoot, 'nodes-fixture');
 
 		const nodeDir = join(packageDir, 'dist', 'nodes', 'Fixture');
@@ -62,7 +62,7 @@ describe('NodeTypes translations', () => {
 			JSON.stringify({
 				name: PACKAGE_NAME,
 				version: '1.0.0',
-				n8n: { nodes: ['dist/nodes/Fixture/Fixture.node.js'] },
+				MNI: { nodes: ['dist/nodes/Fixture/Fixture.node.js'] },
 			}),
 		);
 		writeFileSync(join(nodeDir, 'Fixture.node.js'), nodeSource);

@@ -1,5 +1,5 @@
-import type { CredentialsEntity } from '@n8n/db';
-import type { ICredentialDataDecryptedObject } from 'n8n-workflow';
+import type { CredentialsEntity } from '@MNI/db';
+import type { ICredentialDataDecryptedObject } from 'MNI-workflow';
 
 import type { CredentialsHelper } from '@/credentials-helper';
 

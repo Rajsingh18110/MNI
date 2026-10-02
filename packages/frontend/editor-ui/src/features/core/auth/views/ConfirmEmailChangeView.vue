@@ -2,11 +2,11 @@
 import { onMounted, ref } from 'vue';
 import { useRouter } from 'vue-router';
 
-import { N8nButton, N8nHeading, N8nLogo, N8nText } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
-import { useToast } from '@n8n/composables/useToast';
-import { useSettingsStore } from '@n8n/stores/settings.store';
-import { useUsersStore } from '@n8n/stores/users.store';
+import { N8nButton, N8nHeading, N8nLogo, N8nText } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
+import { useToast } from '@MNI/composables/useToast';
+import { useSettingsStore } from '@MNI/stores/settings.store';
+import { useUsersStore } from '@MNI/stores/users.store';
 
 import { VIEWS } from '@/app/constants';
 

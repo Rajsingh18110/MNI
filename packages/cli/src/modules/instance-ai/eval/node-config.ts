@@ -4,7 +4,7 @@
  * Serializes node.parameters as JSON for LLM context.
  */
 
-import type { INode } from 'n8n-workflow';
+import type { INode } from 'MNI-workflow';
 
 export function extractNodeConfig(node: INode): string {
 	const params = node.parameters;

@@ -1,4 +1,4 @@
-import { Container } from '@n8n/di';
+import { Container } from '@MNI/di';
 
 import { ChatIntegrationRegistry } from './agent-chat-integration';
 import { loadChatSdk } from './esm-loader';

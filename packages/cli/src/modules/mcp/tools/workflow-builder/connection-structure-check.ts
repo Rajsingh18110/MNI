@@ -3,7 +3,7 @@ import {
 	NodeConnectionTypes,
 	type INodeOutputConfiguration,
 	type NodeConnectionType,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import type { NodeTypes } from '@/node-types';
 import type { Telemetry } from '@/telemetry';
@@ -30,7 +30,7 @@ export interface InvalidAiToolSource {
 /**
  * Minimal workflow shape the check reads. Declared structurally rather than as
  * `Pick<WorkflowJSON, ...>` so callers can pass either the SDK's `WorkflowJSON`
- * or an `n8n-workflow`-typed slice — the two declare duplicate but formally
+ * or an `MNI-workflow`-typed slice — the two declare duplicate but formally
  * separate `IConnections` / node types that are not assignable to each other.
  */
 export interface WorkflowForToolSourceCheck {
@@ -123,7 +123,7 @@ export function formatInvalidAiToolSourceMessage(violations: InvalidAiToolSource
 	return [
 		'Invalid connection: a node was wired as a tool to an agent, but its type does not produce an ai_tool output.',
 		...lines,
-		"Use a node whose type produces an 'ai_tool' output — typically any node with a 'Tool' suffix (e.g. '@n8n/n8n-nodes-langchain.toolCalculator', '@n8n/n8n-nodes-langchain.toolHttpRequest', or '@n8n/n8n-nodes-langchain.agentTool' for sub-agent calls).",
+		"Use a node whose type produces an 'ai_tool' output — typically any node with a 'Tool' suffix (e.g. '@MNI/MNI-nodes-langchain.toolCalculator', '@MNI/MNI-nodes-langchain.toolHttpRequest', or '@MNI/MNI-nodes-langchain.agentTool' for sub-agent calls).",
 	].join(' ');
 }
 

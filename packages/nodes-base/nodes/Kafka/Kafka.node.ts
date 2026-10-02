@@ -1,5 +1,5 @@
-import type { INodeTypeBaseDescription, IVersionedNodeType } from 'n8n-workflow';
-import { VersionedNodeType } from 'n8n-workflow';
+import type { INodeTypeBaseDescription, IVersionedNodeType } from 'MNI-workflow';
+import { VersionedNodeType } from 'MNI-workflow';
 
 import { KafkaV1 } from './v1/KafkaV1.node';
 import { KafkaV2 } from './v2/KafkaV2.node';

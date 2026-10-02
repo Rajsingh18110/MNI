@@ -1,6 +1,6 @@
-import { isRecord } from '@n8n/utils/is-record';
-import { NodeOperationError } from 'n8n-workflow';
-import type { IDataObject, ILoadOptionsFunctions, INodeListSearchResult } from 'n8n-workflow';
+import { isRecord } from '@MNI/utils/is-record';
+import { NodeOperationError } from 'MNI-workflow';
+import type { IDataObject, ILoadOptionsFunctions, INodeListSearchResult } from 'MNI-workflow';
 
 import {
 	databricksApiRequest,

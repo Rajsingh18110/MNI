@@ -1,6 +1,6 @@
-import type { AgentBackgroundJobDto } from '@n8n/api-types';
-import { DateTimeColumn, WithTimestampsAndStringId } from '@n8n/db';
-import { Column, Entity, Index } from '@n8n/typeorm';
+import type { AgentBackgroundJobDto } from '@MNI/api-types';
+import { DateTimeColumn, WithTimestampsAndStringId } from '@MNI/db';
+import { Column, Entity, Index } from '@MNI/typeorm';
 
 export type AgentBackgroundJobKind = AgentBackgroundJobDto['kind'];
 export type AgentBackgroundJobStatus = AgentBackgroundJobDto['status'];

@@ -1,4 +1,4 @@
-import { UserError } from 'n8n-workflow';
+import { UserError } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import { OAuthJweServiceProxy, type OAuthJweHandler } from '@/oauth/oauth-jwe-service.proxy';

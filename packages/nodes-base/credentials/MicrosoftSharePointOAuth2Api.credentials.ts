@@ -1,4 +1,4 @@
-import type { Icon, ICredentialType, INodeProperties } from 'n8n-workflow';
+import type { Icon, ICredentialType, INodeProperties } from 'MNI-workflow';
 
 const defaultScopes = ['openid', 'offline_access', 'https://{subdomain}.sharepoint.com/.default'];
 

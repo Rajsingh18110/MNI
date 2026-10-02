@@ -1,11 +1,11 @@
 import { createTestingPinia } from '@pinia/testing';
 import { mock } from 'vitest-mock-extended';
 import { setActivePinia } from 'pinia';
-import { STORES } from '@n8n/stores';
-import { useUsersStore } from '@n8n/stores/users.store';
+import { STORES } from '@MNI/stores';
+import { useUsersStore } from '@MNI/stores/users.store';
 import { mockedStore } from '@/__tests__/utils';
-import type { IUser } from '@n8n/rest-api-client/api/users';
-import { ResponseError } from '@n8n/rest-api-client';
+import type { IUser } from '@MNI/rest-api-client/api/users';
+import { ResponseError } from '@MNI/rest-api-client';
 
 import type { Preference } from './context.types';
 import {

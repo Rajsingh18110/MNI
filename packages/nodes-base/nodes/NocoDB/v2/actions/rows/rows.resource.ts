@@ -1,5 +1,5 @@
-import type { INodeProperties } from 'n8n-workflow';
-import { updateDisplayOptions } from 'n8n-workflow';
+import type { INodeProperties } from 'MNI-workflow';
+import { updateDisplayOptions } from 'MNI-workflow';
 
 export * as count from './count.operation';
 export * as get from './get.operation';
@@ -31,7 +31,7 @@ export const description: INodeProperties[] = updateDisplayOptions(
 			name: 'operation',
 			type: 'options',
 			noDataExpression: true,
-			// eslint-disable-next-line n8n-nodes-base/node-param-options-type-unsorted-items
+			// eslint-disable-next-line MNI-nodes-base/node-param-options-type-unsorted-items
 			options: [
 				{
 					name: 'Create',

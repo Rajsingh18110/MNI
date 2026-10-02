@@ -1,5 +1,5 @@
 import chokidar from 'chokidar';
-import type { ITriggerFunctions } from 'n8n-workflow';
+import type { ITriggerFunctions } from 'MNI-workflow';
 
 import { LocalFileTrigger } from '../LocalFileTrigger.node';
 import type { Mock } from 'vitest';

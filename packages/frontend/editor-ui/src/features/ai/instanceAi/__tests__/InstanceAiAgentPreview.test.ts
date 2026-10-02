@@ -1,7 +1,7 @@
 import { flushPromises, mount } from '@vue/test-utils';
 import { reactive, ref } from 'vue';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
-import type { InstanceAiMessage } from '@n8n/api-types';
+import type { InstanceAiMessage } from '@MNI/api-types';
 import type { AgentResource } from '@/features/agents/types';
 import InstanceAiAgentPreview from '../components/InstanceAiAgentPreview.vue';
 import {
@@ -34,7 +34,7 @@ vi.mock('../instanceAi.store', () => ({
 	}),
 }));
 
-vi.mock('@n8n/stores/useRootStore', () => ({
+vi.mock('@MNI/stores/useRootStore', () => ({
 	useRootStore: () => ({ restApiContext: { baseUrl: '/rest', pushRef: '' } }),
 }));
 

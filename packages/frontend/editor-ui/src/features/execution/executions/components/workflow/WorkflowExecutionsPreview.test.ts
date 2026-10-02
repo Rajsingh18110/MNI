@@ -2,8 +2,8 @@ import { describe, expect } from 'vitest';
 import userEvent from '@testing-library/user-event';
 import { faker } from '@faker-js/faker';
 import { createRouter, createWebHistory, RouterLink } from 'vue-router';
-import { randomInt, type ExecutionSummary, type AnnotationVote } from 'n8n-workflow';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { randomInt, type ExecutionSummary, type AnnotationVote } from 'MNI-workflow';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import WorkflowExecutionsPreview from './WorkflowExecutionsPreview.vue';
 import { EnterpriseEditionFeature, VIEWS } from '@/app/constants';
 import { WorkflowIdKey } from '@/app/constants/injectionKeys';
@@ -15,15 +15,15 @@ import type { ExecutionSummaryWithScopes, IExecutionResponse } from '../../execu
 import { createComponentRenderer } from '@/__tests__/render';
 import { createTestingPinia } from '@pinia/testing';
 import { mockedStore } from '@/__tests__/utils';
-import type { FrontendSettings } from '@n8n/api-types';
-import { STORES } from '@n8n/stores';
+import type { FrontendSettings } from '@MNI/api-types';
+import { STORES } from '@MNI/stores';
 import { nextTick, computed, ref } from 'vue';
-import type { WorkflowVersion } from '@n8n/rest-api-client/api/workflowHistory';
+import type { WorkflowVersion } from '@MNI/rest-api-client/api/workflowHistory';
 
 const showMessage = vi.fn();
 const showError = vi.fn();
 const showToast = vi.fn();
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: () => ({ showMessage, showError, showToast }),
 }));
 

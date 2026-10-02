@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { N8nButton, N8nTooltip } from '@n8n/design-system';
-import type { IconName } from '@n8n/design-system';
+import { N8nButton, N8nTooltip } from '@MNI/design-system';
+import type { IconName } from '@MNI/design-system';
 
 const props = defineProps<{
 	label: string;

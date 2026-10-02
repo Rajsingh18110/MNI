@@ -1,5 +1,5 @@
-import type { AgentIntegrationSettings, ChatIntegrationDescriptor } from '@n8n/api-types';
-import { getResourcePermissions } from '@n8n/permissions';
+import type { AgentIntegrationSettings, ChatIntegrationDescriptor } from '@MNI/api-types';
+import { getResourcePermissions } from '@MNI/permissions';
 import { computed, ref, toValue, watch, type MaybeRefOrGetter } from 'vue';
 
 import { useUIStore } from '@/app/stores/ui.store';

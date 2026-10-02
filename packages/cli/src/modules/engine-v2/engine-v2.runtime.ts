@@ -1,18 +1,18 @@
-import { Logger } from '@n8n/backend-common';
-import { EngineConfig } from '@n8n/config';
-import { Service } from '@n8n/di';
-import type { EngineRuntime, ExecutionResponseSender } from '@n8n/engine';
+import { Logger } from '@MNI/backend-common';
+import { EngineConfig } from '@MNI/config';
+import { Service } from '@MNI/di';
+import type { EngineRuntime, ExecutionResponseSender } from '@MNI/engine';
 import {
 	AllowAllAdmittance,
 	createDataSource,
 	createEngineRuntime,
 	noopExecutionResponseSender,
 	SharedSecretIdentityVerifier,
-} from '@n8n/engine';
-import type { AdditionalDataContext } from '@n8n/node-engine-compatibility';
-import { createEngineStepDataLoader, V1StepExecutor } from '@n8n/node-engine-compatibility';
-import type { IWorkflowExecuteAdditionalData } from 'n8n-workflow';
-import { UserError } from 'n8n-workflow';
+} from '@MNI/engine';
+import type { AdditionalDataContext } from '@MNI/node-engine-compatibility';
+import { createEngineStepDataLoader, V1StepExecutor } from '@MNI/node-engine-compatibility';
+import type { IWorkflowExecuteAdditionalData } from 'MNI-workflow';
+import { UserError } from 'MNI-workflow';
 import assert from 'node:assert';
 import type { Server } from 'node:http';
 
@@ -85,7 +85,7 @@ export class EngineV2Runtime {
 
 		if (!databaseUrl) {
 			throw new UserError(
-				'The engine-v2 module needs a data plane database. Set N8N_ENGINE_DATABASE_URL.',
+				'The engine-v2 module needs a data plane database. Set MNI_ENGINE_DATABASE_URL.',
 			);
 		}
 

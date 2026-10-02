@@ -1,4 +1,4 @@
-import type { ImapConnectionOptions } from '@n8n/imap';
+import type { ImapConnectionOptions } from '@MNI/imap';
 
 import type { ICredentialsDataImap } from '@credentials/Imap.credentials';
 

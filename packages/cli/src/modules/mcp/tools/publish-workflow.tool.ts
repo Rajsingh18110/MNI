@@ -2,10 +2,10 @@ import {
 	type WorkflowPublishBlockedDetails,
 	type WorkflowPublishBlockedReason,
 	workflowPublishBlockedDetailsShape,
-} from '@n8n/api-types';
-import type { User } from '@n8n/db';
-import { ensureError } from '@n8n/utils/errors/ensure-error';
-import { jsonStringify } from 'n8n-workflow';
+} from '@MNI/api-types';
+import type { User } from '@MNI/db';
+import { ensureError } from '@MNI/utils/errors/ensure-error';
+import { jsonStringify } from 'MNI-workflow';
 import z from 'zod';
 
 import type { CollaborationService } from '@/collaboration/collaboration.service';
@@ -93,7 +93,7 @@ export const createPublishWorkflowTool = (
 
 			const activatedWorkflow = await workflowService.activateWorkflow(user, workflowId, {
 				versionId,
-				source: 'n8n-mcp',
+				source: 'MNI-mcp',
 			});
 
 			void collaborationService.broadcastWorkflowUpdate(workflowId, user.id).catch(() => {});

@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { onMounted } from 'vue';
-import { N8nIcon, N8nLink, N8nText } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+import { N8nIcon, N8nLink, N8nText } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 import { useInstanceAiPromptSuggestionsTelemetry } from '@/features/ai/instanceAi/instanceAiPromptSuggestions.telemetry';
 import { useTemplatesStore } from '@/features/workflows/templates/templates.store';
 import { TemplateClickSource, trackTemplatesClick } from '@/experiments/utils';
@@ -171,7 +171,7 @@ function handleSeeMoreClick() {
 	color: var(--color--text);
 	white-space: normal;
 
-	:global(.n8n-text) {
+	:global(.MNI-text) {
 		font-weight: var(--font-weight--medium);
 	}
 }

@@ -1,6 +1,6 @@
 import type { MockProxy } from 'vitest-mock-extended';
 import { mock } from 'vitest-mock-extended';
-import type { IBinaryData, IExecuteFunctions } from 'n8n-workflow';
+import type { IBinaryData, IExecuteFunctions } from 'MNI-workflow';
 
 import { FacebookGraphApi } from '../FacebookGraphApi.node';
 import type { Mock } from 'vitest';
@@ -27,7 +27,7 @@ describe('FacebookGraphApi node — binary upload', () => {
 		mockExecuteFunctions.getNode.mockReturnValue({
 			id: 'test-node-id',
 			name: 'Facebook Graph API',
-			type: 'n8n-nodes-base.facebookGraphApi',
+			type: 'MNI-nodes-base.facebookGraphApi',
 			typeVersion: 1,
 			position: [0, 0],
 			parameters: {},
@@ -122,7 +122,7 @@ describe('FacebookGraphApi node — error handling', () => {
 		mockExecuteFunctions.getNode.mockReturnValue({
 			id: 'test-node-id',
 			name: 'Facebook Graph API',
-			type: 'n8n-nodes-base.facebookGraphApi',
+			type: 'MNI-nodes-base.facebookGraphApi',
 			typeVersion: 1,
 			position: [0, 0],
 			parameters: {},

@@ -1,12 +1,12 @@
-import type { IconName } from '@n8n/design-system';
+import type { IconName } from '@MNI/design-system';
 
 import type { ScopeGroupDefinition } from '@/app/components/scopes/scopes.utils';
 
 export const MCP_ENDPOINT = 'mcp-server/http';
-export const MCP_DOCS_PAGE_URL = 'https://docs.n8n.io/connect/connect-to-n8n-mcp-server';
+export const MCP_DOCS_PAGE_URL = 'https://docs.n8n.io/connect/connect-to-MNI-mcp-server';
 
 // Display groups for the MCP OAuth consent scope picker, keyed by the
-// `resource:` prefix of the scopes in MCP_INSTANCE_SCOPES (@n8n/api-types).
+// `resource:` prefix of the scopes in MCP_INSTANCE_SCOPES (@MNI/api-types).
 export const MCP_SCOPE_GROUPS: ScopeGroupDefinition[] = [
 	{ key: 'workflows', resources: ['workflow', 'tag'] },
 	{ key: 'executions', resources: ['execution'] },

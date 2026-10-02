@@ -3878,7 +3878,7 @@ describe('NodeHelpers', () => {
 							workflowInputs: {},
 							inputOptions: {},
 						},
-						type: 'n8n-nodes-base.executeWorkflowTrigger',
+						type: 'MNI-nodes-base.executeWorkflowTrigger',
 						typeVersion: 1.1,
 						position: [-140, -20],
 						id: '9abdbdac-5f32-4876-b4d5-895d8ca4cb00',
@@ -3994,7 +3994,7 @@ describe('NodeHelpers', () => {
 							workflowInputs: {},
 							inputOptions: {},
 						},
-						type: 'n8n-nodes-base.executeWorkflowTrigger',
+						type: 'MNI-nodes-base.executeWorkflowTrigger',
 						typeVersion: 1.1,
 						position: [-140, -20],
 						id: '9abdbdac-5f32-4876-b4d5-895d8ca4cb00',
@@ -4098,7 +4098,7 @@ describe('NodeHelpers', () => {
 							workflowInputs: {},
 							inputOptions: {},
 						},
-						type: 'n8n-nodes-base.executeWorkflowTrigger',
+						type: 'MNI-nodes-base.executeWorkflowTrigger',
 						typeVersion: 1.1,
 						position: [-140, -20],
 						id: '9abdbdac-5f32-4876-b4d5-895d8ca4cb00',
@@ -4217,7 +4217,7 @@ describe('NodeHelpers', () => {
 							workflowInputs: {},
 							inputOptions: {},
 						},
-						type: 'n8n-nodes-base.executeWorkflowTrigger',
+						type: 'MNI-nodes-base.executeWorkflowTrigger',
 						typeVersion: 1.1,
 						position: [-140, -20],
 						id: '9abdbdac-5f32-4876-b4d5-895d8ca4cb00',
@@ -4335,7 +4335,7 @@ describe('NodeHelpers', () => {
 							workflowInputs: {},
 							inputOptions: {},
 						},
-						type: 'n8n-nodes-base.executeWorkflowTrigger',
+						type: 'MNI-nodes-base.executeWorkflowTrigger',
 						typeVersion: 1.1,
 						position: [-140, -20],
 						id: '9abdbdac-5f32-4876-b4d5-895d8ca4cb00',
@@ -4365,7 +4365,7 @@ describe('NodeHelpers', () => {
 			id: '12345',
 			name: 'Test Node',
 			typeVersion: 1,
-			type: 'n8n-nodes-base.testNode',
+			type: 'MNI-nodes-base.testNode',
 			position: [1, 1],
 			parameters: {},
 		};
@@ -4490,7 +4490,7 @@ describe('NodeHelpers', () => {
 			const node: INode = {
 				id: '1',
 				name: 'HTTP Request',
-				type: 'n8n-nodes-base.httpRequest',
+				type: 'MNI-nodes-base.httpRequest',
 				typeVersion: 4.2,
 				position: [0, 0],
 				parameters: {},
@@ -4503,7 +4503,7 @@ describe('NodeHelpers', () => {
 				'Parameter "Method" is required.',
 				'Credentials for "api" are not set.',
 				'No node connected to required input "main"',
-				'Node Type "n8n-nodes-base.httpRequest" is not known.',
+				'Node Type "MNI-nodes-base.httpRequest" is not known.',
 			]);
 		});
 
@@ -4616,7 +4616,7 @@ describe('NodeHelpers', () => {
 				id: 'testNodeId',
 				name: 'TestNode',
 				position: [0, 0],
-				type: 'n8n-nodes-base.TestNode',
+				type: 'MNI-nodes-base.TestNode',
 				typeVersion: 1,
 				parameters: {},
 			};
@@ -4630,7 +4630,7 @@ describe('NodeHelpers', () => {
 				id: 'testNodeId',
 				name: 'TestNode',
 				position: [0, 0],
-				type: 'n8n-nodes-base.TestNode',
+				type: 'MNI-nodes-base.TestNode',
 				typeVersion: 1,
 				parameters: {},
 			};
@@ -4648,7 +4648,7 @@ describe('NodeHelpers', () => {
 				id: 'testNodeId',
 				name: 'TestNode',
 				position: [0, 0],
-				type: 'n8n-nodes-base.TestNode',
+				type: 'MNI-nodes-base.TestNode',
 				typeVersion: 1,
 				parameters: {},
 			};
@@ -4690,7 +4690,7 @@ describe('NodeHelpers', () => {
 					id: 'triggerNodeId',
 					name: 'TriggerNode',
 					position: [0, 0],
-					type: 'n8n-nodes-base.TriggerNode',
+					type: 'MNI-nodes-base.TriggerNode',
 					typeVersion: 1,
 					parameters: {},
 				},
@@ -4713,7 +4713,7 @@ describe('NodeHelpers', () => {
 					id: 'mainOutputNodeId',
 					name: 'MainOutputNode',
 					position: [0, 0],
-					type: 'n8n-nodes-base.MainOutputNode',
+					type: 'MNI-nodes-base.MainOutputNode',
 					typeVersion: 1,
 					parameters: {},
 				},
@@ -4736,7 +4736,7 @@ describe('NodeHelpers', () => {
 					id: 'nonExecutableNodeId',
 					name: 'NonExecutableNode',
 					position: [0, 0],
-					type: 'n8n-nodes-base.NonExecutableNode',
+					type: 'MNI-nodes-base.NonExecutableNode',
 					typeVersion: 1,
 					parameters: {},
 				},
@@ -4759,7 +4759,7 @@ describe('NodeHelpers', () => {
 					id: 'mixedOutputNodeId',
 					name: 'MixedOutputNode',
 					position: [0, 0],
-					type: 'n8n-nodes-base.MixedOutputNode',
+					type: 'MNI-nodes-base.MixedOutputNode',
 					typeVersion: 1,
 					parameters: {},
 				},
@@ -4782,7 +4782,7 @@ describe('NodeHelpers', () => {
 					id: 'aiToolOutputNodeId',
 					name: 'AiToolOutputNode',
 					position: [0, 0],
-					type: 'n8n-nodes-base.AiToolOutputNode',
+					type: 'MNI-nodes-base.AiToolOutputNode',
 					typeVersion: 1,
 					parameters: {},
 				},
@@ -4805,7 +4805,7 @@ describe('NodeHelpers', () => {
 					id: 'dynamicAiToolNodeId',
 					name: 'DynamicAiToolNode',
 					position: [0, 0],
-					type: 'n8n-nodes-base.DynamicAiToolNode',
+					type: 'MNI-nodes-base.DynamicAiToolNode',
 					typeVersion: 1,
 					parameters: {},
 				},
@@ -4845,7 +4845,7 @@ describe('NodeHelpers', () => {
 				id: 'testNodeId',
 				name: 'TestNode',
 				position: [0, 0],
-				type: 'n8n-nodes-base.TestNode',
+				type: 'MNI-nodes-base.TestNode',
 				typeVersion: 1,
 				parameters: {},
 			};
@@ -4859,7 +4859,7 @@ describe('NodeHelpers', () => {
 				id: 'testNodeId',
 				name: 'TestNode',
 				position: [0, 0],
-				type: 'n8n-nodes-base.TestNode',
+				type: 'MNI-nodes-base.TestNode',
 				typeVersion: 1,
 				parameters: {},
 			};
@@ -4873,7 +4873,7 @@ describe('NodeHelpers', () => {
 			id: '12345',
 			name: 'Test Node',
 			typeVersion: 1,
-			type: 'n8n-nodes-base.testNode',
+			type: 'MNI-nodes-base.testNode',
 			position: [1, 1],
 			parameters: {},
 		};
@@ -5516,7 +5516,7 @@ describe('NodeHelpers', () => {
 			id: '12345',
 			name: 'Test Node',
 			typeVersion: 1,
-			type: 'n8n-nodes-base.testNode',
+			type: 'MNI-nodes-base.testNode',
 			position: [1, 1],
 			parameters,
 		});
@@ -6572,7 +6572,7 @@ describe('NodeHelpers', () => {
 		])(
 			'should return action-based name for Code node with %s language',
 			(language, expectedAction) => {
-				mockNodeTypeDescription.name = 'n8n-nodes-base.code';
+				mockNodeTypeDescription.name = 'MNI-nodes-base.code';
 				mockNodeTypeDescription.properties = [
 					{
 						displayName: 'Language',
@@ -6612,7 +6612,7 @@ describe('NodeHelpers', () => {
 				displayName: '',
 				group: [],
 				description: '',
-				name: 'n8n-nodes-base.someTool',
+				name: 'MNI-nodes-base.someTool',
 			};
 			const parameters = {};
 			const result = isTool(description, parameters);
@@ -6632,7 +6632,7 @@ describe('NodeHelpers', () => {
 				displayName: '',
 				group: [],
 				description: '',
-				name: 'n8n-nodes-base.someTool',
+				name: 'MNI-nodes-base.someTool',
 			};
 			const parameters = {};
 			const result = isTool(description, parameters);
@@ -6652,7 +6652,7 @@ describe('NodeHelpers', () => {
 				displayName: '',
 				description: '',
 				group: [],
-				name: 'n8n-nodes-base.vectorStore',
+				name: 'MNI-nodes-base.vectorStore',
 			};
 			const parameters = { mode: 'retrieve-as-tool' };
 			const result = isTool(description, parameters);
@@ -6672,7 +6672,7 @@ describe('NodeHelpers', () => {
 				displayName: '',
 				group: [],
 				description: '',
-				name: 'n8n-nodes-base.someTool',
+				name: 'MNI-nodes-base.someTool',
 			};
 			const parameters = { mode: 'retrieve-as-tool' };
 			const result = isTool(description, parameters);
@@ -6756,9 +6756,9 @@ describe('NodeHelpers', () => {
 		});
 
 		it.each([
-			['@n8n/n8n-nodes-base.toolCalculator', true],
-			['@n8n/n8n-nodes-base.toolCode', true],
-			['n8n-nodes-base.someTool', true],
+			['@MNI/MNI-nodes-base.toolCalculator', true],
+			['@MNI/MNI-nodes-base.toolCode', true],
+			['MNI-nodes-base.someTool', true],
 			['nodes-base.dot.dot.dot.someTool', true],
 			['nodes-base.dot.dot.dot.someTool', true],
 			['nodes-base.dot.dot.dot.someHitlTool', true],
@@ -6808,7 +6808,7 @@ describe('NodeHelpers', () => {
 			const node: INode = {
 				id: 'test-123',
 				name: 'Test',
-				type: 'n8n-nodes-base.test',
+				type: 'MNI-nodes-base.test',
 				typeVersion: 1,
 				position: [0, 0],
 				parameters: nodeValues,
@@ -6860,7 +6860,7 @@ describe('NodeHelpers', () => {
 			const node: INode = {
 				id: 'test-123',
 				name: 'Test',
-				type: 'n8n-nodes-base.test',
+				type: 'MNI-nodes-base.test',
 				typeVersion: 1,
 				position: [0, 0],
 				parameters: nodeValues,
@@ -6911,7 +6911,7 @@ describe('NodeHelpers', () => {
 			const node: INode = {
 				id: 'test-123',
 				name: 'Test',
-				type: 'n8n-nodes-base.test',
+				type: 'MNI-nodes-base.test',
 				typeVersion: 1,
 				position: [0, 0],
 				parameters: nodeValues,
@@ -6962,7 +6962,7 @@ describe('NodeHelpers', () => {
 			const node: INode = {
 				id: 'test-123',
 				name: 'Test',
-				type: 'n8n-nodes-base.test',
+				type: 'MNI-nodes-base.test',
 				typeVersion: 1,
 				position: [0, 0],
 				parameters: nodeValues,
@@ -7013,7 +7013,7 @@ describe('NodeHelpers', () => {
 				const node: INode = {
 					id: 'test-123',
 					name: 'Test',
-					type: 'n8n-nodes-base.test',
+					type: 'MNI-nodes-base.test',
 					typeVersion: 1,
 					position: [0, 0],
 					parameters: nodeValues,
@@ -7334,18 +7334,18 @@ describe('NodeHelpers', () => {
 		// Membership in TRIGGER_NODE_TYPES: each legacy/special type is matched by
 		// identity, not by the generic "contains trigger" heuristic.
 		test.each([
-			'n8n-nodes-base.webhook',
-			'n8n-nodes-base.cron',
-			'n8n-nodes-base.emailReadImap',
-			'n8n-nodes-base.telegramBot',
-			'n8n-nodes-base.start',
+			'MNI-nodes-base.webhook',
+			'MNI-nodes-base.cron',
+			'MNI-nodes-base.emailReadImap',
+			'MNI-nodes-base.telegramBot',
+			'MNI-nodes-base.start',
 		])('recognises the explicitly-listed trigger type %s', (type) => {
 			expect(isTriggerNodeType(type)).toBe(true);
 		});
 
 		it('recognises any type whose name contains "trigger"', () => {
-			expect(isTriggerNodeType('n8n-nodes-base.scheduleTrigger')).toBe(true);
-			expect(isTriggerNodeType('n8n-nodes-base.manualTrigger')).toBe(true);
+			expect(isTriggerNodeType('MNI-nodes-base.scheduleTrigger')).toBe(true);
+			expect(isTriggerNodeType('MNI-nodes-base.manualTrigger')).toBe(true);
 		});
 
 		it('matches "trigger" case-insensitively', () => {
@@ -7355,8 +7355,8 @@ describe('NodeHelpers', () => {
 		});
 
 		it('returns false for non-trigger types not in the set', () => {
-			expect(isTriggerNodeType('n8n-nodes-base.set')).toBe(false);
-			expect(isTriggerNodeType('n8n-nodes-base.httpRequest')).toBe(false);
+			expect(isTriggerNodeType('MNI-nodes-base.set')).toBe(false);
+			expect(isTriggerNodeType('MNI-nodes-base.httpRequest')).toBe(false);
 			expect(isTriggerNodeType('')).toBe(false);
 		});
 	});
@@ -7366,7 +7366,7 @@ describe('NodeHelpers', () => {
 			id: '12345',
 			name: 'Test Node',
 			typeVersion: 1,
-			type: 'n8n-nodes-base.testNode',
+			type: 'MNI-nodes-base.testNode',
 			position: [1, 1],
 			parameters: {},
 		};

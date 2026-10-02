@@ -1,12 +1,12 @@
-import { LicenseState } from '@n8n/backend-common';
+import { LicenseState } from '@MNI/backend-common';
 import {
 	ContextEstablishmentHook,
 	ContextEstablishmentOptions,
 	ContextEstablishmentResult,
 	HookDescription,
 	IContextEstablishmentHook,
-} from '@n8n/decorators';
-import { policyToChannels, redactionSettingToChannels, type RedactionSource } from 'n8n-workflow';
+} from '@MNI/decorators';
+import { policyToChannels, redactionSettingToChannels, type RedactionSource } from 'MNI-workflow';
 
 import { InstanceRedactionEnforcementService } from './instance-redaction-enforcement.service';
 

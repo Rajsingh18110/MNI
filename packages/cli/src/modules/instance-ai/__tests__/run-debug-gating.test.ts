@@ -1,5 +1,5 @@
-import type { User } from '@n8n/db';
-import { RunDebugBuffer, RunStateRegistry } from '@n8n/instance-ai';
+import type { User } from '@MNI/db';
+import { RunDebugBuffer, RunStateRegistry } from '@MNI/instance-ai';
 
 import { InstanceAiService } from '../instance-ai.service';
 

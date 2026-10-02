@@ -3,8 +3,8 @@ import type {
 	IExecuteSingleFunctions,
 	IHttpRequestOptions,
 	INodeProperties,
-} from 'n8n-workflow';
-import { NodeApiError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeApiError } from 'MNI-workflow';
 
 import {
 	getCursorPaginatorUsers,

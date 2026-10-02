@@ -5,13 +5,13 @@ import {
 	createWorkflow,
 	randomCredentialPayload,
 	mockInstance,
-} from '@n8n/backend-test-utils';
-import type { Project, User } from '@n8n/db';
+} from '@MNI/backend-test-utils';
+import type { Project, User } from '@MNI/db';
 import {
 	PROJECT_ADMIN_ROLE_SLUG,
 	PROJECT_EDITOR_ROLE_SLUG,
 	PROJECT_VIEWER_ROLE_SLUG,
-} from '@n8n/permissions';
+} from '@MNI/permissions';
 
 import { UserManagementMailer } from '@/user-management/email';
 
@@ -101,7 +101,7 @@ describe('Built-in Role Matrix Testing', () => {
 						id: 'uuid-1234',
 						parameters: {},
 						name: 'Start',
-						type: 'n8n-nodes-base.manualTrigger',
+						type: 'MNI-nodes-base.manualTrigger',
 						typeVersion: 1,
 						position: [240, 300],
 					},
@@ -193,7 +193,7 @@ describe('Built-in Role Matrix Testing', () => {
 						id: 'uuid-1234',
 						parameters: {},
 						name: 'Start',
-						type: 'n8n-nodes-base.manualTrigger',
+						type: 'MNI-nodes-base.manualTrigger',
 						typeVersion: 1,
 						position: [240, 300],
 					},
@@ -295,7 +295,7 @@ describe('Built-in Role Matrix Testing', () => {
 						id: 'uuid-1234',
 						parameters: {},
 						name: 'Start',
-						type: 'n8n-nodes-base.manualTrigger',
+						type: 'MNI-nodes-base.manualTrigger',
 						typeVersion: 1,
 						position: [240, 300],
 					},
@@ -364,7 +364,7 @@ describe('Built-in Role Matrix Testing', () => {
 						id: 'uuid-1234',
 						parameters: {},
 						name: 'Start',
-						type: 'n8n-nodes-base.manualTrigger',
+						type: 'MNI-nodes-base.manualTrigger',
 						typeVersion: 1,
 						position: [240, 300],
 					},

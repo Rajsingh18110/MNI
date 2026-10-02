@@ -1,6 +1,6 @@
 import { ref, readonly } from 'vue';
 import { createEventHook } from '@vueuse/core';
-import type { WorkflowVersionData } from '@n8n/rest-api-client';
+import type { WorkflowVersionData } from '@MNI/rest-api-client';
 import { CHANGE_ACTION } from './types';
 import type { ChangeAction, ChangeEvent } from './types';
 

@@ -86,7 +86,7 @@ const printSummary = (status, time, message) => {
 		await $`docker image inspect ${config.fullImageName} > /dev/null 2>&1`;
 	} catch {
 		echo(chalk.red(`Error: Docker image '${config.fullImageName}' not found`));
-		echo(chalk.yellow('Please run dockerize-n8n.mjs first!'));
+		echo(chalk.yellow('Please run dockerize-MNI.mjs first!'));
 		process.exit(1);
 	}
 

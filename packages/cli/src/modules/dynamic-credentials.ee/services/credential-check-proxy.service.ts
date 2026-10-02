@@ -1,5 +1,5 @@
-import { GlobalConfig } from '@n8n/config';
-import { Service } from '@n8n/di';
+import { GlobalConfig } from '@MNI/config';
+import { Service } from '@MNI/di';
 import type {
 	CredentialCheckOptions,
 	CredentialCheckResult,
@@ -8,14 +8,14 @@ import type {
 	ICredentialContext,
 	ICredentialType,
 	Themed,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { CredentialTypes } from '@/credential-types';
 import { EnterpriseCredentialsService } from '@/credentials/credentials.service.ee';
 import { NodeTypes } from '@/node-types';
-import { UrlService } from '@n8n/backend-services';
+import { UrlService } from '@MNI/backend-services';
 
-import { ExecutionContextService } from 'n8n-core';
+import { ExecutionContextService } from 'MNI-core';
 import { AuthorizeIntentService } from './authorize-intent.service';
 import { CredentialResolverWorkflowService } from './credential-resolver-workflow.service';
 import { DynamicCredentialService } from './dynamic-credential.service';

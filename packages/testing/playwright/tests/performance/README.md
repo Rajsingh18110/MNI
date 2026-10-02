@@ -116,7 +116,7 @@ await test.info().attach('performance-metrics', {
 
 Idle heap baselines are collected by the `memory-consumption-*.spec.ts` files via the
 shared `runMemoryBaseline()` helper. Each spec disables one or more modules through
-`N8N_DISABLED_MODULES` and stabilises memory post-GC, so the diff between specs
+`MNI_DISABLED_MODULES` and stabilises memory post-GC, so the diff between specs
 reveals a module's footprint.
 
 ```typescript
@@ -127,7 +127,7 @@ import { test } from '../../fixtures/base';
 test.use({
 	capability: {
 		services: ['victoriaLogs', 'victoriaMetrics', 'vector'],
-		env: { N8N_DISABLED_MODULES: 'mcp' },
+		env: { MNI_DISABLED_MODULES: 'mcp' },
 	},
 });
 
@@ -159,13 +159,13 @@ for why we stop there).
 pnpm build:docker
 
 # Run the full canvas benchmark suite
-pnpm --filter=n8n-playwright bench:canvas
+pnpm --filter=MNI-playwright bench:canvas
 
 # Run a single tier (fast iteration)
-pnpm --filter=n8n-playwright bench:canvas:tier "@tier:S"
+pnpm --filter=MNI-playwright bench:canvas:tier "@tier:S"
 
 # Keep containers alive afterwards to inspect the UI manually
-N8N_CONTAINERS_KEEPALIVE=true pnpm --filter=n8n-playwright bench:canvas:tier "@tier:M"
+MNI_CONTAINERS_KEEPALIVE=true pnpm --filter=MNI-playwright bench:canvas:tier "@tier:M"
 ```
 
 ### View results locally
@@ -202,7 +202,7 @@ Formatting comes from `helpers/report.ts` — if you add a new spec, reuse
 `metric:<name>` attachment on its test. Open the report with:
 
 ```bash
-pnpm --filter=n8n-playwright bench:canvas:report
+pnpm --filter=MNI-playwright bench:canvas:report
 ```
 
 Click any test → "Attachments" → each metric attachment shows the JSON body
@@ -215,9 +215,9 @@ the script:
 
 ```bash
 PLAYWRIGHT_JSON_OUTPUT_NAME=test-results.json \
-  pnpm --filter=n8n-playwright bench:canvas --reporter=html,list,json,./reporters/metrics-reporter.ts,./reporters/benchmark-summary-reporter.ts
+  pnpm --filter=MNI-playwright bench:canvas --reporter=html,list,json,./reporters/metrics-reporter.ts,./reporters/benchmark-summary-reporter.ts
 
-pnpm --filter=n8n-playwright bench:canvas:sentinels
+pnpm --filter=MNI-playwright bench:canvas:sentinels
 ```
 
 The sentinel prints a markdown table of every gated metric and exits 1 on a
@@ -286,7 +286,7 @@ The count comes from a tiny, opt-in tracker in editor-ui
 (`src/app/dev/render-tracker.ts`): a global mixin whose `beforeUpdate` hook —
 which fires once per component re-render, never on the initial mount —
 increments a counter exposed on `window.n8nRenderTracker`. It is gated
-behind the `N8N_RENDER_TRACKING` localStorage flag and installs **nothing**
+behind the `MNI_RENDER_TRACKING` localStorage flag and installs **nothing**
 unless the flag is set, so it carries no cost for real users and none for the
 other benchmark specs.
 

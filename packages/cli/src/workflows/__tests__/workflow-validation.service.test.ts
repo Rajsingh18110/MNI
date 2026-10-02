@@ -1,11 +1,11 @@
-import type { CredentialsRepository, User, WorkflowRepository } from '@n8n/db';
+import type { CredentialsRepository, User, WorkflowRepository } from '@MNI/db';
 import type {
 	INode,
 	IConnections,
 	INodeType,
 	INodeTypeDescription,
 	ICredentialType,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import type { CredentialTypes } from '@/credential-types';
@@ -47,7 +47,7 @@ describe('WorkflowValidationService', () => {
 			options?: { disabled?: boolean; source?: string },
 		): INode => ({
 			name,
-			type: 'n8n-nodes-base.executeWorkflow',
+			type: 'MNI-nodes-base.executeWorkflow',
 			id: `node-${name}`,
 			typeVersion: 1,
 			position: [0, 0],
@@ -62,7 +62,7 @@ describe('WorkflowValidationService', () => {
 			const nodes: INode[] = [
 				{
 					name: 'Set',
-					type: 'n8n-nodes-base.set',
+					type: 'MNI-nodes-base.set',
 					id: 'node-1',
 					typeVersion: 1,
 					position: [0, 0],
@@ -329,7 +329,7 @@ describe('WorkflowValidationService', () => {
 
 		it('should return valid for workflow with no connected nodes', () => {
 			const nodes = {
-				Webhook: createNode('Webhook', 'n8n-nodes-base.webhook'),
+				Webhook: createNode('Webhook', 'MNI-nodes-base.webhook'),
 			};
 			const connections: IConnections = {};
 
@@ -342,8 +342,8 @@ describe('WorkflowValidationService', () => {
 
 		it('should return valid for workflow with all valid connected nodes', () => {
 			const nodes = {
-				Webhook: createNode('Webhook', 'n8n-nodes-base.webhook'),
-				'HTTP Request': createNode('HTTP Request', 'n8n-nodes-base.httpRequest', {
+				Webhook: createNode('Webhook', 'MNI-nodes-base.webhook'),
+				'HTTP Request': createNode('HTTP Request', 'MNI-nodes-base.httpRequest', {
 					credentials: { httpAuth: { id: 'cred-1' } },
 					parameters: { url: 'https://example.com' },
 				}),
@@ -353,10 +353,10 @@ describe('WorkflowValidationService', () => {
 			mockNodeTypes.getByNameAndVersion.mockImplementation(((
 				type: string,
 			): INodeType | undefined => {
-				if (type === 'n8n-nodes-base.webhook') {
+				if (type === 'MNI-nodes-base.webhook') {
 					return createMockNodeType([], [], true);
 				}
-				if (type === 'n8n-nodes-base.httpRequest') {
+				if (type === 'MNI-nodes-base.httpRequest') {
 					return createMockNodeType(
 						[{ name: 'httpAuth', displayName: 'HTTP Auth', required: true }],
 						[{ name: 'url', required: true }],
@@ -372,8 +372,8 @@ describe('WorkflowValidationService', () => {
 
 		it('should return invalid when connected node is missing required credential', () => {
 			const nodes = {
-				Webhook: createNode('Webhook', 'n8n-nodes-base.webhook'),
-				Agent: createNode('Agent', 'n8n-nodes-base.agent', {
+				Webhook: createNode('Webhook', 'MNI-nodes-base.webhook'),
+				Agent: createNode('Agent', 'MNI-nodes-base.agent', {
 					parameters: {},
 				}),
 			};
@@ -382,10 +382,10 @@ describe('WorkflowValidationService', () => {
 			mockNodeTypes.getByNameAndVersion.mockImplementation(((
 				type: string,
 			): INodeType | undefined => {
-				if (type === 'n8n-nodes-base.webhook') {
+				if (type === 'MNI-nodes-base.webhook') {
 					return createMockNodeType([], [], true);
 				}
-				if (type === 'n8n-nodes-base.agent') {
+				if (type === 'MNI-nodes-base.agent') {
 					return createMockNodeType(
 						[{ name: 'openAiApi', displayName: 'OpenAI API', required: true }],
 						[],
@@ -405,8 +405,8 @@ describe('WorkflowValidationService', () => {
 
 		it('should return invalid when connected node has credential without ID', () => {
 			const nodes = {
-				Webhook: createNode('Webhook', 'n8n-nodes-base.webhook'),
-				Agent: createNode('Agent', 'n8n-nodes-base.agent', {
+				Webhook: createNode('Webhook', 'MNI-nodes-base.webhook'),
+				Agent: createNode('Agent', 'MNI-nodes-base.agent', {
 					credentials: { openAiApi: { id: '' } },
 					parameters: {},
 				}),
@@ -416,10 +416,10 @@ describe('WorkflowValidationService', () => {
 			mockNodeTypes.getByNameAndVersion.mockImplementation(((
 				type: string,
 			): INodeType | undefined => {
-				if (type === 'n8n-nodes-base.webhook') {
+				if (type === 'MNI-nodes-base.webhook') {
 					return createMockNodeType([], [], true);
 				}
-				if (type === 'n8n-nodes-base.agent') {
+				if (type === 'MNI-nodes-base.agent') {
 					return createMockNodeType(
 						[{ name: 'openAiApi', displayName: 'OpenAI API', required: true }],
 						[],
@@ -436,8 +436,8 @@ describe('WorkflowValidationService', () => {
 
 		it('should skip validation for disabled nodes', () => {
 			const nodes = {
-				Webhook: createNode('Webhook', 'n8n-nodes-base.webhook'),
-				Agent: createNode('Agent', 'n8n-nodes-base.agent', {
+				Webhook: createNode('Webhook', 'MNI-nodes-base.webhook'),
+				Agent: createNode('Agent', 'MNI-nodes-base.agent', {
 					disabled: true,
 					parameters: {},
 				}),
@@ -447,10 +447,10 @@ describe('WorkflowValidationService', () => {
 			mockNodeTypes.getByNameAndVersion.mockImplementation(((
 				type: string,
 			): INodeType | undefined => {
-				if (type === 'n8n-nodes-base.webhook') {
+				if (type === 'MNI-nodes-base.webhook') {
 					return createMockNodeType([], [], true);
 				}
-				if (type === 'n8n-nodes-base.agent') {
+				if (type === 'MNI-nodes-base.agent') {
 					return createMockNodeType(
 						[{ name: 'openAiApi', displayName: 'OpenAI API', required: true }],
 						[],
@@ -466,8 +466,8 @@ describe('WorkflowValidationService', () => {
 
 		it('should skip validation for disconnected nodes', () => {
 			const nodes = {
-				Webhook: createNode('Webhook', 'n8n-nodes-base.webhook'),
-				Agent: createNode('Agent', 'n8n-nodes-base.agent', {
+				Webhook: createNode('Webhook', 'MNI-nodes-base.webhook'),
+				Agent: createNode('Agent', 'MNI-nodes-base.agent', {
 					parameters: {},
 				}),
 			};
@@ -477,10 +477,10 @@ describe('WorkflowValidationService', () => {
 			mockNodeTypes.getByNameAndVersion.mockImplementation(((
 				type: string,
 			): INodeType | undefined => {
-				if (type === 'n8n-nodes-base.webhook') {
+				if (type === 'MNI-nodes-base.webhook') {
 					return createMockNodeType([], [], true);
 				}
-				if (type === 'n8n-nodes-base.agent') {
+				if (type === 'MNI-nodes-base.agent') {
 					return createMockNodeType(
 						[{ name: 'openAiApi', displayName: 'OpenAI API', required: true }],
 						[],
@@ -496,11 +496,11 @@ describe('WorkflowValidationService', () => {
 
 		it('should validate multiple nodes with issues', () => {
 			const nodes = {
-				Webhook: createNode('Webhook', 'n8n-nodes-base.webhook'),
-				Agent1: createNode('Agent1', 'n8n-nodes-base.agent', {
+				Webhook: createNode('Webhook', 'MNI-nodes-base.webhook'),
+				Agent1: createNode('Agent1', 'MNI-nodes-base.agent', {
 					parameters: {},
 				}),
-				Agent2: createNode('Agent2', 'n8n-nodes-base.agent', {
+				Agent2: createNode('Agent2', 'MNI-nodes-base.agent', {
 					parameters: {},
 				}),
 			};
@@ -512,10 +512,10 @@ describe('WorkflowValidationService', () => {
 			mockNodeTypes.getByNameAndVersion.mockImplementation(((
 				type: string,
 			): INodeType | undefined => {
-				if (type === 'n8n-nodes-base.webhook') {
+				if (type === 'MNI-nodes-base.webhook') {
 					return createMockNodeType([], [], true);
 				}
-				if (type === 'n8n-nodes-base.agent') {
+				if (type === 'MNI-nodes-base.agent') {
 					return createMockNodeType(
 						[{ name: 'openAiApi', displayName: 'OpenAI API', required: true }],
 						[],
@@ -534,15 +534,15 @@ describe('WorkflowValidationService', () => {
 
 		it('should return invalid when node type is not found', () => {
 			const nodes = {
-				Webhook: createNode('Webhook', 'n8n-nodes-base.webhook'),
-				Unknown: createNode('Unknown', 'n8n-nodes-base.unknownNode'),
+				Webhook: createNode('Webhook', 'MNI-nodes-base.webhook'),
+				Unknown: createNode('Unknown', 'MNI-nodes-base.unknownNode'),
 			};
 			const connections = createConnections([['Webhook', 'Unknown']]);
 
 			mockNodeTypes.getByNameAndVersion.mockImplementation(((
 				type: string,
 			): INodeType | undefined => {
-				if (type === 'n8n-nodes-base.webhook') {
+				if (type === 'MNI-nodes-base.webhook') {
 					return createMockNodeType([], [], true);
 				}
 				return undefined;
@@ -557,7 +557,7 @@ describe('WorkflowValidationService', () => {
 
 		it('should return invalid when workflow has no trigger node', () => {
 			const nodes = {
-				Set: createNode('Set', 'n8n-nodes-base.set'),
+				Set: createNode('Set', 'MNI-nodes-base.set'),
 			};
 			const connections: IConnections = {};
 
@@ -572,7 +572,7 @@ describe('WorkflowValidationService', () => {
 		it('should respect displayOptions when validating credentials', () => {
 			// Simulates a Webhook node with authentication parameter set to 'none'
 			const nodes = {
-				Webhook: createNode('Webhook', 'n8n-nodes-base.webhook', {
+				Webhook: createNode('Webhook', 'MNI-nodes-base.webhook', {
 					parameters: { authentication: 'none' },
 				}),
 			};
@@ -614,7 +614,7 @@ describe('WorkflowValidationService', () => {
 		it('should validate credentials when displayOptions match', () => {
 			// Simulates a Webhook node with authentication='basicAuth' but missing credential
 			const nodes = {
-				Webhook: createNode('Webhook', 'n8n-nodes-base.webhook', {
+				Webhook: createNode('Webhook', 'MNI-nodes-base.webhook', {
 					parameters: { authentication: 'basicAuth' },
 				}),
 			};
@@ -716,7 +716,7 @@ describe('WorkflowValidationService', () => {
 		});
 
 		it('should return valid when no credentials are used', async () => {
-			const nodes: INode[] = [createNode('Set', 'n8n-nodes-base.set')];
+			const nodes: INode[] = [createNode('Set', 'MNI-nodes-base.set')];
 
 			const result = await service.validateDynamicCredentials(nodes, mockNodeTypes);
 
@@ -726,8 +726,8 @@ describe('WorkflowValidationService', () => {
 
 		it('should return valid when no credentials are resolvable', async () => {
 			const nodes: INode[] = [
-				createNode('Webhook', 'n8n-nodes-base.webhook'),
-				createNode('HTTP', 'n8n-nodes-base.httpRequest', {
+				createNode('Webhook', 'MNI-nodes-base.webhook'),
+				createNode('HTTP', 'MNI-nodes-base.httpRequest', {
 					credentials: { httpAuth: { id: 'cred-1' } },
 				}),
 			];
@@ -741,10 +741,10 @@ describe('WorkflowValidationService', () => {
 
 		it('should return invalid when no resolver is configured', async () => {
 			const nodes: INode[] = [
-				createNode('Webhook', 'n8n-nodes-base.webhook', {
+				createNode('Webhook', 'MNI-nodes-base.webhook', {
 					parameters: hooksParameters,
 				}),
-				createNode('HTTP', 'n8n-nodes-base.httpRequest', {
+				createNode('HTTP', 'MNI-nodes-base.httpRequest', {
 					credentials: { oAuth2Api: { id: 'cred-1' } },
 				}),
 			];
@@ -764,8 +764,8 @@ describe('WorkflowValidationService', () => {
 
 		it('should return valid when the proxy provides a system resolver and the trigger is compatible', async () => {
 			const nodes: INode[] = [
-				createNode('Manual', 'n8n-nodes-base.manualTrigger'),
-				createNode('HTTP', 'n8n-nodes-base.httpRequest', {
+				createNode('Manual', 'MNI-nodes-base.manualTrigger'),
+				createNode('HTTP', 'MNI-nodes-base.httpRequest', {
 					credentials: { oAuth2Api: { id: 'cred-1' } },
 				}),
 			];
@@ -776,7 +776,7 @@ describe('WorkflowValidationService', () => {
 			useSystemResolver();
 
 			mockNodeTypes.getByNameAndVersion.mockImplementation(((type: string) => {
-				if (type === 'n8n-nodes-base.manualTrigger') return createTriggerNodeType();
+				if (type === 'MNI-nodes-base.manualTrigger') return createTriggerNodeType();
 				return {} as INodeType;
 			}) as any);
 
@@ -787,10 +787,10 @@ describe('WorkflowValidationService', () => {
 
 		it('should return valid when workflow settings provide a custom resolver and a trigger has extractor hooks', async () => {
 			const nodes: INode[] = [
-				createNode('Webhook', 'n8n-nodes-base.webhook', {
+				createNode('Webhook', 'MNI-nodes-base.webhook', {
 					parameters: hooksParameters,
 				}),
-				createNode('HTTP', 'n8n-nodes-base.httpRequest', {
+				createNode('HTTP', 'MNI-nodes-base.httpRequest', {
 					credentials: { oAuth2Api: { id: 'cred-1' } },
 				}),
 			];
@@ -801,7 +801,7 @@ describe('WorkflowValidationService', () => {
 			useCustomResolver();
 
 			mockNodeTypes.getByNameAndVersion.mockImplementation(((type: string) => {
-				if (type === 'n8n-nodes-base.webhook') return createTriggerNodeType();
+				if (type === 'MNI-nodes-base.webhook') return createTriggerNodeType();
 				return {} as INodeType;
 			}) as any);
 
@@ -812,8 +812,8 @@ describe('WorkflowValidationService', () => {
 
 		it('should return invalid when a custom resolver is used with a trigger without extractor hooks', async () => {
 			const nodes: INode[] = [
-				createNode('Schedule', 'n8n-nodes-base.scheduleTrigger'),
-				createNode('HTTP', 'n8n-nodes-base.httpRequest', {
+				createNode('Schedule', 'MNI-nodes-base.scheduleTrigger'),
+				createNode('HTTP', 'MNI-nodes-base.httpRequest', {
 					credentials: { oAuth2Api: { id: 'cred-1' } },
 				}),
 			];
@@ -824,7 +824,7 @@ describe('WorkflowValidationService', () => {
 			useCustomResolver();
 
 			mockNodeTypes.getByNameAndVersion.mockImplementation(((type: string) => {
-				if (type === 'n8n-nodes-base.scheduleTrigger') return createTriggerNodeType();
+				if (type === 'MNI-nodes-base.scheduleTrigger') return createTriggerNodeType();
 				return {} as INodeType;
 			}) as any);
 
@@ -838,8 +838,8 @@ describe('WorkflowValidationService', () => {
 
 		it('should return invalid when a custom resolver is used with a webhook trigger without hooks', async () => {
 			const nodes: INode[] = [
-				createNode('Webhook', 'n8n-nodes-base.webhook'),
-				createNode('HTTP', 'n8n-nodes-base.httpRequest', {
+				createNode('Webhook', 'MNI-nodes-base.webhook'),
+				createNode('HTTP', 'MNI-nodes-base.httpRequest', {
 					credentials: { oAuth2Api: { id: 'cred-1' } },
 				}),
 			];
@@ -850,7 +850,7 @@ describe('WorkflowValidationService', () => {
 			useCustomResolver();
 
 			mockNodeTypes.getByNameAndVersion.mockImplementation(((type: string) => {
-				if (type === 'n8n-nodes-base.webhook') return createTriggerNodeType();
+				if (type === 'MNI-nodes-base.webhook') return createTriggerNodeType();
 				return {} as INodeType;
 			}) as any);
 
@@ -863,8 +863,8 @@ describe('WorkflowValidationService', () => {
 
 		it('should return invalid when a system-resolved credential is used under a schedule trigger', async () => {
 			const nodes: INode[] = [
-				createNode('Schedule', 'n8n-nodes-base.scheduleTrigger'),
-				createNode('HTTP', 'n8n-nodes-base.httpRequest', {
+				createNode('Schedule', 'MNI-nodes-base.scheduleTrigger'),
+				createNode('HTTP', 'MNI-nodes-base.httpRequest', {
 					credentials: { oAuth2Api: { id: 'cred-1' } },
 				}),
 			];
@@ -875,7 +875,7 @@ describe('WorkflowValidationService', () => {
 			useSystemResolver();
 
 			mockNodeTypes.getByNameAndVersion.mockImplementation(((type: string) => {
-				if (type === 'n8n-nodes-base.scheduleTrigger') return createTriggerNodeType();
+				if (type === 'MNI-nodes-base.scheduleTrigger') return createTriggerNodeType();
 				return {} as INodeType;
 			}) as any);
 
@@ -891,8 +891,8 @@ describe('WorkflowValidationService', () => {
 
 		it('should return valid when a system-resolved credential is used under a manual trigger', async () => {
 			const nodes: INode[] = [
-				createNode('Manual', 'n8n-nodes-base.manualTrigger'),
-				createNode('HTTP', 'n8n-nodes-base.httpRequest', {
+				createNode('Manual', 'MNI-nodes-base.manualTrigger'),
+				createNode('HTTP', 'MNI-nodes-base.httpRequest', {
 					credentials: { oAuth2Api: { id: 'cred-1' } },
 				}),
 			];
@@ -903,7 +903,7 @@ describe('WorkflowValidationService', () => {
 			useSystemResolver();
 
 			mockNodeTypes.getByNameAndVersion.mockImplementation(((type: string) => {
-				if (type === 'n8n-nodes-base.manualTrigger') return createTriggerNodeType();
+				if (type === 'MNI-nodes-base.manualTrigger') return createTriggerNodeType();
 				return {} as INodeType;
 			}) as any);
 
@@ -917,10 +917,10 @@ describe('WorkflowValidationService', () => {
 			// "Send and Wait for Response". The tool carries a HITL `webhook`, so the old
 			// method-based check mistook it for an identity-less trigger and blocked publish.
 			const nodes: INode[] = [
-				createNode('MCP Server Trigger', '@n8n/n8n-nodes-langchain.mcpTrigger', {
+				createNode('MCP Server Trigger', '@MNI/MNI-nodes-langchain.mcpTrigger', {
 					parameters: { authentication: 'n8nOAuth2' },
 				}),
-				createNode('Send a message in Gmail', 'n8n-nodes-base.gmailTool', {
+				createNode('Send a message in Gmail', 'MNI-nodes-base.gmailTool', {
 					credentials: { gmailOAuth2: { id: 'cred-1' } },
 				}),
 			];
@@ -931,8 +931,8 @@ describe('WorkflowValidationService', () => {
 			useSystemResolver();
 
 			mockNodeTypes.getByNameAndVersion.mockImplementation(((type: string) => {
-				if (type === '@n8n/n8n-nodes-langchain.mcpTrigger') return createTriggerNodeType();
-				if (type === 'n8n-nodes-base.gmailTool') return createSendAndWaitNodeType();
+				if (type === '@MNI/MNI-nodes-langchain.mcpTrigger') return createTriggerNodeType();
+				if (type === 'MNI-nodes-base.gmailTool') return createSendAndWaitNodeType();
 				return {} as INodeType;
 			}) as any);
 
@@ -943,9 +943,9 @@ describe('WorkflowValidationService', () => {
 
 		it('should return invalid when a compatible trigger is combined with an unsupported trigger', async () => {
 			const nodes: INode[] = [
-				createNode('Manual', 'n8n-nodes-base.manualTrigger'),
-				createNode('Schedule', 'n8n-nodes-base.scheduleTrigger'),
-				createNode('HTTP', 'n8n-nodes-base.httpRequest', {
+				createNode('Manual', 'MNI-nodes-base.manualTrigger'),
+				createNode('Schedule', 'MNI-nodes-base.scheduleTrigger'),
+				createNode('HTTP', 'MNI-nodes-base.httpRequest', {
 					credentials: { oAuth2Api: { id: 'cred-1' } },
 				}),
 			];
@@ -956,7 +956,7 @@ describe('WorkflowValidationService', () => {
 			useSystemResolver();
 
 			mockNodeTypes.getByNameAndVersion.mockImplementation(((type: string) => {
-				if (type === 'n8n-nodes-base.manualTrigger' || type === 'n8n-nodes-base.scheduleTrigger')
+				if (type === 'MNI-nodes-base.manualTrigger' || type === 'MNI-nodes-base.scheduleTrigger')
 					return createTriggerNodeType();
 				return {} as INodeType;
 			}) as any);
@@ -972,8 +972,8 @@ describe('WorkflowValidationService', () => {
 
 		it('should return valid when a system-resolved credential is used under an Execute Workflow Trigger', async () => {
 			const nodes: INode[] = [
-				createNode('When Executed by Another Workflow', 'n8n-nodes-base.executeWorkflowTrigger'),
-				createNode('HTTP', 'n8n-nodes-base.httpRequest', {
+				createNode('When Executed by Another Workflow', 'MNI-nodes-base.executeWorkflowTrigger'),
+				createNode('HTTP', 'MNI-nodes-base.httpRequest', {
 					credentials: { oAuth2Api: { id: 'cred-1' } },
 				}),
 			];
@@ -984,7 +984,7 @@ describe('WorkflowValidationService', () => {
 			useSystemResolver();
 
 			mockNodeTypes.getByNameAndVersion.mockImplementation(((type: string) => {
-				if (type === 'n8n-nodes-base.executeWorkflowTrigger') return createTriggerNodeType();
+				if (type === 'MNI-nodes-base.executeWorkflowTrigger') return createTriggerNodeType();
 				return {} as INodeType;
 			}) as any);
 
@@ -995,8 +995,8 @@ describe('WorkflowValidationService', () => {
 
 		it('should return valid when the trigger is an Execute Workflow Trigger (sub-workflow inherits identity context)', async () => {
 			const nodes: INode[] = [
-				createNode('When Executed by Another Workflow', 'n8n-nodes-base.executeWorkflowTrigger'),
-				createNode('Google Drive', 'n8n-nodes-base.googleDrive', {
+				createNode('When Executed by Another Workflow', 'MNI-nodes-base.executeWorkflowTrigger'),
+				createNode('Google Drive', 'MNI-nodes-base.googleDrive', {
 					credentials: { googleDriveOAuth2Api: { id: 'cred-1' } },
 				}),
 			];
@@ -1007,7 +1007,7 @@ describe('WorkflowValidationService', () => {
 			useCustomResolver();
 
 			mockNodeTypes.getByNameAndVersion.mockImplementation(((type: string) => {
-				if (type === 'n8n-nodes-base.executeWorkflowTrigger') return createTriggerNodeType();
+				if (type === 'MNI-nodes-base.executeWorkflowTrigger') return createTriggerNodeType();
 				return {} as INodeType;
 			}) as any);
 
@@ -1018,10 +1018,10 @@ describe('WorkflowValidationService', () => {
 
 		it('should return valid when Chat Trigger with availableInChat is the trigger', async () => {
 			const nodes: INode[] = [
-				createNode('Chat Trigger', '@n8n/n8n-nodes-langchain.chatTrigger', {
+				createNode('Chat Trigger', '@MNI/MNI-nodes-langchain.chatTrigger', {
 					parameters: { availableInChat: true },
 				}),
-				createNode('Google Calendar', 'n8n-nodes-base.googleCalendar', {
+				createNode('Google Calendar', 'MNI-nodes-base.googleCalendar', {
 					credentials: { googleCalendarOAuth2Api: { id: 'cred-1' } },
 				}),
 			];
@@ -1032,7 +1032,7 @@ describe('WorkflowValidationService', () => {
 			useCustomResolver();
 
 			mockNodeTypes.getByNameAndVersion.mockImplementation(((type: string) => {
-				if (type === '@n8n/n8n-nodes-langchain.chatTrigger') return createTriggerNodeType();
+				if (type === '@MNI/MNI-nodes-langchain.chatTrigger') return createTriggerNodeType();
 				return {} as INodeType;
 			}) as any);
 
@@ -1043,8 +1043,8 @@ describe('WorkflowValidationService', () => {
 
 		it('should return invalid when a custom resolver is used with a Chat Trigger without availableInChat', async () => {
 			const nodes: INode[] = [
-				createNode('Chat Trigger', '@n8n/n8n-nodes-langchain.chatTrigger'),
-				createNode('Google Calendar', 'n8n-nodes-base.googleCalendar', {
+				createNode('Chat Trigger', '@MNI/MNI-nodes-langchain.chatTrigger'),
+				createNode('Google Calendar', 'MNI-nodes-base.googleCalendar', {
 					credentials: { googleCalendarOAuth2Api: { id: 'cred-1' } },
 				}),
 			];
@@ -1055,7 +1055,7 @@ describe('WorkflowValidationService', () => {
 			useCustomResolver();
 
 			mockNodeTypes.getByNameAndVersion.mockImplementation(((type: string) => {
-				if (type === '@n8n/n8n-nodes-langchain.chatTrigger') return createTriggerNodeType();
+				if (type === '@MNI/MNI-nodes-langchain.chatTrigger') return createTriggerNodeType();
 				return {} as INodeType;
 			}) as any);
 
@@ -1067,8 +1067,8 @@ describe('WorkflowValidationService', () => {
 
 		it('should return invalid when the system resolver is used with a Chat Trigger not available in Chat Hub', async () => {
 			const nodes: INode[] = [
-				createNode('Chat Trigger', '@n8n/n8n-nodes-langchain.chatTrigger'),
-				createNode('Outlook', 'n8n-nodes-base.microsoftOutlook', {
+				createNode('Chat Trigger', '@MNI/MNI-nodes-langchain.chatTrigger'),
+				createNode('Outlook', 'MNI-nodes-base.microsoftOutlook', {
 					credentials: { microsoftOutlookOAuth2Api: { id: 'cred-1' } },
 				}),
 			];
@@ -1079,7 +1079,7 @@ describe('WorkflowValidationService', () => {
 			useSystemResolver();
 
 			mockNodeTypes.getByNameAndVersion.mockImplementation(((type: string) => {
-				if (type === '@n8n/n8n-nodes-langchain.chatTrigger') return createTriggerNodeType();
+				if (type === '@MNI/MNI-nodes-langchain.chatTrigger') return createTriggerNodeType();
 				return {} as INodeType;
 			}) as any);
 
@@ -1091,10 +1091,10 @@ describe('WorkflowValidationService', () => {
 
 		it('should return valid when the system resolver is used with a Chat Trigger available in Chat Hub', async () => {
 			const nodes: INode[] = [
-				createNode('Chat Trigger', '@n8n/n8n-nodes-langchain.chatTrigger', {
+				createNode('Chat Trigger', '@MNI/MNI-nodes-langchain.chatTrigger', {
 					parameters: { availableInChat: true },
 				}),
-				createNode('Outlook', 'n8n-nodes-base.microsoftOutlook', {
+				createNode('Outlook', 'MNI-nodes-base.microsoftOutlook', {
 					credentials: { microsoftOutlookOAuth2Api: { id: 'cred-1' } },
 				}),
 			];
@@ -1105,7 +1105,7 @@ describe('WorkflowValidationService', () => {
 			useSystemResolver();
 
 			mockNodeTypes.getByNameAndVersion.mockImplementation(((type: string) => {
-				if (type === '@n8n/n8n-nodes-langchain.chatTrigger') return createTriggerNodeType();
+				if (type === '@MNI/MNI-nodes-langchain.chatTrigger') return createTriggerNodeType();
 				return {} as INodeType;
 			}) as any);
 
@@ -1116,10 +1116,10 @@ describe('WorkflowValidationService', () => {
 
 		it('should return invalid when the system resolver is used with an MCP trigger on bearer auth', async () => {
 			const nodes: INode[] = [
-				createNode('MCP Server Trigger', '@n8n/n8n-nodes-langchain.mcpTrigger', {
+				createNode('MCP Server Trigger', '@MNI/MNI-nodes-langchain.mcpTrigger', {
 					parameters: { authentication: 'bearerAuth' },
 				}),
-				createNode('Outlook', 'n8n-nodes-base.microsoftOutlook', {
+				createNode('Outlook', 'MNI-nodes-base.microsoftOutlook', {
 					credentials: { microsoftOutlookOAuth2Api: { id: 'cred-1' } },
 				}),
 			];
@@ -1130,7 +1130,7 @@ describe('WorkflowValidationService', () => {
 			useSystemResolver();
 
 			mockNodeTypes.getByNameAndVersion.mockImplementation(((type: string) => {
-				if (type === '@n8n/n8n-nodes-langchain.mcpTrigger') return createTriggerNodeType();
+				if (type === '@MNI/MNI-nodes-langchain.mcpTrigger') return createTriggerNodeType();
 				return {} as INodeType;
 			}) as any);
 
@@ -1142,10 +1142,10 @@ describe('WorkflowValidationService', () => {
 
 		it('should return valid when the system resolver is used with an MCP trigger on n8nOAuth2', async () => {
 			const nodes: INode[] = [
-				createNode('MCP Server Trigger', '@n8n/n8n-nodes-langchain.mcpTrigger', {
+				createNode('MCP Server Trigger', '@MNI/MNI-nodes-langchain.mcpTrigger', {
 					parameters: { authentication: 'n8nOAuth2' },
 				}),
-				createNode('Outlook', 'n8n-nodes-base.microsoftOutlook', {
+				createNode('Outlook', 'MNI-nodes-base.microsoftOutlook', {
 					credentials: { microsoftOutlookOAuth2Api: { id: 'cred-1' } },
 				}),
 			];
@@ -1156,7 +1156,7 @@ describe('WorkflowValidationService', () => {
 			useSystemResolver();
 
 			mockNodeTypes.getByNameAndVersion.mockImplementation(((type: string) => {
-				if (type === '@n8n/n8n-nodes-langchain.mcpTrigger') return createTriggerNodeType();
+				if (type === '@MNI/MNI-nodes-langchain.mcpTrigger') return createTriggerNodeType();
 				return {} as INodeType;
 			}) as any);
 
@@ -1168,10 +1168,10 @@ describe('WorkflowValidationService', () => {
 		describe('webhook trigger', () => {
 			const validateWithOAuth2Webhook = async () => {
 				const nodes: INode[] = [
-					createNode('Webhook', 'n8n-nodes-base.webhook', {
+					createNode('Webhook', 'MNI-nodes-base.webhook', {
 						parameters: { authentication: 'n8nOAuth2' },
 					}),
-					createNode('HTTP', 'n8n-nodes-base.httpRequest', {
+					createNode('HTTP', 'MNI-nodes-base.httpRequest', {
 						credentials: { oAuth2Api: { id: 'cred-1' } },
 					}),
 				];
@@ -1182,7 +1182,7 @@ describe('WorkflowValidationService', () => {
 				useSystemResolver();
 
 				mockNodeTypes.getByNameAndVersion.mockImplementation(((type: string) => {
-					if (type === 'n8n-nodes-base.webhook') return createTriggerNodeType();
+					if (type === 'MNI-nodes-base.webhook') return createTriggerNodeType();
 					return {} as INodeType;
 				}) as any);
 
@@ -1197,14 +1197,14 @@ describe('WorkflowValidationService', () => {
 		});
 
 		describe('form trigger', () => {
-			const FORM_TRIGGER = 'n8n-nodes-base.formTrigger';
+			const FORM_TRIGGER = 'MNI-nodes-base.formTrigger';
 
 			const validateWithFormTrigger = async (authentication: string) => {
 				const nodes: INode[] = [
 					createNode('On form submission', FORM_TRIGGER, {
 						parameters: { authentication },
 					}),
-					createNode('HTTP', 'n8n-nodes-base.httpRequest', {
+					createNode('HTTP', 'MNI-nodes-base.httpRequest', {
 						credentials: { oAuth2Api: { id: 'cred-1' } },
 					}),
 				];
@@ -1239,8 +1239,8 @@ describe('WorkflowValidationService', () => {
 
 			it('should offer the form option in the generic message', async () => {
 				const nodes: INode[] = [
-					createNode('Schedule', 'n8n-nodes-base.scheduleTrigger'),
-					createNode('HTTP', 'n8n-nodes-base.httpRequest', {
+					createNode('Schedule', 'MNI-nodes-base.scheduleTrigger'),
+					createNode('HTTP', 'MNI-nodes-base.httpRequest', {
 						credentials: { oAuth2Api: { id: 'cred-1' } },
 					}),
 				];
@@ -1251,7 +1251,7 @@ describe('WorkflowValidationService', () => {
 				useSystemResolver();
 
 				mockNodeTypes.getByNameAndVersion.mockImplementation(((type: string) => {
-					if (type === 'n8n-nodes-base.scheduleTrigger') return createTriggerNodeType();
+					if (type === 'MNI-nodes-base.scheduleTrigger') return createTriggerNodeType();
 					return {} as INodeType;
 				}) as any);
 
@@ -1265,12 +1265,12 @@ describe('WorkflowValidationService', () => {
 		});
 
 		describe('chat trigger', () => {
-			const CHAT_TRIGGER = '@n8n/n8n-nodes-langchain.chatTrigger';
+			const CHAT_TRIGGER = '@MNI/MNI-nodes-langchain.chatTrigger';
 
 			const validateWithChatTrigger = async (parameters: Record<string, unknown>) => {
 				const nodes: INode[] = [
 					createNode('When chat message received', CHAT_TRIGGER, { parameters }),
-					createNode('HTTP', 'n8n-nodes-base.httpRequest', {
+					createNode('HTTP', 'MNI-nodes-base.httpRequest', {
 						credentials: { oAuth2Api: { id: 'cred-1' } },
 					}),
 				];
@@ -1337,8 +1337,8 @@ describe('WorkflowValidationService', () => {
 
 		it('should state the identity-extractor requirement for a custom resolver', async () => {
 			const nodes: INode[] = [
-				createNode('Every 5 minutes', 'n8n-nodes-base.scheduleTrigger'),
-				createNode('HTTP', 'n8n-nodes-base.httpRequest', {
+				createNode('Every 5 minutes', 'MNI-nodes-base.scheduleTrigger'),
+				createNode('HTTP', 'MNI-nodes-base.httpRequest', {
 					credentials: { oAuth2Api: { id: 'cred-1' } },
 				}),
 			];
@@ -1349,7 +1349,7 @@ describe('WorkflowValidationService', () => {
 			useCustomResolver();
 
 			mockNodeTypes.getByNameAndVersion.mockImplementation(((type: string) => {
-				if (type === 'n8n-nodes-base.scheduleTrigger') return createTriggerNodeType();
+				if (type === 'MNI-nodes-base.scheduleTrigger') return createTriggerNodeType();
 				return {} as INodeType;
 			}) as any);
 
@@ -1362,7 +1362,7 @@ describe('WorkflowValidationService', () => {
 
 		it('should reject a workflow with no trigger at all', async () => {
 			const nodes: INode[] = [
-				createNode('HTTP', 'n8n-nodes-base.httpRequest', {
+				createNode('HTTP', 'MNI-nodes-base.httpRequest', {
 					credentials: { oAuth2Api: { id: 'cred-1' } },
 				}),
 			];
@@ -1382,8 +1382,8 @@ describe('WorkflowValidationService', () => {
 
 		it('should skip disabled nodes when collecting credentials', async () => {
 			const nodes: INode[] = [
-				createNode('Schedule', 'n8n-nodes-base.scheduleTrigger'),
-				createNode('HTTP', 'n8n-nodes-base.httpRequest', {
+				createNode('Schedule', 'MNI-nodes-base.scheduleTrigger'),
+				createNode('HTTP', 'MNI-nodes-base.httpRequest', {
 					disabled: true,
 					credentials: { oAuth2Api: { id: 'cred-1' } },
 				}),
@@ -1401,7 +1401,7 @@ describe('WorkflowValidationService', () => {
 		const nodes: INode[] = [
 			{
 				name: 'HTTP',
-				type: 'n8n-nodes-base.httpRequest',
+				type: 'MNI-nodes-base.httpRequest',
 				id: 'node-1',
 				typeVersion: 1,
 				position: [0, 0],
@@ -1521,7 +1521,7 @@ describe('WorkflowValidationService', () => {
 		): INode =>
 			mock<INode>({
 				name: 'HTTP Request',
-				type: 'n8n-nodes-base.httpRequest',
+				type: 'MNI-nodes-base.httpRequest',
 				disabled: false,
 				parameters: activeCredentialType
 					? { authentication: 'predefinedCredentialType', nodeCredentialType: activeCredentialType }
@@ -1532,7 +1532,7 @@ describe('WorkflowValidationService', () => {
 
 		it('rejects a workflow binding a restricted credential to a non-supported node', () => {
 			const credentialTypes = buildCredentialTypes('restrictedApi', restrictedType, [
-				'n8n-nodes-base.restrictedConsumer',
+				'MNI-nodes-base.restrictedConsumer',
 			]);
 
 			const httpNode = httpRequestNodeWith('restrictedApi', {
@@ -1544,17 +1544,17 @@ describe('WorkflowValidationService', () => {
 			expect(result.isValid).toBe(false);
 			expect(result.error).toMatch(/restrictedApi/);
 			expect(result.error).toMatch(/HTTP Request/);
-			expect(result.error).toMatch(/n8n-nodes-base\.restrictedConsumer/);
+			expect(result.error).toMatch(/MNI-nodes-base\.restrictedConsumer/);
 		});
 
 		it('accepts a workflow binding a restricted credential to a supported node', () => {
 			const credentialTypes = buildCredentialTypes('restrictedApi', restrictedType, [
-				'n8n-nodes-base.restrictedConsumer',
+				'MNI-nodes-base.restrictedConsumer',
 			]);
 
 			const consumerNode = mock<INode>({
 				name: 'Consumer',
-				type: 'n8n-nodes-base.restrictedConsumer',
+				type: 'MNI-nodes-base.restrictedConsumer',
 				disabled: false,
 			});
 			consumerNode.credentials = { restrictedApi: { id: 'cred-1', name: 'Restricted creds' } };
@@ -1583,7 +1583,7 @@ describe('WorkflowValidationService', () => {
 				supportedNodes: ['slack'],
 			} as ICredentialType;
 			const credentialTypes = buildCredentialTypes('slackApi', unrestricted, [
-				'n8n-nodes-base.slack',
+				'MNI-nodes-base.slack',
 			]);
 
 			const httpNode = httpRequestNodeWith('slackApi', {
@@ -1597,7 +1597,7 @@ describe('WorkflowValidationService', () => {
 
 		it('validates disabled nodes too — illegal bindings must never be persisted', () => {
 			const credentialTypes = buildCredentialTypes('restrictedApi', restrictedType, [
-				'n8n-nodes-base.restrictedConsumer',
+				'MNI-nodes-base.restrictedConsumer',
 			]);
 
 			const httpNode = httpRequestNodeWith(
@@ -1619,7 +1619,7 @@ describe('WorkflowValidationService', () => {
 			// is selected per parameters.nodeCredentialType. We must not flag the
 			// inactive restrictedApi binding — the user sees Slack in the UI.
 			const credentialTypes = buildCredentialTypes('restrictedApi', restrictedType, [
-				'n8n-nodes-base.restrictedConsumer',
+				'MNI-nodes-base.restrictedConsumer',
 			]);
 
 			const httpNode = httpRequestNodeWith('slackApi', {
@@ -1637,7 +1637,7 @@ describe('WorkflowValidationService', () => {
 			// restricted type, the validator must fire — defense vs. someone POSTing
 			// an illegal binding through the API.
 			const credentialTypes = buildCredentialTypes('restrictedApi', restrictedType, [
-				'n8n-nodes-base.restrictedConsumer',
+				'MNI-nodes-base.restrictedConsumer',
 			]);
 
 			const httpNode = httpRequestNodeWith('restrictedApi', {
@@ -1653,7 +1653,7 @@ describe('WorkflowValidationService', () => {
 
 		it('ignores all entries on HTTP Request when authentication is "none"', () => {
 			const credentialTypes = buildCredentialTypes('restrictedApi', restrictedType, [
-				'n8n-nodes-base.restrictedConsumer',
+				'MNI-nodes-base.restrictedConsumer',
 			]);
 
 			const httpNode = httpRequestNodeWith(null, {
@@ -1667,7 +1667,7 @@ describe('WorkflowValidationService', () => {
 
 		it('aggregates violations across multiple nodes', () => {
 			const credentialTypes = buildCredentialTypes('restrictedApi', restrictedType, [
-				'n8n-nodes-base.restrictedConsumer',
+				'MNI-nodes-base.restrictedConsumer',
 			]);
 
 			const httpNode = httpRequestNodeWith('restrictedApi', {
@@ -1676,7 +1676,7 @@ describe('WorkflowValidationService', () => {
 
 			const slackNode = mock<INode>({
 				name: 'Slack',
-				type: 'n8n-nodes-base.slack',
+				type: 'MNI-nodes-base.slack',
 				disabled: false,
 			});
 			slackNode.credentials = { restrictedApi: { id: 'cred-1', name: 'Restricted creds' } };
@@ -1697,7 +1697,7 @@ describe('WorkflowValidationService', () => {
 			({
 				name,
 				id,
-				type: 'n8n-nodes-base.cron',
+				type: 'MNI-nodes-base.cron',
 				typeVersion: 1,
 				position: [0, 0],
 				parameters: {},

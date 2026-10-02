@@ -1,5 +1,5 @@
 import { describe, it, expect, afterEach } from 'vitest';
-import type { INodeParameters } from 'n8n-workflow';
+import type { INodeParameters } from 'MNI-workflow';
 import { setParameterValue } from './parameterUtils';
 
 describe('parameterUtils', () => {

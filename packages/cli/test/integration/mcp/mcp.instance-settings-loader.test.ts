@@ -1,8 +1,8 @@
-import { testDb, testModules } from '@n8n/backend-test-utils';
-import { GlobalConfig } from '@n8n/config';
-import type { InstanceSettingsLoaderConfig } from '@n8n/config';
-import { SettingsRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
+import { testDb, testModules } from '@MNI/backend-test-utils';
+import { GlobalConfig } from '@MNI/config';
+import type { InstanceSettingsLoaderConfig } from '@MNI/config';
+import { SettingsRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
 
 import { McpSettingsLoader } from '@/instance-settings-loader/loaders/mcp-settings.loader';
 import { McpSettingsService } from '@/modules/mcp/mcp.settings.service';

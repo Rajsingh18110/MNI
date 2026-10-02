@@ -10,7 +10,7 @@
  *   1. Overrides   — replace an empty/non-SPDX license with the resolved SPDX id,
  *                    PURL-pinned (release closure) or version-agnostic via byName
  *                    (container images, where a package can appear at >1 version).
- *   2. First-party — emit MNI's own packages as LicenseRef-n8n-sustainable-use
+ *   2. First-party — emit MNI's own packages as LicenseRef-MNI-sustainable-use
  *                    with the full license text, so scanners read "MNI's declared
  *                    license" instead of "unknown/proprietary". A first-party
  *                    package published under a real OSI license keeps that license.
@@ -47,7 +47,7 @@ const DEFAULT_PACKAGES_DIR = path.join(REPO_ROOT, 'packages');
 
 const SKIP_DIRS = new Set(['node_modules', 'dist', '.git', '.turbo', 'coverage']);
 
-export const FIRST_PARTY_LICENSE_REF = 'LicenseRef-n8n-sustainable-use';
+export const FIRST_PARTY_LICENSE_REF = 'LicenseRef-MNI-sustainable-use';
 export const ELECTED_PROPERTY = 'cdx:license:elected';
 
 export async function loadLicenseConfig(overridesPath = OVERRIDES_PATH) {
@@ -135,8 +135,8 @@ function firstPartyRefLicenses(licenseText) {
 
 /**
  * Build name -> SPDX-id map from the source workspace package.json files, so a
- * first-party package published under a real OSI license (e.g. @n8n/tournament
- * is Apache-2.0, @n8n/json-schema-to-zod is ISC) keeps that license in the SBOM
+ * first-party package published under a real OSI license (e.g. @MNI/tournament
+ * is Apache-2.0, @MNI/json-schema-to-zod is ISC) keeps that license in the SBOM
  * instead of being stamped with the Sustainable Use License. Source package.json
  * is the source of truth; the compiled closure rewrites the field uniformly.
  *
@@ -161,7 +161,7 @@ export async function buildFirstPartyOsiMap(packagesDir, validIds) {
 			try {
 				const pkg = JSON.parse(await readFile(path.join(dir, entry.name), 'utf-8'));
 				const id = typeof pkg.license === 'string' ? pkg.license.replace(/\+$/, '') : null;
-				// Only real OSI ids count; n8n-license strings ("SEE LICENSE IN
+				// Only real OSI ids count; MNI-license strings ("SEE LICENSE IN
 				// LICENSE.md", URLs, "none", missing) fall through to the LicenseRef.
 				if (pkg.name && id && validIds.has(id)) map.set(pkg.name, pkg.license);
 			} catch {

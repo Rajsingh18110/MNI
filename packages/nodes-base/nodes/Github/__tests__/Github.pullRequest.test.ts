@@ -1,4 +1,4 @@
-import { NodeApiError, NodeOperationError } from 'n8n-workflow';
+import { NodeApiError, NodeOperationError } from 'MNI-workflow';
 import { vi } from 'vitest';
 
 import { Github } from '../Github.node';
@@ -24,7 +24,7 @@ function createMockExecuteFunction(params: Record<string, any>) {
 		getNode: vi.fn().mockReturnValue({
 			id: 'test-node-id',
 			name: 'Github',
-			type: 'n8n-nodes-base.github',
+			type: 'MNI-nodes-base.github',
 			typeVersion: 1,
 			position: [0, 0],
 			parameters: {},

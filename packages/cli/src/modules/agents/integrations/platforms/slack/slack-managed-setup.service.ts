@@ -6,12 +6,12 @@ import type {
 	SlackManagedSetupState,
 	SlackManagedWorkspaceSummary,
 	SlackManagerCredentialSummary,
-} from '@n8n/api-types';
-import type { CredentialsEntity, User } from '@n8n/db';
-import { Service } from '@n8n/di';
-import { isRecord } from '@n8n/utils/is-record';
-import { Cipher } from 'n8n-core';
-import type { ICredentialDataDecryptedObject } from 'n8n-workflow';
+} from '@MNI/api-types';
+import type { CredentialsEntity, User } from '@MNI/db';
+import { Service } from '@MNI/di';
+import { isRecord } from '@MNI/utils/is-record';
+import { Cipher } from 'MNI-core';
+import type { ICredentialDataDecryptedObject } from 'MNI-workflow';
 import { randomBytes } from 'node:crypto';
 import { readFile } from 'node:fs/promises';
 import { join } from 'node:path';

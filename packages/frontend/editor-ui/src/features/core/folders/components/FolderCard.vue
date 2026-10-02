@@ -2,15 +2,15 @@
 import { computed, getCurrentInstance, ref } from 'vue';
 import { FOLDER_LIST_ITEM_ACTIONS, MCP_ACCESS_ACTIONS } from '../folders.constants';
 import { ProjectTypes, type Project } from '@/features/collaboration/projects/projects.types';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import { useRoute, useRouter } from 'vue-router';
 import { VIEWS } from '@/app/constants';
 import type { UserAction, FolderResource } from '@/Interface';
 import { ResourceType } from '@/features/collaboration/projects/projects.utils';
-import type { PathItem } from '@n8n/design-system';
+import type { PathItem } from '@MNI/design-system';
 import { useFoldersStore } from '../folders.store';
 import { useFavoritesStore } from '@/app/stores/favorites.store';
-import { type IUser } from 'n8n-workflow';
+import { type IUser } from 'MNI-workflow';
 import TimeAgo from '@/app/components/TimeAgo.vue';
 import ProjectCardBadge from '@/features/collaboration/projects/components/ProjectCardBadge.vue';
 
@@ -25,7 +25,7 @@ import {
 	N8nText,
 	N8nTooltip,
 	type DropdownMenuItemProps,
-} from '@n8n/design-system';
+} from '@MNI/design-system';
 
 type FolderCardAction = UserAction<IUser> & {
 	children?: FolderCardAction[];
@@ -371,7 +371,7 @@ const onBreadcrumbItemClick = async (item: PathItem) => {
 </template>
 
 <style lang="scss" module>
-@use '@n8n/design-system/css/mixins/breakpoints';
+@use '@MNI/design-system/css/mixins/breakpoints';
 
 .card {
 	transition: box-shadow 0.3s ease;
@@ -413,10 +413,10 @@ const onBreadcrumbItemClick = async (item: PathItem) => {
 }
 
 .cardBadge.with-breadcrumbs {
-	:global(.n8n-badge) {
+	:global(.MNI-badge) {
 		padding-right: 0;
 	}
-	:global(.n8n-breadcrumbs) {
+	:global(.MNI-breadcrumbs) {
 		padding-left: var(--spacing--5xs);
 	}
 }
@@ -434,7 +434,7 @@ const onBreadcrumbItemClick = async (item: PathItem) => {
 	.card {
 		flex-wrap: wrap;
 
-		:global(.n8n-card-append) {
+		:global(.MNI-card-append) {
 			width: 100%;
 			margin-top: var(--spacing--3xs);
 			padding-left: 40px;

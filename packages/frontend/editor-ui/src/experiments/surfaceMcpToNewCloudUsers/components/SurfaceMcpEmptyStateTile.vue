@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { N8nCard, N8nIcon, N8nText } from '@n8n/design-system';
-import { useI18n, type BaseTextKey } from '@n8n/i18n';
+import { N8nCard, N8nIcon, N8nText } from '@MNI/design-system';
+import { useI18n, type BaseTextKey } from '@MNI/i18n';
 import { SURFACE_MCP_TO_NEW_CLOUD_USERS_EXPERIMENT } from '@/app/constants/experiments';
 import { useUIStore } from '@/app/stores/ui.store';
 import { useMCPStore } from '@/features/ai/mcpAccess/mcp.store';

@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import type { IUpdateInformation } from '@/Interface';
-import { useI18n } from '@n8n/i18n';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
+import { useI18n } from '@MNI/i18n';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
 import { isValueExpression as isValueExpressionUtil } from '@/app/utils/nodeTypesUtils';
-import { createEventBus } from '@n8n/utils/event-bus';
+import { createEventBus } from '@MNI/utils/event-bus';
 import {
 	isINodePropertyCollection,
 	type INodeParameterResourceLocator,
@@ -11,14 +11,14 @@ import {
 	type INodeProperties,
 	type IParameterLabel,
 	type NodeParameterValueType,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import { computed, defineAsyncComponent, ref, useTemplateRef, type ComputedRef } from 'vue';
 import ParameterInputWrapper from './ParameterInputWrapper.vue';
 import ParameterOptions from './ParameterOptions.vue';
 import { useUIStore } from '@/app/stores/ui.store';
 import { storeToRefs } from 'pinia';
 
-import { N8nInputLabel, N8nLink, N8nText } from '@n8n/design-system';
+import { N8nInputLabel, N8nLink, N8nText } from '@MNI/design-system';
 import { injectWorkflowDocumentStore } from '@/app/stores/workflowDocument.store';
 
 const LazyFixedCollectionParameter = defineAsyncComponent(

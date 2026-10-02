@@ -1,5 +1,5 @@
-import { Service } from '@n8n/di';
-import type { ICredentialType, ICredentialTypes } from 'n8n-workflow';
+import { Service } from '@MNI/di';
+import type { ICredentialType, ICredentialTypes } from 'MNI-workflow';
 
 import { LoadNodesAndCredentials } from '@/load-nodes-and-credentials';
 

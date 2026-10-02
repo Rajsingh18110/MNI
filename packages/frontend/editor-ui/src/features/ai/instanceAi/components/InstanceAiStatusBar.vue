@@ -1,12 +1,12 @@
 <script lang="ts" setup>
 import { ref, computed, watch, onUnmounted } from 'vue';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import type {
 	InstanceAiAgentNode,
 	InstanceAiMessage,
 	InstanceAiTimelineEntry,
 	InstanceAiToolCallState,
-} from '@n8n/api-types';
+} from '@MNI/api-types';
 import { useThread } from '../instanceAi.store';
 import { useToolLabel } from '../toolLabels';
 import {
@@ -143,7 +143,7 @@ onUnmounted(() => {
 </template>
 
 <style lang="scss" module>
-@use '@n8n/design-system/css/mixins/motion';
+@use '@MNI/design-system/css/mixins/motion';
 
 /* Styled to match the thinking block's subline — the bar hands off to it
  * once trace content arrives, so the two must read as the same element. */

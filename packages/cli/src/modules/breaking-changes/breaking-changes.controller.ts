@@ -5,9 +5,9 @@ import {
 	BreakingChangeReportResult,
 	BreakingChangeWorkflowRuleResult,
 	WorkflowMigrationResult,
-} from '@n8n/api-types';
-import { AuthenticatedRequest } from '@n8n/db';
-import { Get, RestController, GlobalScope, Query, Post, Param } from '@n8n/decorators';
+} from '@MNI/api-types';
+import { AuthenticatedRequest } from '@MNI/db';
+import { Get, RestController, GlobalScope, Query, Post, Param } from '@MNI/decorators';
 import { Response } from 'express';
 
 import { NotFoundError } from '@/errors/response-errors/not-found.error';

@@ -5,7 +5,7 @@ import { defineComponent, h } from 'vue';
 import { createComponentRenderer } from '@/__tests__/render';
 import { mockedStore } from '@/__tests__/utils';
 import ChatInputWithMention from './ChatInputWithMention.vue';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { useFocusedNodesStore } from '../../focusedNodes.store';
 import type { FocusedNode } from '../../focusedNodes.types';
 
@@ -31,7 +31,7 @@ vi.mock('./NodeMentionDropdown.vue', () => ({
 }));
 
 // Mock N8nChatInput
-vi.mock('@n8n/design-system', async (importOriginal) => {
+vi.mock('@MNI/design-system', async (importOriginal) => {
 	const actual = await importOriginal<Record<string, unknown>>();
 	return {
 		...actual,
@@ -93,7 +93,7 @@ vi.mock('@/app/stores/posthog.store', () => ({
 }));
 
 // Mock telemetry
-vi.mock('@n8n/composables/useTelemetry', () => ({
+vi.mock('@MNI/composables/useTelemetry', () => ({
 	useTelemetry: () => ({ track: vi.fn() }),
 }));
 
@@ -107,7 +107,7 @@ vi.mock('@vueuse/core', async (importOriginal) => {
 });
 
 // Mock i18n
-vi.mock('@n8n/i18n', async (importOriginal) => ({
+vi.mock('@MNI/i18n', async (importOriginal) => ({
 	...(await importOriginal()),
 	useI18n: () => ({
 		baseText: (key: string, opts?: { interpolate?: Record<string, unknown> }) =>
@@ -127,7 +127,7 @@ const renderComponent = createComponentRenderer(ChatInputWithMention);
 const createFocusedNode = (id: string, name: string, state: FocusedNode['state']): FocusedNode => ({
 	nodeId: id,
 	nodeName: name,
-	nodeType: 'n8n-nodes-base.httpRequest',
+	nodeType: 'MNI-nodes-base.httpRequest',
 	state,
 });
 

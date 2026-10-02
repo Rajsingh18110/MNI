@@ -2,26 +2,26 @@ import {
 	CREDENTIAL_DESCRIPTION_MAX_LENGTH,
 	CREDENTIAL_DESCRIPTIONS_FLAG,
 	MAX_ITEMS_PER_PAGE,
-} from '@n8n/api-types';
-import { LicenseState } from '@n8n/backend-common';
-import type { CredentialPayload } from '@n8n/backend-test-utils';
-import { createTeamProject, linkUserToProject, randomName, testDb } from '@n8n/backend-test-utils';
-import type { User } from '@n8n/db';
+} from '@MNI/api-types';
+import { LicenseState } from '@MNI/backend-common';
+import type { CredentialPayload } from '@MNI/backend-test-utils';
+import { createTeamProject, linkUserToProject, randomName, testDb } from '@MNI/backend-test-utils';
+import type { User } from '@MNI/db';
 import {
 	CredentialDependencyRepository,
 	CredentialsRepository,
 	SharedCredentialsRepository,
 	ProjectRepository,
 	SecretsProviderConnectionRepository,
-} from '@n8n/db';
-import { Container } from '@n8n/di';
-import { QueryFailedError } from '@n8n/typeorm';
-import { Snowflake } from 'n8n-nodes-base/credentials/Snowflake.credentials';
+} from '@MNI/db';
+import { Container } from '@MNI/di';
+import { QueryFailedError } from '@MNI/typeorm';
+import { Snowflake } from 'MNI-nodes-base/credentials/Snowflake.credentials';
 import {
 	CREDENTIAL_BLANKING_VALUE,
 	type ICredentialDataDecryptedObject,
 	randomString,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import { CredentialsService } from '@/credentials/credentials.service';

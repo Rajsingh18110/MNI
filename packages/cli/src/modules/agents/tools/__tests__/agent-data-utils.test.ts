@@ -1,4 +1,4 @@
-import type { IDataObject, INodeExecutionData } from 'n8n-workflow';
+import type { IDataObject, INodeExecutionData } from 'MNI-workflow';
 
 import { trimItems, runQuery, queryItems, MAX_ITEMS, MAX_OUTPUT_CHARS } from '../agent-data-utils';
 

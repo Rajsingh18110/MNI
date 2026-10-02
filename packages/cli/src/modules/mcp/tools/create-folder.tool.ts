@@ -1,6 +1,6 @@
-import { folderIdSchema, folderNameSchema } from '@n8n/api-types';
-import type { User } from '@n8n/db';
-import { PROJECT_ROOT } from 'n8n-workflow';
+import { folderIdSchema, folderNameSchema } from '@MNI/api-types';
+import type { User } from '@MNI/db';
+import { PROJECT_ROOT } from 'MNI-workflow';
 import z from 'zod';
 
 import type { FolderService } from '@/services/folder.service';

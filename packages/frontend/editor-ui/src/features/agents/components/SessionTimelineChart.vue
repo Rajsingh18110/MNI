@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue';
-import { truncate } from '@n8n/utils/string/truncate';
-import { useI18n } from '@n8n/i18n';
-import { N8nBadge, N8nHoverCard, N8nIconButton } from '@n8n/design-system';
+import { truncate } from '@MNI/utils/string/truncate';
+import { useI18n } from '@MNI/i18n';
+import { N8nBadge, N8nHoverCard, N8nIconButton } from '@MNI/design-system';
 import { convertToDisplayDate } from '@/app/utils/formatters/dateFormatter';
 import type { CSSProperties } from 'vue';
 import type { IdleRange, TimelineItem } from '../session-timeline.types';

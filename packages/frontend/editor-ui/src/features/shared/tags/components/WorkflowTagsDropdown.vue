@@ -4,9 +4,9 @@ import TagsDropdown from './TagsDropdown.vue';
 import { useUIStore } from '@/app/stores/ui.store';
 import { useTagsStore } from '../tags.store';
 import { TAGS_MANAGER_MODAL_KEY } from '../tags.constants';
-import type { EventBus } from '@n8n/utils/event-bus';
+import type { EventBus } from '@MNI/utils/event-bus';
 import { useTagPermissions } from '../useTagPermissions';
-import type { BaseTextKey } from '@n8n/i18n';
+import type { BaseTextKey } from '@MNI/i18n';
 
 interface TagsDropdownWrapperProps {
 	placeholder?: string;

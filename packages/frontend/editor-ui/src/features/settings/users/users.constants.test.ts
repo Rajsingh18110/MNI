@@ -1,6 +1,6 @@
-import type { FrontendSettings } from '@n8n/api-types';
-import { useSettingsStore } from '@n8n/stores/settings.store';
-import { useUsersStore } from '@n8n/stores/users.store';
+import type { FrontendSettings } from '@MNI/api-types';
+import { useSettingsStore } from '@MNI/stores/settings.store';
+import { useUsersStore } from '@MNI/stores/users.store';
 import { createPinia, setActivePinia } from 'pinia';
 
 import { useUIStore } from '@/app/stores/ui.store';
@@ -8,12 +8,12 @@ import { useUIStore } from '@/app/stores/ui.store';
 import { PERSONALIZATION_MODAL_KEY } from './users.constants';
 
 /**
- * `users.store` lives in `@n8n/stores` and opens the personalization modal through
+ * `users.store` lives in `@MNI/stores` and opens the personalization modal through
  * an injected opener, so its key and the key the app registers under sit on
  * opposite sides of a package boundary. `openModal` *creates* a missing entry
  * rather than throwing, so a divergence between the two is silent: the survey
  * simply never appears. This drives the real wiring from `init.ts` end to end so
- * that divergence fails here instead. (N8N-126)
+ * that divergence fails here instead. (MNI-126)
  *
  * The complementary check — every key a `<ModalRoot>` renders has a definition
  * backing it — lives in `ui.store.registration.spec.ts`.

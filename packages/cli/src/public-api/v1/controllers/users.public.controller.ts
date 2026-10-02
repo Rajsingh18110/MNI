@@ -9,8 +9,8 @@ import {
 	UserPublicDto,
 	userIdentifierParamSchema,
 	userUuidParamSchema,
-} from '@n8n/api-types';
-import type { AuthenticatedRequest, User } from '@n8n/db';
+} from '@MNI/api-types';
+import type { AuthenticatedRequest, User } from '@MNI/db';
 import {
 	ApiDescription,
 	ApiErrorResponse,
@@ -28,7 +28,7 @@ import {
 	PublicApiController,
 	Query,
 	RequiresUserQuota,
-} from '@n8n/decorators';
+} from '@MNI/decorators';
 import type { Response } from 'express';
 import pick from 'lodash/pick';
 

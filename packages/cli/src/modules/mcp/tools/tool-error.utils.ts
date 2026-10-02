@@ -1,4 +1,4 @@
-import { getErrorMessage } from '@n8n/utils/errors/get-error-message';
+import { getErrorMessage } from '@MNI/utils/errors/get-error-message';
 
 import type { Telemetry } from '@/telemetry';
 

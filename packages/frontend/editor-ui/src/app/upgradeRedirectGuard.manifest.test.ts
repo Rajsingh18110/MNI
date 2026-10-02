@@ -1,7 +1,7 @@
 import {
 	clearDefaultUpgradeRedirectGuard,
 	getDefaultUpgradeRedirectGuard,
-} from '@n8n/stores/registries/upgradeRedirectGuard';
+} from '@MNI/stores/registries/upgradeRedirectGuard';
 
 import { registerUpgradeRedirectGuard } from './upgradeRedirectGuard.manifest';
 

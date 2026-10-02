@@ -1,4 +1,4 @@
-import type { INode } from 'n8n-workflow';
+import type { INode } from 'MNI-workflow';
 
 import { createNode, createWorkflow } from '../../../__tests__/test-helpers';
 import { BreakingChangeCategory } from '../../../types';
@@ -47,15 +47,15 @@ describe('WaitNodeSubworkflowRule', () => {
 		it('should flag parent workflow when it calls a sub-workflow with waiting nodes', async () => {
 			// Create a sub-workflow with waiting nodes
 			const subWorkflow = createWorkflow('sub-wf-1', 'Sub Workflow', [
-				createNode('ExecuteWorkflowTrigger', 'n8n-nodes-base.executeWorkflowTrigger'),
-				createNode('Wait', 'n8n-nodes-base.wait'),
-				createNode('HTTP', 'n8n-nodes-base.httpRequest'),
+				createNode('ExecuteWorkflowTrigger', 'MNI-nodes-base.executeWorkflowTrigger'),
+				createNode('Wait', 'MNI-nodes-base.wait'),
+				createNode('HTTP', 'MNI-nodes-base.httpRequest'),
 			]);
 
 			// Create a parent workflow that calls the sub-workflow
 			const parentWorkflow = createWorkflow('parent-wf-1', 'Parent Workflow', [
-				createNode('Start', 'n8n-nodes-base.manualTrigger'),
-				createNode('ExecuteWorkflow', 'n8n-nodes-base.executeWorkflow', {
+				createNode('Start', 'MNI-nodes-base.manualTrigger'),
+				createNode('ExecuteWorkflow', 'MNI-nodes-base.executeWorkflow', {
 					source: 'database',
 					workflowId: { value: 'sub-wf-1' },
 				}),
@@ -78,8 +78,8 @@ describe('WaitNodeSubworkflowRule', () => {
 		it('should NOT flag sub-workflow itself', async () => {
 			// Create a sub-workflow with waiting nodes (no parent calling it)
 			const subWorkflow = createWorkflow('sub-wf-1', 'Sub Workflow', [
-				createNode('ExecuteWorkflowTrigger', 'n8n-nodes-base.executeWorkflowTrigger'),
-				createNode('Wait', 'n8n-nodes-base.wait'),
+				createNode('ExecuteWorkflowTrigger', 'MNI-nodes-base.executeWorkflowTrigger'),
+				createNode('Wait', 'MNI-nodes-base.wait'),
 			]);
 
 			await rule.collectWorkflowData(subWorkflow.workflow, subWorkflow.nodesGroupedByType);
@@ -92,14 +92,14 @@ describe('WaitNodeSubworkflowRule', () => {
 		it('should NOT flag parent when waitForSubWorkflow is false', async () => {
 			// Create a sub-workflow with waiting nodes
 			const subWorkflow = createWorkflow('sub-wf-1', 'Sub Workflow', [
-				createNode('ExecuteWorkflowTrigger', 'n8n-nodes-base.executeWorkflowTrigger'),
-				createNode('Wait', 'n8n-nodes-base.wait'),
+				createNode('ExecuteWorkflowTrigger', 'MNI-nodes-base.executeWorkflowTrigger'),
+				createNode('Wait', 'MNI-nodes-base.wait'),
 			]);
 
 			// Create a parent workflow that does NOT wait for sub-workflow completion
 			const parentWorkflow = createWorkflow('parent-wf-1', 'Parent Workflow', [
-				createNode('Start', 'n8n-nodes-base.manualTrigger'),
-				createNode('ExecuteWorkflow', 'n8n-nodes-base.executeWorkflow', {
+				createNode('Start', 'MNI-nodes-base.manualTrigger'),
+				createNode('ExecuteWorkflow', 'MNI-nodes-base.executeWorkflow', {
 					source: 'database',
 					workflowId: { value: 'sub-wf-1' },
 					options: { waitForSubWorkflow: false },
@@ -115,12 +115,12 @@ describe('WaitNodeSubworkflowRule', () => {
 
 		it('should flag parent when waitForSubWorkflow is true (explicit)', async () => {
 			const subWorkflow = createWorkflow('sub-wf-1', 'Sub Workflow', [
-				createNode('ExecuteWorkflowTrigger', 'n8n-nodes-base.executeWorkflowTrigger'),
-				createNode('Wait', 'n8n-nodes-base.wait'),
+				createNode('ExecuteWorkflowTrigger', 'MNI-nodes-base.executeWorkflowTrigger'),
+				createNode('Wait', 'MNI-nodes-base.wait'),
 			]);
 
 			const parentWorkflow = createWorkflow('parent-wf-1', 'Parent Workflow', [
-				createNode('ExecuteWorkflow', 'n8n-nodes-base.executeWorkflow', {
+				createNode('ExecuteWorkflow', 'MNI-nodes-base.executeWorkflow', {
 					source: 'database',
 					workflowId: { value: 'sub-wf-1' },
 					options: { waitForSubWorkflow: true },
@@ -137,12 +137,12 @@ describe('WaitNodeSubworkflowRule', () => {
 
 		it('should flag parent when waitForSubWorkflow is not set (defaults to true)', async () => {
 			const subWorkflow = createWorkflow('sub-wf-1', 'Sub Workflow', [
-				createNode('ExecuteWorkflowTrigger', 'n8n-nodes-base.executeWorkflowTrigger'),
-				createNode('Wait', 'n8n-nodes-base.wait'),
+				createNode('ExecuteWorkflowTrigger', 'MNI-nodes-base.executeWorkflowTrigger'),
+				createNode('Wait', 'MNI-nodes-base.wait'),
 			]);
 
 			const parentWorkflow = createWorkflow('parent-wf-1', 'Parent Workflow', [
-				createNode('ExecuteWorkflow', 'n8n-nodes-base.executeWorkflow', {
+				createNode('ExecuteWorkflow', 'MNI-nodes-base.executeWorkflow', {
 					source: 'database',
 					workflowId: { value: 'sub-wf-1' },
 					// No options set - waitForSubWorkflow defaults to true
@@ -158,12 +158,12 @@ describe('WaitNodeSubworkflowRule', () => {
 
 		it('should flag parent when waitForSubWorkflow is an expression (treated as true)', async () => {
 			const subWorkflow = createWorkflow('sub-wf-1', 'Sub Workflow', [
-				createNode('ExecuteWorkflowTrigger', 'n8n-nodes-base.executeWorkflowTrigger'),
-				createNode('Wait', 'n8n-nodes-base.wait'),
+				createNode('ExecuteWorkflowTrigger', 'MNI-nodes-base.executeWorkflowTrigger'),
+				createNode('Wait', 'MNI-nodes-base.wait'),
 			]);
 
 			const parentWorkflow = createWorkflow('parent-wf-1', 'Parent Workflow', [
-				createNode('ExecuteWorkflow', 'n8n-nodes-base.executeWorkflow', {
+				createNode('ExecuteWorkflow', 'MNI-nodes-base.executeWorkflow', {
 					source: 'database',
 					workflowId: { value: 'sub-wf-1' },
 					options: { waitForSubWorkflow: '={{ $json.shouldWait }}' },
@@ -182,12 +182,12 @@ describe('WaitNodeSubworkflowRule', () => {
 		it('should NOT flag parent when sub-workflow has no waiting nodes', async () => {
 			// Create a sub-workflow WITHOUT waiting nodes
 			const subWorkflow = createWorkflow('sub-wf-1', 'Sub Workflow', [
-				createNode('ExecuteWorkflowTrigger', 'n8n-nodes-base.executeWorkflowTrigger'),
-				createNode('HTTP', 'n8n-nodes-base.httpRequest'),
+				createNode('ExecuteWorkflowTrigger', 'MNI-nodes-base.executeWorkflowTrigger'),
+				createNode('HTTP', 'MNI-nodes-base.httpRequest'),
 			]);
 
 			const parentWorkflow = createWorkflow('parent-wf-1', 'Parent Workflow', [
-				createNode('ExecuteWorkflow', 'n8n-nodes-base.executeWorkflow', {
+				createNode('ExecuteWorkflow', 'MNI-nodes-base.executeWorkflow', {
 					source: 'database',
 					workflowId: { value: 'sub-wf-1' },
 				}),
@@ -203,12 +203,12 @@ describe('WaitNodeSubworkflowRule', () => {
 		it('should NOT flag parent when sub-workflow has waiting nodes but no ExecuteWorkflowTrigger', async () => {
 			// A workflow with waiting nodes but NOT a sub-workflow (no trigger)
 			const regularWorkflow = createWorkflow('regular-wf', 'Regular Workflow', [
-				createNode('ManualTrigger', 'n8n-nodes-base.manualTrigger'),
-				createNode('Wait', 'n8n-nodes-base.wait'),
+				createNode('ManualTrigger', 'MNI-nodes-base.manualTrigger'),
+				createNode('Wait', 'MNI-nodes-base.wait'),
 			]);
 
 			const parentWorkflow = createWorkflow('parent-wf-1', 'Parent Workflow', [
-				createNode('ExecuteWorkflow', 'n8n-nodes-base.executeWorkflow', {
+				createNode('ExecuteWorkflow', 'MNI-nodes-base.executeWorkflow', {
 					source: 'database',
 					workflowId: { value: 'regular-wf' },
 				}),
@@ -223,12 +223,12 @@ describe('WaitNodeSubworkflowRule', () => {
 
 		it('should handle workflowId as string', async () => {
 			const subWorkflow = createWorkflow('sub-wf-1', 'Sub Workflow', [
-				createNode('ExecuteWorkflowTrigger', 'n8n-nodes-base.executeWorkflowTrigger'),
-				createNode('Wait', 'n8n-nodes-base.wait'),
+				createNode('ExecuteWorkflowTrigger', 'MNI-nodes-base.executeWorkflowTrigger'),
+				createNode('Wait', 'MNI-nodes-base.wait'),
 			]);
 
 			const parentWorkflow = createWorkflow('parent-wf-1', 'Parent Workflow', [
-				createNode('ExecuteWorkflow', 'n8n-nodes-base.executeWorkflow', {
+				createNode('ExecuteWorkflow', 'MNI-nodes-base.executeWorkflow', {
 					source: 'database',
 					workflowId: 'sub-wf-1', // String instead of object
 				}),
@@ -243,7 +243,7 @@ describe('WaitNodeSubworkflowRule', () => {
 
 		it('should flag when workflowId is an expression (dynamic call)', async () => {
 			const parentWorkflow = createWorkflow('parent-wf-1', 'Parent Workflow', [
-				createNode('ExecuteWorkflow', 'n8n-nodes-base.executeWorkflow', {
+				createNode('ExecuteWorkflow', 'MNI-nodes-base.executeWorkflow', {
 					source: 'database',
 					workflowId: '={{ $json.workflowId }}', // Expression - can't evaluate statically
 				}),
@@ -261,7 +261,7 @@ describe('WaitNodeSubworkflowRule', () => {
 
 		it('should flag when source is not database (dynamic call)', async () => {
 			const parentWorkflow = createWorkflow('parent-wf-1', 'Parent Workflow', [
-				createNode('ExecuteWorkflow', 'n8n-nodes-base.executeWorkflow', {
+				createNode('ExecuteWorkflow', 'MNI-nodes-base.executeWorkflow', {
 					source: 'parameter', // JSON parameter source
 					workflowJson: '{}',
 				}),
@@ -278,12 +278,12 @@ describe('WaitNodeSubworkflowRule', () => {
 
 		it('should flag parent when sub-workflow has Form node', async () => {
 			const subWorkflow = createWorkflow('sub-wf-1', 'Sub Workflow', [
-				createNode('ExecuteWorkflowTrigger', 'n8n-nodes-base.executeWorkflowTrigger'),
-				createNode('Form', 'n8n-nodes-base.form'),
+				createNode('ExecuteWorkflowTrigger', 'MNI-nodes-base.executeWorkflowTrigger'),
+				createNode('Form', 'MNI-nodes-base.form'),
 			]);
 
 			const parentWorkflow = createWorkflow('parent-wf-1', 'Parent Workflow', [
-				createNode('ExecuteWorkflow', 'n8n-nodes-base.executeWorkflow', {
+				createNode('ExecuteWorkflow', 'MNI-nodes-base.executeWorkflow', {
 					source: 'database',
 					workflowId: { value: 'sub-wf-1' },
 				}),
@@ -298,12 +298,12 @@ describe('WaitNodeSubworkflowRule', () => {
 
 		it('should flag parent when sub-workflow has HITL node with sendAndWait operation', async () => {
 			const subWorkflow = createWorkflow('sub-wf-1', 'Sub Workflow', [
-				createNode('ExecuteWorkflowTrigger', 'n8n-nodes-base.executeWorkflowTrigger'),
-				createNode('Slack', 'n8n-nodes-base.slack', { operation: 'sendAndWait' }),
+				createNode('ExecuteWorkflowTrigger', 'MNI-nodes-base.executeWorkflowTrigger'),
+				createNode('Slack', 'MNI-nodes-base.slack', { operation: 'sendAndWait' }),
 			]);
 
 			const parentWorkflow = createWorkflow('parent-wf-1', 'Parent Workflow', [
-				createNode('ExecuteWorkflow', 'n8n-nodes-base.executeWorkflow', {
+				createNode('ExecuteWorkflow', 'MNI-nodes-base.executeWorkflow', {
 					source: 'database',
 					workflowId: { value: 'sub-wf-1' },
 				}),
@@ -318,12 +318,12 @@ describe('WaitNodeSubworkflowRule', () => {
 
 		it('should NOT flag when HITL node does not use waiting operation', async () => {
 			const subWorkflow = createWorkflow('sub-wf-1', 'Sub Workflow', [
-				createNode('ExecuteWorkflowTrigger', 'n8n-nodes-base.executeWorkflowTrigger'),
-				createNode('Slack', 'n8n-nodes-base.slack', { operation: 'sendMessage' }), // Not sendAndWait
+				createNode('ExecuteWorkflowTrigger', 'MNI-nodes-base.executeWorkflowTrigger'),
+				createNode('Slack', 'MNI-nodes-base.slack', { operation: 'sendMessage' }), // Not sendAndWait
 			]);
 
 			const parentWorkflow = createWorkflow('parent-wf-1', 'Parent Workflow', [
-				createNode('ExecuteWorkflow', 'n8n-nodes-base.executeWorkflow', {
+				createNode('ExecuteWorkflow', 'MNI-nodes-base.executeWorkflow', {
 					source: 'database',
 					workflowId: { value: 'sub-wf-1' },
 				}),
@@ -338,21 +338,21 @@ describe('WaitNodeSubworkflowRule', () => {
 
 		it('should flag parent calling multiple affected sub-workflows', async () => {
 			const subWorkflow1 = createWorkflow('sub-wf-1', 'Sub Workflow 1', [
-				createNode('ExecuteWorkflowTrigger', 'n8n-nodes-base.executeWorkflowTrigger'),
-				createNode('Wait', 'n8n-nodes-base.wait'),
+				createNode('ExecuteWorkflowTrigger', 'MNI-nodes-base.executeWorkflowTrigger'),
+				createNode('Wait', 'MNI-nodes-base.wait'),
 			]);
 
 			const subWorkflow2 = createWorkflow('sub-wf-2', 'Sub Workflow 2', [
-				createNode('ExecuteWorkflowTrigger', 'n8n-nodes-base.executeWorkflowTrigger'),
-				createNode('Form', 'n8n-nodes-base.form'),
+				createNode('ExecuteWorkflowTrigger', 'MNI-nodes-base.executeWorkflowTrigger'),
+				createNode('Form', 'MNI-nodes-base.form'),
 			]);
 
 			const parentWorkflow = createWorkflow('parent-wf-1', 'Parent Workflow', [
-				createNode('ExecuteWorkflow1', 'n8n-nodes-base.executeWorkflow', {
+				createNode('ExecuteWorkflow1', 'MNI-nodes-base.executeWorkflow', {
 					source: 'database',
 					workflowId: { value: 'sub-wf-1' },
 				}),
-				createNode('ExecuteWorkflow2', 'n8n-nodes-base.executeWorkflow', {
+				createNode('ExecuteWorkflow2', 'MNI-nodes-base.executeWorkflow', {
 					source: 'database',
 					workflowId: { value: 'sub-wf-2' },
 				}),
@@ -370,19 +370,19 @@ describe('WaitNodeSubworkflowRule', () => {
 
 		it('should flag multiple parents calling the same affected sub-workflow', async () => {
 			const subWorkflow = createWorkflow('sub-wf-1', 'Sub Workflow', [
-				createNode('ExecuteWorkflowTrigger', 'n8n-nodes-base.executeWorkflowTrigger'),
-				createNode('Wait', 'n8n-nodes-base.wait'),
+				createNode('ExecuteWorkflowTrigger', 'MNI-nodes-base.executeWorkflowTrigger'),
+				createNode('Wait', 'MNI-nodes-base.wait'),
 			]);
 
 			const parentWorkflow1 = createWorkflow('parent-wf-1', 'Parent Workflow 1', [
-				createNode('ExecuteWorkflow', 'n8n-nodes-base.executeWorkflow', {
+				createNode('ExecuteWorkflow', 'MNI-nodes-base.executeWorkflow', {
 					source: 'database',
 					workflowId: { value: 'sub-wf-1' },
 				}),
 			]);
 
 			const parentWorkflow2 = createWorkflow('parent-wf-2', 'Parent Workflow 2', [
-				createNode('ExecuteWorkflow', 'n8n-nodes-base.executeWorkflow', {
+				createNode('ExecuteWorkflow', 'MNI-nodes-base.executeWorkflow', {
 					source: 'database',
 					workflowId: { value: 'sub-wf-1' },
 				}),
@@ -401,12 +401,12 @@ describe('WaitNodeSubworkflowRule', () => {
 
 		it('should reset state correctly', async () => {
 			const subWorkflow = createWorkflow('sub-wf-1', 'Sub Workflow', [
-				createNode('ExecuteWorkflowTrigger', 'n8n-nodes-base.executeWorkflowTrigger'),
-				createNode('Wait', 'n8n-nodes-base.wait'),
+				createNode('ExecuteWorkflowTrigger', 'MNI-nodes-base.executeWorkflowTrigger'),
+				createNode('Wait', 'MNI-nodes-base.wait'),
 			]);
 
 			const parentWorkflow = createWorkflow('parent-wf-1', 'Parent Workflow', [
-				createNode('ExecuteWorkflow', 'n8n-nodes-base.executeWorkflow', {
+				createNode('ExecuteWorkflow', 'MNI-nodes-base.executeWorkflow', {
 					source: 'database',
 					workflowId: { value: 'sub-wf-1' },
 				}),
@@ -429,7 +429,7 @@ describe('WaitNodeSubworkflowRule', () => {
 
 	describe('extractCalledWorkflowId()', () => {
 		it('should extract the called workflow ID', () => {
-			const node = createNode('ExecuteWorkflow', 'n8n-nodes-base.executeWorkflow', {
+			const node = createNode('ExecuteWorkflow', 'MNI-nodes-base.executeWorkflow', {
 				source: 'database',
 				workflowId: { value: 'sub-wf-1' },
 			});
@@ -439,7 +439,7 @@ describe('WaitNodeSubworkflowRule', () => {
 		});
 
 		it('should return the caller workflow ID if it is an expression', () => {
-			const node = createNode('ExecuteWorkflow', 'n8n-nodes-base.executeWorkflow', {
+			const node = createNode('ExecuteWorkflow', 'MNI-nodes-base.executeWorkflow', {
 				workflowId: '={{ $workflow.id }}',
 				mode: 'each',
 				options: {},

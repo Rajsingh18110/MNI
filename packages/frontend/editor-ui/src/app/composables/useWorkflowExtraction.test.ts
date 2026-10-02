@@ -1,9 +1,9 @@
 import { setActivePinia } from 'pinia';
 import { createTestingPinia } from '@pinia/testing';
-import type { IConnections, INode, IWorkflowGroup } from 'n8n-workflow';
-import { NodeConnectionTypes } from 'n8n-workflow';
+import type { IConnections, INode, IWorkflowGroup } from 'MNI-workflow';
+import { NodeConnectionTypes } from 'MNI-workflow';
 import type { INodeUi } from '@/Interface';
-import type { WorkflowDataCreate } from '@n8n/rest-api-client/api/workflows';
+import type { WorkflowDataCreate } from '@MNI/rest-api-client/api/workflows';
 
 const {
 	mockWorkflowsStore,
@@ -39,7 +39,7 @@ const {
 	mockNodeTypesStore: {
 		getNodeType: vi.fn().mockReturnValue({
 			displayName: 'Set',
-			name: 'n8n-nodes-base.set',
+			name: 'MNI-nodes-base.set',
 			group: ['transform'],
 			version: 1,
 			description: '',
@@ -97,14 +97,14 @@ vi.mock('@/app/stores/history.store', () => ({
 	useHistoryStore: vi.fn().mockReturnValue(mockHistoryStore),
 }));
 
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: vi.fn().mockReturnValue({
 		showMessage: vi.fn(),
 		showError: vi.fn(),
 	}),
 }));
 
-vi.mock('@n8n/composables/useTelemetry', () => ({
+vi.mock('@MNI/composables/useTelemetry', () => ({
 	useTelemetry: vi.fn().mockReturnValue(mockTelemetry),
 }));
 
@@ -112,7 +112,7 @@ vi.mock('@/features/workflows/canvas/composables/useCanvasNodeGroupTelemetry', (
 	useCanvasNodeGroupTelemetry: vi.fn().mockReturnValue(mockGroupTelemetry),
 }));
 
-vi.mock('@n8n/i18n', () => ({
+vi.mock('@MNI/i18n', () => ({
 	useI18n: vi.fn().mockReturnValue({
 		baseText: vi.fn().mockImplementation((key: string) => key),
 	}),
@@ -126,13 +126,13 @@ vi.mock('vue-router', () => ({
 
 import { useWorkflowExtraction } from '@/app/composables/useWorkflowExtraction';
 import { RemoveNodeGroupCommand, UpdateNodeGroupCommand } from '@/app/models/history';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 
 function makeNode(name: string, position: [number, number] = [0, 0]): INodeUi {
 	return {
 		id: `id-${name}`,
 		name,
-		type: 'n8n-nodes-base.set',
+		type: 'MNI-nodes-base.set',
 		typeVersion: 1,
 		position,
 		parameters: {},

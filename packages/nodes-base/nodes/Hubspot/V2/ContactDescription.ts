@@ -1,4 +1,4 @@
-import type { INodeProperties } from 'n8n-workflow';
+import type { INodeProperties } from 'MNI-workflow';
 
 export const contactOperations: INodeProperties[] = [
 	{
@@ -1945,7 +1945,7 @@ export const contactFields: INodeProperties[] = [
 				description: "A contact's mobile phone number",
 			},
 			{
-				// eslint-disable-next-line n8n-nodes-base/node-param-display-name-wrong-for-dynamic-options
+				// eslint-disable-next-line MNI-nodes-base/node-param-display-name-wrong-for-dynamic-options
 				displayName: 'Number Of Employees',
 				name: 'numberOfEmployees',
 				type: 'options',
@@ -4244,7 +4244,7 @@ export const contactFields: INodeProperties[] = [
 				name: 'resolveData',
 				type: 'boolean',
 				default: false,
-				// eslint-disable-next-line n8n-nodes-base/node-param-description-boolean-without-whether
+				// eslint-disable-next-line MNI-nodes-base/node-param-description-boolean-without-whether
 				description:
 					'By default the response only includes the ID. If this option gets activated, it will resolve the data automatically.',
 			},
@@ -4931,7 +4931,7 @@ export const contactFields: INodeProperties[] = [
 				description: 'Perform a text search against all property values for an object type',
 			},
 			{
-				// eslint-disable-next-line n8n-nodes-base/node-param-display-name-wrong-for-dynamic-options
+				// eslint-disable-next-line MNI-nodes-base/node-param-display-name-wrong-for-dynamic-options
 				displayName: 'Sort By',
 				name: 'sortBy',
 				type: 'options',

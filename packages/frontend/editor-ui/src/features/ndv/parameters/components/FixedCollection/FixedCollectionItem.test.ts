@@ -1,12 +1,12 @@
 import { createComponentRenderer } from '@/__tests__/render';
 import { SETTINGS_STORE_DEFAULT_STATE } from '@/__tests__/utils';
 import FixedCollectionItem, { type Props } from './FixedCollectionItem.vue';
-import { STORES } from '@n8n/stores';
+import { STORES } from '@MNI/stores';
 import { createTestingPinia } from '@pinia/testing';
 import userEvent from '@testing-library/user-event';
 import { setActivePinia } from 'pinia';
 import { beforeEach } from 'vitest';
-import type { INodePropertyCollection } from 'n8n-workflow';
+import type { INodePropertyCollection } from 'MNI-workflow';
 
 // vi.hoisted runs before vi.mock, making these variables available to mock factories
 const { mockState } = vi.hoisted(() => ({

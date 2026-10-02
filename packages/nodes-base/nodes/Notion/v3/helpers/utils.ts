@@ -3,8 +3,8 @@ import type {
 	IExecuteFunctions,
 	INodeExecutionData,
 	INodeParameterResourceLocator,
-} from 'n8n-workflow';
-import { jsonParse, NodeOperationError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { jsonParse, NodeOperationError } from 'MNI-workflow';
 
 import { blockUrlExtractionRegexp, databasePageUrlExtractionRegexp } from '../../shared/constants';
 import {

@@ -8,16 +8,16 @@ import { injectNDVStore } from '@/features/ndv/shared/ndv.store';
 import { injectWorkflowExecutionStateStore } from '@/app/stores/workflowExecutionState.store';
 import { createExpressionTelemetryPayload } from '@/app/utils/telemetryUtils';
 
-import { useTelemetry } from '@n8n/composables/useTelemetry';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
 import type { Segment } from '@/app/types/expressions';
-import type { IDataObject, INodeProperties } from 'n8n-workflow';
-import { NodeConnectionTypes } from 'n8n-workflow';
+import type { IDataObject, INodeProperties } from 'MNI-workflow';
+import { NodeConnectionTypes } from 'MNI-workflow';
 import { outputTheme } from './ExpressionEditorModal/theme';
 import ExpressionOutput from '@/features/shared/editors/components/InlineExpressionEditor/ExpressionOutput.vue';
 import VirtualSchema from '@/features/ndv/runData/components/VirtualSchema.vue';
 import OutputItemSelect from '@/features/shared/editors/components/InlineExpressionEditor/OutputItemSelect.vue';
-import { useI18n } from '@n8n/i18n';
-import { useDebounce } from '@n8n/composables/useDebounce';
+import { useI18n } from '@MNI/i18n';
+import { useDebounce } from '@MNI/composables/useDebounce';
 import DraggableTarget from '@/app/components/DraggableTarget.vue';
 import { dropInExpressionEditor } from '@/features/shared/editors/plugins/codemirror/dragAndDrop';
 
@@ -32,8 +32,8 @@ import {
 	N8nResizeWrapper,
 	N8nText,
 	type ResizeData,
-} from '@n8n/design-system';
-import { useStyles } from '@n8n/composables/useStyles';
+} from '@MNI/design-system';
+import { useStyles } from '@MNI/composables/useStyles';
 import { injectWorkflowDocumentStore } from '@/app/stores/workflowDocument.store';
 const DEFAULT_LEFT_SIDEBAR_WIDTH = 360;
 
@@ -215,7 +215,7 @@ const onResizeThrottle = useThrottleFn(onResize, 10);
 							{{ i18n.baseText('expressionEdit.expression') }}
 						</N8nText>
 						<N8nText
-							v-n8n-html="i18n.baseText('expressionTip.javascript')"
+							v-MNI-html="i18n.baseText('expressionTip.javascript')"
 							:class="$style.tip"
 							size="small"
 						/>

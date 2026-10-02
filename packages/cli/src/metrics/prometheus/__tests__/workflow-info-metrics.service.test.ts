@@ -1,7 +1,7 @@
-import { mockInstance } from '@n8n/backend-test-utils';
-import { PrometheusMetricsConfig } from '@n8n/config';
-import type { WorkflowRepository } from '@n8n/db';
-import type { InstanceSettings } from 'n8n-core';
+import { mockInstance } from '@MNI/backend-test-utils';
+import { PrometheusMetricsConfig } from '@MNI/config';
+import type { WorkflowRepository } from '@MNI/db';
+import type { InstanceSettings } from 'MNI-core';
 import promClient from 'prom-client';
 import { mock } from 'vitest-mock-extended';
 
@@ -13,7 +13,7 @@ vi.mock('prom-client');
 
 describe('PrometheusWorkflowInfoMetricsService', () => {
 	const config = mockInstance(PrometheusMetricsConfig, {
-		prefix: 'n8n_',
+		prefix: 'MNI_',
 		includeWorkflowInfoMetrics: true,
 		workflowInfoMetricInterval: 60,
 	});
@@ -24,7 +24,7 @@ describe('PrometheusWorkflowInfoMetricsService', () => {
 
 	beforeEach(() => {
 		Object.assign(config, {
-			prefix: 'n8n_',
+			prefix: 'MNI_',
 			includeWorkflowInfoMetrics: true,
 			workflowInfoMetricInterval: 60,
 		});
@@ -59,7 +59,7 @@ describe('PrometheusWorkflowInfoMetricsService', () => {
 			service.init();
 
 			expect(promClient.Gauge).toHaveBeenCalledWith({
-				name: 'n8n_workflow_info',
+				name: 'MNI_workflow_info',
 				help: 'Map of workflow ID to name. Reported by the leader main only.',
 				labelNames: ['workflow_id', 'workflow_name'],
 				collect: expect.any(Function) as unknown,
@@ -70,7 +70,7 @@ describe('PrometheusWorkflowInfoMetricsService', () => {
 			service.init();
 
 			expect(promClient.Gauge).toHaveBeenCalledWith({
-				name: 'n8n_active_workflow_info',
+				name: 'MNI_active_workflow_info',
 				help: 'Map of active workflow ID to name. Reported by the leader main only.',
 				labelNames: ['workflow_id', 'workflow_name'],
 				collect: expect.any(Function) as unknown,

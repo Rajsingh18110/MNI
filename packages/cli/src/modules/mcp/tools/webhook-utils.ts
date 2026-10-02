@@ -1,4 +1,4 @@
-import type { User } from '@n8n/db';
+import type { User } from '@MNI/db';
 import {
 	WEBHOOK_NODE_TYPE,
 	SCHEDULE_TRIGGER_NODE_TYPE,
@@ -8,7 +8,7 @@ import {
 	type INode,
 	type INodeType,
 	type INodeTypes,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import type { CredentialsService } from '@/credentials/credentials.service';
 

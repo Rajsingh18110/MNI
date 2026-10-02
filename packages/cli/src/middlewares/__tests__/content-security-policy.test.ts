@@ -179,7 +179,7 @@ describe('createContentSecurityPolicyMiddleware', () => {
 	describe('routes registered before the middleware', () => {
 		const app = express();
 
-		// Stands in for a form or webhook page served with `N8N_INSECURE_DISABLE_*_SANDBOX`
+		// Stands in for a form or webhook page served with `MNI_INSECURE_DISABLE_*_SANDBOX`
 		// on: HTML that sets no policy at all.
 		app.get('/webhook/unsandboxed', (_req, res) => {
 			res.type('html').send('<p>author HTML</p>');

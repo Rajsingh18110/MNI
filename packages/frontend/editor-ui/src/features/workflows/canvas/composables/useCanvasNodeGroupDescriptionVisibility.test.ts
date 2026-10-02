@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
-import type { IWorkflowGroup } from 'n8n-workflow';
+import type { IWorkflowGroup } from 'MNI-workflow';
 
 import {
 	useCanvasNodeGroupDescriptionVisibility,

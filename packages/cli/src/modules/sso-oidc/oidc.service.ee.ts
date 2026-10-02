@@ -1,7 +1,7 @@
-import { OidcConfigDto } from '@n8n/api-types';
-import { Logger } from '@n8n/backend-common';
-import { OutboundHttp } from '@n8n/backend-network';
-import { GlobalConfig } from '@n8n/config';
+import { OidcConfigDto } from '@MNI/api-types';
+import { Logger } from '@MNI/backend-common';
+import { OutboundHttp } from '@MNI/backend-network';
+import { GlobalConfig } from '@MNI/config';
 import {
 	AuthIdentity,
 	AuthIdentityRepository,
@@ -10,12 +10,12 @@ import {
 	SettingsRepository,
 	type User,
 	UserRepository,
-} from '@n8n/db';
-import { OnPubSubEvent } from '@n8n/decorators';
-import { Container, Service } from '@n8n/di';
+} from '@MNI/db';
+import { OnPubSubEvent } from '@MNI/decorators';
+import { Container, Service } from '@MNI/di';
 import { randomUUID } from 'crypto';
-import { Cipher, InstanceSettings } from 'n8n-core';
-import { jsonParse, UserError } from 'n8n-workflow';
+import { Cipher, InstanceSettings } from 'MNI-core';
+import { jsonParse, UserError } from 'MNI-workflow';
 import type * as openidClientTypes from 'openid-client';
 import { inspect } from 'util';
 
@@ -24,7 +24,7 @@ import { ForbiddenError } from '@/errors/response-errors/forbidden.error';
 import { buildOidcClaimsContext } from '@/modules/provisioning.ee/claims-context.builder';
 import { ProvisioningService } from '@/modules/provisioning.ee/provisioning.service.ee';
 import { JwtService } from '@/services/jwt.service';
-import { UrlService } from '@n8n/backend-services';
+import { UrlService } from '@MNI/backend-services';
 import {
 	assertAuthenticationMethodCanBeEnabled,
 	getCurrentAuthenticationMethod,
@@ -136,7 +136,7 @@ export class OidcService {
 	 * before the login, so the callback can send them there instead of `/`.
 	 */
 	generateState(testMode = false, redirectUrl?: string) {
-		const state = `n8n_state:${randomUUID()}`;
+		const state = `MNI_state:${randomUUID()}`;
 		const payload: Record<string, unknown> = { state };
 		if (testMode) {
 			payload.testMode = true;
@@ -171,7 +171,7 @@ export class OidcService {
 
 		const splitState = state.split(':');
 
-		if (splitState.length !== 2 || splitState[0] !== 'n8n_state') {
+		if (splitState.length !== 2 || splitState[0] !== 'MNI_state') {
 			this.logger.error('Provided state is missing the well-known prefix');
 			throw new BadRequestError('Invalid state');
 		}
@@ -192,7 +192,7 @@ export class OidcService {
 	}
 
 	generateNonce() {
-		const nonce = `n8n_nonce:${randomUUID()}`;
+		const nonce = `MNI_nonce:${randomUUID()}`;
 		return {
 			signed: this.jwtService.sign({ nonce }, { expiresIn: '15m' }),
 			plaintext: nonce,
@@ -216,7 +216,7 @@ export class OidcService {
 
 		const splitNonce = nonce.split(':');
 
-		if (splitNonce.length !== 2 || splitNonce[0] !== 'n8n_nonce') {
+		if (splitNonce.length !== 2 || splitNonce[0] !== 'MNI_nonce') {
 			this.logger.error('Provided nonce is missing the well-known prefix');
 			throw new BadRequestError('Invalid nonce');
 		}
@@ -443,7 +443,7 @@ export class OidcService {
 	 * `end_session_endpoint`, in which case sign-out is local to MNI only.
 	 */
 	async generateEndSessionUrl(idToken: string): Promise<URL | undefined> {
-		// RP-Initiated Logout is opt-in: when disabled, sign-out stays local to n8n.
+		// RP-Initiated Logout is opt-in: when disabled, sign-out stays local to MNI.
 		if (!this.oidcConfig.rpInitiatedLogoutEnabled) {
 			return undefined;
 		}

@@ -7,7 +7,7 @@
 			"parameters": {},
 			"id": "7f7d2fbf-e075-4bd5-a211-cd52bd27c753",
 			"name": "When clicking \"Execute Workflow\"",
-			"type": "n8n-nodes-base.manualTrigger",
+			"type": "MNI-nodes-base.manualTrigger",
 			"typeVersion": 1,
 			"position": [-528, 368]
 		},
@@ -17,7 +17,7 @@
 			},
 			"id": "9eca4348-358f-4c8c-a33c-eaf2834c018b",
 			"name": "Code",
-			"type": "n8n-nodes-base.code",
+			"type": "MNI-nodes-base.code",
 			"typeVersion": 1,
 			"position": [-256, 368]
 		},
@@ -35,7 +35,7 @@
 			},
 			"id": "37efad47-7f66-4617-9fc1-c7f40fe2c860",
 			"name": "ByIdAsc",
-			"type": "n8n-nodes-base.itemLists",
+			"type": "MNI-nodes-base.itemLists",
 			"typeVersion": 1,
 			"position": [0, 176]
 		},
@@ -58,7 +58,7 @@
 			},
 			"id": "f6e5eeba-f9d1-43be-811d-5b3eabb521d5",
 			"name": "ByCharDescIdDesc",
-			"type": "n8n-nodes-base.itemLists",
+			"type": "MNI-nodes-base.itemLists",
 			"typeVersion": 1,
 			"position": [0, 368]
 		},
@@ -70,7 +70,7 @@
 			},
 			"id": "bc23786c-4413-4ecc-b4c2-dc9d9a238af6",
 			"name": "ByCode",
-			"type": "n8n-nodes-base.itemLists",
+			"type": "MNI-nodes-base.itemLists",
 			"typeVersion": 1,
 			"position": [0, 560]
 		},
@@ -78,7 +78,7 @@
 			"parameters": {
 				"numberInputs": 3
 			},
-			"type": "n8n-nodes-base.merge",
+			"type": "MNI-nodes-base.merge",
 			"typeVersion": 3.2,
 			"position": [320, 352],
 			"id": "46dc00e6-5e35-42cc-bc0f-694b0a3e9b63",

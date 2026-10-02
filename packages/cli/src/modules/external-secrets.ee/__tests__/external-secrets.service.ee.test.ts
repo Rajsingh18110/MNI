@@ -1,4 +1,4 @@
-import type { IDataObject } from 'n8n-workflow';
+import type { IDataObject } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import type { ExternalSecretsManager } from '../external-secrets-manager.ee';
@@ -20,7 +20,7 @@ describe('ExternalSecretsService', () => {
 	describe('redact', () => {
 		it('should delegate to RedactionService with provider properties', () => {
 			const data: IDataObject = { secret: 'password' };
-			const redactedData: IDataObject = { secret: '__n8n_BLANK_VALUE_' };
+			const redactedData: IDataObject = { secret: '__MNI_BLANK_VALUE_' };
 			provider.properties = [
 				{
 					name: 'secret',
@@ -42,7 +42,7 @@ describe('ExternalSecretsService', () => {
 
 	describe('unredact', () => {
 		it('should delegate to RedactionService', () => {
-			const redactedData: IDataObject = { secret: '__n8n_BLANK_VALUE_' };
+			const redactedData: IDataObject = { secret: '__MNI_BLANK_VALUE_' };
 			const savedData: IDataObject = { secret: 'password' };
 			const unredactedData: IDataObject = { secret: 'password' };
 

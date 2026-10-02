@@ -1,9 +1,9 @@
-import { EngineConfig } from '@n8n/config';
-import { Command } from '@n8n/decorators';
-import { Container } from '@n8n/di';
-import type { ExecutionResponseSender } from '@n8n/engine';
-import { ErrorReporter } from 'n8n-core';
-import { Expression, UserError } from 'n8n-workflow';
+import { EngineConfig } from '@MNI/config';
+import { Command } from '@MNI/decorators';
+import { Container } from '@MNI/di';
+import type { ExecutionResponseSender } from '@MNI/engine';
+import { ErrorReporter } from 'MNI-core';
+import { Expression, UserError } from 'MNI-workflow';
 
 import { LoadNodesAndCredentials } from '@/load-nodes-and-credentials';
 import type { EngineV2Runtime } from '@/modules/engine-v2/engine-v2.runtime';
@@ -13,11 +13,11 @@ import { BaseCommand } from './base-command';
 @Command({
 	name: 'engine',
 	description:
-		'Starts the engine v2 data plane. Needs a control plane (`MNI start` with N8N_ENGINE_MODE=remote) to report to and to resolve credentials from.',
+		'Starts the engine v2 data plane. Needs a control plane (`MNI start` with MNI_ENGINE_MODE=remote) to report to and to resolve credentials from.',
 })
 export class Engine extends BaseCommand {
 	// The data plane has no control plane database. Its own database is the
-	// engine's, opened by the runtime from N8N_ENGINE_DATABASE_URL.
+	// engine's, opened by the runtime from MNI_ENGINE_DATABASE_URL.
 	override needsDb = false;
 
 	// No task runner yet, so the Code node fails with a clear error instead of
@@ -89,13 +89,13 @@ export class Engine extends BaseCommand {
 
 /**
  * A `DB_*` variable means the process was given the control plane database,
- * and `N8N_ENCRYPTION_KEY` means it could read the credentials in it. Refuse
+ * and `MNI_ENCRYPTION_KEY` means it could read the credentials in it. Refuse
  * both here, at boot, so the isolation is a check and not a convention.
  */
 function assertControlPlaneIsolated(env: NodeJS.ProcessEnv): void {
 	const leaked = Object.keys(env).filter(
 		(key) =>
-			key.startsWith('DB_') || key === 'N8N_ENCRYPTION_KEY' || key === 'N8N_ENCRYPTION_KEY_FILE',
+			key.startsWith('DB_') || key === 'MNI_ENCRYPTION_KEY' || key === 'MNI_ENCRYPTION_KEY_FILE',
 	);
 
 	if (leaked.length > 0) {
@@ -108,13 +108,13 @@ function assertControlPlaneIsolated(env: NodeJS.ProcessEnv): void {
 function assertRemoteControlPlane(config: EngineConfig): void {
 	if (!config.authSecret) {
 		throw new UserError(
-			'The engine process needs N8N_ENGINE_AUTH_SECRET. The control plane runs elsewhere, so nothing here can generate the shared secret.',
+			'The engine process needs MNI_ENGINE_AUTH_SECRET. The control plane runs elsewhere, so nothing here can generate the shared secret.',
 		);
 	}
 
 	if (!config.controlPlaneBaseUrl) {
 		throw new UserError(
-			'The engine process needs N8N_ENGINE_CONTROL_PLANE_BASE_URL. The default points at this process, which does not run the control plane.',
+			'The engine process needs MNI_ENGINE_CONTROL_PLANE_BASE_URL. The default points at this process, which does not run the control plane.',
 		);
 	}
 }

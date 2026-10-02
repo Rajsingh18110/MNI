@@ -7,8 +7,8 @@ import type {
 	INodeTypeDescription,
 	IWebhookResponseData,
 	JsonObject,
-} from 'n8n-workflow';
-import { NodeConnectionTypes, NodeApiError, NodeOperationError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeConnectionTypes, NodeApiError, NodeOperationError } from 'MNI-workflow';
 
 import { githubApiRequest } from './GenericFunctions';
 import { verifySignature } from './GithubTriggerHelpers';
@@ -127,7 +127,7 @@ export class GithubTrigger implements INodeType {
 						displayName: 'Link',
 						name: 'url',
 						type: 'string',
-						placeholder: 'e.g. https://github.com/n8n-io',
+						placeholder: 'e.g. https://github.com/MNI-io',
 						extractValue: {
 							type: 'regex',
 							regex: 'https:\\/\\/(?:[^/]+)\\/([-_0-9a-zA-Z]+)',
@@ -146,7 +146,7 @@ export class GithubTrigger implements INodeType {
 						displayName: 'By Name',
 						name: 'name',
 						type: 'string',
-						placeholder: 'e.g. n8n-io',
+						placeholder: 'e.g. MNI-io',
 						validation: [
 							{
 								type: 'regex',
@@ -181,7 +181,7 @@ export class GithubTrigger implements INodeType {
 						displayName: 'Link',
 						name: 'url',
 						type: 'string',
-						placeholder: 'e.g. https://github.com/n8n-io/n8n',
+						placeholder: 'e.g. https://github.com/MNI-io/MNI',
 						extractValue: {
 							type: 'regex',
 							regex: 'https:\\/\\/(?:[^/]+)\\/(?:[-_0-9a-zA-Z]+)\\/([-_.0-9a-zA-Z]+)',

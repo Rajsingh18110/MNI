@@ -1,16 +1,16 @@
 <script setup lang="ts">
 import { computed, onMounted, ref, watch } from 'vue';
-import { useI18n } from '@n8n/i18n';
-import { N8nButton, N8nIcon, N8nText } from '@n8n/design-system';
+import { useI18n } from '@MNI/i18n';
+import { N8nButton, N8nIcon, N8nText } from '@MNI/design-system';
 
-import { useTelemetry } from '@n8n/composables/useTelemetry';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
 import { useEvaluationsWizardSidepanelExperiment } from '@/experiments/evaluationsWizardSidepanel/useEvaluationsWizardSidepanelExperiment';
 import { useEvaluationsWizardSidepanelStore } from '../../wizardSidepanel.store';
 import { useAiRootNodes } from '../../composables/useAiRootNodes';
 import { listEvaluationConfigs } from '../../evaluation.api';
 import { injectWorkflowDocumentStore } from '@/app/stores/workflowDocument.store';
-import { useRootStore } from '@n8n/stores/useRootStore';
-import { useStorage } from '@n8n/composables/useStorage';
+import { useRootStore } from '@MNI/stores/useRootStore';
+import { useStorage } from '@MNI/composables/useStorage';
 import { LOCAL_STORAGE_EVALUATIONS_CANVAS_INFO_CARD_DISMISSED } from '@/app/constants';
 import { CANNED_METRICS, LLM_JUDGE_METRIC_KEYS } from '../../evaluation.constants';
 import CheckCard from '../WizardSidepanel/CheckCard.vue';

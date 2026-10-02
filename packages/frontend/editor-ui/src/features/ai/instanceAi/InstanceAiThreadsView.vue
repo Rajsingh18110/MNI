@@ -9,11 +9,11 @@ import {
 	N8nIconButton,
 	N8nInput,
 	N8nText,
-} from '@n8n/design-system';
-import type { ActionDropdownItem } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
-import { useToast } from '@n8n/composables/useToast';
-import type { InstanceAiThreadSummary } from '@n8n/api-types';
+} from '@MNI/design-system';
+import type { ActionDropdownItem } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
+import { useToast } from '@MNI/composables/useToast';
+import type { InstanceAiThreadSummary } from '@MNI/api-types';
 import PageViewLayout from '@/app/components/layouts/PageViewLayout.vue';
 import { useDocumentTitle } from '@/app/composables/useDocumentTitle';
 import { formatTimeAgo } from '@/app/utils/formatters/dateFormatter';

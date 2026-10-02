@@ -1,5 +1,5 @@
 import { computed, onScopeDispose, provide, toValue, watch, type MaybeRefOrGetter } from 'vue';
-import { deepCopy } from 'n8n-workflow';
+import { deepCopy } from 'MNI-workflow';
 import type { INodeUi } from '@/Interface';
 import { ExpressionLocalResolveContextSymbol, WorkflowDocumentStoreKey } from '@/app/constants';
 import type { ExpressionLocalResolveContext } from '@/app/types/expressions';

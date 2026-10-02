@@ -1,4 +1,4 @@
-import type { IDataObject, IExecuteFunctions, IRequestOptions } from 'n8n-workflow';
+import type { IDataObject, IExecuteFunctions, IRequestOptions } from 'MNI-workflow';
 
 import { pagerDutyApiRequestAllItems } from '../GenericFunctions';
 

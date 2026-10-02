@@ -2,11 +2,11 @@
 
 Repeatable end-to-end tests for the encryption-key rollout: an API-only
 Playwright suite (project `encryption:infrastructure`, no browser) on the
-`n8n-containers` Testcontainers stack. Both modes run on both supported
+`MNI-containers` Testcontainers stack. Both modes run on both supported
 databases: sqlite and postgres.
 
 ```bash
-pnpm build:docker                # builds n8nio/n8n:local — the image under test
+pnpm build:docker                # builds n8nio/MNI:local — the image under test
 pnpm test:encryption:upgrade     # full upgrade cycle (old release + the local image)
 pnpm test:encryption:rotation    # standalone rotation test (the local image only)
 ```

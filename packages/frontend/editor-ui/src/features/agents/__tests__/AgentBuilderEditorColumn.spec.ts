@@ -6,7 +6,7 @@ import { flushPromises, mount } from '@vue/test-utils';
 import type { AgentBuilderMainTab } from '../composables/useAgentBuilderMainTabs';
 import type { AgentResource } from '../types';
 
-vi.mock('@n8n/i18n', () => ({
+vi.mock('@MNI/i18n', () => ({
 	useI18n: () => ({
 		baseText: (key: string) =>
 			({
@@ -24,7 +24,7 @@ vi.mock('vue-router', async (importOriginal) => {
 	return { ...actual, useRoute: () => ({ params: {} }) };
 });
 
-vi.mock('@n8n/design-system', () => ({
+vi.mock('@MNI/design-system', () => ({
 	N8nEmptyState: { template: '<div />', props: ['icon', 'description'] },
 	N8nButton: { template: '<button><slot /><slot name="icon" /></button>' },
 	N8nCard: {

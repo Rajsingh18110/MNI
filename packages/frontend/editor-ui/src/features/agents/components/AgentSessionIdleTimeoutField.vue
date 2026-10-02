@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { N8nInputNumber, N8nSwitch2, N8nText } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+import { N8nInputNumber, N8nSwitch2, N8nText } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 
 const DEFAULT_MINUTES = 60 * 24;
 

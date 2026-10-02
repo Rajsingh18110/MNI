@@ -1,19 +1,19 @@
 <script setup lang="ts">
 import { computed, ref, useTemplateRef, watch } from 'vue';
 import { v4 as uuidv4 } from 'uuid';
-import { useI18n } from '@n8n/i18n';
-import { N8nIconButton, N8nScrollArea, N8nText, N8nTooltip } from '@n8n/design-system';
-import { useClipboard } from '@n8n/composables/useClipboard';
-import { useToast } from '@n8n/composables/useToast';
+import { useI18n } from '@MNI/i18n';
+import { N8nIconButton, N8nScrollArea, N8nText, N8nTooltip } from '@MNI/design-system';
+import { useClipboard } from '@MNI/composables/useClipboard';
+import { useToast } from '@MNI/composables/useToast';
 import type {
 	AgentIconOrEmoji,
 	ChatHubSendMessageRequest,
 	ChatMessageId,
 	ChatModelDto,
 	ChatSessionId,
-} from '@n8n/api-types';
+} from '@MNI/api-types';
 import { CHAT_TRIGGER_NODE_TYPE } from '@/app/constants';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
 import { flattenModel } from '@/features/ai/chatHub/chat.utils';
 import { useChatStore } from '../chat.store';
 import { injectWorkflowDocumentStore } from '@/app/stores/workflowDocument.store';

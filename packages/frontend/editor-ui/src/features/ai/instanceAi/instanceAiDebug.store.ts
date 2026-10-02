@@ -1,8 +1,8 @@
 import { defineStore } from 'pinia';
 import { ref } from 'vue';
-import { useRootStore } from '@n8n/stores/useRootStore';
-import { useToast } from '@n8n/composables/useToast';
-import { useI18n } from '@n8n/i18n';
+import { useRootStore } from '@MNI/stores/useRootStore';
+import { useToast } from '@MNI/composables/useToast';
+import { useI18n } from '@MNI/i18n';
 import {
 	fetchThreads,
 	fetchThreadMessages,
@@ -14,7 +14,7 @@ import type {
 	InstanceAiStoredMessage,
 	InstanceAiRunDebugResponse,
 	InstanceAiRunDebugSummary,
-} from '@n8n/api-types';
+} from '@MNI/api-types';
 
 export const useInstanceAiDebugStore = defineStore('instanceAiDebug', () => {
 	const rootStore = useRootStore();

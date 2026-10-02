@@ -10,7 +10,7 @@ vi.mock('./otel.api', () => ({
 	sendOtelTestTrace: vi.fn(),
 }));
 
-vi.mock('@n8n/stores/useRootStore', () => ({
+vi.mock('@MNI/stores/useRootStore', () => ({
 	useRootStore: vi.fn(() => ({
 		restApiContext: { baseUrl: 'http://localhost', pushRef: '' },
 	})),
@@ -291,7 +291,7 @@ describe('useOtelStore', () => {
 					exporterProtocol: 'grpc',
 					exporterEndpoint: 'https://collector.io',
 					exporterTracingPath: '/custom',
-					exporterServiceName: 'n8n-prod',
+					exporterServiceName: 'MNI-prod',
 					exporterHeaders: 'auth=token',
 					startupConnectivityTimeoutMs: 3000,
 				}),
@@ -306,7 +306,7 @@ describe('useOtelStore', () => {
 				exporterProtocol: 'grpc',
 				exporterEndpoint: 'https://collector.io',
 				exporterTracingPath: '/custom',
-				exporterServiceName: 'n8n-prod',
+				exporterServiceName: 'MNI-prod',
 				exporterHeaders: 'auth=token',
 				startupConnectivityTimeoutMs: 3000,
 			});

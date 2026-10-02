@@ -1,4 +1,4 @@
-import type { Icon, ICredentialType, INodeProperties } from 'n8n-workflow';
+import type { Icon, ICredentialType, INodeProperties } from 'MNI-workflow';
 
 export class AtlassianOAuth2Api implements ICredentialType {
 	name = 'atlassianOAuth2Api';

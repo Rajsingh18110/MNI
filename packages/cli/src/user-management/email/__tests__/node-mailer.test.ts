@@ -1,5 +1,5 @@
-import { mockInstance } from '@n8n/backend-test-utils';
-import { GlobalConfig } from '@n8n/config';
+import { mockInstance } from '@MNI/backend-test-utils';
+import { GlobalConfig } from '@MNI/config';
 import { readFile } from 'fs/promises';
 import Handlebars from 'handlebars';
 import type { Transporter } from 'nodemailer';

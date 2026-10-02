@@ -1,4 +1,4 @@
-import { createEventBus } from '@n8n/utils/event-bus';
+import { createEventBus } from '@MNI/utils/event-bus';
 
 export interface AgentUpdatedEvent {
 	/** The written agent, when known — lets caches invalidate narrowly. */

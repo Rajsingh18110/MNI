@@ -1,9 +1,9 @@
-import { Logger } from '@n8n/backend-common';
-import { AgentsConfig } from '@n8n/config';
-import type { ModuleInterface } from '@n8n/decorators';
-import { BackendModule, OnShutdown } from '@n8n/decorators';
-import { Container } from '@n8n/di';
-import { InstanceSettings } from 'n8n-core';
+import { Logger } from '@MNI/backend-common';
+import { AgentsConfig } from '@MNI/config';
+import type { ModuleInterface } from '@MNI/decorators';
+import { BackendModule, OnShutdown } from '@MNI/decorators';
+import { Container } from '@MNI/di';
+import { InstanceSettings } from 'MNI-core';
 
 @BackendModule({ name: 'agents' })
 export class AgentsModule implements ModuleInterface {
@@ -91,7 +91,7 @@ export class AgentsModule implements ModuleInterface {
 		const { TeamsIntegration } = await import(
 			'./integrations/platforms/teams/teams-integration.js'
 		);
-		const { N8nChatIntegration } = await import('./integrations/platforms/n8n-chat-integration.js');
+		const { N8nChatIntegration } = await import('./integrations/platforms/MNI-chat-integration.js');
 		const registry = Container.get(ChatIntegrationRegistry);
 		registry.register(Container.get(SlackIntegration));
 		registry.register(Container.get(TelegramIntegration));

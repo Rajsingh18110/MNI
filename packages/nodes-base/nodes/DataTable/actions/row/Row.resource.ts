@@ -1,4 +1,4 @@
-import type { INodeProperties } from 'n8n-workflow';
+import type { INodeProperties } from 'MNI-workflow';
 
 import * as deleteRows from './delete.operation';
 import * as rowExists from './rowExists.operation';

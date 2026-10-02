@@ -2,17 +2,17 @@ import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from 'node:fs';
 import { Module } from 'node:module';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
-import { Service } from '@n8n/di';
+import { Service } from '@MNI/di';
 import watcher from '@parcel/watcher';
 import fs from 'fs/promises';
-import { CUSTOM_NODES_PACKAGE_NAME, CustomDirectoryLoader, DirectoryLoader } from 'n8n-core';
+import { CUSTOM_NODES_PACKAGE_NAME, CustomDirectoryLoader, DirectoryLoader } from 'MNI-core';
 import type {
 	ICredentialType,
 	INodeProperties,
 	INodeTypeDescription,
 	NodeLoader,
-} from 'n8n-workflow';
-import { UserError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { UserError } from 'MNI-workflow';
 import type { Mock } from 'vitest';
 import { mock } from 'vitest-mock-extended';
 
@@ -44,7 +44,7 @@ vi.mock('@/tool-generation', () => ({
 }));
 
 /**
- * Regression test for https://github.com/n8n-io/n8n/issues/24191
+ * Regression test for https://github.com/MNI-io/MNI/issues/24191
  *
  * LoadNodesAndCredentials.init() sets process.env.NODE_PATH to module.paths
  * for node/credential resolution. It must PRESERVE any existing NODE_PATH
@@ -106,9 +106,9 @@ describe('LoadNodesAndCredentials', () => {
 		const packageName = 'package1';
 		const packageNameCustom = CUSTOM_NODES_PACKAGE_NAME;
 
-		const dir = '/home/user/.n8n/nodes';
-		const dirCustom = '/home/user/.n8n-custom-nodes';
-		const dirCustomWin = 'C:/Users/name/.n8n-custom-nodes';
+		const dir = '/home/user/.MNI/nodes';
+		const dirCustom = '/home/user/.MNI-custom-nodes';
+		const dirCustomWin = 'C:/Users/name/.MNI-custom-nodes';
 
 		const pathPrefix = `/icons/${packageName}`;
 		const pathPrefixCustom = `/icons/${packageNameCustom}`;
@@ -148,7 +148,7 @@ describe('LoadNodesAndCredentials', () => {
 			expect(result).toBeUndefined();
 		});
 
-		describe('N8N_CUSTOM_EXTENSIONS', () => {
+		describe('MNI_CUSTOM_EXTENSIONS', () => {
 			it('should return file path if url contains a relative custom file path', () => {
 				const result = instanceCustom.resolveIcon(
 					packageNameCustom,
@@ -208,7 +208,7 @@ describe('LoadNodesAndCredentials', () => {
 
 		beforeEach(() => {
 			instance = new LoadNodesAndCredentials(mock(), mock(), mock(), mock(), mock(), mock());
-			instance.knownNodes['n8n-nodes-base.test'] = {
+			instance.knownNodes['MNI-nodes-base.test'] = {
 				className: 'Test',
 				sourcePath: '/nodes-base/dist/nodes/Test/Test.node.js',
 			};
@@ -216,7 +216,7 @@ describe('LoadNodesAndCredentials', () => {
 
 		it('should return undefined if the node is not known', () => {
 			const result = instance.resolveSchema({
-				node: 'n8n-nodes-base.doesNotExist',
+				node: 'MNI-nodes-base.doesNotExist',
 				version: '1.0.0',
 				resource: 'account',
 				operation: 'get',
@@ -226,7 +226,7 @@ describe('LoadNodesAndCredentials', () => {
 
 		it('should return the correct path if the node is known', () => {
 			const result = instance.resolveSchema({
-				node: 'n8n-nodes-base.test',
+				node: 'MNI-nodes-base.test',
 				version: '1.0.0',
 				resource: 'account',
 				operation: 'get',
@@ -236,7 +236,7 @@ describe('LoadNodesAndCredentials', () => {
 
 		it('should return the correct path if there is no resource or operation', () => {
 			const result = instance.resolveSchema({
-				node: 'n8n-nodes-base.test',
+				node: 'MNI-nodes-base.test',
 				version: '1.0.0',
 			});
 			expect(result).toEqual('/nodes-base/dist/nodes/Test/__schema__/v1.0.0.json');
@@ -248,13 +248,13 @@ describe('LoadNodesAndCredentials', () => {
 		let nodesDir: string;
 
 		beforeEach(() => {
-			nodesDir = mkdtempSync(join(tmpdir(), 'n8n-lookup-'));
+			nodesDir = mkdtempSync(join(tmpdir(), 'MNI-lookup-'));
 			const schemaDir = join(nodesDir, 'Test', '__schema__', 'v1.0.0', 'account');
 			mkdirSync(schemaDir, { recursive: true });
 			writeFileSync(join(schemaDir, 'get.json'), JSON.stringify({ type: 'object' }));
 
 			instance = new LoadNodesAndCredentials(mock(), mock(), mock(), mock(), mock(), mock());
-			instance.knownNodes['n8n-nodes-base.test'] = {
+			instance.knownNodes['MNI-nodes-base.test'] = {
 				className: 'Test',
 				sourcePath: join(nodesDir, 'Test', 'Test.node.js'),
 			};
@@ -268,7 +268,7 @@ describe('LoadNodesAndCredentials', () => {
 			const lookup = instance.createOutputSchemaLookup();
 			expect(
 				lookup({
-					type: 'n8n-nodes-base.test',
+					type: 'MNI-nodes-base.test',
 					typeVersion: 1,
 					resource: 'account',
 					operation: 'get',
@@ -280,7 +280,7 @@ describe('LoadNodesAndCredentials', () => {
 			const lookup = instance.createOutputSchemaLookup();
 			expect(
 				lookup({
-					type: 'n8n-nodes-base.test',
+					type: 'MNI-nodes-base.test',
 					typeVersion: 3,
 					resource: 'account',
 					operation: 'get',
@@ -291,11 +291,11 @@ describe('LoadNodesAndCredentials', () => {
 		it('should return undefined for unknown nodes or missing schemas', () => {
 			const lookup = instance.createOutputSchemaLookup();
 			expect(
-				lookup({ type: 'n8n-nodes-base.unknown', typeVersion: 1, operation: 'get' }),
+				lookup({ type: 'MNI-nodes-base.unknown', typeVersion: 1, operation: 'get' }),
 			).toBeUndefined();
 			expect(
 				lookup({
-					type: 'n8n-nodes-base.test',
+					type: 'MNI-nodes-base.test',
 					typeVersion: 1,
 					resource: 'account',
 					operation: 'delete',
@@ -311,7 +311,7 @@ describe('LoadNodesAndCredentials', () => {
 
 		beforeEach(() => {
 			// Enable the feature flag for tests
-			process.env.N8N_ENV_FEAT_DYNAMIC_CREDENTIALS = 'true';
+			process.env.MNI_ENV_FEAT_DYNAMIC_CREDENTIALS = 'true';
 
 			mockLogger = {
 				debug: vi.fn(),
@@ -331,12 +331,12 @@ describe('LoadNodesAndCredentials', () => {
 
 		afterEach(() => {
 			// Clean up the environment variable after each test
-			delete process.env.N8N_ENV_FEAT_DYNAMIC_CREDENTIALS;
+			delete process.env.MNI_ENV_FEAT_DYNAMIC_CREDENTIALS;
 		});
 
 		it('should not inject hooks when feature flag is disabled', () => {
 			// Disable the feature flag
-			delete process.env.N8N_ENV_FEAT_DYNAMIC_CREDENTIALS;
+			delete process.env.MNI_ENV_FEAT_DYNAMIC_CREDENTIALS;
 
 			const triggerNode: INodeTypeDescription = {
 				name: 'webhookTrigger',
@@ -371,7 +371,7 @@ describe('LoadNodesAndCredentials', () => {
 			);
 
 			// Re-enable for other tests
-			process.env.N8N_ENV_FEAT_DYNAMIC_CREDENTIALS = 'true';
+			process.env.MNI_ENV_FEAT_DYNAMIC_CREDENTIALS = 'true';
 		});
 
 		it('should not inject hooks if no hooks exist', () => {
@@ -554,7 +554,7 @@ describe('LoadNodesAndCredentials', () => {
 		let instance: LoadNodesAndCredentials;
 
 		const makeNode = (credentialName: string): INodeTypeDescription => ({
-			name: 'n8n-nodes-base.test',
+			name: 'MNI-nodes-base.test',
 			displayName: 'Test',
 			group: ['transform'],
 			description: 'Test node',
@@ -725,7 +725,7 @@ describe('LoadNodesAndCredentials', () => {
 			await instance.setupHotReload();
 			const [, onFileUpdate] = vi.mocked(watcher.subscribe).mock.calls[0];
 
-			// Both fire on the same save with `pnpm dev:be` + `n8n-node dev`.
+			// Both fire on the same save with `pnpm dev:be` + `MNI-node dev`.
 			await Promise.all([
 				onFileUpdate(null, [{ type: 'update', path: '/some/custom/path/X.node.js' }]),
 				instance.reloadCustomNodes(),
@@ -764,21 +764,21 @@ describe('LoadNodesAndCredentials', () => {
 
 			const customLoader = mock<CustomDirectoryLoader>({
 				packageName: CUSTOM_NODES_PACKAGE_NAME,
-				directory: '/home/node/.n8n/custom',
+				directory: '/home/node/.MNI/custom',
 				reset: vi.fn(),
 				loadAll: vi.fn(),
 			} as never);
 			Object.setPrototypeOf(customLoader, CustomDirectoryLoader.prototype);
 
 			const baseLoader = mock<DirectoryLoader>({
-				packageName: 'n8n-nodes-base',
+				packageName: 'MNI-nodes-base',
 				directory: '/app/nodes-base',
 				reset: vi.fn(),
 				loadAll: vi.fn(),
 			} as never);
 			Object.setPrototypeOf(baseLoader, DirectoryLoader.prototype);
 
-			instance.loaders = { CUSTOM: customLoader, 'n8n-nodes-base': baseLoader };
+			instance.loaders = { CUSTOM: customLoader, 'MNI-nodes-base': baseLoader };
 
 			await expect(instance.reloadCustomNodes()).resolves.toEqual([CUSTOM_NODES_PACKAGE_NAME]);
 
@@ -796,7 +796,7 @@ describe('LoadNodesAndCredentials', () => {
 
 			const customLoader = mock<CustomDirectoryLoader>({
 				packageName: CUSTOM_NODES_PACKAGE_NAME,
-				directory: '/home/node/.n8n/custom',
+				directory: '/home/node/.MNI/custom',
 				reset: vi.fn(),
 				loadAll: vi.fn().mockRejectedValue(new Error('broken node constructor')),
 			} as never);
@@ -815,7 +815,7 @@ describe('LoadNodesAndCredentials', () => {
 
 			const customLoader = mock<CustomDirectoryLoader>({
 				packageName: CUSTOM_NODES_PACKAGE_NAME,
-				directory: '/home/node/.n8n/custom',
+				directory: '/home/node/.MNI/custom',
 				reset: vi.fn(),
 				loadAll: vi.fn().mockRejectedValueOnce(new Error('broken')).mockResolvedValue(undefined),
 			} as never);
@@ -834,7 +834,7 @@ describe('LoadNodesAndCredentials', () => {
 			let maxActive = 0;
 			const customLoader = mock<CustomDirectoryLoader>({
 				packageName: CUSTOM_NODES_PACKAGE_NAME,
-				directory: '/home/node/.n8n/custom',
+				directory: '/home/node/.MNI/custom',
 				reset: vi.fn(),
 				loadAll: vi.fn(async () => {
 					active++;
@@ -979,7 +979,7 @@ describe('LoadNodesAndCredentials', () => {
 
 		it('should return a snapshot of types with package-namespaced node names', async () => {
 			const mockLoader = mock<DirectoryLoader>({
-				packageName: 'n8n-nodes-base',
+				packageName: 'MNI-nodes-base',
 				directory: '/test/dir',
 				known: { nodes: {}, credentials: {} },
 				types: {
@@ -991,12 +991,12 @@ describe('LoadNodesAndCredentials', () => {
 				ensureTypesLoaded: vi.fn().mockResolvedValue(undefined),
 			} as never);
 
-			instance.loaders = { 'n8n-nodes-base': mockLoader };
+			instance.loaders = { 'MNI-nodes-base': mockLoader };
 
 			const types = await instance.collectTypes();
 
 			expect(types.nodes).toHaveLength(1);
-			expect(types.nodes[0].name).toBe('n8n-nodes-base.httpRequest');
+			expect(types.nodes[0].name).toBe('MNI-nodes-base.httpRequest');
 			expect(types.nodes[0].displayName).toBe('HTTP Request');
 			expect(types.credentials).toHaveLength(1);
 		});

@@ -6,16 +6,16 @@ import { MODAL_CONFIRM } from '@/app/constants';
 import { PROJECT_MOVE_RESOURCE_MODAL } from '@/features/collaboration/projects/projects.constants';
 import { useDependencies } from '@/app/composables/useDependencies';
 import { useMessage } from '@/app/composables/useMessage';
-import { useToast } from '@n8n/composables/useToast';
+import { useToast } from '@MNI/composables/useToast';
 import CredentialIcon from './CredentialIcon.vue';
-import { getResourcePermissions } from '@n8n/permissions';
+import { getResourcePermissions } from '@MNI/permissions';
 import { useUIStore } from '@/app/stores/ui.store';
 import { useCredentialsStore } from '../credentials.store';
 import TimeAgo from '@/app/components/TimeAgo.vue';
 import { useProjectsStore } from '@/features/collaboration/projects/projects.store';
 import ProjectCardBadge from '@/features/collaboration/projects/components/ProjectCardBadge.vue';
 import DependencyPill from '@/app/components/DependencyPill.vue';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import { ResourceType } from '@/features/collaboration/projects/projects.utils';
 import type { CredentialsResource } from '@/Interface';
 import { usePrivateCredentials } from '@/features/resolvers/composables/usePrivateCredentials';
@@ -29,7 +29,7 @@ import {
 	N8nCard,
 	N8nText,
 	N8nTooltip,
-} from '@n8n/design-system';
+} from '@MNI/design-system';
 const { isEnabled: credentialDescriptionsEnabled } = useCredentialDescriptionsExperiment();
 
 const CREDENTIAL_LIST_ITEM_ACTIONS = {
@@ -325,7 +325,7 @@ function moveResource() {
 </template>
 
 <style lang="scss" module>
-@use '@n8n/design-system/css/mixins/breakpoints';
+@use '@MNI/design-system/css/mixins/breakpoints';
 
 .cardLink {
 	--card--padding: 0 0 0 var(--spacing--sm);

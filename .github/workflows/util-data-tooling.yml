@@ -27,7 +27,7 @@ jobs:
           base-ref: master
           filters: |
             db:
-              - packages/@n8n/db/**
+              - packages/@MNI/db/**
               - packages/cli/**
       - name: Setup, build and export sqlite
         if: fromJSON(steps.paths-filter.outputs.results).db
@@ -61,7 +61,7 @@ jobs:
           base-ref: master
           filters: |
             db:
-              - packages/@n8n/db/**
+              - packages/@MNI/db/**
               - packages/cli/**
 
       - name: Setup and Build

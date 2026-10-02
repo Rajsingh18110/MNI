@@ -1,4 +1,4 @@
-import { configureGlobalAxiosDefaults } from '@n8n/backend-network';
+import { configureGlobalAxiosDefaults } from '@MNI/backend-network';
 
 // Applies MNI's global axios defaults and registers the request interceptor.
 configureGlobalAxiosDefaults();

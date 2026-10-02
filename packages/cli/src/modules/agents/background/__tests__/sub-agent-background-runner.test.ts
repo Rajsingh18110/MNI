@@ -1,5 +1,5 @@
-import type { CredentialProvider } from '@n8n/agents';
-import type { Logger } from '@n8n/backend-common';
+import type { CredentialProvider } from '@MNI/agents';
+import type { Logger } from '@MNI/backend-common';
 import type { Mock } from 'vitest';
 import { mock } from 'vitest-mock-extended';
 

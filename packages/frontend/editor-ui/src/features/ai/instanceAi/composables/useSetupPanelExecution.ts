@@ -7,14 +7,14 @@ import {
 	watch,
 	type MaybeRefOrGetter,
 } from 'vue';
-import { createDeferredPromise } from '@n8n/utils/promise/deferred-promise';
+import { createDeferredPromise } from '@MNI/utils/promise/deferred-promise';
 import { v4 as uuidv4 } from 'uuid';
-import { isTerminalExecutionStatus, type TerminalExecutionStatus } from 'n8n-workflow';
-import { useRootStore } from '@n8n/stores/useRootStore';
-import { useI18n } from '@n8n/i18n';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
-import { useToast } from '@n8n/composables/useToast';
-import { TELEMETRY_EVENT } from '@n8n/telemetry';
+import { isTerminalExecutionStatus, type TerminalExecutionStatus } from 'MNI-workflow';
+import { useRootStore } from '@MNI/stores/useRootStore';
+import { useI18n } from '@MNI/i18n';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
+import { useToast } from '@MNI/composables/useToast';
+import { TELEMETRY_EVENT } from '@MNI/telemetry';
 import { useInstanceAiSetupPanelExperiment } from '@/experiments/instanceAiSetupPanel/useInstanceAiSetupPanelExperiment';
 import { getWorkflow } from '@/app/api/workflows';
 import { useRunWorkflowApi } from '@/app/composables/useRunWorkflowApi';

@@ -1,4 +1,4 @@
-import { type IExecuteFunctions, NodeApiError, UserError } from 'n8n-workflow';
+import { type IExecuteFunctions, NodeApiError, UserError } from 'MNI-workflow';
 
 import { elasticsearchApiRequest, elasticsearchApiRequestAllItems } from '../GenericFunctions';
 

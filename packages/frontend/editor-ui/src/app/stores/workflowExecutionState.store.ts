@@ -1,5 +1,5 @@
 import { defineStore, getActivePinia } from 'pinia';
-import { STORES } from '@n8n/stores';
+import { STORES } from '@MNI/stores';
 import {
 	computed,
 	effectScope,
@@ -10,7 +10,7 @@ import {
 	type ComputedRef,
 } from 'vue';
 import { createEventHook } from '@vueuse/core';
-import { structuralComputed } from '@n8n/composables/structuralComputed';
+import { structuralComputed } from '@MNI/composables/structuralComputed';
 import type {
 	ExecutionStatus,
 	ExecutionSummary,
@@ -19,9 +19,9 @@ import type {
 	IRunExecutionData,
 	ITaskData,
 	ITaskStartedData,
-} from 'n8n-workflow';
-import type { NodeExecuteBefore } from '@n8n/api-types/push/execution';
-import type { AgentNodeCapability, AgentNodeProgress } from '@n8n/api-types';
+} from 'MNI-workflow';
+import type { NodeExecuteBefore } from '@MNI/api-types/push/execution';
+import type { AgentNodeCapability, AgentNodeProgress } from '@MNI/api-types';
 import type {
 	IExecutionResponse,
 	IExecutionsStopData,

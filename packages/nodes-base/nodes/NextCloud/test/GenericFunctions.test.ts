@@ -4,8 +4,8 @@ import type {
 	IHookFunctions,
 	IHttpRequestMethods,
 	INode,
-} from 'n8n-workflow';
-import { NodeOperationError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeOperationError } from 'MNI-workflow';
 import type { Mock } from 'vitest';
 
 import { nextCloudApiRequest } from '../GenericFunctions';
@@ -30,7 +30,7 @@ function buildFunctions(authentication: Authentication = 'accessToken') {
 				({
 					id: 'nextcloud-node',
 					name: 'Nextcloud',
-					type: 'n8n-nodes-base.nextCloud',
+					type: 'MNI-nodes-base.nextCloud',
 					typeVersion: 1,
 					position: [0, 0],
 					parameters: {},

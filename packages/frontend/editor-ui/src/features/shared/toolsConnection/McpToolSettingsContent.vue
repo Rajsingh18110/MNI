@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue';
-import { N8nButton, N8nIcon, N8nOption, N8nSelect, N8nText } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+import { N8nButton, N8nIcon, N8nOption, N8nSelect, N8nText } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 import type { McpServerConnectionItem, McpToolInclusionMode, McpToolSettings } from './types';
 
 const props = defineProps<{

@@ -1,5 +1,5 @@
 {
-	"extends": "@n8n/typescript-config/modern/tsconfig.go.json",
+	"extends": "@MNI/typescript-config/modern/tsconfig.go.json",
 	"compilerOptions": {
 		"rootDir": ".",
 		"noUncheckedIndexedAccess": false,

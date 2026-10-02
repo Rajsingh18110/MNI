@@ -1,13 +1,13 @@
-import { i18n, i18nInstance, setLanguage, updateLocaleMessages } from '@n8n/i18n';
-import type { LocaleMessages } from '@n8n/i18n';
-import { locale as designLocale } from '@n8n/design-system';
+import { i18n, i18nInstance, setLanguage, updateLocaleMessages } from '@MNI/i18n';
+import type { LocaleMessages } from '@MNI/i18n';
+import { locale as designLocale } from '@MNI/design-system';
 
 const hot = import.meta.hot;
 const DEFAULT_LOCALE = 'en';
 
 if (hot) {
 	// Eagerly import locale JSONs so this module becomes their HMR owner
-	const localeModules = import.meta.glob('@n8n/i18n/locales/*.json', { eager: true }) as Record<
+	const localeModules = import.meta.glob('@MNI/i18n/locales/*.json', { eager: true }) as Record<
 		string,
 		{ default?: LocaleMessages }
 	>;

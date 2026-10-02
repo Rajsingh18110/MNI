@@ -8,11 +8,11 @@ import {
 	type UserRepository,
 	GLOBAL_OWNER_ROLE,
 	GLOBAL_MEMBER_ROLE,
-} from '@n8n/db';
-import type { INode } from 'n8n-workflow';
+} from '@MNI/db';
+import type { INode } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
-import type { Logger } from '@n8n/backend-common';
+import type { Logger } from '@MNI/backend-common';
 
 import type { CredentialsFinderService } from '@/credentials/credentials-finder.service';
 import type { NodeTypes } from '@/node-types';
@@ -483,7 +483,7 @@ describe('CredentialsPermissionChecker', () => {
 		const httpRequestNode: INode = {
 			id: 'node-1',
 			name: 'HTTP Request',
-			type: 'n8n-nodes-base.httpRequest',
+			type: 'MNI-nodes-base.httpRequest',
 			typeVersion: 4.3,
 			position: [0, 0],
 			parameters: {
@@ -543,7 +543,7 @@ describe('CredentialsPermissionChecker', () => {
 			const httpRequestNodeWithGenericAuth: INode = {
 				id: 'node-2',
 				name: 'HTTP Request',
-				type: 'n8n-nodes-base.httpRequest',
+				type: 'MNI-nodes-base.httpRequest',
 				typeVersion: 4.2,
 				position: [0, 0],
 				parameters: {
@@ -589,7 +589,7 @@ describe('CredentialsPermissionChecker', () => {
 			const httpRequestNodeWithExpressionAuth: INode = {
 				id: 'node-3',
 				name: 'HTTP Request',
-				type: 'n8n-nodes-base.httpRequest',
+				type: 'MNI-nodes-base.httpRequest',
 				typeVersion: 4.2,
 				position: [0, 0],
 				parameters: {
@@ -628,7 +628,7 @@ describe('CredentialsPermissionChecker', () => {
 			const httpRequestNodeWithExpressionAuth: INode = {
 				id: 'node-4',
 				name: 'HTTP Request',
-				type: 'n8n-nodes-base.httpRequest',
+				type: 'MNI-nodes-base.httpRequest',
 				typeVersion: 4.3,
 				position: [0, 0],
 				parameters: {
@@ -692,7 +692,7 @@ describe('CredentialsPermissionChecker', () => {
 			const makeNode = (parameters: INode['parameters']): INode => ({
 				id: 'node-5',
 				name: 'HTTP Request',
-				type: 'n8n-nodes-base.httpRequest',
+				type: 'MNI-nodes-base.httpRequest',
 				typeVersion: 4.3,
 				position: [0, 0],
 				parameters,

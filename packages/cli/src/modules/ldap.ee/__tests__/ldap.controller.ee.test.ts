@@ -1,5 +1,5 @@
-import type { LdapConfig } from '@n8n/constants';
-import { CREDENTIAL_BLANKING_VALUE } from 'n8n-workflow';
+import type { LdapConfig } from '@MNI/constants';
+import { CREDENTIAL_BLANKING_VALUE } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import type { EventService } from '@/events/event.service';

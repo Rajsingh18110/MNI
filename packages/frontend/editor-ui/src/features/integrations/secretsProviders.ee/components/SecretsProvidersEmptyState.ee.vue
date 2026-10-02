@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import { computed, onMounted, onUnmounted, ref, toRef } from 'vue';
-import { N8nEmptyState, N8nButton, N8nHeading, N8nIcon } from '@n8n/design-system';
-import type { SecretProviderTypeResponse } from '@n8n/api-types';
+import { N8nEmptyState, N8nButton, N8nHeading, N8nIcon } from '@MNI/design-system';
+import type { SecretProviderTypeResponse } from '@MNI/api-types';
 import SecretsProviderImage from './SecretsProviderImage.ee.vue';
 
 const i18n = useI18n();
@@ -101,7 +101,7 @@ function onAddSecretsStore() {
 		<template #additionalContent>
 			<N8nButton
 				variant="ghost"
-				class="mr-2xs n8n-button--highlight"
+				class="mr-2xs MNI-button--highlight"
 				:href="i18n.baseText('settings.externalSecrets.docs')"
 				target="_blank"
 				data-test-id="secrets-provider-connections-learn-more"

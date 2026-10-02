@@ -1,4 +1,4 @@
-import type { IDataObject, IExecuteFunctions } from 'n8n-workflow';
+import type { IDataObject, IExecuteFunctions } from 'MNI-workflow';
 
 import type { AuthContext } from './interfaces';
 import { resolveWorkbookRoot, validatePathSegment } from './utils';

@@ -1,11 +1,11 @@
-import { Logger } from '@n8n/backend-common';
-import { GlobalConfig } from '@n8n/config';
-import { SettingsRepository } from '@n8n/db';
-import { OnPubSubEvent } from '@n8n/decorators';
-import { Container, Service } from '@n8n/di';
-import { Cipher } from 'n8n-core';
-import type { ICredentialDataDecryptedObject } from 'n8n-workflow';
-import { deepCopy, jsonParse } from 'n8n-workflow';
+import { Logger } from '@MNI/backend-common';
+import { GlobalConfig } from '@MNI/config';
+import { SettingsRepository } from '@MNI/db';
+import { OnPubSubEvent } from '@MNI/decorators';
+import { Container, Service } from '@MNI/di';
+import { Cipher } from 'MNI-core';
+import type { ICredentialDataDecryptedObject } from 'MNI-workflow';
+import { deepCopy, jsonParse } from 'MNI-workflow';
 
 import { CredentialTypes } from '@/credential-types';
 import type { ICredentialsOverwrite } from '@/interfaces';

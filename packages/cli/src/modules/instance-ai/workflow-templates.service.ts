@@ -1,8 +1,8 @@
-import { Logger } from '@n8n/backend-common';
-import { OutboundHttp, type HttpRequestClient } from '@n8n/backend-network';
-import { GlobalConfig } from '@n8n/config';
-import { Service } from '@n8n/di';
-import { isRecord } from '@n8n/utils/is-record';
+import { Logger } from '@MNI/backend-common';
+import { OutboundHttp, type HttpRequestClient } from '@MNI/backend-network';
+import { GlobalConfig } from '@MNI/config';
+import { Service } from '@MNI/di';
+import { isRecord } from '@MNI/utils/is-record';
 
 export const TEMPLATE_REQUEST_TIMEOUT_MS = 5000;
 
@@ -20,7 +20,7 @@ export class WorkflowTemplatesService {
 		outboundHttp: OutboundHttp,
 	) {
 		this.http = outboundHttp.requests({
-			useDefaultSsrfPolicy: 'unsafe', // Fixed, n8n-controlled templates host.
+			useDefaultSsrfPolicy: 'unsafe', // Fixed, MNI-controlled templates host.
 			timeout: TEMPLATE_REQUEST_TIMEOUT_MS,
 		});
 	}

@@ -1,12 +1,12 @@
 <script lang="ts" setup>
-import { N8nButton, N8nText } from '@n8n/design-system';
-import type { ActionDropdownItem } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+import { N8nButton, N8nText } from '@MNI/design-system';
+import type { ActionDropdownItem } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 import { computed } from 'vue';
 
-import { useTelemetry } from '@n8n/composables/useTelemetry';
-import { useRootStore } from '@n8n/stores/useRootStore';
-import { redactTelemetryProperties } from '@n8n/telemetry';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
+import { useRootStore } from '@MNI/stores/useRootStore';
+import { redactTelemetryProperties } from '@MNI/telemetry';
 import { useThread } from '../instanceAi.store';
 import ConfirmationFooter from './ConfirmationFooter.vue';
 import ConfirmationPreview from './ConfirmationPreview.vue';

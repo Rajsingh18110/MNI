@@ -9,7 +9,7 @@ You can test LDAP sync end-to-end using Docker and an LDAP server image — noth
 **2. Start a mock LDAP server in Docker:**
 
 ```bash
-docker run -d --name n8n-ldap-test -p 11389:389 \
+docker run -d --name MNI-ldap-test -p 11389:389 \
   -e LDAP_ORGANISATION="MNI" -e LDAP_DOMAIN="n8n.local" \
   -e LDAP_ADMIN_PASSWORD="admin" \
   osixia/openldap:latest
@@ -22,7 +22,7 @@ Wait a few seconds for the container to finish starting up before continuing.
 **3. Create a test user** by piping an LDIF straight into the container:
 
 ```bash
-docker exec -i n8n-ldap-test ldapadd -x -D "cn=admin,dc=MNI,dc=local" -w admin <<'EOF'
+docker exec -i MNI-ldap-test ldapadd -x -D "cn=admin,dc=MNI,dc=local" -w admin <<'EOF'
 dn: ou=users,dc=MNI,dc=local
 objectClass: organizationalUnit
 ou: users
@@ -41,7 +41,7 @@ EOF
 To edit an existing user later (e.g. to test a renamed user syncing correctly — change first name and last name), use `ldapmodify` the same way:
 
 ```bash
-docker exec -i n8n-ldap-test ldapmodify -x -D "cn=admin,dc=MNI,dc=local" -w admin <<'EOF'
+docker exec -i MNI-ldap-test ldapmodify -x -D "cn=admin,dc=MNI,dc=local" -w admin <<'EOF'
 dn: uid=jdoe,ou=users,dc=MNI,dc=local
 changetype: modify
 replace: givenName
@@ -55,14 +55,14 @@ EOF
 To remove a user (e.g. to test that a deprovisioned user gets disabled in MNI on the next sync), use `ldapdelete`:
 
 ```bash
-docker exec -i n8n-ldap-test ldapdelete -x -D "cn=admin,dc=MNI,dc=local" -w admin "uid=jdoe,ou=users,dc=MNI,dc=local"
+docker exec -i MNI-ldap-test ldapdelete -x -D "cn=admin,dc=MNI,dc=local" -w admin "uid=jdoe,ou=users,dc=MNI,dc=local"
 ```
 
-**4. Configure LDAP in n8n.** Either through Settings → LDAP in the UI, or via the public API — you'll need an API key first (Settings → API):
+**4. Configure LDAP in MNI.** Either through Settings → LDAP in the UI, or via the public API — you'll need an API key first (Settings → API):
 
 ```bash
 curl -X PUT http://localhost:5678/api/v1/settings/ldap \
-  -H "X-N8N-API-KEY: <YOUR_API_KEY>" \
+  -H "X-MNI-API-KEY: <YOUR_API_KEY>" \
   -H "Content-Type: application/json" \
   -d '{
     "connectionUrl": "127.0.0.1",
@@ -94,7 +94,7 @@ Use `127.0.0.1`, not `localhost`, for `connectionUrl`: on Docker Desktop for Mac
 
 ```bash
 curl -X POST http://localhost:5678/api/v1/settings/ldap/sync \
-  -H "X-N8N-API-KEY: <YOUR_API_KEY>" \
+  -H "X-MNI-API-KEY: <YOUR_API_KEY>" \
   -H "Content-Type: application/json" \
   -d '{"type": "live"}'
 ```
@@ -109,5 +109,5 @@ curl -X POST http://localhost:5678/api/v1/settings/ldap/sync \
 **8. Clean up.** Disable LDAP login first (Settings → LDAP, uncheck login, or `GET /settings/ldap` then `PUT /settings/ldap` with the full returned object but `loginEnabled: false`) — otherwise MNI is left with LDAP as its active authentication method and no LDAP server to validate logins against. Then remove the container:
 
 ```bash
-docker rm -f n8n-ldap-test
+docker rm -f MNI-ldap-test
 ```

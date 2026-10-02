@@ -5,8 +5,8 @@ import type {
 	IHttpRequestMethods,
 	INodeExecutionData,
 	INodeProperties,
-} from 'n8n-workflow';
-import { NodeApiError, updateDisplayOptions } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeApiError, updateDisplayOptions } from 'MNI-workflow';
 
 import { apiRequest } from '../../transport';
 

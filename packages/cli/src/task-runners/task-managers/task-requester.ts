@@ -1,9 +1,9 @@
-import { GlobalConfig, TaskRunnersConfig } from '@n8n/config';
-import { Service } from '@n8n/di';
-import type { TaskResultData, RequesterMessage, BrokerMessage, TaskData } from '@n8n/task-runner';
-import { AVAILABLE_RPC_METHODS } from '@n8n/task-runner';
-import { isSerializedBuffer, toBuffer, ErrorReporter } from 'n8n-core';
-import { createResultOk, createResultError, type Result } from '@n8n/utils/result';
+import { GlobalConfig, TaskRunnersConfig } from '@MNI/config';
+import { Service } from '@MNI/di';
+import type { TaskResultData, RequesterMessage, BrokerMessage, TaskData } from '@MNI/task-runner';
+import { AVAILABLE_RPC_METHODS } from '@MNI/task-runner';
+import { isSerializedBuffer, toBuffer, ErrorReporter } from 'MNI-core';
+import { createResultOk, createResultError, type Result } from '@MNI/utils/result';
 import type {
 	EnvProviderState,
 	IExecuteFunctions,
@@ -17,7 +17,7 @@ import type {
 	IExecuteData,
 	IDataObject,
 	IWorkflowExecuteAdditionalData,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import { nanoid } from 'nanoid';
 
 import { EventService } from '@/events/event.service';

@@ -1,7 +1,7 @@
-import type { User } from '@n8n/db';
-import { BinaryDataRepository, ExecutionRepository } from '@n8n/db';
-import { Service } from '@n8n/di';
-import { parseExecutionFileId, TEMP_EXECUTION_ID } from 'n8n-core';
+import type { User } from '@MNI/db';
+import { BinaryDataRepository, ExecutionRepository } from '@MNI/db';
+import { Service } from '@MNI/di';
+import { parseExecutionFileId, TEMP_EXECUTION_ID } from 'MNI-core';
 
 import { WorkflowSharingService } from '@/workflows/workflow-sharing.service';
 

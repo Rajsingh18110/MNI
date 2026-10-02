@@ -1,5 +1,5 @@
-import type { InstanceAiSetupItem } from '@n8n/api-types';
-import type { INodeTypeDescription } from 'n8n-workflow';
+import type { InstanceAiSetupItem } from '@MNI/api-types';
+import type { INodeTypeDescription } from 'MNI-workflow';
 import type { INodeUi } from '@/Interface';
 import { CORE_NODES_CATEGORY, RSS_READ_NODE_TYPE } from '@/app/constants';
 import type { SetupPanelRow } from './composables/useSetupPanelState';

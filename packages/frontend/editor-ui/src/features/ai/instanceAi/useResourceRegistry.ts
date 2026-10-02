@@ -4,7 +4,7 @@ import type {
 	InstanceAiAgentNode,
 	InstanceAiToolCallState,
 	InstanceAiWorkflowAttachment,
-} from '@n8n/api-types';
+} from '@MNI/api-types';
 
 export type ResourceEntry = {
 	type: 'workflow' | 'credential' | 'data-table' | 'agent';

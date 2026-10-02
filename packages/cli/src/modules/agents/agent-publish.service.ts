@@ -1,19 +1,19 @@
 import {
-	N8N_CHAT_INTEGRATION_TYPE,
+	MNI_CHAT_INTEGRATION_TYPE,
 	isCredentialAgentIntegration,
 	isDraftIntegration,
 	type AgentConfigValidationResponse,
 	type AgentJsonConfig,
 	type AgentSkill,
 	type AgentVersionListItemDto,
-} from '@n8n/api-types';
-import { Logger } from '@n8n/backend-common';
-import { isUniqueConstraintError, type User } from '@n8n/db';
-import { Container, Service } from '@n8n/di';
-import { TELEMETRY_EVENT } from '@n8n/telemetry';
-import type { EntityManager } from '@n8n/typeorm';
+} from '@MNI/api-types';
+import { Logger } from '@MNI/backend-common';
+import { isUniqueConstraintError, type User } from '@MNI/db';
+import { Container, Service } from '@MNI/di';
+import { TELEMETRY_EVENT } from '@MNI/telemetry';
+import type { EntityManager } from '@MNI/typeorm';
 import isEqual from 'lodash/isEqual';
-import { deepCopy, UserError } from 'n8n-workflow';
+import { deepCopy, UserError } from 'MNI-workflow';
 import { v4 as uuid } from 'uuid';
 
 import { CredentialsService } from '@/credentials/credentials.service';
@@ -751,7 +751,7 @@ export class AgentPublishService {
 						? {
 								...agent.schema,
 								integrations: (agent.integrations ?? []).filter(
-									(integration) => integration.type === N8N_CHAT_INTEGRATION_TYPE,
+									(integration) => integration.type === MNI_CHAT_INTEGRATION_TYPE,
 								),
 							}
 						: null,

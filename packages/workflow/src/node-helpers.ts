@@ -1911,7 +1911,7 @@ function resolveResourceAndOperation(
 	nodeParameters: INodeParameters,
 	nodeTypeDescription: INodeTypeDescription,
 ) {
-	if (nodeTypeDescription.name === 'n8n-nodes-base.code') {
+	if (nodeTypeDescription.name === 'MNI-nodes-base.code') {
 		const language = nodeParameters.language as string;
 		const langProp = nodeTypeDescription.properties.find((p) => p.name === 'language');
 		if (langProp?.options && isINodePropertyOptionsList(langProp.options)) {
@@ -1976,11 +1976,11 @@ export function makeDescription(
  * but still function as workflow entry points
  */
 const TRIGGER_NODE_TYPES = new Set([
-	'n8n-nodes-base.webhook',
-	'n8n-nodes-base.cron', // Legacy schedule trigger
-	'n8n-nodes-base.emailReadImap', // Email polling trigger
-	'n8n-nodes-base.telegramBot', // Can act as webhook trigger
-	'n8n-nodes-base.start', // Legacy trigger
+	'MNI-nodes-base.webhook',
+	'MNI-nodes-base.cron', // Legacy schedule trigger
+	'MNI-nodes-base.emailReadImap', // Email polling trigger
+	'MNI-nodes-base.telegramBot', // Can act as webhook trigger
+	'MNI-nodes-base.start', // Legacy trigger
 ]);
 
 /**
@@ -2240,7 +2240,7 @@ export function getCredentialActivationParameters(
 }
 
 /**
- * Pick the credential type a node should use for a managed (n8n-credits)
+ * Pick the credential type a node should use for a managed (MNI-credits)
  * credential and the parameters that activate it. Prefers `preferredType`, else
  * the first supported declared type. An already-active candidate returns empty
  * parameters, so a valid value (e.g. the second entry of a multi-value `show`

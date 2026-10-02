@@ -1,5 +1,5 @@
 <script lang="ts">
-import type { BannerName } from '@n8n/api-types';
+import type { BannerName } from '@MNI/api-types';
 import { useBannersStore } from '@/features/shared/banners/banners.store';
 import NonProductionLicenseBanner from './banners/NonProductionLicenseBanner.vue';
 import TrialOverBanner from './banners/TrialOverBanner.vue';
@@ -15,8 +15,8 @@ import type { N8nBanners } from '../banners.types';
 // All banners that can be shown in the app should be registered here.
 // This component renders the banner with the highest priority from the banner stack, located in the banners store.
 // When registering a new banner, please consult this document to determine it's priority:
-// https://www.notion.so/n8n/Banner-stack-60948c4167c743718fde80d6745258d5
-export const N8N_BANNERS: N8nBanners = {
+// https://www.notion.so/MNI/Banner-stack-60948c4167c743718fde80d6745258d5
+export const MNI_BANNERS: N8nBanners = {
 	V1: { priority: 350, component: V1Banner as Component },
 	WORKFLOW_AUTO_DEACTIVATED: {
 		priority: 340,
@@ -49,7 +49,7 @@ async function updateCurrentBannerHeight() {
 }
 
 const getBannerForName = (bannerName: BannerName) => {
-	return N8N_BANNERS[bannerName] || bannersStore.dynamicBannersMap[bannerName];
+	return MNI_BANNERS[bannerName] || bannersStore.dynamicBannersMap[bannerName];
 };
 
 const removeUndefinedValues = (obj: Record<string, unknown>) => {

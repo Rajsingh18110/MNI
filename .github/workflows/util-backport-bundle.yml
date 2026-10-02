@@ -22,7 +22,7 @@ jobs:
       contents: write
       pull-requests: write
     if: |
-      github.repository == 'n8n-io/n8n-private' &&
+      github.repository == 'MNI-io/MNI-private' &&
       (github.event.pull_request.merged == true ||
       github.event_name == 'workflow_dispatch')
     runs-on: ubuntu-slim
@@ -31,8 +31,8 @@ jobs:
         id: generate-token
         uses: actions/create-github-app-token@29824e69f54612133e76f7eaac726eef6c875baf # v2.2.1
         with:
-          app-id: ${{ secrets.N8N_ASSISTANT_APP_ID }}
-          private-key: ${{ secrets.N8N_ASSISTANT_PRIVATE_KEY }}
+          app-id: ${{ secrets.MNI_ASSISTANT_APP_ID }}
+          private-key: ${{ secrets.MNI_ASSISTANT_PRIVATE_KEY }}
 
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:

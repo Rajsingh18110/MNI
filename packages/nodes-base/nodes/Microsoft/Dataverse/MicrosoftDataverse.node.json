@@ -1,5 +1,5 @@
 {
-	"node": "n8n-nodes-base.microsoftDataverse",
+	"node": "MNI-nodes-base.microsoftDataverse",
 	"nodeVersion": "1.0",
 	"codexVersion": "1.0",
 	"categories": ["Data & Storage", "Finance & Accounting", "Sales", "Development"],
@@ -11,7 +11,7 @@
 		],
 		"primaryDocumentation": [
 			{
-				"url": "https://docs.n8n.io/integrations/builtin/app-nodes/n8n-nodes-base.microsoftdataverse/"
+				"url": "https://docs.n8n.io/integrations/builtin/app-nodes/MNI-nodes-base.microsoftdataverse/"
 			}
 		]
 	}

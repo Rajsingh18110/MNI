@@ -1,7 +1,7 @@
-import { mockLogger } from '@n8n/backend-test-utils';
-import type { ExecutionsConfig } from '@n8n/config';
-import type { IExecutionResponse, Project } from '@n8n/db';
-import type { ErrorReporter } from 'n8n-core';
+import { mockLogger } from '@MNI/backend-test-utils';
+import type { ExecutionsConfig } from '@MNI/config';
+import type { IExecutionResponse, Project } from '@MNI/db';
+import type { ErrorReporter } from 'MNI-core';
 import { mock } from 'vitest-mock-extended';
 
 import { ExecutionAlreadyResumingError } from '@/errors/execution-already-resuming.error';

@@ -1,11 +1,11 @@
-import { N8N_NODES_API_VERSION, checkNodesApiVersion } from '../src/nodes-api-version';
+import { MNI_NODES_API_VERSION, checkNodesApiVersion } from '../src/nodes-api-version';
 
 const pkg = (n8nNodesApiVersion?: unknown) => ({
-	n8n: n8nNodesApiVersion === undefined ? {} : { n8nNodesApiVersion },
+	MNI: n8nNodesApiVersion === undefined ? {} : { n8nNodesApiVersion },
 });
 
 describe('checkNodesApiVersion', () => {
-	it('treats a missing n8n section as legacy level 1', () => {
+	it('treats a missing MNI section as legacy level 1', () => {
 		expect(checkNodesApiVersion({})).toEqual({ compatible: true, version: 1 });
 	});
 
@@ -22,14 +22,14 @@ describe('checkNodesApiVersion', () => {
 	});
 
 	it('accepts a package that requires exactly the supported level', () => {
-		expect(checkNodesApiVersion(pkg(N8N_NODES_API_VERSION))).toEqual({
+		expect(checkNodesApiVersion(pkg(MNI_NODES_API_VERSION))).toEqual({
 			compatible: true,
-			version: N8N_NODES_API_VERSION,
+			version: MNI_NODES_API_VERSION,
 		});
 	});
 
 	it('rejects a package that requires one level above the supported level', () => {
-		const above = N8N_NODES_API_VERSION + 1;
+		const above = MNI_NODES_API_VERSION + 1;
 		expect(checkNodesApiVersion(pkg(above))).toEqual({
 			compatible: false,
 			reason: 'unsupported',

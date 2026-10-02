@@ -1,11 +1,11 @@
 <script lang="ts" setup="">
-import type { InsightsByWorkflow } from '@n8n/api-types';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
-import type { TableHeader } from '@n8n/design-system';
-import { N8nDataTableServer, N8nHeading, N8nTooltip } from '@n8n/design-system';
-import { VIEWS } from '@n8n/frontend-constants/views';
-import { useI18n } from '@n8n/i18n';
-import { smartDecimal } from '@n8n/utils/number/smart-decimal';
+import type { InsightsByWorkflow } from '@MNI/api-types';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
+import type { TableHeader } from '@MNI/design-system';
+import { N8nDataTableServer, N8nHeading, N8nTooltip } from '@MNI/design-system';
+import { VIEWS } from '@MNI/frontend-constants/views';
+import { useI18n } from '@MNI/i18n';
+import { smartDecimal } from '@MNI/utils/number/smart-decimal';
 import { computed, defineAsyncComponent, ref, watch } from 'vue';
 import { type RouteLocationRaw, type LocationQueryRaw, RouterLink } from 'vue-router';
 

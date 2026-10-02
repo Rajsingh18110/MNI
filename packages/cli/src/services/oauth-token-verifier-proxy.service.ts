@@ -1,6 +1,6 @@
-import type { User } from '@n8n/db';
-import { Service } from '@n8n/di';
-import type { OAuthResourceGrant } from 'n8n-workflow';
+import type { User } from '@MNI/db';
+import { Service } from '@MNI/di';
+import type { OAuthResourceGrant } from 'MNI-workflow';
 
 export type AuthFailureReason =
 	| 'missing_authorization_header'

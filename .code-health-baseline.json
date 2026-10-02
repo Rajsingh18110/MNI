@@ -1,7 +1,7 @@
 {
 	"version": 1,
 	"violations": {
-		"packages/@n8n/ai-workflow-builder.ee/package.json": [
+		"packages/@MNI/ai-workflow-builder.ee/package.json": [
 			{
 				"rule": "catalog-violations",
 				"line": 76,
@@ -29,17 +29,17 @@
 			{
 				"rule": "single-instance-libs",
 				"line": 60,
-				"message": "\"@langchain/core\" is a runtime dependency of \"@n8n/ai-workflow-builder\"; it must be a peerDependency.",
+				"message": "\"@langchain/core\" is a runtime dependency of \"@MNI/ai-workflow-builder\"; it must be a peerDependency.",
 				"hash": "352bf126d45a"
 			},
 			{
 				"rule": "single-instance-libs",
 				"line": 86,
-				"message": "\"zod\" is a runtime dependency of \"@n8n/ai-workflow-builder\"; it must be a peerDependency.",
+				"message": "\"zod\" is a runtime dependency of \"@MNI/ai-workflow-builder\"; it must be a peerDependency.",
 				"hash": "fd6171764eb4"
 			}
 		],
-		"packages/@n8n/json-schema-to-zod/package.json": [
+		"packages/@MNI/json-schema-to-zod/package.json": [
 			{
 				"rule": "catalog-violations",
 				"line": 64,
@@ -47,11 +47,11 @@
 				"hash": "0e18482e8781"
 			}
 		],
-		"packages/@n8n/nodes-langchain/package.json": [
+		"packages/@MNI/nodes-langchain/package.json": [
 			{
 				"rule": "catalog-violations",
 				"line": 272,
-				"message": "@n8n/typeorm@0.3.20-16 should use \"catalog:\" (exists in pnpm-workspace.yaml)",
+				"message": "@MNI/typeorm@0.3.20-16 should use \"catalog:\" (exists in pnpm-workspace.yaml)",
 				"hash": "a7c1bca1c439"
 			},
 			{
@@ -87,23 +87,23 @@
 			{
 				"rule": "single-instance-libs",
 				"line": 253,
-				"message": "\"@langchain/core\" is a runtime dependency of \"@n8n/n8n-nodes-langchain\"; it must be a peerDependency.",
+				"message": "\"@langchain/core\" is a runtime dependency of \"@MNI/MNI-nodes-langchain\"; it must be a peerDependency.",
 				"hash": "a3cb17459555"
 			},
 			{
 				"rule": "single-instance-libs",
 				"line": 304,
-				"message": "\"form-data\" is a runtime dependency of \"@n8n/n8n-nodes-langchain\"; it must be a peerDependency.",
+				"message": "\"form-data\" is a runtime dependency of \"@MNI/MNI-nodes-langchain\"; it must be a peerDependency.",
 				"hash": "d3d8fabe4a38"
 			},
 			{
 				"rule": "single-instance-libs",
 				"line": 330,
-				"message": "\"zod\" is a runtime dependency of \"@n8n/n8n-nodes-langchain\"; it must be a peerDependency.",
+				"message": "\"zod\" is a runtime dependency of \"@MNI/MNI-nodes-langchain\"; it must be a peerDependency.",
 				"hash": "6dea0e57951a"
 			}
 		],
-		"packages/@n8n/tournament/package.json": [
+		"packages/@MNI/tournament/package.json": [
 			{
 				"rule": "catalog-violations",
 				"line": 47,
@@ -135,7 +135,7 @@
 				"hash": "5f2b50fef19d"
 			}
 		],
-		"packages/frontend/@n8n/chat/package.json": [
+		"packages/frontend/@MNI/chat/package.json": [
 			{
 				"rule": "catalog-violations",
 				"line": 60,
@@ -143,7 +143,7 @@
 				"hash": "a0d24d761026"
 			}
 		],
-		"packages/frontend/@n8n/design-system/package.json": [
+		"packages/frontend/@MNI/design-system/package.json": [
 			{
 				"rule": "catalog-violations",
 				"line": 88,
@@ -195,7 +195,7 @@
 				"hash": "6e62e0076b0a"
 			}
 		],
-		"packages/@n8n/agents/package.json": [
+		"packages/@MNI/agents/package.json": [
 			{
 				"rule": "catalog-violations",
 				"line": 76,
@@ -263,23 +263,23 @@
 			{
 				"rule": "single-instance-libs",
 				"line": 938,
-				"message": "\"@langchain/core\" is a runtime dependency of \"n8n-nodes-base\"; it must be a peerDependency.",
+				"message": "\"@langchain/core\" is a runtime dependency of \"MNI-nodes-base\"; it must be a peerDependency.",
 				"hash": "9501f20519c4"
 			},
 			{
 				"rule": "single-instance-libs",
 				"line": 961,
-				"message": "\"form-data\" is a runtime dependency of \"n8n-nodes-base\"; it must be a peerDependency.",
+				"message": "\"form-data\" is a runtime dependency of \"MNI-nodes-base\"; it must be a peerDependency.",
 				"hash": "3998c8aa25cb"
 			},
 			{
 				"rule": "single-instance-libs",
 				"line": 1020,
-				"message": "\"zod\" is a runtime dependency of \"n8n-nodes-base\"; it must be a peerDependency.",
+				"message": "\"zod\" is a runtime dependency of \"MNI-nodes-base\"; it must be a peerDependency.",
 				"hash": "de1e5b4624e0"
 			}
 		],
-		"packages/@n8n/node-cli/package.json": [
+		"packages/@MNI/node-cli/package.json": [
 			{
 				"rule": "catalog-violations",
 				"line": 53,
@@ -325,7 +325,7 @@
 				"hash": "62156c2613b2"
 			}
 		],
-		"packages/@n8n/ai-utilities/package.json": [
+		"packages/@MNI/ai-utilities/package.json": [
 			{
 				"rule": "catalog-violations",
 				"line": 107,
@@ -335,23 +335,23 @@
 			{
 				"rule": "catalog-violations",
 				"line": 110,
-				"message": "n8n-workflow appears in 2 packages with 2 different versions — add to pnpm-workspace.yaml catalog",
+				"message": "MNI-workflow appears in 2 packages with 2 different versions — add to pnpm-workspace.yaml catalog",
 				"hash": "ea4fbfff30ba"
 			},
 			{
 				"rule": "single-instance-libs",
 				"line": 120,
-				"message": "\"zod\" is a runtime dependency of \"@n8n/ai-utilities\"; it must be a peerDependency.",
+				"message": "\"zod\" is a runtime dependency of \"@MNI/ai-utilities\"; it must be a peerDependency.",
 				"hash": "2ed5d6717e54"
 			},
 			{
 				"rule": "single-instance-libs",
 				"line": 122,
-				"message": "\"@langchain/core\" is a runtime dependency of \"@n8n/ai-utilities\"; it must be a peerDependency.",
+				"message": "\"@langchain/core\" is a runtime dependency of \"@MNI/ai-utilities\"; it must be a peerDependency.",
 				"hash": "5626f18eefaf"
 			}
 		],
-		"packages/@n8n/mcp-browser/package.json": [
+		"packages/@MNI/mcp-browser/package.json": [
 			{
 				"rule": "catalog-violations",
 				"line": 37,
@@ -385,11 +385,11 @@
 			{
 				"rule": "single-instance-libs",
 				"line": 39,
-				"message": "\"zod\" is a runtime dependency of \"@n8n/mcp-browser\"; it must be a peerDependency.",
+				"message": "\"zod\" is a runtime dependency of \"@MNI/mcp-browser\"; it must be a peerDependency.",
 				"hash": "5045d34d52ae"
 			}
 		],
-		"packages/@n8n/task-runner/package.json": [
+		"packages/@MNI/task-runner/package.json": [
 			{
 				"rule": "catalog-violations",
 				"line": 51,
@@ -397,7 +397,7 @@
 				"hash": "51cb5069f382"
 			}
 		],
-		"packages/@n8n/instance-ai/package.json": [
+		"packages/@MNI/instance-ai/package.json": [
 			{
 				"rule": "catalog-violations",
 				"line": 89,
@@ -431,11 +431,11 @@
 			{
 				"rule": "single-instance-libs",
 				"line": 86,
-				"message": "\"zod\" is a runtime dependency of \"@n8n/instance-ai\"; it must be a peerDependency.",
+				"message": "\"zod\" is a runtime dependency of \"@MNI/instance-ai\"; it must be a peerDependency.",
 				"hash": "4a6882cb8d62"
 			}
 		],
-		"packages/@n8n/benchmark/package.json": [
+		"packages/@MNI/benchmark/package.json": [
 			{
 				"rule": "catalog-violations",
 				"line": 38,
@@ -443,7 +443,7 @@
 				"hash": "67f9d81d9528"
 			}
 		],
-		"packages/@n8n/cli/package.json": [
+		"packages/@MNI/cli/package.json": [
 			{
 				"rule": "catalog-violations",
 				"line": 75,
@@ -451,7 +451,7 @@
 				"hash": "733c3960022e"
 			}
 		],
-		"packages/@n8n/computer-use/package.json": [
+		"packages/@MNI/computer-use/package.json": [
 			{
 				"rule": "catalog-violations",
 				"line": 48,
@@ -481,19 +481,19 @@
 			{
 				"rule": "single-instance-libs",
 				"line": 83,
-				"message": "\"form-data\" is a runtime dependency of \"n8n-workflow\"; it must be a peerDependency.",
+				"message": "\"form-data\" is a runtime dependency of \"MNI-workflow\"; it must be a peerDependency.",
 				"hash": "a5f5104e7293"
 			}
 		],
-		"packages/@n8n/eslint-plugin-community-nodes/package.json": [
+		"packages/@MNI/eslint-plugin-community-nodes/package.json": [
 			{
 				"rule": "catalog-violations",
 				"line": 49,
-				"message": "n8n-workflow appears in 2 packages with 2 different versions — add to pnpm-workspace.yaml catalog",
+				"message": "MNI-workflow appears in 2 packages with 2 different versions — add to pnpm-workspace.yaml catalog",
 				"hash": "c5830b76ff8e"
 			}
 		],
-		"packages/@n8n/stylelint-config/package.json": [
+		"packages/@MNI/stylelint-config/package.json": [
 			{
 				"rule": "catalog-violations",
 				"line": 30,
@@ -501,7 +501,7 @@
 				"hash": "955f3fe044c7"
 			}
 		],
-		"packages/@n8n/db/src/migrations/common/1690000000030-RemoveResetPasswordColumns.ts": [
+		"packages/@MNI/db/src/migrations/common/1690000000030-RemoveResetPasswordColumns.ts": [
 			{
 				"rule": "migration-timestamp",
 				"line": 1,
@@ -509,7 +509,7 @@
 				"hash": "c524a9ca4292"
 			}
 		],
-		"packages/@n8n/db/src/migrations/common/1690000000040-AddMfaColumns.ts": [
+		"packages/@MNI/db/src/migrations/common/1690000000040-AddMfaColumns.ts": [
 			{
 				"rule": "migration-timestamp",
 				"line": 1,
@@ -517,7 +517,7 @@
 				"hash": "9d571251376b"
 			}
 		],
-		"packages/@n8n/db/src/migrations/common/1693491613982-ExecutionSoftDelete.ts": [
+		"packages/@MNI/db/src/migrations/common/1693491613982-ExecutionSoftDelete.ts": [
 			{
 				"rule": "migration-timestamp",
 				"line": 1,
@@ -525,7 +525,7 @@
 				"hash": "7ade19d27ea8"
 			}
 		],
-		"packages/@n8n/db/src/migrations/common/1693554410387-DisallowOrphanExecutions.ts": [
+		"packages/@MNI/db/src/migrations/common/1693554410387-DisallowOrphanExecutions.ts": [
 			{
 				"rule": "migration-timestamp",
 				"line": 1,
@@ -533,7 +533,7 @@
 				"hash": "d46b0ae69b38"
 			}
 		],
-		"packages/@n8n/db/src/migrations/common/1695128658538-AddWorkflowMetadata.ts": [
+		"packages/@MNI/db/src/migrations/common/1695128658538-AddWorkflowMetadata.ts": [
 			{
 				"rule": "migration-timestamp",
 				"line": 1,
@@ -541,7 +541,7 @@
 				"hash": "52c9ad1e00dc"
 			}
 		],
-		"packages/@n8n/db/src/migrations/common/1695829275184-ModifyWorkflowHistoryNodesAndConnections.ts": [
+		"packages/@MNI/db/src/migrations/common/1695829275184-ModifyWorkflowHistoryNodesAndConnections.ts": [
 			{
 				"rule": "migration-timestamp",
 				"line": 1,
@@ -549,7 +549,7 @@
 				"hash": "e05c9af6e2f9"
 			}
 		],
-		"packages/@n8n/db/src/migrations/common/1705429061930-DropRoleMapping.ts": [
+		"packages/@MNI/db/src/migrations/common/1705429061930-DropRoleMapping.ts": [
 			{
 				"rule": "migration-timestamp",
 				"line": 1,
@@ -557,7 +557,7 @@
 				"hash": "8d325473bce5"
 			}
 		],
-		"packages/@n8n/db/src/migrations/common/1712044305787-RemoveNodesAccess.ts": [
+		"packages/@MNI/db/src/migrations/common/1712044305787-RemoveNodesAccess.ts": [
 			{
 				"rule": "migration-timestamp",
 				"line": 1,
@@ -565,7 +565,7 @@
 				"hash": "8d2bbe7bc09d"
 			}
 		],
-		"packages/@n8n/db/src/migrations/common/1714133768519-CreateProject.ts": [
+		"packages/@MNI/db/src/migrations/common/1714133768519-CreateProject.ts": [
 			{
 				"rule": "migration-timestamp",
 				"line": 1,
@@ -573,7 +573,7 @@
 				"hash": "8c3e8df6f6f5"
 			}
 		],
-		"packages/@n8n/db/src/migrations/common/1714133768521-MakeExecutionStatusNonNullable.ts": [
+		"packages/@MNI/db/src/migrations/common/1714133768521-MakeExecutionStatusNonNullable.ts": [
 			{
 				"rule": "migration-timestamp",
 				"line": 1,
@@ -581,7 +581,7 @@
 				"hash": "7e726215f602"
 			}
 		],
-		"packages/@n8n/db/src/migrations/common/1724951148974-AddApiKeysTable.ts": [
+		"packages/@MNI/db/src/migrations/common/1724951148974-AddApiKeysTable.ts": [
 			{
 				"rule": "migration-timestamp",
 				"line": 1,
@@ -589,7 +589,7 @@
 				"hash": "b582d057878a"
 			}
 		],
-		"packages/@n8n/db/src/migrations/sqlite/1724951148974-AddApiKeysTable.ts": [
+		"packages/@MNI/db/src/migrations/sqlite/1724951148974-AddApiKeysTable.ts": [
 			{
 				"rule": "migration-timestamp",
 				"line": 1,
@@ -597,7 +597,7 @@
 				"hash": "c743ad0d5284"
 			}
 		],
-		"packages/@n8n/db/src/migrations/common/1727427440136-SeparateExecutionCreationFromStart.ts": [
+		"packages/@MNI/db/src/migrations/common/1727427440136-SeparateExecutionCreationFromStart.ts": [
 			{
 				"rule": "migration-timestamp",
 				"line": 1,
@@ -605,7 +605,7 @@
 				"hash": "702281e1c037"
 			}
 		],
-		"packages/@n8n/db/src/migrations/common/1729607673464-UpdateProcessedDataValueColumnToText.ts": [
+		"packages/@MNI/db/src/migrations/common/1729607673464-UpdateProcessedDataValueColumnToText.ts": [
 			{
 				"rule": "migration-timestamp",
 				"line": 1,
@@ -613,7 +613,7 @@
 				"hash": "cf281457e81a"
 			}
 		],
-		"packages/@n8n/db/src/migrations/common/1729607673469-AddProjectIcons.ts": [
+		"packages/@MNI/db/src/migrations/common/1729607673469-AddProjectIcons.ts": [
 			{
 				"rule": "migration-timestamp",
 				"line": 1,
@@ -621,7 +621,7 @@
 				"hash": "d3c84ea555a6"
 			}
 		],
-		"packages/@n8n/db/src/migrations/common/1731404028106-AddDescriptionToTestDefinition.ts": [
+		"packages/@MNI/db/src/migrations/common/1731404028106-AddDescriptionToTestDefinition.ts": [
 			{
 				"rule": "migration-timestamp",
 				"line": 1,
@@ -629,7 +629,7 @@
 				"hash": "c0b12dc71971"
 			}
 		],
-		"packages/@n8n/db/src/migrations/common/1742918400000-AddScopesColumnToApiKeys.ts": [
+		"packages/@MNI/db/src/migrations/common/1742918400000-AddScopesColumnToApiKeys.ts": [
 			{
 				"rule": "migration-timestamp",
 				"line": 1,
@@ -637,7 +637,7 @@
 				"hash": "1bd84c6e2704"
 			}
 		],
-		"packages/@n8n/db/src/migrations/common/1750252139168-LinkRoleToUserTable.ts": [
+		"packages/@MNI/db/src/migrations/common/1750252139168-LinkRoleToUserTable.ts": [
 			{
 				"rule": "migration-timestamp",
 				"line": 1,
@@ -645,7 +645,7 @@
 				"hash": "ae1fdf257787"
 			}
 		],
-		"packages/@n8n/db/src/migrations/common/1750252139170-RemoveOldRoleColumn.ts": [
+		"packages/@MNI/db/src/migrations/common/1750252139170-RemoveOldRoleColumn.ts": [
 			{
 				"rule": "migration-timestamp",
 				"line": 1,
@@ -653,7 +653,7 @@
 				"hash": "121d2727ab80"
 			}
 		],
-		"packages/@n8n/db/src/migrations/common/1752669793000-AddInputsOutputsToTestCaseExecution.ts": [
+		"packages/@MNI/db/src/migrations/common/1752669793000-AddInputsOutputsToTestCaseExecution.ts": [
 			{
 				"rule": "migration-timestamp",
 				"line": 1,
@@ -661,7 +661,7 @@
 				"hash": "01857ec1a3d0"
 			}
 		],
-		"packages/@n8n/db/src/migrations/common/1756906557570-AddTimestampsToRoleAndRoleIndexes.ts": [
+		"packages/@MNI/db/src/migrations/common/1756906557570-AddTimestampsToRoleAndRoleIndexes.ts": [
 			{
 				"rule": "migration-timestamp",
 				"line": 1,
@@ -669,7 +669,7 @@
 				"hash": "3170ea3366de"
 			}
 		],
-		"packages/@n8n/db/src/migrations/common/1758731786132-AddAudienceColumnToApiKey.ts": [
+		"packages/@MNI/db/src/migrations/common/1758731786132-AddAudienceColumnToApiKey.ts": [
 			{
 				"rule": "migration-timestamp",
 				"line": 1,
@@ -677,7 +677,7 @@
 				"hash": "d52a1dd1e54e"
 			}
 		],
-		"packages/@n8n/db/src/migrations/common/1760020000000-CreateChatHubAgentTable.ts": [
+		"packages/@MNI/db/src/migrations/common/1760020000000-CreateChatHubAgentTable.ts": [
 			{
 				"rule": "migration-timestamp",
 				"line": 1,
@@ -685,7 +685,7 @@
 				"hash": "f8b39208c141"
 			}
 		],
-		"packages/@n8n/db/src/migrations/common/1760965142113-DropUnusedChatHubColumns.ts": [
+		"packages/@MNI/db/src/migrations/common/1760965142113-DropUnusedChatHubColumns.ts": [
 			{
 				"rule": "migration-timestamp",
 				"line": 1,
@@ -693,7 +693,7 @@
 				"hash": "55d389c0489c"
 			}
 		],
-		"packages/@n8n/db/src/migrations/common/1761773155024-AddAttachmentsToChatHubMessages.ts": [
+		"packages/@MNI/db/src/migrations/common/1761773155024-AddAttachmentsToChatHubMessages.ts": [
 			{
 				"rule": "migration-timestamp",
 				"line": 1,
@@ -701,7 +701,7 @@
 				"hash": "5f07b3ecd092"
 			}
 		],
-		"packages/@n8n/db/src/migrations/common/1761830340990-AddToolsColumnToChatHubTables.ts": [
+		"packages/@MNI/db/src/migrations/common/1761830340990-AddToolsColumnToChatHubTables.ts": [
 			{
 				"rule": "migration-timestamp",
 				"line": 1,
@@ -709,7 +709,7 @@
 				"hash": "77e018405eed"
 			}
 		],
-		"packages/@n8n/db/src/migrations/common/1762177736257-AddWorkflowDescriptionColumn.ts": [
+		"packages/@MNI/db/src/migrations/common/1762177736257-AddWorkflowDescriptionColumn.ts": [
 			{
 				"rule": "migration-timestamp",
 				"line": 1,
@@ -717,7 +717,7 @@
 				"hash": "f660693c50e8"
 			}
 		],
-		"packages/@n8n/db/src/migrations/common/1762763704614-BackfillMissingWorkflowHistoryRecords.ts": [
+		"packages/@MNI/db/src/migrations/common/1762763704614-BackfillMissingWorkflowHistoryRecords.ts": [
 			{
 				"rule": "migration-timestamp",
 				"line": 1,
@@ -725,7 +725,7 @@
 				"hash": "9918ff139099"
 			}
 		],
-		"packages/@n8n/db/src/migrations/common/1762847206508-AddWorkflowHistoryAutoSaveFields.ts": [
+		"packages/@MNI/db/src/migrations/common/1762847206508-AddWorkflowHistoryAutoSaveFields.ts": [
 			{
 				"rule": "migration-timestamp",
 				"line": 1,
@@ -733,7 +733,7 @@
 				"hash": "806cf49b747e"
 			}
 		],
-		"packages/@n8n/db/src/migrations/common/1763047800000-AddActiveVersionIdColumn.ts": [
+		"packages/@MNI/db/src/migrations/common/1763047800000-AddActiveVersionIdColumn.ts": [
 			{
 				"rule": "migration-timestamp",
 				"line": 1,
@@ -741,7 +741,7 @@
 				"hash": "35d686155538"
 			}
 		],
-		"packages/@n8n/db/src/migrations/common/1764276827837-AddCreatorIdToProjectTable.ts": [
+		"packages/@MNI/db/src/migrations/common/1764276827837-AddCreatorIdToProjectTable.ts": [
 			{
 				"rule": "migration-timestamp",
 				"line": 1,
@@ -749,7 +749,7 @@
 				"hash": "1ed16ec75965"
 			}
 		],
-		"packages/@n8n/db/src/migrations/common/1765459448000-AddResolvableFieldsToCredentials.ts": [
+		"packages/@MNI/db/src/migrations/common/1765459448000-AddResolvableFieldsToCredentials.ts": [
 			{
 				"rule": "migration-timestamp",
 				"line": 1,
@@ -757,7 +757,7 @@
 				"hash": "94d3e53d35b4"
 			}
 		],
-		"packages/@n8n/db/src/migrations/common/1765788427674-AddIconToAgentTable.ts": [
+		"packages/@MNI/db/src/migrations/common/1765788427674-AddIconToAgentTable.ts": [
 			{
 				"rule": "migration-timestamp",
 				"line": 1,
@@ -765,7 +765,7 @@
 				"hash": "8886bd530de2"
 			}
 		],
-		"packages/@n8n/db/src/migrations/common/1766068346315-AddChatMessageIndices.ts": [
+		"packages/@MNI/db/src/migrations/common/1766068346315-AddChatMessageIndices.ts": [
 			{
 				"rule": "migration-timestamp",
 				"line": 1,
@@ -773,7 +773,7 @@
 				"hash": "dc5d53f65c2a"
 			}
 		],
-		"packages/@n8n/db/src/migrations/common/1769000000000-AddPublishedVersionIdToWorkflowDependency.ts": [
+		"packages/@MNI/db/src/migrations/common/1769000000000-AddPublishedVersionIdToWorkflowDependency.ts": [
 			{
 				"rule": "migration-timestamp",
 				"line": 1,
@@ -781,7 +781,7 @@
 				"hash": "e6f6c0d42f7f"
 			}
 		],
-		"packages/@n8n/db/src/migrations/common/1770000000000-CreateChatHubToolsTable.ts": [
+		"packages/@MNI/db/src/migrations/common/1770000000000-CreateChatHubToolsTable.ts": [
 			{
 				"rule": "migration-timestamp",
 				"line": 1,
@@ -789,7 +789,7 @@
 				"hash": "61f4de8f7db3"
 			}
 		],
-		"packages/@n8n/db/src/migrations/common/1771500000002-AddFilesColumnToChatHubAgents.ts": [
+		"packages/@MNI/db/src/migrations/common/1771500000002-AddFilesColumnToChatHubAgents.ts": [
 			{
 				"rule": "migration-timestamp",
 				"line": 1,
@@ -797,7 +797,7 @@
 				"hash": "5ee6be686a28"
 			}
 		],
-		"packages/@n8n/db/src/migrations/common/1772000000000-AddSuggestedPromptsToAgentTable.ts": [
+		"packages/@MNI/db/src/migrations/common/1772000000000-AddSuggestedPromptsToAgentTable.ts": [
 			{
 				"rule": "migration-timestamp",
 				"line": 1,
@@ -805,7 +805,7 @@
 				"hash": "48bcd6bfe745"
 			}
 		],
-		"packages/@n8n/db/src/migrations/common/1772619247761-AddRoleColumnToProjectSecretsProviderAccess.ts": [
+		"packages/@MNI/db/src/migrations/common/1772619247761-AddRoleColumnToProjectSecretsProviderAccess.ts": [
 			{
 				"rule": "migration-timestamp",
 				"line": 1,
@@ -813,7 +813,7 @@
 				"hash": "acc7cac40f87"
 			}
 		],
-		"packages/@n8n/db/src/migrations/common/1772700000000-AddTypeToChatHubSessions.ts": [
+		"packages/@MNI/db/src/migrations/common/1772700000000-AddTypeToChatHubSessions.ts": [
 			{
 				"rule": "migration-timestamp",
 				"line": 1,
@@ -821,7 +821,7 @@
 				"hash": "0279dc26f034"
 			}
 		],
-		"packages/@n8n/db/src/migrations/common/1774280963551-AddRestoreFieldsToWorkflowBuilderSession.ts": [
+		"packages/@MNI/db/src/migrations/common/1774280963551-AddRestoreFieldsToWorkflowBuilderSession.ts": [
 			{
 				"rule": "migration-timestamp",
 				"line": 1,
@@ -829,7 +829,7 @@
 				"hash": "5bb3e906cdbb"
 			}
 		],
-		"packages/@n8n/db/src/migrations/common/1775740765000-ChangeWorkflowPublishHistoryVersionIdToSetNull.ts": [
+		"packages/@MNI/db/src/migrations/common/1775740765000-ChangeWorkflowPublishHistoryVersionIdToSetNull.ts": [
 			{
 				"rule": "migration-timestamp",
 				"line": 1,
@@ -837,7 +837,7 @@
 				"hash": "c7e78794aefa"
 			}
 		],
-		"packages/@n8n/db/src/migrations/common/1777045000000-AddTracingContextToExecution.ts": [
+		"packages/@MNI/db/src/migrations/common/1777045000000-AddTracingContextToExecution.ts": [
 			{
 				"rule": "migration-timestamp",
 				"line": 1,
@@ -845,7 +845,7 @@
 				"hash": "41a43f631a32"
 			}
 		],
-		"packages/@n8n/db/src/migrations/common/1777100000000-AddLangsmithIdsToInstanceAiRunSnapshots.ts": [
+		"packages/@MNI/db/src/migrations/common/1777100000000-AddLangsmithIdsToInstanceAiRunSnapshots.ts": [
 			{
 				"rule": "migration-timestamp",
 				"line": 1,
@@ -853,7 +853,7 @@
 				"hash": "b541b874f037"
 			}
 		],
-		"packages/@n8n/db/src/migrations/common/1778000000000-AddExecutionDeduplicationKey.ts": [
+		"packages/@MNI/db/src/migrations/common/1778000000000-AddExecutionDeduplicationKey.ts": [
 			{
 				"rule": "migration-timestamp",
 				"line": 1,
@@ -861,7 +861,7 @@
 				"hash": "278684d916e8"
 			}
 		],
-		"packages/@n8n/db/src/migrations/common/1778100002000-AddEvaluationConfigColumnsToTestRun.ts": [
+		"packages/@MNI/db/src/migrations/common/1778100002000-AddEvaluationConfigColumnsToTestRun.ts": [
 			{
 				"rule": "migration-timestamp",
 				"line": 1,
@@ -869,7 +869,7 @@
 				"hash": "f61392909be0"
 			}
 		],
-		"packages/@n8n/db/src/migrations/common/1778496086558-CreateEvaluationCollection.ts": [
+		"packages/@MNI/db/src/migrations/common/1778496086558-CreateEvaluationCollection.ts": [
 			{
 				"rule": "migration-timestamp",
 				"line": 1,
@@ -877,7 +877,7 @@
 				"hash": "7a5d5dd7ac85"
 			}
 		],
-		"packages/@n8n/db/src/migrations/common/1784000000002-DropAgentExecutionWorkingMemory.ts": [
+		"packages/@MNI/db/src/migrations/common/1784000000002-DropAgentExecutionWorkingMemory.ts": [
 			{
 				"rule": "migration-timestamp",
 				"line": 1,
@@ -885,7 +885,7 @@
 				"hash": "88c53222237a"
 			}
 		],
-		"packages/@n8n/db/src/migrations/common/1784000000006-AddNodeGroupsColumnToWorkflowAndHistory.ts": [
+		"packages/@MNI/db/src/migrations/common/1784000000006-AddNodeGroupsColumnToWorkflowAndHistory.ts": [
 			{
 				"rule": "migration-timestamp",
 				"line": 1,
@@ -893,7 +893,7 @@
 				"hash": "e946194f33ec"
 			}
 		],
-		"packages/@n8n/db/src/migrations/common/1784000000007-CreateInstanceAiCheckpointTable.ts": [
+		"packages/@MNI/db/src/migrations/common/1784000000007-CreateInstanceAiCheckpointTable.ts": [
 			{
 				"rule": "migration-timestamp",
 				"line": 1,
@@ -901,7 +901,7 @@
 				"hash": "e5ea3b8289ec"
 			}
 		],
-		"packages/@n8n/db/src/migrations/common/1784000000011-CreateAgentHistoryTable.ts": [
+		"packages/@MNI/db/src/migrations/common/1784000000011-CreateAgentHistoryTable.ts": [
 			{
 				"rule": "migration-timestamp",
 				"line": 1,
@@ -909,7 +909,7 @@
 				"hash": "696e69444d0a"
 			}
 		],
-		"packages/@n8n/db/src/migrations/common/1784000000014-PersistInstanceAiPendingConfirmations.ts": [
+		"packages/@MNI/db/src/migrations/common/1784000000014-PersistInstanceAiPendingConfirmations.ts": [
 			{
 				"rule": "migration-timestamp",
 				"line": 1,
@@ -917,7 +917,7 @@
 				"hash": "bd255e8eeb5b"
 			}
 		],
-		"packages/@n8n/db/src/migrations/common/1784000000015-AddSourceWorkflowIdToWorkflow.ts": [
+		"packages/@MNI/db/src/migrations/common/1784000000015-AddSourceWorkflowIdToWorkflow.ts": [
 			{
 				"rule": "migration-timestamp",
 				"line": 1,
@@ -925,7 +925,7 @@
 				"hash": "45b35ca6fa25"
 			}
 		],
-		"packages/@n8n/db/src/migrations/common/1784000000017-AddLastUsedAtToApiKey.ts": [
+		"packages/@MNI/db/src/migrations/common/1784000000017-AddLastUsedAtToApiKey.ts": [
 			{
 				"rule": "migration-timestamp",
 				"line": 1,
@@ -933,7 +933,7 @@
 				"hash": "bc7d45e6e54e"
 			}
 		],
-		"packages/@n8n/db/src/migrations/common/1784000000018-CreateAgentFilesTable.ts": [
+		"packages/@MNI/db/src/migrations/common/1784000000018-CreateAgentFilesTable.ts": [
 			{
 				"rule": "migration-timestamp",
 				"line": 1,
@@ -941,7 +941,7 @@
 				"hash": "11a6b05559ae"
 			}
 		],
-		"packages/@n8n/db/src/migrations/common/1784000000019-AddCustomTelemetryTagsToProject.ts": [
+		"packages/@MNI/db/src/migrations/common/1784000000019-AddCustomTelemetryTagsToProject.ts": [
 			{
 				"rule": "migration-timestamp",
 				"line": 1,
@@ -949,7 +949,7 @@
 				"hash": "357263c229a1"
 			}
 		],
-		"packages/@n8n/db/src/migrations/common/1784000000021-CreateAgentTaskDefinitionTable.ts": [
+		"packages/@MNI/db/src/migrations/common/1784000000021-CreateAgentTaskDefinitionTable.ts": [
 			{
 				"rule": "migration-timestamp",
 				"line": 1,
@@ -957,7 +957,7 @@
 				"hash": "a161a7d7e616"
 			}
 		],
-		"packages/@n8n/db/src/migrations/common/1784000000022-AddSubAgentLinkageToAgentExecutionThreads.ts": [
+		"packages/@MNI/db/src/migrations/common/1784000000022-AddSubAgentLinkageToAgentExecutionThreads.ts": [
 			{
 				"rule": "migration-timestamp",
 				"line": 1,
@@ -965,7 +965,7 @@
 				"hash": "287b98643496"
 			}
 		],
-		"packages/@n8n/db/src/migrations/common/1784000000024-AddResourceToOAuthAuthorizationCodes.ts": [
+		"packages/@MNI/db/src/migrations/common/1784000000024-AddResourceToOAuthAuthorizationCodes.ts": [
 			{
 				"rule": "migration-timestamp",
 				"line": 1,
@@ -973,7 +973,7 @@
 				"hash": "f3aa84779924"
 			}
 		],
-		"packages/@n8n/db/src/migrations/postgresdb/1758794506893-AddProjectIdToVariableTable.ts": [
+		"packages/@MNI/db/src/migrations/postgresdb/1758794506893-AddProjectIdToVariableTable.ts": [
 			{
 				"rule": "migration-timestamp",
 				"line": 1,
@@ -981,7 +981,7 @@
 				"hash": "7aebfa806bd9"
 			}
 		],
-		"packages/@n8n/db/src/migrations/sqlite/1764276827837-AddCreatorIdToProjectTable.ts": [
+		"packages/@MNI/db/src/migrations/sqlite/1764276827837-AddCreatorIdToProjectTable.ts": [
 			{
 				"rule": "migration-timestamp",
 				"line": 1,
@@ -989,7 +989,7 @@
 				"hash": "e50608c0e078"
 			}
 		],
-		"packages/@n8n/db/src/migrations/sqlite/1764689448000-AddResolvableFieldsToCredentials.ts": [
+		"packages/@MNI/db/src/migrations/sqlite/1764689448000-AddResolvableFieldsToCredentials.ts": [
 			{
 				"rule": "migration-timestamp",
 				"line": 1,
@@ -997,7 +997,7 @@
 				"hash": "ac2493848228"
 			}
 		],
-		"packages/@n8n/typeorm/package.json": [
+		"packages/@MNI/typeorm/package.json": [
 			{
 				"rule": "catalog-violations",
 				"line": 118,
@@ -1063,115 +1063,115 @@
 			{
 				"rule": "single-instance-libs",
 				"line": 61,
-				"message": "\"@langchain/core\" is a runtime dependency of \"n8n-core\"; it must be a peerDependency.",
+				"message": "\"@langchain/core\" is a runtime dependency of \"MNI-core\"; it must be a peerDependency.",
 				"hash": "602aad4587ee"
 			},
 			{
 				"rule": "single-instance-libs",
 				"line": 81,
-				"message": "\"form-data\" is a runtime dependency of \"n8n-core\"; it must be a peerDependency.",
+				"message": "\"form-data\" is a runtime dependency of \"MNI-core\"; it must be a peerDependency.",
 				"hash": "643d5b8cd4be"
 			}
 		],
-		"packages/@n8n/backend-network/package.json": [
+		"packages/@MNI/backend-network/package.json": [
 			{
 				"rule": "single-instance-libs",
 				"line": 68,
-				"message": "\"form-data\" is a runtime dependency of \"@n8n/backend-network\"; it must be a peerDependency.",
+				"message": "\"form-data\" is a runtime dependency of \"@MNI/backend-network\"; it must be a peerDependency.",
 				"hash": "6b988cc15b6f"
 			},
 			{
 				"rule": "single-instance-libs",
 				"line": 77,
-				"message": "\"zod\" is a runtime dependency of \"@n8n/backend-network\"; it must be a peerDependency.",
+				"message": "\"zod\" is a runtime dependency of \"@MNI/backend-network\"; it must be a peerDependency.",
 				"hash": "3af671752aa6"
 			}
 		],
-		"packages/@n8n/blob-storage/package.json": [
+		"packages/@MNI/blob-storage/package.json": [
 			{
 				"rule": "single-instance-libs",
 				"line": 52,
-				"message": "\"zod\" is a runtime dependency of \"@n8n/blob-storage\"; it must be a peerDependency.",
+				"message": "\"zod\" is a runtime dependency of \"@MNI/blob-storage\"; it must be a peerDependency.",
 				"hash": "2beb68b6b1eb"
 			}
 		],
-		"packages/@n8n/config/package.json": [
+		"packages/@MNI/config/package.json": [
 			{
 				"rule": "single-instance-libs",
 				"line": 29,
-				"message": "\"zod\" is a runtime dependency of \"@n8n/config\"; it must be a peerDependency.",
+				"message": "\"zod\" is a runtime dependency of \"@MNI/config\"; it must be a peerDependency.",
 				"hash": "0acfb4c2c019"
 			}
 		],
-		"packages/@n8n/db/package.json": [
+		"packages/@MNI/db/package.json": [
 			{
 				"rule": "single-instance-libs",
 				"line": 52,
-				"message": "\"zod\" is a runtime dependency of \"@n8n/db\"; it must be a peerDependency.",
+				"message": "\"zod\" is a runtime dependency of \"@MNI/db\"; it must be a peerDependency.",
 				"hash": "67751e0ed127"
 			}
 		],
-		"packages/@n8n/extension-sdk/package.json": [
+		"packages/@MNI/extension-sdk/package.json": [
 			{
 				"rule": "single-instance-libs",
 				"line": 66,
-				"message": "\"zod\" is a runtime dependency of \"@n8n/extension-sdk\"; it must be a peerDependency.",
+				"message": "\"zod\" is a runtime dependency of \"@MNI/extension-sdk\"; it must be a peerDependency.",
 				"hash": "ab05f1864411"
 			}
 		],
-		"packages/@n8n/expression-runtime/package.json": [
+		"packages/@MNI/expression-runtime/package.json": [
 			{
 				"rule": "single-instance-libs",
 				"line": 48,
-				"message": "\"zod\" is a runtime dependency of \"@n8n/expression-runtime\"; it must be a peerDependency.",
+				"message": "\"zod\" is a runtime dependency of \"@MNI/expression-runtime\"; it must be a peerDependency.",
 				"hash": "5669d2783982"
 			}
 		],
-		"packages/@n8n/mcp-apps/package.json": [
+		"packages/@MNI/mcp-apps/package.json": [
 			{
 				"rule": "single-instance-libs",
 				"line": 45,
-				"message": "\"zod\" is a runtime dependency of \"@n8n/mcp-apps\"; it must be a peerDependency.",
+				"message": "\"zod\" is a runtime dependency of \"@MNI/mcp-apps\"; it must be a peerDependency.",
 				"hash": "5e1c42cefa8d"
 			}
 		],
-		"packages/@n8n/permissions/package.json": [
+		"packages/@MNI/permissions/package.json": [
 			{
 				"rule": "single-instance-libs",
 				"line": 26,
-				"message": "\"zod\" is a runtime dependency of \"@n8n/permissions\"; it must be a peerDependency.",
+				"message": "\"zod\" is a runtime dependency of \"@MNI/permissions\"; it must be a peerDependency.",
 				"hash": "ead6e5815a0f"
 			}
 		],
-		"packages/@n8n/syslog-client/package.json": [
+		"packages/@MNI/syslog-client/package.json": [
 			{
 				"rule": "single-instance-libs",
 				"line": 26,
-				"message": "\"zod\" is a runtime dependency of \"@n8n/syslog-client\"; it must be a peerDependency.",
+				"message": "\"zod\" is a runtime dependency of \"@MNI/syslog-client\"; it must be a peerDependency.",
 				"hash": "d1cff54dc25f"
 			}
 		],
-		"packages/@n8n/workflow-sdk/package.json": [
+		"packages/@MNI/workflow-sdk/package.json": [
 			{
 				"rule": "single-instance-libs",
 				"line": 107,
-				"message": "\"zod\" is a runtime dependency of \"@n8n/workflow-sdk\"; it must be a peerDependency.",
+				"message": "\"zod\" is a runtime dependency of \"@MNI/workflow-sdk\"; it must be a peerDependency.",
 				"hash": "e8f5ce9766b4"
 			}
 		],
-		"packages/@n8n/engine/package.json": [
+		"packages/@MNI/engine/package.json": [
 			{
 				"rule": "single-instance-libs",
 				"line": 34,
-				"message": "\"zod\" is a runtime dependency of \"@n8n/engine\"; it must be a peerDependency.",
+				"message": "\"zod\" is a runtime dependency of \"@MNI/engine\"; it must be a peerDependency.",
 				"hash": "a25ac9357fce"
 			}
 		],
-		"packages/@n8n/telemetry/package.json": [
+		"packages/@MNI/telemetry/package.json": [
 			{
 				"rule": "single-instance-libs",
 				"line": 26,
-				"message": "\"zod\" is a runtime dependency of \"@n8n/telemetry\"; it must be a peerDependency.",
+				"message": "\"zod\" is a runtime dependency of \"@MNI/telemetry\"; it must be a peerDependency.",
 				"hash": "d61edcda4afe"
 			}
 		],
@@ -1507,13 +1507,13 @@
 			{
 				"rule": "lint-config-layering",
 				"line": 26,
-				"message": "packages/nodes-base turns '@n8n/community-nodes/node-class-description-icon-missing' down to 'warn' for the whole package.",
+				"message": "packages/nodes-base turns '@MNI/community-nodes/node-class-description-icon-missing' down to 'warn' for the whole package.",
 				"hash": "203610fabf04"
 			},
 			{
 				"rule": "lint-config-layering",
 				"line": 27,
-				"message": "packages/nodes-base turns '@n8n/community-nodes/cred-class-field-icon-missing' down to 'warn' for the whole package.",
+				"message": "packages/nodes-base turns '@MNI/community-nodes/cred-class-field-icon-missing' down to 'warn' for the whole package.",
 				"hash": "ac79bc55562e"
 			}
 		],
@@ -1579,229 +1579,229 @@
 				"hash": "b3f813b386ed"
 			}
 		],
-		"packages/@n8n/ai-node-sdk/eslint.config.mjs": [
+		"packages/@MNI/ai-node-sdk/eslint.config.mjs": [
 			{
 				"rule": "lint-config-layering",
 				"line": 6,
-				"message": "packages/@n8n/ai-node-sdk turns '@typescript-eslint/no-explicit-any' down to 'warn' for the whole package.",
+				"message": "packages/@MNI/ai-node-sdk turns '@typescript-eslint/no-explicit-any' down to 'warn' for the whole package.",
 				"hash": "8e1ddde4bb6d"
 			}
 		],
-		"packages/@n8n/ai-utilities/eslint.config.mjs": [
+		"packages/@MNI/ai-utilities/eslint.config.mjs": [
 			{
 				"rule": "lint-config-layering",
 				"line": 9,
-				"message": "packages/@n8n/ai-utilities turns '@typescript-eslint/no-explicit-any' down to 'warn' for the whole package.",
+				"message": "packages/@MNI/ai-utilities turns '@typescript-eslint/no-explicit-any' down to 'warn' for the whole package.",
 				"hash": "d5a8d7cd9636"
 			},
 			{
 				"rule": "lint-config-layering",
 				"line": 10,
-				"message": "packages/@n8n/ai-utilities turns 'no-case-declarations' down to 'warn' for the whole package.",
+				"message": "packages/@MNI/ai-utilities turns 'no-case-declarations' down to 'warn' for the whole package.",
 				"hash": "b95bfb2a3056"
 			},
 			{
 				"rule": "lint-config-layering",
 				"line": 17,
-				"message": "packages/@n8n/ai-utilities turns 'unicorn/filename-case' down to 'off' for the whole package.",
+				"message": "packages/@MNI/ai-utilities turns 'unicorn/filename-case' down to 'off' for the whole package.",
 				"hash": "de46ec6eb650"
 			}
 		],
-		"packages/@n8n/backend-common/eslint.config.mjs": [
+		"packages/@MNI/backend-common/eslint.config.mjs": [
 			{
 				"rule": "lint-config-layering",
 				"line": 8,
-				"message": "packages/@n8n/backend-common turns '@typescript-eslint/no-wrapper-object-types' down to 'warn' for the whole package.",
+				"message": "packages/@MNI/backend-common turns '@typescript-eslint/no-wrapper-object-types' down to 'warn' for the whole package.",
 				"hash": "c1e3aa8a2e1c"
 			}
 		],
-		"packages/@n8n/codemirror-lang/eslint.config.mjs": [
+		"packages/@MNI/codemirror-lang/eslint.config.mjs": [
 			{
 				"rule": "lint-config-layering",
 				"line": 6,
-				"message": "packages/@n8n/codemirror-lang turns 'no-useless-escape' down to 'warn' for the whole package.",
+				"message": "packages/@MNI/codemirror-lang turns 'no-useless-escape' down to 'warn' for the whole package.",
 				"hash": "98b3e5d89db4"
 			}
 		],
-		"packages/@n8n/codemirror-lang-sql/eslint.config.mjs": [
+		"packages/@MNI/codemirror-lang-sql/eslint.config.mjs": [
 			{
 				"rule": "lint-config-layering",
 				"line": 6,
-				"message": "packages/@n8n/codemirror-lang-sql turns 'no-useless-escape' down to 'warn' for the whole package.",
+				"message": "packages/@MNI/codemirror-lang-sql turns 'no-useless-escape' down to 'warn' for the whole package.",
 				"hash": "b03974f4c1da"
 			},
 			{
 				"rule": "lint-config-layering",
 				"line": 7,
-				"message": "packages/@n8n/codemirror-lang-sql turns '@typescript-eslint/no-unsafe-enum-comparison' down to 'off' for the whole package.",
+				"message": "packages/@MNI/codemirror-lang-sql turns '@typescript-eslint/no-unsafe-enum-comparison' down to 'off' for the whole package.",
 				"hash": "3ee104dc1cd2"
 			}
 		],
-		"packages/@n8n/db/eslint.config.mjs": [
+		"packages/@MNI/db/eslint.config.mjs": [
 			{
 				"rule": "lint-config-layering",
 				"line": 25,
-				"message": "packages/@n8n/db turns '@typescript-eslint/no-base-to-string' down to 'warn' for the whole package.",
+				"message": "packages/@MNI/db turns '@typescript-eslint/no-base-to-string' down to 'warn' for the whole package.",
 				"hash": "21a54ac84b21"
 			},
 			{
 				"rule": "lint-config-layering",
 				"line": 26,
-				"message": "packages/@n8n/db turns '@typescript-eslint/no-restricted-types' down to 'warn' for the whole package.",
+				"message": "packages/@MNI/db turns '@typescript-eslint/no-restricted-types' down to 'warn' for the whole package.",
 				"hash": "1b7a8eee4264"
 			},
 			{
 				"rule": "lint-config-layering",
 				"line": 27,
-				"message": "packages/@n8n/db turns 'no-useless-escape' down to 'warn' for the whole package.",
+				"message": "packages/@MNI/db turns 'no-useless-escape' down to 'warn' for the whole package.",
 				"hash": "aa31a2b9878a"
 			}
 		],
-		"packages/@n8n/decorators/eslint.config.mjs": [
+		"packages/@MNI/decorators/eslint.config.mjs": [
 			{
 				"rule": "lint-config-layering",
 				"line": 8,
-				"message": "packages/@n8n/decorators turns '@typescript-eslint/no-base-to-string' down to 'warn' for the whole package.",
+				"message": "packages/@MNI/decorators turns '@typescript-eslint/no-base-to-string' down to 'warn' for the whole package.",
 				"hash": "b4aab632b998"
 			},
 			{
 				"rule": "lint-config-layering",
 				"line": 9,
-				"message": "packages/@n8n/decorators turns 'import-x/export' down to 'warn' for the whole package.",
+				"message": "packages/@MNI/decorators turns 'import-x/export' down to 'warn' for the whole package.",
 				"hash": "efaf9102fe79"
 			}
 		],
-		"packages/@n8n/engine/eslint.config.mjs": [
+		"packages/@MNI/engine/eslint.config.mjs": [
 			{
 				"rule": "lint-config-layering",
 				"line": 11,
-				"message": "packages/@n8n/engine turns 'unicorn/filename-case' down to 'off' for the whole package.",
+				"message": "packages/@MNI/engine turns 'unicorn/filename-case' down to 'off' for the whole package.",
 				"hash": "2455a576216c"
 			}
 		],
-		"packages/@n8n/eslint-plugin-community-nodes/eslint.config.mjs": [
+		"packages/@MNI/eslint-plugin-community-nodes/eslint.config.mjs": [
 			{
 				"rule": "lint-config-layering",
 				"line": 18,
-				"message": "packages/@n8n/eslint-plugin-community-nodes turns 'eslint-plugin/require-meta-docs-url' down to 'off' for the whole package.",
+				"message": "packages/@MNI/eslint-plugin-community-nodes turns 'eslint-plugin/require-meta-docs-url' down to 'off' for the whole package.",
 				"hash": "160308f43107"
 			},
 			{
 				"rule": "lint-config-layering",
 				"line": 20,
-				"message": "packages/@n8n/eslint-plugin-community-nodes turns 'eslint-plugin/require-meta-default-options' down to 'off' for the whole package.",
+				"message": "packages/@MNI/eslint-plugin-community-nodes turns 'eslint-plugin/require-meta-default-options' down to 'off' for the whole package.",
 				"hash": "fb3cdbc0b797"
 			},
 			{
 				"rule": "lint-config-layering",
 				"line": 22,
-				"message": "packages/@n8n/eslint-plugin-community-nodes turns '@typescript-eslint/naming-convention' down to 'off' for the whole package.",
+				"message": "packages/@MNI/eslint-plugin-community-nodes turns '@typescript-eslint/naming-convention' down to 'off' for the whole package.",
 				"hash": "b9b7b80295d3"
 			},
 			{
 				"rule": "lint-config-layering",
 				"line": 24,
-				"message": "packages/@n8n/eslint-plugin-community-nodes turns 'import-x/no-default-export' down to 'off' for the whole package.",
+				"message": "packages/@MNI/eslint-plugin-community-nodes turns 'import-x/no-default-export' down to 'off' for the whole package.",
 				"hash": "3f7dfc88d2cc"
 			}
 		],
-		"packages/@n8n/extension-sdk/eslint.config.mjs": [
+		"packages/@MNI/extension-sdk/eslint.config.mjs": [
 			{
 				"rule": "lint-config-layering",
 				"line": 7,
-				"message": "packages/@n8n/extension-sdk turns '@typescript-eslint/no-unnecessary-boolean-literal-compare' down to 'warn' for the whole package.",
+				"message": "packages/@MNI/extension-sdk turns '@typescript-eslint/no-unnecessary-boolean-literal-compare' down to 'warn' for the whole package.",
 				"hash": "1358f2270558"
 			},
 			{
 				"rule": "lint-config-layering",
 				"line": 8,
-				"message": "packages/@n8n/extension-sdk turns '@typescript-eslint/no-floating-promises' down to 'warn' for the whole package.",
+				"message": "packages/@MNI/extension-sdk turns '@typescript-eslint/no-floating-promises' down to 'warn' for the whole package.",
 				"hash": "a01fcd4e7fd1"
 			}
 		],
-		"packages/@n8n/imap/eslint.config.mjs": [
+		"packages/@MNI/imap/eslint.config.mjs": [
 			{
 				"rule": "lint-config-layering",
 				"line": 9,
-				"message": "packages/@n8n/imap turns '@typescript-eslint/no-unnecessary-boolean-literal-compare' down to 'warn' for the whole package.",
+				"message": "packages/@MNI/imap turns '@typescript-eslint/no-unnecessary-boolean-literal-compare' down to 'warn' for the whole package.",
 				"hash": "c01451c28a03"
 			},
 			{
 				"rule": "lint-config-layering",
 				"line": 10,
-				"message": "packages/@n8n/imap turns '@typescript-eslint/no-floating-promises' down to 'warn' for the whole package.",
+				"message": "packages/@MNI/imap turns '@typescript-eslint/no-floating-promises' down to 'warn' for the whole package.",
 				"hash": "9466b50c2cbc"
 			}
 		],
-		"packages/@n8n/instance-ai/eslint.config.mjs": [
+		"packages/@MNI/instance-ai/eslint.config.mjs": [
 			{
 				"rule": "lint-config-layering",
 				"line": 100,
-				"message": "packages/@n8n/instance-ai turns 'unicorn/filename-case' down to 'off' for the whole package.",
+				"message": "packages/@MNI/instance-ai turns 'unicorn/filename-case' down to 'off' for the whole package.",
 				"hash": "b76f6179d75b"
 			}
 		],
-		"packages/@n8n/json-schema-to-zod/eslint.config.mjs": [
+		"packages/@MNI/json-schema-to-zod/eslint.config.mjs": [
 			{
 				"rule": "lint-config-layering",
 				"line": 8,
-				"message": "packages/@n8n/json-schema-to-zod turns 'import-x/no-cycle' down to 'off' for the whole package.",
+				"message": "packages/@MNI/json-schema-to-zod turns 'import-x/no-cycle' down to 'off' for the whole package.",
 				"hash": "bd1fd9f55f2e"
 			},
 			{
 				"rule": "lint-config-layering",
 				"line": 12,
-				"message": "packages/@n8n/json-schema-to-zod turns 'no-constant-condition' down to 'warn' for the whole package.",
+				"message": "packages/@MNI/json-schema-to-zod turns 'no-constant-condition' down to 'warn' for the whole package.",
 				"hash": "e7995ba65bba"
 			}
 		],
-		"packages/@n8n/node-cli/eslint.config.mjs": [
+		"packages/@MNI/node-cli/eslint.config.mjs": [
 			{
 				"rule": "lint-config-layering",
 				"line": 21,
-				"message": "packages/@n8n/node-cli turns 'unicorn/filename-case' down to 'off' for the whole package.",
+				"message": "packages/@MNI/node-cli turns 'unicorn/filename-case' down to 'off' for the whole package.",
 				"hash": "450dc7735f37"
 			}
 		],
-		"packages/@n8n/task-runner/eslint.config.mjs": [
+		"packages/@MNI/task-runner/eslint.config.mjs": [
 			{
 				"rule": "lint-config-layering",
 				"line": 10,
-				"message": "packages/@n8n/task-runner turns '@typescript-eslint/no-require-imports' down to 'warn' for the whole package.",
+				"message": "packages/@MNI/task-runner turns '@typescript-eslint/no-require-imports' down to 'warn' for the whole package.",
 				"hash": "9eab9fc92af8"
 			}
 		],
-		"packages/@n8n/tournament/eslint.config.mjs": [
+		"packages/@MNI/tournament/eslint.config.mjs": [
 			{
 				"rule": "lint-config-layering",
 				"line": 8,
-				"message": "packages/@n8n/tournament turns '@typescript-eslint/no-restricted-types' down to 'off' for the whole package.",
+				"message": "packages/@MNI/tournament turns '@typescript-eslint/no-restricted-types' down to 'off' for the whole package.",
 				"hash": "a7bd4d72aeaa"
 			},
 			{
 				"rule": "lint-config-layering",
 				"line": 9,
-				"message": "packages/@n8n/tournament turns '@typescript-eslint/no-implied-eval' down to 'off' for the whole package.",
+				"message": "packages/@MNI/tournament turns '@typescript-eslint/no-implied-eval' down to 'off' for the whole package.",
 				"hash": "38c062765f50"
 			},
 			{
 				"rule": "lint-config-layering",
 				"line": 10,
-				"message": "packages/@n8n/tournament turns '@typescript-eslint/no-explicit-any' down to 'off' for the whole package.",
+				"message": "packages/@MNI/tournament turns '@typescript-eslint/no-explicit-any' down to 'off' for the whole package.",
 				"hash": "228a8d26e7bf"
 			},
 			{
 				"rule": "lint-config-layering",
 				"line": 17,
-				"message": "packages/@n8n/tournament turns 'unicorn/filename-case' down to 'off' for the whole package.",
+				"message": "packages/@MNI/tournament turns 'unicorn/filename-case' down to 'off' for the whole package.",
 				"hash": "a8dd0ff69014"
 			}
 		],
-		"packages/@n8n/utils/eslint.config.mjs": [
+		"packages/@MNI/utils/eslint.config.mjs": [
 			{
 				"rule": "lint-config-layering",
 				"line": 7,
-				"message": "packages/@n8n/utils turns 'no-prototype-builtins' down to 'warn' for the whole package.",
+				"message": "packages/@MNI/utils turns 'no-prototype-builtins' down to 'warn' for the whole package.",
 				"hash": "cc7739fda55b"
 			}
 		],
@@ -1815,7 +1815,7 @@
 			{
 				"rule": "lint-config-layering",
 				"line": 234,
-				"message": "packages/frontend/editor-ui turns 'n8n-local-rules/no-internal-package-import' down to 'warn' for the whole package.",
+				"message": "packages/frontend/editor-ui turns 'MNI-local-rules/no-internal-package-import' down to 'warn' for the whole package.",
 				"hash": "4b3a85b06980"
 			},
 			{
@@ -2029,17 +2029,17 @@
 				"hash": "affee27335fc"
 			}
 		],
-		"packages/@n8n/workflow-sdk/eslint.config.mjs": [
+		"packages/@MNI/workflow-sdk/eslint.config.mjs": [
 			{
 				"rule": "lint-config-layering",
 				"line": 71,
-				"message": "packages/@n8n/workflow-sdk turns 'n8n-local-rules/no-interpolation-in-regular-string' down to 'off' for the whole package.",
+				"message": "packages/@MNI/workflow-sdk turns 'MNI-local-rules/no-interpolation-in-regular-string' down to 'off' for the whole package.",
 				"hash": "e5999d7c77a9"
 			},
 			{
 				"rule": "lint-config-layering",
 				"line": 73,
-				"message": "packages/@n8n/workflow-sdk turns 'id-denylist' down to 'off' for the whole package.",
+				"message": "packages/@MNI/workflow-sdk turns 'id-denylist' down to 'off' for the whole package.",
 				"hash": "0f94a71d5ae8"
 			}
 		],
@@ -2087,39 +2087,39 @@
 				"hash": "de86b9645930"
 			}
 		],
-		"packages/frontend/@n8n/design-system/eslint.config.mjs": [
+		"packages/frontend/@MNI/design-system/eslint.config.mjs": [
 			{
 				"rule": "lint-config-layering",
 				"line": 12,
-				"message": "packages/frontend/@n8n/design-system turns 'no-prototype-builtins' down to 'warn' for the whole package.",
+				"message": "packages/frontend/@MNI/design-system turns 'no-prototype-builtins' down to 'warn' for the whole package.",
 				"hash": "f7e604999631"
 			},
 			{
 				"rule": "lint-config-layering",
 				"line": 13,
-				"message": "packages/frontend/@n8n/design-system turns '@typescript-eslint/prefer-optional-chain' down to 'warn' for the whole package.",
+				"message": "packages/frontend/@MNI/design-system turns '@typescript-eslint/prefer-optional-chain' down to 'warn' for the whole package.",
 				"hash": "e6d8e187bb0b"
 			},
 			{
 				"rule": "lint-config-layering",
 				"line": 14,
-				"message": "packages/frontend/@n8n/design-system turns '@typescript-eslint/restrict-template-expressions' down to 'warn' for the whole package.",
+				"message": "packages/frontend/@MNI/design-system turns '@typescript-eslint/restrict-template-expressions' down to 'warn' for the whole package.",
 				"hash": "86a0b84b8415"
 			}
 		],
-		"packages/frontend/@n8n/i18n/eslint.config.mjs": [
+		"packages/frontend/@MNI/i18n/eslint.config.mjs": [
 			{
 				"rule": "lint-config-layering",
 				"line": 6,
-				"message": "packages/frontend/@n8n/i18n turns '@typescript-eslint/no-unnecessary-type-assertion' down to 'warn' for the whole package.",
+				"message": "packages/frontend/@MNI/i18n turns '@typescript-eslint/no-unnecessary-type-assertion' down to 'warn' for the whole package.",
 				"hash": "5836fd4581b2"
 			}
 		],
-		"packages/frontend/@n8n/stores/eslint.config.mjs": [
+		"packages/frontend/@MNI/stores/eslint.config.mjs": [
 			{
 				"rule": "lint-config-layering",
 				"line": 6,
-				"message": "packages/frontend/@n8n/stores turns '@typescript-eslint/no-unnecessary-type-assertion' down to 'warn' for the whole package.",
+				"message": "packages/frontend/@MNI/stores turns '@typescript-eslint/no-unnecessary-type-assertion' down to 'warn' for the whole package.",
 				"hash": "63e2dd35dc47"
 			}
 		],

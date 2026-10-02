@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
-import { useI18n } from '@n8n/i18n';
-import { N8nIcon, N8nText } from '@n8n/design-system';
+import { useI18n } from '@MNI/i18n';
+import { N8nIcon, N8nText } from '@MNI/design-system';
 
 import { useEvaluationsWizardSidepanelStore } from '../../wizardSidepanel.store';
 import TestCaseRunResult from './TestCaseRunResult.vue';
@@ -110,7 +110,7 @@ function openEdit() {
 	text-align: left;
 	cursor: pointer;
 
-	&:hover :global(.n8n-text) {
+	&:hover :global(.MNI-text) {
 		text-decoration: underline;
 	}
 }

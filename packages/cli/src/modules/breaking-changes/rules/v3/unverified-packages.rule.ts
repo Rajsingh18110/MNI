@@ -1,5 +1,5 @@
-import { CommaSeparatedStringArray, Config, Env } from '@n8n/config';
-import { BreakingChangeRule } from '@n8n/decorators';
+import { CommaSeparatedStringArray, Config, Env } from '@MNI/config';
+import { BreakingChangeRule } from '@MNI/decorators';
 
 import { NOT_AFFECTED_INSTANCE } from '../../detection-report';
 import type {
@@ -16,10 +16,10 @@ import { BreakingChangeCategory } from '../../types';
  */
 @Config
 export class CommunityPackagesEnabledConfig {
-	@Env('N8N_COMMUNITY_PACKAGES_ENABLED')
+	@Env('MNI_COMMUNITY_PACKAGES_ENABLED')
 	enabled: boolean = true;
 
-	@Env('N8N_DISABLED_MODULES')
+	@Env('MNI_DISABLED_MODULES')
 	private disabledModules: CommaSeparatedStringArray<string> = [];
 
 	sanitize() {
@@ -40,7 +40,7 @@ export class UnverifiedPackagesRule implements IBreakingChangeInstanceRule {
 			version: 'v3',
 			title: 'Unverified community packages are disabled by default',
 			description:
-				'The default of N8N_UNVERIFIED_PACKAGES_ENABLED changes to false. Installed community packages that are not verified by MNI will stop loading unless the variable is explicitly set to true.',
+				'The default of MNI_UNVERIFIED_PACKAGES_ENABLED changes to false. Installed community packages that are not verified by MNI will stop loading unless the variable is explicitly set to true.',
 			category: BreakingChangeCategory.environment,
 			severity: 'medium',
 		};
@@ -49,7 +49,7 @@ export class UnverifiedPackagesRule implements IBreakingChangeInstanceRule {
 	async detect(): Promise<InstanceDetectionReport> {
 		const isAffected =
 			this.communityPackagesConfig.enabled &&
-			process.env.N8N_UNVERIFIED_PACKAGES_ENABLED === undefined;
+			process.env.MNI_UNVERIFIED_PACKAGES_ENABLED === undefined;
 
 		if (!isAffected) return NOT_AFFECTED_INSTANCE;
 
@@ -59,15 +59,15 @@ export class UnverifiedPackagesRule implements IBreakingChangeInstanceRule {
 				{
 					title: 'Instance relies on the current default for unverified packages',
 					description:
-						'N8N_UNVERIFIED_PACKAGES_ENABLED is not set, so this instance currently allows unverified community packages. After the update, workflows using nodes from unverified packages will fail to load them.',
+						'MNI_UNVERIFIED_PACKAGES_ENABLED is not set, so this instance currently allows unverified community packages. After the update, workflows using nodes from unverified packages will fail to load them.',
 					level: 'warning',
 				},
 			],
 			recommendations: [
 				{
-					action: 'Set N8N_UNVERIFIED_PACKAGES_ENABLED explicitly',
+					action: 'Set MNI_UNVERIFIED_PACKAGES_ENABLED explicitly',
 					description:
-						'Review your installed community packages. If any are unverified and you want to keep using them, set N8N_UNVERIFIED_PACKAGES_ENABLED=true before updating.',
+						'Review your installed community packages. If any are unverified and you want to keep using them, set MNI_UNVERIFIED_PACKAGES_ENABLED=true before updating.',
 				},
 			],
 		};

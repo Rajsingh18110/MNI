@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, test, vi } from 'vitest';
-import { TELEMETRY_EVENT } from '@n8n/telemetry';
+import { TELEMETRY_EVENT } from '@MNI/telemetry';
 
 import { useInstanceAiBrowserUseTelemetry } from '../instanceAiBrowserUse.telemetry';
 
@@ -8,7 +8,7 @@ const { isBrowserSupported, track } = vi.hoisted(() => ({
 	track: vi.fn(),
 }));
 
-vi.mock('@n8n/composables/useTelemetry', () => ({
+vi.mock('@MNI/composables/useTelemetry', () => ({
 	useTelemetry: () => ({ track }),
 }));
 

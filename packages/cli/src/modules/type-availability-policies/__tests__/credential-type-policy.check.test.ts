@@ -1,10 +1,10 @@
-import type { LicenseState } from '@n8n/backend-common';
+import type { LicenseState } from '@MNI/backend-common';
 import type {
 	ContentImportTransport,
 	CredentialDecryptContext,
 	PolicedWorkflow,
-} from '@n8n/decorators';
-import type { INode } from 'n8n-workflow';
+} from '@MNI/decorators';
+import type { INode } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import { CredentialTypePolicyCheck } from '../credential-type-policy.check';
@@ -18,9 +18,9 @@ const SLACK_API = 'slackApi';
 const GMAIL_OAUTH = 'gmailOAuth2';
 const HTTP_BASIC = 'httpBasicAuth';
 
-const SLACK_NODE = 'n8n-nodes-base.slack';
-const HTTP_REQUEST = 'n8n-nodes-base.httpRequest';
-const SET = 'n8n-nodes-base.set';
+const SLACK_NODE = 'MNI-nodes-base.slack';
+const HTTP_REQUEST = 'MNI-nodes-base.httpRequest';
+const SET = 'MNI-nodes-base.set';
 
 const decryptOf = (credentialType: string, nodeType: string | null = SLACK_NODE) =>
 	({
@@ -120,7 +120,7 @@ describe('CredentialTypePolicyCheck', () => {
 			const result = await check.onWorkflowSave({
 				workflow: workflow([
 					node(SLACK_NODE, { [SLACK_API]: 'cred-1' }),
-					node('n8n-nodes-base.gmail', { [GMAIL_OAUTH]: 'cred-2' }),
+					node('MNI-nodes-base.gmail', { [GMAIL_OAUTH]: 'cred-2' }),
 				]),
 				storedWorkflow: workflow([node(SLACK_NODE, { [SLACK_API]: 'cred-1' })]),
 				projectId: 'project-1',
@@ -150,7 +150,7 @@ describe('CredentialTypePolicyCheck', () => {
 				workflow: workflow(
 					[
 						node(SLACK_NODE, { [SLACK_API]: 'cred-1' }),
-						node('n8n-nodes-base.gmail', { [GMAIL_OAUTH]: 'cred-2' }),
+						node('MNI-nodes-base.gmail', { [GMAIL_OAUTH]: 'cred-2' }),
 						node(HTTP_REQUEST, { [HTTP_BASIC]: 'cred-3' }),
 					],
 					null,
@@ -222,7 +222,7 @@ describe('CredentialTypePolicyCheck', () => {
 		const nodes = [
 			node(SET),
 			node(SLACK_NODE, { [SLACK_API]: 'cred-1' }),
-			node('n8n-nodes-base.gmail', { [GMAIL_OAUTH]: 'cred-2' }),
+			node('MNI-nodes-base.gmail', { [GMAIL_OAUTH]: 'cred-2' }),
 		];
 
 		it('reports every denied type on publish, even one the stored workflow had', async () => {

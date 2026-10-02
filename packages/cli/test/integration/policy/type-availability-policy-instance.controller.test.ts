@@ -1,8 +1,8 @@
-import { testDb } from '@n8n/backend-test-utils';
-import { LICENSE_FEATURES } from '@n8n/constants';
-import type { User } from '@n8n/db';
-import { Container } from '@n8n/di';
-import type { NodeLoader } from 'n8n-workflow';
+import { testDb } from '@MNI/backend-test-utils';
+import { LICENSE_FEATURES } from '@MNI/constants';
+import type { User } from '@MNI/db';
+import { Container } from '@MNI/di';
+import type { NodeLoader } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import { EventService } from '@/events/event.service';
@@ -32,9 +32,9 @@ beforeAll(async () => {
 	member = await createMember();
 
 	// A `package` rule is rejected at write time unless the package is actually loaded — see
-	// `n8n-nodes-base` used as a stand-in for "an installed package" below.
+	// `MNI-nodes-base` used as a stand-in for "an installed package" below.
 	Container.get(LoadNodesAndCredentials).loaders = {
-		'n8n-nodes-base': mock<NodeLoader>({ known: { nodes: {}, credentials: {} } }),
+		'MNI-nodes-base': mock<NodeLoader>({ known: { nodes: {}, credentials: {} } }),
 	};
 });
 
@@ -176,7 +176,7 @@ describe('node type availability policy instance controller admin happy path', (
 			.put('/node-type-policies/instance')
 			.send({
 				rules: [
-					{ id: 'r2', action: 'allow', selector: { kind: 'package', value: 'n8n-nodes-base' } },
+					{ id: 'r2', action: 'allow', selector: { kind: 'package', value: 'MNI-nodes-base' } },
 				],
 				defaultAction: 'deny',
 				version: first.body.data.version,

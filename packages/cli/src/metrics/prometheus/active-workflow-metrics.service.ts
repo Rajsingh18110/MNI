@@ -1,7 +1,7 @@
-import { PrometheusMetricsConfig } from '@n8n/config';
-import { Time } from '@n8n/constants';
-import { WorkflowRepository } from '@n8n/db';
-import { Service } from '@n8n/di';
+import { PrometheusMetricsConfig } from '@MNI/config';
+import { Time } from '@MNI/constants';
+import { WorkflowRepository } from '@MNI/db';
+import { Service } from '@MNI/di';
 import promClient from 'prom-client';
 
 import { CacheService } from '@/services/cache/cache.service';

@@ -1,8 +1,8 @@
-import { Logger } from '@n8n/backend-common';
-import { Container } from '@n8n/di';
-import type { BinaryData } from 'n8n-core';
-import { BinaryDataConfig, BinaryDataService, TEMP_EXECUTION_ID } from 'n8n-core';
-import type { IBinaryData, IRun, WorkflowExecuteMode } from 'n8n-workflow';
+import { Logger } from '@MNI/backend-common';
+import { Container } from '@MNI/di';
+import type { BinaryData } from 'MNI-core';
+import { BinaryDataConfig, BinaryDataService, TEMP_EXECUTION_ID } from 'MNI-core';
+import type { IBinaryData, IRun, WorkflowExecuteMode } from 'MNI-workflow';
 
 /**
  * Whenever the execution ID is not available to the binary data service at the

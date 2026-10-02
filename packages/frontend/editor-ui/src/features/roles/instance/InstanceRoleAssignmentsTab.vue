@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { useRolesStore } from '@n8n/stores/roles.store';
-import { useUsersStore } from '@n8n/stores/users.store';
-import type { RoleMember } from '@n8n/api-types';
-import { N8nLoading, N8nTableBase, N8nText, N8nUserInfo } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+import { useRolesStore } from '@MNI/stores/roles.store';
+import { useUsersStore } from '@MNI/stores/users.store';
+import type { RoleMember } from '@MNI/api-types';
+import { N8nLoading, N8nTableBase, N8nText, N8nUserInfo } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 import { useAsyncState } from '@vueuse/core';
 import { watch } from 'vue';
 

@@ -1,11 +1,11 @@
-import type { InstanceRegistration } from '@n8n/api-types';
-import { Logger } from '@n8n/backend-common';
-import { ExecutionsConfig, ScalingModeConfig } from '@n8n/config';
-import { Service } from '@n8n/di';
-import { InstanceSettings } from 'n8n-core';
+import type { InstanceRegistration } from '@MNI/api-types';
+import { Logger } from '@MNI/backend-common';
+import { ExecutionsConfig, ScalingModeConfig } from '@MNI/config';
+import { Service } from '@MNI/di';
+import { InstanceSettings } from 'MNI-core';
 import { randomUUID } from 'node:crypto';
 
-import { N8N_VERSION } from '@/constants';
+import { MNI_VERSION } from '@/constants';
 import { resolveWorkerPoolName } from '@/scaling/queue-name';
 
 import { REGISTRY_CONSTANTS } from './instance-registry.types';
@@ -102,7 +102,7 @@ export class InstanceRegistryService {
 			hostId: this.instanceSettings.hostId,
 			instanceType: this.instanceSettings.instanceType,
 			instanceRole: this.instanceSettings.instanceRole,
-			version: N8N_VERSION,
+			version: MNI_VERSION,
 			registeredAt: this.registeredAt,
 			lastSeen: Date.now(),
 		};
@@ -119,7 +119,7 @@ export class InstanceRegistryService {
 
 		if (useRedis) {
 			const { RedisInstanceStorage } = await import('./storage/redis-instance-storage.js');
-			const { Container } = await import('@n8n/di');
+			const { Container } = await import('@MNI/di');
 			return Container.get(RedisInstanceStorage);
 		}
 

@@ -1,7 +1,7 @@
-import { GROUPS_WITH_MANY_BOUNDARIES_FLAG, GROUPS_WITH_TRIGGERS_FLAG } from '@n8n/api-types';
-import type { User } from '@n8n/db';
-import { Service } from '@n8n/di';
-import type { NodeGroupRuleOptions } from 'n8n-workflow';
+import { GROUPS_WITH_MANY_BOUNDARIES_FLAG, GROUPS_WITH_TRIGGERS_FLAG } from '@MNI/api-types';
+import type { User } from '@MNI/db';
+import { Service } from '@MNI/di';
+import type { NodeGroupRuleOptions } from 'MNI-workflow';
 
 import { PostHogClient } from '@/posthog';
 

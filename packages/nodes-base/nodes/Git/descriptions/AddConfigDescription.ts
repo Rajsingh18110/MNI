@@ -1,4 +1,4 @@
-import type { INodeProperties } from 'n8n-workflow';
+import type { INodeProperties } from 'MNI-workflow';
 
 export const ALLOWED_CONFIG_KEYS = ['user.email', 'user.name', 'remote.origin.url'];
 

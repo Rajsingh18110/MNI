@@ -6,7 +6,7 @@ import {
 	type SharedWorkflowRepository,
 	type User,
 	type WorkflowRepository,
-} from '@n8n/db';
+} from '@MNI/db';
 import { mock } from 'vitest-mock-extended';
 
 import { BadRequestError } from '@/errors/response-errors/bad-request.error';

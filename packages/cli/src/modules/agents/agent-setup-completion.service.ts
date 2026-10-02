@@ -1,8 +1,8 @@
-import type { CredentialProvider } from '@n8n/agents';
-import type { AgentJsonConfig } from '@n8n/api-types';
-import type { User } from '@n8n/db';
-import { Service } from '@n8n/di';
-import { TELEMETRY_EVENT } from '@n8n/telemetry';
+import type { CredentialProvider } from '@MNI/agents';
+import type { AgentJsonConfig } from '@MNI/api-types';
+import type { User } from '@MNI/db';
+import { Service } from '@MNI/di';
+import { TELEMETRY_EVENT } from '@MNI/telemetry';
 
 import { Telemetry } from '@/telemetry';
 

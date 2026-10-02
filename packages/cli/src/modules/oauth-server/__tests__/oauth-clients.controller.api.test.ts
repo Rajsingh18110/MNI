@@ -1,7 +1,7 @@
-import { testDb } from '@n8n/backend-test-utils';
-import { GlobalConfig } from '@n8n/config';
-import type { User } from '@n8n/db';
-import { Container } from '@n8n/di';
+import { testDb } from '@MNI/backend-test-utils';
+import { GlobalConfig } from '@MNI/config';
+import type { User } from '@MNI/db';
+import { Container } from '@MNI/di';
 
 import { createOwner, createMember } from '@test-integration/db/users';
 import { setupTestServer } from '@test-integration/utils';

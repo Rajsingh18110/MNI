@@ -1,7 +1,7 @@
-import { AI_GATEWAY_MANAGED_TAG } from '@n8n/api-types';
-import { OutboundHttp } from '@n8n/backend-network';
-import type { User } from '@n8n/db';
-import { Service } from '@n8n/di';
+import { AI_GATEWAY_MANAGED_TAG } from '@MNI/api-types';
+import { OutboundHttp } from '@MNI/backend-network';
+import type { User } from '@MNI/db';
+import { Service } from '@MNI/di';
 
 import { CredentialsService } from '@/credentials/credentials.service';
 import { CredentialsHelper } from '@/credentials-helper';
@@ -29,9 +29,9 @@ interface ModelLookupOptions {
 
 /**
  * Fetches a provider's live chat-model list for a credential, via the shared
- * `@n8n/ai-utilities/model-discovery` functions (the same provider knowledge
+ * `@MNI/ai-utilities/model-discovery` functions (the same provider knowledge
  * that backs the chat sub-nodes' model dropdowns). Nothing from
- * `@n8n/n8n-nodes-langchain` is loaded on this path.
+ * `@MNI/MNI-nodes-langchain` is loaded on this path.
  *
  * The credential must be usable by the user within the given project — the
  * same set as the workflow editor's credential picker.
@@ -162,7 +162,7 @@ export class BuilderModelLiveLookupService {
 		policyOverride?: ModelCatalogPolicy,
 	): Promise<LiveModelLookupResult> {
 		const { isOpenAiCustomEndpoint, listModelsForProvider } = await import(
-			'@n8n/ai-utilities/model-discovery'
+			'@MNI/ai-utilities/model-discovery'
 		);
 		const credentialData: Record<string, unknown> = { apiKey: '', ...rawData };
 		const mapped = mapCredentialForProvider(provider, credentialData);

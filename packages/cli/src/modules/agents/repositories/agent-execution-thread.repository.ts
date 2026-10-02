@@ -1,10 +1,10 @@
-import type { AgentSessionOrigin, AgentSessionQueryFilters } from '@n8n/api-types';
-import type { SerializableAgentState } from '@n8n/agents';
-import { BaseRepository, TransactionRunner, type OperationContext } from '@n8n/db';
-import { Service } from '@n8n/di';
-import { DataSource, IsNull, Not, type EntityManager, type SelectQueryBuilder } from '@n8n/typeorm';
+import type { AgentSessionOrigin, AgentSessionQueryFilters } from '@MNI/api-types';
+import type { SerializableAgentState } from '@MNI/agents';
+import { BaseRepository, TransactionRunner, type OperationContext } from '@MNI/db';
+import { Service } from '@MNI/di';
+import { DataSource, IsNull, Not, type EntityManager, type SelectQueryBuilder } from '@MNI/typeorm';
 import chunk from 'lodash/chunk';
-import { jsonParse, UserError } from 'n8n-workflow';
+import { jsonParse, UserError } from 'MNI-workflow';
 
 import { AgentChatAttachment } from '../entities/agent-chat-attachment.entity';
 import { AgentCheckpoint } from '../entities/agent-checkpoint.entity';

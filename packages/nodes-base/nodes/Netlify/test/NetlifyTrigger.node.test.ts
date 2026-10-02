@@ -1,5 +1,5 @@
 import { randomBytes } from 'crypto';
-import type { IHookFunctions, IWebhookFunctions } from 'n8n-workflow';
+import type { IHookFunctions, IWebhookFunctions } from 'MNI-workflow';
 
 import { netlifyApiRequest } from '../GenericFunctions';
 import { NetlifyTrigger } from '../NetlifyTrigger.node';

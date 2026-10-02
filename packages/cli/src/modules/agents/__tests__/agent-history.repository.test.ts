@@ -1,4 +1,4 @@
-import type { User } from '@n8n/db';
+import type { User } from '@MNI/db';
 
 import { renderAuthor } from '../repositories/agent-history.repository';
 

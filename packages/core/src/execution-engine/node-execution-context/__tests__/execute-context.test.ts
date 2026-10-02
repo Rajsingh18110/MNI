@@ -14,7 +14,7 @@ import type {
 	ExecuteAgentInvocationContext,
 	WorkflowExpression,
 	IWorkflowBase,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import {
 	UnexpectedError,
 	ExpressionError,
@@ -23,7 +23,7 @@ import {
 	WAIT_INDEFINITELY,
 	WAIT_FOR_SUB_EXECUTION,
 	MAX_IN_PROCESS_WAIT_MS,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import { ExecutionLifecycleHooks } from '@/execution-engine/execution-lifecycle-hooks';
@@ -193,7 +193,7 @@ describe('ExecuteContext', () => {
 		});
 
 		it('should handle expression errors on Set nodes (Ticket #PAY-684)', () => {
-			node.type = 'n8n-nodes-base.set';
+			node.type = 'MNI-nodes-base.set';
 			node.continueOnFail = true;
 
 			expression.getParameterValue.mockImplementationOnce(() => {
@@ -425,7 +425,7 @@ describe('ExecuteContext', () => {
 		const webhookNode: INode = {
 			id: 'webhook-node-id',
 			name: 'Webhook',
-			type: 'n8n-nodes-base.webhook',
+			type: 'MNI-nodes-base.webhook',
 			typeVersion: 1,
 			position: [0, 0],
 			parameters: {},
@@ -520,7 +520,7 @@ describe('ExecuteContext', () => {
 					hasCallerSessionId: false,
 					nodes: [
 						{ name: node.name, type: node.type },
-						{ name: 'Webhook', type: 'n8n-nodes-base.webhook' },
+						{ name: 'Webhook', type: 'MNI-nodes-base.webhook' },
 					],
 					runExecutionData,
 				},

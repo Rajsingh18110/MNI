@@ -1,5 +1,5 @@
-import type { Schedule } from '@n8n/scheduler';
-import { scheduleFingerprint } from '@n8n/scheduler';
+import type { Schedule } from '@MNI/scheduler';
+import { scheduleFingerprint } from '@MNI/scheduler';
 
 import { nameDesiredJobs } from '../desired-job-name';
 

@@ -1,12 +1,12 @@
-import type { GenerateResult } from '@n8n/agents';
-import type { AgentJsonConfig } from '@n8n/api-types';
-import type { Logger, ModuleRegistry } from '@n8n/backend-common';
-import type { OutboundHttp } from '@n8n/backend-network';
-import type { ExecutionsConfig } from '@n8n/config';
-import type { User } from '@n8n/db';
-import { Container } from '@n8n/di';
-import type { EvalLlmMockHandler } from 'n8n-core';
-import type { INode } from 'n8n-workflow';
+import type { GenerateResult } from '@MNI/agents';
+import type { AgentJsonConfig } from '@MNI/api-types';
+import type { Logger, ModuleRegistry } from '@MNI/backend-common';
+import type { OutboundHttp } from '@MNI/backend-network';
+import type { ExecutionsConfig } from '@MNI/config';
+import type { User } from '@MNI/db';
+import { Container } from '@MNI/di';
+import type { EvalLlmMockHandler } from 'MNI-core';
+import type { INode } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import type { CredentialsService } from '@/credentials/credentials.service';
@@ -63,7 +63,7 @@ const baseConfig: AgentJsonConfig = {
 		{
 			type: 'node',
 			name: 'Slack Tool',
-			node: { nodeType: 'n8n-nodes-base.slackTool', nodeTypeVersion: 1, nodeParameters: {} },
+			node: { nodeType: 'MNI-nodes-base.slackTool', nodeTypeVersion: 1, nodeParameters: {} },
 		},
 	],
 } as unknown as AgentJsonConfig;
@@ -232,7 +232,7 @@ describe('EvalAgentExecutionService.executeWithLlmMock', () => {
 			const handler = additionalData.evalLlmMockHandler as EvalLlmMockHandler;
 			await handler(
 				{ url: 'https://slack.com/api/chat.postMessage', method: 'POST', body: { text: 'hi' } },
-				{ name: 'Slack_Tool', type: 'n8n-nodes-base.slackTool' } as INode,
+				{ name: 'Slack_Tool', type: 'MNI-nodes-base.slackTool' } as INode,
 			);
 			return makeGenerateResult();
 		});
@@ -258,7 +258,7 @@ describe('EvalAgentExecutionService.executeWithLlmMock', () => {
 		expect(result.toolCalls[0].interceptedRequests[0]).toMatchObject({
 			url: 'https://slack.com/api/chat.postMessage',
 			method: 'POST',
-			nodeType: 'n8n-nodes-base.slackTool',
+			nodeType: 'MNI-nodes-base.slackTool',
 			mockResponse: { ok: true },
 		});
 		expect(close).toHaveBeenCalledTimes(1);
@@ -524,7 +524,7 @@ describe('EvalAgentExecutionService.executeWithLlmMock', () => {
 			const handler = additionalData.evalLlmMockHandler as EvalLlmMockHandler;
 			await handler({ url: 'https://slack.com/api/chat.postMessage', method: 'POST' }, {
 				name: 'Slack_Tool',
-				type: 'n8n-nodes-base.slackTool',
+				type: 'MNI-nodes-base.slackTool',
 			} as INode);
 			return makeGenerateResult({ toolCalls: [] });
 		});
@@ -568,7 +568,7 @@ describe('EvalAgentExecutionService.executeWithLlmMock', () => {
 			const handler = additionalData.evalLlmMockHandler as EvalLlmMockHandler;
 			const response = await handler({ url: 'https://slack.com/api/x', method: 'POST' }, {
 				name: 'Slack_Tool',
-				type: 'n8n-nodes-base.slackTool',
+				type: 'MNI-nodes-base.slackTool',
 			} as INode);
 			// Node code mutates the body it was handed.
 			(response?.body as typeof served).output[0].content[0].text = { a: 1 } as never;
@@ -786,7 +786,7 @@ describe('summarizeTools', () => {
 				name: 'Slack_Tool',
 				kind: 'node',
 				description: undefined,
-				nodeType: 'n8n-nodes-base.slackTool',
+				nodeType: 'MNI-nodes-base.slackTool',
 			},
 			{ name: 'Order_lookup', kind: 'workflow', description: 'Find an order' },
 			{ name: 'my_custom', kind: 'custom', description: 'Custom' },

@@ -80,7 +80,7 @@ test.describe(
 
 			// Wait for metrics to be scraped (VictoriaMetrics scrapes every 5s)
 			// Query for MNI version info metric (always present)
-			const versionMetric = await obs.metrics.waitForMetric('n8n_version_info', {
+			const versionMetric = await obs.metrics.waitForMetric('MNI_version_info', {
 				timeoutMs: 30000,
 			});
 

@@ -1,10 +1,10 @@
 import type {
 	EvaluationApiError as EvaluationApiErrorShape,
 	EvaluationErrorCode,
-} from '@n8n/api-types';
+} from '@MNI/api-types';
 
 /**
- * Throwable wrapper around the wire-shape `EvaluationApiError` from `@n8n/api-types`.
+ * Throwable wrapper around the wire-shape `EvaluationApiError` from `@MNI/api-types`.
  * Carries a typed `code` so the controller can map it onto an HTTP status without
  * losing the structured detail payload the frontend uses for localized copy.
  */

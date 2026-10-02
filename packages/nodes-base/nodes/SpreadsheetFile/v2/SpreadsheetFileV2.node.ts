@@ -4,8 +4,8 @@ import type {
 	INodeType,
 	INodeTypeBaseDescription,
 	INodeTypeDescription,
-} from 'n8n-workflow';
-import { NodeConnectionTypes } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeConnectionTypes } from 'MNI-workflow';
 
 import * as fromFile from './fromFile.operation';
 import * as toFile from './toFile.operation';

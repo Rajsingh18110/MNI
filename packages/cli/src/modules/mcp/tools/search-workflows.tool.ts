@@ -1,6 +1,6 @@
-import { folderIdSchema } from '@n8n/api-types';
-import { type User, type WorkflowEntity } from '@n8n/db';
-import { PROJECT_ROOT } from 'n8n-workflow';
+import { folderIdSchema } from '@MNI/api-types';
+import { type User, type WorkflowEntity } from '@MNI/db';
+import { PROJECT_ROOT } from 'MNI-workflow';
 import z from 'zod';
 
 import { USER_CALLED_MCP_TOOL_EVENT } from '../mcp.constants';

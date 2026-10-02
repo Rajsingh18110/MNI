@@ -1,6 +1,6 @@
-import type { InstanceAiCredits } from '@n8n/api-types';
-import type { User } from '@n8n/db';
-import { isQuotaExhaustedError } from '@n8n/instance-ai';
+import type { InstanceAiCredits } from '@MNI/api-types';
+import type { User } from '@MNI/db';
+import { isQuotaExhaustedError } from '@MNI/instance-ai';
 
 import {
 	getUserFacingErrorMessage,

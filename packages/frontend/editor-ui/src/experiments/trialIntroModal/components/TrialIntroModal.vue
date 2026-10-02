@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import Modal from '@/app/components/Modal.vue';
-import { useToast } from '@n8n/composables/useToast';
-import { useCloudPlanStore } from '@n8n/stores/cloudPlan.store';
+import { useToast } from '@MNI/composables/useToast';
+import { useCloudPlanStore } from '@MNI/stores/cloudPlan.store';
 import { useUIStore } from '@/app/stores/ui.store';
 import { TRIAL_INTRO_MODAL_KEY } from '@/experiments/trialIntroModal/constants';
 import { useTrialIntroModalStore } from '@/experiments/trialIntroModal/stores/trialIntroModal.store';
@@ -14,9 +14,9 @@ import {
 	N8nIcon,
 	N8nLogo,
 	N8nText,
-} from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
-import { createEventBus } from '@n8n/utils/event-bus';
+} from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
+import { createEventBus } from '@MNI/utils/event-bus';
 import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue';
 import { I18nT } from 'vue-i18n';
 

@@ -1,6 +1,6 @@
-import { GlobalConfig } from '@n8n/config';
-import { CredentialsRepository, SharedCredentialsRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
+import { GlobalConfig } from '@MNI/config';
+import { CredentialsRepository, SharedCredentialsRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
 
 import { CredentialsService } from '@/credentials/credentials.service';
 

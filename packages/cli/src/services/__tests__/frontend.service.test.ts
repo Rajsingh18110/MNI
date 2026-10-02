@@ -1,11 +1,11 @@
 import type { Mock } from 'vitest';
-import type { LicenseState, Logger, ModuleRegistry } from '@n8n/backend-common';
-import type { GlobalConfig, SecurityConfig } from '@n8n/config';
-import type { WorkflowRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
+import type { LicenseState, Logger, ModuleRegistry } from '@MNI/backend-common';
+import type { GlobalConfig, SecurityConfig } from '@MNI/config';
+import type { WorkflowRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
 import { mock } from 'vitest-mock-extended';
-import type { BinaryDataConfig, InstanceSettings } from 'n8n-core';
-import type { ICredentialType, INodeTypeDescription } from 'n8n-workflow';
+import type { BinaryDataConfig, InstanceSettings } from 'MNI-core';
+import type { ICredentialType, INodeTypeDescription } from 'MNI-workflow';
 
 import type { CredentialTypes } from '@/credential-types';
 import type { CredentialsOverwrites } from '@/credentials-overwrites';
@@ -16,7 +16,7 @@ import { CommunityPackagesConfig } from '@/modules/community-packages/community-
 import type { PushConfig } from '@/push/push.config';
 import type { AiUsageService } from '@/services/ai-usage.service';
 import { FrontendService, type PublicFrontendSettings } from '@/services/frontend.service';
-import type { UrlService } from '@n8n/backend-services';
+import type { UrlService } from '@MNI/backend-services';
 import type { WorkflowReviewPolicyService } from '@/services/workflow-review-policy.service';
 import type { UserManagementMailer } from '@/user-management/email';
 import type { OwnershipService } from '../ownership.service';
@@ -280,12 +280,12 @@ describe('FrontendService', () => {
 		});
 
 		it('should expose excluded node types from NODES_EXCLUDE', async () => {
-			globalConfig.nodes.exclude = ['n8n-nodes-base.executeWorkflow'];
+			globalConfig.nodes.exclude = ['MNI-nodes-base.executeWorkflow'];
 			const { service } = createMockService();
 
 			const settings = await service.getSettings();
 
-			expect(settings.excludeNodes).toEqual(['n8n-nodes-base.executeWorkflow']);
+			expect(settings.excludeNodes).toEqual(['MNI-nodes-base.executeWorkflow']);
 		});
 
 		it('should enable the AI Gateway when configured and licensed', async () => {
@@ -495,7 +495,7 @@ describe('FrontendService', () => {
 			// Env override unset for this test so the resolver follows the
 			// license-tier branch. The override is restored by the suite's
 			// afterEach via `process.env = originalEnv`.
-			delete process.env.N8N_CONCURRENCY_EVALUATION_LIMIT;
+			delete process.env.MNI_CONCURRENCY_EVALUATION_LIMIT;
 			license.getPlanName.mockReturnValue('Community');
 
 			const { service } = createMockService();
@@ -512,7 +512,7 @@ describe('FrontendService', () => {
 
 		it('keeps env override winning over license tier on refresh', async () => {
 			// Operator-set env always wins, even after a license change.
-			process.env.N8N_CONCURRENCY_EVALUATION_LIMIT = '7';
+			process.env.MNI_CONCURRENCY_EVALUATION_LIMIT = '7';
 			globalConfig.executions = {
 				...globalConfig.executions,
 				concurrency: { productionLimit: -1, evaluationLimit: 7 },
@@ -533,7 +533,7 @@ describe('FrontendService', () => {
 			// service raise (or lower) a customer's cap without a code change.
 			// With env unset, the FE settings must reflect the license value
 			// rather than the tier default.
-			delete process.env.N8N_CONCURRENCY_EVALUATION_LIMIT;
+			delete process.env.MNI_CONCURRENCY_EVALUATION_LIMIT;
 			license.getPlanName.mockReturnValue('Community');
 			(license.getValue as Mock).mockImplementation((feature: string) =>
 				feature === 'quota:evaluations:concurrencyLimit' ? 4 : undefined,
@@ -691,7 +691,7 @@ describe('FrontendService', () => {
 		});
 
 		it('reports granular credential sharing off unless the env flag is set', async () => {
-			delete process.env.N8N_ENV_FEAT_CRED_SHARING;
+			delete process.env.MNI_ENV_FEAT_CRED_SHARING;
 
 			const { service } = createMockService();
 
@@ -699,7 +699,7 @@ describe('FrontendService', () => {
 		});
 
 		it('reports granular credential sharing on when the env flag is set', async () => {
-			process.env.N8N_ENV_FEAT_CRED_SHARING = 'true';
+			process.env.MNI_ENV_FEAT_CRED_SHARING = 'true';
 
 			const { service } = createMockService();
 
@@ -707,7 +707,7 @@ describe('FrontendService', () => {
 		});
 
 		it('should set showSetupOnFirstLoad to false in preview mode', async () => {
-			process.env.N8N_PREVIEW_MODE = 'true';
+			process.env.MNI_PREVIEW_MODE = 'true';
 
 			const { service } = createMockService();
 			const publicSettings = await service.getPublicSettings(false);
@@ -723,13 +723,13 @@ describe('FrontendService', () => {
 
 	describe('envFeatureFlags functionality', () => {
 		describe('collectEnvFeatureFlags', () => {
-			it('should collect environment variables with N8N_ENV_FEAT_ prefix', () => {
+			it('should collect environment variables with MNI_ENV_FEAT_ prefix', () => {
 				process.env = {
-					N8N_ENV_FEAT_TEST_FLAG: 'true',
-					N8N_ENV_FEAT_ANOTHER_FLAG: 'false',
-					N8N_ENV_FEAT_NUMERIC_FLAG: '123',
+					MNI_ENV_FEAT_TEST_FLAG: 'true',
+					MNI_ENV_FEAT_ANOTHER_FLAG: 'false',
+					MNI_ENV_FEAT_NUMERIC_FLAG: '123',
 					REGULAR_ENV_VAR: 'should-not-be-included',
-					N8N_OTHER_PREFIX: 'should-not-be-included',
+					MNI_OTHER_PREFIX: 'should-not-be-included',
 				};
 
 				const { service } = createMockService();
@@ -737,16 +737,16 @@ describe('FrontendService', () => {
 				const result = collectEnvFeatureFlags();
 
 				expect(result).toEqual({
-					N8N_ENV_FEAT_TEST_FLAG: 'true',
-					N8N_ENV_FEAT_ANOTHER_FLAG: 'false',
-					N8N_ENV_FEAT_NUMERIC_FLAG: '123',
+					MNI_ENV_FEAT_TEST_FLAG: 'true',
+					MNI_ENV_FEAT_ANOTHER_FLAG: 'false',
+					MNI_ENV_FEAT_NUMERIC_FLAG: '123',
 				});
 			});
 
-			it('should return empty object when no N8N_ENV_FEAT_ variables are set', () => {
+			it('should return empty object when no MNI_ENV_FEAT_ variables are set', () => {
 				process.env = {
 					REGULAR_ENV_VAR: 'value',
-					N8N_OTHER_PREFIX: 'value',
+					MNI_OTHER_PREFIX: 'value',
 				};
 
 				const { service } = createMockService();
@@ -758,8 +758,8 @@ describe('FrontendService', () => {
 
 			it('should filter out undefined environment variable values', () => {
 				process.env = {
-					N8N_ENV_FEAT_DEFINED_FLAG: 'true',
-					N8N_ENV_FEAT_UNDEFINED_FLAG: undefined,
+					MNI_ENV_FEAT_DEFINED_FLAG: 'true',
+					MNI_ENV_FEAT_UNDEFINED_FLAG: undefined,
 				};
 
 				const { service } = createMockService();
@@ -767,8 +767,8 @@ describe('FrontendService', () => {
 				const result = collectEnvFeatureFlags();
 
 				expect(result).toEqual({
-					N8N_ENV_FEAT_DEFINED_FLAG: 'true',
-					// N8N_ENV_FEAT_UNDEFINED_FLAG should be filtered out
+					MNI_ENV_FEAT_DEFINED_FLAG: 'true',
+					// MNI_ENV_FEAT_UNDEFINED_FLAG should be filtered out
 				});
 			});
 		});
@@ -776,22 +776,22 @@ describe('FrontendService', () => {
 		describe('settings integration', () => {
 			it('should include envFeatureFlags in initial settings', async () => {
 				process.env = {
-					N8N_ENV_FEAT_INIT_FLAG: 'true',
-					N8N_ENV_FEAT_ANOTHER_FLAG: 'false',
+					MNI_ENV_FEAT_INIT_FLAG: 'true',
+					MNI_ENV_FEAT_ANOTHER_FLAG: 'false',
 				};
 
 				const { service } = createMockService();
 				const settings = await service.getSettings();
 
 				expect(settings.envFeatureFlags).toEqual({
-					N8N_ENV_FEAT_INIT_FLAG: 'true',
-					N8N_ENV_FEAT_ANOTHER_FLAG: 'false',
+					MNI_ENV_FEAT_INIT_FLAG: 'true',
+					MNI_ENV_FEAT_ANOTHER_FLAG: 'false',
 				});
 			});
 
 			it('should refresh envFeatureFlags when getSettings is called', async () => {
 				process.env = {
-					N8N_ENV_FEAT_INITIAL_FLAG: 'true',
+					MNI_ENV_FEAT_INITIAL_FLAG: 'true',
 				};
 
 				const { service } = createMockService();
@@ -799,21 +799,21 @@ describe('FrontendService', () => {
 
 				// Verify initial state
 				expect(initialSettings.envFeatureFlags).toEqual({
-					N8N_ENV_FEAT_INITIAL_FLAG: 'true',
+					MNI_ENV_FEAT_INITIAL_FLAG: 'true',
 				});
 
 				// Change environment
 				process.env = {
-					N8N_ENV_FEAT_INITIAL_FLAG: 'false',
-					N8N_ENV_FEAT_NEW_FLAG: 'true',
+					MNI_ENV_FEAT_INITIAL_FLAG: 'false',
+					MNI_ENV_FEAT_NEW_FLAG: 'true',
 				};
 
 				// getSettings should refresh the flags
 				const settings = await service.getSettings();
 
 				expect(settings.envFeatureFlags).toEqual({
-					N8N_ENV_FEAT_INITIAL_FLAG: 'false',
-					N8N_ENV_FEAT_NEW_FLAG: 'true',
+					MNI_ENV_FEAT_INITIAL_FLAG: 'false',
+					MNI_ENV_FEAT_NEW_FLAG: 'true',
 				});
 			});
 		});
@@ -899,11 +899,11 @@ describe('FrontendService', () => {
 
 			const nodes = [
 				{
-					name: 'n8n-nodes-base.single',
+					name: 'MNI-nodes-base.single',
 					version: 1,
 				},
 				{
-					name: 'n8n-nodes-base.multi',
+					name: 'MNI-nodes-base.multi',
 					version: [1, 2],
 				},
 			] as unknown as INodeTypeDescription[];
@@ -912,9 +912,9 @@ describe('FrontendService', () => {
 
 			expect(identifiers).toEqual(
 				expect.arrayContaining([
-					'n8n-nodes-base.single@1',
-					'n8n-nodes-base.multi@1',
-					'n8n-nodes-base.multi@2',
+					'MNI-nodes-base.single@1',
+					'MNI-nodes-base.multi@1',
+					'MNI-nodes-base.multi@2',
 				]),
 			);
 			expect(identifiers).toHaveLength(3);
@@ -926,11 +926,11 @@ describe('FrontendService', () => {
 
 			const nodes = [
 				{
-					name: 'n8n-nodes-base.duplicate',
+					name: 'MNI-nodes-base.duplicate',
 					version: [1, 1, 2],
 				},
 				{
-					name: 'n8n-nodes-base.duplicate',
+					name: 'MNI-nodes-base.duplicate',
 					version: 2,
 				},
 				{
@@ -938,14 +938,14 @@ describe('FrontendService', () => {
 					version: 3,
 				},
 				{
-					name: 'n8n-nodes-base.invalidVersion',
+					name: 'MNI-nodes-base.invalidVersion',
 				},
 			] as unknown as INodeTypeDescription[];
 
 			const identifiers = getNodeVersionIdentifiers(nodes);
 
 			expect(identifiers).toEqual(
-				expect.arrayContaining(['n8n-nodes-base.duplicate@1', 'n8n-nodes-base.duplicate@2']),
+				expect.arrayContaining(['MNI-nodes-base.duplicate@1', 'MNI-nodes-base.duplicate@2']),
 			);
 			expect(identifiers).toHaveLength(2);
 		});
@@ -1202,8 +1202,8 @@ describe('FrontendService', () => {
 	describe('generateTypes', () => {
 		it('should write node versions file with generated identifiers', async () => {
 			const testNodes = [
-				{ name: 'n8n-nodes-base.single', version: 1 },
-				{ name: 'n8n-nodes-base.multi', version: [1, 2] },
+				{ name: 'MNI-nodes-base.single', version: 1 },
+				{ name: 'MNI-nodes-base.multi', version: [1, 2] },
 			];
 
 			(loadNodesAndCredentials.collectTypes as Mock).mockResolvedValue({
@@ -1230,9 +1230,9 @@ describe('FrontendService', () => {
 
 				expect(identifiers).toEqual(
 					expect.arrayContaining([
-						'n8n-nodes-base.single@1',
-						'n8n-nodes-base.multi@1',
-						'n8n-nodes-base.multi@2',
+						'MNI-nodes-base.single@1',
+						'MNI-nodes-base.multi@1',
+						'MNI-nodes-base.multi@2',
 					]),
 				);
 				expect(identifiers).toHaveLength(3);

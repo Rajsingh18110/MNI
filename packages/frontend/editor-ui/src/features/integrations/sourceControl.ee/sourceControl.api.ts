@@ -3,8 +3,8 @@ import type {
 	PullWorkFolderRequestDto,
 	PushWorkFolderRequestDto,
 	SourceControlledFile,
-} from '@n8n/api-types';
-import type { IRestApiContext } from '@n8n/rest-api-client';
+} from '@MNI/api-types';
+import type { IRestApiContext } from '@MNI/rest-api-client';
 import type {
 	SourceControlPreferences,
 	SourceControlProjectPreferences,
@@ -14,7 +14,7 @@ import type {
 } from './sourceControl.types';
 import type { IWorkflowDb } from '@/Interface';
 
-import { makeRestApiRequest } from '@n8n/rest-api-client';
+import { makeRestApiRequest } from '@MNI/rest-api-client';
 import type { TupleToUnion } from '@/app/utils/typeHelpers';
 
 const sourceControlApiRoot = '/source-control';

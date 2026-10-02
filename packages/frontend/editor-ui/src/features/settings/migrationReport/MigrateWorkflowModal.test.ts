@@ -2,17 +2,17 @@ import { createTestingPinia } from '@pinia/testing';
 import { screen, waitFor } from '@testing-library/vue';
 import userEvent from '@testing-library/user-event';
 import { vi } from 'vitest';
-import { createEventBus, type EventBus } from '@n8n/utils/event-bus';
+import { createEventBus, type EventBus } from '@MNI/utils/event-bus';
 import { createComponentRenderer } from '@/__tests__/render';
 import { mockedStore } from '@/__tests__/utils';
-import { useRootStore } from '@n8n/stores/useRootStore';
+import { useRootStore } from '@MNI/stores/useRootStore';
 import { useWorkflowsStore } from '@/app/stores/workflows.store';
-import { ResponseError } from '@n8n/rest-api-client';
+import { ResponseError } from '@MNI/rest-api-client';
 import { MIGRATE_WORKFLOW_MODAL_KEY } from '@/app/constants';
-import * as breakingChangesApi from '@n8n/rest-api-client/api/breaking-changes';
+import * as breakingChangesApi from '@MNI/rest-api-client/api/breaking-changes';
 import MigrateWorkflowModal from './MigrateWorkflowModal.vue';
 
-vi.mock('@n8n/rest-api-client/api/breaking-changes', () => ({
+vi.mock('@MNI/rest-api-client/api/breaking-changes', () => ({
 	migrateWorkflowForRule: vi.fn(),
 }));
 

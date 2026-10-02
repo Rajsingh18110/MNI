@@ -1,5 +1,5 @@
-import type { User } from '@n8n/db';
-import { ExecutionStatusList, WorkflowExecuteModeList, type ExecutionStatus } from 'n8n-workflow';
+import type { User } from '@MNI/db';
+import { ExecutionStatusList, WorkflowExecuteModeList, type ExecutionStatus } from 'MNI-workflow';
 import z from 'zod';
 
 import { parseExecutionCursor } from '@/executions/execution-cursor';

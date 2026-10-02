@@ -1,5 +1,5 @@
-import { isContainedWithin, Logger } from '@n8n/backend-common';
-import { Container } from '@n8n/di';
+import { isContainedWithin, Logger } from '@MNI/backend-common';
+import { Container } from '@MNI/di';
 import uniqBy from 'lodash/uniqBy';
 import type {
 	CodexData,
@@ -16,8 +16,8 @@ import type {
 	IVersionedNodeType,
 	KnownNodesAndCredentials,
 	NodeLoader,
-} from 'n8n-workflow';
-import { isExpression, isSubNodeType, UnexpectedError, UserError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { isExpression, isSubNodeType, UnexpectedError, UserError } from 'MNI-workflow';
 import { readdirSync, realpathSync } from 'node:fs';
 import * as path from 'path';
 
@@ -531,7 +531,7 @@ export abstract class DirectoryLoader implements NodeLoader {
 	}
 
 	private unloadAll() {
-		// Community nodes developed with `n8n-node dev` are symlinked into
+		// Community nodes developed with `MNI-node dev` are symlinked into
 		// `<directory>/node_modules/<pkg>`. Node's require cache keys those files by
 		// their resolved real path (the symlink target), which lives outside
 		// `this.directory`, so we also sweep the resolved roots to pick up rebuilds.

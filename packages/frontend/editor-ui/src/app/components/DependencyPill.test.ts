@@ -6,12 +6,12 @@ import { mockedStore } from '@/__tests__/utils';
 import { VIEWS } from '@/app/constants';
 import { DATA_TABLE_DETAILS } from '@/features/core/dataTable/constants';
 import { AGENT_BUILDER_VIEW } from '@/features/agents/constants';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import * as vueRouter from 'vue-router';
 import type { MockInstance } from 'vitest';
 
 const telemetryTrackMock = vi.fn();
-vi.mock('@n8n/composables/useTelemetry', () => ({
+vi.mock('@MNI/composables/useTelemetry', () => ({
 	useTelemetry: () => ({ track: telemetryTrackMock }),
 }));
 
@@ -45,8 +45,8 @@ let capturedOpenHandler: ((open: boolean) => void) | undefined;
 let capturedItems: unknown[] = [];
 let capturedSearchable: boolean | undefined;
 
-vi.mock('@n8n/design-system', async (importOriginal) => {
-	const actual = await importOriginal<typeof import('@n8n/design-system')>();
+vi.mock('@MNI/design-system', async (importOriginal) => {
+	const actual = await importOriginal<typeof import('@MNI/design-system')>();
 
 	return {
 		...actual,

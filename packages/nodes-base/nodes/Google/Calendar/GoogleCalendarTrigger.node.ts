@@ -5,8 +5,8 @@ import type {
 	INodeType,
 	INodeTypeDescription,
 	IPollFunctions,
-} from 'n8n-workflow';
-import { NodeConnectionTypes, NodeApiError, NodeOperationError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeConnectionTypes, NodeApiError, NodeOperationError } from 'MNI-workflow';
 
 import {
 	encodeURIComponentOnce,

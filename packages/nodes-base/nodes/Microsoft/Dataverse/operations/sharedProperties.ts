@@ -1,4 +1,4 @@
-import type { IDisplayOptions, INodeProperties } from 'n8n-workflow';
+import type { IDisplayOptions, INodeProperties } from 'MNI-workflow';
 
 /**
  * Property descriptors that are reused by more than one operation. They live in
@@ -185,7 +185,7 @@ export function commonSessionTokenOption(): INodeProperties {
 	return {
 		displayName: 'Session Token',
 		name: 'sessionToken',
-		// eslint-disable-next-line n8n-nodes-base/node-param-type-options-password-missing -- sessionToken is a consistency token, not a password
+		// eslint-disable-next-line MNI-nodes-base/node-param-type-options-password-missing -- sessionToken is a consistency token, not a password
 		type: 'string',
 		default: '',
 		description: 'Token from an earlier elastic-table write in the same logical session',

@@ -3,7 +3,7 @@
 The [SKILL](SKILL.md) covers the **build** archetype. This file covers the other
 four — **behaviour/process**, **credential**, **seeded**, **context** — plus the
 director-note vocabulary multi-turn cases rely on. Field-level docs live in the
-eval [README](../../../packages/@n8n/instance-ai/evaluations/README.md); this is
+eval [README](../../../packages/@MNI/instance-ai/evaluations/README.md); this is
 the opinionated *how* and the traps.
 
 Example cases in the corpus get renamed and churned, so this file names as few
@@ -13,7 +13,7 @@ pointer worth naming: **`applies-each-change-when-asked`** (in the
 `baseline` suite) for a well-built director conversation.
 
 The schema
-([`harness/schema.ts`](../../../packages/@n8n/instance-ai/evaluations/harness/schema.ts))
+([`harness/schema.ts`](../../../packages/@MNI/instance-ai/evaluations/harness/schema.ts))
 enforces the rules you must respect:
 
 - Seeding lives in **one** slot, `seed`, whose `mode` is `inline` or `replay` — so
@@ -93,7 +93,7 @@ Rules that trip people up:
 Text inside `[square brackets]` is a **director note** — how the user behaves at
 that moment, never spoken verbatim. It overrides the proxy's default ("always
 answer, inventing a plausible value"). The proxy's system prompt
-([`utils/user-proxy/prompts.ts`](../../../packages/@n8n/instance-ai/evaluations/utils/user-proxy/prompts.ts))
+([`utils/user-proxy/prompts.ts`](../../../packages/@MNI/instance-ai/evaluations/utils/user-proxy/prompts.ts))
 recognises this vocabulary:
 
 | To make the user… | Director note |
@@ -136,7 +136,7 @@ of mocked) set the type's `EVAL_*` env var — e.g. `EVAL_SLACK_ACCESS_TOKEN`,
 
 Only a closed set of types is valid — declaring anything else fails at case-load
 with a pointer to add a template. From
-[`credentials/seeder.ts`](../../../packages/@n8n/instance-ai/evaluations/credentials/seeder.ts):
+[`credentials/seeder.ts`](../../../packages/@MNI/instance-ai/evaluations/credentials/seeder.ts):
 `slackApi`, `notionApi`, `githubApi`, `gmailOAuth2`,
 `microsoftTeamsOAuth2Api`, `whatsAppTriggerApi`, `httpHeaderAuth`,
 `httpBasicAuth`. Need another? Add a `CredentialTemplate` to `seeder.ts` (a
@@ -454,7 +454,7 @@ which user turn goes live.
 For a **synthetic, sanitised** seed pinned in git (never a real user's
 conversation): author the prior messages, plus the artifacts they reference, in
 the case body (schema in
-[`harness/conversation-seed.ts`](../../../packages/@n8n/instance-ai/evaluations/harness/conversation-seed.ts)
+[`harness/conversation-seed.ts`](../../../packages/@MNI/instance-ai/evaluations/harness/conversation-seed.ts)
 — `messages` + optional `workflows`, `dataTables` and `agents`). Real
 conversations belong in `replay`, which keeps their content out of the repo.
 
@@ -611,12 +611,12 @@ Things worth knowing:
   `parentFolderId` names a declared folder; no cycles; trimmed names that pass MNI's
   folder-name rules; at most 20 folders.
 - **Needs a licensed instance** (`feat:folders`) with
-  `N8N_INSTANCE_AI_FOLDER_EXPLORATION_ENABLED=true`. An unlicensed instance fails the
+  `MNI_INSTANCE_AI_FOLDER_EXPLORATION_ENABLED=true`. An unlicensed instance fails the
   restore with a hint rather than running the case without its folder. Locally, after
   `/rest/e2e/reset`: `PATCH /rest/e2e/feature {"feature":"feat:folders","enabled":true}`.
 - **Keep it on disk for now.** The LangTracer case-write API does not store
   `seed.folders` or `workflows[].parentFolderId`, so the push refuses the case until
-  `n8n-io/lang-tracer` adds both.
+  `MNI-io/lang-tracer` adds both.
 
 #### Which opening shape — the agent is handed the workflow, or it has to find it
 
@@ -668,7 +668,7 @@ clarification failure the real user never hit.
 nothing else. The builder's own runs are never mocked, and Code, Set, IF, Filter
 and Merge run for real. So:
 
-- **The fault must fail in n8n.** A Code node that returns a plain object does not
+- **The fault must fail in MNI.** A Code node that returns a plain object does not
   fail; MNI wraps it as one item. Return an array of plain values, reference a
   node that does not exist (`$('Missing')`), or throw.
 - **The fault fires before any external call.** The builder's rerun reaches a
@@ -733,7 +733,7 @@ what got re-read, what came from cache, which turn is the expensive one.
 
 Two limits to know before you write a cost expectation:
 
-- It needs `N8N_INSTANCE_AI_RUN_DEBUG_ENABLED=true` on the instance under test.
+- It needs `MNI_INSTANCE_AI_RUN_DEBUG_ENABLED=true` on the instance under test.
   Without it the blocks render `(no run debug captured)` and the expectation is
   unjudgeable — it fails or passes at random.
 - The capture hooks **only the orchestrator's own stream**. A workflow build

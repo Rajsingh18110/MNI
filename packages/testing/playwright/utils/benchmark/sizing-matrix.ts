@@ -294,11 +294,11 @@ interface PerRunProjection {
 function projectRun(entry: CellGroupEntry): PerRunProjection {
 	const t = entry.report.throughput;
 	const execPerSec = t.execPerSec ?? 0;
-	const mainCpu = entry.report.containers.find((c) => c.name === 'n8n-main')?.cpuPct ?? 0;
+	const mainCpu = entry.report.containers.find((c) => c.name === 'MNI-main')?.cpuPct ?? 0;
 	const pgCpu = entry.report.containers.find((c) => c.name === 'postgres')?.cpuPct ?? 0;
 	const lag =
 		entry.report.services
-			.filter((s): s is Extract<ServiceMetrics, { kind: 'n8n-main' }> => s.kind === 'n8n-main')
+			.filter((s): s is Extract<ServiceMetrics, { kind: 'MNI-main' }> => s.kind === 'MNI-main')
 			.map((s) => (s.eventLoopLagSec ?? 0) * 1000)[0] ?? 0;
 
 	const mainFactor = mainCpu > 0 ? GREEN_THRESHOLDS.mainCpuPct / mainCpu : Infinity;
@@ -321,8 +321,8 @@ function projectRun(entry: CellGroupEntry): PerRunProjection {
 }
 
 function headroomFromGroup(group: CellGroupEntry[]): ShapeResult['headroomAtCeiling'] {
-	const mainCpu = mean(definedNumbers(group, (g) => containerValues(g, 'n8n-main', 'cpuPct')));
-	const workerVals = group.flatMap((g) => containerValues(g, 'n8n-worker', 'cpuPct'));
+	const mainCpu = mean(definedNumbers(group, (g) => containerValues(g, 'MNI-main', 'cpuPct')));
+	const workerVals = group.flatMap((g) => containerValues(g, 'MNI-worker', 'cpuPct'));
 	const workerDefined = workerVals.filter(isNumber);
 	const workerCpu = workerDefined.length ? mean(workerDefined) : undefined;
 	const pgCpuAvg = mean(definedNumbers(group, (g) => containerValues(g, 'postgres', 'cpuPct')));
@@ -332,7 +332,7 @@ function headroomFromGroup(group: CellGroupEntry[]): ShapeResult['headroomAtCeil
 	const eventLoopLagMs = mean(
 		group.flatMap((g) =>
 			g.report.services
-				.filter((s): s is Extract<ServiceMetrics, { kind: 'n8n-main' }> => s.kind === 'n8n-main')
+				.filter((s): s is Extract<ServiceMetrics, { kind: 'MNI-main' }> => s.kind === 'MNI-main')
 				.map((s) => (s.eventLoopLagSec ?? 0) * 1000),
 		),
 	);

@@ -5,9 +5,9 @@ import type {
 	DatasetCandidateResponse,
 	DatasetFieldSource,
 	EvaluationConfigDto,
-} from '@n8n/api-types';
-import { useI18n } from '@n8n/i18n';
-import { createEventBus } from '@n8n/utils/event-bus';
+} from '@MNI/api-types';
+import { useI18n } from '@MNI/i18n';
+import { createEventBus } from '@MNI/utils/event-bus';
 import {
 	N8nButton,
 	N8nInputLabel,
@@ -15,12 +15,12 @@ import {
 	N8nSelect,
 	N8nSpinner,
 	N8nText,
-} from '@n8n/design-system';
+} from '@MNI/design-system';
 
 import Modal from '@/app/components/Modal.vue';
 import { ADD_EXECUTION_TO_DATASET_MODAL_KEY } from '@/app/constants';
-import { useToast } from '@n8n/composables/useToast';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
+import { useToast } from '@MNI/composables/useToast';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
 import { useEvaluationStore } from '../../evaluation.store';
 import { stringifyValue } from '../../evaluation.utils';
 

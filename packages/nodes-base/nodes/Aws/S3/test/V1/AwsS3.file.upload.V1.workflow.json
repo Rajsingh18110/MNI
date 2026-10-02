@@ -5,7 +5,7 @@
 			"parameters": {},
 			"id": "8f35d24b-1493-43a4-846f-bacb577bfcb2",
 			"name": "When clicking \"Execute Workflow\"",
-			"type": "n8n-nodes-base.manualTrigger",
+			"type": "MNI-nodes-base.manualTrigger",
 			"typeVersion": 1,
 			"position": [540, 340]
 		},
@@ -16,7 +16,7 @@
 			},
 			"id": "eae2946a-1a1e-47e9-9fd6-e32119b13ec0",
 			"name": "Move Binary Data",
-			"type": "n8n-nodes-base.moveBinaryData",
+			"type": "MNI-nodes-base.moveBinaryData",
 			"typeVersion": 1,
 			"position": [900, 340]
 		},
@@ -29,7 +29,7 @@
 			},
 			"id": "6f21fa3f-ede1-44b1-8182-a2c07152f666",
 			"name": "AWS S3",
-			"type": "n8n-nodes-base.awsS3",
+			"type": "MNI-nodes-base.awsS3",
 			"typeVersion": 1,
 			"position": [1080, 340],
 			"credentials": {
@@ -49,7 +49,7 @@
 			},
 			"id": "e12f1876-cfd1-47a4-a21b-d478452683bc",
 			"name": "Code",
-			"type": "n8n-nodes-testing.testData",
+			"type": "MNI-nodes-testing.testData",
 			"typeVersion": 1,
 			"position": [720, 340]
 		}

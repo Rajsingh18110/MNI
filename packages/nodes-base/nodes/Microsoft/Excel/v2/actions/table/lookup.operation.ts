@@ -4,8 +4,8 @@ import type {
 	INodeExecutionData,
 	INodeProperties,
 	JsonObject,
-} from 'n8n-workflow';
-import { NodeApiError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeApiError } from 'MNI-workflow';
 
 import { updateDisplayOptions } from '@utils/utilities';
 
@@ -47,7 +47,7 @@ const properties: INodeProperties[] = [
 				name: 'returnAllMatches',
 				type: 'boolean',
 				default: false,
-				// eslint-disable-next-line n8n-nodes-base/node-param-description-boolean-without-whether
+				// eslint-disable-next-line MNI-nodes-base/node-param-description-boolean-without-whether
 				description:
 					'By default only the first result gets returned. If options gets set all found matches get returned.',
 			},

@@ -15,7 +15,7 @@ vi.mock('../workflowSetup/composables/useWorkflowSetupContext', () => ({
 	useWorkflowSetupContext: () => workflowSetupContext.current,
 }));
 
-vi.mock('@n8n/i18n', async (importOriginal) => ({
+vi.mock('@MNI/i18n', async (importOriginal) => ({
 	...(await importOriginal()),
 	useI18n: () => ({
 		baseText: (key: string) => key,
@@ -65,7 +65,7 @@ const sectionB = makeWorkflowSetupSection({
 	targetNodeName: 'Slack',
 	node: {
 		id: 'slack',
-		type: 'n8n-nodes-base.slack',
+		type: 'MNI-nodes-base.slack',
 	},
 });
 

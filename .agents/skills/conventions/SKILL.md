@@ -20,11 +20,11 @@ Use this skill when you need quick reminders on critical patterns.
 **TypeScript:**
 - Never `any` → use `unknown`
 - Prefer `satisfies` over `as` (except tests)
-- Shared types in `@n8n/api-types`
+- Shared types in `@MNI/api-types`
 
 **Error Handling:**
 ```typescript
-import { UnexpectedError } from 'n8n-workflow';
+import { UnexpectedError } from 'MNI-workflow';
 throw new UnexpectedError('message', { extra: { context } });
 // DON'T use deprecated ApplicationError
 ```
@@ -37,8 +37,8 @@ throw new UnexpectedError('message', { extra: { context } });
 
 **Backend:**
 - Controller → Service → Repository
-- Dependency injection via `@n8n/di`
-- Config via `@n8n/config`
+- Dependency injection via `@MNI/di`
+- Config via `@MNI/config`
 - Zod schemas for validation
 - Pagination args: use `offset` + `limit` in controllers and services; translate to TypeORM `skip`/`take` only inside repositories
 
@@ -46,7 +46,7 @@ throw new UnexpectedError('message', { extra: { context } });
 - Vitest (unit), Playwright (E2E)
 - Mock external dependencies
 - Keep filesystem tests in a test-owned temporary directory
-- Set `N8N_USER_FOLDER` before importing settings code
+- Set `MNI_USER_FOLDER` before importing settings code
 - Trace branches activated by mocks and isolate every reachable mutation
 - Work from package directory: `pushd packages/cli && pnpm test`
 
@@ -73,16 +73,16 @@ pnpm lint                    # Before commit
 |---------|---------|
 | `packages/cli` | Backend API |
 | `packages/frontend/editor-ui` | Vue 3 frontend shell |
-| `packages/modules/<name>/frontend` | Frontend feature modules. Guide: `packages/@n8n/module-cli/frontend-module-guide.md` |
-| `packages/@n8n/api-types` | Shared types |
-| `packages/@n8n/db` | TypeORM entities |
+| `packages/modules/<name>/frontend` | Frontend feature modules. Guide: `packages/@MNI/module-cli/frontend-module-guide.md` |
+| `packages/@MNI/api-types` | Shared types |
+| `packages/@MNI/db` | TypeORM entities |
 | `packages/workflow` | Core interfaces |
 
 ## Common Patterns
 
 **Pinia Store:**
 ```typescript
-import { STORES } from '@n8n/stores';
+import { STORES } from '@MNI/stores';
 export const useMyStore = defineStore(STORES.MY_STORE, () => {
   const state = shallowRef([]);
   return { state };
@@ -99,8 +99,8 @@ const props = defineProps<Props>();
 
 **Service:**
 ```typescript
-import { Service } from '@n8n/di';
-import { Config } from '@n8n/config';
+import { Service } from '@MNI/di';
+import { Config } from '@MNI/config';
 
 @Service()
 export class MyService {

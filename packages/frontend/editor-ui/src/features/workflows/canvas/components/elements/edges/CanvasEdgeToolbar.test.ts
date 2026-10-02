@@ -1,6 +1,6 @@
 import { fireEvent } from '@testing-library/vue';
 import userEvent from '@testing-library/user-event';
-import { NodeConnectionTypes } from 'n8n-workflow';
+import { NodeConnectionTypes } from 'MNI-workflow';
 import CanvasEdgeToolbar from './CanvasEdgeToolbar.vue';
 import { createComponentRenderer } from '@/__tests__/render';
 import { createCanvasGraphNode } from '@/features/workflows/canvas/__tests__/utils';
@@ -53,7 +53,7 @@ describe('CanvasEdgeToolbar', () => {
 					}),
 					sourceNode: createCanvasGraphNode({
 						data: {
-							type: 'n8n-nodes-base.set',
+							type: 'MNI-nodes-base.set',
 						},
 					}),
 				},
@@ -109,7 +109,7 @@ describe('CanvasEdgeToolbar', () => {
 					}),
 					sourceNode: createCanvasGraphNode({
 						data: {
-							type: 'n8n-nodes-base.set',
+							type: 'MNI-nodes-base.set',
 						},
 					}),
 				},
@@ -129,7 +129,7 @@ describe('CanvasEdgeToolbar', () => {
 					}),
 					sourceNode: createCanvasGraphNode({
 						data: {
-							type: 'n8n-nodes-base.set',
+							type: 'MNI-nodes-base.set',
 						},
 					}),
 				},
@@ -144,12 +144,12 @@ describe('CanvasEdgeToolbar', () => {
 					type: NodeConnectionTypes.AiTool,
 					targetNode: createCanvasGraphNode({
 						data: {
-							type: 'n8n-nodes-base.set',
+							type: 'MNI-nodes-base.set',
 						},
 					}),
 					sourceNode: createCanvasGraphNode({
 						data: {
-							type: 'n8n-nodes-base.set',
+							type: 'MNI-nodes-base.set',
 						},
 					}),
 				},
@@ -169,7 +169,7 @@ describe('CanvasEdgeToolbar', () => {
 					}),
 					sourceNode: createCanvasGraphNode({
 						data: {
-							type: 'n8n-nodes-base.slackHitlTool',
+							type: 'MNI-nodes-base.slackHitlTool',
 						},
 					}),
 				},

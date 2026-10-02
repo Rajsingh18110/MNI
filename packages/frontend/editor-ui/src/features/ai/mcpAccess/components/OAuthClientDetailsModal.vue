@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 
-import type { OAuthClientResponseDto } from '@n8n/api-types';
+import type { OAuthClientResponseDto } from '@MNI/api-types';
 import {
 	N8nButton,
 	N8nDialog,
@@ -11,9 +11,9 @@ import {
 	N8nDialogTitle,
 	N8nIcon,
 	N8nText,
-} from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
-import type { BaseTextKey } from '@n8n/i18n';
+} from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
+import type { BaseTextKey } from '@MNI/i18n';
 
 import TimeAgo from '@/app/components/TimeAgo.vue';
 import { getClientBrand, scopeLabel } from '../clients.utils';

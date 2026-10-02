@@ -1,4 +1,4 @@
-import { classifyChatModelFailure } from '@n8n/ai-utilities/model-discovery';
+import { classifyChatModelFailure } from '@MNI/ai-utilities/model-discovery';
 
 /**
  * A 404 / not-found shape that could be the model but could equally be one of

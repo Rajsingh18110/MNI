@@ -3,7 +3,7 @@
 	"nodes": [
 		{
 			"parameters": {},
-			"type": "n8n-nodes-base.manualTrigger",
+			"type": "MNI-nodes-base.manualTrigger",
 			"typeVersion": 1,
 			"position": [0, 100],
 			"id": "c7971ec9-8bbf-42c1-b99b-dc24de009760",
@@ -16,7 +16,7 @@
 				"returnAll": true,
 				"options": {}
 			},
-			"type": "n8n-nodes-base.salesforce",
+			"type": "MNI-nodes-base.salesforce",
 			"typeVersion": 1,
 			"position": [220, 0],
 			"id": "b6762525-8485-4ac7-9cab-bad56c627187",
@@ -30,7 +30,7 @@
 		},
 		{
 			"parameters": {},
-			"type": "n8n-nodes-base.noOp",
+			"type": "MNI-nodes-base.noOp",
 			"typeVersion": 1,
 			"position": [440, 0],
 			"id": "006a7764-e287-437a-9475-d8a78e972172",
@@ -41,7 +41,7 @@
 				"resource": "user",
 				"userId": "id1"
 			},
-			"type": "n8n-nodes-base.salesforce",
+			"type": "MNI-nodes-base.salesforce",
 			"typeVersion": 1,
 			"position": [220, 200],
 			"id": "19f7ad1c-0e32-4bf3-a12f-80dace398586",
@@ -55,7 +55,7 @@
 		},
 		{
 			"parameters": {},
-			"type": "n8n-nodes-base.noOp",
+			"type": "MNI-nodes-base.noOp",
 			"typeVersion": 1,
 			"position": [440, 200],
 			"id": "6c19df43-d32e-47ff-aecc-e045657c02c2",

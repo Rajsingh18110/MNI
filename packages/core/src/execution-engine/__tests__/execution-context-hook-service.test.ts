@@ -1,12 +1,12 @@
-import { Logger } from '@n8n/backend-common';
+import { Logger } from '@MNI/backend-common';
 import {
 	ContextEstablishmentHook,
 	ContextEstablishmentHookMetadata,
 	type ContextEstablishmentOptions,
 	type ContextEstablishmentResult,
 	type IContextEstablishmentHook,
-} from '@n8n/decorators';
-import { Container } from '@n8n/di';
+} from '@MNI/decorators';
+import { Container } from '@MNI/di';
 
 import { ExecutionContextHookRegistry } from '../execution-context-hook-registry.service';
 
@@ -343,7 +343,7 @@ describe('ExecutionContextHookRegistry', () => {
 					return {};
 				}
 				isApplicableToTriggerNode(nodeType: string): boolean {
-					return nodeType === 'n8n-nodes-base.webhook';
+					return nodeType === 'MNI-nodes-base.webhook';
 				}
 			}
 
@@ -355,7 +355,7 @@ describe('ExecutionContextHookRegistry', () => {
 					return {};
 				}
 				isApplicableToTriggerNode(nodeType: string): boolean {
-					return nodeType === 'n8n-nodes-base.formTrigger';
+					return nodeType === 'MNI-nodes-base.formTrigger';
 				}
 			}
 
@@ -375,21 +375,21 @@ describe('ExecutionContextHookRegistry', () => {
 		});
 
 		it('should return hooks applicable to trigger type', () => {
-			const webhookHooks = registry.getHookForTriggerType('n8n-nodes-base.webhook');
+			const webhookHooks = registry.getHookForTriggerType('MNI-nodes-base.webhook');
 			expect(webhookHooks).toHaveLength(2);
 			expect(webhookHooks.some((h) => h.hookDescription.name === 'webhook.hook')).toBe(true);
 			expect(webhookHooks.some((h) => h.hookDescription.name === 'universal.hook')).toBe(true);
 		});
 
 		it('should return different hooks for different trigger types', () => {
-			const formHooks = registry.getHookForTriggerType('n8n-nodes-base.formTrigger');
+			const formHooks = registry.getHookForTriggerType('MNI-nodes-base.formTrigger');
 			expect(formHooks).toHaveLength(2);
 			expect(formHooks.some((h) => h.hookDescription.name === 'form.hook')).toBe(true);
 			expect(formHooks.some((h) => h.hookDescription.name === 'universal.hook')).toBe(true);
 		});
 
 		it('should return only universal hooks for unknown trigger type', () => {
-			const unknownHooks = registry.getHookForTriggerType('n8n-nodes-base.unknown');
+			const unknownHooks = registry.getHookForTriggerType('MNI-nodes-base.unknown');
 			expect(unknownHooks).toHaveLength(1);
 			expect(unknownHooks[0].hookDescription.name).toBe('universal.hook');
 		});
@@ -407,14 +407,14 @@ describe('ExecutionContextHookRegistry', () => {
 					return {};
 				}
 				isApplicableToTriggerNode(nodeType: string): boolean {
-					return nodeType === 'n8n-nodes-base.webhook';
+					return nodeType === 'MNI-nodes-base.webhook';
 				}
 			}
 
 			const newRegistry = new ExecutionContextHookRegistry(hookMetadata, mockLogger);
 			await newRegistry.init();
 
-			const hooks = newRegistry.getHookForTriggerType('n8n-nodes-base.formTrigger');
+			const hooks = newRegistry.getHookForTriggerType('MNI-nodes-base.formTrigger');
 			expect(hooks).toEqual([]);
 		});
 	});

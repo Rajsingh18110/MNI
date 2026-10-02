@@ -4,8 +4,8 @@ import type {
 	INodeExecutionData,
 	INodeProperties,
 	JsonObject,
-} from 'n8n-workflow';
-import { NodeApiError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeApiError } from 'MNI-workflow';
 
 import { createUtmCampaignLink, updateDisplayOptions } from '@utils/utilities';
 
@@ -234,7 +234,7 @@ export async function execute(this: IExecuteFunctions): Promise<INodeExecutionDa
 
 			if (appendAttribution) {
 				const attributionText = 'This email was sent automatically with ';
-				const link = createUtmCampaignLink('n8n-nodes-base.emailSend', instanceId);
+				const link = createUtmCampaignLink('MNI-nodes-base.emailSend', instanceId);
 				if (emailFormat === 'html' || (emailFormat === 'both' && mailOptions.html)) {
 					mailOptions.html = `
 					${mailOptions.html}

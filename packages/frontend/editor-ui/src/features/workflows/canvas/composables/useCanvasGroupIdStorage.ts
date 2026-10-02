@@ -1,4 +1,4 @@
-import { jsonParse } from 'n8n-workflow';
+import { jsonParse } from 'MNI-workflow';
 import { isStringArrayRecord } from '@/app/utils/objectUtils';
 
 /**

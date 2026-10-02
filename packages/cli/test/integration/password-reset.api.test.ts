@@ -5,12 +5,12 @@ import {
 	randomValidPassword,
 	testDb,
 	mockInstance,
-} from '@n8n/backend-test-utils';
-import type { User } from '@n8n/db';
-import { GLOBAL_MEMBER_ROLE, GLOBAL_OWNER_ROLE, UserRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
+} from '@MNI/backend-test-utils';
+import type { User } from '@MNI/db';
+import { GLOBAL_MEMBER_ROLE, GLOBAL_OWNER_ROLE, UserRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
 import { compare } from 'bcryptjs';
-import { randomString } from 'n8n-workflow';
+import { randomString } from 'MNI-workflow';
 import { v4 as uuid } from 'uuid';
 import { mock } from 'vitest-mock-extended';
 

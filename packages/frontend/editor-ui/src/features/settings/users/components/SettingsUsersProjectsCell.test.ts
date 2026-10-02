@@ -1,7 +1,7 @@
 import { createTestingPinia } from '@pinia/testing';
 import { fireEvent, screen, waitFor } from '@testing-library/vue';
 import { vi } from 'vitest';
-import { ROLE, type UsersList } from '@n8n/api-types';
+import { ROLE, type UsersList } from '@MNI/api-types';
 import SettingsUsersProjectsCell from './SettingsUsersProjectsCell.vue';
 import { createComponentRenderer } from '@/__tests__/render';
 

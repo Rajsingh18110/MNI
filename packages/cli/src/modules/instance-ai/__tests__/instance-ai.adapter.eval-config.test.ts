@@ -1,19 +1,19 @@
 // Mock the barrel import so importing the adapter module doesn't pull the full
-// @n8n/instance-ai runtime; these tests exercise only the local eval-config mappers.
-vi.mock('@n8n/instance-ai', () => ({
+// @MNI/instance-ai runtime; these tests exercise only the local eval-config mappers.
+vi.mock('@MNI/instance-ai', () => ({
 	wrapUntrustedData: (content: string) => content,
 	builderTemplatesOptionsFromEnv: () => ({}),
 	deriveCredentialHosts: () => [],
 	BuilderTemplatesService: class {},
 }));
 
-vi.mock('@n8n/ai-utilities', () => ({
+vi.mock('@MNI/ai-utilities', () => ({
 	braveSearch: vi.fn(),
 	searxngSearch: vi.fn(),
 }));
 
-import type { EvaluationConfig } from '@n8n/db';
-import type { UpsertEvaluationConfigInput } from '@n8n/instance-ai';
+import type { EvaluationConfig } from '@MNI/db';
+import type { UpsertEvaluationConfigInput } from '@MNI/instance-ai';
 
 import {
 	buildEvaluationConfigDto,
@@ -30,7 +30,7 @@ const baseCorrectness: UpsertEvaluationConfigInput = {
 		{
 			name: 'Correctness',
 			preset: 'correctness',
-			provider: '@n8n/n8n-nodes-langchain.lmChatOpenAi',
+			provider: '@MNI/MNI-nodes-langchain.lmChatOpenAi',
 			credentialId: 'cred-1',
 			model: 'gpt-4o',
 			outputType: 'numeric',
@@ -57,7 +57,7 @@ describe('buildEvaluationConfigDto', () => {
 			type: 'llm_judge',
 			config: {
 				preset: 'correctness',
-				provider: '@n8n/n8n-nodes-langchain.lmChatOpenAi',
+				provider: '@MNI/MNI-nodes-langchain.lmChatOpenAi',
 				credentialId: 'cred-1',
 				model: 'gpt-4o',
 				outputType: 'numeric',
@@ -78,7 +78,7 @@ describe('buildEvaluationConfigDto', () => {
 				{
 					name: 'Helpfulness',
 					preset: 'helpfulness',
-					provider: '@n8n/n8n-nodes-langchain.lmChatAnthropic',
+					provider: '@MNI/MNI-nodes-langchain.lmChatAnthropic',
 					credentialId: 'cred-2',
 					model: 'claude-sonnet',
 					outputType: 'numeric',
@@ -113,7 +113,7 @@ describe('buildEvaluationConfigDto', () => {
 					{
 						name: 'Correctness',
 						preset: 'correctness',
-						provider: '@n8n/n8n-nodes-langchain.lmChatOpenAi',
+						provider: '@MNI/MNI-nodes-langchain.lmChatOpenAi',
 						credentialId: 'cred-1',
 						model: 'gpt-4o',
 						outputType: 'numeric',
@@ -132,7 +132,7 @@ describe('buildEvaluationConfigDto', () => {
 					{
 						name: 'Helpfulness',
 						preset: 'helpfulness',
-						provider: '@n8n/n8n-nodes-langchain.lmChatAnthropic',
+						provider: '@MNI/MNI-nodes-langchain.lmChatAnthropic',
 						credentialId: 'cred-2',
 						model: 'claude-sonnet',
 						outputType: 'numeric',
@@ -205,7 +205,7 @@ describe('evaluationConfigToDetail', () => {
 				type: 'llm_judge',
 				config: {
 					preset: 'correctness',
-					provider: '@n8n/n8n-nodes-langchain.lmChatOpenAi',
+					provider: '@MNI/MNI-nodes-langchain.lmChatOpenAi',
 					credentialId: 'cred-1',
 					model: 'gpt-4o',
 					outputType: 'numeric',

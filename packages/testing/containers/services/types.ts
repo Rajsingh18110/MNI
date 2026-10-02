@@ -93,7 +93,7 @@ export interface StackConfig {
 	/** Resource quota for webhook procs. Falls back to `resourceQuota` if omitted. */
 	webhookResourceQuota?: { memory?: number; cpu?: number };
 	services?: readonly ServiceName[];
-	/** When true, services target host machine instead of Docker-internal n8n */
+	/** When true, services target host machine instead of Docker-internal MNI */
 	external?: boolean;
 	/** When set, the Docker network uses this exact name instead of a random UUID. */
 	networkName?: string;
@@ -135,7 +135,7 @@ export interface Service<TResult extends ServiceResult = ServiceResult> {
 	readonly dependsOn?: readonly ServiceName[];
 	/** @example (ctx) => ctx.isQueueMode // redis auto-starts in queue mode */
 	shouldStart?(ctx: StartContext): boolean;
-	/** @example (ctx) => ({ taskBrokerUri: `http://${ctx.projectName}-n8n:5679` }) */
+	/** @example (ctx) => ({ taskBrokerUri: `http://${ctx.projectName}-MNI:5679` }) */
 	getOptions?(ctx: StartContext): unknown;
 	/**
 	 * Env for an already-deployed instance of this service, read from the host

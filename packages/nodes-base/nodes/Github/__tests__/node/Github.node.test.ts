@@ -1,5 +1,5 @@
 import { NodeTestHarness } from '@nodes-testing/node-test-harness';
-import { NodeApiError, NodeOperationError, WAIT_INDEFINITELY } from 'n8n-workflow';
+import { NodeApiError, NodeOperationError, WAIT_INDEFINITELY } from 'MNI-workflow';
 import nock from 'nock';
 
 import * as utilities from '../../../../utils/utilities';

@@ -5,7 +5,7 @@
 			"parameters": {},
 			"id": "1a000000-0000-4000-8000-000000000001",
 			"name": "When clicking 'Execute workflow'",
-			"type": "n8n-nodes-base.manualTrigger",
+			"type": "MNI-nodes-base.manualTrigger",
 			"typeVersion": 1,
 			"position": [0, 0]
 		},
@@ -24,7 +24,7 @@
 			},
 			"id": "1a000000-0000-4000-8000-000000000002",
 			"name": "Microsoft To Do",
-			"type": "n8n-nodes-base.microsoftToDo",
+			"type": "MNI-nodes-base.microsoftToDo",
 			"typeVersion": 1,
 			"position": [260, 0],
 			"credentials": {

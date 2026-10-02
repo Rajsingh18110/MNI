@@ -1,5 +1,5 @@
-import type { CreateRoleDto, UpdateRoleDto } from '@n8n/api-types';
-import { createTeamProject, linkUserToProject, testDb } from '@n8n/backend-test-utils';
+import type { CreateRoleDto, UpdateRoleDto } from '@MNI/api-types';
+import { createTeamProject, linkUserToProject, testDb } from '@MNI/backend-test-utils';
 import {
 	PROJECT_ADMIN_ROLE,
 	PROJECT_EDITOR_ROLE,
@@ -8,9 +8,9 @@ import {
 	ProjectRepository,
 	RoleRepository,
 	UserRepository,
-} from '@n8n/db';
-import type { Project, User } from '@n8n/db';
-import { Container } from '@n8n/di';
+} from '@MNI/db';
+import type { Project, User } from '@MNI/db';
+import { Container } from '@MNI/di';
 
 import { cleanupRolesAndScopes, createCustomRoleWithScopeSlugs } from '../shared/db/roles';
 import { createMember, createOwner, createUser } from '../shared/db/users';

@@ -1,8 +1,8 @@
-import { testDb } from '@n8n/backend-test-utils';
-import type { User } from '@n8n/db';
-import { ApiKey, ApiKeyRepository, UserRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
-import { randomString } from 'n8n-workflow';
+import { testDb } from '@MNI/backend-test-utils';
+import type { User } from '@MNI/db';
+import { ApiKey, ApiKeyRepository, UserRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
+import { randomString } from 'MNI-workflow';
 
 import { AuthService } from '@/auth/auth.service';
 import { ScopedJwtStrategy } from '@/modules/token-exchange/services/scoped-jwt.strategy';

@@ -2,15 +2,15 @@
  * Verifies how errors in WorkflowExecute decides what gets forwarded to ErrorReporter
  */
 
-vi.mock('@n8n/di', () => ({
+vi.mock('@MNI/di', () => ({
 	Container: {
 		get: vi.fn(),
 	},
 	Service: () => (target: unknown) => target,
 }));
 
-import { Container } from '@n8n/di';
-import { createDeferredPromise } from '@n8n/utils/promise/deferred-promise';
+import { Container } from '@MNI/di';
+import { createDeferredPromise } from '@MNI/utils/promise/deferred-promise';
 import {
 	ApplicationError,
 	NodeConnectionTypes,
@@ -18,8 +18,8 @@ import {
 	UnexpectedError,
 	UserError,
 	Workflow,
-} from 'n8n-workflow';
-import type { INodeType, INodeTypes, IWorkflowExecuteAdditionalData, IRun } from 'n8n-workflow';
+} from 'MNI-workflow';
+import type { INodeType, INodeTypes, IWorkflowExecuteAdditionalData, IRun } from 'MNI-workflow';
 import type { Mocked } from 'vitest';
 import { mock } from 'vitest-mock-extended';
 
@@ -102,7 +102,7 @@ describe('WorkflowExecute node error forwarding to ErrorReporter', () => {
 
 		const triggerNode = createNodeData({
 			name: 'ThrowingNode',
-			type: 'n8n-nodes-base.manualTrigger',
+			type: 'MNI-nodes-base.manualTrigger',
 		});
 		const workflow = new Workflow({
 			id: 'test-error',
@@ -165,7 +165,7 @@ describe('WorkflowExecute node error forwarding to ErrorReporter', () => {
 			expect.objectContaining({
 				extra: expect.objectContaining({
 					nodeName: 'ThrowingNode',
-					nodeType: 'n8n-nodes-base.manualTrigger',
+					nodeType: 'MNI-nodes-base.manualTrigger',
 					nodeVersion: expect.any(Number),
 					workflowId: 'test-error',
 				}),

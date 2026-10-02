@@ -1,8 +1,8 @@
-import type { UpsertEvaluationConfigDto } from '@n8n/api-types';
-import { LicenseState } from '@n8n/backend-common';
-import type { EvaluationConfig, User, WorkflowEntity } from '@n8n/db';
-import { EvaluationConfigRepository } from '@n8n/db';
-import { Service } from '@n8n/di';
+import type { UpsertEvaluationConfigDto } from '@MNI/api-types';
+import { LicenseState } from '@MNI/backend-common';
+import type { EvaluationConfig, User, WorkflowEntity } from '@MNI/db';
+import { EvaluationConfigRepository } from '@MNI/db';
+import { Service } from '@MNI/di';
 import { nanoid } from 'nanoid';
 
 import { EvaluationApiError } from './evaluation-api-error';

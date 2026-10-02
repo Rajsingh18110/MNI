@@ -1,10 +1,10 @@
-import { zodToJsonSchema } from '@n8n/ai-utilities/json-schema';
-import { APPROVAL_RESUME_SCHEMA } from '@n8n/agents/tool';
-import type { AgentJsonConfig } from '@n8n/api-types';
-import { mockInstance, mockLogger } from '@n8n/backend-test-utils';
-import { OutboundHttp } from '@n8n/backend-network';
-import { User, type WorkflowRepository } from '@n8n/db';
-import { TELEMETRY_EVENT } from '@n8n/telemetry';
+import { zodToJsonSchema } from '@MNI/ai-utilities/json-schema';
+import { APPROVAL_RESUME_SCHEMA } from '@MNI/agents/tool';
+import type { AgentJsonConfig } from '@MNI/api-types';
+import { mockInstance, mockLogger } from '@MNI/backend-test-utils';
+import { OutboundHttp } from '@MNI/backend-network';
+import { User, type WorkflowRepository } from '@MNI/db';
+import { TELEMETRY_EVENT } from '@MNI/telemetry';
 import type { Mock } from 'vitest';
 import { mock } from 'vitest-mock-extended';
 
@@ -12,8 +12,8 @@ vi.mock('@/permissions.ee/check-access', () => ({
 	userHasScopes: vi.fn(),
 }));
 
-vi.mock('@n8n/agents', async (importOriginal) => ({
-	...(await importOriginal<typeof import('@n8n/agents')>()),
+vi.mock('@MNI/agents', async (importOriginal) => ({
+	...(await importOriginal<typeof import('@MNI/agents')>()),
 	fetchProviderCatalog: vi.fn().mockResolvedValue({
 		openai: { id: 'openai', name: 'OpenAI', models: { 'gpt-a': {}, 'gpt-b': {} } },
 		'not-offered': { id: 'not-offered', name: 'Not Offered', models: { x: {} } },
@@ -59,7 +59,7 @@ import { NodeTypes } from '@/node-types';
 import { OauthService } from '@/oauth/oauth.service';
 import { userHasScopes } from '@/permissions.ee/check-access';
 import { ProjectScopeService } from '@/permissions.ee/project-scope.service';
-import { UrlService } from '@n8n/backend-services';
+import { UrlService } from '@MNI/backend-services';
 import { Telemetry } from '@/telemetry';
 
 import { AGENT_TOOLS, TOOLS_BY_SCOPE } from '../mcp-scopes';
@@ -1720,7 +1720,7 @@ describe('McpAgentToolsService', () => {
 			const result = await callTool('verify_agent_mcp_server', {
 				...input,
 				url: templatedUrl,
-				metadata: { nodeTypeName: '@n8n/mcp-registry.databricksGenie' },
+				metadata: { nodeTypeName: '@MNI/mcp-registry.databricksGenie' },
 			});
 
 			expect(listMcpServerToolsMock).toHaveBeenCalledWith(

@@ -3,7 +3,7 @@ import { describe, it, expect, vi } from 'vitest';
 import { mount } from '@vue/test-utils';
 import { createTestingPinia } from '@pinia/testing';
 
-vi.mock('@n8n/i18n', () => ({
+vi.mock('@MNI/i18n', () => ({
 	useI18n: () => ({ baseText: (key: string) => key }),
 	i18n: { baseText: (key: string) => key },
 }));

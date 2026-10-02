@@ -1,14 +1,14 @@
 # Harness baseline
 
-This reference records the fixture contracts and remaining evidence for [DEVP-1064](https://linear.app/n8n/issue/DEVP-1064).
+This reference records the fixture contracts and remaining evidence for [DEVP-1064](https://linear.app/MNI/issue/DEVP-1064).
 The source baseline is `33eb5c196e0ce3a2c71525929a4ef861cb94b168`.
-The parent plan is [DEVP-1063](https://linear.app/n8n/issue/DEVP-1063).
+The parent plan is [DEVP-1063](https://linear.app/MNI/issue/DEVP-1063).
 
 ## DEVP-1066 handover
 
 DEVP-1066 adds correlated startup telemetry for the container stack and
-Playwright diagnostics. The implementation is in draft PR [#37920](https://github.com/n8n-io/n8n/pull/37920),
-stacked on [DEVP-1064 PR #37913](https://github.com/n8n-io/n8n/pull/37913).
+Playwright diagnostics. The implementation is in draft PR [#37920](https://github.com/MNI-io/MNI/pull/37920),
+stacked on [DEVP-1064 PR #37913](https://github.com/MNI-io/MNI/pull/37913).
 The stack is based on the latest `master`.
 
 ### Delivered
@@ -214,6 +214,6 @@ All commands run from `packages/testing/playwright`. Discovery and listing do no
 | Lint | `pnpm lint` |
 | Static discovery | `pnpm janitor discover` |
 | Static inventory | `pnpm janitor inventory` |
-| Product test list | `env -u N8N_BASE_URL -u N8N_BACKEND_URL -u N8N_EDITOR_URL pnpm exec playwright test --list --project=multi-main:e2e --reporter=json` |
+| Product test list | `env -u MNI_BASE_URL -u MNI_BACKEND_URL -u MNI_EDITOR_URL pnpm exec playwright test --list --project=multi-main:e2e --reporter=json` |
 
 Do not use these measurements to justify fewer required tests, weaker assertions, or weaker isolation.

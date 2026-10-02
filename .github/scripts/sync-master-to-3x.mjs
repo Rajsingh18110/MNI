@@ -97,12 +97,12 @@ export const LOCKFILE = 'pnpm-lock.yaml';
 export const MECHANICAL_PATHS = {
 	[LOCKFILE]: 'pnpm-regen',
 	'packages/frontend/editor-ui/data/node-popularity.json': 'take-master',
-	'packages/@n8n/instance-ai/src/tools/nodes/credential-setupability.json': 'take-master',
+	'packages/@MNI/instance-ai/src/tools/nodes/credential-setupability.json': 'take-master',
 	'.github/test-metrics/e2e-impact-map.json': 'take-master',
 };
 
-const BOT_NAME = 'n8n-assistant[bot]';
-const BOT_EMAIL = 'n8n-assistant[bot]@users.noreply.github.com';
+const BOT_NAME = 'MNI-assistant[bot]';
+const BOT_EMAIL = 'MNI-assistant[bot]@users.noreply.github.com';
 
 // Real command runners. Each takes an args array and returns trimmed stdout,
 // throwing on a non-zero exit (mirrors `set -e`). Injectable for tests. (`runGit` is
@@ -133,7 +133,7 @@ export function classifyPaths(paths) {
 
 /** Run the trusted frozen install without using a store restored by the sync job. */
 export function validateLockfile(pnpm, env = process.env) {
-	const validationDir = join(env.RUNNER_TEMP || tmpdir(), `n8n-sync-lockfile-${randomUUID()}`);
+	const validationDir = join(env.RUNNER_TEMP || tmpdir(), `MNI-sync-lockfile-${randomUUID()}`);
 	pnpm([
 		'install',
 		'--frozen-lockfile',

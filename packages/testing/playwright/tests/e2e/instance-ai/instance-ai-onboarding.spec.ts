@@ -5,10 +5,10 @@ test.use({
 		services: ['sandbox'],
 		env: {
 			TEST_ISOLATION: 'instance-ai-onboarding',
-			N8N_ENABLED_MODULES: 'instance-ai',
-			N8N_INSTANCE_AI_MODEL: 'anthropic/claude-sonnet-4-6',
-			N8N_INSTANCE_AI_MODEL_API_KEY: 'test-model-key',
-			N8N_INSTANCE_AI_SANDBOX_ENABLED: 'true',
+			MNI_ENABLED_MODULES: 'instance-ai',
+			MNI_INSTANCE_AI_MODEL: 'anthropic/claude-sonnet-4-6',
+			MNI_INSTANCE_AI_MODEL_API_KEY: 'test-model-key',
+			MNI_INSTANCE_AI_SANDBOX_ENABLED: 'true',
 		},
 	},
 });

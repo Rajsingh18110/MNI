@@ -1,7 +1,7 @@
 import type { Metadata } from '@grpc/grpc-js';
-import type { Logger } from '@n8n/backend-common';
-import type { OutboundHttp } from '@n8n/backend-network';
-import type { InstanceSettings } from 'n8n-core';
+import type { Logger } from '@MNI/backend-common';
+import type { OutboundHttp } from '@MNI/backend-network';
+import type { InstanceSettings } from 'MNI-core';
 import { mock } from 'vitest-mock-extended';
 
 import type { OtelConnectionParams, OtelSettingsService } from '../otel-settings.service';
@@ -32,7 +32,7 @@ const grpcConnection: OtelConnectionParams = {
 	exporterProtocol: 'grpc',
 	exporterEndpoint: 'https://collector.example.com:4317',
 	exporterTracingPath: '/v1/traces',
-	exporterServiceName: 'n8n-prod',
+	exporterServiceName: 'MNI-prod',
 	exporterHeaders: '',
 	startupConnectivityTimeoutMs: 3_000,
 };

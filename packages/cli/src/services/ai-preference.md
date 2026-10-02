@@ -8,9 +8,9 @@ through `AiPreferenceService`.
 ## The data
 
 One table, `ai_preference`. See
-[the table](../../../@n8n/db/src/migrations/common/1788882375989-CreateAiPreferenceTable.ts),
-[the `source` column with its backfill](../../../@n8n/db/src/migrations/common/1789479099132-AddSourceToAiPreference.ts)
-and [the entity](../../../@n8n/db/src/entities/ai-preference.ts).
+[the table](../../../@MNI/db/src/migrations/common/1788882375989-CreateAiPreferenceTable.ts),
+[the `source` column with its backfill](../../../@MNI/db/src/migrations/common/1789479099132-AddSourceToAiPreference.ts)
+and [the entity](../../../@MNI/db/src/entities/ai-preference.ts).
 
 | Column | Meaning |
 | --- | --- |
@@ -114,7 +114,7 @@ create defaults a missing `userId` to the caller, because a create has no owner 
 ## The two caps
 
 Both numbers live in
-[`ai-preference.schema.ts`](../../../@n8n/api-types/src/schemas/ai-preference.schema.ts),
+[`ai-preference.schema.ts`](../../../@MNI/api-types/src/schemas/ai-preference.schema.ts),
 so one value serves every reader:
 
 - `AI_PREFERENCE_CONTENT_MAX_LENGTH` is 2,000 characters for one preference. The request
@@ -190,14 +190,14 @@ rows and never widens them. The menu keeps a row the lookup does not return and 
 as removed, so the list the user sees stays the list the turn carried.
 
 See
-[the streaming protocol](../../../@n8n/instance-ai/docs/streaming-protocol.md#preferences-applied)
+[the streaming protocol](../../../@MNI/instance-ai/docs/streaming-protocol.md#preferences-applied)
 for the frame, and `buildAppliedPreferencesPayload` in
 [`ai-preference.service.ts`](./ai-preference.service.ts) for the mapping.
 
 ## Telemetry
 
 The events live in the `CONTEXT` domain of
-[`@n8n/telemetry`](../../../@n8n/telemetry/src/events/context.ts). Three cover the settings
+[`@MNI/telemetry`](../../../@MNI/telemetry/src/events/context.ts). Three cover the settings
 area. Six more cover the assistant paths: the preferences applied to a turn, an assistant
 write, the confirmation shown and answered, the scope accepted against the scope offered,
 and a refused write with its reason.
@@ -215,7 +215,7 @@ preferences` with `source` set to `rejected`, as the chat card reports its Undo,
 no event of its own; the tool event records it, along with whether the client declared
 elicitation at all.
 
-Run `pnpm --filter @n8n/telemetry catalog` to read the registered events and their
+Run `pnpm --filter @MNI/telemetry catalog` to read the registered events and their
 properties. No event carries preference text. The events report lengths, counts and
 scopes.
 

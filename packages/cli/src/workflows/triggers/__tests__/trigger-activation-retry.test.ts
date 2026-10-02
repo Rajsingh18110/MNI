@@ -1,13 +1,13 @@
-import { ensureError } from '@n8n/utils/errors/ensure-error';
-import { sleep } from '@n8n/utils/sleep';
-import { WebhookPathTakenError } from 'n8n-workflow';
+import { ensureError } from '@MNI/utils/errors/ensure-error';
+import { sleep } from '@MNI/utils/sleep';
+import { WebhookPathTakenError } from 'MNI-workflow';
 
 import {
 	isTransientActivationError,
 	retryTriggerActivation,
 } from '@/workflows/triggers/trigger-activation-retry';
 
-vi.mock('@n8n/utils/sleep', () => ({
+vi.mock('@MNI/utils/sleep', () => ({
 	sleep: vi.fn(),
 }));
 

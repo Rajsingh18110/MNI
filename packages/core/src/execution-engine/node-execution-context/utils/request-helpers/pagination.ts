@@ -2,12 +2,12 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/prefer-nullish-coalescing */
 
-import { binaryToString, tryParseUrl } from '@n8n/backend-network';
-import { sleep } from '@n8n/utils/sleep';
+import { binaryToString, tryParseUrl } from '@MNI/backend-network';
+import { sleep } from '@MNI/utils/sleep';
 import crypto from 'crypto';
 import merge from 'lodash/merge';
 import pick from 'lodash/pick';
-import { NodeOperationError, jsonParse } from 'n8n-workflow';
+import { NodeOperationError, jsonParse } from 'MNI-workflow';
 import type {
 	IAdditionalCredentialOptions,
 	IDataObject,
@@ -20,7 +20,7 @@ import type {
 	IWorkflowDataProxyAdditionalKeys,
 	NodeParameterValueType,
 	PaginationOptions,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import { Readable } from 'stream';
 
 /**

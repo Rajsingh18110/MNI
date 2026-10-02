@@ -79,7 +79,7 @@ reviews:
 
     ## Don't repeat what CI already fails on
 
-    `pnpm lint`, `pnpm typecheck`, Poutine, Zizmor and `@n8n/code-health` run on
+    `pnpm lint`, `pnpm typecheck`, Poutine, Zizmor and `@MNI/code-health` run on
     every PR. A defect one of them fails the build for is not a finding; the
     author sees it first. Rule files name the exemptions. Report what static
     analysis cannot see.
@@ -107,11 +107,11 @@ reviews:
         - .agents/review-rules/security/node-input-safety.md
       include:
         - packages/cli/**
-        - packages/@n8n/db/**
+        - packages/@MNI/db/**
         - packages/core/**
         - packages/workflow/**
         - packages/nodes-base/**
-        - packages/@n8n/nodes-langchain/**
+        - packages/@MNI/nodes-langchain/**
         - packages/frontend/**
       exclude:
         - '**/__tests__/**'
@@ -134,11 +134,11 @@ reviews:
         - .agents/review-rules/testing/coverage.md
       include:
         - packages/cli/**
-        - packages/@n8n/db/**
+        - packages/@MNI/db/**
         - packages/core/**
         - packages/workflow/**
         - packages/nodes-base/**
-        - packages/@n8n/nodes-langchain/**
+        - packages/@MNI/nodes-langchain/**
       exclude:
         - '**/__tests__/**'
         - '**/*.test.ts'
@@ -151,7 +151,7 @@ reviews:
         The rules are drawn from real incidents and the conventions the team
         enforces.
 
-        ESLint already fails the build for `@n8n/typeorm` imports in
+        ESLint already fails the build for `@MNI/typeorm` imports in
         `packages/cli` business logic, uncaught `JSON.parse`, and
         `JSON.parse(JSON.stringify())` — never spend a comment on those.
     - name: DB migrations
@@ -162,7 +162,7 @@ reviews:
         - .agents/review-rules/db-migrations/cross-db-compatibility.md
         - .agents/review-rules/db-migrations/conventions-and-tests.md
       include:
-        - packages/@n8n/db/src/migrations/**
+        - packages/@MNI/db/src/migrations/**
         - packages/cli/test/migration/**
       description: |-
         Take the linked rules in order: if the migration should not exist, its
@@ -203,10 +203,10 @@ reviews:
         - scripts/**
         - patches/**
         - packages/testing/**
-        - packages/@n8n/eslint-config/**
-        - packages/@n8n/stylelint-config/**
-        - packages/@n8n/vitest-config/**
-        - packages/@n8n/typescript-config/**
+        - packages/@MNI/eslint-config/**
+        - packages/@MNI/stylelint-config/**
+        - packages/@MNI/vitest-config/**
+        - packages/@MNI/typescript-config/**
         - '**/eslint.config.mjs'
         - '**/vitest.config.*'
         - '**/turbo.json'

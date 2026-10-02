@@ -4,7 +4,7 @@ import { setActivePinia } from 'pinia';
 import userEvent from '@testing-library/user-event';
 import { computed, defineComponent, h, nextTick } from 'vue';
 import { createThreadComponentRenderer } from './createThreadComponentRenderer';
-import type { InstanceAiCredentialRequest } from '@n8n/api-types';
+import type { InstanceAiCredentialRequest } from '@MNI/api-types';
 import InstanceAiCredentialSetup from '../components/InstanceAiCredentialSetup.vue';
 import { useInstanceAiStore, type ThreadRuntime } from '../instanceAi.store';
 import { useInstanceAiSettingsStore } from '../instanceAiSettings.store';
@@ -39,7 +39,7 @@ vi.mock('@/features/credentials/composables/useCredentialOAuth', () => ({
 	}),
 }));
 
-vi.mock('@n8n/composables/useTelemetry', () => ({
+vi.mock('@MNI/composables/useTelemetry', () => ({
 	useTelemetry: () => ({ track: mockTelemetryTrack }),
 }));
 
@@ -49,8 +49,8 @@ vi.mock('../instanceAiBrowserUse.telemetry', () => ({
 
 // Lightweight N8nActionDropdown: renders the activator slot plus one button per
 // item so tests can select a choice without the real dropdown's teleport.
-vi.mock('@n8n/design-system', async (importOriginal) => {
-	const actual = await importOriginal<typeof import('@n8n/design-system')>();
+vi.mock('@MNI/design-system', async (importOriginal) => {
+	const actual = await importOriginal<typeof import('@MNI/design-system')>();
 	return {
 		...actual,
 		N8nActionDropdown: defineComponent({
@@ -77,7 +77,7 @@ vi.mock('@n8n/design-system', async (importOriginal) => {
 	};
 });
 
-vi.mock('@n8n/i18n', async (importOriginal) => ({
+vi.mock('@MNI/i18n', async (importOriginal) => ({
 	...(await importOriginal()),
 	useI18n: () => ({
 		baseText: (key: string, opts?: { interpolate?: Record<string, string> }) => {

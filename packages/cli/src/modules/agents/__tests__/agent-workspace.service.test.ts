@@ -1,6 +1,6 @@
-import type { WorkspaceFilesystem, WorkspaceSandbox } from '@n8n/agents/sandbox';
-import type { Logger } from '@n8n/backend-common';
-import type { AgentsConfig } from '@n8n/config';
+import type { WorkspaceFilesystem, WorkspaceSandbox } from '@MNI/agents/sandbox';
+import type { Logger } from '@MNI/backend-common';
+import type { AgentsConfig } from '@MNI/config';
 import { mock } from 'vitest-mock-extended';
 
 import { hashAgentSandboxPrincipal } from '../agent-sandbox-principal';
@@ -9,11 +9,11 @@ import { AgentWorkspaceService } from '../agent-workspace.service';
 import {
 	CHECKPOINT_RECONCILIATION_OVERFLOW,
 	type N8NCheckpointStorage,
-} from '../integrations/n8n-checkpoint-storage';
+} from '../integrations/MNI-checkpoint-storage';
 
 const projectId = 'project-1';
 const agentId = 'agent-1';
-const principalHash = hashAgentSandboxPrincipal({ type: 'n8n-user', userId: 'user-1' });
+const principalHash = hashAgentSandboxPrincipal({ type: 'MNI-user', userId: 'user-1' });
 
 function makeService() {
 	const filesystem = mock<WorkspaceFilesystem>();

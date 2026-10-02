@@ -1,4 +1,4 @@
-import { Time } from '@n8n/constants';
+import { Time } from '@MNI/constants';
 
 import { test, expect } from '../../../fixtures/base';
 

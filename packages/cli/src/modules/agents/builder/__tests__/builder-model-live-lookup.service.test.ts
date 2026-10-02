@@ -1,7 +1,7 @@
-import { AI_GATEWAY_MANAGED_TAG } from '@n8n/api-types';
-import type { CustomFetch, HttpTransport, OutboundHttp } from '@n8n/backend-network';
-import type { User } from '@n8n/db';
-import type { IWorkflowExecuteAdditionalData } from 'n8n-workflow';
+import { AI_GATEWAY_MANAGED_TAG } from '@MNI/api-types';
+import type { CustomFetch, HttpTransport, OutboundHttp } from '@MNI/backend-network';
+import type { User } from '@MNI/db';
+import type { IWorkflowExecuteAdditionalData } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import type { CredentialsService } from '@/credentials/credentials.service';
@@ -11,8 +11,8 @@ import type { AiGatewayService } from '@/services/ai-gateway.service';
 import { BuilderModelLiveLookupService } from '../builder-model-live-lookup.service';
 
 const listModelsForProvider = vi.fn();
-vi.mock('@n8n/ai-utilities/model-discovery', async (importOriginal) => ({
-	...(await importOriginal<typeof import('@n8n/ai-utilities/model-discovery')>()),
+vi.mock('@MNI/ai-utilities/model-discovery', async (importOriginal) => ({
+	...(await importOriginal<typeof import('@MNI/ai-utilities/model-discovery')>()),
 	listModelsForProvider: (...args: unknown[]) => listModelsForProvider(...args) as unknown,
 }));
 

@@ -5,7 +5,7 @@
 			"parameters": {},
 			"id": "4de08470-bb1a-4204-aec0-6a0d2c811f2f",
 			"name": "When clicking \"Execute Workflow\"",
-			"type": "n8n-nodes-base.manualTrigger",
+			"type": "MNI-nodes-base.manualTrigger",
 			"typeVersion": 1,
 			"position": [820, 360]
 		},
@@ -19,7 +19,7 @@
 			},
 			"id": "1a73099f-169a-4471-8409-a61eb9298e5d",
 			"name": "RocketChat",
-			"type": "n8n-nodes-base.rocketchat",
+			"type": "MNI-nodes-base.rocketchat",
 			"typeVersion": 1,
 			"position": [1040, 360],
 			"credentials": {
@@ -33,7 +33,7 @@
 			"parameters": {},
 			"id": "ef8ae0b9-229b-4211-b46d-e6e3cf0f84b7",
 			"name": "No Operation, do nothing",
-			"type": "n8n-nodes-base.noOp",
+			"type": "MNI-nodes-base.noOp",
 			"typeVersion": 1,
 			"position": [1260, 360]
 		}

@@ -1,7 +1,7 @@
-import { Logger, ModuleRegistry } from '@n8n/backend-common';
-import { InstanceSettingsLoaderConfig } from '@n8n/config';
-import { type ApiKey, type AuthenticatedRequest, User, Role } from '@n8n/db';
-import { Container } from '@n8n/di';
+import { Logger, ModuleRegistry } from '@MNI/backend-common';
+import { InstanceSettingsLoaderConfig } from '@MNI/config';
+import { type ApiKey, type AuthenticatedRequest, User, Role } from '@MNI/db';
+import { Container } from '@MNI/di';
 import type { Response } from 'express';
 import { mock, mockDeep } from 'vitest-mock-extended';
 

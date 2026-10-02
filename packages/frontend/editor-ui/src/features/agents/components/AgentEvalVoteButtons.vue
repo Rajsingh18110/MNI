@@ -3,8 +3,8 @@
  * The 👍/👎 pair on a reviewed case. Purely a control: it reports the vote and
  * reflects the current one, and knows nothing about reasons or persistence.
  */
-import { N8nIconButton, N8nTooltip } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+import { N8nIconButton, N8nTooltip } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 
 import type { AgentEvalVote } from '../agentEvals.types';
 

@@ -1,4 +1,4 @@
-import type { InstanceAiGatewayCapabilities } from '@n8n/api-types';
+import type { InstanceAiGatewayCapabilities } from '@MNI/api-types';
 import { mock } from 'vitest-mock-extended';
 
 import type { Telemetry } from '@/telemetry';

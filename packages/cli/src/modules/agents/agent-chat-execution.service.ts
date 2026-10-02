@@ -1,7 +1,7 @@
-import { LockNamespace, LockService } from '@n8n/backend-common';
-import { OnPubSubEvent } from '@n8n/decorators';
-import { Service } from '@n8n/di';
-import { InstanceSettings } from 'n8n-core';
+import { LockNamespace, LockService } from '@MNI/backend-common';
+import { OnPubSubEvent } from '@MNI/decorators';
+import { Service } from '@MNI/di';
+import { InstanceSettings } from 'MNI-core';
 
 import { NotFoundError } from '@/errors/response-errors/not-found.error';
 import type { PubSubCommandMap } from '@/scaling/pubsub/pubsub.event-map';
@@ -9,7 +9,7 @@ import { Publisher } from '@/scaling/pubsub/publisher.service';
 
 import { AgentExecutionService } from './agent-execution.service';
 import { AgentExecutionUpdateBroadcaster } from './agent-execution-update-broadcaster';
-import { N8NCheckpointStorage } from './integrations/n8n-checkpoint-storage';
+import { N8NCheckpointStorage } from './integrations/MNI-checkpoint-storage';
 import { AgentExecutionRepository } from './repositories/agent-execution.repository';
 import {
 	draftChatMemoryResourceId,
@@ -19,7 +19,7 @@ import {
 } from './utils/agent-memory-scope';
 import {
 	canContinueThreadInPreview,
-	N8N_CHAT_PRODUCTION_SOURCE,
+	MNI_CHAT_PRODUCTION_SOURCE,
 	threadBelongsTo,
 } from './utils/agent-thread-access';
 import { getDelegatedChildCheckpoints } from './utils/delegated-child-checkpoints';
@@ -176,7 +176,7 @@ export class AgentChatExecutionService {
 				? !(
 						thread.accessScope === 'user' &&
 						thread.ownerId === userId &&
-						execution.source === N8N_CHAT_PRODUCTION_SOURCE
+						execution.source === MNI_CHAT_PRODUCTION_SOURCE
 					)
 				: !canContinueThreadInPreview(thread, userId, execution.source))
 		)

@@ -1,4 +1,4 @@
-import { useStorage } from '@n8n/composables/useStorage';
+import { useStorage } from '@MNI/composables/useStorage';
 
 import {
 	LOCAL_STORAGE_ACTIVATION_FLAG,
@@ -9,18 +9,18 @@ import { useUIStore } from '@/app/stores/ui.store';
 import { useWorkflowsStore } from '@/app/stores/workflows.store';
 import { useWorkflowsListStore } from '@/app/stores/workflowsList.store';
 import { usePushConnectionStore } from '@/app/stores/pushConnection.store';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { useExternalHooks } from '@/app/composables/useExternalHooks';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
-import { useToast } from '@n8n/composables/useToast';
-import { useI18n } from '@n8n/i18n';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
+import { useToast } from '@MNI/composables/useToast';
+import { useI18n } from '@MNI/i18n';
 import { getCurrentScope, onScopeDispose, ref } from 'vue';
 import { useCollaborationStore } from '@/features/collaboration/collaboration/collaboration.store';
 import { useActivationError } from '@/app/composables/useActivationError';
-import type { INode } from 'n8n-workflow';
+import type { INode } from 'MNI-workflow';
 import type { IWorkflowDb } from '@/Interface';
-import type { ResponseError } from '@n8n/rest-api-client/utils';
-import type { findWebhook } from '@n8n/rest-api-client/api/webhooks';
+import type { ResponseError } from '@MNI/rest-api-client/utils';
+import type { findWebhook } from '@MNI/rest-api-client/api/webhooks';
 import {
 	useWorkflowDocumentStore,
 	createWorkflowDocumentId,
@@ -30,7 +30,7 @@ import {
 	clearPendingActivationModal,
 } from '@/app/composables/workflowPublicationConfirmation';
 import { usePolicyViolationToast } from '@/app/composables/usePolicyViolationToast';
-import { getPolicyViolations } from '@n8n/frontend-module-type-availability-policies';
+import { getPolicyViolations } from '@MNI/frontend-module-type-availability-policies';
 
 export function useWorkflowActivate() {
 	const updatingWorkflowActivation = ref(false);

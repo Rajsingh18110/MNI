@@ -1,6 +1,6 @@
 import userEvent from '@testing-library/user-event';
 import { fireEvent } from '@testing-library/vue';
-import type { ActionDropdownItem, DropdownMenuItemProps } from '@n8n/design-system';
+import type { ActionDropdownItem, DropdownMenuItemProps } from '@MNI/design-system';
 import { mount } from '@vue/test-utils';
 import { describe, expect, it, vi } from 'vitest';
 
@@ -8,8 +8,8 @@ import { createComponentRenderer } from '@/__tests__/render';
 
 import ChatHistoryDropdown from './ChatHistoryDropdown.vue';
 
-vi.mock('@n8n/i18n', async (importOriginal) => ({
-	...(await importOriginal<typeof import('@n8n/i18n')>()),
+vi.mock('@MNI/i18n', async (importOriginal) => ({
+	...(await importOriginal<typeof import('@MNI/i18n')>()),
 	useI18n: () => ({ baseText: (key: string) => key }),
 }));
 

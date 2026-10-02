@@ -1,6 +1,6 @@
-import { N8N_CHAT_INTEGRATION_TYPE } from '@n8n/api-types';
-import type { AgentIntegrationConfig, ListAgentsQueryDto } from '@n8n/api-types';
-import { Service } from '@n8n/di';
+import { MNI_CHAT_INTEGRATION_TYPE } from '@MNI/api-types';
+import type { AgentIntegrationConfig, ListAgentsQueryDto } from '@MNI/api-types';
+import { Service } from '@MNI/di';
 import {
 	DataSource,
 	In,
@@ -9,7 +9,7 @@ import {
 	Repository,
 	type EntityManager,
 	type SelectQueryBuilder,
-} from '@n8n/typeorm';
+} from '@MNI/typeorm';
 
 import { Agent } from '../entities/agent.entity';
 
@@ -168,7 +168,7 @@ export class AgentRepository extends Repository<Agent> {
 		const agent = await this.findByIdAndProjectId(id, projectId);
 		return (
 			agent?.activeVersion?.schema?.integrations?.some(
-				(integration) => integration.type === N8N_CHAT_INTEGRATION_TYPE,
+				(integration) => integration.type === MNI_CHAT_INTEGRATION_TYPE,
 			) ?? false
 		);
 	}

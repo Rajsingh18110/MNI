@@ -1,7 +1,7 @@
 import { mockedStore, type MockedStore } from '@/__tests__/utils';
 import { useViewStacks } from './composables/useViewStacks';
 import { prepareCommunityNodeDetailsViewStack } from './nodeCreator.utils';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
 import {
 	AI_UNCATEGORIZED_CATEGORY,
 	CUSTOM_API_CALL_KEY,
@@ -12,15 +12,15 @@ import type { ActionsRecord, INodeCreateElement, INodeUi, SimplifiedNodeType } f
 import { CanvasConnectionMode } from '@/features/workflows/canvas/canvas.types';
 import { parseCanvasConnectionHandleString } from '@/features/workflows/canvas/canvas.utils';
 import { getNodeIconSource } from '@/app/utils/nodeIcon';
-import type { CommunityNodeType } from '@n8n/api-types';
+import type { CommunityNodeType } from '@MNI/api-types';
 import { createTestingPinia } from '@pinia/testing';
-import type { INodeTypeDescription } from 'n8n-workflow';
+import type { INodeTypeDescription } from 'MNI-workflow';
 import { setActivePinia } from 'pinia';
-import { NodeConnectionTypes } from 'n8n-workflow';
+import { NodeConnectionTypes } from 'MNI-workflow';
 import { useNDVStore } from '@/features/ndv/shared/ndv.store';
 import { useNodeCreatorStore } from '@/features/shared/nodeCreator/nodeCreator.store';
 import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { useAiGatewayStore } from '@/app/stores/aiGateway.store';
 import { useWorkflowsStore } from '@/app/stores/workflows.store';
 import {
@@ -41,7 +41,7 @@ const node_version = 1;
 const input_node_type = 'input-node-type';
 const actions = ['action1'];
 
-vi.mock('@n8n/composables/useTelemetry', () => {
+vi.mock('@MNI/composables/useTelemetry', () => {
 	const track = vi.fn();
 	return {
 		useTelemetry: () => {
@@ -290,9 +290,9 @@ describe('useNodeCreatorStore', () => {
 		const title = 'title';
 
 		const mockTrigger = {
-			key: 'n8n-node.exampleTrigger',
+			key: 'MNI-node.exampleTrigger',
 			properties: {
-				name: 'n8n-node.exampleTrigger',
+				name: 'MNI-node.exampleTrigger',
 				displayName: 'Example Trigger',
 			},
 		} as INodeCreateElement;
@@ -305,21 +305,21 @@ describe('useNodeCreatorStore', () => {
 		} as INodeCreateElement;
 
 		const mockRegular = {
-			key: 'n8n-node.example',
+			key: 'MNI-node.example',
 			properties: {},
 		} as INodeCreateElement;
 
 		const mockCommunity1 = {
 			key: 'community-node1.example',
 			properties: {
-				name: 'n8n-nodes-community-node1',
+				name: 'MNI-nodes-community-node1',
 			},
 		} as INodeCreateElement;
 
 		const mockCommunity2 = {
 			key: 'community-node2.example',
 			properties: {
-				name: '@author/n8n-nodes-community-node2',
+				name: '@author/MNI-nodes-community-node2',
 			},
 		} as INodeCreateElement;
 		const mockCommand = mockCommandCreateElement({ key: 'group' });
@@ -473,7 +473,7 @@ describe('useNodeCreatorStore', () => {
 	});
 
 	describe('openNodeCreatorForActions', () => {
-		const evalNodeType = 'n8n-nodes-base.evaluation';
+		const evalNodeType = 'MNI-nodes-base.evaluation';
 		const evalNodeDisplayName = 'Evaluation';
 
 		it('does nothing when node is not found in allNodeCreatorNodes', () => {

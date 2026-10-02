@@ -1,5 +1,5 @@
-import type { RedactionFloor } from '@n8n/api-types';
-import type { WorkflowSettings } from 'n8n-workflow';
+import type { RedactionFloor } from '@MNI/api-types';
+import type { WorkflowSettings } from 'MNI-workflow';
 
 type RedactionPolicy = WorkflowSettings.RedactionPolicy;
 type RedactionScope = { production: boolean; manual: boolean };

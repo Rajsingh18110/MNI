@@ -1,4 +1,4 @@
-import type { INode } from 'n8n-workflow';
+import type { INode } from 'MNI-workflow';
 
 import { extractNodeConfig } from '../node-config';
 

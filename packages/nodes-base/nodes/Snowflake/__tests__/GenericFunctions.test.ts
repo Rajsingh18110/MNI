@@ -1,5 +1,5 @@
 import crypto from 'crypto';
-import type { IDataObject, IExecuteFunctions, INodeExecutionData } from 'n8n-workflow';
+import type { IDataObject, IExecuteFunctions, INodeExecutionData } from 'MNI-workflow';
 
 import {
 	escapeSnowflakeObjectIdentifier,

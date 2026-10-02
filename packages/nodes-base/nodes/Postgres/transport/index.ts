@@ -1,11 +1,11 @@
-import { formatPemBlock } from '@n8n/utils/format-pem-block';
+import { formatPemBlock } from '@MNI/utils/format-pem-block';
 import type {
 	IExecuteFunctions,
 	ICredentialTestFunctions,
 	ILoadOptionsFunctions,
 	ITriggerFunctions,
 	Logger,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import { createServer, type AddressInfo, type Server } from 'node:net';
 import pgPromise from 'pg-promise';
 

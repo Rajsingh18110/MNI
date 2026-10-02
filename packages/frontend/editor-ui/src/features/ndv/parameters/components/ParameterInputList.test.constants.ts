@@ -1,5 +1,5 @@
 import type { INodeUi } from '@/Interface';
-import type { INodeParameters, INodeProperties } from 'n8n-workflow';
+import type { INodeParameters, INodeProperties } from 'MNI-workflow';
 
 export const TEST_PARAMETERS: INodeProperties[] = [
 	{
@@ -84,7 +84,7 @@ export const TEST_NODE_NO_ISSUES: INodeUi = {
 	parameters: { fixedCollectionTest: { values: [{ name: 'firstName' }] } },
 	typeVersion: 1.1,
 	name: 'Test Node',
-	type: 'n8n-nodes-base.executeWorkflowTrigger',
+	type: 'MNI-nodes-base.executeWorkflowTrigger',
 	position: [260, 340],
 };
 

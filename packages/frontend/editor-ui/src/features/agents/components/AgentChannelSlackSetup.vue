@@ -8,12 +8,12 @@ import {
 	N8nInput,
 	N8nStepper,
 	N8nText,
-} from '@n8n/design-system';
+} from '@MNI/design-system';
 import AgentChannelSlackSetupSnapshots from './AgentChannelSlackSetupSnapshots.vue';
-import { useI18n } from '@n8n/i18n';
-import { useRootStore } from '@n8n/stores/useRootStore';
-import type { AgentSlackIntegrationSettings, ChatIntegrationDescriptor } from '@n8n/api-types';
-import type { PermissionsRecord } from '@n8n/permissions';
+import { useI18n } from '@MNI/i18n';
+import { useRootStore } from '@MNI/stores/useRootStore';
+import type { AgentSlackIntegrationSettings, ChatIntegrationDescriptor } from '@MNI/api-types';
+import type { PermissionsRecord } from '@MNI/permissions';
 import { getSlackAgentAppManifest } from '../channels/slack/api';
 import AgentIntegrationCredentialConnection from './AgentIntegrationCredentialConnection.vue';
 import type { AgentCredentialOption } from './AgentCredentialSelect.vue';

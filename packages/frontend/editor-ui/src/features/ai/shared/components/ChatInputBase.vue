@@ -6,10 +6,10 @@ import {
 	formatAttachmentSizeLimit,
 	formatTotalAttachmentSizeLimit,
 	MAX_TOTAL_ATTACHMENT_BASE64_BYTES,
-} from '@n8n/api-types';
-import { useToast } from '@n8n/composables/useToast';
-import { N8nIconButton, N8nChatInput, N8nText, N8nTooltip } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+} from '@MNI/api-types';
+import { useToast } from '@MNI/composables/useToast';
+import { N8nIconButton, N8nChatInput, N8nText, N8nTooltip } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 import { useSpeechRecognition } from '@vueuse/core';
 import { useFileDrop } from '@/features/ai/shared/composables/useFileDrop';
 import { isFileAcceptedByAccept } from '@/features/ai/shared/utils/fileAccept';

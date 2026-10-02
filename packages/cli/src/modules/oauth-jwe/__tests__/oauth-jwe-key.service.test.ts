@@ -1,11 +1,11 @@
-import { mockInstance } from '@n8n/backend-test-utils';
-import type { DeploymentKey } from '@n8n/db';
-import { DeploymentKeyRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
-import { QueryFailedError } from '@n8n/typeorm';
+import { mockInstance } from '@MNI/backend-test-utils';
+import type { DeploymentKey } from '@MNI/db';
+import { DeploymentKeyRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
+import { QueryFailedError } from '@MNI/typeorm';
 import { exportJWK, generateKeyPair } from 'jose';
 import type { JWK } from 'jose';
-import { Cipher } from 'n8n-core';
+import { Cipher } from 'MNI-core';
 
 import { CacheService } from '@/services/cache/cache.service';
 

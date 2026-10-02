@@ -1,9 +1,9 @@
-import { Logger } from '@n8n/backend-common';
-import { CronLoggingConfig } from '@n8n/config';
-import { Time } from '@n8n/constants';
-import { Service } from '@n8n/di';
+import { Logger } from '@MNI/backend-common';
+import { CronLoggingConfig } from '@MNI/config';
+import { Time } from '@MNI/constants';
+import { Service } from '@MNI/di';
 import { CronJob, CronTime } from 'cron';
-import type { CronContext } from 'n8n-workflow';
+import type { CronContext } from 'MNI-workflow';
 
 import { InstanceSettings } from '@/instance-settings';
 

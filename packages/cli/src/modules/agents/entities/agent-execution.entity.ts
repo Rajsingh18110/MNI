@@ -2,14 +2,14 @@ import type {
 	AgentExecutionStatus,
 	AgentMessageAuthor,
 	AgentPersistedMessageDto,
-} from '@n8n/api-types';
+} from '@MNI/api-types';
 import {
 	DateTimeColumn,
 	JsonColumn,
 	type ExecutionDataStorageLocation,
 	WithTimestampsAndStringId,
-} from '@n8n/db';
-import { Column, Entity, Index, JoinColumn, ManyToOne } from '@n8n/typeorm';
+} from '@MNI/db';
+import { Column, Entity, Index, JoinColumn, ManyToOne } from '@MNI/typeorm';
 
 import { AgentExecutionThread } from './agent-execution-thread.entity';
 import type { TimelineEvent } from '../execution-recorder';

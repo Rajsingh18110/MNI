@@ -1,10 +1,10 @@
-import type { IConnection, IConnections, INode, NodeInputConnections } from 'n8n-workflow';
-import { deepCopy, NodeConnectionTypes } from 'n8n-workflow';
+import type { IConnection, IConnections, INode, NodeInputConnections } from 'MNI-workflow';
+import { deepCopy, NodeConnectionTypes } from 'MNI-workflow';
 import { randomUUID } from 'node:crypto';
 
 import type { WorkflowMigration } from './node-migration';
 
-const LOOP_NODE_TYPE = 'n8n-nodes-base.splitInBatches';
+const LOOP_NODE_TYPE = 'MNI-nodes-base.splitInBatches';
 const LOOP_NODE_VERSION = 3;
 const LOOP_NODE_DEFAULT_NAME = 'Loop Over Items';
 // Loop Over Items v3 outputs: index 0 fires once with every item after the last

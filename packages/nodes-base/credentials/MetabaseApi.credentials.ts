@@ -5,7 +5,7 @@ import type {
 	ICredentialType,
 	IHttpRequestHelper,
 	INodeProperties,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 export class MetabaseApi implements ICredentialType {
 	name = 'metabaseApi';

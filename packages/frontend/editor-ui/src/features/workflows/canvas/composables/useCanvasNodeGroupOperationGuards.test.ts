@@ -6,7 +6,7 @@ import {
 	type IConnection,
 	type IConnections,
 	type INodeTypeDescription,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { useCanvasNodeGroupOperationGuards } from './useCanvasNodeGroupOperationGuards';
 import {
@@ -15,7 +15,7 @@ import {
 } from '@/app/stores/workflowDocument.store';
 import { useWorkflowsStore } from '@/app/stores/workflows.store';
 import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
 import { STICKY_NODE_TYPE } from '@/app/constants/nodeTypes';
 import type { INodeUi } from '@/Interface';
 import { mockNodeTypeDescription } from '@/__tests__/mocks';
@@ -23,11 +23,11 @@ import { mockNodeTypeDescription } from '@/__tests__/mocks';
 const trackSpy = vi.hoisted(() => vi.fn());
 const showToastSpy = vi.hoisted(() => vi.fn((_config: { message: VNode }) => ({ close: vi.fn() })));
 
-vi.mock('@n8n/composables/useTelemetry', () => ({
+vi.mock('@MNI/composables/useTelemetry', () => ({
 	useTelemetry: vi.fn(() => ({ track: trackSpy })),
 }));
 
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: () => ({ showToast: showToastSpy }),
 }));
 
@@ -93,7 +93,7 @@ describe('useCanvasNodeGroupOperationGuards', () => {
 			{ node: target, type: 'main', index: 0 },
 		];
 
-		function makeNode(id: string, type = 'n8n-nodes-base.set'): INodeUi {
+		function makeNode(id: string, type = 'MNI-nodes-base.set'): INodeUi {
 			return {
 				id,
 				name: id.toUpperCase(),
@@ -122,7 +122,7 @@ describe('useCanvasNodeGroupOperationGuards', () => {
 			} as unknown as ReturnType<typeof workflowDocumentStore.getExpressionHandler>);
 
 			const nodeTypes: Record<string, Partial<INodeTypeDescription>> = {
-				'n8n-nodes-base.set': { group: ['transform'], inputs: ['main'], outputs: ['main'] },
+				'MNI-nodes-base.set': { group: ['transform'], inputs: ['main'], outputs: ['main'] },
 				[STICKY_NODE_TYPE]: { group: ['input'], inputs: [], outputs: [] },
 			};
 			// eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -177,7 +177,7 @@ describe('useCanvasNodeGroupOperationGuards', () => {
 			const nodes = ['previous', 'existing', 'replacement', 'helper'].map((id) => ({
 				id,
 				name: id.toUpperCase(),
-				type: 'n8n-nodes-base.set',
+				type: 'MNI-nodes-base.set',
 				typeVersion: 1,
 				position: [0, 0] as [number, number],
 				parameters: {},
@@ -189,7 +189,7 @@ describe('useCanvasNodeGroupOperationGuards', () => {
 			} as unknown as ReturnType<typeof workflowDocumentStore.getExpressionHandler>);
 			vi.spyOn(useNodeTypesStore() as any, 'getNodeType', 'get').mockReturnValue(() =>
 				mockNodeTypeDescription({
-					name: 'n8n-nodes-base.set',
+					name: 'MNI-nodes-base.set',
 					inputs: [NodeConnectionTypes.Main],
 					outputs: [NodeConnectionTypes.Main],
 				}),

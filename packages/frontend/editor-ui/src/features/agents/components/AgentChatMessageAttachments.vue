@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { computed, onBeforeUnmount, reactive } from 'vue';
-import { N8nIcon } from '@n8n/design-system';
-import { useRootStore } from '@n8n/stores/useRootStore';
-import { useI18n } from '@n8n/i18n';
+import { N8nIcon } from '@MNI/design-system';
+import { useRootStore } from '@MNI/stores/useRootStore';
+import { useI18n } from '@MNI/i18n';
 import type { ChatMessageAttachment } from '@/features/ai/shared/agentsChat/types';
-import { formatBytes } from '@n8n/utils/number/bytes';
+import { formatBytes } from '@MNI/utils/number/bytes';
 
 const props = defineProps<{
 	attachments: ChatMessageAttachment[];

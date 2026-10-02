@@ -1,5 +1,5 @@
 {
-	"node": "n8n-nodes-base.microsoftEntra",
+	"node": "MNI-nodes-base.microsoftEntra",
 	"nodeVersion": "1.0",
 	"codexVersion": "1.0",
 	"categories": ["Development", "Developer Tools"],
@@ -11,7 +11,7 @@
 		],
 		"primaryDocumentation": [
 			{
-				"url": "https://docs.n8n.io/integrations/builtin/app-nodes/n8n-nodes-base.microsoftentra/"
+				"url": "https://docs.n8n.io/integrations/builtin/app-nodes/MNI-nodes-base.microsoftentra/"
 			}
 		]
 	}

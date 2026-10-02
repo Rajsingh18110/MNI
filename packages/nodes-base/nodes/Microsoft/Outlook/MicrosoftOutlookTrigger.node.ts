@@ -5,7 +5,7 @@ import {
 	type INodeType,
 	type INodeTypeDescription,
 	NodeConnectionTypes,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { getPollResponse } from './trigger/GenericFunctions';
 import { properties as messageProperties } from './trigger/MessageDescription';
@@ -30,12 +30,12 @@ export class MicrosoftOutlookTrigger implements INodeType {
 				'When downstream nodes create records (tasks, rows, tickets) per email, guarantee each email is processed exactly once: filter to unread AND mark each email read or move it to a folder after its record is created, or track handled message ids in a Data Table. Otherwise the same email can be reprocessed into duplicates.',
 			relatedNodes: [
 				{
-					nodeType: 'n8n-nodes-base.microsoftOutlook',
+					nodeType: 'MNI-nodes-base.microsoftOutlook',
 					relationHint:
 						'Mark polled emails as handled after processing (message update with isRead: true, or message move to a folder) so they are not picked up again',
 				},
 				{
-					nodeType: 'n8n-nodes-base.dataTable',
+					nodeType: 'MNI-nodes-base.dataTable',
 					relationHint: 'Record handled message ids to skip emails that were already processed',
 				},
 			],

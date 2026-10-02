@@ -1,5 +1,5 @@
-import { BreakingChangeRule } from '@n8n/decorators';
-import { BinaryDataConfig } from 'n8n-core';
+import { BreakingChangeRule } from '@MNI/decorators';
+import { BinaryDataConfig } from 'MNI-core';
 
 import { NOT_AFFECTED_INSTANCE } from '../../detection-report';
 import type {
@@ -45,7 +45,7 @@ export class InMemoryBinaryDataRule implements IBreakingChangeInstanceRule {
 				{
 					action: 'Switch the binary data mode',
 					description:
-						'Set N8N_DEFAULT_BINARY_DATA_MODE to `filesystem`, `s3`, or `database` before updating, and ensure the chosen storage has adequate capacity.',
+						'Set MNI_DEFAULT_BINARY_DATA_MODE to `filesystem`, `s3`, or `database` before updating, and ensure the chosen storage has adequate capacity.',
 				},
 			],
 		};

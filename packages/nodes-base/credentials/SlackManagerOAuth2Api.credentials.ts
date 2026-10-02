@@ -1,4 +1,4 @@
-import type { ICredentialType, INodeProperties } from 'n8n-workflow';
+import type { ICredentialType, INodeProperties } from 'MNI-workflow';
 
 const scopes = ['app_configurations:read', 'app_configurations:write', 'managed_apps:install'];
 

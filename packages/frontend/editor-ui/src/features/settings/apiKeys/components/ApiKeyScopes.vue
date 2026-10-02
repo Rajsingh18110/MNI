@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { ApiKeyScope } from '@n8n/permissions';
+import type { ApiKeyScope } from '@MNI/permissions';
 
 import ScopesSelector from '@/app/components/scopes/ScopesSelector.vue';
 

@@ -1,8 +1,8 @@
-export namespace n8n {
+export namespace MNI {
 	export interface PackageJson {
 		name: string;
 		version: string;
-		n8n?: {
+		MNI?: {
 			credentials?: string[];
 			nodes?: string[];
 			n8nNodesApiVersion?: number;

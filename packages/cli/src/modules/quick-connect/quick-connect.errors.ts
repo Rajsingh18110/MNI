@@ -1,4 +1,4 @@
-import { OperationalError } from 'n8n-workflow';
+import { OperationalError } from 'MNI-workflow';
 
 /**
  * Error thrown when quick connect fails to fetch credentials from a third-party service.

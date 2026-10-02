@@ -1,7 +1,7 @@
 import { createComponentRenderer } from '@/__tests__/render';
 import { SETTINGS_STORE_DEFAULT_STATE } from '@/__tests__/utils';
 import FixedCollectionParameterLegacy, { type Props } from './FixedCollectionParameterLegacy.vue';
-import { STORES } from '@n8n/stores';
+import { STORES } from '@MNI/stores';
 import { createTestingPinia } from '@pinia/testing';
 import userEvent from '@testing-library/user-event';
 import { fireEvent, waitFor } from '@testing-library/vue';

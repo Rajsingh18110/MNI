@@ -1,4 +1,4 @@
-# Keeps the bundle integration branches in sync with their base, in n8n-io/n8n-private.
+# Keeps the bundle integration branches in sync with their base, in MNI-io/MNI-private.
 #
 # Fixes are integrated on bundle/2.x and bundle/1.x and eventually merged into private
 # master/1.x as a squashed `chore: Bundle/*` PR. Those branches must not drift from their
@@ -46,7 +46,7 @@ jobs:
   sync:
     name: Sync ${{ matrix.bundle }}
     if: |
-      github.repository == 'n8n-io/n8n-private' &&
+      github.repository == 'MNI-io/MNI-private' &&
       (github.event_name != 'pull_request' || github.event.pull_request.merged == true)
     runs-on: ubuntu-latest
     permissions:
@@ -67,8 +67,8 @@ jobs:
         id: app-token
         uses: actions/create-github-app-token@29824e69f54612133e76f7eaac726eef6c875baf # v2.2.1
         with:
-          app-id: ${{ secrets.N8N_ASSISTANT_APP_ID }}
-          private-key: ${{ secrets.N8N_ASSISTANT_PRIVATE_KEY }}
+          app-id: ${{ secrets.MNI_ASSISTANT_APP_ID }}
+          private-key: ${{ secrets.MNI_ASSISTANT_PRIVATE_KEY }}
           # Scope the installation token to only what the sync needs.
           permission-contents: write # push the bundle branch
 

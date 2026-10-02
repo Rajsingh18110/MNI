@@ -9,12 +9,12 @@ import { codespaceName, forwardingDomain } from '../codespace-env.mjs';
 
 const CODESPACES_DIR = '/workspaces/.codespaces';
 
-export const servePort = () => process.env.N8N_PORT ?? '5678';
+export const servePort = () => process.env.MNI_PORT ?? '5678';
 
 // Probe the same health path the backend serves (defaults to /healthz).
 export const serveHealthPath = () =>
-	process.env.N8N_ENDPOINT_HEALTH
-		? `/${process.env.N8N_ENDPOINT_HEALTH.replace(/^\//, '')}`
+	process.env.MNI_ENDPOINT_HEALTH
+		? `/${process.env.MNI_ENDPOINT_HEALTH.replace(/^\//, '')}`
 		: '/healthz';
 
 export async function waitForHealth(port, healthPath, timeoutMs = 120_000, intervalMs = 3000) {

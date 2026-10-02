@@ -69,27 +69,27 @@ export const victoriaMetrics: Service<VictoriaMetricsResult> = {
 		const scrapeTargets: ScrapeTarget[] = [];
 
 		for (let i = 1; i <= mains; i++) {
-			const hostname = mains > 1 ? `${projectName}-n8n-main-${i}` : `${projectName}-n8n`;
+			const hostname = mains > 1 ? `${projectName}-MNI-main-${i}` : `${projectName}-MNI`;
 			scrapeTargets.push({
-				job: 'n8n-main',
-				instance: `n8n-main-${i}`,
+				job: 'MNI-main',
+				instance: `MNI-main-${i}`,
 				host: hostname,
 				port: 5678,
 			});
 		}
 		for (let i = 1; i <= webhooks; i++) {
 			scrapeTargets.push({
-				job: 'n8n-webhook',
-				instance: `n8n-webhook-${i}`,
-				host: `${projectName}-n8n-webhook-${i}`,
+				job: 'MNI-webhook',
+				instance: `MNI-webhook-${i}`,
+				host: `${projectName}-MNI-webhook-${i}`,
 				port: 5678,
 			});
 		}
 		for (let i = 1; i <= workers; i++) {
 			scrapeTargets.push({
-				job: 'n8n-worker',
-				instance: `n8n-worker-${i}`,
-				host: `${projectName}-n8n-worker-${i}`,
+				job: 'MNI-worker',
+				instance: `MNI-worker-${i}`,
+				host: `${projectName}-MNI-worker-${i}`,
 				port: 5678,
 			});
 		}
@@ -167,7 +167,7 @@ export const victoriaMetrics: Service<VictoriaMetricsResult> = {
 
 	env(): Record<string, string> {
 		return {
-			N8N_METRICS_ENABLED: 'true',
+			MNI_METRICS_ENABLED: 'true',
 		};
 	},
 };

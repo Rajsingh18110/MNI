@@ -6,7 +6,7 @@ import {
 	INSTANCE_AI_MODEL_CREDENTIAL_TYPES,
 	INSTANCE_AI_SEARCH_CREDENTIAL_TYPES,
 	resolveInstanceAiPermissions,
-} from '@n8n/api-types';
+} from '@MNI/api-types';
 import type {
 	CreateCredentialDto,
 	InstanceAiAdminSettingsResponse,
@@ -18,22 +18,22 @@ import type {
 	InstanceAiPermissions,
 	InstanceAiSandboxProvider,
 	InstanceAiSetupState,
-} from '@n8n/api-types';
-import { Logger } from '@n8n/backend-common';
-import { GlobalConfig } from '@n8n/config';
-import type { InstanceAiConfig, DeploymentConfig } from '@n8n/config';
-import { DbLock, DbLockService, SettingsRepository, UserRepository } from '@n8n/db';
-import type { CredentialsEntity, ICredentialsDb, OperationContext, User } from '@n8n/db';
-import { Container, Service } from '@n8n/di';
+} from '@MNI/api-types';
+import { Logger } from '@MNI/backend-common';
+import { GlobalConfig } from '@MNI/config';
+import type { InstanceAiConfig, DeploymentConfig } from '@MNI/config';
+import { DbLock, DbLockService, SettingsRepository, UserRepository } from '@MNI/db';
+import type { CredentialsEntity, ICredentialsDb, OperationContext, User } from '@MNI/db';
+import { Container, Service } from '@MNI/di';
 import {
 	resolveCustomModelExperimentDefaultsFromEnv,
 	type ModelConfig,
 	type VertexAnthropicModelConfig,
-} from '@n8n/instance-ai';
-import { hasGlobalScope } from '@n8n/permissions';
-import { ensureError } from '@n8n/utils/errors/ensure-error';
-import type { ICredentialDataDecryptedObject, IUserSettings } from 'n8n-workflow';
-import { jsonParse, UnexpectedError } from 'n8n-workflow';
+} from '@MNI/instance-ai';
+import { hasGlobalScope } from '@MNI/permissions';
+import { ensureError } from '@MNI/utils/errors/ensure-error';
+import type { ICredentialDataDecryptedObject, IUserSettings } from 'MNI-workflow';
+import { jsonParse, UnexpectedError } from 'MNI-workflow';
 
 import { CredentialsFinderService } from '@/credentials/credentials-finder.service';
 import { CredentialsService } from '@/credentials/credentials.service';
@@ -49,15 +49,15 @@ import { EventService } from '@/events/event.service';
 import { AiService } from '@/services/ai.service';
 import {
 	INSTANCE_AI_DAYTONA_CREDENTIAL_POLICY,
-	INSTANCE_AI_N8N_SANDBOX_CREDENTIAL_POLICY,
+	INSTANCE_AI_MNI_SANDBOX_CREDENTIAL_POLICY,
 	SandboxSettingsService,
 } from '@/services/sandbox-settings.service';
 import { UserService } from '@/services/user.service';
 
-export { INSTANCE_AI_DAYTONA_CREDENTIAL_POLICY, INSTANCE_AI_N8N_SANDBOX_CREDENTIAL_POLICY };
+export { INSTANCE_AI_DAYTONA_CREDENTIAL_POLICY, INSTANCE_AI_MNI_SANDBOX_CREDENTIAL_POLICY };
 
 import {
-	N8N_SANDBOX_SERVICE_URL_REQUIRED_MESSAGE,
+	MNI_SANDBOX_SERVICE_URL_REQUIRED_MESSAGE,
 	normalizeSandboxProvider,
 } from './sandbox-provider';
 
@@ -219,8 +219,8 @@ function validateInstanceAiCredential(
 		validateModelCredential(credential);
 	} else if (policy === INSTANCE_AI_DAYTONA_CREDENTIAL_POLICY) {
 		INSTANCE_AI_DAYTONA_CREDENTIAL_POLICY.validate?.(credential);
-	} else if (policy === INSTANCE_AI_N8N_SANDBOX_CREDENTIAL_POLICY) {
-		INSTANCE_AI_N8N_SANDBOX_CREDENTIAL_POLICY.validate?.(credential);
+	} else if (policy === INSTANCE_AI_MNI_SANDBOX_CREDENTIAL_POLICY) {
+		INSTANCE_AI_MNI_SANDBOX_CREDENTIAL_POLICY.validate?.(credential);
 	} else if (policy === INSTANCE_AI_SEARCH_CREDENTIAL_POLICY) {
 		validateSearchCredential(credential);
 	} else {
@@ -372,7 +372,7 @@ export class InstanceAiSettingsService {
 		}
 		if (this.aiService.isProxyEnabled()) {
 			const n8nSandboxCredentialId = await this.instanceCredentialBroker.getAssignedCredentialId(
-				INSTANCE_AI_N8N_SANDBOX_CREDENTIAL_POLICY,
+				INSTANCE_AI_MNI_SANDBOX_CREDENTIAL_POLICY,
 			);
 			return this.buildAdminSettingsResponse({
 				modelCredentialId: null,
@@ -390,7 +390,7 @@ export class InstanceAiSettingsService {
 					INSTANCE_AI_DAYTONA_CREDENTIAL_POLICY,
 				),
 				this.instanceCredentialBroker.getAssignedCredentialId(
-					INSTANCE_AI_N8N_SANDBOX_CREDENTIAL_POLICY,
+					INSTANCE_AI_MNI_SANDBOX_CREDENTIAL_POLICY,
 				),
 				this.instanceCredentialBroker.getAssignedCredentialId(INSTANCE_AI_SEARCH_CREDENTIAL_POLICY),
 			]);
@@ -464,10 +464,10 @@ export class InstanceAiSettingsService {
 					provider: modelConnectionEnvConfigured,
 					apiKey: Boolean(c.modelApiKey.trim() || providerModelApiKeyConfigured),
 					baseUrl: Boolean(c.modelUrl.trim()),
-					model: Boolean(process.env.N8N_INSTANCE_AI_MODEL?.trim()),
+					model: Boolean(process.env.MNI_INSTANCE_AI_MODEL?.trim()),
 				},
 				sandbox: {
-					provider: Boolean(process.env.N8N_INSTANCE_AI_SANDBOX_PROVIDER?.trim()),
+					provider: Boolean(process.env.MNI_INSTANCE_AI_SANDBOX_PROVIDER?.trim()),
 					serviceUrl: Boolean(this.environmentN8nSandboxServiceUrl.trim()),
 					apiKey:
 						sandboxProvider === 'daytona'
@@ -599,7 +599,7 @@ export class InstanceAiSettingsService {
 				: sandboxConnection?.type === 'daytonaApi'
 					? 'daytona'
 					: sandboxConnection?.type === 'httpHeaderAuth'
-						? 'n8n-sandbox'
+						? 'MNI-sandbox'
 						: settingsUpdate.sandboxProvider,
 		);
 		await this.runConnectionHooks([modelPrepared, searchPrepared, sandboxPrepared]);
@@ -668,7 +668,7 @@ export class InstanceAiSettingsService {
 						ctx,
 					),
 					this.instanceCredentialBroker.getAssignedCredentialId(
-						INSTANCE_AI_N8N_SANDBOX_CREDENTIAL_POLICY,
+						INSTANCE_AI_MNI_SANDBOX_CREDENTIAL_POLICY,
 						ctx,
 					),
 					this.instanceCredentialBroker.getAssignedCredentialId(
@@ -734,7 +734,7 @@ export class InstanceAiSettingsService {
 					daytonaCredentialId,
 				);
 				await updateCredentialAssignment(
-					INSTANCE_AI_N8N_SANDBOX_CREDENTIAL_POLICY,
+					INSTANCE_AI_MNI_SANDBOX_CREDENTIAL_POLICY,
 					n8nSandboxCredentialId,
 				);
 				await updateCredentialAssignment(INSTANCE_AI_SEARCH_CREDENTIAL_POLICY, searchCredentialId);
@@ -746,7 +746,7 @@ export class InstanceAiSettingsService {
 				}
 				if (typeof n8nSandboxCredentialId === 'string') {
 					await this.validateAssignedServiceCredential(
-						INSTANCE_AI_N8N_SANDBOX_CREDENTIAL_POLICY,
+						INSTANCE_AI_MNI_SANDBOX_CREDENTIAL_POLICY,
 						ctx,
 					);
 				}
@@ -927,7 +927,7 @@ export class InstanceAiSettingsService {
 			connection.type === 'daytonaApi'
 				? INSTANCE_AI_DAYTONA_CREDENTIAL_POLICY
 				: connection.type === 'httpHeaderAuth'
-					? INSTANCE_AI_N8N_SANDBOX_CREDENTIAL_POLICY
+					? INSTANCE_AI_MNI_SANDBOX_CREDENTIAL_POLICY
 					: undefined;
 		if (!policy) {
 			throw new UnprocessableRequestError(
@@ -973,7 +973,7 @@ export class InstanceAiSettingsService {
 				),
 				n8nSandboxCredentialId: await this.upsertConnection(
 					user,
-					INSTANCE_AI_N8N_SANDBOX_CREDENTIAL_POLICY,
+					INSTANCE_AI_MNI_SANDBOX_CREDENTIAL_POLICY,
 					name,
 					null,
 					ctx,
@@ -992,7 +992,7 @@ export class InstanceAiSettingsService {
 				),
 				n8nSandboxCredentialId: await this.upsertConnection(
 					user,
-					INSTANCE_AI_N8N_SANDBOX_CREDENTIAL_POLICY,
+					INSTANCE_AI_MNI_SANDBOX_CREDENTIAL_POLICY,
 					name,
 					null,
 					ctx,
@@ -1004,7 +1004,7 @@ export class InstanceAiSettingsService {
 			return {
 				n8nSandboxCredentialId: await this.upsertConnection(
 					user,
-					INSTANCE_AI_N8N_SANDBOX_CREDENTIAL_POLICY,
+					INSTANCE_AI_MNI_SANDBOX_CREDENTIAL_POLICY,
 					name,
 					connection,
 					ctx,
@@ -1017,7 +1017,7 @@ export class InstanceAiSettingsService {
 					null,
 					ctx,
 				),
-				sandboxProvider: 'n8n-sandbox',
+				sandboxProvider: 'MNI-sandbox',
 			};
 		}
 		throw new UnprocessableRequestError(
@@ -1136,10 +1136,10 @@ export class InstanceAiSettingsService {
 	async listInstanceServiceCredentials(): Promise<InstanceAiProviderConnection[]> {
 		if (this.isCloud) return [];
 		const policies = this.aiService.isProxyEnabled()
-			? [INSTANCE_AI_N8N_SANDBOX_CREDENTIAL_POLICY]
+			? [INSTANCE_AI_MNI_SANDBOX_CREDENTIAL_POLICY]
 			: [
 					INSTANCE_AI_DAYTONA_CREDENTIAL_POLICY,
-					INSTANCE_AI_N8N_SANDBOX_CREDENTIAL_POLICY,
+					INSTANCE_AI_MNI_SANDBOX_CREDENTIAL_POLICY,
 					INSTANCE_AI_SEARCH_CREDENTIAL_POLICY,
 				];
 		const credentials = await Promise.all(
@@ -1172,7 +1172,7 @@ export class InstanceAiSettingsService {
 	async resolveN8nSandboxConfig(): Promise<{ serviceUrl?: string; apiKey?: string }> {
 		if (
 			this.isDirectSelfManaged() &&
-			this.environmentSandboxProvider === 'n8n-sandbox' &&
+			this.environmentSandboxProvider === 'MNI-sandbox' &&
 			this.hasEnvironmentSandboxConnection()
 		) {
 			const { n8nSandboxServiceUrl, n8nSandboxServiceApiKey } = this.config;
@@ -1333,7 +1333,7 @@ export class InstanceAiSettingsService {
 					INSTANCE_AI_DAYTONA_CREDENTIAL_POLICY,
 				),
 				this.instanceCredentialBroker.getAssignedCredentialId(
-					INSTANCE_AI_N8N_SANDBOX_CREDENTIAL_POLICY,
+					INSTANCE_AI_MNI_SANDBOX_CREDENTIAL_POLICY,
 				),
 				this.instanceCredentialBroker.getAssignedCredentialId(INSTANCE_AI_SEARCH_CREDENTIAL_POLICY),
 			]);
@@ -1601,10 +1601,10 @@ export class InstanceAiSettingsService {
 	): string | null {
 		if (
 			sandboxEnabled &&
-			sandboxProvider === 'n8n-sandbox' &&
+			sandboxProvider === 'MNI-sandbox' &&
 			sandboxServiceUrl.trim().length === 0
 		) {
-			return N8N_SANDBOX_SERVICE_URL_REQUIRED_MESSAGE;
+			return MNI_SANDBOX_SERVICE_URL_REQUIRED_MESSAGE;
 		}
 
 		return null;
@@ -1633,7 +1633,7 @@ export class InstanceAiSettingsService {
 	}
 
 	private hasEnvironmentModelName(): boolean {
-		return Boolean(process.env.N8N_INSTANCE_AI_MODEL?.trim());
+		return Boolean(process.env.MNI_INSTANCE_AI_MODEL?.trim());
 	}
 
 	private hasEnvironmentSandboxConnection(): boolean {

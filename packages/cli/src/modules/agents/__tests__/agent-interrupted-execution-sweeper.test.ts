@@ -1,5 +1,5 @@
-import { mockLogger } from '@n8n/backend-test-utils';
-import type { AgentsConfig } from '@n8n/config';
+import { mockLogger } from '@MNI/backend-test-utils';
+import type { AgentsConfig } from '@MNI/config';
 import { mock } from 'vitest-mock-extended';
 
 import type { AgentExecutionService } from '../agent-execution.service';

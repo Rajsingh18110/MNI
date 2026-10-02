@@ -1,6 +1,6 @@
-import type { FetchFn } from '@n8n/agents';
-import type { Logger } from '@n8n/backend-common';
-import { jsonParse } from 'n8n-workflow';
+import type { FetchFn } from '@MNI/agents';
+import type { Logger } from '@MNI/backend-common';
+import { jsonParse } from 'MNI-workflow';
 
 import { buildDateAnchors } from './date-anchors';
 import { generateJson, resolveUrl } from './mock-utils';

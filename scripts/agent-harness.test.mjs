@@ -33,21 +33,21 @@ function fixtureDirectory() {
 
 function makeAsset(root, version = '1.2.3') {
 	const source = join(root, 'source');
-	const bundle = join(source, 'n8n-opencode-harness');
+	const bundle = join(source, 'MNI-opencode-harness');
 	mkdirSync(join(bundle, 'plugins'), { recursive: true });
-	writeFileSync(join(bundle, 'plugins', 'n8n-harness.js'), 'export default async () => ({});\n');
-	const asset = join(root, `n8n-opencode-harness-${version}.tgz`);
-	execFileSync('tar', ['-czf', asset, '-C', source, 'n8n-opencode-harness']);
+	writeFileSync(join(bundle, 'plugins', 'MNI-harness.js'), 'export default async () => ({});\n');
+	const asset = join(root, `MNI-opencode-harness-${version}.tgz`);
+	execFileSync('tar', ['-czf', asset, '-C', source, 'MNI-opencode-harness']);
 	return asset;
 }
 
 function writeLock(root, overrides = {}) {
 	const version = '1.2.3';
 	const lock = {
-		repository: 'n8n-io/cat-bot',
+		repository: 'MNI-io/cat-bot',
 		releaseTag: `harness-v${version}`,
 		version,
-		assetName: `n8n-opencode-harness-${version}.tgz`,
+		assetName: `MNI-opencode-harness-${version}.tgz`,
 		...overrides,
 	};
 	const lockPath = join(root, 'agent-harness.lock.json');
@@ -58,7 +58,7 @@ function writeLock(root, overrides = {}) {
 function installerPaths(root) {
 	return {
 		cacheRoot: join(root, 'cache'),
-		pluginLink: join(root, 'config', 'opencode', 'plugins', 'n8n-harness.js'),
+		pluginLink: join(root, 'config', 'opencode', 'plugins', 'MNI-harness.js'),
 	};
 }
 
@@ -68,10 +68,10 @@ function copyAsset(asset) {
 
 test('validates the pinned release values', () => {
 	const lock = {
-		repository: 'n8n-io/cat-bot',
+		repository: 'MNI-io/cat-bot',
 		releaseTag: 'harness-v1.2.3',
 		version: '1.2.3',
-		assetName: 'n8n-opencode-harness-1.2.3.tgz',
+		assetName: 'MNI-opencode-harness-1.2.3.tgz',
 	};
 	assert.equal(validateLock(lock), lock);
 	for (const invalid of [
@@ -96,7 +96,7 @@ test('installs the pinned release and activates its plugin', () => {
 	assert.equal(result.cacheHit, false);
 	assert.equal(
 		readlinkSync(result.pluginLink),
-		join(result.bundlePath, 'plugins', 'n8n-harness.js'),
+		join(result.bundlePath, 'plugins', 'MNI-harness.js'),
 	);
 	assert.match(readFileSync(result.pluginLink, 'utf8'), /export default/);
 	assert.deepEqual(readdirSync(join(root, 'cache')), ['1.2.3']);
@@ -165,7 +165,7 @@ test('reports a clear GitHub access failure', () => {
 	assert.throws(
 		() =>
 			downloadReleaseAsset(
-				{ repository: 'n8n-io/cat-bot', releaseTag: 'harness-v1.2.3', assetName: 'asset.tgz' },
+				{ repository: 'MNI-io/cat-bot', releaseTag: 'harness-v1.2.3', assetName: 'asset.tgz' },
 				fixtureDirectory(),
 				{
 					run: () => {
@@ -173,6 +173,6 @@ test('reports a clear GitHub access failure', () => {
 					},
 				},
 			),
-		/Confirm that gh can read n8n-io\/cat-bot.*release not found/,
+		/Confirm that gh can read MNI-io\/cat-bot.*release not found/,
 	);
 });

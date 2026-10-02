@@ -7,7 +7,7 @@ import type { RenderOptions } from '@/__tests__/render';
 import { createComponentRenderer } from '@/__tests__/render';
 import { useCredentialsStore } from '../../credentials.store';
 import { mockedStore } from '@/__tests__/utils';
-import type { ICredentialType } from 'n8n-workflow';
+import type { ICredentialType } from 'MNI-workflow';
 
 const googleSheetsOAuth2Api: ICredentialType = {
 	name: 'googleSheetsOAuth2Api',

@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed, ref, useTemplateRef } from 'vue';
-import { N8nButton, N8nInput, N8nText } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { N8nButton, N8nInput, N8nText } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { useUIStore } from '@/app/stores/ui.store';
 import { useWorkflowsStore } from '@/app/stores/workflows.store';
 import { useWorkflowsListStore } from '@/app/stores/workflowsList.store';
@@ -10,10 +10,10 @@ import {
 	useWorkflowDocumentStore,
 	createWorkflowDocumentId,
 } from '@/app/stores/workflowDocument.store';
-import { useToast } from '@n8n/composables/useToast';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
+import { useToast } from '@MNI/composables/useToast';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
 import { WORKFLOW_DESCRIPTION_MODAL_KEY } from '@/app/constants';
-import { createEventBus } from '@n8n/utils/event-bus';
+import { createEventBus } from '@MNI/utils/event-bus';
 import Modal from '@/app/components/Modal.vue';
 import WorkflowTagsDropdown from '@/features/shared/tags/components/WorkflowTagsDropdown.vue';
 import { onMounted } from 'vue';

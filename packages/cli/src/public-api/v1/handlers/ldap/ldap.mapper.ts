@@ -1,7 +1,7 @@
-import type { LdapConfigurationResponse, UpdateLdapConfigurationDto } from '@n8n/api-types';
-import type { LdapConfig } from '@n8n/constants';
-import type { AuthProviderSyncHistory } from '@n8n/db';
-import { CREDENTIAL_BLANKING_VALUE } from 'n8n-workflow';
+import type { LdapConfigurationResponse, UpdateLdapConfigurationDto } from '@MNI/api-types';
+import type { LdapConfig } from '@MNI/constants';
+import type { AuthProviderSyncHistory } from '@MNI/db';
+import { CREDENTIAL_BLANKING_VALUE } from 'MNI-workflow';
 
 export function toLdapConfigurationResponse(config: LdapConfig): LdapConfigurationResponse {
 	return {

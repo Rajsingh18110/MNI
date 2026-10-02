@@ -1,6 +1,6 @@
 import type { MockProxy } from 'vitest-mock-extended';
 import { mock } from 'vitest-mock-extended';
-import type { IExecuteFunctions, NodeParameterValueType } from 'n8n-workflow';
+import type { IExecuteFunctions, NodeParameterValueType } from 'MNI-workflow';
 
 import * as genericFunctions from '../../GenericFunctions';
 import { MicrosoftOneDrive } from '../../MicrosoftOneDrive.node';
@@ -22,7 +22,7 @@ describe('Test MicrosoftOneDrive, search guard under Service Principal', () => {
 	const mockNode = {
 		id: 'test-node-id',
 		name: 'Microsoft OneDrive Test',
-		type: 'n8n-nodes-base.microsoftOneDrive',
+		type: 'MNI-nodes-base.microsoftOneDrive',
 		typeVersion: 1.1,
 		position: [0, 0] as [number, number],
 		parameters: {},
@@ -108,7 +108,7 @@ describe('Test MicrosoftOneDrive, search query escaping', () => {
 		mockExecuteFunctions.getNode.mockReturnValue({
 			id: 'test-node-id',
 			name: 'Microsoft OneDrive Test',
-			type: 'n8n-nodes-base.microsoftOneDrive',
+			type: 'MNI-nodes-base.microsoftOneDrive',
 			typeVersion: 1.1,
 			position: [0, 0],
 			parameters: {},

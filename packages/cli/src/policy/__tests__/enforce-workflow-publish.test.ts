@@ -1,4 +1,4 @@
-import type { Project } from '@n8n/db';
+import type { Project } from '@MNI/db';
 import { mock } from 'vitest-mock-extended';
 
 import type { OwnershipService } from '@/services/ownership.service';

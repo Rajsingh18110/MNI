@@ -3,8 +3,8 @@ import type {
 	ICredentialType,
 	IHttpRequestOptions,
 	INodeProperties,
-} from 'n8n-workflow';
-import { UserError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { UserError } from 'MNI-workflow';
 
 export class CustomerIoApi implements ICredentialType {
 	name = 'customerIoApi';

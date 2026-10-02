@@ -1,6 +1,6 @@
-import { Time } from '@n8n/constants';
-import { WorkflowHistoryRepository } from '@n8n/db';
-import { Service } from '@n8n/di';
+import { Time } from '@MNI/constants';
+import { WorkflowHistoryRepository } from '@MNI/db';
+import { Service } from '@MNI/di';
 import { DateTime } from 'luxon';
 
 import { License } from '@/license';

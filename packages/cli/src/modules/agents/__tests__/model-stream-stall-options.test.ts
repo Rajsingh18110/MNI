@@ -1,4 +1,4 @@
-import type { AiConfig } from '@n8n/config';
+import type { AiConfig } from '@MNI/config';
 
 import { modelStreamStallOptions } from '../model-stream-stall-options';
 

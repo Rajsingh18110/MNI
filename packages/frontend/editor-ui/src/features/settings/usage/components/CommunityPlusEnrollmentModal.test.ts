@@ -5,11 +5,11 @@ import { createComponentRenderer } from '@/__tests__/render';
 import CommunityPlusEnrollmentModal from './CommunityPlusEnrollmentModal.vue';
 import { COMMUNITY_PLUS_ENROLLMENT_MODAL } from '../usage.constants';
 import { useUsageStore } from '../usage.store';
-import { useToast } from '@n8n/composables/useToast';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
-import { useUsersStore } from '@n8n/stores/users.store';
+import { useToast } from '@MNI/composables/useToast';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
+import { useUsersStore } from '@MNI/stores/users.store';
 
-vi.mock('@n8n/composables/useToast', () => {
+vi.mock('@MNI/composables/useToast', () => {
 	const showMessage = vi.fn();
 	const showError = vi.fn();
 	return {
@@ -22,7 +22,7 @@ vi.mock('@n8n/composables/useToast', () => {
 	};
 });
 
-vi.mock('@n8n/composables/useTelemetry', () => {
+vi.mock('@MNI/composables/useTelemetry', () => {
 	const track = vi.fn();
 	return {
 		useTelemetry: () => {

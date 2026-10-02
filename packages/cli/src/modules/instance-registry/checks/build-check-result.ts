@@ -1,4 +1,4 @@
-import type { ClusterCheckResult } from '@n8n/decorators';
+import type { ClusterCheckResult } from '@MNI/decorators';
 
 /**
  * Builds the result of a fingerprint-based cluster check.

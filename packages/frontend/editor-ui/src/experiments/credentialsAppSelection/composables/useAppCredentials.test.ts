@@ -4,9 +4,9 @@ import { useAppCredentials } from './useAppCredentials';
 import { useCredentialsStore } from '@/features/credentials/credentials.store';
 import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';
 import { mockedStore } from '@/__tests__/utils';
-import type { ICredentialType, INodeTypeDescription } from 'n8n-workflow';
-import { NodeConnectionTypes } from 'n8n-workflow';
-import type { CommunityNodeType } from '@n8n/api-types';
+import type { ICredentialType, INodeTypeDescription } from 'MNI-workflow';
+import { NodeConnectionTypes } from 'MNI-workflow';
+import type { CommunityNodeType } from '@MNI/api-types';
 
 vi.mock('@/features/shared/nodeCreator/nodeCreator.utils', () => ({
 	removePreviewToken: (name: string) => name.replace('[preview]', ''),
@@ -15,7 +15,7 @@ vi.mock('@/features/shared/nodeCreator/nodeCreator.utils', () => ({
 function createMockNodeType(overrides: Partial<INodeTypeDescription> = {}): INodeTypeDescription {
 	return {
 		displayName: 'Test Node',
-		name: 'n8n-nodes-base.testNode',
+		name: 'MNI-nodes-base.testNode',
 		group: [],
 		version: 1,
 		description: 'Test node',
@@ -82,7 +82,7 @@ describe('useAppCredentials', () => {
 			// Node that references all these credential types
 			nodeTypesStore.visibleNodeTypes = [
 				createMockNodeType({
-					name: 'n8n-nodes-base.slack',
+					name: 'MNI-nodes-base.slack',
 					displayName: 'Slack',
 					credentials: [...excludedCredNames.map((name) => ({ name })), { name: 'slackApi' }],
 				}),
@@ -96,26 +96,26 @@ describe('useAppCredentials', () => {
 
 		it('should filter out excluded node types', () => {
 			const excludedNodeNames = [
-				'n8n-nodes-base.httpRequest',
-				'n8n-nodes-base.webhook',
-				'n8n-nodes-base.code',
-				'n8n-nodes-base.scheduleTrigger',
-				'n8n-nodes-base.emailSend',
-				'n8n-nodes-base.set',
-				'n8n-nodes-base.if',
-				'n8n-nodes-base.switch',
-				'n8n-nodes-base.merge',
-				'n8n-nodes-base.splitInBatches',
-				'n8n-nodes-base.noOp',
-				'n8n-nodes-base.start',
-				'n8n-nodes-base.stickyNote',
-				'n8n-nodes-base.executeWorkflow',
-				'n8n-nodes-base.executeWorkflowTrigger',
-				'n8n-nodes-base.respondToWebhook',
-				'n8n-nodes-base.manualTrigger',
-				'n8n-nodes-base.errorTrigger',
-				'n8n-nodes-base.function',
-				'n8n-nodes-base.functionItem',
+				'MNI-nodes-base.httpRequest',
+				'MNI-nodes-base.webhook',
+				'MNI-nodes-base.code',
+				'MNI-nodes-base.scheduleTrigger',
+				'MNI-nodes-base.emailSend',
+				'MNI-nodes-base.set',
+				'MNI-nodes-base.if',
+				'MNI-nodes-base.switch',
+				'MNI-nodes-base.merge',
+				'MNI-nodes-base.splitInBatches',
+				'MNI-nodes-base.noOp',
+				'MNI-nodes-base.start',
+				'MNI-nodes-base.stickyNote',
+				'MNI-nodes-base.executeWorkflow',
+				'MNI-nodes-base.executeWorkflowTrigger',
+				'MNI-nodes-base.respondToWebhook',
+				'MNI-nodes-base.manualTrigger',
+				'MNI-nodes-base.errorTrigger',
+				'MNI-nodes-base.function',
+				'MNI-nodes-base.functionItem',
 			];
 
 			const validCred = createMockCredentialType({
@@ -134,7 +134,7 @@ describe('useAppCredentials', () => {
 			// Add one valid node
 			nodes.push(
 				createMockNodeType({
-					name: 'n8n-nodes-base.slack',
+					name: 'MNI-nodes-base.slack',
 					displayName: 'Slack',
 					credentials: [{ name: 'slackApi' }],
 				}),
@@ -145,7 +145,7 @@ describe('useAppCredentials', () => {
 			const { appEntries } = useAppCredentials();
 
 			expect(appEntries.value).toHaveLength(1);
-			expect(appEntries.value[0].app.name).toBe('n8n-nodes-base.slack');
+			expect(appEntries.value[0].app.name).toBe('MNI-nodes-base.slack');
 		});
 
 		it('should filter out LangChain nodes', () => {
@@ -157,7 +157,7 @@ describe('useAppCredentials', () => {
 
 			nodeTypesStore.visibleNodeTypes = [
 				createMockNodeType({
-					name: '@n8n/n8n-nodes-langchain.openAi',
+					name: '@MNI/MNI-nodes-langchain.openAi',
 					displayName: 'OpenAI',
 					credentials: [{ name: 'openAiApi' }],
 				}),
@@ -177,7 +177,7 @@ describe('useAppCredentials', () => {
 
 			nodeTypesStore.visibleNodeTypes = [
 				createMockNodeType({
-					name: 'n8n-nodes-base.slackTrigger',
+					name: 'MNI-nodes-base.slackTrigger',
 					displayName: 'Slack Trigger',
 					group: ['trigger'],
 					credentials: [{ name: 'slackApi' }],
@@ -198,7 +198,7 @@ describe('useAppCredentials', () => {
 
 			nodeTypesStore.visibleNodeTypes = [
 				createMockNodeType({
-					name: 'n8n-nodes-base.calculatorTool',
+					name: 'MNI-nodes-base.calculatorTool',
 					displayName: 'Calculator Tool',
 					outputs: [NodeConnectionTypes.AiTool],
 					credentials: [{ name: 'calculatorApi' }],
@@ -219,7 +219,7 @@ describe('useAppCredentials', () => {
 
 			nodeTypesStore.visibleNodeTypes = [
 				createMockNodeType({
-					name: 'n8n-nodes-base.someTool',
+					name: 'MNI-nodes-base.someTool',
 					displayName: 'Some Tool',
 					outputs: [{ type: NodeConnectionTypes.AiTool }],
 					credentials: [{ name: 'someApi' }],
@@ -236,7 +236,7 @@ describe('useAppCredentials', () => {
 
 			nodeTypesStore.visibleNodeTypes = [
 				createMockNodeType({
-					name: 'n8n-nodes-base.noCredNode',
+					name: 'MNI-nodes-base.noCredNode',
 					displayName: 'No Cred Node',
 					credentials: [],
 				}),
@@ -256,7 +256,7 @@ describe('useAppCredentials', () => {
 
 			nodeTypesStore.visibleNodeTypes = [
 				createMockNodeType({
-					name: 'n8n-nodes-community.someNode',
+					name: 'MNI-nodes-community.someNode',
 					displayName: 'Community Node',
 					credentials: [{ name: 'someApi' }],
 				}),
@@ -265,7 +265,7 @@ describe('useAppCredentials', () => {
 			// Return unofficial community node info
 			nodeTypesStore.communityNodeType = vi.fn().mockReturnValue({
 				isOfficialNode: false,
-				packageName: 'n8n-nodes-community',
+				packageName: 'MNI-nodes-community',
 				numberOfDownloads: 100,
 			});
 
@@ -291,7 +291,7 @@ describe('useAppCredentials', () => {
 
 			nodeTypesStore.visibleNodeTypes = [
 				createMockNodeType({
-					name: 'n8n-nodes-base.googleSheets',
+					name: 'MNI-nodes-base.googleSheets',
 					displayName: 'Google Sheets',
 					credentials: [{ name: 'googleSheetsOAuth2Api' }, { name: 'googleSheetsApi' }],
 				}),
@@ -319,7 +319,7 @@ describe('useAppCredentials', () => {
 
 			nodeTypesStore.visibleNodeTypes = [
 				createMockNodeType({
-					name: 'n8n-nodes-base.microsoftOutlook',
+					name: 'MNI-nodes-base.microsoftOutlook',
 					displayName: 'Microsoft Outlook',
 					credentials: [{ name: 'microsoftOutlookOAuth2Api' }, { name: 'microsoftOutlookApi' }],
 				}),
@@ -349,7 +349,7 @@ describe('useAppCredentials', () => {
 
 			nodeTypesStore.visibleNodeTypes = [
 				createMockNodeType({
-					name: 'n8n-nodes-base.slack',
+					name: 'MNI-nodes-base.slack',
 					displayName: 'Slack',
 					credentials: [{ name: 'slackOAuth2Api' }, { name: 'slackOAuth2ManualApi' }],
 				}),
@@ -377,7 +377,7 @@ describe('useAppCredentials', () => {
 
 			nodeTypesStore.visibleNodeTypes = [
 				createMockNodeType({
-					name: 'n8n-nodes-base.hubspot',
+					name: 'MNI-nodes-base.hubspot',
 					displayName: 'HubSpot',
 					credentials: [{ name: 'hubspotApi' }, { name: 'hubspotOAuth2Api' }],
 				}),
@@ -405,7 +405,7 @@ describe('useAppCredentials', () => {
 
 			nodeTypesStore.visibleNodeTypes = [
 				createMockNodeType({
-					name: 'n8n-nodes-base.jira',
+					name: 'MNI-nodes-base.jira',
 					displayName: 'Jira Software',
 					credentials: [{ name: 'jiraSoftwareCloudApi' }, { name: 'jiraSoftwareCloudOAuth2Api' }],
 				}),
@@ -427,7 +427,7 @@ describe('useAppCredentials', () => {
 
 			nodeTypesStore.visibleNodeTypes = [
 				createMockNodeType({
-					name: 'n8n-nodes-base.stripe',
+					name: 'MNI-nodes-base.stripe',
 					displayName: 'Stripe',
 					credentials: [{ name: 'stripeApi' }],
 				}),
@@ -459,17 +459,17 @@ describe('useAppCredentials', () => {
 
 			nodeTypesStore.visibleNodeTypes = [
 				createMockNodeType({
-					name: 'n8n-nodes-base.slack',
+					name: 'MNI-nodes-base.slack',
 					displayName: 'Slack',
 					credentials: [{ name: 'slackApi' }],
 				}),
 				createMockNodeType({
-					name: 'n8n-nodes-base.github',
+					name: 'MNI-nodes-base.github',
 					displayName: 'GitHub',
 					credentials: [{ name: 'githubApi' }],
 				}),
 				createMockNodeType({
-					name: 'n8n-nodes-base.gmail',
+					name: 'MNI-nodes-base.gmail',
 					displayName: 'Gmail',
 					credentials: [{ name: 'gmailOAuth2' }],
 				}),
@@ -495,12 +495,12 @@ describe('useAppCredentials', () => {
 
 			nodeTypesStore.visibleNodeTypes = [
 				createMockNodeType({
-					name: 'n8n-nodes-base.unknownService',
+					name: 'MNI-nodes-base.unknownService',
 					displayName: 'Unknown Service',
 					credentials: [{ name: 'unknownServiceApi' }],
 				}),
 				createMockNodeType({
-					name: 'n8n-nodes-base.gmail',
+					name: 'MNI-nodes-base.gmail',
 					displayName: 'Gmail',
 					credentials: [{ name: 'gmailOAuth2' }],
 				}),
@@ -526,12 +526,12 @@ describe('useAppCredentials', () => {
 
 			nodeTypesStore.visibleNodeTypes = [
 				createMockNodeType({
-					name: 'n8n-nodes-base.zeta',
+					name: 'MNI-nodes-base.zeta',
 					displayName: 'Zeta',
 					credentials: [{ name: 'zetaApi' }],
 				}),
 				createMockNodeType({
-					name: 'n8n-nodes-base.alpha',
+					name: 'MNI-nodes-base.alpha',
 					displayName: 'Alpha',
 					credentials: [{ name: 'alphaApi' }],
 				}),
@@ -556,12 +556,12 @@ describe('useAppCredentials', () => {
 
 			const communityNodeInfo = {
 				isOfficialNode: true,
-				packageName: 'n8n-nodes-community-service',
+				packageName: 'MNI-nodes-community-service',
 				numberOfDownloads: 50000,
 			} as unknown as CommunityNodeType;
 
 			nodeTypesStore.communityNodeType = vi.fn((name: string) => {
-				if (name === 'n8n-nodes-community-service.communityService') {
+				if (name === 'MNI-nodes-community-service.communityService') {
 					return communityNodeInfo;
 				}
 				return undefined;
@@ -569,12 +569,12 @@ describe('useAppCredentials', () => {
 
 			nodeTypesStore.visibleNodeTypes = [
 				createMockNodeType({
-					name: 'n8n-nodes-community-service.communityService',
+					name: 'MNI-nodes-community-service.communityService',
 					displayName: 'Community Service',
 					credentials: [{ name: 'communityServiceApi' }],
 				}),
 				createMockNodeType({
-					name: 'n8n-nodes-base.slack',
+					name: 'MNI-nodes-base.slack',
 					displayName: 'Slack',
 					credentials: [{ name: 'slackApi' }],
 				}),
@@ -601,17 +601,17 @@ describe('useAppCredentials', () => {
 			credentialsStore.allCredentialTypes = [credA, credB];
 
 			nodeTypesStore.communityNodeType = vi.fn((name: string) => {
-				if (name === 'n8n-nodes-pkg-a.communityA') {
+				if (name === 'MNI-nodes-pkg-a.communityA') {
 					return {
 						isOfficialNode: true,
-						packageName: 'n8n-nodes-pkg-a',
+						packageName: 'MNI-nodes-pkg-a',
 						numberOfDownloads: 1000,
 					} as unknown as CommunityNodeType;
 				}
-				if (name === 'n8n-nodes-pkg-b.communityB') {
+				if (name === 'MNI-nodes-pkg-b.communityB') {
 					return {
 						isOfficialNode: true,
-						packageName: 'n8n-nodes-pkg-b',
+						packageName: 'MNI-nodes-pkg-b',
 						numberOfDownloads: 5000,
 					} as unknown as CommunityNodeType;
 				}
@@ -620,12 +620,12 @@ describe('useAppCredentials', () => {
 
 			nodeTypesStore.visibleNodeTypes = [
 				createMockNodeType({
-					name: 'n8n-nodes-pkg-a.communityA',
+					name: 'MNI-nodes-pkg-a.communityA',
 					displayName: 'Community A',
 					credentials: [{ name: 'communityAApi' }],
 				}),
 				createMockNodeType({
-					name: 'n8n-nodes-pkg-b.communityB',
+					name: 'MNI-nodes-pkg-b.communityB',
 					displayName: 'Community B',
 					credentials: [{ name: 'communityBApi' }],
 				}),
@@ -651,12 +651,12 @@ describe('useAppCredentials', () => {
 
 			nodeTypesStore.visibleNodeTypes = [
 				createMockNodeType({
-					name: 'n8n-nodes-base.slack',
+					name: 'MNI-nodes-base.slack',
 					displayName: 'Slack',
 					credentials: [{ name: 'slackApi' }],
 				}),
 				createMockNodeType({
-					name: 'n8n-nodes-base.slackV2',
+					name: 'MNI-nodes-base.slackV2',
 					displayName: 'Slack V2',
 					credentials: [{ name: 'slackApi' }],
 				}),
@@ -685,12 +685,12 @@ describe('useAppCredentials', () => {
 			// Newer version has OAuth2
 			nodeTypesStore.visibleNodeTypes = [
 				createMockNodeType({
-					name: 'n8n-nodes-base.slack',
+					name: 'MNI-nodes-base.slack',
 					displayName: 'Slack',
 					credentials: [{ name: 'slackApi' }],
 				}),
 				createMockNodeType({
-					name: 'n8n-nodes-base.slackV2',
+					name: 'MNI-nodes-base.slackV2',
 					displayName: 'Slack V2',
 					credentials: [{ name: 'slackOAuth2Api' }],
 				}),
@@ -713,7 +713,7 @@ describe('useAppCredentials', () => {
 
 			nodeTypesStore.visibleNodeTypes = [
 				createMockNodeType({
-					name: 'n8n-nodes-base.slack',
+					name: 'MNI-nodes-base.slack',
 					displayName: 'Slack',
 					icon: 'file:slack.svg',
 					iconColor: 'purple',
@@ -725,7 +725,7 @@ describe('useAppCredentials', () => {
 
 			expect(appEntries.value[0].app).toEqual(
 				expect.objectContaining({
-					name: 'n8n-nodes-base.slack',
+					name: 'MNI-nodes-base.slack',
 					displayName: 'Slack',
 					icon: 'file:slack.svg',
 					iconColor: 'purple',
@@ -742,7 +742,7 @@ describe('useAppCredentials', () => {
 
 			nodeTypesStore.visibleNodeTypes = [
 				createMockNodeType({
-					name: 'n8n-nodes-base.service',
+					name: 'MNI-nodes-base.service',
 					displayName: 'Service',
 					icon: { light: 'file:service-light.svg', dark: 'file:service-dark.svg' },
 					credentials: [{ name: 'serviceApi' }],
@@ -764,7 +764,7 @@ describe('useAppCredentials', () => {
 
 			nodeTypesStore.visibleNodeTypes = [
 				createMockNodeType({
-					name: 'n8n-nodes-base.service',
+					name: 'MNI-nodes-base.service',
 					displayName: 'Service',
 					iconUrl: {
 						light: 'https://example.com/light.png',
@@ -791,7 +791,7 @@ describe('useAppCredentials', () => {
 
 			const communityInfo = {
 				isOfficialNode: true,
-				packageName: 'n8n-nodes-community-pkg',
+				packageName: 'MNI-nodes-community-pkg',
 				numberOfDownloads: 2000,
 			};
 
@@ -799,7 +799,7 @@ describe('useAppCredentials', () => {
 
 			nodeTypesStore.visibleNodeTypes = [
 				createMockNodeType({
-					name: 'n8n-nodes-community-pkg.communityNode',
+					name: 'MNI-nodes-community-pkg.communityNode',
 					displayName: 'Community Node',
 					credentials: [{ name: 'communityApi' }],
 				}),
@@ -809,7 +809,7 @@ describe('useAppCredentials', () => {
 
 			expect(appEntries.value).toHaveLength(1);
 			expect(appEntries.value[0].isBundled).toBe(false);
-			expect(appEntries.value[0].packageName).toBe('n8n-nodes-community-pkg');
+			expect(appEntries.value[0].packageName).toBe('MNI-nodes-community-pkg');
 			expect(appEntries.value[0].popularity).toBe(2000);
 			expect(appEntries.value[0].communityNodeInfo).toBe(communityInfo);
 		});
@@ -821,7 +821,7 @@ describe('useAppCredentials', () => {
 
 			const communityInfo = {
 				isOfficialNode: true,
-				packageName: 'n8n-nodes-uninstalled-pkg',
+				packageName: 'MNI-nodes-uninstalled-pkg',
 				numberOfDownloads: 500,
 			};
 
@@ -830,7 +830,7 @@ describe('useAppCredentials', () => {
 
 			nodeTypesStore.visibleNodeTypes = [
 				createMockNodeType({
-					name: 'n8n-nodes-uninstalled-pkg.uninstalledNode',
+					name: 'MNI-nodes-uninstalled-pkg.uninstalledNode',
 					displayName: 'Uninstalled Node',
 					// Has credential refs, but they are not in allCredentialTypes (not installed)
 					credentials: [{ name: 'uninstalledApi' }],
@@ -851,7 +851,7 @@ describe('useAppCredentials', () => {
 			credentialsStore.allCredentialTypes = [];
 			nodeTypesStore.visibleNodeTypes = [
 				createMockNodeType({
-					name: 'n8n-nodes-base.slack',
+					name: 'MNI-nodes-base.slack',
 					displayName: 'Slack',
 					credentials: [{ name: 'slackApi' }],
 				}),
@@ -879,7 +879,7 @@ describe('useAppCredentials', () => {
 			];
 			nodeTypesStore.visibleNodeTypes = [
 				createMockNodeType({
-					name: 'n8n-nodes-base.slack',
+					name: 'MNI-nodes-base.slack',
 					displayName: 'Slack',
 					credentials: [{ name: 'slackApi' }],
 				}),
@@ -912,7 +912,7 @@ describe('useAppCredentials', () => {
 			credentialsStore.allCredentialTypes = [googleCred];
 			nodeTypesStore.visibleNodeTypes = [
 				createMockNodeType({
-					name: 'n8n-nodes-base.googleSheets',
+					name: 'MNI-nodes-base.googleSheets',
 					displayName: 'Google Sheets',
 					credentials: [{ name: 'googleSheetsOAuth2Api' }],
 				}),
@@ -933,7 +933,7 @@ describe('useAppCredentials', () => {
 			credentialsStore.allCredentialTypes = [msCred];
 			nodeTypesStore.visibleNodeTypes = [
 				createMockNodeType({
-					name: 'n8n-nodes-base.microsoftExcel',
+					name: 'MNI-nodes-base.microsoftExcel',
 					displayName: 'Microsoft Excel',
 					credentials: [{ name: 'microsoftExcelOAuth2Api' }],
 				}),
@@ -955,7 +955,7 @@ describe('useAppCredentials', () => {
 			credentialsStore.allCredentialTypes = [oAuthCred];
 			nodeTypesStore.visibleNodeTypes = [
 				createMockNodeType({
-					name: 'n8n-nodes-base.someService',
+					name: 'MNI-nodes-base.someService',
 					displayName: 'Some Service',
 					credentials: [{ name: 'someOAuth2Api' }],
 				}),
@@ -976,7 +976,7 @@ describe('useAppCredentials', () => {
 			credentialsStore.allCredentialTypes = [oAuthCred];
 			nodeTypesStore.visibleNodeTypes = [
 				createMockNodeType({
-					name: 'n8n-nodes-base.someService',
+					name: 'MNI-nodes-base.someService',
 					displayName: 'Some Service',
 					credentials: [{ name: 'someOAuth2Api' }],
 				}),
@@ -998,7 +998,7 @@ describe('useAppCredentials', () => {
 			credentialsStore.allCredentialTypes = [oAuthCred];
 			nodeTypesStore.visibleNodeTypes = [
 				createMockNodeType({
-					name: 'n8n-nodes-base.partialService',
+					name: 'MNI-nodes-base.partialService',
 					displayName: 'Partial Service',
 					credentials: [{ name: 'partialOAuth2Api' }],
 				}),

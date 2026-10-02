@@ -9,8 +9,8 @@ import type {
 	IWebhookFunctions,
 	IWebhookResponseData,
 	JsonObject,
-} from 'n8n-workflow';
-import { NodeApiError, NodeConnectionTypes, NodeOperationError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeApiError, NodeConnectionTypes, NodeOperationError } from 'MNI-workflow';
 
 import {
 	getFileSha,
@@ -558,7 +558,7 @@ export class Github implements INodeType {
 						displayName: 'Link',
 						name: 'url',
 						type: 'string',
-						placeholder: 'e.g. https://github.com/n8n-io',
+						placeholder: 'e.g. https://github.com/MNI-io',
 						extractValue: {
 							type: 'regex',
 							regex: 'https:\\/\\/(?:[^/]+)\\/([-_0-9a-zA-Z]+)',
@@ -577,7 +577,7 @@ export class Github implements INodeType {
 						displayName: 'By Name',
 						name: 'name',
 						type: 'string',
-						placeholder: 'e.g. n8n-io',
+						placeholder: 'e.g. MNI-io',
 						validation: [
 							{
 								type: 'regex',
@@ -620,7 +620,7 @@ export class Github implements INodeType {
 						displayName: 'Link',
 						name: 'url',
 						type: 'string',
-						placeholder: 'e.g. https://github.com/n8n-io/n8n',
+						placeholder: 'e.g. https://github.com/MNI-io/MNI',
 						extractValue: {
 							type: 'regex',
 							regex: 'https:\\/\\/(?:[^/]+)\\/(?:[-_0-9a-zA-Z]+)\\/([-_.0-9a-zA-Z]+)',
@@ -1769,7 +1769,7 @@ export class Github implements INodeType {
 					maxValue: 100,
 				},
 				default: 50,
-				// eslint-disable-next-line n8n-nodes-base/node-param-description-wrong-for-limit
+				// eslint-disable-next-line MNI-nodes-base/node-param-description-wrong-for-limit
 				description:
 					'Max number of results to return. Maximum value is <a href="https://docs.github.com/en/rest/pulls/pulls?apiVersion=2022-11-28#list-pull-requests">100</a>.',
 			},

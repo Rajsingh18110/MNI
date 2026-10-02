@@ -1,15 +1,15 @@
-import { testDb } from '@n8n/backend-test-utils';
-import { GlobalConfig } from '@n8n/config';
-import { AuthRolesService, RoleRepository, type User } from '@n8n/db';
-import { Container } from '@n8n/di';
-import { PROJECT_OWNER_ROLE_SLUG } from '@n8n/permissions';
+import { testDb } from '@MNI/backend-test-utils';
+import { GlobalConfig } from '@MNI/config';
+import { AuthRolesService, RoleRepository, type User } from '@MNI/db';
+import { Container } from '@MNI/di';
+import { PROJECT_OWNER_ROLE_SLUG } from '@MNI/permissions';
 
 import { RoleCacheService } from '@/services/role-cache.service';
 
 import { createMemberWithApiKey } from './shared/db/users';
 import * as utils from './shared/utils/';
 
-describe('N8N_CANVAS_ONLY_PERSONAL_SPACE_SCOPE_DENY_LIST', () => {
+describe('MNI_CANVAS_ONLY_PERSONAL_SPACE_SCOPE_DENY_LIST', () => {
 	const testServer = utils.setupTestServer({ endpointGroups: ['publicApi'] });
 	const { canvasOnly } = Container.get(GlobalConfig);
 

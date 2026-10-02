@@ -2,11 +2,11 @@ import {
 	sanitizeToolName as sanitizeMcpToolName,
 	type Agent as RuntimeAgent,
 	type GenerateResult,
-} from '@n8n/agents';
+} from '@MNI/agents';
 import {
 	hasNativeWebSearchProvider,
 	isNativeWebSearchRequested,
-} from '@n8n/ai-utilities/agent-config';
+} from '@MNI/ai-utilities/agent-config';
 import type {
 	AgentJsonConfig,
 	InstanceAiEvalAgentExecutionRequest,
@@ -15,14 +15,14 @@ import type {
 	InstanceAiEvalAgentSkippedFeature,
 	InstanceAiEvalAgentToolCallRecord,
 	InstanceAiEvalInterceptedRequest,
-} from '@n8n/api-types';
-import { Logger, ModuleRegistry } from '@n8n/backend-common';
-import { OutboundHttp } from '@n8n/backend-network';
-import { ExecutionsConfig } from '@n8n/config';
-import type { User } from '@n8n/db';
-import { Container, Service } from '@n8n/di';
-import type { EvalLlmMockHandler } from 'n8n-core';
-import { nodeNameToToolName } from 'n8n-workflow';
+} from '@MNI/api-types';
+import { Logger, ModuleRegistry } from '@MNI/backend-common';
+import { OutboundHttp } from '@MNI/backend-network';
+import { ExecutionsConfig } from '@MNI/config';
+import type { User } from '@MNI/db';
+import { Container, Service } from '@MNI/di';
+import type { EvalLlmMockHandler } from 'MNI-core';
+import { nodeNameToToolName } from 'MNI-workflow';
 
 import { CredentialsService } from '@/credentials/credentials.service';
 // Static agents-module imports are safe here: the ModuleRegistry gate decides
@@ -329,7 +329,7 @@ export class EvalAgentExecutionService {
 					},
 				},
 				'manual',
-				hashAgentSandboxPrincipal({ type: 'n8n-user', userId: user.id }),
+				hashAgentSandboxPrincipal({ type: 'MNI-user', userId: user.id }),
 			));
 		} catch (error) {
 			const message = error instanceof Error ? error.message : String(error);

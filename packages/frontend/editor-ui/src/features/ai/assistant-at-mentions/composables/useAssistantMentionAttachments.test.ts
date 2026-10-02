@@ -1,4 +1,4 @@
-import type { InstanceAiResourceAttachment } from '@n8n/api-types';
+import type { InstanceAiResourceAttachment } from '@MNI/api-types';
 import { effectScope, nextTick, ref } from 'vue';
 import { describe, expect, it, vi } from 'vitest';
 

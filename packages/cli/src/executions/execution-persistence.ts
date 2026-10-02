@@ -1,6 +1,6 @@
-import { parseFlatted } from '@n8n/backend-common';
-import { DatabaseConfig, ExecutionsConfig } from '@n8n/config';
-import { Time } from '@n8n/constants';
+import { parseFlatted } from '@MNI/backend-common';
+import { DatabaseConfig, ExecutionsConfig } from '@MNI/config';
+import { Time } from '@MNI/constants';
 import type {
 	CreateExecutionPayload,
 	EntityManager,
@@ -13,17 +13,17 @@ import type {
 	IExecutionResponse,
 	OperationContext,
 	UpdateExecutionConditions,
-} from '@n8n/db';
-import { ExecutionEntity, ExecutionRepository, In, Not } from '@n8n/db';
-import { Service } from '@n8n/di';
+} from '@MNI/db';
+import { ExecutionEntity, ExecutionRepository, In, Not } from '@MNI/db';
+import { Service } from '@MNI/di';
 import { stringify } from 'flatted';
-import { BinaryDataService, ErrorReporter, StorageConfig } from 'n8n-core';
-import type { ExecutionStatus, IRunExecutionData, IRunExecutionDataAll } from 'n8n-workflow';
+import { BinaryDataService, ErrorReporter, StorageConfig } from 'MNI-core';
+import type { ExecutionStatus, IRunExecutionData, IRunExecutionDataAll } from 'MNI-workflow';
 import {
 	createEmptyRunExecutionData,
 	migrateRunExecutionData,
 	UnexpectedError,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { CorruptedExecutionDataError } from './execution-data/corrupted-execution-data.error';
 import { DbStore } from './execution-data/db-store';

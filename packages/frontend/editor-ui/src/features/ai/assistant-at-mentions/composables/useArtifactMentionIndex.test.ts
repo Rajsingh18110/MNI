@@ -17,7 +17,7 @@ function makeWorkflow(id: string, overrides: Partial<IWorkflowDb> = {}): IWorkfl
 			{
 				id: `node-${id}`,
 				name: `Node ${id}`,
-				type: 'n8n-nodes-base.noOp',
+				type: 'MNI-nodes-base.noOp',
 				typeVersion: 1,
 				position: [0, 0],
 				parameters: { secret: 'discard me' },
@@ -66,7 +66,7 @@ describe('projectWorkflowArtifact', () => {
 			{
 				id: 'node-1',
 				name: 'Node 1',
-				type: 'n8n-nodes-base.noOp',
+				type: 'MNI-nodes-base.noOp',
 				typeVersion: 1,
 			},
 		]);
@@ -78,7 +78,7 @@ describe('projectWorkflowArtifact', () => {
 		const sticky = (id: string) => ({
 			id,
 			name: id,
-			type: 'n8n-nodes-base.stickyNote',
+			type: 'MNI-nodes-base.stickyNote',
 			typeVersion: 1,
 			position: [0, 0] as [number, number],
 			parameters: {},
@@ -183,7 +183,7 @@ describe('useArtifactMentionIndex', () => {
 				{
 					id: 'new-node',
 					name: 'New node',
-					type: 'n8n-nodes-base.noOp',
+					type: 'MNI-nodes-base.noOp',
 					typeVersion: 1,
 				},
 			],

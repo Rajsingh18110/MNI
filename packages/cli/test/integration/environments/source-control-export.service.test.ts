@@ -1,10 +1,10 @@
-import type { SourceControlledFile } from '@n8n/api-types';
+import type { SourceControlledFile } from '@MNI/api-types';
 import {
 	createTeamProject,
 	createWorkflowWithHistory,
 	mockInstance,
 	testDb,
-} from '@n8n/backend-test-utils';
+} from '@MNI/backend-test-utils';
 import {
 	CredentialsEntity,
 	CredentialsRepository,
@@ -13,9 +13,9 @@ import {
 	ProjectRepository,
 	SharedCredentialsRepository,
 	type User,
-} from '@n8n/db';
-import { Container } from '@n8n/di';
-import { Cipher, InstanceSettings } from 'n8n-core';
+} from '@MNI/db';
+import { Container } from '@MNI/di';
+import { Cipher, InstanceSettings } from 'MNI-core';
 import { readFile as fsReadFile, writeFile as fsWriteFile } from 'node:fs/promises';
 import path from 'node:path';
 import { v4 as uuid } from 'uuid';

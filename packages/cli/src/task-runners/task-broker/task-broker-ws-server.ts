@@ -1,11 +1,11 @@
-import { Logger } from '@n8n/backend-common';
-import { GlobalConfig, TaskRunnersConfig } from '@n8n/config';
-import { Time } from '@n8n/constants';
-import { OnShutdown } from '@n8n/decorators';
-import { Service } from '@n8n/di';
-import type { BrokerMessage, RunnerMessage } from '@n8n/task-runner';
-import { sleep } from '@n8n/utils/sleep';
-import { jsonStringify, UserError } from 'n8n-workflow';
+import { Logger } from '@MNI/backend-common';
+import { GlobalConfig, TaskRunnersConfig } from '@MNI/config';
+import { Time } from '@MNI/constants';
+import { OnShutdown } from '@MNI/decorators';
+import { Service } from '@MNI/di';
+import type { BrokerMessage, RunnerMessage } from '@MNI/task-runner';
+import { sleep } from '@MNI/utils/sleep';
+import { jsonStringify, UserError } from 'MNI-workflow';
 import type WebSocket from 'ws';
 
 import { HIGHEST_SHUTDOWN_PRIORITY, WsStatusCodes } from '@/constants';
@@ -25,7 +25,7 @@ import {
 import { TaskBroker, type TaskRunner } from './task-broker.service';
 
 function heartbeat(this: WebSocket) {
-	this.isAlive = true;
+	(this as any).isAlive = true;
 }
 
 /**
@@ -96,8 +96,8 @@ export class TaskBrokerWsServer {
 
 	private checkConnectionLiveness() {
 		for (const [runnerId, connection] of this.runnerConnections) {
-			if (connection.isAlive) {
-				connection.isAlive = false;
+			if ((connection as any).isAlive) {
+				(connection as any).isAlive = false;
 				connection.ping();
 			} else {
 				void this.removeConnection(runnerId, {
@@ -151,7 +151,7 @@ export class TaskBrokerWsServer {
 	}
 
 	add(id: TaskRunner['id'], connection: WebSocket) {
-		connection.isAlive = true;
+		(connection as any).isAlive = true;
 		connection.on('pong', heartbeat);
 
 		let isConnected = false;
@@ -172,7 +172,7 @@ export class TaskBrokerWsServer {
 					if (message.type === 'runner:info') {
 						if (this.hasLiveConnection(id)) {
 							this.logger.warn(
-								`Runner "${message.name}" registered as "${id}", an ID another live runner holds, and replaced its connection. Give each runner a unique N8N_RUNNERS_ID, else they will keep evicting each other.`,
+								`Runner "${message.name}" registered as "${id}", an ID another live runner holds, and replaced its connection. Give each runner a unique MNI_RUNNERS_ID, else they will keep evicting each other.`,
 							);
 						}
 
@@ -293,7 +293,7 @@ export class TaskBrokerWsServer {
 		const connection = this.runnerConnections.get(id);
 
 		return (
-			connection !== undefined && connection.readyState === connection.OPEN && connection.isAlive
+			connection !== undefined && connection.readyState === connection.OPEN && (connection as any).isAlive
 		);
 	}
 

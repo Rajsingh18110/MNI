@@ -1,10 +1,10 @@
 <script lang="ts" setup>
 import TimeAgo from '@/app/components/TimeAgo.vue';
 import ResourceFiltersDropdown from '@/app/components/forms/ResourceFiltersDropdown.vue';
-import { getDebounceTime } from '@n8n/composables/useDebounce';
+import { getDebounceTime } from '@MNI/composables/useDebounce';
 import { DEBOUNCE_TIME, MIGRATE_WORKFLOW_MODAL_KEY, VIEWS } from '@/app/constants';
 import { useDocumentTitle } from '@/app/composables/useDocumentTitle';
-import type { BreakingChangeWorkflowRuleResult } from '@n8n/api-types';
+import type { BreakingChangeWorkflowRuleResult } from '@MNI/api-types';
 import { useUIStore } from '@/app/stores/ui.store';
 import {
 	N8nBadge,
@@ -19,12 +19,12 @@ import {
 	N8nSelect,
 	N8nSettingsLayout,
 	N8nText,
-} from '@n8n/design-system';
-import type { TableHeader } from '@n8n/design-system';
-import * as breakingChangesApi from '@n8n/rest-api-client/api/breaking-changes';
-import { useI18n } from '@n8n/i18n';
-import { useRootStore } from '@n8n/stores/useRootStore';
-import { createEventBus } from '@n8n/utils/event-bus';
+} from '@MNI/design-system';
+import type { TableHeader } from '@MNI/design-system';
+import * as breakingChangesApi from '@MNI/rest-api-client/api/breaking-changes';
+import { useI18n } from '@MNI/i18n';
+import { useRootStore } from '@MNI/stores/useRootStore';
+import { createEventBus } from '@MNI/utils/event-bus';
 import { useAsyncState, useDebounceFn } from '@vueuse/core';
 import orderBy from 'lodash/orderBy';
 import { computed, ref } from 'vue';

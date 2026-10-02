@@ -5,19 +5,19 @@ import ExecutionPreviewHost from './ExecutionPreviewHost.vue';
 import { useExecutionDebugging } from '../../composables/useExecutionDebugging';
 import type { IExecutionUIData } from '../../composables/useExecutionHelpers';
 import { useExecutionHelpers } from '../../composables/useExecutionHelpers';
-import type { WorkflowVersion } from '@n8n/rest-api-client/api/workflowHistory';
-import { useI18n } from '@n8n/i18n';
-import { useToast } from '@n8n/composables/useToast';
+import type { WorkflowVersion } from '@MNI/rest-api-client/api/workflowHistory';
+import { useI18n } from '@MNI/i18n';
+import { useToast } from '@MNI/composables/useToast';
 import { useMessage } from '@/app/composables/useMessage';
 import { EnterpriseEditionFeature, MODAL_CONFIRM, VIEWS } from '@/app/constants';
 import { convertToDisplayDate } from '@/app/utils/formatters/dateFormatter';
-import { formatBytes } from '@n8n/utils/number/bytes';
+import { formatBytes } from '@MNI/utils/number/bytes';
 import { useInjectWorkflowId } from '@/app/composables/useInjectWorkflowId';
-import { getResourcePermissions } from '@n8n/permissions';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { getResourcePermissions } from '@MNI/permissions';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { useWorkflowsListStore } from '@/app/stores/workflowsList.store';
 import { createExecutionDataId, useExecutionDataStore } from '@/app/stores/executionData.store';
-import type { AnnotationVote, ExecutionSummary } from 'n8n-workflow';
+import type { AnnotationVote, ExecutionSummary } from 'MNI-workflow';
 import { computed, ref, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { useExecutionsStore } from '../../executions.store';
@@ -26,7 +26,7 @@ import { useWorkflowHistoryStore } from '@/features/workflows/workflowHistory/wo
 import { useAddExecutionToDataset } from '@/features/ai/evaluation.ee/composables/useAddExecutionToDataset';
 
 import { ElDropdown, ElDropdownItem, ElDropdownMenu } from 'element-plus';
-import { N8nButton, N8nIconButton, N8nSpinner, N8nText, N8nTooltip } from '@n8n/design-system';
+import { N8nButton, N8nIconButton, N8nSpinner, N8nText, N8nTooltip } from '@MNI/design-system';
 import VoteButtons from './VoteButtons.vue';
 
 type RetryDropdownRef = InstanceType<typeof ElDropdown>;

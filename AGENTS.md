@@ -26,7 +26,7 @@ frontend, and extensible node-based workflow engine.
 - We use Linear as a ticket tracking system
 - We use Posthog for feature flags
 - To find registered telemetry events (names, descriptions, properties), run
-  `pnpm --filter @n8n/telemetry catalog` (`--json` for structured output). The
+  `pnpm --filter @MNI/telemetry catalog` (`--json` for structured output). The
   registry is being adopted incrementally, so search call sites if the catalog
   has no match. The `MNI:telemetry` skill covers adding or changing events
 - When starting to work on a new ticket – create a new branch from fresh
@@ -44,8 +44,8 @@ frontend, and extensible node-based workflow engine.
 - **Shared utilities:** before you hand-roll a utility (`isRecord`, secret or
   PII redaction, JSON extraction from LLM output, Zod to JSON Schema, model-id
   parsing, …), you MUST check the shared packages for an existing
-  implementation and use it: `@n8n/utils` (generic helpers, redaction),
-  `@n8n/ai-utilities` (AI- and LLM-specific helpers) and `n8n-workflow`
+  implementation and use it: `@MNI/utils` (generic helpers, redaction),
+  `@MNI/ai-utilities` (AI- and LLM-specific helpers) and `MNI-workflow`
   (workflow graph and traversal). A new shared helper usually belongs in one of
   these packages too; domain logic stays in the package that owns the domain.
 
@@ -57,7 +57,7 @@ directly. Harness-specific overrides remain real directories in the harness
 path, such as `.opencode/skills/setup-mcps/`. See
 [skills README](.agents/skills/AGENTS.md) for editing and sync guidance.
 
-n8n-specific Claude Code commands and agents live in `.claude/plugins/MNI/` and
+MNI-specific Claude Code commands and agents live in `.claude/plugins/MNI/` and
 are namespaced under `MNI:`. Use `MNI:` prefix when invoking them (e.g.
 `/MNI:create-pr`, `/MNI:plan`, `MNI:developer` agent). See
 [plugin README](.claude/plugins/MNI/README.md) for structure and details.
@@ -113,8 +113,8 @@ These commands fill one. They are dev tooling on the private root package, so
 they never reach a user.
 
 ```bash
-N8N_API_KEY=<jwt> pnpm seed:preference   # 10 workflows in one house style, plus history
-N8N_API_KEY=<jwt> pnpm seed:account      # ~500 varied workflows across 30 projects
+MNI_API_KEY=<jwt> pnpm seed:preference   # 10 workflows in one house style, plus history
+MNI_API_KEY=<jwt> pnpm seed:account      # ~500 varied workflows across 30 projects
 pnpm inspect:activity                    # read-only activity_event viewer on 127.0.0.1
 ```
 
@@ -134,17 +134,17 @@ profiles, tokens, determinism, and the other commands.
 
 The monorepo is organized into these key packages:
 
-- **`packages/@n8n/api-types`**: Shared TypeScript interfaces between frontend and backend
+- **`packages/@MNI/api-types`**: Shared TypeScript interfaces between frontend and backend
 - **`packages/workflow`**: Core workflow interfaces and types
 - **`packages/core`**: Workflow execution engine
 - **`packages/cli`**: Express server, REST API, and CLI commands
 - **`packages/frontend/editor-ui`**: Vue 3 frontend application
-- **`packages/frontend/@n8n/i18n`**: Internationalization for UI text
+- **`packages/frontend/@MNI/i18n`**: Internationalization for UI text
 - **`packages/nodes-base`**: Built-in nodes for integrations
-- **`packages/@n8n/nodes-langchain`**: AI/LangChain nodes
-- **`packages/@n8n/instance-ai`**: "MNI Assistant" in the UI, "Instance AI" in code — MNI Assistant backend. See its `CLAUDE.md` for architecture docs.
-- **`@n8n/design-system`**: Vue component library for UI consistency
-- **`@n8n/config`**: Centralized configuration management
+- **`packages/@MNI/nodes-langchain`**: AI/LangChain nodes
+- **`packages/@MNI/instance-ai`**: "MNI Assistant" in the UI, "Instance AI" in code — MNI Assistant backend. See its `CLAUDE.md` for architecture docs.
+- **`@MNI/design-system`**: Vue component library for UI consistency
+- **`@MNI/config`**: Centralized configuration management
 
 ## Technology Stack
 
@@ -156,13 +156,13 @@ The monorepo is organized into these key packages:
 
 ### Key Architectural Patterns
 
-1. **Dependency Injection**: Uses `@n8n/di` for IoC container
+1. **Dependency Injection**: Uses `@MNI/di` for IoC container
 2. **Controller-Service-Repository**: Backend follows MVC-like pattern
 3. **Event-Driven**: Internal event bus for decoupled communication
 4. **Context-Based Execution**: Different contexts for different node types
 5. **State Management**: Frontend uses Pinia stores
 6. **Design System**: Reusable components and design tokens are centralized in
-   `@n8n/design-system`, where all pure Vue components should be placed to
+   `@MNI/design-system`, where all pure Vue components should be placed to
    ensure consistency and reusability
 
 ## Key Development Patterns
@@ -175,14 +175,14 @@ The monorepo is organized into these key packages:
 
 ### Workflow Traversal Utilities
 
-The `n8n-workflow` package exports graph traversal utilities from
+The `MNI-workflow` package exports graph traversal utilities from
 `packages/workflow/src/common/`. Use these instead of custom traversal logic.
 
 **Key concept:** `workflow.connections` is indexed by **source node**.
 To find parent nodes, use `mapConnectionsByDestination()` to invert it first.
 
 ```typescript
-import { getParentNodes, getChildNodes, mapConnectionsByDestination } from 'n8n-workflow';
+import { getParentNodes, getChildNodes, mapConnectionsByDestination } from 'MNI-workflow';
 
 // Finding parent nodes (predecessors) - requires inverted connections
 const connectionsByDestination = mapConnectionsByDestination(workflow.connections);
@@ -195,7 +195,7 @@ const children = getChildNodes(workflow.connections, 'NodeName', 'main', 1);
 ### TypeScript Best Practices
 - **NEVER use `any` type** - use proper types or `unknown`
 - **Avoid type casting with `as`** - use type guards or type predicates instead (except in test code where `as` is acceptable)
-- **Define shared interfaces in `@n8n/api-types`** package for FE/BE communication
+- **Define shared interfaces in `@MNI/api-types`** package for FE/BE communication
 - **Lazy-load heavy modules** — if a module is only used in a specific code
   path (not every request), use `await import()` at point of use instead of
   top-level `import`. Applies especially to native modules and large parsers.
@@ -214,11 +214,11 @@ const children = getChildNodes(workflow.connections, 'NodeName', 'main', 1);
 
 ### Persistence layer & the TypeORM boundary
 
-TypeORM (`@n8n/typeorm`) must stay in the **persistence layer** — the `@n8n/db`
+TypeORM (`@MNI/typeorm`) must stay in the **persistence layer** — the `@MNI/db`
 package or a backend module's own `database/` folder (entity/repository files).
 Business logic — services, controllers, handlers, commands, factories — must not
-import from `@n8n/typeorm` (including `@n8n/typeorm/...` subpaths). In
-`packages/cli` this is enforced by the `misplaced-n8n-typeorm-import` lint rule;
+import from `@MNI/typeorm` (including `@MNI/typeorm/...` subpaths). In
+`packages/cli` this is enforced by the `misplaced-MNI-typeorm-import` lint rule;
 a new import (or an inline `eslint-disable` of the rule) fails CI.
 
 - **Pattern:** when a query needs operators (`In`, `IsNull`, `LessThan`,
@@ -228,7 +228,7 @@ a new import (or an inline `eslint-disable` of the rule) fails CI.
 - **Transactions:** transaction orchestration belongs in the persistence layer.
   Don't reach for `.manager` / `.manager.transaction(...)` or
   `createQueryBuilder(...)` in business logic. Use the sanctioned primitive in
-  `@n8n/db`: inject the abstract `TransactionRunner` and wrap the unit of work in
+  `@MNI/db`: inject the abstract `TransactionRunner` and wrap the unit of work in
   `txRunner.run(ctx, async (ctx) => …)`. The callback receives an
   `OperationContext` carrying the active transaction; thread that `ctx` into the
   repository methods you call. `run` **requires** a context — pass an empty `{}`
@@ -241,23 +241,23 @@ a new import (or an inline `eslint-disable` of the rule) fails CI.
 - **Anti-patterns reviewers reject** — they hide the dependency instead of
   removing it:
   - String-matching TypeORM errors, e.g. `error.name === 'QueryFailedError'`.
-  - Relabeling the import from `@n8n/typeorm` to `@n8n/db` to silence the rule
-    (`@n8n/db` re-exports several operators/types, but this relabels the
+  - Relabeling the import from `@MNI/typeorm` to `@MNI/db` to silence the rule
+    (`@MNI/db` re-exports several operators/types, but this relabels the
     dependency rather than removing it).
   - Pushing `.manager` / `createQueryBuilder` into business logic to avoid an
     operator import — trades a visible leak for an invisible one.
 
 ### ESLint configuration layers
 
-Rule policy lives in four shared configs in `@n8n/eslint-config`, and a package
+Rule policy lives in four shared configs in `@MNI/eslint-config`, and a package
 config picks exactly one:
 
 | layer | subpath | for |
 |---|---|---|
-| `baseConfig` | `@n8n/eslint-config/base` | runtime-agnostic libraries |
-| `backendConfig` | `@n8n/eslint-config/backend` | anything that runs on Node; adds the network and encryption boundaries |
-| `frontendConfig` | `@n8n/eslint-config/frontend` | Vue packages |
-| `nodesConfig` | `@n8n/eslint-config/nodes` | `n8n-nodes-base` and `@n8n/nodes-langchain`; adds the node and credential file rules |
+| `baseConfig` | `@MNI/eslint-config/base` | runtime-agnostic libraries |
+| `backendConfig` | `@MNI/eslint-config/backend` | anything that runs on Node; adds the network and encryption boundaries |
+| `frontendConfig` | `@MNI/eslint-config/frontend` | Vue packages |
+| `nodesConfig` | `@MNI/eslint-config/nodes` | `MNI-nodes-base` and `@MNI/nodes-langchain`; adds the node and credential file rules |
 
 A package config may add `ignores`, an additive plugin config, a block that
 raises rules to `error`, and blocks scoped to `files`. It must not turn a rule
@@ -277,7 +277,7 @@ prove a config change only altered what you meant it to.
 New code encrypts and decrypts only through `cipher.encryptV2()` /
 `cipher.decryptV2()` — the key-manager module decides which key is used and in
 which output format. Enforced in CI by the rules in
-`packages/@n8n/eslint-config/src/configs/encryption-boundary.ts` (part of
+`packages/@MNI/eslint-config/src/configs/encryption-boundary.ts` (part of
 `backendConfig`, and so of `nodesConfig`; every package that runs on Node
 extends one of those layers):
 
@@ -289,7 +289,7 @@ extends one of those layers):
 - Inline disables that name these rules, and bare line-form disables, are
   themselves lint errors. The code-health rule `encryption-boundary` (CI
   "Static Analysis") is the enforcement layer: it checks that every package
-  that depends on `n8n-core` or `@n8n/db` extends `backendConfig` (or
+  that depends on `MNI-core` or `@MNI/db` extends `backendConfig` (or
   `nodesConfig`) at `error` severity, and rejects every directive form that
   would silence the
   rules in non-test code (`eslint-disable*` and inline `eslint` configuration
@@ -298,7 +298,7 @@ extends one of those layers):
 
 ### Frontend Development
 - Refer to `packages/frontend/AGENTS.md`
-- **All UI text must use i18n** - add translations to `@n8n/i18n` package
+- **All UI text must use i18n** - add translations to `@MNI/i18n` package
 - **Use CSS variables directly** - never hardcode spacing as px values
 - **data-testid must be a single value** (no spaces or multiple values)
 - Always use the `design-system` skill in reviews
@@ -311,12 +311,12 @@ extends one of those layers):
 - Use Vitest for unit tests. Use
   [Playwright](packages/testing/playwright/AGENTS.md) when a test needs its
   browser, fixtures, or managed containers.
-- For Vitest packages with `@n8n/di` decorators, use
-  `createVitestConfigWithDecorators` from `@n8n/vitest-config/node-decorators`.
+- For Vitest packages with `@MNI/di` decorators, use
+  `createVitestConfigWithDecorators` from `@MNI/vitest-config/node-decorators`.
 - Check import and mock side effects before running tests. Keep tests out of
-  user-owned directories. Set `N8N_USER_FOLDER` to a test-owned directory before
+  user-owned directories. Set `MNI_USER_FOLDER` to a test-owned directory before
   importing MNI settings. Clean up only paths that the test created.
-- CI runs [`@n8n/code-health`](packages/testing/code-health/README.md) static
+- CI runs [`@MNI/code-health`](packages/testing/code-health/README.md) static
   analysis on PRs. It checks monorepo rules, including dependency hygiene and
   encryption-boundary coverage.
 
@@ -324,8 +324,8 @@ extends one of those layers):
 
 | Goal | Command |
 |------|---------|
-| Run product E2E against a local instance | `pnpm --filter=n8n-playwright test:local` |
-| Run backend with PostgreSQL, Redis, email, and proxy services | `pnpm --filter n8n-containers services --services postgres,redis,mailpit,proxy`, then `pnpm dev:be` |
+| Run product E2E against a local instance | `pnpm --filter=MNI-playwright test:local` |
+| Run backend with PostgreSQL, Redis, email, and proxy services | `pnpm --filter MNI-containers services --services postgres,redis,mailpit,proxy`, then `pnpm dev:be` |
 | Add editor hot reload | `pnpm dev:fe:editor` |
 | Start a Codespace backend and share its port | `pnpm dev:up` |
 
@@ -336,13 +336,13 @@ The root `pnpm dev` command does not start a server. See the
 ### Common Development Tasks
 
 When implementing features:
-1. Define API types in `packages/@n8n/api-types`
+1. Define API types in `packages/@MNI/api-types`
 2. Implement backend logic in `packages/cli` module, follow
    `scripts/backend-module/backend-module-guide.md`
 3. Add API endpoints via controllers
 4. Update frontend in `packages/frontend/editor-ui` with i18n support. For a
    frontend feature module, obey
-   `packages/@n8n/module-cli/frontend-module-guide.md`
+   `packages/@MNI/module-cli/frontend-module-guide.md`
 5. Write tests with proper mocks
 
 ## Design Principles
@@ -383,7 +383,7 @@ titles, test descriptions, and Linear URLs.
   `'should prevent SQL injection'`).
 - **Code comments:** Do not describe the attack scenario in comments.
 - **Linear references:** Never include the URL slug
-  (e.g. `.../N8N-1234/fix-ssrf-vulnerability`).
+  (e.g. `.../MNI-1234/fix-ssrf-vulnerability`).
 
 ### Customer Confidentiality
 
@@ -403,6 +403,6 @@ names (e.g. `Acme Corp`) in tests and examples.
   `.github/pull_request_title_conventions.md`.
 - Use `gh pr create --draft` to create draft PRs.
 - If there is a corresponding Linear ticket, reference it in the PR
-  description using `https://linear.app/n8n/issue/[TICKET-ID]`. Do not
+  description using `https://linear.app/MNI/issue/[TICKET-ID]`. Do not
   create a Linear ticket on your own — ask first.
 - always link to the github issue if mentioned in the linear ticket.

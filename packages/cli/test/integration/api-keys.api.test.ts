@@ -1,14 +1,14 @@
-import type { ApiKeyWithRawValue } from '@n8n/api-types';
-import { testDb, randomValidPassword, mockInstance } from '@n8n/backend-test-utils';
-import { GlobalConfig } from '@n8n/config';
-import type { User } from '@n8n/db';
-import { ApiKeyRepository, GLOBAL_MEMBER_ROLE, GLOBAL_OWNER_ROLE } from '@n8n/db';
-import { Container } from '@n8n/di';
+import type { ApiKeyWithRawValue } from '@MNI/api-types';
+import { testDb, randomValidPassword, mockInstance } from '@MNI/backend-test-utils';
+import { GlobalConfig } from '@MNI/config';
+import type { User } from '@MNI/db';
+import { ApiKeyRepository, GLOBAL_MEMBER_ROLE, GLOBAL_OWNER_ROLE } from '@MNI/db';
+import { Container } from '@MNI/di';
 import {
 	getApiKeyScopesForRole,
 	getOwnerOnlyApiKeyScopes,
 	type ApiKeyScope,
-} from '@n8n/permissions';
+} from '@MNI/permissions';
 
 import { PublicApiKeyService } from '@/services/public-api-key.service';
 

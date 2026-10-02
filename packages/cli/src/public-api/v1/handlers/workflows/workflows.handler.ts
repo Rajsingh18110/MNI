@@ -1,4 +1,4 @@
-import { Container } from '@n8n/di';
+import { Container } from '@MNI/di';
 
 import { NotFoundError } from '@/errors/response-errors/not-found.error';
 import { EventService } from '@/events/event.service';

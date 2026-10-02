@@ -15,7 +15,7 @@ import type {
 	ChatHubExecutionEnd,
 	ChatHubHumanMessageCreated,
 	ChatHubMessageEdited,
-} from '@n8n/api-types';
+} from '@MNI/api-types';
 
 vi.mock('@/app/stores/pushConnection.store', () => ({
 	usePushConnectionStore: vi.fn(),

@@ -4,9 +4,9 @@ import {
 	type SecretProviderConnection,
 	type SecretProviderConnectionListItem,
 	type TestSecretProviderConnectionResponse,
-} from '@n8n/api-types';
-import { Logger } from '@n8n/backend-common';
-import type { AuthenticatedRequest } from '@n8n/db';
+} from '@MNI/api-types';
+import { Logger } from '@MNI/backend-common';
+import type { AuthenticatedRequest } from '@MNI/db';
 import {
 	Body,
 	Delete,
@@ -17,7 +17,7 @@ import {
 	Post,
 	ProjectScope,
 	RestController,
-} from '@n8n/decorators';
+} from '@MNI/decorators';
 import type { NextFunction, Request, Response } from 'express';
 
 import { ForbiddenError } from '@/errors/response-errors/forbidden.error';

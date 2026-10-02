@@ -1,6 +1,6 @@
-import { Time } from '@n8n/constants';
-import { httpStatusFromError } from '@n8n/backend-network';
-import { isRecord } from '@n8n/utils/is-record';
+import { Time } from '@MNI/constants';
+import { httpStatusFromError } from '@MNI/backend-network';
+import { isRecord } from '@MNI/utils/is-record';
 
 import { INTEGRATION_ERROR_CODES } from './integration-error-codes';
 import {

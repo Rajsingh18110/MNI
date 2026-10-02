@@ -1,15 +1,15 @@
 <script setup lang="ts">
 import Modal from '@/app/components/Modal.vue';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import { useWorkflowExtraction } from '@/app/composables/useWorkflowExtraction';
 import { WORKFLOW_EXTRACTION_NAME_MODAL_KEY } from '@/app/constants';
 import type { INodeUi } from '@/Interface';
-import { createEventBus } from '@n8n/utils/event-bus';
-import type { ExtractableSubgraphData } from 'n8n-workflow';
+import { createEventBus } from '@MNI/utils/event-bus';
+import type { ExtractableSubgraphData } from 'MNI-workflow';
 import { computed, onMounted, ref } from 'vue';
-import { useToast } from '@n8n/composables/useToast';
+import { useToast } from '@MNI/composables/useToast';
 
-import { N8nButton, N8nFormInput } from '@n8n/design-system';
+import { N8nButton, N8nFormInput } from '@MNI/design-system';
 const props = defineProps<{
 	modalName: string;
 	data: {

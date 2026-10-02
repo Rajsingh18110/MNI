@@ -1,5 +1,5 @@
 import { computed, ref } from 'vue';
-import { useRootStore } from '@n8n/stores/useRootStore';
+import { useRootStore } from '@MNI/stores/useRootStore';
 import {
 	fetchPromotionConnections,
 	type PromotionConnectionSummary,

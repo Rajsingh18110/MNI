@@ -15,7 +15,7 @@ function makeIndex(nodeCount = 3, groupedNodeCount = 2) {
 		nodes: Array.from({ length: nodeCount }, (_, index) => ({
 			id: `node-${index + 1}`,
 			name: `Node ${index + 1}`,
-			type: 'n8n-nodes-base.noOp',
+			type: 'MNI-nodes-base.noOp',
 			typeVersion: 1,
 		})),
 		nodeGroups: [
@@ -73,7 +73,7 @@ describe('buildMentionItems', () => {
 			'Node 2',
 		]);
 		expect(items.find(({ entityId }) => entityId === 'node-2')).toMatchObject({
-			nodeTypeName: 'n8n-nodes-base.noOp',
+			nodeTypeName: 'MNI-nodes-base.noOp',
 			nodeTypeVersion: 1,
 		});
 		expect(items.filter(({ entityId }) => entityId === 'node-2')).toHaveLength(1);

@@ -1,5 +1,5 @@
 import { mockDeep } from 'vitest-mock-extended';
-import type { IExecuteFunctions, INode } from 'n8n-workflow';
+import type { IExecuteFunctions, INode } from 'MNI-workflow';
 import nock from 'nock';
 
 import { AwsTextract } from '../AwsTextract.node';

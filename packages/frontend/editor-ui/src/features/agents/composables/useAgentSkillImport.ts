@@ -3,9 +3,9 @@ import {
 	AGENT_SKILL_REFERENCE_CONTENT_MAX_LENGTH,
 	AGENT_SKILL_REFERENCE_MAX_COUNT,
 	AGENT_SKILL_REFERENCES_TOTAL_MAX_LENGTH,
-} from '@n8n/api-types';
-import type { BaseTextKey } from '@n8n/i18n';
-import { isRecord } from '@n8n/utils/is-record';
+} from '@MNI/api-types';
+import type { BaseTextKey } from '@MNI/i18n';
+import { isRecord } from '@MNI/utils/is-record';
 
 import type { AgentSkill, AgentSkillReference } from '../types';
 

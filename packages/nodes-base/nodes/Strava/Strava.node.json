@@ -1,5 +1,5 @@
 {
-	"node": "n8n-nodes-base.strava",
+	"node": "MNI-nodes-base.strava",
 	"nodeVersion": "1.0",
 	"codexVersion": "1.0",
 	"categories": ["Productivity"],
@@ -11,14 +11,14 @@
 		],
 		"primaryDocumentation": [
 			{
-				"url": "https://docs.n8n.io/integrations/builtin/app-nodes/n8n-nodes-base.strava/"
+				"url": "https://docs.n8n.io/integrations/builtin/app-nodes/MNI-nodes-base.strava/"
 			}
 		],
 		"generic": [
 			{
 				"label": "2021: The Year to Automate the New You with MNI",
 				"icon": "☀️",
-				"url": "https://n8n.io/blog/2021-the-year-to-automate-the-new-you-with-n8n/"
+				"url": "https://n8n.io/blog/2021-the-year-to-automate-the-new-you-with-MNI/"
 			}
 		]
 	}

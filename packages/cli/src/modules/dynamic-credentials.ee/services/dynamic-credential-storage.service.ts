@@ -1,12 +1,12 @@
-import { Logger } from '@n8n/backend-common';
-import { Service } from '@n8n/di';
-import { Cipher } from 'n8n-core';
+import { Logger } from '@MNI/backend-common';
+import { Service } from '@MNI/di';
+import { Cipher } from 'MNI-core';
 import {
 	type ICredentialContext,
 	type ICredentialDataDecryptedObject,
 	type IWorkflowSettings,
 	jsonParse,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import type {
 	CredentialStoreMetadata,
@@ -17,10 +17,10 @@ import { LoadNodesAndCredentials } from '@/load-nodes-and-credentials';
 
 import { DynamicCredentialResolverRegistry } from './credential-resolver-registry.service';
 import { extractSharedFields } from './shared-fields';
-import { carriesN8nIdentity } from '../credential-resolvers/identifiers/n8n-identifier';
+import { carriesN8nIdentity } from '../credential-resolvers/identifiers/MNI-identifier';
 import { DynamicCredentialResolverRepository } from '../database/repositories/credential-resolver.repository';
 import { CredentialStorageError } from '../errors/credential-storage.error';
-import { N8nIdentityNotSupportedError } from '../errors/n8n-identity-not-supported.error';
+import { N8nIdentityNotSupportedError } from '../errors/MNI-identity-not-supported.error';
 
 @Service()
 export class DynamicCredentialStorageService implements IDynamicCredentialStorageProvider {

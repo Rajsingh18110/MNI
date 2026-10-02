@@ -5,7 +5,7 @@ import { fireEvent } from '@testing-library/vue';
 import { createTestingPinia } from '@pinia/testing';
 import { setActivePinia } from 'pinia';
 import { mockedStore } from '@/__tests__/utils';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import {
 	createThreadComponentRenderer,
 	defaultModuleSettings,
@@ -21,8 +21,8 @@ import {
 	stashPendingWorkflowAttachment,
 } from '../../composables/useInstanceAiHandoff';
 import type { InstanceAiEmbedSubject } from '../../embed/instanceAiEmbed.types';
-import type { InstanceAiHandoffContext, InstanceAiMessage } from '@n8n/api-types';
-import { ResponseError } from '@n8n/rest-api-client';
+import type { InstanceAiHandoffContext, InstanceAiMessage } from '@MNI/api-types';
+import { ResponseError } from '@MNI/rest-api-client';
 import { USER_TYPED_MESSAGE } from '../../prefills';
 
 const telemetryTrackSpy = vi.hoisted(() => vi.fn());
@@ -30,11 +30,11 @@ const showMessageSpy = vi.hoisted(() => vi.fn());
 const showErrorSpy = vi.hoisted(() => vi.fn());
 const handleRedirectLandingSpy = vi.hoisted(() => vi.fn());
 
-vi.mock('@n8n/composables/useTelemetry', () => ({
+vi.mock('@MNI/composables/useTelemetry', () => ({
 	useTelemetry: () => ({ track: telemetryTrackSpy }),
 }));
 
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: () => ({ showError: showErrorSpy, showMessage: showMessageSpy }),
 }));
 

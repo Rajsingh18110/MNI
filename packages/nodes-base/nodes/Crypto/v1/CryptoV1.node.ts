@@ -8,8 +8,8 @@ import type {
 	INodeTypeBaseDescription,
 	INodeTypeDescription,
 	JsonObject,
-} from 'n8n-workflow';
-import { deepCopy, BINARY_ENCODING, NodeConnectionTypes } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { deepCopy, BINARY_ENCODING, NodeConnectionTypes } from 'MNI-workflow';
 import { pipeline } from 'stream/promises';
 import { v4 as uuid } from 'uuid';
 

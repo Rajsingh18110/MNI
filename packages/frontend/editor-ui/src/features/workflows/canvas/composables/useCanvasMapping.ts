@@ -3,7 +3,7 @@
  * @TODO Remove this notice when Canvas V2 is the only one in use
  */
 
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import type { CanvasRenderData } from '../canvas.utils';
 import type { Ref } from 'vue';
 import { computed, ref } from 'vue';
@@ -33,11 +33,11 @@ import {
 	type IConnections,
 	type ITaskData,
 	type IWorkflowGroup,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import type { INodeUi } from '@/Interface';
 import { MarkerType } from '@vue-flow/core';
 import type { Connection } from '@vue-flow/core';
-import * as workflowUtils from 'n8n-workflow/common';
+import * as workflowUtils from 'MNI-workflow/common';
 
 // Highest priority first — single source of precedence for connection status.
 const CONNECTION_STATUS_PRIORITY = ['running', 'pinned', 'error', 'success'] as const;

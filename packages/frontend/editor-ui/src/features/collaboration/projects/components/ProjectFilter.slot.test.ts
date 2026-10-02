@@ -1,7 +1,7 @@
-import type { FrontendModuleSettings } from '@n8n/api-types';
-import { componentRegistry } from '@n8n/frontend-module-sdk';
-import { InsightsModule } from '@n8n/frontend-module-insights/insights.module';
-import { useInsightsStore } from '@n8n/frontend-module-insights';
+import type { FrontendModuleSettings } from '@MNI/api-types';
+import { componentRegistry } from '@MNI/frontend-module-sdk';
+import { InsightsModule } from '@MNI/frontend-module-insights/insights.module';
+import { useInsightsStore } from '@MNI/frontend-module-insights';
 import { createTestingPinia } from '@pinia/testing';
 import { screen, waitFor } from '@testing-library/vue';
 import userEvent from '@testing-library/user-event';
@@ -10,7 +10,7 @@ import type { Component } from 'vue';
 import type { RouteRecordRaw } from 'vue-router';
 
 import { createComponentRenderer } from '@/__tests__/render';
-import { defaultSettings, mockedStore } from '@n8n/frontend-test-utils';
+import { defaultSettings, mockedStore } from '@MNI/frontend-test-utils';
 import { getDropdownItems } from '@/__tests__/utils';
 
 import { createProjectListItem } from '../__tests__/utils';

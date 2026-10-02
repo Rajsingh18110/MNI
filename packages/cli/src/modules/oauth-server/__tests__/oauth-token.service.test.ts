@@ -1,13 +1,13 @@
 import { InvalidTargetError } from '@modelcontextprotocol/sdk/server/auth/errors.js';
 import type { Mocked } from 'vitest';
 import jwt from 'jsonwebtoken';
-import { Logger, type LicenseState, type ModuleRegistry } from '@n8n/backend-common';
-import { mockInstance } from '@n8n/backend-test-utils';
-import type { GlobalConfig } from '@n8n/config';
-import type { OperationContext, TransactionRunner, User } from '@n8n/db';
-import { UserRepository } from '@n8n/db';
+import { Logger, type LicenseState, type ModuleRegistry } from '@MNI/backend-common';
+import { mockInstance } from '@MNI/backend-test-utils';
+import type { GlobalConfig } from '@MNI/config';
+import type { OperationContext, TransactionRunner, User } from '@MNI/db';
+import { UserRepository } from '@MNI/db';
 import { mock, type MockProxy } from 'vitest-mock-extended';
-import type { InstanceSettings } from 'n8n-core';
+import type { InstanceSettings } from 'MNI-core';
 
 import { JwtService } from '@/services/jwt.service';
 
@@ -20,7 +20,7 @@ import { McpProtectedResource } from '@/modules/mcp/mcp-protected-resource';
 import type { McpConfig } from '@/modules/mcp/mcp.config';
 import type { McpSettingsService } from '@/modules/mcp/mcp.settings.service';
 import { ProtectedResourceRegistry } from '@/services/protected-resource.registry';
-import type { UrlService } from '@n8n/backend-services';
+import type { UrlService } from '@MNI/backend-services';
 import type { WorkflowFinderService } from '@/workflows/workflow-finder.service';
 
 const instanceSettings = mock<InstanceSettings>({ encryptionKey: 'test-key' });
@@ -962,7 +962,7 @@ describe('OAuthTokenService', () => {
 	// gate (expectedAudience = getResourceUrl(), which is derived from the
 	// configured MCP base URL when set).
 	describe('audience gate with a configured MCP base URL', () => {
-		const CONFIGURED_RESOURCE_URL = 'https://n8n-mcp.example.com/mcp-server/http';
+		const CONFIGURED_RESOURCE_URL = 'https://MNI-mcp.example.com/mcp-server/http';
 
 		let configuredService: OAuthTokenService;
 
@@ -970,7 +970,7 @@ describe('OAuthTokenService', () => {
 			const urlService = mock<UrlService>();
 			urlService.getInstanceBaseUrl.mockReturnValue(TEST_BASE_URL);
 			const mcpConfig = mock<McpConfig>();
-			mcpConfig.baseUrl = 'https://n8n-mcp.example.com';
+			mcpConfig.baseUrl = 'https://MNI-mcp.example.com';
 			const mcpResource = new McpProtectedResource(
 				urlService,
 				mock<McpSettingsService>(),

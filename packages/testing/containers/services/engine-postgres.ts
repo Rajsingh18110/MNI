@@ -81,7 +81,7 @@ export const enginePostgres: Service<PostgresResult> = {
 		const host = external ? result.container.getHost() : HOSTNAME;
 		const port = external ? result.container.getMappedPort(5432) : 5432;
 		return {
-			N8N_ENGINE_DATABASE_URL: `postgres://${USERNAME}:${PASSWORD}@${host}:${port}/${ENGINE_DATABASE}`,
+			MNI_ENGINE_DATABASE_URL: `postgres://${USERNAME}:${PASSWORD}@${host}:${port}/${ENGINE_DATABASE}`,
 		};
 	},
 };

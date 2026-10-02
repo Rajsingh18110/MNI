@@ -1,10 +1,10 @@
-import type { InstanceRegistration } from '@n8n/api-types';
+import type { InstanceRegistration } from '@MNI/api-types';
 import {
 	ClusterCheck,
 	type ClusterCheckContext,
 	type ClusterCheckResult,
 	type IClusterCheck,
-} from '@n8n/decorators';
+} from '@MNI/decorators';
 
 import { buildCheckResult } from './build-check-result';
 

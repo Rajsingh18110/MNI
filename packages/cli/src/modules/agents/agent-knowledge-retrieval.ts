@@ -1,4 +1,4 @@
-import type { ExecutionDataStorageLocation } from '@n8n/db';
+import type { ExecutionDataStorageLocation } from '@MNI/db';
 import { z } from 'zod';
 
 import { BadRequestError } from '@/errors/response-errors/bad-request.error';

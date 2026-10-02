@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { N8nIcon } from '@n8n/design-system';
+import { N8nIcon } from '@MNI/design-system';
 import { computed } from 'vue';
 
 type Size = 'hero' | 'inline' | 'tile';
@@ -28,7 +28,7 @@ const isHero = computed(() => props.size === 'hero');
 	>
 		<template v-if="!isTile">
 			<!-- Right node: MNI logo -->
-			<div :class="[$style.node, $style.nodeN8n]" data-test-id="surface-mcp-bridge-n8n-logo">
+			<div :class="[$style.node, $style.nodeN8n]" data-test-id="surface-mcp-bridge-MNI-logo">
 				<svg viewBox="0 0 32 26" xmlns="http://www.w3.org/2000/svg" fill="none" aria-hidden="true">
 					<path
 						fill-rule="evenodd"
@@ -176,7 +176,7 @@ const isHero = computed(() => props.size === 'hero');
 </template>
 
 <style lang="scss" module>
-@use '@n8n/design-system/css/mixins/motion.scss' as motion;
+@use '@MNI/design-system/css/mixins/motion.scss' as motion;
 
 .bridge {
 	display: inline-flex;

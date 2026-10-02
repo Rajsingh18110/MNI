@@ -6,8 +6,8 @@ import type {
 	ILoadOptionsFunctions,
 	IPollFunctions,
 	JsonObject,
-} from 'n8n-workflow';
-import { toPathSegment, NodeApiError, NodeOperationError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { toPathSegment, NodeApiError, NodeOperationError } from 'MNI-workflow';
 
 type NotionFunctions = IExecuteFunctions | ILoadOptionsFunctions | IPollFunctions;
 

@@ -1,7 +1,7 @@
-import { Logger } from '@n8n/backend-common';
-import { Time } from '@n8n/constants';
-import { Get, RestController } from '@n8n/decorators';
-import { Container } from '@n8n/di';
+import { Logger } from '@MNI/backend-common';
+import { Time } from '@MNI/constants';
+import { Get, RestController } from '@MNI/decorators';
+import { Container } from '@MNI/di';
 import type { Response } from 'express';
 
 import { AuthlessRequest } from '@/requests';

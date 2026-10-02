@@ -7,7 +7,7 @@ import {
 	type IWebhookResponseData,
 	NodeOperationError,
 	FORM_TRIGGER_NODE_TYPE,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import {
 	generateFormUserAuthToken,

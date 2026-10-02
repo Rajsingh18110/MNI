@@ -1,6 +1,6 @@
-import { Logger } from '@n8n/backend-common';
-import type { AuthenticatedRequest } from '@n8n/db';
-import { Param, Post, ProjectScope, RestController } from '@n8n/decorators';
+import { Logger } from '@MNI/backend-common';
+import type { AuthenticatedRequest } from '@MNI/db';
+import { Param, Post, ProjectScope, RestController } from '@MNI/decorators';
 import type { Response } from 'express';
 
 import { NotFoundError } from '@/errors/response-errors/not-found.error';

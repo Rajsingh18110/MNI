@@ -4,7 +4,7 @@
  *
  * Usage: node scripts/generate-emoji-data.mjs
  *
- * Output: packages/frontend/@n8n/design-system/src/components/N8nIconPicker/emojiData.ts
+ * Output: packages/frontend/@MNI/design-system/src/components/N8nIconPicker/emojiData.ts
  */
 
 import { readFileSync, writeFileSync } from 'node:fs';
@@ -18,7 +18,7 @@ const require = createRequire(import.meta.url);
 
 const OUTPUT_PATH = resolve(
 	ROOT,
-	'packages/frontend/@n8n/design-system/src/components/N8nIconPicker/emojiData.ts',
+	'packages/frontend/@MNI/design-system/src/components/N8nIconPicker/emojiData.ts',
 );
 
 // Emojibase group IDs to section keys and i18n label keys

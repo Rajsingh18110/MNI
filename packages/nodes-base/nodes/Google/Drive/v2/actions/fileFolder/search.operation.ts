@@ -3,7 +3,7 @@ import type {
 	IExecuteFunctions,
 	INodeExecutionData,
 	INodeProperties,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { escapeBackslashQuotedValue } from '@utils/query-escaping';
 import { updateDisplayOptions } from '@utils/utilities';

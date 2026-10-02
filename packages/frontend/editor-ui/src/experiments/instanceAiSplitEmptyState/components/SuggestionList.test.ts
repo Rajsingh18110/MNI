@@ -10,7 +10,7 @@ import {
 import SuggestionList from './SuggestionList.vue';
 
 const telemetryTrack = vi.fn();
-vi.mock('@n8n/composables/useTelemetry', () => ({
+vi.mock('@MNI/composables/useTelemetry', () => ({
 	useTelemetry: () => ({ track: telemetryTrack }),
 }));
 

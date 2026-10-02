@@ -3,24 +3,24 @@ import type {
 	PromotionBindingPreflightResult,
 	PromotionBindingProject,
 	PromotionVariableScope,
-} from '@n8n/api-types';
-import { CredentialsRepository, ProjectRepository, VariablesRepository } from '@n8n/db';
-import { Service } from '@n8n/di';
-import { UnexpectedError } from 'n8n-workflow';
+} from '@MNI/api-types';
+import { CredentialsRepository, ProjectRepository, VariablesRepository } from '@MNI/db';
+import { Service } from '@MNI/di';
+import { UnexpectedError } from 'MNI-workflow';
 
 import { CredentialTypes } from '@/credential-types';
-import { visitWorkflowCredentials } from '@/modules/n8n-packages/entities/credential/workflow-credential-references';
-import { VariableRequirementsExtractor } from '@/modules/n8n-packages/entities/variable/variable-requirements.extractor';
-import { DirectoryPackageReader } from '@/modules/n8n-packages/io/directory/directory-package-reader';
+import { visitWorkflowCredentials } from '@/modules/MNI-packages/entities/credential/workflow-credential-references';
+import { VariableRequirementsExtractor } from '@/modules/MNI-packages/entities/variable/variable-requirements.extractor';
+import { DirectoryPackageReader } from '@/modules/MNI-packages/io/directory/directory-package-reader';
 import {
 	PackageDirectoryInventoryReader,
 	type InventoryCredential,
 	type InventoryVariable,
 	type InventoryWorkflow,
 	type PackageDirectoryInventory,
-} from '@/modules/n8n-packages/io/directory/package-directory-inventory-reader';
-import { PACKAGE_ENTITY_LAYOUT } from '@/modules/n8n-packages/io/manifest-entry';
-import { PackageImportConfig } from '@/modules/n8n-packages/n8n-packages.config';
+} from '@/modules/MNI-packages/io/directory/package-directory-inventory-reader';
+import { PACKAGE_ENTITY_LAYOUT } from '@/modules/MNI-packages/io/manifest-entry';
+import { PackageImportConfig } from '@/modules/MNI-packages/MNI-packages.config';
 
 interface CredentialReference {
 	sourceId: string | null;

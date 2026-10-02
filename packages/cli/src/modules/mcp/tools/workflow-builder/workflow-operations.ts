@@ -1,4 +1,4 @@
-import { isRecord } from '@n8n/utils/is-record';
+import { isRecord } from '@MNI/utils/is-record';
 import { IANAZone } from 'luxon';
 import type {
 	IConnection,
@@ -9,12 +9,12 @@ import type {
 	IWorkflowGroup,
 	IWorkflowSettings,
 	NodeConnectionType,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import {
 	GROUP_DESCRIPTION_MAX_LENGTH,
 	isSafeObjectProperty,
 	NodeConnectionTypes,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import { v4 as uuid } from 'uuid';
 import { z } from 'zod';
 
@@ -154,7 +154,7 @@ export const partialUpdateOperationSchema = z.discriminatedUnion('type', [
 		node: z
 			.object({
 				name: z.string().describe('Unique node name. Must not collide with an existing node.'),
-				type: z.string().describe('Fully qualified node type, e.g. "n8n-nodes-base.set".'),
+				type: z.string().describe('Fully qualified node type, e.g. "MNI-nodes-base.set".'),
 				typeVersion: z.number(),
 				parameters: z.record(z.string(), z.unknown()).optional(),
 				position: positionSchema().optional(),

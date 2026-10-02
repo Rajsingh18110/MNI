@@ -1,5 +1,5 @@
 import { computed } from 'vue';
-import type { INodeCredentialsDetails } from 'n8n-workflow';
+import type { INodeCredentialsDetails } from 'MNI-workflow';
 import { useNodeHelpers } from '@/app/composables/useNodeHelpers';
 import { useCredentialsStore } from '@/features/credentials/credentials.store';
 import type { TemplateCredentialKey } from '../utils/templateTransforms';

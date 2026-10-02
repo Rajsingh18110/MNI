@@ -17,7 +17,7 @@ import type {
 	INodePropertyOptions,
 	IParameterLabel,
 	NodeParameterValueType,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import {
 	CREDENTIAL_EMPTY_VALUE,
 	IconOrEmojiSchema,
@@ -25,9 +25,9 @@ import {
 	jsonParse,
 	NodeHelpers,
 	resolveRelativePath,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
-import type { IconOrEmoji as DesignSystemIconOrEmoji } from '@n8n/design-system';
+import type { IconOrEmoji as DesignSystemIconOrEmoji } from '@MNI/design-system';
 
 import type { CodeNodeLanguageOption } from '@/features/shared/editors/components/CodeNodeEditor/CodeNodeEditor.vue';
 import CodeNodeEditor from '@/features/shared/editors/components/CodeNodeEditor/CodeNodeEditor.vue';
@@ -68,23 +68,23 @@ import {
 	ToolConfigCredentialSelectedKey,
 } from '@/app/constants';
 
-import { getDebounceTime, useDebounce } from '@n8n/composables/useDebounce';
+import { getDebounceTime, useDebounce } from '@MNI/composables/useDebounce';
 import { useAiGateway } from '@/app/composables/useAiGateway';
 import { useExternalHooks } from '@/app/composables/useExternalHooks';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import { useNodeHelpers } from '@/app/composables/useNodeHelpers';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
 import { useWorkflowHelpers } from '@/app/composables/useWorkflowHelpers';
 import { useNodeSettingsParameters } from '@/features/ndv/settings/composables/useNodeSettingsParameters';
 import { htmlEditorEventBus } from '@/app/event-bus';
 import { useCredentialsStore } from '@/features/credentials/credentials.store';
 import { injectNDVStoreIfProvided } from '@/features/ndv/shared/ndv.store';
 import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { useWorkflowsListStore } from '@/app/stores/workflowsList.store';
 import { useUIStore } from '@/app/stores/ui.store';
-import type { EventBus } from '@n8n/utils/event-bus';
-import { createEventBus } from '@n8n/utils/event-bus';
+import type { EventBus } from '@MNI/utils/event-bus';
+import { createEventBus } from '@MNI/utils/event-bus';
 import { captureMessage } from '@sentry/vue';
 import { isCredentialOnlyNodeType } from '@/app/utils/credentialOnlyNodes';
 import {
@@ -112,7 +112,7 @@ import {
 	N8nOption,
 	N8nSelect,
 	N8nSwitch,
-} from '@n8n/design-system';
+} from '@MNI/design-system';
 import { useCollectionOverhaul } from '@/app/composables/useCollectionOverhaul';
 import { injectWorkflowDocumentStore } from '@/app/stores/workflowDocument.store';
 import {
@@ -965,7 +965,7 @@ function trackExpressionEditOpen() {
 		return;
 	}
 
-	if (node.value.type.startsWith('n8n-nodes-base') || isCredentialOnlyNodeType(node.value.type)) {
+	if (node.value.type.startsWith('MNI-nodes-base') || isCredentialOnlyNodeType(node.value.type)) {
 		telemetry.track('User opened Expression Editor', {
 			node_type: node.value.type,
 			parameter_name: props.parameter.displayName,
@@ -2092,7 +2092,7 @@ onUpdated(async () => {
 						</div>
 						<div
 							v-if="option.description"
-							v-n8n-html="getOptionsOptionDescription(option)"
+							v-MNI-html="getOptionsOptionDescription(option)"
 							class="option-description option-description--clamped"
 						></div>
 					</div>
@@ -2126,7 +2126,7 @@ onUpdated(async () => {
 						<div class="option-headline">{{ getOptionsOptionDisplayName(option) }}</div>
 						<div
 							v-if="option.description"
-							v-n8n-html="getOptionsOptionDescription(option)"
+							v-MNI-html="getOptionsOptionDescription(option)"
 							class="option-description option-description--clamped"
 						></div>
 					</div>
@@ -2257,7 +2257,7 @@ onUpdated(async () => {
 	--input--border-style: dashed;
 	--input--border-width: 1.5px;
 
-	:global(.n8n-input__wrapper) {
+	:global(.MNI-input__wrapper) {
 		outline: 1.5px dashed var(--ndv--droppable-parameter--color);
 		outline-offset: -1.5px;
 		transition: none;
@@ -2278,7 +2278,7 @@ onUpdated(async () => {
 	--input--border-style: solid;
 	--input--border-width: 1px;
 
-	:global(.n8n-input__wrapper) {
+	:global(.MNI-input__wrapper) {
 		outline: 1px solid var(--color--success);
 		outline-offset: -1px;
 		transition: none;
@@ -2388,7 +2388,7 @@ onUpdated(async () => {
 	max-width: 100%;
 }
 
-.input-with-opener .n8n-input__wrapper {
+.input-with-opener .MNI-input__wrapper {
 	gap: 0;
 }
 
@@ -2408,7 +2408,7 @@ onUpdated(async () => {
 	}
 }
 
-.no-right-corners .n8n-input__wrapper {
+.no-right-corners .MNI-input__wrapper {
 	border-top-right-radius: 0;
 	border-bottom-right-radius: 0;
 }

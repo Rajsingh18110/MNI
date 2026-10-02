@@ -1,7 +1,7 @@
 import { computed } from 'vue';
 
 import { EnterpriseEditionFeature } from '@/app/constants';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 
 export const useWorkflowReviewsFeature = () => {
 	const settingsStore = useSettingsStore();

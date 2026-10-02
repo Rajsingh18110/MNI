@@ -11,17 +11,17 @@ import {
 	N8nText,
 	N8nTooltip,
 	N8nLoading,
-} from '@n8n/design-system';
+} from '@MNI/design-system';
 import { VIEWS } from '@/app/constants';
-import * as breakingChangesApi from '@n8n/rest-api-client/api/breaking-changes';
-import { useRootStore } from '@n8n/stores/useRootStore';
+import * as breakingChangesApi from '@MNI/rest-api-client/api/breaking-changes';
+import { useRootStore } from '@MNI/stores/useRootStore';
 import { useAsyncState } from '@vueuse/core';
 import { computed, ref, useCssModule } from 'vue';
 import orderBy from 'lodash/orderBy';
 import SeverityTag from './components/SeverityTag.vue';
 import EmptyTab from './components/EmptyTab.vue';
-import { useI18n } from '@n8n/i18n';
-import { MIGRATION_REPORT_TARGET_VERSION } from '@n8n/api-types';
+import { useI18n } from '@MNI/i18n';
+import { MIGRATION_REPORT_TARGET_VERSION } from '@MNI/api-types';
 import { useDocumentTitle } from '@/app/composables/useDocumentTitle';
 
 const $style = useCssModule();

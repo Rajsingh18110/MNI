@@ -37,8 +37,8 @@ describe('parsePackageJson', () => {
 describe('relativeDir', () => {
 	it('returns the package dir relative to root with forward slashes', () => {
 		const root = join('/repo');
-		expect(relativeDir(root, join(root, 'packages', '@n8n', 'core', 'package.json'))).toBe(
-			'packages/@n8n/core',
+		expect(relativeDir(root, join(root, 'packages', '@MNI', 'core', 'package.json'))).toBe(
+			'packages/@MNI/core',
 		);
 	});
 });

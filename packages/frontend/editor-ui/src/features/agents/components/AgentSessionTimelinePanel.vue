@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import type { PushMessage } from '@n8n/api-types';
-import { useToast } from '@n8n/composables/useToast';
+import type { PushMessage } from '@MNI/api-types';
+import { useToast } from '@MNI/composables/useToast';
 import { usePushConnectionStore } from '@/app/stores/pushConnection.store';
 import { useAgentSessionsStore } from '@/features/agents/agentSessions.store';
 import type {
@@ -30,8 +30,8 @@ import type {
 	TimelineItem,
 	TimelineStatusFilterKey,
 } from '@/features/agents/session-timeline.types';
-import { useI18n } from '@n8n/i18n';
-import { N8nIcon, N8nInput, type BadgeVariant } from '@n8n/design-system';
+import { useI18n } from '@MNI/i18n';
+import { N8nIcon, N8nInput, type BadgeVariant } from '@MNI/design-system';
 import { computed, onBeforeUnmount, onMounted, ref, useTemplateRef, watch } from 'vue';
 import { useActiveElement, useDocumentVisibility, useEventListener } from '@vueuse/core';
 

@@ -6,21 +6,21 @@ import type {
 	RouteLocationNormalized,
 } from 'vue-router';
 import { createRouter, createWebHistory, isNavigationFailure, RouterView } from 'vue-router';
-import { generateNanoId } from '@n8n/utils/generate-nano-id';
+import { generateNanoId } from '@MNI/utils/generate-nano-id';
 import { useExternalHooks } from '@/app/composables/useExternalHooks';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { useTemplatesStore } from '@/features/workflows/templates/templates.store';
 import { useUIStore } from '@/app/stores/ui.store';
 import { useSSOStore } from '@/features/settings/sso/sso.store';
 import { EnterpriseEditionFeature, VIEWS, EDITABLE_CANVAS_VIEWS } from '@/app/constants';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
 import { middleware } from '@/app/utils/rbac/middleware';
 import type { RouterMiddleware } from '@/app/types/router';
 import { initializeAuthenticatedFeatures, initializeCore } from '@/app/init';
 import { tryToParseNumber } from '@/app/utils/typesUtils';
 import { getSanitizedCurrentPath } from '@/app/utils/urlUtils';
 import { projectsRoutes } from '@/features/collaboration/projects/projects.routes';
-import { MfaRequiredError, setUnauthorizedHandler } from '@n8n/rest-api-client';
+import { MfaRequiredError, setUnauthorizedHandler } from '@MNI/rest-api-client';
 import { handleSessionExpired } from '@/app/utils/handleSessionExpired';
 import { useRecentResources } from '@/features/shared/commandBar/composables/useRecentResources';
 import { usePostHog } from '@/app/stores/posthog.store';
@@ -121,7 +121,7 @@ const ResourceCenterView = async () =>
 const SecuritySettingsView = async () =>
 	await import('@/features/settings/security/SecuritySettings.vue');
 
-import { MIGRATION_REPORT_TARGET_VERSION } from '@n8n/api-types';
+import { MIGRATION_REPORT_TARGET_VERSION } from '@MNI/api-types';
 
 const MigrationReportView = async () =>
 	await import('@/features/settings/migrationReport/MigrationRules.vue');
@@ -778,7 +778,7 @@ export const routes: RouteRecordRaw[] = [
 			{
 				// Old path from before the feature was renamed to Gateway credits;
 				// redirect old deep links to the renamed route.
-				path: 'n8n-connect',
+				path: 'MNI-connect',
 				redirect: () => ({ name: VIEWS.AI_GATEWAY_SETTINGS }),
 			},
 			{
@@ -797,7 +797,7 @@ export const routes: RouteRecordRaw[] = [
 						pageCategory: 'settings',
 						getProperties() {
 							return {
-								feature: 'n8n-connect',
+								feature: 'MNI-connect',
 							};
 						},
 					},

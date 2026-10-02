@@ -1,5 +1,5 @@
-import { mockInstance } from '@n8n/backend-test-utils';
-import { PrometheusMetricsConfig } from '@n8n/config';
+import { mockInstance } from '@MNI/backend-test-utils';
+import { PrometheusMetricsConfig } from '@MNI/config';
 import promClient from 'prom-client';
 import type { Mock } from 'vitest';
 import { mock } from 'vitest-mock-extended';
@@ -15,7 +15,7 @@ describe('PrometheusSystemTaskMetricsService', () => {
 	const NOW = new Date('2026-01-01T00:00:00.000Z');
 
 	const config = mockInstance(PrometheusMetricsConfig, {
-		prefix: 'n8n_',
+		prefix: 'MNI_',
 		includeSystemTaskMetrics: true,
 	});
 	const eventService = mock<EventService>();
@@ -62,7 +62,7 @@ describe('PrometheusSystemTaskMetricsService', () => {
 	beforeEach(() => {
 		vi.useFakeTimers();
 		vi.setSystemTime(NOW);
-		Object.assign(config, { prefix: 'n8n_', includeSystemTaskMetrics: true });
+		Object.assign(config, { prefix: 'MNI_', includeSystemTaskMetrics: true });
 		instancesByName.clear();
 		// Replace the auto-mocked classes (whose instances share one prototype method)
 		// with fake classes, so each construction yields its own methods and a test
@@ -81,7 +81,7 @@ describe('PrometheusSystemTaskMetricsService', () => {
 		vi.clearAllMocks();
 	});
 
-	const metric = (name: string) => instancesByName.get(`n8n_${name}`)!;
+	const metric = (name: string) => instancesByName.get(`MNI_${name}`)!;
 
 	function handler(event: string) {
 		const calls = eventService.on.mock.calls as unknown as Array<
@@ -132,7 +132,7 @@ describe('PrometheusSystemTaskMetricsService', () => {
 
 			expect(ctorByType.Histogram).toHaveBeenCalledWith(
 				expect.objectContaining({
-					name: 'n8n_system_task_fire_lag_seconds',
+					name: 'MNI_system_task_fire_lag_seconds',
 					buckets: LAG_BUCKETS_SECONDS,
 				}),
 			);

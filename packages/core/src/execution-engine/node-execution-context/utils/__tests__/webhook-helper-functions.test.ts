@@ -7,7 +7,7 @@ import type {
 	INodeTypes,
 	IWorkflowExecuteAdditionalData,
 	WorkflowExpression,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import { getWebhookDescription, getNodeWebhookUrl } from '../webhook-helper-functions';

@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import type { InstanceAiToolCallState } from '@n8n/api-types';
+import type { InstanceAiToolCallState } from '@MNI/api-types';
 
 import {
 	isPreferenceCardEvent,

@@ -1,4 +1,4 @@
-import { User } from '@n8n/db';
+import { User } from '@MNI/db';
 
 import type { Telemetry } from '@/telemetry';
 

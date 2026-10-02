@@ -1,4 +1,4 @@
-import type { SourceControlledFile } from '@n8n/api-types';
+import type { SourceControlledFile } from '@MNI/api-types';
 import type { SourceControlTreeRow } from '../sourceControl.types';
 import { buildWorkflowTreeRows } from '../sourceControl.utils';
 import { computed, ref, type Ref } from 'vue';

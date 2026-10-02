@@ -7,13 +7,13 @@ import { getAppNameFromNodeName } from '@/app/utils/nodeTypesUtils';
 import { formatList } from '@/app/utils/formatters/listFormatter';
 import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';
 import type { BaseNode, CredentialUsages } from '../templates.types';
-import { useI18n, type BaseTextKey } from '@n8n/i18n';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
+import { useI18n, type BaseTextKey } from '@MNI/i18n';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
 import type { TemplateCredentialKey } from '../utils/templateTransforms';
 import { I18nT } from 'vue-i18n';
 import type { SetupCredentialsModalSource } from './SetupWorkflowCredentialsModal.vue';
 
-import { N8nHeading } from '@n8n/design-system';
+import { N8nHeading } from '@MNI/design-system';
 // Props
 const props = withDefaults(
 	defineProps<{
@@ -96,7 +96,7 @@ const onCredentialModalOpened = () => {
 				:plural="credentials.usedBy.length"
 				scope="global"
 			>
-				<span v-n8n-html="nodeNames" />
+				<span v-MNI-html="nodeNames" />
 			</I18nT>
 		</p>
 

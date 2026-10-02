@@ -1,16 +1,16 @@
-import { UserError, jsonParse } from 'n8n-workflow';
+import { UserError, jsonParse } from 'MNI-workflow';
 import { readFileSync } from 'node:fs';
 import { readFile } from 'node:fs/promises';
 
 import { DirectoryLoader } from './directory-loader';
-import type { n8n } from './types';
+import type { MNI } from './types';
 
 /**
  * Loader for source files of nodes and credentials located in a package dir,
  * e.g. /nodes-base or community packages.
  */
 export class PackageDirectoryLoader extends DirectoryLoader {
-	packageJson: n8n.PackageJson;
+	packageJson: MNI.PackageJson;
 
 	packageName: string;
 
@@ -25,12 +25,12 @@ export class PackageDirectoryLoader extends DirectoryLoader {
 	}
 
 	override async loadAll() {
-		const { n8n, version, name } = this.packageJson;
-		if (!n8n) return;
+		const { MNI, version, name } = this.packageJson;
+		if (!MNI) return;
 
-		const { nodes, credentials } = n8n;
+		const { nodes, credentials } = MNI;
 
-		const packageVersion = !['n8n-nodes-base', '@n8n/n8n-nodes-langchain'].includes(name)
+		const packageVersion = !['MNI-nodes-base', '@MNI/MNI-nodes-langchain'].includes(name)
 			? version
 			: undefined;
 

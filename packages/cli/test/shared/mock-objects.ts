@@ -3,9 +3,9 @@ import {
 	randomEmail,
 	randomName,
 	uniqueId,
-} from '@n8n/backend-test-utils';
-import { CredentialsEntity, Project, User } from '@n8n/db';
-import { randomInt } from 'n8n-workflow';
+} from '@MNI/backend-test-utils';
+import { CredentialsEntity, Project, User } from '@MNI/db';
+import { randomInt } from 'MNI-workflow';
 
 export const mockCredential = (): CredentialsEntity =>
 	Object.assign(new CredentialsEntity(), randomCredentialPayload());

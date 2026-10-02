@@ -1,5 +1,5 @@
 import { fireEvent } from '@testing-library/vue';
-import { TELEMETRY_EVENT } from '@n8n/telemetry';
+import { TELEMETRY_EVENT } from '@MNI/telemetry';
 import { describe, expect, it, vi, beforeEach } from 'vitest';
 
 import { createComponentRenderer } from '@/__tests__/render';
@@ -12,12 +12,12 @@ const { action, track, refreshAppliedPreferences, receivedThreadId } = vi.hoiste
 	receivedThreadId: vi.fn<(threadId: string | undefined) => void>(),
 }));
 
-vi.mock('@n8n/composables/useTelemetry', () => ({
+vi.mock('@MNI/composables/useTelemetry', () => ({
 	useTelemetry: () => ({ track }),
 }));
 
-vi.mock('@n8n/design-system', async (importOriginal) => {
-	const actual = await importOriginal<typeof import('@n8n/design-system')>();
+vi.mock('@MNI/design-system', async (importOriginal) => {
+	const actual = await importOriginal<typeof import('@MNI/design-system')>();
 	const { defineComponent, h } = await import('vue');
 
 	return {

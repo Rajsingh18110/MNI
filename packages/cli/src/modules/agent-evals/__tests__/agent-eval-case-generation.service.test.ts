@@ -1,6 +1,6 @@
-import type { AgentJsonConfig } from '@n8n/api-types';
-import type { Logger } from '@n8n/backend-common';
-import type { AgentEvalDataset, AgentEvalDatasetRepository, User } from '@n8n/db';
+import type { AgentJsonConfig } from '@MNI/api-types';
+import type { Logger } from '@MNI/backend-common';
+import type { AgentEvalDataset, AgentEvalDatasetRepository, User } from '@MNI/db';
 import type { Mocked } from 'vitest';
 import { mock } from 'vitest-mock-extended';
 
@@ -16,12 +16,12 @@ import { DataTableNameConflictError } from '../../data-table/errors/data-table-n
 import { AgentEvalCaseGenerationService } from '../agent-eval-case-generation.service';
 import type { AgentEvalsFlagGate } from '../agent-evals-flag-gate';
 
-// Stub the @n8n/agents SDK: fluent builder is a no-op; `generate` is a
+// Stub the @MNI/agents SDK: fluent builder is a no-op; `generate` is a
 // controllable mock so tests drive the model's (in)valid structured output.
 const { generateMock } = vi.hoisted(() => ({ generateMock: vi.fn() }));
-vi.mock('@n8n/agents', async (importOriginal) => ({
+vi.mock('@MNI/agents', async (importOriginal) => ({
 	// Channel action tools import APPROVAL_* schemas from the SDK; keep those real.
-	...(await importOriginal<typeof import('@n8n/agents')>()),
+	...(await importOriginal<typeof import('@MNI/agents')>()),
 	Agent: class {
 		model() {
 			return this;

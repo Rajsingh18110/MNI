@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-import type { InstanceAiAttachment, InstanceAiNodesAttachment } from '@n8n/api-types';
-import ChatFile from '@n8n/chat/components/ChatFile.vue';
-import { N8nIcon } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+import type { InstanceAiAttachment, InstanceAiNodesAttachment } from '@MNI/api-types';
+import ChatFile from '@MNI/chat/components/ChatFile.vue';
+import { N8nIcon } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 import { computed, onBeforeUnmount, ref } from 'vue';
 import InstanceAiResourceChip from './InstanceAiResourceChip.vue';
 import NodesAttachmentChips from './NodesAttachmentChips.vue';

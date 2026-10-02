@@ -1,6 +1,6 @@
 import type { MockProxy } from 'vitest-mock-extended';
 import { mock } from 'vitest-mock-extended';
-import type { IBinaryData, IExecuteSingleFunctions } from 'n8n-workflow';
+import type { IBinaryData, IExecuteSingleFunctions } from 'MNI-workflow';
 
 import { downloadFilePostReceive, escapeFilterValue } from '../../v1/helpers/utils';
 

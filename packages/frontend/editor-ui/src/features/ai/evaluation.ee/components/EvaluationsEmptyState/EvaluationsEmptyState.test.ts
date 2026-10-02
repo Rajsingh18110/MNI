@@ -4,7 +4,7 @@ import userEvent from '@testing-library/user-event';
 import { createComponentRenderer } from '@/__tests__/render';
 import EvaluationsEmptyState from './EvaluationsEmptyState.vue';
 
-vi.mock('@n8n/i18n', async (importOriginal) => ({
+vi.mock('@MNI/i18n', async (importOriginal) => ({
 	...(await importOriginal()),
 	useI18n: () => ({ baseText: (key: string) => `mocked-${key}` }),
 }));

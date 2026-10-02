@@ -1,5 +1,5 @@
-import type { IExecuteFunctions, INode } from 'n8n-workflow';
-import { NodeOperationError } from 'n8n-workflow';
+import type { IExecuteFunctions, INode } from 'MNI-workflow';
+import { NodeOperationError } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import { resolveDataTableId } from '../../common/utils';
@@ -7,7 +7,7 @@ import { resolveDataTableId } from '../../common/utils';
 const mockNode: INode = {
 	id: 'test-node',
 	name: 'Test Node',
-	type: 'n8n-nodes-base.dataTable',
+	type: 'MNI-nodes-base.dataTable',
 	typeVersion: 1,
 	position: [0, 0],
 	parameters: {},

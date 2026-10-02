@@ -24,7 +24,7 @@ import {
 const build = process.argv.includes('--build');
 const port = servePort();
 const healthPath = serveHealthPath();
-const LOG = '/tmp/n8n-dev-be.log';
+const LOG = '/tmp/MNI-dev-be.log';
 const BUILD_LOG = '/tmp/dev-up-build.log';
 
 if (!existsSync('node_modules') || !existsSync('packages/cli/node_modules')) {

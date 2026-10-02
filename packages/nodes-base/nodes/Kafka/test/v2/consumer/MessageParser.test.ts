@@ -1,6 +1,6 @@
 import type { KafkaJS } from '@confluentinc/kafka-javascript';
 import type { SchemaRegistry } from '@kafkajs/confluent-schema-registry';
-import type { IBinaryData, INodeExecutionData, ITriggerFunctions, Logger } from 'n8n-workflow';
+import type { IBinaryData, INodeExecutionData, ITriggerFunctions, Logger } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import {

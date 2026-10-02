@@ -2,7 +2,7 @@ import type {
 	IExecuteSingleFunctions,
 	INodeExecutionData,
 	IN8nHttpFullResponse,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { taskPostReceiceAction } from '../GenericFunctions';
 

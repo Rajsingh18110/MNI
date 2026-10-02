@@ -1,5 +1,5 @@
-import type { ProxyServer } from 'n8n-containers/services/proxy';
-import type { IWorkflowBase } from 'n8n-workflow';
+import type { ProxyServer } from 'MNI-containers/services/proxy';
+import type { IWorkflowBase } from 'MNI-workflow';
 
 import { test as base, expect } from '../../../fixtures/base';
 import { PublicFormPage } from '../../../pages/PublicFormPage';
@@ -119,7 +119,7 @@ async function clickApprovalLink(api: ApiHelpers, url: string) {
 function withSlackCredential(credential: CredentialResponse) {
 	return (workflow: Partial<IWorkflowBase>) => {
 		workflow.nodes?.forEach((node) => {
-			if (node.type === 'n8n-nodes-base.slack') {
+			if (node.type === 'MNI-nodes-base.slack') {
 				node.credentials = { slackApi: { id: credential.id, name: credential.name } };
 			}
 		});

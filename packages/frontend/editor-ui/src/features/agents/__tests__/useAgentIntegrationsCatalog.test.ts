@@ -6,7 +6,7 @@ vi.mock('../composables/useAgentApi', () => ({
 	listAgentIntegrations: mockListAgentIntegrations,
 }));
 
-vi.mock('@n8n/stores/useRootStore', () => ({
+vi.mock('@MNI/stores/useRootStore', () => ({
 	useRootStore: () => ({ restApiContext: { baseUrl: 'http://localhost:5678' } }),
 }));
 

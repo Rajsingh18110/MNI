@@ -1,9 +1,9 @@
-import { deriveInstanceAiSetupState } from '@n8n/api-types';
+import { deriveInstanceAiSetupState } from '@MNI/api-types';
 import type {
 	InstanceAiAdminSettingsResponse,
 	InstanceAiProviderConnection,
 	InstanceAiWebSearchSource,
-} from '@n8n/api-types';
+} from '@MNI/api-types';
 
 export type InstanceAiSearchState = 'set' | 'env' | 'disabled' | 'notset';
 

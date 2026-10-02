@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed, ref, unref } from 'vue';
 import { ElOption, ElOptionGroup } from 'element-plus';
-import { N8nSelect } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+import { N8nSelect } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 import WorkflowVersionStatusIndicator from './WorkflowVersionStatusIndicator.vue';
 import WorkflowHistoryPublishedTooltip from './WorkflowHistoryPublishedTooltip.vue';
 import WorkflowHistoryUpgradeFooter from './WorkflowHistoryUpgradeFooter.vue';

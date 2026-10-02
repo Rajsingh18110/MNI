@@ -3,7 +3,7 @@ import { defineComponent, h, ref, computed } from 'vue';
 import { createTestingPinia } from '@pinia/testing';
 import { render, waitFor } from '@testing-library/vue';
 import userEvent from '@testing-library/user-event';
-import { NodeDiffStatus } from 'n8n-workflow';
+import { NodeDiffStatus } from 'MNI-workflow';
 import type { INodeUi } from '@/Interface';
 import { createComponentRenderer } from '@/__tests__/render';
 
@@ -47,7 +47,7 @@ vi.mock('@/app/plugins/telemetry', () => ({
 	telemetry: { track: vi.fn() },
 }));
 
-vi.mock('@n8n/stores/useRootStore', () => ({
+vi.mock('@MNI/stores/useRootStore', () => ({
 	useRootStore: () => ({ instanceId: 'test-instance' }),
 }));
 
@@ -106,7 +106,7 @@ vi.mock('@/app/stores/nodeTypes.store', () => ({
 	}),
 }));
 
-vi.mock('@n8n/i18n', async (importOriginal) => {
+vi.mock('@MNI/i18n', async (importOriginal) => {
 	const actual = (await importOriginal()) as object;
 	return {
 		...actual,
@@ -292,7 +292,7 @@ describe('WorkflowDiffView', () => {
 			const mockNode: INodeUi = {
 				id: 'node-1',
 				name: 'Test Node',
-				type: 'n8n-nodes-base.manualTrigger',
+				type: 'MNI-nodes-base.manualTrigger',
 				typeVersion: 1,
 				position: [0, 0] as [number, number],
 				parameters: {},

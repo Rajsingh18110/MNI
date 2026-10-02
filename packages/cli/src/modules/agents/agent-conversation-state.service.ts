@@ -1,7 +1,7 @@
-import type { SerializableAgentState } from '@n8n/agents';
-import { Service } from '@n8n/di';
+import type { SerializableAgentState } from '@MNI/agents';
+import { Service } from '@MNI/di';
 
-import { N8NCheckpointStorage } from './integrations/n8n-checkpoint-storage';
+import { N8NCheckpointStorage } from './integrations/MNI-checkpoint-storage';
 import { AgentExecutionRepository } from './repositories/agent-execution.repository';
 
 @Service()

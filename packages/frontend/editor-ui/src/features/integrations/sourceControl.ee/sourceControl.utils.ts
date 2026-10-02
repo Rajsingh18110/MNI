@@ -1,12 +1,12 @@
 import { h, nextTick } from 'vue';
 import type { Router } from 'vue-router';
-import { useI18n } from '@n8n/i18n';
-import { type SourceControlledFile, SOURCE_CONTROL_FILE_STATUS } from '@n8n/api-types';
-import type { BaseTextKey } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
+import { type SourceControlledFile, SOURCE_CONTROL_FILE_STATUS } from '@MNI/api-types';
+import type { BaseTextKey } from '@MNI/i18n';
 import { VIEWS } from '@/app/constants';
 import groupBy from 'lodash/groupBy';
 import dateformat from 'dateformat';
-import type { useToast } from '@n8n/composables/useToast';
+import type { useToast } from '@MNI/composables/useToast';
 import { telemetry } from '@/app/plugins/telemetry';
 import type { SourceControlTreeRow } from './sourceControl.types';
 

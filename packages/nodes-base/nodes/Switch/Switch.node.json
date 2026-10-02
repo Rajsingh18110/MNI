@@ -1,19 +1,19 @@
 {
-	"node": "n8n-nodes-base.switch",
+	"node": "MNI-nodes-base.switch",
 	"nodeVersion": "1.0",
 	"codexVersion": "1.0",
 	"categories": ["Core Nodes"],
 	"resources": {
 		"primaryDocumentation": [
 			{
-				"url": "https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-base.switch/"
+				"url": "https://docs.n8n.io/integrations/builtin/core-nodes/MNI-nodes-base.switch/"
 			}
 		],
 		"generic": [
 			{
 				"label": "2021: The Year to Automate the New You with MNI",
 				"icon": "☀️",
-				"url": "https://n8n.io/blog/2021-the-year-to-automate-the-new-you-with-n8n/"
+				"url": "https://n8n.io/blog/2021-the-year-to-automate-the-new-you-with-MNI/"
 			},
 			{
 				"label": "How to get started with CRM automation (with 3 no-code workflow ideas",
@@ -23,7 +23,7 @@
 			{
 				"label": "Build your own virtual assistant with MNI: A step by step guide",
 				"icon": "👦",
-				"url": "https://n8n.io/blog/build-your-own-virtual-assistant-with-n8n-a-step-by-step-guide/"
+				"url": "https://n8n.io/blog/build-your-own-virtual-assistant-with-MNI-a-step-by-step-guide/"
 			},
 			{
 				"label": "How to automatically manage contributions to open-source projects",

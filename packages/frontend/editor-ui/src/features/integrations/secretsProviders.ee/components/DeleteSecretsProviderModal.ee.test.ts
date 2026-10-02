@@ -4,13 +4,13 @@ import DeleteSecretsProviderModal from './DeleteSecretsProviderModal.ee.vue';
 import { DELETE_SECRETS_PROVIDER_MODAL_KEY } from '@/app/constants';
 import { vi } from 'vitest';
 import * as credentialsApi from '@/features/credentials/credentials.api';
-import * as secretsProviderApi from '@n8n/rest-api-client';
-import { useRootStore } from '@n8n/stores/useRootStore';
+import * as secretsProviderApi from '@MNI/rest-api-client';
+import { useRootStore } from '@MNI/stores/useRootStore';
 import userEvent from '@testing-library/user-event';
 
 vi.mock('@/features/credentials/credentials.api');
-vi.mock('@n8n/rest-api-client', async () => {
-	const actual = await vi.importActual('@n8n/rest-api-client');
+vi.mock('@MNI/rest-api-client', async () => {
+	const actual = await vi.importActual('@MNI/rest-api-client');
 	return {
 		...actual,
 		deleteSecretProviderConnection: vi.fn(),

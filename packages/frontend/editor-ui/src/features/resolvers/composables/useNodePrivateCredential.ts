@@ -1,6 +1,6 @@
 import { computed, toValue, type MaybeRefOrGetter } from 'vue';
-import { useI18n } from '@n8n/i18n';
-import { toExecutionContextEstablishmentHookParameter } from 'n8n-workflow';
+import { useI18n } from '@MNI/i18n';
+import { toExecutionContextEstablishmentHookParameter } from 'MNI-workflow';
 import { useCredentialsStore } from '@/features/credentials/credentials.store';
 import { usePrivateCredentials } from '@/features/resolvers/composables/usePrivateCredentials';
 import { injectWorkflowDocumentStore } from '@/app/stores/workflowDocument.store';

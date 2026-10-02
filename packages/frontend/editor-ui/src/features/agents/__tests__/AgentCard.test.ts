@@ -22,11 +22,11 @@ vi.mock('../composables/useAgentPublish', () => ({
 	useAgentPublish: () => ({ publish: vi.fn(), unpublish: vi.fn() }),
 }));
 
-vi.mock('@n8n/stores/useRootStore', () => ({
+vi.mock('@MNI/stores/useRootStore', () => ({
 	useRootStore: () => ({ restApiContext: {} }),
 }));
 
-vi.mock('@n8n/i18n', () => ({
+vi.mock('@MNI/i18n', () => ({
 	useI18n: () => ({ baseText: (key: string) => key }),
 }));
 
@@ -40,7 +40,7 @@ vi.mock('@/app/stores/favorites.store', () => ({
 	useFavoritesStore: () => favoritesStoreMock,
 }));
 
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: () => ({ showError: vi.fn() }),
 }));
 
@@ -53,7 +53,7 @@ const settingsStoreMock = {
 	},
 };
 
-vi.mock('@n8n/stores/settings.store', () => ({
+vi.mock('@MNI/stores/settings.store', () => ({
 	useSettingsStore: () => settingsStoreMock,
 }));
 

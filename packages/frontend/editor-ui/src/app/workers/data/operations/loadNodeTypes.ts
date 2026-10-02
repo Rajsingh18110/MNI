@@ -12,9 +12,9 @@ import {
 	getNodeTypes,
 	getNodeTypeVersions,
 	getNodeTypesByIdentifier,
-} from '@n8n/rest-api-client/api/nodeTypes';
-import type { INodeTypeDescription } from 'n8n-workflow';
-import { jsonParse } from 'n8n-workflow';
+} from '@MNI/rest-api-client/api/nodeTypes';
+import type { INodeTypeDescription } from 'MNI-workflow';
+import { jsonParse } from 'MNI-workflow';
 import type { DataWorkerState } from '../types';
 import { exec, execWithParams, query, queryWithParams, withTrx } from './query';
 import { getStoredVersion, storeVersion } from './storeVersion';

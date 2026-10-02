@@ -7,7 +7,7 @@
  * type definitions in index.ts (module augmentation).
  */
 
-import type { IHttpRequestOptions, INode, INodeProperties, IRequestOptions } from 'n8n-workflow';
+import type { IHttpRequestOptions, INode, INodeProperties, IRequestOptions } from 'MNI-workflow';
 import { generateKeyPairSync } from 'node:crypto';
 import { STATUS_CODES } from 'node:http';
 import { Readable } from 'node:stream';
@@ -222,7 +222,7 @@ export async function callEvalMockHandler(
 	return returnFullResponse ? serializeMockToHttpResponse(response, requestOptions) : response.body;
 }
 
-// Same rule as @n8n/backend-network: `true` ignores every status, the config form all but `except`.
+// Same rule as @MNI/backend-network: `true` ignores every status, the config form all but `except`.
 function ignoresStatusError(
 	option: IHttpRequestOptions['ignoreHttpStatusErrors'],
 	statusCode: number,

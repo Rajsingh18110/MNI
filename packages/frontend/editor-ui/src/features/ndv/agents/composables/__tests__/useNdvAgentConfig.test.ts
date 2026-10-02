@@ -3,7 +3,7 @@ import { mount, flushPromises, type VueWrapper } from '@vue/test-utils';
 import { defineComponent, ref, type Ref } from 'vue';
 import { createTestingPinia } from '@pinia/testing';
 import { setActivePinia } from 'pinia';
-import type { InlineAgentConfig } from '@n8n/api-types';
+import type { InlineAgentConfig } from '@MNI/api-types';
 
 import type { INodeUi } from '@/Interface';
 import type { AgentJsonConfig, AgentResource } from '@/features/agents/types';
@@ -28,11 +28,11 @@ vi.mock('@/features/agents/composables/useAgentCapabilitiesActions', () => ({
 	useAgentCapabilitiesActions: () => ({ appliedSkills: ref([]) }),
 }));
 
-vi.mock('@n8n/i18n', () => ({
+vi.mock('@MNI/i18n', () => ({
 	useI18n: () => ({ baseText: (key: string) => key }),
 }));
 
-vi.mock('@n8n/stores/useRootStore', () => ({
+vi.mock('@MNI/stores/useRootStore', () => ({
 	useRootStore: () => ({ restApiContext: { baseUrl: 'http://localhost:5678' } }),
 }));
 
@@ -102,7 +102,7 @@ function makePlainNode(): INodeUi {
 	return {
 		id: 'node-2',
 		name: 'Set',
-		type: 'n8n-nodes-base.set',
+		type: 'MNI-nodes-base.set',
 		typeVersion: 1,
 		position: [0, 0],
 		parameters: {},

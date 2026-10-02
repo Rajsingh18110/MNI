@@ -1,5 +1,5 @@
 name: 'Test: Benchmark Nightly'
-run-name: Benchmark ${{ inputs.n8n_tag || 'nightly' }}
+run-name: Benchmark ${{ inputs.MNI_tag || 'nightly' }}
 
 on:
   schedule:
@@ -10,7 +10,7 @@ on:
         description: 'Use debug logging'
         required: true
         default: 'false'
-      n8n_tag:
+      MNI_tag:
         description: 'Name of the MNI docker tag to run the benchmark against.'
         required: true
         default: 'nightly'
@@ -23,8 +23,8 @@ env:
   ARM_CLIENT_ID: ${{ secrets.BENCHMARK_ARM_CLIENT_ID }}
   ARM_SUBSCRIPTION_ID: ${{ secrets.BENCHMARK_ARM_SUBSCRIPTION_ID }}
   ARM_TENANT_ID: ${{ secrets.BENCHMARK_ARM_TENANT_ID }}
-  N8N_TAG: ${{ inputs.n8n_tag || 'nightly' }}
-  N8N_BENCHMARK_TAG: ${{ inputs.benchmark_tag || 'latest' }}
+  MNI_TAG: ${{ inputs.MNI_tag || 'nightly' }}
+  MNI_BENCHMARK_TAG: ${{ inputs.benchmark_tag || 'latest' }}
   DEBUG: ${{ inputs.debug == 'true' && '--debug' || '' }}
 
 permissions:
@@ -62,26 +62,26 @@ jobs:
 
       - name: Destroy any existing environment
         run: pnpm destroy-cloud-env
-        working-directory: packages/@n8n/benchmark
+        working-directory: packages/@MNI/benchmark
 
       - name: Provision the environment
         run: pnpm provision-cloud-env ${{ env.DEBUG }}
-        working-directory: packages/@n8n/benchmark
+        working-directory: packages/@MNI/benchmark
 
       - name: Run the benchmark
         id: benchmark
         env:
           BENCHMARK_RESULT_WEBHOOK_URL: ${{ secrets.BENCHMARK_RESULT_WEBHOOK_URL }}
           BENCHMARK_RESULT_WEBHOOK_AUTH_HEADER: ${{ secrets.BENCHMARK_RESULT_WEBHOOK_AUTH_HEADER }}
-          N8N_LICENSE_CERT: ${{ secrets.N8N_BENCHMARK_LICENSE_CERT }}
+          MNI_LICENSE_CERT: ${{ secrets.MNI_BENCHMARK_LICENSE_CERT }}
         run: |
           pnpm benchmark-in-cloud \
             --vus 5 \
             --duration 1m \
-            --n8nTag ${{ env.N8N_TAG }} \
-            --benchmarkTag ${{ env.N8N_BENCHMARK_TAG }} \
+            --MNITag ${{ env.MNI_TAG }} \
+            --benchmarkTag ${{ env.MNI_BENCHMARK_TAG }} \
             ${{ env.DEBUG }}
-        working-directory: packages/@n8n/benchmark
+        working-directory: packages/@MNI/benchmark
 
         # We need to login again because the access token expires
       - name: Azure login
@@ -95,7 +95,7 @@ jobs:
       - name: Destroy the environment
         if: always()
         run: pnpm destroy-cloud-env ${{ env.DEBUG }}
-        working-directory: packages/@n8n/benchmark
+        working-directory: packages/@MNI/benchmark
 
       - name: Fail `build` job if `benchmark` step failed
         if: steps.benchmark.outcome == 'failure'
@@ -117,4 +117,4 @@ jobs:
         run: |
           node .github/scripts/slack/notify.mjs \
             --channel '#team-catalysts' \
-            --text "Benchmark run failed for MNI tag \`${{ inputs.n8n_tag || 'nightly' }}\` - ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+            --text "Benchmark run failed for MNI tag \`${{ inputs.MNI_tag || 'nightly' }}\` - ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"

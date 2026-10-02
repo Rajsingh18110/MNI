@@ -3,7 +3,7 @@ import type {
 	INodeExecutionData,
 	IBinaryData,
 	INodeProperties,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import {
 	validateSessionAndWindowId,

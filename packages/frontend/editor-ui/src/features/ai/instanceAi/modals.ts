@@ -1,4 +1,4 @@
-import type { ModalDefinition } from '@n8n/frontend-module-sdk';
+import type { ModalDefinition } from '@MNI/frontend-module-sdk';
 
 import {
 	INSTANCE_AI_BROWSER_USE_SETUP_MODAL_KEY,

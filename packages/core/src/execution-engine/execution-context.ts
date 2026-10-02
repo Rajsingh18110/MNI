@@ -1,6 +1,6 @@
-import { Logger } from '@n8n/backend-common';
-import { Container } from '@n8n/di';
-import { type IRunExecutionData, type Workflow, type WorkflowExecuteMode } from 'n8n-workflow';
+import { Logger } from '@MNI/backend-common';
+import { Container } from '@MNI/di';
+import { type IRunExecutionData, type Workflow, type WorkflowExecuteMode } from 'MNI-workflow';
 
 import { assertExecutionDataExists, type PreExecutionAdditionalData } from '@/utils/assertions';
 

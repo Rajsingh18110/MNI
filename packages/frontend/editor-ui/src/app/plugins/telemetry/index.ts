@@ -1,8 +1,8 @@
 import type { Plugin } from 'vue';
-import type { ITelemetrySettings } from '@n8n/api-types';
-import type { InferTelemetryProps, TelemetryEventDef } from '@n8n/telemetry';
-import { POSTHOG_EVENTS_BLACKLIST } from '@n8n/telemetry';
-import type { ITelemetryTrackProperties, IDataObject } from 'n8n-workflow';
+import type { ITelemetrySettings } from '@MNI/api-types';
+import type { InferTelemetryProps, TelemetryEventDef } from '@MNI/telemetry';
+import { POSTHOG_EVENTS_BLACKLIST } from '@MNI/telemetry';
+import type { ITelemetryTrackProperties, IDataObject } from 'MNI-workflow';
 import type { RouteLocation } from 'vue-router';
 
 import type { IUpdateInformation } from '@/Interface';
@@ -21,9 +21,9 @@ import {
 	TelemetryKey,
 	type Telemetry,
 	type TelemetryIdentifyOptions,
-} from '@n8n/composables/registries/telemetryRegistry';
-import { useRootStore } from '@n8n/stores/useRootStore';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+} from '@MNI/composables/registries/telemetryRegistry';
+import { useRootStore } from '@MNI/stores/useRootStore';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { useUIStore } from '@/app/stores/ui.store';
 import { usePostHog } from '@/app/stores/posthog.store';
 
@@ -36,7 +36,7 @@ const POSTHOG_BLACKLISTED_EVENT_NAMES = new Set(
 export type {
 	Telemetry,
 	TelemetryIdentifyOptions,
-} from '@n8n/composables/registries/telemetryRegistry';
+} from '@MNI/composables/registries/telemetryRegistry';
 
 export class TelemetryService implements Telemetry {
 	private pageEventQueue: Array<{ route: RouteLocation }>;
@@ -301,7 +301,7 @@ export class TelemetryService implements Telemetry {
 
 export const telemetry = new TelemetryService();
 
-// Register the instance so package-side `useTelemetry` (@n8n/composables) can
+// Register the instance so package-side `useTelemetry` (@MNI/composables) can
 // resolve it from any context, including outside of component setup.
 setTelemetry(telemetry);
 

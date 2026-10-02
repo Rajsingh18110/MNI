@@ -16,13 +16,13 @@ const { useRootStore } = vi.hoisted(() => ({
 	useRootStore: vi.fn(() => mockRootStore),
 }));
 
-vi.mock('@n8n/stores/useRootStore', () => ({ useRootStore }));
+vi.mock('@MNI/stores/useRootStore', () => ({ useRootStore }));
 
-vi.mock('@n8n/composables/useTelemetry', () => ({
+vi.mock('@MNI/composables/useTelemetry', () => ({
 	useTelemetry: () => ({ track: vi.fn() }),
 }));
 
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: () => ({ showError: vi.fn(), showMessage: vi.fn() }),
 }));
 

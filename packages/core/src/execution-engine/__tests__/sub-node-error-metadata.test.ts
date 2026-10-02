@@ -1,5 +1,5 @@
-import { Container } from '@n8n/di';
-import { createDeferredPromise } from '@n8n/utils/promise/deferred-promise';
+import { Container } from '@MNI/di';
+import { createDeferredPromise } from '@MNI/utils/promise/deferred-promise';
 import type {
 	IConnections,
 	IExecuteFunctions,
@@ -14,8 +14,8 @@ import type {
 	ITaskSubRunMetadata,
 	NodeConnectionType,
 	SupplyData,
-} from 'n8n-workflow';
-import { NodeConnectionTypes, UnexpectedError, Workflow } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeConnectionTypes, UnexpectedError, Workflow } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import { ErrorReporter } from '@/errors/error-reporter';

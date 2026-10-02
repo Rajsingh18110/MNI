@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import type { WorkflowReviewInboxItem, WorkflowReviewRequestDetail } from '@n8n/api-types';
-import { N8nAvatar, N8nCard, N8nIcon, N8nLink, N8nText } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+import type { WorkflowReviewInboxItem, WorkflowReviewRequestDetail } from '@MNI/api-types';
+import { N8nAvatar, N8nCard, N8nIcon, N8nLink, N8nText } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 import { computed } from 'vue';
 
 import { VIEWS } from '@/app/constants';
@@ -150,7 +150,7 @@ const statusSummary = computed(() =>
 
 .card {
 	--card--padding: var(--spacing--xs);
-	--n8n--card-body--gap: var(--spacing--2xs);
+	--MNI--card-body--gap: var(--spacing--2xs);
 
 	align-items: stretch;
 	border-color: var(--border-color);
@@ -181,7 +181,7 @@ const statusSummary = computed(() =>
 }
 
 .peopleCard {
-	--n8n--card-body--gap: var(--spacing--sm);
+	--MNI--card-body--gap: var(--spacing--sm);
 }
 
 .person {

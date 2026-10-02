@@ -1,10 +1,10 @@
 <script lang="ts" setup>
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import { injectNDVStore } from '@/features/ndv/shared/ndv.store';
 import { useFreeAiCredits } from '@/app/composables/useFreeAiCredits';
 import { computed } from 'vue';
-import { OPEN_AI_API_CREDENTIAL_TYPE } from 'n8n-workflow';
-import { N8nButton, N8nCallout, N8nText } from '@n8n/design-system';
+import { OPEN_AI_API_CREDENTIAL_TYPE } from 'MNI-workflow';
+import { N8nButton, N8nCallout, N8nText } from '@MNI/design-system';
 
 type Props = {
 	credentialTypeName?: string;
@@ -17,14 +17,14 @@ const props = withDefaults(defineProps<Props>(), {
 
 const emit = defineEmits<{ claimed: [] }>();
 
-const LANGCHAIN_NODES_PREFIX = '@n8n/n8n-nodes-langchain.';
-const N8N_NODES_PREFIX = '@n8n/n8n-nodes.';
+const LANGCHAIN_NODES_PREFIX = '@MNI/MNI-nodes-langchain.';
+const MNI_NODES_PREFIX = '@MNI/MNI-nodes.';
 
 const NODES_WITH_OPEN_AI_API_CREDENTIAL = [
 	`${LANGCHAIN_NODES_PREFIX}openAi`,
 	`${LANGCHAIN_NODES_PREFIX}embeddingsOpenAi`,
 	`${LANGCHAIN_NODES_PREFIX}lmChatOpenAi`,
-	`${N8N_NODES_PREFIX}openAi`,
+	`${MNI_NODES_PREFIX}openAi`,
 ];
 
 const ndvStore = injectNDVStore();

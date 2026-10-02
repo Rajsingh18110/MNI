@@ -9,17 +9,17 @@
  * credential. It pins that `CredentialsHelper.getDecrypted` enforces a
  * registered check before decrypting on this instance type (IAM-1133).
  */
-import { ModuleRegistry } from '@n8n/backend-common';
-import { testDb, testModules } from '@n8n/backend-test-utils';
-import type { User } from '@n8n/db';
-import { Container } from '@n8n/di';
+import { ModuleRegistry } from '@MNI/backend-common';
+import { testDb, testModules } from '@MNI/backend-test-utils';
+import type { User } from '@MNI/db';
+import { Container } from '@MNI/di';
 import {
 	PolicyCheck,
 	type CredentialDecryptContext,
 	type PolicyCheckResult,
 	type RegisteredPolicyCheck,
-} from '@n8n/decorators';
-import type { IExecuteData, IWorkflowExecuteAdditionalData } from 'n8n-workflow';
+} from '@MNI/decorators';
+import type { IExecuteData, IWorkflowExecuteAdditionalData } from 'MNI-workflow';
 
 import { CredentialsHelper } from '@/credentials-helper';
 
@@ -27,7 +27,7 @@ import { saveCredential } from '../shared/db/credentials';
 import { createOwner } from '../shared/db/users';
 
 const BLOCKED_CREDENTIAL_TYPE = 'iam1133TestCredential';
-const BLOCKED_NODE_TYPE = 'n8n-nodes-base.iam1133BlockedConsumer';
+const BLOCKED_NODE_TYPE = 'MNI-nodes-base.iam1133BlockedConsumer';
 const CHECK_ID = 'iam1133.deny-blocked-consumer';
 
 const consumerOf = (nodeType: string): IExecuteData =>
@@ -122,7 +122,7 @@ describe('credentialDecrypt policy enforcement — main process', () => {
 			{ id: credential.id, name: credential.name },
 			credential.type,
 			'internal',
-			consumerOf('n8n-nodes-base.noOp'),
+			consumerOf('MNI-nodes-base.noOp'),
 			true,
 		);
 

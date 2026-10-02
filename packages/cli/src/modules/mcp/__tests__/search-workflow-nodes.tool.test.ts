@@ -1,5 +1,5 @@
-import type { AiGatewayConfigDto } from '@n8n/api-types';
-import { User } from '@n8n/db';
+import type { AiGatewayConfigDto } from '@MNI/api-types';
+import { User } from '@MNI/db';
 import type { Mocked } from 'vitest';
 import { mock } from 'vitest-mock-extended';
 
@@ -10,7 +10,7 @@ import type { Telemetry } from '@/telemetry';
 import { USER_CALLED_MCP_TOOL_EVENT } from '../mcp.constants';
 import { createSearchWorkflowNodesTool } from '../tools/workflow-builder/search-workflow-nodes.tool';
 
-vi.mock('@n8n/ai-workflow-builder', () => ({
+vi.mock('@MNI/ai-workflow-builder', () => ({
 	CODE_BUILDER_SEARCH_NODES_TOOL: {
 		toolName: 'search_workflow_nodes',
 		displayTitle: 'Search Workflow Nodes',
@@ -131,7 +131,7 @@ describe('search-workflow-nodes MCP tool', () => {
 			aiGatewayService.isAvailable.mockResolvedValue({
 				available: true,
 				config: {
-					nodes: ['@n8n/n8n-nodes-langchain.openAi'],
+					nodes: ['@MNI/MNI-nodes-langchain.openAi'],
 					credentialTypes: ['openAiApi'],
 					providerConfig: {},
 				} as AiGatewayConfigDto,
@@ -144,12 +144,12 @@ describe('search-workflow-nodes MCP tool', () => {
 				results: 'search-result',
 				gatewayCredits: {
 					credentialTypes: ['openAiApi'],
-					nodes: ['@n8n/n8n-nodes-langchain.openAi'],
+					nodes: ['@MNI/MNI-nodes-langchain.openAi'],
 				},
 			});
 			// Also mirrored into the unstructured content for text-only clients.
 			expect((result.content[0] as { text: string }).text).toBe(
-				'search-result\n\ngatewayCredits: {"credentialTypes":["openAiApi"],"nodes":["@n8n/n8n-nodes-langchain.openAi"]}',
+				'search-result\n\ngatewayCredits: {"credentialTypes":["openAiApi"],"nodes":["@MNI/MNI-nodes-langchain.openAi"]}',
 			);
 		});
 
@@ -182,7 +182,7 @@ describe('search-workflow-nodes MCP tool', () => {
 			nodeCatalogService.searchNodes.mockResolvedValueOnce({
 				results: 'search-result',
 				queriesWithNoResults: [],
-				uninstalledOffered: ['@mendable/n8n-nodes-firecrawl.firecrawl'],
+				uninstalledOffered: ['@mendable/MNI-nodes-firecrawl.firecrawl'],
 			});
 
 			await createTool(true).handler({ queries: ['firecrawl'] }, {} as never);

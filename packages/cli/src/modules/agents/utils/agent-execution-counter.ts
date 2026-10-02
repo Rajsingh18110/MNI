@@ -1,4 +1,4 @@
-import type { AgentExecutionCounter } from '@n8n/agents';
+import type { AgentExecutionCounter } from '@MNI/agents';
 
 import type { AgentRunTelemetryType } from '@/interfaces';
 import type { Telemetry } from '@/telemetry';

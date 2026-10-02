@@ -98,7 +98,7 @@ export async function resolveCommitAuthors(repo, shas, token, fetchFn = fetch) {
 		headers: {
 			Authorization: `Bearer ${token}`,
 			'Content-Type': 'application/json',
-			'User-Agent': 'n8n-sync-conflict-owners',
+			'User-Agent': 'MNI-sync-conflict-owners',
 		},
 		body: JSON.stringify({ query, variables: { owner, name } }),
 	});

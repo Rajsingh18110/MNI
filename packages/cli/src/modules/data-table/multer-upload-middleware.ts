@@ -1,8 +1,8 @@
 /* eslint-disable id-denylist */
-import { Logger, safeJoinPath } from '@n8n/backend-common';
-import { GlobalConfig } from '@n8n/config';
-import { Service } from '@n8n/di';
-import { formatBytes } from '@n8n/utils/number/bytes';
+import { Logger, safeJoinPath } from '@MNI/backend-common';
+import { GlobalConfig } from '@MNI/config';
+import { Service } from '@MNI/di';
+import { formatBytes } from '@MNI/utils/number/bytes';
 import type { Request, RequestHandler } from 'express';
 import { mkdir, readdir, stat, unlink } from 'fs/promises';
 import multer from 'multer';

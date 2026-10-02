@@ -1,4 +1,4 @@
-import { AI_PREFERENCE_CONTENT_MAX_LENGTH, AI_PREFERENCES_DEFAULT_PAGE_SIZE } from '@n8n/api-types';
+import { AI_PREFERENCE_CONTENT_MAX_LENGTH, AI_PREFERENCES_DEFAULT_PAGE_SIZE } from '@MNI/api-types';
 
 /** Single-sourced with the request schema. */
 export const PREFERENCE_TEXT_MAX_LENGTH = AI_PREFERENCE_CONTENT_MAX_LENGTH;

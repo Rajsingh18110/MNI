@@ -11,12 +11,12 @@ import { ProjectTypes } from '../projects.types';
 import { EnterpriseEditionFeature, VIEWS } from '@/app/constants';
 import userEvent from '@testing-library/user-event';
 import { waitFor, within } from '@testing-library/vue';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { useProjectPages } from '@/features/collaboration/projects/composables/useProjectPages';
 import { useUIStore } from '@/app/stores/ui.store';
-import { useUsersStore } from '@n8n/stores/users.store';
+import { useUsersStore } from '@MNI/stores/users.store';
 import { mock } from 'vitest-mock-extended';
-import type { IUser } from '@n8n/rest-api-client';
+import type { IUser } from '@MNI/rest-api-client';
 
 const mockPush = vi.fn();
 vi.mock('vue-router', async () => {

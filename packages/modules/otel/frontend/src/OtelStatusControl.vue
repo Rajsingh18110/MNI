@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { N8nButton, N8nDropdownMenu, N8nIcon } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+import { N8nButton, N8nDropdownMenu, N8nIcon } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 import { computed, useCssModule } from 'vue';
 
 import OtelStatusDot from './OtelStatusDot.vue';

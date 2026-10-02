@@ -15,7 +15,7 @@ import {
 	NodeConnectionTypes,
 	type IConnections,
 	type IRunData,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import { defineComponent, provide, shallowRef } from 'vue';
 import { createRouter, createWebHistory, type RouteLocationNormalizedLoaded } from 'vue-router';
 import {

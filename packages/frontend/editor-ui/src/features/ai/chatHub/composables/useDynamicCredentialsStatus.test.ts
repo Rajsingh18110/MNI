@@ -3,9 +3,9 @@ import { ref, nextTick } from 'vue';
 import { createTestingPinia } from '@pinia/testing';
 import { setActivePinia } from 'pinia';
 import { useDynamicCredentialsStatus } from './useDynamicCredentialsStatus';
-import type { WorkflowExecutionStatus } from '@n8n/api-types';
+import type { WorkflowExecutionStatus } from '@MNI/api-types';
 
-vi.mock('@n8n/stores/useRootStore', () => ({
+vi.mock('@MNI/stores/useRootStore', () => ({
 	useRootStore: vi.fn(() => ({
 		restApiContext: { baseUrl: '/rest' },
 	})),

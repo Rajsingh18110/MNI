@@ -1,5 +1,5 @@
-import type { ContextEstablishmentOptions } from '@n8n/decorators';
-import type { INode, INodeExecutionData } from 'n8n-workflow';
+import type { ContextEstablishmentOptions } from '@MNI/decorators';
+import type { INode, INodeExecutionData } from 'MNI-workflow';
 import type { MockProxy } from 'vitest-mock-extended';
 import { mock } from 'vitest-mock-extended';
 
@@ -14,7 +14,7 @@ describe('RuntimeCredentialsContextHook', () => {
 		({
 			triggerNode: {
 				name: 'Webhook',
-				type: 'n8n-nodes-base.webhook',
+				type: 'MNI-nodes-base.webhook',
 				typeVersion: 1,
 			} as INode,
 			triggerItems,
@@ -39,7 +39,7 @@ describe('RuntimeCredentialsContextHook', () => {
 
 		const result = await hook.execute(buildOptions(input));
 
-		expect(service.strip).toHaveBeenCalledWith(input, 'n8n-nodes-base.webhook');
+		expect(service.strip).toHaveBeenCalledWith(input, 'MNI-nodes-base.webhook');
 		expect(result).toEqual({
 			triggerItems: stripped,
 			contextUpdate: {
@@ -56,7 +56,7 @@ describe('RuntimeCredentialsContextHook', () => {
 
 		await hook.execute(buildOptions(null));
 
-		expect(service.strip).toHaveBeenCalledWith([], 'n8n-nodes-base.webhook');
+		expect(service.strip).toHaveBeenCalledWith([], 'MNI-nodes-base.webhook');
 	});
 
 	it('omits contextUpdate when no aliases produced a value', async () => {

@@ -11,7 +11,7 @@ describe('promotions-git.utils', () => {
 		it('uses an ISO timestamp that is valid in a Git ref', () => {
 			const branchName = buildPromotionBranchName(new Date('2026-09-01T10:15:30.123Z'));
 
-			expect(branchName).toBe('n8n-promotion/2026-09-01T10-15-30-123Z');
+			expect(branchName).toBe('MNI-promotion/2026-09-01T10-15-30-123Z');
 		});
 	});
 
@@ -44,7 +44,7 @@ describe('promotions-git.utils', () => {
 			const config = buildHttpsGitConfig({ repositoryUrl: 'https://github.com/user/repo.git' });
 
 			expect(config).toEqual([
-				'credential.helper=!f() { printf \'%s\\n\' "username=$N8N_GIT_USERNAME" "password=$N8N_GIT_PASSWORD"; }; f',
+				'credential.helper=!f() { printf \'%s\\n\' "username=$MNI_GIT_USERNAME" "password=$MNI_GIT_PASSWORD"; }; f',
 				'credential.useHttpPath=true',
 				'http.lowSpeedLimit=1000',
 				'http.lowSpeedTime=30',

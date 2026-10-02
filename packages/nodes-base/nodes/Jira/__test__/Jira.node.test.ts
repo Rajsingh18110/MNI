@@ -6,7 +6,7 @@ import type {
 	INodeExecutionData,
 	INodeProperties,
 	INodePropertyCollection,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import * as GenericFunctions from '../GenericFunctions';
 import { Jira } from '../Jira.node';

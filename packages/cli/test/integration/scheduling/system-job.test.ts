@@ -1,10 +1,10 @@
-import { testDb } from '@n8n/backend-test-utils';
-import { ScheduledJobOwnerType } from '@n8n/constants';
-import type { ScheduledJob } from '@n8n/db';
-import { DataSource, ScheduledJobRepository, ScheduledTaskRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
-import { createScheduler } from '@n8n/scheduler';
-import type { ClaimedTask, Scheduler, SchedulerPasses } from '@n8n/scheduler';
+import { testDb } from '@MNI/backend-test-utils';
+import { ScheduledJobOwnerType } from '@MNI/constants';
+import type { ScheduledJob } from '@MNI/db';
+import { DataSource, ScheduledJobRepository, ScheduledTaskRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
+import { createScheduler } from '@MNI/scheduler';
+import type { ClaimedTask, Scheduler, SchedulerPasses } from '@MNI/scheduler';
 
 import { buildMaterializerTransaction } from '@/scheduling/durable-scheduler';
 

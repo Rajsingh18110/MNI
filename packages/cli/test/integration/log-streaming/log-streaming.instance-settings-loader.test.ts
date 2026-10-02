@@ -1,8 +1,8 @@
-import { testDb, testModules } from '@n8n/backend-test-utils';
-import { GlobalConfig } from '@n8n/config';
-import type { InstanceSettingsLoaderConfig } from '@n8n/config';
-import { Container } from '@n8n/di';
-import { MessageEventBusDestinationTypeNames } from 'n8n-workflow';
+import { testDb, testModules } from '@MNI/backend-test-utils';
+import { GlobalConfig } from '@MNI/config';
+import type { InstanceSettingsLoaderConfig } from '@MNI/config';
+import { Container } from '@MNI/di';
+import { MessageEventBusDestinationTypeNames } from 'MNI-workflow';
 
 import { InstanceBootstrappingError } from '@/instance-settings-loader/instance-bootstrapping.error';
 import { LogStreamingInstanceSettingsLoader } from '@/instance-settings-loader/loaders/log-streaming.instance-settings-loader';

@@ -8,24 +8,24 @@ export function getPortFromUrl(url: string): string {
 
 /**
  * Get the backend URL from environment variables
- * Returns N8N_BASE_URL
+ * Returns MNI_BASE_URL
  */
 export function getBackendUrl(): string | undefined {
-	return process.env.N8N_BASE_URL;
+	return process.env.MNI_BASE_URL;
 }
 
 /**
  * Get the frontend URL from environment variables
- * When N8N_EDITOR_URL is set (dev mode), use it for the frontend
+ * When MNI_EDITOR_URL is set (dev mode), use it for the frontend
  * Otherwise, use the same URL as the backend
  */
 export function getFrontendUrl(): string | undefined {
-	return process.env.N8N_EDITOR_URL ?? process.env.N8N_BASE_URL;
+	return process.env.MNI_EDITOR_URL ?? process.env.MNI_BASE_URL;
 }
 
 /**
  * Build the readiness URL of a backend.
- * The backend serves readiness at `<N8N_ENDPOINT_HEALTH>/readiness` and adds a
+ * The backend serves readiness at `<MNI_ENDPOINT_HEALTH>/readiness` and adds a
  * missing leading slash to that variable, so mirror both rules here.
  */
 export function getReadinessUrl(baseUrl: string, healthEndpoint?: string): string {

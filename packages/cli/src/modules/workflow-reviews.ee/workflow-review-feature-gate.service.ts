@@ -1,5 +1,5 @@
-import { LicenseState } from '@n8n/backend-common';
-import { Service } from '@n8n/di';
+import { LicenseState } from '@MNI/backend-common';
+import { Service } from '@MNI/di';
 
 import { ForbiddenError } from '@/errors/response-errors/forbidden.error';
 import { WorkflowReviewPolicyService } from '@/services/workflow-review-policy.service';

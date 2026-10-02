@@ -1,7 +1,7 @@
 import { ref, readonly } from 'vue';
 import { createEventHook } from '@vueuse/core';
-import { deepCopy } from 'n8n-workflow';
-import type { IWorkflowSettings } from 'n8n-workflow';
+import { deepCopy } from 'MNI-workflow';
+import type { IWorkflowSettings } from 'MNI-workflow';
 import { DEFAULT_SETTINGS } from '@/app/constants/workflows';
 import { CHANGE_ACTION } from './types';
 import type { ChangeAction, ChangeEvent } from './types';

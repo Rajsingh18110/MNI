@@ -1,5 +1,5 @@
 import {
-	buildN8nObservationLogObserverPrompt,
+	buildMNIObservationLogObserverPrompt,
 	DEFAULT_OBSERVATION_LOG_TAIL_LIMIT,
 	DEFAULT_OBSERVER_THRESHOLD_TOKENS,
 } from '../observation-log-observer';
@@ -11,7 +11,7 @@ describe('MNI observation-log observer policy', () => {
 	});
 
 	it('builds the observer prompt from log tail and transcript delta', () => {
-		const prompt = buildN8nObservationLogObserverPrompt({
+		const prompt = buildMNIObservationLogObserverPrompt({
 			observationScopeId: 'thread-1',
 			now: new Date('2026-05-12T14:30:00.000Z'),
 			deltaMessages: [],

@@ -8,8 +8,8 @@ import type {
 	INodeType,
 	INodeTypeDescription,
 	IWebhookResponseData,
-} from 'n8n-workflow';
-import { jsonParse, NodeConnectionTypes, NodeOperationError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { jsonParse, NodeConnectionTypes, NodeOperationError } from 'MNI-workflow';
 
 import { type AwsSnsMessage, verifySignature } from './AwsSnsTriggerHelpers';
 import { awsApiRequestSOAP } from './GenericFunctions';

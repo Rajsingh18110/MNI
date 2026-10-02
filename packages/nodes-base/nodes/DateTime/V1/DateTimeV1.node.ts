@@ -10,8 +10,8 @@ import type {
 	INodeType,
 	INodeTypeBaseDescription,
 	INodeTypeDescription,
-} from 'n8n-workflow';
-import { deepCopy, NodeConnectionTypes, NodeOperationError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { deepCopy, NodeConnectionTypes, NodeOperationError } from 'MNI-workflow';
 
 function parseDateByFormat(this: IExecuteFunctions, value: string, fromFormat: string) {
 	const date = moment(value, fromFormat, true);
@@ -148,7 +148,7 @@ const versionDescription: INodeTypeDescription = {
 					custom: [false],
 				},
 			},
-			// eslint-disable-next-line n8n-nodes-base/node-param-options-type-unsorted-items
+			// eslint-disable-next-line MNI-nodes-base/node-param-options-type-unsorted-items
 			options: [
 				{
 					name: 'MM/DD/YYYY',
@@ -298,7 +298,7 @@ const versionDescription: INodeTypeDescription = {
 				},
 			},
 			type: 'options',
-			// eslint-disable-next-line n8n-nodes-base/node-param-options-type-unsorted-items
+			// eslint-disable-next-line MNI-nodes-base/node-param-options-type-unsorted-items
 			options: [
 				{
 					name: 'Quarters',
@@ -371,7 +371,7 @@ const versionDescription: INodeTypeDescription = {
 					type: 'string',
 					default: '',
 					description:
-						'Format for parsing the value as a date. If unrecognized, specify the <a href="https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-base.datetime/#supported-date-formats">format</a> for the value.',
+						'Format for parsing the value as a date. If unrecognized, specify the <a href="https://docs.n8n.io/integrations/builtin/core-nodes/MNI-nodes-base.datetime/#supported-date-formats">format</a> for the value.',
 				},
 			],
 		},

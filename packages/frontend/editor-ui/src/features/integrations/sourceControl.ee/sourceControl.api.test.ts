@@ -1,13 +1,13 @@
 import { vi } from 'vitest';
 import { pushWorkfolder } from './sourceControl.api';
-import type { IRestApiContext } from '@n8n/rest-api-client';
-import type { PushWorkFolderRequestDto } from '@n8n/api-types';
+import type { IRestApiContext } from '@MNI/rest-api-client';
+import type { PushWorkFolderRequestDto } from '@MNI/api-types';
 
-vi.mock('@n8n/rest-api-client', () => ({
+vi.mock('@MNI/rest-api-client', () => ({
 	makeRestApiRequest: vi.fn(),
 }));
 
-import { makeRestApiRequest } from '@n8n/rest-api-client';
+import { makeRestApiRequest } from '@MNI/rest-api-client';
 
 describe('sourceControl.api', () => {
 	const mockContext = {} as IRestApiContext;

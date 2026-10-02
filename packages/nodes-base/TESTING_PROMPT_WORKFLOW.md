@@ -61,7 +61,7 @@ describe('NodeName', () => {
   "nodes": [
     {
       "parameters": {},
-      "type": "n8n-nodes-base.manualTrigger",
+      "type": "MNI-nodes-base.manualTrigger",
       "typeVersion": 1,
       "position": [0, 0],
       "id": "trigger-id",
@@ -74,7 +74,7 @@ describe('NodeName', () => {
         "name": "Test User",
         "email": "test@example.com"
       },
-      "type": "n8n-nodes-base.nodeName",
+      "type": "MNI-nodes-base.nodeName",
       "typeVersion": 1,
       "position": [200, 0],
       "id": "node-id",
@@ -451,7 +451,7 @@ Always include tests for:
 ## Best Practices
 
 ### Workflow JSON Design
-- **Trigger Node**: Always start with `n8n-nodes-base.manualTrigger`
+- **Trigger Node**: Always start with `MNI-nodes-base.manualTrigger`
 - **Node Parameters**: Include all required parameters with realistic values
 - **Node Connections**: Define clear data flow between nodes
 - **Pin Data**: Provide expected outputs for validation

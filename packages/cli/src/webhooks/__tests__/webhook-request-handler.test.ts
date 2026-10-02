@@ -1,9 +1,9 @@
-import { Logger } from '@n8n/backend-common';
-import { mockInstance } from '@n8n/backend-test-utils';
+import { Logger } from '@MNI/backend-common';
+import { mockInstance } from '@MNI/backend-test-utils';
 import { type Response } from 'express';
-import { isWebhookHtmlSandboxingDisabled, getHtmlSandboxCSP } from 'n8n-core';
-import { OperationalError, randomString } from 'n8n-workflow';
-import type { IHttpRequestMethods } from 'n8n-workflow';
+import { isWebhookHtmlSandboxingDisabled, getHtmlSandboxCSP } from 'MNI-core';
+import { OperationalError, randomString } from 'MNI-workflow';
+import type { IHttpRequestMethods } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import { ResponseError } from '@/errors/response-errors/abstract/response.error';
@@ -15,8 +15,8 @@ import type {
 	WebhookRequest,
 } from '@/webhooks/webhook.types';
 
-vi.mock('n8n-core', async () => ({
-	...(await vi.importActual<typeof import('n8n-core')>('n8n-core')),
+vi.mock('MNI-core', async () => ({
+	...(await vi.importActual<typeof import('MNI-core')>('MNI-core')),
 	isWebhookHtmlSandboxingDisabled: vi.fn().mockReturnValue(false),
 	getHtmlSandboxCSP: vi.fn().mockReturnValue('sandbox allow-downloads allow-forms allow-modals'),
 }));

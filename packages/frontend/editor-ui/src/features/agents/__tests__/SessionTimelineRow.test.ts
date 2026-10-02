@@ -9,7 +9,7 @@ vi.mock('vue-router', () => ({
 
 vi.mock('@/app/stores/nodeTypes.store', () => ({
 	useNodeTypesStore: () => ({
-		getNodeType: (name: string) => (name === 'n8n-nodes-base.httpRequest' ? { name } : undefined),
+		getNodeType: (name: string) => (name === 'MNI-nodes-base.httpRequest' ? { name } : undefined),
 	}),
 }));
 
@@ -17,7 +17,7 @@ vi.mock('@/app/utils/formatters/dateFormatter', () => ({
 	convertToDisplayDate: () => ({ date: '', time: '00:00' }),
 }));
 
-vi.mock('@n8n/utils/string/truncate', () => ({
+vi.mock('@MNI/utils/string/truncate', () => ({
 	truncate: (value: string) => value,
 }));
 
@@ -80,7 +80,7 @@ describe('SessionTimelineRow', () => {
 
 	it('renders the node icon when the node type is available', async () => {
 		const wrapper = await renderComponent(
-			item({ kind: 'node', nodeType: 'n8n-nodes-base.httpRequest', nodeTypeVersion: 4.2 }),
+			item({ kind: 'node', nodeType: 'MNI-nodes-base.httpRequest', nodeTypeVersion: 4.2 }),
 		);
 
 		expect(wrapper.get('[data-testid="node-icon"]').attributes('data-size')).toBe('20');

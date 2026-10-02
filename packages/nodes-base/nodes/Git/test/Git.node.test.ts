@@ -1,18 +1,18 @@
 import { mock } from 'vitest-mock-extended';
-import type { IExecuteFunctions, ResolvedFilePath } from 'n8n-workflow';
+import type { IExecuteFunctions, ResolvedFilePath } from 'MNI-workflow';
 import type { Mocked } from 'vitest';
 import { dirname, resolve, sep } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import simpleGit, { type SimpleGit } from 'simple-git';
 import { mkdir, rename, rm } from 'node:fs/promises';
-import { Container } from '@n8n/di';
-import { DeploymentConfig, SecurityConfig } from '@n8n/config';
+import { Container } from '@MNI/di';
+import { DeploymentConfig, SecurityConfig } from '@MNI/config';
 
 import { Git } from '../Git.node';
 import { ALLOWED_CONFIG_KEYS } from '../descriptions';
 
 // Matches the unguessable staging directory the clone operation creates under the base.
-const CLONE_STAGING_RE = /^[\\/]git[\\/]\.n8n-clone-[0-9a-f]{24}$/;
+const CLONE_STAGING_RE = /^[\\/]git[\\/]\.MNI-clone-[0-9a-f]{24}$/;
 const GIT_ROOT_RE = /^[\\/]git$/;
 const GIT_NEW_REPO_RE = /^[\\/]git[\\/]new-repo$/;
 
@@ -139,7 +139,7 @@ describe('Git Node', () => {
 
 	describe('Environment validation', () => {
 		it('should not include invalid inherited environment keys in simple-git env', async () => {
-			const inheritedEnvKey = 'N8N_TEST_INVALID_ENV_KEY';
+			const inheritedEnvKey = 'MNI_TEST_INVALID_ENV_KEY';
 			(Object.prototype as Record<string, unknown>)[inheritedEnvKey] = 'ignored';
 
 			mockExecuteFunctions.getNodeParameter

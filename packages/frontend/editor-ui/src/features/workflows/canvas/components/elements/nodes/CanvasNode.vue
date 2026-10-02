@@ -31,8 +31,8 @@ import {
 	createCanvasConnectionHandleString,
 	insertSpacersBetweenEndpoints,
 } from '../../../canvas.utils';
-import type { EventBus } from '@n8n/utils/event-bus';
-import { createEventBus } from '@n8n/utils/event-bus';
+import type { EventBus } from '@MNI/utils/event-bus';
+import { createEventBus } from '@MNI/utils/event-bus';
 import isEqual from 'lodash/isEqual';
 import CanvasNodeTrigger from './render-types/parts/CanvasNodeTrigger.vue';
 import { CONFIGURATION_NODE_RADIUS, GRID_SIZE } from '@/app/utils/nodeViewUtils';

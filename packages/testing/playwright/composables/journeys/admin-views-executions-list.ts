@@ -1,6 +1,6 @@
-import { workflow, trigger, node } from '@n8n/workflow-sdk';
+import { workflow, trigger, node } from '@MNI/workflow-sdk';
 import { expect } from '@playwright/test';
-import type { IWorkflowBase } from 'n8n-workflow';
+import type { IWorkflowBase } from 'MNI-workflow';
 import { nanoid } from 'nanoid';
 
 import type { A11yChecker } from '../../fixtures/a11y';
@@ -21,12 +21,12 @@ export interface AdminViewsExecutionsListContext {
 
 function buildJourneyWorkflow(name: string): Partial<IWorkflowBase> {
 	const manualTrigger = trigger({
-		type: 'n8n-nodes-base.manualTrigger',
+		type: 'MNI-nodes-base.manualTrigger',
 		version: 1,
 		config: { name: TRIGGER_NAME, parameters: {} },
 	});
 	const noop = node({
-		type: 'n8n-nodes-base.code',
+		type: 'MNI-nodes-base.code',
 		version: 1,
 		config: {
 			name: NOOP_NODE_NAME,

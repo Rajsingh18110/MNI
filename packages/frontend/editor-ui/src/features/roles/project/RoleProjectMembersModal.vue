@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { VIEWS } from '@/app/constants';
-import { useRolesStore } from '@n8n/stores/roles.store';
+import { useRolesStore } from '@MNI/stores/roles.store';
 import {
 	N8nButton,
 	N8nDialog,
@@ -10,12 +10,12 @@ import {
 	N8nLoading,
 	N8nText,
 	N8nUserInfo,
-} from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+} from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 import { computed, ref, watch } from 'vue';
 import { useRouter } from 'vue-router';
 
-import type { RoleProjectMembersResponse } from '@n8n/api-types';
+import type { RoleProjectMembersResponse } from '@MNI/api-types';
 
 const props = defineProps<{
 	open: boolean;

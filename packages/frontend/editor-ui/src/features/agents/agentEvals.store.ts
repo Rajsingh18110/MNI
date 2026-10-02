@@ -1,8 +1,8 @@
 import { defineStore } from 'pinia';
 import { ref } from 'vue';
 
-import { STORES } from '@n8n/stores';
-import { useRootStore } from '@n8n/stores/useRootStore';
+import { STORES } from '@MNI/stores';
+import { useRootStore } from '@MNI/stores/useRootStore';
 
 import { TIME } from '@/app/constants';
 import { DEFAULT_ID_COLUMN_NAME } from '@/features/core/dataTable/constants';

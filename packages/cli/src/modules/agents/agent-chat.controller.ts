@@ -9,8 +9,8 @@ import {
 	MAX_AGENT_CHAT_ATTACHMENT_SIZE_BYTES,
 	MAX_AGENT_CHAT_ATTACHMENT_SIZE_MB,
 	ViewableMimeTypes,
-} from '@n8n/api-types';
-import type { AuthenticatedRequest } from '@n8n/db';
+} from '@MNI/api-types';
+import type { AuthenticatedRequest } from '@MNI/db';
 import {
 	Body,
 	Delete,
@@ -20,11 +20,11 @@ import {
 	Post,
 	ProjectScope,
 	RestController,
-} from '@n8n/decorators';
-import { scrubSecretsInText } from '@n8n/utils/scrub-secrets';
-import { sanitizeFilename } from '@n8n/utils/files/sanitize-filename';
+} from '@MNI/decorators';
+import { scrubSecretsInText } from '@MNI/utils/scrub-secrets';
+import { sanitizeFilename } from '@MNI/utils/files/sanitize-filename';
 import type { Response } from 'express';
-import { FileNotFoundError, getHtmlSandboxCSP } from 'n8n-core';
+import { FileNotFoundError, getHtmlSandboxCSP } from 'MNI-core';
 import { pipeline } from 'node:stream/promises';
 import { randomUUID } from 'node:crypto';
 
@@ -45,7 +45,7 @@ import {
 	AgentTurnAlreadyRunningError,
 } from './agent-chat-execution.service';
 import { AgentExecutionService } from './agent-execution.service';
-import { N8N_CHAT_PRODUCTION_SOURCE, threadBelongsTo } from './utils/agent-thread-access';
+import { MNI_CHAT_PRODUCTION_SOURCE, threadBelongsTo } from './utils/agent-thread-access';
 import { messagesToDto } from './agent-message-mapper';
 import { type FlushableResponse, initSseStream } from './agent-sse-stream';
 import { AgentTestChatService, chatThreadId } from './agent-test-chat.service';
@@ -174,7 +174,7 @@ export class AgentChatController {
 			throw new NotFoundError('Session not found');
 	}
 
-	@Post('/:agentId/n8n-chat', { usesTemplates: true })
+	@Post('/:agentId/MNI-chat', { usesTemplates: true })
 	@ProjectScope('agent:execute')
 	async productionChat(
 		req: AuthenticatedRequest<{ projectId: string }>,
@@ -215,7 +215,7 @@ export class AgentChatController {
 				projectId,
 				threadId,
 				resourceId: productionChatMemoryResourceId(req.user.id),
-				source: N8N_CHAT_PRODUCTION_SOURCE,
+				source: MNI_CHAT_PRODUCTION_SOURCE,
 			});
 			abortSignal.throwIfAborted();
 			const stream = this.agentExecutionOrchestratorService.executeForN8nChatPublished({
@@ -263,7 +263,7 @@ export class AgentChatController {
 		}
 	}
 
-	@Post('/:agentId/n8n-chat/resume', { usesTemplates: true })
+	@Post('/:agentId/MNI-chat/resume', { usesTemplates: true })
 	@ProjectScope('agent:execute')
 	async productionChatResume(
 		req: AuthenticatedRequest<{ projectId: string }>,
@@ -296,8 +296,8 @@ export class AgentChatController {
 				resumeData: payload.resumeData,
 				user: req.user,
 				usePublishedVersion: true,
-				integrationType: 'n8n_chat',
-				source: N8N_CHAT_PRODUCTION_SOURCE,
+				integrationType: 'MNI_chat',
+				source: MNI_CHAT_PRODUCTION_SOURCE,
 				expectedMemory: { resourceId: productionChatMemoryResourceId(req.user.id) },
 				onExecutionStarted,
 				abortSignal,
@@ -517,7 +517,7 @@ export class AgentChatController {
 		return { cancelled };
 	}
 
-	@Delete('/:agentId/n8n-chat/:threadId/executions/:executionId')
+	@Delete('/:agentId/MNI-chat/:threadId/executions/:executionId')
 	@ProjectScope('agent:execute')
 	async cancelProductionChatExecution(
 		req: AuthenticatedRequest<{ projectId: string }>,
@@ -540,7 +540,7 @@ export class AgentChatController {
 		};
 	}
 
-	@Delete('/:agentId/n8n-chat/runs/:runId')
+	@Delete('/:agentId/MNI-chat/runs/:runId')
 	@ProjectScope('agent:execute')
 	async cancelProductionChatRun(
 		req: AuthenticatedRequest<{ projectId: string }>,
@@ -558,7 +558,7 @@ export class AgentChatController {
 		};
 	}
 
-	@Get('/:agentId/n8n-chat/:threadId/messages')
+	@Get('/:agentId/MNI-chat/:threadId/messages')
 	@ProjectScope('agent:read')
 	async getProductionChatMessages(
 		req: AuthenticatedRequest<{ projectId: string; agentId: string; threadId: string }>,
@@ -589,7 +589,7 @@ export class AgentChatController {
 		};
 	}
 
-	@Get('/:agentId/n8n-chat/attachments/:attachmentId')
+	@Get('/:agentId/MNI-chat/attachments/:attachmentId')
 	@ProjectScope('agent:read')
 	async getProductionChatAttachment(
 		req: AuthenticatedRequest<{ projectId: string; agentId: string; attachmentId: string }>,
@@ -604,7 +604,7 @@ export class AgentChatController {
 		});
 		if (
 			!attachment ||
-			attachment.source !== N8N_CHAT_PRODUCTION_SOURCE ||
+			attachment.source !== MNI_CHAT_PRODUCTION_SOURCE ||
 			attachment.resourceId !== productionChatMemoryResourceId(req.user.id)
 		) {
 			throw new NotFoundError(`Attachment "${attachmentId}" not found`);
@@ -814,7 +814,7 @@ export class AgentChatController {
 			userId: req.user.id,
 		});
 		if (!attachment) throw new NotFoundError(`Attachment "${attachmentId}" not found`);
-		if (attachment.source === N8N_CHAT_PRODUCTION_SOURCE) {
+		if (attachment.source === MNI_CHAT_PRODUCTION_SOURCE) {
 			throw new NotFoundError(`Attachment "${attachmentId}" not found`);
 		}
 		await this.streamAttachment(attachment, res);

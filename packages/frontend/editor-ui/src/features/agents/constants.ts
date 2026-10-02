@@ -6,7 +6,7 @@ export {
 	AGENT_SESSIONS_LIST_VIEW,
 	AGENT_SESSION_DETAIL_VIEW,
 	PROJECT_AGENTS,
-} from '@n8n/frontend-constants/agents';
+} from '@MNI/frontend-constants/agents';
 
 export const AGENTS_MODULE_NAME = 'agents';
 

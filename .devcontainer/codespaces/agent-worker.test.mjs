@@ -334,7 +334,7 @@ test('stops the OpenCode process group at the turn limit', async () => {
 test('keeps broker credentials out of the OpenCode process', () => {
 	const environment = openCodeEnvironment({
 		AGENT_WORKER_TOKEN: 'worker',
-		N8N_DEQUEUE_URL: 'https://example.com',
+		MNI_DEQUEUE_URL: 'https://example.com',
 		SLACK_BOT_TOKEN: 'slack',
 		ANTHROPIC_API_KEY: 'model',
 		OPENROUTER_API_KEY: 'openrouter',
@@ -348,8 +348,8 @@ test('keeps broker credentials out of the OpenCode process', () => {
 		ANTHROPIC_API_KEY: 'model',
 		OPENROUTER_API_KEY: 'openrouter',
 		GITHUB_TOKEN: 'github',
-		N8N_AGENT_RUNTIME: 'sandbox',
-		N8N_AGENT_PROFILE: 'slack',
+		MNI_AGENT_RUNTIME: 'sandbox',
+		MNI_AGENT_PROFILE: 'slack',
 	});
 });
 

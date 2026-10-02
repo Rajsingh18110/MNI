@@ -1,9 +1,9 @@
-import type { Logger } from '@n8n/backend-common';
-import type { OutboundHttp } from '@n8n/backend-network';
-import type { AgentsConfig } from '@n8n/config';
+import type { Logger } from '@MNI/backend-common';
+import type { OutboundHttp } from '@MNI/backend-network';
+import type { AgentsConfig } from '@MNI/config';
 import { context, type Tracer } from '@opentelemetry/api';
 import { mock } from 'vitest-mock-extended';
-import type { InstanceSettings } from 'n8n-core';
+import type { InstanceSettings } from 'MNI-core';
 
 import { OtelTestProvider } from '@/modules/otel/__tests__/support/otel-test-provider';
 import { ExecutionLevelTracer } from '@/modules/otel/execution-level-tracer';
@@ -80,7 +80,7 @@ describe('AgentRunTracingService (real OTel provider)', () => {
 			expect(parentCtx).toBeDefined();
 
 			// Mirrors `RuntimeTelemetry.withRootSpan`'s root-anchoring logic in
-			// `@n8n/agents`: `root: true` unless `rootAnchored === false`.
+			// `@MNI/agents`: `root: true` unless `rootAnchored === false`.
 			await context.with(parentCtx!, async () => {
 				const built = await agentRunTracingService.build({
 					agentId: 'agent-1',

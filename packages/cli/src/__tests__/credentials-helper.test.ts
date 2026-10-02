@@ -1,14 +1,14 @@
-import type { LicenseState } from '@n8n/backend-common';
+import type { LicenseState } from '@MNI/backend-common';
 import {
 	CredentialsEntity,
 	type SecretsProviderConnectionRepository,
 	type CredentialsRepository,
-} from '@n8n/db';
-import { Container } from '@n8n/di';
-import { EntityNotFoundError } from '@n8n/typeorm';
-import { type InstanceSettings, type Credentials, Cipher, EncryptionKeyProxy } from 'n8n-core';
-import { SalesforceJwtApi } from 'n8n-nodes-base/credentials/SalesforceJwtApi.credentials';
-import { WekanApi } from 'n8n-nodes-base/credentials/WekanApi.credentials';
+} from '@MNI/db';
+import { Container } from '@MNI/di';
+import { EntityNotFoundError } from '@MNI/typeorm';
+import { type InstanceSettings, type Credentials, Cipher, EncryptionKeyProxy } from 'MNI-core';
+import { SalesforceJwtApi } from 'MNI-nodes-base/credentials/SalesforceJwtApi.credentials';
+import { WekanApi } from 'MNI-nodes-base/credentials/WekanApi.credentials';
 import type {
 	IAuthenticateGeneric,
 	ICredentialDataDecryptedObject,
@@ -22,19 +22,19 @@ import type {
 	INodeTypes,
 	INodeCredentialsDetails,
 	IWorkflowExecuteAdditionalData,
-} from 'n8n-workflow';
-import { deepCopy, jsonParse, Workflow } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { deepCopy, jsonParse, Workflow } from 'MNI-workflow';
 import { generateKeyPairSync } from 'node:crypto';
 import type { MockInstance } from 'vitest';
 import { mock } from 'vitest-mock-extended';
 
-vi.mock('@n8n/utils/format-pem-block', () => ({ formatPemBlock: (key: string) => key }));
+vi.mock('@MNI/utils/format-pem-block', () => ({ formatPemBlock: (key: string) => key }));
 
 // SalesforceJwtApi.preAuthentication exchanges its signed JWT for a token through the
 // shared outbound HTTP client (`getTokenRequestClient`), not `this.helpers.httpRequest`.
 // Mock that client so the token POST is observable and never hits the network.
 const mockTokenRequest = vi.fn();
-vi.mock('n8n-nodes-base/credentials/common/token-request', () => ({
+vi.mock('MNI-nodes-base/credentials/common/token-request', () => ({
 	getTokenRequestClient: () => ({ request: mockTokenRequest }),
 	TOKEN_REQUEST_TIMEOUT: 30_000,
 }));
@@ -1513,7 +1513,7 @@ describe('CredentialsHelper', () => {
 			const executeData = mock<IExecuteData>({
 				node: {
 					name: 'HTTP Request',
-					type: 'n8n-nodes-base.httpRequest',
+					type: 'MNI-nodes-base.httpRequest',
 					typeVersion: 4.5,
 					parameters: {},
 					position: [0, 0],
@@ -1563,7 +1563,7 @@ describe('CredentialsHelper', () => {
 			const parentNode: INode = {
 				id: 'node-chain',
 				name: 'Basic LLM Chain',
-				type: '@n8n/n8n-nodes-langchain.chainLlm',
+				type: '@MNI/MNI-nodes-langchain.chainLlm',
 				typeVersion: 1.5,
 				parameters: {},
 				position: [0, 0],
@@ -1571,7 +1571,7 @@ describe('CredentialsHelper', () => {
 			const subNode: INode = {
 				id: 'node-anthropic',
 				name: 'Anthropic Chat Model',
-				type: '@n8n/n8n-nodes-langchain.lmChatAnthropic',
+				type: '@MNI/MNI-nodes-langchain.lmChatAnthropic',
 				typeVersion: 1.3,
 				parameters: {},
 				position: [0, 0],
@@ -1695,7 +1695,7 @@ describe('CredentialsHelper', () => {
 			node: {
 				id: 'gmail-trigger',
 				name: 'Gmail Trigger',
-				type: 'n8n-nodes-base.gmailTrigger',
+				type: 'MNI-nodes-base.gmailTrigger',
 				typeVersion: 1,
 				parameters: {},
 				position: [0, 0],
@@ -1707,7 +1707,7 @@ describe('CredentialsHelper', () => {
 			node: {
 				id: 'gmail-node',
 				name: 'Gmail',
-				type: 'n8n-nodes-base.gmail',
+				type: 'MNI-nodes-base.gmail',
 				typeVersion: 1,
 				parameters: {},
 				position: [0, 0],
@@ -1873,7 +1873,7 @@ describe('CredentialsHelper', () => {
 			'should explain unsupported manual triggers using the $name',
 			async ({ credentialResolverId, expectedMessage }) => {
 				dynamicCredentialProxy.setResolverProvider(mockCredentialResolutionProvider);
-				mockCredentialResolutionProvider.getSystemResolverId.mockReturnValue('system-n8n');
+				mockCredentialResolutionProvider.getSystemResolverId.mockReturnValue('system-MNI');
 
 				credentialsRepository.findOneByOrFail.mockResolvedValue({
 					...mockCredentialEntity,
@@ -2256,13 +2256,13 @@ describe('CredentialsHelper', () => {
 			// no restrictToSupportedNodes — FQ list shouldn't even be consulted
 			const credentialTypes = buildCredentialTypes(
 				mockType({ supportedNodes: ['restrictedConsumer'] }),
-				['n8n-nodes-base.restrictedConsumer'],
+				['MNI-nodes-base.restrictedConsumer'],
 			);
 
 			expect(
 				buildHelper(credentialTypes).isCredentialUsableByNode(
 					'restrictedApi',
-					'n8n-nodes-base.httpRequest',
+					'MNI-nodes-base.httpRequest',
 				),
 			).toBe(true);
 		});
@@ -2273,13 +2273,13 @@ describe('CredentialsHelper', () => {
 					restrictToSupportedNodes: true,
 					supportedNodes: ['restrictedConsumer'],
 				}),
-				['n8n-nodes-base.restrictedConsumer'],
+				['MNI-nodes-base.restrictedConsumer'],
 			);
 
 			expect(
 				buildHelper(credentialTypes).isCredentialUsableByNode(
 					'restrictedApi',
-					'n8n-nodes-base.restrictedConsumer',
+					'MNI-nodes-base.restrictedConsumer',
 				),
 			).toBe(true);
 		});
@@ -2290,13 +2290,13 @@ describe('CredentialsHelper', () => {
 					restrictToSupportedNodes: true,
 					supportedNodes: ['restrictedConsumer'],
 				}),
-				['n8n-nodes-base.restrictedConsumer'],
+				['MNI-nodes-base.restrictedConsumer'],
 			);
 
 			expect(
 				buildHelper(credentialTypes).isCredentialUsableByNode(
 					'restrictedApi',
-					'n8n-nodes-base.httpRequest',
+					'MNI-nodes-base.httpRequest',
 				),
 			).toBe(false);
 		});
@@ -2310,7 +2310,7 @@ describe('CredentialsHelper', () => {
 			expect(
 				buildHelper(credentialTypes).isCredentialUsableByNode(
 					'restrictedApi',
-					'n8n-nodes-base.restrictedConsumer',
+					'MNI-nodes-base.restrictedConsumer',
 				),
 			).toBe(false);
 		});
@@ -2322,7 +2322,7 @@ describe('CredentialsHelper', () => {
 			});
 
 			expect(
-				buildHelper(credentialTypes).isCredentialUsableByNode('missing', 'n8n-nodes-base.anything'),
+				buildHelper(credentialTypes).isCredentialUsableByNode('missing', 'MNI-nodes-base.anything'),
 			).toBe(true);
 		});
 	});
@@ -2560,7 +2560,7 @@ describe('CredentialsHelper', () => {
 		const node: INode = {
 			id: 'uuid-sf',
 			name: 'Salesforce',
-			type: 'n8n-nodes-base.salesforce',
+			type: 'MNI-nodes-base.salesforce',
 			typeVersion: 1,
 			position: [0, 0],
 			parameters: {},
@@ -2719,7 +2719,7 @@ describe('CredentialsHelper', () => {
 		const wekanNode: INode = {
 			id: 'uuid-1',
 			name: 'Node',
-			type: 'n8n-nodes-base.noOp',
+			type: 'MNI-nodes-base.noOp',
 			typeVersion: 1,
 			position: [0, 0],
 			parameters: {},
@@ -2945,7 +2945,7 @@ describe('CredentialsHelper', () => {
 		const node: INode = {
 			id: 'uuid-spread',
 			name: 'Node',
-			type: 'n8n-nodes-base.noOp',
+			type: 'MNI-nodes-base.noOp',
 			typeVersion: 1,
 			position: [0, 0],
 			parameters: {},
@@ -3040,7 +3040,7 @@ describe('CredentialsHelper', () => {
 			const executeData = {
 				node: {
 					name: 'Slack1',
-					type: 'n8n-nodes-base.slack',
+					type: 'MNI-nodes-base.slack',
 					typeVersion: 1,
 					position: [0, 0],
 					parameters: {},
@@ -3063,7 +3063,7 @@ describe('CredentialsHelper', () => {
 			expect(policyEnforcementService.enforceCredentialDecrypt).toHaveBeenCalledExactlyOnceWith({
 				credentialType: 'testApi',
 				credentialId: 'cred-policy',
-				consumer: { nodeType: 'n8n-nodes-base.slack' },
+				consumer: { nodeType: 'MNI-nodes-base.slack' },
 				projectId: 'proj-1',
 			});
 		});

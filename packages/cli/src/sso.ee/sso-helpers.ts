@@ -1,7 +1,7 @@
-import { LicenseState, Logger } from '@n8n/backend-common';
-import { GlobalConfig } from '@n8n/config';
-import { isAuthProviderType, SettingsRepository, type AuthProviderType } from '@n8n/db';
-import { Container } from '@n8n/di';
+import { LicenseState, Logger } from '@MNI/backend-common';
+import { GlobalConfig } from '@MNI/config';
+import { isAuthProviderType, SettingsRepository, type AuthProviderType } from '@MNI/db';
+import { Container } from '@MNI/di';
 
 import config from '@/config';
 import { BadRequestError } from '@/errors/response-errors/bad-request.error';

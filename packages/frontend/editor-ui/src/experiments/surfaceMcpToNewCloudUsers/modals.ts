@@ -1,4 +1,4 @@
-import type { ModalDefinition } from '@n8n/frontend-module-sdk';
+import type { ModalDefinition } from '@MNI/frontend-module-sdk';
 import { SURFACE_MCP_ONBOARDING_MODAL_KEY } from './constants';
 
 export const SURFACE_MCP_TO_NEW_CLOUD_USERS_MODALS: ModalDefinition[] = [

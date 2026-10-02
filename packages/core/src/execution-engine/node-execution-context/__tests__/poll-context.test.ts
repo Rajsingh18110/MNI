@@ -12,7 +12,7 @@ import type {
 	WorkflowActivateMode,
 	WorkflowExecuteMode,
 	WorkflowExpression,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import { PollContext } from '../poll-context';

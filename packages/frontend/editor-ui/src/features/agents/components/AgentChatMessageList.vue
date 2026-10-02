@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { computed, nextTick, onMounted, ref, useTemplateRef, watch } from 'vue';
-import { N8nButton, N8nCallout, N8nIcon, N8nIconButton, N8nText } from '@n8n/design-system';
-import { N8N_CHAT_ACTION_TOOL_NAME } from '@n8n/api-types';
+import { N8nButton, N8nCallout, N8nIcon, N8nIconButton, N8nText } from '@MNI/design-system';
+import { MNI_CHAT_ACTION_TOOL_NAME } from '@MNI/api-types';
 import { isAwaitingCard } from '@/features/ai/shared/agentsChat/n8nChatInteraction';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import { useSessionStorage } from '@vueuse/core';
 import { TIME } from '@/app/constants/durations';
 import {
@@ -76,13 +76,13 @@ function isIntegrationActionSuspend(value: unknown): value is { type: 'integrati
 /**
  * Returns a display name for the external platform a tool call is waiting on,
  * or `undefined` when the tool call either isn't suspended or renders its own
- * interactive card. n8n_chat_action carries the integration_action sidecar
+ * interactive card. MNI_chat_action carries the integration_action sidecar
  * but is excluded explicitly because it renders its own interactive card in
  * the chat.
  */
 function externalWaitPlatform(tc: ToolCall): string | undefined {
 	if (tc.state !== TOOL_CALL_STATE.SUSPENDED) return undefined;
-	if (tc.tool === N8N_CHAT_ACTION_TOOL_NAME) return undefined;
+	if (tc.tool === MNI_CHAT_ACTION_TOOL_NAME) return undefined;
 	if (!isIntegrationActionSuspend(tc.suspendPayload)) return undefined;
 	const base = tc.tool.replace(/_action$/, '').replace(/_\d+$/, '');
 	return base.charAt(0).toUpperCase() + base.slice(1);
@@ -96,7 +96,7 @@ function externalWaitPlatform(tc: ToolCall): string | undefined {
  */
 function shouldRenderInteractive(payload: InteractivePayload): boolean {
 	if (!payload.resolvedAt) return !!payload.runId;
-	return payload.toolName === N8N_CHAT_ACTION_TOOL_NAME && !isAwaitingCard(payload.input.card);
+	return payload.toolName === MNI_CHAT_ACTION_TOOL_NAME && !isAwaitingCard(payload.input.card);
 }
 
 function getRenderableInteractives(message: ChatMessage): InteractivePayload[] {
@@ -186,7 +186,7 @@ const dividerLabels = computed(() => {
  * conversation. A new chat asks again.
  */
 const changeNoteDismissedKey = computed(function getChangeNoteDismissedKey() {
-	return `N8N_AGENT_PREVIEW_CHANGE_NOTE_DISMISSED:${props.sessionId ?? ''}`;
+	return `MNI_AGENT_PREVIEW_CHANGE_NOTE_DISMISSED:${props.sessionId ?? ''}`;
 });
 const changeNoteDismissed = useSessionStorage(changeNoteDismissedKey, false);
 

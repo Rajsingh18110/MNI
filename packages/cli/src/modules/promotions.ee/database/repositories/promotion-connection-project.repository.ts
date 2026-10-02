@@ -1,6 +1,6 @@
-import { BaseRepository, type OperationContext, TransactionRunner } from '@n8n/db';
-import { Service } from '@n8n/di';
-import { DataSource } from '@n8n/typeorm';
+import { BaseRepository, type OperationContext, TransactionRunner } from '@MNI/db';
+import { Service } from '@MNI/di';
+import { DataSource } from '@MNI/typeorm';
 
 import { PromotionConnectionProject } from '../entities/promotion-connection-project.entity';
 import { PromotionConflictError } from '../promotion-conflict.error';

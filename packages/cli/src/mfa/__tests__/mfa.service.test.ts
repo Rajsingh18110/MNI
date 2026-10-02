@@ -1,7 +1,7 @@
-import type { LicenseState } from '@n8n/backend-common';
-import { mockLogger } from '@n8n/backend-test-utils';
-import type { SettingsRepository, UserRepository } from '@n8n/db';
-import type { Cipher } from 'n8n-core';
+import type { LicenseState } from '@MNI/backend-common';
+import { mockLogger } from '@MNI/backend-test-utils';
+import type { SettingsRepository, UserRepository } from '@MNI/db';
+import type { Cipher } from 'MNI-core';
 import type { Mocked } from 'vitest';
 import { mock } from 'vitest-mock-extended';
 

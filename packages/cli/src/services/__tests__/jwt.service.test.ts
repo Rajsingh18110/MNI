@@ -1,6 +1,6 @@
-import type { GlobalConfig } from '@n8n/config';
+import type { GlobalConfig } from '@MNI/config';
 import jwt from 'jsonwebtoken';
-import type { InstanceSettings } from 'n8n-core';
+import type { InstanceSettings } from 'MNI-core';
 import { mock } from 'vitest-mock-extended';
 
 import { JwtService } from '@/services/jwt.service';

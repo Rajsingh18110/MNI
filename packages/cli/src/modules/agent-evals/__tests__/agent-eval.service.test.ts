@@ -1,4 +1,4 @@
-import type { ModuleRegistry } from '@n8n/backend-common';
+import type { ModuleRegistry } from '@MNI/backend-common';
 import type {
 	AgentEvalDataset,
 	AgentEvalDatasetRepository,
@@ -7,7 +7,7 @@ import type {
 	AgentEvalRun,
 	AgentEvalRunRepository,
 	User,
-} from '@n8n/db';
+} from '@MNI/db';
 import { mock, type MockProxy } from 'vitest-mock-extended';
 
 import { BadRequestError } from '@/errors/response-errors/bad-request.error';

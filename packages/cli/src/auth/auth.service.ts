@@ -1,10 +1,10 @@
-import { Logger } from '@n8n/backend-common';
-import { GlobalConfig } from '@n8n/config';
-import { Time } from '@n8n/constants';
-import type { AuthenticatedRequest, User } from '@n8n/db';
-import { GLOBAL_OWNER_ROLE, InvalidAuthTokenRepository, UserRepository } from '@n8n/db';
-import { Service } from '@n8n/di';
-import { isRecord } from '@n8n/utils/is-record';
+import { Logger } from '@MNI/backend-common';
+import { GlobalConfig } from '@MNI/config';
+import { Time } from '@MNI/constants';
+import type { AuthenticatedRequest, User } from '@MNI/db';
+import { GLOBAL_OWNER_ROLE, InvalidAuthTokenRepository, UserRepository } from '@MNI/db';
+import { Service } from '@MNI/di';
+import { isRecord } from '@MNI/utils/is-record';
 import { createHash } from 'crypto';
 import type { NextFunction, Request, Response } from 'express';
 import { JsonWebTokenError, TokenExpiredError } from 'jsonwebtoken';
@@ -17,7 +17,7 @@ import { ForbiddenError } from '@/errors/response-errors/forbidden.error';
 import { License } from '@/license';
 import { MfaService } from '@/mfa/mfa.service';
 import { JwtService } from '@/services/jwt.service';
-import { UrlService } from '@n8n/backend-services';
+import { UrlService } from '@MNI/backend-services';
 
 interface AuthJwtPayload {
 	/** User Id */
@@ -200,7 +200,7 @@ export class AuthService {
 				}
 			}
 
-			const isPreviewMode = process.env.N8N_PREVIEW_MODE === 'true';
+			const isPreviewMode = process.env.MNI_PREVIEW_MODE === 'true';
 			const shouldSkipAuth = (allowSkipPreviewAuth && isPreviewMode) || allowUnauthenticated;
 
 			if (Object.hasOwn(req, 'user') && req.user) next();
@@ -236,7 +236,7 @@ export class AuthService {
 
 	clearCookie(res: Response) {
 		res.clearCookie(AUTH_COOKIE_NAME);
-		// The form page auth cookies (`n8n-form-auth-*`) are NOT cleared here: their
+		// The form page auth cookies (`MNI-form-auth-*`) are NOT cleared here: their
 		// names embed the workflow/execution they were minted for, and this response
 		// can neither read them (they're scoped to the form-waiting path) nor clear a
 		// cookie without naming it exactly. They are httpOnly, expire within an hour,
@@ -336,7 +336,7 @@ export class AuthService {
 	 * Use when the cookie was captured at the controller boundary and must be re-validated
 	 * later in the execution lifecycle, after the original HTTP request is no longer available.
 	 *
-	 * @param cookie - The JWT string extracted from the `n8n-auth` browser cookie.
+	 * @param cookie - The JWT string extracted from the `MNI-auth` browser cookie.
 	 */
 	async authenticateUserByCookie(cookie: string): Promise<User> {
 		const isInvalid = await this.invalidAuthTokenRepository.existsBy({ token: cookie });
@@ -456,7 +456,7 @@ export class AuthService {
 			newEmail,
 			hash: this.createJWTHash(user),
 		};
-		const token = this.jwtService.sign(payload, { expiresIn: '20m', audience: 'n8n-email-change' });
+		const token = this.jwtService.sign(payload, { expiresIn: '20m', audience: 'MNI-email-change' });
 		const url = new URL(`${this.urlService.getInstanceBaseUrl()}/confirm-email-change`);
 		url.searchParams.append('token', token);
 		return url.toString();
@@ -468,7 +468,7 @@ export class AuthService {
 		let decoded: EmailChangeToken;
 		try {
 			decoded = this.jwtService.verify(token, {
-				audience: 'n8n-email-change',
+				audience: 'MNI-email-change',
 			});
 		} catch {
 			return;
@@ -484,7 +484,7 @@ export class AuthService {
 
 	generatePasswordResetToken(user: User, expiresIn: TimeUnitValue = '20m') {
 		const payload: PasswordResetToken = { sub: user.id, hash: this.createJWTHash(user) };
-		return this.jwtService.sign(payload, { expiresIn, audience: 'n8n-password-reset' });
+		return this.jwtService.sign(payload, { expiresIn, audience: 'MNI-password-reset' });
 	}
 
 	generatePasswordResetUrl(user: User) {
@@ -501,7 +501,7 @@ export class AuthService {
 		let decodedToken: PasswordResetToken;
 		try {
 			decodedToken = this.jwtService.verify(token, {
-				audience: 'n8n-password-reset',
+				audience: 'MNI-password-reset',
 			});
 		} catch (e) {
 			if (e instanceof TokenExpiredError) {

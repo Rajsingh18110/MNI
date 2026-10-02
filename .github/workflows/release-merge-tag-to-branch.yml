@@ -1,5 +1,5 @@
 name: 'Release: Merge tag to branch'
-run-name: 'Merge n8n@${{ inputs.version }} to ${{ inputs.target-branch }}'
+run-name: 'Merge MNI@${{ inputs.version }} to ${{ inputs.target-branch }}'
 
 on:
   workflow_call:
@@ -38,19 +38,19 @@ jobs:
 
       - name: Verify release tag exists
         run: |
-          if ! git ls-remote --tags origin "refs/tags/n8n@${VERSION}" | grep -q .; then
-            echo "::error::Tag n8n@${VERSION} not found on remote"
+          if ! git ls-remote --tags origin "refs/tags/MNI@${VERSION}" | grep -q .; then
+            echo "::error::Tag MNI@${VERSION} not found on remote"
             exit 1
           fi
 
       - name: Fetch release tag
-        run: git fetch origin "refs/tags/n8n@${VERSION}:refs/tags/n8n@${VERSION}"
+        run: git fetch origin "refs/tags/MNI@${VERSION}:refs/tags/MNI@${VERSION}"
 
       - name: Merge release tag to branch
         run: |
-          git config user.name "n8n-release-tag-merge[bot]"
-          git config user.email "256767729+n8n-release-tag-merge[bot]@users.noreply.github.com"
-          git merge --ff "n8n@${VERSION}"
+          git config user.name "MNI-release-tag-merge[bot]"
+          git config user.email "256767729+MNI-release-tag-merge[bot]@users.noreply.github.com"
+          git merge --ff "MNI@${VERSION}"
 
       - name: Push to ${{ inputs.target-branch }}
         run: git push origin "HEAD:${TARGET_BRANCH}"
@@ -75,4 +75,4 @@ jobs:
         run: |
           node .github/scripts/slack/notify.mjs \
             --channel '#updates-and-product-releases' \
-            --text "<${RUN_URL}|Release tag merge to ${TARGET_BRANCH} failed for n8n@${VERSION}>"
+            --text "<${RUN_URL}|Release tag merge to ${TARGET_BRANCH} failed for MNI@${VERSION}>"

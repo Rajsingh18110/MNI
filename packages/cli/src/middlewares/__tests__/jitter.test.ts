@@ -1,11 +1,11 @@
-import { sleep } from '@n8n/utils/sleep';
+import { sleep } from '@MNI/utils/sleep';
 import type { Request, Response } from 'express';
 import type { Mock, MockInstance } from 'vitest';
 
 import { createJitterMiddleware } from '../jitter';
 
-vi.mock('@n8n/utils/sleep', async (importOriginal) => {
-	const actual = await importOriginal<typeof import('@n8n/utils/sleep')>();
+vi.mock('@MNI/utils/sleep', async (importOriginal) => {
+	const actual = await importOriginal<typeof import('@MNI/utils/sleep')>();
 	return { sleep: vi.fn(actual.sleep) };
 });
 

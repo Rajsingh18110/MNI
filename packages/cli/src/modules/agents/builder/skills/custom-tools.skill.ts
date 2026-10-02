@@ -1,4 +1,4 @@
-import type { RuntimeSkill } from '@n8n/agents';
+import type { RuntimeSkill } from '@MNI/agents';
 
 export function customToolsSkill(): RuntimeSkill {
 	return {
@@ -22,7 +22,7 @@ that no node, workflow, or MCP tool covers.
 
 ## Workflow
 
-- Use \`build_custom_tool\` with \`export default new Tool(...)\` and imports only from \`@n8n/agents\` and \`zod\`.
+- Use \`build_custom_tool\` with \`export default new Tool(...)\` and imports only from \`@MNI/agents\` and \`zod\`.
 - Do not use custom tools for live website crawling, HTTP fetching, API calls, SEO crawlers, or scraping. Use workflow or node tools for those.
 - The returned \`id\` is the tool name from the code (e.g. \`new Tool("my_tool")\` → id \`"my_tool"\`).
 - Register the returned id in config: \`{ "type": "custom", "id": "<tool name>" }\`.
@@ -32,7 +32,7 @@ that no node, workflow, or MCP tool covers.
 - Custom handlers are pure functions: take validated \`input\`, compute, and return a JSON-serializable value. Do not call \`.build()\`.
 - Follow this pattern:
 \`\`\`typescript
-import { Tool } from '@n8n/agents';
+import { Tool } from '@MNI/agents';
 import { z } from 'zod';
 
 export default new Tool('tool_name')

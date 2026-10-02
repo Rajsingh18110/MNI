@@ -5,26 +5,26 @@ import {
 	MCP_APPS_VARIANT_CONTROL,
 	MCP_APPS_VARIANT_ENABLED,
 	INSTANCE_ACTIVITY_CONTEXT_FLAG,
-} from '@n8n/api-types';
-import { LicenseState, Logger, ModuleRegistry } from '@n8n/backend-common';
-import { ExecutionsConfig, GlobalConfig, WorkflowsConfig } from '@n8n/config';
-import { ExecutionRepository, ProjectRepository, SharedWorkflowRepository, User } from '@n8n/db';
-import { Container, Service } from '@n8n/di';
+} from '@MNI/api-types';
+import { LicenseState, Logger, ModuleRegistry } from '@MNI/backend-common';
+import { ExecutionsConfig, GlobalConfig, WorkflowsConfig } from '@MNI/config';
+import { ExecutionRepository, ProjectRepository, SharedWorkflowRepository, User } from '@MNI/db';
+import { Container, Service } from '@MNI/di';
 import {
 	mcpAppToolMeta,
 	registerWorkflowPreviewApp,
 	WORKFLOW_PREVIEW_APP_URI,
 	type McpAppTelemetryConfig,
-} from '@n8n/mcp-apps/server';
-import { lazyImport } from '@n8n/utils/lazy-import';
-import { createDeferredPromise, type IDeferredPromise } from '@n8n/utils/promise/deferred-promise';
-import { InstanceSettings } from 'n8n-core';
-import { ManualExecutionCancelledError, type FeatureFlags, type IRun } from 'n8n-workflow';
+} from '@MNI/mcp-apps/server';
+import { lazyImport } from '@MNI/utils/lazy-import';
+import { createDeferredPromise, type IDeferredPromise } from '@MNI/utils/promise/deferred-promise';
+import { InstanceSettings } from 'MNI-core';
+import { ManualExecutionCancelledError, type FeatureFlags, type IRun } from 'MNI-workflow';
 import type z from 'zod';
 
 import { ActiveExecutions } from '@/active-executions';
 import { CollaborationService } from '@/collaboration/collaboration.service';
-import { N8N_VERSION } from '@/constants';
+import { MNI_VERSION } from '@/constants';
 import { CredentialsService } from '@/credentials/credentials.service';
 import { EventService } from '@/events/event.service';
 import { ExecutionListService } from '@/executions/execution-list.service';
@@ -42,7 +42,7 @@ import { NodeResourceExplorerService } from '@/services/node-resource-explorer.s
 import { ProjectService } from '@/services/project.service.ee';
 import { RoleService } from '@/services/role.service';
 import { TagService } from '@/services/tag.service';
-import { UrlService } from '@n8n/backend-services';
+import { UrlService } from '@MNI/backend-services';
 import { Telemetry } from '@/telemetry';
 import { WorkflowRunner } from '@/workflow-runner';
 import { WorkflowCreationService } from '@/workflows/workflow-creation.service';
@@ -108,7 +108,7 @@ import {
 	createGetInstanceActivityTool,
 } from './tools/instance-activity.tool';
 import { createListCredentialsTool } from './tools/list-credentials.tool';
-import { createListN8nGatewayServicesTool } from './tools/list-n8n-gateway-services.tool';
+import { createListN8nGatewayServicesTool } from './tools/list-MNI-gateway-services.tool';
 import { createListTagsTool } from './tools/list-tags.tool';
 import { createMoveWorkflowsToFolderTool } from './tools/move-workflows-to-folder.tool';
 import { createPrepareTestPinDataTool } from './tools/prepare-workflow-pin-data.tool';
@@ -313,7 +313,7 @@ export class McpService {
 			dataPlaneUrl: '',
 			configUrl: '',
 			instanceId: this.instanceSettings.instanceId,
-			versionCli: N8N_VERSION,
+			versionCli: MNI_VERSION,
 		};
 
 		if (!enabled) return { telemetry: disabledTelemetry };
@@ -328,7 +328,7 @@ export class McpService {
 			dataPlaneUrl: `${instanceBaseUrl}/${restEndpoint}/telemetry/proxy`,
 			configUrl: `${instanceBaseUrl}/${restEndpoint}/telemetry/rudderstack`,
 			instanceId: this.instanceSettings.instanceId,
-			versionCli: N8N_VERSION,
+			versionCli: MNI_VERSION,
 		};
 
 		try {
@@ -796,7 +796,7 @@ export class McpService {
 			);
 		}
 
-		// Workflow builder tools (enabled via N8N_MCP_BUILDER_ENABLED)
+		// Workflow builder tools (enabled via MNI_MCP_BUILDER_ENABLED)
 		if (builderEnabled) {
 			await this.registerBuilderTools(
 				server,

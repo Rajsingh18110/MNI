@@ -1,5 +1,5 @@
 {
-	"name": "@n8n/rules-engine",
+	"name": "@MNI/rules-engine",
 	"private": true,
 	"version": "0.1.0",
 	"description": "Lightweight rules engine for registering, running, and reporting rule violations",
@@ -37,7 +37,7 @@
 		"ts-morph": "catalog:"
 	},
 	"devDependencies": {
-		"@n8n/vitest-config": "workspace:*",
+		"@MNI/vitest-config": "workspace:*",
 		"@vitest/coverage-v8": "catalog:",
 		"typescript": "catalog:typescript",
 		"vitest": "catalog:"

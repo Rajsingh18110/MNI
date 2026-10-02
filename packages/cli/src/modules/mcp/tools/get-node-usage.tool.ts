@@ -9,7 +9,7 @@
  * is why the activity feed and the execution search both filter. Names and counts sit on the
  * visible side of that line.
  */
-import type { User } from '@n8n/db';
+import type { User } from '@MNI/db';
 import z from 'zod';
 
 import type { WorkflowDependencyQueryService } from '@/modules/workflow-index/workflow-dependency-query.service';
@@ -29,7 +29,7 @@ const inputSchema = {
 		.min(1)
 		.optional()
 		.describe(
-			'Fully qualified node type, e.g. "n8n-nodes-base.httpRequest". Given one, returns the workflows using it. Omitted, returns the histogram of every node type in use.',
+			'Fully qualified node type, e.g. "MNI-nodes-base.httpRequest". Given one, returns the workflows using it. Omitted, returns the histogram of every node type in use.',
 		),
 	projectId: z
 		.string()

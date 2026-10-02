@@ -1,5 +1,5 @@
-import { N8N_NODES_API_VERSION } from '@n8n/constants';
-import { Container } from '@n8n/di';
+import { MNI_NODES_API_VERSION } from '@MNI/constants';
+import { Container } from '@MNI/di';
 
 import { CommunityPackagesConfig } from '../community-packages.config';
 
@@ -19,31 +19,31 @@ describe('CommunityPackagesConfig', () => {
 		expect(Container.get(CommunityPackagesConfig).enabled).toBe(true);
 	});
 
-	it('disables community packages when listed in N8N_DISABLED_MODULES', () => {
-		process.env.N8N_DISABLED_MODULES = 'community-packages';
+	it('disables community packages when listed in MNI_DISABLED_MODULES', () => {
+		process.env.MNI_DISABLED_MODULES = 'community-packages';
 
 		expect(Container.get(CommunityPackagesConfig).enabled).toBe(false);
 	});
 
 	it('disables community packages when listed among other disabled modules', () => {
-		process.env.N8N_DISABLED_MODULES = 'insights,community-packages,mcp';
+		process.env.MNI_DISABLED_MODULES = 'insights,community-packages,mcp';
 
 		expect(Container.get(CommunityPackagesConfig).enabled).toBe(false);
 	});
 
 	it('leaves community packages enabled when only other modules are disabled', () => {
-		process.env.N8N_DISABLED_MODULES = 'insights,mcp';
+		process.env.MNI_DISABLED_MODULES = 'insights,mcp';
 
 		expect(Container.get(CommunityPackagesConfig).enabled).toBe(true);
 	});
 
-	it('keeps explicit N8N_COMMUNITY_PACKAGES_ENABLED=false', () => {
-		process.env.N8N_COMMUNITY_PACKAGES_ENABLED = 'false';
+	it('keeps explicit MNI_COMMUNITY_PACKAGES_ENABLED=false', () => {
+		process.env.MNI_COMMUNITY_PACKAGES_ENABLED = 'false';
 
 		expect(Container.get(CommunityPackagesConfig).enabled).toBe(false);
 	});
 
 	it('exposes the supported nodes API version', () => {
-		expect(Container.get(CommunityPackagesConfig).nodesApiVersion).toBe(N8N_NODES_API_VERSION);
+		expect(Container.get(CommunityPackagesConfig).nodesApiVersion).toBe(MNI_NODES_API_VERSION);
 	});
 });

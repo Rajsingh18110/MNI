@@ -11,11 +11,11 @@ import type {
 	IPollFunctions,
 	IRequestOptions,
 	JsonObject,
-} from 'n8n-workflow';
-import { NodeApiError, NodeOperationError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeApiError, NodeOperationError } from 'MNI-workflow';
 import { RRule } from 'rrule';
 
-import { sleep } from '@n8n/utils/sleep';
+import { sleep } from '@MNI/utils/sleep';
 
 import type { RecurringEventInstance } from './EventInterface';
 

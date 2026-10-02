@@ -1,12 +1,12 @@
-import type { LicenseState } from '@n8n/backend-common';
-import { UNLIMITED_LICENSE_QUOTA } from '@n8n/constants';
+import type { LicenseState } from '@MNI/backend-common';
+import { UNLIMITED_LICENSE_QUOTA } from '@MNI/constants';
 import type {
 	TestCaseExecution,
 	TestCaseExecutionRepository,
 	TestRun,
 	TestRunRepository,
 	WorkflowRepository,
-} from '@n8n/db';
+} from '@MNI/db';
 import type { Mocked } from 'vitest';
 import { mock } from 'vitest-mock-extended';
 

@@ -1,6 +1,6 @@
-import type { ListAgentsQueryDto, UpdateAgentsMcpAvailabilityDto } from '@n8n/api-types';
-import type { User } from '@n8n/db';
-import { Service } from '@n8n/di';
+import type { ListAgentsQueryDto, UpdateAgentsMcpAvailabilityDto } from '@MNI/api-types';
+import type { User } from '@MNI/db';
+import { Service } from '@MNI/di';
 
 import { CollaborationService } from '@/collaboration/collaboration.service';
 import { BadRequestError } from '@/errors/response-errors/bad-request.error';

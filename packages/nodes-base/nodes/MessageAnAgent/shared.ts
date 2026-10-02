@@ -7,8 +7,8 @@ import type {
 	INodeProperties,
 	INodeTypeDescription,
 	InlineAgentPayload,
-} from 'n8n-workflow';
-import { jsonParse, NodeConnectionTypes, NodeOperationError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { jsonParse, NodeConnectionTypes, NodeOperationError } from 'MNI-workflow';
 import crypto from 'node:crypto';
 
 import { generateSchemaFromExample } from './generateSchemaFromExample';
@@ -268,7 +268,7 @@ export const commonProperties: INodeProperties[] = [
 											"Looks for an input field called 'sessionId' that is coming from a directly connected Chat Trigger",
 									},
 									{
-										// eslint-disable-next-line n8n-nodes-base/node-param-display-name-miscased
+										// eslint-disable-next-line MNI-nodes-base/node-param-display-name-miscased
 										name: 'Define below',
 										value: 'customKey',
 										description:

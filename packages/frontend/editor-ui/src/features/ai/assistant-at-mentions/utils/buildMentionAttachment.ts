@@ -1,4 +1,4 @@
-import { MAX_INSTANCE_AI_NODES_PER_SET, type InstanceAiResourceAttachment } from '@n8n/api-types';
+import { MAX_INSTANCE_AI_NODES_PER_SET, type InstanceAiResourceAttachment } from '@MNI/api-types';
 
 import type {
 	AssistantMentionItem,

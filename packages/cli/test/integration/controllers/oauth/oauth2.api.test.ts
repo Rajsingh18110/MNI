@@ -1,8 +1,8 @@
-import { createTeamProject, linkUserToProject, testDb } from '@n8n/backend-test-utils';
-import { SsrfProtectionService } from '@n8n/backend-network';
-import { SsrfProtectionConfig } from '@n8n/config';
-import type { CredentialsEntity, User } from '@n8n/db';
-import { Container } from '@n8n/di';
+import { createTeamProject, linkUserToProject, testDb } from '@MNI/backend-test-utils';
+import { SsrfProtectionService } from '@MNI/backend-network';
+import { SsrfProtectionConfig } from '@MNI/config';
+import type { CredentialsEntity, User } from '@MNI/db';
+import { Container } from '@MNI/di';
 import { response as Response } from 'express';
 import nock from 'nock';
 import { parse as parseQs } from 'querystring';

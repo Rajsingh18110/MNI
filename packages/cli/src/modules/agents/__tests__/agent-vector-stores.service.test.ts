@@ -1,8 +1,8 @@
-import type { BuiltVectorStoreBackend } from '@n8n/agents';
-import type { AgentJsonVectorStoreConfig } from '@n8n/api-types';
-import { mockInstance } from '@n8n/backend-test-utils';
-import type { CredentialsEntity, User } from '@n8n/db';
-import type { ICredentialDataDecryptedObject, IWorkflowExecuteAdditionalData } from 'n8n-workflow';
+import type { BuiltVectorStoreBackend } from '@MNI/agents';
+import type { AgentJsonVectorStoreConfig } from '@MNI/api-types';
+import { mockInstance } from '@MNI/backend-test-utils';
+import type { CredentialsEntity, User } from '@MNI/db';
+import type { ICredentialDataDecryptedObject, IWorkflowExecuteAdditionalData } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import type { CredentialsService } from '@/credentials/credentials.service';
@@ -27,7 +27,7 @@ vi.mock('@/workflow-execute-additional-data', () => ({
 
 const credentialsHelper = mockInstance(CredentialsHelper);
 
-vi.mock('@n8n/agents', () => ({
+vi.mock('@MNI/agents', () => ({
 	createEmbeddingModel: vi.fn().mockReturnValue({ modelId: 'text-embedding-3-small' }),
 }));
 

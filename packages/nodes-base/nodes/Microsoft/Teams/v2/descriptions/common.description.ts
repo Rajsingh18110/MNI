@@ -1,4 +1,4 @@
-import type { INodeProperties } from 'n8n-workflow';
+import type { INodeProperties } from 'MNI-workflow';
 
 import { teamworkTagRLC, userRLC } from './rlc.description';
 
@@ -69,7 +69,7 @@ export const channelMentionsField: INodeProperties = {
 					noDataExpression: true,
 					// Default first, not alphabetical: a mention is a person unless the user says
 					// otherwise, so User leads and the list matches `default` above.
-					// eslint-disable-next-line n8n-nodes-base/node-param-options-type-unsorted-items
+					// eslint-disable-next-line MNI-nodes-base/node-param-options-type-unsorted-items
 					options: [
 						{ name: 'User', value: 'user' },
 						{ name: 'Team Tag', value: 'tag' },

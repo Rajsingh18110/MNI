@@ -9,7 +9,7 @@ import { defineComponent, h, ref } from 'vue';
 import { createComponentRenderer } from '@/__tests__/render';
 import { mockedStore } from '@/__tests__/utils';
 import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';
-import { sleep } from '@n8n/utils/sleep';
+import { sleep } from '@MNI/utils/sleep';
 
 import AssistantAtMentionPicker from './AssistantAtMentionPicker.vue';
 import type {
@@ -182,7 +182,7 @@ describe('AssistantAtMentionPicker', () => {
 			props: { modelValue: true, query: '', projectId: 'project-1' },
 		});
 
-		await waitFor(() => expect(document.querySelectorAll('.n8n-loading')).toHaveLength(10));
+		await waitFor(() => expect(document.querySelectorAll('.MNI-loading')).toHaveLength(10));
 		expect(document.body).not.toHaveTextContent('Loading workflows');
 		response.resolve([]);
 	});
@@ -194,7 +194,7 @@ describe('AssistantAtMentionPicker', () => {
 		const nodeTypesStore = mockedStore(useNodeTypesStore);
 		const getNodeType = vi.fn().mockReturnValue({
 			displayName: 'If',
-			name: 'n8n-nodes-base.if',
+			name: 'MNI-nodes-base.if',
 			icon: 'fa:map-signs',
 		} as never);
 		nodeTypesStore.getNodeType = getNodeType;
@@ -206,7 +206,7 @@ describe('AssistantAtMentionPicker', () => {
 				{
 					id: 'if-node',
 					name: 'If',
-					type: 'n8n-nodes-base.if',
+					type: 'MNI-nodes-base.if',
 					typeVersion: 2.2,
 					position: [0, 0],
 					parameters: {},
@@ -229,13 +229,13 @@ describe('AssistantAtMentionPicker', () => {
 		const groupResult = await findByRole('menuitem', { name: 'Orders > If checks' });
 		const nodeResult = await findByRole('menuitem', { name: 'Orders > If checks > If' });
 		expect(groupResult.querySelector('[data-icon="group"]')).toBeVisible();
-		expect(nodeResult.querySelector('.n8n-node-icon')).toBeVisible();
+		expect(nodeResult.querySelector('.MNI-node-icon')).toBeVisible();
 		expect(
 			[...nodeResult.querySelectorAll('[class*="breadcrumbAncestor"]')].map((element) =>
 				element.textContent?.trim(),
 			),
 		).toEqual(['Orders', '>', 'If checks', '>']);
-		expect(getNodeType).toHaveBeenCalledWith('n8n-nodes-base.if', 2.2);
+		expect(getNodeType).toHaveBeenCalledWith('MNI-nodes-base.if', 2.2);
 		expect(nodeTypesStore.loadNodeTypesIfNotLoaded).toHaveBeenCalled();
 	});
 
@@ -278,7 +278,7 @@ describe('AssistantAtMentionPicker', () => {
 				{
 					id: 'node-1',
 					name: 'First',
-					type: 'n8n-nodes-base.noOp',
+					type: 'MNI-nodes-base.noOp',
 					typeVersion: 1,
 					position: [0, 0],
 					parameters: {},
@@ -286,7 +286,7 @@ describe('AssistantAtMentionPicker', () => {
 				{
 					id: 'node-2',
 					name: 'Second',
-					type: 'n8n-nodes-base.noOp',
+					type: 'MNI-nodes-base.noOp',
 					typeVersion: 1,
 					position: [0, 0],
 					parameters: {},
@@ -294,7 +294,7 @@ describe('AssistantAtMentionPicker', () => {
 				{
 					id: 'node-3',
 					name: 'Third',
-					type: 'n8n-nodes-base.noOp',
+					type: 'MNI-nodes-base.noOp',
 					typeVersion: 1,
 					position: [0, 0],
 					parameters: {},
@@ -340,7 +340,7 @@ describe('AssistantAtMentionPicker', () => {
 				nodes: Array.from({ length: artifact?.nodeCount ?? 0 }, (_, index) => ({
 					id: `${workflowId}-node-${index + 1}`,
 					name: `Node ${index + 1}`,
-					type: 'n8n-nodes-base.noOp',
+					type: 'MNI-nodes-base.noOp',
 					typeVersion: 1,
 					position: [0, 0],
 					parameters: {},
@@ -400,7 +400,7 @@ describe('AssistantAtMentionPicker', () => {
 				{
 					id: 'node-1',
 					name: 'First',
-					type: 'n8n-nodes-base.noOp',
+					type: 'MNI-nodes-base.noOp',
 					typeVersion: 1,
 					position: [0, 0],
 					parameters: {},
@@ -460,14 +460,14 @@ describe('AssistantAtMentionPicker', () => {
 		const settle = async () => await sleep(DEBOUNCE_MULTIPLIER * 1000 * 3);
 
 		async function renderEmptySearch(query: string) {
-			sessionStorage.setItem('N8N_DEBOUNCE_MULTIPLIER', String(DEBOUNCE_MULTIPLIER));
+			sessionStorage.setItem('MNI_DEBOUNCE_MULTIPLIER', String(DEBOUNCE_MULTIPLIER));
 			setActivePinia(createTestingPinia());
 			const { useWorkflowsListStore } = await import('@/app/stores/workflowsList.store');
 			vi.mocked(useWorkflowsListStore().searchWorkflows).mockResolvedValue([]);
 			return renderComponent({ props: { modelValue: true, query, projectId: 'project-1' } });
 		}
 
-		afterEach(() => sessionStorage.removeItem('N8N_DEBOUNCE_MULTIPLIER'));
+		afterEach(() => sessionStorage.removeItem('MNI_DEBOUNCE_MULTIPLIER'));
 
 		it('reports a query once its empty state settles, and each distinct query once per open', async () => {
 			const { emitted, rerender } = await renderEmptySearch('zzz');

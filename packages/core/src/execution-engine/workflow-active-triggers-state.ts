@@ -1,4 +1,4 @@
-import type { ITriggerResponse } from 'n8n-workflow';
+import type { ITriggerResponse } from 'MNI-workflow';
 
 export type TriggerRegistrationToken = symbol;
 

@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { N8nIcon, N8nTooltip, type IconName } from '@n8n/design-system';
-import { useI18n, type BaseTextKey } from '@n8n/i18n';
+import { N8nIcon, N8nTooltip, type IconName } from '@MNI/design-system';
+import { useI18n, type BaseTextKey } from '@MNI/i18n';
 import { computed, onUnmounted, ref } from 'vue';
 import type { InstanceAiPrefillDeclaration } from '@/features/ai/instanceAi/prefills';
 

@@ -4,7 +4,7 @@ import type {
 	AgentReasoningLevel,
 	AgentSkill,
 	AgentSkillReference,
-} from '@n8n/api-types';
+} from '@MNI/api-types';
 import type { Agent, ToolDescriptor, CustomToolEntry } from './agent.types';
 
 export type { ToolDescriptor, CustomToolEntry, AgentSkill, AgentSkillReference };
@@ -51,7 +51,7 @@ declare module '@/Interface' {
 	}
 }
 
-// Frontend-local copies of AgentSchema types from @n8n/agents
+// Frontend-local copies of AgentSchema types from @MNI/agents
 
 export interface AgentSchema {
 	model: { provider: string | null; name: string | null; raw?: string };
@@ -148,4 +148,4 @@ export type {
 	AgentJsonConfig,
 	AgentJsonVectorStoreConfig,
 	AgentVectorStoreProvider,
-} from '@n8n/api-types';
+} from '@MNI/api-types';

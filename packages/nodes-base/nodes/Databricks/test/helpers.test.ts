@@ -1,5 +1,5 @@
-import { sleep } from '@n8n/utils/sleep';
-import { NodeApiError, NodeOperationError } from 'n8n-workflow';
+import { sleep } from '@MNI/utils/sleep';
+import { NodeApiError, NodeOperationError } from 'MNI-workflow';
 import type {
 	IExecuteFunctions,
 	IHttpRequestOptions,
@@ -7,7 +7,7 @@ import type {
 	INode,
 	IPollFunctions,
 	JsonObject,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import type { Mock } from 'vitest';
 import { mock, mockDeep } from 'vitest-mock-extended';
 
@@ -18,7 +18,7 @@ import {
 	readIdParameter,
 } from '../actions/helpers';
 
-vi.mock('@n8n/utils/sleep', () => ({
+vi.mock('@MNI/utils/sleep', () => ({
 	sleep: vi.fn().mockResolvedValue(undefined),
 }));
 
@@ -46,7 +46,7 @@ describe('databricksApiRequest', () => {
 
 		expect(capturedOptions().headers).toEqual({
 			'Content-Type': 'application/octet-stream',
-			'User-Agent': 'n8n_DatabricksNode',
+			'User-Agent': 'MNI_DatabricksNode',
 		});
 	});
 
@@ -56,7 +56,7 @@ describe('databricksApiRequest', () => {
 			url: 'https://example.databricks.com/api/2.1/unity-catalog/catalogs',
 		});
 
-		expect(capturedOptions().headers).toEqual({ 'User-Agent': 'n8n_DatabricksNode' });
+		expect(capturedOptions().headers).toEqual({ 'User-Agent': 'MNI_DatabricksNode' });
 	});
 
 	it('should override a caller-supplied User-Agent', async () => {
@@ -66,7 +66,7 @@ describe('databricksApiRequest', () => {
 			headers: { 'User-Agent': 'something-else' },
 		});
 
-		expect(capturedOptions().headers).toEqual({ 'User-Agent': 'n8n_DatabricksNode' });
+		expect(capturedOptions().headers).toEqual({ 'User-Agent': 'MNI_DatabricksNode' });
 	});
 
 	it('should pass non-header options through untouched', async () => {
@@ -86,7 +86,7 @@ describe('databricksApiRequest', () => {
 			returnFullResponse: true,
 			qs: { page_token: 'abc' },
 			json: true,
-			headers: { 'User-Agent': 'n8n_DatabricksNode' },
+			headers: { 'User-Agent': 'MNI_DatabricksNode' },
 		});
 	});
 
@@ -128,7 +128,7 @@ describe('databricksApiRequest rate limiting', () => {
 	const node: INode = {
 		id: '1',
 		name: 'Databricks',
-		type: 'n8n-nodes-base.databricks',
+		type: 'MNI-nodes-base.databricks',
 		typeVersion: 1,
 		position: [0, 0],
 		parameters: {},
@@ -295,7 +295,7 @@ describe('fetchDatabricksPage', () => {
 			method: 'GET',
 			url: 'https://example.databricks.com/api/2.2/jobs/get',
 			qs: { job_id: 42, include_trigger_state: true, ...tokenQs },
-			headers: { Accept: 'application/json', 'User-Agent': 'n8n_DatabricksNode' },
+			headers: { Accept: 'application/json', 'User-Agent': 'MNI_DatabricksNode' },
 			json: true,
 		});
 		expect(qs).toEqual({ job_id: 42, include_trigger_state: true });
@@ -306,7 +306,7 @@ describe('readIdParameter', () => {
 	const node: INode = {
 		id: '1',
 		name: 'Databricks',
-		type: 'n8n-nodes-base.databricks',
+		type: 'MNI-nodes-base.databricks',
 		typeVersion: 1,
 		position: [0, 0],
 		parameters: {},

@@ -26,10 +26,10 @@ import {
 	N8nSelect,
 	N8nSwitch2,
 	N8nText,
-} from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
-import type { BaseTextKey } from '@n8n/i18n';
-import type { AgentJsonWorkflowToolInputField } from '@n8n/api-types';
+} from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
+import type { BaseTextKey } from '@MNI/i18n';
+import type { AgentJsonWorkflowToolInputField } from '@MNI/api-types';
 import { useRouter } from 'vue-router';
 
 import { VIEWS } from '@/app/constants';

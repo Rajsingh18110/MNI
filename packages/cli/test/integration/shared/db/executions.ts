@@ -1,13 +1,13 @@
-import { mockInstance } from '@n8n/backend-test-utils';
-import type { ExecutionEntity, ExecutionData } from '@n8n/db';
+import { mockInstance } from '@MNI/backend-test-utils';
+import type { ExecutionEntity, ExecutionData } from '@MNI/db';
 import {
 	ExecutionDataRepository,
 	ExecutionMetadataRepository,
 	ExecutionRepository,
 	AnnotationTagRepository,
-} from '@n8n/db';
-import { Container } from '@n8n/di';
-import type { AnnotationVote, ExecutionStatus, IWorkflowBase } from 'n8n-workflow';
+} from '@MNI/db';
+import { Container } from '@MNI/di';
+import type { AnnotationVote, ExecutionStatus, IWorkflowBase } from 'MNI-workflow';
 
 import { ExecutionService } from '@/executions/execution.service';
 import { Telemetry } from '@/telemetry';

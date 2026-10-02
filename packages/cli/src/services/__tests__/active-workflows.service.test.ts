@@ -1,5 +1,5 @@
-import { GLOBAL_ADMIN_ROLE, GLOBAL_MEMBER_ROLE, WorkflowEntity } from '@n8n/db';
-import type { User, WorkflowRepository } from '@n8n/db';
+import { GLOBAL_ADMIN_ROLE, GLOBAL_MEMBER_ROLE, WorkflowEntity } from '@MNI/db';
+import type { User, WorkflowRepository } from '@MNI/db';
 import { mock } from 'vitest-mock-extended';
 
 import type { ActivationErrorsService } from '@/activation-errors.service';

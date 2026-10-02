@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 
-import { N8nCallout, N8nButton, N8nUserStack } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+import { N8nCallout, N8nButton, N8nUserStack } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 
-import { useUsersStore } from '@n8n/stores/users.store';
+import { useUsersStore } from '@MNI/stores/users.store';
 import { useAgentCollaborationStore } from '../stores/agentCollaboration.store';
 
 const locale = useI18n();

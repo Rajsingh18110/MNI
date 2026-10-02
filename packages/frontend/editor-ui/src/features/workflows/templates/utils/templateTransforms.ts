@@ -1,7 +1,7 @@
 import type {
 	IWorkflowTemplateNode,
 	IWorkflowTemplateNodeCredentials,
-} from '@n8n/rest-api-client/api/templates';
+} from '@MNI/rest-api-client/api/templates';
 
 import type { NodeTypeProvider } from '@/app/utils/nodeTypes/nodeTypeTransforms';
 import { getNodeTypeDisplayableCredentials } from '@/app/utils/nodes/nodeTransforms';
@@ -11,8 +11,8 @@ import type {
 	INodeCredentials,
 	INodeCredentialsDetails,
 	INodeParameters,
-} from 'n8n-workflow';
-import { isResourceLocatorValue } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { isResourceLocatorValue } from 'MNI-workflow';
 
 export type IWorkflowTemplateNodeWithCredentials = IWorkflowTemplateNode &
 	Required<Pick<IWorkflowTemplateNode, 'credentials'>>;

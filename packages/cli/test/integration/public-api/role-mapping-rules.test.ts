@@ -1,7 +1,7 @@
-import type { CreateRoleMappingRuleDto, RoleMappingRulePublicDto } from '@n8n/api-types';
-import { createTeamProject, testDb } from '@n8n/backend-test-utils';
-import { ProjectRepository, RoleMappingRuleRepository, type Project, type User } from '@n8n/db';
-import { Container } from '@n8n/di';
+import type { CreateRoleMappingRuleDto, RoleMappingRulePublicDto } from '@MNI/api-types';
+import { createTeamProject, testDb } from '@MNI/backend-test-utils';
+import { ProjectRepository, RoleMappingRuleRepository, type Project, type User } from '@MNI/db';
+import { Container } from '@MNI/di';
 import assert from 'node:assert';
 
 import { createOwnerWithApiKey } from '@test-integration/db/users';

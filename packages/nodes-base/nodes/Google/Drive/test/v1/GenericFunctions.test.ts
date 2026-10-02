@@ -1,5 +1,5 @@
 import { mockDeep } from 'vitest-mock-extended';
-import type { IDataObject, IPollFunctions } from 'n8n-workflow';
+import type { IDataObject, IPollFunctions } from 'MNI-workflow';
 
 import { googleApiRequestAllItems } from '../../v1/GenericFunctions';
 import type { Mock, Mocked } from 'vitest';

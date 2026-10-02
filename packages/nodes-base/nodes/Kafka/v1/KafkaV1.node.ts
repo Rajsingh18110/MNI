@@ -12,8 +12,8 @@ import type {
 	INodeType,
 	INodeTypeBaseDescription,
 	INodeTypeDescription,
-} from 'n8n-workflow';
-import { NodeConnectionTypes, NodeOperationError, UserError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeConnectionTypes, NodeOperationError, UserError } from 'MNI-workflow';
 
 import { generatePairedItemData } from '@utils/utilities';
 

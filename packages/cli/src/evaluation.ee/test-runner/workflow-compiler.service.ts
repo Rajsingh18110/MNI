@@ -1,6 +1,6 @@
-import type { EvaluationMetric } from '@n8n/api-types';
-import type { EvaluationConfig } from '@n8n/db';
-import { Service } from '@n8n/di';
+import type { EvaluationMetric } from '@MNI/api-types';
+import type { EvaluationConfig } from '@MNI/db';
+import { Service } from '@MNI/di';
 import {
 	applyAccessPatterns,
 	EVALUATION_NODE_TYPE,
@@ -12,7 +12,7 @@ import {
 	NodeHelpers,
 	UserError,
 	deepCopy,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import type {
 	IConnection,
 	IConnections,
@@ -21,7 +21,7 @@ import type {
 	INodeParameters,
 	INodeTypeDescription,
 	IWorkflowBase,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import { nanoid } from 'nanoid';
 
 import { NodeTypes } from '@/node-types';
@@ -631,17 +631,17 @@ function tightenAccessPatternSpacing(value: string, fromName: string): string {
 	const name = fromName.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 	return value
 		.replace(
-			// eslint-disable-next-line n8n-local-rules/no-dynamic-regexp -- node name is escaped before pattern construction
+			// eslint-disable-next-line MNI-local-rules/no-dynamic-regexp -- node name is escaped before pattern construction
 			new RegExp(`\\$\\(\\s*(['"])\\s*${name}\\s*\\1\\s*\\)`, 'g'),
 			(_m, q: string) => `$(${q}${fromName}${q})`,
 		)
 		.replace(
-			// eslint-disable-next-line n8n-local-rules/no-dynamic-regexp -- node name is escaped before pattern construction
+			// eslint-disable-next-line MNI-local-rules/no-dynamic-regexp -- node name is escaped before pattern construction
 			new RegExp(`\\$node\\[\\s*(['"])\\s*${name}\\s*\\1\\s*\\]`, 'g'),
 			(_m, q: string) => `$node[${q}${fromName}${q}]`,
 		)
 		.replace(
-			// eslint-disable-next-line n8n-local-rules/no-dynamic-regexp -- node name is escaped before pattern construction
+			// eslint-disable-next-line MNI-local-rules/no-dynamic-regexp -- node name is escaped before pattern construction
 			new RegExp(`\\$items\\(\\s*(['"])\\s*${name}\\s*\\1\\s*([,)])`, 'g'),
 			(_m, q: string, tail: string) => `$items(${q}${fromName}${q}${tail}`,
 		);
@@ -674,8 +674,8 @@ function walkExpressions(value: unknown, fromName: string): unknown {
 
 /**
  * Rewrites the `html` field of each Form-field entry whose `fieldType` is
- * `'html'` — mirrors `renameFormFields` in `n8n-workflow`, which the canvas
- * rename flow uses for the same node type. Not exported from `n8n-workflow`,
+ * `'html'` — mirrors `renameFormFields` in `MNI-workflow`, which the canvas
+ * rename flow uses for the same node type. Not exported from `MNI-workflow`,
  * so reimplemented here against the same shape.
  */
 function rewriteFormFieldsHtml(parameters: INodeParameters, fromName: string): INodeParameters {

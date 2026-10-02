@@ -23,15 +23,15 @@ This framework is an evolution of a previous system. We moved to **Playwright** 
 
 ### Prerequisites
 
-1. **Set encryption key:** The test credentials are encrypted. Add to `~/.n8n/config`:
+1. **Set encryption key:** The test credentials are encrypted. Add to `~/.MNI/config`:
    ```json
    {
-     "N8N_ENCRYPTION_KEY": "YOUR_KEY_FROM_BITWARDEN"
+     "MNI_ENCRYPTION_KEY": "YOUR_KEY_FROM_BITWARDEN"
    }
    ```
    Find the key in Bitwarden under "Testing Framework encryption key"
 
-2. **Fresh database (optional):** For a clean start, remove `~/.n8n/database.sqlite` if it exists
+2. **Fresh database (optional):** For a clean start, remove `~/.MNI/database.sqlite` if it exists
 3. **Setup Environment**: ```pnpm test:workflows:setup```
 
 ### Basic Commands

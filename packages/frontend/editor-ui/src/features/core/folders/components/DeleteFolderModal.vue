@@ -1,10 +1,10 @@
 <script lang="ts" setup>
 import { ref, computed } from 'vue';
-import { useToast } from '@n8n/composables/useToast';
+import { useToast } from '@MNI/composables/useToast';
 import Modal from '@/app/components/Modal.vue';
 import MoveToFolderDropdown from './MoveToFolderDropdown.vue';
-import { createEventBus, type EventBus } from '@n8n/utils/event-bus';
-import { useI18n } from '@n8n/i18n';
+import { createEventBus, type EventBus } from '@MNI/utils/event-bus';
+import { useI18n } from '@MNI/i18n';
 import { useFoldersStore } from '../folders.store';
 import { useRoute } from 'vue-router';
 import { useProjectsStore } from '@/features/collaboration/projects/projects.store';
@@ -12,7 +12,7 @@ import { ProjectTypes } from '@/features/collaboration/projects/projects.types';
 import type { ChangeLocationSearchResult, WorkflowListEventMap } from '../folders.types';
 
 import { ElRadio } from 'element-plus';
-import { N8nButton, N8nInput, N8nInputLabel, N8nText } from '@n8n/design-system';
+import { N8nButton, N8nInput, N8nInputLabel, N8nText } from '@MNI/design-system';
 const props = defineProps<{
 	modalName: string;
 	activeId: string;

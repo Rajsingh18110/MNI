@@ -1,7 +1,7 @@
-import { Logger } from '@n8n/backend-common';
-import { Get, RestController } from '@n8n/decorators';
+import { Logger } from '@MNI/backend-common';
+import { Get, RestController } from '@MNI/decorators';
 import { Response } from 'express';
-import { ensureError } from '@n8n/utils/errors/ensure-error';
+import { ensureError } from '@MNI/utils/errors/ensure-error';
 
 import { CredentialsOverwrites } from '@/credentials-overwrites';
 import { EventService } from '@/events/event.service';

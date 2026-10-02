@@ -4,12 +4,12 @@ import type {
 	INodeTypeDescription,
 	NodeGroupValidationResult,
 	NodeSelectionValidationResult,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import {
 	NodeHelpers,
 	validateNodeSelectionForExtraction,
 	validateNodeSelectionForGrouping,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { useNodeGroupRules } from '@/app/composables/useNodeGroupRules';
 import { injectWorkflowDocumentStore } from '@/app/stores/workflowDocument.store';

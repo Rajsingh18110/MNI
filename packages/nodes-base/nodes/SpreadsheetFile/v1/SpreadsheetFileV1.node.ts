@@ -13,7 +13,7 @@ import {
 } from '@e965/xlsx';
 import { oldVersionNotice } from '@utils/descriptions';
 import { flattenObject, generatePairedItemData } from '@utils/utilities';
-import { BINARY_ENCODING, NodeConnectionTypes, NodeOperationError } from 'n8n-workflow';
+import { BINARY_ENCODING, NodeConnectionTypes, NodeOperationError } from 'MNI-workflow';
 import type {
 	IDataObject,
 	IExecuteFunctions,
@@ -21,7 +21,7 @@ import type {
 	INodeType,
 	INodeTypeBaseDescription,
 	INodeTypeDescription,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import {
 	operationProperty,

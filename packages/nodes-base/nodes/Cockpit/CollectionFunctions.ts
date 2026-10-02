@@ -1,5 +1,5 @@
-import type { IExecuteFunctions, ILoadOptionsFunctions, IDataObject } from 'n8n-workflow';
-import { jsonParse } from 'n8n-workflow';
+import type { IExecuteFunctions, ILoadOptionsFunctions, IDataObject } from 'MNI-workflow';
+import { jsonParse } from 'MNI-workflow';
 
 import type { ICollection } from './CollectionInterface';
 import { cockpitApiRequest } from './GenericFunctions';

@@ -13,7 +13,7 @@ const { fetchCredentials, fetchProject, projectsStore } = vi.hoisted(() => ({
 	},
 }));
 
-vi.mock('@n8n/permissions', () => ({
+vi.mock('@MNI/permissions', () => ({
 	getResourcePermissions: (scopes?: string[]) => ({
 		credential: { create: scopes?.includes('credential:create') ?? false },
 	}),

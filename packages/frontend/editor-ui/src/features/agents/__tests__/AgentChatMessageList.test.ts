@@ -5,13 +5,13 @@ import type { ChatMessage } from '@/features/ai/shared/agentsChat/types';
 
 const copySpy = vi.fn();
 
-vi.mock('@n8n/composables/useClipboard', () => ({
+vi.mock('@MNI/composables/useClipboard', () => ({
 	useClipboard: function useClipboard() {
 		return { copy: copySpy };
 	},
 }));
 
-vi.mock('@n8n/design-system', () => ({
+vi.mock('@MNI/design-system', () => ({
 	N8nAiActivityStep: {
 		props: ['label', 'loading'],
 		data: () => ({ open: false }),
@@ -112,7 +112,7 @@ vi.mock('@/features/agents/components/interactive/InteractiveCard.vue', () => ({
 	},
 }));
 
-vi.mock('@n8n/i18n', () => ({
+vi.mock('@MNI/i18n', () => ({
 	useI18n: () => ({
 		baseText: (key: string, opts?: { interpolate?: Record<string, unknown> }) => {
 			if (!opts?.interpolate) return key;
@@ -776,13 +776,13 @@ describe('AgentChatMessageList', () => {
 			props: {
 				messages: [
 					{
-						id: 'assistant-n8n',
+						id: 'assistant-MNI',
 						role: 'assistant',
 						content: '',
 						toolCalls: [
 							{
 								tool: 'chat_action',
-								toolCallId: 'tc-n8n',
+								toolCallId: 'tc-MNI',
 								state: 'suspended',
 								suspendPayload: { type: 'integration_action' },
 							},
@@ -832,13 +832,13 @@ describe('AgentChatMessageList', () => {
 			props: {
 				messages: [
 					{
-						id: 'assistant-n8n-msg',
+						id: 'assistant-MNI-msg',
 						role: 'assistant',
 						content: 'Working on it...',
 						toolCalls: [
 							{
 								tool: 'chat_action',
-								toolCallId: 'tc-n8n',
+								toolCallId: 'tc-MNI',
 								state: 'suspended',
 								suspendPayload: { type: 'integration_action' },
 							},

@@ -13,7 +13,7 @@ const api = vi.hoisted(() => ({
 
 vi.mock('../promotionsSettings.api', () => api);
 
-vi.mock('@n8n/stores/useRootStore', () => ({
+vi.mock('@MNI/stores/useRootStore', () => ({
 	useRootStore: () => ({ publicApiContext: {} }),
 }));
 

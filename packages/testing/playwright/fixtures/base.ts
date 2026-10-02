@@ -1,9 +1,9 @@
 import type { CurrentsFixtures, CurrentsWorkerFixtures } from '@currents/playwright';
 import { fixtures as currentsFixtures } from '@currents/playwright';
 import { test as base, expect, request } from '@playwright/test';
-import type { ServiceHelpers } from 'n8n-containers/services/types';
-import type { N8NConfig, N8NStack } from 'n8n-containers/stack';
-import { createN8NStack } from 'n8n-containers/stack';
+import type { ServiceHelpers } from 'MNI-containers/services/types';
+import type { N8NConfig, N8NStack } from 'MNI-containers/stack';
+import { createN8NStack } from 'MNI-containers/stack';
 
 import { a11yFixtures, type A11yTestFixtures } from './a11y';
 import {
@@ -13,7 +13,7 @@ import {
 } from './capabilities';
 import { consoleErrorFixtures } from './console-error-monitor';
 import { engineParityDisposition, workflowSettingsFor } from './engine-parity';
-import { N8N_AUTH_COOKIE } from '../config/constants';
+import { MNI_AUTH_COOKIE } from '../config/constants';
 import { setupDefaultInterceptors } from '../config/intercepts';
 import { backendV8CoverageFixtures } from '../fixtures/backend-v8-coverage';
 import { observabilityFixtures, type ObservabilityTestFixtures } from '../fixtures/observability';
@@ -70,12 +70,12 @@ type WorkerFixtures = {
 type ProjectUse = { containerConfig?: N8NConfig };
 
 function parseGlobalTestEnv(): Record<string, string> {
-	const raw = process.env.N8N_TEST_ENV;
+	const raw = process.env.MNI_TEST_ENV;
 	if (!raw) return {};
 	try {
 		return JSON.parse(raw) as Record<string, string>;
 	} catch {
-		console.warn('[base.ts] Failed to parse N8N_TEST_ENV');
+		console.warn('[base.ts] Failed to parse MNI_TEST_ENV');
 		return {};
 	}
 }
@@ -84,7 +84,7 @@ function logKeepalive(container: N8NStack): void {
 	console.log('\n=== KEEPALIVE: Containers left running for debugging ===');
 	console.log(`    URL: ${container.baseUrl}`);
 	console.log(`    Project: ${container.projectName}`);
-	console.log('    Cleanup: pnpm --filter n8n-containers stack:clean:all');
+	console.log('    Cleanup: pnpm --filter MNI-containers stack:clean:all');
 	console.log('=========================================================\n');
 }
 
@@ -133,7 +133,7 @@ export const test = base.extend<
 	],
 
 	// Resolves the effective N8NConfig from project.containerConfig (base) +
-	// capability (override) + N8N_TEST_ENV (global). Topology-neutral: it
+	// capability (override) + MNI_TEST_ENV (global). Topology-neutral: it
 	// always produces a config, even when a container will not be provisioned.
 	n8nStackConfig: [
 		async ({ capability }, use, workerInfo) => {
@@ -155,11 +155,11 @@ export const test = base.extend<
 					...base.env,
 					...override.env,
 					E2E_TESTS: 'true',
-					N8N_RESTRICT_FILE_ACCESS_TO: '',
+					MNI_RESTRICT_FILE_ACCESS_TO: '',
 				},
-				// Coverage pipeline opt-in: when the coverage runner sets N8N_COVERAGE_DIR,
+				// Coverage pipeline opt-in: when the coverage runner sets MNI_COVERAGE_DIR,
 				// bridge it to the stack's typed config so containers collect V8 coverage.
-				...(process.env.N8N_COVERAGE_DIR ? { coverageHostDir: process.env.N8N_COVERAGE_DIR } : {}),
+				...(process.env.MNI_COVERAGE_DIR ? { coverageHostDir: process.env.MNI_COVERAGE_DIR } : {}),
 			};
 
 			await use(config);
@@ -168,7 +168,7 @@ export const test = base.extend<
 	],
 
 	// Creates container from n8nStackConfig.
-	// When N8N_BASE_URL is set, skips container creation for local testing.
+	// When MNI_BASE_URL is set, skips container creation for local testing.
 	n8nContainer: [
 		async ({ n8nStackConfig }, use) => {
 			if (getBackendUrl()) {
@@ -179,7 +179,7 @@ export const test = base.extend<
 			const container = await createN8NStack(n8nStackConfig);
 			await use(container);
 
-			if (process.env.N8N_CONTAINERS_KEEPALIVE === 'true') {
+			if (process.env.MNI_CONTAINERS_KEEPALIVE === 'true') {
 				logKeepalive(container);
 				return;
 			}
@@ -191,7 +191,7 @@ export const test = base.extend<
 
 	n8nUrl: [
 		async ({ n8nContainer }, use) => {
-			const envBaseURL = process.env.N8N_BASE_URL ?? n8nContainer?.baseUrl;
+			const envBaseURL = process.env.MNI_BASE_URL ?? n8nContainer?.baseUrl;
 			await use(envBaseURL);
 		},
 		{ scope: 'worker' },
@@ -259,7 +259,7 @@ export const test = base.extend<
 		// Set debounce multiplier for E2E tests - 1 means normal timing (no change)
 		// Can be lowered (e.g. 0.5) to speed up tests, but avoid 0 as it causes race conditions
 		await page.addInitScript(() => {
-			sessionStorage.setItem('N8N_DEBOUNCE_MULTIPLIER', '1');
+			sessionStorage.setItem('MNI_DEBOUNCE_MULTIPLIER', '1');
 		});
 
 		const n8nInstance = new n8nPage(page, new ApiHelpers(page.context().request, apiOptions));
@@ -268,7 +268,7 @@ export const test = base.extend<
 		// Auth fallback: untagged tests establish the owner session
 		const hasAuthTag = testInfo.tags.some((tag) => tag.startsWith('@auth:'));
 		const cookies = await context.cookies();
-		const authCookie = cookies.find((cookie) => cookie.name === N8N_AUTH_COOKIE);
+		const authCookie = cookies.find((cookie) => cookie.name === MNI_AUTH_COOKIE);
 		if (!hasAuthTag && !authCookie) {
 			await n8nInstance.api.signin('owner');
 		}
@@ -286,7 +286,7 @@ export const test = base.extend<
 
 		const hasAuthTag = testInfo.tags.some((tag) => tag.startsWith('@auth:'));
 		const apiCookies = await context.storageState();
-		const authCookie = apiCookies.cookies.find((cookie) => cookie.name === N8N_AUTH_COOKIE);
+		const authCookie = apiCookies.cookies.find((cookie) => cookie.name === MNI_AUTH_COOKIE);
 
 		if (!hasAuthTag && !authCookie) {
 			await api.signin('owner');
@@ -323,7 +323,7 @@ export const test = base.extend<
 
 			const hasAuthTag = testInfo.tags.some((tag) => tag.startsWith('@auth:'));
 			const apiCookies = await context.storageState();
-			const authCookie = apiCookies.cookies.find((cookie) => cookie.name === N8N_AUTH_COOKIE);
+			const authCookie = apiCookies.cookies.find((cookie) => cookie.name === MNI_AUTH_COOKIE);
 
 			if (!hasAuthTag && !authCookie) {
 				await api.signin('owner');

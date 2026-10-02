@@ -1,5 +1,5 @@
-import type { INodeTypeBaseDescription, IVersionedNodeType } from 'n8n-workflow';
-import { VersionedNodeType } from 'n8n-workflow';
+import type { INodeTypeBaseDescription, IVersionedNodeType } from 'MNI-workflow';
+import { VersionedNodeType } from 'MNI-workflow';
 
 import { GoogleSheetsV1 } from './v1/GoogleSheetsV1.node';
 import { GoogleSheetsV2 } from './v2/GoogleSheetsV2.node';
@@ -19,7 +19,7 @@ export class GoogleSheets extends VersionedNodeType {
 					'For workflow data storage, DataTable with upsert avoids duplicates. Use Google Sheets when spreadsheet collaboration is specifically needed.',
 				relatedNodes: [
 					{
-						nodeType: 'n8n-nodes-base.dataTable',
+						nodeType: 'MNI-nodes-base.dataTable',
 						relationHint: 'Prefer for workflow data storage with upsert',
 					},
 				],

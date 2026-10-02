@@ -1,14 +1,14 @@
 import '@/app/polyfills';
 import SourceControlInitializationErrorMessage from '@/features/integrations/sourceControl.ee/components/SourceControlInitializationErrorMessage.vue';
 import { useExternalHooks } from '@/app/composables/useExternalHooks';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
-import { useToast } from '@n8n/composables/useToast';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
+import { useToast } from '@MNI/composables/useToast';
 import { registerToastNotifier } from '@/app/init/toastNotifier';
 import { registerExperimentModals } from '@/app/modals.manifest';
 import { isDataWorkerEnabled } from '@/app/workers/isDataWorkerEnabled';
 import { EnterpriseEditionFeature, VIEWS } from '@/app/constants';
 
-import type { AuthenticationMethod } from '@n8n/api-types';
+import type { AuthenticationMethod } from '@MNI/api-types';
 import {
 	registerModuleCommands,
 	registerModuleModals,
@@ -18,23 +18,23 @@ import {
 	registerModuleResources,
 	registerModuleSettingsPages,
 } from '@/app/moduleInitializer/moduleInitializer';
-import { useCloudPlanStore } from '@n8n/stores/cloudPlan.store';
+import { useCloudPlanStore } from '@MNI/stores/cloudPlan.store';
 import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';
 import { useNpsSurveyStore } from '@/app/stores/npsSurvey.store';
 import { usePostHog } from '@/app/stores/posthog.store';
 import { useProjectsStore } from '@/features/collaboration/projects/projects.store';
-import { useRBACStore } from '@n8n/stores/rbac.store';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useRBACStore } from '@MNI/stores/rbac.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { useUIStore } from '@/app/stores/ui.store';
 import { useSourceControlStore } from '@/features/integrations/sourceControl.ee/sourceControl.store';
 import { useSSOStore } from '@/features/settings/sso/sso.store';
-import { useUsersStore } from '@n8n/stores/users.store';
-import { useVersionsStore } from '@n8n/stores/versions.store';
+import { useUsersStore } from '@MNI/stores/users.store';
+import { useVersionsStore } from '@MNI/stores/versions.store';
 import { useBannersStore } from '@/features/shared/banners/banners.store';
-import { useI18n } from '@n8n/i18n';
-import { useRootStore } from '@n8n/stores/useRootStore';
+import { useI18n } from '@MNI/i18n';
+import { useRootStore } from '@MNI/stores/useRootStore';
 import { h } from 'vue';
-import { useRolesStore } from '@n8n/stores/roles.store';
+import { useRolesStore } from '@MNI/stores/roles.store';
 import { useDataTableStore } from '@/features/core/dataTable/dataTable.store';
 import { useFavoritesStore } from '@/app/stores/favorites.store';
 import { hasPermission } from '@/app/utils/rbac/permissions';
@@ -152,7 +152,7 @@ export async function initializeAuthenticatedFeatures(
 	versionsStore.registerModalOpeners(modalOpeners);
 
 	// Provide the app-side capability `users.store` no longer imports directly
-	// after moving into `@n8n/stores` (RBAC check).
+	// after moving into `@MNI/stores` (RBAC check).
 	usersStore.setPermissionsResolvers({
 		listUsers: () => hasPermission(['rbac'], { rbac: { scope: 'user:list' } }),
 	});

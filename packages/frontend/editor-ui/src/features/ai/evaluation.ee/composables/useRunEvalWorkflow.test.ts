@@ -48,7 +48,7 @@ describe('useRunEvalWorkflow', () => {
 
 	it('runs the workflow directly when there is no chat trigger', () => {
 		const emitSpy = vi.spyOn(nodeViewEventBus, 'emit');
-		mocks.allNodes = [{ name: 'Trigger', type: 'n8n-nodes-base.manualTrigger' }];
+		mocks.allNodes = [{ name: 'Trigger', type: 'MNI-nodes-base.manualTrigger' }];
 
 		const { runWorkflow } = useRunEvalWorkflow();
 		runWorkflow();
@@ -72,7 +72,7 @@ describe('useRunEvalWorkflow', () => {
 		const emitSpy = vi.spyOn(nodeViewEventBus, 'emit');
 		mocks.allNodes = [
 			{ name: 'When chat message received', type: CHAT_TRIGGER_NODE_TYPE, disabled: true },
-			{ name: 'Trigger', type: 'n8n-nodes-base.manualTrigger' },
+			{ name: 'Trigger', type: 'MNI-nodes-base.manualTrigger' },
 		];
 
 		const { runWorkflow } = useRunEvalWorkflow();
@@ -84,10 +84,10 @@ describe('useRunEvalWorkflow', () => {
 
 	it('lists enabled trigger nodes', () => {
 		mocks.allNodes = [
-			{ name: 'Trigger A', type: 'n8n-nodes-base.manualTrigger' },
-			{ name: 'Disabled', type: 'n8n-nodes-base.scheduleTrigger', disabled: true },
-			{ name: 'Not a trigger', type: 'n8n-nodes-base.set' },
-			{ name: 'Trigger B', type: 'n8n-nodes-base.chatTrigger' },
+			{ name: 'Trigger A', type: 'MNI-nodes-base.manualTrigger' },
+			{ name: 'Disabled', type: 'MNI-nodes-base.scheduleTrigger', disabled: true },
+			{ name: 'Not a trigger', type: 'MNI-nodes-base.set' },
+			{ name: 'Trigger B', type: 'MNI-nodes-base.chatTrigger' },
 		];
 
 		const { triggerNodes } = useRunEvalWorkflow();
@@ -99,7 +99,7 @@ describe('useRunEvalWorkflow', () => {
 		const emitSpy = vi.spyOn(nodeViewEventBus, 'emit');
 		const { runTriggerNode } = useRunEvalWorkflow();
 
-		runTriggerNode({ name: 'Trigger A', type: 'n8n-nodes-base.manualTrigger' });
+		runTriggerNode({ name: 'Trigger A', type: 'MNI-nodes-base.manualTrigger' });
 
 		expect(mocks.runEntireWorkflow).toHaveBeenCalledWith('node', 'Trigger A');
 		expect(emitSpy).not.toHaveBeenCalledWith('openChat');

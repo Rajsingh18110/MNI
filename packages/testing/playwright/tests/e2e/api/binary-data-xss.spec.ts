@@ -1,9 +1,9 @@
-import { workflow, trigger, node } from '@n8n/workflow-sdk';
+import { workflow, trigger, node } from '@MNI/workflow-sdk';
 import flatted from 'flatted';
-import type { IWorkflowBase } from 'n8n-workflow';
+import type { IWorkflowBase } from 'MNI-workflow';
 import { nanoid } from 'nanoid';
 
-import { N8N_AUTH_COOKIE } from '../../../config/constants';
+import { MNI_AUTH_COOKIE } from '../../../config/constants';
 import { test, expect } from '../../../fixtures/base';
 
 const TRIGGER_NAME = 'Manual Trigger';
@@ -19,7 +19,7 @@ const CODE_NODE_NAME = 'HTML Binary Producer';
  */
 function createHtmlBinaryWorkflow(): IWorkflowBase {
 	const manualTrigger = trigger({
-		type: 'n8n-nodes-base.manualTrigger',
+		type: 'MNI-nodes-base.manualTrigger',
 		version: 1,
 		config: {
 			name: TRIGGER_NAME,
@@ -28,7 +28,7 @@ function createHtmlBinaryWorkflow(): IWorkflowBase {
 	});
 
 	const codeNode = node({
-		type: 'n8n-nodes-base.code',
+		type: 'MNI-nodes-base.code',
 		version: 1,
 		config: {
 			name: CODE_NODE_NAME,
@@ -74,7 +74,7 @@ test.describe(
 			// Ensure auth cookie is also set for backend domain (needed when
 			// frontend and backend run on different ports/hosts)
 			const { cookies } = await api.request.storageState();
-			const authCookie = cookies.find((c) => c.name === N8N_AUTH_COOKIE)!;
+			const authCookie = cookies.find((c) => c.name === MNI_AUTH_COOKIE)!;
 			await page
 				.context()
 				.addCookies([{ name: authCookie.name, value: authCookie.value, url: backendUrl }]);

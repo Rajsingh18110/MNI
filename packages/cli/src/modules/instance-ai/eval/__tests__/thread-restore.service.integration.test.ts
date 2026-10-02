@@ -1,14 +1,14 @@
-import type { LicenseState } from '@n8n/backend-common';
-import { createTeamProject, testDb, testModules } from '@n8n/backend-test-utils';
-import type { Project } from '@n8n/db';
+import type { LicenseState } from '@MNI/backend-common';
+import { createTeamProject, testDb, testModules } from '@MNI/backend-test-utils';
+import type { Project } from '@MNI/db';
 import {
 	CredentialsRepository,
 	SharedWorkflowRepository,
 	WorkflowPublishedVersionRepository,
 	WorkflowRepository,
-} from '@n8n/db';
-import type { PolicyViolation } from '@n8n/decorators';
-import { Container } from '@n8n/di';
+} from '@MNI/db';
+import type { PolicyViolation } from '@MNI/decorators';
+import { Container } from '@MNI/di';
 import { mock } from 'vitest-mock-extended';
 
 import { DataTableService } from '@/modules/data-table/data-table.service';
@@ -192,7 +192,7 @@ describe('EvalThreadRestoreService.restoreWorkflows (policy seal)', () => {
 		kind: 'test-denial',
 		checkId: 'integration-test-thread-restore',
 		message: 'Denied by the test policy check',
-		subject: 'n8n-nodes-base.manualTrigger',
+		subject: 'MNI-nodes-base.manualTrigger',
 		subjectType: 'nodeType',
 	};
 	/** Only the seed with this name is refused; `null` allows everything. */
@@ -209,7 +209,7 @@ describe('EvalThreadRestoreService.restoreWorkflows (policy seal)', () => {
 			{
 				id: `${id}-trigger`,
 				name: 'Manual Trigger',
-				type: 'n8n-nodes-base.manualTrigger',
+				type: 'MNI-nodes-base.manualTrigger',
 				typeVersion: 1,
 				position: [240, 300],
 				parameters: {},

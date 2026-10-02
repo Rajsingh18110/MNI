@@ -1,5 +1,5 @@
-import type { ToolDescriptor } from '@n8n/agents';
-import { type AgentJsonConfig } from '@n8n/api-types';
+import type { ToolDescriptor } from '@MNI/agents';
+import { type AgentJsonConfig } from '@MNI/api-types';
 import type { Mocked } from 'vitest';
 import { mock } from 'vitest-mock-extended';
 

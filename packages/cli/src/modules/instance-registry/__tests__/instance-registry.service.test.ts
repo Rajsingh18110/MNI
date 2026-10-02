@@ -1,9 +1,9 @@
-import type { InstanceRegistration } from '@n8n/api-types';
-import type { Logger } from '@n8n/backend-common';
-import type { ExecutionsConfig, ScalingModeConfig } from '@n8n/config';
-import { WorkerPoolConfig } from '@n8n/config';
-import { Container } from '@n8n/di';
-import type { InstanceSettings } from 'n8n-core';
+import type { InstanceRegistration } from '@MNI/api-types';
+import type { Logger } from '@MNI/backend-common';
+import type { ExecutionsConfig, ScalingModeConfig } from '@MNI/config';
+import { WorkerPoolConfig } from '@MNI/config';
+import { Container } from '@MNI/di';
+import type { InstanceSettings } from 'MNI-core';
 import { mock } from 'vitest-mock-extended';
 
 import { InstanceRegistryService } from '../instance-registry.service';

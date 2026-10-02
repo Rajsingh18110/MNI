@@ -5,7 +5,7 @@ import type {
 	PolicyDecision,
 	PolicyViolation,
 	PolicyVersionRef,
-} from '@n8n/decorators';
+} from '@MNI/decorators';
 
 import type { PolicyContext } from '@/policy/policy-enforcement-backend';
 

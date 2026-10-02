@@ -11,7 +11,7 @@ import type { EvaluationCollectionDetail } from '../evalCollections.types';
 import CompareCollectionView from './CompareCollectionView.vue';
 
 const track = vi.fn();
-vi.mock('@n8n/composables/useTelemetry', () => ({
+vi.mock('@MNI/composables/useTelemetry', () => ({
 	useTelemetry: () => ({ track }),
 }));
 
@@ -21,7 +21,7 @@ vi.mock('vue-router', async (importOriginal) => ({
 	useRouter: () => ({ push: vi.fn(), replace: routerReplace }),
 }));
 
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: vi.fn(() => ({ showError: vi.fn(), showMessage: vi.fn() })),
 }));
 

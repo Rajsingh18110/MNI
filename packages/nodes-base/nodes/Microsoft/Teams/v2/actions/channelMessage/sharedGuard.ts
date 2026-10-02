@@ -1,5 +1,5 @@
-import type { IExecuteFunctions } from 'n8n-workflow';
-import { NodeOperationError } from 'n8n-workflow';
+import type { IExecuteFunctions } from 'MNI-workflow';
+import { NodeOperationError } from 'MNI-workflow';
 
 import { getTeamsCredentialType, SERVICE_PRINCIPAL_AUTH } from '../../transport';
 

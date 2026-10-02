@@ -25,11 +25,11 @@ vi.mock('@/app/stores/posthog.store', () => ({
 	usePostHog: () => ({ trackExposure: mockTrackExposure }),
 }));
 
-vi.mock('@n8n/composables/useTelemetry', () => ({
+vi.mock('@MNI/composables/useTelemetry', () => ({
 	useTelemetry: () => ({ track: mockTrack }),
 }));
 
-import { TELEMETRY_EVENT } from '@n8n/telemetry';
+import { TELEMETRY_EVENT } from '@MNI/telemetry';
 
 import { MCP_JSON_NUDGE_EXPERIMENT } from '@/app/constants/experiments';
 import { MCP_JSON_NUDGE_MODAL_KEY } from '@/experiments/mcpJsonNudge/constants';

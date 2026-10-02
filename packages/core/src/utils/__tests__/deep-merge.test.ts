@@ -1,4 +1,4 @@
-import { deepCopy, type PlaintextExecutionContext } from 'n8n-workflow';
+import { deepCopy, type PlaintextExecutionContext } from 'MNI-workflow';
 
 import { deepMerge } from '../deep-merge';
 

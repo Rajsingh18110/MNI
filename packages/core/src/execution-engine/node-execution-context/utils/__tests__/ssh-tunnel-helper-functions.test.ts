@@ -1,4 +1,4 @@
-import type { SSHCredentials } from 'n8n-workflow';
+import type { SSHCredentials } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import { mockInstance } from '@test/utils';

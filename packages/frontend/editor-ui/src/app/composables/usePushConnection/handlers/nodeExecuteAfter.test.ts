@@ -1,8 +1,8 @@
 import { createPinia, setActivePinia } from 'pinia';
 import { nodeExecuteAfter } from './nodeExecuteAfter';
 import { useAssistantStore } from '@/features/ai/assistant/assistant.store';
-import type { NodeExecuteAfter } from '@n8n/api-types/push/execution';
-import { TRIMMED_TASK_DATA_CONNECTIONS_KEY } from 'n8n-workflow';
+import type { NodeExecuteAfter } from '@MNI/api-types/push/execution';
+import { TRIMMED_TASK_DATA_CONNECTIONS_KEY } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 import type { Router } from 'vue-router';
 import { useWorkflowExecutionStateStore } from '@/app/stores/workflowExecutionState.store';

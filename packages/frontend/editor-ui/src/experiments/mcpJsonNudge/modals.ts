@@ -1,4 +1,4 @@
-import type { ModalDefinition } from '@n8n/frontend-module-sdk';
+import type { ModalDefinition } from '@MNI/frontend-module-sdk';
 import { MCP_JSON_NUDGE_MODAL_KEY } from './constants';
 
 export const MCP_JSON_NUDGE_MODALS: ModalDefinition[] = [

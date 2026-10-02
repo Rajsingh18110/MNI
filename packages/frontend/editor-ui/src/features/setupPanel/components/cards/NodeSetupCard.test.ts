@@ -118,7 +118,7 @@ const renderComponent = createComponentRenderer(NodeSetupCard);
 const createCredentialState = (overrides: Partial<NodeSetupState> = {}): NodeSetupState => ({
 	node: createTestNode({
 		name: 'OpenAI',
-		type: 'n8n-nodes-base.openAi',
+		type: 'MNI-nodes-base.openAi',
 		parameters: {},
 	}) as INodeUi,
 	credentialType: 'openAiApi',
@@ -132,7 +132,7 @@ const createCredentialState = (overrides: Partial<NodeSetupState> = {}): NodeSet
 	allNodesUsingCredential: [
 		createTestNode({
 			name: 'OpenAI',
-			type: 'n8n-nodes-base.openAi',
+			type: 'MNI-nodes-base.openAi',
 		}) as INodeUi,
 	],
 	...overrides,
@@ -141,7 +141,7 @@ const createCredentialState = (overrides: Partial<NodeSetupState> = {}): NodeSet
 const createParameterOnlyState = (overrides: Partial<NodeSetupState> = {}): NodeSetupState => ({
 	node: createTestNode({
 		name: 'Code',
-		type: 'n8n-nodes-base.code',
+		type: 'MNI-nodes-base.code',
 		parameters: {},
 	}) as INodeUi,
 	parameterIssues: {},
@@ -189,7 +189,7 @@ describe('NodeSetupCard', () => {
 						state: createCredentialState({
 							node: createTestNode({
 								name: 'My OpenAI Node',
-								type: 'n8n-nodes-base.openAi',
+								type: 'MNI-nodes-base.openAi',
 							}) as INodeUi,
 						}),
 						expanded: true,
@@ -234,8 +234,8 @@ describe('NodeSetupCard', () => {
 			it('should show nodes hint when credential is used by multiple nodes', () => {
 				const state = createCredentialState({
 					allNodesUsingCredential: [
-						createTestNode({ name: 'OpenAI', type: 'n8n-nodes-base.openAi' }) as INodeUi,
-						createTestNode({ name: 'GPT Node', type: 'n8n-nodes-base.openAi' }) as INodeUi,
+						createTestNode({ name: 'OpenAI', type: 'MNI-nodes-base.openAi' }) as INodeUi,
+						createTestNode({ name: 'GPT Node', type: 'MNI-nodes-base.openAi' }) as INodeUi,
 					],
 				});
 
@@ -249,7 +249,7 @@ describe('NodeSetupCard', () => {
 			it('should not show nodes hint when credential is used by a single node', () => {
 				const state = createCredentialState({
 					allNodesUsingCredential: [
-						createTestNode({ name: 'OpenAI', type: 'n8n-nodes-base.openAi' }) as INodeUi,
+						createTestNode({ name: 'OpenAI', type: 'MNI-nodes-base.openAi' }) as INodeUi,
 					],
 				});
 
@@ -337,7 +337,7 @@ describe('NodeSetupCard', () => {
 				nodeTypesStore.isTriggerNode = vi.fn().mockReturnValue(true);
 				const triggerNode = createTestNode({
 					name: 'SlackTrigger',
-					type: 'n8n-nodes-base.slackTrigger',
+					type: 'MNI-nodes-base.slackTrigger',
 				}) as INodeUi;
 
 				const { container } = renderComponent({
@@ -518,11 +518,11 @@ describe('NodeSetupCard', () => {
 
 			it('should render trigger execute button when node is the first trigger', () => {
 				nodeTypesStore.isTriggerNode = vi.fn(
-					(type: string) => type === 'n8n-nodes-base.slackTrigger',
+					(type: string) => type === 'MNI-nodes-base.slackTrigger',
 				);
 				const triggerNode = createTestNode({
 					name: 'SlackTrigger',
-					type: 'n8n-nodes-base.slackTrigger',
+					type: 'MNI-nodes-base.slackTrigger',
 				}) as INodeUi;
 
 				const { getByTestId } = renderComponent({
@@ -538,11 +538,11 @@ describe('NodeSetupCard', () => {
 
 			it('should not render trigger execute button when firstTriggerName does not match', () => {
 				nodeTypesStore.isTriggerNode = vi.fn(
-					(type: string) => type === 'n8n-nodes-base.slackTrigger',
+					(type: string) => type === 'MNI-nodes-base.slackTrigger',
 				);
 				const triggerNode = createTestNode({
 					name: 'SlackTrigger2',
-					type: 'n8n-nodes-base.slackTrigger',
+					type: 'MNI-nodes-base.slackTrigger',
 				}) as INodeUi;
 
 				const { queryByTestId } = renderComponent({
@@ -558,11 +558,11 @@ describe('NodeSetupCard', () => {
 
 			it('should not render trigger buttons when collapsed', () => {
 				nodeTypesStore.isTriggerNode = vi.fn(
-					(type: string) => type === 'n8n-nodes-base.slackTrigger',
+					(type: string) => type === 'MNI-nodes-base.slackTrigger',
 				);
 				const triggerNode = createTestNode({
 					name: 'SlackTrigger',
-					type: 'n8n-nodes-base.slackTrigger',
+					type: 'MNI-nodes-base.slackTrigger',
 				}) as INodeUi;
 
 				const { queryByTestId } = renderComponent({
@@ -578,11 +578,11 @@ describe('NodeSetupCard', () => {
 
 			it('should not render trigger buttons when firstTriggerName is null', () => {
 				nodeTypesStore.isTriggerNode = vi.fn(
-					(type: string) => type === 'n8n-nodes-base.slackTrigger',
+					(type: string) => type === 'MNI-nodes-base.slackTrigger',
 				);
 				const triggerNode = createTestNode({
 					name: 'SlackTrigger',
-					type: 'n8n-nodes-base.slackTrigger',
+					type: 'MNI-nodes-base.slackTrigger',
 				}) as INodeUi;
 
 				const { queryByTestId } = renderComponent({
@@ -600,14 +600,14 @@ describe('NodeSetupCard', () => {
 		describe('listening callout', () => {
 			it('should show callout when trigger node is listening', () => {
 				nodeTypesStore.isTriggerNode = vi.fn(
-					(type: string) => type === 'n8n-nodes-base.slackTrigger',
+					(type: string) => type === 'MNI-nodes-base.slackTrigger',
 				);
 				mockComposableState.isInListeningState = true;
 				mockComposableState.listeningHint = 'Go to Slack and create an event';
 
 				const triggerNode = createTestNode({
 					name: 'SlackTrigger',
-					type: 'n8n-nodes-base.slackTrigger',
+					type: 'MNI-nodes-base.slackTrigger',
 				}) as INodeUi;
 
 				const { getByTestId } = renderComponent({
@@ -625,11 +625,11 @@ describe('NodeSetupCard', () => {
 
 			it('should not show callout when not listening', () => {
 				nodeTypesStore.isTriggerNode = vi.fn(
-					(type: string) => type === 'n8n-nodes-base.slackTrigger',
+					(type: string) => type === 'MNI-nodes-base.slackTrigger',
 				);
 				const triggerNode = createTestNode({
 					name: 'SlackTrigger',
-					type: 'n8n-nodes-base.slackTrigger',
+					type: 'MNI-nodes-base.slackTrigger',
 				}) as INodeUi;
 
 				const { queryByTestId } = renderComponent({
@@ -701,7 +701,7 @@ describe('NodeSetupCard', () => {
 						state: createParameterOnlyState({
 							node: createTestNode({
 								name: 'My Code Node',
-								type: 'n8n-nodes-base.code',
+								type: 'MNI-nodes-base.code',
 							}) as INodeUi,
 						}),
 						expanded: true,

@@ -1,7 +1,7 @@
-import { Service } from '@n8n/di';
-import { Cipher } from 'n8n-core';
-import type { IDataObject, IRunExecutionData } from 'n8n-workflow';
-import { toSecureArtifacts } from 'n8n-workflow';
+import { Service } from '@MNI/di';
+import { Cipher } from 'MNI-core';
+import type { IDataObject, IRunExecutionData } from 'MNI-workflow';
+import { toSecureArtifacts } from 'MNI-workflow';
 
 import { RuntimeCredentialProvider } from '@/services/runtime-credential-proxy.service';
 

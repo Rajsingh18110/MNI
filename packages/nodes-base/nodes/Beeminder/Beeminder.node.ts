@@ -14,7 +14,7 @@ import {
 	validateNodeParameters,
 	assertParamIsNumber,
 	assertParamIsArray,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import type { Datapoint } from './Beeminder.node.functions';
 import {
@@ -51,7 +51,7 @@ export class Beeminder implements INodeType {
 			name: 'Beeminder',
 		},
 		usableAsTool: true,
-		// eslint-disable-next-line n8n-nodes-base/node-class-description-icon-not-svg
+		// eslint-disable-next-line MNI-nodes-base/node-class-description-icon-not-svg
 		icon: 'file:beeminder.png',
 		inputs: [NodeConnectionTypes.Main],
 		outputs: [NodeConnectionTypes.Main],
@@ -200,7 +200,7 @@ export class Beeminder implements INodeType {
 						resource: ['goal'],
 					},
 				},
-				// eslint-disable-next-line n8n-nodes-base/node-param-options-type-unsorted-items
+				// eslint-disable-next-line MNI-nodes-base/node-param-options-type-unsorted-items
 				options: [
 					{
 						name: 'Create',
@@ -408,7 +408,7 @@ export class Beeminder implements INodeType {
 						operation: ['create'],
 					},
 				},
-				// eslint-disable-next-line n8n-nodes-base/node-param-options-type-unsorted-items
+				// eslint-disable-next-line MNI-nodes-base/node-param-options-type-unsorted-items
 				options: [
 					{
 						name: 'Hustler',

@@ -25,7 +25,7 @@
 		"requestHeaders": {
 			"Content-Type": "application/json",
 			"Authorization": "[REDACTED]",
-			"User-Agent": "n8n-monorepo@2.28.0"
+			"User-Agent": "MNI-monorepo@2.28.0"
 		},
 		"requestBody": "{\"query\":\"mutation createAgentActivity($input: AgentActivityCreateInput!) { agentActivityCreate(input: $input) { success } }\",\"variables\":{\"input\":{\"agentSessionId\":\"AGENT_SESSION_1\",\"content\":{\"type\":\"response\",\"body\":\"Hey! I'm here and ready to help.\"}}}}",
 		"status": 200,

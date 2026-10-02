@@ -1,6 +1,6 @@
 import type { Response } from 'express';
 import { mock } from 'vitest-mock-extended';
-import type { IDataObject, INode, IWebhookFunctions } from 'n8n-workflow';
+import type { IDataObject, INode, IWebhookFunctions } from 'MNI-workflow';
 
 import { FacebookLeadAdsTrigger } from '../FacebookLeadAdsTrigger.node';
 import type { Mocked } from 'vitest';

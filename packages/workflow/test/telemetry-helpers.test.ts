@@ -152,7 +152,7 @@ describe('generateNodesGraph', () => {
 					parameters: {},
 					id: 'fa7d5628-5a47-4c8f-98ef-fb3532e5a9f5',
 					name: 'When clicking "Execute Workflow"',
-					type: 'n8n-nodes-base.manualTrigger',
+					type: 'MNI-nodes-base.manualTrigger',
 					typeVersion: 1,
 					position: [420, 420],
 				},
@@ -179,12 +179,12 @@ describe('generateNodesGraph', () => {
 		};
 		expect(generateNodesGraph(workflow, nodeTypes)).toEqual({
 			nodeGraph: {
-				node_types: ['n8n-nodes-base.manualTrigger', 'test.unknown'],
+				node_types: ['MNI-nodes-base.manualTrigger', 'test.unknown'],
 				node_connections: [{ start: '0', end: '1' }],
 				nodes: {
 					'0': {
 						id: 'fa7d5628-5a47-4c8f-98ef-fb3532e5a9f5',
-						type: 'n8n-nodes-base.manualTrigger',
+						type: 'MNI-nodes-base.manualTrigger',
 						version: 1,
 						position: [420, 420],
 					},
@@ -263,7 +263,7 @@ describe('generateNodesGraph', () => {
 					parameters: {},
 					id: 'fa7d5628-5a47-4c8f-98ef-fb3532e5a9f5',
 					name: 'When clicking "Execute Workflow"',
-					type: 'n8n-nodes-base.manualTrigger',
+					type: 'MNI-nodes-base.manualTrigger',
 					typeVersion: 1,
 					position: [420, 420],
 				},
@@ -290,12 +290,12 @@ describe('generateNodesGraph', () => {
 		};
 		expect(generateNodesGraph(workflow, nodeTypes)).toEqual({
 			nodeGraph: {
-				node_types: ['n8n-nodes-base.manualTrigger', 'test.googleSheets'],
+				node_types: ['MNI-nodes-base.manualTrigger', 'test.googleSheets'],
 				node_connections: [{ start: '0', end: '1' }],
 				nodes: {
 					'0': {
 						id: 'fa7d5628-5a47-4c8f-98ef-fb3532e5a9f5',
-						type: 'n8n-nodes-base.manualTrigger',
+						type: 'MNI-nodes-base.manualTrigger',
 						version: 1,
 						position: [420, 420],
 					},
@@ -331,7 +331,7 @@ describe('generateNodesGraph', () => {
 					parameters: {},
 					id: 'fa7d5628-5a47-4c8f-98ef-fb3532e5a9f5',
 					name: 'When clicking "Execute Workflow"',
-					type: 'n8n-nodes-base.manualTrigger',
+					type: 'MNI-nodes-base.manualTrigger',
 					typeVersion: 1,
 					position: [420, 420],
 				},
@@ -353,7 +353,7 @@ describe('generateNodesGraph', () => {
 					},
 					id: '03e85c3e-4303-4f93-8d62-e05d457e8f70',
 					name: 'Sticky Note',
-					type: 'n8n-nodes-base.stickyNote',
+					type: 'MNI-nodes-base.stickyNote',
 					typeVersion: 1,
 					position: [240, 140],
 				},
@@ -369,12 +369,12 @@ describe('generateNodesGraph', () => {
 		};
 		expect(generateNodesGraph(workflow, nodeTypes)).toEqual({
 			nodeGraph: {
-				node_types: ['n8n-nodes-base.manualTrigger', 'test.googleSheets'],
+				node_types: ['MNI-nodes-base.manualTrigger', 'test.googleSheets'],
 				node_connections: [{ start: '0', end: '1' }],
 				nodes: {
 					'0': {
 						id: 'fa7d5628-5a47-4c8f-98ef-fb3532e5a9f5',
-						type: 'n8n-nodes-base.manualTrigger',
+						type: 'MNI-nodes-base.manualTrigger',
 						version: 1,
 						position: [420, 420],
 					},
@@ -420,7 +420,7 @@ describe('generateNodesGraph', () => {
 					},
 					id: 'agent-node-id',
 					name: 'Agent Node',
-					type: '@n8n/n8n-nodes-langchain.agent',
+					type: '@MNI/MNI-nodes-langchain.agent',
 					typeVersion: 1,
 					position: [100, 100],
 				},
@@ -428,7 +428,7 @@ describe('generateNodesGraph', () => {
 					parameters: {},
 					id: 'other-node-id',
 					name: 'Other Node',
-					type: 'n8n-nodes-base.set',
+					type: 'MNI-nodes-base.set',
 					typeVersion: 1,
 					position: [200, 200],
 				},
@@ -443,12 +443,12 @@ describe('generateNodesGraph', () => {
 
 		expect(generateNodesGraph(workflow, nodeTypes, { isCloudDeployment: true })).toEqual({
 			nodeGraph: {
-				node_types: ['@n8n/n8n-nodes-langchain.agent', 'n8n-nodes-base.set'],
+				node_types: ['@MNI/MNI-nodes-langchain.agent', 'MNI-nodes-base.set'],
 				node_connections: [{ start: '0', end: '1' }],
 				nodes: {
 					'0': {
 						id: 'agent-node-id',
-						type: '@n8n/n8n-nodes-langchain.agent',
+						type: '@MNI/MNI-nodes-langchain.agent',
 						version: 1,
 						position: [100, 100],
 						agent: 'toolsAgent',
@@ -456,7 +456,7 @@ describe('generateNodesGraph', () => {
 					},
 					'1': {
 						id: 'other-node-id',
-						type: 'n8n-nodes-base.set',
+						type: 'MNI-nodes-base.set',
 						version: 1,
 						position: [200, 200],
 					},
@@ -494,7 +494,7 @@ describe('generateNodesGraph', () => {
 					},
 					id: 'agent-node-id',
 					name: 'Agent Node',
-					type: '@n8n/n8n-nodes-langchain.agent',
+					type: '@MNI/MNI-nodes-langchain.agent',
 					typeVersion: 1,
 					position: [100, 100],
 				},
@@ -502,7 +502,7 @@ describe('generateNodesGraph', () => {
 					parameters: {},
 					id: 'other-node-id',
 					name: 'Other Node',
-					type: 'n8n-nodes-base.set',
+					type: 'MNI-nodes-base.set',
 					typeVersion: 1,
 					position: [200, 200],
 				},
@@ -517,19 +517,19 @@ describe('generateNodesGraph', () => {
 
 		expect(generateNodesGraph(workflow, nodeTypes, { isCloudDeployment: false })).toEqual({
 			nodeGraph: {
-				node_types: ['@n8n/n8n-nodes-langchain.agent', 'n8n-nodes-base.set'],
+				node_types: ['@MNI/MNI-nodes-langchain.agent', 'MNI-nodes-base.set'],
 				node_connections: [{ start: '0', end: '1' }],
 				nodes: {
 					'0': {
 						id: 'agent-node-id',
-						type: '@n8n/n8n-nodes-langchain.agent',
+						type: '@MNI/MNI-nodes-langchain.agent',
 						version: 1,
 						position: [100, 100],
 						agent: 'toolsAgent',
 					},
 					'1': {
 						id: 'other-node-id',
-						type: 'n8n-nodes-base.set',
+						type: 'MNI-nodes-base.set',
 						version: 1,
 						position: [200, 200],
 					},
@@ -566,7 +566,7 @@ describe('generateNodesGraph', () => {
 					},
 					id: 'agent-tool-node-id',
 					name: 'Agent Tool Node',
-					type: '@n8n/n8n-nodes-langchain.agentTool',
+					type: '@MNI/MNI-nodes-langchain.agentTool',
 					typeVersion: 1,
 					position: [300, 300],
 				},
@@ -577,12 +577,12 @@ describe('generateNodesGraph', () => {
 
 		expect(generateNodesGraph(workflow, nodeTypes, { isCloudDeployment: true })).toEqual({
 			nodeGraph: {
-				node_types: ['@n8n/n8n-nodes-langchain.agentTool'],
+				node_types: ['@MNI/MNI-nodes-langchain.agentTool'],
 				node_connections: [],
 				nodes: {
 					'0': {
 						id: 'agent-tool-node-id',
-						type: '@n8n/n8n-nodes-langchain.agentTool',
+						type: '@MNI/MNI-nodes-langchain.agentTool',
 						version: 1,
 						position: [300, 300],
 						prompts: { text: 'Tool agent prompt', ...optionalPrompts },
@@ -611,7 +611,7 @@ describe('generateNodesGraph', () => {
 					},
 					id: 'openai-node-id',
 					name: 'OpenAI Node',
-					type: '@n8n/n8n-nodes-langchain.lmChatOpenAi',
+					type: '@MNI/MNI-nodes-langchain.lmChatOpenAi',
 					typeVersion: 1,
 					position: [400, 400],
 				},
@@ -622,12 +622,12 @@ describe('generateNodesGraph', () => {
 
 		expect(generateNodesGraph(workflow, nodeTypes, { isCloudDeployment: true })).toEqual({
 			nodeGraph: {
-				node_types: ['@n8n/n8n-nodes-langchain.lmChatOpenAi'],
+				node_types: ['@MNI/MNI-nodes-langchain.lmChatOpenAi'],
 				node_connections: [],
 				nodes: {
 					'0': {
 						id: 'openai-node-id',
-						type: '@n8n/n8n-nodes-langchain.lmChatOpenAi',
+						type: '@MNI/MNI-nodes-langchain.lmChatOpenAi',
 						use_responses_api: false,
 						version: 1,
 						position: [400, 400],
@@ -655,7 +655,7 @@ describe('generateNodesGraph', () => {
 					},
 					id: 'summarization-node-id',
 					name: 'Summarization Node',
-					type: '@n8n/n8n-nodes-langchain.chainSummarization',
+					type: '@MNI/MNI-nodes-langchain.chainSummarization',
 					typeVersion: 1,
 					position: [500, 500],
 				},
@@ -666,12 +666,12 @@ describe('generateNodesGraph', () => {
 
 		expect(generateNodesGraph(workflow, nodeTypes, { isCloudDeployment: true })).toEqual({
 			nodeGraph: {
-				node_types: ['@n8n/n8n-nodes-langchain.chainSummarization'],
+				node_types: ['@MNI/MNI-nodes-langchain.chainSummarization'],
 				node_connections: [],
 				nodes: {
 					'0': {
 						id: 'summarization-node-id',
-						type: '@n8n/n8n-nodes-langchain.chainSummarization',
+						type: '@MNI/MNI-nodes-langchain.chainSummarization',
 						version: 1,
 						position: [500, 500],
 						prompts: { summaryPrompt: 'Summarize this text.' },
@@ -695,7 +695,7 @@ describe('generateNodesGraph', () => {
 					},
 					id: 'custom-tool-node-id',
 					name: 'Custom Tool Node',
-					type: '@n8n/n8n-nodes-langchain.customTool',
+					type: '@MNI/MNI-nodes-langchain.customTool',
 					typeVersion: 1,
 					position: [600, 600],
 				},
@@ -706,12 +706,12 @@ describe('generateNodesGraph', () => {
 
 		expect(generateNodesGraph(workflow, nodeTypes, { isCloudDeployment: true })).toEqual({
 			nodeGraph: {
-				node_types: ['@n8n/n8n-nodes-langchain.customTool'],
+				node_types: ['@MNI/MNI-nodes-langchain.customTool'],
 				node_connections: [],
 				nodes: {
 					'0': {
 						id: 'custom-tool-node-id',
-						type: '@n8n/n8n-nodes-langchain.customTool',
+						type: '@MNI/MNI-nodes-langchain.customTool',
 						version: 1,
 						position: [600, 600],
 						// prompts: { description: 'Custom tool description' },
@@ -740,7 +740,7 @@ describe('generateNodesGraph', () => {
 					},
 					id: 'chain-llm-node-id',
 					name: 'Chain LLM Node',
-					type: '@n8n/n8n-nodes-langchain.chainLlm',
+					type: '@MNI/MNI-nodes-langchain.chainLlm',
 					typeVersion: 1,
 					position: [700, 700],
 				},
@@ -751,12 +751,12 @@ describe('generateNodesGraph', () => {
 
 		expect(generateNodesGraph(workflow, nodeTypes, { isCloudDeployment: true })).toEqual({
 			nodeGraph: {
-				node_types: ['@n8n/n8n-nodes-langchain.chainLlm'],
+				node_types: ['@MNI/MNI-nodes-langchain.chainLlm'],
 				node_connections: [],
 				nodes: {
 					'0': {
 						id: 'chain-llm-node-id',
-						type: '@n8n/n8n-nodes-langchain.chainLlm',
+						type: '@MNI/MNI-nodes-langchain.chainLlm',
 						version: 1,
 						position: [700, 700],
 						prompts: [
@@ -788,7 +788,7 @@ describe('generateNodesGraph', () => {
 					parameters: {},
 					id: 'fa7d5628-5a47-4c8f-98ef-fb3532e5a9f5',
 					name: 'When clicking "Execute Workflow"',
-					type: 'n8n-nodes-base.manualTrigger',
+					type: 'MNI-nodes-base.manualTrigger',
 					typeVersion: 1,
 					position: [420, 420],
 				},
@@ -812,7 +812,7 @@ describe('generateNodesGraph', () => {
 					},
 					id: '03e85c3e-4303-4f93-8d62-e05d457e8f70',
 					name: 'Sticky Note',
-					type: 'n8n-nodes-base.stickyNote',
+					type: 'MNI-nodes-base.stickyNote',
 					typeVersion: 1,
 					position: [240, 140],
 				},
@@ -829,12 +829,12 @@ describe('generateNodesGraph', () => {
 		expect(generateNodesGraph(workflow, nodeTypes)).toEqual({
 			evaluationTriggerNodeNames: [],
 			nodeGraph: {
-				node_types: ['n8n-nodes-base.manualTrigger', 'test.googleSheets'],
+				node_types: ['MNI-nodes-base.manualTrigger', 'test.googleSheets'],
 				node_connections: [{ start: '0', end: '1' }],
 				nodes: {
 					'0': {
 						id: 'fa7d5628-5a47-4c8f-98ef-fb3532e5a9f5',
-						type: 'n8n-nodes-base.manualTrigger',
+						type: 'MNI-nodes-base.manualTrigger',
 						version: 1,
 						position: [420, 420],
 					},
@@ -862,7 +862,7 @@ describe('generateNodesGraph', () => {
 					parameters: {},
 					id: 'e59d3ad9-3448-4899-9f47-d2922c8727ce',
 					name: 'When clicking "Execute Workflow"',
-					type: 'n8n-nodes-base.manualTrigger',
+					type: 'MNI-nodes-base.manualTrigger',
 					typeVersion: 1,
 					position: [460, 460],
 				},
@@ -879,12 +879,12 @@ describe('generateNodesGraph', () => {
 			nodeGraph: {
 				is_pinned: true,
 				node_connections: [],
-				node_types: ['n8n-nodes-base.manualTrigger'],
+				node_types: ['MNI-nodes-base.manualTrigger'],
 				nodes: {
 					'0': {
 						id: 'e59d3ad9-3448-4899-9f47-d2922c8727ce',
 						position: [460, 460],
-						type: 'n8n-nodes-base.manualTrigger',
+						type: 'MNI-nodes-base.manualTrigger',
 						version: 1,
 					},
 				},
@@ -905,7 +905,7 @@ describe('generateNodesGraph', () => {
 					},
 					id: '5e49e129-2c59-4650-95ea-14d4b94db1f3',
 					name: 'Webhook',
-					type: 'n8n-nodes-base.webhook',
+					type: 'MNI-nodes-base.webhook',
 					typeVersion: 1.1,
 					position: [520, 380],
 					webhookId: 'bf4c0699-cff8-4440-8964-8e97fda8b4f8',
@@ -917,12 +917,12 @@ describe('generateNodesGraph', () => {
 		expect(generateNodesGraph(workflow, nodeTypes)).toEqual({
 			evaluationTriggerNodeNames: [],
 			nodeGraph: {
-				node_types: ['n8n-nodes-base.webhook'],
+				node_types: ['MNI-nodes-base.webhook'],
 				node_connections: [],
 				nodes: {
 					'0': {
 						id: '5e49e129-2c59-4650-95ea-14d4b94db1f3',
-						type: 'n8n-nodes-base.webhook',
+						type: 'MNI-nodes-base.webhook',
 						version: 1.1,
 						position: [520, 380],
 						response_mode: 'onReceived',
@@ -948,7 +948,7 @@ describe('generateNodesGraph', () => {
 					},
 					id: '04d6e44f-09c1-454d-9225-60aeed7f022c',
 					name: 'HTTP Request V4 with generic auth',
-					type: 'n8n-nodes-base.httpRequest',
+					type: 'MNI-nodes-base.httpRequest',
 					typeVersion: 4.1,
 					position: [780, 120],
 					credentials: {
@@ -965,12 +965,12 @@ describe('generateNodesGraph', () => {
 		expect(generateNodesGraph(workflow, nodeTypes)).toEqual({
 			evaluationTriggerNodeNames: [],
 			nodeGraph: {
-				node_types: ['n8n-nodes-base.httpRequest'],
+				node_types: ['MNI-nodes-base.httpRequest'],
 				node_connections: [],
 				nodes: {
 					'0': {
 						id: '04d6e44f-09c1-454d-9225-60aeed7f022c',
-						type: 'n8n-nodes-base.httpRequest',
+						type: 'MNI-nodes-base.httpRequest',
 						version: 4.1,
 						position: [780, 120],
 						credential_type: 'httpBasicAuth',
@@ -998,7 +998,7 @@ describe('generateNodesGraph', () => {
 					},
 					id: 'dcc4a9e1-c2c5-4d7e-aec0-2a23adabbb77',
 					name: 'HTTP Request V4 with predefined cred',
-					type: 'n8n-nodes-base.httpRequest',
+					type: 'MNI-nodes-base.httpRequest',
 					typeVersion: 4.1,
 					position: [320, 220],
 					credentials: {
@@ -1019,12 +1019,12 @@ describe('generateNodesGraph', () => {
 		expect(generateNodesGraph(workflow, nodeTypes)).toEqual({
 			evaluationTriggerNodeNames: [],
 			nodeGraph: {
-				node_types: ['n8n-nodes-base.httpRequest'],
+				node_types: ['MNI-nodes-base.httpRequest'],
 				node_connections: [],
 				nodes: {
 					'0': {
 						id: 'dcc4a9e1-c2c5-4d7e-aec0-2a23adabbb77',
-						type: 'n8n-nodes-base.httpRequest',
+						type: 'MNI-nodes-base.httpRequest',
 						version: 4.1,
 						position: [320, 220],
 						credential_type: 'activeCampaignApi',
@@ -1051,7 +1051,7 @@ describe('generateNodesGraph', () => {
 						},
 						id: 'b468b603-3e59-4515-b555-90cfebd64d47',
 						name: 'Merge Node V3',
-						type: 'n8n-nodes-base.merge',
+						type: 'MNI-nodes-base.merge',
 						typeVersion: 3,
 						position: [320, 460],
 					},
@@ -1062,12 +1062,12 @@ describe('generateNodesGraph', () => {
 			isCloudDeployment: false,
 			expected: {
 				nodeGraph: {
-					node_types: ['n8n-nodes-base.merge'],
+					node_types: ['MNI-nodes-base.merge'],
 					node_connections: [],
 					nodes: {
 						'0': {
 							id: 'b468b603-3e59-4515-b555-90cfebd64d47',
-							type: 'n8n-nodes-base.merge',
+							type: 'MNI-nodes-base.merge',
 							version: 3,
 							position: [320, 460],
 							operation: 'combineBySql',
@@ -1090,7 +1090,7 @@ describe('generateNodesGraph', () => {
 						},
 						id: 'b468b603-3e59-4515-b555-90cfebd64d47',
 						name: 'Merge Node V3',
-						type: 'n8n-nodes-base.merge',
+						type: 'MNI-nodes-base.merge',
 						typeVersion: 3,
 						position: [320, 460],
 					},
@@ -1101,12 +1101,12 @@ describe('generateNodesGraph', () => {
 			isCloudDeployment: true,
 			expected: {
 				nodeGraph: {
-					node_types: ['n8n-nodes-base.merge'],
+					node_types: ['MNI-nodes-base.merge'],
 					node_connections: [],
 					nodes: {
 						'0': {
 							id: 'b468b603-3e59-4515-b555-90cfebd64d47',
-							type: 'n8n-nodes-base.merge',
+							type: 'MNI-nodes-base.merge',
 							version: 3,
 							position: [320, 460],
 							operation: 'append',
@@ -1130,7 +1130,7 @@ describe('generateNodesGraph', () => {
 						},
 						id: 'b468b603-3e59-4515-b555-90cfebd64d47',
 						name: 'Merge Node V3',
-						type: 'n8n-nodes-base.merge',
+						type: 'MNI-nodes-base.merge',
 						typeVersion: 3,
 						position: [320, 460],
 					},
@@ -1141,12 +1141,12 @@ describe('generateNodesGraph', () => {
 			isCloudDeployment: true,
 			expected: {
 				nodeGraph: {
-					node_types: ['n8n-nodes-base.merge'],
+					node_types: ['MNI-nodes-base.merge'],
 					node_connections: [],
 					nodes: {
 						'0': {
 							id: 'b468b603-3e59-4515-b555-90cfebd64d47',
-							type: 'n8n-nodes-base.merge',
+							type: 'MNI-nodes-base.merge',
 							version: 3,
 							position: [320, 460],
 							operation: 'combineBySql',
@@ -1175,7 +1175,7 @@ describe('generateNodesGraph', () => {
 					},
 					id: 'b468b603-3e59-4515-b555-90cfebd64d47',
 					name: 'HTTP Request V1',
-					type: 'n8n-nodes-base.httpRequest',
+					type: 'MNI-nodes-base.httpRequest',
 					typeVersion: 1,
 					position: [320, 460],
 				},
@@ -1185,12 +1185,12 @@ describe('generateNodesGraph', () => {
 		};
 		expect(generateNodesGraph(workflow, nodeTypes)).toEqual({
 			nodeGraph: {
-				node_types: ['n8n-nodes-base.httpRequest'],
+				node_types: ['MNI-nodes-base.httpRequest'],
 				node_connections: [],
 				nodes: {
 					'0': {
 						id: 'b468b603-3e59-4515-b555-90cfebd64d47',
-						type: 'n8n-nodes-base.httpRequest',
+						type: 'MNI-nodes-base.httpRequest',
 						version: 1,
 						position: [320, 460],
 						domain: 'google.com',
@@ -1214,7 +1214,7 @@ describe('generateNodesGraph', () => {
 					},
 					id: 'd002e66f-deba-455c-9f8b-65239db453c3',
 					name: 'HTTP Request v4 with defaults',
-					type: 'n8n-nodes-base.httpRequest',
+					type: 'MNI-nodes-base.httpRequest',
 					typeVersion: 4.1,
 					position: [600, 240],
 				},
@@ -1224,12 +1224,12 @@ describe('generateNodesGraph', () => {
 		};
 		expect(generateNodesGraph(workflow, nodeTypes)).toEqual({
 			nodeGraph: {
-				node_types: ['n8n-nodes-base.httpRequest'],
+				node_types: ['MNI-nodes-base.httpRequest'],
 				node_connections: [],
 				nodes: {
 					'0': {
 						id: 'd002e66f-deba-455c-9f8b-65239db453c3',
-						type: 'n8n-nodes-base.httpRequest',
+						type: 'MNI-nodes-base.httpRequest',
 						version: 4.1,
 						position: [600, 240],
 						credential_set: false,
@@ -1252,7 +1252,7 @@ describe('generateNodesGraph', () => {
 					parameters: {},
 					id: 'fe69383c-e418-4f98-9c0e-924deafa7f93',
 					name: 'When clicking ‘Execute workflow’',
-					type: 'n8n-nodes-base.manualTrigger',
+					type: 'MNI-nodes-base.manualTrigger',
 					typeVersion: 1,
 					position: [540, 220],
 				},
@@ -1260,7 +1260,7 @@ describe('generateNodesGraph', () => {
 					parameters: {},
 					id: 'c5c374f1-6fad-46bb-8eea-ceec126b300a',
 					name: 'Chain',
-					type: '@n8n/n8n-nodes-langchain.chainLlm',
+					type: '@MNI/MNI-nodes-langchain.chainLlm',
 					typeVersion: 1,
 					position: [760, 320],
 				},
@@ -1270,7 +1270,7 @@ describe('generateNodesGraph', () => {
 					},
 					id: '198133b6-95dd-4f7e-90e5-e16c4cdbad12',
 					name: 'Model',
-					type: '@n8n/n8n-nodes-langchain.lmChatOpenAi',
+					type: '@MNI/MNI-nodes-langchain.lmChatOpenAi',
 					typeVersion: 1,
 					position: [780, 500],
 				},
@@ -1304,9 +1304,9 @@ describe('generateNodesGraph', () => {
 		expect(generateNodesGraph(workflow, nodeTypes)).toEqual({
 			nodeGraph: {
 				node_types: [
-					'n8n-nodes-base.manualTrigger',
-					'@n8n/n8n-nodes-langchain.chainLlm',
-					'@n8n/n8n-nodes-langchain.lmChatOpenAi',
+					'MNI-nodes-base.manualTrigger',
+					'@MNI/MNI-nodes-langchain.chainLlm',
+					'@MNI/MNI-nodes-langchain.lmChatOpenAi',
 				],
 				node_connections: [
 					{
@@ -1321,19 +1321,19 @@ describe('generateNodesGraph', () => {
 				nodes: {
 					'0': {
 						id: 'fe69383c-e418-4f98-9c0e-924deafa7f93',
-						type: 'n8n-nodes-base.manualTrigger',
+						type: 'MNI-nodes-base.manualTrigger',
 						version: 1,
 						position: [540, 220],
 					},
 					'1': {
 						id: 'c5c374f1-6fad-46bb-8eea-ceec126b300a',
-						type: '@n8n/n8n-nodes-langchain.chainLlm',
+						type: '@MNI/MNI-nodes-langchain.chainLlm',
 						version: 1,
 						position: [760, 320],
 					},
 					'2': {
 						id: '198133b6-95dd-4f7e-90e5-e16c4cdbad12',
-						type: '@n8n/n8n-nodes-langchain.lmChatOpenAi',
+						type: '@MNI/MNI-nodes-langchain.lmChatOpenAi',
 						use_responses_api: false,
 						version: 1,
 						position: [780, 500],
@@ -1403,12 +1403,12 @@ describe('generateNodesGraph', () => {
 					},
 				],
 				node_types: [
-					'n8n-nodes-base.executeWorkflowTrigger',
-					'n8n-nodes-base.set',
-					'n8n-nodes-base.set',
-					'n8n-nodes-base.set',
-					'n8n-nodes-base.debugHelper',
-					'n8n-nodes-base.switch',
+					'MNI-nodes-base.executeWorkflowTrigger',
+					'MNI-nodes-base.set',
+					'MNI-nodes-base.set',
+					'MNI-nodes-base.set',
+					'MNI-nodes-base.debugHelper',
+					'MNI-nodes-base.switch',
 				],
 				nodes: {
 					'0': {
@@ -1416,7 +1416,7 @@ describe('generateNodesGraph', () => {
 						items_total: 1,
 						position: [1000, 240],
 						runs: 1,
-						type: 'n8n-nodes-base.executeWorkflowTrigger',
+						type: 'MNI-nodes-base.executeWorkflowTrigger',
 						version: 1,
 					},
 					'1': {
@@ -1424,7 +1424,7 @@ describe('generateNodesGraph', () => {
 						items_total: 4,
 						position: [1460, 640],
 						runs: 2,
-						type: 'n8n-nodes-base.set',
+						type: 'MNI-nodes-base.set',
 						version: 3.1,
 					},
 					'2': {
@@ -1432,13 +1432,13 @@ describe('generateNodesGraph', () => {
 						items_total: 4,
 						position: [1860, 260],
 						runs: 2,
-						type: 'n8n-nodes-base.set',
+						type: 'MNI-nodes-base.set',
 						version: 3.4,
 					},
 					'3': {
 						id: '7a915fd5-5987-4ff1-9509-06b24a0a4613',
 						position: [1940, 680],
-						type: 'n8n-nodes-base.set',
+						type: 'MNI-nodes-base.set',
 						version: 3.4,
 					},
 					'4': {
@@ -1446,7 +1446,7 @@ describe('generateNodesGraph', () => {
 						items_total: 3,
 						position: [1220, 240],
 						runs: 1,
-						type: 'n8n-nodes-base.debugHelper',
+						type: 'MNI-nodes-base.debugHelper',
 						version: 1,
 					},
 					'5': {
@@ -1454,7 +1454,7 @@ describe('generateNodesGraph', () => {
 						items_total: 4,
 						position: [1680, 640],
 						runs: 2,
-						type: 'n8n-nodes-base.switch',
+						type: 'MNI-nodes-base.switch',
 						version: 3.2,
 					},
 				},
@@ -1475,7 +1475,7 @@ describe('generateNodesGraph', () => {
 					},
 					id: 'eval-node-id',
 					name: 'Evaluation Node',
-					type: 'n8n-nodes-base.evaluation',
+					type: 'MNI-nodes-base.evaluation',
 					typeVersion: 1,
 					position: [100, 100],
 				},
@@ -1486,12 +1486,12 @@ describe('generateNodesGraph', () => {
 
 		expect(generateNodesGraph(workflow, nodeTypes, { isCloudDeployment: true })).toEqual({
 			nodeGraph: {
-				node_types: ['n8n-nodes-base.evaluation'],
+				node_types: ['MNI-nodes-base.evaluation'],
 				node_connections: [],
 				nodes: {
 					'0': {
 						id: 'eval-node-id',
-						type: 'n8n-nodes-base.evaluation',
+						type: 'MNI-nodes-base.evaluation',
 						version: 1,
 						position: [100, 100],
 						metric_names: [DEFAULT_EVALUATION_METRIC], // Default metric
@@ -1517,7 +1517,7 @@ describe('generateNodesGraph', () => {
 					},
 					id: 'eval-node-id',
 					name: 'Evaluation Node',
-					type: 'n8n-nodes-base.evaluation',
+					type: 'MNI-nodes-base.evaluation',
 					typeVersion: 1,
 					position: [100, 100],
 				},
@@ -1528,12 +1528,12 @@ describe('generateNodesGraph', () => {
 
 		expect(generateNodesGraph(workflow, nodeTypes, { isCloudDeployment: true })).toEqual({
 			nodeGraph: {
-				node_types: ['n8n-nodes-base.evaluation'],
+				node_types: ['MNI-nodes-base.evaluation'],
 				node_connections: [],
 				nodes: {
 					'0': {
 						id: 'eval-node-id',
-						type: 'n8n-nodes-base.evaluation',
+						type: 'MNI-nodes-base.evaluation',
 						version: 1,
 						position: [100, 100],
 						metric_names: ['helpfulness'], // Custom metric from parameter
@@ -1564,7 +1564,7 @@ describe('generateNodesGraph', () => {
 					},
 					id: 'eval-node-id',
 					name: 'Evaluation Node',
-					type: 'n8n-nodes-base.evaluation',
+					type: 'MNI-nodes-base.evaluation',
 					typeVersion: 1,
 					position: [100, 100],
 				},
@@ -1575,12 +1575,12 @@ describe('generateNodesGraph', () => {
 
 		expect(generateNodesGraph(workflow, nodeTypes, { isCloudDeployment: true })).toEqual({
 			nodeGraph: {
-				node_types: ['n8n-nodes-base.evaluation'],
+				node_types: ['MNI-nodes-base.evaluation'],
 				node_connections: [],
 				nodes: {
 					'0': {
 						id: 'eval-node-id',
-						type: 'n8n-nodes-base.evaluation',
+						type: 'MNI-nodes-base.evaluation',
 						version: 1,
 						position: [100, 100],
 						metric_names: ['accuracy', 'precision', 'recall'],
@@ -1611,7 +1611,7 @@ describe('generateNodesGraph', () => {
 						},
 						id: 'lmchatopenai-node-id',
 						name: 'LMChatOpenAi Node',
-						type: '@n8n/n8n-nodes-langchain.lmChatOpenAi',
+						type: '@MNI/MNI-nodes-langchain.lmChatOpenAi',
 						typeVersion,
 						position: [100, 100],
 					},
@@ -1622,12 +1622,12 @@ describe('generateNodesGraph', () => {
 
 			expect(generateNodesGraph(workflow, nodeTypes, { isCloudDeployment: true })).toEqual({
 				nodeGraph: {
-					node_types: ['@n8n/n8n-nodes-langchain.lmChatOpenAi'],
+					node_types: ['@MNI/MNI-nodes-langchain.lmChatOpenAi'],
 					node_connections: [],
 					nodes: {
 						'0': {
 							id: 'lmchatopenai-node-id',
-							type: '@n8n/n8n-nodes-langchain.lmChatOpenAi',
+							type: '@MNI/MNI-nodes-langchain.lmChatOpenAi',
 							version: typeVersion,
 							position: [100, 100],
 							use_responses_api: expectedValue,
@@ -1650,7 +1650,7 @@ describe('generateNodesGraph', () => {
 					parameters: {},
 					id: 'fe69383c-e418-4f98-9c0e-924deafa7f93',
 					name: 'When clicking ‘Execute workflow’',
-					type: 'n8n-nodes-base.manualTrigger',
+					type: 'MNI-nodes-base.manualTrigger',
 					typeVersion: 1,
 					position: [100, 100],
 				},
@@ -1658,7 +1658,7 @@ describe('generateNodesGraph', () => {
 					parameters: {},
 					id: 'c5c374f1-6fad-46bb-8eea-ceec126b300a',
 					name: 'Community Installed Node',
-					type: 'n8n-nodes-community-installed-node.communityInstalledNode',
+					type: 'MNI-nodes-community-installed-node.communityInstalledNode',
 					typeVersion: 1,
 					position: [200, 200],
 				},
@@ -1666,7 +1666,7 @@ describe('generateNodesGraph', () => {
 					parameters: {},
 					id: 'c5c374f1-6fad-46bb-8eea-ceec126b300b',
 					name: 'Community Installed Node 2',
-					type: 'n8n-nodes-community-installed-node2.communityInstalledNode',
+					type: 'MNI-nodes-community-installed-node2.communityInstalledNode',
 					typeVersion: 1,
 					position: [300, 300],
 				},
@@ -1688,7 +1688,7 @@ describe('generateNodesGraph', () => {
 				...nodeTypes,
 				getByNameAndVersion: (nodeType: string, version?: number) => {
 					const orig = nodeTypes.getByNameAndVersion(nodeType, version);
-					if (nodeType === 'n8n-nodes-community-installed-node.communityInstalledNode') {
+					if (nodeType === 'MNI-nodes-community-installed-node.communityInstalledNode') {
 						return {
 							...orig,
 							description: {
@@ -1697,7 +1697,7 @@ describe('generateNodesGraph', () => {
 							},
 						};
 					}
-					if (nodeType === 'n8n-nodes-community-installed-node2.communityInstalledNode') {
+					if (nodeType === 'MNI-nodes-community-installed-node2.communityInstalledNode') {
 						return {
 							...orig,
 							description: {
@@ -1721,29 +1721,29 @@ describe('generateNodesGraph', () => {
 			nodeGraph: {
 				is_pinned: false,
 				node_types: [
-					'n8n-nodes-base.manualTrigger',
-					'n8n-nodes-community-installed-node.communityInstalledNode',
-					'n8n-nodes-community-installed-node2.communityInstalledNode',
+					'MNI-nodes-base.manualTrigger',
+					'MNI-nodes-community-installed-node.communityInstalledNode',
+					'MNI-nodes-community-installed-node2.communityInstalledNode',
 					'community-missing-node.communityMissingNode',
 				],
 				node_connections: [],
 				nodes: {
 					'0': {
 						id: 'fe69383c-e418-4f98-9c0e-924deafa7f93',
-						type: 'n8n-nodes-base.manualTrigger',
+						type: 'MNI-nodes-base.manualTrigger',
 						version: 1,
 						position: [100, 100],
 					},
 					'1': {
 						id: 'c5c374f1-6fad-46bb-8eea-ceec126b300a',
-						type: 'n8n-nodes-community-installed-node.communityInstalledNode',
+						type: 'MNI-nodes-community-installed-node.communityInstalledNode',
 						version: 1,
 						position: [200, 200],
 						package_version: '1.0.0',
 					},
 					'2': {
 						id: 'c5c374f1-6fad-46bb-8eea-ceec126b300b',
-						type: 'n8n-nodes-community-installed-node2.communityInstalledNode',
+						type: 'MNI-nodes-community-installed-node2.communityInstalledNode',
 						version: 1,
 						position: [300, 300],
 						package_version: '1.0.1',
@@ -1794,7 +1794,7 @@ describe('generateNodesGraph', () => {
 						},
 						id: 'guardrails-node-id',
 						name: 'Guardrails Node',
-						type: '@n8n/n8n-nodes-langchain.guardrails',
+						type: '@MNI/MNI-nodes-langchain.guardrails',
 						typeVersion: 1,
 						position: [100, 100],
 					},
@@ -1805,12 +1805,12 @@ describe('generateNodesGraph', () => {
 
 			expect(generateNodesGraph(workflow, nodeTypes)).toEqual({
 				nodeGraph: {
-					node_types: ['@n8n/n8n-nodes-langchain.guardrails'],
+					node_types: ['@MNI/MNI-nodes-langchain.guardrails'],
 					node_connections: [],
 					nodes: {
 						'0': {
 							id: 'guardrails-node-id',
-							type: '@n8n/n8n-nodes-langchain.guardrails',
+							type: '@MNI/MNI-nodes-langchain.guardrails',
 							version: 1,
 							position: [100, 100],
 							operation,
@@ -1837,7 +1837,7 @@ describe('generateNodesGraph', () => {
 					},
 					id: 'guardrails-node-id',
 					name: 'Guardrails Node',
-					type: '@n8n/n8n-nodes-langchain.guardrails',
+					type: '@MNI/MNI-nodes-langchain.guardrails',
 					typeVersion: 1,
 					position: [100, 100],
 				},
@@ -1848,12 +1848,12 @@ describe('generateNodesGraph', () => {
 
 		expect(generateNodesGraph(workflow, nodeTypes)).toEqual({
 			nodeGraph: {
-				node_types: ['@n8n/n8n-nodes-langchain.guardrails'],
+				node_types: ['@MNI/MNI-nodes-langchain.guardrails'],
 				node_connections: [],
 				nodes: {
 					'0': {
 						id: 'guardrails-node-id',
-						type: '@n8n/n8n-nodes-langchain.guardrails',
+						type: '@MNI/MNI-nodes-langchain.guardrails',
 						version: 1,
 						position: [100, 100],
 						operation: 'classify',
@@ -2081,7 +2081,7 @@ describe('generateNodesGraph', () => {
 						parameters: { model: 'test-model' },
 						id: 'lm-node-id',
 						name: 'LM Node',
-						type: '@n8n/n8n-nodes-langchain.lmChatOpenAi',
+						type: '@MNI/MNI-nodes-langchain.lmChatOpenAi',
 						typeVersion: 1,
 						position: [100, 100],
 					},
@@ -2101,7 +2101,7 @@ describe('generateNodesGraph', () => {
 						parameters: { modelName: 'test-model' },
 						id: 'lm-node-id',
 						name: 'LM Node',
-						type: '@n8n/n8n-nodes-langchain.lmChatOpenAi',
+						type: '@MNI/MNI-nodes-langchain.lmChatOpenAi',
 						typeVersion: 1,
 						position: [100, 100],
 					},
@@ -2123,7 +2123,7 @@ describe('generateNodesGraph', () => {
 						},
 						id: 'lm-node-id',
 						name: 'LM Node',
-						type: '@n8n/n8n-nodes-langchain.lmChatOpenAi',
+						type: '@MNI/MNI-nodes-langchain.lmChatOpenAi',
 						typeVersion: 1.2,
 						position: [100, 100],
 					},
@@ -2138,19 +2138,19 @@ describe('generateNodesGraph', () => {
 
 		test.each([
 			{
-				nodeType: '@n8n/n8n-nodes-langchain.openAi',
+				nodeType: '@MNI/MNI-nodes-langchain.openAi',
 				name: 'OpenAI',
 			},
 			{
-				nodeType: '@n8n/n8n-nodes-langchain.anthropic',
+				nodeType: '@MNI/MNI-nodes-langchain.anthropic',
 				name: 'Anthropic',
 			},
 			{
-				nodeType: '@n8n/n8n-nodes-langchain.ollama',
+				nodeType: '@MNI/MNI-nodes-langchain.ollama',
 				name: 'Ollama',
 			},
 			{
-				nodeType: '@n8n/n8n-nodes-langchain.googleGemini',
+				nodeType: '@MNI/MNI-nodes-langchain.googleGemini',
 				name: 'Google Gemini',
 			},
 		])('should capture ai_model for $name vendor node via modelId', ({ nodeType }) => {
@@ -2182,7 +2182,7 @@ describe('generateNodesGraph', () => {
 						parameters: {},
 						id: 'manual-trigger-id',
 						name: 'Manual Trigger',
-						type: 'n8n-nodes-base.manualTrigger',
+						type: 'MNI-nodes-base.manualTrigger',
 						typeVersion: 1,
 						position: [100, 100],
 					},
@@ -2204,7 +2204,7 @@ describe('generateNodesGraph', () => {
 						parameters: { model: 'gpt-4o' },
 						id: 'lm-node-id',
 						name: 'LM Node',
-						type: '@n8n/n8n-nodes-langchain.lmChatOpenAi',
+						type: '@MNI/MNI-nodes-langchain.lmChatOpenAi',
 						typeVersion: 1,
 						position: [100, 100],
 					},
@@ -2253,7 +2253,7 @@ describe('generateNodesGraph', () => {
 						parameters: { model: 'gpt-4o' },
 						id: 'lm-node-id',
 						name: 'LM Node',
-						type: '@n8n/n8n-nodes-langchain.lmChatOpenAi',
+						type: '@MNI/MNI-nodes-langchain.lmChatOpenAi',
 						typeVersion: 1,
 						position: [100, 100],
 					},
@@ -2301,7 +2301,7 @@ describe('generateNodesGraph', () => {
 						parameters: { model: 'gpt-4o' },
 						id: 'lm-node-id',
 						name: 'LM Node',
-						type: '@n8n/n8n-nodes-langchain.lmChatOpenAi',
+						type: '@MNI/MNI-nodes-langchain.lmChatOpenAi',
 						typeVersion: 1,
 						position: [100, 100],
 					},
@@ -2349,7 +2349,7 @@ describe('generateNodesGraph', () => {
 						parameters: { model: 'gpt-4o' },
 						id: 'lm-node-id',
 						name: 'LM Node',
-						type: '@n8n/n8n-nodes-langchain.lmChatOpenAi',
+						type: '@MNI/MNI-nodes-langchain.lmChatOpenAi',
 						typeVersion: 1,
 						position: [100, 100],
 					},
@@ -2371,7 +2371,7 @@ describe('generateNodesGraph', () => {
 						parameters: { model: 'gpt-4o' },
 						id: 'lm-node-id',
 						name: 'LM Node',
-						type: '@n8n/n8n-nodes-langchain.lmChatOpenAi',
+						type: '@MNI/MNI-nodes-langchain.lmChatOpenAi',
 						typeVersion: 1,
 						position: [100, 100],
 					},
@@ -2416,7 +2416,7 @@ describe('generateNodesGraph', () => {
 						parameters: { modelId: { value: 'gpt-4o' } },
 						id: 'openai-node-id',
 						name: 'OpenAI',
-						type: '@n8n/n8n-nodes-langchain.openAi',
+						type: '@MNI/MNI-nodes-langchain.openAi',
 						typeVersion: 1,
 						position: [100, 100],
 					},
@@ -2454,7 +2454,7 @@ describe('generateNodesGraph', () => {
 						parameters: { modelId: { value: 'claude-3-opus' } },
 						id: 'anthropic-node-id',
 						name: 'Anthropic',
-						type: '@n8n/n8n-nodes-langchain.anthropic',
+						type: '@MNI/MNI-nodes-langchain.anthropic',
 						typeVersion: 1,
 						position: [100, 100],
 					},
@@ -2491,7 +2491,7 @@ describe('generateNodesGraph', () => {
 						parameters: { model: 'gpt-4o' },
 						id: 'lm-node-id',
 						name: 'LM Node',
-						type: '@n8n/n8n-nodes-langchain.lmChatOpenAi',
+						type: '@MNI/MNI-nodes-langchain.lmChatOpenAi',
 						typeVersion: 1,
 						position: [100, 100],
 					},
@@ -2544,7 +2544,7 @@ describe('generateNodesGraph', () => {
 						parameters: { model: 'gpt-4o' },
 						id: 'node-id',
 						name: 'LM Node',
-						type: '@n8n/n8n-nodes-langchain.lmChatOpenAi',
+						type: '@MNI/MNI-nodes-langchain.lmChatOpenAi',
 						typeVersion: 1,
 						position: [100, 100],
 						credentials: {
@@ -2567,7 +2567,7 @@ describe('generateNodesGraph', () => {
 						parameters: { model: 'gpt-4o' },
 						id: 'node-id',
 						name: 'LM Node',
-						type: '@n8n/n8n-nodes-langchain.lmChatOpenAi',
+						type: '@MNI/MNI-nodes-langchain.lmChatOpenAi',
 						typeVersion: 1,
 						position: [100, 100],
 						credentials: {
@@ -2590,7 +2590,7 @@ describe('generateNodesGraph', () => {
 						parameters: { model: 'gpt-4o' },
 						id: 'node-id',
 						name: 'LM Node',
-						type: '@n8n/n8n-nodes-langchain.lmChatOpenAi',
+						type: '@MNI/MNI-nodes-langchain.lmChatOpenAi',
 						typeVersion: 1,
 						position: [100, 100],
 					},
@@ -2670,7 +2670,7 @@ describe('userInInstanceRanOutOfFreeAiCredits', () => {
 							id: '1',
 							typeVersion: 1,
 							name: 'OpenAI',
-							type: 'n8n-nodes-base.openAi',
+							type: 'MNI-nodes-base.openAi',
 							parameters: {},
 							position: [100, 200],
 						},
@@ -2719,7 +2719,7 @@ describe('userInInstanceRanOutOfFreeAiCredits', () => {
 							id: '1',
 							typeVersion: 1,
 							name: 'OpenAI',
-							type: 'n8n-nodes-base.openAi',
+							type: 'MNI-nodes-base.openAi',
 							parameters: {},
 							position: [100, 200],
 						},
@@ -2791,7 +2791,7 @@ describe('userInInstanceRanOutOfFreeAiCredits', () => {
 							id: '1',
 							typeVersion: 1,
 							name: 'OpenAI',
-							type: 'n8n-nodes-base.openAi',
+							type: 'MNI-nodes-base.openAi',
 							parameters: {},
 							position: [100, 200],
 						},
@@ -2840,7 +2840,7 @@ describe('userInInstanceRanOutOfFreeAiCredits', () => {
 							id: '1',
 							typeVersion: 1,
 							name: 'OpenAI',
-							type: 'n8n-nodes-base.openAi',
+							type: 'MNI-nodes-base.openAi',
 							parameters: {},
 							position: [100, 200],
 						},
@@ -2982,7 +2982,7 @@ function generateTestWorkflowAndRunData(): { workflow: Partial<IWorkflowBase>; r
 				parameters: {},
 				id: 'a2372c14-87de-42de-9f9e-1c499aa2c279',
 				name: 'Execute Workflow Trigger',
-				type: 'n8n-nodes-base.executeWorkflowTrigger',
+				type: 'MNI-nodes-base.executeWorkflowTrigger',
 				typeVersion: 1,
 				position: [1000, 240],
 			},
@@ -2992,7 +2992,7 @@ function generateTestWorkflowAndRunData(): { workflow: Partial<IWorkflowBase>; r
 				},
 				id: '0f7aa00e-248c-452c-8cd0-62cb55941633',
 				name: 'Edit Fields',
-				type: 'n8n-nodes-base.set',
+				type: 'MNI-nodes-base.set',
 				typeVersion: 3.1,
 				position: [1460, 640],
 			},
@@ -3002,7 +3002,7 @@ function generateTestWorkflowAndRunData(): { workflow: Partial<IWorkflowBase>; r
 				},
 				id: '9165c185-9f1c-4ec1-87bf-76ca66dfae38',
 				name: 'Edit Fields1',
-				type: 'n8n-nodes-base.set',
+				type: 'MNI-nodes-base.set',
 				typeVersion: 3.4,
 				position: [1860, 260],
 			},
@@ -3012,7 +3012,7 @@ function generateTestWorkflowAndRunData(): { workflow: Partial<IWorkflowBase>; r
 				},
 				id: '7a915fd5-5987-4ff1-9509-06b24a0a4613',
 				name: 'Edit Fields2',
-				type: 'n8n-nodes-base.set',
+				type: 'MNI-nodes-base.set',
 				typeVersion: 3.4,
 				position: [1940, 680],
 			},
@@ -3024,14 +3024,14 @@ function generateTestWorkflowAndRunData(): { workflow: Partial<IWorkflowBase>; r
 				},
 				id: '63050e7c-8ad5-4f44-8fdd-da555e40471b',
 				name: 'DebugHelper',
-				type: 'n8n-nodes-base.debugHelper',
+				type: 'MNI-nodes-base.debugHelper',
 				typeVersion: 1,
 				position: [1220, 240],
 			},
 			{
 				id: 'fbf7525d-2d1d-4dcf-97a0-43b53d087ef3',
 				name: 'Switch',
-				type: 'n8n-nodes-base.switch',
+				type: 'MNI-nodes-base.switch',
 				typeVersion: 3.2,
 				position: [1680, 640],
 				parameters: {},
@@ -3283,24 +3283,24 @@ describe('makeAIMetrics', () => {
 		const nodes = [
 			makeNode(
 				{
-					sendTo: "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('To', ``, 'string') }}",
-					sendTwo: "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('To', ``, 'string') }}",
+					sendTo: "={{ /*MNI-auto-generated-fromAI-override*/ $fromAI('To', ``, 'string') }}",
+					sendTwo: "={{ /*MNI-auto-generated-fromAI-override*/ $fromAI('To', ``, 'string') }}",
 					subject: "={{ $fromAI('Subject', ``, 'string') }}",
 				},
-				'n8n-nodes-base.gmailTool',
+				'MNI-nodes-base.gmailTool',
 			),
 			makeNode(
 				{
 					subject: "={{ $fromAI('Subject', ``, 'string') }}",
 					verb: "={{ $fromAI('Verb', ``, 'string') }}",
 				},
-				'n8n-nodes-base.gmailTool',
+				'MNI-nodes-base.gmailTool',
 			),
 			makeNode(
 				{
 					subject: "'A Subject'",
 				},
-				'n8n-nodes-base.gmailTool',
+				'MNI-nodes-base.gmailTool',
 			),
 		];
 
@@ -3330,7 +3330,7 @@ describe('makeAIMetrics', () => {
 				{
 					sendTo: 'someone',
 				},
-				'n8n-nodes-base.gmail',
+				'MNI-nodes-base.gmail',
 			),
 		];
 
@@ -3350,7 +3350,7 @@ describe('makeAIMetrics', () => {
 				{
 					sendTo: 'someone',
 				},
-				'n8n-nodes-base.gmailTool',
+				'MNI-nodes-base.gmailTool',
 			),
 		];
 
@@ -3391,7 +3391,7 @@ describe('resolveVectorStoreMetrics', () => {
 				{
 					mode: 'insert',
 				},
-				'n8n-nodes-base.nonVectorStoreNode',
+				'MNI-nodes-base.nonVectorStoreNode',
 			),
 		];
 
@@ -3423,7 +3423,7 @@ describe('resolveVectorStoreMetrics', () => {
 				{
 					mode: 'insert',
 				},
-				'n8n-nodes-base.vectorStoreNode',
+				'MNI-nodes-base.vectorStoreNode',
 			),
 		];
 
@@ -3465,7 +3465,7 @@ describe('resolveVectorStoreMetrics', () => {
 				{
 					mode: 'retrieve',
 				},
-				'n8n-nodes-base.vectorStoreNode',
+				'MNI-nodes-base.vectorStoreNode',
 			),
 		];
 
@@ -3507,13 +3507,13 @@ describe('resolveVectorStoreMetrics', () => {
 				{
 					mode: 'insert',
 				},
-				'n8n-nodes-base.vectorStoreNode',
+				'MNI-nodes-base.vectorStoreNode',
 			),
 			makeNode(
 				{
 					mode: 'retrieve',
 				},
-				'n8n-nodes-base.vectorStoreNode',
+				'MNI-nodes-base.vectorStoreNode',
 			),
 		];
 
@@ -3555,7 +3555,7 @@ describe('resolveVectorStoreMetrics', () => {
 				{
 					mode: 'insert',
 				},
-				'n8n-nodes-base.vectorStoreNode',
+				'MNI-nodes-base.vectorStoreNode',
 			),
 		];
 
@@ -3611,7 +3611,7 @@ describe('extractLastExecutedNodeStructuredOutputErrorInfo', () => {
 	const mockAgentNode = (name = 'Agent', hasOutputParser = true): INode => ({
 		id: 'agent-node-id',
 		name,
-		type: '@n8n/n8n-nodes-langchain.agent',
+		type: '@MNI/MNI-nodes-langchain.agent',
 		typeVersion: 1,
 		position: [100, 100],
 		parameters: {
@@ -3622,7 +3622,7 @@ describe('extractLastExecutedNodeStructuredOutputErrorInfo', () => {
 	const mockLanguageModelNode = (name = 'Model', model = 'gpt-4'): INode => ({
 		id: 'model-node-id',
 		name,
-		type: 'n8n-nodes-langchain.lmChatOpenAi',
+		type: 'MNI-nodes-langchain.lmChatOpenAi',
 		typeVersion: 1,
 		position: [200, 200],
 		parameters: {
@@ -3633,7 +3633,7 @@ describe('extractLastExecutedNodeStructuredOutputErrorInfo', () => {
 	const mockToolNode = (name: string): INode => ({
 		id: `tool-${name}`,
 		name,
-		type: 'n8n-nodes-base.httpRequestTool',
+		type: 'MNI-nodes-base.httpRequestTool',
 		typeVersion: 1,
 		position: [300, 300],
 		parameters: {},
@@ -3872,7 +3872,7 @@ describe('extractLastExecutedNodeStructuredOutputErrorInfo', () => {
 		const someOtherNode: INode = {
 			id: 'other-node',
 			name: 'SomeOtherNode',
-			type: 'n8n-nodes-base.set',
+			type: 'MNI-nodes-base.set',
 			typeVersion: 1,
 			position: [400, 400],
 			parameters: {},
@@ -3925,7 +3925,7 @@ describe('extractLastExecutedNodeStructuredOutputErrorInfo', () => {
 		const modelNode: INode = {
 			id: 'model-node-id',
 			name: 'Google Gemini Model',
-			type: 'n8n-nodes-langchain.lmChatGoogleGemini',
+			type: 'MNI-nodes-langchain.lmChatGoogleGemini',
 			typeVersion: 1,
 			position: [200, 200],
 			parameters: {
@@ -3965,7 +3965,7 @@ describe('extractLastExecutedNodeStructuredOutputErrorInfo', () => {
 					},
 					id: 'agent-id-streaming-disabled',
 					name: 'Agent with streaming disabled',
-					type: '@n8n/n8n-nodes-langchain.agent',
+					type: '@MNI/MNI-nodes-langchain.agent',
 					typeVersion: 2.1,
 					position: [100, 100],
 				},
@@ -3978,7 +3978,7 @@ describe('extractLastExecutedNodeStructuredOutputErrorInfo', () => {
 					},
 					id: 'agent-id-streaming-enabled',
 					name: 'Agent with streaming enabled',
-					type: '@n8n/n8n-nodes-langchain.agent',
+					type: '@MNI/MNI-nodes-langchain.agent',
 					typeVersion: 2.1,
 					position: [300, 100],
 				},
@@ -3988,7 +3988,7 @@ describe('extractLastExecutedNodeStructuredOutputErrorInfo', () => {
 					},
 					id: 'agent-id-default-streaming',
 					name: 'Agent with default streaming',
-					type: '@n8n/n8n-nodes-langchain.agent',
+					type: '@MNI/MNI-nodes-langchain.agent',
 					typeVersion: 2.1,
 					position: [500, 100],
 				},
@@ -4000,7 +4000,7 @@ describe('extractLastExecutedNodeStructuredOutputErrorInfo', () => {
 
 		expect(result.nodeGraph.nodes['0']).toEqual({
 			id: 'agent-id-streaming-disabled',
-			type: '@n8n/n8n-nodes-langchain.agent',
+			type: '@MNI/MNI-nodes-langchain.agent',
 			version: 2.1,
 			position: [100, 100],
 			agent: 'toolsAgent',
@@ -4009,7 +4009,7 @@ describe('extractLastExecutedNodeStructuredOutputErrorInfo', () => {
 
 		expect(result.nodeGraph.nodes['1']).toEqual({
 			id: 'agent-id-streaming-enabled',
-			type: '@n8n/n8n-nodes-langchain.agent',
+			type: '@MNI/MNI-nodes-langchain.agent',
 			version: 2.1,
 			position: [300, 100],
 			agent: 'conversationalAgent',
@@ -4018,7 +4018,7 @@ describe('extractLastExecutedNodeStructuredOutputErrorInfo', () => {
 
 		expect(result.nodeGraph.nodes['2']).toEqual({
 			id: 'agent-id-default-streaming',
-			type: '@n8n/n8n-nodes-langchain.agent',
+			type: '@MNI/MNI-nodes-langchain.agent',
 			version: 2.1,
 			position: [500, 100],
 			agent: 'openAiFunctionsAgent',
@@ -4038,7 +4038,7 @@ describe('extractLastExecutedNodeStructuredOutputErrorInfo', () => {
 					},
 					id: 'chat-trigger-id',
 					name: 'Chat Trigger',
-					type: '@n8n/n8n-nodes-langchain.chatTrigger',
+					type: '@MNI/MNI-nodes-langchain.chatTrigger',
 					typeVersion: 1,
 					position: [100, 100],
 				},
@@ -4051,7 +4051,7 @@ describe('extractLastExecutedNodeStructuredOutputErrorInfo', () => {
 					},
 					id: 'chat-trigger-id-2',
 					name: 'Chat Trigger 2',
-					type: '@n8n/n8n-nodes-langchain.chatTrigger',
+					type: '@MNI/MNI-nodes-langchain.chatTrigger',
 					typeVersion: 1,
 					position: [300, 100],
 				},
@@ -4063,7 +4063,7 @@ describe('extractLastExecutedNodeStructuredOutputErrorInfo', () => {
 
 		expect(result.nodeGraph.nodes['0']).toEqual({
 			id: 'chat-trigger-id',
-			type: '@n8n/n8n-nodes-langchain.chatTrigger',
+			type: '@MNI/MNI-nodes-langchain.chatTrigger',
 			version: 1,
 			position: [100, 100],
 			response_mode: 'streaming',
@@ -4072,7 +4072,7 @@ describe('extractLastExecutedNodeStructuredOutputErrorInfo', () => {
 
 		expect(result.nodeGraph.nodes['1']).toEqual({
 			id: 'chat-trigger-id-2',
-			type: '@n8n/n8n-nodes-langchain.chatTrigger',
+			type: '@MNI/MNI-nodes-langchain.chatTrigger',
 			version: 1,
 			position: [300, 100],
 			response_mode: 'lastNode',
@@ -4094,8 +4094,8 @@ describe('getNodeRole', () => {
 	describe('trigger role', () => {
 		it('should return trigger for node with no incoming main connections', () => {
 			const nodes = [
-				makeNode('Trigger', 'n8n-nodes-base.manualTrigger'),
-				makeNode('Set', 'n8n-nodes-base.set'),
+				makeNode('Trigger', 'MNI-nodes-base.manualTrigger'),
+				makeNode('Set', 'MNI-nodes-base.set'),
 			];
 
 			const connections: IConnections = {
@@ -4109,7 +4109,7 @@ describe('getNodeRole', () => {
 		});
 
 		it('should return trigger for isolated node with no connections', () => {
-			const nodes = [makeNode('Trigger', 'n8n-nodes-base.manualTrigger')];
+			const nodes = [makeNode('Trigger', 'MNI-nodes-base.manualTrigger')];
 
 			const connections: IConnections = {};
 
@@ -4121,8 +4121,8 @@ describe('getNodeRole', () => {
 	describe('terminal role', () => {
 		it('should return terminal for node with incoming but no outgoing connections', () => {
 			const nodes = [
-				makeNode('Trigger', 'n8n-nodes-base.manualTrigger'),
-				makeNode('Set', 'n8n-nodes-base.set'),
+				makeNode('Trigger', 'MNI-nodes-base.manualTrigger'),
+				makeNode('Set', 'MNI-nodes-base.set'),
 			];
 
 			const connections: IConnections = {
@@ -4139,9 +4139,9 @@ describe('getNodeRole', () => {
 	describe('internal role', () => {
 		it('should return internal for node with both incoming and outgoing connections', () => {
 			const nodes = [
-				makeNode('Trigger', 'n8n-nodes-base.manualTrigger'),
-				makeNode('Middle', 'n8n-nodes-base.set'),
-				makeNode('End', 'n8n-nodes-base.set'),
+				makeNode('Trigger', 'MNI-nodes-base.manualTrigger'),
+				makeNode('Middle', 'MNI-nodes-base.set'),
+				makeNode('End', 'MNI-nodes-base.set'),
 			];
 
 			const connections: IConnections = {
@@ -4161,8 +4161,8 @@ describe('getNodeRole', () => {
 
 		it('should return internal for subnode even without main connections', () => {
 			const nodes = [
-				makeNode('Agent', '@n8n/n8n-nodes-langchain.agent'),
-				makeNode('Wikipedia', '@n8n/n8n-nodes-langchain.toolWikipedia'),
+				makeNode('Agent', '@MNI/MNI-nodes-langchain.agent'),
+				makeNode('Wikipedia', '@MNI/MNI-nodes-langchain.toolWikipedia'),
 			];
 
 			const connections: IConnections = {
@@ -4179,8 +4179,8 @@ describe('getNodeRole', () => {
 
 		it('should return internal for calculator tool subnode', () => {
 			const nodes = [
-				makeNode('Agent', '@n8n/n8n-nodes-langchain.agent'),
-				makeNode('Calculator', '@n8n/n8n-nodes-langchain.toolCalculator'),
+				makeNode('Agent', '@MNI/MNI-nodes-langchain.agent'),
+				makeNode('Calculator', '@MNI/MNI-nodes-langchain.toolCalculator'),
 			];
 
 			const connections: IConnections = {
@@ -4206,7 +4206,7 @@ describe('getNodeRole', () => {
 
 	describe('edge cases', () => {
 		it('should return trigger for node not in connections', () => {
-			const nodes = [makeNode('Isolated', 'n8n-nodes-base.set')];
+			const nodes = [makeNode('Isolated', 'MNI-nodes-base.set')];
 			const connections: IConnections = {};
 
 			const result = getNodeRole('Isolated', connections, nodeTypes, nodes);
@@ -4215,8 +4215,8 @@ describe('getNodeRole', () => {
 
 		it('should handle node with empty output arrays', () => {
 			const nodes = [
-				makeNode('Trigger', 'n8n-nodes-base.manualTrigger'),
-				makeNode('Set', 'n8n-nodes-base.set'),
+				makeNode('Trigger', 'MNI-nodes-base.manualTrigger'),
+				makeNode('Set', 'MNI-nodes-base.set'),
 			];
 
 			const connections: IConnections = {
@@ -4234,10 +4234,10 @@ describe('getNodeRole', () => {
 
 		it('should handle multiple output branches', () => {
 			const nodes = [
-				makeNode('Trigger', 'n8n-nodes-base.manualTrigger'),
-				makeNode('Set1', 'n8n-nodes-base.set'),
-				makeNode('TrueBranch', 'n8n-nodes-base.set'),
-				makeNode('FalseBranch', 'n8n-nodes-base.set'),
+				makeNode('Trigger', 'MNI-nodes-base.manualTrigger'),
+				makeNode('Set1', 'MNI-nodes-base.set'),
+				makeNode('TrueBranch', 'MNI-nodes-base.set'),
+				makeNode('FalseBranch', 'MNI-nodes-base.set'),
 			];
 
 			const connections: IConnections = {
@@ -4259,7 +4259,7 @@ describe('getNodeRole', () => {
 		});
 
 		it('should handle node not found in nodes array', () => {
-			const nodes = [makeNode('Trigger', 'n8n-nodes-base.manualTrigger')];
+			const nodes = [makeNode('Trigger', 'MNI-nodes-base.manualTrigger')];
 			const connections: IConnections = {};
 
 			// Node 'NotInArray' is not in the nodes array

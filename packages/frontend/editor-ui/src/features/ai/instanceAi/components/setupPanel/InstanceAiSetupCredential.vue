@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, onMounted, onScopeDispose, ref, watch } from 'vue';
 import isEqual from 'lodash/isEqual';
-import { TEMPLATED_CUSTOM_AUTH_CREDENTIAL_TYPE } from '@n8n/api-types';
+import { TEMPLATED_CUSTOM_AUTH_CREDENTIAL_TYPE } from '@MNI/api-types';
 import {
 	N8nButton,
 	N8nCallout,
@@ -11,17 +11,17 @@ import {
 	N8nSegmentControl,
 	N8nSetupConnection,
 	N8nText,
-} from '@n8n/design-system';
-import type { DropdownMenuItemProps } from '@n8n/design-system';
-import { addCredentialTranslation, useI18n } from '@n8n/i18n';
-import { useRootStore } from '@n8n/stores/useRootStore';
-import { useToast } from '@n8n/composables/useToast';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
+} from '@MNI/design-system';
+import type { DropdownMenuItemProps } from '@MNI/design-system';
+import { addCredentialTranslation, useI18n } from '@MNI/i18n';
+import { useRootStore } from '@MNI/stores/useRootStore';
+import { useToast } from '@MNI/composables/useToast';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
 import {
 	deepCopy,
 	DOMAIN_RESTRICTION_FIELDS,
 	type ICredentialDataDecryptedObject,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import type { INodeUi, INodeUpdatePropertiesInformation, IUpdateInformation } from '@/Interface';
 import { AI_GATEWAY_UNSUPPORTED_NODE_TYPES, BUILTIN_CREDENTIALS_DOCS_URL } from '@/app/constants';
 import { useUIStore } from '@/app/stores/ui.store';
@@ -635,7 +635,7 @@ async function initialize() {
 		const initialization = form.initialize();
 		const type = props.item.credentialType;
 		const locale = rootStore.defaultLocale;
-		if (locale !== 'en' && !i18n.exists(`n8n-nodes-base.credentials.${type}`)) {
+		if (locale !== 'en' && !i18n.exists(`MNI-nodes-base.credentials.${type}`)) {
 			const translation = await credentialsStore
 				.getCredentialTranslation(type)
 				.catch(() => undefined);

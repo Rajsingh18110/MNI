@@ -1,6 +1,6 @@
-import { Logger } from '@n8n/backend-common';
-import { ContextEstablishmentHookMetadata, IContextEstablishmentHook } from '@n8n/decorators';
-import { Container, Service } from '@n8n/di';
+import { Logger } from '@MNI/backend-common';
+import { ContextEstablishmentHookMetadata, IContextEstablishmentHook } from '@MNI/decorators';
+import { Container, Service } from '@MNI/di';
 
 /**
  * Registry for managing context establishment hooks during workflow execution.
@@ -105,7 +105,7 @@ export class ExecutionContextHookRegistry {
 	 * Filters hooks by calling their isApplicableToTriggerNode() method.
 	 * Useful for UI filtering and validation.
 	 *
-	 * @param triggerType - The node type identifier (e.g., 'n8n-nodes-base.webhook')
+	 * @param triggerType - The node type identifier (e.g., 'MNI-nodes-base.webhook')
 	 * @returns Array of applicable hooks (may be empty)
 	 */
 	getHookForTriggerType(triggerType: string): IContextEstablishmentHook[] {

@@ -1,4 +1,4 @@
-import type { INode, IConnections, IWorkflowSettings, IWorkflowGroup } from 'n8n-workflow';
+import type { INode, IConnections, IWorkflowSettings, IWorkflowGroup } from 'MNI-workflow';
 
 import type { RemoteResourceOwner } from './resource-owner';
 

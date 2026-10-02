@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import type { AgentCapabilityKind, AgentConfigValidationIssue } from '@n8n/api-types';
-import { N8nTooltip } from '@n8n/design-system';
-import { useI18n, type BaseTextKey } from '@n8n/i18n';
+import type { AgentCapabilityKind, AgentConfigValidationIssue } from '@MNI/api-types';
+import { N8nTooltip } from '@MNI/design-system';
+import { useI18n, type BaseTextKey } from '@MNI/i18n';
 import { computed } from 'vue';
 
 import {

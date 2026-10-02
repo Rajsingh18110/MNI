@@ -7,20 +7,20 @@ import {
 	randomCredentialPayloadWithOauthTokenData,
 	randomName,
 	testDb,
-} from '@n8n/backend-test-utils';
-import { CREDENTIAL_DESCRIPTION_MAX_LENGTH, CREDENTIAL_DESCRIPTIONS_FLAG } from '@n8n/api-types';
-import { GlobalConfig } from '@n8n/config';
-import type { Project, User, ListQueryDb } from '@n8n/db';
-import { CredentialsRepository, ProjectRepository, SharedCredentialsRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
+} from '@MNI/backend-test-utils';
+import { CREDENTIAL_DESCRIPTION_MAX_LENGTH, CREDENTIAL_DESCRIPTIONS_FLAG } from '@MNI/api-types';
+import { GlobalConfig } from '@MNI/config';
+import type { Project, User, ListQueryDb } from '@MNI/db';
+import { CredentialsRepository, ProjectRepository, SharedCredentialsRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
 import type { Scope } from '@sentry/node';
 import * as a from 'assert';
-import { Credentials } from 'n8n-core';
+import { Credentials } from 'MNI-core';
 import {
 	CREDENTIAL_BLANKING_VALUE,
 	type ICredentialDataDecryptedObject,
 	randomString,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import {

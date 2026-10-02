@@ -1,4 +1,4 @@
-import { AI_GATEWAY_MANAGED_TAG } from '@n8n/api-types';
+import { AI_GATEWAY_MANAGED_TAG } from '@MNI/api-types';
 import { mount } from '@vue/test-utils';
 import type * as VueUse from '@vueuse/core';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
@@ -59,7 +59,7 @@ vi.mock('@vueuse/core', async (importOriginal) => {
 	};
 });
 
-vi.mock('@n8n/i18n', () => ({
+vi.mock('@MNI/i18n', () => ({
 	useI18n: () => ({
 		baseText: (key: string, options?: { interpolate?: Record<string, string> }) =>
 			({
@@ -73,7 +73,7 @@ vi.mock('@n8n/i18n', () => ({
 	}),
 }));
 
-vi.mock('@n8n/design-system', () => ({
+vi.mock('@MNI/design-system', () => ({
 	N8nVisuallyHidden: { template: '<slot />', props: ['asChild'] },
 	N8nMarkdownEditor: {
 		name: 'N8nMarkdownEditor',
@@ -92,21 +92,21 @@ vi.mock('@n8n/design-system', () => ({
 	N8nCallout: {
 		name: 'N8nCallout',
 		props: ['theme', 'slim', 'icon'],
-		template: '<div v-bind="$attrs" data-testid="n8n-callout"><slot /></div>',
+		template: '<div v-bind="$attrs" data-testid="MNI-callout"><slot /></div>',
 	},
 	N8nIconButton: {
 		name: 'N8nIconButton',
 		props: ['icon', 'size', 'variant', 'title', 'text'],
 		emits: ['click'],
-		template: '<button v-bind="$attrs" data-testid="n8n-icon-button" @click="$emit(\'click\')" />',
+		template: '<button v-bind="$attrs" data-testid="MNI-icon-button" @click="$emit(\'click\')" />',
 	},
 }));
 
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: () => ({ showError: vi.fn() }),
 }));
 
-vi.mock('@n8n/stores/users.store', () => ({
+vi.mock('@MNI/stores/users.store', () => ({
 	useUsersStore: () => ({ currentUserId: 'user-1' }),
 }));
 

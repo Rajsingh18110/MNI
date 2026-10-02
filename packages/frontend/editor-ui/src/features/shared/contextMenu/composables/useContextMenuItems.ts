@@ -10,19 +10,19 @@ import { useUIStore } from '@/app/stores/ui.store';
 import { useCollaborationStore } from '@/features/collaboration/collaboration/collaboration.store';
 import { useFocusedNodesStore } from '@/features/ai/assistant/focusedNodes.store';
 import { usePostHog } from '@/app/stores/posthog.store';
-import { useI18n } from '@n8n/i18n';
-import { CANVAS_NODE_CONTEXT_FLAG } from '@n8n/api-types';
-import { getResourcePermissions } from '@n8n/permissions';
-import { useSettingsStore } from '@n8n/stores/settings.store';
-import type { INode, INodeTypeDescription } from 'n8n-workflow';
-import { getEmptyGroupAnchor, NodeHelpers, WEBHOOK_NODE_TYPE } from 'n8n-workflow';
+import { useI18n } from '@MNI/i18n';
+import { CANVAS_NODE_CONTEXT_FLAG } from '@MNI/api-types';
+import { getResourcePermissions } from '@MNI/permissions';
+import { useSettingsStore } from '@MNI/stores/settings.store';
+import type { INode, INodeTypeDescription } from 'MNI-workflow';
+import { getEmptyGroupAnchor, NodeHelpers, WEBHOOK_NODE_TYPE } from 'MNI-workflow';
 import { computed, type ComputedRef } from 'vue';
 import { isPresent } from '@/app/utils/typesUtils';
 import { useEditorContext } from '@/app/composables/useEditorContext';
 import { usePinnedData } from '@/app/composables/usePinnedData';
 import { useSelectionValidation } from '@/app/composables/useSelectionValidation';
 import { injectWorkflowDocumentStore } from '@/app/stores/workflowDocument.store';
-import { isNodeTypeRestricted } from '@n8n/frontend-module-type-availability-policies';
+import { isNodeTypeRestricted } from '@MNI/frontend-module-type-availability-policies';
 import { injectContextMenuGroupView } from './contextMenuGroupView';
 
 export type ContextMenuAction =

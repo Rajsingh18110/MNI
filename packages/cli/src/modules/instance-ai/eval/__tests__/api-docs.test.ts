@@ -4,11 +4,11 @@ const mockLogger = {
 	debug: vi.fn(),
 };
 
-vi.mock('@n8n/backend-common', () => ({
+vi.mock('@MNI/backend-common', () => ({
 	Logger: class Logger {},
 }));
 
-vi.mock('@n8n/di', () => ({
+vi.mock('@MNI/di', () => ({
 	Container: {
 		get: vi.fn().mockReturnValue(mockLogger),
 	},

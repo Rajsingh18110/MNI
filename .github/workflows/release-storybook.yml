@@ -8,9 +8,9 @@ on:
     branches:
       - master
     paths:
-      - 'packages/frontend/@n8n/storybook/**'
-      - 'packages/frontend/@n8n/chat/**'
-      - 'packages/frontend/@n8n/design-system/**'
+      - 'packages/frontend/@MNI/storybook/**'
+      - 'packages/frontend/@MNI/chat/**'
+      - 'packages/frontend/@MNI/design-system/**'
       - '.github/workflows/release-storybook.yml'
 concurrency:
   group: storybook-${{ github.event.pull_request.number || github.ref }}
@@ -21,7 +21,7 @@ jobs:
     name: Cloudflare Pages
     if: |
       !contains(github.event.pull_request.labels.*.name, 'community') &&
-      github.repository == 'n8n-io/n8n'
+      github.repository == 'MNI-io/MNI'
     runs-on: blacksmith-2vcpu-ubuntu-2204
     permissions:
       contents: read
@@ -33,10 +33,10 @@ jobs:
       - name: Setup Node.js
         uses: ./.github/actions/setup-nodejs
         with:
-          build-command: pnpm run build --filter=@n8n/utils --filter=@n8n/vitest-config --filter=@n8n/design-system
+          build-command: pnpm run build --filter=@MNI/utils --filter=@MNI/vitest-config --filter=@MNI/design-system
 
       - name: Build
-        working-directory: packages/frontend/@n8n/storybook
+        working-directory: packages/frontend/@MNI/storybook
         run: |
           pnpm build
 
@@ -51,5 +51,5 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy packages/frontend/@n8n/storybook/storybook-static --project-name=storybook --branch=${{github.ref_name}} --commit-hash=${{ github.sha }}
+          command: pages deploy packages/frontend/@MNI/storybook/storybook-static --project-name=storybook --branch=${{github.ref_name}} --commit-hash=${{ github.sha }}
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}

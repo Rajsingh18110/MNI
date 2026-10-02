@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import { computed, onMounted, ref } from 'vue';
 import { storeToRefs } from 'pinia';
-import { N8nButton, N8nText } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+import { N8nButton, N8nText } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 
 import { useEvaluationsWizardSidepanelStore } from '../../wizardSidepanel.store';
 import { useEvaluationStore } from '../../evaluation.store';
 import { injectWorkflowDocumentStore } from '@/app/stores/workflowDocument.store';
-import { useToast } from '@n8n/composables/useToast';
+import { useToast } from '@MNI/composables/useToast';
 import { useTestCasePersistence } from '../../composables/useTestCasePersistence';
 import { useWizardHydration } from '../WizardSidepanel/useWizardHydration';
 import SuiteConfig from './SuiteConfig.vue';

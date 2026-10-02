@@ -1,15 +1,15 @@
-import { Logger, ModulesConfig } from '@n8n/backend-common';
-import type { ModuleInterface } from '@n8n/decorators';
-import { BackendModule } from '@n8n/decorators';
-import { Container } from '@n8n/di';
-import { UserError } from 'n8n-workflow';
+import { Logger, ModulesConfig } from '@MNI/backend-common';
+import type { ModuleInterface } from '@MNI/decorators';
+import { BackendModule } from '@MNI/decorators';
+import { Container } from '@MNI/di';
+import { UserError } from 'MNI-workflow';
 
 /**
  * Reports this instance's billable execution numbers to a central monitoring
  * receiver, once a day.
  *
  * Opt-in: not a default module, so it runs only when an operator lists it in
- * `N8N_ENABLED_MODULES`. Main-only, and within a multi-main deployment only the
+ * `MNI_ENABLED_MODULES`. Main-only, and within a multi-main deployment only the
  * leader holds the timer, so a cluster reports once rather than once per main.
  *
  * The daily figure comes from the insights module, but the receiver only sees
@@ -26,7 +26,7 @@ export class InstanceReportingModule implements ModuleInterface {
 		// The daily figure is read from insights, so the reporter cannot run without it.
 		if (Container.get(ModulesConfig).disabledModules.includes('insights')) {
 			throw new UserError(
-				'The `instance-reporting` module requires the `insights` module, but it is listed in N8N_DISABLED_MODULES. Remove `insights` from N8N_DISABLED_MODULES or remove `instance-reporting` from N8N_ENABLED_MODULES.',
+				'The `instance-reporting` module requires the `insights` module, but it is listed in MNI_DISABLED_MODULES. Remove `insights` from MNI_DISABLED_MODULES or remove `instance-reporting` from MNI_ENABLED_MODULES.',
 			);
 		}
 
@@ -34,14 +34,14 @@ export class InstanceReportingModule implements ModuleInterface {
 
 		if (!(await this.hasReceiver())) {
 			logger.warn(
-				'Instance reporting is enabled but N8N_INSTANCE_REPORTING_BASE_URL is unset, so no reports will be sent',
+				'Instance reporting is enabled but MNI_INSTANCE_REPORTING_BASE_URL is unset, so no reports will be sent',
 			);
 			return;
 		}
 
 		if (!(await this.hasCredential())) {
 			logger.warn(
-				'Instance reporting is enabled but this instance has no license certificate, so no reports will be sent. The receiver accepts reports only from licensed instances. Set N8N_LICENSE_CERT, activate a license, or set N8N_INSTANCE_REPORTING_AUTH_TOKEN.',
+				'Instance reporting is enabled but this instance has no license certificate, so no reports will be sent. The receiver accepts reports only from licensed instances. Set MNI_LICENSE_CERT, activate a license, or set MNI_INSTANCE_REPORTING_AUTH_TOKEN.',
 			);
 			return;
 		}

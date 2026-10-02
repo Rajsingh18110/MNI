@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { useI18n } from '@n8n/i18n';
-import { truncateBeforeLast } from '@n8n/utils/string/truncate';
-import { N8nAiModelSelectorDropdown, type AiModelSelectorMenuItem } from '@n8n/design-system';
+import { useI18n } from '@MNI/i18n';
+import { truncateBeforeLast } from '@MNI/utils/string/truncate';
+import { N8nAiModelSelectorDropdown, type AiModelSelectorMenuItem } from '@MNI/design-system';
 
 import ModelSelectorTriggerIcon from './model-selector/ModelSelectorTriggerIcon.vue';
 import ModelSelectorItemLeadingIcon from './model-selector/ModelSelectorItemLeadingIcon.vue';

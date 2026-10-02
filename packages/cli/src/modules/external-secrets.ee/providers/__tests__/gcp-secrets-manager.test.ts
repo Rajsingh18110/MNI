@@ -1,7 +1,7 @@
 import { SecretManagerServiceClient } from '@google-cloud/secret-manager';
 import type { google } from '@google-cloud/secret-manager/build/protos/protos';
-import type { Logger } from '@n8n/backend-common';
-import { UserError } from 'n8n-workflow';
+import type { Logger } from '@MNI/backend-common';
+import { UserError } from 'MNI-workflow';
 import type { Mock } from 'vitest';
 import { mock } from 'vitest-mock-extended';
 

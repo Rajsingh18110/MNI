@@ -1,6 +1,6 @@
 # Postgres and SQLite compatibility
 
-Applies to: `packages/@n8n/db/src/migrations/**`.
+Applies to: `packages/@MNI/db/src/migrations/**`.
 
 A migration in `common/` runs on both engines. Judge them separately. A change
 that is safe on Postgres can lose data on SQLite.

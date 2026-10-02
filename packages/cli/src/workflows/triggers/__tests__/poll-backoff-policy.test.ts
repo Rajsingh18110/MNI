@@ -1,7 +1,7 @@
-import { markNonRetryable } from '@n8n/backend-network';
-import { backoff } from '@n8n/scheduler';
-import type { INode } from 'n8n-workflow';
-import { ACTIONABLE_CAUSES, NodeApiError, NodeOperationError, TIMED_CAUSES } from 'n8n-workflow';
+import { markNonRetryable } from '@MNI/backend-network';
+import { backoff } from '@MNI/scheduler';
+import type { INode } from 'MNI-workflow';
+import { ACTIONABLE_CAUSES, NodeApiError, NodeOperationError, TIMED_CAUSES } from 'MNI-workflow';
 
 import {
 	computeBackoffDelayMs,

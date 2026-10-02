@@ -1,5 +1,5 @@
 import type { TestInfo } from '@playwright/test';
-import type { ServiceHelpers } from 'n8n-containers/services/types';
+import type { ServiceHelpers } from 'MNI-containers/services/types';
 
 import { DockerStatsSampler } from './docker-stats-fallback';
 import type { UiScenarioResult } from './loop-ui-scenario';

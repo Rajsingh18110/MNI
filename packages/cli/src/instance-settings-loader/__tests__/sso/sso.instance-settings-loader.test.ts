@@ -1,5 +1,5 @@
-import type { Logger } from '@n8n/backend-common';
-import type { InstanceSettingsLoaderConfig } from '@n8n/config';
+import type { Logger } from '@MNI/backend-common';
+import type { InstanceSettingsLoaderConfig } from '@MNI/config';
 import { mock } from 'vitest-mock-extended';
 
 import type { OidcInstanceSettingsLoader } from '../../loaders/sso/oidc.instance-settings-loader';
@@ -67,7 +67,7 @@ describe('SsoInstanceSettingsLoader', () => {
 			});
 
 			await expect(loader.run()).rejects.toThrow(
-				'N8N_SSO_SAML_LOGIN_ENABLED and N8N_SSO_OIDC_LOGIN_ENABLED cannot both be true',
+				'MNI_SSO_SAML_LOGIN_ENABLED and MNI_SSO_OIDC_LOGIN_ENABLED cannot both be true',
 			);
 			expect(samlLoader.apply).not.toHaveBeenCalled();
 			expect(oidcLoader.apply).not.toHaveBeenCalled();

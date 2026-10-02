@@ -1,7 +1,7 @@
-import type { RichCardComponentType } from '@n8n/api-types';
-import { Logger } from '@n8n/backend-common';
-import { Service } from '@n8n/di';
-import { UserError } from 'n8n-workflow';
+import type { RichCardComponentType } from '@MNI/api-types';
+import { Logger } from '@MNI/backend-common';
+import { Service } from '@MNI/di';
+import { UserError } from 'MNI-workflow';
 
 import { AgentRepository } from '../../../repositories/agent.repository';
 import { createAdapterLogger } from '../../adapter-logger';

@@ -39,8 +39,8 @@ describe('isFirstParty', () => {
 	});
 
 	it('matches unscoped MNI packages', () => {
-		assert.equal(isFirstParty('pkg:npm/n8n-workflow@2.23.0'), true);
-		assert.equal(isFirstParty('pkg:npm/n8n@2.23.0'), true);
+		assert.equal(isFirstParty('pkg:npm/MNI-workflow@2.23.0'), true);
+		assert.equal(isFirstParty('pkg:npm/MNI@2.23.0'), true);
 	});
 
 	it('rejects other scoped packages', () => {
@@ -98,7 +98,7 @@ describe('renderSbom — scope handling (regression)', () => {
 			{ group: '@opentelemetry', name: 'core', version: '2.7.1', purl: 'pkg:npm/%40opentelemetry/core@2.7.1', licenses: [mit] },
 			{ group: '@aws-sdk', name: 'core', version: '3.808.0', purl: 'pkg:npm/%40aws-sdk/core@3.808.0', licenses: [mit] },
 			{ name: 'busboy', version: '1.6.0', purl: 'pkg:npm/busboy@1.6.0', licenses: [mit] },
-			{ group: '@n8n', name: 'config', version: '2.22.0', purl: 'pkg:npm/%40n8n/config@2.22.0', licenses: [mit] },
+			{ group: '@MNI', name: 'config', version: '2.22.0', purl: 'pkg:npm/%40n8n/config@2.22.0', licenses: [mit] },
 		],
 	};
 
@@ -123,7 +123,7 @@ describe('renderSbom — scope handling (regression)', () => {
 		assert.match(markdown, /^\* busboy 1\.6\.0$/m);
 	});
 
-	it('filters first-party @n8n/* packages', async () => {
+	it('filters first-party @MNI/* packages', async () => {
 		const { summary } = await renderSbom(sbom, {});
 		assert.equal(summary.skippedFirstParty, 1);
 		assert.equal(summary.externalComponents, 4);

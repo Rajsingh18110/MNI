@@ -6,7 +6,7 @@ import { useProjectsStore } from '@/features/collaboration/projects/projects.sto
 import DataTableView from '@/features/core/dataTable/DataTableView.vue';
 import { useSourceControlStore } from '@/features/integrations/sourceControl.ee/sourceControl.store';
 import { promotionEventBus } from '@/features/integrations/promotions.ee/promotions.eventBus';
-import { STORES } from '@n8n/stores';
+import { STORES } from '@MNI/stores';
 import { createTestingPinia } from '@pinia/testing';
 import { createRouter, createWebHistory } from 'vue-router';
 import type { DataTableResource } from '@/features/core/dataTable/types';
@@ -26,7 +26,7 @@ vi.mock('@/app/api/workflow-dependencies', () => ({
 	getResourceDependencies: vi.fn().mockResolvedValue({}),
 }));
 
-vi.mock('@n8n/i18n', async (importOriginal) => {
+vi.mock('@MNI/i18n', async (importOriginal) => {
 	const actual = await importOriginal();
 	const actualObj = typeof actual === 'object' && actual !== null ? actual : {};
 	return {
@@ -57,7 +57,7 @@ vi.mock('@n8n/i18n', async (importOriginal) => {
 const mockToast = {
 	showError: vi.fn(),
 };
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: vi.fn(() => mockToast),
 }));
 
@@ -72,8 +72,8 @@ const mockDebounce = {
 	callDebounced: vi.fn((fn) => fn()),
 	debounce: vi.fn(),
 };
-vi.mock('@n8n/composables/useDebounce', async (importOriginal) => ({
-	...(await importOriginal<typeof import('@n8n/composables/useDebounce')>()),
+vi.mock('@MNI/composables/useDebounce', async (importOriginal) => ({
+	...(await importOriginal<typeof import('@MNI/composables/useDebounce')>()),
 	useDebounce: vi.fn(() => mockDebounce),
 }));
 

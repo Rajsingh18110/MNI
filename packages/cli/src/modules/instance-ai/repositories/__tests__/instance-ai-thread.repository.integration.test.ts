@@ -1,10 +1,10 @@
 import { randomUUID } from 'node:crypto';
 
-import { Logger } from '@n8n/backend-common';
-import { createTeamProject, testDb, testModules } from '@n8n/backend-test-utils';
-import type { Project } from '@n8n/db';
-import { Container } from '@n8n/di';
-import { WorkflowLoopStorage, WorkflowTaskCoordinator } from '@n8n/instance-ai';
+import { Logger } from '@MNI/backend-common';
+import { createTeamProject, testDb, testModules } from '@MNI/backend-test-utils';
+import type { Project } from '@MNI/db';
+import { Container } from '@MNI/di';
+import { WorkflowLoopStorage, WorkflowTaskCoordinator } from '@MNI/instance-ai';
 
 import { TypeORMAgentMemory } from '../../storage/typeorm-agent-memory';
 import { InstanceAiMessageRepository } from '../instance-ai-message.repository';

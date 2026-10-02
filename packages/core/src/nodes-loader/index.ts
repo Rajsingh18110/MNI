@@ -10,4 +10,4 @@ export {
 	type OutputSchemaRef,
 	type OutputSchemaLookup,
 } from './output-schema-resolver';
-export type { n8n } from './types';
+export type { MNI } from './types';

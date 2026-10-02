@@ -1,4 +1,4 @@
-import type { IDataObject, INode, IPollFunctions } from 'n8n-workflow';
+import type { IDataObject, INode, IPollFunctions } from 'MNI-workflow';
 import type { Mock, Mocked } from 'vitest';
 import { mockDeep } from 'vitest-mock-extended';
 
@@ -50,7 +50,7 @@ describe('MicrosoftOutlookTrigger transport - Service Principal mailbox rewrite'
 		mockNode = {
 			id: 'test-node',
 			name: 'Microsoft Outlook Trigger',
-			type: 'n8n-nodes-base.microsoftOutlookTrigger',
+			type: 'MNI-nodes-base.microsoftOutlookTrigger',
 			typeVersion: 1,
 			position: [0, 0],
 			parameters: {},

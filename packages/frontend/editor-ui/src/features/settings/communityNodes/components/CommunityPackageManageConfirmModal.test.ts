@@ -2,10 +2,10 @@ import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';
 import { createComponentRenderer } from '@/__tests__/render';
 import CommunityPackageManageConfirmModal from './CommunityPackageManageConfirmModal.vue';
 import { SETTINGS_STORE_DEFAULT_STATE } from '@/__tests__/utils';
-import { useSettingsStore } from '@n8n/stores/settings.store';
-import { defaultSettings } from '@n8n/frontend-test-utils';
+import { useSettingsStore } from '@MNI/stores/settings.store';
+import { defaultSettings } from '@MNI/frontend-test-utils';
 import { createTestingPinia } from '@pinia/testing';
-import { STORES } from '@n8n/stores';
+import { STORES } from '@MNI/stores';
 import { COMMUNITY_PACKAGE_CONFIRM_MODAL_KEY } from '../communityNodes.constants';
 import { useCommunityNodesStore } from '../communityNodes.store';
 import { fireEvent } from '@testing-library/vue';
@@ -20,7 +20,7 @@ vi.mock('@/app/stores/workflowsList.store', () => ({
 const renderComponent = createComponentRenderer(CommunityPackageManageConfirmModal, {
 	data() {
 		return {
-			packageName: 'n8n-nodes-hello',
+			packageName: 'MNI-nodes-hello',
 		};
 	},
 	pinia: createTestingPinia({
@@ -32,13 +32,13 @@ const renderComponent = createComponentRenderer(CommunityPackageManageConfirmMod
 			},
 			[STORES.COMMUNITY_NODES]: {
 				installedPackages: {
-					'n8n-nodes-test': {
-						packageName: 'n8n-nodes-test',
+					'MNI-nodes-test': {
+						packageName: 'MNI-nodes-test',
 						installedVersion: '1.0.0',
 						updateAvailable: '2.0.0',
 						installedNodes: [
-							{ name: 'OldNode', type: 'n8n-nodes-test.old' },
-							{ name: 'TestNode', type: 'n8n-nodes-test.test' },
+							{ name: 'OldNode', type: 'MNI-nodes-test.old' },
+							{ name: 'TestNode', type: 'MNI-nodes-test.test' },
 						],
 					},
 				},
@@ -70,13 +70,13 @@ describe('CommunityPackageManageConfirmModal', () => {
 		nodeTypesStore.getCommunityNodeAttributes = vi
 			.fn()
 			.mockImplementation(async (nodeType) =>
-				nodeType === 'n8n-nodes-test.test' ? { npmVersion: '2.0.0' } : null,
+				nodeType === 'MNI-nodes-test.test' ? { npmVersion: '2.0.0' } : null,
 			);
 
 		renderComponent({
 			props: {
 				modalName: 'test-modal',
-				activePackageName: 'n8n-nodes-test',
+				activePackageName: 'MNI-nodes-test',
 				mode: 'update',
 			},
 		});
@@ -85,11 +85,11 @@ describe('CommunityPackageManageConfirmModal', () => {
 
 		expect(nodeTypesStore.getCommunityNodeAttributes).toHaveBeenNthCalledWith(
 			1,
-			'n8n-nodes-test.old',
+			'MNI-nodes-test.old',
 		);
 		expect(nodeTypesStore.getCommunityNodeAttributes).toHaveBeenNthCalledWith(
 			2,
-			'n8n-nodes-test.test',
+			'MNI-nodes-test.test',
 		);
 		expect(nodeTypesStore.getCommunityNodeAttributes).toHaveBeenCalledTimes(2);
 	});
@@ -106,7 +106,7 @@ describe('CommunityPackageManageConfirmModal', () => {
 		nodeTypesStore.getCommunityNodeAttributes = vi
 			.fn()
 			.mockImplementation(async (nodeType) =>
-				nodeType === 'n8n-nodes-test.test'
+				nodeType === 'MNI-nodes-test.test'
 					? { npmVersion: '2.0.5', checksum: 'correct-checksum' }
 					: null,
 			);
@@ -114,7 +114,7 @@ describe('CommunityPackageManageConfirmModal', () => {
 		const { getByRole } = renderComponent({
 			props: {
 				modalName: 'test-modal',
-				activePackageName: 'n8n-nodes-test',
+				activePackageName: 'MNI-nodes-test',
 				mode: 'update',
 			},
 		});
@@ -123,7 +123,7 @@ describe('CommunityPackageManageConfirmModal', () => {
 		await fireEvent.click(getByRole('button', { name: 'Confirm update' }));
 
 		expect(communityNodesStore.updatePackage).toHaveBeenCalledWith(
-			'n8n-nodes-test',
+			'MNI-nodes-test',
 			'2.0.5',
 			'correct-checksum',
 		);
@@ -138,7 +138,7 @@ describe('CommunityPackageManageConfirmModal', () => {
 		const { getByTestId } = renderComponent({
 			props: {
 				modalName: 'test-modal',
-				activePackageName: 'n8n-nodes-test',
+				activePackageName: 'MNI-nodes-test',
 				mode: 'update',
 			},
 		});
@@ -183,7 +183,7 @@ describe('CommunityPackageManageConfirmModal', () => {
 		const screen = renderComponent({
 			props: {
 				modalName: 'test-modal',
-				activePackageName: 'n8n-nodes-test',
+				activePackageName: 'MNI-nodes-test',
 				mode: 'update',
 			},
 			global: {
@@ -221,7 +221,7 @@ describe('CommunityPackageManageConfirmModal', () => {
 		const screen = renderComponent({
 			props: {
 				modalName: 'test-modal',
-				activePackageName: 'n8n-nodes-test',
+				activePackageName: 'MNI-nodes-test',
 				mode: 'update',
 			},
 		});
@@ -252,7 +252,7 @@ describe('CommunityPackageManageConfirmModal', () => {
 		const screen = renderComponent({
 			props: {
 				modalName: 'test-modal',
-				activePackageName: 'n8n-nodes-test',
+				activePackageName: 'MNI-nodes-test',
 				mode: 'uninstall',
 			},
 		});

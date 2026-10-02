@@ -1,7 +1,7 @@
-import { inTest, Logger, TypedEmitter } from '@n8n/backend-common';
-import { GlobalConfig } from '@n8n/config';
-import { Debounce } from '@n8n/decorators';
-import { Service } from '@n8n/di';
+import { inTest, Logger, TypedEmitter } from '@MNI/backend-common';
+import { GlobalConfig } from '@MNI/config';
+import { Debounce } from '@MNI/decorators';
+import { Service } from '@MNI/di';
 import ioRedis from 'ioredis';
 import type { Cluster, ClusterOptions, RedisOptions } from 'ioredis';
 

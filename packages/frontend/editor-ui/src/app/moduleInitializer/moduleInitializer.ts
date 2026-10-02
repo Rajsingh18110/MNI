@@ -6,11 +6,11 @@ import {
 	pushHandlerRegistry,
 	commandRegistry,
 	parameterInputRegistry,
-} from '@n8n/frontend-module-sdk';
+} from '@MNI/frontend-module-sdk';
 import { VIEWS } from '@/app/constants';
 import { modules } from '@/app/modules.manifest';
 import { useUIStore } from '@/app/stores/ui.store';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import {
 	INSTANCE_AI_NEW_VIEW,
 	INSTANCE_AI_SETTINGS_VIEW,

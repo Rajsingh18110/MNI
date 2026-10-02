@@ -149,7 +149,7 @@ export interface MessageEventBusDestinationMyNewTypeOptions
 Create `destinations/message-event-bus-destination-mynewtype.ee.ts`:
 
 ```typescript
-import { MessageEventBusDestinationTypeNames } from 'n8n-workflow';
+import { MessageEventBusDestinationTypeNames } from 'MNI-workflow';
 import type { MessageWithCallback } from '@/eventbus/message-event-bus/message-event-bus';
 import { MessageEventBusDestination } from './message-event-bus-destination.ee';
 
@@ -247,7 +247,7 @@ case MessageEventBusDestinationTypeNames.myNewType:
 
 ### 4. Add API Validation
 
-Update `packages/@n8n/api-types` with Zod schema and add to `CreateDestinationDto` discriminated union.
+Update `packages/@MNI/api-types` with Zod schema and add to `CreateDestinationDto` discriminated union.
 
 ### 5. Write Tests
 

@@ -1,4 +1,4 @@
-# This workflow is used to build and push the Docker image for n8nio/n8n and n8nio/runners
+# This workflow is used to build and push the Docker image for n8nio/MNI and n8nio/runners
 #
 # - Uses docker-config.mjs for context determination, this determines what needs to be built based on the trigger
 # - Uses docker-tags.mjs for tag generation, this generates the tags for the images
@@ -16,7 +16,7 @@ on:
 
   workflow_call:
     inputs:
-      n8n_version:
+      MNI_version:
         description: 'MNI version to build'
         required: true
         type: string
@@ -49,12 +49,12 @@ on:
       # Repo name + multi-arch manifest digest per image, so callers can promote what
       # was actually pushed (retag by digest) instead of re-deriving tag strings.
       # Empty when push_enabled is false — the manifest job doesn't run.
-      n8n_image:
+      MNI_image:
         description: 'GHCR repo for the MNI image (no tag)'
-        value: ${{ jobs.create_multi_arch_manifest.outputs.n8n_image }}
-      n8n_digest:
+        value: ${{ jobs.create_multi_arch_manifest.outputs.MNI_image }}
+      MNI_digest:
         description: 'Multi-arch manifest digest of the MNI image'
-        value: ${{ jobs.create_multi_arch_manifest.outputs.n8n_digest }}
+        value: ${{ jobs.create_multi_arch_manifest.outputs.MNI_digest }}
       runners_image:
         description: 'GHCR repo for the runners image (no tag)'
         value: ${{ jobs.create_multi_arch_manifest.outputs.runners_image }}
@@ -91,7 +91,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       release_type: ${{ steps.context.outputs.release_type }}
-      n8n_version: ${{ steps.context.outputs.version }}
+      MNI_version: ${{ steps.context.outputs.version }}
       push_enabled: ${{ steps.context.outputs.push_enabled }}
       push_to_docker: ${{ steps.context.outputs.push_to_docker }}
       build_matrix: ${{ steps.context.outputs.build_matrix }}
@@ -111,7 +111,7 @@ jobs:
       - name: Determine build context
         id: context
         env:
-          N8N_VERSION: ${{ inputs.n8n_version }}
+          MNI_VERSION: ${{ inputs.MNI_version }}
           RELEASE_TYPE: ${{ inputs.release_type }}
           PUSH_ENABLED: ${{ inputs.push_enabled }}
           INCLUDE_ARM64: ${{ inputs.include_arm64 }}
@@ -121,7 +121,7 @@ jobs:
             --event "${{ github.event_name }}" \
             --pr "${{ github.event.pull_request.number }}" \
             --branch "$GITHUB_REF" \
-            --version "$N8N_VERSION" \
+            --version "$MNI_VERSION" \
             --release-type "$RELEASE_TYPE" \
             --push-enabled "$PUSH_ENABLED" \
             --include-arm64 "$INCLUDE_ARM64"
@@ -148,7 +148,7 @@ jobs:
           node-version: ${{ env.NODE_VERSION }}
           build-command: pnpm build:MNI
         env:
-          RELEASE: ${{ needs.determine-build-context.outputs.n8n_version }}
+          RELEASE: ${{ needs.determine-build-context.outputs.MNI_version }}
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
 
       # Blacksmith routes actions/cache through its cache backend. The cache archive
@@ -173,17 +173,17 @@ jobs:
     strategy:
       matrix: ${{ fromJSON(needs.determine-build-context.outputs.build_matrix) }}
     outputs:
-      image_ref: ${{ steps.determine-tags.outputs.n8n_primary_tag }}
-      primary_ghcr_manifest_tag: ${{ steps.determine-tags.outputs.n8n_primary_tag }}
-      n8n_pc_primary_ghcr_manifest_tag: ${{ steps.determine-tags.outputs.n8n_pc_primary_tag }}
-      n8n_pc_sha_manifest_tag: ${{ steps.determine-tags.outputs.n8n_pc_sha_primary_tag }}
-      n8n_pc_date_manifest_tag: ${{ steps.determine-tags.outputs.n8n_pc_date_primary_tag }}
+      image_ref: ${{ steps.determine-tags.outputs.MNI_primary_tag }}
+      primary_ghcr_manifest_tag: ${{ steps.determine-tags.outputs.MNI_primary_tag }}
+      MNI_pc_primary_ghcr_manifest_tag: ${{ steps.determine-tags.outputs.MNI_pc_primary_tag }}
+      MNI_pc_sha_manifest_tag: ${{ steps.determine-tags.outputs.MNI_pc_sha_primary_tag }}
+      MNI_pc_date_manifest_tag: ${{ steps.determine-tags.outputs.MNI_pc_date_primary_tag }}
       runners_primary_ghcr_manifest_tag: ${{ steps.determine-tags.outputs.runners_primary_tag }}
       runners_distroless_primary_ghcr_manifest_tag: ${{ steps.determine-tags.outputs.runners_distroless_primary_tag }}
-      n8n_sha_manifest_tag: ${{ steps.determine-tags.outputs.n8n_sha_primary_tag }}
+      MNI_sha_manifest_tag: ${{ steps.determine-tags.outputs.MNI_sha_primary_tag }}
       runners_sha_manifest_tag: ${{ steps.determine-tags.outputs.runners_sha_primary_tag }}
       runners_distroless_sha_manifest_tag: ${{ steps.determine-tags.outputs.runners_distroless_sha_primary_tag }}
-      n8n_date_manifest_tag: ${{ steps.determine-tags.outputs.n8n_date_primary_tag }}
+      MNI_date_manifest_tag: ${{ steps.determine-tags.outputs.MNI_date_primary_tag }}
       runners_date_manifest_tag: ${{ steps.determine-tags.outputs.runners_date_primary_tag }}
       runners_distroless_date_manifest_tag: ${{ steps.determine-tags.outputs.runners_distroless_date_primary_tag }}
     steps:
@@ -198,7 +198,7 @@ jobs:
         uses: useblacksmith/setup-docker-builder@a5256a73e30f09e37e3eceb8ca36043d17621d24 # v2.1.0
         with:
           # Blacksmith stores a separate Sticky Disk variant per architecture.
-          cache-key: n8n-io/n8n
+          cache-key: MNI-io/MNI
 
       - name: Restore Docker build context
         uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
@@ -222,7 +222,7 @@ jobs:
 
           node .github/scripts/docker/docker-tags.mjs \
             --all \
-            --version "${{ needs.determine-build-context.outputs.n8n_version }}" \
+            --version "${{ needs.determine-build-context.outputs.MNI_version }}" \
             --platform "${{ matrix.docker_platform }}" \
             --sha "$SHORT_SHA" \
             "${DATE_ARGS[@]}" \
@@ -244,18 +244,18 @@ jobs:
 
       - name: Build and push Docker images
         env:
-          N8N_VERSION: ${{ needs.determine-build-context.outputs.n8n_version }}
-          N8N_RELEASE_TYPE: ${{ needs.determine-build-context.outputs.release_type }}
+          MNI_VERSION: ${{ needs.determine-build-context.outputs.MNI_version }}
+          MNI_RELEASE_TYPE: ${{ needs.determine-build-context.outputs.release_type }}
           PLATFORMS: ${{ matrix.docker_platform }}
-          N8N_TAGS: ${{ steps.determine-tags.outputs.n8n_tags }}
-          N8N_PC_TAGS: ${{ steps.determine-tags.outputs.n8n_pc_tags }}
+          MNI_TAGS: ${{ steps.determine-tags.outputs.MNI_tags }}
+          MNI_PC_TAGS: ${{ steps.determine-tags.outputs.MNI_pc_tags }}
           RUNNERS_TAGS: ${{ steps.determine-tags.outputs.runners_tags }}
           RUNNERS_DISTROLESS_TAGS: ${{ steps.determine-tags.outputs.runners_distroless_tags }}
           PUSH_ENABLED: ${{ needs.determine-build-context.outputs.push_enabled }}
         run: |
           TARGETS=(MNI runners runners-distroless)
-          if [ -n "$N8N_PC_TAGS" ] && [ "$PUSH_ENABLED" = 'true' ]; then
-            TARGETS+=(n8n-pc)
+          if [ -n "$MNI_PC_TAGS" ] && [ "$PUSH_ENABLED" = 'true' ]; then
+            TARGETS+=(MNI-pc)
           fi
 
           # oci-mediatypes keeps the merged manifest an OCI image index. Older
@@ -284,10 +284,10 @@ jobs:
       needs.build-and-push-docker.result == 'success' &&
       needs.determine-build-context.outputs.push_enabled == 'true'
     outputs:
-      n8n_digest: ${{ steps.get-digests.outputs.n8n_digest }}
-      n8n_image: ${{ steps.get-digests.outputs.n8n_image }}
-      n8n_pc_digest: ${{ steps.get-digests.outputs.n8n_pc_digest }}
-      n8n_pc_image: ${{ steps.get-digests.outputs.n8n_pc_image }}
+      MNI_digest: ${{ steps.get-digests.outputs.MNI_digest }}
+      MNI_image: ${{ steps.get-digests.outputs.MNI_image }}
+      MNI_pc_digest: ${{ steps.get-digests.outputs.MNI_pc_digest }}
+      MNI_pc_image: ${{ steps.get-digests.outputs.MNI_pc_image }}
       runners_digest: ${{ steps.get-digests.outputs.runners_digest }}
       runners_image: ${{ steps.get-digests.outputs.runners_image }}
       runners_distroless_digest: ${{ steps.get-digests.outputs.runners_distroless_digest }}
@@ -310,12 +310,12 @@ jobs:
       - name: Create GHCR multi-arch manifests
         env:
           BUILD_MATRIX: ${{ needs.determine-build-context.outputs.build_matrix }}
-          N8N_MANIFEST_TAG: ${{ needs.build-and-push-docker.outputs.primary_ghcr_manifest_tag }}
-          N8N_SHA_MANIFEST_TAG: ${{ needs.build-and-push-docker.outputs.n8n_sha_manifest_tag }}
-          N8N_DATE_MANIFEST_TAG: ${{ needs.build-and-push-docker.outputs.n8n_date_manifest_tag }}
-          N8N_PC_MANIFEST_TAG: ${{ needs.build-and-push-docker.outputs.n8n_pc_primary_ghcr_manifest_tag }}
-          N8N_PC_SHA_MANIFEST_TAG: ${{ needs.build-and-push-docker.outputs.n8n_pc_sha_manifest_tag }}
-          N8N_PC_DATE_MANIFEST_TAG: ${{ needs.build-and-push-docker.outputs.n8n_pc_date_manifest_tag }}
+          MNI_MANIFEST_TAG: ${{ needs.build-and-push-docker.outputs.primary_ghcr_manifest_tag }}
+          MNI_SHA_MANIFEST_TAG: ${{ needs.build-and-push-docker.outputs.MNI_sha_manifest_tag }}
+          MNI_DATE_MANIFEST_TAG: ${{ needs.build-and-push-docker.outputs.MNI_date_manifest_tag }}
+          MNI_PC_MANIFEST_TAG: ${{ needs.build-and-push-docker.outputs.MNI_pc_primary_ghcr_manifest_tag }}
+          MNI_PC_SHA_MANIFEST_TAG: ${{ needs.build-and-push-docker.outputs.MNI_pc_sha_manifest_tag }}
+          MNI_PC_DATE_MANIFEST_TAG: ${{ needs.build-and-push-docker.outputs.MNI_pc_date_manifest_tag }}
           RUNNERS_MANIFEST_TAG: ${{ needs.build-and-push-docker.outputs.runners_primary_ghcr_manifest_tag }}
           RUNNERS_SHA_MANIFEST_TAG: ${{ needs.build-and-push-docker.outputs.runners_sha_manifest_tag }}
           RUNNERS_DATE_MANIFEST_TAG: ${{ needs.build-and-push-docker.outputs.runners_date_manifest_tag }}
@@ -354,9 +354,9 @@ jobs:
           }
 
           PIDS=()
-          create_manifest "MNI" "$N8N_SHA_MANIFEST_TAG" "$N8N_MANIFEST_TAG" "$N8N_DATE_MANIFEST_TAG" &
+          create_manifest "MNI" "$MNI_SHA_MANIFEST_TAG" "$MNI_MANIFEST_TAG" "$MNI_DATE_MANIFEST_TAG" &
           PIDS+=("$!")
-          create_manifest "n8n-pc" "$N8N_PC_SHA_MANIFEST_TAG" "$N8N_PC_MANIFEST_TAG" "$N8N_PC_DATE_MANIFEST_TAG" &
+          create_manifest "MNI-pc" "$MNI_PC_SHA_MANIFEST_TAG" "$MNI_PC_MANIFEST_TAG" "$MNI_PC_DATE_MANIFEST_TAG" &
           PIDS+=("$!")
           create_manifest "runners" "$RUNNERS_SHA_MANIFEST_TAG" "$RUNNERS_MANIFEST_TAG" "$RUNNERS_DATE_MANIFEST_TAG" &
           PIDS+=("$!")
@@ -377,15 +377,15 @@ jobs:
       - name: Assert merged GHCR manifests are OCI image indexes
         env:
           BUILD_MATRIX: ${{ needs.determine-build-context.outputs.build_matrix }}
-          N8N_TAG: ${{ needs.build-and-push-docker.outputs.primary_ghcr_manifest_tag }}
-          N8N_PC_TAG: ${{ needs.build-and-push-docker.outputs.n8n_pc_primary_ghcr_manifest_tag }}
+          MNI_TAG: ${{ needs.build-and-push-docker.outputs.primary_ghcr_manifest_tag }}
+          MNI_PC_TAG: ${{ needs.build-and-push-docker.outputs.MNI_pc_primary_ghcr_manifest_tag }}
           RUNNERS_TAG: ${{ needs.build-and-push-docker.outputs.runners_primary_ghcr_manifest_tag }}
           RUNNERS_DISTROLESS_TAG: ${{ needs.build-and-push-docker.outputs.runners_distroless_primary_ghcr_manifest_tag }}
         run: |
           set -euo pipefail
           EXPECT="$(node -e "const matrix = JSON.parse(process.env.BUILD_MATRIX); process.stdout.write(String(matrix.platform.length))")"
 
-          for TAG in "$N8N_TAG" "$N8N_PC_TAG" "$RUNNERS_TAG" "$RUNNERS_DISTROLESS_TAG"; do
+          for TAG in "$MNI_TAG" "$MNI_PC_TAG" "$RUNNERS_TAG" "$RUNNERS_DISTROLESS_TAG"; do
             [[ -n "$TAG" ]] || continue
             node .github/scripts/docker/assert-manifest-format.mjs "$TAG" --expect-platforms "$EXPECT"
           done
@@ -396,10 +396,10 @@ jobs:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           DATE_TAG: ${{ inputs.date_tag }}
           SHORT_SHA: ${{ needs.determine-build-context.outputs.short_sha }}
-          N8N_PC_MANIFEST_TAG: ${{ needs.build-and-push-docker.outputs.n8n_pc_primary_ghcr_manifest_tag }}
+          MNI_PC_MANIFEST_TAG: ${{ needs.build-and-push-docker.outputs.MNI_pc_primary_ghcr_manifest_tag }}
         run: |
           set -euo pipefail
-          VERSION="${{ needs.determine-build-context.outputs.n8n_version }}"
+          VERSION="${{ needs.determine-build-context.outputs.MNI_version }}"
           DOCKER_BASE="$DOCKER_USERNAME"
 
           # Create manifests for each image type
@@ -408,8 +408,8 @@ jobs:
             ["runners"]="${VERSION}"
             ["runners-distroless"]="${VERSION}-distroless"
           )
-          if [[ -n "$N8N_PC_MANIFEST_TAG" ]]; then
-            images["n8n-pc"]="${VERSION}-pc"
+          if [[ -n "$MNI_PC_MANIFEST_TAG" ]]; then
+            images["MNI-pc"]="${VERSION}-pc"
           fi
 
           create_docker_manifest() {
@@ -469,8 +469,8 @@ jobs:
       - name: Get manifest digests for attestation
         id: get-digests
         env:
-          N8N_TAG: ${{ needs.build-and-push-docker.outputs.primary_ghcr_manifest_tag }}
-          N8N_PC_TAG: ${{ needs.build-and-push-docker.outputs.n8n_pc_primary_ghcr_manifest_tag }}
+          MNI_TAG: ${{ needs.build-and-push-docker.outputs.primary_ghcr_manifest_tag }}
+          MNI_PC_TAG: ${{ needs.build-and-push-docker.outputs.MNI_pc_primary_ghcr_manifest_tag }}
           RUNNERS_TAG: ${{ needs.build-and-push-docker.outputs.runners_primary_ghcr_manifest_tag }}
           DISTROLESS_TAG: ${{ needs.build-and-push-docker.outputs.runners_distroless_primary_ghcr_manifest_tag }}
         run: node .github/scripts/docker/get-manifest-digests.mjs
@@ -496,14 +496,14 @@ jobs:
           curl -v "${{ env.SUCCESS_URL }}" || echo "Failed to call success URL"
         shell: bash
 
-  provenance-n8n:
+  provenance-MNI:
     name: SLSA Provenance (MNI)
     needs: [determine-build-context, build-and-push-docker, create_multi_arch_manifest]
     if: |
       inputs.ref == '' &&
       inputs.create_attestations &&
       needs.create_multi_arch_manifest.result == 'success' &&
-      needs.create_multi_arch_manifest.outputs.n8n_digest != ''
+      needs.create_multi_arch_manifest.outputs.MNI_digest != ''
     runs-on: ubuntu-latest
     permissions:
       id-token: write # GitHub OIDC token for the Sigstore signing request
@@ -524,17 +524,17 @@ jobs:
       - name: Attest build provenance for MNI image
         uses: actions/attest@59d89421af93a897026c735860bf21b6eb4f7b26 # v4.1.0
         with:
-          subject-name: ${{ needs.create_multi_arch_manifest.outputs.n8n_image }}
-          subject-digest: ${{ needs.create_multi_arch_manifest.outputs.n8n_digest }}
+          subject-name: ${{ needs.create_multi_arch_manifest.outputs.MNI_image }}
+          subject-digest: ${{ needs.create_multi_arch_manifest.outputs.MNI_digest }}
           push-to-registry: true
 
-  provenance-n8n-pc:
-    name: SLSA Provenance (n8n-pc)
+  provenance-MNI-pc:
+    name: SLSA Provenance (MNI-pc)
     needs: [determine-build-context, build-and-push-docker, create_multi_arch_manifest]
     if: |
       inputs.create_attestations &&
       needs.create_multi_arch_manifest.result == 'success' &&
-      needs.create_multi_arch_manifest.outputs.n8n_pc_digest != ''
+      needs.create_multi_arch_manifest.outputs.MNI_pc_digest != ''
     permissions:
       id-token: write
       packages: write
@@ -542,8 +542,8 @@ jobs:
     # SLSA L3 Provenance - Must use version tags (@vX.Y.Z), NOT SHAs
     uses: slsa-framework/slsa-github-generator/.github/workflows/generator_container_slsa3.yml@v2.1.0
     with:
-      image: ${{ needs.create_multi_arch_manifest.outputs.n8n_pc_image }}
-      digest: ${{ needs.create_multi_arch_manifest.outputs.n8n_pc_digest }}
+      image: ${{ needs.create_multi_arch_manifest.outputs.MNI_pc_image }}
+      digest: ${{ needs.create_multi_arch_manifest.outputs.MNI_pc_digest }}
       registry-username: ${{ github.actor }}
     secrets:
       registry-password: ${{ secrets.GITHUB_TOKEN }}
@@ -596,8 +596,8 @@ jobs:
         determine-build-context,
         build-and-push-docker,
         create_multi_arch_manifest,
-        provenance-n8n,
-        provenance-n8n-pc,
+        provenance-MNI,
+        provenance-MNI-pc,
         provenance-runners,
         provenance-runners-distroless,
       ]
@@ -639,20 +639,20 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Attest VEX to MNI image
-        if: needs.create_multi_arch_manifest.outputs.n8n_digest != ''
+        if: needs.create_multi_arch_manifest.outputs.MNI_digest != ''
         run: |
           cosign attest --yes \
             --type openvex \
             --predicate security/vex.openvex.json \
-            ${{ needs.create_multi_arch_manifest.outputs.n8n_image }}@${{ needs.create_multi_arch_manifest.outputs.n8n_digest }}
+            ${{ needs.create_multi_arch_manifest.outputs.MNI_image }}@${{ needs.create_multi_arch_manifest.outputs.MNI_digest }}
 
-      - name: Attest VEX to n8n-pc image
-        if: needs.create_multi_arch_manifest.outputs.n8n_pc_digest != ''
+      - name: Attest VEX to MNI-pc image
+        if: needs.create_multi_arch_manifest.outputs.MNI_pc_digest != ''
         run: |
           cosign attest --yes \
             --type openvex \
             --predicate security/vex.openvex.json \
-            ${{ needs.create_multi_arch_manifest.outputs.n8n_pc_image }}@${{ needs.create_multi_arch_manifest.outputs.n8n_pc_digest }}
+            ${{ needs.create_multi_arch_manifest.outputs.MNI_pc_image }}@${{ needs.create_multi_arch_manifest.outputs.MNI_pc_digest }}
 
       - name: Attest VEX to runners image
         if: needs.create_multi_arch_manifest.outputs.runners_digest != ''
@@ -683,8 +683,8 @@ jobs:
         determine-build-context,
         build-and-push-docker,
         create_multi_arch_manifest,
-        provenance-n8n,
-        provenance-n8n-pc,
+        provenance-MNI,
+        provenance-MNI-pc,
         provenance-runners,
         provenance-runners-distroless,
       ]
@@ -742,10 +742,10 @@ jobs:
 
       - name: Generate, enrich, gate and attest SBOM per image
         env:
-          N8N_IMAGE: ${{ needs.create_multi_arch_manifest.outputs.n8n_image }}
-          N8N_DIGEST: ${{ needs.create_multi_arch_manifest.outputs.n8n_digest }}
-          N8N_PC_IMAGE: ${{ needs.create_multi_arch_manifest.outputs.n8n_pc_image }}
-          N8N_PC_DIGEST: ${{ needs.create_multi_arch_manifest.outputs.n8n_pc_digest }}
+          MNI_IMAGE: ${{ needs.create_multi_arch_manifest.outputs.MNI_image }}
+          MNI_DIGEST: ${{ needs.create_multi_arch_manifest.outputs.MNI_digest }}
+          MNI_PC_IMAGE: ${{ needs.create_multi_arch_manifest.outputs.MNI_pc_image }}
+          MNI_PC_DIGEST: ${{ needs.create_multi_arch_manifest.outputs.MNI_pc_digest }}
           RUNNERS_IMAGE: ${{ needs.create_multi_arch_manifest.outputs.runners_image }}
           RUNNERS_DIGEST: ${{ needs.create_multi_arch_manifest.outputs.runners_digest }}
           DISTROLESS_IMAGE: ${{ needs.create_multi_arch_manifest.outputs.runners_distroless_image }}
@@ -766,17 +766,17 @@ jobs:
     secrets: inherit
 
   security-scan-pc:
-    name: Security Scan (n8n-pc)
+    name: Security Scan (MNI-pc)
     needs: [determine-build-context, build-and-push-docker, create_multi_arch_manifest]
     if: |
       success() &&
-      needs.build-and-push-docker.outputs.n8n_pc_primary_ghcr_manifest_tag != '' &&
+      needs.build-and-push-docker.outputs.MNI_pc_primary_ghcr_manifest_tag != '' &&
       (needs.determine-build-context.outputs.release_type == 'stable' ||
        needs.determine-build-context.outputs.release_type == 'nightly' ||
        needs.determine-build-context.outputs.release_type == 'rc')
     uses: ./.github/workflows/security-trivy-scan-callable.yml
     with:
-      image_ref: ${{ needs.build-and-push-docker.outputs.n8n_pc_primary_ghcr_manifest_tag }}
+      image_ref: ${{ needs.build-and-push-docker.outputs.MNI_pc_primary_ghcr_manifest_tag }}
     secrets: inherit
 
   security-scan-runners:

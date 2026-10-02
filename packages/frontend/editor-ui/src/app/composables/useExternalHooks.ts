@@ -1,4 +1,4 @@
-import type { IDataObject } from 'n8n-workflow';
+import type { IDataObject } from 'MNI-workflow';
 import type {
 	ExternalHooks,
 	ExternalHooksKey,
@@ -6,10 +6,10 @@ import type {
 	ExtractExternalHooksMethodPayloadFromKey,
 } from '@/app/types/externalHooks';
 import { useWebhooksStore } from '@/app/stores/webhooks.store';
-import { setExternalHooks } from '@n8n/composables/useExternalHooks';
+import { setExternalHooks } from '@MNI/composables/useExternalHooks';
 
 /**
- * Concrete runner. Loosely typed to match the `@n8n/composables` contract so it
+ * Concrete runner. Loosely typed to match the `@MNI/composables` contract so it
  * can be registered for package-side consumers; the exported {@link runExternalHook}
  * wrapper below re-adds per-event type-checking for direct call sites.
  */
@@ -43,7 +43,7 @@ export async function runExternalHook<T extends ExternalHooksKey>(
 }
 
 // Register the concrete runner so package-side `useExternalHooks`
-// (`@n8n/composables`) can resolve it from any context. Runs on first import;
+// (`@MNI/composables`) can resolve it from any context. Runs on first import;
 // `editor-ui` imports this module during bootstrap, before any consumer runs.
 setExternalHooks({ run: runExternalHookInternal });
 

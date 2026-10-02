@@ -1,6 +1,6 @@
-import type { PathItem } from '@n8n/design-system';
-import type { ITag } from '@n8n/rest-api-client';
-import type { ProjectSharingData } from 'n8n-workflow';
+import type { PathItem } from '@MNI/design-system';
+import type { ITag } from '@MNI/rest-api-client';
+import type { ProjectSharingData } from 'MNI-workflow';
 import type { BaseResource } from '@/Interface';
 import type { ProjectListItem } from '@/features/collaboration/projects/projects.types';
 import type { ResourceType } from '@/features/collaboration/projects/projects.utils';

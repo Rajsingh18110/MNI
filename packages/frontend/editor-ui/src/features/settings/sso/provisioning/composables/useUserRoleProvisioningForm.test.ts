@@ -1,19 +1,19 @@
 import { createPinia, setActivePinia } from 'pinia';
-import { BLOCK_ACCESS_ASSIGNMENT } from '@n8n/api-types';
+import { BLOCK_ACCESS_ASSIGNMENT } from '@MNI/api-types';
 import { useUserRoleProvisioningForm } from './useUserRoleProvisioningForm';
-import * as provisioningApi from '@n8n/rest-api-client/api/provisioning';
-import * as roleMappingRuleApi from '@n8n/rest-api-client/api/roleMappingRule';
-import type { ProvisioningConfig } from '@n8n/rest-api-client/api/provisioning';
-import type { RoleMappingRuleResponse } from '@n8n/rest-api-client/api/roleMappingRule';
+import * as provisioningApi from '@MNI/rest-api-client/api/provisioning';
+import * as roleMappingRuleApi from '@MNI/rest-api-client/api/roleMappingRule';
+import type { ProvisioningConfig } from '@MNI/rest-api-client/api/provisioning';
+import type { RoleMappingRuleResponse } from '@MNI/rest-api-client/api/roleMappingRule';
 
-vi.mock('@n8n/rest-api-client/api/provisioning');
-vi.mock('@n8n/rest-api-client/api/roleMappingRule');
-vi.mock('@n8n/composables/useTelemetry', () => ({
+vi.mock('@MNI/rest-api-client/api/provisioning');
+vi.mock('@MNI/rest-api-client/api/roleMappingRule');
+vi.mock('@MNI/composables/useTelemetry', () => ({
 	useTelemetry: () => ({
 		track: vi.fn(),
 	}),
 }));
-vi.mock('@n8n/stores/useRootStore', () => ({
+vi.mock('@MNI/stores/useRootStore', () => ({
 	useRootStore: () => ({
 		restApiContext: {},
 		instanceId: 'test-instance-id',
@@ -29,9 +29,9 @@ describe('useUserRoleProvisioningForm', () => {
 
 	const mockProvisioningConfig = (config: Partial<ProvisioningConfig>) => {
 		const defaultConfig: ProvisioningConfig = {
-			scopesInstanceRoleClaimName: 'n8n_instance_role',
+			scopesInstanceRoleClaimName: 'MNI_instance_role',
 			scopesName: 'MNI',
-			scopesProjectsRolesClaimName: 'n8n_projects',
+			scopesProjectsRolesClaimName: 'MNI_projects',
 			scopesProvisionInstanceRole: false,
 			scopesProvisionProjectRoles: false,
 			scopesUseExpressionMapping: false,

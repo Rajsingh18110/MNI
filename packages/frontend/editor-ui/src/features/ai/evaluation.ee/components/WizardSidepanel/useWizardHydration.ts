@@ -1,15 +1,15 @@
 import { ref } from 'vue';
-import { useI18n } from '@n8n/i18n';
-import type { EvaluationConfigDto, EvaluationMetric, LlmJudgeMetricPreset } from '@n8n/api-types';
+import { useI18n } from '@MNI/i18n';
+import type { EvaluationConfigDto, EvaluationMetric, LlmJudgeMetricPreset } from '@MNI/api-types';
 
 import { useEvaluationsWizardSidepanelStore } from '../../wizardSidepanel.store';
 import type { CustomCheck, JudgeSelection } from '../../wizardSidepanel.store';
 import { useEvaluationStore } from '../../evaluation.store';
 
-import { useRootStore } from '@n8n/stores/useRootStore';
+import { useRootStore } from '@MNI/stores/useRootStore';
 import { injectWorkflowDocumentStore } from '@/app/stores/workflowDocument.store';
 import { useWorkflowsStore } from '@/app/stores/workflows.store';
-import { useToast } from '@n8n/composables/useToast';
+import { useToast } from '@MNI/composables/useToast';
 import { getDataTableRowsApi } from '@/features/core/dataTable/dataTable.api';
 import { listEvaluationConfigs } from '../../evaluation.api';
 import { useAiRootNodes } from '../../composables/useAiRootNodes';

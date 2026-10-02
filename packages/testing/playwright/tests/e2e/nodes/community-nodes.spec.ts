@@ -3,10 +3,10 @@ import { test, expect } from '../../../fixtures/base';
 import customCredential from '../../../workflows/Custom_credential.json';
 import customNodeFixture from '../../../workflows/Custom_node.json';
 import customNodeWithCustomCredentialFixture from '../../../workflows/Custom_node_custom_credential.json';
-import customNodeWithN8nCredentialFixture from '../../../workflows/Custom_node_n8n_credential.json';
+import customNodeWithN8nCredentialFixture from '../../../workflows/Custom_node_MNI_credential.json';
 
 const CUSTOM_NODE_NAME = 'E2E Node';
-const CUSTOM_NODE_WITH_N8N_CREDENTIAL = 'E2E Node with native MNI credential';
+const CUSTOM_NODE_WITH_MNI_CREDENTIAL = 'E2E Node with native MNI credential';
 const CUSTOM_NODE_WITH_CUSTOM_CREDENTIAL = 'E2E Node with custom credential';
 
 test.describe(
@@ -77,8 +77,8 @@ test.describe(
 			await n8n.canvas.addNode(MANUAL_TRIGGER_NODE_NAME);
 
 			await n8n.canvas.clickNodeCreatorPlusButton();
-			await n8n.canvas.fillNodeCreatorSearchBar(CUSTOM_NODE_WITH_N8N_CREDENTIAL);
-			await n8n.canvas.clickNodeCreatorItemName(CUSTOM_NODE_WITH_N8N_CREDENTIAL);
+			await n8n.canvas.fillNodeCreatorSearchBar(CUSTOM_NODE_WITH_MNI_CREDENTIAL);
+			await n8n.canvas.clickNodeCreatorItemName(CUSTOM_NODE_WITH_MNI_CREDENTIAL);
 			await n8n.canvas.clickAddToWorkflowButton();
 
 			await n8n.ndv.clickCreateNewCredential();

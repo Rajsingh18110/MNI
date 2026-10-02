@@ -1,4 +1,4 @@
-import { sleep } from '@n8n/utils/sleep';
+import { sleep } from '@MNI/utils/sleep';
 import type { RequestHandler } from 'express';
 
 export interface JitterOptions {

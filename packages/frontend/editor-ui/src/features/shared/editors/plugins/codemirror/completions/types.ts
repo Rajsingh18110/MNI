@@ -1,4 +1,4 @@
-import type { DocMetadata } from 'n8n-workflow';
+import type { DocMetadata } from 'MNI-workflow';
 
 export type Resolved = unknown;
 

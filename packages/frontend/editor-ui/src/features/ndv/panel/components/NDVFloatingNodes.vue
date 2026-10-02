@@ -4,9 +4,9 @@ import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';
 import { injectWorkflowDocumentStore } from '@/app/stores/workflowDocument.store';
 import { computed, onMounted, onBeforeUnmount } from 'vue';
 import NodeIcon from '@/app/components/NodeIcon.vue';
-import { NodeConnectionTypes, type INodeTypeDescription } from 'n8n-workflow';
+import { NodeConnectionTypes, type INodeTypeDescription } from 'MNI-workflow';
 
-import { N8nTooltip } from '@n8n/design-system';
+import { N8nTooltip } from '@MNI/design-system';
 interface Props {
 	rootNode: INodeUi;
 }

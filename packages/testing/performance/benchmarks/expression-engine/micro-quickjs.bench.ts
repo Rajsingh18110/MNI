@@ -8,10 +8,10 @@
  *
  * These use ExpressionEvaluator and QuickJsBridge directly.
  *
- * Run: pnpm --filter=@n8n/performance bench
+ * Run: pnpm --filter=@MNI/performance bench
  */
-import { ExpressionEvaluator, QuickJsBridge } from '@n8n/expression-runtime';
-import { expressionSandboxHooks } from 'n8n-workflow/expression-sandboxing';
+import { ExpressionEvaluator, QuickJsBridge } from '@MNI/expression-runtime';
+import { expressionSandboxHooks } from 'MNI-workflow/expression-sandboxing';
 
 import { defineBench } from '../bench-options';
 

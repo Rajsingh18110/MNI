@@ -1,9 +1,9 @@
-import { PrometheusMetricsConfig } from '@n8n/config';
-import { Time } from '@n8n/constants';
-import { ScheduledTaskRepository, type ScheduledTaskMetricSnapshot } from '@n8n/db';
-import { Service } from '@n8n/di';
-import type { MisfireCount, SchedulerMetrics } from '@n8n/scheduler';
-import { InstanceSettings } from 'n8n-core';
+import { PrometheusMetricsConfig } from '@MNI/config';
+import { Time } from '@MNI/constants';
+import { ScheduledTaskRepository, type ScheduledTaskMetricSnapshot } from '@MNI/db';
+import { Service } from '@MNI/di';
+import type { MisfireCount, SchedulerMetrics } from '@MNI/scheduler';
+import { InstanceSettings } from 'MNI-core';
 import promClient from 'prom-client';
 
 import { CacheService } from '@/services/cache/cache.service';

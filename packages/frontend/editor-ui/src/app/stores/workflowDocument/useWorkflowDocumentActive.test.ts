@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from 'vitest';
-import type { WorkflowHistory } from '@n8n/rest-api-client';
+import type { WorkflowHistory } from '@MNI/rest-api-client';
 import { useWorkflowDocumentActive } from './useWorkflowDocumentActive';
 
 function createActive() {

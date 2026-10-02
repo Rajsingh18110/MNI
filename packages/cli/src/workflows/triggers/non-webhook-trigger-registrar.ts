@@ -1,14 +1,14 @@
-import { Logger } from '@n8n/backend-common';
-import type { WorkflowEntity } from '@n8n/db';
-import { Service } from '@n8n/di';
-import { ensureError } from '@n8n/utils/errors/ensure-error';
+import { Logger } from '@MNI/backend-common';
+import type { WorkflowEntity } from '@MNI/db';
+import { Service } from '@MNI/di';
+import { ensureError } from '@MNI/utils/errors/ensure-error';
 import {
 	ActiveWorkflowTriggers,
 	SpanStatus,
 	Tracing,
 	type IGetExecutePollFunctions,
 	type IGetExecuteTriggerFunctions,
-} from 'n8n-core';
+} from 'MNI-core';
 import type {
 	INode,
 	IWorkflowBase,
@@ -17,7 +17,7 @@ import type {
 	WorkflowActivateMode,
 	WorkflowExecuteMode,
 	WorkflowId,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import type { ScheduleTriggerCollectionSession } from '@/scheduling/schedule-trigger-node/schedule-trigger-job-registrar';
 import { PollTriggerJobRegistrar } from '@/scheduling/poll-trigger-node/poll-trigger-job-registrar';

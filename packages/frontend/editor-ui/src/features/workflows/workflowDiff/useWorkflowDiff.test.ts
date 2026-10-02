@@ -4,7 +4,7 @@ import { mapConnections, useWorkflowDiff } from './useWorkflowDiff';
 import type { CanvasConnection, CanvasNode } from '@/features/workflows/canvas/canvas.types';
 import type { ExecutionOutputMap } from '@/app/types/executionData';
 import type { INodeUi, IWorkflowDb } from '@/Interface';
-import { NodeDiffStatus, type IConnections } from 'n8n-workflow';
+import { NodeDiffStatus, type IConnections } from 'MNI-workflow';
 import { useCanvasMapping } from '@/features/workflows/canvas/composables/useCanvasMapping';
 import { createNodeExecutionSnapshot } from '@/features/workflows/canvas/__tests__/utils';
 import { disposeWorkflowDocumentStore } from '@/app/stores/workflowDocument.store';

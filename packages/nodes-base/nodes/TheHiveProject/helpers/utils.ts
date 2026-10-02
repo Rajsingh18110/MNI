@@ -1,6 +1,6 @@
 import get from 'lodash/get';
 import set from 'lodash/set';
-import { UserError, type IDataObject } from 'n8n-workflow';
+import { UserError, type IDataObject } from 'MNI-workflow';
 
 export function splitAndTrim(str: string | string[]) {
 	if (typeof str === 'string') {

@@ -1,5 +1,5 @@
-import { BaseRule } from '@n8n/rules-engine';
-import type { Violation } from '@n8n/rules-engine';
+import { BaseRule } from '@MNI/rules-engine';
+import type { Violation } from '@MNI/rules-engine';
 import * as path from 'node:path';
 
 import type { CodeHealthContext } from '../context.js';

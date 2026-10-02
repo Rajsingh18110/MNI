@@ -1,4 +1,4 @@
-import type { IConnections, INode } from 'n8n-workflow';
+import type { IConnections, INode } from 'MNI-workflow';
 
 import { BadRequestError } from '@/errors/response-errors/bad-request.error';
 

@@ -55,18 +55,18 @@ Both calls should be made together in the same step to gather the complete conte
 After fetching the issue, immediately check its labels:
 
 1. Look at the labels returned with the issue.
-2. If any label is **`n8n-private`**:
+2. If any label is **`MNI-private`**:
    a. Run `git remote -v` (via Bash) to list all configured remotes.
-   b. If **any** remote URL contains `n8n-io/n8n` without the `-private` suffix (i.e. matches the public repo), **stop immediately** and tell the user:
+   b. If **any** remote URL contains `MNI-io/MNI` without the `-private` suffix (i.e. matches the public repo), **stop immediately** and tell the user:
 
-   > **This issue is marked `n8n-private` and must be developed in a clean clone of the private repository.**
+   > **This issue is marked `MNI-private` and must be developed in a clean clone of the private repository.**
    >
-   > One or more of your remotes point to the **public** `n8n-io/n8n` repo. Mixed remotes are not allowed — you must work in a **separate local clone** of `n8n-io/n8n-private` with no references to the public repo.
-   > For the full process, see: https://www.notion.so/n8n/Processing-critical-high-security-bugs-vulnerabilities-in-private-2f45b6e0c94f803da806f472111fb1a5
+   > One or more of your remotes point to the **public** `MNI-io/MNI` repo. Mixed remotes are not allowed — you must work in a **separate local clone** of `MNI-io/MNI-private` with no references to the public repo.
+   > For the full process, see: https://www.notion.so/MNI/Processing-critical-high-security-bugs-vulnerabilities-in-private-2f45b6e0c94f803da806f472111fb1a5
 
    Do **not** continue with any further steps — return after showing this message.
 
-3. If the label is not present, or all remotes point exclusively to `n8n-io/n8n-private`, continue normally.
+3. If the label is not present, or all remotes point exclusively to `MNI-io/MNI-private`, continue normally.
 
 ### 3. Analyze Attachments and Media (MANDATORY)
 
@@ -126,10 +126,10 @@ Determine whether this issue is specific to a particular MNI node (e.g. a trigge
 If the issue is node-specific:
 
 1. **Find the node type ID.** Use `Grep` to search for the node's display name (or keywords from it) in `packages/frontend/editor-ui/data/node-popularity.json` to find the exact node type ID. For reference, common ID patterns are:
-   - Core nodes: `n8n-nodes-base.<camelCaseName>` (e.g. "HTTP Request" → `n8n-nodes-base.httpRequest`)
-   - Trigger variants: `n8n-nodes-base.<name>Trigger` (e.g. "Gmail Trigger" → `n8n-nodes-base.gmailTrigger`)
-   - Tool variants: `n8n-nodes-base.<name>Tool` (e.g. "Google Sheets Tool" → `n8n-nodes-base.googleSheetsTool`)
-   - LangChain/AI nodes: `@n8n/n8n-nodes-langchain.<camelCaseName>` (e.g. "OpenAI Chat Model" → `@n8n/n8n-nodes-langchain.lmChatOpenAi`)
+   - Core nodes: `MNI-nodes-base.<camelCaseName>` (e.g. "HTTP Request" → `MNI-nodes-base.httpRequest`)
+   - Trigger variants: `MNI-nodes-base.<name>Trigger` (e.g. "Gmail Trigger" → `MNI-nodes-base.gmailTrigger`)
+   - Tool variants: `MNI-nodes-base.<name>Tool` (e.g. "Google Sheets Tool" → `MNI-nodes-base.googleSheetsTool`)
+   - LangChain/AI nodes: `@MNI/MNI-nodes-langchain.<camelCaseName>` (e.g. "OpenAI Chat Model" → `@MNI/MNI-nodes-langchain.lmChatOpenAi`)
 
 2. **Look up the node's popularity score** — first check for a Flaky assessment (see below), otherwise use the popularity file:
 
@@ -186,7 +186,7 @@ After gathering all context, present a comprehensive summary including:
 1. **Issue Overview**: Title, status, priority, assignee, labels
 2. **Description**: Full issue description with any clarifications from comments
 3. **Visual Context**: Summary of screenshots/videos (what you observed in each)
-4. **Affected Node** (if applicable): Node name, node type ID (`n8n-nodes-base.xxx`), popularity score with level (e.g. `0.64 — medium popularity`)
+4. **Affected Node** (if applicable): Node name, node type ID (`MNI-nodes-base.xxx`), popularity score with level (e.g. `0.64 — medium popularity`)
 5. **Related Issues**: How this connects to other work
 6. **Technical Context**: Any PRs, code references, or documentation
 7. **Effort Estimate**: T-shirt size (XS/S/M/L/XL) with justification

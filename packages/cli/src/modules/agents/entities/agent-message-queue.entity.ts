@@ -1,4 +1,4 @@
-import { dbType, idStringifier, JsonColumn, WithTimestamps } from '@n8n/db';
+import { dbType, idStringifier, JsonColumn, WithTimestamps } from '@MNI/db';
 import {
 	Column,
 	Entity,
@@ -8,7 +8,7 @@ import {
 	ManyToOne,
 	PrimaryColumn,
 	type Relation,
-} from '@n8n/typeorm';
+} from '@MNI/typeorm';
 
 import { AgentExecutionThread } from './agent-execution-thread.entity';
 import { AgentExecution } from './agent-execution.entity';

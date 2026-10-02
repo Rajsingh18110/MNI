@@ -1,4 +1,4 @@
-import type { ICredentialType, INodeProperties } from 'n8n-workflow';
+import type { ICredentialType, INodeProperties } from 'MNI-workflow';
 
 import { jiraDefaultScopes } from './common/atlassian-scopes';
 

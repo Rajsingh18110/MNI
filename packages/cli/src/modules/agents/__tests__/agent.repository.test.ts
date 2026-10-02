@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/unbound-method -- mock-based tests intentionally reference unbound methods */
-import type { AgentIntegrationConfig } from '@n8n/api-types';
-import { In } from '@n8n/typeorm';
+import type { AgentIntegrationConfig } from '@MNI/api-types';
+import { In } from '@MNI/typeorm';
 import { mock } from 'vitest-mock-extended';
 
 import { mockEntityManager } from '@test/mocking';

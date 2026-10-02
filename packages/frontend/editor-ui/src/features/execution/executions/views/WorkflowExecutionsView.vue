@@ -2,18 +2,18 @@
 import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue';
 import WorkflowExecutionsList from '../components/workflow/WorkflowExecutionsList.vue';
 import { useExecutionsStore } from '../executions.store';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import type { ExecutionFilterType } from '../executions.types';
 import type { IWorkflowDb } from '@/Interface';
 import { useWorkflowsListStore } from '@/app/stores/workflowsList.store';
-import { NO_NETWORK_ERROR_CODE } from '@n8n/rest-api-client';
-import { useToast } from '@n8n/composables/useToast';
+import { NO_NETWORK_ERROR_CODE } from '@MNI/rest-api-client';
+import { useToast } from '@MNI/composables/useToast';
 import { VIEWS } from '@/app/constants';
 import { useRoute, useRouter } from 'vue-router';
 import { useInjectWorkflowId } from '@/app/composables/useInjectWorkflowId';
-import type { ExecutionSummary } from 'n8n-workflow';
-import { useDebounce } from '@n8n/composables/useDebounce';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
+import type { ExecutionSummary } from 'MNI-workflow';
+import { useDebounce } from '@MNI/composables/useDebounce';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
 import { executionRetryMessage } from '../executions.utils';
 import { injectWorkflowDocumentStore } from '@/app/stores/workflowDocument.store';
 

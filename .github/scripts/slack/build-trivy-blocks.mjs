@@ -3,7 +3,7 @@
  *
  * Workflow-specific inputs (passed via notify.mjs flags):
  *   results    — path to trivy-results.json
- *   imageRef   — full image reference (ghcr.io/n8n-io/n8n:nightly)
+ *   imageRef   — full image reference (ghcr.io/MNI-io/MNI:nightly)
  *
  * Repo / run context is read from the GitHub Actions runner env
  * (GITHUB_REPOSITORY, GITHUB_SERVER_URL, GITHUB_RUN_ID). Pass `env` to

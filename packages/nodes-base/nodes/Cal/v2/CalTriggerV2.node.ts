@@ -1,4 +1,4 @@
-import { isRecord } from '@n8n/utils/is-record';
+import { isRecord } from '@MNI/utils/is-record';
 import { randomBytes } from 'crypto';
 import {
 	type IDataObject,
@@ -11,7 +11,7 @@ import {
 	type INodeTypeDescription,
 	type IWebhookResponseData,
 	NodeConnectionTypes,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { verifySignature } from '../CalTriggerHelpers';
 import { calApiRequestV2, sortOptionParameters } from '../GenericFunctions';

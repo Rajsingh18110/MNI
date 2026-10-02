@@ -1,4 +1,4 @@
-import type { AuthenticatedRequest, TokenGrant, User } from '@n8n/db';
+import type { AuthenticatedRequest, TokenGrant, User } from '@MNI/db';
 import { mock } from 'vitest-mock-extended';
 
 import { AuthStrategyRegistry } from '../auth-strategy.registry';

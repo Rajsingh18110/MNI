@@ -1,9 +1,9 @@
-import { Logger } from '@n8n/backend-common';
-import { mockInstance } from '@n8n/backend-test-utils';
-import { WorkflowRepository } from '@n8n/db';
-import type { User } from '@n8n/db';
-import { InstanceSettings } from 'n8n-core';
-import type { INodeType, INodeTypeDescription, IRunExecutionData } from 'n8n-workflow';
+import { Logger } from '@MNI/backend-common';
+import { mockInstance } from '@MNI/backend-test-utils';
+import { WorkflowRepository } from '@MNI/db';
+import type { User } from '@MNI/db';
+import { InstanceSettings } from 'MNI-core';
+import type { INodeType, INodeTypeDescription, IRunExecutionData } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import { ActiveExecutions } from '@/active-executions';
@@ -35,7 +35,7 @@ const mockNodeType = (overrides: object = {}) =>
 	Object.assign(mock<INodeType>(), { description: testNodeDescription }, overrides);
 
 const baseRequest = (overrides: Partial<ExecuteNodeRequest> = {}): ExecuteNodeRequest => ({
-	type: 'n8n-nodes-base.set',
+	type: 'MNI-nodes-base.set',
 	version: 3,
 	config: { parameters: {} },
 	projectId: 'project-1',
@@ -206,7 +206,7 @@ describe('ExecuteNodeService', () => {
 			expect(stack).toHaveLength(1);
 			expect(stack?.[0]).toEqual(
 				expect.objectContaining({
-					node: expect.objectContaining({ name: 'Node', type: 'n8n-nodes-base.set' }),
+					node: expect.objectContaining({ name: 'Node', type: 'MNI-nodes-base.set' }),
 					data: { main: [input] },
 					source: null,
 				}),

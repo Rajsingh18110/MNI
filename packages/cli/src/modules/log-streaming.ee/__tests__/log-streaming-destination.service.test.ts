@@ -1,8 +1,8 @@
-import { Logger } from '@n8n/backend-common';
-import type { OutboundHttp } from '@n8n/backend-network';
-import { mockInstance } from '@n8n/backend-test-utils';
-import { MessageEventBusDestinationTypeNames } from 'n8n-workflow';
-import type { MessageEventBusDestinationOptions } from 'n8n-workflow';
+import { Logger } from '@MNI/backend-common';
+import type { OutboundHttp } from '@MNI/backend-network';
+import { mockInstance } from '@MNI/backend-test-utils';
+import { MessageEventBusDestinationTypeNames } from 'MNI-workflow';
+import type { MessageEventBusDestinationOptions } from 'MNI-workflow';
 import type { Mock } from 'vitest';
 import { mock } from 'vitest-mock-extended';
 

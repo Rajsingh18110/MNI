@@ -1,4 +1,4 @@
-import type { Logger } from 'n8n-workflow';
+import type { Logger } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import type { KafkaCredentials } from '../../../utils';
@@ -14,7 +14,7 @@ import {
 vi.mock('@confluentinc/kafka-javascript', () => confluentKafkaModuleMock());
 
 const credentials: KafkaCredentials = {
-	clientId: 'n8n-test',
+	clientId: 'MNI-test',
 	brokers: 'localhost:9092',
 	ssl: false,
 	authentication: false,
@@ -24,7 +24,7 @@ beforeEach(() => {
 	resetConfluentKafkaRecordings();
 });
 
-const newConsumer = async (groupId = 'n8n-kafka'): Promise<FakeConsumer> => {
+const newConsumer = async (groupId = 'MNI-kafka'): Promise<FakeConsumer> => {
 	await createKafkaConsumer(credentials, { groupId });
 	const consumer = getFakeConsumers().at(-1);
 	if (!consumer) throw new Error('the fake recorded no consumer');
@@ -51,7 +51,7 @@ describe('createKafkaConsumer', () => {
 			{
 				kafkaJS: {
 					brokers: ['localhost:9092'],
-					clientId: 'n8n-test',
+					clientId: 'MNI-test',
 					ssl: false,
 					logLevel: 1,
 				},

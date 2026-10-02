@@ -1,6 +1,6 @@
-import type { CredentialResolverConfiguration } from '@n8n/decorators';
-import { CREDENTIAL_BLANKING_VALUE, isINodePropertyCollection } from 'n8n-workflow';
-import type { INodeProperties } from 'n8n-workflow';
+import type { CredentialResolverConfiguration } from '@MNI/decorators';
+import { CREDENTIAL_BLANKING_VALUE, isINodePropertyCollection } from 'MNI-workflow';
+import type { INodeProperties } from 'MNI-workflow';
 
 const isRecord = (value: unknown): value is Record<string, unknown> =>
 	value !== null && typeof value === 'object' && !Array.isArray(value);

@@ -1,5 +1,5 @@
-import { testDb, createWorkflow, mockInstance } from '@n8n/backend-test-utils';
-import { GlobalConfig } from '@n8n/config';
+import { testDb, createWorkflow, mockInstance } from '@MNI/backend-test-utils';
+import { GlobalConfig } from '@MNI/config';
 import {
 	type User,
 	type ExecutionEntity,
@@ -8,15 +8,15 @@ import {
 	GLOBAL_OWNER_ROLE,
 	Project,
 	ExecutionRepository,
-} from '@n8n/db';
-import { Container, Service } from '@n8n/di';
-import { createDeferredPromise } from '@n8n/utils/promise/deferred-promise';
+} from '@MNI/db';
+import { Container, Service } from '@MNI/di';
+import { createDeferredPromise } from '@MNI/utils/promise/deferred-promise';
 import { createExecution } from '@test-integration/db/executions';
 import { createUser } from '@test-integration/db/users';
 import { setupTestServer } from '@test-integration/utils';
 import type { Response } from 'express';
-import { DirectedGraph, WorkflowExecute, WorkflowHasIssuesError } from 'n8n-core';
-import * as core from 'n8n-core';
+import { DirectedGraph, WorkflowExecute, WorkflowHasIssuesError } from 'MNI-core';
+import * as core from 'MNI-core';
 import {
 	type IExecuteData,
 	type IExecuteResponsePromiseData,
@@ -35,7 +35,7 @@ import {
 	ExecutionError,
 	TimeoutExecutionCancelledError,
 	createRunExecutionData,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import PCancelable from 'p-cancelable';
 import type { MockInstance } from 'vitest';
 import { mock } from 'vitest-mock-extended';
@@ -1448,7 +1448,7 @@ describe('pre-persist context establishment', () => {
 						node: {
 							id: 'n1',
 							name: 'Webhook',
-							type: 'n8n-nodes-base.webhook',
+							type: 'MNI-nodes-base.webhook',
 							typeVersion: 2,
 							position: [0, 0],
 							parameters: {},

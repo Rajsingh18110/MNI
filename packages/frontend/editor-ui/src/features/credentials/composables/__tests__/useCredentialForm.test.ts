@@ -4,19 +4,19 @@ import type { Project, ProjectListItem } from '@/features/collaboration/projects
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { createTestingPinia } from '@pinia/testing';
 import { setActivePinia } from 'pinia';
-import type { ICredentialType, INode, INodeTypeDescription } from 'n8n-workflow';
+import type { ICredentialType, INode, INodeTypeDescription } from 'MNI-workflow';
 
 import { mockedStore } from '@/__tests__/utils';
 import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';
-import { useSettingsStore } from '@n8n/stores/settings.store';
-import { useUsersStore } from '@n8n/stores/users.store';
-import type { IUser } from '@n8n/rest-api-client/api/users';
+import { useSettingsStore } from '@MNI/stores/settings.store';
+import { useUsersStore } from '@MNI/stores/users.store';
+import type { IUser } from '@MNI/rest-api-client/api/users';
 import { useCredentialsStore } from '../../credentials.store';
 import type { ICredentialsDecryptedResponse } from '../../credentials.types';
 import { useCredentialForm } from '../useCredentialForm';
 import { probeCredential } from '../../credentials.api';
 
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: () => ({ showError: vi.fn(), showMessage: vi.fn() }),
 }));
 vi.mock('@/app/composables/useNodeHelpers', () => ({
@@ -524,7 +524,7 @@ describe('useCredentialForm', () => {
 	describe('selectedCredentialType (auth selector)', () => {
 		const twoAuthNodeType = {
 			displayName: 'Two Auth Service',
-			name: 'n8n-nodes-base.twoAuth',
+			name: 'MNI-nodes-base.twoAuth',
 			group: ['input'],
 			version: 1,
 			description: 'Service with two auth options',
@@ -560,7 +560,7 @@ describe('useCredentialForm', () => {
 		const contextNode = {
 			id: 'node-1',
 			name: 'Two Auth Node',
-			type: 'n8n-nodes-base.twoAuth',
+			type: 'MNI-nodes-base.twoAuth',
 			typeVersion: 1,
 			position: [0, 0],
 			parameters: {},

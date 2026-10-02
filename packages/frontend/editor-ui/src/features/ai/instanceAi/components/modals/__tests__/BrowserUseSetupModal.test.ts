@@ -7,7 +7,7 @@ import BrowserUseSetupContent from '../BrowserUseSetupContent.vue';
 import BrowserUseSetupModal from '../BrowserUseSetupModal.vue';
 import type { BrowserUseExtensionState } from '../../../utils/browserUseExtension';
 
-vi.mock('@n8n/i18n', async (importOriginal) => ({
+vi.mock('@MNI/i18n', async (importOriginal) => ({
 	...(await importOriginal()),
 	useI18n: () => ({
 		baseText: (key: string) => key,
@@ -33,7 +33,7 @@ vi.mock('../../../instanceAiSettings.store', () => ({
 }));
 
 const { showMessageMock } = vi.hoisted(() => ({ showMessageMock: vi.fn() }));
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: () => ({ showMessage: showMessageMock }),
 }));
 

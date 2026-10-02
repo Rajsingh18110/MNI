@@ -1,7 +1,7 @@
-import { GATEWAY_CONFIRMATION_REQUIRED_PREFIX } from '@n8n/api-types';
-import type { Logger } from '@n8n/backend-common';
-import type { DomainAccessTracker } from '@n8n/instance-ai';
-import type { BrowserToolkit, ToolContext, ToolDefinition } from '@n8n/mcp-browser';
+import { GATEWAY_CONFIRMATION_REQUIRED_PREFIX } from '@MNI/api-types';
+import type { Logger } from '@MNI/backend-common';
+import type { DomainAccessTracker } from '@MNI/instance-ai';
+import type { BrowserToolkit, ToolContext, ToolDefinition } from '@MNI/mcp-browser';
 import { mock } from 'vitest-mock-extended';
 import { z } from 'zod';
 

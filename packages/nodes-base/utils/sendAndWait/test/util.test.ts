@@ -5,8 +5,8 @@ import type {
 	INodeProperties,
 	IWebhookFunctions,
 	IWorkflowSettings,
-} from 'n8n-workflow';
-import { NodeOperationError, WAIT_INDEFINITELY } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeOperationError, WAIT_INDEFINITELY } from 'MNI-workflow';
 
 import { configureWaitTillDate } from '../configureWaitTillDate.util';
 import {
@@ -377,7 +377,7 @@ describe('Send and Wait utils tests', () => {
 				formDescriptionMetadata: 'Test message',
 				formSubmittedHeader: 'Got it, thanks',
 				formSubmittedText: 'This page can be closed now',
-				n8nWebsiteLink: 'https://n8n.io/?utm_source=n8n-internal&utm_medium=form-trigger',
+				n8nWebsiteLink: 'https://n8n.io/?utm_source=MNI-internal&utm_medium=form-trigger',
 				formFields: [
 					{
 						id: 'field-0',
@@ -465,7 +465,7 @@ describe('Send and Wait utils tests', () => {
 				formDescriptionMetadata: 'Test description',
 				formSubmittedHeader: 'Got it, thanks',
 				formSubmittedText: 'This page can be closed now',
-				n8nWebsiteLink: 'https://n8n.io/?utm_source=n8n-internal&utm_medium=form-trigger',
+				n8nWebsiteLink: 'https://n8n.io/?utm_source=MNI-internal&utm_medium=form-trigger',
 				formFields: [
 					{
 						id: 'field-0',

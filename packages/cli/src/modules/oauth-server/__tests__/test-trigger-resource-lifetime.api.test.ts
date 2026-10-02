@@ -1,10 +1,10 @@
-import { createWorkflowWithHistory, testDb } from '@n8n/backend-test-utils';
-import { GlobalConfig } from '@n8n/config';
-import type { User } from '@n8n/db';
-import { Container } from '@n8n/di';
-import { Cipher } from 'n8n-core';
-import type { IHttpRequestMethods, INode, IWebhookData, IWorkflowBase } from 'n8n-workflow';
-import { toCredentialContext, WEBHOOK_NODE_TYPE } from 'n8n-workflow';
+import { createWorkflowWithHistory, testDb } from '@MNI/backend-test-utils';
+import { GlobalConfig } from '@MNI/config';
+import type { User } from '@MNI/db';
+import { Container } from '@MNI/di';
+import { Cipher } from 'MNI-core';
+import type { IHttpRequestMethods, INode, IWebhookData, IWorkflowBase } from 'MNI-workflow';
+import { toCredentialContext, WEBHOOK_NODE_TYPE } from 'MNI-workflow';
 import { randomUUID } from 'node:crypto';
 
 import { createOwner, createMember } from '@test-integration/db/users';
@@ -14,7 +14,7 @@ import { OAuthClientRepository } from '@/modules/oauth-server/database/repositor
 import { OAuthTokenService } from '@/modules/oauth-server/oauth-token.service';
 import { CacheService } from '@/services/cache/cache.service';
 import { ProtectedResourceRegistry } from '@/services/protected-resource.registry';
-import { UrlService } from '@n8n/backend-services';
+import { UrlService } from '@MNI/backend-services';
 import { TestWebhookRegistrationsService } from '@/webhooks/test-webhook-registrations.service';
 
 /**
@@ -102,7 +102,7 @@ const sealAndReadBackGrant = async (resourceUrl: string) => {
 	const sealed = await Container.get(Cipher).encryptV2({
 		version: 1,
 		identity: 'unused',
-		metadata: { source: 'n8n-oauth', resource: resourceUrl, ...(grant ? { grant } : {}) },
+		metadata: { source: 'MNI-oauth', resource: resourceUrl, ...(grant ? { grant } : {}) },
 	});
 
 	const context = toCredentialContext(await Container.get(Cipher).decryptV2(sealed));
@@ -121,7 +121,7 @@ const deregisterTrigger = async (
 };
 
 beforeAll(async () => {
-	process.env.N8N_ENV_FEAT_WEBHOOK_PRIVATE_CREDENTIALS = 'true';
+	process.env.MNI_ENV_FEAT_WEBHOOK_PRIVATE_CREDENTIALS = 'true';
 	owner = await createOwner();
 	member = await createMember();
 	webhookTestEndpoint = Container.get(GlobalConfig).endpoints.webhookTest;
@@ -137,7 +137,7 @@ beforeAll(async () => {
 });
 
 afterAll(() => {
-	delete process.env.N8N_ENV_FEAT_WEBHOOK_PRIVATE_CREDENTIALS;
+	delete process.env.MNI_ENV_FEAT_WEBHOOK_PRIVATE_CREDENTIALS;
 });
 
 afterEach(async () => {

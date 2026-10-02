@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { N8nCallout, N8nCheckbox, N8nIconButton, N8nInfoTip, N8nLink } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+import { N8nCallout, N8nCheckbox, N8nIconButton, N8nInfoTip, N8nLink } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 import { ref, useId } from 'vue';
 import { I18nT } from 'vue-i18n';
 import { VIEWS } from '@/app/constants';
@@ -150,8 +150,8 @@ function toggleLabel(group: PersonalSpaceGroup): string {
 /* The link keeps the callout's text color; the underline marks it as a link.
    Both the callout (on the anchor) and N8nLink (on its span) set the purple
    secondary color, so both are reset. */
-.callout a:global(.n8n-link),
-.callout a:global(.n8n-link) > span {
+.callout a:global(.MNI-link),
+.callout a:global(.MNI-link) > span {
 	color: inherit;
 }
 </style>

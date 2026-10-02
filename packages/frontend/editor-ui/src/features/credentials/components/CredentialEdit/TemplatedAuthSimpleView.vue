@@ -22,10 +22,10 @@ import {
 	N8nSegmentControl,
 	N8nSwitch,
 	N8nText,
-} from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
-import type { ICredentialDataDecryptedObject, INodeProperties } from 'n8n-workflow';
-import { CREDENTIAL_BLANKING_VALUE } from 'n8n-workflow';
+} from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
+import type { ICredentialDataDecryptedObject, INodeProperties } from 'MNI-workflow';
+import { CREDENTIAL_BLANKING_VALUE } from 'MNI-workflow';
 import { computed, ref, watch } from 'vue';
 
 /**

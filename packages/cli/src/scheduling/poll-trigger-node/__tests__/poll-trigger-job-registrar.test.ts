@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/unbound-method */
-import { mockLogger } from '@n8n/backend-test-utils';
-import { ScheduledJobMisfirePolicy } from '@n8n/constants';
-import type { GlobalConfig } from '@n8n/config';
-import type { EntityManager } from '@n8n/db';
-import type { CronDefinition } from '@n8n/scheduler';
-import type { CronExpression, INode, TriggerTime } from 'n8n-workflow';
+import { mockLogger } from '@MNI/backend-test-utils';
+import { ScheduledJobMisfirePolicy } from '@MNI/constants';
+import type { GlobalConfig } from '@MNI/config';
+import type { EntityManager } from '@MNI/db';
+import type { CronDefinition } from '@MNI/scheduler';
+import type { CronExpression, INode, TriggerTime } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import type { PollBackoffService } from '@/workflows/triggers/poll-backoff.service';
@@ -29,7 +29,7 @@ const DAILY_AT_TEN: TriggerTime = { mode: 'custom', cronExpression: '0 0 10 * * 
 /** `<workflowId>:<nodeId>:<definition fingerprint>:<occurrence>` */
 const jobNamePattern = new RegExp(`^${WORKFLOW_ID}:${NODE_ID}:[0-9a-f]{16}:\\d+$`);
 
-const pollNode = mock<INode>({ id: NODE_ID, type: 'n8n-nodes-base.rssFeedReadTrigger' });
+const pollNode = mock<INode>({ id: NODE_ID, type: 'MNI-nodes-base.rssFeedReadTrigger' });
 
 const OWNER = { ownerType: 'workflow', ownerId: WORKFLOW_ID, ownerMemberId: NODE_ID };
 const OWNER_REF = { ownerType: 'workflow', ownerId: WORKFLOW_ID };

@@ -8,8 +8,8 @@ import type {
 	INodeTypeDescription,
 	IWebhookResponseData,
 	JsonObject,
-} from 'n8n-workflow';
-import { NodeApiError, NodeConnectionTypes } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeApiError, NodeConnectionTypes } from 'MNI-workflow';
 
 import { getresponseApiRequest, getResponseApiRequestAllItems } from './GenericFunctions';
 
@@ -17,7 +17,7 @@ export class GetResponseTrigger implements INodeType {
 	description: INodeTypeDescription = {
 		displayName: 'GetResponse Trigger',
 		name: 'getResponseTrigger',
-		// eslint-disable-next-line n8n-nodes-base/node-class-description-icon-not-svg
+		// eslint-disable-next-line MNI-nodes-base/node-class-description-icon-not-svg
 		icon: 'file:getResponse.png',
 		group: ['trigger'],
 		version: 1,

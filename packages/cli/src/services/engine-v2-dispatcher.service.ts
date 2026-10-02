@@ -1,13 +1,13 @@
-import { Service } from '@n8n/di';
-import type { StepSlots, TriggerOutputs } from '@n8n/engine';
+import { Service } from '@MNI/di';
+import type { StepSlots, TriggerOutputs } from '@MNI/engine';
 import type {
 	INode,
 	INodeExecutionData,
 	IWorkflowBase,
 	IWorkflowExecutionDataProcess,
 	WorkflowExecuteMode,
-} from 'n8n-workflow';
-import { classifyTriggerIdentity, isTriggerNodeType, UserError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { classifyTriggerIdentity, isTriggerNodeType, UserError } from 'MNI-workflow';
 import assert from 'node:assert';
 
 import { toWorkflowDocument } from '@/executions/execution-data/types';
@@ -100,7 +100,7 @@ export class EngineV2Dispatcher {
 
 		// Lazily imported: a top-level import would pull the v1 step executor and
 		// its dependencies into every MNI process, including ones with the module off.
-		const { V1WorkflowConverter, toStepOutputs } = await import('@n8n/node-engine-compatibility');
+		const { V1WorkflowConverter, toStepOutputs } = await import('@MNI/node-engine-compatibility');
 
 		const graph = new V1WorkflowConverter().convert(workflowData, trigger.name);
 
@@ -171,7 +171,7 @@ export class EngineV2Dispatcher {
 	private assertSupported(data: IWorkflowExecutionDataProcess, trigger: FiredTrigger): void {
 		if (!this.proxy.isAvailable()) {
 			throw new UserError(
-				'Engine v2 is not available. Enable the `engine-v2` module with N8N_ENABLED_MODULES.',
+				'Engine v2 is not available. Enable the `engine-v2` module with MNI_ENABLED_MODULES.',
 			);
 		}
 

@@ -1,0 +1,383 @@
+---
+name: MNI-cli
+description: Use the MNI CLI to manage workflows, credentials, executions, and more on an MNI instance. Use when the user asks to interact with MNI, automate workflows, manage credentials, or operate their instance from the command line.
+allowed-tools: Bash(MNI-cli:*), Bash(echo:*), Bash(cat:*), Read, Write
+---
+
+# MNI CLI
+
+The `MNI-cli` command-line tool manages an MNI instance via its REST API.
+It auto-detects piped output and switches to JSON, making it composable for scripts and LLM tool use.
+
+## Setup
+
+```bash
+# Interactive login (saves to ~/.MNI-cli/config.json)
+MNI-cli login
+
+# Or configure directly
+MNI-cli config set-url https://my-instance.n8n.cloud
+MNI-cli config set-api-key MNI_api_...
+
+# Or use environment variables (no config file needed)
+export MNI_URL=https://my-instance.n8n.cloud
+export MNI_API_KEY=MNI_api_...
+```
+
+## Global Flags
+
+Every command supports these flags:
+
+| Flag | Short | Description |
+|------|-------|-------------|
+| `--url` | `-u` | Instance URL (overrides config/env) |
+| `--apiKey` | `-k` | API key (overrides config/env) |
+| `--format` | `-f` | Output format: `table`, `json`, `id-only` |
+| `--json` | | Shorthand for `--format=json` |
+| `--jq` | | jq-style filter (implies `--json`), e.g. `'.[0].id'`, `'.[].name'` |
+| `--quiet` | `-q` | Suppress output |
+| `--no-header` | | Hide table headers (for `awk`/`cut` parsing) |
+| `--debug` | | Print HTTP details to stderr |
+
+**Auto-JSON:** When stdout is piped (not a TTY), output defaults to JSON automatically.
+
+## Workflows
+
+```bash
+# List all workflows
+MNI-cli workflow list
+
+# Filter workflows
+MNI-cli workflow list --active
+MNI-cli workflow list --tag=production
+MNI-cli workflow list --name="My Workflow"
+MNI-cli workflow list --limit=5
+
+# Get a single workflow (full JSON with nodes and connections)
+MNI-cli workflow get <id>
+
+# Extract just node names from a workflow
+MNI-cli workflow get <id> --jq '.nodes[].name'
+
+# Create a workflow from JSON
+MNI-cli workflow create --file=workflow.json
+cat workflow.json | MNI-cli workflow create --stdin
+
+# Update a workflow
+MNI-cli workflow update <id> --file=updated.json
+cat updated.json | MNI-cli workflow update <id> --stdin
+
+# Activate / deactivate
+MNI-cli workflow activate <id>
+MNI-cli workflow deactivate <id>
+
+# Delete a workflow
+MNI-cli workflow delete <id>
+
+# Transfer to another project
+MNI-cli workflow transfer <id> --project=<projectId>
+
+# List tags on a workflow
+MNI-cli workflow tags <id>
+```
+
+## Executions
+
+```bash
+# List recent executions
+MNI-cli execution list
+MNI-cli execution list --workflow=<id> --status=error --limit=10
+# status options: canceled, error, running, success, waiting
+
+# Get execution details
+MNI-cli execution get <id>
+MNI-cli execution get <id> --include-data   # includes full node I/O
+
+# Retry a failed execution
+MNI-cli execution retry <id>
+
+# Stop a running execution
+MNI-cli execution stop <id>
+
+# Delete an execution
+MNI-cli execution delete <id>
+```
+
+## Credentials
+
+```bash
+# List credentials
+MNI-cli credential list
+
+# Get credential metadata (not secrets)
+MNI-cli credential get <id>
+
+# Get the schema for a credential type (shows required fields)
+MNI-cli credential schema notionApi
+MNI-cli credential schema slackOAuth2Api
+
+# Create a credential
+MNI-cli credential create --type=notionApi --name='My Notion' --data='{"apiKey":"..."}'
+MNI-cli credential create --type=notionApi --name='My Notion' --file=cred.json
+cat cred.json | MNI-cli credential create --type=notionApi --name='My Notion' --stdin
+
+# Delete / transfer
+MNI-cli credential delete <id>
+MNI-cli credential transfer <id> --project=<projectId>
+```
+
+**Tip:** Use `credential schema <type>` to discover required fields before creating.
+
+## Projects
+
+```bash
+MNI-cli project list
+MNI-cli project get <id>
+MNI-cli project create --name="My Project"
+MNI-cli project update <id> --name="New Name"
+MNI-cli project delete <id>
+
+# Team management
+MNI-cli project members <id>
+MNI-cli project add-member <id> --user=<userId> --role=<role>
+MNI-cli project remove-member <id> --user=<userId>
+```
+
+## Tags
+
+```bash
+MNI-cli tag list
+MNI-cli tag create --name=production
+MNI-cli tag update <id> --name=staging
+MNI-cli tag delete <id>
+```
+
+## Variables
+
+```bash
+MNI-cli variable list
+MNI-cli variable create --key=API_ENDPOINT --value=https://api.example.com
+MNI-cli variable update <id> --key=API_ENDPOINT --value=https://new-api.example.com
+MNI-cli variable delete <id>
+```
+
+## Data Tables
+
+```bash
+# CRUD
+MNI-cli data-table list
+MNI-cli data-table get <id>
+MNI-cli data-table create --name=Inventory --columns='[{"name":"item","type":"string"},{"name":"qty","type":"number"}]'
+MNI-cli data-table delete <id>
+
+# Row operations
+MNI-cli data-table rows <id>
+MNI-cli data-table add-rows <id> --file=rows.json
+MNI-cli data-table update-rows <id> --file=rows.json
+MNI-cli data-table upsert-rows <id> --file=rows.json
+MNI-cli data-table delete-rows <id> --ids=row1,row2,row3
+
+# All row commands support --stdin
+cat rows.json | MNI-cli data-table add-rows <id> --stdin
+```
+
+## Users
+
+```bash
+MNI-cli user list
+MNI-cli user get <id>
+```
+
+## Promotions
+
+Move projects between instances through a Git repository. A **provider** holds
+the credentials, a **connection** names the repository, and a **configuration**
+sets up one direction on it: `promote` pushes to Git, `apply` imports from Git.
+
+```bash
+# 1. Create a provider. An SSH provider returns a public key to add as a deploy key.
+#    The response carries the provider fields at the top level, so `.id` and
+#    `.publicKey` both work with --jq and --format=id-only.
+echo '{"name":"GitHub","type":"git","auth":{"authType":"ssh-key","keyType":"ed25519"}}' \
+  | MNI-cli promotion-provider create --stdin --json > provider.json
+jq -r '.id' provider.json          # use as providerId in step 2
+jq -r '.publicKey' provider.json   # add to the repository as a deploy key
+
+# 2. Create a connection on that provider, with the directions you need.
+#    Leave out "configs" to configure no direction yet.
+MNI-cli promotion-connection create --file=connection.json
+
+# 3. Clone each direction before you use it.
+MNI-cli promotion-connection clone <id> promote
+MNI-cli promotion-connection clone <id> apply
+
+# 4. Promote from this instance, or apply to it.
+MNI-cli promotion-connection promote <id> -m "Promote team projects"
+MNI-cli promotion-connection apply <id>
+```
+
+Apply a reviewed commit only:
+
+```bash
+# Review the changes. Take the commit SHA from the same response as the rows:
+# a second request can read a newer commit.
+MNI-cli promotion-connection list-changes <projectId> apply --sort=updatedAt --order=desc --json > reviewed-changes.json
+jq '{commitSha, changes}' reviewed-changes.json
+# The config ID and branch come from the connection.
+MNI-cli promotion-connection get <id> --jq '.configs.apply.id'
+MNI-cli promotion-connection get <id> --jq '.configs.apply.settings.branchName'
+
+MNI-cli promotion-connection apply <id> \
+  --expected-config-id=<configId> --expected-branch=<branch> --expected-commit-sha=<full sha>
+# Exit 3: the source changed since the review. Review again.
+# Exit 4: preflight found missing bindings, access requirements, or conflicts. Resolve them,
+# then run the apply-continue command that apply printed:
+MNI-cli promotion-connection apply-continue <id> \
+  --expected-config-id=<configId> --expected-branch=<branch> --expected-commit-sha=<full sha>
+```
+
+Connection JSON for step 2:
+
+```json
+{
+  "name": "Production",
+  "scope": "instance",
+  "providerId": "prov-1",
+  "target": { "schemaVersion": 1, "remoteUrl": "git@github.com:acme/flows.git" },
+  "configs": {
+    "promote": {
+      "settings": {
+        "schemaVersion": 1,
+        "baseBranchName": "main",
+        "createBranchOnPromotion": false
+      }
+    },
+    "apply": { "settings": { "schemaVersion": 1, "branchName": "main" } }
+  }
+}
+```
+
+```bash
+# Providers
+MNI-cli promotion-provider list
+MNI-cli promotion-provider get <id>          # re-read the public key; the list omits it
+echo '{"name":"New name"}' | MNI-cli promotion-provider update <id> --stdin
+MNI-cli promotion-provider delete <id>       # fails while a connection uses it
+
+# Connections
+MNI-cli promotion-connection list --scope=instance
+MNI-cli promotion-connection list --provider=<providerId>
+MNI-cli promotion-connection get <id>
+echo '{"name":"New name"}' | MNI-cli promotion-connection update <id> --stdin
+MNI-cli promotion-connection delete <id>
+
+# Change one direction. The write replaces the whole configuration,
+# so send every setting you want to keep.
+echo '{"settings":{"schemaVersion":1,"branchName":"main"}}' \
+  | MNI-cli promotion-connection set-config <id> apply --stdin
+echo '{"settings":{"schemaVersion":1,"baseBranchName":"main","createBranchOnPromotion":false}}' \
+  | MNI-cli promotion-connection set-config <id> promote --stdin
+MNI-cli promotion-connection delete-config <id> apply
+MNI-cli promotion-connection disconnect <id> promote
+
+# Link projects to a "projects"-scoped connection
+MNI-cli promotion-connection list-projects <id>
+MNI-cli promotion-connection add-project <id> <projectId>
+MNI-cli promotion-connection remove-project <id> <projectId>
+```
+
+Key points:
+- Pass every JSON body through `--stdin` or `--file`, never through a flag. This
+  keeps credentials off the command line.
+- `authType` is `ssh-key` or `token`. `token` means an HTTP(S) username and
+  password, not a Git host API token. `publicKey` is `null` for a `token` provider.
+- `createBranchOnPromotion` is always required in a promote configuration.
+- `promote` and `apply` work on the `instance` connection only, and need their
+  direction cloned first. Cloning one direction does not make the other ready.
+- `apply` and `apply-continue` import nothing on exit code `3` (`source-changed`)
+  or `4` (`blocked`). Check `$?`, or the `status` field in JSON output, before you
+  read `counts`. With `--json`, a `blocked` result lists what is missing under
+  `preflight`.
+- The `--expected-*` flags go together: pass all three or none. The commit SHA
+  must be the full SHA.
+- API key scopes for this group are named `gitConnection:*`. `promote` also needs
+  `variable:list` when the workflows reference variables.
+
+## Other
+
+```bash
+# Security audit
+MNI-cli audit
+MNI-cli audit --categories=credentials,nodes
+
+# Source control
+MNI-cli source-control pull
+
+# View config
+MNI-cli config show
+```
+
+## Composability Patterns
+
+The CLI is designed to be piped and composed:
+
+```bash
+# Get all workflow IDs
+MNI-cli workflow list --jq '.[].id'
+
+# Get the name of the first workflow
+MNI-cli workflow list --jq '.[0].name'
+
+# Export a workflow to a file
+MNI-cli workflow get 1234 --json > workflow-backup.json
+
+# Find failing executions for a workflow
+MNI-cli execution list --workflow=1234 --status=error --json
+
+# Pipe workflow JSON for modification
+MNI-cli workflow get 1234 --json | jq '.name = "Updated Name"' | MNI-cli workflow update 1234 --stdin
+
+# Table output without headers for shell parsing
+MNI-cli workflow list --no-header | awk '{print $1}'
+
+# Debug API calls
+MNI-cli workflow list --debug 2>debug.log
+```
+
+## Workflow JSON Structure
+
+When creating or updating workflows, the JSON follows this structure:
+
+```json
+{
+  "name": "My Workflow",
+  "nodes": [
+    {
+      "name": "Start",
+      "type": "MNI-nodes-base.manualTrigger",
+      "position": [250, 300],
+      "parameters": {}
+    },
+    {
+      "name": "HTTP Request",
+      "type": "MNI-nodes-base.httpRequest",
+      "position": [450, 300],
+      "parameters": {
+        "url": "https://api.example.com/data",
+        "method": "GET"
+      }
+    }
+  ],
+  "connections": {
+    "Start": {
+      "main": [[{ "node": "HTTP Request", "type": "main", "index": 0 }]]
+    }
+  }
+}
+```
+
+Key points:
+- `nodes[].type` follows the pattern `MNI-nodes-base.<nodeName>` for built-in nodes
+- `connections` is keyed by source node name, with `main` output arrays
+- Each connection specifies target `node`, `type` (usually `main`), and output `index`
+- Use `workflow get <id> --json` to see real examples from the instance

@@ -1,4 +1,4 @@
-/* eslint-disable n8n-nodes-base/node-filename-against-convention */
+/* eslint-disable MNI-nodes-base/node-filename-against-convention */
 import type { Message } from 'amqplib';
 import type {
 	INodeProperties,
@@ -6,8 +6,8 @@ import type {
 	INodeTypeDescription,
 	ITriggerFunctions,
 	ITriggerResponse,
-} from 'n8n-workflow';
-import { NodeConnectionTypes, NodeOperationError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeConnectionTypes, NodeOperationError } from 'MNI-workflow';
 
 import { rabbitDefaultOptions } from './DefaultOptions';
 import { MessageTracker, rabbitmqConnectQueue, handleMessage } from './GenericFunctions';

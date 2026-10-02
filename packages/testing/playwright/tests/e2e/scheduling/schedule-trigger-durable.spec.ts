@@ -1,4 +1,4 @@
-import { sleep } from '@n8n/utils/sleep';
+import { sleep } from '@MNI/utils/sleep';
 
 import { expectScheduleTriggerFires } from './schedule-trigger-helpers';
 import {
@@ -9,7 +9,7 @@ import { durableScheduleTestConfig } from './scheduler-test-config';
 import { test, expect } from '../../../fixtures/base';
 
 // Durable scheduler path. Both flags are required: with only
-// `N8N_SCHEDULER_ENABLED` the job registrar early-returns and activation falls
+// `MNI_SCHEDULER_ENABLED` the job registrar early-returns and activation falls
 // back to the legacy in-memory timer. With both set the registrar intercepts and
 // the in-memory schedule is discarded.
 //

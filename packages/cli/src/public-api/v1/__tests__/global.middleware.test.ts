@@ -1,5 +1,5 @@
-import type { AuthenticatedRequest, TokenGrant, User } from '@n8n/db';
-import type { ApiKeyScope } from '@n8n/permissions';
+import type { AuthenticatedRequest, TokenGrant, User } from '@MNI/db';
+import type { ApiKeyScope } from '@MNI/permissions';
 import type { NextFunction, Response } from 'express';
 import type { Mocked, MockedFunction } from 'vitest';
 import { mock, mockDeep } from 'vitest-mock-extended';

@@ -1,9 +1,9 @@
-import { Logger } from '@n8n/backend-common';
-import { mockInstance } from '@n8n/backend-test-utils';
-import { SecurityConfig } from '@n8n/config';
-import { Container } from '@n8n/di';
+import { Logger } from '@MNI/backend-common';
+import { mockInstance } from '@MNI/backend-test-utils';
+import { SecurityConfig } from '@MNI/config';
+import { Container } from '@MNI/di';
 import type { Response } from 'express';
-import { getHtmlSandboxCSP } from 'n8n-core';
+import { getHtmlSandboxCSP } from 'MNI-core';
 import { mock } from 'vitest-mock-extended';
 
 import { applyFormSandboxCSP, WebhookResponseHeaders } from '@/webhooks/webhook-response-headers';

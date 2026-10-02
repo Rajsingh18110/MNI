@@ -1,4 +1,4 @@
-import type { NodeGroupRuleOptions } from 'n8n-workflow';
+import type { NodeGroupRuleOptions } from 'MNI-workflow';
 
 /** The group rules a user outside both rollouts gets. */
 export const NO_RULES_RELAXED: Required<NodeGroupRuleOptions> = {

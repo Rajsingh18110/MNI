@@ -1,9 +1,9 @@
-import { Logger } from '@n8n/backend-common';
-import { WorkflowsConfig } from '@n8n/config';
-import { Time } from '@n8n/constants';
-import { WorkflowPublicationOutboxRepository } from '@n8n/db';
-import { Service } from '@n8n/di';
-import { SpanStatus, Tracing } from 'n8n-core';
+import { Logger } from '@MNI/backend-common';
+import { WorkflowsConfig } from '@MNI/config';
+import { Time } from '@MNI/constants';
+import { WorkflowPublicationOutboxRepository } from '@MNI/db';
+import { Service } from '@MNI/di';
+import { SpanStatus, Tracing } from 'MNI-core';
 
 import { EventService } from '@/events/event.service';
 import type { PublicationOperationResult } from '@/events/maps/workflow-publication-metrics.event-map';

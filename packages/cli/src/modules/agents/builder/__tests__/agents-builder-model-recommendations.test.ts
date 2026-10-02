@@ -1,4 +1,4 @@
-import type { ProviderCatalog } from '@n8n/agents';
+import type { ProviderCatalog } from '@MNI/agents';
 
 import { buildModelRecommendationsSection } from '../agents-builder-model-recommendations';
 import { buildBuilderPrompt } from '../agents-builder-prompts';
@@ -163,12 +163,12 @@ describe('builder model recommendations', () => {
 		const prompt = buildPrompt(null);
 		const skill = getBuilderRuntimeSkills().find((s) => s.id === 'agent-builder-custom-tools');
 
-		expect(prompt).not.toContain("import { Tool } from '@n8n/agents';");
+		expect(prompt).not.toContain("import { Tool } from '@MNI/agents';");
 		expect(prompt).not.toContain('Custom handlers run in a V8 isolate');
 		expect(prompt).toContain('agent-builder-custom-tools');
 
 		expect(skill).toBeDefined();
-		expect(skill?.instructions).toContain("import { Tool } from '@n8n/agents';");
+		expect(skill?.instructions).toContain("import { Tool } from '@MNI/agents';");
 		expect(skill?.instructions).toContain("export default new Tool('tool_name')");
 		expect(skill?.instructions).toContain('Custom handlers run in a V8 isolate');
 		expect(skill?.instructions).toContain('No network, filesystem, process, Buffer, fetch, timers');

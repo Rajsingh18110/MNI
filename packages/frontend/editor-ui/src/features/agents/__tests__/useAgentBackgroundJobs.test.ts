@@ -3,7 +3,7 @@ import type {
 	AgentBackgroundJobSignal,
 	AgentBackgroundJobsResponse,
 	PushMessage,
-} from '@n8n/api-types';
+} from '@MNI/api-types';
 import { flushPromises } from '@vue/test-utils';
 import { effectScope, reactive, ref, type EffectScope } from 'vue';
 
@@ -11,7 +11,7 @@ import { useAgentBackgroundJobs } from '../composables/useAgentBackgroundJobs';
 import { getAgentBackgroundJobs } from '../composables/useAgentApi';
 
 vi.mock('../composables/useAgentApi', () => ({ getAgentBackgroundJobs: vi.fn() }));
-vi.mock('@n8n/stores/useRootStore', () => ({ useRootStore: () => ({ restApiContext: {} }) }));
+vi.mock('@MNI/stores/useRootStore', () => ({ useRootStore: () => ({ restApiContext: {} }) }));
 vi.mock('@/app/stores/pushConnection.store', () => ({ usePushConnectionStore: () => pushStore }));
 vi.mock('@vueuse/core', async (importOriginal) => ({
 	...(await importOriginal()),

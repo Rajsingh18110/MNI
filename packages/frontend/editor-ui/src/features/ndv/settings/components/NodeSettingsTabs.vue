@@ -2,16 +2,16 @@
 import type { ITab } from '@/Interface';
 import { COMMUNITY_NODES_INSTALLATION_DOCS_URL } from '@/features/settings/communityNodes/communityNodes.constants';
 import { injectNDVStore } from '@/features/ndv/shared/ndv.store';
-import type { INodeTypeDescription } from 'n8n-workflow';
-import { NodeConnectionTypes } from 'n8n-workflow';
+import type { INodeTypeDescription } from 'MNI-workflow';
+import { NodeConnectionTypes } from 'MNI-workflow';
 import { computed } from 'vue';
 import { useExternalHooks } from '@/app/composables/useExternalHooks';
 import { useInstalledCommunityPackage } from '@/features/settings/communityNodes/composables/useInstalledCommunityPackage';
 import { useNodeDocsUrl } from '@/app/composables/useNodeDocsUrl';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
 import type { NodeSettingsTab } from '@/app/types/nodeSettings';
-import { useI18n } from '@n8n/i18n';
-import { N8nTabs } from '@n8n/design-system';
+import { useI18n } from '@MNI/i18n';
+import { N8nTabs } from '@MNI/design-system';
 import { injectWorkflowDocumentStore } from '@/app/stores/workflowDocument.store';
 
 type Props = {

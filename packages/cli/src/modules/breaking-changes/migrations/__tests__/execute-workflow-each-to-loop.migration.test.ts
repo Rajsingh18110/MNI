@@ -1,10 +1,10 @@
-import type { IConnections, INode } from 'n8n-workflow';
+import type { IConnections, INode } from 'MNI-workflow';
 
 import { createNode } from '../../__tests__/test-helpers';
 import { executeWorkflowEachToLoop } from '../execute-workflow-each-to-loop.migration';
 
-const EXECUTE_WORKFLOW = 'n8n-nodes-base.executeWorkflow';
-const LOOP = 'n8n-nodes-base.splitInBatches';
+const EXECUTE_WORKFLOW = 'MNI-nodes-base.executeWorkflow';
+const LOOP = 'MNI-nodes-base.splitInBatches';
 const NO_WAIT = { options: { waitForSubWorkflow: false } };
 
 const edge = (node: string, index = 0) => ({ node, type: 'main' as const, index });
@@ -22,10 +22,10 @@ describe('executeWorkflowEachToLoop migration', () => {
 	});
 
 	it('wraps a waiting node in a loop and warns about extra empty items', () => {
-		const trigger = createNode('Trigger', 'n8n-nodes-base.manualTrigger');
+		const trigger = createNode('Trigger', 'MNI-nodes-base.manualTrigger');
 		const sub = createNode('Sub', EXECUTE_WORKFLOW, { mode: 'each', workflowId: 'abc' });
 		sub.position = [400, 200];
-		const set = createNode('Set', 'n8n-nodes-base.set');
+		const set = createNode('Set', 'MNI-nodes-base.set');
 		const connections: IConnections = {
 			Trigger: { main: [[edge('Sub')]] },
 			Sub: { main: [[edge('Set')]] },
@@ -73,9 +73,9 @@ describe('executeWorkflowEachToLoop migration', () => {
 	});
 
 	it('wraps a fire-and-forget node in a plain loop, without filter or alwaysOutputData', () => {
-		const trigger = createNode('Trigger', 'n8n-nodes-base.manualTrigger');
+		const trigger = createNode('Trigger', 'MNI-nodes-base.manualTrigger');
 		const sub = createNode('Sub', EXECUTE_WORKFLOW, { mode: 'each', ...NO_WAIT });
-		const set = createNode('Set', 'n8n-nodes-base.set');
+		const set = createNode('Set', 'MNI-nodes-base.set');
 		const connections: IConnections = {
 			Trigger: { main: [[edge('Sub')]] },
 			Sub: { main: [[edge('Set')]] },
@@ -96,7 +96,7 @@ describe('executeWorkflowEachToLoop migration', () => {
 	});
 
 	it('does not mutate its input', () => {
-		const trigger = createNode('Trigger', 'n8n-nodes-base.manualTrigger');
+		const trigger = createNode('Trigger', 'MNI-nodes-base.manualTrigger');
 		const sub = createNode('Sub', EXECUTE_WORKFLOW, { mode: 'each' });
 		const nodes = [trigger, sub];
 		const connections: IConnections = { Trigger: { main: [[edge('Sub')]] } };
@@ -110,11 +110,11 @@ describe('executeWorkflowEachToLoop migration', () => {
 	});
 
 	it('handles several predecessors and several successors', () => {
-		const a = createNode('A', 'n8n-nodes-base.set');
-		const b = createNode('B', 'n8n-nodes-base.set');
+		const a = createNode('A', 'MNI-nodes-base.set');
+		const b = createNode('B', 'MNI-nodes-base.set');
 		const sub = createNode('Sub', EXECUTE_WORKFLOW, { mode: 'each' });
-		const c = createNode('C', 'n8n-nodes-base.set');
-		const d = createNode('D', 'n8n-nodes-base.set');
+		const c = createNode('C', 'MNI-nodes-base.set');
+		const d = createNode('D', 'MNI-nodes-base.set');
 		const connections: IConnections = {
 			A: { main: [[edge('Sub')]] },
 			B: { main: [[edge('Sub'), edge('C')]] },
@@ -134,8 +134,8 @@ describe('executeWorkflowEachToLoop migration', () => {
 
 	it('handles several successors in fire-and-forget mode without a filter', () => {
 		const sub = createNode('Sub', EXECUTE_WORKFLOW, { mode: 'each', ...NO_WAIT });
-		const c = createNode('C', 'n8n-nodes-base.set');
-		const d = createNode('D', 'n8n-nodes-base.set');
+		const c = createNode('C', 'MNI-nodes-base.set');
+		const d = createNode('D', 'MNI-nodes-base.set');
 		const connections: IConnections = { Sub: { main: [[edge('C'), edge('D', 1)]] } };
 
 		const result = migrate([sub, c, d], connections, [sub]);
@@ -147,7 +147,7 @@ describe('executeWorkflowEachToLoop migration', () => {
 	});
 
 	it('wraps a flagged node that has no successors', () => {
-		const trigger = createNode('Trigger', 'n8n-nodes-base.manualTrigger');
+		const trigger = createNode('Trigger', 'MNI-nodes-base.manualTrigger');
 		const sub = createNode('Sub', EXECUTE_WORKFLOW, { mode: 'each' });
 		const connections: IConnections = { Trigger: { main: [[edge('Sub')]] } };
 
@@ -199,8 +199,8 @@ describe('executeWorkflowEachToLoop migration', () => {
 	it('keeps the error output wired and warns that failed items leave the loop', () => {
 		const sub = createNode('Sub', EXECUTE_WORKFLOW, { mode: 'each', ...NO_WAIT });
 		sub.onError = 'continueErrorOutput';
-		const ok = createNode('Ok', 'n8n-nodes-base.set');
-		const failed = createNode('Failed', 'n8n-nodes-base.set');
+		const ok = createNode('Ok', 'MNI-nodes-base.set');
+		const failed = createNode('Failed', 'MNI-nodes-base.set');
 		const connections: IConnections = {
 			Sub: { main: [[edge('Ok')], [edge('Failed')]] },
 		};
@@ -234,13 +234,13 @@ describe('executeWorkflowEachToLoop migration', () => {
 
 	it('warns when other nodes read the wrapped node by name in expressions', () => {
 		const sub = createNode('Sub WF', EXECUTE_WORKFLOW, { mode: 'each' });
-		const reader = createNode('Reader', 'n8n-nodes-base.set', {
+		const reader = createNode('Reader', 'MNI-nodes-base.set', {
 			assignments: { assignments: [{ value: "={{ $('Sub WF').all().length }}" }] },
 		});
-		const legacyReader = createNode('Legacy', 'n8n-nodes-base.set', {
+		const legacyReader = createNode('Legacy', 'MNI-nodes-base.set', {
 			value: '={{ $node["Sub WF"].json.x }}',
 		});
-		const unrelated = createNode('Unrelated', 'n8n-nodes-base.set', {
+		const unrelated = createNode('Unrelated', 'MNI-nodes-base.set', {
 			value: "={{ $('Other').item.json.x }}",
 		});
 
@@ -255,10 +255,10 @@ describe('executeWorkflowEachToLoop migration', () => {
 
 	it('detects dot-notation references for identifier-like node names only', () => {
 		const sub = createNode('Sub', EXECUTE_WORKFLOW, { mode: 'each' });
-		const dotted = createNode('Dotted', 'n8n-nodes-base.set', {
+		const dotted = createNode('Dotted', 'MNI-nodes-base.set', {
 			value: '={{ $node.Sub.all().length }}',
 		});
-		const longerName = createNode('Longer', 'n8n-nodes-base.set', {
+		const longerName = createNode('Longer', 'MNI-nodes-base.set', {
 			value: '={{ $node.Sub2.json.x }}',
 		});
 

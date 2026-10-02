@@ -1,7 +1,7 @@
-import type { LicenseState } from '@n8n/backend-common';
-import { Logger } from '@n8n/backend-common';
-import { mockInstance } from '@n8n/backend-test-utils';
-import { RoleRepository, ScopeRepository } from '@n8n/db';
+import type { LicenseState } from '@MNI/backend-common';
+import { Logger } from '@MNI/backend-common';
+import { mockInstance } from '@MNI/backend-test-utils';
+import { RoleRepository, ScopeRepository } from '@MNI/db';
 import { mock } from 'vitest-mock-extended';
 
 import { EventService } from '@/events/event.service';

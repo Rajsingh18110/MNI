@@ -75,18 +75,18 @@ In place of the durability a scheduler-backed job would give:
 
 ## Enabling
 
-Opt-in and main-only. Add it to `N8N_ENABLED_MODULES`:
+Opt-in and main-only. Add it to `MNI_ENABLED_MODULES`:
 
 ```
-N8N_ENABLED_MODULES=instance-reporting
-N8N_INSTANCE_REPORTING_BASE_URL=https://monitoring.example.com
+MNI_ENABLED_MODULES=instance-reporting
+MNI_INSTANCE_REPORTING_BASE_URL=https://monitoring.example.com
 ```
 
 The `insights` module must stay enabled, since the daily figure comes from
 there.
 
 The instance must hold a license certificate, unless
-`N8N_INSTANCE_REPORTING_AUTH_TOKEN` is set. Reporting is for licensed
+`MNI_INSTANCE_REPORTING_AUTH_TOKEN` is set. Reporting is for licensed
 instances, and the certificate is how the receiver knows that, see
 [Authentication](#authentication). Without a credential the module loads but
 warns and never sends, exactly as without a receiver.
@@ -96,7 +96,7 @@ warns and never sends, exactly as without a receiver.
 There are two credentials. The token wins when it is set.
 
 **License certificate (default).** Every report carries the instance's license
-certificate, the string `License.loadCertStr()` returns (`N8N_LICENSE_CERT`,
+certificate, the string `License.loadCertStr()` returns (`MNI_LICENSE_CERT`,
 or the persisted certificate of an activated license), as the `licenseCert`
 field of the body. The receiver verifies that the certificate was issued by
 MNI and then discards it; nothing from it is stored. There is no token to
@@ -110,7 +110,7 @@ It travels in the body, not in an `Authorization` header, because a
 certificate is several KB and grows with the license, which is more than
 common reverse proxies allow per header.
 
-**Bearer token.** When `N8N_INSTANCE_REPORTING_AUTH_TOKEN` is set, every
+**Bearer token.** When `MNI_INSTANCE_REPORTING_AUTH_TOKEN` is set, every
 report carries it as `Authorization: Bearer …` and the body has no
 `licenseCert` field. The certificate is not read at all, so an unlicensed
 instance can report with a token.
@@ -122,10 +122,10 @@ host.
 
 | Env var | Default | Notes |
 |---|---|---|
-| `N8N_INSTANCE_REPORTING_BASE_URL` | `''` | Base URL of the receiver. The report is POSTed to `<base>/api/v1/instance-reports`. Left unset, the module loads but warns and never sends: it starts no scheduler and claims no report time. |
-| `N8N_INSTANCE_REPORTING_LABEL` | `''` | Sent as `label` in the payload, when set. |
-| `N8N_INSTANCE_REPORTING_AUTH_TOKEN` | `''` | Sent as `Authorization: Bearer …`, when set. Replaces the license certificate as the credential; `licenseCert` is then omitted from the body. |
-| `N8N_LICENSE_CERT` | `''` | Not owned by this module. Its value, or the persisted certificate of an activated license, is sent as `licenseCert` and is the credential the receiver checks, unless a token is set. |
+| `MNI_INSTANCE_REPORTING_BASE_URL` | `''` | Base URL of the receiver. The report is POSTed to `<base>/api/v1/instance-reports`. Left unset, the module loads but warns and never sends: it starts no scheduler and claims no report time. |
+| `MNI_INSTANCE_REPORTING_LABEL` | `''` | Sent as `label` in the payload, when set. |
+| `MNI_INSTANCE_REPORTING_AUTH_TOKEN` | `''` | Sent as `Authorization: Bearer …`, when set. Replaces the license certificate as the credential; `licenseCert` is then omitted from the body. |
+| `MNI_LICENSE_CERT` | `''` | Not owned by this module. Its value, or the persisted certificate of an activated license, is sent as `licenseCert` and is the credential the receiver checks, unless a token is set. |
 
 ## Report time
 
@@ -135,7 +135,7 @@ afterwards — this spreads a fleet's requests across the day instead of every
 instance calling at the same minute. The time is always UTC and never before
 03:00, so the day being reported has had time to be compacted by `insights`
 first; it shifts itself later, logging a warning, if
-`N8N_INSIGHTS_COMPACTION_INTERVAL_MINUTES` is raised enough to require it.
+`MNI_INSIGHTS_COMPACTION_INTERVAL_MINUTES` is raised enough to require it.
 
 ## Client settings
 

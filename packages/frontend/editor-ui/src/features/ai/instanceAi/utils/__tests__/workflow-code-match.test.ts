@@ -1,7 +1,7 @@
 import type {
 	InstanceAiRunDebugStep,
 	InstanceAiRunDebugWorkflowCodeSnapshot,
-} from '@n8n/api-types';
+} from '@MNI/api-types';
 import { describe, expect, it } from 'vitest';
 
 import {

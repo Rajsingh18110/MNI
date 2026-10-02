@@ -1,4 +1,4 @@
-import type { ILocalLoadOptionsFunctions, ResourceMapperFields } from 'n8n-workflow';
+import type { ILocalLoadOptionsFunctions, ResourceMapperFields } from 'MNI-workflow';
 
 import { loadWorkflowInputMappings } from '@utils/workflowInputsResourceMapping/GenericFunctions';
 

@@ -7,7 +7,7 @@ import type { ProjectSharingData } from '@/features/collaboration/projects/proje
 import ProjectSharing from '@/features/collaboration/projects/components/ProjectSharing.vue';
 import { useAvailableProjectSearch } from '@/features/collaboration/projects/projects.utils';
 import type { BaseFilters } from '@/Interface';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 
 import {
 	N8nBadge,
@@ -16,7 +16,7 @@ import {
 	N8nLink,
 	N8nPopover,
 	N8nTooltip,
-} from '@n8n/design-system';
+} from '@MNI/design-system';
 type IResourceFiltersType = Record<string, boolean | string | string[]>;
 
 const props = withDefaults(

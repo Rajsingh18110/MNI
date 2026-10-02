@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { N8nIcon, N8nNodeIcon } from '@n8n/design-system';
-import type { IconName } from '@n8n/design-system';
+import { N8nIcon, N8nNodeIcon } from '@MNI/design-system';
+import type { IconName } from '@MNI/design-system';
 import type { ToolIconSource } from './types';
 
 withDefaults(

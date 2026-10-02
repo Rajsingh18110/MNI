@@ -1,8 +1,8 @@
-import { formatPemBlock } from '@n8n/utils/format-pem-block';
+import { formatPemBlock } from '@MNI/utils/format-pem-block';
 import { createPrivateKey } from 'crypto';
 import pick from 'lodash/pick';
-import type { INode, IDataObject, IExecuteFunctions, INodeExecutionData } from 'n8n-workflow';
-import { NodeOperationError } from 'n8n-workflow';
+import type { INode, IDataObject, IExecuteFunctions, INodeExecutionData } from 'MNI-workflow';
+import { NodeOperationError } from 'MNI-workflow';
 import type snowflake from 'snowflake-sdk';
 
 import { routeBinaryProperties } from '@utils/binary';

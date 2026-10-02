@@ -4,13 +4,13 @@ import { createTestingPinia } from '@pinia/testing';
 import { ref, computed } from 'vue';
 
 // Mock the stores and composables
-vi.mock('@n8n/stores/useRootStore', () => ({
+vi.mock('@MNI/stores/useRootStore', () => ({
 	useRootStore: () => ({
 		versionCli: '1.0.0',
 	}),
 }));
 
-vi.mock('@n8n/i18n', async (importOriginal) => {
+vi.mock('@MNI/i18n', async (importOriginal) => {
 	const actual = (await importOriginal()) as object;
 	return {
 		...actual,
@@ -78,8 +78,8 @@ vi.mock('@/features/workflows/canvas/composables/useCanvasMapping', () => ({
 // Import after mocks
 import DemoDiffView from './DemoDiffView.vue';
 import { setActivePinia } from 'pinia';
-import { useSettingsStore } from '@n8n/stores/settings.store';
-import { defaultSettings } from '@n8n/frontend-test-utils';
+import { useSettingsStore } from '@MNI/stores/settings.store';
+import { defaultSettings } from '@MNI/frontend-test-utils';
 
 // Capture props from WorkflowDiffView
 let capturedTidyUpProp: boolean | undefined = undefined;

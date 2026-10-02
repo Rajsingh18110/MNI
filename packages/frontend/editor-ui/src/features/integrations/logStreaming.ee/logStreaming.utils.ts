@@ -2,17 +2,17 @@ import type {
 	INodeCredentials,
 	INodeParameters,
 	MessageEventBusDestinationOptions,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import {
 	MessageEventBusDestinationWebhookOptionsSchema,
 	MessageEventBusDestinationSentryOptionsSchema,
 	MessageEventBusDestinationSyslogOptionsSchema,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import type { INodeUi } from '@/Interface';
 
 export function destinationToFakeINodeUi(
 	destination: MessageEventBusDestinationOptions,
-	fakeType = 'n8n-nodes-base.stickyNote',
+	fakeType = 'MNI-nodes-base.stickyNote',
 ): INodeUi {
 	return {
 		id: destination.id,

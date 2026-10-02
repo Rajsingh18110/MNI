@@ -5,8 +5,8 @@ import {
 	useExistingWorkflowDocumentStore,
 } from '@/app/stores/workflowDocument.store';
 import type { IWorkflowDb } from '@/Interface';
-import { useRootStore } from '@n8n/stores/useRootStore';
-import type { INode, IWorkflowGroup } from 'n8n-workflow';
+import { useRootStore } from '@MNI/stores/useRootStore';
+import type { INode, IWorkflowGroup } from 'MNI-workflow';
 import {
 	computed,
 	onScopeDispose,

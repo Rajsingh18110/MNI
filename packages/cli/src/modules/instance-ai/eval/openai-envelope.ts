@@ -1,5 +1,5 @@
-import type { EvalMockHttpResponse } from 'n8n-core';
-import type { IHttpRequestOptions } from 'n8n-workflow';
+import type { EvalMockHttpResponse } from 'MNI-core';
+import type { IHttpRequestOptions } from 'MNI-workflow';
 import { randomUUID } from 'node:crypto';
 
 // Translation between the OpenAI chat-completions wire format and the shape

@@ -242,9 +242,9 @@ export const jsonStringify = (obj: unknown, options: JSONStringifyOptions = {}):
 };
 
 // Kept only as a backwards-compat layer for community nodes — internal code
-// must import `sleep` from `@n8n/utils/sleep` (enforced by eslint rule
+// must import `sleep` from `@MNI/utils/sleep` (enforced by eslint rule
 // no-restricted-sleep-import).
-export { sleep } from '@n8n/utils/sleep';
+export { sleep } from '@MNI/utils/sleep';
 
 export function fileTypeFromMimeType(mimeType: string): BinaryFileType | undefined {
 	if (mimeType.startsWith('application/json')) return 'json';
@@ -391,7 +391,7 @@ export function isSafeObjectProperty(property: string) {
 	return !unsafeObjectProperties.has(property);
 }
 
-// eslint-disable-next-line n8n-local-rules/no-dynamic-regexp -- static pattern
+// eslint-disable-next-line MNI-local-rules/no-dynamic-regexp -- static pattern
 const unsafeObjectPropertyTokenPattern = new RegExp(
 	`\\b(?:${[...unsafeObjectProperties]
 		.map((p) => p.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'))
@@ -425,11 +425,11 @@ export function sanitizeXmlName(name: string) {
 	return name;
 }
 
-const COMMUNITY_PACKAGE_NAME_REGEX = /^(?!@n8n\/)(@[\w.-]+\/)?n8n-nodes-(?!base\b)\b\w+/g;
+const COMMUNITY_PACKAGE_NAME_REGEX = /^(?!@MNI\/)(@[\w.-]+\/)?MNI-nodes-(?!base\b)\b\w+/g;
 
 export function isCommunityPackageName(packageName: string): boolean {
 	COMMUNITY_PACKAGE_NAME_REGEX.lastIndex = 0;
-	// Community packages names start with <@username/>n8n-nodes- not followed by word 'base'
+	// Community packages names start with <@username/>MNI-nodes- not followed by word 'base'
 	const nameMatch = COMMUNITY_PACKAGE_NAME_REGEX.exec(packageName);
 
 	return !!nameMatch;

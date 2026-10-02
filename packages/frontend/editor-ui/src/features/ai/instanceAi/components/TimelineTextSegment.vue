@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import type { InstanceAiTimelineEntry } from '@n8n/api-types';
-import { N8nText } from '@n8n/design-system';
+import type { InstanceAiTimelineEntry } from '@MNI/api-types';
+import { N8nText } from '@MNI/design-system';
 import InstanceAiMarkdown from './InstanceAiMarkdown.vue';
 
 /**

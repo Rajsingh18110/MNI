@@ -1,6 +1,6 @@
 import { computed, watch } from 'vue';
 import { defineStore } from 'pinia';
-import { STORES } from '@n8n/stores';
+import { STORES } from '@MNI/stores';
 import { useUIStore } from '@/app/stores/ui.store';
 import { useRoute } from 'vue-router';
 import {
@@ -13,13 +13,13 @@ import { ASSISTANT_ENABLED_VIEWS, BUILDER_ENABLED_VIEWS } from './constants';
 import { useChatPanelStateStore, type ChatPanelMode } from './chatPanelState.store';
 import { useAssistantStore } from './assistant.store';
 import { useBuilderStore } from './builder.store';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { useWorkflowsStore } from '@/app/stores/workflows.store';
 import { usePostHog } from '@/app/stores/posthog.store';
 import { MERGE_ASK_BUILD_EXPERIMENT } from '@/app/constants/experiments';
-import type { ICredentialType } from 'n8n-workflow';
+import type { ICredentialType } from 'MNI-workflow';
 import type { ChatRequest } from './assistant.types';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 
 export const MAX_CHAT_WIDTH = 425;
 export const MIN_CHAT_WIDTH = 380;

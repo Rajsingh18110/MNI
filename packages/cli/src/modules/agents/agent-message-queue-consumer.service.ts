@@ -1,9 +1,9 @@
-import type { AgentSseEvent } from '@n8n/api-types';
-import { Logger } from '@n8n/backend-common';
-import { UserRepository } from '@n8n/db';
-import { OnShutdown } from '@n8n/decorators';
-import { Service } from '@n8n/di';
-import { OperationalError, UserError } from 'n8n-workflow';
+import type { AgentSseEvent } from '@MNI/api-types';
+import { Logger } from '@MNI/backend-common';
+import { UserRepository } from '@MNI/db';
+import { OnShutdown } from '@MNI/decorators';
+import { Service } from '@MNI/di';
+import { OperationalError, UserError } from 'MNI-workflow';
 
 import { CredentialsService } from '@/credentials/credentials.service';
 import { userHasScopes } from '@/permissions.ee/check-access';

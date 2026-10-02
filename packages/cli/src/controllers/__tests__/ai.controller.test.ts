@@ -4,8 +4,8 @@ import type {
 	AiChatRequestDto,
 	AiBuilderChatRequestDto,
 	AiGatewayUsageQueryDto,
-} from '@n8n/api-types';
-import type { AuthenticatedRequest } from '@n8n/db';
+} from '@MNI/api-types';
+import type { AuthenticatedRequest } from '@MNI/db';
 import { APIResponseError, NetworkError, type AiAssistantSDK } from '@n8n_io/ai-assistant-sdk';
 import { mock } from 'vitest-mock-extended';
 

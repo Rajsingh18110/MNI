@@ -1,4 +1,4 @@
-import type { Logger } from '@n8n/backend-common';
+import type { Logger } from '@MNI/backend-common';
 
 /** LLM-call phases of a mocked eval execution. */
 type EvalTimingPhase = 'hints' | 'bypass-pin' | 'http-mock' | 'ai-turn';
@@ -13,14 +13,14 @@ interface LlmCallSample {
 
 /**
  * Per-execution LLM-call timing accumulator, gated by
- * `N8N_INSTANCE_AI_EVAL_TIMING=true` (a no-op otherwise).
+ * `MNI_INSTANCE_AI_EVAL_TIMING=true` (a no-op otherwise).
  */
 export class EvalTimings {
 	private readonly samples: LlmCallSample[] = [];
 
 	private readonly startedAt = Date.now();
 
-	readonly enabled = process.env.N8N_INSTANCE_AI_EVAL_TIMING === 'true';
+	readonly enabled = process.env.MNI_INSTANCE_AI_EVAL_TIMING === 'true';
 
 	/** Time one mock/hint LLM call and record a sample. Always awaits `fn`. */
 	async time<T>(
@@ -53,8 +53,8 @@ export class EvalTimings {
 		const llmTotal = this.samples.reduce((sum, s) => sum + s.durationMs, 0);
 		// Display-only; mirrors getModelId() in eval-agents.ts (SONNET_MODEL default).
 		const model =
-			process.env.N8N_INSTANCE_AI_EVAL_MODEL ??
-			process.env.N8N_INSTANCE_AI_MODEL ??
+			process.env.MNI_INSTANCE_AI_EVAL_MODEL ??
+			process.env.MNI_INSTANCE_AI_MODEL ??
 			'anthropic/claude-sonnet-4-6';
 		logger.info(
 			`[EvalMock][timing] SUMMARY wall=${fmt(Date.now() - this.startedAt)} llmCalls=${this.samples.length} llmTotal=${fmt(llmTotal)} model=${model}`,

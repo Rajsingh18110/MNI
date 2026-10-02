@@ -18,7 +18,7 @@ requestBody:
             type: string
             minLength: 1
             description: The client ID issued when registering MNI with the OIDC provider.
-            example: n8n-client
+            example: MNI-client
           clientSecret:
             type: string
             minLength: 1

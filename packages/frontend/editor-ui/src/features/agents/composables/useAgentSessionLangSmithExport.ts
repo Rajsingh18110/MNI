@@ -1,7 +1,7 @@
-import { useClipboard } from '@n8n/composables/useClipboard';
-import { useToast } from '@n8n/composables/useToast';
-import { useI18n } from '@n8n/i18n';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useClipboard } from '@MNI/composables/useClipboard';
+import { useToast } from '@MNI/composables/useToast';
+import { useI18n } from '@MNI/i18n';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { computed, ref } from 'vue';
 
 import { MODAL_CONFIRM } from '@/app/constants';

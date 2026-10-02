@@ -2,13 +2,13 @@ import { describe, expect, it, vi } from 'vitest';
 import { createTestingPinia } from '@pinia/testing';
 import { setActivePinia } from 'pinia';
 import { defineComponent, h } from 'vue';
-import type { InstanceAiRunDebugStep } from '@n8n/api-types';
+import type { InstanceAiRunDebugStep } from '@MNI/api-types';
 import { createComponentRenderer } from '@/__tests__/render';
 import { mockedStore } from '@/__tests__/utils';
 import InstanceAiLlmStepsModal from '../InstanceAiLlmStepsModal.vue';
 import { useInstanceAiDebugStore } from '../../instanceAiDebug.store';
 
-vi.mock('@n8n/design-system', async (importOriginal) => {
+vi.mock('@MNI/design-system', async (importOriginal) => {
 	const slotStub = defineComponent({
 		setup:
 			(_, { slots }) =>

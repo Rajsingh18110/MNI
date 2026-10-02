@@ -1,6 +1,6 @@
-/* eslint-disable n8n-nodes-base/cred-class-name-unsuffixed */
-/* eslint-disable n8n-nodes-base/cred-class-field-name-unsuffixed */
-import type { IAuthenticate, ICredentialType, INodeProperties, Icon } from 'n8n-workflow';
+/* eslint-disable MNI-nodes-base/cred-class-name-unsuffixed */
+/* eslint-disable MNI-nodes-base/cred-class-field-name-unsuffixed */
+import type { IAuthenticate, ICredentialType, INodeProperties, Icon } from 'MNI-workflow';
 
 export class HttpMultipleHeadersAuth implements ICredentialType {
 	name = 'httpMultipleHeadersAuth';
@@ -9,7 +9,7 @@ export class HttpMultipleHeadersAuth implements ICredentialType {
 
 	documentationUrl = 'httprequest';
 
-	icon: Icon = 'node:n8n-nodes-base.httpRequest';
+	icon: Icon = 'node:MNI-nodes-base.httpRequest';
 
 	properties: INodeProperties[] = [
 		{

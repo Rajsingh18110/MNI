@@ -1,4 +1,4 @@
-import type { IHttpRequestMethods, IHttpRequestOptions, IDataObject } from 'n8n-workflow';
+import type { IHttpRequestMethods, IHttpRequestOptions, IDataObject } from 'MNI-workflow';
 import { createHash, createHmac } from 'node:crypto';
 
 import type { AwsIamCredentialsType, AwsSecurityHeaders } from './types';
@@ -69,9 +69,9 @@ async function signS3Request(options: {
 	// The flag must be set before the path is built: the legacy branch skips the
 	// strict encoding so the rollback lever reproduces pre-migration wire bytes.
 	if (options.legacy) {
-		process.env.N8N_AWS_LEGACY_SIGNER = 'true';
+		process.env.MNI_AWS_LEGACY_SIGNER = 'true';
 	} else {
-		delete process.env.N8N_AWS_LEGACY_SIGNER;
+		delete process.env.MNI_AWS_LEGACY_SIGNER;
 	}
 	const requestOptions = {
 		headers: {},
@@ -98,7 +98,7 @@ describe('S3 path signing (real signers)', () => {
 
 	afterEach(() => {
 		vi.useRealTimers();
-		delete process.env.N8N_AWS_LEGACY_SIGNER;
+		delete process.env.MNI_AWS_LEGACY_SIGNER;
 	});
 
 	it('signs the strictly UriEncoded object path — hand-computed golden vector', async () => {

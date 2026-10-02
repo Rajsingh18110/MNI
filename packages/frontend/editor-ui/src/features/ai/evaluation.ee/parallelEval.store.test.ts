@@ -13,7 +13,7 @@ import { DEFAULT_PARALLEL_CONCURRENCY, useParallelEvalStore } from './parallelEv
 const mockSettingsState = reactive({
 	settings: { evaluationConcurrencyLimit: -1 },
 });
-vi.mock('@n8n/stores/settings.store', () => ({
+vi.mock('@MNI/stores/settings.store', () => ({
 	useSettingsStore: vi.fn(() => mockSettingsState),
 }));
 
@@ -144,7 +144,7 @@ describe('parallelEval.store', () => {
 		});
 	});
 
-	describe('maxConcurrency (admin cap via N8N_CONCURRENCY_EVALUATION_LIMIT)', () => {
+	describe('maxConcurrency (admin cap via MNI_CONCURRENCY_EVALUATION_LIMIT)', () => {
 		it('defaults to 10 when the limit is unset (-1, "unlimited")', () => {
 			mockEvaluationConcurrencyLimit(-1);
 			const store = useParallelEvalStore();

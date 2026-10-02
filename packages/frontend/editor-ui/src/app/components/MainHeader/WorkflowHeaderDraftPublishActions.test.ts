@@ -1,4 +1,4 @@
-import type { WorkflowReviewRequestForWorkflow } from '@n8n/api-types';
+import type { WorkflowReviewRequestForWorkflow } from '@MNI/api-types';
 
 import { createComponentRenderer } from '@/__tests__/render';
 import { type MockedStore, mockedStore } from '@/__tests__/utils';
@@ -12,10 +12,10 @@ import { useUIStore } from '@/app/stores/ui.store';
 import { useCollaborationStore } from '@/features/collaboration/collaboration/collaboration.store';
 import { useProjectsStore } from '@/features/collaboration/projects/projects.store';
 import { useWorkflowHistoryStore } from '@/features/workflows/workflowHistory/workflowHistory.store';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { WORKFLOW_PUBLISH_MODAL_KEY, EnterpriseEditionFeature } from '@/app/constants';
 import { MANUAL_TRIGGER_NODE_TYPE } from '@/app/constants/nodeTypes';
-import { STORES } from '@n8n/stores';
+import { STORES } from '@MNI/stores';
 import type { INodeUi } from '@/Interface';
 import { ProjectTypes } from '@/features/collaboration/projects/projects.types';
 import { createTestProject } from '@/features/collaboration/projects/__tests__/utils';
@@ -31,7 +31,7 @@ import {
 	LOCAL_STORAGE_WORKFLOW_REVIEW_REQUIRED_BY_WORKFLOW,
 	LOCAL_STORAGE_WORKFLOW_REVIEW_SUBMITTED_DIALOG_HIDDEN,
 } from '@/app/constants/localStorage';
-import { useUsersStore } from '@n8n/stores/users.store';
+import { useUsersStore } from '@MNI/stores/users.store';
 import { WORKFLOW_REVIEW_REQUESTS_VIEW } from '@/features/workflow-reviews/constants';
 import {
 	createWorkflowReviewRequest,
@@ -39,7 +39,7 @@ import {
 	fetchWorkflowReviewRequests,
 	updateWorkflowReviewRequestVersion,
 } from '@/features/workflow-reviews/workflowReviews.api';
-import { ResponseError } from '@n8n/rest-api-client';
+import { ResponseError } from '@MNI/rest-api-client';
 
 // Hoisted: the vue-router mock factory runs before module-level consts initialize
 const { mockRouterPush, mockRouterResolve } = vi.hoisted(() => ({
@@ -88,7 +88,7 @@ vi.mock('@/app/composables/useWorkflowActivate', () => ({
 	}),
 }));
 
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: () => ({
 		showMessage: mockShowMessage,
 		showToast: mockShowToast,
@@ -157,7 +157,7 @@ const createMockActiveVersion = (versionId: string) => ({
 const triggerNode: INodeUi = {
 	id: 'trigger-1',
 	name: 'Webhook Trigger',
-	type: 'n8n-nodes-base.webhook',
+	type: 'MNI-nodes-base.webhook',
 	typeVersion: 1,
 	position: [0, 0],
 	parameters: {},
@@ -226,7 +226,7 @@ describe('WorkflowHeaderDraftPublishActions', () => {
 		const nodeTypesStore = useNodeTypesStore();
 		nodeTypesStore.setNodeTypes([
 			mockNodeTypeDescription({
-				name: 'n8n-nodes-base.webhook',
+				name: 'MNI-nodes-base.webhook',
 				group: ['trigger'],
 			}),
 		]);
@@ -1405,7 +1405,7 @@ describe('WorkflowHeaderDraftPublishActions', () => {
 
 		it.each([
 			{ name: 'the last node was deleted', nodes: [] },
-			{ name: 'no node is a trigger', nodes: [{ ...triggerNode, type: 'n8n-nodes-base.set' }] },
+			{ name: 'no node is a trigger', nodes: [{ ...triggerNode, type: 'MNI-nodes-base.set' }] },
 			{ name: 'the only trigger is disabled', nodes: [{ ...triggerNode, disabled: true }] },
 			{
 				name: 'the only trigger cannot be activated',

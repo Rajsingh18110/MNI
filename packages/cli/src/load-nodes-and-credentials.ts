@@ -4,14 +4,14 @@ import {
 	isEnvFeatureEnabled,
 	Logger,
 	ModuleRegistry,
-} from '@n8n/backend-common';
-import { GlobalConfig } from '@n8n/config';
-import { Container, Service } from '@n8n/di';
-import { isWindowsFilePath } from '@n8n/utils/files/is-windows-file-path';
+} from '@MNI/backend-common';
+import { GlobalConfig } from '@MNI/config';
+import { Container, Service } from '@MNI/di';
+import { isWindowsFilePath } from '@MNI/utils/files/is-windows-file-path';
 import type ParcelWatcher from '@parcel/watcher';
 import glob from 'fast-glob';
 import fsPromises from 'fs/promises';
-import type { Class, OutputSchemaLookup, Types } from 'n8n-core';
+import type { Class, OutputSchemaLookup, Types } from 'MNI-core';
 import {
 	CUSTOM_EXTENSION_ENV,
 	DirectoryLoader,
@@ -27,7 +27,7 @@ import {
 	resolveOutputSchemaPath,
 	loadOutputSchema,
 	OUTPUT_PARSER_SCHEMA_VARIANT,
-} from 'n8n-core';
+} from 'MNI-core';
 import type {
 	KnownNodesAndCredentials,
 	INodeTypeDescription,
@@ -38,9 +38,9 @@ import type {
 	INodeProperties,
 	LoadedNodesAndCredentials,
 	NodeLoader,
-} from 'n8n-workflow';
-import { ensureError } from '@n8n/utils/errors/ensure-error';
-import { injectDomainRestrictionFields, UnexpectedError, UserError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { ensureError } from '@MNI/utils/errors/ensure-error';
+import { injectDomainRestrictionFields, UnexpectedError, UserError } from 'MNI-workflow';
 import path from 'path';
 import picocolors from 'picocolors';
 
@@ -94,15 +94,15 @@ export class LoadNodesAndCredentials {
 
 		if (!inE2ETests) {
 			this.excludeNodes = this.excludeNodes ?? [];
-			this.excludeNodes.push('n8n-nodes-base.e2eTest');
+			this.excludeNodes.push('MNI-nodes-base.e2eTest');
 		}
 
-		if (!isEnvFeatureEnabled('N8N_ENV_FEAT_DYNAMIC_CREDENTIALS')) {
+		if (!isEnvFeatureEnabled('MNI_ENV_FEAT_DYNAMIC_CREDENTIALS')) {
 			this.excludeNodes = this.excludeNodes ?? [];
-			this.excludeNodes.push('n8n-nodes-base.dynamicCredentialCheck');
+			this.excludeNodes.push('MNI-nodes-base.dynamicCredentialCheck');
 		}
 
-		// Load nodes from `n8n-nodes-base`
+		// Load nodes from `MNI-nodes-base`
 		const basePathsToScan = [
 			// In case "MNI" package is in same node_modules folder.
 			path.join(CLI_DIR, '..'),
@@ -112,8 +112,8 @@ export class LoadNodesAndCredentials {
 		];
 
 		for (const nodeModulesDir of basePathsToScan) {
-			await this.loadNodesFromNodeModules(nodeModulesDir, 'n8n-nodes-base');
-			await this.loadNodesFromNodeModules(nodeModulesDir, '@n8n/n8n-nodes-langchain');
+			await this.loadNodesFromNodeModules(nodeModulesDir, 'MNI-nodes-base');
+			await this.loadNodesFromNodeModules(nodeModulesDir, '@MNI/MNI-nodes-langchain');
 		}
 
 		await this.loadNodesFromCustomDirectories();
@@ -220,12 +220,12 @@ export class LoadNodesAndCredentials {
 	/**
 	 * Resolves the node icon file path when loaded from /icons/${packageName}/${iconPath}.
 	 *
-	 * Using N8N_CUSTOM_EXTENSIONS, nodes can be loaded from any directory outside of CWD='$N8N_USER_FOLDER/.n8n/'.
+	 * Using MNI_CUSTOM_EXTENSIONS, nodes can be loaded from any directory outside of CWD='$MNI_USER_FOLDER/.MNI/'.
 	 * Custom nodes are loaded by custom-directory-loader.ts using an absolute path, different from the default package-directory-loader.ts.
 	 * The icon loading logic for custom nodes seems a bit broken, because icons are resolved by absolute paths encoded in URLs.
 	 * Examples when served from `/icons/${packageName}/${iconPath}`:
-	 * - '/icons/CUSTOM//home/node/.n8n-custom'
-	 * - '/icons/CUSTOM/C:/User/name/.n8n-custom'
+	 * - '/icons/CUSTOM//home/node/.MNI-custom'
+	 * - '/icons/CUSTOM/C:/User/name/.MNI-custom'
 	 *
 	 * resolveIcon() has a special path.resolve() strategy for custom nodes considering:
 	 * - An absolute Linux file path is encoded in the URL using '//'.
@@ -291,7 +291,7 @@ export class LoadNodesAndCredentials {
 	/**
 	 * Schema lookup for mock/pin-data generation: parsed `__schema__` content
 	 * with version fallback (same major first, then older, then newer — see the
-	 * n8n-core resolver), resolved through `known.nodes` so it works for
+	 * MNI-core resolver), resolved through `known.nodes` so it works for
 	 * community nodes and production installs alike.
 	 */
 	createOutputSchemaLookup(): OutputSchemaLookup {
@@ -412,7 +412,7 @@ export class LoadNodesAndCredentials {
 	}
 
 	private shouldInjectContextEstablishmentHooks() {
-		return isEnvFeatureEnabled('N8N_ENV_FEAT_DYNAMIC_CREDENTIALS');
+		return isEnvFeatureEnabled('MNI_ENV_FEAT_DYNAMIC_CREDENTIALS');
 	}
 
 	private injectContextEstablishmentHooks() {

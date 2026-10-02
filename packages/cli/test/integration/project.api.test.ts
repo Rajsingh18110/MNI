@@ -9,8 +9,8 @@ import {
 	randomCredentialPayload,
 	testDb,
 	mockInstance,
-} from '@n8n/backend-test-utils';
-import type { Project } from '@n8n/db';
+} from '@MNI/backend-test-utils';
+import type { Project } from '@MNI/db';
 import {
 	FolderRepository,
 	GLOBAL_ADMIN_ROLE,
@@ -21,16 +21,16 @@ import {
 	SharedCredentialsRepository,
 	SharedWorkflowRepository,
 	WorkflowRepository,
-} from '@n8n/db';
-import { Container } from '@n8n/di';
+} from '@MNI/db';
+import { Container } from '@MNI/di';
 import {
 	getRoleScopes,
 	PROJECT_OWNER_ROLE_SLUG,
 	type GlobalRole,
 	type ProjectRole,
 	type Scope,
-} from '@n8n/permissions';
-import { EntityNotFoundError } from '@n8n/typeorm';
+} from '@MNI/permissions';
+import { EntityNotFoundError } from '@MNI/typeorm';
 
 import { ActiveWorkflowManager } from '@/active-workflow-manager';
 import { ProvisioningService } from '@/modules/provisioning.ee/provisioning.service.ee';

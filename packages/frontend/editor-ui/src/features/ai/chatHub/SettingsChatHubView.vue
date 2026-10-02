@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { useDocumentTitle } from '@/app/composables/useDocumentTitle';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
-import { useToast } from '@n8n/composables/useToast';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
+import { useToast } from '@MNI/composables/useToast';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { useUIStore } from '@/app/stores/ui.store';
 import { useCredentialsStore } from '@/features/credentials/credentials.store';
 import { usePostHog } from '@/app/stores/posthog.store';
@@ -12,9 +12,9 @@ import {
 	type ChatHubLLMProvider,
 	type ChatProviderSettingsDto,
 	PROVIDER_CREDENTIAL_TYPE_MAP,
-} from '@n8n/api-types';
-import { N8nHeading, N8nSwitch, N8nText, N8nTooltip } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+} from '@MNI/api-types';
+import { N8nHeading, N8nSwitch, N8nText, N8nTooltip } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 import { computed, onMounted } from 'vue';
 import { useChatStore } from './chat.store';
 import ChatProvidersTable from './components/ChatProvidersTable.vue';

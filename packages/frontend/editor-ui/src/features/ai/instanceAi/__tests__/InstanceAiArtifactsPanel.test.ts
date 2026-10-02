@@ -1,10 +1,10 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { createTestingPinia } from '@pinia/testing';
 import { fireEvent, waitFor } from '@testing-library/vue';
-import { IconBodyLoaderKey } from '@n8n/design-system';
+import { IconBodyLoaderKey } from '@MNI/design-system';
 import { nextTick, reactive, ref } from 'vue';
 import { createComponentRenderer } from '@/__tests__/render';
-import type { InstanceAiAgentNode, InstanceAiHandoffContext, TaskList } from '@n8n/api-types';
+import type { InstanceAiAgentNode, InstanceAiHandoffContext, TaskList } from '@MNI/api-types';
 import type { ProjectListItem } from '@/features/collaboration/projects/projects.types';
 import { useProjectsStore } from '@/features/collaboration/projects/projects.store';
 import type { ResourceEntry } from '../useResourceRegistry';

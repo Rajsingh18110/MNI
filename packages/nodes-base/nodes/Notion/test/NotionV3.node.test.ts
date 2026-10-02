@@ -6,7 +6,7 @@ import type {
 	INode,
 	INodeExecutionData,
 	IPairedItemData,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import type { Mock } from 'vitest';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
@@ -51,7 +51,7 @@ function createMockExecuteFunction(
 			({
 				typeVersion: 3,
 				name: 'Notion',
-				type: 'n8n-nodes-base.notion',
+				type: 'MNI-nodes-base.notion',
 			}) as INode,
 		getTimezone: () => 'UTC',
 		continueOnFail: () => options.continueOnFail ?? false,

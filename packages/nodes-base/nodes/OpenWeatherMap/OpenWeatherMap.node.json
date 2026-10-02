@@ -1,5 +1,5 @@
 {
-	"node": "n8n-nodes-base.openWeatherMap",
+	"node": "MNI-nodes-base.openWeatherMap",
 	"nodeVersion": "1.0",
 	"codexVersion": "1.0",
 	"categories": ["Miscellaneous", "Utility"],
@@ -11,7 +11,7 @@
 		],
 		"primaryDocumentation": [
 			{
-				"url": "https://docs.n8n.io/integrations/builtin/app-nodes/n8n-nodes-base.openweathermap/"
+				"url": "https://docs.n8n.io/integrations/builtin/app-nodes/MNI-nodes-base.openweathermap/"
 			}
 		],
 		"generic": [
@@ -23,7 +23,7 @@
 			{
 				"label": "Creating Telegram Bots with MNI, a No-Code Platform",
 				"icon": "💬",
-				"url": "https://n8n.io/blog/creating-telegram-bots-with-n8n-a-no-code-platform/"
+				"url": "https://n8n.io/blog/creating-telegram-bots-with-MNI-a-no-code-platform/"
 			}
 		]
 	}

@@ -3,7 +3,7 @@ import InputPanel from '@/features/ndv/panel/components/InputPanel.vue';
 import type { INodeUi } from '@/Interface';
 import { injectNDVStore } from '@/features/ndv/shared/ndv.store';
 import { onBeforeUnmount, watch, computed, ref, useTemplateRef } from 'vue';
-import { useStyles } from '@n8n/composables/useStyles';
+import { useStyles } from '@MNI/composables/useStyles';
 import {
 	onClickOutside,
 	useElementHover,
@@ -13,7 +13,7 @@ import {
 import { useExperimentalNdvStore } from '../experimentalNdv.store';
 import { isEventTargetContainedBy } from '@/app/utils/htmlUtils';
 
-import { N8nPopover } from '@n8n/design-system';
+import { N8nPopover } from '@MNI/design-system';
 type MapperState = { isOpen: true; closeOnMouseLeave: boolean } | { isOpen: false };
 
 const hoverOptions: UseElementHoverOptions = {

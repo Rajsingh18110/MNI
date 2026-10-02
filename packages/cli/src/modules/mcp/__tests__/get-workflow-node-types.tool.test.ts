@@ -1,5 +1,5 @@
-import type { AiGatewayConfigDto } from '@n8n/api-types';
-import { User } from '@n8n/db';
+import type { AiGatewayConfigDto } from '@MNI/api-types';
+import { User } from '@MNI/db';
 import type { Mocked } from 'vitest';
 import { mock } from 'vitest-mock-extended';
 
@@ -9,7 +9,7 @@ import type { Telemetry } from '@/telemetry';
 
 import { createGetWorkflowNodeTypesTool } from '../tools/workflow-builder/get-workflow-node-types.tool';
 
-vi.mock('@n8n/ai-workflow-builder', () => ({
+vi.mock('@MNI/ai-workflow-builder', () => ({
 	CODE_BUILDER_GET_NODE_TYPES_TOOL: {
 		toolName: 'get_workflow_node_types',
 		displayTitle: 'Get workflow node types',
@@ -44,7 +44,7 @@ describe('get-workflow-node-types MCP tool', () => {
 	test('returns definitions verbatim', async () => {
 		const tool = createTool();
 		const result = await tool.handler(
-			{ nodeIds: [{ nodeId: 'n8n-nodes-base.gmail' }] },
+			{ nodeIds: [{ nodeId: 'MNI-nodes-base.gmail' }] },
 			{} as never,
 		);
 		expect(result.structuredContent).toEqual({ definitions: 'typescript definitions' });
@@ -54,7 +54,7 @@ describe('get-workflow-node-types MCP tool', () => {
 		aiGatewayService.isAvailable.mockResolvedValue({
 			available: true,
 			config: {
-				nodes: ['@n8n/n8n-nodes-langchain.openAi'],
+				nodes: ['@MNI/MNI-nodes-langchain.openAi'],
 				credentialTypes: ['openAiApi'],
 				providerConfig: {},
 			} as AiGatewayConfigDto,
@@ -62,7 +62,7 @@ describe('get-workflow-node-types MCP tool', () => {
 
 		const tool = createTool();
 		const result = await tool.handler(
-			{ nodeIds: [{ nodeId: '@n8n/n8n-nodes-langchain.openAi' }] },
+			{ nodeIds: [{ nodeId: '@MNI/MNI-nodes-langchain.openAi' }] },
 			{} as never,
 		);
 
@@ -70,19 +70,19 @@ describe('get-workflow-node-types MCP tool', () => {
 			definitions: 'typescript definitions',
 			gatewayCredits: {
 				credentialTypes: ['openAiApi'],
-				nodes: ['@n8n/n8n-nodes-langchain.openAi'],
+				nodes: ['@MNI/MNI-nodes-langchain.openAi'],
 			},
 		});
 		// Also mirrored into the unstructured content for text-only clients.
 		expect((result.content[0] as { text: string }).text).toBe(
-			'typescript definitions\n\ngatewayCredits: {"credentialTypes":["openAiApi"],"nodes":["@n8n/n8n-nodes-langchain.openAi"]}',
+			'typescript definitions\n\ngatewayCredits: {"credentialTypes":["openAiApi"],"nodes":["@MNI/MNI-nodes-langchain.openAi"]}',
 		);
 	});
 
 	test('omits gatewayCredits block when unavailable', async () => {
 		const tool = createTool();
 		const result = await tool.handler(
-			{ nodeIds: [{ nodeId: 'n8n-nodes-base.slack' }] },
+			{ nodeIds: [{ nodeId: 'MNI-nodes-base.slack' }] },
 			{} as never,
 		);
 		expect(result.structuredContent).toEqual({ definitions: 'typescript definitions' });

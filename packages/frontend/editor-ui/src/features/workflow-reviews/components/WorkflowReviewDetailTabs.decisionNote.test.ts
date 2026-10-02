@@ -1,4 +1,4 @@
-import type { WorkflowReviewRequestDetail } from '@n8n/api-types';
+import type { WorkflowReviewRequestDetail } from '@MNI/api-types';
 import { createTestingPinia } from '@pinia/testing';
 import userEvent from '@testing-library/user-event';
 import { createComponentRenderer } from '@/__tests__/render';

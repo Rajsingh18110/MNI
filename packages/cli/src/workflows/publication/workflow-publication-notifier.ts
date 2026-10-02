@@ -1,6 +1,6 @@
-import { WorkflowsConfig } from '@n8n/config';
-import { Container, Service } from '@n8n/di';
-import { ErrorReporter, InstanceSettings } from 'n8n-core';
+import { WorkflowsConfig } from '@MNI/config';
+import { Container, Service } from '@MNI/di';
+import { ErrorReporter, InstanceSettings } from 'MNI-core';
 
 import { Publisher } from '@/scaling/pubsub/publisher.service';
 

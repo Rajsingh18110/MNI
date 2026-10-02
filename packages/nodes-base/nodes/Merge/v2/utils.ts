@@ -9,8 +9,8 @@ import type {
 	IDataObject,
 	INodeExecutionData,
 	IPairedItemData,
-} from 'n8n-workflow';
-import { UserError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { UserError } from 'MNI-workflow';
 
 import { fuzzyCompare, preparePairedItemDataArray } from '@utils/utilities';
 

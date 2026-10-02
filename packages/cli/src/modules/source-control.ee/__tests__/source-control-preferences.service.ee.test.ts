@@ -1,8 +1,8 @@
-import type { Logger } from '@n8n/backend-common';
-import type { SettingsRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
+import type { Logger } from '@MNI/backend-common';
+import type { SettingsRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
 import { readFile, writeFile, access, mkdir } from 'fs/promises';
-import type { InstanceSettings, Cipher } from 'n8n-core';
+import type { InstanceSettings, Cipher } from 'MNI-core';
 import os from 'os';
 import path from 'path';
 import { mock } from 'vitest-mock-extended';
@@ -34,7 +34,7 @@ describe('SourceControlPreferencesService', () => {
 	it('should class validate correct preferences', async () => {
 		const validPreferences: Partial<SourceControlPreferences> = {
 			branchName: 'main',
-			repositoryUrl: 'git@example.com:n8ntest/n8n_testrepo.git',
+			repositoryUrl: 'git@example.com:n8ntest/MNI_testrepo.git',
 			branchReadOnly: false,
 			branchColor: '#5296D6',
 		};
@@ -66,7 +66,7 @@ describe('SourceControlPreferencesService', () => {
 		let tempDir: string;
 
 		beforeEach(async () => {
-			tempDir = path.join(os.tmpdir(), 'n8n-test-' + Date.now());
+			tempDir = path.join(os.tmpdir(), 'MNI-test-' + Date.now());
 			await mkdir(tempDir, { recursive: true });
 		});
 
@@ -176,7 +176,7 @@ describe('SourceControlPreferencesService', () => {
 		let tempDir: string;
 
 		beforeEach(async () => {
-			tempDir = path.join(os.tmpdir(), 'n8n-test-' + Date.now());
+			tempDir = path.join(os.tmpdir(), 'MNI-test-' + Date.now());
 			await mkdir(tempDir, { recursive: true });
 		});
 
@@ -428,7 +428,7 @@ describe('SourceControlPreferencesService', () => {
 		let sshFolder: string;
 
 		beforeEach(async () => {
-			tempDir = path.join(os.tmpdir(), 'n8n-test-' + Date.now());
+			tempDir = path.join(os.tmpdir(), 'MNI-test-' + Date.now());
 			sshFolder = path.join(tempDir, 'ssh');
 			await mkdir(sshFolder, { recursive: true });
 		});

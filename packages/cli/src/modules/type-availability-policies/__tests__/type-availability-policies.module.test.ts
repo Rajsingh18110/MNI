@@ -1,6 +1,6 @@
-import { LICENSE_FEATURES } from '@n8n/constants';
-import { ControllerRegistryMetadata, ModuleMetadata, PolicyCheckMetadata } from '@n8n/decorators';
-import { Container } from '@n8n/di';
+import { LICENSE_FEATURES } from '@MNI/constants';
+import { ControllerRegistryMetadata, ModuleMetadata, PolicyCheckMetadata } from '@MNI/decorators';
+import { Container } from '@MNI/di';
 
 // Importing the module runs the @BackendModule decorator, registering its metadata.
 import { TypeAvailabilityPoliciesModule } from '../type-availability-policies.module';

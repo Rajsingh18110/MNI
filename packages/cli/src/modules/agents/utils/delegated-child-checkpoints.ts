@@ -2,8 +2,8 @@ import {
 	INLINE_SUB_AGENT_ID,
 	parseDelegateSubAgentContinuation,
 	type SerializableAgentState,
-} from '@n8n/agents';
-import { isRecord } from '@n8n/utils/is-record';
+} from '@MNI/agents';
+import { isRecord } from '@MNI/utils/is-record';
 
 export interface DelegatedChildCheckpoint {
 	runId: string;

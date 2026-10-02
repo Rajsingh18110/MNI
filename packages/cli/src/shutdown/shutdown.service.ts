@@ -1,9 +1,9 @@
-import { Logger } from '@n8n/backend-common';
-import type { ShutdownHandler } from '@n8n/decorators';
-import { ShutdownMetadata } from '@n8n/decorators';
-import { Container, Service } from '@n8n/di';
-import { ErrorReporter } from 'n8n-core';
-import { assert, UnexpectedError, UserError } from 'n8n-workflow';
+import { Logger } from '@MNI/backend-common';
+import type { ShutdownHandler } from '@MNI/decorators';
+import { ShutdownMetadata } from '@MNI/decorators';
+import { Container, Service } from '@MNI/di';
+import { ErrorReporter } from 'MNI-core';
+import { assert, UnexpectedError, UserError } from 'MNI-workflow';
 
 /** Error reported when a listener fails to shutdown gracefully */
 export class ComponentShutdownError extends UnexpectedError {

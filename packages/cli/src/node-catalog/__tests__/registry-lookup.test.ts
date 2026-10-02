@@ -21,21 +21,21 @@ const entry = (
 
 // Real registry entries, so these cases pin behaviour against names that
 // actually exist rather than invented ones.
-const FIRECRAWL = entry('@mendable/n8n-nodes-firecrawl.firecrawl', 'Firecrawl', {
+const FIRECRAWL = entry('@mendable/MNI-nodes-firecrawl.firecrawl', 'Firecrawl', {
 	numberOfDownloads: 2520,
 });
-const BRAVE = entry('@brave/n8n-nodes-brave-search.braveSearch', 'Brave Search', {
+const BRAVE = entry('@brave/MNI-nodes-brave-search.braveSearch', 'Brave Search', {
 	numberOfDownloads: 130641,
 });
-const TAVILY = entry('@tavily/n8n-nodes-tavily.tavily', 'Tavily', { numberOfDownloads: 61266 });
-const APIFY = entry('@apify/n8n-nodes-apify.apify', 'Apify', { numberOfDownloads: 18774 });
-const APIFY_TRIGGER = entry('@apify/n8n-nodes-apify.apifyTrigger', 'Apify Trigger', {
+const TAVILY = entry('@tavily/MNI-nodes-tavily.tavily', 'Tavily', { numberOfDownloads: 61266 });
+const APIFY = entry('@apify/MNI-nodes-apify.apify', 'Apify', { numberOfDownloads: 18774 });
+const APIFY_TRIGGER = entry('@apify/MNI-nodes-apify.apifyTrigger', 'Apify Trigger', {
 	numberOfDownloads: 18774,
 });
-const OPENINBOX = entry('n8n-nodes-openinbox.openInbox', 'OpenInbox');
-const SEATALK = entry('n8n-nodes-seatalk.seaTalk', 'SeaTalk');
-const BLACKBEE = entry('n8n-nodes-blackbee.blackbee', 'Blackbee');
-const SCRAPEOPS = entry('@scrapeops/n8n-nodes-scrapeops.ScrapeOps', 'ScrapeOps');
+const OPENINBOX = entry('MNI-nodes-openinbox.openInbox', 'OpenInbox');
+const SEATALK = entry('MNI-nodes-seatalk.seaTalk', 'SeaTalk');
+const BLACKBEE = entry('MNI-nodes-blackbee.blackbee', 'Blackbee');
+const SCRAPEOPS = entry('@scrapeops/MNI-nodes-scrapeops.ScrapeOps', 'ScrapeOps');
 
 const ALL = [
 	FIRECRAWL,
@@ -151,7 +151,7 @@ describe('findRegistryMatches', () => {
 
 	test('caps how many nodes one query returns', () => {
 		const many = Array.from({ length: 6 }, (_, i) =>
-			entry(`n8n-nodes-acme-${i}.acme${i}`, `Acme ${i}`, { numberOfDownloads: i }),
+			entry(`MNI-nodes-acme-${i}.acme${i}`, `Acme ${i}`, { numberOfDownloads: i }),
 		);
 
 		expect(findRegistryMatches('acme', many)).toHaveLength(3);

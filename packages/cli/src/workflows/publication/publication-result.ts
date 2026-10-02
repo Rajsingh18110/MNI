@@ -19,7 +19,7 @@ export type PublicationSkipReason =
 	 */
 	| 'superseded';
 
-import type { WorkflowPublicationTriggerKind } from '@n8n/db';
+import type { WorkflowPublicationTriggerKind } from '@MNI/db';
 
 import type { TriggerTeardownFailure } from '@/workflows/triggers/workflow-trigger-activator';
 

@@ -1,7 +1,7 @@
-import type { Logger, ModuleRegistry } from '@n8n/backend-common';
-import { CliParser } from '@n8n/backend-common';
-import { CommandMetadata } from '@n8n/decorators';
-import { Container } from '@n8n/di';
+import type { Logger, ModuleRegistry } from '@MNI/backend-common';
+import { CliParser } from '@MNI/backend-common';
+import { CommandMetadata } from '@MNI/decorators';
+import { Container } from '@MNI/di';
 import type { Mock, MockInstance } from 'vitest';
 import { mock } from 'vitest-mock-extended';
 import { z } from 'zod';

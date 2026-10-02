@@ -1,4 +1,4 @@
-import type { WorkflowPublishedVersionRepository } from '@n8n/db';
+import type { WorkflowPublishedVersionRepository } from '@MNI/db';
 import { mock } from 'vitest-mock-extended';
 
 import { WorkflowScheduledJobOwner } from '../workflow-scheduled-job-owner';

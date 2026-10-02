@@ -1,6 +1,6 @@
 import type { DeepMockProxy } from 'vitest-mock-extended';
 import { mock, mockDeep } from 'vitest-mock-extended';
-import { constructExecutionMetaData } from 'n8n-core';
+import { constructExecutionMetaData } from 'MNI-core';
 import {
 	BINARY_ENCODING,
 	WAIT_NODE_TYPE,
@@ -10,7 +10,7 @@ import {
 	type NodeTypeAndVersion,
 	CHAT_TRIGGER_NODE_TYPE,
 	UserError,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { RespondToWebhook } from '../RespondToWebhook.node';
 
@@ -102,7 +102,7 @@ describe('RespondToWebhook Node', () => {
 			mockExecuteFunctions.getInputData.mockReturnValue([]);
 			mockExecuteFunctions.getNode.mockReturnValue(mock<INode>({ typeVersion: 1.1 }));
 			mockExecuteFunctions.getParentNodes.mockReturnValue([
-				mock<NodeTypeAndVersion>({ type: 'n8n-nodes-base.someNode' }),
+				mock<NodeTypeAndVersion>({ type: 'MNI-nodes-base.someNode' }),
 			]);
 
 			await expect(respondToWebhook.execute.call(mockExecuteFunctions)).rejects.toThrow(

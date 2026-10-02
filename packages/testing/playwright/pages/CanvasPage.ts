@@ -1019,7 +1019,7 @@ export class CanvasPage extends BasePage {
 	}
 
 	getExecuteWorkflowButtonSpinner(): Locator {
-		return this.getExecuteWorkflowButton().locator('.n8n-spinner');
+		return this.getExecuteWorkflowButton().locator('.MNI-spinner');
 	}
 
 	getCanvasPlusButton(): Locator {

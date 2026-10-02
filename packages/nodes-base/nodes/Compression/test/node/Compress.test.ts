@@ -1,5 +1,5 @@
 import { mockDeep } from 'vitest-mock-extended';
-import type { IExecuteFunctions, INode, IBinaryData } from 'n8n-workflow';
+import type { IExecuteFunctions, INode, IBinaryData } from 'MNI-workflow';
 import type { Mocked } from 'vitest';
 
 import { Compression } from '../../Compression.node';
@@ -14,7 +14,7 @@ describe('Compression Node - Compress Operation (tar)', () => {
 	const mockNode: INode = {
 		id: 'test-node',
 		name: 'Compression',
-		type: 'n8n-nodes-base.compression',
+		type: 'MNI-nodes-base.compression',
 		typeVersion: 1.1,
 		position: [0, 0],
 		parameters: {},

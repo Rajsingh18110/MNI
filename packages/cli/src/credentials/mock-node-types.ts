@@ -5,8 +5,8 @@ import type {
 	INodeTypeData,
 	INodeTypes,
 	IVersionedNodeType,
-} from 'n8n-workflow';
-import { NodeHelpers, UnexpectedError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeHelpers, UnexpectedError } from 'MNI-workflow';
 
 import { RESPONSE_ERROR_MESSAGES } from '@/constants';
 

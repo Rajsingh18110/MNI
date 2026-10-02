@@ -1,7 +1,7 @@
 import { createComponentRenderer } from '@/__tests__/render';
 import { createTestingPinia } from '@pinia/testing';
 import ChatGreetings from './ChatGreetings.vue';
-import type { ChatModelDto } from '@n8n/api-types';
+import type { ChatModelDto } from '@MNI/api-types';
 import userEvent from '@testing-library/user-event';
 
 const renderComponent = createComponentRenderer(ChatGreetings, {
@@ -131,7 +131,7 @@ describe('ChatGreetings', () => {
 			expect(queryByText('I handle inquiries')).not.toBeInTheDocument();
 
 			// Loading skeletons should be rendered (N8nLoading components)
-			const loadingElements = container.querySelectorAll('.n8n-loading');
+			const loadingElements = container.querySelectorAll('.MNI-loading');
 			expect(loadingElements.length).toBeGreaterThan(0);
 		});
 

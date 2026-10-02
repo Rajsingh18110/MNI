@@ -4,8 +4,8 @@ import type {
 	INodeProperties,
 	IDataObject,
 	INode,
-} from 'n8n-workflow';
-import { NodeOperationError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeOperationError } from 'MNI-workflow';
 
 import type { SetNodeOptions } from './helpers/interfaces';
 import { parseJsonParameter, composeReturnItem, resolveRawData } from './helpers/utils';

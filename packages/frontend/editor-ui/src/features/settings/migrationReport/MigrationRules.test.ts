@@ -4,12 +4,12 @@ import userEvent from '@testing-library/user-event';
 import { vi } from 'vitest';
 import { createComponentRenderer } from '@/__tests__/render';
 import { mockedStore, getTooltip, hoverTooltipTrigger } from '@/__tests__/utils';
-import { useRootStore } from '@n8n/stores/useRootStore';
+import { useRootStore } from '@MNI/stores/useRootStore';
 import MigrationRules from './MigrationRules.vue';
-import * as breakingChangesApi from '@n8n/rest-api-client/api/breaking-changes';
-import type { BreakingChangeLightReportResult } from '@n8n/api-types';
+import * as breakingChangesApi from '@MNI/rest-api-client/api/breaking-changes';
+import type { BreakingChangeLightReportResult } from '@MNI/api-types';
 
-vi.mock('@n8n/rest-api-client/api/breaking-changes', () => ({
+vi.mock('@MNI/rest-api-client/api/breaking-changes', () => ({
 	getReport: vi.fn(),
 	refreshReport: vi.fn(),
 }));

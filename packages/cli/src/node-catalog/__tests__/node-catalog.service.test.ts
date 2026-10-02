@@ -1,6 +1,6 @@
-import type { Logger } from '@n8n/backend-common';
-import { GlobalConfig } from '@n8n/config';
-import { Container } from '@n8n/di';
+import type { Logger } from '@MNI/backend-common';
+import { GlobalConfig } from '@MNI/config';
+import { Container } from '@MNI/di';
 import type { Mocked } from 'vitest';
 import { mock } from 'vitest-mock-extended';
 
@@ -15,7 +15,7 @@ const mockSetSchemaBaseDirs = vi.fn();
 const mockSearchCodeBuilderNodes = vi.fn();
 const mockGetNodeTypes = vi.fn().mockReturnValue('get-result');
 const mockGetNodeTypeDefinition = vi.fn().mockReturnValue({
-	nodeId: 'n8n-nodes-base.set',
+	nodeId: 'MNI-nodes-base.set',
 	version: 'v1',
 	content: 'builtin-raw-result',
 });
@@ -23,7 +23,7 @@ const mockGetSuggestedNodes = vi.fn().mockReturnValue('suggest-result');
 const mockGenerateNodeTypeFile = vi.fn().mockReturnValue('synth-result');
 const mockFormatNodeResult = vi.fn((_parser: unknown, nodeId: string) => `block:${nodeId}`);
 
-vi.mock('@n8n/ai-utilities/node-catalog', () => ({
+vi.mock('@MNI/ai-utilities/node-catalog', () => ({
 	NodeTypeParser: MockNodeTypeParser,
 	searchCodeBuilderNodes: (...args: unknown[]) => mockSearchCodeBuilderNodes(...args),
 	getNodeTypes: (...args: unknown[]) => mockGetNodeTypes(...args),
@@ -32,7 +32,7 @@ vi.mock('@n8n/ai-utilities/node-catalog', () => ({
 	formatNodeResult: (...args: unknown[]) => mockFormatNodeResult(...(args as [unknown, string])),
 }));
 
-vi.mock('@n8n/workflow-sdk', () => ({
+vi.mock('@MNI/workflow-sdk', () => ({
 	setSchemaBaseDirs: (...args: unknown[]) => mockSetSchemaBaseDirs(...(args as [string[]])),
 	generateNodeTypeFile: (...args: unknown[]) => mockGenerateNodeTypeFile(...args),
 }));
@@ -56,7 +56,7 @@ describe('NodeCatalogService', () => {
 		});
 		mockGetNodeTypes.mockReturnValue('get-result');
 		mockGetNodeTypeDefinition.mockReturnValue({
-			nodeId: 'n8n-nodes-base.set',
+			nodeId: 'MNI-nodes-base.set',
 			version: 'v1',
 			content: 'builtin-raw-result',
 		});
@@ -71,7 +71,7 @@ describe('NodeCatalogService', () => {
 			}),
 			postProcessLoaders: vi.fn(),
 			collectTypes: vi.fn().mockResolvedValue({
-				nodes: [{ name: 'n8n-nodes-base.webhook' }, { name: 'n8n-nodes-base.set' }],
+				nodes: [{ name: 'MNI-nodes-base.webhook' }, { name: 'MNI-nodes-base.set' }],
 			}),
 		});
 		Container.set(LoadNodesAndCredentials, loadNodesAndCredentials);
@@ -92,8 +92,8 @@ describe('NodeCatalogService', () => {
 			const parser = service.getNodeTypeParser();
 			expect(parser).toBeDefined();
 			expect(MockNodeTypeParser).toHaveBeenCalledWith([
-				{ name: 'n8n-nodes-base.webhook' },
-				{ name: 'n8n-nodes-base.set' },
+				{ name: 'MNI-nodes-base.webhook' },
+				{ name: 'MNI-nodes-base.set' },
 			]);
 		});
 	});
@@ -140,9 +140,9 @@ describe('NodeCatalogService', () => {
 
 			loadNodesAndCredentials.collectTypes.mockResolvedValue({
 				nodes: [
-					{ name: 'n8n-nodes-base.webhook' },
-					{ name: 'n8n-nodes-base.set' },
-					{ name: 'n8n-nodes-base.httpRequest' },
+					{ name: 'MNI-nodes-base.webhook' },
+					{ name: 'MNI-nodes-base.set' },
+					{ name: 'MNI-nodes-base.httpRequest' },
 				],
 			} as never);
 
@@ -151,9 +151,9 @@ describe('NodeCatalogService', () => {
 
 			expect(MockNodeTypeParser).toHaveBeenCalledTimes(2);
 			expect(MockNodeTypeParser).toHaveBeenLastCalledWith([
-				{ name: 'n8n-nodes-base.webhook' },
-				{ name: 'n8n-nodes-base.set' },
-				{ name: 'n8n-nodes-base.httpRequest' },
+				{ name: 'MNI-nodes-base.webhook' },
+				{ name: 'MNI-nodes-base.set' },
+				{ name: 'MNI-nodes-base.httpRequest' },
 			]);
 		});
 
@@ -268,7 +268,7 @@ describe('NodeCatalogService', () => {
 			nodeDescription: {
 				// The registry publishes uninstalled nodes under a `-preview` package
 				// name; the service must reindex them under their installed name.
-				name: name.replace('n8n-nodes-', 'n8n-nodes-preview-'),
+				name: name.replace('MNI-nodes-', 'MNI-nodes-preview-'),
 				displayName,
 				version: 1,
 				group: ['transform'],
@@ -294,7 +294,7 @@ describe('NodeCatalogService', () => {
 				mock<CommunityNodeTypesService>({
 					getCommunityNodeTypes: vi
 						.fn()
-						.mockResolvedValue([verifiedEntry('n8n-nodes-firecrawl.firecrawl')]),
+						.mockResolvedValue([verifiedEntry('MNI-nodes-firecrawl.firecrawl')]),
 				}),
 			);
 		});
@@ -308,7 +308,7 @@ describe('NodeCatalogService', () => {
 			await service.initialize();
 
 			await service.searchNodes(['firecrawl']);
-			await service.getNodeTypes(['n8n-nodes-firecrawl.firecrawl']);
+			await service.getNodeTypes(['MNI-nodes-firecrawl.firecrawl']);
 
 			expect(getCommunityNodeTypes).not.toHaveBeenCalled();
 		});
@@ -322,7 +322,7 @@ describe('NodeCatalogService', () => {
 
 			const result = await service.searchNodes(['firecrawl'], { includeUninstalled: true });
 
-			const verifiedBlock = 'block:n8n-nodes-firecrawl.firecrawl';
+			const verifiedBlock = 'block:MNI-nodes-firecrawl.firecrawl';
 			expect(result.results).toContain('installed-block');
 			expect(result.results).toContain('not installed on this instance');
 			expect(result.results).toContain(verifiedBlock);
@@ -369,7 +369,7 @@ describe('NodeCatalogService', () => {
 					getCommunityNodeTypes: vi
 						.fn()
 						.mockResolvedValue([
-							{ ...verifiedEntry('n8n-nodes-firecrawl.firecrawl'), isOfficialNode: false },
+							{ ...verifiedEntry('MNI-nodes-firecrawl.firecrawl'), isOfficialNode: false },
 						]),
 				}),
 			);
@@ -388,7 +388,7 @@ describe('NodeCatalogService', () => {
 			// First construction is the installed tier, second is the verified tier.
 			expect(MockNodeTypeParser).toHaveBeenCalledTimes(2);
 			expect(MockNodeTypeParser).toHaveBeenLastCalledWith([
-				expect.objectContaining({ name: 'n8n-nodes-firecrawl.firecrawl' }),
+				expect.objectContaining({ name: 'MNI-nodes-firecrawl.firecrawl' }),
 			]);
 		});
 
@@ -399,7 +399,7 @@ describe('NodeCatalogService', () => {
 					getCommunityNodeTypes: vi
 						.fn()
 						.mockResolvedValue([
-							{ ...verifiedEntry('n8n-nodes-firecrawl.firecrawl'), isInstalled: true },
+							{ ...verifiedEntry('MNI-nodes-firecrawl.firecrawl'), isInstalled: true },
 						]),
 				}),
 			);
@@ -487,7 +487,7 @@ describe('NodeCatalogService', () => {
 
 		test('does not serve an opt-in type definition to a caller that did not opt in', async () => {
 			await service.initialize();
-			const request = { nodeId: 'n8n-nodes-firecrawl.firecrawl' };
+			const request = { nodeId: 'MNI-nodes-firecrawl.firecrawl' };
 
 			const optedIn = await service.getNodeTypeDefinition(request, { includeUninstalled: true });
 			const plain = await service.getNodeTypeDefinition(request);
@@ -500,7 +500,7 @@ describe('NodeCatalogService', () => {
 			loadNodesAndCredentials.collectTypes.mockResolvedValue({
 				nodes: [
 					{
-						name: 'n8n-nodes-firecrawl.firecrawl',
+						name: 'MNI-nodes-firecrawl.firecrawl',
 						displayName: 'Firecrawl',
 						version: 1,
 						group: ['transform'],
@@ -513,7 +513,7 @@ describe('NodeCatalogService', () => {
 			await service.initialize();
 
 			const result = await service.getNodeTypeDefinition(
-				{ nodeId: 'n8n-nodes-firecrawl.firecrawl' },
+				{ nodeId: 'MNI-nodes-firecrawl.firecrawl' },
 				{ includeUninstalled: true },
 			);
 
@@ -538,7 +538,7 @@ describe('NodeCatalogService', () => {
 
 			const result = await service.searchNodes(['firecrawl'], { includeUninstalled: true });
 
-			expect(result.uninstalledOffered).toEqual(['n8n-nodes-firecrawl.firecrawl']);
+			expect(result.uninstalledOffered).toEqual(['MNI-nodes-firecrawl.firecrawl']);
 		});
 
 		test('reports nothing offered when the registry did not answer', async () => {
@@ -555,7 +555,7 @@ describe('NodeCatalogService', () => {
 			const getCommunityNodeTypes = vi
 				.fn()
 				.mockResolvedValueOnce([])
-				.mockResolvedValue([verifiedEntry('n8n-nodes-firecrawl.firecrawl')]);
+				.mockResolvedValue([verifiedEntry('MNI-nodes-firecrawl.firecrawl')]);
 			Container.set(
 				CommunityNodeTypesService,
 				mock<CommunityNodeTypesService>({ getCommunityNodeTypes }),
@@ -566,14 +566,14 @@ describe('NodeCatalogService', () => {
 			expect(first.uninstalledOffered).toBeUndefined();
 
 			const second = await service.searchNodes(['firecrawl'], { includeUninstalled: true });
-			expect(second.uninstalledOffered).toEqual(['n8n-nodes-firecrawl.firecrawl']);
+			expect(second.uninstalledOffered).toEqual(['MNI-nodes-firecrawl.firecrawl']);
 			expect(getCommunityNodeTypes).toHaveBeenCalledTimes(2);
 		});
 
 		test('does not rebuild the tier once it is built', async () => {
 			const getCommunityNodeTypes = vi
 				.fn()
-				.mockResolvedValue([verifiedEntry('n8n-nodes-firecrawl.firecrawl')]);
+				.mockResolvedValue([verifiedEntry('MNI-nodes-firecrawl.firecrawl')]);
 			Container.set(
 				CommunityNodeTypesService,
 				mock<CommunityNodeTypesService>({ getCommunityNodeTypes }),
@@ -591,10 +591,10 @@ describe('NodeCatalogService', () => {
 			// process lifetime, so a node verified later could never be discovered.
 			const getCommunityNodeTypes = vi
 				.fn()
-				.mockResolvedValueOnce([verifiedEntry('n8n-nodes-firecrawl.firecrawl')])
+				.mockResolvedValueOnce([verifiedEntry('MNI-nodes-firecrawl.firecrawl')])
 				.mockResolvedValue([
-					verifiedEntry('n8n-nodes-firecrawl.firecrawl'),
-					verifiedEntry('n8n-nodes-tavily.tavily'),
+					verifiedEntry('MNI-nodes-firecrawl.firecrawl'),
+					verifiedEntry('MNI-nodes-tavily.tavily'),
 				]);
 			Container.set(
 				CommunityNodeTypesService,
@@ -618,7 +618,7 @@ describe('NodeCatalogService', () => {
 				const after = await service.searchNodes(['tavily'], { includeUninstalled: true });
 
 				expect(getCommunityNodeTypes).toHaveBeenCalledTimes(2);
-				expect(after.uninstalledOffered).toEqual(['n8n-nodes-tavily.tavily']);
+				expect(after.uninstalledOffered).toEqual(['MNI-nodes-tavily.tavily']);
 			} finally {
 				vi.useRealTimers();
 			}
@@ -629,7 +629,7 @@ describe('NodeCatalogService', () => {
 			// expiring the tier alone would leave pre-refresh definitions readable.
 			const getCommunityNodeTypes = vi
 				.fn()
-				.mockResolvedValue([verifiedEntry('n8n-nodes-firecrawl.firecrawl')]);
+				.mockResolvedValue([verifiedEntry('MNI-nodes-firecrawl.firecrawl')]);
 			Container.set(
 				CommunityNodeTypesService,
 				mock<CommunityNodeTypesService>({ getCommunityNodeTypes }),
@@ -639,7 +639,7 @@ describe('NodeCatalogService', () => {
 			vi.useFakeTimers();
 			try {
 				vi.setSystemTime(new Date('2026-01-01T00:00:00Z'));
-				const request = [{ nodeId: 'n8n-nodes-firecrawl.firecrawl' }];
+				const request = [{ nodeId: 'MNI-nodes-firecrawl.firecrawl' }];
 				await service.getNodeTypes(request, { includeUninstalled: true });
 				expect(getCommunityNodeTypes).toHaveBeenCalledTimes(1);
 
@@ -661,15 +661,15 @@ describe('NodeCatalogService', () => {
 			test('names the package that ships an uninstalled node type', async () => {
 				await service.initialize();
 
-				expect(await service.findUninstalledNodeTypes(['n8n-nodes-firecrawl.firecrawl'])).toEqual([
-					{ nodeType: 'n8n-nodes-firecrawl.firecrawl', packageName: 'n8n-nodes-firecrawl' },
+				expect(await service.findUninstalledNodeTypes(['MNI-nodes-firecrawl.firecrawl'])).toEqual([
+					{ nodeType: 'MNI-nodes-firecrawl.firecrawl', packageName: 'MNI-nodes-firecrawl' },
 				]);
 			});
 
 			test('ignores node types the registry does not know', async () => {
 				await service.initialize();
 
-				expect(await service.findUninstalledNodeTypes(['n8n-nodes-base.set'])).toEqual([]);
+				expect(await service.findUninstalledNodeTypes(['MNI-nodes-base.set'])).toEqual([]);
 			});
 
 			test('reports nothing for an empty request without touching the registry', async () => {
@@ -695,7 +695,7 @@ describe('NodeCatalogService', () => {
 				await service.initialize();
 
 				expect(
-					await service.findUninstalledNodeTypes(['n8n-nodes-base.set', 'n8n-nodes-base.webhook']),
+					await service.findUninstalledNodeTypes(['MNI-nodes-base.set', 'MNI-nodes-base.webhook']),
 				).toEqual([]);
 				expect(getCommunityNodeTypes).not.toHaveBeenCalled();
 			});
@@ -709,7 +709,7 @@ describe('NodeCatalogService', () => {
 				);
 				await service.initialize();
 
-				expect(await service.findUninstalledNodeTypes(['n8n-nodes-firecrawl.firecrawl'])).toEqual(
+				expect(await service.findUninstalledNodeTypes(['MNI-nodes-firecrawl.firecrawl'])).toEqual(
 					[],
 				);
 			});
@@ -723,19 +723,19 @@ describe('NodeCatalogService', () => {
 			const getCommunityNodeTypes = vi
 				.fn()
 				.mockResolvedValueOnce([])
-				.mockResolvedValue([verifiedEntry('n8n-nodes-firecrawl.firecrawl')]);
+				.mockResolvedValue([verifiedEntry('MNI-nodes-firecrawl.firecrawl')]);
 			Container.set(
 				CommunityNodeTypesService,
 				mock<CommunityNodeTypesService>({ getCommunityNodeTypes }),
 			);
 			await service.initialize();
 
-			const first = await service.getNodeTypes(['n8n-nodes-firecrawl.firecrawl'], {
+			const first = await service.getNodeTypes(['MNI-nodes-firecrawl.firecrawl'], {
 				includeUninstalled: true,
 			});
 			expect(first).toContain('# Errors');
 
-			const second = await service.getNodeTypes(['n8n-nodes-firecrawl.firecrawl'], {
+			const second = await service.getNodeTypes(['MNI-nodes-firecrawl.firecrawl'], {
 				includeUninstalled: true,
 			});
 			expect(second).not.toContain('# Errors');
@@ -746,8 +746,8 @@ describe('NodeCatalogService', () => {
 		test('returns cached result on repeated calls with same nodeIds', async () => {
 			await service.initialize();
 
-			const result1 = await service.getNodeTypes(['n8n-nodes-base.set']);
-			const result2 = await service.getNodeTypes(['n8n-nodes-base.set']);
+			const result1 = await service.getNodeTypes(['MNI-nodes-base.set']);
+			const result2 = await service.getNodeTypes(['MNI-nodes-base.set']);
 
 			expect(result1).toBe('get-result');
 			expect(result2).toBe('get-result');
@@ -756,7 +756,7 @@ describe('NodeCatalogService', () => {
 
 		test('handles object nodeIds in cache key', async () => {
 			await service.initialize();
-			const nodeId = { nodeId: 'n8n-nodes-base.gmail', resource: 'message', operation: 'send' };
+			const nodeId = { nodeId: 'MNI-nodes-base.gmail', resource: 'message', operation: 'send' };
 
 			await service.getNodeTypes([nodeId]);
 			await service.getNodeTypes([nodeId]);
@@ -767,8 +767,8 @@ describe('NodeCatalogService', () => {
 		test('is order-independent across nodeIds', async () => {
 			await service.initialize();
 
-			await service.getNodeTypes(['n8n-nodes-base.gmail', 'n8n-nodes-base.slack']);
-			await service.getNodeTypes(['n8n-nodes-base.slack', 'n8n-nodes-base.gmail']);
+			await service.getNodeTypes(['MNI-nodes-base.gmail', 'MNI-nodes-base.slack']);
+			await service.getNodeTypes(['MNI-nodes-base.slack', 'MNI-nodes-base.gmail']);
 
 			expect(mockGetNodeTypes).toHaveBeenCalledTimes(1);
 		});
@@ -777,7 +777,7 @@ describe('NodeCatalogService', () => {
 			loadNodesAndCredentials.collectTypes.mockResolvedValue({
 				nodes: [
 					{
-						name: 'n8n-nodes-resend.resend',
+						name: 'MNI-nodes-resend.resend',
 						group: ['transform'],
 						properties: [],
 						inputs: ['main'],
@@ -787,7 +787,7 @@ describe('NodeCatalogService', () => {
 			} as never);
 			await service.initialize();
 
-			const result = await service.getNodeTypes(['n8n-nodes-resend.resend']);
+			const result = await service.getNodeTypes(['MNI-nodes-resend.resend']);
 
 			expect(mockGenerateNodeTypeFile).toHaveBeenCalledTimes(1);
 			expect(result).toContain('synth-result');
@@ -798,11 +798,11 @@ describe('NodeCatalogService', () => {
 		test('uses the on-disk lookup for built-in nodes', async () => {
 			await service.initialize();
 
-			const result = await service.getNodeTypes(['n8n-nodes-base.set']);
+			const result = await service.getNodeTypes(['MNI-nodes-base.set']);
 
 			expect(mockGetNodeTypes).toHaveBeenCalledTimes(1);
 			expect(mockGetNodeTypes).toHaveBeenCalledWith(
-				['n8n-nodes-base.set'],
+				['MNI-nodes-base.set'],
 				expect.objectContaining({ nodeDefinitionDirs: expect.any(Array) }),
 			);
 			expect(result).toBe('get-result');
@@ -813,7 +813,7 @@ describe('NodeCatalogService', () => {
 			loadNodesAndCredentials.collectTypes.mockResolvedValue({
 				nodes: [
 					{
-						name: 'n8n-nodes-resend.resend',
+						name: 'MNI-nodes-resend.resend',
 						group: ['transform'],
 						properties: [],
 						inputs: ['main'],
@@ -821,7 +821,7 @@ describe('NodeCatalogService', () => {
 					},
 					{
 						// A malformed description can't be expressed as an SDK type.
-						name: 'n8n-nodes-malformed.malformed',
+						name: 'MNI-nodes-malformed.malformed',
 						group: 'transform',
 						properties: [],
 						inputs: ['main'],
@@ -832,21 +832,21 @@ describe('NodeCatalogService', () => {
 			await service.initialize();
 
 			const result = await service.getNodeTypes([
-				'n8n-nodes-resend.resend',
-				'n8n-nodes-malformed.malformed',
+				'MNI-nodes-resend.resend',
+				'MNI-nodes-malformed.malformed',
 			]);
 
 			// The resolvable node still comes through; the unresolvable one is noted, not thrown.
 			expect(result).toContain('synth-result');
 			expect(result).toContain('# Errors');
-			expect(result).toContain('n8n-nodes-malformed.malformed');
+			expect(result).toContain('MNI-nodes-malformed.malformed');
 		});
 
 		test('synthesizes the latest version of a versioned node by default', async () => {
 			loadNodesAndCredentials.collectTypes.mockResolvedValue({
 				nodes: [
 					{
-						name: 'n8n-nodes-multi.multi',
+						name: 'MNI-nodes-multi.multi',
 						version: 1,
 						group: ['transform'],
 						properties: [],
@@ -854,7 +854,7 @@ describe('NodeCatalogService', () => {
 						outputs: ['main'],
 					},
 					{
-						name: 'n8n-nodes-multi.multi',
+						name: 'MNI-nodes-multi.multi',
 						version: 2,
 						group: ['transform'],
 						properties: [],
@@ -865,7 +865,7 @@ describe('NodeCatalogService', () => {
 			} as never);
 			await service.initialize();
 
-			await service.getNodeTypes(['n8n-nodes-multi.multi']);
+			await service.getNodeTypes(['MNI-nodes-multi.multi']);
 
 			expect(mockGenerateNodeTypeFile).toHaveBeenCalledTimes(1);
 			expect(mockGenerateNodeTypeFile).toHaveBeenCalledWith(
@@ -877,7 +877,7 @@ describe('NodeCatalogService', () => {
 			loadNodesAndCredentials.collectTypes.mockResolvedValue({
 				nodes: [
 					{
-						name: 'n8n-nodes-multi.multi',
+						name: 'MNI-nodes-multi.multi',
 						version: 1,
 						group: ['transform'],
 						properties: [],
@@ -885,7 +885,7 @@ describe('NodeCatalogService', () => {
 						outputs: ['main'],
 					},
 					{
-						name: 'n8n-nodes-multi.multi',
+						name: 'MNI-nodes-multi.multi',
 						version: 2,
 						group: ['transform'],
 						properties: [],
@@ -896,7 +896,7 @@ describe('NodeCatalogService', () => {
 			} as never);
 			await service.initialize();
 
-			await service.getNodeTypes([{ nodeId: 'n8n-nodes-multi.multi', version: '1' }]);
+			await service.getNodeTypes([{ nodeId: 'MNI-nodes-multi.multi', version: '1' }]);
 
 			expect(mockGenerateNodeTypeFile).toHaveBeenCalledWith(
 				expect.objectContaining({ version: 1 }),
@@ -909,7 +909,7 @@ describe('NodeCatalogService', () => {
 			loadNodesAndCredentials.collectTypes.mockResolvedValue({
 				nodes: [
 					{
-						name: 'n8n-nodes-base.messageAnAgent',
+						name: 'MNI-nodes-base.messageAnAgent',
 						version: 2,
 						hidden: true,
 						group: ['transform'],
@@ -917,20 +917,20 @@ describe('NodeCatalogService', () => {
 						inputs: ['main'],
 						outputs: ['main'],
 					},
-					{ name: 'n8n-nodes-base.set' },
+					{ name: 'MNI-nodes-base.set' },
 				],
 			} as never);
 			await service.initialize();
 
 			const result = await service.getNodeTypes([
-				'n8n-nodes-base.messageAnAgent',
-				'n8n-nodes-base.set',
+				'MNI-nodes-base.messageAnAgent',
+				'MNI-nodes-base.set',
 			]);
 
 			expect(mockGenerateNodeTypeFile).toHaveBeenCalledWith(
-				expect.objectContaining({ name: 'n8n-nodes-base.messageAnAgent' }),
+				expect.objectContaining({ name: 'MNI-nodes-base.messageAnAgent' }),
 			);
-			expect(mockGetNodeTypes).toHaveBeenCalledWith(['n8n-nodes-base.set'], expect.anything());
+			expect(mockGetNodeTypes).toHaveBeenCalledWith(['MNI-nodes-base.set'], expect.anything());
 			expect(result).toContain('synth-result');
 			expect(result).toContain('get-result');
 			expect(result).not.toContain('# Errors');
@@ -940,7 +940,7 @@ describe('NodeCatalogService', () => {
 			loadNodesAndCredentials.collectTypes.mockResolvedValue({
 				nodes: [
 					{
-						name: 'n8n-nodes-multi.multi',
+						name: 'MNI-nodes-multi.multi',
 						version: 1,
 						group: ['transform'],
 						properties: [],
@@ -948,7 +948,7 @@ describe('NodeCatalogService', () => {
 						outputs: ['main'],
 					},
 					{
-						name: 'n8n-nodes-multi.multi',
+						name: 'MNI-nodes-multi.multi',
 						version: 2,
 						group: ['transform'],
 						properties: [],
@@ -960,12 +960,12 @@ describe('NodeCatalogService', () => {
 			await service.initialize();
 
 			const result = await service.getNodeTypes([
-				{ nodeId: 'n8n-nodes-multi.multi', version: '5' },
+				{ nodeId: 'MNI-nodes-multi.multi', version: '5' },
 			]);
 
 			// No silent downgrade: the missing version is reported with what's available.
 			expect(mockGenerateNodeTypeFile).not.toHaveBeenCalled();
-			expect(result).toContain("Version '5' not found for node 'n8n-nodes-multi.multi'");
+			expect(result).toContain("Version '5' not found for node 'MNI-nodes-multi.multi'");
 			expect(result).toContain('Available versions: 1, 2');
 		});
 	});
@@ -974,11 +974,11 @@ describe('NodeCatalogService', () => {
 		test('returns raw built-in type definition content', async () => {
 			await service.initialize();
 
-			const result = await service.getNodeTypeDefinition({ nodeId: 'n8n-nodes-base.set' });
+			const result = await service.getNodeTypeDefinition({ nodeId: 'MNI-nodes-base.set' });
 
 			expect(result).toEqual({ content: 'builtin-raw-result', version: 'v1' });
 			expect(mockGetNodeTypeDefinition).toHaveBeenCalledWith(
-				'n8n-nodes-base.set',
+				'MNI-nodes-base.set',
 				undefined,
 				expect.any(Array),
 				{ resource: undefined, operation: undefined, mode: undefined },
@@ -989,19 +989,19 @@ describe('NodeCatalogService', () => {
 		test('does not cache error results', async () => {
 			mockGetNodeTypeDefinition
 				.mockReturnValueOnce({
-					nodeId: 'n8n-nodes-base.set',
+					nodeId: 'MNI-nodes-base.set',
 					content: '',
 					error: 'temporary lookup error',
 				})
 				.mockReturnValueOnce({
-					nodeId: 'n8n-nodes-base.set',
+					nodeId: 'MNI-nodes-base.set',
 					version: 'v1',
 					content: 'builtin-raw-result',
 				});
 			await service.initialize();
 
-			const errorResult = await service.getNodeTypeDefinition({ nodeId: 'n8n-nodes-base.set' });
-			const successResult = await service.getNodeTypeDefinition({ nodeId: 'n8n-nodes-base.set' });
+			const errorResult = await service.getNodeTypeDefinition({ nodeId: 'MNI-nodes-base.set' });
+			const successResult = await service.getNodeTypeDefinition({ nodeId: 'MNI-nodes-base.set' });
 
 			expect(errorResult).toEqual({ content: '', error: 'temporary lookup error' });
 			expect(successResult).toEqual({ content: 'builtin-raw-result', version: 'v1' });
@@ -1012,7 +1012,7 @@ describe('NodeCatalogService', () => {
 			// each entry is ~921.6KB, so 18 (~16.6MB) fit within the 16MiB (~16.8MB)
 			// budget and the 19th insert evicts exactly one LRU entry
 			const largeDefinition = 'x'.repeat(900 * 1024);
-			const nodeIdFor = (index: number) => `n8n-nodes-base.node${index}`;
+			const nodeIdFor = (index: number) => `MNI-nodes-base.node${index}`;
 			mockGetNodeTypeDefinition.mockImplementation((nodeId: string) => ({
 				nodeId,
 				version: 'v1',
@@ -1045,7 +1045,7 @@ describe('NodeCatalogService', () => {
 			loadNodesAndCredentials.collectTypes.mockResolvedValue({
 				nodes: [
 					{
-						name: 'n8n-nodes-base.messageAnAgent',
+						name: 'MNI-nodes-base.messageAnAgent',
 						version: 2,
 						hidden: true,
 						group: ['transform'],
@@ -1058,14 +1058,14 @@ describe('NodeCatalogService', () => {
 			await service.initialize();
 
 			const result = await service.getNodeTypeDefinition({
-				nodeId: 'n8n-nodes-base.messageAnAgent',
+				nodeId: 'MNI-nodes-base.messageAnAgent',
 			});
 
 			// `deprecated` tells the caller the node is retired. The definition is
 			// still returned, so a caller that really wants the node can use it.
 			expect(result).toEqual({ content: 'synth-result', version: '2', deprecated: true });
 			expect(mockGenerateNodeTypeFile).toHaveBeenCalledWith(
-				expect.objectContaining({ name: 'n8n-nodes-base.messageAnAgent' }),
+				expect.objectContaining({ name: 'MNI-nodes-base.messageAnAgent' }),
 			);
 			expect(mockGetNodeTypeDefinition).not.toHaveBeenCalled();
 		});
@@ -1074,7 +1074,7 @@ describe('NodeCatalogService', () => {
 			loadNodesAndCredentials.collectTypes.mockResolvedValue({
 				nodes: [
 					{
-						name: 'n8n-nodes-base.messageAnAgent',
+						name: 'MNI-nodes-base.messageAnAgent',
 						version: 2,
 						group: ['transform'],
 						properties: [],
@@ -1086,7 +1086,7 @@ describe('NodeCatalogService', () => {
 			await service.initialize();
 
 			const result = await service.getNodeTypeDefinition({
-				nodeId: 'n8n-nodes-base.messageAnAgent',
+				nodeId: 'MNI-nodes-base.messageAnAgent',
 			});
 
 			expect(result.deprecated).toBeUndefined();
@@ -1096,7 +1096,7 @@ describe('NodeCatalogService', () => {
 			loadNodesAndCredentials.collectTypes.mockResolvedValue({
 				nodes: [
 					{
-						name: 'n8n-nodes-resend.resend',
+						name: 'MNI-nodes-resend.resend',
 						version: 1,
 						group: ['transform'],
 						properties: [],
@@ -1108,7 +1108,7 @@ describe('NodeCatalogService', () => {
 			} as never);
 			await service.initialize();
 
-			const result = await service.getNodeTypeDefinition({ nodeId: 'n8n-nodes-resend.resend' });
+			const result = await service.getNodeTypeDefinition({ nodeId: 'MNI-nodes-resend.resend' });
 
 			expect(result).toEqual({
 				content: 'synth-result',
@@ -1116,7 +1116,7 @@ describe('NodeCatalogService', () => {
 				builderHint: 'Use Resend for transactional email.',
 			});
 			expect(mockGenerateNodeTypeFile).toHaveBeenCalledWith(
-				expect.objectContaining({ name: 'n8n-nodes-resend.resend' }),
+				expect.objectContaining({ name: 'MNI-nodes-resend.resend' }),
 			);
 			expect(mockGetNodeTypeDefinition).not.toHaveBeenCalled();
 		});
@@ -1125,7 +1125,7 @@ describe('NodeCatalogService', () => {
 			loadNodesAndCredentials.collectTypes.mockResolvedValue({
 				nodes: [
 					{
-						name: 'n8n-nodes-multi.multi',
+						name: 'MNI-nodes-multi.multi',
 						version: 1,
 						group: ['transform'],
 						properties: [],
@@ -1133,7 +1133,7 @@ describe('NodeCatalogService', () => {
 						outputs: ['main'],
 					},
 					{
-						name: 'n8n-nodes-multi.multi',
+						name: 'MNI-nodes-multi.multi',
 						version: 2,
 						group: ['transform'],
 						properties: [],
@@ -1144,7 +1144,7 @@ describe('NodeCatalogService', () => {
 			} as never);
 			await service.initialize();
 
-			const result = await service.getNodeTypeDefinition({ nodeId: 'n8n-nodes-multi.multi' });
+			const result = await service.getNodeTypeDefinition({ nodeId: 'MNI-nodes-multi.multi' });
 
 			expect(result.version).toBe('2');
 			expect(mockGenerateNodeTypeFile).toHaveBeenCalledWith(
@@ -1156,7 +1156,7 @@ describe('NodeCatalogService', () => {
 			loadNodesAndCredentials.collectTypes.mockResolvedValue({
 				nodes: [
 					{
-						name: 'n8n-nodes-multi.multi',
+						name: 'MNI-nodes-multi.multi',
 						version: 1,
 						group: ['transform'],
 						properties: [],
@@ -1164,7 +1164,7 @@ describe('NodeCatalogService', () => {
 						outputs: ['main'],
 					},
 					{
-						name: 'n8n-nodes-multi.multi',
+						name: 'MNI-nodes-multi.multi',
 						version: 2,
 						group: ['transform'],
 						properties: [],
@@ -1176,7 +1176,7 @@ describe('NodeCatalogService', () => {
 			await service.initialize();
 
 			const result = await service.getNodeTypeDefinition({
-				nodeId: 'n8n-nodes-multi.multi',
+				nodeId: 'MNI-nodes-multi.multi',
 				version: '1',
 			});
 
@@ -1190,7 +1190,7 @@ describe('NodeCatalogService', () => {
 			loadNodesAndCredentials.collectTypes.mockResolvedValue({
 				nodes: [
 					{
-						name: 'n8n-nodes-dynamic.dynamic',
+						name: 'MNI-nodes-dynamic.dynamic',
 						version: 1,
 						group: ['transform'],
 						properties: [],
@@ -1201,7 +1201,7 @@ describe('NodeCatalogService', () => {
 			} as never);
 			await service.initialize();
 
-			const result = await service.getNodeTypeDefinition({ nodeId: 'n8n-nodes-dynamic.dynamic' });
+			const result = await service.getNodeTypeDefinition({ nodeId: 'MNI-nodes-dynamic.dynamic' });
 
 			expect(result.content).toBe('synth-result');
 			expect(result.error).toBeUndefined();
@@ -1211,7 +1211,7 @@ describe('NodeCatalogService', () => {
 			loadNodesAndCredentials.collectTypes.mockResolvedValue({
 				nodes: [
 					{
-						name: 'n8n-nodes-malformed.malformed',
+						name: 'MNI-nodes-malformed.malformed',
 						version: 1,
 						group: 'transform',
 						properties: [],
@@ -1223,7 +1223,7 @@ describe('NodeCatalogService', () => {
 			await service.initialize();
 
 			const result = await service.getNodeTypeDefinition({
-				nodeId: 'n8n-nodes-malformed.malformed',
+				nodeId: 'MNI-nodes-malformed.malformed',
 			});
 
 			expect(result.content).toBe('');
@@ -1250,7 +1250,7 @@ describe('NodeCatalogService', () => {
 
 			await service.searchNodes(['gmail']);
 			await service.searchNodes(['gmail'], { nodeFilter: () => true });
-			await service.getNodeTypes(['n8n-nodes-base.set']);
+			await service.getNodeTypes(['MNI-nodes-base.set']);
 			await service.getSuggestedNodes(['chatbot']);
 
 			expect(mockSearchCodeBuilderNodes).toHaveBeenCalledTimes(2);
@@ -1262,7 +1262,7 @@ describe('NodeCatalogService', () => {
 
 			await service.searchNodes(['gmail']);
 			await service.searchNodes(['gmail'], { nodeFilter: () => true });
-			await service.getNodeTypes(['n8n-nodes-base.set']);
+			await service.getNodeTypes(['MNI-nodes-base.set']);
 			await service.getSuggestedNodes(['chatbot']);
 
 			expect(mockSearchCodeBuilderNodes).toHaveBeenCalledTimes(4);

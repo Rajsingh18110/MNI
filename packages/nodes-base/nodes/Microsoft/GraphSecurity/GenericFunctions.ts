@@ -4,8 +4,8 @@ import type {
 	JsonObject,
 	IRequestOptions,
 	IHttpRequestMethods,
-} from 'n8n-workflow';
-import { NodeApiError, NodeOperationError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeApiError, NodeOperationError } from 'MNI-workflow';
 
 export type GraphSecurityCredentialType = 'microsoftGraphSecurityOAuth2Api' | 'microsoftOAuth2Api';
 

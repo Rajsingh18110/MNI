@@ -14,15 +14,15 @@ const credentialMocks = vi.hoisted(() => ({
 	selectCredential: vi.fn(),
 }));
 
-vi.mock('@n8n/i18n', () => ({
+vi.mock('@MNI/i18n', () => ({
 	useI18n: () => ({ baseText: (key: string) => key }),
 }));
 
-vi.mock('@n8n/design-system', () => ({
+vi.mock('@MNI/design-system', () => ({
 	N8nText: { template: '<span><slot /></span>' },
 }));
 
-vi.mock('@n8n/stores/users.store', () => ({
+vi.mock('@MNI/stores/users.store', () => ({
 	useUsersStore: () => ({ currentUserId: 'user-1' }),
 }));
 

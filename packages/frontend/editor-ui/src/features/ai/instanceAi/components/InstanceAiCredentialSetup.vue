@@ -16,14 +16,14 @@ import {
 	TEMPLATED_CUSTOM_AUTH_CREDENTIAL_TYPE,
 	type InstanceAiCredentialFlow,
 	type InstanceAiCredentialRequest,
-} from '@n8n/api-types';
-import { N8nActionDropdown, N8nButton, N8nIcon, N8nText } from '@n8n/design-system';
-import type { ActionDropdownItem } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
-import { useRootStore } from '@n8n/stores/useRootStore';
+} from '@MNI/api-types';
+import { N8nActionDropdown, N8nButton, N8nIcon, N8nText } from '@MNI/design-system';
+import type { ActionDropdownItem } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
+import { useRootStore } from '@MNI/stores/useRootStore';
 import { v4 as uuidv4 } from 'uuid';
 import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
 import { useInstanceAiSettingsStore } from '../instanceAiSettings.store';
 import { useThread } from '../instanceAi.store';
 import { useInstanceAiCredentialHelp } from '../composables/useInstanceAiCredentialHelp';
@@ -394,7 +394,7 @@ function syntheticNodeUi(req: InstanceAiCredentialRequest): INodeUi {
 	return {
 		id: req.credentialType,
 		name: req.credentialType,
-		type: 'n8n-nodes-base.noOp',
+		type: 'MNI-nodes-base.noOp',
 		typeVersion: 1,
 		position: [0, 0],
 		parameters: {},

@@ -2,16 +2,16 @@
 import { useDocumentTitle } from '@/app/composables/useDocumentTitle';
 import { useMessage } from '@/app/composables/useMessage';
 import { usePageRedirectionHelper } from '@/app/composables/usePageRedirectionHelper';
-import { useToast } from '@n8n/composables/useToast';
+import { useToast } from '@MNI/composables/useToast';
 import {
 	DELETE_SECRETS_PROVIDER_MODAL_KEY,
 	SECRETS_PROVIDER_CONNECTION_MODAL_KEY,
 } from '@/app/constants/modals';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { useUIStore } from '@/app/stores/ui.store';
 import { useProjectsStore } from '@/features/collaboration/projects/projects.store';
 import type { ProjectListItem } from '@/features/collaboration/projects/projects.types';
-import type { SecretProviderConnection } from '@n8n/api-types';
+import type { SecretProviderConnection } from '@MNI/api-types';
 import {
 	N8nEmptyState,
 	N8nButton,
@@ -20,10 +20,10 @@ import {
 	N8nLink,
 	N8nLoading,
 	N8nText,
-} from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
-import * as externalSecretsApi from '@n8n/rest-api-client';
-import { useRootStore } from '@n8n/stores/useRootStore';
+} from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
+import * as externalSecretsApi from '@MNI/rest-api-client';
+import { useRootStore } from '@MNI/stores/useRootStore';
 import { ElSwitch } from 'element-plus';
 import { computed, onMounted, ref } from 'vue';
 import { I18nT } from 'vue-i18n';

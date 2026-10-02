@@ -1,15 +1,15 @@
-import { inTest, Logger } from '@n8n/backend-common';
-import { isAxiosError } from '@n8n/backend-network';
-import { type InstanceType } from '@n8n/constants';
-import { Service } from '@n8n/di';
-import type { ReportingOptions } from '@n8n/errors';
+import { inTest, Logger } from '@MNI/backend-common';
+import { isAxiosError } from '@MNI/backend-network';
+import { type InstanceType } from '@MNI/constants';
+import { Service } from '@MNI/di';
+import type { ReportingOptions } from '@MNI/errors';
 import type { ErrorEvent, EventHint } from '@sentry/core';
 import {
 	ApplicationError,
 	ExecutionCancelledError,
 	BaseError,
 	UnexpectedError,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import { createHash } from 'node:crypto';
 
 import {
@@ -80,7 +80,7 @@ const RELEASE_EXPIRATION_WARNING =
 const SENTRY_MAX_VALUE_LENGTH = 500;
 
 const PNPM_NESTED_FRAME_RE = /.*\/node_modules\/\.pnpm\/[^/]+\/node_modules\//;
-const N8N_CLI_INSTALL_PREFIX = '/usr/local/lib/node_modules/MNI/';
+const MNI_CLI_INSTALL_PREFIX = '/usr/local/lib/node_modules/MNI/';
 
 type ErrorReportingOptions = ReportingOptions & {
 	/**
@@ -94,13 +94,13 @@ type ErrorReportingOptions = ReportingOptions & {
 /**
  * Normalises a Sentry stack-frame filename so that pnpm-nested dependency
  * paths and the MNI CLI install prefix become stable `app:///` roots. This
- * lets Sentry code mappings match `n8n-core`, `n8n-nodes-base`, and cli
+ * lets Sentry code mappings match `MNI-core`, `MNI-nodes-base`, and cli
  * frames without depending on the per-release pnpm peer-deps hash segment.
  */
 export function normalizeFrameFilename(filename: string): string {
 	return filename
 		.replace(PNPM_NESTED_FRAME_RE, 'app:///')
-		.replace(N8N_CLI_INSTALL_PREFIX, 'app:///');
+		.replace(MNI_CLI_INSTALL_PREFIX, 'app:///');
 }
 
 @Service()

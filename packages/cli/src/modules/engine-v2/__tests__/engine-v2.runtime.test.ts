@@ -1,6 +1,6 @@
-import { mockLogger } from '@n8n/backend-test-utils';
-import type { EngineConfig } from '@n8n/config';
-import type { ExecutionResponseSender } from '@n8n/engine';
+import { mockLogger } from '@MNI/backend-test-utils';
+import type { EngineConfig } from '@MNI/config';
+import type { ExecutionResponseSender } from '@MNI/engine';
 import { mock } from 'vitest-mock-extended';
 
 import type { CredentialTypes } from '@/credential-types';
@@ -78,14 +78,14 @@ const mocks = vi.hoisted(() => {
 	};
 });
 
-vi.mock('@n8n/engine', () => ({
+vi.mock('@MNI/engine', () => ({
 	AllowAllAdmittance: vi.fn(),
 	SharedSecretIdentityVerifier: vi.fn(),
 	createDataSource: mocks.createDataSource,
 	createEngineRuntime: mocks.createEngineRuntime,
 }));
 
-vi.mock('@n8n/node-engine-compatibility', () => ({
+vi.mock('@MNI/node-engine-compatibility', () => ({
 	createEngineStepDataLoader: mocks.createEngineStepDataLoader,
 	V1StepExecutor: mocks.V1StepExecutor,
 }));
@@ -102,7 +102,7 @@ describe('EngineV2Runtime', () => {
 	const credentialTypes = mock<CredentialTypes>();
 	const additionalDataBuilder = mock<EngineAdditionalDataBuilder>();
 
-	// `@n8n/engine` is mocked below, so the sender is a stand-in too.
+	// `@MNI/engine` is mocked below, so the sender is a stand-in too.
 	const responseSender = () => mock<ExecutionResponseSender>();
 
 	const newRuntime = (databaseUrl = 'postgres://engine') =>
@@ -156,7 +156,7 @@ describe('EngineV2Runtime', () => {
 	describe('init', () => {
 		it('refuses to start without a data plane database', async () => {
 			await expect(newRuntime('').init(responseSender())).rejects.toThrow(
-				'N8N_ENGINE_DATABASE_URL',
+				'MNI_ENGINE_DATABASE_URL',
 			);
 
 			expect(mocks.createDataSource).not.toHaveBeenCalled();
@@ -251,7 +251,7 @@ describe('EngineV2Runtime', () => {
 				{ id: 'cred-1', name: 'Acme API' },
 				'httpHeaderAuth',
 				'manual',
-				{ node: mock({ type: 'n8n-nodes-base.httpRequest' }), data: {}, source: null },
+				{ node: mock({ type: 'MNI-nodes-base.httpRequest' }), data: {}, source: null },
 			);
 
 			expect(credentialsClient.resolve).toHaveBeenCalledExactlyOnceWith(
@@ -345,7 +345,7 @@ describe('EngineV2Runtime', () => {
 				{ id: 'cred-1', name: 'Acme API' },
 				'httpHeaderAuth',
 				'manual',
-				{ node: mock({ type: 'n8n-nodes-base.httpRequest' }), data: {}, source: null },
+				{ node: mock({ type: 'MNI-nodes-base.httpRequest' }), data: {}, source: null },
 			);
 			const [, signal] = vi.mocked(credentialsClient.resolve).mock.calls[0];
 

@@ -1,6 +1,6 @@
 # Node input safety
 
-Applies to: `packages/nodes-base`, `packages/@n8n/nodes-langchain`. Skip this
+Applies to: `packages/nodes-base`, `packages/@MNI/nodes-langchain`. Skip this
 file for other packages.
 
 ## Prototype pollution via node parameters
@@ -22,7 +22,7 @@ Do NOT flag:
 - Keys that are literals, or validated by `isSafeObjectProperty(key)`
 - Writes routed through `setSafeObjectProperty(...)`
 
-Use `setSafeObjectProperty` / `isSafeObjectProperty` from `n8n-workflow`, or a `Map`, and coerce with `String(key)` before any check.
+Use `setSafeObjectProperty` / `isSafeObjectProperty` from `MNI-workflow`, or a `Map`, and coerce with `String(key)` before any check.
 
 ## Injection through node parameters
 

@@ -1,6 +1,6 @@
 import isPlainObject from 'lodash/isPlainObject';
-import type { ICredentialDataDecryptedObject, IDataObject } from 'n8n-workflow';
-import { jsonParse, UserError } from 'n8n-workflow';
+import type { ICredentialDataDecryptedObject, IDataObject } from 'MNI-workflow';
+import { jsonParse, UserError } from 'MNI-workflow';
 
 const PLACEHOLDER_MARKER_REGEX = /\{\{\s*([\w.-]+)\s*\}\}/g;
 

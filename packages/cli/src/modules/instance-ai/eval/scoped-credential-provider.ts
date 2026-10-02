@@ -1,4 +1,4 @@
-import type { CredentialProvider } from '@n8n/agents';
+import type { CredentialProvider } from '@MNI/agents';
 
 import type { AiGatewayModelCredentialResolver } from '@/modules/agents/json-config/model-config';
 

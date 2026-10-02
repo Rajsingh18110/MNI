@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useUIStore } from '@/app/stores/ui.store';
 import { CHAT_VIEW } from '@/features/ai/chatHub/constants';
-import { useDeviceSupport } from '@n8n/composables/useDeviceSupport';
+import { useDeviceSupport } from '@MNI/composables/useDeviceSupport';
 import { useEventListener } from '@vueuse/core';
 import { useRouter } from 'vue-router';
 

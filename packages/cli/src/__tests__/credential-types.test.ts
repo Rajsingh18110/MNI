@@ -1,5 +1,5 @@
-import { UnrecognizedCredentialTypeError } from 'n8n-core';
-import type { ICredentialType, LoadedClass } from 'n8n-workflow';
+import { UnrecognizedCredentialTypeError } from 'MNI-core';
+import type { ICredentialType, LoadedClass } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import { CredentialTypes } from '@/credential-types';

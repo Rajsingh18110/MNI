@@ -5,7 +5,7 @@
  * MNI CI Adapter for Test Distribution
  *
  * Thin wrapper that calls `janitor distribute` for generic shard distribution,
- * then maps capabilities to n8n-specific Docker images for the CI matrix.
+ * then maps capabilities to MNI-specific Docker images for the CI matrix.
  *
  * Impact scoping is a domain-partitioned UNION of two analyzers (DEVP-364):
  *   - app-source partition (changes outside packages/testing/playwright/)

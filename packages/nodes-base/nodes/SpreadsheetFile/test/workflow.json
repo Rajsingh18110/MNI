@@ -4,7 +4,7 @@
 			"parameters": {},
 			"id": "087277cc-297d-4912-bd11-86626eff2d71",
 			"name": "When clicking \"Execute Workflow\"",
-			"type": "n8n-nodes-base.manualTrigger",
+			"type": "MNI-nodes-base.manualTrigger",
 			"typeVersion": 1,
 			"position": [
 				620,
@@ -17,7 +17,7 @@
 			},
 			"id": "f55bc21c-c9a8-43af-bbc8-e4bdd30f0ce9",
 			"name": "Read From File",
-			"type": "n8n-nodes-base.spreadsheetFile",
+			"type": "MNI-nodes-base.spreadsheetFile",
 			"typeVersion": 1,
 			"position": [
 				1260,
@@ -30,7 +30,7 @@
 			},
 			"id": "d7620053-eb3d-43dd-b2cd-d60d9a08a9cc",
 			"name": "Read Binary File",
-			"type": "n8n-nodes-base.readBinaryFiles",
+			"type": "MNI-nodes-base.readBinaryFiles",
 			"typeVersion": 1,
 			"position": [
 				840,
@@ -45,7 +45,7 @@
 			},
 			"id": "21bc49fe-1e6b-46d6-a04d-cb474d138e02",
 			"name": "Write To File CSV",
-			"type": "n8n-nodes-base.spreadsheetFile",
+			"type": "MNI-nodes-base.spreadsheetFile",
 			"typeVersion": 1,
 			"position": [
 				1580,
@@ -60,7 +60,7 @@
 			},
 			"id": "a4c2c717-5a9d-4fd6-8450-6bb78e233c05",
 			"name": "Write To File HTML",
-			"type": "n8n-nodes-base.spreadsheetFile",
+			"type": "MNI-nodes-base.spreadsheetFile",
 			"typeVersion": 1,
 			"position": [
 				1580,
@@ -75,7 +75,7 @@
 			},
 			"id": "58e5a423-0477-44df-a505-6b8a40dbf275",
 			"name": "Write To File ODS",
-			"type": "n8n-nodes-base.spreadsheetFile",
+			"type": "MNI-nodes-base.spreadsheetFile",
 			"typeVersion": 1,
 			"position": [
 				1580,
@@ -90,7 +90,7 @@
 			},
 			"id": "3ae6e9c5-bc0a-44e4-959e-cfc572f4179f",
 			"name": "Write To File RTF",
-			"type": "n8n-nodes-base.spreadsheetFile",
+			"type": "MNI-nodes-base.spreadsheetFile",
 			"typeVersion": 1,
 			"position": [
 				1580,
@@ -104,7 +104,7 @@
 			},
 			"id": "7e6db847-d24c-4094-907d-92ffec626f68",
 			"name": "Write To File XLS",
-			"type": "n8n-nodes-base.spreadsheetFile",
+			"type": "MNI-nodes-base.spreadsheetFile",
 			"typeVersion": 1,
 			"position": [
 				1580,
@@ -119,7 +119,7 @@
 			},
 			"id": "48934f0d-ac10-4862-ae0c-2ea591b111e3",
 			"name": "Read From File Range",
-			"type": "n8n-nodes-base.spreadsheetFile",
+			"type": "MNI-nodes-base.spreadsheetFile",
 			"typeVersion": 1,
 			"position": [
 				1060,
@@ -134,7 +134,7 @@
 			},
 			"id": "dea6f3f6-f2fb-472e-97b2-8a0c0a36bc4d",
 			"name": "Read From File no Header Row",
-			"type": "n8n-nodes-base.spreadsheetFile",
+			"type": "MNI-nodes-base.spreadsheetFile",
 			"typeVersion": 1,
 			"position": [
 				1060,
@@ -149,7 +149,7 @@
 			},
 			"id": "38ed33fc-6906-4b09-8376-937ef3ca99be",
 			"name": "Read From File Raw Data",
-			"type": "n8n-nodes-base.spreadsheetFile",
+			"type": "MNI-nodes-base.spreadsheetFile",
 			"typeVersion": 1,
 			"position": [
 				1060,
@@ -164,7 +164,7 @@
 			},
 			"id": "ffe09dc8-9b7a-4baf-bd03-bd65bbce2590",
 			"name": "Read From File Read as String",
-			"type": "n8n-nodes-base.spreadsheetFile",
+			"type": "MNI-nodes-base.spreadsheetFile",
 			"typeVersion": 1,
 			"position": [
 				1060,
@@ -180,7 +180,7 @@
 			},
 			"id": "de905389-a11b-4dd8-8416-14d650804445",
 			"name": "Read CSV with Row Limit",
-			"type": "n8n-nodes-base.spreadsheetFile",
+			"type": "MNI-nodes-base.spreadsheetFile",
 			"typeVersion": 2,
 			"position": [
 				-60,

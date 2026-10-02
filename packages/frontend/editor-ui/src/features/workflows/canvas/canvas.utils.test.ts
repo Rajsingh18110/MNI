@@ -10,8 +10,8 @@ import {
 	resolveCanonicalConnection,
 	shouldIgnoreCanvasShortcut,
 } from './canvas.utils';
-import type { IConnection, IConnections, INodeTypeDescription } from 'n8n-workflow';
-import { NodeConnectionTypes } from 'n8n-workflow';
+import type { IConnection, IConnections, INodeTypeDescription } from 'MNI-workflow';
+import { NodeConnectionTypes } from 'MNI-workflow';
 import type { CanvasConnection } from './canvas.types';
 import { CANVAS_NODE_GROUP_OUTPUT_HANDLE, CanvasConnectionMode } from './canvas.types';
 import type { INodeUi } from '@/Interface';
@@ -36,7 +36,7 @@ describe('mapLegacyConnectionsToCanvasConnections', () => {
 			{
 				id: '1',
 				name: 'Node A',
-				type: 'n8n-nodes-base.node',
+				type: 'MNI-nodes-base.node',
 				typeVersion: 1,
 				position: [100, 100],
 				parameters: {},
@@ -44,7 +44,7 @@ describe('mapLegacyConnectionsToCanvasConnections', () => {
 			{
 				id: '2',
 				name: 'Node B',
-				type: 'n8n-nodes-base.node',
+				type: 'MNI-nodes-base.node',
 				typeVersion: 1,
 				position: [200, 200],
 				parameters: {},
@@ -122,7 +122,7 @@ describe('mapLegacyConnectionsToCanvasConnections', () => {
 			{
 				id: '1',
 				name: 'Node A',
-				type: 'n8n-nodes-base.node',
+				type: 'MNI-nodes-base.node',
 				typeVersion: 1,
 				position: [100, 100],
 				parameters: {},
@@ -130,7 +130,7 @@ describe('mapLegacyConnectionsToCanvasConnections', () => {
 			{
 				id: '2',
 				name: 'Node B',
-				type: 'n8n-nodes-base.node',
+				type: 'MNI-nodes-base.node',
 				typeVersion: 1,
 				position: [200, 200],
 				parameters: {},
@@ -158,7 +158,7 @@ describe('mapLegacyConnectionsToCanvasConnections', () => {
 			{
 				id: '1',
 				name: 'Node A',
-				type: 'n8n-nodes-base.node',
+				type: 'MNI-nodes-base.node',
 				typeVersion: 1,
 				position: [100, 100],
 				parameters: {},
@@ -166,7 +166,7 @@ describe('mapLegacyConnectionsToCanvasConnections', () => {
 			{
 				id: '2',
 				name: 'Node B',
-				type: 'n8n-nodes-base.node',
+				type: 'MNI-nodes-base.node',
 				typeVersion: 1,
 				position: [200, 200],
 				parameters: {},
@@ -271,7 +271,7 @@ describe('mapLegacyConnectionsToCanvasConnections', () => {
 			{
 				id: '1',
 				name: 'Node A',
-				type: 'n8n-nodes-base.node',
+				type: 'MNI-nodes-base.node',
 				typeVersion: 1,
 				position: [100, 100],
 				parameters: {},
@@ -279,7 +279,7 @@ describe('mapLegacyConnectionsToCanvasConnections', () => {
 			{
 				id: '2',
 				name: 'Node B',
-				type: 'n8n-nodes-base.node',
+				type: 'MNI-nodes-base.node',
 				typeVersion: 1,
 				position: [200, 200],
 				parameters: {},
@@ -287,7 +287,7 @@ describe('mapLegacyConnectionsToCanvasConnections', () => {
 			{
 				id: '3',
 				name: 'Node C',
-				type: 'n8n-nodes-base.node',
+				type: 'MNI-nodes-base.node',
 				typeVersion: 1,
 				position: [300, 300],
 				parameters: {},
@@ -400,7 +400,7 @@ describe('mapLegacyConnectionsToCanvasConnections', () => {
 				id: '1',
 				name: 'Node A',
 				typeVersion: 1,
-				type: 'n8n-nodes-base.node',
+				type: 'MNI-nodes-base.node',
 				position: [100, 100],
 				parameters: {},
 			},
@@ -408,7 +408,7 @@ describe('mapLegacyConnectionsToCanvasConnections', () => {
 				id: '2',
 				name: 'Node B',
 				typeVersion: 1,
-				type: 'n8n-nodes-base.node',
+				type: 'MNI-nodes-base.node',
 				position: [200, 200],
 				parameters: {},
 			},
@@ -416,7 +416,7 @@ describe('mapLegacyConnectionsToCanvasConnections', () => {
 				id: '3',
 				name: 'Node C',
 				typeVersion: 1,
-				type: 'n8n-nodes-base.node',
+				type: 'MNI-nodes-base.node',
 				position: [300, 300],
 				parameters: {},
 			},
@@ -558,7 +558,7 @@ describe('mapLegacyConnectionsToCanvasConnections', () => {
 			{
 				id: '1',
 				name: 'Node A',
-				type: 'n8n-nodes-base.node',
+				type: 'MNI-nodes-base.node',
 				typeVersion: 1,
 				position: [100, 100],
 				parameters: {},
@@ -566,7 +566,7 @@ describe('mapLegacyConnectionsToCanvasConnections', () => {
 			{
 				id: '2',
 				name: 'Node B',
-				type: 'n8n-nodes-base.node',
+				type: 'MNI-nodes-base.node',
 				typeVersion: 1,
 				position: [200, 200],
 				parameters: {},
@@ -622,7 +622,7 @@ describe('mapLegacyConnectionsToCanvasConnections', () => {
 		]);
 	});
 
-	// @issue https://linear.app/n8n/issue/N8N-7880/cannot-load-some-templates
+	// @issue https://linear.app/MNI/issue/MNI-7880/cannot-load-some-templates
 	it('should handle null connections gracefully', () => {
 		const legacyConnections: IConnections = {
 			'Node A': {
@@ -636,7 +636,7 @@ describe('mapLegacyConnectionsToCanvasConnections', () => {
 			{
 				id: '1',
 				name: 'Node A',
-				type: 'n8n-nodes-base.node',
+				type: 'MNI-nodes-base.node',
 				typeVersion: 1,
 				position: [100, 100],
 				parameters: {},
@@ -644,7 +644,7 @@ describe('mapLegacyConnectionsToCanvasConnections', () => {
 			{
 				id: '2',
 				name: 'Node B',
-				type: 'n8n-nodes-base.node',
+				type: 'MNI-nodes-base.node',
 				typeVersion: 1,
 				position: [200, 200],
 				parameters: {},

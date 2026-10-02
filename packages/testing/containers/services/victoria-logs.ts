@@ -69,7 +69,7 @@ export const victoriaLogs: Service<VictoriaLogsResult> = {
 
 	env(): Record<string, string> {
 		return {
-			N8N_LOG_OUTPUT: 'console',
+			MNI_LOG_OUTPUT: 'console',
 		};
 	},
 };

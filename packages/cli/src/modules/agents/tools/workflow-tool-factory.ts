@@ -1,5 +1,5 @@
-import type { BuiltTool, InterruptibleToolContext } from '@n8n/agents';
-import { Tool } from '@n8n/agents/tool';
+import type { BuiltTool, InterruptibleToolContext } from '@MNI/agents';
+import { Tool } from '@MNI/agents/tool';
 import {
 	getWorkflowToolIncompatibilityReason,
 	WORKFLOW_WAIT_ACTION_CANCEL,
@@ -8,14 +8,14 @@ import {
 	WORKFLOW_WAIT_SUSPEND_TYPE,
 	type AgentJsonToolConfig,
 	type SUPPORTED_WORKFLOW_TOOL_TRIGGERS,
-} from '@n8n/api-types';
-import { Logger } from '@n8n/backend-common';
-import { GlobalConfig } from '@n8n/config';
-import type { WorkflowEntity } from '@n8n/db';
-import { Container } from '@n8n/di';
-import { isRecord } from '@n8n/utils/is-record';
-import { createDeferredPromise } from '@n8n/utils/promise/deferred-promise';
-import { sleep } from '@n8n/utils/sleep';
+} from '@MNI/api-types';
+import { Logger } from '@MNI/backend-common';
+import { GlobalConfig } from '@MNI/config';
+import type { WorkflowEntity } from '@MNI/db';
+import { Container } from '@MNI/di';
+import { isRecord } from '@MNI/utils/is-record';
+import { createDeferredPromise } from '@MNI/utils/promise/deferred-promise';
+import { sleep } from '@MNI/utils/sleep';
 import { DateTime } from 'luxon';
 import type {
 	IDataObject,
@@ -26,14 +26,14 @@ import type {
 	IWorkflowExecutionDataProcess,
 	RelatedAgentRun,
 	WorkflowExecuteMode,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import {
 	createRunExecutionData,
 	isTerminalExecutionStatus,
 	EXECUTE_WORKFLOW_TRIGGER_NODE_TYPE,
 	TimeoutExecutionCancelledError,
 	isIndefiniteWait,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import { v4 as uuid } from 'uuid';
 import { z } from 'zod';
 
@@ -67,7 +67,7 @@ import { sanitizeToolName } from '../json-config/agent-config-composition';
 /**
  * Map a supported trigger node type to the input-schema key the workflow tool
  * builds against. Keys are sourced from `SUPPORTED_WORKFLOW_TOOL_TRIGGERS` in
- * `@n8n/api-types` so the backend compatibility check and the frontend
+ * `@MNI/api-types` so the backend compatibility check and the frontend
  * Available list can't drift.
  */
 const SUPPORTED_TRIGGERS: Record<string, string> = {
@@ -250,7 +250,7 @@ const JSON_EXAMPLE = 'jsonExample';
 const PASSTHROUGH = 'passthrough';
 
 /**
- * Map an n8n-field primitive type to the matching Zod type.
+ * Map an MNI-field primitive type to the matching Zod type.
  * String fields coerce so numeric IDs (e.g. Telegram chatId) do not hard-fail.
  * Fields are nullable/optional to match the trigger's null fallback for missing keys.
  */

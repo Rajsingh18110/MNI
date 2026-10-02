@@ -1,17 +1,17 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import type { DataTableCreateColumnSchema } from '@n8n/api-types';
+import type { DataTableCreateColumnSchema } from '@MNI/api-types';
 import {
 	createTeamProject,
 	getPersonalProject,
 	linkUserToProject,
 	testDb,
-} from '@n8n/backend-test-utils';
-import type { Project, User } from '@n8n/db';
-import { ProjectRepository, QueryFailedError } from '@n8n/db';
-import { Container } from '@n8n/di';
+} from '@MNI/backend-test-utils';
+import type { Project, User } from '@MNI/db';
+import { ProjectRepository, QueryFailedError } from '@MNI/db';
+import { Container } from '@MNI/di';
 import { DateTime } from 'luxon';
-import type { DataTableRow } from 'n8n-workflow';
+import type { DataTableRow } from 'MNI-workflow';
 
 import { SourceControlPreferencesService } from '@/modules/source-control.ee/source-control-preferences.service.ee';
 import type { SourceControlPreferences } from '@/modules/source-control.ee/types/source-control-preferences';

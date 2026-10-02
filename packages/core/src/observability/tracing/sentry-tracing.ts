@@ -1,4 +1,4 @@
-import { ensureError } from '@n8n/utils/errors/ensure-error';
+import { ensureError } from '@MNI/utils/errors/ensure-error';
 import type Sentry from '@sentry/node';
 
 import { SpanStatus, type Span, type StartSpanOpts, type Tracer } from './tracing';

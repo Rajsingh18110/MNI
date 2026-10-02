@@ -1,4 +1,4 @@
-import { Container } from '@n8n/di';
+import { Container } from '@MNI/di';
 import type {
 	IRunExecutionData,
 	ContextType,
@@ -15,8 +15,8 @@ import type {
 	IExecuteWorkflowInfo,
 	IExecutionContext,
 	IRun,
-} from 'n8n-workflow';
-import { UnexpectedError, NodeHelpers, WAIT_FOR_SUB_EXECUTION } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { UnexpectedError, NodeHelpers, WAIT_FOR_SUB_EXECUTION } from 'MNI-workflow';
 import { captor, mock, type MockProxy } from 'vitest-mock-extended';
 
 import { BinaryDataService } from '@/binary-data/binary-data.service';

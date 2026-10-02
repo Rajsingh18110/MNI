@@ -1,11 +1,11 @@
-import { Logger } from '@n8n/backend-common';
-import { GlobalConfig } from '@n8n/config';
-import type { AuthenticatedRequest } from '@n8n/db';
-import { Container } from '@n8n/di';
+import { Logger } from '@MNI/backend-common';
+import { GlobalConfig } from '@MNI/config';
+import type { AuthenticatedRequest } from '@MNI/db';
+import { Container } from '@MNI/di';
 import type { Router, ErrorRequestHandler, RequestHandler } from 'express';
 import express from 'express';
 import fs from 'fs/promises';
-import { UnexpectedError } from 'n8n-workflow';
+import { UnexpectedError } from 'MNI-workflow';
 import path from 'path';
 import type { JsonObject } from 'swagger-ui-express';
 import validator from 'validator';
@@ -16,10 +16,10 @@ import { sendPublicApiErrorResponse } from './v1/public-api-error-response';
 import { AUTH_COOKIE_NAME } from '@/constants';
 import { EventService } from '@/events/event.service';
 import { License } from '@/license';
-import { createN8nPackageMulterOptions } from '@/modules/n8n-packages/utils/import-package-upload';
+import { createN8nPackageMulterOptions } from '@/modules/MNI-packages/utils/import-package-upload';
 import { AuthStrategyRegistry } from '@/services/auth-strategy.registry';
 import { LastActiveAtService } from '@/services/last-active-at.service';
-import { UrlService } from '@n8n/backend-services';
+import { UrlService } from '@MNI/backend-services';
 
 import './v1/controllers';
 

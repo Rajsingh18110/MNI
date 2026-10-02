@@ -1,4 +1,4 @@
-import type { INodeProperties } from 'n8n-workflow';
+import type { INodeProperties } from 'MNI-workflow';
 
 /**
  * Mailbox target for the app-only Service Principal credential. Self-contained

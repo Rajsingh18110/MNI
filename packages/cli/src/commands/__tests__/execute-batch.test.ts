@@ -1,17 +1,17 @@
-import { LicenseState } from '@n8n/backend-common';
-import { mockInstance } from '@n8n/backend-test-utils';
-import { GlobalConfig } from '@n8n/config';
-import type { User, WorkflowEntity } from '@n8n/db';
+import { LicenseState } from '@MNI/backend-common';
+import { mockInstance } from '@MNI/backend-test-utils';
+import { GlobalConfig } from '@MNI/config';
+import type { User, WorkflowEntity } from '@MNI/db';
 import {
 	WorkflowRepository,
 	DbConnection,
 	AuthRolesService,
 	BinaryDataRepository,
 	DeploymentKeyRepository,
-} from '@n8n/db';
-import { Container } from '@n8n/di';
-import { type SelectQueryBuilder } from '@n8n/typeorm';
-import type { IRun } from 'n8n-workflow';
+} from '@MNI/db';
+import { Container } from '@MNI/di';
+import { type SelectQueryBuilder } from '@MNI/typeorm';
+import type { IRun } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import { ActiveExecutions } from '@/active-executions';
@@ -67,7 +67,7 @@ test('should start a task runner', async () => {
 
 	const workflow = mock<WorkflowEntity>({
 		id: '123',
-		nodes: [{ type: 'n8n-nodes-base.manualTrigger' }],
+		nodes: [{ type: 'MNI-nodes-base.manualTrigger' }],
 	});
 
 	const run = mock<IRun>({ data: { resultData: { error: undefined } } });

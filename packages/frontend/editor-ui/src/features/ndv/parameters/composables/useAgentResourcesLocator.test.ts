@@ -13,7 +13,7 @@ vi.mock('@/features/agents/composables/useAgentApi', () => ({
 	getAgent,
 }));
 
-vi.mock('@n8n/stores/useRootStore', () => ({
+vi.mock('@MNI/stores/useRootStore', () => ({
 	useRootStore: () => ({ restApiContext: { baseUrl: '', pushRef: '' } }),
 }));
 

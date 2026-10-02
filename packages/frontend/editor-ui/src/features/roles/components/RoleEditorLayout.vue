@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { N8nButton, N8nFormInput, N8nHeading, N8nInput, N8nTooltip } from '@n8n/design-system';
+import { N8nButton, N8nFormInput, N8nHeading, N8nInput, N8nTooltip } from '@MNI/design-system';
 
 /**
  * Presentation shared by the project and instance role editors:

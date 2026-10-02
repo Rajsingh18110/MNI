@@ -1,6 +1,6 @@
 # Migration conventions and tests
 
-Applies to: `packages/@n8n/db/src/migrations/**`, `packages/cli/test/migration/**`.
+Applies to: `packages/@MNI/db/src/migrations/**`, `packages/cli/test/migration/**`.
 
 `.agents/skills/db-migrations/SKILL.md` is the standard; prefer it over your
 priors. Read a recent migration for the local idiom.

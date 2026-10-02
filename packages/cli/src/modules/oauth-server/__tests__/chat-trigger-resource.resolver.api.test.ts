@@ -3,13 +3,13 @@ import {
 	setActiveVersion,
 	shareWorkflowWithUsers,
 	testDb,
-} from '@n8n/backend-test-utils';
-import { GlobalConfig } from '@n8n/config';
-import type { User } from '@n8n/db';
-import { WebhookRepository, WorkflowRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
-import type { INode } from 'n8n-workflow';
-import { CHAT_TRIGGER_NODE_TYPE, CHAT_TRIGGER_PATH_SUFFIX, WEBHOOK_NODE_TYPE } from 'n8n-workflow';
+} from '@MNI/backend-test-utils';
+import { GlobalConfig } from '@MNI/config';
+import type { User } from '@MNI/db';
+import { WebhookRepository, WorkflowRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
+import type { INode } from 'MNI-workflow';
+import { CHAT_TRIGGER_NODE_TYPE, CHAT_TRIGGER_PATH_SUFFIX, WEBHOOK_NODE_TYPE } from 'MNI-workflow';
 import { randomUUID } from 'node:crypto';
 import request from 'supertest';
 
@@ -21,7 +21,7 @@ import { AUTH_COOKIE_NAME } from '@/constants';
 import { OAuthTokenService } from '@/modules/oauth-server/oauth-token.service';
 import { CacheService } from '@/services/cache/cache.service';
 import { ProtectedResourceRegistry } from '@/services/protected-resource.registry';
-import { UrlService } from '@n8n/backend-services';
+import { UrlService } from '@MNI/backend-services';
 
 /** Root-level (no `/rest` prefix) agent authenticated as `user` — `authAgentFor` always
  * prefixes `/rest`, which 404s against root-level routes like `/oauth/authorize`. */
@@ -440,7 +440,7 @@ describe('consent reuse on a second visit', () => {
 
 	test('a second visit reuses consent when the visitor is already logged in', async () => {
 		// Control case: confirms tryAutoApproveConsent/tryReuseConsent themselves work when
-		// the n8n-auth cookie is already present on the very first /oauth/authorize hit.
+		// the MNI-auth cookie is already present on the very first /oauth/authorize hit.
 		const path = chatPath();
 		await createPublishedChatWorkflow(path, chatTriggerNode());
 		const resourceUrl = resourceUrlFor(path);
@@ -458,7 +458,7 @@ describe('consent reuse on a second visit', () => {
 		const setCookies = Array.isArray(rawSetCookie) ? rawSetCookie : [rawSetCookie];
 		const sessionCookie = setCookies
 			.map((cookie) => cookie.split(';')[0])
-			.find((cookie) => cookie.startsWith('n8n-oauth-session='));
+			.find((cookie) => cookie.startsWith('MNI-oauth-session='));
 		expect(sessionCookie).toBeDefined();
 
 		// `/consent/approve` lives under the `/rest` prefix, unlike the root-level
@@ -484,7 +484,7 @@ describe('consent reuse on a second visit', () => {
 
 	test('a visitor who already consented is auto-approved after authenticating mid-flow', async () => {
 		// The visitor already has a UserConsent row from a prior visit (e.g. the local grant
-		// cookie was cleared/expired), but their n8n-auth cookie is gone too — so the very
+		// cookie was cleared/expired), but their MNI-auth cookie is gone too — so the very
 		// first /oauth/authorize hit has no cookie to check
 		// and tryAutoApproveConsent is skipped. They then log in as part of reaching the
 		// (auth-gated) consent page. GET /consent/details now retries the reuse check once
@@ -510,7 +510,7 @@ describe('consent reuse on a second visit', () => {
 			['userId', 'clientId'],
 		);
 
-		// Not authenticated yet on this first hit — the browser has no n8n-auth cookie.
+		// Not authenticated yet on this first hit — the browser has no MNI-auth cookie.
 		const { codeChallenge } = await pkce();
 		const first = await testServer.restlessAgent
 			.get('/oauth/authorize')
@@ -522,7 +522,7 @@ describe('consent reuse on a second visit', () => {
 		const setCookies = Array.isArray(rawSetCookie) ? rawSetCookie : [rawSetCookie];
 		const sessionCookie = setCookies
 			.map((cookie) => cookie.split(';')[0])
-			.find((cookie) => cookie.startsWith('n8n-oauth-session='));
+			.find((cookie) => cookie.startsWith('MNI-oauth-session='));
 		expect(sessionCookie).toBeDefined();
 
 		// The visitor now logs in (this is the "just logged in" step from the ticket),

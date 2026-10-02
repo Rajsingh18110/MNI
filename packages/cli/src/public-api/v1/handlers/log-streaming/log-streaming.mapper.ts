@@ -2,9 +2,9 @@ import {
 	PublicDestinationResponseDto,
 	type PublicCreateDestination,
 	type PublicDestinationType,
-} from '@n8n/api-types';
-import type { MessageEventBusDestinationOptions } from 'n8n-workflow';
-import { MessageEventBusDestinationTypeNames } from 'n8n-workflow';
+} from '@MNI/api-types';
+import type { MessageEventBusDestinationOptions } from 'MNI-workflow';
+import { MessageEventBusDestinationTypeNames } from 'MNI-workflow';
 
 // The public API uses a friendly `type` discriminator; the internal service uses `__type`.
 const PUBLIC_TO_INTERNAL: Record<PublicDestinationType, MessageEventBusDestinationTypeNames> = {

@@ -1,9 +1,9 @@
-import { GlobalConfig } from '@n8n/config';
-import { Service } from '@n8n/di';
+import { GlobalConfig } from '@MNI/config';
+import { Service } from '@MNI/di';
 import type { Cluster, Redis } from 'ioredis';
-import { InstanceSettings } from 'n8n-core';
-import { ensureError } from '@n8n/utils/errors/ensure-error';
-import { type Result, createResultOk, createResultError } from '@n8n/utils/result';
+import { InstanceSettings } from 'MNI-core';
+import { ensureError } from '@MNI/utils/errors/ensure-error';
+import { type Result, createResultOk, createResultError } from '@MNI/utils/result';
 
 import { RedisClientService } from '@/services/redis-client.service';
 

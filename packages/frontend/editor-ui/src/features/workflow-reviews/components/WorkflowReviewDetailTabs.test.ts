@@ -2,7 +2,7 @@ import type {
 	WorkflowReviewInboxItem,
 	WorkflowReviewRequestDetail,
 	WorkflowReviewRequestWorkflowDetail,
-} from '@n8n/api-types';
+} from '@MNI/api-types';
 import { createTestingPinia } from '@pinia/testing';
 import { createComponentRenderer } from '@/__tests__/render';
 

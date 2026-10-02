@@ -1,7 +1,7 @@
-import type { Logger } from '@n8n/backend-common';
-import type { GlobalConfig, InstanceSettingsLoaderConfig } from '@n8n/config';
-import { Time } from '@n8n/constants';
-import { GLOBAL_MEMBER_ROLE, type AuthenticatedRequest, type User } from '@n8n/db';
+import type { Logger } from '@MNI/backend-common';
+import type { GlobalConfig, InstanceSettingsLoaderConfig } from '@MNI/config';
+import { Time } from '@MNI/constants';
+import { GLOBAL_MEMBER_ROLE, type AuthenticatedRequest, type User } from '@MNI/db';
 import { type Request, type Response } from 'express';
 import { mock } from 'vitest-mock-extended';
 
@@ -11,7 +11,7 @@ import { ForbiddenError } from '@/errors/response-errors/forbidden.error';
 import type { EventService } from '@/events/event.service';
 import { SsoAccessDeniedError } from '@/modules/provisioning.ee/errors/sso-access-denied.error';
 import type { AuthlessRequest } from '@/requests';
-import type { UrlService } from '@n8n/backend-services';
+import type { UrlService } from '@MNI/backend-services';
 
 import { isOidcCurrentAuthenticationMethod } from '@/sso.ee/sso-helpers';
 
@@ -65,7 +65,7 @@ describe('OidcController', () => {
 	describe('callbackHandler', () => {
 		beforeEach(() => {
 			// Default: non-test mode for regular login tests
-			oidcService.verifyState.mockReturnValue({ state: 'n8n_state:uuid' });
+			oidcService.verifyState.mockReturnValue({ state: 'MNI_state:uuid' });
 		});
 
 		test('Should issue cookie with MFA flag set to true on successful OIDC login', async () => {
@@ -117,7 +117,7 @@ describe('OidcController', () => {
 			});
 			const res = mock<Response>();
 			oidcService.verifyState.mockReturnValue({
-				state: 'n8n_state:uuid',
+				state: 'MNI_state:uuid',
 				redirectUrl: '/workflow/abc?tab=1',
 			});
 			oidcService.loginUser.mockResolvedValueOnce({ user });
@@ -138,7 +138,7 @@ describe('OidcController', () => {
 			});
 			const res = mock<Response>();
 			oidcService.verifyState.mockReturnValue({
-				state: 'n8n_state:uuid',
+				state: 'MNI_state:uuid',
 				redirectUrl: '//evil.example/phish',
 			});
 			oidcService.loginUser.mockResolvedValueOnce({ user });
@@ -445,7 +445,7 @@ describe('OidcController', () => {
 			const res = mock<Response>({ send: vi.fn().mockReturnThis() });
 
 			oidcService.verifyState.mockReturnValueOnce({
-				state: 'n8n_state:uuid',
+				state: 'MNI_state:uuid',
 				testMode: true,
 			});
 			oidcService.processTestCallback.mockResolvedValueOnce({
@@ -484,7 +484,7 @@ describe('OidcController', () => {
 			const res = mock<Response>({ send: vi.fn().mockReturnThis() });
 
 			oidcService.verifyState.mockReturnValueOnce({
-				state: 'n8n_state:uuid',
+				state: 'MNI_state:uuid',
 				testMode: true,
 			});
 			oidcService.processTestCallback.mockRejectedValueOnce(

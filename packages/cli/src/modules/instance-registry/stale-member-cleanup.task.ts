@@ -1,6 +1,6 @@
-import { Logger } from '@n8n/backend-common';
-import { intervalFromMilliseconds, SystemTask } from '@n8n/decorators';
-import type { SystemTaskEffects, SystemTaskPlacement, SystemTaskSchedule } from '@n8n/decorators';
+import { Logger } from '@MNI/backend-common';
+import { intervalFromMilliseconds, SystemTask } from '@MNI/decorators';
+import type { SystemTaskEffects, SystemTaskPlacement, SystemTaskSchedule } from '@MNI/decorators';
 
 import { InstanceRegistryService } from './instance-registry.service';
 import { REGISTRY_CONSTANTS } from './instance-registry.types';

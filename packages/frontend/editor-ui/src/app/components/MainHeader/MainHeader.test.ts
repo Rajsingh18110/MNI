@@ -5,8 +5,8 @@ import MainHeader from '@/app/components/MainHeader/MainHeader.vue';
 import { useWorkflowsStore } from '@/app/stores/workflows.store';
 import { useSourceControlStore } from '@/features/integrations/sourceControl.ee/sourceControl.store';
 import { useCollaborationStore } from '@/features/collaboration/collaboration/collaboration.store';
-import { useSettingsStore } from '@n8n/stores/settings.store';
-import { STORES } from '@n8n/stores';
+import { useSettingsStore } from '@MNI/stores/settings.store';
+import { STORES } from '@MNI/stores';
 import { WorkflowIdKey, WorkflowDocumentStoreKey } from '@/app/constants/injectionKeys';
 import { computed, shallowRef } from 'vue';
 import {
@@ -14,8 +14,8 @@ import {
 	createWorkflowDocumentId,
 } from '@/app/stores/workflowDocument.store';
 
-vi.mock('@n8n/permissions', async (importOriginal) => ({
-	...(await importOriginal<typeof import('@n8n/permissions')>()),
+vi.mock('@MNI/permissions', async (importOriginal) => ({
+	...(await importOriginal<typeof import('@MNI/permissions')>()),
 	getResourcePermissions: vi.fn(() => ({
 		workflow: {
 			update: true,
@@ -52,7 +52,7 @@ vi.mock('@/app/stores/pushConnection.store', () => ({
 	}),
 }));
 
-vi.mock('@n8n/composables/useToast', () => {
+vi.mock('@MNI/composables/useToast', () => {
 	const showError = vi.fn();
 	const showMessage = vi.fn();
 	const showToast = vi.fn();

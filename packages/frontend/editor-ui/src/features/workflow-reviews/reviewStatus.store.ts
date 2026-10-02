@@ -1,9 +1,9 @@
 import type {
 	WorkflowReviewRequestForWorkflow,
 	WorkflowReviewRequestSummary,
-} from '@n8n/api-types';
-import { ResponseError } from '@n8n/rest-api-client';
-import { useRootStore } from '@n8n/stores/useRootStore';
+} from '@MNI/api-types';
+import { ResponseError } from '@MNI/rest-api-client';
+import { useRootStore } from '@MNI/stores/useRootStore';
 import { defineStore } from 'pinia';
 import { readonly, ref } from 'vue';
 

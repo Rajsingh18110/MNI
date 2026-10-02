@@ -1,9 +1,9 @@
-import '@n8n/vitest-config/setup/frontend';
+import '@MNI/vitest-config/setup/frontend';
 import 'fake-indexeddb/auto';
 import 'core-js/proposals/set-methods-v2';
-import englishBaseText from '@n8n/i18n/locales/en.json';
-import { loadLanguage, type LocaleMessages } from '@n8n/i18n';
-// Not the `@/app/constants` barrel: it pulls the full `@n8n/api-types` graph into every test file.
+import englishBaseText from '@MNI/i18n/locales/en.json';
+import { loadLanguage, type LocaleMessages } from '@MNI/i18n';
+// Not the `@/app/constants` barrel: it pulls the full `@MNI/api-types` graph into every test file.
 import { APP_MODALS_ELEMENT_ID } from '@/app/constants/selectors';
 
 // Global stub for Reka UI Popover components used by N8nPopover.
@@ -14,7 +14,7 @@ import { APP_MODALS_ELEMENT_ID } from '@/app/constants/selectors';
 // - Controlled mode (open prop provided): respects open state
 // - Uncontrolled mode (no open prop): clicking trigger toggles visibility
 //
-// Stays here rather than in `@n8n/vitest-config/setup/frontend`: `reka-ui` is a
+// Stays here rather than in `@MNI/vitest-config/setup/frontend`: `reka-ui` is a
 // dependency of editor-ui alone, and `vi.mock`'s specifier resolves relative to
 // the file that calls it — a shared config package cannot mock a module it
 // cannot resolve.

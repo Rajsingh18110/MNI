@@ -3,7 +3,7 @@ import type {
 	INodeExecutionData,
 	INodeProperties,
 	NodeApiError,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { updateDisplayOptions, wrapData } from '../../../../../utils/utilities';
 import { processAirtableError } from '../../helpers/utils';

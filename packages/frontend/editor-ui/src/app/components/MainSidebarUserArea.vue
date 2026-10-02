@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { VIEWS } from '@/app/constants';
-import { useUsersStore } from '@n8n/stores/users.store';
+import { useUsersStore } from '@MNI/stores/users.store';
 import {
 	type IMenuItem,
 	N8nAvatar,
@@ -8,8 +8,8 @@ import {
 	N8nMenuItem,
 	N8nPopover,
 	N8nText,
-} from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+} from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 

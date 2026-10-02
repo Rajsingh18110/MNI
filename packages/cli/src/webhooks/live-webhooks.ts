@@ -1,7 +1,7 @@
-import { Logger } from '@n8n/backend-common';
-import { ExpressionEngineConfig, WorkflowsConfig } from '@n8n/config';
-import { WorkflowRepository, type WorkflowEntity, type WorkflowHistory } from '@n8n/db';
-import { Service } from '@n8n/di';
+import { Logger } from '@MNI/backend-common';
+import { ExpressionEngineConfig, WorkflowsConfig } from '@MNI/config';
+import { WorkflowRepository, type WorkflowEntity, type WorkflowHistory } from '@MNI/db';
+import { Service } from '@MNI/di';
 import type { Response } from 'express';
 import {
 	Workflow,
@@ -10,8 +10,8 @@ import {
 	WEBHOOK_NODE_TYPE,
 	nodeParametersAreStatic,
 	webhookDescriptionIsNativelyResolvable,
-} from 'n8n-workflow';
-import type { INode, IWebhookData, IHttpRequestMethods, IWorkflowBase } from 'n8n-workflow';
+} from 'MNI-workflow';
+import type { INode, IWebhookData, IHttpRequestMethods, IWorkflowBase } from 'MNI-workflow';
 
 import { NotFoundError } from '@/errors/response-errors/not-found.error';
 import { WebhookNotFoundError } from '@/errors/response-errors/webhook-not-found.error';
@@ -37,7 +37,7 @@ import type {
 /**
  * Service for handling the execution of live webhooks, i.e. webhooks
  * that belong to activated workflows and use the production URL
- * (https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-base.webhook/#webhook-urls)
+ * (https://docs.n8n.io/integrations/builtin/core-nodes/MNI-nodes-base.webhook/#webhook-urls)
  */
 @Service()
 export class LiveWebhooks implements IWebhookManager {
@@ -214,7 +214,7 @@ export class LiveWebhooks implements IWebhookManager {
 	 * Expression Engine VM acquisition builds a V8 isolate per request, which is
 	 * worth skipping when the webhook phase provably evaluates nothing: every
 	 * description field of the trigger resolves natively (see
-	 * `webhookDescriptionFields` in n8n-workflow) and the node's own parameters
+	 * `webhookDescriptionFields` in MNI-workflow) and the node's own parameters
 	 * contain no expressions. Anything not proven below acquires eagerly.
 	 */
 	private webhookPhaseNeedsIsolate(startNode: INode | null): boolean {

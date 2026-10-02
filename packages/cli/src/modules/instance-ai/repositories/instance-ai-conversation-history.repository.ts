@@ -1,6 +1,6 @@
-import { LIKE_ESCAPE_CLAUSE } from '@n8n/db';
-import { Service } from '@n8n/di';
-import { DataSource, type SelectQueryBuilder } from '@n8n/typeorm';
+import { LIKE_ESCAPE_CLAUSE } from '@MNI/db';
+import { Service } from '@MNI/di';
+import { DataSource, type SelectQueryBuilder } from '@MNI/typeorm';
 
 import {
 	ASK_USER_CONTENT_MARKER,

@@ -1,13 +1,13 @@
 <script lang="ts" setup>
 import { computed, onBeforeUnmount, watch } from 'vue';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import { SETUP_CREDENTIALS_MODAL_KEY, TEMPLATE_SETUP_EXPERIENCE } from '@/app/constants';
 import { useUIStore } from '@/app/stores/ui.store';
 import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';
 import { useFocusPanelStore } from '@/app/stores/focusPanel.store';
 import { doesNodeHaveAllCredentialsFilled } from '@/app/utils/nodes/nodeTransforms';
 
-import { N8nButton } from '@n8n/design-system';
+import { N8nButton } from '@MNI/design-system';
 import { usePostHog } from '@/app/stores/posthog.store';
 import { useReadyToRunStore } from '@/features/workflows/readyToRun/stores/readyToRun.store';
 

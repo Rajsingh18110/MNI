@@ -1,4 +1,4 @@
-import type { Logger } from '@n8n/backend-common';
+import type { Logger } from '@MNI/backend-common';
 import type { Mocked } from 'vitest';
 
 import { HttpHeaderExtractor } from '../http-header-extractor';
@@ -24,8 +24,8 @@ describe('HttpHeaderExtractor', () => {
 	});
 
 	describe('isApplicableToTriggerNode', () => {
-		it('returns true for n8n-nodes-base.webhook', () => {
-			expect(extractor.isApplicableToTriggerNode('n8n-nodes-base.webhook')).toBe(true);
+		it('returns true for MNI-nodes-base.webhook', () => {
+			expect(extractor.isApplicableToTriggerNode('MNI-nodes-base.webhook')).toBe(true);
 		});
 
 		it('returns true for shorthand webhook type', () => {
@@ -33,11 +33,11 @@ describe('HttpHeaderExtractor', () => {
 		});
 
 		it.each([
-			'n8n-nodes-base.httpRequest',
-			'n8n-nodes-base.cron',
+			'MNI-nodes-base.httpRequest',
+			'MNI-nodes-base.cron',
 			'',
 			'WEBHOOK',
-			'n8n-nodes-base.Webhook',
+			'MNI-nodes-base.Webhook',
 		])('returns false for "%s"', (nodeType) => {
 			expect(extractor.isApplicableToTriggerNode(nodeType)).toBe(false);
 		});

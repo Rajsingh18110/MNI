@@ -1,11 +1,11 @@
 ---
 name: MNI:db-migrations
-description: Authors MNI database migrations. Use when creating or modifying files under packages/@n8n/db/src/migrations/, when the user asks to add a column, table, index, foreign key, or backfill, or when the user mentions DB migrations or TypeORM migrations.
+description: Authors MNI database migrations. Use when creating or modifying files under packages/@MNI/db/src/migrations/, when the user asks to add a column, table, index, foreign key, or backfill, or when the user mentions DB migrations or TypeORM migrations.
 ---
 
 # MNI Migration Guidelines
 
-**Rule of thumb:** the `@n8n-io/migrations-review` team gates every migration PR. The fixes they ask for are predictable — work through the [Pre-flight checklist](#pre-flight-checklist) before requesting review. The rest of this document explains the *why* for each item and covers deeper topics.
+**Rule of thumb:** the `@MNI-io/migrations-review` team gates every migration PR. The fixes they ask for are predictable — work through the [Pre-flight checklist](#pre-flight-checklist) before requesting review. The rest of this document explains the *why* for each item and covers deeper topics.
 
 ---
 
@@ -28,7 +28,7 @@ description: Authors MNI database migrations. Use when creating or modifying fil
 ### Directory Structure
 
 ```
-packages/@n8n/db/src/migrations/
+packages/@MNI/db/src/migrations/
 ├── common/           # Default — DSL handles SQLite + Postgres
 ├── postgresdb/       # PostgreSQL-specific migrations
 ├── sqlite/           # SQLite-specific migrations
@@ -47,7 +47,7 @@ packages/@n8n/db/src/migrations/
 
 ### MigrationContext API
 
-Source of truth: `packages/@n8n/db/src/migrations/migration-types.ts`. Check the source for exact signatures when in doubt.
+Source of truth: `packages/@MNI/db/src/migrations/migration-types.ts`. Check the source for exact signatures when in doubt.
 
 ```typescript
 interface MigrationContext {
@@ -80,7 +80,7 @@ interface MigrationContext {
 
 ### DSL Type Mapping Reference
 
-Source of truth: `packages/@n8n/db/src/migrations/dsl/column.ts`.
+Source of truth: `packages/@MNI/db/src/migrations/dsl/column.ts`.
 
 | DSL type | PostgreSQL | SQLite |
 |---|---|---|
@@ -106,8 +106,8 @@ Default precision for the timestamp variants is 3 ms; override with `.timestampT
 
 Run through this before requesting review. Each item is a real, recurring reviewer flag; the link points to the section that explains the rule.
 
-- [ ] Migration was scaffolded with `pnpm --filter=@n8n/db migration:new` (timestamp + registration are automatic; the `migration-timestamp` lint rule catches drift). — [Creating Migrations](#creating-migrations)
-- [ ] Identifiers go through **`escape.tableName(...)` / `escape.columnName(...)`**. Never hand-write `n8n_table` prefixes. — [Always escape identifiers](#always-escape-identifiers)
+- [ ] Migration was scaffolded with `pnpm --filter=@MNI/db migration:new` (timestamp + registration are automatic; the `migration-timestamp` lint rule catches drift). — [Creating Migrations](#creating-migrations)
+- [ ] Identifiers go through **`escape.tableName(...)` / `escape.columnName(...)`**. Never hand-write `MNI_table` prefixes. — [Always escape identifiers](#always-escape-identifiers)
 - [ ] **Match column type to value semantics.** Native `uuid` for UUIDs, `timestampTimezone()` for timestamps, a numeric type for numbers, `bool` for booleans, `json` for structured data. Never `varchar` as a catch-all. — [Column types](#column-types)
 - [ ] **Pick the narrowest sane type within that category:** `int`/`smallint` not `bigint` when range allows; `text` not `varchar(255)` for unbounded strings; never `double` for version numbers. — [Column types](#column-types)
 - [ ] **Default `notNull`**, relax only when justified. PK is implicitly NOT NULL. Migration's `notNull` matches the entity's nullability. — [NOT NULL and entity parity](#not-null-and-entity-parity)
@@ -136,19 +136,19 @@ Rules that apply to every migration — schema or data, common or DB-specific. R
 
 ### Creating Migrations
 
-> **Temporary timestamp workaround:** This repository currently has future-dated migrations, with the head at `1784000000008` (`2026-07-14T03:33:20.008Z`). Until real time passes that timestamp, a migration created with `Date.now()` would sort before the deployed head and can run out of order on databases that already applied later migrations. Use the generator during this window — it picks `max + 1` when needed. See [PR #30511](https://github.com/n8n-io/n8n/pull/30511) for context.
+> **Temporary timestamp workaround:** This repository currently has future-dated migrations, with the head at `1784000000008` (`2026-07-14T03:33:20.008Z`). Until real time passes that timestamp, a migration created with `Date.now()` would sort before the deployed head and can run out of order on databases that already applied later migrations. Use the generator during this window — it picks `max + 1` when needed. See [PR #30511](https://github.com/MNI-io/MNI/pull/30511) for context.
 
 Migration files are named `{TIMESTAMP}-{DescriptiveName}.ts`. The timestamp must be strictly greater than every existing migration timestamp in this package (across `common/`, `postgresdb/`, and `sqlite/`). TypeORM runs unrecorded migrations in timestamp order, so inserting a value below the current max corrupts ordering on databases that have already executed the later migrations.
 
 Use the generator — it picks a safe timestamp, writes the scaffold, and regenerates the migration index files (`sqlite/index.ts` and `postgresdb/index.ts` are gitignored build artifacts, generated from the files on disk by `scripts/generate-migration-index.mjs` — never edit or commit them):
 
 ```sh
-pnpm --filter=@n8n/db migration:new <Name> [--folder=common|postgresdb|sqlite]
+pnpm --filter=@MNI/db migration:new <Name> [--folder=common|postgresdb|sqlite]
 ```
 
 `<Name>` is PascalCase and describes the change (e.g. `AddTracingToExecution`). `--folder` defaults to `common`; use `postgresdb` or `sqlite` only for dialect-specific migrations. The generator picks `Date.now()` when it's greater than the current head, otherwise `max + 1`.
 
-The `migration-timestamp` rule in `@n8n/code-health` enforces both invariants (strict ordering and no far-future fabrication) at lint time; the generator is the easy path, the rule is the safety net.
+The `migration-timestamp` rule in `@MNI/code-health` enforces both invariants (strict ordering and no far-future fabrication) at lint time; the generator is the easy path, the rule is the safety net.
 
 ### Applying and Reverting Migrations
 
@@ -281,9 +281,9 @@ Use `escape.tableName()`, `escape.columnName()`, and `escape.indexName()` for ev
 
 ### Prefer inlining over importing from sibling packages
 
-`@n8n/db` already depends on `n8n-workflow`, but the more a migration imports from other workspace packages, the more brittle it becomes. Inline small constants and types where you can. Use `parseJson()` from `MigrationContext` instead of importing `jsonParse` from `n8n-workflow`.
+`@MNI/db` already depends on `MNI-workflow`, but the more a migration imports from other workspace packages, the more brittle it becomes. Inline small constants and types where you can. Use `parseJson()` from `MigrationContext` instead of importing `jsonParse` from `MNI-workflow`.
 
-**Why:** A migration that imports `ERROR_TRIGGER_NODE_TYPE` from `n8n-workflow` is now coupled to that constant's existence and value forever. If the constant is renamed or removed in a refactor years later, the migration breaks at install time on a fresh database.
+**Why:** A migration that imports `ERROR_TRIGGER_NODE_TYPE` from `MNI-workflow` is now coupled to that constant's existence and value forever. If the constant is renamed or removed in a refactor years later, the migration breaks at install time on a fresh database.
 
 Acceptable exceptions: utilities whose semantics are stable and whose inline implementation would be substantial (e.g. `generateNanoId`).
 
@@ -718,15 +718,15 @@ For renames, use `ALTER TABLE ... RENAME TO`. Faster, atomic, no data-loss risk.
 
 A data migration runs *once* per database, on production data, with no opportunity to retry cleanly. The cost of a bad migration is a customer-facing incident; the cost of a test is ten minutes.
 
-Tests live in `packages/cli/test/migration/`, named to match the migration file (e.g. `1773000000000-create-credential-dependency-table.test.ts`). Use the helpers from `@n8n/backend-test-utils`:
+Tests live in `packages/cli/test/migration/`, named to match the migration file (e.g. `1773000000000-create-credential-dependency-table.test.ts`). Use the helpers from `@MNI/backend-test-utils`:
 
 - **`initDbUpToMigration(MigrationName)`** runs every migration *up to but not including* yours, leaving the DB in the exact state your migration will see in production.
 - **`runSingleMigration(MigrationName)`** runs just your migration on top of that state.
 
-Full helper API: `packages/@n8n/backend-test-utils/MIGRATION_TESTING.md`.
+Full helper API: `packages/@MNI/backend-test-utils/MIGRATION_TESTING.md`.
 
 ```typescript
-import { initDbUpToMigration, runSingleMigration } from '@n8n/backend-test-utils';
+import { initDbUpToMigration, runSingleMigration } from '@MNI/backend-test-utils';
 
 describe('AddAndBackfillColumn1234567890000', () => {
 	beforeEach(async () => {

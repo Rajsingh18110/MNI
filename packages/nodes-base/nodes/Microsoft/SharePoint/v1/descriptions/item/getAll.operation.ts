@@ -1,5 +1,5 @@
-import type { IExecuteSingleFunctions, IHttpRequestOptions, INodeProperties } from 'n8n-workflow';
-import { updateDisplayOptions } from 'n8n-workflow';
+import type { IExecuteSingleFunctions, IHttpRequestOptions, INodeProperties } from 'MNI-workflow';
+import { updateDisplayOptions } from 'MNI-workflow';
 
 import { itemGetAllFieldsPreSend } from '../../helpers/utils';
 import { listRLC, siteRLC, untilSiteSelected } from '../common.descriptions';

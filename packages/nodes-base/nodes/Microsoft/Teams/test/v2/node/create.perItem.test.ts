@@ -1,5 +1,5 @@
-import type { IDataObject, IExecuteFunctions, INode, NodeParameterValueType } from 'n8n-workflow';
-import { NodeApiError } from 'n8n-workflow';
+import type { IDataObject, IExecuteFunctions, INode, NodeParameterValueType } from 'MNI-workflow';
+import { NodeApiError } from 'MNI-workflow';
 import type { Mock } from 'vitest';
 import type { MockProxy } from 'vitest-mock-extended';
 import { mock } from 'vitest-mock-extended';

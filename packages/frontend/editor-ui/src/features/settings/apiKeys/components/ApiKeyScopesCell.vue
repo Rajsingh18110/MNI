@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import type { ApiKey } from '@n8n/api-types';
+import type { ApiKey } from '@MNI/api-types';
 
 defineProps<{
 	apiKey: ApiKey;

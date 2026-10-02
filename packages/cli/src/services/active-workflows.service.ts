@@ -1,8 +1,8 @@
-import { Logger } from '@n8n/backend-common';
-import type { User } from '@n8n/db';
-import { WorkflowRepository } from '@n8n/db';
-import { Service } from '@n8n/di';
-import { hasGlobalScope } from '@n8n/permissions';
+import { Logger } from '@MNI/backend-common';
+import type { User } from '@MNI/db';
+import { WorkflowRepository } from '@MNI/db';
+import { Service } from '@MNI/di';
+import { hasGlobalScope } from '@MNI/permissions';
 
 import { ActivationErrorsService } from '@/activation-errors.service';
 import { BadRequestError } from '@/errors/response-errors/bad-request.error';

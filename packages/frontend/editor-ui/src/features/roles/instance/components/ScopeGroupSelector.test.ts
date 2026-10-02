@@ -8,7 +8,7 @@ import {
 	GLOBAL_ADMIN_SCOPES,
 	GLOBAL_CHAT_USER_SCOPES,
 	GLOBAL_MEMBER_SCOPES,
-} from '@n8n/permissions';
+} from '@MNI/permissions';
 import { CUSTOM_ROLES_DOCS_URL } from '@/app/constants';
 import { getTooltip } from '@/__tests__/utils';
 

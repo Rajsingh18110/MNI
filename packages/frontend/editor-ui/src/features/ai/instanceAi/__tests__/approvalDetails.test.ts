@@ -1,6 +1,6 @@
 import { afterEach, describe, expect, it } from 'vitest';
-import { i18nInstance, i18nVersion } from '@n8n/i18n';
-import type { InstanceAiApprovalDetails } from '@n8n/api-types';
+import { i18nInstance, i18nVersion } from '@MNI/i18n';
+import type { InstanceAiApprovalDetails } from '@MNI/api-types';
 import { formatApprovalDetails } from '../approvalDetails';
 
 const originalLocale = i18nInstance.global.locale.value;

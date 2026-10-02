@@ -1,6 +1,6 @@
-import { UrlService } from '@n8n/backend-services';
-import { mockInstance } from '@n8n/backend-test-utils';
-import { User } from '@n8n/db';
+import { UrlService } from '@MNI/backend-services';
+import { mockInstance } from '@MNI/backend-test-utils';
+import { User } from '@MNI/db';
 
 import { WorkflowFinderService } from '@/workflows/workflow-finder.service';
 
@@ -8,7 +8,7 @@ import { createWorkflow } from './mock.utils';
 import { WorkflowAccessError } from '../mcp.errors';
 import { getMcpWorkflow, getSdkReferenceHint } from '../tools/workflow-validation.utils';
 
-vi.mock('@n8n/ai-workflow-builder', () => ({
+vi.mock('@MNI/ai-workflow-builder', () => ({
 	MCP_GET_SDK_REFERENCE_TOOL: { toolName: 'get_workflow_sdk_reference', displayTitle: 'SDK Ref' },
 	CODE_BUILDER_VALIDATE_TOOL: { toolName: 'validate_workflow', displayTitle: 'Validate' },
 }));
@@ -60,7 +60,7 @@ describe('getMcpWorkflow', () => {
 	const user = Object.assign(new User(), { id: 'user-1' });
 	beforeEach(() => {
 		mockInstance(UrlService, {
-			getInstanceBaseUrl: vi.fn().mockReturnValue('https://n8n.example.com/n8n'),
+			getInstanceBaseUrl: vi.fn().mockReturnValue('https://n8n.example.com/MNI'),
 		});
 	});
 
@@ -224,7 +224,7 @@ describe('getMcpWorkflow', () => {
 
 			await expect(
 				getMcpWorkflow('wf / 1', user, ['workflow:read'], workflowFinderService),
-			).rejects.toThrow('https://n8n.example.com/n8n/workflow/wf%20%2F%201?settings=true');
+			).rejects.toThrow('https://n8n.example.com/MNI/workflow/wf%20%2F%201?settings=true');
 		});
 	});
 

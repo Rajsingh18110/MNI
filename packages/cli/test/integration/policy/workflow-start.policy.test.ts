@@ -6,17 +6,17 @@
  * keeps calling `addHooks`, so each path gets its own test: a regression in one must not
  * hide behind the others passing.
  */
-import { createWorkflow, getWorkflowSharing, testDb } from '@n8n/backend-test-utils';
-import { ExecutionRepository, type IWorkflowDb, type User } from '@n8n/db';
+import { createWorkflow, getWorkflowSharing, testDb } from '@MNI/backend-test-utils';
+import { ExecutionRepository, type IWorkflowDb, type User } from '@MNI/db';
 import type {
 	PolicyCheckResult,
 	RegisteredPolicyCheck,
 	WorkflowStartContext,
-} from '@n8n/decorators';
-import { PolicyCheck, PolicyCheckMetadata } from '@n8n/decorators';
-import { Container } from '@n8n/di';
+} from '@MNI/decorators';
+import { PolicyCheck, PolicyCheckMetadata } from '@MNI/decorators';
+import { Container } from '@MNI/di';
 import { parse } from 'flatted';
-import { createRunExecutionData, type IRunExecutionData } from 'n8n-workflow';
+import { createRunExecutionData, type IRunExecutionData } from 'MNI-workflow';
 
 import { ActiveExecutions } from '@/active-executions';
 import { getLifecycleHooksForScalingMain } from '@/execution-lifecycle/execution-lifecycle-hooks';
@@ -99,9 +99,9 @@ beforeAll(async () => {
 	// Real nodes, not the default mock set — these workflows actually run.
 	await utils.initNodeTypes(
 		loadNodesFromDist([
-			'n8n-nodes-base.manualTrigger',
-			'n8n-nodes-base.executeWorkflow',
-			'n8n-nodes-base.executeWorkflowTrigger',
+			'MNI-nodes-base.manualTrigger',
+			'MNI-nodes-base.executeWorkflow',
+			'MNI-nodes-base.executeWorkflowTrigger',
 		]),
 	);
 	await utils.initBinaryDataService();

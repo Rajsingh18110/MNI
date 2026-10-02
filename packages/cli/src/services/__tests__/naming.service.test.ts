@@ -1,6 +1,6 @@
-import { mockInstance } from '@n8n/backend-test-utils';
-import type { CredentialsEntity, WorkflowEntity } from '@n8n/db';
-import { CredentialsRepository, WorkflowRepository } from '@n8n/db';
+import { mockInstance } from '@MNI/backend-test-utils';
+import type { CredentialsEntity, WorkflowEntity } from '@MNI/db';
+import { CredentialsRepository, WorkflowRepository } from '@MNI/db';
 
 import { NamingService } from '@/services/naming.service';
 

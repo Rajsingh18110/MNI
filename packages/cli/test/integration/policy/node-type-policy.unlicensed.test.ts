@@ -5,11 +5,11 @@
  * through the service rather than the REST routes: without the license the module skips
  * `init()`, so its controllers are never mounted — which is half of what this suite asserts.
  */
-import { createWorkflow, testDb } from '@n8n/backend-test-utils';
-import { WorkflowRepository, type User } from '@n8n/db';
-import { PolicyCheckMetadata } from '@n8n/decorators';
-import { Container } from '@n8n/di';
-import type { INode } from 'n8n-workflow';
+import { createWorkflow, testDb } from '@MNI/backend-test-utils';
+import { WorkflowRepository, type User } from '@MNI/db';
+import { PolicyCheckMetadata } from '@MNI/decorators';
+import { Container } from '@MNI/di';
+import type { INode } from 'MNI-workflow';
 import { v4 as uuid } from 'uuid';
 
 import { TypeAvailabilityPolicyService } from '@/modules/type-availability-policies/type-availability-policy.service';
@@ -20,8 +20,8 @@ import * as utils from '../shared/utils/';
 
 const CHECK_ID = 'node-type-availability';
 
-const MANUAL_TRIGGER = 'n8n-nodes-base.manualTrigger';
-const SET = 'n8n-nodes-base.set';
+const MANUAL_TRIGGER = 'MNI-nodes-base.manualTrigger';
+const SET = 'MNI-nodes-base.set';
 
 // No `enabledFeatures`: the feature module is eligible and its entities are registered, but
 // `initModules` skips it, so nothing registers the check.

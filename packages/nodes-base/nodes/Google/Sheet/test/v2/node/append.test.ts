@@ -1,6 +1,6 @@
 import type { MockProxy } from 'vitest-mock-extended';
 import { mock } from 'vitest-mock-extended';
-import type { IExecuteFunctions, INode } from 'n8n-workflow';
+import type { IExecuteFunctions, INode } from 'MNI-workflow';
 
 import { execute } from '../../../v2/actions/sheet/append.operation';
 import type { GoogleSheet } from '../../../v2/helpers/GoogleSheet';

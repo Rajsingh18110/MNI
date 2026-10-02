@@ -1,8 +1,8 @@
 import type { Mocked } from 'vitest';
-import type { Logger } from '@n8n/backend-common';
-import type { ProjectRepository, User } from '@n8n/db';
+import type { Logger } from '@MNI/backend-common';
+import type { ProjectRepository, User } from '@MNI/db';
 import { mock } from 'vitest-mock-extended';
-import type { INodeTypeDescription } from 'n8n-workflow';
+import type { INodeTypeDescription } from 'MNI-workflow';
 
 import type { CredentialsFinderService } from '@/credentials/credentials-finder.service';
 import type { NodeTypes } from '@/node-types';
@@ -42,7 +42,7 @@ describe('NodeResourceExplorerService', () => {
 	});
 
 	const baseParams = {
-		nodeType: 'n8n-nodes-base.slack',
+		nodeType: 'MNI-nodes-base.slack',
 		version: 2.3,
 		methodName: 'getChannels',
 		methodType: 'listSearch' as const,
@@ -147,7 +147,7 @@ describe('NodeResourceExplorerService', () => {
 			'getChannels',
 			'',
 			{ additional: 'data' },
-			{ name: 'n8n-nodes-base.slack', version: 2.3 },
+			{ name: 'MNI-nodes-base.slack', version: 2.3 },
 			expect.any(Object),
 			{ slackApi: { id: 'cred-1', name: 'Resolved' } },
 			'gen',
@@ -167,7 +167,7 @@ describe('NodeResourceExplorerService', () => {
 
 		const result = await service.exploreResources(user, {
 			...baseParams,
-			nodeType: '@n8n/n8n-nodes-langchain.lmChatOpenAi',
+			nodeType: '@MNI/MNI-nodes-langchain.lmChatOpenAi',
 			credentialType: 'openAiApi',
 			credentialId: '__AI_GATEWAY_MANAGED__',
 			methodName: 'searchModels',
@@ -178,7 +178,7 @@ describe('NodeResourceExplorerService', () => {
 			'searchModels',
 			'',
 			expect.anything(),
-			{ name: '@n8n/n8n-nodes-langchain.lmChatOpenAi', version: 2.3 },
+			{ name: '@MNI/MNI-nodes-langchain.lmChatOpenAi', version: 2.3 },
 			expect.any(Object),
 			{
 				openAiApi: {
@@ -361,7 +361,7 @@ describe('NodeResourceExplorerService', () => {
 		};
 
 		const openAiParams = {
-			nodeType: '@n8n/n8n-nodes-langchain.lmChatOpenAi',
+			nodeType: '@MNI/MNI-nodes-langchain.lmChatOpenAi',
 			version: 1.3,
 			credentialType: 'openAiApi',
 			credentialId: 'cred-1',
@@ -369,7 +369,7 @@ describe('NodeResourceExplorerService', () => {
 
 		function mockAiNode(properties: unknown[]) {
 			mockNodeDescription({
-				name: '@n8n/n8n-nodes-langchain.lmChatOpenAi',
+				name: '@MNI/MNI-nodes-langchain.lmChatOpenAi',
 				properties: properties as INodeTypeDescription['properties'],
 			});
 		}
@@ -520,7 +520,7 @@ describe('NodeResourceExplorerService', () => {
 			// different search method. Without a visibility filter all of them get probed, and
 			// the active value is judged against another branch's list.
 			mockNodeDescription({
-				name: '@n8n/n8n-nodes.openAi',
+				name: '@MNI/MNI-nodes.openAi',
 				properties: [
 					{ displayName: 'Resource', name: 'resource', type: 'options', default: 'text' },
 					{ displayName: 'Operation', name: 'operation', type: 'options', default: 'message' },
@@ -545,7 +545,7 @@ describe('NodeResourceExplorerService', () => {
 			mockAvailableModels(['gpt-4.1-mini']);
 
 			const result = await service.findUnavailableResourceLocatorValues(user, {
-				nodeType: '@n8n/n8n-nodes.openAi',
+				nodeType: '@MNI/MNI-nodes.openAi',
 				version: 2.2,
 				credentialType: 'openAiApi',
 				credentialId: 'cred-1',
@@ -565,7 +565,7 @@ describe('NodeResourceExplorerService', () => {
 
 		test('ignores a stale value left behind by an inactive operation', async () => {
 			mockNodeDescription({
-				name: '@n8n/n8n-nodes.openAi',
+				name: '@MNI/MNI-nodes.openAi',
 				properties: [
 					{ displayName: 'Resource', name: 'resource', type: 'options', default: 'text' },
 					{
@@ -578,7 +578,7 @@ describe('NodeResourceExplorerService', () => {
 			mockAvailableModels(['gpt-image-2']);
 
 			const result = await service.findUnavailableResourceLocatorValues(user, {
-				nodeType: '@n8n/n8n-nodes.openAi',
+				nodeType: '@MNI/MNI-nodes.openAi',
 				version: 2.2,
 				credentialType: 'openAiApi',
 				credentialId: 'cred-1',
@@ -593,7 +593,7 @@ describe('NodeResourceExplorerService', () => {
 		test('covers non-AI nodes too, e.g. a channel the account cannot reach', async () => {
 			mockCredentialOwned({ type: 'slackApi', name: 'My Slack' });
 			mockNodeDescription({
-				name: 'n8n-nodes-base.slack',
+				name: 'MNI-nodes-base.slack',
 				properties: [
 					{
 						displayName: 'Channel',
@@ -610,7 +610,7 @@ describe('NodeResourceExplorerService', () => {
 			} as never);
 
 			const result = await service.findUnavailableResourceLocatorValues(user, {
-				nodeType: 'n8n-nodes-base.slack',
+				nodeType: 'MNI-nodes-base.slack',
 				version: 2.3,
 				credentialType: 'slackApi',
 				credentialId: 'cred-1',
@@ -736,7 +736,7 @@ describe('NodeResourceExplorerService', () => {
 				name: 'Google Gemini',
 			});
 			mockNodeDescription({
-				name: '@n8n/n8n-nodes-langchain.lmChatGoogleGemini',
+				name: '@MNI/MNI-nodes-langchain.lmChatGoogleGemini',
 				properties: [
 					{
 						displayName: 'Model',
@@ -750,7 +750,7 @@ describe('NodeResourceExplorerService', () => {
 			mockAvailableModels(['models/gemini-3.1-pro-preview', 'models/gemini-3.1-flash-lite']);
 
 			const result = await service.findUnavailableResourceLocatorValues(user, {
-				nodeType: '@n8n/n8n-nodes-langchain.lmChatGoogleGemini',
+				nodeType: '@MNI/MNI-nodes-langchain.lmChatGoogleGemini',
 				version: 1,
 				credentialType: 'googlePalmApi',
 				credentialId: 'cred-google',
@@ -773,7 +773,7 @@ describe('NodeResourceExplorerService', () => {
 				name: 'Google Gemini',
 			});
 			mockNodeDescription({
-				name: '@n8n/n8n-nodes-langchain.lmChatGoogleGemini',
+				name: '@MNI/MNI-nodes-langchain.lmChatGoogleGemini',
 				properties: [
 					{
 						displayName: 'Model',
@@ -800,7 +800,7 @@ describe('NodeResourceExplorerService', () => {
 			] as never);
 
 			const result = await service.findUnavailableResourceLocatorValues(user, {
-				nodeType: '@n8n/n8n-nodes-langchain.lmChatGoogleGemini',
+				nodeType: '@MNI/MNI-nodes-langchain.lmChatGoogleGemini',
 				version: 1,
 				credentialType: 'googlePalmApi',
 				credentialId: 'cred-google',
@@ -817,7 +817,7 @@ describe('NodeResourceExplorerService', () => {
 			expect(dynamicNodeParametersService.getOptionsViaLoadOptionsByPath).toHaveBeenCalledWith(
 				'modelName',
 				expect.anything(),
-				{ name: '@n8n/n8n-nodes-langchain.lmChatGoogleGemini', version: 1 },
+				{ name: '@MNI/MNI-nodes-langchain.lmChatGoogleGemini', version: 1 },
 				{ modelName: 'models/gemini-2.5-flash' },
 				expect.anything(),
 			);

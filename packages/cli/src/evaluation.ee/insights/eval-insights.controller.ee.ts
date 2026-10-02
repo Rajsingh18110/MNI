@@ -1,7 +1,7 @@
-import { EVAL_COLLECTIONS_FLAG, GenerateInsightsDto } from '@n8n/api-types';
-import { Logger } from '@n8n/backend-common';
-import type { AuthenticatedRequest, User } from '@n8n/db';
-import { Body, Post, ProjectScope, RestController } from '@n8n/decorators';
+import { EVAL_COLLECTIONS_FLAG, GenerateInsightsDto } from '@MNI/api-types';
+import { Logger } from '@MNI/backend-common';
+import type { AuthenticatedRequest, User } from '@MNI/db';
+import { Body, Post, ProjectScope, RestController } from '@MNI/decorators';
 
 import { NotFoundError } from '@/errors/response-errors/not-found.error';
 import { PostHogClient } from '@/posthog';

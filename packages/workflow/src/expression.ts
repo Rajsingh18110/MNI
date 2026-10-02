@@ -1,5 +1,5 @@
-import type { IExpressionEvaluator, ObservabilityProvider } from '@n8n/expression-runtime';
-import { MemoryLimitError, SecurityViolationError, TimeoutError } from '@n8n/expression-runtime';
+import type { IExpressionEvaluator, ObservabilityProvider } from '@MNI/expression-runtime';
+import { MemoryLimitError, SecurityViolationError, TimeoutError } from '@MNI/expression-runtime';
 import { DateTime, Duration, Interval } from 'luxon';
 
 import { UnexpectedError, UserError } from './errors';
@@ -278,7 +278,7 @@ export class Expression {
 
 		if (!this.vmEvaluator) {
 			// Dynamic import to avoid loading expression-runtime in browser environments
-			const runtime = await import('@n8n/expression-runtime');
+			const runtime = await import('@MNI/expression-runtime');
 			const createBridge =
 				options.engine === 'quickjs'
 					? () =>
@@ -393,7 +393,7 @@ export class Expression {
 	 * WARNING: This is a global setting — switching engines mid-execution could
 	 * cause a workflow to evaluate some expressions with one engine and some with
 	 * another. Only call this during process startup (or in benchmarks and tests),
-	 * never mid-execution. In production, set `N8N_EXPRESSION_ENGINE` before
+	 * never mid-execution. In production, set `MNI_EXPRESSION_ENGINE` before
 	 * process startup instead.
 	 */
 	static setExpressionEngine(engine: 'legacy' | 'vm' | 'quickjs'): void {
@@ -628,7 +628,7 @@ export class Expression {
 			typeof process !== 'undefined'
 				? {
 						arch: process.arch,
-						env: process.env.N8N_BLOCK_ENV_ACCESS_IN_NODE !== 'false' ? {} : process.env,
+						env: process.env.MNI_BLOCK_ENV_ACCESS_IN_NODE !== 'false' ? {} : process.env,
 						platform: process.platform,
 						pid: process.pid,
 						ppid: process.ppid,
@@ -648,7 +648,7 @@ export class Expression {
 		// structurally unreachable: the bridge's `getValueAtPath` returns
 		// `undefined` for any function-typed value, and the in-isolate
 		// runtime resolves helpers itself via Tournament's polyfill
-		// (see packages/@n8n/expression-runtime/src/runtime/context.ts,
+		// (see packages/@MNI/expression-runtime/src/runtime/context.ts,
 		// where bare `extend(...)` calls bind to the in-isolate copy on
 		// `target.extend`). Setting them on `data` in VM mode would be
 		// dead code.
@@ -660,7 +660,7 @@ export class Expression {
 		// In VM mode, strip `$jmesPath` / `$jmespath` from the data proxy.
 		// WorkflowDataProxy adds them, but the in-isolate `target.$jmespath`
 		// shadows them via Tournament's polyfill (see
-		// packages/@n8n/expression-runtime/src/runtime/context.ts). The delete
+		// packages/@MNI/expression-runtime/src/runtime/context.ts). The delete
 		// makes them unreachable via direct path lookup through the bridge
 		// too, so the bridge can never invoke the host-side copies.
 		if (usingVm) {

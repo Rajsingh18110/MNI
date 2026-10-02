@@ -1,11 +1,11 @@
-import { createWorkflow, testDb } from '@n8n/backend-test-utils';
-import type { User } from '@n8n/db';
-import { ExecutionRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
+import { createWorkflow, testDb } from '@MNI/backend-test-utils';
+import type { User } from '@MNI/db';
+import { ExecutionRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
 import { stringify, parse } from 'flatted';
 import { DateTime } from 'luxon';
-import type { ExecutionStatus } from 'n8n-workflow';
-import { createEmptyRunExecutionData, createRunExecutionData } from 'n8n-workflow';
+import type { ExecutionStatus } from 'MNI-workflow';
+import { createEmptyRunExecutionData, createRunExecutionData } from 'MNI-workflow';
 
 import { createExecution } from '@test-integration/db/executions';
 import { createOwner } from '@test-integration/db/users';

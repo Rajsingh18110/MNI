@@ -5,7 +5,7 @@ import { createTestNode } from '@/__tests__/mocks';
 import { mockedStore } from '@/__tests__/utils';
 import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';
 import type { INodeUi } from '@/Interface';
-import type { IWebhookDescription, WebhookType } from 'n8n-workflow';
+import type { IWebhookDescription, WebhookType } from 'MNI-workflow';
 
 import { useWebhookUrls } from '@/features/setupPanel/composables/useWebhookUrls';
 
@@ -22,7 +22,7 @@ vi.mock('@/app/composables/useWorkflowHelpers', () => ({
 const createNode = (overrides: Partial<INodeUi> = {}): INodeUi =>
 	createTestNode({
 		name: 'Webhook',
-		type: 'n8n-nodes-base.webhook',
+		type: 'MNI-nodes-base.webhook',
 		typeVersion: 1,
 		position: [0, 0],
 		...overrides,

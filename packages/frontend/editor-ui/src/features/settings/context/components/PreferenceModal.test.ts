@@ -1,31 +1,31 @@
 import { createComponentRenderer } from '@/__tests__/render';
 import { type MockedStore, mockedStore } from '@/__tests__/utils';
 import { createTestingPinia } from '@pinia/testing';
-import { STORES } from '@n8n/stores';
-import { useUsersStore } from '@n8n/stores/users.store';
+import { STORES } from '@MNI/stores';
+import { useUsersStore } from '@MNI/stores/users.store';
 import userEvent from '@testing-library/user-event';
 import { mock } from 'vitest-mock-extended';
 
-import { TELEMETRY_EVENT } from '@n8n/telemetry';
+import { TELEMETRY_EVENT } from '@MNI/telemetry';
 
 import PreferenceModal from './PreferenceModal.vue';
 import { PREFERENCE_TEXT_MAX_LENGTH } from '../context.constants';
 
 import { useContextStore } from '../context.store';
 import type { Preference } from '../context.types';
-import type { IUser } from '@n8n/rest-api-client/api/users';
-import type { Scope } from '@n8n/permissions';
-import { ResponseError } from '@n8n/rest-api-client';
+import type { IUser } from '@MNI/rest-api-client/api/users';
+import type { Scope } from '@MNI/permissions';
+import { ResponseError } from '@MNI/rest-api-client';
 
 const trackMock = vi.fn();
-vi.mock('@n8n/composables/useTelemetry', () => ({
+vi.mock('@MNI/composables/useTelemetry', () => ({
 	useTelemetry: () => ({ track: trackMock }),
 }));
 
 // N8nDialog teleports out of the tree (Reka UI's DialogPortal), so replace it
 // with a render-inline pass-through that keeps the open state and the header.
-vi.mock('@n8n/design-system', async () => {
-	const actual = await vi.importActual<typeof import('@n8n/design-system')>('@n8n/design-system');
+vi.mock('@MNI/design-system', async () => {
+	const actual = await vi.importActual<typeof import('@MNI/design-system')>('@MNI/design-system');
 	const N8nDialog = {
 		name: 'N8nDialog',
 		props: ['open', 'size', 'header'],

@@ -1,4 +1,4 @@
-import { AGENT_MODEL_PROVIDERS } from '@n8n/api-types';
+import { AGENT_MODEL_PROVIDERS } from '@MNI/api-types';
 
 import { filterOfferedAgentModelProviders } from '../model-catalog';
 

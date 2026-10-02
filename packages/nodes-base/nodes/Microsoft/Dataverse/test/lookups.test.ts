@@ -1,5 +1,5 @@
-import type { IExecuteFunctions, INode } from 'n8n-workflow';
-import { NodeOperationError } from 'n8n-workflow';
+import type { IExecuteFunctions, INode } from 'MNI-workflow';
+import { NodeOperationError } from 'MNI-workflow';
 import { mockDeep } from 'vitest-mock-extended';
 
 import { dataverseApiRequest } from '../GenericFunctions';
@@ -19,7 +19,7 @@ const CREDENTIAL_TYPE = 'microsoftDataverseOAuth2Api';
 const node: INode = {
 	id: 'test-node',
 	name: 'Microsoft Dataverse',
-	type: 'n8n-nodes-base.microsoftDataverse',
+	type: 'MNI-nodes-base.microsoftDataverse',
 	typeVersion: 1,
 	position: [0, 0],
 	parameters: {},

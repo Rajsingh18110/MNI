@@ -3,12 +3,12 @@ import type {
 	InsightsByWorkflow,
 	InsightsSummary,
 	RestrictedInsightsByTime,
-} from '@n8n/api-types';
-import { InsightsDateFilterDto, ListInsightsWorkflowQueryDto } from '@n8n/api-types';
-import { AuthenticatedRequest } from '@n8n/db';
-import { Get, GlobalScope, Licensed, Query, RestController } from '@n8n/decorators';
+} from '@MNI/api-types';
+import { InsightsDateFilterDto, ListInsightsWorkflowQueryDto } from '@MNI/api-types';
+import { AuthenticatedRequest } from '@MNI/db';
+import { Get, GlobalScope, Licensed, Query, RestController } from '@MNI/decorators';
 import { DateTime } from 'luxon';
-import { UserError } from 'n8n-workflow';
+import { UserError } from 'MNI-workflow';
 import { z } from 'zod';
 
 import { BadRequestError } from '@/errors/response-errors/bad-request.error';
@@ -41,7 +41,6 @@ export class InsightsController {
 
 	@Get('/by-workflow')
 	@GlobalScope('insights:list')
-	@Licensed('feat:insights:viewDashboard')
 	async getInsightsByWorkflow(
 		req: AuthenticatedRequest,
 		_res: Response,
@@ -63,7 +62,6 @@ export class InsightsController {
 
 	@Get('/by-time')
 	@GlobalScope('insights:list')
-	@Licensed('feat:insights:viewDashboard')
 	async getInsightsByTime(
 		req: AuthenticatedRequest,
 		_res: Response,

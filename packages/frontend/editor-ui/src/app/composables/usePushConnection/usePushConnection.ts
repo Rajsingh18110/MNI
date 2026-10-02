@@ -1,6 +1,6 @@
 import { ref } from 'vue';
-import type { PushMessage } from '@n8n/api-types';
-import { pushHandlerRegistry } from '@n8n/frontend-module-sdk';
+import type { PushMessage } from '@MNI/api-types';
+import { pushHandlerRegistry } from '@MNI/frontend-module-sdk';
 
 import { usePushConnectionStore } from '@/app/stores/pushConnection.store';
 import {
@@ -29,7 +29,7 @@ import {
 import type { PushHandlerOptions } from '@/app/composables/usePushConnection/handlers/types';
 import { injectWorkflowDocumentStore } from '@/app/stores/workflowDocument.store';
 import { useEditorContext } from '@/app/composables/useEditorContext';
-import { createEventQueue } from '@n8n/utils/create-event-queue';
+import { createEventQueue } from '@MNI/utils/create-event-queue';
 import type { useRouter } from 'vue-router';
 
 export function usePushConnection({ router }: { router: ReturnType<typeof useRouter> }) {

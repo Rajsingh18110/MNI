@@ -15,7 +15,7 @@ import { execFileSync, spawnSync } from 'node:child_process';
 
 import { MARKETPLACE, PLUGINS } from '../.devcontainer/codespaces/plugins.mjs';
 
-const REPO = 'n8n-io/n8n';
+const REPO = 'MNI-io/MNI';
 const DEVCONTAINER = '.devcontainer/codespaces/devcontainer.json';
 // Keep scripted sessions fast. The dev container also permits smaller Codespaces.
 const MACHINE = 'premiumLinux';
@@ -82,9 +82,9 @@ function ensureCodespace() {
 // tmux does not start a login shell. Load shared secrets before each tool starts.
 // Remove worker credentials because interactive tools do not use them.
 const SESSION_SECRETS =
-	'. /usr/local/lib/codespaces-env.sh 2>/dev/null || true; unset AGENT_WORKER_TOKEN N8N_DEQUEUE_URL SLACK_BOT_TOKEN';
+	'. /usr/local/lib/codespaces-env.sh 2>/dev/null || true; unset AGENT_WORKER_TOKEN MNI_DEQUEUE_URL SLACK_BOT_TOKEN';
 const OPENCODE_CONFIG =
-	'export OPENCODE_CONFIG_CONTENT="{\\"provider\\":{\\"openrouter\\":{\\"options\\":{\\"apiKey\\":\\"{env:OPENROUTER_API_KEY}\\"}}}}"; export N8N_AGENT_RUNTIME=sandbox; unset N8N_AGENT_PROFILE';
+	'export OPENCODE_CONFIG_CONTENT="{\\"provider\\":{\\"openrouter\\":{\\"options\\":{\\"apiKey\\":\\"{env:OPENROUTER_API_KEY}\\"}}}}"; export MNI_AGENT_RUNTIME=sandbox; unset MNI_AGENT_PROFILE';
 // Worktrees share the pnpm store but not the turbo cache; a shared TURBO_CACHE_DIR
 // (seeded from the main checkout) keeps new-worktree builds at cache-hit speed.
 const CACHE =
@@ -106,7 +106,7 @@ function remoteCommand(session, launcher, extraArgs) {
 	const executable = launcher === 'opencode' ? 'opencode --auto' : launcher;
 	const command =
 		launcher === 'shell'
-			? 'export N8N_SKIP_CODESPACE_SECRETS=1; exec "${SHELL:-/bin/bash}" -l'
+			? 'export MNI_SKIP_CODESPACE_SECRETS=1; exec "${SHELL:-/bin/bash}" -l'
 			: `${executable} ${extraArgs}`.trim();
 	const prelude = [
 		SESSION_SECRETS,
@@ -181,7 +181,7 @@ switch (cmd) {
 	}
 	case 'tunnel': {
 		// Local ports must match remote ones: the Vite dev UI (8080) points its API
-		// base at localhost:5678 (N8N_PORT's default), so an asymmetric or partial
+		// base at localhost:5678 (MNI_PORT's default), so an asymmetric or partial
 		// mapping breaks it.
 		const ports = rest.length ? rest : ['5678', '8080'];
 		if (ports.some((p) => !/^\d+$/.test(p) || +p < 1 || +p > 65535)) {

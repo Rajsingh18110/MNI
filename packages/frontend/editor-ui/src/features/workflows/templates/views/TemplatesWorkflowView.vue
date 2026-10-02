@@ -5,9 +5,9 @@ import { useTemplateWorkflow } from '@/features/workflows/templates/utils/templa
 import { useExternalHooks } from '@/app/composables/useExternalHooks';
 import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';
 import { useRoute, useRouter } from 'vue-router';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
 import { useDocumentTitle } from '@/app/composables/useDocumentTitle';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import {
 	ensurePersonalProjectId,
 	useInstanceAiHandoff,
@@ -18,8 +18,8 @@ import { createWorkflowDocumentId } from '@/app/stores/workflowDocument.store';
 import TemplatesView from './TemplatesView.vue';
 import RecommendedTemplateCard from '../recommendations/components/RecommendedTemplateCard.vue';
 
-import { N8nButton, N8nMarkdown, N8nText } from '@n8n/design-system';
-import type { IWorkflowTemplate } from '@n8n/rest-api-client';
+import { N8nButton, N8nMarkdown, N8nText } from '@MNI/design-system';
+import type { IWorkflowTemplate } from '@MNI/rest-api-client';
 
 const externalHooks = useExternalHooks();
 const templatesStore = useTemplatesStore();

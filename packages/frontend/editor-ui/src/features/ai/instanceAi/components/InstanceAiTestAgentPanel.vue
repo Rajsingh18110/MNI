@@ -4,8 +4,8 @@
  * than imposes: the dismiss action is a peer of the CTA, not a close affordance
  * tucked in a corner.
  */
-import { N8nButton, N8nIcon, N8nText } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+import { N8nButton, N8nIcon, N8nText } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 
 defineEmits<{
 	generate: [];

@@ -4,8 +4,8 @@ import { waitFor } from '@testing-library/vue';
 
 import { renderComponent } from '@/__tests__/render';
 import TagsDropdown from './TagsDropdown.vue';
-import type { ITag } from '@n8n/rest-api-client/api/tags';
-import type { BaseTextKey } from '@n8n/i18n';
+import type { ITag } from '@MNI/rest-api-client/api/tags';
+import type { BaseTextKey } from '@MNI/i18n';
 
 /**
  * Covers the dropdown's empty state — the message shown in place of the option

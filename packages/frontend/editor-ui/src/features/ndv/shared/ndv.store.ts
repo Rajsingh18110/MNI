@@ -7,7 +7,7 @@ import type {
 	MainPanelDimensions,
 	MainPanelType,
 } from './ndv.types';
-import { useStorage } from '@n8n/composables/useStorage';
+import { useStorage } from '@MNI/composables/useStorage';
 import {
 	LOCAL_STORAGE_AUTOCOMPLETE_IS_ONBOARDED,
 	LOCAL_STORAGE_MAPPING_IS_ONBOARDED,
@@ -15,9 +15,9 @@ import {
 	LOCAL_STORAGE_NDV_OUTPUT_PANEL_DISPLAY_MODE,
 	LOCAL_STORAGE_TABLE_HOVER_IS_ONBOARDED,
 } from './ndv.constants';
-import { STORES } from '@n8n/stores';
-import type { INodeIssues } from 'n8n-workflow';
-import { NodeConnectionTypes } from 'n8n-workflow';
+import { STORES } from '@MNI/stores';
+import type { INodeIssues } from 'MNI-workflow';
+import { NodeConnectionTypes } from 'MNI-workflow';
 import { defineStore, getActivePinia, type Pinia } from 'pinia';
 import { v4 as uuid } from 'uuid';
 import {

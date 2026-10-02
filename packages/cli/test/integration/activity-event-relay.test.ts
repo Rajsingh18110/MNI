@@ -1,12 +1,12 @@
-import { INSTANCE_ACTIVITY_CONTEXT_FLAG } from '@n8n/api-types';
-import { Logger } from '@n8n/backend-common';
-import { createTeamProject, createWorkflow, testDb } from '@n8n/backend-test-utils';
-import { GlobalConfig } from '@n8n/config';
-import { Time } from '@n8n/constants';
-import { ActivityEventRepository, WorkflowRepository } from '@n8n/db';
-import type { Project, User, WorkflowEntity, ActivityEvent } from '@n8n/db';
-import { Container } from '@n8n/di';
-import type { INode } from 'n8n-workflow';
+import { INSTANCE_ACTIVITY_CONTEXT_FLAG } from '@MNI/api-types';
+import { Logger } from '@MNI/backend-common';
+import { createTeamProject, createWorkflow, testDb } from '@MNI/backend-test-utils';
+import { GlobalConfig } from '@MNI/config';
+import { Time } from '@MNI/constants';
+import { ActivityEventRepository, WorkflowRepository } from '@MNI/db';
+import type { Project, User, WorkflowEntity, ActivityEvent } from '@MNI/db';
+import { Container } from '@MNI/di';
+import type { INode } from 'MNI-workflow';
 
 import { EventService } from '@/events/event.service';
 import { ActivityEventRelay } from '@/events/relays/activity.event-relay';
@@ -81,10 +81,10 @@ describe('ActivityEventRelay', () => {
 	it('resolves the project of a live workflow and writes a readable entry', async () => {
 		eventService.emit('workflow-saved', {
 			user: actor(),
-			workflow: { ...workflow, nodes: [node('n8n-nodes-base.slack', 'Slack')] },
+			workflow: { ...workflow, nodes: [node('MNI-nodes-base.slack', 'Slack')] },
 			previousWorkflow: { ...workflow, nodes: [] },
 			publicApi: false,
-			source: 'n8n-ai',
+			source: 'MNI-ai',
 		});
 		const [entry] = await waitForEntry(project.id);
 
@@ -95,7 +95,7 @@ describe('ActivityEventRelay', () => {
 			resourceType: 'workflow',
 			resourceId: workflow.id,
 			resourceName: 'Lead enrichment',
-			data: { source: 'n8n-ai', nodeCount: 1, nodesAdded: ['slack'] },
+			data: { source: 'MNI-ai', nodeCount: 1, nodesAdded: ['slack'] },
 		});
 	});
 

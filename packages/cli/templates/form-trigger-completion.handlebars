@@ -71,14 +71,14 @@
 			margin-bottom: var(--card-margin-bottom);
 		}
 
-		.n8n-link a {
+		.MNI-link a {
 			color: var(--color-link);
 			font-weight: var(--font-weight-bold);
 			font-size: var(--font-size-link);
 			text-decoration: none;
 		}
 
-		.n8n-link svg {
+		.MNI-link svg {
 			display: inline-block;
 			vertical-align: middle;
 		}
@@ -119,7 +119,7 @@
 						</div>
 					</div>
 					{{#if appendAttribution}}
-						<div class='n8n-link'>
+						<div class='MNI-link'>
 							<a href='{{n8nWebsiteLink}}' target='_blank'>
 								Form automated with
 								<svg
@@ -171,7 +171,7 @@
 
 			try {
 				const statusUrl = new URL(window.location.href);
-				statusUrl.pathname = statusUrl.pathname + '/n8n-execution-status';
+				statusUrl.pathname = statusUrl.pathname + '/MNI-execution-status';
 				// Include signature in fetch request for validation
 				if (formSignature) {
 					statusUrl.searchParams.set('signature', formSignature);

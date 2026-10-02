@@ -4,7 +4,7 @@ import { computed, ref } from 'vue';
 import type MarkdownIt from 'markdown-it';
 import markdownItKatex from '@vscode/markdown-it-katex';
 import markdownItFootnote from 'markdown-it-footnote';
-import { truncateBeforeLast } from '@n8n/utils/string/truncate';
+import { truncateBeforeLast } from '@MNI/utils/string/truncate';
 import 'katex/dist/katex.min.css';
 import type StateCore from 'markdown-it/lib/rules_core/state_core';
 import type * as LanguageModules from './languageModules';

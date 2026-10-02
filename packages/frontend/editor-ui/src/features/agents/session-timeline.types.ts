@@ -1,5 +1,5 @@
-import type { AgentBackgroundJobSignal } from '@n8n/api-types';
-import type { BadgeVariant } from '@n8n/design-system';
+import type { AgentBackgroundJobSignal } from '@MNI/api-types';
+import type { BadgeVariant } from '@MNI/design-system';
 
 export type EventKind =
 	| 'user'

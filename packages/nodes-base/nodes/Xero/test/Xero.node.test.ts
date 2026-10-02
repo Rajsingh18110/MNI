@@ -5,7 +5,7 @@ import type {
 	ILoadOptionsFunctions,
 	INode,
 	NodeExecutionWithMetadata,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { Xero } from '../Xero.node';
 

@@ -1,8 +1,8 @@
-import { type UsersListFilterDto, type User } from '@n8n/api-types';
+import { type UsersListFilterDto, type User } from '@MNI/api-types';
 import { ref } from 'vue';
-import * as usersApi from '@n8n/rest-api-client/api/users';
-import type { IRestApiContext } from '@n8n/rest-api-client';
-import { useRootStore } from '@n8n/stores/useRootStore';
+import * as usersApi from '@MNI/rest-api-client/api/users';
+import type { IRestApiContext } from '@MNI/rest-api-client';
+import { useRootStore } from '@MNI/stores/useRootStore';
 
 /**
  * Special type since we use the "select" and "expand" filter
@@ -138,7 +138,7 @@ export function useAccessSettingsCsvExport() {
 		}
 
 		const csvContent = csvRows.join('\n');
-		const filename = `n8n_project_role_export_${formatDateForFilename()}.csv`;
+		const filename = `MNI_project_role_export_${formatDateForFilename()}.csv`;
 
 		downloadCsv(csvContent, filename);
 		hasDownloadedProjectRoleCsv.value = true;
@@ -157,7 +157,7 @@ export function useAccessSettingsCsvExport() {
 		}
 
 		const csvContent = csvRows.join('\n');
-		const filename = `n8n_instance_role_export_${formatDateForFilename()}.csv`;
+		const filename = `MNI_instance_role_export_${formatDateForFilename()}.csv`;
 
 		downloadCsv(csvContent, filename);
 		hasDownloadedInstanceRoleCsv.value = true;

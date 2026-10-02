@@ -95,7 +95,7 @@
 							"mode": "once",
 							"options": {}
 						},
-						"type": "n8n-nodes-base.executeWorkflow",
+						"type": "MNI-nodes-base.executeWorkflow",
 						"typeVersion": 1.2,
 						"position": [120, -100],
 						"id": "62717ac7-614d-4e3f-b2ec-1e28688068c4",

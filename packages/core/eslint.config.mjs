@@ -1,5 +1,5 @@
 import { defineConfig, globalIgnores } from 'eslint/config';
-import { backendConfig } from '@n8n/eslint-config/backend';
+import { backendConfig } from '@MNI/eslint-config/backend';
 
 export default defineConfig(
 	backendConfig,
@@ -8,7 +8,7 @@ export default defineConfig(
 		rules: {
 			// TODO: Lower the complexity threshold
 			complexity: ['error', 27],
-			'n8n-local-rules/no-dynamic-regexp': 'error',
+			'MNI-local-rules/no-dynamic-regexp': 'error',
 
 			// TODO: Remove these
 			'no-prototype-builtins': 'warn',
@@ -27,7 +27,7 @@ export default defineConfig(
 			'prefer-const': 'warn',
 			'import-x/no-duplicates': 'warn',
 			'import-x/no-default-export': 'warn',
-			'n8n-local-rules/no-uncaught-json-parse': 'warn',
+			'MNI-local-rules/no-uncaught-json-parse': 'warn',
 			'@typescript-eslint/no-unsafe-assignment': 'warn',
 			'@typescript-eslint/no-unsafe-argument': 'warn',
 			'@typescript-eslint/no-unsafe-call': 'warn',
@@ -35,7 +35,7 @@ export default defineConfig(
 			'@typescript-eslint/unbound-method': 'warn',
 			'@typescript-eslint/no-unused-expressions': 'warn',
 			'id-denylist': 'warn',
-			'n8n-local-rules/no-dynamic-regexp': 'off',
+			'MNI-local-rules/no-dynamic-regexp': 'off',
 		},
 	},
 );

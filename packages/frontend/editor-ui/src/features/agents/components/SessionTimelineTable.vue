@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue';
-import { useI18n } from '@n8n/i18n';
-import { N8nRecycleScroller } from '@n8n/design-system';
+import { useI18n } from '@MNI/i18n';
+import { N8nRecycleScroller } from '@MNI/design-system';
 import SessionTimelineRow from './SessionTimelineRow.vue';
 import type { IdleRange, TimelineItem } from '../session-timeline.types';
 import { filteredTimelineItemIndexes, formatDuration } from '../session-timeline.utils';

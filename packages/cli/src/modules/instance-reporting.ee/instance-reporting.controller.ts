@@ -1,5 +1,5 @@
-import type { InstanceReportingStatus } from '@n8n/api-types';
-import { Get, RestController } from '@n8n/decorators';
+import type { InstanceReportingStatus } from '@MNI/api-types';
+import { Get, RestController } from '@MNI/decorators';
 
 import { InstanceMonitoringReportRepository } from './database/repositories/instance-monitoring-report.repository';
 

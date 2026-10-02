@@ -9,7 +9,7 @@ import {
 	FORM_TRIGGER_NODE_TYPE,
 } from '@/app/constants';
 import type { INodeUi } from '@/Interface';
-import type { INodeTypeDescription } from 'n8n-workflow';
+import type { INodeTypeDescription } from 'MNI-workflow';
 import { getTriggerNodeServiceName } from '@/app/utils/nodeTypesUtils';
 import NodeExecuteButton from '@/app/components/NodeExecuteButton.vue';
 import CopyInput from '@/app/components/CopyInput.vue';
@@ -18,13 +18,13 @@ import { useUIStore } from '@/app/stores/ui.store';
 import { injectWorkflowExecutionStateStore } from '@/app/stores/workflowExecutionState.store';
 import { injectNDVStore } from '@/features/ndv/shared/ndv.store';
 import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';
-import { createEventBus } from '@n8n/utils/event-bus';
+import { createEventBus } from '@MNI/utils/event-bus';
 import { useRouter } from 'vue-router';
 import { useWorkflowHelpers } from '@/app/composables/useWorkflowHelpers';
 import { isTriggerPanelObject } from '@/app/utils/typeGuards';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import { useInjectWorkflowId } from '@/app/composables/useInjectWorkflowId';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
 import { injectWorkflowDocumentStore } from '@/app/stores/workflowDocument.store';
 
 import {
@@ -36,7 +36,7 @@ import {
 	N8nSpinner,
 	N8nText,
 	N8nTooltip,
-} from '@n8n/design-system';
+} from '@MNI/design-system';
 const props = withDefaults(
 	defineProps<{
 		nodeName: string;
@@ -511,7 +511,7 @@ const onNodeExecute = () => {
 
 				<div :class="$style.hints">
 					<N8nText v-if="activationHint" size="small" @click="onLinkClick">
-						<span v-n8n-html="activationHint"></span>&nbsp;
+						<span v-MNI-html="activationHint"></span>&nbsp;
 					</N8nText>
 					<N8nLink
 						v-if="activationHint && executionsHelp"

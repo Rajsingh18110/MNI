@@ -1,12 +1,12 @@
 <script lang="ts" setup>
 import { reactive, ref } from 'vue';
 import { useRouter } from 'vue-router';
-import type { IFormBoxConfig } from '@n8n/design-system';
+import type { IFormBoxConfig } from '@MNI/design-system';
 import AuthView from '@/features/core/auth/views/AuthView.vue';
 import { VIEWS } from '@/app/constants';
-import { useI18n } from '@n8n/i18n';
-import { useToast } from '@n8n/composables/useToast';
-import { useUsersStore } from '@n8n/stores/users.store';
+import { useI18n } from '@MNI/i18n';
+import { useToast } from '@MNI/composables/useToast';
+import { useUsersStore } from '@MNI/stores/users.store';
 
 const router = useRouter();
 const locale = useI18n();

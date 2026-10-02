@@ -5,7 +5,7 @@
 			"parameters": {},
 			"id": "5f174c07-00e5-49fc-854f-b1571d35c5a3",
 			"name": "When clicking \"Execute Workflow\"",
-			"type": "n8n-nodes-base.manualTrigger",
+			"type": "MNI-nodes-base.manualTrigger",
 			"typeVersion": 1,
 			"position": [960, 520]
 		},
@@ -64,7 +64,7 @@
 			},
 			"id": "2aa52759-f7a5-4a60-bf2e-9c1e3d2821dc",
 			"name": "Code",
-			"type": "n8n-nodes-testing.testData",
+			"type": "MNI-nodes-testing.testData",
 			"typeVersion": 1,
 			"position": [1160, 520]
 		},
@@ -74,7 +74,7 @@
 			},
 			"id": "90acc956-989f-4008-a3df-fe0162762b24",
 			"name": "Remove duplicates",
-			"type": "n8n-nodes-base.itemLists",
+			"type": "MNI-nodes-base.itemLists",
 			"typeVersion": 3.1,
 			"position": [1440, 160]
 		},
@@ -87,7 +87,7 @@
 			},
 			"id": "6c39a6bb-b042-4d4c-828c-52699f178828",
 			"name": "Remove duplicates by mixed",
-			"type": "n8n-nodes-base.itemLists",
+			"type": "MNI-nodes-base.itemLists",
 			"typeVersion": 3.1,
 			"position": [1440, 340]
 		},
@@ -100,7 +100,7 @@
 			},
 			"id": "d3783be2-6705-44d3-b481-72e7a9dba458",
 			"name": "Remove duplicates by match",
-			"type": "n8n-nodes-base.itemLists",
+			"type": "MNI-nodes-base.itemLists",
 			"typeVersion": 3.1,
 			"position": [1440, 520]
 		},
@@ -113,7 +113,7 @@
 			},
 			"id": "e634e39d-0ce6-477f-97cc-69eec2dd981b",
 			"name": "Remove duplicates except by mixed",
-			"type": "n8n-nodes-base.itemLists",
+			"type": "MNI-nodes-base.itemLists",
 			"typeVersion": 3.1,
 			"position": [1440, 720]
 		},
@@ -126,7 +126,7 @@
 			},
 			"id": "0a1bbc9a-3505-413c-ae86-c60dc60b5909",
 			"name": "Remove duplicates except by match",
-			"type": "n8n-nodes-base.itemLists",
+			"type": "MNI-nodes-base.itemLists",
 			"typeVersion": 3.1,
 			"position": [1440, 940]
 		}

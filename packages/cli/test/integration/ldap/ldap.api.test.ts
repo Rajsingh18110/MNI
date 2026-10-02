@@ -4,19 +4,19 @@ import {
 	uniqueId,
 	getPersonalProject,
 	testDb,
-} from '@n8n/backend-test-utils';
-import { LDAP_DEFAULT_CONFIGURATION } from '@n8n/constants';
-import type { User } from '@n8n/db';
+} from '@MNI/backend-test-utils';
+import { LDAP_DEFAULT_CONFIGURATION } from '@MNI/constants';
+import type { User } from '@MNI/db';
 import {
 	AuthProviderSyncHistoryRepository,
 	GLOBAL_MEMBER_ROLE,
 	GLOBAL_OWNER_ROLE,
 	UserRepository,
-} from '@n8n/db';
-import { Container } from '@n8n/di';
-import { Not } from '@n8n/typeorm';
+} from '@MNI/db';
+import { Container } from '@MNI/di';
+import { Not } from '@MNI/typeorm';
 import type { Entry as LdapUser } from 'ldapts';
-import { Cipher } from 'n8n-core';
+import { Cipher } from 'MNI-core';
 
 import config from '@/config';
 import { saveLdapSynchronization } from '@/modules/ldap.ee/helpers.ee';
@@ -606,7 +606,7 @@ describe('POST /login', () => {
 
 		expect(response.statusCode).toBe(200);
 		expect(response.headers['set-cookie']).toBeDefined();
-		expect(response.headers['set-cookie'][0]).toContain('n8n-auth=');
+		expect(response.headers['set-cookie'][0]).toContain('MNI-auth=');
 
 		// Make sure the changes in the "LDAP server" were persisted in the database
 		const localLdapIdentities = await getLdapIdentities();

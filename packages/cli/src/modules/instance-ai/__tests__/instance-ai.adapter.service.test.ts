@@ -1,11 +1,11 @@
 // Mock the barrel import so these adapter tests only exercise local formatting helpers.
-vi.mock('@n8n/instance-ai', async () => {
+vi.mock('@MNI/instance-ai', async () => {
 	const {
 		WorkflowSaveConflictError,
 		WorkflowNotFoundError,
 		WorkflowEditorLockedError,
 		FolderResolutionError,
-	} = await import('@n8n/instance-ai/errors');
+	} = await import('@MNI/instance-ai/errors');
 	return {
 		WorkflowSaveConflictError,
 		WorkflowNotFoundError,
@@ -37,17 +37,17 @@ vi.mock('@n8n/instance-ai', async () => {
 
 import type { Mock, Mocked, MockInstance } from 'vitest';
 
-vi.mock('@n8n/ai-utilities', () => ({
+vi.mock('@MNI/ai-utilities', () => ({
 	braveSearch: vi.fn(),
 	searxngSearch: vi.fn(),
 }));
 
-import type { PolicyCleared } from '@n8n/decorators';
-import { TOOL_EXECUTOR_NODE_NAME } from '@n8n/constants';
-import { Container } from '@n8n/di';
-import { generateWorkflowCode, parseWorkflowCode } from '@n8n/workflow-sdk';
+import type { PolicyCleared } from '@MNI/decorators';
+import { TOOL_EXECUTOR_NODE_NAME } from '@MNI/constants';
+import { Container } from '@MNI/di';
+import { generateWorkflowCode, parseWorkflowCode } from '@MNI/workflow-sdk';
 import { mock } from 'vitest-mock-extended';
-import { Expression, NodeConnectionTypes } from 'n8n-workflow';
+import { Expression, NodeConnectionTypes } from 'MNI-workflow';
 import type {
 	ExecutionError,
 	IConnections,
@@ -58,7 +58,7 @@ import type {
 	IPinData,
 	IRunExecutionData,
 	ITaskData,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import {
 	AI_GATEWAY_MANAGED_TAG,
 	AI_ASSISTANT_AT_MENTIONS_FLAG,
@@ -80,7 +80,7 @@ import {
 	CONTEXT_PREFERENCES_FLAG,
 	CONTEXT_PREFERENCES_CONTROL_VARIANT,
 	CONTEXT_PREFERENCES_ENABLED_VARIANT,
-} from '@n8n/api-types';
+} from '@MNI/api-types';
 
 import type { ExecutionPersistence } from '@/executions/execution-persistence';
 import type { NodeCatalogService } from '@/node-catalog';
@@ -212,7 +212,7 @@ function makeTaskData(
 	} as unknown as ITaskData;
 }
 
-const FILTER_NODE: WorkflowNode = { name: 'Filter', type: 'n8n-nodes-base.filter' };
+const FILTER_NODE: WorkflowNode = { name: 'Filter', type: 'MNI-nodes-base.filter' };
 
 /**
  * Mock an execution where `node` ran once and emitted `outputs`, one item list
@@ -483,7 +483,7 @@ describe('extractExecutionResult', () => {
 				workflowNodes: [
 					{
 						name: 'Fallback Lookup',
-						type: 'n8n-nodes-base.httpRequest',
+						type: 'MNI-nodes-base.httpRequest',
 						onError: 'continueErrorOutput',
 					},
 				],
@@ -920,8 +920,8 @@ describe('extractExecutionDebugInfo', () => {
 		const execution = makeExecution({
 			status: 'success',
 			workflowNodes: [
-				{ name: 'Start', type: 'n8n-nodes-base.start' },
-				{ name: 'HTTP', type: 'n8n-nodes-base.httpRequest' },
+				{ name: 'Start', type: 'MNI-nodes-base.start' },
+				{ name: 'HTTP', type: 'MNI-nodes-base.httpRequest' },
 			],
 			runData: {
 				Start: [makeTaskData([{ ok: true }], { startTime: 1000, executionTime: 100 })],
@@ -937,12 +937,12 @@ describe('extractExecutionDebugInfo', () => {
 
 		const startTrace = result.nodeTrace.find((n) => n.name === 'Start');
 		expect(startTrace).toBeDefined();
-		expect(startTrace!.type).toBe('n8n-nodes-base.start');
+		expect(startTrace!.type).toBe('MNI-nodes-base.start');
 		expect(startTrace!.status).toBe('success');
 
 		const httpTrace = result.nodeTrace.find((n) => n.name === 'HTTP');
 		expect(httpTrace).toBeDefined();
-		expect(httpTrace!.type).toBe('n8n-nodes-base.httpRequest');
+		expect(httpTrace!.type).toBe('MNI-nodes-base.httpRequest');
 		expect(httpTrace!.status).toBe('success');
 	});
 
@@ -952,8 +952,8 @@ describe('extractExecutionDebugInfo', () => {
 			status: 'error',
 			error: { message: 'Workflow failed' },
 			workflowNodes: [
-				{ name: 'Start', type: 'n8n-nodes-base.start' },
-				{ name: 'HTTP', type: 'n8n-nodes-base.httpRequest' },
+				{ name: 'Start', type: 'MNI-nodes-base.start' },
+				{ name: 'HTTP', type: 'MNI-nodes-base.httpRequest' },
 			],
 			runData: {
 				Start: [makeTaskData([{ ok: true }], { startTime: 1000, executionTime: 100 })],
@@ -973,7 +973,7 @@ describe('extractExecutionDebugInfo', () => {
 		expect(result.status).toBe('error');
 		expect(result.failedNode).toBeDefined();
 		expect(result.failedNode!.name).toBe('HTTP');
-		expect(result.failedNode!.type).toBe('n8n-nodes-base.httpRequest');
+		expect(result.failedNode!.type).toBe('MNI-nodes-base.httpRequest');
 		expect(result.failedNode!.error).toBe('Connection refused');
 	});
 
@@ -989,7 +989,7 @@ describe('extractExecutionDebugInfo', () => {
 		};
 		const execution = makeExecution({
 			status: 'error',
-			workflowNodes: [{ name: 'AI Agent', type: '@n8n/n8n-nodes-langchain.agent' }],
+			workflowNodes: [{ name: 'AI Agent', type: '@MNI/MNI-nodes-langchain.agent' }],
 			runData: {
 				'AI Agent': [
 					makeTaskData([{ chatInput: 'Hello' }], {
@@ -1021,7 +1021,7 @@ describe('extractExecutionDebugInfo', () => {
 		};
 		const execution = makeExecution({
 			status: 'error',
-			workflowNodes: [{ name: 'AI Agent', type: '@n8n/n8n-nodes-langchain.agent' }],
+			workflowNodes: [{ name: 'AI Agent', type: '@MNI/MNI-nodes-langchain.agent' }],
 			runData: {
 				'AI Agent': [makeTaskData([{ chatInput: 'Hello' }], { error: deserialized })],
 			},
@@ -1113,8 +1113,8 @@ describe('extractExecutionDebugInfo', () => {
 		}
 
 		it('surfaces the offending expression in failedExpressions when resolution itself threw', async () => {
-			const trigger = makeNode('Trigger', 'n8n-nodes-base.manualTrigger');
-			const failed = makeNode('Edit Fields', 'n8n-nodes-base.set', {
+			const trigger = makeNode('Trigger', 'MNI-nodes-base.manualTrigger');
+			const failed = makeNode('Edit Fields', 'MNI-nodes-base.set', {
 				assignments: {
 					assignments: [
 						{ name: 'foo', value: 'bar', type: 'string' },
@@ -1146,8 +1146,8 @@ describe('extractExecutionDebugInfo', () => {
 		});
 
 		it('surfaces silent empty-resolution expressions even when runtime threw a different error', async () => {
-			const trigger = makeNode('Trigger', 'n8n-nodes-base.manualTrigger');
-			const failed = makeNode('HTTP', 'n8n-nodes-base.httpRequest', {
+			const trigger = makeNode('Trigger', 'MNI-nodes-base.manualTrigger');
+			const failed = makeNode('HTTP', 'MNI-nodes-base.httpRequest', {
 				// Pure expression that resolves to undefined — caught by the empty-resolution
 				// heuristic. (Template concatenations like `={{ $json.missing }}/api` resolve
 				// to a non-empty string "undefined/api" and are NOT flagged today.)
@@ -1170,8 +1170,8 @@ describe('extractExecutionDebugInfo', () => {
 		});
 
 		it('omits resolvedParameters when allowSendingParameterValues is false', async () => {
-			const trigger = makeNode('Trigger', 'n8n-nodes-base.manualTrigger');
-			const failed = makeNode('Edit Fields', 'n8n-nodes-base.set', {
+			const trigger = makeNode('Trigger', 'MNI-nodes-base.manualTrigger');
+			const failed = makeNode('Edit Fields', 'MNI-nodes-base.set', {
 				value: '={{ $json.x }}',
 			});
 			const execution = makeFailedExecution({
@@ -1188,8 +1188,8 @@ describe('extractExecutionDebugInfo', () => {
 		});
 
 		it('omits resolvedParameters when nodeTypes is not passed (caller opted out)', async () => {
-			const trigger = makeNode('Trigger', 'n8n-nodes-base.manualTrigger');
-			const failed = makeNode('Edit Fields', 'n8n-nodes-base.set', { value: '={{ $json.x }}' });
+			const trigger = makeNode('Trigger', 'MNI-nodes-base.manualTrigger');
+			const failed = makeNode('Edit Fields', 'MNI-nodes-base.set', { value: '={{ $json.x }}' });
 			const execution = makeFailedExecution({
 				nodes: [trigger, failed],
 				connections: connect('Trigger', 'Edit Fields'),
@@ -1211,7 +1211,7 @@ describe('extractExecutionDebugInfo', () => {
 		it('still returns debug info when the resolution helper itself throws', async () => {
 			// Failed node is present in runData but missing from the workflow snapshot →
 			// extractResolvedNodeParameters throws "Node X not found in execution snapshot".
-			const trigger = makeNode('Trigger', 'n8n-nodes-base.manualTrigger');
+			const trigger = makeNode('Trigger', 'MNI-nodes-base.manualTrigger');
 			const execution = makeFailedExecution({
 				nodes: [trigger], // failed node intentionally missing
 				connections: {},
@@ -1230,8 +1230,8 @@ describe('extractExecutionDebugInfo', () => {
 			// Failure on item 3 of the parent's output — ExpressionError records
 			// `context.itemIndex: 3` so the resolution view should target item 3,
 			// not the default of 0.
-			const trigger = makeNode('Trigger', 'n8n-nodes-base.manualTrigger');
-			const failed = makeNode('Edit Fields', 'n8n-nodes-base.set', {
+			const trigger = makeNode('Trigger', 'MNI-nodes-base.manualTrigger');
+			const failed = makeNode('Edit Fields', 'MNI-nodes-base.set', {
 				value: '={{ $json.label }}',
 			});
 			const execution = makeFailedExecution({
@@ -1752,7 +1752,7 @@ describe('extractNodeOutput', () => {
 	it('returns index-only outputs when the node type is unknown', async () => {
 		mockMultiOutputRun([[{ id: 1 }], [{ id: 2 }]], {
 			name: 'Filter',
-			type: 'n8n-nodes-community.missing',
+			type: 'MNI-nodes-community.missing',
 		});
 		const nodeTypes = mock<NodeTypes>();
 		nodeTypes.getByNameAndVersion.mockImplementation(() => {
@@ -1802,19 +1802,19 @@ import type {
 	ProjectRepository,
 	SharedWorkflowRepository,
 	WorkflowRepository,
-} from '@n8n/db';
-import { TELEMETRY_EVENT } from '@n8n/telemetry';
-import { UserError, UnexpectedError } from 'n8n-workflow';
+} from '@MNI/db';
+import { TELEMETRY_EVENT } from '@MNI/telemetry';
+import { UserError, UnexpectedError } from 'MNI-workflow';
 import type { CredentialsFinderService } from '@/credentials/credentials-finder.service';
 import type { DataTableRepository } from '@/modules/data-table/data-table.repository';
 import type { DataTableService } from '@/modules/data-table/data-table.service';
 import type { InstanceWriteAccessService } from '@/services/instance-write-access.service';
-import type { WorkflowJSON } from '@n8n/workflow-sdk';
+import type { WorkflowJSON } from '@MNI/workflow-sdk';
 import {
 	WorkflowEditorLockedError,
 	WorkflowNotFoundError,
 	WorkflowSaveConflictError,
-} from '@n8n/instance-ai/errors';
+} from '@MNI/instance-ai/errors';
 import type { WorkflowService } from '@/workflows/workflow.service';
 import { AiPreferenceScopeFullError } from '@/errors/response-errors/ai-preference-scope-full.error';
 import { BadRequestError } from '@/errors/response-errors/bad-request.error';
@@ -1827,9 +1827,9 @@ import type { License } from '@/license';
 import type { AiPreferenceService } from '@/services/ai-preference.service';
 import type { RoleService } from '@/services/role.service';
 
-import type { OutboundHttp } from '@n8n/backend-network';
-import { ModuleRegistry } from '@n8n/backend-common';
-import type { InstanceAiBuilderDelegate } from '@n8n/instance-ai';
+import type { OutboundHttp } from '@MNI/backend-network';
+import { ModuleRegistry } from '@MNI/backend-common';
+import type { InstanceAiBuilderDelegate } from '@MNI/instance-ai';
 
 import { InstanceAiAdapterService } from '../instance-ai.adapter.service';
 import { InstanceAiBuilderDelegateAdapterService } from '@/modules/agents/instance-ai-builder-delegate.adapter';
@@ -1950,7 +1950,7 @@ function createNodeAdapterServiceForTests(
 
 describe('executeNodeService adapter', () => {
 	const executeRequest = {
-		type: 'n8n-nodes-base.set',
+		type: 'MNI-nodes-base.set',
 		version: 3,
 		config: { parameters: {} },
 	};
@@ -2003,7 +2003,7 @@ function createNodeAdapterForTests(
 // Web-search provider selection
 // ---------------------------------------------------------------------------
 
-import { braveSearch, searxngSearch } from '@n8n/ai-utilities';
+import { braveSearch, searxngSearch } from '@MNI/ai-utilities';
 
 describe('web-search provider selection', () => {
 	type SearchFn = (query: string, options?: Record<string, unknown>) => Promise<unknown>;
@@ -2086,7 +2086,7 @@ describe('createNodeAdapter', () => {
 	it('preserves credential displayOptions in getDescription()', async () => {
 		const adapter = createNodeAdapterForTests([
 			{
-				name: 'n8n-nodes-base.webhook',
+				name: 'MNI-nodes-base.webhook',
 				displayName: 'Webhook',
 				description: 'Starts the workflow when a webhook is called',
 				group: ['trigger'],
@@ -2109,7 +2109,7 @@ describe('createNodeAdapter', () => {
 			},
 		]);
 
-		const result = await adapter.getDescription('n8n-nodes-base.webhook', 2.1);
+		const result = await adapter.getDescription('MNI-nodes-base.webhook', 2.1);
 
 		expect(result.credentials).toEqual([
 			{
@@ -2136,13 +2136,13 @@ describe('createNodeAdapter', () => {
 		});
 		const adapter = createNodeAdapterForTests([], nodeCatalogService);
 
-		const result = await adapter.getNodeTypeDefinition?.('n8n-nodes-resend.resend', {
+		const result = await adapter.getNodeTypeDefinition?.('MNI-nodes-resend.resend', {
 			version: '1',
 		});
 
 		expect(nodeCatalogService.initialize).toHaveBeenCalled();
 		expect(nodeCatalogService.getNodeTypeDefinition).toHaveBeenCalledWith({
-			nodeId: 'n8n-nodes-resend.resend',
+			nodeId: 'MNI-nodes-resend.resend',
 			version: '1',
 		});
 		expect(result).toEqual({
@@ -2172,7 +2172,7 @@ describe('createNodeAdapter', () => {
 			nodeId: 'notion',
 		});
 		expect(nodeCatalogService.getNodeTypeDefinition).toHaveBeenNthCalledWith(2, {
-			nodeId: '@n8n/mcp-registry.notion',
+			nodeId: '@MNI/mcp-registry.notion',
 		});
 		expect(result).toEqual({ content: 'registry-node-def' });
 	});
@@ -2209,7 +2209,7 @@ describe('createNodeAdapter', () => {
 
 	describe('getResolvedNodeInputs expression isolate lifecycle', () => {
 		// Dynamic `inputs` are resolved via workflow.expression, which under
-		// N8N_EXPRESSION_ENGINE=vm needs a V8 isolate acquired for the transient
+		// MNI_EXPRESSION_ENGINE=vm needs a V8 isolate acquired for the transient
 		// workflow first. Without it the VM bridge throws "No bridge acquired" and
 		// getNodeInputs silently returns []. These spies pin the acquire/release.
 		let acquireSpy: MockInstance;
@@ -2233,7 +2233,7 @@ describe('createNodeAdapter', () => {
 					{
 						id: 'agent',
 						name: 'Agent',
-						type: '@n8n/n8n-nodes-langchain.agent',
+						type: '@MNI/MNI-nodes-langchain.agent',
 						typeVersion: 1,
 						position: [0, 0],
 						parameters: {},
@@ -2538,7 +2538,7 @@ function createWorkflowAdapterForTests(overrides?: {
 	// Defaults to a bound project (every production run has one). Pass `null` to
 	// simulate a run with no bound project.
 	projectId?: string | null;
-	// Mirrors `N8N_AI_ALLOW_SENDING_PARAMETER_VALUES`, which defaults to true in
+	// Mirrors `MNI_AI_ALLOW_SENDING_PARAMETER_VALUES`, which defaults to true in
 	// production. This harness leaves it off, so opt in to read real parameters.
 	allowSendingParameterValues?: boolean;
 }) {
@@ -2788,7 +2788,7 @@ describe('createWorkflowAdapter', () => {
 				{
 					id: 'debug-id',
 					name: 'DebugHelper',
-					type: 'n8n-nodes-base.debugHelper',
+					type: 'MNI-nodes-base.debugHelper',
 					typeVersion: 1,
 					position: [208, 0],
 					parameters: { category: 'randomData' },
@@ -2837,7 +2837,7 @@ describe('createWorkflowAdapter', () => {
 		const savedNode = {
 			id: 'http-id',
 			name: 'Download Image',
-			type: 'n8n-nodes-base.httpRequest',
+			type: 'MNI-nodes-base.httpRequest',
 			typeVersion: 4.2,
 			position: [208, 0] as [number, number],
 			parameters: { url: 'https://example.com/image', options: {} },
@@ -2866,7 +2866,7 @@ describe('createWorkflowAdapter', () => {
 				{
 					id: 'trigger-id',
 					name: 'Every Hour',
-					type: 'n8n-nodes-base.scheduleTrigger',
+					type: 'MNI-nodes-base.scheduleTrigger',
 					typeVersion: 1.2,
 					position: [0, 0],
 					parameters: {},
@@ -2938,7 +2938,7 @@ describe('createWorkflowAdapter', () => {
 				{
 					id: 'legacy-id',
 					name: 'Legacy Node',
-					type: 'n8n-nodes-base.httpRequest',
+					type: 'MNI-nodes-base.httpRequest',
 					typeVersion: 4.2,
 					position: [0, 0],
 					parameters: {},
@@ -2969,7 +2969,7 @@ describe('createWorkflowAdapter', () => {
 				{
 					id: 'agent-id',
 					name: 'AI Agent',
-					type: '@n8n/n8n-nodes-langchain.agent',
+					type: '@MNI/MNI-nodes-langchain.agent',
 					typeVersion: 3.1,
 					position: [0, 0],
 					parameters: { promptType: 'define', text: 'Summarize the input.' },
@@ -2977,7 +2977,7 @@ describe('createWorkflowAdapter', () => {
 				{
 					id: 'model-id',
 					name: 'Google Gemini Chat Model',
-					type: '@n8n/n8n-nodes-langchain.lmChatGoogleGemini',
+					type: '@MNI/MNI-nodes-langchain.lmChatGoogleGemini',
 					typeVersion: 1.1,
 					position: [0, 200],
 					parameters: { modelName: 'models/gemini-3-flash-preview' },
@@ -3020,7 +3020,7 @@ describe('createWorkflowAdapter', () => {
 				{
 					id: 'old-id',
 					name: 'Old Node',
-					type: 'n8n-nodes-base.set',
+					type: 'MNI-nodes-base.set',
 					typeVersion: 3,
 					position: [0, 0],
 					parameters: { keep: true },
@@ -3292,7 +3292,7 @@ describe('createWorkflowAdapter', () => {
 					mockUser,
 					expect.anything(),
 					'wf-new',
-					{ source: 'n8n-ai', parentFolderId: 'acme' },
+					{ source: 'MNI-ai', parentFolderId: 'acme' },
 				);
 			});
 
@@ -3353,7 +3353,7 @@ describe('createWorkflowAdapter', () => {
 					mockUser,
 					expect.anything(),
 					'wf-new',
-					{ source: 'n8n-ai' },
+					{ source: 'MNI-ai' },
 				);
 			});
 		});
@@ -4084,7 +4084,7 @@ describe('createWorkflowAdapter', () => {
 				{
 					id: 'node-1',
 					name: 'Set',
-					type: 'n8n-nodes-base.set',
+					type: 'MNI-nodes-base.set',
 					typeVersion: 3,
 					position: [0, 0],
 					parameters: {},
@@ -4108,7 +4108,7 @@ describe('createWorkflowAdapter', () => {
 				{
 					id: 'node-1',
 					name: 'Slack',
-					type: 'n8n-nodes-base.slack',
+					type: 'MNI-nodes-base.slack',
 					typeVersion: 2.5,
 					position: [0, 0],
 					parameters: {},
@@ -4139,7 +4139,7 @@ describe('createWorkflowAdapter', () => {
 				{
 					id: 'node-1',
 					name: 'Gemini',
-					type: 'n8n-nodes-base.lmChatGoogleGemini',
+					type: 'MNI-nodes-base.lmChatGoogleGemini',
 					typeVersion: 1,
 					position: [0, 0],
 					parameters: {},
@@ -4173,7 +4173,7 @@ describe('createWorkflowAdapter', () => {
 				{
 					id: 'node-1',
 					name: 'Gemini',
-					type: 'n8n-nodes-base.lmChatGoogleGemini',
+					type: 'MNI-nodes-base.lmChatGoogleGemini',
 					typeVersion: 1,
 					position: [0, 0],
 					parameters: {},
@@ -4201,7 +4201,7 @@ describe('createWorkflowAdapter', () => {
 				{
 					id: 'node-1',
 					name: 'Slack',
-					type: 'n8n-nodes-base.slack',
+					type: 'MNI-nodes-base.slack',
 					typeVersion: 2.5,
 					position: [0, 0],
 					parameters: {},
@@ -4231,7 +4231,7 @@ describe('createWorkflowAdapter', () => {
 			expect.anything(),
 			expect.anything(),
 			'wf-new',
-			expect.objectContaining({ expectedChecksum: 'expected-checksum', source: 'n8n-ai' }),
+			expect.objectContaining({ expectedChecksum: 'expected-checksum', source: 'MNI-ai' }),
 		);
 	});
 
@@ -4882,7 +4882,7 @@ describe('resolveDataTableByIdOrName', () => {
  * Node types for the run tests. A type whose name says "tool" describes an
  * `ai_tool` output, which is what `NodeHelpers.isTool` reads, so a step run on
  * one takes the same branch it takes in a real instance. A node the MCP
- * registry added is named for its server (`@n8n/mcp-registry.<slug>`) and says
+ * registry added is named for its server (`@MNI/mcp-registry.<slug>`) and says
  * "tool" nowhere, yet it describes an `ai_tool` output all the same.
  */
 function runNodeTypesStub(): NodeTypes {
@@ -4893,7 +4893,7 @@ function runNodeTypesStub(): NodeTypes {
 				description: {
 					name: type,
 					outputs: [
-						/tool/i.test(type) || type.startsWith('@n8n/mcp-registry.')
+						/tool/i.test(type) || type.startsWith('@MNI/mcp-registry.')
 							? NodeConnectionTypes.AiTool
 							: NodeConnectionTypes.Main,
 					],
@@ -5030,7 +5030,7 @@ describe('createExecutionAdapter run()', () => {
 					{
 						id: 'n1',
 						name: 'Webhook',
-						type: 'n8n-nodes-base.webhook',
+						type: 'MNI-nodes-base.webhook',
 						typeVersion: 2,
 						position: [0, 0],
 					},
@@ -5165,7 +5165,7 @@ describe('createExecutionAdapter run()', () => {
 				{
 					id: 'node-1',
 					name: 'Webhook',
-					type: 'n8n-nodes-base.webhook',
+					type: 'MNI-nodes-base.webhook',
 					typeVersion: 2,
 					parameters: {},
 					position: [0, 0],
@@ -5449,7 +5449,7 @@ describe('createExecutionAdapter run()', () => {
 				{
 					id: 'node-1',
 					name: 'Schedule Trigger',
-					type: 'n8n-nodes-base.scheduleTrigger',
+					type: 'MNI-nodes-base.scheduleTrigger',
 					typeVersion: 1,
 					parameters: {},
 					position: [0, 0],
@@ -5474,7 +5474,7 @@ describe('createExecutionAdapter run()', () => {
 			name: string,
 			overrides?: { type?: string; disabled?: boolean },
 		): INode => ({
-			...makeNode(name, overrides?.type ?? 'n8n-nodes-base.scheduleTrigger'),
+			...makeNode(name, overrides?.type ?? 'MNI-nodes-base.scheduleTrigger'),
 			...(overrides?.disabled ? { disabled: true } : {}),
 		});
 
@@ -5532,8 +5532,8 @@ describe('createExecutionAdapter run()', () => {
 			const { adapter, mockWorkflowRunner } = createRunAdapterForTests({
 				id: 'wf-1',
 				nodes: [
-					triggerNode('On Interval', { type: 'n8n-nodes-base.cron' }),
-					triggerNode('On Chat Message', { type: '@n8n/n8n-nodes-langchain.chatTrigger' }),
+					triggerNode('On Interval', { type: 'MNI-nodes-base.cron' }),
+					triggerNode('On Chat Message', { type: '@MNI/MNI-nodes-langchain.chatTrigger' }),
 				],
 			});
 
@@ -5571,7 +5571,7 @@ describe('createExecutionAdapter run()', () => {
 				id: 'wf-1',
 				nodes: [
 					triggerNode('Daily 8am'),
-					triggerNode('Compute Daily', { type: 'n8n-nodes-base.code' }),
+					triggerNode('Compute Daily', { type: 'MNI-nodes-base.code' }),
 				],
 			});
 
@@ -5590,7 +5590,7 @@ describe('createExecutionAdapter run()', () => {
 				{
 					id: 'node-1',
 					name: 'Schedule Trigger',
-					type: 'n8n-nodes-base.scheduleTrigger',
+					type: 'MNI-nodes-base.scheduleTrigger',
 					typeVersion: 1,
 					parameters: {},
 					position: [0, 0],
@@ -5618,7 +5618,7 @@ describe('createExecutionAdapter run()', () => {
 				{
 					id: 'node-1',
 					name: 'Schedule Trigger',
-					type: 'n8n-nodes-base.scheduleTrigger',
+					type: 'MNI-nodes-base.scheduleTrigger',
 					typeVersion: 1,
 					parameters: {},
 					position: [0, 0],
@@ -5648,7 +5648,7 @@ describe('createExecutionAdapter run()', () => {
 						{
 							id: 'n1',
 							name: 'Set',
-							type: 'n8n-nodes-base.set',
+							type: 'MNI-nodes-base.set',
 							typeVersion: 3,
 							position: [0, 0],
 							parameters: {},
@@ -5768,9 +5768,9 @@ describe('createExecutionAdapter runStep()', () => {
 		id: 'wf-1',
 		versionId: 'v-current',
 		nodes: [
-			{ name: 'Trigger', type: 'n8n-nodes-base.manualTrigger', typeVersion: 1, position: [0, 0] },
-			{ name: 'Fetch', type: 'n8n-nodes-base.httpRequest', typeVersion: 1, position: [1, 0] },
-			{ name: 'Send', type: 'n8n-nodes-base.slack', typeVersion: 1, position: [2, 0] },
+			{ name: 'Trigger', type: 'MNI-nodes-base.manualTrigger', typeVersion: 1, position: [0, 0] },
+			{ name: 'Fetch', type: 'MNI-nodes-base.httpRequest', typeVersion: 1, position: [1, 0] },
+			{ name: 'Send', type: 'MNI-nodes-base.slack', typeVersion: 1, position: [2, 0] },
 		],
 		connections: {
 			Trigger: { main: [[{ node: 'Fetch', type: 'main', index: 0 }]] },
@@ -5913,8 +5913,8 @@ describe('createExecutionAdapter runStep()', () => {
 		harness.mockWorkflowHistoryService.getVersion.mockResolvedValue({
 			versionId: 'v-old',
 			nodes: [
-				{ name: 'Trigger', type: 'n8n-nodes-base.manualTrigger', typeVersion: 1, position: [0, 0] },
-				{ name: 'Send', type: 'n8n-nodes-base.slack', typeVersion: 1, position: [1, 0] },
+				{ name: 'Trigger', type: 'MNI-nodes-base.manualTrigger', typeVersion: 1, position: [0, 0] },
+				{ name: 'Send', type: 'MNI-nodes-base.slack', typeVersion: 1, position: [1, 0] },
 			],
 			connections: { Trigger: { main: [[{ node: 'Send', type: 'main', index: 0 }]] } },
 		});
@@ -6139,10 +6139,10 @@ describe('createExecutionAdapter runStep()', () => {
 			id: 'wf-1',
 			versionId: 'v-current',
 			nodes: [
-				{ name: 'Trigger', type: 'n8n-nodes-base.manualTrigger', typeVersion: 1, position: [0, 0] },
-				{ name: 'Loop', type: 'n8n-nodes-base.splitInBatches', typeVersion: 3, position: [1, 0] },
-				{ name: 'Body', type: 'n8n-nodes-base.httpRequest', typeVersion: 1, position: [2, 0] },
-				{ name: 'Send', type: 'n8n-nodes-base.noOp', typeVersion: 1, position: [3, 0] },
+				{ name: 'Trigger', type: 'MNI-nodes-base.manualTrigger', typeVersion: 1, position: [0, 0] },
+				{ name: 'Loop', type: 'MNI-nodes-base.splitInBatches', typeVersion: 3, position: [1, 0] },
+				{ name: 'Body', type: 'MNI-nodes-base.httpRequest', typeVersion: 1, position: [2, 0] },
+				{ name: 'Send', type: 'MNI-nodes-base.noOp', typeVersion: 1, position: [3, 0] },
 			],
 			connections: {
 				Trigger: { main: [[{ node: 'Loop', type: 'main', index: 0 }]] },
@@ -6209,22 +6209,22 @@ describe('createExecutionAdapter runStep()', () => {
 			id: 'wf-1',
 			versionId: 'v-current',
 			nodes: [
-				{ name: 'Trigger', type: 'n8n-nodes-base.manualTrigger', typeVersion: 1, position: [0, 0] },
+				{ name: 'Trigger', type: 'MNI-nodes-base.manualTrigger', typeVersion: 1, position: [0, 0] },
 				{
 					name: 'Create Ticket',
-					type: 'n8n-nodes-base.httpRequest',
+					type: 'MNI-nodes-base.httpRequest',
 					typeVersion: 1,
 					position: [1, 0],
 				},
 				{
 					name: 'Agent',
-					type: '@n8n/n8n-nodes-langchain.agent',
+					type: '@MNI/MNI-nodes-langchain.agent',
 					typeVersion: 1,
 					position: [2, 0],
 				},
 				{
 					name: 'Calculator',
-					type: '@n8n/n8n-nodes-langchain.toolCalculator',
+					type: '@MNI/MNI-nodes-langchain.toolCalculator',
 					typeVersion: 1,
 					position: [2, 1],
 				},
@@ -6244,7 +6244,7 @@ describe('createExecutionAdapter runStep()', () => {
 					? {
 							...node,
 							name: 'MCP Client',
-							type: '@n8n/n8n-nodes-langchain.mcpClientTool',
+							type: '@MNI/MNI-nodes-langchain.mcpClientTool',
 							parameters: {},
 						}
 					: node,
@@ -6351,7 +6351,7 @@ describe('createExecutionAdapter runStep()', () => {
 						? {
 								...node,
 								name: 'Create Ticket Tool',
-								type: 'n8n-nodes-base.httpRequestTool',
+								type: 'MNI-nodes-base.httpRequestTool',
 								parameters: { url: "={{ $fromAI('url') }}", body: "={{ $fromAI('title') }}" },
 							}
 						: node,
@@ -6393,7 +6393,7 @@ describe('createExecutionAdapter runStep()', () => {
 		describe('a tool shared by two Agents', () => {
 			const agentNode = (name: string, x: number) => ({
 				name,
-				type: '@n8n/n8n-nodes-langchain.agent',
+				type: '@MNI/MNI-nodes-langchain.agent',
 				typeVersion: 1,
 				position: [x, 0],
 			});
@@ -6403,16 +6403,16 @@ describe('createExecutionAdapter runStep()', () => {
 				nodes: [
 					{
 						name: 'Trigger',
-						type: 'n8n-nodes-base.manualTrigger',
+						type: 'MNI-nodes-base.manualTrigger',
 						typeVersion: 1,
 						position: [0, 0],
 					},
 					agentNode('Agent A', 1),
-					{ name: 'POST', type: 'n8n-nodes-base.httpRequest', typeVersion: 1, position: [2, 0] },
+					{ name: 'POST', type: 'MNI-nodes-base.httpRequest', typeVersion: 1, position: [2, 0] },
 					agentNode('Agent B', 3),
 					{
 						name: 'Calculator',
-						type: '@n8n/n8n-nodes-langchain.toolCalculator',
+						type: '@MNI/MNI-nodes-langchain.toolCalculator',
 						typeVersion: 1,
 						position: [2, 1],
 					},
@@ -6611,7 +6611,7 @@ describe('createExecutionAdapter runStep()', () => {
 		});
 
 		it('refuses a node the MCP registry added, whose type carries the server slug', async () => {
-			// The registry saves a server as `@n8n/mcp-registry.<slug>` and routes
+			// The registry saves a server as `@MNI/mcp-registry.<slug>` and routes
 			// every one of them to one hidden runtime class, so the type on the
 			// canvas is never that class's name. Matching the class alone let this
 			// node through, and the Tool Executor then matched no member and
@@ -6620,7 +6620,7 @@ describe('createExecutionAdapter runStep()', () => {
 				...toolkitWorkflow,
 				nodes: toolkitWorkflow.nodes.map((node) =>
 					node.name === 'MCP Client'
-						? { ...node, name: 'Linear', type: '@n8n/mcp-registry.linear' }
+						? { ...node, name: 'Linear', type: '@MNI/mcp-registry.linear' }
 						: node,
 				),
 				connections: {
@@ -6647,7 +6647,7 @@ describe('createExecutionAdapter runStep()', () => {
 					...agentWorkflow.nodes,
 					{
 						name: 'OpenAI Chat Model',
-						type: '@n8n/n8n-nodes-langchain.lmChatOpenAi',
+						type: '@MNI/MNI-nodes-langchain.lmChatOpenAi',
 						typeVersion: 1,
 						position: [3, 1],
 					},
@@ -7226,7 +7226,7 @@ describe('MCP registry discovery', () => {
 			authentication: 'googleDriveMcpOAuth2Api',
 			credentialType: 'googleDriveMcpOAuth2Api',
 			tools: [{ name: 'list_files', title: 'List files' }],
-			metadata: { nodeTypeName: '@n8n/mcp-registry.googleDrive' },
+			metadata: { nodeTypeName: '@MNI/mcp-registry.googleDrive' },
 			isTemplated: false,
 		};
 		const templatedHit = {
@@ -7424,7 +7424,7 @@ describe('resolveMetricProviders', () => {
 			llmJudgeProviderRegistry: registry,
 		});
 
-		expect(result.metrics[0].provider).toBe('@n8n/n8n-nodes-langchain.lmChatOpenAi');
+		expect(result.metrics[0].provider).toBe('@MNI/MNI-nodes-langchain.lmChatOpenAi');
 		expect(credentialsFinderService.findCredentialForUser).toHaveBeenCalledWith('cred1', user, [
 			'credential:read',
 		]);
@@ -7434,11 +7434,11 @@ describe('resolveMetricProviders', () => {
 		const credentialsFinderService = mock<CredentialsFinderService>();
 
 		const result = await resolveMetricProviders(
-			baseInput({ provider: '@n8n/n8n-nodes-langchain.lmChatAnthropic' }),
+			baseInput({ provider: '@MNI/MNI-nodes-langchain.lmChatAnthropic' }),
 			{ user, credentialsFinderService, llmJudgeProviderRegistry: registry },
 		);
 
-		expect(result.metrics[0].provider).toBe('@n8n/n8n-nodes-langchain.lmChatAnthropic');
+		expect(result.metrics[0].provider).toBe('@MNI/MNI-nodes-langchain.lmChatAnthropic');
 		expect(credentialsFinderService.findCredentialForUser).not.toHaveBeenCalled();
 	});
 

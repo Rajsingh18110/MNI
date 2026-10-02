@@ -1,4 +1,4 @@
-import type { InstanceAiAgentNode, InstanceAiMessage } from '@n8n/api-types';
+import type { InstanceAiAgentNode, InstanceAiMessage } from '@MNI/api-types';
 import { createTestingPinia } from '@pinia/testing';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { useInstanceAiStore } from '../instanceAi.store';

@@ -1,4 +1,4 @@
-import type { BuiltTool } from '@n8n/agents';
+import type { BuiltTool } from '@MNI/agents';
 
 export interface ToolRegistryEntry {
 	kind: 'tool' | 'workflow' | 'node';

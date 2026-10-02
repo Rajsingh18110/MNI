@@ -10,7 +10,7 @@ import {
 	COMMUNITY_PACKAGE_CONFIRM_MODAL_KEY,
 	COMMUNITY_PACKAGE_MANAGE_ACTIONS,
 } from '@/features/settings/communityNodes/communityNodes.constants';
-import { STORES } from '@n8n/stores';
+import { STORES } from '@MNI/stores';
 import type {
 	XYPosition,
 	Modals,
@@ -24,18 +24,18 @@ import type {
 	NodeCreatorOpenSource,
 } from '@/Interface';
 import { defineStore } from 'pinia';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { applyThemeToBody, getThemeOverride, isValidTheme } from './ui.utils';
 import { SHELL_MODAL_INITIAL_STATE } from './defaults/modals';
 import { computed, ref, watch } from 'vue';
-import type { IMenuItem } from '@n8n/design-system';
+import type { IMenuItem } from '@MNI/design-system';
 import type { Connection } from '@vue-flow/core';
 import { useLocalStorage, useMediaQuery } from '@vueuse/core';
-import type { EventBus } from '@n8n/utils/event-bus';
+import type { EventBus } from '@MNI/utils/event-bus';
 import type { ProjectSharingData } from '@/features/collaboration/projects/projects.types';
 import identity from 'lodash/identity';
-import { modalRegistry } from '@n8n/frontend-module-sdk';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
+import { modalRegistry } from '@MNI/frontend-module-sdk';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
 
 let savedTheme: ThemeOption = 'system';
 

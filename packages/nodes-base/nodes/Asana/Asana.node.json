@@ -1,5 +1,5 @@
 {
-	"node": "n8n-nodes-base.asana",
+	"node": "MNI-nodes-base.asana",
 	"nodeVersion": "1.0",
 	"codexVersion": "1.0",
 	"categories": ["Productivity"],
@@ -11,14 +11,14 @@
 		],
 		"primaryDocumentation": [
 			{
-				"url": "https://docs.n8n.io/integrations/builtin/app-nodes/n8n-nodes-base.asana/"
+				"url": "https://docs.n8n.io/integrations/builtin/app-nodes/MNI-nodes-base.asana/"
 			}
 		],
 		"generic": [
 			{
 				"label": "How a digital strategist uses MNI for online marketing",
 				"icon": "💻",
-				"url": "https://n8n.io/blog/how-a-digital-strategist-uses-n8n-for-online-marketing/"
+				"url": "https://n8n.io/blog/how-a-digital-strategist-uses-MNI-for-online-marketing/"
 			}
 		]
 	}

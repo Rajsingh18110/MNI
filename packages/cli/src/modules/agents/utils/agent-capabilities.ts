@@ -2,7 +2,7 @@ import {
 	isDraftIntegration,
 	type AgentIntegrationConfig,
 	type AgentJsonConfig,
-} from '@n8n/api-types';
+} from '@MNI/api-types';
 
 /**
  * Capability kinds an agent can be configured with, mirroring

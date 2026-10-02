@@ -11,7 +11,7 @@ describe('GmailTriggerVersionRule', () => {
 	describe('detectWorkflow()', () => {
 		it('should not be affected when there is no Gmail Trigger node', async () => {
 			const { workflow, nodesGroupedByType } = createWorkflow('wf-1', 'Test Workflow', [
-				createNode('HTTP', 'n8n-nodes-base.httpRequest'),
+				createNode('HTTP', 'MNI-nodes-base.httpRequest'),
 			]);
 
 			const result = await rule.detectWorkflow(workflow, nodesGroupedByType);
@@ -22,7 +22,7 @@ describe('GmailTriggerVersionRule', () => {
 
 		it('should not be affected when Gmail Trigger is on version 1.4', async () => {
 			const { workflow, nodesGroupedByType } = createWorkflow('wf-1', 'Test Workflow', [
-				{ ...createNode('Gmail Trigger', 'n8n-nodes-base.gmailTrigger'), typeVersion: 1.4 },
+				{ ...createNode('Gmail Trigger', 'MNI-nodes-base.gmailTrigger'), typeVersion: 1.4 },
 			]);
 
 			const result = await rule.detectWorkflow(workflow, nodesGroupedByType);
@@ -33,7 +33,7 @@ describe('GmailTriggerVersionRule', () => {
 
 		it('should detect a Gmail Trigger on a version below 1.4', async () => {
 			const { workflow, nodesGroupedByType } = createWorkflow('wf-1', 'Test Workflow', [
-				{ ...createNode('Gmail Trigger', 'n8n-nodes-base.gmailTrigger'), typeVersion: 1.3 },
+				{ ...createNode('Gmail Trigger', 'MNI-nodes-base.gmailTrigger'), typeVersion: 1.3 },
 			]);
 
 			const result = await rule.detectWorkflow(workflow, nodesGroupedByType);
@@ -48,8 +48,8 @@ describe('GmailTriggerVersionRule', () => {
 
 		it('should flag only the nodes below 1.4 when multiple Gmail Triggers exist', async () => {
 			const { workflow, nodesGroupedByType } = createWorkflow('wf-1', 'Test Workflow', [
-				{ ...createNode('Old Trigger', 'n8n-nodes-base.gmailTrigger'), typeVersion: 1 },
-				{ ...createNode('New Trigger', 'n8n-nodes-base.gmailTrigger'), typeVersion: 1.4 },
+				{ ...createNode('Old Trigger', 'MNI-nodes-base.gmailTrigger'), typeVersion: 1 },
+				{ ...createNode('New Trigger', 'MNI-nodes-base.gmailTrigger'), typeVersion: 1.4 },
 			]);
 
 			const result = await rule.detectWorkflow(workflow, nodesGroupedByType);

@@ -3,9 +3,9 @@ import {
 	isAgentModelProvider,
 	type AgentProviderModelsResponse,
 	type ChatIntegrationDescriptor,
-} from '@n8n/api-types';
-import type { AuthenticatedRequest } from '@n8n/db';
-import { Get, Param, ProjectScope, Query, RestController } from '@n8n/decorators';
+} from '@MNI/api-types';
+import type { AuthenticatedRequest } from '@MNI/db';
+import { Get, Param, ProjectScope, Query, RestController } from '@MNI/decorators';
 import type { Response } from 'express';
 
 import { BadRequestError } from '@/errors/response-errors/bad-request.error';
@@ -24,7 +24,7 @@ export class AgentsCatalogController {
 	@Get('/catalog/models')
 	@ProjectScope('agent:read')
 	async getModelCatalog() {
-		const { fetchProviderCatalog } = await import('@n8n/agents');
+		const { fetchProviderCatalog } = await import('@MNI/agents');
 		return filterOfferedAgentModelProviders(await fetchProviderCatalog());
 	}
 

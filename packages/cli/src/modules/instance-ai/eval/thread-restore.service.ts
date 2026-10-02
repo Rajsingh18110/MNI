@@ -4,8 +4,8 @@ import {
 	type InstanceAiEvalSeedDataTable,
 	type InstanceAiEvalSeedFolder,
 	type InstanceAiEvalSeedWorkflow,
-} from '@n8n/api-types';
-import { LicenseState, ModuleRegistry } from '@n8n/backend-common';
+} from '@MNI/api-types';
+import { LicenseState, ModuleRegistry } from '@MNI/backend-common';
 import {
 	CredentialsRepository,
 	SharedWorkflowRepository,
@@ -13,17 +13,17 @@ import {
 	WorkflowRepository,
 	type User,
 	type WorkflowEntity,
-} from '@n8n/db';
-import type { PolicedWorkflow, PolicyCleared } from '@n8n/decorators';
-import { Container, Service } from '@n8n/di';
-import { isRecord } from '@n8n/utils/is-record';
+} from '@MNI/db';
+import type { PolicedWorkflow, PolicyCleared } from '@MNI/decorators';
+import { Container, Service } from '@MNI/di';
+import { isRecord } from '@MNI/utils/is-record';
 import {
 	jsonParse,
 	PROJECT_ROOT,
 	type IConnections,
 	type INode,
 	type INodeCredentials,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import { randomUUID } from 'node:crypto';
 
 import { BadRequestError } from '@/errors/response-errors/bad-request.error';
@@ -109,7 +109,7 @@ export class EvalThreadRestoreService {
 		if (!this.licenseState.isFoldersLicensed()) {
 			throw new BadRequestError(
 				'Seeding folders requires the `feat:folders` license feature, which this instance does not have. ' +
-					'CI/real instance: needs N8N_LICENSE_ACTIVATION_KEY + N8N_LICENSE_CERT. ' +
+					'CI/real instance: needs MNI_LICENSE_ACTIVATION_KEY + MNI_LICENSE_CERT. ' +
 					'Local run with E2E_TESTS=true: /rest/e2e/reset stubs the license to ALL-FALSE, so re-enable it after seeding the owner: ' +
 					'PATCH /rest/e2e/feature {"feature":"feat:folders","enabled":true}',
 			);

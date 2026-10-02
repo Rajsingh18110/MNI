@@ -1,12 +1,12 @@
-import { Logger } from '@n8n/backend-common';
+import { Logger } from '@MNI/backend-common';
 import {
 	WorkflowPublishedVersionRepository,
 	type PublishedWorkflowDataForExecution,
 	type WorkflowEntity,
 	type WorkflowHistory,
-} from '@n8n/db';
-import { Service } from '@n8n/di';
-import { ensureError } from '@n8n/utils/errors/ensure-error';
+} from '@MNI/db';
+import { Service } from '@MNI/di';
+import { ensureError } from '@MNI/utils/errors/ensure-error';
 
 import { CacheService } from '@/services/cache/cache.service';
 

@@ -1,8 +1,8 @@
 import { spawn } from 'child_process';
 import type { ChildProcessWithoutNullStreams } from 'child_process';
 import { EventEmitter } from 'events';
-import { ManualExecutionCancelledError } from 'n8n-workflow';
-import type { IExecuteFunctions, INode } from 'n8n-workflow';
+import { ManualExecutionCancelledError } from 'MNI-workflow';
+import type { IExecuteFunctions, INode } from 'MNI-workflow';
 import type { MockInstance } from 'vitest';
 import type { MockProxy } from 'vitest-mock-extended';
 import { mock } from 'vitest-mock-extended';

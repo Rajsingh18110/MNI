@@ -1,5 +1,5 @@
 import { describe, test, expect } from 'vitest';
-import type { InstanceAiAgentNode, InstanceAiToolCallState } from '@n8n/api-types';
+import type { InstanceAiAgentNode, InstanceAiToolCallState } from '@MNI/api-types';
 import {
 	getLatestBuildResult,
 	getLatestBuilderTarget,

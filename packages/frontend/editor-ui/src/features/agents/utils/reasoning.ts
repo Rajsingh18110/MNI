@@ -1,4 +1,4 @@
-import type { AgentCatalogModel } from '@n8n/api-types';
+import type { AgentCatalogModel } from '@MNI/api-types';
 
 import type { AgentJsonConfig } from '../types';
 

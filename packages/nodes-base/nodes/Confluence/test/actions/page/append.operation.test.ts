@@ -1,4 +1,4 @@
-import { jsonParse, NodeApiError, NodeOperationError } from 'n8n-workflow';
+import { jsonParse, NodeApiError, NodeOperationError } from 'MNI-workflow';
 import type { Mock } from 'vitest';
 
 import { execute, mergeAdfDocuments } from '../../../actions/page/append.operation';

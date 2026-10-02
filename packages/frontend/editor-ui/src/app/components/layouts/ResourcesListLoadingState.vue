@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { N8nLoading } from '@n8n/design-system';
+import { N8nLoading } from '@MNI/design-system';
 </script>
 
 <template>

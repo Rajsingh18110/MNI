@@ -1,12 +1,12 @@
 import get from 'lodash/get';
-import { constructExecutionMetaData } from 'n8n-core';
-import type { IDataObject, IExecuteFunctions, IGetNodeParameterOptions, INode } from 'n8n-workflow';
+import { constructExecutionMetaData } from 'MNI-core';
+import type { IDataObject, IExecuteFunctions, IGetNodeParameterOptions, INode } from 'MNI-workflow';
 
 export const node: INode = {
 	id: '11',
 	name: 'Airtable node',
 	typeVersion: 2.2,
-	type: 'n8n-nodes-base.airtable',
+	type: 'MNI-nodes-base.airtable',
 	position: [42, 42],
 	parameters: {
 		operation: 'create',

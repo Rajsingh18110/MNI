@@ -1,4 +1,4 @@
-import { useRootStore } from '@n8n/stores/useRootStore';
+import { useRootStore } from '@MNI/stores/useRootStore';
 import { defineStore } from 'pinia';
 import { ref, computed } from 'vue';
 

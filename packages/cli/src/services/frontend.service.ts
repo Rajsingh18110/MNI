@@ -1,23 +1,23 @@
-import type { FrontendSettings, ITelemetrySettings, N8nEnvFeatFlags } from '@n8n/api-types';
-import { LicenseState, Logger, ModuleRegistry } from '@n8n/backend-common';
-import { GlobalConfig, SecurityConfig } from '@n8n/config';
-import { LICENSE_FEATURES, LICENSE_QUOTAS, Time } from '@n8n/constants';
-import { WorkflowRepository } from '@n8n/db';
-import { Container, Service } from '@n8n/di';
+import type { FrontendSettings, ITelemetrySettings, N8nEnvFeatFlags } from '@MNI/api-types';
+import { LicenseState, Logger, ModuleRegistry } from '@MNI/backend-common';
+import { GlobalConfig, SecurityConfig } from '@MNI/config';
+import { LICENSE_FEATURES, LICENSE_QUOTAS, Time } from '@MNI/constants';
+import { WorkflowRepository } from '@MNI/db';
+import { Container, Service } from '@MNI/di';
 import { createWriteStream } from 'fs';
 import { mkdir } from 'fs/promises';
 import uniq from 'lodash/uniq';
-import { BinaryDataConfig, InstanceSettings } from 'n8n-core';
-import type { ICredentialType, INodeTypeBaseDescription, INodeTypeDescription } from 'n8n-workflow';
+import { BinaryDataConfig, InstanceSettings } from 'MNI-core';
+import type { ICredentialType, INodeTypeBaseDescription, INodeTypeDescription } from 'MNI-workflow';
 import path from 'path';
 
-import { UrlService } from '@n8n/backend-services';
+import { UrlService } from '@MNI/backend-services';
 
 import { AiUsageService } from './ai-usage.service';
 import { WorkflowReviewPolicyService } from './workflow-review-policy.service';
 
 import config from '@/config';
-import { inE2ETests, N8N_VERSION } from '@/constants';
+import { inE2ETests, MNI_VERSION } from '@/constants';
 import { isCredSharingEnabled } from '@/constants/credential-sharing';
 import { CredentialTypes } from '@/credential-types';
 import { CredentialsOverwrites } from '@/credentials-overwrites';
@@ -149,7 +149,7 @@ export class FrontendService {
 		const envFeatureFlags: N8nEnvFeatFlags = {};
 
 		for (const [key, value] of Object.entries(process.env)) {
-			if (key.startsWith('N8N_ENV_FEAT_') && value !== undefined) {
+			if (key.startsWith('MNI_ENV_FEAT_') && value !== undefined) {
 				envFeatureFlags[key as keyof N8nEnvFeatFlags] = value;
 			}
 		}
@@ -158,7 +158,7 @@ export class FrontendService {
 	}
 
 	private async getShowSetupOnFirstLoad() {
-		const previewMode = process.env.N8N_PREVIEW_MODE === 'true';
+		const previewMode = process.env.MNI_PREVIEW_MODE === 'true';
 		const hasInstanceOwner = await this.ownershipService.hasInstanceOwner();
 		// In preview mode, skip the setup redirect to allow accessing demo routes
 		return previewMode ? false : !hasInstanceOwner;
@@ -186,7 +186,7 @@ export class FrontendService {
 			telemetrySettings.config = { key, url, proxy, sourceConfig };
 		}
 
-		const previewMode = process.env.N8N_PREVIEW_MODE === 'true';
+		const previewMode = process.env.MNI_PREVIEW_MODE === 'true';
 
 		this.settings = {
 			settingsMode: 'authenticated',
@@ -218,7 +218,7 @@ export class FrontendService {
 			binaryDataMode: this.binaryDataConfig.mode,
 			nodeJsVersion: process.version.replace(/^v/, ''),
 			nodeEnv: process.env.NODE_ENV,
-			versionCli: N8N_VERSION,
+			versionCli: MNI_VERSION,
 			concurrency: this.globalConfig.executions.concurrency.productionLimit,
 			evaluationConcurrencyLimit: resolveEvaluationConcurrencyLimit(
 				this.globalConfig.executions,
@@ -590,7 +590,7 @@ export class FrontendService {
 		if (isAiAssistantEnabled) {
 			this.settings.aiAssistant.enabled = isAiAssistantEnabled;
 			this.settings.aiAssistant.setup =
-				!!this.globalConfig.aiAssistant.baseUrl || !!process.env.N8N_AI_ANTHROPIC_KEY;
+				!!this.globalConfig.aiAssistant.baseUrl || !!process.env.MNI_AI_ANTHROPIC_KEY;
 			this.settings.aiAssistant.cloudUbbEnabled =
 				this.licenseState.isAiAssistantCloudUbbEntitlementLicensed();
 		}

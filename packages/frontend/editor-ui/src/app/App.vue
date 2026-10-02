@@ -16,17 +16,17 @@ import { useModulePushDispatcher } from '@/app/composables/useModulePushDispatch
 import { useTrialIntroModalAutoOpen } from '@/experiments/trialIntroModal/useTrialIntroModalAutoOpen';
 import { CODEMIRROR_TOOLTIP_CONTAINER_ELEMENT_ID, HIRING_BANNER, VIEWS } from '@/app/constants';
 import { useNDVStore } from '@/features/ndv/shared/ndv.store';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import LoadingView from '@/app/views/LoadingView.vue';
-import { locale } from '@n8n/design-system';
+import { locale } from '@MNI/design-system';
 import { registerTimeAgoLocale } from '@/app/utils/timeAgoLocale';
-import { setLanguage } from '@n8n/i18n';
+import { setLanguage } from '@MNI/i18n';
 // Note: no need to import en.json here; default 'en' is handled via setLanguage
-import { useRootStore } from '@n8n/stores/useRootStore';
+import { useRootStore } from '@MNI/stores/useRootStore';
 import axios from 'axios';
 import { computed, onMounted, provide, ref, shallowRef, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
-import { useStyles } from '@n8n/composables/useStyles';
+import { useStyles } from '@MNI/composables/useStyles';
 import { useExposeCssVar } from '@/app/composables/useExposeCssVar';
 import { useFloatingUiOffsets } from '@/app/composables/useFloatingUiOffsets';
 import { useWorkflowId } from '@/app/composables/useWorkflowId';
@@ -131,7 +131,7 @@ useExposeCssVar('--ask-assistant--floating-button--margin-bottom', askAiFloating
 
 <template>
 	<LoadingView v-if="loading" />
-	<BaseLayout v-else id="n8n-app" :class="$style.app">
+	<BaseLayout v-else id="MNI-app" :class="$style.app">
 		<template #banners>
 			<AppBanners />
 		</template>

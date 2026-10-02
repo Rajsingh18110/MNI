@@ -1,6 +1,6 @@
-import type { SerializedCursor } from '@n8n/api-types';
-import type { AuthenticatedRequest, ExecutionSummaries, ExecutionEntity } from '@n8n/db';
-import type { AnnotationVote, ExecutionStatus, WorkflowExecuteMode } from 'n8n-workflow';
+import type { SerializedCursor } from '@MNI/api-types';
+import type { AuthenticatedRequest, ExecutionSummaries, ExecutionEntity } from '@MNI/db';
+import type { AnnotationVote, ExecutionStatus, WorkflowExecuteMode } from 'MNI-workflow';
 
 import type { ExecutionCursor } from '@/executions/execution-cursor';
 

@@ -1,5 +1,5 @@
-import { intervalFromMilliseconds, SystemTask } from '@n8n/decorators';
-import type { SystemTaskEffects, SystemTaskPlacement, SystemTaskSchedule } from '@n8n/decorators';
+import { intervalFromMilliseconds, SystemTask } from '@MNI/decorators';
+import type { SystemTaskEffects, SystemTaskPlacement, SystemTaskSchedule } from '@MNI/decorators';
 import { AUTORENEWAL_INTERVAL } from '@n8n_io/license-sdk';
 
 import { License } from '@/license';

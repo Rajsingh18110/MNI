@@ -1,4 +1,4 @@
-import type { ICredentialDataDecryptedObject } from 'n8n-workflow';
+import type { ICredentialDataDecryptedObject } from 'MNI-workflow';
 
 import { applyTemplatedAuth, resolveTemplatedAuth } from '../templated-auth';
 

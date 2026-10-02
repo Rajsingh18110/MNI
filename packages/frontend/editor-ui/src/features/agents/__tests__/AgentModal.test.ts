@@ -4,7 +4,7 @@ import { describe, expect, it, vi } from 'vitest';
 import AgentModal from '../components/modals/AgentModal.vue';
 import AgentModalMultiStep from '../components/modals/AgentModalMultiStep.vue';
 
-vi.mock('@n8n/design-system', async () => {
+vi.mock('@MNI/design-system', async () => {
 	const { defineComponent, nextTick, onMounted, ref } = await import('vue');
 	return {
 		N8nDialog: defineComponent({

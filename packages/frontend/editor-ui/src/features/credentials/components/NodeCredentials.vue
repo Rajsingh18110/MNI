@@ -8,8 +8,8 @@ import type {
 	INodeCredentialsDetails,
 	INodeParameters,
 	NodeParameterValueType,
-} from 'n8n-workflow';
-import { resolveSupportedCredentialActivation } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { resolveSupportedCredentialActivation } from 'MNI-workflow';
 import { computed, inject, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue';
 
 import { useNodeHelpers } from '@/app/composables/useNodeHelpers';
@@ -21,7 +21,7 @@ import {
 	getNodeCredentialForSelectedAuthType,
 	updateNodeAuthType,
 } from '@/app/utils/nodeTypesUtils';
-import { useToast } from '@n8n/composables/useToast';
+import { useToast } from '@MNI/composables/useToast';
 import { useEditorContext } from '@/app/composables/useEditorContext';
 import {
 	useInstanceAiEditorCapability,
@@ -29,8 +29,8 @@ import {
 } from '@/app/composables/useInstanceAiEditorCapability';
 
 import TitledList from '@/app/components/TitledList.vue';
-import { useI18n } from '@n8n/i18n';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
+import { useI18n } from '@MNI/i18n';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
 import {
 	AI_GATEWAY_UNSUPPORTED_NODE_TYPES,
 	ChatHubToolContextKey,
@@ -47,9 +47,9 @@ import { useUIStore } from '@/app/stores/ui.store';
 import { useProjectsStore } from '@/features/collaboration/projects/projects.store';
 import { ProjectTypes } from '@/features/collaboration/projects/projects.types';
 import { useWorkflowsStore } from '@/app/stores/workflows.store';
-import { assert } from '@n8n/utils/assert';
+import { assert } from '@MNI/utils/assert';
 import { isEmpty } from '@/app/utils/typesUtils';
-import { getResourcePermissions } from '@n8n/permissions';
+import { getResourcePermissions } from '@MNI/permissions';
 import {
 	useNodeCredentialOptions,
 	type CredentialDropdownOption,
@@ -61,7 +61,7 @@ import {
 	AI_GATEWAY_MANAGED_TAG,
 	SYSTEM_RESOLVER_ID,
 	type InstanceAiCredentialSetupHint,
-} from '@n8n/api-types';
+} from '@MNI/api-types';
 import CredentialIcon from './CredentialIcon.vue';
 import CredentialPrivateConnectionRow from './CredentialPrivateConnectionRow.vue';
 import { useAiGateway } from '@/app/composables/useAiGateway';
@@ -77,7 +77,7 @@ import {
 	N8nSelect,
 	N8nText,
 	N8nTooltip,
-} from '@n8n/design-system';
+} from '@MNI/design-system';
 import { injectWorkflowDocumentStore } from '@/app/stores/workflowDocument.store';
 
 type Props = {
@@ -154,7 +154,7 @@ const emit = defineEmits<{
 const telemetry = useTelemetry();
 const i18n = useI18n();
 const NEW_CREDENTIALS_TEXT = i18n.baseText('nodeCredentials.createNew');
-const N8N_CREDITS_LABEL = i18n.baseText('aiGateway.credentialMode.n8nConnect.title');
+const MNI_CREDITS_LABEL = i18n.baseText('aiGateway.credentialMode.n8nConnect.title');
 
 const instanceAiCapability = useInstanceAiEditorCapability();
 const { instanceAi } = useEditorContext();
@@ -616,7 +616,7 @@ function getSelectedId(type: INodeCredentialDescription) {
 
 function getSelectedName(type: string) {
 	if (isAiGatewayManagedCredentials(type)) {
-		return N8N_CREDITS_LABEL;
+		return MNI_CREDITS_LABEL;
 	}
 	return selected.value?.[type]?.name;
 }
@@ -746,7 +746,7 @@ function onCredentialSelected(
 
 	// if credentials has been string or neither id matched nor name matched uniquely.
 	// A gateway-managed slot also has id: null but is a deliberate state, not an
-	// invalid credential — repairing it would sweep every other n8n-credits node.
+	// invalid credential — repairing it would sweep every other MNI-credits node.
 	if (
 		!props.standalone &&
 		!oldCredentials?.__aiGatewayManaged &&
@@ -911,7 +911,7 @@ function onAiGatewaySelector(credentialType: string, enable: boolean, isUserActi
 
 	// Track the credential kind actually assigned, or null when the slot is cleared
 	// (toggle-off with no credential to restore) so no false assignment is recorded.
-	let assignedKind: 'n8n_connect' | 'own' | null = null;
+	let assignedKind: 'MNI_connect' | 'own' | null = null;
 	// The stored credential restored on toggle-off; MNI Connect slots have none.
 	let assignedCredentialId: string | null = null;
 
@@ -923,7 +923,7 @@ function onAiGatewaySelector(credentialType: string, enable: boolean, isUserActi
 		}
 		if (activation) applyActivationParameters(activation.parameters);
 		credentials[effectiveType] = { id: null, name: '', __aiGatewayManaged: true };
-		assignedKind = 'n8n_connect';
+		assignedKind = 'MNI_connect';
 	} else {
 		// Toggle OFF: restore the most recent available credential for THIS node only.
 		// Avoid onCredentialSelected which calls replaceInvalidWorkflowCredentials and
@@ -948,7 +948,7 @@ function onAiGatewaySelector(credentialType: string, enable: boolean, isUserActi
 		telemetry.track('User toggled MNI connect credential', {
 			credential_type: effectiveType,
 			node_type: props.node.type,
-			mode: enable ? 'n8n_connect' : 'own',
+			mode: enable ? 'MNI_connect' : 'own',
 			workflow_id: telemetryWorkflowId.value,
 		});
 		// Only the manual canvas is attributed to the user here; standalone
@@ -1147,7 +1147,7 @@ function buildCredentialRows(options: CredentialDropdownOption[]): CredentialRow
 // to the managed-slot path, which owns the persisted
 // `{ id: null, name: '', __aiGatewayManaged: true }` shape.
 function showN8nCreditsOption(credentialType: string): boolean {
-	return showAiGatewaySelector(credentialType) && matches(filter.value, N8N_CREDITS_LABEL);
+	return showAiGatewaySelector(credentialType) && matches(filter.value, MNI_CREDITS_LABEL);
 }
 
 function showBalanceIndicator(credentialType: string): boolean {
@@ -1386,8 +1386,8 @@ async function onQuickConnectSignIn(credentialTypeName: string) {
 						<N8nOption
 							v-if="showN8nCreditsOption(type.name)"
 							:key="AI_GATEWAY_MANAGED_TAG"
-							data-test-id="node-credentials-select-item-n8n-credits"
-							:label="N8N_CREDITS_LABEL"
+							data-test-id="node-credentials-select-item-MNI-credits"
+							:label="MNI_CREDITS_LABEL"
 							:value="AI_GATEWAY_MANAGED_TAG"
 						>
 							<div :class="$style.credentialOption">
@@ -1485,14 +1485,14 @@ async function onQuickConnectSignIn(credentialTypeName: string) {
 							<N8nOption
 								v-if="showN8nCreditsOption(type.name)"
 								:key="AI_GATEWAY_MANAGED_TAG"
-								data-test-id="node-credentials-select-item-n8n-credits"
-								:label="N8N_CREDITS_LABEL"
+								data-test-id="node-credentials-select-item-MNI-credits"
+								:label="MNI_CREDITS_LABEL"
 								:value="AI_GATEWAY_MANAGED_TAG"
 							>
 								<div :class="$style.credentialOption">
 									<N8nIcon icon="wallet" size="large" :class="$style.optionIcon" />
 									<N8nText :class="$style.optionName">
-										{{ N8N_CREDITS_LABEL }}
+										{{ MNI_CREDITS_LABEL }}
 									</N8nText>
 									<N8nBadge
 										v-if="balancePill"
@@ -1592,7 +1592,7 @@ async function onQuickConnectSignIn(credentialTypeName: string) {
 							     width so the badge sits the same spacing--2xs gap after it as in
 							     the dropdown row, instead of a hardcoded label-width guess. -->
 							<span :class="$style.balanceLabelSizer" aria-hidden="true">{{
-								N8N_CREDITS_LABEL
+								MNI_CREDITS_LABEL
 							}}</span>
 							<N8nBadge
 								size="xxsmall"
@@ -1671,7 +1671,7 @@ async function onQuickConnectSignIn(credentialTypeName: string) {
 </template>
 
 <style lang="scss" module>
-@use '@n8n/design-system/css/common/var';
+@use '@MNI/design-system/css/common/var';
 
 .container {
 	margin-top: var(--spacing--xs);
@@ -1762,7 +1762,7 @@ async function onQuickConnectSignIn(credentialTypeName: string) {
 	display: grid;
 	grid-template-areas: 'control';
 
-	> :global(.n8n-select),
+	> :global(.MNI-select),
 	.balanceIndicator {
 		grid-area: control;
 	}
@@ -1795,7 +1795,7 @@ async function onQuickConnectSignIn(credentialTypeName: string) {
 
 	/* N8nInput redefines --input--border-color on its own root, so the
 	   ancestor-level override above doesn't reach it */
-	:global(.n8n-input) {
+	:global(.MNI-input) {
 		--input--border-color: transparent;
 	}
 }

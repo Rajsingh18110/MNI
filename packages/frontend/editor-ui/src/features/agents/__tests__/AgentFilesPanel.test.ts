@@ -1,11 +1,11 @@
 import { describe, it, expect, vi } from 'vitest';
 import { mount } from '@vue/test-utils';
-import { n8nHtml } from '@n8n/design-system';
-import type { AgentFileDto } from '@n8n/api-types';
+import { n8nHtml } from '@MNI/design-system';
+import type { AgentFileDto } from '@MNI/api-types';
 
 import AgentFilesPanel from '../components/AgentFilesPanel.vue';
 
-vi.mock('@n8n/i18n', () => ({
+vi.mock('@MNI/i18n', () => ({
 	useI18n: () => ({
 		baseText: (key: string, options?: { interpolate?: Record<string, string | number> }) => {
 			if (key === 'agents.builder.files.size.bytes') {

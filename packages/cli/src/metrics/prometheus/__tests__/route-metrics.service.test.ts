@@ -1,6 +1,6 @@
 import type { Mock } from 'vitest';
-import { mockInstance } from '@n8n/backend-test-utils';
-import { EndpointsConfig, PrometheusMetricsConfig } from '@n8n/config';
+import { mockInstance } from '@MNI/backend-test-utils';
+import { EndpointsConfig, PrometheusMetricsConfig } from '@MNI/config';
 import type express from 'express';
 import promBundle from 'express-prom-bundle';
 import { mock } from 'vitest-mock-extended';
@@ -15,7 +15,7 @@ vi.mock('express-prom-bundle', () => ({
 
 describe('PrometheusRouteMetricsService', () => {
 	const config = mockInstance(PrometheusMetricsConfig, {
-		prefix: 'n8n_',
+		prefix: 'MNI_',
 		includeApiEndpoints: true,
 		includeApiPathLabel: false,
 		includeApiMethodLabel: false,
@@ -36,7 +36,7 @@ describe('PrometheusRouteMetricsService', () => {
 
 	beforeEach(() => {
 		Object.assign(config, {
-			prefix: 'n8n_',
+			prefix: 'MNI_',
 			includeApiEndpoints: true,
 			includeApiPathLabel: false,
 			includeApiMethodLabel: false,
@@ -69,7 +69,7 @@ describe('PrometheusRouteMetricsService', () => {
 
 			expect(promClient.Gauge).toHaveBeenCalledWith(
 				expect.objectContaining({
-					name: 'n8n_last_activity',
+					name: 'MNI_last_activity',
 					help: 'last instance activity (backend request) in Unix time (seconds).',
 				}),
 			);
@@ -93,7 +93,7 @@ describe('PrometheusRouteMetricsService', () => {
 				includePath: false,
 				includeMethod: false,
 				includeStatusCode: false,
-				httpDurationMetricName: 'n8n_http_request_duration_seconds',
+				httpDurationMetricName: 'MNI_http_request_duration_seconds',
 			});
 		});
 

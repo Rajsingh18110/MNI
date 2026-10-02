@@ -1,5 +1,5 @@
-import { WithTimestamps } from '@n8n/db';
-import { Entity, JoinColumn, ManyToOne, PrimaryColumn, type Relation } from '@n8n/typeorm';
+import { WithTimestamps } from '@MNI/db';
+import { Entity, JoinColumn, ManyToOne, PrimaryColumn, type Relation } from '@MNI/typeorm';
 
 import { Agent } from './agent.entity';
 

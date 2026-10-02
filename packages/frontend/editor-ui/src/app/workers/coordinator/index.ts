@@ -12,14 +12,14 @@ import type { CoordinatorApi } from './worker';
 // The SharedWorker coordinator that routes queries
 export const sharedWorker = new SharedWorker(new URL('./worker.ts', import.meta.url), {
 	type: 'module',
-	name: 'n8n-coordinator',
+	name: 'MNI-coordinator',
 });
 sharedWorker.port.start();
 
 // The dedicated data worker for this tab (only used if this tab becomes active)
 export const dataWorker = new Worker(new URL('../data/worker.ts', import.meta.url), {
 	type: 'module',
-	name: 'n8n-data',
+	name: 'MNI-data',
 });
 
 // Wrap the coordinator with Comlink

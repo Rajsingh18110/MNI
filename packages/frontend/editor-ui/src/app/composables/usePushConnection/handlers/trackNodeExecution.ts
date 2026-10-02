@@ -1,12 +1,12 @@
-import type { PushPayload } from '@n8n/api-types';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
+import type { PushPayload } from '@MNI/api-types';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
 import { useWorkflowHelpers } from '@/app/composables/useWorkflowHelpers';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import {
 	createWorkflowDocumentId,
 	useWorkflowDocumentStore,
 } from '@/app/stores/workflowDocument.store';
-import { TelemetryHelpers } from 'n8n-workflow';
+import { TelemetryHelpers } from 'MNI-workflow';
 
 export async function trackNodeExecution(
 	pushData: PushPayload<'nodeExecuteAfter'>,

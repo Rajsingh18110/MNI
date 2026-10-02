@@ -1,11 +1,11 @@
-import { Logger } from '@n8n/backend-common';
+import { Logger } from '@MNI/backend-common';
 import {
 	ContextEstablishmentHook,
 	ContextEstablishmentOptions,
 	ContextEstablishmentResult,
 	HookDescription,
 	IContextEstablishmentHook,
-} from '@n8n/decorators';
+} from '@MNI/decorators';
 import { createContext, Script } from 'node:vm';
 import { z } from 'zod';
 
@@ -99,7 +99,7 @@ export class HttpHeaderExtractor implements IContextEstablishmentHook {
 	};
 
 	isApplicableToTriggerNode(nodeType: string): boolean {
-		return nodeType === 'n8n-nodes-base.webhook' || nodeType === 'webhook';
+		return nodeType === 'MNI-nodes-base.webhook' || nodeType === 'webhook';
 	}
 
 	async execute(options: ContextEstablishmentOptions): Promise<ContextEstablishmentResult> {

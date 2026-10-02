@@ -39,11 +39,11 @@ describe('SingleInstanceLockfileRule', () => {
 	/** The real defect: one workspace pin fails a peer range and forks the graph. */
 	function writeSplitFixture(): void {
 		writePackage('packages/nodes-base', {
-			name: 'n8n-nodes-base',
+			name: 'MNI-nodes-base',
 			dependencies: { '@langchain/core': 'catalog:', '@smithy/signature-v4': '5.3.5' },
 		});
-		writePackage('packages/@n8n/nodes-langchain', {
-			name: '@n8n/n8n-nodes-langchain',
+		writePackage('packages/@MNI/nodes-langchain', {
+			name: '@MNI/MNI-nodes-langchain',
 			dependencies: { '@langchain/core': 'catalog:' },
 		});
 		writeLock(`importers:
@@ -56,7 +56,7 @@ describe('SingleInstanceLockfileRule', () => {
       '@smithy/signature-v4':
         specifier: 5.3.5
         version: 5.3.5
-  packages/@n8n/nodes-langchain:
+  packages/@MNI/nodes-langchain:
     dependencies:
       '@langchain/core':
         specifier: 'catalog:'
@@ -71,7 +71,7 @@ snapshots:
 
 	it('passes when a curated lib has a single peer context', async () => {
 		writePackage('packages/nodes-base', {
-			name: 'n8n-nodes-base',
+			name: 'MNI-nodes-base',
 			dependencies: { '@langchain/core': 'catalog:' },
 		});
 		writeLock(`importers:
@@ -114,7 +114,7 @@ snapshots:
 		writeSplitFixture();
 		const [violation] = await rule.analyze(context());
 		expect(violation.message).toContain('packages/nodes-base');
-		expect(violation.message).toContain('packages/@n8n/nodes-langchain');
+		expect(violation.message).toContain('packages/@MNI/nodes-langchain');
 	});
 
 	it('ignores a split in a library that is not single-instance-sensitive', async () => {

@@ -1,11 +1,11 @@
-import { Logger } from '@n8n/backend-common';
-import { binaryToBuffer } from '@n8n/backend-network';
-import { FsByteStore } from '@n8n/blob-storage';
-import { Service } from '@n8n/di';
+import { Logger } from '@MNI/backend-common';
+import { binaryToBuffer } from '@MNI/backend-network';
+import { FsByteStore } from '@MNI/blob-storage';
+import { Service } from '@MNI/di';
 import jwt from 'jsonwebtoken';
 import type { StringValue as TimeUnitValue } from 'ms';
-import { BINARY_ENCODING, UnexpectedError } from 'n8n-workflow';
-import type { INodeExecutionData, IBinaryData } from 'n8n-workflow';
+import { BINARY_ENCODING, UnexpectedError } from 'MNI-workflow';
+import type { INodeExecutionData, IBinaryData } from 'MNI-workflow';
 import { readFile, stat } from 'node:fs/promises';
 import prettyBytes from 'pretty-bytes';
 import type { Readable } from 'stream';

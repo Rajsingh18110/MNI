@@ -1,5 +1,5 @@
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
-import { i18nInstance, i18nVersion } from '@n8n/i18n';
+import { i18nInstance, i18nVersion } from '@MNI/i18n';
 import { useInstanceContextLabel, type InstanceContextEntry } from '../instanceContextLabels';
 
 const originalLocale = i18nInstance.global.locale.value;

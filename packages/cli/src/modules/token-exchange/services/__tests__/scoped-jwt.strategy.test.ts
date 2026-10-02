@@ -1,6 +1,6 @@
-import type { AuthenticatedRequest, User, UserRepository } from '@n8n/db';
-import { getApiKeyScopesForRole, type Scope as ScopeType } from '@n8n/permissions';
-import type { InstanceSettings } from 'n8n-core';
+import type { AuthenticatedRequest, User, UserRepository } from '@MNI/db';
+import { getApiKeyScopesForRole, type Scope as ScopeType } from '@MNI/permissions';
+import type { InstanceSettings } from 'MNI-core';
 import type { Mocked } from 'vitest';
 import { mock } from 'vitest-mock-extended';
 

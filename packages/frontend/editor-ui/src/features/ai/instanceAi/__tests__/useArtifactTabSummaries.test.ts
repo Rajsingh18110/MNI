@@ -9,7 +9,7 @@ const mocks = vi.hoisted(() => ({
 	fetchDataTablesApi: vi.fn(),
 }));
 
-vi.mock('@n8n/stores/useRootStore', () => ({
+vi.mock('@MNI/stores/useRootStore', () => ({
 	useRootStore: () => ({ restApiContext: {} }),
 }));
 

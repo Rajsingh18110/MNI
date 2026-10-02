@@ -1,7 +1,7 @@
-import { Logger } from '@n8n/backend-common';
-import { mockInstance } from '@n8n/backend-test-utils';
-import { ProjectRepository, User, WorkflowEntity } from '@n8n/db';
-import { NodeConnectionTypes, type INode } from 'n8n-workflow';
+import { Logger } from '@MNI/backend-common';
+import { mockInstance } from '@MNI/backend-test-utils';
+import { ProjectRepository, User, WorkflowEntity } from '@MNI/db';
+import { NodeConnectionTypes, type INode } from 'MNI-workflow';
 import type { Mock } from 'vitest';
 import { mock } from 'vitest-mock-extended';
 import { z } from 'zod';
@@ -13,7 +13,7 @@ import { CredentialsService } from '@/credentials/credentials.service';
 import { NotFoundError } from '@/errors/response-errors/not-found.error';
 import { NodeTypes } from '@/node-types';
 import type { AiGatewayService } from '@/services/ai-gateway.service';
-import { UrlService } from '@n8n/backend-services';
+import { UrlService } from '@MNI/backend-services';
 import { Telemetry } from '@/telemetry';
 import { WorkflowCreationService } from '@/workflows/workflow-creation.service';
 import { WorkflowFinderService } from '@/workflows/workflow-finder.service';
@@ -41,7 +41,7 @@ vi.mock('../tools/workflow-builder/credentials-auto-assign', () => ({
 }));
 
 // Mock dynamic imports
-vi.mock('@n8n/ai-workflow-builder', () => ({
+vi.mock('@MNI/ai-workflow-builder', () => ({
 	ParseValidateHandler: vi.fn(function () {
 		return { parseAndValidate: mockParseAndValidate };
 	}),
@@ -63,7 +63,7 @@ const mockNodes: INode[] = [
 	{
 		id: 'node-1',
 		name: 'Webhook',
-		type: 'n8n-nodes-base.webhook',
+		type: 'MNI-nodes-base.webhook',
 		typeVersion: 1,
 		position: [0, 0],
 		parameters: {},
@@ -71,7 +71,7 @@ const mockNodes: INode[] = [
 	{
 		id: 'node-2',
 		name: 'Set',
-		type: 'n8n-nodes-base.set',
+		type: 'MNI-nodes-base.set',
 		typeVersion: 1,
 		position: [200, 0],
 		parameters: {},
@@ -123,10 +123,10 @@ describe('create-workflow-from-code MCP tool', () => {
 		});
 		nodeTypes = mockInstance(NodeTypes);
 		nodeTypes.getByNameAndVersion.mockImplementation(((type: string) => {
-			if (type === '@n8n/n8n-nodes-langchain.agent') {
+			if (type === '@MNI/MNI-nodes-langchain.agent') {
 				return { description: { group: ['transform'], outputs: [NodeConnectionTypes.Main] } };
 			}
-			if (type === '@n8n/n8n-nodes-langchain.agentTool') {
+			if (type === '@MNI/MNI-nodes-langchain.agentTool') {
 				return { description: { group: ['transform'], outputs: [NodeConnectionTypes.AiTool] } };
 			}
 			// The group validator resolves trigger-ness via description.group; an
@@ -378,7 +378,7 @@ describe('create-workflow-from-code MCP tool', () => {
 			expect(workflowCreationService.createWorkflow).toHaveBeenCalledWith(
 				user,
 				expect.any(WorkflowEntity),
-				expect.objectContaining({ projectId: 'personal-project-1', source: 'n8n-mcp' }),
+				expect.objectContaining({ projectId: 'personal-project-1', source: 'MNI-mcp' }),
 			);
 		});
 
@@ -388,7 +388,7 @@ describe('create-workflow-from-code MCP tool', () => {
 			expect(workflowCreationService.createWorkflow).toHaveBeenCalledWith(
 				user,
 				expect.any(WorkflowEntity),
-				expect.objectContaining({ projectId: 'custom-project-id', source: 'n8n-mcp' }),
+				expect.objectContaining({ projectId: 'custom-project-id', source: 'MNI-mcp' }),
 			);
 		});
 
@@ -730,7 +730,7 @@ describe('create-workflow-from-code MCP tool', () => {
 
 		test('assigns webhookId to webhook nodes before saving', async () => {
 			nodeTypes.getByNameAndVersion.mockImplementation(((type: string) => {
-				if (type === 'n8n-nodes-base.webhook') {
+				if (type === 'MNI-nodes-base.webhook') {
 					return { description: { webhooks: [{ httpMethod: 'GET', path: '' }] } };
 				}
 				return { description: {} };
@@ -740,9 +740,9 @@ describe('create-workflow-from-code MCP tool', () => {
 
 			const savedWorkflow = createWorkflowMock.mock.calls[0][1] as WorkflowEntity;
 			const webhookNode = savedWorkflow.nodes.find(
-				(n: INode) => n.type === 'n8n-nodes-base.webhook',
+				(n: INode) => n.type === 'MNI-nodes-base.webhook',
 			);
-			const setNode = savedWorkflow.nodes.find((n: INode) => n.type === 'n8n-nodes-base.set');
+			const setNode = savedWorkflow.nodes.find((n: INode) => n.type === 'MNI-nodes-base.set');
 
 			expect(webhookNode!.webhookId).toBeDefined();
 			expect(typeof webhookNode!.webhookId).toBe('string');
@@ -777,7 +777,7 @@ describe('create-workflow-from-code MCP tool', () => {
 			const dataTableNode = (dataTableId: ReturnType<typeof dataTableLocator>): INode => ({
 				id: 'dt-1',
 				name: 'Data table',
-				type: 'n8n-nodes-base.dataTable',
+				type: 'MNI-nodes-base.dataTable',
 				typeVersion: 1,
 				position: [200, 0],
 				parameters: { dataTableId },
@@ -892,7 +892,7 @@ describe('create-workflow-from-code MCP tool', () => {
 			const httpNodeWithGithub = (credentialId: string): INode => ({
 				id: 'http-1',
 				name: 'Fetch PR Comments',
-				type: 'n8n-nodes-base.httpRequest',
+				type: 'MNI-nodes-base.httpRequest',
 				typeVersion: 4,
 				position: [0, 0],
 				parameters: {
@@ -1015,7 +1015,7 @@ describe('create-workflow-from-code MCP tool', () => {
 						{
 							id: 'manager',
 							name: 'Manager Agent',
-							type: '@n8n/n8n-nodes-langchain.agent',
+							type: '@MNI/MNI-nodes-langchain.agent',
 							typeVersion: 3,
 							position: [0, 0],
 							parameters: {},
@@ -1023,7 +1023,7 @@ describe('create-workflow-from-code MCP tool', () => {
 						{
 							id: 'worker',
 							name: 'Worker Agent',
-							type: '@n8n/n8n-nodes-langchain.agent',
+							type: '@MNI/MNI-nodes-langchain.agent',
 							typeVersion: 3,
 							position: [200, 0],
 							parameters: {},
@@ -1045,7 +1045,7 @@ describe('create-workflow-from-code MCP tool', () => {
 			const response = parseResult(result);
 			expect(response.error).toContain('Worker Agent');
 			expect(response.error).toContain('Manager Agent');
-			expect(response.error).toContain('@n8n/n8n-nodes-langchain.agentTool');
+			expect(response.error).toContain('@MNI/MNI-nodes-langchain.agentTool');
 		});
 
 		test('structuredContent conforms to declared outputSchema under strict validation', async () => {
@@ -1169,13 +1169,13 @@ describe('create-workflow-from-code MCP tool', () => {
 			beforeEach(() => {
 				// The group validator resolves trigger-ness via description.group.
 				nodeTypes.getByNameAndVersion.mockImplementation(((type: string) => {
-					if (type === 'n8n-nodes-base.webhook') {
+					if (type === 'MNI-nodes-base.webhook') {
 						return { description: { group: ['trigger'], outputs: [NodeConnectionTypes.Main] } };
 					}
-					if (type === '@n8n/n8n-nodes-langchain.agent') {
+					if (type === '@MNI/MNI-nodes-langchain.agent') {
 						return { description: { group: ['transform'], outputs: [NodeConnectionTypes.Main] } };
 					}
-					if (type === '@n8n/n8n-nodes-langchain.agentTool') {
+					if (type === '@MNI/MNI-nodes-langchain.agentTool') {
 						return {
 							description: { group: ['transform'], outputs: [NodeConnectionTypes.AiTool] },
 						};
@@ -1215,7 +1215,7 @@ describe('create-workflow-from-code MCP tool', () => {
 							{
 								id: 'agent',
 								name: 'Agent',
-								type: '@n8n/n8n-nodes-langchain.agent',
+								type: '@MNI/MNI-nodes-langchain.agent',
 								typeVersion: 1,
 								position: [0, 0],
 								parameters: {},
@@ -1223,7 +1223,7 @@ describe('create-workflow-from-code MCP tool', () => {
 							{
 								id: 'model',
 								name: 'Model',
-								type: '@n8n/n8n-nodes-langchain.agentTool',
+								type: '@MNI/MNI-nodes-langchain.agentTool',
 								typeVersion: 1,
 								position: [200, 0],
 								parameters: {},
@@ -1266,7 +1266,7 @@ describe('create-workflow-from-code MCP tool', () => {
 							{
 								id: 'a',
 								name: 'A',
-								type: 'n8n-nodes-base.set',
+								type: 'MNI-nodes-base.set',
 								typeVersion: 1,
 								position: [0, 0],
 								parameters: {},
@@ -1274,7 +1274,7 @@ describe('create-workflow-from-code MCP tool', () => {
 							{
 								id: 'b',
 								name: 'B',
-								type: 'n8n-nodes-base.set',
+								type: 'MNI-nodes-base.set',
 								typeVersion: 1,
 								position: [200, 0],
 								parameters: {},
@@ -1313,7 +1313,7 @@ describe('create-workflow-from-code MCP tool', () => {
 							{
 								id: 'node-1',
 								name: 'Webhook',
-								type: 'n8n-nodes-base.webhook',
+								type: 'MNI-nodes-base.webhook',
 								typeVersion: 1,
 								position: [0, 0],
 								parameters: {},
@@ -1321,7 +1321,7 @@ describe('create-workflow-from-code MCP tool', () => {
 							{
 								id: 'a',
 								name: 'A',
-								type: 'n8n-nodes-base.set',
+								type: 'MNI-nodes-base.set',
 								typeVersion: 1,
 								position: [200, 0],
 								parameters: {},
@@ -1329,7 +1329,7 @@ describe('create-workflow-from-code MCP tool', () => {
 							{
 								id: 'b',
 								name: 'B',
-								type: 'n8n-nodes-base.set',
+								type: 'MNI-nodes-base.set',
 								typeVersion: 1,
 								position: [400, 0],
 								parameters: {},
@@ -1407,7 +1407,7 @@ describe('create-workflow-from-code MCP tool', () => {
 			const wideNodes: INode[] = Array.from({ length: 8 }, (_, i) => ({
 				id: `node-${i}`,
 				name: `Step ${i}`,
-				type: 'n8n-nodes-base.set',
+				type: 'MNI-nodes-base.set',
 				typeVersion: 1,
 				position: [i * 200, 0],
 				parameters: {},

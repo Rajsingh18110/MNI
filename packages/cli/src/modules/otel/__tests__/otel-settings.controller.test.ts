@@ -1,5 +1,5 @@
-import type { ModuleRegistry } from '@n8n/backend-common';
-import type { AuthenticatedRequest } from '@n8n/db';
+import type { ModuleRegistry } from '@MNI/backend-common';
+import type { AuthenticatedRequest } from '@MNI/db';
 import { mock } from 'vitest-mock-extended';
 
 import type { OtelLifecycleHandler } from '../otel-lifecycle-handler';
@@ -23,7 +23,7 @@ const baseSettings: OtelConfig = {
 	exporterEndpoint: 'https://collector.example.com',
 	exporterTracingPath: '/v1/traces',
 	exporterHeaders: '',
-	exporterServiceName: 'n8n-prod',
+	exporterServiceName: 'MNI-prod',
 	tracesSampleRate: 1,
 	startupConnectivityTimeoutMs: 2_000,
 	includeNodeSpans: true,
@@ -135,7 +135,7 @@ describe('OtelSettingsController', () => {
 			exporterProtocol: 'http/protobuf',
 			exporterEndpoint: 'https://collector.example.com',
 			exporterTracingPath: '/v1/traces',
-			exporterServiceName: 'n8n-prod',
+			exporterServiceName: 'MNI-prod',
 			exporterHeaders: 'auth=token',
 			startupConnectivityTimeoutMs: 2_000,
 		};

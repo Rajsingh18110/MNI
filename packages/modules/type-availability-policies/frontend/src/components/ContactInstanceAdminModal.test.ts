@@ -1,15 +1,15 @@
-import { ROLE } from '@n8n/api-types';
-import { createComponentRenderer, mockedStore, waitAllPromises } from '@n8n/frontend-test-utils';
-import type { IUser } from '@n8n/rest-api-client/api/users';
-import { useUsersStore } from '@n8n/stores/users.store';
+import { ROLE } from '@MNI/api-types';
+import { createComponentRenderer, mockedStore, waitAllPromises } from '@MNI/frontend-test-utils';
+import type { IUser } from '@MNI/rest-api-client/api/users';
+import { useUsersStore } from '@MNI/stores/users.store';
 import { createTestingPinia } from '@pinia/testing';
 import { setActivePinia } from 'pinia';
 import { describe, it, expect, vi } from 'vitest';
 
 import ContactInstanceAdminModal from './ContactInstanceAdminModal.vue';
 
-vi.mock('@n8n/design-system', async (importOriginal) => {
-	const actual = await importOriginal<typeof import('@n8n/design-system')>();
+vi.mock('@MNI/design-system', async (importOriginal) => {
+	const actual = await importOriginal<typeof import('@MNI/design-system')>();
 	return {
 		...actual,
 		N8nDialog: {

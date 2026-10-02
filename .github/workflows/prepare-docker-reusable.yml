@@ -2,10 +2,10 @@ name: 'Prepare MNI Docker (reusable)'
 
 # Reusable workflow that ensures the MNI + runners CI test images for the
 # current commit SHA are present in the GHA cache. Cache-aware: if another
-# job in the same run already populated `n8n-docker-image-<sha>`, this
+# job in the same run already populated `MNI-docker-image-<sha>`, this
 # becomes a no-op.
 #
-# Downstream jobs restore the same SHA-keyed cache via load-n8n-docker.
+# Downstream jobs restore the same SHA-keyed cache via load-MNI-docker.
 
 on:
   workflow_call:
@@ -40,7 +40,7 @@ jobs:
           fetch-depth: 1
 
       - name: Build and publish image
-        uses: ./.github/actions/build-n8n-docker
+        uses: ./.github/actions/build-MNI-docker
         with:
           build-variant: ${{ inputs.build-variant }}
         env:

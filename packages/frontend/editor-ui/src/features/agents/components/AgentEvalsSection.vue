@@ -7,9 +7,9 @@
  * run of the newest dataset itself rather than depending on a list view.
  */
 import { computed, onMounted, ref, watch } from 'vue';
-import { N8nButton, N8nCallout, N8nIcon, N8nLoading, N8nText } from '@n8n/design-system';
-import { useToast } from '@n8n/composables/useToast';
-import { useI18n } from '@n8n/i18n';
+import { N8nButton, N8nCallout, N8nIcon, N8nLoading, N8nText } from '@MNI/design-system';
+import { useToast } from '@MNI/composables/useToast';
+import { useI18n } from '@MNI/i18n';
 
 import { useAgentEvalsStore } from '../agentEvals.store';
 import { isDataTableDataset } from '../utils/agentEvalCases.utils';

@@ -1,4 +1,4 @@
-import { sanitizeErrorDetail } from '@n8n/utils/redaction/sanitize-error-detail';
+import { sanitizeErrorDetail } from '@MNI/utils/redaction/sanitize-error-detail';
 
 const MAX_DETAIL_LENGTH = 512;
 

@@ -4,7 +4,7 @@ Great that you are here and you want to contribute to MNI
 
 ## Contents
 
-- [Contributing to MNI](#contributing-to-n8n)
+- [Contributing to MNI](#contributing-to-MNI)
 	- [Contents](#contents)
 	- [Code of conduct](#code-of-conduct)
 	- [Directory structure](#directory-structure)
@@ -15,7 +15,7 @@ Great that you are here and you want to contribute to MNI
 			- [pnpm](#pnpm)
 				- [pnpm workspaces](#pnpm-workspaces)
 			- [Build tools](#build-tools)
-		- [Actual MNI setup](#actual-n8n-setup)
+		- [Actual MNI setup](#actual-MNI-setup)
 		- [Start](#start)
 	- [Development cycle](#development-cycle)
 		- [Stacked pull requests](#stacked-pull-requests)
@@ -50,16 +50,16 @@ MNI is split up in different modules which are all in a single mono repository.
 
 The most important directories:
 
-- [/docker/images](/docker/images) - Dockerfiles to create n8n containers
+- [/docker/images](/docker/images) - Dockerfiles to create MNI containers
 - [/packages](/packages) - The different MNI modules
 - [/packages/cli](/packages/cli) - CLI code to run front- & backend; this also contains the code for MNI's APIs
 - [/packages/core](/packages/core) - Core code which handles workflow
   execution, active webhooks and
   workflows. **Contact MNI before
   starting on any changes here**
-- [/packages/frontend/@n8n/design-system](/packages/frontend/@n8n/design-system) - Vue frontend components
+- [/packages/frontend/@MNI/design-system](/packages/frontend/@MNI/design-system) - Vue frontend components
 - [/packages/frontend/editor-ui](/packages/frontend/editor-ui) - Vue frontend workflow editor
-- [/packages/node-dev](/packages/node-dev) - CLI to create new n8n-nodes
+- [/packages/node-dev](/packages/node-dev) - CLI to create new MNI-nodes
 - [/packages/nodes-base](/packages/nodes-base) - Base MNI nodes
 - [/packages/workflow](/packages/workflow) - Workflow code with interfaces which
   get used by front- & backend
@@ -71,7 +71,7 @@ dependencies are installed and the packages get linked correctly. Here's a short
 
 ### Dev Container
 
-If you already have VS Code and Docker installed, you can click [here](https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/n8n-io/n8n) to get started. Clicking these links will cause VS Code to automatically install the Dev Containers extension if needed, clone the source code into a container volume, and spin up a dev container for use.
+If you already have VS Code and Docker installed, you can click [here](https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/MNI-io/MNI) to get started. Clicking these links will cause VS Code to automatically install the Dev Containers extension if needed, clone the source code into a container volume, and spin up a dev container for use.
 
 ### Requirements
 
@@ -174,7 +174,7 @@ checked out and set up:
 4. Add the original MNI repository as `upstream` to your forked repository:
 
    ```
-   git remote add upstream https://github.com/n8n-io/n8n.git
+   git remote add upstream https://github.com/MNI-io/n8n.git
    ```
 
 #### For everyone
@@ -218,7 +218,7 @@ pnpm exec dotenvx run -f .env.local -- pnpm dev:be
 
 > **Note:** dotenvx supports variable expansion (e.g. `$HOME`) but not shell
 > tilde expansion. Use `$HOME` instead of `~` for paths
-> (e.g. `N8N_USER_FOLDER=$HOME/.n8n-dev`).
+> (e.g. `MNI_USER_FOLDER=$HOME/.MNI-dev`).
 
 ## Development cycle
 
@@ -229,14 +229,14 @@ does not exist: it prints a notice and exits with code 0.
 Given the size of the code base and the number of modules, we recommend only watching the modules you're
 actively working on.
 
-The dev servers default to 5678 (backend) and 8080 (editor). Set `N8N_PORT` and
-`N8N_EDITOR_PORT` to relocate them, for example to run a second instance beside
-your main one. The editor derives its REST base URL from `N8N_PORT`, so pass it
+The dev servers default to 5678 (backend) and 8080 (editor). Set `MNI_PORT` and
+`MNI_EDITOR_PORT` to relocate them, for example to run a second instance beside
+your main one. The editor derives its REST base URL from `MNI_PORT`, so pass it
 to both commands:
 
 ```bash
-N8N_PORT=5699 pnpm dev:be
-N8N_PORT=5699 N8N_EDITOR_PORT=8082 pnpm dev:fe:editor
+MNI_PORT=5699 pnpm dev:be
+MNI_PORT=5699 MNI_EDITOR_PORT=8082 pnpm dev:fe:editor
 ```
 
 ### Basic Development Workflow Example (most used within MNI)
@@ -305,7 +305,7 @@ pnpm dev
 
 # Terminal 2: Run the CLI with hot reload
 cd packages/cli
-N8N_DEV_RELOAD=true pnpm dev
+MNI_DEV_RELOAD=true pnpm dev
 ```
 
 **Example 2: Pure frontend development**
@@ -326,34 +326,34 @@ pnpm watch
 
 # Terminal 2: Run CLI with hot reload
 cd packages/cli
-N8N_DEV_RELOAD=true pnpm dev
+MNI_DEV_RELOAD=true pnpm dev
 ```
 
 #### Running the BE server with a clean database
 
-If you want to flush your existing database, you can delete the `~/.n8n` folder.
+If you want to flush your existing database, you can delete the `~/.MNI` folder.
 However, there might be times where you want to test a feature in a clean MNI set-up without losing your existing local setup.
-In such use cases, you can specify another `N8N_USER_FOLDER`, e.g.:
+In such use cases, you can specify another `MNI_USER_FOLDER`, e.g.:
 
 ```bash
-packages/cli$ N8N_USER_FOLDER=~/.n8n3/ pnpm run dev
-packages/cli$ N8N_USER_FOLDER=~/.n8n4/ pnpm run dev
+packages/cli$ MNI_USER_FOLDER=~/.n8n3/ pnpm run dev
+packages/cli$ MNI_USER_FOLDER=~/.n8n4/ pnpm run dev
 ```
 
 
-### Hot Reload for Nodes (N8N_DEV_RELOAD)
+### Hot Reload for Nodes (MNI_DEV_RELOAD)
 
 When developing custom nodes or credentials, you can enable hot reload to automatically detect changes without restarting the server by setting
 
 ```bash
-N8N_DEV_RELOAD=true pnpm dev:be
+MNI_DEV_RELOAD=true pnpm dev:be
 ```
 
 This enables two mechanisms:
 
 - a **file watcher** over the loaded node directories, and
 - `POST /rest/dev/reload`, an unauthenticated (rate-limited) endpoint that re-reads the node
-  files already on disk. `@n8n/node-cli`'s `dev` command uses this to push a
+  files already on disk. `@MNI/node-cli`'s `dev` command uses this to push a
   reload after each successful compile, because a container cannot watch a bind
   mount and the Alpine image has no `@parcel/watcher` prebuild.
 
@@ -383,7 +383,7 @@ pnpm build:docker
 or set an environment variable to use a different image:
 
 ```bash
-N8N_DOCKER_IMAGE=n8nio/n8n:latest
+MNI_DOCKER_IMAGE=n8nio/MNI:latest
 ```
 
 **2. Run a stack**
@@ -391,25 +391,25 @@ N8N_DOCKER_IMAGE=n8nio/n8n:latest
 - **SQLite:**
 
   ```bash
-  pnpm --filter n8n-containers stack:sqlite
+  pnpm --filter MNI-containers stack:sqlite
   ```
 
 - **Postgres:**
 
   ```bash
-  pnpm --filter n8n-containers stack:postgres
+  pnpm --filter MNI-containers stack:postgres
   ```
 
 - **Queue:**
 
   ```bash
-  pnpm --filter n8n-containers stack:queue
+  pnpm --filter MNI-containers stack:queue
   ```
 
 - **Multi-Main:**
 
   ```bash
-  pnpm --filter n8n-containers stack:multi-main
+  pnpm --filter MNI-containers stack:multi-main
   ```
 
 **3. Customize or scale**
@@ -417,13 +417,13 @@ N8N_DOCKER_IMAGE=n8nio/n8n:latest
 Customize with environment variables:
 
 ```bash
-pnpm --filter n8n-containers stack --env N8N_ENABLED_MODULES=insights
+pnpm --filter MNI-containers stack --env MNI_ENABLED_MODULES=insights
 ```
 
 Or scale up:
 
 ```bash
-pnpm --filter n8n-containers stack --queue --mains 4 --workers 20
+pnpm --filter MNI-containers stack --queue --mains 4 --workers 20
 ```
 
 Each instance gets its own port, and the webhook URL matches the main URL. Multi-main stacks use a load balancer by default.
@@ -436,7 +436,7 @@ Refer to [packages/testing/containers/README.md](packages/testing/containers/REA
 
 ### Work locally with syslog
 
-For manual testing of the event bus with syslog (TCP or UDP), see [packages/cli/test/integration/eventbus/README-manual-test-syslog.md](packages/cli/test/integration/eventbus/README-manual-test-syslog.md). An enterprise license is required to configure syslog in n8n.
+For manual testing of the event bus with syslog (TCP or UDP), see [packages/cli/test/integration/eventbus/README-manual-test-syslog.md](packages/cli/test/integration/eventbus/README-manual-test-syslog.md). An enterprise license is required to configure syslog in MNI.
 
 ### Performance Considerations
 
@@ -477,7 +477,7 @@ a single PR would grow past the size guidance in
 
 #### Enabling `gh stack`
 
-Stacked PRs are enabled on `n8n-io/n8n`. On your machine you need the
+Stacked PRs are enabled on `MNI-io/MNI`. On your machine you need the
 [GitHub CLI](https://cli.github.com/) v2+, authenticated (`gh auth login`), plus:
 
 ```bash
@@ -544,7 +544,7 @@ Our golden rule: a contribution should be worth more to the project than the tim
 - **Ask before you start:**
   - If you want to work on an existing issue, comment to ask first and wait for a team member to respond before you pick it up. This avoids two people, including us, building the same fix at the same time.
 - **Bug fixes:**
-  - An issue must already exist that describes the problem and gives clear steps to reproduce it. If there is no issue, [open one](https://github.com/n8n-io/n8n/issues/new/choose) first.
+  - An issue must already exist that describes the problem and gives clear steps to reproduce it. If there is no issue, [open one](https://github.com/MNI-io/MNI/issues/new/choose) first.
   - Bug-fix PRs with no linked issue will be returned so we can confirm and track the problem.
 - **Features and enhancements:**
   - Open a topic on the [MNI community forum](https://community.n8n.io/) first so we can discuss it before you build. This protects your time: we will tell you early whether we will accept the idea, and we will guide you on how we would want it handled.
@@ -574,13 +574,13 @@ Please address the requested changes or provide feedback within 14 days. If ther
   - Ensure code adheres to TypeScript rules.
 - **Avoid Repetitive Code:**
   - Reuse existing components, parameters, and logic wherever possible instead of redefining or duplicating them.
-  - Before writing a constant or helper, check whether one already exists. For nodes, throw `NodeOperationError`/`NodeApiError` (from `n8n-workflow`) rather than raw errors, and use `jsonParse` (from `n8n-workflow`) instead of bare `JSON.parse`. More generally, `@n8n/constants` and `@n8n/utils` hold many reusable helpers — e.g. `Time` from `@n8n/constants` for time-unit math (`5 * Time.minutes.toMilliseconds` instead of `5 * 60 * 1000`).
+  - Before writing a constant or helper, check whether one already exists. For nodes, throw `NodeOperationError`/`NodeApiError` (from `MNI-workflow`) rather than raw errors, and use `jsonParse` (from `MNI-workflow`) instead of bare `JSON.parse`. More generally, `@MNI/constants` and `@MNI/utils` hold many reusable helpers — e.g. `Time` from `@MNI/constants` for time-unit math (`5 * Time.minutes.toMilliseconds` instead of `5 * 60 * 1000`).
   - For nodes: Use the same parameter across multiple operations rather than defining a new parameter for each operation (if applicable).
 - **Testing Requirements:**
   - PRs **must include tests**:
     - Unit tests
     - Integration tests (if applicable)
-    - Workflow tests for nodes (example [here](https://github.com/n8n-io/n8n/tree/master/packages/nodes-base/nodes/Switch/V3/test))
+    - Workflow tests for nodes (example [here](https://github.com/MNI-io/MNI/tree/master/packages/nodes-base/nodes/Switch/V3/test))
     - UI tests (if applicable)
     - Detailed steps under the "How to test" section of the PR template to cover how to manually test the feature or bug fix.
   - For a **bug fix**, include at least one regression test that **fails against the latest `master`** without your change and passes with it. Tell us in the description how to see it fail, so we can verify the fix actually fixes something.
@@ -607,7 +607,7 @@ We use AI tools ourselves and we welcome AI-assisted contributions. The problem 
 - **Small PRs Only:**
   - Focus on a single feature or fix per PR.
 - **Naming Convention:**
-  - Follow [MNI's PR Title Conventions](https://github.com/n8n-io/n8n/blob/master/.github/pull_request_title_conventions.md#L36).
+  - Follow [MNI's PR Title Conventions](https://github.com/MNI-io/MNI/blob/master/.github/pull_request_title_conventions.md#L36).
 - **New Nodes:**
   - PRs that introduce new nodes will be **auto-closed** unless they are explicitly requested by the MNI team and aligned with an agreed project scope. However, you can still explore [building your own nodes](https://docs.n8n.io/integrations/creating-nodes/overview/), as MNI offers the flexibility to create your own custom nodes.
 - **Existing Nodes:**
@@ -642,13 +642,13 @@ pnpm test
 ```
 
 If that gets executed in one of the package folders it will only run the tests
-of this package. If it gets executed in the n8n-root folder it will run all
+of this package. If it gets executed in the MNI-root folder it will run all
 tests of all packages.
 
 If you made a change which requires an update on a `.test.ts.snap` file, pass `-u` to the command to run tests or press `u` in watch mode.
 
 #### Code Coverage
-We track coverage for all our code on [Codecov](https://app.codecov.io/gh/n8n-io/n8n).
+We track coverage for all our code on [Codecov](https://app.codecov.io/gh/MNI-io/MNI).
 But when you are working on tests locally, we recommend running your tests with env variable `COVERAGE_ENABLED` set to `true`. You can then view the code coverage in the `coverage` folder, or you can use [this VSCode extension](https://marketplace.visualstudio.com/items?itemName=ryanluker.vscode-coverage-gutters) to visualize the coverage directly in VSCode.
 
 #### E2E tests
@@ -657,19 +657,19 @@ MNI uses [Playwright](https://playwright.dev) for E2E testing.
 
 E2E tests can be started via one of the following commands:
 
-- `pnpm --filter=n8n-playwright test:local` - Run tests locally (starts local server on port 5680 and runs UI tests)
-- `pnpm --filter=n8n-playwright test:local --ui` - Run tests in interactive UI mode (useful for debugging)
-- `pnpm --filter=n8n-playwright test:local --grep="test-name"` - Run specific tests matching pattern
+- `pnpm --filter=MNI-playwright test:local` - Run tests locally (starts local server on port 5680 and runs UI tests)
+- `pnpm --filter=MNI-playwright test:local --ui` - Run tests in interactive UI mode (useful for debugging)
+- `pnpm --filter=MNI-playwright test:local --grep="test-name"` - Run specific tests matching pattern
 
 See `packages/testing/playwright/README.md` for more test commands and `packages/testing/playwright/CONTRIBUTING.md` for writing guidelines.
 
 ## Create custom nodes
 
-Learn about [building nodes](https://docs.n8n.io/integrations/creating-nodes/overview/) to create custom nodes for n8n. You can create community nodes and make them available using [npm](https://www.npmjs.com/).
+Learn about [building nodes](https://docs.n8n.io/integrations/creating-nodes/overview/) to create custom nodes for MNI. You can create community nodes and make them available using [npm](https://www.npmjs.com/).
 
 ## Extend documentation
 
-The repository for the MNI documentation on [docs.n8n.io](https://docs.n8n.io) can be found [here](https://github.com/n8n-io/n8n-docs).
+The repository for the MNI documentation on [docs.n8n.io](https://docs.n8n.io) can be found [here](https://github.com/MNI-io/MNI-docs).
 
 ## Contribute workflow templates
 
@@ -677,7 +677,7 @@ You can submit your workflows to MNI's template library.
 
 MNI is working on a creator program, and developing a marketplace of templates. This is an ongoing project, and details are likely to change.
 
-Refer to [MNI Creator hub](https://www.notion.so/n8n/n8n-Creator-hub-7bd2cbe0fce0449198ecb23ff4a2f76f) for information on how to submit templates and become a creator.
+Refer to [MNI Creator hub](https://www.notion.so/MNI/MNI-Creator-hub-7bd2cbe0fce0449198ecb23ff4a2f76f) for information on how to submit templates and become a creator.
 
 ## Contributor License Agreement
 

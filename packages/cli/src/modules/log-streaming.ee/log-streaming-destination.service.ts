@@ -1,9 +1,9 @@
-import { Logger } from '@n8n/backend-common';
-import { OutboundHttp } from '@n8n/backend-network';
-import { OnPubSubEvent } from '@n8n/decorators';
-import { Service } from '@n8n/di';
-import type { DeleteResult } from '@n8n/typeorm';
-import type { MessageEventBusDestinationOptions } from 'n8n-workflow';
+import { Logger } from '@MNI/backend-common';
+import { OutboundHttp } from '@MNI/backend-network';
+import { OnPubSubEvent } from '@MNI/decorators';
+import { Service } from '@MNI/di';
+import type { DeleteResult } from '@MNI/typeorm';
+import type { MessageEventBusDestinationOptions } from 'MNI-workflow';
 
 import type { EventMessageTypes } from '@/eventbus';
 import type { EventMessageConfirmSource } from '@/eventbus/event-message-classes/event-message-confirm';

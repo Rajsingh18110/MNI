@@ -12,8 +12,8 @@ import {
 	isValidPathComponent,
 	isValidVersionSegment,
 	versionDirToNumber,
-} from '@n8n/ai-utilities/node-catalog';
-import { safeJoinPath } from '@n8n/backend-common';
+} from '@MNI/ai-utilities/node-catalog';
+import { safeJoinPath } from '@MNI/backend-common';
 import { readFileSync, existsSync, readdirSync, statSync } from 'node:fs';
 
 function getNodesPaths(nodeDefinitionDirs: string[]): string[] {

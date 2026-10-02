@@ -3,12 +3,12 @@ import type {
 	InstanceAiPreferenceCardEditResponse,
 	InstanceAiPreferenceCardEvent,
 	InstanceAiPreferenceCardUndoRequestDto,
-} from '@n8n/api-types';
-import { aiPreferenceTargetOf } from '@n8n/api-types';
-import type { User } from '@n8n/db';
-import { Service } from '@n8n/di';
-import { orchestratorAgentId } from '@n8n/instance-ai';
-import { TELEMETRY_EVENT } from '@n8n/telemetry';
+} from '@MNI/api-types';
+import { aiPreferenceTargetOf } from '@MNI/api-types';
+import type { User } from '@MNI/db';
+import { Service } from '@MNI/di';
+import { orchestratorAgentId } from '@MNI/instance-ai';
+import { TELEMETRY_EVENT } from '@MNI/telemetry';
 
 import { AiPreferenceService } from '@/services/ai-preference.service';
 import { secondsSinceSaved } from '@/services/ai-preference-write';

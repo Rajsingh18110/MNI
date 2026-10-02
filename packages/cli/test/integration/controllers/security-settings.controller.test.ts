@@ -1,5 +1,5 @@
-import { mockInstance } from '@n8n/backend-test-utils';
-import { InstanceSettingsLoaderConfig } from '@n8n/config';
+import { mockInstance } from '@MNI/backend-test-utils';
+import { InstanceSettingsLoaderConfig } from '@MNI/config';
 
 import { SecuritySettingsService } from '@/services/security-settings.service';
 import { WorkflowReviewPolicyService } from '@/services/workflow-review-policy.service';

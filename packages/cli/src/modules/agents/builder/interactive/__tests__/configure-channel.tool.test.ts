@@ -1,6 +1,6 @@
-import type { InterruptibleToolContext } from '@n8n/agents';
-import { channelConfigSchema } from '@n8n/api-types';
-import { TELEMETRY_EVENT } from '@n8n/telemetry';
+import type { InterruptibleToolContext } from '@MNI/agents';
+import { channelConfigSchema } from '@MNI/api-types';
+import { TELEMETRY_EVENT } from '@MNI/telemetry';
 import type { Mock } from 'vitest';
 
 import { buildConfigureChannelTool } from '../configure-channel.tool';

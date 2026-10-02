@@ -1,14 +1,14 @@
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
 
-import { Logger } from '@n8n/backend-common';
-import { ExecutionsConfig } from '@n8n/config';
-import { Time } from '@n8n/constants';
-import { ExecutionRepository } from '@n8n/db';
-import { Container, Service } from '@n8n/di';
-import { ensureError } from '@n8n/utils/errors/ensure-error';
-import type { IDeferredPromise } from '@n8n/utils/promise/deferred-promise';
-import { sleep } from '@n8n/utils/sleep';
-import type { ExecutionLifecycleHooks } from 'n8n-core';
+import { Logger } from '@MNI/backend-common';
+import { ExecutionsConfig } from '@MNI/config';
+import { Time } from '@MNI/constants';
+import { ExecutionRepository } from '@MNI/db';
+import { Container, Service } from '@MNI/di';
+import { ensureError } from '@MNI/utils/errors/ensure-error';
+import type { IDeferredPromise } from '@MNI/utils/promise/deferred-promise';
+import { sleep } from '@MNI/utils/sleep';
+import type { ExecutionLifecycleHooks } from 'MNI-core';
 import {
 	ErrorReporter,
 	establishExecutionContext,
@@ -16,7 +16,7 @@ import {
 	StorageConfig,
 	WorkflowExecute,
 	WorkflowHasIssuesError,
-} from 'n8n-core';
+} from 'MNI-core';
 import type {
 	ExecutionError,
 	IExecuteResponsePromiseData,
@@ -25,7 +25,7 @@ import type {
 	IRun,
 	WorkflowExecuteMode,
 	IWorkflowExecutionDataProcess,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import {
 	createRunExecutionData,
 	ExecutionCancelledError,
@@ -34,7 +34,7 @@ import {
 	TimeoutExecutionCancelledError,
 	Workflow,
 	WorkflowOperationError,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import PCancelable from 'p-cancelable';
 
 import { EventService } from './events/event.service';

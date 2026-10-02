@@ -1,4 +1,4 @@
-import type { CredentialCheckStatus } from 'n8n-workflow';
+import type { CredentialCheckStatus } from 'MNI-workflow';
 
 import { buildFormShellViewModel, formShellSummaryText } from '../utils/utils';
 

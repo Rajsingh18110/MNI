@@ -14,7 +14,7 @@ import type {
 
 const featureFlags = vi.hoisted(() => ({ browserUse: false, computerUse: false }));
 
-vi.mock('@n8n/i18n', async (importOriginal) => ({
+vi.mock('@MNI/i18n', async (importOriginal) => ({
 	...(await importOriginal()),
 	i18n: { baseText: (key: string) => key },
 }));
@@ -182,7 +182,7 @@ vi.mock('@/features/credentials/composables/useCredentialOAuth', () => ({
 	}),
 }));
 
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: () => ({
 		showMessage: vi.fn(),
 		showError: vi.fn(),

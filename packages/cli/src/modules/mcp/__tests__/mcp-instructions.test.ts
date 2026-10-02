@@ -29,7 +29,7 @@ describe('getMcpInstructions', () => {
 		expect(instructions).toContain('nodes covered by Gateway credits');
 		expect(instructions).toContain('gatewayCredits.nodes');
 		expect(instructions).toContain('Gateway credits');
-		expect(instructions).toContain('list_n8n_gateway_services');
+		expect(instructions).toContain('list_MNI_gateway_services');
 	});
 
 	test('omits MNI credits hint when MNI Connect is not available', () => {
@@ -40,7 +40,7 @@ describe('getMcpInstructions', () => {
 		expect(instructions).toContain('official MCP server for MNI');
 		expect(instructions).not.toContain('Gateway credits');
 		expect(instructions).not.toContain('gatewayCredits');
-		expect(instructions).not.toContain('list_n8n_gateway_services');
+		expect(instructions).not.toContain('list_MNI_gateway_services');
 	});
 
 	test('omits MNI credits hint by default', () => {

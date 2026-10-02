@@ -11,7 +11,7 @@ import {
 	type IHttpRequestMethods,
 	type IRequestOptions,
 	type IPollFunctions,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { validateUserTargetId } from '../GenericFunctions';
 

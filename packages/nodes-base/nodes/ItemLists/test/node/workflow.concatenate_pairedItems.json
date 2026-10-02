@@ -5,7 +5,7 @@
 			"parameters": {},
 			"id": "37256a71-67fe-4643-b4c7-e670096b68fc",
 			"name": "When clicking \"Execute Workflow\"",
-			"type": "n8n-nodes-base.manualTrigger",
+			"type": "MNI-nodes-base.manualTrigger",
 			"typeVersion": 1,
 			"position": [620, 540]
 		},
@@ -17,7 +17,7 @@
 			},
 			"id": "0518c1d3-2e6d-40c6-8225-d89ec28ed28d",
 			"name": "DebugHelper",
-			"type": "n8n-nodes-base.debugHelper",
+			"type": "MNI-nodes-base.debugHelper",
 			"typeVersion": 1,
 			"position": [1000, 540]
 		},
@@ -28,7 +28,7 @@
 			},
 			"id": "7866056b-a7c1-41e2-b3b7-301cb21d95d4",
 			"name": "Item Lists",
-			"type": "n8n-nodes-base.itemLists",
+			"type": "MNI-nodes-base.itemLists",
 			"typeVersion": 3,
 			"position": [1200, 540]
 		},
@@ -46,7 +46,7 @@
 			},
 			"id": "191ec112-65b6-4e4a-bf11-b63ab7e96f68",
 			"name": "Edit Fields",
-			"type": "n8n-nodes-base.set",
+			"type": "MNI-nodes-base.set",
 			"typeVersion": 3,
 			"position": [800, 540]
 		},
@@ -57,7 +57,7 @@
 			},
 			"id": "4a3d6844-5044-4570-912a-af3f32efa871",
 			"name": "Customer Messenger (MNI training)",
-			"type": "n8n-nodes-base.n8nTrainingCustomerMessenger",
+			"type": "MNI-nodes-base.n8nTrainingCustomerMessenger",
 			"typeVersion": 1,
 			"position": [1400, 540]
 		}

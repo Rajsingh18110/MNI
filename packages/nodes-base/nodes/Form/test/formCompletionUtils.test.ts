@@ -1,4 +1,4 @@
-vi.mock('n8n-core', () => ({
+vi.mock('MNI-core', () => ({
 	getHtmlSandboxCSP: vi.fn(
 		() =>
 			'sandbox allow-downloads allow-forms allow-modals allow-orientation-lock allow-pointer-lock allow-popups allow-presentation allow-scripts allow-top-navigation-by-user-activation allow-top-navigation-to-custom-protocols',
@@ -9,11 +9,11 @@ vi.mock('n8n-core', () => ({
 	InstanceSettings: class {},
 }));
 
-import { Container } from '@n8n/di';
+import { Container } from '@MNI/di';
 import { type Request, type Response } from 'express';
 import { type MockProxy, mock } from 'vitest-mock-extended';
-import { getHtmlSandboxCSP, InstanceSettings, isFormHtmlSandboxingDisabled } from 'n8n-core';
-import { ExpressionError, type INode, type IUser, type IWebhookFunctions } from 'n8n-workflow';
+import { getHtmlSandboxCSP, InstanceSettings, isFormHtmlSandboxingDisabled } from 'MNI-core';
+import { ExpressionError, type INode, type IUser, type IWebhookFunctions } from 'MNI-workflow';
 
 import { binaryResponse, renderFormCompletion } from '../utils/formCompletionUtils';
 import { verifyFormUserAuthToken } from '../utils/utils';

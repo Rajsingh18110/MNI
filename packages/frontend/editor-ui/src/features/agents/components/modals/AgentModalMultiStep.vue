@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { DialogSize } from '@n8n/design-system';
+import type { DialogSize } from '@MNI/design-system';
 import { computed, nextTick, ref, watch } from 'vue';
 
 import AgentModal from './AgentModal.vue';
@@ -103,7 +103,7 @@ watch(
 </template>
 
 <style module lang="scss">
-@use '@n8n/design-system/css/mixins/motion';
+@use '@MNI/design-system/css/mixins/motion';
 
 .step {
 	min-height: 0;

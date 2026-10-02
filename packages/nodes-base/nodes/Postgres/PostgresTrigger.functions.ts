@@ -4,8 +4,8 @@ import type {
 	ILoadOptionsFunctions,
 	INodeListSearchResult,
 	INodeListSearchItems,
-} from 'n8n-workflow';
-import { OperationalError, UserError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { OperationalError, UserError } from 'MNI-workflow';
 
 import { configurePostgres } from './transport';
 import type { PgpDatabase, PostgresNodeCredentials } from './v2/helpers/interfaces';
@@ -42,14 +42,14 @@ export function prepareNames(id: string, mode: string, additionalFields: IDataOb
 		suffix = `${suffix}_manual`;
 	}
 
-	let functionName = (additionalFields.functionName as string) || `n8n_trigger_function_${suffix}`;
+	let functionName = (additionalFields.functionName as string) || `MNI_trigger_function_${suffix}`;
 
 	if (typeof functionName === 'string' && functionName.endsWith('()')) {
 		functionName = functionName.slice(0, -2);
 	}
 
-	const triggerName = (additionalFields.triggerName as string) || `n8n_trigger_${suffix}`;
-	const channelName = (additionalFields.channelName as string) || `n8n_channel_${suffix}`;
+	const triggerName = (additionalFields.triggerName as string) || `MNI_trigger_${suffix}`;
+	const channelName = (additionalFields.channelName as string) || `MNI_channel_${suffix}`;
 
 	validatePostgresIdentifier(functionName, 'Function name');
 	validatePostgresIdentifier(triggerName, 'Trigger name');

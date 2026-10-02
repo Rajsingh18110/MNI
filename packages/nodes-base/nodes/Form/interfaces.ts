@@ -1,4 +1,4 @@
-import type { GenericValue } from 'n8n-workflow';
+import type { GenericValue } from 'MNI-workflow';
 
 export type FormField = {
 	id: string;

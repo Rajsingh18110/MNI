@@ -1,7 +1,7 @@
 import { setActivePinia, createPinia } from 'pinia';
 import { describe, test, expect, vi, beforeEach, afterEach } from 'vitest';
 import { nextTick, reactive, ref } from 'vue';
-import { ResponseError } from '@n8n/rest-api-client';
+import { ResponseError } from '@MNI/rest-api-client';
 import { useCollaborationStore } from './collaboration.store';
 
 const mockFetchWorkflow = vi.fn();
@@ -42,7 +42,7 @@ vi.mock('@/app/stores/workflowsList.store', () => ({
 	}),
 }));
 
-vi.mock('@n8n/stores/users.store', () => ({
+vi.mock('@MNI/stores/users.store', () => ({
 	useUsersStore: () => ({
 		currentUserId: 'user-1',
 	}),
@@ -52,19 +52,19 @@ vi.mock('@/app/stores/ui.store', () => ({
 	useUIStore: () => mockUiStore,
 }));
 
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: () => ({
 		showMessage: mockShowMessage,
 	}),
 }));
 
-vi.mock('@n8n/i18n', () => ({
+vi.mock('@MNI/i18n', () => ({
 	useI18n: () => ({
 		baseText: (key: string) => key,
 	}),
 }));
 
-vi.mock('@n8n/stores/useRootStore', () => ({
+vi.mock('@MNI/stores/useRootStore', () => ({
 	useRootStore: () => ({
 		restApiContext: {},
 		pushRef: 'push-1',

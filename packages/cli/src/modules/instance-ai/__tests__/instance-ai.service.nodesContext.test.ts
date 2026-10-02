@@ -3,7 +3,7 @@ import type {
 	InstanceAiNodesAttachment,
 	InstanceAiResourceAttachment,
 	InstanceAiWorkflowAttachment,
-} from '@n8n/api-types';
+} from '@MNI/api-types';
 
 import { InstanceAiService } from '../instance-ai.service';
 

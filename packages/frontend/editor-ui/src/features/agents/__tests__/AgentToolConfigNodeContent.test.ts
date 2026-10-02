@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import type { INode } from 'n8n-workflow';
+import type { INode } from 'MNI-workflow';
 import { inject } from 'vue';
 
 import { createComponentRenderer } from '@/__tests__/render';
@@ -36,7 +36,7 @@ const renderComponent = createComponentRenderer(AgentToolConfigNodeContent, {
 const node: INode = {
 	id: 'node-1',
 	name: 'Slack',
-	type: 'n8n-nodes-base.slackTool',
+	type: 'MNI-nodes-base.slackTool',
 	typeVersion: 2.2,
 	position: [0, 0],
 	parameters: {},

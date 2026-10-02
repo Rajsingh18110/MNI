@@ -1,7 +1,7 @@
-import { Logger } from '@n8n/backend-common';
-import { mockInstance } from '@n8n/backend-test-utils';
-import type { IrreversibleMigration, ReversibleMigration } from '@n8n/db';
-import type { Migration, MigrationExecutor, DataSource } from '@n8n/typeorm';
+import { Logger } from '@MNI/backend-common';
+import { mockInstance } from '@MNI/backend-test-utils';
+import type { IrreversibleMigration, ReversibleMigration } from '@MNI/db';
+import type { Migration, MigrationExecutor, DataSource } from '@MNI/typeorm';
 import { mock } from 'vitest-mock-extended';
 
 import { main } from '@/commands/db/revert';
@@ -127,7 +127,7 @@ test("don't revert the last migration if we cannot find the migration in the cod
 	expect(logger.error).toHaveBeenCalledTimes(2);
 	expect(logger.error).toHaveBeenNthCalledWith(
 		1,
-		'The last migration that was executed is "TestMigration", but I could not find that migration\'s code in the currently installed version of n8n.',
+		'The last migration that was executed is "TestMigration", but I could not find that migration\'s code in the currently installed version of MNI.',
 	);
 	expect(logger.error).toHaveBeenNthCalledWith(
 		2,

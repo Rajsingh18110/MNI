@@ -1,8 +1,8 @@
-import { createTeamProject, createWorkflow, mockInstance, testDb } from '@n8n/backend-test-utils';
-import { WorkflowsConfig } from '@n8n/config';
-import type { Project, User } from '@n8n/db';
-import { WorkflowRepository, WorkflowReviewRequestRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
+import { createTeamProject, createWorkflow, mockInstance, testDb } from '@MNI/backend-test-utils';
+import { WorkflowsConfig } from '@MNI/config';
+import type { Project, User } from '@MNI/db';
+import { WorkflowRepository, WorkflowReviewRequestRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
 import { v4 as uuid } from 'uuid';
 
 import { ActiveWorkflowManager } from '@/active-workflow-manager';

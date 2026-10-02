@@ -6,9 +6,9 @@ import type {
 	DataTableDatasetRef,
 	DatasetRef,
 	GoogleSheetsDatasetRef,
-} from '@n8n/api-types';
-import type { AgentEvalDataset, AgentEvalRating, AgentEvalResult, AgentEvalRun } from '@n8n/db';
-import { UnexpectedError } from 'n8n-workflow';
+} from '@MNI/api-types';
+import type { AgentEvalDataset, AgentEvalRating, AgentEvalResult, AgentEvalRun } from '@MNI/db';
+import { UnexpectedError } from 'MNI-workflow';
 
 /**
  * Entity → wire-record mappers. Mapped field-by-field so dates serialize as ISO

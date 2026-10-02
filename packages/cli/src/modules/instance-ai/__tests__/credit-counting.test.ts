@@ -1,8 +1,8 @@
 import type { Mock } from 'vitest';
-import type { Thread } from '@n8n/agents';
-import { UNLIMITED_CREDITS } from '@n8n/api-types';
-import type { User } from '@n8n/db';
-import type { BuilderUsageItem } from '@n8n/instance-ai';
+import type { Thread } from '@MNI/agents';
+import { UNLIMITED_CREDITS } from '@MNI/api-types';
+import type { User } from '@MNI/db';
+import type { BuilderUsageItem } from '@MNI/instance-ai';
 import { mock } from 'vitest-mock-extended';
 
 import type { InstanceActivationService } from '@/services/instance-activation.service';
@@ -13,7 +13,7 @@ import type { InstanceAiMessageRepository } from '../repositories/instance-ai-me
 import type { InstanceAiThreadRepository } from '../repositories/instance-ai-thread.repository';
 
 // Skip the real backoff sleeps so retry tests run instantly.
-vi.mock('@n8n/utils/sleep', () => ({
+vi.mock('@MNI/utils/sleep', () => ({
 	sleep: vi.fn().mockResolvedValue(undefined),
 }));
 

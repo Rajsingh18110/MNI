@@ -3,34 +3,34 @@ import {
 	DUPLICATE_POSTFFIX,
 	MAX_WORKFLOW_NAME_LENGTH,
 } from '@/app/constants';
-import { STORES } from '@n8n/stores';
+import { STORES } from '@MNI/stores';
 import type { INodeUi, IStartRunData, IWorkflowDb } from '@/Interface';
 import type {
 	IExecutionPushResponse,
 	IExecutionResponse,
 	IExecutionFlattedResponse,
 } from '@/features/execution/executions/executions.types';
-import type { IWorkflowTemplateNode } from '@n8n/rest-api-client/api/templates';
-import type { WorkflowDataCreate, WorkflowDataUpdate } from '@n8n/rest-api-client/api/workflows';
+import type { IWorkflowTemplateNode } from '@MNI/rest-api-client/api/templates';
+import type { WorkflowDataCreate, WorkflowDataUpdate } from '@MNI/rest-api-client/api/workflows';
 import { defineStore } from 'pinia';
-import type { IDataObject, INodeCredentials, IWorkflowSettings } from 'n8n-workflow';
-import { deepCopy } from 'n8n-workflow';
+import type { IDataObject, INodeCredentials, IWorkflowSettings } from 'MNI-workflow';
+import { deepCopy } from 'MNI-workflow';
 
-import { useRootStore } from '@n8n/stores/useRootStore';
+import { useRootStore } from '@MNI/stores/useRootStore';
 import * as workflowsApi from '@/app/api/workflows';
 import { useUIStore } from '@/app/stores/ui.store';
-import { makeRestApiRequest, ResponseError, type WorkflowHistory } from '@n8n/rest-api-client';
+import { makeRestApiRequest, ResponseError, type WorkflowHistory } from '@MNI/rest-api-client';
 import { unflattenExecutionData } from '@/features/execution/executions/executions.utils';
-import { i18n } from '@n8n/i18n';
+import { i18n } from '@MNI/i18n';
 
 import { computed, ref } from 'vue';
 import { useProjectsStore } from '@/features/collaboration/projects/projects.store';
-import type { ExecutionRedactionQueryDto, WorkflowPublicationStatus } from '@n8n/api-types';
-import { useSettingsStore } from '@n8n/stores/settings.store';
-import { useUsersStore } from '@n8n/stores/users.store';
-import { updateCurrentUserSettings } from '@n8n/rest-api-client/api/users';
+import type { ExecutionRedactionQueryDto, WorkflowPublicationStatus } from '@MNI/api-types';
+import { useSettingsStore } from '@MNI/stores/settings.store';
+import { useUsersStore } from '@MNI/stores/users.store';
+import { updateCurrentUserSettings } from '@MNI/rest-api-client/api/users';
 import { useSourceControlStore } from '@/features/integrations/sourceControl.ee/sourceControl.store';
-import { getResourcePermissions } from '@n8n/permissions';
+import { getResourcePermissions } from '@MNI/permissions';
 import { hasRole } from '@/app/utils/rbac/checks';
 import { useWorkflowsListStore } from '@/app/stores/workflowsList.store';
 import {

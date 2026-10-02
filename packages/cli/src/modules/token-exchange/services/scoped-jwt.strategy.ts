@@ -1,7 +1,7 @@
-import type { AuthenticatedRequest, TokenGrant, User } from '@n8n/db';
-import { UserRepository } from '@n8n/db';
-import { Service } from '@n8n/di';
-import { getApiKeyScopesForRole } from '@n8n/permissions';
+import type { AuthenticatedRequest, TokenGrant, User } from '@MNI/db';
+import { UserRepository } from '@MNI/db';
+import { Service } from '@MNI/di';
+import { getApiKeyScopesForRole } from '@MNI/permissions';
 import { JsonWebTokenError, TokenExpiredError } from 'jsonwebtoken';
 
 import type { AuthStrategy, AuthStrategyOptions } from '@/services/auth-strategy.types';
@@ -10,7 +10,7 @@ import { JwtService } from '@/services/jwt.service';
 import { TOKEN_EXCHANGE_ISSUER, type IssuedJwtPayload } from '../token-exchange.types';
 
 const BEARER_PREFIX = 'Bearer ';
-const API_KEY_HEADER = 'x-n8n-api-key';
+const API_KEY_HEADER = 'x-MNI-api-key';
 
 @Service()
 export class ScopedJwtStrategy implements AuthStrategy {
@@ -72,7 +72,7 @@ export class ScopedJwtStrategy implements AuthStrategy {
 	}
 
 	async authenticate(req: AuthenticatedRequest): Promise<boolean | null> {
-		// 1. Extract token from Authorization: Bearer or x-n8n-api-key header
+		// 1. Extract token from Authorization: Bearer or x-MNI-api-key header
 		const token = this.extractToken(req);
 		if (!token) return null;
 

@@ -2,15 +2,15 @@ import {
 	INSTANCE_ACTIVITY_CONTEXT_FLAG,
 	MCP_AGENT_SCOPES,
 	MCP_INSTANCE_SCOPES,
-} from '@n8n/api-types';
-import { LicenseState, ModuleRegistry } from '@n8n/backend-common';
-import { GlobalConfig } from '@n8n/config';
-import { INSTANCE_MCP_RESOURCE_ID } from '@n8n/constants';
-import type { User } from '@n8n/db';
-import { Container, Service } from '@n8n/di';
+} from '@MNI/api-types';
+import { LicenseState, ModuleRegistry } from '@MNI/backend-common';
+import { GlobalConfig } from '@MNI/config';
+import { INSTANCE_MCP_RESOURCE_ID } from '@MNI/constants';
+import type { User } from '@MNI/db';
+import { Container, Service } from '@MNI/di';
 
 import type { ProtectedResource } from '@/services/protected-resource.registry';
-import { UrlService } from '@n8n/backend-services';
+import { UrlService } from '@MNI/backend-services';
 import { PostHogClient } from '@/posthog';
 
 import {

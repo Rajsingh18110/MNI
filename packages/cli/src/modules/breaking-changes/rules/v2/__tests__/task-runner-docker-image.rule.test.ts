@@ -1,4 +1,4 @@
-import type { GlobalConfig } from '@n8n/config';
+import type { GlobalConfig } from '@MNI/config';
 import { mock } from 'vitest-mock-extended';
 
 import { TaskRunnerDockerImageRule } from '../task-runner-docker-image.rule';
@@ -62,11 +62,11 @@ describe('TaskRunnerDockerImageRule', () => {
 			expect(result.recommendations[2].action).toContain('Review task runner documentation');
 		});
 
-		it('should mention N8N_RUNNERS_MODE=external in recommendations', async () => {
+		it('should mention MNI_RUNNERS_MODE=external in recommendations', async () => {
 			const result = await rule.detect();
 
 			const externalRunnerRec = result.recommendations.find((r) =>
-				r.description.includes('N8N_RUNNERS_MODE=external'),
+				r.description.includes('MNI_RUNNERS_MODE=external'),
 			);
 			expect(externalRunnerRec).toBeDefined();
 		});

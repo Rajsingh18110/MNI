@@ -7,8 +7,8 @@
  * reachable through many paths must be expanded once, not once per path.
  */
 import { describe } from 'vitest';
-import { getChildNodes, getParentNodes, mapConnectionsByDestination } from 'n8n-workflow';
-import type { IConnections } from 'n8n-workflow';
+import { getChildNodes, getParentNodes, mapConnectionsByDestination } from 'MNI-workflow';
+import type { IConnections } from 'MNI-workflow';
 
 import { defineBench } from '../bench-options';
 

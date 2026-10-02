@@ -1,4 +1,4 @@
-import type { InstanceAiToolCallState, PlannedTaskArg } from '@n8n/api-types';
+import type { InstanceAiToolCallState, PlannedTaskArg } from '@MNI/api-types';
 
 import { resolvePlanTasks } from '../planReview.utils';
 

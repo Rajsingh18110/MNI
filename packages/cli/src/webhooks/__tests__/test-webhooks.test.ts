@@ -1,9 +1,9 @@
-import type { Logger } from '@n8n/backend-common';
-import type { WorkflowEntity } from '@n8n/db';
-import { generateNanoId } from '@n8n/db';
+import type { Logger } from '@MNI/backend-common';
+import type { WorkflowEntity } from '@MNI/db';
+import { generateNanoId } from '@MNI/db';
 import type * as express from 'express';
-import type { ExecutionContextService } from 'n8n-core';
-import { CHAT_TRIGGER_NODE_TYPE } from 'n8n-workflow';
+import type { ExecutionContextService } from 'MNI-core';
+import { CHAT_TRIGGER_NODE_TYPE } from 'MNI-workflow';
 import type {
 	INodeParameters,
 	ITaskData,
@@ -13,7 +13,7 @@ import type {
 	Workflow,
 	IHttpRequestMethods,
 	WorkflowExpression,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import { v4 as uuid } from 'uuid';
 import type { Mock, Mocked } from 'vitest';
 import { mock } from 'vitest-mock-extended';
@@ -224,7 +224,7 @@ describe('TestWebhooks', () => {
 				id: workflowEntity.id,
 				nodes: {
 					chatTriggerNode: {
-						type: '@n8n/n8n-nodes-langchain.chatTrigger',
+						type: '@MNI/MNI-nodes-langchain.chatTrigger',
 						name: 'chatTriggerNode',
 					},
 				},
@@ -264,7 +264,7 @@ describe('TestWebhooks', () => {
 				id: workflowEntity.id,
 				nodes: {
 					chatTriggerNode: {
-						type: '@n8n/n8n-nodes-langchain.chatTrigger',
+						type: '@MNI/MNI-nodes-langchain.chatTrigger',
 						name: 'chatTriggerNode',
 					},
 				},
@@ -295,7 +295,7 @@ describe('TestWebhooks', () => {
 				id: workflowEntity.id,
 				nodes: {
 					webhookNode: {
-						type: 'n8n-nodes-base.webhook',
+						type: 'MNI-nodes-base.webhook',
 						name: 'webhookNode',
 					},
 				},
@@ -351,7 +351,7 @@ describe('TestWebhooks', () => {
 		});
 
 		describe('runner identity for end-user credentials', () => {
-			const n8nAuthCookie = 'n8n-auth-jwt';
+			const n8nAuthCookie = 'MNI-auth-jwt';
 			const carrier = 'encrypted-carrier';
 
 			/**
@@ -418,7 +418,7 @@ describe('TestWebhooks', () => {
 					// stronger carrier while its webhook runs, so this gate stays out of its way.
 					reason: 'the trigger is not a chat trigger',
 					parameters: { authentication: 'n8nOAuth2' },
-					type: 'n8n-nodes-base.webhook',
+					type: 'MNI-nodes-base.webhook',
 					cookie: n8nAuthCookie,
 				},
 				{
@@ -478,7 +478,7 @@ describe('TestWebhooks', () => {
 								name: 'chatTriggerNode',
 								parameters: IDENTITY_BEARING,
 							},
-							webhookNode: { type: 'n8n-nodes-base.webhook', name: 'webhookNode' },
+							webhookNode: { type: 'MNI-nodes-base.webhook', name: 'webhookNode' },
 						},
 						expression: mock<WorkflowExpression>(),
 					}),
@@ -534,11 +534,11 @@ describe('TestWebhooks', () => {
 				});
 				const webhookNode = mock<IWorkflowBase['nodes'][number]>({
 					name: 'Webhook',
-					type: 'n8n-nodes-base.webhook',
+					type: 'MNI-nodes-base.webhook',
 				});
 				const telegramNode = mock<IWorkflowBase['nodes'][number]>({
 					name: 'Telegram Trigger',
-					type: 'n8n-nodes-base.telegramTrigger',
+					type: 'MNI-nodes-base.telegramTrigger',
 				});
 
 				vi.spyOn(testWebhooks, 'toWorkflow').mockReturnValueOnce(workflow);
@@ -648,7 +648,7 @@ describe('TestWebhooks', () => {
 		test('releases isolate only after deactivateWebhooks completes on successful execution', async () => {
 			const expression = mock<WorkflowExpression>();
 			const workflowStartNode = mock<ReturnType<Workflow['getNode']>>({
-				type: 'n8n-nodes-base.noOp',
+				type: 'MNI-nodes-base.noOp',
 			});
 			const workflow = mock<Workflow>({
 				id: workflowEntity.id,
@@ -692,7 +692,7 @@ describe('TestWebhooks', () => {
 		test('logs when isolate release fails after teardown', async () => {
 			const expression = mock<WorkflowExpression>();
 			const workflowStartNode = mock<ReturnType<Workflow['getNode']>>({
-				type: 'n8n-nodes-base.noOp',
+				type: 'MNI-nodes-base.noOp',
 			});
 			const workflow = mock<Workflow>({
 				id: workflowEntity.id,
@@ -742,7 +742,7 @@ describe('TestWebhooks', () => {
 			const setup = () => {
 				const expression = mock<WorkflowExpression>();
 				const workflowStartNode = mock<ReturnType<Workflow['getNode']>>({
-					type: 'n8n-nodes-base.webhook',
+					type: 'MNI-nodes-base.webhook',
 				});
 				const workflow = mock<Workflow>({
 					id: workflowEntity.id,

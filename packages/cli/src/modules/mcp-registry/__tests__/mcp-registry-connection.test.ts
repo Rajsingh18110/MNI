@@ -1,4 +1,4 @@
-import type { McpOAuth2CredentialType, McpRegistryConnection } from 'n8n-workflow';
+import type { McpOAuth2CredentialType, McpRegistryConnection } from 'MNI-workflow';
 
 import {
 	prepareMcpRegistryConnection,
@@ -9,7 +9,7 @@ import { databricksGenieTemplatedMockServer, notionMockServer } from '../registr
 const credentialType: McpOAuth2CredentialType = 'exampleMcpOAuth2Api';
 
 const connection: McpRegistryConnection = {
-	nodeTypeName: '@n8n/mcp-registry.example',
+	nodeTypeName: '@MNI/mcp-registry.example',
 	endpointUrl: 'https://example.com/mcp',
 	endpointHostname: 'example.com',
 	transport: 'httpStreamable',
@@ -18,7 +18,7 @@ const connection: McpRegistryConnection = {
 };
 
 const templatedConnection: McpRegistryConnection = {
-	nodeTypeName: '@n8n/mcp-registry.example',
+	nodeTypeName: '@MNI/mcp-registry.example',
 	credentialBindings: [{ credentialType, selector: 'oAuth2' }],
 	urlTemplate: '={{$self["host"]}}/api/2.0/mcp/genie',
 	transport: 'httpStreamable',
@@ -33,7 +33,7 @@ describe('resolveMcpRegistryConnection', () => {
 		});
 
 		expect(result).toMatchObject({
-			nodeTypeName: '@n8n/mcp-registry.notion',
+			nodeTypeName: '@MNI/mcp-registry.notion',
 			endpointUrl: 'http://user:pass@localhost:8080/mcp',
 			endpointHostname: 'localhost',
 			transport: 'httpStreamable',
@@ -56,7 +56,7 @@ describe('resolveMcpRegistryConnection', () => {
 		});
 
 		expect(result).toEqual({
-			nodeTypeName: '@n8n/mcp-registry.notion',
+			nodeTypeName: '@MNI/mcp-registry.notion',
 			credentialBindings: [
 				{
 					credentialType: 'notionMcpOAuth2Api',

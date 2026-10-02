@@ -1,4 +1,4 @@
-import { LDAP_FEATURE_NAME, LDAP_DEFAULT_CONFIGURATION } from '@n8n/constants';
+import { LDAP_FEATURE_NAME, LDAP_DEFAULT_CONFIGURATION } from '@MNI/constants';
 import {
 	AuthIdentityRepository,
 	AuthProviderSyncHistoryRepository,
@@ -9,11 +9,11 @@ import {
 	SharedCredentialsRepository,
 	SharedWorkflowRepository,
 	UserRepository,
-} from '@n8n/db';
-import { Command } from '@n8n/decorators';
-import { Container } from '@n8n/di';
-import { In } from '@n8n/typeorm';
-import { UserError } from 'n8n-workflow';
+} from '@MNI/db';
+import { Command } from '@MNI/decorators';
+import { Container } from '@MNI/di';
+import { In } from '@MNI/typeorm';
+import { UserError } from 'MNI-workflow';
 import { z } from 'zod';
 
 import { UM_FIX_INSTRUCTION } from '@/constants';

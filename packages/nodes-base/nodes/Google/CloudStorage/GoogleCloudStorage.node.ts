@@ -1,4 +1,4 @@
-import { NodeConnectionTypes, type INodeType, type INodeTypeDescription } from 'n8n-workflow';
+import { NodeConnectionTypes, type INodeType, type INodeTypeDescription } from 'MNI-workflow';
 
 import { bucketFields, bucketOperations } from './BucketDescription';
 import { authenticateServiceAccount, searchProjects } from './GenericFunctions';
@@ -66,7 +66,7 @@ export class GoogleCloudStorage implements INodeType {
 						value: 'oAuth2',
 					},
 					{
-						// eslint-disable-next-line n8n-nodes-base/node-param-display-name-miscased
+						// eslint-disable-next-line MNI-nodes-base/node-param-display-name-miscased
 						name: 'Service Account (recommended)',
 						value: 'serviceAccount',
 					},

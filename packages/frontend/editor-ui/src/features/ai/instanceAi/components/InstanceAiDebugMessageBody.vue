@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import type { InstanceAiRunDebugWorkflowCodeSnapshot, ReadableSegment } from '@n8n/api-types';
-import { useI18n } from '@n8n/i18n';
+import type { InstanceAiRunDebugWorkflowCodeSnapshot, ReadableSegment } from '@MNI/api-types';
+import { useI18n } from '@MNI/i18n';
 import { getToolCallIdFromMetadata, isWorkflowCodeToolName } from '../utils/workflow-code-match';
 import InstanceAiDebugJsonPanel from './InstanceAiDebugJsonPanel.vue';
 import InstanceAiDebugWorkflowCodeSnapshot from './InstanceAiDebugWorkflowCodeSnapshot.vue';

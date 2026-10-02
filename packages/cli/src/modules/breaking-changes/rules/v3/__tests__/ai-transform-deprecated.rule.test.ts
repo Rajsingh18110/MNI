@@ -11,7 +11,7 @@ describe('AiTransformDeprecatedRule', () => {
 	describe('detectWorkflow()', () => {
 		it('should not be affected when no AI Transform node is present', async () => {
 			const { workflow, nodesGroupedByType } = createWorkflow('wf-1', 'Test Workflow', [
-				createNode('Code', 'n8n-nodes-base.code', { jsCode: 'return items;' }),
+				createNode('Code', 'MNI-nodes-base.code', { jsCode: 'return items;' }),
 			]);
 
 			const result = await rule.detectWorkflow(workflow, nodesGroupedByType);
@@ -24,7 +24,7 @@ describe('AiTransformDeprecatedRule', () => {
 			const { workflow, nodesGroupedByType } = createWorkflow('wf-1', 'Test Workflow', [
 				createNode('Transform A', AI_TRANSFORM_NODE_TYPE, { jsCode: 'return items;' }),
 				createNode('Transform B', AI_TRANSFORM_NODE_TYPE, { jsCode: 'return [];' }),
-				createNode('Set', 'n8n-nodes-base.set', {}),
+				createNode('Set', 'MNI-nodes-base.set', {}),
 			]);
 
 			const result = await rule.detectWorkflow(workflow, nodesGroupedByType);

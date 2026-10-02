@@ -1,5 +1,5 @@
 import userEvent from '@testing-library/user-event';
-import type { NodeHint } from 'n8n-workflow';
+import type { NodeHint } from 'MNI-workflow';
 
 import { createComponentRenderer } from '@/__tests__/render';
 import RunDataHints from './RunDataHints.vue';

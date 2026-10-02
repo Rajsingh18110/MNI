@@ -1,7 +1,7 @@
 import { createTestingPinia } from '@pinia/testing';
 import { fireEvent, waitFor, within } from '@testing-library/vue';
 import { flushPromises } from '@vue/test-utils';
-import type { IWorkflowGroup } from 'n8n-workflow';
+import type { IWorkflowGroup } from 'MNI-workflow';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { h } from 'vue';
 

@@ -5,16 +5,16 @@ function makeLogger() {
 }
 
 describe('EvalTimings', () => {
-	const original = process.env.N8N_INSTANCE_AI_EVAL_TIMING;
+	const original = process.env.MNI_INSTANCE_AI_EVAL_TIMING;
 
 	afterEach(() => {
-		if (original === undefined) delete process.env.N8N_INSTANCE_AI_EVAL_TIMING;
-		else process.env.N8N_INSTANCE_AI_EVAL_TIMING = original;
+		if (original === undefined) delete process.env.MNI_INSTANCE_AI_EVAL_TIMING;
+		else process.env.MNI_INSTANCE_AI_EVAL_TIMING = original;
 	});
 
 	describe('when disabled', () => {
 		beforeEach(() => {
-			delete process.env.N8N_INSTANCE_AI_EVAL_TIMING;
+			delete process.env.MNI_INSTANCE_AI_EVAL_TIMING;
 		});
 
 		it('runs the fn, returns its value, and records nothing', async () => {
@@ -30,7 +30,7 @@ describe('EvalTimings', () => {
 
 	describe('when enabled', () => {
 		beforeEach(() => {
-			process.env.N8N_INSTANCE_AI_EVAL_TIMING = 'true';
+			process.env.MNI_INSTANCE_AI_EVAL_TIMING = 'true';
 		});
 
 		it('returns the wrapped fn value', async () => {

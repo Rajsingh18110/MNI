@@ -1,6 +1,6 @@
-import type { PushMessage } from '@n8n/api-types';
-import { pushHandlerRegistry } from '@n8n/frontend-module-sdk';
-import { createEventQueue } from '@n8n/utils/create-event-queue';
+import type { PushMessage } from '@MNI/api-types';
+import { pushHandlerRegistry } from '@MNI/frontend-module-sdk';
+import { createEventQueue } from '@MNI/utils/create-event-queue';
 import { onMounted, onUnmounted, ref } from 'vue';
 import type { useRouter } from 'vue-router';
 

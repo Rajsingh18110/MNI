@@ -1,6 +1,6 @@
-import type { IDeferredPromise } from '@n8n/utils/promise/deferred-promise';
-import type { IBinaryData, IExecuteResponsePromiseData, IRun, IWorkflowBase } from 'n8n-workflow';
-import { UserError } from 'n8n-workflow';
+import type { IDeferredPromise } from '@MNI/utils/promise/deferred-promise';
+import type { IBinaryData, IExecuteResponsePromiseData, IRun, IWorkflowBase } from 'MNI-workflow';
+import { UserError } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import type { EngineV2Dispatcher } from '@/services/engine-v2-dispatcher.service';

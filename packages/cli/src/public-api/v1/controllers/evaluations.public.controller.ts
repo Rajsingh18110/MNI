@@ -9,9 +9,9 @@ import {
 	TestRunSummaryPublicDto,
 	testRunIdParamSchema,
 	workflowIdParamSchema,
-} from '@n8n/api-types';
-import { LicenseState } from '@n8n/backend-common';
-import type { AuthenticatedRequest, TestCaseExecution, TestRun } from '@n8n/db';
+} from '@MNI/api-types';
+import { LicenseState } from '@MNI/backend-common';
+import type { AuthenticatedRequest, TestCaseExecution, TestRun } from '@MNI/db';
 import {
 	ApiDescription,
 	ApiErrorResponse,
@@ -25,10 +25,10 @@ import {
 	ProjectScope,
 	PublicApiController,
 	Query,
-} from '@n8n/decorators';
+} from '@MNI/decorators';
 import type { Response } from 'express';
-import { ErrorReporter } from 'n8n-core';
-import { EVALUATION_TRIGGER_NODE_TYPE } from 'n8n-workflow';
+import { ErrorReporter } from 'MNI-core';
+import { EVALUATION_TRIGGER_NODE_TYPE } from 'MNI-workflow';
 
 import { ConflictError } from '@/errors/response-errors/conflict.error';
 import { ForbiddenError } from '@/errors/response-errors/forbidden.error';

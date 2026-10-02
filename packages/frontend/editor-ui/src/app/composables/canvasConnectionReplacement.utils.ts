@@ -1,7 +1,7 @@
 import type { Connection } from '@vue-flow/core';
 import uniq from 'lodash/uniq';
-import type { IConnection, NodeConnectionType } from 'n8n-workflow';
-import { NodeConnectionTypes } from 'n8n-workflow';
+import type { IConnection, NodeConnectionType } from 'MNI-workflow';
+import { NodeConnectionTypes } from 'MNI-workflow';
 
 import type { INodeUi } from '@/Interface';
 import { CanvasConnectionMode } from '@/features/workflows/canvas/canvas.types';

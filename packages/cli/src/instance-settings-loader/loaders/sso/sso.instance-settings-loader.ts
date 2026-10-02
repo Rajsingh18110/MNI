@@ -1,6 +1,6 @@
-import { Logger } from '@n8n/backend-common';
-import { InstanceSettingsLoaderConfig } from '@n8n/config';
-import { Service } from '@n8n/di';
+import { Logger } from '@MNI/backend-common';
+import { InstanceSettingsLoaderConfig } from '@MNI/config';
+import { Service } from '@MNI/di';
 
 import {
 	getCurrentAuthenticationMethod,
@@ -34,7 +34,7 @@ export class SsoInstanceSettingsLoader {
 
 		if (samlLoginEnabled && oidcLoginEnabled) {
 			throw new InstanceBootstrappingError(
-				'N8N_SSO_SAML_LOGIN_ENABLED and N8N_SSO_OIDC_LOGIN_ENABLED cannot both be true. Only one SSO protocol can be enabled at a time.',
+				'MNI_SSO_SAML_LOGIN_ENABLED and MNI_SSO_OIDC_LOGIN_ENABLED cannot both be true. Only one SSO protocol can be enabled at a time.',
 			);
 		}
 

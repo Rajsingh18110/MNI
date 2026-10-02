@@ -1,7 +1,7 @@
 // eslint-disable-next-line import-x/order
 import { mock } from 'vitest-mock-extended';
-import { Logger } from '@n8n/backend-common';
-import { N8N_NODES_API_VERSION } from 'n8n-workflow';
+import { Logger } from '@MNI/backend-common';
+import { MNI_NODES_API_VERSION } from 'MNI-workflow';
 import * as fs from 'node:fs';
 import type * as fsPromises from 'node:fs/promises';
 
@@ -12,8 +12,8 @@ const mockFs = mock(fs);
 
 vi.mock('fast-glob', () => ({
 	default: async (pattern: string) => {
-		if (pattern === '@*/n8n-nodes-*') {
-			return ['@mendable/n8n-nodes-firecrawl', '@elevenlabs/n8n-nodes-elevenlabs'];
+		if (pattern === '@*/MNI-nodes-*') {
+			return ['@mendable/MNI-nodes-firecrawl', '@elevenlabs/MNI-nodes-elevenlabs'];
 		}
 		return [];
 	},
@@ -30,11 +30,11 @@ describe('scanDirectoryForPackages', () => {
 
 	const packageJsonFor = (filePath: string) =>
 		filePath.includes('elevenlabs')
-			? JSON.stringify({ name: '@elevenlabs/n8n-nodes-elevenlabs', version: '1.0.0' })
-			: JSON.stringify({ name: '@mendable/n8n-nodes-firecrawl', version: '2.1.2' });
+			? JSON.stringify({ name: '@elevenlabs/MNI-nodes-elevenlabs', version: '1.0.0' })
+			: JSON.stringify({ name: '@mendable/MNI-nodes-firecrawl', version: '2.1.2' });
 
-	const firecrawlPackageJson = (n8n?: object) =>
-		JSON.stringify({ name: '@mendable/n8n-nodes-firecrawl', version: '2.1.2', ...{ n8n } });
+	const firecrawlPackageJson = (MNI?: object) =>
+		JSON.stringify({ name: '@mendable/MNI-nodes-firecrawl', version: '2.1.2', ...{ MNI } });
 
 	const enoent = (file: string): NodeJS.ErrnoException => {
 		const error: NodeJS.ErrnoException = new Error(
@@ -70,7 +70,7 @@ describe('scanDirectoryForPackages', () => {
 		expect(loaders).toHaveLength(1);
 		expect(loaders[0]).toBeInstanceOf(LazyPackageDirectoryLoader);
 		expect((loaders[0] as LazyPackageDirectoryLoader).packageName).toBe(
-			'@elevenlabs/n8n-nodes-elevenlabs',
+			'@elevenlabs/MNI-nodes-elevenlabs',
 		);
 	});
 
@@ -85,7 +85,7 @@ describe('scanDirectoryForPackages', () => {
 
 		expect(loaders).toHaveLength(1);
 		expect((loaders[0] as LazyPackageDirectoryLoader).packageName).toBe(
-			'@elevenlabs/n8n-nodes-elevenlabs',
+			'@elevenlabs/MNI-nodes-elevenlabs',
 		);
 		expect(logger.warn).toHaveBeenCalledTimes(1);
 	});
@@ -101,7 +101,7 @@ describe('scanDirectoryForPackages', () => {
 
 		expect(logger.warn).toHaveBeenCalledTimes(1);
 		expect(logger.warn).toHaveBeenCalledWith(
-			expect.stringContaining('@mendable/n8n-nodes-firecrawl'),
+			expect.stringContaining('@mendable/MNI-nodes-firecrawl'),
 			expect.objectContaining({ error: expect.any(Error) }),
 		);
 	});
@@ -116,13 +116,13 @@ describe('scanDirectoryForPackages', () => {
 	});
 
 	it('skips a package requiring an unsupported node API version and keeps compatible ones', async () => {
-		mockPackageJsonOnDisk(firecrawlPackageJson({ n8nNodesApiVersion: N8N_NODES_API_VERSION + 1 }));
+		mockPackageJsonOnDisk(firecrawlPackageJson({ n8nNodesApiVersion: MNI_NODES_API_VERSION + 1 }));
 
 		const loaders = await scanDirectoryForPackages(nodeModulesDir);
 
 		expect(loaders).toHaveLength(1);
 		expect((loaders[0] as LazyPackageDirectoryLoader).packageName).toBe(
-			'@elevenlabs/n8n-nodes-elevenlabs',
+			'@elevenlabs/MNI-nodes-elevenlabs',
 		);
 	});
 
@@ -144,16 +144,16 @@ describe('scanDirectoryForPackages', () => {
 	});
 
 	it('logs name, declared version, supported version, and remediation for an unsupported package', async () => {
-		mockPackageJsonOnDisk(firecrawlPackageJson({ n8nNodesApiVersion: N8N_NODES_API_VERSION + 1 }));
+		mockPackageJsonOnDisk(firecrawlPackageJson({ n8nNodesApiVersion: MNI_NODES_API_VERSION + 1 }));
 
 		await scanDirectoryForPackages(nodeModulesDir);
 
 		expect(logger.warn).toHaveBeenCalledWith(
-			expect.stringContaining('@mendable/n8n-nodes-firecrawl'),
+			expect.stringContaining('@mendable/MNI-nodes-firecrawl'),
 		);
 		const [message] = vi.mocked(logger.warn).mock.calls[0];
-		expect(message).toContain(`node API version ${N8N_NODES_API_VERSION + 1}`);
-		expect(message).toContain(`supports up to ${N8N_NODES_API_VERSION}`);
+		expect(message).toContain(`node API version ${MNI_NODES_API_VERSION + 1}`);
+		expect(message).toContain(`supports up to ${MNI_NODES_API_VERSION}`);
 		expect(message).toContain('Upgrade MNI');
 	});
 

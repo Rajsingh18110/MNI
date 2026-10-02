@@ -1,6 +1,6 @@
 import 'reflect-metadata';
-import { Container } from '@n8n/di';
-import { Cipher, EncryptionKeyProxy, InstanceSettings } from 'n8n-core';
+import { Container } from '@MNI/di';
+import { Cipher, EncryptionKeyProxy, InstanceSettings } from 'MNI-core';
 
 // The cipher has no fallback path: every encrypt/decrypt needs a key provider.
 // Production wires one in `BaseCommand.init()`; the test harness has no equivalent,

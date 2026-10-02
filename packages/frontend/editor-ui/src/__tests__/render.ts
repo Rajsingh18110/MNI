@@ -1,6 +1,6 @@
 import { computed } from 'vue';
 import vueJsonPretty from 'vue-json-pretty';
-import { defineRenderer, type RenderOptions } from '@n8n/frontend-test-utils';
+import { defineRenderer, type RenderOptions } from '@MNI/frontend-test-utils';
 import { GlobalDirectivesPlugin } from '@/app/plugins/directives';
 import { WorkflowDocumentStoreKey } from '@/app/constants/injectionKeys';
 import {
@@ -12,7 +12,7 @@ import { useWorkflowsStore } from '@/app/stores/workflows.store';
 export type { RenderOptions };
 
 /**
- * The shell's renderer: the shared base from `@n8n/frontend-test-utils`, plus the three things
+ * The shell's renderer: the shared base from `@MNI/frontend-test-utils`, plus the three things
  * that belong to the editor core and to no module — the touch-events directive, the
  * `VueJsonPretty` stub, and the workflow document store.
  *

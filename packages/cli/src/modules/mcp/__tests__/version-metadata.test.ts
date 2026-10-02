@@ -1,4 +1,4 @@
-import type { IConnections, INode } from 'n8n-workflow';
+import type { IConnections, INode } from 'MNI-workflow';
 
 import {
 	buildCreateVersionMetadata,
@@ -11,7 +11,7 @@ import {
 const makeNode = (id: string, name: string, parameters: INode['parameters'] = {}): INode => ({
 	id,
 	name,
-	type: 'n8n-nodes-base.set',
+	type: 'MNI-nodes-base.set',
 	typeVersion: 1,
 	position: [0, 0],
 	parameters,

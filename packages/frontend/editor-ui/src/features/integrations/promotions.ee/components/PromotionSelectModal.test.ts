@@ -9,8 +9,8 @@ import { PROMOTION_SELECT_MODAL_KEY } from '../promotions.constants';
 import { promotionEventBus } from '../promotions.eventBus';
 import { vi, describe, it, expect, beforeEach, afterEach } from 'vitest';
 import { createServer, Response, type Request } from 'miragejs';
-import { ResponseError } from '@n8n/rest-api-client';
-import { useUsersStore } from '@n8n/stores/users.store';
+import { ResponseError } from '@MNI/rest-api-client';
+import { useUsersStore } from '@MNI/stores/users.store';
 import { useUIStore } from '@/app/stores/ui.store';
 import userEvent from '@testing-library/user-event';
 import { waitFor } from '@testing-library/vue';
@@ -26,7 +26,7 @@ vi.mock('@/app/composables/useMessage', () => ({
 	useMessage: () => ({ confirm }),
 }));
 
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: () => ({ showMessage, showError }),
 }));
 

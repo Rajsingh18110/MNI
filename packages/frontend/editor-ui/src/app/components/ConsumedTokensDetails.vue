@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import { type LlmTokenUsageData } from '@/Interface';
 import { formatTokenUsageCount } from '@/app/utils/aiUtils';
-import { N8nText } from '@n8n/design-system';
+import { N8nText } from '@MNI/design-system';
 const { consumedTokens } = defineProps<{ consumedTokens: LlmTokenUsageData }>();
 const i18n = useI18n();
 </script>

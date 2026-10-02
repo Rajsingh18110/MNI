@@ -1,19 +1,19 @@
-import { DeploymentConfig, SecurityConfig } from '@n8n/config';
-import { Container } from '@n8n/di';
+import { DeploymentConfig, SecurityConfig } from '@MNI/config';
+import { Container } from '@MNI/di';
 import type {
 	IExecuteFunctions,
 	INodeExecutionData,
 	INodeType,
 	INodeTypeDescription,
 	ResolvedFilePath,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import {
 	NodeConnectionTypes,
 	NodeOperationError,
 	UnexpectedError,
 	assertParamIsBoolean,
 	assertParamIsString,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import { randomBytes } from 'node:crypto';
 import { mkdir, rename, rm } from 'node:fs/promises';
 import { basename, dirname, isAbsolute, join, resolve, sep } from 'path';
@@ -586,7 +586,7 @@ export class Git implements INodeType {
 
 					cloneStagingPath = join(
 						cloneStagingBase,
-						`.n8n-clone-${randomBytes(12).toString('hex')}`,
+						`.MNI-clone-${randomBytes(12).toString('hex')}`,
 					);
 					await mkdir(cloneStagingPath);
 				}

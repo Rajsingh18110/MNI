@@ -16,11 +16,11 @@ import type { Project } from '../projects.types';
 import { ProjectTypes } from '../projects.types';
 import { createProjectListItem } from '../__tests__/utils';
 import { createUser } from '@/__tests__/data/users';
-import { useUsersStore } from '@n8n/stores/users.store';
-import { useSettingsStore } from '@n8n/stores/settings.store';
-import { useRolesStore } from '@n8n/stores/roles.store';
-import { useRBACStore } from '@n8n/stores/rbac.store';
-import type { FrontendSettings } from '@n8n/api-types';
+import { useUsersStore } from '@MNI/stores/users.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
+import { useRolesStore } from '@MNI/stores/roles.store';
+import { useRBACStore } from '@MNI/stores/rbac.store';
+import type { FrontendSettings } from '@MNI/api-types';
 
 const mockTrack = vi.fn();
 const mockShowMessage = vi.fn();
@@ -30,13 +30,13 @@ const { emitters, addEmitter } = useEmitters<
 	'projectMembersTable' | 'n8nUserSelect' | 'n8nIconPicker'
 >();
 
-vi.mock('@n8n/composables/useTelemetry', () => ({
+vi.mock('@MNI/composables/useTelemetry', () => ({
 	useTelemetry: () => ({
 		track: mockTrack,
 	}),
 }));
 
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: () => ({
 		showMessage: mockShowMessage,
 		showError: mockShowError,
@@ -90,7 +90,7 @@ vi.mock('../components/ProjectMembersTable.vue', () => ({
 	}),
 }));
 
-vi.mock('@n8n/design-system', async (importOriginal) => {
+vi.mock('@MNI/design-system', async (importOriginal) => {
 	const original = await importOriginal<object>();
 	return {
 		...original,
@@ -99,7 +99,7 @@ vi.mock('@n8n/design-system', async (importOriginal) => {
 			props: { modelValue: { type: String, required: false } },
 			emits: ['update:model-value', 'blur'],
 			template:
-				'<div data-test-id="n8n-input-stub"><input :value="modelValue" @input="$emit(\'update:model-value\', $event.target.value)" @blur="$emit(\'blur\')" /></div>',
+				'<div data-test-id="MNI-input-stub"><input :value="modelValue" @input="$emit(\'update:model-value\', $event.target.value)" @blur="$emit(\'blur\')" /></div>',
 		}),
 		N8nUserSelect: defineComponent({
 			name: 'N8nUserSelectStub',

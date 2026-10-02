@@ -1,4 +1,4 @@
-import { buildClientAssertion, CLIENT_ASSERTION_TYPE } from '@n8n/utils/client-assertion';
+import { buildClientAssertion, CLIENT_ASSERTION_TYPE } from '@MNI/utils/client-assertion';
 import type {
 	ICredentialDataDecryptedObject,
 	ICredentialTestRequest,
@@ -7,8 +7,8 @@ import type {
 	IHttpRequestOptions,
 	INodeProperties,
 	Icon,
-} from 'n8n-workflow';
-import { OperationalError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { OperationalError } from 'MNI-workflow';
 
 import {
 	getTokenRequestClient,

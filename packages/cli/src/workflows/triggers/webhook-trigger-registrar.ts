@@ -1,17 +1,17 @@
-import { Logger } from '@n8n/backend-common';
-import type { WebhookEntity } from '@n8n/db';
-import { Service } from '@n8n/di';
+import { Logger } from '@MNI/backend-common';
+import type { WebhookEntity } from '@MNI/db';
+import { Service } from '@MNI/di';
 import type {
 	INode,
 	IWebhookData,
 	IWorkflowExecuteAdditionalData,
 	WorkflowActivateMode,
 	WorkflowExecuteMode,
-} from 'n8n-workflow';
-import { ensureError } from '@n8n/utils/errors/ensure-error';
-import { WebhookPathTakenError, Workflow } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { ensureError } from '@MNI/utils/errors/ensure-error';
+import { WebhookPathTakenError, Workflow } from 'MNI-workflow';
 
-import { ErrorReporter, SpanStatus, Tracing } from 'n8n-core';
+import { ErrorReporter, SpanStatus, Tracing } from 'MNI-core';
 
 import * as WebhookHelpers from '@/webhooks/webhook-helpers';
 import { WebhookService } from '@/webhooks/webhook.service';

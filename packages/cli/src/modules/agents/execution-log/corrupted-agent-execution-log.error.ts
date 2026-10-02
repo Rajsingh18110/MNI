@@ -1,4 +1,4 @@
-import { UnexpectedError } from 'n8n-workflow';
+import { UnexpectedError } from 'MNI-workflow';
 
 import type { AgentExecutionLogRef } from './agent-execution-log-store';
 

@@ -3,12 +3,12 @@ import {
 	getAgentModelProviderCredentialTypes,
 	type AgentCatalogModel,
 	type AgentProviderModelsResponse,
-} from '@n8n/api-types';
-import { Logger } from '@n8n/backend-common';
-import type { User } from '@n8n/db';
-import { Service } from '@n8n/di';
+} from '@MNI/api-types';
+import { Logger } from '@MNI/backend-common';
+import type { User } from '@MNI/db';
+import { Service } from '@MNI/di';
 
-import { isModelDiscoveryProvider } from '@n8n/ai-utilities/model-discovery';
+import { isModelDiscoveryProvider } from '@MNI/ai-utilities/model-discovery';
 
 import {
 	BuilderModelLiveLookupService,
@@ -204,7 +204,7 @@ export class AgentModelCatalogService {
 
 	private async getCatalogModels(provider: string): Promise<Record<string, AgentCatalogModel>> {
 		try {
-			const { fetchProviderCatalog } = await import('@n8n/agents');
+			const { fetchProviderCatalog } = await import('@MNI/agents');
 			const catalog = await fetchProviderCatalog();
 			return catalog[provider]?.models ?? {};
 		} catch (error) {

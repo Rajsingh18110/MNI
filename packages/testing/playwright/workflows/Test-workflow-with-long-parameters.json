@@ -49,7 +49,7 @@
 			},
 			"id": "950fcdc1-9e92-410f-8377-d4240e9bf6ff",
 			"name": "Edit Fields1",
-			"type": "n8n-nodes-base.set",
+			"type": "MNI-nodes-base.set",
 			"typeVersion": 3.4,
 			"position": [680, 460]
 		},
@@ -68,7 +68,7 @@
 			},
 			"id": "dcf7410d-0f8e-4cdb-9819-ae275558bdaa",
 			"name": "Slack",
-			"type": "n8n-nodes-base.slack",
+			"type": "MNI-nodes-base.slack",
 			"typeVersion": 2.2,
 			"position": [900, 460],
 			"webhookId": "002b502e-31e5-4fdb-ac43-a56cfde8f82a"
@@ -90,7 +90,7 @@
 			},
 			"id": "4c948a3f-19d4-4b08-a8be-f7d2964a21f4",
 			"name": "Schedule Trigger",
-			"type": "n8n-nodes-base.scheduleTrigger",
+			"type": "MNI-nodes-base.scheduleTrigger",
 			"typeVersion": 1.2,
 			"position": [460, 460]
 		},
@@ -111,7 +111,7 @@
 			},
 			"id": "a41dfb0d-38aa-42d2-b3e2-1854090bd319",
 			"name": "With long expression",
-			"type": "n8n-nodes-base.set",
+			"type": "MNI-nodes-base.set",
 			"typeVersion": 3.3,
 			"position": [1100, 460]
 		}

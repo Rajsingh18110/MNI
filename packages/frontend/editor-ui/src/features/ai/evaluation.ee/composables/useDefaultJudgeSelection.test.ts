@@ -43,8 +43,8 @@ describe('useDefaultJudgeSelection', () => {
 
 	it('returns null when the workflow has no language-model sub-node', () => {
 		state.allNodes = [
-			{ name: 'Trigger', type: 'n8n-nodes-base.manualTrigger' },
-			{ name: 'AI Agent', type: '@n8n/n8n-nodes-langchain.agent' },
+			{ name: 'Trigger', type: 'MNI-nodes-base.manualTrigger' },
+			{ name: 'AI Agent', type: '@MNI/MNI-nodes-langchain.agent' },
 		];
 		state.allCredentials = [{ id: 'cred-1' }];
 
@@ -56,7 +56,7 @@ describe('useDefaultJudgeSelection', () => {
 		state.allNodes = [
 			{
 				name: 'OpenAI Chat Model',
-				type: '@n8n/n8n-nodes-langchain.lmChatOpenAi',
+				type: '@MNI/MNI-nodes-langchain.lmChatOpenAi',
 				parameters: { model: { __rl: true, mode: 'list', value: 'gpt-4o-mini' } },
 				credentials: { openAiApi: { id: 'cred-1', name: 'OpenAI account' } },
 			},
@@ -75,7 +75,7 @@ describe('useDefaultJudgeSelection', () => {
 		state.allNodes = [
 			{
 				name: 'Anthropic Chat Model',
-				type: '@n8n/n8n-nodes-langchain.lmChatAnthropic',
+				type: '@MNI/MNI-nodes-langchain.lmChatAnthropic',
 				parameters: { model: 'claude-3-5-sonnet-20241022' },
 				credentials: { anthropicApi: { id: 'cred-2', name: 'Anthropic account' } },
 			},
@@ -95,16 +95,16 @@ describe('useDefaultJudgeSelection', () => {
 	// re-renders and across workflows that wire up multiple models.
 	it('picks the first matching sub-node in canvas order', () => {
 		state.allNodes = [
-			{ name: 'Trigger', type: 'n8n-nodes-base.manualTrigger' },
+			{ name: 'Trigger', type: 'MNI-nodes-base.manualTrigger' },
 			{
 				name: 'OpenAI Chat Model',
-				type: '@n8n/n8n-nodes-langchain.lmChatOpenAi',
+				type: '@MNI/MNI-nodes-langchain.lmChatOpenAi',
 				parameters: { model: { __rl: true, mode: 'list', value: 'gpt-4o-mini' } },
 				credentials: { openAiApi: { id: 'cred-openai', name: 'OpenAI account' } },
 			},
 			{
 				name: 'Anthropic Chat Model',
-				type: '@n8n/n8n-nodes-langchain.lmChatAnthropic',
+				type: '@MNI/MNI-nodes-langchain.lmChatAnthropic',
 				parameters: { model: 'claude-3-5-sonnet-20241022' },
 				credentials: { anthropicApi: { id: 'cred-anthropic', name: 'Anthropic account' } },
 			},
@@ -126,7 +126,7 @@ describe('useDefaultJudgeSelection', () => {
 		state.allNodes = [
 			{
 				name: 'OpenAI Chat Model',
-				type: '@n8n/n8n-nodes-langchain.lmChatOpenAi',
+				type: '@MNI/MNI-nodes-langchain.lmChatOpenAi',
 				parameters: { model: { __rl: true, mode: 'list', value: 'gpt-4o-mini' } },
 				credentials: { openAiApi: { id: 'cred-shared', name: 'Shared OpenAI' } },
 			},
@@ -146,13 +146,13 @@ describe('useDefaultJudgeSelection', () => {
 				// touched. We should keep looking instead of returning a
 				// half-configured selection.
 				name: 'OpenAI Chat Model',
-				type: '@n8n/n8n-nodes-langchain.lmChatOpenAi',
+				type: '@MNI/MNI-nodes-langchain.lmChatOpenAi',
 				parameters: { model: { __rl: true, mode: 'list', value: '' } },
 				credentials: { openAiApi: { id: 'cred-openai', name: 'OpenAI account' } },
 			},
 			{
 				name: 'Anthropic Chat Model',
-				type: '@n8n/n8n-nodes-langchain.lmChatAnthropic',
+				type: '@MNI/MNI-nodes-langchain.lmChatAnthropic',
 				parameters: { model: 'claude-3-5-sonnet-20241022' },
 				credentials: { anthropicApi: { id: 'cred-anthropic', name: 'Anthropic account' } },
 			},
@@ -171,7 +171,7 @@ describe('useDefaultJudgeSelection', () => {
 		state.allNodes = [
 			{
 				name: 'OpenAI Chat Model',
-				type: '@n8n/n8n-nodes-langchain.lmChatOpenAi',
+				type: '@MNI/MNI-nodes-langchain.lmChatOpenAi',
 				parameters: { model: { __rl: true, mode: 'list', value: 'gpt-4o-mini' } },
 				// `credentials` is undefined entirely — node just dropped onto the
 				// canvas, never configured.

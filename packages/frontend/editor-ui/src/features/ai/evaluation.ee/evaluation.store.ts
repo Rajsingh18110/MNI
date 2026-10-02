@@ -1,11 +1,11 @@
 import { defineStore } from 'pinia';
 import { computed, ref } from 'vue';
-import { useRootStore } from '@n8n/stores/useRootStore';
+import { useRootStore } from '@MNI/stores/useRootStore';
 import * as evaluationsApi from './evaluation.api';
 import type { TestCaseExecutionRecord, TestRunRecord } from './evaluation.api';
-import type { AddDatasetRowDto, EvaluationConfigDto } from '@n8n/api-types';
-import { STORES } from '@n8n/stores';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import type { AddDatasetRowDto, EvaluationConfigDto } from '@MNI/api-types';
+import { STORES } from '@MNI/stores';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 
 export const useEvaluationStore = defineStore(
 	STORES.EVALUATION,

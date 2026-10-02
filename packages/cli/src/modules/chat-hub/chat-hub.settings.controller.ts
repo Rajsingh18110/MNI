@@ -4,10 +4,10 @@ import {
 	UpdateChatSettingsRequest,
 	UpdateChatEnabledRequest,
 	ChatHubSemanticSearchSettings,
-} from '@n8n/api-types';
-import { ModuleRegistry, Logger } from '@n8n/backend-common';
-import { type AuthenticatedRequest } from '@n8n/db';
-import { Body, Get, Post, Put, RestController, GlobalScope, Param } from '@n8n/decorators';
+} from '@MNI/api-types';
+import { ModuleRegistry, Logger } from '@MNI/backend-common';
+import { type AuthenticatedRequest } from '@MNI/db';
+import { Body, Get, Post, Put, RestController, GlobalScope, Param } from '@MNI/decorators';
 
 import { BadRequestError } from '@/errors/response-errors/bad-request.error';
 

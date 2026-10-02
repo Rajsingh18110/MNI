@@ -1,4 +1,4 @@
-import type { WorkflowReviewActivityEntry, WorkflowReviewActivityMessage } from '@n8n/api-types';
+import type { WorkflowReviewActivityEntry, WorkflowReviewActivityMessage } from '@MNI/api-types';
 import { createTestingPinia } from '@pinia/testing';
 import { createComponentRenderer } from '@/__tests__/render';
 

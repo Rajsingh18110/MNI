@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { N8N_CHAT_ACTION_TOOL_NAME, type AgentPersistedMessageDto } from '@n8n/api-types';
+import { MNI_CHAT_ACTION_TOOL_NAME, type AgentPersistedMessageDto } from '@MNI/api-types';
 
 import {
 	isAwaitingCard,
@@ -82,21 +82,21 @@ describe('isAwaitingCard', () => {
 	});
 });
 
-describe('rebuildInteractiveFromHistory — n8n_chat_action', () => {
+describe('rebuildInteractiveFromHistory — MNI_chat_action', () => {
 	it('rebuilds an open awaiting card', () => {
 		const result = rebuildInteractiveFromHistory({
-			tool: N8N_CHAT_ACTION_TOOL_NAME,
+			tool: MNI_CHAT_ACTION_TOOL_NAME,
 			toolCallId: 'tc-1',
 			input: cardInput,
 			state: 'suspended',
 		});
-		expect(result?.toolName).toBe(N8N_CHAT_ACTION_TOOL_NAME);
+		expect(result?.toolName).toBe(MNI_CHAT_ACTION_TOOL_NAME);
 		expect(result?.resolvedAt).toBeUndefined();
 	});
 
 	it('rebuilds a resolved card with the resume value', () => {
 		const result = rebuildInteractiveFromHistory({
-			tool: N8N_CHAT_ACTION_TOOL_NAME,
+			tool: MNI_CHAT_ACTION_TOOL_NAME,
 			toolCallId: 'tc-1',
 			input: cardInput,
 			output: { type: 'button', value: 'yes' },
@@ -116,7 +116,7 @@ describe('rebuildInteractiveFromHistory — n8n_chat_action', () => {
 			},
 		};
 		const result = rebuildInteractiveFromHistory({
-			tool: N8N_CHAT_ACTION_TOOL_NAME,
+			tool: MNI_CHAT_ACTION_TOOL_NAME,
 			toolCallId: 'tc-2',
 			input: displayOnly,
 			state: 'running',
@@ -127,7 +127,7 @@ describe('rebuildInteractiveFromHistory — n8n_chat_action', () => {
 	it('sets resolvedAt but leaves resolvedValue undefined when output is unparseable', () => {
 		// output does not match the resume shape (type/value), so safeParse fails
 		const result = rebuildInteractiveFromHistory({
-			tool: N8N_CHAT_ACTION_TOOL_NAME,
+			tool: MNI_CHAT_ACTION_TOOL_NAME,
 			toolCallId: 'tc-3',
 			input: cardInput,
 			output: { ok: true },
@@ -165,8 +165,8 @@ describe('isAwaitingCard — extended cases', () => {
 
 describe('convertDbMessages — open-card-preference regression', () => {
 	it('prefers the open awaiting card over an earlier resolved card in the same assistant turn', () => {
-		// First tool call: a resolved n8n_chat_action display card (already answered).
-		// Second tool call: an open n8n_chat_action awaiting card (still pending).
+		// First tool call: a resolved MNI_chat_action display card (already answered).
+		// Second tool call: an open MNI_chat_action awaiting card (still pending).
 		// The bug would have stopped at the first rebuilt payload and never armed
 		// the second, open one as awaitingUser.
 		const resolvedCardInput = {
@@ -197,7 +197,7 @@ describe('convertDbMessages — open-card-preference regression', () => {
 				content: [
 					{
 						type: 'tool-call',
-						toolName: N8N_CHAT_ACTION_TOOL_NAME,
+						toolName: MNI_CHAT_ACTION_TOOL_NAME,
 						toolCallId: 'resolved-tc',
 						input: resolvedCardInput,
 						output: { type: 'button', value: 'done' },
@@ -205,7 +205,7 @@ describe('convertDbMessages — open-card-preference regression', () => {
 					},
 					{
 						type: 'tool-call',
-						toolName: N8N_CHAT_ACTION_TOOL_NAME,
+						toolName: MNI_CHAT_ACTION_TOOL_NAME,
 						toolCallId: 'open-tc',
 						input: openCardInput,
 						state: 'pending',

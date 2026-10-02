@@ -1,6 +1,6 @@
 import { NodeTestHarness } from '@nodes-testing/node-test-harness';
 import { mock } from 'vitest-mock-extended';
-import type { IExecuteFunctions, INodeExecutionData, INode } from 'n8n-workflow';
+import type { IExecuteFunctions, INodeExecutionData, INode } from 'MNI-workflow';
 
 import { ExecutionData } from '../ExecutionData.node';
 

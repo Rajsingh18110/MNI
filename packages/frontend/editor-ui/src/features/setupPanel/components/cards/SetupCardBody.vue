@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue';
-import { useI18n, type BaseTextKey } from '@n8n/i18n';
-import { N8nLink, N8nText, N8nTooltip } from '@n8n/design-system';
-import { type INodeProperties, NodeHelpers } from 'n8n-workflow';
+import { useI18n, type BaseTextKey } from '@MNI/i18n';
+import { N8nLink, N8nText, N8nTooltip } from '@MNI/design-system';
+import { type INodeProperties, NodeHelpers } from 'MNI-workflow';
 
 import NodeCredentials from '@/features/credentials/components/NodeCredentials.vue';
 import ParameterInputList from '@/features/ndv/parameters/components/ParameterInputList.vue';

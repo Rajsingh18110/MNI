@@ -1,7 +1,7 @@
-import type { IExecutionResponse } from '@n8n/db';
+import type { IExecutionResponse } from '@MNI/db';
 import type express from 'express';
-import type { InstanceSettings } from 'n8n-core';
-import { buildHitlCallbackReference, isTelegramInteractionRequest } from 'n8n-core';
+import type { InstanceSettings } from 'MNI-core';
+import { buildHitlCallbackReference, isTelegramInteractionRequest } from 'MNI-core';
 import { mock } from 'vitest-mock-extended';
 
 import type { EventService } from '@/events/event.service';
@@ -152,7 +152,7 @@ describe('TelegramInteractionWebhooks', () => {
 						{
 							name: 'Telegram',
 							id: 'node-1',
-							type: 'n8n-nodes-base.telegram',
+							type: 'MNI-nodes-base.telegram',
 							typeVersion: 1.2,
 							parameters: {},
 							position: [0, 0] as [number, number],
@@ -194,7 +194,7 @@ describe('TelegramInteractionWebhooks', () => {
 						{
 							name: 'Telegram',
 							id: 'node-1',
-							type: 'n8n-nodes-base.telegram',
+							type: 'MNI-nodes-base.telegram',
 							typeVersion: 1.2,
 							parameters: {},
 							position: [0, 0] as [number, number],
@@ -273,7 +273,7 @@ describe('TelegramInteractionWebhooks', () => {
 						{
 							name: 'Telegram',
 							id: '',
-							type: 'n8n-nodes-base.telegram',
+							type: 'MNI-nodes-base.telegram',
 							typeVersion: 1.2,
 							parameters: {},
 							position: [0, 0] as [number, number],
@@ -311,7 +311,7 @@ describe('TelegramInteractionWebhooks', () => {
 						{
 							name: 'Slack',
 							id: 'node-1',
-							type: 'n8n-nodes-base.slack',
+							type: 'MNI-nodes-base.slack',
 							typeVersion: 1,
 							parameters: {},
 							position: [0, 0] as [number, number],

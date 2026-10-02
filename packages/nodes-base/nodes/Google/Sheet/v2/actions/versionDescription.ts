@@ -1,6 +1,6 @@
-/* eslint-disable n8n-nodes-base/node-filename-against-convention */
-import type { INodeProperties, INodeTypeDescription } from 'n8n-workflow';
-import { NodeConnectionTypes } from 'n8n-workflow';
+/* eslint-disable MNI-nodes-base/node-filename-against-convention */
+import type { INodeProperties, INodeTypeDescription } from 'MNI-workflow';
+import { NodeConnectionTypes } from 'MNI-workflow';
 
 import * as sheet from './sheet/Sheet.resource';
 import * as spreadsheet from './spreadsheet/SpreadSheet.resource';
@@ -15,7 +15,7 @@ export const authentication: INodeProperties = {
 			value: 'serviceAccount',
 		},
 		{
-			// eslint-disable-next-line n8n-nodes-base/node-param-display-name-miscased
+			// eslint-disable-next-line MNI-nodes-base/node-param-display-name-miscased
 			name: 'OAuth2 (recommended)',
 			value: 'oAuth2',
 		},

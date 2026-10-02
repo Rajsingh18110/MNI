@@ -1,9 +1,9 @@
-import type { RuntimeSkill } from '@n8n/agents';
+import type { RuntimeSkill } from '@MNI/agents';
 import {
 	SUB_AGENT_MAX_CHILDREN_DEFAULT,
 	SUB_AGENT_MAX_CHILDREN_MAX,
 	SUB_AGENT_MAX_CHILDREN_MIN,
-} from '@n8n/api-types';
+} from '@MNI/api-types';
 
 export function subAgentsSkill(): RuntimeSkill {
 	return {

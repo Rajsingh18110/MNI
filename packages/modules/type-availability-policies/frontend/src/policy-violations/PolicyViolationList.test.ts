@@ -1,13 +1,13 @@
-import type { PolicyViolation } from '@n8n/api-types';
-import { createComponentRenderer } from '@n8n/frontend-test-utils';
+import type { PolicyViolation } from '@MNI/api-types';
+import { createComponentRenderer } from '@MNI/frontend-test-utils';
 import userEvent from '@testing-library/user-event';
 import { within } from '@testing-library/vue';
 import { describe, expect, it } from 'vitest';
 
 import PolicyViolationList from './PolicyViolationList.vue';
 
-const SLACK_NODE_TYPE = 'n8n-nodes-base.slack';
-const TELEGRAM_NODE_TYPE = 'n8n-nodes-base.telegram';
+const SLACK_NODE_TYPE = 'MNI-nodes-base.slack';
+const TELEGRAM_NODE_TYPE = 'MNI-nodes-base.telegram';
 const GITHUB_CREDENTIAL_TYPE = 'githubApi';
 
 function nodeTypeViolation(subject: string, scope: string): PolicyViolation {

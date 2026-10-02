@@ -8,8 +8,8 @@ import type {
 	INodeType,
 	INodeTypeBaseDescription,
 	INodeTypeDescription,
-} from 'n8n-workflow';
-import { NodeConnectionTypes, NodeOperationError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeConnectionTypes, NodeOperationError } from 'MNI-workflow';
 
 import type { ICustomProperties } from './GenericFunctions';
 import {
@@ -3301,7 +3301,7 @@ const versionDescription: INodeTypeDescription = {
 				},
 			},
 			default: false,
-			// eslint-disable-next-line n8n-nodes-base/node-param-description-boolean-without-whether
+			// eslint-disable-next-line MNI-nodes-base/node-param-description-boolean-without-whether
 			description:
 				'By default do custom properties get returned only as ID instead of their actual name. Also option fields contain only the ID instead of their actual value. If this option gets set they get automatically resolved.',
 		},
@@ -3316,7 +3316,7 @@ const versionDescription: INodeTypeDescription = {
 				},
 			},
 			default: false,
-			// eslint-disable-next-line n8n-nodes-base/node-param-description-boolean-without-whether
+			// eslint-disable-next-line MNI-nodes-base/node-param-description-boolean-without-whether
 			description:
 				'By default do custom properties have to be set as ID instead of their actual name. Also option fields have to be set as ID instead of their actual value. If this option gets set they get automatically encoded.',
 		},

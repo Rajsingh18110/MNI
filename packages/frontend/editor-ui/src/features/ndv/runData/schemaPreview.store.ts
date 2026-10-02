@@ -1,12 +1,12 @@
 import * as schemaPreviewApi from './schemaPreview.api';
-import { createResultError, createResultOk, type Result } from '@n8n/utils/result';
-import { type INode } from 'n8n-workflow';
+import { createResultError, createResultOk, type Result } from '@MNI/utils/result';
+import { type INode } from 'MNI-workflow';
 import { defineStore } from 'pinia';
 import { reactive } from 'vue';
-import { useRootStore } from '@n8n/stores/useRootStore';
+import { useRootStore } from '@MNI/stores/useRootStore';
 import type { JSONSchema7 } from 'json-schema';
-import type { PushPayload } from '@n8n/api-types';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
+import type { PushPayload } from '@MNI/api-types';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
 import { generateJsonSchema } from '@/app/utils/json-schema';
 
 export const useSchemaPreviewStore = defineStore('schemaPreview', () => {

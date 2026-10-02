@@ -1,4 +1,4 @@
-import type { ICredentialType, INodeProperties } from 'n8n-workflow';
+import type { ICredentialType, INodeProperties } from 'MNI-workflow';
 
 // Resource scopes from Grist's OAuth-apps authorization server
 // (/.well-known/oauth-authorization-server).

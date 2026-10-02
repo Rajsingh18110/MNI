@@ -1,7 +1,7 @@
-import { mockLogger } from '@n8n/backend-test-utils';
-import { OnPubSubEvent, PubSubMetadata } from '@n8n/decorators';
-import { Container, Service } from '@n8n/di';
-import type { InstanceSettings } from 'n8n-core';
+import { mockLogger } from '@MNI/backend-test-utils';
+import { OnPubSubEvent, PubSubMetadata } from '@MNI/decorators';
+import { Container, Service } from '@MNI/di';
+import type { InstanceSettings } from 'MNI-core';
 import { mock } from 'vitest-mock-extended';
 
 import { PubSubEventBus } from '../pubsub.eventbus';

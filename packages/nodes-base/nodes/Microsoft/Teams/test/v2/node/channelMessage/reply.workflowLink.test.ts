@@ -1,7 +1,7 @@
 import type { MockProxy } from 'vitest-mock-extended';
 import { mock } from 'vitest-mock-extended';
 import type { Mock } from 'vitest';
-import type { IExecuteFunctions, INode, NodeParameterValueType } from 'n8n-workflow';
+import type { IExecuteFunctions, INode, NodeParameterValueType } from 'MNI-workflow';
 
 import { versionDescription } from '../../../../v2/actions/versionDescription';
 import { MicrosoftTeamsV2 } from '../../../../v2/MicrosoftTeamsV2.node';
@@ -73,7 +73,7 @@ describe('MicrosoftTeamsV2, channelMessage => reply, workflow link', () => {
 
 		expect(body.body.contentType).toBe('html');
 		expect(body.body.content).toBe(
-			'on it<br><br><em> Powered by <a href="https://n8n.example.com/workflow/workflowId?utm_source=n8n-internal&utm_medium=powered_by&utm_campaign=n8n-nodes-base.microsoftTeams_instanceId">this MNI workflow</a> </em>',
+			'on it<br><br><em> Powered by <a href="https://n8n.example.com/workflow/workflowId?utm_source=MNI-internal&utm_medium=powered_by&utm_campaign=MNI-nodes-base.microsoftTeams_instanceId">this MNI workflow</a> </em>',
 		);
 	});
 

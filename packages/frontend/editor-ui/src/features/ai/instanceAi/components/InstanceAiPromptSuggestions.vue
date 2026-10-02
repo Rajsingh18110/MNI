@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { N8nIcon } from '@n8n/design-system';
-import { useI18n, type BaseTextKey } from '@n8n/i18n';
+import { N8nIcon } from '@MNI/design-system';
+import { useI18n, type BaseTextKey } from '@MNI/i18n';
 import { onClickOutside } from '@vueuse/core';
 import { computed, onMounted, onUnmounted, ref } from 'vue';
 import {

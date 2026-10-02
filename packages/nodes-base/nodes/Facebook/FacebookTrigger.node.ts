@@ -10,8 +10,8 @@ import type {
 	IWebhookFunctions,
 	IWebhookResponseData,
 	JsonObject,
-} from 'n8n-workflow';
-import { NodeApiError, NodeConnectionTypes, NodeOperationError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeApiError, NodeConnectionTypes, NodeOperationError } from 'MNI-workflow';
 
 import { facebookApiRequest, getAllFields, getFields } from './GenericFunctions';
 import type { FacebookWebhookSubscription } from './types';

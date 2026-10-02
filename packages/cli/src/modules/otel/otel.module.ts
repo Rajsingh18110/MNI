@@ -1,7 +1,7 @@
-import type { ModuleContext, ModuleInterface } from '@n8n/decorators';
-import { BackendModule, OnShutdown } from '@n8n/decorators';
-import { Container } from '@n8n/di';
-import { InstanceSettings } from 'n8n-core';
+import type { ModuleContext, ModuleInterface } from '@MNI/decorators';
+import { BackendModule, OnShutdown } from '@MNI/decorators';
+import { Container } from '@MNI/di';
+import { InstanceSettings } from 'MNI-core';
 
 @BackendModule({
 	name: 'otel',

@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { useClipboard } from '@n8n/composables/useClipboard';
-import { useToast } from '@n8n/composables/useToast';
+import { useClipboard } from '@MNI/composables/useClipboard';
+import { useToast } from '@MNI/composables/useToast';
 import {
 	N8nDropdownMenu,
 	N8nIcon,
@@ -9,8 +9,8 @@ import {
 	N8nTooltip,
 	type DropdownMenuItemProps,
 	type IconName,
-} from '@n8n/design-system';
-import { useI18n, type BaseTextKey } from '@n8n/i18n';
+} from '@MNI/design-system';
+import { useI18n, type BaseTextKey } from '@MNI/i18n';
 import { computed, ref, watch } from 'vue';
 import { useRouter } from 'vue-router';
 
@@ -119,7 +119,7 @@ const menuItems = computed<Array<DropdownMenuItemProps<string>>>(() => [
 
 const triggerLabel = computed(() => {
 	const source = sessionMetadata.value?.source;
-	if (!source || source === 'chat' || source === 'n8n_chat') {
+	if (!source || source === 'chat' || source === 'MNI_chat') {
 		return i18n.baseText('agentSessions.origin.preview');
 	}
 	if (source === 'instance-ai') return i18n.baseText('agentSessions.origin.instanceAi');

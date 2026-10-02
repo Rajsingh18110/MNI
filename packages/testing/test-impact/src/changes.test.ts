@@ -44,7 +44,7 @@ describe('isNonImpactful', () => {
 		'packages/frontend/editor-ui/src/App.vue',
 		// Surgical: real *.json source data is NOT a "config file"
 		'packages/nodes-base/nodes/Slack/Slack.node.json',
-		'packages/@n8n/i18n/src/locales/en.json',
+		'packages/@MNI/i18n/src/locales/en.json',
 		// Dependency changes — handled by devDep classifier / dep-graph, not ignored
 		'pnpm-lock.yaml',
 		'packages/cli/package.json',
@@ -92,8 +92,8 @@ describe('forcesBroad', () => {
 		'packages/nodes-base/credentials/MicrosoftOAuth2Api.credentials.ts',
 		// Module registry: decides which modules load at boot, so a default flip
 		// changes behaviour in specs that never execute this file.
-		'packages/@n8n/backend-common/src/modules/module-registry.ts',
-		'packages/@n8n/backend-common/src/modules/modules.config.ts',
+		'packages/@MNI/backend-common/src/modules/module-registry.ts',
+		'packages/@MNI/backend-common/src/modules/modules.config.ts',
 	])('treats %s as runtime-defining (force broad)', (file) => {
 		expect(forcesBroad(file)).toBe(true);
 	});
@@ -103,7 +103,7 @@ describe('forcesBroad', () => {
 		'packages/testing/playwright/tests/e2e/x.spec.ts',
 		'packages/nodes-base/nodes/If/If.node.ts',
 		// A unit test beside the registry can't change the runtime — stays scoped.
-		'packages/@n8n/backend-common/src/modules/__tests__/module-registry.test.ts',
+		'packages/@MNI/backend-common/src/modules/__tests__/module-registry.test.ts',
 		// Per-module descriptors are NOT the registry: high churn, and they can't
 		// change which modules are enabled by default.
 		'packages/cli/src/modules/instance-ai/instance-ai.module.ts',
@@ -133,7 +133,7 @@ describe('tsconfigForcesBroad', () => {
 
 	it('forces broad when compilerOptions.paths changes', () => {
 		const before = ts({ paths: { 'esprima-next': ['./x'] } });
-		const after = ts({ paths: { 'n8n-workflow': ['./src/index.ts'], 'esprima-next': ['./x'] } });
+		const after = ts({ paths: { 'MNI-workflow': ['./src/index.ts'], 'esprima-next': ['./x'] } });
 		expect(tsconfigForcesBroad(before, after)).toBe(true);
 	});
 
@@ -154,8 +154,8 @@ describe('tsconfigForcesBroad', () => {
 	});
 
 	it('forces broad when extends changes', () => {
-		const before = ts({}, { extends: '@n8n/typescript-config/modern/tsconfig.json' });
-		const after = ts({}, { extends: '@n8n/typescript-config/modern/tsconfig.go.json' });
+		const before = ts({}, { extends: '@MNI/typescript-config/modern/tsconfig.json' });
+		const after = ts({}, { extends: '@MNI/typescript-config/modern/tsconfig.go.json' });
 		expect(tsconfigForcesBroad(before, after)).toBe(true);
 	});
 
@@ -253,7 +253,7 @@ describe('overrideTargetName', () => {
 		['@babel/traverse', '@babel/traverse'],
 		['undici@7', 'undici'],
 		['a>b>@scope/c@^1.0.0', '@scope/c'],
-		['@n8n/typeorm>@sentry/node', '@sentry/node'],
+		['@MNI/typeorm>@sentry/node', '@sentry/node'],
 		// `>` inside a version range is not a parent separator
 		['pkg@>=2.0.0', 'pkg'],
 		['pkg@>2', 'pkg'],
@@ -364,15 +364,15 @@ describe('dropDevDepOnlyDeps — overrides (safety-critical)', () => {
 
 describe('isBackendConfig', () => {
 	it.each([
-		'packages/@n8n/config/src/configs/ai.config.ts',
-		'packages/@n8n/config/src/configs/logging.config.ts',
+		'packages/@MNI/config/src/configs/ai.config.ts',
+		'packages/@MNI/config/src/configs/logging.config.ts',
 	])('matches %s', (file) => {
 		expect(isBackendConfig(file)).toBe(true);
 	});
 
 	it.each([
-		'packages/@n8n/config/src/configs/__tests__/ai.config.test.ts',
-		'packages/@n8n/config/src/decorators.ts',
+		'packages/@MNI/config/src/configs/__tests__/ai.config.test.ts',
+		'packages/@MNI/config/src/decorators.ts',
 		'packages/cli/src/config/index.ts',
 	])('does not match %s', (file) => {
 		expect(isBackendConfig(file)).toBe(false);
@@ -382,7 +382,7 @@ describe('isBackendConfig', () => {
 describe('configForcesBroad', () => {
 	const cfg = (body: string) =>
 		`import { Config, Env } from '../decorators';\n@Config\nexport class C {\n${body}\n}`;
-	const enabled = "\t@Env('N8N_AI_ENABLED')\n\tenabled: boolean = false;";
+	const enabled = "\t@Env('MNI_AI_ENABLED')\n\tenabled: boolean = false;";
 
 	it('forces broad when a default value changes', () => {
 		const after = cfg(enabled.replace('= false', '= true'));
@@ -390,7 +390,7 @@ describe('configForcesBroad', () => {
 	});
 
 	it('forces broad when an env var is renamed', () => {
-		const after = cfg(enabled.replace('N8N_AI_ENABLED', 'N8N_AI_ON'));
+		const after = cfg(enabled.replace('MNI_AI_ENABLED', 'MNI_AI_ON'));
 		expect(configForcesBroad(cfg(enabled), after)).toBe(true);
 	});
 
@@ -405,7 +405,7 @@ describe('configForcesBroad', () => {
 	});
 
 	it('does NOT force broad for a new field (additive)', () => {
-		const after = cfg(`${enabled}\n\n\t@Env('N8N_AI_TIMEOUT')\n\ttimeout: number = 60;`);
+		const after = cfg(`${enabled}\n\n\t@Env('MNI_AI_TIMEOUT')\n\ttimeout: number = 60;`);
 		expect(configForcesBroad(cfg(enabled), after)).toBe(false);
 	});
 

@@ -1,9 +1,9 @@
-import { getMetadataArgsStorage } from '@n8n/typeorm';
+import { getMetadataArgsStorage } from '@MNI/typeorm';
 import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import path from 'node:path';
 
 // Register all core entity decorators
-import '@n8n/db';
+import '@MNI/db';
 
 import {
 	TRANSFERRED_PROJECT_RESOURCES,

@@ -14,9 +14,9 @@ import type {
 } from '@/Interface';
 import type { IExecutionResponse } from '@/features/execution/executions/executions.types';
 import type { IUsedCredential } from '@/features/credentials/credentials.types';
-import type { ITag } from '@n8n/rest-api-client/api/tags';
-import type { IWorkflowTemplate } from '@n8n/rest-api-client/api/templates';
-import type { WorkflowData, WorkflowDataUpdate } from '@n8n/rest-api-client/api/workflows';
+import type { ITag } from '@MNI/rest-api-client/api/tags';
+import type { IWorkflowTemplate } from '@MNI/rest-api-client/api/templates';
+import type { WorkflowData, WorkflowDataUpdate } from '@MNI/rest-api-client/api/workflows';
 import {
 	type CanvasConnectionReplacement,
 	createInputConnectionHandle,
@@ -27,13 +27,13 @@ import {
 } from '@/app/composables/canvasConnectionReplacement.utils';
 import { useDataSchema } from '@/app/composables/useDataSchema';
 import { useExternalHooks } from '@/app/composables/useExternalHooks';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import { useAiSimulatedDataGuard } from '@/app/composables/useAiSimulatedDataGuard';
 import { useNodeHelpers } from '@/app/composables/useNodeHelpers';
 import { getN8nAgentsNodeName } from '@/experiments/inlineAgents/useInlineAgentsExperiment';
 import { type PinDataSource, usePinnedData } from '@/app/composables/usePinnedData';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
-import { useToast } from '@n8n/composables/useToast';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
+import { useToast } from '@MNI/composables/useToast';
 import { useWorkflowHelpers } from '@/app/composables/useWorkflowHelpers';
 import { useWorkflowNormalization } from '@/app/composables/useWorkflowNormalization';
 import { getExecutionErrorToastConfiguration } from '@/features/execution/executions/executions.utils';
@@ -68,9 +68,9 @@ import { useHistoryStore } from '@/app/stores/history.store';
 import { useNDVStore } from '@/features/ndv/shared/ndv.store';
 import { useNodeCreatorStore } from '@/features/shared/nodeCreator/nodeCreator.store';
 import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';
-import { isNodeTypeRestricted } from '@n8n/frontend-module-type-availability-policies';
-import { useRootStore } from '@n8n/stores/useRootStore';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { isNodeTypeRestricted } from '@MNI/frontend-module-type-availability-policies';
+import { useRootStore } from '@MNI/stores/useRootStore';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { useTagsStore } from '@/features/shared/tags/tags.store';
 import { useUIStore } from '@/app/stores/ui.store';
 import { useWorkflowsStore } from '@/app/stores/workflows.store';
@@ -134,7 +134,7 @@ import type {
 	INodeParameters,
 	INodeFilter,
 	IWorkflowGroup,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import {
 	deepCopy,
 	getEmptyGroupAnchor,
@@ -145,8 +145,8 @@ import {
 	isEmptyGroupAnchor,
 	isHitlToolType,
 	isResourceLocatorValue,
-} from 'n8n-workflow';
-import { TELEMETRY_EVENT, type InferTelemetryProps, type TelemetryEventDef } from '@n8n/telemetry';
+} from 'MNI-workflow';
+import { TELEMETRY_EVENT, type InferTelemetryProps, type TelemetryEventDef } from '@MNI/telemetry';
 import { computed, nextTick, ref, type DeepReadonly } from 'vue';
 import { useUniqueNodeName } from '@/app/composables/useUniqueNodeName';
 import { useBuilderStore } from '@/features/ai/assistant/builder.store';
@@ -157,7 +157,7 @@ import type {
 	CanvasLayoutEvent,
 	NodeLayoutResult,
 } from '@/features/workflows/canvas/composables/useCanvasLayout';
-import { chatEventBus } from '@n8n/chat/event-buses';
+import { chatEventBus } from '@MNI/chat/event-buses';
 import { useLogsStore } from '@/app/stores/logs.store';
 import { isChatNode } from '@/app/utils/aiUtils';
 import cloneDeep from 'lodash/cloneDeep';

@@ -1,0 +1,54 @@
+{
+  "private": true,
+  "name": "@MNI/oxlint-config",
+  "type": "module",
+  "version": "0.0.1",
+  "exports": {
+    "./base": {
+      "types": "./dist/configs/base.d.ts",
+      "default": "./dist/configs/base.js"
+    },
+    "./backend": {
+      "types": "./dist/configs/backend.d.ts",
+      "default": "./dist/configs/backend.js"
+    },
+    "./frontend": {
+      "types": "./dist/configs/frontend.d.ts",
+      "default": "./dist/configs/frontend.js"
+    },
+    "./nodes": {
+      "types": "./dist/configs/nodes.d.ts",
+      "default": "./dist/configs/nodes.js"
+    },
+    "./import-x-alias": {
+      "types": "./dist/import-x-alias.d.ts",
+      "default": "./dist/import-x-alias.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc",
+    "build:unchecked": "tsc --noCheck",
+    "clean": "rimraf dist .turbo",
+    "dev": "pnpm watch",
+    "format": "biome format --write .",
+    "format:check": "biome ci .",
+    "lint": "node -e \"process.exit(0)\"",
+    "test": "node -e \"process.exit(0)\"",
+    "typecheck": "tsc --noEmit",
+    "watch": "tsc --watch"
+  },
+  "devDependencies": {
+    "@MNI/typescript-config": "workspace:*",
+    "@types/node": "catalog:",
+    "typescript": "catalog:typescript-tooling"
+  },
+  "dependencies": {
+    "@MNI/eslint-config": "workspace:*",
+    "@stylistic/eslint-plugin": "^5.0.0",
+    "eslint-plugin-import-x": "^4.15.2",
+    "eslint-plugin-lodash": "^8.0.0",
+    "eslint-plugin-unused-imports": "^4.1.4",
+    "oxlint": "catalog:"
+  },
+  "license": "LicenseRef-MNI-sustainable-use"
+}

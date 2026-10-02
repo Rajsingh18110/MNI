@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { N8nAiActivityStep } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+import { N8nAiActivityStep } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 import { computed, onUnmounted, ref, watch } from 'vue';
 import { ACTIVITY_INDICATOR_DELAY_MS } from '../agentTimeline.utils';
 

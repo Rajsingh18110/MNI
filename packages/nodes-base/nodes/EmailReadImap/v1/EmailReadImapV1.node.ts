@@ -4,7 +4,7 @@ import {
 	parseHeaders,
 	type FetchMessageObject,
 	type FetchQueryObject,
-} from '@n8n/imap';
+} from '@MNI/imap';
 import type { Source as ParserSource } from 'mailparser';
 import { simpleParser } from 'mailparser';
 import type {
@@ -19,8 +19,8 @@ import type {
 	INodeTypeBaseDescription,
 	INodeTypeDescription,
 	ITriggerResponse,
-} from 'n8n-workflow';
-import { NodeConnectionTypes, NodeOperationError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeConnectionTypes, NodeOperationError } from 'MNI-workflow';
 
 import { isCredentialsDataImap } from '@credentials/Imap.credentials';
 

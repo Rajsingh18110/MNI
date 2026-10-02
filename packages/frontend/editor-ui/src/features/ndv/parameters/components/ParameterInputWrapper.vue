@@ -9,7 +9,7 @@ import {
 	type INodePropertyMode,
 	type IParameterLabel,
 	type NodeParameterValueType,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { useResolvedExpression } from '@/app/composables/useResolvedExpression';
 import useEnvironmentsStore from '@/features/settings/environments.ee/environments.store';
@@ -17,11 +17,11 @@ import { useExternalSecretsStore } from '@/features/integrations/externalSecrets
 import { injectNDVStoreIfProvided } from '@/features/ndv/shared/ndv.store';
 import { useBinaryDataAccessTooltip } from '@/features/ndv/shared/composables/useBinaryDataAccessTooltip';
 import { isValueExpression, parseResourceMapperFieldName } from '@/app/utils/nodeTypesUtils';
-import type { EventBus } from '@n8n/utils/event-bus';
-import { createEventBus } from '@n8n/utils/event-bus';
+import type { EventBus } from '@MNI/utils/event-bus';
+import { createEventBus } from '@MNI/utils/event-bus';
 import { computed, useTemplateRef } from 'vue';
 
-import { N8nTooltip } from '@n8n/design-system';
+import { N8nTooltip } from '@MNI/design-system';
 type Props = {
 	parameter: INodeProperties;
 	path: string;

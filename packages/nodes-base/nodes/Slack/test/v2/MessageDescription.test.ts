@@ -1,5 +1,5 @@
-import type { INodeProperties } from 'n8n-workflow';
-import { displayParameter } from 'n8n-workflow';
+import type { INodeProperties } from 'MNI-workflow';
+import { displayParameter } from 'MNI-workflow';
 
 import { messageFields } from '../../V2/MessageDescription';
 

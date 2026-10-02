@@ -1,5 +1,5 @@
-import type { INode, INodeType, INodeTypeDescription } from 'n8n-workflow';
-import { NodeConnectionTypes, UnexpectedError } from 'n8n-workflow';
+import type { INode, INodeType, INodeTypeDescription } from 'MNI-workflow';
+import { NodeConnectionTypes, UnexpectedError } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import type { NodeTypes } from '@/node-types';
@@ -8,18 +8,18 @@ import { createNode, createWorkflow } from '../../../__tests__/test-helpers';
 import { AlwaysOutputDataMultiOutputRule } from '../always-output-data-multi-output.rule';
 
 const NODE_TYPE_OUTPUTS: Record<string, INodeTypeDescription['outputs']> = {
-	'n8n-nodes-base.httpRequest': [NodeConnectionTypes.Main],
-	'n8n-nodes-base.filter': [NodeConnectionTypes.Main],
-	'n8n-nodes-base.if': [NodeConnectionTypes.Main, NodeConnectionTypes.Main],
-	'n8n-nodes-base.compareDatasets': [
+	'MNI-nodes-base.httpRequest': [NodeConnectionTypes.Main],
+	'MNI-nodes-base.filter': [NodeConnectionTypes.Main],
+	'MNI-nodes-base.if': [NodeConnectionTypes.Main, NodeConnectionTypes.Main],
+	'MNI-nodes-base.compareDatasets': [
 		{ type: NodeConnectionTypes.Main, displayName: 'In A only' },
 		{ type: NodeConnectionTypes.Main, displayName: 'Same' },
 		{ type: NodeConnectionTypes.Main, displayName: 'Different' },
 		{ type: NodeConnectionTypes.Main, displayName: 'In B only' },
 	],
-	'n8n-nodes-base.switch': '={{ [] }}',
-	'@n8n/n8n-nodes-langchain.memoryBufferWindow': [NodeConnectionTypes.AiMemory],
-	'n8n-nodes-awesome-package.router': [NodeConnectionTypes.Main, NodeConnectionTypes.Main],
+	'MNI-nodes-base.switch': '={{ [] }}',
+	'@MNI/MNI-nodes-langchain.memoryBufferWindow': [NodeConnectionTypes.AiMemory],
+	'MNI-nodes-awesome-package.router': [NodeConnectionTypes.Main, NodeConnectionTypes.Main],
 };
 
 const nodeTypes = mock<NodeTypes>();
@@ -40,8 +40,8 @@ describe('AlwaysOutputDataMultiOutputRule', () => {
 	describe('detectWorkflow()', () => {
 		it('should not flag single-output nodes even with Always Output Data on', async () => {
 			const { workflow, nodesGroupedByType } = createWorkflow('wf-1', 'Test Workflow', [
-				withAlwaysOutputData('Filter', 'n8n-nodes-base.filter'),
-				withAlwaysOutputData('HTTP', 'n8n-nodes-base.httpRequest'),
+				withAlwaysOutputData('Filter', 'MNI-nodes-base.filter'),
+				withAlwaysOutputData('HTTP', 'MNI-nodes-base.httpRequest'),
 			]);
 
 			const result = await rule.detectWorkflow(workflow, nodesGroupedByType);
@@ -52,7 +52,7 @@ describe('AlwaysOutputDataMultiOutputRule', () => {
 
 		it('should not flag a multi-output node with Always Output Data off', async () => {
 			const { workflow, nodesGroupedByType } = createWorkflow('wf-1', 'Test Workflow', [
-				createNode('If', 'n8n-nodes-base.if'),
+				createNode('If', 'MNI-nodes-base.if'),
 			]);
 
 			const result = await rule.detectWorkflow(workflow, nodesGroupedByType);
@@ -62,9 +62,9 @@ describe('AlwaysOutputDataMultiOutputRule', () => {
 		});
 
 		it.each([
-			['static outputs', 'n8n-nodes-base.if'],
-			['static output configurations', 'n8n-nodes-base.compareDatasets'],
-			['dynamic outputs', 'n8n-nodes-base.switch'],
+			['static outputs', 'MNI-nodes-base.if'],
+			['static output configurations', 'MNI-nodes-base.compareDatasets'],
+			['dynamic outputs', 'MNI-nodes-base.switch'],
 		])('should flag a multi-output node (%s) with Always Output Data on', async (_, type) => {
 			const { workflow, nodesGroupedByType } = createWorkflow('wf-1', 'Test Workflow', [
 				withAlwaysOutputData('Node', type),
@@ -80,7 +80,7 @@ describe('AlwaysOutputDataMultiOutputRule', () => {
 
 		it('should flag a multi-output community node with Always Output Data on', async () => {
 			const { workflow, nodesGroupedByType } = createWorkflow('wf-1', 'Test Workflow', [
-				withAlwaysOutputData('Router', 'n8n-nodes-awesome-package.router'),
+				withAlwaysOutputData('Router', 'MNI-nodes-awesome-package.router'),
 			]);
 
 			const result = await rule.detectWorkflow(workflow, nodesGroupedByType);
@@ -93,7 +93,7 @@ describe('AlwaysOutputDataMultiOutputRule', () => {
 		it('should flag a single-output node with an error output and Always Output Data on', async () => {
 			const { workflow, nodesGroupedByType } = createWorkflow('wf-1', 'Test Workflow', [
 				{
-					...withAlwaysOutputData('HTTP', 'n8n-nodes-base.httpRequest'),
+					...withAlwaysOutputData('HTTP', 'MNI-nodes-base.httpRequest'),
 					onError: 'continueErrorOutput',
 				},
 			]);
@@ -107,7 +107,7 @@ describe('AlwaysOutputDataMultiOutputRule', () => {
 
 		it('should not flag nodes without main outputs', async () => {
 			const { workflow, nodesGroupedByType } = createWorkflow('wf-1', 'Test Workflow', [
-				withAlwaysOutputData('Memory', '@n8n/n8n-nodes-langchain.memoryBufferWindow'),
+				withAlwaysOutputData('Memory', '@MNI/MNI-nodes-langchain.memoryBufferWindow'),
 			]);
 
 			const result = await rule.detectWorkflow(workflow, nodesGroupedByType);
@@ -118,7 +118,7 @@ describe('AlwaysOutputDataMultiOutputRule', () => {
 
 		it('should not flag nodes whose type is not installed', async () => {
 			const { workflow, nodesGroupedByType } = createWorkflow('wf-1', 'Test Workflow', [
-				withAlwaysOutputData('Uninstalled', 'n8n-nodes-uninstalled-package.gone'),
+				withAlwaysOutputData('Uninstalled', 'MNI-nodes-uninstalled-package.gone'),
 			]);
 
 			const result = await rule.detectWorkflow(workflow, nodesGroupedByType);
@@ -129,10 +129,10 @@ describe('AlwaysOutputDataMultiOutputRule', () => {
 
 		it('should flag only the multi-output nodes that have the setting on', async () => {
 			const { workflow, nodesGroupedByType } = createWorkflow('wf-1', 'Test Workflow', [
-				withAlwaysOutputData('IfOn', 'n8n-nodes-base.if'),
-				createNode('IfOff', 'n8n-nodes-base.if'),
-				withAlwaysOutputData('SwitchOn', 'n8n-nodes-base.switch'),
-				withAlwaysOutputData('FilterOn', 'n8n-nodes-base.filter'),
+				withAlwaysOutputData('IfOn', 'MNI-nodes-base.if'),
+				createNode('IfOff', 'MNI-nodes-base.if'),
+				withAlwaysOutputData('SwitchOn', 'MNI-nodes-base.switch'),
+				withAlwaysOutputData('FilterOn', 'MNI-nodes-base.filter'),
 			]);
 
 			const result = await rule.detectWorkflow(workflow, nodesGroupedByType);

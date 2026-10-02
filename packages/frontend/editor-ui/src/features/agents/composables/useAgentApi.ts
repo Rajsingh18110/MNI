@@ -23,9 +23,9 @@ import type {
 	AgentVersionListItemDto,
 	ChatIntegrationDescriptor,
 	VectorStoreTestResult,
-} from '@n8n/api-types';
-import { getFullApiResponse, makeRestApiRequest } from '@n8n/rest-api-client';
-import type { IRestApiContext } from '@n8n/rest-api-client';
+} from '@MNI/api-types';
+import { getFullApiResponse, makeRestApiRequest } from '@MNI/rest-api-client';
+import type { IRestApiContext } from '@MNI/rest-api-client';
 import type { AgentResource, AgentJsonConfig, CustomToolEntry } from '../types';
 
 export type ListAgentsSortBy =
@@ -147,7 +147,7 @@ export const duplicateAgent = async (
 	// opens the copy with a "connect a channel" chip instead.
 	const { tasks: _tasks, integrations: sourceIntegrations, ...rest } = configResponse.config;
 	const draftIntegrations = (sourceIntegrations ?? []).map((integration) =>
-		integration.type === 'n8n_chat' ? integration : { ...integration, credentialId: '' },
+		integration.type === 'MNI_chat' ? integration : { ...integration, credentialId: '' },
 	);
 	return await createAgent(context, projectId, name, {
 		schema: { ...rest, name, integrations: draftIntegrations },

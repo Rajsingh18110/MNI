@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { N8nSpinner } from '@n8n/design-system';
+import { N8nSpinner } from '@MNI/design-system';
 </script>
 
 <template>

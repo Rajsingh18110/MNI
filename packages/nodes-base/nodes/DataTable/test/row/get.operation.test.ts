@@ -1,5 +1,5 @@
-import { NodeOperationError } from 'n8n-workflow';
-import type { IDataTableProjectService, IExecuteFunctions, INode } from 'n8n-workflow';
+import { NodeOperationError } from 'MNI-workflow';
+import type { IDataTableProjectService, IExecuteFunctions, INode } from 'MNI-workflow';
 
 import { ANY_CONDITION } from '../../common/constants';
 import { DATA_TABLE_ID_FIELD } from '../../common/fields';

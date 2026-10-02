@@ -103,7 +103,7 @@ export const loadBalancer: Service<LoadBalancerResult> = {
 	env(result) {
 		return {
 			WEBHOOK_URL: result.meta.baseUrl,
-			N8N_PROXY_HOPS: '1',
+			MNI_PROXY_HOPS: '1',
 		};
 	},
 
@@ -111,13 +111,13 @@ export const loadBalancer: Service<LoadBalancerResult> = {
 		const { mainCount, webhookCount, hostPort, policy } = config as LoadBalancerConfig;
 		const { consumer, throwWithLogs } = createSilentLogConsumer();
 
-		// Single-main containers are named `${projectName}-n8n`, not `-n8n-main-1`.
+		// Single-main containers are named `${projectName}-MNI`, not `-MNI-main-1`.
 		const mainHostname = (index: number): string =>
-			mainCount > 1 ? `${projectName}-n8n-main-${index}:5678` : `${projectName}-n8n:5678`;
+			mainCount > 1 ? `${projectName}-MNI-main-${index}:5678` : `${projectName}-MNI:5678`;
 		const mainUpstreams = Array.from({ length: mainCount }, (_, index) => mainHostname(index + 1));
 		const webhookUpstreams = Array.from(
 			{ length: webhookCount },
-			(_, index) => `${projectName}-n8n-webhook-${index + 1}:5678`,
+			(_, index) => `${projectName}-MNI-webhook-${index + 1}:5678`,
 		);
 
 		const caddyConfig = buildCaddyConfig(mainUpstreams, webhookUpstreams, policy);

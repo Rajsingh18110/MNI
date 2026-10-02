@@ -1,4 +1,4 @@
-import { UUID_V7_PATTERN } from '@n8n/constants';
+import { UUID_V7_PATTERN } from '@MNI/constants';
 import { v7 as uuidv7 } from 'uuid';
 
 import { createExecutionIdV2, isExecutionIdV2 } from '../execution-id';

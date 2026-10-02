@@ -1,7 +1,7 @@
 import { ref, watch, type Ref } from 'vue';
-import { useRootStore } from '@n8n/stores/useRootStore';
-import type { IRestApiContext } from '@n8n/rest-api-client';
-import type { AgentCapabilitySummary } from '@n8n/api-types';
+import { useRootStore } from '@MNI/stores/useRootStore';
+import type { IRestApiContext } from '@MNI/rest-api-client';
+import type { AgentCapabilitySummary } from '@MNI/api-types';
 import { agentsEventBus } from '../agents.eventBus';
 import { getAgentCapabilitySummary } from './useAgentApi';
 

@@ -63,7 +63,7 @@ const PRE_HEAD = 'PREHEAD';
 const MASTER = 'MASTERSHA';
 const MERGE_TREE = 'MERGETREEOID';
 const POPULARITY = 'packages/frontend/editor-ui/data/node-popularity.json';
-const SETUPABILITY = 'packages/@n8n/instance-ai/src/tools/nodes/credential-setupability.json';
+const SETUPABILITY = 'packages/@MNI/instance-ai/src/tools/nodes/credential-setupability.json';
 
 const isRebase = (a) => a[0] === 'rebase' && a[1] !== '--abort';
 const favouringOwnSide = (a) => a[0] === 'rebase' && a.includes('-X') && a.includes('theirs');
@@ -85,7 +85,7 @@ const baseGitRoutes = [
 	[(a) => a[0] === 'grep', fail()],
 ];
 
-const env = { GH_TOKEN: 'tok', GITHUB_REPOSITORY: 'n8n-io/n8n' };
+const env = { GH_TOKEN: 'tok', GITHUB_REPOSITORY: 'MNI-io/MNI' };
 const noOpenPr = [[(a) => a[0] === 'pr' && a[1] === 'list', '[]']];
 
 function isolatedValidationPaths(args) {
@@ -494,7 +494,7 @@ test('sync replays and force-pushes with a lease, creating no commit', async () 
 	assert.deepEqual(push, [
 		'push',
 		`--force-with-lease=refs/heads/${TARGET_BRANCH}:${PRE_HEAD}`,
-		'https://x-access-token:tok@github.com/n8n-io/n8n.git',
+		'https://x-access-token:tok@github.com/MNI-io/n8n.git',
 		`HEAD:refs/heads/${TARGET_BRANCH}`,
 	]);
 	// The point of the change: no merge, no squash, no PR on the clean path.
@@ -706,7 +706,7 @@ test('sync opens a conflict PR for a lockfile-only conflict and defers the lockf
 	]);
 	const gh = makeStub([
 		...noOpenPr,
-		[(a) => a[0] === 'pr' && a[1] === 'create', 'https://github.com/n8n-io/n8n/pull/99'],
+		[(a) => a[0] === 'pr' && a[1] === 'create', 'https://github.com/MNI-io/MNI/pull/99'],
 	]);
 	const pnpm = makeStub();
 
@@ -737,7 +737,7 @@ test('sync falls back to a conflict PR when mechanical auto-resolution cannot co
 	]);
 	const gh = makeStub([
 		...noOpenPr,
-		[(a) => a[0] === 'pr' && a[1] === 'create', 'https://github.com/n8n-io/n8n/pull/99'],
+		[(a) => a[0] === 'pr' && a[1] === 'create', 'https://github.com/MNI-io/MNI/pull/99'],
 	]);
 
 	await sync({ git, gh, pnpm: makeStub(), env, fetchFn: okFetch(['alice']), log: () => {} });
@@ -930,7 +930,7 @@ test('sync opens a draft conflict PR and leaves 3.x untouched on a real conflict
 	]);
 	const gh = makeStub([
 		...noOpenPr,
-		[(a) => a[0] === 'pr' && a[1] === 'create', 'https://github.com/n8n-io/n8n/pull/99'],
+		[(a) => a[0] === 'pr' && a[1] === 'create', 'https://github.com/MNI-io/MNI/pull/99'],
 	]);
 
 	await sync({ git, gh, pnpm: makeStub(), env, fetchFn: okFetch(['alice']), log: () => {} });
@@ -972,7 +972,7 @@ test('sync reports the code conflict and defers the lockfile on a mixed conflict
 	]);
 	const gh = makeStub([
 		...noOpenPr,
-		[(a) => a[0] === 'pr' && a[1] === 'create', 'https://github.com/n8n-io/n8n/pull/99'],
+		[(a) => a[0] === 'pr' && a[1] === 'create', 'https://github.com/MNI-io/MNI/pull/99'],
 	]);
 	const pnpm = makeStub();
 
@@ -996,14 +996,14 @@ test('openConflictPr degrades gracefully when owner resolution fails', async () 
 	const git = makeStub([[(a) => a[0] === 'log', 'sha1']]);
 	const gh = makeStub([
 		[(a) => a[0] === 'pr' && a[1] === 'list', '[]'],
-		[(a) => a[0] === 'pr' && a[1] === 'create', 'https://github.com/n8n-io/n8n/pull/1'],
+		[(a) => a[0] === 'pr' && a[1] === 'create', 'https://github.com/MNI-io/MNI/pull/1'],
 	]);
 	const failingFetch = async () => ({ ok: false, status: 500, json: async () => ({}) });
 
 	const { prUrl, ownersSlack } = await openConflictPr({
 		git,
 		gh,
-		repo: 'n8n-io/n8n',
+		repo: 'MNI-io/MNI',
 		token: 't',
 		masterSha: MASTER,
 		preHead: PRE_HEAD,
@@ -1013,7 +1013,7 @@ test('openConflictPr degrades gracefully when owner resolution fails', async () 
 		log: () => {},
 	});
 
-	assert.equal(prUrl, 'https://github.com/n8n-io/n8n/pull/1');
+	assert.equal(prUrl, 'https://github.com/MNI-io/MNI/pull/1');
 	assert.equal(ownersSlack, 'Could not auto-attribute owners.');
 });
 
@@ -1031,7 +1031,7 @@ test('sync reports a marker-less delete/modify conflict as its own decision, wit
 	]);
 	const gh = makeStub([
 		...noOpenPr,
-		[(a) => a[0] === 'pr' && a[1] === 'create', 'https://github.com/n8n-io/n8n/pull/99'],
+		[(a) => a[0] === 'pr' && a[1] === 'create', 'https://github.com/MNI-io/MNI/pull/99'],
 	]);
 
 	await sync({

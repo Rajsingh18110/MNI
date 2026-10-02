@@ -1,7 +1,7 @@
 import { mock } from 'vitest-mock-extended';
 
 import { AgentCheckpointPruningTask } from '../agent-checkpoint-pruning.task';
-import type { N8NCheckpointStorage } from '../integrations/n8n-checkpoint-storage';
+import type { N8NCheckpointStorage } from '../integrations/MNI-checkpoint-storage';
 
 describe('AgentCheckpointPruningTask', () => {
 	const checkpointStorage = mock<N8NCheckpointStorage>();

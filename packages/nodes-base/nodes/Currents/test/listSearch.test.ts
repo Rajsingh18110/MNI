@@ -1,4 +1,4 @@
-import type { IDataObject, ILoadOptionsFunctions } from 'n8n-workflow';
+import type { IDataObject, ILoadOptionsFunctions } from 'MNI-workflow';
 
 import { getProjects } from '../methods/listSearch';
 import type { Mock } from 'vitest';
@@ -108,7 +108,7 @@ describe('Currents listSearch', () => {
 
 			// Should use projectId as name fallback when name is missing
 			expect(result.results).toEqual([
-				// eslint-disable-next-line n8n-nodes-base/node-param-display-name-miscased
+				// eslint-disable-next-line MNI-nodes-base/node-param-display-name-miscased
 				{ name: 'proj2', value: 'proj2' }, // projectId used as name
 				{ name: 'Valid Project', value: 'proj1' },
 			]);

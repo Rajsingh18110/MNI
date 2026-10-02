@@ -1,6 +1,6 @@
-import { ExecutionsConfig, PrometheusMetricsConfig } from '@n8n/config';
-import { Service } from '@n8n/di';
-import { InstanceSettings } from 'n8n-core';
+import { ExecutionsConfig, PrometheusMetricsConfig } from '@MNI/config';
+import { Service } from '@MNI/di';
+import { InstanceSettings } from 'MNI-core';
 import promClient from 'prom-client';
 
 import { EventService } from '@/events/event.service';

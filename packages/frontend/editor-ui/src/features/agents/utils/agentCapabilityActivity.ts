@@ -1,4 +1,4 @@
-import type { AgentNodeCapability } from '@n8n/api-types';
+import type { AgentNodeCapability } from '@MNI/api-types';
 
 export type AgentCapabilityActivityKey = string;
 

@@ -1,4 +1,4 @@
-import { Container } from '@n8n/di';
+import { Container } from '@MNI/di';
 import { mock } from 'vitest-mock-extended';
 
 import { CacheService } from '@/services/cache/cache.service';

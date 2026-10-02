@@ -1,7 +1,7 @@
-import { mockLogger } from '@n8n/backend-test-utils';
-import { createDeferredPromise } from '@n8n/utils/promise/deferred-promise';
+import { mockLogger } from '@MNI/backend-test-utils';
+import { createDeferredPromise } from '@MNI/utils/promise/deferred-promise';
 import type { Redis } from 'ioredis';
-import type { InstanceSettings } from 'n8n-core';
+import type { InstanceSettings } from 'MNI-core';
 import { EventEmitter } from 'node:events';
 import { mock } from 'vitest-mock-extended';
 

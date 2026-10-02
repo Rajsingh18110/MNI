@@ -1,6 +1,6 @@
-import { PopOutWindowKey } from '@n8n/composables/injectionKeys';
+import { PopOutWindowKey } from '@MNI/composables/injectionKeys';
 import { shouldIgnoreCanvasShortcut } from '@/features/workflows/canvas/canvas.utils';
-import { useDeviceSupport } from '@n8n/composables/useDeviceSupport';
+import { useDeviceSupport } from '@MNI/composables/useDeviceSupport';
 import { useActiveElement, useEventListener } from '@vueuse/core';
 import type { MaybeRefOrGetter } from 'vue';
 import { computed, inject, onScopeDispose, ref, toValue } from 'vue';

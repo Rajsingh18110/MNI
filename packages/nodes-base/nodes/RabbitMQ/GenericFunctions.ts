@@ -1,5 +1,5 @@
-import { formatPemBlock } from '@n8n/utils/format-pem-block';
-import type { IDeferredPromise } from '@n8n/utils/promise/deferred-promise';
+import { formatPemBlock } from '@MNI/utils/format-pem-block';
+import type { IDeferredPromise } from '@MNI/utils/promise/deferred-promise';
 import * as amqplib from 'amqplib';
 import type {
 	IExecuteResponsePromiseData,
@@ -8,17 +8,17 @@ import type {
 	INodeExecutionData,
 	IRun,
 	ITriggerFunctions,
-} from 'n8n-workflow';
-import { jsonParse } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { jsonParse } from 'MNI-workflow';
 
-import { sleep } from '@n8n/utils/sleep';
+import { sleep } from '@MNI/utils/sleep';
 import type { ExchangeType, Options, RabbitMQCredentials, TriggerOptions } from './types';
 
 const credentialKeys = ['hostname', 'port', 'username', 'password', 'vhost'] as const;
 
 export async function rabbitmqConnect(
 	credentials: RabbitMQCredentials,
-): Promise<amqplib.Connection> {
+): Promise<any> {
 	const credentialData = credentialKeys.reduce((acc, key) => {
 		acc[key] = credentials[key] === '' ? undefined : credentials[key];
 		return acc;
@@ -158,7 +158,7 @@ export class MessageTracker {
 		}
 
 		await channel.close();
-		await channel.connection.close();
+		await (channel.connection as any).close();
 	}
 }
 

@@ -3,14 +3,14 @@ import {
 	type BuiltTool,
 	type CredentialProvider,
 	type InterruptibleToolContext,
-} from '@n8n/agents';
+} from '@MNI/agents';
 import {
 	APPROVAL_RESUME_SCHEMA,
 	APPROVAL_SUSPEND_SCHEMA,
 	Tool,
 	type ApprovalResumePayload,
 	type ApprovalSuspendPayload,
-} from '@n8n/agents/tool';
+} from '@MNI/agents/tool';
 import {
 	applyNativeWebSearchDefaultOn,
 	getProviderPrefix,
@@ -18,7 +18,7 @@ import {
 	rejectIfEmptyInstructions,
 	rejectIfUnsupportedNativeWebSearch,
 	type AgentConfigValidationMessages,
-} from '@n8n/ai-utilities/agent-config';
+} from '@MNI/ai-utilities/agent-config';
 import {
 	agentSkillSchema,
 	agentTaskSchema,
@@ -33,12 +33,12 @@ import {
 	tryParseConfigJson,
 	type AgentJsonConfig,
 	type ConfigValidationError,
-} from '@n8n/api-types';
-import { Logger } from '@n8n/backend-common';
-import { OutboundHttp } from '@n8n/backend-network';
-import type { User } from '@n8n/db';
-import { Service } from '@n8n/di';
-import { createAgentContextTool, type InstanceAiCredentialService } from '@n8n/instance-ai';
+} from '@MNI/api-types';
+import { Logger } from '@MNI/backend-common';
+import { OutboundHttp } from '@MNI/backend-network';
+import type { User } from '@MNI/db';
+import { Service } from '@MNI/di';
+import { createAgentContextTool, type InstanceAiCredentialService } from '@MNI/instance-ai';
 import type { Operation } from 'fast-json-patch';
 import { z } from 'zod';
 

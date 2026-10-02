@@ -1,6 +1,6 @@
 import { mock, mockDeep } from 'vitest-mock-extended';
 import type { ConfigListSummary, SimpleGit } from 'simple-git';
-import type { INode, ResolvedFilePath } from 'n8n-workflow';
+import type { INode, ResolvedFilePath } from 'MNI-workflow';
 
 import {
 	getConfiguredRemoteRepositories,

@@ -1,6 +1,6 @@
-import type { AgentMessage, ToolDescriptor } from '@n8n/agents';
-import { Logger } from '@n8n/backend-common';
-import { Service } from '@n8n/di';
+import type { AgentMessage, ToolDescriptor } from '@MNI/agents';
+import { Logger } from '@MNI/backend-common';
+import { Service } from '@MNI/di';
 import { readFileSync } from 'fs';
 import type ivm from 'isolated-vm';
 import path from 'path';
@@ -21,7 +21,7 @@ const LIBRARY_BUNDLE_PATH = path.resolve(__dirname, '../../../../dist/agent-libr
  * Sandboxed execution runtime for agent user code.
  *
  * Uses `isolated-vm` (V8 isolates) to run untrusted TypeScript in a confined
- * environment. Libraries (`@n8n/agents`, `zod`) are pre-bundled at build time
+ * environment. Libraries (`@MNI/agents`, `zod`) are pre-bundled at build time
  * (scripts/bundle-agent-library.mjs) into `dist/agent-library-bundle.js` and
  * loaded into each isolate context as source code. This avoids module
  * resolution issues with pnpm workspace symlinks and keeps esbuild off the
@@ -46,7 +46,7 @@ export class AgentSecureRuntime {
 	private disposed = false;
 
 	/**
-	 * Pre-bundled JS string containing @n8n/agents + zod for injection into
+	 * Pre-bundled JS string containing @MNI/agents + zod for injection into
 	 * isolates. Read from disk on first use and cached here at the runtime
 	 * level so it is never cleared on OOM (the bundle is a plain string,
 	 * not bound to any isolate instance).
@@ -122,11 +122,11 @@ export class AgentSecureRuntime {
 	}
 
 	/**
-	 * Load the pre-built `@n8n/agents` + `zod` CJS bundle from disk.
+	 * Load the pre-built `@MNI/agents` + `zod` CJS bundle from disk.
 	 *
 	 * The bundle is produced at build time by `scripts/bundle-agent-library.mjs`
 	 * and loaded into each isolate context as source code, making
-	 * `require('@n8n/agents')` and `require('zod')` work inside the sandbox
+	 * `require('@MNI/agents')` and `require('zod')` work inside the sandbox
 	 * without needing filesystem access or module resolution.
 	 *
 	 * Cached after the first read so repeated pool initialisations (e.g. after

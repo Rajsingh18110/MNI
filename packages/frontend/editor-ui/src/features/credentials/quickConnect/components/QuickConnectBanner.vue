@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import type { QuickConnectDisclaimer } from '@n8n/api-types';
-import { N8nCallout } from '@n8n/design-system';
+import type { QuickConnectDisclaimer } from '@MNI/api-types';
+import { N8nCallout } from '@MNI/design-system';
 import { computed } from 'vue';
 
 const { text, disclaimer } = defineProps<{
@@ -29,13 +29,13 @@ const disclaimerHtml = computed(() => {
 <template>
 	<div v-if="text || disclaimer" :class="$style.wrapper" data-test-id="quick-connect-banner">
 		<N8nCallout v-if="text" theme="secondary" iconless>
-			<div v-n8n-html="text"></div>
+			<div v-MNI-html="text"></div>
 		</N8nCallout>
 		<div
 			v-if="disclaimer"
 			:class="$style.disclaimer"
 			data-test-id="quick-connect-banner-disclaimer"
-			v-n8n-html="disclaimerHtml"
+			v-MNI-html="disclaimerHtml"
 		></div>
 	</div>
 </template>

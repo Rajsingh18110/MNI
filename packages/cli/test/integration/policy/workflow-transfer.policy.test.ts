@@ -11,16 +11,16 @@ import {
 	getWorkflowSharing,
 	mockInstance,
 	testDb,
-} from '@n8n/backend-test-utils';
-import type { Project, User } from '@n8n/db';
+} from '@MNI/backend-test-utils';
+import type { Project, User } from '@MNI/db';
 import type {
 	PolicyCheckResult,
 	RegisteredPolicyCheck,
 	WorkflowTransferContext,
-} from '@n8n/decorators';
-import { PolicyCheck, PolicyCheckMetadata } from '@n8n/decorators';
-import { Container } from '@n8n/di';
-import type { IWorkflowBase } from 'n8n-workflow';
+} from '@MNI/decorators';
+import { PolicyCheck, PolicyCheckMetadata } from '@MNI/decorators';
+import { Container } from '@MNI/di';
+import type { IWorkflowBase } from 'MNI-workflow';
 
 import { ActiveWorkflowManager } from '@/active-workflow-manager';
 

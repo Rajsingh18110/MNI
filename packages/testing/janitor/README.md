@@ -1,4 +1,4 @@
-# @n8n/playwright-janitor
+# @MNI/playwright-janitor
 
 Static analysis and architecture enforcement for Playwright test suites.
 
@@ -61,7 +61,7 @@ The janitor enforces a layered architecture for Playwright test suites:
 ### Installation
 
 ```bash
-pnpm add -D @n8n/playwright-janitor
+pnpm add -D @MNI/playwright-janitor
 ```
 
 ### Configuration
@@ -69,7 +69,7 @@ pnpm add -D @n8n/playwright-janitor
 Create a `janitor.config.js` in your Playwright test root:
 
 ```typescript
-import { defineConfig } from '@n8n/playwright-janitor';
+import { defineConfig } from '@MNI/playwright-janitor';
 
 export default defineConfig({
   rootDir: __dirname,
@@ -102,7 +102,7 @@ export default defineConfig({
 ### Run Analysis
 
 ```typescript
-import { runAnalysis } from '@n8n/playwright-janitor';
+import { runAnalysis } from '@MNI/playwright-janitor';
 import config from './janitor.config.js';
 
 const report = runAnalysis(config);
@@ -113,7 +113,7 @@ Or create a script:
 
 ```typescript
 // scripts/run-janitor.ts
-import { runAnalysis, toConsole } from '@n8n/playwright-janitor';
+import { runAnalysis, toConsole } from '@MNI/playwright-janitor';
 import config from '../janitor.config.js';
 
 const report = runAnalysis(config);
@@ -260,13 +260,13 @@ that runs. When the package has no changed source files, coverage is off. With
 no change signal (master, nightly), the vitest config decides coverage.
 
 The rule that decides which files count lives in
-`@n8n/vitest-config/changed-file-coverage`. The shared vitest configs apply
+`@MNI/vitest-config/changed-file-coverage`. The shared vitest configs apply
 the same rule when `COVERAGE_SCOPE=changed-files`, so suites that do not go
 through janitor (the turbo-cached Backend jobs and the Postgres integration
 job) also measure only the changed files. Turbo hashes `COVERAGE_SCOPE`, so a
 scoped result never replays in a run that expects full coverage.
 
-**Turbo extra inputs:** `n8n-nodes-base#test`'s declared input
+**Turbo extra inputs:** `MNI-nodes-base#test`'s declared input
 `../cli/src/public-api/v1/**/*.yml` is honoured — a change to that yml
 marks nodes-base as affected.
 
@@ -274,20 +274,20 @@ marks nodes-base as affected.
 that never affect its tests, in its `package.json`:
 
 ```json
-"janitor": { "ignoreDepsForScoping": ["n8n-editor-ui"] }
+"janitor": { "ignoreDepsForScoping": ["MNI-editor-ui"] }
 ```
 
 `affectedPackages()` drops those edges from the graph, so a change in the
 ignored package no longer marks the declaring package as affected. Use it only
 for dependencies the package does not import, such as a prebuilt asset bundle
-it serves as static files. `MNI` (cli) declares `n8n-editor-ui` this way: cli
+it serves as static files. `MNI` (cli) declares `MNI-editor-ui` this way: cli
 resolves the editor's `dist` directory at runtime and never imports its code.
 The field must be an array of names that the package declares as workspace
 dependencies. Anything else throws, so a typo cannot silently re-widen CI.
 
 **Global triggers force a full workspace run.** Some changes are invisible to
 a per-package import-graph walk: a lockfile / root-manifest change, or an edit
-to a universal sink (`packages/@n8n/db`, `packages/workflow`, `packages/core`)
+to a universal sink (`packages/@MNI/db`, `packages/workflow`, `packages/core`)
 whose runtime coupling to downstream packages isn't expressed as a static
 import the test file can see. For these, scoping to "files in this package"
 would find nothing and emit `SKIP` on every downstream — a silent false green.
@@ -740,7 +740,7 @@ import {
   BaseRule,
   toJSON,
   toConsole,
-} from '@n8n/playwright-janitor';
+} from '@MNI/playwright-janitor';
 
 // Simple usage
 const report = runAnalysis(config);
@@ -764,8 +764,8 @@ Extend `BaseRule` to create custom rules:
 
 ```typescript
 import { SyntaxKind } from 'ts-morph';
-import { BaseRule } from '@n8n/playwright-janitor';
-import type { Project, SourceFile, Violation } from '@n8n/playwright-janitor';
+import { BaseRule } from '@MNI/playwright-janitor';
+import type { Project, SourceFile, Violation } from '@MNI/playwright-janitor';
 
 export class NoHardcodedUrlsRule extends BaseRule {
   readonly id = 'no-hardcoded-urls';
@@ -849,7 +849,7 @@ The janitor includes tools for TCR-style development workflows, where changes ar
 Determine which tests are affected by file changes:
 
 ```typescript
-import { createProject, ImpactAnalyzer, formatImpactConsole } from '@n8n/playwright-janitor';
+import { createProject, ImpactAnalyzer, formatImpactConsole } from '@MNI/playwright-janitor';
 
 const { project } = createProject('./');
 const analyzer = new ImpactAnalyzer(project);
@@ -869,7 +869,7 @@ formatImpactConsole(result, true); // verbose mode
 Track which tests use specific page object methods:
 
 ```typescript
-import { createProject, MethodUsageAnalyzer } from '@n8n/playwright-janitor';
+import { createProject, MethodUsageAnalyzer } from '@MNI/playwright-janitor';
 
 const { project } = createProject('./');
 const analyzer = new MethodUsageAnalyzer(project);
@@ -889,7 +889,7 @@ impact.affectedTestFiles.forEach(t => console.log(`  - ${t}`));
 Detect which methods changed in a file compared to git HEAD:
 
 ```typescript
-import { diffFileMethods, formatDiffConsole } from '@n8n/playwright-janitor';
+import { diffFileMethods, formatDiffConsole } from '@MNI/playwright-janitor';
 
 const result = diffFileMethods('pages/CanvasPage.ts', 'HEAD');
 
@@ -906,7 +906,7 @@ for (const change of result.changedMethods) {
 Run the full TCR workflow:
 
 ```typescript
-import { TcrExecutor } from '@n8n/playwright-janitor';
+import { TcrExecutor } from '@MNI/playwright-janitor';
 
 const tcr = new TcrExecutor();
 
@@ -932,7 +932,7 @@ console.log(`Action taken: ${executed.action}`); // 'commit' | 'revert' | 'dry-r
 Generate a complete inventory of your test codebase:
 
 ```typescript
-import { createProject, InventoryAnalyzer, formatInventoryJSON } from '@n8n/playwright-janitor';
+import { createProject, InventoryAnalyzer, formatInventoryJSON } from '@MNI/playwright-janitor';
 
 const { project } = createProject('./');
 const analyzer = new InventoryAnalyzer(project);

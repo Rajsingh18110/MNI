@@ -1,7 +1,7 @@
-import { NodesConfig } from '@n8n/config';
-import { Container } from '@n8n/di';
+import { NodesConfig } from '@MNI/config';
+import { Container } from '@MNI/di';
 import type IsolatedVM from 'isolated-vm';
-import type { IDataObject } from 'n8n-workflow';
+import type { IDataObject } from 'MNI-workflow';
 import { randomUUID } from 'node:crypto';
 import { readFile } from 'node:fs/promises';
 

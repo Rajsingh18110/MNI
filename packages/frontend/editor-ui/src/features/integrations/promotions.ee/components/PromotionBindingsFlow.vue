@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { N8nCallout } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+import { N8nCallout } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 import PromotionBindingsDialog from './PromotionBindingsDialog.vue';
 import { usePromotionBindingCreation } from '../composables/usePromotionBindingCreation';
 import type {

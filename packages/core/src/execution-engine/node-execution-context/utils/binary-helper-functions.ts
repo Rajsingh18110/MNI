@@ -1,5 +1,5 @@
-import { binaryToBuffer, binaryToString } from '@n8n/backend-network';
-import { Container } from '@n8n/di';
+import { binaryToBuffer, binaryToString } from '@MNI/backend-network';
+import { Container } from '@MNI/di';
 import chardet from 'chardet';
 import { IncomingMessage } from 'http';
 import get from 'lodash/get';
@@ -12,7 +12,7 @@ import type {
 	ITaskDataConnections,
 	IWorkflowExecuteAdditionalData,
 	WorkflowSettingsBinaryMode,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import {
 	NodeOperationError,
 	fileTypeFromMimeType,
@@ -22,7 +22,7 @@ import {
 	BINARY_MODE_COMBINED,
 	BINARY_MODE_SEPARATE,
 	sanitizeFilename,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import path from 'path';
 import type { Readable } from 'stream';
 import { URL } from 'url';

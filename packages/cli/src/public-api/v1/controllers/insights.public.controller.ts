@@ -1,5 +1,5 @@
-import { InsightsSummaryPublicDto, InsightsSummaryQueryPublicDto } from '@n8n/api-types';
-import type { AuthenticatedRequest } from '@n8n/db';
+import { InsightsSummaryPublicDto, InsightsSummaryQueryPublicDto } from '@MNI/api-types';
+import type { AuthenticatedRequest } from '@MNI/db';
 import {
 	ApiDescription,
 	ApiKeyScope,
@@ -9,10 +9,10 @@ import {
 	Get,
 	PublicApiController,
 	Query,
-} from '@n8n/decorators';
+} from '@MNI/decorators';
 import type { Response } from 'express';
 import { DateTime } from 'luxon';
-import { UserError } from 'n8n-workflow';
+import { UserError } from 'MNI-workflow';
 
 import { BadRequestError } from '@/errors/response-errors/bad-request.error';
 import { ForbiddenError } from '@/errors/response-errors/forbidden.error';

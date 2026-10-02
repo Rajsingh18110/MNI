@@ -4,7 +4,7 @@ import {
 	UserError,
 	type IDataObject,
 	type NodeApiError,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import type { UpdateRecord } from './interfaces';
 

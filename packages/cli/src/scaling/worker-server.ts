@@ -1,10 +1,10 @@
-import { Logger } from '@n8n/backend-common';
-import { GlobalConfig } from '@n8n/config';
-import { DbConnection } from '@n8n/db';
-import { Service } from '@n8n/di';
+import { Logger } from '@MNI/backend-common';
+import { GlobalConfig } from '@MNI/config';
+import { DbConnection } from '@MNI/db';
+import { Service } from '@MNI/di';
 import type { Application } from 'express';
 import express from 'express';
-import { InstanceSettings } from 'n8n-core';
+import { InstanceSettings } from 'MNI-core';
 import { strict as assert } from 'node:assert';
 import http from 'node:http';
 import type { Server } from 'node:http';

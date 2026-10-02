@@ -44,7 +44,7 @@ const handleStyles = computed(() => ({
 	position: absolute;
 	top: calc(-1 * var(--spacing--lg));
 	left: 50%;
-	/* stylelint-disable-next-line @n8n/css-var-naming */
+	/* stylelint-disable-next-line @MNI/css-var-naming */
 	transform: translate(-50%, 0) scale(var(--canvas-zoom-compensation-factor, 1));
 	font-size: var(--font-size--2xs);
 	color: var(--canvas--label--color);

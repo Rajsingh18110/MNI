@@ -1,5 +1,5 @@
 {
-	"node": "n8n-nodes-base.microsoftSharePoint",
+	"node": "MNI-nodes-base.microsoftSharePoint",
 	"nodeVersion": "1.0",
 	"codexVersion": "1.0",
 	"categories": ["ECM"],
@@ -11,7 +11,7 @@
 		],
 		"primaryDocumentation": [
 			{
-				"url": "https://docs.n8n.io/integrations/builtin/app-nodes/n8n-nodes-base.microsoftsharepoint/"
+				"url": "https://docs.n8n.io/integrations/builtin/app-nodes/MNI-nodes-base.microsoftsharepoint/"
 			}
 		]
 	}

@@ -1,16 +1,16 @@
-import { testDb } from '@n8n/backend-test-utils';
-import { DatabaseConfig } from '@n8n/config';
-import type { ScheduledJob as ScheduledJobEntity } from '@n8n/db';
+import { testDb } from '@MNI/backend-test-utils';
+import { DatabaseConfig } from '@MNI/config';
+import type { ScheduledJob as ScheduledJobEntity } from '@MNI/db';
 import {
 	DbConnectionOptions,
 	ScheduledJobRepository,
 	ScheduledTask,
 	ScheduledTaskRepository,
-} from '@n8n/db';
-import { Container } from '@n8n/di';
-import { DataSource } from '@n8n/typeorm';
-import type { QueryDeepPartialEntity } from '@n8n/typeorm/query-builder/QueryPartialEntity';
-import { sleep } from '@n8n/utils/sleep';
+} from '@MNI/db';
+import { Container } from '@MNI/di';
+import { DataSource } from '@MNI/typeorm';
+import type { QueryDeepPartialEntity } from '@MNI/typeorm/query-builder/QueryPartialEntity';
+import { sleep } from '@MNI/utils/sleep';
 
 import { selfOwned } from './shared/job-factory';
 
@@ -32,14 +32,14 @@ import { selfOwned } from './shared/job-factory';
  * This is an opt-in suite: it seeds tens of thousands of rows and spins several
  * concurrent workers, too heavy and too timing-sensitive to run on every CI pass.
  * It sits with the other scheduling integration tests and reuses their scripts,
- * but stays dormant unless `N8N_SCHEDULER_BENCHMARK=1` is set, so the normal
+ * but stays dormant unless `MNI_SCHEDULER_BENCHMARK=1` is set, so the normal
  * `test:integration` run skips it. Opt in by setting the flag and filtering to
  * this file:
  *
  *   # SQLite (single-writer)
- *   N8N_SCHEDULER_BENCHMARK=1 pnpm --filter MNI test:sqlite scheduler-benchmarks
+ *   MNI_SCHEDULER_BENCHMARK=1 pnpm --filter MNI test:sqlite scheduler-benchmarks
  *   # Postgres (SKIP LOCKED, dead-tuple churn) via testcontainers
- *   N8N_SCHEDULER_BENCHMARK=1 pnpm --filter MNI test:postgres:integration:tc scheduler-benchmarks
+ *   MNI_SCHEDULER_BENCHMARK=1 pnpm --filter MNI test:postgres:integration:tc scheduler-benchmarks
  *
  * Workload sizes and thresholds are overridable via env for beefier hosts
  * (see the constants below).
@@ -48,7 +48,7 @@ import { selfOwned } from './shared/job-factory';
 // `runIf` keeps the file collectable but runs nothing (and skips the `beforeAll`
 // DB init) unless the flag is set, so it costs the normal CI run nothing while
 // needing no separate config or script.
-const runBenchmarks = process.env.N8N_SCHEDULER_BENCHMARK === '1';
+const runBenchmarks = process.env.MNI_SCHEDULER_BENCHMARK === '1';
 
 // SQLite serialises every writer through one lock; Postgres runs claims in
 // parallel (SKIP LOCKED). Running both is the point — the operator numbers differ
@@ -74,44 +74,44 @@ const envInt = (name: string, fallback: number): number => {
 const TASK_TYPE = 'scheduleTrigger';
 
 // Rows one claim statement takes (shared by every KPI).
-const CLAIM_BATCH = envInt('N8N_SCHEDULER_BENCHMARK_BATCH', 100);
+const CLAIM_BATCH = envInt('MNI_SCHEDULER_BENCHMARK_BATCH', 100);
 
 // KPI 1 — Capacity: schedule fires/sec one node processes end-to-end.
-const CAPACITY_WORKERS = envInt('N8N_SCHEDULER_BENCHMARK_CAPACITY_WORKERS', 8);
-const CAPACITY_BACKLOG = envInt('N8N_SCHEDULER_BENCHMARK_CAPACITY_BACKLOG', 50_000);
-const CAPACITY_MIN_FPS = envInt('N8N_SCHEDULER_BENCHMARK_CAPACITY_MIN_FPS', 50);
+const CAPACITY_WORKERS = envInt('MNI_SCHEDULER_BENCHMARK_CAPACITY_WORKERS', 8);
+const CAPACITY_BACKLOG = envInt('MNI_SCHEDULER_BENCHMARK_CAPACITY_BACKLOG', 50_000);
+const CAPACITY_MIN_FPS = envInt('MNI_SCHEDULER_BENCHMARK_CAPACITY_MIN_FPS', 50);
 
 // KPI 2 — Punctuality: how late fires are when a burst comes due at once.
-const PUNCTUALITY_WORKERS = envInt('N8N_SCHEDULER_BENCHMARK_PUNCTUALITY_WORKERS', 8);
-const PUNCTUALITY_BURST = envInt('N8N_SCHEDULER_BENCHMARK_PUNCTUALITY_BURST', 20_000);
+const PUNCTUALITY_WORKERS = envInt('MNI_SCHEDULER_BENCHMARK_PUNCTUALITY_WORKERS', 8);
+const PUNCTUALITY_BURST = envInt('MNI_SCHEDULER_BENCHMARK_PUNCTUALITY_BURST', 20_000);
 // The scheduler itself warns when a task fires >30s late; use that as the ceiling.
-const PUNCTUALITY_MAX_P99_MS = envInt('N8N_SCHEDULER_BENCHMARK_PUNCTUALITY_MAX_P99_MS', 30_000);
+const PUNCTUALITY_MAX_P99_MS = envInt('MNI_SCHEDULER_BENCHMARK_PUNCTUALITY_MAX_P99_MS', 30_000);
 
 // KPI 3 — Crash recovery: time to resume a dead node's in-flight work.
-const RECOVERY_WORKERS = envInt('N8N_SCHEDULER_BENCHMARK_RECOVERY_WORKERS', 8);
-const RECOVERY_STRANDED = envInt('N8N_SCHEDULER_BENCHMARK_RECOVERY_STRANDED', 20_000);
-const RECOVERY_MAX_SECONDS = envInt('N8N_SCHEDULER_BENCHMARK_RECOVERY_MAX_SECONDS', 120);
+const RECOVERY_WORKERS = envInt('MNI_SCHEDULER_BENCHMARK_RECOVERY_WORKERS', 8);
+const RECOVERY_STRANDED = envInt('MNI_SCHEDULER_BENCHMARK_RECOVERY_STRANDED', 20_000);
+const RECOVERY_MAX_SECONDS = envInt('MNI_SCHEDULER_BENCHMARK_RECOVERY_MAX_SECONDS', 120);
 
 // KPI 4 — Health: the table stays bounded under sustained high-frequency churn,
 // with retention pruning *concurrently* with live churn (not a serial post-batch
 // sweep). Total fires = CHURN_CYCLES × CHURN_BATCH.
-const CHURN_WORKERS = envInt('N8N_SCHEDULER_BENCHMARK_CHURN_WORKERS', 8);
-const CHURN_CYCLES = envInt('N8N_SCHEDULER_BENCHMARK_CHURN_CYCLES', 20);
-const CHURN_BATCH = envInt('N8N_SCHEDULER_BENCHMARK_CHURN_BATCH', 5_000);
-const CHURN_MIN_FPS = envInt('N8N_SCHEDULER_BENCHMARK_CHURN_MIN_FPS', 50);
+const CHURN_WORKERS = envInt('MNI_SCHEDULER_BENCHMARK_CHURN_WORKERS', 8);
+const CHURN_CYCLES = envInt('MNI_SCHEDULER_BENCHMARK_CHURN_CYCLES', 20);
+const CHURN_BATCH = envInt('MNI_SCHEDULER_BENCHMARK_CHURN_BATCH', 5_000);
+const CHURN_MIN_FPS = envInt('MNI_SCHEDULER_BENCHMARK_CHURN_MIN_FPS', 50);
 // Retention runs as its own loop: prune a bounded batch on a fixed cadence,
 // racing live inserts/claims/fires — the shape the shipped retention job has.
-const CHURN_RETENTION_LIMIT = envInt('N8N_SCHEDULER_BENCHMARK_CHURN_RETENTION_LIMIT', 1_000);
+const CHURN_RETENTION_LIMIT = envInt('MNI_SCHEDULER_BENCHMARK_CHURN_RETENTION_LIMIT', 1_000);
 const CHURN_RETENTION_INTERVAL_MS = envInt(
-	'N8N_SCHEDULER_BENCHMARK_CHURN_RETENTION_INTERVAL_MS',
+	'MNI_SCHEDULER_BENCHMARK_CHURN_RETENTION_INTERVAL_MS',
 	100,
 );
-const CHURN_SAMPLE_INTERVAL_MS = envInt('N8N_SCHEDULER_BENCHMARK_CHURN_SAMPLE_INTERVAL_MS', 50);
+const CHURN_SAMPLE_INTERVAL_MS = envInt('MNI_SCHEDULER_BENCHMARK_CHURN_SAMPLE_INTERVAL_MS', 50);
 // Peak finished-but-unpruned rows allowed. If retention keeps pace this stays
 // small (a sweep or two behind); crossing it means pruning fell behind and the
 // table is bloating — the real failure this KPI guards against.
 const CHURN_MAX_FINISHED_ROWS = envInt(
-	'N8N_SCHEDULER_BENCHMARK_CHURN_MAX_FINISHED_ROWS',
+	'MNI_SCHEDULER_BENCHMARK_CHURN_MAX_FINISHED_ROWS',
 	CHURN_BATCH,
 );
 

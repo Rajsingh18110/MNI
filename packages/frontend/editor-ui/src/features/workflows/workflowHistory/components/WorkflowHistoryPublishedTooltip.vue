@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { toRef } from 'vue';
-import { N8nText, N8nTooltip } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+import { N8nText, N8nTooltip } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 import WorkflowVersionStatusIndicator from './WorkflowVersionStatusIndicator.vue';
-import type { N8nTooltipProps } from '@n8n/design-system';
+import type { N8nTooltipProps } from '@MNI/design-system';
 import type { WorkflowHistoryVersionStatus } from '../types';
 import { usePublishedByDetails } from './usePublishedByDetails';
 

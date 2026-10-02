@@ -1,9 +1,9 @@
-import { Container } from '@n8n/di';
+import { Container } from '@MNI/di';
 import {
 	CREDENTIAL_BLANKING_VALUE,
 	type ICredentialType,
 	type INodeProperties,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import type { Mocked } from 'vitest';
 
 import type { CredentialTypes } from '@/credential-types';

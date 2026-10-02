@@ -1,4 +1,4 @@
-import type { INodeProperties, INodePropertyCollection } from 'n8n-workflow';
+import type { INodeProperties, INodePropertyCollection } from 'MNI-workflow';
 
 const attendeeValues: INodePropertyCollection = {
 	displayName: 'Attendee',

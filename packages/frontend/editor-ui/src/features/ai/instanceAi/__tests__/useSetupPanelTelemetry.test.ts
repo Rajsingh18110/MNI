@@ -1,9 +1,9 @@
 import { effectScope, nextTick, ref } from 'vue';
 import { createTestingPinia } from '@pinia/testing';
 import { setActivePinia } from 'pinia';
-import { useRootStore } from '@n8n/stores/useRootStore';
-import { TELEMETRY_EVENT } from '@n8n/telemetry';
-import type { InstanceAiSetupItem } from '@n8n/api-types';
+import { useRootStore } from '@MNI/stores/useRootStore';
+import { TELEMETRY_EVENT } from '@MNI/telemetry';
+import type { InstanceAiSetupItem } from '@MNI/api-types';
 import type { INodeUi } from '@/Interface';
 import { createTestNode, createTestWorkflow, mockNodeTypeDescription } from '@/__tests__/mocks';
 import { mockedStore } from '@/__tests__/utils';
@@ -14,7 +14,7 @@ import type { SetupPanelGroup } from '../setupPanelGroups';
 import { useSetupPanelTelemetry } from '../composables/useSetupPanelTelemetry';
 
 const { track } = vi.hoisted(() => ({ track: vi.fn() }));
-vi.mock('@n8n/composables/useTelemetry', () => ({ useTelemetry: () => ({ track }) }));
+vi.mock('@MNI/composables/useTelemetry', () => ({ useTelemetry: () => ({ track }) }));
 
 const item = {
 	id: 'wf:credential:slackApi',

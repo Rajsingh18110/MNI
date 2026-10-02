@@ -1,4 +1,4 @@
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import type { IStartRunData } from '@/Interface';
 import { usePushConnectionStore } from '@/app/stores/pushConnection.store';
 import type { WorkflowDocumentId } from '@/app/stores/workflowDocument.store';

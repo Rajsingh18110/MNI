@@ -4,8 +4,8 @@ import {
 	UpdateDataTableRowDto,
 	UpsertDataTableRowDto,
 	DeleteDataTableRowsDto,
-} from '@n8n/api-types';
-import { Container } from '@n8n/di';
+} from '@MNI/api-types';
+import { Container } from '@MNI/di';
 
 import { BadRequestError } from '@/errors/response-errors/bad-request.error';
 import { NotFoundError } from '@/errors/response-errors/not-found.error';

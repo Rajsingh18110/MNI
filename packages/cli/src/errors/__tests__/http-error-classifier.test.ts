@@ -1,5 +1,5 @@
 import { BadRequest, Unauthorized } from 'express-openapi-validator/dist/framework/types';
-import { OperationalError, UnexpectedError, UserError } from 'n8n-workflow';
+import { OperationalError, UnexpectedError, UserError } from 'MNI-workflow';
 
 import { BadRequestError } from '@/errors/response-errors/bad-request.error';
 import { LicenseEulaRequiredError } from '@/errors/response-errors/license-eula-required.error';
@@ -54,17 +54,17 @@ describe('classifyHttpError', () => {
 
 	describe('Unauthorized', () => {
 		it('keeps the express-openapi-validator message when no session cookie was sent', () => {
-			const err = new Unauthorized({ path: '/x', message: "'X-N8N-API-KEY' header required" });
+			const err = new Unauthorized({ path: '/x', message: "'X-MNI-API-KEY' header required" });
 			const d = classifyHttpError(err);
 			expect(d).toEqual({
 				kind: HttpErrorKind.httpError,
 				status: 401,
-				message: "'X-N8N-API-KEY' header required",
+				message: "'X-MNI-API-KEY' header required",
 			});
 		});
 
 		it('replaces the api key hint with a generic message when a session cookie was sent', () => {
-			const err = new Unauthorized({ path: '/x', message: "'X-N8N-API-KEY' header required" });
+			const err = new Unauthorized({ path: '/x', message: "'X-MNI-API-KEY' header required" });
 			const d = classifyHttpError(err, { hasSessionCookie: true });
 			expect(d).toEqual({
 				kind: HttpErrorKind.httpError,

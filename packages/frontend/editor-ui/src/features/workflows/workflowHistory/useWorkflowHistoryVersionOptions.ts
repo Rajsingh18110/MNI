@@ -1,6 +1,6 @@
 import type { ComputedRef, Ref } from 'vue';
 import { computed } from 'vue';
-import type { WorkflowHistory } from '@n8n/rest-api-client/api/workflowHistory';
+import type { WorkflowHistory } from '@MNI/rest-api-client/api/workflowHistory';
 import { getLastPublishedVersion, getVersionLabel } from './utils';
 import type { WorkflowHistoryVersionStatus } from './types';
 

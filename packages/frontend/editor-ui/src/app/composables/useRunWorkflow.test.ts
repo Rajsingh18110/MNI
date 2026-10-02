@@ -3,7 +3,7 @@ import { setActivePinia } from 'pinia';
 import { createTestingPinia } from '@pinia/testing';
 import { useRouter } from 'vue-router';
 import type router from 'vue-router';
-import { BINARY_MODE_COMBINED, ExpressionError, NodeConnectionTypes } from 'n8n-workflow';
+import { BINARY_MODE_COMBINED, ExpressionError, NodeConnectionTypes } from 'MNI-workflow';
 import type {
 	IPinData,
 	IRunData,
@@ -11,32 +11,32 @@ import type {
 	ITaskData,
 	INodeConnections,
 	INode,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { useRunWorkflow } from '@/app/composables/useRunWorkflow';
-import { chatEventBus } from '@n8n/chat/event-buses';
-import { useChat } from '@n8n/chat/composables';
+import { chatEventBus } from '@MNI/chat/event-buses';
+import { useChat } from '@MNI/chat/composables';
 import type { INodeUi, IStartRunData } from '@/Interface';
 import type {
 	IExecutionResponse,
 	IExecutionsStopData,
 } from '@/features/execution/executions/executions.types';
-import type { WorkflowData } from '@n8n/rest-api-client/api/workflows';
+import type { WorkflowData } from '@MNI/rest-api-client/api/workflows';
 import { useWorkflowsStore } from '@/app/stores/workflows.store';
 import { useWorkflowExecutionStateStore } from '@/app/stores/workflowExecutionState.store';
 import { createWorkflowDocumentId } from '@/app/stores/workflowDocument.store';
 import { useUIStore } from '@/app/stores/ui.store';
-import { useToast } from '@n8n/composables/useToast';
+import { useToast } from '@MNI/composables/useToast';
 import { useWorkflowHelpers } from '@/app/composables/useWorkflowHelpers';
 import { useWorkflowSaving } from '@/app/composables/useWorkflowSaving';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { captor, mock } from 'vitest-mock-extended';
 import { usePushConnectionStore } from '@/app/stores/pushConnection.store';
 import { createTestNode, createTestWorkflow } from '@/__tests__/mocks';
 import { waitFor } from '@testing-library/vue';
-import { useAgentRequestStore } from '@n8n/stores/useAgentRequestStore';
-import { useRootStore } from '@n8n/stores/useRootStore';
-import { useI18n } from '@n8n/i18n';
+import { useAgentRequestStore } from '@MNI/stores/useAgentRequestStore';
+import { useRootStore } from '@MNI/stores/useRootStore';
+import { useI18n } from '@MNI/i18n';
 import {
 	CHAT_TRIGGER_NODE_TYPE,
 	MANUAL_TRIGGER_NODE_TYPE,
@@ -179,17 +179,17 @@ vi.mock('@/app/stores/pushConnection.store', () => ({
 	}),
 }));
 
-vi.mock('@n8n/stores/useRootStore', () => ({
+vi.mock('@MNI/stores/useRootStore', () => ({
 	useRootStore: vi.fn().mockReturnValue({
 		binaryDataMode: 'filesystem',
 	}),
 }));
 
-vi.mock('@n8n/composables/useTelemetry', () => ({
+vi.mock('@MNI/composables/useTelemetry', () => ({
 	useTelemetry: vi.fn().mockReturnValue({ track: vi.fn() }),
 }));
 
-vi.mock('@n8n/i18n', () => ({
+vi.mock('@MNI/i18n', () => ({
 	i18n: { baseText: vi.fn().mockImplementation((key) => key) },
 	useI18n: vi.fn().mockReturnValue({ baseText: vi.fn().mockImplementation((key) => key) }),
 }));
@@ -200,7 +200,7 @@ vi.mock('@/app/composables/useExternalHooks', () => ({
 	}),
 }));
 
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: vi.fn().mockReturnValue({
 		clearAllStickyNotifications: vi.fn(),
 		showMessage: vi.fn(),
@@ -240,13 +240,13 @@ vi.mock('@/app/composables/useNodeHelpers', () => ({
 	}),
 }));
 
-vi.mock('@n8n/chat/event-buses', () => ({
+vi.mock('@MNI/chat/event-buses', () => ({
 	chatEventBus: {
 		emit: vi.fn(),
 	},
 }));
 
-vi.mock('@n8n/chat/composables', () => ({
+vi.mock('@MNI/chat/composables', () => ({
 	useChat: vi.fn().mockReturnValue({ ws: null }),
 }));
 
@@ -443,7 +443,7 @@ describe('useRunWorkflow({ router })', () => {
 			expect(result).toEqual(mockExecutionResponse);
 		});
 
-		describe('save before execute behavior with N8N_WORKFLOWS_AUTOSAVE_DISABLED', () => {
+		describe('save before execute behavior with MNI_WORKFLOWS_AUTOSAVE_DISABLED', () => {
 			let settingsStore: ReturnType<typeof useSettingsStore>;
 
 			beforeEach(() => {
@@ -875,7 +875,7 @@ describe('useRunWorkflow({ router })', () => {
 							param: '0',
 						},
 						position: [0, 0],
-						type: 'n8n-nodes-base.test',
+						type: 'MNI-nodes-base.test',
 						typeVersion: 1,
 					} as INode,
 				],
@@ -1629,7 +1629,7 @@ describe('useRunWorkflow({ router })', () => {
 			return {
 				name,
 				position,
-				type: 'n8n-nodes-base.test',
+				type: 'MNI-nodes-base.test',
 				typeVersion: 1,
 				id: name,
 				parameters: {},

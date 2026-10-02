@@ -1,12 +1,12 @@
-import { testDb } from '@n8n/backend-test-utils';
+import { testDb } from '@MNI/backend-test-utils';
 import {
 	AuthIdentity,
 	AuthIdentityRepository,
 	GLOBAL_ADMIN_ROLE,
 	ProjectRepository,
 	UserRepository,
-} from '@n8n/db';
-import { Container } from '@n8n/di';
+} from '@MNI/db';
+import { Container } from '@MNI/di';
 
 import { EventService } from '@/events/event.service';
 import {

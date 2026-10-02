@@ -3,7 +3,7 @@ import { type AgentSandboxPrincipal, hashAgentSandboxPrincipal } from '../agent-
 describe('hashAgentSandboxPrincipal', () => {
 	it('produces stable hashes for every principal kind', () => {
 		const cases: Array<[AgentSandboxPrincipal, string]> = [
-			[{ type: 'n8n-user', userId: 'user/123:raw' }, 'Gt4H3q6RzhJe9cTxQm6be0AdIZQlifuy3w9OPSykmYo'],
+			[{ type: 'MNI-user', userId: 'user/123:raw' }, 'Gt4H3q6RzhJe9cTxQm6be0AdIZQlifuy3w9OPSykmYo'],
 			[
 				{
 					type: 'integration-thread',

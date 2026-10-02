@@ -1,4 +1,4 @@
-import { CHAT_TRIGGER_NODE_TYPE, FORM_NODE_TYPE, FORM_TRIGGER_NODE_TYPE } from 'n8n-workflow';
+import { CHAT_TRIGGER_NODE_TYPE, FORM_NODE_TYPE, FORM_TRIGGER_NODE_TYPE } from 'MNI-workflow';
 
 import { authAllowlistedNodes } from '../constants';
 
@@ -16,7 +16,7 @@ describe('authAllowlistedNodes', () => {
 	});
 
 	it('does not allowlist other arbitrary node types', () => {
-		expect(authAllowlistedNodes.has('n8n-nodes-base.webhook')).toBe(false);
-		expect(authAllowlistedNodes.has('n8n-nodes-base.set')).toBe(false);
+		expect(authAllowlistedNodes.has('MNI-nodes-base.webhook')).toBe(false);
+		expect(authAllowlistedNodes.has('MNI-nodes-base.set')).toBe(false);
 	});
 });

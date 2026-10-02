@@ -3,7 +3,7 @@
 	"nodes": [
 		{
 			"parameters": {},
-			"type": "n8n-nodes-base.manualTrigger",
+			"type": "MNI-nodes-base.manualTrigger",
 			"typeVersion": 1,
 			"position": [0, 0],
 			"id": "manual-trigger",
@@ -22,7 +22,7 @@
 					"includeSimilarAlerts": true
 				}
 			},
-			"type": "n8n-nodes-base.theHiveProject",
+			"type": "MNI-nodes-base.theHiveProject",
 			"typeVersion": 1,
 			"position": [200, 0],
 			"id": "thehive-node",
@@ -47,7 +47,7 @@
 					"severity": 2,
 					"status": "New",
 					"tags": ["test", "MNI"],
-					"source": "n8n-test",
+					"source": "MNI-test",
 					"sourceRef": "test-ref-001",
 					"follow": true,
 					"createdAt": 1698753600000,

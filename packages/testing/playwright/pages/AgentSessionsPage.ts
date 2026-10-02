@@ -91,7 +91,7 @@ export class AgentSessionsPage extends BasePage {
 					startTime: startedAtMs + 500,
 					endTime: startedAtMs + 1_000,
 					success: true,
-					nodeType: 'n8n-nodes-base.set',
+					nodeType: 'MNI-nodes-base.set',
 					nodeTypeVersion: 3.4,
 					nodeDisplayName: nodeTool.name,
 					nodeParameters: nodeTool.input,

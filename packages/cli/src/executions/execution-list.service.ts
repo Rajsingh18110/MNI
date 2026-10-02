@@ -1,6 +1,6 @@
-import type { ExecutionSummaries, User } from '@n8n/db';
-import { Container, Service } from '@n8n/di';
-import type { Scope } from '@n8n/permissions';
+import type { ExecutionSummaries, User } from '@MNI/db';
+import { Container, Service } from '@MNI/di';
+import type { Scope } from '@MNI/permissions';
 
 import { EngineDataPlaneProxyService } from '@/services/engine-data-plane-proxy.service';
 import { RoleService } from '@/services/role.service';

@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/naming-convention -- item keys are pinned to the legacy ScheduleTrigger emit shape */
-import type { ClaimedTask } from '@n8n/scheduler';
+import type { ClaimedTask } from '@MNI/scheduler';
 import moment from 'moment-timezone';
-import type { INodeExecutionData } from 'n8n-workflow';
+import type { INodeExecutionData } from 'MNI-workflow';
 
 /**
  * Task type schedule-trigger jobs are materialized under and their handler registers for.

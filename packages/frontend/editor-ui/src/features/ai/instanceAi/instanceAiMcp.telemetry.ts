@@ -1,5 +1,5 @@
-import { useTelemetry } from '@n8n/composables/useTelemetry';
-import { TELEMETRY_EVENT, type InferTelemetryProps } from '@n8n/telemetry';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
+import { TELEMETRY_EVENT, type InferTelemetryProps } from '@MNI/telemetry';
 
 type ToolsListSource = InferTelemetryProps<
 	typeof TELEMETRY_EVENT.INSTANCE_AI.TOOLS_LIST_OPENED

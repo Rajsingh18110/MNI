@@ -1,10 +1,10 @@
-import type { PromotionProviderAuthType, PromotionSshKeyType } from '@n8n/api-types';
-import { Logger } from '@n8n/backend-common';
-import { Service } from '@n8n/di';
+import type { PromotionProviderAuthType, PromotionSshKeyType } from '@MNI/api-types';
+import { Logger } from '@MNI/backend-common';
+import { Service } from '@MNI/di';
 import { chmod, mkdir, mkdtemp, rename, rm, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
-import { UnexpectedError } from 'n8n-workflow';
+import { UnexpectedError } from 'MNI-workflow';
 import pLimit from 'p-limit';
 import {
 	CheckRepoActions,
@@ -542,10 +542,10 @@ export class PromotionsGitService {
 					unsafe: { allowUnsafeCredentialHelper: true },
 				})
 					.env('GIT_TERMINAL_PROMPT', '0')
-					.env('N8N_GIT_USERNAME', credentials.username)
-					.env('N8N_GIT_PASSWORD', credentials.password);
+					.env('MNI_GIT_USERNAME', credentials.username)
+					.env('MNI_GIT_PASSWORD', credentials.password);
 			} else {
-				temporaryFolder = await mkdtemp(path.join(tmpdir(), 'n8n-promotions-'));
+				temporaryFolder = await mkdtemp(path.join(tmpdir(), 'MNI-promotions-'));
 				const privateKeyPath = path.join(temporaryFolder, 'private-key');
 				await writeFile(privateKeyPath, credentials.privateKey, { mode: 0o600 });
 				await chmod(privateKeyPath, 0o600);

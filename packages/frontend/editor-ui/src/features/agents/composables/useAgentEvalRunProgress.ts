@@ -11,8 +11,8 @@
  * poller for the run, not one per surface. This composable owns the lifecycle for
  * this card: when to start it, when to stop it, and what to say when it settles.
  */
-import { useToast } from '@n8n/composables/useToast';
-import { useI18n } from '@n8n/i18n';
+import { useToast } from '@MNI/composables/useToast';
+import { useI18n } from '@MNI/i18n';
 import { computed, onScopeDispose, ref, toValue, watch, type MaybeRefOrGetter } from 'vue';
 
 import { useAgentEvalsStore } from '../agentEvals.store';

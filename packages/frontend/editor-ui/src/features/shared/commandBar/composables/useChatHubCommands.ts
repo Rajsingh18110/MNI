@@ -1,20 +1,20 @@
 import { computed, type Ref } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
-import { useI18n } from '@n8n/i18n';
-import { N8nIcon } from '@n8n/design-system';
-import { useToast } from '@n8n/composables/useToast';
+import { useI18n } from '@MNI/i18n';
+import { N8nIcon } from '@MNI/design-system';
+import { useToast } from '@MNI/composables/useToast';
 import { useMessage } from '@/app/composables/useMessage';
 import { MODAL_CONFIRM } from '@/app/constants';
 import type { CommandGroup, CommandBarItem } from '../types';
 import { useChatStore } from '@/features/ai/chatHub/chat.store';
 import { getAgentRoute, isLlmProvider, stringifyModel } from '@/features/ai/chatHub/chat.utils';
-import type { ChatModelDto, ChatHubSessionDto, ChatSessionId } from '@n8n/api-types';
+import type { ChatModelDto, ChatHubSessionDto, ChatSessionId } from '@MNI/api-types';
 import {
 	CHAT_CONVERSATION_VIEW,
 	CHAT_VIEW,
 	providerDisplayNames,
 } from '@/features/ai/chatHub/constants';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import CommandBarItemTitle from '@/features/shared/commandBar/components/CommandBarItemTitle.vue';
 
 const ITEM_ID = {

@@ -1,4 +1,4 @@
-import { NodeOperationError } from 'n8n-workflow';
+import { NodeOperationError } from 'MNI-workflow';
 import type { Mock } from 'vitest';
 
 import { router } from '../../actions/router';

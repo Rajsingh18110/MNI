@@ -11,10 +11,10 @@ Flag a diff that **adds** entries to any of these, and ask for the fix instead:
 
 | File | Ratchet |
 |------|---------|
-| `.code-health-baseline.json` | `@n8n/code-health` violations |
+| `.code-health-baseline.json` | `@MNI/code-health` violations |
 | `.boundaries-baseline.json` | `turbo boundaries` issue count |
 | `packages/testing/playwright/.janitor-baseline.json` | Playwright janitor findings |
-| `packages/cli/eslint.config.mjs` | the `misplaced-n8n-typeorm-import` and public-API allowlists, each captioned "NEVER add to this list" |
+| `packages/cli/eslint.config.mjs` | the `misplaced-MNI-typeorm-import` and public-API allowlists, each captioned "NEVER add to this list" |
 | `.code-health-baseline.json` (`lint-config-layering`) | package-wide rule downgrades left in package ESLint configs |
 
 Removals are the healthy direction and need no comment.
@@ -39,6 +39,6 @@ In a package `eslint.config.mjs` the `lint-config-layering` code-health rule
 catches this for you: a package-wide downgrade fails Static Analysis unless it
 is already in the baseline. What it cannot judge is a downgrade dressed as a
 scoped block. Check that a new `files` glob names the paths that actually need
-the exception, and that a rule retired in `@n8n/eslint-config/src/configs/base.ts`
+the exception, and that a rule retired in `@MNI/eslint-config/src/configs/base.ts`
 comes with the count of packages that had already stopped enforcing it
 (`node scripts/lint-parity/majority.mjs`).

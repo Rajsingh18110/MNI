@@ -3,7 +3,7 @@
  * If a field is not defined in the schema, it is considered dynamic.
  * If a field is marked as dynamic in the schema it is considered dynamic.
  */
-import { Container } from '@n8n/di';
+import { Container } from '@MNI/di';
 import isEqual from 'lodash/isEqual';
 import {
 	CREDENTIAL_BLANKING_VALUE,
@@ -11,7 +11,7 @@ import {
 	type ICredentialDataDecryptedObject,
 	type ICredentialType,
 	type INodeProperties,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { CredentialTypes } from '@/credential-types';
 

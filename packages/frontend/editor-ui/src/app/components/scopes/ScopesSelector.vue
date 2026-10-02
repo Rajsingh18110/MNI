@@ -3,8 +3,8 @@ import { computed, ref, watch } from 'vue';
 
 import { capitalCase } from 'change-case';
 import { CollapsibleRoot, CollapsibleTrigger, VisuallyHidden } from 'reka-ui';
-import { useI18n } from '@n8n/i18n';
-import type { BaseTextKey } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
+import type { BaseTextKey } from '@MNI/i18n';
 
 import {
 	N8nAnimatedCollapsibleContent,
@@ -17,7 +17,7 @@ import {
 	N8nRadioGroup,
 	N8nRadioGroupItem,
 	N8nTooltip,
-} from '@n8n/design-system';
+} from '@MNI/design-system';
 
 import {
 	DEFAULT_READ_SCOPE_ACTIONS,
@@ -440,7 +440,7 @@ function toggleScope(scope: S, checked: boolean) {
 </template>
 
 <style module lang="scss">
-@use '@n8n/design-system/css/mixins/focus';
+@use '@MNI/design-system/css/mixins/focus';
 
 /* Option and checkbox labels render at 12px here, one step below the body copy. */
 .selector {
@@ -549,7 +549,7 @@ function toggleScope(scope: S, checked: boolean) {
 }
 
 /* the shared tooltip caps content at 180px and centers it; tool identifiers need more room */
-:global(.n8n-tooltip).tools-tooltip {
+:global(.MNI-tooltip).tools-tooltip {
 	max-width: 320px;
 	align-items: flex-start;
 }

@@ -1,4 +1,4 @@
-import type { IHookFunctions } from 'n8n-workflow';
+import type { IHookFunctions } from 'MNI-workflow';
 import { ZendeskTrigger } from '../ZendeskTrigger.node';
 import * as GenericFunctions from '../GenericFunctions';
 import * as ZendeskTriggerHelpers from '../ZendeskTriggerHelpers';

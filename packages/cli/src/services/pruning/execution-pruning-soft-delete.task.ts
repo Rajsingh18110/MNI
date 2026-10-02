@@ -1,7 +1,7 @@
-import { ExecutionsConfig } from '@n8n/config';
-import { Time } from '@n8n/constants';
-import { intervalFromSeconds, SystemTask } from '@n8n/decorators';
-import type { SystemTaskEffects, SystemTaskPlacement, SystemTaskSchedule } from '@n8n/decorators';
+import { ExecutionsConfig } from '@MNI/config';
+import { Time } from '@MNI/constants';
+import { intervalFromSeconds, SystemTask } from '@MNI/decorators';
+import type { SystemTaskEffects, SystemTaskPlacement, SystemTaskSchedule } from '@MNI/decorators';
 
 import { ExecutionsPruningService } from './executions-pruning.service';
 

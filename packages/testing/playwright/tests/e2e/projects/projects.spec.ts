@@ -62,7 +62,7 @@ test.describe(
 						{
 							id: nanoid(),
 							name: "When clicking 'Execute workflow'",
-							type: 'n8n-nodes-base.manualTrigger',
+							type: 'MNI-nodes-base.manualTrigger',
 							typeVersion: 1,
 							position: [0, 0],
 							parameters: {},
@@ -70,7 +70,7 @@ test.describe(
 						{
 							id: nanoid(),
 							name: 'Append a block',
-							type: 'n8n-nodes-base.notion',
+							type: 'MNI-nodes-base.notion',
 							typeVersion: 2.2,
 							position: [220, 0],
 							parameters: {},

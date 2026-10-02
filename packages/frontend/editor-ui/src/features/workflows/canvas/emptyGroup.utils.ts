@@ -1,11 +1,11 @@
-import type { WorkflowDataUpdate } from '@n8n/rest-api-client/api/workflows';
+import type { WorkflowDataUpdate } from '@MNI/rest-api-client/api/workflows';
 import {
 	getEmptyGroupAnchor,
 	type IConnection,
 	type IConnections,
 	type INode,
 	type NodeInputConnections,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 /**
  * Builds the connection graph for visible nodes, reconnecting visible endpoints through hidden nodes.

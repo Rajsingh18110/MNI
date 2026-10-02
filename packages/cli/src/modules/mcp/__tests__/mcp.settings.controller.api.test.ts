@@ -5,8 +5,8 @@ import {
 	linkUserToProject,
 	shareWorkflowWithProjects,
 	testDb,
-} from '@n8n/backend-test-utils';
-import { InstanceSettingsLoaderConfig } from '@n8n/config';
+} from '@MNI/backend-test-utils';
+import { InstanceSettingsLoaderConfig } from '@MNI/config';
 import {
 	ApiKeyRepository,
 	FolderRepository,
@@ -14,8 +14,8 @@ import {
 	WorkflowRepository,
 	type Project,
 	type User,
-} from '@n8n/db';
-import { Container } from '@n8n/di';
+} from '@MNI/db';
+import { Container } from '@MNI/di';
 
 import { McpSettingsService } from '@/modules/mcp/mcp.settings.service';
 import { createFolder } from '@test-integration/db/folders';

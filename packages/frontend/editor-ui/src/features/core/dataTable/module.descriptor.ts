@@ -1,5 +1,5 @@
-import { useI18n } from '@n8n/i18n';
-import { defineFrontendModule } from '@n8n/frontend-module-sdk';
+import { useI18n } from '@MNI/i18n';
+import { defineFrontendModule } from '@MNI/frontend-module-sdk';
 import {
 	DATA_TABLE_DETAILS,
 	DATA_TABLE_VIEW,
@@ -35,7 +35,7 @@ export const DataTableModule = defineFrontendModule({
 				// Refresh the weekly summary when entering the datatables route. The import is
 				// lazy and unawaited: this descriptor is in the boot graph through the shell
 				// manifest, and a chunk that fails to load must not hold up navigation.
-				void import('@n8n/frontend-module-insights')
+				void import('@MNI/frontend-module-insights')
 					.then(({ useInsightsStore }) => {
 						const insightsStore = useInsightsStore();
 						if (insightsStore.isSummaryEnabled) {

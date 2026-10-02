@@ -6,8 +6,8 @@ import type {
 	INodeTypeDescription,
 	INodeTypeBaseDescription,
 	IHttpRequestMethods,
-} from 'n8n-workflow';
-import { NodeConnectionTypes, NodeOperationError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeConnectionTypes, NodeOperationError } from 'MNI-workflow';
 
 import type { IRecord } from './GenericFunctions';
 import { apiRequest, apiRequestAllItems, downloadRecordAttachments } from './GenericFunctions';

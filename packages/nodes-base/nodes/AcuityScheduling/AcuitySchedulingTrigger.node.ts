@@ -5,8 +5,8 @@ import type {
 	INodeType,
 	INodeTypeDescription,
 	IWebhookResponseData,
-} from 'n8n-workflow';
-import { NodeConnectionTypes } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeConnectionTypes } from 'MNI-workflow';
 
 import { verifySignature } from './AcuitySchedulingTriggerHelpers';
 import { acuitySchedulingApiRequest } from './GenericFunctions';
@@ -15,7 +15,7 @@ export class AcuitySchedulingTrigger implements INodeType {
 	description: INodeTypeDescription = {
 		displayName: 'Acuity Scheduling Trigger',
 		name: 'acuitySchedulingTrigger',
-		// eslint-disable-next-line n8n-nodes-base/node-class-description-icon-not-svg
+		// eslint-disable-next-line MNI-nodes-base/node-class-description-icon-not-svg
 		icon: 'file:acuityScheduling.png',
 		group: ['trigger'],
 		version: 1,
@@ -109,7 +109,7 @@ export class AcuitySchedulingTrigger implements INodeType {
 				name: 'resolveData',
 				type: 'boolean',
 				default: true,
-				// eslint-disable-next-line n8n-nodes-base/node-param-description-boolean-without-whether
+				// eslint-disable-next-line MNI-nodes-base/node-param-description-boolean-without-whether
 				description:
 					'By default does the webhook-data only contain the ID of the object. If this option gets activated, it will resolve the data automatically.',
 			},

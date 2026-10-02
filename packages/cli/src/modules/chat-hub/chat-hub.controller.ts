@@ -22,9 +22,9 @@ import {
 	ChatReconnectRequest,
 	ALWAYS_BLOCKED_CHAT_HUB_TOOL_TYPES,
 	CHAT_USER_BLOCKED_CHAT_HUB_TOOL_TYPES,
-} from '@n8n/api-types';
-import { ModuleRegistry } from '@n8n/backend-common';
-import { AuthenticatedRequest } from '@n8n/db';
+} from '@MNI/api-types';
+import { ModuleRegistry } from '@MNI/backend-common';
+import { AuthenticatedRequest } from '@MNI/db';
 import {
 	RestController,
 	Post,
@@ -37,9 +37,9 @@ import {
 	Patch,
 	Query,
 	Middleware,
-} from '@n8n/decorators';
-import { Container } from '@n8n/di';
-import { sanitizeFilename } from '@n8n/utils/files/sanitize-filename';
+} from '@MNI/decorators';
+import { Container } from '@MNI/di';
+import { sanitizeFilename } from '@MNI/utils/files/sanitize-filename';
 import type { NextFunction, Request, Response } from 'express';
 import multer from 'multer';
 
@@ -207,7 +207,7 @@ export class ChatHubController {
 			req.user,
 			{
 				...payload,
-				model: { provider: 'n8n' as const, workflowId },
+				model: { provider: 'MNI' as const, workflowId },
 				credentials: {},
 				userId: req.user.id,
 			},
@@ -264,7 +264,7 @@ export class ChatHubController {
 			req.user,
 			{
 				...payload,
-				model: { provider: 'n8n' as const, workflowId },
+				model: { provider: 'MNI' as const, workflowId },
 				credentials: {},
 				sessionId,
 				editId,
@@ -323,7 +323,7 @@ export class ChatHubController {
 			req.user,
 			{
 				...payload,
-				model: { provider: 'n8n' as const, workflowId },
+				model: { provider: 'MNI' as const, workflowId },
 				credentials: {},
 				sessionId,
 				retryId,

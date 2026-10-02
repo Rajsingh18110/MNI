@@ -1,4 +1,4 @@
-import type { AgentJsonConfig } from '@n8n/api-types';
+import type { AgentJsonConfig } from '@MNI/api-types';
 
 import {
 	buildAgentConfigurationTelemetry,
@@ -63,7 +63,7 @@ describe('agent telemetry', () => {
 			tool_types: ['custom', 'mcp', 'provider', 'subagent', 'web_search', 'workflow'],
 			tool_count: 6,
 			num_skills: 1,
-			memory_type: 'n8n_observational_episodic',
+			memory_type: 'MNI_observational_episodic',
 		});
 	});
 

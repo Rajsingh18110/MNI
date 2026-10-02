@@ -1,6 +1,6 @@
-import { isUniqueConstraintError } from '@n8n/db';
-import { Service } from '@n8n/di';
-import { DataSource, IsNull, Not, Repository } from '@n8n/typeorm';
+import { isUniqueConstraintError } from '@MNI/db';
+import { Service } from '@MNI/di';
+import { DataSource, IsNull, Not, Repository } from '@MNI/typeorm';
 import { v4 as uuid } from 'uuid';
 
 import type { InstanceReportDataPoint } from '../entities/instance-monitoring-report';

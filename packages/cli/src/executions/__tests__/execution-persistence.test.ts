@@ -1,7 +1,7 @@
 /* eslint-disable id-denylist */
 /* eslint-disable @typescript-eslint/unbound-method */
 
-import type { DatabaseConfig, ExecutionsConfig } from '@n8n/config';
+import type { DatabaseConfig, ExecutionsConfig } from '@MNI/config';
 import {
 	ExecutionEntity,
 	type CreateExecutionPayload,
@@ -9,11 +9,11 @@ import {
 	type ExecutionRepository,
 	type OperationContext,
 	type Transaction,
-} from '@n8n/db';
-import { QueryFailedError } from '@n8n/typeorm';
-import type { BinaryDataService, ErrorReporter, StorageConfig } from 'n8n-core';
-import type { IBinaryData, IRunExecutionData, IWorkflowBase } from 'n8n-workflow';
-import { createEmptyRunExecutionData, UnexpectedError } from 'n8n-workflow';
+} from '@MNI/db';
+import { QueryFailedError } from '@MNI/typeorm';
+import type { BinaryDataService, ErrorReporter, StorageConfig } from 'MNI-core';
+import type { IBinaryData, IRunExecutionData, IWorkflowBase } from 'MNI-workflow';
+import { createEmptyRunExecutionData, UnexpectedError } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import { DuplicateExecutionError } from '@/errors/duplicate-execution.error';

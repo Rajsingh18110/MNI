@@ -1,7 +1,7 @@
-import { testDb } from '@n8n/backend-test-utils';
-import { GlobalConfig } from '@n8n/config';
-import { Container } from '@n8n/di';
-import { DataSource as Connection } from '@n8n/typeorm';
+import { testDb } from '@MNI/backend-test-utils';
+import { GlobalConfig } from '@MNI/config';
+import { Container } from '@MNI/di';
+import { DataSource as Connection } from '@MNI/typeorm';
 import nock from 'nock';
 
 export async function setup() {

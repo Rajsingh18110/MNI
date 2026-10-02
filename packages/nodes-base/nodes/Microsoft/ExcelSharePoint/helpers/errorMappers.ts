@@ -1,4 +1,4 @@
-import type { NodeApiError } from 'n8n-workflow';
+import type { NodeApiError } from 'MNI-workflow';
 
 import { SERVICE_PRINCIPAL_AUTH, type ExcelSharePointCredentialType } from './constants';
 import type { GraphRequestError } from './converters';

@@ -4,7 +4,7 @@ import {
 	MANUAL_TRIGGER_NODE_TYPE,
 	SCHEDULE_TRIGGER_NODE_TYPE,
 	WEBHOOK_NODE_TYPE,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import z from 'zod';
 
 export const webhookPayloadSchema = z

@@ -1,12 +1,12 @@
-import { AuthRolesService, SettingsRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
-import type { Role, Scope } from '@n8n/permissions';
+import { AuthRolesService, SettingsRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
+import type { Role, Scope } from '@MNI/permissions';
 import {
 	ALL_ROLES,
 	PROJECT_SCOPE_MAP,
 	PERSONAL_SPACE_SHARING_SETTING,
 	PERSONAL_SPACE_PUBLISHING_SETTING,
-} from '@n8n/permissions';
+} from '@MNI/permissions';
 
 import { SecuritySettingsService } from '@/services/security-settings.service';
 

@@ -1,9 +1,9 @@
-import { TypedEmitter } from '@n8n/backend-common';
-import { GlobalConfig } from '@n8n/config';
-import { Time } from '@n8n/constants';
-import { Container, Service } from '@n8n/di';
+import { TypedEmitter } from '@MNI/backend-common';
+import { GlobalConfig } from '@MNI/config';
+import { Time } from '@MNI/constants';
+import { Container, Service } from '@MNI/di';
 import { caching } from 'cache-manager';
-import { jsonStringify, UserError } from 'n8n-workflow';
+import { jsonStringify, UserError } from 'MNI-workflow';
 
 import { UncacheableValueError } from '@/errors/cache-errors/uncacheable-value.error';
 import { REDIS_TTL_KEY_MISSING } from '@/services/cache/cache.constants';

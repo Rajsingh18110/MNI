@@ -1,5 +1,5 @@
-import type { CredentialListItem, CredentialProvider } from '@n8n/agents';
-import { AI_GATEWAY_MANAGED_TAG } from '@n8n/api-types';
+import type { CredentialListItem, CredentialProvider } from '@MNI/agents';
+import { AI_GATEWAY_MANAGED_TAG } from '@MNI/api-types';
 import type { Mock } from 'vitest';
 
 import { LLM_PROVIDER_DEFAULTS, LLM_PROVIDER_PRIORITY } from '../../../llm-provider-defaults';

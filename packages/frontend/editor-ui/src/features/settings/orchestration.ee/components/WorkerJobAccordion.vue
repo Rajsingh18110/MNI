@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import type { RunningJobSummary } from '@n8n/api-types';
+import type { RunningJobSummary } from '@MNI/api-types';
 import WorkerAccordion from './WorkerAccordion.vue';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 
-import { N8nText } from '@n8n/design-system';
+import { N8nText } from '@MNI/design-system';
 const props = defineProps<{
 	items: RunningJobSummary[];
 }>();

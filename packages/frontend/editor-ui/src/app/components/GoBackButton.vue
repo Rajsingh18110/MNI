@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 
-import { N8nIcon } from '@n8n/design-system';
+import { N8nIcon } from '@MNI/design-system';
 const router = useRouter();
 const i18n = useI18n();
 

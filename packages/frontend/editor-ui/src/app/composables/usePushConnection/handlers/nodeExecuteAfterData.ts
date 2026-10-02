@@ -1,4 +1,4 @@
-import type { NodeExecuteAfterData } from '@n8n/api-types/push/execution';
+import type { NodeExecuteAfterData } from '@MNI/api-types/push/execution';
 import { useSchemaPreviewStore } from '@/features/ndv/runData/schemaPreview.store';
 import { useWorkflowExecutionStateStore } from '@/app/stores/workflowExecutionState.store';
 import { createExecutionDataId, useExecutionDataStore } from '@/app/stores/executionData.store';

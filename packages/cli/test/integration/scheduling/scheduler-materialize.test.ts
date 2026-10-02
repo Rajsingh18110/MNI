@@ -1,14 +1,14 @@
-import { createWorkflowWithHistory, testDb } from '@n8n/backend-test-utils';
+import { createWorkflowWithHistory, testDb } from '@MNI/backend-test-utils';
 import {
 	DataSource,
 	type ScheduledJob,
 	ScheduledJobRepository,
 	ScheduledTaskRepository,
 	WorkflowPublishedVersionRepository,
-} from '@n8n/db';
-import { Container } from '@n8n/di';
-import { createScheduler, totalDiscarded } from '@n8n/scheduler';
-import type { SchedulerDeps } from '@n8n/scheduler';
+} from '@MNI/db';
+import { Container } from '@MNI/di';
+import { createScheduler, totalDiscarded } from '@MNI/scheduler';
+import type { SchedulerDeps } from '@MNI/scheduler';
 import { v4 as uuid } from 'uuid';
 
 import { buildMaterializerTransaction } from '@/scheduling/durable-scheduler';

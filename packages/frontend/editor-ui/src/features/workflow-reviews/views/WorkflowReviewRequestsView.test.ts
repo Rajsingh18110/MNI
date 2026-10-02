@@ -2,12 +2,12 @@ import type {
 	DecideWorkflowReviewRequestResponse,
 	WorkflowReviewInboxItem,
 	WorkflowReviewRequestDetail,
-} from '@n8n/api-types';
+} from '@MNI/api-types';
 import { createTestingPinia } from '@pinia/testing';
 import { within } from '@testing-library/vue';
 import { createComponentRenderer } from '@/__tests__/render';
 import { mockedStore, waitAllPromises } from '@/__tests__/utils';
-import { useToast } from '@n8n/composables/useToast';
+import { useToast } from '@MNI/composables/useToast';
 import { createMemoryHistory, createRouter } from 'vue-router';
 
 import { WORKFLOW_REVIEW_REQUESTS_VIEW } from '../constants';
@@ -15,7 +15,7 @@ import { useReviewActivityStore } from '../reviewActivity.store';
 import { useReviewInboxStore } from '../reviewInbox.store';
 import WorkflowReviewRequestsView from './WorkflowReviewRequestsView.vue';
 
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: vi.fn(),
 }));
 
@@ -151,7 +151,7 @@ describe('WorkflowReviewRequestsView', () => {
 		const { container, queryByTestId } = renderComponent();
 		await waitAllPromises();
 
-		expect(container.querySelector('.n8n-loading')).toBeInTheDocument();
+		expect(container.querySelector('.MNI-loading')).toBeInTheDocument();
 		expect(queryByTestId('workflow-reviews-empty-state')).not.toBeInTheDocument();
 	});
 
@@ -357,7 +357,7 @@ describe('WorkflowReviewRequestsView', () => {
 		const { container, queryByTestId } = renderComponent();
 		await waitAllPromises();
 
-		expect(container.querySelector('.n8n-loading')).toBeInTheDocument();
+		expect(container.querySelector('.MNI-loading')).toBeInTheDocument();
 		expect(queryByTestId('workflow-reviews-no-selection')).not.toBeInTheDocument();
 	});
 

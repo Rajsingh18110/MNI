@@ -11,11 +11,11 @@ import {
 	useWorkflowDocumentStore,
 } from '@/app/stores/workflowDocument.store';
 import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';
-import { useTypeAvailabilityPoliciesStore } from '@n8n/frontend-module-type-availability-policies';
+import { useTypeAvailabilityPoliciesStore } from '@MNI/frontend-module-type-availability-policies';
 import { CanvasNodeDirtiness, CanvasNodeRenderType } from '../../../../../canvas.types';
 import { createTestingPinia } from '@pinia/testing';
 import { computed, type ComputedRef } from 'vue';
-import type { IPinData } from 'n8n-workflow';
+import type { IPinData } from 'MNI-workflow';
 import type * as actualVueRouter from 'vue-router';
 import { type RouteLocationNormalizedLoadedGeneric, useRoute } from 'vue-router';
 import CanvasNodeStatusIcons from './CanvasNodeStatusIcons.vue';
@@ -322,7 +322,7 @@ describe('CanvasNodeStatusIcons', () => {
 			global: {
 				provide: {
 					...createCanvasProvide(),
-					...createCanvasNodeProvide({ data: { type: 'n8n-nodes-test.testNode' } }),
+					...createCanvasNodeProvide({ data: { type: 'MNI-nodes-test.testNode' } }),
 				},
 			},
 		});
@@ -338,7 +338,7 @@ describe('CanvasNodeStatusIcons', () => {
 			global: {
 				provide: {
 					...createCanvasProvide(),
-					...createCanvasNodeProvide({ data: { type: 'n8n-nodes-test.testNode' } }),
+					...createCanvasNodeProvide({ data: { type: 'MNI-nodes-test.testNode' } }),
 				},
 			},
 		});
@@ -349,7 +349,7 @@ describe('CanvasNodeStatusIcons', () => {
 	describe('restricted node type', () => {
 		beforeEach(() => {
 			typeAvailabilityPoliciesStore.getNodeTypeAvailability.mockReturnValue({
-				name: 'n8n-nodes-base.slack',
+				name: 'MNI-nodes-base.slack',
 				available: false,
 				scope: 'instance',
 			});
@@ -360,7 +360,7 @@ describe('CanvasNodeStatusIcons', () => {
 				global: {
 					provide: {
 						...createCanvasProvide(),
-						...createCanvasNodeProvide({ data: { type: 'n8n-nodes-base.slack' } }),
+						...createCanvasNodeProvide({ data: { type: 'MNI-nodes-base.slack' } }),
 					},
 				},
 			});
@@ -374,7 +374,7 @@ describe('CanvasNodeStatusIcons', () => {
 				global: {
 					provide: {
 						...createCanvasProvide(),
-						...createCanvasNodeProvide({ data: { type: 'n8n-nodes-base.slack' } }),
+						...createCanvasNodeProvide({ data: { type: 'MNI-nodes-base.slack' } }),
 					},
 				},
 			});

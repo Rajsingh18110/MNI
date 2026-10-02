@@ -1,5 +1,5 @@
-import type { BuiltTool, CredentialListItem, InterruptibleToolContext } from '@n8n/agents';
-import { Tool } from '@n8n/agents/tool';
+import type { BuiltTool, CredentialListItem, InterruptibleToolContext } from '@MNI/agents';
+import { Tool } from '@MNI/agents/tool';
 import {
 	ASK_CREDENTIAL_TOOL_NAME,
 	ASK_EMBEDDING_CREDENTIAL_TOOL_NAME,
@@ -11,10 +11,10 @@ import {
 	type AskCredentialInput,
 	type CredentialResumeData,
 	type CredentialSuspendPayload,
-} from '@n8n/api-types';
-import { TELEMETRY_EVENT } from '@n8n/telemetry';
+} from '@MNI/api-types';
+import { TELEMETRY_EVENT } from '@MNI/telemetry';
 import { nanoid } from 'nanoid';
-import type { InstanceAiCredentialService } from '@n8n/instance-ai';
+import type { InstanceAiCredentialService } from '@MNI/instance-ai';
 import type { BuilderTrackFn } from '../builder-config-telemetry';
 import type { CredentialSetupDeps } from './setup-tool.types';
 

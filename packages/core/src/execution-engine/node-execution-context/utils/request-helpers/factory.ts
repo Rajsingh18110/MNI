@@ -1,5 +1,5 @@
-import { OutboundHttp } from '@n8n/backend-network';
-import { Container } from '@n8n/di';
+import { OutboundHttp } from '@MNI/backend-network';
+import { Container } from '@MNI/di';
 import type {
 	IAllExecuteFunctions,
 	IExecuteData,
@@ -16,7 +16,7 @@ import type {
 	RequestHelperFunctions,
 	Workflow,
 	WorkflowExecuteMode,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { callEvalMockHandler, normalizeLegacyRequest } from '@/execution-engine/eval-mock-helpers';
 

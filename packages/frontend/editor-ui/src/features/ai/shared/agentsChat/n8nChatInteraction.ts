@@ -2,15 +2,15 @@ import {
 	richCardComponentSchema,
 	richMessageSchema,
 	WORKFLOW_WAIT_SUSPEND_TYPE,
-} from '@n8n/api-types';
-import type { RichCard, RichCardComponent, RichCardComponentType } from '@n8n/api-types';
+} from '@MNI/api-types';
+import type { RichCard, RichCardComponent, RichCardComponentType } from '@MNI/api-types';
 import { z } from 'zod';
 
 /**
  * Single-operation integration action tool input — any `<platform>_action`
  * tool's `{ action, input: { message: { text?, card? } } }` shape, with the
  * message validated against the SAME `richMessageSchema` the backend tool
- * boundary uses (`@n8n/api-types/agents/rich-card.schema.ts`). Batch inputs
+ * boundary uses (`@MNI/api-types/agents/rich-card.schema.ts`). Batch inputs
  * (`actions: [...]`) never suspend and don't match this schema; they fall
  * back to raw JSON rendering.
  */
@@ -133,7 +133,7 @@ export function cardChoiceLabel(card: N8nChatCard, resume: N8nChatResumeValue): 
 /**
  * Component types the MNI chat card renderer (`N8nChatActionCard.vue`)
  * implements. Compile-time lockstep with the shared list: when
- * `RICH_CARD_COMPONENT_TYPES` in `@n8n/api-types` gains a member (i.e. a new
+ * `RICH_CARD_COMPONENT_TYPES` in `@MNI/api-types` gains a member (i.e. a new
  * component type is added for Slack & co), the assignment below fails to
  * compile until the renderer handles the new type and this list is extended.
  */

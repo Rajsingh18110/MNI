@@ -1,8 +1,8 @@
-import { randomName } from '@n8n/backend-test-utils';
-import type { TagEntity, WorkflowEntity } from '@n8n/db';
-import { generateNanoId, TagRepository, WorkflowTagMappingRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
-import type { IWorkflowBase } from 'n8n-workflow';
+import { randomName } from '@MNI/backend-test-utils';
+import type { TagEntity, WorkflowEntity } from '@MNI/db';
+import { generateNanoId, TagRepository, WorkflowTagMappingRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
+import type { IWorkflowBase } from 'MNI-workflow';
 
 export async function createTag(attributes: Partial<TagEntity> = {}, workflow?: IWorkflowBase) {
 	const { name } = attributes;

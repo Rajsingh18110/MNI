@@ -4,13 +4,13 @@ import type {
 	INodeExecutionData,
 	INodeType,
 	INodeTypeDescription,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import {
 	NodeApiError,
 	NodeConnectionTypes,
 	NodeOperationError,
 	UnexpectedError,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { generateGarbageMemory, runGarbageCollector } from './functions';
 import {

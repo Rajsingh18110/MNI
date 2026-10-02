@@ -1,6 +1,6 @@
-import { Logger } from '@n8n/backend-common';
-import { Service } from '@n8n/di';
-import { INodeExecutionData, ISecureArtifactsV1, jsonParse } from 'n8n-workflow';
+import { Logger } from '@MNI/backend-common';
+import { Service } from '@MNI/di';
+import { INodeExecutionData, ISecureArtifactsV1, jsonParse } from 'MNI-workflow';
 
 import { extractAndClear } from './path-traversal';
 import { RuntimeCredentialsConfig } from './runtime-credentials.config';
@@ -28,18 +28,18 @@ export class RuntimeCredentialsService {
 
 	init() {
 		const parsedSetting = jsonParse(this.config.sensitiveFieldRules, {
-			errorMessage: "Failed to json parse configuration rules 'N8N_SECURITY_SENSITIVE_FIELD_RULES'",
+			errorMessage: "Failed to json parse configuration rules 'MNI_SECURITY_SENSITIVE_FIELD_RULES'",
 		});
 		const parsedRules = sensitiveFieldRulesSchema.safeParse(parsedSetting);
 		if (!parsedRules.success) {
 			this.logger.error(
-				"Failed to validate configuration rules 'N8N_SECURITY_SENSITIVE_FIELD_RULES'",
+				"Failed to validate configuration rules 'MNI_SECURITY_SENSITIVE_FIELD_RULES'",
 				{
 					error: parsedRules.error,
 				},
 			);
 			throw new Error(
-				"Failed to validate configuration rules 'N8N_SECURITY_SENSITIVE_FIELD_RULES'",
+				"Failed to validate configuration rules 'MNI_SECURITY_SENSITIVE_FIELD_RULES'",
 			);
 		}
 

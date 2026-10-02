@@ -1,4 +1,4 @@
-import type { PolicedWorkflow } from '@n8n/decorators';
+import type { PolicedWorkflow } from '@MNI/decorators';
 
 import type { OwnershipService } from '@/services/ownership.service';
 

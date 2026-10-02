@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { useContextMenu } from '../composables/useContextMenu';
 import { isFocusHandoffAction, type ContextMenuAction } from '../composables/useContextMenuItems';
-import { useStyles } from '@n8n/composables/useStyles';
+import { useStyles } from '@MNI/composables/useStyles';
 import { nextTick, ref, watch } from 'vue';
 import {
 	ContextMenuContent,
@@ -12,7 +12,7 @@ import {
 	ContextMenuTrigger,
 } from 'reka-ui';
 
-import { N8nIcon, N8nKeyboardShortcut } from '@n8n/design-system';
+import { N8nIcon, N8nKeyboardShortcut } from '@MNI/design-system';
 
 const contextMenu = useContextMenu();
 const { position, isOpen, actions } = contextMenu;
@@ -132,17 +132,17 @@ function onOpenChange(open: boolean) {
 }
 
 .content {
-	--n8n--dropdown--offset--slide-x: 0;
-	--n8n--dropdown--offset--slide-y: 0;
-	--n8n--dropdown--offset--origin-x: left;
-	--n8n--dropdown--offset--origin-y: top;
-	--n8n--dropdown-menu-width: 24rem;
+	--MNI--dropdown--offset--slide-x: 0;
+	--MNI--dropdown--offset--slide-y: 0;
+	--MNI--dropdown--offset--origin-x: left;
+	--MNI--dropdown--offset--origin-y: top;
+	--MNI--dropdown-menu-width: 24rem;
 
 	display: flex;
 	flex-direction: column;
 	width: fit-content;
-	min-width: calc(var(--n8n--dropdown-menu-width) / 4);
-	max-width: var(--n8n--dropdown-menu-width);
+	min-width: calc(var(--MNI--dropdown-menu-width) / 4);
+	max-width: var(--MNI--dropdown-menu-width);
 	max-height: var(--reka-context-menu-content-available-height);
 	overflow-y: auto;
 	border-radius: var(--radius--xs);
@@ -152,7 +152,7 @@ function onOpenChange(open: boolean) {
 		var(--shadow--md),
 		inset var(--shadow--outline);
 	will-change: transform, opacity;
-	transform-origin: var(--n8n--dropdown--offset--origin-x) var(--n8n--dropdown--offset--origin-y);
+	transform-origin: var(--MNI--dropdown--offset--origin-x) var(--MNI--dropdown--offset--origin-y);
 	scrollbar-width: none;
 
 	&[data-state='open'] {

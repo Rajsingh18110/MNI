@@ -1,5 +1,5 @@
-import type { StepSlots } from '@n8n/engine';
-import { createDeferredPromise } from '@n8n/utils/promise/deferred-promise';
+import type { StepSlots } from '@MNI/engine';
+import { createDeferredPromise } from '@MNI/utils/promise/deferred-promise';
 
 import type { ExecutionIdV2 } from '@/executions/execution-id';
 

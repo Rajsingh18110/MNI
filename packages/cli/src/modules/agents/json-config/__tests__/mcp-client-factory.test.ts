@@ -1,8 +1,8 @@
-import type { CredentialProvider } from '@n8n/agents';
-import type { AgentJsonMcpServerConfig } from '@n8n/api-types';
-import type { CustomFetch } from '@n8n/backend-network';
+import type { CredentialProvider } from '@MNI/agents';
+import type { AgentJsonMcpServerConfig } from '@MNI/api-types';
+import type { CustomFetch } from '@MNI/backend-network';
 import { mock } from 'vitest-mock-extended';
-import { UserError } from 'n8n-workflow';
+import { UserError } from 'MNI-workflow';
 
 import type { OauthService } from '@/oauth/oauth.service';
 
@@ -19,7 +19,7 @@ import {
 const mcpClientCtor = vi.fn();
 const listToolsMock = vi.fn();
 const closeMock = vi.fn();
-vi.mock('@n8n/agents', () => ({
+vi.mock('@MNI/agents', () => ({
 	McpClient: vi.fn(function (configs: unknown) {
 		mcpClientCtor(configs);
 		return { configs, close: closeMock, listTools: listToolsMock };
@@ -208,7 +208,7 @@ describe('buildMcpClientForServer — OAuth2 refresh on 401', () => {
 				access_token: 'stale-token',
 				refresh_token: 'refresh-token',
 				expires_in: 3600,
-				n8n_expires_at: String(Date.now() + 60_000),
+				MNI_expires_at: String(Date.now() + 60_000),
 			},
 		} as never);
 
@@ -244,7 +244,7 @@ describe('buildMcpClientForServer — OAuth2 refresh on 401', () => {
 			oauthTokenData: {
 				access_token: 'stale-token',
 				expires_in: 3600,
-				n8n_expires_at: String(expiresAt),
+				MNI_expires_at: String(expiresAt),
 			},
 		} as never);
 
@@ -508,7 +508,7 @@ describe('buildMcpClientForServer — service-specific McpOAuth2Api refresh', ()
 			makeServer({
 				authentication: 'notionMcpOAuth2Api' as never,
 				credential: 'cred-1',
-				metadata: { nodeTypeName: '@n8n/mcp-registry.notion' },
+				metadata: { nodeTypeName: '@MNI/mcp-registry.notion' },
 			}),
 			{
 				credentialProvider,
@@ -516,7 +516,7 @@ describe('buildMcpClientForServer — service-specific McpOAuth2Api refresh', ()
 				projectId: 'proj-1',
 				proxyFetch,
 				resolveRegistryConnection: async () => ({
-					nodeTypeName: '@n8n/mcp-registry.notion',
+					nodeTypeName: '@MNI/mcp-registry.notion',
 					endpointUrl: 'https://example.test/mcp',
 					endpointHostname: 'example.test',
 					transport: 'httpStreamable',
@@ -751,7 +751,7 @@ describe('buildMcpClientForServer — unresolvable credential', () => {
 				url: templatedUrl,
 				authentication: 'databricksGenieMcpOAuth2Api' as never,
 				credential: 'cred-1',
-				metadata: { nodeTypeName: '@n8n/mcp-registry.databricksGenie' },
+				metadata: { nodeTypeName: '@MNI/mcp-registry.databricksGenie' },
 			}),
 			{
 				credentialProvider,
@@ -759,7 +759,7 @@ describe('buildMcpClientForServer — unresolvable credential', () => {
 				projectId: 'proj-1',
 				proxyFetch,
 				resolveRegistryConnection: async () => ({
-					nodeTypeName: '@n8n/mcp-registry.databricksGenie',
+					nodeTypeName: '@MNI/mcp-registry.databricksGenie',
 					credentialBindings: [
 						{
 							credentialType: 'databricksGenieMcpOAuth2Api',

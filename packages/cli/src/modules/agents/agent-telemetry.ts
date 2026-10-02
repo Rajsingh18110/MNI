@@ -1,4 +1,4 @@
-import type { AgentIntegrationConfig, AgentJsonConfig } from '@n8n/api-types';
+import type { AgentIntegrationConfig, AgentJsonConfig } from '@MNI/api-types';
 
 import type {
 	AgentTelemetryMemoryType,
@@ -78,9 +78,9 @@ function getMemoryType(config: AgentJsonConfig | null): AgentTelemetryMemoryType
 	const hasObservationalMemory = memory.observationalMemory?.enabled !== false;
 	const hasEpisodicMemory = memory.episodicMemory?.enabled === true;
 
-	if (hasObservationalMemory && hasEpisodicMemory) return 'n8n_observational_episodic';
-	if (hasObservationalMemory) return 'n8n_observational';
-	if (hasEpisodicMemory) return 'n8n_episodic';
+	if (hasObservationalMemory && hasEpisodicMemory) return 'MNI_observational_episodic';
+	if (hasObservationalMemory) return 'MNI_observational';
+	if (hasEpisodicMemory) return 'MNI_episodic';
 	return 'MNI';
 }
 

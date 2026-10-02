@@ -9,7 +9,7 @@ vi.mock('./encryption-keys.api', () => ({
 	rotateEncryptionKey: vi.fn(),
 }));
 
-vi.mock('@n8n/stores/useRootStore', () => ({
+vi.mock('@MNI/stores/useRootStore', () => ({
 	useRootStore: vi.fn(() => ({
 		restApiContext: { baseUrl: '', sessionId: '', pushRef: '' },
 	})),

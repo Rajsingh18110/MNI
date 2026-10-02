@@ -22,8 +22,8 @@ import type {
 	INodeExecutionData,
 	INodePropertyOptions,
 	IWebhookFunctions,
-} from 'n8n-workflow';
-import { NodeOperationError, safeRegex } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeOperationError, safeRegex } from 'MNI-workflow';
 
 export async function koBoToolboxApiRequest(
 	this: IExecuteFunctions | IWebhookFunctions | IHookFunctions | ILoadOptionsFunctions,

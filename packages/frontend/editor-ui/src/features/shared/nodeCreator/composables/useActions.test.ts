@@ -27,7 +27,7 @@ import {
 	CHAT_TRIGGER_NODE_TYPE,
 	NodeConnectionTypes,
 	type INodeTypeDescription,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import type { INodeUi } from '@/Interface';
 
 const mockTriggerNodeType = (type: string): Record<number, INodeTypeDescription> => ({
@@ -89,10 +89,10 @@ describe('useActions', () => {
 
 	describe('getAddedNodesAndConnections', () => {
 		it('adds nothing when any requested type is restricted', () => {
-			mockRestrictedNodeTypes({ 'n8n-nodes-base.gmail': 'instance' });
+			mockRestrictedNodeTypes({ 'MNI-nodes-base.gmail': 'instance' });
 			const { getAddedNodesAndConnections } = useActions();
 
-			expect(getAddedNodesAndConnections([{ type: 'n8n-nodes-base.gmail' }])).toEqual({
+			expect(getAddedNodesAndConnections([{ type: 'MNI-nodes-base.gmail' }])).toEqual({
 				nodes: [],
 				connections: [],
 			});

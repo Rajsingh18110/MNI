@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue';
-import { N8nCallout, N8nHeading, N8nIcon, N8nIconButton, N8nText } from '@n8n/design-system';
-import type { IconName } from '@n8n/design-system';
-import { useI18n, type BaseTextKey } from '@n8n/i18n';
+import { N8nCallout, N8nHeading, N8nIcon, N8nIconButton, N8nText } from '@MNI/design-system';
+import type { IconName } from '@MNI/design-system';
+import { useI18n, type BaseTextKey } from '@MNI/i18n';
 import { useInstanceAiSettingsStore } from '../../instanceAiSettings.store';
 import { useInstanceAiComputerUseTelemetry } from '../../instanceAiComputerUse.telemetry';
 import MacOsIcon from '../../assets/os-icons/macos-icon.svg';
@@ -55,7 +55,7 @@ const osTabs = [
 	},
 ];
 
-const displayCommand = computed(() => store.setupCommand ?? 'npx @n8n/computer-use');
+const displayCommand = computed(() => store.setupCommand ?? 'npx @MNI/computer-use');
 const canCopyCommand = computed(() => store.setupCommand !== null);
 const nowMs = ref(Date.now());
 
@@ -230,7 +230,7 @@ onBeforeUnmount(() => {
 
 		<template v-else>
 			<div
-				v-n8n-html="i18n.baseText('instanceAi.welcomeModal.gateway.description')"
+				v-MNI-html="i18n.baseText('instanceAi.welcomeModal.gateway.description')"
 				:class="$style.textBlock"
 			/>
 

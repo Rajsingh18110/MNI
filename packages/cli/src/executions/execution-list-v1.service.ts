@@ -1,9 +1,9 @@
-import type { SerializedCursor } from '@n8n/api-types';
-import { DatabaseConfig } from '@n8n/config';
-import type { ExecutionSummaries } from '@n8n/db';
-import { ExecutionRepository } from '@n8n/db';
-import { Service } from '@n8n/di';
-import { ExecutionStatusList, type ExecutionStatus, type ExecutionSummary } from 'n8n-workflow';
+import type { SerializedCursor } from '@MNI/api-types';
+import { DatabaseConfig } from '@MNI/config';
+import type { ExecutionSummaries } from '@MNI/db';
+import { ExecutionRepository } from '@MNI/db';
+import { Service } from '@MNI/di';
+import { ExecutionStatusList, type ExecutionStatus, type ExecutionSummary } from 'MNI-workflow';
 
 import { encodeExecutionCursor, type ExecutionCursor } from './execution-cursor';
 

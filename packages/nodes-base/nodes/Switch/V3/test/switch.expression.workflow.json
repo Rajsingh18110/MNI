@@ -5,7 +5,7 @@
 			"parameters": {},
 			"id": "58cc2d21-a8b1-424d-a8e4-e79d39955fa8",
 			"name": "When clicking \"Execute Workflow\"",
-			"type": "n8n-nodes-base.manualTrigger",
+			"type": "MNI-nodes-base.manualTrigger",
 			"typeVersion": 1,
 			"position": [0, 620]
 		},
@@ -32,7 +32,7 @@
 			},
 			"id": "85adf7fc-2d33-49aa-b4bb-2000cce07ce0",
 			"name": "Code",
-			"type": "n8n-nodes-testing.testData",
+			"type": "MNI-nodes-testing.testData",
 			"typeVersion": 1,
 			"position": [220, 620]
 		},
@@ -40,7 +40,7 @@
 			"parameters": {},
 			"id": "ebab0b65-6feb-416c-828e-ca5e766ea048",
 			"name": "No Operation, do nothing",
-			"type": "n8n-nodes-base.noOp",
+			"type": "MNI-nodes-base.noOp",
 			"typeVersion": 1,
 			"position": [760, 460]
 		},
@@ -48,7 +48,7 @@
 			"parameters": {},
 			"id": "2f58a703-b7ae-4279-a60b-a0243af3b563",
 			"name": "No Operation, do nothing1",
-			"type": "n8n-nodes-base.noOp",
+			"type": "MNI-nodes-base.noOp",
 			"typeVersion": 1,
 			"position": [760, 620]
 		},
@@ -56,7 +56,7 @@
 			"parameters": {},
 			"id": "b1d0b310-6edf-4a40-a66d-689078ddbf31",
 			"name": "No Operation, do nothing2",
-			"type": "n8n-nodes-base.noOp",
+			"type": "MNI-nodes-base.noOp",
 			"typeVersion": 1,
 			"position": [760, 780]
 		},
@@ -68,7 +68,7 @@
 			},
 			"id": "437e2c46-81d8-4c76-a036-db767576f55d",
 			"name": "Switch",
-			"type": "n8n-nodes-base.switch",
+			"type": "MNI-nodes-base.switch",
 			"typeVersion": 3,
 			"position": [460, 620]
 		}

@@ -7,8 +7,8 @@ import type {
 	INodePropertyOptions,
 	INodeType,
 	INodeTypeDescription,
-} from 'n8n-workflow';
-import { NodeConnectionTypes } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeConnectionTypes } from 'MNI-workflow';
 
 import { egoiApiRequest, egoiApiRequestAllItems, simplify } from './GenericFunctions';
 import type { ICreateMemberBody } from './Interfaces';
@@ -136,7 +136,7 @@ export class Egoi implements INodeType {
 					},
 				},
 				default: true,
-				// eslint-disable-next-line n8n-nodes-base/node-param-description-boolean-without-whether
+				// eslint-disable-next-line MNI-nodes-base/node-param-description-boolean-without-whether
 				description:
 					'By default the response just includes the contact ID. If this option gets activated, it will resolve the data automatically.',
 			},

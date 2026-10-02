@@ -1,5 +1,5 @@
-import { getPersonalProject, testDb, testModules } from '@n8n/backend-test-utils';
-import { Container } from '@n8n/di';
+import { getPersonalProject, testDb, testModules } from '@MNI/backend-test-utils';
+import { Container } from '@MNI/di';
 
 import { createOwner } from '@test-integration/db/users';
 

@@ -1,13 +1,13 @@
 ![MNI - Workflow Automation](https://raw.githubusercontent.com/Rajsingh18110/MNI/main/assets/mni-screenshot-readme.png)
 
-# n8n-nodes-base
+# MNI-nodes-base
 
 The nodes which are included by default in MNI
 
 ```
-npm install n8n-nodes-base -g
+npm install MNI-nodes-base -g
 ```
 
 ## License
 
-You can find the license information [here](https://github.com/n8n-io/n8n/blob/master/README.md#license)
+You can find the license information [here](https://github.com/MNI-io/MNI/blob/master/README.md#license)

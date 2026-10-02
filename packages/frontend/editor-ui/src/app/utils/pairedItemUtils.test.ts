@@ -6,7 +6,7 @@ import {
 	getPairedItemsMapping,
 	MAX_ITEM_COUNT_FOR_PAIRING,
 } from './pairedItemUtils';
-import { createRunExecutionData, type ITaskData } from 'n8n-workflow';
+import { createRunExecutionData, type ITaskData } from 'MNI-workflow';
 
 const MOCK_EXECUTION: Partial<IExecutionResponse> = {
 	data: createRunExecutionData({

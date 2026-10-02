@@ -12,7 +12,7 @@ import type { Plugin } from 'vite';
  * Vite transforms their `src` (picked via the `module` field). That source tree
  * includes TypeORM entities whose `emitDecoratorMetadata`/type-only imports oxc
  * mishandles, and loading each workspace package as both Vite-transformed source
- * and Node-required dist produces two `@n8n/di` Containers. Resolving them to
+ * and Node-required dist produces two `@MNI/di` Containers. Resolving them to
  * `dist` via Node (`require.resolve`, which ignores the `module` field) and
  * externalizing fixes both.
  */
@@ -20,14 +20,14 @@ export function workspaceDistExternals(): Plugin {
 	const projectDir = process.cwd();
 	const req = createRequire(path.join(projectDir, 'index.js'));
 
-	const EXCLUDE = new Set(['@n8n/backend-test-utils', '@n8n/mcp-apps/server']);
-	const N8N_PREFIXES = ['n8n-workflow', 'n8n-core', 'n8n-nodes-base', 'n8n-editor-ui'];
+	const EXCLUDE = new Set(['@MNI/backend-test-utils', '@MNI/mcp-apps/server']);
+	const MNI_PREFIXES = ['MNI-workflow', 'MNI-core', 'MNI-nodes-base', 'MNI-editor-ui'];
 
 	const isWorkspacePkg = (source: string) => {
 		if (EXCLUDE.has(source)) return false;
-		if (source.startsWith('@n8n/')) return true;
+		if (source.startsWith('@MNI/')) return true;
 		// `zod` is externalized so a single instance is shared with the externalized
-		// workspace packages (e.g. `@n8n/api-types` schemas); otherwise a
+		// workspace packages (e.g. `@MNI/api-types` schemas); otherwise a
 		// Vite-inlined `zod` and the dist `zod` produce distinct `ZodError`
 		// classes and `instanceof` checks fail across the boundary.
 		if (source === 'zod' || source.startsWith('zod/')) return true;
@@ -35,7 +35,7 @@ export function workspaceDistExternals(): Plugin {
 		// Vitest inlines it through ESM interop (`new Server()` -> "not a constructor").
 		// Externalizing loads it via Node's require, preserving the constructors.
 		if (source === 'ws') return true;
-		return N8N_PREFIXES.some((name) => source === name || source.startsWith(`${name}/`));
+		return MNI_PREFIXES.some((name) => source === name || source.startsWith(`${name}/`));
 	};
 
 	return {
@@ -45,15 +45,15 @@ export function workspaceDistExternals(): Plugin {
 			if (!isWorkspacePkg(source)) return null;
 			try {
 				let id = req.resolve(source);
-				// `n8n-nodes-base` has no `exports` map, so a deep import like
-				// `n8n-nodes-base/nodes/X/X.node` resolves against the source tree, where
+				// `MNI-nodes-base` has no `exports` map, so a deep import like
+				// `MNI-nodes-base/nodes/X/X.node` resolves against the source tree, where
 				// the class (`X.node.ts`) is invisible to Node's resolver and only the
 				// sibling `X.node.json` metadata file is pickable — yielding a module with
 				// no class export (`new X()` -> "not a constructor"). Redirect such
 				// `.node`/`.credentials` imports to the compiled `dist/` copy, where the
 				// `.js` wins over the `.json` sibling.
-				if (source.startsWith('n8n-nodes-base/') && /\.(node|credentials)\.json$/.test(id)) {
-					id = req.resolve(`n8n-nodes-base/dist/${source.slice('n8n-nodes-base/'.length)}`);
+				if (source.startsWith('MNI-nodes-base/') && /\.(node|credentials)\.json$/.test(id)) {
+					id = req.resolve(`MNI-nodes-base/dist/${source.slice('MNI-nodes-base/'.length)}`);
 				}
 				return { id, external: true };
 			} catch {

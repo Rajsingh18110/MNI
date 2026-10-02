@@ -1,5 +1,5 @@
-import type { InstanceAiApprovalDetails } from '@n8n/api-types';
-import { useI18n } from '@n8n/i18n';
+import type { InstanceAiApprovalDetails } from '@MNI/api-types';
+import { useI18n } from '@MNI/i18n';
 
 /** Translate structured details at render time so saved approvals follow the current locale. */
 export function formatApprovalDetails(details: InstanceAiApprovalDetails): string {

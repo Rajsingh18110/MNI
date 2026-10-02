@@ -1,5 +1,5 @@
-import { GlobalConfig } from '@n8n/config';
-import { Container } from '@n8n/di';
+import { GlobalConfig } from '@MNI/config';
+import { Container } from '@MNI/di';
 
 import { toSaveSettings } from '../to-save-settings';
 

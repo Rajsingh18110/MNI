@@ -7,8 +7,8 @@ import type {
 	PushPayload,
 	WorkerStatus,
 	WorkflowPublicationStatusMessage,
-} from '@n8n/api-types';
-import type { IWorkflowBase, RelatedAgentRun, WorkflowActivateMode } from 'n8n-workflow';
+} from '@MNI/api-types';
+import type { IWorkflowBase, RelatedAgentRun, WorkflowActivateMode } from 'MNI-workflow';
 
 export type PubSubCommandMap = {
 	'relay-agent-queued-chat': {

@@ -1,4 +1,4 @@
-import type { IDataObject, IExecuteFunctions, INodeProperties } from 'n8n-workflow';
+import type { IDataObject, IExecuteFunctions, INodeProperties } from 'MNI-workflow';
 
 import { updateDisplayOptions } from '../../../../../../utils/utilities';
 import {

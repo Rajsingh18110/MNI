@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import { computed, onMounted, ref, watch } from 'vue';
 
 import ConcurrencySlider from '../components/ConcurrencySlider';
@@ -10,10 +10,10 @@ import RunsSection from '../components/ListRuns/RunsSection.vue';
 import { useEvaluationStore } from '../evaluation.store';
 import { useParallelEvalStore } from '../parallelEval.store';
 import orderBy from 'lodash/orderBy';
-import { useToast } from '@n8n/composables/useToast';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
+import { useToast } from '@MNI/composables/useToast';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
 
-import { N8nButton, N8nIcon, N8nPopover } from '@n8n/design-system';
+import { N8nButton, N8nIcon, N8nPopover } from '@MNI/design-system';
 
 const props = defineProps<{
 	workflowId: string;

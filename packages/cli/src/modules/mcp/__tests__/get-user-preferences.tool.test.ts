@@ -1,6 +1,6 @@
-import { mockInstance } from '@n8n/backend-test-utils';
-import { User } from '@n8n/db';
-import { TELEMETRY_EVENT } from '@n8n/telemetry';
+import { mockInstance } from '@MNI/backend-test-utils';
+import { User } from '@MNI/db';
+import { TELEMETRY_EVENT } from '@MNI/telemetry';
 import z from 'zod';
 
 import type { ApplicableAiPreferences } from '@/services/ai-preference.service';

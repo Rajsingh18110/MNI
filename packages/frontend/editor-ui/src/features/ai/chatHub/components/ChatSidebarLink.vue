@@ -1,6 +1,6 @@
 <script setup lang="ts" generic="T extends string">
-import { N8nActionDropdown, N8nIcon, N8nIconButton, N8nText } from '@n8n/design-system';
-import type { ActionDropdownItem, IconName } from '@n8n/design-system';
+import { N8nActionDropdown, N8nIcon, N8nIconButton, N8nText } from '@MNI/design-system';
+import type { ActionDropdownItem, IconName } from '@MNI/design-system';
 import { type RouteLocationRaw } from 'vue-router';
 
 const {

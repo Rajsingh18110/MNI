@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 import { computed, onScopeDispose, provide, ref, watch } from 'vue';
-import { N8nText, N8nTooltip } from '@n8n/design-system';
-import { TEMPLATED_CUSTOM_AUTH_CREDENTIAL_TYPE } from '@n8n/api-types';
-import { useI18n } from '@n8n/i18n';
+import { N8nText, N8nTooltip } from '@MNI/design-system';
+import { TEMPLATED_CUSTOM_AUTH_CREDENTIAL_TYPE } from '@MNI/api-types';
+import { useI18n } from '@MNI/i18n';
 import NodeCredentials from '@/features/credentials/components/NodeCredentials.vue';
 import { deriveServiceName } from '@/features/credentials/templatedAuth.utils';
 import FreeAiCreditsCallout from '@/app/components/FreeAiCreditsCallout.vue';
@@ -17,14 +17,14 @@ import {
 	type WorkflowDocumentId,
 } from '@/app/stores/workflowDocument.store';
 import { disposeNDVStore, useNDVStore } from '@/features/ndv/shared/ndv.store';
-import type { INodeProperties } from 'n8n-workflow';
+import type { INodeProperties } from 'MNI-workflow';
 import type { ExpressionLocalResolveContext } from '@/app/types/expressions';
 import type { INodeUi, INodeUpdatePropertiesInformation, IUpdateInformation } from '@/Interface';
 import type { WorkflowSetupSection } from '../workflowSetup.types';
 import { useWorkflowSetupContext } from '../composables/useWorkflowSetupContext';
 import { useInstanceAiCredentialHelp } from '../../composables/useInstanceAiCredentialHelp';
 import { AI_GATEWAY_MANAGED_TAG } from '../../constants';
-import { findPlaceholderDetails } from '@n8n/utils/placeholder';
+import { findPlaceholderDetails } from '@MNI/utils/placeholder';
 
 const props = defineProps<{
 	section: WorkflowSetupSection;

@@ -3,7 +3,7 @@ import type {
 	IExecuteFunctions,
 	INodeExecutionData,
 	INodeProperties,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { recordRLC } from '../../helpers/utils';
 import { odooApiRequest } from '../../transport';

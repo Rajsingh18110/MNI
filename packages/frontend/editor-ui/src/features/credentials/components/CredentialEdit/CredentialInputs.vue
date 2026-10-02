@@ -3,15 +3,15 @@ import type {
 	ICredentialDataDecryptedObject,
 	INodeProperties,
 	NodeParameterValueType,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import type { IUpdateInformation } from '@/Interface';
 import CopyInput from '@/app/components/CopyInput.vue';
 import ParameterInputExpanded from '@/features/ndv/parameters/components/ParameterInputExpanded.vue';
 import { useEnvFeatureFlag } from '@/features/shared/envFeatureFlag/useEnvFeatureFlag';
 import { computed, useId } from 'vue';
 
-import { N8nInput, N8nInputLabel, N8nNotice, N8nText } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+import { N8nInput, N8nInputLabel, N8nNotice, N8nText } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 type Props = {
 	credentialProperties: INodeProperties[];
 	credentialData: ICredentialDataDecryptedObject;

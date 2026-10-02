@@ -1,7 +1,7 @@
-import type { DeleteExecutionsDto } from '@n8n/api-types';
-import { ExecutionRedactionQueryDtoSchema } from '@n8n/api-types';
-import { Logger } from '@n8n/backend-common';
-import { GlobalConfig } from '@n8n/config';
+import type { DeleteExecutionsDto } from '@MNI/api-types';
+import { ExecutionRedactionQueryDtoSchema } from '@MNI/api-types';
+import { Logger } from '@MNI/backend-common';
+import { GlobalConfig } from '@MNI/config';
 import type {
 	CreateExecutionPayload,
 	ExecutionSummaries,
@@ -9,7 +9,7 @@ import type {
 	IExecutionResponse,
 	IGetExecutionsQueryFilter,
 	User,
-} from '@n8n/db';
+} from '@MNI/db';
 import {
 	AnnotationTagMappingRepository,
 	ExecutionAnnotationRepository,
@@ -17,9 +17,9 @@ import {
 	isForeignKeyConstraintError,
 	WorkflowHistoryRepository,
 	WorkflowRepository,
-} from '@n8n/db';
-import { Service } from '@n8n/di';
-import { ensureError } from '@n8n/utils/errors/ensure-error';
+} from '@MNI/db';
+import { Service } from '@MNI/di';
+import { ensureError } from '@MNI/utils/errors/ensure-error';
 import { stringify } from 'flatted';
 import { validate as jsonSchemaValidate } from 'jsonschema';
 import type {
@@ -29,7 +29,7 @@ import type {
 	IWorkflowBase,
 	IWorkflowExecutionDataProcess,
 	WorkflowExecuteMode,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import {
 	ManualExecutionCancelledError,
 	UnexpectedError,
@@ -38,7 +38,7 @@ import {
 	WorkflowOperationError,
 	createEmptyRunExecutionData,
 	createErrorExecutionData,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { ActiveExecutions } from '@/active-executions';
 import { ConcurrencyControlService } from '@/concurrency/concurrency-control.service';

@@ -7,7 +7,7 @@
  * flattened into one object whose branch-required fields are all optional — the shape that makes
  * `expand` with no id representable. Two tools make that unrepresentable instead.
  */
-import type { User } from '@n8n/db';
+import type { User } from '@MNI/db';
 import z from 'zod';
 
 import type {

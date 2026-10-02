@@ -1,5 +1,5 @@
 import type { TestInfo } from '@playwright/test';
-import type { MetricsHelper } from 'n8n-containers';
+import type { MetricsHelper } from 'MNI-containers';
 
 import { attachMetric } from '../performance-helper';
 
@@ -57,7 +57,7 @@ const EXPECTED_KEYS: Array<keyof DiagnosticsResult> = [
  * reliable than regex-matching on `name`, which varies by Docker version,
  * Docker Desktop, and Compose project name.
  */
-const TRACKED_SERVICES = ['postgres', 'n8n-main', 'n8n-worker', 'redis', 'kafka', 'cadvisor'];
+const TRACKED_SERVICES = ['postgres', 'MNI-main', 'MNI-worker', 'redis', 'kafka', 'cadvisor'];
 
 async function queryContainerStats(
 	metrics: MetricsHelper,
@@ -116,7 +116,7 @@ async function queryDiagnostics(
 	const windowSecs = Math.ceil(durationMs / 1000) + 30;
 	const window = `${windowSecs}s`;
 
-	const db = 'n8n_db';
+	const db = 'MNI_db';
 	const [
 		eventLoopLag,
 		pgTxRateWithTotals,
@@ -135,7 +135,7 @@ async function queryDiagnostics(
 		blksReadRate,
 		containerStats,
 	] = await Promise.all([
-		metrics.query('n8n_nodejs_eventloop_lag_seconds').catch(() => []),
+		metrics.query('MNI_nodejs_eventloop_lag_seconds').catch(() => []),
 		metrics
 			.query(`rate(pg_stat_database_xact_commit_total{datname="${db}"}[${window}])`)
 			.catch(() => []),
@@ -147,10 +147,10 @@ async function queryDiagnostics(
 			.query(`rate(pg_stat_database_tup_inserted{datname="${db}"}[${window}])`)
 			.catch(() => []),
 		metrics.query(`pg_stat_activity_count{datname="${db}"}`).catch(() => []),
-		metrics.query('n8n_scaling_mode_queue_jobs_waiting').catch(() => []),
-		metrics.query('n8n_scaling_mode_queue_jobs_active').catch(() => []),
-		metrics.query(`rate(n8n_scaling_mode_queue_jobs_completed[${window}])`).catch(() => []),
-		metrics.query(`rate(n8n_scaling_mode_queue_jobs_failed[${window}])`).catch(() => []),
+		metrics.query('MNI_scaling_mode_queue_jobs_waiting').catch(() => []),
+		metrics.query('MNI_scaling_mode_queue_jobs_active').catch(() => []),
+		metrics.query(`rate(MNI_scaling_mode_queue_jobs_completed[${window}])`).catch(() => []),
+		metrics.query(`rate(MNI_scaling_mode_queue_jobs_failed[${window}])`).catch(() => []),
 		metrics.query(`rate(pg_stat_bgwriter_checkpoints_timed_total[${window}])`).catch(() => []),
 		metrics.query(`rate(pg_stat_bgwriter_checkpoints_req_total[${window}])`).catch(() => []),
 		metrics.query(`rate(pg_stat_bgwriter_buffers_backend_total[${window}])`).catch(() => []),

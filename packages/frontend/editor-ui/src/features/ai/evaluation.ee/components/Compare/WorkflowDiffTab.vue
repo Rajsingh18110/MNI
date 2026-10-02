@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { N8nOption, N8nSelect, N8nText } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+import { N8nOption, N8nSelect, N8nText } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 import omit from 'lodash/omit';
-import { deepCopy } from 'n8n-workflow';
+import { deepCopy } from 'MNI-workflow';
 import { computed, markRaw, ref, watch } from 'vue';
 
-import { useToast } from '@n8n/composables/useToast';
+import { useToast } from '@MNI/composables/useToast';
 import { useWorkflowsListStore } from '@/app/stores/workflowsList.store';
 import WorkflowDiffView from '@/features/workflows/workflowDiff/WorkflowDiffView.vue';
 import { useWorkflowHistoryStore } from '@/features/workflows/workflowHistory/workflowHistory.store';

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useInstallNode } from '@/features/settings/communityNodes/composables/useInstallNode';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
 import { CUSTOM_NODES_DOCS_URL } from '@/app/constants';
 import { COMMUNITY_PACKAGE_INSTALL_MODAL_KEY } from '@/features/settings/communityNodes/communityNodes.constants';
 import type { INodeUi } from '@/Interface';
@@ -8,10 +8,10 @@ import { injectNDVStore } from '@/features/ndv/shared/ndv.store';
 import { useNodeCreatorStore } from '@/features/shared/nodeCreator/nodeCreator.store';
 import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';
 import { useUIStore } from '@/app/stores/ui.store';
-import { useUsersStore } from '@n8n/stores/users.store';
-import { N8nButton, N8nIcon, N8nText } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
-import { isCommunityPackageName } from 'n8n-workflow';
+import { useUsersStore } from '@MNI/stores/users.store';
+import { N8nButton, N8nIcon, N8nText } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
+import { isCommunityPackageName } from 'MNI-workflow';
 import { computed, watch } from 'vue';
 import { I18nT } from 'vue-i18n';
 import ContactAdministratorToInstall from '@/features/settings/communityNodes/components/ContactAdministratorToInstall.vue';

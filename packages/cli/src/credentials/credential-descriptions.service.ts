@@ -1,5 +1,5 @@
-import { CREDENTIAL_DESCRIPTIONS_FLAG } from '@n8n/api-types';
-import { Service } from '@n8n/di';
+import { CREDENTIAL_DESCRIPTIONS_FLAG } from '@MNI/api-types';
+import { Service } from '@MNI/di';
 
 import { PostHogClient } from '@/posthog';
 

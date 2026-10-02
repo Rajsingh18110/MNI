@@ -2,17 +2,17 @@ import type {
 	EvaluationApiError,
 	EvaluationMetric,
 	UpsertEvaluationConfigDto,
-} from '@n8n/api-types';
-import { EvaluationErrorCode } from '@n8n/api-types';
-import type { EvaluationConfig, User } from '@n8n/db';
-import { Service } from '@n8n/di';
-import type { INode, IWorkflowBase } from 'n8n-workflow';
+} from '@MNI/api-types';
+import { EvaluationErrorCode } from '@MNI/api-types';
+import type { EvaluationConfig, User } from '@MNI/db';
+import { Service } from '@MNI/di';
+import type { INode, IWorkflowBase } from 'MNI-workflow';
 import {
 	EVALUATION_TRIGGER_NODE_TYPE,
 	getChildNodes,
 	getParentNodes,
 	mapConnectionsByDestination,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { CredentialsFinderService } from '@/credentials/credentials-finder.service';
 import { DataTableRepository } from '@/modules/data-table/data-table.repository';

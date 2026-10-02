@@ -1,5 +1,5 @@
-import type { User } from '@n8n/db';
-import { Container } from '@n8n/di';
+import type { User } from '@MNI/db';
+import { Container } from '@MNI/di';
 import { mock } from 'vitest-mock-extended';
 
 import type { CredentialsService } from '@/credentials/credentials.service';

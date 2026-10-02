@@ -8,12 +8,12 @@
  *
  * The interactive tools (`ask_credential`, `ask_embedding_credential`,
  * `ask_questions`, `configure_channel`) are NOT listed here — their names live
- * in `@n8n/api-types` (`agent-builder-interactive.ts` / `agents/agent-interaction.schema.ts`)
+ * in `@MNI/api-types` (`agent-builder-interactive.ts` / `agents/agent-interaction.schema.ts`)
  * alongside the suspend/resume schemas they share with instance AI's FE cards.
  */
 export const BUILDER_TOOLS = {
 	// WRITE_CONFIG / PATCH_CONFIG / PUBLISH_AGENT / UNPUBLISH_AGENT values must
-	// match `CONFIG_MUTATION_TOOL_NAMES` in `@n8n/api-types`
+	// match `CONFIG_MUTATION_TOOL_NAMES` in `@MNI/api-types`
 	// (agents/agent-interaction.schema.ts).
 	WRITE_CONFIG: 'write_config',
 	PATCH_CONFIG: 'patch_config',

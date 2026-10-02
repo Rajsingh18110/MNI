@@ -1,11 +1,11 @@
-import type { CredentialProvider } from '@n8n/agents';
+import type { CredentialProvider } from '@MNI/agents';
 import {
 	rejectIfDynamicSelectorUsesFromAi,
 	rejectIfEmptyInstructions,
 	rejectIfUnsupportedNativeWebSearch,
 	type AgentConfigValidationMessages,
-} from '@n8n/ai-utilities/agent-config';
-import { zodSchemaToJsonSchema } from '@n8n/ai-utilities/json-schema';
+} from '@MNI/ai-utilities/agent-config';
+import { zodSchemaToJsonSchema } from '@MNI/ai-utilities/json-schema';
 import {
 	AGENT_MODEL_PROVIDERS,
 	AgentJsonConfigBaseSchema,
@@ -18,13 +18,13 @@ import {
 	agentTaskSchema,
 	sanitizeAgentJsonConfig,
 	type AgentJsonConfig,
-} from '@n8n/api-types';
-import { OutboundHttp } from '@n8n/backend-network';
-import type { User } from '@n8n/db';
-import { Service } from '@n8n/di';
-import type { Scope } from '@n8n/permissions';
-import { isRecord } from '@n8n/utils/is-record';
-import { UserError } from 'n8n-workflow';
+} from '@MNI/api-types';
+import { OutboundHttp } from '@MNI/backend-network';
+import type { User } from '@MNI/db';
+import { Service } from '@MNI/di';
+import type { Scope } from '@MNI/permissions';
+import { isRecord } from '@MNI/utils/is-record';
+import { UserError } from 'MNI-workflow';
 import { z } from 'zod';
 
 import { CredentialsService } from '@/credentials/credentials.service';
@@ -61,7 +61,7 @@ import { NodeTypes } from '@/node-types';
 import { OauthService } from '@/oauth/oauth.service';
 import { userHasScopes } from '@/permissions.ee/check-access';
 import { ProjectScopeService } from '@/permissions.ee/project-scope.service';
-import { UrlService } from '@n8n/backend-services';
+import { UrlService } from '@MNI/backend-services';
 import { Telemetry } from '@/telemetry';
 import { createAiMcpFetch } from '@/utils/ai-proxy-fetch';
 
@@ -1237,7 +1237,7 @@ export class McpAgentToolsService {
 
 			const approvals = collectStandardApprovals(result);
 			if (approvals) {
-				// TODO: Return approvals via MCP input_required: https://linear.app/n8n/issue/ADO-5754
+				// TODO: Return approvals via MCP input_required: https://linear.app/MNI/issue/ADO-5754
 				return {
 					ok: true,
 					status: 'suspended',
@@ -1610,7 +1610,7 @@ export class McpAgentToolsService {
 				// The full catalog runs to hundreds of KB — far past MCP client
 				// token limits — so without a provider return a summary instead.
 				const catalog = filterOfferedAgentModelProviders(
-					await (await import('@n8n/agents')).fetchProviderCatalog(),
+					await (await import('@MNI/agents')).fetchProviderCatalog(),
 				);
 				return {
 					providers: Object.values(catalog).map((provider) => ({

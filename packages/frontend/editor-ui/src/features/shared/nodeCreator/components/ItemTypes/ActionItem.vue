@@ -8,9 +8,9 @@ import NodeIcon from '@/app/components/NodeIcon.vue';
 
 import { useViewStacks } from '../../composables/useViewStacks';
 import { useActions } from '../../composables/useActions';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
 
-import { N8nNodeCreatorNode } from '@n8n/design-system';
+import { N8nNodeCreatorNode } from '@MNI/design-system';
 export interface Props {
 	nodeType: SimplifiedNodeType;
 	action: ActionTypeDescription;

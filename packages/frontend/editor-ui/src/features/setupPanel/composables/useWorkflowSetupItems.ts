@@ -8,9 +8,9 @@ import {
 	type MaybeRefOrGetter,
 } from 'vue';
 
-import { GENERIC_AUTH_CREDENTIAL_TYPES, type InstanceAiSetupItem } from '@n8n/api-types';
-import { findPlaceholderDetails } from '@n8n/utils/placeholder';
-import type { INodeCredentialsDetails } from 'n8n-workflow';
+import { GENERIC_AUTH_CREDENTIAL_TYPES, type InstanceAiSetupItem } from '@MNI/api-types';
+import { findPlaceholderDetails } from '@MNI/utils/placeholder';
+import type { INodeCredentialsDetails } from 'MNI-workflow';
 import type { INodeUi, IWorkflowDb } from '@/Interface';
 import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';
 import { useWorkflowsListStore } from '@/app/stores/workflowsList.store';

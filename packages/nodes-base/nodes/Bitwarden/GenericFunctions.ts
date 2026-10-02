@@ -6,8 +6,8 @@ import type {
 	INodePropertyOptions,
 	IRequestOptions,
 	JsonObject,
-} from 'n8n-workflow';
-import { NodeApiError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeApiError } from 'MNI-workflow';
 
 /**
  * Return the access token URL based on the user's environment.

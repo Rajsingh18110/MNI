@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import type { IRunDataDisplayMode, IUpdateInformation, TargetItem } from '@/Interface';
 import type { MainPanelType, NodePanelType } from '../ndv.types';
-import { createEventBus } from '@n8n/utils/event-bus';
-import type { IRunData, NodeConnectionType } from 'n8n-workflow';
-import { jsonParse, NodeConnectionTypes, NodeHelpers } from 'n8n-workflow';
+import { createEventBus } from '@MNI/utils/event-bus';
+import type { IRunData, NodeConnectionType } from 'MNI-workflow';
+import { jsonParse, NodeConnectionTypes, NodeHelpers } from 'MNI-workflow';
 import { computed, onBeforeUnmount, onMounted, provide, ref, useTemplateRef, watch } from 'vue';
 
 import NDVHeader from '../../panel/components/NDVHeader.vue';
@@ -21,9 +21,9 @@ import { useNdvLayout } from '../../panel/composables/useNdvLayout';
 import { useNodeDocsUrl } from '@/app/composables/useNodeDocsUrl';
 import { useNodeHelpers } from '@/app/composables/useNodeHelpers';
 import { usePinnedData } from '@/app/composables/usePinnedData';
-import { useStyles } from '@n8n/composables/useStyles';
+import { useStyles } from '@MNI/composables/useStyles';
 import { useInjectWorkflowId } from '@/app/composables/useInjectWorkflowId';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
 import {
 	APP_MODALS_ELEMENT_ID,
 	EXECUTABLE_TRIGGER_NODE_TYPES,
@@ -38,17 +38,17 @@ import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';
 import { useUIStore } from '@/app/stores/ui.store';
 import { injectWorkflowExecutionStateStore } from '@/app/stores/workflowExecutionState.store';
 import { injectWorkflowDocumentStore } from '@/app/stores/workflowDocument.store';
-import { useDeviceSupport } from '@n8n/composables/useDeviceSupport';
-import { useI18n } from '@n8n/i18n';
+import { useDeviceSupport } from '@MNI/composables/useDeviceSupport';
+import { useI18n } from '@MNI/i18n';
 import InputPanel from '../../panel/components/InputPanel.vue';
 import OutputPanel from '../../panel/components/OutputPanel.vue';
 import PanelDragButton from '../../panel/components/PanelDragButton.vue';
 import TriggerPanel from '../../panel/components/TriggerPanel.vue';
 import { useCanvasOnlyExternalLinks } from '@/app/composables/useCanvasOnlyExternalLinks';
-import { useNodeTypeRestriction } from '@n8n/frontend-module-type-availability-policies';
+import { useNodeTypeRestriction } from '@MNI/frontend-module-type-availability-policies';
 import { useTelemetryContext } from '@/app/composables/useTelemetryContext';
 import { nodeViewEventBus } from '@/app/event-bus';
-import { N8nResizeWrapper } from '@n8n/design-system';
+import { N8nResizeWrapper } from '@MNI/design-system';
 import NDVFloatingNodes from '@/features/ndv/panel/components/NDVFloatingNodes.vue';
 import { useNodeIconSource } from '@/app/composables/useNodeIconSource';
 const emit = defineEmits<{

@@ -1,7 +1,7 @@
-import { Logger } from '@n8n/backend-common';
-import { Config, Env } from '@n8n/config';
-import { Service } from '@n8n/di';
-import type { SSHCredentials } from 'n8n-workflow';
+import { Logger } from '@MNI/backend-common';
+import { Config, Env } from '@MNI/config';
+import { Service } from '@MNI/di';
+import type { SSHCredentials } from 'MNI-workflow';
 import { createHash } from 'node:crypto';
 import { Client, type ConnectConfig } from 'ssh2';
 import { z } from 'zod';
@@ -10,7 +10,7 @@ import { z } from 'zod';
 export class SSHClientsConfig {
 	/** How many seconds before an idle SSH tunnel is closed */
 	@Env(
-		'N8N_SSH_TUNNEL_IDLE_TIMEOUT',
+		'MNI_SSH_TUNNEL_IDLE_TIMEOUT',
 		z
 			.string()
 			.transform((value) => Number.parseInt(value))

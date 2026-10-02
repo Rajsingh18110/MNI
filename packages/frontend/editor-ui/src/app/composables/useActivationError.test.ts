@@ -12,7 +12,7 @@ const mocks = vi.hoisted(() => ({
 	baseText: vi.fn((_key: string, _opts?: unknown) => 'translated'),
 }));
 
-vi.mock('@n8n/i18n', () => ({
+vi.mock('@MNI/i18n', () => ({
 	useI18n: () => ({
 		baseText: mocks.baseText,
 	}),

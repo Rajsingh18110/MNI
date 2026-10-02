@@ -5,8 +5,8 @@ import type {
 	IHttpRequestOptions,
 	ILoadOptionsFunctions,
 	JsonObject,
-} from 'n8n-workflow';
-import { NodeApiError, randomInt } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeApiError, randomInt } from 'MNI-workflow';
 
 import { odooGetDBName } from '../helpers/utils';
 

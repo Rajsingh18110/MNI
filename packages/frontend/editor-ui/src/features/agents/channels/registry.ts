@@ -1,4 +1,4 @@
-import type { AgentIntegrationDisconnectWarning } from '@n8n/api-types';
+import type { AgentIntegrationDisconnectWarning } from '@MNI/api-types';
 import { h, readonly, ref } from 'vue';
 
 import AgentChannelDiscordSetup from '../components/AgentChannelDiscordSetup.vue';

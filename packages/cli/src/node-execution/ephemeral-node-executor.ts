@@ -1,9 +1,9 @@
-import { Logger } from '@n8n/backend-common';
-import { CredentialsRepository, SharedCredentialsRepository } from '@n8n/db';
-import { Service } from '@n8n/di';
-import { getErrorMessage } from '@n8n/utils/errors/get-error-message';
+import { Logger } from '@MNI/backend-common';
+import { CredentialsRepository, SharedCredentialsRepository } from '@MNI/db';
+import { Service } from '@MNI/di';
+import { getErrorMessage } from '@MNI/utils/errors/get-error-message';
 import { Tool as LangChainTool, type Tool as LangChainToolType } from '@langchain/core/tools';
-import { ExecuteContext, StructuredToolkit, SupplyDataContext } from 'n8n-core';
+import { ExecuteContext, StructuredToolkit, SupplyDataContext } from 'MNI-core';
 import type {
 	CloseFunction,
 	IExecuteData,
@@ -14,7 +14,7 @@ import type {
 	ITaskDataConnections,
 	IWorkflowExecuteAdditionalData,
 	NodeOutput,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import {
 	Workflow,
 	Node,
@@ -23,7 +23,7 @@ import {
 	createEmptyRunExecutionData,
 	DATA_TABLE_TOOL_NODE_TYPE,
 	NodeConnectionTypes,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import { v4 as uuid } from 'uuid';
 
 import { NodeTypes } from '@/node-types';
@@ -81,9 +81,9 @@ export interface NodeExecutionResult {
  * access checks applied when building the tool list.
  */
 export const AGENT_TOOL_NODE_DENYLIST = new Set<string>([
-	'n8n-nodes-base.executeCommand',
-	'n8n-nodes-base.ssh',
-	'n8n-nodes-base.readWriteFile',
+	'MNI-nodes-base.executeCommand',
+	'MNI-nodes-base.ssh',
+	'MNI-nodes-base.readWriteFile',
 ]);
 
 /**
@@ -457,7 +457,7 @@ export class EphemeralNodeExecutor {
 	 *
 	 * `supplyData` legitimately returns either a single LangChain `Tool` or a
 	 * `StructuredToolkit` (the shape MCP client nodes produce — see
-	 * `SupplyDataToolResponse` in `@n8n/core`). Callers branch on which shape
+	 * `SupplyDataToolResponse` in `@MNI/core`). Callers branch on which shape
 	 * arrived; a `null`/malformed response is treated as an error.
 	 */
 	private async withSupplyDataTool<T>(

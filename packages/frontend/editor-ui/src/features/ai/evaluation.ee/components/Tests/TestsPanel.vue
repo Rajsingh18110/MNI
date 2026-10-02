@@ -2,8 +2,8 @@
 import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue';
 import { storeToRefs } from 'pinia';
 
-import { useI18n } from '@n8n/i18n';
-import { N8nActionDropdown, N8nButton, N8nIcon, N8nText } from '@n8n/design-system';
+import { useI18n } from '@MNI/i18n';
+import { N8nActionDropdown, N8nButton, N8nIcon, N8nText } from '@MNI/design-system';
 
 import { injectWorkflowDocumentStore } from '@/app/stores/workflowDocument.store';
 import { useWorkflowsStore } from '@/app/stores/workflows.store';
@@ -186,7 +186,7 @@ const showProbeLoading = computed(() => !hasRun.value && !probeComplete.value &&
 const { hydrate } = useWizardHydration();
 const { createFromExecution } = useCreateCaseFromExecution();
 
-// Local mirror of n8n-core PLACEHOLDER_EMPTY_WORKFLOW_ID (frontend can't import n8n-core).
+// Local mirror of MNI-core PLACEHOLDER_EMPTY_WORKFLOW_ID (frontend can't import MNI-core).
 const NEW_WORKFLOW_ID = '__EMPTY__';
 // Hydrate the latest persisted config on open; reset + re-hydrate on a genuine
 // workflow switch so prior-workflow selections don't leak into the new pane.

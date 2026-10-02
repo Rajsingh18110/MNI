@@ -1,5 +1,5 @@
-import { ProjectRepository, UserRepository, WorkflowRepository } from '@n8n/db';
-import { Body, Delete, Get, Param, Post, RestController } from '@n8n/decorators';
+import { ProjectRepository, UserRepository, WorkflowRepository } from '@MNI/db';
+import { Body, Delete, Get, Param, Post, RestController } from '@MNI/decorators';
 import type { Request, Response } from 'express';
 import { v4 as uuidv4 } from 'uuid';
 

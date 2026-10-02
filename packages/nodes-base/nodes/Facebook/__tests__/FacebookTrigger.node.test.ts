@@ -1,6 +1,6 @@
 import type { Response } from 'express';
 import { mock } from 'vitest-mock-extended';
-import type { IDataObject, IWebhookFunctions } from 'n8n-workflow';
+import type { IDataObject, IWebhookFunctions } from 'MNI-workflow';
 
 import { FacebookTrigger } from '../FacebookTrigger.node';
 import type { Mocked } from 'vitest';

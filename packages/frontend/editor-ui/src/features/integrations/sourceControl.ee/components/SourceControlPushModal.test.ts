@@ -3,17 +3,17 @@ import userEvent from '@testing-library/user-event';
 import { createComponentRenderer } from '@/__tests__/render';
 import SourceControlPushModal from './SourceControlPushModal.vue';
 import { createTestingPinia } from '@pinia/testing';
-import { createEventBus } from '@n8n/utils/event-bus';
-import type { SourceControlledFile } from '@n8n/api-types';
+import { createEventBus } from '@MNI/utils/event-bus';
+import type { SourceControlledFile } from '@MNI/api-types';
 import { useSourceControlStore } from '../sourceControl.store';
 import { mockedStore } from '@/__tests__/utils';
 import { VIEWS } from '@/app/constants';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
 import { useProjectsStore } from '@/features/collaboration/projects/projects.store';
 import type { ProjectListItem } from '@/features/collaboration/projects/projects.types';
 import { reactive } from 'vue';
-import { useSettingsStore } from '@n8n/stores/settings.store';
-import { defaultSettings } from '@n8n/frontend-test-utils';
+import { useSettingsStore } from '@MNI/stores/settings.store';
+import { defaultSettings } from '@MNI/frontend-test-utils';
 
 const eventBus = createEventBus();
 
@@ -42,7 +42,7 @@ vi.mock('vue-router', () => ({
 	},
 }));
 
-vi.mock('@n8n/composables/useTelemetry', () => {
+vi.mock('@MNI/composables/useTelemetry', () => {
 	const track = vi.fn();
 	return {
 		useTelemetry: () => {
@@ -61,7 +61,7 @@ vi.mock('@/app/composables/useLoadingService', () => ({
 	}),
 }));
 
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: () => ({
 		showMessage: vi.fn(),
 		showError: vi.fn(),
@@ -193,7 +193,7 @@ describe('SourceControlPushModal', () => {
 				status: 'created',
 				location: 'local',
 				conflict: false,
-				file: '/home/user/.n8n/git/workflows/gTbbBkkYTnNyX1jD.json',
+				file: '/home/user/.MNI/git/workflows/gTbbBkkYTnNyX1jD.json',
 				updatedAt: '2024-09-20T10:31:40.000Z',
 			},
 			{
@@ -203,7 +203,7 @@ describe('SourceControlPushModal', () => {
 				status: 'created',
 				location: 'local',
 				conflict: false,
-				file: '/home/user/.n8n/git/workflows/JIGKevgZagmJAnM6.json',
+				file: '/home/user/.MNI/git/workflows/JIGKevgZagmJAnM6.json',
 				updatedAt: '2024-09-20T14:42:51.968Z',
 			},
 		];
@@ -290,7 +290,7 @@ describe('SourceControlPushModal', () => {
 				status: 'created',
 				location: 'local',
 				conflict: false,
-				file: '/home/user/.n8n/git/workflows/wf-root.json',
+				file: '/home/user/.MNI/git/workflows/wf-root.json',
 				updatedAt: '2024-09-20T10:31:40.000Z',
 			},
 			{
@@ -300,7 +300,7 @@ describe('SourceControlPushModal', () => {
 				status: 'created',
 				location: 'local',
 				conflict: false,
-				file: '/home/user/.n8n/git/workflows/wf-child-1.json',
+				file: '/home/user/.MNI/git/workflows/wf-child-1.json',
 				updatedAt: '2024-09-20T10:32:40.000Z',
 				folderPath: ['Prod'],
 			},
@@ -311,7 +311,7 @@ describe('SourceControlPushModal', () => {
 				status: 'created',
 				location: 'local',
 				conflict: false,
-				file: '/home/user/.n8n/git/workflows/wf-child-2.json',
+				file: '/home/user/.MNI/git/workflows/wf-child-2.json',
 				updatedAt: '2024-09-20T10:33:40.000Z',
 				folderPath: ['Prod'],
 			},
@@ -366,7 +366,7 @@ describe('SourceControlPushModal', () => {
 				status: 'created',
 				location: 'local',
 				conflict: false,
-				file: '/home/user/.n8n/git/workflows/wf-root.json',
+				file: '/home/user/.MNI/git/workflows/wf-root.json',
 				updatedAt: '2024-09-20T10:31:40.000Z',
 			},
 			{
@@ -376,7 +376,7 @@ describe('SourceControlPushModal', () => {
 				status: 'created',
 				location: 'local',
 				conflict: false,
-				file: '/home/user/.n8n/git/workflows/wf-child-1.json',
+				file: '/home/user/.MNI/git/workflows/wf-child-1.json',
 				updatedAt: '2024-09-20T10:32:40.000Z',
 				folderPath: ['Prod'],
 			},
@@ -387,7 +387,7 @@ describe('SourceControlPushModal', () => {
 				status: 'created',
 				location: 'local',
 				conflict: false,
-				file: '/home/user/.n8n/git/workflows/wf-child-2.json',
+				file: '/home/user/.MNI/git/workflows/wf-child-2.json',
 				updatedAt: '2024-09-20T10:33:40.000Z',
 				folderPath: ['Prod'],
 			},
@@ -458,7 +458,7 @@ describe('SourceControlPushModal', () => {
 				status: 'created',
 				location: 'local',
 				conflict: false,
-				file: '/Users/raul/.n8n/git/data_tables.json',
+				file: '/Users/raul/.MNI/git/data_tables.json',
 				updatedAt: '2024-12-04T11:29:22.095Z',
 			},
 			{
@@ -468,7 +468,7 @@ describe('SourceControlPushModal', () => {
 				status: 'modified',
 				location: 'local',
 				conflict: false,
-				file: '/Users/raul/.n8n/git/tags.json',
+				file: '/Users/raul/.MNI/git/tags.json',
 				updatedAt: '2024-12-04T11:29:22.095Z',
 			},
 			{
@@ -478,7 +478,7 @@ describe('SourceControlPushModal', () => {
 				status: 'modified',
 				location: 'local',
 				conflict: false,
-				file: '/Users/raul/.n8n/git/folders.json',
+				file: '/Users/raul/.MNI/git/folders.json',
 				updatedAt: '2024-12-04T11:29:22.095Z',
 			},
 			{
@@ -552,7 +552,7 @@ describe('SourceControlPushModal', () => {
 				status: 'created',
 				location: 'local',
 				conflict: false,
-				file: '/home/user/.n8n/git/workflows/gTbbBkkYTnNyX1jD.json',
+				file: '/home/user/.MNI/git/workflows/gTbbBkkYTnNyX1jD.json',
 				updatedAt: '2024-09-20T10:31:40.000Z',
 			},
 			{
@@ -562,7 +562,7 @@ describe('SourceControlPushModal', () => {
 				status: 'created',
 				location: 'local',
 				conflict: false,
-				file: '/home/user/.n8n/git/workflows/JIGKevgZagmJAnM6.json',
+				file: '/home/user/.MNI/git/workflows/JIGKevgZagmJAnM6.json',
 				updatedAt: '2024-09-20T14:42:51.968Z',
 			},
 		];
@@ -615,7 +615,7 @@ describe('SourceControlPushModal', () => {
 				status: 'created',
 				location: 'local',
 				conflict: false,
-				file: '/home/user/.n8n/git/workflows/workflow-1.json',
+				file: '/home/user/.MNI/git/workflows/workflow-1.json',
 				updatedAt: '2024-09-20T10:30:00.000Z',
 			},
 			{
@@ -625,7 +625,7 @@ describe('SourceControlPushModal', () => {
 				status: 'created',
 				location: 'local',
 				conflict: false,
-				file: '/home/user/.n8n/git/credentials/cred-1.json',
+				file: '/home/user/.MNI/git/credentials/cred-1.json',
 				updatedAt: '2024-09-20T10:31:40.000Z',
 			},
 			{
@@ -635,7 +635,7 @@ describe('SourceControlPushModal', () => {
 				status: 'modified',
 				location: 'local',
 				conflict: false,
-				file: '/home/user/.n8n/git/credentials/cred-2.json',
+				file: '/home/user/.MNI/git/credentials/cred-2.json',
 				updatedAt: '2024-09-20T14:42:51.968Z',
 			},
 		];
@@ -690,7 +690,7 @@ describe('SourceControlPushModal', () => {
 				status: 'created',
 				location: 'local',
 				conflict: false,
-				file: '/home/user/.n8n/git/workflows/gTbbBkkYTnNyX1jD.json',
+				file: '/home/user/.MNI/git/workflows/gTbbBkkYTnNyX1jD.json',
 				updatedAt: '2024-09-20T10:31:40.000Z',
 			},
 			{
@@ -700,7 +700,7 @@ describe('SourceControlPushModal', () => {
 				status: 'created',
 				location: 'local',
 				conflict: false,
-				file: '/home/user/.n8n/git/workflows/JIGKevgZagmJAnM6.json',
+				file: '/home/user/.MNI/git/workflows/JIGKevgZagmJAnM6.json',
 				updatedAt: '2024-09-20T14:42:51.968Z',
 			},
 			{
@@ -710,7 +710,7 @@ describe('SourceControlPushModal', () => {
 				status: 'created',
 				location: 'local',
 				conflict: false,
-				file: '/home/user/.n8n/git/workflows/JIGKevgZagmJAnM6.json',
+				file: '/home/user/.MNI/git/workflows/JIGKevgZagmJAnM6.json',
 				updatedAt: '2024-09-20T14:42:51.968Z',
 			},
 		];
@@ -758,7 +758,7 @@ describe('SourceControlPushModal', () => {
 					status: 'created',
 					location: 'local',
 					conflict: false,
-					file: '/home/user/.n8n/git/workflows/workflow-1.json',
+					file: '/home/user/.MNI/git/workflows/workflow-1.json',
 					updatedAt: '2024-09-20T10:30:00.000Z',
 				},
 				{
@@ -768,7 +768,7 @@ describe('SourceControlPushModal', () => {
 					status: 'created',
 					location: 'local',
 					conflict: false,
-					file: '/home/user/.n8n/git/datatables/dt-1.json',
+					file: '/home/user/.MNI/git/datatables/dt-1.json',
 					updatedAt: '2024-09-20T10:31:40.000Z',
 				},
 				{
@@ -778,7 +778,7 @@ describe('SourceControlPushModal', () => {
 					status: 'modified',
 					location: 'local',
 					conflict: false,
-					file: '/home/user/.n8n/git/datatables/dt-2.json',
+					file: '/home/user/.MNI/git/datatables/dt-2.json',
 					updatedAt: '2024-09-20T14:42:51.968Z',
 				},
 			];
@@ -833,7 +833,7 @@ describe('SourceControlPushModal', () => {
 					status: 'created',
 					location: 'local',
 					conflict: false,
-					file: '/home/user/.n8n/git/workflows/wf-1.json',
+					file: '/home/user/.MNI/git/workflows/wf-1.json',
 					updatedAt: '2024-09-20T10:31:40.000Z',
 				},
 				{
@@ -843,7 +843,7 @@ describe('SourceControlPushModal', () => {
 					status: 'created',
 					location: 'local',
 					conflict: false,
-					file: '/home/user/.n8n/git/datatables/dt-1.json',
+					file: '/home/user/.MNI/git/datatables/dt-1.json',
 					updatedAt: '2024-09-20T14:42:51.968Z',
 				},
 			];
@@ -890,7 +890,7 @@ describe('SourceControlPushModal', () => {
 					status: 'created',
 					location: 'local',
 					conflict: false,
-					file: '/home/user/.n8n/git/workflows/wf-1.json',
+					file: '/home/user/.MNI/git/workflows/wf-1.json',
 					updatedAt: '2024-09-20T10:30:00.000Z',
 				},
 				{
@@ -900,7 +900,7 @@ describe('SourceControlPushModal', () => {
 					status: 'created',
 					location: 'local',
 					conflict: false,
-					file: '/home/user/.n8n/git/datatables/dt-1.json',
+					file: '/home/user/.MNI/git/datatables/dt-1.json',
 					updatedAt: '2024-09-20T10:31:40.000Z',
 				},
 				{
@@ -910,7 +910,7 @@ describe('SourceControlPushModal', () => {
 					status: 'modified',
 					location: 'local',
 					conflict: false,
-					file: '/home/user/.n8n/git/datatables/dt-2.json',
+					file: '/home/user/.MNI/git/datatables/dt-2.json',
 					updatedAt: '2024-09-20T14:42:51.968Z',
 				},
 			];
@@ -970,7 +970,7 @@ describe('SourceControlPushModal', () => {
 					status: 'created',
 					location: 'local',
 					conflict: false,
-					file: '/home/user/.n8n/git/workflows/wf-1.json',
+					file: '/home/user/.MNI/git/workflows/wf-1.json',
 					updatedAt: '2024-09-20T10:30:00.000Z',
 				},
 				{
@@ -980,7 +980,7 @@ describe('SourceControlPushModal', () => {
 					status: 'created',
 					location: 'local',
 					conflict: false,
-					file: '/home/user/.n8n/git/datatables/dt-1.json',
+					file: '/home/user/.MNI/git/datatables/dt-1.json',
 					updatedAt: '2024-09-20T10:31:40.000Z',
 				},
 				{
@@ -990,7 +990,7 @@ describe('SourceControlPushModal', () => {
 					status: 'modified',
 					location: 'local',
 					conflict: false,
-					file: '/home/user/.n8n/git/datatables/dt-2.json',
+					file: '/home/user/.MNI/git/datatables/dt-2.json',
 					updatedAt: '2024-09-20T14:42:51.968Z',
 				},
 			];
@@ -1050,7 +1050,7 @@ describe('SourceControlPushModal', () => {
 					status: 'created',
 					location: 'local',
 					conflict: false,
-					file: '/home/user/.n8n/git/workflows/wf-1.json',
+					file: '/home/user/.MNI/git/workflows/wf-1.json',
 					updatedAt: '2024-09-20T10:30:00.000Z',
 				},
 				{
@@ -1060,7 +1060,7 @@ describe('SourceControlPushModal', () => {
 					status: 'created',
 					location: 'local',
 					conflict: false,
-					file: '/home/user/.n8n/git/datatables/dt-1.json',
+					file: '/home/user/.MNI/git/datatables/dt-1.json',
 					updatedAt: '2024-09-20T10:31:40.000Z',
 				},
 				{
@@ -1070,7 +1070,7 @@ describe('SourceControlPushModal', () => {
 					status: 'modified',
 					location: 'local',
 					conflict: false,
-					file: '/home/user/.n8n/git/datatables/dt-2.json',
+					file: '/home/user/.MNI/git/datatables/dt-2.json',
 					updatedAt: '2024-09-20T14:42:51.968Z',
 				},
 			];
@@ -1121,7 +1121,7 @@ describe('SourceControlPushModal', () => {
 					status: 'created',
 					location: 'local',
 					conflict: false,
-					file: '/home/user/.n8n/git/workflows/wf-1.json',
+					file: '/home/user/.MNI/git/workflows/wf-1.json',
 					updatedAt: '2024-09-20T10:30:00.000Z',
 				},
 				{
@@ -1131,7 +1131,7 @@ describe('SourceControlPushModal', () => {
 					status: 'created',
 					location: 'local',
 					conflict: false,
-					file: '/home/user/.n8n/git/datatables/dt-1.json',
+					file: '/home/user/.MNI/git/datatables/dt-1.json',
 					updatedAt: '2024-09-20T10:31:40.000Z',
 				},
 				{
@@ -1141,7 +1141,7 @@ describe('SourceControlPushModal', () => {
 					status: 'modified',
 					location: 'local',
 					conflict: false,
-					file: '/home/user/.n8n/git/datatables/dt-2.json',
+					file: '/home/user/.MNI/git/datatables/dt-2.json',
 					updatedAt: '2024-09-20T14:42:51.968Z',
 				},
 				{
@@ -1151,7 +1151,7 @@ describe('SourceControlPushModal', () => {
 					status: 'modified',
 					location: 'local',
 					conflict: false,
-					file: '/home/user/.n8n/git/variables.json',
+					file: '/home/user/.MNI/git/variables.json',
 					updatedAt: '2024-09-20T14:42:51.968Z',
 				},
 			];
@@ -1208,7 +1208,7 @@ describe('SourceControlPushModal', () => {
 					status: 'created',
 					location: 'local',
 					conflict: false,
-					file: '/home/user/.n8n/git/workflows/wf-1.json',
+					file: '/home/user/.MNI/git/workflows/wf-1.json',
 					updatedAt: '2024-09-20T10:30:00.000Z',
 				},
 				{
@@ -1218,7 +1218,7 @@ describe('SourceControlPushModal', () => {
 					status: 'created',
 					location: 'local',
 					conflict: false,
-					file: '/home/user/.n8n/git/datatables/dt-1.json',
+					file: '/home/user/.MNI/git/datatables/dt-1.json',
 					updatedAt: '2024-09-20T10:31:40.000Z',
 				},
 				{
@@ -1228,7 +1228,7 @@ describe('SourceControlPushModal', () => {
 					status: 'modified',
 					location: 'local',
 					conflict: false,
-					file: '/home/user/.n8n/git/datatables/dt-2.json',
+					file: '/home/user/.MNI/git/datatables/dt-2.json',
 					updatedAt: '2024-09-20T14:42:51.968Z',
 				},
 			];
@@ -1303,7 +1303,7 @@ describe('SourceControlPushModal', () => {
 					status: 'created',
 					location: 'local',
 					conflict: false,
-					file: '/home/user/.n8n/git/workflows/gTbbBkkYTnNyX1jD.json',
+					file: '/home/user/.MNI/git/workflows/gTbbBkkYTnNyX1jD.json',
 					updatedAt: '2024-09-20T10:31:40.000Z',
 				},
 				{
@@ -1313,7 +1313,7 @@ describe('SourceControlPushModal', () => {
 					status: 'created',
 					location: 'local',
 					conflict: false,
-					file: '/home/user/.n8n/git/workflows/JIGKevgZagmJAnM6.json',
+					file: '/home/user/.MNI/git/workflows/JIGKevgZagmJAnM6.json',
 					updatedAt: '2024-09-20T14:42:51.968Z',
 				},
 			];
@@ -1357,7 +1357,7 @@ describe('SourceControlPushModal', () => {
 					status: 'created',
 					location: 'local',
 					conflict: false,
-					file: '/home/user/.n8n/git/workflows/gTbbBkkYTnNyX1jD.json',
+					file: '/home/user/.MNI/git/workflows/gTbbBkkYTnNyX1jD.json',
 					updatedAt: '2024-09-20T10:31:40.000Z',
 				},
 				{
@@ -1367,7 +1367,7 @@ describe('SourceControlPushModal', () => {
 					status: 'modified',
 					location: 'local',
 					conflict: false,
-					file: '/home/user/.n8n/git/workflows/JIGKevgZagmJAnM6.json',
+					file: '/home/user/.MNI/git/workflows/JIGKevgZagmJAnM6.json',
 					updatedAt: '2024-09-20T14:42:51.968Z',
 				},
 			];
@@ -1421,7 +1421,7 @@ describe('SourceControlPushModal', () => {
 					status: 'created',
 					location: 'local',
 					conflict: false,
-					file: '/home/user/.n8n/git/workflows/wf-alpha.json',
+					file: '/home/user/.MNI/git/workflows/wf-alpha.json',
 					updatedAt: '2024-09-20T10:31:40.000Z',
 					folderPath: ['Alpha'],
 				},
@@ -1432,7 +1432,7 @@ describe('SourceControlPushModal', () => {
 					status: 'created',
 					location: 'local',
 					conflict: false,
-					file: '/home/user/.n8n/git/workflows/wf-prod-root.json',
+					file: '/home/user/.MNI/git/workflows/wf-prod-root.json',
 					updatedAt: '2024-09-20T10:32:40.000Z',
 					folderPath: ['Prod'],
 				},
@@ -1443,7 +1443,7 @@ describe('SourceControlPushModal', () => {
 					status: 'created',
 					location: 'local',
 					conflict: false,
-					file: '/home/user/.n8n/git/workflows/wf-prod-billing.json',
+					file: '/home/user/.MNI/git/workflows/wf-prod-billing.json',
 					updatedAt: '2024-09-20T10:33:40.000Z',
 					folderPath: ['Prod', 'Billing'],
 				},
@@ -1454,7 +1454,7 @@ describe('SourceControlPushModal', () => {
 					status: 'created',
 					location: 'local',
 					conflict: false,
-					file: '/home/user/.n8n/git/workflows/wf-prod-analytics.json',
+					file: '/home/user/.MNI/git/workflows/wf-prod-analytics.json',
 					updatedAt: '2024-09-20T10:34:40.000Z',
 					folderPath: ['Prod', 'Analytics'],
 				},
@@ -1512,7 +1512,7 @@ describe('SourceControlPushModal', () => {
 					status: 'modified',
 					location: 'local',
 					conflict: true,
-					file: '/home/user/.n8n/git/workflows/wf-moved.json',
+					file: '/home/user/.MNI/git/workflows/wf-moved.json',
 					updatedAt: '2024-09-20T10:31:40.000Z',
 					folderPath: ['Archive'],
 					remoteFolderPath: ['Production'],
@@ -1575,7 +1575,7 @@ describe('SourceControlPushModal', () => {
 					status: 'created',
 					location: 'local',
 					conflict: false,
-					file: '/home/user/.n8n/git/workflows/gTbbBkkYTnNyX1jD.json',
+					file: '/home/user/.MNI/git/workflows/gTbbBkkYTnNyX1jD.json',
 					updatedAt: '2024-09-20T10:31:40.000Z',
 					owner: {
 						type: projects[0].type,
@@ -1590,7 +1590,7 @@ describe('SourceControlPushModal', () => {
 					status: 'created',
 					location: 'local',
 					conflict: false,
-					file: '/home/user/.n8n/git/workflows/JIGKevgZagmJAnM6.json',
+					file: '/home/user/.MNI/git/workflows/JIGKevgZagmJAnM6.json',
 					updatedAt: '2024-09-20T14:42:51.968Z',
 					owner: {
 						type: projects[1].type,
@@ -1653,7 +1653,7 @@ describe('SourceControlPushModal', () => {
 					status: 'modified',
 					location: 'local',
 					conflict: false,
-					file: '/home/user/.n8n/git/workflows/JIGKevgZagmJAnM6.json',
+					file: '/home/user/.MNI/git/workflows/JIGKevgZagmJAnM6.json',
 					updatedAt: '2024-09-20T14:42:51.968Z',
 				},
 			];
@@ -1716,7 +1716,7 @@ describe('SourceControlPushModal', () => {
 				status: 'created',
 				location: 'local',
 				conflict: false,
-				file: '/home/user/.n8n/git/workflows/wf-owner-filter.json',
+				file: '/home/user/.MNI/git/workflows/wf-owner-filter.json',
 				updatedAt: '2024-09-20T10:31:40.000Z',
 			},
 		];
@@ -1828,7 +1828,7 @@ describe('SourceControlPushModal', () => {
 					status: 'created',
 					location: 'local',
 					conflict: false,
-					file: '/home/user/.n8n/git/workflows/workflow-2.json',
+					file: '/home/user/.MNI/git/workflows/workflow-2.json',
 					updatedAt: '2024-09-20T10:31:40.000Z',
 				},
 			];
@@ -1972,7 +1972,7 @@ describe('SourceControlPushModal', () => {
 					status: 'created',
 					location: 'local',
 					conflict: false,
-					file: '/home/user/.n8n/git/workflows/gTbbBkkYTnNyX1jD.json',
+					file: '/home/user/.MNI/git/workflows/gTbbBkkYTnNyX1jD.json',
 					updatedAt: '2024-09-20T10:31:40.000Z',
 				},
 			];

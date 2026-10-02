@@ -1,7 +1,7 @@
-import { Logger } from '@n8n/backend-common';
-import { InstanceSettingsLoaderConfig } from '@n8n/config';
-import { SettingsRepository } from '@n8n/db';
-import { Service } from '@n8n/di';
+import { Logger } from '@MNI/backend-common';
+import { InstanceSettingsLoaderConfig } from '@MNI/config';
+import { SettingsRepository } from '@MNI/db';
+import { Service } from '@MNI/di';
 import { z } from 'zod';
 
 import { SAML_PREFERENCES_DB_KEY } from '@/modules/sso-saml/constants';
@@ -16,7 +16,7 @@ const samlEnvSchema = z
 	})
 	.refine((data) => data.samlMetadata || data.samlMetadataUrl, {
 		message:
-			'At least one of N8N_SSO_SAML_METADATA or N8N_SSO_SAML_METADATA_URL is required when configuring SAML via environment variables',
+			'At least one of MNI_SSO_SAML_METADATA or MNI_SSO_SAML_METADATA_URL is required when configuring SAML via environment variables',
 	})
 	.transform(({ samlMetadata, samlMetadataUrl, samlLoginEnabled }) => ({
 		...(samlMetadata ? { metadata: samlMetadata } : {}),

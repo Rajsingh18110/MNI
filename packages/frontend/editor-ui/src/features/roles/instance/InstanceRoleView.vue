@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { useMessage } from '@/app/composables/useMessage';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
-import { useToast } from '@n8n/composables/useToast';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
+import { useToast } from '@MNI/composables/useToast';
 import { MODAL_CONFIRM, VIEWS } from '@/app/constants';
-import { useRolesStore } from '@n8n/stores/roles.store';
-import { N8nButton, N8nHeading, N8nTabs, N8nText, N8nTooltip } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
-import { GLOBAL_ADMIN_ROLE_SLUG, GLOBAL_MEMBER_ROLE_SLUG } from '@n8n/permissions';
+import { useRolesStore } from '@MNI/stores/roles.store';
+import { N8nButton, N8nHeading, N8nTabs, N8nText, N8nTooltip } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
+import { GLOBAL_ADMIN_ROLE_SLUG, GLOBAL_MEMBER_ROLE_SLUG } from '@MNI/permissions';
 import { computed } from 'vue';
 import { useRouter } from 'vue-router';
 
@@ -319,7 +319,7 @@ async function deleteRole() {
 /* Widen the delete tooltip so the message wraps to two lines instead of three.
    Teleported to body, so target it globally; the two-class selector outranks
    the design-system default max-width. */
-:global(.n8n-tooltip.instanceRoleDeleteTooltip) {
+:global(.MNI-tooltip.instanceRoleDeleteTooltip) {
 	max-width: 260px;
 }
 </style>

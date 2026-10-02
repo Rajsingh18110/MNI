@@ -1,4 +1,4 @@
-import type { INodeProperties } from 'n8n-workflow';
+import type { INodeProperties } from 'MNI-workflow';
 
 import { searchProperties } from './common.descriptions';
 import { updateDisplayOptions } from '../../../utils/utilities';
@@ -413,7 +413,7 @@ export const eventFields: INodeProperties[] = [
 				name: 'sharing_group_id',
 				type: 'options',
 				default: '',
-				// eslint-disable-next-line n8n-nodes-base/node-param-description-wrong-for-dynamic-options
+				// eslint-disable-next-line MNI-nodes-base/node-param-description-wrong-for-dynamic-options
 				description:
 					'Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code/expressions/">expression</a>. Use only for when <code>Sharing Group</code> is selected in <code>Distribution</code>.',
 				typeOptions: {

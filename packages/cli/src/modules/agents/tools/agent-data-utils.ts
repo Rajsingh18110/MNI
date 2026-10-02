@@ -1,5 +1,5 @@
-import type { INodeExecutionData } from 'n8n-workflow';
-import { evaluateJmespathQuery } from 'n8n-workflow';
+import type { INodeExecutionData } from 'MNI-workflow';
+import { evaluateJmespathQuery } from 'MNI-workflow';
 
 export const MAX_ITEMS = 20;
 export const MAX_OUTPUT_CHARS = 50_000;

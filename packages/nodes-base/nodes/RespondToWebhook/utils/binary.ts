@@ -1,5 +1,5 @@
-import type { IBinaryData, IDataObject, IN8nHttpResponse } from 'n8n-workflow';
-import { BINARY_ENCODING } from 'n8n-workflow';
+import type { IBinaryData, IDataObject, IN8nHttpResponse } from 'MNI-workflow';
+import { BINARY_ENCODING } from 'MNI-workflow';
 import type { Readable } from 'stream';
 
 const setContentLength = (responseBody: IN8nHttpResponse | Readable, headers: IDataObject) => {

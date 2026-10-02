@@ -1,6 +1,6 @@
 import type { MockProxy } from 'vitest-mock-extended';
 import { mock } from 'vitest-mock-extended';
-import { SEND_AND_WAIT_OPERATION, type IExecuteFunctions } from 'n8n-workflow';
+import { SEND_AND_WAIT_OPERATION, type IExecuteFunctions } from 'MNI-workflow';
 
 import { EmailSendV2, versionDescription } from '../../v2/EmailSendV2.node';
 import * as utils from '../../v2/utils';

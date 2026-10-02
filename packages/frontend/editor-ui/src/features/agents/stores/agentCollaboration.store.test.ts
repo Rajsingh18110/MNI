@@ -15,13 +15,13 @@ vi.mock('@/app/stores/pushConnection.store', () => ({
 	usePushConnectionStore: () => mockPushStore,
 }));
 
-vi.mock('@n8n/stores/users.store', () => ({
+vi.mock('@MNI/stores/users.store', () => ({
 	useUsersStore: () => ({
 		currentUserId: 'user-1',
 	}),
 }));
 
-vi.mock('@n8n/stores/useRootStore', () => ({
+vi.mock('@MNI/stores/useRootStore', () => ({
 	useRootStore: () => ({
 		restApiContext: {},
 		pushRef: 'push-1',

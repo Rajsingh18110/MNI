@@ -1,6 +1,6 @@
-import { BLOCK_ACCESS_ASSIGNMENT, type ProvisioningConfigDto } from '@n8n/api-types';
-import type { Logger } from '@n8n/backend-common';
-import { type GlobalConfig } from '@n8n/config';
+import { BLOCK_ACCESS_ASSIGNMENT, type ProvisioningConfigDto } from '@MNI/api-types';
+import type { Logger } from '@MNI/backend-common';
+import { type GlobalConfig } from '@MNI/config';
 import {
 	type User,
 	type UserRepository,
@@ -11,9 +11,9 @@ import {
 	type Project,
 	type ProjectRepository,
 	ProjectRelation,
-} from '@n8n/db';
-import type { EntityManager } from '@n8n/typeorm';
-import { type InstanceSettings } from 'n8n-core';
+} from '@MNI/db';
+import type { EntityManager } from '@MNI/typeorm';
+import { type InstanceSettings } from 'MNI-core';
 import { mock } from 'vitest-mock-extended';
 
 import { BadRequestError } from '@/errors/response-errors/bad-request.error';
@@ -80,9 +80,9 @@ describe('ProvisioningService', () => {
 	const provisioningConfigDto: ProvisioningConfigDto = {
 		scopesProvisionInstanceRole: true,
 		scopesProvisionProjectRoles: true,
-		scopesName: 'n8n_test_scope',
-		scopesInstanceRoleClaimName: 'n8n_test_instance_role',
-		scopesProjectsRolesClaimName: 'n8n_test_projects_roles',
+		scopesName: 'MNI_test_scope',
+		scopesInstanceRoleClaimName: 'MNI_test_instance_role',
+		scopesProjectsRolesClaimName: 'MNI_test_projects_roles',
 		scopesUseExpressionMapping: false,
 	};
 
@@ -167,9 +167,9 @@ describe('ProvisioningService', () => {
 			const overriddenConfig = {
 				scopesProvisionInstanceRole: false,
 				scopesProvisionProjectRoles: false,
-				scopesName: 'n8n_test_scope_overridden',
-				scopesInstanceRoleClaimName: 'n8n_test_instance_role_overridden',
-				scopesProjectsRolesClaimName: 'n8n_test_projects_roles_overridden',
+				scopesName: 'MNI_test_scope_overridden',
+				scopesInstanceRoleClaimName: 'MNI_test_instance_role_overridden',
+				scopesProjectsRolesClaimName: 'MNI_test_projects_roles_overridden',
 				scopesUseExpressionMapping: false,
 			};
 			settingsRepository.findByKey.mockResolvedValue({

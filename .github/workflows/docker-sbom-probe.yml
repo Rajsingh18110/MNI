@@ -56,7 +56,7 @@ jobs:
           node-version: ${{ env.NODE_VERSION }}
           build-command: pnpm build:MNI
           enable-docker-cache: 'true'
-          docker-cache-key: n8n-io/n8n
+          docker-cache-key: MNI-io/MNI
 
       - name: Login to GHCR
         uses: ./.github/actions/docker-registry-login
@@ -66,7 +66,7 @@ jobs:
       - name: Build and push scratch image
         env:
           PLATFORMS: linux/${{ matrix.platform }}
-          N8N_TAGS: ${{ env.SCRATCH_IMAGE }}:${{ env.SCRATCH_TAG }}-${{ matrix.platform }}
+          MNI_TAGS: ${{ env.SCRATCH_IMAGE }}:${{ env.SCRATCH_TAG }}-${{ matrix.platform }}
           SBOM: ${{ inputs.sbom }}
         run: |
           if [ "$SBOM" = 'true' ]; then
@@ -74,7 +74,7 @@ jobs:
           else
             OUT=(--set '*.output=type=image,oci-mediatypes=true,push=true')
           fi
-          docker buildx bake -f docker/docker-bake.hcl n8n \
+          docker buildx bake -f docker/docker-bake.hcl MNI \
             --provenance=false \
             --sbom="$SBOM" \
             "${OUT[@]}"

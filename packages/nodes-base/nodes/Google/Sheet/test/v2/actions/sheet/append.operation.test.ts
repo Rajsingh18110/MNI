@@ -1,6 +1,6 @@
 import { mock, mockDeep } from 'vitest-mock-extended';
-import type { IExecuteFunctions, INode } from 'n8n-workflow';
-import { NodeOperationError } from 'n8n-workflow';
+import type { IExecuteFunctions, INode } from 'MNI-workflow';
+import { NodeOperationError } from 'MNI-workflow';
 
 import { execute } from '../../../../v2/actions/sheet/append.operation';
 import type { GoogleSheet } from '../../../../v2/helpers/GoogleSheet';
@@ -29,7 +29,7 @@ describe('Google Sheets Append Operation', () => {
 		mockNode = mock<INode>({
 			id: 'test-node',
 			name: 'Google Sheets Append',
-			type: 'n8n-nodes-base.googleSheets',
+			type: 'MNI-nodes-base.googleSheets',
 			typeVersion: 3,
 			position: [0, 0],
 			parameters: {},

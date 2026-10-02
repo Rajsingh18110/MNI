@@ -4,8 +4,8 @@ import type {
 	IExecuteSingleFunctions,
 	IHttpRequestOptions,
 	INode,
-} from 'n8n-workflow';
-import { NodeOperationError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeOperationError } from 'MNI-workflow';
 
 import {
 	microsoftApiRequest,
@@ -34,7 +34,7 @@ describe('Microsoft Entra GenericFunctions', () => {
 		mockNode = {
 			id: 'test-node',
 			name: 'Test Entra Node',
-			type: 'n8n-nodes-base.microsoftEntra',
+			type: 'MNI-nodes-base.microsoftEntra',
 			typeVersion: 1,
 			position: [0, 0],
 			parameters: {},

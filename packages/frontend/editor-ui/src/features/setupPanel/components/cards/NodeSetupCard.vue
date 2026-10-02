@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue';
-import { useI18n } from '@n8n/i18n';
-import { N8nIcon, N8nText, N8nTooltip } from '@n8n/design-system';
-import { MANUAL_TRIGGER_NODE_TYPE, type INodeProperties } from 'n8n-workflow';
+import { useI18n } from '@MNI/i18n';
+import { N8nIcon, N8nText, N8nTooltip } from '@MNI/design-system';
+import { MANUAL_TRIGGER_NODE_TYPE, type INodeProperties } from 'MNI-workflow';
 
 import NodeIcon from '@/app/components/NodeIcon.vue';
 import CredentialIcon from '@/features/credentials/components/CredentialIcon.vue';

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { provide, ref } from 'vue';
-import type { INode } from 'n8n-workflow';
-import { UNSUPPORTED_AGENT_NODE_TOOL_OPERATIONS } from '@n8n/api-types';
+import type { INode } from 'MNI-workflow';
+import { UNSUPPORTED_AGENT_NODE_TOOL_OPERATIONS } from '@MNI/api-types';
 
 import {
 	CUSTOM_API_CALL_KEY,

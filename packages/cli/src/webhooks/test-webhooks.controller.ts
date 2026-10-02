@@ -1,5 +1,5 @@
-import { AuthenticatedRequest } from '@n8n/db';
-import { Delete, Param, ProjectScope, RestController } from '@n8n/decorators';
+import { AuthenticatedRequest } from '@MNI/db';
+import { Delete, Param, ProjectScope, RestController } from '@MNI/decorators';
 import { Response } from 'express';
 
 import { TestWebhooks } from '@/webhooks/test-webhooks';

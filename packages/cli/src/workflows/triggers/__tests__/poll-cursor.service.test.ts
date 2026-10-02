@@ -1,13 +1,13 @@
-import type { Logger } from '@n8n/backend-common';
-import type { SchedulerConfig, WorkflowsConfig } from '@n8n/config';
+import type { Logger } from '@MNI/backend-common';
+import type { SchedulerConfig, WorkflowsConfig } from '@MNI/config';
 import type {
 	CreateExecutionPayload,
 	OperationContext,
 	PollLeaseFence,
 	PollerStateRepository,
 	TransactionRunner,
-} from '@n8n/db';
-import type { IWorkflowBase } from 'n8n-workflow';
+} from '@MNI/db';
+import type { IWorkflowBase } from 'MNI-workflow';
 import { mock, type MockProxy } from 'vitest-mock-extended';
 
 import { DuplicateExecutionError } from '@/errors/duplicate-execution.error';
@@ -96,7 +96,7 @@ describe('PollCursorService', () => {
 
 			expect(logger.warn).toHaveBeenCalledTimes(1);
 			expect(logger.warn).toHaveBeenCalledWith(
-				expect.stringContaining('N8N_POLLER_DURABLE_CURSORS_ENABLED'),
+				expect.stringContaining('MNI_POLLER_DURABLE_CURSORS_ENABLED'),
 			);
 		});
 

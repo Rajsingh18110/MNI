@@ -1,10 +1,10 @@
-import type { ChatMessageId, ChatSessionId, ChatAttachment } from '@n8n/api-types';
-import { Service } from '@n8n/di';
-import { Not, IsNull } from '@n8n/typeorm';
-import type { EntityManager } from '@n8n/typeorm';
-import { sanitizeFilename } from '@n8n/utils/files/sanitize-filename';
-import { BinaryDataService, FileLocation, TEMP_EXECUTION_ID } from 'n8n-core';
-import { BINARY_ENCODING, type IBinaryData } from 'n8n-workflow';
+import type { ChatMessageId, ChatSessionId, ChatAttachment } from '@MNI/api-types';
+import { Service } from '@MNI/di';
+import { Not, IsNull } from '@MNI/typeorm';
+import type { EntityManager } from '@MNI/typeorm';
+import { sanitizeFilename } from '@MNI/utils/files/sanitize-filename';
+import { BinaryDataService, FileLocation, TEMP_EXECUTION_ID } from 'MNI-core';
+import { BINARY_ENCODING, type IBinaryData } from 'MNI-workflow';
 import type Stream from 'node:stream';
 
 import { BadRequestError } from '@/errors/response-errors/bad-request.error';

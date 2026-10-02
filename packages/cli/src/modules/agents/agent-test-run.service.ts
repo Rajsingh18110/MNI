@@ -4,17 +4,17 @@ import {
 	type CredentialProvider,
 	type SerializableAgentState,
 	type StreamChunk,
-} from '@n8n/agents';
+} from '@MNI/agents';
 import {
 	APPROVAL_RESUME_SCHEMA,
 	APPROVAL_SUSPEND_SCHEMA,
 	type ApprovalSuspendPayload,
-} from '@n8n/agents/tool';
-import { zodToJsonSchema } from '@n8n/ai-utilities/json-schema';
-import { N8N_CHAT_INTEGRATION_TYPE } from '@n8n/api-types';
-import type { User } from '@n8n/db';
-import { Service } from '@n8n/di';
-import { UnexpectedError, UserError } from 'n8n-workflow';
+} from '@MNI/agents/tool';
+import { zodToJsonSchema } from '@MNI/ai-utilities/json-schema';
+import { MNI_CHAT_INTEGRATION_TYPE } from '@MNI/api-types';
+import type { User } from '@MNI/db';
+import { Service } from '@MNI/di';
+import { UnexpectedError, UserError } from 'MNI-workflow';
 import { z } from 'zod';
 
 import {
@@ -24,7 +24,7 @@ import {
 } from './agent-execution-orchestrator.service';
 import { AgentExecutionService } from './agent-execution.service';
 import { AgentValidationService } from './agent-validation.service';
-import { N8NCheckpointStorage } from './integrations/n8n-checkpoint-storage';
+import { N8NCheckpointStorage } from './integrations/MNI-checkpoint-storage';
 import { draftChatMemoryResourceId } from './utils/agent-memory-scope';
 import type { AgentSessionMode } from './utils/agent-thread-access';
 
@@ -239,7 +239,7 @@ export class AgentTestRunService {
 		const stream = this.agentExecutionOrchestratorService.resumeForChat({
 			...execution,
 			usePublishedVersion: false,
-			integrationType: N8N_CHAT_INTEGRATION_TYPE,
+			integrationType: MNI_CHAT_INTEGRATION_TYPE,
 			onExecutionRecorded: (id) => {
 				executionId = id;
 				onExecutionRecorded?.(id);

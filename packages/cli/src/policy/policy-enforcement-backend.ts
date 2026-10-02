@@ -8,7 +8,7 @@ import type {
 	WorkflowSaveContext,
 	WorkflowStartContext,
 	WorkflowTransferContext,
-} from '@n8n/decorators';
+} from '@MNI/decorators';
 
 /** Which context each point is called with, mirroring `RegisteredPolicyCheck`. */
 type PolicyContexts = {

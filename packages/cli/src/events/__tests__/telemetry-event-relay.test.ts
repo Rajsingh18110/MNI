@@ -1,7 +1,7 @@
-import type { LicenseState } from '@n8n/backend-common';
-import { mockInstance } from '@n8n/backend-test-utils';
-import { EMPTY_CANVAS_GROUPS_FLAG } from '@n8n/api-types';
-import type { GlobalConfig } from '@n8n/config';
+import type { LicenseState } from '@MNI/backend-common';
+import { mockInstance } from '@MNI/backend-test-utils';
+import { EMPTY_CANVAS_GROUPS_FLAG } from '@MNI/api-types';
+import type { GlobalConfig } from '@MNI/config';
 import {
 	type CredentialsEntity,
 	type CredentialsRepository,
@@ -15,10 +15,10 @@ import {
 	type WorkflowRepository,
 	GLOBAL_OWNER_ROLE,
 	In,
-} from '@n8n/db';
-import { Container } from '@n8n/di';
-import { TELEMETRY_EVENT } from '@n8n/telemetry';
-import { type BinaryDataConfig, InstanceSettings } from 'n8n-core';
+} from '@MNI/db';
+import { Container } from '@MNI/di';
+import { TELEMETRY_EVENT } from '@MNI/telemetry';
+import { type BinaryDataConfig, InstanceSettings } from 'MNI-core';
 import {
 	createErrorExecutionData,
 	type INode,
@@ -27,10 +27,10 @@ import {
 	type IWorkflowBase,
 	NodeApiError,
 	TelemetryHelpers,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
-import { N8N_VERSION } from '@/constants';
+import { MNI_VERSION } from '@/constants';
 import type { DynamicCredentialsProxy } from '@/credentials/dynamic-credentials-proxy';
 import { EventService } from '@/events/event.service';
 import type { RelayEventMap } from '@/events/maps/relay.event-map';
@@ -143,7 +143,7 @@ describe('TelemetryEventRelay', () => {
 		},
 		instanceAi: {
 			sandboxEnabled: false,
-			sandboxProvider: 'n8n-sandbox',
+			sandboxProvider: 'MNI-sandbox',
 			braveSearchApiKey: '',
 			searxngUrl: '',
 			model: 'anthropic/claude-sonnet-4',
@@ -680,17 +680,17 @@ describe('TelemetryEventRelay', () => {
 		const denyRule: PolicyRule = {
 			id: 'rule-1',
 			action: 'deny',
-			selector: { kind: 'name', value: 'n8n-nodes-base.executeCommand' },
+			selector: { kind: 'name', value: 'MNI-nodes-base.executeCommand' },
 		};
 		const allowPackageRule: PolicyRule = {
 			id: 'rule-2',
 			action: 'allow',
-			selector: { kind: 'package', value: 'n8n-nodes-base' },
+			selector: { kind: 'package', value: 'MNI-nodes-base' },
 		};
 		const delegateRule: PolicyRule = {
 			id: 'rule-3',
 			action: 'delegate',
-			selector: { kind: 'name', value: 'n8n-nodes-base.code' },
+			selector: { kind: 'name', value: 'MNI-nodes-base.code' },
 		};
 
 		const knownTypes = (...names: string[]) =>
@@ -713,9 +713,9 @@ describe('TelemetryEventRelay', () => {
 		beforeEach(() => {
 			nodeTypes.getKnownTypes.mockReturnValue(
 				knownTypes(
-					'n8n-nodes-base.code',
-					'n8n-nodes-base.executeCommand',
-					'@acme/n8n-nodes-acme.thing',
+					'MNI-nodes-base.code',
+					'MNI-nodes-base.executeCommand',
+					'@acme/MNI-nodes-acme.thing',
 				),
 			);
 			Object.defineProperty(loadNodesAndCredentials, 'knownCredentials', {
@@ -723,8 +723,8 @@ describe('TelemetryEventRelay', () => {
 				value: knownCredentials('slackApi', 'notionApi', 'httpBasicAuth'),
 			});
 			loadNodesAndCredentials.loaders = {
-				'n8n-nodes-base': makeLoader('n8n-nodes-base', ['slackApi', 'notionApi']),
-				'@acme/n8n-nodes-acme': makeLoader('@acme/n8n-nodes-acme', ['httpBasicAuth']),
+				'MNI-nodes-base': makeLoader('MNI-nodes-base', ['slackApi', 'notionApi']),
+				'@acme/MNI-nodes-acme': makeLoader('@acme/MNI-nodes-acme', ['httpBasicAuth']),
 			};
 			nodeTypes.resolveBaseName.mockImplementation((name) => ({
 				baseName: name,
@@ -734,12 +734,12 @@ describe('TelemetryEventRelay', () => {
 
 		it('should count a synthetic tool variant under the rule for its node', () => {
 			nodeTypes.getKnownTypes.mockReturnValue(
-				knownTypes('n8n-nodes-base.executeCommand', 'n8n-nodes-base.executeCommandTool'),
+				knownTypes('MNI-nodes-base.executeCommand', 'MNI-nodes-base.executeCommandTool'),
 			);
 			nodeTypes.resolveBaseName.mockImplementation((name) => ({
 				baseName:
-					name === 'n8n-nodes-base.executeCommandTool' ? 'n8n-nodes-base.executeCommand' : name,
-				isSyntheticTool: name === 'n8n-nodes-base.executeCommandTool',
+					name === 'MNI-nodes-base.executeCommandTool' ? 'MNI-nodes-base.executeCommand' : name,
+				isSyntheticTool: name === 'MNI-nodes-base.executeCommandTool',
 			}));
 
 			eventService.emit('node-type-policy-saved', {
@@ -758,7 +758,7 @@ describe('TelemetryEventRelay', () => {
 				TELEMETRY_EVENT.TYPE_AVAILABILITY_POLICIES.USER_SAVED_TYPE_AVAILABILITY_POLICY,
 				expect.objectContaining({
 					blocked_type_count: 2,
-					blocked_types: ['n8n-nodes-base.executeCommand', 'n8n-nodes-base.executeCommandTool'],
+					blocked_types: ['MNI-nodes-base.executeCommand', 'MNI-nodes-base.executeCommandTool'],
 				}),
 			);
 		});
@@ -798,8 +798,8 @@ describe('TelemetryEventRelay', () => {
 					blocked_type_count: 2,
 					allowed_type_count: 1,
 					delegated_type_count: 0,
-					blocked_types: ['n8n-nodes-base.executeCommand', '@acme/n8n-nodes-acme.thing'],
-					allowed_types: ['n8n-nodes-base.code'],
+					blocked_types: ['MNI-nodes-base.executeCommand', '@acme/MNI-nodes-acme.thing'],
+					allowed_types: ['MNI-nodes-base.code'],
 					previous_rule_count: null,
 					shadow_warning_count: 2,
 					version: 1,
@@ -845,7 +845,7 @@ describe('TelemetryEventRelay', () => {
 			const credentialPackageDenyRule: PolicyRule = {
 				id: 'rule-1',
 				action: 'deny',
-				selector: { kind: 'package', value: 'n8n-nodes-base' },
+				selector: { kind: 'package', value: 'MNI-nodes-base' },
 			};
 
 			const event: RelayEventMap['node-type-policy-saved'] = {
@@ -1062,8 +1062,8 @@ describe('TelemetryEventRelay', () => {
 				expect.objectContaining({
 					blocked_type_count: 1,
 					allowed_type_count: 2,
-					blocked_types: ['n8n-nodes-base.executeCommand'],
-					allowed_types: ['n8n-nodes-base.code', '@acme/n8n-nodes-acme.thing'],
+					blocked_types: ['MNI-nodes-base.executeCommand'],
+					allowed_types: ['MNI-nodes-base.code', '@acme/MNI-nodes-acme.thing'],
 				}),
 			);
 		});
@@ -1086,13 +1086,13 @@ describe('TelemetryEventRelay', () => {
 				expect.objectContaining({
 					rule_count: 1,
 					blocked_type_count: 2,
-					blocked_types: ['n8n-nodes-base.code', 'n8n-nodes-base.executeCommand'],
+					blocked_types: ['MNI-nodes-base.code', 'MNI-nodes-base.executeCommand'],
 				}),
 			);
 		});
 
 		it('should cap the listed types and flag that it did', () => {
-			const names = Array.from({ length: 250 }, (_, i) => `n8n-nodes-base.node${i}`);
+			const names = Array.from({ length: 250 }, (_, i) => `MNI-nodes-base.node${i}`);
 			nodeTypes.getKnownTypes.mockReturnValue(knownTypes(...names));
 
 			eventService.emit('node-type-policy-saved', {
@@ -1140,9 +1140,9 @@ describe('TelemetryEventRelay', () => {
 					blocked_type_count: 3,
 					allowed_type_count: 0,
 					blocked_types: [
-						'n8n-nodes-base.code',
-						'n8n-nodes-base.executeCommand',
-						'@acme/n8n-nodes-acme.thing',
+						'MNI-nodes-base.code',
+						'MNI-nodes-base.executeCommand',
+						'@acme/MNI-nodes-acme.thing',
 					],
 					allowed_types: [],
 				}),
@@ -1472,7 +1472,7 @@ describe('TelemetryEventRelay', () => {
 				path: '/api/v1/workflows',
 				method: 'GET',
 				apiVersion: 'v1',
-				userAgent: 'n8n-cli',
+				userAgent: 'MNI-cli',
 			};
 
 			eventService.emit('public-api-invoked', event);
@@ -1482,7 +1482,7 @@ describe('TelemetryEventRelay', () => {
 				path: '/api/v1/workflows',
 				method: 'GET',
 				api_version: 'v1',
-				user_agent: 'n8n-cli',
+				user_agent: 'MNI-cli',
 			});
 		});
 
@@ -1539,8 +1539,8 @@ describe('TelemetryEventRelay', () => {
 					lastName: 'Doe',
 					role: { slug: GLOBAL_OWNER_ROLE.slug },
 				},
-				inputString: 'n8n-nodes-package',
-				packageName: 'n8n-nodes-package',
+				inputString: 'MNI-nodes-package',
+				packageName: 'MNI-nodes-package',
 				success: true,
 				packageVersion: '1.0.0',
 				packageNodeNames: ['CustomNode1', 'CustomNode2'],
@@ -1552,8 +1552,8 @@ describe('TelemetryEventRelay', () => {
 
 			expect(telemetry.track).toHaveBeenCalledWith('cnr package install finished', {
 				user_id: 'user123',
-				input_string: 'n8n-nodes-package',
-				package_name: 'n8n-nodes-package',
+				input_string: 'MNI-nodes-package',
+				package_name: 'MNI-nodes-package',
 				success: true,
 				package_version: '1.0.0',
 				package_node_names: ['CustomNode1', 'CustomNode2'],
@@ -1572,7 +1572,7 @@ describe('TelemetryEventRelay', () => {
 					lastName: 'Doe',
 					role: { slug: GLOBAL_OWNER_ROLE.slug },
 				},
-				packageName: 'n8n-nodes-package',
+				packageName: 'MNI-nodes-package',
 				packageVersionCurrent: '1.0.0',
 				packageVersionNew: '1.1.0',
 				packageNodeNames: ['CustomNode1', 'CustomNode2'],
@@ -1584,7 +1584,7 @@ describe('TelemetryEventRelay', () => {
 
 			expect(telemetry.track).toHaveBeenCalledWith('cnr package updated', {
 				user_id: 'user123',
-				package_name: 'n8n-nodes-package',
+				package_name: 'MNI-nodes-package',
 				package_version_current: '1.0.0',
 				package_version_new: '1.1.0',
 				package_node_names: ['CustomNode1', 'CustomNode2'],
@@ -1602,7 +1602,7 @@ describe('TelemetryEventRelay', () => {
 					lastName: 'Doe',
 					role: { slug: GLOBAL_OWNER_ROLE.slug },
 				},
-				packageName: 'n8n-nodes-package',
+				packageName: 'MNI-nodes-package',
 				packageVersion: '1.0.0',
 				packageNodeNames: ['CustomNode1', 'CustomNode2'],
 				packageAuthor: 'John Smith',
@@ -1613,7 +1613,7 @@ describe('TelemetryEventRelay', () => {
 
 			expect(telemetry.track).toHaveBeenCalledWith('cnr package deleted', {
 				user_id: 'user123',
-				package_name: 'n8n-nodes-package',
+				package_name: 'MNI-nodes-package',
 				package_version: '1.0.0',
 				package_node_names: ['CustomNode1', 'CustomNode2'],
 				package_author: 'John Smith',
@@ -2115,7 +2115,7 @@ describe('TelemetryEventRelay', () => {
 						{
 							id: 'node-1',
 							name: 'Node 1',
-							type: 'n8n-nodes-base.noOp',
+							type: 'MNI-nodes-base.noOp',
 							typeVersion: 1,
 							position: [0, 0],
 							parameters: {},
@@ -2129,7 +2129,7 @@ describe('TelemetryEventRelay', () => {
 						{
 							id: 'node-2',
 							name: 'Node 2',
-							type: 'n8n-nodes-base.noOp',
+							type: 'MNI-nodes-base.noOp',
 							typeVersion: 1,
 							position: [0, 0],
 							parameters: {},
@@ -2161,7 +2161,7 @@ describe('TelemetryEventRelay', () => {
 		it('should truncate node_graph_string when it exceeds size limit', async () => {
 			const largeNodeGraph: INodesGraphResult = {
 				nodeGraph: {
-					node_types: Array.from({ length: 1000 }, (_, i) => `n8n-nodes-base.node${i}`),
+					node_types: Array.from({ length: 1000 }, (_, i) => `MNI-nodes-base.node${i}`),
 					node_connections: Array.from({ length: 1000 }, (_, i) => ({
 						start: `${i}`,
 						end: `${i + 1}`,
@@ -2171,7 +2171,7 @@ describe('TelemetryEventRelay', () => {
 							`${i}`,
 							{
 								id: `node-${i}`,
-								type: `n8n-nodes-base.veryLongNodeTypeName${i}`,
+								type: `MNI-nodes-base.veryLongNodeTypeName${i}`,
 								version: 1,
 								position: [i * 100, i * 100],
 							},
@@ -2311,7 +2311,7 @@ describe('TelemetryEventRelay', () => {
 			const anchor: INode = {
 				id: 'anchor',
 				name: 'Empty Group Anchor',
-				type: 'n8n-nodes-base.noOp',
+				type: 'MNI-nodes-base.noOp',
 				typeVersion: 1,
 				position: [0, 0],
 				parameters: { emptyGroupAnchor: true },
@@ -2418,7 +2418,7 @@ describe('TelemetryEventRelay', () => {
 				}),
 				publicApi: true,
 				deactivatedVersionId: 'version-abc-123',
-				source: 'n8n-mcp',
+				source: 'MNI-mcp',
 			};
 
 			eventService.emit('workflow-deactivated', event);
@@ -2428,7 +2428,7 @@ describe('TelemetryEventRelay', () => {
 				workflow_id: 'workflow123',
 				public_api: true,
 				deactivated_version_id: 'version-abc-123',
-				source: 'n8n-mcp',
+				source: 'MNI-mcp',
 			});
 		});
 
@@ -2551,7 +2551,7 @@ describe('TelemetryEventRelay', () => {
 				is_manual: false,
 				success: false,
 				user_id: 'user123',
-				version_cli: N8N_VERSION,
+				version_cli: MNI_VERSION,
 				workflow_id: 'workflow123',
 				used_end_user_credentials: false,
 				end_user_credentials_attempted_count: 0,
@@ -2595,7 +2595,7 @@ describe('TelemetryEventRelay', () => {
 		});
 
 		it('should count attempted vs resolved end-user credentials and the effective resolver', async () => {
-			dynamicCredentialsProxy.getEffectiveResolverId.mockReturnValueOnce('system-n8n');
+			dynamicCredentialsProxy.getEffectiveResolverId.mockReturnValueOnce('system-MNI');
 
 			const event: RelayEventMap['workflow-post-execute'] = {
 				workflow: mock<IWorkflowDb>({
@@ -2627,7 +2627,7 @@ describe('TelemetryEventRelay', () => {
 					used_end_user_credentials: true,
 					end_user_credentials_attempted_count: 2,
 					end_user_credentials_resolved_count: 1,
-					credential_resolver_id: 'system-n8n',
+					credential_resolver_id: 'system-MNI',
 				}),
 			);
 		});
@@ -2702,7 +2702,7 @@ describe('TelemetryEventRelay', () => {
 						{
 							id: 'node-1',
 							name: 'Node 1',
-							type: 'n8n-nodes-base.noOp',
+							type: 'MNI-nodes-base.noOp',
 							typeVersion: 1,
 							position: [0, 0],
 							parameters: {},
@@ -2716,7 +2716,7 @@ describe('TelemetryEventRelay', () => {
 						{
 							id: 'node-2',
 							name: 'Node 2',
-							type: 'n8n-nodes-base.noOp',
+							type: 'MNI-nodes-base.noOp',
 							typeVersion: 1,
 							position: [0, 0],
 							parameters: {},
@@ -2727,7 +2727,7 @@ describe('TelemetryEventRelay', () => {
 						{
 							id: 'node-3',
 							name: 'Node 3',
-							type: 'n8n-nodes-base.noOp',
+							type: 'MNI-nodes-base.noOp',
 							typeVersion: 1,
 							position: [0, 0],
 							parameters: {},
@@ -2868,7 +2868,7 @@ describe('TelemetryEventRelay', () => {
 						{
 							id: 'node-1',
 							name: 'Slack',
-							type: 'n8n-nodes-base.slack',
+							type: 'MNI-nodes-base.slack',
 							typeVersion: 1,
 							position: [0, 0],
 							parameters: {},
@@ -2877,7 +2877,7 @@ describe('TelemetryEventRelay', () => {
 						{
 							id: 'node-2',
 							name: 'Notion',
-							type: 'n8n-nodes-base.notion',
+							type: 'MNI-nodes-base.notion',
 							typeVersion: 1,
 							position: [0, 0],
 							parameters: {},
@@ -2928,7 +2928,7 @@ describe('TelemetryEventRelay', () => {
 						{
 							id: 'node-1',
 							name: 'Slack',
-							type: 'n8n-nodes-base.slack',
+							type: 'MNI-nodes-base.slack',
 							typeVersion: 1,
 							position: [0, 0],
 							parameters: {},
@@ -2976,7 +2976,7 @@ describe('TelemetryEventRelay', () => {
 						{
 							id: 'node-1',
 							name: 'Slack 1',
-							type: 'n8n-nodes-base.slack',
+							type: 'MNI-nodes-base.slack',
 							typeVersion: 1,
 							position: [0, 0],
 							parameters: {},
@@ -2985,7 +2985,7 @@ describe('TelemetryEventRelay', () => {
 						{
 							id: 'node-2',
 							name: 'Slack 2',
-							type: 'n8n-nodes-base.slack',
+							type: 'MNI-nodes-base.slack',
 							typeVersion: 1,
 							position: [0, 0],
 							parameters: {},
@@ -2994,7 +2994,7 @@ describe('TelemetryEventRelay', () => {
 						{
 							id: 'node-3',
 							name: 'Notion',
-							type: 'n8n-nodes-base.notion',
+							type: 'MNI-nodes-base.notion',
 							typeVersion: 1,
 							position: [0, 0],
 							parameters: {},
@@ -3100,8 +3100,8 @@ describe('TelemetryEventRelay', () => {
 	});
 
 	describe('package import/export events', () => {
-		it('should track on `n8n-package-imported` event with params and counts', () => {
-			const event: RelayEventMap['n8n-package-imported'] = {
+		it('should track on `MNI-package-imported` event with params and counts', () => {
+			const event: RelayEventMap['MNI-package-imported'] = {
 				user: { id: 'user123' },
 				projectIds: ['project123'],
 				folderId: 'folder123',
@@ -3172,7 +3172,7 @@ describe('TelemetryEventRelay', () => {
 				},
 			};
 
-			eventService.emit('n8n-package-imported', event);
+			eventService.emit('MNI-package-imported', event);
 
 			expect(telemetry.track).toHaveBeenCalledWith('User imported MNI package', {
 				user_id: 'user123',
@@ -3220,8 +3220,8 @@ describe('TelemetryEventRelay', () => {
 			});
 		});
 
-		it('should track on `n8n-package-exported` event with entity counts only, not ids', () => {
-			const event: RelayEventMap['n8n-package-exported'] = {
+		it('should track on `MNI-package-exported` event with entity counts only, not ids', () => {
+			const event: RelayEventMap['MNI-package-exported'] = {
 				user: { id: 'user123' },
 				workflowIds: ['wf1', 'wf2', 'wf3'],
 				projectIds: ['proj1'],
@@ -3237,7 +3237,7 @@ describe('TelemetryEventRelay', () => {
 				includeArchivedWorkflows: true,
 			};
 
-			eventService.emit('n8n-package-exported', event);
+			eventService.emit('MNI-package-exported', event);
 
 			expect(telemetry.track).toHaveBeenCalledWith('User exported MNI package', {
 				user_id: 'user123',
@@ -3252,14 +3252,14 @@ describe('TelemetryEventRelay', () => {
 			});
 		});
 
-		it('should track on `n8n-package-export-failed` event with entity counts and reason only, not ids', () => {
-			const event: RelayEventMap['n8n-package-export-failed'] = {
+		it('should track on `MNI-package-export-failed` event with entity counts and reason only, not ids', () => {
+			const event: RelayEventMap['MNI-package-export-failed'] = {
 				user: { id: 'user123' },
 				reason: 'access-denied',
 				workflowIds: ['wf1', 'wf2'],
 			};
 
-			eventService.emit('n8n-package-export-failed', event);
+			eventService.emit('MNI-package-export-failed', event);
 
 			expect(telemetry.track).toHaveBeenCalledWith('User package export failed', {
 				user_id: 'user123',
@@ -3270,14 +3270,14 @@ describe('TelemetryEventRelay', () => {
 			});
 		});
 
-		it('should track on `n8n-package-import-failed` event with reason only, no project/folder ids', () => {
-			const event: RelayEventMap['n8n-package-import-failed'] = {
+		it('should track on `MNI-package-import-failed` event with reason only, no project/folder ids', () => {
+			const event: RelayEventMap['MNI-package-import-failed'] = {
 				user: { id: 'user123' },
 				reason: 'blocked',
 				projectId: 'proj1',
 			};
 
-			eventService.emit('n8n-package-import-failed', event);
+			eventService.emit('MNI-package-import-failed', event);
 
 			expect(telemetry.track).toHaveBeenCalledWith('User package import failed', {
 				user_id: 'user123',
@@ -3425,7 +3425,7 @@ describe('TelemetryEventRelay', () => {
 				userId: 'user123',
 				answers: {
 					version: 'v4',
-					personalization_survey_n8n_version: '1.0.0',
+					personalization_survey_MNI_version: '1.0.0',
 					personalization_survey_submitted_at: '2021-10-01T00:00:00.000Z',
 					companySize: '1-10',
 				},
@@ -3436,7 +3436,7 @@ describe('TelemetryEventRelay', () => {
 			expect(telemetry.track).toHaveBeenCalledWith('User responded to personalization questions', {
 				user_id: 'user123',
 				version: 'v4',
-				personalization_survey_n8n_version: '1.0.0',
+				personalization_survey_MNI_version: '1.0.0',
 				personalization_survey_submitted_at: '2021-10-01T00:00:00.000Z',
 				company_size: '1-10',
 			});
@@ -3520,15 +3520,15 @@ describe('TelemetryEventRelay', () => {
 			expect(telemetry.groupIdentify).toHaveBeenCalledWith(
 				expect.objectContaining({
 					traits: expect.objectContaining({
-						n8n_host: expect.any(String),
-						version_cli: N8N_VERSION,
-						n8n_deployment_type: 'default',
+						MNI_host: expect.any(String),
+						version_cli: MNI_VERSION,
+						MNI_deployment_type: 'default',
 					}),
 				}),
 			);
 			expect(telemetry.identify).toHaveBeenCalledWith(
 				expect.objectContaining({
-					version_cli: N8N_VERSION,
+					version_cli: MNI_VERSION,
 					metrics: {
 						metrics_category_cache: false,
 						metrics_category_default: true,
@@ -3541,8 +3541,8 @@ describe('TelemetryEventRelay', () => {
 						metrics_category_workflow_info: false,
 						metrics_enabled: true,
 					},
-					n8n_binary_data_mode: 'default',
-					n8n_deployment_type: 'default',
+					MNI_binary_data_mode: 'default',
+					MNI_deployment_type: 'default',
 					saml_enabled: false,
 					smtp_set_up: true,
 					system_info: {
@@ -3713,7 +3713,7 @@ describe('TelemetryEventRelay', () => {
 				mcpManagedByEnv: true,
 				mcpAccessEnabled: true,
 				communityPackagesManagedByEnv: true,
-				communityPackages: '[{"name":"n8n-nodes-sensitive","version":"1.2.3"}]',
+				communityPackages: '[{"name":"MNI-nodes-sensitive","version":"1.2.3"}]',
 			});
 
 			eventService.emit('server-started');
@@ -3735,7 +3735,7 @@ describe('TelemetryEventRelay', () => {
 			expect(telemetryPayload).not.toContain('idp.example.com');
 			expect(telemetryPayload).not.toContain('sensitive-idp');
 			expect(telemetryPayload).not.toContain('hooks.example.com');
-			expect(telemetryPayload).not.toContain('n8n-nodes-sensitive');
+			expect(telemetryPayload).not.toContain('MNI-nodes-sensitive');
 		});
 
 		it('should track OTEL startup configuration on `server-started` event', async () => {
@@ -3800,7 +3800,7 @@ describe('TelemetryEventRelay', () => {
 
 			Object.assign(globalConfig.instanceAi, {
 				sandboxEnabled: false,
-				sandboxProvider: 'n8n-sandbox',
+				sandboxProvider: 'MNI-sandbox',
 				braveSearchApiKey: '',
 				searxngUrl: '',
 			});
@@ -3955,7 +3955,7 @@ describe('TelemetryEventRelay', () => {
 				{
 					id: 'node1',
 					name: 'Start',
-					type: 'n8n-nodes-base.manualTrigger',
+					type: 'MNI-nodes-base.manualTrigger',
 					parameters: {},
 					typeVersion: 1,
 					position: [100, 200],
@@ -4055,7 +4055,7 @@ describe('TelemetryEventRelay', () => {
 				id: '1',
 				typeVersion: 1,
 				name: 'Jira',
-				type: 'n8n-nodes-base.jira',
+				type: 'MNI-nodes-base.jira',
 				parameters: {},
 				position: [100, 200],
 			};
@@ -4093,7 +4093,7 @@ describe('TelemetryEventRelay', () => {
 			vi.spyOn(TelemetryHelpers, 'generateNodesGraph').mockImplementation(() => nodeGraph);
 
 			vi.spyOn(TelemetryHelpers, 'getNodeTypeForName').mockImplementation(
-				() => ({ type: 'n8n-nodes-base.jira', version: 1, name: 'Jira' }) as unknown as INode,
+				() => ({ type: 'MNI-nodes-base.jira', version: 1, name: 'Jira' }) as unknown as INode,
 			);
 
 			const event: RelayEventMap['workflow-post-execute'] = {
@@ -4117,10 +4117,10 @@ describe('TelemetryEventRelay', () => {
 					executionStatus: 'error',
 					sharing_role: 'sharee',
 					error_message: 'Error message',
-					error_node_type: 'n8n-nodes-base.jira',
+					error_node_type: 'MNI-nodes-base.jira',
 					error_node_id: '1',
 					node_id: '1',
-					node_type: 'n8n-nodes-base.jira',
+					node_type: 'MNI-nodes-base.jira',
 					is_managed: false,
 					credential_type: null,
 					node_graph_string: JSON.stringify(nodeGraph.nodeGraph),
@@ -4133,9 +4133,9 @@ describe('TelemetryEventRelay', () => {
 					success: false,
 					is_manual: true,
 					execution_mode: 'manual',
-					version_cli: N8N_VERSION,
+					version_cli: MNI_VERSION,
 					error_message: 'Error message',
-					error_node_type: 'n8n-nodes-base.jira',
+					error_node_type: 'MNI-nodes-base.jira',
 					node_graph_string: JSON.stringify(nodeGraph.nodeGraph),
 					error_node_id: '1',
 				}),
@@ -4149,7 +4149,7 @@ describe('TelemetryEventRelay', () => {
 				id: '1',
 				typeVersion: 1,
 				name: 'Jira',
-				type: 'n8n-nodes-base.jira',
+				type: 'MNI-nodes-base.jira',
 				parameters: {},
 				position: [100, 200],
 			};
@@ -4187,7 +4187,7 @@ describe('TelemetryEventRelay', () => {
 			vi.spyOn(TelemetryHelpers, 'generateNodesGraph').mockImplementation(() => nodeGraph);
 
 			vi.spyOn(TelemetryHelpers, 'getNodeTypeForName').mockImplementation(
-				() => ({ type: 'n8n-nodes-base.jira', version: 1, name: 'Jira' }) as unknown as INode,
+				() => ({ type: 'MNI-nodes-base.jira', version: 1, name: 'Jira' }) as unknown as INode,
 			);
 
 			const event: RelayEventMap['workflow-post-execute'] = {
@@ -4211,10 +4211,10 @@ describe('TelemetryEventRelay', () => {
 					executionStatus: 'canceled',
 					sharing_role: 'owner',
 					error_message: 'Error message canceled',
-					error_node_type: 'n8n-nodes-base.jira',
+					error_node_type: 'MNI-nodes-base.jira',
 					error_node_id: '1',
 					node_id: '1',
-					node_type: 'n8n-nodes-base.jira',
+					node_type: 'MNI-nodes-base.jira',
 					node_graph_string: JSON.stringify(nodeGraph.nodeGraph),
 				}),
 			);
@@ -4225,9 +4225,9 @@ describe('TelemetryEventRelay', () => {
 					success: false,
 					is_manual: true,
 					execution_mode: 'manual',
-					version_cli: N8N_VERSION,
+					version_cli: MNI_VERSION,
 					error_message: 'Error message canceled',
-					error_node_type: 'n8n-nodes-base.jira',
+					error_node_type: 'MNI-nodes-base.jira',
 					node_graph_string: JSON.stringify(nodeGraph.nodeGraph),
 					error_node_id: '1',
 				}),
@@ -4258,7 +4258,7 @@ describe('TelemetryEventRelay', () => {
 								id: '1',
 								typeVersion: 1,
 								name: 'Jira',
-								type: 'n8n-nodes-base.jira',
+								type: 'MNI-nodes-base.jira',
 								parameters: {},
 								position: [100, 200],
 							},
@@ -4291,7 +4291,7 @@ describe('TelemetryEventRelay', () => {
 			vi.spyOn(TelemetryHelpers, 'generateNodesGraph').mockImplementation(() => nodeGraph);
 
 			vi.spyOn(TelemetryHelpers, 'getNodeTypeForName').mockImplementation(
-				() => ({ type: 'n8n-nodes-base.jira', version: 1, name: 'Jira' }) as unknown as INode,
+				() => ({ type: 'MNI-nodes-base.jira', version: 1, name: 'Jira' }) as unknown as INode,
 			);
 
 			const event: RelayEventMap['workflow-post-execute'] = {
@@ -4320,7 +4320,7 @@ describe('TelemetryEventRelay', () => {
 					executionStatus: 'error',
 					sharing_role: 'owner',
 					error_message: 'Error message',
-					error_node_type: 'n8n-nodes-base.jira',
+					error_node_type: 'MNI-nodes-base.jira',
 					error_node_id: '1',
 					node_graph_string: JSON.stringify(nodeGraph.nodeGraph),
 				}),
@@ -4332,9 +4332,9 @@ describe('TelemetryEventRelay', () => {
 					success: false,
 					is_manual: true,
 					execution_mode: 'manual',
-					version_cli: N8N_VERSION,
+					version_cli: MNI_VERSION,
 					error_message: 'Error message',
-					error_node_type: 'n8n-nodes-base.jira',
+					error_node_type: 'MNI-nodes-base.jira',
 					node_graph_string: JSON.stringify(nodeGraph.nodeGraph),
 					error_node_id: '1',
 				}),
@@ -4351,7 +4351,7 @@ describe('TelemetryEventRelay', () => {
 				id: '1',
 				typeVersion: 1,
 				name: 'Jira',
-				type: 'n8n-nodes-base.jira',
+				type: 'MNI-nodes-base.jira',
 				parameters: {},
 				position: [100, 200],
 			};
@@ -4395,7 +4395,7 @@ describe('TelemetryEventRelay', () => {
 			vi.spyOn(TelemetryHelpers, 'generateNodesGraph').mockImplementation(() => nodeGraph);
 
 			vi.spyOn(TelemetryHelpers, 'getNodeTypeForName').mockImplementation(
-				() => ({ type: 'n8n-nodes-base.jira', version: 1, name: 'Jira' }) as unknown as INode,
+				() => ({ type: 'MNI-nodes-base.jira', version: 1, name: 'Jira' }) as unknown as INode,
 			);
 
 			const event: RelayEventMap['workflow-post-execute'] = {
@@ -4423,10 +4423,10 @@ describe('TelemetryEventRelay', () => {
 					executionStatus: 'error',
 					sharing_role: 'sharee',
 					error_message: 'Error message',
-					error_node_type: 'n8n-nodes-base.jira',
+					error_node_type: 'MNI-nodes-base.jira',
 					error_node_id: '1',
 					node_id: '1',
-					node_type: 'n8n-nodes-base.jira',
+					node_type: 'MNI-nodes-base.jira',
 
 					is_managed: true,
 					credential_type: 'openAiApi',
@@ -4440,9 +4440,9 @@ describe('TelemetryEventRelay', () => {
 					success: false,
 					is_manual: true,
 					execution_mode: 'manual',
-					version_cli: N8N_VERSION,
+					version_cli: MNI_VERSION,
 					error_message: 'Error message',
-					error_node_type: 'n8n-nodes-base.jira',
+					error_node_type: 'MNI-nodes-base.jira',
 					node_graph_string: JSON.stringify(nodeGraph.nodeGraph),
 					error_node_id: '1',
 				}),
@@ -4474,7 +4474,7 @@ describe('TelemetryEventRelay', () => {
 								id: '1',
 								typeVersion: 1,
 								name: 'OpenAI',
-								type: 'n8n-nodes-base.openAi',
+								type: 'MNI-nodes-base.openAi',
 								parameters: {},
 								position: [100, 200],
 							},
@@ -4854,8 +4854,8 @@ describe('TelemetryEventRelay', () => {
 			expect(result).toEqual({ major: null, minor: null, patch: null });
 		});
 
-		it('should parse the current N8N_VERSION', () => {
-			const result = getSemanticVersioning(N8N_VERSION);
+		it('should parse the current MNI_VERSION', () => {
+			const result = getSemanticVersioning(MNI_VERSION);
 			expect(result.major).not.toBeNull();
 			expect(result.minor).not.toBeNull();
 			expect(result.patch).not.toBeNull();
@@ -4868,7 +4868,7 @@ describe('TelemetryEventRelay', () => {
 	describe('HITL events', () => {
 		it('should track on `hitl-response-actioned` event', () => {
 			const event: RelayEventMap['hitl-response-actioned'] = {
-				nodeType: 'n8n-nodes-base.slack',
+				nodeType: 'MNI-nodes-base.slack',
 				approved: true,
 				authorized: false,
 				executionId: 'exec1',
@@ -4878,7 +4878,7 @@ describe('TelemetryEventRelay', () => {
 			eventService.emit('hitl-response-actioned', event);
 
 			expect(telemetry.track).toHaveBeenCalledWith('Advanced HITL response actioned', {
-				node_type: 'n8n-nodes-base.slack',
+				node_type: 'MNI-nodes-base.slack',
 				is_approved: true,
 				is_authorized: false,
 			});

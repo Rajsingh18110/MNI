@@ -23,12 +23,12 @@ vi.mock('@/app/stores/workflowDocument.store', () => ({
 	}),
 }));
 
-vi.mock('@n8n/i18n', async (importOriginal) => ({
+vi.mock('@MNI/i18n', async (importOriginal) => ({
 	...(await importOriginal()),
 	useI18n: () => ({ baseText: (key: string) => `mocked-${key}` }),
 }));
 
-vi.mock('@n8n/stores/useRootStore', () => ({
+vi.mock('@MNI/stores/useRootStore', () => ({
 	useRootStore: () => ({ restApiContext: {} }),
 }));
 
@@ -50,7 +50,7 @@ vi.mock('@/experiments/evaluationsWizardSidepanel/useEvaluationsWizardSidepanelE
 }));
 
 const trackMock = vi.fn();
-vi.mock('@n8n/composables/useTelemetry', () => ({
+vi.mock('@MNI/composables/useTelemetry', () => ({
 	useTelemetry: () => ({ track: trackMock }),
 }));
 
@@ -73,8 +73,8 @@ import EvaluationsCanvasInfoCard from './EvaluationsCanvasInfoCard.vue';
 
 const renderComponent = createComponentRenderer(EvaluationsCanvasInfoCard);
 
-const AI_NODE = { name: 'AI Agent', type: '@n8n/n8n-nodes-langchain.agent' };
-const PLAIN_NODE = { name: 'Set', type: 'n8n-nodes-base.set' };
+const AI_NODE = { name: 'AI Agent', type: '@MNI/MNI-nodes-langchain.agent' };
+const PLAIN_NODE = { name: 'Set', type: 'MNI-nodes-base.set' };
 
 describe('EvaluationsCanvasInfoCard', () => {
 	beforeEach(() => {

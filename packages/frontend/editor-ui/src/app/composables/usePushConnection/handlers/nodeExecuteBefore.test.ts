@@ -2,7 +2,7 @@ import { createPinia, setActivePinia } from 'pinia';
 import { mock } from 'vitest-mock-extended';
 import type { Router } from 'vue-router';
 import { nodeExecuteBefore } from './nodeExecuteBefore';
-import type { NodeExecuteBefore } from '@n8n/api-types/push/execution';
+import type { NodeExecuteBefore } from '@MNI/api-types/push/execution';
 import { useWorkflowExecutionStateStore } from '@/app/stores/workflowExecutionState.store';
 import { createWorkflowDocumentId } from '@/app/stores/workflowDocument.store';
 import { createExecutionDataId, useExecutionDataStore } from '@/app/stores/executionData.store';

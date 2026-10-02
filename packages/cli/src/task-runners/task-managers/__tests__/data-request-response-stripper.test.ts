@@ -1,10 +1,10 @@
-import type { DataRequestResponse, TaskDataRequestParams } from '@n8n/task-runner';
+import type { DataRequestResponse, TaskDataRequestParams } from '@MNI/task-runner';
 import {
 	type IWorkflowExecuteAdditionalData,
 	type INode,
 	type INodeExecutionData,
 	createRunExecutionData,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import { DataRequestResponseStripper } from '../data-request-response-stripper';

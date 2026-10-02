@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { truncate } from '@n8n/utils/string/truncate';
+import { truncate } from '@MNI/utils/string/truncate';
 import { VIEWS } from '@/app/constants';
 import { convertToDisplayDate } from '@/app/utils/formatters/dateFormatter';
 import { useAgentProjectBreadcrumb } from '@/features/agents/composables/useAgentProjectBreadcrumb';
@@ -26,10 +26,10 @@ import { getAgent } from '@/features/agents/composables/useAgentApi';
 import { useAgentConfig } from '@/features/agents/composables/useAgentConfig';
 import { useAgentPermissions } from '@/features/agents/composables/useAgentPermissions';
 import type { AgentResource } from '@/features/agents/types';
-import { useRootStore } from '@n8n/stores/useRootStore';
-import { useI18n } from '@n8n/i18n';
-import { N8nEmptyState } from '@n8n/design-system';
-import type { DropdownMenuItemProps, IconName, PathItem } from '@n8n/design-system';
+import { useRootStore } from '@MNI/stores/useRootStore';
+import { useI18n } from '@MNI/i18n';
+import { N8nEmptyState } from '@MNI/design-system';
+import type { DropdownMenuItemProps, IconName, PathItem } from '@MNI/design-system';
 import { computed, ref, watch } from 'vue';
 import { useRoute, useRouter, type RouteLocationRaw } from 'vue-router';
 
@@ -109,7 +109,7 @@ const triggerIcon = computed((): IconName => {
 const triggerLabel = computed((): string => {
 	const source = triggerSource.value;
 	if (!source) return '';
-	if (source === 'chat' || source === 'n8n_chat') {
+	if (source === 'chat' || source === 'MNI_chat') {
 		return i18n.baseText('agentSessions.origin.preview');
 	}
 	// Instance AI runs are labelled with the product name, not the source id.

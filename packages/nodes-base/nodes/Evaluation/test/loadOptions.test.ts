@@ -1,5 +1,5 @@
-/* eslint-disable n8n-nodes-base/node-param-display-name-miscased */
-import { type ILoadOptionsFunctions } from 'n8n-workflow';
+/* eslint-disable MNI-nodes-base/node-param-display-name-miscased */
+import { type ILoadOptionsFunctions } from 'MNI-workflow';
 
 import { getSheetHeaderRow } from '../../Google/Sheet/v2/methods/loadOptions';
 import { getSheetHeaderRowWithGeneratedColumnNames } from '../methods/loadOptions';

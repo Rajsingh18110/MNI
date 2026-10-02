@@ -5,7 +5,7 @@ import { createComponentRenderer } from '@/__tests__/render';
 import BrowserUseConnectStep from '../BrowserUseConnectStep.vue';
 import { resetExtensionDirectConnect } from '../../../composables/useExtensionDirectConnect';
 
-vi.mock('@n8n/i18n', async (importOriginal) => ({
+vi.mock('@MNI/i18n', async (importOriginal) => ({
 	...(await importOriginal()),
 	useI18n: () => ({
 		baseText: (key: string) => key,
@@ -186,7 +186,7 @@ describe('BrowserUseConnectStep', () => {
 		expect(telemetryMock.trackOpenExtensionClicked).toHaveBeenCalledTimes(1);
 		expect(openSpy).toHaveBeenCalledWith(
 			CONNECT_URL,
-			'n8n-browser-use-connect',
+			'MNI-browser-use-connect',
 			expect.stringMatching(/^popup,width=540,height=700,left=\d+,top=\d+$/),
 		);
 

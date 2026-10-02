@@ -8,7 +8,7 @@
 		{
 			"parameters": {},
 			"name": "Start",
-			"type": "n8n-nodes-base.manualTrigger",
+			"type": "MNI-nodes-base.manualTrigger",
 			"typeVersion": 1,
 			"position": [250, 300],
 			"id": "d0c17f4b-8961-440e-a16c-c2b24573ded4"
@@ -22,7 +22,7 @@
 				"additionalOptions": {}
 			},
 			"name": "uProc",
-			"type": "n8n-nodes-base.uproc",
+			"type": "MNI-nodes-base.uproc",
 			"typeVersion": 1,
 			"position": [560, 200],
 			"credentials": {
@@ -43,7 +43,7 @@
 				"additionalOptions": {}
 			},
 			"name": "uProc1",
-			"type": "n8n-nodes-base.uproc",
+			"type": "MNI-nodes-base.uproc",
 			"typeVersion": 1,
 			"position": [740, 200],
 			"credentials": {
@@ -62,7 +62,7 @@
 				"additionalOptions": {}
 			},
 			"name": "uProc10",
-			"type": "n8n-nodes-base.uproc",
+			"type": "MNI-nodes-base.uproc",
 			"typeVersion": 1,
 			"position": [560, 350],
 			"credentials": {
@@ -80,7 +80,7 @@
 				"additionalOptions": {}
 			},
 			"name": "uProc11",
-			"type": "n8n-nodes-base.uproc",
+			"type": "MNI-nodes-base.uproc",
 			"typeVersion": 1,
 			"position": [690, 350],
 			"credentials": {
@@ -99,7 +99,7 @@
 				"additionalOptions": {}
 			},
 			"name": "uProc12",
-			"type": "n8n-nodes-base.uproc",
+			"type": "MNI-nodes-base.uproc",
 			"typeVersion": 1,
 			"position": [820, 350],
 			"credentials": {
@@ -118,7 +118,7 @@
 				"additionalOptions": {}
 			},
 			"name": "uProc13",
-			"type": "n8n-nodes-base.uproc",
+			"type": "MNI-nodes-base.uproc",
 			"typeVersion": 1,
 			"position": [950, 350],
 			"credentials": {
@@ -137,7 +137,7 @@
 				"additionalOptions": {}
 			},
 			"name": "uProc14",
-			"type": "n8n-nodes-base.uproc",
+			"type": "MNI-nodes-base.uproc",
 			"typeVersion": 1,
 			"position": [1080, 350],
 			"credentials": {
@@ -156,7 +156,7 @@
 				"additionalOptions": {}
 			},
 			"name": "uProc15",
-			"type": "n8n-nodes-base.uproc",
+			"type": "MNI-nodes-base.uproc",
 			"typeVersion": 1,
 			"position": [1210, 350],
 			"credentials": {
@@ -175,7 +175,7 @@
 				"additionalOptions": {}
 			},
 			"name": "uProc16",
-			"type": "n8n-nodes-base.uproc",
+			"type": "MNI-nodes-base.uproc",
 			"typeVersion": 1,
 			"position": [1340, 350],
 			"credentials": {
@@ -194,7 +194,7 @@
 				"additionalOptions": {}
 			},
 			"name": "uProc17",
-			"type": "n8n-nodes-base.uproc",
+			"type": "MNI-nodes-base.uproc",
 			"typeVersion": 1,
 			"position": [1470, 350],
 			"credentials": {
@@ -213,7 +213,7 @@
 				"additionalOptions": {}
 			},
 			"name": "uProc18",
-			"type": "n8n-nodes-base.uproc",
+			"type": "MNI-nodes-base.uproc",
 			"typeVersion": 1,
 			"position": [1600, 350],
 			"credentials": {
@@ -233,7 +233,7 @@
 				"additionalOptions": {}
 			},
 			"name": "uProc19",
-			"type": "n8n-nodes-base.uproc",
+			"type": "MNI-nodes-base.uproc",
 			"typeVersion": 1,
 			"position": [1730, 350],
 			"credentials": {
@@ -252,7 +252,7 @@
 				"additionalOptions": {}
 			},
 			"name": "uProc20",
-			"type": "n8n-nodes-base.uproc",
+			"type": "MNI-nodes-base.uproc",
 			"typeVersion": 1,
 			"position": [1860, 350],
 			"credentials": {
@@ -271,7 +271,7 @@
 				"additionalOptions": {}
 			},
 			"name": "uProc21",
-			"type": "n8n-nodes-base.uproc",
+			"type": "MNI-nodes-base.uproc",
 			"typeVersion": 1,
 			"position": [1990, 350],
 			"credentials": {
@@ -290,7 +290,7 @@
 				"additionalOptions": {}
 			},
 			"name": "uProc22",
-			"type": "n8n-nodes-base.uproc",
+			"type": "MNI-nodes-base.uproc",
 			"typeVersion": 1,
 			"position": [2120, 350],
 			"credentials": {
@@ -309,7 +309,7 @@
 				"additionalOptions": {}
 			},
 			"name": "uProc23",
-			"type": "n8n-nodes-base.uproc",
+			"type": "MNI-nodes-base.uproc",
 			"typeVersion": 1,
 			"position": [2250, 350],
 			"credentials": {
@@ -329,7 +329,7 @@
 				"additionalOptions": {}
 			},
 			"name": "uProc24",
-			"type": "n8n-nodes-base.uproc",
+			"type": "MNI-nodes-base.uproc",
 			"typeVersion": 1,
 			"position": [2380, 350],
 			"credentials": {
@@ -350,7 +350,7 @@
 				"additionalOptions": {}
 			},
 			"name": "uProc25",
-			"type": "n8n-nodes-base.uproc",
+			"type": "MNI-nodes-base.uproc",
 			"typeVersion": 1,
 			"position": [2510, 350],
 			"credentials": {
@@ -369,7 +369,7 @@
 				"additionalOptions": {}
 			},
 			"name": "uProc26",
-			"type": "n8n-nodes-base.uproc",
+			"type": "MNI-nodes-base.uproc",
 			"typeVersion": 1,
 			"position": [2640, 350],
 			"credentials": {
@@ -389,7 +389,7 @@
 				"additionalOptions": {}
 			},
 			"name": "uProc27",
-			"type": "n8n-nodes-base.uproc",
+			"type": "MNI-nodes-base.uproc",
 			"typeVersion": 1,
 			"position": [2770, 350],
 			"credentials": {
@@ -408,7 +408,7 @@
 				"additionalOptions": {}
 			},
 			"name": "uProc28",
-			"type": "n8n-nodes-base.uproc",
+			"type": "MNI-nodes-base.uproc",
 			"typeVersion": 1,
 			"position": [2900, 350],
 			"credentials": {
@@ -427,7 +427,7 @@
 				"additionalOptions": {}
 			},
 			"name": "uProc29",
-			"type": "n8n-nodes-base.uproc",
+			"type": "MNI-nodes-base.uproc",
 			"typeVersion": 1,
 			"position": [3030, 350],
 			"credentials": {
@@ -446,7 +446,7 @@
 				"additionalOptions": {}
 			},
 			"name": "uProc30",
-			"type": "n8n-nodes-base.uproc",
+			"type": "MNI-nodes-base.uproc",
 			"typeVersion": 1,
 			"position": [3160, 350],
 			"credentials": {
@@ -465,7 +465,7 @@
 				"additionalOptions": {}
 			},
 			"name": "uProc31",
-			"type": "n8n-nodes-base.uproc",
+			"type": "MNI-nodes-base.uproc",
 			"typeVersion": 1,
 			"position": [3290, 350],
 			"credentials": {
@@ -484,7 +484,7 @@
 				"additionalOptions": {}
 			},
 			"name": "uProc32",
-			"type": "n8n-nodes-base.uproc",
+			"type": "MNI-nodes-base.uproc",
 			"typeVersion": 1,
 			"position": [3420, 350],
 			"credentials": {
@@ -503,7 +503,7 @@
 				"additionalOptions": {}
 			},
 			"name": "uProc33",
-			"type": "n8n-nodes-base.uproc",
+			"type": "MNI-nodes-base.uproc",
 			"typeVersion": 1,
 			"position": [3550, 350],
 			"credentials": {
@@ -522,7 +522,7 @@
 				"additionalOptions": {}
 			},
 			"name": "uProc34",
-			"type": "n8n-nodes-base.uproc",
+			"type": "MNI-nodes-base.uproc",
 			"typeVersion": 1,
 			"position": [3680, 350],
 			"credentials": {
@@ -541,7 +541,7 @@
 				"additionalOptions": {}
 			},
 			"name": "uProc35",
-			"type": "n8n-nodes-base.uproc",
+			"type": "MNI-nodes-base.uproc",
 			"typeVersion": 1,
 			"position": [3810, 350],
 			"credentials": {
@@ -560,7 +560,7 @@
 				"additionalOptions": {}
 			},
 			"name": "uProc36",
-			"type": "n8n-nodes-base.uproc",
+			"type": "MNI-nodes-base.uproc",
 			"typeVersion": 1,
 			"position": [3940, 350],
 			"credentials": {
@@ -584,7 +584,7 @@
 				"additionalOptions": {}
 			},
 			"name": "uProc37",
-			"type": "n8n-nodes-base.uproc",
+			"type": "MNI-nodes-base.uproc",
 			"typeVersion": 1,
 			"position": [4070, 350],
 			"credentials": {
@@ -605,7 +605,7 @@
 				"additionalOptions": {}
 			},
 			"name": "uProc38",
-			"type": "n8n-nodes-base.uproc",
+			"type": "MNI-nodes-base.uproc",
 			"typeVersion": 1,
 			"position": [4200, 350],
 			"credentials": {
@@ -624,7 +624,7 @@
 				"additionalOptions": {}
 			},
 			"name": "uProc39",
-			"type": "n8n-nodes-base.uproc",
+			"type": "MNI-nodes-base.uproc",
 			"typeVersion": 1,
 			"position": [4330, 350],
 			"credentials": {
@@ -643,7 +643,7 @@
 				"additionalOptions": {}
 			},
 			"name": "uProc40",
-			"type": "n8n-nodes-base.uproc",
+			"type": "MNI-nodes-base.uproc",
 			"typeVersion": 1,
 			"position": [4460, 350],
 			"credentials": {
@@ -662,7 +662,7 @@
 				"additionalOptions": {}
 			},
 			"name": "uProc41",
-			"type": "n8n-nodes-base.uproc",
+			"type": "MNI-nodes-base.uproc",
 			"typeVersion": 1,
 			"position": [4590, 350],
 			"credentials": {
@@ -681,7 +681,7 @@
 				"additionalOptions": {}
 			},
 			"name": "uProc42",
-			"type": "n8n-nodes-base.uproc",
+			"type": "MNI-nodes-base.uproc",
 			"typeVersion": 1,
 			"position": [4720, 350],
 			"credentials": {

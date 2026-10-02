@@ -1,12 +1,12 @@
-import type { DatabaseConfig } from '@n8n/config';
+import type { DatabaseConfig } from '@MNI/config';
 import type {
 	ExecutionListRepository,
 	ExecutionRepository,
 	ExecutionSummaries,
 	User,
-} from '@n8n/db';
-import type { ExecutionListItem } from '@n8n/engine';
-import type { ExecutionSummary } from 'n8n-workflow';
+} from '@MNI/db';
+import type { ExecutionListItem } from '@MNI/engine';
+import type { ExecutionSummary } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import type { EngineDataPlaneProxyService } from '@/services/engine-data-plane-proxy.service';

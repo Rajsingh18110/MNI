@@ -5,7 +5,7 @@ import type {
 	TestRun,
 	TestRunRepository,
 	User,
-} from '@n8n/db';
+} from '@MNI/db';
 import type express from 'express';
 
 import { ConflictError } from '@/errors/response-errors/conflict.error';
@@ -29,7 +29,7 @@ const JUDGE_SNAPSHOT = {
 			type: 'llm_judge',
 			config: {
 				preset: 'correctness',
-				provider: '@n8n/n8n-nodes-langchain.lmChatOpenAi',
+				provider: '@MNI/MNI-nodes-langchain.lmChatOpenAi',
 				credentialId: 'cred-1',
 				model: 'gpt-4o',
 				outputType: 'numeric',

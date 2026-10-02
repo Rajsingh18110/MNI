@@ -5,8 +5,8 @@ import {
 	prepareBinariesDataList,
 	routeBinaryProperties,
 } from '@utils/binary';
-import type { IBinaryData, IDataObject, IExecuteFunctions, INodeExecutionData } from 'n8n-workflow';
-import { BINARY_ENCODING, jsonParse } from 'n8n-workflow';
+import type { IBinaryData, IDataObject, IExecuteFunctions, INodeExecutionData } from 'MNI-workflow';
+import { BINARY_ENCODING, jsonParse } from 'MNI-workflow';
 import type { Mock } from 'vitest';
 import { mock } from 'vitest-mock-extended';
 

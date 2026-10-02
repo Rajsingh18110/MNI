@@ -1,5 +1,5 @@
-import { makeRestApiRequest } from '@n8n/rest-api-client';
-import type { IRestApiContext } from '@n8n/rest-api-client';
+import { makeRestApiRequest } from '@MNI/rest-api-client';
+import type { IRestApiContext } from '@MNI/rest-api-client';
 import type {
 	InstanceAiThreadInfo,
 	InstanceAiThreadListResponse,
@@ -9,7 +9,7 @@ import type {
 	InstanceAiThreadStatusResponse,
 	InstanceAiRunDebugResponse,
 	InstanceAiThreadDebugRunsResponse,
-} from '@n8n/api-types';
+} from '@MNI/api-types';
 import type { AgentResource } from '@/features/agents/types';
 
 export async function fetchThreads(

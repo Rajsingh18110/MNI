@@ -1,17 +1,17 @@
-import { PrometheusMetricsConfig, SsrfProtectionConfig } from '@n8n/config';
-import { Service } from '@n8n/di';
+import { PrometheusMetricsConfig, SsrfProtectionConfig } from '@MNI/config';
+import { Service } from '@MNI/di';
 import promClient from 'prom-client';
 
 import type { PrometheusMetricsCollector } from './base';
 import { DURATION_BUCKETS_SECONDS } from './constant';
-import { SsrfProtectionService } from '@n8n/backend-network';
+import { SsrfProtectionService } from '@MNI/backend-network';
 
 /**
  * Tracks SSRF check results as counters and duration as a histogram.
  * Registers:
- * - `n8n_ssrf_checks_total`
- * - `n8n_ssrf_blocked_checks_total`
- * - `n8n_ssrf_check_duration_seconds`
+ * - `MNI_ssrf_checks_total`
+ * - `MNI_ssrf_blocked_checks_total`
+ * - `MNI_ssrf_check_duration_seconds`
  */
 @Service()
 export class PrometheusSsrfMetricsService implements PrometheusMetricsCollector {

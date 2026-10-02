@@ -1,11 +1,11 @@
-import type { WorkflowPartiallyActivated } from '@n8n/api-types/push/workflow';
-import { useToast } from '@n8n/composables/useToast';
-import { useI18n } from '@n8n/i18n';
+import type { WorkflowPartiallyActivated } from '@MNI/api-types/push/workflow';
+import { useToast } from '@MNI/composables/useToast';
+import { useI18n } from '@MNI/i18n';
 import { useWorkflowsListStore } from '@/app/stores/workflowsList.store';
 import { useWorkflowDocumentStore } from '@/app/stores/workflowDocument.store';
 import { useBannersStore } from '@/features/shared/banners/banners.store';
 import { useUIStore } from '@/app/stores/ui.store';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { useCanvasOperations } from '@/app/composables/useCanvasOperations';
 import { clearPendingActivationModal } from '@/app/composables/workflowPublicationConfirmation';
 import type { PushHandlerOptions } from './types';

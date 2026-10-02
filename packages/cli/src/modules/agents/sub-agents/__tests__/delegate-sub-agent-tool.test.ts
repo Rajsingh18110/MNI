@@ -4,11 +4,11 @@ import {
 	INLINE_SUB_AGENT_ID,
 	type CredentialProvider,
 	type GenerateResult,
-} from '@n8n/agents';
-import type { SubAgentSource } from '@n8n/api-types';
+} from '@MNI/agents';
+import type { SubAgentSource } from '@MNI/api-types';
 import type { Mocked } from 'vitest';
 import { mock } from 'vitest-mock-extended';
-import { OperationalError, UserError } from 'n8n-workflow';
+import { OperationalError, UserError } from 'MNI-workflow';
 
 import { NotFoundError } from '@/errors/response-errors/not-found.error';
 
@@ -169,7 +169,7 @@ describe('createN8nDelegateSubAgentTool', () => {
 	});
 
 	it('forwards the parent persistence scope to the runner', async () => {
-		const principalHash = hashAgentSandboxPrincipal({ type: 'n8n-user', userId: 'user-1' });
+		const principalHash = hashAgentSandboxPrincipal({ type: 'MNI-user', userId: 'user-1' });
 		const tool = createN8nDelegateSubAgentTool({
 			parentAgentId,
 			runner,

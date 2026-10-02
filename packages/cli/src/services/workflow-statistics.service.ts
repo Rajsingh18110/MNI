@@ -1,14 +1,14 @@
-import { Logger, TypedEmitter } from '@n8n/backend-common';
-import { DatabaseConfig } from '@n8n/config';
-import type { CrashedExecution } from '@n8n/db';
+import { Logger, TypedEmitter } from '@MNI/backend-common';
+import { DatabaseConfig } from '@MNI/config';
+import type { CrashedExecution } from '@MNI/db';
 import {
 	SettingsRepository,
 	StatisticsNames,
 	WorkflowRepository,
 	WorkflowStatisticsRepository,
-} from '@n8n/db';
-import { Service } from '@n8n/di';
-import { ensureError } from '@n8n/utils/errors/ensure-error';
+} from '@MNI/db';
+import { Service } from '@MNI/di';
+import { ensureError } from '@MNI/utils/errors/ensure-error';
 import {
 	isCompletedExecutionStatus,
 	type ExecutionStatus,
@@ -17,7 +17,7 @@ import {
 	type IWorkflowBase,
 	type WorkflowExecuteMode,
 	type WorkflowExecutionSource,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { EventService } from '@/events/event.service';
 import { UserService } from '@/services/user.service';

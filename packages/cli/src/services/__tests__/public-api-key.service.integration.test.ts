@@ -1,8 +1,8 @@
-import { testDb } from '@n8n/backend-test-utils';
-import { ApiKeyRepository, GLOBAL_MEMBER_ROLE, GLOBAL_OWNER_ROLE } from '@n8n/db';
-import { Container } from '@n8n/di';
-import { getOwnerOnlyApiKeyScopes, type ApiKeyScope } from '@n8n/permissions';
-import type { InstanceSettings } from 'n8n-core';
+import { testDb } from '@MNI/backend-test-utils';
+import { ApiKeyRepository, GLOBAL_MEMBER_ROLE, GLOBAL_OWNER_ROLE } from '@MNI/db';
+import { Container } from '@MNI/di';
+import { getOwnerOnlyApiKeyScopes, type ApiKeyScope } from '@MNI/permissions';
+import type { InstanceSettings } from 'MNI-core';
 import { mock } from 'vitest-mock-extended';
 
 import { createAdminWithApiKey, createOwnerWithApiKey } from '@test-integration/db/users';

@@ -5,7 +5,7 @@ import type {
 	INodeListSearchResult,
 	ResourceMapperField,
 	ResourceMapperFields,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import type { AgentsListResponse } from '../actions/agent/agent.types';
 import { getAgentDetails } from '../actions/agent/agent.utils';

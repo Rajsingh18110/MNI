@@ -1,5 +1,5 @@
-import type { Logger } from '@n8n/backend-common';
-import type { GlobalConfig } from '@n8n/config';
+import type { Logger } from '@MNI/backend-common';
+import type { GlobalConfig } from '@MNI/config';
 import type { Socket } from 'node:net';
 import request from 'supertest';
 import { mock } from 'vitest-mock-extended';
@@ -34,7 +34,7 @@ describe('TaskBrokerServer', () => {
 	};
 
 	describe('GET /healthz', () => {
-		it('should return 200 regardless of N8N_ENDPOINT_HEALTH', async () => {
+		it('should return 200 regardless of MNI_ENDPOINT_HEALTH', async () => {
 			const { server } = createServer();
 
 			// @ts-expect-error Private method
@@ -255,7 +255,7 @@ describe('TaskBrokerServer', () => {
 				);
 
 				expect(taskBrokerWsServer.add).toHaveBeenCalledWith('assigned-1', mockWs);
-				expect(logger.warn).toHaveBeenCalledWith(expect.stringContaining('N8N_RUNNERS_ID'));
+				expect(logger.warn).toHaveBeenCalledWith(expect.stringContaining('MNI_RUNNERS_ID'));
 			});
 
 			it('should fall back to the reported ID when the token binds none', async () => {

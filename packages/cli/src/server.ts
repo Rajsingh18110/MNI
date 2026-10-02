@@ -1,13 +1,13 @@
-import { inDevelopment, inProduction, ModuleRegistry } from '@n8n/backend-common';
-import { SecurityConfig } from '@n8n/config';
-import { HTML_NONCE_PLACEHOLDER, Time } from '@n8n/constants';
-import type { APIRequest, AuthenticatedRequest } from '@n8n/db';
-import { Container, Service } from '@n8n/di';
+import { inDevelopment, inProduction, ModuleRegistry } from '@MNI/backend-common';
+import { SecurityConfig } from '@MNI/config';
+import { HTML_NONCE_PLACEHOLDER, Time } from '@MNI/constants';
+import type { APIRequest, AuthenticatedRequest } from '@MNI/db';
+import { Container, Service } from '@MNI/di';
 import cookieParser from 'cookie-parser';
 import express from 'express';
 import { access as fsAccess, readFile } from 'fs/promises';
 import helmet from 'helmet';
-import { InstanceSettings } from 'n8n-core';
+import { InstanceSettings } from 'MNI-core';
 import { resolve } from 'path';
 
 import { AbstractServer } from '@/abstract-server';
@@ -116,7 +116,7 @@ export class Server extends AbstractServer {
 		await super.start();
 		this.logger.debug(`Server ID: ${this.instanceSettings.hostId}`);
 
-		if (process.env.N8N_DEV_RELOAD === 'true') {
+		if (process.env.MNI_DEV_RELOAD === 'true') {
 			void this.loadNodesAndCredentials.setupHotReload();
 		}
 
@@ -134,7 +134,7 @@ export class Server extends AbstractServer {
 			await import('@/controllers/e2e.controller.js');
 		}
 
-		if (process.env.N8N_DEV_RELOAD === 'true') {
+		if (process.env.MNI_DEV_RELOAD === 'true') {
 			await import('@/controllers/dev.controller.js');
 		}
 
@@ -213,7 +213,7 @@ export class Server extends AbstractServer {
 		// already registered the webhook and form routes, so they never reach this
 		// middleware. Those pages serve HTML that a workflow author wrote, which the
 		// instance policy must not constrain - including when the `sandbox` policy is
-		// switched off with `N8N_INSECURE_DISABLE_*_SANDBOX`, where they carry no policy
+		// switched off with `MNI_INSECURE_DISABLE_*_SANDBOX`, where they carry no policy
 		// at all. Moving this line above `AbstractServer` would silently change that.
 		const securityConfig = Container.get(SecurityConfig);
 		this.app.use(
@@ -248,7 +248,7 @@ export class Server extends AbstractServer {
 			collaborationService.init();
 		} else {
 			this.logger.warn(
-				'Collaboration features are disabled because push is configured unidirectional. Use N8N_PUSH_BACKEND=websocket environment variable to enable them.',
+				'Collaboration features are disabled because push is configured unidirectional. Use MNI_PUSH_BACKEND=websocket environment variable to enable them.',
 			);
 		}
 
@@ -394,7 +394,7 @@ export class Server extends AbstractServer {
 
 			const isTLSEnabled =
 				this.globalConfig.protocol === 'https' && !!(this.sslKey && this.sslCert);
-			const isPreviewMode = process.env.N8N_PREVIEW_MODE === 'true';
+			const isPreviewMode = process.env.MNI_PREVIEW_MODE === 'true';
 			const crossOriginOpenerPolicy = Container.get(SecurityConfig).crossOriginOpenerPolicy;
 			// `createContentSecurityPolicyMiddleware` serves the CSP instead: helmet cannot
 			// inject a per-request nonce.

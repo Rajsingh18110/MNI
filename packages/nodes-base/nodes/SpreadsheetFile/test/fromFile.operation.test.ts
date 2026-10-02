@@ -1,6 +1,6 @@
 import { mockDeep } from 'vitest-mock-extended';
-import type { IBinaryData, IExecuteFunctions, INode, INodeExecutionData } from 'n8n-workflow';
-import { BINARY_ENCODING, NodeOperationError } from 'n8n-workflow';
+import type { IBinaryData, IExecuteFunctions, INode, INodeExecutionData } from 'MNI-workflow';
+import { BINARY_ENCODING, NodeOperationError } from 'MNI-workflow';
 import { Readable } from 'stream';
 
 vi.mock('@e965/xlsx', () => ({
@@ -79,7 +79,7 @@ describe('fromFile.operation - xlsx parsing logic', () => {
 		mockExecuteFunctions.helpers.assertBinaryData.mockReturnValue(mockBinaryDataInMemory);
 		mockExecuteFunctions.getNode.mockReturnValue({
 			name: 'SpreadsheetFile',
-			type: 'n8n-nodes-base.spreadsheetFile',
+			type: 'MNI-nodes-base.spreadsheetFile',
 			id: 'test-node-id',
 		} as INode);
 		mockExecuteFunctions.continueOnFail.mockReturnValue(false);
@@ -707,7 +707,7 @@ describe('fromFile.operation - xlsx parsing logic', () => {
 			mockExecuteFunctions.helpers.assertBinaryData.mockReturnValue(mockBinaryDataCSV);
 			mockExecuteFunctions.getNode.mockReturnValue({
 				name: 'SpreadsheetFile',
-				type: 'n8n-nodes-base.spreadsheetFile',
+				type: 'MNI-nodes-base.spreadsheetFile',
 				id: 'test-node-id',
 			} as INode);
 			mockExecuteFunctions.continueOnFail.mockReturnValue(false);
@@ -804,7 +804,7 @@ describe('fromFile.operation - xlsx parsing logic', () => {
 			vi.clearAllMocks();
 			mockExecuteFunctions.getNode.mockReturnValue({
 				name: 'SpreadsheetFile',
-				type: 'n8n-nodes-base.spreadsheetFile',
+				type: 'MNI-nodes-base.spreadsheetFile',
 				id: 'test-node-id',
 			} as INode);
 			mockExecuteFunctions.continueOnFail.mockReturnValue(false);
@@ -870,7 +870,7 @@ describe('fromFile.operation - xlsx parsing logic', () => {
 			);
 			mockExecuteFunctions.getNode.mockReturnValue({
 				name: 'SpreadsheetFile',
-				type: 'n8n-nodes-base.spreadsheetFile',
+				type: 'MNI-nodes-base.spreadsheetFile',
 				id: 'test-node-id',
 			} as INode);
 			mockExecuteFunctions.continueOnFail.mockReturnValue(false);
@@ -972,7 +972,7 @@ describe('fromFile.operation - xlsx parsing logic', () => {
 			);
 			mockExecuteFunctions.getNode.mockReturnValue({
 				name: 'SpreadsheetFile',
-				type: 'n8n-nodes-base.spreadsheetFile',
+				type: 'MNI-nodes-base.spreadsheetFile',
 				id: 'test-node-id',
 			} as INode);
 			mockExecuteFunctions.continueOnFail.mockReturnValue(false);

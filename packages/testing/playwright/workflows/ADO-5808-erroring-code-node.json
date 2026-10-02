@@ -5,7 +5,7 @@
 			"parameters": {},
 			"id": "0f3a1c0e-6d21-4a1e-9c4f-2b1d7e5a9c11",
 			"name": "When clicking 'Execute workflow'",
-			"type": "n8n-nodes-base.manualTrigger",
+			"type": "MNI-nodes-base.manualTrigger",
 			"typeVersion": 1,
 			"position": [220, 260]
 		},
@@ -15,7 +15,7 @@
 			},
 			"id": "7c9d2b44-51ae-4f0c-8b3d-6e2f4a8c1d02",
 			"name": "Code in JavaScript",
-			"type": "n8n-nodes-base.code",
+			"type": "MNI-nodes-base.code",
 			"typeVersion": 2,
 			"position": [440, 260]
 		}

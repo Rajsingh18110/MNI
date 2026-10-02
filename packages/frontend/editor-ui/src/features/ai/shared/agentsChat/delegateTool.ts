@@ -1,21 +1,21 @@
-import type { BaseTextKey, useI18n } from '@n8n/i18n';
-import { SUB_AGENT_TASK_DIFFICULTIES } from '@n8n/api-types';
+import type { BaseTextKey, useI18n } from '@MNI/i18n';
+import { SUB_AGENT_TASK_DIFFICULTIES } from '@MNI/api-types';
 import { z } from 'zod';
 
 /**
  * Name of the SDK tool a parent agent calls to hand a task to a sub-agent.
- * Mirrors `DELEGATE_SUB_AGENT_TOOL_NAME` in `@n8n/agents` (not FE-importable),
+ * Mirrors `DELEGATE_SUB_AGENT_TOOL_NAME` in `@MNI/agents` (not FE-importable),
  * so the chat can special-case the tool call and render it as an expandable
  * tool step.
  */
 export const DELEGATE_SUB_AGENT_TOOL_NAME = 'delegate_subagent';
 export const INLINE_SUB_AGENT_ID = 'inline';
-/** Mirrors `DELEGATED_CHILD_SUSPEND_UNSUPPORTED_MESSAGE` in `@n8n/agents`. */
+/** Mirrors `DELEGATED_CHILD_SUSPEND_UNSUPPORTED_MESSAGE` in `@MNI/agents`. */
 export const DELEGATED_CHILD_SUSPEND_UNSUPPORTED_MESSAGE =
 	'agents.chat.delegate.childSuspendUnsupported';
 
 // FE-local parsers for the fields the chat reads off a delegate_subagent call.
-// The full input/output shapes live in `@n8n/agents` (not exported as
+// The full input/output shapes live in `@MNI/agents` (not exported as
 // api-types); we only parse what the tool step renders — the sub-agent it ran
 // (input) and its answer (output). Extra keys are stripped.
 const delegateInputSchema = z.object({

@@ -1,5 +1,5 @@
 import { ref } from 'vue';
-import { NodeConnectionTypes } from 'n8n-workflow';
+import { NodeConnectionTypes } from 'MNI-workflow';
 import { useNodeConnections } from '@/app/composables/useNodeConnections';
 import type {
 	CanvasConnectionPort,

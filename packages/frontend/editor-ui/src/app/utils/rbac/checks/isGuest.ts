@@ -1,4 +1,4 @@
-import { useUsersStore } from '@n8n/stores/users.store';
+import { useUsersStore } from '@MNI/stores/users.store';
 import type { RBACPermissionCheck, GuestPermissionOptions } from '@/app/types/rbac';
 
 export const isGuest: RBACPermissionCheck<GuestPermissionOptions> = () => {

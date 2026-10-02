@@ -23,11 +23,11 @@ import {
 	useWorkflowDocumentStore,
 } from '@/app/stores/workflowDocument.store';
 
-import type { useDeviceSupport } from '@n8n/composables/useDeviceSupport';
+import type { useDeviceSupport } from '@MNI/composables/useDeviceSupport';
 import { useVueFlow } from '@vue-flow/core';
 import { NO_OP_NODE_TYPE, SIMULATE_NODE_TYPE } from '@/app/constants';
 import { canvasEventBus } from '@/features/workflows/canvas/canvas.eventBus';
-import { createEventBus } from '@n8n/utils/event-bus';
+import { createEventBus } from '@MNI/utils/event-bus';
 import { GROUP_PADDING_Y_BOTTOM, GROUP_PADDING_Y_TOP } from '../stores/canvasNodeGroups.constants';
 import { computeGroupFrameRects } from '../composables/useCanvasMapping.groups';
 import type { CanvasLayoutEvent } from '../composables/useCanvasLayout';
@@ -36,16 +36,16 @@ import {
 	useCanvasNodeGroupView,
 	type CanvasNodeGroupView,
 } from '../composables/useCanvasNodeGroupView';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
 import { useContextMenu } from '@/features/shared/contextMenu/composables/useContextMenu';
 import { useUIStore } from '@/app/stores/ui.store';
 import { createTestNode } from '@/__tests__/mocks';
 import { MESSAGE_AN_AGENT_NODE_TYPE } from '@/app/constants/nodeTypes';
 import { useAgentNodeCanvasGeometryStore } from '@/features/agents/agentNodeCanvasGeometry.store';
 import { mockedStore } from '@/__tests__/utils';
-import { useSettingsStore } from '@n8n/stores/settings.store';
-import { defaultSettings } from '@n8n/frontend-test-utils';
-import { NodeConnectionTypes } from 'n8n-workflow';
+import { useSettingsStore } from '@MNI/stores/settings.store';
+import { defaultSettings } from '@MNI/frontend-test-utils';
+import { NodeConnectionTypes } from 'MNI-workflow';
 import { DEFAULT_NODE_SIZE, NODE_X_SPACING } from '@/app/utils/nodeViewUtils';
 
 // Instantiates a store that derives the workflow id from the route. These tests run
@@ -69,7 +69,7 @@ vi.mock('@/app/composables/useMessage', () => ({
 	useMessage: () => ({ prompt: messagePrompt }),
 }));
 
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: () => ({ showToast }),
 }));
 
@@ -86,7 +86,7 @@ vi.mock('@/app/composables/useSelectionValidation', async (importOriginal) => {
 	};
 });
 
-vi.mock('@n8n/composables/useTelemetry', () => ({
+vi.mock('@MNI/composables/useTelemetry', () => ({
 	useTelemetry: vi.fn(() => ({ track: trackSpy })),
 }));
 
@@ -105,7 +105,7 @@ const matchMedia = global.window.matchMedia;
 global.window = jsdom.window as unknown as Window & typeof globalThis;
 global.window.matchMedia = matchMedia;
 
-vi.mock('@n8n/design-system', async (importOriginal) => {
+vi.mock('@MNI/design-system', async (importOriginal) => {
 	const actual = await importOriginal<typeof useDeviceSupport>();
 	return { ...actual, useDeviceSupport: vi.fn(() => ({ isCtrlKeyPressed: vi.fn() })) };
 });

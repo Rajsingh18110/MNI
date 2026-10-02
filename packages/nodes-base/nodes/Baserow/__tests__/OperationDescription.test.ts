@@ -1,4 +1,4 @@
-import { getNodeParameters, type INodeParameters } from 'n8n-workflow';
+import { getNodeParameters, type INodeParameters } from 'MNI-workflow';
 
 import { Baserow } from '../Baserow.node';
 import { MULTI_STEP_DATE_OPERATORS } from '../GenericFunctions';

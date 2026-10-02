@@ -1,6 +1,6 @@
-import { JsonStore } from '@n8n/blob-storage';
-import { Service } from '@n8n/di';
-import { ErrorReporter, FsByteStoreService } from 'n8n-core';
+import { JsonStore } from '@MNI/blob-storage';
+import { Service } from '@MNI/di';
+import { ErrorReporter, FsByteStoreService } from 'MNI-core';
 
 import { EXECUTION_DATA_BUNDLE_FILENAME, EXECUTION_DATA_BUNDLE_VERSION } from './constants';
 import { CorruptedExecutionDataError } from './corrupted-execution-data.error';

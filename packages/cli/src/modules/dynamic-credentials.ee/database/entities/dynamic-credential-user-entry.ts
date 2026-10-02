@@ -1,5 +1,5 @@
-import { CredentialsEntity, User, WithTimestamps } from '@n8n/db';
-import { Column, Entity, JoinColumn, ManyToOne, PrimaryColumn } from '@n8n/typeorm';
+import { CredentialsEntity, User, WithTimestamps } from '@MNI/db';
+import { Column, Entity, JoinColumn, ManyToOne, PrimaryColumn } from '@MNI/typeorm';
 
 import { DynamicCredentialResolver } from './credential-resolver';
 

@@ -1,5 +1,5 @@
-import { mockInstance } from '@n8n/backend-test-utils';
-import { PrometheusMetricsConfig } from '@n8n/config';
+import { mockInstance } from '@MNI/backend-test-utils';
+import { PrometheusMetricsConfig } from '@MNI/config';
 import promClient from 'prom-client';
 
 import { PrometheusDefaultMetricsService } from '../default-metrics.service';
@@ -8,13 +8,13 @@ vi.mock('prom-client');
 
 describe('PrometheusDefaultMetricsService', () => {
 	const config = mockInstance(PrometheusMetricsConfig, {
-		prefix: 'n8n_',
+		prefix: 'MNI_',
 		includeDefaultMetrics: true,
 	});
 	let service: PrometheusDefaultMetricsService;
 
 	beforeEach(() => {
-		Object.assign(config, { prefix: 'n8n_', includeDefaultMetrics: true });
+		Object.assign(config, { prefix: 'MNI_', includeDefaultMetrics: true });
 		service = new PrometheusDefaultMetricsService(config);
 	});
 
@@ -38,7 +38,7 @@ describe('PrometheusDefaultMetricsService', () => {
 		it('should call promClient.collectDefaultMetrics with the configured prefix', () => {
 			service.init();
 
-			expect(promClient.collectDefaultMetrics).toHaveBeenCalledWith({ prefix: 'n8n_' });
+			expect(promClient.collectDefaultMetrics).toHaveBeenCalledWith({ prefix: 'MNI_' });
 		});
 
 		it('should pass custom prefix to collectDefaultMetrics', () => {

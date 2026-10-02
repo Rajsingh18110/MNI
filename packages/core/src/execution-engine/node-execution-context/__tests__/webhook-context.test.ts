@@ -11,8 +11,8 @@ import type {
 	Workflow,
 	WorkflowExecuteMode,
 	WorkflowExpression,
-} from 'n8n-workflow';
-import { NodeConnectionTypes } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeConnectionTypes } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import { getInputConnectionData } from '../utils/get-input-connection-data';

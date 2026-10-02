@@ -1,5 +1,5 @@
-import { AstRule } from '@n8n/rules-engine/ast';
-import type { AstProjectConfig } from '@n8n/rules-engine/ast';
+import { AstRule } from '@MNI/rules-engine/ast';
+import type { AstProjectConfig } from '@MNI/rules-engine/ast';
 import * as path from 'node:path';
 import { SyntaxKind, type Project, type SourceFile } from 'ts-morph';
 

@@ -1,5 +1,5 @@
 import { onBeforeUnmount, shallowRef, watch } from 'vue';
-import type { IPinData } from 'n8n-workflow';
+import type { IPinData } from 'MNI-workflow';
 import { useAiSimulatedExecutionsStore } from '@/app/stores/aiSimulatedExecutions.store';
 import { useLogsStore } from '@/app/stores/logs.store';
 import { usePushConnectionStore } from '@/app/stores/pushConnection.store';

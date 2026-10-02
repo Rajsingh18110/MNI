@@ -1,5 +1,5 @@
-import { FORMAT_VERSION } from '@/modules/n8n-packages/spec/constants';
-import type { PackageManifest } from '@/modules/n8n-packages/spec/manifest.schema';
+import { FORMAT_VERSION } from '@/modules/MNI-packages/spec/constants';
+import type { PackageManifest } from '@/modules/MNI-packages/spec/manifest.schema';
 
 import { scopeManifestToProject } from '../promotion-change.service';
 

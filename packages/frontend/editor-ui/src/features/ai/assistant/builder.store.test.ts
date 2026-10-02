@@ -15,17 +15,17 @@ import { BUILDER_ENABLED_VIEWS } from './constants';
 
 const ENABLED_VIEWS = BUILDER_ENABLED_VIEWS;
 import { usePostHog } from '@/app/stores/posthog.store';
-import { useSettingsStore } from '@n8n/stores/settings.store';
-import { defaultSettings } from '@n8n/frontend-test-utils';
+import { useSettingsStore } from '@MNI/stores/settings.store';
+import { defaultSettings } from '@MNI/frontend-test-utils';
 import { createTestNode } from '@/__tests__/mocks';
 import merge from 'lodash/merge';
 import { nextTick, reactive } from 'vue';
 import * as chatAPI from '@/features/ai/assistant/assistant.api';
-import * as telemetryModule from '@n8n/composables/useTelemetry';
+import * as telemetryModule from '@MNI/composables/useTelemetry';
 import type { Telemetry } from '@/app/plugins/telemetry';
-import type { ChatUI } from '@n8n/design-system';
+import type { ChatUI } from '@MNI/design-system';
 import type { ChatRequest } from '@/features/ai/assistant/assistant.types';
-import type { FrontendSettings } from '@n8n/api-types';
+import type { FrontendSettings } from '@MNI/api-types';
 import type { INodeUi } from '@/Interface';
 import { mockedStore } from '@/__tests__/utils';
 import { useWorkflowsStore } from '@/app/stores/workflows.store';
@@ -49,7 +49,7 @@ const DEFAULT_POSTHOG_SETTINGS: FrontendSettings['posthog'] = {
 };
 
 // Mock useI18n to return the keys instead of translations
-vi.mock('@n8n/i18n', () => ({
+vi.mock('@MNI/i18n', () => ({
 	useI18n: () => ({
 		baseText: (key: string) => key,
 	}),
@@ -59,8 +59,8 @@ vi.mock('@n8n/i18n', () => ({
 }));
 
 // Mock workflowHistory API
-vi.mock('@n8n/rest-api-client/api/workflowHistory', async (importOriginal) => {
-	const actual = await importOriginal<typeof import('@n8n/rest-api-client/api/workflowHistory')>();
+vi.mock('@MNI/rest-api-client/api/workflowHistory', async (importOriginal) => {
+	const actual = await importOriginal<typeof import('@MNI/rest-api-client/api/workflowHistory')>();
 	return {
 		...actual,
 		getWorkflowVersionsByIds: vi.fn(),
@@ -68,7 +68,7 @@ vi.mock('@n8n/rest-api-client/api/workflowHistory', async (importOriginal) => {
 });
 
 // Mock useToast
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: () => ({
 		showMessage: vi.fn(),
 	}),
@@ -1435,7 +1435,7 @@ describe('AI Builder store', () => {
 			const builderStore = useBuilderStore();
 
 			builderStore.trackWorkflowBuilderJourney('user_clicked_todo', {
-				node_type: 'n8n-nodes-base.httpRequest',
+				node_type: 'MNI-nodes-base.httpRequest',
 				type: 'parameters',
 			});
 
@@ -1444,7 +1444,7 @@ describe('AI Builder store', () => {
 				session_id: expect.any(String),
 				event_type: 'user_clicked_todo',
 				event_properties: {
-					node_type: 'n8n-nodes-base.httpRequest',
+					node_type: 'MNI-nodes-base.httpRequest',
 					type: 'parameters',
 				},
 			});
@@ -1490,7 +1490,7 @@ describe('AI Builder store', () => {
 
 			track.mockClear();
 			builderStore.trackWorkflowBuilderJourney('user_clicked_todo', {
-				node_type: 'n8n-nodes-base.httpRequest',
+				node_type: 'MNI-nodes-base.httpRequest',
 				type: 'parameters',
 			});
 
@@ -1499,7 +1499,7 @@ describe('AI Builder store', () => {
 				session_id: expect.any(String),
 				event_type: 'user_clicked_todo',
 				event_properties: {
-					node_type: 'n8n-nodes-base.httpRequest',
+					node_type: 'MNI-nodes-base.httpRequest',
 					type: 'parameters',
 				},
 				last_user_message_id: expect.any(String),
@@ -1626,7 +1626,7 @@ describe('AI Builder store', () => {
 				{
 					id: 'node-1',
 					name: 'HTTP Request',
-					type: 'n8n-nodes-base.httpRequest',
+					type: 'MNI-nodes-base.httpRequest',
 					typeVersion: 1,
 					position: [0, 0],
 					parameters: {
@@ -1646,7 +1646,7 @@ describe('AI Builder store', () => {
 				{
 					id: 'node-1',
 					name: 'HTTP Request',
-					type: 'n8n-nodes-base.httpRequest',
+					type: 'MNI-nodes-base.httpRequest',
 					typeVersion: 1,
 					position: [0, 0],
 					parameters: {
@@ -1679,7 +1679,7 @@ describe('AI Builder store', () => {
 				{
 					id: 'node-1',
 					name: 'Start',
-					type: 'n8n-nodes-base.manualTrigger',
+					type: 'MNI-nodes-base.manualTrigger',
 					typeVersion: 1,
 					position: [0, 0],
 					parameters: {},
@@ -1695,7 +1695,7 @@ describe('AI Builder store', () => {
 				{
 					id: 'node-1',
 					name: 'Start',
-					type: 'n8n-nodes-base.manualTrigger',
+					type: 'MNI-nodes-base.manualTrigger',
 					typeVersion: 1,
 					position: [0, 0],
 				} as INodeUi,
@@ -1710,7 +1710,7 @@ describe('AI Builder store', () => {
 				{
 					id: 'node-1',
 					name: 'HTTP Request',
-					type: 'n8n-nodes-base.httpRequest',
+					type: 'MNI-nodes-base.httpRequest',
 					typeVersion: 1,
 					position: [0, 0],
 					parameters: {
@@ -1737,7 +1737,7 @@ describe('AI Builder store', () => {
 				{
 					id: 'node-1',
 					name: 'HTTP Request',
-					type: 'n8n-nodes-base.httpRequest',
+					type: 'MNI-nodes-base.httpRequest',
 					typeVersion: 1,
 					position: [0, 0],
 					parameters: {
@@ -1763,7 +1763,7 @@ describe('AI Builder store', () => {
 				{
 					id: 'node-1',
 					name: 'HTTP Request',
-					type: 'n8n-nodes-base.httpRequest',
+					type: 'MNI-nodes-base.httpRequest',
 					typeVersion: 1,
 					position: [0, 0],
 					parameters: {
@@ -1783,7 +1783,7 @@ describe('AI Builder store', () => {
 				{
 					id: 'node-1',
 					name: 'HTTP Request',
-					type: 'n8n-nodes-base.httpRequest',
+					type: 'MNI-nodes-base.httpRequest',
 					typeVersion: 1,
 					position: [0, 0],
 					parameters: {
@@ -1793,7 +1793,7 @@ describe('AI Builder store', () => {
 				{
 					id: 'node-2',
 					name: 'Slack',
-					type: 'n8n-nodes-base.slack',
+					type: 'MNI-nodes-base.slack',
 					typeVersion: 1,
 					position: [200, 0],
 					parameters: {
@@ -1816,7 +1816,7 @@ describe('AI Builder store', () => {
 				{
 					id: 'node-1',
 					name: 'HTTP Request',
-					type: 'n8n-nodes-base.httpRequest',
+					type: 'MNI-nodes-base.httpRequest',
 					typeVersion: 1,
 					position: [0, 0],
 					parameters: {
@@ -1840,7 +1840,7 @@ describe('AI Builder store', () => {
 				{
 					id: 'node-1',
 					name: 'HTTP Request',
-					type: 'n8n-nodes-base.httpRequest',
+					type: 'MNI-nodes-base.httpRequest',
 					typeVersion: 1,
 					position: [0, 0],
 					parameters: {
@@ -1865,7 +1865,7 @@ describe('AI Builder store', () => {
 				{
 					id: 'node-1',
 					name: 'HTTP Request',
-					type: 'n8n-nodes-base.httpRequest',
+					type: 'MNI-nodes-base.httpRequest',
 					typeVersion: 1,
 					position: [0, 0],
 					parameters: {
@@ -1890,7 +1890,7 @@ describe('AI Builder store', () => {
 				{
 					id: 'node-1',
 					name: 'HTTP Request',
-					type: 'n8n-nodes-base.httpRequest',
+					type: 'MNI-nodes-base.httpRequest',
 					typeVersion: 1,
 					position: [0, 0],
 					parameters: {
@@ -1910,7 +1910,7 @@ describe('AI Builder store', () => {
 				{
 					id: 'node-1',
 					name: 'HTTP Request',
-					type: 'n8n-nodes-base.httpRequest',
+					type: 'MNI-nodes-base.httpRequest',
 					typeVersion: 1,
 					position: [0, 0],
 					parameters: {
@@ -1931,7 +1931,7 @@ describe('AI Builder store', () => {
 				{
 					id: 'node-1',
 					name: 'HTTP Request',
-					type: 'n8n-nodes-base.httpRequest',
+					type: 'MNI-nodes-base.httpRequest',
 					typeVersion: 1,
 					position: [0, 0],
 					parameters: {
@@ -2370,7 +2370,7 @@ describe('AI Builder store', () => {
 				workflowsStore.isWorkflowSaved = { 'test-workflow-id': true };
 
 				// Import the mocked module
-				const workflowHistoryModule = await import('@n8n/rest-api-client/api/workflowHistory');
+				const workflowHistoryModule = await import('@MNI/rest-api-client/api/workflowHistory');
 
 				// Mock API to return messages with revertVersionId
 				mockGetAiSessions.mockResolvedValueOnce({
@@ -2431,7 +2431,7 @@ describe('AI Builder store', () => {
 				// Mark workflow as saved to allow loadSessions
 				workflowsStore.isWorkflowSaved = { 'test-workflow-id': true };
 
-				const workflowHistoryModule = await import('@n8n/rest-api-client/api/workflowHistory');
+				const workflowHistoryModule = await import('@MNI/rest-api-client/api/workflowHistory');
 
 				// Mock API to return messages matching real backend format:
 				// tool messages (add_nodes, connect_nodes) instead of workflow-updated
@@ -2498,7 +2498,7 @@ describe('AI Builder store', () => {
 
 				workflowsStore.isWorkflowSaved = { 'test-workflow-id': true };
 
-				const workflowHistoryModule = await import('@n8n/rest-api-client/api/workflowHistory');
+				const workflowHistoryModule = await import('@MNI/rest-api-client/api/workflowHistory');
 
 				// Mock with only non-modifying tools (search_nodes, validate_structure)
 				mockGetAiSessions.mockResolvedValueOnce({
@@ -2552,7 +2552,7 @@ describe('AI Builder store', () => {
 
 				workflowsStore.isWorkflowSaved = { 'test-workflow-id': true };
 
-				const workflowHistoryModule = await import('@n8n/rest-api-client/api/workflowHistory');
+				const workflowHistoryModule = await import('@MNI/rest-api-client/api/workflowHistory');
 
 				// Session with revertVersionId on user message + tool messages
 				mockGetAiSessions.mockResolvedValueOnce({
@@ -2641,7 +2641,7 @@ describe('AI Builder store', () => {
 				workflowsStore.isWorkflowSaved = { 'test-workflow-id': true };
 
 				// Import the mocked module
-				const workflowHistoryModule = await import('@n8n/rest-api-client/api/workflowHistory');
+				const workflowHistoryModule = await import('@MNI/rest-api-client/api/workflowHistory');
 
 				mockGetAiSessions.mockResolvedValueOnce({
 					sessions: [
@@ -3076,7 +3076,7 @@ describe('AI Builder store', () => {
 				const builderStore = useBuilderStore();
 				workflowsStore.isWorkflowSaved = { 'test-workflow-id': true };
 
-				const workflowHistoryModule = await import('@n8n/rest-api-client/api/workflowHistory');
+				const workflowHistoryModule = await import('@MNI/rest-api-client/api/workflowHistory');
 
 				// Version card IDs are generated as `version-card-${userMessageId}`
 				// by loadSessions (line ~1248). The session stores the generated ID.
@@ -3346,7 +3346,7 @@ describe('AI Builder store', () => {
 
 			// Mock the workflow history API to return the version as existing
 			// Called twice: once for saveWorkflowAndGetRevertVersion, once for savePostModificationVersion
-			const workflowHistoryModule = await import('@n8n/rest-api-client/api/workflowHistory');
+			const workflowHistoryModule = await import('@MNI/rest-api-client/api/workflowHistory');
 			vi.mocked(workflowHistoryModule.getWorkflowVersionsByIds)
 				.mockResolvedValueOnce({
 					versions: [{ versionId: 'version-1', createdAt: '2024-01-01T00:00:00Z' }],
@@ -3407,7 +3407,7 @@ describe('AI Builder store', () => {
 			});
 			workflowDocumentStore.setUpdatedAt('2024-01-01T00:00:00Z');
 
-			const workflowHistoryModule = await import('@n8n/rest-api-client/api/workflowHistory');
+			const workflowHistoryModule = await import('@MNI/rest-api-client/api/workflowHistory');
 			vi.mocked(workflowHistoryModule.getWorkflowVersionsByIds)
 				.mockResolvedValueOnce({
 					versions: [{ versionId: 'version-1', createdAt: '2024-01-01T00:00:00Z' }],
@@ -3456,7 +3456,7 @@ describe('AI Builder store', () => {
 			});
 			workflowDocumentStore.setUpdatedAt('2024-01-01T00:00:00Z');
 
-			const workflowHistoryModule = await import('@n8n/rest-api-client/api/workflowHistory');
+			const workflowHistoryModule = await import('@MNI/rest-api-client/api/workflowHistory');
 			vi.mocked(workflowHistoryModule.getWorkflowVersionsByIds)
 				.mockResolvedValueOnce({
 					versions: [{ versionId: 'version-1', createdAt: '2024-01-01T00:00:00Z' }],
@@ -3722,7 +3722,7 @@ describe('AI Builder store', () => {
 			});
 
 			// Mock version check for saveWorkflowAndGetRevertVersion + savePostModificationVersion
-			const workflowHistoryModule = await import('@n8n/rest-api-client/api/workflowHistory');
+			const workflowHistoryModule = await import('@MNI/rest-api-client/api/workflowHistory');
 			vi.mocked(workflowHistoryModule.getWorkflowVersionsByIds).mockResolvedValue({
 				versions: [{ versionId: 'version-1', createdAt: '2024-01-01T00:00:00Z' }],
 			});
@@ -3862,7 +3862,7 @@ describe('AI Builder store', () => {
 				{
 					id: 'test-node-1',
 					name: 'HTTP Request',
-					type: 'n8n-nodes-base.httpRequest',
+					type: 'MNI-nodes-base.httpRequest',
 					typeVersion: 1,
 					position: [0, 0],
 					parameters: {},
@@ -3895,7 +3895,7 @@ describe('AI Builder store', () => {
 				{
 					id: 'test-node-1',
 					name: 'HTTP Request',
-					type: 'n8n-nodes-base.httpRequest',
+					type: 'MNI-nodes-base.httpRequest',
 					typeVersion: 1,
 					position: [0, 0],
 					parameters: {},
@@ -3940,7 +3940,7 @@ describe('AI Builder store', () => {
 				{
 					id: 'test-node-1',
 					name: 'HTTP Request',
-					type: 'n8n-nodes-base.httpRequest',
+					type: 'MNI-nodes-base.httpRequest',
 					typeVersion: 1,
 					position: [0, 0],
 					parameters: {},
@@ -3972,7 +3972,7 @@ describe('AI Builder store', () => {
 				{
 					id: 'test-node-1',
 					name: 'HTTP Request',
-					type: 'n8n-nodes-base.httpRequest',
+					type: 'MNI-nodes-base.httpRequest',
 					typeVersion: 1,
 					position: [0, 0],
 					parameters: {},

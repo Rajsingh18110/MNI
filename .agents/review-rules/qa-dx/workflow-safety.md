@@ -3,7 +3,7 @@
 Applies to: `.github/workflows/**`, `.github/actions/**`, `.poutine.yml`.
 
 Poutine and Zizmor already fail CI for the classic hazards — `pull_request_target`
-(also an error-level `@n8n/code-health` rule), actions unpinned from a full commit
+(also an error-level `@MNI/code-health` rule), actions unpinned from a full commit
 SHA, untrusted checkout execution, self-hosted runner exposure. Do not repeat
 them. What follows is what the scanners cannot see.
 

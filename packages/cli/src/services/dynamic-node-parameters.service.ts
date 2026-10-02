@@ -1,7 +1,7 @@
-import { Logger } from '@n8n/backend-common';
-import { CredentialsRepository, SharedWorkflowRepository, User } from '@n8n/db';
-import { Service } from '@n8n/di';
-import { LoadOptionsContext, RoutingNode, LocalLoadOptionsContext, ExecuteContext } from 'n8n-core';
+import { Logger } from '@MNI/backend-common';
+import { CredentialsRepository, SharedWorkflowRepository, User } from '@MNI/db';
+import { Service } from '@MNI/di';
+import { LoadOptionsContext, RoutingNode, LocalLoadOptionsContext, ExecuteContext } from 'MNI-core';
 import type {
 	ILoadOptions,
 	ILoadOptionsFunctions,
@@ -20,13 +20,13 @@ import type {
 	IDataObject,
 	ILocalLoadOptionsFunctions,
 	IExecuteData,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import {
 	Workflow,
 	UnexpectedError,
 	createRunExecutionData,
 	findDisplayedProperty,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { CredentialsFinderService } from '@/credentials/credentials-finder.service';
 import { BadRequestError } from '@/errors/response-errors/bad-request.error';

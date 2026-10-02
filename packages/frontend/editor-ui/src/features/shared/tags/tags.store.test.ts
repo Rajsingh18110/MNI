@@ -2,8 +2,8 @@ import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { createTestingPinia } from '@pinia/testing';
 import { useAnnotationTagsStore, useTagsStore } from './tags.store';
 import { mockedStore } from '@/__tests__/utils';
-import { useRootStore } from '@n8n/stores/useRootStore';
-import type { ITag } from '@n8n/rest-api-client/api/tags';
+import { useRootStore } from '@MNI/stores/useRootStore';
+import type { ITag } from '@MNI/rest-api-client/api/tags';
 import { shallowRef } from 'vue';
 
 const { hasPermission, mockApi } = vi.hoisted(() => ({

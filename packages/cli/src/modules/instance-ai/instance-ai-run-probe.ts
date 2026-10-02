@@ -1,4 +1,4 @@
-import { Service } from '@n8n/di';
+import { Service } from '@MNI/di';
 
 /**
  * Lightweight bridge so the Prometheus collector can read the live active-run

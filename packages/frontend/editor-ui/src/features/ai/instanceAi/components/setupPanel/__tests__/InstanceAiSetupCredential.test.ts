@@ -5,14 +5,14 @@ import { flushPromises } from '@vue/test-utils';
 import { fireEvent } from '@testing-library/vue';
 import userEvent from '@testing-library/user-event';
 import { mock } from 'vitest-mock-extended';
-import { getResourcePermissions } from '@n8n/permissions';
-import { useRootStore } from '@n8n/stores/useRootStore';
-import { TEMPLATED_CUSTOM_AUTH_CREDENTIAL_TYPE } from '@n8n/api-types';
+import { getResourcePermissions } from '@MNI/permissions';
+import { useRootStore } from '@MNI/stores/useRootStore';
+import { TEMPLATED_CUSTOM_AUTH_CREDENTIAL_TYPE } from '@MNI/api-types';
 import {
 	DOMAIN_RESTRICTION_FIELDS,
 	type ICredentialDataDecryptedObject,
 	type INodeProperties,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import { createComponentRenderer } from '@/__tests__/render';
 import { createTestNode } from '@/__tests__/mocks';
 import { mockedStore } from '@/__tests__/utils';
@@ -68,8 +68,8 @@ vi.mock('@/app/composables/useAiGatewayTopUp', () => ({
 vi.mock('@/app/composables/useExternalHooks', () => ({
 	useExternalHooks: () => ({ run: mocks.runHook }),
 }));
-vi.mock('@n8n/composables/useToast', () => ({ useToast: () => ({ showError: mocks.showError }) }));
-vi.mock('@n8n/composables/useTelemetry', () => ({ useTelemetry: () => ({ track: mocks.track }) }));
+vi.mock('@MNI/composables/useToast', () => ({ useToast: () => ({ showError: mocks.showError }) }));
+vi.mock('@MNI/composables/useTelemetry', () => ({ useTelemetry: () => ({ track: mocks.track }) }));
 
 function createForm() {
 	const credentialData = ref<ICredentialDataDecryptedObject>({
@@ -439,7 +439,7 @@ describe('InstanceAiSetupCredential', () => {
 		mockedStore(useCredentialsStore).getCredentialById = vi.fn().mockReturnValue(credential);
 		mockedStore(useCredentialsStore).getCredentialData.mockResolvedValue({
 			...credential,
-			data: { clientId: 'client', clientSecret: '__n8n_BLANK_VALUE' },
+			data: { clientId: 'client', clientSecret: '__MNI_BLANK_VALUE' },
 		});
 		const authorization = Promise.withResolvers<ICredentialsResponse | null>();
 		const reopen = vi.fn();
@@ -667,7 +667,7 @@ describe('InstanceAiSetupCredential', () => {
 		});
 		mockedStore(useCredentialsStore).getCredentialData.mockResolvedValue({
 			...savedCredential,
-			data: { clientId: 'client', clientSecret: '__n8n_BLANK_VALUE', oauthTokenData: true },
+			data: { clientId: 'client', clientSecret: '__MNI_BLANK_VALUE', oauthTokenData: true },
 		});
 		const rendered = renderComponent({
 			props: {
@@ -986,7 +986,7 @@ describe('InstanceAiSetupCredential', () => {
 		if (reason === 'action') gateway.isActionSupported.mockReturnValue(false);
 		const boundNode = {
 			...node,
-			type: reason === 'unsupported' ? 'n8n-nodes-base.httpRequest' : node.type,
+			type: reason === 'unsupported' ? 'MNI-nodes-base.httpRequest' : node.type,
 			typeVersion: 2,
 			parameters: { operation: 'send' },
 		};

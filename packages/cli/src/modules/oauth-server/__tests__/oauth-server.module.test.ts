@@ -1,5 +1,5 @@
-import { ModuleMetadata } from '@n8n/decorators';
-import { Container } from '@n8n/di';
+import { ModuleMetadata } from '@MNI/decorators';
+import { Container } from '@MNI/di';
 
 // Importing the module runs the @BackendModule decorator, registering its metadata.
 import '../oauth-server.module';

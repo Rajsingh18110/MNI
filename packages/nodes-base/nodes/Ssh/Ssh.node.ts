@@ -1,4 +1,4 @@
-import { formatPemBlock } from '@n8n/utils/format-pem-block';
+import { formatPemBlock } from '@MNI/utils/format-pem-block';
 import { writeFile } from 'fs/promises';
 import type {
 	ICredentialTestFunctions,
@@ -9,13 +9,13 @@ import type {
 	INodeExecutionData,
 	INodeType,
 	INodeTypeDescription,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import {
 	BINARY_ENCODING,
 	NodeConnectionTypes,
 	NodeOperationError,
 	sanitizeFilename,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import type { Config } from 'node-ssh';
 import { NodeSSH } from 'node-ssh';
 import type { Readable } from 'stream';
@@ -393,7 +393,7 @@ export class Ssh implements INodeType {
 								i,
 							);
 
-							const binaryFile = await tmpFile({ prefix: 'n8n-ssh-' });
+							const binaryFile = await tmpFile({ prefix: 'MNI-ssh-' });
 							try {
 								await ssh.getFile(binaryFile.path, parameterPath);
 
@@ -443,7 +443,7 @@ export class Ssh implements INodeType {
 								uploadData = Buffer.from(binaryData.data, BINARY_ENCODING);
 							}
 
-							const binaryFile = await tmpFile({ prefix: 'n8n-ssh-' });
+							const binaryFile = await tmpFile({ prefix: 'MNI-ssh-' });
 							try {
 								await writeFile(binaryFile.path, uploadData);
 

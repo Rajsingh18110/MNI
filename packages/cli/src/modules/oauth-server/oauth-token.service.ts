@@ -4,13 +4,13 @@ import {
 } from '@modelcontextprotocol/sdk/server/auth/errors.js';
 import { AuthInfo } from '@modelcontextprotocol/sdk/server/auth/types.js';
 import { OAuthTokens } from '@modelcontextprotocol/sdk/shared/auth.js';
-import { Logger } from '@n8n/backend-common';
-import { Time } from '@n8n/constants';
-import { TransactionRunner, User, UserRepository } from '@n8n/db';
-import { Service } from '@n8n/di';
-import { ensureError } from '@n8n/utils/errors/ensure-error';
-import type { OAuthResourceGrant } from 'n8n-workflow';
-import { UnexpectedError } from 'n8n-workflow';
+import { Logger } from '@MNI/backend-common';
+import { Time } from '@MNI/constants';
+import { TransactionRunner, User, UserRepository } from '@MNI/db';
+import { Service } from '@MNI/di';
+import { ensureError } from '@MNI/utils/errors/ensure-error';
+import type { OAuthResourceGrant } from 'MNI-workflow';
+import { UnexpectedError } from 'MNI-workflow';
 import { randomBytes, randomUUID } from 'node:crypto';
 
 import { JwtService } from '@/services/jwt.service';
@@ -20,7 +20,7 @@ import type {
 } from '@/services/oauth-token-verifier-proxy.service';
 import type { ProtectedResource } from '@/services/protected-resource.registry';
 import { ProtectedResourceRegistry } from '@/services/protected-resource.registry';
-import { UrlService } from '@n8n/backend-services';
+import { UrlService } from '@MNI/backend-services';
 import { WorkflowFinderService } from '@/workflows/workflow-finder.service';
 
 import { AccessTokenRepository } from './database/repositories/oauth-access-token.repository';

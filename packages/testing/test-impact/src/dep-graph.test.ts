@@ -63,7 +63,7 @@ describe('stripDependencyFiles', () => {
 describe('dependentDirs', () => {
 	const importers = {
 		'packages/cli': ['axios', 'express'],
-		'packages/@n8n/nodes-langchain': ['@aws-sdk/client-bedrock-runtime'],
+		'packages/@MNI/nodes-langchain': ['@aws-sdk/client-bedrock-runtime'],
 		'packages/core': ['axios'],
 	};
 	it('returns every workspace dir declaring any of the deps, sorted', () => {
@@ -77,11 +77,11 @@ describe('dependentDirs', () => {
 describe('DependencyGraphStrategy', () => {
 	// leaf is covered by one spec; cli by another.
 	const map: ImpactMap = {
-		'packages/@n8n/nodes-langchain/src/index.ts': { '0': ['tests/e2e/langchain.spec.ts'] },
+		'packages/@MNI/nodes-langchain/src/index.ts': { '0': ['tests/e2e/langchain.spec.ts'] },
 		'packages/cli/src/server.ts': { '0': ['tests/e2e/server.spec.ts'] },
 	};
 	const importers = {
-		'packages/@n8n/nodes-langchain': ['@aws-sdk/client-bedrock-runtime'],
+		'packages/@MNI/nodes-langchain': ['@aws-sdk/client-bedrock-runtime'],
 		'packages/cli': ['axios'],
 	};
 
@@ -137,7 +137,7 @@ describe('runtimeClosure', () => {
 	const importers: LockfileImporters = {
 		'packages/cli': {
 			dependencies: {
-				'n8n-core': { specifier: 'workspace:*', version: 'link:../core' },
+				'MNI-core': { specifier: 'workspace:*', version: 'link:../core' },
 				axios: { specifier: '^1.0.0', version: '1.0.0' },
 			},
 			devDependencies: {

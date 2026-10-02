@@ -1,7 +1,7 @@
 import { describe, it, expect, beforeEach } from 'vitest';
 import { setActivePinia, createPinia } from 'pinia';
 import { useInstanceAiStore } from '../instanceAi.store';
-import type { InstanceAiNodesAttachment } from '@n8n/api-types';
+import type { InstanceAiNodesAttachment } from '@MNI/api-types';
 
 const setsA: InstanceAiNodesAttachment['sets'] = [{ nodes: [{ id: 'n1', name: 'A' }] }];
 const setsB: InstanceAiNodesAttachment['sets'] = [{ nodes: [{ id: 'n2', name: 'B' }] }];

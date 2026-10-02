@@ -1,4 +1,4 @@
-import { isUnknownArray } from '@n8n/utils/is-unknown-array';
+import { isUnknownArray } from '@MNI/utils/is-unknown-array';
 
 /**
  * AI root nodes are the target of any `ai_*` connection — Agent/Chain nodes

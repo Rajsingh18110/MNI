@@ -1,9 +1,9 @@
-import type { FrontendModuleSettings } from '@n8n/api-types';
-import { mockedStore, type MockedStore } from '@n8n/frontend-test-utils';
-import type { IUser } from '@n8n/rest-api-client/api/users';
-import { useSettingsStore } from '@n8n/stores/settings.store';
-import { useRootStore } from '@n8n/stores/useRootStore';
-import { useUsersStore } from '@n8n/stores/users.store';
+import type { FrontendModuleSettings } from '@MNI/api-types';
+import { mockedStore, type MockedStore } from '@MNI/frontend-test-utils';
+import type { IUser } from '@MNI/rest-api-client/api/users';
+import { useSettingsStore } from '@MNI/stores/settings.store';
+import { useRootStore } from '@MNI/stores/useRootStore';
+import { useUsersStore } from '@MNI/stores/users.store';
 import { createTestingPinia } from '@pinia/testing';
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { reactive } from 'vue';

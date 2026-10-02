@@ -3,11 +3,11 @@ import {
 	ResourceLocatorRequestDto,
 	ResourceMapperFieldsRequestDto,
 	ActionResultRequestDto,
-} from '@n8n/api-types';
-import { AuthenticatedRequest } from '@n8n/db';
-import { Post, RestController, Body } from '@n8n/decorators';
-import { ExecutionContextService } from 'n8n-core';
-import type { IExecutionContext, INodePropertyOptions, NodeParameterValueType } from 'n8n-workflow';
+} from '@MNI/api-types';
+import { AuthenticatedRequest } from '@MNI/db';
+import { Post, RestController, Body } from '@MNI/decorators';
+import { ExecutionContextService } from 'MNI-core';
+import type { IExecutionContext, INodePropertyOptions, NodeParameterValueType } from 'MNI-workflow';
 
 import { AuthService } from '@/auth/auth.service';
 import { DynamicNodeParametersService } from '@/services/dynamic-node-parameters.service';

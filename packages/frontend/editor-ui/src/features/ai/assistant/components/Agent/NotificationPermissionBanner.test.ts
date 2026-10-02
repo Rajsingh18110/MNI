@@ -17,7 +17,7 @@ vi.mock('@/app/composables/useBrowserNotifications', () => ({
 }));
 
 // Mock i18n
-vi.mock('@n8n/i18n', () => ({
+vi.mock('@MNI/i18n', () => ({
 	useI18n: () => ({
 		baseText: (key: string) => key,
 	}),
@@ -50,11 +50,11 @@ describe('NotificationPermissionBanner', () => {
 				plugins: [createTestingPinia()],
 				stubs: {
 					N8nIcon: {
-						template: '<span class="n8n-icon" :data-icon="icon" @click="$emit(\'click\')"></span>',
+						template: '<span class="MNI-icon" :data-icon="icon" @click="$emit(\'click\')"></span>',
 						props: ['icon', 'size'],
 					},
 					N8nButton: {
-						template: '<button class="n8n-button" @click="$emit(\'click\')"><slot /></button>',
+						template: '<button class="MNI-button" @click="$emit(\'click\')"><slot /></button>',
 						props: ['type', 'size'],
 					},
 				},

@@ -1,6 +1,6 @@
 import { InvalidGrantError } from '@modelcontextprotocol/sdk/server/auth/errors.js';
-import { Time } from '@n8n/constants';
-import { Service } from '@n8n/di';
+import { Time } from '@MNI/constants';
+import { Service } from '@MNI/di';
 import { randomBytes } from 'node:crypto';
 
 import type { AuthorizationCode } from './database/entities/oauth-authorization-code.entity';

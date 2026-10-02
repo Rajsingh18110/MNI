@@ -17,7 +17,7 @@
 	"typescript/prefer-optional-chain": {
 		"layer": "base",
 		"native": "typescript/prefer-optional-chain",
-		"reason": "Native but `nursery`, and it diverges. It reports `typeof crypto !== 'undefined' && crypto.randomUUID` in @n8n/crdt where ESLint does not, and its fix is wrong: `crypto?.randomUUID` still throws a ReferenceError when the global is undeclared, which is what the typeof guard prevents.",
+		"reason": "Native but `nursery`, and it diverges. It reports `typeof crypto !== 'undefined' && crypto.randomUUID` in @MNI/crdt where ESLint does not, and its fix is wrong: `crypto?.randomUUID` still throws a ReferenceError when the global is undeclared, which is what the typeof guard prevents.",
 		"impact": "Re-evaluate when the rule leaves nursery.",
 		"replacement": "Re-evaluate after the rule leaves nursery and its undeclared-global fix is corrected."
 	},
@@ -31,7 +31,7 @@
 	"typescript/consistent-type-imports": {
 		"layer": "base",
 		"native": "typescript/consistent-type-imports",
-		"reason": "oxlint's rule has no `emitDecoratorMetadata` carve-out. typescript-eslint goes silent in any file containing a decorator when `experimentalDecorators` + `emitDecoratorMetadata` are set, because converting such an import to `import type` erases the `design:paramtypes` metadata that DI resolves. oxlint reads no compiler options in this rule and offers no option to declare them, so it reported 3488 false positives across packages/cli/src, all in decorated files. Its fixer also fights n8n-local-rules/no-type-only-import-in-di: one adds `type`, the other removes it, so `oxlint --fix` does not converge.",
+		"reason": "oxlint's rule has no `emitDecoratorMetadata` carve-out. typescript-eslint goes silent in any file containing a decorator when `experimentalDecorators` + `emitDecoratorMetadata` are set, because converting such an import to `import type` erases the `design:paramtypes` metadata that DI resolves. oxlint reads no compiler options in this rule and offers no option to declare them, so it reported 3488 false positives across packages/cli/src, all in decorated files. Its fixer also fights MNI-local-rules/no-type-only-import-in-di: one adds `type`, the other removes it, so `oxlint --fix` does not converge.",
 		"impact": "Low at runtime. The direction that breaks DI stays guarded by no-type-only-import-in-di, and these packages leave `verbatimModuleSyntax` off, so TypeScript elides a type-only-used import at emit. The cost is drift from a clean baseline.",
 		"replacement": "Wait for the upstream emitDecoratorMetadata option, or use an approved shim that suppresses decorated files.",
 		"upstream": "https://github.com/oxc-project/oxc/issues/13609"
@@ -111,14 +111,14 @@
 		"impact": "An Oxlint-only frontend package would lose template and SFC-structure checks.",
 		"replacement": "Keep eslint-plugin-vue for .vue files, or replace these rules with a template-aware native linter."
 	},
-	"n8n-nodes-base/*": {
+	"MNI-nodes-base/*": {
 		"layer": "nodes",
 		"native": null,
 		"reason": "The node and credential format rules come from eslint-plugin-n8n-nodes-base. They need a JS-plugin compatibility probe before they can be moved into the shared Oxlint layer.",
 		"impact": "An Oxlint-only nodes package would lose 82 node and 12 credential format checks.",
 		"replacement": "Verify the plugin through Oxlint's JS-plugin bridge, then translate its file-scoped rule tables."
 	},
-	"@n8n/design-system/require-teleported-tooltip-in-dropdown": {
+	"@MNI/design-system/require-teleported-tooltip-in-dropdown": {
 		"layer": "frontend",
 		"native": null,
 		"reason": "The rule uses vue-eslint-parser's defineTemplateBodyVisitor. Oxlint does not expose Vue template parser services to JS plugins.",

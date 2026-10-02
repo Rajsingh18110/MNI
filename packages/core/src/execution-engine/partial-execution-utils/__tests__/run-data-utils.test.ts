@@ -1,4 +1,4 @@
-import type { IRunData } from 'n8n-workflow';
+import type { IRunData } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import { getNextExecutionIndex } from '../run-data-utils';

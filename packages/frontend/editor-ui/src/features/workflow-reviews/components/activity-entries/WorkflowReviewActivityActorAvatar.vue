@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import type { WorkflowReviewEligibleReviewer } from '@n8n/api-types';
-import { N8nAvatar, N8nIcon } from '@n8n/design-system';
+import type { WorkflowReviewEligibleReviewer } from '@MNI/api-types';
+import { N8nAvatar, N8nIcon } from '@MNI/design-system';
 
 /**
  * The avatar column of a feed entry that names a person: the actor's avatar, or a person

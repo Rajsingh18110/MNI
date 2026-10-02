@@ -1,9 +1,9 @@
 import { NodeTestHarness } from '@nodes-testing/node-test-harness';
 import { mockDeep } from 'vitest-mock-extended';
 import get from 'lodash/get';
-import { constructExecutionMetaData, returnJsonArray } from 'n8n-core';
-import type { IDataObject, IExecuteFunctions, IRequestOptions } from 'n8n-workflow';
-import { ExpressionError, NodeApiError } from 'n8n-workflow';
+import { constructExecutionMetaData, returnJsonArray } from 'MNI-core';
+import type { IDataObject, IExecuteFunctions, IRequestOptions } from 'MNI-workflow';
+import { ExpressionError, NodeApiError } from 'MNI-workflow';
 import nock from 'nock';
 
 import { GraphQL } from '../GraphQL.node';
@@ -27,7 +27,7 @@ describe('GraphQL Node', () => {
 							{
 								id: '1',
 								attributes: {
-									name: 'n8n-nodes-base.activeCampaign',
+									name: 'MNI-nodes-base.activeCampaign',
 									displayName: 'ActiveCampaign',
 									description: 'Create and edit data in ActiveCampaign',
 									group: '["transform"]',
@@ -39,7 +39,7 @@ describe('GraphQL Node', () => {
 											resources: {
 												primaryDocumentation: [
 													{
-														url: 'https://docs.n8n.io/integrations/builtin/app-nodes/n8n-nodes-base.activecampaign/',
+														url: 'https://docs.n8n.io/integrations/builtin/app-nodes/MNI-nodes-base.activecampaign/',
 													},
 												],
 												credentialDocumentation: [
@@ -128,7 +128,7 @@ describe('GraphQL Node', () => {
 			mockExecuteFunctions.getNode.mockReturnValue({
 				id: 'test-node',
 				name: 'GraphQL',
-				type: 'n8n-nodes-base.graphql',
+				type: 'MNI-nodes-base.graphql',
 				typeVersion: 1.1,
 				position: [0, 0],
 				parameters: {},
@@ -243,7 +243,7 @@ describe('GraphQL Node', () => {
 			mockExecuteFunctions.getNode.mockReturnValue({
 				id: 'test-node',
 				name: 'GraphQL',
-				type: 'n8n-nodes-base.graphql',
+				type: 'MNI-nodes-base.graphql',
 				typeVersion: 1.1,
 				position: [0, 0],
 				parameters: {},

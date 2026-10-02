@@ -1,8 +1,8 @@
 import { mock } from 'vitest-mock-extended';
 import mssqlDefault from 'mssql';
 import type * as mssql from 'mssql';
-import { constructExecutionMetaData, returnJsonArray } from 'n8n-core';
-import type { IExecuteFunctions } from 'n8n-workflow';
+import { constructExecutionMetaData, returnJsonArray } from 'MNI-core';
+import type { IExecuteFunctions } from 'MNI-workflow';
 
 import { configurePool } from '../GenericFunctions';
 import { MicrosoftSql } from '../MicrosoftSql.node';

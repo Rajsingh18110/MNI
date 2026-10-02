@@ -1,7 +1,7 @@
-import type { BuiltTool, CreateDelegateSubAgentToolOptions, ToolContext } from '@n8n/agents';
-import { INLINE_SUB_AGENT_ID } from '@n8n/agents';
-import { Tool } from '@n8n/agents/tool';
-import { SUB_AGENT_TASK_DIFFICULTIES, type SubAgentSource } from '@n8n/api-types';
+import type { BuiltTool, CreateDelegateSubAgentToolOptions, ToolContext } from '@MNI/agents';
+import { INLINE_SUB_AGENT_ID } from '@MNI/agents';
+import { Tool } from '@MNI/agents/tool';
+import { SUB_AGENT_TASK_DIFFICULTIES, type SubAgentSource } from '@MNI/api-types';
 import { z } from 'zod';
 
 import { decodeAgentSandboxHostMetadata } from '../agent-sandbox-principal';

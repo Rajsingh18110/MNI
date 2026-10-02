@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
 import { provide, ref } from 'vue';
-import { N8nButton } from '@n8n/design-system';
+import { N8nButton } from '@MNI/design-system';
 import SuggestionFooter from '@/app/components/SuggestionFooter.vue';
 
 import ToolsConnectionModal from './ToolsConnectionModal.vue';
@@ -107,8 +107,8 @@ function renderWithTrigger(
 
 			// Provide a fake credential adapter so the credential-picker dropdown
 			// has realistic entries (Jake's Notion, etc.) in Storybook without
-			// importing editor-ui stores (which would pull in the n8n-workflow ->
-			// @n8n/tournament chain that breaks Storybook's dev server).
+			// importing editor-ui stores (which would pull in the MNI-workflow ->
+			// @MNI/tournament chain that breaks Storybook's dev server).
 			const fakeAdapter: ToolConnectionCredentialAdapter = {
 				getCredentialsByType: (authType) =>
 					sampleCredentials.filter((cred) => cred.type === authType),
@@ -258,7 +258,7 @@ export const NodeToolInlineSettings: Story = {
 			kind: 'node',
 			title: 'OpenAI',
 			status: 'connected',
-			nodeTypeName: '@n8n/n8n-nodes-langchain.openAi',
+			nodeTypeName: '@MNI/MNI-nodes-langchain.openAi',
 			iconSource: {
 				type: 'file',
 				src: 'https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg',
@@ -293,7 +293,7 @@ export const MultiCredentialHeader: Story = {
 			title: 'HTTP Request',
 			description: 'Make HTTP requests with OAuth2 or a bearer token.',
 			status: 'connected',
-			nodeTypeName: 'n8n-nodes-base.httpRequestTool',
+			nodeTypeName: 'MNI-nodes-base.httpRequestTool',
 			credentials: [
 				{ authType: 'oAuth2Api', required: false },
 				{ authType: 'httpBearerAuth', required: false },

@@ -7,18 +7,18 @@ import type {
 	PromoteRequest,
 	PromotionCheckoutPublicDto,
 	PromotionDirection,
-} from '@n8n/api-types';
-import { Logger } from '@n8n/backend-common';
-import { ProjectRepository, SharedWorkflowRepository, type User } from '@n8n/db';
-import { Service } from '@n8n/di';
+} from '@MNI/api-types';
+import { Logger } from '@MNI/backend-common';
+import { ProjectRepository, SharedWorkflowRepository, type User } from '@MNI/db';
+import { Service } from '@MNI/di';
 import { cp, mkdir, mkdtemp, rename, rm, stat } from 'node:fs/promises';
 import path from 'node:path';
-import { UnexpectedError } from 'n8n-workflow';
+import { UnexpectedError } from 'MNI-workflow';
 
 import { BadRequestError } from '@/errors/response-errors/bad-request.error';
 import { NotFoundError } from '@/errors/response-errors/not-found.error';
-import { N8nPackagesService } from '@/modules/n8n-packages/n8n-packages.service';
-import { MANIFEST_FILE } from '@/modules/n8n-packages/spec/constants';
+import { N8nPackagesService } from '@/modules/MNI-packages/MNI-packages.service';
+import { MANIFEST_FILE } from '@/modules/MNI-packages/spec/constants';
 import {
 	DataTableMissingMode,
 	DataTableSchemaConflictPolicy,
@@ -37,7 +37,7 @@ import {
 	WorkflowVersionPolicy,
 	type ImportRequest,
 	type ImportResult,
-} from '@/modules/n8n-packages/n8n-packages.types';
+} from '@/modules/MNI-packages/MNI-packages.types';
 import { ProjectService } from '@/services/project.service.ee';
 
 import { BASE_BRANCH_DIRECTORIES, parseBaseBranchFiles } from './base-branch-files';

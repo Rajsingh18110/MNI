@@ -1,4 +1,4 @@
-import type { INodeProperties } from 'n8n-workflow';
+import type { INodeProperties } from 'MNI-workflow';
 
 export const channelOperations: INodeProperties[] = [
 	{
@@ -415,12 +415,12 @@ export const channelFields: INodeProperties[] = [
 						value: 'private_channel',
 					},
 					{
-						// eslint-disable-next-line n8n-nodes-base/node-param-display-name-miscased
+						// eslint-disable-next-line MNI-nodes-base/node-param-display-name-miscased
 						name: 'mpim',
 						value: 'mpim',
 					},
 					{
-						// eslint-disable-next-line n8n-nodes-base/node-param-display-name-miscased
+						// eslint-disable-next-line MNI-nodes-base/node-param-display-name-miscased
 						name: 'im',
 						value: 'im',
 					},

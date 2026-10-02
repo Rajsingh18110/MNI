@@ -1,7 +1,7 @@
-import { testDb } from '@n8n/backend-test-utils';
-import type { ScheduledJob as ScheduledJobEntity, ScheduledTask } from '@n8n/db';
-import { ScheduledJobRepository, ScheduledTaskRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
+import { testDb } from '@MNI/backend-test-utils';
+import type { ScheduledJob as ScheduledJobEntity, ScheduledTask } from '@MNI/db';
+import { ScheduledJobRepository, ScheduledTaskRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
 
 import { selfOwned } from './shared/job-factory';
 

@@ -1,5 +1,5 @@
-import { ListProjectsQueryDto } from '@n8n/api-types';
-import type { AuthenticatedRequest } from '@n8n/db';
+import { ListProjectsQueryDto } from '@MNI/api-types';
+import type { AuthenticatedRequest } from '@MNI/db';
 import type { Response } from 'express';
 import type { Mock } from 'vitest';
 import { mock } from 'vitest-mock-extended';

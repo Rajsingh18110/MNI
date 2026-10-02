@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/naming-convention -- keys are IMAP search keys and header names */
-import type { SearchObject } from '@n8n/imap';
+import type { SearchObject } from '@MNI/imap';
 
 /** A single node-imap search criterion: a bare search key, or a search key with arguments. */
 export type SearchCriteria = string | [string, ...unknown[]];

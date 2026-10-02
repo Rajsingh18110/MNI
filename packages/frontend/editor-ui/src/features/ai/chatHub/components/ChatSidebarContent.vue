@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useMessage } from '@/app/composables/useMessage';
-import { useToast } from '@n8n/composables/useToast';
+import { useToast } from '@MNI/composables/useToast';
 import { MODAL_CONFIRM } from '@/app/constants';
 import { useChatStore } from '@/features/ai/chatHub/chat.store';
 import { useCredentialsStore } from '@/features/credentials/credentials.store';
@@ -10,14 +10,14 @@ import {
 	CHAT_WORKFLOW_AGENTS_VIEW,
 	CHAT_PERSONAL_AGENTS_VIEW,
 } from '@/features/ai/chatHub/constants';
-import { type IMenuItem, N8nMenuItem, N8nScrollArea, N8nText } from '@n8n/design-system';
+import { type IMenuItem, N8nMenuItem, N8nScrollArea, N8nText } from '@MNI/design-system';
 import { computed, onMounted, ref } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import ChatSessionMenuItem from './ChatSessionMenuItem.vue';
 import SkeletonMenuItem from './SkeletonMenuItem.vue';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
-import { type ChatHubSessionDto } from '@n8n/api-types';
-import { useI18n } from '@n8n/i18n';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
+import { type ChatHubSessionDto } from '@MNI/api-types';
+import { useI18n } from '@MNI/i18n';
 import KeyboardShortcutTooltip from '@/app/components/KeyboardShortcutTooltip.vue';
 
 defineProps<{ isCollapsed: boolean }>();

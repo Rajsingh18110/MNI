@@ -1,5 +1,5 @@
-import { ScheduledJobOwnerType } from '@n8n/constants';
-import { ScheduledJobOwnerRegistry } from '@n8n/scheduler';
+import { ScheduledJobOwnerType } from '@MNI/constants';
+import { ScheduledJobOwnerRegistry } from '@MNI/scheduler';
 
 import type { AgentScheduledJobOwner } from './agent-scheduled-job-owner';
 import type { SystemTaskScheduledJobOwner } from './system-tasks/system-task-scheduled-job-owner';

@@ -1,4 +1,4 @@
-import { QueryFailedError } from '@n8n/typeorm';
+import { QueryFailedError } from '@MNI/typeorm';
 import { mock } from 'vitest-mock-extended';
 
 import { RoleMappingRuleService } from '@/modules/provisioning.ee/role-mapping-rule.service.ee';
@@ -14,7 +14,7 @@ import type {
 	RoleMappingRule,
 	RoleMappingRuleRepository,
 	RoleRepository,
-} from '@n8n/db';
+} from '@MNI/db';
 
 const roleMappingRuleRepository = mock<RoleMappingRuleRepository>();
 const roleRepository = mock<RoleRepository>();

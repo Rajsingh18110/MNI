@@ -1,5 +1,5 @@
-import type { IExecuteFunctions, ExecuteAgentData, NodeParameterValueType } from 'n8n-workflow';
-import { getNodeParameters, NodeOperationError } from 'n8n-workflow';
+import type { IExecuteFunctions, ExecuteAgentData, NodeParameterValueType } from 'MNI-workflow';
+import { getNodeParameters, NodeOperationError } from 'MNI-workflow';
 import { createHash } from 'node:crypto';
 import type { Mocked } from 'vitest';
 import { mockDeep } from 'vitest-mock-extended';
@@ -59,7 +59,7 @@ describe('MessageAnAgent Node', () => {
 		executeFunctions.getNode.mockReturnValue({
 			id: 'test-node-id',
 			name: 'Message an Agent',
-			type: 'n8n-nodes-base.messageAnAgent',
+			type: 'MNI-nodes-base.messageAnAgent',
 			typeVersion: 2,
 			position: [0, 0],
 			parameters: {},
@@ -108,7 +108,7 @@ describe('MessageAnAgent Node', () => {
 		executeFunctions.getNode.mockReturnValue({
 			id: 'test-node-id',
 			name: 'Message an Agent',
-			type: 'n8n-nodes-base.messageAnAgent',
+			type: 'MNI-nodes-base.messageAnAgent',
 			typeVersion: 1,
 			position: [0, 0],
 			parameters: {},
@@ -194,7 +194,7 @@ describe('MessageAnAgent Node', () => {
 			executeFunctions.getNode.mockReturnValue({
 				id: 'test-node-id',
 				name: 'Message an Agent',
-				type: 'n8n-nodes-base.messageAnAgent',
+				type: 'MNI-nodes-base.messageAnAgent',
 				typeVersion: 1,
 				position: [0, 0],
 				parameters: {},
@@ -236,10 +236,10 @@ describe('MessageAnAgent Node', () => {
 						type: 'node',
 						name: 'HTTP Request',
 						node: {
-							nodeType: 'n8n-nodes-base.httpRequestTool',
+							nodeType: 'MNI-nodes-base.httpRequestTool',
 							nodeTypeVersion: 4.4,
 							nodeParameters: {
-								url: "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('URL', ``, 'string') }}",
+								url: "={{ /*MNI-auto-generated-fromAI-override*/ $fromAI('URL', ``, 'string') }}",
 							},
 						},
 					},
@@ -587,7 +587,7 @@ describe('MessageAnAgent Node', () => {
 			executeFunctions.getNode.mockReturnValue({
 				id: 'test-node-id',
 				name: 'Message an Agent',
-				type: 'n8n-nodes-base.messageAnAgent',
+				type: 'MNI-nodes-base.messageAnAgent',
 				typeVersion: 3,
 				position: [0, 0],
 				parameters: {},
@@ -710,7 +710,7 @@ describe('MessageAnAgent Node', () => {
 		const chatTriggerNode = {
 			id: 'chat-trigger-id',
 			name: 'When chat message received',
-			type: '@n8n/n8n-nodes-langchain.chatTrigger',
+			type: '@MNI/MNI-nodes-langchain.chatTrigger',
 			typeVersion: 1,
 			position: [0, 0] as [number, number],
 			parameters: {},
@@ -720,7 +720,7 @@ describe('MessageAnAgent Node', () => {
 			executeFunctions.getNode.mockReturnValue({
 				id: 'test-node-id',
 				name: 'Message an Agent',
-				type: 'n8n-nodes-base.messageAnAgent',
+				type: 'MNI-nodes-base.messageAnAgent',
 				typeVersion: 3.1,
 				position: [0, 0],
 				parameters: {},

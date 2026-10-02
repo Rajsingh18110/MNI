@@ -1,5 +1,5 @@
-import type { IExecuteFunctions, INodeExecutionData, INodeProperties } from 'n8n-workflow';
-import { toPathSegment } from 'n8n-workflow';
+import type { IExecuteFunctions, INodeExecutionData, INodeProperties } from 'MNI-workflow';
+import { toPathSegment } from 'MNI-workflow';
 
 import { returnAllOrLimit } from '../common.descriptions';
 import { handleOperationError } from '../../helpers/utils';

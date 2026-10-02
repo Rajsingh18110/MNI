@@ -1,5 +1,5 @@
 import dateformat from 'dateformat';
-import { i18n } from '@n8n/i18n';
+import { i18n } from '@MNI/i18n';
 
 export const convertToDisplayDateComponents = (
 	fullDate: Date | string | number,

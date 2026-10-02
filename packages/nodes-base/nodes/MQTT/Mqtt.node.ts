@@ -1,5 +1,5 @@
 import type { IClientPublishOptions } from 'mqtt';
-import { ensureError } from '@n8n/utils/errors/ensure-error';
+import { ensureError } from '@MNI/utils/errors/ensure-error';
 import {
 	type IExecuteFunctions,
 	type ICredentialsDecrypted,
@@ -9,7 +9,7 @@ import {
 	type INodeType,
 	type INodeTypeDescription,
 	NodeConnectionTypes,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { createClient, type MqttCredential } from './GenericFunctions';
 
@@ -98,7 +98,7 @@ export class Mqtt implements INodeType {
 						name: 'retain',
 						type: 'boolean',
 						default: false,
-						// eslint-disable-next-line n8n-nodes-base/node-param-description-boolean-without-whether
+						// eslint-disable-next-line MNI-nodes-base/node-param-description-boolean-without-whether
 						description:
 							'Normally if a publisher publishes a message to a topic, and no one is subscribed to that topic the message is simply discarded by the broker. However the publisher can tell the broker to keep the last message on that topic by setting the retain flag to true.',
 					},

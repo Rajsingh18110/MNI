@@ -1,5 +1,5 @@
-import type { WorkflowReviewRequestDecision, WorkflowReviewRequestState } from '@n8n/api-types';
-import type { BaseTextKey, useI18n } from '@n8n/i18n';
+import type { WorkflowReviewRequestDecision, WorkflowReviewRequestState } from '@MNI/api-types';
+import type { BaseTextKey, useI18n } from '@MNI/i18n';
 
 export type WorkflowReviewStatusDisplay = {
 	/** The state half alone, for surfaces that compose the two halves themselves. */

@@ -12,10 +12,10 @@ import {
 	useWorkflowDocumentStore,
 	createWorkflowDocumentId,
 } from '@/app/stores/workflowDocument.store';
-import type { IPinData } from 'n8n-workflow';
+import type { IPinData } from 'MNI-workflow';
 import type { INodeUi } from '@/Interface';
 
-vi.mock('@n8n/i18n', async (importActual) => ({
+vi.mock('@MNI/i18n', async (importActual) => ({
 	...(await importActual()),
 	useI18n: () => ({
 		baseText: (key: string, options?: { interpolate?: Record<string, string> }) =>
@@ -321,7 +321,7 @@ describe('useBuilderTodos', () => {
 			({
 				id: 'node-1',
 				name: 'Test Node',
-				type: 'n8n-nodes-base.httpRequest',
+				type: 'MNI-nodes-base.httpRequest',
 				typeVersion: 1,
 				position: [0, 0],
 				parameters: {},
@@ -418,7 +418,7 @@ describe('useBuilderTodos', () => {
 			// Setup an AI model node with credential issues (like OpenAI GPT-4o-mini)
 			const aiModelNode = createMockNode({
 				name: 'OpenAI GPT-4o-mini',
-				type: '@n8n/n8n-nodes-langchain.lmChatOpenAi',
+				type: '@MNI/MNI-nodes-langchain.lmChatOpenAi',
 				issues: {
 					credentials: {
 						openAiApi: ['Credentials not set'],
@@ -429,7 +429,7 @@ describe('useBuilderTodos', () => {
 			const agentNode = createMockNode({
 				id: 'agent-1',
 				name: 'AI Agent',
-				type: '@n8n/n8n-nodes-langchain.agent',
+				type: '@MNI/MNI-nodes-langchain.agent',
 			});
 
 			// Connections are stored by SOURCE node. AI Agent connects TO the model node.
@@ -465,7 +465,7 @@ describe('useBuilderTodos', () => {
 			// Setup: AI model sub-node with credential issues
 			const aiModelSubNode = createMockNode({
 				name: 'OpenAI GPT-4.1-mini',
-				type: '@n8n/n8n-nodes-langchain.lmChatOpenAi',
+				type: '@MNI/MNI-nodes-langchain.lmChatOpenAi',
 				issues: {
 					credentials: {
 						openAiApi: ['Credentials not set'],
@@ -477,7 +477,7 @@ describe('useBuilderTodos', () => {
 			const parentNode = createMockNode({
 				id: 'parent-1',
 				name: 'Analyze Emails',
-				type: '@n8n/n8n-nodes-langchain.agent',
+				type: '@MNI/MNI-nodes-langchain.agent',
 			});
 
 			getWorkflowDocumentStore().setNodes([aiModelSubNode, parentNode]);
@@ -514,7 +514,7 @@ describe('useBuilderTodos', () => {
 			// grandparentNode (has pinned data) <- parentSubNode <- childSubNode (has credential issues)
 			const childSubNode = createMockNode({
 				name: 'Child Tool',
-				type: '@n8n/n8n-nodes-langchain.tool',
+				type: '@MNI/MNI-nodes-langchain.tool',
 				issues: {
 					credentials: {
 						toolApi: ['Credentials not set'],
@@ -525,13 +525,13 @@ describe('useBuilderTodos', () => {
 			const parentSubNode = createMockNode({
 				id: 'parent-sub-1',
 				name: 'AI Model',
-				type: '@n8n/n8n-nodes-langchain.lmChatOpenAi',
+				type: '@MNI/MNI-nodes-langchain.lmChatOpenAi',
 			});
 
 			const grandparentNode = createMockNode({
 				id: 'grandparent-1',
 				name: 'AI Agent',
-				type: '@n8n/n8n-nodes-langchain.agent',
+				type: '@MNI/MNI-nodes-langchain.agent',
 			});
 
 			getWorkflowDocumentStore().setNodes([childSubNode, parentSubNode, grandparentNode]);
@@ -698,7 +698,7 @@ describe('useBuilderTodos', () => {
 			// Setup: AI model sub-node with credential issues
 			const aiModelSubNode = createMockNode({
 				name: 'OpenAI GPT-4.1-mini',
-				type: '@n8n/n8n-nodes-langchain.lmChatOpenAi',
+				type: '@MNI/MNI-nodes-langchain.lmChatOpenAi',
 				issues: {
 					credentials: {
 						openAiApi: ['Credentials not set'],
@@ -710,7 +710,7 @@ describe('useBuilderTodos', () => {
 			const parentNode = createMockNode({
 				id: 'parent-1',
 				name: 'AI Agent',
-				type: '@n8n/n8n-nodes-langchain.agent',
+				type: '@MNI/MNI-nodes-langchain.agent',
 				disabled: true,
 			});
 
@@ -898,7 +898,7 @@ describe('useBuilderTodos', () => {
 				// Setup: AI model sub-node with placeholder
 				const aiModelSubNode = createMockNode({
 					name: 'OpenAI GPT-4.1-mini',
-					type: '@n8n/n8n-nodes-langchain.lmChatOpenAi',
+					type: '@MNI/MNI-nodes-langchain.lmChatOpenAi',
 					parameters: {
 						prompt: '<__PLACEHOLDER_VALUE__Enter prompt__>',
 					},
@@ -907,7 +907,7 @@ describe('useBuilderTodos', () => {
 				const parentNode = createMockNode({
 					id: 'parent-1',
 					name: 'AI Agent',
-					type: '@n8n/n8n-nodes-langchain.agent',
+					type: '@MNI/MNI-nodes-langchain.agent',
 				});
 
 				getWorkflowDocumentStore().setNodes([aiModelSubNode, parentNode]);
@@ -985,7 +985,7 @@ describe('useBuilderTodos', () => {
 			it('shows subnode todos when parent node is unpinned', async () => {
 				const subnodeWithPlaceholder = createMockNode({
 					name: 'OpenAI Model',
-					type: '@n8n/n8n-nodes-langchain.lmChatOpenAi',
+					type: '@MNI/MNI-nodes-langchain.lmChatOpenAi',
 					parameters: {
 						prompt: '<__PLACEHOLDER_VALUE__Enter prompt__>',
 					},
@@ -994,7 +994,7 @@ describe('useBuilderTodos', () => {
 				const parentNode = createMockNode({
 					id: 'parent-1',
 					name: 'AI Agent',
-					type: '@n8n/n8n-nodes-langchain.agent',
+					type: '@MNI/MNI-nodes-langchain.agent',
 				});
 
 				getWorkflowDocumentStore().setNodes([subnodeWithPlaceholder, parentNode]);
@@ -1023,7 +1023,7 @@ describe('useBuilderTodos', () => {
 			it('shows subnode todos when parent node is enabled', () => {
 				const subnodeWithPlaceholder = createMockNode({
 					name: 'OpenAI Model',
-					type: '@n8n/n8n-nodes-langchain.lmChatOpenAi',
+					type: '@MNI/MNI-nodes-langchain.lmChatOpenAi',
 					parameters: {
 						prompt: '<__PLACEHOLDER_VALUE__Enter prompt__>',
 					},
@@ -1032,7 +1032,7 @@ describe('useBuilderTodos', () => {
 				const parentNode = createMockNode({
 					id: 'parent-1',
 					name: 'AI Agent',
-					type: '@n8n/n8n-nodes-langchain.agent',
+					type: '@MNI/MNI-nodes-langchain.agent',
 					disabled: true,
 				});
 

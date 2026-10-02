@@ -3,9 +3,9 @@ import {
 	ConfirmEmailChangeRequestDto,
 	ResolveChangeEmailTokenQueryDto,
 	type ChangeEmailResponse,
-} from '@n8n/api-types';
-import { Logger } from '@n8n/backend-common';
-import { AuthenticatedRequest, UserRepository } from '@n8n/db';
+} from '@MNI/api-types';
+import { Logger } from '@MNI/backend-common';
+import { AuthenticatedRequest, UserRepository } from '@MNI/db';
 import {
 	Body,
 	createUserKeyedRateLimiter,
@@ -13,7 +13,7 @@ import {
 	Post,
 	Query,
 	RestController,
-} from '@n8n/decorators';
+} from '@MNI/decorators';
 import { Response } from 'express';
 
 import { AuthService } from '@/auth/auth.service';

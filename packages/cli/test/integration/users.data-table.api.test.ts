@@ -1,6 +1,6 @@
-import { testDb, getPersonalProject } from '@n8n/backend-test-utils';
-import type { User } from '@n8n/db';
-import { Container } from '@n8n/di';
+import { testDb, getPersonalProject } from '@MNI/backend-test-utils';
+import type { User } from '@MNI/db';
+import { Container } from '@MNI/di';
 
 import { DataTableRepository } from '@/modules/data-table/data-table.repository';
 import { toTableName } from '@/modules/data-table/utils/sql-utils';

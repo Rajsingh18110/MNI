@@ -1,5 +1,5 @@
-import { BaseRule } from '@n8n/rules-engine';
-import type { Violation } from '@n8n/rules-engine';
+import { BaseRule } from '@MNI/rules-engine';
+import type { Violation } from '@MNI/rules-engine';
 import fg from 'fast-glob';
 import * as fs from 'node:fs';
 import * as path from 'node:path';
@@ -13,15 +13,15 @@ import {
 
 /**
  * A package that depends on one of these can reach the raw cipher primitives
- * (`n8n-core`) or the deployment_key entity (`@n8n/db`), so the encryption
+ * (`MNI-core`) or the deployment_key entity (`@MNI/db`), so the encryption
  * boundary lint rules must run there.
  */
-const DEFAULT_TRIGGER_DEPENDENCIES = ['n8n-core', '@n8n/db'];
+const DEFAULT_TRIGGER_DEPENDENCIES = ['MNI-core', '@MNI/db'];
 
 /** The rules `encryptionBoundaryConfig` enables, without the plugin prefix. */
 const DEFAULT_GUARDED_RULES = ['no-encryption-guardrail-disable'];
 
-const BOUNDARY_CONFIG_PATH = 'packages/@n8n/eslint-config/src/configs/encryption-boundary.ts';
+const BOUNDARY_CONFIG_PATH = 'packages/@MNI/eslint-config/src/configs/encryption-boundary.ts';
 
 const CONFIG_FILENAMES = [
 	'eslint.config.mjs',
@@ -32,12 +32,12 @@ const CONFIG_FILENAMES = [
 
 /** `backendConfig` composes the boundary, and `nodesConfig` composes `backendConfig`. */
 const BOUNDARY_IMPORT =
-	/import\s*\{([^}]*)\}\s*from\s+['"]@n8n\/eslint-config\/(?:backend|nodes)['"]/;
+	/import\s*\{([^}]*)\}\s*from\s+['"]@MNI\/eslint-config\/(?:backend|nodes)['"]/;
 const BOUNDARY_EXPORTS = /^(backendConfig|nodesConfig)(?:\s+as\s+(\w+))?$/;
 
 /** A guarded rule configured to anything weaker than "error" in an ESLint config. */
 const DOWNGRADE =
-	/['"]n8n-local-rules\/([\w-]+)['"]\s*:\s*\[?\s*(['"](?:off|warn)['"]|0|1)(?![\w.])/;
+	/['"]MNI-local-rules\/([\w-]+)['"]\s*:\s*\[?\s*(['"](?:off|warn)['"]|0|1)(?![\w.])/;
 
 /**
  * The guarded ESLint rules skip test files and migrations, so a directive
@@ -86,7 +86,7 @@ export class EncryptionBoundaryRule extends BaseRule<CodeHealthContext> {
 	readonly id = 'encryption-boundary';
 	readonly name = 'Encryption Boundary Coverage';
 	readonly description =
-		'Packages that depend on n8n-core or @n8n/db must compose the encryption-boundary ESLint config, keep its rules at "error", and contain no ESLint directive that silences them.';
+		'Packages that depend on MNI-core or @MNI/db must compose the encryption-boundary ESLint config, keep its rules at "error", and contain no ESLint directive that silences them.';
 	readonly severity = 'error' as const;
 
 	async analyze(context: CodeHealthContext): Promise<Violation[]> {
@@ -133,7 +133,7 @@ export class EncryptionBoundaryRule extends BaseRule<CodeHealthContext> {
 					1,
 					1,
 					`${packageName} depends on ${trigger} but has no ESLint config, so the encryption boundary is not linted there.`,
-					'Add an eslint.config.mjs that extends `backendConfig` from @n8n/eslint-config/backend (or `nodesConfig`).',
+					'Add an eslint.config.mjs that extends `backendConfig` from @MNI/eslint-config/backend (or `nodesConfig`).',
 				),
 			];
 		}
@@ -148,7 +148,7 @@ export class EncryptionBoundaryRule extends BaseRule<CodeHealthContext> {
 					1,
 					1,
 					`${packageName} depends on ${trigger} but its ESLint config does not compose the encryption boundary.`,
-					"Extend `backendConfig` from '@n8n/eslint-config/backend' (or `nodesConfig`) and add it to the exported config.",
+					"Extend `backendConfig` from '@MNI/eslint-config/backend' (or `nodesConfig`) and add it to the exported config.",
 				),
 			);
 		}
@@ -161,7 +161,7 @@ export class EncryptionBoundaryRule extends BaseRule<CodeHealthContext> {
 					configPath,
 					index + 1,
 					match.index + 1,
-					`The ESLint config sets \`n8n-local-rules/${match[1]}\` to ${match[2]}; the encryption guardrails must stay at "error".`,
+					`The ESLint config sets \`MNI-local-rules/${match[1]}\` to ${match[2]}; the encryption guardrails must stay at "error".`,
 					`Remove the override. Widen the boundary in ${BOUNDARY_CONFIG_PATH} instead.`,
 				),
 			);

@@ -13,7 +13,7 @@ import { AgentModalTestStub } from './utils/AgentModalTestStub';
 // Components use `data-testid`; the global setup configures `data-test-id`.
 configure({ testIdAttribute: 'data-testid' });
 
-vi.mock('@n8n/i18n', () => {
+vi.mock('@MNI/i18n', () => {
 	const i18n = { baseText: (key: string) => key };
 	return { useI18n: () => i18n, i18n, i18nInstance: { install: vi.fn() } };
 });

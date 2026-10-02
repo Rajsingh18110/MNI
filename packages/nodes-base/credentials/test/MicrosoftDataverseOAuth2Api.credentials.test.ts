@@ -1,4 +1,4 @@
-import type { INodeProperties } from 'n8n-workflow';
+import type { INodeProperties } from 'MNI-workflow';
 
 import { DATAVERSE_API_PATH } from '../../nodes/Microsoft/Dataverse/constants';
 import { MicrosoftDataverseOAuth2Api } from '../MicrosoftDataverseOAuth2Api.credentials';

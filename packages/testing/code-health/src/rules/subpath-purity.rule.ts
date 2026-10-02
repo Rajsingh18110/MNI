@@ -1,5 +1,5 @@
-import { BaseRule } from '@n8n/rules-engine';
-import type { Violation } from '@n8n/rules-engine';
+import { BaseRule } from '@MNI/rules-engine';
+import type { Violation } from '@MNI/rules-engine';
 import * as fs from 'node:fs';
 import * as path from 'node:path';
 
@@ -23,7 +23,7 @@ export interface SubpathSpec {
 }
 
 /**
- * Guards constrained entry points (e.g. the DI-less `@n8n/backend-network/transport` subpath)
+ * Guards constrained entry points (e.g. the DI-less `@MNI/backend-network/transport` subpath)
  * by walking their runtime import graph and asserting no forbidden package (DI, config, backend-common)
  * is reachable, so DI-less callers don't drag the full service into their bundle.
  */

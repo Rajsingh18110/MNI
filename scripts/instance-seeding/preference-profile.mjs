@@ -10,12 +10,12 @@
 // constraint, not a preference, and detecting it proves nothing.
 export const HOUSE_STYLE = {
 	// Alternatives: Anthropic, Gemini, Mistral, Ollama, Azure OpenAI.
-	chatModel: '@n8n/n8n-nodes-langchain.lmChatOpenAi',
+	chatModel: '@MNI/MNI-nodes-langchain.lmChatOpenAi',
 	chatModelName: 'gpt-4o-mini',
 	// Alternatives: Jira, GitHub Issues, Asana, Trello, ClickUp.
-	tracker: 'n8n-nodes-base.linear',
+	tracker: 'MNI-nodes-base.linear',
 	// Alternatives: Discord, Teams, Telegram, email.
-	notifier: 'n8n-nodes-base.slack',
+	notifier: 'MNI-nodes-base.slack',
 	// Alternatives: the `interval` rule form, which the estate profile uses.
 	scheduleStyle: 'cronExpression',
 	// Every workflow's last node writes one row to `automation_runs`.
@@ -98,7 +98,7 @@ const scheduleTrigger = (cron) => ({
 	parameters: { rule: { interval: [{ field: 'cronExpression', expression: cron }] } },
 	id: undefined,
 	name: 'Schedule Trigger',
-	type: 'n8n-nodes-base.scheduleTrigger',
+	type: 'MNI-nodes-base.scheduleTrigger',
 	typeVersion: 1.4,
 	position: at(),
 });
@@ -107,7 +107,7 @@ const webhookTrigger = (path) => ({
 	parameters: { httpMethod: 'POST', path, responseMode: 'lastNode', options: {} },
 	id: undefined,
 	name: 'Webhook',
-	type: 'n8n-nodes-base.webhook',
+	type: 'MNI-nodes-base.webhook',
 	typeVersion: 2,
 	position: at(),
 });
@@ -133,7 +133,7 @@ const agent = (name, prompt) => ({
 	},
 	id: undefined,
 	name,
-	type: '@n8n/n8n-nodes-langchain.agent',
+	type: '@MNI/MNI-nodes-langchain.agent',
 	typeVersion: 3.1,
 	position: at(),
 });
@@ -191,7 +191,7 @@ const dataTableGet = (name, tableId, filters) => ({
 	},
 	id: undefined,
 	name,
-	type: 'n8n-nodes-base.dataTable',
+	type: 'MNI-nodes-base.dataTable',
 	typeVersion: 1.1,
 	position: at(),
 });
@@ -214,7 +214,7 @@ const auditRow = (tableId, workflowName, detail) => ({
 	},
 	id: undefined,
 	name: 'Record Run',
-	type: 'n8n-nodes-base.dataTable',
+	type: 'MNI-nodes-base.dataTable',
 	typeVersion: 1.1,
 	position: at(),
 });
@@ -237,7 +237,7 @@ const ifNode = (name, leftValue, operator, rightValue) => ({
 	},
 	id: undefined,
 	name,
-	type: 'n8n-nodes-base.if',
+	type: 'MNI-nodes-base.if',
 	typeVersion: 2.3,
 	position: at(),
 });
@@ -289,7 +289,7 @@ export function preferenceWorkflows(tables) {
 					},
 					id: undefined,
 					name: 'Fetch Unread Support Mail',
-					type: 'n8n-nodes-base.gmail',
+					type: 'MNI-nodes-base.gmail',
 					typeVersion: 2.2,
 					position: at(),
 					credentials: { gmail: true },
@@ -365,7 +365,7 @@ export function preferenceWorkflows(tables) {
 				},
 				id: undefined,
 				name: 'Enrich Company',
-				type: 'n8n-nodes-base.httpRequest',
+				type: 'MNI-nodes-base.httpRequest',
 				typeVersion: 4.2,
 				position: at(),
 				credentials: { http: true },
@@ -412,7 +412,7 @@ export function preferenceWorkflows(tables) {
 				},
 				id: undefined,
 				name: 'Send Dunning Email',
-				type: 'n8n-nodes-base.gmail',
+				type: 'MNI-nodes-base.gmail',
 				typeVersion: 2.2,
 				position: at(),
 				credentials: { gmail: true },
@@ -480,7 +480,7 @@ export function preferenceWorkflows(tables) {
 				},
 				id: undefined,
 				name: 'Format Release Note',
-				type: 'n8n-nodes-base.set',
+				type: 'MNI-nodes-base.set',
 				typeVersion: 3.4,
 				position: at(),
 			},

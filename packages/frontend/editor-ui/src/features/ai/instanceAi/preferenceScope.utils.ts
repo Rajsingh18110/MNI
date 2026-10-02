@@ -1,5 +1,5 @@
-import type { AiPreferenceScope } from '@n8n/api-types';
-import type { useI18n } from '@n8n/i18n';
+import type { AiPreferenceScope } from '@MNI/api-types';
+import type { useI18n } from '@MNI/i18n';
 
 import type { ProjectListItem } from '@/features/collaboration/projects/projects.types';
 

@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { N8nIcon } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+import { N8nIcon } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 import InstanceRoleAssignmentSelect from './InstanceRoleAssignmentSelect.vue';
 
 const modelValue = defineModel<string>({ required: true });

@@ -4,8 +4,8 @@ import type { RangeNode } from './types';
 import { sanitizeHtml } from '@/app/utils/htmlUtils';
 import type { Node } from 'estree';
 import type { CodeNodeLanguageOption } from './CodeNodeEditor.vue';
-import type { CodeExecutionMode, WorkflowSettingsBinaryMode } from 'n8n-workflow';
-import { BINARY_MODE_COMBINED, BINARY_MODE_SEPARATE } from 'n8n-workflow';
+import type { CodeExecutionMode, WorkflowSettingsBinaryMode } from 'MNI-workflow';
+import { BINARY_MODE_COMBINED, BINARY_MODE_SEPARATE } from 'MNI-workflow';
 
 export function walk<T extends RangeNode>(
 	node: Node | esprima.Program,

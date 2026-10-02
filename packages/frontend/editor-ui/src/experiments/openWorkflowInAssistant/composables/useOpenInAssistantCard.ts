@@ -1,4 +1,4 @@
-import { getResourcePermissions } from '@n8n/permissions';
+import { getResourcePermissions } from '@MNI/permissions';
 import { useRouter } from 'vue-router';
 
 import type { WorkflowResource } from '@/Interface';

@@ -10,14 +10,14 @@ describe('workflow-structure-validation', () => {
 			{
 				id: 'node-1',
 				name: 'Start',
-				type: 'n8n-nodes-base.manualTrigger',
+				type: 'MNI-nodes-base.manualTrigger',
 				position: [0, 0] as [number, number],
 				parameters: {},
 			},
 			{
 				id: 'node-2',
 				name: 'Set',
-				type: 'n8n-nodes-base.set',
+				type: 'MNI-nodes-base.set',
 				position: [200, 0] as [number, number],
 				parameters: {},
 			},

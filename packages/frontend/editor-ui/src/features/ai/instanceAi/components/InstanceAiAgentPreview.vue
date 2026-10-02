@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, onBeforeUnmount } from 'vue';
-import { useRootStore } from '@n8n/stores/useRootStore';
+import { useRootStore } from '@MNI/stores/useRootStore';
 import AgentBuilderView from '@/features/agents/views/AgentBuilderView.vue';
 import type { AgentResource } from '@/features/agents/types';
 import { persistPendingAgent } from '../instanceAi.memory.api';

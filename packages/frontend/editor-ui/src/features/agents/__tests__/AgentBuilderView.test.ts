@@ -3,8 +3,8 @@ import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { mount, flushPromises } from '@vue/test-utils';
 import { nextTick, ref, computed, reactive } from 'vue';
 import { createPinia, setActivePinia } from 'pinia';
-import { MAX_AGENT_KNOWLEDGE_BASE_SIZE_BYTES, type PushMessage } from '@n8n/api-types';
-import { ResponseError } from '@n8n/rest-api-client';
+import { MAX_AGENT_KNOWLEDGE_BASE_SIZE_BYTES, type PushMessage } from '@MNI/api-types';
+import { ResponseError } from '@MNI/rest-api-client';
 import type {
 	AgentJsonConfig,
 	AgentJsonSkillRef,
@@ -12,7 +12,7 @@ import type {
 	AgentFixWithAssistantEvent,
 	CustomToolEntry,
 } from '../types';
-import { getRandomAgentPersonalisationGradient } from '@n8n/api-types';
+import { getRandomAgentPersonalisationGradient } from '@MNI/api-types';
 import { agentsEventBus } from '../agents.eventBus';
 import { AGENT_TEMPLATES, AGENT_TEMPLATE_SUGGESTIONS_VERSION } from '../agentTemplates';
 import {
@@ -90,7 +90,7 @@ const rootStoreMock = {
 	pushRef: 'tab-1' as string,
 };
 
-vi.mock('@n8n/stores/useRootStore', () => ({
+vi.mock('@MNI/stores/useRootStore', () => ({
 	useRootStore: () => rootStoreMock,
 }));
 
@@ -99,7 +99,7 @@ const usersStoreMock = {
 	usersById: {} as Record<string, unknown>,
 };
 
-vi.mock('@n8n/stores/users.store', () => ({
+vi.mock('@MNI/stores/users.store', () => ({
 	useUsersStore: () => usersStoreMock,
 }));
 
@@ -122,7 +122,7 @@ vi.mock('@/features/credentials/credentials.store', () => ({
 	}),
 }));
 
-vi.mock('@n8n/composables/useTelemetry', () => ({
+vi.mock('@MNI/composables/useTelemetry', () => ({
 	useTelemetry: () => ({ track: vi.fn() }),
 }));
 
@@ -130,7 +130,7 @@ vi.mock('@/app/composables/useMessage', () => ({
 	useMessage: () => ({ confirm: vi.fn() }),
 }));
 
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: () => ({ showError: showErrorMock, showMessage: showMessageMock }),
 }));
 
@@ -455,7 +455,7 @@ ${String(options?.interpolate?.diagnostics ?? '')}
 	return map[key] ?? key;
 };
 
-vi.mock('@n8n/i18n', () => ({
+vi.mock('@MNI/i18n', () => ({
 	useI18n: () => ({ baseText: baseTextFn }),
 	i18n: { baseText: baseTextFn },
 }));
@@ -482,7 +482,7 @@ async function renderView({
 	const { default: AgentBuilderView } = await import('../views/AgentBuilderView.vue');
 	const pinia = createPinia();
 	setActivePinia(pinia);
-	const { useSettingsStore } = await import('@n8n/stores/settings.store');
+	const { useSettingsStore } = await import('@MNI/stores/settings.store');
 	const settingsStore = useSettingsStore();
 	settingsStore.settings = { activeModules: knowledgeBaseEnabled ? ['agents'] : [] } as never;
 	settingsStore.moduleSettings = {
@@ -715,11 +715,11 @@ const commonStubs = {
 	},
 	N8nCallout: {
 		template:
-			'<div data-testid="stub-n8n-callout" :data-theme="theme"><slot /><slot name="actions" /><slot name="trailingContent" /></div>',
+			'<div data-testid="stub-MNI-callout" :data-theme="theme"><slot /><slot name="actions" /><slot name="trailingContent" /></div>',
 		props: ['theme', 'iconTooltip', 'roundCorners'],
 	},
 	N8nUserStack: {
-		template: '<div data-testid="stub-n8n-user-stack" />',
+		template: '<div data-testid="stub-MNI-user-stack" />',
 		props: ['users', 'currentUserEmail'],
 	},
 	N8nAssistantIcon: { template: '<i data-testid="stub-assistant-icon" />', props: ['size'] },
@@ -769,9 +769,9 @@ function resetViewMocks() {
 	for (let index = localStorage.length - 1; index >= 0; index--) {
 		const key = localStorage.key(index);
 		if (
-			key?.startsWith('N8N_AGENT_PREVIEW_OPEN') ||
-			key?.startsWith('N8N_AGENT_AI_PANEL_OPEN') ||
-			key === 'N8N_AGENT_AI_PANEL_WIDTH'
+			key?.startsWith('MNI_AGENT_PREVIEW_OPEN') ||
+			key?.startsWith('MNI_AGENT_AI_PANEL_OPEN') ||
+			key === 'MNI_AGENT_AI_PANEL_WIDTH'
 		) {
 			localStorage.removeItem(key);
 		}
@@ -803,7 +803,7 @@ function resetViewMocks() {
 	fetchedPreviewThreads.length = 0;
 	previewSessionsLoading.value = false;
 	history.replaceState({}, '');
-	sessionStorage.removeItem('N8N_DEBOUNCE_MULTIPLIER');
+	sessionStorage.removeItem('MNI_DEBOUNCE_MULTIPLIER');
 	// Reset to a built agent; tests that need an unbuilt agent override locally.
 	intendedConfig = {
 		name: 'Agent One',
@@ -1236,7 +1236,7 @@ describe('AgentBuilderView — preview routing', { timeout: 60_000 }, () => {
 	});
 
 	it('opens the preview dock with a new session when requested by the route', async () => {
-		localStorage.removeItem('N8N_AGENT_PREVIEW_OPEN:p1:a1');
+		localStorage.removeItem('MNI_AGENT_PREVIEW_OPEN:p1:a1');
 		routeQuery[NEW_SESSION_PARAM] = 'true';
 
 		const wrapper = await renderView();
@@ -1328,7 +1328,7 @@ describe('AgentBuilderView — preview routing', { timeout: 60_000 }, () => {
 		'opens the embedded assistant panel and hands it the active preview session $label',
 		async ({ event }) => {
 			handoffMock.mockReturnValueOnce(true);
-			localStorage.setItem('N8N_AGENT_PREVIEW_OPEN:p1:a1', 'true');
+			localStorage.setItem('MNI_AGENT_PREVIEW_OPEN:p1:a1', 'true');
 			routeQuery.continueSessionId = 'thread-1';
 			fetchedSessionThreads.push({
 				id: 'thread-1',
@@ -1384,7 +1384,7 @@ describe('AgentBuilderView — preview routing', { timeout: 60_000 }, () => {
 		['leaves the preview open when the panel refuses the hand-off', false, 'true'],
 	])('%s', async (_label, handed, expectedStored) => {
 		handoffMock.mockReturnValueOnce(handed);
-		localStorage.setItem('N8N_AGENT_PREVIEW_OPEN:p1:a1', 'true');
+		localStorage.setItem('MNI_AGENT_PREVIEW_OPEN:p1:a1', 'true');
 		routeQuery.continueSessionId = 'thread-1';
 		fetchedSessionThreads.push({ id: 'thread-1', updatedAt: '2026-01-01T00:00:00Z' });
 
@@ -1392,12 +1392,12 @@ describe('AgentBuilderView — preview routing', { timeout: 60_000 }, () => {
 		wrapper.findComponent({ name: 'AgentPreviewDock' }).vm.$emit('send-to-assistant');
 		await flushPromises();
 
-		expect(localStorage.getItem('N8N_AGENT_PREVIEW_OPEN:p1:a1')).toBe(expectedStored);
+		expect(localStorage.getItem('MNI_AGENT_PREVIEW_OPEN:p1:a1')).toBe(expectedStored);
 	});
 
 	it('routes to the assistant setup instead of handing off the preview session when Instance AI is not ready', async () => {
 		instanceAiReadyRef.value = false;
-		localStorage.setItem('N8N_AGENT_PREVIEW_OPEN:p1:a1', 'true');
+		localStorage.setItem('MNI_AGENT_PREVIEW_OPEN:p1:a1', 'true');
 		routeQuery.continueSessionId = 'thread-1';
 		fetchedSessionThreads.push({ id: 'thread-1', updatedAt: '2026-01-01T00:00:00Z' });
 
@@ -1407,7 +1407,7 @@ describe('AgentBuilderView — preview routing', { timeout: 60_000 }, () => {
 
 		expect(routerPush).toHaveBeenCalledWith({ name: 'InstanceAi' });
 		expect(handoffMock).not.toHaveBeenCalled();
-		expect(localStorage.getItem('N8N_AGENT_PREVIEW_OPEN:p1:a1')).toBe('true');
+		expect(localStorage.getItem('MNI_AGENT_PREVIEW_OPEN:p1:a1')).toBe('true');
 	});
 
 	it('queues a hand-off requested from the standalone preview route and applies it once the assistant panel mounts', async () => {
@@ -2361,7 +2361,7 @@ describe('AgentBuilderView — preview routing', { timeout: 60_000 }, () => {
 	});
 
 	it('keeps a known continued session selected even when it has no persisted messages', async () => {
-		localStorage.setItem('N8N_AGENT_PREVIEW_OPEN:p1:a1', 'true');
+		localStorage.setItem('MNI_AGENT_PREVIEW_OPEN:p1:a1', 'true');
 		routeQuery.continueSessionId = 'faulty-thread';
 		fetchedSessionThreads.push({ id: 'faulty-thread', updatedAt: '2026-01-01T00:00:00Z' });
 
@@ -2383,7 +2383,7 @@ describe('AgentBuilderView — preview routing', { timeout: 60_000 }, () => {
 	});
 
 	it('replaces an unknown continued session with a fresh chat when there is no history', async () => {
-		localStorage.setItem('N8N_AGENT_PREVIEW_OPEN:p1:a1', 'true');
+		localStorage.setItem('MNI_AGENT_PREVIEW_OPEN:p1:a1', 'true');
 		routeQuery.continueSessionId = 'stale-missing-thread';
 
 		const wrapper = await renderView();
@@ -2402,7 +2402,7 @@ describe('AgentBuilderView — preview routing', { timeout: 60_000 }, () => {
 	});
 
 	it('rebinds an unknown session introduced by an in-place route change', async () => {
-		localStorage.setItem('N8N_AGENT_PREVIEW_OPEN:p1:a1', 'true');
+		localStorage.setItem('MNI_AGENT_PREVIEW_OPEN:p1:a1', 'true');
 		fetchedSessionThreads.push({ id: 'thread-latest', updatedAt: '2026-01-01T00:00:00Z' });
 		const wrapper = await renderView();
 		routerReplace.mockClear();
@@ -2428,7 +2428,7 @@ describe('AgentBuilderView — preview routing', { timeout: 60_000 }, () => {
 	});
 
 	it('ignores stale validation and history responses after New session takes ownership', async () => {
-		localStorage.setItem('N8N_AGENT_PREVIEW_OPEN:p1:a1', 'true');
+		localStorage.setItem('MNI_AGENT_PREVIEW_OPEN:p1:a1', 'true');
 		routeQuery.continueSessionId = 'stale-route-thread';
 		const detail = Promise.withResolvers<{ thread: SessionThread; executions: [] }>();
 		getSessionThreadDetailMock.mockReturnValueOnce(detail.promise);
@@ -2461,7 +2461,7 @@ describe('AgentBuilderView — preview routing', { timeout: 60_000 }, () => {
 	});
 
 	it('ignores session validation after Preview closes', async () => {
-		localStorage.setItem('N8N_AGENT_PREVIEW_OPEN:p1:a1', 'true');
+		localStorage.setItem('MNI_AGENT_PREVIEW_OPEN:p1:a1', 'true');
 		routeQuery.continueSessionId = 'stale-route-thread';
 		const detail = Promise.withResolvers<{ thread: SessionThread; executions: [] }>();
 		getSessionThreadDetailMock.mockReturnValueOnce(detail.promise);
@@ -2482,7 +2482,7 @@ describe('AgentBuilderView — preview routing', { timeout: 60_000 }, () => {
 	});
 
 	it('does not warm the knowledge sandbox again when switching preview sessions', async () => {
-		localStorage.setItem('N8N_AGENT_PREVIEW_OPEN:p1:a1', 'true');
+		localStorage.setItem('MNI_AGENT_PREVIEW_OPEN:p1:a1', 'true');
 		getAgentMock.mockResolvedValue(makeAgentResponse({ activeVersionId: 'v1' }));
 
 		const wrapper = await renderView({ knowledgeBaseEnabled: true });
@@ -3091,7 +3091,7 @@ describe('AgentBuilderView — three-column shell', () => {
 		const wrapper = await renderView();
 
 		expect(wrapper.find('[data-testid="agent-ai-dock"]').exists()).toBe(false);
-		expect(localStorage.getItem('N8N_AGENT_AI_PANEL_OPEN:p1:a1')).toBeNull();
+		expect(localStorage.getItem('MNI_AGENT_AI_PANEL_OPEN:p1:a1')).toBeNull();
 	});
 
 	it('persists an explicit toggle of the AI panel', async () => {
@@ -3101,7 +3101,7 @@ describe('AgentBuilderView — three-column shell', () => {
 		await wrapper.find('[data-testid="agent-builder-instance-ai-btn"]').trigger('click');
 
 		expect(wrapper.find('[data-testid="agent-ai-dock"]').exists()).toBe(true);
-		expect(localStorage.getItem('N8N_AGENT_AI_PANEL_OPEN:p1:a1')).toBe('true');
+		expect(localStorage.getItem('MNI_AGENT_AI_PANEL_OPEN:p1:a1')).toBe('true');
 	});
 
 	it('closes the AI panel by default after switching to a different, non-pending agent', async () => {
@@ -3361,7 +3361,7 @@ describe('AgentBuilderView — three-column shell', () => {
 	});
 
 	it('closes the preview when opening the AI panel would make the editor too narrow', async () => {
-		localStorage.setItem('N8N_AGENT_PREVIEW_OPEN:p1:a1', 'true');
+		localStorage.setItem('MNI_AGENT_PREVIEW_OPEN:p1:a1', 'true');
 		const wrapper = await renderView();
 		const vm = wrapper.vm as unknown as {
 			builderContainerWidth: number;
@@ -3379,7 +3379,7 @@ describe('AgentBuilderView — three-column shell', () => {
 	});
 
 	it('closes the AI panel when opening the preview would make the editor too narrow', async () => {
-		localStorage.setItem('N8N_AGENT_AI_PANEL_OPEN:p1:a1', 'true');
+		localStorage.setItem('MNI_AGENT_AI_PANEL_OPEN:p1:a1', 'true');
 		const wrapper = await renderView();
 		(wrapper.vm as unknown as { builderContainerWidth: number }).builderContainerWidth = 1100;
 		await nextTick();
@@ -3393,7 +3393,7 @@ describe('AgentBuilderView — three-column shell', () => {
 	});
 
 	it('shrinks both side panels before closing either one', async () => {
-		localStorage.setItem('N8N_AGENT_PREVIEW_OPEN:p1:a1', 'true');
+		localStorage.setItem('MNI_AGENT_PREVIEW_OPEN:p1:a1', 'true');
 		const wrapper = await renderView();
 		const vm = wrapper.vm as unknown as {
 			builderContainerWidth: number;

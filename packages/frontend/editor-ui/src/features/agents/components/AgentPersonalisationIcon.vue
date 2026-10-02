@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { DEFAULT_AGENT_PERSONALISATION, type AgentJsonConfig } from '@n8n/api-types';
-import { N8nIcon } from '@n8n/design-system';
+import { DEFAULT_AGENT_PERSONALISATION, type AgentJsonConfig } from '@MNI/api-types';
+import { N8nIcon } from '@MNI/design-system';
 
 type AgentPersonalisation = NonNullable<AgentJsonConfig['personalisation']>;
 

@@ -7,11 +7,11 @@ import {
 	N8nTableBase,
 	N8nEmptyState,
 	N8nBadge,
-} from '@n8n/design-system';
-import type { ActionDropdownItem } from '@n8n/design-system';
-import { useI18n, type BaseTextKey } from '@n8n/i18n';
+} from '@MNI/design-system';
+import type { ActionDropdownItem } from '@MNI/design-system';
+import { useI18n, type BaseTextKey } from '@MNI/i18n';
 import { ElSkeletonItem } from 'element-plus';
-import { ALLOWED_AGENT_FILE_EXTENSIONS, type AgentFileDto } from '@n8n/api-types';
+import { ALLOWED_AGENT_FILE_EXTENSIONS, type AgentFileDto } from '@MNI/api-types';
 
 import { convertToDisplayDate } from '@/app/utils/formatters/dateFormatter';
 

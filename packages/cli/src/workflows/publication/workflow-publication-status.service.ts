@@ -1,10 +1,10 @@
-import type { WorkflowPublicationStatus, WorkflowListPublicationStatus } from '@n8n/api-types';
+import type { WorkflowPublicationStatus, WorkflowListPublicationStatus } from '@MNI/api-types';
 import {
 	WorkflowPublicationOutboxRepository,
 	type WorkflowPublicationTriggerStatus,
 	WorkflowPublicationTriggerStatusRepository,
-} from '@n8n/db';
-import { Service } from '@n8n/di';
+} from '@MNI/db';
+import { Service } from '@MNI/di';
 
 @Service()
 export class WorkflowPublicationStatusService {

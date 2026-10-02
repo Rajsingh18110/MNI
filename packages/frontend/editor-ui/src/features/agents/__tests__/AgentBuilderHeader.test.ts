@@ -28,7 +28,7 @@ vi.mock('../composables/useProjectAgentsList', () => ({
 	}),
 }));
 
-vi.mock('@n8n/i18n', () => ({
+vi.mock('@MNI/i18n', () => ({
 	useI18n: () => ({ baseText: (k: string) => k }),
 	i18n: { baseText: (k: string) => k },
 }));
@@ -38,7 +38,7 @@ vi.mock('vue-router', () => ({
 	RouterLink: { template: '<a><slot/></a>' },
 }));
 
-vi.mock('@n8n/design-system', () => ({
+vi.mock('@MNI/design-system', () => ({
 	N8nAssistantIcon: {
 		name: 'N8nAssistantIcon',
 		template: '<i data-testid="stub-assistant-icon" />',
@@ -83,7 +83,7 @@ vi.mock('@n8n/design-system', () => ({
 		props: ['items', 'placement', 'extraPopperClass'],
 		emits: ['select'],
 	},
-	'n8n-dropdown-menu': {
+	'MNI-dropdown-menu': {
 		name: 'N8nDropdownMenu',
 		template: '<div v-bind="$attrs"><slot name="trigger" /><slot name="footer" /></div>',
 		props: ['items', 'placement', 'extraPopperClass'],

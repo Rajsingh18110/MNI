@@ -5,8 +5,8 @@ import type {
 	INodeParameterResourceLocator,
 	INodeProperties,
 	JsonObject,
-} from 'n8n-workflow';
-import { NodeApiError, NodeOperationError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeApiError, NodeOperationError } from 'MNI-workflow';
 
 import { type GraphSearchReply } from '../helpers/utils';
 import {

@@ -3,15 +3,15 @@ import {
 	createWorkflowHistory,
 	createWorkflowWithHistory,
 	testDb,
-} from '@n8n/backend-test-utils';
+} from '@MNI/backend-test-utils';
 import {
 	UserRepository,
 	WorkflowHistoryRepository,
 	WorkflowPublishHistoryRepository,
 	WorkflowRepository,
-} from '@n8n/db';
-import { Container } from '@n8n/di';
-import { sleep } from '@n8n/utils/sleep';
+} from '@MNI/db';
+import { Container } from '@MNI/di';
+import { sleep } from '@MNI/utils/sleep';
 import { v4 as uuid } from 'uuid';
 
 import { createUser } from '../../shared/db/users';

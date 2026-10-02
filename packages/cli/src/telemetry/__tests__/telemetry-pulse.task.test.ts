@@ -1,5 +1,5 @@
-import { ScheduledJobMisfirePolicy } from '@n8n/constants';
-import { resolveSystemTaskRunOptions } from '@n8n/decorators';
+import { ScheduledJobMisfirePolicy } from '@MNI/constants';
+import { resolveSystemTaskRunOptions } from '@MNI/decorators';
 import { mock } from 'vitest-mock-extended';
 
 import type { Telemetry } from '@/telemetry';

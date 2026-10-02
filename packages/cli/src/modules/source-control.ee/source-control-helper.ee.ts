@@ -1,7 +1,7 @@
-import type { SourceControlledFile } from '@n8n/api-types';
-import { isContainedWithin, Logger, safeJoinPath } from '@n8n/backend-common';
-import type { TagEntity, WorkflowTagMapping } from '@n8n/db';
-import { Container } from '@n8n/di';
+import type { SourceControlledFile } from '@MNI/api-types';
+import { isContainedWithin, Logger, safeJoinPath } from '@MNI/backend-common';
+import type { TagEntity, WorkflowTagMapping } from '@MNI/db';
+import { Container } from '@MNI/di';
 import { accessSync, constants as fsConstants, mkdirSync } from 'fs';
 import chunk from 'lodash/chunk';
 import isEqual from 'lodash/isEqual';
@@ -12,7 +12,7 @@ import {
 	type CredentialInformation,
 	type DataTableColumnType,
 	type ICredentialDataDecryptedObject,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import { ok } from 'node:assert/strict';
 import { readFile as fsReadFile } from 'node:fs/promises';
 import path from 'path';

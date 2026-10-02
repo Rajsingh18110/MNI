@@ -98,9 +98,9 @@ test('starts a named OpenCode session in a worktree', () => {
 	const command = remoteCommand(['--opencode', 'fix-flaky', '--legacy', '--model', 'test']);
 
 	assert.match(command, /tmux new -As fix-flaky-opencode/);
-	assert.match(command, /unset AGENT_WORKER_TOKEN N8N_DEQUEUE_URL SLACK_BOT_TOKEN/);
+	assert.match(command, /unset AGENT_WORKER_TOKEN MNI_DEQUEUE_URL SLACK_BOT_TOKEN/);
 	assert.match(command, /OPENCODE_CONFIG_CONTENT/);
-	assert.match(command, /export N8N_AGENT_RUNTIME=sandbox; unset N8N_AGENT_PROFILE/);
+	assert.match(command, /export MNI_AGENT_RUNTIME=sandbox; unset MNI_AGENT_PROFILE/);
 	assert.match(
 		command,
 		/git -C \/workspaces\/MNI fetch origin master; git -C \/workspaces\/MNI worktree add --no-track -b "session\/fix-flaky" "\/workspaces\/wt-fix-flaky" origin\/master/,
@@ -127,13 +127,13 @@ test('keeps removed credentials out of the login shell', () => {
 	assert.match(command, /tmux new -As agent-shell/);
 	assert.match(
 		command,
-		/unset AGENT_WORKER_TOKEN N8N_DEQUEUE_URL SLACK_BOT_TOKEN; unset OPENROUTER_API_KEY/,
+		/unset AGENT_WORKER_TOKEN MNI_DEQUEUE_URL SLACK_BOT_TOKEN; unset OPENROUTER_API_KEY/,
 	);
-	assert.match(command, /export N8N_SKIP_CODESPACE_SECRETS=1; exec "\$\{SHELL:-\/bin\/bash\}" -l/);
-	assert.ok(profile.includes('[ "${N8N_SKIP_CODESPACE_SECRETS:-}" = "1" ] && return'));
+	assert.match(command, /export MNI_SKIP_CODESPACE_SECRETS=1; exec "\$\{SHELL:-\/bin\/bash\}" -l/);
+	assert.ok(profile.includes('[ "${MNI_SKIP_CODESPACE_SECRETS:-}" = "1" ] && return'));
 	assert.ok(
 		dockerfile.includes(
-			'RUN echo \'[ "${N8N_SKIP_CODESPACE_SECRETS:-}" = "1" ] || . /usr/local/lib/codespaces-env.sh\'',
+			'RUN echo \'[ "${MNI_SKIP_CODESPACE_SECRETS:-}" = "1" ] || . /usr/local/lib/codespaces-env.sh\'',
 		),
 	);
 	assert.doesNotMatch(command, /claude plugin|OPENCODE_CONFIG_CONTENT/);
@@ -146,5 +146,5 @@ test('keeps the existing Claude session behavior', () => {
 	assert.match(command, /unset OPENROUTER_API_KEY/);
 	assert.match(command, /claude plugin marketplace add/);
 	assert.match(command, /cd \/workspaces\/MNI && claude --model test/);
-	assert.doesNotMatch(command, /OPENCODE_CONFIG_CONTENT|N8N_SKIP_CODESPACE_SECRETS/);
+	assert.doesNotMatch(command, /OPENCODE_CONFIG_CONTENT|MNI_SKIP_CODESPACE_SECRETS/);
 });

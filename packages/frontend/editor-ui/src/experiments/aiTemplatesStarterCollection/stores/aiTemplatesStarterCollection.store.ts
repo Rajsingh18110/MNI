@@ -1,20 +1,20 @@
 import { useFoldersStore } from '@/features/core/folders/folders.store';
 import { useWorkflowsStore } from '@/app/stores/workflows.store';
-import type { WorkflowDataCreate } from '@n8n/rest-api-client';
-import { STORES } from '@n8n/stores';
+import type { WorkflowDataCreate } from '@MNI/rest-api-client';
+import { STORES } from '@MNI/stores';
 import { defineStore } from 'pinia';
 import { computed } from 'vue';
 import { AGENT_WITH_MEMORY } from '../workflows/1_agent_with_memory';
 import { AGENT_WITH_TOOLS } from '../workflows/2_agent_with_tools';
 import { AGENT_WITH_KNOWLEDGE } from '../workflows/3_agent_with_knowledge';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
 import { usePostHog } from '@/app/stores/posthog.store';
 import { TEMPLATE_ONBOARDING_EXPERIMENT } from '@/app/constants';
 import { useLocalStorage } from '@vueuse/core';
-import { useI18n } from '@n8n/i18n';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useI18n } from '@MNI/i18n';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 
-const LOCAL_STORAGE_SETTING_KEY = 'N8N_AI_TEMPLATES_STARTER_COLLECTION_CALL_OUT_DISMISSED';
+const LOCAL_STORAGE_SETTING_KEY = 'MNI_AI_TEMPLATES_STARTER_COLLECTION_CALL_OUT_DISMISSED';
 
 export const useAITemplatesStarterCollectionStore = defineStore(
 	STORES.AI_TEMPLATES_STARTER_COLLECTION,

@@ -10,7 +10,7 @@ const TOKEN_EXCHANGE_GRANT_TYPE = 'urn:ietf:params:oauth:grant-type:token-exchan
  *
  * - `exchange` hits the OAuth token endpoint (form-encoded, RFC 6749) and
  *   returns the raw response so error-case tests can assert on status/body.
- * - The issued-token helpers call the public API with the `x-n8n-api-key`
+ * - The issued-token helpers call the public API with the `x-MNI-api-key`
  *   header so tests don't hand-roll the header each time.
  * - `embedLogin` covers both the POST (token in body) and GET (token in query)
  *   variants of the embed endpoint.
@@ -33,7 +33,7 @@ export class TokenExchangeApiHelper {
 		});
 	}
 
-	/** Calls a public API endpoint with an issued access token via the `x-n8n-api-key` header. */
+	/** Calls a public API endpoint with an issued access token via the `x-MNI-api-key` header. */
 	async callWithIssuedToken(
 		method: 'GET' | 'POST',
 		path: string,
@@ -42,14 +42,14 @@ export class TokenExchangeApiHelper {
 		if (method === 'POST') {
 			return await this.api.request.post(path, {
 				headers: {
-					'x-n8n-api-key': options.accessToken,
+					'x-MNI-api-key': options.accessToken,
 					'content-type': 'application/json',
 				},
 				data: options.data,
 			});
 		}
 		return await this.api.request.get(path, {
-			headers: { 'x-n8n-api-key': options.accessToken },
+			headers: { 'x-MNI-api-key': options.accessToken },
 		});
 	}
 

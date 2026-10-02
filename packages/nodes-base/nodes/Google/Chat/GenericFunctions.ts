@@ -6,8 +6,8 @@ import type {
 	INodeProperties,
 	IRequestOptions,
 	JsonObject,
-} from 'n8n-workflow';
-import { NodeApiError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeApiError } from 'MNI-workflow';
 
 import { getSendAndWaitConfig } from '../../../utils/sendAndWait/utils';
 import { createUtmCampaignLink } from '../../../utils/utilities';
@@ -171,7 +171,7 @@ export function createSendAndWaitMessageBody(context: IExecuteFunctions) {
 	if (config.appendAttribution !== false) {
 		const instanceId = context.getInstanceId();
 		const attributionText = '_This_ _message_ _was_ _sent_ _automatically_ _with_';
-		const link = createUtmCampaignLink('n8n-nodes-base.googleChat', instanceId);
+		const link = createUtmCampaignLink('MNI-nodes-base.googleChat', instanceId);
 		const attribution = `${attributionText} _<${link}|MNI>_`;
 		text += `\n\n${attribution}`;
 	}

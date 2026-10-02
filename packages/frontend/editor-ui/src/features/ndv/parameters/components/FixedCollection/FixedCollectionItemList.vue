@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import type { IUpdateInformation } from '@/Interface';
-import type { INodeParameters, INodeProperties, INodePropertyCollection } from 'n8n-workflow';
+import type { INodeParameters, INodeProperties, INodePropertyCollection } from 'MNI-workflow';
 import { computed, ref } from 'vue';
 import Draggable from 'vuedraggable';
 import FixedCollectionItem from './FixedCollectionItem.vue';

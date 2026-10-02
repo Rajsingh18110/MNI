@@ -1,4 +1,4 @@
-import { NodeApiError, NodeOperationError, UnexpectedError } from 'n8n-workflow';
+import { NodeApiError, NodeOperationError, UnexpectedError } from 'MNI-workflow';
 import type {
 	Workflow,
 	INode,
@@ -9,7 +9,7 @@ import type {
 	INodeTypes,
 	ITriggerFunctions,
 	IRun,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import { ExecutionLifecycleHooks } from '../execution-lifecycle-hooks';
@@ -205,7 +205,7 @@ describe('TriggersAndPollers', () => {
 		const pollFunctions = mock<IPollFunctions>();
 		const pollFn = vi.fn();
 		const pollWorkflow = mock<Workflow>({ id: 'workflow-1', nodeTypes });
-		const pollNode = mock<INode>({ id: 'node-1', type: 'n8n-nodes-base.testPoll' });
+		const pollNode = mock<INode>({ id: 'node-1', type: 'MNI-nodes-base.testPoll' });
 
 		let pollers: TriggersAndPollers;
 		let ticks: Array<PollTickEventMap['poll-tick-completed']>;
@@ -227,7 +227,7 @@ describe('TriggersAndPollers', () => {
 
 			expect(ticks).toEqual([
 				{
-					nodeType: 'n8n-nodes-base.testPoll',
+					nodeType: 'MNI-nodes-base.testPoll',
 					status: 'success',
 					durationMs: expect.any(Number),
 					overlapped: false,
@@ -242,7 +242,7 @@ describe('TriggersAndPollers', () => {
 
 			expect(ticks).toEqual([
 				{
-					nodeType: 'n8n-nodes-base.testPoll',
+					nodeType: 'MNI-nodes-base.testPoll',
 					status: 'error',
 					errorKind: 'thrown',
 					durationMs: expect.any(Number),
@@ -340,7 +340,7 @@ describe('TriggersAndPollers', () => {
 				.mockResolvedValueOnce(null);
 
 			const firstPoll = runPoll();
-			await runPoll(pollWorkflow, mock<INode>({ id: 'node-2', type: 'n8n-nodes-base.testPoll' }));
+			await runPoll(pollWorkflow, mock<INode>({ id: 'node-2', type: 'MNI-nodes-base.testPoll' }));
 			finishFirstPoll(null);
 			await firstPoll;
 

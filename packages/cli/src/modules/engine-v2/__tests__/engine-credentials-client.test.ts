@@ -1,6 +1,6 @@
-import type { HttpRequestClient } from '@n8n/backend-network';
-import type { ActionScope } from '@n8n/engine';
-import { OperationalError } from 'n8n-workflow';
+import type { HttpRequestClient } from '@MNI/backend-network';
+import type { ActionScope } from '@MNI/engine';
+import { OperationalError } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import type { EngineControlPlaneTransport } from '../engine-control-plane-transport';
@@ -11,7 +11,7 @@ const request: ResolveCredentialRequest = {
 	credential: { id: 'cred-1', name: 'Header Auth account', type: 'httpHeaderAuth' },
 	execution: { executionId: 'exec-1', workflowId: 'wf-1', mode: 'manual' },
 	context: { userId: 'user-1', projectId: 'project-1' },
-	consumer: { nodeType: 'n8n-nodes-base.httpRequest' },
+	consumer: { nodeType: 'MNI-nodes-base.httpRequest' },
 };
 
 const decrypted = { name: 'X-Api-Key', value: 'secret' };

@@ -4,7 +4,7 @@ import type {
 	IHttpRequestMethods,
 	ILoadOptionsFunctions,
 	IRequestOptions,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 export async function rocketchatApiRequest(
 	this: IExecuteFunctions | ILoadOptionsFunctions,

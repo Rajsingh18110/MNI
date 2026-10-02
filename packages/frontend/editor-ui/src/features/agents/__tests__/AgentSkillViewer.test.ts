@@ -6,11 +6,11 @@ import {
 	AGENT_SKILL_INSTRUCTIONS_MAX_LENGTH,
 	AGENT_SKILL_REFERENCE_CONTENT_MAX_LENGTH,
 	AGENT_SKILL_REFERENCE_MAX_COUNT,
-} from '@n8n/api-types';
+} from '@MNI/api-types';
 
 import AgentSkillViewer from '../components/AgentSkillViewer.vue';
 
-vi.mock('@n8n/i18n', () => ({
+vi.mock('@MNI/i18n', () => ({
 	useI18n: () => ({
 		baseText: (key: string, options?: { interpolate?: Record<string, string> }) => {
 			if (

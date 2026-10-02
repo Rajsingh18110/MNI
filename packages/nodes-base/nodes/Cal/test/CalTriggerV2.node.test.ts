@@ -5,7 +5,7 @@ import type {
 	IHookFunctions,
 	ILoadOptionsFunctions,
 	IWebhookFunctions,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import type { Mock } from 'vitest';
 import { mock } from 'vitest-mock-extended';
 

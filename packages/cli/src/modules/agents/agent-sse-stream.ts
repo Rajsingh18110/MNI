@@ -1,13 +1,13 @@
-import type { AgentMessage, StreamChunk } from '@n8n/agents';
+import type { AgentMessage, StreamChunk } from '@MNI/agents';
 import type {
 	AgentPersistedMessageContentPart,
 	AgentSseEvent,
 	AgentSseMessage,
 	ToolSuspendedPayload,
-} from '@n8n/api-types';
-import { scrubSecretsInText } from '@n8n/utils/scrub-secrets';
+} from '@MNI/api-types';
+import { scrubSecretsInText } from '@MNI/utils/scrub-secrets';
 import type { Response } from 'express';
-import { LoggerProxy } from 'n8n-workflow';
+import { LoggerProxy } from 'MNI-workflow';
 
 export type FlushableResponse = Response & { flush?: () => void };
 

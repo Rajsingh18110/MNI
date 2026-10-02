@@ -6,12 +6,12 @@ import {
 	SUB_AGENT_MAX_CHILDREN_MIN,
 	SUB_AGENT_TASK_DIFFICULTIES,
 	type SubAgentTaskDifficulty,
-} from '@n8n/api-types';
-import type { BaseTextKey } from '@n8n/i18n';
-import { N8nIconButton, N8nInputNumber, N8nSwitch2, N8nText, N8nTooltip } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
-import { useToast } from '@n8n/composables/useToast';
-import { useUsersStore } from '@n8n/stores/users.store';
+} from '@MNI/api-types';
+import type { BaseTextKey } from '@MNI/i18n';
+import { N8nIconButton, N8nInputNumber, N8nSwitch2, N8nText, N8nTooltip } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
+import { useToast } from '@MNI/composables/useToast';
+import { useUsersStore } from '@MNI/stores/users.store';
 
 import { useAgentModelCredentials } from '../composables/useAgentModelCredentials';
 import { useModelCatalog } from '../composables/useModelCatalog';

@@ -25,8 +25,8 @@ jobs:
         id: generate_token
         uses: actions/create-github-app-token@29824e69f54612133e76f7eaac726eef6c875baf # v2.2.1
         with:
-          app-id: ${{ secrets.N8N_ASSISTANT_APP_ID }}
-          private-key: ${{ secrets.N8N_ASSISTANT_PRIVATE_KEY }}
+          app-id: ${{ secrets.MNI_ASSISTANT_APP_ID }}
+          private-key: ${{ secrets.MNI_ASSISTANT_PRIVATE_KEY }}
 
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -43,21 +43,21 @@ jobs:
 
           # The `stable` ref is a moving git tag pointing at the latest stable release commit.
           STABLE_COMMIT="$(git rev-parse 'stable^{}')"
-          STABLE_TAG="$(git tag --points-at "$STABLE_COMMIT" | grep '^n8n@' | sort -V | tail -n1)"
+          STABLE_TAG="$(git tag --points-at "$STABLE_COMMIT" | grep '^MNI@' | sort -V | tail -n1)"
 
           if [ -z "$STABLE_TAG" ]; then
-            echo "Could not resolve stable n8n@... tag at commit $STABLE_COMMIT" >&2
+            echo "Could not resolve stable MNI@... tag at commit $STABLE_COMMIT" >&2
             exit 1
           fi
 
-          STABLE_VERSION="${STABLE_TAG#n8n@}"
+          STABLE_VERSION="${STABLE_TAG#MNI@}"
           EXP_BRANCH="exp/${STABLE_VERSION}-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"
 
           echo "Stable tag: $STABLE_TAG"
           echo "Experiment branch: $EXP_BRANCH"
 
-          git config user.email "n8n-assistant-bot@users.noreply.github.com"
-          git config user.name "n8n-assistant"
+          git config user.email "MNI-assistant-bot@users.noreply.github.com"
+          git config user.name "MNI-assistant"
 
           git switch --detach "$STABLE_TAG"
           git switch --create "$EXP_BRANCH"

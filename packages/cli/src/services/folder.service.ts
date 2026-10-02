@@ -1,13 +1,13 @@
-import type { CreateFolderDto, DeleteFolderDto, UpdateFolderDto } from '@n8n/api-types';
+import type { CreateFolderDto, DeleteFolderDto, UpdateFolderDto } from '@MNI/api-types';
 import type {
 	FolderWithWorkflowAndSubFolderCount,
 	FolderWithWorkflowAndSubFolderCountAndPath,
 	User,
-} from '@n8n/db';
-import { Folder, FolderTagMappingRepository, FolderRepository, WorkflowRepository } from '@n8n/db';
-import { Service } from '@n8n/di';
-import type { EntityManager } from '@n8n/typeorm';
-import { UserError, PROJECT_ROOT } from 'n8n-workflow';
+} from '@MNI/db';
+import { Folder, FolderTagMappingRepository, FolderRepository, WorkflowRepository } from '@MNI/db';
+import { Service } from '@MNI/di';
+import type { EntityManager } from '@MNI/typeorm';
+import { UserError, PROJECT_ROOT } from 'MNI-workflow';
 
 import { FolderNotFoundError } from '@/errors/folder-not-found.error';
 import { EventService } from '@/events/event.service';

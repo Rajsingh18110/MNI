@@ -1,13 +1,13 @@
 import { defineStore } from 'pinia';
 import { computed, ref } from 'vue';
-import type { Collaborator } from '@n8n/api-types';
+import type { Collaborator } from '@MNI/api-types';
 
 import { TIME } from '@/app/constants';
-import { STORES } from '@n8n/stores';
+import { STORES } from '@MNI/stores';
 import { usePushConnectionStore } from '@/app/stores/pushConnection.store';
-import { useRootStore } from '@n8n/stores/useRootStore';
-import { useUsersStore } from '@n8n/stores/users.store';
-import { ResponseError } from '@n8n/rest-api-client';
+import { useRootStore } from '@MNI/stores/useRootStore';
+import { useUsersStore } from '@MNI/stores/users.store';
+import { ResponseError } from '@MNI/rest-api-client';
 
 import { getAgentWriteLock } from '../composables/useAgentApi';
 

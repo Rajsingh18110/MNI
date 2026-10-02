@@ -1,20 +1,20 @@
-import { Logger } from '@n8n/backend-common';
-import { GlobalConfig } from '@n8n/config';
+import { Logger } from '@MNI/backend-common';
+import { GlobalConfig } from '@MNI/config';
 import {
 	SettingsRepository,
 	WorkflowEntity,
 	WorkflowRepository,
 	type User,
 	type EntityManager,
-} from '@n8n/db';
-import { Service } from '@n8n/di';
-import { In } from '@n8n/typeorm';
+} from '@MNI/db';
+import { Service } from '@MNI/di';
+import { In } from '@MNI/typeorm';
 import {
 	calculateWorkflowChecksum,
 	jsonParse,
 	WORKFLOW_CHECKSUM_FIELDS,
 	type IWorkflowSettings,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { CollaborationService } from '@/collaboration/collaboration.service';
 import { BadRequestError } from '@/errors/response-errors/bad-request.error';

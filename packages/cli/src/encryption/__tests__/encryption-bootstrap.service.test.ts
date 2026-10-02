@@ -1,5 +1,5 @@
-import { mockInstance, mockLogger } from '@n8n/backend-test-utils';
-import { EncryptionKeyProxy, InstanceSettings } from 'n8n-core';
+import { mockInstance, mockLogger } from '@MNI/backend-test-utils';
+import { EncryptionKeyProxy, InstanceSettings } from 'MNI-core';
 
 import { EncryptionBootstrapService } from '../encryption-bootstrap.service';
 import { KeyManagerService } from '../key-manager.service';
@@ -102,13 +102,13 @@ describe('EncryptionBootstrapService', () => {
 		});
 
 		it('rethrows while the rotation flag is on, because the keys are load-bearing', async () => {
-			process.env.N8N_ENV_FEAT_ENCRYPTION_KEY_ROTATION = 'true';
+			process.env.MNI_ENV_FEAT_ENCRYPTION_KEY_ROTATION = 'true';
 			try {
 				keyManager.bootstrapGcmKey.mockRejectedValue(seedError);
 
 				await expect(createService().run()).rejects.toThrow('no write access');
 			} finally {
-				delete process.env.N8N_ENV_FEAT_ENCRYPTION_KEY_ROTATION;
+				delete process.env.MNI_ENV_FEAT_ENCRYPTION_KEY_ROTATION;
 			}
 		});
 	});

@@ -1,6 +1,6 @@
-import { computeFirstRunAt } from '@n8n/scheduler';
+import { computeFirstRunAt } from '@MNI/scheduler';
 import { validateCronExpression } from 'cron';
-import type { CronExpression } from 'n8n-workflow';
+import type { CronExpression } from 'MNI-workflow';
 
 /**
  * Whether the given expression is a 5-field cron that both task schedulers can

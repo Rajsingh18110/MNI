@@ -1,8 +1,8 @@
-import { Z } from '@n8n/api-types';
-import { Service } from '@n8n/di';
+import { Z } from '@MNI/api-types';
+import { Service } from '@MNI/di';
 import { Request } from 'express';
-import { ExecutionContextService } from 'n8n-core';
-import { ICredentialContext } from 'n8n-workflow';
+import { ExecutionContextService } from 'MNI-core';
+import { ICredentialContext } from 'MNI-workflow';
 import { z } from 'zod';
 
 import { AuthService } from '@/auth/auth.service';

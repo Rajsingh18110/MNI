@@ -7,7 +7,7 @@ import { NdvAgentConfigKey } from '../../composables/useNdvAgentConfig';
 import type { UseNdvAgentConfigReturn } from '../../composables/useNdvAgentConfig';
 import type { AgentJsonConfig, AgentSkill } from '@/features/agents/types';
 
-vi.mock('@n8n/i18n', () => ({
+vi.mock('@MNI/i18n', () => ({
 	useI18n: () => ({
 		baseText: (key: string) => key,
 	}),

@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
-import { CREDENTIAL_EMPTY_VALUE } from 'n8n-workflow';
+import { CREDENTIAL_EMPTY_VALUE } from 'MNI-workflow';
 import {
 	getTrustedOAuthOrigins,
 	parseOAuthCallbackMessage,
@@ -76,7 +76,7 @@ describe('oauthCallback', () => {
 
 	describe('isOAuthTokenDataSet', () => {
 		it('returns true for a redacted token placeholder', () => {
-			expect(isOAuthTokenDataSet({ oauthTokenData: '__n8n_BLANK_VALUE' })).toBe(true);
+			expect(isOAuthTokenDataSet({ oauthTokenData: '__MNI_BLANK_VALUE' })).toBe(true);
 		});
 
 		it('returns false when token data is absent', () => {
@@ -93,7 +93,7 @@ describe('oauthCallback', () => {
 
 	describe('hasOAuthTokenData', () => {
 		it('returns true when the fetched credential data contains token data', () => {
-			expect(hasOAuthTokenData({ data: { oauthTokenData: '__n8n_BLANK_VALUE' } })).toBe(true);
+			expect(hasOAuthTokenData({ data: { oauthTokenData: '__MNI_BLANK_VALUE' } })).toBe(true);
 		});
 
 		it('returns false when the credential or its data lacks token data', () => {

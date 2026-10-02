@@ -2,7 +2,7 @@ import type {
 	INodeTypeBaseDescription,
 	INodeTypeDescription,
 	KnownNodesAndCredentials,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 /**
  * Type guard to check if a description is a full INodeTypeDescription.

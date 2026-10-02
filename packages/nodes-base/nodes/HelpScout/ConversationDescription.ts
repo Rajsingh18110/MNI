@@ -1,4 +1,4 @@
-import type { INodeProperties } from 'n8n-workflow';
+import type { INodeProperties } from 'MNI-workflow';
 
 export const conversationOperations: INodeProperties[] = [
 	{
@@ -144,7 +144,7 @@ export const conversationFields: INodeProperties[] = [
 				resource: ['conversation'],
 			},
 		},
-		// eslint-disable-next-line n8n-nodes-base/node-param-description-boolean-without-whether
+		// eslint-disable-next-line MNI-nodes-base/node-param-description-boolean-without-whether
 		description:
 			'By default the response only contain the ID to resource. If this option gets activated, it will resolve the data automatically.',
 	},

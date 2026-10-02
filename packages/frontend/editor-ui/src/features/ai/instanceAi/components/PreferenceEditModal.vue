@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue';
-import type { AiPreferenceScope } from '@n8n/api-types';
-import { AI_PREFERENCE_CONTENT_MAX_LENGTH, aiPreferenceContentSchema } from '@n8n/api-types';
+import type { AiPreferenceScope } from '@MNI/api-types';
+import { AI_PREFERENCE_CONTENT_MAX_LENGTH, aiPreferenceContentSchema } from '@MNI/api-types';
 import {
 	N8nButton,
 	N8nCallout,
@@ -13,11 +13,11 @@ import {
 	N8nOption,
 	N8nSelect,
 	N8nText,
-} from '@n8n/design-system';
-import type { IconOrEmoji } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
-import { useUsersStore } from '@n8n/stores/users.store';
-import { useRootStore } from '@n8n/stores/useRootStore';
+} from '@MNI/design-system';
+import type { IconOrEmoji } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
+import { useUsersStore } from '@MNI/stores/users.store';
+import { useRootStore } from '@MNI/stores/useRootStore';
 import type { Rule, RuleGroup } from '@/Interface';
 
 import { DEFAULT_PROJECT_ICON } from '@/features/collaboration/projects/projects.constants';

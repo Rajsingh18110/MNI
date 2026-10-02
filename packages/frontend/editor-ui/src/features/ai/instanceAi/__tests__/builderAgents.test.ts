@@ -1,5 +1,5 @@
 import { describe, expect, test } from 'vitest';
-import type { InstanceAiAgentNode, InstanceAiMessage } from '@n8n/api-types';
+import type { InstanceAiAgentNode, InstanceAiMessage } from '@MNI/api-types';
 import { getAgentSectionTitle, messageHasVisibleContent } from '../builderAgents';
 
 function makeAgentNode(overrides: Partial<InstanceAiAgentNode> = {}): InstanceAiAgentNode {

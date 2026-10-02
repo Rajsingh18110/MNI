@@ -1,5 +1,5 @@
-import type { Logger } from '@n8n/backend-common';
-import type { InstanceSettingsLoaderConfig } from '@n8n/config';
+import type { Logger } from '@MNI/backend-common';
+import type { InstanceSettingsLoaderConfig } from '@MNI/config';
 import { mock } from 'vitest-mock-extended';
 
 import type { OwnershipService } from '@/services/ownership.service';
@@ -30,7 +30,7 @@ describe('OwnerInstanceSettingsLoader', () => {
 		logger.scoped.mockReturnThis();
 	});
 
-	describe('when N8N_INSTANCE_OWNER_MANAGED_BY_ENV is false', () => {
+	describe('when MNI_INSTANCE_OWNER_MANAGED_BY_ENV is false', () => {
 		it('should skip when no env vars are set', async () => {
 			const loader = createLoader();
 
@@ -72,14 +72,14 @@ describe('OwnerInstanceSettingsLoader', () => {
 		});
 	});
 
-	describe('when N8N_INSTANCE_OWNER_MANAGED_BY_ENV is true', () => {
+	describe('when MNI_INSTANCE_OWNER_MANAGED_BY_ENV is true', () => {
 		it('should throw when ownerEmail is empty', async () => {
 			const loader = createLoader({
 				ownerManagedByEnv: true,
 				ownerPasswordHash: validBcryptHash,
 			});
 
-			await expect(loader.run()).rejects.toThrow('N8N_INSTANCE_OWNER_EMAIL is required');
+			await expect(loader.run()).rejects.toThrow('MNI_INSTANCE_OWNER_EMAIL is required');
 		});
 
 		it('should throw when ownerPasswordHash is empty', async () => {
@@ -88,7 +88,7 @@ describe('OwnerInstanceSettingsLoader', () => {
 				ownerEmail: 'admin@example.com',
 			});
 
-			await expect(loader.run()).rejects.toThrow('N8N_INSTANCE_OWNER_PASSWORD_HASH is required');
+			await expect(loader.run()).rejects.toThrow('MNI_INSTANCE_OWNER_PASSWORD_HASH is required');
 		});
 
 		it('should throw when ownerPasswordHash is not a valid bcrypt hash', async () => {
@@ -114,7 +114,7 @@ describe('OwnerInstanceSettingsLoader', () => {
 
 			expect(result).toBe('created');
 			expect(logger.info).toHaveBeenCalledWith(
-				expect.stringContaining('N8N_INSTANCE_OWNER_MANAGED_BY_ENV is enabled'),
+				expect.stringContaining('MNI_INSTANCE_OWNER_MANAGED_BY_ENV is enabled'),
 			);
 			expect(ownershipService.setupOwner).toHaveBeenCalledWith(
 				{

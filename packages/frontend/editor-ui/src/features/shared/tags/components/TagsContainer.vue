@@ -1,13 +1,13 @@
 <script lang="ts" setup>
 import { ref, computed, onMounted, onBeforeUnmount, nextTick } from 'vue';
 import type { ComponentInstance } from 'vue';
-import type { ITag } from '@n8n/rest-api-client/api/tags';
+import type { ITag } from '@MNI/rest-api-client/api/tags';
 import IntersectionObserver from '@/app/components/IntersectionObserver.vue';
 import IntersectionObserved from '@/app/components/IntersectionObserved.vue';
-import { createEventBus } from '@n8n/utils/event-bus';
+import { createEventBus } from '@MNI/utils/event-bus';
 import debounce from 'lodash/debounce';
 
-import { N8nTag } from '@n8n/design-system';
+import { N8nTag } from '@MNI/design-system';
 
 interface TagsContainerProps {
 	tagIds: readonly string[];

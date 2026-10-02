@@ -1,7 +1,7 @@
-import { Logger } from '@n8n/backend-common';
-import { Memoized } from '@n8n/decorators';
-import { Container } from '@n8n/di';
-import type { ICredentialTestFunctions, IWorkflowExecuteAdditionalData } from 'n8n-workflow';
+import { Logger } from '@MNI/backend-common';
+import { Memoized } from '@MNI/decorators';
+import { Container } from '@MNI/di';
+import type { ICredentialTestFunctions, IWorkflowExecuteAdditionalData } from 'MNI-workflow';
 
 import { proxyRequestToAxios } from './utils/request-helpers/legacy-request-adapter'; // This bypasses the index barrel on purpose
 import { getSSHTunnelFunctions } from './utils/ssh-tunnel-helper-functions';

@@ -2,9 +2,9 @@ import type {
 	CreateCredentialDto,
 	CredentialsGetManyRequestQuery,
 	CredentialsGetOneRequestQuery,
-} from '@n8n/api-types';
+} from '@MNI/api-types';
 import type { APIResponse } from '@playwright/test';
-import type { ICredentialDataDecryptedObject } from 'n8n-workflow';
+import type { ICredentialDataDecryptedObject } from 'MNI-workflow';
 import { nanoid } from 'nanoid';
 
 import type { ApiHelpers } from './api-helper';

@@ -1,5 +1,5 @@
 import { createHmac } from 'crypto';
-import type { IWebhookFunctions } from 'n8n-workflow';
+import type { IWebhookFunctions } from 'MNI-workflow';
 
 import { OnfleetTrigger } from '../OnfleetTrigger.node';
 import type { Mock } from 'vitest';

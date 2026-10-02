@@ -1,6 +1,6 @@
-import { mockInstance } from '@n8n/backend-test-utils';
-import { User, WorkflowEntity } from '@n8n/db';
-import type { INode } from 'n8n-workflow';
+import { mockInstance } from '@MNI/backend-test-utils';
+import { User, WorkflowEntity } from '@MNI/db';
+import type { INode } from 'MNI-workflow';
 import type { Mock } from 'vitest';
 
 import { CollaborationService } from '@/collaboration/collaboration.service';
@@ -17,7 +17,7 @@ const versionNodes: INode[] = [
 	{
 		id: 'node-1',
 		name: 'Set',
-		type: 'n8n-nodes-base.set',
+		type: 'MNI-nodes-base.set',
 		typeVersion: 3,
 		position: [0, 0],
 		parameters: {},
@@ -100,7 +100,7 @@ describe('restore-workflow-version MCP tool', () => {
 				connections: { Set: { main: [] } },
 				nodeGroups: [{ id: 'group-1', name: 'Group 1', nodeIds: ['node-1'] }],
 			});
-			expect(updateOptions).toMatchObject({ forceSave: true, source: 'n8n-mcp' });
+			expect(updateOptions).toMatchObject({ forceSave: true, source: 'MNI-mcp' });
 
 			expect(result.structuredContent).toMatchObject({
 				success: true,

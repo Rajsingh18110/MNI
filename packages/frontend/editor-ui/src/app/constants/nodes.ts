@@ -1,5 +1,5 @@
-import type { NodeConnectionType } from 'n8n-workflow';
-import { NodeConnectionTypes } from 'n8n-workflow';
+import type { NodeConnectionType } from 'MNI-workflow';
+import { NodeConnectionTypes } from 'MNI-workflow';
 
 export const DEFAULT_STICKY_HEIGHT = 160;
 export const DEFAULT_STICKY_WIDTH = 240;

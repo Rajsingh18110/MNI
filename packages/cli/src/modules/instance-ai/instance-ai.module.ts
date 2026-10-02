@@ -1,7 +1,7 @@
-import { Logger } from '@n8n/backend-common';
-import type { ModuleInterface } from '@n8n/decorators';
-import { BackendModule, OnShutdown } from '@n8n/decorators';
-import { Container } from '@n8n/di';
+import { Logger } from '@MNI/backend-common';
+import type { ModuleInterface } from '@MNI/decorators';
+import { BackendModule, OnShutdown } from '@MNI/decorators';
+import { Container } from '@MNI/di';
 
 @BackendModule({ name: 'instance-ai', instanceTypes: ['main'] })
 export class InstanceAiModule implements ModuleInterface {
@@ -54,7 +54,7 @@ export class InstanceAiModule implements ModuleInterface {
 	}
 
 	async systemTasks() {
-		const { InstanceAiConfig } = await import('@n8n/config');
+		const { InstanceAiConfig } = await import('@MNI/config');
 		if (Container.get(InstanceAiConfig).pruneInterval <= 0) return [];
 
 		const { InstanceAiCheckpointPruningTask } = await import(
@@ -64,7 +64,7 @@ export class InstanceAiModule implements ModuleInterface {
 	}
 
 	async settings() {
-		const { GlobalConfig } = await import('@n8n/config');
+		const { GlobalConfig } = await import('@MNI/config');
 		const { InstanceAiService } = await import('./instance-ai.service.js');
 		const { InstanceAiSettingsService } = await import('./instance-ai-settings.service.js');
 		const globalConfig = Container.get(GlobalConfig);

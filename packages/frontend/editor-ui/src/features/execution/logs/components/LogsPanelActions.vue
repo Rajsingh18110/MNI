@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import KeyboardShortcutTooltip from '@/app/components/KeyboardShortcutTooltip.vue';
-import { PopOutWindowKey } from '@n8n/composables/injectionKeys';
-import { useI18n } from '@n8n/i18n';
+import { PopOutWindowKey } from '@MNI/composables/injectionKeys';
+import { useI18n } from '@MNI/i18n';
 import { computed, inject, ref } from 'vue';
 
-import { N8nActionDropdown, N8nIconButton, N8nTooltip } from '@n8n/design-system';
+import { N8nActionDropdown, N8nIconButton, N8nTooltip } from '@MNI/design-system';
 const {
 	isOpen,
 	isSyncSelectionEnabled: isSyncEnabled,

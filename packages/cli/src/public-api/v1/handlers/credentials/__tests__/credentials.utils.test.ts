@@ -1,7 +1,7 @@
-import type { UpdateCredentialPublicDto } from '@n8n/api-types';
-import type { CredentialsEntity } from '@n8n/db';
+import type { UpdateCredentialPublicDto } from '@MNI/api-types';
+import type { CredentialsEntity } from '@MNI/db';
 import { validate, type Schema } from 'jsonschema';
-import type { GenericValue, IDataObject, INodeProperties } from 'n8n-workflow';
+import type { GenericValue, IDataObject, INodeProperties } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import type { CredentialsHelper } from '@/credentials-helper';

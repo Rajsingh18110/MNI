@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Keeps a bundle integration branch (`bundle/2.x`, `bundle/1.x` in n8n-io/n8n-private) in
+ * Keeps a bundle integration branch (`bundle/2.x`, `bundle/1.x` in MNI-io/MNI-private) in
  * sync with its base by MERGING the base into it.
  *
  * These branches are APPEND-ONLY: fix PRs target them, and rewriting a branch that receives
@@ -53,12 +53,12 @@ import {
 	runGit,
 } from './branch-replay.mjs';
 
-const BOT_NAME = 'n8n-assistant[bot]';
-const BOT_EMAIL = 'n8n-assistant[bot]@users.noreply.github.com';
+const BOT_NAME = 'MNI-assistant[bot]';
+const BOT_EMAIL = 'MNI-assistant[bot]@users.noreply.github.com';
 
 // Hard-coded like the mirror in sec-sync-public-to-private.yml, and fetched anonymously: the
 // installation token this script holds is scoped to the private repo.
-const PUBLIC_REMOTE = 'https://github.com/n8n-io/n8n.git';
+const PUBLIC_REMOTE = 'https://github.com/MNI-io/n8n.git';
 
 // What a cut lands on private base before it is published. Anything else ahead of public means
 // the mirror is stuck, not that a cut is in flight.

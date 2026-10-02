@@ -1,6 +1,6 @@
 import { computed, type ComputedRef } from 'vue';
-import { isIconOrEmoji, type IconOrEmoji } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+import { isIconOrEmoji, type IconOrEmoji } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 import { DEFAULT_PROJECT_ICON } from '@/features/collaboration/projects/projects.constants';
 import { useProjectsStore } from '@/features/collaboration/projects/projects.store';
 

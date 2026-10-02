@@ -5,7 +5,7 @@ import { TEST_CONTAINER_IMAGES } from './test-containers';
 // This image is available after running `pnpm build:docker` at the root of the repository
 export class DockerImageNotFoundError extends Error {
 	constructor(containerName: string, originalError?: Error) {
-		const dockerImage = TEST_CONTAINER_IMAGES.n8n;
+		const dockerImage = TEST_CONTAINER_IMAGES.MNI;
 
 		const message = `Failed to start container ${containerName}: Docker image '${dockerImage}' not found locally!
 

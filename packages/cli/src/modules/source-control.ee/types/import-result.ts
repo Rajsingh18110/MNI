@@ -1,5 +1,5 @@
-import type { ContentImportPolicyResult, WorkflowPublishBlockedDetails } from '@n8n/api-types';
-import type { TagEntity, WorkflowTagMapping } from '@n8n/db';
+import type { ContentImportPolicyResult, WorkflowPublishBlockedDetails } from '@MNI/api-types';
+import type { TagEntity, WorkflowTagMapping } from '@MNI/db';
 
 export interface WorkflowImportResult {
 	id: string;

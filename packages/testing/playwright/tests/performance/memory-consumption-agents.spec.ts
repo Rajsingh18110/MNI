@@ -5,8 +5,8 @@ test.use({
 	capability: {
 		services: ['victoriaLogs', 'victoriaMetrics', 'vector'],
 		env: {
-			N8N_ENABLED_MODULES: 'agents',
-			N8N_AI_ANTHROPIC_KEY: 'fake-key',
+			MNI_ENABLED_MODULES: 'agents',
+			MNI_AI_ANTHROPIC_KEY: 'fake-key',
 		},
 	},
 });

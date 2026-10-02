@@ -1,4 +1,4 @@
-import type { Folder, Project } from '@n8n/db';
+import type { Folder, Project } from '@MNI/db';
 import { nanoid } from 'nanoid';
 
 import type { ApiHelpers } from './api-helper';

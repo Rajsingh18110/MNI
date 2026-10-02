@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { NodeConnectionTypes, type INodeTypeDescription } from 'n8n-workflow';
+import { NodeConnectionTypes, type INodeTypeDescription } from 'MNI-workflow';
 import { getInactiveCredentials } from './nodeTypesUtils';
 import type { INodeUi } from '@/Interface';
 
@@ -25,7 +25,7 @@ const nodeTypeDefaults = {
 const httpRequestNodeType: INodeTypeDescription = {
 	...nodeTypeDefaults,
 	displayName: 'HTTP Request',
-	name: 'n8n-nodes-base.httpRequest',
+	name: 'MNI-nodes-base.httpRequest',
 	credentials: [
 		{
 			name: 'httpSslAuth',
@@ -64,7 +64,7 @@ const httpRequestNodeTypeWithAuthProperties: INodeTypeDescription = {
 const declaredCredentialsNodeType: INodeTypeDescription = {
 	...nodeTypeDefaults,
 	displayName: 'Test Node',
-	name: 'n8n-nodes-base.testNode',
+	name: 'MNI-nodes-base.testNode',
 	credentials: [
 		{
 			name: 'httpBasicAuth',
@@ -84,7 +84,7 @@ function makeNode(overrides: Partial<INodeUi>): INodeUi {
 	return {
 		...nodeDefaults,
 		name: 'Test Node',
-		type: 'n8n-nodes-base.testNode',
+		type: 'MNI-nodes-base.testNode',
 		parameters: {},
 		...overrides,
 	};
@@ -147,7 +147,7 @@ describe('nodeTypesUtils', () => {
 
 		it('should mark the previous generic auth credential inactive after switching genericAuthType', () => {
 			const node = makeNode({
-				type: 'n8n-nodes-base.httpRequest',
+				type: 'MNI-nodes-base.httpRequest',
 				parameters: {
 					authentication: 'genericCredentialType',
 					genericAuthType: 'httpHeaderAuth',
@@ -163,7 +163,7 @@ describe('nodeTypesUtils', () => {
 
 		it('should mark the generic auth credential inactive after switching to a predefined credential type', () => {
 			const node = makeNode({
-				type: 'n8n-nodes-base.httpRequest',
+				type: 'MNI-nodes-base.httpRequest',
 				parameters: {
 					authentication: 'predefinedCredentialType',
 					nodeCredentialType: 'slackApi',
@@ -179,7 +179,7 @@ describe('nodeTypesUtils', () => {
 
 		it('should keep an active declared ssl credential alongside a generic auth credential', () => {
 			const node = makeNode({
-				type: 'n8n-nodes-base.httpRequest',
+				type: 'MNI-nodes-base.httpRequest',
 				parameters: {
 					authentication: 'genericCredentialType',
 					genericAuthType: 'httpBearerAuth',
@@ -196,7 +196,7 @@ describe('nodeTypesUtils', () => {
 
 		it('should keep all credentials when genericAuthType is an expression', () => {
 			const node = makeNode({
-				type: 'n8n-nodes-base.httpRequest',
+				type: 'MNI-nodes-base.httpRequest',
 				parameters: {
 					authentication: 'genericCredentialType',
 					genericAuthType: '={{ $json.authType }}',
@@ -212,7 +212,7 @@ describe('nodeTypesUtils', () => {
 
 		it('should mark a stale generic auth credential inactive after switching to a predefined credential type, even though genericAuthType still holds its old value', () => {
 			const node = makeNode({
-				type: 'n8n-nodes-base.httpRequest',
+				type: 'MNI-nodes-base.httpRequest',
 				parameters: {
 					authentication: 'predefinedCredentialType',
 					nodeCredentialType: 'slackApi',
@@ -233,7 +233,7 @@ describe('nodeTypesUtils', () => {
 
 		it('should keep all credentials when nodeCredentialType is an expression', () => {
 			const node = makeNode({
-				type: 'n8n-nodes-base.httpRequest',
+				type: 'MNI-nodes-base.httpRequest',
 				parameters: {
 					authentication: 'predefinedCredentialType',
 					nodeCredentialType: '={{ $json.credType }}',
@@ -249,7 +249,7 @@ describe('nodeTypesUtils', () => {
 
 		it('should clean up a stale credential despite an expression left in a hidden selector', () => {
 			const node = makeNode({
-				type: 'n8n-nodes-base.httpRequest',
+				type: 'MNI-nodes-base.httpRequest',
 				parameters: {
 					authentication: 'predefinedCredentialType',
 					nodeCredentialType: 'slackApi',
@@ -269,7 +269,7 @@ describe('nodeTypesUtils', () => {
 
 		it('should keep a declared ssl credential whose ssl toggle is off', () => {
 			const node = makeNode({
-				type: 'n8n-nodes-base.httpRequest',
+				type: 'MNI-nodes-base.httpRequest',
 				parameters: {
 					authentication: 'predefinedCredentialType',
 					nodeCredentialType: 'slackApi',
@@ -307,7 +307,7 @@ describe('nodeTypesUtils', () => {
 			};
 
 			const node = makeNode({
-				type: 'n8n-nodes-base.httpRequest',
+				type: 'MNI-nodes-base.httpRequest',
 				parameters: {
 					authentication: 'genericCredentialType',
 					genericAuthType: 'httpHeaderAuth',
@@ -327,7 +327,7 @@ describe('nodeTypesUtils', () => {
 			const resourceGatedNodeType: INodeTypeDescription = {
 				...nodeTypeDefaults,
 				displayName: 'Test Node',
-				name: 'n8n-nodes-base.testNode',
+				name: 'MNI-nodes-base.testNode',
 				credentials: [{ name: 'legacyApi', displayOptions: { show: { resource: ['user'] } } }],
 			};
 

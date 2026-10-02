@@ -1,5 +1,5 @@
-/* eslint-disable n8n-nodes-base/node-filename-against-convention */
-import { NodeConnectionTypes, type INodeTypeDescription } from 'n8n-workflow';
+/* eslint-disable MNI-nodes-base/node-filename-against-convention */
+import { NodeConnectionTypes, type INodeTypeDescription } from 'MNI-workflow';
 
 import * as report from './report/Report.resource';
 import * as userActivity from './userActivity/UserActivity.resource';

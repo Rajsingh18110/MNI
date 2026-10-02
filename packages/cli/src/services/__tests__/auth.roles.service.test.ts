@@ -1,8 +1,8 @@
-import { Logger } from '@n8n/backend-common';
-import { mockInstance } from '@n8n/backend-test-utils';
-import { CANVAS_ONLY_PERSONAL_SPACE_DENIABLE_SCOPES, type GlobalConfig } from '@n8n/config';
-import { AuthRolesService, Role, Scope } from '@n8n/db';
-import type { DbLock, DbLockService } from '@n8n/db';
+import { Logger } from '@MNI/backend-common';
+import { mockInstance } from '@MNI/backend-test-utils';
+import { CANVAS_ONLY_PERSONAL_SPACE_DENIABLE_SCOPES, type GlobalConfig } from '@MNI/config';
+import { AuthRolesService, Role, Scope } from '@MNI/db';
+import type { DbLock, DbLockService } from '@MNI/db';
 import {
 	ALL_SCOPES,
 	ALL_ROLES,
@@ -13,8 +13,8 @@ import {
 	PERSONAL_SPACE_PUBLISHING_SETTING,
 	PERSONAL_SPACE_SHARING_SETTING,
 	EXTERNAL_SECRETS_SYSTEM_ROLES_ENABLED_SETTING,
-} from '@n8n/permissions';
-import type { EntityManager, FindManyOptions, Repository } from '@n8n/typeorm';
+} from '@MNI/permissions';
+import type { EntityManager, FindManyOptions, Repository } from '@MNI/typeorm';
 import { mock } from 'vitest-mock-extended';
 
 const SHARING_SCOPES = PERSONAL_SPACE_SHARING_SETTING.scopes;

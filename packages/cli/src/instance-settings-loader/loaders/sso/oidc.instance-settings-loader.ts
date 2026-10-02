@@ -1,9 +1,9 @@
-import { OIDC_PROMPT_VALUES } from '@n8n/api-types';
-import { Logger } from '@n8n/backend-common';
-import { InstanceSettingsLoaderConfig } from '@n8n/config';
-import { SettingsRepository } from '@n8n/db';
-import { Service } from '@n8n/di';
-import { Cipher } from 'n8n-core';
+import { OIDC_PROMPT_VALUES } from '@MNI/api-types';
+import { Logger } from '@MNI/backend-common';
+import { InstanceSettingsLoaderConfig } from '@MNI/config';
+import { SettingsRepository } from '@MNI/db';
+import { Service } from '@MNI/di';
+import { Cipher } from 'MNI-core';
 import { z } from 'zod';
 
 import { OIDC_PREFERENCES_DB_KEY } from '@/modules/sso-oidc/constants';
@@ -14,18 +14,18 @@ const oidcEnvSchema = z
 	.object({
 		oidcClientId: z
 			.string()
-			.min(1, 'N8N_SSO_OIDC_CLIENT_ID is required when configuring OIDC via environment variables'),
+			.min(1, 'MNI_SSO_OIDC_CLIENT_ID is required when configuring OIDC via environment variables'),
 		oidcClientSecret: z
 			.string()
 			.min(
 				1,
-				'N8N_SSO_OIDC_CLIENT_SECRET is required when configuring OIDC via environment variables',
+				'MNI_SSO_OIDC_CLIENT_SECRET is required when configuring OIDC via environment variables',
 			),
-		oidcDiscoveryEndpoint: z.string().url('N8N_SSO_OIDC_DISCOVERY_ENDPOINT must be a valid URL'),
+		oidcDiscoveryEndpoint: z.string().url('MNI_SSO_OIDC_DISCOVERY_ENDPOINT must be a valid URL'),
 		oidcLoginEnabled: z.boolean(),
 		oidcPrompt: z.enum(OIDC_PROMPT_VALUES, {
 			errorMap: () => ({
-				message: `N8N_SSO_OIDC_PROMPT must be one of: ${OIDC_PROMPT_VALUES.join(', ')}`,
+				message: `MNI_SSO_OIDC_PROMPT must be one of: ${OIDC_PROMPT_VALUES.join(', ')}`,
 			}),
 		}),
 		oidcAcrValues: z.string(),

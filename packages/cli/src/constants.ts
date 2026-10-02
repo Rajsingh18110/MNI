@@ -1,13 +1,13 @@
-import { Time } from '@n8n/constants';
+import { Time } from '@MNI/constants';
 import { readFileSync, statSync } from 'fs';
-import type { n8n } from 'n8n-core';
-import type { ITaskDataConnections } from 'n8n-workflow';
+import type { MNI } from 'MNI-core';
+import type { ITaskDataConnections } from 'MNI-workflow';
 import {
 	ERROR_TRIGGER_NODE_TYPE,
 	EXECUTE_WORKFLOW_TRIGGER_NODE_TYPE,
 	jsonParse,
 	TRIMMED_TASK_DATA_CONNECTIONS_KEY,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import { resolve, join, dirname } from 'path';
 
 const { E2E_TESTS } = process.env;
@@ -19,27 +19,27 @@ export const CUSTOM_API_CALL_KEY = '__CUSTOM_API_CALL__';
 export const CLI_DIR = resolve(__dirname, '..');
 export const AI_ASSISTANT_SDK_DIR = dirname(dirname(require.resolve('@n8n_io/ai-assistant-sdk')));
 export const TEMPLATES_DIR = join(CLI_DIR, 'templates');
-export const NODES_BASE_DIR = dirname(require.resolve('n8n-nodes-base'));
-export const EDITOR_UI_DIST_DIR = join(dirname(require.resolve('n8n-editor-ui')), 'dist');
+export const NODES_BASE_DIR = dirname(require.resolve('MNI-nodes-base'));
+export const EDITOR_UI_DIST_DIR = join(dirname(require.resolve('MNI-editor-ui')), 'dist');
 
 const packageJsonPath = join(CLI_DIR, 'package.json');
 const aiAssistantPackageJsonPath = join(AI_ASSISTANT_SDK_DIR, 'package.json');
-const workflowSdkPackageJsonPath = require.resolve('@n8n/workflow-sdk/package.json');
-const n8nPackageJson = jsonParse<n8n.PackageJson>(readFileSync(packageJsonPath, 'utf8'));
-const aiAssistantPackageJson = jsonParse<n8n.PackageJson>(
+const workflowSdkPackageJsonPath = require.resolve('@MNI/workflow-sdk/package.json');
+const n8nPackageJson = jsonParse<MNI.PackageJson>(readFileSync(packageJsonPath, 'utf8'));
+const aiAssistantPackageJson = jsonParse<MNI.PackageJson>(
 	readFileSync(aiAssistantPackageJsonPath, 'utf8'),
 );
-const workflowSdkPackageJson = jsonParse<n8n.PackageJson>(
+const workflowSdkPackageJson = jsonParse<MNI.PackageJson>(
 	readFileSync(workflowSdkPackageJsonPath, 'utf8'),
 );
-export const N8N_VERSION = n8nPackageJson.version;
+export const MNI_VERSION = n8nPackageJson.version;
 export const AI_ASSISTANT_SDK_VERSION = aiAssistantPackageJson.version;
 export const WORKFLOW_SDK_VERSION = workflowSdkPackageJson.version;
-export const N8N_RELEASE_DATE = statSync(packageJsonPath).mtime;
+export const MNI_RELEASE_DATE = statSync(packageJsonPath).mtime;
 
 export const STARTING_NODES = [
-	'@n8n/n8n-nodes-langchain.manualChatTrigger',
-	'n8n-nodes-base.manualTrigger',
+	'@MNI/MNI-nodes-langchain.manualChatTrigger',
+	'MNI-nodes-base.manualTrigger',
 ];
 
 export const TRIGGER_COUNT_EXCLUDED_NODES = [
@@ -47,9 +47,9 @@ export const TRIGGER_COUNT_EXCLUDED_NODES = [
 	ERROR_TRIGGER_NODE_TYPE,
 ];
 
-export const MCP_TRIGGER_NODE_TYPE = '@n8n/n8n-nodes-langchain.mcpTrigger';
+export const MCP_TRIGGER_NODE_TYPE = '@MNI/MNI-nodes-langchain.mcpTrigger';
 
-export const NODE_PACKAGE_PREFIX = 'n8n-nodes-';
+export const NODE_PACKAGE_PREFIX = 'MNI-nodes-';
 
 export const STARTER_TEMPLATE_NAME = `${NODE_PACKAGE_PREFIX}starter`;
 
@@ -71,9 +71,9 @@ export const RESPONSE_ERROR_MESSAGES = {
 	MISSING_SCOPE: 'User is missing a scope required to perform this action',
 } as const;
 
-export const AUTH_COOKIE_NAME = 'n8n-auth';
-export const OIDC_STATE_COOKIE_NAME = 'n8n-oidc-state';
-export const OIDC_NONCE_COOKIE_NAME = 'n8n-oidc-nonce';
+export const AUTH_COOKIE_NAME = 'MNI-auth';
+export const OIDC_STATE_COOKIE_NAME = 'MNI-oidc-state';
+export const OIDC_NONCE_COOKIE_NAME = 'MNI-oidc-nonce';
 
 /**
  * Cookies the Form nodes set on their own pages, duplicated here because the
@@ -84,18 +84,18 @@ export const OIDC_NONCE_COOKIE_NAME = 'n8n-oidc-nonce';
  * (`<prefix>-wf-<id>` / `<prefix>-ex-<id>`), so concurrent forms don't
  * overwrite each other's cookie.
  */
-export const FORM_AUTH_COOKIE_PREFIX = 'n8n-form-auth';
-export const FORM_OAUTH_COOKIE_NAME = 'n8n-form-oauth';
+export const FORM_AUTH_COOKIE_PREFIX = 'MNI-form-auth';
+export const FORM_OAUTH_COOKIE_NAME = 'MNI-form-oauth';
 
 /**
  * Cookies the Chat trigger's hosted page sets, duplicated here for the same reason
  * as the form ones above — the names are owned by
- * `@n8n/n8n-nodes-langchain/nodes/trigger/ChatTrigger/shell.ts`. Keep both sides in
+ * `@MNI/MNI-nodes-langchain/nodes/trigger/ChatTrigger/shell.ts`. Keep both sides in
  * step. The `-refresh` one carries a 30-day refresh token, so it must never leak to
  * an unrelated webhook.
  */
-export const CHAT_OAUTH_COOKIE_NAME = 'n8n-chat-oauth';
-export const CHAT_OAUTH_REFRESH_COOKIE_NAME = 'n8n-chat-oauth-refresh';
+export const CHAT_OAUTH_COOKIE_NAME = 'MNI-chat-oauth';
+export const CHAT_OAUTH_REFRESH_COOKIE_NAME = 'MNI-chat-oauth-refresh';
 
 export const NPM_COMMAND_TOKENS = {
 	NPM_PACKAGE_NOT_FOUND_ERROR: '404 Not Found',
@@ -124,7 +124,7 @@ export const TRIGGER_TEARDOWN_RETRY_INITIAL_DELAY_MS = 1000;
 export const SETTINGS_LICENSE_CERT_KEY = 'license.cert';
 
 export const UM_FIX_INSTRUCTION =
-	'Please fix the database by running ./packages/cli/bin/n8n user-management:reset';
+	'Please fix the database by running ./packages/cli/bin/MNI user-management:reset';
 
 export const TEST_WEBHOOK_TIMEOUT = 2 * Time.minutes.toMilliseconds;
 
@@ -216,6 +216,6 @@ export const WsStatusCodes = {
 	CloseInvalidData: 1007,
 } as const;
 
-export const FREE_AI_CREDITS_CREDENTIAL_NAME = 'n8n free OpenAI API credits';
+export const FREE_AI_CREDITS_CREDENTIAL_NAME = 'MNI free OpenAI API credits';
 
 export const STREAM_SEPARATOR = '⧉⇋⇋➽⌑⧉§§\n';

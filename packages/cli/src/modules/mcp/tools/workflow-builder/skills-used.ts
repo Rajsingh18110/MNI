@@ -1,14 +1,14 @@
-import { RUNTIME_SKILL_NAME_PATTERN } from '@n8n/agents';
+import { RUNTIME_SKILL_NAME_PATTERN } from '@MNI/agents';
 
 const MAX_SKILLS_LOGGED = 50;
 
-// Skill IDs may carry a plugin prefix (e.g. `n8n-skills:workflow-builder`);
+// Skill IDs may carry a plugin prefix (e.g. `MNI-skills:workflow-builder`);
 // both the prefix and the skill name follow RUNTIME_SKILL_NAME_PATTERN.
 const skillNameSource = RUNTIME_SKILL_NAME_PATTERN.source.replace(/^\^|\$$/g, '');
 const SKILL_ID_PATTERN = new RegExp(`^(?:${skillNameSource}:)?${skillNameSource}$`);
 
 export const SKILLS_USED_PARAM_DESCRIPTION =
-	'IDs of MNI skills used to prepare this call, e.g. "workflow-builder". An optional plugin prefix is allowed, e.g. "n8n-skills:workflow-builder". Entries are normalized server-side (trimmed, lowercased, deduped); invalid identifiers are dropped.';
+	'IDs of MNI skills used to prepare this call, e.g. "workflow-builder". An optional plugin prefix is allowed, e.g. "MNI-skills:workflow-builder". Entries are normalized server-side (trimmed, lowercased, deduped); invalid identifiers are dropped.';
 
 export function sanitizeSkillsUsed(input: unknown): string[] | undefined {
 	if (!Array.isArray(input)) return undefined;

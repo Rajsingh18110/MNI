@@ -11,13 +11,13 @@ describe('TokenExchangeModule', () => {
 
 	describe('systemTasks()', () => {
 		it('should register the maintenance tasks when the feature flag is enabled', async () => {
-			vi.stubEnv('N8N_ENV_FEAT_TOKEN_EXCHANGE', 'true');
+			vi.stubEnv('MNI_ENV_FEAT_TOKEN_EXCHANGE', 'true');
 
 			await expect(module.systemTasks()).resolves.toEqual([TrustedKeyRefreshTask, JtiCleanupTask]);
 		});
 
 		it('should register no tasks when the feature flag is disabled', async () => {
-			vi.stubEnv('N8N_ENV_FEAT_TOKEN_EXCHANGE', undefined);
+			vi.stubEnv('MNI_ENV_FEAT_TOKEN_EXCHANGE', undefined);
 
 			await expect(module.systemTasks()).resolves.toEqual([]);
 		});

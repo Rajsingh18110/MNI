@@ -1,13 +1,13 @@
-import { Logger } from '@n8n/backend-common';
-import { GlobalConfig, WorkflowHistoryCompactionConfig } from '@n8n/config';
-import { Time } from '@n8n/constants';
-import { DbConnection, WorkflowHistoryRepository } from '@n8n/db';
-import { OnLeaderStepdown, OnLeaderTakeover, OnShutdown } from '@n8n/decorators';
-import { Service } from '@n8n/di';
-import { InstanceSettings } from 'n8n-core';
-import { ensureError } from '@n8n/utils/errors/ensure-error';
-import { sleep } from '@n8n/utils/sleep';
-import { DiffMetaData, DiffRule, RULES, SKIP_RULES } from 'n8n-workflow';
+import { Logger } from '@MNI/backend-common';
+import { GlobalConfig, WorkflowHistoryCompactionConfig } from '@MNI/config';
+import { Time } from '@MNI/constants';
+import { DbConnection, WorkflowHistoryRepository } from '@MNI/db';
+import { OnLeaderStepdown, OnLeaderTakeover, OnShutdown } from '@MNI/decorators';
+import { Service } from '@MNI/di';
+import { InstanceSettings } from 'MNI-core';
+import { ensureError } from '@MNI/utils/errors/ensure-error';
+import { sleep } from '@MNI/utils/sleep';
+import { DiffMetaData, DiffRule, RULES, SKIP_RULES } from 'MNI-workflow';
 import { strict } from 'node:assert';
 
 import { EventService } from '@/events/event.service';

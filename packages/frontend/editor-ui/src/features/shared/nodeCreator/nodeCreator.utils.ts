@@ -34,9 +34,9 @@ import {
 } from '@/app/constants';
 import { v4 as uuidv4 } from 'uuid';
 
-import { i18n } from '@n8n/i18n';
-import { reRankSearchResults } from '@n8n/utils/search/re-rank-search-results';
-import { sublimeSearch } from '@n8n/utils/search/sublime-search';
+import { i18n } from '@MNI/i18n';
+import { reRankSearchResults } from '@MNI/utils/search/re-rank-search-results';
+import { sublimeSearch } from '@MNI/utils/search/sublime-search';
 import * as changeCase from 'change-case';
 import sortBy from 'lodash/sortBy';
 import type { NodeViewItemSection } from './views/viewsData';
@@ -44,15 +44,15 @@ import type { NodeViewItemSection } from './views/viewsData';
 import { stripToolSuffix, useAiGatewayStore } from '@/app/stores/aiGateway.store';
 import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';
 import { toPolicyNodeType } from '@/app/utils/credentialOnlyNodes';
-import { getNodeTypeRestriction } from '@n8n/frontend-module-type-availability-policies';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { getNodeTypeRestriction } from '@MNI/frontend-module-type-availability-policies';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import type { NodeIconSource } from '@/app/utils/nodeIcon';
 import { getN8nAgentsNodeName } from '@/experiments/inlineAgents/useInlineAgentsExperiment';
 import { SampleTemplates } from '@/features/workflows/templates/utils/workflowSamples';
-import type { NodeTypeAvailability } from '@n8n/api-types';
-import type { IconName } from '@n8n/design-system';
-import type { INodeOutputConfiguration, NodeConnectionType } from 'n8n-workflow';
-import { NodeConnectionTypes, SEND_AND_WAIT_OPERATION } from 'n8n-workflow';
+import type { NodeTypeAvailability } from '@MNI/api-types';
+import type { IconName } from '@MNI/design-system';
+import type { INodeOutputConfiguration, NodeConnectionType } from 'MNI-workflow';
+import { NodeConnectionTypes, SEND_AND_WAIT_OPERATION } from 'MNI-workflow';
 import type { CommunityNodeDetails, ViewStack } from './composables/useViewStacks';
 
 const COMMUNITY_NODE_TYPE_PREVIEW_TOKEN = '-preview';

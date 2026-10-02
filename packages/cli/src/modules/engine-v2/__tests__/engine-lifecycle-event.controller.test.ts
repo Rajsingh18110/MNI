@@ -1,4 +1,4 @@
-import type { LifecycleEvent } from '@n8n/engine';
+import type { LifecycleEvent } from '@MNI/engine';
 import type { Request, Response } from 'express';
 import type { Mocked } from 'vitest';
 import { mock } from 'vitest-mock-extended';

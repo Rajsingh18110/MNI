@@ -1,4 +1,4 @@
-import { OperationalError } from 'n8n-workflow';
+import { OperationalError } from 'MNI-workflow';
 
 export class CredentialResolutionError extends OperationalError {
 	constructor(message: string, options?: { cause?: unknown }) {

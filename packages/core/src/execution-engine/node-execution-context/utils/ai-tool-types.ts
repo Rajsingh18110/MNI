@@ -18,8 +18,8 @@ export class StructuredToolkit extends BaseToolkit {
 		return this.tools;
 	}
 
-	// The packaged app can materialize more than one copy of n8n-core,
-	// so `instanceof` misses toolkits built by another copy of n8n-core
+	// The packaged app can materialize more than one copy of MNI-core,
+	// so `instanceof` misses toolkits built by another copy of MNI-core
 	static [Symbol.hasInstance](value: unknown): value is StructuredToolkit {
 		return (
 			typeof value === 'object' &&

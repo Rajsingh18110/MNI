@@ -3,10 +3,10 @@ import {
 	AgentEvalRunDetailQueryDto,
 	MAX_ITEMS_PER_PAGE,
 	PaginationDto,
-} from '@n8n/api-types';
-import type { AuthenticatedRequest, User } from '@n8n/db';
-import { ControllerRegistryMetadata } from '@n8n/decorators';
-import { Container } from '@n8n/di';
+} from '@MNI/api-types';
+import type { AuthenticatedRequest, User } from '@MNI/db';
+import { ControllerRegistryMetadata } from '@MNI/decorators';
+import { Container } from '@MNI/di';
 import { mock, type MockProxy } from 'vitest-mock-extended';
 
 import { BadRequestError } from '@/errors/response-errors/bad-request.error';

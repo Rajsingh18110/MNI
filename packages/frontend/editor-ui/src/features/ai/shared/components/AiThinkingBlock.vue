@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { N8nAiActivityStepChevron, N8nAnimatedCollapsibleContent } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+import { N8nAiActivityStepChevron, N8nAnimatedCollapsibleContent } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 import { CollapsibleRoot, CollapsibleTrigger } from 'reka-ui';
 import { computed, onUnmounted, ref, watch } from 'vue';
 import { firstSentence } from '../thinking.utils';
@@ -165,7 +165,7 @@ const title = computed<{ key: string; text: string }>(() => {
 </style>
 
 <style lang="scss" module>
-@use '@n8n/design-system/css/mixins/motion';
+@use '@MNI/design-system/css/mixins/motion';
 
 .header {
 	display: inline-flex;

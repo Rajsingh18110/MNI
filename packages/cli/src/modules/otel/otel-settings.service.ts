@@ -1,8 +1,8 @@
-import { Logger } from '@n8n/backend-common';
-import { SettingsRepository } from '@n8n/db';
-import { Service } from '@n8n/di';
-import { isRecord } from '@n8n/utils/is-record';
-import { CREDENTIAL_BLANKING_VALUE, jsonParse } from 'n8n-workflow';
+import { Logger } from '@MNI/backend-common';
+import { SettingsRepository } from '@MNI/db';
+import { Service } from '@MNI/di';
+import { isRecord } from '@MNI/utils/is-record';
+import { CREDENTIAL_BLANKING_VALUE, jsonParse } from 'MNI-workflow';
 
 import { OtelConfig } from './otel.config';
 import { OTEL_ENV_VARS } from './otel.constants';
@@ -191,7 +191,7 @@ export class OtelSettingsService {
 
 	private isEnvManaged(key: keyof OtelConfig): boolean {
 		const envVar = OTEL_ENV_VARS[key];
-		// Mirror readEnv() in @n8n/config: a value supplied via `${envVar}_FILE`
+		// Mirror readEnv() in @MNI/config: a value supplied via `${envVar}_FILE`
 		// is env-managed in the same way as one set directly
 		return process.env[envVar] !== undefined || !!process.env[`${envVar}_FILE`];
 	}

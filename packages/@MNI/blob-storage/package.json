@@ -1,0 +1,66 @@
+{
+  "name": "@MNI/blob-storage",
+  "version": "1.9.0",
+  "description": "Blob storage layer for MNI, with filesystem, S3, and Azure Blob backends",
+  "scripts": {
+    "clean": "rimraf dist .turbo",
+    "dev": "pnpm watch",
+    "typecheck": "tsc --noEmit",
+    "build": "tsc -p tsconfig.build.json",
+    "build:unchecked": "tsc -p tsconfig.build.json --noCheck",
+    "format": "biome format --write .",
+    "format:check": "biome ci .",
+    "lint": "eslint . --quiet",
+    "lint:fix": "eslint . --fix",
+    "watch": "tsc -p tsconfig.build.json --watch",
+    "test": "vitest run",
+    "test:unit": "vitest run",
+    "test:dev": "vitest --silent=false"
+  },
+  "main": "dist/index.js",
+  "module": "src/index.ts",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist/**/*"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./object-store": {
+      "types": "./dist/object-store/index.d.ts",
+      "default": "./dist/object-store/index.js"
+    },
+    "./azure-blob": {
+      "types": "./dist/azure-blob/index.d.ts",
+      "default": "./dist/azure-blob/index.js"
+    }
+  },
+  "dependencies": {
+    "@aws-sdk/client-s3": "3.808.0",
+    "@azure/identity": "catalog:",
+    "@azure/storage-blob": "catalog:",
+    "@MNI/backend-common": "workspace:*",
+    "@MNI/backend-network": "workspace:*",
+    "@MNI/config": "workspace:*",
+    "@MNI/di": "workspace:*",
+    "@MNI/utils": "workspace:*",
+    "lodash": "catalog:",
+    "MNI-workflow": "workspace:*",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@MNI/eslint-config": "workspace:*",
+    "@MNI/typescript-config": "workspace:*",
+    "@MNI/vitest-config": "workspace:*",
+    "@types/lodash": "catalog:",
+    "@vitest/coverage-v8": "catalog:",
+    "eslint": "catalog:",
+    "typescript": "catalog:typescript",
+    "vite": "catalog:",
+    "vitest": "catalog:",
+    "vitest-mock-extended": "catalog:"
+  },
+  "license": "LicenseRef-MNI-sustainable-use"
+}

@@ -4,8 +4,8 @@ import type {
 	INode,
 	INodeExecutionData,
 	INodeParameterResourceLocator,
-} from 'n8n-workflow';
-import { NodeApiError, NodeOperationError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeApiError, NodeOperationError } from 'MNI-workflow';
 
 import type { AuthContext, GraphListResponse } from './interfaces';
 import { microsoftApiRequest, microsoftApiRequestAllItems } from '../transport';

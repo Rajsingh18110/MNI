@@ -1,8 +1,8 @@
 import { randomUUID } from 'node:crypto';
 
-import { createTeamProject, testDb, testModules } from '@n8n/backend-test-utils';
-import type { Project } from '@n8n/db';
-import { Container } from '@n8n/di';
+import { createTeamProject, testDb, testModules } from '@MNI/backend-test-utils';
+import type { Project } from '@MNI/db';
+import { Container } from '@MNI/di';
 
 import {
 	askUserContent,

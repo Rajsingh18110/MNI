@@ -3,16 +3,16 @@ import {
 	createWorkflow,
 	getPersonalProject,
 	linkUserToProject,
-} from '@n8n/backend-test-utils';
-import type { Project, User } from '@n8n/db';
+} from '@MNI/backend-test-utils';
+import type { Project, User } from '@MNI/db';
 import {
 	WorkflowHistoryRepository,
 	WorkflowReviewRequestAuthorRepository,
 	WorkflowReviewRequestRepository,
 	WorkflowReviewRequestReviewerRepository,
 	WorkflowReviewRequestWorkflowRepository,
-} from '@n8n/db';
-import { Container } from '@n8n/di';
+} from '@MNI/db';
+import { Container } from '@MNI/di';
 import { v4 as uuid } from 'uuid';
 import type { MockProxy } from 'vitest-mock-extended';
 

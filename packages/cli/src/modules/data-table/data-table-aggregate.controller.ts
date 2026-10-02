@@ -1,6 +1,6 @@
-import { ListDataTableQueryDto } from '@n8n/api-types';
-import { AuthenticatedRequest } from '@n8n/db';
-import { Get, Query, RestController } from '@n8n/decorators';
+import { ListDataTableQueryDto } from '@MNI/api-types';
+import { AuthenticatedRequest } from '@MNI/db';
+import { Get, Query, RestController } from '@MNI/decorators';
 
 import { DataTableAggregateService } from './data-table-aggregate.service';
 import { DataTableService } from './data-table.service';

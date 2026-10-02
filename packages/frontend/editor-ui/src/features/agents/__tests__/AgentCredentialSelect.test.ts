@@ -5,7 +5,7 @@ import { nextTick } from 'vue';
 
 import AgentCredentialSelect from '../components/AgentCredentialSelect.vue';
 
-vi.mock('@n8n/i18n', () => ({
+vi.mock('@MNI/i18n', () => ({
 	useI18n: () => ({
 		baseText: (key: string) => {
 			const translations: Record<string, string> = {
@@ -18,7 +18,7 @@ vi.mock('@n8n/i18n', () => ({
 	}),
 }));
 
-vi.mock('@n8n/design-system', async () => {
+vi.mock('@MNI/design-system', async () => {
 	const { defineComponent, inject, provide } = await import('vue');
 
 	const N8nSelect = defineComponent({

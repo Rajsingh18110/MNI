@@ -1,5 +1,5 @@
 import { onScopeDispose, type Ref } from 'vue';
-import type { PushMessage } from '@n8n/api-types';
+import type { PushMessage } from '@MNI/api-types';
 
 import { usePushConnectionStore } from '@/app/stores/pushConnection.store';
 

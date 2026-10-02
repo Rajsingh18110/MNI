@@ -65,13 +65,13 @@ export const AI_CATEGORY_MCP_NODES = 'Model Context Protocol';
 export const AI_CATEGORY_HUMAN_IN_THE_LOOP = HITL_SUBCATEGORY;
 export const AI_EVALUATION = 'Evaluation';
 export const AI_UNCATEGORIZED_CATEGORY = 'Miscellaneous';
-export const AI_CODE_TOOL_LANGCHAIN_NODE_TYPE = '@n8n/n8n-nodes-langchain.toolCode';
-export const AI_WORKFLOW_TOOL_LANGCHAIN_NODE_TYPE = '@n8n/n8n-nodes-langchain.toolWorkflow';
+export const AI_CODE_TOOL_LANGCHAIN_NODE_TYPE = '@MNI/MNI-nodes-langchain.toolCode';
+export const AI_WORKFLOW_TOOL_LANGCHAIN_NODE_TYPE = '@MNI/MNI-nodes-langchain.toolWorkflow';
 export const AI_SECTION_RECOMMENDED_TOOLS = 'Recommended Tools';
-export const REQUEST_NODE_FORM_URL = 'https://n8n-community.typeform.com/to/K1fBVTZ3';
+export const REQUEST_NODE_FORM_URL = 'https://MNI-community.typeform.com/to/K1fBVTZ3';
 export const SUGGEST_SERVICE_FORM_URL_REMOTE_CONFIG_KEY = 'config_suggest_service_form_url';
 
 export const RECOMMENDED_NODES: string[] = [DATA_TABLE_NODE_TYPE, DATA_TABLE_TOOL_NODE_TYPE];
-export const BETA_NODES: string[] = ['@n8n/n8n-nodes-langchain.microsoftAgent365Trigger'];
+export const BETA_NODES: string[] = ['@MNI/MNI-nodes-langchain.microsoftAgent365Trigger'];
 
 export const NEW_TOOL_CATEGORIES: string[] = [AI_CATEGORY_MCP_NODES];

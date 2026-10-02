@@ -9,14 +9,14 @@ import {
 	testDb,
 	mockInstance,
 	createActiveWorkflow,
-} from '@n8n/backend-test-utils';
-import type { Project, User } from '@n8n/db';
-import { FolderRepository, ProjectRepository, WorkflowRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
-import type { ProjectRole } from '@n8n/permissions';
-import { PROJECT_EDITOR_ROLE_SLUG, PROJECT_VIEWER_ROLE_SLUG } from '@n8n/permissions';
+} from '@MNI/backend-test-utils';
+import type { Project, User } from '@MNI/db';
+import { FolderRepository, ProjectRepository, WorkflowRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
+import type { ProjectRole } from '@MNI/permissions';
+import { PROJECT_EDITOR_ROLE_SLUG, PROJECT_VIEWER_ROLE_SLUG } from '@MNI/permissions';
 import { DateTime } from 'luxon';
-import { PROJECT_ROOT, UnexpectedError } from 'n8n-workflow';
+import { PROJECT_ROOT, UnexpectedError } from 'MNI-workflow';
 
 import { ActiveWorkflowManager } from '@/active-workflow-manager';
 import { OwnershipService } from '@/services/ownership.service';
@@ -402,7 +402,7 @@ describe('GET /projects/:projectId/folders/:folderId/credentials', () => {
 					nodes: [
 						{
 							parameters: {},
-							type: '@n8n/n8n-nodes-langchain.lmChatOpenAi',
+							type: '@MNI/MNI-nodes-langchain.lmChatOpenAi',
 							typeVersion: 1.2,
 							position: [0, 0],
 							id: faker.string.uuid(),
@@ -493,7 +493,7 @@ describe('GET /projects/:projectId/folders/:folderId/credentials', () => {
 					nodes: [
 						{
 							parameters: {},
-							type: '@n8n/n8n-nodes-langchain.lmChatOpenAi',
+							type: '@MNI/MNI-nodes-langchain.lmChatOpenAi',
 							typeVersion: 1.2,
 							position: [0, 0],
 							id: faker.string.uuid(),

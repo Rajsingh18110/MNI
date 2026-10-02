@@ -1,4 +1,4 @@
-import type { ExecutionsConfig } from '@n8n/config';
+import type { ExecutionsConfig } from '@MNI/config';
 import { mock } from 'vitest-mock-extended';
 
 import { ExecutionPruningSoftDeleteTask } from '../execution-pruning-soft-delete.task';

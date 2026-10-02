@@ -3,16 +3,16 @@ import {
 	createWorkflow,
 	createTeamProject,
 	linkUserToProject,
-} from '@n8n/backend-test-utils';
-import type { Project } from '@n8n/db';
+} from '@MNI/backend-test-utils';
+import type { Project } from '@MNI/db';
 import {
 	SharedWorkflowRepository,
 	WorkflowDependencyRepository,
 	WorkflowDependencies,
 	WorkflowRepository,
 	WORKFLOW_DEPENDENCY_INDEX_VERSION,
-} from '@n8n/db';
-import { Container } from '@n8n/di';
+} from '@MNI/db';
+import { Container } from '@MNI/di';
 
 import { createMember, createOwner } from '../../shared/db/users';
 
@@ -47,7 +47,7 @@ describe('WorkflowDependencyRepository', () => {
 			});
 			dependencies.add({
 				dependencyType: 'nodeType',
-				dependencyKey: 'n8n-nodes-base.httpRequest',
+				dependencyKey: 'MNI-nodes-base.httpRequest',
 				dependencyInfo: null,
 			});
 
@@ -80,7 +80,7 @@ describe('WorkflowDependencyRepository', () => {
 				workflowId: workflow.id,
 				workflowVersionId: 1,
 				dependencyType: 'nodeType',
-				dependencyKey: 'n8n-nodes-base.httpRequest',
+				dependencyKey: 'MNI-nodes-base.httpRequest',
 				dependencyInfo: null,
 				indexVersionId: WORKFLOW_DEPENDENCY_INDEX_VERSION,
 			});
@@ -371,9 +371,9 @@ describe('WorkflowDependencyRepository', () => {
 	});
 });
 
-const ANTHROPIC = '@n8n/n8n-nodes-langchain.lmChatAnthropic';
-const OPENAI = '@n8n/n8n-nodes-langchain.lmChatOpenAi';
-const SLACK = 'n8n-nodes-base.slack';
+const ANTHROPIC = '@MNI/MNI-nodes-langchain.lmChatAnthropic';
+const OPENAI = '@MNI/MNI-nodes-langchain.lmChatOpenAi';
+const SLACK = 'MNI-nodes-base.slack';
 
 /**
  * These back a context surface the agent reads to learn what a project is built out of, so the

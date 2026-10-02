@@ -1,13 +1,13 @@
-import { testDb, mockInstance } from '@n8n/backend-test-utils';
+import { testDb, mockInstance } from '@MNI/backend-test-utils';
 import {
 	CredentialsEntity,
 	CredentialsRepository,
 	SharedWorkflowRepository,
 	WorkflowEntity,
 	WorkflowRepository,
-} from '@n8n/db';
-import { Container } from '@n8n/di';
-import type { INode } from 'n8n-workflow';
+} from '@MNI/db';
+import { Container } from '@MNI/di';
+import type { INode } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import { Telemetry } from '@/telemetry';
@@ -71,7 +71,7 @@ describe('EnterpriseWorkflowService', () => {
 		const makeNode = (overrides: Partial<INode>): INode => ({
 			id: STORED_NODE_ID,
 			name: 'Node',
-			type: 'n8n-nodes-base.httpRequest',
+			type: 'MNI-nodes-base.httpRequest',
 			typeVersion: 1,
 			position: [0, 0],
 			parameters: {},

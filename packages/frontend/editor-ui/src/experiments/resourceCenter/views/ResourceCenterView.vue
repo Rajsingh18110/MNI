@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { N8nIcon, N8nSpinner } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
-import type { ITemplatesWorkflowFull } from '@n8n/rest-api-client';
+import { N8nIcon, N8nSpinner } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
+import type { ITemplatesWorkflowFull } from '@MNI/rest-api-client';
 import uniqBy from 'lodash/uniqBy';
 import { computed, onMounted, ref } from 'vue';
 import { useDebounceFn } from '@vueuse/core';
@@ -20,17 +20,17 @@ import { quickStartWorkflows } from '../data/quickStartWorkflows';
 import { useUIStore } from '@/app/stores/ui.store';
 import { useResourceCenterStore } from '../stores/resourceCenter.store';
 import { useDocumentTitle } from '@/app/composables/useDocumentTitle';
-import { getDebounceTime } from '@n8n/composables/useDebounce';
+import { getDebounceTime } from '@MNI/composables/useDebounce';
 import { DEBOUNCE_TIME } from '@/app/constants/durations';
 import { filterTemplateNodes } from '@/app/utils/nodeTypesUtils';
 
 const READY_TO_RUN_ARTWORK_EXCLUDED_TYPES = new Set([
-	'n8n-nodes-base.stickyNote',
-	'n8n-nodes-base.manualTrigger',
-	'n8n-nodes-base.set',
-	'@n8n/n8n-nodes-langchain.memoryBufferWindow',
+	'MNI-nodes-base.stickyNote',
+	'MNI-nodes-base.manualTrigger',
+	'MNI-nodes-base.set',
+	'@MNI/MNI-nodes-langchain.memoryBufferWindow',
 ]);
-const DEPRIORITIZED_TEMPLATE_CARD_NODE_PREFIXES = ['@n8n/n8n-nodes-langchain.'];
+const DEPRIORITIZED_TEMPLATE_CARD_NODE_PREFIXES = ['@MNI/MNI-nodes-langchain.'];
 
 const i18n = useI18n();
 const router = useRouter();

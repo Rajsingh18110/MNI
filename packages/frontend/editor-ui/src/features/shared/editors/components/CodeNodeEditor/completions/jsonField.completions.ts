@@ -3,8 +3,8 @@ import type { Completion, CompletionContext, CompletionResult } from '@codemirro
 import { injectWorkflowExecutionStateStore } from '@/app/stores/workflowExecutionState.store';
 import { useNDVStore } from '@/features/ndv/shared/ndv.store';
 import { isAllowedInDotNotation } from '@/features/shared/editors/plugins/codemirror/completions/utils';
-import { useI18n } from '@n8n/i18n';
-import type { IRunData, IDataObject } from 'n8n-workflow';
+import { useI18n } from '@MNI/i18n';
+import type { IRunData, IDataObject } from 'MNI-workflow';
 import { injectWorkflowDocumentStore } from '@/app/stores/workflowDocument.store';
 import { computed } from 'vue';
 import { matchBeforeCursor } from './utils';

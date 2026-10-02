@@ -1,5 +1,5 @@
 import type { KafkaJS } from '@confluentinc/kafka-javascript';
-import type { Logger } from 'n8n-workflow';
+import type { Logger } from 'MNI-workflow';
 
 import { createKafkaClient } from './client';
 import { createLibraryLogger, type FatalErrorHandler } from './LibraryLogger';

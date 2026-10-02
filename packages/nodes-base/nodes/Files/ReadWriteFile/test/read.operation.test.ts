@@ -1,5 +1,5 @@
-import { NodeApiError } from 'n8n-workflow';
-import type { IBinaryData, IExecuteFunctions, INode } from 'n8n-workflow';
+import { NodeApiError } from 'MNI-workflow';
+import type { IBinaryData, IExecuteFunctions, INode } from 'MNI-workflow';
 import { mkdtemp, mkdir, rm, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
@@ -17,7 +17,7 @@ describe('Read/Write Files from Disk, read operation', () => {
 	};
 
 	beforeAll(async () => {
-		directory = await mkdtemp(path.join(tmpdir(), 'n8n-read-'));
+		directory = await mkdtemp(path.join(tmpdir(), 'MNI-read-'));
 
 		for (const file of [
 			'prompts/00-core.md',

@@ -1,4 +1,4 @@
-import { mockLogger } from '@n8n/backend-test-utils';
+import { mockLogger } from '@MNI/backend-test-utils';
 import { mock } from 'vitest-mock-extended';
 
 import type { InsightsByPeriodRepository } from '../database/repositories/insights-by-period.repository';

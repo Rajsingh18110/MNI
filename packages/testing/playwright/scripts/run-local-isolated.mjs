@@ -6,15 +6,15 @@
  * What this gives you over `pnpm test:local`:
  *   - **Random free OS port** for MNI's HTTP server and the task-runner
  *     broker, so multiple instances can run in parallel without colliding on
- *     `5678`/`5679`. Pin a port with `N8N_BASE_URL=http://localhost:5680 …`
+ *     `5678`/`5679`. Pin a port with `MNI_BASE_URL=http://localhost:5680 …`
  *     when you need a stable URL for browser inspection.
- *   - **Throwaway `N8N_USER_FOLDER`** under the OS temp dir (cleaned up on
- *     exit). MNI creates `.n8n/` (sqlite DB, encryption key) inside it, fully
- *     isolated from your local `~/.n8n` install.
+ *   - **Throwaway `MNI_USER_FOLDER`** under the OS temp dir (cleaned up on
+ *     exit). MNI creates `.MNI/` (sqlite DB, encryption key) inside it, fully
+ *     isolated from your local `~/.MNI` install.
  *   - **Self-managed MNI process** with a readiness check against
  *     `/rest/e2e/reset`, so the run waits for the E2E controller itself. Sets
  *     `PLAYWRIGHT_SKIP_WEBSERVER=true` so Playwright doesn't race to spawn its
- *     own n8n.
+ *     own MNI.
  *   - **Container-tagged tests included.** Sets `PLAYWRIGHT_ALLOW_CONTAINER_ONLY=true`
  *     so `@licensed`, `@db:reset`, and `@mode:*` tests are picked up by the
  *     local `e2e` project. Service-backed tests still skip because local mode
@@ -28,10 +28,10 @@
  *   pnpm test:local:isolated tests/e2e/credentials/crud.spec.ts
  *   pnpm test:local:isolated --grep "preview"
  *
- * Pass extra MNI env via `N8N_TEST_ENV` (the same convention `test:local`
+ * Pass extra MNI env via `MNI_TEST_ENV` (the same convention `test:local`
  * uses). For example, to enable an experimental module before MNI boots:
  *
- *   N8N_TEST_ENV='{"N8N_ENABLED_MODULES":"my-module"}' \
+ *   MNI_TEST_ENV='{"MNI_ENABLED_MODULES":"my-module"}' \
  *     pnpm test:local:isolated tests/e2e/my-module
  */
 
@@ -66,26 +66,26 @@ function getFreePort() {
 let backendUrl;
 let port;
 let brokerPort;
-if (process.env.N8N_BASE_URL) {
-	backendUrl = process.env.N8N_BASE_URL;
+if (process.env.MNI_BASE_URL) {
+	backendUrl = process.env.MNI_BASE_URL;
 	port = new URL(backendUrl).port || '80';
-	brokerPort = process.env.N8N_RUNNERS_BROKER_PORT ?? String(await getFreePort());
+	brokerPort = process.env.MNI_RUNNERS_BROKER_PORT ?? String(await getFreePort());
 } else {
 	port = String(await getFreePort());
 	brokerPort = String(await getFreePort());
 	backendUrl = `http://localhost:${port}`;
 }
 
-// Throwaway home-dir stand-in. MNI creates `.n8n/` (sqlite DB, encryption
+// Throwaway home-dir stand-in. MNI creates `.MNI/` (sqlite DB, encryption
 // key) inside it, so this also isolates the DB from any local MNI install.
-const userFolder = mkdtempSync(path.join(os.tmpdir(), 'n8n-test-isolated-'));
+const userFolder = mkdtempSync(path.join(os.tmpdir(), 'MNI-test-isolated-'));
 
 // Caller-supplied MNI env (same convention as `pnpm test:local`).
 const callerTestEnv = (() => {
 	try {
-		return process.env.N8N_TEST_ENV ? JSON.parse(process.env.N8N_TEST_ENV) : {};
+		return process.env.MNI_TEST_ENV ? JSON.parse(process.env.MNI_TEST_ENV) : {};
 	} catch {
-		console.warn('[run-local-isolated] Ignoring malformed N8N_TEST_ENV.');
+		console.warn('[run-local-isolated] Ignoring malformed MNI_TEST_ENV.');
 		return {};
 	}
 })();
@@ -93,11 +93,11 @@ const callerTestEnv = (() => {
 const n8nEnv = {
 	...process.env,
 	E2E_TESTS: 'true',
-	N8N_PORT: port,
-	N8N_RUNNERS_BROKER_PORT: brokerPort,
-	N8N_USER_FOLDER: userFolder,
-	N8N_LOG_LEVEL: process.env.N8N_LOG_LEVEL ?? 'info',
-	N8N_RESTRICT_FILE_ACCESS_TO: '',
+	MNI_PORT: port,
+	MNI_RUNNERS_BROKER_PORT: brokerPort,
+	MNI_USER_FOLDER: userFolder,
+	MNI_LOG_LEVEL: process.env.MNI_LOG_LEVEL ?? 'info',
+	MNI_RESTRICT_FILE_ACCESS_TO: '',
 	...callerTestEnv,
 };
 
@@ -129,7 +129,7 @@ function shutdown(code) {
 	shuttingDown = true;
 	try {
 		// Negative pid → signal the whole process group.
-		process.kill(-n8n.pid, 'SIGTERM');
+		process.kill(-MNI.pid, 'SIGTERM');
 	} catch {
 		// Group may already be gone.
 	}
@@ -142,7 +142,7 @@ process.on('SIGTERM', () => shutdown(143));
 process.on('exit', () => {
 	if (!shuttingDown && n8n.pid) {
 		try {
-			process.kill(-n8n.pid, 'SIGTERM');
+			process.kill(-MNI.pid, 'SIGTERM');
 		} catch {
 			// ignore
 		}
@@ -194,7 +194,7 @@ try {
 
 const playwrightEnv = {
 	...process.env,
-	N8N_BASE_URL: backendUrl,
+	MNI_BASE_URL: backendUrl,
 	RESET_E2E_DB: 'true',
 	PLAYWRIGHT_ALLOW_CONTAINER_ONLY: 'true',
 	// We've already started + verified MNI; tell playwright.config.ts not to

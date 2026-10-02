@@ -1,6 +1,6 @@
-import { mockInstance, testDb } from '@n8n/backend-test-utils';
-import { Container } from '@n8n/di';
-import { Cipher, InstanceSettings } from 'n8n-core';
+import { mockInstance, testDb } from '@MNI/backend-test-utils';
+import { Container } from '@MNI/di';
+import { Cipher, InstanceSettings } from 'MNI-core';
 
 import { KeyManagerService } from '@/encryption/key-manager.service';
 
@@ -11,16 +11,16 @@ const INSTANCE_ENCRYPTION_KEY = 'rotation-cycle-instance-key';
 beforeAll(async () => {
 	mockInstance(InstanceSettings, {
 		encryptionKey: INSTANCE_ENCRYPTION_KEY,
-		n8nFolder: '/tmp/n8n-test',
+		n8nFolder: '/tmp/MNI-test',
 		instanceType: 'main',
 		canSeedDeploymentState: true,
 	});
 	await testDb.init();
-	process.env.N8N_ENV_FEAT_ENCRYPTION_KEY_ROTATION = 'true';
+	process.env.MNI_ENV_FEAT_ENCRYPTION_KEY_ROTATION = 'true';
 });
 
 afterAll(async () => {
-	delete process.env.N8N_ENV_FEAT_ENCRYPTION_KEY_ROTATION;
+	delete process.env.MNI_ENV_FEAT_ENCRYPTION_KEY_ROTATION;
 	await testDb.terminate();
 });
 

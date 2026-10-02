@@ -7,8 +7,8 @@ import type {
 	INodePropertyOptions,
 	INodeType,
 	INodeTypeDescription,
-} from 'n8n-workflow';
-import { NodeConnectionTypes } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeConnectionTypes } from 'MNI-workflow';
 
 import type { EntryType } from './EntryType';
 import { EntryTypes } from './EntryType';
@@ -49,7 +49,7 @@ export class ClockifyTrigger implements INodeType {
 				required: true,
 				default: '',
 			},
-			// eslint-disable-next-line n8n-nodes-base/node-param-default-missing
+			// eslint-disable-next-line MNI-nodes-base/node-param-default-missing
 			{
 				displayName: 'Trigger',
 				name: 'watchField',

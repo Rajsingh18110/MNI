@@ -74,13 +74,13 @@ PostHog flags in Staging/Production first.
 A backend opt-in flag is three small pieces (worked example: the
 `084_eval_collections` flag):
 
-1. **Flag key** constant in `@n8n/api-types`
+1. **Flag key** constant in `@MNI/api-types`
    (e.g. `EVAL_COLLECTIONS_FLAG = '084_eval_collections'` in
-   `packages/@n8n/api-types/src/schemas/eval-collections.schema.ts`).
-2. **Env toggle** — an `@Env('N8N_...')` boolean defaulting to `false` in a
-   `@n8n/config` config class
-   (e.g. `N8N_EVAL_COLLECTIONS_ENABLED` in
-   `packages/@n8n/config/src/configs/evaluation.config.ts`).
+   `packages/@MNI/api-types/src/schemas/eval-collections.schema.ts`).
+2. **Env toggle** — an `@Env('MNI_...')` boolean defaulting to `false` in a
+   `@MNI/config` config class
+   (e.g. `MNI_EVAL_COLLECTIONS_ENABLED` in
+   `packages/@MNI/config/src/configs/evaluation.config.ts`).
 3. **Override wiring** in `PostHogClient.applyEnvOverrides()`
    ([`packages/cli/src/posthog/index.ts`](../packages/cli/src/posthog/index.ts)) —
    force-enable the flag when the env toggle is on:
@@ -101,7 +101,7 @@ Override flags locally without touching PostHog:
 - **Playwright:** set the storage override in `TestRequirements`:
   ```ts
   test.use({ requirements: {
-    storage: { N8N_EXPERIMENT_OVERRIDES: JSON.stringify({ '0XX_my_v3_feature': true }) },
+    storage: { MNI_EXPERIMENT_OVERRIDES: JSON.stringify({ '0XX_my_v3_feature': true }) },
   } });
   ```
 
@@ -113,8 +113,8 @@ commits, such a PR merges cleanly and is immune to the daily force-push (see
 [How the daily sync works](#how-the-daily-sync-works)). Do not land breaking changes on
 `master` — the sync guarantees `master` stays releasable as v2.
 
-- Track the change in the [v3 breaking-changes tracker](https://www.notion.so/n8n/1a75b6e0c94f802caca3ce378d0d8046)
-  and the [Release v3 Linear project](https://linear.app/n8n/project/release-v3-7d7032bebbec/activity).
+- Track the change in the [v3 breaking-changes tracker](https://www.notion.so/MNI/1a75b6e0c94f802caca3ce378d0d8046)
+  and the [Release v3 Linear project](https://linear.app/MNI/project/release-v3-7d7032bebbec/activity).
 - Follow the `BREAKING CHANGE:` PR-title convention (see
   [`pull_request_title_conventions.md`](./pull_request_title_conventions.md)).
 
@@ -138,7 +138,7 @@ stays on `3.x`.
    `master` is dropped as empty.
 3. Conflicts confined to **non-lockfile mechanical files** — bot-maintained content with a
    deterministic resolution (`packages/frontend/editor-ui/data/node-popularity.json`,
-   `packages/@n8n/instance-ai/src/tools/nodes/credential-setupability.json`, and
+   `packages/@MNI/instance-ai/src/tools/nodes/credential-setupability.json`, and
    `.github/test-metrics/e2e-impact-map.json`) — are **auto-resolved during the replay**,
    by taking `master`'s side. The resolution is folded into the stalled commit, so this still
    adds **no commit and no PR**. The list lives in `MECHANICAL_PATHS` in
@@ -215,11 +215,11 @@ resolver picks the PR up themselves.
 [`build-v3-nightly.yml`](./workflows/build-v3-nightly.yml)):
 
 ```bash
-docker pull n8nio/n8n:v3-nightly              # latest v3 nightly
-docker pull n8nio/n8n:v3-nightly-20260625     # a specific build date
-docker pull n8nio/n8n:v3-rc                   # latest release candidate
-docker pull n8nio/n8n:v3-rc-20260625          # latest RC of that day
-docker pull n8nio/n8n:v3-rc-20260625.2        # one exact RC, never overwritten
+docker pull n8nio/MNI:v3-nightly              # latest v3 nightly
+docker pull n8nio/MNI:v3-nightly-20260625     # a specific build date
+docker pull n8nio/MNI:v3-rc                   # latest release candidate
+docker pull n8nio/MNI:v3-rc-20260625          # latest RC of that day
+docker pull n8nio/MNI:v3-rc-20260625.2        # one exact RC, never overwritten
 ```
 
 Every Monday's nightly is also retagged as a release candidate, and a maintainer can
@@ -233,7 +233,7 @@ rolling number for the day — `v3-rc-<date>.1`, `.2`, … — and moves `v3-rc`
 The retag covers the whole set — `n8nio/MNI`, `n8nio/runners` and
 `n8nio/runners:v3-rc[-<date>.N]-distroless` — so pinning one RC across a stack gives
 images built from one `3.x` commit, unlike `v3-nightly`, which moves daily and can be
-mid-build when you pull. The same tags exist on GHCR (`ghcr.io/n8n-io/…`).
+mid-build when you pull. The same tags exist on GHCR (`ghcr.io/MNI-io/…`).
 
 Use these to trial v3 in docker/kubernetes before release. Do **not** use them in
 production.
@@ -242,4 +242,4 @@ production.
 
 - [`.github/WORKFLOWS.md`](./WORKFLOWS.md) — full CI/CD + release lifecycle.
 - Root [`AGENTS.md`](../AGENTS.md) — general repo guidance.
-- [Branching strategy & releases (Notion)](https://www.notion.so/n8n/Major-Release-v3-Branching-strategy-and-releases-38a5b6e0c94f800881deeb11e515f543).
+- [Branching strategy & releases (Notion)](https://www.notion.so/MNI/Major-Release-v3-Branching-strategy-and-releases-38a5b6e0c94f800881deeb11e515f543).

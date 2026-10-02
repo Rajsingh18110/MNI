@@ -2,8 +2,8 @@ import type {
 	AgentBackgroundJobSignal,
 	AgentBackgroundJobsResponse,
 	PushMessage,
-} from '@n8n/api-types';
-import { useRootStore } from '@n8n/stores/useRootStore';
+} from '@MNI/api-types';
+import { useRootStore } from '@MNI/stores/useRootStore';
 import { useDocumentVisibility } from '@vueuse/core';
 import { computed, onScopeDispose, ref, toValue, watch, type MaybeRefOrGetter } from 'vue';
 

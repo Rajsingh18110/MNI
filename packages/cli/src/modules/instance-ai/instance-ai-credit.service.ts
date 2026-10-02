@@ -1,11 +1,11 @@
-import { Logger } from '@n8n/backend-common';
-import type { User } from '@n8n/db';
-import { Service } from '@n8n/di';
-import type { BuilderUsageItem, TraceStatus } from '@n8n/instance-ai';
-import { getErrorMessage } from '@n8n/utils/errors/get-error-message';
-import { sleep } from '@n8n/utils/sleep';
-import { InstanceSettings } from 'n8n-core';
-import { UnexpectedError } from 'n8n-workflow';
+import { Logger } from '@MNI/backend-common';
+import type { User } from '@MNI/db';
+import { Service } from '@MNI/di';
+import type { BuilderUsageItem, TraceStatus } from '@MNI/instance-ai';
+import { getErrorMessage } from '@MNI/utils/errors/get-error-message';
+import { sleep } from '@MNI/utils/sleep';
+import { InstanceSettings } from 'MNI-core';
+import { UnexpectedError } from 'MNI-workflow';
 import { nanoid } from 'nanoid';
 
 import { Push } from '@/push';
@@ -74,7 +74,7 @@ export class InstanceAiCreditService {
 	/**
 	 * Apply the activation lock if this instance is in the capped trial cohort and has met the
 	 * trigger: it has activated (first successful production execution) **and** has sent the
-	 * assistant at least `N8N_INSTANCE_AI_ACTIVATION_LOCK_MESSAGE_THRESHOLD` messages.
+	 * assistant at least `MNI_INSTANCE_AI_ACTIVATION_LOCK_MESSAGE_THRESHOLD` messages.
 	 *
 	 * Both halves matter. Activation alone would wall a user who activated before ever opening the
 	 * assistant — they would get no use of it at all, which is worse than the control variant and

@@ -3,7 +3,7 @@ import type {
 	ICredentialTestRequest,
 	ICredentialType,
 	INodeProperties,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 export class ERPNextApi implements ICredentialType {
 	name = 'erpNextApi';

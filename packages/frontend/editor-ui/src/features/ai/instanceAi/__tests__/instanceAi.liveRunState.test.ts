@@ -1,5 +1,5 @@
 import { describe, expect, test } from 'vitest';
-import type { InstanceAiMessage, InstanceAiThreadStatusResponse } from '@n8n/api-types';
+import type { InstanceAiMessage, InstanceAiThreadStatusResponse } from '@MNI/api-types';
 import {
 	isOrchestratorLive,
 	resolveActiveRunId,

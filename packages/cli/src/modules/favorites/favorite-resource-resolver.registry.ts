@@ -1,6 +1,6 @@
-import type { FavoriteResourceType } from '@n8n/api-types';
-import { Service } from '@n8n/di';
-import type { Scope } from '@n8n/permissions';
+import type { FavoriteResourceType } from '@MNI/api-types';
+import { Service } from '@MNI/di';
+import type { Scope } from '@MNI/permissions';
 
 export type FavoriteResourceMeta = { name: string; projectId: string };
 

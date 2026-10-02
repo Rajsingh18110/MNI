@@ -1,0 +1,27 @@
+{
+  "name": "@MNI/module-cli",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Interactive scaffolder for MNI modules",
+  "type": "module",
+  "bin": {
+    "MNI-module-sdk": "bin/MNI-module-sdk.mjs"
+  },
+  "scripts": {
+    "clean": "rimraf .turbo",
+    "test": "vitest run",
+    "test:unit": "vitest run",
+    "test:dev": "vitest",
+    "format": "biome format --write .",
+    "format:check": "biome ci ."
+  },
+  "dependencies": {
+    "citty": "catalog:",
+    "consola": "catalog:"
+  },
+  "devDependencies": {
+    "@MNI/vitest-config": "workspace:*",
+    "vitest": "catalog:"
+  },
+  "license": "LicenseRef-MNI-sustainable-use"
+}

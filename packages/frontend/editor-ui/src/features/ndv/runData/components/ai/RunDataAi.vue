@@ -5,8 +5,8 @@ import { useLogsTreeExpand } from '@/features/execution/logs/composables/useLogs
 import { type LogEntry, type LogTreeFilter, isNodeLog } from '@/features/execution/logs/logs.types';
 import { findLogEntryById } from '@/features/execution/logs/logs.utils';
 import type { INodeUi } from '@/Interface';
-import { N8nText } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+import { N8nText } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 import { computed, shallowRef, watch } from 'vue';
 import RunDataAiContent from './RunDataAiContent.vue';
 

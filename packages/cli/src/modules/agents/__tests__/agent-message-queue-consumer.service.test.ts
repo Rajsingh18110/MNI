@@ -1,7 +1,7 @@
-import { mockLogger } from '@n8n/backend-test-utils';
-import type { AgentIntegrationConfig } from '@n8n/api-types';
-import type { User, UserRepository } from '@n8n/db';
-import { createDeferredPromise } from '@n8n/utils/promise/deferred-promise';
+import { mockLogger } from '@MNI/backend-test-utils';
+import type { AgentIntegrationConfig } from '@MNI/api-types';
+import type { User, UserRepository } from '@MNI/db';
+import { createDeferredPromise } from '@MNI/utils/promise/deferred-promise';
 import { mock } from 'vitest-mock-extended';
 
 import type { CredentialsService } from '@/credentials/credentials.service';

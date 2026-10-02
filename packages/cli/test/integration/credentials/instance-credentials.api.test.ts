@@ -1,12 +1,12 @@
-import { mockInstance, randomCredentialPayload, testDb } from '@n8n/backend-test-utils';
-import type { ICredentialsDb, User } from '@n8n/db';
+import { mockInstance, randomCredentialPayload, testDb } from '@MNI/backend-test-utils';
+import type { ICredentialsDb, User } from '@MNI/db';
 import {
 	CredentialsEntity,
 	CredentialsRepository,
 	InstanceCredentialAssignmentRepository,
 	SharedCredentialsRepository,
-} from '@n8n/db';
-import { Container } from '@n8n/di';
+} from '@MNI/db';
+import { Container } from '@MNI/di';
 
 import { CredentialsService } from '@/credentials/credentials.service';
 import { InstanceCredentialBroker } from '@/credentials/instance-credential-broker';

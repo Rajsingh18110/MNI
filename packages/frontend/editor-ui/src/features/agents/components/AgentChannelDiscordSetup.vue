@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { N8nButton, N8nCopyInput, N8nStepper, N8nText } from '@n8n/design-system';
-import type { ChatIntegrationDescriptor } from '@n8n/api-types';
-import { useI18n } from '@n8n/i18n';
-import { useRootStore } from '@n8n/stores/useRootStore';
-import type { PermissionsRecord } from '@n8n/permissions';
+import { N8nButton, N8nCopyInput, N8nStepper, N8nText } from '@MNI/design-system';
+import type { ChatIntegrationDescriptor } from '@MNI/api-types';
+import { useI18n } from '@MNI/i18n';
+import { useRootStore } from '@MNI/stores/useRootStore';
+import type { PermissionsRecord } from '@MNI/permissions';
 import AgentIntegrationCredentialConnection from './AgentIntegrationCredentialConnection.vue';
 import type { AgentCredentialOption } from './AgentCredentialSelect.vue';
 

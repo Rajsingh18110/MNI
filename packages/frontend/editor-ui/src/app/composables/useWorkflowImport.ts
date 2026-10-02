@@ -3,7 +3,7 @@ import { useRoute } from 'vue-router';
 import { useCanvasOperations } from '@/app/composables/useCanvasOperations';
 import { VIEWS } from '@/app/constants';
 import type { INodeUi, IWorkflowDb } from '@/Interface';
-import type { WorkflowDataUpdate } from '@n8n/rest-api-client/api/workflows';
+import type { WorkflowDataUpdate } from '@MNI/rest-api-client/api/workflows';
 import { getNodesWithNormalizedPosition } from '@/app/utils/nodeViewUtils';
 import type { WorkflowDocumentStore } from '@/app/stores/workflowDocument.store';
 import { canvasEventBus } from '@/features/workflows/canvas/canvas.eventBus';

@@ -1,5 +1,5 @@
-import type { CorsOptions, Method } from '@n8n/decorators';
-import { Service } from '@n8n/di';
+import type { CorsOptions, Method } from '@MNI/decorators';
+import { Service } from '@MNI/di';
 import type { Request, Response } from 'express';
 
 import { CorsService } from '@/services/cors-service';
@@ -38,8 +38,8 @@ export class DynamicCredentialCorsService {
 
 		if (this.dynamicCredentialConfig.corsAllowCredentials && allowedOrigins.includes('*')) {
 			throw new Error(
-				'N8N_DYNAMIC_CREDENTIALS_CORS_ORIGIN cannot use wildcard (*) when ' +
-					'N8N_DYNAMIC_CREDENTIALS_CORS_ALLOW_CREDENTIALS is true. Specify explicit origins instead.',
+				'MNI_DYNAMIC_CREDENTIALS_CORS_ORIGIN cannot use wildcard (*) when ' +
+					'MNI_DYNAMIC_CREDENTIALS_CORS_ALLOW_CREDENTIALS is true. Specify explicit origins instead.',
 			);
 		}
 

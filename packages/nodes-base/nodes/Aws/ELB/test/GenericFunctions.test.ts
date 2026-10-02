@@ -1,6 +1,6 @@
 import { mockDeep } from 'vitest-mock-extended';
-import type { IExecuteFunctions } from 'n8n-workflow';
-import { NodeApiError } from 'n8n-workflow';
+import type { IExecuteFunctions } from 'MNI-workflow';
+import { NodeApiError } from 'MNI-workflow';
 
 import {
 	awsApiRequest,
@@ -27,7 +27,7 @@ describe('ELB GenericFunctions', () => {
 			mockExecuteFunctions.getNode.mockReturnValue({
 				id: 'test-node',
 				name: 'Test ELB Node',
-				type: 'n8n-nodes-base.awsElb',
+				type: 'MNI-nodes-base.awsElb',
 				typeVersion: 1,
 				position: [0, 0],
 				parameters: {},

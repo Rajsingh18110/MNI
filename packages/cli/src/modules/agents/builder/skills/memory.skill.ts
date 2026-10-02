@@ -1,4 +1,4 @@
-import type { RuntimeSkill } from '@n8n/agents';
+import type { RuntimeSkill } from '@MNI/agents';
 
 import { INITIAL_BUILD_NOTE } from '../prompts/initial-build.prompt';
 

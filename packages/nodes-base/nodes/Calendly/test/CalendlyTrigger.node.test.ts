@@ -1,6 +1,6 @@
 import { randomBytes } from 'crypto';
 import type * as _importType0 from 'crypto';
-import type { IHookFunctions, IDataObject, IWebhookFunctions } from 'n8n-workflow';
+import type { IHookFunctions, IDataObject, IWebhookFunctions } from 'MNI-workflow';
 import type { Mock, Mocked } from 'vitest';
 
 import { verifySignature } from '../CalendlyTriggerHelpers';

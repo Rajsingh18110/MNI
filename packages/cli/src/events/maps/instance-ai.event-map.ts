@@ -1,4 +1,4 @@
-import type { InstanceAiRunLimitReason } from '@n8n/api-types';
+import type { InstanceAiRunLimitReason } from '@MNI/api-types';
 
 export type InstanceAiEventMap = {
 	/** One durable-log batch persisted by the writer's per-thread drain. */

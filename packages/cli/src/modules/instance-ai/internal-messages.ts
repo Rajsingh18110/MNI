@@ -6,8 +6,8 @@ import {
 	type InstanceAiResourceAttachment,
 	type InstanceAiThreadArtifact,
 	type InstanceAiThreadArtifactsContext,
-} from '@n8n/api-types';
-import { jsonParse } from 'n8n-workflow';
+} from '@MNI/api-types';
+import { jsonParse } from 'MNI-workflow';
 import { z } from 'zod';
 
 /**

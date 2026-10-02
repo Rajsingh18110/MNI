@@ -3,7 +3,7 @@ import type {
 	IExecuteFunctions,
 	INodeExecutionData,
 	INodeProperties,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { assertNoQueryDelimiters } from '@utils/query-escaping';
 import { updateDisplayOptions } from '@utils/utilities';
@@ -160,17 +160,17 @@ export const properties: INodeProperties[] = [
 								hint: 'Filter messages by whether they have been read or not',
 								options: [
 									{
-										// eslint-disable-next-line n8n-nodes-base/node-param-display-name-miscased
+										// eslint-disable-next-line MNI-nodes-base/node-param-display-name-miscased
 										name: 'Unread and read messages',
 										value: 'both',
 									},
 									{
-										// eslint-disable-next-line n8n-nodes-base/node-param-display-name-miscased
+										// eslint-disable-next-line MNI-nodes-base/node-param-display-name-miscased
 										name: 'Unread messages only',
 										value: 'unread',
 									},
 									{
-										// eslint-disable-next-line n8n-nodes-base/node-param-display-name-miscased
+										// eslint-disable-next-line MNI-nodes-base/node-param-display-name-miscased
 										name: 'Read messages only',
 										value: 'read',
 									},
@@ -270,7 +270,7 @@ export async function execute(this: IExecuteFunctions, index: number) {
 		// Safe by the assertion above. Escaping is not an option here: this is
 		// Exchange KQL, which documents no escape for the delimiter — unlike the
 		// directory-object $search dialect the Entra node uses.
-		// eslint-disable-next-line n8n-local-rules/require-escaped-query-values
+		// eslint-disable-next-line MNI-local-rules/require-escaped-query-values
 		qs.$search = `"${filters.search}"`;
 	}
 

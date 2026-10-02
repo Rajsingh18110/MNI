@@ -1,11 +1,11 @@
 import { describe, it, expect } from 'vitest';
 import {
 	APPROVAL_TOOL_NAME,
-	N8N_CHAT_ACTION_TOOL_NAME,
+	MNI_CHAT_ACTION_TOOL_NAME,
 	WAIT_TOOL_NAME,
 	type AgentPersistedMessageContentPart,
 	type AgentPersistedMessageDto,
-} from '@n8n/api-types';
+} from '@MNI/api-types';
 
 import {
 	applyOpenSuspensions,
@@ -231,7 +231,7 @@ describe('convertDbMessages — interactive turn synthesis', () => {
 				content: [
 					{
 						type: 'tool-call',
-						toolName: N8N_CHAT_ACTION_TOOL_NAME,
+						toolName: MNI_CHAT_ACTION_TOOL_NAME,
 						toolCallId: 'card-1',
 						input: {
 							action: 'respond',
@@ -249,7 +249,7 @@ describe('convertDbMessages — interactive turn synthesis', () => {
 					},
 					{
 						type: 'tool-call',
-						toolName: N8N_CHAT_ACTION_TOOL_NAME,
+						toolName: MNI_CHAT_ACTION_TOOL_NAME,
 						toolCallId: 'card-2',
 						input: {
 							action: 'respond',
@@ -289,7 +289,7 @@ describe('convertDbMessages — interactive turn synthesis', () => {
 					{ type: 'text', text: 'Before the card.' },
 					{
 						type: 'tool-call',
-						toolName: N8N_CHAT_ACTION_TOOL_NAME,
+						toolName: MNI_CHAT_ACTION_TOOL_NAME,
 						toolCallId: 'card-1',
 						input: {
 							action: 'respond',
@@ -621,18 +621,18 @@ describe('buildDisplayGroups — interactive payloads', () => {
 				role: 'assistant',
 				content: '',
 				toolCalls: [
-					{ tool: N8N_CHAT_ACTION_TOOL_NAME, toolCallId: 'card-1', state: 'done' },
-					{ tool: N8N_CHAT_ACTION_TOOL_NAME, toolCallId: 'card-2', state: 'done' },
+					{ tool: MNI_CHAT_ACTION_TOOL_NAME, toolCallId: 'card-1', state: 'done' },
+					{ tool: MNI_CHAT_ACTION_TOOL_NAME, toolCallId: 'card-2', state: 'done' },
 				],
 				interactives: [
 					{
-						toolName: N8N_CHAT_ACTION_TOOL_NAME,
+						toolName: MNI_CHAT_ACTION_TOOL_NAME,
 						toolCallId: 'card-1',
 						input: { card: { title: 'First card', components: [] } },
 						resolvedAt: 1,
 					},
 					{
-						toolName: N8N_CHAT_ACTION_TOOL_NAME,
+						toolName: MNI_CHAT_ACTION_TOOL_NAME,
 						toolCallId: 'card-2',
 						input: { card: { title: 'Second card', components: [] } },
 						resolvedAt: 1,

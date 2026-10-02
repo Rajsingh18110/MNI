@@ -1,5 +1,5 @@
-import type { User } from '@n8n/db';
-import { isTriggerNodeType, type INode, type INodeTypes } from 'n8n-workflow';
+import type { User } from '@MNI/db';
+import { isTriggerNodeType, type INode, type INodeTypes } from 'MNI-workflow';
 import z from 'zod';
 
 import type { CredentialsService } from '@/credentials/credentials.service';

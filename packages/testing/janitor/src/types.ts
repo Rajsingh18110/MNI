@@ -15,8 +15,8 @@ export type {
 	RuleResult,
 	ReportSummary,
 	FixData,
-} from '@n8n/rules-engine';
-export type { Report as JanitorReport } from '@n8n/rules-engine';
+} from '@MNI/rules-engine';
+export type { Report as JanitorReport } from '@MNI/rules-engine';
 
 export type BuiltInRuleId =
 	| 'boundary-protection'

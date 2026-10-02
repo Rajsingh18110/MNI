@@ -1,11 +1,11 @@
 <script lang="ts" setup>
-import { N8nBadge, N8nIcon, N8nSelect2, N8nText, N8nTooltip } from '@n8n/design-system';
-import type { SelectItem, SelectOptionBase, SelectValue, SelectVariants } from '@n8n/design-system';
-import type { Role } from '@n8n/permissions';
+import { N8nBadge, N8nIcon, N8nSelect2, N8nText, N8nTooltip } from '@MNI/design-system';
+import type { SelectItem, SelectOptionBase, SelectValue, SelectVariants } from '@MNI/design-system';
+import type { Role } from '@MNI/permissions';
 import { computed, ref, watch } from 'vue';
 import { useRouter } from 'vue-router';
-import { useI18n } from '@n8n/i18n';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
+import { useI18n } from '@MNI/i18n';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
 import RoleHoverPopover from './RoleHoverPopover.vue';
 import RoleContactAdminModal from './RoleContactAdminModal.vue';
 import CustomRolesUpgradeModal from './CustomRolesUpgradeModal.vue';

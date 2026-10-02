@@ -1,4 +1,4 @@
-import type { INode, INodeType } from 'n8n-workflow';
+import type { INode, INodeType } from 'MNI-workflow';
 
 import { extractValue } from '../extract-value';
 

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { N8nText, N8nVisuallyHidden } from '@n8n/design-system';
+import { N8nText, N8nVisuallyHidden } from '@MNI/design-system';
 
 withDefaults(
 	defineProps<{

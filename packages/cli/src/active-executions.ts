@@ -1,11 +1,11 @@
-import { Logger } from '@n8n/backend-common';
-import { ExecutionsConfig } from '@n8n/config';
-import { Time } from '@n8n/constants';
-import type { CreateExecutionPayload, IExecutionDb } from '@n8n/db';
-import { ExecutionRepository } from '@n8n/db';
-import { Service } from '@n8n/di';
-import { ensureError } from '@n8n/utils/errors/ensure-error';
-import { createDeferredPromise, type IDeferredPromise } from '@n8n/utils/promise/deferred-promise';
+import { Logger } from '@MNI/backend-common';
+import { ExecutionsConfig } from '@MNI/config';
+import { Time } from '@MNI/constants';
+import type { CreateExecutionPayload, IExecutionDb } from '@MNI/db';
+import { ExecutionRepository } from '@MNI/db';
+import { Service } from '@MNI/di';
+import { ensureError } from '@MNI/utils/errors/ensure-error';
+import { createDeferredPromise, type IDeferredPromise } from '@MNI/utils/promise/deferred-promise';
 import type {
 	IExecuteResponsePromiseData,
 	IRun,
@@ -13,13 +13,13 @@ import type {
 	IWorkflowExecutionDataProcess,
 	StructuredChunk,
 	WebhookResponseMode,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import {
 	ExecutionCancelledError,
 	OperationalError,
 	SystemShutdownExecutionCancelledError,
-} from 'n8n-workflow';
-import { sleep } from '@n8n/utils/sleep';
+} from 'MNI-workflow';
+import { sleep } from '@MNI/utils/sleep';
 import { strict as assert } from 'node:assert';
 import type PCancelable from 'p-cancelable';
 

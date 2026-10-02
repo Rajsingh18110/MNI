@@ -1,10 +1,10 @@
-import { Logger } from '@n8n/backend-common';
-import { GlobalConfig } from '@n8n/config';
-import { ScheduledJobMisfirePolicy } from '@n8n/constants';
-import { ScheduledJobRepository } from '@n8n/db';
-import { Service } from '@n8n/di';
-import type { DesiredJob } from '@n8n/scheduler';
-import { computeFirstRunAt } from '@n8n/scheduler';
+import { Logger } from '@MNI/backend-common';
+import { GlobalConfig } from '@MNI/config';
+import { ScheduledJobMisfirePolicy } from '@MNI/constants';
+import { ScheduledJobRepository } from '@MNI/db';
+import { Service } from '@MNI/di';
+import type { DesiredJob } from '@MNI/scheduler';
+import { computeFirstRunAt } from '@MNI/scheduler';
 
 import { AgentScheduledJobOwner } from '@/scheduling/agent-scheduled-job-owner';
 import { DurableJobProvisioner } from '@/scheduling/durable-job-provisioner';

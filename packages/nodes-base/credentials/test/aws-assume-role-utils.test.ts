@@ -1,9 +1,9 @@
 import { assumeRole } from '@credentials/common/aws/utils';
 import type { AwsAssumeRoleCredentialsType } from '@credentials/common/aws/types';
-import { UserError } from 'n8n-workflow';
+import { UserError } from 'MNI-workflow';
 
 // `assumeRole` now delegates STS to the AWS SDK's `fromTemporaryCredentials`.
-// Proxy is built from `@n8n/backend-network/proxy` + `@smithy/node-http-handler`.
+// Proxy is built from `@MNI/backend-network/proxy` + `@smithy/node-http-handler`.
 const { mockProvider, mockFromTemporaryCredentials } = vi.hoisted(() => {
 	const mockProvider = vi.fn().mockResolvedValue({
 		accessKeyId: 'ASIATEST',
@@ -23,7 +23,7 @@ const { mockResolveProxyUrl, mockCreateHttpsProxyAgent } = vi.hoisted(() => ({
 	mockCreateHttpsProxyAgent: vi.fn().mockReturnValue({ type: 'mock-https-agent' }),
 }));
 
-vi.mock('@n8n/backend-network/proxy', () => ({
+vi.mock('@MNI/backend-network/proxy', () => ({
 	resolveProxyUrl: mockResolveProxyUrl,
 	createHttpsProxyAgent: mockCreateHttpsProxyAgent,
 }));
@@ -44,7 +44,7 @@ function baseCredentials(
 		customEndpoints: false,
 		roleArn: 'arn:aws:iam::123456789012:role/TestRole',
 		externalId: 'external-id-value',
-		roleSessionName: 'n8n-session',
+		roleSessionName: 'MNI-session',
 		stsAccessKeyId: 'AKIA_TEST',
 		stsSecretAccessKey: 'secret-value',
 		useSystemCredentialsForRole: false,
@@ -79,12 +79,12 @@ describe('assumeRole() — centralized validation', () => {
 		expect(sdkArg.params).not.toHaveProperty('ExternalId');
 	});
 
-	it('defaults RoleSessionName to n8n-session when roleSessionName is absent', async () => {
+	it('defaults RoleSessionName to MNI-session when roleSessionName is absent', async () => {
 		await assumeRole(baseCredentials({ roleSessionName: '' }), 'us-east-1');
 		const sdkArg = mockFromTemporaryCredentials.mock.calls.at(-1)?.[0] as {
 			params: { RoleSessionName: string };
 		};
-		expect(sdkArg.params.RoleSessionName).toBe('n8n-session');
+		expect(sdkArg.params.RoleSessionName).toBe('MNI-session');
 	});
 });
 

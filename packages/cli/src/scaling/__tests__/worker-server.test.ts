@@ -1,9 +1,9 @@
-import { mockLogger } from '@n8n/backend-test-utils';
-import type { GlobalConfig } from '@n8n/config';
-import type { DbConnection } from '@n8n/db';
+import { mockLogger } from '@MNI/backend-test-utils';
+import type { GlobalConfig } from '@MNI/config';
+import type { DbConnection } from '@MNI/db';
 import type express from 'express';
 import type { NextFunction, Request, Response } from 'express';
-import type { InstanceSettings } from 'n8n-core';
+import type { InstanceSettings } from 'MNI-core';
 import { AssertionError } from 'node:assert';
 import * as http from 'node:http';
 import { mock } from 'vitest-mock-extended';

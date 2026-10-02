@@ -1,7 +1,7 @@
 import type { DeepMockProxy } from 'vitest-mock-extended';
 import { mockDeep } from 'vitest-mock-extended';
 import type { Mock, MockInstance } from 'vitest';
-import type { IExecuteFunctions, INode } from 'n8n-workflow';
+import type { IExecuteFunctions, INode } from 'MNI-workflow';
 
 import * as GenericFunctions from '../../V1/GenericFunctions';
 import { SlackV1 } from '../../V1/SlackV1.node';
@@ -15,7 +15,7 @@ describe('SlackV1 — multiOptions parameter normalization', () => {
 	const mockNode: INode = {
 		id: 'test-node-id',
 		name: 'Slack Test',
-		type: 'n8n-nodes-base.slack',
+		type: 'MNI-nodes-base.slack',
 		typeVersion: 1,
 		position: [0, 0],
 		parameters: {},

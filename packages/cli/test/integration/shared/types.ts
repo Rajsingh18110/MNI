@@ -1,6 +1,6 @@
-import type { CredentialPayload } from '@n8n/backend-test-utils';
-import type { BooleanLicenseFeature, NumericLicenseFeature } from '@n8n/constants';
-import type { CredentialsEntity, Project, User, ICredentialsDb } from '@n8n/db';
+import type { CredentialPayload } from '@MNI/backend-test-utils';
+import type { BooleanLicenseFeature, NumericLicenseFeature } from '@MNI/constants';
+import type { CredentialsEntity, Project, User, ICredentialsDb } from '@MNI/db';
 import type { Application } from 'express';
 import type { Server } from 'http';
 import type TestAgent from 'supertest/lib/agent';
@@ -78,7 +78,7 @@ type ModuleName =
 	| 'redaction'
 	| 'source-control'
 	| 'promotions'
-	| 'n8n-packages'
+	| 'MNI-packages'
 	| 'token-exchange'
 	| 'policy-infrastructure'
 	| 'workflow-reviews'

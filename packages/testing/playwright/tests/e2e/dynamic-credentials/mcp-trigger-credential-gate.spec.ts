@@ -1,4 +1,4 @@
-import type { ServiceHelpers } from 'n8n-containers/services/types';
+import type { ServiceHelpers } from 'MNI-containers/services/types';
 import { nanoid } from 'nanoid';
 
 import { test, expect } from '../../../fixtures/base';
@@ -26,7 +26,7 @@ import type { McpSession } from '../../../services/mcp-api-helper';
  * until it is served, absorbing activation propagation.
  *
  * Requires the `dynamic-credentials` capability: it enables private credentials
- * (`N8N_ENV_FEAT_DYNAMIC_CREDENTIALS=true`, which seeds the `system-n8n`
+ * (`MNI_ENV_FEAT_DYNAMIC_CREDENTIALS=true`, which seeds the `system-MNI`
  * resolver) and provides Keycloak as the credential's OAuth2 provider.
  */
 test.use({ capability: 'dynamic-credentials' });
@@ -64,7 +64,7 @@ async function provisionGatedWorkflow(
 	await api.setMaxTeamProjectsQuota(-1);
 	const project = await api.projects.createProject('Dynamic Credentials');
 
-	// A resolvable OAuth2 credential — resolved per-user by the seeded `system-n8n`
+	// A resolvable OAuth2 credential — resolved per-user by the seeded `system-MNI`
 	// resolver. The caller has NOT connected it, so the gate reports it missing and
 	// hands back the Keycloak authorization URL to connect it.
 	const credential = await api.credentials.createCredential({
@@ -84,7 +84,7 @@ async function provisionGatedWorkflow(
 	});
 
 	const { workflowId, createdWorkflow } = await api.workflows.importWorkflowFromFile(
-		'mcp-trigger/mcp-trigger-n8n-oauth2-private-cred.json',
+		'mcp-trigger/mcp-trigger-MNI-oauth2-private-cred.json',
 		{
 			projectId: project.id,
 			transform: (wf) => {

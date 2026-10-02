@@ -1,5 +1,5 @@
 import { mock } from 'vitest-mock-extended';
-import type { FieldValueOption, IExecuteFunctions, INode, INodeExecutionData } from 'n8n-workflow';
+import type { FieldValueOption, IExecuteFunctions, INode, INodeExecutionData } from 'MNI-workflow';
 
 import { ExecuteWorkflowTrigger } from './ExecuteWorkflowTrigger.node';
 import { WORKFLOW_INPUTS } from '../../../utils/workflowInputsResourceMapping/constants';

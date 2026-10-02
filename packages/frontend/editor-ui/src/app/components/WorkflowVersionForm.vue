@@ -2,9 +2,9 @@
 import {
 	WORKFLOW_VERSION_NAME_MAX_LENGTH,
 	WORKFLOW_VERSION_DESCRIPTION_MAX_LENGTH,
-} from '@n8n/api-types';
-import { N8nInput, N8nInputLabel } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+} from '@MNI/api-types';
+import { N8nInput, N8nInputLabel } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 import { useTemplateRef } from 'vue';
 
 import CharacterCount from '@/app/components/CharacterCount.vue';

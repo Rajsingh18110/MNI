@@ -1,6 +1,6 @@
-import { BinaryDataQueryDto, BinaryDataSignedQueryDto, ViewableMimeTypes } from '@n8n/api-types';
-import type { AuthenticatedRequest } from '@n8n/db';
-import { Get, Query, RestController } from '@n8n/decorators';
+import { BinaryDataQueryDto, BinaryDataSignedQueryDto, ViewableMimeTypes } from '@MNI/api-types';
+import type { AuthenticatedRequest } from '@MNI/db';
+import { Get, Query, RestController } from '@MNI/decorators';
 import { Request, Response } from 'express';
 import { JsonWebTokenError } from 'jsonwebtoken';
 import {
@@ -8,7 +8,7 @@ import {
 	FileNotFoundError,
 	getHtmlSandboxCSP,
 	isValidNonDefaultMode,
-} from 'n8n-core';
+} from 'MNI-core';
 
 import { BinaryDataAccessService } from '@/binary-data/binary-data-access.service';
 import { BadRequestError } from '@/errors/response-errors/bad-request.error';

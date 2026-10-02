@@ -1,5 +1,5 @@
-import type { IDataObject, IExecuteFunctions, INode } from 'n8n-workflow';
-import { NodeOperationError } from 'n8n-workflow';
+import type { IDataObject, IExecuteFunctions, INode } from 'MNI-workflow';
+import { NodeOperationError } from 'MNI-workflow';
 import type { Mocked } from 'vitest';
 import { mockDeep } from 'vitest-mock-extended';
 

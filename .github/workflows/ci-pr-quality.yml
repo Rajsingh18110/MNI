@@ -48,7 +48,7 @@ jobs:
     # Skipped for bot-authored PRs — dep bumps from Dependabot/Aikido
     # routinely exceed the size limit and shouldn't be gated on it.
     if: |
-      github.repository == 'n8n-io/n8n' &&
+      github.repository == 'MNI-io/MNI' &&
       github.event_name == 'pull_request' &&
       github.event.action != 'labeled' &&
       github.event.action != 'unlabeled' &&
@@ -116,17 +116,17 @@ jobs:
       - name: Setup Node.js
         uses: ./.github/actions/setup-nodejs
         with:
-          build-command: pnpm turbo run build --filter=@n8n/code-health --filter=@n8n/playwright-janitor
+          build-command: pnpm turbo run build --filter=@MNI/code-health --filter=@MNI/playwright-janitor
 
       - name: Run code-health
         env:
           CODE_HEALTH_CHANGED_FILES: ${{ needs.changes.outputs.changed-files }}
           CODE_HEALTH_ADDED_FILES: ${{ needs.changes.outputs.added-files }}
-        run: pnpm --filter=@n8n/code-health check
+        run: pnpm --filter=@MNI/code-health check
 
       - name: Run janitor
         if: ${{ !cancelled() && (github.event_name == 'merge_group' || needs.changes.outputs.janitor == 'true') }}
-        run: pnpm --filter=n8n-playwright janitor
+        run: pnpm --filter=MNI-playwright janitor
 
   check-knip:
     name: Unused Dependencies
@@ -147,7 +147,7 @@ jobs:
         with:
           # knip loads every vite, vitest, eslint and stylelint config file. These
           # import the shared config packages from `dist`, so build those first.
-          build-command: pnpm turbo run build --filter=@n8n/vitest-config --filter=@n8n/eslint-config --filter=@n8n/stylelint-config --filter=@n8n/frontend-vite-config --filter=@n8n/eslint-plugin-community-nodes --filter=@n8n/node-cli
+          build-command: pnpm turbo run build --filter=@MNI/vitest-config --filter=@MNI/eslint-config --filter=@MNI/stylelint-config --filter=@MNI/frontend-vite-config --filter=@MNI/eslint-plugin-community-nodes --filter=@MNI/node-cli
 
       - name: Run knip
         run: pnpm knip

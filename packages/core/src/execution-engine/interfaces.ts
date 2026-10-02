@@ -6,7 +6,7 @@ import type {
 	Workflow,
 	WorkflowActivateMode,
 	WorkflowExecuteMode,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 export interface IGetExecutePollFunctions {
 	(

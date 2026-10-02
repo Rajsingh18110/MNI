@@ -1,10 +1,10 @@
-import type { MetricScale } from '@n8n/api-types';
-import type { TestRun } from '@n8n/db';
+import type { MetricScale } from '@MNI/api-types';
+import type { TestRun } from '@MNI/db';
 
 import { runMetricScales } from '../metric-scales';
 
 describe('runMetricScales', () => {
-	const OPENAI = '@n8n/n8n-nodes-langchain.lmChatOpenAi';
+	const OPENAI = '@MNI/MNI-nodes-langchain.lmChatOpenAi';
 	const judgeSnapshot = {
 		id: 'cfg-1',
 		metrics: [

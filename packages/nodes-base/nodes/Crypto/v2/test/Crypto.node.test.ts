@@ -1,7 +1,7 @@
 import { generateKeyPairSync } from 'crypto';
 import { mockDeep } from 'vitest-mock-extended';
-import type { IExecuteFunctions, INodeTypeBaseDescription } from 'n8n-workflow';
-import { NodeOperationError } from 'n8n-workflow';
+import type { IExecuteFunctions, INodeTypeBaseDescription } from 'MNI-workflow';
+import { NodeOperationError } from 'MNI-workflow';
 
 import { CryptoV2 } from '../CryptoV2.node';
 import type { Mock, Mocked } from 'vitest';
@@ -29,7 +29,7 @@ describe('CryptoV2 Node', () => {
 		mockExecuteFunctions.getNode.mockReturnValue({
 			id: 'crypto-node',
 			name: 'Crypto',
-			type: 'n8n-nodes-base.crypto',
+			type: 'MNI-nodes-base.crypto',
 			typeVersion: 2,
 			position: [0, 0],
 			parameters: {},

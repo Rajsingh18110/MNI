@@ -1,12 +1,12 @@
 <script lang="ts" setup>
 import { computed } from 'vue';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import {
 	N8nButton,
 	N8nDropdownMenu,
 	N8nTooltip,
 	type DropdownMenuItemProps,
-} from '@n8n/design-system';
+} from '@MNI/design-system';
 import type { FilterOption } from '../session-timeline.types';
 import { swatchBackground } from '../session-timeline.styles';
 

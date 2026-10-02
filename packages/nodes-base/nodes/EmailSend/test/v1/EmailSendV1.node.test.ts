@@ -1,4 +1,4 @@
-import type { IExecuteFunctions, IBinaryData } from 'n8n-workflow';
+import type { IExecuteFunctions, IBinaryData } from 'MNI-workflow';
 
 import { EmailSendV1 } from '../../v1/EmailSendV1.node';
 import { prepareBinariesDataList } from '../../../../utils/binary';

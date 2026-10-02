@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
-import { type BaseTextKey, useI18n } from '@n8n/i18n';
+import { type BaseTextKey, useI18n } from '@MNI/i18n';
 import { HoverCardContent, HoverCardPortal, HoverCardRoot, HoverCardTrigger } from 'reka-ui';
-import { N8nIcon, N8nText } from '@n8n/design-system';
+import { N8nIcon, N8nText } from '@MNI/design-system';
 
 export interface DisplayMemory {
 	id: string;
@@ -85,9 +85,9 @@ function splitKeyMemory(text: string): string[] {
 </template>
 
 <style lang="scss" module>
-@use '../../../../../@n8n/design-system/src/css/mixins/motion';
+@use '../../../../../@MNI/design-system/src/css/mixins/motion';
 
-/** When https://github.com/n8n-io/n8n/pull/30611 is merged we can replace with proper N8nHoverCard component **/
+/** When https://github.com/MNI-io/MNI/pull/30611 is merged we can replace with proper N8nHoverCard component **/
 .popoverContent {
 	--popover--offset--slide-x: 0;
 	--popover--offset--slide-y: 0;

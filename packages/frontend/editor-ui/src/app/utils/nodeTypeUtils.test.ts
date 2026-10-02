@@ -3,7 +3,7 @@ import type {
 	INodeCredentialDescription,
 	INodeProperties,
 	ResourceMapperField,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import { createTestingPinia } from '@pinia/testing';
 import { setActivePinia } from 'pinia';
 import {
@@ -214,7 +214,7 @@ describe('getMainAuthField', () => {
 			},
 		];
 		const node = mockNodeTypeDescription({
-			name: 'n8n-nodes-base.kafka',
+			name: 'MNI-nodes-base.kafka',
 			credentials,
 			properties: [booleanToggle],
 		});
@@ -259,7 +259,7 @@ describe('getNodeAuthOptions', () => {
 
 	// Microsoft Outlook shape: 3 auth options whose values are credential type names.
 	const outlookNodeType = mockNodeTypeDescription({
-		name: 'n8n-nodes-base.microsoftOutlook',
+		name: 'MNI-nodes-base.microsoftOutlook',
 		credentials: [
 			{
 				name: 'microsoftOutlookOAuth2Api',
@@ -294,7 +294,7 @@ describe('getNodeAuthOptions', () => {
 
 	// Slack/Google Sheets shape: non-OAuth option listed before the OAuth one.
 	const slackNodeType = mockNodeTypeDescription({
-		name: 'n8n-nodes-base.slack',
+		name: 'MNI-nodes-base.slack',
 		credentials: [
 			{
 				name: 'slackApi',

@@ -1,7 +1,7 @@
-import type { Logger } from '@n8n/backend-common';
-import type { EngineConfig } from '@n8n/config';
-import type { ActionScope } from '@n8n/engine';
-import { InvalidActionTokenError, verifyActionToken } from '@n8n/engine';
+import type { Logger } from '@MNI/backend-common';
+import type { EngineConfig } from '@MNI/config';
+import type { ActionScope } from '@MNI/engine';
+import { InvalidActionTokenError, verifyActionToken } from '@MNI/engine';
 import type { NextFunction, Request, Response } from 'express';
 
 import { UnauthenticatedError } from '@/errors/response-errors/unauthenticated.error';

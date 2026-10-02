@@ -1,6 +1,6 @@
 import { readFileSync } from 'fs';
-import { UnrecognizedNodeTypeError } from 'n8n-core';
-import type { INodeType, INodeTypeData, NodeLoadingDetails } from 'n8n-workflow';
+import { UnrecognizedNodeTypeError } from 'MNI-core';
+import type { INodeType, INodeTypeData, NodeLoadingDetails } from 'MNI-workflow';
 import path from 'path';
 
 // Resolves to packages/
@@ -13,9 +13,9 @@ export function loadNodesFromDist(nodeNames: string[]): INodeTypeData {
 	) as Record<string, NodeLoadingDetails>;
 
 	for (const nodeName of nodeNames) {
-		const loadInfo = knownNodes[nodeName.replace('n8n-nodes-base.', '')];
+		const loadInfo = knownNodes[nodeName.replace('MNI-nodes-base.', '')];
 		if (!loadInfo) {
-			throw new UnrecognizedNodeTypeError('n8n-nodes-base', nodeName);
+			throw new UnrecognizedNodeTypeError('MNI-nodes-base', nodeName);
 		}
 		const nodeDistPath = path.join(BASE_DIR, 'nodes-base', loadInfo.sourcePath);
 		const node = new (require(nodeDistPath)[loadInfo.className])() as INodeType;
@@ -32,7 +32,7 @@ export function mockNodeTypesData(
 	},
 ) {
 	return nodeNames.reduce<INodeTypeData>((acc, nodeName) => {
-		const fullName = nodeName.indexOf('.') === -1 ? `n8n-nodes-base.${nodeName}` : nodeName;
+		const fullName = nodeName.indexOf('.') === -1 ? `MNI-nodes-base.${nodeName}` : nodeName;
 
 		return (
 			(acc[fullName] = {

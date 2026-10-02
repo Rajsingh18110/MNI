@@ -3,7 +3,7 @@ import { createTestingPinia } from '@pinia/testing';
 import userEvent from '@testing-library/user-event';
 import { ref } from 'vue';
 
-import type { ExecutionSummary } from 'n8n-workflow';
+import type { ExecutionSummary } from 'MNI-workflow';
 
 import { createComponentRenderer } from '@/__tests__/render';
 import TestCaseList from './TestCaseList.vue';
@@ -11,12 +11,12 @@ import { useEvaluationsWizardSidepanelStore } from '../../wizardSidepanel.store'
 
 // ─── Module mocks ────────────────────────────────────────────────────────────
 
-vi.mock('@n8n/i18n', async (importOriginal) => ({
+vi.mock('@MNI/i18n', async (importOriginal) => ({
 	...(await importOriginal()),
 	useI18n: () => ({ baseText: (key: string) => key }),
 }));
 
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: () => ({ showError: vi.fn(), showMessage: vi.fn() }),
 }));
 
@@ -44,7 +44,7 @@ vi.mock('@/app/composables/useWorkflowId', async () => {
 });
 
 vi.mock('../../composables/useAiRootNodes', () => ({
-	useAiRootNodes: () => ref([{ name: 'Darwin', type: '@n8n/n8n-nodes-langchain.agent' }]),
+	useAiRootNodes: () => ref([{ name: 'Darwin', type: '@MNI/MNI-nodes-langchain.agent' }]),
 }));
 
 const mockFetchExecutions = vi.fn().mockResolvedValue({ results: [] });

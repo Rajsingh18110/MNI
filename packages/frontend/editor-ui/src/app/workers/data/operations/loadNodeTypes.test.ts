@@ -1,10 +1,10 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import type { MockInstance } from 'vitest';
-import type { INodeTypeDescription } from 'n8n-workflow';
+import type { INodeTypeDescription } from 'MNI-workflow';
 import type { DataWorkerState, QueryResult } from '../types';
 import { loadNodeTypes, getNodeType, getAllNodeTypes } from './loadNodeTypes';
 
-vi.mock('@n8n/rest-api-client/api/nodeTypes', () => ({
+vi.mock('@MNI/rest-api-client/api/nodeTypes', () => ({
 	getNodeTypes: vi.fn(),
 	getNodeTypeVersions: vi.fn(),
 	getNodeTypesByIdentifier: vi.fn(),
@@ -51,7 +51,7 @@ import {
 	getNodeTypes,
 	getNodeTypeVersions,
 	getNodeTypesByIdentifier,
-} from '@n8n/rest-api-client/api/nodeTypes';
+} from '@MNI/rest-api-client/api/nodeTypes';
 import { execWithParams, query, queryWithParams } from './query';
 import { getStoredVersion, storeVersion } from './storeVersion';
 
@@ -91,7 +91,7 @@ describe('Data Worker loadNodeTypes Operations', () => {
 	function createMockNodeType(overrides: Partial<INodeTypeDescription> = {}): INodeTypeDescription {
 		return {
 			displayName: 'Test Node',
-			name: 'n8n-nodes-base.testNode',
+			name: 'MNI-nodes-base.testNode',
 			group: ['transform'],
 			version: 1,
 			description: 'A test node',
@@ -120,8 +120,8 @@ describe('Data Worker loadNodeTypes Operations', () => {
 			it('should fetch all node types when database is empty', async () => {
 				const state = createMockState();
 				const mockNodeTypes = [
-					createMockNodeType({ name: 'n8n-nodes-base.node1', version: 1 }),
-					createMockNodeType({ name: 'n8n-nodes-base.node2', version: 1 }),
+					createMockNodeType({ name: 'MNI-nodes-base.node1', version: 1 }),
+					createMockNodeType({ name: 'MNI-nodes-base.node2', version: 1 }),
 				];
 
 				vi.mocked(query).mockResolvedValueOnce(createQueryResult([[0]]));
@@ -135,7 +135,7 @@ describe('Data Worker loadNodeTypes Operations', () => {
 
 			it('should wrap inserts in a transaction', async () => {
 				const state = createMockState();
-				const mockNodeTypes = [createMockNodeType({ name: 'n8n-nodes-base.node1', version: 1 })];
+				const mockNodeTypes = [createMockNodeType({ name: 'MNI-nodes-base.node1', version: 1 })];
 
 				vi.mocked(query).mockResolvedValueOnce(createQueryResult([[0]]));
 				vi.mocked(getNodeTypes).mockResolvedValueOnce(mockNodeTypes);
@@ -149,7 +149,7 @@ describe('Data Worker loadNodeTypes Operations', () => {
 
 			it('should rollback transaction on error during initial load', async () => {
 				const state = createMockState();
-				const mockNodeTypes = [createMockNodeType({ name: 'n8n-nodes-base.node1', version: 1 })];
+				const mockNodeTypes = [createMockNodeType({ name: 'MNI-nodes-base.node1', version: 1 })];
 
 				vi.mocked(query).mockResolvedValueOnce(createQueryResult([[0]]));
 				vi.mocked(getNodeTypes).mockResolvedValueOnce(mockNodeTypes);
@@ -167,7 +167,7 @@ describe('Data Worker loadNodeTypes Operations', () => {
 			it('should handle node types with array versions', async () => {
 				const state = createMockState();
 				const mockNodeTypes = [
-					createMockNodeType({ name: 'n8n-nodes-base.multiVersion', version: [1, 2, 3] }),
+					createMockNodeType({ name: 'MNI-nodes-base.multiVersion', version: [1, 2, 3] }),
 				];
 
 				vi.mocked(query).mockResolvedValueOnce(createQueryResult([[0]]));
@@ -180,17 +180,17 @@ describe('Data Worker loadNodeTypes Operations', () => {
 				expect(execWithParams).toHaveBeenCalledWith(
 					state,
 					"INSERT OR REPLACE INTO nodeTypes (id, data, updated_at) VALUES (?, ?, datetime('now'))",
-					['n8n-nodes-base.multiVersion@1', expect.any(String)],
+					['MNI-nodes-base.multiVersion@1', expect.any(String)],
 				);
 				expect(execWithParams).toHaveBeenCalledWith(
 					state,
 					"INSERT OR REPLACE INTO nodeTypes (id, data, updated_at) VALUES (?, ?, datetime('now'))",
-					['n8n-nodes-base.multiVersion@2', expect.any(String)],
+					['MNI-nodes-base.multiVersion@2', expect.any(String)],
 				);
 				expect(execWithParams).toHaveBeenCalledWith(
 					state,
 					"INSERT OR REPLACE INTO nodeTypes (id, data, updated_at) VALUES (?, ?, datetime('now'))",
-					['n8n-nodes-base.multiVersion@3', expect.any(String)],
+					['MNI-nodes-base.multiVersion@3', expect.any(String)],
 				);
 			});
 
@@ -198,7 +198,7 @@ describe('Data Worker loadNodeTypes Operations', () => {
 				const state = createMockState();
 				const mockNodeTypes = [
 					createMockNodeType({
-						name: 'n8n-nodes-base.test',
+						name: 'MNI-nodes-base.test',
 						description: "It's a test node",
 						version: 1,
 					}),
@@ -214,7 +214,7 @@ describe('Data Worker loadNodeTypes Operations', () => {
 				expect(execWithParams).toHaveBeenCalledWith(
 					state,
 					"INSERT OR REPLACE INTO nodeTypes (id, data, updated_at) VALUES (?, ?, datetime('now'))",
-					['n8n-nodes-base.test@1', expect.stringContaining("It's a test node")],
+					['MNI-nodes-base.test@1', expect.stringContaining("It's a test node")],
 				);
 			});
 		});
@@ -252,14 +252,14 @@ describe('Data Worker loadNodeTypes Operations', () => {
 
 			it('should fetch and insert added node types', async () => {
 				const state = createMockState();
-				const newNodeType = createMockNodeType({ name: 'n8n-nodes-base.newNode', version: 1 });
+				const newNodeType = createMockNodeType({ name: 'MNI-nodes-base.newNode', version: 1 });
 
 				vi.mocked(query)
 					.mockResolvedValueOnce(createQueryResult([[1]])) // COUNT returns 1
 					.mockResolvedValueOnce(createQueryResult([['existingNode@1']])); // existing IDs
 				vi.mocked(getNodeTypeVersions).mockResolvedValueOnce([
 					'existingNode@1',
-					'n8n-nodes-base.newNode@1',
+					'MNI-nodes-base.newNode@1',
 				]);
 				vi.mocked(getNodeTypesByIdentifier).mockResolvedValueOnce([newNodeType]);
 				vi.mocked(execWithParams).mockResolvedValue(undefined);
@@ -268,7 +268,7 @@ describe('Data Worker loadNodeTypes Operations', () => {
 
 				expect(getNodeTypesByIdentifier).toHaveBeenCalledWith(
 					expect.objectContaining({ baseUrl: 'http://localhost:5678' }),
-					['n8n-nodes-base.newNode@1'],
+					['MNI-nodes-base.newNode@1'],
 				);
 			});
 
@@ -303,14 +303,14 @@ describe('Data Worker loadNodeTypes Operations', () => {
 
 			it('should strip trailing slash from baseUrl when creating REST API context', async () => {
 				const state = createMockState();
-				const newNodeType = createMockNodeType({ name: 'n8n-nodes-base.newNode', version: 1 });
+				const newNodeType = createMockNodeType({ name: 'MNI-nodes-base.newNode', version: 1 });
 
 				vi.mocked(query)
 					.mockResolvedValueOnce(createQueryResult([[1]]))
 					.mockResolvedValueOnce(createQueryResult([['existingNode@1']]));
 				vi.mocked(getNodeTypeVersions).mockResolvedValueOnce([
 					'existingNode@1',
-					'n8n-nodes-base.newNode@1',
+					'MNI-nodes-base.newNode@1',
 				]);
 				vi.mocked(getNodeTypesByIdentifier).mockResolvedValueOnce([newNodeType]);
 				vi.mocked(execWithParams).mockResolvedValue(undefined);
@@ -349,13 +349,13 @@ describe('Data Worker loadNodeTypes Operations', () => {
 
 		it('should return parsed node type when found', async () => {
 			const state = createMockState();
-			const mockNodeType = createMockNodeType({ name: 'n8n-nodes-base.test', version: 1 });
+			const mockNodeType = createMockNodeType({ name: 'MNI-nodes-base.test', version: 1 });
 
 			vi.mocked(queryWithParams).mockResolvedValueOnce(
 				createQueryResult([[JSON.stringify(mockNodeType)]]),
 			);
 
-			const result = await getNodeType(state, 'n8n-nodes-base.test', 1);
+			const result = await getNodeType(state, 'MNI-nodes-base.test', 1);
 
 			expect(result).toEqual(mockNodeType);
 		});
@@ -364,12 +364,12 @@ describe('Data Worker loadNodeTypes Operations', () => {
 			const state = createMockState();
 			vi.mocked(queryWithParams).mockResolvedValueOnce(createQueryResult([]));
 
-			await getNodeType(state, 'n8n-nodes-base.myNode', 2);
+			await getNodeType(state, 'MNI-nodes-base.myNode', 2);
 
 			expect(queryWithParams).toHaveBeenCalledWith(
 				state,
 				'SELECT data FROM nodeTypes WHERE id = ?',
-				['n8n-nodes-base.myNode@2'],
+				['MNI-nodes-base.myNode@2'],
 			);
 		});
 	});
@@ -386,8 +386,8 @@ describe('Data Worker loadNodeTypes Operations', () => {
 
 		it('should return all parsed node types', async () => {
 			const state = createMockState();
-			const mockNodeType1 = createMockNodeType({ name: 'n8n-nodes-base.node1', version: 1 });
-			const mockNodeType2 = createMockNodeType({ name: 'n8n-nodes-base.node2', version: 1 });
+			const mockNodeType1 = createMockNodeType({ name: 'MNI-nodes-base.node1', version: 1 });
+			const mockNodeType2 = createMockNodeType({ name: 'MNI-nodes-base.node2', version: 1 });
 
 			vi.mocked(query).mockResolvedValueOnce(
 				createQueryResult([[JSON.stringify(mockNodeType1)], [JSON.stringify(mockNodeType2)]]),

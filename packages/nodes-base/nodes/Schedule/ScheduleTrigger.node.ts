@@ -6,8 +6,8 @@ import type {
 	INodeTypeDescription,
 	ITriggerResponse,
 	Cron,
-} from 'n8n-workflow';
-import { NodeConnectionTypes, NodeOperationError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeConnectionTypes, NodeOperationError } from 'MNI-workflow';
 
 import {
 	intervalToRecurrence,
@@ -75,7 +75,7 @@ export class ScheduleTrigger implements INodeType {
 								name: 'field',
 								type: 'options',
 								default: 'days',
-								// eslint-disable-next-line n8n-nodes-base/node-param-options-type-unsorted-items
+								// eslint-disable-next-line MNI-nodes-base/node-param-options-type-unsorted-items
 								options: [
 									{
 										name: 'Seconds',
@@ -481,7 +481,7 @@ export class ScheduleTrigger implements INodeType {
 			{
 				// Temporary escape hatch for the durable-scheduler rollout (preview to
 				// GA): keeps this trigger on the legacy in-memory scheduler while testing.
-				// Hidden unless N8N_ENV_FEAT_SKIP_DURABLE_SCHEDULER is enabled. Remove at GA.
+				// Hidden unless MNI_ENV_FEAT_SKIP_DURABLE_SCHEDULER is enabled. Remove at GA.
 				displayName: 'Skip Durable Scheduler',
 				name: 'skipDurableScheduler',
 				type: 'boolean',

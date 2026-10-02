@@ -1,12 +1,12 @@
 import { createPinia, setActivePinia } from 'pinia';
 import userEvent from '@testing-library/user-event';
 import { within } from '@testing-library/vue';
-import type { UserAction } from '@n8n/design-system';
+import type { UserAction } from '@MNI/design-system';
 import { createComponentRenderer } from '@/__tests__/render';
 import WorkflowHistoryListItem from './WorkflowHistoryListItem.vue';
-import type { WorkflowHistoryActionTypes } from '@n8n/rest-api-client/api/workflowHistory';
+import type { WorkflowHistoryActionTypes } from '@MNI/rest-api-client/api/workflowHistory';
 import { workflowHistoryDataFactory } from '../__tests__/utils';
-import { type IUser } from 'n8n-workflow';
+import { type IUser } from 'MNI-workflow';
 
 const actionTypes: WorkflowHistoryActionTypes = ['restore', 'clone', 'open', 'download'];
 const actions: Array<UserAction<IUser>> = actionTypes.map((value) => ({

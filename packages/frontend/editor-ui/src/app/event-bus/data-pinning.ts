@@ -1,5 +1,5 @@
-import { createEventBus } from '@n8n/utils/event-bus';
-import type { IPinData } from 'n8n-workflow';
+import { createEventBus } from '@MNI/utils/event-bus';
+import type { IPinData } from 'MNI-workflow';
 
 export type DataPinningDiscoveryEvent = {
 	isTooltipVisible: boolean;

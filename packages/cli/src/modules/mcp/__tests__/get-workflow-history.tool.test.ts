@@ -1,6 +1,6 @@
-import { mockInstance } from '@n8n/backend-test-utils';
-import type { WorkflowHistory } from '@n8n/db';
-import { User } from '@n8n/db';
+import { mockInstance } from '@MNI/backend-test-utils';
+import type { WorkflowHistory } from '@MNI/db';
+import { User } from '@MNI/db';
 import type { Mock } from 'vitest';
 
 import { Telemetry } from '@/telemetry';

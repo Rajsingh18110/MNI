@@ -1,10 +1,10 @@
-import type { Logger } from '@n8n/backend-common';
+import type { Logger } from '@MNI/backend-common';
 import type {
 	ContentSecurityPolicyReportOnlySetting,
 	ContentSecurityPolicySetting,
-} from '@n8n/config';
-import { DEFAULT_CONTENT_SECURITY_POLICY, isLegacyBooleanSetting } from '@n8n/config';
-import { NONCE_PLACEHOLDER } from '@n8n/constants';
+} from '@MNI/config';
+import { DEFAULT_CONTENT_SECURITY_POLICY, isLegacyBooleanSetting } from '@MNI/config';
+import { NONCE_PLACEHOLDER } from '@MNI/constants';
 
 export type ContentSecurityPolicies = {
 	/** Policy for the `Content-Security-Policy` header, or `undefined` to not send it. */
@@ -14,7 +14,7 @@ export type ContentSecurityPolicies = {
 };
 
 /**
- * Decide which CSP headers to send from the two parsed settings. `@n8n/config` has
+ * Decide which CSP headers to send from the two parsed settings. `@MNI/config` has
  * already read each variable on its own; the only decision left is the one that needs
  * both, namely the boolean the report-only variable used to hold.
  *
@@ -28,7 +28,7 @@ export const resolveContentSecurityPolicies = (
 ): ContentSecurityPolicies => {
 	if (isLegacyBooleanSetting(reportOnly)) {
 		logger.warn(
-			'N8N_CONTENT_SECURITY_POLICY_REPORT_ONLY is deprecated as a boolean: the variable now holds the policy to report on, in the same formats as N8N_CONTENT_SECURITY_POLICY. Honoring the old meaning for now - set it to a policy, or to `{}` to report on nothing.',
+			'MNI_CONTENT_SECURITY_POLICY_REPORT_ONLY is deprecated as a boolean: the variable now holds the policy to report on, in the same formats as MNI_CONTENT_SECURITY_POLICY. Honoring the old meaning for now - set it to a policy, or to `{}` to report on nothing.',
 		);
 
 		// Read as a policy, `true` would start enforcing a policy that the instance

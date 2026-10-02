@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
     inputs:
       package-path:
-        description: 'Path to the package to publish (e.g. packages/@n8n/my-new-package)'
+        description: 'Path to the package to publish (e.g. packages/@MNI/my-new-package)'
         required: true
         type: string
 
@@ -37,8 +37,8 @@ jobs:
         working-directory: ${{ github.event.inputs.package-path }}
         run: |
           PACKAGE_NAME=$(node -p "require('./package.json').name")
-          if [ "$PACKAGE_NAME" = "n8n-monorepo" ]; then
-            echo "::error::Package 'n8n-monorepo' cannot be published."
+          if [ "$PACKAGE_NAME" = "MNI-monorepo" ]; then
+            echo "::error::Package 'MNI-monorepo' cannot be published."
             exit 1
           fi
           if npm view "$PACKAGE_NAME" > /dev/null 2>&1; then

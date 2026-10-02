@@ -1,5 +1,5 @@
-import { isValidTimeZone } from '@n8n/api-types';
-import type { Logger } from '@n8n/backend-common';
+import { isValidTimeZone } from '@MNI/api-types';
+import type { Logger } from '@MNI/backend-common';
 
 /**
  * The IANA zone a task's cron is evaluated in, or `null` for the instance

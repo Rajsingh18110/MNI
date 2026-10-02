@@ -1,6 +1,6 @@
-import type { UpsertEvaluationConfigDto } from '@n8n/api-types';
-import type { CredentialsEntity, User } from '@n8n/db';
-import type { IConnections, INode, IWorkflowBase } from 'n8n-workflow';
+import type { UpsertEvaluationConfigDto } from '@MNI/api-types';
+import type { CredentialsEntity, User } from '@MNI/db';
+import type { IConnections, INode, IWorkflowBase } from 'MNI-workflow';
 import type { Mocked } from 'vitest';
 import { mock } from 'vitest-mock-extended';
 
@@ -17,7 +17,7 @@ import type { LlmJudgeProviderRegistry } from '../llm-judge-provider-registry';
 function makeNode(over: Partial<INode> & Pick<INode, 'name'>): INode {
 	return {
 		id: over.name,
-		type: 'n8n-nodes-base.set',
+		type: 'MNI-nodes-base.set',
 		typeVersion: 1,
 		position: [0, 0],
 		parameters: {},
@@ -26,7 +26,7 @@ function makeNode(over: Partial<INode> & Pick<INode, 'name'>): INode {
 }
 
 function makeWorkflow(over: Partial<IWorkflowBase> = {}): IWorkflowBase {
-	const trigger = makeNode({ name: 'Trigger', type: 'n8n-nodes-base.manualTrigger' });
+	const trigger = makeNode({ name: 'Trigger', type: 'MNI-nodes-base.manualTrigger' });
 	const start = makeNode({ name: 'Start' });
 	const end = makeNode({ name: 'End' });
 	const connections: IConnections = {
@@ -53,7 +53,7 @@ const validLlmJudgeMetric = {
 	config: {
 		preset: 'correctness' as const,
 		prompt: 'Judge this',
-		provider: '@n8n/n8n-nodes-langchain.lmChatOpenAi',
+		provider: '@MNI/MNI-nodes-langchain.lmChatOpenAi',
 		credentialId: 'cred-1',
 		model: 'gpt-4o',
 		outputType: 'numeric' as const,
@@ -86,9 +86,9 @@ function makeConfig(over: Partial<UpsertEvaluationConfigDto> = {}): UpsertEvalua
 function makeRegistry(): Mocked<LlmJudgeProviderRegistry> {
 	const registry = mock<LlmJudgeProviderRegistry>();
 	registry.get.mockImplementation((nodeType) =>
-		nodeType === '@n8n/n8n-nodes-langchain.lmChatOpenAi'
+		nodeType === '@MNI/MNI-nodes-langchain.lmChatOpenAi'
 			? {
-					nodeType: '@n8n/n8n-nodes-langchain.lmChatOpenAi',
+					nodeType: '@MNI/MNI-nodes-langchain.lmChatOpenAi',
 					displayName: 'OpenAI Chat Model',
 					credentialTypes: [{ name: 'openAiApi', displayName: 'OpenAI' }],
 				}
@@ -189,7 +189,7 @@ describe('EvaluationConfigValidator', () => {
 		it('emits one error per offending node', async () => {
 			const wf = makeWorkflow({
 				nodes: [
-					makeNode({ name: 'Trigger', type: 'n8n-nodes-base.manualTrigger' }),
+					makeNode({ name: 'Trigger', type: 'MNI-nodes-base.manualTrigger' }),
 					makeNode({ name: '__eval_metric_old' }),
 					makeNode({ name: 'Start' }),
 					makeNode({ name: '__eval_trigger' }),
@@ -223,8 +223,8 @@ describe('EvaluationConfigValidator', () => {
 			const wf: IWorkflowBase = {
 				...makeWorkflow(),
 				nodes: [
-					makeNode({ name: 'TriggerA', type: 'n8n-nodes-base.manualTrigger' }),
-					makeNode({ name: 'TriggerB', type: 'n8n-nodes-base.cron' }),
+					makeNode({ name: 'TriggerA', type: 'MNI-nodes-base.manualTrigger' }),
+					makeNode({ name: 'TriggerB', type: 'MNI-nodes-base.cron' }),
 					makeNode({ name: 'Start' }),
 					makeNode({ name: 'End' }),
 				],
@@ -260,8 +260,8 @@ describe('EvaluationConfigValidator', () => {
 			const wf: IWorkflowBase = {
 				...makeWorkflow(),
 				nodes: [
-					makeNode({ name: 'RealTrigger', type: 'n8n-nodes-base.manualTrigger' }),
-					makeNode({ name: 'EvalTrigger', type: 'n8n-nodes-base.evaluationTrigger' }),
+					makeNode({ name: 'RealTrigger', type: 'MNI-nodes-base.manualTrigger' }),
+					makeNode({ name: 'EvalTrigger', type: 'MNI-nodes-base.evaluationTrigger' }),
 					makeNode({ name: 'Start' }),
 					makeNode({ name: 'End' }),
 				],
@@ -283,7 +283,7 @@ describe('EvaluationConfigValidator', () => {
 			const wf: IWorkflowBase = {
 				...makeWorkflow(),
 				nodes: [
-					makeNode({ name: 'EvalTrigger', type: 'n8n-nodes-base.evaluationTrigger' }),
+					makeNode({ name: 'EvalTrigger', type: 'MNI-nodes-base.evaluationTrigger' }),
 					makeNode({ name: 'Start' }),
 					makeNode({ name: 'End' }),
 				],
@@ -304,7 +304,7 @@ describe('EvaluationConfigValidator', () => {
 			const wf: IWorkflowBase = {
 				...makeWorkflow(),
 				nodes: [
-					makeNode({ name: 'Start', type: 'n8n-nodes-base.manualTrigger' }),
+					makeNode({ name: 'Start', type: 'MNI-nodes-base.manualTrigger' }),
 					makeNode({ name: 'End' }),
 				],
 				connections: { Start: { main: [[{ node: 'End', type: 'main', index: 0 }]] } },
@@ -323,7 +323,7 @@ describe('EvaluationConfigValidator', () => {
 			const wf: IWorkflowBase = {
 				...makeWorkflow(),
 				nodes: [
-					makeNode({ name: 'Trigger', type: 'n8n-nodes-base.manualTrigger' }),
+					makeNode({ name: 'Trigger', type: 'MNI-nodes-base.manualTrigger' }),
 					makeNode({ name: 'Start' }),
 					makeNode({ name: 'OrphanEnd' }),
 				],
@@ -348,7 +348,7 @@ describe('EvaluationConfigValidator', () => {
 			const wf: IWorkflowBase = {
 				...makeWorkflow(),
 				nodes: [
-					makeNode({ name: 'Trigger', type: 'n8n-nodes-base.manualTrigger' }),
+					makeNode({ name: 'Trigger', type: 'MNI-nodes-base.manualTrigger' }),
 					makeNode({ name: 'Agent' }),
 				],
 				connections: { Trigger: { main: [[{ node: 'Agent', type: 'main', index: 0 }]] } },
@@ -365,7 +365,7 @@ describe('EvaluationConfigValidator', () => {
 			const wf: IWorkflowBase = {
 				...makeWorkflow(),
 				nodes: [
-					makeNode({ name: 'Trigger', type: 'n8n-nodes-base.manualTrigger' }),
+					makeNode({ name: 'Trigger', type: 'MNI-nodes-base.manualTrigger' }),
 					makeNode({ name: 'Start' }),
 					makeNode({ name: 'Mid' }),
 					makeNode({ name: 'End' }),
@@ -467,7 +467,7 @@ describe('EvaluationConfigValidator', () => {
 							...validLlmJudgeMetric,
 							config: {
 								...validLlmJudgeMetric.config,
-								provider: '@n8n/n8n-nodes-langchain.lmChatNotARealNode',
+								provider: '@MNI/MNI-nodes-langchain.lmChatNotARealNode',
 							},
 						},
 					],
@@ -478,7 +478,7 @@ describe('EvaluationConfigValidator', () => {
 				expect.objectContaining({
 					code: 'LLM_PROVIDER_UNSUPPORTED',
 					details: expect.objectContaining({
-						nodeType: '@n8n/n8n-nodes-langchain.lmChatNotARealNode',
+						nodeType: '@MNI/MNI-nodes-langchain.lmChatNotARealNode',
 						metricId: 'm-llm',
 					}),
 				}),
@@ -552,7 +552,7 @@ describe('EvaluationConfigValidator', () => {
 							...validLlmJudgeMetric,
 							config: {
 								...validLlmJudgeMetric.config,
-								provider: '@n8n/n8n-nodes-langchain.unknown',
+								provider: '@MNI/MNI-nodes-langchain.unknown',
 							},
 						},
 					],

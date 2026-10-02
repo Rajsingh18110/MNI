@@ -6,8 +6,8 @@ import type {
 	INodeType,
 	INodeTypeBaseDescription,
 	INodeTypeDescription,
-} from 'n8n-workflow';
-import { BINARY_ENCODING, NodeConnectionTypes } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { BINARY_ENCODING, NodeConnectionTypes } from 'MNI-workflow';
 import type { Readable } from 'stream';
 import { v4 as uuid } from 'uuid';
 
@@ -82,7 +82,7 @@ const versionDescription: INodeTypeDescription = {
 			type: 'options',
 			options: [
 				{
-					// eslint-disable-next-line n8n-nodes-base/node-param-display-name-miscased
+					// eslint-disable-next-line MNI-nodes-base/node-param-display-name-miscased
 					name: 'OAuth2 (recommended)',
 					value: 'oAuth2',
 				},
@@ -1060,7 +1060,7 @@ const versionDescription: INodeTypeDescription = {
 					resource: ['file'],
 				},
 			},
-			// eslint-disable-next-line n8n-nodes-base/node-param-description-boolean-without-whether
+			// eslint-disable-next-line MNI-nodes-base/node-param-description-boolean-without-whether
 			description:
 				'By default the response only contain the ID of the file. If this option gets activated, it will resolve the data automatically.',
 		},
@@ -1237,7 +1237,7 @@ const versionDescription: INodeTypeDescription = {
 						},
 					},
 					default: false,
-					// eslint-disable-next-line n8n-nodes-base/node-param-description-boolean-without-whether
+					// eslint-disable-next-line MNI-nodes-base/node-param-description-boolean-without-whether
 					description:
 						"<p>This parameter only takes effect if the item is not in a shared drive and the request is attempting to transfer the ownership of the item.</p><p>When set to true, the item is moved to the new owner's My Drive root folder and all prior parents removed.</p>",
 				},

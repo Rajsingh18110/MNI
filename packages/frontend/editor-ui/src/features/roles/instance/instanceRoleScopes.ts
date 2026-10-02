@@ -7,16 +7,16 @@
  * saves a flat scope list.
  */
 
-import { type BaseTextKey } from '@n8n/i18n';
+import { type BaseTextKey } from '@MNI/i18n';
 import {
 	BASELINE_INSTANCE_SCOPES,
 	GLOBAL_CUSTOM_ROLE_SCOPE_GROUPS,
 	isMandatoryInstanceOption,
 	type Scope,
 	withMandatoryInstanceScopes,
-} from '@n8n/permissions';
-export { GLOBAL_CUSTOM_ROLE_SCOPE_GROUPS as INSTANCE_SCOPE_GROUPS } from '@n8n/permissions';
-export { withMandatoryInstanceScopes } from '@n8n/permissions';
+} from '@MNI/permissions';
+export { GLOBAL_CUSTOM_ROLE_SCOPE_GROUPS as INSTANCE_SCOPE_GROUPS } from '@MNI/permissions';
+export { withMandatoryInstanceScopes } from '@MNI/permissions';
 
 export type InstanceResource = keyof typeof GLOBAL_CUSTOM_ROLE_SCOPE_GROUPS;
 
@@ -189,9 +189,9 @@ export const ALL_INSTANCE_SCOPES: Scope[] = [
 ];
 
 /**
- * Tooltip overrides for the mandatory options declared in `@n8n/permissions`.
+ * Tooltip overrides for the mandatory options declared in `@MNI/permissions`.
  * The wording that explains *why* an option is locked lives here because
- * `@n8n/permissions` must stay free of i18n types.
+ * `@MNI/permissions` must stay free of i18n types.
  */
 const MANDATORY_OPTION_TOOLTIP_KEYS: Partial<
 	Record<InstanceResource, Record<string, BaseTextKey>>

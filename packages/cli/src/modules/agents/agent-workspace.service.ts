@@ -5,11 +5,11 @@ import {
 	createScopedWorkspace,
 	reconcileToolResultRuns,
 	Workspace,
-} from '@n8n/agents';
-import { Logger } from '@n8n/backend-common';
-import { AgentsConfig } from '@n8n/config';
-import { Time } from '@n8n/constants';
-import { Service } from '@n8n/di';
+} from '@MNI/agents';
+import { Logger } from '@MNI/backend-common';
+import { AgentsConfig } from '@MNI/config';
+import { Time } from '@MNI/constants';
+import { Service } from '@MNI/di';
 
 import type { AgentSandboxPrincipalHash } from './agent-sandbox-principal';
 import {
@@ -20,7 +20,7 @@ import {
 import {
 	CHECKPOINT_RECONCILIATION_OVERFLOW,
 	N8NCheckpointStorage,
-} from './integrations/n8n-checkpoint-storage';
+} from './integrations/MNI-checkpoint-storage';
 
 export interface AgentWorkspaceAcquisition {
 	workspace: Workspace;

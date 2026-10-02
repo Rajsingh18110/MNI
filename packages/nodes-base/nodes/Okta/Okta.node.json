@@ -1,5 +1,5 @@
 {
-	"node": "n8n-nodes-base.okta",
+	"node": "MNI-nodes-base.okta",
 	"nodeVersion": "1.0",
 	"codexVersion": "1.0",
 	"categories": ["Development"],
@@ -12,7 +12,7 @@
 		],
 		"primaryDocumentation": [
 			{
-				"url": "https://docs.n8n.io/integrations/builtin/app-nodes/n8n-nodes-base.okta/"
+				"url": "https://docs.n8n.io/integrations/builtin/app-nodes/MNI-nodes-base.okta/"
 			}
 		],
 		"generic": []

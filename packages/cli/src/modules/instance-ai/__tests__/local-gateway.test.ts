@@ -1,4 +1,4 @@
-import type { McpTool } from '@n8n/api-types';
+import type { McpTool } from '@MNI/api-types';
 
 import { LocalGateway } from '../filesystem/local-gateway';
 import type { LocalGatewayRequestEvent } from '../filesystem/local-gateway';

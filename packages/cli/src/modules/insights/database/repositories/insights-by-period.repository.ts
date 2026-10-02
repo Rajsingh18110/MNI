@@ -1,18 +1,18 @@
-import { isValidTimeZone } from '@n8n/api-types';
-import { GlobalConfig } from '@n8n/config';
-import type { User } from '@n8n/db';
+import { isValidTimeZone } from '@MNI/api-types';
+import { GlobalConfig } from '@MNI/config';
+import type { User } from '@MNI/db';
 import {
 	DbLock,
 	DbLockService,
 	parseListQuerySortBy,
 	sql,
 	SharedWorkflowRepository,
-} from '@n8n/db';
-import { Container, Service } from '@n8n/di';
-import type { SelectQueryBuilder } from '@n8n/typeorm';
-import { DataSource, LessThanOrEqual, Repository } from '@n8n/typeorm';
+} from '@MNI/db';
+import { Container, Service } from '@MNI/di';
+import type { SelectQueryBuilder } from '@MNI/typeorm';
+import { DataSource, LessThanOrEqual, Repository } from '@MNI/typeorm';
 import { DateTime } from 'luxon';
-import { UnexpectedError } from 'n8n-workflow';
+import { UnexpectedError } from 'MNI-workflow';
 import { z } from 'zod';
 
 import { getDateRangesCommonTableExpressionQuery } from './insights-by-period-query.helper';

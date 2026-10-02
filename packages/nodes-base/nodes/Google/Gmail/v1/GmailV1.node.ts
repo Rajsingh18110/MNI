@@ -9,7 +9,7 @@ import {
 	type INodeType,
 	type INodeTypeBaseDescription,
 	type INodeTypeDescription,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { oldVersionNotice } from '@utils/descriptions';
 
@@ -68,7 +68,7 @@ const versionDescription: INodeTypeDescription = {
 			type: 'options',
 			options: [
 				{
-					// eslint-disable-next-line n8n-nodes-base/node-param-display-name-miscased
+					// eslint-disable-next-line MNI-nodes-base/node-param-display-name-miscased
 					name: 'OAuth2 (recommended)',
 					value: 'oAuth2',
 				},

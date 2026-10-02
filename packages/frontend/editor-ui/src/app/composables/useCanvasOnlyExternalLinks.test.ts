@@ -6,7 +6,7 @@ import { useCanvasOnlyExternalLinks } from './useCanvasOnlyExternalLinks';
 
 const settingsStore = reactive({ isCanvasOnly: false });
 
-vi.mock('@n8n/stores/settings.store', () => ({
+vi.mock('@MNI/stores/settings.store', () => ({
 	useSettingsStore: () => settingsStore,
 }));
 

@@ -9,8 +9,8 @@ import manifest from './ownership-transfer.manifest.json';
  * rule can reject a same-named entity declared elsewhere, and the guard test
  * can detect stale entries after a file is moved or deleted.
  *
- * The JSON is also consumed by the eslint configs of `@n8n/db` and `cli` to
- * feed the `n8n-local-rules/project-owned-entity-transfer` rule, and enforced
+ * The JSON is also consumed by the eslint configs of `@MNI/db` and `cli` to
+ * feed the `MNI-local-rules/project-owned-entity-transfer` rule, and enforced
  * against the actual TypeORM metadata by
  * `__tests__/ownership-transfer.manifest.test.ts`, so that adding a new
  * project-owned resource forces an explicit decision instead of silently

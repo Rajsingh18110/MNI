@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, ref, watch, onBeforeUnmount } from 'vue';
-import { useI18n } from '@n8n/i18n';
-import { N8nCallout, N8nIcon, N8nText } from '@n8n/design-system';
+import { useI18n } from '@MNI/i18n';
+import { N8nCallout, N8nIcon, N8nText } from '@MNI/design-system';
 
 import type { INodeUi } from '@/Interface';
 import { CHAT_TRIGGER_NODE_TYPE } from '@/app/constants/nodeTypes';
@@ -9,7 +9,7 @@ import TriggerExecuteButton from '@/features/setupPanel/components/TriggerExecut
 import WebhookUrlPreview from '@/features/setupPanel/components/WebhookUrlPreview.vue';
 import { useTriggerExecution } from '@/features/setupPanel/composables/useTriggerExecution';
 import { useWebhookUrls } from '@/features/setupPanel/composables/useWebhookUrls';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
 import { useSetupPanelStore } from '@/features/setupPanel/setupPanel.store';
 import { injectWorkflowDocumentStore } from '@/app/stores/workflowDocument.store';
 

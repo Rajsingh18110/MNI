@@ -1,4 +1,4 @@
-import type { INodeExecutionData } from 'n8n-workflow';
+import type { INodeExecutionData } from 'MNI-workflow';
 
 /**
  * A step run reported to the editor. Kept after it settles so a redelivered

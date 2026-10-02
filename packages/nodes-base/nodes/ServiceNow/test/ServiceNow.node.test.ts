@@ -1,7 +1,7 @@
 import get from 'lodash/get';
-import { constructExecutionMetaData } from 'n8n-core';
-import type { IDataObject, IExecuteFunctions, ILoadOptionsFunctions, INode } from 'n8n-workflow';
-import { NodeOperationError } from 'n8n-workflow';
+import { constructExecutionMetaData } from 'MNI-core';
+import type { IDataObject, IExecuteFunctions, ILoadOptionsFunctions, INode } from 'MNI-workflow';
+import { NodeOperationError } from 'MNI-workflow';
 
 import { ServiceNow } from '../ServiceNow.node';
 import * as genericFunctions from '../GenericFunctions';
@@ -20,7 +20,7 @@ vi.mock('../GenericFunctions', async () => {
 const serviceNowNode: INode = {
 	id: '1',
 	name: 'ServiceNow',
-	type: 'n8n-nodes-base.serviceNow',
+	type: 'MNI-nodes-base.serviceNow',
 	typeVersion: 1,
 	position: [0, 0],
 	parameters: {},

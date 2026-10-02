@@ -1,4 +1,4 @@
-import { deepCopy } from 'n8n-workflow';
+import { deepCopy } from 'MNI-workflow';
 
 import type { AgentJsonConfig } from '../types';
 

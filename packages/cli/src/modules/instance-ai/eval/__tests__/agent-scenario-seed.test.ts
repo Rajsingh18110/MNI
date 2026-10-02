@@ -3,7 +3,7 @@ import { generateAgentScenarioSeed } from '../agent-scenario-seed';
 const generate = vi.fn();
 const extractText = vi.fn();
 
-vi.mock('@n8n/instance-ai', () => ({
+vi.mock('@MNI/instance-ai', () => ({
 	createEvalAgent: vi.fn(() => ({ generate })),
 	extractText: (result: unknown) => extractText(result) as string,
 }));
@@ -12,7 +12,7 @@ const baseOptions = {
 	agentName: 'Support agent',
 	instructions: 'You help with support tickets.',
 	tools: [
-		{ name: 'Slack_Tool', kind: 'node' as const, nodeType: 'n8n-nodes-base.slackTool' },
+		{ name: 'Slack_Tool', kind: 'node' as const, nodeType: 'MNI-nodes-base.slackTool' },
 		{ name: 'Lookup_workflow', kind: 'workflow' as const, description: 'Find a customer' },
 	],
 	scenarioHints: 'The customer jane@example.com asks about order #123.',

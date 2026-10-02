@@ -1,12 +1,12 @@
-import { mockLogger, createWorkflow, testDb, createWorkflowHistory } from '@n8n/backend-test-utils';
-import { GlobalConfig } from '@n8n/config';
-import { Time } from '@n8n/constants';
-import { DbConnection, WorkflowHistoryRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
-import { sleep } from '@n8n/utils/sleep';
+import { mockLogger, createWorkflow, testDb, createWorkflowHistory } from '@MNI/backend-test-utils';
+import { GlobalConfig } from '@MNI/config';
+import { Time } from '@MNI/constants';
+import { DbConnection, WorkflowHistoryRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
+import { sleep } from '@MNI/utils/sleep';
 import repeat from 'lodash/repeat';
-import { InstanceSettings } from 'n8n-core';
-import type { INode } from 'n8n-workflow';
+import { InstanceSettings } from 'MNI-core';
+import type { INode } from 'MNI-workflow';
 import { v4 as uuid } from 'uuid';
 
 import { EventService } from '@/events/event.service';

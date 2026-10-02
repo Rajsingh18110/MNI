@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { useI18n } from '@n8n/i18n';
-import { N8nButton, N8nDropdownMenu, N8nIcon, N8nText, N8nTooltip } from '@n8n/design-system';
+import { useI18n } from '@MNI/i18n';
+import { N8nButton, N8nDropdownMenu, N8nIcon, N8nText, N8nTooltip } from '@MNI/design-system';
 
 const props = withDefaults(
 	defineProps<{

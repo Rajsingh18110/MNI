@@ -1,6 +1,6 @@
 import { mockDeep } from 'vitest-mock-extended';
-import type { IExecuteFunctions } from 'n8n-workflow';
-import { NodeApiError, NodeOperationError } from 'n8n-workflow';
+import type { IExecuteFunctions } from 'MNI-workflow';
+import { NodeApiError, NodeOperationError } from 'MNI-workflow';
 
 import {
 	pipedriveApiRequest,
@@ -19,7 +19,7 @@ describe('Pipedrive v2 Transport', () => {
 		mockExecuteFunctions.getNode.mockReturnValue({
 			id: 'test-node-id',
 			name: 'Pipedrive',
-			type: 'n8n-nodes-base.pipedrive',
+			type: 'MNI-nodes-base.pipedrive',
 			typeVersion: 2,
 			position: [0, 0],
 			parameters: {},

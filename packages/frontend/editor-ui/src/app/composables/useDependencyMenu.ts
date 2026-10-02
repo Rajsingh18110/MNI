@@ -1,8 +1,8 @@
-import { useI18n } from '@n8n/i18n';
-import type { BaseTextKey } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
+import type { BaseTextKey } from '@MNI/i18n';
 import { useRouter } from 'vue-router';
-import type { DropdownMenuItemProps, IconName } from '@n8n/design-system';
-import type { DependencyType, ResolvedDependency } from '@n8n/api-types';
+import type { DropdownMenuItemProps, IconName } from '@MNI/design-system';
+import type { DependencyType, ResolvedDependency } from '@MNI/api-types';
 import { VIEWS } from '@/app/constants';
 import { useUIStore } from '@/app/stores/ui.store';
 import { AGENT_BUILDER_VIEW } from '@/features/agents/constants';

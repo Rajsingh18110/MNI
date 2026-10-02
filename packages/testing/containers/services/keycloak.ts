@@ -12,8 +12,8 @@ const HOSTNAME = 'keycloak';
 const HTTPS_PORT = 8443;
 
 const KEYCLOAK_TEST_REALM = 'test';
-const KEYCLOAK_TEST_CLIENT_ID = 'n8n-e2e';
-const KEYCLOAK_TEST_CLIENT_SECRET = 'n8n-test-secret';
+const KEYCLOAK_TEST_CLIENT_ID = 'MNI-e2e';
+const KEYCLOAK_TEST_CLIENT_SECRET = 'MNI-test-secret';
 /** Audience the realm stamps into access tokens, for relying parties to verify. */
 const KEYCLOAK_TEST_AUDIENCE = 'MNI';
 const KEYCLOAK_TEST_USER_EMAIL = 'test@n8n.io';
@@ -24,7 +24,7 @@ const KEYCLOAK_TEST_USER_LASTNAME = 'User';
 const KEYCLOAK_ADMIN_USER = 'admin';
 const KEYCLOAK_ADMIN_PASSWORD = 'admin';
 const KEYCLOAK_CERT_PATH = '/tmp/keycloak-ca.pem';
-const N8N_KEYCLOAK_CERT_PATH = '/tmp/keycloak-ca.pem';
+const MNI_KEYCLOAK_CERT_PATH = '/tmp/keycloak-ca.pem';
 
 export interface KeycloakConfig {
 	n8nCallbackUrl: string;
@@ -83,7 +83,7 @@ function generateRealmJson(callbackUrl: string): string {
 					{
 						// Without this Keycloak only puts its own `account` service in `aud`,
 						// so access tokens name no audience a relying party could check.
-						name: 'n8n-audience',
+						name: 'MNI-audience',
 						protocol: 'openid-connect',
 						protocolMapper: 'oidc-audience-mapper',
 						config: {
@@ -325,7 +325,7 @@ export const keycloak: Service<KeycloakResult> = {
 						firstName: KEYCLOAK_TEST_USER_FIRSTNAME,
 						lastName: KEYCLOAK_TEST_USER_LASTNAME,
 					},
-					n8nFilesToMount: [{ content: certPem, target: N8N_KEYCLOAK_CERT_PATH }],
+					n8nFilesToMount: [{ content: certPem, target: MNI_KEYCLOAK_CERT_PATH }],
 				},
 			};
 		} catch (error) {
@@ -336,13 +336,13 @@ export const keycloak: Service<KeycloakResult> = {
 	env(result: KeycloakResult, external?: boolean): Record<string, string> {
 		if (external) {
 			return {
-				N8N_OIDC_DISCOVERY_URL: result.meta.discoveryUrl,
-				N8N_OIDC_CLIENT_ID: result.meta.clientId,
-				N8N_OIDC_CLIENT_SECRET: result.meta.clientSecret,
+				MNI_OIDC_DISCOVERY_URL: result.meta.discoveryUrl,
+				MNI_OIDC_CLIENT_ID: result.meta.clientId,
+				MNI_OIDC_CLIENT_SECRET: result.meta.clientSecret,
 			};
 		}
 		return {
-			NODE_EXTRA_CA_CERTS: N8N_KEYCLOAK_CERT_PATH,
+			NODE_EXTRA_CA_CERTS: MNI_KEYCLOAK_CERT_PATH,
 			NO_PROXY: `localhost,127.0.0.1,${HOSTNAME},host.docker.internal`,
 		};
 	},
@@ -561,7 +561,7 @@ export class KeycloakHelper {
 				);
 			}
 
-			return redirectUrl; // e.g. http://localhost:{n8n_port}/rest/oauth2-credential/callback?code=...&state=...
+			return redirectUrl; // e.g. http://localhost:{MNI_port}/rest/oauth2-credential/callback?code=...&state=...
 		} finally {
 			await agent.close();
 		}

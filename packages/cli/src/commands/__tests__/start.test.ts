@@ -1,11 +1,11 @@
 // Import zod alias support before importing Start command
 import '@/zod-alias-support';
 
-import { uninstallGlobalProxyAgent } from '@n8n/backend-network/testing';
-import { mockInstance } from '@n8n/backend-test-utils';
-import { AuthRolesService, DbConnection, DeploymentKeyRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
-import { InstanceSettings, BinaryDataConfig, ErrorReporter } from 'n8n-core';
+import { uninstallGlobalProxyAgent } from '@MNI/backend-network/testing';
+import { mockInstance } from '@MNI/backend-test-utils';
+import { AuthRolesService, DbConnection, DeploymentKeyRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
+import { InstanceSettings, BinaryDataConfig, ErrorReporter } from 'MNI-core';
 import http from 'node:http';
 import https from 'node:https';
 

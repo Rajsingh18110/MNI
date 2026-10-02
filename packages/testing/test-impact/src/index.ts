@@ -1,5 +1,5 @@
 /**
- * `@n8n/test-impact` — framework-agnostic Test Impact Analysis core.
+ * `@MNI/test-impact` — framework-agnostic Test Impact Analysis core.
  *
  * Phase 1 (ts-morph-free): coverage-map (build + resolve), orchestrator
  * (shard bin-packing), and the V8 selection path. AST-based selection and

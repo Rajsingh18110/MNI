@@ -5,7 +5,7 @@
 			"parameters": {},
 			"id": "trigger-id",
 			"name": "When clicking \"Execute Workflow\"",
-			"type": "n8n-nodes-base.manualTrigger",
+			"type": "MNI-nodes-base.manualTrigger",
 			"typeVersion": 1,
 			"position": [820, 360]
 		},
@@ -22,7 +22,7 @@
 			},
 			"id": "node-id",
 			"name": "Microsoft Graph Security",
-			"type": "n8n-nodes-base.microsoftGraphSecurity",
+			"type": "MNI-nodes-base.microsoftGraphSecurity",
 			"typeVersion": 1,
 			"position": [1040, 360],
 			"credentials": {

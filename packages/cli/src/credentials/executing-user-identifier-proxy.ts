@@ -1,5 +1,5 @@
-import { Service } from '@n8n/di';
-import type { ICredentialContext } from 'n8n-workflow';
+import { Service } from '@MNI/di';
+import type { ICredentialContext } from 'MNI-workflow';
 
 import type { IExecutingUserIdentifier } from './executing-user-identifier.interface';
 

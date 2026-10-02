@@ -2,7 +2,7 @@ import http from 'node:http';
 import https from 'node:https';
 
 import { test, expect, instanceAiMultiMainConfig } from './fixtures';
-import { N8N_AUTH_COOKIE } from '../../../config/constants';
+import { MNI_AUTH_COOKIE } from '../../../config/constants';
 
 // Inherits the project topology: 2 mains + worker on the `multi-main` project,
 // 1 main elsewhere (the test then skips). Conversational-only — never hits the
@@ -131,7 +131,7 @@ test.describe(
 			const mainB = await createApiForMain(1); // runs the agent
 
 			const { cookies } = await mainA.request.storageState();
-			const authCookie = cookies.find((c) => c.name === N8N_AUTH_COOKIE);
+			const authCookie = cookies.find((c) => c.name === MNI_AUTH_COOKIE);
 			expect(authCookie, 'auth cookie present for main A').toBeTruthy();
 			const cookieHeader = `${authCookie!.name}=${authCookie!.value}`;
 

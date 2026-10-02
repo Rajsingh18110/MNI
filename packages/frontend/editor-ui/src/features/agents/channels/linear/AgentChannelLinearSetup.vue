@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { computed, shallowRef } from 'vue';
-import { N8nButton, N8nIconButton, N8nInput, N8nStepper, N8nText } from '@n8n/design-system';
-import type { ChatIntegrationDescriptor, AgentIntegrationSettings } from '@n8n/api-types';
-import { useI18n } from '@n8n/i18n';
-import { useRootStore } from '@n8n/stores/useRootStore';
-import type { PermissionsRecord } from '@n8n/permissions';
+import { N8nButton, N8nIconButton, N8nInput, N8nStepper, N8nText } from '@MNI/design-system';
+import type { ChatIntegrationDescriptor, AgentIntegrationSettings } from '@MNI/api-types';
+import { useI18n } from '@MNI/i18n';
+import { useRootStore } from '@MNI/stores/useRootStore';
+import type { PermissionsRecord } from '@MNI/permissions';
 import { TIME } from '@/app/constants';
 import AgentIntegrationCredentialConnection from '../../components/AgentIntegrationCredentialConnection.vue';
 import type { AgentCredentialOption } from '../../components/AgentCredentialSelect.vue';

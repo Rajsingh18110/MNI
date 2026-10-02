@@ -11,7 +11,7 @@ import { useWorkflowExecutionStateStore } from '@/app/stores/workflowExecutionSt
 import { createWorkflowDocumentId } from '@/app/stores/workflowDocument.store';
 import { createTestingPinia } from '@pinia/testing';
 import { fireEvent, within } from '@testing-library/vue';
-import { createRunExecutionData, NodeConnectionTypes } from 'n8n-workflow';
+import { createRunExecutionData, NodeConnectionTypes } from 'MNI-workflow';
 import { setActivePinia } from 'pinia';
 import { beforeEach, describe, expect, it } from 'vitest';
 import RunDataAi from './RunDataAi.vue';

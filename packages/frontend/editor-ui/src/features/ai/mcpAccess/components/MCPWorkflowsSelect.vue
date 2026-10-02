@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { useMCPStore } from '@/features/ai/mcpAccess/mcp.store';
 import { LOADING_INDICATOR_TIMEOUT } from '@/features/ai/mcpAccess/mcp.constants';
-import { N8nSelect, N8nOption } from '@n8n/design-system';
+import { N8nSelect, N8nOption } from '@MNI/design-system';
 import { computed, onMounted, ref, useCssModule } from 'vue';
 import type { McpWorkflow } from '@/features/ai/mcpAccess/mcp.types';
 import WorkflowLocation from '@/features/ai/mcpAccess/components/WorkflowLocation.vue';
-import { useI18n } from '@n8n/i18n';
-import { useToast } from '@n8n/composables/useToast';
+import { useI18n } from '@MNI/i18n';
+import { useToast } from '@MNI/composables/useToast';
 
 defineProps<{
 	placeholder?: string;

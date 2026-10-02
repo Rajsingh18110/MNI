@@ -11,14 +11,14 @@ description: >-
 # Create an Instance AI eval
 
 Each eval is **one JSON case**. Author workflow cases in
-`packages/@n8n/instance-ai/evaluations/data/workflows/`. Author standalone Agent
-cases in `packages/@n8n/instance-ai/evaluations/data/agents/` and follow the
+`packages/@MNI/instance-ai/evaluations/data/workflows/`. Author standalone Agent
+cases in `packages/@MNI/instance-ai/evaluations/data/agents/` and follow the
 [`create-agent-builder-eval` skill](../create-agent-builder-eval/SKILL.md).
 The disk loader auto-discovers `*.json` in both directories. A LangTracer suite
 is the durable home. Cases validate against
-[`harness/schema.ts`](../../../packages/@n8n/instance-ai/evaluations/harness/schema.ts)
+[`harness/schema.ts`](../../../packages/@MNI/instance-ai/evaluations/harness/schema.ts)
 (`.strict()` — unknown keys fail at load). The eval
-[README](../../../packages/@n8n/instance-ai/evaluations/README.md) is the
+[README](../../../packages/@MNI/instance-ai/evaluations/README.md) is the
 exhaustive field reference; this skill is the opinionated *how*.
 
 > **Committing new case JSONs into the repo is no longer the recommended
@@ -104,11 +104,11 @@ proposal, the end-of-run decision log, a PR description, a Linear ticket, a Slac
 message — render it as a link, keeping the id in the label:
 
 ```
-pushed as [#621](https://lang-tracer.n8n-maintenance.workers.dev/test-cases/621)
+pushed as [#621](https://lang-tracer.MNI-maintenance.workers.dev/test-cases/621)
 ```
 
 Build links off the **web base** (`LANGTRACER_URL`, in production
-`https://lang-tracer.n8n-maintenance.workers.dev`). Never off the API bases —
+`https://lang-tracer.MNI-maintenance.workers.dev`). Never off the API bases —
 `${LANGTRACER_URL}/api/v1` and `/api/mcp` are machine endpoints, and a link into
 either 404s for the driver or dumps JSON.
 
@@ -162,7 +162,7 @@ may reference cost or consumption directly ("does not re-read the same node's
 schema in turn 2"). The numbers cover the orchestrator's own LLM steps only. A
 delegated Agent build runs in a sub-agent whose steps are not in the snapshot,
 so do not write cost expectations on an Agent case. Those numbers come from run-debug snapshots, so they need
-`N8N_INSTANCE_AI_RUN_DEBUG_ENABLED=true` on the instance under test; without it
+`MNI_INSTANCE_AI_RUN_DEBUG_ENABLED=true` on the instance under test; without it
 the judge reads `(no run debug captured)` and cost expectations are ungradeable.
 
 The judge also sees the thread's **observation rows** — what observational
@@ -392,24 +392,24 @@ switch. Two shapes to know:
 
 - **Stale `packages/core` / `packages/cli` dist** — a refactor moved a runtime
   export and the built dist still calls the old one, so *builds succeed but every
-  execution fails the same way* (e.g. `(0 , n8n_workflow_1.createDeferredPromise)
-  is not a function` after `createDeferredPromise` moved to `@n8n/utils`).
-- **Stale/half-built `@n8n/instance-ai` dist** — every run errors *before building*
+  execution fails the same way* (e.g. `(0 , MNI_workflow_1.createDeferredPromise)
+  is not a function` after `createDeferredPromise` moved to `@MNI/utils`).
+- **Stale/half-built `@MNI/instance-ai` dist** — every run errors *before building*
   (`Agent error…`, zero tool calls) and the instance log shows `Cannot find module
   '@/utils/...'` from `dist/skills/*.js`: the build's `tsc-alias` step (which
   rewrites `@/` path aliases to relative requires) didn't complete, so the dist is
   internally inconsistent.
 
 - **Out-of-sync `node_modules`** — `pnpm build` itself dies early with `Cannot find
-  module '@n8n/<pkg>'` even though that package is a declared `workspace:*`
+  module '@MNI/<pkg>'` even though that package is a declared `workspace:*`
   dependency *and* has a `dist/`. The workspace symlink is missing from the
   consumer's `node_modules` (typical after a branch or worktree switch). Confirm
-  with `ls -d packages/<consumer>/node_modules/@n8n/<pkg>`; fix with a plain
+  with `ls -d packages/<consumer>/node_modules/@MNI/<pkg>`; fix with a plain
   `pnpm install` — no need for the heavier `pnpm reset --full`.
 
 Fix it, don't calibrate around it: run a full ordered `pnpm build` (a targeted
 `--filter` build can fail on unrelated stale-dep type errors; for the instance-ai
-shape, `cd packages/@n8n/instance-ai && pnpm build` runs `tsc && tsc-alias`), then
+shape, `cd packages/@MNI/instance-ai && pnpm build` runs `tsc && tsc-alias`), then
 **restart the instance** — the running node process holds the old dist in memory,
 so rebuilding on disk changes nothing until restart (and `kill` by env-var pattern
 misses it — kill the actual `lsof -t -iTCP:<port>` PID). Re-probe one case, confirm
@@ -785,7 +785,7 @@ not-found source, source error / timeout, malformed response.
 Every successful build is also graded by ~28 always-on binary checks across 7
 dimensions (structure, topology, parameter correctness, intent, AI wiring,
 craftsmanship, security) —
-[`binaryChecks/checks/`](../../../packages/@n8n/instance-ai/evaluations/binaryChecks/checks).
+[`binaryChecks/checks/`](../../../packages/@MNI/instance-ai/evaluations/binaryChecks/checks).
 Those are broad and low-visibility. **Writing a targeted expectation for your
 specific case is still worth it even when a binary check nominally covers it** —
 a named case-level assertion gives far better visibility into *this* behaviour
@@ -820,7 +820,7 @@ concluding whether the failure is your case, the build, or the harness.
 ## Validate (before running)
 
 ```bash
-cd packages/@n8n/instance-ai
+cd packages/@MNI/instance-ai
 pnpm exec tsx -e "import {loadWorkflowTestCasesWithFiles} from './evaluations/data/workflows/index.ts'; console.log(loadWorkflowTestCasesWithFiles('<slug>')[0].fileSlug)"
 
 # For a standalone Agent case:
@@ -836,7 +836,7 @@ drifted, leaves the rest unchanged, and never prunes. It's the inverse of
 `--source langtracer` (which pulls a suite down).
 
 ```bash
-cd packages/@n8n/instance-ai
+cd packages/@MNI/instance-ai
 # preview first — no writes:
 pnpm exec dotenvx run -f .env.eval -- pnpm eval:langtracer-push --suite baseline --dry-run --changed
 # then push (drop --dry-run):
@@ -924,7 +924,7 @@ LangSmith; `eval-results.json` only), **LangSmith** (also records an experiment
 existing workflows). Narrow a run with `--filter <slug>` / `--tier <name>` /
 `--exclude`. See [`running-evals.md`](running-evals.md) for the run recipes,
 parallel lanes, tiers, and baselines, and the
-[README](../../../packages/@n8n/instance-ai/evaluations/README.md) for the full
+[README](../../../packages/@MNI/instance-ai/evaluations/README.md) for the full
 flag list. Run with `--keep-workflows` when you want to review a build by hand —
 in *checkpoint* mode calibration this is how the driver opens the built thread
 (`<base-url>/assistant/<threadId>`) and workflow on the instance.

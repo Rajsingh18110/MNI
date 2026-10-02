@@ -1,11 +1,11 @@
 import { SURFACE_MCP_TO_NEW_CLOUD_USERS_EXPERIMENT } from '@/app/constants/experiments';
-import { STORES } from '@n8n/stores';
+import { STORES } from '@MNI/stores';
 import { createPinia, setActivePinia } from 'pinia';
 
 const mockTrack = vi.fn();
 const featureFlagProperty = `$feature/${SURFACE_MCP_TO_NEW_CLOUD_USERS_EXPERIMENT.name}`;
 
-vi.mock('@n8n/composables/useTelemetry', () => ({
+vi.mock('@MNI/composables/useTelemetry', () => ({
 	useTelemetry: () => ({
 		track: mockTrack,
 	}),

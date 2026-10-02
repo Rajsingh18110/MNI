@@ -11,7 +11,7 @@ vi.mock('@/app/composables/useWorkflowId', async () => {
 	};
 });
 import { NO_OP_NODE_TYPE } from '@/app/constants';
-import { CANVAS_NODE_CONTEXT_FLAG } from '@n8n/api-types';
+import { CANVAS_NODE_CONTEXT_FLAG } from '@MNI/api-types';
 import { faker } from '@faker-js/faker';
 import { shallowRef } from 'vue';
 import { createPinia, setActivePinia } from 'pinia';
@@ -24,7 +24,7 @@ import {
 	createWorkflowDocumentId,
 	injectWorkflowDocumentStore,
 } from '@/app/stores/workflowDocument.store';
-import { NodeHelpers } from 'n8n-workflow';
+import { NodeHelpers } from 'MNI-workflow';
 
 vi.mock('@/app/stores/workflowDocument.store', async (importOriginal) => ({
 	...(await importOriginal()),

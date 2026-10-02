@@ -22,8 +22,8 @@ import {
 	WorkflowVersionPublicDto,
 	workflowIdParamSchema,
 	workflowVersionIdParamSchema,
-} from '@n8n/api-types';
-import { GlobalConfig } from '@n8n/config';
+} from '@MNI/api-types';
+import { GlobalConfig } from '@MNI/config';
 import type {
 	AuthenticatedRequest,
 	Folder,
@@ -32,7 +32,7 @@ import type {
 	WorkflowEntity,
 	WorkflowHistory,
 	WorkflowPublishHistory,
-} from '@n8n/db';
+} from '@MNI/db';
 import {
 	ApiDescription,
 	ApiErrorResponse,
@@ -50,9 +50,9 @@ import {
 	PublicApiController,
 	Put,
 	Query,
-} from '@n8n/decorators';
+} from '@MNI/decorators';
 import type { Response } from 'express';
-import { PROJECT_ROOT } from 'n8n-workflow';
+import { PROJECT_ROOT } from 'MNI-workflow';
 
 import { FolderNotFoundError } from '@/errors/folder-not-found.error';
 import { ResponseError } from '@/errors/response-errors/abstract/response.error';

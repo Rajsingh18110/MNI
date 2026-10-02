@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { N8nBadge, N8nIcon, N8nText } from '@n8n/design-system';
-import type { IconName } from '@n8n/design-system';
+import { N8nBadge, N8nIcon, N8nText } from '@MNI/design-system';
+import type { IconName } from '@MNI/design-system';
 
 defineProps<{
 	icon: IconName;

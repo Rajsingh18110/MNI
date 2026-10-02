@@ -1,16 +1,16 @@
 import { computed, ref, watch } from 'vue';
 import { defineStore } from 'pinia';
-import { STORES } from '@n8n/stores';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { STORES } from '@MNI/stores';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { useWorkflowsStore } from '@/app/stores/workflows.store';
 import {
 	useWorkflowDocumentStore,
 	createWorkflowDocumentId,
 } from '@/app/stores/workflowDocument.store';
 import { usePostHog } from '@/app/stores/posthog.store';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
 import { useDebounceFn } from '@vueuse/core';
-import { getDebounceTime } from '@n8n/composables/useDebounce';
+import { getDebounceTime } from '@MNI/composables/useDebounce';
 import { DEBOUNCE_TIME, FOCUSED_NODES_EXPERIMENT } from '@/app/constants';
 import type {
 	FocusedNode,

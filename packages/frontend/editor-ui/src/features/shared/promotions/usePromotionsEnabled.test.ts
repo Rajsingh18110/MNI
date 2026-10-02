@@ -1,5 +1,5 @@
-import type { FrontendSettings } from '@n8n/api-types';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import type { FrontendSettings } from '@MNI/api-types';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { createTestingPinia } from '@pinia/testing';
 import { setActivePinia } from 'pinia';
 
@@ -16,7 +16,7 @@ describe('usePromotionsEnabled', () => {
 		const settingsStore = useSettingsStore();
 		settingsStore.settings = {
 			activeModules,
-			envFeatureFlags: { N8N_ENV_FEAT_PROMOTIONS: flag },
+			envFeatureFlags: { MNI_ENV_FEAT_PROMOTIONS: flag },
 		} as unknown as FrontendSettings;
 
 		return usePromotionsEnabled();

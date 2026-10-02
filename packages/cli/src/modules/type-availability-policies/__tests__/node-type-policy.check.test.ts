@@ -1,10 +1,10 @@
-import type { LicenseState } from '@n8n/backend-common';
+import type { LicenseState } from '@MNI/backend-common';
 import type {
 	ContentImportTransport,
 	CredentialDecryptContext,
 	PolicedWorkflow,
-} from '@n8n/decorators';
-import type { INode } from 'n8n-workflow';
+} from '@MNI/decorators';
+import type { INode } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import { NodeTypePolicyCheck } from '../node-type-policy.check';
@@ -14,10 +14,10 @@ import type {
 	TypeAvailabilityPolicyService,
 } from '../type-availability-policy.service';
 
-const SLACK = 'n8n-nodes-base.slack';
-const GMAIL = 'n8n-nodes-base.gmail';
-const SET = 'n8n-nodes-base.set';
-const HTTP_REQUEST = 'n8n-nodes-base.httpRequest';
+const SLACK = 'MNI-nodes-base.slack';
+const GMAIL = 'MNI-nodes-base.gmail';
+const SET = 'MNI-nodes-base.set';
+const HTTP_REQUEST = 'MNI-nodes-base.httpRequest';
 
 const slackCredentialFor = (nodeType: string | null): CredentialDecryptContext => ({
 	credentialType: 'slackApi',

@@ -1,6 +1,6 @@
 import { snakeCase } from 'change-case';
-import type { IExecuteFunctions, IDataObject, INodeExecutionData } from 'n8n-workflow';
-import { NodeOperationError } from 'n8n-workflow';
+import type { IExecuteFunctions, IDataObject, INodeExecutionData } from 'MNI-workflow';
+import { NodeOperationError } from 'MNI-workflow';
 
 import { apiRequest, apiRequestAllItems } from '../../../transport';
 

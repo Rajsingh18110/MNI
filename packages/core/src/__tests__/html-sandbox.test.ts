@@ -1,5 +1,5 @@
-import type { SecurityConfig } from '@n8n/config';
-import { Container } from '@n8n/di';
+import type { SecurityConfig } from '@MNI/config';
+import { Container } from '@MNI/di';
 import { mock } from 'vitest-mock-extended';
 
 import {

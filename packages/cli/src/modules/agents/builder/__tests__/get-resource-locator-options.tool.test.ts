@@ -1,11 +1,11 @@
 import { mock } from 'vitest-mock-extended';
-import type { User } from '@n8n/db';
+import type { User } from '@MNI/db';
 import type {
 	INodeListSearchResult,
 	INodePropertyOptions,
 	INodeType,
 	INodeTypeDescription,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import type { NodeTypes } from '@/node-types';
 import type { DynamicNodeParametersService } from '@/services/dynamic-node-parameters.service';
@@ -26,7 +26,7 @@ const user = mock<User>({ id: 'user-1' });
 function makeNodeType(description: Partial<INodeTypeDescription>): INodeType {
 	return {
 		description: {
-			name: 'n8n-nodes-base.linearTool',
+			name: 'MNI-nodes-base.linearTool',
 			displayName: 'Linear Tool',
 			version: 1,
 			defaults: { name: 'Linear Tool' },
@@ -73,7 +73,7 @@ describe('get_resource_locator_options tool', () => {
 
 		const result = await tool.handler!(
 			{
-				nodeType: 'n8n-nodes-base.linearTool',
+				nodeType: 'MNI-nodes-base.linearTool',
 				nodeTypeVersion: 1,
 				parameterPath: 'teamId',
 				nodeParameters: { resource: 'issue', operation: 'create' },
@@ -122,7 +122,7 @@ describe('get_resource_locator_options tool', () => {
 		const nodeParameters = { resource: 'issue', operation: 'create' };
 		const result = await tool.handler!(
 			{
-				nodeType: 'n8n-nodes-base.linearTool',
+				nodeType: 'MNI-nodes-base.linearTool',
 				nodeTypeVersion: 1,
 				parameterPath: 'teamId',
 				nodeParameters,
@@ -135,7 +135,7 @@ describe('get_resource_locator_options tool', () => {
 			'getTeams',
 			'parameters.teamId',
 			expect.any(Object),
-			{ name: 'n8n-nodes-base.linearTool', version: 1 },
+			{ name: 'MNI-nodes-base.linearTool', version: 1 },
 			nodeParameters,
 			credentials,
 		);
@@ -184,7 +184,7 @@ describe('get_resource_locator_options tool', () => {
 
 		const result = await tool.handler!(
 			{
-				nodeType: 'n8n-nodes-base.projectTool',
+				nodeType: 'MNI-nodes-base.projectTool',
 				nodeTypeVersion: 1,
 				parameterPath: 'projectId',
 			},
@@ -195,7 +195,7 @@ describe('get_resource_locator_options tool', () => {
 			'searchProjects',
 			'parameters.projectId',
 			expect.any(Object),
-			{ name: 'n8n-nodes-base.projectTool', version: 1 },
+			{ name: 'MNI-nodes-base.projectTool', version: 1 },
 			{},
 			undefined,
 			undefined,
@@ -265,7 +265,7 @@ describe('get_resource_locator_options tool', () => {
 
 		await tool.handler!(
 			{
-				nodeType: 'n8n-nodes-base.googleSheetsTool',
+				nodeType: 'MNI-nodes-base.googleSheetsTool',
 				nodeTypeVersion: 1,
 				parameterPath: 'sheetId',
 				credentials: { googleApi: { id: 'cred-1', name: 'Google Service Account' } },
@@ -277,7 +277,7 @@ describe('get_resource_locator_options tool', () => {
 			'getSheets',
 			'parameters.sheetId',
 			expect.any(Object),
-			{ name: 'n8n-nodes-base.googleSheetsTool', version: 1 },
+			{ name: 'MNI-nodes-base.googleSheetsTool', version: 1 },
 			{ authentication: 'serviceAccount' },
 			{ googleApi: { id: 'cred-1', name: 'Google Service Account' } },
 		);
@@ -315,7 +315,7 @@ describe('get_resource_locator_options tool', () => {
 
 		await tool.handler!(
 			{
-				nodeType: 'n8n-nodes-base.googleSheetsTool',
+				nodeType: 'MNI-nodes-base.googleSheetsTool',
 				nodeTypeVersion: 1,
 				parameterPath: 'sheetId',
 				nodeParameters: { authentication: 'customAuth' },
@@ -328,7 +328,7 @@ describe('get_resource_locator_options tool', () => {
 			'getSheets',
 			'parameters.sheetId',
 			expect.any(Object),
-			{ name: 'n8n-nodes-base.googleSheetsTool', version: 1 },
+			{ name: 'MNI-nodes-base.googleSheetsTool', version: 1 },
 			{ authentication: 'customAuth' },
 			{ googleSheetsOAuth2Api: { id: 'cred-1', name: 'Google Sheets' } },
 		);
@@ -363,7 +363,7 @@ describe('get_resource_locator_options tool', () => {
 
 		const result = await tool.handler!(
 			{
-				nodeType: 'n8n-nodes-base.projectTool',
+				nodeType: 'MNI-nodes-base.projectTool',
 				nodeTypeVersion: 1,
 				parameterPath: 'projectId',
 			},

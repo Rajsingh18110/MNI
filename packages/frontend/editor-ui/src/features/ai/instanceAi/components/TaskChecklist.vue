@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import type { TaskList } from '@n8n/api-types';
-import { N8nCard, N8nIcon, N8nText, type IconName, type TextColor } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+import type { TaskList } from '@MNI/api-types';
+import { N8nCard, N8nIcon, N8nText, type IconName, type TextColor } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 import { computed } from 'vue';
 import ButtonLike from './ButtonLike.vue';
 

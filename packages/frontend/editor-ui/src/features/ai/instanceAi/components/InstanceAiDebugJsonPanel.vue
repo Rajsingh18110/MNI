@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import { computed } from 'vue';
-import { formatDebugJson, summarizeJsonValue } from '@n8n/api-types';
+import { formatDebugJson, summarizeJsonValue } from '@MNI/api-types';
 
 const props = withDefaults(
 	defineProps<{

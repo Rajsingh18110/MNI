@@ -1,7 +1,7 @@
 {
 	"name": "MNI (PR preview)",
 	// No compose: a preview needs no Postgres sidecar. MNI defaults to sqlite
-	// (packages/@n8n/config/src/configs/database.config.ts), which is what a
+	// (packages/@MNI/config/src/configs/database.config.ts), which is what a
 	// throwaway instance wants. Context is .devcontainer/ so the Dockerfile can
 	// reuse the token-rotation shims in codespaces/ instead of copying them.
 	"build": {
@@ -38,8 +38,8 @@
 	// injects them into every preview box whether or not they are listed here.
 	// scripts/codespace-preview/preview-serve.mjs reads them with codespaceSecret().
 	"secrets": {
-		"N8N_LICENSE_ACTIVATION_KEY": {
-			"description": "Sandbox licence key. The preview:enterprise label decides whether it reaches n8n."
+		"MNI_LICENSE_ACTIVATION_KEY": {
+			"description": "Sandbox licence key. The preview:enterprise label decides whether it reaches MNI."
 		},
 		"CODESPACE_ENV_URL": {
 			"description": "MNI webhook that returns extra environment for a preview, as a flat JSON object"

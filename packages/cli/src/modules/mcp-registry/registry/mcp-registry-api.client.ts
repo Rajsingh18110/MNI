@@ -1,5 +1,5 @@
-import { Logger } from '@n8n/backend-common';
-import { Service } from '@n8n/di';
+import { Logger } from '@MNI/backend-common';
+import { Service } from '@MNI/di';
 
 import { CredentialTypes } from '@/credential-types';
 import { paginatedRequest } from '@/utils/strapi-utils';
@@ -88,7 +88,7 @@ export class McpRegistryApiClient {
 	private getUrl(): string {
 		switch (process.env.ENVIRONMENT) {
 			case 'dev':
-				return process.env.N8N_MCP_SERVERS_DEV_URL || MCP_SERVERS_DEV_URL;
+				return process.env.MNI_MCP_SERVERS_DEV_URL || MCP_SERVERS_DEV_URL;
 			case 'staging':
 				return MCP_SERVERS_STAGING_URL;
 			default:

@@ -1,9 +1,9 @@
 <script lang="ts" setup>
 import { computed, onScopeDispose, provide, ref, watch } from 'vue';
 import isEqual from 'lodash/isEqual';
-import type { InstanceAiSetupItem } from '@n8n/api-types';
-import { findPlaceholderDetails } from '@n8n/utils/placeholder';
-import { deepCopy, NodeHelpers, type INodeParameters, type INodeProperties } from 'n8n-workflow';
+import type { InstanceAiSetupItem } from '@MNI/api-types';
+import { findPlaceholderDetails } from '@MNI/utils/placeholder';
+import { deepCopy, NodeHelpers, type INodeParameters, type INodeProperties } from 'MNI-workflow';
 import ParameterInputList from '@/features/ndv/parameters/components/ParameterInputList.vue';
 import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';
 import { setParameterValue as setParameterValueByPath } from '@/app/utils/parameterUtils';

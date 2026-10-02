@@ -1,5 +1,5 @@
-import { WithTimestampsAndStringId } from '@n8n/db';
-import { Column, Entity, Index } from '@n8n/typeorm';
+import { WithTimestampsAndStringId } from '@MNI/db';
+import { Column, Entity, Index } from '@MNI/typeorm';
 
 @Entity({ name: 'agents_memory_entry_sources' })
 @Index(['memoryEntryId', 'observationId', 'evidenceHash'], { unique: true })

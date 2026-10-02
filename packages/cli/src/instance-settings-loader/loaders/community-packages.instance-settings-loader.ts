@@ -1,8 +1,8 @@
-import { Logger } from '@n8n/backend-common';
-import { InstanceSettingsLoaderConfig } from '@n8n/config';
-import { WorkflowRepository } from '@n8n/db';
-import { Service } from '@n8n/di';
-import { ensureError } from '@n8n/utils/errors/ensure-error';
+import { Logger } from '@MNI/backend-common';
+import { InstanceSettingsLoaderConfig } from '@MNI/config';
+import { WorkflowRepository } from '@MNI/db';
+import { Service } from '@MNI/di';
+import { ensureError } from '@MNI/utils/errors/ensure-error';
 import { z } from 'zod';
 
 import { CommunityNodeTypesService } from '@/modules/community-packages/community-node-types.service';
@@ -56,7 +56,7 @@ export class CommunityPackagesInstanceSettingsLoader {
 
 		if (!this.communityPackagesConfig.enabled) {
 			this.logger.warn(
-				'N8N_COMMUNITY_PACKAGES_MANAGED_BY_ENV is enabled but community packages are disabled (N8N_COMMUNITY_PACKAGES_ENABLED=false) — skipping',
+				'MNI_COMMUNITY_PACKAGES_MANAGED_BY_ENV is enabled but community packages are disabled (MNI_COMMUNITY_PACKAGES_ENABLED=false) — skipping',
 			);
 			return 'skipped';
 		}
@@ -124,7 +124,7 @@ export class CommunityPackagesInstanceSettingsLoader {
 			try {
 				await this.communityPackagesService.removePackage(packageName, pkg);
 				this.logger.warn(
-					`Removed community package '${packageName}' (had ${dependentNodeCount} registered node type(s)) — not declared in N8N_COMMUNITY_PACKAGES`,
+					`Removed community package '${packageName}' (had ${dependentNodeCount} registered node type(s)) — not declared in MNI_COMMUNITY_PACKAGES`,
 					{
 						packageName,
 						installedVersion: pkg.installedVersion,
@@ -217,7 +217,7 @@ export class CommunityPackagesInstanceSettingsLoader {
 		if (!checksum && !this.communityPackagesConfig.unverifiedEnabled) {
 			const ref = resolvedVersion ? `'${item.name}@${resolvedVersion}'` : `'${item.name}'`;
 			throw new InstanceBootstrappingError(
-				`N8N_COMMUNITY_PACKAGES: no checksum available for ${ref} and unverified packages are disabled`,
+				`MNI_COMMUNITY_PACKAGES: no checksum available for ${ref} and unverified packages are disabled`,
 			);
 		}
 
@@ -238,14 +238,14 @@ export class CommunityPackagesInstanceSettingsLoader {
 		try {
 			parsed = JSON.parse(trimmed);
 		} catch (error) {
-			throw new Error(`N8N_COMMUNITY_PACKAGES is not valid JSON: ${(error as Error).message}`);
+			throw new Error(`MNI_COMMUNITY_PACKAGES is not valid JSON: ${(error as Error).message}`);
 		}
 
 		const result = envPackagesSchema.safeParse(parsed);
 		if (!result.success) {
 			const issue = result.error.issues[0];
 			const path = issue.path.length > 0 ? issue.path.join('.') : '(root)';
-			throw new Error(`N8N_COMMUNITY_PACKAGES validation failed at "${path}": ${issue.message}`);
+			throw new Error(`MNI_COMMUNITY_PACKAGES validation failed at "${path}": ${issue.message}`);
 		}
 
 		const items = result.data;
@@ -257,7 +257,7 @@ export class CommunityPackagesInstanceSettingsLoader {
 				parsed = this.communityPackagesService.parseNpmPackageName(item.name);
 			} catch (error) {
 				throw new Error(
-					`N8N_COMMUNITY_PACKAGES has an invalid package name "${item.name}" at index ${index}: ${(error as Error).message}`,
+					`MNI_COMMUNITY_PACKAGES has an invalid package name "${item.name}" at index ${index}: ${(error as Error).message}`,
 				);
 			}
 
@@ -267,7 +267,7 @@ export class CommunityPackagesInstanceSettingsLoader {
 				parsed.version !== item.version
 			) {
 				throw new Error(
-					`N8N_COMMUNITY_PACKAGES has conflicting versions for "${parsed.packageName}" at index ${index}: "${parsed.version}" in name vs "${item.version}" in version field`,
+					`MNI_COMMUNITY_PACKAGES has conflicting versions for "${parsed.packageName}" at index ${index}: "${parsed.version}" in name vs "${item.version}" in version field`,
 				);
 			}
 
@@ -276,20 +276,20 @@ export class CommunityPackagesInstanceSettingsLoader {
 
 			if (version !== undefined && !isValidVersionSpecifier(version)) {
 				throw new Error(
-					`N8N_COMMUNITY_PACKAGES has an invalid version "${version}" for package "${name}" at index ${index}`,
+					`MNI_COMMUNITY_PACKAGES has an invalid version "${version}" for package "${name}" at index ${index}`,
 				);
 			}
 
 			if (seenNames.has(name)) {
 				throw new Error(
-					`N8N_COMMUNITY_PACKAGES has duplicate package name "${name}" at index ${index}`,
+					`MNI_COMMUNITY_PACKAGES has duplicate package name "${name}" at index ${index}`,
 				);
 			}
 			seenNames.add(name);
 
 			if (item.checksum !== undefined && version === undefined) {
 				throw new Error(
-					`N8N_COMMUNITY_PACKAGES has a checksum but no version for package "${name}" at index ${index}: checksum requires a version`,
+					`MNI_COMMUNITY_PACKAGES has a checksum but no version for package "${name}" at index ${index}: checksum requires a version`,
 				);
 			}
 

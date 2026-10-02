@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { computed } from 'vue';
-import { N8nIcon, type IconName } from '@n8n/design-system';
+import { N8nIcon, type IconName } from '@MNI/design-system';
 import type { EventKind } from '../session-timeline.types';
 import { pillColors } from '../session-timeline.styles';
 

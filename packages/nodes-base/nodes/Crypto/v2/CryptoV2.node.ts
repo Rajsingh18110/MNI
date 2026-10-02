@@ -1,4 +1,4 @@
-import { formatPemBlock } from '@n8n/utils/format-pem-block';
+import { formatPemBlock } from '@MNI/utils/format-pem-block';
 import type { BinaryToTextEncoding, CipherGCMTypes } from 'crypto';
 import {
 	constants,
@@ -21,8 +21,8 @@ import type {
 	INodeTypeBaseDescription,
 	INodeTypeDescription,
 	JsonObject,
-} from 'n8n-workflow';
-import { deepCopy, BINARY_ENCODING, NodeConnectionTypes, NodeOperationError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { deepCopy, BINARY_ENCODING, NodeConnectionTypes, NodeOperationError } from 'MNI-workflow';
 import { pipeline } from 'stream/promises';
 import { v4 as uuid } from 'uuid';
 
@@ -85,7 +85,7 @@ const versionDescription: INodeTypeDescription = {
 	outputs: [NodeConnectionTypes.Main],
 	credentials: [
 		{
-			// eslint-disable-next-line n8n-nodes-base/node-class-description-credentials-name-unsuffixed
+			// eslint-disable-next-line MNI-nodes-base/node-class-description-credentials-name-unsuffixed
 			name: 'crypto',
 			required: true,
 			displayOptions: {

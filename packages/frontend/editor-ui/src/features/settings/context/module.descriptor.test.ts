@@ -3,7 +3,7 @@ import {
 	CONTEXT_PREFERENCES_CONTROL_VARIANT,
 	CONTEXT_PREFERENCES_ENABLED_VARIANT,
 	CONTEXT_PREFERENCES_FLAG,
-} from '@n8n/api-types';
+} from '@MNI/api-types';
 import { createMemoryHistory, createRouter, type RouteRecordRaw } from 'vue-router';
 
 import { VIEWS } from '@/app/constants';

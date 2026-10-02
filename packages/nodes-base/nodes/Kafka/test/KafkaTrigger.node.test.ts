@@ -18,7 +18,7 @@ import {
 	UnexpectedError,
 	type INodeTypeBaseDescription,
 	type IRun,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { testTriggerNode } from '@test/nodes/TriggerHelpers';
 
@@ -29,7 +29,7 @@ import type { Mock, Mocked } from 'vitest';
 
 vi.mock('kafkajs');
 vi.mock('@kafkajs/confluent-schema-registry');
-vi.mock('@n8n/utils/sleep', () => ({
+vi.mock('@MNI/utils/sleep', () => ({
 	sleep: vi.fn().mockResolvedValue(undefined),
 }));
 
@@ -208,14 +208,14 @@ describe('KafkaTrigger Node', () => {
 			},
 			credential: {
 				brokers: 'localhost:9092',
-				clientId: 'n8n-kafka',
+				clientId: 'MNI-kafka',
 				ssl: false,
 				authentication: false,
 			},
 		});
 
 		expect(Kafka).toHaveBeenCalledWith({
-			clientId: 'n8n-kafka',
+			clientId: 'MNI-kafka',
 			brokers: ['localhost:9092'],
 			ssl: false,
 			logLevel: logLevel.ERROR,
@@ -284,7 +284,7 @@ describe('KafkaTrigger Node', () => {
 				},
 				credential: {
 					brokers: 'localhost:9092',
-					clientId: 'n8n-kafka',
+					clientId: 'MNI-kafka',
 					ssl: true,
 					authentication: false,
 				},
@@ -340,7 +340,7 @@ describe('KafkaTrigger Node', () => {
 			},
 			credential: {
 				brokers: 'localhost:9092',
-				clientId: 'n8n-kafka',
+				clientId: 'MNI-kafka',
 				ssl: true,
 				authentication: true,
 				username: 'test-user',
@@ -350,7 +350,7 @@ describe('KafkaTrigger Node', () => {
 		});
 
 		expect(Kafka).toHaveBeenCalledWith({
-			clientId: 'n8n-kafka',
+			clientId: 'MNI-kafka',
 			brokers: ['localhost:9092'],
 			ssl: true,
 			logLevel: logLevel.ERROR,
@@ -374,7 +374,7 @@ describe('KafkaTrigger Node', () => {
 				},
 				credential: {
 					brokers: 'localhost:9092',
-					clientId: 'n8n-kafka',
+					clientId: 'MNI-kafka',
 					ssl: false,
 					authentication: true,
 				},
@@ -396,7 +396,7 @@ describe('KafkaTrigger Node', () => {
 			},
 			credential: {
 				brokers: 'localhost:9092',
-				clientId: 'n8n-kafka',
+				clientId: 'MNI-kafka',
 				ssl: false,
 				authentication: false,
 			},
@@ -442,7 +442,7 @@ describe('KafkaTrigger Node', () => {
 			credentials: {
 				kafka: {
 					brokers: 'localhost:9092',
-					clientId: 'n8n-kafka',
+					clientId: 'MNI-kafka',
 					ssl: false,
 					authentication: false,
 				},
@@ -497,7 +497,7 @@ describe('KafkaTrigger Node', () => {
 			credentials: {
 				kafka: {
 					brokers: 'localhost:9092',
-					clientId: 'n8n-kafka',
+					clientId: 'MNI-kafka',
 					ssl: false,
 					authentication: false,
 				},
@@ -536,7 +536,7 @@ describe('KafkaTrigger Node', () => {
 			},
 			credential: {
 				brokers: 'localhost:9092',
-				clientId: 'n8n-kafka',
+				clientId: 'MNI-kafka',
 				ssl: false,
 				authentication: false,
 			},
@@ -582,7 +582,7 @@ describe('KafkaTrigger Node', () => {
 				credentials: {
 					kafka: {
 						brokers: 'localhost:9092',
-						clientId: 'n8n-kafka',
+						clientId: 'MNI-kafka',
 						ssl: false,
 						authentication: false,
 					},
@@ -614,7 +614,7 @@ describe('KafkaTrigger Node', () => {
 			},
 			credential: {
 				brokers: 'localhost:9092',
-				clientId: 'n8n-kafka',
+				clientId: 'MNI-kafka',
 				ssl: false,
 				authentication: false,
 			},
@@ -645,7 +645,7 @@ describe('KafkaTrigger Node', () => {
 			},
 			credential: {
 				brokers: 'localhost:9092',
-				clientId: 'n8n-kafka',
+				clientId: 'MNI-kafka',
 				ssl: false,
 				authentication: false,
 			},
@@ -697,7 +697,7 @@ describe('KafkaTrigger Node', () => {
 				},
 				credential: {
 					brokers: 'localhost:9092',
-					clientId: 'n8n-kafka',
+					clientId: 'MNI-kafka',
 					ssl: false,
 					authentication: false,
 				},
@@ -733,7 +733,7 @@ describe('KafkaTrigger Node', () => {
 				},
 				credential: {
 					brokers: 'localhost:9092',
-					clientId: 'n8n-kafka',
+					clientId: 'MNI-kafka',
 					ssl: false,
 					authentication: false,
 				},
@@ -768,7 +768,7 @@ describe('KafkaTrigger Node', () => {
 				},
 				credential: {
 					brokers: 'localhost:9092',
-					clientId: 'n8n-kafka',
+					clientId: 'MNI-kafka',
 					ssl: false,
 					authentication: false,
 				},
@@ -801,7 +801,7 @@ describe('KafkaTrigger Node', () => {
 			},
 			credential: {
 				brokers: 'localhost:9092',
-				clientId: 'n8n-kafka',
+				clientId: 'MNI-kafka',
 				ssl: false,
 				authentication: false,
 			},
@@ -842,7 +842,7 @@ describe('KafkaTrigger Node', () => {
 			},
 			credential: {
 				brokers: 'localhost:9092',
-				clientId: 'n8n-kafka',
+				clientId: 'MNI-kafka',
 				ssl: false,
 				authentication: false,
 			},
@@ -883,7 +883,7 @@ describe('KafkaTrigger Node', () => {
 			},
 			credential: {
 				brokers: 'localhost:9092',
-				clientId: 'n8n-kafka',
+				clientId: 'MNI-kafka',
 				ssl: false,
 				authentication: false,
 			},
@@ -923,7 +923,7 @@ describe('KafkaTrigger Node', () => {
 			},
 			credential: {
 				brokers: 'localhost:9092',
-				clientId: 'n8n-kafka',
+				clientId: 'MNI-kafka',
 				ssl: false,
 				authentication: false,
 			},
@@ -966,7 +966,7 @@ describe('KafkaTrigger Node', () => {
 			},
 			credential: {
 				brokers: 'localhost:9092',
-				clientId: 'n8n-kafka',
+				clientId: 'MNI-kafka',
 				ssl: false,
 				authentication: false,
 			},
@@ -1008,7 +1008,7 @@ describe('KafkaTrigger Node', () => {
 			},
 			credential: {
 				brokers: 'localhost:9092',
-				clientId: 'n8n-kafka',
+				clientId: 'MNI-kafka',
 				ssl: false,
 				authentication: false,
 			},
@@ -1053,7 +1053,7 @@ describe('KafkaTrigger Node', () => {
 			},
 			credential: {
 				brokers: 'localhost:9092',
-				clientId: 'n8n-kafka',
+				clientId: 'MNI-kafka',
 				ssl: false,
 				authentication: false,
 			},
@@ -1092,7 +1092,7 @@ describe('KafkaTrigger Node', () => {
 			},
 			credential: {
 				brokers: 'localhost:9092',
-				clientId: 'n8n-kafka',
+				clientId: 'MNI-kafka',
 				ssl: false,
 				authentication: false,
 			},
@@ -1138,7 +1138,7 @@ describe('KafkaTrigger Node', () => {
 			},
 			credential: {
 				brokers: 'localhost:9092',
-				clientId: 'n8n-kafka',
+				clientId: 'MNI-kafka',
 				ssl: false,
 				authentication: false,
 			},
@@ -1188,7 +1188,7 @@ describe('KafkaTrigger Node', () => {
 			},
 			credential: {
 				brokers: 'localhost:9092',
-				clientId: 'n8n-kafka',
+				clientId: 'MNI-kafka',
 				ssl: false,
 				authentication: false,
 			},
@@ -1266,7 +1266,7 @@ describe('KafkaTrigger Node', () => {
 			},
 			credential: {
 				brokers: 'localhost:9092',
-				clientId: 'n8n-kafka',
+				clientId: 'MNI-kafka',
 				ssl: false,
 				authentication: false,
 			},
@@ -1305,7 +1305,7 @@ describe('KafkaTrigger Node', () => {
 			},
 			credential: {
 				brokers: 'localhost:9092',
-				clientId: 'n8n-kafka',
+				clientId: 'MNI-kafka',
 				ssl: false,
 				authentication: false,
 			},
@@ -1338,7 +1338,7 @@ describe('KafkaTrigger Node', () => {
 			},
 			credential: {
 				brokers: 'localhost:9092',
-				clientId: 'n8n-kafka',
+				clientId: 'MNI-kafka',
 				ssl: false,
 				authentication: false,
 			},
@@ -1366,7 +1366,7 @@ describe('KafkaTrigger Node', () => {
 			},
 			credential: {
 				brokers: 'localhost:9092',
-				clientId: 'n8n-kafka',
+				clientId: 'MNI-kafka',
 				ssl: false,
 				authentication: false,
 			},
@@ -1401,7 +1401,7 @@ describe('KafkaTrigger Node', () => {
 			},
 			credential: {
 				brokers: 'localhost:9092',
-				clientId: 'n8n-kafka',
+				clientId: 'MNI-kafka',
 				ssl: false,
 				authentication: false,
 			},
@@ -1436,7 +1436,7 @@ describe('KafkaTrigger Node', () => {
 			},
 			credential: {
 				brokers: 'localhost:9092',
-				clientId: 'n8n-kafka',
+				clientId: 'MNI-kafka',
 				ssl: false,
 				authentication: false,
 			},
@@ -1473,7 +1473,7 @@ describe('KafkaTrigger Node', () => {
 				},
 				credential: {
 					brokers: 'localhost:9092',
-					clientId: 'n8n-kafka',
+					clientId: 'MNI-kafka',
 					ssl: false,
 					authentication: false,
 				},
@@ -1515,7 +1515,7 @@ describe('KafkaTrigger Node', () => {
 			},
 			credential: {
 				brokers: 'localhost:9092',
-				clientId: 'n8n-kafka',
+				clientId: 'MNI-kafka',
 				ssl: false,
 				authentication: false,
 			},
@@ -1547,7 +1547,7 @@ describe('KafkaTrigger Node', () => {
 			},
 			credential: {
 				brokers: 'localhost:9092',
-				clientId: 'n8n-kafka',
+				clientId: 'MNI-kafka',
 				ssl: false,
 				authentication: false,
 			},
@@ -1585,7 +1585,7 @@ describe('KafkaTrigger Node', () => {
 			},
 			credential: {
 				brokers: 'localhost:9092',
-				clientId: 'n8n-kafka',
+				clientId: 'MNI-kafka',
 				ssl: false,
 				authentication: false,
 			},
@@ -1636,7 +1636,7 @@ describe('KafkaTrigger Node', () => {
 			},
 			credential: {
 				brokers: 'localhost:9092',
-				clientId: 'n8n-kafka',
+				clientId: 'MNI-kafka',
 				ssl: false,
 				authentication: false,
 			},
@@ -1669,7 +1669,7 @@ describe('KafkaTrigger Node', () => {
 			},
 			credential: {
 				brokers: 'localhost:9092',
-				clientId: 'n8n-kafka',
+				clientId: 'MNI-kafka',
 				ssl: false,
 				authentication: false,
 			},
@@ -1699,7 +1699,7 @@ describe('KafkaTrigger Node', () => {
 			},
 			credential: {
 				brokers: 'localhost:9092',
-				clientId: 'n8n-kafka',
+				clientId: 'MNI-kafka',
 				ssl: false,
 				authentication: false,
 			},
@@ -1740,7 +1740,7 @@ describe('KafkaTrigger Node', () => {
 			},
 			credential: {
 				brokers: 'localhost:9092',
-				clientId: 'n8n-kafka',
+				clientId: 'MNI-kafka',
 				ssl: false,
 				authentication: false,
 			},
@@ -1778,7 +1778,7 @@ describe('KafkaTrigger Node', () => {
 			},
 			credential: {
 				brokers: 'localhost:9092',
-				clientId: 'n8n-kafka',
+				clientId: 'MNI-kafka',
 				ssl: false,
 				authentication: false,
 			},
@@ -1834,7 +1834,7 @@ describe('KafkaTrigger Node', () => {
 			},
 			credential: {
 				brokers: 'localhost:9092',
-				clientId: 'n8n-kafka',
+				clientId: 'MNI-kafka',
 				ssl: false,
 				authentication: false,
 			},
@@ -1876,7 +1876,7 @@ describe('KafkaTrigger Node', () => {
 				},
 				credential: {
 					brokers: 'localhost:9092',
-					clientId: 'n8n-kafka',
+					clientId: 'MNI-kafka',
 					ssl: false,
 					authentication: false,
 				},
@@ -1906,7 +1906,7 @@ describe('KafkaTrigger Node', () => {
 				},
 				credential: {
 					brokers: 'localhost:9092',
-					clientId: 'n8n-kafka',
+					clientId: 'MNI-kafka',
 					ssl: false,
 					authentication: false,
 				},
@@ -1934,7 +1934,7 @@ describe('KafkaTrigger Node', () => {
 				},
 				credential: {
 					brokers: 'localhost:9092',
-					clientId: 'n8n-kafka',
+					clientId: 'MNI-kafka',
 					ssl: false,
 					authentication: false,
 				},
@@ -1965,7 +1965,7 @@ describe('KafkaTrigger Node', () => {
 				},
 				credential: {
 					brokers: 'localhost:9092',
-					clientId: 'n8n-kafka',
+					clientId: 'MNI-kafka',
 					ssl: false,
 					authentication: false,
 				},
@@ -1996,7 +1996,7 @@ describe('KafkaTrigger Node', () => {
 				},
 				credential: {
 					brokers: 'localhost:9092',
-					clientId: 'n8n-kafka',
+					clientId: 'MNI-kafka',
 					ssl: false,
 					authentication: false,
 				},
@@ -2033,7 +2033,7 @@ describe('KafkaTrigger Node', () => {
 				},
 				credential: {
 					brokers: 'localhost:9092',
-					clientId: 'n8n-kafka',
+					clientId: 'MNI-kafka',
 					ssl: false,
 					authentication: false,
 				},
@@ -2064,7 +2064,7 @@ describe('KafkaTrigger Node', () => {
 				},
 				credential: {
 					brokers: 'localhost:9092',
-					clientId: 'n8n-kafka',
+					clientId: 'MNI-kafka',
 					ssl: false,
 					authentication: false,
 				},
@@ -2097,7 +2097,7 @@ describe('KafkaTrigger Node', () => {
 				},
 				credential: {
 					brokers: 'localhost:9092',
-					clientId: 'n8n-kafka',
+					clientId: 'MNI-kafka',
 					ssl: false,
 					authentication: false,
 				},
@@ -2132,7 +2132,7 @@ describe('KafkaTrigger Node', () => {
 					},
 					credential: {
 						brokers: 'localhost:9092',
-						clientId: 'n8n-kafka',
+						clientId: 'MNI-kafka',
 						ssl: false,
 						authentication: false,
 					},
@@ -2164,7 +2164,7 @@ describe('KafkaTrigger Node', () => {
 				},
 				credential: {
 					brokers: 'localhost:9092',
-					clientId: 'n8n-kafka',
+					clientId: 'MNI-kafka',
 					ssl: false,
 					authentication: false,
 				},
@@ -2256,7 +2256,7 @@ describe('KafkaTrigger Node', () => {
 				},
 				credential: {
 					brokers: 'localhost:9092',
-					clientId: 'n8n-kafka',
+					clientId: 'MNI-kafka',
 					ssl: false,
 					authentication: false,
 				},
@@ -2338,7 +2338,7 @@ describe('KafkaTrigger Node', () => {
 				},
 				credential: {
 					brokers: 'localhost:9092',
-					clientId: 'n8n-kafka',
+					clientId: 'MNI-kafka',
 					ssl: false,
 					authentication: false,
 				},
@@ -2369,7 +2369,7 @@ describe('KafkaTrigger Node', () => {
 				},
 				credential: {
 					brokers: 'localhost:9092',
-					clientId: 'n8n-kafka',
+					clientId: 'MNI-kafka',
 					ssl: false,
 					authentication: false,
 				},
@@ -2398,7 +2398,7 @@ describe('KafkaTrigger Node', () => {
 				},
 				credential: {
 					brokers: 'localhost:9092',
-					clientId: 'n8n-kafka',
+					clientId: 'MNI-kafka',
 					ssl: false,
 					authentication: false,
 				},
@@ -2426,7 +2426,7 @@ describe('KafkaTrigger Node', () => {
 				},
 				credential: {
 					brokers: 'localhost:9092',
-					clientId: 'n8n-kafka',
+					clientId: 'MNI-kafka',
 					ssl: false,
 					authentication: false,
 				},
@@ -2464,7 +2464,7 @@ describe('KafkaTrigger Node', () => {
 				},
 				credential: {
 					brokers: 'localhost:9092',
-					clientId: 'n8n-kafka',
+					clientId: 'MNI-kafka',
 					ssl: false,
 					authentication: false,
 				},

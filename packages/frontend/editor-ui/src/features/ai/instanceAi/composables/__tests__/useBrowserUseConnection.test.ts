@@ -59,8 +59,8 @@ vi.mock('../useExtensionDirectConnect', () => ({
 		attempt: attemptDouble,
 	}),
 }));
-vi.mock('@n8n/composables/useToast', () => ({ useToast: () => toastMock }));
-vi.mock('@n8n/i18n', () => ({ useI18n: () => ({ baseText: (key: string) => key }) }));
+vi.mock('@MNI/composables/useToast', () => ({ useToast: () => toastMock }));
+vi.mock('@MNI/i18n', () => ({ useI18n: () => ({ baseText: (key: string) => key }) }));
 
 beforeEach(() => {
 	vi.clearAllMocks();

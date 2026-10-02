@@ -8,13 +8,13 @@ import type {
 	INodeType,
 	ResourceMapperField,
 	ResourceMapperTypeOptions,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import {
 	ExpressionError,
 	isResourceMapperValue,
 	NodeHelpers,
 	validateFieldType,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import type { ExtendedValidationResult } from '@/interfaces';
 

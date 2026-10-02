@@ -3,7 +3,7 @@
  * These fixtures create minimal workflow structures needed for testing.
  */
 
-import { NodeConnectionTypes } from 'n8n-workflow';
+import { NodeConnectionTypes } from 'MNI-workflow';
 import { v4 as uuid } from 'uuid';
 
 /**
@@ -19,7 +19,7 @@ export function createSubWorkflowFixture() {
 						values: [{ name: 'test' }],
 					},
 				},
-				type: 'n8n-nodes-base.executeWorkflowTrigger',
+				type: 'MNI-nodes-base.executeWorkflowTrigger',
 				typeVersion: 1.1,
 				position: [0, 0] as [number, number],
 				id: uuid(),
@@ -40,7 +40,7 @@ export function createParentWorkflowFixture(childWorkflowId: string) {
 		nodes: [
 			{
 				parameters: {},
-				type: 'n8n-nodes-base.manualTrigger',
+				type: 'MNI-nodes-base.manualTrigger',
 				typeVersion: 1,
 				position: [0, 0] as [number, number],
 				id: uuid(),
@@ -76,7 +76,7 @@ export function createParentWorkflowFixture(childWorkflowId: string) {
 					},
 					options: {},
 				},
-				type: 'n8n-nodes-base.executeWorkflow',
+				type: 'MNI-nodes-base.executeWorkflow',
 				typeVersion: 1.3,
 				position: [208, 0] as [number, number],
 				id: uuid(),
@@ -113,7 +113,7 @@ export function createMiddleWorkflowFixture(childWorkflowId: string) {
 						values: [{ name: 'test' }],
 					},
 				},
-				type: 'n8n-nodes-base.executeWorkflowTrigger',
+				type: 'MNI-nodes-base.executeWorkflowTrigger',
 				typeVersion: 1.1,
 				position: [0, 0] as [number, number],
 				id: uuid(),
@@ -149,7 +149,7 @@ export function createMiddleWorkflowFixture(childWorkflowId: string) {
 					},
 					options: {},
 				},
-				type: 'n8n-nodes-base.executeWorkflow',
+				type: 'MNI-nodes-base.executeWorkflow',
 				typeVersion: 1.3,
 				position: [208, 0] as [number, number],
 				id: uuid(),
@@ -182,7 +182,7 @@ export function createSimpleWorkflowFixture() {
 		nodes: [
 			{
 				parameters: {},
-				type: 'n8n-nodes-base.manualTrigger',
+				type: 'MNI-nodes-base.manualTrigger',
 				typeVersion: 1,
 				position: [0, 0] as [number, number],
 				id: uuid(),

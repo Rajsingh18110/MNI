@@ -1,11 +1,11 @@
-import type { DataRequestResponse, PartialAdditionalData, TaskData } from '@n8n/task-runner';
+import type { DataRequestResponse, PartialAdditionalData, TaskData } from '@MNI/task-runner';
 import {
 	createRunExecutionData,
 	type IRunExecutionData,
 	type IWorkflowExecuteAdditionalData,
 	type Workflow,
 	type WorkflowParameters,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 /**
  * Transforms TaskData to DataRequestResponse. The main purpose of the

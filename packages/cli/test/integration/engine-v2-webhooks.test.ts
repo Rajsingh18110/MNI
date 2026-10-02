@@ -6,14 +6,14 @@
  * assert what reaches the data plane.
  */
 
-import { Logger } from '@n8n/backend-common';
-import { createWorkflow, mockInstance, testDb } from '@n8n/backend-test-utils';
-import { GlobalConfig } from '@n8n/config';
-import { UUID_V7_PATTERN } from '@n8n/constants';
-import type { User } from '@n8n/db';
-import { Container } from '@n8n/di';
-import type { INode } from 'n8n-workflow';
-import { WEBHOOK_NODE_TYPE } from 'n8n-workflow';
+import { Logger } from '@MNI/backend-common';
+import { createWorkflow, mockInstance, testDb } from '@MNI/backend-test-utils';
+import { GlobalConfig } from '@MNI/config';
+import { UUID_V7_PATTERN } from '@MNI/constants';
+import type { User } from '@MNI/db';
+import { Container } from '@MNI/di';
+import type { INode } from 'MNI-workflow';
+import { WEBHOOK_NODE_TYPE } from 'MNI-workflow';
 import { randomUUID } from 'node:crypto';
 import { agent as testAgent } from 'supertest';
 

@@ -62,13 +62,13 @@ export abstract class BasePage extends FloatingUiHelper {
 
 	/**
 	 * Wait for debounce to complete.
-	 * Respects the N8N_DEBOUNCE_MULTIPLIER sessionStorage setting.
+	 * Respects the MNI_DEBOUNCE_MULTIPLIER sessionStorage setting.
 	 * With multiplier=0 (test mode), returns immediately.
 	 * @param baseTime - Base debounce time in milliseconds (default: 150)
 	 */
 	protected async waitForDebounce(baseTime = 150): Promise<void> {
 		const effectiveTime = await this.page.evaluate((time) => {
-			const stored = sessionStorage.getItem('N8N_DEBOUNCE_MULTIPLIER');
+			const stored = sessionStorage.getItem('MNI_DEBOUNCE_MULTIPLIER');
 			const multiplier = stored !== null ? parseFloat(stored) : 1;
 			return Math.round(time * (Number.isNaN(multiplier) ? 1 : multiplier));
 		}, baseTime);

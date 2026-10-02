@@ -1,4 +1,4 @@
-import type { INodeProperties } from 'n8n-workflow';
+import type { INodeProperties } from 'MNI-workflow';
 
 import { JOB_RUN_DEFAULT_TIMEOUT_SECONDS } from '../../constants';
 

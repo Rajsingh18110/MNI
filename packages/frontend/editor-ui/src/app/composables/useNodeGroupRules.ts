@@ -1,5 +1,5 @@
-import { GROUPS_WITH_MANY_BOUNDARIES_FLAG, GROUPS_WITH_TRIGGERS_FLAG } from '@n8n/api-types';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { GROUPS_WITH_MANY_BOUNDARIES_FLAG, GROUPS_WITH_TRIGGERS_FLAG } from '@MNI/api-types';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { computed } from 'vue';
 
 import { usePostHog } from '@/app/stores/posthog.store';

@@ -1,6 +1,6 @@
 import chunk from 'lodash/chunk';
 import { reactive, watch } from 'vue';
-import { useRootStore } from '@n8n/stores/useRootStore';
+import { useRootStore } from '@MNI/stores/useRootStore';
 import { useWorkflowsListStore } from '@/app/stores/workflowsList.store';
 import { fetchDataTablesApi } from '@/features/core/dataTable/dataTable.api';
 import type { ArtifactTab } from './useCanvasPreview';

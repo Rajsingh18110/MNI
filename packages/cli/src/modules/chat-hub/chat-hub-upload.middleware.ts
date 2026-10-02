@@ -1,5 +1,5 @@
-import { GlobalConfig } from '@n8n/config';
-import { Service } from '@n8n/di';
+import { GlobalConfig } from '@MNI/config';
+import { Service } from '@MNI/di';
 import type { RequestHandler } from 'express';
 import multer from 'multer';
 

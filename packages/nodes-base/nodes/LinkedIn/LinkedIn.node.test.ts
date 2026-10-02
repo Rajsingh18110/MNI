@@ -1,4 +1,4 @@
-import type { IExecuteFunctions, INode } from 'n8n-workflow';
+import type { IExecuteFunctions, INode } from 'MNI-workflow';
 import type { MockProxy } from 'vitest-mock-extended';
 import { mock } from 'vitest-mock-extended';
 
@@ -11,7 +11,7 @@ describe('LinkedIn node', () => {
 	const node = mock<INode>({
 		id: 'linked-in-node',
 		name: 'LinkedIn',
-		type: 'n8n-nodes-base.linkedIn',
+		type: 'MNI-nodes-base.linkedIn',
 		typeVersion: 1,
 	});
 	const linkedInApiRequest = vi.mocked(GenericFunctions.linkedInApiRequest);

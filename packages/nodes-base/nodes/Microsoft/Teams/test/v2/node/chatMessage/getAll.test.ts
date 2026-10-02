@@ -41,7 +41,7 @@ describe('Test MicrosoftTeamsV2, chatMessage => getAll', () => {
 					body: {
 						contentType: 'html',
 						content:
-							'Hello!<br>\n<br>\n<em> Powered by <a href="http://localhost:5678/workflow/i3NYGF0LXV4qDFV9?utm_source=n8n-internal&amp;utm_medium=powered_by&amp;utm_campaign=n8n-nodes-base.microsoftTeams_b888bd11cd1ddbb95450babf3e199556799d999b896f650de768b8370ee50363">this MNI workflow</a> </em>',
+							'Hello!<br>\n<br>\n<em> Powered by <a href="http://localhost:5678/workflow/i3NYGF0LXV4qDFV9?utm_source=MNI-internal&amp;utm_medium=powered_by&amp;utm_campaign=MNI-nodes-base.microsoftTeams_b888bd11cd1ddbb95450babf3e199556799d999b896f650de768b8370ee50363">this MNI workflow</a> </em>',
 					},
 					attachments: [],
 					mentions: [],
@@ -79,7 +79,7 @@ describe('Test MicrosoftTeamsV2, chatMessage => getAll', () => {
 					body: {
 						contentType: 'html',
 						content:
-							'tada<br>\n<br>\n<em> Powered by <a href="http://localhost:5678/workflow/5sTm8tp3j3niFewr?utm_source=n8n-internal&amp;utm_medium=powered_by&amp;utm_campaign=n8n-nodes-base.microsoftTeams_b888bd11cd1ddbb95450babf3e199556799d999b896f650de768b8370ee50363">this MNI workflow</a> </em>',
+							'tada<br>\n<br>\n<em> Powered by <a href="http://localhost:5678/workflow/5sTm8tp3j3niFewr?utm_source=MNI-internal&amp;utm_medium=powered_by&amp;utm_campaign=MNI-nodes-base.microsoftTeams_b888bd11cd1ddbb95450babf3e199556799d999b896f650de768b8370ee50363">this MNI workflow</a> </em>',
 					},
 					attachments: [],
 					mentions: [],

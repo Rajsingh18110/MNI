@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 import { computed, ref } from 'vue';
-import { ROLE, type UsersList } from '@n8n/api-types';
-import { useI18n } from '@n8n/i18n';
-import { N8nLink } from '@n8n/design-system';
+import { ROLE, type UsersList } from '@MNI/api-types';
+import { useI18n } from '@MNI/i18n';
+import { N8nLink } from '@MNI/design-system';
 import SettingsUsersProjectsModal from './SettingsUsersProjectsModal.vue';
 
 const props = defineProps<{ data: UsersList['items'][number] }>();
@@ -78,7 +78,7 @@ const projects = computed(() => ({
 	min-width: 0;
 }
 
-// N8nLink wraps the slot in a theme span > .n8n-text span. Force both to flex
+// N8nLink wraps the slot in a theme span > .MNI-text span. Force both to flex
 // so the project names (flexible) truncate while commas / +N (fixed) stay pinned
 // on a single line — never wrapping, never clipping the overflow count.
 .trigger {
@@ -94,7 +94,7 @@ const projects = computed(() => ({
 		max-width: 100%;
 	}
 
-	:global(.n8n-text) {
+	:global(.MNI-text) {
 		display: flex;
 		align-items: baseline;
 		min-width: 0;

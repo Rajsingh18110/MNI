@@ -27,7 +27,7 @@ describe('filterToFailedSpecs', () => {
 	}
 
 	function parseBody(body: unknown): unknown {
-		// eslint-disable-next-line n8n-local-rules/no-uncaught-json-parse
+		// eslint-disable-next-line MNI-local-rules/no-uncaught-json-parse
 		return JSON.parse(body as string) as unknown;
 	}
 

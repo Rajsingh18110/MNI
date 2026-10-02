@@ -5,14 +5,14 @@ import userEvent from '@testing-library/user-event';
 import WorkflowDescriptionModal from '@/features/workflows/components/WorkflowDescriptionModal.vue';
 import { useWorkflowsStore } from '@/app/stores/workflows.store';
 import { useUIStore } from '@/app/stores/ui.store';
-import { useSettingsStore } from '@n8n/stores/settings.store';
-import { useToast } from '@n8n/composables/useToast';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
-import { STORES } from '@n8n/stores';
+import { useSettingsStore } from '@MNI/stores/settings.store';
+import { useToast } from '@MNI/composables/useToast';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
+import { STORES } from '@MNI/stores';
 import { WORKFLOW_DESCRIPTION_MODAL_KEY } from '@/app/constants';
 import type { IWorkflowDb } from '@/Interface';
 
-vi.mock('@n8n/composables/useToast', () => {
+vi.mock('@MNI/composables/useToast', () => {
 	const showError = vi.fn();
 	return {
 		useToast: () => ({
@@ -21,7 +21,7 @@ vi.mock('@n8n/composables/useToast', () => {
 	};
 });
 
-vi.mock('@n8n/composables/useTelemetry', () => {
+vi.mock('@MNI/composables/useTelemetry', () => {
 	const track = vi.fn();
 	return {
 		useTelemetry: () => ({

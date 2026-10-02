@@ -15,7 +15,7 @@ jobs:
       pull-requests: write
     if: |
       github.event_name == 'workflow_dispatch' ||
-      (github.event_name == 'schedule' && github.repository == 'n8n-io/n8n')
+      (github.event_name == 'schedule' && github.repository == 'MNI-io/MNI')
     runs-on: ubuntu-latest
     outputs:
       pull-request-number: ${{ steps.create-pr.outputs.pull-request-number }}
@@ -24,8 +24,8 @@ jobs:
         id: generate-token
         uses: actions/create-github-app-token@29824e69f54612133e76f7eaac726eef6c875baf # v2.2.1
         with:
-          app-id: ${{ secrets.N8N_ASSISTANT_APP_ID }}
-          private-key: ${{ secrets.N8N_ASSISTANT_PRIVATE_KEY }}
+          app-id: ${{ secrets.MNI_ASSISTANT_APP_ID }}
+          private-key: ${{ secrets.MNI_ASSISTANT_PRIVATE_KEY }}
 
       - name: Checkout repository
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -42,7 +42,7 @@ jobs:
           cd packages/frontend/editor-ui
           node scripts/fetch-node-popularity.mjs
         env:
-          N8N_FAIL_ON_POPULARITY_FETCH_ERROR: 'false' # Don't fail if API is down
+          MNI_FAIL_ON_POPULARITY_FETCH_ERROR: 'false' # Don't fail if API is down
 
       - name: Format generated file
         run: pnpm biome format --write packages/frontend/editor-ui/data/node-popularity.json
@@ -87,7 +87,7 @@ jobs:
     if: |
       needs.update-popularity.outputs.pull-request-number != '' &&
       (github.event_name == 'workflow_dispatch' ||
-      (github.event_name == 'schedule' && github.repository == 'n8n-io/n8n'))
+      (github.event_name == 'schedule' && github.repository == 'MNI-io/MNI'))
     uses: ./.github/workflows/util-approve-and-set-automerge.yml
     secrets: inherit
     with:

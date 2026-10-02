@@ -1,5 +1,5 @@
-import type { PushMessage } from '@n8n/api-types';
-import { Service } from '@n8n/di';
+import type { PushMessage } from '@MNI/api-types';
+import { Service } from '@MNI/di';
 
 import { Push } from '@/push';
 import { WorkflowSharingService } from '@/workflows/workflow-sharing.service';

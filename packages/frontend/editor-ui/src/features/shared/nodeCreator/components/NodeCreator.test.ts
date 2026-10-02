@@ -1,7 +1,7 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { createPinia } from 'pinia';
 import { onClickOutside } from '@vueuse/core';
-import { OVERLAY_LAYER_SELECTOR } from '@n8n/design-system';
+import { OVERLAY_LAYER_SELECTOR } from '@MNI/design-system';
 import { createComponentRenderer } from '@/__tests__/render';
 import NodeCreator from './NodeCreator.vue';
 
@@ -62,7 +62,7 @@ vi.mock('@/features/ai/assistant/chatPanel.store', () => ({
 	useChatPanelStore: vi.fn(() => ({ isOpen: false, width: 0 })),
 }));
 
-vi.mock('@n8n/stores/settings.store', () => ({
+vi.mock('@MNI/stores/settings.store', () => ({
 	useSettingsStore: vi.fn(() => ({ isCanvasOnly: false })),
 }));
 

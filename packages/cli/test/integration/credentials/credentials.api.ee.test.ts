@@ -7,13 +7,13 @@ import {
 	randomCredentialPayloadWithOauthTokenData,
 	testDb,
 	mockInstance,
-} from '@n8n/backend-test-utils';
-import type { Project, User, ListQueryDb } from '@n8n/db';
-import { GLOBAL_MEMBER_ROLE, ProjectRepository, SharedCredentialsRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
-import type { ProjectRole } from '@n8n/permissions';
-import { PERSONAL_SPACE_SHARING_SETTING } from '@n8n/permissions';
-import { In } from '@n8n/typeorm';
+} from '@MNI/backend-test-utils';
+import type { Project, User, ListQueryDb } from '@MNI/db';
+import { GLOBAL_MEMBER_ROLE, ProjectRepository, SharedCredentialsRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
+import type { ProjectRole } from '@MNI/permissions';
+import { PERSONAL_SPACE_SHARING_SETTING } from '@MNI/permissions';
+import { In } from '@MNI/typeorm';
 import { mock } from 'vitest-mock-extended';
 
 import config from '@/config';

@@ -1,22 +1,22 @@
-import { Logger } from '@n8n/backend-common';
-import { WorkflowsConfig } from '@n8n/config';
-import { Time } from '@n8n/constants';
+import { Logger } from '@MNI/backend-common';
+import { WorkflowsConfig } from '@MNI/config';
+import { Time } from '@MNI/constants';
 import {
 	WorkflowPublicationOutboxRepository,
 	WorkflowPublicationReason,
 	WorkflowPublicationTriggerStatusRepository,
 	WorkflowRepository,
-} from '@n8n/db';
-import { OnLeaderTakeover, OnShutdown } from '@n8n/decorators';
-import { Service } from '@n8n/di';
+} from '@MNI/db';
+import { OnLeaderTakeover, OnShutdown } from '@MNI/decorators';
+import { Service } from '@MNI/di';
 import {
 	ActiveWorkflowTriggers,
 	ErrorReporter,
 	InstanceSettings,
 	SpanStatus,
 	Tracing,
-} from 'n8n-core';
-import type { WorkflowId } from 'n8n-workflow';
+} from 'MNI-core';
+import type { WorkflowId } from 'MNI-workflow';
 
 import { EventService } from '@/events/event.service';
 import { NonWebhookTriggerRegistrar } from '@/workflows/triggers/non-webhook-trigger-registrar';

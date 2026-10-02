@@ -1,4 +1,4 @@
-import { formatPemBlock } from '@n8n/utils/format-pem-block';
+import { formatPemBlock } from '@MNI/utils/format-pem-block';
 import * as jwt from 'jsonwebtoken';
 import { DateTime } from 'luxon';
 import moment from 'moment-timezone';
@@ -11,7 +11,7 @@ import {
 	type IPollFunctions,
 	type IRequestOptions,
 	NodeOperationError,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 export const googleServiceAccountScopes = {
 	bigquery: ['https://www.googleapis.com/auth/bigquery'],

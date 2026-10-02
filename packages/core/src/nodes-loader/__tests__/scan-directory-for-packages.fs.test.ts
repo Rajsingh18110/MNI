@@ -1,5 +1,5 @@
-import { Logger } from '@n8n/backend-common';
-import { N8N_NODES_API_VERSION } from 'n8n-workflow';
+import { Logger } from '@MNI/backend-common';
+import { MNI_NODES_API_VERSION } from 'MNI-workflow';
 import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
@@ -18,7 +18,7 @@ describe('scanDirectoryForPackages (real filesystem)', () => {
 	const logger = mockInstance(Logger);
 
 	beforeEach(() => {
-		nodeModulesDir = mkdtempSync(path.join(tmpdir(), 'n8n-scan-'));
+		nodeModulesDir = mkdtempSync(path.join(tmpdir(), 'MNI-scan-'));
 		vi.clearAllMocks();
 	});
 
@@ -26,44 +26,44 @@ describe('scanDirectoryForPackages (real filesystem)', () => {
 		rmSync(nodeModulesDir, { recursive: true, force: true });
 	});
 
-	const writePackage = (name: string, n8n?: object) => {
+	const writePackage = (name: string, MNI?: object) => {
 		const dir = path.join(nodeModulesDir, name);
 		mkdirSync(dir);
 		writeFileSync(
 			path.join(dir, 'package.json'),
-			JSON.stringify({ name, version: '1.0.0', ...(n8n ? { n8n } : {}) }),
+			JSON.stringify({ name, version: '1.0.0', ...(MNI ? { MNI } : {}) }),
 		);
 		return dir;
 	};
 
 	it('returns a loader for every healthy package directory', async () => {
-		writePackage('n8n-nodes-good');
-		writePackage('n8n-nodes-better');
+		writePackage('MNI-nodes-good');
+		writePackage('MNI-nodes-better');
 
 		const loaders = await scanDirectoryForPackages(nodeModulesDir);
 
 		expect(loaders.map((loader) => loader.packageName).sort()).toEqual([
-			'n8n-nodes-better',
-			'n8n-nodes-good',
+			'MNI-nodes-better',
+			'MNI-nodes-good',
 		]);
 		expect(logger.warn).not.toHaveBeenCalled();
 	});
 
-	// A directory matching `n8n-nodes-*` left behind by a partial/corrupt
+	// A directory matching `MNI-nodes-*` left behind by a partial/corrupt
 	// community-package install has no readable `package.json`. The broken
 	// package should be logged and skipped so the instance still boots.
 	it('logs and skips a matched package directory that has no package.json', async () => {
 		// Broken package: matches the glob but has no package.json.
-		mkdirSync(path.join(nodeModulesDir, 'n8n-nodes-foo'));
+		mkdirSync(path.join(nodeModulesDir, 'MNI-nodes-foo'));
 		// Healthy package alongside it.
-		writePackage('n8n-nodes-good');
+		writePackage('MNI-nodes-good');
 
 		const loaders = await scanDirectoryForPackages(nodeModulesDir);
 
 		expect(loaders).toHaveLength(1);
-		expect(loaders[0].packageName).toBe('n8n-nodes-good');
+		expect(loaders[0].packageName).toBe('MNI-nodes-good');
 		expect(logger.warn).toHaveBeenCalledWith(
-			expect.stringContaining('n8n-nodes-foo'),
+			expect.stringContaining('MNI-nodes-foo'),
 			expect.objectContaining({ error: expect.any(Error) }),
 		);
 	});
@@ -74,48 +74,48 @@ describe('scanDirectoryForPackages (real filesystem)', () => {
 	// without being ignored it would resolve to the same package name and make
 	// the loader throw on a duplicate registration, bricking boot.
 	it('ignores a leftover package backup directory', async () => {
-		writePackage('n8n-nodes-good');
-		mkdirSync(path.join(nodeModulesDir, 'n8n-nodes-good.backup-1700000000000'));
+		writePackage('MNI-nodes-good');
+		mkdirSync(path.join(nodeModulesDir, 'MNI-nodes-good.backup-1700000000000'));
 		writeFileSync(
-			path.join(nodeModulesDir, 'n8n-nodes-good.backup-1700000000000', 'package.json'),
-			JSON.stringify({ name: 'n8n-nodes-good', version: '1.0.0' }),
+			path.join(nodeModulesDir, 'MNI-nodes-good.backup-1700000000000', 'package.json'),
+			JSON.stringify({ name: 'MNI-nodes-good', version: '1.0.0' }),
 		);
 
 		const loaders = await scanDirectoryForPackages(nodeModulesDir);
 
 		expect(loaders).toHaveLength(1);
-		expect(loaders[0].packageName).toBe('n8n-nodes-good');
+		expect(loaders[0].packageName).toBe('MNI-nodes-good');
 	});
 
 	// A package declaring a node API version newer than the runtime's must not
 	// get a loader at all — without one, its node code is never imported, so an
 	// incompatible package already on disk cannot crash startup.
 	it('registers no loader for a package requiring an unsupported node API version', async () => {
-		writePackage('n8n-nodes-future', {
+		writePackage('MNI-nodes-future', {
 			nodes: ['dist/nodes/Future.node.js'],
-			n8nNodesApiVersion: N8N_NODES_API_VERSION + 1,
+			n8nNodesApiVersion: MNI_NODES_API_VERSION + 1,
 		});
-		writePackage('n8n-nodes-good');
+		writePackage('MNI-nodes-good');
 
 		const loaders = await scanDirectoryForPackages(nodeModulesDir);
 
-		expect(loaders.map((loader) => loader.packageName)).toEqual(['n8n-nodes-good']);
-		expect(logger.warn).toHaveBeenCalledWith(expect.stringContaining('n8n-nodes-future'));
+		expect(loaders.map((loader) => loader.packageName)).toEqual(['MNI-nodes-good']);
+		expect(logger.warn).toHaveBeenCalledWith(expect.stringContaining('MNI-nodes-future'));
 		const [message] = vi.mocked(logger.warn).mock.calls[0];
-		expect(message).toContain(`node API version ${N8N_NODES_API_VERSION + 1}`);
-		expect(message).toContain(`supports up to ${N8N_NODES_API_VERSION}`);
+		expect(message).toContain(`node API version ${MNI_NODES_API_VERSION + 1}`);
+		expect(message).toContain(`supports up to ${MNI_NODES_API_VERSION}`);
 		expect(message).toContain('Upgrade MNI');
 	});
 
 	it('loads a package declaring a supported node API version alongside a legacy one', async () => {
-		writePackage('n8n-nodes-explicit', { n8nNodesApiVersion: N8N_NODES_API_VERSION });
-		writePackage('n8n-nodes-legacy');
+		writePackage('MNI-nodes-explicit', { n8nNodesApiVersion: MNI_NODES_API_VERSION });
+		writePackage('MNI-nodes-legacy');
 
 		const loaders = await scanDirectoryForPackages(nodeModulesDir);
 
 		expect(loaders.map((loader) => loader.packageName).sort()).toEqual([
-			'n8n-nodes-explicit',
-			'n8n-nodes-legacy',
+			'MNI-nodes-explicit',
+			'MNI-nodes-legacy',
 		]);
 		expect(logger.warn).not.toHaveBeenCalled();
 	});

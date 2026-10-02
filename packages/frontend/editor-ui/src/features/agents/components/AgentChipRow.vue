@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { N8nButton, N8nIcon, N8nText, N8nTooltip } from '@n8n/design-system';
+import { N8nButton, N8nIcon, N8nText, N8nTooltip } from '@MNI/design-system';
 
 const props = withDefaults(
 	defineProps<{
@@ -81,8 +81,8 @@ const emit = defineEmits<{
 }
 
 .label {
-	--n8n--row-label-width: max(7%, calc(var(--spacing--3xl) + var(--spacing--sm)));
-	flex: 0 0 var(--n8n--row-label-width);
+	--MNI--row-label-width: max(7%, calc(var(--spacing--3xl) + var(--spacing--sm)));
+	flex: 0 0 var(--MNI--row-label-width);
 	line-height: var(--line-height--sm);
 	margin-top: var(--spacing--3xs);
 }

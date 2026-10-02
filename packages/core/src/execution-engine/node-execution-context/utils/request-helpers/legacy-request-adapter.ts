@@ -1,13 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { OutboundHttp } from '@n8n/backend-network';
-import { Container } from '@n8n/di';
+import { OutboundHttp } from '@MNI/backend-network';
+import { Container } from '@MNI/di';
 import type {
 	INode,
 	IRequestOptions,
 	IWorkflowExecuteAdditionalData,
 	Workflow,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 /**
  * @deprecated This is only used by legacy request helpers, that are also deprecated

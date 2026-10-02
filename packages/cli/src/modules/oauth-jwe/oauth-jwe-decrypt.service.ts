@@ -1,9 +1,9 @@
-import { Service } from '@n8n/di';
-import type { IDataObject } from 'n8n-workflow';
-import { UnexpectedError, UserError } from 'n8n-workflow';
+import { Service } from '@MNI/di';
+import type { IDataObject } from 'MNI-workflow';
+import { UnexpectedError, UserError } from 'MNI-workflow';
 
 import type { DcrJweFields } from '@/oauth/oauth-jwe-service.proxy';
-import { UrlService } from '@n8n/backend-services';
+import { UrlService } from '@MNI/backend-services';
 
 import { OAuthJweKeyService } from './oauth-jwe-key.service';
 import { decryptJweToken, isJweToken } from './oauth-jwe.utils';

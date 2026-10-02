@@ -1,9 +1,9 @@
-import type { Logger } from '@n8n/backend-common';
-import type { WorkflowsConfig } from '@n8n/config';
-import type { WorkflowPublicationOutbox, WorkflowPublicationOutboxRepository } from '@n8n/db';
+import type { Logger } from '@MNI/backend-common';
+import type { WorkflowsConfig } from '@MNI/config';
+import type { WorkflowPublicationOutbox, WorkflowPublicationOutboxRepository } from '@MNI/db';
 import { mock } from 'vitest-mock-extended';
-import type { ErrorReporter, InstanceSettings, Span, Tracing } from 'n8n-core';
-import { UserError } from 'n8n-workflow';
+import type { ErrorReporter, InstanceSettings, Span, Tracing } from 'MNI-core';
+import { UserError } from 'MNI-workflow';
 
 import type { EventService } from '@/events/event.service';
 import type { PublicationResult } from '@/workflows/publication/publication-result';

@@ -1,4 +1,4 @@
-import type { AvailableTypesResponse } from '@n8n/api-types';
+import type { AvailableTypesResponse } from '@MNI/api-types';
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 
 import { useTypeAvailabilityPoliciesStore } from './type-availability-policies.store';
@@ -12,19 +12,19 @@ vi.mock('./type-availability-policies.api', () => ({
 	fetchAvailableTypes: mocks.fetchAvailableTypes,
 }));
 
-vi.mock('@n8n/stores/settings.store', () => ({
+vi.mock('@MNI/stores/settings.store', () => ({
 	useSettingsStore: () => ({ isModuleActive: mocks.isModuleActive }),
 }));
 
-vi.mock('@n8n/stores/useRootStore', () => ({
+vi.mock('@MNI/stores/useRootStore', () => ({
 	useRootStore: () => ({
 		restApiContext: { baseUrl: 'http://localhost', pushRef: 'test' },
 	}),
 }));
 
-const ALLOWED = 'n8n-nodes-base.slack';
-const RESTRICTED = 'n8n-nodes-base.executeCommand';
-const UNKNOWN = 'n8n-nodes-base.doesNotExist';
+const ALLOWED = 'MNI-nodes-base.slack';
+const RESTRICTED = 'MNI-nodes-base.executeCommand';
+const UNKNOWN = 'MNI-nodes-base.doesNotExist';
 
 const PROJECT_A_RESPONSE: AvailableTypesResponse = [
 	{ name: ALLOWED, available: true },

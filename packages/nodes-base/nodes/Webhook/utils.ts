@@ -1,8 +1,8 @@
-import { formatPemBlock } from '@n8n/utils/format-pem-block';
+import { formatPemBlock } from '@MNI/utils/format-pem-block';
 import basicAuth from 'basic-auth';
 import { rm } from 'fs/promises';
 import jwt from 'jsonwebtoken';
-import { recordConsumedAuth, WorkflowConfigurationError } from 'n8n-workflow';
+import { recordConsumedAuth, WorkflowConfigurationError } from 'MNI-workflow';
 import type {
 	IWebhookFunctions,
 	INodeExecutionData,
@@ -11,7 +11,7 @@ import type {
 	MultiPartFormData,
 	INode,
 	NodeTypeAndVersion,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import * as a from 'node:assert';
 import { createHmac, timingSafeEqual } from 'node:crypto';
 import { BlockList, isIPv6 } from 'node:net';
@@ -207,7 +207,7 @@ export const checkResponseModeConfiguration = (context: IWebhookFunctions) => {
 	const connectedNodes = context.getChildNodes(context.getNode().name);
 
 	const respondToWebhookNodes = connectedNodes.filter(
-		(node) => node.type === 'n8n-nodes-base.respondToWebhook',
+		(node) => node.type === 'MNI-nodes-base.respondToWebhook',
 	);
 
 	if (respondToWebhookNodes.length === 0 && responseMode === 'responseNode') {
@@ -232,7 +232,7 @@ export const checkResponseModeConfiguration = (context: IWebhookFunctions) => {
 				.some(
 					(node) =>
 						descendantNames.has(node.name) &&
-						node.type === 'n8n-nodes-base.wait' &&
+						node.type === 'MNI-nodes-base.wait' &&
 						!node.disabled &&
 						['webhook', 'form'].includes((node.parameters?.resume as string) ?? '') &&
 						node.parameters?.responseMode === 'responseNode',

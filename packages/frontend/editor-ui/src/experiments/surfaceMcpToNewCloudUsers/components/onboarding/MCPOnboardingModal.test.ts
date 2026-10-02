@@ -8,7 +8,7 @@ import MCPOnboardingModal from './MCPOnboardingModal.vue';
 const mockClipboardCopy = vi.fn();
 const mockShowError = vi.fn();
 
-vi.mock('@n8n/composables/useClipboard', () => ({
+vi.mock('@MNI/composables/useClipboard', () => ({
 	useClipboard: () => ({
 		copy: mockClipboardCopy,
 		copied: { value: false },
@@ -16,13 +16,13 @@ vi.mock('@n8n/composables/useClipboard', () => ({
 	}),
 }));
 
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: () => ({
 		showError: mockShowError,
 	}),
 }));
 
-vi.mock('@n8n/stores/useRootStore', () => ({
+vi.mock('@MNI/stores/useRootStore', () => ({
 	useRootStore: () => ({
 		urlBaseEditor: 'https://example.n8n.cloud/',
 	}),
@@ -226,7 +226,7 @@ describe('MCPOnboardingModal', () => {
 
 		expect(mockExperimentStore.trackClientSelected).toHaveBeenCalledWith('tile', 'codex');
 		expect(container.textContent).toContain('Paste the prompt in Codex');
-		expect(container.textContent).toContain('[mcp_servers.n8n]');
+		expect(container.textContent).toContain('[mcp_servers.MNI]');
 		expect(queryByTestId('mcp-onboarding-claude-server-url')).not.toBeInTheDocument();
 		expect(getByTestId('mcp-onboarding-restart-step')).toHaveTextContent(
 			'Restart Codex and connect to MNI',
@@ -277,7 +277,7 @@ describe('MCPOnboardingModal', () => {
 			'Connect ChatGPT to this MNI instance through MCP.',
 		);
 		expect(container.textContent).not.toContain('complete the MNI OAuth flow');
-		expect(container.textContent).not.toContain('[mcp_servers.n8n]');
+		expect(container.textContent).not.toContain('[mcp_servers.MNI]');
 		expect(queryByTestId('mcp-onboarding-client-setup')).not.toBeInTheDocument();
 		expect(queryByTestId('mcp-onboarding-claude-server-url')).not.toBeInTheDocument();
 		expect(queryByTestId('mcp-onboarding-copy-prompt-button')).not.toBeInTheDocument();

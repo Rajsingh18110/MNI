@@ -1,6 +1,6 @@
 import type { Mock } from 'vitest';
-import { mockInstance } from '@n8n/backend-test-utils';
-import { PrometheusMetricsConfig } from '@n8n/config';
+import { mockInstance } from '@MNI/backend-test-utils';
+import { PrometheusMetricsConfig } from '@MNI/config';
 import { mock } from 'vitest-mock-extended';
 import promClient from 'prom-client';
 
@@ -13,7 +13,7 @@ vi.mock('prom-client');
 
 describe('PrometheusWorkflowExecutionDurationMetricsService', () => {
 	const config = mockInstance(PrometheusMetricsConfig, {
-		prefix: 'n8n_',
+		prefix: 'MNI_',
 		includeWorkflowExecutionDuration: true,
 		includeWorkflowIdLabel: false,
 	});
@@ -27,7 +27,7 @@ describe('PrometheusWorkflowExecutionDurationMetricsService', () => {
 
 	beforeEach(() => {
 		Object.assign(config, {
-			prefix: 'n8n_',
+			prefix: 'MNI_',
 			includeWorkflowExecutionDuration: true,
 			includeWorkflowIdLabel: false,
 		});
@@ -57,7 +57,7 @@ describe('PrometheusWorkflowExecutionDurationMetricsService', () => {
 			service.init();
 
 			expect(promClient.Histogram).toHaveBeenCalledWith({
-				name: 'n8n_workflow_execution_duration_seconds',
+				name: 'MNI_workflow_execution_duration_seconds',
 				help: 'Workflow execution duration in seconds.',
 				labelNames: ['status', 'mode'],
 				buckets: DURATION_BUCKETS_SECONDS,

@@ -1,6 +1,6 @@
-import { OwnerSetupRequestDto } from '@n8n/api-types';
-import { Logger } from '@n8n/backend-common';
-import type { ListQueryDb } from '@n8n/db';
+import { OwnerSetupRequestDto } from '@MNI/api-types';
+import { Logger } from '@MNI/backend-common';
+import type { ListQueryDb } from '@MNI/db';
 import {
 	GLOBAL_OWNER_ROLE,
 	Project,
@@ -12,10 +12,10 @@ import {
 	Role,
 	SettingsRepository,
 	Scope,
-} from '@n8n/db';
-import { Service } from '@n8n/di';
-import { IsNull } from '@n8n/typeorm/find-options/operator/IsNull';
-import { Not } from '@n8n/typeorm/find-options/operator/Not';
+} from '@MNI/db';
+import { Service } from '@MNI/di';
+import { IsNull } from '@MNI/typeorm/find-options/operator/IsNull';
+import { Not } from '@MNI/typeorm/find-options/operator/Not';
 
 import config from '@/config';
 import { BadRequestError } from '@/errors/response-errors/bad-request.error';

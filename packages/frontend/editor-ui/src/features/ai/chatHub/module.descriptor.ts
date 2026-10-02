@@ -1,4 +1,4 @@
-import { defineFrontendModule } from '@n8n/frontend-module-sdk';
+import { defineFrontendModule } from '@MNI/frontend-module-sdk';
 import {
 	CHAT_VIEW,
 	CHAT_CONVERSATION_VIEW,
@@ -12,7 +12,7 @@ import {
 	CHAT_SETTINGS_VIEW,
 	CHAT_PROVIDER_SETTINGS_MODAL_KEY,
 } from '@/features/ai/chatHub/constants';
-import { i18n } from '@n8n/i18n';
+import { i18n } from '@MNI/i18n';
 import { hasPermission } from '@/app/utils/rbac/permissions';
 
 const ChatView = async () => await import('@/features/ai/chatHub/ChatView.vue');

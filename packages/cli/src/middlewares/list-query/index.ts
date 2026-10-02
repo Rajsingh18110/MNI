@@ -14,7 +14,7 @@ export type ListQueryMiddleware = (
 ) => void;
 
 /**
- * @deprecated Please create Zod validators in `@n8n/api-types` instead.
+ * @deprecated Please create Zod validators in `@MNI/api-types` instead.
  */
 export const listQueryMiddleware: RequestHandler[] = [
 	filterListQueryMiddleware,

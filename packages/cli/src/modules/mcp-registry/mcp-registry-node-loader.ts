@@ -1,7 +1,7 @@
-import type { Logger } from '@n8n/backend-common';
+import type { Logger } from '@MNI/backend-common';
 import { camelCase } from 'change-case';
-import { UnrecognizedCredentialTypeError, UnrecognizedNodeTypeError } from 'n8n-core';
-import { ensureError } from '@n8n/utils/errors/ensure-error';
+import { UnrecognizedCredentialTypeError, UnrecognizedNodeTypeError } from 'MNI-core';
+import { ensureError } from '@MNI/utils/errors/ensure-error';
 import {
 	NodeHelpers,
 	type ICredentialType,
@@ -15,7 +15,7 @@ import {
 	type McpRegistryConnection,
 	type McpRegistryRuntime,
 	type NodeLoader,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import type { LoadNodesAndCredentials } from '@/load-nodes-and-credentials';
 

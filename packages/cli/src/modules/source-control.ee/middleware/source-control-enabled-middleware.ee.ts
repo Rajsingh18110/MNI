@@ -1,4 +1,4 @@
-import { Container } from '@n8n/di';
+import { Container } from '@MNI/di';
 import type { RequestHandler } from 'express';
 
 import { SourceControlPreferencesService } from '../source-control-preferences.service.ee';

@@ -6,8 +6,8 @@ import {
 	N8nDialogDescription,
 	N8nDialogFooter,
 	N8nLink,
-} from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+} from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 import { I18nT } from 'vue-i18n';
 
 import { useWorkflowReviewDialogPreferences } from '@/features/workflow-reviews/composables/useWorkflowReviewDialogPreferences';

@@ -1,14 +1,14 @@
-import { mockInstance } from '@n8n/backend-test-utils';
+import { mockInstance } from '@MNI/backend-test-utils';
 import {
 	SettingsRepository,
 	SharedCredentialsRepository,
 	SharedWorkflowRepository,
 	WorkflowRepository,
-} from '@n8n/db';
+} from '@MNI/db';
 import {
 	PERSONAL_SPACE_PUBLISHING_SETTING,
 	PERSONAL_SPACE_SHARING_SETTING,
-} from '@n8n/permissions';
+} from '@MNI/permissions';
 
 import { EventService } from '@/events/event.service';
 import { InstanceRedactionEnforcementService } from '@/modules/redaction/instance-redaction-enforcement.service';

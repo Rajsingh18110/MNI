@@ -1,4 +1,4 @@
-import { createDeferredPromise } from '@n8n/utils/promise/deferred-promise';
+import { createDeferredPromise } from '@MNI/utils/promise/deferred-promise';
 import get from 'lodash/get';
 import type {
 	AINodeConnectionType,
@@ -19,8 +19,8 @@ import type {
 	NodeConnectionType,
 	ISourceData,
 	NodeExecutionHint,
-} from 'n8n-workflow';
-import { jsonParse, NodeConnectionTypes } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { jsonParse, NodeConnectionTypes } from 'MNI-workflow';
 
 import { BaseExecuteContext } from './base-execute-context';
 import {

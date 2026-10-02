@@ -1,5 +1,5 @@
-import type { INodeType, INodeTypeDescription } from 'n8n-workflow';
-import { NodeConnectionTypes } from 'n8n-workflow';
+import type { INodeType, INodeTypeDescription } from 'MNI-workflow';
+import { NodeConnectionTypes } from 'MNI-workflow';
 
 import { distTagFields, distTagOperations } from './DistTagDescription';
 import { packageFields, packageOperations } from './PackageDescription';

@@ -1,8 +1,8 @@
-import { createHeartbeatMessage, type PushMessage } from '@n8n/api-types';
-import { Logger } from '@n8n/backend-common';
-import { mockInstance } from '@n8n/backend-test-utils';
-import type { User } from '@n8n/db';
-import { Container } from '@n8n/di';
+import { createHeartbeatMessage, type PushMessage } from '@MNI/api-types';
+import { Logger } from '@MNI/backend-common';
+import { mockInstance } from '@MNI/backend-test-utils';
+import type { User } from '@MNI/db';
+import { Container } from '@MNI/di';
 import { EventEmitter } from 'events';
 import type { Mocked } from 'vitest';
 import type WebSocket from 'ws';

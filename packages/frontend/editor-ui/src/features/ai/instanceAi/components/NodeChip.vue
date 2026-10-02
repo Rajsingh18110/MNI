@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 import { useTemplateRef } from 'vue';
-import { N8nIcon } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
-import type { INodeTypeDescription } from 'n8n-workflow';
+import { N8nIcon } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
+import type { INodeTypeDescription } from 'MNI-workflow';
 import NodeIcon from '@/app/components/NodeIcon.vue';
 import { isNodeChipRemovalKey } from '../constants';
 import InstanceAiResourceChip from './InstanceAiResourceChip.vue';

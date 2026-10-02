@@ -6,7 +6,7 @@
  * never sent.
  *
  * `structuredClone` rather than `deepCopy`: the latter deliberately drops own
- * `__proto__`/`constructor`/`prototype` keys (`n8n-workflow/utils.ts`), which are
+ * `__proto__`/`constructor`/`prototype` keys (`MNI-workflow/utils.ts`), which are
  * legal JSON response keys — dropping them is the same evidence corruption in a
  * different disguise. Non-cloneable values (functions) throw here where
  * `deepCopy` coped silently; mock bodies are JSON or Buffers, so that trade

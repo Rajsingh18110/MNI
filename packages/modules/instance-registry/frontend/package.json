@@ -1,5 +1,5 @@
 {
-  "name": "@n8n/frontend-module-instance-registry",
+  "name": "@MNI/frontend-module-instance-registry",
   "version": "0.6.0",
   "type": "module",
   "main": "src/index.ts",
@@ -18,20 +18,20 @@
     "format:check": "biome ci . && prettier --check . --ignore-path ../../../../.prettierignore"
   },
   "dependencies": {
-    "@n8n/api-types": "workspace:*",
-    "@n8n/design-system": "workspace:*",
-    "@n8n/frontend-module-sdk": "workspace:*",
-    "@n8n/rest-api-client": "workspace:*",
-    "@n8n/stores": "workspace:*",
+    "@MNI/api-types": "workspace:*",
+    "@MNI/design-system": "workspace:*",
+    "@MNI/frontend-module-sdk": "workspace:*",
+    "@MNI/rest-api-client": "workspace:*",
+    "@MNI/stores": "workspace:*",
     "pinia": "catalog:frontend",
     "vue": "catalog:frontend"
   },
   "devDependencies": {
-    "@n8n/eslint-config": "workspace:*",
-    "@n8n/frontend-vite-config": "workspace:*",
-    "@n8n/playwright-janitor": "workspace:*",
-    "@n8n/typescript-config": "workspace:*",
-    "@n8n/vitest-config": "workspace:*",
+    "@MNI/eslint-config": "workspace:*",
+    "@MNI/frontend-vite-config": "workspace:*",
+    "@MNI/playwright-janitor": "workspace:*",
+    "@MNI/typescript-config": "workspace:*",
+    "@MNI/vitest-config": "workspace:*",
     "@testing-library/jest-dom": "catalog:frontend",
     "@testing-library/vue": "catalog:frontend",
     "@vitejs/plugin-vue": "catalog:frontend",
@@ -42,5 +42,5 @@
     "vitest": "catalog:",
     "vue-tsc": "catalog:frontend"
   },
-  "license": "LicenseRef-n8n-sustainable-use"
+  "license": "LicenseRef-MNI-sustainable-use"
 }

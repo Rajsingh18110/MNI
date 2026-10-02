@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import type { IConnections, IRunData } from 'n8n-workflow';
+import type { IConnections, IRunData } from 'MNI-workflow';
 
 import { readFirstInputItemViaGraph } from './useSliceInputs';
 

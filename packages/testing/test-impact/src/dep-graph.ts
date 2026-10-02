@@ -84,7 +84,7 @@ function resolveLink(fromDir: string, target: string): string {
 /**
  * External dependency names the *deployed* workspace packages declare, following
  * workspace `link:` edges through RUNTIME sections only. Runtime-only edges keep
- * dev-only workspace packages out: `@n8n/backend-test-utils` declares `vitest`
+ * dev-only workspace packages out: `@MNI/backend-test-utils` declares `vitest`
  * in `dependencies` but is itself reachable only via `devDependencies`.
  */
 function deployedExternalDeps(

@@ -1,6 +1,6 @@
-import { Logger } from '@n8n/backend-common';
-import { Time } from '@n8n/constants';
-import { Service } from '@n8n/di';
+import { Logger } from '@MNI/backend-common';
+import { Time } from '@MNI/constants';
+import { Service } from '@MNI/di';
 import type {
 	ConversationHistoryExcerpt,
 	ConversationHistoryMatchSource,
@@ -11,9 +11,9 @@ import type {
 	CONVERSATION_HISTORY_MAX_SEARCH_LIMIT,
 	CONVERSATION_HISTORY_MAX_WINDOW_SIDE,
 	InstanceAiConversationHistoryReader,
-} from '@n8n/instance-ai';
-import { isRecord } from '@n8n/utils/is-record';
-import { jsonParse, UserError } from 'n8n-workflow';
+} from '@MNI/instance-ai';
+import { isRecord } from '@MNI/utils/is-record';
+import { jsonParse, UserError } from 'MNI-workflow';
 import { z } from 'zod';
 
 import { ASK_USER_TOOL_NAME, TOOL_CALL_PART_TYPES } from './conversation-history-content';
@@ -36,7 +36,7 @@ const MAX_EXCERPTS_PER_THREAD = 3;
 const EXCERPT_CANDIDATES_PER_THREAD = 8;
 
 /**
- * The tool schema's caps from `@n8n/instance-ai`. Local literals, tied to the
+ * The tool schema's caps from `@MNI/instance-ai`. Local literals, tied to the
  * package's exports at the TYPE level (their literal types), so raising one
  * without the other fails `pnpm typecheck` — while the module stays free of
  * runtime imports from the package, which several cli test suites stub with

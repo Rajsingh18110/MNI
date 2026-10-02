@@ -1,7 +1,7 @@
 import type { Mock } from 'vitest';
-import type { InMemoryDnsCache } from '@n8n/backend-network';
-import { mockInstance } from '@n8n/backend-test-utils';
-import { PrometheusMetricsConfig, SsrfProtectionConfig } from '@n8n/config';
+import type { InMemoryDnsCache } from '@MNI/backend-network';
+import { mockInstance } from '@MNI/backend-test-utils';
+import { PrometheusMetricsConfig, SsrfProtectionConfig } from '@MNI/config';
 import promClient from 'prom-client';
 
 import { PrometheusDnsCacheMetricsService } from '../dns-cache-metrics.service';
@@ -10,7 +10,7 @@ vi.mock('prom-client');
 
 describe('PrometheusDnsCacheMetricsService', () => {
 	const config = mockInstance(PrometheusMetricsConfig, {
-		prefix: 'n8n_',
+		prefix: 'MNI_',
 		includeDnsCacheMetrics: true,
 	});
 
@@ -32,7 +32,7 @@ describe('PrometheusDnsCacheMetricsService', () => {
 	let mockGaugeSet: Mock;
 
 	beforeEach(() => {
-		Object.assign(config, { prefix: 'n8n_', includeDnsCacheMetrics: true });
+		Object.assign(config, { prefix: 'MNI_', includeDnsCacheMetrics: true });
 		Object.assign(ssrfConfig, { enabled: true });
 		cacheSizeValue = 0;
 		service = new PrometheusDnsCacheMetricsService(dnsCache, config, ssrfConfig);
@@ -76,7 +76,7 @@ describe('PrometheusDnsCacheMetricsService', () => {
 			service.init();
 
 			expect(promClient.Counter).toHaveBeenCalledWith({
-				name: 'n8n_ssrf_dns_cache_hits_total',
+				name: 'MNI_ssrf_dns_cache_hits_total',
 				help: 'Total number of DNS cache hits.',
 			});
 		});
@@ -85,7 +85,7 @@ describe('PrometheusDnsCacheMetricsService', () => {
 			service.init();
 
 			expect(promClient.Counter).toHaveBeenCalledWith({
-				name: 'n8n_ssrf_dns_cache_misses_total',
+				name: 'MNI_ssrf_dns_cache_misses_total',
 				help: 'Total number of DNS cache misses.',
 			});
 		});
@@ -94,7 +94,7 @@ describe('PrometheusDnsCacheMetricsService', () => {
 			service.init();
 
 			expect(promClient.Counter).toHaveBeenCalledWith({
-				name: 'n8n_ssrf_dns_cache_evictions_total',
+				name: 'MNI_ssrf_dns_cache_evictions_total',
 				help: 'Total number of DNS cache evictions.',
 			});
 		});
@@ -111,7 +111,7 @@ describe('PrometheusDnsCacheMetricsService', () => {
 
 			expect(promClient.Gauge).toHaveBeenCalledWith(
 				expect.objectContaining({
-					name: 'n8n_ssrf_dns_cache_size',
+					name: 'MNI_ssrf_dns_cache_size',
 					help: 'Current number of entries in the DNS cache.',
 				}),
 			);

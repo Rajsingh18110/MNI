@@ -14,7 +14,7 @@ import type {
 	NodeConnectionType,
 	IRunData,
 	WorkflowExpression,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import {
 	UnexpectedError,
 	createRunExecutionData,
@@ -22,7 +22,7 @@ import {
 	NodeConnectionTypes,
 	NodeOperationError,
 	CONSOLE_OUTPUT_REDACTED_MESSAGE,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import { describeCommonTests } from './shared-tests';

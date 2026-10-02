@@ -1,6 +1,6 @@
-import { Logger } from '@n8n/backend-common';
-import { UserRepository } from '@n8n/db';
-import { Service } from '@n8n/di';
+import { Logger } from '@MNI/backend-common';
+import { UserRepository } from '@MNI/db';
+import { Service } from '@MNI/di';
 
 import { EventService } from '@/events/event.service';
 import type { RelayEventMap } from '@/events/maps/relay.event-map';

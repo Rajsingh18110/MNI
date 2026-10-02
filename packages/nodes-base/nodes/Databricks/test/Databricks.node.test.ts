@@ -1,6 +1,6 @@
-import { sleep } from '@n8n/utils/sleep';
+import { sleep } from '@MNI/utils/sleep';
 import { NodeTestHarness } from '@nodes-testing/node-test-harness';
-import { NodeApiError } from 'n8n-workflow';
+import { NodeApiError } from 'MNI-workflow';
 import type {
 	IExecuteFunctions,
 	ILoadOptionsFunctions,
@@ -8,7 +8,7 @@ import type {
 	JsonObject,
 	NodeParameterValueType,
 	WorkflowTestData,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import nock from 'nock';
 import { mockDeep } from 'vitest-mock-extended';
 
@@ -19,7 +19,7 @@ import { getCatalogs, getJobs, getRuns, getSchemas } from '../methods/listSearch
 import { jobParameters } from '../resources/job/parameters';
 
 // The operation is imported from source, so this mock replaces the real poll delay
-vi.mock('@n8n/utils/sleep', () => ({
+vi.mock('@MNI/utils/sleep', () => ({
 	sleep: vi.fn().mockResolvedValue(undefined),
 }));
 
@@ -30,7 +30,7 @@ const PERMISSION_MESSAGE = "User does not have USE CATALOG on Catalog 'main'.";
 const node: INode = {
 	id: '1',
 	name: 'Databricks',
-	type: 'n8n-nodes-base.databricks',
+	type: 'MNI-nodes-base.databricks',
 	typeVersion: 1,
 	position: [0, 0],
 	parameters: {},
@@ -82,7 +82,7 @@ describe('Databricks', () => {
 				// Proves the UA comes from the node helper: the harness only invokes a
 				// function-style `authenticate`, and this credential's is a generic object,
 				// so the credential contributes no headers here.
-				.matchHeader('user-agent', 'n8n_DatabricksNode')
+				.matchHeader('user-agent', 'MNI_DatabricksNode')
 				.reply(200, {
 					statement_id: 'stmt-abc123',
 					status: { state: 'SUCCEEDED' },
@@ -156,7 +156,7 @@ describe('Databricks', () => {
 		beforeAll(() => {
 			nock(HOST)
 				.get('/api/2.0/fs/files/Volumes/main/default/my_volume/data/logo.png')
-				.matchHeader('user-agent', 'n8n_DatabricksNode')
+				.matchHeader('user-agent', 'MNI_DatabricksNode')
 				.reply(200, Buffer.from([0x89, 0x50, 0x4e, 0x47, 0xff, 0xfe]), {
 					'content-type': 'application/octet-stream',
 				});
@@ -626,7 +626,7 @@ describe('Databricks', () => {
 					job_id: 281874479417551,
 					job_parameters: { environment: 'staging' },
 				})
-				.matchHeader('user-agent', 'n8n_DatabricksNode')
+				.matchHeader('user-agent', 'MNI_DatabricksNode')
 				.reply(200, { run_id: 41847992357943, number_in_job: 41847992357943 });
 		});
 
@@ -643,7 +643,7 @@ describe('Databricks', () => {
 			nock(HOST)
 				.get('/api/2.2/jobs/runs/get')
 				.query({ run_id: '41847992357943' })
-				.matchHeader('user-agent', 'n8n_DatabricksNode')
+				.matchHeader('user-agent', 'MNI_DatabricksNode')
 				.reply(200, {
 					job_id: 281874479417551,
 					run_id: 41847992357943,
@@ -676,7 +676,7 @@ describe('Databricks', () => {
 			databricksNock
 				.get('/api/2.2/jobs/runs/get')
 				.query({ run_id: '41847992357943' })
-				.matchHeader('user-agent', 'n8n_DatabricksNode')
+				.matchHeader('user-agent', 'MNI_DatabricksNode')
 				.reply(200, {
 					job_id: 281874479417551,
 					run_id: 41847992357943,
@@ -685,7 +685,7 @@ describe('Databricks', () => {
 			databricksNock
 				.get('/api/2.2/jobs/runs/get-output')
 				.query({ run_id: '41847992357944' })
-				.matchHeader('user-agent', 'n8n_DatabricksNode')
+				.matchHeader('user-agent', 'MNI_DatabricksNode')
 				.reply(200, {
 					metadata: {
 						run_id: 41847992357944,
@@ -710,7 +710,7 @@ describe('Databricks', () => {
 			databricksNock
 				.get('/api/2.2/jobs/get')
 				.query({ job_id: '281874479417551', include_trigger_state: 'true' })
-				.matchHeader('user-agent', 'n8n_DatabricksNode')
+				.matchHeader('user-agent', 'MNI_DatabricksNode')
 				.reply(200, {
 					job_id: 281874479417551,
 					creator_user_name: 'owner@example.com',
@@ -741,7 +741,7 @@ describe('Databricks', () => {
 			databricksNock
 				.get('/api/2.2/jobs/get')
 				.query({ job_id: '281874479417551', include_trigger_state: 'true', page_token: 'page-2' })
-				.matchHeader('user-agent', 'n8n_DatabricksNode')
+				.matchHeader('user-agent', 'MNI_DatabricksNode')
 				.reply(200, {
 					job_id: 281874479417551,
 					settings: {

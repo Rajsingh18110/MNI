@@ -6,11 +6,11 @@
  * every invocation — interactive, non-interactive, or from an AI agent — is
  * intercepted the same way, with no shell function, rc editing, or PATH-ordering
  * dependence. The shim runs the real binary, times it, and reports anonymous
- * usage; the original is preserved next to the shim as `<binary>.n8n-real`.
+ * usage; the original is preserved next to the shim as `<binary>.MNI-real`.
  *
  * Invoked with no arguments from scripts/prepare.mjs during `pnpm install`: the
  * first time an internal developer (git email @n8n.io) installs interactively,
- * it asks once (via /dev/tty). The decision persists in ~/.n8n/dev/dev-telemetry.json.
+ * it asks once (via /dev/tty). The decision persists in ~/.MNI/dev/dev-telemetry.json.
  *
  * Manual usage:
  *   node scripts/dev-metrics/setup.mjs            bootstrap (prompt once)
@@ -45,17 +45,17 @@ import { fileURLToPath } from 'node:url';
 const SCRIPT_DIR = dirname(fileURLToPath(import.meta.url));
 const SHADOW_SHIM_SRC = join(SCRIPT_DIR, 'shadow-shim.sh');
 const TRACK_SRC = join(SCRIPT_DIR, 'track.mjs');
-const SHIM_MARKER = '# n8n-shadow-shim-version';
-const SAVED_SUFFIX = '.n8n-real';
+const SHIM_MARKER = '# MNI-shadow-shim-version';
+const SAVED_SUFFIX = '.MNI-real';
 
 // Binaries to shadow for usage tracking. Add another CLI here — that's it; the
 // tracker sends its raw argv, no per-binary code needed.
 const SHADOWED_BINARIES = ['pnpm'];
 
-// Dev-metrics state lives under ~/.n8n/dev, namespaced away from MNI's own files.
+// Dev-metrics state lives under ~/.MNI/dev, namespaced away from MNI's own files.
 function devDir() {
-	const userFolder = process.env.N8N_USER_FOLDER ?? homedir();
-	return join(userFolder, '.n8n', 'dev');
+	const userFolder = process.env.MNI_USER_FOLDER ?? homedir();
+	return join(userFolder, '.MNI', 'dev');
 }
 
 function statePath() {
@@ -77,7 +77,7 @@ function readVersion(file, key) {
 		return null;
 	}
 }
-const trackVersion = (file) => readVersion(file, 'n8n-track-version');
+const trackVersion = (file) => readVersion(file, 'MNI-track-version');
 
 function syncTracker() {
 	const dest = trackerDest();
@@ -187,7 +187,7 @@ function resolveRealBinary(bin) {
 	return '';
 }
 
-const shimVersion = (file) => readVersion(file, 'n8n-shadow-shim-version');
+const shimVersion = (file) => readVersion(file, 'MNI-shadow-shim-version');
 
 // Escape a value for a POSIX single-quoted shell string: end the quote, emit a
 // literal quote via double quotes, reopen — so a path with an apostrophe (e.g.
@@ -198,10 +198,10 @@ const shq = (s) => s.replaceAll("'", `'"'"'`);
  * wraps each placeholder in single quotes, so every value is escaped for that. */
 function renderShim(file, realExec, bin) {
 	const rendered = readFileSync(SHADOW_SHIM_SRC, 'utf8')
-		.replaceAll('__N8N_BIN__', shq(bin))
-		.replaceAll('__N8N_REAL__', shq(realExec))
-		.replaceAll('__N8N_BINDIR__', shq(dirname(file)))
-		.replaceAll('__N8N_TRACKER__', shq(trackerDest()));
+		.replaceAll('__MNI_BIN__', shq(bin))
+		.replaceAll('__MNI_REAL__', shq(realExec))
+		.replaceAll('__MNI_BINDIR__', shq(dirname(file)))
+		.replaceAll('__MNI_TRACKER__', shq(trackerDest()));
 	writeFileSync(file, rendered);
 	chmodSync(file, 0o755);
 }
@@ -236,7 +236,7 @@ function installOne(bin) {
 			const saved = front + SAVED_SUFFIX;
 			const real = existsSync(saved) ? saved : resolveRealBinary(bin);
 			if (real) {
-				const tmp = `${front}.n8n-shim`;
+				const tmp = `${front}.MNI-shim`;
 				renderShim(tmp, real, bin);
 				renameSync(tmp, front); // atomic; the old shim stays valid if this throws
 			}
@@ -258,7 +258,7 @@ function installOne(bin) {
 	// the current binary aside unconditionally (overwriting the stale copy) so the
 	// shim runs today's binary, never a leftover older one.
 	const saved = real + SAVED_SUFFIX;
-	const tmp = `${real}.n8n-shim`;
+	const tmp = `${real}.MNI-shim`;
 	try {
 		renderShim(tmp, saved, bin); // real is still runnable here
 		renameSync(real, saved);
@@ -304,7 +304,7 @@ function fireEvent(event) {
 	try {
 		spawn('node', [join(SCRIPT_DIR, 'track.mjs')], {
 			cwd: SCRIPT_DIR, // inside the repo, so the tracker finds the monorepo root
-			env: { ...process.env, N8N_DEV_EVENT: event },
+			env: { ...process.env, MNI_DEV_EVENT: event },
 			detached: true,
 			stdio: 'ignore',
 		}).unref();
@@ -468,7 +468,7 @@ function promptViaTty(message) {
 
 function bootstrap() {
 	if (process.env.CI || process.env.DOCKER_BUILD) return;
-	if (process.env.N8N_DEV_TELEMETRY === '0') return;
+	if (process.env.MNI_DEV_TELEMETRY === '0') return;
 
 	const state = readState();
 	if (state?.consent) {

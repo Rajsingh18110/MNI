@@ -1,5 +1,5 @@
-import { WithTimestampsAndStringId } from '@n8n/db';
-import { Column, Entity } from '@n8n/typeorm';
+import { WithTimestampsAndStringId } from '@MNI/db';
+import { Column, Entity } from '@MNI/typeorm';
 
 @Entity({ name: 'agents_threads' })
 export class AgentThreadEntity extends WithTimestampsAndStringId {

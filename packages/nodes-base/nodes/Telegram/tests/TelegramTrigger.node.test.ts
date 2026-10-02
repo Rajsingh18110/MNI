@@ -1,7 +1,7 @@
-import { GlobalConfig } from '@n8n/config';
-import { Container } from '@n8n/di';
-import { HITL_CALLBACK_PREFIX, InstanceSettings } from 'n8n-core';
-import type { IHookFunctions, IWebhookFunctions, INode, Workflow } from 'n8n-workflow';
+import { GlobalConfig } from '@MNI/config';
+import { Container } from '@MNI/di';
+import { HITL_CALLBACK_PREFIX, InstanceSettings } from 'MNI-core';
+import type { IHookFunctions, IWebhookFunctions, INode, Workflow } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import { testWebhookTriggerNode } from '@test/nodes/TriggerHelpers';
@@ -520,7 +520,7 @@ describe('TelegramTrigger', () => {
 		});
 
 		test('preserves a reverse-proxy path prefix instead of forwarding to the origin root', async () => {
-			// e.g. MNI served under https://example.com/n8n-instance/ : the own webhook URL
+			// e.g. MNI served under https://example.com/MNI-instance/ : the own webhook URL
 			// carries that prefix before the live-webhook segment, and it must survive.
 			Container.set(
 				GlobalConfig,
@@ -534,7 +534,7 @@ describe('TelegramTrigger', () => {
 				helpers: mock<IWebhookFunctions['helpers']>({ httpRequest }),
 				getNode: () => mock<INode>({ id: '2', typeVersion: 1.5 }),
 				getWorkflow: () => mock<Workflow>({ id: '1' }),
-				getNodeWebhookUrl: () => 'https://example.com/n8n-instance/webhook/abc/webhook',
+				getNodeWebhookUrl: () => 'https://example.com/MNI-instance/webhook/abc/webhook',
 				getBodyData: () => ({
 					callback_query: { data: `${HITL_CALLBACK_PREFIX}42|a|deadbeef` },
 				}),
@@ -547,7 +547,7 @@ describe('TelegramTrigger', () => {
 
 			expect(httpRequest).toHaveBeenCalledWith(
 				expect.objectContaining({
-					url: 'https://example.com/n8n-instance/webhook-waiting-telegram',
+					url: 'https://example.com/MNI-instance/webhook-waiting-telegram',
 				}),
 			);
 		});

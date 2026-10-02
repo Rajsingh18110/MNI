@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { provide, toRef } from 'vue';
-import type { InstanceAiCredentialFlow, InstanceAiWorkflowSetupNode } from '@n8n/api-types';
+import type { InstanceAiCredentialFlow, InstanceAiWorkflowSetupNode } from '@MNI/api-types';
 import WorkflowSetupWizard from './components/WorkflowSetupWizard.vue';
 import WorkflowSetupStatus from './components/WorkflowSetupStatus.vue';
 import { provideWorkflowSetupContext } from './composables/useWorkflowSetupContext';

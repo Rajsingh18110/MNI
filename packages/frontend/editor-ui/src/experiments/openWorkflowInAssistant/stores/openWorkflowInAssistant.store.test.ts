@@ -2,14 +2,14 @@ import { createTestingPinia } from '@pinia/testing';
 import { setActivePinia } from 'pinia';
 import { ref } from 'vue';
 
-import { updateCurrentUserSettings } from '@n8n/rest-api-client/api/users';
-import { TELEMETRY_EVENT } from '@n8n/telemetry';
+import { updateCurrentUserSettings } from '@MNI/rest-api-client/api/users';
+import { TELEMETRY_EVENT } from '@MNI/telemetry';
 
 import { mockedStore } from '@/__tests__/utils';
 import { OPEN_WORKFLOW_IN_ASSISTANT_EXPERIMENT } from '@/app/constants/experiments';
 import { usePostHog } from '@/app/stores/posthog.store';
 import { useUIStore } from '@/app/stores/ui.store';
-import { useUsersStore } from '@n8n/stores/users.store';
+import { useUsersStore } from '@MNI/stores/users.store';
 import { useInstanceAiStore } from '@/features/ai/instanceAi/instanceAi.store';
 import {
 	OPEN_IN_ASSISTANT_CALLOUT_KEY,
@@ -18,7 +18,7 @@ import {
 } from './openWorkflowInAssistant.store';
 
 const track = vi.fn();
-vi.mock('@n8n/composables/useTelemetry', () => ({
+vi.mock('@MNI/composables/useTelemetry', () => ({
 	useTelemetry: () => ({ track }),
 }));
 
@@ -27,7 +27,7 @@ vi.mock('@/features/ai/instanceAi/composables/useInstanceAiAvailability', () => 
 	useInstanceAiAvailable: () => instanceAiAvailable,
 }));
 
-vi.mock('@n8n/rest-api-client/api/users', () => ({
+vi.mock('@MNI/rest-api-client/api/users', () => ({
 	updateCurrentUserSettings: vi.fn().mockResolvedValue({}),
 }));
 

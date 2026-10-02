@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
-import { useElementOverflow } from '@n8n/composables/useElementOverflow';
-import { N8nText, N8nTooltip } from '@n8n/design-system';
+import { useElementOverflow } from '@MNI/composables/useElementOverflow';
+import { N8nText, N8nTooltip } from '@MNI/design-system';
 
 const props = defineProps<{
 	label: string;
@@ -50,7 +50,7 @@ const { isOverflowing } = useElementOverflow(labelEl, 'x', [() => props.label]);
 	font-family: var(--font-family--monospace);
 }
 
-:global(.n8n-tooltip).tooltip {
+:global(.MNI-tooltip).tooltip {
 	max-width: none;
 	white-space: nowrap;
 }

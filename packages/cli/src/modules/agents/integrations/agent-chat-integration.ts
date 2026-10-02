@@ -2,11 +2,11 @@ import {
 	AgentIntegrationConfig,
 	type AgentIntegrationDisconnectWarning,
 	type RichCardComponentType,
-} from '@n8n/api-types';
-import type { User } from '@n8n/db';
-import { Service } from '@n8n/di';
+} from '@MNI/api-types';
+import type { User } from '@MNI/db';
+import { Service } from '@MNI/di';
 import type { Thread, Author, Message } from 'chat';
-import type { Logger } from 'n8n-workflow';
+import type { Logger } from 'MNI-workflow';
 
 import type { ChatInstance } from './chat-integration.service';
 import type { SuspendComponent } from './component-mapper';
@@ -233,7 +233,7 @@ export abstract class AgentChatIntegration {
 	 * Component types this platform supports in integration action cards.
 	 * Omit to signal that the platform has no rich card surface.
 	 * Typed by the shared list so a new component type must be added to
-	 * `RICH_CARD_COMPONENT_TYPES` in `@n8n/api-types` first — which in turn
+	 * `RICH_CARD_COMPONENT_TYPES` in `@MNI/api-types` first — which in turn
 	 * forces the wire schema and the MNI chat renderer to handle it.
 	 */
 	readonly supportedComponents?: readonly RichCardComponentType[];
@@ -341,7 +341,7 @@ export abstract class AgentChatIntegration {
 	 * (i.e. before credentials are configured). The canonical case is Slack's
 	 * `url_verification` challenge — sent when the user creates a Slack app
 	 * from the manifest, before they have pasted bot token / signing secret
-	 * into n8n. Without this hook, the standard handler returns 404 and the
+	 * into MNI. Without this hook, the standard handler returns 404 and the
 	 * user has to manually re-verify URLs after configuring the credential.
 	 *
 	 * Implementations inspect the parsed JSON body; return a response to send

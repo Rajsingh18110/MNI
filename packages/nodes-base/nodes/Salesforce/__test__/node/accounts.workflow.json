@@ -3,7 +3,7 @@
 	"nodes": [
 		{
 			"parameters": {},
-			"type": "n8n-nodes-base.manualTrigger",
+			"type": "MNI-nodes-base.manualTrigger",
 			"typeVersion": 1,
 			"position": [-240, 700],
 			"id": "80ee49ee-d695-41d8-9f94-d59a499d46c1",
@@ -15,7 +15,7 @@
 				"name": "Test Account",
 				"additionalFields": {}
 			},
-			"type": "n8n-nodes-base.salesforce",
+			"type": "MNI-nodes-base.salesforce",
 			"typeVersion": 1,
 			"position": [-20, 100],
 			"id": "9256d15e-a14f-4b30-8600-99b64d2635d6",
@@ -29,7 +29,7 @@
 		},
 		{
 			"parameters": {},
-			"type": "n8n-nodes-base.noOp",
+			"type": "MNI-nodes-base.noOp",
 			"typeVersion": 1,
 			"position": [200, 100],
 			"id": "53d96738-6778-410c-a1cd-e552fedc0f8a",
@@ -42,7 +42,7 @@
 				"returnAll": true,
 				"options": {}
 			},
-			"type": "n8n-nodes-base.salesforce",
+			"type": "MNI-nodes-base.salesforce",
 			"typeVersion": 1,
 			"position": [-20, 300],
 			"id": "9369fffa-6679-4065-8748-7ba2449eecb7",
@@ -56,7 +56,7 @@
 		},
 		{
 			"parameters": {},
-			"type": "n8n-nodes-base.noOp",
+			"type": "MNI-nodes-base.noOp",
 			"typeVersion": 1,
 			"position": [200, 300],
 			"id": "55813438-79eb-4513-9586-7ac3213c7ac7",
@@ -70,7 +70,7 @@
 				"title": "New note",
 				"options": {}
 			},
-			"type": "n8n-nodes-base.salesforce",
+			"type": "MNI-nodes-base.salesforce",
 			"typeVersion": 1,
 			"position": [-20, 500],
 			"id": "387806dc-9f87-43fd-9e7d-ecf8619c327d",
@@ -84,7 +84,7 @@
 		},
 		{
 			"parameters": {},
-			"type": "n8n-nodes-base.noOp",
+			"type": "MNI-nodes-base.noOp",
 			"typeVersion": 1,
 			"position": [200, 500],
 			"id": "0a6bce2c-55b0-4b8f-a817-ce8d47723e95",
@@ -96,7 +96,7 @@
 				"operation": "get",
 				"accountId": "id1"
 			},
-			"type": "n8n-nodes-base.salesforce",
+			"type": "MNI-nodes-base.salesforce",
 			"typeVersion": 1,
 			"position": [-20, 700],
 			"id": "31060d8f-2353-44e1-83c1-86c626125e72",
@@ -110,7 +110,7 @@
 		},
 		{
 			"parameters": {},
-			"type": "n8n-nodes-base.noOp",
+			"type": "MNI-nodes-base.noOp",
 			"typeVersion": 1,
 			"position": [200, 700],
 			"id": "d9481d27-3cb0-4809-a9a4-d91cb5b7d37c",
@@ -125,7 +125,7 @@
 					"website": "https://foo.bar.baz"
 				}
 			},
-			"type": "n8n-nodes-base.salesforce",
+			"type": "MNI-nodes-base.salesforce",
 			"typeVersion": 1,
 			"position": [-20, 900],
 			"id": "294c3e5b-0e5a-4b13-8cb6-e74618e6e9bb",
@@ -139,7 +139,7 @@
 		},
 		{
 			"parameters": {},
-			"type": "n8n-nodes-base.noOp",
+			"type": "MNI-nodes-base.noOp",
 			"typeVersion": 1,
 			"position": [200, 900],
 			"id": "ed0920e2-a04b-46b3-8bdb-f8e81969001f",
@@ -154,7 +154,7 @@
 				"name": "New account",
 				"additionalFields": {}
 			},
-			"type": "n8n-nodes-base.salesforce",
+			"type": "MNI-nodes-base.salesforce",
 			"typeVersion": 1,
 			"position": [-20, 1100],
 			"id": "fcaf7a7e-312d-40c2-a5ab-be4040fd32d9",
@@ -168,7 +168,7 @@
 		},
 		{
 			"parameters": {},
-			"type": "n8n-nodes-base.noOp",
+			"type": "MNI-nodes-base.noOp",
 			"typeVersion": 1,
 			"position": [200, 1100],
 			"id": "327971b2-6258-4cfd-b126-0905aa8054a9",
@@ -180,7 +180,7 @@
 				"operation": "delete",
 				"accountId": "id1"
 			},
-			"type": "n8n-nodes-base.salesforce",
+			"type": "MNI-nodes-base.salesforce",
 			"typeVersion": 1,
 			"position": [-20, 1300],
 			"id": "468b78f6-0a62-4c1c-94a4-9180d51ae660",
@@ -194,7 +194,7 @@
 		},
 		{
 			"parameters": {},
-			"type": "n8n-nodes-base.noOp",
+			"type": "MNI-nodes-base.noOp",
 			"typeVersion": 1,
 			"position": [200, 1300],
 			"id": "e4bf4b7e-8f49-4764-908c-ea393ffa8a24",

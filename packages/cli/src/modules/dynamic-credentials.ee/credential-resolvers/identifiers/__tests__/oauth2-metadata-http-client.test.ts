@@ -1,5 +1,5 @@
-import type { HttpRequestClient, OutboundHttp } from '@n8n/backend-network';
-import { mockLogger } from '@n8n/backend-test-utils';
+import type { HttpRequestClient, OutboundHttp } from '@MNI/backend-network';
+import { mockLogger } from '@MNI/backend-test-utils';
 import { mock } from 'vitest-mock-extended';
 import { z } from 'zod';
 

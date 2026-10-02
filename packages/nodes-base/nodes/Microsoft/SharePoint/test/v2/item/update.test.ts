@@ -1,5 +1,5 @@
-import type { IDataObject, IExecuteFunctions, INode, ResourceMapperValue } from 'n8n-workflow';
-import { jsonParse } from 'n8n-workflow';
+import type { IDataObject, IExecuteFunctions, INode, ResourceMapperValue } from 'MNI-workflow';
+import { jsonParse } from 'MNI-workflow';
 import type { Mock } from 'vitest';
 import type { DeepMockProxy } from 'vitest-mock-extended';
 import { mock, mockDeep } from 'vitest-mock-extended';

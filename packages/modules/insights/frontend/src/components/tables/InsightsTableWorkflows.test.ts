@@ -1,5 +1,5 @@
-import type { InsightsByWorkflow } from '@n8n/api-types';
-import { createComponentRenderer, useEmitters } from '@n8n/frontend-test-utils';
+import type { InsightsByWorkflow } from '@MNI/api-types';
+import { createComponentRenderer, useEmitters } from '@MNI/frontend-test-utils';
 import { createTestingPinia } from '@pinia/testing';
 import userEvent from '@testing-library/user-event';
 import { screen, within } from '@testing-library/vue';
@@ -12,16 +12,16 @@ const { emitters, addEmitter } = useEmitters<'n8nDataTableServer'>();
 const mockTelemetry = {
 	track: vi.fn(),
 };
-vi.mock('@n8n/composables/useTelemetry', () => ({
+vi.mock('@MNI/composables/useTelemetry', () => ({
 	useTelemetry: () => mockTelemetry,
 }));
 
-vi.mock('@n8n/design-system', async (importOriginal) => {
+vi.mock('@MNI/design-system', async (importOriginal) => {
 	const original = await importOriginal<object>();
 	return {
 		...original,
 		// A plain options object, not `defineComponent`. This factory is hoisted above the
-		// imports and runs while `@n8n/frontend-test-utils` is still initialising — it reaches
+		// imports and runs while `@MNI/frontend-test-utils` is still initialising — it reaches
 		// design-system through its renderer — so calling anything imported from `vue` here
 		// throws a TDZ error on an import that has not been evaluated yet.
 		N8nDataTableServer: {
@@ -105,7 +105,7 @@ const mockInsightsData: InsightsByWorkflow = {
 let renderComponent: ReturnType<typeof createComponentRenderer>;
 
 describe('InsightsTableWorkflows', () => {
-	// The paywall is a `defineAsyncComponent`, and its module pulls `@n8n/stores` in
+	// The paywall is a `defineAsyncComponent`, and its module pulls `@MNI/stores` in
 	// from source. Resolving that inside the assertion made the test a race against a
 	// wall clock: ~1.3s locally, over the 3s budget on a CI runner. Loading it here
 	// puts the cost in a hook and leaves the loader hitting the module cache, so the

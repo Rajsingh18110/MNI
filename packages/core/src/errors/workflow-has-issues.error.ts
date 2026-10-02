@@ -1,5 +1,5 @@
-import type { INode, IWorkflowIssues } from 'n8n-workflow';
-import { nodeIssuesToString, WorkflowOperationError } from 'n8n-workflow';
+import type { INode, IWorkflowIssues } from 'MNI-workflow';
+import { nodeIssuesToString, WorkflowOperationError } from 'MNI-workflow';
 
 const MAX_NODES_IN_MESSAGE = 4;
 

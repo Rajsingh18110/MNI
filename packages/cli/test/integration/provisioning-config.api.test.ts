@@ -1,6 +1,6 @@
-import { BLOCK_ACCESS_ASSIGNMENT } from '@n8n/api-types';
-import { SettingsRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
+import { BLOCK_ACCESS_ASSIGNMENT } from '@MNI/api-types';
+import { SettingsRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
 
 import { PROVISIONING_PREFERENCES_DB_KEY } from '@/modules/provisioning.ee/constants';
 import { ProvisioningService } from '@/modules/provisioning.ee/provisioning.service.ee';

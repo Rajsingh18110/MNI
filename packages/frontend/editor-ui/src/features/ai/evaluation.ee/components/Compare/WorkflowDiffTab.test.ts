@@ -15,7 +15,7 @@ vi.mock('@/app/stores/workflowsList.store', () => ({
 vi.mock('@/features/workflows/workflowHistory/workflowHistory.store', () => ({
 	useWorkflowHistoryStore: () => ({ getWorkflowVersion }),
 }));
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: () => ({ showError: vi.fn() }),
 }));
 // Stub the heavy diff canvas — this tab only wires data into it.

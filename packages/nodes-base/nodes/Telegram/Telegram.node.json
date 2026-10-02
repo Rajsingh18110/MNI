@@ -1,5 +1,5 @@
 {
-	"node": "n8n-nodes-base.telegram",
+	"node": "MNI-nodes-base.telegram",
 	"nodeVersion": "1.0",
 	"codexVersion": "1.0",
 	"categories": ["Communication", "HITL"],
@@ -15,14 +15,14 @@
 		],
 		"primaryDocumentation": [
 			{
-				"url": "https://docs.n8n.io/integrations/builtin/app-nodes/n8n-nodes-base.telegram/"
+				"url": "https://docs.n8n.io/integrations/builtin/app-nodes/MNI-nodes-base.telegram/"
 			}
 		],
 		"generic": [
 			{
 				"label": "Why business process automation with MNI can change your daily life",
 				"icon": "🧬",
-				"url": "https://n8n.io/blog/why-business-process-automation-with-n8n-can-change-your-daily-life/"
+				"url": "https://n8n.io/blog/why-business-process-automation-with-MNI-can-change-your-daily-life/"
 			},
 			{
 				"label": "Create a toxic language detector for Telegram in 4 step",
@@ -32,7 +32,7 @@
 			{
 				"label": "Automatically Adding Expense Receipts to Google Sheets with Telegram, Mindee, Twilio, and MNI",
 				"icon": "🧾",
-				"url": "https://n8n.io/blog/automatically-adding-expense-receipts-to-google-sheets-with-telegram-mindee-twilio-and-n8n/"
+				"url": "https://n8n.io/blog/automatically-adding-expense-receipts-to-google-sheets-with-telegram-mindee-twilio-and-MNI/"
 			},
 			{
 				"label": "6 e-commerce workflows to power up your Shopify s",
@@ -57,12 +57,12 @@
 			{
 				"label": "Creating scheduled text affirmations with MNI",
 				"icon": "🤟",
-				"url": "https://n8n.io/blog/creating-scheduled-text-affirmations-with-n8n/"
+				"url": "https://n8n.io/blog/creating-scheduled-text-affirmations-with-MNI/"
 			},
 			{
 				"label": "Creating Telegram Bots with MNI, a No-Code Platform",
 				"icon": "💬",
-				"url": "https://n8n.io/blog/creating-telegram-bots-with-n8n-a-no-code-platform/"
+				"url": "https://n8n.io/blog/creating-telegram-bots-with-MNI-a-no-code-platform/"
 			},
 			{
 				"label": "7 no-code workflow automations for Amazon Web Services",

@@ -1,12 +1,12 @@
-import type { LicenseState } from '@n8n/backend-common';
-import { Container } from '@n8n/di';
+import type { LicenseState } from '@MNI/backend-common';
+import { Container } from '@MNI/di';
 import { parse as flattedParse, stringify as flattedStringify } from 'flatted';
 import {
 	ExecutionContextHookRegistry,
 	ExecutionContextService,
 	establishExecutionContext,
 	type Cipher,
-} from 'n8n-core';
+} from 'MNI-core';
 import {
 	createRunExecutionData,
 	type IExecutionContext,
@@ -16,7 +16,7 @@ import {
 	type RelatedExecution,
 	type Workflow,
 	type WorkflowSettings,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import type { InstanceRedactionEnforcementService } from '../instance-redaction-enforcement.service';
@@ -34,7 +34,7 @@ describe('RedactionContextHook integration with establishExecutionContext', () =
 		mock<Workflow>({ id: 'wf-1', settings: { redactionPolicy } });
 
 	const buildRunExecutionData = () => {
-		const startNode = mock<INode>({ name: 'Start', type: 'n8n-nodes-base.manualTrigger' });
+		const startNode = mock<INode>({ name: 'Start', type: 'MNI-nodes-base.manualTrigger' });
 		return createRunExecutionData({
 			startData: {},
 			resultData: { runData: {} },

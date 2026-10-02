@@ -5,16 +5,16 @@ import {
 	useDropdownSearch,
 	type AiModelSelectorMenuItem,
 	type AiModelSelectorMenuItemData,
-} from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
-import { truncateBeforeLast } from '@n8n/utils/string/truncate';
-import { getResourcePermissions } from '@n8n/permissions';
+} from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
+import { truncateBeforeLast } from '@MNI/utils/string/truncate';
+import { getResourcePermissions } from '@MNI/permissions';
 import { useCredentialsStore } from '@/features/credentials/credentials.store';
 import { useProjectsStore } from '@/features/collaboration/projects/projects.store';
 import { useUIStore } from '@/app/stores/ui.store';
 import { useFreeAiCredits } from '@/app/composables/useFreeAiCredits';
 import { useAiGateway } from '@/app/composables/useAiGateway';
-import { AI_GATEWAY_MANAGED_TAG } from '@n8n/api-types';
+import { AI_GATEWAY_MANAGED_TAG } from '@MNI/api-types';
 import ModelSelectorTriggerIcon from './model-selector/ModelSelectorTriggerIcon.vue';
 import ModelSelectorItemLeadingIcon from './model-selector/ModelSelectorItemLeadingIcon.vue';
 import { buildMenuItemId, parseMenuItemId } from './model-selector/menuItemId';

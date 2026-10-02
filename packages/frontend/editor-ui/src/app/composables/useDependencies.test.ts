@@ -1,5 +1,5 @@
 import { createPinia, setActivePinia } from 'pinia';
-import type { DependencyTypeCounts } from '@n8n/api-types';
+import type { DependencyTypeCounts } from '@MNI/api-types';
 
 import * as workflowDependenciesApi from '@/app/api/workflow-dependencies';
 import { useDependencies } from '@/app/composables/useDependencies';

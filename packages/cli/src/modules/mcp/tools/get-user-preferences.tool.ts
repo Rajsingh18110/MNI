@@ -1,5 +1,5 @@
-import type { User } from '@n8n/db';
-import { TELEMETRY_EVENT } from '@n8n/telemetry';
+import type { User } from '@MNI/db';
+import { TELEMETRY_EVENT } from '@MNI/telemetry';
 import z from 'zod';
 
 import type { AiPreferenceService } from '@/services/ai-preference.service';

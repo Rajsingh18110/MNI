@@ -1,16 +1,16 @@
 import { mount } from '@vue/test-utils';
 import { nextTick } from 'vue';
 import { describe, it, expect, vi } from 'vitest';
-import type { AgentApproval, ChatIntegrationApprovableAction } from '@n8n/api-types';
+import type { AgentApproval, ChatIntegrationApprovableAction } from '@MNI/api-types';
 
 import AgentChannelApprovalSetting from '../components/AgentChannelApprovalSetting.vue';
 
-vi.mock('@n8n/i18n', () => {
+vi.mock('@MNI/i18n', () => {
 	const i18n = { baseText: (key: string) => key };
 	return { useI18n: () => i18n, i18n, i18nInstance: { install: vi.fn() } };
 });
 
-vi.mock('@n8n/design-system', async () => {
+vi.mock('@MNI/design-system', async () => {
 	const { defineComponent, inject, provide } = await import('vue');
 
 	const N8nSelect = defineComponent({

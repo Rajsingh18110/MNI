@@ -1,14 +1,14 @@
-import { useNotificationsStore } from '@n8n/stores/notifications.store';
-import { useRootStore } from '@n8n/stores/useRootStore';
+import { useNotificationsStore } from '@MNI/stores/notifications.store';
+import { useRootStore } from '@MNI/stores/useRootStore';
 import { createPinia, setActivePinia } from 'pinia';
 import type { Router, RouteLocationNormalizedLoaded } from 'vue-router';
 
 import { VIEWS } from '@/app/constants';
 import { useUIStore } from '@/app/stores/ui.store';
 import { handleSessionExpired } from '@/app/utils/handleSessionExpired';
-import { useUsersStore } from '@n8n/stores/users.store';
+import { useUsersStore } from '@MNI/stores/users.store';
 
-vi.mock('@n8n/stores/users.store', () => ({
+vi.mock('@MNI/stores/users.store', () => ({
 	useUsersStore: vi.fn(),
 }));
 

@@ -1,6 +1,6 @@
-import { testDb, testModules } from '@n8n/backend-test-utils';
-import { CredentialsRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
+import { testDb, testModules } from '@MNI/backend-test-utils';
+import { CredentialsRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
 
 import type { DynamicCredentialResolver } from '@/modules/dynamic-credentials.ee/database/entities/credential-resolver';
 import { DynamicCredentialResolverRepository } from '@/modules/dynamic-credentials.ee/database/repositories/credential-resolver.repository';
@@ -11,8 +11,8 @@ describe('DynamicCredentialResolverRepository', () => {
 	let previousEnvVar: string | undefined;
 
 	beforeAll(async () => {
-		previousEnvVar = process.env.N8N_ENV_FEAT_DYNAMIC_CREDENTIALS;
-		process.env.N8N_ENV_FEAT_DYNAMIC_CREDENTIALS = 'true';
+		previousEnvVar = process.env.MNI_ENV_FEAT_DYNAMIC_CREDENTIALS;
+		process.env.MNI_ENV_FEAT_DYNAMIC_CREDENTIALS = 'true';
 		await testModules.loadModules(['dynamic-credentials']);
 		await testDb.init();
 		resolverRepository = Container.get(DynamicCredentialResolverRepository);
@@ -24,7 +24,7 @@ describe('DynamicCredentialResolverRepository', () => {
 	});
 
 	afterAll(async () => {
-		process.env.N8N_ENV_FEAT_DYNAMIC_CREDENTIALS = previousEnvVar;
+		process.env.MNI_ENV_FEAT_DYNAMIC_CREDENTIALS = previousEnvVar;
 		await testDb.terminate();
 	});
 

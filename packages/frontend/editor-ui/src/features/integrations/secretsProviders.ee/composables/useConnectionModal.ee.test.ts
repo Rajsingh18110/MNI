@@ -1,7 +1,7 @@
 import { ref } from 'vue';
 import { useConnectionModal } from './useConnectionModal.ee';
 import { vi } from 'vitest';
-import type { SecretProviderTypeResponse } from '@n8n/api-types';
+import type { SecretProviderTypeResponse } from '@MNI/api-types';
 import type { ProjectListItem } from '@/features/collaboration/projects/projects.types';
 
 // Mock module settings
@@ -26,20 +26,20 @@ vi.mock('./useSecretsProviderConnection.ee', () => ({
 	useSecretsProviderConnection: () => mockConnection,
 }));
 
-vi.mock('@n8n/stores/rbac.store', () => ({
+vi.mock('@MNI/stores/rbac.store', () => ({
 	useRBACStore: vi.fn(() => ({
 		hasScope: mockHasScope,
 	})),
 }));
 
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: vi.fn(() => ({
 		showError: mockShowError,
 		showMessage: mockShowMessage,
 	})),
 }));
 
-vi.mock('@n8n/stores/settings.store', () => ({
+vi.mock('@MNI/stores/settings.store', () => ({
 	useSettingsStore: vi.fn(() => ({
 		moduleSettings: mockModuleSettings,
 	})),

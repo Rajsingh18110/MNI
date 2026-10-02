@@ -1,6 +1,6 @@
 import { mock } from 'vitest-mock-extended';
 
-import type { CredentialsEntity } from '@n8n/db';
+import type { CredentialsEntity } from '@MNI/db';
 
 import type { CredentialsService } from '@/credentials/credentials.service';
 

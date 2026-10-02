@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { type WorkflowReviewEligibleReviewer } from '@n8n/api-types';
-import { ResponseError } from '@n8n/rest-api-client';
-import { useRootStore } from '@n8n/stores/useRootStore';
+import { type WorkflowReviewEligibleReviewer } from '@MNI/api-types';
+import { ResponseError } from '@MNI/rest-api-client';
+import { useRootStore } from '@MNI/stores/useRootStore';
 import {
 	N8nButton,
 	N8nDialog,
@@ -14,11 +14,11 @@ import {
 	N8nText,
 	N8nUserSelect,
 	type IUser,
-} from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+} from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 import { computed, nextTick, ref, useTemplateRef, watch } from 'vue';
 
-import { useToast } from '@n8n/composables/useToast';
+import { useToast } from '@MNI/composables/useToast';
 import CharacterCount from '@/app/components/CharacterCount.vue';
 import WorkflowVersionForm from '@/app/components/WorkflowVersionForm.vue';
 import { useReviewVersionName } from '@/features/workflow-reviews/composables/useReviewVersionName';

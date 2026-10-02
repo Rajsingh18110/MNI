@@ -3,7 +3,7 @@ import { inject, ref } from 'vue';
 import type { CanvasNodeData, CanvasNodeInjectionData } from '../canvas.types';
 import { CanvasConnectionMode, CanvasNodeRenderType } from '../canvas.types';
 import { createPinia, setActivePinia } from 'pinia';
-import { useTypeAvailabilityPoliciesStore } from '@n8n/frontend-module-type-availability-policies';
+import { useTypeAvailabilityPoliciesStore } from '@MNI/frontend-module-type-availability-policies';
 
 vi.mock('vue', async () => {
 	const actual = await vi.importActual('vue');
@@ -96,10 +96,10 @@ describe('useCanvasNode', () => {
 
 	it('should report a restricted node type with its blocking scope', () => {
 		vi.mocked(inject).mockReturnValue({
-			data: ref({ type: 'n8n-nodes-base.slack' }),
+			data: ref({ type: 'MNI-nodes-base.slack' }),
 		} as unknown as CanvasNodeInjectionData);
 		vi.spyOn(useTypeAvailabilityPoliciesStore(), 'getNodeTypeAvailability').mockReturnValue({
-			name: 'n8n-nodes-base.slack',
+			name: 'MNI-nodes-base.slack',
 			available: false,
 			scope: 'project',
 		});

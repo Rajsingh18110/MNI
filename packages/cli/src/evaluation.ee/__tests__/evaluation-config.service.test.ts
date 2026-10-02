@@ -1,6 +1,6 @@
-import type { UpsertEvaluationConfigDto } from '@n8n/api-types';
-import type { LicenseState } from '@n8n/backend-common';
-import type { EvaluationConfig, EvaluationConfigRepository, User, WorkflowEntity } from '@n8n/db';
+import type { UpsertEvaluationConfigDto } from '@MNI/api-types';
+import type { LicenseState } from '@MNI/backend-common';
+import type { EvaluationConfig, EvaluationConfigRepository, User, WorkflowEntity } from '@MNI/db';
 import type { Mocked } from 'vitest';
 import { mock } from 'vitest-mock-extended';
 

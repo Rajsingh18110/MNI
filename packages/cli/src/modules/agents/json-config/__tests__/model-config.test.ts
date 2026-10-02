@@ -1,5 +1,5 @@
-import type { CredentialProvider, ResolvedCredential } from '@n8n/agents';
-import { AI_GATEWAY_MANAGED_TAG } from '@n8n/api-types';
+import type { CredentialProvider, ResolvedCredential } from '@MNI/agents';
+import { AI_GATEWAY_MANAGED_TAG } from '@MNI/api-types';
 import { mock } from 'vitest-mock-extended';
 
 import {

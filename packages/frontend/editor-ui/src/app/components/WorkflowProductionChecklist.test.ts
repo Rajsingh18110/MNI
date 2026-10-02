@@ -13,7 +13,7 @@ import { useEvaluationStore } from '@/features/ai/evaluation.ee/evaluation.store
 import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';
 import { useWorkflowSettingsCache } from '@/app/composables/useWorkflowsCache';
 import { useUIStore } from '@/app/stores/ui.store';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
 import { useSourceControlStore } from '@/features/integrations/sourceControl.ee/sourceControl.store';
 import { useRouter } from 'vue-router';
 import type { IWorkflowDb } from '@/Interface';
@@ -27,10 +27,10 @@ import {
 	EVALUATIONS_DOCS_URL,
 	ERROR_TRIGGER_NODE_TYPE,
 } from '@/app/constants';
-import type { INodeTypeDescription } from 'n8n-workflow';
+import type { INodeTypeDescription } from 'MNI-workflow';
 import { createTestNode } from '@/__tests__/mocks';
-import { useSettingsStore } from '@n8n/stores/settings.store';
-import { useUsersStore } from '@n8n/stores/users.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
+import { useUsersStore } from '@MNI/stores/users.store';
 import { MCP_DOCS_PAGE_URL, MCP_SETTINGS_VIEW } from '@/features/ai/mcpAccess/mcp.constants';
 
 vi.mock('vue-router', async (importOriginal) => {
@@ -45,7 +45,7 @@ vi.mock('@/app/composables/useWorkflowsCache', () => ({
 	useWorkflowSettingsCache: vi.fn(),
 }));
 
-vi.mock('@n8n/composables/useTelemetry', () => ({
+vi.mock('@MNI/composables/useTelemetry', () => ({
 	useTelemetry: vi.fn(),
 }));
 
@@ -61,8 +61,8 @@ vi.mock('@/features/ai/evaluation.ee/composables/useWorkflowEvaluationState', ()
 	}),
 }));
 
-vi.mock('@n8n/i18n', async (importOriginal) => {
-	const actual = await importOriginal<typeof import('@n8n/i18n')>();
+vi.mock('@MNI/i18n', async (importOriginal) => {
+	const actual = await importOriginal<typeof import('@MNI/i18n')>();
 	return {
 		...actual,
 		useI18n: () => ({
@@ -127,7 +127,7 @@ const mockN8nSuggestedActions = {
 
 		return { props };
 	},
-	template: '<div data-test-id="n8n-suggested-actions-stub" />',
+	template: '<div data-test-id="MNI-suggested-actions-stub" />',
 };
 
 const workflowDocumentStoreRef = shallowRef<ReturnType<typeof useWorkflowDocumentStore> | null>(
@@ -200,7 +200,7 @@ describe('WorkflowProductionChecklist', () => {
 			const { container } = renderComponent({ pinia: createTestingPinia() });
 
 			expect(
-				container.querySelector('[data-test-id="n8n-suggested-actions-stub"]'),
+				container.querySelector('[data-test-id="MNI-suggested-actions-stub"]'),
 			).not.toBeInTheDocument();
 		});
 
@@ -210,7 +210,7 @@ describe('WorkflowProductionChecklist', () => {
 			const { container } = renderComponent({ pinia: createTestingPinia() });
 
 			expect(
-				container.querySelector('[data-test-id="n8n-suggested-actions-stub"]'),
+				container.querySelector('[data-test-id="MNI-suggested-actions-stub"]'),
 			).not.toBeInTheDocument();
 		});
 

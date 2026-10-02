@@ -1,6 +1,6 @@
-import type { DatabaseConfig } from '@n8n/config';
-import type { ExecutionRepository, ExecutionSummaries } from '@n8n/db';
-import type { ExecutionSummary } from 'n8n-workflow';
+import type { DatabaseConfig } from '@MNI/config';
+import type { ExecutionRepository, ExecutionSummaries } from '@MNI/db';
+import type { ExecutionSummary } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import { encodeExecutionCursor } from '../execution-cursor';

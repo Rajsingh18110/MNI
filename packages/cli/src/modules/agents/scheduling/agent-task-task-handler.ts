@@ -1,7 +1,7 @@
-import { Logger } from '@n8n/backend-common';
-import { Service } from '@n8n/di';
-import type { ClaimedTask, DispatchDecision, DispatchReporter, TaskHandler } from '@n8n/scheduler';
-import { UnexpectedError } from 'n8n-workflow';
+import { Logger } from '@MNI/backend-common';
+import { Service } from '@MNI/di';
+import type { ClaimedTask, DispatchDecision, DispatchReporter, TaskHandler } from '@MNI/scheduler';
+import { UnexpectedError } from 'MNI-workflow';
 
 import { AgentTaskService } from '../agent-task.service';
 import { AGENT_TASK_TASK_TYPE, isAgentTaskJobPayload } from './agent-task-job';
@@ -19,7 +19,7 @@ import { AgentTaskJobRegistrar } from './agent-task-job-registrar';
  * The handoff also ends the crash protection of the scheduler. A main that
  * dies after the lock and before the run records its `agent_execution` row
  * leaves no trace, and the lock blocks the next ticks until its TTL ends. The
- * in-memory scheduler has the same gap. Once `@n8n/scheduler` can renew the
+ * in-memory scheduler has the same gap. Once `@MNI/scheduler` can renew the
  * lease during a handler, the handler can await the run instead, and the
  * reaper then covers a crash at any point of the run.
  */

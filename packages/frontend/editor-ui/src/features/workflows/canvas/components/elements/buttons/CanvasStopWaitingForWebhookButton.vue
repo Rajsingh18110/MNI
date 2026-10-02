@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 
-import { N8nIconButton } from '@n8n/design-system';
+import { N8nIconButton } from '@MNI/design-system';
 const props = defineProps<{
 	size?: 'small' | 'medium' | 'large' | 'xlarge';
 }>();

@@ -3,9 +3,9 @@ import { getNodeTypeDisplayableCredentials } from '@/app/utils/nodes/nodeTransfo
 import type {
 	ITemplatesWorkflowFull,
 	IWorkflowTemplateNode,
-} from '@n8n/rest-api-client/api/templates';
+} from '@MNI/rest-api-client/api/templates';
 import { screen } from '@testing-library/vue';
-import type { INodeCredentialDescription } from 'n8n-workflow';
+import type { INodeCredentialDescription } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 import RecommendedTemplateCard from './RecommendedTemplateCard.vue';
 
@@ -52,7 +52,7 @@ const makeTemplateNodeWithCredentials = (
 ): IWorkflowTemplateNode =>
 	mock<IWorkflowTemplateNode>({
 		name: 'Node',
-		type: 'n8n-nodes-base.httpRequest',
+		type: 'MNI-nodes-base.httpRequest',
 		typeVersion: 1,
 		position: [0, 0],
 		parameters: {},

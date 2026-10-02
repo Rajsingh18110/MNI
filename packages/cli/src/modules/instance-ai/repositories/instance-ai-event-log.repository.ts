@@ -3,11 +3,11 @@ import type {
 	InstanceAiEvent,
 	InstanceAiPreferencesAppliedEvent,
 	InstanceAiSetupItem,
-} from '@n8n/api-types';
-import { Service } from '@n8n/di';
-import type { StoredEvent } from '@n8n/instance-ai';
-import { DataSource, MoreThan, Repository } from '@n8n/typeorm';
-import { jsonParse } from 'n8n-workflow';
+} from '@MNI/api-types';
+import { Service } from '@MNI/di';
+import type { StoredEvent } from '@MNI/instance-ai';
+import { DataSource, MoreThan, Repository } from '@MNI/typeorm';
+import { jsonParse } from 'MNI-workflow';
 
 import { InstanceAiEventLogEntry } from '../entities/instance-ai-event-log-entry.entity';
 

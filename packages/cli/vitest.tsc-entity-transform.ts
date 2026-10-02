@@ -16,10 +16,10 @@ import type { Plugin } from 'vite';
  * cross-file type information collapses the union to `String` — Vite's oxc transform
  * (and SWC) emit `Object`, which TypeORM rejects at `DataSource.initialize()`. oxc
  * additionally emits a runtime value reference for the type-only `Relation<T>` typeorm
- * export, so an entity importing `type Relation` fails to load at all (`@n8n/typeorm
+ * export, so an entity importing `type Relation` fails to load at all (`@MNI/typeorm
  * does not provide an export named 'Relation'`). A full `tsc` Program fixes both.
  *
- * This mirrors `packages/@n8n/db/vite.config.ts`. cli's entities are not under a single
+ * This mirrors `packages/@MNI/db/vite.config.ts`. cli's entities are not under a single
  * directory, so the plugin keys off the `*.entity.ts` suffix and roots the Program at
  * those files; the rest of `src` keeps the fast oxc path.
  */

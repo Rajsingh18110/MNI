@@ -1,4 +1,4 @@
-import { Container } from '@n8n/di';
+import { Container } from '@MNI/di';
 
 import { FavoriteResourceResolverRegistry } from '@/modules/favorites/favorite-resource-resolver.registry';
 

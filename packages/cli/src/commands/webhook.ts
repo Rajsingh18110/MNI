@@ -1,7 +1,7 @@
-import { DeploymentKeyRepository } from '@n8n/db';
-import { Command } from '@n8n/decorators';
-import { Container } from '@n8n/di';
-import { BinaryDataConfig } from 'n8n-core';
+import { DeploymentKeyRepository } from '@MNI/db';
+import { Command } from '@MNI/decorators';
+import { Container } from '@MNI/di';
+import { BinaryDataConfig } from 'MNI-core';
 
 import { ActiveExecutions } from '@/active-executions';
 import { DeprecationService } from '@/deprecation/deprecation.service';
@@ -35,14 +35,14 @@ export class Webhook extends BaseCommand {
 	 * get removed.
 	 */
 	async stopProcess() {
-		this.logger.info('\nStopping n8n...');
+		this.logger.info('\nStopping MNI...');
 
 		try {
 			await this.externalHooks?.run('n8n.stop');
 
 			await Container.get(ActiveExecutions).shutdown();
 		} catch (error) {
-			await this.exitWithCrash('There was an error shutting down n8n.', error);
+			await this.exitWithCrash('There was an error shutting down MNI.', error);
 		}
 
 		await this.exitSuccessFully();

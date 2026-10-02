@@ -1,4 +1,4 @@
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 
 import { useMessage } from '@/app/composables/useMessage';
 import { MODAL_CONFIRM } from '@/app/constants';

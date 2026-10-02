@@ -3,7 +3,7 @@ import type {
 	IDataObject,
 	INodeExecutionData,
 	INodeProperties,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import type { IData, IDimension, IMetric } from '../../helpers/Interfaces';
 import {
@@ -22,7 +22,7 @@ const dimensionDropdown: INodeProperties[] = [
 		name: 'listName',
 		type: 'options',
 		default: 'ga:date',
-		// eslint-disable-next-line n8n-nodes-base/node-param-options-type-unsorted-items
+		// eslint-disable-next-line MNI-nodes-base/node-param-options-type-unsorted-items
 		options: [
 			{
 				name: 'Browser',
@@ -65,7 +65,7 @@ const dimensionDropdown: INodeProperties[] = [
 				value: 'ga:sourceMedium',
 			},
 			{
-				// eslint-disable-next-line n8n-nodes-base/node-param-display-name-miscased
+				// eslint-disable-next-line MNI-nodes-base/node-param-display-name-miscased
 				name: 'Other dimensions…',
 				value: 'other',
 			},
@@ -159,7 +159,7 @@ export const description: INodeProperties[] = [
 		name: 'dateRange',
 		type: 'options',
 		required: true,
-		// eslint-disable-next-line n8n-nodes-base/node-param-options-type-unsorted-items
+		// eslint-disable-next-line MNI-nodes-base/node-param-options-type-unsorted-items
 		options: [
 			{
 				name: 'Last 7 Days',
@@ -249,7 +249,7 @@ export const description: INodeProperties[] = [
 						name: 'listName',
 						type: 'options',
 						default: 'ga:users',
-						// eslint-disable-next-line n8n-nodes-base/node-param-options-type-unsorted-items
+						// eslint-disable-next-line MNI-nodes-base/node-param-options-type-unsorted-items
 						options: [
 							{
 								name: 'Checkouts',
@@ -280,12 +280,12 @@ export const description: INodeProperties[] = [
 								value: 'ga:users',
 							},
 							{
-								// eslint-disable-next-line n8n-nodes-base/node-param-display-name-miscased
+								// eslint-disable-next-line MNI-nodes-base/node-param-display-name-miscased
 								name: 'Other metrics…',
 								value: 'other',
 							},
 							{
-								// eslint-disable-next-line n8n-nodes-base/node-param-display-name-miscased
+								// eslint-disable-next-line MNI-nodes-base/node-param-display-name-miscased
 								name: 'Custom metric…',
 								value: 'custom',
 							},
@@ -380,7 +380,7 @@ export const description: INodeProperties[] = [
 		},
 	},
 	{
-		// eslint-disable-next-line n8n-nodes-base/node-param-display-name-miscased
+		// eslint-disable-next-line MNI-nodes-base/node-param-display-name-miscased
 		displayName: 'Dimensions to split by',
 		name: 'dimensionsUA',
 		type: 'fixedCollection',
@@ -441,7 +441,7 @@ export const description: INodeProperties[] = [
 		description: 'Max number of results to return',
 	},
 	{
-		// eslint-disable-next-line n8n-nodes-base/node-param-display-name-wrong-for-simplify
+		// eslint-disable-next-line MNI-nodes-base/node-param-display-name-wrong-for-simplify
 		displayName: 'Simplify Output',
 		name: 'simple',
 		type: 'boolean',

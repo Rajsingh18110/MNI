@@ -1,4 +1,4 @@
-import { AgentJsonConfigSchema, type AgentJsonConfig } from '@n8n/api-types';
+import { AgentJsonConfigSchema, type AgentJsonConfig } from '@MNI/api-types';
 
 const baseConfig: AgentJsonConfig = {
 	name: 'Test Agent',

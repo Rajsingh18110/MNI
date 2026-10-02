@@ -1,6 +1,6 @@
-import type { User } from '@n8n/db';
-import { ensureError } from '@n8n/utils/errors/ensure-error';
-import { type IConnections } from 'n8n-workflow';
+import type { User } from '@MNI/db';
+import { ensureError } from '@MNI/utils/errors/ensure-error';
+import { type IConnections } from 'MNI-workflow';
 import z from 'zod';
 
 import type { Telemetry } from '@/telemetry';

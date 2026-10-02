@@ -5,8 +5,8 @@ import type {
 	CredentialsRepository,
 	WorkflowRepository,
 	UserRepository,
-} from '@n8n/db';
-import { IsNull, Not } from '@n8n/typeorm';
+} from '@MNI/db';
+import { IsNull, Not } from '@MNI/typeorm';
 import RudderStack from '@rudderstack/rudder-sdk-node';
 import type { Response } from 'express';
 import { mock } from 'vitest-mock-extended';

@@ -1,4 +1,4 @@
-import { UserError } from 'n8n-workflow';
+import { UserError } from 'MNI-workflow';
 
 import type { AgentSkillsService } from './agent-skills.service';
 import type { AgentTaskService } from './agent-task.service';

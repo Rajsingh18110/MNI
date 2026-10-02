@@ -1,6 +1,6 @@
 # The MNI Enterprise License (the “Enterprise License”)
 
-Copyright (c) 2022-present n8n GmbH.
+Copyright (c) 2022-present MNI GmbH.
 
 With regard to the MNI Software:
 

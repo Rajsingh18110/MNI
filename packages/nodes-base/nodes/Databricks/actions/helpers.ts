@@ -1,13 +1,13 @@
-import { retryabilityFromError } from '@n8n/backend-network';
-import { sleep } from '@n8n/utils/sleep';
-import { NodeApiError, NodeOperationError, UserError } from 'n8n-workflow';
+import { retryabilityFromError } from '@MNI/backend-network';
+import { sleep } from '@MNI/utils/sleep';
+import { NodeApiError, NodeOperationError, UserError } from 'MNI-workflow';
 import type {
 	IDataObject,
 	IExecuteFunctions,
 	IHttpRequestOptions,
 	ILoadOptionsFunctions,
 	IPollFunctions,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { DATABRICKS_PARTNER_USER_AGENT } from '../constants';
 
@@ -22,7 +22,7 @@ const RATE_LIMIT_MAX_DELAY_MS = 30_000;
 
 /**
  * Single egress point for the Databricks API, enforced by eslint-user-agent-restriction.mjs.
- * Setting a User-Agent opts these calls out of N8N_GLOBAL_USER_AGENT_VALUE on purpose:
+ * Setting a User-Agent opts these calls out of MNI_GLOBAL_USER_AGENT_VALUE on purpose:
  * partner attribution needs one predictable token.
  */
 export async function databricksApiRequest(

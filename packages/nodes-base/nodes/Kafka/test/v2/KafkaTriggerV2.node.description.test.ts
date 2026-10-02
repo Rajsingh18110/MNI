@@ -3,8 +3,8 @@ import type {
 	INodeProperties,
 	INodeTypeBaseDescription,
 	INodeTypeDescription,
-} from 'n8n-workflow';
-import { NodeHelpers } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeHelpers } from 'MNI-workflow';
 
 import { KafkaTriggerV1 } from '../../v1/KafkaTriggerV1.node';
 import { KafkaTriggerV2 } from '../../v2/KafkaTriggerV2.node';

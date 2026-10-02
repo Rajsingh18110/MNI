@@ -6,8 +6,8 @@
  * log diagnostics). Pulled here so those phases stay consistent.
  */
 import type { TestInfo } from '@playwright/test';
-import type { ServiceHelpers } from 'n8n-containers/services/types';
-import type { IWorkflowBase } from 'n8n-workflow';
+import type { ServiceHelpers } from 'MNI-containers/services/types';
+import type { IWorkflowBase } from 'MNI-workflow';
 
 import { DockerStatsSampler } from './docker-stats-fallback';
 import type { ApiHelpers } from '../../../../services/api-helper';
@@ -119,7 +119,7 @@ export async function setupBenchmarkRun(ctx: SetupContext): Promise<SetupResult>
 			: ctx.counterReader;
 
 	// VictoriaMetrics needs at least one scrape before queries return data.
-	await obs.metrics.waitForMetric('n8n_version_info', {
+	await obs.metrics.waitForMetric('MNI_version_info', {
 		timeoutMs: 30_000,
 		intervalMs: 2000,
 		predicate: (results: unknown[]) => results.length > 0,
@@ -449,11 +449,11 @@ function getPostgresService(report: RunReport): PostgresMetrics | undefined {
 }
 
 function getN8nMainService(report: RunReport) {
-	return report.services.find((s) => s.kind === 'n8n-main');
+	return report.services.find((s) => s.kind === 'MNI-main');
 }
 
 function getN8nWorkerService(report: RunReport) {
-	return report.services.find((s) => s.kind === 'n8n-worker');
+	return report.services.find((s) => s.kind === 'MNI-worker');
 }
 
 function renderDiagBlock(report: RunReport): void {
@@ -461,8 +461,8 @@ function renderDiagBlock(report: RunReport): void {
 	const main = getN8nMainService(report);
 	const pg = getPostgresService(report);
 	const worker = getN8nWorkerService(report);
-	const eventLoopLag = main?.kind === 'n8n-main' ? main.eventLoopLagSec : undefined;
-	const queueWaiting = worker?.kind === 'n8n-worker' ? worker.queueWaiting : undefined;
+	const eventLoopLag = main?.kind === 'MNI-main' ? main.eventLoopLagSec : undefined;
+	const queueWaiting = worker?.kind === 'MNI-worker' ? worker.queueWaiting : undefined;
 
 	console.log(
 		`[DIAG] ${report.scenario.spec}\n` +
@@ -581,7 +581,7 @@ function renderResultBlock(report: RunReport): void {
 	const t = report.throughput;
 	const main = getN8nMainService(report);
 	const pg = getPostgresService(report);
-	const eventLoopLag = main?.kind === 'n8n-main' ? main.eventLoopLagSec : undefined;
+	const eventLoopLag = main?.kind === 'MNI-main' ? main.eventLoopLagSec : undefined;
 	const evLagMs = eventLoopLag !== undefined ? `${(eventLoopLag * 1000).toFixed(0)}ms` : 'N/A';
 
 	if (t.reqPerSec !== undefined) {
@@ -636,19 +636,19 @@ export async function attachReportMetrics(
 		await attachMetric(testInfo, 'pg-cpu-peak', pgContainer.cpuPctPeak ?? 0, '%', dimensions);
 	}
 
-	// Average across replicas (n8n-main-1, -2, …) for the summary column.
+	// Average across replicas (MNI-main-1, -2, …) for the summary column.
 	const avgCpuFor = (prefix: string): number | undefined => {
 		const matches = report.containers.filter((c) => c.name.startsWith(prefix));
 		if (matches.length === 0) return undefined;
 		const sum = matches.reduce((acc, c) => acc + (c.cpuPct ?? 0), 0);
 		return sum / matches.length;
 	};
-	const mainCpu = avgCpuFor('n8n-main');
+	const mainCpu = avgCpuFor('MNI-main');
 	if (mainCpu !== undefined) {
 		await attachMetric(testInfo, 'main-cpu-avg', mainCpu, '%', dimensions);
 	}
 	const mainContainers = report.containers.filter((container) =>
-		container.name.startsWith('n8n-main'),
+		container.name.startsWith('MNI-main'),
 	);
 	if (mainContainers.length > 0) {
 		const mainMemoryMb =
@@ -658,7 +658,7 @@ export async function attachReportMetrics(
 			1024;
 		await attachMetric(testInfo, 'main-memory-mb', mainMemoryMb, 'MB', dimensions);
 	}
-	const workerCpu = avgCpuFor('n8n-worker');
+	const workerCpu = avgCpuFor('MNI-worker');
 	if (workerCpu !== undefined) {
 		await attachMetric(testInfo, 'worker-cpu-avg', workerCpu, '%', dimensions);
 	}

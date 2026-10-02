@@ -2,20 +2,20 @@ import { removePreviewToken } from '@/features/shared/nodeCreator/nodeCreator.ut
 import { useCommunityNodesStore } from '../communityNodes.store';
 import { useCredentialsStore } from '@/features/credentials/credentials.store';
 import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';
-import { useUsersStore } from '@n8n/stores/users.store';
+import { useUsersStore } from '@MNI/stores/users.store';
 import { useWorkflowsStore } from '@/app/stores/workflows.store';
 import {
 	useWorkflowDocumentStore,
 	createWorkflowDocumentId,
 } from '@/app/stores/workflowDocument.store';
-import { useSettingsStore } from '@n8n/stores/settings.store';
-import type { CommunityNodeType } from '@n8n/api-types';
+import { useSettingsStore } from '@MNI/stores/settings.store';
+import type { CommunityNodeType } from '@MNI/api-types';
 import { createTestingPinia } from '@pinia/testing';
 import { setActivePinia } from 'pinia';
 import { useCanvasOperations } from '@/app/composables/useCanvasOperations';
 import { useInstallNode } from './useInstallNode';
-import { useToast } from '@n8n/composables/useToast';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
+import { useToast } from '@MNI/composables/useToast';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
 import { DEFAULT_SETTINGS } from '@/app/constants/workflows';
 
 vi.mock('@/app/composables/useCanvasOperations', () => ({
@@ -24,14 +24,14 @@ vi.mock('@/app/composables/useCanvasOperations', () => ({
 	}),
 }));
 
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: vi.fn().mockReturnValue({
 		showError: vi.fn(),
 		showMessage: vi.fn(),
 	}),
 }));
 
-vi.mock('@n8n/composables/useTelemetry', () => {
+vi.mock('@MNI/composables/useTelemetry', () => {
 	const track = vi.fn();
 	return {
 		useTelemetry: () => {
@@ -42,7 +42,7 @@ vi.mock('@n8n/composables/useTelemetry', () => {
 	};
 });
 
-vi.mock('@n8n/i18n', () => ({
+vi.mock('@MNI/i18n', () => ({
 	i18n: {
 		baseText: vi.fn((key: string) => key),
 	},

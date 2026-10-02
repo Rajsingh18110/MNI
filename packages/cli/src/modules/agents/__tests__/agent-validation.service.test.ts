@@ -1,6 +1,6 @@
-import type { CredentialProvider } from '@n8n/agents';
-import { AI_GATEWAY_MANAGED_TAG, type AgentJsonConfig } from '@n8n/api-types';
-import type { WorkflowRepository } from '@n8n/db';
+import type { CredentialProvider } from '@MNI/agents';
+import { AI_GATEWAY_MANAGED_TAG, type AgentJsonConfig } from '@MNI/api-types';
+import type { WorkflowRepository } from '@MNI/db';
 import { mock } from 'vitest-mock-extended';
 
 import type { NodeTypes } from '@/node-types';
@@ -29,7 +29,7 @@ const runnableConfig: AgentJsonConfig = {
 const executeWorkflowTriggerNode = {
 	id: 'trigger-node-id',
 	name: 'When Executed by Another Workflow',
-	type: 'n8n-nodes-base.executeWorkflowTrigger',
+	type: 'MNI-nodes-base.executeWorkflowTrigger',
 	typeVersion: 1.1,
 	position: [0, 0],
 	parameters: { inputSource: 'passthrough' },
@@ -385,7 +385,7 @@ describe('AgentValidationService — structured issues', () => {
 						type: 'node',
 						name: 'create_issue',
 						node: {
-							nodeType: 'n8n-nodes-base.linear',
+							nodeType: 'MNI-nodes-base.linear',
 							nodeTypeVersion: 1,
 							nodeParameters: {},
 						},
@@ -394,7 +394,7 @@ describe('AgentValidationService — structured issues', () => {
 						type: 'node',
 						name: 'update_issue',
 						node: {
-							nodeType: 'n8n-nodes-base.linear',
+							nodeType: 'MNI-nodes-base.linear',
 							nodeTypeVersion: 1,
 							nodeParameters: {},
 							credentials: { linearOAuth2Api: { id: 'linear-1', name: 'Linear' } },
@@ -445,7 +445,7 @@ describe('AgentValidationService — structured issues', () => {
 						type: 'node',
 						name: 'make_request',
 						node: {
-							nodeType: 'n8n-nodes-base.httpRequest',
+							nodeType: 'MNI-nodes-base.httpRequest',
 							nodeTypeVersion: 1,
 							nodeParameters: { provideSslCertificates: false },
 						},
@@ -471,7 +471,7 @@ describe('AgentValidationService — structured issues', () => {
 		aiGatewayService.isAvailable.mockResolvedValue({
 			available: true,
 			config: {
-				nodes: ['n8n-nodes-base.slack'],
+				nodes: ['MNI-nodes-base.slack'],
 				credentialTypes: ['slackApi'],
 				providerConfig: {},
 			},
@@ -484,7 +484,7 @@ describe('AgentValidationService — structured issues', () => {
 						type: 'node',
 						name: 'send_message',
 						node: {
-							nodeType: 'n8n-nodes-base.slackTool',
+							nodeType: 'MNI-nodes-base.slackTool',
 							nodeTypeVersion: 1,
 							nodeParameters: {},
 							credentials: {
@@ -513,7 +513,7 @@ describe('AgentValidationService — structured issues', () => {
 		aiGatewayService.isAvailable.mockResolvedValue({
 			available: true,
 			config: {
-				nodes: ['n8n-nodes-base.notion'],
+				nodes: ['MNI-nodes-base.notion'],
 				credentialTypes: ['notionApi'],
 				providerConfig: {},
 			},
@@ -526,7 +526,7 @@ describe('AgentValidationService — structured issues', () => {
 						type: 'node',
 						name: 'send_message',
 						node: {
-							nodeType: 'n8n-nodes-base.slackTool',
+							nodeType: 'MNI-nodes-base.slackTool',
 							nodeTypeVersion: 1,
 							nodeParameters: {},
 							credentials: {
@@ -568,7 +568,7 @@ describe('AgentValidationService — structured issues', () => {
 						type: 'node',
 						name: 'send_message',
 						node: {
-							nodeType: 'n8n-nodes-base.slackTool',
+							nodeType: 'MNI-nodes-base.slackTool',
 							nodeTypeVersion: 1,
 							nodeParameters: {},
 							credentials: {
@@ -612,7 +612,7 @@ describe('AgentValidationService — structured issues', () => {
 						type: 'node',
 						name: 'send_message',
 						node: {
-							nodeType: 'n8n-nodes-base.slackTool',
+							nodeType: 'MNI-nodes-base.slackTool',
 							nodeTypeVersion: 1,
 							nodeParameters: {},
 							credentials: {
@@ -663,7 +663,7 @@ describe('AgentValidationService — structured issues', () => {
 						type: 'node',
 						name: 'read_sheet',
 						node: {
-							nodeType: 'n8n-nodes-base.googleSheets',
+							nodeType: 'MNI-nodes-base.googleSheets',
 							nodeTypeVersion: 1,
 							nodeParameters: {},
 						},
@@ -721,7 +721,7 @@ describe('AgentValidationService — structured issues', () => {
 			},
 		} as never);
 		const gmailNode = {
-			nodeType: 'n8n-nodes-base.gmail',
+			nodeType: 'MNI-nodes-base.gmail',
 			nodeTypeVersion: 2.2,
 			nodeParameters: {},
 		};
@@ -900,7 +900,7 @@ describe('AgentValidationService — structured issues', () => {
 	it('accepts credential-free MNI Chat without relaxing other channel checks', async () => {
 		const { service, agentRepository } = makeService();
 		agentRepository.findByIdAndProjectId.mockResolvedValue(
-			makeAgent(runnableConfig, {}, { integrations: [{ type: 'n8n_chat', credentialId: '' }] }),
+			makeAgent(runnableConfig, {}, { integrations: [{ type: 'MNI_chat', credentialId: '' }] }),
 		);
 		const credentials = makeCredentialProvider([{ id: 'openai-main', type: 'openAiApi' }]);
 
@@ -914,7 +914,7 @@ describe('AgentValidationService — structured issues', () => {
 				{},
 				{
 					integrations: [
-						{ type: 'n8n_chat', credentialId: '' },
+						{ type: 'MNI_chat', credentialId: '' },
 						{ type: 'slack', credentialId: '' },
 					],
 				},
@@ -1077,7 +1077,7 @@ describe('AgentValidationService — structured issues', () => {
 					type: 'node',
 					name: 'Fetch page',
 					node: {
-						nodeType: 'n8n-nodes-base.httpRequestTool',
+						nodeType: 'MNI-nodes-base.httpRequestTool',
 						nodeTypeVersion: 4.5,
 						nodeParameters: { url: "={{ $fromAI('url') }}" },
 					},
@@ -1225,7 +1225,7 @@ describe('AgentValidationService — structured issues', () => {
 					{
 						id: 'form-1',
 						name: 'Form',
-						type: 'n8n-nodes-base.form',
+						type: 'MNI-nodes-base.form',
 						typeVersion: 1,
 						position: [200, 0],
 						parameters: {},

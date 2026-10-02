@@ -1,12 +1,12 @@
-import { testDb } from '@n8n/backend-test-utils';
-import { SchedulerConfig } from '@n8n/config';
-import { ScheduledJobRepository, ScheduledTaskRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
-import type { ReconciliationHooks, ScheduledJobOwnerRegistry } from '@n8n/scheduler';
-import { reconcile } from '@n8n/scheduler';
+import { testDb } from '@MNI/backend-test-utils';
+import { SchedulerConfig } from '@MNI/config';
+import { ScheduledJobRepository, ScheduledTaskRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
+import type { ReconciliationHooks, ScheduledJobOwnerRegistry } from '@MNI/scheduler';
+import { reconcile } from '@MNI/scheduler';
 import { inc } from 'semver';
 
-import { N8N_VERSION } from '@/constants';
+import { MNI_VERSION } from '@/constants';
 import { AgentScheduledJobOwner } from '@/scheduling/agent-scheduled-job-owner';
 import { createScheduledJobOwnerRegistry } from '@/scheduling/scheduled-job-owner-registry';
 import { SystemTaskScheduledJobOwner } from '@/scheduling/system-tasks/system-task-scheduled-job-owner';
@@ -102,7 +102,7 @@ describe('system task reconciliation', () => {
 	});
 
 	it('leaves a settled job running while a newer version stamped it', async () => {
-		const job = await createJob({ payload: { n8nVersion: inc(N8N_VERSION, 'minor') } });
+		const job = await createJob({ payload: { n8nVersion: inc(MNI_VERSION, 'minor') } });
 		await settle(job.id);
 
 		const summary = await runReconciliation();

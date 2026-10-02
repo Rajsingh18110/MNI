@@ -1,7 +1,7 @@
-import type { BreakingChangeAffectedWorkflow, BreakingChangeRecommendation } from '@n8n/api-types';
-import type { WorkflowEntity } from '@n8n/db';
-import { BreakingChangeRule } from '@n8n/decorators';
-import type { INode } from 'n8n-workflow';
+import type { BreakingChangeAffectedWorkflow, BreakingChangeRecommendation } from '@MNI/api-types';
+import type { WorkflowEntity } from '@MNI/db';
+import { BreakingChangeRule } from '@MNI/decorators';
+import type { INode } from 'MNI-workflow';
 
 import type {
 	BreakingChangeRuleMetadata,
@@ -13,13 +13,13 @@ import { BreakingChangeCategory } from '../../types';
 @BreakingChangeRule({ version: 'v3' })
 export class RemovedNodesV3Rule implements IBreakingChangeWorkflowRule {
 	private readonly removedNodes = [
-		'@n8n/n8n-nodes-langchain.documentGithubLoader',
-		'@n8n/n8n-nodes-langchain.memoryMotorhead',
-		'n8n-nodes-base.orbit',
-		'@n8n/n8n-nodes-langchain.memoryZep',
-		'@n8n/n8n-nodes-langchain.vectorStoreZep',
-		'@n8n/n8n-nodes-langchain.vectorStoreZepInsert',
-		'@n8n/n8n-nodes-langchain.vectorStoreZepLoad',
+		'@MNI/MNI-nodes-langchain.documentGithubLoader',
+		'@MNI/MNI-nodes-langchain.memoryMotorhead',
+		'MNI-nodes-base.orbit',
+		'@MNI/MNI-nodes-langchain.memoryZep',
+		'@MNI/MNI-nodes-langchain.vectorStoreZep',
+		'@MNI/MNI-nodes-langchain.vectorStoreZepInsert',
+		'@MNI/MNI-nodes-langchain.vectorStoreZepLoad',
 	];
 
 	id: string = 'removed-nodes-v3';

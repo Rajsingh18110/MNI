@@ -3,22 +3,22 @@ import {
 	type InstanceAiEvalExecutionRequest,
 	type InstanceAiEvalNodeResult,
 	type InstanceAiEvalExecutionResult,
-} from '@n8n/api-types';
-import { Logger } from '@n8n/backend-common';
-import { ensureHostsBypassProxy } from '@n8n/backend-network/proxy';
-import { ExecutionsConfig } from '@n8n/config';
-import type { User } from '@n8n/db';
-import { Service } from '@n8n/di';
-import { sleep } from '@n8n/utils/sleep';
-import type { DataTableColumnInfo, WorkflowJSON } from '@n8n/workflow-sdk';
-import { normalizePinData } from '@n8n/workflow-sdk';
+} from '@MNI/api-types';
+import { Logger } from '@MNI/backend-common';
+import { ensureHostsBypassProxy } from '@MNI/backend-network/proxy';
+import { ExecutionsConfig } from '@MNI/config';
+import type { User } from '@MNI/db';
+import { Service } from '@MNI/di';
+import { sleep } from '@MNI/utils/sleep';
+import type { DataTableColumnInfo, WorkflowJSON } from '@MNI/workflow-sdk';
+import { normalizePinData } from '@MNI/workflow-sdk';
 import {
 	BinaryDataService,
 	type EvalLlmMockHandler,
 	type EvalMockHttpResponse,
 	synthesizeBinaryFixture,
 	WorkflowHasIssuesError,
-} from 'n8n-core';
+} from 'MNI-core';
 import {
 	type IBinaryData,
 	type IBinaryKeyData,
@@ -40,7 +40,7 @@ import {
 	UserError,
 	Workflow,
 	type IWorkflowIssues,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import { randomUUID } from 'node:crypto';
 
 import { ActiveExecutions } from '@/active-executions';
@@ -482,7 +482,7 @@ export class EvalExecutionService {
 		// wait config in the workflow JSON. Webhook/form-resume waits are left
 		// untouched (they model an external event, not the passage of time).
 		for (const node of workflowEntity.nodes) {
-			if (node.disabled || node.type !== 'n8n-nodes-base.wait') continue;
+			if (node.disabled || node.type !== 'MNI-nodes-base.wait') continue;
 			const resume = node.parameters?.resume;
 			if (resume === 'webhook' || resume === 'form') continue;
 			node.parameters = { ...node.parameters, resume: 'timeInterval', amount: 0, unit: 'seconds' };

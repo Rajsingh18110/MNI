@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { N8nBadge } from '@n8n/design-system';
+import { N8nBadge } from '@MNI/design-system';
 
 defineOptions({ name: 'SeverityTag' });
 

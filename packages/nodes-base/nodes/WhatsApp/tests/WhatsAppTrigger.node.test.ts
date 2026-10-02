@@ -1,8 +1,8 @@
 import crypto from 'crypto';
 import type * as express from 'express';
 import { mock, mockDeep } from 'vitest-mock-extended';
-import type { IDataObject, IHookFunctions, INode, IWebhookFunctions } from 'n8n-workflow';
-import { NodeOperationError } from 'n8n-workflow';
+import type { IDataObject, IHookFunctions, INode, IWebhookFunctions } from 'MNI-workflow';
+import { NodeOperationError } from 'MNI-workflow';
 import * as GenericFunctions from '../GenericFunctions';
 import type { WhatsAppAppWebhookSubscription, WhatsAppPageEvent } from '../types';
 import { WhatsAppTrigger, filterStatuses } from '../WhatsAppTrigger.node';
@@ -37,7 +37,7 @@ describe('WhatsAppTrigger', () => {
 		mockNode = mock<INode>({
 			id: 'test-node-id',
 			name: 'WhatsApp Trigger',
-			type: 'n8n-nodes-base.whatsAppTrigger',
+			type: 'MNI-nodes-base.whatsAppTrigger',
 			typeVersion: 1,
 			position: [0, 0],
 			parameters: {},

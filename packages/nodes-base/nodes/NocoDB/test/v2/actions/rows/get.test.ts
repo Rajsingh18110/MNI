@@ -1,4 +1,4 @@
-import type { IExecuteFunctions } from 'n8n-workflow';
+import type { IExecuteFunctions } from 'MNI-workflow';
 
 import { execute } from '../../../../v2/actions/rows/get.operation';
 import { apiRequest, downloadRecordAttachments } from '../../../../v2/transport';

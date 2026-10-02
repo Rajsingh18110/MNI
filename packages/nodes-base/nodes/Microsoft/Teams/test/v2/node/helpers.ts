@@ -1,6 +1,6 @@
 import get from 'lodash/get';
-import { constructExecutionMetaData, returnJsonArray } from 'n8n-core';
-import type { IExecuteFunctions, INode, NodeParameterValueType } from 'n8n-workflow';
+import { constructExecutionMetaData, returnJsonArray } from 'MNI-core';
+import type { IExecuteFunctions, INode, NodeParameterValueType } from 'MNI-workflow';
 import type { MockProxy } from 'vitest-mock-extended';
 import { mock } from 'vitest-mock-extended';
 

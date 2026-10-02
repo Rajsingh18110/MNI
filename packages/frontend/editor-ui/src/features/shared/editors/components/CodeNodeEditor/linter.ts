@@ -7,11 +7,11 @@ import type {
 	CodeExecutionMode,
 	CodeNodeEditorLanguage,
 	WorkflowSettingsBinaryMode,
-} from 'n8n-workflow';
-import { BINARY_MODE_COMBINED } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { BINARY_MODE_COMBINED } from 'MNI-workflow';
 import { computed, toValue, type MaybeRefOrGetter } from 'vue';
 
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import {
 	DEFAULT_LINTER_DELAY_IN_MS,
 	DEFAULT_LINTER_SEVERITY,

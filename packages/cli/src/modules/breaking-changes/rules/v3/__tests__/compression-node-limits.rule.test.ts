@@ -6,8 +6,8 @@ describe('CompressionNodeLimitsRule', () => {
 
 	beforeEach(() => {
 		process.env = { ...originalEnv };
-		delete process.env.N8N_COMPRESSION_NODE_MAX_DECOMPRESSED_SIZE_BYTES;
-		delete process.env.N8N_COMPRESSION_NODE_MAX_ZIP_ENTRIES;
+		delete process.env.MNI_COMPRESSION_NODE_MAX_DECOMPRESSED_SIZE_BYTES;
+		delete process.env.MNI_COMPRESSION_NODE_MAX_ZIP_ENTRIES;
 		rule = new CompressionNodeLimitsRule();
 	});
 
@@ -25,7 +25,7 @@ describe('CompressionNodeLimitsRule', () => {
 		});
 
 		it('should report only the unset limit', async () => {
-			process.env.N8N_COMPRESSION_NODE_MAX_DECOMPRESSED_SIZE_BYTES = '2147483648';
+			process.env.MNI_COMPRESSION_NODE_MAX_DECOMPRESSED_SIZE_BYTES = '2147483648';
 
 			const result = await rule.detect();
 
@@ -35,7 +35,7 @@ describe('CompressionNodeLimitsRule', () => {
 		});
 
 		it('should report only the unset size limit', async () => {
-			process.env.N8N_COMPRESSION_NODE_MAX_ZIP_ENTRIES = '5000';
+			process.env.MNI_COMPRESSION_NODE_MAX_ZIP_ENTRIES = '5000';
 
 			const result = await rule.detect();
 
@@ -45,8 +45,8 @@ describe('CompressionNodeLimitsRule', () => {
 		});
 
 		it('should not be affected when both variables are set', async () => {
-			process.env.N8N_COMPRESSION_NODE_MAX_DECOMPRESSED_SIZE_BYTES = '2147483648';
-			process.env.N8N_COMPRESSION_NODE_MAX_ZIP_ENTRIES = '5000';
+			process.env.MNI_COMPRESSION_NODE_MAX_DECOMPRESSED_SIZE_BYTES = '2147483648';
+			process.env.MNI_COMPRESSION_NODE_MAX_ZIP_ENTRIES = '5000';
 
 			const result = await rule.detect();
 

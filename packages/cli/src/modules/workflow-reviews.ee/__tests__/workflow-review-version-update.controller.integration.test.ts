@@ -1,13 +1,13 @@
-import type { WorkflowReviewInboxItem } from '@n8n/api-types';
-import { mockInstance, testDb } from '@n8n/backend-test-utils';
-import type { Project, User } from '@n8n/db';
+import type { WorkflowReviewInboxItem } from '@MNI/api-types';
+import { mockInstance, testDb } from '@MNI/backend-test-utils';
+import type { Project, User } from '@MNI/db';
 import {
 	WorkflowHistoryRepository,
 	WorkflowReviewRequestAuthorRepository,
 	WorkflowReviewRequestRepository,
 	WorkflowReviewRequestWorkflowRepository,
-} from '@n8n/db';
-import { Container } from '@n8n/di';
+} from '@MNI/db';
+import { Container } from '@MNI/di';
 
 import { ActiveWorkflowManager } from '@/active-workflow-manager';
 import { WorkflowReviewPolicyService } from '@/services/workflow-review-policy.service';

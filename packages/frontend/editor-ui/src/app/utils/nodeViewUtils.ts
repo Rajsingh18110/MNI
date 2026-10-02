@@ -16,8 +16,8 @@ import type {
 	INodeExecutionData,
 	INodeTypeDescription,
 	NodeHint,
-} from 'n8n-workflow';
-import { NodeHelpers, SEND_AND_WAIT_OPERATION } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeHelpers, SEND_AND_WAIT_OPERATION } from 'MNI-workflow';
 import type { RouteLocation } from 'vue-router';
 import type { ViewportBoundaries } from '@/features/workflows/canvas/canvas.types';
 import {
@@ -27,7 +27,7 @@ import {
 	type Rect,
 	type ViewportTransform,
 } from '@vue-flow/core';
-import * as workflowUtils from 'n8n-workflow/common';
+import * as workflowUtils from 'MNI-workflow/common';
 
 /*
  * Canvas constants and functions

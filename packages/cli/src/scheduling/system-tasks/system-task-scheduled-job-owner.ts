@@ -1,8 +1,8 @@
-import { ScheduledJobOwnerType } from '@n8n/constants';
-import type { ScheduledJobOwner } from '@n8n/db';
-import { ScheduledJobRepository } from '@n8n/db';
-import { Service } from '@n8n/di';
-import type { ScheduledJobOwnerResolver } from '@n8n/scheduler';
+import { ScheduledJobOwnerType } from '@MNI/constants';
+import type { ScheduledJobOwner } from '@MNI/db';
+import { ScheduledJobRepository } from '@MNI/db';
+import { Service } from '@MNI/di';
+import type { ScheduledJobOwnerResolver } from '@MNI/scheduler';
 
 import { stampedByNewerVersion } from './system-task-version-stamp';
 

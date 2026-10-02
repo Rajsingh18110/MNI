@@ -9,10 +9,10 @@ import { useWorkflowExecutionStateStore } from '../stores/workflowExecutionState
 import type { WorkflowDocumentId } from '../stores/workflowDocument.store';
 import { useProjectsStore } from '@/features/collaboration/projects/projects.store';
 import { useNodeTypesStore } from '../stores/nodeTypes.store';
-import { useAgentRequestStore } from '@n8n/stores/useAgentRequestStore';
+import { useAgentRequestStore } from '@MNI/stores/useAgentRequestStore';
 import { mockedStore, type MockedStore } from '@/__tests__/utils';
-import { NodeConnectionTypes } from 'n8n-workflow';
-import type { INode, INodeTypeDescription } from 'n8n-workflow';
+import { NodeConnectionTypes } from 'MNI-workflow';
+import type { INode, INodeTypeDescription } from 'MNI-workflow';
 import { AI_MCP_TOOL_NODE_TYPE } from '../constants';
 
 const { mockWorkflowDocumentStore } = vi.hoisted(() => ({
@@ -66,7 +66,7 @@ describe('useToolParameters', () => {
 			const node = ref<INode>({
 				id: '1',
 				name: 'Test Node Name',
-				type: 'n8n-nodes-base.test',
+				type: 'MNI-nodes-base.test',
 				typeVersion: 1,
 				position: [0, 0],
 				parameters: {},
@@ -80,7 +80,7 @@ describe('useToolParameters', () => {
 			const testNode: INode = {
 				id: '1',
 				name: 'My Tool',
-				type: 'n8n-nodes-base.test',
+				type: 'MNI-nodes-base.test',
 				typeVersion: 1,
 				position: [0, 0],
 				parameters: {},
@@ -97,7 +97,7 @@ describe('useToolParameters', () => {
 			const testNode: INode = {
 				id: '1',
 				name: 'Test Tool',
-				type: 'n8n-nodes-base.code',
+				type: 'MNI-nodes-base.code',
 				typeVersion: 1,
 				position: [0, 0],
 				parameters: {
@@ -133,7 +133,7 @@ describe('useToolParameters', () => {
 			const testNode: INode = {
 				id: '1',
 				name: 'Test Tool',
-				type: 'n8n-nodes-base.code',
+				type: 'MNI-nodes-base.code',
 				typeVersion: 1,
 				position: [0, 0],
 				parameters: {},
@@ -158,7 +158,7 @@ describe('useToolParameters', () => {
 			const testNode: INode = {
 				id: '1',
 				name: 'Test Tool',
-				type: 'n8n-nodes-base.code',
+				type: 'MNI-nodes-base.code',
 				typeVersion: 1,
 				position: [0, 0],
 				parameters: {
@@ -201,7 +201,7 @@ describe('useToolParameters', () => {
 			const testNode: INode = {
 				id: '1',
 				name: 'Test Tool',
-				type: 'n8n-nodes-base.code',
+				type: 'MNI-nodes-base.code',
 				typeVersion: 1,
 				position: [0, 0],
 				parameters: {
@@ -223,7 +223,7 @@ describe('useToolParameters', () => {
 			const testNode: INode = {
 				id: '1',
 				name: 'Test Tool',
-				type: 'n8n-nodes-base.code',
+				type: 'MNI-nodes-base.code',
 				typeVersion: 1,
 				position: [0, 0],
 				parameters: {
@@ -385,7 +385,7 @@ describe('useToolParameters', () => {
 			const connectedTool: INode = {
 				id: '2',
 				name: 'Connected Tool',
-				type: 'n8n-nodes-base.code',
+				type: 'MNI-nodes-base.code',
 				typeVersion: 1,
 				position: [0, 0],
 				parameters: {
@@ -396,7 +396,7 @@ describe('useToolParameters', () => {
 			const hitlNode: INode = {
 				id: '1',
 				name: 'HITL Node',
-				type: '@n8n/n8n-nodes-langchain.toolHitlTool',
+				type: '@MNI/MNI-nodes-langchain.toolHitlTool',
 				typeVersion: 1,
 				position: [0, 0],
 				parameters: {
@@ -436,7 +436,7 @@ describe('useToolParameters', () => {
 			const connectedTool: INode = {
 				id: '2',
 				name: 'Connected Tool',
-				type: 'n8n-nodes-base.code',
+				type: 'MNI-nodes-base.code',
 				typeVersion: 1,
 				position: [0, 0],
 				parameters: {
@@ -447,7 +447,7 @@ describe('useToolParameters', () => {
 			const hitlNode: INode = {
 				id: '1',
 				name: 'HITL Node',
-				type: '@n8n/n8n-nodes-langchain.toolHitlTool',
+				type: '@MNI/MNI-nodes-langchain.toolHitlTool',
 				typeVersion: 1,
 				position: [0, 0],
 				parameters: {},
@@ -481,7 +481,7 @@ describe('useToolParameters', () => {
 			const vectorStoreNode: INode = {
 				id: '1',
 				name: 'Vector Store',
-				type: '@n8n/n8n-nodes-langchain.vectorStoreInMemory',
+				type: '@MNI/MNI-nodes-langchain.vectorStoreInMemory',
 				typeVersion: 1,
 				position: [0, 0],
 				parameters: {
@@ -490,7 +490,7 @@ describe('useToolParameters', () => {
 			};
 
 			const nodeType: INodeTypeDescription = {
-				name: '@n8n/n8n-nodes-langchain.vectorStoreInMemory',
+				name: '@MNI/MNI-nodes-langchain.vectorStoreInMemory',
 				displayName: 'Vector Store',
 				description: 'Test',
 				version: 1,
@@ -533,7 +533,7 @@ describe('useToolParameters', () => {
 			const node1: INode = {
 				id: '1',
 				name: 'Node 1',
-				type: 'n8n-nodes-base.code',
+				type: 'MNI-nodes-base.code',
 				typeVersion: 1,
 				position: [0, 0],
 				parameters: {
@@ -544,7 +544,7 @@ describe('useToolParameters', () => {
 			const node2: INode = {
 				id: '2',
 				name: 'Node 2',
-				type: 'n8n-nodes-base.code',
+				type: 'MNI-nodes-base.code',
 				typeVersion: 1,
 				position: [0, 0],
 				parameters: {

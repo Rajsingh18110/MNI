@@ -1,7 +1,7 @@
-import type { UpdateSecuritySettingsDto } from '@n8n/api-types';
-import type { LicenseState } from '@n8n/backend-common';
-import type { InstanceSettingsLoaderConfig } from '@n8n/config';
-import type { AuthenticatedRequest } from '@n8n/db';
+import type { UpdateSecuritySettingsDto } from '@MNI/api-types';
+import type { LicenseState } from '@MNI/backend-common';
+import type { InstanceSettingsLoaderConfig } from '@MNI/config';
+import type { AuthenticatedRequest } from '@MNI/db';
 import { mock } from 'vitest-mock-extended';
 
 import { ForbiddenError } from '@/errors/response-errors/forbidden.error';

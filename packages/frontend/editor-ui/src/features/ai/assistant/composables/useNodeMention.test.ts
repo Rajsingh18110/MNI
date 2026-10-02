@@ -14,7 +14,7 @@ vi.mock('@/app/stores/posthog.store', () => ({
 	}),
 }));
 
-vi.mock('@n8n/composables/useTelemetry', () => ({
+vi.mock('@MNI/composables/useTelemetry', () => ({
 	useTelemetry: () => ({ track: vi.fn() }),
 }));
 
@@ -59,7 +59,7 @@ const mockNodes: INodeUi[] = [
 	{
 		id: 'node-1',
 		name: 'HTTP Request',
-		type: 'n8n-nodes-base.httpRequest',
+		type: 'MNI-nodes-base.httpRequest',
 		typeVersion: 1,
 		position: [0, 0],
 		parameters: {},
@@ -67,7 +67,7 @@ const mockNodes: INodeUi[] = [
 	{
 		id: 'node-2',
 		name: 'Set',
-		type: 'n8n-nodes-base.set',
+		type: 'MNI-nodes-base.set',
 		typeVersion: 1,
 		position: [200, 0],
 		parameters: {},

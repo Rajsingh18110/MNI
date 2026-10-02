@@ -1,14 +1,14 @@
 import type { Mock } from 'vitest';
-import type { StreamChunk } from '@n8n/agents';
-import { MAX_AGENT_CHAT_ATTACHMENT_FILENAME_LENGTH } from '@n8n/api-types';
-import type { HttpRequestClient } from '@n8n/backend-network';
-import { Container } from '@n8n/di';
+import type { StreamChunk } from '@MNI/agents';
+import { MAX_AGENT_CHAT_ATTACHMENT_FILENAME_LENGTH } from '@MNI/api-types';
+import type { HttpRequestClient } from '@MNI/backend-network';
+import { Container } from '@MNI/di';
 import type { Author } from 'chat';
 import { AgentMessageQueueService } from '../../agent-message-queue.service';
 import type { AgentMessageQueue } from '../../entities/agent-message-queue.entity';
 import type { QueuedIntegrationMessage } from '../../types/agent-queued-message';
 import { mock } from 'vitest-mock-extended';
-import { deepCopy, UserError, type Logger } from 'n8n-workflow';
+import { deepCopy, UserError, type Logger } from 'MNI-workflow';
 
 import {
 	AgentResourceRepository,
@@ -25,8 +25,8 @@ import type { ComponentMapper } from '../component-mapper';
 import * as esmLoader from '../esm-loader';
 import { IntegrationMessageContextService } from '../integration-message-context.service';
 import { SlackIntegration } from '../platforms/slack/slack-integration';
-import type { AgentIntegrationConfig } from '@n8n/api-types';
-import type { RichCardComponentType } from '@n8n/api-types';
+import type { AgentIntegrationConfig } from '@MNI/api-types';
+import type { RichCardComponentType } from '@MNI/api-types';
 
 import { hashAgentSandboxPrincipal } from '../../agent-sandbox-principal';
 
@@ -762,7 +762,7 @@ describe('AgentChatBridge — consumeStream', () => {
 			{
 				error: new UserError('Credential "OpenAI" not found.'),
 				expected:
-					'⚠️ This agent is misconfigured: Credential "OpenAI" not found. An agent owner has to fix this in n8n.',
+					'⚠️ This agent is misconfigured: Credential "OpenAI" not found. An agent owner has to fix this in MNI.',
 			},
 			{
 				error: new Error('Output blocked by content filtering policy'),
@@ -2789,7 +2789,7 @@ describe('AgentChatBridge — consumeStream', () => {
 						title: 'Fix signup',
 						description: 'Signup fails for invited users',
 						status: 'In Progress',
-						url: 'https://linear.app/n8n/issue/ENG-123/fix-signup',
+						url: 'https://linear.app/MNI/issue/ENG-123/fix-signup',
 						labels: ['Bug'],
 						assignee: { id: 'user-2', name: 'Michael Drury' },
 						author: { id: 'user-3', name: 'Ada Lovelace' },
@@ -2813,7 +2813,7 @@ describe('AgentChatBridge — consumeStream', () => {
 							title: 'Fix signup',
 							description: 'Signup fails for invited users',
 							status: 'In Progress',
-							url: 'https://linear.app/n8n/issue/ENG-123/fix-signup',
+							url: 'https://linear.app/MNI/issue/ENG-123/fix-signup',
 							labels: ['Bug'],
 							assignee: { id: 'user-2', name: 'Michael Drury' },
 							author: { id: 'user-3', name: 'Ada Lovelace' },

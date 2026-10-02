@@ -1,5 +1,5 @@
-import { UnimplementedError } from '@n8n/engine';
-import type { AdditionalDataContext } from '@n8n/node-engine-compatibility';
+import { UnimplementedError } from '@MNI/engine';
+import type { AdditionalDataContext } from '@MNI/node-engine-compatibility';
 import type {
 	ICredentialDataDecryptedObject,
 	ICredentials,
@@ -15,8 +15,8 @@ import type {
 	IWorkflowExecuteAdditionalData,
 	Workflow,
 	WorkflowExecuteMode,
-} from 'n8n-workflow';
-import { ICredentialsHelper, UnexpectedError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { ICredentialsHelper, UnexpectedError } from 'MNI-workflow';
 
 import type { EngineCredentialsClient } from './engine-credentials-client';
 import type { ResolveCredentialRequest } from './engine-credentials.contract';

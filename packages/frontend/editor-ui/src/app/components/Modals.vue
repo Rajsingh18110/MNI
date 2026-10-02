@@ -69,7 +69,7 @@ import {
 	COMMUNITY_PACKAGE_INSTALL_MODAL_KEY,
 } from '@/features/settings/communityNodes/communityNodes.constants';
 import { API_KEY_CREATE_OR_EDIT_MODAL_KEY } from '@/features/settings/apiKeys/apiKeys.constants';
-import type { ApiKeyWithRawValue } from '@n8n/api-types';
+import type { ApiKeyWithRawValue } from '@MNI/api-types';
 import AboutModal from '@/app/components/AboutModal.vue';
 import ActivationModal from '@/features/workflows/components/ActivationModal.vue';
 import ApiKeyCreateOrEditModal from '@/features/settings/apiKeys/components/ApiKeyCreateOrEditModal.vue';
@@ -114,7 +114,7 @@ import WorkflowVersionFormModal, {
 import WorkflowSettings from '@/features/workflows/components/WorkflowSettings/WorkflowSettings.vue';
 import WorkflowShareModal from '@/features/workflows/components/WorkflowShareModal.ee.vue';
 import WorkflowDiffModal from '@/features/workflows/workflowDiff/WorkflowDiffModal.vue';
-import type { EventBus } from '@n8n/utils/event-bus';
+import type { EventBus } from '@MNI/utils/event-bus';
 import DynamicModalLoader from './DynamicModalLoader.vue';
 import NodeRecommendationModalV2 from '@/experiments/templateRecoV2/components/NodeRecommendationModal.vue';
 import NodeRecommendationModalV3 from '@/experiments/personalizedTemplatesV3/components/NodeRecommendationModal.vue';

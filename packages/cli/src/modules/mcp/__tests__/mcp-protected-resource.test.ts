@@ -3,15 +3,15 @@ import {
 	CONTEXT_PREFERENCES_ENABLED_VARIANT,
 	CONTEXT_PREFERENCES_FLAG,
 	INSTANCE_ACTIVITY_CONTEXT_FLAG,
-} from '@n8n/api-types';
+} from '@MNI/api-types';
 import type { PostHogClient } from '@/posthog';
-import type { LicenseState, ModuleRegistry } from '@n8n/backend-common';
-import type { GlobalConfig } from '@n8n/config';
-import { User } from '@n8n/db';
-import * as permissions from '@n8n/permissions';
+import type { LicenseState, ModuleRegistry } from '@MNI/backend-common';
+import type { GlobalConfig } from '@MNI/config';
+import { User } from '@MNI/db';
+import * as permissions from '@MNI/permissions';
 import { mock } from 'vitest-mock-extended';
 
-vi.mock('@n8n/permissions', async (importOriginal) => ({
+vi.mock('@MNI/permissions', async (importOriginal) => ({
 	...(await importOriginal<typeof permissions>()),
 	hasGlobalScope: vi.fn(),
 }));
@@ -20,9 +20,9 @@ const hasGlobalScope = vi.mocked(permissions.hasGlobalScope);
 
 import type { McpConfig } from '../mcp.config';
 import type { McpSettingsService } from '../mcp.settings.service';
-import type { UrlService } from '@n8n/backend-services';
+import type { UrlService } from '@MNI/backend-services';
 
-import { Container } from '@n8n/di';
+import { Container } from '@MNI/di';
 
 import { CommunityPackagesConfig } from '@/modules/community-packages/community-packages.config';
 
@@ -227,13 +227,13 @@ describe('McpProtectedResource', () => {
 		});
 
 		it('should preserve a subpath in the base URL', () => {
-			urlService.getInstanceBaseUrl.mockReturnValue('https://example.com/n8n');
-			expect(resource.getResourceUrl()).toBe('https://example.com/n8n/mcp-server/http');
+			urlService.getInstanceBaseUrl.mockReturnValue('https://example.com/MNI');
+			expect(resource.getResourceUrl()).toBe('https://example.com/MNI/mcp-server/http');
 		});
 
 		it('should strip a trailing slash from the base URL', () => {
-			urlService.getInstanceBaseUrl.mockReturnValue('https://example.com/n8n/');
-			expect(resource.getResourceUrl()).toBe('https://example.com/n8n/mcp-server/http');
+			urlService.getInstanceBaseUrl.mockReturnValue('https://example.com/MNI/');
+			expect(resource.getResourceUrl()).toBe('https://example.com/MNI/mcp-server/http');
 		});
 	});
 
@@ -246,7 +246,7 @@ describe('McpProtectedResource', () => {
 		});
 
 		it('should preserve a subpath in the base URL', () => {
-			urlService.getInstanceBaseUrl.mockReturnValue('https://example.com/n8n');
+			urlService.getInstanceBaseUrl.mockReturnValue('https://example.com/MNI');
 			expect(resource.getProtectedResourceMetadataUrl()).toBe(
 				'https://example.com/.well-known/oauth-protected-resource/MNI/mcp-server/http',
 			);
@@ -254,9 +254,9 @@ describe('McpProtectedResource', () => {
 
 		it('should derive from the configured MCP base URL when set', () => {
 			urlService.getInstanceBaseUrl.mockReturnValue('https://n8n.example.com');
-			mcpConfig.baseUrl = 'https://n8n-mcp.example.com';
+			mcpConfig.baseUrl = 'https://MNI-mcp.example.com';
 			expect(resource.getProtectedResourceMetadataUrl()).toBe(
-				'https://n8n-mcp.example.com/.well-known/oauth-protected-resource/mcp-server/http',
+				'https://MNI-mcp.example.com/.well-known/oauth-protected-resource/mcp-server/http',
 			);
 		});
 	});
@@ -299,23 +299,23 @@ describe('McpProtectedResource', () => {
 	describe('with a dedicated MCP base URL (split-hostname deployments)', () => {
 		beforeEach(() => {
 			urlService.getInstanceBaseUrl.mockReturnValue('https://n8n.example.com');
-			mcpConfig.baseUrl = 'https://n8n-mcp.example.com';
+			mcpConfig.baseUrl = 'https://MNI-mcp.example.com';
 		});
 
 		it('should use the configured base URL as the canonical resource', () => {
-			expect(resource.getResourceUrl()).toBe('https://n8n-mcp.example.com/mcp-server/http');
+			expect(resource.getResourceUrl()).toBe('https://MNI-mcp.example.com/mcp-server/http');
 		});
 
 		it('should keep serving the instance-base-URL-derived resource', () => {
 			expect(resource.getResourceUrls()).toEqual([
-				'https://n8n-mcp.example.com/mcp-server/http',
+				'https://MNI-mcp.example.com/mcp-server/http',
 				'https://n8n.example.com/mcp-server/http',
 			]);
 		});
 
 		it('should accept audiences for both resource URLs plus the legacy audience', () => {
 			expect(resource.getAudiences()).toEqual([
-				'https://n8n-mcp.example.com/mcp-server/http',
+				'https://MNI-mcp.example.com/mcp-server/http',
 				'https://n8n.example.com/mcp-server/http',
 				'mcp-server-api',
 			]);

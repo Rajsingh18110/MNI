@@ -1,13 +1,13 @@
-import { createWorkflowWithHistory, setActiveVersion, testDb } from '@n8n/backend-test-utils';
-import { SchedulerConfig, WorkflowsConfig } from '@n8n/config';
-import type { WorkflowEntity } from '@n8n/db';
+import { createWorkflowWithHistory, setActiveVersion, testDb } from '@MNI/backend-test-utils';
+import { SchedulerConfig, WorkflowsConfig } from '@MNI/config';
+import type { WorkflowEntity } from '@MNI/db';
 import {
 	PollerStateRepository,
 	ScheduledJobRepository,
 	WorkflowPublishedVersionRepository,
-} from '@n8n/db';
-import { Container } from '@n8n/di';
-import type { INode } from 'n8n-workflow';
+} from '@MNI/db';
+import { Container } from '@MNI/di';
+import type { INode } from 'MNI-workflow';
 
 import { PollTriggerJobRegistrar } from '@/scheduling/poll-trigger-node/poll-trigger-job-registrar';
 
@@ -19,7 +19,7 @@ describe('PollTriggerJobRegistrar', () => {
 	const node: INode = {
 		id: 'node-1',
 		name: 'Poll',
-		type: 'n8n-nodes-base.someTrigger',
+		type: 'MNI-nodes-base.someTrigger',
 		typeVersion: 1,
 		position: [0, 0],
 		parameters: {},
@@ -106,7 +106,7 @@ describe('PollTriggerJobRegistrar', () => {
 	});
 
 	it('leaves a failing poller_state row untouched when durable cursors are disabled, even though a job is inserted', async () => {
-		// Mirrors an instance that never set N8N_POLLER_DURABLE_CURSORS_ENABLED: the
+		// Mirrors an instance that never set MNI_POLLER_DURABLE_CURSORS_ENABLED: the
 		// flag PollBackoffService itself is gated on, not something register() controls.
 		schedulerConfig.durableCursorsEnabled = false;
 

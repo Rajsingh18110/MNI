@@ -2,13 +2,13 @@
 import Modal from '@/app/components/Modal.vue';
 import { EXPERIMENT_TEMPLATE_RECO_V3_KEY } from '@/app/constants';
 import { useUIStore } from '@/app/stores/ui.store';
-import type { ITemplatesWorkflowFull } from '@n8n/rest-api-client';
+import type { ITemplatesWorkflowFull } from '@MNI/rest-api-client';
 import { ref, watchEffect } from 'vue';
 import { usePersonalizedTemplatesV3Store } from '../stores/personalizedTemplatesV3.store';
 import { useTemplatesStore } from '@/features/workflows/templates/templates.store';
 import TemplateCard from './TemplateCard.vue';
-import { useI18n } from '@n8n/i18n';
-import { N8nCard, N8nIcon, N8nSpinner, N8nText } from '@n8n/design-system';
+import { useI18n } from '@MNI/i18n';
+import { N8nCard, N8nIcon, N8nSpinner, N8nText } from '@MNI/design-system';
 
 const uiStore = useUIStore();
 const templatesStore = useTemplatesStore();

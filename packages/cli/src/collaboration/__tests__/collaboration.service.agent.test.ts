@@ -1,6 +1,6 @@
 import type { Mocked } from 'vitest';
 import { mock } from 'vitest-mock-extended';
-import type { User } from '@n8n/db';
+import type { User } from '@MNI/db';
 
 import type { AgentRepository } from '@/modules/agents/repositories/agent.repository';
 import type { Agent } from '@/modules/agents/entities/agent.entity';
@@ -14,10 +14,10 @@ import type {
 } from '../collaboration.message';
 import type { CollaborationState } from '../collaboration.state';
 import type { Push } from '@/push';
-import type { UserRepository } from '@n8n/db';
+import type { UserRepository } from '@MNI/db';
 import type { AccessService } from '@/services/access.service';
-import type { Logger } from '@n8n/backend-common';
-import type { ErrorReporter } from 'n8n-core';
+import type { Logger } from '@MNI/backend-common';
+import type { ErrorReporter } from 'MNI-core';
 
 import { userHasScopes } from '@/permissions.ee/check-access';
 

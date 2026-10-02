@@ -1,6 +1,6 @@
 import { computed, ref, toValue, type MaybeRefOrGetter } from 'vue';
-import { deepCopy, type INodeParameters } from 'n8n-workflow';
-import type { AgentSkill } from '@n8n/api-types';
+import { deepCopy, type INodeParameters } from 'MNI-workflow';
+import type { AgentSkill } from '@MNI/api-types';
 
 import type { INodeUi } from '@/Interface';
 import { ndvEventBus } from '@/features/ndv/shared/ndv.eventBus';

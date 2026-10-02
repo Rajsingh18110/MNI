@@ -1,8 +1,8 @@
-import type { User } from '@n8n/db';
-import type { AgentTaskDto } from '@n8n/api-types';
+import type { User } from '@MNI/db';
+import type { AgentTaskDto } from '@MNI/api-types';
 import { beforeEach, vi } from 'vitest';
 import { mock } from 'vitest-mock-extended';
-import { UserError } from 'n8n-workflow';
+import { UserError } from 'MNI-workflow';
 
 import type { McpRegistryService } from '@/modules/mcp-registry/registry/mcp-registry.service';
 import { userHasScopes } from '@/permissions.ee/check-access';
@@ -325,7 +325,7 @@ describe('InstanceAiAgentContextAdapterService', () => {
 				authentication: 'templatedApi',
 				credentialType: 'templatedApi',
 				tools: [],
-				metadata: { nodeTypeName: '@n8n/mcp.templatedServer' },
+				metadata: { nodeTypeName: '@MNI/mcp.templatedServer' },
 				isTemplated: true,
 			},
 		]);

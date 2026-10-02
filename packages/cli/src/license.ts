@@ -1,6 +1,6 @@
-import type { LicenseProvider } from '@n8n/backend-common';
-import { Logger } from '@n8n/backend-common';
-import { GlobalConfig } from '@n8n/config';
+import type { LicenseProvider } from '@MNI/backend-common';
+import { Logger } from '@MNI/backend-common';
+import { GlobalConfig } from '@MNI/config';
 import {
 	DEFAULT_WORKFLOW_HISTORY_PRUNE_LIMIT,
 	LICENSE_FEATURES,
@@ -9,17 +9,17 @@ import {
 	UNLIMITED_LICENSE_QUOTA,
 	type BooleanLicenseFeature,
 	type NumericLicenseFeature,
-} from '@n8n/constants';
-import { SettingsRepository } from '@n8n/db';
-import { OnPubSubEvent, OnShutdown } from '@n8n/decorators';
-import { Container, Service } from '@n8n/di';
+} from '@MNI/constants';
+import { SettingsRepository } from '@MNI/db';
+import { OnPubSubEvent, OnShutdown } from '@MNI/decorators';
+import { Container, Service } from '@MNI/di';
 import type { TEntitlement, TLicenseBlock } from '@n8n_io/license-sdk';
 import { LicenseManager } from '@n8n_io/license-sdk';
-import { InstanceSettings } from 'n8n-core';
+import { InstanceSettings } from 'MNI-core';
 
 import { LicenseMetricsService } from '@/metrics/license-metrics.service';
 
-import { N8N_VERSION, SETTINGS_LICENSE_CERT_KEY } from './constants';
+import { MNI_VERSION, SETTINGS_LICENSE_CERT_KEY } from './constants';
 
 const LICENSE_RENEWAL_DISABLED_WARNING =
 	'Automatic license renewal is disabled. The license will not renew automatically, and access to licensed features may be lost!';
@@ -105,7 +105,7 @@ export class License implements LicenseProvider {
 			this.manager = new LicenseManager({
 				server,
 				tenantId: this.globalConfig.license.tenantId,
-				productIdentifier: `n8n-${N8N_VERSION}`,
+				productIdentifier: `MNI-${MNI_VERSION}`,
 				autoRenewEnabled: autoRenewalEnabled,
 				autoRenewTimer: false,
 				renewOnInit: shouldRenew,
@@ -135,7 +135,7 @@ export class License implements LicenseProvider {
 	}
 
 	/**
-	 * `instanceId` can be pinned to an arbitrary value via `N8N_INSTANCE_ID` or
+	 * `instanceId` can be pinned to an arbitrary value via `MNI_INSTANCE_ID` or
 	 * the `instance.id` deployment-key row, but the license server rejects
 	 * fingerprints shorter than 32 characters. Fall back to the
 	 * encryption-key-derived id — the fingerprint every instance used before
@@ -148,7 +148,7 @@ export class License implements LicenseProvider {
 		if (!this.hasWarnedShortDeviceFingerprint) {
 			this.hasWarnedShortDeviceFingerprint = true;
 			this.logger.warn(
-				`Instance ID is shorter than ${MIN_DEVICE_FINGERPRINT_LENGTH} characters, so it cannot be used as the license device fingerprint. Falling back to the encryption-key-derived ID. Check the N8N_INSTANCE_ID env var and the 'instance.id' deployment key.`,
+				`Instance ID is shorter than ${MIN_DEVICE_FINGERPRINT_LENGTH} characters, so it cannot be used as the license device fingerprint. Falling back to the encryption-key-derived ID. Check the MNI_INSTANCE_ID env var and the 'instance.id' deployment key.`,
 			);
 		}
 

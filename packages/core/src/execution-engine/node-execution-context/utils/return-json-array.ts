@@ -1,4 +1,4 @@
-import type { IDataObject, INodeExecutionData } from 'n8n-workflow';
+import type { IDataObject, INodeExecutionData } from 'MNI-workflow';
 
 /**
  * Takes generic input data and brings it into the json format MNI uses.

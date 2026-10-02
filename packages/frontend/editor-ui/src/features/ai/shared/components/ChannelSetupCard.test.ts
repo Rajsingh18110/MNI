@@ -4,7 +4,7 @@ import { mount, flushPromises } from '@vue/test-utils';
 import { ref } from 'vue';
 import { createTestingPinia } from '@pinia/testing';
 import { setActivePinia } from 'pinia';
-import type { ChatIntegrationDescriptor } from '@n8n/api-types';
+import type { ChatIntegrationDescriptor } from '@MNI/api-types';
 
 /**
  * `ChannelSetupCard` owns the body + orchestration for the `configure_channel`
@@ -46,16 +46,16 @@ const mocks = vi.hoisted(() => {
 	};
 });
 
-vi.mock('@n8n/i18n', () => ({
+vi.mock('@MNI/i18n', () => ({
 	useI18n: () => ({ baseText: (k: string) => k }),
 }));
 
-vi.mock('@n8n/stores/useRootStore', () => ({
+vi.mock('@MNI/stores/useRootStore', () => ({
 	useRootStore: () => ({ restApiContext: {} }),
 }));
 
-vi.mock('@n8n/permissions', async (importOriginal) => ({
-	...(await importOriginal<typeof import('@n8n/permissions')>()),
+vi.mock('@MNI/permissions', async (importOriginal) => ({
+	...(await importOriginal<typeof import('@MNI/permissions')>()),
 	getResourcePermissions: () => ({
 		credential: { create: true, read: true, update: true, delete: true, share: true, move: true },
 	}),

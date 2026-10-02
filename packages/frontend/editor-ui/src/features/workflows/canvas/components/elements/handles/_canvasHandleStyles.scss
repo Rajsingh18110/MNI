@@ -1,7 +1,7 @@
 @mixin outer-handle {
-	/* stylelint-disable-next-line @n8n/css-var-naming */
+	/* stylelint-disable-next-line @MNI/css-var-naming */
 	--handle--indicator--width: calc(16px * var(--canvas-zoom-compensation-factor, 1));
-	/* stylelint-disable-next-line @n8n/css-var-naming */
+	/* stylelint-disable-next-line @MNI/css-var-naming */
 	--handle--indicator--height: calc(16px * var(--canvas-zoom-compensation-factor, 1));
 
 	width: var(--handle--indicator--width);

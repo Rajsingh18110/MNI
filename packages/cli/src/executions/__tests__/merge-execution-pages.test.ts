@@ -1,4 +1,4 @@
-import type { ExecutionSummary } from 'n8n-workflow';
+import type { ExecutionSummary } from 'MNI-workflow';
 
 import { parseExecutionCursor } from '../execution-cursor';
 import { mergeExecutionPages } from '../merge-execution-pages';

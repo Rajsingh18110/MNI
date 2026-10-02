@@ -4,8 +4,8 @@ import type {
 	INodeExecutionData,
 	INodeType,
 	INodeTypeDescription,
-} from 'n8n-workflow';
-import { NodeConnectionTypes } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeConnectionTypes } from 'MNI-workflow';
 
 import { buildFields, buildOperations } from './BuildDescription';
 import { travisciApiRequest, travisciApiRequestAllItems } from './GenericFunctions';
@@ -14,7 +14,7 @@ export class TravisCi implements INodeType {
 	description: INodeTypeDescription = {
 		displayName: 'TravisCI',
 		name: 'travisCi',
-		// eslint-disable-next-line n8n-nodes-base/node-class-description-icon-not-svg
+		// eslint-disable-next-line MNI-nodes-base/node-class-description-icon-not-svg
 		icon: 'file:travisci.png',
 		group: ['output'],
 		version: 1,

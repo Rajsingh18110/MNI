@@ -1,12 +1,12 @@
-import type { CredentialPayload } from '@n8n/backend-test-utils';
+import type { CredentialPayload } from '@MNI/backend-test-utils';
 import {
 	createTeamProject,
 	getProjectByNameOrFail,
 	createWorkflow,
 	randomName,
 	testDb,
-} from '@n8n/backend-test-utils';
-import type { TagEntity, Variables } from '@n8n/db';
+} from '@MNI/backend-test-utils';
+import type { TagEntity, Variables } from '@MNI/db';
 import {
 	ApiKeyRepository,
 	CredentialsRepository,
@@ -14,10 +14,10 @@ import {
 	TagRepository,
 	SharedCredentialsRepository,
 	SharedWorkflowRepository,
-} from '@n8n/db';
-import { Container } from '@n8n/di';
-import { getOwnerOnlyApiKeyScopes } from '@n8n/permissions';
-import { randomString } from 'n8n-workflow';
+} from '@MNI/db';
+import { Container } from '@MNI/di';
+import { getOwnerOnlyApiKeyScopes } from '@MNI/permissions';
+import { randomString } from 'MNI-workflow';
 import validator from 'validator';
 import { mock } from 'vitest-mock-extended';
 
@@ -79,7 +79,7 @@ describe('Public API endpoints with API key scopes', () => {
 
 		// Register ScopedJwtStrategy so Bearer-token auth works in the public API.
 		// Normally registered by TokenExchangeModule.init(), but that requires the
-		// N8N_ENV_FEAT_TOKEN_EXCHANGE env flag. We register it directly here to test
+		// MNI_ENV_FEAT_TOKEN_EXCHANGE env flag. We register it directly here to test
 		// the auth layer in isolation without triggering the full module boot.
 		const { ScopedJwtStrategy } = await import(
 			'@/modules/token-exchange/services/scoped-jwt.strategy.js'
@@ -1429,7 +1429,7 @@ describe('Public API endpoints with API key scopes', () => {
 								id: 'uuid-1234',
 								parameters: {},
 								name: 'Start',
-								type: 'n8n-nodes-base.manualTrigger',
+								type: 'MNI-nodes-base.manualTrigger',
 								typeVersion: 1,
 								position: [240, 300],
 							},
@@ -1500,7 +1500,7 @@ describe('Public API endpoints with API key scopes', () => {
 								id: 'uuid-1234',
 								parameters: {},
 								name: 'Start',
-								type: 'n8n-nodes-base.manualTrigger',
+								type: 'MNI-nodes-base.manualTrigger',
 								typeVersion: 1,
 								position: [240, 300],
 							},
@@ -1746,7 +1746,7 @@ describe('Public API endpoints with API key scopes', () => {
 								id: 'uuid-1234',
 								parameters: {},
 								name: 'Start',
-								type: 'n8n-nodes-base.manualTrigger',
+								type: 'MNI-nodes-base.manualTrigger',
 								typeVersion: 1,
 								position: [240, 300],
 							},
@@ -1754,7 +1754,7 @@ describe('Public API endpoints with API key scopes', () => {
 								id: 'uuid-5678',
 								parameters: {},
 								name: 'Cron',
-								type: 'n8n-nodes-base.cron',
+								type: 'MNI-nodes-base.cron',
 								typeVersion: 1,
 								position: [400, 300],
 							},
@@ -1827,7 +1827,7 @@ describe('Public API endpoints with API key scopes', () => {
 								id: 'uuid-1234',
 								parameters: {},
 								name: 'Start',
-								type: 'n8n-nodes-base.manualTrigger',
+								type: 'MNI-nodes-base.manualTrigger',
 								typeVersion: 1,
 								position: [240, 300],
 							},
@@ -1835,7 +1835,7 @@ describe('Public API endpoints with API key scopes', () => {
 								id: 'uuid-5678',
 								parameters: {},
 								name: 'Cron',
-								type: 'n8n-nodes-base.cron',
+								type: 'MNI-nodes-base.cron',
 								typeVersion: 1,
 								position: [400, 300],
 							},

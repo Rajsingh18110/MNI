@@ -1,7 +1,7 @@
 /**
  * Domain types for node type availability policies.
  *
- * The rule/selector/action shapes live in `@n8n/api-types` so the public and internal request
+ * The rule/selector/action shapes live in `@MNI/api-types` so the public and internal request
  * DTOs share them; they are re-exported here so the module keeps one import path. The types
  * below are backend-only.
  *
@@ -10,7 +10,7 @@
  * depends on the persistence layer.
  */
 
-import type { PolicyAction, PolicyRule } from '@n8n/api-types';
+import type { PolicyAction, PolicyRule } from '@MNI/api-types';
 
 export type {
 	NonDelegatingPolicyAction,
@@ -18,7 +18,7 @@ export type {
 	PolicyAction,
 	PolicyRule,
 	PolicySelector,
-} from '@n8n/api-types';
+} from '@MNI/api-types';
 
 /**
  * What identifies a scope to its readers, as opposed to the row id that identifies it to the

@@ -1,7 +1,7 @@
-import type { Logger } from '@n8n/backend-common';
+import type { Logger } from '@MNI/backend-common';
 import { mock } from 'vitest-mock-extended';
-import type { INode } from 'n8n-workflow';
-import { Workflow } from 'n8n-workflow';
+import type { INode } from 'MNI-workflow';
+import { Workflow } from 'MNI-workflow';
 
 import type { NodeTypes } from '@/node-types';
 
@@ -49,9 +49,9 @@ export function createNodeTypes() {
 		// like any in-memory trigger, but it is a no-op (fired externally by the
 		// execution engine), so classification must tell them apart by node type.
 		if (
-			type === 'n8n-nodes-base.manualTrigger' ||
-			type === 'n8n-nodes-base.executeWorkflowTrigger' ||
-			type === 'n8n-nodes-base.errorTrigger'
+			type === 'MNI-nodes-base.manualTrigger' ||
+			type === 'MNI-nodes-base.executeWorkflowTrigger' ||
+			type === 'MNI-nodes-base.errorTrigger'
 		) {
 			return { description: { ...description, name: type }, trigger: vi.fn() } as never;
 		}

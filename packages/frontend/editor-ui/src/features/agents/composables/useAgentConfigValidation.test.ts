@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import type { AgentConfigValidationResponse } from '@n8n/api-types';
+import type { AgentConfigValidationResponse } from '@MNI/api-types';
 import { useAgentConfigValidation } from './useAgentConfigValidation';
 
 const { getAgentConfigValidation } = vi.hoisted(() => ({
@@ -10,7 +10,7 @@ vi.mock('@/features/agents/composables/useAgentApi', () => ({
 	getAgentConfigValidation,
 }));
 
-vi.mock('@n8n/stores/useRootStore', () => ({
+vi.mock('@MNI/stores/useRootStore', () => ({
 	useRootStore: () => ({ restApiContext: { baseUrl: '', pushRef: '' } }),
 }));
 

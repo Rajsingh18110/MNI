@@ -1,12 +1,12 @@
-import * as AgentsRuntime from '@n8n/agents';
-import type { AgentSnapshot, BuiltProviderTool, BuiltTool, ToolDescriptor } from '@n8n/agents';
+import * as AgentsRuntime from '@MNI/agents';
+import type { AgentSnapshot, BuiltProviderTool, BuiltTool, ToolDescriptor } from '@MNI/agents';
 import {
 	AI_GATEWAY_MANAGED_TAG,
 	AgentJsonConfigSchema,
 	RunnableAgentJsonConfigSchema,
 	SUB_AGENT_TASK_DIFFICULTIES,
 	type AgentJsonConfig,
-} from '@n8n/api-types';
+} from '@MNI/api-types';
 import type { JSONSchema7 } from 'json-schema';
 
 import { buildFromJson, buildProviderToolsForModel } from '../json-config/from-json-config';
@@ -539,7 +539,7 @@ describe('buildFromJson()', () => {
 					type: 'node',
 					name: 'my_node_tool',
 					description: 'A node tool',
-					node: { nodeType: 'n8n-nodes-base.httpRequest', nodeTypeVersion: 1, nodeParameters: {} },
+					node: { nodeType: 'MNI-nodes-base.httpRequest', nodeTypeVersion: 1, nodeParameters: {} },
 					requireApproval: true,
 				},
 			],
@@ -1817,10 +1817,10 @@ describe('AgentJsonConfigSchema', () => {
 					name: 'http_request',
 					description: 'Make an HTTP request',
 					node: {
-						nodeType: 'n8n-nodes-base.httpRequestTool',
+						nodeType: 'MNI-nodes-base.httpRequestTool',
 						nodeTypeVersion: 4,
 						nodeParameters: {
-							url: "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('url', 'The URL to request', 'string') }}",
+							url: "={{ /*MNI-auto-generated-fromAI-override*/ $fromAI('url', 'The URL to request', 'string') }}",
 						},
 					},
 					inputSchema: {
@@ -1848,10 +1848,10 @@ describe('AgentJsonConfigSchema', () => {
 					name: 'http_request',
 					description: 'Make an HTTP request',
 					node: {
-						nodeType: 'n8n-nodes-base.httpRequestTool',
+						nodeType: 'MNI-nodes-base.httpRequestTool',
 						nodeTypeVersion: 4,
 						nodeParameters: {
-							url: "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('url', 'The URL to request', 'string') }}",
+							url: "={{ /*MNI-auto-generated-fromAI-override*/ $fromAI('url', 'The URL to request', 'string') }}",
 						},
 					},
 				},

@@ -1,6 +1,6 @@
-import { SettingsRepository } from '@n8n/db';
-import { BreakingChangeRuleMetadata } from '@n8n/decorators';
-import { Container } from '@n8n/di';
+import { SettingsRepository } from '@MNI/db';
+import { BreakingChangeRuleMetadata } from '@MNI/decorators';
+import { Container } from '@MNI/di';
 import { mock } from 'vitest-mock-extended';
 
 import '../rules';

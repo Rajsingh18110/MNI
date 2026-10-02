@@ -1,11 +1,11 @@
 import { computed, ref, shallowReactive, toValue, watch, type MaybeRefOrGetter } from 'vue';
 import isEqual from 'lodash/isEqual';
 
-import type { InstanceAiSetupItem } from '@n8n/api-types';
-import { ResponseError } from '@n8n/rest-api-client';
-import { useRootStore } from '@n8n/stores/useRootStore';
-import { NodeHelpers } from 'n8n-workflow';
-import type { INodeCredentialsDetails, INodeParameters } from 'n8n-workflow';
+import type { InstanceAiSetupItem } from '@MNI/api-types';
+import { ResponseError } from '@MNI/rest-api-client';
+import { useRootStore } from '@MNI/stores/useRootStore';
+import { NodeHelpers } from 'MNI-workflow';
+import type { INodeCredentialsDetails, INodeParameters } from 'MNI-workflow';
 
 import type { INodeUi, IWorkflowDb } from '@/Interface';
 import { getWorkflow } from '@/app/api/workflows';
@@ -13,7 +13,7 @@ import { useNodeHelpers } from '@/app/composables/useNodeHelpers';
 import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';
 import type { NodeTypeProvider } from '@/app/utils/nodeTypes/nodeTypeTransforms';
 import { getNodeCredentialTypes } from '@/features/setupPanel/setupPanel.utils';
-import { GENERIC_AUTH_CREDENTIAL_TYPES } from '@n8n/api-types';
+import { GENERIC_AUTH_CREDENTIAL_TYPES } from '@MNI/api-types';
 import {
 	createWorkflowDocumentId,
 	useExistingWorkflowDocumentStore,

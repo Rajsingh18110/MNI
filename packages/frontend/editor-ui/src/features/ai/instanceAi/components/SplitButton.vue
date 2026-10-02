@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { N8nActionDropdown, N8nButton, N8nIconButton } from '@n8n/design-system';
-import type { ActionDropdownItem } from '@n8n/design-system';
+import { N8nActionDropdown, N8nButton, N8nIconButton } from '@MNI/design-system';
+import type { ActionDropdownItem } from '@MNI/design-system';
 import { computed } from 'vue';
 
 const props = withDefaults(

@@ -1,6 +1,6 @@
-import { mockInstance } from '@n8n/backend-test-utils';
-import { User } from '@n8n/db';
-import { PROJECT_ROOT } from 'n8n-workflow';
+import { mockInstance } from '@MNI/backend-test-utils';
+import { User } from '@MNI/db';
+import { PROJECT_ROOT } from 'MNI-workflow';
 
 import { FolderNotFoundError } from '@/errors/folder-not-found.error';
 import { FolderService } from '@/services/folder.service';

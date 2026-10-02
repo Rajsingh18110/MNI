@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import type { AgentConfigValidationIssue, AgentJsonTaskConfig, AgentTaskDto } from '@n8n/api-types';
-import { N8nButton, N8nIcon, N8nText, N8nTooltip } from '@n8n/design-system';
-import { useI18n, type BaseTextKey } from '@n8n/i18n';
-import { useRootStore } from '@n8n/stores/useRootStore';
+import type { AgentConfigValidationIssue, AgentJsonTaskConfig, AgentTaskDto } from '@MNI/api-types';
+import { N8nButton, N8nIcon, N8nText, N8nTooltip } from '@MNI/design-system';
+import { useI18n, type BaseTextKey } from '@MNI/i18n';
+import { useRootStore } from '@MNI/stores/useRootStore';
 import { computed, onMounted, ref, toRef, watch } from 'vue';
 import { useUIStore } from '@/app/stores/ui.store';
 import { getAgentTasks } from '../composables/useAgentApi';
@@ -231,8 +231,8 @@ watch(
 }
 
 .rowLabel {
-	--n8n--row-label-width: max(7%, calc(var(--spacing--3xl) + var(--spacing--sm)));
-	flex: 0 0 var(--n8n--row-label-width);
+	--MNI--row-label-width: max(7%, calc(var(--spacing--3xl) + var(--spacing--sm)));
+	flex: 0 0 var(--MNI--row-label-width);
 	line-height: var(--line-height--sm);
 	margin-top: var(--spacing--3xs);
 }

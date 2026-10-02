@@ -11,7 +11,7 @@ test.use({
 		...instanceAiTestConfig.capability,
 		env: {
 			...instanceAiTestConfig.capability.env,
-			N8N_INSTANCE_AI_SANDBOX_PROVIDER: 'local',
+			MNI_INSTANCE_AI_SANDBOX_PROVIDER: 'local',
 		},
 	},
 });

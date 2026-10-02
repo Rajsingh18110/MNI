@@ -1,9 +1,9 @@
-import { instanceAiSandboxProviderSchema } from '@n8n/api-types';
-import { normalizeSandboxProvider as normalizeRuntimeSandboxProvider } from '@n8n/agents/sandbox';
-import { OperationalError } from 'n8n-workflow';
+import { instanceAiSandboxProviderSchema } from '@MNI/api-types';
+import { normalizeSandboxProvider as normalizeRuntimeSandboxProvider } from '@MNI/agents/sandbox';
+import { OperationalError } from 'MNI-workflow';
 
 import {
-	N8N_SANDBOX_SERVICE_URL_REQUIRED_MESSAGE,
+	MNI_SANDBOX_SERVICE_URL_REQUIRED_MESSAGE,
 	normalizeSandboxProvider,
 	requireN8nSandboxServiceUrl,
 } from '../sandbox-provider';
@@ -17,13 +17,13 @@ describe('sandbox-provider', () => {
 		});
 
 		it('returns supported sandbox providers unchanged', () => {
-			expect(normalizeSandboxProvider('n8n-sandbox')).toBe('n8n-sandbox');
+			expect(normalizeSandboxProvider('MNI-sandbox')).toBe('MNI-sandbox');
 			expect(normalizeSandboxProvider('daytona')).toBe('daytona');
 		});
 
-		it('falls back to n8n-sandbox for unsupported values', () => {
-			expect(normalizeSandboxProvider('local')).toBe('n8n-sandbox');
-			expect(normalizeSandboxProvider(undefined)).toBe('n8n-sandbox');
+		it('falls back to MNI-sandbox for unsupported values', () => {
+			expect(normalizeSandboxProvider('local')).toBe('MNI-sandbox');
+			expect(normalizeSandboxProvider(undefined)).toBe('MNI-sandbox');
 		});
 	});
 
@@ -37,7 +37,7 @@ describe('sandbox-provider', () => {
 		it('throws an operational error when the service URL is missing', () => {
 			expect(() => requireN8nSandboxServiceUrl('   ')).toThrow(OperationalError);
 			expect(() => requireN8nSandboxServiceUrl('   ')).toThrow(
-				N8N_SANDBOX_SERVICE_URL_REQUIRED_MESSAGE,
+				MNI_SANDBOX_SERVICE_URL_REQUIRED_MESSAGE,
 			);
 		});
 	});

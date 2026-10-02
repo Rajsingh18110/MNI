@@ -1,12 +1,12 @@
 const fs = require('fs');
 const path = require('path');
 
-const enJsonPath = path.join(__dirname, 'packages/frontend/@n8n/i18n/src/locales/en.json');
+const enJsonPath = path.join(__dirname, 'packages/frontend/@MNI/i18n/src/locales/en.json');
 let enJson = fs.readFileSync(enJsonPath, 'utf8');
 
 // Replace "MNI" with "MNI" in user-facing text cautiously
 // We will replace occurrences where it's a standalone word or "MNI's" etc.
-// But we won't replace @n8n or docs.n8n.io blindly.
+// But we won't replace @MNI or docs.n8n.io blindly.
 const replaceMap = {
     '"About MNI"': '"About MNI"',
     'MNI version': 'MNI Version',

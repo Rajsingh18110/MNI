@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import type { UserAction } from '@/Interface';
 import type { McpAgent } from '@/features/ai/mcpAccess/mcp.types';
-import type { TableHeader, TableOptions } from '@n8n/design-system';
+import type { TableHeader, TableOptions } from '@MNI/design-system';
 import {
 	N8nActionToggle,
 	N8nButton,
@@ -12,7 +12,7 @@ import {
 	N8nLoading,
 	N8nSelectedItemsInfo,
 	N8nText,
-} from '@n8n/design-system';
+} from '@MNI/design-system';
 import { AGENT_VIEW, PROJECT_AGENTS } from '@/features/agents/constants';
 import router from '@/app/router';
 

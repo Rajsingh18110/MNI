@@ -1,4 +1,4 @@
-import { AI_ASSISTANT_AT_MENTIONS_FLAG } from '@n8n/api-types';
+import { AI_ASSISTANT_AT_MENTIONS_FLAG } from '@MNI/api-types';
 import { computed } from 'vue';
 
 import { usePostHog } from '@/app/stores/posthog.store';

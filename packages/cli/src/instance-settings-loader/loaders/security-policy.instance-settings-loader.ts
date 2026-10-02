@@ -1,10 +1,10 @@
-import { Logger } from '@n8n/backend-common';
-import { InstanceSettingsLoaderConfig } from '@n8n/config';
-import { Service } from '@n8n/di';
+import { Logger } from '@MNI/backend-common';
+import { InstanceSettingsLoaderConfig } from '@MNI/config';
+import { Service } from '@MNI/di';
 import {
 	PERSONAL_SPACE_PUBLISHING_SETTING,
 	PERSONAL_SPACE_SHARING_SETTING,
-} from '@n8n/permissions';
+} from '@MNI/permissions';
 
 import { MfaService } from '@/mfa/mfa.service';
 import { SecuritySettingsService } from '@/services/security-settings.service';
@@ -34,7 +34,7 @@ export class SecurityPolicyInstanceSettingsLoader {
 		}
 
 		this.logger.info(
-			'N8N_SECURITY_POLICY_MANAGED_BY_ENV is enabled — applying security policy env vars',
+			'MNI_SECURITY_POLICY_MANAGED_BY_ENV is enabled — applying security policy env vars',
 		);
 
 		await this.mfaService.enforceMFA(mfaEnforcedEnabled);

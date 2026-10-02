@@ -1,5 +1,5 @@
-import { createTeamProject, createWorkflow, testDb, testModules } from '@n8n/backend-test-utils';
-import { Container } from '@n8n/di';
+import { createTeamProject, createWorkflow, testDb, testModules } from '@MNI/backend-test-utils';
+import { Container } from '@MNI/di';
 import { DateTime } from 'luxon';
 
 import { createMetadata, createRawInsightsEvent } from './db-utils';

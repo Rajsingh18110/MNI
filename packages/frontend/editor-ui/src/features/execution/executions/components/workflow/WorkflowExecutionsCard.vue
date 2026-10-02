@@ -6,10 +6,10 @@ import { EnterpriseEditionFeature, VIEWS } from '@/app/constants';
 import { useInjectWorkflowId } from '@/app/composables/useInjectWorkflowId';
 import ExecutionsTime from '../ExecutionsTime.vue';
 import { useExecutionHelpers } from '../../composables/useExecutionHelpers';
-import type { ExecutionSummary } from 'n8n-workflow';
-import { useI18n } from '@n8n/i18n';
-import type { PermissionsRecord } from '@n8n/permissions';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import type { ExecutionSummary } from 'MNI-workflow';
+import { useI18n } from '@MNI/i18n';
+import type { PermissionsRecord } from '@MNI/permissions';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { toDayMonth, toTime } from '@/app/utils/formatters/dateFormatter';
 import PrivateCredentialIcon from '@/features/resolvers/components/PrivateCredentialIcon.vue';
 import {
@@ -19,7 +19,7 @@ import {
 	N8nTags,
 	N8nText,
 	N8nTooltip,
-} from '@n8n/design-system';
+} from '@MNI/design-system';
 const props = defineProps<{
 	execution: ExecutionSummary;
 	highlight?: boolean;

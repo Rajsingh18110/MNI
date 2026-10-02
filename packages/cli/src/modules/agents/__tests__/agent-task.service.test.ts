@@ -1,9 +1,9 @@
 import type { Mock } from 'vitest';
-import type { Logger } from '@n8n/backend-common';
-import type { GlobalConfig } from '@n8n/config';
-import type { User } from '@n8n/db';
+import type { Logger } from '@MNI/backend-common';
+import type { GlobalConfig } from '@MNI/config';
+import type { User } from '@MNI/db';
 import { mock } from 'vitest-mock-extended';
-import type { InstanceSettings, ScheduledTaskManager } from 'n8n-core';
+import type { InstanceSettings, ScheduledTaskManager } from 'MNI-core';
 
 import { BadRequestError } from '@/errors/response-errors/bad-request.error';
 import { NotFoundError } from '@/errors/response-errors/not-found.error';

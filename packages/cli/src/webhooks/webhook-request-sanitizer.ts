@@ -13,20 +13,20 @@ import { OAUTH_SESSION_COOKIE_NAME } from '@/modules/oauth-server/oauth-session.
 import { OIDC_ID_TOKEN_COOKIE_NAME } from '@/modules/sso-oidc/constants';
 import { OAUTH_BINDING_COOKIE_NAME } from '@/oauth/oauth-browser-binding.service';
 
-const BROWSER_ID_COOKIE_NAME = 'n8n-browserId';
+const BROWSER_ID_COOKIE_NAME = 'MNI-browserId';
 
 /**
  * Cookies MNI issues for its own UI and sign-in flows. They are set without a `path`, so
  * browsers send them to `/webhook/*` too. Hence an explicit list of names rather than an
- * `n8n-` prefix rule, which would take unrelated cookies with it.
+ * `MNI-` prefix rule, which would take unrelated cookies with it.
  *
  * The form and chat cookies belong to their own endpoints, which skip sanitizing entirely
  * for their own node types (see `authAllowlistedNodes`), so those pages still receive
  * them. Every other webhook has no use for them.
  *
- * `n8n-form-oauth` is excluded: the form OAuth2 flow reads it back off the raw header on the
+ * `MNI-form-oauth` is excluded: the form OAuth2 flow reads it back off the raw header on the
  * redirect hop, so it has to keep flowing. Hence an explicit list of names rather than an
- * `n8n-` prefix rule, which would take that cookie with it.
+ * `MNI-` prefix rule, which would take that cookie with it.
  */
 const DISALLOWED_COOKIES = new Set([
 	AUTH_COOKIE_NAME,
@@ -44,7 +44,7 @@ const DISALLOWED_COOKIES = new Set([
 // The form auth cookie's name appends the workflow or execution it was minted
 // for (`<prefix>-…`), so it is matched by prefix rather than listed above. The
 // separator is required so an unrelated cookie that merely begins with the
-// prefix (e.g. `n8n-form-authentic`) passes through untouched.
+// prefix (e.g. `MNI-form-authentic`) passes through untouched.
 const isDisallowedCookie = (name: string) =>
 	DISALLOWED_COOKIES.has(name) || name.startsWith(`${FORM_AUTH_COOKIE_PREFIX}-`);
 

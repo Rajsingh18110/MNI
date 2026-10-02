@@ -4,13 +4,13 @@ import TitledList from '@/app/components/TitledList.vue';
 import { useNodeHelpers } from '@/app/composables/useNodeHelpers';
 import { useCanvasNode } from '../../../../../composables/useCanvasNode';
 import { injectCanvasRenderData } from '@/features/workflows/canvas/canvas.utils';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import { CanvasNodeDirtiness, CanvasNodeRenderType } from '../../../../../canvas.types';
 import { useRoute } from 'vue-router';
 import { EditorEnabledFeaturesKey, VIEWS } from '@/app/constants';
 import { injectWorkflowDocumentStore } from '@/app/stores/workflowDocument.store';
 
-import { N8nIcon, N8nTooltip } from '@n8n/design-system';
+import { N8nIcon, N8nTooltip } from '@MNI/design-system';
 import CanvasNodeStatusMark from './CanvasNodeStatusMark.vue';
 const {
 	size = 'large',

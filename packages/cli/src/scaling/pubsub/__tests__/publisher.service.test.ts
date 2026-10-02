@@ -1,7 +1,7 @@
-import { mockInstance, mockLogger } from '@n8n/backend-test-utils';
-import { ExecutionsConfig, GlobalConfig } from '@n8n/config';
+import { mockInstance, mockLogger } from '@MNI/backend-test-utils';
+import { ExecutionsConfig, GlobalConfig } from '@MNI/config';
 import type { Redis as SingleNodeClient } from 'ioredis';
-import type { InstanceSettings } from 'n8n-core';
+import type { InstanceSettings } from 'MNI-core';
 import { mock } from 'vitest-mock-extended';
 
 import type { RedisClientService } from '@/services/redis-client.service';
@@ -259,7 +259,7 @@ describe('Publisher', () => {
 		});
 
 		it('should apply configured prefix to MCP relay channel', async () => {
-			const customConfig = mockInstance(GlobalConfig, { redis: { prefix: 'n8n-instance-1' } });
+			const customConfig = mockInstance(GlobalConfig, { redis: { prefix: 'MNI-instance-1' } });
 			const publisher = new Publisher(
 				logger,
 				redisClientService,
@@ -272,7 +272,7 @@ describe('Publisher', () => {
 			await publisher.publishMcpRelay(msg);
 
 			expect(client.publish).toHaveBeenCalledWith(
-				'n8n-instance-1:n8n.mcp-relay',
+				'MNI-instance-1:n8n.mcp-relay',
 				JSON.stringify(msg),
 			);
 		});
@@ -280,7 +280,7 @@ describe('Publisher', () => {
 
 	describe('prefix isolation', () => {
 		it('should apply configured prefix to both command and worker response channels', async () => {
-			const customConfig = mockInstance(GlobalConfig, { redis: { prefix: 'n8n-instance-1' } });
+			const customConfig = mockInstance(GlobalConfig, { redis: { prefix: 'MNI-instance-1' } });
 			const publisher = new Publisher(
 				logger,
 				redisClientService,
@@ -292,7 +292,7 @@ describe('Publisher', () => {
 			const commandMsg = mock<PubSub.Command>({ command: 'reload-license' });
 			await publisher.publishCommand(commandMsg);
 			expect(client.publish).toHaveBeenCalledWith(
-				'n8n-instance-1:n8n.commands',
+				'MNI-instance-1:n8n.commands',
 				expect.any(String),
 			);
 
@@ -301,7 +301,7 @@ describe('Publisher', () => {
 			});
 			await publisher.publishWorkerResponse(workerMsg);
 			expect(client.publish).toHaveBeenCalledWith(
-				'n8n-instance-1:n8n.worker-response',
+				'MNI-instance-1:n8n.worker-response',
 				JSON.stringify(workerMsg),
 			);
 		});

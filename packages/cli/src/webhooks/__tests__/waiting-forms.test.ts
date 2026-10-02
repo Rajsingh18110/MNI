@@ -1,13 +1,13 @@
-import type { IExecutionResponse } from '@n8n/db';
+import type { IExecutionResponse } from '@MNI/db';
 import type express from 'express';
-import type { InstanceSettings } from 'n8n-core';
-import { getHtmlSandboxCSP, WAITING_TOKEN_QUERY_PARAM } from 'n8n-core';
+import type { InstanceSettings } from 'MNI-core';
+import { getHtmlSandboxCSP, WAITING_TOKEN_QUERY_PARAM } from 'MNI-core';
 import {
 	FORM_NODE_TYPE,
 	WAITING_FORMS_EXECUTION_STATUS,
 	type IWorkflowBase,
 	type Workflow,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import type { ExecutionPersistence } from '@/executions/execution-persistence';
@@ -778,13 +778,13 @@ describe('WaitingForms', () => {
 		const buildReqWithAuthCookie = () =>
 			({
 				method: 'GET',
-				headers: { host: 'localhost:5678', cookie: 'n8n-auth=jwt.token; other=value' },
-				cookies: { 'n8n-auth': 'jwt.token', other: 'value' },
+				headers: { host: 'localhost:5678', cookie: 'MNI-auth=jwt.token; other=value' },
+				cookies: { 'MNI-auth': 'jwt.token', other: 'value' },
 				params: { path: '123', suffix: undefined },
 				url: '/form-waiting/123',
 			}) as unknown as WaitingWebhookRequest;
 
-		it('preserves the n8n-auth cookie when the resume node is a Form node', async () => {
+		it('preserves the MNI-auth cookie when the resume node is a Form node', async () => {
 			executionPersistence.findSingleExecution.mockResolvedValue(
 				buildExecutionWithResumeNode(FORM_NODE_TYPE),
 			);
@@ -794,11 +794,11 @@ describe('WaitingForms', () => {
 
 			await waitingForms.executeWebhook(req, res);
 
-			expect(req.headers.cookie).toContain('n8n-auth=jwt.token');
-			expect(req.cookies['n8n-auth']).toBe('jwt.token');
+			expect(req.headers.cookie).toContain('MNI-auth=jwt.token');
+			expect(req.cookies['MNI-auth']).toBe('jwt.token');
 		});
 
-		it('strips the n8n-auth cookie when the resume node is not allowlisted', async () => {
+		it('strips the MNI-auth cookie when the resume node is not allowlisted', async () => {
 			executionPersistence.findSingleExecution.mockResolvedValue(
 				buildExecutionWithResumeNode('other-node-type'),
 			);
@@ -808,12 +808,12 @@ describe('WaitingForms', () => {
 
 			await waitingForms.executeWebhook(req, res);
 
-			expect(req.headers.cookie).not.toContain('n8n-auth=');
+			expect(req.headers.cookie).not.toContain('MNI-auth=');
 			expect(req.headers.cookie).toContain('other=value');
-			expect(req.cookies['n8n-auth']).toBeUndefined();
+			expect(req.cookies['MNI-auth']).toBeUndefined();
 		});
 
-		it('strips the n8n-auth cookie when the execution cannot be resolved', async () => {
+		it('strips the MNI-auth cookie when the execution cannot be resolved', async () => {
 			executionPersistence.findSingleExecution.mockResolvedValue(undefined);
 
 			const req = buildReqWithAuthCookie();
@@ -825,8 +825,8 @@ describe('WaitingForms', () => {
 				// NotFoundError is expected for missing execution; we still want to verify sanitize ran first.
 			}
 
-			expect(req.headers.cookie).not.toContain('n8n-auth=');
-			expect(req.cookies['n8n-auth']).toBeUndefined();
+			expect(req.headers.cookie).not.toContain('MNI-auth=');
+			expect(req.cookies['MNI-auth']).toBeUndefined();
 		});
 	});
 });

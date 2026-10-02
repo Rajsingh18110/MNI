@@ -1,7 +1,7 @@
-import type { BuiltVectorStoreBackend, CredentialProvider, ResolvedCredential } from '@n8n/agents';
-import { VectorStore } from '@n8n/agents';
-import type { AgentJsonVectorStoreConfig } from '@n8n/api-types';
-import { UserError } from 'n8n-workflow';
+import type { BuiltVectorStoreBackend, CredentialProvider, ResolvedCredential } from '@MNI/agents';
+import { VectorStore } from '@MNI/agents';
+import type { AgentJsonVectorStoreConfig } from '@MNI/api-types';
+import { UserError } from 'MNI-workflow';
 
 import { resolveEmbeddingProviderOptionsFromCredential } from './embedding-credential';
 
@@ -71,7 +71,7 @@ async function buildPostgresBackend(
 		connectionString += '?sslmode=require';
 	}
 
-	const { PgVectorStore } = await import('@n8n/agents/vector-stores/postgres');
+	const { PgVectorStore } = await import('@MNI/agents/vector-stores/postgres');
 	return new PgVectorStore(config.name, {
 		connectionString,
 		tableName: config.tableName,
@@ -86,7 +86,7 @@ async function buildBackend(
 	switch (config.provider) {
 		case 'pinecone': {
 			const apiKey = requireCredentialField(credential, 'apiKey', 'Pinecone');
-			const { PineconeVectorStore } = await import('@n8n/agents/vector-stores/pinecone');
+			const { PineconeVectorStore } = await import('@MNI/agents/vector-stores/pinecone');
 			return new PineconeVectorStore(config.name, {
 				apiKey,
 				indexName: config.indexName,
@@ -96,7 +96,7 @@ async function buildBackend(
 		case 'qdrant': {
 			const url = requireCredentialField(credential, 'qdrantUrl', 'Qdrant');
 			const apiKey = optionalCredentialField(credential, 'apiKey');
-			const { QdrantVectorStore } = await import('@n8n/agents/vector-stores/qdrant');
+			const { QdrantVectorStore } = await import('@MNI/agents/vector-stores/qdrant');
 			return new QdrantVectorStore(config.name, {
 				url,
 				...(apiKey ? { apiKey } : {}),
@@ -106,7 +106,7 @@ async function buildBackend(
 		case 'supabase': {
 			const url = requireCredentialField(credential, 'host', 'Supabase');
 			const apiKey = requireCredentialField(credential, 'serviceRole', 'Supabase');
-			const { SupabaseVectorStore } = await import('@n8n/agents/vector-stores/supabase');
+			const { SupabaseVectorStore } = await import('@MNI/agents/vector-stores/supabase');
 			return new SupabaseVectorStore(config.name, {
 				url,
 				apiKey,

@@ -1,8 +1,8 @@
-import { randomName, mockInstance } from '@n8n/backend-test-utils';
-import type { WorkflowEntity } from '@n8n/db';
-import { generateNanoId, WorkflowRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
-import { InstanceSettings } from 'n8n-core';
+import { randomName, mockInstance } from '@MNI/backend-test-utils';
+import type { WorkflowEntity } from '@MNI/db';
+import { generateNanoId, WorkflowRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
+import { InstanceSettings } from 'MNI-core';
 
 import { ActiveWorkflowManager } from '@/active-workflow-manager';
 import { MultiMainSetup } from '@/scaling/multi-main-setup.ee';

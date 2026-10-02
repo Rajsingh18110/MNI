@@ -12,8 +12,8 @@ vi.mock('../agentSessions.store', () => ({
 	useAgentSessionsStore: () => storeState,
 }));
 
-vi.mock('@n8n/i18n', async (importOriginal) => ({
-	...(await importOriginal<typeof import('@n8n/i18n')>()),
+vi.mock('@MNI/i18n', async (importOriginal) => ({
+	...(await importOriginal<typeof import('@MNI/i18n')>()),
 	useI18n: () => ({ baseText: (key: string) => key }),
 }));
 
@@ -30,7 +30,7 @@ describe('AgentSessionHistoryDropdown', () => {
 
 		await userEvent.click(result.getByTestId('history-trigger'));
 
-		await waitFor(() => expect(document.querySelector('.n8n-loading')).toBeInTheDocument());
+		await waitFor(() => expect(document.querySelector('.MNI-loading')).toBeInTheDocument());
 		expect(result.queryByText('agents.builder.chat.sessionPicker.empty')).not.toBeInTheDocument();
 	});
 

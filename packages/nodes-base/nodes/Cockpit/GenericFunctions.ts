@@ -5,8 +5,8 @@ import type {
 	ILoadOptionsFunctions,
 	IRequestOptions,
 	JsonObject,
-} from 'n8n-workflow';
-import { jsonParse, NodeApiError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { jsonParse, NodeApiError } from 'MNI-workflow';
 
 export async function cockpitApiRequest(
 	this: IExecuteFunctions | ILoadOptionsFunctions,

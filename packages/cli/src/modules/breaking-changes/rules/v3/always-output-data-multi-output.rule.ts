@@ -1,8 +1,8 @@
-import type { BreakingChangeAffectedWorkflow, BreakingChangeRecommendation } from '@n8n/api-types';
-import type { WorkflowEntity } from '@n8n/db';
-import { BreakingChangeRule } from '@n8n/decorators';
-import type { INode, INodeTypeDescription } from 'n8n-workflow';
-import { NodeConnectionTypes } from 'n8n-workflow';
+import type { BreakingChangeAffectedWorkflow, BreakingChangeRecommendation } from '@MNI/api-types';
+import type { WorkflowEntity } from '@MNI/db';
+import { BreakingChangeRule } from '@MNI/decorators';
+import type { INode, INodeTypeDescription } from 'MNI-workflow';
+import { NodeConnectionTypes } from 'MNI-workflow';
 
 import { NodeTypes } from '@/node-types';
 

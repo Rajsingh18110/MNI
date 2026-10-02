@@ -1,12 +1,12 @@
-import type { BaseTextKey, useI18n } from '@n8n/i18n';
-import { SUB_AGENT_TASK_DIFFICULTIES } from '@n8n/api-types';
+import type { BaseTextKey, useI18n } from '@MNI/i18n';
+import { SUB_AGENT_TASK_DIFFICULTIES } from '@MNI/api-types';
 import { z } from 'zod';
 
 import { SUB_AGENT_DIFFICULTY_I18N_KEY, resolveSubAgentIdForDisplay } from './delegate-tool';
 
 /**
  * Name of the SDK tool the parent agent calls to maintain a structured task list.
- * Mirrors `WRITE_TODOS_TOOL_NAME` in `@n8n/agents` (not FE-importable).
+ * Mirrors `WRITE_TODOS_TOOL_NAME` in `@MNI/agents` (not FE-importable).
  */
 export const WRITE_TODOS_TOOL_NAME = 'write_todos';
 

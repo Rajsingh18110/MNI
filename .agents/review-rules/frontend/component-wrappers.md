@@ -2,7 +2,7 @@
 
 Applies to: `packages/frontend`.
 
-`@n8n/design-system` wraps reka-ui, Element Plus, TipTap and CodeMirror. The
+`@MNI/design-system` wraps reka-ui, Element Plus, TipTap and CodeMirror. The
 recurring defect is assuming the wrapper passes something through, or that a
 library default is what you want.
 

@@ -3,8 +3,8 @@ import type {
 	IHookFunctions,
 	ILoadOptionsFunctions,
 	IWebhookFunctions,
-} from 'n8n-workflow';
-import { NodeApiError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeApiError } from 'MNI-workflow';
 
 import { capitalizeFirstLetter, linearApiRequest, sort } from '../GenericFunctions';
 

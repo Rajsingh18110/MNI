@@ -1,5 +1,5 @@
-import type { ExecutionRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
+import type { ExecutionRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
 import {
 	Expression,
 	type IConnections,
@@ -8,7 +8,7 @@ import {
 	type IPinData,
 	type IRunExecutionData,
 	type ITaskData,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import type { Mocked, MockInstance } from 'vitest';
 import { mock } from 'vitest-mock-extended';
 
@@ -146,7 +146,7 @@ describe('extractResolvedNodeParameters', () => {
 	const nodeTypes = mock<NodeTypes>();
 
 	it('resolves expressions against the parent node output and mirrors the parameter tree', async () => {
-		const trigger = makeNode('Trigger', 'n8n-nodes-base.manualTrigger');
+		const trigger = makeNode('Trigger', 'MNI-nodes-base.manualTrigger');
 		const params = {
 			values: {
 				url: '=https://api.example.com/users/{{ $json.userId }}',
@@ -157,7 +157,7 @@ describe('extractResolvedNodeParameters', () => {
 				},
 			},
 		};
-		const set = makeNode('Set', 'n8n-nodes-base.set', params);
+		const set = makeNode('Set', 'MNI-nodes-base.set', params);
 		createMockExecutionRepository(
 			makeResolutionExecution({
 				nodes: [trigger, set],
@@ -192,8 +192,8 @@ describe('extractResolvedNodeParameters', () => {
 		// $vars is injected as {} during replay, so $vars.foo silently resolves to
 		// undefined. Without the tag, the agent reads this as a real workflow bug
 		// — but it just means we don't reconstruct variables in the replay.
-		const trigger = makeNode('Trigger', 'n8n-nodes-base.manualTrigger');
-		const set = makeNode('Set', 'n8n-nodes-base.set', {
+		const trigger = makeNode('Trigger', 'MNI-nodes-base.manualTrigger');
+		const set = makeNode('Set', 'MNI-nodes-base.set', {
 			fromVars: '={{ $vars.apiKey }}',
 			fromSecrets: '={{ $secrets.token }}',
 			realBug: '={{ $json.missing }}',
@@ -218,8 +218,8 @@ describe('extractResolvedNodeParameters', () => {
 	});
 
 	it('flags expressions that resolved to nullish/empty values in emptyResolutions', async () => {
-		const trigger = makeNode('Trigger', 'n8n-nodes-base.manualTrigger');
-		const set = makeNode('Set', 'n8n-nodes-base.set', {
+		const trigger = makeNode('Trigger', 'MNI-nodes-base.manualTrigger');
+		const set = makeNode('Set', 'MNI-nodes-base.set', {
 			// `$json.foo` is undefined → engine returns undefined (no throw)
 			baz: '={{ $json.foo }}',
 			// resolves cleanly
@@ -252,8 +252,8 @@ describe('extractResolvedNodeParameters', () => {
 	});
 
 	it('records failed expressions with dot-path while resolving siblings', async () => {
-		const trigger = makeNode('Trigger', 'n8n-nodes-base.manualTrigger');
-		const set = makeNode('Set', 'n8n-nodes-base.set', {
+		const trigger = makeNode('Trigger', 'MNI-nodes-base.manualTrigger');
+		const set = makeNode('Set', 'MNI-nodes-base.set', {
 			good: '={{ $json.value }}',
 			// `$()` on a non-existent node throws an ExpressionError. Plain optional-style
 			// chains like `$json.foo.bar` resolve to `undefined` rather than throwing —
@@ -297,7 +297,7 @@ describe('extractResolvedNodeParameters', () => {
 	});
 
 	it('throws when the node is not in the execution snapshot', async () => {
-		const trigger = makeNode('Trigger', 'n8n-nodes-base.manualTrigger');
+		const trigger = makeNode('Trigger', 'MNI-nodes-base.manualTrigger');
 		createMockExecutionRepository(makeResolutionExecution({ nodes: [trigger], runData: {} }));
 
 		await expect(extractResolvedNodeParameters(nodeTypes, 'exec-1', 'Unknown')).rejects.toThrow(
@@ -306,8 +306,8 @@ describe('extractResolvedNodeParameters', () => {
 	});
 
 	it('defaults runIndex to the last run of the queried node and honors an explicit runIndex', async () => {
-		const trigger = makeNode('Trigger', 'n8n-nodes-base.manualTrigger');
-		const set = makeNode('Set', 'n8n-nodes-base.set', { value: '={{ $json.tag }}' });
+		const trigger = makeNode('Trigger', 'MNI-nodes-base.manualTrigger');
+		const set = makeNode('Set', 'MNI-nodes-base.set', { value: '={{ $json.tag }}' });
 		createMockExecutionRepository(
 			makeResolutionExecution({
 				nodes: [trigger, set],
@@ -334,8 +334,8 @@ describe('extractResolvedNodeParameters', () => {
 	});
 
 	it('captures item-index-out-of-range expressions as failed without throwing', async () => {
-		const trigger = makeNode('Trigger', 'n8n-nodes-base.manualTrigger');
-		const set = makeNode('Set', 'n8n-nodes-base.set', { value: '={{ $json.value }}' });
+		const trigger = makeNode('Trigger', 'MNI-nodes-base.manualTrigger');
+		const set = makeNode('Set', 'MNI-nodes-base.set', { value: '={{ $json.value }}' });
 		createMockExecutionRepository(
 			makeResolutionExecution({
 				nodes: [trigger, set],
@@ -357,8 +357,8 @@ describe('extractResolvedNodeParameters', () => {
 	});
 
 	it('tags failures from unreconstructable contexts ($response, $pageCount) with reason="unreconstructable-context"', async () => {
-		const trigger = makeNode('Trigger', 'n8n-nodes-base.manualTrigger');
-		const http = makeNode('HTTP Request', 'n8n-nodes-base.httpRequest', {
+		const trigger = makeNode('Trigger', 'MNI-nodes-base.manualTrigger');
+		const http = makeNode('HTTP Request', 'MNI-nodes-base.httpRequest', {
 			url: 'https://example.com',
 			pagination: {
 				nextPageUrl: '={{ $response.body.nextUrl }}',
@@ -393,8 +393,8 @@ describe('extractResolvedNodeParameters', () => {
 
 	it('truncates resolved values that exceed the per-leaf size cap', async () => {
 		const huge = 'x'.repeat(20_000);
-		const trigger = makeNode('Trigger', 'n8n-nodes-base.manualTrigger');
-		const set = makeNode('Set', 'n8n-nodes-base.set', { body: '={{ $json.payload }}' });
+		const trigger = makeNode('Trigger', 'MNI-nodes-base.manualTrigger');
+		const set = makeNode('Set', 'MNI-nodes-base.set', { body: '={{ $json.payload }}' });
 		createMockExecutionRepository(
 			makeResolutionExecution({
 				nodes: [trigger, set],
@@ -418,8 +418,8 @@ describe('extractResolvedNodeParameters', () => {
 		// which requires each input item to carry a `pairedItem: { item, input }`
 		// annotation. The runtime + editor both add this before evaluating; we
 		// have to mirror that here or the expression throws "pairedItemNoInfo".
-		const trigger = makeNode('Trigger', 'n8n-nodes-base.manualTrigger');
-		const set = makeNode('Set', 'n8n-nodes-base.set', {
+		const trigger = makeNode('Trigger', 'MNI-nodes-base.manualTrigger');
+		const set = makeNode('Set', 'MNI-nodes-base.set', {
 			fromUpstream: '={{ $("Trigger").item.json.greeting }}',
 		});
 		createMockExecutionRepository(
@@ -447,9 +447,9 @@ describe('extractResolvedNodeParameters', () => {
 		// Switch routes items to two outputs; current node is connected to output 1.
 		// Without source-driven lookup, walking workflow parents would pick output 0
 		// (or whichever findConnectionOutputIndex returns first), giving the wrong items.
-		const trigger = makeNode('Trigger', 'n8n-nodes-base.manualTrigger');
-		const switchNode = makeNode('Switch', 'n8n-nodes-base.switch');
-		const branchB = makeNode('Branch B', 'n8n-nodes-base.set', { value: '={{ $json.label }}' });
+		const trigger = makeNode('Trigger', 'MNI-nodes-base.manualTrigger');
+		const switchNode = makeNode('Switch', 'MNI-nodes-base.switch');
+		const branchB = makeNode('Branch B', 'MNI-nodes-base.set', { value: '={{ $json.label }}' });
 
 		createMockExecutionRepository(
 			makeResolutionExecution({
@@ -484,8 +484,8 @@ describe('extractResolvedNodeParameters', () => {
 		// from the parent's third run. With source-driven lookup, parent run 2 is
 		// fetched correctly. Walking parents by current's runIndex would coincidentally
 		// match here, but only because indices align — this test pins the contract.
-		const loopHead = makeNode('Loop', 'n8n-nodes-base.splitInBatches');
-		const body = makeNode('Body', 'n8n-nodes-base.set', { value: '={{ $json.iter }}' });
+		const loopHead = makeNode('Loop', 'MNI-nodes-base.splitInBatches');
+		const body = makeNode('Body', 'MNI-nodes-base.set', { value: '={{ $json.iter }}' });
 
 		createMockExecutionRepository(
 			makeResolutionExecution({
@@ -525,8 +525,8 @@ describe('extractResolvedNodeParameters', () => {
 		// is the authoritative record of what actually flowed in the past execution.
 		// We must not silently substitute in whatever pinData happens to be on the
 		// saved workflow snapshot — that would shadow the recorded reality.
-		const trigger = makeNode('Trigger', 'n8n-nodes-base.manualTrigger');
-		const set = makeNode('Set', 'n8n-nodes-base.set', { value: '={{ $json.source }}' });
+		const trigger = makeNode('Trigger', 'MNI-nodes-base.manualTrigger');
+		const set = makeNode('Set', 'MNI-nodes-base.set', { value: '={{ $json.source }}' });
 		createMockExecutionRepository(
 			makeResolutionExecution({
 				nodes: [trigger, set],
@@ -546,7 +546,7 @@ describe('extractResolvedNodeParameters', () => {
 	});
 
 	describe('expression isolate lifecycle', () => {
-		// With N8N_EXPRESSION_ENGINE=vm, every getParameterValue call resolves in a
+		// With MNI_EXPRESSION_ENGINE=vm, every getParameterValue call resolves in a
 		// V8 isolate that must first be acquired for the workflow's Expression
 		// instance — otherwise the VM bridge throws "No bridge acquired". Since this
 		// path builds a throwaway workflow outside the execution engine, it has to
@@ -560,8 +560,8 @@ describe('extractResolvedNodeParameters', () => {
 		});
 
 		it('acquires and releases the isolate around parameter resolution', async () => {
-			const trigger = makeNode('Trigger', 'n8n-nodes-base.manualTrigger');
-			const set = makeNode('Set', 'n8n-nodes-base.set', { value: '={{ $json.tag }}' });
+			const trigger = makeNode('Trigger', 'MNI-nodes-base.manualTrigger');
+			const set = makeNode('Set', 'MNI-nodes-base.set', { value: '={{ $json.tag }}' });
 			createMockExecutionRepository(
 				makeResolutionExecution({
 					nodes: [trigger, set],

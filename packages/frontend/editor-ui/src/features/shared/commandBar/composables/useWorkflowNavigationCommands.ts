@@ -1,7 +1,7 @@
 import { computed, ref, type Ref } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
-import { N8nIcon } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+import { N8nIcon } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 import { ProjectTypes } from '@/features/collaboration/projects/projects.types';
 import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';
 import { useCredentialsStore } from '@/features/credentials/credentials.store';
@@ -17,9 +17,9 @@ import { useTagsStore } from '@/features/shared/tags/tags.store';
 import { useSourceControlStore } from '@/features/integrations/sourceControl.ee/sourceControl.store';
 import { useFoldersStore } from '@/features/core/folders/folders.store';
 import CommandBarItemTitle from '@/features/shared/commandBar/components/CommandBarItemTitle.vue';
-import { isIconOrEmoji, type IconOrEmoji } from '@n8n/design-system';
+import { isIconOrEmoji, type IconOrEmoji } from '@MNI/design-system';
 import NodeIcon from '@/app/components/NodeIcon.vue';
-import { getResourcePermissions } from '@n8n/permissions';
+import { getResourcePermissions } from '@MNI/permissions';
 
 const ITEM_ID = {
 	CREATE_WORKFLOW: 'create-workflow',

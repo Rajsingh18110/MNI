@@ -1,4 +1,4 @@
-import type { IDataObject, IWebhookFunctions } from 'n8n-workflow';
+import type { IDataObject, IWebhookFunctions } from 'MNI-workflow';
 
 import { verifySignature } from '../FigmaTriggerHelpers';
 import type { Mock } from 'vitest';

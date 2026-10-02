@@ -1,5 +1,5 @@
-import type { IExecuteFunctions, IHookFunctions } from 'n8n-workflow';
-import { NodeApiError } from 'n8n-workflow';
+import type { IExecuteFunctions, IHookFunctions } from 'MNI-workflow';
+import { NodeApiError } from 'MNI-workflow';
 
 import { spotifyApiRequest } from '../GenericFunctions';
 import type { Mock } from 'vitest';

@@ -3,7 +3,7 @@ import type {
 	IExecuteFunctions,
 	INodeProperties,
 	ResourceMapperField,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { updateDisplayOptions } from '../../../../../../utils/utilities';
 import {

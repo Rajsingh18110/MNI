@@ -2,7 +2,7 @@ import { ensureEnvVar } from './github-helpers.mjs';
 
 async function sendVersionReleaseNotification() {
 	const payload = ensureEnvVar('PAYLOAD');
-	const webhookData = ensureEnvVar('N8N_VERSION_RELEASE_NOTIFICATION_DATA');
+	const webhookData = ensureEnvVar('MNI_VERSION_RELEASE_NOTIFICATION_DATA');
 
 	const { user, secret, url } = JSON.parse(webhookData);
 

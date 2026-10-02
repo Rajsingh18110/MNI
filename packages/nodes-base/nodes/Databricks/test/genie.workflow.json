@@ -3,7 +3,7 @@
 	"nodes": [
 		{
 			"parameters": {},
-			"type": "n8n-nodes-base.manualTrigger",
+			"type": "MNI-nodes-base.manualTrigger",
 			"typeVersion": 1,
 			"position": [0, 0],
 			"id": "trigger-001",
@@ -16,7 +16,7 @@
 				"spaceId": "space123",
 				"initialMessage": "Show me sales data for Q1 2024"
 			},
-			"type": "n8n-nodes-base.databricks",
+			"type": "MNI-nodes-base.databricks",
 			"typeVersion": 1,
 			"position": [220, -200],
 			"id": "genie-start-001",
@@ -36,7 +36,7 @@
 				"conversationId": "conv-456",
 				"message": "What were the total sales?"
 			},
-			"type": "n8n-nodes-base.databricks",
+			"type": "MNI-nodes-base.databricks",
 			"typeVersion": 1,
 			"position": [220, 0],
 			"id": "genie-msg-001",
@@ -56,7 +56,7 @@
 				"conversationId": "conv-456",
 				"messageId": "msg-789"
 			},
-			"type": "n8n-nodes-base.databricks",
+			"type": "MNI-nodes-base.databricks",
 			"typeVersion": 1,
 			"position": [220, 200],
 			"id": "genie-getmsg-001",
@@ -74,7 +74,7 @@
 				"operation": "getSpace",
 				"spaceId": "space123"
 			},
-			"type": "n8n-nodes-base.databricks",
+			"type": "MNI-nodes-base.databricks",
 			"typeVersion": 1,
 			"position": [220, 400],
 			"id": "genie-space-001",

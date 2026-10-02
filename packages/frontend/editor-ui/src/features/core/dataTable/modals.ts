@@ -1,4 +1,4 @@
-import type { ModalDefinition } from '@n8n/frontend-module-sdk';
+import type { ModalDefinition } from '@MNI/frontend-module-sdk';
 
 import {
 	ADD_DATA_TABLE_MODAL_KEY,

@@ -1,4 +1,4 @@
-import type { INodeTypeBaseDescription } from 'n8n-workflow';
+import type { INodeTypeBaseDescription } from 'MNI-workflow';
 
 import { description } from '../descriptions/chat/complete.operation';
 import type * as _importType0 from '../GenericFunctions';

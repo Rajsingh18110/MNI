@@ -33,22 +33,22 @@ if (!apiKey) {
 	process.exit(1);
 }
 
-// Layer instance-ai env on top of any caller-supplied N8N_TEST_ENV so power
+// Layer instance-ai env on top of any caller-supplied MNI_TEST_ENV so power
 // users can still pin a different model or override flags.
 const callerTestEnv = (() => {
 	try {
-		return process.env.N8N_TEST_ENV ? JSON.parse(process.env.N8N_TEST_ENV) : {};
+		return process.env.MNI_TEST_ENV ? JSON.parse(process.env.MNI_TEST_ENV) : {};
 	} catch {
-		console.warn('[run-local-instance-ai] Ignoring malformed N8N_TEST_ENV.');
+		console.warn('[run-local-instance-ai] Ignoring malformed MNI_TEST_ENV.');
 		return {};
 	}
 })();
 
 const testEnv = {
-	N8N_ENABLED_MODULES: 'instance-ai',
-	N8N_INSTANCE_AI_MODEL: 'anthropic/claude-sonnet-4-6',
-	N8N_INSTANCE_AI_MODEL_API_KEY: apiKey,
-	N8N_INSTANCE_AI_LOCAL_GATEWAY_DISABLED: 'true',
+	MNI_ENABLED_MODULES: 'instance-ai',
+	MNI_INSTANCE_AI_MODEL: 'anthropic/claude-sonnet-4-6',
+	MNI_INSTANCE_AI_MODEL_API_KEY: apiKey,
+	MNI_INSTANCE_AI_LOCAL_GATEWAY_DISABLED: 'true',
 	...callerTestEnv,
 };
 
@@ -62,7 +62,7 @@ args.push(...userArgs);
 
 const result = spawnSync('node', args, {
 	stdio: 'inherit',
-	env: { ...process.env, N8N_TEST_ENV: JSON.stringify(testEnv) },
+	env: { ...process.env, MNI_TEST_ENV: JSON.stringify(testEnv) },
 });
 
 process.exit(result.status ?? 1);

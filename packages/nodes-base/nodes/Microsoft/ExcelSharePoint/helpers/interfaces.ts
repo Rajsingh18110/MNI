@@ -1,4 +1,4 @@
-import type { IDataObject, IExecuteFunctions, ILoadOptionsFunctions } from 'n8n-workflow';
+import type { IDataObject, IExecuteFunctions, ILoadOptionsFunctions } from 'MNI-workflow';
 
 // Used as `this` by every helper in this node (credential resolution, error
 // mapping, the request itself), so it earns a shared home unlike the other

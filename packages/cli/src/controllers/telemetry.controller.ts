@@ -1,7 +1,7 @@
-import { OutboundHttp } from '@n8n/backend-network';
-import { GlobalConfig } from '@n8n/config';
-import { AuthenticatedRequest } from '@n8n/db';
-import { Get, Options, Post, RestController } from '@n8n/decorators';
+import { OutboundHttp } from '@MNI/backend-network';
+import { GlobalConfig } from '@MNI/config';
+import { AuthenticatedRequest } from '@MNI/db';
+import { Get, Options, Post, RestController } from '@MNI/decorators';
 import { NextFunction, Response } from 'express';
 import { createProxyMiddleware, fixRequestBody } from 'http-proxy-middleware';
 

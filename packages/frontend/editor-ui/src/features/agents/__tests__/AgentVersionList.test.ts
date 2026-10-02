@@ -1,9 +1,9 @@
 /* eslint-disable import-x/no-extraneous-dependencies -- test-only patterns */
 import { describe, it, expect, vi } from 'vitest';
 import { mount } from '@vue/test-utils';
-import type { AgentVersionListItemDto } from '@n8n/api-types';
+import type { AgentVersionListItemDto } from '@MNI/api-types';
 
-vi.mock('@n8n/i18n', () => ({
+vi.mock('@MNI/i18n', () => ({
 	useI18n: () => ({ baseText: (k: string) => k }),
 }));
 
@@ -11,7 +11,7 @@ vi.mock('@/app/composables/useIntersectionObserver', () => ({
 	useIntersectionObserver: () => ({ observe: vi.fn() }),
 }));
 
-vi.mock('@n8n/design-system', () => ({
+vi.mock('@MNI/design-system', () => ({
 	N8nLoading: { name: 'N8nLoading', template: '<div />', props: ['loading', 'rows', 'animated'] },
 	N8nText: { name: 'N8nText', template: '<span><slot /></span>', props: ['size', 'color'] },
 }));

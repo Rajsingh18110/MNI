@@ -1,7 +1,7 @@
-import type { LicenseState } from '@n8n/backend-common';
-import { mockLogger } from '@n8n/backend-test-utils';
-import type { User } from '@n8n/db';
-import type { InstanceSettings } from 'n8n-core';
+import type { LicenseState } from '@MNI/backend-common';
+import { mockLogger } from '@MNI/backend-test-utils';
+import type { User } from '@MNI/db';
+import type { InstanceSettings } from 'MNI-core';
 import type { MockProxy } from 'vitest-mock-extended';
 import { mock } from 'vitest-mock-extended';
 

@@ -1,7 +1,7 @@
 import { createPinia, setActivePinia } from 'pinia';
 import { useNpsSurveyStore } from './npsSurvey.store';
 import { THREE_DAYS_IN_MILLIS, TIME, NPS_SURVEY_MODAL_KEY } from '@/app/constants';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 
 const { openModal, updateNpsSurveyState } = vi.hoisted(() => {
 	return {
@@ -16,7 +16,7 @@ vi.mock('@/app/stores/ui.store', () => ({
 	})),
 }));
 
-vi.mock('@n8n/rest-api-client/api/npsSurvey', () => ({
+vi.mock('@MNI/rest-api-client/api/npsSurvey', () => ({
 	updateNpsSurveyState,
 }));
 

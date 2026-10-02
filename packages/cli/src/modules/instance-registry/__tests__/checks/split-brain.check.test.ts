@@ -1,5 +1,5 @@
-import type { InstanceRegistration } from '@n8n/api-types';
-import type { ClusterCheckContext } from '@n8n/decorators';
+import type { InstanceRegistration } from '@MNI/api-types';
+import type { ClusterCheckContext } from '@MNI/decorators';
 
 import { SplitBrainCheck } from '../../checks/split-brain.check';
 

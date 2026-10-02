@@ -1,6 +1,6 @@
-/* eslint-disable n8n-nodes-base/node-execute-block-wrong-error-thrown */
-import { NodesConfig } from '@n8n/config';
-import { Container } from '@n8n/di';
+/* eslint-disable MNI-nodes-base/node-execute-block-wrong-error-thrown */
+import { NodesConfig } from '@MNI/config';
+import { Container } from '@MNI/di';
 import {
 	NodeConnectionTypes,
 	UnexpectedError,
@@ -10,7 +10,7 @@ import {
 	type IExecuteFunctions,
 	type INodeType,
 	type INodeTypeDescription,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 type CodeNodeLanguageOption = CodeNodeEditorLanguage | 'pythonNative';
 
@@ -23,7 +23,7 @@ import { PythonTaskRunnerSandbox } from './PythonTaskRunnerSandbox';
 class PythonDisabledError extends UserError {
 	constructor() {
 		super(
-			'This instance disallows Python execution because it has the environment variable `N8N_PYTHON_ENABLED` set to `false`. To restore Python execution, remove this environment variable or set it to `true` and restart the instance.',
+			'This instance disallows Python execution because it has the environment variable `MNI_PYTHON_ENABLED` set to `false`. To restore Python execution, remove this environment variable or set it to `true` and restart the instance.',
 		);
 	}
 }
@@ -48,57 +48,57 @@ export class Code implements INodeType {
 				'Use Code node as a LAST RESORT — it runs in a sandboxed environment and is slower than native nodes. Code node is ONLY appropriate for complex multi-step algorithms that cannot be expressed in single expressions, or operations requiring complex data structures. The sandbox has NO network access: fetch(), axios, XMLHttpRequest and require of http modules are unavailable and FAIL at runtime. NEVER make HTTP requests in a Code node — use the HTTP Request node and process its output instead. Prefer JavaScript: the Python option cannot import anything by default.',
 			relatedNodes: [
 				{
-					nodeType: 'n8n-nodes-base.httpRequest',
+					nodeType: 'MNI-nodes-base.httpRequest',
 					relationHint:
 						'Use this instead for ANY HTTP/API call — the Code node sandbox cannot make network requests',
 				},
 				{
-					nodeType: 'n8n-nodes-base.set',
+					nodeType: 'MNI-nodes-base.set',
 					relationHint:
 						'Use this instead for data manipulation: add/modify/rename fields, set values, map data',
 				},
 				{
-					nodeType: 'n8n-nodes-base.filter',
+					nodeType: 'MNI-nodes-base.filter',
 					relationHint: 'Use this instead for filtering items by condition',
 				},
 				{
-					nodeType: 'n8n-nodes-base.if',
+					nodeType: 'MNI-nodes-base.if',
 					relationHint: 'Use this instead for routing by condition',
 				},
 				{
-					nodeType: 'n8n-nodes-base.switch',
+					nodeType: 'MNI-nodes-base.switch',
 					relationHint: 'Use this instead for multi-way routing by condition',
 				},
 				{
-					nodeType: 'n8n-nodes-base.splitOut',
+					nodeType: 'MNI-nodes-base.splitOut',
 					relationHint: 'Use this instead for splitting arrays into separate items',
 				},
 				{
-					nodeType: 'n8n-nodes-base.aggregate',
+					nodeType: 'MNI-nodes-base.aggregate',
 					relationHint: 'Use this instead for combining multiple items into one',
 				},
 				{
-					nodeType: 'n8n-nodes-base.summarize',
+					nodeType: 'MNI-nodes-base.summarize',
 					relationHint: 'Use this instead for summarizing or pivoting data',
 				},
 				{
-					nodeType: 'n8n-nodes-base.removeDuplicates',
+					nodeType: 'MNI-nodes-base.removeDuplicates',
 					relationHint: 'Use this instead for removing duplicates',
 				},
 				{
-					nodeType: 'n8n-nodes-base.limit',
+					nodeType: 'MNI-nodes-base.limit',
 					relationHint: 'Use this instead to reduce the number of items returned',
 				},
 				{
-					nodeType: 'n8n-nodes-base.merge',
+					nodeType: 'MNI-nodes-base.merge',
 					relationHint: 'Use this instead for merging data from multiple branches',
 				},
 				{
-					nodeType: 'n8n-nodes-base.dateTime',
+					nodeType: 'MNI-nodes-base.dateTime',
 					relationHint: 'Use this instead for date time operations',
 				},
 				{
-					nodeType: 'n8n-nodes-base.html',
+					nodeType: 'MNI-nodes-base.html',
 					relationHint: 'Use this instead for creating html pages',
 				},
 			],
@@ -107,7 +107,7 @@ export class Code implements INodeType {
 					content: `<patterns>
 <pattern title="runOnceForAllItems with $input.all()">
 const codeNode = node({
-  type: 'n8n-nodes-base.code',
+  type: 'MNI-nodes-base.code',
   version: 2,
   config: {
     name: 'Process Data',

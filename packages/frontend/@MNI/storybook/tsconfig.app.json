@@ -1,0 +1,33 @@
+{
+	"extends": "@MNI/typescript-config/tsconfig.frontend.json",
+	"compilerOptions": {
+		"tsBuildInfoFile": "./dist/tsconfig.app.tsbuildinfo",
+		"rootDirs": [".", "../composables/src"],
+		"noEmit": true,
+		"moduleResolution": "bundler",
+
+		"types": [
+			"vite/client",
+			"vitest/globals",
+			"unplugin-icons/types/vue",
+			"../design-system/src/shims-modules.d.ts"
+		],
+		"paths": {
+			"@MNI/chat*": ["../chat/src*"],
+			"@MNI/design-system": ["../design-system/src/index.ts"],
+			"@MNI/design-system*": ["../design-system/src*"],
+			"@MNI/composables*": ["../composables/src*"],
+			"@MNI/i18n*": ["../i18n/src*"],
+			"@MNI/stores*": ["../stores/src*"],
+			"@MNI/utils*": ["../../../@MNI/utils/src*"],
+			"@/*": ["../../editor-ui/src/*"]
+		}
+	},
+	"include": [
+		"src/**/*.ts",
+		"src/**/*.tsx",
+		"src/**/*.vue",
+		".storybook/**/*.ts",
+		"../design-system/src/**/*.stories.ts"
+	]
+}

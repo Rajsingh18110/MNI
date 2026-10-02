@@ -1,15 +1,15 @@
 <script lang="ts" setup>
 import AnnotationTagsDropdown from '@/features/shared/tags/components/AnnotationTagsDropdown.ee.vue';
-import { useI18n } from '@n8n/i18n';
-import { useToast } from '@n8n/composables/useToast';
+import { useI18n } from '@MNI/i18n';
+import { useToast } from '@MNI/composables/useToast';
 import { useExecutionsStore } from '../../executions.store';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
-import { createEventBus } from '@n8n/utils/event-bus';
-import type { ExecutionSummary } from 'n8n-workflow';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
+import { createEventBus } from '@MNI/utils/event-bus';
+import type { ExecutionSummary } from 'MNI-workflow';
 import { computed, ref } from 'vue';
 
 import { ElTag } from 'element-plus';
-import { N8nButton } from '@n8n/design-system';
+import { N8nButton } from '@MNI/design-system';
 const props = defineProps<{
 	execution: ExecutionSummary;
 }>();

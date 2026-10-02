@@ -1,7 +1,7 @@
-import { createWorkflow, testDb } from '@n8n/backend-test-utils';
-import { TestRunRepository } from '@n8n/db';
-import type { IWorkflowDb, WorkflowEntity } from '@n8n/db';
-import { Container } from '@n8n/di';
+import { createWorkflow, testDb } from '@MNI/backend-test-utils';
+import { TestRunRepository } from '@MNI/db';
+import type { IWorkflowDb, WorkflowEntity } from '@MNI/db';
+import { Container } from '@MNI/di';
 
 import { createTestCaseExecution, createTestRun } from '@test-integration/db/evaluation';
 

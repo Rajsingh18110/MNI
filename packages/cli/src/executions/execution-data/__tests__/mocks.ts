@@ -1,4 +1,4 @@
-import type { IWorkflowBase } from 'n8n-workflow';
+import type { IWorkflowBase } from 'MNI-workflow';
 
 import { createExecutionRef } from '../types';
 import type { ExecutionDataPayload } from '../types';

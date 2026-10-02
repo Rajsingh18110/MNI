@@ -1,4 +1,4 @@
-import type { ICredentialType, INodeProperties } from 'n8n-workflow';
+import type { ICredentialType, INodeProperties } from 'MNI-workflow';
 
 // Group.ReadWrite.All covers channel create/update/delete, channel-message send and
 // Planner task writes — downgrading it to Group.Read.All breaks those operations (#35992).

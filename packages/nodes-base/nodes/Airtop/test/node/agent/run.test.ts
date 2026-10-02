@@ -1,4 +1,4 @@
-import type { ILoadOptionsFunctions } from 'n8n-workflow';
+import type { ILoadOptionsFunctions } from 'MNI-workflow';
 import type { Mock } from 'vitest';
 
 import * as run from '../../../actions/agent/run.operation';
@@ -73,7 +73,7 @@ const createMockLoadOptionsFunction = (
 			id: '1',
 			name: 'Airtop node',
 			typeVersion: 1,
-			type: 'n8n-nodes-base.airtop',
+			type: 'MNI-nodes-base.airtop',
 			position: [10, 10],
 			parameters: {},
 		}),

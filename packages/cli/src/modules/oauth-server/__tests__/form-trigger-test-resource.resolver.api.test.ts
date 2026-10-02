@@ -3,13 +3,13 @@ import {
 	setActiveVersion,
 	shareWorkflowWithUsers,
 	testDb,
-} from '@n8n/backend-test-utils';
-import { GlobalConfig } from '@n8n/config';
-import type { User } from '@n8n/db';
-import { WebhookRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
-import type { INode, IWebhookData, IWorkflowBase } from 'n8n-workflow';
-import { FORM_TRIGGER_NODE_TYPE } from 'n8n-workflow';
+} from '@MNI/backend-test-utils';
+import { GlobalConfig } from '@MNI/config';
+import type { User } from '@MNI/db';
+import { WebhookRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
+import type { INode, IWebhookData, IWorkflowBase } from 'MNI-workflow';
+import { FORM_TRIGGER_NODE_TYPE } from 'MNI-workflow';
 import { randomUUID } from 'node:crypto';
 
 import { createMember, createOwner } from '@test-integration/db/users';
@@ -19,7 +19,7 @@ import { OAuthClientRepository } from '../database/repositories/oauth-client.rep
 import { OAuthTokenService } from '@/modules/oauth-server/oauth-token.service';
 import { CacheService } from '@/services/cache/cache.service';
 import { ProtectedResourceRegistry } from '@/services/protected-resource.registry';
-import { UrlService } from '@n8n/backend-services';
+import { UrlService } from '@MNI/backend-services';
 import { TestWebhookRegistrationsService } from '@/webhooks/test-webhook-registrations.service';
 
 const testServer = setupTestServer({ modules: ['oauth-server', 'mcp'], endpointGroups: ['mcp'] });

@@ -1,6 +1,6 @@
-import { OutboundHttp } from '@n8n/backend-network';
-import type { HttpRequestClient } from '@n8n/backend-network';
-import { Container } from '@n8n/di';
+import { OutboundHttp } from '@MNI/backend-network';
+import type { HttpRequestClient } from '@MNI/backend-network';
+import { Container } from '@MNI/di';
 import { mock } from 'vitest-mock-extended';
 
 import { CredentialTestContext } from '../credentials-test-context';
@@ -16,7 +16,7 @@ vi.mock('../utils/ssh-tunnel-helper-functions', () => ({
  * tests. Its `helpers.request` must go through the default (safe) request
  * client so that test requests honour the same egress policy as regular node
  * execution. These tests assert that wiring; the actual SSRF enforcement lives
- * in `@n8n/backend-network`.
+ * in `@MNI/backend-network`.
  */
 describe('CredentialTestContext', () => {
 	const requestLegacy = vi.fn();

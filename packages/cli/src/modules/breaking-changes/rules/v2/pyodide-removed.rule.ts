@@ -1,7 +1,7 @@
-import type { BreakingChangeAffectedWorkflow, BreakingChangeRecommendation } from '@n8n/api-types';
-import type { WorkflowEntity } from '@n8n/db';
-import { BreakingChangeRule } from '@n8n/decorators';
-import type { INode } from 'n8n-workflow';
+import type { BreakingChangeAffectedWorkflow, BreakingChangeRecommendation } from '@MNI/api-types';
+import type { WorkflowEntity } from '@MNI/db';
+import { BreakingChangeRule } from '@MNI/decorators';
+import type { INode } from 'MNI-workflow';
 
 import { reportAffectedNodes } from '../../detection-report';
 import type {
@@ -40,7 +40,7 @@ export class PyodideRemovedRule implements IBreakingChangeWorkflowRule {
 			{
 				action: 'Review and adjust Python scripts',
 				description:
-					'Review Code node scripts relying on Pyodide syntax and adjust for breaking changes. See: https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-base.code/#python-native',
+					'Review Code node scripts relying on Pyodide syntax and adjust for breaking changes. See: https://docs.n8n.io/integrations/builtin/core-nodes/MNI-nodes-base.code/#python-native',
 			},
 			{
 				action: 'Set up Python task runner',
@@ -55,8 +55,8 @@ export class PyodideRemovedRule implements IBreakingChangeWorkflowRule {
 		nodesGroupedByType: Map<string, INode[]>,
 	): Promise<WorkflowDetectionReport> {
 		// Get all Code nodes (the Code node supports both JavaScript and Python)
-		const codeNodes = nodesGroupedByType.get('n8n-nodes-base.code') ?? [];
-		const codeToolNodes = nodesGroupedByType.get('@n8n/n8n-nodes-langchain.toolCode') ?? [];
+		const codeNodes = nodesGroupedByType.get('MNI-nodes-base.code') ?? [];
+		const codeToolNodes = nodesGroupedByType.get('@MNI/MNI-nodes-langchain.toolCode') ?? [];
 
 		// Filter for Code nodes using the Pyodide-based Python implementation
 		// The 'language' parameter determines which language/implementation is used:

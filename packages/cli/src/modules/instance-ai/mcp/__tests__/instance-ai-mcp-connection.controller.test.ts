@@ -1,4 +1,4 @@
-import type { AuthenticatedRequest, CredentialsEntity, User } from '@n8n/db';
+import type { AuthenticatedRequest, CredentialsEntity, User } from '@MNI/db';
 import { mock } from 'vitest-mock-extended';
 
 import type { CredentialsFinderService } from '@/credentials/credentials-finder.service';

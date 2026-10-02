@@ -1,6 +1,6 @@
 # Performance and scale
 
-Applies to: `packages/@n8n/db/src/migrations/**`.
+Applies to: `packages/@MNI/db/src/migrations/**`.
 
 `execution_entity` and `workflow_entity` hold millions of rows. Never assume a
 table is small.

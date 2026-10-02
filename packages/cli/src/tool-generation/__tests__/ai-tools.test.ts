@@ -1,5 +1,5 @@
-import type { INodeProperties, INodeTypeDescription } from 'n8n-workflow';
-import { NodeConnectionTypes, SEND_AND_WAIT_OPERATION } from 'n8n-workflow';
+import type { INodeProperties, INodeTypeDescription } from 'MNI-workflow';
+import { NodeConnectionTypes, SEND_AND_WAIT_OPERATION } from 'MNI-workflow';
 
 import { convertNodeToAiTool, createAiTools } from '../ai-tools';
 

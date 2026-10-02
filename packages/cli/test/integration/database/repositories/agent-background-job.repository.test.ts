@@ -1,9 +1,9 @@
-import { LockService, type Logger } from '@n8n/backend-common';
-import { createTeamProject, testDb, testModules } from '@n8n/backend-test-utils';
-import type { AgentsConfig } from '@n8n/config';
-import type { UserRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
-import type { InstanceSettings } from 'n8n-core';
+import { LockService, type Logger } from '@MNI/backend-common';
+import { createTeamProject, testDb, testModules } from '@MNI/backend-test-utils';
+import type { AgentsConfig } from '@MNI/config';
+import type { UserRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
+import type { InstanceSettings } from 'MNI-core';
 import { v4 as uuid } from 'uuid';
 import { mock } from 'vitest-mock-extended';
 
@@ -17,7 +17,7 @@ import { AgentBackgroundJobService } from '@/modules/agents/background/agent-bac
 import { AgentWakeService, WAKE_DEBOUNCE_MS } from '@/modules/agents/background/agent-wake.service';
 import type { AgentBackgroundJob } from '@/modules/agents/entities/agent-background-job.entity';
 import type { Agent } from '@/modules/agents/entities/agent.entity';
-import type { N8NCheckpointStorage } from '@/modules/agents/integrations/n8n-checkpoint-storage';
+import type { N8NCheckpointStorage } from '@/modules/agents/integrations/MNI-checkpoint-storage';
 import type { ChatIntegrationRegistry } from '@/modules/agents/integrations/agent-chat-integration';
 import { AgentBackgroundJobRepository } from '@/modules/agents/repositories/agent-background-job.repository';
 import type { AgentExecutionRepository } from '@/modules/agents/repositories/agent-execution.repository';
@@ -199,7 +199,7 @@ describe('AgentBackgroundJobRepository', () => {
 			const jobId = uuid();
 			// The owner role grants the agent:execute permission required for a wake.
 			const user = await createOwner();
-			const principalHash = hashAgentSandboxPrincipal({ type: 'n8n-user', userId: user.id });
+			const principalHash = hashAgentSandboxPrincipal({ type: 'MNI-user', userId: user.id });
 			await insertJob({
 				id: jobId,
 				parentThreadId: 'thread-1',

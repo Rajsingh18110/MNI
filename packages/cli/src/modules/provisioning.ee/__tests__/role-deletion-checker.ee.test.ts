@@ -1,5 +1,5 @@
-import type { ProvisioningConfigDto } from '@n8n/api-types';
-import type { RoleMappingRuleRepository } from '@n8n/db';
+import type { ProvisioningConfigDto } from '@MNI/api-types';
+import type { RoleMappingRuleRepository } from '@MNI/db';
 import { mock } from 'vitest-mock-extended';
 
 import { ProvisioningRoleDeletionChecker } from '../role-deletion-checker.ee';

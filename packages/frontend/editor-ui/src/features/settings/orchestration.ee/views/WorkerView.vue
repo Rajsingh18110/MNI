@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import WorkerList from '../components/WorkerList.vue';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { usePageRedirectionHelper } from '@/app/composables/usePageRedirectionHelper';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 
-import { N8nEmptyState } from '@n8n/design-system';
+import { N8nEmptyState } from '@MNI/design-system';
 const settingsStore = useSettingsStore();
 const pageRedirectionHelper = usePageRedirectionHelper();
 const i18n = useI18n();

@@ -3,7 +3,7 @@ import type {
 	IExecuteFunctions,
 	INodeExecutionData,
 	INodeProperties,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { odooApiRequest } from '../../transport';
 import { buildDomain, type IOdooFilters } from '../../helpers/utils';
@@ -52,7 +52,7 @@ const properties: INodeProperties[] = [
 						name: 'operator',
 						type: 'options',
 						default: 'equal',
-						// eslint-disable-next-line n8n-nodes-base/node-param-options-type-unsorted-items
+						// eslint-disable-next-line MNI-nodes-base/node-param-options-type-unsorted-items
 						options: [
 							{ name: 'Equal', value: 'equal' },
 							{ name: 'Not Equal', value: 'notEqual' },

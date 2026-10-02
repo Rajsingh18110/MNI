@@ -1,5 +1,5 @@
-import { createTeamProject, testDb, testModules } from '@n8n/backend-test-utils';
-import { Container } from '@n8n/di';
+import { createTeamProject, testDb, testModules } from '@MNI/backend-test-utils';
+import { Container } from '@MNI/di';
 import { v4 as uuid } from 'uuid';
 
 import type { Agent } from '@/modules/agents/entities/agent.entity';
@@ -69,7 +69,7 @@ describe('AgentRepository', () => {
 				versionId: firstVersion,
 				agentId: agent.id,
 				schema: agent.schema
-					? { ...agent.schema, integrations: [{ type: 'n8n_chat', credentialId: '' }] }
+					? { ...agent.schema, integrations: [{ type: 'MNI_chat', credentialId: '' }] }
 					: null,
 				tools: {},
 				skills: {},

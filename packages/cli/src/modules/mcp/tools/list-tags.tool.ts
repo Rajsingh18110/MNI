@@ -1,5 +1,5 @@
-import type { User } from '@n8n/db';
-import { hasGlobalScope } from '@n8n/permissions';
+import type { User } from '@MNI/db';
+import { hasGlobalScope } from '@MNI/permissions';
 import z from 'zod';
 
 import type { TagService } from '@/services/tag.service';

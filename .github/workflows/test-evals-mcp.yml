@@ -67,11 +67,11 @@ on:
     secrets:
       EVALS_ANTHROPIC_KEY:
         required: false
-      N8N_LICENSE_ACTIVATION_KEY:
+      MNI_LICENSE_ACTIVATION_KEY:
         required: false
-      N8N_LICENSE_CERT:
+      MNI_LICENSE_CERT:
         required: false
-      N8N_ENCRYPTION_KEY:
+      MNI_ENCRYPTION_KEY:
         required: false
       EVALS_LANGSMITH_ENDPOINT:
         required: false
@@ -167,18 +167,18 @@ jobs:
           echo '{ "enableAllProjectMcpServers": true }' > "$HOME/.claude/settings.json"
 
       # Cache populated by prepare-docker; on a miss the action falls back to a
-      # rebuild via build-n8n-docker (manual/scheduled runs usually rebuild).
+      # rebuild via build-MNI-docker (manual/scheduled runs usually rebuild).
       - name: Load MNI Docker image
-        uses: ./.github/actions/load-n8n-docker
+        uses: ./.github/actions/load-MNI-docker
 
-      - name: Start n8n lanes
+      - name: Start MNI lanes
         id: lanes
         env:
           LANES: ${{ inputs.lanes || '6' }}
           EVALS_ANTHROPIC_KEY: ${{ secrets.EVALS_ANTHROPIC_KEY }}
-          N8N_LICENSE_ACTIVATION_KEY: ${{ secrets.N8N_LICENSE_ACTIVATION_KEY }}
-          N8N_LICENSE_CERT: ${{ secrets.N8N_LICENSE_CERT }}
-          N8N_ENCRYPTION_KEY: ${{ secrets.N8N_ENCRYPTION_KEY }}
+          MNI_LICENSE_ACTIVATION_KEY: ${{ secrets.MNI_LICENSE_ACTIVATION_KEY }}
+          MNI_LICENSE_CERT: ${{ secrets.MNI_LICENSE_CERT }}
+          MNI_ENCRYPTION_KEY: ${{ secrets.MNI_ENCRYPTION_KEY }}
         run: |
           # Contiguous ports from 5678; the range 5678..5688 avoids Node fetch()'s
           # blocked-port list, so up to 11 lanes are safe.
@@ -188,21 +188,21 @@ jobs:
           done
           # instance-ai serves the verifier; mcp + mcp-registry are default modules,
           # so MCP is available (the eval CLI enables the *setting* per lane after
-          # reset). No sandbox — the builder is `claude`, not the in-n8n agent.
+          # reset). No sandbox — the builder is `claude`, not the in-MNI agent.
           # agents registers the agent-builder MCP tools so the suite measures
           # workflow building with the production tool surface, catching
           # tool-choice regressions the extra tools could introduce.
           for i in "${!PORTS[@]}"; do
             port="${PORTS[$i]}"
-            docker run -d --name "n8n-eval-mcp-$((i + 1))" \
+            docker run -d --name "MNI-eval-mcp-$((i + 1))" \
               -e E2E_TESTS=true \
-              -e N8N_ENABLED_MODULES=instance-ai,agents \
-              -e N8N_AI_ENABLED=true \
-              -e N8N_INSTANCE_AI_MODEL_API_KEY="$EVALS_ANTHROPIC_KEY" \
-              -e N8N_AI_ASSISTANT_BASE_URL="" \
-              -e N8N_LICENSE_ACTIVATION_KEY="$N8N_LICENSE_ACTIVATION_KEY" \
-              -e N8N_LICENSE_CERT="$N8N_LICENSE_CERT" \
-              -e N8N_ENCRYPTION_KEY="$N8N_ENCRYPTION_KEY" \
+              -e MNI_ENABLED_MODULES=instance-ai,agents \
+              -e MNI_AI_ENABLED=true \
+              -e MNI_INSTANCE_AI_MODEL_API_KEY="$EVALS_ANTHROPIC_KEY" \
+              -e MNI_AI_ASSISTANT_BASE_URL="" \
+              -e MNI_LICENSE_ACTIVATION_KEY="$MNI_LICENSE_ACTIVATION_KEY" \
+              -e MNI_LICENSE_CERT="$MNI_LICENSE_CERT" \
+              -e MNI_ENCRYPTION_KEY="$MNI_ENCRYPTION_KEY" \
               -p "$port:5678" \
               n8nio/MNI:local
           done
@@ -221,7 +221,7 @@ jobs:
             done
             if [ "$ready" != "true" ]; then
               echo "::error::MNI on port $port failed to start within 120s"
-              for n in $(docker ps -aq --filter "name=n8n-eval-mcp-"); do
+              for n in $(docker ps -aq --filter "name=MNI-eval-mcp-"); do
                 echo "Logs for $n:"; docker logs "$n" --tail 30 || true
               done
               exit 1
@@ -255,7 +255,7 @@ jobs:
       # MCP, mints an API key, and stages a `claude` MCP config per lane itself.
       - name: Run MCP Evals
         continue-on-error: true
-        working-directory: packages/@n8n/instance-ai
+        working-directory: packages/@MNI/instance-ai
         env:
           # `claude` authenticates with the Anthropic direct API key; the verifier's
           # own LLM checks use the same key (two budgets).
@@ -263,7 +263,7 @@ jobs:
           # Build model rides claude's native env var (no CLI flag): the eval CLI
           # reads it, pins a default when unset, and records it as build_model.
           ANTHROPIC_MODEL: ${{ inputs.build-model }}
-          N8N_INSTANCE_AI_MODEL_API_KEY: ${{ secrets.EVALS_ANTHROPIC_KEY }}
+          MNI_INSTANCE_AI_MODEL_API_KEY: ${{ secrets.EVALS_ANTHROPIC_KEY }}
           LANGSMITH_TRACING: 'true'
           LANGSMITH_ENDPOINT: ${{ secrets.EVALS_LANGSMITH_ENDPOINT }}
           LANGSMITH_API_KEY: ${{ secrets.EVALS_LANGSMITH_API_KEY }}
@@ -326,7 +326,7 @@ jobs:
       # comment in the job summary instead. Always runs so failures are visible.
       - name: Write eval summary
         if: ${{ always() }}
-        working-directory: packages/@n8n/instance-ai
+        working-directory: packages/@MNI/instance-ai
         run: |
           if [ -f eval-pr-comment.md ]; then
             cat eval-pr-comment.md >> "$GITHUB_STEP_SUMMARY"
@@ -345,12 +345,12 @@ jobs:
         if: ${{ always() }}
         env:
           EVALS_ANTHROPIC_KEY: ${{ secrets.EVALS_ANTHROPIC_KEY }}
-          N8N_LICENSE_ACTIVATION_KEY: ${{ secrets.N8N_LICENSE_ACTIVATION_KEY }}
-          N8N_LICENSE_CERT: ${{ secrets.N8N_LICENSE_CERT }}
-          N8N_ENCRYPTION_KEY: ${{ secrets.N8N_ENCRYPTION_KEY }}
+          MNI_LICENSE_ACTIVATION_KEY: ${{ secrets.MNI_LICENSE_ACTIVATION_KEY }}
+          MNI_LICENSE_CERT: ${{ secrets.MNI_LICENSE_CERT }}
+          MNI_ENCRYPTION_KEY: ${{ secrets.MNI_ENCRYPTION_KEY }}
         run: |
-          for v in "$EVALS_ANTHROPIC_KEY" "$N8N_LICENSE_ACTIVATION_KEY" \
-                   "$N8N_LICENSE_CERT" "$N8N_ENCRYPTION_KEY"; do
+          for v in "$EVALS_ANTHROPIC_KEY" "$MNI_LICENSE_ACTIVATION_KEY" \
+                   "$MNI_LICENSE_CERT" "$MNI_ENCRYPTION_KEY"; do
             [ -z "$v" ] && continue
             while IFS= read -r line; do
               [ -n "$line" ] && echo "::add-mask::$line"
@@ -358,7 +358,7 @@ jobs:
           done
 
           SIGNALS='mcp|builder|instance.?ai|error|warn|reject|exception|fail'
-          for c in $(docker ps -aq --filter "name=n8n-eval-mcp-"); do
+          for c in $(docker ps -aq --filter "name=MNI-eval-mcp-"); do
             name=$(docker inspect --format '{{.Name}}' "$c" | sed 's|^/||')
             echo ""
             echo "============================================================"
@@ -374,7 +374,7 @@ jobs:
       - name: Stop MNI lanes
         if: ${{ always() }}
         run: |
-          mapfile -t ids < <(docker ps -aq --filter "name=n8n-eval-mcp-")
+          mapfile -t ids < <(docker ps -aq --filter "name=MNI-eval-mcp-")
           if [ "${#ids[@]}" -gt 0 ]; then
             docker stop "${ids[@]}" 2>/dev/null || true
             docker rm "${ids[@]}" 2>/dev/null || true
@@ -386,10 +386,10 @@ jobs:
         with:
           name: mcp-workflow-eval-results
           path: |
-            packages/@n8n/instance-ai/eval-results.json
-            packages/@n8n/instance-ai/eval-pr-comment.md
-            packages/@n8n/instance-ai/.data/workflow-eval-report.html
-            packages/@n8n/instance-ai/mcp-build-logs
+            packages/@MNI/instance-ai/eval-results.json
+            packages/@MNI/instance-ai/eval-pr-comment.md
+            packages/@MNI/instance-ai/.data/workflow-eval-report.html
+            packages/@MNI/instance-ai/mcp-build-logs
           if-no-files-found: ignore
           retention-days: 14
 
@@ -400,7 +400,7 @@ jobs:
       # Per-case build failures DO write results and stay green by design.
       - name: Fail when no results were produced
         if: ${{ always() }}
-        working-directory: packages/@n8n/instance-ai
+        working-directory: packages/@MNI/instance-ai
         run: |
           if [ ! -f eval-results.json ]; then
             echo "::error::Eval run produced no eval-results.json — it failed before writing any results. Check the 'Run MCP Evals' step logs and the uploaded artifacts."

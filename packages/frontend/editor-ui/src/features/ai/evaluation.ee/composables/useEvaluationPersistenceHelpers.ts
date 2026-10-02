@@ -1,13 +1,13 @@
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import {
 	EVALUATION_TRIGGER_NODE_TYPE,
 	getParentNodes,
 	mapConnectionsByDestination,
-} from 'n8n-workflow';
-import type { EvaluationConfigDto, UpsertEvaluationConfigDto } from '@n8n/api-types';
+} from 'MNI-workflow';
+import type { EvaluationConfigDto, UpsertEvaluationConfigDto } from '@MNI/api-types';
 
-import { useToast } from '@n8n/composables/useToast';
-import { useRootStore } from '@n8n/stores/useRootStore';
+import { useToast } from '@MNI/composables/useToast';
+import { useRootStore } from '@MNI/stores/useRootStore';
 import { injectWorkflowDocumentStore } from '@/app/stores/workflowDocument.store';
 import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';
 import {

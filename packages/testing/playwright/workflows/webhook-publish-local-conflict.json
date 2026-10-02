@@ -7,7 +7,7 @@
 				"path": "f22164a7-1057-4d85-8559-9be630d831f0",
 				"options": {}
 			},
-			"type": "n8n-nodes-base.webhook",
+			"type": "MNI-nodes-base.webhook",
 			"typeVersion": 2.1,
 			"position": [0, 0],
 			"id": "c55ef745-c8b5-42d8-bb84-716356a89202",
@@ -19,7 +19,7 @@
 				"formTitle": "test",
 				"options": {}
 			},
-			"type": "n8n-nodes-base.formTrigger",
+			"type": "MNI-nodes-base.formTrigger",
 			"typeVersion": 2.5,
 			"position": [0, 208],
 			"id": "7f30363f-823e-434b-99e9-69d8cdff8906",

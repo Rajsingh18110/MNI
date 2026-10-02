@@ -9,12 +9,12 @@ import type {
 	StreamResult,
 	Telemetry,
 	Agent as RuntimeAgent,
-} from '@n8n/agents';
-import { createObservationLogObserveFn, createObservationLogReflectFn } from '@n8n/agents';
-import { Logger } from '@n8n/backend-common';
-import { AiConfig } from '@n8n/config';
-import type { User } from '@n8n/db';
-import { Service } from '@n8n/di';
+} from '@MNI/agents';
+import { createObservationLogObserveFn, createObservationLogReflectFn } from '@MNI/agents';
+import { Logger } from '@MNI/backend-common';
+import { AiConfig } from '@MNI/config';
+import type { User } from '@MNI/db';
+import { Service } from '@MNI/di';
 import {
 	REPORT_REQUIRED_ARTIFACT_TOOL_NAME,
 	reportRequiredArtifactInputSchema,
@@ -25,7 +25,7 @@ import {
 	type InstanceAiCredentialService,
 	type InstanceAiToolRegistry,
 	type ReportRequiredArtifactInput,
-} from '@n8n/instance-ai';
+} from '@MNI/instance-ai';
 
 import { NotFoundError } from '@/errors/response-errors/not-found.error';
 import { NodeCatalogService } from '@/node-catalog';
@@ -43,8 +43,8 @@ import {
 	BUILDER_PLANNER_TODOS_SYSTEM_INSTRUCTION,
 } from './prompts/planner-todos.prompt';
 import { getBuilderRuntimeSkills } from './skills';
-import { N8NCheckpointStorage } from '../integrations/n8n-checkpoint-storage';
-import { N8nMemory } from '../integrations/n8n-memory';
+import { N8NCheckpointStorage } from '../integrations/MNI-checkpoint-storage';
+import { N8nMemory } from '../integrations/MNI-memory';
 import { streamAgentChunks } from '../utils/agent-stream';
 
 /**
@@ -258,7 +258,7 @@ export class AgentsBuilderService {
 			},
 		);
 
-		const { Agent } = await import('@n8n/agents');
+		const { Agent } = await import('@MNI/agents');
 		const builderMemory = await this.createBuilderMemory(agentId, user, session);
 
 		const builder = new Agent('agent-builder')
@@ -356,7 +356,7 @@ export class AgentsBuilderService {
 		user: User,
 		session: InstanceAiBuilderSessionOptions,
 	) {
-		const { Memory } = await import('@n8n/agents');
+		const { Memory } = await import('@MNI/agents');
 
 		const onMemoryUsage = async (report: MemoryTaskUsageReport) =>
 			await this.claimMemoryUsage(report, agentId, user, session);
@@ -373,7 +373,7 @@ export class AgentsBuilderService {
 		agentId: string,
 		session: InstanceAiBuilderSessionOptions,
 	): Promise<void> {
-		const { createPlannerTodosTool } = await import('@n8n/agents');
+		const { createPlannerTodosTool } = await import('@MNI/agents');
 		const plannerTodosTool = createPlannerTodosTool({
 			description: BUILDER_PLANNER_TODOS_DESCRIPTION,
 			systemInstruction: BUILDER_PLANNER_TODOS_SYSTEM_INSTRUCTION,
@@ -406,7 +406,7 @@ export class AgentsBuilderService {
 
 	private async createRequiredArtifactTool(session: InstanceAiBuilderSessionOptions) {
 		if (!session.onRequiredArtifact) return undefined;
-		const { Tool } = await import('@n8n/agents');
+		const { Tool } = await import('@MNI/agents');
 		return new Tool(REPORT_REQUIRED_ARTIFACT_TOOL_NAME)
 			.description(
 				'Report a workflow or data table that Instance AI must create outside the target Agent. ' +

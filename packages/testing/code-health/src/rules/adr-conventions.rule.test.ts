@@ -618,7 +618,7 @@ describe('AdrConventionsRule', () => {
 			'docs/adr/ADR-20260922-adopt-a-stable-interface.md',
 			validAdr({
 				context:
-					'See ADR-20260920-missing and https://github.com/n8n-io/n8n/blob/master/docs/adr/ADR-20260919-also-missing.md.',
+					'See ADR-20260920-missing and https://github.com/MNI-io/MNI/blob/master/docs/adr/ADR-20260919-also-missing.md.',
 			}),
 		);
 

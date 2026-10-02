@@ -1,4 +1,4 @@
-import { STORES } from '@n8n/stores';
+import { STORES } from '@MNI/stores';
 import { defineStore } from 'pinia';
 import { computed, ref, watch } from 'vue';
 import get from 'lodash/get';
@@ -8,14 +8,14 @@ import {
 	type INode,
 	type INodeProperties,
 	jsonParse,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import { useRouteWorkflowId } from '@/app/composables/useWorkflowId';
 import {
 	useWorkflowDocumentStore,
 	createWorkflowDocumentId,
 } from '@/app/stores/workflowDocument.store';
 import { LOCAL_STORAGE_FOCUS_PANEL } from '@/app/constants';
-import { useStorage } from '@n8n/composables/useStorage';
+import { useStorage } from '@MNI/composables/useStorage';
 import { watchOnce } from '@vueuse/core';
 import { isFromAIOverrideValue } from '@/features/ndv/parameters/utils/fromAIOverride.utils';
 import type { FocusSidebarTabs } from '@/features/setupPanel/types';

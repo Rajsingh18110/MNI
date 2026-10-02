@@ -14,7 +14,7 @@ export const TLS_VERIFICATION_ERROR =
  * tell a TLS failure from a successful `git ls-remote`.
  */
 export async function startSelfSignedGitServer() {
-	const dir = await mkdtemp(path.join(tmpdir(), 'n8n-git-tls-'));
+	const dir = await mkdtemp(path.join(tmpdir(), 'MNI-git-tls-'));
 	const keyPath = path.join(dir, 'key.pem');
 	const certPath = path.join(dir, 'cert.pem');
 	execFileSync('openssl', [

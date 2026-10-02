@@ -1,4 +1,4 @@
-import type { ILoadOptionsFunctions, INodeListSearchResult } from 'n8n-workflow';
+import type { ILoadOptionsFunctions, INodeListSearchResult } from 'MNI-workflow';
 
 import { facebookFormList, facebookPageList } from '../GenericFunctions';
 

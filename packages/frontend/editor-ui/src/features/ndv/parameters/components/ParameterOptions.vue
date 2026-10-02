@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import {
 	isResourceLocatorValue,
 	type INodeProperties,
 	type NodeParameterValueType,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import { isValueExpression } from '@/app/utils/nodeTypesUtils';
 import { computed, inject } from 'vue';
 import { ChatHubToolContextKey } from '@/app/constants';
@@ -20,7 +20,7 @@ import {
 	N8nIconButton,
 	N8nSegmentControl,
 	N8nText,
-} from '@n8n/design-system';
+} from '@MNI/design-system';
 interface Props {
 	parameter: INodeProperties;
 	isReadOnly: boolean;
@@ -267,7 +267,7 @@ const onViewSelected = (selected: string) => {
 }
 
 .expressionSwitch {
-	--n8n-segment-control--height: 24px;
+	--MNI-segment-control--height: 24px;
 	margin-right: var(--spacing--4xs);
 }
 

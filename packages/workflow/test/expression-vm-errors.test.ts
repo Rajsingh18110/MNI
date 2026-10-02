@@ -1,5 +1,5 @@
-import { TimeoutError, MemoryLimitError, SecurityViolationError } from '@n8n/expression-runtime';
-import type { IExpressionEvaluator } from '@n8n/expression-runtime';
+import { TimeoutError, MemoryLimitError, SecurityViolationError } from '@MNI/expression-runtime';
+import type { IExpressionEvaluator } from '@MNI/expression-runtime';
 import { mock } from 'vitest-mock-extended';
 
 import { ExpressionError } from '../src/errors/expression.error';
@@ -9,7 +9,7 @@ import { Workflow } from '../src/workflow';
 import * as Helpers from './helpers';
 
 /**
- * Tests that VM-specific error types from @n8n/expression-runtime
+ * Tests that VM-specific error types from @MNI/expression-runtime
  * are caught and wrapped in workflow ExpressionError instances.
  *
  * The runtime package defines its own ExpressionError class hierarchy

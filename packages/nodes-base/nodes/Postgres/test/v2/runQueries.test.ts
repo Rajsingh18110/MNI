@@ -6,7 +6,7 @@ import type {
 	INodeExecutionData,
 	IPairedItemData,
 	NodeExecutionWithMetadata,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import pgPromise from 'pg-promise';
 
 import type { PgpDatabase } from '../../v2/helpers/interfaces';
@@ -16,7 +16,7 @@ const node: INode = {
 	id: '1',
 	name: 'Postgres node',
 	typeVersion: 2,
-	type: 'n8n-nodes-base.postgres',
+	type: 'MNI-nodes-base.postgres',
 	position: [60, 760],
 	parameters: {
 		operation: 'executeQuery',
@@ -64,7 +64,7 @@ describe('Test PostgresV2, runQueries', () => {
 	});
 
 	describe('empty result fallback (nodeVersion >= 2.3)', () => {
-		// Minimal stand-in for n8n-core's constructExecutionMetaData, sufficient for these tests.
+		// Minimal stand-in for MNI-core's constructExecutionMetaData, sufficient for these tests.
 		const fakeConstructExecutionMetaData = (
 			inputData: INodeExecutionData[],
 			options: { itemData: IPairedItemData | IPairedItemData[] },

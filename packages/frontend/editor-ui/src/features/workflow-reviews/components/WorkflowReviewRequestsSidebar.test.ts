@@ -1,11 +1,11 @@
-import type { WorkflowReviewInboxItem } from '@n8n/api-types';
+import type { WorkflowReviewInboxItem } from '@MNI/api-types';
 import { createTestingPinia } from '@pinia/testing';
 import { fireEvent } from '@testing-library/vue';
 import { nextTick } from 'vue';
 import { createComponentRenderer } from '@/__tests__/render';
 import { mockedStore } from '@/__tests__/utils';
 import { LOCAL_STORAGE_WORKFLOW_REVIEW_INBOX_COLLAPSED_SECTIONS } from '@/app/constants/localStorage';
-import { useUsersStore } from '@n8n/stores/users.store';
+import { useUsersStore } from '@MNI/stores/users.store';
 import WorkflowReviewRequestsSidebar from './WorkflowReviewRequestsSidebar.vue';
 import type { ReviewInboxSidebarSection } from './WorkflowReviewRequestsSidebar.vue';
 
@@ -235,7 +235,7 @@ describe('WorkflowReviewRequestsSidebar', () => {
 
 			const tabs = getByTestId('workflow-reviews-tabs');
 			expect(tabs).toHaveTextContent('Open');
-			expect(tabs.querySelectorAll('.n8n-tag')).toHaveLength(0);
+			expect(tabs.querySelectorAll('.MNI-tag')).toHaveLength(0);
 		});
 
 		it('keeps the whole-list skeleton while either open section is loading', () => {

@@ -1,4 +1,4 @@
-import type { IHttpRequestOptions, INode, INodeProperties, IRequestOptions } from 'n8n-workflow';
+import type { IHttpRequestOptions, INode, INodeProperties, IRequestOptions } from 'MNI-workflow';
 import { createPrivateKey, createSign } from 'node:crypto';
 import { Readable } from 'node:stream';
 import { mock } from 'vitest-mock-extended';

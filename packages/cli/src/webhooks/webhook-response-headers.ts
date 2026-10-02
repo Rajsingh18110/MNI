@@ -1,13 +1,13 @@
-import { Logger } from '@n8n/backend-common';
-import { Container } from '@n8n/di';
+import { Logger } from '@MNI/backend-common';
+import { Container } from '@MNI/di';
 import type { Response } from 'express';
 import {
 	getHtmlSandboxCSP,
 	isFormHtmlSandboxingDisabled,
 	isWebhookHtmlSandboxingDisabled,
-} from 'n8n-core';
+} from 'MNI-core';
 import { validateHeaderName, validateHeaderValue } from 'node:http';
-import { ensureError } from '@n8n/utils/errors/ensure-error';
+import { ensureError } from '@MNI/utils/errors/ensure-error';
 
 /**
  * The headers object that node's `responseHeaders` property can return

@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { useToast } from '@n8n/composables/useToast';
-import type { ChatHubLLMProvider, ChatModelDto, ChatSessionId } from '@n8n/api-types';
+import { useToast } from '@MNI/composables/useToast';
+import type { ChatHubLLMProvider, ChatModelDto, ChatSessionId } from '@MNI/api-types';
 import { useSpeechRecognition } from '@vueuse/core';
 import { computed, ref, watch } from 'vue';
 import {
@@ -8,7 +8,7 @@ import {
 	enrichMimeTypesWithExtensions,
 	isFileAcceptedByAccept,
 } from '@/features/ai/chatHub/chat.utils';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import type { MessagingState } from '@/features/ai/chatHub/chat.types';
 import { useChatStore } from '@/features/ai/chatHub/chat.store';
 import ChatPromptCallouts from './ChatPromptCallouts.vue';

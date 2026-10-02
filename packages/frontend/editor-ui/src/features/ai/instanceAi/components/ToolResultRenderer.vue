@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 import { computed } from 'vue';
-import type { McpToolCallResult } from '@n8n/api-types';
-import { N8nAiActivityStepResultSection } from '@n8n/design-system';
-import { isRecord } from '@n8n/utils/is-record';
+import type { McpToolCallResult } from '@MNI/api-types';
+import { N8nAiActivityStepResultSection } from '@MNI/design-system';
+import { isRecord } from '@MNI/utils/is-record';
 
 import ToolResultJson from './ToolResultJson.vue';
 import ToolResultTable from './ToolResultTable.vue';

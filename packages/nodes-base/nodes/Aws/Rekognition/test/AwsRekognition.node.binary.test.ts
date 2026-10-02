@@ -1,5 +1,5 @@
-import type { IExecuteFunctions, INode } from 'n8n-workflow';
-import { jsonParse } from 'n8n-workflow';
+import type { IExecuteFunctions, INode } from 'MNI-workflow';
+import { jsonParse } from 'MNI-workflow';
 import nock from 'nock';
 import type { Mock } from 'vitest';
 import { mockDeep } from 'vitest-mock-extended';

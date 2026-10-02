@@ -1,6 +1,6 @@
-import { DatabaseConfig, PrometheusMetricsConfig } from '@n8n/config';
-import { DbConnection, DbConnectionMetrics, type DbPoolStats } from '@n8n/db';
-import { Service } from '@n8n/di';
+import { DatabaseConfig, PrometheusMetricsConfig } from '@MNI/config';
+import { DbConnection, DbConnectionMetrics, type DbPoolStats } from '@MNI/db';
+import { Service } from '@MNI/di';
 import promClient from 'prom-client';
 
 import type { PrometheusMetricsCollector } from './base';

@@ -1,5 +1,5 @@
-import type { Logger } from 'n8n-workflow';
-import { UserError } from 'n8n-workflow';
+import type { Logger } from 'MNI-workflow';
+import { UserError } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import type { KafkaCredentials } from '../../../utils';
@@ -16,10 +16,10 @@ import {
 } from '../../mocks/confluent-kafka';
 
 vi.mock('@confluentinc/kafka-javascript', () => confluentKafkaModuleMock());
-vi.mock('@n8n/utils/sleep', () => ({ sleep: vi.fn(async () => {}) }));
+vi.mock('@MNI/utils/sleep', () => ({ sleep: vi.fn(async () => {}) }));
 
 const credentials: KafkaCredentials = {
-	clientId: 'n8n-test',
+	clientId: 'MNI-test',
 	brokers: 'localhost:9092',
 	ssl: false,
 	authentication: false,
@@ -55,7 +55,7 @@ describe('assertTopicExists', () => {
 			{
 				kafkaJS: {
 					brokers: ['localhost:9092'],
-					clientId: 'n8n-test',
+					clientId: 'MNI-test',
 					ssl: false,
 					logLevel: 1,
 				},

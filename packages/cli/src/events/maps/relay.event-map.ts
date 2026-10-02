@@ -1,5 +1,5 @@
-import type { AuthenticationMethod, ProjectRelation, RedactionFloor } from '@n8n/api-types';
-import type { AuthProviderType, User, IWorkflowDb } from '@n8n/db';
+import type { AuthenticationMethod, ProjectRelation, RedactionFloor } from '@MNI/api-types';
+import type { AuthProviderType, User, IWorkflowDb } from '@MNI/db';
 import type {
 	CancellationReason,
 	HitlResponseTelemetryPayload,
@@ -11,7 +11,7 @@ import type {
 	JsonValue,
 	WorkflowExecuteMode,
 	WorkflowSettings,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import type { ConcurrencyQueueType } from '@/concurrency/concurrency-control.service';
 import type { CredentialAuthProbeOutcome } from '@/services/credentials-tester.service';
@@ -22,7 +22,7 @@ import type {
 	ImportPackageEventCounts,
 	ImportPackageEventOptions,
 	PackageFailureReason,
-} from '@/modules/n8n-packages/n8n-packages.types';
+} from '@/modules/MNI-packages/MNI-packages.types';
 import type { TokenExchangeFailureReason } from '@/modules/token-exchange/token-exchange.types';
 import type { AdminCredentialSelection as InstanceAiCredentialSelection } from '@/modules/instance-ai/instance-ai-settings.service';
 import type {
@@ -37,8 +37,8 @@ import type { AiEventMap } from './ai.event-map';
 export type WorkflowActionSource =
 	| 'ui'
 	| 'api'
-	| 'n8n-mcp'
-	| 'n8n-ai'
+	| 'MNI-mcp'
+	| 'MNI-ai'
 	| 'import'
 	| 'review-approval';
 
@@ -128,7 +128,7 @@ export type RelayEventMap = {
 		source?: WorkflowActionSource;
 	};
 
-	'n8n-package-imported': {
+	'MNI-package-imported': {
 		user: UserLike;
 		projectIds: string[];
 		folderId: string | null;
@@ -140,7 +140,7 @@ export type RelayEventMap = {
 		counts: ImportPackageEventCounts;
 	};
 
-	'n8n-package-exported': {
+	'MNI-package-exported': {
 		user: UserLike;
 		workflowIds?: string[];
 		folderIds?: string[];
@@ -150,7 +150,7 @@ export type RelayEventMap = {
 		includeArchivedWorkflows: boolean;
 	};
 
-	'n8n-package-export-failed': {
+	'MNI-package-export-failed': {
 		user: UserLike;
 		reason: PackageFailureReason;
 		workflowIds?: string[];
@@ -158,7 +158,7 @@ export type RelayEventMap = {
 		projectIds?: string[];
 	};
 
-	'n8n-package-import-failed': {
+	'MNI-package-import-failed': {
 		user: UserLike;
 		reason: PackageFailureReason;
 		projectId?: string;

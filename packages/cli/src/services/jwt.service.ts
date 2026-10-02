@@ -1,8 +1,8 @@
-import { GlobalConfig } from '@n8n/config';
-import { Service } from '@n8n/di';
+import { GlobalConfig } from '@MNI/config';
+import { Service } from '@MNI/di';
 import { createHash } from 'crypto';
 import jwt from 'jsonwebtoken';
-import { InstanceSettings, type DeploymentStateRepo } from 'n8n-core';
+import { InstanceSettings, type DeploymentStateRepo } from 'MNI-core';
 
 @Service()
 export class JwtService {
@@ -28,7 +28,7 @@ export class JwtService {
 	/**
 	 * Two-phase init: reads or creates the signing.jwt deployment-key row.
 	 * Must be called after DB migrations complete, before request handlers register.
-	 * Precedence: N8N_USER_MANAGEMENT_JWT_SECRET env → DB active row → derive-from-key (and persist)
+	 * Precedence: MNI_USER_MANAGEMENT_JWT_SECRET env → DB active row → derive-from-key (and persist)
 	 */
 	async initialize(
 		repo: Pick<DeploymentStateRepo, 'findActiveSigningSecret' | 'seedSigningSecret'>,

@@ -6,8 +6,8 @@ on:
     branches:
       - master
     paths:
-      - 'packages/@n8n/ai-workflow-builder.ee/src/prompts/**'
-      - 'packages/@n8n/ai-workflow-builder.ee/**/*.prompt.ts'
+      - 'packages/@MNI/ai-workflow-builder.ee/src/prompts/**'
+      - 'packages/@MNI/ai-workflow-builder.ee/**/*.prompt.ts'
       - '.github/workflows/test-evals-ai.yml'
       - '.github/workflows/test-evals-ai-reusable.yml'
   workflow_dispatch:

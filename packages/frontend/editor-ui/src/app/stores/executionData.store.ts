@@ -1,11 +1,11 @@
 import { defineStore, getActivePinia } from 'pinia';
-import { STORES } from '@n8n/stores';
+import { STORES } from '@MNI/stores';
 import { computed, effectScope, inject, readonly, ref, shallowReactive } from 'vue';
 import type { ComputedRef } from 'vue';
 import { createEventHook, throttledWatch } from '@vueuse/core';
-import { structuralComputed } from '@n8n/composables/structuralComputed';
+import { structuralComputed } from '@MNI/composables/structuralComputed';
 import isEqual from 'lodash/isEqual';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import {
 	NodeConnectionTypes,
 	SEND_AND_WAIT_OPERATION,
@@ -17,9 +17,9 @@ import {
 	type IRunExecutionData,
 	type ITaskData,
 	type ITaskStartedData,
-} from 'n8n-workflow';
-import type { PushPayload } from '@n8n/api-types';
-import type { NodeExecuteBefore } from '@n8n/api-types/push/execution';
+} from 'MNI-workflow';
+import type { PushPayload } from '@MNI/api-types';
+import type { NodeExecuteBefore } from '@MNI/api-types/push/execution';
 import type { IExecutionResponse } from '@/features/execution/executions/executions.types';
 import { ExecutionDataStoreKey } from '@/app/constants/injectionKeys';
 import {

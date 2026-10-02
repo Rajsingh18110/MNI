@@ -1,4 +1,4 @@
-import type { API_KEY_RESOURCES } from '@n8n/permissions';
+import type { API_KEY_RESOURCES } from '@MNI/permissions';
 
 export const API_KEY_CREATE_OR_EDIT_MODAL_KEY = 'createOrEditApiKey';
 

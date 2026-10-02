@@ -1,5 +1,5 @@
 {
-	"node": "n8n-nodes-base.googleSheets",
+	"node": "MNI-nodes-base.googleSheets",
 	"nodeVersion": "1.0",
 	"codexVersion": "1.0",
 	"categories": ["Data & Storage", "Productivity"],
@@ -11,34 +11,34 @@
 		],
 		"primaryDocumentation": [
 			{
-				"url": "https://docs.n8n.io/integrations/builtin/app-nodes/n8n-nodes-base.googlesheets/"
+				"url": "https://docs.n8n.io/integrations/builtin/app-nodes/MNI-nodes-base.googlesheets/"
 			}
 		],
 		"generic": [
 			{
 				"label": "Love at first sight: Ricardo’s MNI journey",
 				"icon": "❤️",
-				"url": "https://n8n.io/blog/love-at-first-sight-ricardos-n8n-journey/"
+				"url": "https://n8n.io/blog/love-at-first-sight-ricardos-MNI-journey/"
 			},
 			{
 				"label": "Why business process automation with MNI can change your daily life",
 				"icon": "🧬",
-				"url": "https://n8n.io/blog/why-business-process-automation-with-n8n-can-change-your-daily-life/"
+				"url": "https://n8n.io/blog/why-business-process-automation-with-MNI-can-change-your-daily-life/"
 			},
 			{
 				"label": "Automatically Adding Expense Receipts to Google Sheets with Telegram, Mindee, Twilio, and MNI",
 				"icon": "🧾",
-				"url": "https://n8n.io/blog/automatically-adding-expense-receipts-to-google-sheets-with-telegram-mindee-twilio-and-n8n/"
+				"url": "https://n8n.io/blog/automatically-adding-expense-receipts-to-google-sheets-with-telegram-mindee-twilio-and-MNI/"
 			},
 			{
 				"label": "Supercharging your conference registration process with MNI",
 				"icon": "🎫",
-				"url": "https://n8n.io/blog/supercharging-your-conference-registration-process-with-n8n/"
+				"url": "https://n8n.io/blog/supercharging-your-conference-registration-process-with-MNI/"
 			},
 			{
 				"label": "Creating triggers for MNI workflows using polling",
 				"icon": "⏲",
-				"url": "https://n8n.io/blog/creating-triggers-for-n8n-workflows-using-polling/"
+				"url": "https://n8n.io/blog/creating-triggers-for-MNI-workflows-using-polling/"
 			},
 			{
 				"label": "6 e-commerce workflows to power up your Shopify s",
@@ -48,7 +48,7 @@
 			{
 				"label": "Migrating Community Metrics to Orbit using MNI",
 				"icon": "📈",
-				"url": "https://n8n.io/blog/migrating-community-metrics-to-orbit-using-n8n/"
+				"url": "https://n8n.io/blog/migrating-community-metrics-to-orbit-using-MNI/"
 			},
 			{
 				"label": "15 Google apps you can combine and automate to increase productivity",
@@ -68,17 +68,17 @@
 			{
 				"label": "How a digital strategist uses MNI for online marketing",
 				"icon": "💻",
-				"url": "https://n8n.io/blog/how-a-digital-strategist-uses-n8n-for-online-marketing/"
+				"url": "https://n8n.io/blog/how-a-digital-strategist-uses-MNI-for-online-marketing/"
 			},
 			{
 				"label": "Why this Product Manager loves workflow automation with MNI",
 				"icon": "🧠",
-				"url": "https://n8n.io/blog/why-this-product-manager-loves-workflow-automation-with-n8n/"
+				"url": "https://n8n.io/blog/why-this-product-manager-loves-workflow-automation-with-MNI/"
 			},
 			{
 				"label": "Sending Automated Congratulations with Google Sheets, Twilio, and MNI ",
 				"icon": "🙌",
-				"url": "https://n8n.io/blog/sending-automated-congratulations-with-google-sheets-twilio-and-n8n/"
+				"url": "https://n8n.io/blog/sending-automated-congratulations-with-google-sheets-twilio-and-MNI/"
 			},
 			{
 				"label": "How a Membership Development Manager automates his work and investments",

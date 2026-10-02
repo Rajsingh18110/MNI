@@ -1,5 +1,5 @@
-import type { ComputerUseChannel } from '@n8n/api-types';
-import type { ComputerUseChannelState, ComputerUseState } from '@n8n/instance-ai';
+import type { ComputerUseChannel } from '@MNI/api-types';
+import type { ComputerUseChannelState, ComputerUseState } from '@MNI/instance-ai';
 
 import { BROWSER_TOOL_CATEGORY } from './instance-ai-gateway.service';
 

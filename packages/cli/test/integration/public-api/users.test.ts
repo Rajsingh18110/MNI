@@ -1,4 +1,4 @@
-import { testDb, mockInstance } from '@n8n/backend-test-utils';
+import { testDb, mockInstance } from '@MNI/backend-test-utils';
 
 import { FeatureNotLicensedError } from '@/errors/feature-not-licensed.error';
 import { Telemetry } from '@/telemetry';
@@ -120,8 +120,8 @@ describe('Users in Public API', () => {
 			const owner = await createOwnerWithApiKey();
 			const memberWithMfa = await createMember();
 			// Manually enable MFA for this member
-			const userRepository = (await import('@n8n/db')).UserRepository;
-			const { Container } = await import('@n8n/di');
+			const userRepository = (await import('@MNI/db')).UserRepository;
+			const { Container } = await import('@MNI/di');
 			await Container.get(userRepository).update(memberWithMfa.id, { mfaEnabled: true });
 
 			const memberWithoutMfa = await createMember();
@@ -176,8 +176,8 @@ describe('Users in Public API', () => {
 			const owner = await createOwnerWithApiKey();
 			const member = await createMember();
 			// Enable MFA for this member
-			const userRepository = (await import('@n8n/db')).UserRepository;
-			const { Container } = await import('@n8n/di');
+			const userRepository = (await import('@MNI/db')).UserRepository;
+			const { Container } = await import('@MNI/di');
 			await Container.get(userRepository).update(member.id, { mfaEnabled: true });
 
 			const response = await testServer.publicApiAgentFor(owner).get(`/users/${member.id}`);

@@ -1,6 +1,6 @@
 import type { Mock } from 'vitest';
-import type { TagEntity, TagRepository, TransactionRunner } from '@n8n/db';
-import { QueryFailedError } from '@n8n/typeorm';
+import type { TagEntity, TagRepository, TransactionRunner } from '@MNI/db';
+import { QueryFailedError } from '@MNI/typeorm';
 import { mock } from 'vitest-mock-extended';
 
 import type { ExternalHooks } from '@/external-hooks';

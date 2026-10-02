@@ -1,6 +1,6 @@
-import { generateNodeTypeFile } from '@n8n/workflow-sdk';
-import type { NodeTypeDescription as SdkNodeTypeDescription } from '@n8n/workflow-sdk';
-import type { INodeTypeDescription } from 'n8n-workflow';
+import { generateNodeTypeFile } from '@MNI/workflow-sdk';
+import type { NodeTypeDescription as SdkNodeTypeDescription } from '@MNI/workflow-sdk';
+import type { INodeTypeDescription } from 'MNI-workflow';
 
 /**
  * Generate TypeScript type-definition content for an in-memory node
@@ -10,7 +10,7 @@ import type { INodeTypeDescription } from 'n8n-workflow';
  * AI's `type-definition`) treat synthesized and on-disk defs identically.
  *
  * Used for nodes that have no on-disk artifact: MCP registry servers, custom
- * nodes (`N8N_CUSTOM_EXTENSIONS` / `~/.n8n/custom`) and community packages.
+ * nodes (`MNI_CUSTOM_EXTENSIONS` / `~/.MNI/custom`) and community packages.
  *
  * Hidden properties (e.g. pre-configured connection details) are stripped
  * before generation so the agent's schema only surfaces parameters it is

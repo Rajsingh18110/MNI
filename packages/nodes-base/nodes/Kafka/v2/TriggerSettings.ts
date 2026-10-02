@@ -1,6 +1,6 @@
 import { randomUUID } from 'node:crypto';
-import type { ITriggerFunctions, Logger } from 'n8n-workflow';
-import { UserError } from 'n8n-workflow';
+import type { ITriggerFunctions, Logger } from 'MNI-workflow';
+import { UserError } from 'MNI-workflow';
 
 import { DEFAULT_EXECUTION_TIMEOUT_SECONDS } from './consumer';
 import type { DataEmitterOptions, KafkaMessageParserOptions, ResolveOffsetMode } from './consumer';
@@ -211,7 +211,7 @@ export function manualRunGroupId(configured: string, isManualRun: boolean): stri
 }
 
 /** The part of a manual run's group id that is stable, and so grantable in an ACL. */
-const MANUAL_RUN_PREFIX = (configured: string) => `${configured}-n8n-manual-`;
+const MANUAL_RUN_PREFIX = (configured: string) => `${configured}-MNI-manual-`;
 
 /** Broker rejections that mean the group itself was refused, not the credential. */
 const GROUP_AUTHORIZATION_FAILED = /group authorization failed/i;

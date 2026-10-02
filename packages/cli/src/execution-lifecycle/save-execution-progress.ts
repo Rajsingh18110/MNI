@@ -1,7 +1,7 @@
-import { Logger } from '@n8n/backend-common';
-import { Container } from '@n8n/di';
-import { ErrorReporter } from 'n8n-core';
-import type { IRunExecutionData, ITaskData } from 'n8n-workflow';
+import { Logger } from '@MNI/backend-common';
+import { Container } from '@MNI/di';
+import { ErrorReporter } from 'MNI-core';
+import type { IRunExecutionData, ITaskData } from 'MNI-workflow';
 
 import { ExecutionPersistence } from '@/executions/execution-persistence';
 

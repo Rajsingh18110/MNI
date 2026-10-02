@@ -43,7 +43,7 @@ skip:
   # invocation context.
   - rule: untrusted_checkout_exec
     path:
-      # Only called from release-publish.yml with release tag refs (e.g., n8n@1.2.3),
+      # Only called from release-publish.yml with release tag refs (e.g., MNI@1.2.3),
       # never PR code. The checked out code is already-released, trusted code.
       - .github/workflows/sbom-generation-callable.yml
       # Uses merge commit SHA from GitHub - the code has already been reviewed

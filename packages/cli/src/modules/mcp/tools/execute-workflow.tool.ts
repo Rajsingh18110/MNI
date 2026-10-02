@@ -1,6 +1,6 @@
-import type { WorkflowsConfig } from '@n8n/config';
-import type { User } from '@n8n/db';
-import { ensureError } from '@n8n/utils/errors/ensure-error';
+import type { WorkflowsConfig } from '@MNI/config';
+import type { User } from '@MNI/db';
+import { ensureError } from '@MNI/utils/errors/ensure-error';
 import {
 	CHAT_TRIGGER_NODE_TYPE,
 	FORM_TRIGGER_NODE_TYPE,
@@ -13,7 +13,7 @@ import {
 	jsonStringify,
 	SCHEDULE_TRIGGER_NODE_TYPE,
 	createRunExecutionData,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import z from 'zod';
 
 import {
@@ -235,7 +235,7 @@ const getVersionDataForExecution = async (
 	// truth — consult it directly rather than gating on activeVersionId. This
 	// issues a second query on top of the permission-check load; collapsing them
 	// is a deferred refactor.
-	// TODO: collapse to a single query — https://linear.app/n8n/issue/CAT-3443
+	// TODO: collapse to a single query — https://linear.app/MNI/issue/CAT-3443
 	if (workflowsConfig.useWorkflowPublicationService) {
 		const publishedData = await workflowPublishedDataService.getPublishedWorkflowData(workflowId);
 		if (publishedData === null) {

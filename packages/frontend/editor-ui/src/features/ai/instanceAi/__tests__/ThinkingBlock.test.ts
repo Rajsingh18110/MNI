@@ -8,7 +8,7 @@ import type {
 	InstanceAiAgentNode,
 	InstanceAiTimelineEntry,
 	InstanceAiToolCallState,
-} from '@n8n/api-types';
+} from '@MNI/api-types';
 
 const renderComponent = createThreadComponentRenderer(ThinkingBlock, {
 	global: {

@@ -1,4 +1,4 @@
-import { Service } from '@n8n/di';
+import { Service } from '@MNI/di';
 import { randomBytes } from 'node:crypto';
 
 import { MAX_CSRF_AGE } from '@/oauth/types';

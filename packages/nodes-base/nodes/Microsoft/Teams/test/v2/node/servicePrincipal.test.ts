@@ -6,7 +6,7 @@ import {
 	type IExecuteFunctions,
 	type INode,
 	type NodeParameterValueType,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { versionDescription } from '../../../v2/actions/versionDescription';
 import { MicrosoftTeamsV2 } from '../../../v2/MicrosoftTeamsV2.node';

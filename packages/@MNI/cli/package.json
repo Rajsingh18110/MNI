@@ -1,0 +1,93 @@
+{
+  "name": "@MNI/cli",
+  "version": "0.20.0",
+  "description": "Client CLI for MNI — manage workflows, executions, and credentials from the terminal",
+  "license": "LicenseRef-MNI-sustainable-use",
+  "bin": {
+    "MNI-cli": "bin/MNI-cli.mjs"
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "bin",
+    "dist",
+    "skills"
+  ],
+  "scripts": {
+    "clean": "rimraf dist .turbo",
+    "dev": "pnpm watch",
+    "typecheck": "tsc --noEmit",
+    "build": "tsc -p tsconfig.build.json",
+    "build:unchecked": "tsc -p tsconfig.build.json --noCheck",
+    "format": "biome format --write .",
+    "format:check": "biome ci .",
+    "lint": "eslint src --quiet",
+    "lint:fix": "eslint src --fix",
+    "watch": "tsc -p tsconfig.build.json --watch",
+    "test": "vitest run",
+    "test:unit": "vitest run"
+  },
+  "oclif": {
+    "bin": "MNI-cli",
+    "commands": {
+      "strategy": "explicit",
+      "target": "./dist/index.js",
+      "identifier": "commands"
+    },
+    "topicSeparator": " ",
+    "topics": {
+      "workflow": {
+        "description": "Create, update, and manage workflows"
+      },
+      "execution": {
+        "description": "Monitor and control workflow executions"
+      },
+      "credential": {
+        "description": "Create, update, and manage credentials"
+      },
+      "project": {
+        "description": "Create and manage projects and team members"
+      },
+      "tag": {
+        "description": "Create, update, and manage tags"
+      },
+      "variable": {
+        "description": "Create, update, and manage variables"
+      },
+      "data-table": {
+        "description": "Create and manage data tables and rows"
+      },
+      "user": {
+        "description": "List and look up instance users"
+      },
+      "config": {
+        "description": "View and update CLI configuration"
+      },
+      "promotion-provider": {
+        "description": "Create and manage the providers that hold promotion credentials"
+      },
+      "promotion-connection": {
+        "description": "Create and manage promotion connections, and promote or apply packages"
+      },
+      "source-control": {
+        "description": "Pull changes from the configured source control provider"
+      },
+      "package": {
+        "description": "Export and import workflows as MNI packages (beta)"
+      },
+      "skill": {
+        "description": "Install MNI CLI skills for AI coding agents"
+      }
+    }
+  },
+  "dependencies": {
+    "@oclif/core": "^4.5.2"
+  },
+  "devDependencies": {
+    "@MNI/typescript-config": "workspace:*",
+    "@MNI/vitest-config": "workspace:*",
+    "@types/node": "catalog:",
+    "typescript": "catalog:typescript",
+    "vitest": "catalog:"
+  }
+}

@@ -1,12 +1,12 @@
-import { PrometheusMetricsConfig } from '@n8n/config';
-import { Service } from '@n8n/di';
+import { PrometheusMetricsConfig } from '@MNI/config';
+import { Service } from '@MNI/di';
 import promClient from 'prom-client';
 
 import type { PrometheusMetricsCollector } from './base';
 
 /**
- * Observes webhook request duration (`n8n_webhook_request_duration_seconds`)
- * and form submission duration (`n8n_form_submission_duration_seconds`) as histograms.
+ * Observes webhook request duration (`MNI_webhook_request_duration_seconds`)
+ * and form submission duration (`MNI_form_submission_duration_seconds`) as histograms.
  * Metrics are recorded via `observeWebhookRequest` / `observeFormSubmission`,
  * called from the webhook request handler after each response is sent.
  */

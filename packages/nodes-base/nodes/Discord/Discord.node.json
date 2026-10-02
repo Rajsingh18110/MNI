@@ -1,5 +1,5 @@
 {
-	"node": "n8n-nodes-base.discord",
+	"node": "MNI-nodes-base.discord",
 	"nodeVersion": "1.0",
 	"codexVersion": "1.0",
 	"categories": ["Communication", "HITL"],
@@ -14,7 +14,7 @@
 		],
 		"primaryDocumentation": [
 			{
-				"url": "https://docs.n8n.io/integrations/builtin/app-nodes/n8n-nodes-base.discord/"
+				"url": "https://docs.n8n.io/integrations/builtin/app-nodes/MNI-nodes-base.discord/"
 			}
 		]
 	},

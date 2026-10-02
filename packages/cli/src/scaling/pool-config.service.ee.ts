@@ -1,9 +1,9 @@
-import type { ProjectPoolSettingsResponse, UpdateProjectPoolSettingsDto } from '@n8n/api-types';
-import { LicenseState } from '@n8n/backend-common';
-import { GlobalConfig } from '@n8n/config';
-import { ProjectPoolSettingsRepository } from '@n8n/db';
-import { Service } from '@n8n/di';
-import type { IWorkflowExecutionDataProcess } from 'n8n-workflow';
+import type { ProjectPoolSettingsResponse, UpdateProjectPoolSettingsDto } from '@MNI/api-types';
+import { LicenseState } from '@MNI/backend-common';
+import { GlobalConfig } from '@MNI/config';
+import { ProjectPoolSettingsRepository } from '@MNI/db';
+import { Service } from '@MNI/di';
+import type { IWorkflowExecutionDataProcess } from 'MNI-workflow';
 
 import { CacheService } from '@/services/cache/cache.service';
 

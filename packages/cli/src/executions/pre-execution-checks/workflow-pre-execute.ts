@@ -1,14 +1,14 @@
-import { ExecutionsConfig } from '@n8n/config';
-import { Service } from '@n8n/di';
-import { ensureError } from '@n8n/utils/errors/ensure-error';
+import { ExecutionsConfig } from '@MNI/config';
+import { Service } from '@MNI/di';
+import { ensureError } from '@MNI/utils/errors/ensure-error';
 import type {
 	INode,
 	IPinData,
 	IWorkflowBase,
 	WorkflowExecuteMode,
 	WorkflowExecutionSource,
-} from 'n8n-workflow';
-import { Workflow } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { Workflow } from 'MNI-workflow';
 
 import { getWorkflowActiveStatusFromWorkflowData } from '../execution.utils';
 
@@ -22,7 +22,7 @@ import { WorkflowHookContextService } from '@/workflow-hook-context.service';
  * hook mutations back onto `workflowData`. A throw means the run never
  * started — no row, no Insights/license count.
  *
- * No-ops when `N8N_PRE_EXECUTE_ERROR_CREATES_EXECUTION` is true; the lifecycle
+ * No-ops when `MNI_PRE_EXECUTE_ERROR_CREATES_EXECUTION` is true; the lifecycle
  * hook then runs after persist (legacy).
  */
 @Service()

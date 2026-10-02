@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang='en'>
 <!--
-	Form trigger — trusted hosting shell: n8n-controlled connect panel on the real
+	Form trigger — trusted hosting shell: MNI-controlled connect panel on the real
 	origin; the author's form renders unchanged in the sandboxed null-origin iframe
 	so author content can never touch the per-caller authorize links.
 -->
@@ -265,7 +265,7 @@
 				// UX-only signal to the form iframe; the server-side POST gate is the guarantee.
 				if (frame && frame.contentWindow) {
 					frame.contentWindow.postMessage(
-						{ type: allConnected ? 'n8n-shell-credentials-ready' : 'n8n-shell-credentials-not-ready' },
+						{ type: allConnected ? 'MNI-shell-credentials-ready' : 'MNI-shell-credentials-not-ready' },
 						'*',
 					);
 				}
@@ -393,12 +393,12 @@
 				// `event.origin` is the string 'null' for an opaque-origin frame and cannot be
 				// checked; `event.source` identifies it.
 				if (frame && event.source === frame.contentWindow) {
-					if (event.data && event.data.type === 'n8n-form-navigate') {
+					if (event.data && event.data.type === 'MNI-form-navigate') {
 						var next = resolveFrameNavigation(event.data.url);
 						if (next) frame.src = next;
 						return;
 					}
-					if (event.data && event.data.type === 'n8n-form-redirect') {
+					if (event.data && event.data.type === 'MNI-form-redirect') {
 						// The form is finished, so the author's redirect takes the whole tab —
 						// the same place a form rendered without this shell would end up.
 						var away = resolveExternalRedirect(event.data.url);
@@ -415,7 +415,7 @@
 				if (!url) return;
 				pendingId = id;
 				// No popup-close handler: success is confirmed only by the signals above.
-				window.open(url, 'n8n-credential-connect', 'width=500,height=700,menubar=no,toolbar=no');
+				window.open(url, 'MNI-credential-connect', 'width=500,height=700,menubar=no,toolbar=no');
 			}
 
 			function markDisconnected(id) {
@@ -451,7 +451,7 @@
 			// localStorage on this same origin by the editor/consent pages).
 			function authHeaders() {
 				try {
-					var browserId = localStorage.getItem('n8n-browserId');
+					var browserId = localStorage.getItem('MNI-browserId');
 					if (browserId) return { 'browser-id': browserId };
 				} catch (e) {}
 				return {};
@@ -475,7 +475,7 @@
 			// there. The popup opens synchronously so it isn't treated as a pop-under.
 			function reconnect(id, mintUrl) {
 				if (!id || !mintUrl) return;
-				var popup = window.open('', 'n8n-credential-connect', 'width=500,height=700,menubar=no,toolbar=no');
+				var popup = window.open('', 'MNI-credential-connect', 'width=500,height=700,menubar=no,toolbar=no');
 				pendingId = id;
 				fetch(mintUrl + '&authSource=cookie', {
 					method: 'POST',
@@ -557,7 +557,7 @@
 			// wiring so `overlay` is assigned; hoisting keeps it callable from the listener
 			// above.
 			function handleGateRejection(data) {
-				if (!data || data.type !== 'n8n-form-credentials-rejected' || !Array.isArray(data.ids)) return;
+				if (!data || data.type !== 'MNI-form-credentials-rejected' || !Array.isArray(data.ids)) return;
 				data.ids.forEach(function (id) {
 					// Only rows the server actually rendered, so a crafted key can't walk the
 					// prototype chain. Never markConnected from here — one direction only.

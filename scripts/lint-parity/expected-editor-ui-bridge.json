@@ -8,17 +8,17 @@
 	},
 	{
 		"pkg": "packages/frontend/editor-ui",
-		"rule": "n8n-local-rules/no-interpolation-in-regular-string",
+		"rule": "MNI-local-rules/no-interpolation-in-regular-string",
 		"reason": "off for test files: a Vue stub template keeps ${...} uninterpolated in a plain string"
 	},
 	{
 		"pkg": "packages/frontend/editor-ui",
-		"rule": "n8n-local-rules/no-unneeded-backticks",
+		"rule": "MNI-local-rules/no-unneeded-backticks",
 		"reason": "off for test files: backticks inside a Vue stub template are Vue syntax"
 	},
 	{
 		"pkg": "packages/frontend/editor-ui",
-		"rule": "n8n-local-rules/no-uncaught-json-parse",
+		"rule": "MNI-local-rules/no-uncaught-json-parse",
 		"reason": "off for test files: a throw on self-declared fixtures is the signal the test wants"
 	}
 ]

@@ -1,6 +1,6 @@
-import { WorkflowsConfig } from '@n8n/config';
-import { type WorkflowEntity, WorkflowRepository } from '@n8n/db';
-import { Service } from '@n8n/di';
+import { WorkflowsConfig } from '@MNI/config';
+import { type WorkflowEntity, WorkflowRepository } from '@MNI/db';
+import { Service } from '@MNI/di';
 
 import { WorkflowPublishedDataService } from '@/workflows/workflow-published-data.service';
 

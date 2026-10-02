@@ -1,4 +1,4 @@
-import { WORKFLOW_REVIEW_TEXT_MAX_LENGTH } from '@n8n/api-types';
+import { WORKFLOW_REVIEW_TEXT_MAX_LENGTH } from '@MNI/api-types';
 import { createTestingPinia } from '@pinia/testing';
 import userEvent from '@testing-library/user-event';
 import { waitFor } from '@testing-library/vue';
@@ -10,7 +10,7 @@ import WorkflowReviewCommentComposer from './WorkflowReviewCommentComposer.vue';
 
 const showError = vi.fn();
 
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: () => ({ showError }),
 }));
 

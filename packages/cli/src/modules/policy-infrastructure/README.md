@@ -12,7 +12,7 @@ Why these seven points, why every check must pass, and why a check that does not
 answer blocks: read the policy infrastructure RFC in Notion. This README is the
 working reference for writing a check. It does not restate the RFC.
 
-The module is on by default. `N8N_DISABLED_MODULES=policy-infrastructure` turns
+The module is on by default. `MNI_DISABLED_MODULES=policy-infrastructure` turns
 it off: nothing is checked and everything is allowed. That is the documented
 break-glass lever. An instance with no check registered behaves the same either
 way — the module by itself changes nothing a user can see.
@@ -34,7 +34,7 @@ flowchart LR
 
     subgraph module["policy-infrastructure module (default, disable to opt out)"]
         pds["PolicyDecisionService<br/>deadline per check · all checks must pass<br/>crash or timeout = fail closed<br/>one audit line per veto"]
-        registry["PolicyCheckMetadata<br/>registry in @n8n/decorators"]
+        registry["PolicyCheckMetadata<br/>registry in @MNI/decorators"]
         checks["@PolicyCheck() classes<br/>onWorkflowSave · onWorkflowPublish · …"]
     end
 
@@ -106,7 +106,7 @@ wedged policy store there pins worker slots instead of failing one request.
 ## Contexts
 
 Each point hands its check a different context. The types are in
-`@n8n/decorators/src/policy-check/policy-check.ts`.
+`@MNI/decorators/src/policy-check/policy-check.ts`.
 
 | Point               | Context type               | Fields                                                                                   |
 | ------------------- | -------------------------- | ---------------------------------------------------------------------------------------- |
@@ -153,7 +153,7 @@ warn  Policy blocked workflowSave  {
   "point": "workflowSave", "outcome": "violation", "durationMs": 12,
   "checkIds": ["node-type-availability"],
   "violations": [{ "checkId": "node-type-availability", "kind": "node-type-unavailable",
-                   "subject": "n8n-nodes-base.slack", "subjectType": "nodeType",
+                   "subject": "MNI-nodes-base.slack", "subjectType": "nodeType",
                    "scope": "instance", "matchedRuleId": "rule-7" }],
   "policyVersions": [{ "scope": "instance", "version": 4 }],
   "workflowId": "wf-1", "workflowName": "My workflow", "projectId": "proj-1",
@@ -180,10 +180,10 @@ warn  Policy blocked workflowSave  {
 Two logging facts to know before relying on this:
 
 - **The default text format prints the message only.** The structured half needs
-  `N8N_LOG_FORMAT=json`, file output, or `debug` level. The message names the point on
+  `MNI_LOG_FORMAT=json`, file output, or `debug` level. The message names the point on
   its own for that reason.
-- **`N8N_LOG_SCOPES` can drop the line.** A configured scope set drops every line
-  outside it, unscoped lines included, so no log line is immune. `N8N_LOG_SCOPES=policy`
+- **`MNI_LOG_SCOPES` can drop the line.** A configured scope set drops every line
+  outside it, unscoped lines included, so no log line is immune. `MNI_LOG_SCOPES=policy`
   is the switch that keeps only these.
 
 Policy _mutation_ audit — who changed a policy — is a different surface, owned by the
@@ -247,4 +247,4 @@ registry is read on every decision, so load order cannot hide a check.
 | `../../policy/policy-enforcement.service.ts` | The enforcement point the hosts call, always loaded                                          |
 | `../../policy/policy-violation.error.ts`     | The 403 that carries `meta.violations`                                                       |
 | `../../policy/policy-enforcement-backend.ts` | The interface `PolicyDecisionService` implements and the module registers                    |
-| `@n8n/decorators/src/policy-check/`          | `@PolicyCheck()`, the registry, the contexts, the `PolicyCleared` token                      |
+| `@MNI/decorators/src/policy-check/`          | `@PolicyCheck()`, the registry, the contexts, the `PolicyCleared` token                      |

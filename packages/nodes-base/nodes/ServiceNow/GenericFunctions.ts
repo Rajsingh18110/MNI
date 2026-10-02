@@ -6,8 +6,8 @@ import type {
 	JsonObject,
 	IHttpRequestMethods,
 	IRequestOptions,
-} from 'n8n-workflow';
-import { NodeApiError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeApiError } from 'MNI-workflow';
 
 /**
  * ServiceNow encoded queries separate clauses with `^` (and `^OR`, `^NQ`), and

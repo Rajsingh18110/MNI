@@ -17,7 +17,7 @@ vi.mock('@vueuse/core', async (importOriginal) => ({
 	useMediaQuery: () => isWideViewport,
 }));
 
-vi.mock('@n8n/composables/useTelemetry', () => ({
+vi.mock('@MNI/composables/useTelemetry', () => ({
 	useTelemetry: () => ({ track: vi.fn() }),
 }));
 

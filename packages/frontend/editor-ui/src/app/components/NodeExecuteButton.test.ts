@@ -11,7 +11,7 @@ import {
 	AI_TRANSFORM_NODE_TYPE,
 	AI_TRANSFORM_CODE_GENERATED_FOR_PROMPT,
 	AI_TRANSFORM_JS_CODE,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import {
 	CHAT_TRIGGER_NODE_TYPE,
 	FORM_TRIGGER_NODE_TYPE,
@@ -32,7 +32,7 @@ import { useRunWorkflow } from '@/app/composables/useRunWorkflow';
 import { useExternalHooks } from '@/app/composables/useExternalHooks';
 import { usePinnedData } from '@/app/composables/usePinnedData';
 import { useMessage } from '@/app/composables/useMessage';
-import { useToast } from '@n8n/composables/useToast';
+import { useToast } from '@MNI/composables/useToast';
 import * as buttonParameterUtils from '@/features/ndv/parameters/utils/buttonParameter.utils';
 
 vi.mock('vue-router', () => ({
@@ -41,7 +41,7 @@ vi.mock('vue-router', () => ({
 	RouterLink: vi.fn(),
 }));
 
-vi.mock('@n8n/composables/useToast', () => {
+vi.mock('@MNI/composables/useToast', () => {
 	const showError = vi.fn();
 	const showMessage = vi.fn();
 	return {
@@ -271,7 +271,7 @@ describe('NodeExecuteButton', () => {
 	});
 
 	describe('test step tooltip visibility', () => {
-		const POPUP_COUNT_KEY = 'N8N_NODE_TEST_STEP_POPUP_COUNT';
+		const POPUP_COUNT_KEY = 'MNI_NODE_TEST_STEP_POPUP_COUNT';
 		const tooltip = 'Execute previous nodes';
 
 		beforeEach(() => {

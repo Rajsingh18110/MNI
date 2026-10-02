@@ -1,6 +1,6 @@
 # Data safety
 
-Applies to: `packages/@n8n/db/src/migrations/**`.
+Applies to: `packages/@MNI/db/src/migrations/**`.
 
 Think of a database last upgraded two years ago. It holds dirty rows, unexpected
 NULLs, retired enum values and malformed JSON.

@@ -2,14 +2,14 @@ import {
 	isCredentialAgentIntegration,
 	isDraftIntegration,
 	type AgentIntegrationConfig,
-} from '@n8n/api-types';
-import { Logger } from '@n8n/backend-common';
-import { AgentsConfig } from '@n8n/config';
-import { Time } from '@n8n/constants';
-import { OnLeaderTakeover, OnShutdown } from '@n8n/decorators';
-import { Service } from '@n8n/di';
-import { scrubSecretsInText } from '@n8n/utils/scrub-secrets';
-import { ErrorReporter, InstanceSettings } from 'n8n-core';
+} from '@MNI/api-types';
+import { Logger } from '@MNI/backend-common';
+import { AgentsConfig } from '@MNI/config';
+import { Time } from '@MNI/constants';
+import { OnLeaderTakeover, OnShutdown } from '@MNI/decorators';
+import { Service } from '@MNI/di';
+import { scrubSecretsInText } from '@MNI/utils/scrub-secrets';
+import { ErrorReporter, InstanceSettings } from 'MNI-core';
 
 import { agentChannelKey, agentChannelRef, type AgentChannelRef } from '../utils/agent-channel';
 import { AgentChannelStatusReporter } from './agent-channel-status-reporter';

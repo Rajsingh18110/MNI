@@ -1,7 +1,7 @@
-import { LicenseState } from '@n8n/backend-common';
-import { SettingsRepository } from '@n8n/db';
-import { BreakingChangeRule } from '@n8n/decorators';
-import { EXTERNAL_SECRETS_SYSTEM_ROLES_ENABLED_SETTING } from '@n8n/permissions';
+import { LicenseState } from '@MNI/backend-common';
+import { SettingsRepository } from '@MNI/db';
+import { BreakingChangeRule } from '@MNI/decorators';
+import { EXTERNAL_SECRETS_SYSTEM_ROLES_ENABLED_SETTING } from '@MNI/permissions';
 
 import { NOT_AFFECTED_INSTANCE } from '../../detection-report';
 import type {

@@ -1,5 +1,5 @@
-import type { GlobalConfig } from '@n8n/config';
-import type { SystemTaskClass } from '@n8n/decorators';
+import type { GlobalConfig } from '@MNI/config';
+import type { SystemTaskClass } from '@MNI/decorators';
 
 import { ActivityPruningTask } from '@/services/pruning/activity-pruning.task';
 

@@ -1,7 +1,7 @@
-import { createTeamProject, testDb, testModules } from '@n8n/backend-test-utils';
-import type { OperationContext } from '@n8n/db';
-import { Container } from '@n8n/di';
-import { DataSource } from '@n8n/typeorm';
+import { createTeamProject, testDb, testModules } from '@MNI/backend-test-utils';
+import type { OperationContext } from '@MNI/db';
+import { Container } from '@MNI/di';
+import { DataSource } from '@MNI/typeorm';
 
 import { TypeAvailabilityPolicyScopeRepository } from '@/modules/type-availability-policies/database/repositories/type-availability-policy-scope.repository';
 import { TypeAvailabilityPolicyRepository } from '@/modules/type-availability-policies/database/repositories/type-availability-policy.repository';
@@ -26,11 +26,11 @@ const ROOT: OperationContext = {};
 const DENY_SLACK: PolicyRule = {
 	id: 'rule-1',
 	action: 'deny',
-	selector: { kind: 'name', value: 'n8n-nodes-base.slack' },
+	selector: { kind: 'name', value: 'MNI-nodes-base.slack' },
 };
 
-const SLACK = 'n8n-nodes-base.slack';
-const TYPES = [SLACK, 'n8n-nodes-base.code', 'n8n-nodes-base.set'];
+const SLACK = 'MNI-nodes-base.slack';
+const TYPES = [SLACK, 'MNI-nodes-base.code', 'MNI-nodes-base.set'];
 
 describe('node type policy store reads', () => {
 	let service: TypeAvailabilityPolicyService;
@@ -260,7 +260,7 @@ describe('node type policy store reads', () => {
 		await configureScope(project.id, true);
 		await clearPolicyCache();
 
-		const manyTypes = Array.from({ length: 1_400 }, (_, i) => `n8n-nodes-base.type${i}`);
+		const manyTypes = Array.from({ length: 1_400 }, (_, i) => `MNI-nodes-base.type${i}`);
 
 		const count = await countQueries(
 			async () => await service.evaluateComposedTypesFor(KIND, project.id, manyTypes),

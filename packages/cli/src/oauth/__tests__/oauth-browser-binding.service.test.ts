@@ -1,4 +1,4 @@
-import type { GlobalConfig } from '@n8n/config';
+import type { GlobalConfig } from '@MNI/config';
 import type { Request, Response } from 'express';
 import type { Mock } from 'vitest';
 import { mock } from 'vitest-mock-extended';

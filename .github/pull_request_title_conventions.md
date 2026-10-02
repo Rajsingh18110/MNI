@@ -66,7 +66,7 @@ The summary contains succinct description of the change:
 - use the imperative, present tense: "change" not "changed" nor "changes"
 - capitalize the first letter
 - _no_ dot (.) at the end
-- do _not_ include Linear ticket IDs etc. (e.g. N8N-1234)
+- do _not_ include Linear ticket IDs etc. (e.g. MNI-1234)
 - suffix with “(no-changelog)” for commits / PRs that should not get mentioned in the changelog.
 
 ## Body (optional)
@@ -103,7 +103,7 @@ A Breaking Change section should start with the phrase "`BREAKING CHANGE:` " fol
 >
 > This makes locating breaking changes easier when just skimming through commit messages.
 
-> 💡 The breaking changes must also be added to the [packages/cli/BREAKING-CHANGES.md](https://github.com/n8n-io/n8n/blob/master/packages/cli/BREAKING-CHANGES.md) file located in the MNI repository.
+> 💡 The breaking changes must also be added to the [packages/cli/BREAKING-CHANGES.md](https://github.com/MNI-io/MNI/blob/master/packages/cli/BREAKING-CHANGES.md) file located in the MNI repository.
 
 Similarly, a Deprecation section should start with "`DEPRECATED:` " followed by a short description of what is deprecated, a blank line, and a detailed description of the deprecation that also mentions the recommended update path.
 

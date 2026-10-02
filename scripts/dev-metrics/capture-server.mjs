@@ -10,10 +10,10 @@
  *   node scripts/dev-metrics/capture-server.mjs [--port 9999] [--out events.jsonl]
  *
  * Then point the tracker at it (in the shell that runs pnpm):
- *   export N8N_DEV_METRICS_RUDDERSTACK_URL=http://localhost:9999
+ *   export MNI_DEV_METRICS_RUDDERSTACK_URL=http://localhost:9999
  *
  * Reminder: track.mjs only sends when consent is granted
- * (~/.n8n/dev/dev-telemetry.json) and when run from inside an MNI checkout. See the
+ * (~/.MNI/dev/dev-telemetry.json) and when run from inside an MNI checkout. See the
  * "Testing locally" section of this folder's README.
  */
 import { appendFileSync } from 'node:fs';
@@ -77,6 +77,6 @@ createServer((req, res) => {
 	});
 }).listen(port, () => {
 	console.log(`Capture stub listening on http://localhost:${port}`);
-	console.log(`  export N8N_DEV_METRICS_RUDDERSTACK_URL=http://localhost:${port}`);
+	console.log(`  export MNI_DEV_METRICS_RUDDERSTACK_URL=http://localhost:${port}`);
 	if (values.out) console.log(`Appending raw events to ${values.out}`);
 });

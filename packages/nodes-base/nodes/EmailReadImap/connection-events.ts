@@ -1,5 +1,5 @@
-import type { CloseReason } from '@n8n/imap';
-import { type ITriggerFunctions, NodeOperationError } from 'n8n-workflow';
+import type { CloseReason } from '@MNI/imap';
+import { type ITriggerFunctions, NodeOperationError } from 'MNI-workflow';
 
 /** `error` already went out through `onError`; only an unexplained close is news. */
 export const closeHandler =

@@ -26,7 +26,7 @@ function makeNode(overrides: Partial<INode> = {}): INode {
 	return {
 		id: overrides.id ?? overrides.name ?? 'a',
 		name: overrides.name ?? overrides.id ?? 'A',
-		type: overrides.type ?? 'n8n-nodes-base.set',
+		type: overrides.type ?? 'MNI-nodes-base.set',
 		typeVersion: overrides.typeVersion ?? 1,
 		position: overrides.position ?? [0, 0],
 		parameters: overrides.parameters ?? {},
@@ -37,7 +37,7 @@ function makeNode(overrides: Partial<INode> = {}): INode {
 function makeNodeType(overrides: Partial<INodeTypeDescription> = {}): INodeTypeDescription {
 	return {
 		displayName: overrides.displayName ?? 'Set',
-		name: overrides.name ?? 'n8n-nodes-base.set',
+		name: overrides.name ?? 'MNI-nodes-base.set',
 		group: overrides.group ?? ['transform'],
 		version: overrides.version ?? 1,
 		description: overrides.description ?? '',
@@ -84,7 +84,7 @@ function makeLinearGraph() {
 function validateGrouping({
 	nodes,
 	connectionsBySourceNode,
-	nodeTypes = { 'n8n-nodes-base.set': makeNodeType() },
+	nodeTypes = { 'MNI-nodes-base.set': makeNodeType() },
 	allowTriggerInGroup,
 	allowMultipleBoundaryNodes,
 }: {
@@ -102,17 +102,17 @@ function validateGrouping({
 }
 
 const triggerNodeTypes = {
-	'n8n-nodes-base.manualTrigger': makeNodeType({
-		name: 'n8n-nodes-base.manualTrigger',
+	'MNI-nodes-base.manualTrigger': makeNodeType({
+		name: 'MNI-nodes-base.manualTrigger',
 		group: ['trigger'],
 	}),
-	'n8n-nodes-base.set': makeNodeType(),
+	'MNI-nodes-base.set': makeNodeType(),
 };
 
 /** A linear graph whose first node is a trigger. */
 function makeTriggeredGraph() {
 	const graph = makeLinearGraph();
-	graph.nodes[0].type = 'n8n-nodes-base.manualTrigger';
+	graph.nodes[0].type = 'MNI-nodes-base.manualTrigger';
 	return graph;
 }
 
@@ -469,7 +469,7 @@ describe('node grouping validation', () => {
 			// Trigger, B and C all feed X. B and C each take input from outside, so
 			// the group holds a trigger and two entry nodes at once.
 			const nodes = [
-				makeNode({ id: 'trigger', name: 'Trigger', type: 'n8n-nodes-base.manualTrigger' }),
+				makeNode({ id: 'trigger', name: 'Trigger', type: 'MNI-nodes-base.manualTrigger' }),
 				makeNode({ id: 'b', name: 'B' }),
 				makeNode({ id: 'c', name: 'C' }),
 				makeNode({ id: 'x', name: 'X' }),
@@ -671,17 +671,17 @@ describe('node grouping validation', () => {
 
 	it('allows grouping a start node with multiple main inputs', () => {
 		const graph = makeLinearGraph();
-		graph.nodes[1].type = 'n8n-nodes-base.merge';
+		graph.nodes[1].type = 'MNI-nodes-base.merge';
 
 		const result = validateGrouping({
 			nodes: [graph.nodes[1], graph.nodes[2]],
 			connectionsBySourceNode: graph.connections,
 			nodeTypes: {
-				'n8n-nodes-base.merge': makeNodeType({
-					name: 'n8n-nodes-base.merge',
+				'MNI-nodes-base.merge': makeNodeType({
+					name: 'MNI-nodes-base.merge',
 					inputs: [NodeConnectionTypes.Main, NodeConnectionTypes.Main],
 				}),
-				'n8n-nodes-base.set': makeNodeType(),
+				'MNI-nodes-base.set': makeNodeType(),
 			},
 		});
 
@@ -690,15 +690,15 @@ describe('node grouping validation', () => {
 
 	it('returns multiple-input-branches for extraction when the start node has multiple main inputs', () => {
 		const graph = makeLinearGraph();
-		graph.nodes[1].type = 'n8n-nodes-base.merge';
+		graph.nodes[1].type = 'MNI-nodes-base.merge';
 
 		const result = validateNodeSelectionForExtraction({
 			nodes: [graph.nodes[1], graph.nodes[2]],
 			connectionsBySourceNode: graph.connections,
 			getNodeType: (node) =>
-				node.type === 'n8n-nodes-base.merge'
+				node.type === 'MNI-nodes-base.merge'
 					? makeNodeType({
-							name: 'n8n-nodes-base.merge',
+							name: 'MNI-nodes-base.merge',
 							inputs: [NodeConnectionTypes.Main, NodeConnectionTypes.Main],
 						})
 					: makeNodeType(),
@@ -712,15 +712,15 @@ describe('node grouping validation', () => {
 
 	it('uses resolved inputs when checking start node branch count for extraction', () => {
 		const graph = makeLinearGraph();
-		graph.nodes[1].type = 'n8n-nodes-base.merge';
+		graph.nodes[1].type = 'MNI-nodes-base.merge';
 
 		const result = validateNodeSelectionForExtraction({
 			nodes: [graph.nodes[1], graph.nodes[2]],
 			connectionsBySourceNode: graph.connections,
 			getNodeType: (node) =>
-				node.type === 'n8n-nodes-base.merge'
+				node.type === 'MNI-nodes-base.merge'
 					? makeNodeType({
-							name: 'n8n-nodes-base.merge',
+							name: 'MNI-nodes-base.merge',
 							inputs: '={{ $parameter.numberInputs }}',
 						})
 					: makeNodeType(),
@@ -735,17 +735,17 @@ describe('node grouping validation', () => {
 
 	it('allows grouping an end node with multiple main outputs', () => {
 		const graph = makeLinearGraph();
-		graph.nodes[1].type = 'n8n-nodes-base.if';
+		graph.nodes[1].type = 'MNI-nodes-base.if';
 
 		const result = validateGrouping({
 			nodes: [graph.nodes[0], graph.nodes[1]],
 			connectionsBySourceNode: graph.connections,
 			nodeTypes: {
-				'n8n-nodes-base.if': makeNodeType({
-					name: 'n8n-nodes-base.if',
+				'MNI-nodes-base.if': makeNodeType({
+					name: 'MNI-nodes-base.if',
 					outputs: [NodeConnectionTypes.Main, NodeConnectionTypes.Main],
 				}),
-				'n8n-nodes-base.set': makeNodeType(),
+				'MNI-nodes-base.set': makeNodeType(),
 			},
 		});
 
@@ -754,15 +754,15 @@ describe('node grouping validation', () => {
 
 	it('returns multiple-output-branches for extraction when the end node has multiple main outputs', () => {
 		const graph = makeLinearGraph();
-		graph.nodes[1].type = 'n8n-nodes-base.if';
+		graph.nodes[1].type = 'MNI-nodes-base.if';
 
 		const result = validateNodeSelectionForExtraction({
 			nodes: [graph.nodes[0], graph.nodes[1]],
 			connectionsBySourceNode: graph.connections,
 			getNodeType: (node) =>
-				node.type === 'n8n-nodes-base.if'
+				node.type === 'MNI-nodes-base.if'
 					? makeNodeType({
-							name: 'n8n-nodes-base.if',
+							name: 'MNI-nodes-base.if',
 							outputs: [NodeConnectionTypes.Main, NodeConnectionTypes.Main],
 						})
 					: makeNodeType(),
@@ -776,15 +776,15 @@ describe('node grouping validation', () => {
 
 	it('uses resolved outputs when checking end node branch count for extraction', () => {
 		const graph = makeLinearGraph();
-		graph.nodes[1].type = 'n8n-nodes-base.switch';
+		graph.nodes[1].type = 'MNI-nodes-base.switch';
 
 		const result = validateNodeSelectionForExtraction({
 			nodes: [graph.nodes[0], graph.nodes[1]],
 			connectionsBySourceNode: graph.connections,
 			getNodeType: (node) =>
-				node.type === 'n8n-nodes-base.switch'
+				node.type === 'MNI-nodes-base.switch'
 					? makeNodeType({
-							name: 'n8n-nodes-base.switch',
+							name: 'MNI-nodes-base.switch',
 							outputs: '={{ $parameter.rules }}',
 						})
 					: makeNodeType(),
@@ -799,7 +799,7 @@ describe('node grouping validation', () => {
 
 	describe('sticky notes', () => {
 		const stickyNodeTypes: Record<string, INodeTypeDescription> = {
-			'n8n-nodes-base.set': makeNodeType(),
+			'MNI-nodes-base.set': makeNodeType(),
 			[STICKY_NODE_TYPE]: stickyNodeType,
 		};
 
@@ -889,15 +889,15 @@ describe('node grouping validation', () => {
 
 		it('returns trigger-selected when a trigger accompanies the sticky', () => {
 			const graph = makeLinearGraph();
-			graph.nodes[0].type = 'n8n-nodes-base.manualTrigger';
+			graph.nodes[0].type = 'MNI-nodes-base.manualTrigger';
 
 			const result = validateGrouping({
 				nodes: [graph.nodes[0], graph.nodes[1], makeStickyNode()],
 				connectionsBySourceNode: graph.connections,
 				nodeTypes: {
 					...stickyNodeTypes,
-					'n8n-nodes-base.manualTrigger': makeNodeType({
-						name: 'n8n-nodes-base.manualTrigger',
+					'MNI-nodes-base.manualTrigger': makeNodeType({
+						name: 'MNI-nodes-base.manualTrigger',
 						group: ['trigger'],
 					}),
 				},
@@ -977,9 +977,9 @@ describe('normalizeGroupDescription', () => {
 
 describe('validateWorkflowGroups', () => {
 	const nodeTypesByName: Record<string, INodeTypeDescription> = {
-		'n8n-nodes-base.set': makeNodeType(),
-		'n8n-nodes-base.manualTrigger': makeNodeType({
-			name: 'n8n-nodes-base.manualTrigger',
+		'MNI-nodes-base.set': makeNodeType(),
+		'MNI-nodes-base.manualTrigger': makeNodeType({
+			name: 'MNI-nodes-base.manualTrigger',
 			group: ['trigger'],
 		}),
 	};
@@ -1204,7 +1204,7 @@ describe('validateWorkflowGroups', () => {
 		const trigger = makeNode({
 			id: 'trigger',
 			name: 'Trigger',
-			type: 'n8n-nodes-base.manualTrigger',
+			type: 'MNI-nodes-base.manualTrigger',
 		});
 		const connections: IConnections = {
 			Trigger: { main: [[{ node: 'A', type: NodeConnectionTypes.Main, index: 0 }]] },
@@ -1231,7 +1231,7 @@ describe('validateWorkflowGroups', () => {
 		const trigger = makeNode({
 			id: 'trigger',
 			name: 'Trigger',
-			type: 'n8n-nodes-base.manualTrigger',
+			type: 'MNI-nodes-base.manualTrigger',
 		});
 		const connections: IConnections = {
 			Trigger: { main: [[{ node: 'A', type: NodeConnectionTypes.Main, index: 0 }]] },
@@ -1301,7 +1301,7 @@ describe('validateWorkflowGroups', () => {
 		// the engine blames that node, and the message must say so, otherwise the
 		// author has to guess which boundary to redraw.
 		const nodes = [
-			makeNode({ id: 'loop', name: 'Loop', type: 'n8n-nodes-base.splitInBatches' }),
+			makeNode({ id: 'loop', name: 'Loop', type: 'MNI-nodes-base.splitInBatches' }),
 			makeNode({ id: 'fetch', name: 'Fetch' }),
 			makeNode({ id: 'convert', name: 'Convert' }),
 			makeNode({ id: 'store', name: 'Store' }),
@@ -1374,7 +1374,7 @@ describe('validateWorkflowGroups', () => {
 		const trigger = makeNode({
 			id: 'trigger',
 			name: 'Trigger',
-			type: 'n8n-nodes-base.manualTrigger',
+			type: 'MNI-nodes-base.manualTrigger',
 		});
 
 		// A trigger-containing group passes basic-only validation…
@@ -1587,7 +1587,7 @@ describe('summarizeTopLevelItems', () => {
 
 	it('counts the trigger as a box but leaves it out of the groupable list', () => {
 		const nodes = [
-			makeNode({ id: 't', name: 'When chat message received', type: 'n8n-nodes-base.chatTrigger' }),
+			makeNode({ id: 't', name: 'When chat message received', type: 'MNI-nodes-base.chatTrigger' }),
 			...plainNodes(TOP_LEVEL_ITEM_CEILING),
 		];
 
@@ -1644,7 +1644,7 @@ describe('summarizeTopLevelItems', () => {
 
 	it('treats a node without an id as ungrouped', () => {
 		const nodes = [
-			{ type: 'n8n-nodes-base.set', name: 'Anonymous' },
+			{ type: 'MNI-nodes-base.set', name: 'Anonymous' },
 			...plainNodes(TOP_LEVEL_ITEM_CEILING),
 		];
 
@@ -1656,7 +1656,7 @@ describe('summarizeTopLevelItems', () => {
 
 	it('lists the groupable nodes in the message and leaves the trigger out', () => {
 		const nodes = [
-			makeNode({ id: 't', name: 'Start', type: 'n8n-nodes-base.manualTrigger' }),
+			makeNode({ id: 't', name: 'Start', type: 'MNI-nodes-base.manualTrigger' }),
 			...plainNodes(TOP_LEVEL_ITEM_CEILING),
 		];
 

@@ -1,6 +1,6 @@
 import { createHmac } from 'crypto';
 import { mock } from 'vitest-mock-extended';
-import type { IWebhookFunctions } from 'n8n-workflow';
+import type { IWebhookFunctions } from 'MNI-workflow';
 
 import { verifySignature } from '../AcuitySchedulingTriggerHelpers';
 

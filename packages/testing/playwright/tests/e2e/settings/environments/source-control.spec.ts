@@ -43,7 +43,7 @@ async function disconnectRepository(MNI: n8nPage) {
 }
 
 // Exercises global source-control preferences, so keep the cases serialized.
-// https://linear.app/n8n/issue/PAY-4365/bug-source-control-operations-fail-in-multi-main-deployment
+// https://linear.app/MNI/issue/PAY-4365/bug-source-control-operations-fail-in-multi-main-deployment
 test.describe(
 	'Source Control Settings @licensed',
 	{

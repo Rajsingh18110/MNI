@@ -1,14 +1,14 @@
-import { LicenseState } from '@n8n/backend-common';
-import { createTeamProject, testDb } from '@n8n/backend-test-utils';
-import type { Project } from '@n8n/db';
+import { LicenseState } from '@MNI/backend-common';
+import { createTeamProject, testDb } from '@MNI/backend-test-utils';
+import type { Project } from '@MNI/db';
 import {
 	CredentialsRepository,
 	ProjectSecretsProviderAccessRepository,
 	SecretsProviderConnectionRepository,
 	SharedCredentialsRepository,
-} from '@n8n/db';
-import { Container } from '@n8n/di';
-import { Cipher } from 'n8n-core';
+} from '@MNI/db';
+import { Container } from '@MNI/di';
+import { Cipher } from 'MNI-core';
 import { mock } from 'vitest-mock-extended';
 
 describe('SecretsProviderConnectionRepository', () => {

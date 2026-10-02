@@ -1,5 +1,5 @@
-import type * as ClientOAuth2Module from '@n8n/client-oauth2';
-import type { IAllExecuteFunctions, INode, IWorkflowExecuteAdditionalData } from 'n8n-workflow';
+import type * as ClientOAuth2Module from '@MNI/client-oauth2';
+import type { IAllExecuteFunctions, INode, IWorkflowExecuteAdditionalData } from 'MNI-workflow';
 import { mockDeep } from 'vitest-mock-extended';
 
 import { refreshOAuth2Token, requestOAuth2 } from '../request-helpers/oauth';
@@ -11,7 +11,7 @@ const { mockGetToken, mockSign, mockCreateToken, MockClientOAuth2 } = vi.hoisted
 	MockClientOAuth2: vi.fn(),
 }));
 
-vi.mock('@n8n/client-oauth2', async (importOriginal) => {
+vi.mock('@MNI/client-oauth2', async (importOriginal) => {
 	const actual = await importOriginal<typeof ClientOAuth2Module>();
 	return { ...actual, ClientOAuth2: MockClientOAuth2 };
 });

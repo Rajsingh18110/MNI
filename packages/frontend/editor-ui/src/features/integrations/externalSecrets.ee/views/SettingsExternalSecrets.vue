@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { useI18n } from '@n8n/i18n';
-import { useToast } from '@n8n/composables/useToast';
+import { useI18n } from '@MNI/i18n';
+import { useToast } from '@MNI/composables/useToast';
 import { useDocumentTitle } from '@/app/composables/useDocumentTitle';
 import { useExternalSecretsStore } from '../externalSecrets.ee.store';
 import { computed, onMounted } from 'vue';
@@ -9,7 +9,7 @@ import type { ExternalSecretsProvider } from '../externalSecrets.types';
 import { usePageRedirectionHelper } from '@/app/composables/usePageRedirectionHelper';
 import { I18nT } from 'vue-i18n';
 
-import { N8nEmptyState, N8nCallout, N8nHeading } from '@n8n/design-system';
+import { N8nEmptyState, N8nCallout, N8nHeading } from '@MNI/design-system';
 const i18n = useI18n();
 const externalSecretsStore = useExternalSecretsStore();
 const toast = useToast();

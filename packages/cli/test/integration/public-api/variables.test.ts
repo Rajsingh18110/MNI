@@ -1,7 +1,7 @@
-import { createTeamProject, linkUserToProject, testDb } from '@n8n/backend-test-utils';
-import type { Project, User, Variables } from '@n8n/db';
-import { ProjectRepository, VariablesRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
+import { createTeamProject, linkUserToProject, testDb } from '@MNI/backend-test-utils';
+import type { Project, User, Variables } from '@MNI/db';
+import { ProjectRepository, VariablesRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
 
 import { VariablesService } from '@/environments.ee/variables/variables.service.ee';
 import { FeatureNotLicensedError } from '@/errors/feature-not-licensed.error';

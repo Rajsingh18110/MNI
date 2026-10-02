@@ -2,11 +2,11 @@ import {
 	AgentIntegrationSchema,
 	type AgentIntegrationConfig,
 	type AgentIntegrationDisconnectWarning,
-} from '@n8n/api-types';
-import { Logger } from '@n8n/backend-common';
-import type { User } from '@n8n/db';
-import { Service } from '@n8n/di';
-import { runSerially } from '@n8n/utils/run-serially';
+} from '@MNI/api-types';
+import { Logger } from '@MNI/backend-common';
+import type { User } from '@MNI/db';
+import { Service } from '@MNI/di';
+import { runSerially } from '@MNI/utils/run-serially';
 
 import { CredentialsService } from '@/credentials/credentials.service';
 import { BadRequestError } from '@/errors/response-errors/bad-request.error';

@@ -1,9 +1,9 @@
-import type { ZodClass } from '@n8n/api-types';
-import { Time } from '@n8n/constants';
-import { AuthenticatedRequest } from '@n8n/db';
-import type { RateLimiterLimits, UserKeyedRateLimiterConfig } from '@n8n/decorators';
-import { BodyKeyedRateLimiterConfig } from '@n8n/decorators';
-import { Service } from '@n8n/di';
+import type { ZodClass } from '@MNI/api-types';
+import { Time } from '@MNI/constants';
+import { AuthenticatedRequest } from '@MNI/db';
+import type { RateLimiterLimits, UserKeyedRateLimiterConfig } from '@MNI/decorators';
+import { BodyKeyedRateLimiterConfig } from '@MNI/decorators';
+import { Service } from '@MNI/di';
 import type { Request, RequestHandler } from 'express';
 import { rateLimit as expressRateLimit } from 'express-rate-limit';
 import assert from 'node:assert';

@@ -1,15 +1,15 @@
 import type { Ref } from 'vue';
 import { ref } from 'vue';
 import { defineStore } from 'pinia';
-import { useStorage } from '@n8n/composables/useStorage';
-import { useUsersStore } from '@n8n/stores/users.store';
-import { useRootStore } from '@n8n/stores/useRootStore';
-import { useSettingsStore } from '@n8n/stores/settings.store';
-import type { FeatureFlagPayloads, FeatureFlags, IDataObject } from 'n8n-workflow';
+import { useStorage } from '@MNI/composables/useStorage';
+import { useUsersStore } from '@MNI/stores/users.store';
+import { useRootStore } from '@MNI/stores/useRootStore';
+import { useSettingsStore } from '@MNI/stores/settings.store';
+import type { FeatureFlagPayloads, FeatureFlags, IDataObject } from 'MNI-workflow';
 import { EXPERIMENTS_TO_TRACK, LOCAL_STORAGE_EXPERIMENT_OVERRIDES } from '@/app/constants';
-import { TELEMETRY_EVENT } from '@n8n/telemetry';
-import { useDebounce } from '@n8n/composables/useDebounce';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
+import { TELEMETRY_EVENT } from '@MNI/telemetry';
+import { useDebounce } from '@MNI/composables/useDebounce';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
 
 const POSTHOG_GROUP_TYPE_INSTANCE = 'company';
 

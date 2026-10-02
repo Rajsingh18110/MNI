@@ -683,54 +683,54 @@ describe('sanitizeXmlName', () => {
 describe('isCommunityPackageName', () => {
 	// Standard community package names
 	it('should identify standard community node package names', () => {
-		expect(isCommunityPackageName('n8n-nodes-example')).toBe(true);
-		expect(isCommunityPackageName('n8n-nodes-custom')).toBe(true);
-		expect(isCommunityPackageName('n8n-nodes-test')).toBe(true);
+		expect(isCommunityPackageName('MNI-nodes-example')).toBe(true);
+		expect(isCommunityPackageName('MNI-nodes-custom')).toBe(true);
+		expect(isCommunityPackageName('MNI-nodes-test')).toBe(true);
 	});
 
 	// Scoped package names
 	it('should identify scoped community node package names', () => {
-		expect(isCommunityPackageName('@username/n8n-nodes-example')).toBe(true);
-		expect(isCommunityPackageName('@org/n8n-nodes-custom')).toBe(true);
-		expect(isCommunityPackageName('@test-scope/n8n-nodes-test-name')).toBe(true);
+		expect(isCommunityPackageName('@username/MNI-nodes-example')).toBe(true);
+		expect(isCommunityPackageName('@org/MNI-nodes-custom')).toBe(true);
+		expect(isCommunityPackageName('@test-scope/MNI-nodes-test-name')).toBe(true);
 	});
 
 	it('should identify scoped packages with other characters', () => {
-		expect(isCommunityPackageName('n8n-nodes-my_package')).toBe(true);
-		expect(isCommunityPackageName('@user/n8n-nodes-with_underscore')).toBe(true);
-		expect(isCommunityPackageName('@user_name/n8n-nodes-example')).toBe(true);
-		expect(isCommunityPackageName('@n8n-io/n8n-nodes-test')).toBe(true);
-		expect(isCommunityPackageName('@n8n.io/n8n-nodes-test')).toBe(true);
+		expect(isCommunityPackageName('MNI-nodes-my_package')).toBe(true);
+		expect(isCommunityPackageName('@user/MNI-nodes-with_underscore')).toBe(true);
+		expect(isCommunityPackageName('@user_name/MNI-nodes-example')).toBe(true);
+		expect(isCommunityPackageName('@MNI-io/MNI-nodes-test')).toBe(true);
+		expect(isCommunityPackageName('@n8n.io/MNI-nodes-test')).toBe(true);
 	});
 
 	it('should handle mixed cases', () => {
-		expect(isCommunityPackageName('@user-name_org/n8n-nodes-mixed-case_example')).toBe(true);
-		expect(isCommunityPackageName('@mixed_style-org/n8n-nodes-complex_name-format')).toBe(true);
-		expect(isCommunityPackageName('@my.mixed_style-org/n8n-nodes-complex_name-format')).toBe(true);
+		expect(isCommunityPackageName('@user-name_org/MNI-nodes-mixed-case_example')).toBe(true);
+		expect(isCommunityPackageName('@mixed_style-org/MNI-nodes-complex_name-format')).toBe(true);
+		expect(isCommunityPackageName('@my.mixed_style-org/MNI-nodes-complex_name-format')).toBe(true);
 	});
 
 	// Official MNI packages that should not be identified as community packages
 	it('should not identify official MNI packages as community nodes', () => {
-		expect(isCommunityPackageName('@n8n/n8n-nodes-example')).toBe(false);
-		expect(isCommunityPackageName('n8n-nodes-base')).toBe(false);
+		expect(isCommunityPackageName('@MNI/MNI-nodes-example')).toBe(false);
+		expect(isCommunityPackageName('MNI-nodes-base')).toBe(false);
 	});
 
 	// Additional edge cases
 	it('should handle edge cases correctly', () => {
 		// Non-matching patterns
-		expect(isCommunityPackageName('not-n8n-nodes')).toBe(false);
-		expect(isCommunityPackageName('n8n-core')).toBe(false);
+		expect(isCommunityPackageName('not-MNI-nodes')).toBe(false);
+		expect(isCommunityPackageName('MNI-core')).toBe(false);
 
 		// With node name after package
-		expect(isCommunityPackageName('n8n-nodes-example.NodeName')).toBe(true);
-		expect(isCommunityPackageName('@user/n8n-nodes-example.NodeName')).toBe(true);
+		expect(isCommunityPackageName('MNI-nodes-example.NodeName')).toBe(true);
+		expect(isCommunityPackageName('@user/MNI-nodes-example.NodeName')).toBe(true);
 	});
 
 	// Multiple executions to test regex state
 	it('should work correctly with multiple consecutive calls', () => {
-		expect(isCommunityPackageName('@user/n8n-nodes-example')).toBe(true);
-		expect(isCommunityPackageName('n8n-nodes-base')).toBe(false);
-		expect(isCommunityPackageName('@test-scope/n8n-nodes-test')).toBe(true);
+		expect(isCommunityPackageName('@user/MNI-nodes-example')).toBe(true);
+		expect(isCommunityPackageName('MNI-nodes-base')).toBe(false);
+		expect(isCommunityPackageName('@test-scope/MNI-nodes-test')).toBe(true);
 	});
 });
 
@@ -770,7 +770,7 @@ describe('sanitizeFilename', () => {
 
 	it('should extract filename from full file paths', () => {
 		// Unix paths
-		expect(sanitizeFilename('/tmp/n8n-upload-xyz/original.pdf')).toBe('original.pdf');
+		expect(sanitizeFilename('/tmp/MNI-upload-xyz/original.pdf')).toBe('original.pdf');
 		expect(sanitizeFilename('/home/user/documents/report.docx')).toBe('report.docx');
 
 		// Windows paths

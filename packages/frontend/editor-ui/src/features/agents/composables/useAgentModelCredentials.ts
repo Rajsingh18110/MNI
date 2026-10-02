@@ -1,8 +1,8 @@
 import { LOCAL_STORAGE_AGENT_MODEL_CREDENTIALS } from '@/app/constants';
 import { useCredentialsStore } from '@/features/credentials/credentials.store';
 import { useAiGatewayStore } from '@/app/stores/aiGateway.store';
-import { useSettingsStore } from '@n8n/stores/settings.store';
-import { AI_GATEWAY_MANAGED_TAG } from '@n8n/api-types';
+import { useSettingsStore } from '@MNI/stores/settings.store';
+import { AI_GATEWAY_MANAGED_TAG } from '@MNI/api-types';
 import { useLocalStorage } from '@vueuse/core';
 import { computed, ref, toValue, watch, type MaybeRefOrGetter } from 'vue';
 import {

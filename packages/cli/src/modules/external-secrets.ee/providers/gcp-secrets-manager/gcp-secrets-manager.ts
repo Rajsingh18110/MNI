@@ -1,7 +1,7 @@
 import type { protos, SecretManagerServiceClient as GcpClient } from '@google-cloud/secret-manager';
-import { Logger } from '@n8n/backend-common';
-import { Container } from '@n8n/di';
-import { jsonParse, UserError, type INodeProperties } from 'n8n-workflow';
+import { Logger } from '@MNI/backend-common';
+import { Container } from '@MNI/di';
+import { jsonParse, UserError, type INodeProperties } from 'MNI-workflow';
 
 import type {
 	GcpSecretsManagerContext,
@@ -69,7 +69,7 @@ export class GcpSecretsManager extends SecretsProvider {
 				'@google-cloud/secret-manager'
 			);
 
-			// TODO: gRPC bypasses @n8n/backend-network, so the configured proxy and SSRF/DNS rules are not enforced here.
+			// TODO: gRPC bypasses @MNI/backend-network, so the configured proxy and SSRF/DNS rules are not enforced here.
 			// Route through it once it supports a gRPC transport.
 			this.client = new GcpClient({
 				credentials: { client_email: clientEmail, private_key: privateKey },

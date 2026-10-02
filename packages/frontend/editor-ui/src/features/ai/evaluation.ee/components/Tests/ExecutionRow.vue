@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
-import type { ExecutionSummary } from 'n8n-workflow';
-import { useI18n } from '@n8n/i18n';
-import { N8nButton, N8nIcon, N8nText } from '@n8n/design-system';
+import type { ExecutionSummary } from 'MNI-workflow';
+import { useI18n } from '@MNI/i18n';
+import { N8nButton, N8nIcon, N8nText } from '@MNI/design-system';
 
 import { injectWorkflowDocumentStore } from '@/app/stores/workflowDocument.store';
 import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';

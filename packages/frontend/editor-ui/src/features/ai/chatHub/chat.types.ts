@@ -11,8 +11,8 @@ import {
 	type ChatModelDto,
 	type ChatHubSessionType,
 	agentIconOrEmojiSchema,
-} from '@n8n/api-types';
-import type { IBinaryData } from 'n8n-workflow';
+} from '@MNI/api-types';
+import type { IBinaryData } from 'MNI-workflow';
 import { z } from 'zod';
 import { isLlmProviderModel } from './chat.utils';
 

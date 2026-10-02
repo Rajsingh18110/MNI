@@ -4,7 +4,7 @@ import type {
 	IExecuteSingleFunctions,
 	IHttpRequestOptions,
 	INodePropertyOptions,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import { Readable } from 'stream';
 
 import { getGoogleAccessToken } from '../../GenericFunctions';
@@ -56,7 +56,7 @@ describe('Google Cloud Storage - Create object resumable upload (preSend)', () =
 		} as unknown as typeof ctx.helpers;
 		ctx.getNode.mockReturnValue({
 			name: 'Google Cloud Storage',
-			type: 'n8n-nodes-base.googleCloudStorage',
+			type: 'MNI-nodes-base.googleCloudStorage',
 			typeVersion: 1.1,
 		} as never);
 		vi.clearAllMocks();

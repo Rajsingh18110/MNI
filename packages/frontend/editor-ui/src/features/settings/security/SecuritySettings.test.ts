@@ -5,24 +5,24 @@ import { createComponentRenderer } from '@/__tests__/render';
 import { mockedStore } from '@/__tests__/utils';
 import SecuritySettings from './SecuritySettings.vue';
 import { EnterpriseEditionFeature } from '@/app/constants';
-import { useSettingsStore } from '@n8n/stores/settings.store';
-import { useUsersStore } from '@n8n/stores/users.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
+import { useUsersStore } from '@MNI/stores/users.store';
 
 const getSecuritySettings = vi.fn();
 const updateSecuritySettings = vi.fn();
 
-vi.mock('@n8n/rest-api-client/api/security-settings', () => ({
+vi.mock('@MNI/rest-api-client/api/security-settings', () => ({
 	getSecuritySettings: (...args: unknown[]) => getSecuritySettings(...args),
 	updateSecuritySettings: (...args: unknown[]) => updateSecuritySettings(...args),
 }));
 
 const showToast = vi.fn();
 const showError = vi.fn();
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: () => ({ showToast, showError }),
 }));
 
-vi.mock('@n8n/stores/useRootStore', () => ({
+vi.mock('@MNI/stores/useRootStore', () => ({
 	useRootStore: () => ({ restApiContext: {} }),
 }));
 
@@ -114,7 +114,7 @@ describe('SecuritySettings', () => {
 
 		expect(getByTestId('settings-page-header-docs')).toHaveAttribute(
 			'href',
-			'https://docs.n8n.io/deploy/host-n8n/configure-n8n/security/manage-security-policies',
+			'https://docs.n8n.io/deploy/host-MNI/configure-MNI/security/manage-security-policies',
 		);
 		expect(getByText('Manage security policies for this instance.')).toBeInTheDocument();
 		expect(getByText('Two-factor authentication')).toBeInTheDocument();

@@ -3,7 +3,7 @@ import { beforeEach, describe, it, expect, vi } from 'vitest';
 import { mount } from '@vue/test-utils';
 import { nextTick } from 'vue';
 
-import { AI_GATEWAY_MANAGED_TAG } from '@n8n/api-types';
+import { AI_GATEWAY_MANAGED_TAG } from '@MNI/api-types';
 
 import AgentWebSearchSection from '../components/AgentWebSearchSection.vue';
 import AgentCredentialSelect from '../components/AgentCredentialSelect.vue';
@@ -28,7 +28,7 @@ const projectsStoreState = vi.hoisted(() => ({
 	myProjects: [] as MockProject[],
 }));
 
-vi.mock('@n8n/i18n', () => ({
+vi.mock('@MNI/i18n', () => ({
 	useI18n: () => ({
 		baseText: (key: string) =>
 			({
@@ -71,8 +71,8 @@ vi.mock('@/app/composables/useAiGateway', () => ({
 	}),
 }));
 
-vi.mock('@n8n/design-system', async (importOriginal) => {
-	const actual = await importOriginal<typeof import('@n8n/design-system')>();
+vi.mock('@MNI/design-system', async (importOriginal) => {
+	const actual = await importOriginal<typeof import('@MNI/design-system')>();
 	return {
 		...actual,
 		N8nDropdownMenu: {

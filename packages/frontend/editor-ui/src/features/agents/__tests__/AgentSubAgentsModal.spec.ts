@@ -6,7 +6,7 @@ import AgentSubAgentsModal from '../components/AgentSubAgentsModal.vue';
 
 const closeModalMock = vi.fn();
 
-vi.mock('@n8n/i18n', () => ({
+vi.mock('@MNI/i18n', () => ({
 	useI18n: () => ({
 		baseText: (key: string, options?: { interpolate?: Record<string, string> }) =>
 			({
@@ -100,7 +100,7 @@ vi.mock('@/features/shared/toolsConnection/ToolsConnectionModal.vue', () => ({
 	},
 }));
 
-vi.mock('@n8n/design-system', () => ({
+vi.mock('@MNI/design-system', () => ({
 	N8nEmptyState: {
 		props: ['heading', 'description'],
 		template: '<div v-bind="$attrs">{{ heading }} {{ description }}</div>',

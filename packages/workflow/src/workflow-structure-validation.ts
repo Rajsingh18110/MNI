@@ -9,7 +9,7 @@ import { z } from 'zod';
  * (WorkflowValidationService) which checks semantic correctness (trigger
  * presence, known node types, credential issues, etc.).
  *
- * Lives in n8n-workflow so it can be shared by:
+ * Lives in MNI-workflow so it can be shared by:
  *   - Backend: create, import, and structural updates reject malformed payloads (400).
  *     Metadata-only updates skip the check so legacy data stays editable.
  *   - Frontend: open path warns but still renders; the sample-template JSON route blocks

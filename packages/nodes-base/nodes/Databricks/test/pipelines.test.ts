@@ -1,5 +1,5 @@
-import type { ILoadOptionsFunctions, INode } from 'n8n-workflow';
-import { NodeApiError, NodeOperationError } from 'n8n-workflow';
+import type { ILoadOptionsFunctions, INode } from 'MNI-workflow';
+import { NodeApiError, NodeOperationError } from 'MNI-workflow';
 import { mock, mockDeep } from 'vitest-mock-extended';
 
 import { DATABRICKS_PARTNER_USER_AGENT } from '../constants';

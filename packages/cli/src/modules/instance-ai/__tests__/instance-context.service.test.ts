@@ -1,4 +1,4 @@
-import type { Logger } from '@n8n/backend-common';
+import type { Logger } from '@MNI/backend-common';
 import type {
 	ActivityEvent,
 	ActivityEventRepository,
@@ -7,7 +7,7 @@ import type {
 	ProjectRepository,
 	User,
 	WorkflowRepository,
-} from '@n8n/db';
+} from '@MNI/db';
 import { mock, type MockProxy } from 'vitest-mock-extended';
 
 import type { ProjectService } from '@/services/project.service.ee';
@@ -307,7 +307,7 @@ describe('InstanceContextService', () => {
 		it('renders which node types a save added, and that the assistant made it', async () => {
 			const service = serviceWith();
 			activityEventRepository.findFeed.mockResolvedValue([
-				entry({ data: { source: 'n8n-ai', nodesAdded: ['slack'], nodesAddedTotal: 1 } }),
+				entry({ data: { source: 'MNI-ai', nodesAdded: ['slack'], nodesAddedTotal: 1 } }),
 			]);
 
 			const built = await service.buildBlock({

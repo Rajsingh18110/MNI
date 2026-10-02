@@ -167,7 +167,7 @@ describe('useWorkflowResourcesLocator', () => {
 				1, // page
 				40, // pageSize
 				'updatedAt:desc', // sort
-				{ triggerNodeTypes: ['n8n-nodes-base.executeWorkflowTrigger'] }, // filter
+				{ triggerNodeTypes: ['MNI-nodes-base.executeWorkflowTrigger'] }, // filter
 			);
 
 			expect(workflowsResources.value).toEqual([
@@ -209,7 +209,7 @@ describe('useWorkflowResourcesLocator', () => {
 				1,
 				40,
 				'updatedAt:desc',
-				{ query: 'test search', triggerNodeTypes: ['n8n-nodes-base.executeWorkflowTrigger'] },
+				{ query: 'test search', triggerNodeTypes: ['MNI-nodes-base.executeWorkflowTrigger'] },
 			);
 
 			// Should reset workflows array and populate with filtered results
@@ -251,7 +251,7 @@ describe('useWorkflowResourcesLocator', () => {
 				40,
 				'updatedAt:desc',
 				{
-					triggerNodeTypes: ['n8n-nodes-base.executeWorkflowTrigger'],
+					triggerNodeTypes: ['MNI-nodes-base.executeWorkflowTrigger'],
 					includeCallableSubworkflows: true,
 					parentWorkflowId: 'parent-wf-id',
 				},
@@ -270,7 +270,7 @@ describe('useWorkflowResourcesLocator', () => {
 				1,
 				40,
 				'updatedAt:desc',
-				{ triggerNodeTypes: ['n8n-nodes-base.executeWorkflowTrigger'] },
+				{ triggerNodeTypes: ['MNI-nodes-base.executeWorkflowTrigger'] },
 			);
 		});
 
@@ -300,7 +300,7 @@ describe('useWorkflowResourcesLocator', () => {
 				1,
 				40,
 				'updatedAt:desc',
-				{ triggerNodeTypes: ['n8n-nodes-base.executeWorkflowTrigger'] },
+				{ triggerNodeTypes: ['MNI-nodes-base.executeWorkflowTrigger'] },
 			);
 
 			// Load second page
@@ -311,7 +311,7 @@ describe('useWorkflowResourcesLocator', () => {
 				2,
 				40,
 				'updatedAt:desc',
-				{ triggerNodeTypes: ['n8n-nodes-base.executeWorkflowTrigger'] },
+				{ triggerNodeTypes: ['MNI-nodes-base.executeWorkflowTrigger'] },
 			);
 
 			// Verify workflows from both pages are present

@@ -58,37 +58,37 @@ describe('sanitizeSkillsUsed', () => {
 
 	test('keeps plugin-prefixed identifiers', () => {
 		expect(
-			sanitizeSkillsUsed(['n8n-skills:workflow-builder', 'community-plugin:node-selection']),
-		).toEqual(['n8n-skills:workflow-builder', 'community-plugin:node-selection']);
+			sanitizeSkillsUsed(['MNI-skills:workflow-builder', 'community-plugin:node-selection']),
+		).toEqual(['MNI-skills:workflow-builder', 'community-plugin:node-selection']);
 	});
 
 	test('trims and lowercases plugin-prefixed identifiers', () => {
-		expect(sanitizeSkillsUsed(['  N8N-Skills:Workflow-Builder  '])).toEqual([
-			'n8n-skills:workflow-builder',
+		expect(sanitizeSkillsUsed(['  MNI-Skills:Workflow-Builder  '])).toEqual([
+			'MNI-skills:workflow-builder',
 		]);
 	});
 
 	test('keeps prefixed and unprefixed variants of the same skill as distinct entries', () => {
-		expect(sanitizeSkillsUsed(['workflow-builder', 'n8n-skills:workflow-builder'])).toEqual([
+		expect(sanitizeSkillsUsed(['workflow-builder', 'MNI-skills:workflow-builder'])).toEqual([
 			'workflow-builder',
-			'n8n-skills:workflow-builder',
+			'MNI-skills:workflow-builder',
 		]);
 	});
 
 	test('drops malformed plugin-prefixed identifiers', () => {
 		expect(
 			sanitizeSkillsUsed([
-				'n8n-skills:workflow-builder',
+				'MNI-skills:workflow-builder',
 				':missing-prefix',
 				'missing-name:',
 				'double::colon',
 				'too:many:colons',
-				'n8n-skills:has spaces',
+				'MNI-skills:has spaces',
 				'-bad-prefix:workflow-builder',
 				`${'a'.repeat(65)}:workflow-builder`,
-				`n8n-skills:${'a'.repeat(65)}`,
+				`MNI-skills:${'a'.repeat(65)}`,
 			]),
-		).toEqual(['n8n-skills:workflow-builder']);
+		).toEqual(['MNI-skills:workflow-builder']);
 	});
 
 	test('drops non-string entries', () => {

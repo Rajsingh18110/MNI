@@ -7,14 +7,14 @@ const mocks = vi.hoisted(() => ({
 	execute: vi.fn(),
 }));
 
-vi.mock('@n8n/frontend-module-insights', () => ({
+vi.mock('@MNI/frontend-module-insights', () => ({
 	useInsightsStore: () => ({
 		isSummaryEnabled: mocks.isSummaryEnabled,
 		weeklySummary: { execute: mocks.execute },
 	}),
 }));
 
-vi.mock('@n8n/stores/settings.store', () => ({
+vi.mock('@MNI/stores/settings.store', () => ({
 	useSettingsStore: () => ({ isChatFeatureEnabled: false }),
 }));
 

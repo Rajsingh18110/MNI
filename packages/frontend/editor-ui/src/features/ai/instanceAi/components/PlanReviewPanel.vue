@@ -4,7 +4,7 @@ import {
 	N8nIcon,
 	N8nText,
 	N8nAnimatedCollapsibleContent as AnimatedCollapsibleContent,
-} from '@n8n/design-system';
+} from '@MNI/design-system';
 /**
  * PlanReviewPanel.vue
  *
@@ -12,8 +12,8 @@ import {
  * expandable specs, dependency info, and approve/deny controls. Edits are asked
  * for in the chat composer, which stays live for the whole review.
  */
-import type { PlannedTaskArg } from '@n8n/api-types';
-import { useI18n, type BaseTextKey } from '@n8n/i18n';
+import type { PlannedTaskArg } from '@MNI/api-types';
+import { useI18n, type BaseTextKey } from '@MNI/i18n';
 import { computed, ref } from 'vue';
 import { CollapsibleRoot, CollapsibleTrigger } from 'reka-ui';
 import ConfirmationFooter from './ConfirmationFooter.vue';
@@ -247,7 +247,7 @@ function handleDeny() {
 </template>
 
 <style lang="scss" module>
-@use '@n8n/design-system/css/mixins/motion';
+@use '@MNI/design-system/css/mixins/motion';
 
 .root {
 	border: var(--border);

@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { useI18n } from '@n8n/i18n';
-import { N8nIconButton } from '@n8n/design-system';
+import { useI18n } from '@MNI/i18n';
+import { N8nIconButton } from '@MNI/design-system';
 import type { IUpdateInformation } from '@/Interface';
-import type { INodeTypeDescription } from 'n8n-workflow';
+import type { INodeTypeDescription } from 'MNI-workflow';
 import NodeSettingsTabs from './NodeSettingsTabs.vue';
 import NodeExecuteButton from '@/app/components/NodeExecuteButton.vue';
 import type { NodeSettingsTab } from '@/app/types/nodeSettings';

@@ -6,18 +6,18 @@ import { useCredentialsStore } from '../credentials.store';
 import type { ICredentialsResponse } from '../credentials.types';
 import CredentialsView from './CredentialsView.vue';
 import { useUIStore } from '@/app/stores/ui.store';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { mockedStore } from '@/__tests__/utils';
 import { waitFor, within, fireEvent } from '@testing-library/vue';
 import userEvent from '@testing-library/user-event';
-import { STORES } from '@n8n/stores';
+import { STORES } from '@MNI/stores';
 import { CREDENTIAL_SELECT_MODAL_KEY } from '../credentials.constants';
 import { VIEWS } from '@/app/constants';
 import { useProjectsStore } from '@/features/collaboration/projects/projects.store';
 import { ProjectTypes } from '@/features/collaboration/projects/projects.types';
 import { createRouter, createWebHistory } from 'vue-router';
 import { flushPromises } from '@vue/test-utils';
-import { CREDENTIAL_EMPTY_VALUE } from 'n8n-workflow';
+import { CREDENTIAL_EMPTY_VALUE } from 'MNI-workflow';
 import * as projectsApi from '@/features/collaboration/projects/projects.api';
 
 const mockAuthorize = vi.fn();
@@ -104,7 +104,7 @@ describe('CredentialsView', () => {
 		settingsStore.settings = {
 			...settingsStore.settings,
 			envFeatureFlags: {
-				N8N_ENV_FEAT_DYNAMIC_CREDENTIALS: true,
+				MNI_ENV_FEAT_DYNAMIC_CREDENTIALS: true,
 			},
 			activeModules: ['dynamic-credentials'],
 		} as unknown as typeof settingsStore.settings;

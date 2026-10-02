@@ -1,7 +1,7 @@
 import { DateTime, Duration, Interval } from 'luxon';
 
 import * as Helpers from './helpers';
-import { ensureError } from '@n8n/utils/errors/ensure-error';
+import { ensureError } from '@MNI/utils/errors/ensure-error';
 import { ExpressionError } from '../src/errors/expression.error';
 import {
 	NodeConnectionTypes,
@@ -151,7 +151,7 @@ describe('WorkflowDataProxy', () => {
 				{
 					id: 'node1',
 					name: 'Start',
-					type: 'n8n-nodes-base.manualTrigger',
+					type: 'MNI-nodes-base.manualTrigger',
 					typeVersion: 1,
 					position: [0, 0],
 					parameters: {},
@@ -159,7 +159,7 @@ describe('WorkflowDataProxy', () => {
 				{
 					id: 'node2',
 					name: 'ProcessData',
-					type: 'n8n-nodes-base.code',
+					type: 'MNI-nodes-base.code',
 					typeVersion: 1,
 					position: [300, 0],
 					parameters: {},
@@ -887,7 +887,7 @@ describe('WorkflowDataProxy', () => {
 					{
 						id: 'aiNode',
 						name: 'AI Node',
-						type: 'n8n-nodes-base.aiAgent',
+						type: 'MNI-nodes-base.aiAgent',
 						typeVersion: 1,
 						position: [0, 0],
 						parameters: {},
@@ -950,7 +950,7 @@ describe('WorkflowDataProxy', () => {
 					{
 						id: 'aiNode',
 						name: 'AI Node',
-						type: 'n8n-nodes-base.aiAgent',
+						type: 'MNI-nodes-base.aiAgent',
 						typeVersion: 1,
 						position: [0, 0],
 						parameters: {},
@@ -1016,7 +1016,7 @@ describe('WorkflowDataProxy', () => {
 					{
 						id: 'aiNode',
 						name: 'AI Node',
-						type: 'n8n-nodes-base.aiAgent',
+						type: 'MNI-nodes-base.aiAgent',
 						typeVersion: 1,
 						position: [0, 0],
 						parameters: {},
@@ -1064,7 +1064,7 @@ describe('WorkflowDataProxy', () => {
 						{
 							id: 'aiNode',
 							name: 'AI Node',
-							type: 'n8n-nodes-base.aiAgent',
+							type: 'MNI-nodes-base.aiAgent',
 							typeVersion: 1,
 							position: [0, 0],
 							parameters: {},
@@ -1171,7 +1171,7 @@ describe('WorkflowDataProxy', () => {
 					{
 						id: 'aiNode',
 						name: 'AI Node',
-						type: 'n8n-nodes-base.aiAgent',
+						type: 'MNI-nodes-base.aiAgent',
 						typeVersion: 1,
 						position: [0, 0],
 						parameters: {},
@@ -1602,7 +1602,7 @@ describe('WorkflowDataProxy', () => {
 					{
 						id: '1',
 						name: 'Telegram Trigger',
-						type: 'n8n-nodes-base.telegramTrigger',
+						type: 'MNI-nodes-base.telegramTrigger',
 						typeVersion: 1.2,
 						position: [0, 0],
 						parameters: {},
@@ -1610,7 +1610,7 @@ describe('WorkflowDataProxy', () => {
 					{
 						id: '2',
 						name: 'Send a text message',
-						type: 'n8n-nodes-base.telegram',
+						type: 'MNI-nodes-base.telegram',
 						typeVersion: 1.2,
 						position: [576, 0],
 						parameters: {
@@ -1667,7 +1667,7 @@ describe('WorkflowDataProxy', () => {
 					{
 						id: '1',
 						name: 'HTTP Request',
-						type: 'n8n-nodes-base.httpRequest',
+						type: 'MNI-nodes-base.httpRequest',
 						typeVersion: 1,
 						position: [0, 0],
 						parameters: {},
@@ -1675,7 +1675,7 @@ describe('WorkflowDataProxy', () => {
 					{
 						id: '2',
 						name: 'Process Data',
-						type: 'n8n-nodes-base.code',
+						type: 'MNI-nodes-base.code',
 						typeVersion: 2,
 						position: [300, 0],
 						parameters: {
@@ -1728,7 +1728,7 @@ describe('WorkflowDataProxy', () => {
 					{
 						id: '1',
 						name: 'Start Node',
-						type: 'n8n-nodes-base.manualTrigger',
+						type: 'MNI-nodes-base.manualTrigger',
 						typeVersion: 1,
 						position: [0, 0],
 						parameters: {},
@@ -1736,7 +1736,7 @@ describe('WorkflowDataProxy', () => {
 					{
 						id: '2',
 						name: 'End Node',
-						type: 'n8n-nodes-base.noOp',
+						type: 'MNI-nodes-base.noOp',
 						typeVersion: 1,
 						position: [300, 0],
 						parameters: {},
@@ -1812,7 +1812,7 @@ describe('WorkflowDataProxy', () => {
 					{
 						id: '1',
 						name: 'Real Node',
-						type: 'n8n-nodes-base.manualTrigger',
+						type: 'MNI-nodes-base.manualTrigger',
 						typeVersion: 1,
 						position: [0, 0],
 						parameters: {},
@@ -1899,7 +1899,7 @@ describe('WorkflowDataProxy', () => {
 					{
 						id: 'node1',
 						name: 'Node1',
-						type: 'n8n-nodes-base.unknownNode',
+						type: 'MNI-nodes-base.unknownNode',
 						typeVersion: 1,
 						position: [0, 0],
 						parameters: {},
@@ -1928,7 +1928,7 @@ describe('WorkflowDataProxy', () => {
 			const node: INode = {
 				id: 'node1',
 				name: 'Node1',
-				type: 'n8n-nodes-base.unknownNode',
+				type: 'MNI-nodes-base.unknownNode',
 				typeVersion: 1,
 				position: [0, 0],
 				parameters: {},
@@ -1938,7 +1938,7 @@ describe('WorkflowDataProxy', () => {
 
 			expect(result).toEqual({
 				name: 'Node1',
-				type: 'n8n-nodes-base.unknownNode',
+				type: 'MNI-nodes-base.unknownNode',
 			});
 		});
 
@@ -1950,7 +1950,7 @@ describe('WorkflowDataProxy', () => {
 					{
 						id: 'node1',
 						name: 'Node1',
-						type: 'n8n-nodes-base.testNode',
+						type: 'MNI-nodes-base.testNode',
 						typeVersion: 1,
 						position: [0, 0],
 						parameters: {},
@@ -1977,7 +1977,7 @@ describe('WorkflowDataProxy', () => {
 			const node: INode = {
 				id: 'node1',
 				name: 'Node1',
-				type: 'n8n-nodes-base.testNode',
+				type: 'MNI-nodes-base.testNode',
 				typeVersion: 1,
 				position: [0, 0],
 				parameters: {},
@@ -1998,7 +1998,7 @@ describe('WorkflowDataProxy', () => {
 					{
 						id: 'node1',
 						name: 'Node1',
-						type: 'n8n-nodes-base.missingNode',
+						type: 'MNI-nodes-base.missingNode',
 						typeVersion: 1,
 						position: [0, 0],
 						parameters: {},
@@ -2027,7 +2027,7 @@ describe('WorkflowDataProxy', () => {
 			const node: INode = {
 				id: 'node1',
 				name: 'Node1',
-				type: 'n8n-nodes-base.missingNode',
+				type: 'MNI-nodes-base.missingNode',
 				typeVersion: 1,
 				position: [0, 0],
 				parameters: {},
@@ -2037,7 +2037,7 @@ describe('WorkflowDataProxy', () => {
 
 			expect(result).toEqual({
 				name: 'Node1',
-				type: 'n8n-nodes-base.missingNode',
+				type: 'MNI-nodes-base.missingNode',
 			});
 			expect(result).not.toHaveProperty('displayName');
 			expect(result).not.toHaveProperty('params');
@@ -2056,7 +2056,7 @@ describe('WorkflowDataProxy', () => {
 				{
 					id: 'node1',
 					name: 'Reference',
-					type: 'n8n-nodes-base.manualTrigger',
+					type: 'MNI-nodes-base.manualTrigger',
 					typeVersion: 1,
 					position: [256, 16] as [number, number],
 					parameters: {},
@@ -2064,7 +2064,7 @@ describe('WorkflowDataProxy', () => {
 				{
 					id: 'node2',
 					name: 'Edit',
-					type: 'n8n-nodes-base.set',
+					type: 'MNI-nodes-base.set',
 					typeVersion: 3.4,
 					position: [544, 16] as [number, number],
 					parameters: {
@@ -2084,7 +2084,7 @@ describe('WorkflowDataProxy', () => {
 				{
 					id: 'node3',
 					name: 'NoOp',
-					type: 'n8n-nodes-base.noOp',
+					type: 'MNI-nodes-base.noOp',
 					typeVersion: 1,
 					position: [832, 32] as [number, number],
 					parameters: {},
@@ -2092,7 +2092,7 @@ describe('WorkflowDataProxy', () => {
 				{
 					id: 'node4',
 					name: 'Edit Fields',
-					type: 'n8n-nodes-base.set',
+					type: 'MNI-nodes-base.set',
 					typeVersion: 3.4,
 					position: [1136, 0] as [number, number],
 					parameters: {},
@@ -2281,7 +2281,7 @@ describe('WorkflowDataProxy → pairedItem traversal through recombining ancestr
 		nodes: (['Start', 'Rows', 'Agg', 'End'] as const).map((name, i) => ({
 			id: `uuid-${i}`,
 			name,
-			type: 'n8n-nodes-base.code',
+			type: 'MNI-nodes-base.code',
 			typeVersion: 1,
 			position: [i * 100, 0] as [number, number],
 			parameters: {},
@@ -2378,7 +2378,7 @@ describe('WorkflowDataProxy → pairedItem traversal with sourceOverwrite routes
 		nodes: (['Start', 'Mid', 'Join', 'End'] as const).map((name, i) => ({
 			id: `uuid-${i}`,
 			name,
-			type: 'n8n-nodes-base.code',
+			type: 'MNI-nodes-base.code',
 			typeVersion: 1,
 			position: [i * 100, 0] as [number, number],
 			parameters: {},
@@ -2538,7 +2538,7 @@ describe('WorkflowDataProxy → pairedItem traversal through a diamond', () => {
 		nodes: (['Start', 'Left', 'Right', 'Merge', 'End'] as const).map((name, i) => ({
 			id: `uuid-${i}`,
 			name,
-			type: 'n8n-nodes-base.code',
+			type: 'MNI-nodes-base.code',
 			typeVersion: 1,
 			position: [i * 100, 0] as [number, number],
 			parameters: {},

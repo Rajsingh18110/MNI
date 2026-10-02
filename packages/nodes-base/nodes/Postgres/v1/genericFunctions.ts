@@ -1,5 +1,5 @@
-import type { IExecuteFunctions, IDataObject, INodeExecutionData, JsonObject } from 'n8n-workflow';
-import { UserError } from 'n8n-workflow';
+import type { IExecuteFunctions, IDataObject, INodeExecutionData, JsonObject } from 'MNI-workflow';
+import { UserError } from 'MNI-workflow';
 import type pgPromise from 'pg-promise';
 import type pg from 'pg-promise/typescript/pg-subset';
 
@@ -554,7 +554,7 @@ export async function pgUpdate(
 		const where =
 			' WHERE ' +
 			updateKeys
-				// eslint-disable-next-line n8n-local-rules/no-interpolation-in-regular-string
+				// eslint-disable-next-line MNI-local-rules/no-interpolation-in-regular-string
 				.map((entry) => pgp.as.name(entry.name) + ' = ${' + entry.prop + '}')
 				.join(' AND ');
 		if (mode === 'transaction') {
@@ -686,7 +686,7 @@ export async function pgUpdateV2(
 		const where =
 			' WHERE ' +
 			updateKeys
-				// eslint-disable-next-line n8n-local-rules/no-interpolation-in-regular-string
+				// eslint-disable-next-line MNI-local-rules/no-interpolation-in-regular-string
 				.map((entry) => pgp.as.name(entry.name) + ' = ${' + entry.prop + '}')
 				.join(' AND ');
 		if (mode === 'transaction') {

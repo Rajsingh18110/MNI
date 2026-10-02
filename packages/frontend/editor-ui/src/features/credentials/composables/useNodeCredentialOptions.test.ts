@@ -2,8 +2,8 @@ import { computed, shallowRef } from 'vue';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { createTestingPinia } from '@pinia/testing';
 import { setActivePinia } from 'pinia';
-import type { ICredentialType, INodeTypeDescription } from 'n8n-workflow';
-import { NodeConnectionTypes } from 'n8n-workflow';
+import type { ICredentialType, INodeTypeDescription } from 'MNI-workflow';
+import { NodeConnectionTypes } from 'MNI-workflow';
 import type { INodeUi } from '@/Interface';
 import { mockedStore } from '@/__tests__/utils';
 import { useCredentialsStore } from '../credentials.store';
@@ -35,7 +35,7 @@ const slackOAuth2ApiType = {
 } satisfies ICredentialType;
 
 const slackNodeType = {
-	name: 'n8n-nodes-base.slack',
+	name: 'MNI-nodes-base.slack',
 	displayName: 'Slack',
 	description: '',
 	group: [],
@@ -81,7 +81,7 @@ const slackNode: INodeUi = {
 	parameters: {
 		authentication: 'accessToken',
 	},
-	type: 'n8n-nodes-base.slack',
+	type: 'MNI-nodes-base.slack',
 	typeVersion: 2,
 	position: [0, 0],
 	id: 'slack-node-id',
@@ -220,7 +220,7 @@ describe('useNodeCredentialOptions', () => {
 			() =>
 				({
 					...slackNode,
-					type: 'n8n-nodes-base.discord',
+					type: 'MNI-nodes-base.discord',
 					parameters: {
 						...slackNode.parameters,
 						incomingAuthentication: 'basicAuth',

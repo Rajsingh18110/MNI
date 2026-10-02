@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import type { AgentVersionListItemDto } from '@n8n/api-types';
-import type { UserAction } from '@n8n/design-system';
-import { N8nActionToggle, N8nText } from '@n8n/design-system';
-import type { IUser } from 'n8n-workflow';
-import { useI18n } from '@n8n/i18n';
+import type { AgentVersionListItemDto } from '@MNI/api-types';
+import type { UserAction } from '@MNI/design-system';
+import { N8nActionToggle, N8nText } from '@MNI/design-system';
+import type { IUser } from 'MNI-workflow';
+import { useI18n } from '@MNI/i18n';
 import AgentVersionStatusIndicator from './AgentVersionStatusIndicator.vue';
 import { formatTimestamp, generateVersionLabel } from './agentVersionHistory.utils';
 

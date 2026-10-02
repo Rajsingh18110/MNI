@@ -1,5 +1,5 @@
-import type { Logger } from 'n8n-workflow';
-import { UserError } from 'n8n-workflow';
+import type { Logger } from 'MNI-workflow';
+import { UserError } from 'MNI-workflow';
 import type { MockedFunction } from 'vitest';
 import { mock } from 'vitest-mock-extended';
 

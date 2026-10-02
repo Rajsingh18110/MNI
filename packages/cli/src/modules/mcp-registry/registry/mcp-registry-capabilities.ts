@@ -1,10 +1,10 @@
-import { GlobalConfig } from '@n8n/config';
-import { Service } from '@n8n/di';
+import { GlobalConfig } from '@MNI/config';
+import { Service } from '@MNI/di';
 
 // Add capabilities here when they do not depend on instance configuration.
 const BASE_CAPABILITIES: readonly string[] = [];
 
-const N8N_CLOUD_CAPABILITY = 'n8n-cloud';
+const MNI_CLOUD_CAPABILITY = 'MNI-cloud';
 
 @Service()
 export class McpRegistryCapabilities {
@@ -12,7 +12,7 @@ export class McpRegistryCapabilities {
 
 	constructor(globalConfig: GlobalConfig) {
 		if (globalConfig.deployment.type === 'cloud') {
-			this.supportedCapabilities.add(N8N_CLOUD_CAPABILITY);
+			this.supportedCapabilities.add(MNI_CLOUD_CAPABILITY);
 		}
 	}
 

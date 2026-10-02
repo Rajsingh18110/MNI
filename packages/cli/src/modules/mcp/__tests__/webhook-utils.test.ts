@@ -1,6 +1,6 @@
-import { mockInstance } from '@n8n/backend-test-utils';
-import { User } from '@n8n/db';
-import type { SharedCredentials } from '@n8n/db';
+import { mockInstance } from '@MNI/backend-test-utils';
+import { User } from '@MNI/db';
+import type { SharedCredentials } from '@MNI/db';
 import type {
 	INode,
 	INodeCredentials,
@@ -8,13 +8,13 @@ import type {
 	INodeType,
 	INodeTypes,
 	ICredentialDataDecryptedObject,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import {
 	CHAT_TRIGGER_NODE_TYPE,
 	FORM_TRIGGER_NODE_TYPE,
 	SCHEDULE_TRIGGER_NODE_TYPE,
 	WEBHOOK_NODE_TYPE,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import { CredentialsService } from '@/credentials/credentials.service';
@@ -355,7 +355,7 @@ describe('getTriggerDetails', () => {
 	const createTriggerNode = (overrides: Partial<INode> = {}): INode => ({
 		id: '1',
 		name: 'Gmail Trigger',
-		type: 'n8n-nodes-base.gmailTrigger',
+		type: 'MNI-nodes-base.gmailTrigger',
 		typeVersion: 1.4,
 		position: [0, 0],
 		parameters: {},

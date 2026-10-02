@@ -6,8 +6,8 @@ import type {
 	INodeType,
 	INodeTypeDescription,
 	IWebhookResponseData,
-} from 'n8n-workflow';
-import { NodeConnectionTypes, NodeOperationError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeConnectionTypes, NodeOperationError } from 'MNI-workflow';
 
 import {
 	allEvents,
@@ -78,7 +78,7 @@ export class JiraTrigger implements INodeType {
 				},
 			},
 			{
-				// eslint-disable-next-line n8n-nodes-base/node-class-description-credentials-name-unsuffixed
+				// eslint-disable-next-line MNI-nodes-base/node-class-description-credentials-name-unsuffixed
 				name: 'httpQueryAuth',
 				displayName: 'Credentials to Authenticate Webhook',
 				displayOptions: {
@@ -649,7 +649,7 @@ export class JiraTrigger implements INodeType {
 				// includeFields URL templates are only supported by the classic webhook API
 				if (jiraVersion !== 'cloudOAuth2' && additionalFields.includeFields) {
 					for (const field of additionalFields.includeFields as string[]) {
-						// eslint-disable-next-line n8n-local-rules/no-interpolation-in-regular-string
+						// eslint-disable-next-line MNI-local-rules/no-interpolation-in-regular-string
 						parameters[field] = '${' + field + '}';
 					}
 				}
@@ -722,7 +722,7 @@ export class JiraTrigger implements INodeType {
 					}
 
 					const body = {
-						name: `n8n-webhook:${webhookUrl}`,
+						name: `MNI-webhook:${webhookUrl}`,
 						url: webhookCallbackUrl,
 						events,
 						filters: {},

@@ -1,6 +1,6 @@
 # Authentication and access control
 
-Applies to: `packages/cli`, `packages/@n8n/db`.
+Applies to: `packages/cli`, `packages/@MNI/db`.
 
 ## Authentication and sessions
 
@@ -8,7 +8,7 @@ Applies to: `packages/cli`, `packages/@n8n/db`.
 
 ## Authorization
 
-`@n8n/code-health`'s `endpoint-scope-coverage` rule is disabled, so an undecorated route ships unless a reviewer catches it.
+`@MNI/code-health`'s `endpoint-scope-coverage` rule is disabled, so an undecorated route ships unless a reviewer catches it.
 
 - Every authenticated route needs `@GlobalScope` or `@ProjectScope`, unless it declares `skipAuth`, `allowUnauthenticated`, or `apiKeyAuth`
 - A decorator proves the caller may do this somewhere, not that the row is theirs. Ownership belongs in the query — a `find…ForUser` finder, or the project filter alongside the id — never a comparison afterwards

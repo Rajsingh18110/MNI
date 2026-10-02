@@ -5,7 +5,7 @@ import type {
 	IRequestOptions,
 	IWorkflowDataProxyAdditionalKeys,
 	PaginationOptions,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { applyPaginationRequestData, requestWithAuthenticationPaginated } from '../pagination';
 

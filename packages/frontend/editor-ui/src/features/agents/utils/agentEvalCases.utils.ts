@@ -4,7 +4,7 @@
  * rules — the part that would silently corrupt a dataset if wrong — are testable
  * on their own.
  */
-import type { AgentEvalColumnMapping } from '@n8n/api-types';
+import type { AgentEvalColumnMapping } from '@MNI/api-types';
 
 import { DEFAULT_ID_COLUMN_NAME } from '@/features/core/dataTable/constants';
 import type { DataTableRow, DataTableValue } from '@/features/core/dataTable/dataTable.types';

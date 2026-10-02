@@ -1,7 +1,7 @@
-import { useStorage } from '@n8n/composables/useStorage';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
-import { STORES } from '@n8n/stores';
-import { TELEMETRY_EVENT } from '@n8n/telemetry';
+import { useStorage } from '@MNI/composables/useStorage';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
+import { STORES } from '@MNI/stores';
+import { TELEMETRY_EVENT } from '@MNI/telemetry';
 import { defineStore } from 'pinia';
 import { computed } from 'vue';
 
@@ -9,7 +9,7 @@ import { INSTANCE_AI_FREE_NUDGE_EXPERIMENT } from '@/app/constants/experiments';
 import { usePostHog } from '@/app/stores/posthog.store';
 import { getExperimentTelemetryPayload } from '@/experiments/utils';
 
-const DISMISSED_STORAGE_KEY = 'N8N_INSTANCE_AI_FREE_NUDGE_DISMISSED';
+const DISMISSED_STORAGE_KEY = 'MNI_INSTANCE_AI_FREE_NUDGE_DISMISSED';
 
 type ExperimentVariant =
 	| typeof INSTANCE_AI_FREE_NUDGE_EXPERIMENT.control

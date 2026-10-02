@@ -12,5 +12,5 @@
  * file to edit).
  */
 export const REQUIRED_CURATED_PEERS: Record<string, string[]> = {
-	zod: ['@n8n/agents', '@n8n/api-types', '@n8n/json-schema-to-zod', 'n8n-core', 'n8n-workflow'],
+	zod: ['@MNI/agents', '@MNI/api-types', '@MNI/json-schema-to-zod', 'MNI-core', 'MNI-workflow'],
 };

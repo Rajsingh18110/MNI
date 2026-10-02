@@ -1,7 +1,7 @@
-import { mockLogger } from '@n8n/backend-test-utils';
-import type { ClaimedTask, DispatchReporter } from '@n8n/scheduler';
-import { createDispatchReporter } from '@n8n/scheduler';
-import { Tracing } from 'n8n-core';
+import { mockLogger } from '@MNI/backend-test-utils';
+import type { ClaimedTask, DispatchReporter } from '@MNI/scheduler';
+import { createDispatchReporter } from '@MNI/scheduler';
+import { Tracing } from 'MNI-core';
 import { mock } from 'vitest-mock-extended';
 
 import type { EventService } from '@/events/event.service';

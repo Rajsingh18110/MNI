@@ -1,6 +1,6 @@
 import { describe, test, expect } from 'vitest';
 import { sortCompletionsByInput } from './datatype.completions';
-import type { AliasCompletion } from 'n8n-workflow';
+import type { AliasCompletion } from 'MNI-workflow';
 
 describe('sortCompletionsByInput', () => {
 	describe('prefix match on label (order 3)', () => {

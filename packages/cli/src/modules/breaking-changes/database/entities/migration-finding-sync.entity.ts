@@ -1,6 +1,6 @@
-import type { BreakingChangeVersion } from '@n8n/api-types';
-import { DateTimeColumn } from '@n8n/db';
-import { BaseEntity, Column, Entity, PrimaryColumn } from '@n8n/typeorm';
+import type { BreakingChangeVersion } from '@MNI/api-types';
+import { DateTimeColumn } from '@MNI/db';
+import { BaseEntity, Column, Entity, PrimaryColumn } from '@MNI/typeorm';
 
 /**
  * Metadata of the last scan that wrote to `migration_finding`, one row per

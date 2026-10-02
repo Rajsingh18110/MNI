@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import type { SelectSize } from '@n8n/design-system';
-import type { SlotProjectSelection } from '@n8n/frontend-module-sdk';
-import { useI18n } from '@n8n/i18n';
+import type { SelectSize } from '@MNI/design-system';
+import type { SlotProjectSelection } from '@MNI/frontend-module-sdk';
+import { useI18n } from '@MNI/i18n';
 import { onBeforeMount, ref, watch } from 'vue';
 
 import { useProjectsStore } from '../projects.store';
@@ -10,7 +10,7 @@ import { useAvailableProjectSearch } from '../projects.utils';
 import ProjectSharing from './ProjectSharing.vue';
 
 /**
- * The `project-filter` component slot (see `@n8n/frontend-module-sdk`): a project
+ * The `project-filter` component slot (see `@MNI/frontend-module-sdk`): a project
  * picker for callers that must not import this feature. It owns the store access,
  * the search strategy and the personal-project filter, and hands the caller back
  * only the chosen project id.

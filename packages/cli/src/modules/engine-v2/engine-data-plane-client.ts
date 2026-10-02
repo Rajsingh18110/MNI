@@ -1,8 +1,8 @@
-import { isObjectLiteral } from '@n8n/backend-common';
-import type { HttpRequestClient } from '@n8n/backend-network';
-import { OutboundHttp } from '@n8n/backend-network';
-import { EngineConfig } from '@n8n/config';
-import { Service } from '@n8n/di';
+import { isObjectLiteral } from '@MNI/backend-common';
+import type { HttpRequestClient } from '@MNI/backend-network';
+import { OutboundHttp } from '@MNI/backend-network';
+import { EngineConfig } from '@MNI/config';
+import { Service } from '@MNI/di';
 import type {
 	AuthenticatedCaller,
 	EngineErrorResponse,
@@ -11,10 +11,10 @@ import type {
 	StartExecutionResult,
 	SearchExecutionsRequest,
 	SearchExecutionsResponse,
-} from '@n8n/engine';
-import { mintIdentityToken } from '@n8n/engine';
-import { InstanceSettings } from 'n8n-core';
-import { OperationalError, UserError } from 'n8n-workflow';
+} from '@MNI/engine';
+import { mintIdentityToken } from '@MNI/engine';
+import { InstanceSettings } from 'MNI-core';
+import { OperationalError, UserError } from 'MNI-workflow';
 
 import type { ExecutionIdV2 } from '@/executions/execution-id';
 import type { EngineDataPlaneProvider } from '@/services/engine-data-plane-proxy.service';
@@ -37,10 +37,10 @@ export class EngineDataPlaneClient implements EngineDataPlaneProvider {
 		private readonly instanceSettings: InstanceSettings,
 	) {
 		this.http = outboundHttp.requests({
-			// Fixed, n8n-controlled host.
+			// Fixed, MNI-controlled host.
 			useDefaultSsrfPolicy: 'unsafe',
 			// `engineConfig.host` is a bind address, not a destination, so it is not
-			// dialable. Default to loopback and let `N8N_ENGINE_BASE_URL` override
+			// dialable. Default to loopback and let `MNI_ENGINE_BASE_URL` override
 			// when the engine answers somewhere else.
 			baseURL: engineConfig.baseUrl || `http://127.0.0.1:${engineConfig.port}`,
 			// A factory, not a fixed value: every request gets a fresh short-lived

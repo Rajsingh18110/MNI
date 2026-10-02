@@ -5,14 +5,14 @@ import {
 	WorkflowRepository,
 	UserRepository,
 	GLOBAL_OWNER_ROLE,
-} from '@n8n/db';
-import { Command } from '@n8n/decorators';
-import { Container } from '@n8n/di';
-import { PROJECT_OWNER_ROLE_SLUG } from '@n8n/permissions';
+} from '@MNI/db';
+import { Command } from '@MNI/decorators';
+import { Container } from '@MNI/di';
+import { PROJECT_OWNER_ROLE_SLUG } from '@MNI/permissions';
 import glob from 'fast-glob';
 import fs from 'fs';
-import type { IWorkflowBase, WorkflowId } from 'n8n-workflow';
-import { jsonParse, UserError } from 'n8n-workflow';
+import type { IWorkflowBase, WorkflowId } from 'MNI-workflow';
+import { jsonParse, UserError } from 'MNI-workflow';
 import { z } from 'zod';
 
 import { UM_FIX_INSTRUCTION } from '@/constants';

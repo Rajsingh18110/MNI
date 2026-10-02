@@ -13,7 +13,7 @@ describe('node-validation', () => {
 			parameters?: Record<string, unknown>,
 		): INode => ({
 			name: 'Test Node',
-			type: 'n8n-nodes-base.test',
+			type: 'MNI-nodes-base.test',
 			id: 'node-1',
 			typeVersion: 1,
 			position: [0, 0],

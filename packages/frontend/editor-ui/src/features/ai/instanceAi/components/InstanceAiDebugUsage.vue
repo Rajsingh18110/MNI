@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import type { ReadableUsageSummary, StepCacheBreak } from '@n8n/api-types';
-import { useI18n } from '@n8n/i18n';
+import type { ReadableUsageSummary, StepCacheBreak } from '@MNI/api-types';
+import { useI18n } from '@MNI/i18n';
 import { computed } from 'vue';
 import { describeCacheBreak } from '../utils/cache-break';
 import InstanceAiDebugJsonPanel from './InstanceAiDebugJsonPanel.vue';

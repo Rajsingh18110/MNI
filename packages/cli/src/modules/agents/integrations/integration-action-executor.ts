@@ -1,6 +1,6 @@
-import { richMessageSchema } from '@n8n/api-types';
-import { Service } from '@n8n/di';
-import { isRecord } from '@n8n/utils/is-record';
+import { richMessageSchema } from '@MNI/api-types';
+import { Service } from '@MNI/di';
+import { isRecord } from '@MNI/utils/is-record';
 import type { Adapter, SentMessage } from 'chat';
 import { z } from 'zod';
 
@@ -30,7 +30,7 @@ import type {
 import { ChannelRateLimitGuard } from './channel-rate-limit.guard';
 import { caughtIntegrationError, channelRateLimitMessage } from './channel-rate-limit';
 
-// The shared wire schema from @n8n/api-types — the same definition the tool
+// The shared wire schema from @MNI/api-types — the same definition the tool
 // boundary validates against and the editor-ui renderer parses with.
 const messageSchema = richMessageSchema;
 

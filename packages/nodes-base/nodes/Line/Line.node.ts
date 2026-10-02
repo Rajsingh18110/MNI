@@ -4,8 +4,8 @@ import type {
 	INodeExecutionData,
 	INodeType,
 	INodeTypeDescription,
-} from 'n8n-workflow';
-import { NodeConnectionTypes } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeConnectionTypes } from 'MNI-workflow';
 
 import { lineApiRequest } from './GenericFunctions';
 import { notificationFields, notificationOperations } from './NotificationDescription';
@@ -14,7 +14,7 @@ export class Line implements INodeType {
 	description: INodeTypeDescription = {
 		displayName: 'Line',
 		name: 'line',
-		// eslint-disable-next-line n8n-nodes-base/node-class-description-icon-not-svg
+		// eslint-disable-next-line MNI-nodes-base/node-class-description-icon-not-svg
 		icon: 'file:line.png',
 		group: ['input'],
 		version: 1,

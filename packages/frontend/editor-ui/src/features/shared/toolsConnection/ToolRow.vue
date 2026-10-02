@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, inject } from 'vue';
-import { N8nBadge, N8nButton, N8nIcon, N8nSpinner, N8nText, N8nTooltip } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+import { N8nBadge, N8nButton, N8nIcon, N8nSpinner, N8nText, N8nTooltip } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 import ToolCredentialPicker from './ToolCredentialPicker.vue';
 import ToolIcon from './ToolIcon.vue';
 import {

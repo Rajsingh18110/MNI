@@ -1,10 +1,10 @@
 import { createPinia, setActivePinia } from 'pinia';
-import { parameterInputRegistry } from '@n8n/frontend-module-sdk';
-import type { FrontendModuleDescription } from '@n8n/frontend-module-sdk';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { parameterInputRegistry } from '@MNI/frontend-module-sdk';
+import type { FrontendModuleDescription } from '@MNI/frontend-module-sdk';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import merge from 'lodash/merge';
 
-import { defaultSettings } from '@n8n/frontend-test-utils';
+import { defaultSettings } from '@MNI/frontend-test-utils';
 
 // A stand-in manifest: no shipped module contributes a parameter input yet, and
 // the point of these tests is the registration rule, not the current manifest.

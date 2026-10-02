@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import type { NodeTypeAvailabilityScope } from '@n8n/api-types';
-import { N8nButton, N8nIcon, N8nPopover, N8nText } from '@n8n/design-system';
-import { useI18n, type BaseTextKey } from '@n8n/i18n';
+import type { NodeTypeAvailabilityScope } from '@MNI/api-types';
+import { N8nButton, N8nIcon, N8nPopover, N8nText } from '@MNI/design-system';
+import { useI18n, type BaseTextKey } from '@MNI/i18n';
 import { unrefElement, useElementHover, type MaybeElement } from '@vueuse/core';
 import { computed, ref } from 'vue';
 

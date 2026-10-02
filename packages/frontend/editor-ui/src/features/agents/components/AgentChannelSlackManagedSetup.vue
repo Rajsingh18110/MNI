@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { SlackManagedSetupState } from '@n8n/api-types';
+import type { SlackManagedSetupState } from '@MNI/api-types';
 import {
 	N8nButton,
 	N8nIconButton,
@@ -8,9 +8,9 @@ import {
 	N8nStepper,
 	N8nText,
 	N8nTooltip,
-} from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
-import type { PermissionsRecord } from '@n8n/permissions';
+} from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
+import type { PermissionsRecord } from '@MNI/permissions';
 import { computed, ref, watch } from 'vue';
 
 import CredentialsDropdown, {

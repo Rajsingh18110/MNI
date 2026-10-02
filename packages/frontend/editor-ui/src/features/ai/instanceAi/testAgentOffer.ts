@@ -1,4 +1,4 @@
-import type { AgentCapabilitySummary } from '@n8n/api-types';
+import type { AgentCapabilitySummary } from '@MNI/api-types';
 
 /**
  * Dismissal key for the "test your agent" suggestion, stored alongside the

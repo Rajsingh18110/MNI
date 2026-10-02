@@ -1,6 +1,6 @@
-import { Logger } from '@n8n/backend-common';
-import { Container, Service } from '@n8n/di';
-import { ensureError } from '@n8n/utils/errors/ensure-error';
+import { Logger } from '@MNI/backend-common';
+import { Container, Service } from '@MNI/di';
+import { ensureError } from '@MNI/utils/errors/ensure-error';
 import type {
 	INode,
 	ITriggerResponse,
@@ -9,7 +9,7 @@ import type {
 	Workflow,
 	WorkflowActivateMode,
 	WorkflowExecuteMode,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import {
 	isSubMinuteCron,
 	toCronExpression,
@@ -17,7 +17,7 @@ import {
 	UserError,
 	WorkflowActivationError,
 	WorkflowDeactivationError,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { ErrorReporter } from '@/errors/error-reporter';
 
@@ -61,7 +61,7 @@ export class ActiveWorkflowTriggers {
 	 * depend on DI construction order. Unbound, or bound to the no-op
 	 * implementation, falls back to the legacy in-memory cron path. The
 	 * `instanceof` check is safe here because this class and
-	 * {@link NoOpPollJobManager} both come from the same in-process `n8n-core`
+	 * {@link NoOpPollJobManager} both come from the same in-process `MNI-core`
 	 * module; it would not be safe across a sandboxed/duplicated module copy
 	 * (e.g. isolated-vm task runners).
 	 */

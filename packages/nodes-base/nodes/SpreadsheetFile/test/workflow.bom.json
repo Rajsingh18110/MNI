@@ -4,7 +4,7 @@
       "parameters": {},
       "id": "40bf604f-19f9-43e7-8bbb-74c36925f154",
       "name": "When clicking \"Execute Workflow\"",
-      "type": "n8n-nodes-base.manualTrigger",
+      "type": "MNI-nodes-base.manualTrigger",
       "typeVersion": 1,
       "position": [
         -320,
@@ -17,7 +17,7 @@
       },
       "id": "623ea890-8882-4273-973e-834652d823b5",
       "name": "Read Binary File",
-      "type": "n8n-nodes-base.readBinaryFiles",
+      "type": "MNI-nodes-base.readBinaryFiles",
       "typeVersion": 1,
       "position": [
         -100,
@@ -33,7 +33,7 @@
       },
       "id": "c8cca5fb-e119-4ca1-a597-4f051a7f64ea",
       "name": "Exclude BOM",
-      "type": "n8n-nodes-base.spreadsheetFile",
+      "type": "MNI-nodes-base.spreadsheetFile",
       "typeVersion": 2,
       "position": [
         120,
@@ -49,7 +49,7 @@
       },
       "id": "56ec11dc-966b-4d06-b8c0-61475b30333d",
       "name": "Include BOM",
-      "type": "n8n-nodes-base.spreadsheetFile",
+      "type": "MNI-nodes-base.spreadsheetFile",
       "typeVersion": 2,
       "position": [
         120,
@@ -71,7 +71,7 @@
       },
       "id": "6f6bccf2-d674-4774-9df9-6f6fd893bace",
       "name": "Edit with BOM excluded",
-      "type": "n8n-nodes-base.set",
+      "type": "MNI-nodes-base.set",
       "typeVersion": 3.2,
       "position": [
         320,
@@ -93,7 +93,7 @@
       },
       "id": "27ca5cde-19cb-4bf2-9ab4-7f7e77ad01bd",
       "name": "Edit with BOM included",
-      "type": "n8n-nodes-base.set",
+      "type": "MNI-nodes-base.set",
       "typeVersion": 3.2,
       "position": [
         320,

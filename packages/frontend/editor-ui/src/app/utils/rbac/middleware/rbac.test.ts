@@ -1,4 +1,4 @@
-import { useRBACStore } from '@n8n/stores/rbac.store';
+import { useRBACStore } from '@MNI/stores/rbac.store';
 import { rbacMiddleware } from '@/app/utils/rbac/middleware/rbac';
 import { VIEWS } from '@/app/constants';
 import {
@@ -7,9 +7,9 @@ import {
 	inferResourceTypeFromRoute,
 } from '@/app/utils/rbacUtils';
 import type { RouteLocationNormalized } from 'vue-router';
-import type { Scope } from '@n8n/permissions';
+import type { Scope } from '@MNI/permissions';
 
-vi.mock('@n8n/stores/rbac.store', () => ({
+vi.mock('@MNI/stores/rbac.store', () => ({
 	useRBACStore: vi.fn(),
 }));
 

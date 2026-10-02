@@ -1,5 +1,5 @@
-import type { N8NConfig } from 'n8n-containers/stack';
-import type { IWorkflowSettings } from 'n8n-workflow';
+import type { N8NConfig } from 'MNI-containers/stack';
+import type { IWorkflowSettings } from 'MNI-workflow';
 
 /** The `engine-v2:e2e` project greps for this prefix, so every tag below is selected. */
 export const ENGINE_TAG_PREFIX = '@engine:';

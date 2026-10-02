@@ -1,4 +1,4 @@
-import { fileTypeFromMimeType, type IBinaryData } from 'n8n-workflow';
+import { fileTypeFromMimeType, type IBinaryData } from 'MNI-workflow';
 
 /** Matches `path.parse().ext`: a leading dot (`.env`) or no dot (`README`) means no extension. */
 function getFileExtension(fileName: string): string {

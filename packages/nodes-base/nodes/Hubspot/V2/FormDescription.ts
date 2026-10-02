@@ -1,4 +1,4 @@
-import type { INodeProperties } from 'n8n-workflow';
+import type { INodeProperties } from 'MNI-workflow';
 
 export const formOperations: INodeProperties[] = [
 	{
@@ -258,7 +258,7 @@ export const formFields: INodeProperties[] = [
 						name: 'value',
 						type: 'boolean',
 						default: false,
-						// eslint-disable-next-line n8n-nodes-base/node-param-description-boolean-without-whether
+						// eslint-disable-next-line MNI-nodes-base/node-param-description-boolean-without-whether
 						description:
 							"This must be true when using the 'legitimateInterest' option, as it reflects the consent indicated by the visitor when submitting the form",
 					},

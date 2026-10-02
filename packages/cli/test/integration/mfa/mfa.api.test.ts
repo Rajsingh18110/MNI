@@ -1,9 +1,9 @@
-import { randomValidPassword, uniqueId, testDb, mockInstance } from '@n8n/backend-test-utils';
-import { InstanceSettingsLoaderConfig } from '@n8n/config';
-import { LICENSE_FEATURES } from '@n8n/constants';
-import { SettingsRepository, UserRepository, type User } from '@n8n/db';
-import { Container } from '@n8n/di';
-import { randomString } from 'n8n-workflow';
+import { randomValidPassword, uniqueId, testDb, mockInstance } from '@MNI/backend-test-utils';
+import { InstanceSettingsLoaderConfig } from '@MNI/config';
+import { LICENSE_FEATURES } from '@MNI/constants';
+import { SettingsRepository, UserRepository, type User } from '@MNI/db';
+import { Container } from '@MNI/di';
+import { randomString } from 'MNI-workflow';
 
 import { AuthService } from '@/auth/auth.service';
 import config from '@/config';

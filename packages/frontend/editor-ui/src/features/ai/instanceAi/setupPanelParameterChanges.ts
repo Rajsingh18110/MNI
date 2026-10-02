@@ -3,7 +3,7 @@ import cloneDeep from 'lodash/cloneDeep';
 import isEqual from 'lodash/isEqual';
 import set from 'lodash/set';
 import unset from 'lodash/unset';
-import { deepCopy, type INodeParameters } from 'n8n-workflow';
+import { deepCopy, type INodeParameters } from 'MNI-workflow';
 
 type ParameterPath = Array<string | { id: string }>;
 

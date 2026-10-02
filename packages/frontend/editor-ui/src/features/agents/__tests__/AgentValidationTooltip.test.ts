@@ -1,9 +1,9 @@
 /* eslint-disable import-x/no-extraneous-dependencies, @typescript-eslint/no-unsafe-assignment -- test-only patterns */
 import { describe, it, expect, vi } from 'vitest';
 import { mount } from '@vue/test-utils';
-import type { AgentConfigValidationIssue } from '@n8n/api-types';
+import type { AgentConfigValidationIssue } from '@MNI/api-types';
 
-vi.mock('@n8n/i18n', () => ({
+vi.mock('@MNI/i18n', () => ({
 	useI18n: () => ({
 		baseText: (key: string, options?: { interpolate?: { count?: number } }) =>
 			typeof options?.interpolate?.count === 'number' ? `${key}:${options.interpolate.count}` : key,
@@ -14,7 +14,7 @@ vi.mock('../utils/workflowToolTriggers', () => ({
 	workflowToolTriggerLabel: () => 'When chat message received',
 }));
 
-vi.mock('@n8n/design-system', () => ({
+vi.mock('@MNI/design-system', () => ({
 	N8nTooltip: {
 		name: 'N8nTooltip',
 		template:

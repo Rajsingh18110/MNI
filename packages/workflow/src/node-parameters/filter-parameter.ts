@@ -1,4 +1,4 @@
-import type { Result } from '@n8n/utils/result';
+import type { Result } from '@MNI/utils/result';
 import type { DateTime } from 'luxon';
 
 import { UserError } from '../errors/base/user.error';

@@ -7,7 +7,7 @@ import {
 	type INodeTypeDescription,
 	type ITriggerFunctions,
 	type ITriggerResponse,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import {
 	INPUT_SOURCE,
@@ -85,25 +85,25 @@ export class ExecuteWorkflowTrigger implements INodeType {
 				default: '',
 			},
 			{
-				// eslint-disable-next-line n8n-nodes-base/node-param-display-name-miscased
+				// eslint-disable-next-line MNI-nodes-base/node-param-display-name-miscased
 				displayName: 'Input data mode',
 				name: INPUT_SOURCE,
 				type: 'options',
 				options: [
 					{
-						// eslint-disable-next-line n8n-nodes-base/node-param-display-name-miscased
+						// eslint-disable-next-line MNI-nodes-base/node-param-display-name-miscased
 						name: 'Define using fields below',
 						value: WORKFLOW_INPUTS,
 						description: 'Provide input fields via UI',
 					},
 					{
-						// eslint-disable-next-line n8n-nodes-base/node-param-display-name-miscased
+						// eslint-disable-next-line MNI-nodes-base/node-param-display-name-miscased
 						name: 'Define using JSON example',
 						value: JSON_EXAMPLE,
 						description: 'Generate a schema from an example JSON object',
 					},
 					{
-						// eslint-disable-next-line n8n-nodes-base/node-param-display-name-miscased
+						// eslint-disable-next-line MNI-nodes-base/node-param-display-name-miscased
 						name: 'Accept all data',
 						value: PASSTHROUGH,
 						description: 'Use all incoming data from the parent workflow',

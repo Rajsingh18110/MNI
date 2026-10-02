@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
-import { useI18n } from '@n8n/i18n';
-import type { BaseTextKey } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
+import type { BaseTextKey } from '@MNI/i18n';
 import {
 	N8nButton,
 	N8nDialog,
@@ -11,9 +11,9 @@ import {
 	N8nSettingsRowGroup,
 	N8nTabs,
 	N8nText,
-} from '@n8n/design-system';
-import type { DropdownMenuItemProps, TabOptions } from '@n8n/design-system';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
+} from '@MNI/design-system';
+import type { DropdownMenuItemProps, TabOptions } from '@MNI/design-system';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
 import { useMCPStore } from '@/features/ai/mcpAccess/mcp.store';
 import { getMcpClientCatalog } from '@/features/ai/mcpAccess/mcp.clients.catalog';
 import type { McpClientSetup } from '@/features/ai/mcpAccess/mcp.clients.catalog';

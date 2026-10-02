@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import {
 	N8nIcon,
 	N8nLink,
@@ -8,7 +8,7 @@ import {
 	N8nSelect,
 	N8nText,
 	N8nTooltip,
-} from '@n8n/design-system';
+} from '@MNI/design-system';
 import { computed } from 'vue';
 import { END_USER_CREDENTIALS_DOCS_URL } from '@/app/constants';
 

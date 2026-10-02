@@ -1,7 +1,7 @@
-import type { ToolDescriptor } from '@n8n/agents';
-import type { AgentIntegrationConfig, AgentJsonConfig, AgentSkill } from '@n8n/api-types';
-import { DateTimeColumn, JsonColumn, Project, WithTimestampsAndStringId } from '@n8n/db';
-import { Column, Entity, ManyToOne, JoinColumn, type Relation } from '@n8n/typeorm';
+import type { ToolDescriptor } from '@MNI/agents';
+import type { AgentIntegrationConfig, AgentJsonConfig, AgentSkill } from '@MNI/api-types';
+import { DateTimeColumn, JsonColumn, Project, WithTimestampsAndStringId } from '@MNI/db';
+import { Column, Entity, ManyToOne, JoinColumn, type Relation } from '@MNI/typeorm';
 
 import type { AgentHistory } from './agent-history.entity';
 

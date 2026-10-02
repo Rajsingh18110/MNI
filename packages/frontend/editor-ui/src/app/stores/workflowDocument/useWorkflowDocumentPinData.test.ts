@@ -1,6 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { shallowRef } from 'vue';
-import type { INodeExecutionData, IPinData } from 'n8n-workflow';
+import type { INodeExecutionData, IPinData } from 'MNI-workflow';
 import type { INodeUi } from '@/Interface';
 import {
 	useWorkflowDocumentPinData,

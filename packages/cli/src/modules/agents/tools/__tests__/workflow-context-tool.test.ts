@@ -1,4 +1,4 @@
-import type { ExecuteAgentWorkflowContext, IRunExecutionData, ITaskData } from 'n8n-workflow';
+import type { ExecuteAgentWorkflowContext, IRunExecutionData, ITaskData } from 'MNI-workflow';
 
 import { createWorkflowContextTool } from '../workflow-context-tool';
 
@@ -29,9 +29,9 @@ function makeContext(runData: Record<string, ITaskData[]>): ExecuteAgentWorkflow
 		workflowName: 'Order processing',
 		callingNodeName: 'Message an Agent',
 		nodes: [
-			{ name: 'Webhook', type: 'n8n-nodes-base.webhook' },
-			{ name: 'HTTP Request', type: 'n8n-nodes-base.httpRequest' },
-			{ name: 'Message an Agent', type: 'n8n-nodes-base.messageAnAgent' },
+			{ name: 'Webhook', type: 'MNI-nodes-base.webhook' },
+			{ name: 'HTTP Request', type: 'MNI-nodes-base.httpRequest' },
+			{ name: 'Message an Agent', type: 'MNI-nodes-base.messageAnAgent' },
 		],
 		runExecutionData: { resultData: { runData } } as unknown as IRunExecutionData,
 	};
@@ -71,14 +71,14 @@ describe('createWorkflowContextTool', () => {
 			executedNodes: [
 				{
 					name: 'Webhook',
-					type: 'n8n-nodes-base.webhook',
+					type: 'MNI-nodes-base.webhook',
 					status: 'success',
 					runs: 1,
 					items: 2,
 				},
 				{
 					name: 'HTTP Request',
-					type: 'n8n-nodes-base.httpRequest',
+					type: 'MNI-nodes-base.httpRequest',
 					status: 'success',
 					runs: 2,
 					items: 2, // items of the LAST run

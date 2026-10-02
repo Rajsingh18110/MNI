@@ -1,9 +1,9 @@
-import type { AgentSseEvent } from '@n8n/api-types';
-import { Logger } from '@n8n/backend-common';
-import { OnPubSubEvent } from '@n8n/decorators';
-import { Service } from '@n8n/di';
-import { createDeferredPromise } from '@n8n/utils/promise/deferred-promise';
-import { InstanceSettings } from 'n8n-core';
+import type { AgentSseEvent } from '@MNI/api-types';
+import { Logger } from '@MNI/backend-common';
+import { OnPubSubEvent } from '@MNI/decorators';
+import { Service } from '@MNI/di';
+import { createDeferredPromise } from '@MNI/utils/promise/deferred-promise';
+import { InstanceSettings } from 'MNI-core';
 
 import type { PubSubCommandMap } from '@/scaling/pubsub/pubsub.event-map';
 import { Publisher } from '@/scaling/pubsub/publisher.service';

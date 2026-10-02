@@ -1,5 +1,5 @@
-import { CreateOrUpdateTagRequestDto, RetrieveTagQueryDto } from '@n8n/api-types';
-import { AuthenticatedRequest } from '@n8n/db';
+import { CreateOrUpdateTagRequestDto, RetrieveTagQueryDto } from '@MNI/api-types';
+import { AuthenticatedRequest } from '@MNI/db';
 import {
 	Delete,
 	Get,
@@ -10,7 +10,7 @@ import {
 	Body,
 	Param,
 	Query,
-} from '@n8n/decorators';
+} from '@MNI/decorators';
 import { Response } from 'express';
 
 import { TagService } from '@/services/tag.service';

@@ -1,5 +1,5 @@
 import type { TestInfo } from '@playwright/test';
-import type { ServiceHelpers } from 'n8n-containers/services/types';
+import type { ServiceHelpers } from 'MNI-containers/services/types';
 
 import type { ApiHelpers } from '../../../../services/api-helper';
 import type { BenchmarkDimensions } from '../../../../utils/benchmark';

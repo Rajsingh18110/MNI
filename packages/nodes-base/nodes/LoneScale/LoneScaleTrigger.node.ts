@@ -8,7 +8,7 @@ import {
 	type INodeTypeDescription,
 	type IWebhookFunctions,
 	type IWebhookResponseData,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { lonescaleApiRequest } from './GenericFunctions';
 
@@ -42,7 +42,7 @@ export class LoneScaleTrigger implements INodeType {
 
 		properties: [
 			{
-				// eslint-disable-next-line n8n-nodes-base/node-param-display-name-wrong-for-dynamic-options
+				// eslint-disable-next-line MNI-nodes-base/node-param-display-name-wrong-for-dynamic-options
 				displayName: 'Workflow Name',
 				name: 'workflow',
 				type: 'options',
@@ -51,7 +51,7 @@ export class LoneScaleTrigger implements INodeType {
 					loadOptionsMethod: 'getWorkflows',
 				},
 				default: '',
-				// eslint-disable-next-line n8n-nodes-base/node-param-description-missing-final-period, n8n-nodes-base/node-param-description-wrong-for-dynamic-options
+				// eslint-disable-next-line MNI-nodes-base/node-param-description-missing-final-period, MNI-nodes-base/node-param-description-wrong-for-dynamic-options
 				description: 'Select one workflow. Choose from the list',
 				required: true,
 			},

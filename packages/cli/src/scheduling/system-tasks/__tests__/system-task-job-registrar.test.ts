@@ -1,14 +1,14 @@
-import type { Logger } from '@n8n/backend-common';
-import type { GlobalConfig } from '@n8n/config';
-import { DEFAULT_MISFIRE_GRACE_SECONDS, ScheduledJobMisfirePolicy } from '@n8n/constants';
-import type { ScheduledJobRepository } from '@n8n/db';
-import type { SystemTask, SystemTaskSchedule } from '@n8n/decorators';
-import type { ProvisionSummary } from '@n8n/scheduler';
-import type { ErrorReporter } from 'n8n-core';
+import type { Logger } from '@MNI/backend-common';
+import type { GlobalConfig } from '@MNI/config';
+import { DEFAULT_MISFIRE_GRACE_SECONDS, ScheduledJobMisfirePolicy } from '@MNI/constants';
+import type { ScheduledJobRepository } from '@MNI/db';
+import type { SystemTask, SystemTaskSchedule } from '@MNI/decorators';
+import type { ProvisionSummary } from '@MNI/scheduler';
+import type { ErrorReporter } from 'MNI-core';
 import { inc } from 'semver';
 import { mock } from 'vitest-mock-extended';
 
-import { N8N_VERSION } from '@/constants';
+import { MNI_VERSION } from '@/constants';
 import type { EventService } from '@/events/event.service';
 
 import type { DurableJobProvisioner } from '../../durable-job-provisioner';
@@ -55,7 +55,7 @@ describe('systemTaskProvisionRequest', () => {
 	});
 
 	it("stamps the payload with this instance's version", () => {
-		expect(request().payload).toEqual({ n8nVersion: N8N_VERSION });
+		expect(request().payload).toEqual({ n8nVersion: MNI_VERSION });
 	});
 
 	it('seeds an interval task at now', () => {
@@ -130,12 +130,12 @@ describe('systemTaskProvisionRequest', () => {
 });
 
 describe('SystemTaskJobRegistrar', () => {
-	const stored = (ownerId: string, n8nVersion: string = N8N_VERSION) => ({
+	const stored = (ownerId: string, n8nVersion: string = MNI_VERSION) => ({
 		id: ownerId.length,
 		ownerId,
 		payload: { n8nVersion },
 	});
-	const asListed = (ownerId: string, n8nVersion: string = N8N_VERSION) => ({
+	const asListed = (ownerId: string, n8nVersion: string = MNI_VERSION) => ({
 		id: ownerId.length,
 		payload: { n8nVersion },
 	});
@@ -180,7 +180,7 @@ describe('SystemTaskJobRegistrar', () => {
 			expect(durableJobProvisioner.provision).toHaveBeenCalledExactlyOnceWith({
 				owner: { ownerType: 'system-task', ownerId: 'prune-executions', ownerMemberId: null },
 				taskType: 'system:prune-executions',
-				payload: { n8nVersion: N8N_VERSION },
+				payload: { n8nVersion: MNI_VERSION },
 				desired: [
 					{
 						name: 'system:prune-executions',
@@ -302,7 +302,7 @@ describe('SystemTaskJobRegistrar', () => {
 			owner.declareDurable('prune-executions');
 			jobs.findPayloadsByOwnerType.mockResolvedValue([
 				stored('prune-executions'),
-				stored('compact-insights', inc(N8N_VERSION, 'minor') as string),
+				stored('compact-insights', inc(MNI_VERSION, 'minor') as string),
 				stored('renew-license', '0.0.1'),
 				{ id: 4, ownerId: 'clean-jtis', payload: {} },
 			]);
@@ -357,7 +357,7 @@ describe('SystemTaskJobRegistrar', () => {
 		it('keeps a job a newer version stamped', async () => {
 			const { registrar, jobs, durableJobProvisioner } = setup();
 			jobs.findPayloadsByOwnerType.mockResolvedValue([
-				stored('gone', inc(N8N_VERSION, 'minor') as string),
+				stored('gone', inc(MNI_VERSION, 'minor') as string),
 			]);
 
 			await registrar.removeStale();

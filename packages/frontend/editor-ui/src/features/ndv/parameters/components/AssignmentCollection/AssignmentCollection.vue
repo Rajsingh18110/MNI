@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { useDebounce } from '@n8n/composables/useDebounce';
-import { useI18n } from '@n8n/i18n';
+import { useDebounce } from '@MNI/composables/useDebounce';
+import { useI18n } from '@MNI/i18n';
 import { injectNDVStore } from '@/features/ndv/shared/ndv.store';
 import isEqual from 'lodash/isEqual';
 import type {
@@ -9,7 +9,7 @@ import type {
 	FieldTypeMap,
 	INode,
 	INodeProperties,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import { computed, inject, reactive, useTemplateRef, watch } from 'vue';
 import DropArea from '@/app/components/DropArea/DropArea.vue';
 import ParameterOptions from '../ParameterOptions.vue';
@@ -22,7 +22,7 @@ import { ExpressionLocalResolveContextSymbol } from '@/app/constants';
 import { useExperimentalNdvStore } from '@/features/workflows/canvas/experimental/experimentalNdv.store';
 import type { ParameterOptionsOverrides } from '@/features/ndv/shared/ndv.utils';
 
-import { N8nInputLabel } from '@n8n/design-system';
+import { N8nInputLabel } from '@MNI/design-system';
 import { injectWorkflowDocumentStore } from '@/app/stores/workflowDocument.store';
 interface Props {
 	parameter: INodeProperties;

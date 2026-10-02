@@ -1,4 +1,4 @@
-import { capabilities, capabilityRegistry } from '@n8n/frontend-module-sdk';
+import { capabilities, capabilityRegistry } from '@MNI/frontend-module-sdk';
 import { createTestingPinia } from '@pinia/testing';
 import { setActivePinia } from 'pinia';
 

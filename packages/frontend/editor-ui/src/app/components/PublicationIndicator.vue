@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { N8nStatusDot, N8nTooltip, N8nBadge, type StatusDotVariant } from '@n8n/design-system';
+import { N8nStatusDot, N8nTooltip, N8nBadge, type StatusDotVariant } from '@MNI/design-system';
 
 /**
  * "Published" chip shown on list cards. Attributes such as `data-test-id`
@@ -40,7 +40,7 @@ withDefaults(
 </template>
 
 <style lang="scss" module>
-@use '@n8n/design-system/css/mixins/focus';
+@use '@MNI/design-system/css/mixins/focus';
 
 .indicator {
 	gap: var(--spacing--3xs);

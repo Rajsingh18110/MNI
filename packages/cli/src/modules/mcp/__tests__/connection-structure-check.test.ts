@@ -1,9 +1,9 @@
-import type { WorkflowJSON } from '@n8n/workflow-sdk';
+import type { WorkflowJSON } from '@MNI/workflow-sdk';
 import {
 	NodeConnectionTypes,
 	type INodeOutputConfiguration,
 	type NodeConnectionType,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import {
 	findInvalidAiToolSources,
@@ -14,7 +14,7 @@ import {
 const agentNode = (name: string) => ({
 	id: name,
 	name,
-	type: '@n8n/n8n-nodes-langchain.agent',
+	type: '@MNI/MNI-nodes-langchain.agent',
 	typeVersion: 3,
 	position: [0, 0] as [number, number],
 	parameters: {},
@@ -23,7 +23,7 @@ const agentNode = (name: string) => ({
 const agentToolNode = (name: string) => ({
 	id: name,
 	name,
-	type: '@n8n/n8n-nodes-langchain.agentTool',
+	type: '@MNI/MNI-nodes-langchain.agentTool',
 	typeVersion: 3,
 	position: [0, 0] as [number, number],
 	parameters: {},
@@ -32,7 +32,7 @@ const agentToolNode = (name: string) => ({
 const calculatorToolNode = (name: string) => ({
 	id: name,
 	name,
-	type: '@n8n/n8n-nodes-langchain.toolCalculator',
+	type: '@MNI/MNI-nodes-langchain.toolCalculator',
 	typeVersion: 1,
 	position: [0, 0] as [number, number],
 	parameters: {},
@@ -53,9 +53,9 @@ const makeResolver = (
 };
 
 const defaultResolver: NodeOutputsResolver = makeResolver({
-	'@n8n/n8n-nodes-langchain.agent': [NodeConnectionTypes.Main],
-	'@n8n/n8n-nodes-langchain.agentTool': [NodeConnectionTypes.AiTool],
-	'@n8n/n8n-nodes-langchain.toolCalculator': [NodeConnectionTypes.AiTool],
+	'@MNI/MNI-nodes-langchain.agent': [NodeConnectionTypes.Main],
+	'@MNI/MNI-nodes-langchain.agentTool': [NodeConnectionTypes.AiTool],
+	'@MNI/MNI-nodes-langchain.toolCalculator': [NodeConnectionTypes.AiTool],
 });
 
 describe('findInvalidAiToolSources', () => {
@@ -81,7 +81,7 @@ describe('findInvalidAiToolSources', () => {
 		expect(findInvalidAiToolSources(workflow, defaultResolver)).toEqual([
 			{
 				sourceNode: 'Manager',
-				sourceType: '@n8n/n8n-nodes-langchain.agent',
+				sourceType: '@MNI/MNI-nodes-langchain.agent',
 				targets: ['Worker'],
 			},
 		]);
@@ -143,7 +143,7 @@ describe('findInvalidAiToolSources', () => {
 				{
 					id: 'gmail',
 					name: 'Gmail Tool',
-					type: 'n8n-nodes-base.gmailTool',
+					type: 'MNI-nodes-base.gmailTool',
 					typeVersion: 2,
 					position: [0, 0],
 					parameters: {},
@@ -211,7 +211,7 @@ describe('findInvalidAiToolSources', () => {
 		expect(findInvalidAiToolSources(workflow, defaultResolver)).toEqual([
 			{
 				sourceNode: 'SubAgent',
-				sourceType: '@n8n/n8n-nodes-langchain.agent',
+				sourceType: '@MNI/MNI-nodes-langchain.agent',
 				targets: ['ParentA', 'ParentB'],
 			},
 		]);
@@ -258,14 +258,14 @@ describe('formatInvalidAiToolSourceMessage', () => {
 		const message = formatInvalidAiToolSourceMessage([
 			{
 				sourceNode: 'Manager',
-				sourceType: '@n8n/n8n-nodes-langchain.agent',
+				sourceType: '@MNI/MNI-nodes-langchain.agent',
 				targets: ['Worker'],
 			},
 		]);
 
 		expect(message).toContain("'Manager'");
-		expect(message).toContain('@n8n/n8n-nodes-langchain.agent');
+		expect(message).toContain('@MNI/MNI-nodes-langchain.agent');
 		expect(message).toContain("'Worker'");
-		expect(message).toContain('@n8n/n8n-nodes-langchain.agentTool');
+		expect(message).toContain('@MNI/MNI-nodes-langchain.agentTool');
 	});
 });

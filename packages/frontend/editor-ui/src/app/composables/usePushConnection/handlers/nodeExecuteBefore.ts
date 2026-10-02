@@ -1,4 +1,4 @@
-import type { NodeExecuteBefore } from '@n8n/api-types/push/execution';
+import type { NodeExecuteBefore } from '@MNI/api-types/push/execution';
 import { useWorkflowExecutionStateStore } from '@/app/stores/workflowExecutionState.store';
 import { createExecutionDataId, useExecutionDataStore } from '@/app/stores/executionData.store';
 import type { PushHandlerOptions } from './types';

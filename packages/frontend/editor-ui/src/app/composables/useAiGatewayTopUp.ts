@@ -1,9 +1,9 @@
-import { useI18n } from '@n8n/i18n';
-import { useToast } from '@n8n/composables/useToast';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
-import { useCloudPlanStore } from '@n8n/stores/cloudPlan.store';
-import { useUsersStore } from '@n8n/stores/users.store';
-import { AI_GATEWAY_TOP_UP_MODAL_KEY, CLOUD_N8N_CONNECT_TOP_UP_PATH } from '@/app/constants';
+import { useI18n } from '@MNI/i18n';
+import { useToast } from '@MNI/composables/useToast';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
+import { useCloudPlanStore } from '@MNI/stores/cloudPlan.store';
+import { useUsersStore } from '@MNI/stores/users.store';
+import { AI_GATEWAY_TOP_UP_MODAL_KEY, CLOUD_MNI_CONNECT_TOP_UP_PATH } from '@/app/constants';
 import { usePageRedirectionHelper } from '@/app/composables/usePageRedirectionHelper';
 import { useUIStore } from '@/app/stores/ui.store';
 
@@ -38,7 +38,7 @@ export function useAiGatewayTopUp() {
 		if (usersStore.isInstanceOwner && !cloudPlanStore.userIsTrialing) {
 			try {
 				await goToCloudDashboard({
-					redirectionPath: CLOUD_N8N_CONNECT_TOP_UP_PATH,
+					redirectionPath: CLOUD_MNI_CONNECT_TOP_UP_PATH,
 					mode: 'open',
 				});
 			} catch (error) {

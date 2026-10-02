@@ -1,4 +1,4 @@
-import type { InstanceSettings } from 'n8n-core';
+import type { InstanceSettings } from 'MNI-core';
 import { existsSync } from 'node:fs';
 import type { Mock } from 'vitest';
 import { mock } from 'vitest-mock-extended';
@@ -8,7 +8,7 @@ import { StoragePathRenameRule } from '../storage-path-rename.rule';
 vi.mock('node:fs', () => ({ existsSync: vi.fn() }));
 
 describe('StoragePathRenameRule', () => {
-	const instanceSettings = mock<InstanceSettings>({ n8nFolder: '/home/MNI/.n8n' });
+	const instanceSettings = mock<InstanceSettings>({ n8nFolder: '/home/MNI/.MNI' });
 	const rule = new StoragePathRenameRule(instanceSettings);
 	const exists = existsSync as Mock;
 
@@ -25,7 +25,7 @@ describe('StoragePathRenameRule', () => {
 		expect(exists).not.toHaveBeenCalled();
 	});
 
-	it.each(['N8N_STORAGE_PATH', 'N8N_BINARY_DATA_STORAGE_PATH'])(
+	it.each(['MNI_STORAGE_PATH', 'MNI_BINARY_DATA_STORAGE_PATH'])(
 		'should not be affected when %s is set',
 		async (envVar) => {
 			process.env[envVar] = '/custom/path';

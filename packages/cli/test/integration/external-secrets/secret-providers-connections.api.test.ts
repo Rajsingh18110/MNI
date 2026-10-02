@@ -1,13 +1,13 @@
-import { LicenseState } from '@n8n/backend-common';
-import { createTeamProject, mockInstance, testDb } from '@n8n/backend-test-utils';
-import type { Project } from '@n8n/db';
+import { LicenseState } from '@MNI/backend-common';
+import { createTeamProject, mockInstance, testDb } from '@MNI/backend-test-utils';
+import type { Project } from '@MNI/db';
 import {
 	ProjectRepository,
 	ProjectSecretsProviderAccessRepository,
 	SecretsProviderConnectionRepository,
-} from '@n8n/db';
-import { Container } from '@n8n/di';
-import { Cipher } from 'n8n-core';
+} from '@MNI/db';
+import { Container } from '@MNI/di';
+import { Cipher } from 'MNI-core';
 import { mock } from 'vitest-mock-extended';
 
 import { ExternalSecretsProviders } from '@/modules/external-secrets.ee/external-secrets-providers.ee';
@@ -513,7 +513,7 @@ describe('Secret Providers Connections API', () => {
 			// Password fields should be redacted (contain BLANK_VALUE marker)
 			const responseSettings = createResponse.body.data.settings;
 			const responseString = JSON.stringify(responseSettings);
-			expect(responseString).toContain('__n8n_BLANK_VALUE_');
+			expect(responseString).toContain('__MNI_BLANK_VALUE_');
 
 			// Actual secret values should NOT appear in response
 			expect(responseString).not.toContain('AKIAIOSFODNN7EXAMPLE');
@@ -527,7 +527,7 @@ describe('Secret Providers Connections API', () => {
 
 			expect(getResponse.body.data).toHaveProperty('settings');
 			const getResponseString = JSON.stringify(getResponse.body.data.settings);
-			expect(getResponseString).toContain('__n8n_BLANK_VALUE_');
+			expect(getResponseString).toContain('__MNI_BLANK_VALUE_');
 			expect(getResponseString).not.toContain('AKIAIOSFODNN7EXAMPLE');
 			expect(getResponseString).not.toContain('very-secret-session-token');
 

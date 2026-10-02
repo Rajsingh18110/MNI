@@ -1,6 +1,6 @@
-import { User, JsonColumn, WithTimestamps } from '@n8n/db';
-import { Column, Entity, ManyToOne, JoinColumn, PrimaryColumn } from '@n8n/typeorm';
-import type { INode } from 'n8n-workflow';
+import { User, JsonColumn, WithTimestamps } from '@MNI/db';
+import { Column, Entity, ManyToOne, JoinColumn, PrimaryColumn } from '@MNI/typeorm';
+import type { INode } from 'MNI-workflow';
 
 export interface IChatHubTool {
 	id: string;

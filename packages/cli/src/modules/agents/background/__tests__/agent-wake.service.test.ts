@@ -1,8 +1,8 @@
-import type { LockService, Logger } from '@n8n/backend-common';
-import type { AgentsConfig } from '@n8n/config';
-import type { UserRepository } from '@n8n/db';
-import { createDeferredPromise } from '@n8n/utils/promise/deferred-promise';
-import type { InstanceSettings } from 'n8n-core';
+import type { LockService, Logger } from '@MNI/backend-common';
+import type { AgentsConfig } from '@MNI/config';
+import type { UserRepository } from '@MNI/db';
+import { createDeferredPromise } from '@MNI/utils/promise/deferred-promise';
+import type { InstanceSettings } from 'MNI-core';
 import { mock } from 'vitest-mock-extended';
 
 import { userHasScopes } from '@/permissions.ee/check-access';
@@ -13,7 +13,7 @@ import { AgentConversationStateService } from '../../agent-conversation-state.se
 import { hashAgentSandboxPrincipal } from '../../agent-sandbox-principal';
 import type { AgentBackgroundJob } from '../../entities/agent-background-job.entity';
 import type { ChatIntegrationRegistry } from '../../integrations/agent-chat-integration';
-import type { N8NCheckpointStorage } from '../../integrations/n8n-checkpoint-storage';
+import type { N8NCheckpointStorage } from '../../integrations/MNI-checkpoint-storage';
 import type { AgentBackgroundJobRepository } from '../../repositories/agent-background-job.repository';
 import type { AgentExecutionRepository } from '../../repositories/agent-execution.repository';
 import type { AgentRepository } from '../../repositories/agent.repository';
@@ -30,9 +30,9 @@ vi.mock('@/permissions.ee/check-access', () => ({
 }));
 
 const user = { id: 'user-1', disabled: false };
-const principalHash = hashAgentSandboxPrincipal({ type: 'n8n-user', userId: user.id });
+const principalHash = hashAgentSandboxPrincipal({ type: 'MNI-user', userId: user.id });
 const otherUser = { id: 'user-2', disabled: false };
-const otherPrincipalHash = hashAgentSandboxPrincipal({ type: 'n8n-user', userId: otherUser.id });
+const otherPrincipalHash = hashAgentSandboxPrincipal({ type: 'MNI-user', userId: otherUser.id });
 
 function makeJob(overrides: Partial<AgentBackgroundJob> = {}): AgentBackgroundJob {
 	return {

@@ -1,4 +1,4 @@
-/* eslint-disable n8n-nodes-base/node-param-display-name-miscased */
+/* eslint-disable MNI-nodes-base/node-param-display-name-miscased */
 import { mock } from 'vitest-mock-extended';
 import type {
 	AssignmentCollectionValue,
@@ -6,8 +6,8 @@ import type {
 	IExecuteFunctions,
 	INode,
 	INodeExecutionData,
-} from 'n8n-workflow';
-import { NodeOperationError, BINARY_MODE_COMBINED } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeOperationError, BINARY_MODE_COMBINED } from 'MNI-workflow';
 
 import type { SetNodeOptions } from '../interfaces';
 import { INCLUDE } from '../interfaces';

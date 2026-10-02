@@ -1,4 +1,4 @@
-import { componentRegistry } from '@n8n/frontend-module-sdk';
+import { componentRegistry } from '@MNI/frontend-module-sdk';
 
 import { registerComponentSlots } from './componentSlots.manifest';
 

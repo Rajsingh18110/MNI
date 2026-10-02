@@ -4,15 +4,15 @@ import {
 	N8nAnimatedCollapsibleContent as AnimatedCollapsibleContent,
 	N8nAiActivityStepChevron as TimelineStepChevron,
 	N8nAiActivityStepButton as TimelineStepButton,
-} from '@n8n/design-system';
-import type { InstanceAiAgentNode } from '@n8n/api-types';
+} from '@MNI/design-system';
+import type { InstanceAiAgentNode } from '@MNI/api-types';
 import { CollapsibleRoot, CollapsibleTrigger } from 'reka-ui';
 import { computed, ref, watch } from 'vue';
 import SubagentStepTimeline from './SubagentStepTimeline.vue';
 import { getAgentSectionTitle } from '../builderAgents';
 import { getAgentActivityKey } from '../builderAgents';
-import { useSettingsStore } from '@n8n/stores/settings.store';
-import { useI18n } from '@n8n/i18n';
+import { useSettingsStore } from '@MNI/stores/settings.store';
+import { useI18n } from '@MNI/i18n';
 
 const props = defineProps<{
 	agentNode: InstanceAiAgentNode;

@@ -17,7 +17,7 @@ import {
 	N8NStartupError,
 	type N8NInstancesResult,
 	type N8NStartupDiagnostics,
-} from './services/n8n';
+} from './services/MNI';
 import { helperFactories, services } from './services/registry';
 import type { TaskRunnerResult } from './services/task-runner';
 import type {
@@ -150,7 +150,7 @@ export async function createN8NStack(config: N8NConfig = {}): Promise<N8NStack> 
 
 	assertEngineSupported({ engine, mains, isQueueMode, usePostgres });
 
-	const uniqueProjectName = projectName ?? `n8n-stack-${Math.random().toString(36).substring(7)}`;
+	const uniqueProjectName = projectName ?? `MNI-stack-${Math.random().toString(36).substring(7)}`;
 	// Derived from the project name, not random, so a rerun with the same name
 	// reuses the engine and main containers instead of changing their env.
 	const engineAuthSecret =
@@ -351,7 +351,7 @@ export async function createN8NStack(config: N8NConfig = {}): Promise<N8NStack> 
 		// Earliest log line the readiness gate below may accept
 		const n8nStartedAtSeconds = Math.floor(Date.now() / 1000);
 		const n8nStartupStart = performance.now();
-		telemetry.startStage('n8n-startup');
+		telemetry.startStage('MNI-startup');
 		let n8nResult: N8NInstancesResult;
 		const endN8nAcquisition = resources.beginAcquisition();
 		try {
@@ -454,7 +454,7 @@ export async function createN8NStack(config: N8NConfig = {}): Promise<N8NStack> 
 		const mainUrls: string[] = [];
 		const internalMainUrls: string[] = [];
 		for (let i = 1; i <= mains; i++) {
-			const mainNameSuffix = mains > 1 ? `-n8n-main-${i}` : '-n8n';
+			const mainNameSuffix = mains > 1 ? `-MNI-main-${i}` : '-MNI';
 			const mainContainer = containers.find((c) => c.getName().endsWith(mainNameSuffix));
 			if (mainContainer) {
 				const mainPort = mainContainer.getMappedPort(5678);
@@ -467,7 +467,7 @@ export async function createN8NStack(config: N8NConfig = {}): Promise<N8NStack> 
 		// Run verification hooks (e.g. keycloak connectivity check)
 		const n8nContainers = containers.filter((c) => {
 			const name = c.getName();
-			return name.includes('-n8n-main-') || name.endsWith('-n8n');
+			return name.includes('-MNI-main-') || name.endsWith('-MNI');
 		});
 
 		const verifications: string[] = [];
@@ -571,7 +571,7 @@ export async function createN8NStack(config: N8NConfig = {}): Promise<N8NStack> 
 				if (mains > 1 || needsLoadBalancer) {
 					throw new Error('replaceN8N supports single-main stacks only');
 				}
-				const current = containers.find((c) => c.getName().endsWith('-n8n'));
+				const current = containers.find((c) => c.getName().endsWith('-MNI'));
 				if (current) {
 					await current.stop();
 					containers.splice(containers.indexOf(current), 1);

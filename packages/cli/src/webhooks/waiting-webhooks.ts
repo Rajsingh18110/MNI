@@ -1,10 +1,10 @@
-import { Logger } from '@n8n/backend-common';
-import { EndpointsConfig } from '@n8n/config';
-import type { IExecutionResponse } from '@n8n/db';
-import { Service } from '@n8n/di';
+import { Logger } from '@MNI/backend-common';
+import { EndpointsConfig } from '@MNI/config';
+import type { IExecutionResponse } from '@MNI/db';
+import { Service } from '@MNI/di';
 import { timingSafeEqual } from 'crypto';
 import type express from 'express';
-import { InstanceSettings, WAITING_TOKEN_QUERY_PARAM, validateUrlSignature } from 'n8n-core';
+import { InstanceSettings, WAITING_TOKEN_QUERY_PARAM, validateUrlSignature } from 'MNI-core';
 import {
 	FORM_NODE_TYPE,
 	type INode,
@@ -14,7 +14,7 @@ import {
 	SEND_AND_WAIT_OPERATION,
 	WAIT_NODE_TYPE,
 	Workflow,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { sanitizeWebhookRequest } from './webhook-request-sanitizer';
 import { WebhookService } from './webhook.service';
@@ -39,7 +39,7 @@ import { preserveInputOverride } from '@/workflow-helpers';
 
 /**
  * Service for handling the execution of webhooks of Wait nodes that use the
- * [Resume On Webhook Call](https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-base.wait/#on-webhook-call)
+ * [Resume On Webhook Call](https://docs.n8n.io/integrations/builtin/core-nodes/MNI-nodes-base.wait/#on-webhook-call)
  * feature.
  */
 @Service()
@@ -123,7 +123,7 @@ export class WaitingWebhooks implements IWebhookManager {
 	 *
 	 * Returns `false` without redirecting when the rewritten URL is unchanged,
 	 * which happens if the two endpoints are configured identically (e.g. a
-	 * custom `N8N_ENDPOINT_WEBHOOK_WAIT` equal to the form-waiting endpoint).
+	 * custom `MNI_ENDPOINT_WEBHOOK_WAIT` equal to the form-waiting endpoint).
 	 * Redirecting in that case would loop back to this same handler forever.
 	 */
 	private redirectToFormWaiting(req: WaitingWebhookRequest, res: express.Response): boolean {

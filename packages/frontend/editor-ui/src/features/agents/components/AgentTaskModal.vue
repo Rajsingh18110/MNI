@@ -5,7 +5,7 @@ import {
 	StrictTimeZoneSchema,
 	type AgentConfigValidationIssue,
 	type AgentTaskDto,
-} from '@n8n/api-types';
+} from '@MNI/api-types';
 import {
 	N8nButton,
 	N8nFormInput,
@@ -17,11 +17,11 @@ import {
 	N8nSwitch2,
 	N8nText,
 	N8nTooltip,
-} from '@n8n/design-system';
-import type { IValidator, Validatable } from '@n8n/design-system';
-import { useI18n, type BaseTextKey } from '@n8n/i18n';
-import { useRootStore } from '@n8n/stores/useRootStore';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+} from '@MNI/design-system';
+import type { IValidator, Validatable } from '@MNI/design-system';
+import { useI18n, type BaseTextKey } from '@MNI/i18n';
+import { useRootStore } from '@MNI/stores/useRootStore';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { computed, onMounted, ref, watch } from 'vue';
 
 import { useUIStore } from '@/app/stores/ui.store';

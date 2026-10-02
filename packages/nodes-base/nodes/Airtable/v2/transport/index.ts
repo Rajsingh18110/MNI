@@ -8,8 +8,8 @@ import type {
 	IPairedItemData,
 	IHttpRequestMethods,
 	IRequestOptions,
-} from 'n8n-workflow';
-import { UserError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { UserError } from 'MNI-workflow';
 
 import type { IAttachment, IRecord } from '../helpers/interfaces';
 

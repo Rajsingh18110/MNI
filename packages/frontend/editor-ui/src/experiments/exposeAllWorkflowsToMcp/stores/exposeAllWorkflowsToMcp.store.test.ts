@@ -1,11 +1,11 @@
 import { EXPOSE_ALL_WORKFLOWS_TO_MCP_EXPERIMENT } from '@/app/constants/experiments';
-import { STORES } from '@n8n/stores';
+import { STORES } from '@MNI/stores';
 import { createPinia, setActivePinia } from 'pinia';
 
 const mockTrack = vi.fn();
 const featureFlagProperty = `$feature/${EXPOSE_ALL_WORKFLOWS_TO_MCP_EXPERIMENT.name}`;
 
-vi.mock('@n8n/composables/useTelemetry', () => ({
+vi.mock('@MNI/composables/useTelemetry', () => ({
 	useTelemetry: () => ({
 		track: mockTrack,
 	}),

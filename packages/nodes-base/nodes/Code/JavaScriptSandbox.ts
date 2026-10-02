@@ -1,5 +1,5 @@
 import { NodeVM, makeResolverFromLegacyOptions, type Resolver } from 'vm2';
-import type { IExecuteFunctions, INodeExecutionData } from 'n8n-workflow';
+import type { IExecuteFunctions, INodeExecutionData } from 'MNI-workflow';
 
 import { ExecutionError } from './ExecutionError';
 import {

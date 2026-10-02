@@ -3,8 +3,8 @@ import type {
 	INodeExecutionData,
 	INodeType,
 	INodeTypeDescription,
-} from 'n8n-workflow';
-import { NodeConnectionTypes, NodeOperationError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeConnectionTypes, NodeOperationError } from 'MNI-workflow';
 import pgPromise from 'pg-promise';
 
 import { getDateAsStringTypeParsers } from '@utils/postgres';
@@ -167,7 +167,7 @@ export class QuestDb implements INodeType {
 						],
 						default: 'independently',
 						description:
-							'The way queries should be sent to database. Can be used in conjunction with <b>Continue on Fail</b>. See <a href="https://docs.n8n.io/integrations/builtin/app-nodes/n8n-nodes-base.questdb/">the docs</a> for more examples.',
+							'The way queries should be sent to database. Can be used in conjunction with <b>Continue on Fail</b>. See <a href="https://docs.n8n.io/integrations/builtin/app-nodes/MNI-nodes-base.questdb/">the docs</a> for more examples.',
 					},
 					{
 						displayName: 'Query Parameters',
@@ -251,7 +251,7 @@ export class QuestDb implements INodeType {
 			const returnFields = this.getNodeParameter('returnFields', 0) as string;
 			const table = this.getNodeParameter('table', 0) as string;
 
-			// eslint-disable-next-line n8n-local-rules/no-interpolation-in-regular-string
+			// eslint-disable-next-line MNI-local-rules/no-interpolation-in-regular-string
 			const insertData = await db.any('SELECT ${columns:name} from ${table:name}', {
 				columns: returnFields
 					.split(',')

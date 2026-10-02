@@ -4,7 +4,7 @@ import { createTestingPinia } from '@pinia/testing';
 import { flushPromises } from '@vue/test-utils';
 import { useRouter } from 'vue-router';
 import SignoutView from './SignoutView.vue';
-import { useUsersStore } from '@n8n/stores/users.store';
+import { useUsersStore } from '@MNI/stores/users.store';
 import { useSSOStore } from '@/features/settings/sso/sso.store';
 
 const SIGNIN_HREF = '/signin';
@@ -22,7 +22,7 @@ vi.mock('vue-router', () => {
 
 const { showError } = vi.hoisted(() => ({ showError: vi.fn() }));
 
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: () => ({ showError }),
 }));
 

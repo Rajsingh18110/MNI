@@ -1,4 +1,4 @@
-import type { ZodClass } from '@n8n/api-types';
+import type { ZodClass } from '@MNI/api-types';
 import type {
 	ApiKeyScopeRequirement,
 	Arg,
@@ -9,11 +9,11 @@ import type {
 	Method,
 	ResponseDtoClass,
 	SuccessStatus,
-} from '@n8n/decorators';
-import { ControllerRegistryMetadata } from '@n8n/decorators';
-import { Container } from '@n8n/di';
-import type { ApiKeyScope } from '@n8n/permissions';
-import { UnexpectedError } from 'n8n-workflow';
+} from '@MNI/decorators';
+import { ControllerRegistryMetadata } from '@MNI/decorators';
+import { Container } from '@MNI/di';
+import type { ApiKeyScope } from '@MNI/permissions';
+import { UnexpectedError } from 'MNI-workflow';
 import type { ZodTypeAny } from 'zod';
 
 export const HTTP_METHODS = [

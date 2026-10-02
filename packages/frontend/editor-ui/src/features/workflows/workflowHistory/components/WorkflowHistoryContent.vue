@@ -4,11 +4,11 @@ import type { IWorkflowDb, UserAction } from '@/Interface';
 import type {
 	WorkflowVersion,
 	WorkflowHistoryActionTypes,
-} from '@n8n/rest-api-client/api/workflowHistory';
+} from '@MNI/rest-api-client/api/workflowHistory';
 import WorkflowPreviewHost from '@/app/components/WorkflowPreviewHost.vue';
 import { createWorkflowDocumentId } from '@/app/stores/workflowDocument.store';
-import { useI18n } from '@n8n/i18n';
-import type { IUser } from 'n8n-workflow';
+import { useI18n } from '@MNI/i18n';
+import type { IUser } from 'MNI-workflow';
 
 import {
 	N8nActionToggle,
@@ -17,7 +17,7 @@ import {
 	N8nLink,
 	N8nText,
 	N8nTooltip,
-} from '@n8n/design-system';
+} from '@MNI/design-system';
 import { formatTimestamp, getVersionLabel } from '@/features/workflows/workflowHistory/utils';
 import type { WorkflowHistoryAction } from '@/features/workflows/workflowHistory/types';
 import omit from 'lodash/omit';
@@ -181,7 +181,7 @@ watch(
 </template>
 
 <style module lang="scss">
-@use '@n8n/design-system/css/mixins/utils';
+@use '@MNI/design-system/css/mixins/utils';
 
 .content {
 	position: absolute;

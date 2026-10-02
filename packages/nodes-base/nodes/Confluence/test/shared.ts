@@ -1,10 +1,10 @@
-import type { IExecuteFunctions, INode } from 'n8n-workflow';
+import type { IExecuteFunctions, INode } from 'MNI-workflow';
 import { mockDeep, type DeepMockProxy } from 'vitest-mock-extended';
 
 export const testNode: INode = {
 	id: 'test',
 	name: 'Confluence',
-	type: 'n8n-nodes-base.confluence',
+	type: 'MNI-nodes-base.confluence',
 	typeVersion: 1,
 	position: [0, 0],
 	parameters: {},

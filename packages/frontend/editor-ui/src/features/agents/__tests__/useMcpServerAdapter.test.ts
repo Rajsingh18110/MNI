@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from 'vitest';
-import type { INode, INodeProperties, INodeTypeDescription } from 'n8n-workflow';
+import type { INode, INodeProperties, INodeTypeDescription } from 'MNI-workflow';
 
 import { AI_MCP_TOOL_NODE_TYPE } from '@/app/constants/nodeTypes';
 import {
@@ -83,7 +83,7 @@ describe('useMcpServerAdapter', () => {
 			const node: INode = {
 				id: 'github-mcp',
 				name: 'github-mcp',
-				type: '@n8n/mcp-registry.gitHub',
+				type: '@MNI/mcp-registry.gitHub',
 				typeVersion: 1,
 				position: [0, 0],
 				parameters: {
@@ -111,7 +111,7 @@ describe('useMcpServerAdapter', () => {
 				approval: undefined,
 				connectionTimeoutMs: 60001,
 				metadata: {
-					nodeTypeName: '@n8n/mcp-registry.gitHub',
+					nodeTypeName: '@MNI/mcp-registry.gitHub',
 				},
 			});
 		});
@@ -121,7 +121,7 @@ describe('useMcpServerAdapter', () => {
 		it('uses the registry selector that matches the authentication credential type', () => {
 			const nodeType = {
 				...makeMcpNodeType(1),
-				name: '@n8n/mcp-registry.gitHub',
+				name: '@MNI/mcp-registry.gitHub',
 				credentials: [
 					{
 						name: 'githubEnterpriseOAuth2Api',

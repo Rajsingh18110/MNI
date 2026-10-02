@@ -1,8 +1,8 @@
 import { h } from 'vue';
-import type { PolicyViolation } from '@n8n/api-types';
-import { useToast, type NotificationHandle } from '@n8n/composables/useToast';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
-import { PolicyViolationList } from '@n8n/frontend-module-type-availability-policies';
+import type { PolicyViolation } from '@MNI/api-types';
+import { useToast, type NotificationHandle } from '@MNI/composables/useToast';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
+import { PolicyViolationList } from '@MNI/frontend-module-type-availability-policies';
 import { canvasEventBus } from '@/features/workflows/canvas/canvas.eventBus';
 import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';
 import { useCredentialsStore } from '@/features/credentials/credentials.store';

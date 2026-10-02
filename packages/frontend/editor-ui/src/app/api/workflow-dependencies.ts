@@ -1,10 +1,10 @@
-import type { IRestApiContext } from '@n8n/rest-api-client';
+import type { IRestApiContext } from '@MNI/rest-api-client';
 import type {
 	DependenciesBatchResponse,
 	DependencyCountsBatchResponse,
 	DependencyResourceType,
-} from '@n8n/api-types';
-import { makeRestApiRequest } from '@n8n/rest-api-client';
+} from '@MNI/api-types';
+import { makeRestApiRequest } from '@MNI/rest-api-client';
 
 export async function getResourceDependencyCounts(
 	context: IRestApiContext,

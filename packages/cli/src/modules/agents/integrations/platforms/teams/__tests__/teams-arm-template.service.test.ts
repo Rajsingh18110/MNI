@@ -1,9 +1,9 @@
 import { mock } from 'vitest-mock-extended';
-import type { GlobalConfig } from '@n8n/config';
-import type { InstanceSettings } from 'n8n-core';
+import type { GlobalConfig } from '@MNI/config';
+import type { InstanceSettings } from 'MNI-core';
 
 import { JwtService } from '@/services/jwt.service';
-import type { UrlService } from '@n8n/backend-services';
+import type { UrlService } from '@MNI/backend-services';
 
 import { TeamsArmTemplateService } from '../teams-arm-template.service';
 
@@ -116,7 +116,7 @@ describe('TeamsArmTemplateService', () => {
 			const name = parametersOf(service.buildTemplate({ ...options, agentName: '123 🎉' })).botName
 				.defaultValue;
 
-			expect(name).toMatch(/^n8n-agent-[0-9a-f]{8}$/);
+			expect(name).toMatch(/^MNI-agent-[0-9a-f]{8}$/);
 		});
 
 		it('omits the Entra defaults when unknown, so the portal marks them required', () => {

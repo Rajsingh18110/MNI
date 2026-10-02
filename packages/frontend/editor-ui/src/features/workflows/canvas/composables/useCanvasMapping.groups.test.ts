@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import type { IWorkflowGroup } from 'n8n-workflow';
+import type { IWorkflowGroup } from 'MNI-workflow';
 import type { INodeUi } from '@/Interface';
 import type { CanvasConnection, NodeExecutionSnapshot } from '../canvas.types';
 import { CANVAS_NODE_GROUP_INPUT_HANDLE, CANVAS_NODE_GROUP_OUTPUT_HANDLE } from '../canvas.types';
@@ -32,7 +32,7 @@ function makeNode(id: string, x: number, y: number): INodeUi {
 	return {
 		id,
 		name: id,
-		type: 'n8n-nodes-base.noop',
+		type: 'MNI-nodes-base.noop',
 		typeVersion: 1,
 		position: [x, y] as [number, number],
 		parameters: {},
@@ -150,7 +150,7 @@ describe('computeNodesRectFromStore', () => {
 		const bogus = {
 			id: 'bogus',
 			name: 'bogus',
-			type: 'n8n-nodes-base.noop',
+			type: 'MNI-nodes-base.noop',
 			typeVersion: 1,
 			position: [0, 0] as [number, number],
 			parameters: { width: 9999, height: 9999 },

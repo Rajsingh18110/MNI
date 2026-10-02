@@ -1,8 +1,8 @@
 import { READY_TO_RUN_V2_P3_EXPERIMENT } from '@/app/constants';
-import { useCloudPlanStore } from '@n8n/stores/cloudPlan.store';
+import { useCloudPlanStore } from '@MNI/stores/cloudPlan.store';
 import { usePostHog } from '@/app/stores/posthog.store';
-import type { WorkflowDataCreate } from '@n8n/rest-api-client';
-import { STORES } from '@n8n/stores';
+import type { WorkflowDataCreate } from '@MNI/rest-api-client';
+import { STORES } from '@MNI/stores';
 import { defineStore } from 'pinia';
 import { computed } from 'vue';
 import { READY_TO_RUN_WORKFLOW_V5 } from '../workflows/ai-workflow-v5';

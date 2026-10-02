@@ -2,7 +2,7 @@ import { setActivePinia } from 'pinia';
 import { createTestingPinia } from '@pinia/testing';
 import { computed, nextTick, shallowRef } from 'vue';
 import { waitFor } from '@testing-library/vue';
-import { createRunExecutionData, NodeConnectionTypes } from 'n8n-workflow';
+import { createRunExecutionData, NodeConnectionTypes } from 'MNI-workflow';
 
 import { useLogsSelection } from './useLogsSelection';
 import { createLogTree, flattenLogEntries } from '../logs.utils';
@@ -21,7 +21,7 @@ import {
 	createTestWorkflowObject,
 } from '@/__tests__/mocks';
 
-vi.mock('@n8n/composables/useTelemetry', () => ({
+vi.mock('@MNI/composables/useTelemetry', () => ({
 	useTelemetry: () => ({ track: vi.fn() }),
 }));
 

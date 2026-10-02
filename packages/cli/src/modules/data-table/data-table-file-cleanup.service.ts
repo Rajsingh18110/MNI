@@ -1,8 +1,8 @@
-import { safeJoinPath } from '@n8n/backend-common';
-import { GlobalConfig } from '@n8n/config';
-import { Service } from '@n8n/di';
+import { safeJoinPath } from '@MNI/backend-common';
+import { GlobalConfig } from '@MNI/config';
+import { Service } from '@MNI/di';
 import { promises as fs } from 'fs';
-import { InstanceSettings } from 'n8n-core';
+import { InstanceSettings } from 'MNI-core';
 
 @Service()
 export class DataTableFileCleanupService {

@@ -6,8 +6,8 @@ import type {
 	INodeType,
 	INodeTypeDescription,
 	JsonObject,
-} from 'n8n-workflow';
-import { toPathSegment, NodeConnectionTypes, NodeApiError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { toPathSegment, NodeConnectionTypes, NodeApiError } from 'MNI-workflow';
 
 import { parseAndResolveQueryParameters } from '@utils/query-parameters';
 

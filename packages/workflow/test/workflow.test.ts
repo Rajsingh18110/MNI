@@ -998,7 +998,7 @@ describe('Workflow', () => {
 					nodes: [
 						{
 							name: 'Node1',
-							type: 'n8n-nodes-base.code',
+							type: 'MNI-nodes-base.code',
 							parameters: {
 								jsCode: '$("Node1").params',
 							},
@@ -1010,7 +1010,7 @@ describe('Workflow', () => {
 					nodes: [
 						{
 							name: 'Node1New',
-							type: 'n8n-nodes-base.code',
+							type: 'MNI-nodes-base.code',
 							parameters: {
 								jsCode: '$("Node1New").params',
 							},
@@ -1027,7 +1027,7 @@ describe('Workflow', () => {
 					nodes: [
 						{
 							name: 'Node1',
-							type: 'n8n-nodes-base.html',
+							type: 'MNI-nodes-base.html',
 							parameters: {
 								html: '$("Node1").params',
 							},
@@ -1039,7 +1039,7 @@ describe('Workflow', () => {
 					nodes: [
 						{
 							name: 'Node1New',
-							type: 'n8n-nodes-base.html',
+							type: 'MNI-nodes-base.html',
 							parameters: {
 								html: '$("Node1New").params',
 							},
@@ -1056,7 +1056,7 @@ describe('Workflow', () => {
 					nodes: [
 						{
 							name: 'Node1',
-							type: 'n8n-nodes-base.form',
+							type: 'MNI-nodes-base.form',
 							parameters: {
 								formFields: {
 									values: [
@@ -1076,7 +1076,7 @@ describe('Workflow', () => {
 					nodes: [
 						{
 							name: 'Node1New',
-							type: 'n8n-nodes-base.form',
+							type: 'MNI-nodes-base.form',
 							parameters: {
 								formFields: {
 									values: [
@@ -1743,7 +1743,7 @@ describe('Workflow', () => {
 
 		for (const testData of tests) {
 			test(testData.description, async () => {
-				process.env.N8N_BLOCK_ENV_ACCESS_IN_NODE = 'false';
+				process.env.MNI_BLOCK_ENV_ACCESS_IN_NODE = 'false';
 
 				const nodes: INode[] = [
 					{
@@ -2769,23 +2769,23 @@ describe('Workflow', () => {
 	describe('getStartNode', () => {
 		const manualTriggerNode = mock<INode>({
 			name: 'ManualTrigger',
-			type: 'n8n-nodes-base.manualTrigger',
+			type: 'MNI-nodes-base.manualTrigger',
 		});
 		const scheduleTriggerNode = mock<INode>({
 			name: 'ScheduleTrigger',
-			type: 'n8n-nodes-base.scheduleTrigger',
+			type: 'MNI-nodes-base.scheduleTrigger',
 		});
 		const httpRequestNode = mock<INode>({
 			name: 'HTTP Request',
-			type: 'n8n-nodes-base.httpRequest',
+			type: 'MNI-nodes-base.httpRequest',
 		});
 		const set1Node = mock<INode>({
 			name: 'Set1',
-			type: 'n8n-nodes-base.set',
+			type: 'MNI-nodes-base.set',
 		});
 		const disabledSetNode = mock<INode>({
 			name: 'Set Disabled',
-			type: 'n8n-nodes-base.set',
+			type: 'MNI-nodes-base.set',
 			disabled: true,
 		});
 
@@ -3173,7 +3173,7 @@ describe('Workflow', () => {
 					{
 						id: 'aiAgent1',
 						name: 'AI Agent',
-						type: '@n8n/n8n-nodes-langchain.agent',
+						type: '@MNI/MNI-nodes-langchain.agent',
 						typeVersion: 1.8,
 						position: [0, 0],
 						parameters: {},
@@ -3181,7 +3181,7 @@ describe('Workflow', () => {
 					{
 						id: 'tool1',
 						name: 'Tool1',
-						type: '@n8n/n8n-nodes-langchain.toolWikipedia',
+						type: '@MNI/MNI-nodes-langchain.toolWikipedia',
 						typeVersion: 1,
 						position: [100, 0],
 						parameters: {},
@@ -3189,7 +3189,7 @@ describe('Workflow', () => {
 					{
 						id: 'tool2',
 						name: 'Tool2',
-						type: '@n8n/n8n-nodes-langchain.toolCalculator',
+						type: '@MNI/MNI-nodes-langchain.toolCalculator',
 						typeVersion: 1,
 						position: [200, 0],
 						parameters: {},
@@ -3230,7 +3230,7 @@ describe('Workflow', () => {
 						{
 							id: 'aiAgent1',
 							name: 'AI Agent',
-							type: '@n8n/n8n-nodes-langchain.agent',
+							type: '@MNI/MNI-nodes-langchain.agent',
 							typeVersion: 1.8,
 							position: [0, 0],
 							parameters: {},
@@ -3238,7 +3238,7 @@ describe('Workflow', () => {
 						{
 							id: 'tool1',
 							name: 'Tool1',
-							type: '@n8n/n8n-nodes-langchain.toolCalculator',
+							type: '@MNI/MNI-nodes-langchain.toolCalculator',
 							typeVersion: 1,
 							position: [100, 0],
 							parameters: {},
@@ -3246,7 +3246,7 @@ describe('Workflow', () => {
 						{
 							id: 'tool2',
 							name: 'Tool2',
-							type: '@n8n/n8n-nodes-langchain.toolWikipedia',
+							type: '@MNI/MNI-nodes-langchain.toolWikipedia',
 							typeVersion: 1,
 							position: [200, 0],
 							parameters: {},
@@ -3300,7 +3300,7 @@ describe('Workflow', () => {
 					{
 						id: 'aiAgent1',
 						name: 'AI Agent',
-						type: '@n8n/n8n-nodes-langchain.agent',
+						type: '@MNI/MNI-nodes-langchain.agent',
 						typeVersion: 1.8,
 						position: [0, 0],
 						parameters: {},
@@ -3308,7 +3308,7 @@ describe('Workflow', () => {
 					{
 						id: 'tool1',
 						name: 'ZZZ Tool', // Intentionally named to come last alphabetically
-						type: '@n8n/n8n-nodes-langchain.toolCalculator',
+						type: '@MNI/MNI-nodes-langchain.toolCalculator',
 						typeVersion: 1,
 						position: [100, 0],
 						parameters: {},
@@ -3316,7 +3316,7 @@ describe('Workflow', () => {
 					{
 						id: 'tool2',
 						name: 'AAA Tool', // Intentionally named to come first alphabetically
-						type: '@n8n/n8n-nodes-langchain.toolWikipedia',
+						type: '@MNI/MNI-nodes-langchain.toolWikipedia',
 						typeVersion: 1,
 						position: [200, 0],
 						parameters: {},
@@ -3369,7 +3369,7 @@ describe('Workflow', () => {
 					{
 						id: 'aiAgent1',
 						name: 'ChatGPT Agent',
-						type: '@n8n/n8n-nodes-langchain.agent',
+						type: '@MNI/MNI-nodes-langchain.agent',
 						typeVersion: 1.8,
 						position: [0, 0],
 						parameters: {},
@@ -3377,7 +3377,7 @@ describe('Workflow', () => {
 					{
 						id: 'calculatorTool',
 						name: 'Calculator Tool',
-						type: '@n8n/n8n-nodes-langchain.toolCalculator',
+						type: '@MNI/MNI-nodes-langchain.toolCalculator',
 						typeVersion: 1,
 						position: [100, 0],
 						parameters: {},
@@ -3385,7 +3385,7 @@ describe('Workflow', () => {
 					{
 						id: 'wikipediaTool',
 						name: 'Wikipedia Tool',
-						type: '@n8n/n8n-nodes-langchain.toolWikipedia',
+						type: '@MNI/MNI-nodes-langchain.toolWikipedia',
 						typeVersion: 1,
 						position: [100, 100],
 						parameters: {},

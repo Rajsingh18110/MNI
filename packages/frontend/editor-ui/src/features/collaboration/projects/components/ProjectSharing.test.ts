@@ -4,13 +4,13 @@ import { createComponentRenderer } from '@/__tests__/render';
 import { getDropdownItems, getSelectedDropdownValue } from '@/__tests__/utils';
 import { createProjectListItem, createProjectSharingData } from '../__tests__/utils';
 import ProjectSharing from './ProjectSharing.vue';
-import type { AllRolesMap } from '@n8n/permissions';
-import { i18n, useI18n } from '@n8n/i18n';
-import type * as I18nModule from '@n8n/i18n';
+import type { AllRolesMap } from '@MNI/permissions';
+import { i18n, useI18n } from '@MNI/i18n';
+import type * as I18nModule from '@MNI/i18n';
 import type { ProjectListItem } from '../projects.types';
 import type { ProjectSearchFn } from '../projects.utils';
 
-vi.mock('@n8n/i18n', async (importOriginal) => {
+vi.mock('@MNI/i18n', async (importOriginal) => {
 	const actual = await importOriginal<typeof I18nModule>();
 	return {
 		...actual,

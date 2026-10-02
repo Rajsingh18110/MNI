@@ -1,4 +1,4 @@
-import type { GlobalConfig } from '@n8n/config';
+import type { GlobalConfig } from '@MNI/config';
 import { JsonWebTokenError, TokenExpiredError } from 'jsonwebtoken';
 import { mock } from 'vitest-mock-extended';
 import { ZodError } from 'zod';

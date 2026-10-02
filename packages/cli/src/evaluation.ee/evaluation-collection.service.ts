@@ -7,10 +7,10 @@ import type {
 	EvaluationCollectionRunSummary,
 	MetricScale,
 	UpdateEvaluationCollectionPayload,
-} from '@n8n/api-types';
-import { metricScalesFromConfig, normalizeMetricScore } from '@n8n/api-types';
-import { Logger } from '@n8n/backend-common';
-import type { EvaluationConfig, TestRun, User } from '@n8n/db';
+} from '@MNI/api-types';
+import { metricScalesFromConfig, normalizeMetricScore } from '@MNI/api-types';
+import { Logger } from '@MNI/backend-common';
+import type { EvaluationConfig, TestRun, User } from '@MNI/db';
 import {
 	DbLock,
 	DbLockService,
@@ -19,10 +19,10 @@ import {
 	TestRunRepository,
 	WorkflowHistoryRepository,
 	WorkflowPublishedVersionRepository,
-} from '@n8n/db';
-import { Service } from '@n8n/di';
-import { In } from '@n8n/typeorm';
-import { OperationalError, type IDataObject } from 'n8n-workflow';
+} from '@MNI/db';
+import { Service } from '@MNI/di';
+import { In } from '@MNI/typeorm';
+import { OperationalError, type IDataObject } from 'MNI-workflow';
 import { nanoid } from 'nanoid';
 
 import { BadRequestError } from '@/errors/response-errors/bad-request.error';

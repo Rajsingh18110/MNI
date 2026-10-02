@@ -1,6 +1,6 @@
 import { ref } from 'vue';
 
-export const OVERRIDES_STORAGE_KEY = 'N8N_EXPERIMENT_OVERRIDES';
+export const OVERRIDES_STORAGE_KEY = 'MNI_EXPERIMENT_OVERRIDES';
 
 export type FlagValue = boolean | string;
 

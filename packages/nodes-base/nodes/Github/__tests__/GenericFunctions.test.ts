@@ -1,5 +1,5 @@
-import type { IExecuteFunctions, IHookFunctions } from 'n8n-workflow';
-import { NodeApiError, NodeOperationError } from 'n8n-workflow';
+import type { IExecuteFunctions, IHookFunctions } from 'MNI-workflow';
+import { NodeApiError, NodeOperationError } from 'MNI-workflow';
 
 import {
 	githubApiRequest,

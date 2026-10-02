@@ -1,5 +1,5 @@
 import { mock } from 'vitest-mock-extended';
-import type { ILoadOptionsFunctions } from 'n8n-workflow';
+import type { ILoadOptionsFunctions } from 'MNI-workflow';
 
 import { getWorksheetColumnRow } from '../../../v2/methods/loadOptions';
 import { microsoftApiRequest } from '../../../v2/transport';

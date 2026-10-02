@@ -1,7 +1,7 @@
-import type { Logger } from '@n8n/backend-common';
-import type { HttpRequestClient, OutboundHttp } from '@n8n/backend-network';
-import { mockInstance } from '@n8n/backend-test-utils';
-import type { InstanceSettings, PackageDirectoryLoader } from 'n8n-core';
+import type { Logger } from '@MNI/backend-common';
+import type { HttpRequestClient, OutboundHttp } from '@MNI/backend-network';
+import { mockInstance } from '@MNI/backend-test-utils';
+import type { InstanceSettings, PackageDirectoryLoader } from 'MNI-core';
 import { execFile } from 'node:child_process';
 import { readFile, rm, writeFile } from 'node:fs/promises';
 import path from 'node:path';
@@ -35,12 +35,12 @@ vi.mock('../npm-utils', async () => ({
 type ExecFileCallback = NonNullable<Parameters<typeof execFile>[3]>;
 
 describe('CommunityPackagesService pubsub handlers', () => {
-	const PACKAGE_NAME = 'n8n-nodes-test';
+	const PACKAGE_NAME = 'MNI-nodes-test';
 	const PACKAGE_VERSION = '1.0.0';
 	const REGISTRY = 'https://registry.npmjs.org';
 	const TARBALL_NAME = `${PACKAGE_NAME}-1.0.0.tgz`;
 
-	const nodesDownloadDir = path.join('tmp', 'n8n-vi-pubsub-downloads');
+	const nodesDownloadDir = path.join('tmp', 'MNI-vi-pubsub-downloads');
 	const instanceSettings = mock<InstanceSettings>({ nodesDownloadDir });
 	const logger = mock<Logger>();
 	const publisher = mock<Publisher>();
@@ -226,7 +226,7 @@ describe('CommunityPackagesService pubsub handlers', () => {
 	test.each([
 		['leading segment is not a valid scope', `../${PACKAGE_NAME}`, PACKAGE_VERSION],
 		['required prefix is missing', 'some-other-package', PACKAGE_VERSION],
-		['name is not a single word', 'n8n-nodes-With Space', PACKAGE_VERSION],
+		['name is not a single word', 'MNI-nodes-With Space', PACKAGE_VERSION],
 	])('should not install a package when the %s', async (_label, packageName, packageVersion) => {
 		const service = createService();
 		// Arranged so the stored-record guard passes and only the name guard can refuse.
@@ -416,7 +416,7 @@ describe('CommunityPackagesService pubsub handlers', () => {
 		'../../etc',
 		'some-other-package',
 		`@scope/${PACKAGE_NAME}/..`,
-		`${PACKAGE_NAME}/../../node_modules/n8n-nodes-other`,
+		`${PACKAGE_NAME}/../../node_modules/MNI-nodes-other`,
 	])('should not uninstall the package "%s"', async (packageName) => {
 		const service = createService();
 

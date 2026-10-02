@@ -1,12 +1,12 @@
-import type { Logger } from '@n8n/backend-common';
-import type { OutboundHttp } from '@n8n/backend-network';
-import { mockInstance } from '@n8n/backend-test-utils';
-import type { GlobalConfig } from '@n8n/config';
-import { ProjectRelationRepository, ProjectRepository, UserRepository } from '@n8n/db';
-import type { WorkflowRepository } from '@n8n/db';
-import { defineTelemetryEvents, TELEMETRY_EVENT } from '@n8n/telemetry';
+import type { Logger } from '@MNI/backend-common';
+import type { OutboundHttp } from '@MNI/backend-network';
+import { mockInstance } from '@MNI/backend-test-utils';
+import type { GlobalConfig } from '@MNI/config';
+import { ProjectRelationRepository, ProjectRepository, UserRepository } from '@MNI/db';
+import type { WorkflowRepository } from '@MNI/db';
+import { defineTelemetryEvents, TELEMETRY_EVENT } from '@MNI/telemetry';
 import type RudderStack from '@rudderstack/rudder-sdk-node';
-import { InstanceSettings } from 'n8n-core';
+import { InstanceSettings } from 'MNI-core';
 import type { MockInstance } from 'vitest';
 import { mock } from 'vitest-mock-extended';
 import { z } from 'zod/v4';
@@ -44,7 +44,7 @@ describe('Telemetry', () => {
 	beforeAll(() => {
 		vi.useFakeTimers();
 		vi.setSystemTime(testDateTime);
-		globalConfig.deployment.type = 'n8n-testing';
+		globalConfig.deployment.type = 'MNI-testing';
 	});
 
 	afterAll(async () => {
@@ -257,7 +257,7 @@ describe('Telemetry', () => {
 			expect(execBuffer['1'].manual_error?.count).toBe(2);
 			expect(execBuffer['1'].manual_error?.first).toEqual(execTime1);
 
-			payload.error_node_type = 'n8n-nodes-base.node-type';
+			payload.error_node_type = 'MNI-nodes-base.node-type';
 			fakeTestSystemTime('2022-01-01 13:00:00');
 			telemetry.trackWorkflowExecution(payload);
 			fakeTestSystemTime('2022-01-01 12:30:00');
@@ -295,7 +295,7 @@ describe('Telemetry', () => {
 			expect(execBuffer['1'].prod_success?.first).toEqual(execTime1);
 
 			// successful execution MNI node
-			payload.error_node_type = 'n8n-nodes-base.merge';
+			payload.error_node_type = 'MNI-nodes-base.merge';
 			payload.workflow_id = '2';
 
 			telemetry.trackWorkflowExecution(payload);
@@ -314,12 +314,12 @@ describe('Telemetry', () => {
 			expect(execBuffer['2'].prod_success?.first).toEqual(execTime1);
 
 			// additional successful execution
-			payload.error_node_type = 'n8n-nodes-base.merge';
+			payload.error_node_type = 'MNI-nodes-base.merge';
 			payload.workflow_id = '2';
 
 			telemetry.trackWorkflowExecution(payload);
 
-			payload.error_node_type = 'n8n-nodes-base.merge';
+			payload.error_node_type = 'MNI-nodes-base.merge';
 			payload.workflow_id = '1';
 
 			telemetry.trackWorkflowExecution(payload);
@@ -366,7 +366,7 @@ describe('Telemetry', () => {
 
 			// failed execution MNI node
 			payload.success = false;
-			payload.error_node_type = 'n8n-nodes-base.merge';
+			payload.error_node_type = 'MNI-nodes-base.merge';
 			payload.is_manual = true;
 			telemetry.trackWorkflowExecution(payload);
 
@@ -394,7 +394,7 @@ describe('Telemetry', () => {
 				is_manual: true,
 				success: false,
 				crashed: true,
-				error_node_type: 'n8n-nodes-base.node-type',
+				error_node_type: 'MNI-nodes-base.node-type',
 			};
 
 			// Manual crashed execution
@@ -410,7 +410,7 @@ describe('Telemetry', () => {
 			fakeTestSystemTime('2022-01-01 13:30:00');
 			telemetry.trackWorkflowExecution(payload);
 
-			// Should fire "Workflow execution errored" events for manual crashed executions with n8n-nodes-base
+			// Should fire "Workflow execution errored" events for manual crashed executions with MNI-nodes-base
 			expect(spyTrack).toHaveBeenCalledTimes(2);
 
 			const execBuffer = telemetry.getCountsBuffer();
@@ -433,7 +433,7 @@ describe('Telemetry', () => {
 				is_manual: true,
 				success: false,
 				crashed: true,
-				error_node_type: 'n8n-nodes-base.node-type',
+				error_node_type: 'MNI-nodes-base.node-type',
 			};
 
 			const payload2 = {
@@ -441,7 +441,7 @@ describe('Telemetry', () => {
 				is_manual: false,
 				success: false,
 				crashed: true,
-				error_node_type: 'n8n-nodes-base.another-node',
+				error_node_type: 'MNI-nodes-base.another-node',
 			};
 
 			const execTime1 = fakeTestSystemTime('2022-01-01 12:00:00');
@@ -450,7 +450,7 @@ describe('Telemetry', () => {
 			const execTime2 = fakeTestSystemTime('2022-01-01 13:00:00');
 			telemetry.trackWorkflowExecution(payload2);
 
-			// Should fire one "Workflow execution errored" event for manual crashed execution with n8n-nodes-base
+			// Should fire one "Workflow execution errored" event for manual crashed execution with MNI-nodes-base
 			expect(spyTrack).toHaveBeenCalledTimes(1);
 
 			const execBuffer = telemetry.getCountsBuffer();
@@ -604,7 +604,7 @@ describe('Telemetry', () => {
 			tool_types: ['custom'],
 			tool_count: 1,
 			num_skills: 2,
-			memory_type: 'n8n_observational' as const,
+			memory_type: 'MNI_observational' as const,
 		};
 
 		test('should buffer agent session metrics without tracking immediately', () => {
@@ -889,7 +889,7 @@ describe('Telemetry', () => {
 				path: '/workflows',
 				method: 'GET',
 				api_version: 'v1',
-				user_agent: 'n8n-cli/1.0',
+				user_agent: 'MNI-cli/1.0',
 			});
 
 			telemetry.trackApiInvocation({
@@ -897,7 +897,7 @@ describe('Telemetry', () => {
 				path: '/workflows',
 				method: 'GET',
 				api_version: 'v1',
-				user_agent: 'n8n-cli/1.0',
+				user_agent: 'MNI-cli/1.0',
 			});
 
 			telemetry.trackApiInvocation({
@@ -914,7 +914,7 @@ describe('Telemetry', () => {
 			expect(buffer['user1'].first).toEqual(execTime1);
 			expect(buffer['user1'].endpoints['GET /workflows']).toBe(2);
 			expect(buffer['user1'].endpoints['POST /executions']).toBe(1);
-			expect(buffer['user1'].user_agents['n8n-cli/1.0']).toBe(2);
+			expect(buffer['user1'].user_agents['MNI-cli/1.0']).toBe(2);
 			expect(buffer['user1'].user_agents['custom-app/2.0']).toBe(1);
 		});
 
@@ -938,7 +938,7 @@ describe('Telemetry', () => {
 				path: '/workflows',
 				method: 'GET',
 				api_version: 'v1',
-				user_agent: 'n8n-cli/1.0',
+				user_agent: 'MNI-cli/1.0',
 			});
 
 			telemetry.trackApiInvocation({

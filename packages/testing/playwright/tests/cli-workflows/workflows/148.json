@@ -8,7 +8,7 @@
 		{
 			"parameters": {},
 			"name": "Start",
-			"type": "n8n-nodes-base.manualTrigger",
+			"type": "MNI-nodes-base.manualTrigger",
 			"typeVersion": 1,
 			"position": [250, 300],
 			"id": "e3254a53-50f2-42df-925a-f7f4ac8d0a50"
@@ -24,7 +24,7 @@
 				}
 			},
 			"name": "DeepL",
-			"type": "n8n-nodes-base.deepL",
+			"type": "MNI-nodes-base.deepL",
 			"typeVersion": 1,
 			"position": [450, 300],
 			"credentials": {
@@ -40,7 +40,7 @@
 				"functionCode": "testData ='MNI (ausgesprochen n-eight-n) hilft Ihnen, jede App mit einer API auf der Welt miteinander zu verbinden, um ihre Daten ohne eine einzige Zeile Code zu teilen und zu manipulieren. Es ist ein einfach zu bedienender, benutzerfreundlicher und hochgradig anpassbarer Dienst.'\nif(items[0].json['text'] !== testData){\n  throw new Error('Problem in DeepL node')\n}\nreturn items;"
 			},
 			"name": "Function",
-			"type": "n8n-nodes-base.function",
+			"type": "MNI-nodes-base.function",
 			"typeVersion": 1,
 			"position": [650, 300],
 			"id": "2672ca93-3052-4bc7-9145-f0f25405378d"

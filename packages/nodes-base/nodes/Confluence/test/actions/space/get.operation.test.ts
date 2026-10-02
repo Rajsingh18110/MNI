@@ -1,5 +1,5 @@
-import type { IExecuteFunctions, IGetNodeParameterOptions, INode } from 'n8n-workflow';
-import { NodeOperationError } from 'n8n-workflow';
+import type { IExecuteFunctions, IGetNodeParameterOptions, INode } from 'MNI-workflow';
+import { NodeOperationError } from 'MNI-workflow';
 import { mockDeep } from 'vitest-mock-extended';
 
 import { execute } from '../../../actions/space/get.operation';
@@ -15,7 +15,7 @@ const apiRequest = vi.mocked(confluenceApiRequest);
 const mockNode: INode = {
 	id: 'test-node',
 	name: 'Test Confluence Node',
-	type: 'n8n-nodes-base.confluence',
+	type: 'MNI-nodes-base.confluence',
 	typeVersion: 1,
 	position: [0, 0],
 	parameters: {},

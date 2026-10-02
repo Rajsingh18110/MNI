@@ -1,4 +1,4 @@
-import type { INodeProperties, INodePropertyCollection, INodePropertyOptions } from 'n8n-workflow';
+import type { INodeProperties, INodePropertyCollection, INodePropertyOptions } from 'MNI-workflow';
 
 import { appendAttributionOption } from '../../utils/descriptions';
 
@@ -684,7 +684,7 @@ export const respondWithOptions: INodeProperties = {
 					},
 				},
 				{
-					// eslint-disable-next-line n8n-nodes-base/node-param-display-name-miscased
+					// eslint-disable-next-line MNI-nodes-base/node-param-display-name-miscased
 					displayName: 'URL to Redirect to',
 					name: 'redirectUrl',
 					description:

@@ -15,7 +15,7 @@
 
 import { parseArgs } from 'node:util';
 
-const MARKER = '<!-- n8n-qa-metrics-comparison -->';
+const MARKER = '<!-- MNI-qa-metrics-comparison -->';
 
 const { values } = parseArgs({
 	options: {
@@ -45,7 +45,7 @@ if (!webhookUrl) {
 	process.exit(1);
 }
 
-const repo = process.env.GITHUB_REPOSITORY ?? 'n8n-io/n8n';
+const repo = process.env.GITHUB_REPOSITORY ?? 'MNI-io/MNI';
 const sha = process.env.GITHUB_SHA?.slice(0, 8) ?? '';
 const baselineDays = parseInt(values['baseline-days'], 10);
 

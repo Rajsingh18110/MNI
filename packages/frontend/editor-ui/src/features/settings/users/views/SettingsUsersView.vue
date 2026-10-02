@@ -6,24 +6,24 @@ import {
 	type UsersListSortOptions,
 	type User,
 	USERS_LIST_SORT_OPTIONS,
-} from '@n8n/api-types';
-import type { UserAction } from '@n8n/design-system';
-import type { TableOptions } from '@n8n/design-system';
-import { getDebounceTime } from '@n8n/composables/useDebounce';
+} from '@MNI/api-types';
+import type { UserAction } from '@MNI/design-system';
+import type { TableOptions } from '@MNI/design-system';
+import { getDebounceTime } from '@MNI/composables/useDebounce';
 import { DEBOUNCE_TIME, EnterpriseEditionFeature, MODAL_CONFIRM } from '@/app/constants';
 import { DELETE_USER_MODAL_KEY, INVITE_USER_MODAL_KEY } from '../users.constants';
 import type { InvitableRoleName } from '../users.types';
-import type { IUser } from '@n8n/rest-api-client/api/users';
-import { useToast } from '@n8n/composables/useToast';
+import type { IUser } from '@MNI/rest-api-client/api/users';
+import { useToast } from '@MNI/composables/useToast';
 import { useUIStore } from '@/app/stores/ui.store';
-import { useSettingsStore } from '@n8n/stores/settings.store';
-import { useRolesStore } from '@n8n/stores/roles.store';
-import { useUsersStore } from '@n8n/stores/users.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
+import { useRolesStore } from '@MNI/stores/roles.store';
+import { useUsersStore } from '@MNI/stores/users.store';
 import { copyInviteLink } from '../invite-link.utils';
 import { useSSOStore } from '@/features/settings/sso/sso.store';
 import { hasPermission } from '@/app/utils/rbac/permissions';
-import { useClipboard } from '@n8n/composables/useClipboard';
-import { useI18n } from '@n8n/i18n';
+import { useClipboard } from '@MNI/composables/useClipboard';
+import { useI18n } from '@MNI/i18n';
 import { useDocumentTitle } from '@/app/composables/useDocumentTitle';
 import { usePageRedirectionHelper } from '@/app/composables/usePageRedirectionHelper';
 import SettingsUsersTable from '../components/SettingsUsersTable.vue';
@@ -40,7 +40,7 @@ import {
 	N8nNotice,
 	N8nText,
 	N8nTooltip,
-} from '@n8n/design-system';
+} from '@MNI/design-system';
 import { useMessage } from '@/app/composables/useMessage';
 
 const clipboard = useClipboard();

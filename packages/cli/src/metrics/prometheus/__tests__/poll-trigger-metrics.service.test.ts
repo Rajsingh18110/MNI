@@ -1,6 +1,6 @@
-import { mockInstance } from '@n8n/backend-test-utils';
-import { PrometheusMetricsConfig } from '@n8n/config';
-import type { InstanceSettings, TriggersAndPollers } from 'n8n-core';
+import { mockInstance } from '@MNI/backend-test-utils';
+import { PrometheusMetricsConfig } from '@MNI/config';
+import type { InstanceSettings, TriggersAndPollers } from 'MNI-core';
 import promClient from 'prom-client';
 import type { Mock } from 'vitest';
 import { mock } from 'vitest-mock-extended';
@@ -13,7 +13,7 @@ vi.mock('prom-client');
 
 describe('PrometheusPollTriggerMetricsService', () => {
 	const config = mockInstance(PrometheusMetricsConfig, {
-		prefix: 'n8n_',
+		prefix: 'MNI_',
 		includePollTriggerMetrics: true,
 	});
 	const instanceSettings = mock<InstanceSettings>({ instanceType: 'main' });
@@ -28,7 +28,7 @@ describe('PrometheusPollTriggerMetricsService', () => {
 	const histogramObserveByName = new Map<string, Mock>();
 
 	beforeEach(() => {
-		Object.assign(config, { prefix: 'n8n_', includePollTriggerMetrics: true });
+		Object.assign(config, { prefix: 'MNI_', includePollTriggerMetrics: true });
 		Object.assign(instanceSettings, { instanceType: 'main' });
 
 		service = new PrometheusPollTriggerMetricsService(
@@ -107,18 +107,18 @@ describe('PrometheusPollTriggerMetricsService', () => {
 			const counterNames = counterCtor.mock.calls.map((c) => c[0].name);
 			expect(counterNames).toEqual(
 				expect.arrayContaining([
-					'n8n_poll_trigger_errors_total',
-					'n8n_poll_trigger_overlapping_ticks_total',
-					'n8n_poll_trigger_timeouts_total',
-					'n8n_poll_trigger_cursor_commits_total',
+					'MNI_poll_trigger_errors_total',
+					'MNI_poll_trigger_overlapping_ticks_total',
+					'MNI_poll_trigger_timeouts_total',
+					'MNI_poll_trigger_cursor_commits_total',
 				]),
 			);
 
 			const histogramNames = histogramCtor.mock.calls.map((c) => c[0].name);
 			expect(histogramNames).toEqual(
 				expect.arrayContaining([
-					'n8n_poll_trigger_duration_seconds',
-					'n8n_poll_trigger_cursor_commit_duration_seconds',
+					'MNI_poll_trigger_duration_seconds',
+					'MNI_poll_trigger_cursor_commit_duration_seconds',
 				]),
 			);
 		});
@@ -148,37 +148,37 @@ describe('PrometheusPollTriggerMetricsService', () => {
 			service.init();
 
 			getPollTickHandler()({
-				nodeType: 'n8n-nodes-base.testPoll',
+				nodeType: 'MNI-nodes-base.testPoll',
 				status: 'success',
 				durationMs: 250,
 				overlapped: false,
 			});
 
-			expect(histogramObserveFor('n8n_poll_trigger_duration_seconds')).toHaveBeenCalledWith(
-				{ node_type: 'n8n-nodes-base.testPoll', status: 'success' },
+			expect(histogramObserveFor('MNI_poll_trigger_duration_seconds')).toHaveBeenCalledWith(
+				{ node_type: 'MNI-nodes-base.testPoll', status: 'success' },
 				0.25,
 			);
-			expect(counterIncFor('n8n_poll_trigger_errors_total')).not.toHaveBeenCalled();
-			expect(counterIncFor('n8n_poll_trigger_overlapping_ticks_total')).not.toHaveBeenCalled();
+			expect(counterIncFor('MNI_poll_trigger_errors_total')).not.toHaveBeenCalled();
+			expect(counterIncFor('MNI_poll_trigger_overlapping_ticks_total')).not.toHaveBeenCalled();
 		});
 
 		it('counts an error tick by node type and error kind', () => {
 			service.init();
 
 			getPollTickHandler()({
-				nodeType: 'n8n-nodes-base.testPoll',
+				nodeType: 'MNI-nodes-base.testPoll',
 				status: 'error',
 				errorKind: 'rate_limited',
 				durationMs: 100,
 				overlapped: false,
 			});
 
-			expect(counterIncFor('n8n_poll_trigger_errors_total')).toHaveBeenCalledWith({
-				node_type: 'n8n-nodes-base.testPoll',
+			expect(counterIncFor('MNI_poll_trigger_errors_total')).toHaveBeenCalledWith({
+				node_type: 'MNI-nodes-base.testPoll',
 				kind: 'rate_limited',
 			});
-			expect(histogramObserveFor('n8n_poll_trigger_duration_seconds')).toHaveBeenCalledWith(
-				{ node_type: 'n8n-nodes-base.testPoll', status: 'error' },
+			expect(histogramObserveFor('MNI_poll_trigger_duration_seconds')).toHaveBeenCalledWith(
+				{ node_type: 'MNI-nodes-base.testPoll', status: 'error' },
 				0.1,
 			);
 		});
@@ -187,14 +187,14 @@ describe('PrometheusPollTriggerMetricsService', () => {
 			service.init();
 
 			getPollTickHandler()({
-				nodeType: 'n8n-nodes-base.testPoll',
+				nodeType: 'MNI-nodes-base.testPoll',
 				status: 'success',
 				durationMs: 50,
 				overlapped: true,
 			});
 
-			expect(counterIncFor('n8n_poll_trigger_overlapping_ticks_total')).toHaveBeenCalledWith({
-				node_type: 'n8n-nodes-base.testPoll',
+			expect(counterIncFor('MNI_poll_trigger_overlapping_ticks_total')).toHaveBeenCalledWith({
+				node_type: 'MNI-nodes-base.testPoll',
 			});
 		});
 	});
@@ -207,10 +207,10 @@ describe('PrometheusPollTriggerMetricsService', () => {
 				[string, (payload: unknown) => void]
 			>;
 			const handler = calls.find((c) => c[0] === 'poll-tick-timed-out')![1];
-			handler({ nodeType: 'n8n-nodes-base.testPoll' });
+			handler({ nodeType: 'MNI-nodes-base.testPoll' });
 
-			expect(counterIncFor('n8n_poll_trigger_timeouts_total')).toHaveBeenCalledWith({
-				node_type: 'n8n-nodes-base.testPoll',
+			expect(counterIncFor('MNI_poll_trigger_timeouts_total')).toHaveBeenCalledWith({
+				node_type: 'MNI-nodes-base.testPoll',
 			});
 		});
 	});
@@ -225,12 +225,12 @@ describe('PrometheusPollTriggerMetricsService', () => {
 				durationMs: 40,
 			});
 
-			expect(counterIncFor('n8n_poll_trigger_cursor_commits_total')).toHaveBeenCalledWith({
+			expect(counterIncFor('MNI_poll_trigger_cursor_commits_total')).toHaveBeenCalledWith({
 				operation: 'with_execution',
 				result: 'fence_rejected',
 			});
 			expect(
-				histogramObserveFor('n8n_poll_trigger_cursor_commit_duration_seconds'),
+				histogramObserveFor('MNI_poll_trigger_cursor_commit_duration_seconds'),
 			).toHaveBeenCalledWith({ operation: 'with_execution', result: 'fence_rejected' }, 0.04);
 		});
 	});

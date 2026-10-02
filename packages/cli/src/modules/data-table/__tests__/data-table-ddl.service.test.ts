@@ -1,5 +1,5 @@
-import { testModules } from '@n8n/backend-test-utils';
-import type { DataSource, DataSourceOptions, EntityManager } from '@n8n/typeorm';
+import { testModules } from '@MNI/backend-test-utils';
+import type { DataSource, DataSourceOptions, EntityManager } from '@MNI/typeorm';
 import type { Mock, Mocked } from 'vitest';
 import { mock } from 'vitest-mock-extended';
 
@@ -53,20 +53,20 @@ describe('DataTableDDLService', () => {
 	describe('renameTable', () => {
 		beforeEach(() => {
 			(sqlUtils.toTableName as Mock).mockImplementation(
-				(id: string) => `n8n_data_table_user_${id}`,
+				(id: string) => `MNI_data_table_user_${id}`,
 			);
 		});
 
 		it('should execute the rename table query', async () => {
 			const expectedQuery =
-				'ALTER TABLE "n8n_data_table_user_oldId1" RENAME TO "n8n_data_table_user_newId1"';
+				'ALTER TABLE "MNI_data_table_user_oldId1" RENAME TO "MNI_data_table_user_newId1"';
 			(sqlUtils.renameTableQuery as Mock).mockReturnValue(expectedQuery);
 
 			await ddlService.renameTable('oldId1', 'newId1', 'postgres');
 
 			expect(sqlUtils.renameTableQuery).toHaveBeenCalledWith(
-				'n8n_data_table_user_oldId1',
-				'n8n_data_table_user_newId1',
+				'MNI_data_table_user_oldId1',
+				'MNI_data_table_user_newId1',
 				'postgres',
 			);
 			expect(mockEntityManager.query).toHaveBeenCalledWith(expectedQuery);
@@ -82,12 +82,12 @@ describe('DataTableDDLService', () => {
 
 	describe('tableExists', () => {
 		it('should check the physical table via the query runner', async () => {
-			(sqlUtils.toTableName as Mock).mockReturnValue('n8n_data_table_user_dt1');
+			(sqlUtils.toTableName as Mock).mockReturnValue('MNI_data_table_user_dt1');
 			const hasTable = vi.fn().mockResolvedValue(true);
 			(mockEntityManager as any).queryRunner = { hasTable };
 
 			await expect(ddlService.tableExists('dt1')).resolves.toBe(true);
-			expect(hasTable).toHaveBeenCalledWith('n8n_data_table_user_dt1');
+			expect(hasTable).toHaveBeenCalledWith('MNI_data_table_user_dt1');
 		});
 	});
 
@@ -95,7 +95,7 @@ describe('DataTableDDLService', () => {
 		const dataTableId = 'test-table-id';
 		const oldColumnName = 'old_column';
 		const newColumnName = 'new_column';
-		const tableName = 'n8n_data_table_user_test-table-id';
+		const tableName = 'MNI_data_table_user_test-table-id';
 
 		beforeEach(() => {
 			(sqlUtils.toTableName as Mock).mockReturnValue(tableName);
@@ -106,7 +106,7 @@ describe('DataTableDDLService', () => {
 				// Arrange
 				const dbType: DataSourceOptions['type'] = 'postgres';
 				const expectedQuery =
-					'ALTER TABLE "n8n_data_table_user_test-table-id" RENAME COLUMN "old_column" TO "new_column"';
+					'ALTER TABLE "MNI_data_table_user_test-table-id" RENAME COLUMN "old_column" TO "new_column"';
 
 				(sqlUtils.renameColumnQuery as Mock).mockReturnValue(expectedQuery);
 
@@ -128,7 +128,7 @@ describe('DataTableDDLService', () => {
 				// Arrange
 				const dbType: DataSourceOptions['type'] = 'sqlite';
 				const expectedQuery =
-					'ALTER TABLE "n8n_data_table_user_test-table-id" RENAME COLUMN "old_column" TO "new_column"';
+					'ALTER TABLE "MNI_data_table_user_test-table-id" RENAME COLUMN "old_column" TO "new_column"';
 
 				(sqlUtils.renameColumnQuery as Mock).mockReturnValue(expectedQuery);
 
@@ -149,7 +149,7 @@ describe('DataTableDDLService', () => {
 				// Arrange
 				const dbType: DataSourceOptions['type'] = 'postgres';
 				const expectedQuery =
-					'ALTER TABLE "n8n_data_table_user_test-table-id" RENAME COLUMN "old_column" TO "new_column"';
+					'ALTER TABLE "MNI_data_table_user_test-table-id" RENAME COLUMN "old_column" TO "new_column"';
 				const callOrder: string[] = [];
 
 				(sqlUtils.toTableName as Mock).mockImplementation(() => {
@@ -180,7 +180,7 @@ describe('DataTableDDLService', () => {
 				// Arrange
 				const dbType: DataSourceOptions['type'] = 'postgres';
 				const expectedQuery =
-					'ALTER TABLE "n8n_data_table_user_test-table-id" RENAME COLUMN "old_column" TO "new_column"';
+					'ALTER TABLE "MNI_data_table_user_test-table-id" RENAME COLUMN "old_column" TO "new_column"';
 				const customTrx = mock<EntityManager>();
 
 				customTrx.query = vi.fn().mockResolvedValue(undefined) as any;
@@ -204,7 +204,7 @@ describe('DataTableDDLService', () => {
 				// Arrange
 				const dbType: DataSourceOptions['type'] = 'postgres';
 				const expectedQuery =
-					'ALTER TABLE "n8n_data_table_user_test-table-id" RENAME COLUMN "old_column" TO "new_column"';
+					'ALTER TABLE "MNI_data_table_user_test-table-id" RENAME COLUMN "old_column" TO "new_column"';
 
 				(sqlUtils.renameColumnQuery as Mock).mockReturnValue(expectedQuery);
 
@@ -222,7 +222,7 @@ describe('DataTableDDLService', () => {
 				// Arrange
 				const dbType: DataSourceOptions['type'] = 'postgres';
 				const expectedQuery =
-					'ALTER TABLE "n8n_data_table_user_test-table-id" RENAME COLUMN "old_column" TO "new_column"';
+					'ALTER TABLE "MNI_data_table_user_test-table-id" RENAME COLUMN "old_column" TO "new_column"';
 				const queryError = new Error('Database query failed');
 
 				(sqlUtils.renameColumnQuery as Mock).mockReturnValue(expectedQuery);
@@ -262,7 +262,7 @@ describe('DataTableDDLService', () => {
 				const oldNameWithSpecialChars = 'old_column_2024';
 				const newNameWithSpecialChars = 'new_column_v2';
 				const expectedQuery =
-					'ALTER TABLE "n8n_data_table_user_test-table-id" RENAME COLUMN "old_column_2024" TO "new_column_v2"';
+					'ALTER TABLE "MNI_data_table_user_test-table-id" RENAME COLUMN "old_column_2024" TO "new_column_v2"';
 
 				(sqlUtils.renameColumnQuery as Mock).mockReturnValue(expectedQuery);
 
@@ -288,9 +288,9 @@ describe('DataTableDDLService', () => {
 				// Arrange
 				const dbType: DataSourceOptions['type'] = 'postgres';
 				const differentTableId = 'different-table-id';
-				const differentTableName = 'n8n_data_table_user_different-table-id';
+				const differentTableName = 'MNI_data_table_user_different-table-id';
 				const expectedQuery =
-					'ALTER TABLE "n8n_data_table_user_different-table-id" RENAME COLUMN "old_column" TO "new_column"';
+					'ALTER TABLE "MNI_data_table_user_different-table-id" RENAME COLUMN "old_column" TO "new_column"';
 
 				(sqlUtils.toTableName as Mock).mockReturnValue(differentTableName);
 				(sqlUtils.renameColumnQuery as Mock).mockReturnValue(expectedQuery);
@@ -317,12 +317,12 @@ describe('DataTableDDLService', () => {
 				{
 					dbType: 'postgres',
 					expectedQuery:
-						'ALTER TABLE "n8n_data_table_user_test-table-id" RENAME COLUMN "old_column" TO "new_column"',
+						'ALTER TABLE "MNI_data_table_user_test-table-id" RENAME COLUMN "old_column" TO "new_column"',
 				},
 				{
 					dbType: 'sqlite',
 					expectedQuery:
-						'ALTER TABLE "n8n_data_table_user_test-table-id" RENAME COLUMN "old_column" TO "new_column"',
+						'ALTER TABLE "MNI_data_table_user_test-table-id" RENAME COLUMN "old_column" TO "new_column"',
 				},
 			];
 
@@ -351,9 +351,9 @@ describe('DataTableDDLService', () => {
 				// Arrange
 				const dbType: DataSourceOptions['type'] = 'postgres';
 				const customTableId = 'custom-uuid-1234';
-				const expectedTableName = 'n8n_data_table_user_custom-uuid-1234';
+				const expectedTableName = 'MNI_data_table_user_custom-uuid-1234';
 				const expectedQuery =
-					'ALTER TABLE "n8n_data_table_user_custom-uuid-1234" RENAME COLUMN "old_column" TO "new_column"';
+					'ALTER TABLE "MNI_data_table_user_custom-uuid-1234" RENAME COLUMN "old_column" TO "new_column"';
 
 				(sqlUtils.toTableName as Mock).mockReturnValue(expectedTableName);
 				(sqlUtils.renameColumnQuery as Mock).mockReturnValue(expectedQuery);

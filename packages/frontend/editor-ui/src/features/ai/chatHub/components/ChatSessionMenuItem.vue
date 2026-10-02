@@ -4,10 +4,10 @@ import { unflattenModel } from '@/features/ai/chatHub/chat.utils';
 import ChatAgentAvatar from '@/features/ai/chatHub/components/ChatAgentAvatar.vue';
 import ChatSidebarLink from '@/features/ai/chatHub/components/ChatSidebarLink.vue';
 import { CHAT_CONVERSATION_VIEW } from '@/features/ai/chatHub/constants';
-import { type ChatModelDto, type ChatHubSessionDto } from '@n8n/api-types';
-import { N8nInput } from '@n8n/design-system';
-import type { ActionDropdownItem } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+import { type ChatModelDto, type ChatHubSessionDto } from '@MNI/api-types';
+import { N8nInput } from '@MNI/design-system';
+import type { ActionDropdownItem } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 import { computed, nextTick, ref, useTemplateRef, watch } from 'vue';
 
 const { session, isRenaming, active, compact } = defineProps<{

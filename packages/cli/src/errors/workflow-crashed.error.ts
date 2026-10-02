@@ -1,4 +1,4 @@
-import { WorkflowOperationError } from 'n8n-workflow';
+import { WorkflowOperationError } from 'MNI-workflow';
 
 export class WorkflowCrashedError extends WorkflowOperationError {
 	constructor() {

@@ -2,14 +2,14 @@ import { createTestingPinia } from '@pinia/testing';
 import { screen } from '@testing-library/vue';
 import userEvent from '@testing-library/user-event';
 import { vi } from 'vitest';
-import { BLOCK_ACCESS_ASSIGNMENT } from '@n8n/api-types';
-import type { AllRolesMap } from '@n8n/permissions';
+import { BLOCK_ACCESS_ASSIGNMENT } from '@MNI/api-types';
+import type { AllRolesMap } from '@MNI/permissions';
 import ProjectRoleAssignmentSelect from './ProjectRoleAssignmentSelect.vue';
 import { createComponentRenderer } from '@/__tests__/render';
 import { hasPermission } from '@/app/utils/rbac/permissions';
 
 // Expose the grouped dropdown's items as buttons so we can assert/select them.
-vi.mock('@n8n/design-system', async (importOriginal) => {
+vi.mock('@MNI/design-system', async (importOriginal) => {
 	const original = await importOriginal<object>();
 	return {
 		...original,

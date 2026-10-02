@@ -5,7 +5,7 @@ import type {
 	INode,
 	INodeCredentialsDetails,
 	IWorkflowExecuteAdditionalData,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { EvalMockedCredentialsHelper } from '../eval-mocked-credentials-helper';
 import { LlmWireServer } from '../llm-wire-server';
@@ -24,7 +24,7 @@ describe('Credential rewrite + wire server round-trip with root token', () => {
 	const subNode: INode = {
 		id: 'sub-node-1',
 		name: 'OpenAI Chat Model',
-		type: '@n8n/n8n-nodes-langchain.lmChatOpenAi',
+		type: '@MNI/MNI-nodes-langchain.lmChatOpenAi',
 		typeVersion: 1,
 		position: [0, 0],
 		parameters: {},

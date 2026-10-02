@@ -1,5 +1,5 @@
-import { WithTimestampsAndStringId, type ExecutionDataStorageLocation } from '@n8n/db';
-import { Column, Entity, Index, JoinColumn, ManyToOne, type Relation } from '@n8n/typeorm';
+import { WithTimestampsAndStringId, type ExecutionDataStorageLocation } from '@MNI/db';
+import { Column, Entity, Index, JoinColumn, ManyToOne, type Relation } from '@MNI/typeorm';
 
 import { Agent } from './agent.entity';
 

@@ -1,7 +1,7 @@
-import type { Logger } from '@n8n/backend-common';
-import { testDb, testModules } from '@n8n/backend-test-utils';
-import { Container } from '@n8n/di';
-import { LessThan, MoreThanOrEqual } from '@n8n/typeorm';
+import type { Logger } from '@MNI/backend-common';
+import { testDb, testModules } from '@MNI/backend-test-utils';
+import { Container } from '@MNI/di';
+import { LessThan, MoreThanOrEqual } from '@MNI/typeorm';
 import { mock } from 'vitest-mock-extended';
 
 import { TokenExchangeJtiRepository } from '@/modules/token-exchange/database/repositories/token-exchange-jti.repository';

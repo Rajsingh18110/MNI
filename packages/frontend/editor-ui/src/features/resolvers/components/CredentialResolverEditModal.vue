@@ -9,28 +9,28 @@ import {
 	N8nInlineTextEdit,
 	N8nCallout,
 	type IMenuItem,
-} from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
-import { useToast } from '@n8n/composables/useToast';
+} from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
+import { useToast } from '@MNI/composables/useToast';
 import { CREDENTIAL_RESOLVER_EDIT_MODAL_KEY } from '@/app/constants';
-import { createEventBus } from '@n8n/utils/event-bus';
+import { createEventBus } from '@MNI/utils/event-bus';
 import Modal from '@/app/components/Modal.vue';
 import SaveButton from '@/app/components/SaveButton.vue';
-import { useRootStore } from '@n8n/stores/useRootStore';
-import type { CredentialResolver } from '@n8n/api-types';
+import { useRootStore } from '@MNI/stores/useRootStore';
+import type { CredentialResolver } from '@MNI/api-types';
 import {
 	getCredentialResolver,
 	createCredentialResolver,
 	updateCredentialResolver,
-} from '@n8n/rest-api-client';
+} from '@MNI/rest-api-client';
 import { useCredentialResolvers } from '@/features/resolvers/composables/useCredentialResolvers';
 import type {
 	INodeProperties,
 	INodeParameters,
 	ICredentialDataDecryptedObject,
 	CredentialInformation,
-} from 'n8n-workflow';
-import { deepCopy, NodeHelpers } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { deepCopy, NodeHelpers } from 'MNI-workflow';
 import type { IUpdateInformation } from '@/Interface';
 import CredentialInputs from '@/features/credentials/components/CredentialEdit/CredentialInputs.vue';
 

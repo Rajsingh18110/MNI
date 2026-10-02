@@ -2,7 +2,7 @@
 import { mount } from '@vue/test-utils';
 import { describe, expect, it } from 'vitest';
 
-import { N8nButton, N8nSelect } from '@n8n/design-system';
+import { N8nButton, N8nSelect } from '@MNI/design-system';
 
 import N8nChatActionCard from '../components/interactive/N8nChatActionCard.vue';
 import type { N8nChatInteractionInput } from '@/features/ai/shared/agentsChat/n8nChatInteraction';
@@ -67,7 +67,7 @@ describe('N8nChatActionCard', () => {
 
 	it('button click emits the platform resume shape', async () => {
 		const wrapper = mountCard();
-		await wrapper.find('[data-testid="n8n-chat-card-button"]').trigger('click');
+		await wrapper.find('[data-testid="MNI-chat-card-button"]').trigger('click');
 		expect(wrapper.emitted('submit')?.[0]).toEqual([{ type: 'button', value: 'yes' }]);
 	});
 
@@ -87,7 +87,7 @@ describe('N8nChatActionCard', () => {
 			disabled: true,
 			resolvedValue: { type: 'button', value: 'yes' },
 		});
-		await wrapper.find('[data-testid="n8n-chat-card-button"]').trigger('click');
+		await wrapper.find('[data-testid="MNI-chat-card-button"]').trigger('click');
 		expect(wrapper.emitted('submit')).toBeUndefined();
 	});
 
@@ -105,7 +105,7 @@ describe('N8nChatActionCard', () => {
 			disabled: true,
 			resolvedValue: { type: 'button', value: 'approve' },
 		});
-		const buttons = resolved.findAll('[data-testid="n8n-chat-card-button"]');
+		const buttons = resolved.findAll('[data-testid="MNI-chat-card-button"]');
 		expect(buttons[0].attributes('disabled')).toBeUndefined();
 		expect(buttons[1].attributes('disabled')).toBeDefined();
 	});
@@ -123,7 +123,7 @@ describe('N8nChatActionCard', () => {
 		// Section text is shown
 		expect(wrapper.text()).toContain('Deploy?');
 		// Accessory button is rendered
-		const btn = wrapper.find('[data-testid="n8n-chat-card-section-button"]');
+		const btn = wrapper.find('[data-testid="MNI-chat-card-section-button"]');
 		expect(btn.exists()).toBe(true);
 		expect(btn.text()).toContain('Deploy');
 
@@ -144,7 +144,7 @@ describe('N8nChatActionCard', () => {
 			input: sectionWithButton,
 			disabled: true,
 		});
-		await wrapper.find('[data-testid="n8n-chat-card-section-button"]').trigger('click');
+		await wrapper.find('[data-testid="MNI-chat-card-section-button"]').trigger('click');
 		expect(wrapper.emitted('submit')).toBeUndefined();
 	});
 
@@ -153,9 +153,9 @@ describe('N8nChatActionCard', () => {
 			card: { components: [{ type: 'button', text: 'Confirm', value: 'confirm' }] },
 		};
 		const wrapper = mountCard({ input: textButton });
-		expect(wrapper.find('[data-testid="n8n-chat-card-button"]').text()).toContain('Confirm');
+		expect(wrapper.find('[data-testid="MNI-chat-card-button"]').text()).toContain('Confirm');
 		// Submit value is still value, not text
-		await wrapper.find('[data-testid="n8n-chat-card-button"]').trigger('click');
+		await wrapper.find('[data-testid="MNI-chat-card-button"]').trigger('click');
 		expect(wrapper.emitted('submit')?.[0]).toEqual([{ type: 'button', value: 'confirm' }]);
 	});
 
@@ -171,9 +171,9 @@ describe('N8nChatActionCard', () => {
 			},
 		};
 		const wrapper = mountCard({ input: threeButtons });
-		const rows = wrapper.findAll('[data-testid="n8n-chat-card-button-row"]');
+		const rows = wrapper.findAll('[data-testid="MNI-chat-card-button-row"]');
 		expect(rows).toHaveLength(1);
-		expect(rows[0].findAll('[data-testid="n8n-chat-card-button"]')).toHaveLength(3);
+		expect(rows[0].findAll('[data-testid="MNI-chat-card-button"]')).toHaveLength(3);
 	});
 
 	it('maps button style to design-system props', () => {
@@ -210,7 +210,7 @@ describe('N8nChatActionCard', () => {
 			},
 		};
 		const wrapper = mountCard({ input: radio });
-		const radios = wrapper.findAll('[data-testid="n8n-chat-card-radio"]');
+		const radios = wrapper.findAll('[data-testid="MNI-chat-card-radio"]');
 		expect(radios).toHaveLength(2);
 		expect(radios[0].find('input[type="radio"]').exists()).toBe(true);
 
@@ -240,7 +240,7 @@ describe('N8nChatActionCard', () => {
 			},
 		};
 		const wrapper = mountCard({ input: radio, disabled: true });
-		await wrapper.find('[data-testid="n8n-chat-card-radio"] input').trigger('change');
+		await wrapper.find('[data-testid="MNI-chat-card-radio"] input').trigger('change');
 		expect(wrapper.emitted('submit')).toBeUndefined();
 	});
 });

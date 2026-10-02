@@ -1,5 +1,5 @@
 import { NodeTestHarness } from '@nodes-testing/node-test-harness';
-import { NodeConnectionTypes, type INodeParameters, type WorkflowTestData } from 'n8n-workflow';
+import { NodeConnectionTypes, type INodeParameters, type WorkflowTestData } from 'MNI-workflow';
 import assert from 'node:assert';
 import qs from 'node:querystring';
 
@@ -24,7 +24,7 @@ describe('AwsSes Node', () => {
 				parameters: {},
 				id: 'b30ae9d4-6a92-4b62-92f4-5810b4718c66',
 				name: 'When clicking ‘Execute workflow’',
-				type: 'n8n-nodes-base.manualTrigger',
+				type: 'MNI-nodes-base.manualTrigger',
 				typeVersion: 1,
 				position: [720, 380],
 			},
@@ -32,7 +32,7 @@ describe('AwsSes Node', () => {
 				parameters,
 				id: '07955ca4-e9c9-415a-8175-dda8ad3204fd',
 				name: 'AWS SES',
-				type: 'n8n-nodes-base.awsSes',
+				type: 'MNI-nodes-base.awsSes',
 				typeVersion: 1,
 				position: [940, 380],
 				credentials: {
@@ -67,7 +67,7 @@ describe('AwsSes Node', () => {
 							parameters: {},
 							id: '61c910d6-9997-4bc0-b95d-2b2771c3110f',
 							name: 'When clicking ‘Execute workflow’',
-							type: 'n8n-nodes-base.manualTrigger',
+							type: 'MNI-nodes-base.manualTrigger',
 							typeVersion: 1,
 							position: [720, 380],
 						},
@@ -83,7 +83,7 @@ describe('AwsSes Node', () => {
 							},
 							id: '5780c7b2-7e7f-44d2-980d-a162d28bf152',
 							name: 'AWS SES',
-							type: 'n8n-nodes-base.awsSes',
+							type: 'MNI-nodes-base.awsSes',
 							typeVersion: 1,
 							position: [940, 380],
 							credentials: {

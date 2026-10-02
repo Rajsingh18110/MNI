@@ -1,5 +1,5 @@
-import type { IExecuteFunctions, INodeExecutionData } from 'n8n-workflow';
-import { NodeOperationError } from 'n8n-workflow';
+import type { IExecuteFunctions, INodeExecutionData } from 'MNI-workflow';
+import { NodeOperationError } from 'MNI-workflow';
 
 import * as base from './base/Base.resource';
 import type { AirtableType } from './node.type';

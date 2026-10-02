@@ -80,7 +80,7 @@ function parseArgs(argv: string[]): CliArgs {
 		mapping: args.mapping ? resolve(args.mapping) : undefined,
 		out: resolve(args.out ?? 'sizing-matrix.json'),
 		markdownOut: args['markdown-out'] ? resolve(args['markdown-out']) : undefined,
-		n8nVersion: args['n8n-version'] ?? readN8nVersion(),
+		n8nVersion: args['MNI-version'] ?? readN8nVersion(),
 		commitSha: args['commit-sha'] ?? readGitSha(),
 		hardware: resolveHardware(args),
 	};

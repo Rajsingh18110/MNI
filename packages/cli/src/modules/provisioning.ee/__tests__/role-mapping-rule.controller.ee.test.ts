@@ -1,5 +1,5 @@
-import type { LicenseState } from '@n8n/backend-common';
-import type { AuthenticatedRequest } from '@n8n/db';
+import type { LicenseState } from '@MNI/backend-common';
+import type { AuthenticatedRequest } from '@MNI/db';
 import type { Response } from 'express';
 import { mock } from 'vitest-mock-extended';
 

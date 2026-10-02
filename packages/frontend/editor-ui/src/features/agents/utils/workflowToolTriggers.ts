@@ -1,6 +1,6 @@
-import type { SUPPORTED_WORKFLOW_TOOL_TRIGGERS } from '@n8n/api-types';
-import { useI18n, type BaseTextKey } from '@n8n/i18n';
-import { EXECUTE_WORKFLOW_TRIGGER_NODE_TYPE } from 'n8n-workflow';
+import type { SUPPORTED_WORKFLOW_TOOL_TRIGGERS } from '@MNI/api-types';
+import { useI18n, type BaseTextKey } from '@MNI/i18n';
+import { EXECUTE_WORKFLOW_TRIGGER_NODE_TYPE } from 'MNI-workflow';
 
 /** Locale key of each supported trigger's display name, keyed by node type so a rename is a one-key change. */
 const TRIGGER_LABEL_KEYS: Record<(typeof SUPPORTED_WORKFLOW_TOOL_TRIGGERS)[number], BaseTextKey> = {

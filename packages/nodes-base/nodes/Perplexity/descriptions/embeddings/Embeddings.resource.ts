@@ -1,4 +1,4 @@
-import type { INodeProperties } from 'n8n-workflow';
+import type { INodeProperties } from 'MNI-workflow';
 
 import { embeddingsErrorPostReceive } from '../../GenericFunctions';
 import * as createContextualized from './createContextualized.operation';

@@ -1,13 +1,13 @@
 <script lang="ts" setup>
 import { getLocalTimeZone, isToday } from '@internationalized/date';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
 import type {
 	DateRange,
 	DateValue,
 	N8nDateRangePickerProps,
 	N8nDateRangePickerRootEmits,
-} from '@n8n/design-system';
-import { N8nButton, N8nDateRangePicker, N8nIcon } from '@n8n/design-system';
+} from '@MNI/design-system';
+import { N8nButton, N8nDateRangePicker, N8nIcon } from '@MNI/design-system';
 import { computed, ref, shallowRef, watch } from 'vue';
 
 import { formatDateRange, getAdjustedDateRange } from '../insights.utils';

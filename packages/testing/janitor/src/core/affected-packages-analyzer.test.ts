@@ -165,17 +165,17 @@ describe('affectedPackages', () => {
 		const rootDir = makeFixture({
 			patterns: ['packages/*'],
 			packages: {
-				'packages/workflow': { name: 'n8n-workflow' },
-				'packages/core': { name: 'n8n-core' },
+				'packages/workflow': { name: 'MNI-workflow' },
+				'packages/core': { name: 'MNI-core' },
 				'packages/unrelated': { name: 'unrelated' },
 			},
 		});
 		expect(
 			affectedPackages({ rootDir, changedFiles: ['packages/workflow/src/Workflow.ts'] }),
-		).toEqual(['n8n-core', 'n8n-workflow', 'unrelated']);
+		).toEqual(['MNI-core', 'MNI-workflow', 'unrelated']);
 		expect(affectedPackages({ rootDir, changedFiles: ['packages/core/src/x.ts'] })).toEqual([
-			'n8n-core',
-			'n8n-workflow',
+			'MNI-core',
+			'MNI-workflow',
 			'unrelated',
 		]);
 	});
@@ -196,11 +196,11 @@ describe('affectedPackages', () => {
 		expect(affectedPackages({ rootDir, changedFiles: ['package.json'] })).toEqual(['a', 'b']);
 	});
 
-	it('expands all packages when packages/@n8n/db/** changes (runtime-coupled schema)', () => {
+	it('expands all packages when packages/@MNI/db/** changes (runtime-coupled schema)', () => {
 		const rootDir = makeFixture({
-			patterns: ['packages/*', 'packages/@n8n/*'],
+			patterns: ['packages/*', 'packages/@MNI/*'],
 			packages: {
-				'packages/@n8n/db': { name: '@n8n/db' },
+				'packages/@MNI/db': { name: '@MNI/db' },
 				'packages/cli': { name: 'MNI' },
 				'packages/unrelated': { name: 'unrelated' },
 			},
@@ -208,9 +208,9 @@ describe('affectedPackages', () => {
 		expect(
 			affectedPackages({
 				rootDir,
-				changedFiles: ['packages/@n8n/db/src/entities/user.entity.ts'],
+				changedFiles: ['packages/@MNI/db/src/entities/user.entity.ts'],
 			}),
-		).toEqual(['@n8n/db', 'MNI', 'unrelated']);
+		).toEqual(['@MNI/db', 'MNI', 'unrelated']);
 	});
 
 	it('handles turbo extra-inputs pointing at another package', () => {
@@ -218,10 +218,10 @@ describe('affectedPackages', () => {
 			patterns: ['packages/*'],
 			packages: {
 				'packages/cli': { name: 'MNI' },
-				'packages/nodes-base': { name: 'n8n-nodes-base' },
+				'packages/nodes-base': { name: 'MNI-nodes-base' },
 			},
 			turboTasks: [
-				{ taskId: 'n8n-nodes-base#test', inputs: ['../cli/src/public-api/v1/**/*.yml'] },
+				{ taskId: 'MNI-nodes-base#test', inputs: ['../cli/src/public-api/v1/**/*.yml'] },
 			],
 		});
 		expect(
@@ -229,7 +229,7 @@ describe('affectedPackages', () => {
 				rootDir,
 				changedFiles: ['packages/cli/src/public-api/v1/openapi.yml'],
 			}),
-		).toEqual(['MNI', 'n8n-nodes-base']);
+		).toEqual(['MNI', 'MNI-nodes-base']);
 	});
 
 	it('parses a JSONC turbo.json (comments) for extra-inputs', () => {
@@ -239,13 +239,13 @@ describe('affectedPackages', () => {
 			patterns: ['packages/*'],
 			packages: {
 				'packages/cli': { name: 'MNI' },
-				'packages/nodes-base': { name: 'n8n-nodes-base' },
+				'packages/nodes-base': { name: 'MNI-nodes-base' },
 			},
 			turboJsonRaw: `{
 				// line comment before tasks
 				"tasks": {
 					/* block comment */
-					"n8n-nodes-base#test": {
+					"MNI-nodes-base#test": {
 						"inputs": ["../cli/src/public-api/v1/**/*.yml"] // trailing line comment
 					}
 				}
@@ -256,7 +256,7 @@ describe('affectedPackages', () => {
 				rootDir,
 				changedFiles: ['packages/cli/src/public-api/v1/openapi.yml'],
 			}),
-		).toEqual(['MNI', 'n8n-nodes-base']);
+		).toEqual(['MNI', 'MNI-nodes-base']);
 	});
 
 	it('matches nested workspace patterns (frontend/**)', () => {
@@ -264,11 +264,11 @@ describe('affectedPackages', () => {
 			patterns: ['packages/frontend/**'],
 			packages: {
 				'packages/frontend/editor-ui': { name: 'editor-ui' },
-				'packages/frontend/@n8n/stores': { name: 'stores' },
+				'packages/frontend/@MNI/stores': { name: 'stores' },
 			},
 		});
 		expect(
-			affectedPackages({ rootDir, changedFiles: ['packages/frontend/@n8n/stores/src/auth.ts'] }),
+			affectedPackages({ rootDir, changedFiles: ['packages/frontend/@MNI/stores/src/auth.ts'] }),
 		).toEqual(['stores']);
 	});
 });

@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue';
-import { N8nButton, N8nHeading, N8nText } from '@n8n/design-system';
+import { N8nButton, N8nHeading, N8nText } from '@MNI/design-system';
 import Modal from '@/app/components/Modal.vue';
-import { createEventBus } from '@n8n/utils/event-bus';
+import { createEventBus } from '@MNI/utils/event-bus';
 import CredentialIcon from '@/features/credentials/components/CredentialIcon.vue';
 import CredentialPicker from '@/features/credentials/components/CredentialPicker/CredentialPicker.vue';
-import { useI18n } from '@n8n/i18n';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
+import { useI18n } from '@MNI/i18n';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
 
 const props = defineProps<{
 	modalName: string;

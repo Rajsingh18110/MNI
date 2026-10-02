@@ -13,7 +13,7 @@ import {
 } from '@/app/stores/workflowDocument.store';
 import { createTestingPinia } from '@pinia/testing';
 import { useVueFlow } from '@vue-flow/core';
-import type { INodeProperties } from 'n8n-workflow';
+import type { INodeProperties } from 'MNI-workflow';
 import { setActivePinia } from 'pinia';
 import { reactive, computed, shallowRef } from 'vue';
 import { WorkflowIdKey } from '@/app/constants/injectionKeys';

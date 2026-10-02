@@ -1,6 +1,6 @@
-import type { StepSlots } from '@n8n/engine';
-import type { INode, WebhookResponseMode } from 'n8n-workflow';
-import { WorkflowOperationError } from 'n8n-workflow';
+import type { StepSlots } from '@MNI/engine';
+import type { INode, WebhookResponseMode } from 'MNI-workflow';
+import { WorkflowOperationError } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import { EngineDataPlaneProxyService } from '@/services/engine-data-plane-proxy.service';
@@ -27,7 +27,7 @@ describe('EngineV2Webhooks.assertSupported', () => {
 		webhooks.assertSupported({
 			workflowStartNode: mock<INode>({
 				name: 'Webhook',
-				type: 'n8n-nodes-base.webhook',
+				type: 'MNI-nodes-base.webhook',
 				parameters: {},
 			}),
 			responseMode,

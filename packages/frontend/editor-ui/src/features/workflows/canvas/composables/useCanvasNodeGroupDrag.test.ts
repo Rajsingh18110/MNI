@@ -44,7 +44,7 @@ function makeStoredNode(id: string, x: number, y: number): INodeUi {
 	return {
 		id,
 		name: id,
-		type: 'n8n-nodes-base.noop',
+		type: 'MNI-nodes-base.noop',
 		typeVersion: 1,
 		position: [x, y] as [number, number],
 		parameters: {},

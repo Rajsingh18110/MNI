@@ -1,9 +1,9 @@
-import type { SharedWorkflow, User, WorkflowEntity, ListQuery } from '@n8n/db';
-import { SharedWorkflowRepository, FolderRepository, WorkflowRepository, chunkIds } from '@n8n/db';
-import { Service } from '@n8n/di';
-import { hasGlobalScope, type Scope } from '@n8n/permissions';
-import type { EntityManager, FindOptionsWhere } from '@n8n/typeorm';
-import { In, IsNull } from '@n8n/typeorm';
+import type { SharedWorkflow, User, WorkflowEntity, ListQuery } from '@MNI/db';
+import { SharedWorkflowRepository, FolderRepository, WorkflowRepository, chunkIds } from '@MNI/db';
+import { Service } from '@MNI/di';
+import { hasGlobalScope, type Scope } from '@MNI/permissions';
+import type { EntityManager, FindOptionsWhere } from '@MNI/typeorm';
+import { In, IsNull } from '@MNI/typeorm';
 
 import { userHasScopes } from '@/permissions.ee/check-access';
 import { RoleService } from '@/services/role.service';

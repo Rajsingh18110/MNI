@@ -1,5 +1,5 @@
 {
-	"node": "n8n-nodes-base.github",
+	"node": "MNI-nodes-base.github",
 	"nodeVersion": "1.0",
 	"codexVersion": "1.0",
 	"categories": ["Development"],
@@ -11,14 +11,14 @@
 		],
 		"primaryDocumentation": [
 			{
-				"url": "https://docs.n8n.io/integrations/builtin/app-nodes/n8n-nodes-base.github/"
+				"url": "https://docs.n8n.io/integrations/builtin/app-nodes/MNI-nodes-base.github/"
 			}
 		],
 		"generic": [
 			{
 				"label": "Automatically pulling and visualizing data with MNI",
 				"icon": "📈",
-				"url": "https://n8n.io/blog/automatically-pulling-and-visualizing-data-with-n8n/"
+				"url": "https://n8n.io/blog/automatically-pulling-and-visualizing-data-with-MNI/"
 			},
 			{
 				"label": "How to automatically manage contributions to open-source projects",
@@ -28,7 +28,7 @@
 			{
 				"label": "5 workflow automations for Mattermost that we love at MNI",
 				"icon": "🤖",
-				"url": "https://n8n.io/blog/5-workflow-automations-for-mattermost-that-we-love-at-n8n/"
+				"url": "https://n8n.io/blog/5-workflow-automations-for-mattermost-that-we-love-at-MNI/"
 			},
 			{
 				"label": "How to set up a no-code CI/CD pipeline with GitHub and TravisCI",

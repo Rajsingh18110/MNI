@@ -6,8 +6,8 @@ import type {
 	INodePropertyOptions,
 	INodeType,
 	INodeTypeDescription,
-} from 'n8n-workflow';
-import { NodeConnectionTypes, NodeOperationError, setSafeObjectProperty } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeConnectionTypes, NodeOperationError, setSafeObjectProperty } from 'MNI-workflow';
 
 import { deviceFields, deviceOperations } from './DeviceDescription';
 import { googleApiRequest, googleApiRequestAllItems } from './GenericFunctions';

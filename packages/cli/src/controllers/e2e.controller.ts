@@ -1,8 +1,8 @@
-import type { PushMessage } from '@n8n/api-types';
-import { Logger } from '@n8n/backend-common';
-import { ExecutionsConfig } from '@n8n/config';
-import type { BooleanLicenseFeature, NumericLicenseFeature } from '@n8n/constants';
-import { LICENSE_FEATURES, LICENSE_QUOTAS, UNLIMITED_LICENSE_QUOTA } from '@n8n/constants';
+import type { PushMessage } from '@MNI/api-types';
+import { Logger } from '@MNI/backend-common';
+import { ExecutionsConfig } from '@MNI/config';
+import type { BooleanLicenseFeature, NumericLicenseFeature } from '@MNI/constants';
+import { LICENSE_FEATURES, LICENSE_QUOTAS, UNLIMITED_LICENSE_QUOTA } from '@MNI/constants';
 import {
 	AuthRolesService,
 	GLOBAL_ADMIN_ROLE,
@@ -13,9 +13,9 @@ import {
 	ScheduledJobRepository,
 	SettingsRepository,
 	UserRepository,
-} from '@n8n/db';
-import { Get, Patch, Post, RestController } from '@n8n/decorators';
-import { Container } from '@n8n/di';
+} from '@MNI/db';
+import { Get, Patch, Post, RestController } from '@MNI/decorators';
+import { Container } from '@MNI/di';
 import { Request } from 'express';
 import type nodeFs from 'node:fs';
 import type { Profiler } from 'node:inspector';
@@ -337,19 +337,19 @@ export class E2EController {
 	async setEnvFeatureFlags(req: Request<{}, {}, { flags: Record<string, string> }>) {
 		const { flags } = req.body;
 
-		// Validate that all flags start with N8N_ENV_FEAT_
+		// Validate that all flags start with MNI_ENV_FEAT_
 		for (const key of Object.keys(flags)) {
-			if (!key.startsWith('N8N_ENV_FEAT_')) {
+			if (!key.startsWith('MNI_ENV_FEAT_')) {
 				return {
 					success: false,
-					message: `Invalid flag key: ${key}. Must start with N8N_ENV_FEAT_`,
+					message: `Invalid flag key: ${key}. Must start with MNI_ENV_FEAT_`,
 				};
 			}
 		}
 
-		// Clear existing N8N_ENV_FEAT_ environment variables
+		// Clear existing MNI_ENV_FEAT_ environment variables
 		for (const key of Object.keys(process.env)) {
-			if (key.startsWith('N8N_ENV_FEAT_')) {
+			if (key.startsWith('MNI_ENV_FEAT_')) {
 				delete process.env[key];
 			}
 		}

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { EXECUTE_WORKFLOW_TRIGGER_NODE_TYPE } from 'n8n-workflow';
+import { EXECUTE_WORKFLOW_TRIGGER_NODE_TYPE } from 'MNI-workflow';
 
 import type { IWorkflowDb } from '@/Interface';
 import {

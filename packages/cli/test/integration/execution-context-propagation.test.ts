@@ -4,10 +4,10 @@
  * error workflows, and preserved during workflow resume scenarios.
  */
 
-import { testDb, createWorkflow, createActiveWorkflow } from '@n8n/backend-test-utils';
-import { ExecutionRepository, type IWorkflowDb } from '@n8n/db';
-import { Container } from '@n8n/di';
-import type { IExecutionContext } from 'n8n-workflow';
+import { testDb, createWorkflow, createActiveWorkflow } from '@MNI/backend-test-utils';
+import { ExecutionRepository, type IWorkflowDb } from '@MNI/db';
+import { Container } from '@MNI/di';
+import type { IExecutionContext } from 'MNI-workflow';
 
 import { WorkflowExecutionService } from '@/workflows/workflow-execution.service';
 
@@ -41,9 +41,9 @@ describe('Execution Context Propagation Integration Tests', () => {
 
 		// Load required node types from dist folder
 		const nodeTypes = loadNodesFromDist([
-			'n8n-nodes-base.manualTrigger',
-			'n8n-nodes-base.executeWorkflow',
-			'n8n-nodes-base.executeWorkflowTrigger',
+			'MNI-nodes-base.manualTrigger',
+			'MNI-nodes-base.executeWorkflow',
+			'MNI-nodes-base.executeWorkflowTrigger',
 		]);
 
 		await utils.initNodeTypes(nodeTypes);

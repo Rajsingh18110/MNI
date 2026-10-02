@@ -8,11 +8,11 @@ import {
 	WORKFLOW_HISTORY_VERSION_UNPUBLISH,
 } from '@/app/constants';
 import { useMessage } from '@/app/composables/useMessage';
-import { useToast } from '@n8n/composables/useToast';
-import { getResourcePermissions } from '@n8n/permissions';
+import { useToast } from '@MNI/composables/useToast';
+import { getResourcePermissions } from '@MNI/permissions';
 import dateformat from 'dateformat';
 import { useUIStore } from '@/app/stores/ui.store';
-import { useUsersStore } from '@n8n/stores/users.store';
+import { useUsersStore } from '@MNI/stores/users.store';
 import { useWorkflowsStore } from '@/app/stores/workflows.store';
 import { useWorkflowsListStore } from '@/app/stores/workflowsList.store';
 import TimeAgo from '@/app/components/TimeAgo.vue';
@@ -20,20 +20,20 @@ import { useProjectsStore } from '@/features/collaboration/projects/projects.sto
 import ProjectCardBadge from '@/features/collaboration/projects/components/ProjectCardBadge.vue';
 import DependencyPill from '@/app/components/DependencyPill.vue';
 import PublicationIndicator from '@/app/components/PublicationIndicator.vue';
-import { type BaseTextKey, useI18n } from '@n8n/i18n';
-import type { WorkflowListPublicationStatus } from '@n8n/api-types';
-import type { StatusDotVariant } from '@n8n/design-system';
+import { type BaseTextKey, useI18n } from '@MNI/i18n';
+import type { WorkflowListPublicationStatus } from '@MNI/api-types';
+import type { StatusDotVariant } from '@MNI/design-system';
 import { useRoute, useRouter } from 'vue-router';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
 import { ResourceType } from '@/features/collaboration/projects/projects.utils';
-import type { EventBus } from '@n8n/utils/event-bus';
+import type { EventBus } from '@MNI/utils/event-bus';
 import type { UserAction, WorkflowResource } from '@/Interface';
-import type { IUser } from 'n8n-workflow';
+import type { IUser } from 'MNI-workflow';
 import {
 	type ProjectSharingData,
 	ProjectTypes,
 } from '@/features/collaboration/projects/projects.types';
-import type { PathItem } from '@n8n/design-system';
+import type { PathItem } from '@MNI/design-system';
 import { useFoldersStore } from '@/features/core/folders/folders.store';
 import { useFavoritesStore } from '@/app/stores/favorites.store';
 
@@ -46,7 +46,7 @@ import {
 	N8nTags,
 	N8nText,
 	N8nTooltip,
-} from '@n8n/design-system';
+} from '@MNI/design-system';
 // Experiment cleanup: remove with openWorkflowInAssistant.
 import OpenInAssistantCardButton from '@/experiments/openWorkflowInAssistant/components/OpenInAssistantCardButton.vue';
 import { useOpenInAssistantCard } from '@/experiments/openWorkflowInAssistant/composables/useOpenInAssistantCard';
@@ -54,7 +54,7 @@ import WorkflowCardMcpToggle from '@/app/components/WorkflowCardMcpToggle.vue';
 import { useMCPStore } from '@/features/ai/mcpAccess/mcp.store';
 import { useMcp } from '@/features/ai/mcpAccess/composables/useMcp';
 import { useWorkflowActivate } from '@/app/composables/useWorkflowActivate';
-import { createEventBus } from '@n8n/utils/event-bus';
+import { createEventBus } from '@MNI/utils/event-bus';
 import { usePrivateCredentials } from '@/features/resolvers/composables/usePrivateCredentials';
 import PrivateCredentialIcon from '@/features/resolvers/components/PrivateCredentialIcon.vue';
 import { useDependencies } from '@/app/composables/useDependencies';
@@ -791,7 +791,7 @@ const tags = computed(
 </template>
 
 <style lang="scss" module>
-@use '@n8n/design-system/css/mixins/breakpoints';
+@use '@MNI/design-system/css/mixins/breakpoints';
 
 .cardLink {
 	transition: box-shadow 0.3s ease;
@@ -867,10 +867,10 @@ const tags = computed(
 }
 
 .cardBadge.with-breadcrumbs {
-	:global(.n8n-badge) {
+	:global(.MNI-badge) {
 		padding-right: 0;
 	}
-	:global(.n8n-breadcrumbs) {
+	:global(.MNI-breadcrumbs) {
 		padding-left: var(--spacing--5xs);
 	}
 }

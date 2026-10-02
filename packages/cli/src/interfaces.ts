@@ -4,9 +4,9 @@ import type {
 	IExecutionDb,
 	ITagBase,
 	IWorkflowDb,
-} from '@n8n/db';
-import type { AssignableGlobalRole } from '@n8n/permissions';
-import type { IDeferredPromise } from '@n8n/utils/promise/deferred-promise';
+} from '@MNI/db';
+import type { AssignableGlobalRole } from '@MNI/permissions';
+import type { IDeferredPromise } from '@MNI/utils/promise/deferred-promise';
 import type { Application, Response } from 'express';
 import type {
 	ExecutionError,
@@ -23,7 +23,7 @@ import type {
 	IWorkflowExecutionDataProcess,
 	IExecutionContext,
 	WorkflowExecutionSource,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import type PCancelable from 'p-cancelable';
 
 import type { ActiveWorkflowManager } from '@/active-workflow-manager';
@@ -235,9 +235,9 @@ export type AgentTurnTelemetryStatus = 'succeeded' | 'failed';
 export type AgentTelemetryMemoryType =
 	| 'none'
 	| 'MNI'
-	| 'n8n_observational'
-	| 'n8n_episodic'
-	| 'n8n_observational_episodic';
+	| 'MNI_observational'
+	| 'MNI_episodic'
+	| 'MNI_observational_episodic';
 
 export interface IAgentConfigurationTelemetryProperties {
 	model: string | null;

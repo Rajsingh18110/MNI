@@ -1,8 +1,8 @@
 import { flushPromises, mount, type VueWrapper } from '@vue/test-utils';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
-import { AI_GATEWAY_MANAGED_TAG } from '@n8n/api-types';
-import type * as permissions from '@n8n/permissions';
+import { AI_GATEWAY_MANAGED_TAG } from '@MNI/api-types';
+import type * as permissions from '@MNI/permissions';
 
 import type {
 	AgentCredentialsByProvider,
@@ -88,18 +88,18 @@ const baseText = vi.hoisted(() =>
 	}),
 );
 
-vi.mock('@n8n/i18n', () => ({
+vi.mock('@MNI/i18n', () => ({
 	useI18n: () => ({
 		baseText,
 	}),
 }));
 
-vi.mock('@n8n/permissions', async (importOriginal) => ({
+vi.mock('@MNI/permissions', async (importOriginal) => ({
 	...(await importOriginal<typeof permissions>()),
 	getResourcePermissions: () => ({ credential: { create: canCreateCredentials.value } }),
 }));
 
-vi.mock('@n8n/design-system', async () => {
+vi.mock('@MNI/design-system', async () => {
 	const { computed, ref } = await import('vue');
 
 	return {

@@ -1,10 +1,10 @@
-import { Logger } from '@n8n/backend-common';
-import { AuthenticatedRequest } from '@n8n/db';
-import { createIpRateLimit, Get, Head, Post, RootLevelController } from '@n8n/decorators';
-import { Container } from '@n8n/di';
-import { lazyImport } from '@n8n/utils/lazy-import';
+import { Logger } from '@MNI/backend-common';
+import { AuthenticatedRequest } from '@MNI/db';
+import { createIpRateLimit, Get, Head, Post, RootLevelController } from '@MNI/decorators';
+import { Container } from '@MNI/di';
+import { lazyImport } from '@MNI/utils/lazy-import';
 import type { Request, Response } from 'express';
-import { ErrorReporter } from 'n8n-core';
+import { ErrorReporter } from 'MNI-core';
 
 import { Telemetry } from '@/telemetry';
 

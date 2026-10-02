@@ -1,7 +1,7 @@
 {
 	"name": "MNI (Codespaces agent sessions)",
 	"dockerComposeFile": "docker-compose.yml",
-	"service": "n8n",
+	"service": "MNI",
 	// Codespaces clones the repo into /workspaces/<repo>, unlike the laptop config
 	"workspaceFolder": "/workspaces/MNI",
 	"hostRequirements": {
@@ -13,7 +13,7 @@
 		"ghcr.io/devcontainers/features/github-cli:1": {},
 		// gh codespace ssh needs an SSH server inside the container
 		"ghcr.io/devcontainers/features/sshd:1": {},
-		// Docker for testcontainers and `pnpm --filter n8n-containers services`;
+		// Docker for testcontainers and `pnpm --filter MNI-containers services`;
 		// needs `privileged: true` on the MNI service (compose-based config)
 		"ghcr.io/devcontainers/features/docker-in-docker:2": {}
 	},
@@ -23,13 +23,13 @@
 	"customizations": {
 		"codespaces": {
 			"repositories": {
-				"n8n-io/n8n-agent-skills": { "permissions": { "contents": "read" } },
-				"n8n-io/cat-bot": { "permissions": { "contents": "read" } }
+				"MNI-io/MNI-agent-skills": { "permissions": { "contents": "read" } },
+				"MNI-io/cat-bot": { "permissions": { "contents": "read" } }
 			}
 		}
 	},
 	// Runs in prebuilds, so a fresh codespace starts with deps installed and the build warm
-	"onCreateCommand": "corepack install && pnpm install && (pnpm build > /tmp/build.log 2>&1 || tail -n 50 /tmp/build.log) && pnpm --filter=n8n-playwright exec playwright install chromium",
+	"onCreateCommand": "corepack install && pnpm install && (pnpm build > /tmp/build.log 2>&1 || tail -n 50 /tmp/build.log) && pnpm --filter=MNI-playwright exec playwright install chromium",
 	// On each container start: install the private skills marketplace into Claude
 	// (best-effort) and start the poll worker. `bash -lc` loads the secrets shim,
 	// so the worker gets its token. Logs: /tmp/post-start.log, /tmp/agent-worker.log.
@@ -44,7 +44,7 @@
 		"AGENT_WORKER_TOKEN": {
 			"description": "The shared bearer token. The poll worker sends it to MNI on each dequeue. See .devcontainer/codespaces/agent-worker.mjs."
 		},
-		"N8N_DEQUEUE_URL": {
+		"MNI_DEQUEUE_URL": {
 			"description": "MNI webhook the poll worker calls to claim a pending turn"
 		},
 		"SLACK_BOT_TOKEN": {

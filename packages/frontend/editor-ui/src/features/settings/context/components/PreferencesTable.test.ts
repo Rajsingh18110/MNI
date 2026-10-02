@@ -1,14 +1,14 @@
 import { createComponentRenderer } from '@/__tests__/render';
 import { mockedStore } from '@/__tests__/utils';
 import { createTestingPinia } from '@pinia/testing';
-import { STORES } from '@n8n/stores';
-import { useUsersStore } from '@n8n/stores/users.store';
-import type { IUser } from '@n8n/rest-api-client/api/users';
+import { STORES } from '@MNI/stores';
+import { useUsersStore } from '@MNI/stores/users.store';
+import type { IUser } from '@MNI/rest-api-client/api/users';
 import userEvent from '@testing-library/user-event';
 import { mock } from 'vitest-mock-extended';
 
 import PreferencesTable from './PreferencesTable.vue';
-import type { Scope } from '@n8n/permissions';
+import type { Scope } from '@MNI/permissions';
 
 import type { Preference } from '../context.types';
 

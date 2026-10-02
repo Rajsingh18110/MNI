@@ -1,5 +1,5 @@
-import { intervalFromSeconds, SystemTask } from '@n8n/decorators';
-import type { SystemTaskEffects, SystemTaskPlacement, SystemTaskSchedule } from '@n8n/decorators';
+import { intervalFromSeconds, SystemTask } from '@MNI/decorators';
+import type { SystemTaskEffects, SystemTaskPlacement, SystemTaskSchedule } from '@MNI/decorators';
 
 import { TrustedKeyService } from './trusted-key.service';
 

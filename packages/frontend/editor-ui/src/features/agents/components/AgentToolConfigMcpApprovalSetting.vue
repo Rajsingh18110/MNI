@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed, onMounted, ref } from 'vue';
-import { N8nButton, N8nIcon, N8nTooltip } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
-import type { INode, INodePropertyOptions } from 'n8n-workflow';
+import { N8nButton, N8nIcon, N8nTooltip } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
+import type { INode, INodePropertyOptions } from 'MNI-workflow';
 
 import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';
 import type { AgentJsonMcpServerConfig } from '../types';

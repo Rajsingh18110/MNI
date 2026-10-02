@@ -1,6 +1,6 @@
 import * as workflowHelpers from '@/app/composables/useWorkflowHelpers';
 import { SETTINGS_STORE_DEFAULT_STATE } from '@/__tests__/utils';
-import { STORES } from '@n8n/stores';
+import { STORES } from '@MNI/stores';
 import { getNDVStoreId } from '@/features/ndv/shared/ndv.store';
 import { createTestingPinia } from '@pinia/testing';
 

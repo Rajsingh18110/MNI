@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { useDebounce } from '@n8n/composables/useDebounce';
+import { useDebounce } from '@MNI/composables/useDebounce';
 import type { IResourceLocatorResultExpanded } from '@/Interface';
-import { N8nBadge, N8nIcon, N8nInput, N8nLoading, N8nPopover, N8nText } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
-import type { EventBus } from '@n8n/utils/event-bus';
-import { createEventBus } from '@n8n/utils/event-bus';
-import type { INodeParameterResourceLocator } from 'n8n-workflow';
+import { N8nBadge, N8nIcon, N8nInput, N8nLoading, N8nPopover, N8nText } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
+import type { EventBus } from '@MNI/utils/event-bus';
+import { createEventBus } from '@MNI/utils/event-bus';
+import type { INodeParameterResourceLocator } from 'MNI-workflow';
 import { computed, inject, onBeforeUnmount, onMounted, ref, useCssModule, watch } from 'vue';
 import { ResourceLocatorDropdownTeleportedKey } from '@/app/constants';
 import { openSafeUrl } from '@/app/utils/htmlUtils';

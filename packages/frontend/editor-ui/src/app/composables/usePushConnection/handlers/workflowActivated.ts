@@ -1,9 +1,9 @@
-import type { WorkflowActivated } from '@n8n/api-types/push/workflow';
+import type { WorkflowActivated } from '@MNI/api-types/push/workflow';
 import { useWorkflowsListStore } from '@/app/stores/workflowsList.store';
 import { useWorkflowDocumentStore } from '@/app/stores/workflowDocument.store';
 import { useBannersStore } from '@/features/shared/banners/banners.store';
 import { useUIStore } from '@/app/stores/ui.store';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { useCanvasOperations } from '@/app/composables/useCanvasOperations';
 import { consumePendingActivationModal } from '@/app/composables/workflowPublicationConfirmation';
 import { WORKFLOW_ACTIVE_MODAL_KEY } from '@/app/constants';

@@ -1,4 +1,4 @@
-import { smartDecimal } from '@n8n/utils/number/smart-decimal';
+import { smartDecimal } from '@MNI/utils/number/smart-decimal';
 import { useCssVar } from '@vueuse/core';
 import { type ChartOptions, type ScriptableContext } from 'chart.js';
 import merge from 'lodash/merge';

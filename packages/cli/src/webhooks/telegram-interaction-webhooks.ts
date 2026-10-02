@@ -1,7 +1,7 @@
-import { Service } from '@n8n/di';
-import type { ParsedHitlCallbackReference } from 'n8n-core';
-import { markTelegramInteractionRequest, parseHitlCallbackReference } from 'n8n-core';
-import { jsonParse } from 'n8n-workflow';
+import { Service } from '@MNI/di';
+import type { ParsedHitlCallbackReference } from 'MNI-core';
+import { markTelegramInteractionRequest, parseHitlCallbackReference } from 'MNI-core';
+import { jsonParse } from 'MNI-workflow';
 
 import { HitlInteractionWebhooks } from './hitl-interaction-webhooks';
 import type { WaitingWebhookRequest } from './webhook.types';
@@ -19,7 +19,7 @@ interface TelegramCallbackUpdate {
  */
 @Service()
 export class TelegramInteractionWebhooks extends HitlInteractionWebhooks {
-	protected readonly platformNodeType = 'n8n-nodes-base.telegram';
+	protected readonly platformNodeType = 'MNI-nodes-base.telegram';
 
 	protected async parseCallback(
 		req: WaitingWebhookRequest,

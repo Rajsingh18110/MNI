@@ -1,11 +1,11 @@
 import { mock } from 'vitest-mock-extended';
 import { describe, it, expect } from 'vitest';
 import { effectScope } from 'vue';
-import type { FrontendSettings } from '@n8n/api-types';
+import type { FrontendSettings } from '@MNI/api-types';
 import { claimDocumentTitle, useDocumentTitle } from './useDocumentTitle';
 
 const settings = mock<FrontendSettings>({ releaseChannel: 'stable' });
-vi.mock('@n8n/stores/settings.store', () => ({
+vi.mock('@MNI/stores/settings.store', () => ({
 	useSettingsStore: vi.fn(() => ({ settings })),
 }));
 

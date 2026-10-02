@@ -1,5 +1,5 @@
 import { ref } from 'vue';
-import type { SourceControlledFile } from '@n8n/api-types';
+import type { SourceControlledFile } from '@MNI/api-types';
 import { useWorkflowTreeRows } from './useWorkflowTreeRows';
 
 const createWorkflow = (overrides: Partial<SourceControlledFile> = {}): SourceControlledFile => ({

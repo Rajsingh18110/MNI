@@ -15,8 +15,8 @@ import { useNodeHelpers } from '@/app/composables/useNodeHelpers';
 import { canvasEventBus } from '@/features/workflows/canvas/canvas.eventBus';
 import { mapLegacyConnectionsToCanvasConnections } from '@/features/workflows/canvas/canvas.utils';
 import { getAuthTypeForNodeCredential, getMainAuthField } from '@/app/utils/nodeTypesUtils';
-import type { WorkflowDataUpdate } from '@n8n/rest-api-client/api/workflows';
-import { NodeHelpers, normalizeNodeShape, type IConnections, type INode } from 'n8n-workflow';
+import type { WorkflowDataUpdate } from '@MNI/rest-api-client/api/workflows';
+import { NodeHelpers, normalizeNodeShape, type IConnections, type INode } from 'MNI-workflow';
 import isEqual from 'lodash/isEqual';
 
 export interface UpdateWorkflowOptions {

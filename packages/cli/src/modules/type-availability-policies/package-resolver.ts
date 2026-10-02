@@ -10,7 +10,7 @@ import {
 
 /**
  * A credential type name (e.g. `slackApi`) carries no package prefix, unlike a node type
- * (`n8n-nodes-base.slack`), so its package can only be learned from whichever loader actually
+ * (`MNI-nodes-base.slack`), so its package can only be learned from whichever loader actually
  * loaded it. Mirrors `LoadNodesAndCredentials.getCredential()`'s own lookup: find the loader
  * whose `known.credentials` names this type, and report its `packageName`.
  *

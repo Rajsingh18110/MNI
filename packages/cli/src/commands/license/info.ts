@@ -1,5 +1,5 @@
-import { Command } from '@n8n/decorators';
-import { Container } from '@n8n/di';
+import { Command } from '@MNI/decorators';
+import { Container } from '@MNI/di';
 
 import { License } from '@/license';
 
@@ -14,7 +14,7 @@ export class LicenseInfoCommand extends BaseCommand {
 		const license = Container.get(License);
 		await license.init({ isCli: true });
 
-		// Write to stdout so output is independent of N8N_LOG_LEVEL.
+		// Write to stdout so output is independent of MNI_LOG_LEVEL.
 		process.stdout.write(license.getInfo() + '\n');
 	}
 

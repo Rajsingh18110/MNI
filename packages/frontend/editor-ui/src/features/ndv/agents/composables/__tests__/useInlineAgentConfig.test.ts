@@ -3,7 +3,7 @@ import { mount, type VueWrapper } from '@vue/test-utils';
 import { defineComponent, ref, type Ref } from 'vue';
 import { createTestingPinia } from '@pinia/testing';
 import { setActivePinia } from 'pinia';
-import type { AgentSkill, InlineAgentConfig } from '@n8n/api-types';
+import type { AgentSkill, InlineAgentConfig } from '@MNI/api-types';
 
 import type { INodeUi } from '@/Interface';
 import { MESSAGE_AN_AGENT_NODE_TYPE } from '@/app/constants/nodeTypes';

@@ -2,7 +2,7 @@
 	"nodes": [
 		{
 			"parameters": {},
-			"type": "n8n-nodes-base.manualTrigger",
+			"type": "MNI-nodes-base.manualTrigger",
 			"typeVersion": 1,
 			"position": [260, 360],
 			"id": "9ed2b86b-7c24-4ea0-a328-92d9e6dba35a",
@@ -24,7 +24,7 @@
 			},
 			"id": "fc6ee80d-3c8f-4ecc-a053-b4a717484c2a",
 			"name": "createGroup",
-			"type": "n8n-nodes-base.awsCognito",
+			"type": "MNI-nodes-base.awsCognito",
 			"typeVersion": 1,
 			"position": [500, 360],
 			"credentials": {

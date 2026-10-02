@@ -12,10 +12,10 @@ import type {
 import { setActivePinia } from 'pinia';
 import { createTestingPinia } from '@pinia/testing';
 import { useDataTableStore } from '@/features/core/dataTable/dataTable.store';
-import { ResponseError } from '@n8n/rest-api-client';
+import { ResponseError } from '@MNI/rest-api-client';
 import { useMessage } from '@/app/composables/useMessage';
-import { useToast } from '@n8n/composables/useToast';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
+import { useToast } from '@MNI/composables/useToast';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
 import { MODAL_CONFIRM } from '@/app/constants';
 import type { DataTableRow } from '@/features/core/dataTable/dataTable.types';
 
@@ -29,20 +29,20 @@ vi.mock('@/app/composables/useMessage', () => ({
 	})),
 }));
 
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: vi.fn(() => ({
 		showError: vi.fn(),
 		showMessage: vi.fn(),
 	})),
 }));
 
-vi.mock('@n8n/composables/useTelemetry', () => ({
+vi.mock('@MNI/composables/useTelemetry', () => ({
 	useTelemetry: vi.fn(() => ({
 		track: vi.fn(),
 	})),
 }));
 
-vi.mock('@n8n/i18n', () => ({
+vi.mock('@MNI/i18n', () => ({
 	useI18n: vi.fn(() => ({
 		baseText: vi.fn((key: string) => key),
 	})),

@@ -1,6 +1,6 @@
-import { workflow, trigger, node } from '@n8n/workflow-sdk';
+import { workflow, trigger, node } from '@MNI/workflow-sdk';
 import flatted from 'flatted';
-import type { IWorkflowBase } from 'n8n-workflow';
+import type { IWorkflowBase } from 'MNI-workflow';
 import { nanoid } from 'nanoid';
 
 import { test, expect } from '../../../fixtures/base';
@@ -11,7 +11,7 @@ const EACH_ITEM_NODE_NAME = 'Code Each Item';
 
 function createCodeNodeWorkflow(): IWorkflowBase {
 	const manualTrigger = trigger({
-		type: 'n8n-nodes-base.manualTrigger',
+		type: 'MNI-nodes-base.manualTrigger',
 		version: 1,
 		config: {
 			name: TRIGGER_NAME,
@@ -20,7 +20,7 @@ function createCodeNodeWorkflow(): IWorkflowBase {
 	});
 
 	const codeAllItems = node({
-		type: 'n8n-nodes-base.code',
+		type: 'MNI-nodes-base.code',
 		version: 1,
 		config: {
 			name: ALL_ITEMS_NODE_NAME,
@@ -32,7 +32,7 @@ function createCodeNodeWorkflow(): IWorkflowBase {
 	});
 
 	const codeEachItem = node({
-		type: 'n8n-nodes-base.code',
+		type: 'MNI-nodes-base.code',
 		version: 1,
 		config: {
 			name: EACH_ITEM_NODE_NAME,

@@ -3,12 +3,12 @@ import {
 	PasswordUpdateRequestDto,
 	UserSelfSettingsUpdateRequestDto,
 	UserUpdateRequestDto,
-} from '@n8n/api-types';
-import { Logger } from '@n8n/backend-common';
-import { GlobalConfig } from '@n8n/config';
-import type { User, PublicUser, AuthIdentity } from '@n8n/db';
-import { UserRepository, AuthenticatedRequest } from '@n8n/db';
-import { Body, createUserKeyedRateLimiter, Patch, Post, RestController } from '@n8n/decorators';
+} from '@MNI/api-types';
+import { Logger } from '@MNI/backend-common';
+import { GlobalConfig } from '@MNI/config';
+import type { User, PublicUser, AuthIdentity } from '@MNI/db';
+import { UserRepository, AuthenticatedRequest } from '@MNI/db';
+import { Body, createUserKeyedRateLimiter, Patch, Post, RestController } from '@MNI/decorators';
 import { plainToInstance } from 'class-transformer';
 import { Response } from 'express';
 

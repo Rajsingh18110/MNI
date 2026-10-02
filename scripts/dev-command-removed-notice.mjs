@@ -2,7 +2,7 @@
 
 console.error(`
 The root-level dev command is no longer supported.
-Use the faster and more granular dev commands inside the MNI and n8n-editor-ui packages.
+Use the faster and more granular dev commands inside the MNI and MNI-editor-ui packages.
 
 +--------------------------------------------------------------------------+
 | Backend (hot reload packages/cli, frontend served from dist output)      |

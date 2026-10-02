@@ -1,9 +1,9 @@
-import { SamlAcsDto, SamlPreferences, SamlToggleDto } from '@n8n/api-types';
-import { InstanceSettingsLoaderConfig } from '@n8n/config';
-import { AuthenticatedRequest } from '@n8n/db';
-import { Get, Post, RestController, GlobalScope, Body } from '@n8n/decorators';
+import { SamlAcsDto, SamlPreferences, SamlToggleDto } from '@MNI/api-types';
+import { InstanceSettingsLoaderConfig } from '@MNI/config';
+import { AuthenticatedRequest } from '@MNI/db';
+import { Get, Post, RestController, GlobalScope, Body } from '@MNI/decorators';
 import { Response } from 'express';
-import { CREDENTIAL_BLANKING_VALUE } from 'n8n-workflow';
+import { CREDENTIAL_BLANKING_VALUE } from 'MNI-workflow';
 import querystring from 'querystring';
 import type { PostBindingContext } from 'samlify/types/src/entity';
 import url from 'url';
@@ -16,7 +16,7 @@ import { SSO_ACCESS_DENIED_REDIRECT_PATH } from '@/modules/provisioning.ee/const
 import { SsoAccessDeniedError } from '@/modules/provisioning.ee/errors/sso-access-denied.error';
 import { AuthlessRequest } from '@/requests';
 import { sendErrorResponse } from '@/response-helper';
-import { UrlService } from '@n8n/backend-services';
+import { UrlService } from '@MNI/backend-services';
 import { isSamlLicensedAndEnabled } from '@/sso.ee/sso-helpers';
 import { validateRedirectUrl } from '@/utils/validate-redirect-url';
 

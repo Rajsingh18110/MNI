@@ -2,7 +2,7 @@ import type {
 	AiGatewayConfigDto,
 	AiGatewayUsageResponse,
 	AiGatewayWalletResponse,
-} from '@n8n/api-types';
+} from '@MNI/api-types';
 import {
 	AiChatRequestDto,
 	AiApplySuggestionRequestDto,
@@ -14,9 +14,9 @@ import {
 	AiTruncateMessagesRequestDto,
 	AiClearSessionRequestDto,
 	AiGatewayUsageQueryDto,
-} from '@n8n/api-types';
-import { AuthenticatedRequest } from '@n8n/db';
-import { Body, Get, Licensed, Post, Query, RestController, GlobalScope } from '@n8n/decorators';
+} from '@MNI/api-types';
+import { AuthenticatedRequest } from '@MNI/db';
+import { Body, Get, Licensed, Post, Query, RestController, GlobalScope } from '@MNI/decorators';
 import { type AiAssistantSDK, APIResponseError, NetworkError } from '@n8n_io/ai-assistant-sdk';
 import { Response } from 'express';
 import { strict as assert } from 'node:assert';

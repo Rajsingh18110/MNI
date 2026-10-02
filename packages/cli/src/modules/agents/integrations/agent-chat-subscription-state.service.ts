@@ -1,6 +1,6 @@
-import type { AgentIntegrationConfig } from '@n8n/api-types';
-import { OnPubSubEvent } from '@n8n/decorators';
-import { Service } from '@n8n/di';
+import type { AgentIntegrationConfig } from '@MNI/api-types';
+import { OnPubSubEvent } from '@MNI/decorators';
+import { Service } from '@MNI/di';
 import type { StateAdapter } from 'chat';
 
 import type { PubSubCommandMap } from '@/scaling/pubsub/pubsub.event-map';

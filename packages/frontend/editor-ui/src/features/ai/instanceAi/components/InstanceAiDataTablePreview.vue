@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { computed, ref, watch } from 'vue';
-import { N8nIcon, N8nText } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+import { N8nIcon, N8nText } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 import DataTableTable from '@/features/core/dataTable/components/dataGrid/DataTableTable.vue';
 import { useDataTableStore } from '@/features/core/dataTable/dataTable.store';
 import type { DataTable } from '@/features/core/dataTable/dataTable.types';

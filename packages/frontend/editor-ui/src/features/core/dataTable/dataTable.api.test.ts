@@ -1,8 +1,8 @@
 import { deleteDataTableRowsApi } from '@/features/core/dataTable/dataTable.api';
-import { makeRestApiRequest } from '@n8n/rest-api-client';
+import { makeRestApiRequest } from '@MNI/rest-api-client';
 import { expect } from 'vitest';
 
-vi.mock('@n8n/rest-api-client', () => ({
+vi.mock('@MNI/rest-api-client', () => ({
 	makeRestApiRequest: vi.fn(),
 }));
 

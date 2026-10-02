@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import type { BaseTextKey } from '@n8n/i18n';
+import type { BaseTextKey } from '@MNI/i18n';
 import { useLogStreamingStore } from '../logStreaming.store';
 import { computed } from 'vue';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 
-import { N8nCheckbox, N8nIcon, N8nTooltip } from '@n8n/design-system';
+import { N8nCheckbox, N8nIcon, N8nTooltip } from '@MNI/design-system';
 
 interface Props {
 	destinationId?: string;

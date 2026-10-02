@@ -1,4 +1,4 @@
-import type { EvalLlmMockHandler, EvalMockHttpResponse } from 'n8n-core';
+import type { EvalLlmMockHandler, EvalMockHttpResponse } from 'MNI-core';
 import type {
 	ICredentialDataDecryptedObject,
 	ICredentialsHelper,
@@ -7,7 +7,7 @@ import type {
 	INode,
 	INodeCredentialsDetails,
 	IWorkflowExecuteAdditionalData,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { EvalMockedCredentialsHelper } from '../eval-mocked-credentials-helper';
 import { type InterceptedTurn, LlmWireServer } from '../llm-wire-server';
@@ -28,7 +28,7 @@ describe('Mock-handler integration with the LLM wire server', () => {
 	const subNode: INode = {
 		id: 'sub-1',
 		name: 'OpenAI Chat Model',
-		type: '@n8n/n8n-nodes-langchain.lmChatOpenAi',
+		type: '@MNI/MNI-nodes-langchain.lmChatOpenAi',
 		typeVersion: 1,
 		position: [0, 0],
 		parameters: { model: 'gpt-4o-mini' },

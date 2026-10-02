@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 import { computed, ref } from 'vue';
 import { ElDialog } from 'element-plus';
-import { N8nButton, N8nCheckbox, N8nText } from '@n8n/design-system';
-import { i18n as locale } from '@n8n/i18n';
+import { N8nButton, N8nCheckbox, N8nText } from '@MNI/design-system';
+import { i18n as locale } from '@MNI/i18n';
 
 interface Props {
 	modelValue: boolean;

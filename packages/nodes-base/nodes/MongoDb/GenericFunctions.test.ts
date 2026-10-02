@@ -1,5 +1,5 @@
 import { Binary, ObjectId } from 'mongodb';
-import type { INode, IExecuteFunctions } from 'n8n-workflow';
+import type { INode, IExecuteFunctions } from 'MNI-workflow';
 
 import {
 	buildParameterizedConnString,
@@ -8,7 +8,7 @@ import {
 	serializeMongoItems,
 } from './GenericFunctions';
 
-const mockNode = { name: 'MongoDB', type: 'n8n-nodes-base.mongoDb' } as INode;
+const mockNode = { name: 'MongoDB', type: 'MNI-nodes-base.mongoDb' } as INode;
 
 describe('MongoDB Node: Generic Functions', () => {
 	describe('buildParameterizedConnString', () => {

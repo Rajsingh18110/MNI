@@ -1,4 +1,4 @@
-import type { SchedulerConfig, WorkflowsConfig } from '@n8n/config';
+import type { SchedulerConfig, WorkflowsConfig } from '@MNI/config';
 
 /**
  * Whether durable pollers have effectively taken over poll scheduling.

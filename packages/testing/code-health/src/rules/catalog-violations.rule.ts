@@ -1,5 +1,5 @@
-import { BaseRule } from '@n8n/rules-engine';
-import type { Violation } from '@n8n/rules-engine';
+import { BaseRule } from '@MNI/rules-engine';
+import type { Violation } from '@MNI/rules-engine';
 
 import type { CodeHealthContext } from '../context.js';
 import {
@@ -50,7 +50,7 @@ export class CatalogViolationsRule extends BaseRule<CodeHealthContext> {
 				// Peer dependencies MAY contain a compatibility range for consumers.
 				// Forcing them to `catalog:` freezes them to an exact version on
 				// publish, which breaks downstream installs (e.g. scaffolded
-				// community nodes resolving @n8n/node-cli's eslint peer).
+				// community nodes resolving @MNI/node-cli's eslint peer).
 				if (dep.section === 'peerDependencies') continue;
 
 				const catalogMatch = findInCatalog(catalogData, dep.name);

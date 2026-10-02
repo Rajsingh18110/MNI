@@ -1,4 +1,4 @@
-import type { INodeProperties } from 'n8n-workflow';
+import type { INodeProperties } from 'MNI-workflow';
 
 export const dealOperations: INodeProperties[] = [
 	{
@@ -482,7 +482,7 @@ export const dealFields: INodeProperties[] = [
 				name: 'includePropertyVersions',
 				type: 'boolean',
 				default: false,
-				// eslint-disable-next-line n8n-nodes-base/node-param-description-boolean-without-whether
+				// eslint-disable-next-line MNI-nodes-base/node-param-description-boolean-without-whether
 				description:
 					'By default, you will only get data for the most recent version of a property in the "versions" data. If you include this parameter, you will get data for all previous versions.',
 			},
@@ -596,7 +596,7 @@ export const dealFields: INodeProperties[] = [
 					loadOptionsMethod: 'getDealProperties',
 				},
 				default: [],
-				// eslint-disable-next-line n8n-nodes-base/node-param-description-wrong-for-dynamic-multi-options
+				// eslint-disable-next-line MNI-nodes-base/node-param-description-wrong-for-dynamic-multi-options
 				description:
 					'Include specific deal properties in the results. By default, the results will only include Deal ID and will not include the values for any properties for your Deals.',
 				displayOptions: {
@@ -613,7 +613,7 @@ export const dealFields: INodeProperties[] = [
 					loadOptionsMethod: 'getDealProperties',
 				},
 				default: [],
-				// eslint-disable-next-line n8n-nodes-base/node-param-description-wrong-for-dynamic-multi-options
+				// eslint-disable-next-line MNI-nodes-base/node-param-description-wrong-for-dynamic-multi-options
 				description:
 					'Works similarly to properties, but this parameter will include the history for the specified property',
 				displayOptions: {
@@ -779,7 +779,7 @@ export const dealFields: INodeProperties[] = [
 				name: 'includePropertyVersions',
 				type: 'boolean',
 				default: false,
-				// eslint-disable-next-line n8n-nodes-base/node-param-description-boolean-without-whether
+				// eslint-disable-next-line MNI-nodes-base/node-param-description-boolean-without-whether
 				description:
 					'By default, you will only get data for the most recent version of a property in the "versions" data. If you include this parameter, you will get data for all previous versions.',
 			},
@@ -1027,7 +1027,7 @@ export const dealFields: INodeProperties[] = [
 				description: 'Perform a text search against all property values for an object type',
 			},
 			{
-				// eslint-disable-next-line n8n-nodes-base/node-param-display-name-wrong-for-dynamic-options
+				// eslint-disable-next-line MNI-nodes-base/node-param-display-name-wrong-for-dynamic-options
 				displayName: 'Sort By',
 				name: 'sortBy',
 				type: 'options',

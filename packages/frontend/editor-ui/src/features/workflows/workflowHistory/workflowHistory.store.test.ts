@@ -1,13 +1,13 @@
 import { createPinia, setActivePinia } from 'pinia';
-import type { FrontendSettings } from '@n8n/api-types';
+import type { FrontendSettings } from '@MNI/api-types';
 import { useWorkflowsStore } from '@/app/stores/workflows.store';
 import { useWorkflowsListStore } from '@/app/stores/workflowsList.store';
 import { getNewWorkflow } from '@/app/api/workflows';
 import { useWorkflowHistoryStore } from './workflowHistory.store';
-import { useSettingsStore } from '@n8n/stores/settings.store';
-import { useRootStore } from '@n8n/stores/useRootStore';
-import * as whApi from '@n8n/rest-api-client/api/workflowHistory';
-import * as instanceVersionHistoryApi from '@n8n/rest-api-client/api/instance-version-history';
+import { useSettingsStore } from '@MNI/stores/settings.store';
+import { useRootStore } from '@MNI/stores/useRootStore';
+import * as whApi from '@MNI/rest-api-client/api/workflowHistory';
+import * as instanceVersionHistoryApi from '@MNI/rest-api-client/api/instance-version-history';
 
 const emptyCanvasGroupsEnabled = vi.hoisted(() => ({ value: false }));
 
@@ -16,8 +16,8 @@ vi.mock('@/features/workflows/canvas/composables/useEmptyCanvasGroupsFlag', () =
 }));
 vi.mock('@/app/api/workflows', () => ({ getNewWorkflow: vi.fn() }));
 
-vi.mock('@n8n/rest-api-client/api/workflowHistory');
-vi.mock('@n8n/rest-api-client/api/instance-version-history');
+vi.mock('@MNI/rest-api-client/api/workflowHistory');
+vi.mock('@MNI/rest-api-client/api/instance-version-history');
 
 describe('Workflow history store', () => {
 	beforeEach(() => {
@@ -187,7 +187,7 @@ describe('Workflow history store', () => {
 			const anchor = {
 				id: 'anchor',
 				name: 'Empty group anchor',
-				type: 'n8n-nodes-base.noOp',
+				type: 'MNI-nodes-base.noOp',
 				parameters: { emptyGroupAnchor: true },
 			};
 			const group = { id: 'group', name: 'Empty group', nodeIds: ['anchor'] };

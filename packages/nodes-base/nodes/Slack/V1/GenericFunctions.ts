@@ -7,8 +7,8 @@ import type {
 	JsonObject,
 	IHttpRequestMethods,
 	IRequestOptions,
-} from 'n8n-workflow';
-import { NodeApiError, NodeOperationError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeApiError, NodeOperationError } from 'MNI-workflow';
 
 // When an expression is wrapped in surrounding text/whitespace, MNI switches to
 // string interpolation and a multiOptions array is coerced to a comma-joined

@@ -6,18 +6,18 @@ import { useUIStore } from '@/app/stores/ui.store';
 import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';
 import { useChatStore } from '@/features/ai/chatHub/chat.store';
 import { usePostHog } from '@/app/stores/posthog.store';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { TOOLS_MANAGER_MODAL_KEY } from '@/features/ai/chatHub/constants';
 import AgentEditorModal from './AgentEditorModal.vue';
 import { waitFor, fireEvent, within } from '@testing-library/vue';
 import userEvent from '@testing-library/user-event';
 import { MODAL_CONFIRM } from '@/app/constants';
 import { ref } from 'vue';
-import type { ChatModelDto, FrontendModuleSettings } from '@n8n/api-types';
+import type { ChatModelDto, FrontendModuleSettings } from '@MNI/api-types';
 import { createMockAgentDto, createMockKnowledgeItem } from '@/features/ai/chatHub/__test__/data';
 
-vi.mock('@n8n/i18n', async (importOriginal) => {
-	const actual = await importOriginal<typeof import('@n8n/i18n')>();
+vi.mock('@MNI/i18n', async (importOriginal) => {
+	const actual = await importOriginal<typeof import('@MNI/i18n')>();
 	const i18n = {
 		baseText: (key: string) => key,
 		nodeText: () => ({
@@ -55,7 +55,7 @@ vi.mock('@/app/composables/useMessage', () => ({
 
 const mockShowError = vi.fn();
 const mockShowMessage = vi.fn();
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: () => ({ showError: mockShowError, showMessage: mockShowMessage }),
 }));
 
@@ -77,7 +77,7 @@ vi.mock('@/features/ai/chatHub/chat.api', () => ({
 	deleteAgentFileApi: (...args: unknown[]) => mockDeleteAgentFileApi(...args),
 }));
 
-vi.mock('@n8n/stores/useRootStore', () => ({
+vi.mock('@MNI/stores/useRootStore', () => ({
 	useRootStore: () => ({ restApiContext: {} }),
 }));
 

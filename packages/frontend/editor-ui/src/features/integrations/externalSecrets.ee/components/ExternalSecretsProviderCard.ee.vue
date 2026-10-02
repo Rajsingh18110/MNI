@@ -4,15 +4,15 @@ import ExternalSecretsProviderImage from './ExternalSecretsProviderImage.ee.vue'
 import ExternalSecretsProviderConnectionSwitch from './ExternalSecretsProviderConnectionSwitch.ee.vue';
 import { useExternalSecretsStore } from '../externalSecrets.ee.store';
 import { useUIStore } from '@/app/stores/ui.store';
-import { useToast } from '@n8n/composables/useToast';
-import { useI18n } from '@n8n/i18n';
+import { useToast } from '@MNI/composables/useToast';
+import { useI18n } from '@MNI/i18n';
 import { useExternalSecretsProvider } from '@/features/integrations/externalSecrets.ee/composables/useExternalSecretsProvider';
 import { EXTERNAL_SECRETS_PROVIDER_MODAL_KEY } from '@/app/constants';
 import { DateTime } from 'luxon';
 import { computed, nextTick, onMounted, toRef } from 'vue';
 import { isDateObject } from '@/app/utils/typeGuards';
 
-import { N8nActionToggle, N8nButton, N8nCard, N8nText } from '@n8n/design-system';
+import { N8nActionToggle, N8nButton, N8nCard, N8nText } from '@MNI/design-system';
 const props = defineProps<{
 	provider: ExternalSecretsProvider;
 }>();

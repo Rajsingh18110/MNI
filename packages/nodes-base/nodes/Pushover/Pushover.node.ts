@@ -6,8 +6,8 @@ import type {
 	INodePropertyOptions,
 	INodeType,
 	INodeTypeDescription,
-} from 'n8n-workflow';
-import { NodeConnectionTypes } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeConnectionTypes } from 'MNI-workflow';
 
 import { pushoverApiRequest } from './GenericFunctions';
 
@@ -105,7 +105,7 @@ export class Pushover implements INodeType {
 						operation: ['push'],
 					},
 				},
-				// eslint-disable-next-line n8n-nodes-base/node-param-options-type-unsorted-items
+				// eslint-disable-next-line MNI-nodes-base/node-param-options-type-unsorted-items
 				options: [
 					{
 						name: 'Lowest Priority',

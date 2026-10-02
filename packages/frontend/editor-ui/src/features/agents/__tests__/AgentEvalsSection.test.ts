@@ -12,7 +12,7 @@ import AgentEvalsSection from '../components/AgentEvalsSection.vue';
 // Components use `data-testid`; the global setup configures `data-test-id`.
 configure({ testIdAttribute: 'data-testid' });
 
-vi.mock('@n8n/i18n', async (importOriginal) => ({
+vi.mock('@MNI/i18n', async (importOriginal) => ({
 	...(await importOriginal()),
 	useI18n: () => ({ baseText: (key: string) => `mocked-${key}` }),
 }));

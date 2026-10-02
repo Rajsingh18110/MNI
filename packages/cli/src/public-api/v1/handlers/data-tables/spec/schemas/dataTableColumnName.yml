@@ -1,4 +1,4 @@
-# minLength / maxLength / pattern guarded by data-table-column-name.openapi.test.ts (vs @n8n/api-types constants).
+# minLength / maxLength / pattern guarded by data-table-column-name.openapi.test.ts (vs @MNI/api-types constants).
 type: string
 description: >-
   Column name. Must start with a letter; only letters, digits, and underscores

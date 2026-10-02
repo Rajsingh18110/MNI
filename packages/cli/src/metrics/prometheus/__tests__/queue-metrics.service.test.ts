@@ -1,8 +1,8 @@
 import type { Mock } from 'vitest';
-import { mockInstance } from '@n8n/backend-test-utils';
-import { ExecutionsConfig, PrometheusMetricsConfig } from '@n8n/config';
+import { mockInstance } from '@MNI/backend-test-utils';
+import { ExecutionsConfig, PrometheusMetricsConfig } from '@MNI/config';
 import { mock } from 'vitest-mock-extended';
-import type { InstanceSettings } from 'n8n-core';
+import type { InstanceSettings } from 'MNI-core';
 import promClient from 'prom-client';
 
 import { PrometheusQueueMetricsService } from '../queue-metrics.service';
@@ -13,7 +13,7 @@ vi.mock('prom-client');
 
 describe('PrometheusQueueMetricsService', () => {
 	const config = mockInstance(PrometheusMetricsConfig, {
-		prefix: 'n8n_',
+		prefix: 'MNI_',
 		includeQueueMetrics: true,
 	});
 	const executionsConfig = mockInstance(ExecutionsConfig, {
@@ -30,7 +30,7 @@ describe('PrometheusQueueMetricsService', () => {
 	}
 
 	beforeEach(() => {
-		Object.assign(config, { prefix: 'n8n_', includeQueueMetrics: true });
+		Object.assign(config, { prefix: 'MNI_', includeQueueMetrics: true });
 		Object.assign(executionsConfig, { mode: 'queue' });
 		Object.assign(instanceSettings, { instanceType: 'main' });
 		service = new PrometheusQueueMetricsService(
@@ -75,7 +75,7 @@ describe('PrometheusQueueMetricsService', () => {
 			service.init();
 
 			expect(promClient.Gauge).toHaveBeenCalledWith({
-				name: 'n8n_scaling_mode_queue_jobs_waiting',
+				name: 'MNI_scaling_mode_queue_jobs_waiting',
 				help: 'Current number of enqueued jobs waiting for pickup in scaling mode.',
 			});
 		});
@@ -84,7 +84,7 @@ describe('PrometheusQueueMetricsService', () => {
 			service.init();
 
 			expect(promClient.Gauge).toHaveBeenCalledWith({
-				name: 'n8n_scaling_mode_queue_jobs_active',
+				name: 'MNI_scaling_mode_queue_jobs_active',
 				help: 'Current number of jobs being processed across all workers in scaling mode.',
 			});
 		});
@@ -93,7 +93,7 @@ describe('PrometheusQueueMetricsService', () => {
 			service.init();
 
 			expect(promClient.Counter).toHaveBeenCalledWith({
-				name: 'n8n_scaling_mode_queue_jobs_completed',
+				name: 'MNI_scaling_mode_queue_jobs_completed',
 				help: 'Total number of jobs completed across all workers in scaling mode since instance start.',
 			});
 		});
@@ -102,7 +102,7 @@ describe('PrometheusQueueMetricsService', () => {
 			service.init();
 
 			expect(promClient.Counter).toHaveBeenCalledWith({
-				name: 'n8n_scaling_mode_queue_jobs_failed',
+				name: 'MNI_scaling_mode_queue_jobs_failed',
 				help: 'Total number of jobs failed across all workers in scaling mode since instance start.',
 			});
 		});

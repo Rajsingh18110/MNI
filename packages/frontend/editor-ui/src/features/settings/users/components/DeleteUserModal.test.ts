@@ -5,12 +5,12 @@ import { createTestingPinia } from '@pinia/testing';
 import { getDropdownItems } from '@/__tests__/utils';
 import { createProjectListItem } from '@/features/collaboration/projects/__tests__/utils';
 import { DELETE_USER_MODAL_KEY } from '../users.constants';
-import { STORES } from '@n8n/stores';
+import { STORES } from '@MNI/stores';
 import { ProjectTypes } from '@/features/collaboration/projects/projects.types';
 import userEvent from '@testing-library/user-event';
-import { useUsersStore } from '@n8n/stores/users.store';
+import { useUsersStore } from '@MNI/stores/users.store';
 import { useProjectsStore } from '@/features/collaboration/projects/projects.store';
-import { ROLE, type UsersList, type User } from '@n8n/api-types';
+import { ROLE, type UsersList, type User } from '@MNI/api-types';
 
 const ModalStub = {
 	template: `

@@ -1,7 +1,7 @@
 # `any` where a real type is available
 
 Applies to: `packages/cli`, `packages/workflow`, `packages/nodes-base`,
-`packages/@n8n/nodes-langchain`.
+`packages/@MNI/nodes-langchain`.
 
 `@typescript-eslint/no-explicit-any` is downgraded to a warning in these
 packages, and `pnpm lint` runs `--quiet`, so warnings never surface.

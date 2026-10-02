@@ -11,7 +11,7 @@ const SSH_PORT = 22;
 const DEFAULT_ADMIN = 'giteaadmin';
 const DEFAULT_PASSWORD = 'giteapassword';
 const DEFAULT_EMAIL = 'admin@example.com';
-const DEFAULT_REPO = 'n8n-test-repo';
+const DEFAULT_REPO = 'MNI-test-repo';
 const DEFAULT_BRANCHES = ['development', 'staging', 'production'];
 
 export interface GiteaMeta {
@@ -84,7 +84,7 @@ export const gitea: Service<GiteaResult> = {
 
 	env(result: GiteaResult, external?: boolean): Record<string, string> {
 		return {
-			N8N_SOURCECONTROL_HOST: external ? result.meta.apiUrl : `http://${HOSTNAME}:${HTTP_PORT}`,
+			MNI_SOURCECONTROL_HOST: external ? result.meta.apiUrl : `http://${HOSTNAME}:${HTTP_PORT}`,
 		};
 	},
 };

@@ -1,4 +1,4 @@
-import type { INodeProperties } from 'n8n-workflow';
+import type { INodeProperties } from 'MNI-workflow';
 
 import {
 	dueDatePreSendAction,
@@ -113,7 +113,7 @@ export const taskOperations: INodeProperties[] = [
 
 const createProperties: INodeProperties[] = [
 	{
-		// eslint-disable-next-line n8n-nodes-base/node-param-display-name-wrong-for-dynamic-options
+		// eslint-disable-next-line MNI-nodes-base/node-param-display-name-wrong-for-dynamic-options
 		displayName: 'Contact Email or ID',
 		name: 'contactId',
 		type: 'options',
@@ -203,7 +203,7 @@ const createProperties: INodeProperties[] = [
 		},
 		options: [
 			{
-				// eslint-disable-next-line n8n-nodes-base/node-param-display-name-wrong-for-dynamic-options
+				// eslint-disable-next-line MNI-nodes-base/node-param-display-name-wrong-for-dynamic-options
 				displayName: 'Assigned To',
 				name: 'assignedTo',
 				type: 'options',
@@ -238,7 +238,7 @@ const createProperties: INodeProperties[] = [
 
 const deleteProperties: INodeProperties[] = [
 	{
-		// eslint-disable-next-line n8n-nodes-base/node-param-display-name-wrong-for-dynamic-options
+		// eslint-disable-next-line MNI-nodes-base/node-param-display-name-wrong-for-dynamic-options
 		displayName: 'Contact Email or ID',
 		name: 'contactId',
 		type: 'options',
@@ -273,7 +273,7 @@ const deleteProperties: INodeProperties[] = [
 
 const getProperties: INodeProperties[] = [
 	{
-		// eslint-disable-next-line n8n-nodes-base/node-param-display-name-wrong-for-dynamic-options
+		// eslint-disable-next-line MNI-nodes-base/node-param-display-name-wrong-for-dynamic-options
 		displayName: 'Contact Email or ID',
 		name: 'contactId',
 		type: 'options',
@@ -308,7 +308,7 @@ const getProperties: INodeProperties[] = [
 
 const getAllProperties: INodeProperties[] = [
 	{
-		// eslint-disable-next-line n8n-nodes-base/node-param-display-name-wrong-for-dynamic-options
+		// eslint-disable-next-line MNI-nodes-base/node-param-display-name-wrong-for-dynamic-options
 		displayName: 'Contact Email or ID',
 		name: 'contactId',
 		type: 'options',
@@ -367,7 +367,7 @@ const getAllProperties: INodeProperties[] = [
 
 const updateProperties: INodeProperties[] = [
 	{
-		// eslint-disable-next-line n8n-nodes-base/node-param-display-name-wrong-for-dynamic-options
+		// eslint-disable-next-line MNI-nodes-base/node-param-display-name-wrong-for-dynamic-options
 		displayName: 'Contact Email or ID',
 		name: 'contactId',
 		type: 'options',
@@ -412,7 +412,7 @@ const updateProperties: INodeProperties[] = [
 		},
 		options: [
 			{
-				// eslint-disable-next-line n8n-nodes-base/node-param-display-name-wrong-for-dynamic-options
+				// eslint-disable-next-line MNI-nodes-base/node-param-display-name-wrong-for-dynamic-options
 				displayName: 'Assigned To',
 				name: 'assignedTo',
 				type: 'options',

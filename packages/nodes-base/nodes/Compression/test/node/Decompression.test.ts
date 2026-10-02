@@ -1,6 +1,6 @@
 import { mockDeep } from 'vitest-mock-extended';
-import type { IExecuteFunctions, INode, IBinaryData } from 'n8n-workflow';
-import { NodeOperationError } from 'n8n-workflow';
+import type { IExecuteFunctions, INode, IBinaryData } from 'MNI-workflow';
+import { NodeOperationError } from 'MNI-workflow';
 
 import { Compression } from '../../Compression.node';
 import { boundedGunzip } from '../../decompress/BoundedGunzip';
@@ -42,7 +42,7 @@ describe('Compression Node - Decompress Operation', () => {
 	const mockNode: INode = {
 		id: 'test-node',
 		name: 'Compression',
-		type: 'n8n-nodes-base.compression',
+		type: 'MNI-nodes-base.compression',
 		typeVersion: 1.1,
 		position: [0, 0],
 		parameters: {},

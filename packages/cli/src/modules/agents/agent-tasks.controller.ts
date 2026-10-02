@@ -1,5 +1,5 @@
-import { CreateAgentTaskDto, type AgentTaskDto, UpdateAgentTaskDto } from '@n8n/api-types';
-import type { AuthenticatedRequest } from '@n8n/db';
+import { CreateAgentTaskDto, type AgentTaskDto, UpdateAgentTaskDto } from '@MNI/api-types';
+import type { AuthenticatedRequest } from '@MNI/db';
 import {
 	Body,
 	Delete,
@@ -9,7 +9,7 @@ import {
 	Post,
 	ProjectScope,
 	RestController,
-} from '@n8n/decorators';
+} from '@MNI/decorators';
 import type { Response } from 'express';
 
 import { CollaborationService } from '@/collaboration/collaboration.service';

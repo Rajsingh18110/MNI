@@ -1,4 +1,4 @@
-import { Tournament } from '@n8n/tournament';
+import { Tournament } from '@MNI/tournament';
 
 import { expressionSandboxHooks } from './expression-sandboxing';
 

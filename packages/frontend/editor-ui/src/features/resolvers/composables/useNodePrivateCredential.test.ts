@@ -7,7 +7,7 @@ import {
 	useWorkflowDocumentStore,
 } from '@/app/stores/workflowDocument.store';
 import { createTestingPinia } from '@pinia/testing';
-import { i18n } from '@n8n/i18n';
+import { i18n } from '@MNI/i18n';
 import type { INodeUi } from '@/Interface';
 import { computed, defineComponent } from 'vue';
 import { useNodePrivateCredential } from './useNodePrivateCredential';
@@ -110,7 +110,7 @@ describe('useNodePrivateCredential', () => {
 		const node = createMockNode({
 			parameters: {
 				executionsHooksVersion: 1,
-				contextEstablishmentHooks: { hooks: [{ hookName: 'n8n-oauth' }] },
+				contextEstablishmentHooks: { hooks: [{ hookName: 'MNI-oauth' }] },
 			},
 		});
 		vi.mocked(workflowDocumentStore.getNodeByName).mockReturnValue(node);

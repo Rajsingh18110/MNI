@@ -1,5 +1,5 @@
-import type { TaskRunner } from '@n8n/task-runner';
-import { UnexpectedError } from 'n8n-workflow';
+import type { TaskRunner } from '@MNI/task-runner';
+import { UnexpectedError } from 'MNI-workflow';
 
 export class TaskRunnerDisconnectedError extends UnexpectedError {
 	description: string;
@@ -14,7 +14,7 @@ export class TaskRunnerDisconnectedError extends UnexpectedError {
 			reduceItems:
 				'Reduce the number of items processed at a time, by batching them using a loop node',
 			increaseMemory:
-				"Increase the memory available to the task runner with 'N8N_RUNNERS_MAX_OLD_SPACE_SIZE' environment variable",
+				"Increase the memory available to the task runner with 'MNI_RUNNERS_MAX_OLD_SPACE_SIZE' environment variable",
 			upgradePlan: 'Upgrade your cloud plan to increase the available memory',
 		};
 

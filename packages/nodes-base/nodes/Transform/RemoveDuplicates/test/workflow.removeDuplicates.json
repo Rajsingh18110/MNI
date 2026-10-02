@@ -5,7 +5,7 @@
 			"parameters": {},
 			"id": "a4da10da-991f-48ab-b873-9d633a11311f",
 			"name": "When clicking \"Execute Workflow\"",
-			"type": "n8n-nodes-base.manualTrigger",
+			"type": "MNI-nodes-base.manualTrigger",
 			"typeVersion": 1,
 			"position": [760, 420]
 		},
@@ -36,7 +36,7 @@
 			},
 			"id": "7ab7d5cd-0b1e-48bc-bdbd-57c91e201cf3",
 			"name": "Code",
-			"type": "n8n-nodes-testing.testData",
+			"type": "MNI-nodes-testing.testData",
 			"typeVersion": 1,
 			"position": [980, 420]
 		},
@@ -44,7 +44,7 @@
 			"parameters": {},
 			"id": "c336939c-062e-475e-ba7c-8601e3662e8c",
 			"name": "Remove Duplicates (All Fields)",
-			"type": "n8n-nodes-base.removeDuplicates",
+			"type": "MNI-nodes-base.removeDuplicates",
 			"typeVersion": 1,
 			"position": [1200, 260]
 		},
@@ -56,7 +56,7 @@
 			},
 			"id": "d4343ffe-8a9e-4e34-a0a1-aa463afedd80",
 			"name": "Remove Duplicates (Selected Fields)",
-			"type": "n8n-nodes-base.removeDuplicates",
+			"type": "MNI-nodes-base.removeDuplicates",
 			"typeVersion": 1,
 			"position": [1200, 420]
 		},
@@ -68,7 +68,7 @@
 			},
 			"id": "b67daea4-4545-429e-9e2a-58f2d6a7df7b",
 			"name": "Remove Duplicates (Except Fields)",
-			"type": "n8n-nodes-base.removeDuplicates",
+			"type": "MNI-nodes-base.removeDuplicates",
 			"typeVersion": 1,
 			"position": [1200, 580]
 		},
@@ -76,7 +76,7 @@
 			"parameters": {},
 			"id": "813e690f-a83e-4a38-a64a-c3d72afcc9ba",
 			"name": "All Fields",
-			"type": "n8n-nodes-base.noOp",
+			"type": "MNI-nodes-base.noOp",
 			"typeVersion": 1,
 			"position": [1380, 260]
 		},
@@ -84,7 +84,7 @@
 			"parameters": {},
 			"id": "b5c5c946-2e96-451b-b9a6-78e478504d6c",
 			"name": "Selected Fields",
-			"type": "n8n-nodes-base.noOp",
+			"type": "MNI-nodes-base.noOp",
 			"typeVersion": 1,
 			"position": [1380, 420]
 		},
@@ -92,7 +92,7 @@
 			"parameters": {},
 			"id": "afb92bc5-beba-4b0a-aefb-b47cc708a125",
 			"name": "Except Fields",
-			"type": "n8n-nodes-base.noOp",
+			"type": "MNI-nodes-base.noOp",
 			"typeVersion": 1,
 			"position": [1380, 580]
 		},
@@ -106,7 +106,7 @@
 			},
 			"id": "f92c5533-ac29-476c-aebb-4849ddd22110",
 			"name": "Remove Duplicates (Remove)",
-			"type": "n8n-nodes-base.removeDuplicates",
+			"type": "MNI-nodes-base.removeDuplicates",
 			"typeVersion": 1,
 			"position": [1200, 760]
 		},
@@ -114,7 +114,7 @@
 			"parameters": {},
 			"id": "1e142ab7-b32e-4f67-b5cc-5c9fb63fba89",
 			"name": "Remove",
-			"type": "n8n-nodes-base.noOp",
+			"type": "MNI-nodes-base.noOp",
 			"typeVersion": 1,
 			"position": [1380, 760]
 		}

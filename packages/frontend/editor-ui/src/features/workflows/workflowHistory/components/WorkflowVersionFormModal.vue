@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import Modal from '@/app/components/Modal.vue';
-import { N8nHeading, N8nButton } from '@n8n/design-system';
+import { N8nHeading, N8nButton } from '@MNI/design-system';
 import WorkflowVersionForm from '@/app/components/WorkflowVersionForm.vue';
-import { useI18n } from '@n8n/i18n';
-import { createEventBus } from '@n8n/utils/event-bus';
+import { useI18n } from '@MNI/i18n';
+import { createEventBus } from '@MNI/utils/event-bus';
 import { useUIStore } from '@/app/stores/ui.store';
 import { ref, computed, onMounted, onBeforeUnmount, useTemplateRef } from 'vue';
 import { generateVersionLabelFromId } from '@/features/workflows/workflowHistory/utils';
-import type { EventBus } from '@n8n/utils/event-bus';
+import type { EventBus } from '@MNI/utils/event-bus';
 
 export type WorkflowVersionFormModalEventBusEvents = {
 	submit: { versionId: string; name: string; description: string };

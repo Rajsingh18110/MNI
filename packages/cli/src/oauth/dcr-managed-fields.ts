@@ -1,4 +1,4 @@
-import type { OAuth2CredentialData } from '@n8n/client-oauth2';
+import type { OAuth2CredentialData } from '@MNI/client-oauth2';
 
 /**
  * Credential fields owned by the dynamic client registration handshake rather

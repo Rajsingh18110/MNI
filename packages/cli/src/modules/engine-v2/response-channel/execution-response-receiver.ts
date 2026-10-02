@@ -1,4 +1,4 @@
-import type { ExecutionResponse } from '@n8n/engine';
+import type { ExecutionResponse } from '@MNI/engine';
 
 export type UnsubscribeExecutionResponse = () => void;
 

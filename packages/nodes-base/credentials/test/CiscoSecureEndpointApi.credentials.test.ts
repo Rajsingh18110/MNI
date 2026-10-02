@@ -1,6 +1,6 @@
-import { OutboundHttp } from '@n8n/backend-network';
-import { Container } from '@n8n/di';
-import type { IHttpRequestOptions } from 'n8n-workflow';
+import { OutboundHttp } from '@MNI/backend-network';
+import { Container } from '@MNI/di';
+import type { IHttpRequestOptions } from 'MNI-workflow';
 
 import { CiscoSecureEndpointApi } from '../CiscoSecureEndpointApi.credentials';
 

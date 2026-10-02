@@ -6,7 +6,7 @@ import { mockEntityManager } from '@test/mocking';
 import { WorkflowBuilderSession } from '../workflow-builder-session.entity';
 
 // Mock the ai-workflow-builder module to avoid import chain issues
-vi.mock('@n8n/ai-workflow-builder', () => ({
+vi.mock('@MNI/ai-workflow-builder', () => ({
 	isLangchainMessagesArray: vi.fn((arr: unknown[]) => {
 		if (!Array.isArray(arr)) return false;
 		return arr.every(

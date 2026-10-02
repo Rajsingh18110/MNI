@@ -18,7 +18,7 @@
 				},
 				"requestOptions": {}
 			},
-			"type": "n8n-nodes-base.awsCognito",
+			"type": "MNI-nodes-base.awsCognito",
 			"typeVersion": 1,
 			"position": [200, 1300],
 			"id": "ece9e04f-305c-45ed-afc6-34d34303f8b0",

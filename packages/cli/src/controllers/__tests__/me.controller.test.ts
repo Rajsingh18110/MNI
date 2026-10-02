@@ -1,9 +1,9 @@
-import { UserUpdateRequestDto } from '@n8n/api-types';
-import { mockInstance } from '@n8n/backend-test-utils';
-import { GlobalConfig } from '@n8n/config';
-import type { AuthenticatedRequest, User, PublicUser, AuthIdentity } from '@n8n/db';
-import { GLOBAL_OWNER_ROLE, InvalidAuthTokenRepository, UserRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
+import { UserUpdateRequestDto } from '@MNI/api-types';
+import { mockInstance } from '@MNI/backend-test-utils';
+import { GlobalConfig } from '@MNI/config';
+import type { AuthenticatedRequest, User, PublicUser, AuthIdentity } from '@MNI/db';
+import { GLOBAL_OWNER_ROLE, InvalidAuthTokenRepository, UserRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
 import type { Response } from 'express';
 import jwt from 'jsonwebtoken';
 import type { Mock } from 'vitest';
@@ -728,7 +728,7 @@ describe('MeController', () => {
 			req.body = {
 				version: 'v4',
 				personalization_survey_submitted_at: '2024-08-06T12:19:51.268Z',
-				personalization_survey_n8n_version: '1.0.0',
+				personalization_survey_MNI_version: '1.0.0',
 				companySize: '<20',
 				otherCompanyIndustryExtended: ['test'],
 				automationGoalSm: ['test'],
@@ -753,7 +753,7 @@ describe('MeController', () => {
 			const req = mock<MeRequest.SurveyAnswers>();
 			req.body = {
 				version: 'v4',
-				personalization_survey_n8n_version: '1.0.0',
+				personalization_survey_MNI_version: '1.0.0',
 				personalization_survey_submitted_at: new Date().toISOString(),
 				[fieldName]: ['<script>alert("XSS")</script>'],
 			};
@@ -773,7 +773,7 @@ describe('MeController', () => {
 			const req = mock<MeRequest.SurveyAnswers>();
 			req.body = {
 				version: 'v4',
-				personalization_survey_n8n_version: '1.0.0',
+				personalization_survey_MNI_version: '1.0.0',
 				personalization_survey_submitted_at: new Date().toISOString(),
 				[fieldName]: '<script>alert("XSS")</script>',
 			};

@@ -10,14 +10,14 @@ import { createWorkflowDocumentId } from '@/app/stores/workflowDocument.store';
 import userEvent from '@testing-library/user-event';
 
 const mockTelemetryTrack = vi.fn();
-vi.mock('@n8n/composables/useTelemetry', () => ({
+vi.mock('@MNI/composables/useTelemetry', () => ({
 	useTelemetry: () => ({
 		track: mockTelemetryTrack,
 	}),
 }));
 
 const mockShowToast = vi.fn();
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: () => ({ showToast: mockShowToast }),
 }));
 
@@ -42,7 +42,7 @@ const renderModal = createComponentRenderer(ImportCurlModal, {
 const testNode = {
 	id: 'node-1',
 	name: 'HTTP Request',
-	type: 'n8n-nodes-base.httpRequest',
+	type: 'MNI-nodes-base.httpRequest',
 	position: [0, 0] as [number, number],
 	typeVersion: 1,
 	parameters: {},

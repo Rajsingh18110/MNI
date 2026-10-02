@@ -1,11 +1,11 @@
-import type { Agent as RuntimeAgent, StreamChunk } from '@n8n/agents';
-import type { AgentJsonConfig } from '@n8n/api-types';
-import { mockLogger } from '@n8n/backend-test-utils';
-import type { AiConfig } from '@n8n/config';
-import { createDeferredPromise } from '@n8n/utils/promise/deferred-promise';
+import type { Agent as RuntimeAgent, StreamChunk } from '@MNI/agents';
+import type { AgentJsonConfig } from '@MNI/api-types';
+import { mockLogger } from '@MNI/backend-test-utils';
+import type { AiConfig } from '@MNI/config';
+import { createDeferredPromise } from '@MNI/utils/promise/deferred-promise';
 import type { JSONSchema7 } from 'json-schema';
-import { OperationalError, UserError } from 'n8n-workflow';
-import type { ExecuteAgentWorkflowContext, IRunExecutionData } from 'n8n-workflow';
+import { OperationalError, UserError } from 'MNI-workflow';
+import type { ExecuteAgentWorkflowContext, IRunExecutionData } from 'MNI-workflow';
 import type { Mock } from 'vitest';
 import { mock } from 'vitest-mock-extended';
 
@@ -676,7 +676,7 @@ describe('AgentWorkflowExecutionService', () => {
 			callingNodeId: 'node-1',
 			inputData: [{ json: { a: 1 } }],
 			inputDataScope: 'item' as const,
-			nodes: [{ name: 'Webhook', type: 'n8n-nodes-base.webhook' }],
+			nodes: [{ name: 'Webhook', type: 'MNI-nodes-base.webhook' }],
 			runExecutionData: { resultData: { runData: {} } } as unknown as IRunExecutionData,
 		};
 
@@ -933,7 +933,7 @@ describe('AgentWorkflowExecutionService', () => {
 							name: 'Fetch',
 							description: 'Fetch a URL',
 							node: {
-								nodeType: 'n8n-nodes-base.httpRequestTool',
+								nodeType: 'MNI-nodes-base.httpRequestTool',
 								nodeTypeVersion: 1,
 								nodeParameters: { url: 'https://example.com' },
 								credentials: {
@@ -1293,7 +1293,7 @@ describe('AgentWorkflowExecutionService', () => {
 								type: 'node',
 								name: 'HTTP Request',
 								node: {
-									nodeType: 'n8n-nodes-base.httpRequestTool',
+									nodeType: 'MNI-nodes-base.httpRequestTool',
 									nodeTypeVersion: 4.4,
 									nodeParameters: { url: '={{ $fromAI( }}' },
 								},

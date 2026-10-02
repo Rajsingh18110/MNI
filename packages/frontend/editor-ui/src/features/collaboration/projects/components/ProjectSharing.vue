@@ -1,13 +1,13 @@
 <script lang="ts" setup>
-import { isIconOrEmoji, type IconOrEmoji, type SelectSize } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
-import type { AllRolesMap } from '@n8n/permissions';
+import { isIconOrEmoji, type IconOrEmoji, type SelectSize } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
+import type { AllRolesMap } from '@MNI/permissions';
 import { useDebounceFn } from '@vueuse/core';
 import { computed, ref, watch, onMounted } from 'vue';
 import { ProjectTypes, type ProjectListItem, type ProjectSharingData } from '../projects.types';
 import type { ProjectSearchFn } from '../projects.utils';
 import ProjectSharingInfo from './ProjectSharingInfo.vue';
-import { getDebounceTime } from '@n8n/composables/useDebounce';
+import { getDebounceTime } from '@MNI/composables/useDebounce';
 import { DEBOUNCE_TIME } from '@/app/constants';
 
 import {
@@ -18,7 +18,7 @@ import {
 	N8nSelect,
 	N8nText,
 	N8nTooltip,
-} from '@n8n/design-system';
+} from '@MNI/design-system';
 
 const locale = useI18n();
 

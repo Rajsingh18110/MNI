@@ -1,9 +1,9 @@
-import type { I18nClass } from '@n8n/i18n';
-import { useI18n } from '@n8n/i18n';
+import type { I18nClass } from '@MNI/i18n';
+import { useI18n } from '@MNI/i18n';
 import { useResourcesListI18n } from './useResourcesListI18n';
 import { isBaseTextKey } from '@/app/utils/typeGuards';
 
-vi.mock('@n8n/i18n', () => ({
+vi.mock('@MNI/i18n', () => ({
 	useI18n: vi.fn(),
 }));
 

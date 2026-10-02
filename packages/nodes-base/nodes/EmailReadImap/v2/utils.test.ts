@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/naming-convention -- keys are wire header names */
-import { ImapSimple, type ImapTransport } from '@n8n/imap';
+import { ImapSimple, type ImapTransport } from '@MNI/imap';
 import type {
 	IBinaryData,
 	IDataObject,
 	INode,
 	INodeExecutionData,
 	ITriggerFunctions,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import type { Readable } from 'stream';
 import { mock, mockDeep } from 'vitest-mock-extended';
 

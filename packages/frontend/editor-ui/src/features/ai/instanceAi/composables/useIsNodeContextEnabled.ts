@@ -1,5 +1,5 @@
 import { computed } from 'vue';
-import { CANVAS_NODE_CONTEXT_FLAG } from '@n8n/api-types';
+import { CANVAS_NODE_CONTEXT_FLAG } from '@MNI/api-types';
 import { usePostHog } from '@/app/stores/posthog.store';
 import { useEditorContext } from '@/app/composables/useEditorContext';
 

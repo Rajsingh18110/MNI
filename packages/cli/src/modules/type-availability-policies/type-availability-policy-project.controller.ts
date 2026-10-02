@@ -1,7 +1,7 @@
-import { PutProjectPolicyDto } from '@n8n/api-types';
-import { LICENSE_FEATURES } from '@n8n/constants';
-import { AuthenticatedRequest } from '@n8n/db';
-import { Body, Get, Licensed, ProjectScope, Put, RestController } from '@n8n/decorators';
+import { PutProjectPolicyDto } from '@MNI/api-types';
+import { LICENSE_FEATURES } from '@MNI/constants';
+import { AuthenticatedRequest } from '@MNI/db';
+import { Body, Get, Licensed, ProjectScope, Put, RestController } from '@MNI/decorators';
 import type { Response } from 'express';
 
 import { NODE_TYPES_KIND } from './constants';

@@ -14,16 +14,16 @@ import {
 	N8nSettingsSection,
 	N8nText,
 	N8nTooltip,
-} from '@n8n/design-system';
-import { useI18n, type BaseTextKey } from '@n8n/i18n';
-import { useRootStore } from '@n8n/stores/useRootStore';
-import type { RedactionFloor } from '@n8n/api-types';
-import { useToast } from '@n8n/composables/useToast';
-import * as securitySettingsApi from '@n8n/rest-api-client/api/security-settings';
+} from '@MNI/design-system';
+import { useI18n, type BaseTextKey } from '@MNI/i18n';
+import { useRootStore } from '@MNI/stores/useRootStore';
+import type { RedactionFloor } from '@MNI/api-types';
+import { useToast } from '@MNI/composables/useToast';
+import * as securitySettingsApi from '@MNI/rest-api-client/api/security-settings';
 import { EnterpriseEditionFeature, SECURITY_POLICIES_DOCS_URL } from '@/app/constants';
 import EnterpriseEdition from '@/app/components/EnterpriseEdition.ee.vue';
-import { useSettingsStore } from '@n8n/stores/settings.store';
-import { useUsersStore } from '@n8n/stores/users.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
+import { useUsersStore } from '@MNI/stores/users.store';
 import { usePageRedirectionHelper } from '@/app/composables/usePageRedirectionHelper';
 import DataRedactionSection from './DataRedactionSection.vue';
 import WorkflowReviewsSection from './WorkflowReviewsSection.vue';

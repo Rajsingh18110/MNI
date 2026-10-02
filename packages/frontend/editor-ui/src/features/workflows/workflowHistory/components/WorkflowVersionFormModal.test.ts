@@ -2,11 +2,11 @@ import { createTestingPinia } from '@pinia/testing';
 import { createComponentRenderer } from '@/__tests__/render';
 import { cleanup, waitFor } from '@testing-library/vue';
 import userEvent from '@testing-library/user-event';
-import { createEventBus } from '@n8n/utils/event-bus';
+import { createEventBus } from '@MNI/utils/event-bus';
 import WorkflowVersionFormModal, {
 	type WorkflowVersionFormModalEventBusEvents,
 } from './WorkflowVersionFormModal.vue';
-import { STORES } from '@n8n/stores';
+import { STORES } from '@MNI/stores';
 
 const TEST_MODAL_KEY = 'test-modal';
 

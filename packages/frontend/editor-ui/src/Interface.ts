@@ -7,13 +7,13 @@ import type {
 	IVersionNotificationSettings,
 	Role,
 	WorkflowListPublicationStatus,
-} from '@n8n/api-types';
+} from '@MNI/api-types';
 import type { ILogInStatus } from '@/features/settings/users/users.types';
 import type { NodeViewItemSection } from '@/features/shared/nodeCreator/views/viewsData';
 import type { CredentialPayload, IUsedCredential } from '@/features/credentials/credentials.types';
-import type { Scope, WorkflowSharingRole } from '@n8n/permissions';
-import type { NodeCreatorTag, IconName, BinaryMetadata } from '@n8n/design-system';
-import type { ModalState } from '@n8n/frontend-module-sdk';
+import type { Scope, WorkflowSharingRole } from '@MNI/permissions';
+import type { NodeCreatorTag, IconName, BinaryMetadata } from '@MNI/design-system';
+import type { ModalState } from '@MNI/frontend-module-sdk';
 import type {
 	GenericValue,
 	IConnections,
@@ -42,15 +42,15 @@ import type {
 	IDestinationNode,
 	AgentRequestQuery,
 	IWorkflowGroup,
-} from 'n8n-workflow';
-import type { Version } from '@n8n/rest-api-client/api/versions';
-import type { Cloud, InstanceUsage } from '@n8n/rest-api-client/api/cloudPlans';
+} from 'MNI-workflow';
+import type { Version } from '@MNI/rest-api-client/api/versions';
+import type { Cloud, InstanceUsage } from '@MNI/rest-api-client/api/cloudPlans';
 import type {
 	WorkflowMetadata,
 	WorkflowDataCreate,
 	WorkflowDataUpdate,
-} from '@n8n/rest-api-client/api/workflows';
-import type { ITag } from '@n8n/rest-api-client/api/tags';
+} from '@MNI/rest-api-client/api/workflows';
+import type { ITag } from '@MNI/rest-api-client/api/tags';
 
 import type {
 	AI_NODE_CREATOR_VIEW,
@@ -70,7 +70,7 @@ import type {
 	FolderListItem,
 	ResourceParentFolder,
 } from '@/features/core/folders/folders.types';
-import type { WorkflowHistory } from '@n8n/rest-api-client/api/workflowHistory';
+import type { WorkflowHistory } from '@MNI/rest-api-client/api/workflowHistory';
 
 // Enumerated rather than `export *` from the package root: the root also exports
 // every component, so a wildcard here would pull the whole library into the module
@@ -96,7 +96,7 @@ export type {
 	RuleGroup,
 	TabOptions,
 	UserAction,
-} from '@n8n/design-system';
+} from '@MNI/design-system';
 
 declare global {
 	interface Window {
@@ -706,7 +706,7 @@ export type Modals = {
 
 export type ModalKey = keyof Modals;
 
-// `ModalState` is owned by `@n8n/frontend-module-sdk`; re-exported here so existing
+// `ModalState` is owned by `@MNI/frontend-module-sdk`; re-exported here so existing
 // `@/Interface` importers stay unchanged.
 export type { ModalState };
 

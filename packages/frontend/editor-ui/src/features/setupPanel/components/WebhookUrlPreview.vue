@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { useI18n } from '@n8n/i18n';
-import { N8nIcon, N8nTooltip } from '@n8n/design-system';
+import { useI18n } from '@MNI/i18n';
+import { N8nIcon, N8nTooltip } from '@MNI/design-system';
 import { ElCollapseTransition } from 'element-plus';
 
-import { useClipboard } from '@n8n/composables/useClipboard';
-import { useToast } from '@n8n/composables/useToast';
+import { useClipboard } from '@MNI/composables/useClipboard';
+import { useToast } from '@MNI/composables/useToast';
 import type { WebhookDisplayData } from '@/features/setupPanel/composables/useWebhookUrls';
 
 defineProps<{

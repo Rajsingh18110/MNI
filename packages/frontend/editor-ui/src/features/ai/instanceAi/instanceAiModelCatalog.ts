@@ -3,7 +3,7 @@ import {
 	type InstanceAiCatalogModel,
 	type InstanceAiCatalogProvider,
 	type InstanceAiModelCatalogResponse,
-} from '@n8n/api-types';
+} from '@MNI/api-types';
 
 import {
 	INSTANCE_AI_CURATED_MODELS,

@@ -1,7 +1,7 @@
-import { Service } from '@n8n/di';
+import { Service } from '@MNI/di';
 import type { JWK } from 'jose';
-import type { IDataObject, OauthJweProxyProvider } from 'n8n-workflow';
-import { UserError } from 'n8n-workflow';
+import type { IDataObject, OauthJweProxyProvider } from 'MNI-workflow';
+import { UserError } from 'MNI-workflow';
 
 /**
  * JWE-related fields of an RFC 7591 dynamic client registration payload.

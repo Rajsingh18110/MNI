@@ -7,14 +7,14 @@ import type {
 	INodeExecutionData,
 	INodeProperties,
 	IBinaryData,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import {
 	BINARY_ENCODING,
 	NodeOperationError,
 	deepCopy,
 	jsonParse,
 	BINARY_MODE_COMBINED,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { encodeDecodeOptions } from '@utils/descriptions';
 import { updateDisplayOptions } from '@utils/utilities';

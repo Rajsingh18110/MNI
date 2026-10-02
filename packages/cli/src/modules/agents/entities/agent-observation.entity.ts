@@ -1,6 +1,6 @@
-import type { ObservationLogMarker, ObservationLogStatus } from '@n8n/agents';
-import { WithTimestampsAndStringId } from '@n8n/db';
-import { Column, Entity, Index } from '@n8n/typeorm';
+import type { ObservationLogMarker, ObservationLogStatus } from '@MNI/agents';
+import { WithTimestampsAndStringId } from '@MNI/db';
+import { Column, Entity, Index } from '@MNI/typeorm';
 
 @Entity({ name: 'agents_observations' })
 @Index(['agentId', 'observationScopeId', 'status', 'createdAt', 'id'])

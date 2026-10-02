@@ -1,4 +1,4 @@
-# Moves open PRs in n8n-io/n8n-private off a bundle branch's base and back onto the bundle
+# Moves open PRs in MNI-io/MNI-private off a bundle branch's base and back onto the bundle
 # branch: master -> bundle/2.x, 1.x -> bundle/1.x.
 #
 # When a bundle branch is deleted, GitHub retargets every open PR that pointed at it to that
@@ -24,7 +24,7 @@ permissions: {}
 jobs:
   retarget:
     name: Retarget onto ${{ matrix.bundle }}
-    if: github.repository == 'n8n-io/n8n-private'
+    if: github.repository == 'MNI-io/MNI-private'
     runs-on: ubuntu-latest
     permissions:
       contents: read

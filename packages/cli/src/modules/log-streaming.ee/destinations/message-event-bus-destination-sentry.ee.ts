@@ -1,11 +1,11 @@
 import * as Sentry from '@sentry/node';
-import { MessageEventBusDestinationTypeNames } from 'n8n-workflow';
+import { MessageEventBusDestinationTypeNames } from 'MNI-workflow';
 import type {
 	MessageEventBusDestinationOptions,
 	MessageEventBusDestinationSentryOptions,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
-import { N8N_VERSION } from '@/constants';
+import { MNI_VERSION } from '@/constants';
 import type {
 	MessageEventBus,
 	MessageWithCallback,
@@ -46,7 +46,7 @@ export class MessageEventBusDestinationSentry
 			dsn: this.dsn,
 			tracesSampleRate: this.tracesSampleRate,
 			environment,
-			release: N8N_VERSION,
+			release: MNI_VERSION,
 			transport: Sentry.makeNodeTransport,
 			integrations: Sentry.getDefaultIntegrations({}),
 			stackParser: Sentry.defaultStackParser,

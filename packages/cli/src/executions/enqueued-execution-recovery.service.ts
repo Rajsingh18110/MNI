@@ -1,8 +1,8 @@
-import { Logger } from '@n8n/backend-common';
-import { ExecutionsConfig } from '@n8n/config';
-import { Service } from '@n8n/di';
-import { ErrorReporter } from 'n8n-core';
-import type { IWorkflowExecutionDataProcess } from 'n8n-workflow';
+import { Logger } from '@MNI/backend-common';
+import { ExecutionsConfig } from '@MNI/config';
+import { Service } from '@MNI/di';
+import { ErrorReporter } from 'MNI-core';
+import type { IWorkflowExecutionDataProcess } from 'MNI-workflow';
 import { strict as assert } from 'node:assert';
 
 import { ExecutionAlreadyResumingError } from '@/errors/execution-already-resuming.error';

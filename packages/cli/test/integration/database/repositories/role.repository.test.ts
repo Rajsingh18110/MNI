@@ -1,6 +1,6 @@
-import { testDb, linkUserToProject, createTeamProject } from '@n8n/backend-test-utils';
-import { AuthRolesService, RoleRepository, ScopeRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
+import { testDb, linkUserToProject, createTeamProject } from '@MNI/backend-test-utils';
+import { AuthRolesService, RoleRepository, ScopeRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
 
 import {
 	createRole,

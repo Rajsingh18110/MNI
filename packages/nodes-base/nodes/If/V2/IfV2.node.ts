@@ -8,7 +8,7 @@ import {
 	type INodeType,
 	type INodeTypeBaseDescription,
 	type INodeTypeDescription,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { ENABLE_LESS_STRICT_TYPE_VALIDATION } from '../../../utils/constants';
 import { looseTypeValidationProperty } from '../../../utils/descriptions';

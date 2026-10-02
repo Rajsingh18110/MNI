@@ -9,15 +9,15 @@ import { sentryVitePlugin } from '@sentry/vite-plugin';
 import { codecovVitePlugin } from '@codecov/vite-plugin';
 
 import icons from 'unplugin-icons/vite';
-import { lucideIconsPlugin } from '../@n8n/design-system/src/icons/lucide/vite';
+import { lucideIconsPlugin } from '../@MNI/design-system/src/icons/lucide/vite';
 import browserslistToEsbuild from 'browserslist-to-esbuild';
 import browserslist from 'browserslist';
 import { isLocaleFile, sendLocaleUpdate } from './vite/i18n-locales-hmr-helpers';
 import { nodePopularityPlugin } from './vite/vite-plugin-node-popularity.mjs';
 import { editorUiAliases } from './vite/aliases.mjs';
 import { devServerPlugin } from './vite/dev-ports.mjs';
-// Imported from source, not from `@n8n/constants`: this file must resolve with no build step.
-import { HTML_NONCE_PLACEHOLDER } from '../../@n8n/constants/src/csp';
+// Imported from source, not from `@MNI/constants`: this file must resolve with no build step.
+import { HTML_NONCE_PLACEHOLDER } from '../../@MNI/constants/src/csp';
 
 const publicPath = process.env.VUE_APP_PUBLIC_PATH || '/';
 
@@ -149,25 +149,25 @@ const plugins: UserConfig['plugins'] = [
 	{
 		name: 'Insert config script',
 		transformIndexHtml: (html, ctx) => {
-			// Skip config tags when using Vite dev server. Otherwise the BE
-			// will replace it with the actual config script in cli/src/commands/start.ts.
-			return ctx.server
-				? html
-						.replace('%CONFIG_TAGS%', '')
-						.replace(
-							'<script src="/{{BASE_PATH}}/static/base-path.js" type="text/javascript"></script>',
-							'<script type="text/javascript">window.BASE_PATH = "/";</script>',
-						)
-						.replaceAll('/{{BASE_PATH}}/', '/')
-						.replaceAll('/{{BASE_PATH}}', '')
-						.replaceAll('/{{REST_ENDPOINT}}', '/rest')
-				: html;
+			const injectedScripts = ctx.server
+				? '<script type="text/javascript">window.BASE_PATH = "/";</script>'
+				: '<script src="/{{BASE_PATH}}/static/base-path.js" type="text/javascript"></script>\n\t\t<script src="/{{BASE_PATH}}/static/posthog.init.js" type="text/javascript"></script>';
+
+			let processed = html.replace('%CONFIG_TAGS%', injectedScripts);
+
+			if (ctx.server) {
+				processed = processed
+					.replaceAll('/{{BASE_PATH}}/', '/')
+					.replaceAll('/{{BASE_PATH}}', '')
+					.replaceAll('/{{REST_ENDPOINT}}', '/rest');
+			}
+			return processed;
 		},
 	},
 	{
 		name: 'i18n-locales-hmr',
 		configureServer(server) {
-			const localesDir = resolve(packagesDir, 'frontend', '@n8n', 'i18n', 'src', 'locales');
+			const localesDir = resolve(packagesDir, 'frontend', '@MNI', 'i18n', 'src', 'locales');
 			server.watcher.add(localesDir);
 
 			// Only emit for add/unlink; change events are handled in handleHotUpdate
@@ -197,7 +197,7 @@ const plugins: UserConfig['plugins'] = [
 					},
 					telemetry: false,
 					release: {
-						name: `n8n@${release}`,
+						name: `MNI@${release}`,
 						// `Sentry.init` gets the release from the backend config (see `plugins/sentry.ts`),
 						// so the plugin does not have to add a release snippet to each chunk.
 						inject: false,
@@ -239,7 +239,7 @@ export default defineConfig({
 	html: { cspNonce: HTML_NONCE_PLACEHOLDER },
 	resolve: { alias, dedupe: singleInstanceDedupe },
 	base: publicPath,
-	envPrefix: ['VUE', 'N8N_ENV_FEAT'],
+	envPrefix: ['VUE', 'MNI_ENV_FEAT'],
 	build: {
 		minify: !!release,
 		// Coverage builds emit INLINE maps so browser V8 coverage carries the

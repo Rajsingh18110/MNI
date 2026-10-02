@@ -19,22 +19,22 @@ import { preferenceWorkflows } from './preference-profile.mjs';
 const REPO = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
 
 const SOURCES = {
-	'n8n-nodes-base.scheduleTrigger': ['packages/nodes-base/nodes/Schedule'],
-	'n8n-nodes-base.webhook': ['packages/nodes-base/nodes/Webhook'],
-	'n8n-nodes-base.if': ['packages/nodes-base/nodes/If'],
-	'n8n-nodes-base.set': ['packages/nodes-base/nodes/Set'],
-	'n8n-nodes-base.httpRequest': ['packages/nodes-base/nodes/HttpRequest'],
-	'n8n-nodes-base.slack': ['packages/nodes-base/nodes/Slack'],
-	'n8n-nodes-base.linear': ['packages/nodes-base/nodes/Linear'],
-	'n8n-nodes-base.gmail': ['packages/nodes-base/nodes/Google/Gmail'],
-	'n8n-nodes-base.dataTable': ['packages/nodes-base/nodes/DataTable'],
-	'@n8n/n8n-nodes-langchain.agent': [
-		'packages/@n8n/nodes-langchain/nodes/agents/Agent',
+	'MNI-nodes-base.scheduleTrigger': ['packages/nodes-base/nodes/Schedule'],
+	'MNI-nodes-base.webhook': ['packages/nodes-base/nodes/Webhook'],
+	'MNI-nodes-base.if': ['packages/nodes-base/nodes/If'],
+	'MNI-nodes-base.set': ['packages/nodes-base/nodes/Set'],
+	'MNI-nodes-base.httpRequest': ['packages/nodes-base/nodes/HttpRequest'],
+	'MNI-nodes-base.slack': ['packages/nodes-base/nodes/Slack'],
+	'MNI-nodes-base.linear': ['packages/nodes-base/nodes/Linear'],
+	'MNI-nodes-base.gmail': ['packages/nodes-base/nodes/Google/Gmail'],
+	'MNI-nodes-base.dataTable': ['packages/nodes-base/nodes/DataTable'],
+	'@MNI/MNI-nodes-langchain.agent': [
+		'packages/@MNI/nodes-langchain/nodes/agents/Agent',
 		// `promptType` and friends are spread in from here.
-		'packages/@n8n/nodes-langchain/utils/descriptions.ts',
+		'packages/@MNI/nodes-langchain/utils/descriptions.ts',
 	],
-	'@n8n/n8n-nodes-langchain.lmChatOpenAi': [
-		'packages/@n8n/nodes-langchain/nodes/llms/LMChatOpenAi',
+	'@MNI/MNI-nodes-langchain.lmChatOpenAi': [
+		'packages/@MNI/nodes-langchain/nodes/llms/LMChatOpenAi',
 	],
 };
 

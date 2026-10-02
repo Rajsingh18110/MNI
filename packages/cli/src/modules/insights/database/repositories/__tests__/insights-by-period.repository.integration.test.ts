@@ -1,17 +1,17 @@
-import { DatabaseConfig, GlobalConfig } from '@n8n/config';
+import { DatabaseConfig, GlobalConfig } from '@MNI/config';
 import {
 	createTeamProject,
 	createWorkflow,
 	linkUserToProject,
 	testDb,
 	testModules,
-} from '@n8n/backend-test-utils';
-import type { Project, User, WorkflowEntity } from '@n8n/db';
-import { DbConnectionOptions, DbLockService, SharedWorkflowRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
-import type { EntityManager, QueryRunner } from '@n8n/typeorm';
-import { DataSource } from '@n8n/typeorm';
-import { sleep } from '@n8n/utils/sleep';
+} from '@MNI/backend-test-utils';
+import type { Project, User, WorkflowEntity } from '@MNI/db';
+import { DbConnectionOptions, DbLockService, SharedWorkflowRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
+import type { EntityManager, QueryRunner } from '@MNI/typeorm';
+import { DataSource } from '@MNI/typeorm';
+import { sleep } from '@MNI/utils/sleep';
 import { DateTime } from 'luxon';
 
 import { InsightsConfig } from '@/modules/insights/insights.config';

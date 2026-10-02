@@ -1,4 +1,4 @@
-import type { INodeExecutionData } from 'n8n-workflow';
+import type { INodeExecutionData } from 'MNI-workflow';
 
 import { ReservedKeyFoundError } from './reserved-key-found-error';
 import { isObject } from './utils';
@@ -11,7 +11,7 @@ export interface TextKeys {
 	};
 }
 
-export const REQUIRED_N8N_ITEM_KEYS = new Set(['json', 'binary', 'pairedItem', 'error', 'index']);
+export const REQUIRED_MNI_ITEM_KEYS = new Set(['json', 'binary', 'pairedItem', 'error', 'index']);
 
 export function getTextKey(
 	textKeys: TextKeys,
@@ -65,7 +65,7 @@ export function validateTopLevelKeys(item: INodeExecutionData, itemIndex: number
 	for (const key in item) {
 		if (!Object.prototype.hasOwnProperty.call(item, key)) continue;
 
-		if (REQUIRED_N8N_ITEM_KEYS.has(key)) {
+		if (REQUIRED_MNI_ITEM_KEYS.has(key)) {
 			foundReservedKey ??= key;
 		} else {
 			unknownKeys.push(key);
@@ -142,7 +142,7 @@ export function validateRunCodeAllItems(
 		 * If at least one top-level key is an MNI item key (`json`, `binary`, etc.),
 		 * then require all item keys to be an MNI item key.
 		 *
-		 * If no top-level key is an MNI key, then skip this check, allowing non-n8n
+		 * If no top-level key is an MNI key, then skip this check, allowing non-MNI
 		 * item keys to be wrapped in `json` when normalizing items below.
 		 */
 		for (const item of executionResult) {
@@ -157,7 +157,7 @@ export function validateRunCodeAllItems(
 		}
 
 		const mustHaveTopLevelN8nKey = executionResult.some((item) =>
-			Object.keys(item).find((key) => REQUIRED_N8N_ITEM_KEYS.has(key)),
+			Object.keys(item).find((key) => REQUIRED_MNI_ITEM_KEYS.has(key)),
 		);
 
 		if (mustHaveTopLevelN8nKey) {

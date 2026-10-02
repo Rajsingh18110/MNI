@@ -1,8 +1,8 @@
 import { computed, ref, toValue, watch, type MaybeRefOrGetter } from 'vue';
 import { useRouter } from 'vue-router';
-import type { AiPreferencesAppliedPayload } from '@n8n/api-types';
-import type { DropdownMenuItemProps, IconName } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+import type { AiPreferencesAppliedPayload } from '@MNI/api-types';
+import type { DropdownMenuItemProps, IconName } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 import { VIEWS } from '@/app/constants';
 import { useUIStore } from '@/app/stores/ui.store';
 import { useContextStore } from '@/features/settings/context/context.store';

@@ -2,23 +2,23 @@
 import { defineStore } from 'pinia';
 import { computed, ref, watch } from 'vue';
 import { useRoute } from 'vue-router';
-import type { Collaborator } from '@n8n/api-types';
+import type { Collaborator } from '@MNI/api-types';
 import type { IWorkflowDb } from '@/Interface';
 
 import { TIME } from '@/app/constants';
-import { useI18n } from '@n8n/i18n';
-import { STORES } from '@n8n/stores';
+import { useI18n } from '@MNI/i18n';
+import { STORES } from '@MNI/stores';
 import { useBeforeUnload } from '@/app/composables/useBeforeUnload';
-import { useToast } from '@n8n/composables/useToast';
+import { useToast } from '@MNI/composables/useToast';
 import { useWorkflowsStore } from '@/app/stores/workflows.store';
 import { useWorkflowsListStore } from '@/app/stores/workflowsList.store';
 import { usePushConnectionStore } from '@/app/stores/pushConnection.store';
-import { useRootStore } from '@n8n/stores/useRootStore';
+import { useRootStore } from '@MNI/stores/useRootStore';
 import { useUIStore } from '@/app/stores/ui.store';
 import { useBuilderStore } from '@/features/ai/assistant/builder.store';
-import { useUsersStore } from '@n8n/stores/users.store';
+import { useUsersStore } from '@MNI/stores/users.store';
 import * as workflowsApi from '@/app/api/workflows';
-import { ResponseError } from '@n8n/rest-api-client';
+import { ResponseError } from '@MNI/rest-api-client';
 
 const HEARTBEAT_INTERVAL = 5 * TIME.MINUTE;
 const WRITE_LOCK_HEARTBEAT_INTERVAL = 30 * TIME.SECOND;

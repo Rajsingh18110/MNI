@@ -22,7 +22,7 @@ const readyToRunItem: ResourceItem = {
 	title: 'Summarize the news',
 	description: 'Get AI-powered news summaries',
 	quickStartId: 'summarize-the-news',
-	nodeTypes: ['n8n-nodes-base.gmail'],
+	nodeTypes: ['MNI-nodes-base.gmail'],
 };
 
 function mountCard(item: ResourceItem) {

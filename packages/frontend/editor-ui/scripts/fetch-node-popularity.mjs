@@ -7,7 +7,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const POPULARITY_ENDPOINT =
 	process.env.NODE_POPULARITY_ENDPOINT ||
 	'https://internal-production.app.n8n.cloud/webhook/nodes-popularity-scores';
-const FAIL_ON_ERROR = process.env.N8N_FAIL_ON_POPULARITY_FETCH_ERROR === 'true';
+const FAIL_ON_ERROR = process.env.MNI_FAIL_ON_POPULARITY_FETCH_ERROR === 'true';
 const DATA_DIR = path.join(__dirname, '..', 'data');
 const OUTPUT_FILE = path.join(DATA_DIR, 'node-popularity.json');
 
@@ -79,7 +79,7 @@ async function main() {
 		} else {
 			// Fetching failed
 			if (FAIL_ON_ERROR) {
-				console.error('N8N_FAIL_ON_POPULARITY_FETCH_ERROR is set - failing build');
+				console.error('MNI_FAIL_ON_POPULARITY_FETCH_ERROR is set - failing build');
 				process.exit(1);
 			}
 
@@ -91,7 +91,7 @@ async function main() {
 		console.error('Error in fetch-node-popularity script:', error);
 
 		if (FAIL_ON_ERROR) {
-			console.error('N8N_FAIL_ON_POPULARITY_FETCH_ERROR is set - failing build');
+			console.error('MNI_FAIL_ON_POPULARITY_FETCH_ERROR is set - failing build');
 			process.exit(1);
 		}
 

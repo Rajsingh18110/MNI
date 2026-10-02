@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 
-import { MCP_INSTANCE_SCOPES } from '@n8n/api-types';
-import { i18n } from '@n8n/i18n';
+import { MCP_INSTANCE_SCOPES } from '@MNI/api-types';
+import { i18n } from '@MNI/i18n';
 
 import { getAccessSummary, getClientBrand, isFullAccessGrant } from './clients.utils';
 

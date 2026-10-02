@@ -1,5 +1,5 @@
-import { ExecutionsConfig } from '@n8n/config';
-import { BreakingChangeRule } from '@n8n/decorators';
+import { ExecutionsConfig } from '@MNI/config';
+import { BreakingChangeRule } from '@MNI/decorators';
 
 import { NOT_AFFECTED_INSTANCE } from '../../detection-report';
 import type {
@@ -20,7 +20,7 @@ export class PreExecuteErrorCreatesExecutionRule implements IBreakingChangeInsta
 			version: 'v3',
 			title: 'A throw from workflow.preExecute no longer creates an execution',
 			description:
-				'The N8N_PRE_EXECUTE_ERROR_CREATES_EXECUTION environment variable is removed. A throw from workflow.preExecute never creates an execution record.',
+				'The MNI_PRE_EXECUTE_ERROR_CREATES_EXECUTION environment variable is removed. A throw from workflow.preExecute never creates an execution record.',
 			category: BreakingChangeCategory.instance,
 			severity: 'medium',
 		};
@@ -37,13 +37,13 @@ export class PreExecuteErrorCreatesExecutionRule implements IBreakingChangeInsta
 				{
 					title: 'Instance uses the legacy persist-then-fail path',
 					description:
-						'This instance sets N8N_PRE_EXECUTE_ERROR_CREATES_EXECUTION so a throw from workflow.preExecute still creates a failed execution. After the update, that throw never creates a row and does not count toward Insights or license usage.',
+						'This instance sets MNI_PRE_EXECUTE_ERROR_CREATES_EXECUTION so a throw from workflow.preExecute still creates a failed execution. After the update, that throw never creates a row and does not count toward Insights or license usage.',
 					level: 'warning',
 				},
 			],
 			recommendations: [
 				{
-					action: 'Remove N8N_PRE_EXECUTE_ERROR_CREATES_EXECUTION',
+					action: 'Remove MNI_PRE_EXECUTE_ERROR_CREATES_EXECUTION',
 					description:
 						'Remove the variable before you update. A throw from workflow.preExecute will no longer create an execution.',
 				},

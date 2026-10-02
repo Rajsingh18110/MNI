@@ -2,14 +2,14 @@ import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { shallowRef } from 'vue';
 import { setActivePinia } from 'pinia';
 import { createTestingPinia } from '@pinia/testing';
-import { jsonParse } from 'n8n-workflow';
+import { jsonParse } from 'MNI-workflow';
 import { usePostMessageControls, usePostMessageHandler } from './usePostMessageHandler';
 import { useWorkflowsStore } from '@/app/stores/workflows.store';
-import { useSettingsStore } from '@n8n/stores/settings.store';
-import { useNotificationsStore } from '@n8n/stores/notifications.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
+import { useNotificationsStore } from '@MNI/stores/notifications.store';
 import { useWorkflowExecutionStateStore } from '@/app/stores/workflowExecutionState.store';
 import { createWorkflowDocumentId } from '@/app/stores/workflowDocument.store';
-import { defaultSettings } from '@n8n/frontend-test-utils';
+import { defaultSettings } from '@MNI/frontend-test-utils';
 import type { IExecutionResponse } from '@/features/execution/executions/executions.types';
 
 const mockImportWorkflowExact = vi.hoisted(() => vi.fn().mockResolvedValue(undefined));
@@ -45,7 +45,7 @@ vi.mock('@/app/composables/useExternalHooks', () => ({
 	})),
 }));
 
-vi.mock('@n8n/composables/useTelemetry', () => ({
+vi.mock('@MNI/composables/useTelemetry', () => ({
 	useTelemetry: vi.fn(() => ({
 		track: vi.fn(),
 	})),
@@ -53,7 +53,7 @@ vi.mock('@n8n/composables/useTelemetry', () => ({
 
 const mockToastShowError = vi.hoisted(() => vi.fn());
 const mockToastShowMessage = vi.hoisted(() => vi.fn());
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: vi.fn(() => ({
 		showError: mockToastShowError,
 		showMessage: mockToastShowMessage,

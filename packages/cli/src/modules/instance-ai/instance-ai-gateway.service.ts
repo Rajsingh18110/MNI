@@ -2,8 +2,8 @@ import type {
 	InstanceAiGatewayCapabilities,
 	McpToolCallResult,
 	ToolCategory,
-} from '@n8n/api-types';
-import { Service } from '@n8n/di';
+} from '@MNI/api-types';
+import { Service } from '@MNI/di';
 
 import { Telemetry } from '@/telemetry';
 

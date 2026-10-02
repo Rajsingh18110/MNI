@@ -1,12 +1,12 @@
 import { vi } from 'vitest';
 import { setActivePinia, createPinia } from 'pinia';
 
-import type { SerializedCursor } from '@n8n/api-types';
+import type { SerializedCursor } from '@MNI/api-types';
 import type { ExecutionSummaryWithScopes, IExecutionsListResponse } from './executions.types';
 import { useExecutionsStore } from './executions.store';
-import { makeRestApiRequest } from '@n8n/rest-api-client';
+import { makeRestApiRequest } from '@MNI/rest-api-client';
 
-vi.mock('@n8n/rest-api-client', () => ({
+vi.mock('@MNI/rest-api-client', () => ({
 	makeRestApiRequest: vi.fn(),
 }));
 

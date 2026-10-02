@@ -1,4 +1,4 @@
-import type { IConnections, INode } from 'n8n-workflow';
+import type { IConnections, INode } from 'MNI-workflow';
 
 import {
 	applyOperations,
@@ -10,7 +10,7 @@ import {
 const makeNode = (overrides: Partial<INode> = {}): INode => ({
 	id: 'node-id',
 	name: 'A',
-	type: 'n8n-nodes-base.set',
+	type: 'MNI-nodes-base.set',
 	typeVersion: 1,
 	position: [0, 0],
 	parameters: {},
@@ -391,7 +391,7 @@ describe('applyOperations', () => {
 					type: 'addNode',
 					node: {
 						name: 'C',
-						type: 'n8n-nodes-base.set',
+						type: 'MNI-nodes-base.set',
 						typeVersion: 1,
 						parameters: { value: 1 },
 					},
@@ -413,7 +413,7 @@ describe('applyOperations', () => {
 					node: {
 						id: 'fixed-id',
 						name: 'C',
-						type: 'n8n-nodes-base.set',
+						type: 'MNI-nodes-base.set',
 						typeVersion: 1,
 						position: [400, 100],
 					},
@@ -429,7 +429,7 @@ describe('applyOperations', () => {
 
 		test('rejects when name already exists', () => {
 			const ops: PartialUpdateOperation[] = [
-				{ type: 'addNode', node: { name: 'A', type: 'n8n-nodes-base.set', typeVersion: 1 } },
+				{ type: 'addNode', node: { name: 'A', type: 'MNI-nodes-base.set', typeVersion: 1 } },
 			];
 			const result = applyOperations(baseWorkflow(), ops);
 			expect(result.success).toBe(false);
@@ -457,7 +457,7 @@ describe('applyOperations', () => {
 
 		test('untracks an added node when it is removed in the same batch', () => {
 			const ops: PartialUpdateOperation[] = [
-				{ type: 'addNode', node: { name: 'C', type: 'n8n-nodes-base.set', typeVersion: 1 } },
+				{ type: 'addNode', node: { name: 'C', type: 'MNI-nodes-base.set', typeVersion: 1 } },
 				{ type: 'removeNode', nodeName: 'C' },
 			];
 			const result = applyOperations(baseWorkflow(), ops);
@@ -954,7 +954,7 @@ describe('applyOperations', () => {
 			const ops: PartialUpdateOperation[] = [
 				{
 					type: 'addNode',
-					node: { name: '__proto__', type: 'n8n-nodes-base.set', typeVersion: 1 },
+					node: { name: '__proto__', type: 'MNI-nodes-base.set', typeVersion: 1 },
 				},
 			];
 			const result = applyOperations(wf, ops);
@@ -1129,7 +1129,7 @@ describe('applyOperations', () => {
 			const result = applyOperations(baseWorkflow(), [
 				{
 					type: 'addNode',
-					node: { id: 'c', name: 'C', type: 'n8n-nodes-base.set', typeVersion: 1 },
+					node: { id: 'c', name: 'C', type: 'MNI-nodes-base.set', typeVersion: 1 },
 				},
 				{ type: 'setNodeGroups', nodeGroups: [{ id: 'g1', name: 'Group', nodeNames: ['C'] }] },
 			]);
@@ -1309,7 +1309,7 @@ describe('applyOperations', () => {
 			const result = applyOperations(baseWorkflow(), [
 				{
 					type: 'addNode',
-					node: { id: 'c', name: 'C', type: 'n8n-nodes-base.set', typeVersion: 1 },
+					node: { id: 'c', name: 'C', type: 'MNI-nodes-base.set', typeVersion: 1 },
 				},
 				{ type: 'addNodeGroup', name: 'Group', nodeNames: ['C'] },
 			]);
@@ -1649,7 +1649,7 @@ describe('applyOperations', () => {
 		test('a failing addNodeGroup is skipped while surrounding operations still apply', () => {
 			const wf = baseWorkflow();
 			const ops: PartialUpdateOperation[] = [
-				{ type: 'addNode', node: { name: 'C', type: 'n8n-nodes-base.set', typeVersion: 1 } },
+				{ type: 'addNode', node: { name: 'C', type: 'MNI-nodes-base.set', typeVersion: 1 } },
 				{ type: 'addNodeGroup', name: 'Group', nodeNames: ['Missing'] },
 				{ type: 'addConnection', source: 'A', target: 'C' },
 			];
@@ -1712,7 +1712,7 @@ describe('applyOperations', () => {
 
 		test('skipping a non-fatal operation does not corrupt state for later operations', () => {
 			const ops: PartialUpdateOperation[] = [
-				{ type: 'addNode', node: { name: 'C', type: 'n8n-nodes-base.set', typeVersion: 1 } },
+				{ type: 'addNode', node: { name: 'C', type: 'MNI-nodes-base.set', typeVersion: 1 } },
 				{ type: 'addNodeGroup', name: 'Group', nodeNames: ['Missing'] },
 				{ type: 'setNodeParameter', nodeName: 'C', path: '/foo', value: 'bar' },
 			];
@@ -1728,7 +1728,7 @@ describe('applyOperations', () => {
 		test('opIndex in skippedOperations reflects the original position in the input array', () => {
 			const ops: PartialUpdateOperation[] = [
 				{ type: 'updateNodeParameters', nodeName: 'B', parameters: { url: 'https://new' } },
-				{ type: 'addNode', node: { name: 'C', type: 'n8n-nodes-base.set', typeVersion: 1 } },
+				{ type: 'addNode', node: { name: 'C', type: 'MNI-nodes-base.set', typeVersion: 1 } },
 				{ type: 'addNodeGroup', name: 'Group', nodeNames: ['Missing'] },
 				{ type: 'setNodeParameter', nodeName: 'C', path: '/foo', value: 'bar' },
 			];

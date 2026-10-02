@@ -1,4 +1,4 @@
-import { Container } from '@n8n/di';
+import { Container } from '@MNI/di';
 import {
 	CHAT_TRIGGER_NODE_TYPE,
 	FORM_TRIGGER_NODE_TYPE,
@@ -9,7 +9,7 @@ import {
 	SCHEDULE_TRIGGER_NODE_TYPE,
 	WEBHOOK_NODE_TYPE,
 	type WorkflowExecutionMockDataSource,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { ExecutionPersistence } from '@/executions/execution-persistence';
 

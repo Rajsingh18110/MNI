@@ -1,6 +1,6 @@
 import { mock } from 'vitest-mock-extended';
 import type { MqttClient } from 'mqtt';
-import type { ICredentialDataDecryptedObject, IExecuteFunctions } from 'n8n-workflow';
+import type { ICredentialDataDecryptedObject, IExecuteFunctions } from 'MNI-workflow';
 
 import { createClient } from '../GenericFunctions';
 import { Mqtt } from '../Mqtt.node';

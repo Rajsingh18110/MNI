@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import type { I18nClass } from '@n8n/i18n';
+import type { I18nClass } from '@MNI/i18n';
 import {
 	createMockAgent,
 	createMockModelsResponse,
@@ -53,7 +53,7 @@ const buildMenuOptions: BuildMenuItemsOptions = {
 describe(buildModelSelectorMenuItems, () => {
 	it('should include MNI agents only when includeCustomAgents is true', () => {
 		const agents = createMockModelsResponse({
-			n8n: { models: [mockN8nAgent] },
+			MNI: { models: [mockN8nAgent] },
 			'custom-agent': { models: [mockPersonalAgent] },
 		});
 
@@ -85,7 +85,7 @@ describe(buildModelSelectorMenuItems, () => {
 		});
 
 		const agents = createMockModelsResponse({
-			n8n: { models: [agent1, agent2] },
+			MNI: { models: [agent1, agent2] },
 		});
 
 		const result = buildModelSelectorMenuItems(agents, buildMenuOptions);
@@ -121,7 +121,7 @@ describe(buildModelSelectorMenuItems, () => {
 		});
 
 		const agents = createMockModelsResponse({
-			n8n: { models: [agent1, agent2] },
+			MNI: { models: [agent1, agent2] },
 		});
 
 		const result = buildModelSelectorMenuItems(agents, buildMenuOptions);
@@ -262,7 +262,7 @@ describe(buildModelSelectorMenuItems, () => {
 	});
 
 	it('should show empty state for workflow agents', () => {
-		const agents = createMockModelsResponse({ n8n: { models: [] } });
+		const agents = createMockModelsResponse({ MNI: { models: [] } });
 
 		const result = buildModelSelectorMenuItems(agents, buildMenuOptions);
 
@@ -324,7 +324,7 @@ describe(applySearch, () => {
 		});
 
 		const agents = createMockModelsResponse({
-			n8n: { models: [agent1, agent2, agent3] },
+			MNI: { models: [agent1, agent2, agent3] },
 		});
 
 		const menuItems = buildModelSelectorMenuItems(agents, buildMenuOptions);
@@ -352,7 +352,7 @@ describe(applySearch, () => {
 		});
 
 		const agents = createMockModelsResponse({
-			n8n: { models: [agent1, agent2] },
+			MNI: { models: [agent1, agent2] },
 		});
 
 		const menuItems = buildModelSelectorMenuItems(agents, buildMenuOptions);
@@ -374,7 +374,7 @@ describe(applySearch, () => {
 		);
 
 		const agents = createMockModelsResponse({
-			n8n: { models: agentModels },
+			MNI: { models: agentModels },
 		});
 
 		const menuItems = buildModelSelectorMenuItems(agents, buildMenuOptions);

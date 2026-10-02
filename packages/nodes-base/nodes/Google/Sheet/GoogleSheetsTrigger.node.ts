@@ -5,8 +5,8 @@ import type {
 	INodeTypeDescription,
 	INodeProperties,
 	IPollFunctions,
-} from 'n8n-workflow';
-import { NodeConnectionTypes, NodeOperationError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeConnectionTypes, NodeOperationError } from 'MNI-workflow';
 
 import {
 	arrayOfArraysToJson,
@@ -178,7 +178,7 @@ export class GoogleSheetsTrigger implements INodeType {
 						value: 'serviceAccount',
 					},
 					{
-						// eslint-disable-next-line n8n-nodes-base/node-param-display-name-miscased
+						// eslint-disable-next-line MNI-nodes-base/node-param-display-name-miscased
 						name: 'OAuth2 (recommended)',
 						value: 'triggerOAuth2',
 					},

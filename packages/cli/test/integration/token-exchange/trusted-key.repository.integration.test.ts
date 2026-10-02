@@ -1,5 +1,5 @@
-import { testDb, testModules } from '@n8n/backend-test-utils';
-import { Container } from '@n8n/di';
+import { testDb, testModules } from '@MNI/backend-test-utils';
+import { Container } from '@MNI/di';
 
 import { TrustedKeySourceRepository } from '@/modules/token-exchange/database/repositories/trusted-key-source.repository';
 import { TrustedKeyRepository } from '@/modules/token-exchange/database/repositories/trusted-key.repository';

@@ -1,4 +1,4 @@
-import type { User } from '@n8n/db';
+import type { User } from '@MNI/db';
 import { mock } from 'vitest-mock-extended';
 
 import type { WorkflowFinderService } from '@/workflows/workflow-finder.service';

@@ -1,5 +1,5 @@
-import type { Logger } from '@n8n/backend-common';
-import type { GlobalConfig } from '@n8n/config';
+import type { Logger } from '@MNI/backend-common';
+import type { GlobalConfig } from '@MNI/config';
 import type {
 	WorkflowRepository,
 	CredentialsRepository,
@@ -7,10 +7,10 @@ import type {
 	UserRepository,
 	User,
 	Role,
-} from '@n8n/db';
-import type { ErrorReporter } from 'n8n-core';
-import type { IWorkflowBase } from 'n8n-workflow';
-import { UnexpectedError } from 'n8n-workflow';
+} from '@MNI/db';
+import type { ErrorReporter } from 'MNI-core';
+import type { IWorkflowBase } from 'MNI-workflow';
+import { UnexpectedError } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import { ExternalHooks, toWorkflowLifecycleHookActor } from '@/external-hooks';

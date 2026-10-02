@@ -12,15 +12,15 @@ import {
 	mockInstance,
 	randomCredentialPayload,
 	testDb,
-} from '@n8n/backend-test-utils';
-import { GlobalConfig } from '@n8n/config';
-import type { User } from '@n8n/db';
-import { ExecutionRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
-import type { DirectoryLoader } from 'n8n-core';
-import { UnrecognizedNodeTypeError } from 'n8n-core';
-import type { INode, INodeType } from 'n8n-workflow';
-import { CHAT_TRIGGER_NODE_TYPE } from 'n8n-workflow';
+} from '@MNI/backend-test-utils';
+import { GlobalConfig } from '@MNI/config';
+import type { User } from '@MNI/db';
+import { ExecutionRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
+import type { DirectoryLoader } from 'MNI-core';
+import { UnrecognizedNodeTypeError } from 'MNI-core';
+import type { INode, INodeType } from 'MNI-workflow';
+import { CHAT_TRIGGER_NODE_TYPE } from 'MNI-workflow';
 import { randomUUID } from 'node:crypto';
 import path from 'node:path';
 import { agent as testAgent } from 'supertest';
@@ -53,7 +53,7 @@ const BASIC_AUTH_PASSWORD = 'chat-password';
 function registerChatTrigger() {
 	const distPath = path.resolve(
 		__dirname,
-		'../../../@n8n/nodes-langchain/dist/nodes/trigger/ChatTrigger/ChatTrigger.node.js',
+		'../../../@MNI/nodes-langchain/dist/nodes/trigger/ChatTrigger/ChatTrigger.node.js',
 	);
 	// eslint-disable-next-line @typescript-eslint/no-require-imports
 	const { ChatTrigger } = require(distPath) as { ChatTrigger: new () => INodeType };

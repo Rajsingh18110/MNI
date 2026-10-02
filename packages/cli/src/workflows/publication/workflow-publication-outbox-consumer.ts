@@ -1,12 +1,12 @@
-import { Logger } from '@n8n/backend-common';
-import { WorkflowsConfig } from '@n8n/config';
-import { Time } from '@n8n/constants';
-import { WorkflowPublicationOutbox, WorkflowPublicationOutboxRepository } from '@n8n/db';
-import { OnLeaderTakeover, OnPubSubEvent, OnShutdown } from '@n8n/decorators';
-import { Service } from '@n8n/di';
-import { ErrorReporter, InstanceSettings, SpanStatus, Tracing } from 'n8n-core';
-import { ensureError } from '@n8n/utils/errors/ensure-error';
-import { OperationalError, UnexpectedError, UserError } from 'n8n-workflow';
+import { Logger } from '@MNI/backend-common';
+import { WorkflowsConfig } from '@MNI/config';
+import { Time } from '@MNI/constants';
+import { WorkflowPublicationOutbox, WorkflowPublicationOutboxRepository } from '@MNI/db';
+import { OnLeaderTakeover, OnPubSubEvent, OnShutdown } from '@MNI/decorators';
+import { Service } from '@MNI/di';
+import { ErrorReporter, InstanceSettings, SpanStatus, Tracing } from 'MNI-core';
+import { ensureError } from '@MNI/utils/errors/ensure-error';
+import { OperationalError, UnexpectedError, UserError } from 'MNI-workflow';
 
 import { EventService } from '@/events/event.service';
 import type {

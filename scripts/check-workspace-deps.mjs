@@ -18,7 +18,7 @@ for (const file of files) {
 				console.log("Use 'workspace:*' instead to pin exact versions.");
 				console.log("Using 'workspace:^' causes npm to resolve semver ranges when users");
 				console.log("install from npm, which can lead to version mismatches between");
-				console.log("@n8n/* packages and break MNI startup.");
+				console.log("@MNI/* packages and break MNI startup.");
 				console.log('');
 			}
 			foundError = true;

@@ -1,9 +1,9 @@
-import type { Logger } from '@n8n/backend-common';
-import type { InstanceSettingsLoaderConfig } from '@n8n/config';
+import type { Logger } from '@MNI/backend-common';
+import type { InstanceSettingsLoaderConfig } from '@MNI/config';
 import {
 	PERSONAL_SPACE_PUBLISHING_SETTING,
 	PERSONAL_SPACE_SHARING_SETTING,
-} from '@n8n/permissions';
+} from '@MNI/permissions';
 import { mock } from 'vitest-mock-extended';
 
 import type { MfaService } from '@/mfa/mfa.service';
@@ -38,7 +38,7 @@ describe('SecurityPolicyInstanceSettingsLoader', () => {
 		logger.scoped.mockReturnThis();
 	});
 
-	describe('when N8N_SECURITY_POLICY_MANAGED_BY_ENV is false', () => {
+	describe('when MNI_SECURITY_POLICY_MANAGED_BY_ENV is false', () => {
 		it('should skip when securityPolicyManagedByEnv is false', async () => {
 			const loader = createLoader();
 
@@ -83,7 +83,7 @@ describe('SecurityPolicyInstanceSettingsLoader', () => {
 		});
 	});
 
-	describe('when N8N_SECURITY_POLICY_MANAGED_BY_ENV is true', () => {
+	describe('when MNI_SECURITY_POLICY_MANAGED_BY_ENV is true', () => {
 		it('should enforce MFA when mfaEnforcedEnabled is true', async () => {
 			const loader = createLoader({
 				securityPolicyManagedByEnv: true,
@@ -174,7 +174,7 @@ describe('SecurityPolicyInstanceSettingsLoader', () => {
 			await loader.run();
 
 			expect(logger.info).toHaveBeenCalledWith(
-				expect.stringContaining('N8N_SECURITY_POLICY_MANAGED_BY_ENV is enabled'),
+				expect.stringContaining('MNI_SECURITY_POLICY_MANAGED_BY_ENV is enabled'),
 			);
 		});
 

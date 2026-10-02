@@ -7,8 +7,8 @@ import {
 	testDb,
 	createActiveWorkflow,
 	createWorkflowWithHistory,
-} from '@n8n/backend-test-utils';
-import type { Project, User } from '@n8n/db';
+} from '@MNI/backend-test-utils';
+import type { Project, User } from '@MNI/db';
 import {
 	TagEntity,
 	CredentialsRepository,
@@ -17,10 +17,10 @@ import {
 	WorkflowRepository,
 	WorkflowHistoryRepository,
 	UserRepository,
-} from '@n8n/db';
-import { Container } from '@n8n/di';
-import type { ContentImportContext, PolicyViolation } from '@n8n/decorators';
-import type { INode } from 'n8n-workflow';
+} from '@MNI/db';
+import { Container } from '@MNI/di';
+import type { ContentImportContext, PolicyViolation } from '@MNI/decorators';
+import type { INode } from 'MNI-workflow';
 import { v4 as uuid } from 'uuid';
 import type { Mocked } from 'vitest';
 import { mock } from 'vitest-mock-extended';
@@ -174,7 +174,7 @@ describe('ImportService', () => {
 				name: 'MNI',
 				parameters: {},
 				position: [0, 0],
-				type: 'n8n-nodes-base.n8n',
+				type: 'MNI-nodes-base.MNI',
 				typeVersion: 1,
 				credentials: credential,
 			},

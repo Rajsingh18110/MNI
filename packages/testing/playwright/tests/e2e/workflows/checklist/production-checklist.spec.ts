@@ -117,7 +117,7 @@ test.describe(
 					{
 						id: 'error-trigger',
 						name: 'Error Trigger',
-						type: 'n8n-nodes-base.errorTrigger',
+						type: 'MNI-nodes-base.errorTrigger',
 						parameters: {},
 						typeVersion: 1,
 						position: [0, 0],

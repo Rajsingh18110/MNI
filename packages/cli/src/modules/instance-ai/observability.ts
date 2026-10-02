@@ -1,5 +1,5 @@
-import { isEndpointModelConfig, modelConfigId } from '@n8n/instance-ai';
-import type { InstanceAiTraceContext, ModelConfig } from '@n8n/instance-ai';
+import { isEndpointModelConfig, modelConfigId } from '@MNI/instance-ai';
+import type { InstanceAiTraceContext, ModelConfig } from '@MNI/instance-ai';
 
 export type InstanceAiObservabilityContext = {
 	threadId: string;

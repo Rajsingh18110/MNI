@@ -1,5 +1,5 @@
-import type { PlannedTaskGraph, PlannedTaskRecord, WorkflowBuildOutcome } from '@n8n/instance-ai';
-import type { WorkflowLoopWorkItemRecord } from '@n8n/instance-ai';
+import type { PlannedTaskGraph, PlannedTaskRecord, WorkflowBuildOutcome } from '@MNI/instance-ai';
+import type { WorkflowLoopWorkItemRecord } from '@MNI/instance-ai';
 import { mock } from 'vitest-mock-extended';
 
 import type { TypeORMAgentMemory } from '../storage/typeorm-agent-memory';
@@ -20,7 +20,7 @@ function makeOutcome(overrides: Partial<WorkflowBuildOutcome> = {}): WorkflowBui
 		workflowId: 'wf-1',
 		submitted: true,
 		triggerType: 'manual_or_testable',
-		triggerNodes: [{ nodeName: 'Start', nodeType: 'n8n-nodes-base.manualTrigger' }],
+		triggerNodes: [{ nodeName: 'Start', nodeType: 'MNI-nodes-base.manualTrigger' }],
 		needsUserInput: false,
 		verificationReadiness: { status: 'ready' },
 		setupRequirement: { status: 'not_required' },

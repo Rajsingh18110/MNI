@@ -1,9 +1,9 @@
-import { retryabilityFromError } from '@n8n/backend-network';
-import { Time } from '@n8n/constants';
-import { backoff } from '@n8n/scheduler';
-import { errorChain, isObjectLike, type UnknownRecord } from '@n8n/utils/errors/error-chain';
-import type { ActionableCause, TimedCause } from 'n8n-workflow';
-import { ACTIONABLE_CAUSES, TIMED_CAUSES } from 'n8n-workflow';
+import { retryabilityFromError } from '@MNI/backend-network';
+import { Time } from '@MNI/constants';
+import { backoff } from '@MNI/scheduler';
+import { errorChain, isObjectLike, type UnknownRecord } from '@MNI/utils/errors/error-chain';
+import type { ActionableCause, TimedCause } from 'MNI-workflow';
+import { ACTIONABLE_CAUSES, TIMED_CAUSES } from 'MNI-workflow';
 
 export type PollFailureType = 'transient' | 'permanent';
 

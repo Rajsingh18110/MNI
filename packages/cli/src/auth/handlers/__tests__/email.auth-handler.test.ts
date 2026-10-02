@@ -1,5 +1,5 @@
-import type { GlobalConfig } from '@n8n/config';
-import type { AuthIdentity, User, UserRepository } from '@n8n/db';
+import type { GlobalConfig } from '@MNI/config';
+import type { AuthIdentity, User, UserRepository } from '@MNI/db';
 import { mock } from 'vitest-mock-extended';
 
 import { AuthError } from '@/errors/response-errors/auth.error';

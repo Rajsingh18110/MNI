@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { computed } from 'vue';
-import { N8nCallout } from '@n8n/design-system';
-import { useI18n, type BaseTextKey } from '@n8n/i18n';
+import { N8nCallout } from '@MNI/design-system';
+import { useI18n, type BaseTextKey } from '@MNI/i18n';
 import { useInstanceAiSettingsStore } from '../instanceAiSettings.store';
 
 const i18n = useI18n();

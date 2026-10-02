@@ -1,15 +1,15 @@
-import { Logger } from '@n8n/backend-common';
-import { INSTANCE_ACTIVITY_CONTEXT_FLAG } from '@n8n/api-types';
-import { GlobalConfig } from '@n8n/config';
+import { Logger } from '@MNI/backend-common';
+import { INSTANCE_ACTIVITY_CONTEXT_FLAG } from '@MNI/api-types';
+import { GlobalConfig } from '@MNI/config';
 import {
 	activityDataMaxLength,
 	ActivityEventRepository,
 	SharedCredentialsRepository,
 	SharedWorkflowRepository,
-} from '@n8n/db';
-import type { ActivityEventInput } from '@n8n/db';
-import { Service } from '@n8n/di';
-import type { IDataObject, INode, IWorkflowBase } from 'n8n-workflow';
+} from '@MNI/db';
+import type { ActivityEventInput } from '@MNI/db';
+import { Service } from '@MNI/di';
+import type { IDataObject, INode, IWorkflowBase } from 'MNI-workflow';
 
 import { EventService } from '@/events/event.service';
 import type { RelayEventMap, WorkflowActionSource } from '@/events/maps/relay.event-map';
@@ -17,7 +17,7 @@ import { EventRelay } from '@/events/relays/event-relay';
 import { PostHogClient } from '@/posthog';
 
 /** Carried by nearly every core node type. Dropping it buys room inside the `data` budget. */
-const CORE_NODE_TYPE_PREFIX = 'n8n-nodes-base.';
+const CORE_NODE_TYPE_PREFIX = 'MNI-nodes-base.';
 
 /** Enough distinct types to show what a user reached for, few enough to leave room for the rest. */
 const maxListedNodeTypes = 5;

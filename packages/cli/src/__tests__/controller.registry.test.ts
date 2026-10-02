@@ -1,12 +1,12 @@
-vi.mock('@n8n/backend-common', async () => {
+vi.mock('@MNI/backend-common', async () => {
 	return {
-		...(await vi.importActual<typeof import('@n8n/backend-common')>('@n8n/backend-common')),
+		...(await vi.importActual<typeof import('@MNI/backend-common')>('@MNI/backend-common')),
 		inProduction: true,
 	};
 });
 
-import { Z } from '@n8n/api-types';
-import type { GlobalConfig } from '@n8n/config';
+import { Z } from '@MNI/api-types';
+import type { GlobalConfig } from '@MNI/config';
 import {
 	ControllerRegistryMetadata,
 	Param,
@@ -18,10 +18,10 @@ import {
 	RootLevelController,
 	createBodyKeyedRateLimiter,
 	createUserKeyedRateLimiter,
-} from '@n8n/decorators';
-import { Container } from '@n8n/di';
+} from '@MNI/decorators';
+import { Container } from '@MNI/di';
 import express, { json } from 'express';
-import { ErrorReporter } from 'n8n-core';
+import { ErrorReporter } from 'MNI-core';
 import request from 'supertest';
 import { mock } from 'vitest-mock-extended';
 import { z } from 'zod';

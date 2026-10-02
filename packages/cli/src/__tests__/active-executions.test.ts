@@ -1,9 +1,9 @@
-import { Logger } from '@n8n/backend-common';
-import { mockInstance, mockLogger } from '@n8n/backend-test-utils';
-import { ExecutionsConfig } from '@n8n/config';
-import type { GlobalConfig } from '@n8n/config';
-import type { ExecutionRepository } from '@n8n/db';
-import type { IDeferredPromise } from '@n8n/utils/promise/deferred-promise';
+import { Logger } from '@MNI/backend-common';
+import { mockInstance, mockLogger } from '@MNI/backend-test-utils';
+import { ExecutionsConfig } from '@MNI/config';
+import type { GlobalConfig } from '@MNI/config';
+import type { ExecutionRepository } from '@MNI/db';
+import type { IDeferredPromise } from '@MNI/utils/promise/deferred-promise';
 import type { Response } from 'express';
 import type {
 	ExecutionStatus,
@@ -11,13 +11,13 @@ import type {
 	IRun,
 	IWorkflowExecutionDataProcess,
 	StructuredChunk,
-} from 'n8n-workflow';
-import { sleep } from '@n8n/utils/sleep';
+} from 'MNI-workflow';
+import { sleep } from '@MNI/utils/sleep';
 import {
 	createEmptyRunExecutionData,
 	ManualExecutionCancelledError,
 	SystemShutdownExecutionCancelledError,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import PCancelable from 'p-cancelable';
 import { v4 as uuid } from 'uuid';
 import type { Mock } from 'vitest';
@@ -31,7 +31,7 @@ import type { ExecutionPersistence } from '@/executions/execution-persistence';
 import type { License } from '@/license';
 import type { Telemetry } from '@/telemetry';
 
-vi.mock('@n8n/utils/sleep', () => ({
+vi.mock('@MNI/utils/sleep', () => ({
 	sleep: vi.fn(),
 }));
 

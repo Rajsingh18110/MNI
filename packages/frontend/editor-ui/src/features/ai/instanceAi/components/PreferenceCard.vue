@@ -1,20 +1,20 @@
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue';
 import { RouterLink } from 'vue-router';
-import type { InstanceAiToolCallState } from '@n8n/api-types';
+import type { InstanceAiToolCallState } from '@MNI/api-types';
 import {
 	N8nAiActivityStepChevron,
 	N8nAnimatedCollapsibleContent,
 	N8nCallout,
 	N8nIcon,
 	N8nText,
-} from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
-import { TELEMETRY_EVENT } from '@n8n/telemetry';
+} from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
+import { TELEMETRY_EVENT } from '@MNI/telemetry';
 import { CollapsibleRoot, CollapsibleTrigger } from 'reka-ui';
 
-import { aiPreferenceTargetOf } from '@n8n/api-types';
+import { aiPreferenceTargetOf } from '@MNI/api-types';
 
 import { VIEWS } from '@/app/constants';
 import { useProjectsStore } from '@/features/collaboration/projects/projects.store';

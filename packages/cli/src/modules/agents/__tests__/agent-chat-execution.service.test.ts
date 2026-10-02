@@ -1,8 +1,8 @@
-import type { SerializableAgentState } from '@n8n/agents';
-import { LockService } from '@n8n/backend-common';
-import { Container } from '@n8n/di';
-import { createDeferredPromise } from '@n8n/utils/promise/deferred-promise';
-import type { InstanceSettings } from 'n8n-core';
+import type { SerializableAgentState } from '@MNI/agents';
+import { LockService } from '@MNI/backend-common';
+import { Container } from '@MNI/di';
+import { createDeferredPromise } from '@MNI/utils/promise/deferred-promise';
+import type { InstanceSettings } from 'MNI-core';
 import { mock } from 'vitest-mock-extended';
 
 import { NotFoundError } from '@/errors/response-errors/not-found.error';
@@ -13,7 +13,7 @@ import type { AgentExecutionService } from '../agent-execution.service';
 import type { AgentExecutionUpdateBroadcaster } from '../agent-execution-update-broadcaster';
 import type { AgentExecution } from '../entities/agent-execution.entity';
 import type { AgentExecutionThread } from '../entities/agent-execution-thread.entity';
-import type { N8NCheckpointStorage } from '../integrations/n8n-checkpoint-storage';
+import type { N8NCheckpointStorage } from '../integrations/MNI-checkpoint-storage';
 import type { AgentExecutionRepository } from '../repositories/agent-execution.repository';
 
 const context = {
@@ -237,7 +237,7 @@ it('requires the production source before cancelling a suspended run', async () 
 			...checkpoint,
 			persistence: {
 				threadId: context.threadId,
-				resourceId: 'n8n-chat-production:user-1',
+				resourceId: 'MNI-chat-production:user-1',
 			},
 		},
 	});
@@ -246,7 +246,7 @@ it('requires the production source before cancelling a suspended run', async () 
 		await service.cancelSuspended({
 			agentId: context.agentId,
 			runId: 'run-1',
-			resourceId: 'n8n-chat-production:user-1',
+			resourceId: 'MNI-chat-production:user-1',
 		}),
 	).toBe(false);
 	expect(checkpointStorage.cancelSuspended).not.toHaveBeenCalled();
@@ -255,7 +255,7 @@ it('requires the production source before cancelling a suspended run', async () 
 		await service.cancelSuspended({
 			agentId: context.agentId,
 			runId: 'run-1',
-			resourceId: 'n8n-chat-production:user-1',
+			resourceId: 'MNI-chat-production:user-1',
 		}),
 	).toBe(true);
 	expect(executionService.canUseProductionChatThread).toHaveBeenCalledWith(
@@ -271,7 +271,7 @@ it('rejects preview and foreign executions on the production cancel route', asyn
 	const { service, repository } = makeService();
 	const production = { ...context, productionN8nChat: true };
 	await expect(service.requestCancel(production)).rejects.toBeInstanceOf(NotFoundError);
-	repository.findOneBy.mockResolvedValue({ ...running, source: 'n8n_chat_production' });
+	repository.findOneBy.mockResolvedValue({ ...running, source: 'MNI_chat_production' });
 	await expect(
 		service.requestCancel({ ...production, userId: 'other-user' }),
 	).rejects.toBeInstanceOf(NotFoundError);

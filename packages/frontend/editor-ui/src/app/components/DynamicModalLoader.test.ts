@@ -2,7 +2,7 @@ import { createTestingPinia } from '@pinia/testing';
 import { defineComponent, nextTick } from 'vue';
 import { screen } from '@testing-library/vue';
 import DynamicModalLoader from '@/app/components/DynamicModalLoader.vue';
-import { modalRegistry } from '@n8n/frontend-module-sdk';
+import { modalRegistry } from '@MNI/frontend-module-sdk';
 import { createComponentRenderer } from '@/__tests__/render';
 
 /**

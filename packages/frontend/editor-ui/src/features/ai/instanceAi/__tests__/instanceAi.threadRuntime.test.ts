@@ -2,7 +2,7 @@ import { nextTick } from 'vue';
 import { setActivePinia } from 'pinia';
 import { createTestingPinia } from '@pinia/testing';
 import { describe, test, it, expect, vi, beforeEach, afterEach, beforeAll, afterAll } from 'vitest';
-import { useRootStore } from '@n8n/stores/useRootStore';
+import { useRootStore } from '@MNI/stores/useRootStore';
 import { mockedStore } from '@/__tests__/utils';
 import { useWorkflowsListStore } from '@/app/stores/workflowsList.store';
 import { fetchThreadMessages, fetchThreadStatus } from '../instanceAi.memory.api';
@@ -11,8 +11,8 @@ import {
 	INSTANCE_AI_THREAD_SOURCE_FALLBACK,
 	type InstanceAiCredentialDestination,
 	type InstanceAiTargetApproval,
-} from '@n8n/api-types';
-import { TELEMETRY_EVENT } from '@n8n/telemetry';
+} from '@MNI/api-types';
+import { TELEMETRY_EVENT } from '@MNI/telemetry';
 import { USER_TYPED_MESSAGE } from '../prefills';
 import {
 	createThreadRuntime,
@@ -28,20 +28,20 @@ import {
 // ---------------------------------------------------------------------------
 
 const { mockShowError } = vi.hoisted(() => ({ mockShowError: vi.fn() }));
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: vi.fn().mockReturnValue({
 		showError: mockShowError,
 	}),
 }));
 
 const mockTelemetryTrack = vi.fn();
-vi.mock('@n8n/composables/useTelemetry', () => ({
+vi.mock('@MNI/composables/useTelemetry', () => ({
 	useTelemetry: vi.fn().mockReturnValue({
 		track: (...args: unknown[]) => mockTelemetryTrack(...args),
 	}),
 }));
 
-vi.mock('@n8n/rest-api-client', () => ({
+vi.mock('@MNI/rest-api-client', () => ({
 	ResponseError: class ResponseError extends Error {
 		httpStatusCode?: number;
 	},
@@ -2521,7 +2521,7 @@ describe('createThreadRuntime - gateway resource-decision confirmation', () => {
 	});
 
 	it('confirmAction surfaces the server UserError message on a 400 response', async () => {
-		const { ResponseError } = await import('@n8n/rest-api-client');
+		const { ResponseError } = await import('@MNI/rest-api-client');
 		const serverError = new ResponseError(
 			'This confirmation was lost when the assistant restarted. Send a new message to continue.',
 		);

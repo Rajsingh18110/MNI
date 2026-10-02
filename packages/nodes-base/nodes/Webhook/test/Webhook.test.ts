@@ -2,7 +2,7 @@ import { NodeTestHarness } from '@nodes-testing/node-test-harness';
 import type { Request, Response } from 'express';
 import fs from 'fs/promises';
 import { mock } from 'vitest-mock-extended';
-import type { INodeProperties, IWebhookFunctions } from 'n8n-workflow';
+import type { INodeProperties, IWebhookFunctions } from 'MNI-workflow';
 
 import { Webhook } from '../Webhook.node';
 
@@ -82,7 +82,7 @@ describe('Test Webhook Node', () => {
 		});
 		context.getNodeParameter.calledWith('options').mockReturnValue({});
 		context.getNode.calledWith().mockReturnValue({
-			type: 'n8n-nodes-base.webhook',
+			type: 'MNI-nodes-base.webhook',
 			typeVersion: 1.1,
 		} as any);
 		const req = mock<Request>();
@@ -123,7 +123,7 @@ describe('Test Webhook Node', () => {
 			context.getResponseObject.mockReturnValue(res);
 			context.getChildNodes.mockReturnValue([]);
 			context.getNode.mockReturnValue({
-				type: 'n8n-nodes-base.webhook',
+				type: 'MNI-nodes-base.webhook',
 				typeVersion: 2,
 				name: 'Webhook',
 			} as any);
@@ -215,7 +215,7 @@ describe('Test Webhook Node', () => {
 			context.getResponseObject.mockReturnValue(res);
 			context.getChildNodes.mockReturnValue([]);
 			context.getNode.mockReturnValue({
-				type: 'n8n-nodes-base.webhook',
+				type: 'MNI-nodes-base.webhook',
 				typeVersion: 2.1,
 				name: 'Webhook',
 			} as any);
@@ -325,7 +325,7 @@ describe('Test Webhook Node', () => {
 			async (typeVersion, oauthClient, status) => {
 				req.headers.accept = 'text/html';
 				context.getNode.mockReturnValue({
-					type: 'n8n-nodes-base.webhook',
+					type: 'MNI-nodes-base.webhook',
 					typeVersion,
 					name: 'Webhook',
 				} as any);
@@ -386,7 +386,7 @@ describe('Test Webhook Node', () => {
 			context.getResponseObject.mockReturnValue(res);
 			context.getChildNodes.mockReturnValue([]);
 			context.getNode.mockReturnValue({
-				type: 'n8n-nodes-base.webhook',
+				type: 'MNI-nodes-base.webhook',
 				typeVersion: 2,
 				name: 'Webhook',
 				parameters: { options: storedOptions },

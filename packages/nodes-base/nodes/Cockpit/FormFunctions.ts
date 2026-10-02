@@ -1,4 +1,4 @@
-import type { IExecuteFunctions, ILoadOptionsFunctions, IDataObject } from 'n8n-workflow';
+import type { IExecuteFunctions, ILoadOptionsFunctions, IDataObject } from 'MNI-workflow';
 
 import type { IForm } from './FormInterface';
 import { cockpitApiRequest } from './GenericFunctions';

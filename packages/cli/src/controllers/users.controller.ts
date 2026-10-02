@@ -5,15 +5,15 @@ import {
 	userBaseSchema,
 	UsersListFilterDto,
 	usersListSchema,
-} from '@n8n/api-types';
-import type { PublicUser } from '@n8n/db';
+} from '@MNI/api-types';
+import type { PublicUser } from '@MNI/db';
 import {
 	User,
 	UserRepository,
 	AuthenticatedRequest,
 	GLOBAL_ADMIN_ROLE,
 	GLOBAL_OWNER_ROLE,
-} from '@n8n/db';
+} from '@MNI/db';
 import {
 	GlobalScope,
 	Delete,
@@ -25,8 +25,8 @@ import {
 	Param,
 	Query,
 	Post,
-} from '@n8n/decorators';
-import { hasGlobalScope } from '@n8n/permissions';
+} from '@MNI/decorators';
+import { hasGlobalScope } from '@MNI/permissions';
 import { Response } from 'express';
 
 import { AuthService } from '@/auth/auth.service';
@@ -34,7 +34,7 @@ import { ForbiddenError } from '@/errors/response-errors/forbidden.error';
 import { NotFoundError } from '@/errors/response-errors/not-found.error';
 import { UserRequest } from '@/requests';
 import { JwtService } from '@/services/jwt.service';
-import { UrlService } from '@n8n/backend-services';
+import { UrlService } from '@MNI/backend-services';
 import { UserService } from '@/services/user.service';
 
 @RestController('/users')

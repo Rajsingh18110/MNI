@@ -3,16 +3,16 @@
 // Restore the real fs so the ACS handler can render its handlebars template.
 vi.unmock('node:fs');
 
-import { BLOCK_ACCESS_ASSIGNMENT, type SamlPreferences } from '@n8n/api-types';
-import { type LocalServer, startServer } from '@n8n/backend-network/testing';
+import { BLOCK_ACCESS_ASSIGNMENT, type SamlPreferences } from '@MNI/api-types';
+import { type LocalServer, startServer } from '@MNI/backend-network/testing';
 import {
 	createTeamProject,
 	getProjectRoleForUser,
 	randomEmail,
 	randomName,
 	randomValidPassword,
-} from '@n8n/backend-test-utils';
-import { GlobalConfig } from '@n8n/config';
+} from '@MNI/backend-test-utils';
+import { GlobalConfig } from '@MNI/config';
 import {
 	AuthIdentity,
 	AuthIdentityRepository,
@@ -20,10 +20,10 @@ import {
 	UserRepository,
 	RoleRepository,
 	RoleMappingRuleRepository,
-} from '@n8n/db';
-import { Container } from '@n8n/di';
+} from '@MNI/db';
+import { Container } from '@MNI/di';
 import type express from 'express';
-import { CREDENTIAL_BLANKING_VALUE } from 'n8n-workflow';
+import { CREDENTIAL_BLANKING_VALUE } from 'MNI-workflow';
 
 import { TEMPLATES_DIR } from '@/constants';
 import { BadRequestError } from '@/errors/response-errors/bad-request.error';
@@ -517,19 +517,19 @@ describe('SAML metadata URL fetch (real HTTP round-trip)', () => {
 });
 
 describe('Signing key configuration via API', () => {
-	const originalEnv = process.env.N8N_ENV_FEAT_SIGNED_SAML_REQUESTS;
+	const originalEnv = process.env.MNI_ENV_FEAT_SIGNED_SAML_REQUESTS;
 
 	afterEach(() => {
 		if (originalEnv !== undefined) {
-			process.env.N8N_ENV_FEAT_SIGNED_SAML_REQUESTS = originalEnv;
+			process.env.MNI_ENV_FEAT_SIGNED_SAML_REQUESTS = originalEnv;
 		} else {
-			delete process.env.N8N_ENV_FEAT_SIGNED_SAML_REQUESTS;
+			delete process.env.MNI_ENV_FEAT_SIGNED_SAML_REQUESTS;
 		}
 	});
 
 	describe('POST /sso/saml/config with signing keys', () => {
 		test('should reject signing keys when feature flag is disabled', async () => {
-			delete process.env.N8N_ENV_FEAT_SIGNED_SAML_REQUESTS;
+			delete process.env.MNI_ENV_FEAT_SIGNED_SAML_REQUESTS;
 
 			const response = await authOwnerAgent
 				.post('/sso/saml/config')
@@ -544,7 +544,7 @@ describe('Signing key configuration via API', () => {
 		});
 
 		test('should accept valid RSA signing key pair', async () => {
-			process.env.N8N_ENV_FEAT_SIGNED_SAML_REQUESTS = 'true';
+			process.env.MNI_ENV_FEAT_SIGNED_SAML_REQUESTS = 'true';
 
 			await authOwnerAgent
 				.post('/sso/saml/config')
@@ -557,7 +557,7 @@ describe('Signing key configuration via API', () => {
 		});
 
 		test('should accept valid EC signing key pair', async () => {
-			process.env.N8N_ENV_FEAT_SIGNED_SAML_REQUESTS = 'true';
+			process.env.MNI_ENV_FEAT_SIGNED_SAML_REQUESTS = 'true';
 
 			await authOwnerAgent
 				.post('/sso/saml/config')
@@ -570,7 +570,7 @@ describe('Signing key configuration via API', () => {
 		});
 
 		test('should reject mismatched key and certificate', async () => {
-			process.env.N8N_ENV_FEAT_SIGNED_SAML_REQUESTS = 'true';
+			process.env.MNI_ENV_FEAT_SIGNED_SAML_REQUESTS = 'true';
 
 			const response = await authOwnerAgent
 				.post('/sso/saml/config')
@@ -586,7 +586,7 @@ describe('Signing key configuration via API', () => {
 		});
 
 		test('should reject invalid PEM private key format', async () => {
-			process.env.N8N_ENV_FEAT_SIGNED_SAML_REQUESTS = 'true';
+			process.env.MNI_ENV_FEAT_SIGNED_SAML_REQUESTS = 'true';
 
 			const response = await authOwnerAgent
 				.post('/sso/saml/config')
@@ -601,7 +601,7 @@ describe('Signing key configuration via API', () => {
 		});
 
 		test('should reject invalid PEM certificate format', async () => {
-			process.env.N8N_ENV_FEAT_SIGNED_SAML_REQUESTS = 'true';
+			process.env.MNI_ENV_FEAT_SIGNED_SAML_REQUESTS = 'true';
 
 			const response = await authOwnerAgent
 				.post('/sso/saml/config')
@@ -616,7 +616,7 @@ describe('Signing key configuration via API', () => {
 		});
 
 		test('should require both key and cert when authnRequestsSigned is true', async () => {
-			process.env.N8N_ENV_FEAT_SIGNED_SAML_REQUESTS = 'true';
+			process.env.MNI_ENV_FEAT_SIGNED_SAML_REQUESTS = 'true';
 
 			// Clear any signing keys stored from prior tests
 			const samlService = Container.get(SamlService);
@@ -641,7 +641,7 @@ describe('Signing key configuration via API', () => {
 
 	describe('GET /sso/saml/config after setting signing keys', () => {
 		test('should return redacted private key and plaintext certificate after POST', async () => {
-			process.env.N8N_ENV_FEAT_SIGNED_SAML_REQUESTS = 'true';
+			process.env.MNI_ENV_FEAT_SIGNED_SAML_REQUESTS = 'true';
 
 			// POST the config with signing keys
 			await authOwnerAgent
@@ -665,7 +665,7 @@ describe('Signing key configuration via API', () => {
 		});
 
 		test('should return redacted EC private key and plaintext certificate after POST', async () => {
-			process.env.N8N_ENV_FEAT_SIGNED_SAML_REQUESTS = 'true';
+			process.env.MNI_ENV_FEAT_SIGNED_SAML_REQUESTS = 'true';
 
 			await authOwnerAgent
 				.post('/sso/saml/config')
@@ -704,7 +704,7 @@ describe('Signing key configuration via API', () => {
 
 	describe('POST + GET round-trip preserves decryptability', () => {
 		test('should allow service to decrypt RSA key after API round-trip', async () => {
-			process.env.N8N_ENV_FEAT_SIGNED_SAML_REQUESTS = 'true';
+			process.env.MNI_ENV_FEAT_SIGNED_SAML_REQUESTS = 'true';
 
 			await authOwnerAgent
 				.post('/sso/saml/config')
@@ -722,7 +722,7 @@ describe('Signing key configuration via API', () => {
 		});
 
 		test('should allow service to decrypt EC key after API round-trip', async () => {
-			process.env.N8N_ENV_FEAT_SIGNED_SAML_REQUESTS = 'true';
+			process.env.MNI_ENV_FEAT_SIGNED_SAML_REQUESTS = 'true';
 
 			await authOwnerAgent
 				.post('/sso/saml/config')
@@ -740,7 +740,7 @@ describe('Signing key configuration via API', () => {
 		});
 
 		test('should clear signing key when empty string is sent via POST', async () => {
-			process.env.N8N_ENV_FEAT_SIGNED_SAML_REQUESTS = 'true';
+			process.env.MNI_ENV_FEAT_SIGNED_SAML_REQUESTS = 'true';
 
 			// POST with real key
 			await authOwnerAgent
@@ -779,7 +779,7 @@ describe('Signing key configuration via API', () => {
 		});
 
 		test('should preserve existing key when POST sends back blanking value', async () => {
-			process.env.N8N_ENV_FEAT_SIGNED_SAML_REQUESTS = 'true';
+			process.env.MNI_ENV_FEAT_SIGNED_SAML_REQUESTS = 'true';
 
 			// POST with real key
 			await authOwnerAgent
@@ -826,7 +826,7 @@ describe('SAML email validation', () => {
 					firstName: 'John',
 					lastName: 'Doe',
 					userPrincipalName: 'john.doe',
-					n8nInstanceRole: 'n8n_instance_role',
+					n8nInstanceRole: 'MNI_instance_role',
 				},
 				raw: {},
 			});
@@ -847,7 +847,7 @@ describe('SAML email validation', () => {
 						firstName: 'John',
 						lastName: 'Doe',
 						userPrincipalName: 'john.doe',
-						n8nInstanceRole: 'n8n_instance_role',
+						n8nInstanceRole: 'MNI_instance_role',
 					},
 					raw: {},
 				});
@@ -874,7 +874,7 @@ describe('SAML email validation', () => {
 					firstName: 'John',
 					lastName: 'Doe',
 					userPrincipalName: 'john.doe',
-					n8nInstanceRole: 'n8n_instance_role',
+					n8nInstanceRole: 'MNI_instance_role',
 				},
 				raw: {},
 			});
@@ -894,7 +894,7 @@ describe('SAML email validation', () => {
 					firstName: 'John',
 					lastName: 'Doe',
 					userPrincipalName: 'john.doe',
-					n8nInstanceRole: 'n8n_instance_role',
+					n8nInstanceRole: 'MNI_instance_role',
 				},
 				raw: {},
 			});
@@ -1104,7 +1104,7 @@ describe('SAML SSO provisioning', () => {
 
 		const editorRole = await roleRepository.findOneOrFail({ where: { slug: 'project:editor' } });
 		const rule = roleMappingRuleRepository.create({
-			expression: "{{ $claims.groups !== undefined && $claims.groups.includes('n8n-editors') }}",
+			expression: "{{ $claims.groups !== undefined && $claims.groups.includes('MNI-editors') }}",
 			role: editorRole,
 			type: 'project',
 			order: 0,
@@ -1121,7 +1121,7 @@ describe('SAML SSO provisioning', () => {
 			},
 			raw: {
 				email: 'saml-expr-project@example.com',
-				groups: ['n8n-editors', 'devops'],
+				groups: ['MNI-editors', 'devops'],
 			},
 		});
 

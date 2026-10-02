@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 
-import { N8nActionDropdown, N8nButton, N8nIconButton, N8nText } from '@n8n/design-system';
-import type { ActionDropdownItem } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+import { N8nActionDropdown, N8nButton, N8nIconButton, N8nText } from '@MNI/design-system';
+import type { ActionDropdownItem } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 
 import type { WebFetchApproval } from '../../assistant.types';
 

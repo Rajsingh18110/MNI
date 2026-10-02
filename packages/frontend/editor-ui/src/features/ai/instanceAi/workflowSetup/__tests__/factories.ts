@@ -1,4 +1,4 @@
-import type { InstanceAiWorkflowSetupNode } from '@n8n/api-types';
+import type { InstanceAiWorkflowSetupNode } from '@MNI/api-types';
 import type { WorkflowSetupSection } from '../workflowSetup.types';
 import { buildSectionId } from '../workflowSetup.helpers';
 
@@ -11,7 +11,7 @@ export function makeSetupRequest(
 	const node: InstanceAiWorkflowSetupNode['node'] = {
 		id: 'http-request',
 		name: 'HTTP Request',
-		type: 'n8n-nodes-base.httpRequest',
+		type: 'MNI-nodes-base.httpRequest',
 		typeVersion: 4.2,
 		position: [0, 0],
 		parameters: {},
@@ -36,7 +36,7 @@ export function makeWorkflowSetupSection(
 	const node: WorkflowSetupSection['node'] = {
 		id: 'http-request',
 		name: 'HTTP Request',
-		type: 'n8n-nodes-base.httpRequest',
+		type: 'MNI-nodes-base.httpRequest',
 		typeVersion: 4.2,
 		position: [0, 0],
 		parameters: {},

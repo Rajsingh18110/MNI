@@ -1,6 +1,6 @@
 import type { INodeUi, XYPosition } from '@/Interface';
-import type { IConnection, INodeParameters, IWorkflowGroup } from 'n8n-workflow';
-import { createEventBus } from '@n8n/utils/event-bus';
+import type { IConnection, INodeParameters, IWorkflowGroup } from 'MNI-workflow';
+import { createEventBus } from '@MNI/utils/event-bus';
 
 // Command names don't serve any particular purpose in the app
 // but they make it easier to identify each command on stack

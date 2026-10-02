@@ -2,8 +2,8 @@
 import type { SimplifiedNodeType } from '@/Interface';
 import NodeIcon from '@/app/components/NodeIcon.vue';
 import DiffBadge from '@/features/workflows/workflowDiff/DiffBadge.vue';
-import type { VersionNode } from '@n8n/rest-api-client/api/versions';
-import type { NodeDiffStatus } from 'n8n-workflow';
+import type { VersionNode } from '@MNI/rest-api-client/api/versions';
+import type { NodeDiffStatus } from 'MNI-workflow';
 
 import { ElDropdownItem } from 'element-plus';
 

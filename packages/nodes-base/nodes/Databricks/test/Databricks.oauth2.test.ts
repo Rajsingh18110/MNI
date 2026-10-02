@@ -13,7 +13,7 @@ describe('Databricks with OAuth2', () => {
 	beforeAll(() => {
 		nock(HOST)
 			.get('/api/2.1/unity-catalog/catalogs')
-			.matchHeader('user-agent', 'n8n_DatabricksNode')
+			.matchHeader('user-agent', 'MNI_DatabricksNode')
 			.reply(200, { catalogs: [{ name: 'main', comment: 'Main catalog' }] });
 	});
 

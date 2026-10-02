@@ -1,4 +1,4 @@
-import type { ILoadOptionsFunctions, INodeTypeBaseDescription } from 'n8n-workflow';
+import type { ILoadOptionsFunctions, INodeTypeBaseDescription } from 'MNI-workflow';
 
 import { getAllProperties } from '../V2/GenericFunctions';
 import { HubspotV2 } from '../V2/HubspotV2.node';
@@ -44,7 +44,7 @@ function createContext(properties: DealProperty[], pageBreakAfter?: number) {
 
 	const context = {
 		getNodeParameter: vi.fn((name: string) => (name === 'authentication' ? 'appToken' : undefined)),
-		getNode: vi.fn().mockReturnValue({ type: 'n8n-nodes-base.hubspot' }),
+		getNode: vi.fn().mockReturnValue({ type: 'MNI-nodes-base.hubspot' }),
 		helpers: { requestWithAuthentication },
 	} as unknown as ILoadOptionsFunctions;
 

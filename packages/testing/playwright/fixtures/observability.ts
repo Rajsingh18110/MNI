@@ -1,7 +1,7 @@
 import type { Fixtures, TestInfo } from '@playwright/test';
-import type { N8NStartupDiagnostics } from 'n8n-containers';
-import { consumeStartupFailure } from 'n8n-containers';
-import type { N8NStack } from 'n8n-containers/stack';
+import type { N8NStartupDiagnostics } from 'MNI-containers';
+import { consumeStartupFailure } from 'MNI-containers';
+import type { N8NStack } from 'MNI-containers/stack';
 
 export type ObservabilityTestFixtures = {
 	autoAttachLogs: undefined;
@@ -76,7 +76,7 @@ async function attachStartupDiagnostics(
 
 	const startupLogs = formatStartupLogs(diagnostics);
 	if (startupLogs) {
-		await testInfo.attach('n8n-startup-logs.txt', {
+		await testInfo.attach('MNI-startup-logs.txt', {
 			body: startupLogs,
 			contentType: 'text/plain',
 		});
@@ -84,7 +84,7 @@ async function attachStartupDiagnostics(
 
 	const readinessPayloads = formatReadinessPayloads(diagnostics);
 	if (readinessPayloads) {
-		await testInfo.attach('n8n-readiness-payload.txt', {
+		await testInfo.attach('MNI-readiness-payload.txt', {
 			body: readinessPayloads,
 			contentType: 'text/plain',
 		});

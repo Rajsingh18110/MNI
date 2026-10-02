@@ -1,7 +1,7 @@
-import { createWorkflowWithHistory, setActiveVersion, testDb } from '@n8n/backend-test-utils';
-import { WorkflowPublishedVersionRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
-import type { INode } from 'n8n-workflow';
+import { createWorkflowWithHistory, setActiveVersion, testDb } from '@MNI/backend-test-utils';
+import { WorkflowPublishedVersionRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
+import type { INode } from 'MNI-workflow';
 import { v4 as uuid } from 'uuid';
 
 import { WorkflowPublishedDataService } from '@/workflows/workflow-published-data.service';
@@ -25,7 +25,7 @@ afterAll(async () => {
 const makeNode = (name: string): INode => ({
 	id: uuid(),
 	name,
-	type: 'n8n-nodes-base.noOp',
+	type: 'MNI-nodes-base.noOp',
 	typeVersion: 1,
 	position: [0, 0],
 	parameters: {},
@@ -45,7 +45,7 @@ describe('WorkflowPublishedDataService', () => {
 		expect(result).not.toBeNull();
 		expect(result!.workflow.id).toBe(workflow.id);
 		expect(result!.publishedVersion.nodes).toEqual(
-			expect.arrayContaining([expect.objectContaining({ type: 'n8n-nodes-base.scheduleTrigger' })]),
+			expect.arrayContaining([expect.objectContaining({ type: 'MNI-nodes-base.scheduleTrigger' })]),
 		);
 	});
 
@@ -75,7 +75,7 @@ describe('WorkflowPublishedDataService', () => {
 			expect.arrayContaining([expect.objectContaining({ name: 'Alternate Node' })]),
 		);
 		expect(result!.publishedVersion.nodes).not.toEqual(
-			expect.arrayContaining([expect.objectContaining({ type: 'n8n-nodes-base.scheduleTrigger' })]),
+			expect.arrayContaining([expect.objectContaining({ type: 'MNI-nodes-base.scheduleTrigger' })]),
 		);
 	});
 

@@ -1,9 +1,9 @@
-import { AcceptInvitationRequestDto, InviteUsersRequestDto } from '@n8n/api-types';
-import { Logger } from '@n8n/backend-common';
-import { Time } from '@n8n/constants';
-import type { User } from '@n8n/db';
-import { UserRepository, AuthenticatedRequest } from '@n8n/db';
-import { Post, GlobalScope, RestController, Body } from '@n8n/decorators';
+import { AcceptInvitationRequestDto, InviteUsersRequestDto } from '@MNI/api-types';
+import { Logger } from '@MNI/backend-common';
+import { Time } from '@MNI/constants';
+import type { User } from '@MNI/db';
+import { UserRepository, AuthenticatedRequest } from '@MNI/db';
+import { Post, GlobalScope, RestController, Body } from '@MNI/decorators';
 import { Response } from 'express';
 
 import { AuthService } from '@/auth/auth.service';

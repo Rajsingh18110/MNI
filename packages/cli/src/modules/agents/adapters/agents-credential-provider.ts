@@ -1,7 +1,7 @@
-import type { CredentialProvider, ResolvedCredential, CredentialListItem } from '@n8n/agents';
-import type { CredentialsEntity, User } from '@n8n/db';
-import { Container } from '@n8n/di';
-import { UserError } from 'n8n-workflow';
+import type { CredentialProvider, ResolvedCredential, CredentialListItem } from '@MNI/agents';
+import type { CredentialsEntity, User } from '@MNI/db';
+import { Container } from '@MNI/di';
+import { UserError } from 'MNI-workflow';
 
 import type { CredentialsService } from '@/credentials/credentials.service';
 import { CredentialsHelper } from '@/credentials-helper';

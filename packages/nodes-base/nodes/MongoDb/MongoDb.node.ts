@@ -8,7 +8,7 @@ import type {
 	MongoClient,
 } from 'mongodb';
 import { MongoBulkWriteError, ObjectId } from 'mongodb';
-import { NodeConnectionTypes, NodeOperationError, UserError } from 'n8n-workflow';
+import { NodeConnectionTypes, NodeOperationError, UserError } from 'MNI-workflow';
 import type {
 	IExecuteFunctions,
 	ICredentialsDecrypted,
@@ -20,7 +20,7 @@ import type {
 	INodeType,
 	INodeTypeDescription,
 	IPairedItemData,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { parseAndResolveQueryParameters } from '@utils/query-parameters';
 

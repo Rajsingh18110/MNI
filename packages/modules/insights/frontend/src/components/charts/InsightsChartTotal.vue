@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import { useCssVar } from '@vueuse/core';
 import type { ChartData } from 'chart.js';
 import { computed } from 'vue';

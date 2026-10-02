@@ -11,11 +11,11 @@ test.use({
 	capability: {
 		env: {
 			TEST_ISOLATION: 'token-exchange',
-			N8N_ENV_FEAT_TOKEN_EXCHANGE: 'true',
-			N8N_TOKEN_EXCHANGE_ENABLED: 'true',
-			N8N_EMBED_LOGIN_ENABLED: 'true',
-			N8N_TOKEN_EXCHANGE_TRUSTED_KEYS: getTrustedKeysConfig(),
-			N8N_TOKEN_EXCHANGE_MAX_TOKEN_TTL: '60',
+			MNI_ENV_FEAT_TOKEN_EXCHANGE: 'true',
+			MNI_TOKEN_EXCHANGE_ENABLED: 'true',
+			MNI_EMBED_LOGIN_ENABLED: 'true',
+			MNI_TOKEN_EXCHANGE_TRUSTED_KEYS: getTrustedKeysConfig(),
+			MNI_TOKEN_EXCHANGE_MAX_TOKEN_TTL: '60',
 		},
 	},
 });
@@ -113,7 +113,7 @@ test.describe(
 					nodes: [
 						{
 							name: 'Start',
-							type: 'n8n-nodes-base.manualTrigger',
+							type: 'MNI-nodes-base.manualTrigger',
 							typeVersion: 1,
 							position: [250, 300],
 							parameters: {},
@@ -211,14 +211,14 @@ test.describe(
 				// Verify session cookie was set
 				const cookies = response.headers()['set-cookie'];
 				expect(cookies).toBeDefined();
-				expect(cookies).toContain('n8n-auth');
+				expect(cookies).toContain('MNI-auth');
 
 				// Extract cookie and verify session works
-				const cookieMatch = cookies?.match(/n8n-auth=([^;]+)/);
+				const cookieMatch = cookies?.match(/MNI-auth=([^;]+)/);
 				expect(cookieMatch).toBeTruthy();
 
 				const settingsResponse = await api.tokenExchange.getSettingsWithCookie(
-					`n8n-auth=${cookieMatch![1]}`,
+					`MNI-auth=${cookieMatch![1]}`,
 				);
 				expect(settingsResponse.ok()).toBe(true);
 			});
@@ -233,7 +233,7 @@ test.describe(
 
 				const cookies = response.headers()['set-cookie'];
 				expect(cookies).toBeDefined();
-				expect(cookies).toContain('n8n-auth');
+				expect(cookies).toContain('MNI-auth');
 			});
 
 			test('should reject embed login with long-lived token @auth:owner', async ({ api }) => {

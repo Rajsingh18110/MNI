@@ -213,7 +213,7 @@ describe('WorkflowSetupSectionBody', () => {
 		parameterListMock.lastHiddenIssuesInputs = undefined;
 		credentialsStore.getCredentialById.mockReturnValue({ id: 'cred-1', name: 'Typeform account' });
 		nodeTypesStore.getNodeType.mockReturnValue({
-			name: 'n8n-nodes-base.typeformTrigger',
+			name: 'MNI-nodes-base.typeformTrigger',
 			properties: [
 				{
 					displayName: 'Form Name or ID',
@@ -239,7 +239,7 @@ describe('WorkflowSetupSectionBody', () => {
 			node: {
 				id: 'typeform-trigger',
 				name: 'Typeform Trigger',
-				type: 'n8n-nodes-base.typeformTrigger',
+				type: 'MNI-nodes-base.typeformTrigger',
 				typeVersion: 1,
 				parameters: { formId: '' },
 			},
@@ -265,7 +265,7 @@ describe('WorkflowSetupSectionBody', () => {
 			node: {
 				id: 'typeform-trigger',
 				name: 'Typeform Trigger',
-				type: 'n8n-nodes-base.typeformTrigger',
+				type: 'MNI-nodes-base.typeformTrigger',
 				typeVersion: 1,
 				parameters: { formId: '' },
 			},
@@ -383,7 +383,7 @@ describe('WorkflowSetupSectionBody', () => {
 			node: {
 				id: 'typeform-trigger',
 				name: 'Typeform Trigger',
-				type: 'n8n-nodes-base.typeformTrigger',
+				type: 'MNI-nodes-base.typeformTrigger',
 				typeVersion: 1,
 				parameters: { formId: '' },
 			},

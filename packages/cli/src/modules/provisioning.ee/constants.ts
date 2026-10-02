@@ -2,7 +2,7 @@ import {
 	SSO_ERROR_ACCESS_DENIED,
 	SSO_ERROR_QUERY_PARAM,
 	SSO_ERROR_LOGIN_FAILED,
-} from '@n8n/api-types';
+} from '@MNI/api-types';
 
 export const PROVISIONING_PREFERENCES_DB_KEY = 'features.provisioning';
 

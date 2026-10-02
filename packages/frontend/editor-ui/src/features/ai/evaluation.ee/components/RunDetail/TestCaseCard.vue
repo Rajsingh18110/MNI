@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { useI18n } from '@n8n/i18n';
-import type { BaseTextKey } from '@n8n/i18n';
-import type { MetricScale } from '@n8n/api-types';
-import { N8nCard } from '@n8n/design-system';
+import { useI18n } from '@MNI/i18n';
+import type { BaseTextKey } from '@MNI/i18n';
+import type { MetricScale } from '@MNI/api-types';
+import { N8nCard } from '@MNI/design-system';
 import type { TestCaseExecutionRecord } from '../../evaluation.api';
 import {
 	computeDurationMs,

@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import type { IWorkflowDb } from '@/Interface';
-import type { PermissionsRecord } from '@n8n/permissions';
+import type { PermissionsRecord } from '@MNI/permissions';
 import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue';
 import {
 	VIEWS,
@@ -18,10 +18,10 @@ import {
 	N8nIconButton,
 	N8nSpinner,
 	N8nTooltip,
-} from '@n8n/design-system';
-import { type BaseTextKey, useI18n } from '@n8n/i18n';
+} from '@MNI/design-system';
+import { type BaseTextKey, useI18n } from '@MNI/i18n';
 import { useUIStore } from '@/app/stores/ui.store';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { getActivatableTriggerNodes } from '@/app/utils/nodeTypesUtils';
 import { useWorkflowSaving } from '@/app/composables/useWorkflowSaving';
 import { useRouter } from 'vue-router';
@@ -37,8 +37,8 @@ import { useCollaborationStore } from '@/features/collaboration/collaboration/co
 import { ProjectTypes } from '@/features/collaboration/projects/projects.types';
 import { useProjectsStore } from '@/features/collaboration/projects/projects.store';
 import { useWorkflowActivate } from '@/app/composables/useWorkflowActivate';
-import { useToast } from '@n8n/composables/useToast';
-import { createEventBus } from '@n8n/utils/event-bus';
+import { useToast } from '@MNI/composables/useToast';
+import { createEventBus } from '@MNI/utils/event-bus';
 import type { WorkflowVersionFormModalEventBusEvents } from '@/features/workflows/workflowHistory/components/WorkflowVersionFormModal.vue';
 import { useWorkflowHistoryStore } from '@/features/workflows/workflowHistory/workflowHistory.store';
 import { useKeybindings } from '@/app/composables/useKeybindings';

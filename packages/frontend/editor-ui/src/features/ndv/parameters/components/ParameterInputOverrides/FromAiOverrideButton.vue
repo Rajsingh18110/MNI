@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import AiStarsIcon from '@/app/components/AiStarsIcon.vue';
 
-import { N8nTooltip } from '@n8n/design-system';
+import { N8nTooltip } from '@MNI/design-system';
 const i18n = useI18n();
 
 withDefaults(

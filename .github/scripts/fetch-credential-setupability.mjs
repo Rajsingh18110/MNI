@@ -6,16 +6,16 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 const repositoryRoot = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
 const outputFile = resolve(
 	repositoryRoot,
-	'packages/@n8n/instance-ai/src/tools/nodes/credential-setupability.json',
+	'packages/@MNI/instance-ai/src/tools/nodes/credential-setupability.json',
 );
-const endpoint = process.env.N8N_CREDENTIAL_SETUPABILITY_ENDPOINT;
+const endpoint = process.env.MNI_CREDENTIAL_SETUPABILITY_ENDPOINT;
 
 const roundSetupability = (value) => (value === null ? null : Math.round(value * 20) / 20);
 export const roundPopularity = (value) => (value === null ? null : Math.round(value * 10) / 10);
 
 async function main() {
 	if (!endpoint) {
-		throw new Error('N8N_CREDENTIAL_SETUPABILITY_ENDPOINT is required.');
+		throw new Error('MNI_CREDENTIAL_SETUPABILITY_ENDPOINT is required.');
 	}
 
 	console.log('Fetching credential setupability data.');

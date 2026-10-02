@@ -5,20 +5,20 @@ import TemplateFilters from '../components/TemplateFilters.vue';
 import TemplateList from '../components/TemplateList.vue';
 import TemplatesView from './TemplatesView.vue';
 
-import type { ITemplatesCategory } from '@n8n/rest-api-client/api/templates';
-import type { IDataObject } from 'n8n-workflow';
+import type { ITemplatesCategory } from '@MNI/rest-api-client/api/templates';
+import type { IDataObject } from 'MNI-workflow';
 import { CREATOR_HUB_URL, VIEWS } from '@/app/constants';
-import { useSettingsStore } from '@n8n/stores/settings.store';
-import { useUsersStore } from '@n8n/stores/users.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
+import { useUsersStore } from '@MNI/stores/users.store';
 import { useTemplatesStore } from '@/features/workflows/templates/templates.store';
-import { useToast } from '@n8n/composables/useToast';
-import { useDebounce } from '@n8n/composables/useDebounce';
+import { useToast } from '@MNI/composables/useToast';
+import { useDebounce } from '@MNI/composables/useDebounce';
 import { useDocumentTitle } from '@/app/composables/useDocumentTitle';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import { useRoute, onBeforeRouteLeave, useRouter } from 'vue-router';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
 
-import { N8nButton, N8nHeading, N8nIcon, N8nInput, N8nText } from '@n8n/design-system';
+import { N8nButton, N8nHeading, N8nIcon, N8nInput, N8nText } from '@MNI/design-system';
 interface ISearchEvent {
 	search_string: string;
 	workflow_results_count: number;
@@ -407,7 +407,7 @@ watch(workflows, (newWorkflows) => {
 					/>
 					<div v-if="endOfSearchMessage" :class="$style.endText">
 						<N8nText size="medium" color="text-base">
-							<span v-n8n-html="endOfSearchMessage" />
+							<span v-MNI-html="endOfSearchMessage" />
 						</N8nText>
 					</div>
 				</div>

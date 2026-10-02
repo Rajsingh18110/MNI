@@ -1,16 +1,16 @@
 <script setup lang="ts">
 import { computed, nextTick, ref, useTemplateRef, watch } from 'vue';
 import type { DataTable } from '@/features/core/dataTable/dataTable.types';
-import { useI18n } from '@n8n/i18n';
-import type { PathItem } from '@n8n/design-system';
+import { useI18n } from '@MNI/i18n';
+import type { PathItem } from '@MNI/design-system';
 import { useRouter } from 'vue-router';
 import DataTableActions from '@/features/core/dataTable/components/DataTableActions.vue';
 import { PROJECT_DATA_TABLES } from '@/features/core/dataTable/constants';
 import { useDataTableStore } from '@/features/core/dataTable/dataTable.store';
-import { useToast } from '@n8n/composables/useToast';
+import { useToast } from '@MNI/composables/useToast';
 import { telemetry } from '@/app/plugins/telemetry';
 
-import { N8nBreadcrumbs, N8nInlineTextEdit } from '@n8n/design-system';
+import { N8nBreadcrumbs, N8nInlineTextEdit } from '@MNI/design-system';
 import ProjectBreadcrumb from '@/features/core/folders/components/ProjectBreadcrumb.vue';
 const BREADCRUMBS_SEPARATOR = '/';
 

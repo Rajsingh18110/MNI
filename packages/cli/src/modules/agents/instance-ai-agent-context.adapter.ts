@@ -1,13 +1,13 @@
-import { zodSchemaToJsonSchema } from '@n8n/ai-utilities/json-schema';
-import { AgentJsonConfigBaseSchema } from '@n8n/api-types';
-import type { User } from '@n8n/db';
-import { Service } from '@n8n/di';
+import { zodSchemaToJsonSchema } from '@MNI/ai-utilities/json-schema';
+import { AgentJsonConfigBaseSchema } from '@MNI/api-types';
+import type { User } from '@MNI/db';
+import { Service } from '@MNI/di';
 import type {
 	AgentContextLookup,
 	AgentSessionSummary,
 	InstanceAiAgentContextReader,
-} from '@n8n/instance-ai';
-import { UserError } from 'n8n-workflow';
+} from '@MNI/instance-ai';
+import { UserError } from 'MNI-workflow';
 
 import { McpRegistryService } from '@/modules/mcp-registry/registry/mcp-registry.service';
 import { userHasScopes } from '@/permissions.ee/check-access';

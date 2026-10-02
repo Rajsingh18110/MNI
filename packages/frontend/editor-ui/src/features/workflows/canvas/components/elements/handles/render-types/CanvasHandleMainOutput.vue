@@ -2,7 +2,7 @@
 import { useCanvasNodeHandle } from '../../../../composables/useCanvasNodeHandle';
 import { useCanvasNode } from '../../../../composables/useCanvasNode';
 import { computed, ref, useCssModule } from 'vue';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import CanvasHandleDot from './parts/CanvasHandleDot.vue';
 import CanvasHandlePlus from './parts/CanvasHandlePlus.vue';
 import { useCanvas } from '../../../../composables/useCanvas';
@@ -135,7 +135,7 @@ function onClickAdd() {
 .outputLabel {
 	top: 50%;
 	left: var(--spacing--md);
-	/* stylelint-disable-next-line @n8n/css-var-naming */
+	/* stylelint-disable-next-line @MNI/css-var-naming */
 	transform: translate(0, -50%) scale(var(--canvas-zoom-compensation-factor, 1));
 	transform-origin: center left;
 	font-size: var(--font-size--2xs);
@@ -145,9 +145,9 @@ function onClickAdd() {
 .runDataLabel {
 	position: absolute;
 	top: 50%;
-	/* stylelint-disable-next-line @n8n/css-var-naming */
+	/* stylelint-disable-next-line @MNI/css-var-naming */
 	left: calc(50% * var(--canvas-zoom-compensation-factor, 1));
-	/* stylelint-disable-next-line @n8n/css-var-naming */
+	/* stylelint-disable-next-line @MNI/css-var-naming */
 	transform: translate(-50%, -50%) scale(var(--canvas-zoom-compensation-factor, 1))
 		translate(0, -100%);
 	font-size: var(--font-size--xs);

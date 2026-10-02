@@ -12,9 +12,9 @@ import {
 	ListWorkflowReviewInboxQueryDto,
 	type WorkflowReviewActivityEntry,
 	type WorkflowReviewRequestDetail,
-} from '@n8n/api-types';
-import { AuthenticatedRequest } from '@n8n/db';
-import { Body, Get, Licensed, Param, Post, Query, RestController } from '@n8n/decorators';
+} from '@MNI/api-types';
+import { AuthenticatedRequest } from '@MNI/db';
+import { Body, Get, Licensed, Param, Post, Query, RestController } from '@MNI/decorators';
 import type { Response } from 'express';
 
 import { WorkflowReviewActivityService } from './workflow-review-activity.service';

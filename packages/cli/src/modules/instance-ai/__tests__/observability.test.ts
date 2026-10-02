@@ -1,4 +1,4 @@
-import type { InstanceAiTraceContext, ModelConfig } from '@n8n/instance-ai';
+import type { InstanceAiTraceContext, ModelConfig } from '@MNI/instance-ai';
 
 import { buildInstanceAiObservabilityContext, runMetricsModelLabel } from '../observability';
 

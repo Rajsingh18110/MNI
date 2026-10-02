@@ -1,9 +1,9 @@
-import { UserError } from 'n8n-workflow';
+import { UserError } from 'MNI-workflow';
 
 export class StoragePathError extends UserError {
 	static conflict() {
 		return new StoragePathError(
-			'Both N8N_STORAGE_PATH and N8N_BINARY_DATA_STORAGE_PATH cannot be set to different values. N8N_BINARY_DATA_STORAGE_PATH is deprecated. Please set only N8N_STORAGE_PATH.',
+			'Both MNI_STORAGE_PATH and MNI_BINARY_DATA_STORAGE_PATH cannot be set to different values. MNI_BINARY_DATA_STORAGE_PATH is deprecated. Please set only MNI_STORAGE_PATH.',
 		);
 	}
 

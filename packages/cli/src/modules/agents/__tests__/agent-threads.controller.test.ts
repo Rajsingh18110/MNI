@@ -1,4 +1,4 @@
-import type { AuthenticatedRequest, User } from '@n8n/db';
+import type { AuthenticatedRequest, User } from '@MNI/db';
 import { mock } from 'vitest-mock-extended';
 
 import type { AgentExecutionService } from '../agent-execution.service';

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { N8nIcon, N8nIconButton, N8nNodeIcon, N8nText } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+import { N8nIcon, N8nIconButton, N8nNodeIcon, N8nText } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 import DefaultDetailBody from './DefaultDetailBody.vue';
 import McpDetailBody from './McpDetailBody.vue';
 import ToolCredentialPicker from './ToolCredentialPicker.vue';

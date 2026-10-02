@@ -17,7 +17,7 @@ authoring directory, dataset, and LangTracer suite.
 ## Required LangTracer preflight
 
 Run this check before sourcing, drafting, or writing an eval. Run it from
-`packages/@n8n/instance-ai`:
+`packages/@MNI/instance-ai`:
 
 ```bash
 pnpm exec dotenvx run -f ../../../.env.local -- \
@@ -27,11 +27,11 @@ pnpm exec dotenvx run -f ../../../.env.local -- \
 If the check fails, stop before creating an eval file. Ask the user to:
 
 1. Generate a key on the
-   [LangTracer API page](https://lang-tracer.n8n-maintenance.workers.dev/account?section=api).
+   [LangTracer API page](https://lang-tracer.MNI-maintenance.workers.dev/account?section=api).
 2. Add these variables to the repository root `.env.local` file:
 
    ```env
-   LANGTRACER_URL=https://lang-tracer.n8n-maintenance.workers.dev
+   LANGTRACER_URL=https://lang-tracer.MNI-maintenance.workers.dev
    LANGTRACER_API_KEY=<generated-key>
    ```
 
@@ -43,10 +43,10 @@ value. Rerun the check after the user confirms. Continue only when it passes.
 ## Non-negotiable routing
 
 - Author the case at
-  `packages/@n8n/instance-ai/evaluations/data/agents/<slug>.json`.
+  `packages/@MNI/instance-ai/evaluations/data/agents/<slug>.json`.
 - Set `"datasets": ["agents"]`.
 - Push general Agent Builder cases to
-  [Instance AI capabilities — agents](https://lang-tracer.n8n-maintenance.workers.dev/suites/10).
+  [Instance AI capabilities — agents](https://lang-tracer.MNI-maintenance.workers.dev/suites/10).
   Its suite slug is `agents`.
 - Do not commit the case JSON. LangTracer is the durable source of truth.
 - Commit changes to this skill, the harness, and CI when applicable.
@@ -107,7 +107,7 @@ test.
 Read [local-setup.md](local-setup.md) when the machine does not already have an
 eval instance and environment file.
 
-From `packages/@n8n/instance-ai`:
+From `packages/@MNI/instance-ai`:
 
 ```bash
 pnpm exec tsx -e "import { loadAgentEvalTestCasesWithFiles } from './evaluations/data/agents/index.ts'; const matches = loadAgentEvalTestCasesWithFiles('<slug>'); if (matches.length !== 1) throw new Error('Expected exactly one Agent eval case, found ' + matches.length); console.log(matches[0].fileSlug)"
@@ -172,7 +172,7 @@ pnpm exec dotenvx run -f ../../../.env.local -- \
 ```
 
 The push needs `LANGTRACER_URL` and `LANGTRACER_API_KEY`. Generate a key on the
-[LangTracer API page](https://lang-tracer.n8n-maintenance.workers.dev/account?section=api).
+[LangTracer API page](https://lang-tracer.MNI-maintenance.workers.dev/account?section=api).
 Report the case and suite as clickable LangTracer links. Delete the local JSON
 after a successful push.
 

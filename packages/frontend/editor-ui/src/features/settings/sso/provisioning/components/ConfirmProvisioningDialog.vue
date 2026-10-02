@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import { ElDialog } from 'element-plus';
-import { N8nButton, N8nCallout, N8nCard, N8nCheckbox, N8nIcon, N8nText } from '@n8n/design-system';
+import { N8nButton, N8nCallout, N8nCard, N8nCheckbox, N8nIcon, N8nText } from '@MNI/design-system';
 import { ref, watch, computed } from 'vue';
 import { useAccessSettingsCsvExport } from '@/features/settings/sso/provisioning/composables/useAccessSettingsCsvExport';
 import type { RoleAssignmentTransitionType } from '../composables/useUserRoleProvisioningForm';
@@ -106,7 +106,7 @@ const onConfirmProvisioningSetting = () => {
 						data-test-id="provisioning-download-instance-roles-csv-button"
 						:disabled="downloadingInstanceRolesCsv"
 						:loading="downloadingInstanceRolesCsv"
-						:class="[$style.button, 'n8n-button--highlight']"
+						:class="[$style.button, 'MNI-button--highlight']"
 						@click="onDownloadInstanceRolesCsv"
 					></N8nButton>
 					<N8nIcon v-else icon="check" color="success" :class="$style.icon"></N8nIcon>
@@ -123,7 +123,7 @@ const onConfirmProvisioningSetting = () => {
 						data-test-id="provisioning-download-project-roles-csv-button"
 						:disabled="downloadingProjectRolesCsv"
 						:loading="downloadingProjectRolesCsv"
-						:class="[$style.button, 'n8n-button--highlight']"
+						:class="[$style.button, 'MNI-button--highlight']"
 						@click="onDownloadProjectRolesCsv"
 					></N8nButton>
 					<N8nIcon v-else icon="check" color="success" :class="$style.icon"></N8nIcon>

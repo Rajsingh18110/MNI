@@ -1,5 +1,5 @@
 {
-  "name": "@n8n/n8n-extension-insights",
+  "name": "@MNI/MNI-extension-insights",
   "version": "0.22.0",
   "type": "module",
   "files": [
@@ -43,13 +43,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@n8n/extension-sdk": "workspace:*",
+    "@MNI/extension-sdk": "workspace:*",
     "vue": "catalog:frontend",
     "vue-router": "catalog:frontend"
   },
   "devDependencies": {
-    "@n8n/stylelint-config": "workspace:*",
-    "@n8n/typescript-config": "workspace:*",
+    "@MNI/stylelint-config": "workspace:*",
+    "@MNI/typescript-config": "workspace:*",
     "@vitejs/plugin-vue": "catalog:frontend",
     "@vue/tsconfig": "catalog:frontend",
     "stylelint": "catalog:",
@@ -64,5 +64,5 @@
   "peerDependencies": {
     "@vue/language-core": "catalog:frontend"
   },
-  "license": "LicenseRef-n8n-sustainable-use"
+  "license": "LicenseRef-MNI-sustainable-use"
 }

@@ -1,8 +1,8 @@
-import { createWorkflow, testDb } from '@n8n/backend-test-utils';
-import type { CreateExecutionPayload, WorkflowEntity } from '@n8n/db';
-import { ExecutionRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
-import { createEmptyRunExecutionData } from 'n8n-workflow';
+import { createWorkflow, testDb } from '@MNI/backend-test-utils';
+import type { CreateExecutionPayload, WorkflowEntity } from '@MNI/db';
+import { ExecutionRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
+import { createEmptyRunExecutionData } from 'MNI-workflow';
 
 import { DuplicateExecutionError } from '@/errors/duplicate-execution.error';
 import { ExecutionPersistence } from '@/executions/execution-persistence';

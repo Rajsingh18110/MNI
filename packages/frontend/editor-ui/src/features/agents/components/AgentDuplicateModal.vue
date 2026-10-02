@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue';
-import { N8nButton, N8nInput, N8nText } from '@n8n/design-system';
-import { useI18n, type BaseTextKey } from '@n8n/i18n';
+import { N8nButton, N8nInput, N8nText } from '@MNI/design-system';
+import { useI18n, type BaseTextKey } from '@MNI/i18n';
 import { useUIStore } from '@/app/stores/ui.store';
 import AgentModal from './modals/AgentModal.vue';
 

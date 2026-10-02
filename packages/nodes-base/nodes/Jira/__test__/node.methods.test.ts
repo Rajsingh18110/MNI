@@ -1,6 +1,6 @@
 import type { MockProxy } from 'vitest-mock-extended';
 import { mock, mockDeep } from 'vitest-mock-extended';
-import type { IHttpRequestMethods, ILoadOptionsFunctions, INode } from 'n8n-workflow';
+import type { IHttpRequestMethods, ILoadOptionsFunctions, INode } from 'MNI-workflow';
 
 import { Jira } from '../Jira.node';
 import type * as _importType0 from '../GenericFunctions';

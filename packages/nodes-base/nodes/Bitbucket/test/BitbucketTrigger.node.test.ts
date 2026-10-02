@@ -6,7 +6,7 @@ import type {
 	ILoadOptionsFunctions,
 	INode,
 	IWebhookFunctions,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { BitbucketTrigger } from '../BitbucketTrigger.node';
 import * as GenericFunctions from '../GenericFunctions';
@@ -20,7 +20,7 @@ describe('BitbucketTrigger', () => {
 	const mockNode: INode = {
 		id: 'test-node-id',
 		name: 'Bitbucket Trigger Test',
-		type: 'n8n-nodes-base.bitbucketTrigger',
+		type: 'MNI-nodes-base.bitbucketTrigger',
 		typeVersion: 1.1,
 		position: [0, 0],
 		parameters: {},
@@ -296,13 +296,13 @@ describe('BitbucketTrigger', () => {
 
 				expect(result).toEqual([
 					{
-						// eslint-disable-next-line n8n-nodes-base/node-param-display-name-miscased
+						// eslint-disable-next-line MNI-nodes-base/node-param-display-name-miscased
 						name: 'repo1',
 						value: 'repo1',
 						description: 'First repository',
 					},
 					{
-						// eslint-disable-next-line n8n-nodes-base/node-param-display-name-miscased
+						// eslint-disable-next-line MNI-nodes-base/node-param-display-name-miscased
 						name: 'repo2',
 						value: 'repo2',
 						description: 'Second repository',
@@ -344,7 +344,7 @@ describe('BitbucketTrigger', () => {
 						value: 'workspace1',
 					},
 					{
-						// eslint-disable-next-line n8n-nodes-base/node-param-display-name-miscased
+						// eslint-disable-next-line MNI-nodes-base/node-param-display-name-miscased
 						name: 'workspace2',
 						value: 'workspace2',
 					},

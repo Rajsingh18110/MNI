@@ -1,8 +1,8 @@
-import type { InstanceAiAdminSettingsResponse } from '@n8n/api-types';
-import type { Logger } from '@n8n/backend-common';
-import type { GlobalConfig, InstanceAiConfig } from '@n8n/config';
-import type { SettingsRepository } from '@n8n/db';
-import { TELEMETRY_EVENT } from '@n8n/telemetry';
+import type { InstanceAiAdminSettingsResponse } from '@MNI/api-types';
+import type { Logger } from '@MNI/backend-common';
+import type { GlobalConfig, InstanceAiConfig } from '@MNI/config';
+import type { SettingsRepository } from '@MNI/db';
+import { TELEMETRY_EVENT } from '@MNI/telemetry';
 import { mock } from 'vitest-mock-extended';
 
 import type { InstanceCredentialBroker } from '@/credentials/instance-credential-broker';
@@ -206,7 +206,7 @@ describe('InstanceAiSetupTelemetryService', () => {
 		const envConfiguredResponse = {
 			enabled: true,
 			sandboxEnabled: true,
-			sandboxProvider: 'n8n-sandbox',
+			sandboxProvider: 'MNI-sandbox',
 			daytonaCredentialId: null,
 			n8nSandboxCredentialId: null,
 			searchCredentialId: null,
@@ -233,7 +233,7 @@ describe('InstanceAiSetupTelemetryService', () => {
 					model_provider: 'openai',
 					model_name: 'gpt-4',
 					sandbox_source: 'env',
-					sandbox_type: 'n8n-sandbox',
+					sandbox_type: 'MNI-sandbox',
 					web_search_source: 'env',
 					web_search_provider: 'brave',
 				},

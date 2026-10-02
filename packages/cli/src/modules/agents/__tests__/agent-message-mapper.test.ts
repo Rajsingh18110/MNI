@@ -1,4 +1,4 @@
-import type { AgentDbMessage } from '@n8n/agents';
+import type { AgentDbMessage } from '@MNI/agents';
 
 import { messageToDto } from '../agent-message-mapper';
 

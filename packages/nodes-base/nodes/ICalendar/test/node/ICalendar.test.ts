@@ -1,6 +1,6 @@
 import { NodeTestHarness } from '@nodes-testing/node-test-harness';
 import * as ics from 'ics';
-import type { WorkflowTestData } from 'n8n-workflow';
+import type { WorkflowTestData } from 'MNI-workflow';
 
 // The harness loads the node from dist via require(), so vi.mock cannot intercept its `ics`
 // import. `ics` is externalized, so the test and the node share the same instance — spy on it

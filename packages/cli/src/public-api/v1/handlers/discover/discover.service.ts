@@ -1,7 +1,7 @@
 import RefParser from '@apidevtools/json-schema-ref-parser';
-import type { DiscoverDataPublic } from '@n8n/api-types';
-import type { ApiKeyScopeRequirement } from '@n8n/decorators';
-import { isRecord } from '@n8n/utils/is-record';
+import type { DiscoverDataPublic } from '@MNI/api-types';
+import type { ApiKeyScopeRequirement } from '@MNI/decorators';
+import { isRecord } from '@MNI/utils/is-record';
 import path from 'path';
 
 import {

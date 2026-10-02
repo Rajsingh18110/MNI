@@ -4,8 +4,8 @@ import { screen } from '@testing-library/vue';
 import userEvent from '@testing-library/user-event';
 import { createTestingPinia } from '@pinia/testing';
 import { setActivePinia } from 'pinia';
-import type { ICredentialType } from 'n8n-workflow';
-import type { InstanceAiCredentialRequest } from '@n8n/api-types';
+import type { ICredentialType } from 'MNI-workflow';
+import type { InstanceAiCredentialRequest } from '@MNI/api-types';
 
 import { createThreadComponentRenderer } from './createThreadComponentRenderer';
 import InstanceAiCredentialSetup from '../components/InstanceAiCredentialSetup.vue';
@@ -14,12 +14,12 @@ import { useCredentialsStore } from '@/features/credentials/credentials.store';
 import type { ICredentialsResponse } from '@/features/credentials/credentials.types';
 import { AI_GATEWAY_MANAGED_TAG } from '../constants';
 
-vi.mock('@n8n/composables/useTelemetry', () => ({
+vi.mock('@MNI/composables/useTelemetry', () => ({
 	useTelemetry: () => ({ track: vi.fn() }),
 }));
 
 // Give the select a stable label.
-vi.mock('@n8n/i18n', async (importOriginal) => ({
+vi.mock('@MNI/i18n', async (importOriginal) => ({
 	...(await importOriginal()),
 	useI18n: () => ({
 		baseText: (key: string, opts?: { interpolate?: Record<string, string> }) => {
@@ -140,7 +140,7 @@ describe('InstanceAiCredentialSetup - with real NodeCredentials', () => {
 		const select = screen.getByTestId('node-credentials-select');
 
 		await userEvent.click(select);
-		const creditsOption = await screen.findByTestId('node-credentials-select-item-n8n-credits');
+		const creditsOption = await screen.findByTestId('node-credentials-select-item-MNI-credits');
 		await userEvent.click(creditsOption);
 
 		// The wallet icon shows the managed selection.

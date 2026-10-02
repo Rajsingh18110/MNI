@@ -1,15 +1,15 @@
-import { isEnvFeatureEnabled } from '@n8n/backend-common';
-import type { ModuleInterface } from '@n8n/decorators';
-import { BackendModule } from '@n8n/decorators';
-import { Container } from '@n8n/di';
-import { InstanceSettings } from 'n8n-core';
+import { isEnvFeatureEnabled } from '@MNI/backend-common';
+import type { ModuleInterface } from '@MNI/decorators';
+import { BackendModule } from '@MNI/decorators';
+import { Container } from '@MNI/di';
+import { InstanceSettings } from 'MNI-core';
 
 import { OAuthJweServiceProxy } from '@/oauth/oauth-jwe-service.proxy';
 
 @BackendModule({ name: 'oauth-jwe' })
 export class OAuthJweModule implements ModuleInterface {
 	async init() {
-		if (!isEnvFeatureEnabled('N8N_ENV_FEAT_OAUTH2_JWE')) return;
+		if (!isEnvFeatureEnabled('MNI_ENV_FEAT_OAUTH2_JWE')) return;
 
 		const { OAuthJweDecryptService } = await import('./oauth-jwe-decrypt.service.js');
 		Container.get(OAuthJweServiceProxy).setHandler(Container.get(OAuthJweDecryptService));

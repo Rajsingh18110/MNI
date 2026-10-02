@@ -1,12 +1,12 @@
-import { useTelemetry } from '@n8n/composables/useTelemetry';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
 import { BATCH_11AUG_EXPERIMENT } from '@/app/constants';
-import { useCloudPlanStore } from '@n8n/stores/cloudPlan.store';
+import { useCloudPlanStore } from '@MNI/stores/cloudPlan.store';
 import { useFoldersStore } from '@/features/core/folders/folders.store';
 import { usePostHog } from '@/app/stores/posthog.store';
 import { useWorkflowsStore } from '@/app/stores/workflows.store';
-import { useI18n } from '@n8n/i18n';
-import type { WorkflowDataCreate } from '@n8n/rest-api-client';
-import { STORES } from '@n8n/stores';
+import { useI18n } from '@MNI/i18n';
+import type { WorkflowDataCreate } from '@MNI/rest-api-client';
+import { STORES } from '@MNI/stores';
 import { useLocalStorage } from '@vueuse/core';
 import { defineStore } from 'pinia';
 import { computed } from 'vue';
@@ -15,7 +15,7 @@ import { PLAYGROUND_2 } from '../workflows/2_playground';
 import { PLAYGROUND_3 } from '../workflows/3_playground';
 import { PLAYGROUND_4 } from '../workflows/4_playground';
 
-const LOCAL_STORAGE_SETTING_KEY = 'N8N_READY_TO_RUN_WORKFLOWS_DISMISSED';
+const LOCAL_STORAGE_SETTING_KEY = 'MNI_READY_TO_RUN_WORKFLOWS_DISMISSED';
 
 export const useReadyToRunWorkflowsStore = defineStore(
 	STORES.EXPERIMENT_READY_TO_RUN_WORKFLOWS,

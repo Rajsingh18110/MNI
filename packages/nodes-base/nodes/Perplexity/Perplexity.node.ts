@@ -1,5 +1,5 @@
-import type { INodeTypeBaseDescription, IVersionedNodeType } from 'n8n-workflow';
-import { VersionedNodeType } from 'n8n-workflow';
+import type { INodeTypeBaseDescription, IVersionedNodeType } from 'MNI-workflow';
+import { VersionedNodeType } from 'MNI-workflow';
 
 import { PerplexityV2 } from './v2/PerplexityV2.node';
 import { PerplexityV3 } from './v3/PerplexityV3.node';

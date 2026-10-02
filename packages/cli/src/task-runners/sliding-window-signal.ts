@@ -1,4 +1,4 @@
-import type { TypedEmitter } from '@n8n/backend-common';
+import type { TypedEmitter } from '@MNI/backend-common';
 
 export type SlidingWindowSignalOpts = {
 	windowSizeInMs?: number;

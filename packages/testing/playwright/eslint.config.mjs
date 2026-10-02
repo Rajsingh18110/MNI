@@ -1,4 +1,4 @@
-import { backendConfig } from '@n8n/eslint-config/backend';
+import { backendConfig } from '@MNI/eslint-config/backend';
 import playwrightPlugin from 'eslint-plugin-playwright';
 
 export default [

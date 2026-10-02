@@ -1,4 +1,4 @@
 export const TEMPLATES_NODES_FILTER = [
-	'n8n-nodes-base.manualTrigger',
-	'n8n-nodes-base.respondToWebhook',
+	'MNI-nodes-base.manualTrigger',
+	'MNI-nodes-base.respondToWebhook',
 ];

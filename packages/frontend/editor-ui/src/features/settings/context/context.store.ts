@@ -1,9 +1,9 @@
-import type { AiPreferenceRequestDto } from '@n8n/api-types';
-import { AI_PREFERENCES_MAX_IDS_FILTER } from '@n8n/api-types';
+import type { AiPreferenceRequestDto } from '@MNI/api-types';
+import { AI_PREFERENCES_MAX_IDS_FILTER } from '@MNI/api-types';
 import { defineStore } from 'pinia';
 import { ref } from 'vue';
 
-import { useRootStore } from '@n8n/stores/useRootStore';
+import { useRootStore } from '@MNI/stores/useRootStore';
 
 import * as api from './context.api';
 import type { Preference, PreferenceListQuery } from './context.types';

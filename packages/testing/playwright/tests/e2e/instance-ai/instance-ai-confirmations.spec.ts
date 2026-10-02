@@ -1,5 +1,5 @@
 import type { Locator } from '@playwright/test';
-import type { IWorkflowBase } from 'n8n-workflow';
+import type { IWorkflowBase } from 'MNI-workflow';
 
 import { test, expect, instanceAiTestConfig } from './fixtures';
 
@@ -24,7 +24,7 @@ function seededEditableWorkflow(name: string): Partial<IWorkflowBase> {
 			{
 				id: 'manual',
 				name: 'Manual Trigger',
-				type: 'n8n-nodes-base.manualTrigger',
+				type: 'MNI-nodes-base.manualTrigger',
 				typeVersion: 1,
 				position: [0, 0],
 				parameters: {},
@@ -32,7 +32,7 @@ function seededEditableWorkflow(name: string): Partial<IWorkflowBase> {
 			{
 				id: 'status-marker',
 				name: 'Status Marker',
-				type: 'n8n-nodes-base.set',
+				type: 'MNI-nodes-base.set',
 				typeVersion: 3.4,
 				position: [240, 0],
 				parameters: {
@@ -129,7 +129,7 @@ async function approveBuildPlanIfRequested({
 	MNI,
 	nodeName,
 }: {
-	n8n: {
+	MNI: {
 		api: { workflows: WorkflowApiForAssertions };
 		instanceAi: { getPlanApproveButton(): Locator };
 	};

@@ -2,18 +2,18 @@ import {
 	type Agent as RuntimeAgent,
 	type SerializableAgentState,
 	type StreamChunk,
-} from '@n8n/agents';
+} from '@MNI/agents';
 import type {
 	AgentBackgroundJobSignal,
 	AgentMessageAuthor,
 	AgentChatMessagesResponse,
-} from '@n8n/api-types';
-import { N8N_CHAT_INTEGRATION_TYPE } from '@n8n/api-types';
-import { Logger } from '@n8n/backend-common';
-import { AiConfig } from '@n8n/config';
-import type { User } from '@n8n/db';
-import { Container, Service } from '@n8n/di';
-import { OperationalError, UserError } from 'n8n-workflow';
+} from '@MNI/api-types';
+import { MNI_CHAT_INTEGRATION_TYPE } from '@MNI/api-types';
+import { Logger } from '@MNI/backend-common';
+import { AiConfig } from '@MNI/config';
+import type { User } from '@MNI/db';
+import { Container, Service } from '@MNI/di';
+import { OperationalError, UserError } from 'MNI-workflow';
 
 import { ExternalHooks } from '@/external-hooks';
 import type { AgentRunTelemetryType, IAgentConfigurationTelemetryProperties } from '@/interfaces';
@@ -33,7 +33,7 @@ import {
 	userIdFromDraftChatMemoryResourceId,
 	userIdFromProductionChatMemoryResourceId,
 } from './utils/agent-memory-scope';
-import { N8N_CHAT_PRODUCTION_SOURCE } from './utils/agent-thread-access';
+import { MNI_CHAT_PRODUCTION_SOURCE } from './utils/agent-thread-access';
 import { AgentRunTracingService, modelIdFromSnapshot } from './agent-run-tracing.service';
 import {
 	AgentRuntimeCacheService,
@@ -60,7 +60,7 @@ import type {
 	SessionBinding,
 } from './integrations/integration-tool-types';
 import { IntegrationMessageContextService } from './integrations/integration-message-context.service';
-import { N8NCheckpointStorage } from './integrations/n8n-checkpoint-storage';
+import { N8NCheckpointStorage } from './integrations/MNI-checkpoint-storage';
 import { modelStreamStallOptions } from './model-stream-stall-options';
 import { AgentRepository } from './repositories/agent.repository';
 import type { ToolRegistry } from './tool-registry';
@@ -357,7 +357,7 @@ export class AgentExecutionOrchestratorService {
 		memoryScope: ResumeCheckpoint['memoryScope'],
 	): Promise<AgentThreadAccess> {
 		const isPreview = !usePublishedVersion && !isTaskRunMemoryResourceId(memoryScope.resourceId);
-		const isProductionChat = source === N8N_CHAT_PRODUCTION_SOURCE;
+		const isProductionChat = source === MNI_CHAT_PRODUCTION_SOURCE;
 		let access: AgentThreadAccess = { accessScope: 'project', ownerId: null };
 		if (isPreview || isProductionChat) {
 			if (
@@ -408,14 +408,14 @@ export class AgentExecutionOrchestratorService {
 		const sandboxScope = decodeAgentSandboxHostMetadata(memoryScope.hostMetadata);
 		const sandboxPrincipalHash = sandboxScope?.principalHash;
 		if (
-			(this.agentSandboxRuntimeService.isEnabled() || source === N8N_CHAT_PRODUCTION_SOURCE) &&
+			(this.agentSandboxRuntimeService.isEnabled() || source === MNI_CHAT_PRODUCTION_SOURCE) &&
 			(!sandboxScope ||
 				sandboxScope.projectId !== projectId ||
 				!sandboxPrincipalHash ||
-				((!usePublishedVersion || source === N8N_CHAT_PRODUCTION_SOURCE) &&
+				((!usePublishedVersion || source === MNI_CHAT_PRODUCTION_SOURCE) &&
 					(!user ||
 						sandboxPrincipalHash !==
-							hashAgentSandboxPrincipal({ type: 'n8n-user', userId: user.id }))))
+							hashAgentSandboxPrincipal({ type: 'MNI-user', userId: user.id }))))
 		) {
 			throw new UserError(`Checkpoint ${runId} is unavailable and cannot be resumed`);
 		}
@@ -430,7 +430,7 @@ export class AgentExecutionOrchestratorService {
 	async *resumeForChat(config: ResumeForChatConfig): AsyncGenerator<StreamChunk> {
 		const resume = { ...config, usePublishedVersion: config.usePublishedVersion ?? true };
 		if (
-			resume.source === N8N_CHAT_PRODUCTION_SOURCE &&
+			resume.source === MNI_CHAT_PRODUCTION_SOURCE &&
 			!(await this.agentRepository.isN8nChatPublished(resume.agentId, resume.projectId))
 		) {
 			throw new UserError('This agent is not available in MNI Chat');
@@ -448,7 +448,7 @@ export class AgentExecutionOrchestratorService {
 	async *executeForChat(config: ExecuteForChatConfig): AsyncGenerator<StreamChunk> {
 		const draft = { ...config, sessionMode: config.sessionMode ?? 'new' };
 		const sandboxPrincipalHash = hashAgentSandboxPrincipal({
-			type: 'n8n-user',
+			type: 'MNI-user',
 			userId: config.user.id,
 		});
 		await this.assertDraftChatAccess(draft);
@@ -584,7 +584,7 @@ export class AgentExecutionOrchestratorService {
 		) {
 			throw new UserError('Session not found');
 		}
-		const sandboxPrincipalHash = hashAgentSandboxPrincipal({ type: 'n8n-user', userId: user.id });
+		const sandboxPrincipalHash = hashAgentSandboxPrincipal({ type: 'MNI-user', userId: user.id });
 		await this.externalHooks.run('agent.preExecute', [agentId]);
 		yield* this.withRuntimeLease(
 			async () =>
@@ -592,7 +592,7 @@ export class AgentExecutionOrchestratorService {
 					{
 						agentId,
 						projectId,
-						integrationType: N8N_CHAT_INTEGRATION_TYPE,
+						integrationType: MNI_CHAT_INTEGRATION_TYPE,
 						usePublishedVersion: true,
 						sandboxPrincipalHash,
 						allowBackgroundTasks: false,
@@ -603,7 +603,7 @@ export class AgentExecutionOrchestratorService {
 						resourceId: memory.resourceId,
 						userMessage: message,
 						attachments,
-						source: N8N_CHAT_PRODUCTION_SOURCE,
+						source: MNI_CHAT_PRODUCTION_SOURCE,
 						access: { accessScope: 'user', ownerId: user.id },
 						sessionMode,
 						abortSignal,
@@ -630,7 +630,7 @@ export class AgentExecutionOrchestratorService {
 					attachments,
 					userId: user.id,
 					productionN8nChat: true,
-					source: N8N_CHAT_PRODUCTION_SOURCE,
+					source: MNI_CHAT_PRODUCTION_SOURCE,
 					telemetry: { runType: 'production', configuration: runtime.telemetryConfiguration },
 					includeHitlToolDetails: true,
 					sandboxPrincipalHash,
@@ -709,7 +709,7 @@ export class AgentExecutionOrchestratorService {
 		// runs get a runtime scoped to the requesting user's tool access, same
 		// as the in-app test chat.
 		const sandboxPrincipalHash = hashAgentSandboxPrincipal({
-			type: 'n8n-user',
+			type: 'MNI-user',
 			userId: user.id,
 		});
 		yield* this.withRuntimeLease(
@@ -762,9 +762,9 @@ export class AgentExecutionOrchestratorService {
 		if (
 			productionUserId &&
 			(isDraft ||
-				identity.integrationType !== N8N_CHAT_INTEGRATION_TYPE ||
+				identity.integrationType !== MNI_CHAT_INTEGRATION_TYPE ||
 				identity.principalHash !==
-					hashAgentSandboxPrincipal({ type: 'n8n-user', userId: productionUserId }) ||
+					hashAgentSandboxPrincipal({ type: 'MNI-user', userId: productionUserId }) ||
 				!(await this.agentRepository.isN8nChatPublished(agentId, config.projectId)) ||
 				!(await this.agentExecutionService.canUseProductionChatThread(
 					memory.threadId,
@@ -785,7 +785,7 @@ export class AgentExecutionOrchestratorService {
 		} else {
 			await this.externalHooks.run('agent.preExecute', [agentId]);
 		}
-		const integrationType = isDraft ? N8N_CHAT_INTEGRATION_TYPE : identity.integrationType;
+		const integrationType = isDraft ? MNI_CHAT_INTEGRATION_TYPE : identity.integrationType;
 		const messageContext = await this.integrationMessageContextService.getLatest(memory.threadId);
 		const delivery =
 			isDraft || productionUserId
@@ -884,7 +884,7 @@ export class AgentExecutionOrchestratorService {
 			includeHitlToolDetails: config.includeHitlToolDetails,
 			onExecutionRecorded: config.onExecutionRecorded,
 			previewChat: config.previewChat,
-			productionN8nChat: config.source === N8N_CHAT_PRODUCTION_SOURCE,
+			productionN8nChat: config.source === MNI_CHAT_PRODUCTION_SOURCE,
 			onExecutionStarted: config.onExecutionStarted,
 			onSettled: config.isWakeRun
 				? undefined
@@ -1009,8 +1009,8 @@ export class AgentExecutionOrchestratorService {
 				usePublishedVersion,
 				integrationType,
 				user: usePublishedVersion ? undefined : user,
-				attributionUserId: source === N8N_CHAT_PRODUCTION_SOURCE ? user?.id : undefined,
-				allowBackgroundTasks: source === N8N_CHAT_PRODUCTION_SOURCE ? false : undefined,
+				attributionUserId: source === MNI_CHAT_PRODUCTION_SOURCE ? user?.id : undefined,
+				allowBackgroundTasks: source === MNI_CHAT_PRODUCTION_SOURCE ? false : undefined,
 				...(sandboxPrincipalHash ? { sandboxPrincipalHash } : {}),
 				previewChat,
 			},
@@ -1042,9 +1042,9 @@ export class AgentExecutionOrchestratorService {
 			mcpServerAttributions: runtime.mcpServerAttributions,
 			context: { projectId: config.projectId, agentId: config.agentId, threadId },
 			includeHitlToolDetails:
-				!config.usePublishedVersion || config.source === N8N_CHAT_PRODUCTION_SOURCE,
+				!config.usePublishedVersion || config.source === MNI_CHAT_PRODUCTION_SOURCE,
 			previewChat: config.previewChat,
-			productionN8nChat: config.source === N8N_CHAT_PRODUCTION_SOURCE,
+			productionN8nChat: config.source === MNI_CHAT_PRODUCTION_SOURCE,
 			automaticPreviewContinuation: config.automaticPreviewContinuation,
 			onExecutionStarted: config.onExecutionStarted,
 			onExecutionRecorded: config.onExecutionRecorded,
@@ -1222,7 +1222,7 @@ export class AgentExecutionOrchestratorService {
 			{
 				agentId,
 				projectId,
-				integrationType: N8N_CHAT_INTEGRATION_TYPE,
+				integrationType: MNI_CHAT_INTEGRATION_TYPE,
 				user,
 				sandboxPrincipalHash,
 				previewChat,
@@ -1297,8 +1297,8 @@ export class AgentExecutionOrchestratorService {
 		userId: string,
 	): IntegrationMessageContext {
 		return {
-			integrationConnectionId: N8N_CHAT_INTEGRATION_TYPE,
-			platform: N8N_CHAT_INTEGRATION_TYPE,
+			integrationConnectionId: MNI_CHAT_INTEGRATION_TYPE,
+			platform: MNI_CHAT_INTEGRATION_TYPE,
 			target: { type: 'dm', userId, threadId: memory.threadId },
 			interactingUserId: userId,
 			updatedAt: new Date().toISOString(),
@@ -1430,7 +1430,7 @@ export class AgentExecutionOrchestratorService {
 				resourceId: memory.resourceId,
 				userMessage: config.message,
 				hideUserMessageFromTranscript: true,
-				source: productionUserId ? N8N_CHAT_PRODUCTION_SOURCE : integrationType,
+				source: productionUserId ? MNI_CHAT_PRODUCTION_SOURCE : integrationType,
 				abortSignal,
 				access,
 				sessionMode: 'existing',
@@ -1463,7 +1463,7 @@ export class AgentExecutionOrchestratorService {
 			message,
 			memory,
 			projectId: runtime.projectId,
-			source: productionUserId ? N8N_CHAT_PRODUCTION_SOURCE : integrationType,
+			source: productionUserId ? MNI_CHAT_PRODUCTION_SOURCE : integrationType,
 			telemetry: {
 				runType: isDraft ? 'test' : 'production',
 				configuration: runtime.telemetryConfiguration,

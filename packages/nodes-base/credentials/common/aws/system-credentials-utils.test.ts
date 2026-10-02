@@ -1,4 +1,4 @@
-import { UserError } from 'n8n-workflow';
+import { UserError } from 'MNI-workflow';
 
 global.fetch = vi.fn();
 
@@ -17,11 +17,11 @@ const { mockContainer, mockReadFile, MockSecurityConfig } = vi.hoisted(() => {
 	};
 });
 
-vi.mock('@n8n/di', () => ({
+vi.mock('@MNI/di', () => ({
 	Container: mockContainer,
 }));
 
-vi.mock('@n8n/config', () => ({
+vi.mock('@MNI/config', () => ({
 	SecurityConfig: MockSecurityConfig,
 }));
 
@@ -272,7 +272,7 @@ describe('system-credentials-utils', () => {
 				expect.objectContaining({
 					method: 'GET',
 					headers: {
-						'User-Agent': 'n8n-aws-credential',
+						'User-Agent': 'MNI-aws-credential',
 					},
 				}),
 			);
@@ -307,7 +307,7 @@ describe('system-credentials-utils', () => {
 				'http://169.254.170.2/v2/credentials/test-uuid',
 				expect.objectContaining({
 					headers: {
-						'User-Agent': 'n8n-aws-credential',
+						'User-Agent': 'MNI-aws-credential',
 						Authorization: 'Bearer test-auth-token',
 					},
 				}),
@@ -396,7 +396,7 @@ describe('system-credentials-utils', () => {
 				expect.objectContaining({
 					method: 'GET',
 					headers: {
-						'User-Agent': 'n8n-aws-credential',
+						'User-Agent': 'MNI-aws-credential',
 					},
 				}),
 			);
@@ -431,7 +431,7 @@ describe('system-credentials-utils', () => {
 				'https://eks-pod-identity.amazonaws.com/v1/credentials',
 				expect.objectContaining({
 					headers: {
-						'User-Agent': 'n8n-aws-credential',
+						'User-Agent': 'MNI-aws-credential',
 						Authorization: 'test-auth-token',
 					},
 				}),
@@ -510,7 +510,7 @@ describe('system-credentials-utils', () => {
 				'http://169.254.170.23/v1/credentials',
 				expect.objectContaining({
 					headers: {
-						'User-Agent': 'n8n-aws-credential',
+						'User-Agent': 'MNI-aws-credential',
 						Authorization: 'file-based-token',
 					},
 				}),
@@ -550,7 +550,7 @@ describe('system-credentials-utils', () => {
 				'http://169.254.170.23/v1/credentials',
 				expect.objectContaining({
 					headers: {
-						'User-Agent': 'n8n-aws-credential',
+						'User-Agent': 'MNI-aws-credential',
 						Authorization: 'file-token-with-whitespace',
 					},
 				}),
@@ -596,7 +596,7 @@ describe('system-credentials-utils', () => {
 				'http://169.254.170.23/v1/credentials',
 				expect.objectContaining({
 					headers: {
-						'User-Agent': 'n8n-aws-credential',
+						'User-Agent': 'MNI-aws-credential',
 						Authorization: 'fallback-direct-token',
 					},
 				}),
@@ -637,7 +637,7 @@ describe('system-credentials-utils', () => {
 				'http://169.254.170.23/v1/credentials',
 				expect.objectContaining({
 					headers: {
-						'User-Agent': 'n8n-aws-credential',
+						'User-Agent': 'MNI-aws-credential',
 						Authorization: 'file-token-has-priority',
 					},
 				}),
@@ -676,7 +676,7 @@ describe('system-credentials-utils', () => {
 				'http://169.254.170.23/v1/credentials',
 				expect.objectContaining({
 					headers: {
-						'User-Agent': 'n8n-aws-credential',
+						'User-Agent': 'MNI-aws-credential',
 						Authorization: 'direct-token',
 					},
 				}),
@@ -720,7 +720,7 @@ describe('system-credentials-utils', () => {
 				'http://169.254.170.23/v1/credentials',
 				expect.objectContaining({
 					headers: {
-						'User-Agent': 'n8n-aws-credential',
+						'User-Agent': 'MNI-aws-credential',
 					},
 				}),
 			);
@@ -886,7 +886,7 @@ describe('system-credentials-utils', () => {
 				expect.objectContaining({
 					method: 'POST',
 					headers: {
-						'User-Agent': 'n8n-aws-credential',
+						'User-Agent': 'MNI-aws-credential',
 						'Content-Type': 'application/x-www-form-urlencoded',
 						Accept: 'application/json',
 					},

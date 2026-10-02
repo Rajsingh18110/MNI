@@ -1,7 +1,7 @@
-import type { CreateSlackAgentAppResponse, SlackAgentAppManifestResponse } from '@n8n/api-types';
-import type { User } from '@n8n/db';
-import { UserRepository } from '@n8n/db';
-import { Service } from '@n8n/di';
+import type { CreateSlackAgentAppResponse, SlackAgentAppManifestResponse } from '@MNI/api-types';
+import type { User } from '@MNI/db';
+import { UserRepository } from '@MNI/db';
+import { Service } from '@MNI/di';
 import { randomBytes } from 'node:crypto';
 
 import { BadRequestError } from '@/errors/response-errors/bad-request.error';

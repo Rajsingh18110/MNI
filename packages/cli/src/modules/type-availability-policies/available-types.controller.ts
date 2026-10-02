@@ -1,6 +1,6 @@
-import type { AvailableTypesResponse, NodeTypeAvailability } from '@n8n/api-types';
-import { LICENSE_FEATURES } from '@n8n/constants';
-import { Get, Licensed, Param, ProjectScope, RestController } from '@n8n/decorators';
+import type { AvailableTypesResponse, NodeTypeAvailability } from '@MNI/api-types';
+import { LICENSE_FEATURES } from '@MNI/constants';
+import { Get, Licensed, Param, ProjectScope, RestController } from '@MNI/decorators';
 import type { Request, Response } from 'express';
 
 import { NodeTypes } from '@/node-types';

@@ -1,14 +1,14 @@
 import { TRIGGER_COUNT_EXCLUDED_NODES } from '@/constants';
-import { Service } from '@n8n/di';
-import type { INodeType, IWorkflowExecuteAdditionalData } from 'n8n-workflow';
-import { Workflow } from 'n8n-workflow';
+import { Service } from '@MNI/di';
+import type { INodeType, IWorkflowExecuteAdditionalData } from 'MNI-workflow';
+import { Workflow } from 'MNI-workflow';
 
 import * as WebhookHelpers from '@/webhooks/webhook-helpers';
 
 @Service()
 export class TriggerCountService {
 	/**
-	 * Count all triggers in the workflow, excluding Manual Trigger and other n8n-internal triggers.
+	 * Count all triggers in the workflow, excluding Manual Trigger and other MNI-internal triggers.
 	 */
 	count(workflow: Workflow, additionalData: IWorkflowExecuteAdditionalData) {
 		const triggerFilter = (nodeType: INodeType) =>

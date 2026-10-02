@@ -1,4 +1,4 @@
-import { Get, RestController } from '@n8n/decorators';
+import { Get, RestController } from '@MNI/decorators';
 import { Request, Response } from 'express';
 import { readFile } from 'fs/promises';
 import { resolve } from 'path';

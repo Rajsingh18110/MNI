@@ -1,5 +1,5 @@
 import { mock } from 'vitest-mock-extended';
-import type { INodeTypeDescription } from 'n8n-workflow';
+import type { INodeTypeDescription } from 'MNI-workflow';
 import { createTestNode } from '@/__tests__/mocks';
 import { groupSetupPanelRows } from '../setupPanelGroups';
 import type { SetupPanelRow } from '../composables/useSetupPanelState';
@@ -23,8 +23,8 @@ const credential: SetupPanelRow = {
 	isDone: false,
 };
 const nodes = [
-	createTestNode({ name: 'Feed', type: 'n8n-nodes-base.rssFeedRead' }),
-	createTestNode({ name: 'Schedule', type: 'n8n-nodes-base.scheduleTrigger' }),
+	createTestNode({ name: 'Feed', type: 'MNI-nodes-base.rssFeedRead' }),
+	createTestNode({ name: 'Schedule', type: 'MNI-nodes-base.scheduleTrigger' }),
 	createTestNode({ name: 'Service', type: 'service' }),
 ];
 const options = {

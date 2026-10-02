@@ -1,15 +1,15 @@
-import type { SamlPreferences, SamlPreferencesAttributeMapping } from '@n8n/api-types';
-import { Logger } from '@n8n/backend-common';
-import { OutboundHttp } from '@n8n/backend-network';
-import { GlobalConfig } from '@n8n/config';
-import type { Settings, User } from '@n8n/db';
-import { isValidEmail, SettingsRepository, UserRepository } from '@n8n/db';
-import { OnPubSubEvent } from '@n8n/decorators';
-import { Container, Service } from '@n8n/di';
+import type { SamlPreferences, SamlPreferencesAttributeMapping } from '@MNI/api-types';
+import { Logger } from '@MNI/backend-common';
+import { OutboundHttp } from '@MNI/backend-network';
+import { GlobalConfig } from '@MNI/config';
+import type { Settings, User } from '@MNI/db';
+import { isValidEmail, SettingsRepository, UserRepository } from '@MNI/db';
+import { OnPubSubEvent } from '@MNI/decorators';
+import { Container, Service } from '@MNI/di';
 import { createPublicKey, randomBytes, X509Certificate } from 'crypto';
 import type express from 'express';
-import { Cipher, InstanceSettings } from 'n8n-core';
-import { CREDENTIAL_BLANKING_VALUE, jsonParse, UnexpectedError } from 'n8n-workflow';
+import { Cipher, InstanceSettings } from 'MNI-core';
+import { CREDENTIAL_BLANKING_VALUE, jsonParse, UnexpectedError } from 'MNI-workflow';
 import { type IdentityProviderInstance, type ServiceProviderInstance } from 'samlify';
 import type {
 	BindingContext,
@@ -22,7 +22,7 @@ import { BadRequestError } from '@/errors/response-errors/bad-request.error';
 import { buildSamlClaimsContext } from '@/modules/provisioning.ee/claims-context.builder';
 import { ProvisioningService } from '@/modules/provisioning.ee/provisioning.service.ee';
 import { CacheService } from '@/services/cache/cache.service';
-import { UrlService } from '@n8n/backend-services';
+import { UrlService } from '@MNI/backend-services';
 import {
 	getSamlLoginLabel,
 	isSamlLicensedAndEnabled,
@@ -107,10 +107,10 @@ export class SamlService {
 
 	/**
 	 * Checks if SAML request signing is enabled via feature flag.
-	 * @returns true if N8N_ENV_FEAT_SIGNED_SAML_REQUESTS is set to 'true', false otherwise
+	 * @returns true if MNI_ENV_FEAT_SIGNED_SAML_REQUESTS is set to 'true', false otherwise
 	 */
 	isSignedSamlRequestsEnabled(): boolean {
-		return process.env.N8N_ENV_FEAT_SIGNED_SAML_REQUESTS === 'true';
+		return process.env.MNI_ENV_FEAT_SIGNED_SAML_REQUESTS === 'true';
 	}
 
 	/**
@@ -165,7 +165,7 @@ export class SamlService {
 
 		if (hasNewSigningFields && !this.isSignedSamlRequestsEnabled()) {
 			throw new BadRequestError(
-				'SAML request signing is not enabled. Set N8N_ENV_FEAT_SIGNED_SAML_REQUESTS=true to enable this feature.',
+				'SAML request signing is not enabled. Set MNI_ENV_FEAT_SIGNED_SAML_REQUESTS=true to enable this feature.',
 			);
 		}
 

@@ -5,11 +5,11 @@ import {
 	ListOAuthClientsQueryDto,
 	ListOAuthClientsResponseDto,
 	OAuthClientResponseDto,
-} from '@n8n/api-types';
-import { Logger } from '@n8n/backend-common';
-import { AuthenticatedRequest } from '@n8n/db';
-import { Delete, Get, GlobalScope, Param, Query, RestController } from '@n8n/decorators';
-import { hasGlobalScope } from '@n8n/permissions';
+} from '@MNI/api-types';
+import { Logger } from '@MNI/backend-common';
+import { AuthenticatedRequest } from '@MNI/db';
+import { Delete, Get, GlobalScope, Param, Query, RestController } from '@MNI/decorators';
+import { hasGlobalScope } from '@MNI/permissions';
 import type { Response } from 'express';
 
 import { ForbiddenError } from '@/errors/response-errors/forbidden.error';

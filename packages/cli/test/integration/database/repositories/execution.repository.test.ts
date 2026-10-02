@@ -1,10 +1,10 @@
-import { createTeamProject, createWorkflow, testDb } from '@n8n/backend-test-utils';
-import type { WorkflowEntity } from '@n8n/db';
-import { ExecutionDataRepository, ExecutionRepository, ProjectRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
+import { createTeamProject, createWorkflow, testDb } from '@MNI/backend-test-utils';
+import type { WorkflowEntity } from '@MNI/db';
+import { ExecutionDataRepository, ExecutionRepository, ProjectRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
 import { stringify } from 'flatted';
-import type { ExecutionStatus, IRunExecutionData, IRunExecutionDataAll } from 'n8n-workflow';
-import { WAIT_FOR_SUB_EXECUTION, WAIT_INDEFINITELY } from 'n8n-workflow';
+import type { ExecutionStatus, IRunExecutionData, IRunExecutionDataAll } from 'MNI-workflow';
+import { WAIT_FOR_SUB_EXECUTION, WAIT_INDEFINITELY } from 'MNI-workflow';
 
 describe('ExecutionRepository', () => {
 	beforeAll(async () => {

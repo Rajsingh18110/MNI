@@ -11,7 +11,7 @@ describe('ExecuteWorkflowEachModeRule', () => {
 	describe('detectWorkflow()', () => {
 		it('should not be affected when there is no Execute Workflow node', async () => {
 			const { workflow, nodesGroupedByType } = createWorkflow('wf-1', 'Test Workflow', [
-				createNode('HTTP', 'n8n-nodes-base.httpRequest'),
+				createNode('HTTP', 'MNI-nodes-base.httpRequest'),
 			]);
 
 			const result = await rule.detectWorkflow(workflow, nodesGroupedByType);
@@ -22,7 +22,7 @@ describe('ExecuteWorkflowEachModeRule', () => {
 
 		it('should not be affected when Execute Workflow node uses "once" mode', async () => {
 			const { workflow, nodesGroupedByType } = createWorkflow('wf-1', 'Test Workflow', [
-				createNode('SubWF', 'n8n-nodes-base.executeWorkflow', { mode: 'once' }),
+				createNode('SubWF', 'MNI-nodes-base.executeWorkflow', { mode: 'once' }),
 			]);
 
 			const result = await rule.detectWorkflow(workflow, nodesGroupedByType);
@@ -33,7 +33,7 @@ describe('ExecuteWorkflowEachModeRule', () => {
 
 		it('should not be affected when mode is unset (defaults to "once")', async () => {
 			const { workflow, nodesGroupedByType } = createWorkflow('wf-1', 'Test Workflow', [
-				createNode('SubWF', 'n8n-nodes-base.executeWorkflow'),
+				createNode('SubWF', 'MNI-nodes-base.executeWorkflow'),
 			]);
 
 			const result = await rule.detectWorkflow(workflow, nodesGroupedByType);
@@ -44,7 +44,7 @@ describe('ExecuteWorkflowEachModeRule', () => {
 
 		it('should detect Execute Workflow node using "each" mode', async () => {
 			const { workflow, nodesGroupedByType } = createWorkflow('wf-1', 'Test Workflow', [
-				createNode('SubWF', 'n8n-nodes-base.executeWorkflow', { mode: 'each' }),
+				createNode('SubWF', 'MNI-nodes-base.executeWorkflow', { mode: 'each' }),
 			]);
 
 			const result = await rule.detectWorkflow(workflow, nodesGroupedByType);
@@ -59,8 +59,8 @@ describe('ExecuteWorkflowEachModeRule', () => {
 
 		it('should flag only the "each" mode nodes when multiple Execute Workflow nodes exist', async () => {
 			const { workflow, nodesGroupedByType } = createWorkflow('wf-1', 'Test Workflow', [
-				createNode('EachOne', 'n8n-nodes-base.executeWorkflow', { mode: 'each' }),
-				createNode('OnceOne', 'n8n-nodes-base.executeWorkflow', { mode: 'once' }),
+				createNode('EachOne', 'MNI-nodes-base.executeWorkflow', { mode: 'each' }),
+				createNode('OnceOne', 'MNI-nodes-base.executeWorkflow', { mode: 'once' }),
 			]);
 
 			const result = await rule.detectWorkflow(workflow, nodesGroupedByType);

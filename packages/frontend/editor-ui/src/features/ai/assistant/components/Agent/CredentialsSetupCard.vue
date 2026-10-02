@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { N8nIcon } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+import { N8nIcon } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 
 interface CredentialIssue {
 	node: string;

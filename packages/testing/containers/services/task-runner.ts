@@ -25,10 +25,10 @@ export const taskRunner: Service<TaskRunnerResult> = {
 		const { workers, mains, projectName } = ctx;
 		const taskBrokerHost =
 			workers > 0
-				? `${projectName}-n8n-worker-1`
+				? `${projectName}-MNI-worker-1`
 				: mains > 1
-					? `${projectName}-n8n-main-1`
-					: `${projectName}-n8n`;
+					? `${projectName}-MNI-main-1`
+					: `${projectName}-MNI`;
 		return { taskBrokerUri: `http://${taskBrokerHost}:5679` };
 	},
 
@@ -42,12 +42,12 @@ export const taskRunner: Service<TaskRunnerResult> = {
 				.withNetworkAliases(`${projectName}-task-runner`)
 				.withExposedPorts(5680)
 				.withEnvironment({
-					N8N_RUNNERS_AUTH_TOKEN: 'test',
-					N8N_RUNNERS_LAUNCHER_BROKER_READINESS_POLL_INTERVAL_MS: '500',
-					N8N_RUNNERS_LAUNCHER_LOG_LEVEL: 'debug', // Broker registration is logged at debug, and the stack waits on it
-					N8N_RUNNERS_TASK_BROKER_URI: taskBrokerUri,
-					N8N_RUNNERS_MAX_CONCURRENCY: '5',
-					N8N_RUNNERS_AUTO_SHUTDOWN_TIMEOUT: '0', // Disabled in tests to prevent cold-start delays
+					MNI_RUNNERS_AUTH_TOKEN: 'test',
+					MNI_RUNNERS_LAUNCHER_BROKER_READINESS_POLL_INTERVAL_MS: '500',
+					MNI_RUNNERS_LAUNCHER_LOG_LEVEL: 'debug', // Broker registration is logged at debug, and the stack waits on it
+					MNI_RUNNERS_TASK_BROKER_URI: taskBrokerUri,
+					MNI_RUNNERS_MAX_CONCURRENCY: '5',
+					MNI_RUNNERS_AUTO_SHUTDOWN_TIMEOUT: '0', // Disabled in tests to prevent cold-start delays
 				})
 				.withWaitStrategy(Wait.forListeningPorts())
 				.withLabels({

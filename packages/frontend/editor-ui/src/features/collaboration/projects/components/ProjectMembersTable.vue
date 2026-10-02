@@ -1,9 +1,9 @@
 <script lang="ts" setup>
-import { N8nDataTableServer, N8nText, N8nUserInfo, type UserAction } from '@n8n/design-system';
-import type { TableHeader, TableOptions } from '@n8n/design-system';
-import type { UsersInfoProps } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
-import type { AllRolesMap, Role } from '@n8n/permissions';
+import { N8nDataTableServer, N8nText, N8nUserInfo, type UserAction } from '@MNI/design-system';
+import type { TableHeader, TableOptions } from '@MNI/design-system';
+import type { UsersInfoProps } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
+import type { AllRolesMap, Role } from '@MNI/permissions';
 import { computed, ref } from 'vue';
 import type { ProjectMemberData } from '../projects.types';
 import ProjectMembersAccessCell from './ProjectMembersAccessCell.vue';

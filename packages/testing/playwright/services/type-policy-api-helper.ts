@@ -5,7 +5,7 @@ import type {
 	NonDelegatingPolicyRule,
 	PolicyAction,
 	PolicyRule,
-} from '@n8n/api-types';
+} from '@MNI/api-types';
 import { nanoid } from 'nanoid';
 
 import type { ApiHelpers } from './api-helper';
@@ -98,7 +98,7 @@ export class TypePolicyApiHelper<K extends TypePolicyKind> {
 	}
 
 	private get headers(): Record<string, string> {
-		return this.publicApiKey ? { 'X-N8N-API-KEY': this.publicApiKey } : {};
+		return this.publicApiKey ? { 'X-MNI-API-KEY': this.publicApiKey } : {};
 	}
 
 	private async read(path: string): Promise<EffectivePolicy> {

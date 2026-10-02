@@ -1,12 +1,12 @@
-import type { BuiltTool, CredentialProvider } from '@n8n/agents';
-import { Tool } from '@n8n/agents/tool';
+import type { BuiltTool, CredentialProvider } from '@MNI/agents';
+import { Tool } from '@MNI/agents/tool';
 import type {
 	CodeBuilderSearchResult,
 	NodeRequest as CatalogNodeRequest,
-} from '@n8n/ai-utilities/node-catalog';
-import { AGENT_BUILDER_HIDDEN_AVAILABLE_TOOL_NODE_TYPES } from '@n8n/api-types';
-import { Service } from '@n8n/di';
-import { isToolType, isTriggerNodeType } from 'n8n-workflow';
+} from '@MNI/ai-utilities/node-catalog';
+import { AGENT_BUILDER_HIDDEN_AVAILABLE_TOOL_NODE_TYPES } from '@MNI/api-types';
+import { Service } from '@MNI/di';
+import { isToolType, isTriggerNodeType } from 'MNI-workflow';
 import { z } from 'zod';
 
 import { NodeCatalogService } from '@/node-catalog';
@@ -52,7 +52,7 @@ export const isAgentToolNodeType = (nodeId: string): boolean => {
 	return isToolType(nodeId, { includeHitl: false }) && !isMcpToolNodeType(nodeId);
 };
 
-const MCP_CLIENT_TOOL_NODE_TYPE = '@n8n/n8n-nodes-langchain.mcpClientTool';
+const MCP_CLIENT_TOOL_NODE_TYPE = '@MNI/MNI-nodes-langchain.mcpClientTool';
 const isMcpToolNodeType = (nodeId: string): boolean =>
 	nodeId === MCP_CLIENT_TOOL_NODE_TYPE || nodeId.startsWith(MCP_REGISTRY_PACKAGE_NAME);
 
@@ -82,7 +82,7 @@ const getNodeTypesInputSchema = z.object({
 		)
 		.min(1)
 		.describe(
-			'Tool node IDs from search_nodes or agent-context integration results with kind "node"; e.g., ["n8n-nodes-base.gmailTool"]',
+			'Tool node IDs from search_nodes or agent-context integration results with kind "node"; e.g., ["MNI-nodes-base.gmailTool"]',
 		),
 });
 

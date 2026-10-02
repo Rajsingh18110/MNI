@@ -1,5 +1,5 @@
-import { mockInstance, testDb, testModules } from '@n8n/backend-test-utils';
-import { Container } from '@n8n/di';
+import { mockInstance, testDb, testModules } from '@MNI/backend-test-utils';
+import { Container } from '@MNI/di';
 import type { KeyObject } from 'node:crypto';
 
 import type { TrustedKeySourceEntity } from '@/modules/token-exchange/database/entities/trusted-key-source.entity';

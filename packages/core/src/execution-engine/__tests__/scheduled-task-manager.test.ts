@@ -1,6 +1,6 @@
-import type { Logger } from '@n8n/backend-common';
-import type { CronLoggingConfig } from '@n8n/config';
-import type { Workflow } from 'n8n-workflow';
+import type { Logger } from '@MNI/backend-common';
+import type { CronLoggingConfig } from '@MNI/config';
+import type { Workflow } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import type { InstanceSettings } from '@/instance-settings';

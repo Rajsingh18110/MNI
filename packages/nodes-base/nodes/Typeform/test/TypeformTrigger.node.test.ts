@@ -1,6 +1,6 @@
 import { randomBytes } from 'crypto';
-import type { IHookFunctions, IWebhookFunctions } from 'n8n-workflow';
-import { NodeApiError } from 'n8n-workflow';
+import type { IHookFunctions, IWebhookFunctions } from 'MNI-workflow';
+import { NodeApiError } from 'MNI-workflow';
 
 import { apiRequest } from '../GenericFunctions';
 import { TypeformTrigger } from '../TypeformTrigger.node';
@@ -156,7 +156,7 @@ describe('TypeformTrigger', () => {
 			expect(randomBytes).toHaveBeenCalledWith(32);
 			expect(apiRequest).toHaveBeenCalledWith(
 				'PUT',
-				expect.stringContaining(`forms/${formId}/webhooks/n8n-`),
+				expect.stringContaining(`forms/${formId}/webhooks/MNI-`),
 				{
 					url: webhookUrl,
 					enabled: true,

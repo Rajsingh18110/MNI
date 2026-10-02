@@ -1,4 +1,4 @@
-import type { ICredentialTestRequest, ICredentialType, INodeProperties } from 'n8n-workflow';
+import type { ICredentialTestRequest, ICredentialType, INodeProperties } from 'MNI-workflow';
 
 export class TelegramApi implements ICredentialType {
 	name = 'telegramApi';

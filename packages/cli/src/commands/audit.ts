@@ -1,8 +1,8 @@
-import { SecurityConfig } from '@n8n/config';
-import { Command } from '@n8n/decorators';
-import { Container } from '@n8n/di';
-import { ensureError } from '@n8n/utils/errors/ensure-error';
-import { UserError } from 'n8n-workflow';
+import { SecurityConfig } from '@MNI/config';
+import { Command } from '@MNI/decorators';
+import { Container } from '@MNI/di';
+import { ensureError } from '@MNI/utils/errors/ensure-error';
+import { UserError } from 'MNI-workflow';
 import z from 'zod';
 
 import { RISK_CATEGORIES } from '@/security-audit/constants';

@@ -14,7 +14,7 @@ class LazyRegExp {
 	) {}
 
 	get(): RegExp {
-		// eslint-disable-next-line n8n-local-rules/no-dynamic-regexp -- node names are escaped before pattern construction
+		// eslint-disable-next-line MNI-local-rules/no-dynamic-regexp -- node names are escaped before pattern construction
 		if (!this.regExp) this.regExp = new RegExp(this.pattern(), this.flags);
 
 		return this.regExp;
@@ -46,7 +46,7 @@ const ITEM_TO_DATA_ACCESSORS = [
 	/^item/,
 ];
 
-const SPLIT_OUT_NODE_TYPE = 'n8n-nodes-base.splitOut';
+const SPLIT_OUT_NODE_TYPE = 'MNI-nodes-base.splitOut';
 
 // These we safely can convert to a normal argument
 const ITEM_ACCESSORS = ['params', 'isExecuted'];
@@ -90,7 +90,7 @@ const ACCESS_PATTERNS: AccessPattern[] = [
 		customCallback: (expression: string, newName: string, escapedNewName: string) => {
 			if (hasDotNotationBannedChar(newName)) {
 				return expression.replace(
-					// eslint-disable-next-line n8n-local-rules/no-dynamic-regexp -- newName is escaped before pattern construction
+					// eslint-disable-next-line MNI-local-rules/no-dynamic-regexp -- newName is escaped before pattern construction
 					new RegExp(`.${backslashEscape(newName)}( |\\.)`, 'g'),
 					`["${escapedNewName}"]$1`,
 				);
@@ -143,7 +143,7 @@ export function applyAccessPatterns(expression: string, previousName: string, ne
 	for (const pattern of ACCESS_PATTERNS) {
 		if (expression.includes(pattern.checkPattern)) {
 			expression = expression.replace(
-				// eslint-disable-next-line n8n-local-rules/no-dynamic-regexp -- static pattern
+				// eslint-disable-next-line MNI-local-rules/no-dynamic-regexp -- static pattern
 				new RegExp(pattern.replacePattern(preparedOldName), 'g'),
 				`$1${preparedNewName}$2`,
 			);

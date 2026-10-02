@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { N8nBadge, N8nButton, N8nIcon, N8nPagination, N8nText } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+import { N8nBadge, N8nButton, N8nIcon, N8nPagination, N8nText } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue';
 
-import { useToast } from '@n8n/composables/useToast';
+import { useToast } from '@MNI/composables/useToast';
 
 import CollectionCard from '../components/EvalCollectionsListView/CollectionCard.vue';
 import SetupCollectionWizard from '../components/SetupCollectionWizard/SetupCollectionWizard.vue';

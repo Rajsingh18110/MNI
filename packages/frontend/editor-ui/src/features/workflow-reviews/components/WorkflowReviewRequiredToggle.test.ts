@@ -1,7 +1,7 @@
 import { createPinia } from 'pinia';
 import userEvent from '@testing-library/user-event';
 import { defineComponent } from 'vue';
-import { N8nDropdownMenu } from '@n8n/design-system';
+import { N8nDropdownMenu } from '@MNI/design-system';
 
 import type { Pinia } from 'pinia';
 

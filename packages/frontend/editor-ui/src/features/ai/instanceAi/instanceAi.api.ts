@@ -1,5 +1,5 @@
-import { makeRestApiRequest } from '@n8n/rest-api-client';
-import type { IRestApiContext } from '@n8n/rest-api-client';
+import { makeRestApiRequest } from '@MNI/rest-api-client';
+import type { IRestApiContext } from '@MNI/rest-api-client';
 import type {
 	AiPreferenceScope,
 	ComputerUseChannel,
@@ -17,7 +17,7 @@ import type {
 	InstanceAiThreadArtifactsContext,
 	InstanceAiPreferenceCardEditResponse,
 	InstanceAiPreferenceCardUndoResponse,
-} from '@n8n/api-types';
+} from '@MNI/api-types';
 
 export interface InstanceAiThreadLaunchInput {
 	source: InstanceAiThreadSource;

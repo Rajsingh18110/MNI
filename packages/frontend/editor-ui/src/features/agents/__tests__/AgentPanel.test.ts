@@ -1,7 +1,7 @@
 /** eslint-disable import-x/no-extraneous-dependencies -- test-only patterns */
 import { describe, expect, it } from 'vitest';
 import { mount } from '@vue/test-utils';
-import { N8nVisuallyHidden } from '@n8n/design-system';
+import { N8nVisuallyHidden } from '@MNI/design-system';
 
 import AgentPanel from '../components/AgentPanel.vue';
 import AgentPanelHeader from '../components/AgentPanelHeader.vue';

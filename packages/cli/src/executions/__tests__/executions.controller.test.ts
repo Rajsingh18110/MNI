@@ -1,5 +1,5 @@
-import { DeleteExecutionsDto } from '@n8n/api-types';
-import type { AuthenticatedRequest, ExecutionSummaries, User } from '@n8n/db';
+import { DeleteExecutionsDto } from '@MNI/api-types';
+import type { AuthenticatedRequest, ExecutionSummaries, User } from '@MNI/db';
 import { mock } from 'vitest-mock-extended';
 
 import { BadRequestError } from '@/errors/response-errors/bad-request.error';

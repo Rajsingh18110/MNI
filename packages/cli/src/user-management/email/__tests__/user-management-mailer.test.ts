@@ -1,11 +1,11 @@
-import { mockInstance } from '@n8n/backend-test-utils';
-import type { GlobalConfig } from '@n8n/config';
-import type { ApiKey, User, UserRepository } from '@n8n/db';
-import { PROJECT_EDITOR_ROLE_SLUG, PROJECT_VIEWER_ROLE_SLUG } from '@n8n/permissions';
-import type { IWorkflowBase } from 'n8n-workflow';
+import { mockInstance } from '@MNI/backend-test-utils';
+import type { GlobalConfig } from '@MNI/config';
+import type { ApiKey, User, UserRepository } from '@MNI/db';
+import { PROJECT_EDITOR_ROLE_SLUG, PROJECT_VIEWER_ROLE_SLUG } from '@MNI/permissions';
+import type { IWorkflowBase } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
-import type { UrlService } from '@n8n/backend-services';
+import type { UrlService } from '@MNI/backend-services';
 import type { InviteEmailData, PasswordResetData } from '@/user-management/email/interfaces';
 import { NodeMailer } from '@/user-management/email/node-mailer';
 import { UserManagementMailer } from '@/user-management/email/user-management-mailer';
@@ -163,7 +163,7 @@ describe('UserManagementMailer', () => {
 			const apiKey = mock<ApiKey>({
 				id: 'key-1',
 				label: 'Test 123',
-				apiKey: 'n8n_api_xxxxxxxaaa5',
+				apiKey: 'MNI_api_xxxxxxxaaa5',
 				userId: 'owner-1',
 				user: mock<User>({
 					id: 'owner-1',
@@ -198,7 +198,7 @@ describe('UserManagementMailer', () => {
 			const apiKey = mock<ApiKey>({
 				id: 'key-1',
 				label: 'Test 123',
-				apiKey: 'n8n_api_xxxxxxxaaa5',
+				apiKey: 'MNI_api_xxxxxxxaaa5',
 				userId: 'owner-1',
 				user: mock<User>({
 					id: 'owner-1',

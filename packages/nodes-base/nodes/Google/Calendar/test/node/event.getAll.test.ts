@@ -1,6 +1,6 @@
 import type { MockProxy } from 'vitest-mock-extended';
 import { mock } from 'vitest-mock-extended';
-import type { INode, IExecuteFunctions, IDataObject } from 'n8n-workflow';
+import type { INode, IExecuteFunctions, IDataObject } from 'MNI-workflow';
 
 import * as genericFunctions from '../../GenericFunctions';
 import { GoogleCalendar } from '../../GoogleCalendar.node';

@@ -1,16 +1,16 @@
-import { STORES } from '@n8n/stores';
+import { STORES } from '@MNI/stores';
 import { defineStore } from 'pinia';
 import { computed } from 'vue';
-import { useRootStore } from '@n8n/stores/useRootStore';
+import { useRootStore } from '@MNI/stores/useRootStore';
 import { useNDVStore } from '@/features/ndv/shared/ndv.store';
 import {
 	createWorkflowDocumentId,
 	useWorkflowDocumentStore,
 } from '@/app/stores/workflowDocument.store';
 import { useUIStore } from './ui.store';
-import { useUsersStore } from '@n8n/stores/users.store';
+import { useUsersStore } from '@MNI/stores/users.store';
 import { useWorkflowsStore } from './workflows.store';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { useRouteWorkflowId } from '@/app/composables/useWorkflowId';
 
 export const useWebhooksStore = defineStore(STORES.WEBHOOKS, () => {

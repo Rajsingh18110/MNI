@@ -1,4 +1,4 @@
-import type { User } from '@n8n/db';
+import type { User } from '@MNI/db';
 import z from 'zod';
 
 import type { FolderService } from '@/services/folder.service';

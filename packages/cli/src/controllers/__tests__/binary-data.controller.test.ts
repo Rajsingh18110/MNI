@@ -1,9 +1,9 @@
-import type { BinaryDataQueryDto, BinaryDataSignedQueryDto } from '@n8n/api-types';
-import type { AuthenticatedRequest } from '@n8n/db';
+import type { BinaryDataQueryDto, BinaryDataSignedQueryDto } from '@MNI/api-types';
+import type { AuthenticatedRequest } from '@MNI/db';
 import type { Response } from 'express';
 import { JsonWebTokenError } from 'jsonwebtoken';
-import type { BinaryDataService } from 'n8n-core';
-import { FileNotFoundError } from 'n8n-core';
+import type { BinaryDataService } from 'MNI-core';
+import { FileNotFoundError } from 'MNI-core';
 import type { Readable } from 'node:stream';
 import { mock } from 'vitest-mock-extended';
 

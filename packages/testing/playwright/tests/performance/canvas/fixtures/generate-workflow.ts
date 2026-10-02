@@ -1,7 +1,7 @@
-import { MAX_PINNED_DATA_SIZE, MAX_WORKFLOW_SIZE } from '@n8n/api-types';
-import { node, sticky, trigger, workflow } from '@n8n/workflow-sdk';
-import type { IDataObject } from '@n8n/workflow-sdk';
-import type { IPinData, IWorkflowBase } from 'n8n-workflow';
+import { MAX_PINNED_DATA_SIZE, MAX_WORKFLOW_SIZE } from '@MNI/api-types';
+import { node, sticky, trigger, workflow } from '@MNI/workflow-sdk';
+import type { IDataObject } from '@MNI/workflow-sdk';
+import type { IPinData, IWorkflowBase } from 'MNI-workflow';
 
 import { buildPinDataForWorkflow, type PinScenario } from './pinned-payloads';
 
@@ -50,26 +50,26 @@ const TRIGGER_NAME = 'Start';
 // IF and Switch are excluded because their default empty conditions break
 // the linear chain (no working output to route to).
 const NODE_TYPE_CYCLE: Array<{ type: string; typeVersion: number; pinnable: boolean }> = [
-	{ type: 'n8n-nodes-base.set', typeVersion: 3.4, pinnable: false },
-	{ type: 'n8n-nodes-base.httpRequest', typeVersion: 4.2, pinnable: true },
-	{ type: 'n8n-nodes-base.set', typeVersion: 3.4, pinnable: false },
-	{ type: 'n8n-nodes-base.set', typeVersion: 3.4, pinnable: false },
-	{ type: 'n8n-nodes-base.httpRequest', typeVersion: 4.2, pinnable: true },
-	{ type: 'n8n-nodes-base.code', typeVersion: 2, pinnable: false },
-	{ type: 'n8n-nodes-base.set', typeVersion: 3.4, pinnable: false },
-	{ type: 'n8n-nodes-base.merge', typeVersion: 3, pinnable: false },
-	{ type: 'n8n-nodes-base.set', typeVersion: 3.4, pinnable: false },
-	{ type: 'n8n-nodes-base.httpRequest', typeVersion: 4.2, pinnable: true },
-	{ type: 'n8n-nodes-base.set', typeVersion: 3.4, pinnable: false },
-	{ type: 'n8n-nodes-base.set', typeVersion: 3.4, pinnable: false },
-	{ type: 'n8n-nodes-base.httpRequest', typeVersion: 4.2, pinnable: true },
-	{ type: 'n8n-nodes-base.set', typeVersion: 3.4, pinnable: false },
-	{ type: 'n8n-nodes-base.code', typeVersion: 2, pinnable: false },
-	{ type: 'n8n-nodes-base.set', typeVersion: 3.4, pinnable: false },
-	{ type: 'n8n-nodes-base.dateTime', typeVersion: 2, pinnable: false },
-	{ type: 'n8n-nodes-base.merge', typeVersion: 3, pinnable: false },
-	{ type: 'n8n-nodes-base.httpRequest', typeVersion: 4.2, pinnable: true },
-	{ type: 'n8n-nodes-base.set', typeVersion: 3.4, pinnable: false },
+	{ type: 'MNI-nodes-base.set', typeVersion: 3.4, pinnable: false },
+	{ type: 'MNI-nodes-base.httpRequest', typeVersion: 4.2, pinnable: true },
+	{ type: 'MNI-nodes-base.set', typeVersion: 3.4, pinnable: false },
+	{ type: 'MNI-nodes-base.set', typeVersion: 3.4, pinnable: false },
+	{ type: 'MNI-nodes-base.httpRequest', typeVersion: 4.2, pinnable: true },
+	{ type: 'MNI-nodes-base.code', typeVersion: 2, pinnable: false },
+	{ type: 'MNI-nodes-base.set', typeVersion: 3.4, pinnable: false },
+	{ type: 'MNI-nodes-base.merge', typeVersion: 3, pinnable: false },
+	{ type: 'MNI-nodes-base.set', typeVersion: 3.4, pinnable: false },
+	{ type: 'MNI-nodes-base.httpRequest', typeVersion: 4.2, pinnable: true },
+	{ type: 'MNI-nodes-base.set', typeVersion: 3.4, pinnable: false },
+	{ type: 'MNI-nodes-base.set', typeVersion: 3.4, pinnable: false },
+	{ type: 'MNI-nodes-base.httpRequest', typeVersion: 4.2, pinnable: true },
+	{ type: 'MNI-nodes-base.set', typeVersion: 3.4, pinnable: false },
+	{ type: 'MNI-nodes-base.code', typeVersion: 2, pinnable: false },
+	{ type: 'MNI-nodes-base.set', typeVersion: 3.4, pinnable: false },
+	{ type: 'MNI-nodes-base.dateTime', typeVersion: 2, pinnable: false },
+	{ type: 'MNI-nodes-base.merge', typeVersion: 3, pinnable: false },
+	{ type: 'MNI-nodes-base.httpRequest', typeVersion: 4.2, pinnable: true },
+	{ type: 'MNI-nodes-base.set', typeVersion: 3.4, pinnable: false },
 ];
 
 function nodeNameFor(index: number, type: string): string {
@@ -80,15 +80,15 @@ function nodeNameFor(index: number, type: string): string {
 
 function parametersFor(type: string): IDataObject {
 	switch (type) {
-		case 'n8n-nodes-base.set':
+		case 'MNI-nodes-base.set':
 			return { assignments: { assignments: [] }, options: {} };
-		case 'n8n-nodes-base.httpRequest':
+		case 'MNI-nodes-base.httpRequest':
 			return { url: 'https://example.invalid/benchmark', options: {} };
-		case 'n8n-nodes-base.code':
+		case 'MNI-nodes-base.code':
 			return { jsCode: 'return $input.all();' };
-		case 'n8n-nodes-base.merge':
+		case 'MNI-nodes-base.merge':
 			return { mode: 'append' };
-		case 'n8n-nodes-base.dateTime':
+		case 'MNI-nodes-base.dateTime':
 			return { action: 'getCurrentDate', options: {} };
 		default:
 			return {};
@@ -120,7 +120,7 @@ export function buildCanvasBenchmarkWorkflow(options: BuildOptions): GeneratedWo
 	// left to the SDK's auto-layout — the benchmark only cares about node/sticky
 	// counts and execution cost, not exact coordinates.
 	const start = trigger({
-		type: 'n8n-nodes-base.manualTrigger',
+		type: 'MNI-nodes-base.manualTrigger',
 		version: 1,
 		config: { name: TRIGGER_NAME },
 	});
@@ -166,7 +166,7 @@ export function buildCanvasBenchmarkWorkflow(options: BuildOptions): GeneratedWo
 	}
 
 	// The SDK's WorkflowJSON is structurally compatible with IWorkflowBase; the
-	// cast bridges the SDK's self-contained type duplicates to the n8n-workflow
+	// cast bridges the SDK's self-contained type duplicates to the MNI-workflow
 	// types the public API expects.
 	const workflowResult = builder.toJSON() as unknown as Partial<IWorkflowBase>;
 	// workflow() requires an id up front, but the create API must assign its own:

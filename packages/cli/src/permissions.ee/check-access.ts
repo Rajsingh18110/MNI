@@ -1,5 +1,5 @@
-import { ModuleRegistry } from '@n8n/backend-common';
-import type { User, EntityManager } from '@n8n/db';
+import { ModuleRegistry } from '@MNI/backend-common';
+import type { User, EntityManager } from '@MNI/db';
 import {
 	CredentialsEntity,
 	CredentialsRepository,
@@ -9,10 +9,10 @@ import {
 	SharedCredentialsRepository,
 	SharedWorkflow,
 	SharedWorkflowRepository,
-} from '@n8n/db';
-import { Container } from '@n8n/di';
-import { hasGlobalScope, type Scope } from '@n8n/permissions';
-import { UnexpectedError } from 'n8n-workflow';
+} from '@MNI/db';
+import { Container } from '@MNI/di';
+import { hasGlobalScope, type Scope } from '@MNI/permissions';
+import { UnexpectedError } from 'MNI-workflow';
 
 import { CredentialsFinderService } from '@/credentials/credentials-finder.service';
 import { NotFoundError } from '@/errors/response-errors/not-found.error';

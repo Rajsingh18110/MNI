@@ -1,5 +1,5 @@
 import { Sha256 } from '@aws-crypto/sha256-js';
-import { createHttpsProxyAgent, resolveProxyUrl } from '@n8n/backend-network/proxy';
+import { createHttpsProxyAgent, resolveProxyUrl } from '@MNI/backend-network/proxy';
 import { NodeHttpHandler } from '@smithy/node-http-handler';
 import { HttpRequest } from '@smithy/protocol-http';
 import { SignatureV4 } from '@smithy/signature-v4';
@@ -14,7 +14,7 @@ import {
 	type IHttpRequestOptions,
 	type IRequestOptions,
 	UserError,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { getAwsDomain, regions, type AWSRegion } from './regions';
 import { getSystemCredentials } from './system-credentials-utils';
@@ -113,7 +113,7 @@ function assertValidRoleCredentials(credentials: AwsAssumeRoleCredentialsType): 
 	return {
 		roleArn: credentials.roleArn.trim(),
 		externalId: credentials.externalId?.trim() || undefined,
-		roleSessionName: credentials.roleSessionName?.trim() || 'n8n-session',
+		roleSessionName: credentials.roleSessionName?.trim() || 'MNI-session',
 	};
 }
 
@@ -181,7 +181,7 @@ function buildStsRequestHandler(region: AWSRegion): NodeHttpHandler | undefined 
 export const awsCredentialsTest: ICredentialTestRequest = {
 	request: {
 		baseURL:
-			// eslint-disable-next-line n8n-local-rules/no-interpolation-in-regular-string
+			// eslint-disable-next-line MNI-local-rules/no-interpolation-in-regular-string
 			'={{$credentials.region.startsWith("cn-") ? `https://sts.${$credentials.region}.amazonaws.com.cn` : `https://sts.${$credentials.region}.amazonaws.com`}}',
 		url: '?Action=GetCallerIdentity&Version=2011-06-15',
 		method: 'POST',
@@ -572,7 +572,7 @@ export function awsGetSignInOptionsAndUpdateRequest(
 	// here — the same string becomes both the signed path and the wire URL below.
 	// The legacy signer must keep the raw path: it canonicalizes internally, and
 	// the rollback flag has to reproduce pre-migration wire bytes exactly.
-	const encodeS3Path = signingService === 's3' && process.env.N8N_AWS_LEGACY_SIGNER !== 'true';
+	const encodeS3Path = signingService === 's3' && process.env.MNI_AWS_LEGACY_SIGNER !== 'true';
 	path =
 		(encodeS3Path ? uriEncodeS3Pathname(endpoint.pathname) : endpoint.pathname) + endpoint.search;
 
@@ -708,7 +708,7 @@ export function splitHostPort(host: string): { hostname: string; port: number | 
 	return { hostname, port: portStr ? parseInt(portStr, 10) : undefined };
 }
 
-// Legacy aws4 signer, kept behind N8N_AWS_LEGACY_SIGNER as an operator rollback
+// Legacy aws4 signer, kept behind MNI_AWS_LEGACY_SIGNER as an operator rollback
 // lever. Temporary: removed together with aws4 once the smithy path has soaked.
 function signWithLegacyAws4(
 	requestOptions: IHttpRequestOptions,
@@ -783,7 +783,7 @@ export async function signOptions(
 	url: string,
 	method?: IHttpRequestMethods,
 ): Promise<IHttpRequestOptions> {
-	if (process.env.N8N_AWS_LEGACY_SIGNER === 'true') {
+	if (process.env.MNI_AWS_LEGACY_SIGNER === 'true') {
 		return signWithLegacyAws4(requestOptions, signOpts, securityHeaders, url, method);
 	}
 

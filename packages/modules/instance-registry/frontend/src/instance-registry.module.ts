@@ -1,4 +1,4 @@
-import { defineFrontendModule } from '@n8n/frontend-module-sdk';
+import { defineFrontendModule } from '@MNI/frontend-module-sdk';
 
 /**
  * Store-only: this module contributes no UI surface, so registering it is a no-op —

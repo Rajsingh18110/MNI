@@ -1,13 +1,13 @@
-import { Post, RestController } from '@n8n/decorators';
+import { Post, RestController } from '@MNI/decorators';
 
 import { LoadNodesAndCredentials } from '@/load-nodes-and-credentials';
 
 /**
- * Dev-only endpoints. Registered only when `N8N_DEV_RELOAD=true`.
+ * Dev-only endpoints. Registered only when `MNI_DEV_RELOAD=true`.
  *
  * The published image cannot watch the filesystem (no musl prebuild of
  * `@parcel/watcher`, and inotify does not cross a bind mount), so reload is a
- * push from whoever owns the compiler — see `@n8n/node-cli`'s `dev` command.
+ * push from whoever owns the compiler — see `@MNI/node-cli`'s `dev` command.
  */
 @RestController('/dev')
 export class DevController {

@@ -1,4 +1,4 @@
-import { redactText } from '@n8n/utils/redaction/redact-text';
+import { redactText } from '@MNI/utils/redaction/redact-text';
 import { Buffer } from 'node:buffer';
 import { z } from 'zod';
 
@@ -20,8 +20,8 @@ import { assertKnowledgePathSegment, type AgentKnowledgePaths } from './agent-kn
 
 const COMMAND_TIMEOUT_SECONDS = 20;
 export const MIRROR_SYNC_TIMEOUT_SECONDS = 120;
-const SEARCH_OUTPUT_TRUNCATED_MARKER = '__N8N_SEARCH_OUTPUT_TRUNCATED__';
-const READ_OUTPUT_TRUNCATED_MARKER = '__N8N_READ_OUTPUT_TRUNCATED__';
+const SEARCH_OUTPUT_TRUNCATED_MARKER = '__MNI_SEARCH_OUTPUT_TRUNCATED__';
+const READ_OUTPUT_TRUNCATED_MARKER = '__MNI_READ_OUTPUT_TRUNCATED__';
 const SEARCH_JSON_EVENT_OVERHEAD_CHARS = 1_500;
 const MAX_SEARCH_OPERATION_OUTPUT_CHARS = 500_000;
 export const KNOWLEDGE_FILES_DIR_UNAVAILABLE_EXIT_CODE = 3;

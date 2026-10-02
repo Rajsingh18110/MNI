@@ -1,6 +1,6 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { createTestingPinia } from '@pinia/testing';
-import { NodeConnectionTypes, type INodeTypeDescription } from 'n8n-workflow';
+import { NodeConnectionTypes, type INodeTypeDescription } from 'MNI-workflow';
 
 import { mockedStore } from '@/__tests__/utils';
 import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';
@@ -15,9 +15,9 @@ import {
 
 vi.mock('virtual:node-popularity-data', () => ({
 	default: [
-		{ id: 'n8n-nodes-base.slack', popularity: 100 },
-		{ id: '@n8n/n8n-nodes-langchain.openAi', popularity: 45 },
-		{ id: '@n8n/n8n-nodes-langchain.toolCode', popularity: 30 },
+		{ id: 'MNI-nodes-base.slack', popularity: 100 },
+		{ id: '@MNI/MNI-nodes-langchain.openAi', popularity: 45 },
+		{ id: '@MNI/MNI-nodes-langchain.toolCode', popularity: 30 },
 		{ id: 'mcpClientTool', popularity: 20 },
 		{ id: 'toolCalculator', popularity: 10 },
 	],
@@ -40,13 +40,13 @@ function makeNodeType(
 }
 
 const SLACK = makeNodeType({
-	name: 'n8n-nodes-base.slack',
+	name: 'MNI-nodes-base.slack',
 	displayName: 'Slack',
 	credentials: [{ name: 'slackApi', required: true }],
 });
 
 const CODE_TOOL = makeNodeType({
-	name: '@n8n/n8n-nodes-langchain.toolCode',
+	name: '@MNI/MNI-nodes-langchain.toolCode',
 	displayName: 'Code Tool',
 	codex: {
 		categories: ['AI'],
@@ -55,7 +55,7 @@ const CODE_TOOL = makeNodeType({
 });
 
 const OPENAI = makeNodeType({
-	name: '@n8n/n8n-nodes-langchain.openAi',
+	name: '@MNI/MNI-nodes-langchain.openAi',
 	displayName: 'OpenAI',
 	inputs: [],
 });
@@ -71,20 +71,20 @@ const CALCULATOR = makeNodeType({
 });
 
 const SUBAGENT = makeNodeType({
-	name: 'n8n-nodes-base.subagent',
+	name: 'MNI-nodes-base.subagent',
 	displayName: 'Subagent',
 	inputs: ['main'],
 });
 
 const HIDDEN_CHAT_TOOL = makeNodeType({
-	name: '@n8n/n8n-nodes-langchain.chatTool',
+	name: '@MNI/MNI-nodes-langchain.chatTool',
 	displayName: 'Chat Tool',
 });
 
 const executeWorkflowTrigger = {
 	id: 't',
 	name: 'When Executed by Another Workflow',
-	type: 'n8n-nodes-base.executeWorkflowTrigger',
+	type: 'MNI-nodes-base.executeWorkflowTrigger',
 	typeVersion: 1.1,
 	position: [0, 0] as [number, number],
 	parameters: {},
@@ -161,7 +161,7 @@ describe('useAgentToolCatalog', () => {
 
 	it('categorizes all non-MCP tools as MNI nodes', () => {
 		const community = makeNodeType({
-			name: 'n8n-nodes-firecrawl.firecrawlTool',
+			name: 'MNI-nodes-firecrawl.firecrawlTool',
 			displayName: 'Firecrawl',
 			codex: {
 				categories: ['AI'],
@@ -177,7 +177,7 @@ describe('useAgentToolCatalog', () => {
 
 	it('keeps uninstalled verified community tools that getNodeType cannot resolve', () => {
 		const preview = makeNodeType({
-			name: 'n8n-nodes-firecrawl.firecrawlTool',
+			name: 'MNI-nodes-firecrawl.firecrawlTool',
 			displayName: 'Firecrawl',
 		});
 		nodeTypesStore.visibleNodeTypesByOutputConnectionTypeNames = {
@@ -204,7 +204,7 @@ describe('useAgentToolCatalog', () => {
 				{
 					id: 'f',
 					name: 'Form',
-					type: 'n8n-nodes-base.form',
+					type: 'MNI-nodes-base.form',
 					typeVersion: 1,
 					position: [0, 0],
 					parameters: {},
@@ -222,7 +222,7 @@ describe('useAgentToolCatalog', () => {
 				{
 					id: 'w',
 					name: 'Wait',
-					type: 'n8n-nodes-base.wait',
+					type: 'MNI-nodes-base.wait',
 					typeVersion: 1,
 					position: [0, 0],
 					parameters: {},
@@ -236,7 +236,7 @@ describe('useAgentToolCatalog', () => {
 				{
 					id: 's',
 					name: 'Set',
-					type: 'n8n-nodes-base.set',
+					type: 'MNI-nodes-base.set',
 					typeVersion: 1,
 					position: [0, 0],
 					parameters: {},
@@ -250,7 +250,7 @@ describe('useAgentToolCatalog', () => {
 				{
 					id: 'm',
 					name: 'Manual Trigger',
-					type: 'n8n-nodes-base.manualTrigger',
+					type: 'MNI-nodes-base.manualTrigger',
 					typeVersion: 1,
 					position: [0, 0],
 					parameters: {},
@@ -273,7 +273,7 @@ describe('useAgentToolCatalog', () => {
 		expect(incompatibleWorkflows.value).toEqual([
 			{
 				workflow: expect.objectContaining({ id: 'form' }),
-				reason: { reason: 'incompatible_nodes', nodeTypes: ['n8n-nodes-base.form'] },
+				reason: { reason: 'incompatible_nodes', nodeTypes: ['MNI-nodes-base.form'] },
 			},
 			{
 				workflow: expect.objectContaining({ id: 'no-trigger' }),
@@ -297,7 +297,7 @@ describe('isWorkflowCompatibleWithAgentTools', () => {
 						{
 							id: 't',
 							name: 'Cron',
-							type: 'n8n-nodes-base.scheduleTrigger',
+							type: 'MNI-nodes-base.scheduleTrigger',
 							typeVersion: 1,
 							position: [0, 0],
 							parameters: {},
@@ -309,7 +309,7 @@ describe('isWorkflowCompatibleWithAgentTools', () => {
 		const formNode = {
 			id: 'f',
 			name: 'Form',
-			type: 'n8n-nodes-base.form',
+			type: 'MNI-nodes-base.form',
 			typeVersion: 1,
 			position: [0, 0] as [number, number],
 			parameters: {},

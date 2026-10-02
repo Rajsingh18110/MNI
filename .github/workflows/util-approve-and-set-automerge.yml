@@ -25,8 +25,8 @@ jobs:
         id: generate-token
         uses: actions/create-github-app-token@29824e69f54612133e76f7eaac726eef6c875baf # v2.2.1
         with:
-          app-id: ${{ secrets.N8N_RELEASE_HELPER_APP_ID }}
-          private-key: ${{ secrets.N8N_RELEASE_HELPER_PRIVATE_KEY }}
+          app-id: ${{ secrets.MNI_RELEASE_HELPER_APP_ID }}
+          private-key: ${{ secrets.MNI_RELEASE_HELPER_PRIVATE_KEY }}
 
       - name: Approve PR (as the App)
         env:

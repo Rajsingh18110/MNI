@@ -2,15 +2,15 @@ import type {
 	AiApplySuggestionRequestDto,
 	AiAskRequestDto,
 	AiChatRequestDto,
-} from '@n8n/api-types';
-import { Logger } from '@n8n/backend-common';
-import { GlobalConfig } from '@n8n/config';
-import { Service } from '@n8n/di';
+} from '@MNI/api-types';
+import { Logger } from '@MNI/backend-common';
+import { GlobalConfig } from '@MNI/config';
+import { Service } from '@MNI/di';
 import { AiAssistantClient } from '@n8n_io/ai-assistant-sdk';
-import { ErrorReporter, InstanceSettings } from 'n8n-core';
-import { assert, type IUser } from 'n8n-workflow';
+import { ErrorReporter, InstanceSettings } from 'MNI-core';
+import { assert, type IUser } from 'MNI-workflow';
 
-import { N8N_VERSION } from '../constants';
+import { MNI_VERSION } from '../constants';
 import { License } from '../license';
 import { callAiServiceWithRetry } from '../utils/ai-service-retry';
 
@@ -43,7 +43,7 @@ export class AiService {
 		this.client = new AiAssistantClient({
 			licenseCert,
 			consumerId,
-			n8nVersion: N8N_VERSION,
+			n8nVersion: MNI_VERSION,
 			baseUrl,
 			logLevel,
 			instanceId: this.instanceSettings.instanceId,

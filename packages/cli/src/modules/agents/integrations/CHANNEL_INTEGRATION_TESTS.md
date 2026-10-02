@@ -191,9 +191,9 @@ committing it.
 To record during a local run:
 
 ```bash
-export N8N_AGENT_INTEGRATION_RECORDING_ENABLED=true
-export N8N_AGENT_INTEGRATION_RECORDING_SESSION_ID=telegram-basic
-export N8N_AGENT_INTEGRATION_RECORDING_DIR="$PWD/.agent-recordings/channel-integrations"
+export MNI_AGENT_INTEGRATION_RECORDING_ENABLED=true
+export MNI_AGENT_INTEGRATION_RECORDING_SESSION_ID=telegram-basic
+export MNI_AGENT_INTEGRATION_RECORDING_DIR="$PWD/.agent-recordings/channel-integrations"
 pnpm dev   # a real MNI instance with a real bot connected (real credentials)
 # then: message the bot, trigger callbacks, let the agent reply
 ```

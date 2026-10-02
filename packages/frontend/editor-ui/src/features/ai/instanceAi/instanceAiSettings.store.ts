@@ -1,9 +1,9 @@
 import { defineStore } from 'pinia';
 import { ref, computed, reactive, toRaw, watch } from 'vue';
-import { useRootStore } from '@n8n/stores/useRootStore';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useRootStore } from '@MNI/stores/useRootStore';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { usePushConnectionStore } from '@/app/stores/pushConnection.store';
-import { useToast } from '@n8n/composables/useToast';
+import { useToast } from '@MNI/composables/useToast';
 import {
 	fetchSettings,
 	updateSettings,
@@ -39,14 +39,14 @@ import type {
 	InstanceAiVerifySandboxRequest,
 	InstanceAiVerifySearchRequest,
 	InstanceAiVerificationResponse,
-} from '@n8n/api-types';
-import { i18n } from '@n8n/i18n';
+} from '@MNI/api-types';
+import { i18n } from '@MNI/i18n';
 import type { ToolConnectionStatus } from '@/features/shared/toolsConnection/types';
 import { deriveInstanceAiConfiguration } from './instanceAiConfiguration';
 import { useInstanceAiBrowserUseExperiment } from '@/experiments/instanceAiBrowserUse';
 import { useInstanceAiComputerUseExperiment } from '@/experiments/instanceAiComputerUse';
 import { useInstanceAiSetupPanelExperiment } from '@/experiments/instanceAiSetupPanel/useInstanceAiSetupPanelExperiment';
-import { DEFAULT_INSTANCE_AI_PERMISSIONS, type ComputerUseChannel } from '@n8n/api-types';
+import { DEFAULT_INSTANCE_AI_PERMISSIONS, type ComputerUseChannel } from '@MNI/api-types';
 
 export const useInstanceAiSettingsStore = defineStore('instanceAiSettings', () => {
 	const rootStore = useRootStore();
@@ -446,7 +446,7 @@ export const useInstanceAiSettingsStore = defineStore('instanceAiSettings', () =
 	const DAEMON_BASE = 'http://127.0.0.1:7655';
 
 	/**
-	 * User-initiated pairing with a running `@n8n/computer-use` daemon.
+	 * User-initiated pairing with a running `@MNI/computer-use` daemon.
 	 * Returns true on success, false on failure (a toast is shown on failure).
 	 */
 	async function connectLocalGateway(): Promise<boolean> {
@@ -478,7 +478,7 @@ export const useInstanceAiSettingsStore = defineStore('instanceAiSettings', () =
 		} catch {
 			toast.showError(
 				new Error(
-					'Could not reach the local daemon. Make sure `npx @n8n/computer-use` is running.',
+					'Could not reach the local daemon. Make sure `npx @MNI/computer-use` is running.',
 				),
 				'Connection failed',
 			);

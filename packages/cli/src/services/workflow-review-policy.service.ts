@@ -1,7 +1,7 @@
-import { workflowReviewsPolicySchema } from '@n8n/api-types';
-import { SettingsRepository } from '@n8n/db';
-import { Service } from '@n8n/di';
-import { jsonParse, UserError } from 'n8n-workflow';
+import { workflowReviewsPolicySchema } from '@MNI/api-types';
+import { SettingsRepository } from '@MNI/db';
+import { Service } from '@MNI/di';
+import { jsonParse, UserError } from 'MNI-workflow';
 
 import { WORKFLOW_REVIEW_POLICY_SETTINGS_KEY } from '@/constants/workflow-reviews';
 

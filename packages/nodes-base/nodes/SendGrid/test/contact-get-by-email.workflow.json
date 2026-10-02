@@ -3,7 +3,7 @@
 	"nodes": [
 		{
 			"parameters": {},
-			"type": "n8n-nodes-base.manualTrigger",
+			"type": "MNI-nodes-base.manualTrigger",
 			"typeVersion": 1,
 			"position": [0, 0],
 			"id": "0b4c0843-6007-4687-8e91-cf3b97cb0734",
@@ -16,7 +16,7 @@
 				"by": "email",
 				"email": "a'b'c"
 			},
-			"type": "n8n-nodes-base.sendGrid",
+			"type": "MNI-nodes-base.sendGrid",
 			"typeVersion": 1,
 			"position": [220, 0],
 			"id": "69ea4501-a90d-4067-b9f7-a7b7f2b79a96",

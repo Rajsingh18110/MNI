@@ -1,6 +1,6 @@
 import type { GraphNode } from '@vue-flow/core';
-import { useI18n } from '@n8n/i18n';
-import { getEmptyGroupAnchor, type IWorkflowGroup } from 'n8n-workflow';
+import { useI18n } from '@MNI/i18n';
+import { getEmptyGroupAnchor, type IWorkflowGroup } from 'MNI-workflow';
 import type { MaybeRefOrGetter } from 'vue';
 import { computed, toValue } from 'vue';
 

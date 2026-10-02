@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
-import { useI18n } from '@n8n/i18n';
-import { N8nSettingsLayout, N8nSettingsPageHeader } from '@n8n/design-system';
+import { useI18n } from '@MNI/i18n';
+import { N8nSettingsLayout, N8nSettingsPageHeader } from '@MNI/design-system';
 
 import { useDocumentTitle } from '@/app/composables/useDocumentTitle';
-import { useToast } from '@n8n/composables/useToast';
+import { useToast } from '@MNI/composables/useToast';
 import type { OAuthClientFilters } from '@/features/ai/mcpAccess/clients.utils';
 import OAuthClientsTable from '@/features/ai/mcpAccess/components/tabs/OAuthClientsTable.vue';
 import RevokeOAuthClientConfirmModal from '@/features/ai/mcpAccess/components/RevokeOAuthClientConfirmModal.vue';
@@ -17,7 +17,7 @@ import {
 import { useMCPStore } from '@/features/ai/mcpAccess/mcp.store';
 import { useMcp } from '@/features/ai/mcpAccess/composables/useMcp';
 import { useOAuthClientRevoke } from '@/features/ai/mcpAccess/composables/useOAuthClientRevoke';
-import { useRBACStore } from '@n8n/stores/rbac.store';
+import { useRBACStore } from '@MNI/stores/rbac.store';
 
 const i18n = useI18n();
 const toast = useToast();

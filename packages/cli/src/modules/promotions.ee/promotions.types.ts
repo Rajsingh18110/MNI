@@ -5,7 +5,7 @@ import type {
 	PromotionProviderType,
 	promotionGitApplySettingsSchema,
 	promotionGitPromoteSettingsSchema,
-} from '@n8n/api-types';
+} from '@MNI/api-types';
 import { z } from 'zod';
 
 import type { PackageFile } from './base-branch-files';
@@ -15,7 +15,7 @@ export type PromotionGitPromoteSettings = z.infer<typeof promotionGitPromoteSett
 
 /*
  * Decrypted credentials stay in the backend, so their schemas live here rather
- * than in `@n8n/api-types`. Each payload carries its own `schemaVersion`, because
+ * than in `@MNI/api-types`. Each payload carries its own `schemaVersion`, because
  * a stored row can predate the current shape.
  */
 

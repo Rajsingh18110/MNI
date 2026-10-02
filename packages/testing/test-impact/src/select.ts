@@ -53,7 +53,7 @@ export interface SelectTestsInput {
 	manifests?: FileDiffs;
 	/** Changed tsconfig diffs, fed to {@link tsconfigForcesBroad}. */
 	tsconfigs?: FileDiffs;
-	/** Changed `@n8n/config` diffs, fed to {@link configForcesBroad}. */
+	/** Changed `@MNI/config` diffs, fed to {@link configForcesBroad}. */
 	configs?: FileDiffs;
 	/** Workspace package dir → runtime dependency names it declares (parsed from
 	 *  pnpm-lock.yaml's `importers`). With `manifests`, a changed runtime dep is

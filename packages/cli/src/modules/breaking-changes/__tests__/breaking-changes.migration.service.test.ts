@@ -1,6 +1,6 @@
-import { mockLogger } from '@n8n/backend-test-utils';
-import type { User, WorkflowEntity } from '@n8n/db';
-import type { INode } from 'n8n-workflow';
+import { mockLogger } from '@MNI/backend-test-utils';
+import type { User, WorkflowEntity } from '@MNI/db';
+import type { INode } from 'MNI-workflow';
 import type { Mocked } from 'vitest';
 import { mock } from 'vitest-mock-extended';
 
@@ -79,7 +79,7 @@ describe('BreakingChangeMigrationService', () => {
 	});
 
 	it('throws when the workflow has no affected nodes', async () => {
-		const workflow = buildWorkflow([createNode('Set', 'n8n-nodes-base.set', {})]);
+		const workflow = buildWorkflow([createNode('Set', 'MNI-nodes-base.set', {})]);
 		workflowFinderService.findWorkflowForUser.mockResolvedValue(workflow);
 
 		await expect(service.migrateWorkflow(RULE_ID, 'wf-1', user)).rejects.toThrow(
@@ -122,7 +122,7 @@ describe('BreakingChangeMigrationService', () => {
 			jsCode: 'return items;',
 			instructions: 'x',
 		});
-		const otherNode = createNode('Set', 'n8n-nodes-base.set', { value: 1 });
+		const otherNode = createNode('Set', 'MNI-nodes-base.set', { value: 1 });
 		const workflow = buildWorkflow([aiNode, otherNode]);
 		workflowFinderService.findWorkflowForUser.mockResolvedValue(workflow);
 		workflowService.update.mockResolvedValue(mock<WorkflowEntity>({ versionId: 'new-version' }));
@@ -151,7 +151,7 @@ describe('BreakingChangeMigrationService', () => {
 		expect(migrated.name).toBe('Transform');
 		expect(migrated.position).toEqual(aiNode.position);
 		// Type/params rewritten to a Code node.
-		expect(migrated.type).toBe('n8n-nodes-base.code');
+		expect(migrated.type).toBe('MNI-nodes-base.code');
 		expect(migrated.typeVersion).toBe(2);
 		expect(migrated.parameters).toEqual({
 			mode: 'runOnceForAllItems',
@@ -169,7 +169,7 @@ describe('BreakingChangeMigrationService', () => {
 		const workflow = {
 			id: 'wf-1',
 			name: 'My WF',
-			nodes: [aiNode, createNode('End', 'n8n-nodes-base.noOp')],
+			nodes: [aiNode, createNode('End', 'MNI-nodes-base.noOp')],
 			connections: structuredClone(connections),
 		} as unknown as WorkflowEntity;
 		workflowFinderService.findWorkflowForUser.mockResolvedValue(workflow);
@@ -196,7 +196,7 @@ describe('BreakingChangeMigrationService', () => {
 		// validated, keyed by node name, with the workflow's connections and node types.
 		expect(workflowValidationService.validateForActivation).toHaveBeenCalledWith(
 			expect.objectContaining({
-				Transform: expect.objectContaining({ type: 'n8n-nodes-base.code' }),
+				Transform: expect.objectContaining({ type: 'MNI-nodes-base.code' }),
 			}),
 			workflow.connections,
 			nodeTypes,
@@ -212,7 +212,7 @@ describe('BreakingChangeMigrationService', () => {
 		vi.spyOn(migrationRegistry, 'get').mockReturnValue({
 			ruleId: RULE_ID,
 			migrate: () => ({
-				node: { type: 'n8n-nodes-base.code', typeVersion: 2, parameters: {} },
+				node: { type: 'MNI-nodes-base.code', typeVersion: 2, parameters: {} },
 				notes: ['behavior changed'],
 			}),
 		});
@@ -257,7 +257,7 @@ describe('BreakingChangeMigrationService', () => {
 
 	describe('workflow-level migrations', () => {
 		const EACH_RULE_ID = 'execute-workflow-each-mode-v3';
-		const EXECUTE_WORKFLOW = 'n8n-nodes-base.executeWorkflow';
+		const EXECUTE_WORKFLOW = 'MNI-nodes-base.executeWorkflow';
 
 		beforeEach(() => {
 			ruleRegistry.registerAll([new ExecuteWorkflowEachModeRule()]);
@@ -266,7 +266,7 @@ describe('BreakingChangeMigrationService', () => {
 		it.each([true, false])(
 			'saves the graph and requires review when wait is %s',
 			async (waitForSubWorkflow) => {
-				const trigger = createNode('Trigger', 'n8n-nodes-base.scheduleTrigger');
+				const trigger = createNode('Trigger', 'MNI-nodes-base.scheduleTrigger');
 				const sub = createNode('Sub', EXECUTE_WORKFLOW, {
 					mode: 'each',
 					options: { waitForSubWorkflow },

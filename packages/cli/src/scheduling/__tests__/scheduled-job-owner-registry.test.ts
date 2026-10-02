@@ -1,4 +1,4 @@
-import { ScheduledJobOwnerType } from '@n8n/constants';
+import { ScheduledJobOwnerType } from '@MNI/constants';
 import { mock } from 'vitest-mock-extended';
 
 import type { AgentScheduledJobOwner } from '../agent-scheduled-job-owner';

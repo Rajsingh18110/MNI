@@ -1,5 +1,5 @@
-import { BUILDER_CHECKPOINT_UNAVAILABLE_CODE, BUILDER_NOT_CONFIGURED_CODE } from '@n8n/api-types';
-import { UserError } from 'n8n-workflow';
+import { BUILDER_CHECKPOINT_UNAVAILABLE_CODE, BUILDER_NOT_CONFIGURED_CODE } from '@MNI/api-types';
+import { UserError } from 'MNI-workflow';
 
 /**
  * Stable code on `BuilderNotConfiguredError` so callers that can't import

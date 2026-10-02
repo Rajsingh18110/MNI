@@ -18,7 +18,7 @@ import * as Comlink from 'comlink';
 import SQLiteESMFactory from 'wa-sqlite/dist/wa-sqlite.mjs';
 import * as SQLite from 'wa-sqlite';
 import { AccessHandlePoolVFS } from 'wa-sqlite/src/examples/AccessHandlePoolVFS.js';
-import type { INodeTypeDescription } from 'n8n-workflow';
+import type { INodeTypeDescription } from 'MNI-workflow';
 import { getAllTableSchemas } from './db';
 import {
 	loadNodeTypes as loadNodeTypesOp,
@@ -49,7 +49,7 @@ const state: DataWorkerState = {
 };
 
 const DB_NAME = 'MNI';
-const VFS_NAME = 'n8n-opfs';
+const VFS_NAME = 'MNI-opfs';
 const SQLITE_ACCESS_EXISTS =
 	(SQLite as { SQLITE_ACCESS_EXISTS?: number }).SQLITE_ACCESS_EXISTS ?? 0;
 

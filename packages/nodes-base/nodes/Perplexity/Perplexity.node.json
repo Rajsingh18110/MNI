@@ -1,5 +1,5 @@
 {
-	"node": "n8n-nodes-base.perplexity",
+	"node": "MNI-nodes-base.perplexity",
 	"nodeVersion": "1.1",
 	"codexVersion": "1.0",
 	"categories": ["AI", "Utility"],
@@ -11,7 +11,7 @@
 		],
 		"primaryDocumentation": [
 			{
-				"url": "https://docs.n8n.io/integrations/builtin/app-nodes/n8n-nodes-langchain.perplexity/"
+				"url": "https://docs.n8n.io/integrations/builtin/app-nodes/MNI-nodes-langchain.perplexity/"
 			}
 		]
 	}

@@ -1,6 +1,6 @@
 import { useMessage } from '@/app/composables/useMessage';
-import { useToast } from '@n8n/composables/useToast';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
+import { useToast } from '@MNI/composables/useToast';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
 import type {
 	AddColumnResponse,
 	DataTableColumn,
@@ -8,7 +8,7 @@ import type {
 	DataTableRow,
 } from '@/features/core/dataTable/dataTable.types';
 import { ref, type Ref } from 'vue';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import type {
 	CellKeyDownEvent,
 	CellValueChangedEvent,
@@ -22,7 +22,7 @@ import { isDataTableValue, isAGGridCellType } from '@/features/core/dataTable/ty
 import { useDataTableTypes } from '@/features/core/dataTable/composables/useDataTableTypes';
 import { areValuesEqual } from '@/features/core/dataTable/utils/typeUtils';
 import { isUnsafeNumberValue } from '@/features/core/dataTable/utils/columnUtils';
-import { ResponseError } from '@n8n/rest-api-client';
+import { ResponseError } from '@MNI/rest-api-client';
 import { escapeHtml } from '@/app/utils/htmlUtils';
 
 export type UseDataTableOperationsParams = {

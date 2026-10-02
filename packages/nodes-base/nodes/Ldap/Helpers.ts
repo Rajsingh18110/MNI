@@ -1,6 +1,6 @@
 import { Client } from 'ldapts';
 import type { ClientOptions, Entry } from 'ldapts';
-import type { ICredentialDataDecryptedObject, IDataObject, Logger } from 'n8n-workflow';
+import type { ICredentialDataDecryptedObject, IDataObject, Logger } from 'MNI-workflow';
 
 import { getResolvables } from '@utils/utilities';
 

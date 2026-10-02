@@ -1,10 +1,10 @@
 import { EventEmitter } from 'node:events';
-import type { SerializableAgentState } from '@n8n/agents';
-import { createDeferredPromise } from '@n8n/utils/promise/deferred-promise';
+import type { SerializableAgentState } from '@MNI/agents';
+import { createDeferredPromise } from '@MNI/utils/promise/deferred-promise';
 import type { Mocked } from 'vitest';
 import { mock } from 'vitest-mock-extended';
 
-import { FileNotFoundError } from 'n8n-core';
+import { FileNotFoundError } from 'MNI-core';
 
 import type { CredentialsService } from '@/credentials/credentials.service';
 import { NotFoundError } from '@/errors/response-errors/not-found.error';
@@ -12,8 +12,8 @@ import { NotFoundError } from '@/errors/response-errors/not-found.error';
 import type { AgentChatAttachmentService } from '../agent-chat-attachment.service';
 import { AgentChatController } from '../agent-chat.controller';
 import type { AgentExecutionOrchestratorService } from '../agent-execution-orchestrator.service';
-import { mockLogger } from '@n8n/backend-test-utils';
-import type { InstanceSettings } from 'n8n-core';
+import { mockLogger } from '@MNI/backend-test-utils';
+import type { InstanceSettings } from 'MNI-core';
 import type { Publisher } from '@/scaling/pubsub/publisher.service';
 import type { Subscriber } from '@/scaling/pubsub/subscriber.service';
 import type { AgentMessageQueueService } from '../agent-message-queue.service';
@@ -32,7 +32,7 @@ import type { AgentTestChatService } from '../agent-test-chat.service';
 import { AgentTestRunService } from '../agent-test-run.service';
 import type { AgentsService } from '../agents.service';
 import type { AgentsBuilderService } from '../builder/agents-builder.service';
-import type { N8NCheckpointStorage } from '../integrations/n8n-checkpoint-storage';
+import type { N8NCheckpointStorage } from '../integrations/MNI-checkpoint-storage';
 import {
 	expectProjectScopedAgentRoutes,
 	getRoutesByHandlerName,
@@ -991,7 +991,7 @@ describe('AgentChatController production MNI Chat', () => {
 				agentId: 'agent-1',
 				message: 'hello',
 				sessionMode: 'new',
-				memory: expect.objectContaining({ resourceId: 'n8n-chat-production:user-1' }),
+				memory: expect.objectContaining({ resourceId: 'MNI-chat-production:user-1' }),
 			}),
 		);
 		expect(writes.some((line) => line.includes('"delta":"Hi"'))).toBe(true);
@@ -1042,8 +1042,8 @@ describe('AgentChatController production MNI Chat', () => {
 		expect(agentExecutionOrchestratorService.resumeForChat).toHaveBeenCalledWith(
 			expect.objectContaining({
 				usePublishedVersion: true,
-				source: 'n8n_chat_production',
-				expectedMemory: { resourceId: 'n8n-chat-production:user-1' },
+				source: 'MNI_chat_production',
+				expectedMemory: { resourceId: 'MNI-chat-production:user-1' },
 			}),
 		);
 		expect(

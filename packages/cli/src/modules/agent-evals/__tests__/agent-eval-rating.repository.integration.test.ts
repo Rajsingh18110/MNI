@@ -1,4 +1,4 @@
-import { createTeamProject, testDb, testModules } from '@n8n/backend-test-utils';
+import { createTeamProject, testDb, testModules } from '@MNI/backend-test-utils';
 import {
 	AgentEvalDatasetRepository,
 	AgentEvalRatingRepository,
@@ -7,9 +7,9 @@ import {
 	GLOBAL_OWNER_ROLE,
 	type AgentEvalResult,
 	type User,
-} from '@n8n/db';
-import { Container } from '@n8n/di';
-import { DataSource } from '@n8n/typeorm';
+} from '@MNI/db';
+import { Container } from '@MNI/di';
+import { DataSource } from '@MNI/typeorm';
 
 import { Agent } from '@/modules/agents/entities/agent.entity';
 import { createUserShell } from '@test-integration/db/users';

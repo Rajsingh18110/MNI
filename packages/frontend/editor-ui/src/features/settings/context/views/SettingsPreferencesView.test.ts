@@ -3,7 +3,7 @@ import { type MockedStore, mockedStore } from '@/__tests__/utils';
 import { createTestingPinia } from '@pinia/testing';
 import userEvent from '@testing-library/user-event';
 
-import { TELEMETRY_EVENT } from '@n8n/telemetry';
+import { TELEMETRY_EVENT } from '@MNI/telemetry';
 
 import SettingsPreferencesView from './SettingsPreferencesView.vue';
 import { useContextStore } from '../context.store';
@@ -13,7 +13,7 @@ const push = vi.fn();
 const trackMock = vi.fn();
 const confirmMock = vi.fn().mockResolvedValue('confirm');
 
-vi.mock('@n8n/composables/useTelemetry', () => ({
+vi.mock('@MNI/composables/useTelemetry', () => ({
 	useTelemetry: () => ({ track: trackMock }),
 }));
 

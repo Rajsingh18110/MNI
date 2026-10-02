@@ -1,4 +1,4 @@
-import type { SourceControlledFile } from '@n8n/api-types';
+import type { SourceControlledFile } from '@MNI/api-types';
 import type { TupleToUnion } from '@/app/utils/typeHelpers';
 
 export type SshKeyTypes = ['ed25519', 'rsa'];

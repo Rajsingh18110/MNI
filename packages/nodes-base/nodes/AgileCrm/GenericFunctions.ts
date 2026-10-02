@@ -6,8 +6,8 @@ import type {
 	JsonObject,
 	IRequestOptions,
 	IHttpRequestMethods,
-} from 'n8n-workflow';
-import { NodeApiError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeApiError } from 'MNI-workflow';
 
 import type { IContactUpdate } from './ContactInterface';
 import type { IFilterRules, ISearchConditions } from './FilterInterface';

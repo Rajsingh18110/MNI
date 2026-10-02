@@ -8,26 +8,26 @@ import {
 	N8nSwitch,
 	N8nText,
 	N8nTooltip,
-} from '@n8n/design-system';
+} from '@MNI/design-system';
 import Modal from '@/app/components/Modal.vue';
 import { useCredentialsStore } from '@/features/credentials/credentials.store';
-import { createEventBus } from '@n8n/utils/event-bus';
+import { createEventBus } from '@MNI/utils/event-bus';
 import {
 	type ChatHubLLMProvider,
 	type ChatModelDto,
 	type ChatProviderSettingsDto,
 	PROVIDER_CREDENTIAL_TYPE_MAP,
-} from '@n8n/api-types';
-import { DEFAULT_CONTEXT_WINDOW_LENGTH } from '@n8n/chat-hub';
-import { useI18n } from '@n8n/i18n';
+} from '@MNI/api-types';
+import { DEFAULT_CONTEXT_WINDOW_LENGTH } from '@MNI/chat-hub';
+import { useI18n } from '@MNI/i18n';
 import { useChatStore } from '../chat.store';
 import { providerDisplayNames } from '../constants';
 import { fetchChatModelsApi } from '../chat.api';
-import { useRootStore } from '@n8n/stores/useRootStore';
-import { useToast } from '@n8n/composables/useToast';
+import { useRootStore } from '@MNI/stores/useRootStore';
+import { useToast } from '@MNI/composables/useToast';
 import CredentialPicker from '@/features/credentials/components/CredentialPicker/CredentialPicker.vue';
 import TagsDropdown from '@/features/shared/tags/components/TagsDropdown.vue';
-import { type ITag } from '@n8n/rest-api-client';
+import { type ITag } from '@MNI/rest-api-client';
 
 interface IModel extends ITag {
 	isManual?: boolean;

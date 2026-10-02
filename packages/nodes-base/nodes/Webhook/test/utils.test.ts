@@ -9,7 +9,7 @@ import {
 	type MultiPartFormData,
 	type INode,
 	type ICredentialDataDecryptedObject,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import type { WebhookParameters } from '../utils';
 import {
@@ -318,7 +318,7 @@ describe('Webhook Utils', () => {
 				getNodeParameter: vi.fn().mockReturnValue('onReceived'),
 				getChildNodes: vi
 					.fn()
-					.mockReturnValue([{ name: 'Respond', type: 'n8n-nodes-base.respondToWebhook' }]),
+					.mockReturnValue([{ name: 'Respond', type: 'MNI-nodes-base.respondToWebhook' }]),
 				getParentNodes: vi.fn().mockReturnValue([]),
 				getNode: vi.fn().mockReturnValue({ name: 'Webhook' }),
 			};
@@ -330,7 +330,7 @@ describe('Webhook Utils', () => {
 		it('should not throw if the Respond to Webhook node belongs to a downstream Wait node resuming on webhook', () => {
 			const waitNode = {
 				name: 'Wait',
-				type: 'n8n-nodes-base.wait',
+				type: 'MNI-nodes-base.wait',
 				disabled: false,
 				parameters: { resume: 'webhook', responseMode: 'responseNode' },
 			};
@@ -339,18 +339,18 @@ describe('Webhook Utils', () => {
 				getChildNodes: vi
 					.fn()
 					.mockReturnValue([
-						{ name: 'Request2', type: 'n8n-nodes-base.httpRequest' },
+						{ name: 'Request2', type: 'MNI-nodes-base.httpRequest' },
 						waitNode,
-						{ name: 'Request', type: 'n8n-nodes-base.httpRequest' },
-						{ name: 'Respond success', type: 'n8n-nodes-base.respondToWebhook' },
+						{ name: 'Request', type: 'MNI-nodes-base.httpRequest' },
+						{ name: 'Respond success', type: 'MNI-nodes-base.respondToWebhook' },
 					]),
 				getParentNodes: vi
 					.fn()
 					.mockReturnValue([
-						{ name: 'Request', type: 'n8n-nodes-base.httpRequest' },
+						{ name: 'Request', type: 'MNI-nodes-base.httpRequest' },
 						waitNode,
-						{ name: 'Request2', type: 'n8n-nodes-base.httpRequest' },
-						{ name: 'Webhook', type: 'n8n-nodes-base.webhook' },
+						{ name: 'Request2', type: 'MNI-nodes-base.httpRequest' },
+						{ name: 'Webhook', type: 'MNI-nodes-base.webhook' },
 					]),
 				getNode: vi.fn().mockReturnValue({ name: 'Webhook' }),
 			};
@@ -362,7 +362,7 @@ describe('Webhook Utils', () => {
 		it('should throw if the Wait node upstream of the Respond to Webhook node does not resume on webhook', () => {
 			const waitNode = {
 				name: 'Wait',
-				type: 'n8n-nodes-base.wait',
+				type: 'MNI-nodes-base.wait',
 				disabled: false,
 				parameters: { resume: 'timeInterval' },
 			};
@@ -372,11 +372,11 @@ describe('Webhook Utils', () => {
 					.fn()
 					.mockReturnValue([
 						waitNode,
-						{ name: 'Respond', type: 'n8n-nodes-base.respondToWebhook' },
+						{ name: 'Respond', type: 'MNI-nodes-base.respondToWebhook' },
 					]),
 				getParentNodes: vi
 					.fn()
-					.mockReturnValue([waitNode, { name: 'Webhook', type: 'n8n-nodes-base.webhook' }]),
+					.mockReturnValue([waitNode, { name: 'Webhook', type: 'MNI-nodes-base.webhook' }]),
 				getNode: vi.fn().mockReturnValue({ name: 'Webhook' }),
 			};
 			expect(() => {
@@ -387,7 +387,7 @@ describe('Webhook Utils', () => {
 		it('should throw if the webhook-resuming Wait node upstream of the Respond to Webhook node does not respond via Respond to Webhook node', () => {
 			const waitNode = {
 				name: 'Wait',
-				type: 'n8n-nodes-base.wait',
+				type: 'MNI-nodes-base.wait',
 				disabled: false,
 				parameters: { resume: 'webhook', responseMode: 'onReceived' },
 			};
@@ -397,11 +397,11 @@ describe('Webhook Utils', () => {
 					.fn()
 					.mockReturnValue([
 						waitNode,
-						{ name: 'Respond', type: 'n8n-nodes-base.respondToWebhook' },
+						{ name: 'Respond', type: 'MNI-nodes-base.respondToWebhook' },
 					]),
 				getParentNodes: vi
 					.fn()
-					.mockReturnValue([waitNode, { name: 'Webhook', type: 'n8n-nodes-base.webhook' }]),
+					.mockReturnValue([waitNode, { name: 'Webhook', type: 'MNI-nodes-base.webhook' }]),
 				getNode: vi.fn().mockReturnValue({ name: 'Webhook' }),
 			};
 			expect(() => {
@@ -412,7 +412,7 @@ describe('Webhook Utils', () => {
 		it('should throw if the webhook-resuming Wait node upstream of the Respond to Webhook node responds with the last node', () => {
 			const waitNode = {
 				name: 'Wait',
-				type: 'n8n-nodes-base.wait',
+				type: 'MNI-nodes-base.wait',
 				disabled: false,
 				parameters: { resume: 'webhook', responseMode: 'lastNode' },
 			};
@@ -422,11 +422,11 @@ describe('Webhook Utils', () => {
 					.fn()
 					.mockReturnValue([
 						waitNode,
-						{ name: 'Respond', type: 'n8n-nodes-base.respondToWebhook' },
+						{ name: 'Respond', type: 'MNI-nodes-base.respondToWebhook' },
 					]),
 				getParentNodes: vi
 					.fn()
-					.mockReturnValue([waitNode, { name: 'Webhook', type: 'n8n-nodes-base.webhook' }]),
+					.mockReturnValue([waitNode, { name: 'Webhook', type: 'MNI-nodes-base.webhook' }]),
 				getNode: vi.fn().mockReturnValue({ name: 'Webhook' }),
 			};
 			expect(() => {
@@ -437,7 +437,7 @@ describe('Webhook Utils', () => {
 		it('should throw if the webhook-resuming Wait node upstream of the Respond to Webhook node is disabled', () => {
 			const waitNode = {
 				name: 'Wait',
-				type: 'n8n-nodes-base.wait',
+				type: 'MNI-nodes-base.wait',
 				disabled: true,
 				parameters: { resume: 'webhook', responseMode: 'responseNode' },
 			};
@@ -447,11 +447,11 @@ describe('Webhook Utils', () => {
 					.fn()
 					.mockReturnValue([
 						waitNode,
-						{ name: 'Respond', type: 'n8n-nodes-base.respondToWebhook' },
+						{ name: 'Respond', type: 'MNI-nodes-base.respondToWebhook' },
 					]),
 				getParentNodes: vi
 					.fn()
-					.mockReturnValue([waitNode, { name: 'Webhook', type: 'n8n-nodes-base.webhook' }]),
+					.mockReturnValue([waitNode, { name: 'Webhook', type: 'MNI-nodes-base.webhook' }]),
 				getNode: vi.fn().mockReturnValue({ name: 'Webhook' }),
 			};
 			expect(() => {
@@ -462,7 +462,7 @@ describe('Webhook Utils', () => {
 		it('should throw if any Respond to Webhook node is not owned by a downstream Wait node', () => {
 			const waitNode = {
 				name: 'Wait',
-				type: 'n8n-nodes-base.wait',
+				type: 'MNI-nodes-base.wait',
 				disabled: false,
 				parameters: { resume: 'webhook', responseMode: 'responseNode' },
 			};
@@ -472,14 +472,14 @@ describe('Webhook Utils', () => {
 					.fn()
 					.mockReturnValue([
 						waitNode,
-						{ name: 'Respond owned', type: 'n8n-nodes-base.respondToWebhook' },
-						{ name: 'Respond direct', type: 'n8n-nodes-base.respondToWebhook' },
+						{ name: 'Respond owned', type: 'MNI-nodes-base.respondToWebhook' },
+						{ name: 'Respond direct', type: 'MNI-nodes-base.respondToWebhook' },
 					]),
 				getParentNodes: vi.fn().mockImplementation((nodeName: string) => {
 					if (nodeName === 'Respond owned') {
-						return [waitNode, { name: 'Webhook', type: 'n8n-nodes-base.webhook' }];
+						return [waitNode, { name: 'Webhook', type: 'MNI-nodes-base.webhook' }];
 					}
-					return [{ name: 'Webhook', type: 'n8n-nodes-base.webhook' }];
+					return [{ name: 'Webhook', type: 'MNI-nodes-base.webhook' }];
 				}),
 				getNode: vi.fn().mockReturnValue({ name: 'Webhook' }),
 			};
@@ -589,7 +589,7 @@ describe('Webhook Utils', () => {
 			const node = {
 				id: 'node-789',
 				webhookId: 'webhook-456',
-				type: 'n8n-nodes-base.formTrigger',
+				type: 'MNI-nodes-base.formTrigger',
 			} as INode;
 			const credentials = {
 				user: 'admin',
@@ -621,7 +621,7 @@ describe('Webhook Utils', () => {
 			const node = {
 				id: 'node-789',
 				webhookId: 'webhook-456',
-				type: 'n8n-nodes-base.formTrigger',
+				type: 'MNI-nodes-base.formTrigger',
 			} as INode;
 			const credentials = {
 				user: (Math.random() * 10000).toString(),
@@ -1064,7 +1064,7 @@ describe('Auth token generation', () => {
 
 		it('should use authentication property for Form Trigger nodes', async () => {
 			webhookFunctions.getNode.mockReturnValue({
-				type: 'n8n-nodes-base.formTrigger',
+				type: 'MNI-nodes-base.formTrigger',
 			} as INode);
 			webhookFunctions.getNodeParameter.mockReturnValue('basicAuth');
 
@@ -1075,7 +1075,7 @@ describe('Auth token generation', () => {
 
 		it('should use passed authentication key', async () => {
 			webhookFunctions.getNode.mockReturnValue({
-				type: 'n8n-nodes-base.wait',
+				type: 'MNI-nodes-base.wait',
 			} as INode);
 			webhookFunctions.getNodeParameter.mockReturnValue('basicAuth');
 
@@ -1089,7 +1089,7 @@ describe('Auth token generation', () => {
 
 		it('should handle "none" authentication', async () => {
 			webhookFunctions.getNode.mockReturnValue({
-				type: 'n8n-nodes-base.formTrigger',
+				type: 'MNI-nodes-base.formTrigger',
 			} as INode);
 			webhookFunctions.getNodeParameter.mockReturnValue('none');
 
@@ -1110,7 +1110,7 @@ describe('Auth token generation', () => {
 			testNode = {
 				id: new Date().getMilliseconds().toString(),
 				webhookId: 'webhook-456',
-				type: 'n8n-nodes-base.formTrigger',
+				type: 'MNI-nodes-base.formTrigger',
 			} as INode;
 
 			randomCredentials = {
@@ -1154,7 +1154,7 @@ describe('Auth token generation', () => {
 				{
 					id: 'node-789',
 					webhookId: 'webhook-456',
-					type: 'n8n-nodes-base.formTrigger',
+					type: 'MNI-nodes-base.formTrigger',
 				} as INode,
 				randomCredentials,
 			);
@@ -1162,7 +1162,7 @@ describe('Auth token generation', () => {
 				{
 					id: 'node-678',
 					webhookId: 'webhook-456',
-					type: 'n8n-nodes-base.formTrigger',
+					type: 'MNI-nodes-base.formTrigger',
 				} as INode,
 				randomCredentials,
 			);
@@ -1170,7 +1170,7 @@ describe('Auth token generation', () => {
 				{
 					id: 'node-789',
 					webhookId: 'webhook-459',
-					type: 'n8n-nodes-base.formTrigger',
+					type: 'MNI-nodes-base.formTrigger',
 				} as INode,
 				randomCredentials,
 			);

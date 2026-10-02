@@ -1,4 +1,4 @@
-import type { BaseTextKey } from '@n8n/i18n';
+import type { BaseTextKey } from '@MNI/i18n';
 import type { InstanceAiPrefillDeclaration } from '@/features/ai/instanceAi/prefills';
 
 export interface SplitEmptyStateExample {

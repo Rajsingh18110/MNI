@@ -1,7 +1,7 @@
 import type { CallToolResult, InputRequiredResult } from '@modelcontextprotocol/server';
-import type { WorkflowPublishBlockedReason } from '@n8n/api-types';
-import type { AuthenticatedRequest } from '@n8n/db';
-import type { INode } from 'n8n-workflow';
+import type { WorkflowPublishBlockedReason } from '@MNI/api-types';
+import type { AuthenticatedRequest } from '@MNI/db';
+import type { INode } from 'MNI-workflow';
 import type z from 'zod';
 
 import type { Mcpauth_type, McpCallerAuth } from '@/services/oauth-token-verifier-proxy.service';

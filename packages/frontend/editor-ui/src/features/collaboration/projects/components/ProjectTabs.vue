@@ -3,16 +3,16 @@ import { ref, watch, computed } from 'vue';
 import type { RouteRecordName } from 'vue-router';
 import { useRoute } from 'vue-router';
 import { VIEWS } from '@/app/constants';
-import { useI18n } from '@n8n/i18n';
-import type { BaseTextKey } from '@n8n/i18n';
-import type { TabOptions } from '@n8n/design-system';
-import type { DynamicTabOptions } from '@n8n/frontend-module-sdk';
+import { useI18n } from '@MNI/i18n';
+import type { BaseTextKey } from '@MNI/i18n';
+import type { TabOptions } from '@MNI/design-system';
+import type { DynamicTabOptions } from '@MNI/frontend-module-sdk';
 import { processDynamicTabs } from '@/app/utils/modules/tabUtils';
 
-import { N8nTabs } from '@n8n/design-system';
+import { N8nTabs } from '@MNI/design-system';
 import { useProjectsStore } from '../projects.store';
 import { ProjectTypes } from '../projects.types';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
 type Props = {
 	showSettings?: boolean;
 	showExecutions?: boolean;

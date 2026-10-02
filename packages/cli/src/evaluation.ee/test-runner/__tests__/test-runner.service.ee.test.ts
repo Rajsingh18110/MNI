@@ -1,6 +1,6 @@
-import { mockLogger, mockInstance } from '@n8n/backend-test-utils';
-import { ExecutionsConfig } from '@n8n/config';
-import { TestCaseExecutionErrorCode } from '@n8n/db';
+import { mockLogger, mockInstance } from '@MNI/backend-test-utils';
+import { ExecutionsConfig } from '@MNI/config';
+import { TestCaseExecutionErrorCode } from '@MNI/db';
 import type {
 	EvaluationCollectionRepository,
 	EvaluationConfigRepository,
@@ -9,16 +9,16 @@ import type {
 	TestCaseExecutionRepository,
 	TestRunRepository,
 	WorkflowRepository,
-} from '@n8n/db';
+} from '@MNI/db';
 import { readFileSync } from 'fs';
-import type { ErrorReporter, InstanceSettings } from 'n8n-core';
+import type { ErrorReporter, InstanceSettings } from 'MNI-core';
 import {
 	createRunExecutionData,
 	EVALUATION_NODE_TYPE,
 	EVALUATION_TRIGGER_NODE_TYPE,
 	NodeConnectionTypes,
-} from 'n8n-workflow';
-import type { IWorkflowBase, IRun, ExecutionError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import type { IWorkflowBase, IRun, ExecutionError } from 'MNI-workflow';
 import path from 'path';
 import type { Mock } from 'vitest';
 import { mock } from 'vitest-mock-extended';
@@ -171,7 +171,7 @@ describe('TestRunnerService', () => {
 					{
 						id: 'node2',
 						name: 'Regular Node',
-						type: 'n8n-nodes-base.noOp',
+						type: 'MNI-nodes-base.noOp',
 						typeVersion: 1,
 						position: [100, 0],
 						parameters: {},
@@ -196,7 +196,7 @@ describe('TestRunnerService', () => {
 					{
 						id: 'node1',
 						name: 'Regular Node 1',
-						type: 'n8n-nodes-base.noOp',
+						type: 'MNI-nodes-base.noOp',
 						typeVersion: 1,
 						position: [0, 0],
 						parameters: {},
@@ -204,7 +204,7 @@ describe('TestRunnerService', () => {
 					{
 						id: 'node2',
 						name: 'Regular Node 2',
-						type: 'n8n-nodes-base.set',
+						type: 'MNI-nodes-base.set',
 						typeVersion: 1,
 						position: [100, 0],
 						parameters: {},
@@ -482,7 +482,7 @@ describe('TestRunnerService', () => {
 					{
 						id: 'node1',
 						name: 'Regular Node',
-						type: 'n8n-nodes-base.noOp',
+						type: 'MNI-nodes-base.noOp',
 						typeVersion: 1,
 						position: [0, 0],
 						parameters: {},
@@ -1056,7 +1056,7 @@ describe('TestRunnerService', () => {
 					{
 						id: 'node1',
 						name: 'Regular Node',
-						type: 'n8n-nodes-base.noOp',
+						type: 'MNI-nodes-base.noOp',
 						typeVersion: 1,
 						position: [0, 0],
 						parameters: {},
@@ -1388,7 +1388,7 @@ describe('TestRunnerService', () => {
 						{
 							id: 'model1',
 							name: 'OpenAI Model',
-							type: '@n8n/n8n-nodes-langchain.lmChatOpenAi',
+							type: '@MNI/MNI-nodes-langchain.lmChatOpenAi',
 							typeVersion: 1,
 							position: [0, 0],
 							parameters: {},
@@ -1519,7 +1519,7 @@ describe('TestRunnerService', () => {
 						{
 							id: 'model1',
 							name: 'OpenAI Model',
-							type: '@n8n/n8n-nodes-langchain.lmChatOpenAi',
+							type: '@MNI/MNI-nodes-langchain.lmChatOpenAi',
 							typeVersion: 1,
 							position: [0, 0],
 							parameters: {},
@@ -1578,7 +1578,7 @@ describe('TestRunnerService', () => {
 							{
 								id: 'model1',
 								name: 'OpenAI Model',
-								type: '@n8n/n8n-nodes-langchain.lmChatOpenAi',
+								type: '@MNI/MNI-nodes-langchain.lmChatOpenAi',
 								typeVersion: 1,
 								position: [0, 0],
 								parameters: {},
@@ -1638,7 +1638,7 @@ describe('TestRunnerService', () => {
 							{
 								id: 'model1',
 								name: 'OpenAI Model',
-								type: '@n8n/n8n-nodes-langchain.lmChatOpenAi',
+								type: '@MNI/MNI-nodes-langchain.lmChatOpenAi',
 								typeVersion: 1,
 								position: [0, 0],
 								parameters: {},
@@ -2385,10 +2385,10 @@ describe('TestRunnerService', () => {
 			);
 		});
 
-		test('concurrency_limit_source reports `env` when N8N_CONCURRENCY_EVALUATION_LIMIT is set', async () => {
+		test('concurrency_limit_source reports `env` when MNI_CONCURRENCY_EVALUATION_LIMIT is set', async () => {
 			setupHappyPathMocks(2);
-			const originalEnv = process.env.N8N_CONCURRENCY_EVALUATION_LIMIT;
-			process.env.N8N_CONCURRENCY_EVALUATION_LIMIT = '5';
+			const originalEnv = process.env.MNI_CONCURRENCY_EVALUATION_LIMIT;
+			process.env.MNI_CONCURRENCY_EVALUATION_LIMIT = '5';
 			try {
 				await testRunnerService.runTest(USER as never, WORKFLOW_ID, 2);
 				const payload = telemetry.track.mock.calls.find(
@@ -2396,8 +2396,8 @@ describe('TestRunnerService', () => {
 				)?.[1] as Record<string, unknown>;
 				expect(payload.concurrency_limit_source).toBe('env');
 			} finally {
-				if (originalEnv === undefined) delete process.env.N8N_CONCURRENCY_EVALUATION_LIMIT;
-				else process.env.N8N_CONCURRENCY_EVALUATION_LIMIT = originalEnv;
+				if (originalEnv === undefined) delete process.env.MNI_CONCURRENCY_EVALUATION_LIMIT;
+				else process.env.MNI_CONCURRENCY_EVALUATION_LIMIT = originalEnv;
 			}
 		});
 
@@ -2427,8 +2427,8 @@ describe('TestRunnerService', () => {
 				ownershipService,
 			);
 			setupHappyPathMocks(2);
-			const originalEnv = process.env.N8N_CONCURRENCY_EVALUATION_LIMIT;
-			delete process.env.N8N_CONCURRENCY_EVALUATION_LIMIT;
+			const originalEnv = process.env.MNI_CONCURRENCY_EVALUATION_LIMIT;
+			delete process.env.MNI_CONCURRENCY_EVALUATION_LIMIT;
 			try {
 				await licensedRunner.runTest(USER as never, WORKFLOW_ID, 2);
 				const payload = telemetry.track.mock.calls.find(
@@ -2440,8 +2440,8 @@ describe('TestRunnerService', () => {
 				// flow through unchanged.
 				expect(payload.concurrency).toBe(2);
 			} finally {
-				if (originalEnv === undefined) delete process.env.N8N_CONCURRENCY_EVALUATION_LIMIT;
-				else process.env.N8N_CONCURRENCY_EVALUATION_LIMIT = originalEnv;
+				if (originalEnv === undefined) delete process.env.MNI_CONCURRENCY_EVALUATION_LIMIT;
+				else process.env.MNI_CONCURRENCY_EVALUATION_LIMIT = originalEnv;
 			}
 		});
 
@@ -2511,8 +2511,8 @@ describe('TestRunnerService', () => {
 
 			// Env var explicitly set → resolver returns the parsed config value
 			// (2) and ignores the tier default.
-			const originalEnv = process.env.N8N_CONCURRENCY_EVALUATION_LIMIT;
-			process.env.N8N_CONCURRENCY_EVALUATION_LIMIT = '2';
+			const originalEnv = process.env.MNI_CONCURRENCY_EVALUATION_LIMIT;
+			process.env.MNI_CONCURRENCY_EVALUATION_LIMIT = '2';
 			try {
 				await cappedService.runTest(USER as never, WORKFLOW_ID, 5);
 
@@ -2529,8 +2529,8 @@ describe('TestRunnerService', () => {
 					}),
 				);
 			} finally {
-				if (originalEnv === undefined) delete process.env.N8N_CONCURRENCY_EVALUATION_LIMIT;
-				else process.env.N8N_CONCURRENCY_EVALUATION_LIMIT = originalEnv;
+				if (originalEnv === undefined) delete process.env.MNI_CONCURRENCY_EVALUATION_LIMIT;
+				else process.env.MNI_CONCURRENCY_EVALUATION_LIMIT = originalEnv;
 			}
 		});
 
@@ -3241,7 +3241,7 @@ describe('TestRunnerService', () => {
 					{
 						id: 'agent',
 						name: END_NODE_NAME,
-						type: 'n8n-nodes-base.set',
+						type: 'MNI-nodes-base.set',
 						typeVersion: 1,
 						position: [200, 0] as [number, number],
 						parameters: {},

@@ -1,13 +1,13 @@
-import { Logger } from '@n8n/backend-common';
+import { Logger } from '@MNI/backend-common';
 import {
 	AuthIdentity,
 	AuthIdentityRepository,
 	GLOBAL_MEMBER_ROLE,
 	UserRepository,
 	type User,
-} from '@n8n/db';
-import { Service } from '@n8n/di';
-import { GLOBAL_OWNER_ROLE_SLUG, isBuiltInRole } from '@n8n/permissions';
+} from '@MNI/db';
+import { Service } from '@MNI/di';
+import { GLOBAL_OWNER_ROLE_SLUG, isBuiltInRole } from '@MNI/permissions';
 import { createHash } from 'node:crypto';
 
 import { EventService } from '@/events/event.service';

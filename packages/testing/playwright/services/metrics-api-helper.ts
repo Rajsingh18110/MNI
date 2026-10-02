@@ -1,7 +1,7 @@
 import { TestError } from '../Types';
 import type { ApiHelpers } from './api-helper';
 
-/** Reads Prometheus counters from `/metrics` (requires `N8N_METRICS=true`). */
+/** Reads Prometheus counters from `/metrics` (requires `MNI_METRICS=true`). */
 export class MetricsApiHelper {
 	constructor(private readonly api: ApiHelpers) {}
 
@@ -10,7 +10,7 @@ export class MetricsApiHelper {
 		const response = await this.api.request.get('/metrics');
 		if (!response.ok()) {
 			throw new TestError(
-				`Failed to fetch /metrics (is N8N_METRICS enabled?): ${response.status()}`,
+				`Failed to fetch /metrics (is MNI_METRICS enabled?): ${response.status()}`,
 			);
 		}
 		const metrics = await response.text();

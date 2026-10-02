@@ -4,7 +4,7 @@
 		{
 			"parameters": {},
 			"name": "Execute Workflow",
-			"type": "n8n-nodes-base.manualTrigger",
+			"type": "MNI-nodes-base.manualTrigger",
 			"typeVersion": 1,
 			"position": [620, 440]
 		},
@@ -15,7 +15,7 @@
 				"packageName": "MNI"
 			},
 			"name": "Get All dist-tags",
-			"type": "n8n-nodes-base.npm",
+			"type": "MNI-nodes-base.npm",
 			"credentials": {
 				"npmApi": {
 					"id": "1"
@@ -29,7 +29,7 @@
 				"packageName": "MNI"
 			},
 			"name": "Get Versions",
-			"type": "n8n-nodes-base.npm",
+			"type": "MNI-nodes-base.npm",
 			"credentials": {
 				"npmApi": {
 					"id": "1"
@@ -44,7 +44,7 @@
 				"packageVersion": "latest"
 			},
 			"name": "Get Metadata",
-			"type": "n8n-nodes-base.npm",
+			"type": "MNI-nodes-base.npm",
 			"credentials": {
 				"npmApi": {
 					"id": "1"

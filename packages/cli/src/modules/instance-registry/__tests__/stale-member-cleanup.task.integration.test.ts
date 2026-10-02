@@ -1,9 +1,9 @@
-import type { InstanceRegistration } from '@n8n/api-types';
-import type { Logger } from '@n8n/backend-common';
-import type { ExecutionsConfig, GlobalConfig, ScalingModeConfig } from '@n8n/config';
-import { Container } from '@n8n/di';
+import type { InstanceRegistration } from '@MNI/api-types';
+import type { Logger } from '@MNI/backend-common';
+import type { ExecutionsConfig, GlobalConfig, ScalingModeConfig } from '@MNI/config';
+import { Container } from '@MNI/di';
 import { Redis } from 'ioredis';
-import type { InstanceSettings } from 'n8n-core';
+import type { InstanceSettings } from 'MNI-core';
 import { mock } from 'vitest-mock-extended';
 
 import type { RedisClientService } from '@/services/redis-client.service';
@@ -13,8 +13,8 @@ import { REDIS_KEY_PATTERNS } from '../instance-registry.types';
 import { StaleMemberCleanupTask } from '../stale-member-cleanup.task';
 import { RedisInstanceStorage } from '../storage/redis-instance-storage';
 
-const REDIS_HOST = process.env.N8N_TEST_REDIS_HOST;
-const REDIS_PORT = Number(process.env.N8N_TEST_REDIS_PORT);
+const REDIS_HOST = process.env.MNI_TEST_REDIS_HOST;
+const REDIS_PORT = Number(process.env.MNI_TEST_REDIS_PORT);
 
 const PREFIX = `stale-member-cleanup-${process.pid}`;
 const MAINS = 4;

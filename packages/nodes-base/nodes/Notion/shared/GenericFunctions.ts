@@ -17,14 +17,14 @@ import type {
 	IPollFunctions,
 	IRequestOptions,
 	JsonObject,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import {
 	toPathSegment,
 	NodeApiError,
 	NodeOperationError,
 	safeRegex,
 	setSafeObjectProperty,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import { validate as uuidValidate } from 'uuid';
 
 import { blockUrlExtractionRegexp, databasePageUrlValidationRegexp } from './constants';

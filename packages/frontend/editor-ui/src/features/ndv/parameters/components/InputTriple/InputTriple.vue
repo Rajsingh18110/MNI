@@ -74,7 +74,7 @@ const isStacked = computed(() => bp.value !== 'default');
 	--input--radius: 0;
 
 	// Suppress gap in our N8nInput wrapper (no prepend/append in triple)
-	:global(.n8n-input) {
+	:global(.MNI-input) {
 		gap: 0;
 	}
 

@@ -5,8 +5,8 @@ import type {
 	INodeExecutionData,
 	INodeProperties,
 	JsonObject,
-} from 'n8n-workflow';
-import { NodeApiError, updateDisplayOptions } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeApiError, updateDisplayOptions } from 'MNI-workflow';
 
 import { apiRequest, apiRequestAllItems } from '../../transport';
 

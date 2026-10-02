@@ -1,4 +1,4 @@
-import type { IDataObject, IWebhookFunctions } from 'n8n-workflow';
+import type { IDataObject, IWebhookFunctions } from 'MNI-workflow';
 
 import { MailerLiteTriggerV2 } from '../../v2/MailerLiteTriggerV2.node';
 

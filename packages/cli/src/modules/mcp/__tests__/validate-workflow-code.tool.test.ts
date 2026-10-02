@@ -1,6 +1,6 @@
-import { mockInstance } from '@n8n/backend-test-utils';
-import { User } from '@n8n/db';
-import { NodeConnectionTypes } from 'n8n-workflow';
+import { mockInstance } from '@MNI/backend-test-utils';
+import { User } from '@MNI/db';
+import { NodeConnectionTypes } from 'MNI-workflow';
 
 import { NodeTypes } from '@/node-types';
 import { Telemetry } from '@/telemetry';
@@ -13,7 +13,7 @@ const { mockParseAndValidate, mockStripImportStatements } = vi.hoisted(() => ({
 	mockStripImportStatements: vi.fn((code: string) => code),
 }));
 
-vi.mock('@n8n/ai-workflow-builder', () => ({
+vi.mock('@MNI/ai-workflow-builder', () => ({
 	// `new ParseValidateHandler()` — use a constructable function, not an arrow.
 	ParseValidateHandler: vi.fn(function () {
 		return { parseAndValidate: mockParseAndValidate };
@@ -51,10 +51,10 @@ describe('validate-workflow-code MCP tool', () => {
 		});
 		nodeTypes = mockInstance(NodeTypes);
 		nodeTypes.getByNameAndVersion.mockImplementation(((type: string) => {
-			if (type === '@n8n/n8n-nodes-langchain.agent') {
+			if (type === '@MNI/MNI-nodes-langchain.agent') {
 				return { description: { outputs: [NodeConnectionTypes.Main] } };
 			}
-			if (type === '@n8n/n8n-nodes-langchain.agentTool') {
+			if (type === '@MNI/MNI-nodes-langchain.agentTool') {
 				return { description: { outputs: [NodeConnectionTypes.AiTool] } };
 			}
 			return { description: { outputs: [NodeConnectionTypes.Main] } };
@@ -217,7 +217,7 @@ describe('validate-workflow-code MCP tool', () => {
 						{
 							id: 'manager',
 							name: 'Manager Agent',
-							type: '@n8n/n8n-nodes-langchain.agent',
+							type: '@MNI/MNI-nodes-langchain.agent',
 							typeVersion: 3,
 							position: [0, 0],
 							parameters: {},
@@ -225,7 +225,7 @@ describe('validate-workflow-code MCP tool', () => {
 						{
 							id: 'worker',
 							name: 'Worker Agent',
-							type: '@n8n/n8n-nodes-langchain.agent',
+							type: '@MNI/MNI-nodes-langchain.agent',
 							typeVersion: 3,
 							position: [200, 0],
 							parameters: {},
@@ -246,7 +246,7 @@ describe('validate-workflow-code MCP tool', () => {
 			const response = parseResult(result);
 			expect(response.valid).toBe(false);
 			expect(Array.isArray(response.errors)).toBe(true);
-			expect((response.errors as string[])[0]).toContain('@n8n/n8n-nodes-langchain.agentTool');
+			expect((response.errors as string[])[0]).toContain('@MNI/MNI-nodes-langchain.agentTool');
 			expect(result.isError).toBe(true);
 		});
 
@@ -279,7 +279,7 @@ describe('validate-workflow-code MCP tool', () => {
 				{
 					id: 'trigger',
 					name: 'Trigger',
-					type: 'n8n-nodes-base.manualTrigger',
+					type: 'MNI-nodes-base.manualTrigger',
 					typeVersion: 1,
 					position: [0, 0],
 					parameters: {},
@@ -287,7 +287,7 @@ describe('validate-workflow-code MCP tool', () => {
 				{
 					id: 'a',
 					name: 'A',
-					type: 'n8n-nodes-base.set',
+					type: 'MNI-nodes-base.set',
 					typeVersion: 1,
 					position: [200, 0],
 					parameters: {},
@@ -295,7 +295,7 @@ describe('validate-workflow-code MCP tool', () => {
 				{
 					id: 'b',
 					name: 'B',
-					type: 'n8n-nodes-base.set',
+					type: 'MNI-nodes-base.set',
 					typeVersion: 1,
 					position: [400, 0],
 					parameters: {},
@@ -322,7 +322,7 @@ describe('validate-workflow-code MCP tool', () => {
 		beforeEach(() => {
 			// The group validator resolves trigger-ness via description.group.
 			nodeTypes.getByNameAndVersion.mockImplementation(((type: string) => {
-				if (type === 'n8n-nodes-base.manualTrigger') {
+				if (type === 'MNI-nodes-base.manualTrigger') {
 					return { description: { group: ['trigger'], outputs: [NodeConnectionTypes.Main] } };
 				}
 				return { description: { group: ['transform'], outputs: [NodeConnectionTypes.Main] } };

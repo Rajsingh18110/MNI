@@ -1,6 +1,6 @@
-import type { HttpRequestClient } from '@n8n/backend-network';
-import { OutboundHttp } from '@n8n/backend-network';
-import { Container } from '@n8n/di';
+import type { HttpRequestClient } from '@MNI/backend-network';
+import { OutboundHttp } from '@MNI/backend-network';
+import { Container } from '@MNI/di';
 import FormData from 'form-data';
 import type {
 	IAllExecuteFunctions,
@@ -9,8 +9,8 @@ import type {
 	INode,
 	IWorkflowExecuteAdditionalData,
 	Workflow,
-} from 'n8n-workflow';
-import { NodeApiError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeApiError } from 'MNI-workflow';
 import nock from 'nock';
 import { Readable } from 'stream';
 import { mock, mockDeep } from 'vitest-mock-extended';

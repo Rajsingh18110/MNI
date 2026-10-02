@@ -5,7 +5,7 @@ import {
 	type AgentIntegrationConfig,
 	type AgentIntegrationStatusEntry,
 	type AgentIntegrationStatusResponse,
-} from '@n8n/api-types';
+} from '@MNI/api-types';
 
 import type { AgentChannelStatus } from '../entities/agent-channel-status.entity';
 
@@ -67,12 +67,12 @@ export function buildChannelStatusReport(
 				...(failure?.errorMessage ? { errorMessage: failure.errorMessage } : {}),
 			};
 		});
-	const draftChat = integrations?.some((integration) => integration.type === 'n8n_chat') ?? false;
+	const draftChat = integrations?.some((integration) => integration.type === 'MNI_chat') ?? false;
 	const publishedChat =
 		activeVersionId !== null &&
-		publishedIntegrations.some((integration) => integration.type === 'n8n_chat');
+		publishedIntegrations.some((integration) => integration.type === 'MNI_chat');
 	if (draftChat || publishedChat) {
-		entries.push({ type: 'n8n_chat', status: publishedChat ? 'connected' : 'configured' });
+		entries.push({ type: 'MNI_chat', status: publishedChat ? 'connected' : 'configured' });
 	}
 
 	return { status: rollUp(entries), integrations: entries };

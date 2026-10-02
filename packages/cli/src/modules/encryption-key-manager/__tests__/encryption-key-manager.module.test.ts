@@ -1,6 +1,6 @@
-import type { FrontendModuleSettings } from '@n8n/api-types';
-import { ModuleMetadata } from '@n8n/decorators';
-import { Container } from '@n8n/di';
+import type { FrontendModuleSettings } from '@MNI/api-types';
+import { ModuleMetadata } from '@MNI/decorators';
+import { Container } from '@MNI/di';
 
 import { EncryptionKeyManagerModule } from '@/modules/encryption-key-manager/encryption-key-manager.module';
 
@@ -12,11 +12,11 @@ const MODULE_NAME = 'encryption-key-manager' satisfies keyof FrontendModuleSetti
 describe('EncryptionKeyManagerModule', () => {
 	beforeEach(() => {
 		// Must not depend on the ambient environment of the developer machine.
-		delete process.env.N8N_ENV_FEAT_ENCRYPTION_KEY_ROTATION;
+		delete process.env.MNI_ENV_FEAT_ENCRYPTION_KEY_ROTATION;
 	});
 
 	afterEach(() => {
-		delete process.env.N8N_ENV_FEAT_ENCRYPTION_KEY_ROTATION;
+		delete process.env.MNI_ENV_FEAT_ENCRYPTION_KEY_ROTATION;
 	});
 
 	describe('settings()', () => {
@@ -27,7 +27,7 @@ describe('EncryptionKeyManagerModule', () => {
 		});
 
 		it('reports rotation as enabled when the flag is set', async () => {
-			process.env.N8N_ENV_FEAT_ENCRYPTION_KEY_ROTATION = 'true';
+			process.env.MNI_ENV_FEAT_ENCRYPTION_KEY_ROTATION = 'true';
 
 			const settings = await new EncryptionKeyManagerModule().settings();
 

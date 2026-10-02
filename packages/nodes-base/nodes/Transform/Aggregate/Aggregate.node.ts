@@ -11,7 +11,7 @@ import {
 	type IPairedItemData,
 	NodeConnectionTypes,
 	type NodeExecutionHint,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { addBinariesToItem } from './utils';
 import { fieldNotFoundHint, prepareFieldsArray } from '../utils/utils';
@@ -36,11 +36,11 @@ export class Aggregate implements INodeType {
 				'Need to combine items from multiple branches? Use merge node. This nodes combines all items from one branch into one item.',
 			relatedNodes: [
 				{
-					nodeType: 'n8n-nodes-base.merge',
+					nodeType: 'MNI-nodes-base.merge',
 					relationHint: 'For multiple branches',
 				},
 				{
-					nodeType: 'n8n-nodes-base.splitOut',
+					nodeType: 'MNI-nodes-base.splitOut',
 					relationHint: 'Reverse operation',
 				},
 			],
@@ -87,7 +87,7 @@ export class Aggregate implements INodeType {
 								type: 'string',
 								default: '',
 								description: 'The name of a field in the input items to aggregate together',
-								// eslint-disable-next-line n8n-nodes-base/node-param-placeholder-miscased-id
+								// eslint-disable-next-line MNI-nodes-base/node-param-placeholder-miscased-id
 								placeholder: 'e.g. id',
 								hint: ' Enter the field name as text',
 								requiresDataPath: 'single',

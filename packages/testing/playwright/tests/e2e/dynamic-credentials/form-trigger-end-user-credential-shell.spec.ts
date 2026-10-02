@@ -1,5 +1,5 @@
-import type { ServiceHelpers } from 'n8n-containers/services/types';
-import type { INodeParameters } from 'n8n-workflow';
+import type { ServiceHelpers } from 'MNI-containers/services/types';
+import type { INodeParameters } from 'MNI-workflow';
 import { nanoid } from 'nanoid';
 
 import { test, expect } from '../../../fixtures/base';
@@ -17,7 +17,7 @@ import type { ApiHelpers } from '../../../services/api-helper';
  *
  * - Multi-page: submitting a page parks the execution on the waiting webhook, and the
  *   next page is reached by *navigating* the frame to `/form-waiting/<id>` — a request
- *   that can carry no `x-auth-token` header, and whose `n8n-auth` session cookie the
+ *   that can carry no `x-auth-token` header, and whose `MNI-auth` session cookie the
  *   browser withholds when the opaque-origin frame navigates itself. So the page
  *   render hands the submitter's identity to a separate form auth cookie scoped to
  *   the form-waiting path, and the frame asks the shell — which runs on the real
@@ -29,7 +29,7 @@ import type { ApiHelpers } from '../../../services/api-helper';
  *   inside the little iframe.
  *
  * The `dynamic-credentials` capability starts Keycloak for OAuth2.
- * It also enables the seeded `system-n8n` resolver.
+ * It also enables the seeded `system-MNI` resolver.
  */
 test.use({
 	capability: 'dynamic-credentials',
@@ -54,7 +54,7 @@ const oauthBases = (keycloak: Keycloak) => ({
 /**
  * Everything a shell journey needs before the workflow exists: the OAuth endpoints
  * enabled, a team project (end-user credentials can only live in team projects), and
- * a resolvable credential on the seeded `system-n8n` resolver — it stores its tokens
+ * a resolvable credential on the seeded `system-MNI` resolver — it stores its tokens
  * per MNI user, so the form must know who submitted it before this can resolve.
  */
 async function setupResolvableCredential(api: ApiHelpers, keycloak: Keycloak) {
@@ -131,7 +131,7 @@ const formTriggerNode = (
 ) => ({
 	id: nanoid(),
 	name: 'On form submission',
-	type: 'n8n-nodes-base.formTrigger',
+	type: 'MNI-nodes-base.formTrigger',
 	typeVersion: 2.6,
 	position: [0, 0] as [number, number],
 	webhookId: formWebhookId,
@@ -148,7 +148,7 @@ const formTriggerNode = (
 const httpRequestNode = (internalBase: string, credential: { id: string; name: string }) => ({
 	id: nanoid(),
 	name: 'HTTP Request',
-	type: 'n8n-nodes-base.httpRequest',
+	type: 'MNI-nodes-base.httpRequest',
 	typeVersion: 4.2,
 	position: [208, 0] as [number, number],
 	parameters: {
@@ -191,7 +191,7 @@ test.describe(
 						{
 							id: nanoid(),
 							name: 'Second page',
-							type: 'n8n-nodes-base.form',
+							type: 'MNI-nodes-base.form',
 							typeVersion: 2.5,
 							position: [416, 0] as [number, number],
 							webhookId: nanoid(),
@@ -207,7 +207,7 @@ test.describe(
 						{
 							id: nanoid(),
 							name: 'Form',
-							type: 'n8n-nodes-base.form',
+							type: 'MNI-nodes-base.form',
 							typeVersion: 2.5,
 							position: [624, 0] as [number, number],
 							webhookId: nanoid(),

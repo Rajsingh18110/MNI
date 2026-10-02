@@ -1,4 +1,4 @@
-import { AI_GATEWAY_MANAGED_TAG, MANAGED_CREDENTIAL_TOKEN } from '@n8n/api-types';
+import { AI_GATEWAY_MANAGED_TAG, MANAGED_CREDENTIAL_TOKEN } from '@MNI/api-types';
 
 import { extractAgentCredentialIds } from '../extract-agent-credential-ids';
 

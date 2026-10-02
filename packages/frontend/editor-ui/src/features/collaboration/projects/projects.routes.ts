@@ -1,10 +1,10 @@
 import type { RouteLocationNormalized, RouteRecordRaw } from 'vue-router';
 import { VIEWS } from '@/app/constants';
 import { useProjectsStore } from './projects.store';
-import { getResourcePermissions } from '@n8n/permissions';
+import { getResourcePermissions } from '@MNI/permissions';
 import { CHAT_VIEW } from '@/features/ai/chatHub/constants';
 import { hasRole } from '@/app/utils/rbac/checks';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 
 const WorkflowsView = async () => await import('@/app/views/WorkflowsView.vue');
 const CredentialsView = async () =>
@@ -15,7 +15,7 @@ const ExecutionsView = async () =>
 const ProjectVariables = async () => await import('./views/ProjectVariables.vue');
 
 function refreshInsightsSummary() {
-	void import('@n8n/frontend-module-insights')
+	void import('@MNI/frontend-module-insights')
 		.then(({ useInsightsStore }) => {
 			const insightsStore = useInsightsStore();
 			if (insightsStore.isSummaryEnabled) {

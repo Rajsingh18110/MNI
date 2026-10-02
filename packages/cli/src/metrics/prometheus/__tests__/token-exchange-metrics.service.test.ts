@@ -1,6 +1,6 @@
 import type { Mock } from 'vitest';
-import { mockInstance } from '@n8n/backend-test-utils';
-import { PrometheusMetricsConfig } from '@n8n/config';
+import { mockInstance } from '@MNI/backend-test-utils';
+import { PrometheusMetricsConfig } from '@MNI/config';
 import { mock } from 'vitest-mock-extended';
 import promClient from 'prom-client';
 
@@ -12,7 +12,7 @@ vi.mock('prom-client');
 
 describe('PrometheusTokenExchangeMetricsService', () => {
 	const config = mockInstance(PrometheusMetricsConfig, {
-		prefix: 'n8n_',
+		prefix: 'MNI_',
 	});
 	const eventService = mock<EventService>();
 	let service: PrometheusTokenExchangeMetricsService;
@@ -23,7 +23,7 @@ describe('PrometheusTokenExchangeMetricsService', () => {
 	}
 
 	beforeEach(() => {
-		Object.assign(config, { prefix: 'n8n_' });
+		Object.assign(config, { prefix: 'MNI_' });
 		service = new PrometheusTokenExchangeMetricsService(config, eventService);
 		mockCounterInc = vi.fn();
 		promClient.Counter.prototype.inc = mockCounterInc;
@@ -44,7 +44,7 @@ describe('PrometheusTokenExchangeMetricsService', () => {
 			service.init();
 
 			expect(promClient.Counter).toHaveBeenCalledWith({
-				name: 'n8n_token_exchange_requests_total',
+				name: 'MNI_token_exchange_requests_total',
 				help: 'Total number of token exchange requests.',
 				labelNames: ['result'],
 			});
@@ -54,7 +54,7 @@ describe('PrometheusTokenExchangeMetricsService', () => {
 			service.init();
 
 			expect(promClient.Counter).toHaveBeenCalledWith({
-				name: 'n8n_token_exchange_failures_total',
+				name: 'MNI_token_exchange_failures_total',
 				help: 'Total number of token exchange failures broken down by reason.',
 				labelNames: ['reason'],
 			});
@@ -64,7 +64,7 @@ describe('PrometheusTokenExchangeMetricsService', () => {
 			service.init();
 
 			expect(promClient.Counter).toHaveBeenCalledWith({
-				name: 'n8n_embed_login_requests_total',
+				name: 'MNI_embed_login_requests_total',
 				help: 'Total number of embed login requests.',
 				labelNames: ['result'],
 			});
@@ -74,7 +74,7 @@ describe('PrometheusTokenExchangeMetricsService', () => {
 			service.init();
 
 			expect(promClient.Counter).toHaveBeenCalledWith({
-				name: 'n8n_embed_login_failures_total',
+				name: 'MNI_embed_login_failures_total',
 				help: 'Total number of embed login failures broken down by reason.',
 				labelNames: ['reason'],
 			});
@@ -84,7 +84,7 @@ describe('PrometheusTokenExchangeMetricsService', () => {
 			service.init();
 
 			expect(promClient.Counter).toHaveBeenCalledWith({
-				name: 'n8n_token_exchange_jit_provisioning_total',
+				name: 'MNI_token_exchange_jit_provisioning_total',
 				help: 'Total number of users JIT-provisioned via token exchange.',
 			});
 		});
@@ -93,7 +93,7 @@ describe('PrometheusTokenExchangeMetricsService', () => {
 			service.init();
 
 			expect(promClient.Counter).toHaveBeenCalledWith({
-				name: 'n8n_token_exchange_identity_linked_total',
+				name: 'MNI_token_exchange_identity_linked_total',
 				help: 'Total number of external identities linked to existing users via token exchange.',
 			});
 		});

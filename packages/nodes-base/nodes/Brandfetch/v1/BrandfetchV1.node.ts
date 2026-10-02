@@ -5,8 +5,8 @@ import type {
 	INodeType,
 	INodeTypeDescription,
 	INodeTypeBaseDescription,
-} from 'n8n-workflow';
-import { NodeConnectionTypes } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeConnectionTypes } from 'MNI-workflow';
 
 import { brandfetchApiRequest, fetchAndPrepareBinaryData } from './GenericFunctions';
 
@@ -94,7 +94,7 @@ export class BrandfetchV1 implements INodeType {
 							operation: ['logo'],
 						},
 					},
-					// eslint-disable-next-line n8n-nodes-base/node-param-description-boolean-without-whether
+					// eslint-disable-next-line MNI-nodes-base/node-param-description-boolean-without-whether
 					description: 'Name of the binary property to which to write the data of the read file',
 				},
 				{

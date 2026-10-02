@@ -1,4 +1,4 @@
-import type { WorkflowReviewDecisionIneligibilityReason } from '@n8n/api-types';
+import type { WorkflowReviewDecisionIneligibilityReason } from '@MNI/api-types';
 import {
 	ProjectRelationRepository,
 	ProjectRepository,
@@ -10,14 +10,14 @@ import {
 	type User,
 	type WorkflowReviewRequest,
 	type WorkflowReviewRequestWorkflowDetailRow,
-} from '@n8n/db';
-import { Service } from '@n8n/di';
+} from '@MNI/db';
+import { Service } from '@MNI/di';
 import {
 	GLOBAL_ADMIN_ROLE_SLUG,
 	GLOBAL_OWNER_ROLE_SLUG,
 	PROJECT_ADMIN_ROLE_SLUG,
 	hasGlobalScope,
-} from '@n8n/permissions';
+} from '@MNI/permissions';
 
 import { NotFoundError } from '@/errors/response-errors/not-found.error';
 import { ProjectService } from '@/services/project.service.ee';

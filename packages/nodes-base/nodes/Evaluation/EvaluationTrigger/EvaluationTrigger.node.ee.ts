@@ -1,12 +1,12 @@
-/* eslint-disable n8n-nodes-base/node-filename-against-convention */
+/* eslint-disable MNI-nodes-base/node-filename-against-convention */
 import type {
 	INodeType,
 	INodeTypeDescription,
 	IExecuteFunctions,
 	INodeExecutionData,
 	NodeExecutionWithMetadata,
-} from 'n8n-workflow';
-import { NodeConnectionTypes, NodeOperationError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeConnectionTypes, NodeOperationError } from 'MNI-workflow';
 
 import {
 	getSelectFields as dataTableFilters,
@@ -91,7 +91,7 @@ export class EvaluationTrigger implements INodeType {
 				displayOptions: { hide: { source: ['dataTable'] } },
 			},
 			{
-				// eslint-disable-next-line n8n-nodes-base/node-param-display-name-miscased
+				// eslint-disable-next-line MNI-nodes-base/node-param-display-name-miscased
 				displayName: 'Data table',
 				name: 'dataTableId',
 				type: 'resourceLocator',

@@ -1,17 +1,17 @@
-import { OutboundHttp, type HttpRequestClient } from '@n8n/backend-network';
-import { mockInstance } from '@n8n/backend-test-utils';
-import { GLOBAL_OWNER_ROLE, type User } from '@n8n/db';
-import { Container } from '@n8n/di';
+import { OutboundHttp, type HttpRequestClient } from '@MNI/backend-network';
+import { mockInstance } from '@MNI/backend-test-utils';
+import { GLOBAL_OWNER_ROLE, type User } from '@MNI/db';
+import { Container } from '@MNI/di';
 import type {
 	MessageEventBusDestinationSentryOptions,
 	MessageEventBusDestinationSyslogOptions,
 	MessageEventBusDestinationWebhookOptions,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import {
 	defaultMessageEventBusDestinationSentryOptions,
 	defaultMessageEventBusDestinationSyslogOptions,
 	defaultMessageEventBusDestinationWebhookOptions,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import { v4 as uuid } from 'uuid';
 import { mock } from 'vitest-mock-extended';
 

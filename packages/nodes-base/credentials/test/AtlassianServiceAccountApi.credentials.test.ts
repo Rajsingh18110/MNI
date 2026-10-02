@@ -1,12 +1,12 @@
-import { OutboundHttp } from '@n8n/backend-network';
-import { Container } from '@n8n/di';
+import { OutboundHttp } from '@MNI/backend-network';
+import { Container } from '@MNI/di';
 import type {
 	ICredentialDataDecryptedObject,
 	IHttpRequestHelper,
 	IHttpRequestOptions,
 	INodeProperties,
-} from 'n8n-workflow';
-import { OperationalError, UserError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { OperationalError, UserError } from 'MNI-workflow';
 
 import { TOKEN_REQUEST_TIMEOUT } from '../common/token-request';
 import {

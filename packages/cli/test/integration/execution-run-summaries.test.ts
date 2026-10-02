@@ -3,10 +3,10 @@ import {
 	createWorkflow,
 	shareWorkflowWithProjects,
 	testDb,
-} from '@n8n/backend-test-utils';
-import type { Project } from '@n8n/db';
-import { ExecutionRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
+} from '@MNI/backend-test-utils';
+import type { Project } from '@MNI/db';
+import { ExecutionRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
 
 import { createExecution } from '@test-integration/db/executions';
 

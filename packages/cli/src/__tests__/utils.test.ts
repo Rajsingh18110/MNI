@@ -1,5 +1,5 @@
-import { generateNanoId } from '@n8n/utils/generate-nano-id';
-import type { INodeType, Workflow } from 'n8n-workflow';
+import { generateNanoId } from '@MNI/utils/generate-nano-id';
+import type { INodeType, Workflow } from 'MNI-workflow';
 
 import {
 	shouldAssignExecuteMethod,
@@ -55,12 +55,12 @@ describe('withExpressionIsolate', () => {
 
 describe('stripToolSuffix', () => {
 	it.each([
-		['@n8n/n8n-nodes-langchain.openAi', '@n8n/n8n-nodes-langchain.openAi'],
-		['@n8n/n8n-nodes-langchain.openAiTool', '@n8n/n8n-nodes-langchain.openAi'],
-		['@n8n/n8n-nodes-langchain.openAiHitlTool', '@n8n/n8n-nodes-langchain.openAi'],
-		['@n8n/n8n-nodes-langchain.slackTool', '@n8n/n8n-nodes-langchain.slack'],
+		['@MNI/MNI-nodes-langchain.openAi', '@MNI/MNI-nodes-langchain.openAi'],
+		['@MNI/MNI-nodes-langchain.openAiTool', '@MNI/MNI-nodes-langchain.openAi'],
+		['@MNI/MNI-nodes-langchain.openAiHitlTool', '@MNI/MNI-nodes-langchain.openAi'],
+		['@MNI/MNI-nodes-langchain.slackTool', '@MNI/MNI-nodes-langchain.slack'],
 		['plain', 'plain'],
-		['n8n-nodes-base.set', 'n8n-nodes-base.set'],
+		['MNI-nodes-base.set', 'MNI-nodes-base.set'],
 	])('strips %s -> %s', (input, expected) => {
 		expect(stripToolSuffix(input)).toBe(expected);
 	});
@@ -71,17 +71,17 @@ describe('satisfiesToolCapability', () => {
 		({ description: { usableAsTool } }) as INodeType;
 
 	it('exempts HITL tool names from the capability requirement', () => {
-		expect(satisfiesToolCapability('n8n-nodes-base.gmailHitlTool', nodeWith(undefined))).toBe(true);
+		expect(satisfiesToolCapability('MNI-nodes-base.gmailHitlTool', nodeWith(undefined))).toBe(true);
 	});
 
 	it('accepts a tool name when the resolved node declares usableAsTool', () => {
-		expect(satisfiesToolCapability('n8n-nodes-base.gmailTool', nodeWith(true))).toBe(true);
+		expect(satisfiesToolCapability('MNI-nodes-base.gmailTool', nodeWith(true))).toBe(true);
 	});
 
 	it.each([undefined, false])(
 		'rejects a tool name when the resolved node has usableAsTool: %s',
 		(usableAsTool) => {
-			expect(satisfiesToolCapability('n8n-nodes-base.gmailTool', nodeWith(usableAsTool))).toBe(
+			expect(satisfiesToolCapability('MNI-nodes-base.gmailTool', nodeWith(usableAsTool))).toBe(
 				false,
 			);
 		},
@@ -239,7 +239,7 @@ describe('getAllKeyPaths', () => {
 
 describe('isWorkflowIdValid', () => {
 	describe('valid IDs', () => {
-		it('should accept n8n-generated workflow ID (16 characters)', () => {
+		it('should accept MNI-generated workflow ID (16 characters)', () => {
 			const id = generateNanoId();
 			expect(id).toHaveLength(16);
 			expect(isWorkflowIdValid(id)).toBe(true);

@@ -1,4 +1,4 @@
-import { getEmptyGroupAnchor, type ExecutionStatus, type IWorkflowGroup } from 'n8n-workflow';
+import { getEmptyGroupAnchor, type ExecutionStatus, type IWorkflowGroup } from 'MNI-workflow';
 import type { INodeUi } from '@/Interface';
 import type {
 	BoundingBox,

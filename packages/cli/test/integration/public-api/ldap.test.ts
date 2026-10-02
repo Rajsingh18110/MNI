@@ -1,9 +1,9 @@
-import type { LdapConfigurationResponse } from '@n8n/api-types';
-import { testDb } from '@n8n/backend-test-utils';
-import { LDAP_DEFAULT_CONFIGURATION, LDAP_FEATURE_NAME } from '@n8n/constants';
-import { SettingsRepository, type User } from '@n8n/db';
-import { Container } from '@n8n/di';
-import { CREDENTIAL_BLANKING_VALUE } from 'n8n-workflow';
+import type { LdapConfigurationResponse } from '@MNI/api-types';
+import { testDb } from '@MNI/backend-test-utils';
+import { LDAP_DEFAULT_CONFIGURATION, LDAP_FEATURE_NAME } from '@MNI/constants';
+import { SettingsRepository, type User } from '@MNI/db';
+import { Container } from '@MNI/di';
+import { CREDENTIAL_BLANKING_VALUE } from 'MNI-workflow';
 
 import { FeatureNotLicensedError } from '@/errors/feature-not-licensed.error';
 import { getLdapUsers, saveLdapSynchronization } from '@/modules/ldap.ee/helpers.ee';

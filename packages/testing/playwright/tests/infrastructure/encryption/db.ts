@@ -17,9 +17,9 @@ export async function dbQuery(ctx: CycleContext, sql: string): Promise<string> {
 		const result = await pg.exec([
 			'psql',
 			'-U',
-			'n8n_user',
+			'MNI_user',
 			'-d',
-			'n8n_db',
+			'MNI_db',
 			'-tA',
 			'-F|',
 			'-c',
@@ -34,7 +34,7 @@ export async function dbQuery(ctx: CycleContext, sql: string): Promise<string> {
 	// The running container writes this file concurrently (WAL mode), so a
 	// read can hit SQLITE_BUSY: give sqlite a busy timeout and retry the
 	// whole open+read a few times before failing loudly.
-	const dbPath = join(ctx.homeDir, '.n8n', 'database.sqlite');
+	const dbPath = join(ctx.homeDir, '.MNI', 'database.sqlite');
 	let lastError: unknown;
 	for (let attempt = 0; attempt < 5; attempt++) {
 		if (attempt > 0) await new Promise((resolve) => setTimeout(resolve, 300));

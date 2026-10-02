@@ -1,5 +1,5 @@
-import type { StreamChunk } from '@n8n/agents';
-import type { AgentIntegrationConfig } from '@n8n/api-types';
+import type { StreamChunk } from '@MNI/agents';
+import type { AgentIntegrationConfig } from '@MNI/api-types';
 import nock from 'nock';
 import type { Mock } from 'vitest';
 import { mock } from 'vitest-mock-extended';
@@ -171,7 +171,7 @@ function installSlackApiNock(botUserId: string) {
 
 			apiCalls.push({ method, body });
 			if (method === 'auth.test') {
-				return { ok: true, user_id: botUserId, user: 'n8n_agent', team_id: 'T_TEAM' };
+				return { ok: true, user_id: botUserId, user: 'MNI_agent', team_id: 'T_TEAM' };
 			}
 			if (method === 'chat.postMessage') {
 				return {
@@ -209,7 +209,7 @@ export async function createSlackReplayContext(
 		apiUrl: SLACK_API_URL,
 	});
 	const chat = new Chat({
-		userName: 'n8n-agent-agent-1',
+		userName: 'MNI-agent-agent-1',
 		adapters: { slack: adapter } as unknown as Record<string, never>,
 		state: createMemoryState(),
 		concurrency: 'concurrent',

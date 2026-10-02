@@ -1,4 +1,4 @@
-import type { WorkflowReviewDecisionIneligibilityReason } from '@n8n/api-types';
+import type { WorkflowReviewDecisionIneligibilityReason } from '@MNI/api-types';
 
 /** The facts a decision verdict is derived from, resolved by the caller. */
 export interface WorkflowReviewDecisionFacts {

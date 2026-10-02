@@ -1,11 +1,11 @@
-import type { OutboundHttp } from '@n8n/backend-network';
-import type { InstanceSettingsLoaderConfig } from '@n8n/config';
-import type { AuthenticatedRequest, CredentialsEntity, User } from '@n8n/db';
-import { MessageEventBusDestinationTypeNames } from 'n8n-workflow';
+import type { OutboundHttp } from '@MNI/backend-network';
+import type { InstanceSettingsLoaderConfig } from '@MNI/config';
+import type { AuthenticatedRequest, CredentialsEntity, User } from '@MNI/db';
+import { MessageEventBusDestinationTypeNames } from 'MNI-workflow';
 import type {
 	MessageEventBusDestinationOptions,
 	MessageEventBusDestinationWebhookOptions,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import type { CredentialsFinderService } from '@/credentials/credentials-finder.service';

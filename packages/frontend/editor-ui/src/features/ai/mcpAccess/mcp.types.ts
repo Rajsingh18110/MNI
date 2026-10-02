@@ -1,5 +1,5 @@
-import type { Scope } from '@n8n/permissions';
-import type { ProjectSharingData } from 'n8n-workflow';
+import type { Scope } from '@MNI/permissions';
+import type { ProjectSharingData } from 'MNI-workflow';
 
 /** Workflow fields the MCP views read off a list response. `WorkflowListItem` satisfies it. */
 export type McpWorkflow = {

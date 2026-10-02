@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { N8nLogo } from '@n8n/design-system';
+import { N8nLogo } from '@MNI/design-system';
 import type { FormFieldValueUpdate, IFormBoxConfig } from '@/Interface';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import type { EmailOrLdapLoginIdAndPassword } from './SigninView.vue';
 
-import { N8nFormBox, N8nText } from '@n8n/design-system';
+import { N8nFormBox, N8nText } from '@MNI/design-system';
 withDefaults(
 	defineProps<{
 		/** The standard form box. Omit it when the default slot renders the card instead. */

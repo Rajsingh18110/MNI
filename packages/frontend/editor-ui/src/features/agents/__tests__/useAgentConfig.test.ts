@@ -1,4 +1,4 @@
-import type { AgentJsonConfig } from '@n8n/api-types';
+import type { AgentJsonConfig } from '@MNI/api-types';
 import { useAgentConfig } from '../composables/useAgentConfig';
 
 const { getAgentConfigMock, updateAgentConfigMock } = vi.hoisted(() => ({
@@ -6,7 +6,7 @@ const { getAgentConfigMock, updateAgentConfigMock } = vi.hoisted(() => ({
 	updateAgentConfigMock: vi.fn(),
 }));
 
-vi.mock('@n8n/stores/useRootStore', () => ({
+vi.mock('@MNI/stores/useRootStore', () => ({
 	useRootStore: () => ({ restApiContext: { baseUrl: 'http://localhost:5678' } }),
 }));
 

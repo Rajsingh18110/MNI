@@ -1,5 +1,5 @@
-import type { IDataObject, INodeProperties } from 'n8n-workflow';
-import { deepCopy } from 'n8n-workflow';
+import type { IDataObject, INodeProperties } from 'MNI-workflow';
+import { deepCopy } from 'MNI-workflow';
 
 import { groups } from './Json/Groups';
 import { tools } from './Json/Tools';
@@ -105,7 +105,7 @@ for (const tool of (tools as IDataObject).processors as IDataObject[]) {
 					newParameters.push(currentParam);
 				}
 			}
-			// eslint-disable-next-line n8n-local-rules/no-json-parse-json-stringify
+			// eslint-disable-next-line MNI-local-rules/no-json-parse-json-stringify
 			parameters = JSON.parse(JSON.stringify(newParameters));
 		} else {
 			parameters.push(parameter);

@@ -2,7 +2,7 @@ import type {
 	InstanceAiAgentNode,
 	InstanceAiTimelineEntry,
 	InstanceAiToolCallState,
-} from '@n8n/api-types';
+} from '@MNI/api-types';
 import { firstNonBlank, isActiveBuilderAgent, isBuilderAgent } from './builderAgents';
 import { isPreferenceWriteOutcome, SAVE_USER_PREFERENCE_TOOL_NAME } from './preferenceCard.utils';
 

@@ -1,4 +1,4 @@
-import type { SendWorkerStatusMessage } from '@n8n/api-types';
+import type { SendWorkerStatusMessage } from '@MNI/api-types';
 import { useOrchestrationStore } from '@/features/settings/orchestration.ee/orchestration.store';
 
 /**

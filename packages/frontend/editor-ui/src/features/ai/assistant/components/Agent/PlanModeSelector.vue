@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 
-import { N8nSelect2, N8nText } from '@n8n/design-system';
-import type { SelectOptionBase, SelectValue } from '@n8n/design-system';
-import { useI18n, type BaseTextKey } from '@n8n/i18n';
+import { N8nSelect2, N8nText } from '@MNI/design-system';
+import type { SelectOptionBase, SelectValue } from '@MNI/design-system';
+import { useI18n, type BaseTextKey } from '@MNI/i18n';
 
 type BuilderMode = 'build' | 'plan';
 

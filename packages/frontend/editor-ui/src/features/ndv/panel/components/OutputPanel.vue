@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, watch } from 'vue';
-import { NodeConnectionTypes } from 'n8n-workflow';
+import { NodeConnectionTypes } from 'MNI-workflow';
 import RunData from '@/features/ndv/runData/components/RunData.vue';
 import RunInfo from '@/features/ndv/runData/components/RunInfo.vue';
 import { injectNDVStore } from '@/features/ndv/shared/ndv.store';
@@ -9,8 +9,8 @@ import RunDataAi from '@/features/ndv/runData/components/ai/RunDataAi.vue';
 import { useNodeType } from '@/app/composables/useNodeType';
 import { usePinnedData } from '@/app/composables/usePinnedData';
 import { useInjectWorkflowId } from '@/app/composables/useInjectWorkflowId';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
-import { useI18n } from '@n8n/i18n';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
+import { useI18n } from '@MNI/i18n';
 import { waitingNodeTooltip } from '@/features/execution/executions/executions.utils';
 import { useNodeDirtiness } from '@/app/composables/useNodeDirtiness';
 import { CanvasNodeDirtiness } from '@/features/workflows/canvas/canvas.types';
@@ -22,7 +22,7 @@ import NDVEmptyState from '@/features/ndv/panel/components/NDVEmptyState.vue';
 import RedactedDataState from '@/features/ndv/panel/components/RedactedDataState.vue';
 import NodeExecuteButton from '@/app/components/NodeExecuteButton.vue';
 
-import { N8nIcon, N8nSegmentControl, N8nText } from '@n8n/design-system';
+import { N8nIcon, N8nSegmentControl, N8nText } from '@MNI/design-system';
 import { useUIStore } from '@/app/stores/ui.store';
 import { WORKFLOW_SETTINGS_MODAL_KEY } from '@/app/constants';
 import { injectWorkflowDocumentStore } from '@/app/stores/workflowDocument.store';
@@ -438,7 +438,7 @@ function handleChangeCollapsingColumn(columnName: string | null) {
 
 		<template #node-waiting>
 			<NDVEmptyState :title="i18n.baseText('ndv.output.waitNodeWaiting.title')" wide>
-				<span v-n8n-html="waitingNodeTooltip(node, workflowObject, runTaskData?.metadata)" />
+				<span v-MNI-html="waitingNodeTooltip(node, workflowObject, runTaskData?.metadata)" />
 			</NDVEmptyState>
 		</template>
 

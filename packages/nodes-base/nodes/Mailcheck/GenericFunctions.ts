@@ -6,8 +6,8 @@ import type {
 	ILoadOptionsFunctions,
 	IRequestOptions,
 	IWebhookFunctions,
-} from 'n8n-workflow';
-import { OperationalError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { OperationalError } from 'MNI-workflow';
 
 export async function mailCheckApiRequest(
 	this: IWebhookFunctions | IHookFunctions | IExecuteFunctions | ILoadOptionsFunctions,

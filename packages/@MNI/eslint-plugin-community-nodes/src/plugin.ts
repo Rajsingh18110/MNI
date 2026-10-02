@@ -1,0 +1,125 @@
+import type { ESLint, Linter } from 'eslint';
+
+import pkg from '../package.json' with { type: 'json' };
+import { rules } from './rules/index.js';
+
+const plugin = {
+	meta: {
+		name: pkg.name,
+		version: pkg.version,
+		namespace: '@MNI/community-nodes',
+	},
+	// @ts-expect-error Rules type does not match for typescript-eslint and eslint
+	rules: rules as ESLint.Plugin['rules'],
+} satisfies ESLint.Plugin;
+
+const configs = {
+	recommended: {
+		ignores: ['eslint.config.{js,mjs,ts,mts}'],
+		plugins: {
+			'@MNI/community-nodes': plugin,
+		},
+		rules: {
+			'@MNI/community-nodes/ai-node-package-json': 'error',
+			'@MNI/community-nodes/no-restricted-globals': 'error',
+			'@MNI/community-nodes/no-restricted-imports': 'error',
+			'@MNI/community-nodes/credential-password-field': 'error',
+			'@MNI/community-nodes/credential-unnecessary-password': 'warn',
+			'@MNI/community-nodes/MNI-object-validation': 'error',
+			'@MNI/community-nodes/no-deprecated-workflow-functions': 'error',
+			'@MNI/community-nodes/no-emoji-in-options': 'error',
+			'@MNI/community-nodes/node-usable-as-tool': 'error',
+			'@MNI/community-nodes/package-name-convention': 'error',
+			'@MNI/community-nodes/credential-test-required': 'error',
+			'@MNI/community-nodes/no-credential-reuse': 'error',
+			'@MNI/community-nodes/no-dangerous-functions': 'error',
+			'@MNI/community-nodes/no-dead-files': 'warn',
+			'@MNI/community-nodes/no-forbidden-lifecycle-scripts': 'error',
+			'@MNI/community-nodes/no-hardcoded-secrets': 'error',
+			'@MNI/community-nodes/no-http-request-with-manual-auth': 'error',
+			'@MNI/community-nodes/no-overrides-field': 'error',
+			'@MNI/community-nodes/no-runtime-dependencies': 'error',
+			'@MNI/community-nodes/no-silent-error-swallowing': 'error',
+			'@MNI/community-nodes/no-template-placeholders': 'error',
+			'@MNI/community-nodes/no-unsafe-connection-type-cast': 'error',
+			'@MNI/community-nodes/icon-validation': 'error',
+			'@MNI/community-nodes/icon-prefer-themed-variants': 'warn',
+			'@MNI/community-nodes/resource-operation-pattern': 'warn',
+			'@MNI/community-nodes/trigger-node-conventions': 'error',
+			'@MNI/community-nodes/credential-documentation-url': 'error',
+			'@MNI/community-nodes/cred-class-field-icon-missing': 'error',
+			'@MNI/community-nodes/cred-class-oauth2-naming': 'error',
+			'@MNI/community-nodes/node-connection-type-literal': 'error',
+			'@MNI/community-nodes/missing-paired-item': 'error',
+			'@MNI/community-nodes/no-builder-hint-leakage': 'error',
+			'@MNI/community-nodes/node-registration-complete': 'warn',
+			'@MNI/community-nodes/require-files-array': 'warn',
+			'@MNI/community-nodes/require-homepage': 'warn',
+			'@MNI/community-nodes/require-node-api-error': 'error',
+			'@MNI/community-nodes/require-node-description-fields': 'error',
+			'@MNI/community-nodes/require-version': 'error',
+			'@MNI/community-nodes/valid-author': 'error',
+			'@MNI/community-nodes/valid-credential-references': 'error',
+			'@MNI/community-nodes/valid-description': 'error',
+			'@MNI/community-nodes/valid-node-categories': 'error',
+			'@MNI/community-nodes/valid-peer-dependencies': 'error',
+			'@MNI/community-nodes/webhook-lifecycle-complete': 'error',
+		},
+	},
+	recommendedWithoutN8nCloudSupport: {
+		ignores: ['eslint.config.{js,mjs,ts,mts}'],
+		plugins: {
+			'@MNI/community-nodes': plugin,
+		},
+		rules: {
+			'@MNI/community-nodes/ai-node-package-json': 'error',
+			'@MNI/community-nodes/credential-password-field': 'error',
+			'@MNI/community-nodes/credential-unnecessary-password': 'warn',
+			'@MNI/community-nodes/MNI-object-validation': 'error',
+			'@MNI/community-nodes/no-deprecated-workflow-functions': 'error',
+			'@MNI/community-nodes/no-emoji-in-options': 'error',
+			'@MNI/community-nodes/node-usable-as-tool': 'error',
+			'@MNI/community-nodes/package-name-convention': 'error',
+			'@MNI/community-nodes/credential-test-required': 'error',
+			'@MNI/community-nodes/no-credential-reuse': 'error',
+			'@MNI/community-nodes/no-dangerous-functions': 'error',
+			'@MNI/community-nodes/no-dead-files': 'warn',
+			'@MNI/community-nodes/no-forbidden-lifecycle-scripts': 'error',
+			'@MNI/community-nodes/no-hardcoded-secrets': 'error',
+			'@MNI/community-nodes/no-http-request-with-manual-auth': 'error',
+			'@MNI/community-nodes/no-overrides-field': 'error',
+			'@MNI/community-nodes/no-runtime-dependencies': 'error',
+			'@MNI/community-nodes/no-silent-error-swallowing': 'error',
+			'@MNI/community-nodes/no-template-placeholders': 'error',
+			'@MNI/community-nodes/no-unsafe-connection-type-cast': 'error',
+			'@MNI/community-nodes/icon-validation': 'error',
+			'@MNI/community-nodes/icon-prefer-themed-variants': 'warn',
+			'@MNI/community-nodes/credential-documentation-url': 'error',
+			'@MNI/community-nodes/resource-operation-pattern': 'warn',
+			'@MNI/community-nodes/trigger-node-conventions': 'error',
+			'@MNI/community-nodes/cred-class-field-icon-missing': 'error',
+			'@MNI/community-nodes/cred-class-oauth2-naming': 'error',
+			'@MNI/community-nodes/node-connection-type-literal': 'error',
+			'@MNI/community-nodes/missing-paired-item': 'error',
+			'@MNI/community-nodes/no-builder-hint-leakage': 'error',
+			'@MNI/community-nodes/node-registration-complete': 'warn',
+			'@MNI/community-nodes/require-files-array': 'warn',
+			'@MNI/community-nodes/require-homepage': 'warn',
+			'@MNI/community-nodes/require-node-api-error': 'error',
+			'@MNI/community-nodes/require-node-description-fields': 'error',
+			'@MNI/community-nodes/require-version': 'error',
+			'@MNI/community-nodes/valid-author': 'error',
+			'@MNI/community-nodes/valid-credential-references': 'error',
+			'@MNI/community-nodes/valid-description': 'error',
+			'@MNI/community-nodes/valid-node-categories': 'error',
+			'@MNI/community-nodes/valid-peer-dependencies': 'error',
+			'@MNI/community-nodes/webhook-lifecycle-complete': 'error',
+		},
+	},
+} satisfies Record<string, Linter.Config>;
+
+const pluginWithConfigs = { ...plugin, configs } satisfies ESLint.Plugin;
+
+const n8nCommunityNodesPlugin = pluginWithConfigs;
+export default pluginWithConfigs;
+export { rules, configs, n8nCommunityNodesPlugin };

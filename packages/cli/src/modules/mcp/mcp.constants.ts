@@ -4,11 +4,11 @@ import {
 	MANUAL_TRIGGER_NODE_TYPE,
 	SCHEDULE_TRIGGER_NODE_TYPE,
 	WEBHOOK_NODE_TYPE,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 /**
  * TELEMETRY EVENTS - backend
- * Frontend events are defined in @n8n/mcp-apps package
+ * Frontend events are defined in @MNI/mcp-apps package
  */
 export const USER_CONNECTED_TO_MCP_EVENT = 'User connected to MCP server';
 export const USER_CALLED_MCP_TOOL_EVENT = 'User called mcp tool';
@@ -50,7 +50,7 @@ export const MISSING_PROTOCOL_VERSION_ERROR_MESSAGE =
 /**
  * Tool name constants
  */
-export const LIST_N8N_GATEWAY_SERVICES_TOOL_NAME = 'list_n8n_gateway_services';
+export const LIST_MNI_GATEWAY_SERVICES_TOOL_NAME = 'list_MNI_gateway_services';
 export const MCP_GET_USER_PREFERENCES_TOOL_NAME = 'get_user_preferences';
 export const MCP_SAVE_USER_PREFERENCE_TOOL_NAME = 'save_user_preference';
 export const MCP_UPDATE_USER_PREFERENCE_TOOL_NAME = 'update_user_preference';
@@ -58,7 +58,7 @@ export const MCP_UNDO_USER_PREFERENCE_TOOL_NAME = 'undo_user_preference';
 
 /**
  * Installs a vetted community package so its nodes become usable. Not in
- * `@n8n/ai-workflow-builder` with the other builder tool constants because
+ * `@MNI/ai-workflow-builder` with the other builder tool constants because
  * installing packages is an instance-administration action, not something the
  * code-builder agent can do.
  */

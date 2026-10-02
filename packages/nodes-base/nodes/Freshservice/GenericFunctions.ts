@@ -7,8 +7,8 @@ import type {
 	JsonObject,
 	IHttpRequestMethods,
 	IRequestOptions,
-} from 'n8n-workflow';
-import { NodeApiError, NodeOperationError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeApiError, NodeOperationError } from 'MNI-workflow';
 
 import { assertNoQueryDelimiters } from '@utils/query-escaping';
 
@@ -195,7 +195,7 @@ export function formatFilters(this: IExecuteFunctions, filters: IDataObject, ite
 
 	return {
 		// Safe by the assertion above: no value can carry either quote character.
-		// eslint-disable-next-line n8n-local-rules/require-escaped-query-values
+		// eslint-disable-next-line MNI-local-rules/require-escaped-query-values
 		query: `"${query}"`,
 	};
 }

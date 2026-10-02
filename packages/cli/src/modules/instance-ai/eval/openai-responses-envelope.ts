@@ -1,6 +1,6 @@
-import { isRecord } from '@n8n/utils/is-record';
-import type { EvalMockHttpResponse } from 'n8n-core';
-import type { IHttpRequestOptions } from 'n8n-workflow';
+import { isRecord } from '@MNI/utils/is-record';
+import type { EvalMockHttpResponse } from 'MNI-core';
+import type { IHttpRequestOptions } from 'MNI-workflow';
 import { randomUUID } from 'node:crypto';
 
 import { extractToolCalls, type NormalizedToolCall } from './openai-envelope';

@@ -2,7 +2,7 @@
 	"nodes": [
 		{
 			"parameters": {},
-			"type": "n8n-nodes-base.manualTrigger",
+			"type": "MNI-nodes-base.manualTrigger",
 			"typeVersion": 1,
 			"position": [0, 0],
 			"id": "c2b2d33f-7f2e-4b46-ad51-2bf3fa801501",
@@ -32,7 +32,7 @@
 				"limit": 10,
 				"options": {}
 			},
-			"type": "n8n-nodes-base.microsoftExcelSharePoint",
+			"type": "MNI-nodes-base.microsoftExcelSharePoint",
 			"typeVersion": 1,
 			"position": [200, 0],
 			"id": "c2b2d33f-7f2e-4b46-ad51-2bf3fa801502",

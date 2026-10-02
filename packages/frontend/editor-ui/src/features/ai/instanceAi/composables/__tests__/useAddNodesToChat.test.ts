@@ -7,7 +7,7 @@ const openThreadForDraft = vi.fn();
 const routerPush = vi.fn();
 const track = vi.fn();
 
-vi.mock('@n8n/composables/useTelemetry', () => ({
+vi.mock('@MNI/composables/useTelemetry', () => ({
 	useTelemetry: () => ({ track }),
 }));
 vi.mock('../../instanceAi.store', () => ({
@@ -24,7 +24,7 @@ vi.mock('@/app/stores/posthog.store', () => ({
 vi.mock('@/app/composables/useEditorContext', () => ({
 	useEditorContext: () => ({ instanceAi: { value: true } }),
 }));
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: () => ({ showMessage: vi.fn(), showError: vi.fn() }),
 }));
 vi.mock('vue-router', () => ({
@@ -34,7 +34,7 @@ vi.mock('vue-router', () => ({
 import { useAddNodesToChat } from '../useAddNodesToChat';
 import { INSTANCE_AI_THREAD_VIEW } from '../../constants';
 import type { NodeContextWorkflow } from '../../utils/buildNodesAttachment';
-import { TELEMETRY_EVENT } from '@n8n/telemetry';
+import { TELEMETRY_EVENT } from '@MNI/telemetry';
 
 const wf: NodeContextWorkflow = {
 	nodes: [

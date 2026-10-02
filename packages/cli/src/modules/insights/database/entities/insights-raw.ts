@@ -1,8 +1,8 @@
-import { GlobalConfig } from '@n8n/config';
-import { DateTimeColumn } from '@n8n/db';
-import { Container } from '@n8n/di';
-import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from '@n8n/typeorm';
-import { UnexpectedError } from 'n8n-workflow';
+import { GlobalConfig } from '@MNI/config';
+import { DateTimeColumn } from '@MNI/db';
+import { Container } from '@MNI/di';
+import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from '@MNI/typeorm';
+import { UnexpectedError } from 'MNI-workflow';
 
 import { isValidTypeNumber, NumberToType, TypeToNumber } from './insights-shared';
 

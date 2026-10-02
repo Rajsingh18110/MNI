@@ -3,7 +3,7 @@ import type {
 	IExecuteFunctions,
 	IExecutionContext,
 	INodeExecutionData,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { DynamicCredentialCheck } from '../DynamicCredentialCheck.node';
 
@@ -42,7 +42,7 @@ describe('DynamicCredentialCheck Node', () => {
 			getWorkflow: () => ({ id: opts.workflowId }),
 			getNode: () => ({
 				name: 'Check Credential Status',
-				type: 'n8n-nodes-base.dynamicCredentialCheck',
+				type: 'MNI-nodes-base.dynamicCredentialCheck',
 			}),
 			helpers,
 		} as unknown as IExecuteFunctions;

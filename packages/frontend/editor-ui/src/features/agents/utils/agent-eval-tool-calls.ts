@@ -1,5 +1,5 @@
-import { isRecord } from '@n8n/utils/is-record';
-import { isUnknownArray } from '@n8n/utils/is-unknown-array';
+import { isRecord } from '@MNI/utils/is-record';
+import { isUnknownArray } from '@MNI/utils/is-unknown-array';
 
 import type { ToolCall, ToolCallState } from '@/features/ai/shared/agentsChat/types';
 import { TOOL_CALL_STATE } from '@/features/ai/shared/agentsChat/constants';

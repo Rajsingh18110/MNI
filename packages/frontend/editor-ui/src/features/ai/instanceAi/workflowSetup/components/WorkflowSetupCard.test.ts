@@ -25,7 +25,7 @@ vi.mock('../composables/useWorkflowSetupContext', () => ({
 	useWorkflowSetupContext: () => workflowSetupContext.current,
 }));
 
-vi.mock('@n8n/i18n', async (importOriginal) => ({
+vi.mock('@MNI/i18n', async (importOriginal) => ({
 	...(await importOriginal()),
 	useI18n: () => ({
 		baseText: (key: string, opts?: { interpolate?: Record<string, string> }) => {
@@ -110,7 +110,7 @@ describe('WorkflowSetupCard', () => {
 		vi.clearAllMocks();
 		credentialsStore.getCredentialTypeByName.mockReturnValue({ displayName: 'Header Auth' });
 		nodeTypesStore.getNodeType.mockReturnValue({
-			name: 'n8n-nodes-base.httpRequest',
+			name: 'MNI-nodes-base.httpRequest',
 			displayName: 'HTTP Request',
 			properties: [{ displayName: 'URL', name: 'url', type: 'string', default: '' }],
 		});

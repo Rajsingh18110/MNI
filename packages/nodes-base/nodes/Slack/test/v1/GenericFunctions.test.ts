@@ -1,4 +1,4 @@
-import type { IExecuteFunctions } from 'n8n-workflow';
+import type { IExecuteFunctions } from 'MNI-workflow';
 
 import {
 	slackApiRequest,
@@ -6,10 +6,10 @@ import {
 	toMultiOptionsCsv,
 	validateJSON,
 } from '../../V1/GenericFunctions';
-import type * as _importType0 from 'n8n-workflow';
+import type * as _importType0 from 'MNI-workflow';
 
-vi.mock('n8n-workflow', async () => ({
-	...(await vi.importActual<typeof _importType0>('n8n-workflow')),
+vi.mock('MNI-workflow', async () => ({
+	...(await vi.importActual<typeof _importType0>('MNI-workflow')),
 	NodeApiError: vi.fn(),
 }));
 
@@ -22,7 +22,7 @@ describe('Slack V1 > GenericFunctions', () => {
 			helpers: {
 				requestWithAuthentication: vi.fn(),
 			},
-			getNode: vi.fn().mockReturnValue({ type: 'n8n-nodes-base.slack', typeVersion: 1 }),
+			getNode: vi.fn().mockReturnValue({ type: 'MNI-nodes-base.slack', typeVersion: 1 }),
 			getNodeParameter: vi.fn().mockReturnValue('accessToken'),
 		} as unknown as IExecuteFunctions;
 	});

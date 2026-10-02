@@ -1,5 +1,5 @@
-import type { IDataObject } from 'n8n-workflow';
-import { assert, UserError } from 'n8n-workflow';
+import type { IDataObject } from 'MNI-workflow';
+import { assert, UserError } from 'MNI-workflow';
 
 import type {
 	AdjustedPutItem,

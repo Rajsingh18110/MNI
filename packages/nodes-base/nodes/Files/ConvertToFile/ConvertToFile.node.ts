@@ -3,8 +3,8 @@ import type {
 	INodeExecutionData,
 	INodeType,
 	INodeTypeDescription,
-} from 'n8n-workflow';
-import { NodeConnectionTypes } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeConnectionTypes } from 'MNI-workflow';
 
 import * as iCall from './actions/iCall.operation';
 import * as spreadsheet from './actions/spreadsheet.operation';

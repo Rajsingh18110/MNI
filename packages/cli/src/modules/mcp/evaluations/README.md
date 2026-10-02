@@ -5,7 +5,7 @@ module: build each workflow by driving the instance MCP server with Claude, then
 run the normal `eval:instance-ai` verifier against it.
 
 For the full framework documentation, argument reference, outputs, and
-troubleshooting, use the [Instance AI workflow evaluation README](../../../../../@n8n/instance-ai/evaluations/README.md).
+troubleshooting, use the [Instance AI workflow evaluation README](../../../../../@MNI/instance-ai/evaluations/README.md).
 
 ## Two ways to run
 
@@ -13,7 +13,7 @@ troubleshooting, use the [Instance AI workflow evaluation README](../../../../..
   workflow through the MCP server and verifies it in the **same run**, across one
   or more lanes. One command, one LangSmith experiment (`LANGSMITH_API_KEY`
   required) — and it's what CI (`ci-mcp-evals.yml`) runs. See
-  [Building via MCP](../../../../../@n8n/instance-ai/evaluations/README.md#building-via-mcp---build-via-mcp).
+  [Building via MCP](../../../../../@MNI/instance-ai/evaluations/README.md#building-via-mcp---build-via-mcp).
 - **Two-phase — decoupled (documented below).** `eval:build-mcp-manifest` writes
   a manifest of workflow IDs, then `eval:instance-ai --prebuilt-workflows` scores
   them. Reach for this when you want to build once and evaluate many times, A/B
@@ -40,14 +40,14 @@ Use a local `.env` file instead of exporting secrets directly in the terminal.
 For example, create `.env.mcp-evals` at the repo root:
 
 ```env
-N8N_ENABLED_MODULES=instance-ai
-N8N_AI_ENABLED=true
+MNI_ENABLED_MODULES=instance-ai
+MNI_AI_ENABLED=true
 
-N8N_INSTANCE_AI_MODEL=anthropic/claude-sonnet-4-5-20250929
-N8N_INSTANCE_AI_MODEL_API_KEY=sk-ant-...
+MNI_INSTANCE_AI_MODEL=anthropic/claude-sonnet-4-5-20250929
+MNI_INSTANCE_AI_MODEL_API_KEY=sk-ant-...
 
-N8N_EVAL_EMAIL=eval@example.com
-N8N_EVAL_PASSWORD=...
+MNI_EVAL_EMAIL=eval@example.com
+MNI_EVAL_PASSWORD=...
 
 CONTEXT7_API_KEY=ctx7sk-...
 
@@ -58,7 +58,7 @@ CONTEXT7_API_KEY=ctx7sk-...
 # LANGSMITH_ENDPOINT=https://api.smith.langchain.com
 ```
 
-Leave `N8N_AI_ANTHROPIC_KEY` unset unless you are intentionally testing that
+Leave `MNI_AI_ANTHROPIC_KEY` unset unless you are intentionally testing that
 path.
 
 To record MCP eval runs in LangSmith, always pass a dedicated `--dataset` and
@@ -80,8 +80,8 @@ its existing users and projects:
 dotenvx run -f .env.mcp-evals -- pnpm start
 ```
 
-When using an existing local instance, set `N8N_EVAL_EMAIL` and
-`N8N_EVAL_PASSWORD` to a user that can log in to that instance. If you pass
+When using an existing local instance, set `MNI_EVAL_EMAIL` and
+`MNI_EVAL_PASSWORD` to a user that can log in to that instance. If you pass
 `--project-id`, use a project available to that user.
 
 On a fresh local DB, create or seed the owner account with the email and
@@ -97,16 +97,16 @@ always pass a dedicated `--dataset` and `--baseline-prefix`:
 
 ```bash
 LANGSMITH_API_KEY=ls__... dotenvx run -f .env.mcp-evals -- \
-  pnpm --filter @n8n/instance-ai run eval:instance-ai \
+  pnpm --filter @MNI/instance-ai run eval:instance-ai \
   --base-url http://localhost:5678 \
   --source langtracer --suite baseline \
   --tier mcp \
-  --prebuilt-workflows /tmp/n8n-mcp-cohort/manifest.json \
+  --prebuilt-workflows /tmp/MNI-mcp-cohort/manifest.json \
   --dataset mcp-workflow-evals \
   --baseline-prefix mcp-baseline- \
   --iterations 3 \
   --concurrency 3 \
-  --output-dir /tmp/n8n-mcp-cohort-eval
+  --output-dir /tmp/MNI-mcp-cohort-eval
 ```
 
 - `--dataset` syncs only the `--tier mcp` examples into a dataset of its own;
@@ -128,11 +128,11 @@ dataset and prefix (high `--iterations` for a low-noise reference point):
 
 ```bash
 LANGSMITH_API_KEY=ls__... dotenvx run -f .env.mcp-evals -- \
-  pnpm --filter @n8n/instance-ai run eval:instance-ai \
+  pnpm --filter @MNI/instance-ai run eval:instance-ai \
   --base-url http://localhost:5678 \
   --source langtracer --suite baseline \
   --tier mcp \
-  --prebuilt-workflows /tmp/n8n-mcp-cohort/manifest.json \
+  --prebuilt-workflows /tmp/MNI-mcp-cohort/manifest.json \
   --dataset mcp-workflow-evals \
   --baseline-prefix mcp-baseline- \
   --experiment-name mcp-baseline \
@@ -166,7 +166,7 @@ Two comparison views, kept separate:
 
 - `claude` CLI is installed and authenticated.
 - `~/.claude.json` contains an MCP server entry for the target MNI instance.
-- The MCP server name used below, for example `n8n-local`, matches that Claude
+- The MCP server name used below, for example `MNI-local`, matches that Claude
   config entry.
 - The MNI instance is reachable at the URL configured in the MCP server block.
 
@@ -205,23 +205,23 @@ and stay in lockstep:
 
 ```bash
 # 1. Build the cohort — only mcp-tier cases
-dotenvx run -f .env.mcp-evals -- pnpm --filter @n8n/instance-ai run eval:build-mcp-manifest \
+dotenvx run -f .env.mcp-evals -- pnpm --filter @MNI/instance-ai run eval:build-mcp-manifest \
   --source langtracer --suite baseline \
   --tier mcp \
   -n 3 \
   -j 3 \
-  --output-dir /tmp/n8n-mcp-cohort \
-  --mcp-server n8n-local
+  --output-dir /tmp/MNI-mcp-cohort \
+  --mcp-server MNI-local
 
 # 2. Evaluate the same cohort
-dotenvx run -f .env.mcp-evals -- pnpm --filter @n8n/instance-ai run eval:instance-ai \
+dotenvx run -f .env.mcp-evals -- pnpm --filter @MNI/instance-ai run eval:instance-ai \
   --base-url http://localhost:5678 \
   --source langtracer --suite baseline \
   --tier mcp \
-  --prebuilt-workflows /tmp/n8n-mcp-cohort/manifest.json \
+  --prebuilt-workflows /tmp/MNI-mcp-cohort/manifest.json \
   --iterations 3 \
   --concurrency 3 \
-  --output-dir /tmp/n8n-mcp-cohort-eval
+  --output-dir /tmp/MNI-mcp-cohort-eval
 ```
 
 `--tier` filters by the `datasets` array in each test case. Build the whole tier
@@ -242,12 +242,12 @@ only holds the seeded carve-out cases. From the repo root, build five
 workflows per test case with five concurrent Claude Code builds:
 
 ```bash
-dotenvx run -f .env.mcp-evals -- pnpm --filter @n8n/instance-ai run eval:build-mcp-manifest \
+dotenvx run -f .env.mcp-evals -- pnpm --filter @MNI/instance-ai run eval:build-mcp-manifest \
   --source langtracer --suite baseline \
   -n 5 \
   -j 5 \
-  --output-dir /tmp/n8n-mcp-cohort \
-  --mcp-server n8n-local
+  --output-dir /tmp/MNI-mcp-cohort \
+  --mcp-server MNI-local
 ```
 
 The output directory contains:
@@ -259,11 +259,11 @@ The output directory contains:
 To use a different Claude model for the build step, add `--model`:
 
 ```bash
-dotenvx run -f .env.mcp-evals -- pnpm --filter @n8n/instance-ai run eval:build-mcp-manifest \
+dotenvx run -f .env.mcp-evals -- pnpm --filter @MNI/instance-ai run eval:build-mcp-manifest \
   -n 5 \
   -j 5 \
-  --output-dir /tmp/n8n-mcp-cohort \
-  --mcp-server n8n-local \
+  --output-dir /tmp/MNI-mcp-cohort \
+  --mcp-server MNI-local \
   --source langtracer --suite baseline \
   --model claude-opus-4-5
 ```
@@ -275,14 +275,14 @@ directory while the evaluation script still runs from the MNI repo:
 
 ```bash
 dotenvx run -f /path/to/MNI/.env.mcp-evals -- pnpm --dir /path/to/MNI \
-  --filter @n8n/instance-ai run eval:build-mcp-manifest \
+  --filter @MNI/instance-ai run eval:build-mcp-manifest \
   -n 5 \
   -j 5 \
-  --mcp-server n8n-local \
-  --project-id <n8n-project-id> \
+  --mcp-server MNI-local \
+  --project-id <MNI-project-id> \
   --source langtracer --suite baseline \
   --build-cwd /path/to/mcp-workspace \
-  --output-dir /tmp/n8n-mcp-skills-cohort
+  --output-dir /tmp/MNI-mcp-skills-cohort
 ```
 
 Useful flags:
@@ -303,11 +303,11 @@ Pass the test-case slug as a positional argument. The slug is the case name in
 the LangTracer suite (for disk mode, the JSON filename without `.json`).
 
 ```bash
-dotenvx run -f .env.mcp-evals -- pnpm --filter @n8n/instance-ai run eval:build-mcp-manifest \
+dotenvx run -f .env.mcp-evals -- pnpm --filter @MNI/instance-ai run eval:build-mcp-manifest \
   -n 5 \
   -j 5 \
-  --output-dir /tmp/n8n-mcp-contact-form \
-  --mcp-server n8n-local \
+  --output-dir /tmp/MNI-mcp-contact-form \
+  --mcp-server MNI-local \
   --source langtracer --suite baseline \
   contact-form-automation
 ```
@@ -323,16 +323,16 @@ Evaluate all workflows from a generated manifest with five iterations and five
 concurrent eval workers:
 
 ```bash
-dotenvx run -f .env.mcp-evals -- pnpm --filter @n8n/instance-ai run eval:instance-ai \
+dotenvx run -f .env.mcp-evals -- pnpm --filter @MNI/instance-ai run eval:instance-ai \
   --base-url http://localhost:5678 \
   --source langtracer --suite baseline \
-  --prebuilt-workflows /tmp/n8n-mcp-cohort/manifest.json \
+  --prebuilt-workflows /tmp/MNI-mcp-cohort/manifest.json \
   --iterations 5 \
   --concurrency 5 \
-  --output-dir /tmp/n8n-mcp-cohort-eval
+  --output-dir /tmp/MNI-mcp-cohort-eval
 ```
 
-The eval CLI reads `N8N_EVAL_EMAIL`, `N8N_EVAL_PASSWORD`, model keys, and
+The eval CLI reads `MNI_EVAL_EMAIL`, `MNI_EVAL_PASSWORD`, model keys, and
 Context7 settings from `.env.mcp-evals`.
 
 ## Evaluate one generated test case
@@ -340,20 +340,20 @@ Context7 settings from `.env.mcp-evals`.
 Use `--filter` with the same slug that was used during manifest generation:
 
 ```bash
-dotenvx run -f .env.mcp-evals -- pnpm --filter @n8n/instance-ai run eval:instance-ai \
+dotenvx run -f .env.mcp-evals -- pnpm --filter @MNI/instance-ai run eval:instance-ai \
   --base-url http://localhost:5678 \
   --source langtracer --suite baseline \
-  --prebuilt-workflows /tmp/n8n-mcp-contact-form/manifest.json \
+  --prebuilt-workflows /tmp/MNI-mcp-contact-form/manifest.json \
   --filter contact-form-automation \
   --iterations 5 \
   --concurrency 5 \
-  --output-dir /tmp/n8n-mcp-contact-form-eval
+  --output-dir /tmp/MNI-mcp-contact-form-eval
 ```
 
 ## Adding a case to the `mcp` tier
 
 Test cases live in the LangTracer suite `baseline` — see
-[Adding test cases](../../../../../@n8n/instance-ai/evaluations/README.md#adding-test-cases)
+[Adding test cases](../../../../../@MNI/instance-ai/evaluations/README.md#adding-test-cases)
 for the full schema and authoring flow. To include a case in the MCP cohort,
 add `"mcp"` to its `datasets` array (in LangTracer for existing cases; in the
 local JSON before pushing for new ones); both `--tier mcp` steps then pick it

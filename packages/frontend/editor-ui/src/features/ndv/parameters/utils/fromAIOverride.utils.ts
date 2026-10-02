@@ -7,8 +7,8 @@ import {
 	type INodeProperties,
 	type NodeParameterValueType,
 	type NodePropertyTypes,
-} from 'n8n-workflow';
-import { i18n } from '@n8n/i18n';
+} from 'MNI-workflow';
+import { i18n } from '@MNI/i18n';
 import type { INodeUi } from '@/Interface';
 import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';
 
@@ -51,14 +51,14 @@ function sanitizeFromAiParameterName(s: string) {
 
 // nodeName | [nodeName, highestUnsupportedVersion]
 const NODE_DENYLIST = [
-	'@n8n/n8n-nodes-langchain.toolCode',
-	'@n8n/n8n-nodes-langchain.toolHttpRequest',
-	'@n8n/n8n-nodes-langchain.mcpClientTool',
+	'@MNI/MNI-nodes-langchain.toolCode',
+	'@MNI/MNI-nodes-langchain.toolHttpRequest',
+	'@MNI/MNI-nodes-langchain.mcpClientTool',
 	// Legacy versions read `parameters.name` at runtime as the tool's identity;
 	// newer versions derive it from the node name, so $fromAI on that field would
 	// produce an invalid tool name. Keep these ranges in sync when bumping versions.
-	['@n8n/n8n-nodes-langchain.toolWorkflow', 2.1],
-	['@n8n/n8n-nodes-langchain.toolVectorStore', 1],
+	['@MNI/MNI-nodes-langchain.toolWorkflow', 2.1],
+	['@MNI/MNI-nodes-langchain.toolVectorStore', 1],
 ] as const;
 
 const PATH_DENYLIST = [

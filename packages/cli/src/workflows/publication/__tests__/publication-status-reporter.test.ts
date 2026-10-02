@@ -1,4 +1,4 @@
-import type { Logger } from '@n8n/backend-common';
+import type { Logger } from '@MNI/backend-common';
 import type {
 	OperationContext,
 	TransactionRunner,
@@ -6,8 +6,8 @@ import type {
 	WorkflowPublicationOutboxRepository,
 	WorkflowPublicationRetryStateRepository,
 	WorkflowPublicationTriggerStatusRepository,
-} from '@n8n/db';
-import type { ErrorReporter } from 'n8n-core';
+} from '@MNI/db';
+import type { ErrorReporter } from 'MNI-core';
 import { mock } from 'vitest-mock-extended';
 
 import type { ActivationErrorsService } from '@/activation-errors.service';

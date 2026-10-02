@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { type INodeProperties, type NodePropertyAction } from 'n8n-workflow';
+import { type INodeProperties, type NodePropertyAction } from 'MNI-workflow';
 import type { INodeUi, IUpdateInformation } from '@/Interface';
 import { ref, computed, onMounted } from 'vue';
-import { N8nButton, N8nInput, N8nInputLabel, N8nTooltip } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
-import { useToast } from '@n8n/composables/useToast';
+import { N8nButton, N8nInput, N8nInputLabel, N8nTooltip } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
+import { useToast } from '@MNI/composables/useToast';
 import { useEditorContext } from '@/app/composables/useEditorContext';
 import { injectNDVStore } from '@/features/ndv/shared/ndv.store';
 import {
@@ -14,7 +14,7 @@ import {
 	getUpdatedTextareaValue,
 	getTextareaCursorPosition,
 } from '../../utils/buttonParameter.utils';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
 import DraggableTarget from '@/app/components/DraggableTarget.vue';
 
 import { propertyNameFromExpression } from '@/app/utils/mappingUtils';

@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 import { computed, ref, watch } from 'vue';
 import { useMediaQuery } from '@vueuse/core';
-import { N8nText } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+import { N8nText } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 import {
 	INSTANCE_AI_SPLIT_EMPTY_STATE_EXAMPLES,
 	INSTANCE_AI_SPLIT_EMPTY_STATE_CYCLE_MS,
@@ -135,7 +135,7 @@ const canvasMode = computed<'preview' | 'loader'>(() =>
 </template>
 
 <style lang="scss" module>
-@use '@n8n/design-system/css/mixins/motion.scss' as motion;
+@use '@MNI/design-system/css/mixins/motion.scss' as motion;
 
 // Must match the useMediaQuery threshold in the script block.
 $breakpoint: 1024px;

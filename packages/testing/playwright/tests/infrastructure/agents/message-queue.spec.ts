@@ -1,5 +1,5 @@
-import type { AgentSseEvent } from '@n8n/api-types';
-import type { N8NStack } from 'n8n-containers/stack';
+import type { AgentSseEvent } from '@MNI/api-types';
+import type { N8NStack } from 'MNI-containers/stack';
 import assert from 'node:assert/strict';
 import { randomUUID } from 'node:crypto';
 
@@ -12,15 +12,15 @@ test.use({
 		workers: 1,
 		services: ['proxy'],
 		env: {
-			N8N_ENABLED_MODULES: 'agents',
+			MNI_ENABLED_MODULES: 'agents',
 			TEST_ISOLATION: 'agent-message-queue',
-			N8N_COMMUNITY_PACKAGES_ENABLED: 'false',
+			MNI_COMMUNITY_PACKAGES_ENABLED: 'false',
 		},
 	},
 });
 
 async function signalMain(stack: N8NStack, index: number, signal: 'SIGSTOP' | 'SIGCONT') {
-	const [container] = stack.findContainers(`-n8n-main-${index + 1}$`);
+	const [container] = stack.findContainers(`-MNI-main-${index + 1}$`);
 	if (!container) throw new TestError('Main container not found');
 	const result = await container.exec([
 		'node',
@@ -251,7 +251,7 @@ test.describe(
 				await signalMain(n8nContainer, 0, 'SIGCONT');
 				const afterCrash = await open(0, crashThread, 'survives restart');
 				await expect.poll(async () => await queued(crashThread)).toBe(1);
-				const [main] = n8nContainer.findContainers('-n8n-main-2$');
+				const [main] = n8nContainer.findContainers('-MNI-main-2$');
 				await main.restart({ timeout: 0 });
 				await expect
 					.poll(

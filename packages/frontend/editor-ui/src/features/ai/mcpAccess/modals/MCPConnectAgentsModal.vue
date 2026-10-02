@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import MCPAgentsSelect from '@/features/ai/mcpAccess/components/MCPAgentsSelect.vue';
-import { N8nButton, N8nDialog, N8nDialogFooter, N8nNotice } from '@n8n/design-system';
+import { N8nButton, N8nDialog, N8nDialogFooter, N8nNotice } from '@MNI/design-system';
 import { computed, ref, watch } from 'vue';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
-import { TELEMETRY_EVENT } from '@n8n/telemetry';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
+import { TELEMETRY_EVENT } from '@MNI/telemetry';
 
 type SelectRef = InstanceType<typeof MCPAgentsSelect>;
 

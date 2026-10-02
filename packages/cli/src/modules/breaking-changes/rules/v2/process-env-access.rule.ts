@@ -1,7 +1,7 @@
-import { BreakingChangeRecommendation } from '@n8n/api-types';
-import { WorkflowEntity } from '@n8n/db';
-import { BreakingChangeRule } from '@n8n/decorators';
-import { INode } from 'n8n-workflow';
+import { BreakingChangeRecommendation } from '@MNI/api-types';
+import { WorkflowEntity } from '@MNI/db';
+import { BreakingChangeRule } from '@MNI/decorators';
+import { INode } from 'MNI-workflow';
 
 import type {
 	BreakingChangeRuleMetadata,
@@ -29,9 +29,9 @@ export class ProcessEnvAccessRule implements IBreakingChangeWorkflowRule {
 		workflow: WorkflowEntity,
 		_nodesGroupedByType: Map<string, INode[]>,
 	): Promise<WorkflowDetectionReport> {
-		// If N8N_BLOCK_ENV_ACCESS_IN_NODE is explicitly set, then the instance is not affected
+		// If MNI_BLOCK_ENV_ACCESS_IN_NODE is explicitly set, then the instance is not affected
 		// because the user has already made a choice
-		if (process.env.N8N_BLOCK_ENV_ACCESS_IN_NODE) {
+		if (process.env.MNI_BLOCK_ENV_ACCESS_IN_NODE) {
 			return {
 				isAffected: false,
 				issues: [],
@@ -47,7 +47,7 @@ export class ProcessEnvAccessRule implements IBreakingChangeWorkflowRule {
 
 		workflow.nodes.forEach((node) => {
 			// Check in Code nodes
-			if (node.type === 'n8n-nodes-base.code') {
+			if (node.type === 'MNI-nodes-base.code') {
 				const code = typeof node.parameters?.code === 'string' ? node.parameters.code : undefined;
 				if (code && processEnvPattern.test(code)) {
 					affectedNodes.push({ nodeId: node.id, nodeName: node.name });
@@ -82,7 +82,7 @@ export class ProcessEnvAccessRule implements IBreakingChangeWorkflowRule {
 			},
 			{
 				action: 'Enable access if required',
-				description: 'Set N8N_BLOCK_ENV_ACCESS_IN_NODE=false to allow access',
+				description: 'Set MNI_BLOCK_ENV_ACCESS_IN_NODE=false to allow access',
 			},
 		];
 	}

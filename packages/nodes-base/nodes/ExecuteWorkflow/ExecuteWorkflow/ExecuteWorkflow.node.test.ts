@@ -1,5 +1,5 @@
 import { mock } from 'vitest-mock-extended';
-import type { IExecuteFunctions, IWorkflowDataProxyData, INode } from 'n8n-workflow';
+import type { IExecuteFunctions, IWorkflowDataProxyData, INode } from 'MNI-workflow';
 
 import { ExecuteWorkflow } from './ExecuteWorkflow.node';
 import { getWorkflowInfo } from './GenericFunctions';

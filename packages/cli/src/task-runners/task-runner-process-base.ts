@@ -1,8 +1,8 @@
-import { Logger, TypedEmitter } from '@n8n/backend-common';
-import { LogScope, TaskRunnersConfig } from '@n8n/config';
-import { OnShutdown } from '@n8n/decorators';
-import { Service } from '@n8n/di';
-import { sleep } from '@n8n/utils/sleep';
+import { Logger, TypedEmitter } from '@MNI/backend-common';
+import { LogScope, TaskRunnersConfig } from '@MNI/config';
+import { OnShutdown } from '@MNI/decorators';
+import { Service } from '@MNI/di';
+import { sleep } from '@MNI/utils/sleep';
 import { nanoid } from 'nanoid';
 import assert from 'node:assert/strict';
 import { spawn } from 'node:child_process';

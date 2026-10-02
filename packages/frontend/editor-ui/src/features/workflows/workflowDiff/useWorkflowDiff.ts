@@ -15,8 +15,8 @@ import {
 	type EffectScope,
 } from 'vue';
 import { useCanvasMapping } from '@/features/workflows/canvas/composables/useCanvasMapping';
-import type { IConnections, INodeTypeDescription, NodeDiff } from 'n8n-workflow';
-import { compareWorkflowsNodes, NodeDiffStatus } from 'n8n-workflow';
+import type { IConnections, INodeTypeDescription, NodeDiff } from 'MNI-workflow';
+import { compareWorkflowsNodes, NodeDiffStatus } from 'MNI-workflow';
 import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';
 import {
 	useWorkflowDocumentStore,

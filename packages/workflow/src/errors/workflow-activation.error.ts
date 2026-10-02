@@ -1,5 +1,5 @@
 import { ExecutionBaseError } from './abstract/execution-base.error';
-import type { ErrorLevel } from '@n8n/errors';
+import type { ErrorLevel } from '@MNI/errors';
 import type { INode } from '../interfaces';
 
 interface WorkflowActivationErrorOptions {

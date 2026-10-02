@@ -1,9 +1,9 @@
 <script lang="ts" setup>
 import { computed } from 'vue';
-import { useI18n } from '@n8n/i18n';
-import type { ExecutionSummary } from 'n8n-workflow';
+import { useI18n } from '@MNI/i18n';
+import type { ExecutionSummary } from 'MNI-workflow';
 
-import { N8nIcon, N8nLink, N8nText, N8nTooltip } from '@n8n/design-system';
+import { N8nIcon, N8nLink, N8nText, N8nTooltip } from '@MNI/design-system';
 import { hasCancellableExecutions } from '../executions.utils';
 
 const props = defineProps<{

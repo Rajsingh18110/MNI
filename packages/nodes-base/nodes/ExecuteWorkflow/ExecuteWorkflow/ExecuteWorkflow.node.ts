@@ -1,4 +1,4 @@
-import { NodeConnectionTypes, NodeOperationError, parseErrorMetadata } from 'n8n-workflow';
+import { NodeConnectionTypes, NodeOperationError, parseErrorMetadata } from 'MNI-workflow';
 import type {
 	DisplayCondition,
 	ExecuteWorkflowData,
@@ -7,7 +7,7 @@ import type {
 	INodeProperties,
 	INodeType,
 	INodeTypeDescription,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { findPairedItemThroughWorkflowData } from './../../../utils/workflow-backtracking';
 import { getWorkflowInfo } from './GenericFunctions';
@@ -298,7 +298,7 @@ workflowInputs: {
 			},
 			{
 				displayName:
-					'Any data you pass into this node will be output by the Execute Workflow Trigger. <a href="https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-base.executeworkflow/" target="_blank">More info</a>',
+					'Any data you pass into this node will be output by the Execute Workflow Trigger. <a href="https://docs.n8n.io/integrations/builtin/core-nodes/MNI-nodes-base.executeworkflow/" target="_blank">More info</a>',
 				name: 'executeWorkflowNotice',
 				type: 'notice',
 				default: '',
@@ -313,13 +313,13 @@ workflowInputs: {
 				noDataExpression: true,
 				options: [
 					{
-						// eslint-disable-next-line n8n-nodes-base/node-param-display-name-miscased
+						// eslint-disable-next-line MNI-nodes-base/node-param-display-name-miscased
 						name: 'Run once with all items',
 						value: 'once',
 						description: 'Pass all items into a single execution of the sub-workflow',
 					},
 					{
-						// eslint-disable-next-line n8n-nodes-base/node-param-display-name-miscased
+						// eslint-disable-next-line MNI-nodes-base/node-param-display-name-miscased
 						name: 'Run once for each item',
 						value: 'each',
 						description: 'Call the sub-workflow individually for each item',

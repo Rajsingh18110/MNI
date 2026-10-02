@@ -1,6 +1,6 @@
-import type { LicenseState } from '@n8n/backend-common';
-import type { Settings, SettingsRepository } from '@n8n/db';
-import { EXTERNAL_SECRETS_SYSTEM_ROLES_ENABLED_SETTING } from '@n8n/permissions';
+import type { LicenseState } from '@MNI/backend-common';
+import type { Settings, SettingsRepository } from '@MNI/db';
+import { EXTERNAL_SECRETS_SYSTEM_ROLES_ENABLED_SETTING } from '@MNI/permissions';
 import { mock } from 'vitest-mock-extended';
 
 import { ExternalSecretsProjectRolesDefaultRule } from '../external-secrets-project-roles-default.rule';

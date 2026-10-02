@@ -5,7 +5,7 @@ import type { TestRequirements } from '../../../Types';
 
 const requirements: TestRequirements = {
 	storage: {
-		N8N_EXPERIMENT_OVERRIDES: JSON.stringify({ '108_open_workflow_in_assistant': 'variant' }),
+		MNI_EXPERIMENT_OVERRIDES: JSON.stringify({ '108_open_workflow_in_assistant': 'variant' }),
 	},
 };
 

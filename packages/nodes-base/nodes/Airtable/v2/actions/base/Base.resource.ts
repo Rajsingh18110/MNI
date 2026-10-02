@@ -1,4 +1,4 @@
-import type { INodeProperties } from 'n8n-workflow';
+import type { INodeProperties } from 'MNI-workflow';
 
 import * as getMany from './getMany.operation';
 import * as getSchema from './getSchema.operation';

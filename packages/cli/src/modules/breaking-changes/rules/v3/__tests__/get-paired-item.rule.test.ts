@@ -1,4 +1,4 @@
-import type { INode } from 'n8n-workflow';
+import type { INode } from 'MNI-workflow';
 
 import { createNode, createWorkflow } from '../../../__tests__/test-helpers';
 import { GetPairedItemRule } from '../get-paired-item.rule';
@@ -13,7 +13,7 @@ describe('GetPairedItemRule', () => {
 	describe('detectWorkflow()', () => {
 		it('should not be affected by a node that has no parameters', async () => {
 			const node = {
-				...createNode('Start', 'n8n-nodes-base.manualTrigger'),
+				...createNode('Start', 'MNI-nodes-base.manualTrigger'),
 				parameters: undefined,
 			};
 			const { workflow, nodesGroupedByType } = createWorkflow('wf-1', 'Test Workflow', [
@@ -27,7 +27,7 @@ describe('GetPairedItemRule', () => {
 
 		it('should not be affected when no node uses $getPairedItem', async () => {
 			const { workflow, nodesGroupedByType } = createWorkflow('wf-1', 'Test Workflow', [
-				createNode('Set', 'n8n-nodes-base.set', { value: '={{ $json.name }}' }),
+				createNode('Set', 'MNI-nodes-base.set', { value: '={{ $json.name }}' }),
 			]);
 
 			const result = await rule.detectWorkflow(workflow, nodesGroupedByType);
@@ -38,7 +38,7 @@ describe('GetPairedItemRule', () => {
 
 		it('should detect $getPairedItem in an expression', async () => {
 			const { workflow, nodesGroupedByType } = createWorkflow('wf-1', 'Test Workflow', [
-				createNode('Set', 'n8n-nodes-base.set', {
+				createNode('Set', 'MNI-nodes-base.set', {
 					value: "={{ $getPairedItem('Node', $input.item) }}",
 				}),
 			]);
@@ -54,7 +54,7 @@ describe('GetPairedItemRule', () => {
 
 		it('should detect $getPairedItem in nested parameters', async () => {
 			const { workflow, nodesGroupedByType } = createWorkflow('wf-1', 'Test Workflow', [
-				createNode('HTTP', 'n8n-nodes-base.httpRequest', {
+				createNode('HTTP', 'MNI-nodes-base.httpRequest', {
 					options: { headers: { value: '={{ $getPairedItem("Webhook").json.id }}' } },
 				}),
 			]);
@@ -67,9 +67,9 @@ describe('GetPairedItemRule', () => {
 
 		it('should flag each affected node once', async () => {
 			const { workflow, nodesGroupedByType } = createWorkflow('wf-1', 'Test Workflow', [
-				createNode('Set1', 'n8n-nodes-base.set', { value: '={{ $getPairedItem("A") }}' }),
-				createNode('Set2', 'n8n-nodes-base.set', { value: '={{ $json.ok }}' }),
-				createNode('Set3', 'n8n-nodes-base.set', { value: '={{ $getPairedItem("B") }}' }),
+				createNode('Set1', 'MNI-nodes-base.set', { value: '={{ $getPairedItem("A") }}' }),
+				createNode('Set2', 'MNI-nodes-base.set', { value: '={{ $json.ok }}' }),
+				createNode('Set3', 'MNI-nodes-base.set', { value: '={{ $getPairedItem("B") }}' }),
 			]);
 
 			const result = await rule.detectWorkflow(workflow, nodesGroupedByType);

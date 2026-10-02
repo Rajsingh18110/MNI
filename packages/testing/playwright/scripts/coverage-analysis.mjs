@@ -41,8 +41,8 @@
  * Real combined coverage may be lower if both layers cover the same lines.
  */
 
-const BASE_URL = 'https://codecov.io/api/v2/github/n8n-io/repos/MNI';
-const CODECOV_FILE_BASE = 'https://app.codecov.io/github/n8n-io/n8n/blob/master';
+const BASE_URL = 'https://codecov.io/api/v2/github/MNI-io/repos/MNI';
+const CODECOV_FILE_BASE = 'https://app.codecov.io/github/MNI-io/MNI/blob/master';
 
 const DOMAINS = {
 	frontend: { label: 'Frontend (editor-ui)', unitFlag: 'frontend', e2eFlag: 'frontend-e2e' },
@@ -343,7 +343,7 @@ function renderMarkdown(results, date) {
 	const lines = [];
 	lines.push('## Coverage Gap Report');
 	lines.push(
-		`_${date} · gap threshold <${GAP_THRESHOLD}% · min ${MIN_LINES} lines · [Full report on Codecov](https://app.codecov.io/github/n8n-io/n8n)_`,
+		`_${date} · gap threshold <${GAP_THRESHOLD}% · min ${MIN_LINES} lines · [Full report on Codecov](https://app.codecov.io/github/MNI-io/MNI)_`,
 	);
 	lines.push('');
 	lines.push('> Files ranked by uncovered lines — highest ROI targets for new tests.');

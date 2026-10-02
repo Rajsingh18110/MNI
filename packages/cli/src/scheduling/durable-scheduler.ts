@@ -1,16 +1,16 @@
-import { Logger } from '@n8n/backend-common';
-import { GlobalConfig } from '@n8n/config';
-import { DataSource, ScheduledJobRepository, ScheduledTaskRepository } from '@n8n/db';
-import { OnShutdown } from '@n8n/decorators';
-import { Service } from '@n8n/di';
-import type { RunInTransaction, Scheduler, TaskHandler } from '@n8n/scheduler';
+import { Logger } from '@MNI/backend-common';
+import { GlobalConfig } from '@MNI/config';
+import { DataSource, ScheduledJobRepository, ScheduledTaskRepository } from '@MNI/db';
+import { OnShutdown } from '@MNI/decorators';
+import { Service } from '@MNI/di';
+import type { RunInTransaction, Scheduler, TaskHandler } from '@MNI/scheduler';
 import {
 	createScheduler,
 	pollLookaheadSeconds,
 	withOwnerKeys,
 	DEFAULT_MATERIALIZER_OPTIONS,
-} from '@n8n/scheduler';
-import { InstanceSettings, Tracing } from 'n8n-core';
+} from '@MNI/scheduler';
+import { InstanceSettings, Tracing } from 'MNI-core';
 
 import { PrometheusSchedulerMetricsService } from '@/metrics/prometheus/scheduler-metrics.service';
 

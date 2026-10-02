@@ -1,5 +1,5 @@
-import type { EnforcementPoint } from '@n8n/decorators';
-import { OperationalError } from 'n8n-workflow';
+import type { EnforcementPoint } from '@MNI/decorators';
+import { OperationalError } from 'MNI-workflow';
 
 /**
  * A check broke, so the action is blocked. Not knowing whether a policy allows something is not

@@ -1,5 +1,5 @@
-import { safeJoinPath } from '@n8n/backend-common';
-import { BUILTIN_NODES_PACKAGES } from '@n8n/constants';
+import { safeJoinPath } from '@MNI/backend-common';
+import { BUILTIN_NODES_PACKAGES } from '@MNI/constants';
 import { existsSync } from 'node:fs';
 import { dirname } from 'node:path';
 

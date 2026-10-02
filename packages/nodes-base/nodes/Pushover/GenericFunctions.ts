@@ -5,8 +5,8 @@ import type {
 	IHttpRequestMethods,
 	IHttpRequestOptions,
 	JsonObject,
-} from 'n8n-workflow';
-import { NodeApiError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeApiError } from 'MNI-workflow';
 
 export async function pushoverApiRequest(
 	this: IExecuteFunctions | ILoadOptionsFunctions,

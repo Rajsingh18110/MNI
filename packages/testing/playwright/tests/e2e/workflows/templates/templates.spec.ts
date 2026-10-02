@@ -7,12 +7,12 @@ import salesTemplatesSearchResponse from '../../../../workflows/sales_templates_
 import workflowTemplate from '../../../../workflows/Workflow_template_write_http_query.json';
 
 const TEMPLATE_HOST = {
-	N8N_API: 'https://api.n8n.io/api/',
+	MNI_API: 'https://api.n8n.io/api/',
 	CUSTOM: 'random.domain',
 } as const;
 
 const URLS = {
-	N8N_WORKFLOWS: 'https://n8n.io/workflows',
+	MNI_WORKFLOWS: 'https://n8n.io/workflows',
 } as const;
 
 const TEMPLATE_ID = '1';
@@ -62,7 +62,7 @@ function createTemplateHostRequirements(): TestRequirements {
 			settings: {
 				templates: {
 					enabled: true,
-					host: TEMPLATE_HOST.N8N_API,
+					host: TEMPLATE_HOST.MNI_API,
 				},
 			},
 		},
@@ -153,7 +153,7 @@ test.describe(
 				await expect(templatesLink).toBeVisible();
 
 				const href = await templatesLink.getAttribute('href');
-				expect(href).toContain(URLS.N8N_WORKFLOWS);
+				expect(href).toContain(URLS.MNI_WORKFLOWS);
 
 				const url = new URL(href!);
 				const origin = await n8n.page.evaluate(() => window.location.origin);
@@ -162,7 +162,7 @@ test.describe(
 				expect(utmInstance).toBeTruthy();
 				expect(decodeURIComponent(utmInstance!)).toContain(origin);
 
-				const utmVersion = url.searchParams.get('utm_n8n_version');
+				const utmVersion = url.searchParams.get('utm_MNI_version');
 				expect(utmVersion).toBeTruthy();
 				expect(utmVersion).toMatch(/[0-9]+\.[0-9]+\.[0-9]+/);
 

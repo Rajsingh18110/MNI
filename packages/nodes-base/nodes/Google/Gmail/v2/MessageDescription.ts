@@ -1,4 +1,4 @@
-import { SEND_AND_WAIT_OPERATION, type INodeProperties } from 'n8n-workflow';
+import { SEND_AND_WAIT_OPERATION, type INodeProperties } from 'MNI-workflow';
 
 import { appendAttributionOption } from '../../../../utils/descriptions';
 import { simplifyMemoryNotice } from '../utils/descriptions';
@@ -459,17 +459,17 @@ export const messageFields: INodeProperties[] = [
 				hint: 'Filter emails by whether they have been read or not',
 				options: [
 					{
-						// eslint-disable-next-line n8n-nodes-base/node-param-display-name-miscased
+						// eslint-disable-next-line MNI-nodes-base/node-param-display-name-miscased
 						name: 'Unread and read emails',
 						value: 'both',
 					},
 					{
-						// eslint-disable-next-line n8n-nodes-base/node-param-display-name-miscased
+						// eslint-disable-next-line MNI-nodes-base/node-param-display-name-miscased
 						name: 'Unread emails only',
 						value: 'unread',
 					},
 					{
-						// eslint-disable-next-line n8n-nodes-base/node-param-display-name-miscased
+						// eslint-disable-next-line MNI-nodes-base/node-param-display-name-miscased
 						name: 'Read emails only',
 						value: 'read',
 					},

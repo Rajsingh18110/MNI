@@ -5,16 +5,16 @@ import {
 	type CredentialProvider,
 	type StreamChunk,
 	type StreamResult,
-} from '@n8n/agents';
+} from '@MNI/agents';
 import type {
 	ResolvedSubAgentSource,
 	RunnableAgentJsonConfig,
 	SubAgentSpawnRequest,
-} from '@n8n/api-types';
-import type { Logger } from '@n8n/backend-common';
-import type { AiConfig } from '@n8n/config';
-import type { User } from '@n8n/db';
-import { Container } from '@n8n/di';
+} from '@MNI/api-types';
+import type { Logger } from '@MNI/backend-common';
+import type { AiConfig } from '@MNI/config';
+import type { User } from '@MNI/db';
+import { Container } from '@MNI/di';
 import type { Mocked } from 'vitest';
 import { mock } from 'vitest-mock-extended';
 
@@ -28,7 +28,7 @@ import {
 	hashAgentSandboxPrincipal,
 } from '../../agent-sandbox-principal';
 import type { AgentSandboxRuntime } from '../../agent-sandbox-runtime.service';
-import type { N8NCheckpointStorage } from '../../integrations/n8n-checkpoint-storage';
+import type { N8NCheckpointStorage } from '../../integrations/MNI-checkpoint-storage';
 import { SubAgentRunner } from '../sub-agent-runner';
 import type {
 	ResolvedSubAgentRuntimeSource,
@@ -437,7 +437,7 @@ describe('SubAgentRunner', () => {
 	});
 
 	it('inherits the parent workspace principal on the initial run and resume', async () => {
-		const principalHash = hashAgentSandboxPrincipal({ type: 'n8n-user', userId: 'user-1' });
+		const principalHash = hashAgentSandboxPrincipal({ type: 'MNI-user', userId: 'user-1' });
 		const result = await runner.run(
 			{ ...spawnRequest, parentSandboxPrincipalHash: principalHash },
 			{

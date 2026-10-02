@@ -18,7 +18,7 @@ import {
 	displayParameter,
 	isResourceLocatorValue,
 	deepCopy,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import type { INodeUi, IUpdateInformation } from '@/Interface';
 import { CUSTOM_API_CALL_KEY, SWITCH_NODE_TYPE } from '@/app/constants';
 import isEqual from 'lodash/isEqual';
@@ -31,7 +31,7 @@ import { isPresent } from '@/app/utils/typesUtils';
 import { setParameterValue } from '@/app/utils/parameterUtils';
 import type { Ref } from 'vue';
 import { omitKey } from '@/app/utils/objectUtils';
-import type { BaseTextKey } from '@n8n/i18n';
+import type { BaseTextKey } from '@MNI/i18n';
 
 export interface ParameterOptionsOverrides {
 	hideExpressionSelector?: boolean;

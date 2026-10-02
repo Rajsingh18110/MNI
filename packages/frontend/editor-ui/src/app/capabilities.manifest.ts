@@ -1,4 +1,4 @@
-import { capabilities, capabilityRegistry } from '@n8n/frontend-module-sdk';
+import { capabilities, capabilityRegistry } from '@MNI/frontend-module-sdk';
 
 import type { IWorkflowSettings, ModalKey } from '@/Interface';
 import { useUIStore } from '@/app/stores/ui.store';

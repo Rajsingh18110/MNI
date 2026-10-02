@@ -1,6 +1,6 @@
 import type { MockProxy } from 'vitest-mock-extended';
 import { mock } from 'vitest-mock-extended';
-import { type INode, SEND_AND_WAIT_OPERATION, type IExecuteFunctions } from 'n8n-workflow';
+import { type INode, SEND_AND_WAIT_OPERATION, type IExecuteFunctions } from 'MNI-workflow';
 
 import * as genericFunctions from '../../GenericFunctions';
 import { GoogleChat } from '../../GoogleChat.node';
@@ -58,7 +58,7 @@ describe('Test GoogleChat, message => sendAndWait', () => {
 		expect(mockExecuteFunctions.putExecutionToWait).toHaveBeenCalledTimes(1);
 
 		expect(genericFunctions.googleApiRequest).toHaveBeenCalledWith('POST', '/v1/spaceID/messages', {
-			text: 'my message\n\n\n*<http://localhost/waiting-webhook/nodeID?approved=true&signature=abc|Approve>*\n\n_This_ _message_ _was_ _sent_ _automatically_ _with_ _<https://n8n.io/?utm_source=n8n-internal&utm_medium=powered_by&utm_campaign=n8n-nodes-base.googleChat_instanceId|MNI>_',
+			text: 'my message\n\n\n*<http://localhost/waiting-webhook/nodeID?approved=true&signature=abc|Approve>*\n\n_This_ _message_ _was_ _sent_ _automatically_ _with_ _<https://n8n.io/?utm_source=MNI-internal&utm_medium=powered_by&utm_campaign=MNI-nodes-base.googleChat_instanceId|MNI>_',
 		});
 	});
 

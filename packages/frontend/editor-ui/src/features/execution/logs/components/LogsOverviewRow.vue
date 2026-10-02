@@ -4,7 +4,7 @@ import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';
 import LogsViewConsumedTokenCountText from '@/features/execution/logs/components/LogsViewConsumedTokenCountText.vue';
 import NodeIcon from '@/app/components/NodeIcon.vue';
 import upperFirst from 'lodash/upperFirst';
-import { type BaseTextKey, useI18n } from '@n8n/i18n';
+import { type BaseTextKey, useI18n } from '@MNI/i18n';
 import { I18nT } from 'vue-i18n';
 import { toDayMonth, toTime } from '@/app/utils/formatters/dateFormatter';
 import LogsViewNodeName from '@/features/execution/logs/components/LogsViewNodeName.vue';
@@ -30,7 +30,7 @@ import {
 	N8nIconButton,
 	N8nText,
 	N8nTooltip,
-} from '@n8n/design-system';
+} from '@MNI/design-system';
 import AnimatedSpinner from '@/app/components/AnimatedSpinner.vue';
 const props = defineProps<{
 	data: LogEntry;
@@ -354,10 +354,10 @@ watch(
 
 .background {
 	position: absolute;
-	/* stylelint-disable-next-line @n8n/css-var-naming */
+	/* stylelint-disable-next-line @MNI/css-var-naming */
 	left: calc(var(--indent-depth) * 32px);
 	top: 0;
-	/* stylelint-disable-next-line @n8n/css-var-naming */
+	/* stylelint-disable-next-line @MNI/css-var-naming */
 	width: calc(100% - var(--indent-depth) * 32px);
 	height: 100%;
 	border-radius: var(--radius);

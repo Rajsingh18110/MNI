@@ -50,7 +50,7 @@ test.describe(
 		});
 
 		test('should add a node by dropping a DataTransfer payload on the canvas', async ({ MNI }) => {
-			await n8n.canvas.dropNodeOnCanvas('n8n-nodes-base.code');
+			await n8n.canvas.dropNodeOnCanvas('MNI-nodes-base.code');
 
 			await expect(n8n.canvas.getCanvasNodes()).toHaveCount(1);
 		});

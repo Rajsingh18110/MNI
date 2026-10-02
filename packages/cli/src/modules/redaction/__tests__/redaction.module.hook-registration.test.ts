@@ -1,9 +1,9 @@
-import type { LicenseState, ModulesConfig } from '@n8n/backend-common';
-import { Logger, ModuleRegistry } from '@n8n/backend-common';
-import { mockInstance } from '@n8n/backend-test-utils';
-import type { SystemTaskMetadata } from '@n8n/decorators';
-import { ContextEstablishmentHookMetadata, ModuleMetadata } from '@n8n/decorators';
-import { Container } from '@n8n/di';
+import type { LicenseState, ModulesConfig } from '@MNI/backend-common';
+import { Logger, ModuleRegistry } from '@MNI/backend-common';
+import { mockInstance } from '@MNI/backend-test-utils';
+import type { SystemTaskMetadata } from '@MNI/decorators';
+import { ContextEstablishmentHookMetadata, ModuleMetadata } from '@MNI/decorators';
+import { Container } from '@MNI/di';
 import { mock } from 'vitest-mock-extended';
 
 import { ExecutionRedactionServiceProxy } from '@/executions/execution-redaction-proxy.service';

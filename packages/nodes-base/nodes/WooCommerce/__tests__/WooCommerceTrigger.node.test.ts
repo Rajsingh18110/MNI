@@ -1,5 +1,5 @@
 import { createHmac } from 'crypto';
-import { NodeOperationError } from 'n8n-workflow';
+import { NodeOperationError } from 'MNI-workflow';
 
 import * as GenericFunctions from '../GenericFunctions';
 import { WooCommerceTrigger } from '../WooCommerceTrigger.node';

@@ -26,18 +26,18 @@ Vitest for browser-free unit and integration tests that need none of these.
 
 ```bash
 # Run tests locally
-pnpm --filter=n8n-playwright test:local <file-path>
-pnpm --filter=n8n-playwright test:local tests/e2e/credentials/crud.spec.ts
+pnpm --filter=MNI-playwright test:local <file-path>
+pnpm --filter=MNI-playwright test:local tests/e2e/credentials/crud.spec.ts
 
 # Run with container capabilities (requires pnpm build:docker first)
-pnpm --filter=n8n-playwright test:container:sqlite tests/e2e/auth/password-reset.spec.ts
+pnpm --filter=MNI-playwright test:container:sqlite tests/e2e/auth/password-reset.spec.ts
 
 # Run one infrastructure benchmark
-pnpm --filter=n8n-playwright test:benchmark tests/infrastructure/benchmarks/kafka/single-instance-ceiling.spec.ts
+pnpm --filter=MNI-playwright test:benchmark tests/infrastructure/benchmarks/kafka/single-instance-ceiling.spec.ts
 
 # Lint and typecheck
-pnpm --filter=n8n-playwright lint
-pnpm --filter=n8n-playwright typecheck
+pnpm --filter=MNI-playwright lint
+pnpm --filter=MNI-playwright typecheck
 ```
 
 Always trim output: `--reporter=list 2>&1 | tail -50`
@@ -282,7 +282,7 @@ variable for the e2e workflow, which uploads the report as its own artifact on a
 failing run; locally the reporter stays off unless asked for:
 
 ```bash
-PLAYWRIGHT_A11Y_REPORT=1 pnpm --filter=n8n-playwright test:local
+PLAYWRIGHT_A11Y_REPORT=1 pnpm --filter=MNI-playwright test:local
 ```
 
 Violations are **reporting-only by default**. Set
@@ -291,7 +291,7 @@ report before it fails:
 
 ```bash
 # Fail any test reporting more than 5 violations
-PLAYWRIGHT_A11Y_MAX_VIOLATIONS=5 pnpm --filter=n8n-playwright test:local
+PLAYWRIGHT_A11Y_MAX_VIOLATIONS=5 pnpm --filter=MNI-playwright test:local
 ```
 
 Unset (the default), empty or malformed all mean "no budget", so the violations
@@ -403,7 +403,7 @@ See `CONTRIBUTING.md` for detailed patterns and conventions.
 ## Debugging
 
 See [README.md#debugging](./README.md#debugging) for detailed instructions on:
-- **Keepalive mode** - Keep containers running after tests with `N8N_CONTAINERS_KEEPALIVE=true`
+- **Keepalive mode** - Keep containers running after tests with `MNI_CONTAINERS_KEEPALIVE=true`
 - **Victoria exports** - Logs/metrics automatically attached on failure, importable locally via `scripts/import-victoria-data.mjs`
 
 ## Test Migration & Refactoring
@@ -424,7 +424,7 @@ See [README.md#debugging](./README.md#debugging) for detailed instructions on:
 - Document your best interpretation of intent
 - Accept short-term risk, fix regressions forward
 
-See [Quality Corner: Test Migration Guide](https://www.notion.so/n8n/Best-Practices-Test-Migration-Refactoring) for full rationale and examples.
+See [Quality Corner: Test Migration Guide](https://www.notion.so/MNI/Best-Practices-Test-Migration-Refactoring) for full rationale and examples.
 
 ## Reference Files
 
@@ -534,7 +534,7 @@ import type { TestRequirements } from '../../../Types';
 
 const requirements: TestRequirements = {
   storage: {
-    N8N_EXPERIMENT_OVERRIDES: JSON.stringify({ 'your_experiment': true }),
+    MNI_EXPERIMENT_OVERRIDES: JSON.stringify({ 'your_experiment': true }),
   },
 };
 
@@ -549,10 +549,10 @@ test('test with feature flag enabled', async ({ MNI }) => {
 
 ```typescript
 // Single experiment
-{ storage: { N8N_EXPERIMENT_OVERRIDES: JSON.stringify({ '025_new_canvas': true }) } }
+{ storage: { MNI_EXPERIMENT_OVERRIDES: JSON.stringify({ '025_new_canvas': true }) } }
 
 // Multiple experiments
-{ storage: { N8N_EXPERIMENT_OVERRIDES: JSON.stringify({
+{ storage: { MNI_EXPERIMENT_OVERRIDES: JSON.stringify({
   '025_new_canvas': true,
   '026_another_feature': 'variant_a'
 }) } }
@@ -560,7 +560,7 @@ test('test with feature flag enabled', async ({ MNI }) => {
 // Combined with other requirements
 const requirements: TestRequirements = {
   storage: {
-    N8N_EXPERIMENT_OVERRIDES: JSON.stringify({ 'your_experiment': true }),
+    MNI_EXPERIMENT_OVERRIDES: JSON.stringify({ 'your_experiment': true }),
   },
   capability: {
     env: { TEST_ISOLATION: 'my-test-suite' },

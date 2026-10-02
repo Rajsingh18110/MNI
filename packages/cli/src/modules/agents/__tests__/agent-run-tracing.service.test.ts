@@ -1,4 +1,4 @@
-import type { AgentsConfig } from '@n8n/config';
+import type { AgentsConfig } from '@MNI/config';
 import type { Tracer } from '@opentelemetry/api';
 import { mock } from 'vitest-mock-extended';
 
@@ -49,7 +49,7 @@ describe('AgentRunTracingService', () => {
 		await service.build(baseMetadata);
 
 		expect(otelService.getTracer).toHaveBeenCalledTimes(2);
-		expect(otelService.getTracer).toHaveBeenCalledWith('@n8n/agents');
+		expect(otelService.getTracer).toHaveBeenCalledWith('@MNI/agents');
 	});
 
 	it('never marks the built telemetry as LangSmith, so root spans stay generic', async () => {

@@ -2,7 +2,7 @@ import {
 	MANUAL_TRIGGER_NODE_TYPE,
 	createRunExecutionData,
 	isTrimmedNodeExecutionData,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import { CANCELLABLE_EXECUTION_STATUSES } from './executions.constants';
 import type {
 	ITaskData,
@@ -16,7 +16,7 @@ import type {
 	INodeTypeBaseDescription,
 	INodeExecutionData,
 	IWorkflowDataProxyAdditionalKeys,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import type { INodeUi, IWorkflowDb } from '@/Interface';
 import type { WorkflowObjectAccessors } from '@/app/types/workflow';
 import type {
@@ -40,8 +40,8 @@ import {
 import { useWorkflowsStore } from '@/app/stores/workflows.store';
 import { useWorkflowExecutionStateStore } from '@/app/stores/workflowExecutionState.store';
 import { createWorkflowDocumentId } from '@/app/stores/workflowDocument.store';
-import { useRootStore } from '@n8n/stores/useRootStore';
-import { i18n } from '@n8n/i18n';
+import { useRootStore } from '@MNI/stores/useRootStore';
+import { i18n } from '@MNI/i18n';
 import { h } from 'vue';
 import NodeExecutionErrorMessage from '@/app/components/NodeExecutionErrorMessage.vue';
 import { parse } from 'flatted';

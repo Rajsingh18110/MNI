@@ -7,7 +7,7 @@ import { createComponentRenderer } from '@/__tests__/render';
 import SuiteConfig from './SuiteConfig.vue';
 import { useEvaluationsWizardSidepanelStore } from '../../wizardSidepanel.store';
 
-vi.mock('@n8n/i18n', async (importOriginal) => ({
+vi.mock('@MNI/i18n', async (importOriginal) => ({
 	...(await importOriginal()),
 	useI18n: () => ({ baseText: (key: string) => key }),
 }));
@@ -31,7 +31,7 @@ vi.mock('../../composables/useTestCasePersistence', () => ({
 }));
 
 vi.mock('../../composables/useAiRootNodes', () => ({
-	useAiRootNodes: () => ref([{ name: 'Darwin', type: '@n8n/n8n-nodes-langchain.agent' }]),
+	useAiRootNodes: () => ref([{ name: 'Darwin', type: '@MNI/MNI-nodes-langchain.agent' }]),
 }));
 
 const renderComponent = createComponentRenderer(SuiteConfig);

@@ -1,6 +1,6 @@
 import { createComponentRenderer } from '@/__tests__/render';
 import { registerToastNotifier } from '@/app/init/toastNotifier';
-import { emptyChatModelsResponse } from '@n8n/api-types';
+import { emptyChatModelsResponse } from '@MNI/api-types';
 import { within } from '@testing-library/vue';
 import userEvent from '@testing-library/user-event';
 import { createPinia, setActivePinia } from 'pinia';
@@ -19,7 +19,7 @@ import * as chatApi from './chat.api';
 import ChatView from './ChatView.vue';
 
 // Mock external stores and modules
-vi.mock('@n8n/stores/users.store', () => ({
+vi.mock('@MNI/stores/users.store', () => ({
 	useUsersStore: () => ({
 		currentUserId: 'user-123',
 		currentUser: {
@@ -52,7 +52,7 @@ vi.mock('@/features/credentials/credentials.store', () => ({
 
 vi.mock('./chat.api');
 
-vi.mock('@n8n/stores/settings.store', () => ({
+vi.mock('@MNI/stores/settings.store', () => ({
 	useSettingsStore: () => ({
 		settings: {},
 		moduleSettings: {
@@ -195,7 +195,7 @@ describe('ChatView', () => {
 		// The error-toast test below asserts on rendered toast content, which needs
 		// the notifier the app registers at bootstrap. Explicit here because it no
 		// longer arrives as a side effect of importing
-		// `@n8n/composables/useToast` (N8N-104).
+		// `@MNI/composables/useToast` (MNI-104).
 		registerToastNotifier();
 
 		pinia = createPinia();
@@ -212,7 +212,7 @@ describe('ChatView', () => {
 		mockHasRole.mockReturnValue(true);
 		localStorage.clear();
 		// Skip welcome screen in tests by marking user as having had a conversation before
-		localStorage.setItem('user-123_N8N_CHAT_HUB_HAD_CONVERSATION_BEFORE', 'true');
+		localStorage.setItem('user-123_MNI_CHAT_HUB_HAD_CONVERSATION_BEFORE', 'true');
 
 		vi.mocked(chatApi.sendMessageApi).mockClear();
 		vi.mocked(chatApi.sendMessageApi).mockResolvedValue({ status: 'streaming' });
@@ -244,7 +244,7 @@ describe('ChatView', () => {
 						}),
 					],
 				},
-				n8n: {
+				MNI: {
 					models: [
 						createMockAgent({
 							name: 'My Workflow Agent',
@@ -328,7 +328,7 @@ describe('ChatView', () => {
 
 		it('preselects agent from localStorage', async () => {
 			localStorage.setItem(
-				'user-123_N8N_CHAT_HUB_SELECTED_MODEL',
+				'user-123_MNI_CHAT_HUB_SELECTED_MODEL',
 				JSON.stringify({ provider: 'openai', model: 'gpt-4' }),
 			);
 
@@ -377,7 +377,7 @@ describe('ChatView', () => {
 			const user = userEvent.setup();
 
 			// Make welcome screen visible for first-time user
-			localStorage.removeItem('user-123_N8N_CHAT_HUB_HAD_CONVERSATION_BEFORE');
+			localStorage.removeItem('user-123_MNI_CHAT_HUB_HAD_CONVERSATION_BEFORE');
 			mockHasRole.mockReturnValue(false);
 
 			const rendered = renderComponent({ pinia });
@@ -512,7 +512,7 @@ describe('ChatView', () => {
 		// `unflattenModel` then has nothing to rebuild a model from, `selectedModel` is null
 		// and `messagingState` becomes 'missingAgent'. This is the path that reaches the
 		// `selectModel.existing` callout — ChatPrompt.test.ts covers the prop, nothing
-		// covered the path (N8N-155).
+		// covered the path (MNI-155).
 		it('asks the user to reselect a model when the agent of the conversation was deleted', async () => {
 			vi.mocked(chatApi.fetchSingleConversationApi).mockResolvedValue(
 				createMockConversationResponse({
@@ -761,7 +761,7 @@ describe('ChatView', () => {
 
 			vi.mocked(chatApi.fetchChatModelsApi).mockResolvedValueOnce(
 				createMockModelsResponse({
-					n8n: {
+					MNI: {
 						models: [
 							createMockAgent({
 								name: 'Prompt Agent',
@@ -794,7 +794,7 @@ describe('ChatView', () => {
 
 			vi.mocked(chatApi.fetchChatModelsApi).mockResolvedValueOnce(
 				createMockModelsResponse({
-					n8n: {
+					MNI: {
 						models: [
 							createMockAgent({
 								name: 'Multi Prompt Agent',

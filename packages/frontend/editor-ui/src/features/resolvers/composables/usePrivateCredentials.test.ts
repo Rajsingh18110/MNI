@@ -1,8 +1,8 @@
 import { createTestingPinia } from '@pinia/testing';
 import { setActivePinia } from 'pinia';
 import { usePrivateCredentials } from './usePrivateCredentials';
-import { useSettingsStore } from '@n8n/stores/settings.store';
-import type { FrontendSettings } from '@n8n/api-types';
+import { useSettingsStore } from '@MNI/stores/settings.store';
+import type { FrontendSettings } from '@MNI/api-types';
 
 describe('usePrivateCredentials', () => {
 	let settingsStore: ReturnType<typeof useSettingsStore>;

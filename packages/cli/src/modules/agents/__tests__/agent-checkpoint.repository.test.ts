@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/unbound-method -- mock-based tests intentionally reference unbound methods */
-import type { TransactionRunner } from '@n8n/db';
-import { MoreThan } from '@n8n/typeorm';
+import type { TransactionRunner } from '@MNI/db';
+import { MoreThan } from '@MNI/typeorm';
 import { mock } from 'vitest-mock-extended';
 
 import { mockEntityManager } from '@test/mocking';

@@ -16,8 +16,8 @@ import {
 	type ObservationLogScope,
 	type ObservationLogTaskKind,
 	type ObservationLogTaskLockHandle,
-} from '@n8n/agents';
-import { Equal, In, IsNull, MoreThan, type FindOptionsWhere } from '@n8n/typeorm';
+} from '@MNI/agents';
+import { Equal, In, IsNull, MoreThan, type FindOptionsWhere } from '@MNI/typeorm';
 
 import type { InstanceAiMessage } from '../entities/instance-ai-message.entity';
 import { InstanceAiObservationLock } from '../entities/instance-ai-observation-lock.entity';

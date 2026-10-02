@@ -1,4 +1,4 @@
-import { isContainedWithin } from '@n8n/backend-common';
+import { isContainedWithin } from '@MNI/backend-common';
 import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import path from 'node:path';
 

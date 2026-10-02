@@ -1,5 +1,5 @@
-import type { SourceControlledFile, WorkflowPublishBlockedDetails } from '@n8n/api-types';
-import { Logger } from '@n8n/backend-common';
+import type { SourceControlledFile, WorkflowPublishBlockedDetails } from '@MNI/api-types';
+import { Logger } from '@MNI/backend-common';
 import type {
 	FindOptionsWhere,
 	Project,
@@ -7,7 +7,7 @@ import type {
 	User,
 	Variables,
 	WorkflowEntity,
-} from '@n8n/db';
+} from '@MNI/db';
 import {
 	CredentialsRepository,
 	FolderRepository,
@@ -22,24 +22,24 @@ import {
 	WorkflowRepository,
 	WorkflowTagMapping,
 	WorkflowTagMappingRepository,
-} from '@n8n/db';
-import type { PolicyCleared } from '@n8n/decorators';
-import { Service } from '@n8n/di';
-import { PROJECT_ADMIN_ROLE_SLUG } from '@n8n/permissions';
-import { In, type DataSourceOptions, type EntityManager } from '@n8n/typeorm';
-import { ensureError } from '@n8n/utils/errors/ensure-error';
-import { sleep } from '@n8n/utils/sleep';
+} from '@MNI/db';
+import type { PolicyCleared } from '@MNI/decorators';
+import { Service } from '@MNI/di';
+import { PROJECT_ADMIN_ROLE_SLUG } from '@MNI/permissions';
+import { In, type DataSourceOptions, type EntityManager } from '@MNI/typeorm';
+import { ensureError } from '@MNI/utils/errors/ensure-error';
+import { sleep } from '@MNI/utils/sleep';
 import glob from 'fast-glob';
 import isEqual from 'lodash/isEqual';
-import { Credentials, ErrorReporter, InstanceSettings } from 'n8n-core';
-import type { AutoPublishMode } from 'n8n-workflow';
+import { Credentials, ErrorReporter, InstanceSettings } from 'MNI-core';
+import type { AutoPublishMode } from 'MNI-workflow';
 import {
 	shouldAutoPublishWorkflow,
 	jsonParse,
 	OperationalError,
 	UnexpectedError,
 	UserError,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import { readFile as fsReadFile } from 'node:fs/promises';
 import path from 'path';
 

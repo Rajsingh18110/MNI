@@ -24,11 +24,11 @@ import { useDataTableColumns } from '@/features/core/dataTable/composables/useDa
 import { useDataTableSelection } from '@/features/core/dataTable/composables/useDataTableSelection';
 import { useDataTableOperations } from '@/features/core/dataTable/composables/useDataTableOperations';
 import { useDataTableColumnFilters } from '@/features/core/dataTable/composables/useDataTableColumnFilters';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import { GRID_FILTER_CONFIG } from '@/features/core/dataTable/utils/filterMappings';
-import { useDebounce } from '@n8n/composables/useDebounce';
+import { useDebounce } from '@MNI/composables/useDebounce';
 
-import { N8nPagination, N8nSelectedItemsInfo } from '@n8n/design-system';
+import { N8nPagination, N8nSelectedItemsInfo } from '@MNI/design-system';
 registerAgGridModulesOnce();
 
 type Props = {
@@ -414,7 +414,7 @@ defineExpose({
 		}
 	}
 
-	:global(.ag-row[row-id='__n8n_add_row__']) {
+	:global(.ag-row[row-id='__MNI_add_row__']) {
 		border-bottom: none;
 	}
 

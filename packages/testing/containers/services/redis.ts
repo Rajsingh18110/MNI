@@ -55,10 +55,10 @@ export const redis: Service<RedisResult> = {
 			...(external ? { EXECUTIONS_MODE: 'queue' } : {}),
 			QUEUE_BULL_REDIS_HOST: host,
 			QUEUE_BULL_REDIS_PORT: port,
-			N8N_CACHE_ENABLED: 'true',
-			N8N_CACHE_BACKEND: 'redis',
-			N8N_CACHE_REDIS_HOST: host,
-			N8N_CACHE_REDIS_PORT: port,
+			MNI_CACHE_ENABLED: 'true',
+			MNI_CACHE_BACKEND: 'redis',
+			MNI_CACHE_REDIS_HOST: host,
+			MNI_CACHE_REDIS_PORT: port,
 		};
 	},
 };

@@ -3,11 +3,11 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 
 /* eslint-disable @typescript-eslint/no-unsafe-call */
-import { Logger, isObjectLiteral } from '@n8n/backend-common';
-import type { User } from '@n8n/db';
-import { Service } from '@n8n/di';
+import { Logger, isObjectLiteral } from '@MNI/backend-common';
+import type { User } from '@MNI/db';
+import { Service } from '@MNI/di';
 import get from 'lodash/get';
-import { CredentialTestContext, ErrorReporter, ExecuteContext, RoutingNode } from 'n8n-core';
+import { CredentialTestContext, ErrorReporter, ExecuteContext, RoutingNode } from 'MNI-core';
 import type {
 	ICredentialsDecrypted,
 	ICredentialsHelper,
@@ -22,8 +22,8 @@ import type {
 	ICredentialTestFunctions,
 	IExecuteData,
 	IWorkflowExecuteAdditionalData,
-} from 'n8n-workflow';
-import { VersionedNodeType, Workflow, createEmptyRunExecutionData } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { VersionedNodeType, Workflow, createEmptyRunExecutionData } from 'MNI-workflow';
 
 import { CredentialTypes } from '@/credential-types';
 import { NodeTypes } from '@/node-types';
@@ -401,7 +401,7 @@ export class CredentialsTester {
 		if (credentialTestFunction.nodeType) {
 			nodeType = credentialTestFunction.nodeType;
 		} else {
-			nodeType = this.nodeTypes.getByNameAndVersion('n8n-nodes-base.noOp');
+			nodeType = this.nodeTypes.getByNameAndVersion('MNI-nodes-base.noOp');
 		}
 
 		const node: INode = {

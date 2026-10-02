@@ -2,12 +2,12 @@
 import uniqBy from 'lodash/uniqBy';
 import { computed, onBeforeUnmount, onMounted, ref } from 'vue';
 import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';
-import { type ITemplatesWorkflowFull } from '@n8n/rest-api-client';
+import { type ITemplatesWorkflowFull } from '@MNI/rest-api-client';
 import { useRecommendedTemplatesStore } from '../recommendedTemplates.store';
 import { useRouter } from 'vue-router';
 import NodeIcon from '@/app/components/NodeIcon.vue';
-import { useI18n } from '@n8n/i18n';
-import { N8nCard, N8nIcon, N8nTag, N8nText } from '@n8n/design-system';
+import { useI18n } from '@MNI/i18n';
+import { N8nCard, N8nIcon, N8nTag, N8nText } from '@MNI/design-system';
 import {
 	keyFromCredentialTypeAndName,
 	normalizeTemplateNodeCredentials,

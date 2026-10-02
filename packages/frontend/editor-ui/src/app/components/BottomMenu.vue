@@ -7,13 +7,13 @@ import {
 	isCustomMenuItem,
 	type IMenuItem,
 	type IMenuElement,
-} from '@n8n/design-system';
+} from '@MNI/design-system';
 import { CHANGELOG_URL } from '@/app/constants';
-import { useVersionsStore } from '@n8n/stores/versions.store';
+import { useVersionsStore } from '@MNI/stores/versions.store';
 import VersionUpdateCTA from '@/app/components/VersionUpdateCTA.vue';
-import { useUsersStore } from '@n8n/stores/users.store';
+import { useUsersStore } from '@MNI/stores/users.store';
 
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 
 defineProps<{
 	items: IMenuItem[];
@@ -204,7 +204,7 @@ function onLogout() {
 }
 
 .resourceCenterMenuItem {
-	:global(.n8n-text) {
+	:global(.MNI-text) {
 		color: var(--color--primary);
 	}
 }

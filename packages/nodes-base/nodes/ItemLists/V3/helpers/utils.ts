@@ -3,8 +3,8 @@ import type {
 	IBinaryData,
 	INodeExecutionData,
 	GenericValue,
-} from 'n8n-workflow';
-import { NodeOperationError, UserError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeOperationError, UserError } from 'MNI-workflow';
 
 import { JsTaskRunnerSandbox } from '../../../Code/JsTaskRunnerSandbox';
 

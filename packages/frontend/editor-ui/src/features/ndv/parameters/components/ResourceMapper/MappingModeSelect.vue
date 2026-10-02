@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import type { INodePropertyTypeOptions, ResourceMapperFields } from 'n8n-workflow';
+import type { INodePropertyTypeOptions, ResourceMapperFields } from 'MNI-workflow';
 import { computed, ref, watch } from 'vue';
-import { i18n as locale } from '@n8n/i18n';
+import { i18n as locale } from '@MNI/i18n';
 import { useNodeSpecificationValues } from '../../composables/useNodeSpecificationValues';
-import { N8nIcon, N8nInputLabel, N8nLink, N8nOption, N8nSelect, N8nText } from '@n8n/design-system';
+import { N8nIcon, N8nInputLabel, N8nLink, N8nOption, N8nSelect, N8nText } from '@MNI/design-system';
 interface Props {
 	initialValue: string;
 	fieldsToMap: ResourceMapperFields['fields'];
@@ -130,7 +130,7 @@ defineExpose({
 							<div class="option-headline">
 								{{ option.name }}
 							</div>
-							<div v-n8n-html="option.description" class="option-description" />
+							<div v-MNI-html="option.description" class="option-description" />
 						</div>
 					</N8nOption>
 				</N8nSelect>

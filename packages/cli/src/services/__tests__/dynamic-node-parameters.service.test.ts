@@ -1,12 +1,12 @@
-import { Logger } from '@n8n/backend-common';
-import { OutboundHttp } from '@n8n/backend-network';
-import type { HttpRequestClient } from '@n8n/backend-network';
-import { mockInstance } from '@n8n/backend-test-utils';
-import { CredentialsRepository, SharedWorkflowRepository } from '@n8n/db';
-import type { CredentialsEntity } from '@n8n/db';
-import type { User } from '@n8n/db';
-import { Container } from '@n8n/di';
-import { RoutingNode } from 'n8n-core';
+import { Logger } from '@MNI/backend-common';
+import { OutboundHttp } from '@MNI/backend-network';
+import type { HttpRequestClient } from '@MNI/backend-network';
+import { mockInstance } from '@MNI/backend-test-utils';
+import { CredentialsRepository, SharedWorkflowRepository } from '@MNI/db';
+import type { CredentialsEntity } from '@MNI/db';
+import type { User } from '@MNI/db';
+import { Container } from '@MNI/di';
+import { RoutingNode } from 'MNI-core';
 import {
 	type ILoadOptionsFunctions,
 	type INodeParameters,
@@ -15,13 +15,13 @@ import {
 	type IWorkflowExecuteAdditionalData,
 	type ResourceMapperFields,
 	Expression,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import type { Mock, MockInstance } from 'vitest';
 import { mock } from 'vitest-mock-extended';
 
-vi.mock('n8n-core', async () => {
+vi.mock('MNI-core', async () => {
 	return {
-		...(await vi.importActual('n8n-core')),
+		...(await vi.importActual('MNI-core')),
 		RoutingNode: vi.fn(),
 	};
 });

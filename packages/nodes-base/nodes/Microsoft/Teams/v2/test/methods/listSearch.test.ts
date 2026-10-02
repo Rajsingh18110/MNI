@@ -1,5 +1,5 @@
-import { NodeApiError, UserError, type ILoadOptionsFunctions, type INode } from 'n8n-workflow';
-import { sleep } from '@n8n/utils/sleep';
+import { NodeApiError, UserError, type ILoadOptionsFunctions, type INode } from 'MNI-workflow';
+import { sleep } from '@MNI/utils/sleep';
 import type { Mock } from 'vitest';
 import type { DeepMockProxy } from 'vitest-mock-extended';
 import { mock, mockDeep } from 'vitest-mock-extended';
@@ -24,7 +24,7 @@ vi.mock('../../transport', async () => {
 
 // `getChats` retries through `sleep(1000)` between attempts; stub it so the
 // retry-count/no-final-sleep assertions below run instantly instead of for real seconds.
-vi.mock('@n8n/utils/sleep', () => ({
+vi.mock('@MNI/utils/sleep', () => ({
 	sleep: vi.fn().mockResolvedValue(undefined),
 }));
 

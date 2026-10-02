@@ -1,6 +1,6 @@
 import { AUTOCOMPLETABLE_BUILT_IN_MODULES_JS } from '../constants';
 import type { Completion, CompletionContext, CompletionResult } from '@codemirror/autocomplete';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { matchBeforeCursor } from './utils';
 
 export function useRequireCompletions() {

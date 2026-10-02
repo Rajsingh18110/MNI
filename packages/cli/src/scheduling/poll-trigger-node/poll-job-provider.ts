@@ -1,7 +1,7 @@
-import { Logger } from '@n8n/backend-common';
-import { GlobalConfig, WorkflowsConfig } from '@n8n/config';
-import { Container, Service } from '@n8n/di';
-import { NoOpPollJobManager, PollJobManager } from 'n8n-core';
+import { Logger } from '@MNI/backend-common';
+import { GlobalConfig, WorkflowsConfig } from '@MNI/config';
+import { Container, Service } from '@MNI/di';
+import { NoOpPollJobManager, PollJobManager } from 'MNI-core';
 
 import { isDurablePollerChainEnabled } from './durable-poller-chain';
 import { PollTriggerJobRegistrar } from './poll-trigger-job-registrar';
@@ -32,7 +32,7 @@ export class PollJobProvider {
 			!this.workflowsConfig.useWorkflowPublicationService
 		) {
 			this.logger.warn(
-				'N8N_SCHEDULER_ENABLED is set but the workflow publication service is disabled. The durable scheduler cannot take over poll triggers, which keep using the legacy in-memory engine.',
+				'MNI_SCHEDULER_ENABLED is set but the workflow publication service is disabled. The durable scheduler cannot take over poll triggers, which keep using the legacy in-memory engine.',
 			);
 		}
 

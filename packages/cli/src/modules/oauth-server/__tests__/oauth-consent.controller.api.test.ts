@@ -1,11 +1,11 @@
-import { testDb } from '@n8n/backend-test-utils';
-import type { User } from '@n8n/db';
-import { Container } from '@n8n/di';
+import { testDb } from '@MNI/backend-test-utils';
+import type { User } from '@MNI/db';
+import { Container } from '@MNI/di';
 
 import { McpSettingsService } from '@/modules/mcp/mcp.settings.service';
 import { JwtService } from '@/services/jwt.service';
 import { ProtectedResourceRegistry } from '@/services/protected-resource.registry';
-import { UrlService } from '@n8n/backend-services';
+import { UrlService } from '@MNI/backend-services';
 import { createOwner, createMember } from '@test-integration/db/users';
 import { setupTestServer } from '@test-integration/utils';
 
@@ -76,7 +76,7 @@ describe('GET /rest/consent/details', () => {
 		const response = await testServer
 			.authAgentFor(owner)
 			.get('/consent/details')
-			.set('Cookie', `n8n-oauth-session=${sessionToken}`);
+			.set('Cookie', `MNI-oauth-session=${sessionToken}`);
 
 		expect(response.statusCode).toBe(200);
 		expect(response.body.data).toEqual({
@@ -121,7 +121,7 @@ describe('GET /rest/consent/details', () => {
 		const response = await testServer
 			.authAgentFor(owner)
 			.get('/consent/details')
-			.set('Cookie', `n8n-oauth-session=${sessionToken}`);
+			.set('Cookie', `MNI-oauth-session=${sessionToken}`);
 
 		expect(response.statusCode).toBe(200);
 		expect(response.body.data).toEqual({
@@ -154,7 +154,7 @@ describe('GET /rest/consent/details', () => {
 		const response = await testServer
 			.authAgentFor(owner)
 			.get('/consent/details')
-			.set('Cookie', `n8n-oauth-session=${sessionToken}`);
+			.set('Cookie', `MNI-oauth-session=${sessionToken}`);
 
 		expect(response.statusCode).toBe(422);
 		expect(response.body).toEqual({
@@ -181,7 +181,7 @@ describe('GET /rest/consent/details', () => {
 		const response = await testServer
 			.authAgentFor(owner)
 			.get('/consent/details')
-			.set('Cookie', 'n8n-oauth-session=invalid-token');
+			.set('Cookie', 'MNI-oauth-session=invalid-token');
 
 		expect(response.statusCode).toBeGreaterThanOrEqual(400);
 		expect(response.body).toEqual({
@@ -203,7 +203,7 @@ describe('GET /rest/consent/details', () => {
 		const response = await testServer
 			.authAgentFor(owner)
 			.get('/consent/details')
-			.set('Cookie', `n8n-oauth-session=${sessionToken}`);
+			.set('Cookie', `MNI-oauth-session=${sessionToken}`);
 
 		expect(response.statusCode).toBeGreaterThanOrEqual(400);
 		expect(response.body).toEqual({
@@ -216,12 +216,12 @@ describe('GET /rest/consent/details', () => {
 		const response = await testServer
 			.authAgentFor(owner)
 			.get('/consent/details')
-			.set('Cookie', 'n8n-oauth-session=invalid-token');
+			.set('Cookie', 'MNI-oauth-session=invalid-token');
 
 		expect(response.statusCode).toBeGreaterThanOrEqual(400);
 		const setCookieHeader = response.headers['set-cookie'];
 		expect(setCookieHeader).toBeDefined();
-		expect(setCookieHeader[0]).toContain('n8n-oauth-session=');
+		expect(setCookieHeader[0]).toContain('MNI-oauth-session=');
 		expect(setCookieHeader[0]).toMatch(/Max-Age=0|Expires=Thu, 01 Jan 1970/);
 	});
 
@@ -252,7 +252,7 @@ describe('GET /rest/consent/details', () => {
 		const ownerResponse = await testServer
 			.authAgentFor(owner)
 			.get('/consent/details')
-			.set('Cookie', `n8n-oauth-session=${sessionToken}`);
+			.set('Cookie', `MNI-oauth-session=${sessionToken}`);
 
 		expect(ownerResponse.statusCode).toBe(200);
 		expect(ownerResponse.body.data.clientName).toBe('Test Client 2');
@@ -260,7 +260,7 @@ describe('GET /rest/consent/details', () => {
 		const memberResponse = await testServer
 			.authAgentFor(member)
 			.get('/consent/details')
-			.set('Cookie', `n8n-oauth-session=${sessionToken}`);
+			.set('Cookie', `MNI-oauth-session=${sessionToken}`);
 
 		expect(memberResponse.statusCode).toBe(200);
 		expect(memberResponse.body.data.clientName).toBe('Test Client 2');
@@ -294,7 +294,7 @@ describe('POST /rest/consent/approve', () => {
 		const response = await testServer
 			.authAgentFor(owner)
 			.post('/consent/approve')
-			.set('Cookie', `n8n-oauth-session=${sessionToken}`)
+			.set('Cookie', `MNI-oauth-session=${sessionToken}`)
 			.send({ approved: true, scopes: ['workflow:read'] });
 
 		expect(response.statusCode).toBe(200);
@@ -316,7 +316,7 @@ describe('POST /rest/consent/approve', () => {
 		const response = await testServer
 			.authAgentFor(owner)
 			.post('/consent/approve')
-			.set('Cookie', `n8n-oauth-session=${sessionToken}`)
+			.set('Cookie', `MNI-oauth-session=${sessionToken}`)
 			.send({ approved: false });
 
 		expect(response.statusCode).toBe(200);
@@ -338,14 +338,14 @@ describe('POST /rest/consent/approve', () => {
 		const response = await testServer
 			.authAgentFor(owner)
 			.post('/consent/approve')
-			.set('Cookie', `n8n-oauth-session=${sessionToken}`)
+			.set('Cookie', `MNI-oauth-session=${sessionToken}`)
 			.send({ approved: true, scopes: ['workflow:read'] });
 
 		expect(response.statusCode).toBe(200);
 
 		const setCookieHeader = response.headers['set-cookie'];
 		expect(setCookieHeader).toBeDefined();
-		expect(setCookieHeader[0]).toContain('n8n-oauth-session=');
+		expect(setCookieHeader[0]).toContain('MNI-oauth-session=');
 		expect(setCookieHeader[0]).toMatch(/Max-Age=0|Expires=Thu, 01 Jan 1970/);
 	});
 
@@ -353,7 +353,7 @@ describe('POST /rest/consent/approve', () => {
 		const response = await testServer
 			.authAgentFor(owner)
 			.post('/consent/approve')
-			.set('Cookie', `n8n-oauth-session=${sessionToken}`)
+			.set('Cookie', `MNI-oauth-session=${sessionToken}`)
 			.send({});
 
 		expect(response.statusCode).toBeGreaterThanOrEqual(400);
@@ -368,7 +368,7 @@ describe('POST /rest/consent/approve', () => {
 		const response = await testServer
 			.authAgentFor(owner)
 			.post('/consent/approve')
-			.set('Cookie', `n8n-oauth-session=${sessionToken}`)
+			.set('Cookie', `MNI-oauth-session=${sessionToken}`)
 			.send({ approved: 'yes' });
 
 		expect(response.statusCode).toBeGreaterThanOrEqual(400);
@@ -397,7 +397,7 @@ describe('POST /rest/consent/approve', () => {
 		const response = await testServer
 			.authAgentFor(owner)
 			.post('/consent/approve')
-			.set('Cookie', 'n8n-oauth-session=invalid-token')
+			.set('Cookie', 'MNI-oauth-session=invalid-token')
 			.send({ approved: true, scopes: ['workflow:read'] });
 
 		expect(response.statusCode).toBeGreaterThanOrEqual(400);
@@ -408,19 +408,19 @@ describe('POST /rest/consent/approve', () => {
 		const response = await testServer
 			.authAgentFor(owner)
 			.post('/consent/approve')
-			.set('Cookie', 'n8n-oauth-session=invalid-token')
+			.set('Cookie', 'MNI-oauth-session=invalid-token')
 			.send({ approved: true, scopes: ['workflow:read'] });
 
 		const setCookieHeader = response.headers['set-cookie'];
 		expect(setCookieHeader).toBeDefined();
-		expect(setCookieHeader[0]).toContain('n8n-oauth-session=');
+		expect(setCookieHeader[0]).toContain('MNI-oauth-session=');
 		expect(setCookieHeader[0]).toMatch(/Max-Age=0|Expires=Thu, 01 Jan 1970/);
 	});
 
 	test('should require authentication', async () => {
 		const response = await testServer.authlessAgent
 			.post('/consent/approve')
-			.set('Cookie', `n8n-oauth-session=${sessionToken}`)
+			.set('Cookie', `MNI-oauth-session=${sessionToken}`)
 			.send({ approved: true, scopes: ['workflow:read'] });
 
 		expect(response.statusCode).toBe(401);
@@ -430,7 +430,7 @@ describe('POST /rest/consent/approve', () => {
 		const response = await testServer
 			.authAgentFor(owner)
 			.post('/consent/approve')
-			.set('Cookie', `n8n-oauth-session=${sessionToken}`)
+			.set('Cookie', `MNI-oauth-session=${sessionToken}`)
 			.send({ approved: true, scopes: ['workflow:read'] });
 
 		expect(response.statusCode).toBe(200);
@@ -453,7 +453,7 @@ describe('POST /rest/consent/approve', () => {
 		const response = await testServer
 			.authAgentFor(owner)
 			.post('/consent/approve')
-			.set('Cookie', `n8n-oauth-session=${sessionToken}`)
+			.set('Cookie', `MNI-oauth-session=${sessionToken}`)
 			.send({ approved: false });
 
 		expect(response.statusCode).toBe(200);
@@ -473,7 +473,7 @@ describe('POST /rest/consent/approve', () => {
 		const ownerResponse = await testServer
 			.authAgentFor(owner)
 			.post('/consent/approve')
-			.set('Cookie', `n8n-oauth-session=${sessionToken}`)
+			.set('Cookie', `MNI-oauth-session=${sessionToken}`)
 			.send({ approved: true, scopes: ['workflow:read'] });
 
 		expect(ownerResponse.statusCode).toBe(200);
@@ -489,7 +489,7 @@ describe('POST /rest/consent/approve', () => {
 		const memberResponse = await testServer
 			.authAgentFor(member)
 			.post('/consent/approve')
-			.set('Cookie', `n8n-oauth-session=${newSessionToken}`)
+			.set('Cookie', `MNI-oauth-session=${newSessionToken}`)
 			.send({ approved: false });
 
 		expect(memberResponse.statusCode).toBe(200);
@@ -519,7 +519,7 @@ describe('Consent Flow - End-to-End', () => {
 		const detailsResponse = await testServer
 			.authAgentFor(owner)
 			.get('/consent/details')
-			.set('Cookie', `n8n-oauth-session=${sessionToken}`);
+			.set('Cookie', `MNI-oauth-session=${sessionToken}`);
 
 		expect(detailsResponse.statusCode).toBe(200);
 		expect(detailsResponse.body.data.clientName).toBe('End-to-End Test Client');
@@ -527,7 +527,7 @@ describe('Consent Flow - End-to-End', () => {
 		const approvalResponse = await testServer
 			.authAgentFor(owner)
 			.post('/consent/approve')
-			.set('Cookie', `n8n-oauth-session=${sessionToken}`)
+			.set('Cookie', `MNI-oauth-session=${sessionToken}`)
 			.send({ approved: true, scopes: ['workflow:read'] });
 
 		expect(approvalResponse.statusCode).toBe(200);
@@ -537,7 +537,7 @@ describe('Consent Flow - End-to-End', () => {
 
 		const setCookieHeader = approvalResponse.headers['set-cookie'];
 		expect(setCookieHeader).toBeDefined();
-		expect(setCookieHeader[0]).toContain('n8n-oauth-session=');
+		expect(setCookieHeader[0]).toContain('MNI-oauth-session=');
 		expect(setCookieHeader[0]).toMatch(/Max-Age=0|Expires=Thu, 01 Jan 1970/);
 	});
 });

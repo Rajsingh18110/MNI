@@ -1,12 +1,12 @@
 import type { MockProxy } from 'vitest-mock-extended';
 import { mock } from 'vitest-mock-extended';
-import type { IExecuteFunctions } from 'n8n-workflow';
+import type { IExecuteFunctions } from 'MNI-workflow';
 
 import { bodyToRpcArgs, odooApiRequest } from '../../../v2/transport';
-import type * as _importType0 from 'n8n-workflow';
+import type * as _importType0 from 'MNI-workflow';
 
-vi.mock('n8n-workflow', async () => ({
-	...(await vi.importActual<typeof _importType0>('n8n-workflow')),
+vi.mock('MNI-workflow', async () => ({
+	...(await vi.importActual<typeof _importType0>('MNI-workflow')),
 	randomInt: vi.fn(() => 1),
 }));
 
@@ -103,7 +103,7 @@ describe('odooApiRequest', () => {
 
 	beforeEach(() => {
 		ctx = mock<IExecuteFunctions>();
-		ctx.getNode.mockReturnValue({ name: 'Odoo', type: 'n8n-nodes-base.odoo' } as any);
+		ctx.getNode.mockReturnValue({ name: 'Odoo', type: 'MNI-nodes-base.odoo' } as any);
 	});
 
 	afterEach(() => vi.clearAllMocks());

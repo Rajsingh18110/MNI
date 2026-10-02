@@ -1,7 +1,7 @@
-import type { MetricScale } from '@n8n/api-types';
+import type { MetricScale } from '@MNI/api-types';
 import { computed, type Ref } from 'vue';
 
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 
 import type { EvalCollectionRunStatus, EvaluationCollectionDetail } from '../evalCollections.types';
 import { buildScoreShapedMetricGroups, formatMetricLabel, indexOfMax } from '../evaluation.utils';

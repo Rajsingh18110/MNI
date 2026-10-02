@@ -1,7 +1,7 @@
 import { computed } from 'vue';
-import type { INode } from 'n8n-workflow';
+import type { INode } from 'MNI-workflow';
 import { useRouter } from 'vue-router';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { useWorkflowSaving } from '@/app/composables/useWorkflowSaving';
 import { useAiGatewayStore } from '@/app/stores/aiGateway.store';
 

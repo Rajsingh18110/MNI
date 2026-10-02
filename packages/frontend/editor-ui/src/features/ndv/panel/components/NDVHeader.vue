@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import NodeIcon from '@/app/components/NodeIcon.vue';
 import { getNodeIconSize, type NodeIconSource } from '@/app/utils/nodeIcon';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import { computed } from 'vue';
 
 import {
@@ -11,7 +11,7 @@ import {
 	N8nLink,
 	N8nText,
 	N8nTooltip,
-} from '@n8n/design-system';
+} from '@MNI/design-system';
 const props = defineProps<{
 	nodeName: string;
 	nodeTypeName: string;

@@ -1,5 +1,5 @@
-import type { NodeExecutionHint } from 'n8n-workflow';
-import { UserError } from 'n8n-workflow';
+import type { NodeExecutionHint } from 'MNI-workflow';
+import { UserError } from 'MNI-workflow';
 
 /**
  * Nodes that take a list of field names report one hint per field they couldn't

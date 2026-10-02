@@ -1,7 +1,7 @@
-import { DeleteExecutionsDto, ExecutionRedactionQueryDtoSchema } from '@n8n/api-types';
-import type { AuthenticatedRequest, User, ExecutionSummaries } from '@n8n/db';
-import { Body, Get, Patch, Post, RestController } from '@n8n/decorators';
-import type { Scope } from '@n8n/permissions';
+import { DeleteExecutionsDto, ExecutionRedactionQueryDtoSchema } from '@MNI/api-types';
+import type { AuthenticatedRequest, User, ExecutionSummaries } from '@MNI/db';
+import { Body, Get, Patch, Post, RestController } from '@MNI/decorators';
+import type { Scope } from '@MNI/permissions';
 import type { Response } from 'express';
 
 import { BadRequestError } from '@/errors/response-errors/bad-request.error';

@@ -1,14 +1,14 @@
-import { mockInstance } from '@n8n/backend-test-utils';
-import { ExecutionsConfig, GlobalConfig, WorkflowsConfig } from '@n8n/config';
-import type { WorkflowEntity, Project, WorkflowHistory } from '@n8n/db';
+import { mockInstance } from '@MNI/backend-test-utils';
+import { ExecutionsConfig, GlobalConfig, WorkflowsConfig } from '@MNI/config';
+import type { WorkflowEntity, Project, WorkflowHistory } from '@MNI/db';
 import {
 	ExecutionRepository,
 	ExecutionDataRepository,
 	WorkflowPublishHistoryRepository,
 	WorkflowRepository,
-} from '@n8n/db';
-import { Container } from '@n8n/di';
-import { ExternalSecretsProxy, WorkflowExecute } from 'n8n-core';
+} from '@MNI/db';
+import { Container } from '@MNI/di';
+import { ExternalSecretsProxy, WorkflowExecute } from 'MNI-core';
 import type {
 	IWorkflowBase,
 	IExecuteWorkflowInfo,
@@ -21,8 +21,8 @@ import type {
 	WorkflowExecuteMode,
 	ExecuteAgentWorkflowContext,
 	IRunExecutionData,
-} from 'n8n-workflow';
-import { createRunExecutionData } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { createRunExecutionData } from 'MNI-workflow';
 import type PCancelable from 'p-cancelable';
 import type { MockInstance } from 'vitest';
 import { mock } from 'vitest-mock-extended';
@@ -42,7 +42,7 @@ import { hashAgentSandboxPrincipal } from '@/modules/agents/agent-sandbox-princi
 import { AgentWorkflowExecutionService } from '@/modules/agents/agent-workflow-execution.service';
 import { DataTableProxyService } from '@/modules/data-table/data-table-proxy.service';
 import { OwnershipService } from '@/services/ownership.service';
-import { UrlService } from '@n8n/backend-services';
+import { UrlService } from '@MNI/backend-services';
 import { WorkflowStatisticsService } from '@/services/workflow-statistics.service';
 import { Telemetry } from '@/telemetry';
 import {
@@ -102,9 +102,9 @@ const getCancelablePromise = async (run: IRun) =>
 
 const processRunExecutionData = vi.fn();
 
-vi.mock('n8n-core', async () => ({
+vi.mock('MNI-core', async () => ({
 	__esModule: true,
-	...(await vi.importActual<typeof import('n8n-core')>('n8n-core')),
+	...(await vi.importActual<typeof import('MNI-core')>('MNI-core')),
 	WorkflowExecute: vi.fn(function () {
 		return { processRunExecutionData };
 	}),
@@ -150,10 +150,10 @@ describe('WorkflowExecuteAdditionalData', () => {
 		const payload = {
 			msg: 'test message',
 			executionId: '123',
-			nodeName: 'n8n-memory',
+			nodeName: 'MNI-memory',
 			workflowId: 'workflow-id',
 			workflowName: 'workflow-name',
-			nodeType: 'n8n-memory',
+			nodeType: 'MNI-memory',
 		};
 
 		additionalData.logAiEvent(eventName, payload);
@@ -975,7 +975,7 @@ describe('WorkflowExecuteAdditionalData', () => {
 			name: 'test',
 			nodes: [
 				{
-					type: 'n8n-nodes-base.executeWorkflowTrigger',
+					type: 'MNI-nodes-base.executeWorkflowTrigger',
 				},
 			],
 			active: false,
@@ -1061,7 +1061,7 @@ describe('WorkflowExecuteAdditionalData', () => {
 			const activeVersionNodes: INode[] = [
 				mock<INode>({
 					id: 'active-node',
-					type: 'n8n-nodes-base.set',
+					type: 'MNI-nodes-base.set',
 					name: 'Active Node',
 					typeVersion: 1,
 					parameters: {},
@@ -1072,7 +1072,7 @@ describe('WorkflowExecuteAdditionalData', () => {
 			const currentNodes: INode[] = [
 				mock<INode>({
 					id: 'current-node',
-					type: 'n8n-nodes-base.set',
+					type: 'MNI-nodes-base.set',
 					name: 'Current Node',
 					typeVersion: 1,
 					parameters: {},
@@ -1115,7 +1115,7 @@ describe('WorkflowExecuteAdditionalData', () => {
 			const currentNodes: INode[] = [
 				mock<INode>({
 					id: 'current-node',
-					type: 'n8n-nodes-base.set',
+					type: 'MNI-nodes-base.set',
 					name: 'Current Node',
 					typeVersion: 1,
 					parameters: {},
@@ -1185,7 +1185,7 @@ describe('WorkflowExecuteAdditionalData', () => {
 				nodes: [
 					mock<INode>({
 						id: 'node1',
-						type: 'n8n-nodes-base.set',
+						type: 'MNI-nodes-base.set',
 						name: 'Node 1',
 						typeVersion: 1,
 						parameters: {},
@@ -1228,7 +1228,7 @@ describe('WorkflowExecuteAdditionalData', () => {
 				mock<INode>({
 					id: 'mapping-node',
 					name: 'Mapping Node',
-					type: 'n8n-nodes-base.set',
+					type: 'MNI-nodes-base.set',
 					typeVersion: 1,
 					parameters: {},
 					position: [0, 0],
@@ -1273,7 +1273,7 @@ describe('WorkflowExecuteAdditionalData', () => {
 			const activeVersionNodes: INode[] = [
 				mock<INode>({
 					id: 'active-node',
-					type: 'n8n-nodes-base.set',
+					type: 'MNI-nodes-base.set',
 					name: 'Active Node',
 					typeVersion: 1,
 					parameters: {},
@@ -1284,7 +1284,7 @@ describe('WorkflowExecuteAdditionalData', () => {
 			const draftNodes: INode[] = [
 				mock<INode>({
 					id: 'draft-node',
-					type: 'n8n-nodes-base.set',
+					type: 'MNI-nodes-base.set',
 					name: 'Draft Node',
 					typeVersion: 1,
 					parameters: {},
@@ -1324,7 +1324,7 @@ describe('WorkflowExecuteAdditionalData', () => {
 			const draftNodes: INode[] = [
 				mock<INode>({
 					id: 'draft-node',
-					type: 'n8n-nodes-base.set',
+					type: 'MNI-nodes-base.set',
 					name: 'Draft Node',
 					typeVersion: 1,
 					parameters: {},
@@ -1511,7 +1511,7 @@ describe('WorkflowExecuteAdditionalData', () => {
 			workflowName: 'My workflow',
 			callingNodeName: 'Message an Agent',
 			hasCallerSessionId: true,
-			nodes: [{ name: 'Webhook', type: 'n8n-nodes-base.webhook' }],
+			nodes: [{ name: 'Webhook', type: 'MNI-nodes-base.webhook' }],
 			runExecutionData: { resultData: { runData: {} } } as unknown as IRunExecutionData,
 		});
 
@@ -1654,7 +1654,7 @@ describe('WorkflowExecuteAdditionalData', () => {
 				workflowName: 'My workflow',
 				callingNodeName: 'Message an Agent',
 				hasCallerSessionId: true,
-				nodes: [{ name: 'Webhook', type: 'n8n-nodes-base.webhook' }],
+				nodes: [{ name: 'Webhook', type: 'MNI-nodes-base.webhook' }],
 				runExecutionData: { resultData: { runData: {} } } as unknown as IRunExecutionData,
 			};
 
@@ -2048,7 +2048,7 @@ describe('WorkflowExecuteAdditionalData', () => {
 
 		function trigger(typeVersion: number, returnOutput?: string): INode {
 			return mock<INode>({
-				type: 'n8n-nodes-base.executeWorkflowTrigger',
+				type: 'MNI-nodes-base.executeWorkflowTrigger',
 				typeVersion,
 				parameters: returnOutput === undefined ? {} : { returnOutput },
 			});
@@ -2125,7 +2125,7 @@ describe('WorkflowExecuteAdditionalData', () => {
 	describe('triggerReturnsLastRunOnly', () => {
 		function trigger(typeVersion: number, returnOutput?: string): INode {
 			return mock<INode>({
-				type: 'n8n-nodes-base.executeWorkflowTrigger',
+				type: 'MNI-nodes-base.executeWorkflowTrigger',
 				typeVersion,
 				parameters: returnOutput === undefined ? {} : { returnOutput },
 			});
@@ -2133,7 +2133,7 @@ describe('WorkflowExecuteAdditionalData', () => {
 
 		it('returns true when there is no Execute Workflow Trigger', () => {
 			expect(triggerReturnsLastRunOnly([])).toBe(true);
-			expect(triggerReturnsLastRunOnly([mock<INode>({ type: 'n8n-nodes-base.set' })])).toBe(true);
+			expect(triggerReturnsLastRunOnly([mock<INode>({ type: 'MNI-nodes-base.set' })])).toBe(true);
 		});
 
 		it('defaults pre-1.2 triggers to `lastRunOnly` (backward compat)', () => {

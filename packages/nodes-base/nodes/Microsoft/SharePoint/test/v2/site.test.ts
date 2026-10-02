@@ -1,5 +1,5 @@
-import type { IExecuteFunctions, ILoadOptionsFunctions, INode } from 'n8n-workflow';
-import { NodeApiError, NodeOperationError } from 'n8n-workflow';
+import type { IExecuteFunctions, ILoadOptionsFunctions, INode } from 'MNI-workflow';
+import { NodeApiError, NodeOperationError } from 'MNI-workflow';
 import type { Mock } from 'vitest';
 import type { DeepMockProxy } from 'vitest-mock-extended';
 import { mock, mockDeep } from 'vitest-mock-extended';

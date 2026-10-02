@@ -6,8 +6,8 @@ import type {
 	INode,
 	INodeExecutionData,
 	IPairedItemData,
-} from 'n8n-workflow';
-import { NodeApiError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeApiError } from 'MNI-workflow';
 
 import * as GenericFunctions from '../GenericFunctions';
 import { Harvest } from '../Harvest.node';
@@ -29,7 +29,7 @@ describe('Harvest Node', () => {
 	const mockNode: INode = {
 		id: 'test-node-id',
 		name: 'Harvest',
-		type: 'n8n-nodes-base.harvest',
+		type: 'MNI-nodes-base.harvest',
 		typeVersion: 1,
 		position: [0, 0],
 		parameters: {},

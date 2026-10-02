@@ -1,9 +1,9 @@
-import { Logger } from '@n8n/backend-common';
-import { ApiKeyRepository, type AuthenticatedRequest } from '@n8n/db';
-import { ControllerRegistryMetadata, type Controller } from '@n8n/decorators';
-import { Container } from '@n8n/di';
+import { Logger } from '@MNI/backend-common';
+import { ApiKeyRepository, type AuthenticatedRequest } from '@MNI/db';
+import { ControllerRegistryMetadata, type Controller } from '@MNI/decorators';
+import { Container } from '@MNI/di';
 import type { Request } from 'express';
-import { ErrorReporter } from 'n8n-core';
+import { ErrorReporter } from 'MNI-core';
 import type { Mock } from 'vitest';
 import { mock, mockDeep } from 'vitest-mock-extended';
 

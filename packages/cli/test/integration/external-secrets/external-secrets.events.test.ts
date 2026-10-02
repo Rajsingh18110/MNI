@@ -1,8 +1,8 @@
-import { Logger } from '@n8n/backend-common';
-import { mockInstance, mockLogger, testDb, testModules } from '@n8n/backend-test-utils';
-import { SecretsProviderConnectionRepository, SettingsRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
-import { Cipher } from 'n8n-core';
+import { Logger } from '@MNI/backend-common';
+import { mockInstance, mockLogger, testDb, testModules } from '@MNI/backend-test-utils';
+import { SecretsProviderConnectionRepository, SettingsRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
+import { Cipher } from 'MNI-core';
 
 import { ExternalSecretsProviders } from '@/modules/external-secrets.ee/external-secrets-providers.ee';
 import { ExternalSecretsConfig } from '@/modules/external-secrets.ee/external-secrets.config';

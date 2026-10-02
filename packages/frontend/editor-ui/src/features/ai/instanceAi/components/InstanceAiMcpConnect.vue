@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 import { computed, ref } from 'vue';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
-import { useRootStore } from '@n8n/stores/useRootStore';
-import type { InstanceAiMcpConnectServer } from '@n8n/api-types';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
+import { useRootStore } from '@MNI/stores/useRootStore';
+import type { InstanceAiMcpConnectServer } from '@MNI/api-types';
 
 import { useThread } from '../instanceAi.store';
 import InstanceAiMcpConnectCard from './InstanceAiMcpConnectCard.vue';

@@ -1,9 +1,9 @@
 import { computed, ref } from 'vue';
 import { describe, expect, it } from 'vitest';
-import type { WorkflowHistory } from '@n8n/rest-api-client/api/workflowHistory';
+import type { WorkflowHistory } from '@MNI/rest-api-client/api/workflowHistory';
 import { useWorkflowHistoryVersionOptions } from './useWorkflowHistoryVersionOptions';
 
-vi.mock('@n8n/i18n', () => ({
+vi.mock('@MNI/i18n', () => ({
 	useI18n: () => ({
 		baseText: (key: string) => key,
 	}),

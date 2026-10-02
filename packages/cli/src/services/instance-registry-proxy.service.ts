@@ -1,5 +1,5 @@
-import type { InstanceRegistration } from '@n8n/api-types';
-import { Service } from '@n8n/di';
+import type { InstanceRegistration } from '@MNI/api-types';
+import { Service } from '@MNI/di';
 
 export interface InstanceRegistryProvider {
 	getAllInstances(): Promise<InstanceRegistration[]>;

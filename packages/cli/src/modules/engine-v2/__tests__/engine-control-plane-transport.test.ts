@@ -2,10 +2,10 @@ import type {
 	HttpRequestClient,
 	HttpRequestClientOptions,
 	OutboundHttp,
-} from '@n8n/backend-network';
-import type { EngineConfig } from '@n8n/config';
-import type { ActionScope } from '@n8n/engine';
-import { InvalidActionTokenError, verifyActionToken } from '@n8n/engine';
+} from '@MNI/backend-network';
+import type { EngineConfig } from '@MNI/config';
+import type { ActionScope } from '@MNI/engine';
+import { InvalidActionTokenError, verifyActionToken } from '@MNI/engine';
 import { mock } from 'vitest-mock-extended';
 
 import { EngineControlPlaneTransport } from '../engine-control-plane-transport';
@@ -63,7 +63,7 @@ describe('EngineControlPlaneTransport', () => {
 			expect(clientOptions?.baseURL).toBe('https://cp.internal:8443');
 		});
 
-		it('opts out of SSRF protection for the n8n-controlled host', () => {
+		it('opts out of SSRF protection for the MNI-controlled host', () => {
 			newTransport().forScope('lifecycle-events:write');
 
 			expect(clientOptions?.useDefaultSsrfPolicy).toBe('unsafe');

@@ -1,6 +1,6 @@
-import { LICENSE_FEATURES } from '@n8n/constants';
-import { ControllerRegistryMetadata } from '@n8n/decorators';
-import { Container } from '@n8n/di';
+import { LICENSE_FEATURES } from '@MNI/constants';
+import { ControllerRegistryMetadata } from '@MNI/decorators';
+import { Container } from '@MNI/di';
 import type { Request, Response } from 'express';
 import { mock } from 'vitest-mock-extended';
 

@@ -1,5 +1,5 @@
-import { Service } from '@n8n/di';
-import type { EntityManager } from '@n8n/typeorm';
+import { Service } from '@MNI/di';
+import type { EntityManager } from '@MNI/typeorm';
 
 /**
  * Contract for a project-owned resource that lives outside the core transfer

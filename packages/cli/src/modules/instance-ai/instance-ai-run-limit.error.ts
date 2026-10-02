@@ -1,4 +1,4 @@
-import type { InstanceAiRunLimitMeta } from '@n8n/api-types';
+import type { InstanceAiRunLimitMeta } from '@MNI/api-types';
 
 import { TooManyRequestsError } from '@/errors/response-errors/too-many-requests.error';
 

@@ -2,7 +2,7 @@
 import type { AgentItemProps } from '@/Interface';
 
 import AgentPersonalisationIcon from '@/features/agents/components/AgentPersonalisationIcon.vue';
-import { N8nIcon, N8nNodeCreatorNode } from '@n8n/design-system';
+import { N8nIcon, N8nNodeCreatorNode } from '@MNI/design-system';
 
 export interface Props {
 	agent: AgentItemProps;

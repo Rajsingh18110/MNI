@@ -1,16 +1,16 @@
-import { Logger } from '@n8n/backend-common';
-import { AuthenticatedRequest } from '@n8n/db';
+import { Logger } from '@MNI/backend-common';
+import { AuthenticatedRequest } from '@MNI/db';
 import {
 	ContextEstablishmentHook,
 	ContextEstablishmentOptions,
 	ContextEstablishmentResult,
 	HookDescription,
 	IContextEstablishmentHook,
-} from '@n8n/decorators';
-import { Container } from '@n8n/di';
-import { Cipher } from 'n8n-core';
-import { ensureError } from '@n8n/utils/errors/ensure-error';
-import { type ICredentialContext, jsonParse } from 'n8n-workflow';
+} from '@MNI/decorators';
+import { Container } from '@MNI/di';
+import { Cipher } from 'MNI-core';
+import { ensureError } from '@MNI/utils/errors/ensure-error';
+import { type ICredentialContext, jsonParse } from 'MNI-workflow';
 import { z } from 'zod';
 
 import { AuthService } from '@/auth/auth.service';

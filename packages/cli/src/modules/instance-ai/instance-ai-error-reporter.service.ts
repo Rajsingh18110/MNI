@@ -1,8 +1,8 @@
-import type { AgentEventData } from '@n8n/agents';
-import { Logger } from '@n8n/backend-common';
-import { Service } from '@n8n/di';
-import { isQuotaExhaustedError } from '@n8n/instance-ai';
-import { ErrorReporter } from 'n8n-core';
+import type { AgentEventData } from '@MNI/agents';
+import { Logger } from '@MNI/backend-common';
+import { Service } from '@MNI/di';
+import { isQuotaExhaustedError } from '@MNI/instance-ai';
+import { ErrorReporter } from 'MNI-core';
 
 import {
 	buildInstanceAiObservabilityContext,

@@ -1,5 +1,5 @@
 import { capitalCase } from 'change-case';
-import type { ILoadOptionsFunctions, INodePropertyOptions } from 'n8n-workflow';
+import type { ILoadOptionsFunctions, INodePropertyOptions } from 'MNI-workflow';
 
 import { odooApiRequest } from '../transport';
 

@@ -1,5 +1,5 @@
-import { EventMessageTypeNames } from 'n8n-workflow';
-import type { JsonValue, WorkflowSettings } from 'n8n-workflow';
+import { EventMessageTypeNames } from 'MNI-workflow';
+import type { JsonValue, WorkflowSettings } from 'MNI-workflow';
 
 import type { EventNamesAuditType } from '.';
 import { AbstractEventMessage } from './abstract-event-message';

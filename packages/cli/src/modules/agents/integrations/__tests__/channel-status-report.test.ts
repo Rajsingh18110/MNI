@@ -1,4 +1,4 @@
-import type { AgentIntegrationConfig } from '@n8n/api-types';
+import type { AgentIntegrationConfig } from '@MNI/api-types';
 
 import type { AgentChannelStatus } from '../../entities/agent-channel-status.entity';
 import { buildChannelStatusReport } from '../channel-status-report';
@@ -11,7 +11,7 @@ const telegram: AgentIntegrationConfig = {
 	credentialId: 'cred-telegram',
 	settings: { accessMode: 'public', allowedUsers: [] },
 };
-const n8nChat: AgentIntegrationConfig = { type: 'n8n_chat', credentialId: '' };
+const n8nChat: AgentIntegrationConfig = { type: 'MNI_chat', credentialId: '' };
 
 /** Live unless a test says otherwise — expiry is exercised on its own below. */
 const isLive = (row: AgentChannelStatus) =>
@@ -56,15 +56,15 @@ describe('buildChannelStatusReport', () => {
 	it('uses the published MNI Chat entry while the draft changes', () => {
 		expect(buildChannelStatusReport([], PUBLISHED, [], isLive, [n8nChat])).toEqual({
 			status: 'connected',
-			integrations: [{ type: 'n8n_chat', status: 'connected' }],
+			integrations: [{ type: 'MNI_chat', status: 'connected' }],
 		});
 		expect(buildChannelStatusReport([n8nChat], PUBLISHED, [], isLive)).toEqual({
 			status: 'configured',
-			integrations: [{ type: 'n8n_chat', status: 'configured' }],
+			integrations: [{ type: 'MNI_chat', status: 'configured' }],
 		});
 		expect(buildChannelStatusReport([n8nChat], null, [], isLive, [n8nChat])).toEqual({
 			status: 'configured',
-			integrations: [{ type: 'n8n_chat', status: 'configured' }],
+			integrations: [{ type: 'MNI_chat', status: 'configured' }],
 		});
 	});
 	it('reports no channels as disconnected', () => {

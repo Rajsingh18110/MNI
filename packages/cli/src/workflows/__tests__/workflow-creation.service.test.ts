@@ -1,4 +1,4 @@
-import type { Logger, LicenseState } from '@n8n/backend-common';
+import type { Logger, LicenseState } from '@MNI/backend-common';
 import type {
 	EntityManager,
 	Folder,
@@ -7,9 +7,9 @@ import type {
 	Role,
 	User,
 	WorkflowRepository,
-} from '@n8n/db';
-import { WorkflowEntity } from '@n8n/db';
-import type { PolicyCleared } from '@n8n/decorators';
+} from '@MNI/db';
+import { WorkflowEntity } from '@MNI/db';
+import type { PolicyCleared } from '@MNI/decorators';
 import type { MockProxy } from 'vitest-mock-extended';
 import { mock } from 'vitest-mock-extended';
 
@@ -301,7 +301,7 @@ describe('WorkflowCreationService', () => {
 			await expect(
 				workflowCreationService.createWorkflow(user, newWorkflow, {
 					projectId: 'project-1',
-					source: 'n8n-mcp',
+					source: 'MNI-mcp',
 					versionName: 'Initial Slack alert workflow',
 					versionDescription: 'Posts to #ops when the webhook fires',
 				}),
@@ -312,7 +312,7 @@ describe('WorkflowCreationService', () => {
 				newWorkflow,
 				newWorkflow.id,
 				false,
-				'n8n-mcp',
+				'MNI-mcp',
 				transactionManager,
 				{
 					name: 'Initial Slack alert workflow',

@@ -3,7 +3,7 @@ import {
 	type INodeProperties,
 	type IExecuteFunctions,
 	NodeOperationError,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { updateDisplayOptions } from '@utils/utilities';
 

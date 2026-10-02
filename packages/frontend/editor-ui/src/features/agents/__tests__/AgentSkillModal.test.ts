@@ -7,7 +7,7 @@ import { configure, fireEvent, waitFor } from '@testing-library/vue';
 import {
 	AGENT_SKILL_INSTRUCTIONS_MAX_LENGTH,
 	AGENT_SKILL_REFERENCE_MAX_COUNT,
-} from '@n8n/api-types';
+} from '@MNI/api-types';
 
 import AgentSkillModal from '../components/AgentSkillModal.vue';
 import type { AgentSkill } from '../types';
@@ -15,7 +15,7 @@ import { AgentModalTestStub } from './utils/AgentModalTestStub';
 
 configure({ testIdAttribute: 'data-testid' });
 
-vi.mock('@n8n/i18n', () => {
+vi.mock('@MNI/i18n', () => {
 	const i18n = {
 		baseText: (key: string) => (key === 'agents.builder.skills.defaultName' ? 'New skill' : key),
 	};
@@ -31,7 +31,7 @@ const { showMessage, trackImportedSkill } = vi.hoisted(() => ({
 	showMessage: vi.fn(),
 	trackImportedSkill: vi.fn(),
 }));
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: () => ({ showMessage }),
 }));
 

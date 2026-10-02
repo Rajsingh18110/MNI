@@ -39,7 +39,7 @@ test.describe(
 					{
 						id: nanoid(),
 						name: 'Manual Trigger',
-						type: 'n8n-nodes-base.manualTrigger',
+						type: 'MNI-nodes-base.manualTrigger',
 						typeVersion: 1,
 						position: [250, 300],
 						parameters: {},
@@ -47,7 +47,7 @@ test.describe(
 					{
 						id: nanoid(),
 						name: 'HTTP Request',
-						type: 'n8n-nodes-base.httpRequest',
+						type: 'MNI-nodes-base.httpRequest',
 						typeVersion: 4.2,
 						position: [450, 300],
 						parameters: {
@@ -133,7 +133,7 @@ test.describe(
 					{
 						id: nanoid(),
 						name: 'Manual Trigger',
-						type: 'n8n-nodes-base.manualTrigger',
+						type: 'MNI-nodes-base.manualTrigger',
 						typeVersion: 1,
 						position: [250, 300],
 						parameters: {},
@@ -141,7 +141,7 @@ test.describe(
 					{
 						id: nanoid(),
 						name: 'HTTP Request',
-						type: 'n8n-nodes-base.httpRequest',
+						type: 'MNI-nodes-base.httpRequest',
 						typeVersion: 4.2,
 						position: [450, 300],
 						parameters: {

@@ -1,5 +1,5 @@
 {
-  "name": "@n8n/playwright-janitor",
+  "name": "@MNI/playwright-janitor",
   "private": true,
   "version": "0.1.0",
   "description": "Static analysis and architecture enforcement for Playwright test suites",
@@ -36,9 +36,9 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "@n8n/rules-engine": "workspace:*",
-    "@n8n/test-impact": "workspace:*",
-    "@n8n/vitest-config": "workspace:*",
+    "@MNI/rules-engine": "workspace:*",
+    "@MNI/test-impact": "workspace:*",
+    "@MNI/vitest-config": "workspace:*",
     "glob": "^10.0.0",
     "ts-morph": "catalog:",
     "yaml": "catalog:"

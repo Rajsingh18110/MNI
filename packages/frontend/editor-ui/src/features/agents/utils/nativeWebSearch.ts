@@ -5,7 +5,7 @@ import {
 	NATIVE_WEB_SEARCH_DEFAULTS_BY_PROVIDER,
 	NATIVE_WEB_SEARCH_PROVIDER_TOOLS,
 	type NativeWebSearchCanonicalTool,
-} from '@n8n/api-types';
+} from '@MNI/api-types';
 
 export type NativeWebSearchProviderTool = NativeWebSearchCanonicalTool;
 export type NativeWebSearchArgs = Record<string, unknown>;

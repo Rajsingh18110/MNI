@@ -47,7 +47,7 @@ describe('Expression — nested $json shapes (engine parity)', () => {
 		});
 	});
 
-	// N8N-9998 — under the VM engine, the lazy proxy used to wrap nested array
+	// MNI-9998 — under the VM engine, the lazy proxy used to wrap nested array
 	// values in an object-shaped proxy, so structured clone serialized them
 	// as `{}`. Legacy engine was always correct; this test pins the parity.
 	it('round-trips an array of arrays via $json', () => {

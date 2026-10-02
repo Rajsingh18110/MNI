@@ -1,4 +1,4 @@
-import { UnexpectedError, type INodeTypeNameVersion } from 'n8n-workflow';
+import { UnexpectedError, type INodeTypeNameVersion } from 'MNI-workflow';
 import type { WorkflowDataWithTemplateId } from '@/Interface';
 import { isWorkflowDataWithTemplateId } from './typeGuards';
 /* eslint-disable import-x/extensions */
@@ -63,7 +63,7 @@ export const getTutorialTemplates = (): SampleTemplate[] => {
 		{
 			name: 'JSON basics',
 			description:
-				'Designed to teach you the absolute basics of JSON (JavaScript Object Notation) and, more importantly, how to use it within n8n.',
+				'Designed to teach you the absolute basics of JSON (JavaScript Object Notation) and, more importantly, how to use it within MNI.',
 			template: getWorkflowJson(jsonBasicsJson),
 			nodes: [],
 		},

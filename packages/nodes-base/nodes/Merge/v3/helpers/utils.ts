@@ -11,8 +11,8 @@ import type {
 	INodeExecutionData,
 	INodeParameters,
 	IPairedItemData,
-} from 'n8n-workflow';
-import { NodeConnectionTypes, NodeHelpers, UserError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeConnectionTypes, NodeHelpers, UserError } from 'MNI-workflow';
 
 import { fuzzyCompare, preparePairedItemDataArray } from '@utils/utilities';
 

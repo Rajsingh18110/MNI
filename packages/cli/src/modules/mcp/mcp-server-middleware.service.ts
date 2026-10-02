@@ -1,7 +1,7 @@
-import { AuthenticatedRequest } from '@n8n/db';
-import { Service } from '@n8n/di';
+import { AuthenticatedRequest } from '@MNI/db';
+import { Service } from '@MNI/di';
 import { NextFunction, Response, Request } from 'express';
-import { ensureError } from '@n8n/utils/errors/ensure-error';
+import { ensureError } from '@MNI/utils/errors/ensure-error';
 
 import { AuthError } from '@/errors/response-errors/auth.error';
 import { JwtService } from '@/services/jwt.service';

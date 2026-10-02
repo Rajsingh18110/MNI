@@ -4,7 +4,7 @@ import type {
 	InstanceAiTimelineEntry,
 	InstanceAiToolCallState,
 	InstanceAiWorkflowSetupNode,
-} from '@n8n/api-types';
+} from '@MNI/api-types';
 import {
 	buildTimelineBlocks,
 	extractArtifacts,

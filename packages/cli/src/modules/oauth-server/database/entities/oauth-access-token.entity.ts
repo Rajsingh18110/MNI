@@ -1,5 +1,5 @@
-import { User } from '@n8n/db';
-import { Column, Entity, Index, ManyToOne } from '@n8n/typeorm';
+import { User } from '@MNI/db';
+import { Column, Entity, Index, ManyToOne } from '@MNI/typeorm';
 
 import { OAuthClient } from './oauth-client.entity';
 

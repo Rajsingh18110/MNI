@@ -27,7 +27,7 @@ const ctx = (over = {}) => ({
 describe('enrichComponent', () => {
 	it('stamps a first-party package with the LicenseRef and embeds the license text', () => {
 		const out = enrichComponent(
-			{ name: 'db', group: '@n8n', purl: 'pkg:npm/%40n8n/db@1.0.0' },
+			{ name: 'db', group: '@MNI', purl: 'pkg:npm/%40n8n/db@1.0.0' },
 			ctx(),
 		);
 		assert.equal(out.licenses[0].license.name, FIRST_PARTY_LICENSE_REF);
@@ -36,9 +36,9 @@ describe('enrichComponent', () => {
 	});
 
 	it('keeps a first-party package on its real OSI license when source declares one', () => {
-		const firstPartyOsi = new Map([['@n8n/tournament', 'Apache-2.0']]);
+		const firstPartyOsi = new Map([['@MNI/tournament', 'Apache-2.0']]);
 		const out = enrichComponent(
-			{ name: 'tournament', group: '@n8n', purl: 'pkg:npm/%40n8n/tournament@1.0.0' },
+			{ name: 'tournament', group: '@MNI', purl: 'pkg:npm/%40n8n/tournament@1.0.0' },
 			ctx({ firstPartyOsi }),
 		);
 		assert.deepEqual(out.licenses, [{ license: { id: 'Apache-2.0' } }]);
@@ -112,7 +112,7 @@ describe('enrich on a container image (OS + npm subset)', () => {
 				},
 				{
 					name: 'db',
-					group: '@n8n',
+					group: '@MNI',
 					purl: 'pkg:npm/%40n8n/db@1.0.0',
 					licenses: [{ expression: 'SEE LICENSE IN LICENSE.md' }],
 				},
@@ -185,10 +185,10 @@ describe('isPhantomNpm (cdxgen image-scan noise)', () => {
 		assert.equal(
 			isPhantomNpm({
 				name: 'db',
-				group: '@n8n',
+				group: '@MNI',
 				version: '1.0.0',
 				purl: 'pkg:npm/%40n8n/db@1.0.0',
-				...src('/x/node_modules/@n8n/db/package.json'),
+				...src('/x/node_modules/@MNI/db/package.json'),
 			}),
 			false,
 		);
@@ -244,7 +244,7 @@ describe('isPhantomNpm (cdxgen image-scan noise)', () => {
 		assert.equal(
 			isPhantomNpm({
 				name: 'task-runner',
-				group: '@n8n',
+				group: '@MNI',
 				version: '1.0.0',
 				purl: 'pkg:npm/%40n8n/task-runner@1.0.0',
 				...syftSrc('/opt/runners/task-runner-javascript/package.json'),
@@ -257,7 +257,7 @@ describe('isPhantomNpm (cdxgen image-scan noise)', () => {
 		assert.equal(
 			isPhantomNpm({
 				name: 'task-runner',
-				group: '@n8n',
+				group: '@MNI',
 				version: 'UNKNOWN',
 				purl: 'pkg:npm/%40n8n/task-runner',
 				...syftSrc('/opt/runners/task-runner-javascript/package.json'),
@@ -394,10 +394,10 @@ describe('buildFirstPartyOsiMap', () => {
 			await mkdir(path.join(dir, path.dirname(rel)), { recursive: true });
 			await writeFile(path.join(dir, rel), JSON.stringify(json));
 		};
-		await write('tournament/package.json', { name: '@n8n/tournament', license: 'Apache-2.0' });
-		await write('zod/package.json', { name: '@n8n/json-schema-to-zod', license: 'ISC' });
-		await write('db/package.json', { name: '@n8n/db', license: 'SEE LICENSE IN LICENSE.md' });
-		await write('config/package.json', { name: '@n8n/config' }); // no license field
+		await write('tournament/package.json', { name: '@MNI/tournament', license: 'Apache-2.0' });
+		await write('zod/package.json', { name: '@MNI/json-schema-to-zod', license: 'ISC' });
+		await write('db/package.json', { name: '@MNI/db', license: 'SEE LICENSE IN LICENSE.md' });
+		await write('config/package.json', { name: '@MNI/config' }); // no license field
 		await write('node_modules/dep/package.json', { name: 'dep', license: 'MIT' }); // skipped
 		await write('cli/dist/template/package.json', { name: '{{placeholder}}', license: 'MIT' }); // skipped
 	});
@@ -407,14 +407,14 @@ describe('buildFirstPartyOsiMap', () => {
 
 	it('maps only first-party packages that declare a real OSI license', async () => {
 		const map = await buildFirstPartyOsiMap(dir, spdx);
-		assert.equal(map.get('@n8n/tournament'), 'Apache-2.0');
-		assert.equal(map.get('@n8n/json-schema-to-zod'), 'ISC');
+		assert.equal(map.get('@MNI/tournament'), 'Apache-2.0');
+		assert.equal(map.get('@MNI/json-schema-to-zod'), 'ISC');
 	});
 
-	it('excludes n8n-license strings, missing fields, node_modules and dist', async () => {
+	it('excludes MNI-license strings, missing fields, node_modules and dist', async () => {
 		const map = await buildFirstPartyOsiMap(dir, spdx);
-		assert.equal(map.has('@n8n/db'), false);
-		assert.equal(map.has('@n8n/config'), false);
+		assert.equal(map.has('@MNI/db'), false);
+		assert.equal(map.has('@MNI/config'), false);
 		assert.equal(map.has('dep'), false);
 		assert.equal(map.has('{{placeholder}}'), false);
 	});
@@ -431,7 +431,7 @@ describe('enrich -> gate round-trip (no unlicensed code survives)', () => {
 				{ name: 'duck', purl: 'pkg:npm/duck@0.1.12', licenses: [{ license: { name: 'BSD' } }] }, // override
 				{
 					name: 'db',
-					group: '@n8n',
+					group: '@MNI',
 					purl: 'pkg:npm/%40n8n/db@1.0.0',
 					licenses: [{ expression: 'SEE LICENSE IN LICENSE.md' }],
 				}, // first-party
@@ -517,11 +517,11 @@ describe('isPhantomNpm across scanners (cdxgen and syft)', () => {
 		assert.equal(
 			isPhantomNpm({
 				name: 'task-runner',
-				group: '@n8n',
+				group: '@MNI',
 				version: '2.37.2',
 				purl: 'pkg:npm/%40n8n/task-runner@2.37.2',
 				properties: [
-					{ name: 'syft:location:0:path', value: '/app/node_modules/@n8n/task-runner/package.json' },
+					{ name: 'syft:location:0:path', value: '/app/node_modules/@MNI/task-runner/package.json' },
 				],
 			}),
 			false,

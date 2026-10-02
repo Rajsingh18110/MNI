@@ -1,8 +1,8 @@
-import { Logger } from '@n8n/backend-common';
-import { GlobalConfig } from '@n8n/config';
-import { ExecutionRepository } from '@n8n/db';
-import { Service } from '@n8n/di';
-import type { WorkflowExecuteMode } from 'n8n-workflow';
+import { Logger } from '@MNI/backend-common';
+import { GlobalConfig } from '@MNI/config';
+import { ExecutionRepository } from '@MNI/db';
+import { Service } from '@MNI/di';
+import type { WorkflowExecuteMode } from 'MNI-workflow';
 
 import { InvalidConcurrencyLimitError } from '@/errors/invalid-concurrency-limit.error';
 import { UnknownExecutionModeError } from '@/errors/unknown-execution-mode.error';
@@ -36,7 +36,7 @@ export class ConcurrencyControlService {
 	);
 
 	// The eval queue is built eagerly when the env-resolved limit is already
-	// known at boot (operator set `N8N_CONCURRENCY_EVALUATION_LIMIT` to a
+	// known at boot (operator set `MNI_CONCURRENCY_EVALUATION_LIMIT` to a
 	// positive value, or explicit `-1` for unlimited). When the env is
 	// unset and the cap comes from the license tier, we defer to first use
 	// because `License.init()` resolves after the DI graph is built.

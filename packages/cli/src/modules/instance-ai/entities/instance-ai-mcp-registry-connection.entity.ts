@@ -1,5 +1,5 @@
-import { JsonColumn, WithTimestamps } from '@n8n/db';
-import { Column, Entity, Index, PrimaryColumn } from '@n8n/typeorm';
+import { JsonColumn, WithTimestamps } from '@MNI/db';
+import { Column, Entity, Index, PrimaryColumn } from '@MNI/typeorm';
 
 export type InstanceAiMcpToolFilter = {
 	mode: 'allow' | 'exclude';

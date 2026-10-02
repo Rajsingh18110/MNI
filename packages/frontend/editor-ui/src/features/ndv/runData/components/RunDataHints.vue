@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
-import type { NodeHint } from 'n8n-workflow';
-import { N8nCallout, N8nIcon, N8nText } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+import type { NodeHint } from 'MNI-workflow';
+import { N8nCallout, N8nIcon, N8nText } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 
 type HintTheme = NonNullable<NodeHint['type']>;
 
@@ -167,12 +167,12 @@ function toggle(entry: HintEntry) {
 				>
 					<li v-for="hint in entry.hints" :key="hintKey(hint)" data-test-id="node-hint-message">
 						<N8nText v-if="hint.group?.label" size="small">{{ hint.group.label }}</N8nText>
-						<N8nText v-else v-n8n-html="hint.message" size="small" />
+						<N8nText v-else v-MNI-html="hint.message" size="small" />
 					</li>
 				</ul>
 			</template>
 			<template v-else>
-				<N8nText v-n8n-html="entry.hints[0].message" size="small" />
+				<N8nText v-MNI-html="entry.hints[0].message" size="small" />
 				<N8nText
 					v-if="entry.repeatedCount && entry.repeatedCount > 1"
 					:class="$style.repeatedCount"
@@ -188,7 +188,7 @@ function toggle(entry: HintEntry) {
 </template>
 
 <style lang="scss" module>
-@use '@n8n/design-system/css/mixins/_focus.scss' as focus;
+@use '@MNI/design-system/css/mixins/_focus.scss' as focus;
 
 .hints {
 	display: flex;

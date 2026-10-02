@@ -2,10 +2,10 @@ import { describe, it, expect, vi } from 'vitest';
 import { mount } from '@vue/test-utils';
 import ReviewChangesBanner from './ReviewChangesBanner.vue';
 import { createTestingPinia } from '@pinia/testing';
-import { NodeDiffStatus, type INode } from 'n8n-workflow';
+import { NodeDiffStatus, type INode } from 'MNI-workflow';
 import type { NodeChangeEntry } from '@/features/ai/assistant/composables/useReviewChanges';
 
-vi.mock('@n8n/i18n', () => {
+vi.mock('@MNI/i18n', () => {
 	const baseText = (key: string, options?: { interpolate?: Record<string, string> }) => {
 		if (options?.interpolate) {
 			return `${key} [${JSON.stringify(options.interpolate)}]`;
@@ -18,7 +18,7 @@ vi.mock('@n8n/i18n', () => {
 	};
 });
 
-const mockNodeType = { displayName: 'HTTP Request', name: 'n8n-nodes-base.httpRequest' };
+const mockNodeType = { displayName: 'HTTP Request', name: 'MNI-nodes-base.httpRequest' };
 
 const mockNodeChanges: NodeChangeEntry[] = [
 	{
@@ -26,7 +26,7 @@ const mockNodeChanges: NodeChangeEntry[] = [
 		node: {
 			id: 'node-1',
 			name: 'HTTP Request',
-			type: 'n8n-nodes-base.httpRequest',
+			type: 'MNI-nodes-base.httpRequest',
 			typeVersion: 1,
 			position: [0, 0],
 			parameters: {},
@@ -38,7 +38,7 @@ const mockNodeChanges: NodeChangeEntry[] = [
 		node: {
 			id: 'node-2',
 			name: 'Set',
-			type: 'n8n-nodes-base.set',
+			type: 'MNI-nodes-base.set',
 			typeVersion: 1,
 			position: [0, 0],
 			parameters: {},
@@ -57,12 +57,12 @@ const mountComponent = (props: { nodeChanges?: NodeChangeEntry[]; expanded?: boo
 			plugins: [createTestingPinia()],
 			stubs: {
 				N8nIcon: {
-					template: '<span class="n8n-icon" :data-icon="icon"></span>',
+					template: '<span class="MNI-icon" :data-icon="icon"></span>',
 					props: ['icon', 'size'],
 				},
 				N8nButton: {
 					template:
-						'<button class="n8n-button" @click="$emit(\'click\', $event)"><slot /></button>',
+						'<button class="MNI-button" @click="$emit(\'click\', $event)"><slot /></button>',
 					props: ['size', 'variant', 'class'],
 					inheritAttrs: false,
 				},
@@ -119,7 +119,7 @@ describe('ReviewChangesBanner', () => {
 
 	it('emits openDiff when the open diff button is clicked', async () => {
 		const wrapper = mountComponent();
-		await wrapper.find('.n8n-button').trigger('click');
+		await wrapper.find('.MNI-button').trigger('click');
 		expect(wrapper.emitted('openDiff')).toHaveLength(1);
 	});
 
@@ -144,7 +144,7 @@ describe('ReviewChangesBanner', () => {
 				node: {
 					id: 'node-1',
 					name: 'HTTP Request',
-					type: 'n8n-nodes-base.httpRequest',
+					type: 'MNI-nodes-base.httpRequest',
 					typeVersion: 1,
 					position: [0, 0],
 					parameters: {},

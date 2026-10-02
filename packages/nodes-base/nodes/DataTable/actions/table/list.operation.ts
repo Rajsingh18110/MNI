@@ -4,7 +4,7 @@ import type {
 	INodeExecutionData,
 	INodeProperties,
 	ListDataTableOptions,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { ROWS_LIMIT_DEFAULT } from '../../common/constants';
 import { getDataTableAggregateProxy } from '../../common/utils';

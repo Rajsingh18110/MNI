@@ -40,7 +40,7 @@ export interface BaseConnectionItem {
 	longDescription?: string;
 	/** Tab this item belongs to. Falls back to `CATEGORY_BY_KIND` when unset. */
 	category?: ToolCategoryKey;
-	/** Reviewed and approved by n8n. Drives the shield badge, install state irrelevant. */
+	/** Reviewed and approved by MNI. Drives the shield badge, install state irrelevant. */
 	verified?: boolean;
 	/** Backed by MNI Connect (AI Gateway): credentials are managed, shows a "Free credits" pill. */
 	freeCredits?: boolean;
@@ -137,7 +137,7 @@ export type ToolCategoryKey =
 	| 'mcp'
 	| 'ai'
 	| 'MNI'
-	| 'n8n-connect'
+	| 'MNI-connect'
 	| 'app-action'
 	| 'community'
 	| 'workflows'

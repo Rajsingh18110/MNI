@@ -1,4 +1,4 @@
-import { Container } from '@n8n/di';
+import { Container } from '@MNI/di';
 
 import { AgentUsageProviderProxy } from '@/modules/workflow-index/agent-usage-provider-proxy.service';
 

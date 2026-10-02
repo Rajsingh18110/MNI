@@ -1,5 +1,5 @@
-import { workflow, node } from '@n8n/workflow-sdk';
-import type { IWorkflowBase } from 'n8n-workflow';
+import { workflow, node } from '@MNI/workflow-sdk';
+import type { IWorkflowBase } from 'MNI-workflow';
 import { nanoid } from 'nanoid';
 
 import type { NodeOutputSize } from './types';
@@ -10,14 +10,14 @@ type TriggerNode = Parameters<ReturnType<typeof workflow>['add']>[0];
 export function createChainNode(index: number, outputSize: NodeOutputSize) {
 	if (outputSize === 'noop') {
 		return node({
-			type: 'n8n-nodes-base.noOp',
+			type: 'MNI-nodes-base.noOp',
 			version: 1,
 			config: { name: `NoOp ${index}` },
 		});
 	}
 
 	return node({
-		type: 'n8n-nodes-base.set',
+		type: 'MNI-nodes-base.set',
 		version: 3.4,
 		config: {
 			name: `Set ${index}`,

@@ -1,7 +1,7 @@
-import { LICENSE_FEATURES } from '@n8n/constants';
-import type { ModuleInterface } from '@n8n/decorators';
-import { BackendModule } from '@n8n/decorators';
-import { Container } from '@n8n/di';
+import { LICENSE_FEATURES } from '@MNI/constants';
+import type { ModuleInterface } from '@MNI/decorators';
+import { BackendModule } from '@MNI/decorators';
+import { Container } from '@MNI/di';
 
 @BackendModule({
 	name: 'promotions',

@@ -1,23 +1,23 @@
-import { useUsersStore } from '@n8n/stores/users.store';
-import { useI18n } from '@n8n/i18n';
-import { STORES } from '@n8n/stores';
+import { useUsersStore } from '@MNI/stores/users.store';
+import { useI18n } from '@MNI/i18n';
+import { STORES } from '@MNI/stores';
 import { useLocalStorage } from '@vueuse/core';
-import { OPEN_AI_API_CREDENTIAL_TYPE, deepCopy } from 'n8n-workflow';
-import type { WorkflowDataCreate } from '@n8n/rest-api-client';
+import { OPEN_AI_API_CREDENTIAL_TYPE, deepCopy } from 'MNI-workflow';
+import type { WorkflowDataCreate } from '@MNI/rest-api-client';
 import { defineStore } from 'pinia';
 import { computed, onScopeDispose, ref, watch } from 'vue';
 import { useRouter, type RouteLocationNormalized } from 'vue-router';
 import { READY_TO_RUN_AI_WORKFLOW } from '../workflows/aiWorkflow';
 import { useEmptyStateDetection } from '../composables/useEmptyStateDetection';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
-import { useToast } from '@n8n/composables/useToast';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
+import { useToast } from '@MNI/composables/useToast';
 import { VIEWS } from '@/app/constants';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { useWorkflowsStore } from '@/app/stores/workflows.store';
 import { useCredentialsStore } from '@/features/credentials/credentials.store';
 import { useReadyToRunWorkflowsV2Store } from '@/experiments/readyToRunWorkflowsV2/stores/readyToRunWorkflowsV2.store';
 
-const LOCAL_STORAGE_CREDENTIAL_KEY = 'N8N_READY_TO_RUN_OPENAI_CREDENTIAL_ID';
+const LOCAL_STORAGE_CREDENTIAL_KEY = 'MNI_READY_TO_RUN_OPENAI_CREDENTIAL_ID';
 
 export const useReadyToRunStore = defineStore(STORES.READY_TO_RUN, () => {
 	const READY_TO_RUN_TEMPLATE_IDS = [

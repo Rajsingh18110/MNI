@@ -2,7 +2,7 @@ import type { ComputedRef } from 'vue';
 import { computed, ref, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import type { LocationQueryValue } from 'vue-router';
-import { useI18n, type BaseTextKey } from '@n8n/i18n';
+import { useI18n, type BaseTextKey } from '@MNI/i18n';
 
 import { useAgentEvalsFlag } from '@/features/ai/evaluation.ee/composables/useAgentEvalsFlag';
 import { EXECUTIONS_SECTION_KEY } from '../constants';

@@ -1,9 +1,9 @@
-import type { AcceptInvitationRequestDto } from '@n8n/api-types';
-import { InviteUsersRequestDto } from '@n8n/api-types';
-import { Logger } from '@n8n/backend-common';
-import { mockInstance } from '@n8n/backend-test-utils';
-import { UserRepository, GLOBAL_OWNER_ROLE, GLOBAL_MEMBER_ROLE } from '@n8n/db';
-import type { User, PublicUser, AuthenticatedRequest } from '@n8n/db';
+import type { AcceptInvitationRequestDto } from '@MNI/api-types';
+import { InviteUsersRequestDto } from '@MNI/api-types';
+import { Logger } from '@MNI/backend-common';
+import { mockInstance } from '@MNI/backend-test-utils';
+import { UserRepository, GLOBAL_OWNER_ROLE, GLOBAL_MEMBER_ROLE } from '@MNI/db';
+import type { User, PublicUser, AuthenticatedRequest } from '@MNI/db';
 import type { Response } from 'express';
 import { v4 as uuidv4 } from 'uuid';
 import { mock } from 'vitest-mock-extended';

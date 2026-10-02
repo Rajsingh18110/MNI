@@ -1,4 +1,4 @@
-import type { User } from '@n8n/db';
+import type { User } from '@MNI/db';
 import z from 'zod';
 
 import type { NodeCatalogService } from '@/node-catalog';
@@ -8,7 +8,7 @@ import type { Telemetry } from '@/telemetry';
 import { CODE_BUILDER_GET_NODE_TYPES_TOOL } from './constants';
 import { toN8nConnectCoverage } from '../../mcp-ai-gateway.helper';
 import {
-	LIST_N8N_GATEWAY_SERVICES_TOOL_NAME,
+	LIST_MNI_GATEWAY_SERVICES_TOOL_NAME,
 	USER_CALLED_MCP_TOOL_EVENT,
 } from '../../mcp.constants';
 import type {
@@ -19,7 +19,7 @@ import type {
 import { trackAndRethrowToolError } from '../tool-error.utils';
 
 const nodeRequestSchema = z.object({
-	nodeId: z.string().describe('The node type ID (e.g. "n8n-nodes-base.gmail")'),
+	nodeId: z.string().describe('The node type ID (e.g. "MNI-nodes-base.gmail")'),
 	version: z.string().optional().describe('Specific version (e.g. "2.1")'),
 	resource: z.string().optional().describe('Resource discriminator (e.g. "message")'),
 	operation: z.string().optional().describe('Operation discriminator (e.g. "send")'),
@@ -50,7 +50,7 @@ const outputSchema = {
 		})
 		.optional()
 		.describe(
-			`Present when Gateway credits are available. Candidate coverage — cross-reference against the returned node types, but call ${LIST_N8N_GATEWAY_SERVICES_TOOL_NAME} for exact eligibility (supported actions, min versions, hidden properties).`,
+			`Present when Gateway credits are available. Candidate coverage — cross-reference against the returned node types, but call ${LIST_MNI_GATEWAY_SERVICES_TOOL_NAME} for exact eligibility (supported actions, min versions, hidden properties).`,
 		),
 } satisfies z.ZodRawShape;
 
@@ -71,7 +71,7 @@ export const createGetWorkflowNodeTypesTool = (
 	name: CODE_BUILDER_GET_NODE_TYPES_TOOL.toolName,
 	config: {
 		description:
-			'Get TypeScript type definitions for MNI nodes. Returns exact parameter names and structures. MUST be called before writing workflow code or configuring node-backed tools — guessing parameter names creates invalid configurations. Pass nodeIds as an array of objects like { nodeId: "n8n-nodes-base.gmail" }. Include discriminators (resource/operation/mode) from search_nodes results.',
+			'Get TypeScript type definitions for MNI nodes. Returns exact parameter names and structures. MUST be called before writing workflow code or configuring node-backed tools — guessing parameter names creates invalid configurations. Pass nodeIds as an array of objects like { nodeId: "MNI-nodes-base.gmail" }. Include discriminators (resource/operation/mode) from search_nodes results.',
 		inputSchema,
 		outputSchema,
 		annotations: {

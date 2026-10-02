@@ -1,5 +1,5 @@
-import type { IExecuteFunctions, IDataObject } from 'n8n-workflow';
-import { sanitizeXmlName } from 'n8n-workflow';
+import type { IExecuteFunctions, IDataObject } from 'MNI-workflow';
+import { sanitizeXmlName } from 'MNI-workflow';
 import { parseString } from 'xml2js';
 
 import type { SplunkError, SplunkFeedResponse } from './interfaces';

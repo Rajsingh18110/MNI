@@ -2,8 +2,8 @@ import type {
 	AiPreferenceScope,
 	InstanceAiPreferenceCardEvent,
 	InstanceAiToolCallState,
-} from '@n8n/api-types';
-import { aiPreferenceScopeSchema, instanceAiEventSchema } from '@n8n/api-types';
+} from '@MNI/api-types';
+import { aiPreferenceScopeSchema, instanceAiEventSchema } from '@MNI/api-types';
 
 export const SAVE_USER_PREFERENCE_TOOL_NAME = 'save_user_preference';
 

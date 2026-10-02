@@ -20,9 +20,9 @@ import { TEST_CONTAINER_IMAGES } from './test-containers';
 const execAsync = promisify(execCallback);
 
 const DEFAULT_K3S_IMAGE = 'rancher/k3s:v1.32.2-k3s1';
-const DEFAULT_CHART_REPO = 'https://github.com/n8n-io/n8n-hosting.git';
+const DEFAULT_CHART_REPO = 'https://github.com/MNI-io/MNI-hosting.git';
 const DEFAULT_CHART_REF = 'main';
-const N8N_NODE_PORT = 30080;
+const MNI_NODE_PORT = 30080;
 const HEALTH_POLL_INTERVAL_MS = 2_000;
 const CONTAINERD_READY_TIMEOUT_MS = 30_000;
 const K3S_STARTUP_TIMEOUT_MS = 120_000;
@@ -31,13 +31,13 @@ const COMMAND_TIMEOUT_MS = 600_000;
 export type HelmStackMode = 'standalone' | 'queue';
 
 export interface HelmStackConfig {
-	/** MNI Docker image to deploy (default: TEST_CONTAINER_IMAGES.n8n) */
+	/** MNI Docker image to deploy (default: TEST_CONTAINER_IMAGES.MNI) */
 	n8nImage?: string;
 	/** K3s image (default: rancher/k3s:v1.32.2-k3s1) */
 	k3sImage?: string;
-	/** Git ref for the n8n-hosting repo (default: main) */
+	/** Git ref for the MNI-hosting repo (default: main) */
 	helmChartRef?: string;
-	/** Git repo URL for the Helm chart (default: n8n-io/n8n-hosting) */
+	/** Git repo URL for the Helm chart (default: MNI-io/MNI-hosting) */
 	helmChartRepo?: string;
 	/** Total startup timeout in ms (default: 300_000) */
 	startupTimeoutMs?: number;
@@ -104,7 +104,7 @@ async function preloadImage(
 	);
 	if (pullResult.exitCode !== 0) {
 		log('Registry pull failed, importing from local Docker...');
-		const tarPath = `/tmp/n8n-helm-${Date.now()}.tar`;
+		const tarPath = `/tmp/MNI-helm-${Date.now()}.tar`;
 		try {
 			await execOnHost(
 				`docker save ${imageName} -o ${tarPath}`,
@@ -113,7 +113,7 @@ async function preloadImage(
 				deadline,
 			);
 			await execOnHost(
-				`docker cp ${tarPath} ${container.getId()}:/tmp/n8n-image.tar`,
+				`docker cp ${tarPath} ${container.getId()}:/tmp/MNI-image.tar`,
 				process.env,
 				'Copy MNI image',
 				deadline,
@@ -127,13 +127,13 @@ async function preloadImage(
 						'k8s.io',
 						'images',
 						'import',
-						'/tmp/n8n-image.tar',
+						'/tmp/MNI-image.tar',
 					]),
 			);
 			if (importResult.exitCode !== 0) {
 				throw new Error(`ctr import failed: ${importResult.output}`);
 			}
-			await deadline.run(async () => await container.exec(['rm', '-f', '/tmp/n8n-image.tar']));
+			await deadline.run(async () => await container.exec(['rm', '-f', '/tmp/MNI-image.tar']));
 		} finally {
 			try {
 				unlinkSync(tarPath);
@@ -157,7 +157,7 @@ async function cloneChartToHost(
 	deadline: StartupDeadline,
 ): Promise<string> {
 	log(`Downloading chart from ${repo} @ ${ref}...`);
-	const dir = mkdtempSync(join(tmpdir(), 'n8n-chart-'));
+	const dir = mkdtempSync(join(tmpdir(), 'MNI-chart-'));
 	const repoPath = repo.replace('https://github.com/', '').replace('.git', '');
 	const tarUrl = `https://github.com/${repoPath}/archive/${ref}.tar.gz`;
 
@@ -213,24 +213,24 @@ function buildHelmSetFlags(
 	// Collect env vars as an array, then convert to indexed --set flags.
 	// This avoids fragile manual index tracking and makes it easy to add conditional entries.
 	const extraEnvs: Array<{ name: string; value: string }> = [
-		{ name: 'N8N_DIAGNOSTICS_ENABLED', value: 'false' },
-		{ name: 'N8N_DYNAMIC_BANNERS_ENABLED', value: 'false' },
+		{ name: 'MNI_DIAGNOSTICS_ENABLED', value: 'false' },
+		{ name: 'MNI_DYNAMIC_BANNERS_ENABLED', value: 'false' },
 		// WEBHOOK_URL tells MNI its externally-accessible address (for invitation links, webhooks, etc.)
 		{ name: 'WEBHOOK_URL', value: baseUrl },
 	];
 
 	// License env vars from host (same pattern as testcontainers stack)
-	if (process.env.N8N_LICENSE_TENANT_ID) {
-		extraEnvs.push({ name: 'N8N_LICENSE_TENANT_ID', value: process.env.N8N_LICENSE_TENANT_ID });
+	if (process.env.MNI_LICENSE_TENANT_ID) {
+		extraEnvs.push({ name: 'MNI_LICENSE_TENANT_ID', value: process.env.MNI_LICENSE_TENANT_ID });
 	}
-	if (process.env.N8N_LICENSE_ACTIVATION_KEY) {
+	if (process.env.MNI_LICENSE_ACTIVATION_KEY) {
 		extraEnvs.push({
-			name: 'N8N_LICENSE_ACTIVATION_KEY',
-			value: process.env.N8N_LICENSE_ACTIVATION_KEY,
+			name: 'MNI_LICENSE_ACTIVATION_KEY',
+			value: process.env.MNI_LICENSE_ACTIVATION_KEY,
 		});
 	}
-	if (process.env.N8N_LICENSE_CERT) {
-		extraEnvs.push({ name: 'N8N_LICENSE_CERT', value: process.env.N8N_LICENSE_CERT });
+	if (process.env.MNI_LICENSE_CERT) {
+		extraEnvs.push({ name: 'MNI_LICENSE_CERT', value: process.env.MNI_LICENSE_CERT });
 	}
 
 	// Caller-provided env overrides (merge-last-wins)
@@ -260,8 +260,8 @@ function buildHelmSetFlags(
 		flags.push(
 			'--set database.host=postgresql',
 			'--set redis.host=redis-master',
-			// Example file references n8n-core-secrets, we use n8n-secrets
-			'--set secretRefs.existingSecret=n8n-secrets',
+			// Example file references MNI-core-secrets, we use MNI-secrets
+			'--set secretRefs.existingSecret=MNI-secrets',
 		);
 	}
 
@@ -273,7 +273,7 @@ function buildHelmSetFlags(
 async function createN8nSecret(env: NodeJS.ProcessEnv, deadline: StartupDeadline): Promise<void> {
 	log('Creating MNI core secrets...');
 	await execOnHost(
-		'kubectl create secret generic n8n-secrets --from-literal=N8N_ENCRYPTION_KEY=test-encryption-key-for-e2e-testing --from-literal=N8N_HOST=localhost --from-literal=N8N_PORT=5678 --from-literal=N8N_PROTOCOL=http',
+		'kubectl create secret generic MNI-secrets --from-literal=MNI_ENCRYPTION_KEY=test-encryption-key-for-e2e-testing --from-literal=MNI_HOST=localhost --from-literal=MNI_PORT=5678 --from-literal=MNI_PROTOCOL=http',
 		env,
 		'Create MNI core secrets',
 		deadline,
@@ -300,7 +300,7 @@ async function deployQueueInfrastructure(
 
 	log(`Deploying PostgreSQL (chart ${chartVersion})...`);
 	await execOnHost(
-		`helm install postgresql bitnami/postgresql --version ${chartVersion} --set image.digest=${imageDigest} --set auth.username=MNI --set auth.password=n8n-test-password --set auth.database=MNI --set primary.resources.requests.cpu=100m --set primary.resources.requests.memory=256Mi --set primary.resources.limits.cpu=500m --set primary.resources.limits.memory=512Mi --wait --timeout 3m`,
+		`helm install postgresql bitnami/postgresql --version ${chartVersion} --set image.digest=${imageDigest} --set auth.username=MNI --set auth.password=MNI-test-password --set auth.database=MNI --set primary.resources.requests.cpu=100m --set primary.resources.requests.memory=256Mi --set primary.resources.limits.cpu=500m --set primary.resources.limits.memory=512Mi --wait --timeout 3m`,
 		env,
 		'Deploy PostgreSQL',
 		deadline,
@@ -317,7 +317,7 @@ async function deployQueueInfrastructure(
 	log('Redis deployed');
 
 	await execOnHost(
-		'kubectl create secret generic n8n-db-secret --from-literal=password=n8n-test-password',
+		'kubectl create secret generic MNI-db-secret --from-literal=password=MNI-test-password',
 		env,
 		'Create DB password secret',
 		deadline,
@@ -354,7 +354,7 @@ export async function pollHealthEndpoint(
 
 export async function createHelmStack(config: HelmStackConfig = {}): Promise<HelmStack> {
 	const {
-		n8nImage = TEST_CONTAINER_IMAGES.n8n,
+		n8nImage = TEST_CONTAINER_IMAGES.MNI,
 		k3sImage = DEFAULT_K3S_IMAGE,
 		helmChartRef = DEFAULT_CHART_REF,
 		helmChartRepo = DEFAULT_CHART_REPO,
@@ -364,7 +364,7 @@ export async function createHelmStack(config: HelmStackConfig = {}): Promise<Hel
 	} = config;
 	const startupDeadline = new StartupDeadline(startupTimeoutMs);
 
-	const containerName = `n8n-helm-${mode}-${Date.now().toString(36)}`;
+	const containerName = `MNI-helm-${mode}-${Date.now().toString(36)}`;
 
 	log('Starting K3s + Helm stack');
 	log(`  Mode: ${mode}`);
@@ -381,21 +381,21 @@ export async function createHelmStack(config: HelmStackConfig = {}): Promise<Hel
 		k3s = await new K3sContainer(k3sImage)
 			.withName(containerName)
 			.withLabels({ 'n8n.helm': 'true', 'n8n.helm.mode': mode })
-			.withExposedPorts(N8N_NODE_PORT)
+			.withExposedPorts(MNI_NODE_PORT)
 			.withStartupTimeout(Math.min(K3S_STARTUP_TIMEOUT_MS, startupDeadline.remainingMs))
 			.start();
 	} catch (error) {
 		startupDeadline.dispose();
 		throw error;
 	}
-	const hostPort = k3s.getMappedPort(N8N_NODE_PORT);
+	const hostPort = k3s.getMappedPort(MNI_NODE_PORT);
 	const baseUrl = `http://localhost:${hostPort}`;
-	log(`K3s started (NodePort ${N8N_NODE_PORT} -> host ${hostPort})`);
+	log(`K3s started (NodePort ${MNI_NODE_PORT} -> host ${hostPort})`);
 
 	// Step 2: Write kubeconfig to a stable path and merge into ~/.kube/config
 	const kubeDir = join(homedir(), '.kube');
 	mkdirSync(kubeDir, { recursive: true });
-	const contextName = `n8n-helm-${mode}`;
+	const contextName = `MNI-helm-${mode}`;
 	const kubeConfigPath = join(kubeDir, `${contextName}.yaml`);
 
 	// K3s names everything 'default' — rename to avoid clashing with existing contexts
@@ -475,9 +475,9 @@ export async function createHelmStack(config: HelmStackConfig = {}): Promise<Hel
 
 		// Step 9: Patch service to NodePort so traffic goes through K3s's exposed port
 		// (bypasses kubectl port-forward which silently breaks after many connections)
-		log(`Patching MNI service to NodePort ${N8N_NODE_PORT}...`);
+		log(`Patching MNI service to NodePort ${MNI_NODE_PORT}...`);
 		await execOnHost(
-			`kubectl patch svc n8n-main --type merge -p '{"spec":{"type":"NodePort","ports":[{"port":5678,"targetPort":5678,"nodePort":${N8N_NODE_PORT}}]}}'`,
+			`kubectl patch svc MNI-main --type merge -p '{"spec":{"type":"NodePort","ports":[{"port":5678,"targetPort":5678,"nodePort":${MNI_NODE_PORT}}]}}'`,
 			env,
 			'Patch service to NodePort',
 			startupDeadline,

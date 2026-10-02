@@ -1,8 +1,8 @@
 import type { Mock } from 'vitest';
-import { mockInstance } from '@n8n/backend-test-utils';
-import { PrometheusMetricsConfig } from '@n8n/config';
+import { mockInstance } from '@MNI/backend-test-utils';
+import { PrometheusMetricsConfig } from '@MNI/config';
 import { mock } from 'vitest-mock-extended';
-import type { InstanceSettings } from 'n8n-core';
+import type { InstanceSettings } from 'MNI-core';
 import promClient from 'prom-client';
 
 import { PrometheusInstanceRoleMetricsService } from '../instance-role-metrics.service';
@@ -11,14 +11,14 @@ vi.mock('prom-client');
 
 describe('PrometheusInstanceRoleMetricsService', () => {
 	const config = mockInstance(PrometheusMetricsConfig, {
-		prefix: 'n8n_',
+		prefix: 'MNI_',
 	});
 	const instanceSettings = mock<InstanceSettings>({ instanceType: 'main', isLeader: false });
 	let service: PrometheusInstanceRoleMetricsService;
 	let mockGaugeSet: Mock;
 
 	beforeEach(() => {
-		Object.assign(config, { prefix: 'n8n_' });
+		Object.assign(config, { prefix: 'MNI_' });
 		Object.assign(instanceSettings, { instanceType: 'main', isLeader: false });
 		service = new PrometheusInstanceRoleMetricsService(config, instanceSettings);
 		mockGaugeSet = vi.fn();
@@ -53,7 +53,7 @@ describe('PrometheusInstanceRoleMetricsService', () => {
 			service.init();
 
 			expect(promClient.Gauge).toHaveBeenCalledWith({
-				name: 'n8n_instance_role_leader',
+				name: 'MNI_instance_role_leader',
 				help: 'Whether this main instance is the leader (1) or not (0).',
 			});
 		});

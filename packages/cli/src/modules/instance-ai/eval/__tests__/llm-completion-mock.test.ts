@@ -49,24 +49,24 @@ function toolBuilderMock(name: string) {
 	};
 }
 
-vi.mock('@n8n/instance-ai', () => ({
+vi.mock('@MNI/instance-ai', () => ({
 	createEvalAgent: vi.fn(() => mockAgent),
 	extractText: mockExtractText,
 }));
 
-vi.mock('@n8n/agents/tool', () => ({
+vi.mock('@MNI/agents/tool', () => ({
 	Tool: vi.fn().mockImplementation(toolBuilderMock),
 }));
 
-vi.mock('@n8n/di', () => ({
+vi.mock('@MNI/di', () => ({
 	Container: { get: vi.fn(() => mockLogger) },
 	Service: () => (target: unknown) => target,
 }));
 
-import { Tool } from '@n8n/agents/tool';
-import { Container } from '@n8n/di';
-import { createEvalAgent } from '@n8n/instance-ai';
-import type { IHttpRequestOptions, INode } from 'n8n-workflow';
+import { Tool } from '@MNI/agents/tool';
+import { Container } from '@MNI/di';
+import { createEvalAgent } from '@MNI/instance-ai';
+import type { IHttpRequestOptions, INode } from 'MNI-workflow';
 
 import { createLlmCompletionMockHandler } from '../llm-completion-mock';
 
@@ -95,7 +95,7 @@ function reapplyMockImplementations() {
 
 const node = {
 	name: 'My Agent',
-	type: '@n8n/n8n-nodes-langchain.lmChatOpenAi',
+	type: '@MNI/MNI-nodes-langchain.lmChatOpenAi',
 } as unknown as INode;
 
 function chatRequest(body: unknown): IHttpRequestOptions {

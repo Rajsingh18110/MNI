@@ -1,7 +1,7 @@
-import type { CreatePromotionConnectionDto } from '@n8n/api-types';
-import type { Logger } from '@n8n/backend-common';
-import type { ProjectRepository, TransactionRunner, User } from '@n8n/db';
-import type { InstanceSettings } from 'n8n-core';
+import type { CreatePromotionConnectionDto } from '@MNI/api-types';
+import type { Logger } from '@MNI/backend-common';
+import type { ProjectRepository, TransactionRunner, User } from '@MNI/db';
+import type { InstanceSettings } from 'MNI-core';
 import { mkdir, mkdtemp, rm, stat } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
@@ -96,7 +96,7 @@ describe('PromotionConnectionsService', () => {
 		configRepository.findByConnectionIds.mockResolvedValue([]);
 		txRunner.run.mockImplementation(async (_ctx, fn) => await fn({}));
 
-		n8nFolder = await mkdtemp(path.join(tmpdir(), 'n8n-promotions-connections-'));
+		n8nFolder = await mkdtemp(path.join(tmpdir(), 'MNI-promotions-connections-'));
 		workingDirectory = new PromotionWorkingDirectoryService(mock<InstanceSettings>({ n8nFolder }));
 		service = new PromotionConnectionsService(
 			connectionRepository,

@@ -13,8 +13,8 @@ import {
 	type AgentEvalRunRecord,
 	type AgentEvalRunSummary,
 	type GenerateDraftCasesResult,
-} from '@n8n/api-types';
-import type { AuthenticatedRequest } from '@n8n/db';
+} from '@MNI/api-types';
+import type { AuthenticatedRequest } from '@MNI/db';
 import {
 	Body,
 	Delete,
@@ -24,7 +24,7 @@ import {
 	ProjectScope,
 	Query,
 	RestController,
-} from '@n8n/decorators';
+} from '@MNI/decorators';
 
 import { BadRequestError } from '@/errors/response-errors/bad-request.error';
 

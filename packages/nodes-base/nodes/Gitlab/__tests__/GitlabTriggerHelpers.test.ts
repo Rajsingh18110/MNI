@@ -1,4 +1,4 @@
-import type { IDataObject, IWebhookFunctions } from 'n8n-workflow';
+import type { IDataObject, IWebhookFunctions } from 'MNI-workflow';
 
 import { generateWebhookSecret, verifySignature } from '../GitlabTriggerHelpers';
 import type { Mock } from 'vitest';

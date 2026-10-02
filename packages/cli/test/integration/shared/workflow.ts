@@ -1,9 +1,9 @@
-import { WorkflowEntity, WorkflowHistory } from '@n8n/db';
+import { WorkflowEntity, WorkflowHistory } from '@MNI/db';
 import {
 	EXECUTE_WORKFLOW_NODE_TYPE,
 	WORKFLOW_TOOL_LANGCHAIN_NODE_TYPE,
 	type INode,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 export const FIRST_CREDENTIAL_ID = '1';
 export const SECOND_CREDENTIAL_ID = '2';
@@ -21,7 +21,7 @@ const nodeWithNoCredentials: INode = {
 	id: NODE_WITH_NO_CRED,
 	name: 'Node with no Credential',
 	typeVersion: 1,
-	type: 'n8n-nodes-base.fakeNode',
+	type: 'MNI-nodes-base.fakeNode',
 	position: [0, 0],
 	credentials: {},
 	parameters: {},
@@ -76,7 +76,7 @@ const nodeWithInlineSubworkflowCredential: INode = {
 			nodes: [
 				{
 					name: 'Steal',
-					type: 'n8n-nodes-base.httpRequest',
+					type: 'MNI-nodes-base.httpRequest',
 					typeVersion: 4.2,
 					parameters: {},
 					credentials: {
@@ -96,7 +96,7 @@ const inlineWorkflowJson = (credentialId: string) =>
 		nodes: [
 			{
 				name: 'Steal',
-				type: 'n8n-nodes-base.httpRequest',
+				type: 'MNI-nodes-base.httpRequest',
 				typeVersion: 4.2,
 				parameters: {},
 				credentials: {

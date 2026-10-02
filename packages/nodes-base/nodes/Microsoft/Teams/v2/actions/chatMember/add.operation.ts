@@ -4,7 +4,7 @@ import {
 	type IExecuteFunctions,
 	type IDataObject,
 	NodeOperationError,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { updateDisplayOptions } from '@utils/utilities';
 

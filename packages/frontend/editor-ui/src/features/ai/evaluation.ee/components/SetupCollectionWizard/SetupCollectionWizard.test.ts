@@ -3,14 +3,14 @@ import { fireEvent, waitFor } from '@testing-library/vue';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { createComponentRenderer } from '@/__tests__/render';
-import type { EvaluationConfigDto } from '@n8n/api-types';
+import type { EvaluationConfigDto } from '@MNI/api-types';
 import { useEvalCollectionsStore } from '../../evalCollections.store';
 import { useEvaluationStore } from '../../evaluation.store';
 import type { EvalVersionsResponse, EvaluationCollectionRecord } from '../../evalCollections.types';
 
 import SetupCollectionWizard from './SetupCollectionWizard.vue';
 
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: vi.fn(() => ({
 		showError: vi.fn(),
 		showMessage: vi.fn(),

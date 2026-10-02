@@ -1,7 +1,7 @@
-import { createWorkflow, createWorkflowHistory, testDb } from '@n8n/backend-test-utils';
-import { WorkflowsConfig } from '@n8n/config';
-import { WorkflowPublicationTriggerStatusRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
+import { createWorkflow, createWorkflowHistory, testDb } from '@MNI/backend-test-utils';
+import { WorkflowsConfig } from '@MNI/config';
+import { WorkflowPublicationTriggerStatusRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
 import { nanoid } from 'nanoid';
 import { v4 as uuid } from 'uuid';
 

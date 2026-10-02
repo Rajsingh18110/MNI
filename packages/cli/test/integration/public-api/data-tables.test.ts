@@ -1,8 +1,8 @@
-import { testDb, createTeamProject, linkUserToProject } from '@n8n/backend-test-utils';
-import type { Project, User } from '@n8n/db';
-import { ProjectRelationRepository, ProjectRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
-import { DATA_TABLE_SYSTEM_COLUMNS } from 'n8n-workflow';
+import { testDb, createTeamProject, linkUserToProject } from '@MNI/backend-test-utils';
+import type { Project, User } from '@MNI/db';
+import { ProjectRelationRepository, ProjectRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
+import { DATA_TABLE_SYSTEM_COLUMNS } from 'MNI-workflow';
 
 import { DataTableSizeValidator } from '@/modules/data-table/data-table-size-validator.service';
 import type { DataTable } from '@/modules/data-table/data-table.entity';
@@ -70,7 +70,7 @@ beforeEach(async () => {
 const testWithAPIKey =
 	(method: 'get' | 'post' | 'put' | 'patch' | 'delete', url: string, apiKey: string | null) =>
 	async () => {
-		void authOwnerAgent.set({ 'X-N8N-API-KEY': apiKey });
+		void authOwnerAgent.set({ 'X-MNI-API-KEY': apiKey });
 		const response = await authOwnerAgent[method](url);
 		expect(response.statusCode).toBe(401);
 	};

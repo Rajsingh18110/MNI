@@ -1,11 +1,11 @@
-import { Expression } from 'n8n-workflow';
+import { Expression } from 'MNI-workflow';
 import { initializeExpressionEngine } from '@/app/init/expressionEngine';
 
-vi.mock('n8n-workflow', () => ({
+vi.mock('MNI-workflow', () => ({
 	Expression: { initExpressionEngine: vi.fn(), getActiveImplementation: vi.fn(() => 'legacy') },
 }));
 
-vi.mock('@n8n/expression-runtime/runtime-bundle.iife.js?raw', () => ({
+vi.mock('@MNI/expression-runtime/runtime-bundle.iife.js?raw', () => ({
 	default: '/* runtime bundle */',
 }));
 

@@ -15,7 +15,7 @@ describe('output-schema-resolver', () => {
 	};
 
 	beforeEach(() => {
-		nodeDir = mkdtempSync(path.join(tmpdir(), 'n8n-schema-'));
+		nodeDir = mkdtempSync(path.join(tmpdir(), 'MNI-schema-'));
 	});
 
 	afterEach(() => {

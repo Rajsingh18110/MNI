@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import type { AgentConfigValidationIssue } from '@n8n/api-types';
+import type { AgentConfigValidationIssue } from '@MNI/api-types';
 import { computed } from 'vue';
-import { N8nActionDropdown, N8nButton, N8nIconButton } from '@n8n/design-system';
-import type { ActionDropdownItem } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+import { N8nActionDropdown, N8nButton, N8nIconButton } from '@MNI/design-system';
+import type { ActionDropdownItem } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 import { useKeybindings } from '@/app/composables/useKeybindings';
 import { useAgentPermissions } from '../composables/useAgentPermissions';
 import { useAgentPublish } from '../composables/useAgentPublish';

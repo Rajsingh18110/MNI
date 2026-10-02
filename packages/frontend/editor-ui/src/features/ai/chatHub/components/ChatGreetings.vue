@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { truncate } from '@n8n/utils/string/truncate';
-import { N8nHeading, N8nLoading } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
-import { type ChatModelDto } from '@n8n/api-types';
+import { truncate } from '@MNI/utils/string/truncate';
+import { N8nHeading, N8nLoading } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
+import { type ChatModelDto } from '@MNI/api-types';
 import { computed } from 'vue';
 import { isLlmProviderModel } from '../chat.utils';
 import ChatAgentAvatar from './ChatAgentAvatar.vue';

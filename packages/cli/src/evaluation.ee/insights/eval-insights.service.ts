@@ -1,16 +1,16 @@
-import type { Agent } from '@n8n/agents';
-import type { AiInsightsPayload, AiInsightsResponse, MetricScale } from '@n8n/api-types';
+import type { Agent } from '@MNI/agents';
+import type { AiInsightsPayload, AiInsightsResponse, MetricScale } from '@MNI/api-types';
 import {
 	aiInsightsPayloadSchema,
 	aiInsightsResponseSchema,
 	averageNormalizedScore,
 	metricScalesFromConfig,
 	normalizedScores,
-} from '@n8n/api-types';
-import { LicenseState, Logger } from '@n8n/backend-common';
-import type { EvaluationConfig, TestRun, User } from '@n8n/db';
-import { EvaluationCollectionRepository, EvaluationConfigRepository } from '@n8n/db';
-import { Service } from '@n8n/di';
+} from '@MNI/api-types';
+import { LicenseState, Logger } from '@MNI/backend-common';
+import type { EvaluationConfig, TestRun, User } from '@MNI/db';
+import { EvaluationCollectionRepository, EvaluationConfigRepository } from '@MNI/db';
+import { Service } from '@MNI/di';
 
 import { BadRequestError } from '@/errors/response-errors/bad-request.error';
 import { ForbiddenError } from '@/errors/response-errors/forbidden.error';
@@ -274,7 +274,7 @@ export class EvalInsightsService {
 		// Lazy-load the agents SDK (+ `ai` core) so it doesn't enter every
 		// instance's boot via the unconditionally-imported controller — only this
 		// flag-gated path pays for it.
-		const { Agent } = await import('@n8n/agents');
+		const { Agent } = await import('@MNI/agents');
 		// Intentionally tool-less: the prompt embeds untrusted workflow content
 		// (node prompt text + case I/O), so a planted instruction can only bias
 		// the narrative, never trigger a tool/exfil. Reconcile + zod bound the

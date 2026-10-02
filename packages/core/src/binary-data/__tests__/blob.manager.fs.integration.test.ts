@@ -1,4 +1,4 @@
-import { FsByteStore } from '@n8n/blob-storage';
+import { FsByteStore } from '@MNI/blob-storage';
 import fs from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
@@ -21,7 +21,7 @@ const executionLocation = { type: 'execution', workflowId, executionId } as cons
 const body = Buffer.from('Test data', 'utf-8');
 
 beforeAll(async () => {
-	storagePath = await fs.mkdtemp(join(tmpdir(), 'n8n-blob-manager-test-'));
+	storagePath = await fs.mkdtemp(join(tmpdir(), 'MNI-blob-manager-test-'));
 	manager = new BinaryDataBlobManager(
 		new FsByteStore({ storagePath, reportError: (error) => errorReporter.error(error) }),
 		errorReporter,
@@ -162,7 +162,7 @@ describe('copyByFileId', () => {
 
 describe('copyByFilePath', () => {
 	it('copies a file from an arbitrary path and writes a metadata file', async () => {
-		const sourcePath = join(tmpdir(), `n8n-blob-manager-source-${process.pid}`);
+		const sourcePath = join(tmpdir(), `MNI-blob-manager-source-${process.pid}`);
 		await fs.writeFile(sourcePath, body);
 
 		try {

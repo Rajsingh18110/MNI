@@ -1,16 +1,16 @@
-import type { CredentialDependencyType } from '@n8n/db';
+import type { CredentialDependencyType } from '@MNI/db';
 import {
 	CredentialDependencyRepository,
 	EXTERNAL_SECRET_PROVIDER_DEPENDENCY_TYPE,
 	SecretsProviderConnectionRepository,
-} from '@n8n/db';
-import { Service } from '@n8n/di';
-import { In, type EntityManager } from '@n8n/typeorm';
-import type { ICredentialDataDecryptedObject } from 'n8n-workflow';
+} from '@MNI/db';
+import { Service } from '@MNI/di';
+import { In, type EntityManager } from '@MNI/typeorm';
+import type { ICredentialDataDecryptedObject } from 'MNI-workflow';
 
 import { extractProviderKeysFromCredentialData } from './external-secrets.utils';
 
-export { EXTERNAL_SECRET_PROVIDER_DEPENDENCY_TYPE } from '@n8n/db';
+export { EXTERNAL_SECRET_PROVIDER_DEPENDENCY_TYPE } from '@MNI/db';
 
 export type CredentialDependencyFilter = {
 	dependencyType: CredentialDependencyType;

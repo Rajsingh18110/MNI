@@ -1,6 +1,6 @@
-import { GlobalConfig } from '@n8n/config';
-import { WorkflowStatisticsRepository, type StatisticsNames } from '@n8n/db';
-import { Container } from '@n8n/di';
+import { GlobalConfig } from '@MNI/config';
+import { WorkflowStatisticsRepository, type StatisticsNames } from '@MNI/db';
+import { Container } from '@MNI/di';
 
 /**
  * Fold the pending Postgres deltas, so a read sees the same materialised counter that the

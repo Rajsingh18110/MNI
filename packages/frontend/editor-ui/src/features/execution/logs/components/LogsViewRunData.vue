@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import RunData from '@/features/ndv/runData/components/RunData.vue';
 import { type NodeLogEntry } from '@/features/execution/logs/logs.types';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import type { IRunDataDisplayMode } from '@/Interface';
 import type { NodePanelType } from '@/features/ndv/shared/ndv.types';
 import { injectNDVStore } from '@/features/ndv/shared/ndv.store';
@@ -9,7 +9,7 @@ import { waitingNodeTooltip } from '@/features/execution/executions/executions.u
 import { useExecutionRedaction } from '@/features/execution/executions/composables/useExecutionRedaction';
 import { computed, inject, ref } from 'vue';
 import { I18nT } from 'vue-i18n';
-import { PopOutWindowKey } from '@n8n/composables/injectionKeys';
+import { PopOutWindowKey } from '@MNI/composables/injectionKeys';
 import { WORKFLOW_SETTINGS_MODAL_KEY } from '@/app/constants/modals';
 import { useUIStore } from '@/app/stores/ui.store';
 import { isSubNodeLog } from '../logs.utils';
@@ -18,7 +18,7 @@ import RedactedDataState from '@/features/ndv/panel/components/RedactedDataState
 import { type SearchShortcut } from '@/features/workflows/canvas/canvas.types';
 import NDVEmptyState from '@/features/ndv/panel/components/NDVEmptyState.vue';
 
-import { N8nLink, N8nText } from '@n8n/design-system';
+import { N8nLink, N8nText } from '@MNI/design-system';
 const {
 	title,
 	logEntry,
@@ -141,7 +141,7 @@ function handleChangeDisplayMode(value: IRunDataDisplayMode) {
 		<template #node-waiting>
 			<NDVEmptyState :title="locale.baseText('ndv.output.waitNodeWaiting.title')" wide>
 				<span
-					v-n8n-html="
+					v-MNI-html="
 						waitingNodeTooltip(logEntry.node, logEntry.workflow, logEntry.runData?.metadata)
 					"
 				/>

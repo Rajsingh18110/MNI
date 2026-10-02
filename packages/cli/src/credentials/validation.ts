@@ -1,7 +1,7 @@
-import { credentialDescriptionSchema } from '@n8n/api-types';
-import type { User } from '@n8n/db';
+import { credentialDescriptionSchema } from '@MNI/api-types';
+import type { User } from '@MNI/db';
 import get from 'lodash/get';
-import { type ICredentialDataDecryptedObject } from 'n8n-workflow';
+import { type ICredentialDataDecryptedObject } from 'MNI-workflow';
 
 import { BadRequestError } from '@/errors/response-errors/bad-request.error';
 import type { SecretsProviderAccessCheckService } from '@/modules/external-secrets.ee/secret-provider-access-check.service.ee';

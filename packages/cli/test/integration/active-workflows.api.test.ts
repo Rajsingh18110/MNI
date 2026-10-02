@@ -5,8 +5,8 @@ import {
 	shareWorkflowWithProjects,
 	shareWorkflowWithUsers,
 	testDb,
-} from '@n8n/backend-test-utils';
-import type { User } from '@n8n/db';
+} from '@MNI/backend-test-utils';
+import type { User } from '@MNI/db';
 
 import { createMember, createOwner } from './shared/db/users';
 import type { SuperAgentTest } from './shared/types';

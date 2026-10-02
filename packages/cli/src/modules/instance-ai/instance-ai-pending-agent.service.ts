@@ -1,8 +1,8 @@
-import { ModuleRegistry } from '@n8n/backend-common';
-import type { User } from '@n8n/db';
-import { Container, Service } from '@n8n/di';
-import { threadAuthorizesAgentAdoption } from '@n8n/instance-ai';
-import type { Scope } from '@n8n/permissions';
+import { ModuleRegistry } from '@MNI/backend-common';
+import type { User } from '@MNI/db';
+import { Container, Service } from '@MNI/di';
+import { threadAuthorizesAgentAdoption } from '@MNI/instance-ai';
+import type { Scope } from '@MNI/permissions';
 
 import { ForbiddenError } from '@/errors/response-errors/forbidden.error';
 import { NotFoundError } from '@/errors/response-errors/not-found.error';

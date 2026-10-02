@@ -1,4 +1,4 @@
-import type { StreamChunk } from '@n8n/agents';
+import type { StreamChunk } from '@MNI/agents';
 
 /**
  * Collects the registry attribution of each MCP server whose tool returned a

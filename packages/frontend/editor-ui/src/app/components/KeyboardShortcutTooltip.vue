@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import type { KeyboardShortcut } from '@/Interface';
-import type { N8nTooltipProps } from '@n8n/design-system';
+import type { N8nTooltipProps } from '@MNI/design-system';
 
-import { N8nKeyboardShortcut, N8nTooltip } from '@n8n/design-system';
+import { N8nKeyboardShortcut, N8nTooltip } from '@MNI/design-system';
 interface Props {
 	label: string;
 	shortcut?: KeyboardShortcut;
@@ -31,9 +31,9 @@ withDefaults(defineProps<Props>(), { placement: 'top', shortcut: undefined });
 	font-size: var(--font-size--2xs);
 	gap: var(--spacing--2xs);
 
-	--n8n--kbd-bg: var(--color--white-alpha-300);
-	--n8n--kbd-border: transparent;
-	--n8n--kbd-text: var(--color--neutral-200);
+	--MNI--kbd-bg: var(--color--white-alpha-300);
+	--MNI--kbd-border: transparent;
+	--MNI--kbd-text: var(--color--neutral-200);
 }
 
 .label {

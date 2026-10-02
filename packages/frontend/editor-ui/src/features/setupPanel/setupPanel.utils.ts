@@ -15,7 +15,7 @@ import type {
 	SetupCardItem,
 	TriggerSetupState,
 } from '@/features/setupPanel/setupPanel.types';
-import { type INode, type INodeParameters, type INodeProperties, NodeHelpers } from 'n8n-workflow';
+import { type INode, type INodeParameters, type INodeProperties, NodeHelpers } from 'MNI-workflow';
 
 /**
  * Collects all credential types that a node requires:

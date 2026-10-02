@@ -1,4 +1,4 @@
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import type { RBACPermissionCheck, EnterprisePermissionOptions } from '@/app/types/rbac';
 
 export const isEnterpriseFeatureEnabled: RBACPermissionCheck<EnterprisePermissionOptions> = (

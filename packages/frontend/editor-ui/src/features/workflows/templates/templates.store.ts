@@ -1,6 +1,6 @@
 import { TEMPLATES_URLS } from '@/app/constants';
 import type { INodeUi } from '@/Interface';
-import { useCloudPlanStore } from '@n8n/stores/cloudPlan.store';
+import { useCloudPlanStore } from '@MNI/stores/cloudPlan.store';
 import { getTemplatePathByRole } from '@/experiments/utils';
 import { getNodesWithNormalizedPosition } from '@/app/utils/nodeViewUtils';
 import type {
@@ -11,15 +11,15 @@ import type {
 	ITemplatesWorkflow,
 	ITemplatesWorkflowFull,
 	IWorkflowTemplate,
-} from '@n8n/rest-api-client/api/templates';
-import * as templatesApi from '@n8n/rest-api-client/api/templates';
-import { STORES } from '@n8n/stores';
-import { useRootStore } from '@n8n/stores/useRootStore';
+} from '@MNI/rest-api-client/api/templates';
+import * as templatesApi from '@MNI/rest-api-client/api/templates';
+import { STORES } from '@MNI/stores';
+import { useRootStore } from '@MNI/stores/useRootStore';
 import { defineStore } from 'pinia';
 import { computed, ref } from 'vue';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { useInstanceAiReady } from '@/features/ai/instanceAi/composables/useInstanceAiAvailability';
-import { useUsersStore } from '@n8n/stores/users.store';
+import { useUsersStore } from '@MNI/stores/users.store';
 import { useWorkflowsListStore } from '@/app/stores/workflowsList.store';
 
 export interface ITemplateState {
@@ -195,7 +195,7 @@ export const useTemplatesStore = defineStore(STORES.TEMPLATES, () => {
 		const defaultParameters: Record<string, string> = {
 			...TEMPLATES_URLS.UTM_QUERY,
 			utm_instance: currentN8nPath.value,
-			utm_n8n_version: rootStore.versionCli,
+			utm_MNI_version: rootStore.versionCli,
 			utm_awc: String(workflowsListStore.activeWorkflows.length),
 		};
 		if (userRole.value) {
@@ -324,7 +324,7 @@ export const useTemplatesStore = defineStore(STORES.TEMPLATES, () => {
 		const apiEndpoint: string = settingsStore.templatesHost;
 		const versionCli: string = rootStore.versionCli;
 		const response = await templatesApi.getTemplateById(apiEndpoint, templateId, {
-			'n8n-version': versionCli,
+			'MNI-version': versionCli,
 		});
 
 		const template: ITemplatesWorkflowFull = {
@@ -342,7 +342,7 @@ export const useTemplatesStore = defineStore(STORES.TEMPLATES, () => {
 		const apiEndpoint: string = settingsStore.templatesHost;
 		const versionCli: string = rootStore.versionCli;
 		const response = await templatesApi.getCollectionById(apiEndpoint, collectionId, {
-			'n8n-version': versionCli,
+			'MNI-version': versionCli,
 		});
 		const collection: ITemplatesCollectionFull = {
 			...response.collection,
@@ -362,7 +362,7 @@ export const useTemplatesStore = defineStore(STORES.TEMPLATES, () => {
 		const apiEndpoint: string = settingsStore.templatesHost;
 		const versionCli: string = rootStore.versionCli;
 		const response = await templatesApi.getCategories(apiEndpoint, {
-			'n8n-version': versionCli,
+			'MNI-version': versionCli,
 		});
 		const categories = response.categories;
 
@@ -379,7 +379,7 @@ export const useTemplatesStore = defineStore(STORES.TEMPLATES, () => {
 		const apiEndpoint: string = settingsStore.templatesHost;
 		const versionCli: string = rootStore.versionCli;
 		const response = await templatesApi.getCollections(apiEndpoint, query, {
-			'n8n-version': versionCli,
+			'MNI-version': versionCli,
 		});
 		const collections = response.collections;
 
@@ -402,7 +402,7 @@ export const useTemplatesStore = defineStore(STORES.TEMPLATES, () => {
 		const payload = await templatesApi.getWorkflows(
 			apiEndpoint,
 			{ ...query, page: 1, limit: TEMPLATES_PAGE_SIZE },
-			{ 'n8n-version': versionCli },
+			{ 'MNI-version': versionCli },
 		);
 
 		addWorkflows(payload.workflows);
@@ -440,7 +440,7 @@ export const useTemplatesStore = defineStore(STORES.TEMPLATES, () => {
 		const apiEndpoint: string = settingsStore.templatesHost;
 		const versionCli: string = rootStore.versionCli;
 		return await templatesApi.getWorkflowTemplate(apiEndpoint, templateId, {
-			'n8n-version': versionCli,
+			'MNI-version': versionCli,
 		});
 	};
 

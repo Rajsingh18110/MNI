@@ -1,6 +1,6 @@
-import type { WorkflowsConfig } from '@n8n/config';
-import { Container } from '@n8n/di';
-import type { ErrorReporter, InstanceSettings } from 'n8n-core';
+import type { WorkflowsConfig } from '@MNI/config';
+import { Container } from '@MNI/di';
+import type { ErrorReporter, InstanceSettings } from 'MNI-core';
 import { mock } from 'vitest-mock-extended';
 
 import type { Publisher } from '@/scaling/pubsub/publisher.service';

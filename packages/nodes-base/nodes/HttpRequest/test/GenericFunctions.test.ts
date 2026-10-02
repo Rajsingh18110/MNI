@@ -1,5 +1,5 @@
 import { mock } from 'vitest-mock-extended';
-import type { INode } from 'n8n-workflow';
+import type { INode } from 'MNI-workflow';
 
 import {
 	getAllowedDomains,

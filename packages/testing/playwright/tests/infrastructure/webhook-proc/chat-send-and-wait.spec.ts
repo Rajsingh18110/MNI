@@ -1,4 +1,4 @@
-import type { IWorkflowBase } from 'n8n-workflow';
+import type { IWorkflowBase } from 'MNI-workflow';
 import { nanoid } from 'nanoid';
 
 import { test, expect } from '../../../fixtures/base';
@@ -12,7 +12,7 @@ test.use({ capability: { webhooks: 1, workers: 1 } });
 function withChatWebhookId(webhookId: string) {
 	return (workflow: Partial<IWorkflowBase>) => {
 		workflow.nodes?.forEach((node) => {
-			if (node.type === '@n8n/n8n-nodes-langchain.chatTrigger') {
+			if (node.type === '@MNI/MNI-nodes-langchain.chatTrigger') {
 				node.webhookId = webhookId;
 			}
 		});

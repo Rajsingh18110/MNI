@@ -1,6 +1,6 @@
-import { Service } from '@n8n/di';
-import { InstanceSettings } from 'n8n-core';
-import { jsonParse, UnexpectedError } from 'n8n-workflow';
+import { Service } from '@MNI/di';
+import { InstanceSettings } from 'MNI-core';
+import { jsonParse, UnexpectedError } from 'MNI-workflow';
 import { mkdir, readFile, rm, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 
@@ -16,7 +16,7 @@ const DESCRIPTOR_FILE = 'cache.json';
  * the stored configuration, and how to remove it.
  *
  * Checkouts are disposable caches. Nothing here protects against a second process
- * working in the same directory; that is [LIGO-1129](https://linear.app/n8n/issue/LIGO-1129).
+ * working in the same directory; that is [LIGO-1129](https://linear.app/MNI/issue/LIGO-1129).
  */
 @Service()
 export class PromotionWorkingDirectoryService {

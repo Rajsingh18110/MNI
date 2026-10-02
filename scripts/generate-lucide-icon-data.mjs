@@ -2,11 +2,11 @@
 /**
  * Generates lucideIconData.ts with search metadata (keywords + categories) for Lucide icons.
  * SVG bodies are NOT included — they are loaded via generated chunks at runtime by lucideIconsPlugin
- * (packages/frontend/@n8n/design-system/src/icons/lucide/vite.ts).
+ * (packages/frontend/@MNI/design-system/src/icons/lucide/vite.ts).
  *
  * Usage: node scripts/generate-lucide-icon-data.mjs
  *
- * Output: packages/frontend/@n8n/design-system/src/components/N8nIconPicker/lucideIconData.ts
+ * Output: packages/frontend/@MNI/design-system/src/components/N8nIconPicker/lucideIconData.ts
  */
 
 import { readFileSync, writeFileSync, existsSync } from 'node:fs';
@@ -17,7 +17,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, '..');
 const COMPONENTS_ROOT = resolve(
 	ROOT,
-	'packages/frontend/@n8n/design-system/src/components',
+	'packages/frontend/@MNI/design-system/src/components',
 );
 
 const LUCIDE_JSON_PATH = resolve(ROOT, 'node_modules/@iconify/json/json/lucide.json');

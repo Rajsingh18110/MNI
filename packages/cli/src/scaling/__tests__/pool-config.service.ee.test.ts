@@ -1,6 +1,6 @@
-import type { LicenseState } from '@n8n/backend-common';
-import type { GlobalConfig } from '@n8n/config';
-import type { ProjectPoolSettingsRepository } from '@n8n/db';
+import type { LicenseState } from '@MNI/backend-common';
+import type { GlobalConfig } from '@MNI/config';
+import type { ProjectPoolSettingsRepository } from '@MNI/db';
 import { mock } from 'vitest-mock-extended';
 
 import { PoolConfigService } from '@/scaling/pool-config.service.ee';

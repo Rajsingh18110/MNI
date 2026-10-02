@@ -4,7 +4,7 @@ import {
 	EVALUATION_TRIGGER_NODE_TYPE,
 	EVALUATION_TRIGGER_METADATA_FIELDS,
 	jsonStringify,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import type {
 	INodeParameters,
 	IDataObject,
@@ -13,7 +13,7 @@ import type {
 	JsonObject,
 	JsonValue,
 	DataTableColumnJsType,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { getGoogleSheet, getSheet } from './evaluationTriggerUtils';
 import { metricHandlers } from './metricHandlers';
@@ -240,7 +240,7 @@ export function setInputs(this: IExecuteFunctions): INodeExecutionData[][] {
 	const evaluationNode = this.getNode();
 	const parentNodes = this.getParentNodes(evaluationNode.name);
 
-	const evalTrigger = parentNodes.find((node) => node.type === 'n8n-nodes-base.evaluationTrigger');
+	const evalTrigger = parentNodes.find((node) => node.type === 'MNI-nodes-base.evaluationTrigger');
 	const isEvalTriggerExecuted = evalTrigger
 		? this.evaluateExpression(`{{ $('${evalTrigger?.name}').isExecuted }}`, 0)
 		: false;
@@ -310,7 +310,7 @@ export async function checkIfEvaluating(this: IExecuteFunctions): Promise<INodeE
 	const evaluationNode = this.getNode();
 	const parentNodes = this.getParentNodes(evaluationNode.name);
 
-	const evalTrigger = parentNodes.find((node) => node.type === 'n8n-nodes-base.evaluationTrigger');
+	const evalTrigger = parentNodes.find((node) => node.type === 'MNI-nodes-base.evaluationTrigger');
 	const isEvalTriggerExecuted = evalTrigger
 		? this.evaluateExpression(`{{ $('${evalTrigger?.name}').isExecuted }}`, 0)
 		: false;

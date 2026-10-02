@@ -7,8 +7,8 @@ import type {
 	IPollFunctions,
 	IRequestOptions,
 	JsonObject,
-} from 'n8n-workflow';
-import { NodeApiError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeApiError } from 'MNI-workflow';
 
 import type { GoogleServiceAccount } from '../../../GenericFunctions';
 import { getGoogleAccessToken } from '../../../GenericFunctions';

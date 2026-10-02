@@ -1,6 +1,6 @@
-import { ClientOAuth2 } from '@n8n/client-oauth2';
-import type { INodeProperties } from 'n8n-workflow';
-import { NodeHelpers } from 'n8n-workflow';
+import { ClientOAuth2 } from '@MNI/client-oauth2';
+import type { INodeProperties } from 'MNI-workflow';
+import { NodeHelpers } from 'MNI-workflow';
 import nock from 'nock';
 
 import { AtlassianOAuth2Api } from '../AtlassianOAuth2Api.credentials';

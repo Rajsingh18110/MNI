@@ -5,7 +5,7 @@ import { nanoid } from 'nanoid';
 import { setTimeout as wait } from 'node:timers/promises';
 
 import type { ApiHelpers } from './api-helper';
-import { N8N_AUTH_COOKIE } from '../config/constants';
+import { MNI_AUTH_COOKIE } from '../config/constants';
 
 type HttpMethod = 'GET' | 'POST' | 'DELETE';
 
@@ -220,7 +220,7 @@ export class McpApiHelper {
 	): Promise<McpSession> {
 		// Get base URL and auth cookie from Playwright context
 		const storageState = await this.api.request.storageState();
-		const authCookie = storageState.cookies.find((c) => c.name === N8N_AUTH_COOKIE);
+		const authCookie = storageState.cookies.find((c) => c.name === MNI_AUTH_COOKIE);
 
 		// Construct full URL - handle both absolute and relative paths
 		let fullUrl: string;
@@ -530,7 +530,7 @@ export class McpApiHelper {
 		const initMessage = this.createMessage('initialize', {
 			protocolVersion: '2024-11-05',
 			capabilities: {},
-			clientInfo: { name: 'n8n-e2e-test', version: '1.0.0' },
+			clientInfo: { name: 'MNI-e2e-test', version: '1.0.0' },
 		});
 
 		const response = await this.trigger(path, {

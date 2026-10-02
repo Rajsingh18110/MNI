@@ -3,10 +3,10 @@
  *
  * Imports the raw (unescaped) prompt constants from the workflow-sdk package
  * and assembles them into structured SDK reference documentation.
- * Served both as an MCP resource and via the n8n_get_workflow_sdk_reference tool.
+ * Served both as an MCP resource and via the MNI_get_workflow_sdk_reference tool.
  */
 
-import { SDK_IMPORT_STATEMENT } from '@n8n/ai-workflow-builder';
+import { SDK_IMPORT_STATEMENT } from '@MNI/ai-workflow-builder';
 import {
 	EXPRESSION_REFERENCE,
 	WORKFLOW_SDK_PATTERNS,
@@ -15,7 +15,7 @@ import {
 	WORKFLOW_RULES,
 	NODE_GROUPS_REFERENCE,
 	SDK_LANGUAGE_REFERENCE,
-} from '@n8n/workflow-sdk/prompts/sdk-reference';
+} from '@MNI/workflow-sdk/prompts/sdk-reference';
 
 // NOTE: CODING_GUIDELINES and DESIGN_GUIDANCE are MCP-only constants defined
 // below. They are NOT shared with the code-builder agent (which has its own

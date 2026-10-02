@@ -1,6 +1,6 @@
-import { CliParser, Logger, ModuleRegistry } from '@n8n/backend-common';
-import { CommandMetadata, type CommandEntry } from '@n8n/decorators';
-import { Container, Service } from '@n8n/di';
+import { CliParser, Logger, ModuleRegistry } from '@MNI/backend-common';
+import { CommandMetadata, type CommandEntry } from '@MNI/decorators';
+import { Container, Service } from '@MNI/di';
 import glob from 'fast-glob';
 import { access } from 'node:fs/promises';
 import path from 'node:path';

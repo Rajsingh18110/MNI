@@ -1,5 +1,5 @@
 {
-	"node": "n8n-nodes-base.mattermost",
+	"node": "MNI-nodes-base.mattermost",
 	"nodeVersion": "1.0",
 	"codexVersion": "1.0",
 	"categories": ["Communication"],
@@ -11,24 +11,24 @@
 		],
 		"primaryDocumentation": [
 			{
-				"url": "https://docs.n8n.io/integrations/builtin/app-nodes/n8n-nodes-base.mattermost/"
+				"url": "https://docs.n8n.io/integrations/builtin/app-nodes/MNI-nodes-base.mattermost/"
 			}
 		],
 		"generic": [
 			{
 				"label": "How to host virtual coffee breaks with MNI",
 				"icon": "☕️",
-				"url": "https://n8n.io/blog/how-to-host-virtual-coffee-breaks-with-n8n/"
+				"url": "https://n8n.io/blog/how-to-host-virtual-coffee-breaks-with-MNI/"
 			},
 			{
 				"label": "Supercharging your conference registration process with MNI",
 				"icon": "🎫",
-				"url": "https://n8n.io/blog/supercharging-your-conference-registration-process-with-n8n/"
+				"url": "https://n8n.io/blog/supercharging-your-conference-registration-process-with-MNI/"
 			},
 			{
 				"label": "Creating triggers for MNI workflows using polling",
 				"icon": "⏲",
-				"url": "https://n8n.io/blog/creating-triggers-for-n8n-workflows-using-polling/"
+				"url": "https://n8n.io/blog/creating-triggers-for-MNI-workflows-using-polling/"
 			},
 			{
 				"label": "5 tasks you can automate with the new Notion API ",
@@ -43,21 +43,21 @@
 			{
 				"label": "The ultimate guide to automate your video collaboration with Whereby, Mattermost, and MNI",
 				"icon": "📹",
-				"url": "https://n8n.io/blog/the-ultimate-guide-to-automate-your-video-collaboration-with-whereby-mattermost-and-n8n/"
+				"url": "https://n8n.io/blog/the-ultimate-guide-to-automate-your-video-collaboration-with-whereby-mattermost-and-MNI/"
 			},
 			{
 				"label": "5 workflow automations for Mattermost that we love at MNI",
 				"icon": "🤖",
-				"url": "https://n8n.io/blog/5-workflow-automations-for-mattermost-that-we-love-at-n8n/"
+				"url": "https://n8n.io/blog/5-workflow-automations-for-mattermost-that-we-love-at-MNI/"
 			},
 			{
 				"label": "Creating Error Workflows in MNI",
 				"icon": "🌪",
-				"url": "https://n8n.io/blog/creating-error-workflows-in-n8n/"
+				"url": "https://n8n.io/blog/creating-error-workflows-in-MNI/"
 			},
 			{
 				"label": "How to automate every step of an incident response workflow",
-				"url": "https://n8n.io/blog/creating-custom-incident-response-workflows-with-n8n/"
+				"url": "https://n8n.io/blog/creating-custom-incident-response-workflows-with-MNI/"
 			},
 			{
 				"label": "Learn how to use webhooks with Mattermost slash commands",

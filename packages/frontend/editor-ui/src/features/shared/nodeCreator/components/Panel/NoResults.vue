@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { useI18n } from '@n8n/i18n';
-import { N8nLink } from '@n8n/design-system';
+import { useI18n } from '@MNI/i18n';
+import { N8nLink } from '@MNI/design-system';
 import { REGULAR_NODE_CREATOR_VIEW, TRIGGER_NODE_CREATOR_VIEW } from '@/app/constants';
 import type { NodeFilterType } from '@/Interface';
 

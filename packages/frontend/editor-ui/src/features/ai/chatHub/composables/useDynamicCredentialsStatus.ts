@@ -1,11 +1,11 @@
 import { computed, ref, watch, type ComputedRef, type Ref } from 'vue';
-import { useRootStore } from '@n8n/stores/useRootStore';
+import { useRootStore } from '@MNI/stores/useRootStore';
 import {
 	fetchWorkflowExecutionStatus,
 	authorizeDynamicCredential,
 	revokeDynamicCredential,
 } from '@/features/ai/chatHub/chat.api';
-import type { WorkflowExecutionStatus } from '@n8n/api-types';
+import type { WorkflowExecutionStatus } from '@MNI/api-types';
 import {
 	getTrustedOAuthOrigins,
 	waitForOAuthCallback,

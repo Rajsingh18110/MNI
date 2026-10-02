@@ -1,7 +1,7 @@
 import { SchemaRegistry } from '@kafkajs/confluent-schema-registry';
-import { passthroughEgressFilter } from '@n8n/backend-network';
-import type { IDeferredPromise } from '@n8n/utils/promise/deferred-promise';
-import { createResultError, createResultOk } from '@n8n/utils/result';
+import { passthroughEgressFilter } from '@MNI/backend-network';
+import type { IDeferredPromise } from '@MNI/utils/promise/deferred-promise';
+import { createResultError, createResultOk } from '@MNI/utils/result';
 import type { Consumer } from 'kafkajs';
 import type {
 	ITriggerFunctions,
@@ -10,9 +10,9 @@ import type {
 	Logger,
 	ICredentialDataDecryptedObject,
 	NodeEgressFilter,
-} from 'n8n-workflow';
-import { sleep } from '@n8n/utils/sleep';
-import { NodeOperationError, OperationalError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { sleep } from '@MNI/utils/sleep';
+import { NodeOperationError, OperationalError } from 'MNI-workflow';
 import { getEventListeners } from 'node:events';
 import http from 'node:http';
 import https from 'node:https';
@@ -36,7 +36,7 @@ import {
 } from '../utils';
 
 vi.mock('@kafkajs/confluent-schema-registry');
-vi.mock('@n8n/utils/sleep', () => ({
+vi.mock('@MNI/utils/sleep', () => ({
 	sleep: vi.fn().mockResolvedValue(undefined),
 }));
 
@@ -361,7 +361,7 @@ describe('Kafka Utils', () => {
 		const mockNode: INode = {
 			id: 'test-node-id',
 			name: 'Test Kafka Trigger',
-			type: 'n8n-nodes-base.kafkaTrigger',
+			type: 'MNI-nodes-base.kafkaTrigger',
 			typeVersion: 1.3,
 			position: [0, 0],
 			parameters: {},
@@ -993,7 +993,7 @@ describe('Kafka Utils', () => {
 		const registryNode: INode = {
 			id: 'test-node-id',
 			name: 'Test Kafka Trigger',
-			type: 'n8n-nodes-base.kafkaTrigger',
+			type: 'MNI-nodes-base.kafkaTrigger',
 			typeVersion: 1.3,
 			position: [0, 0],
 			parameters: {},

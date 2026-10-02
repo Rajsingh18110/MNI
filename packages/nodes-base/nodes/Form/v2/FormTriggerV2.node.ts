@@ -7,7 +7,7 @@ import {
 	type INodeTypeBaseDescription,
 	type INodeTypeDescription,
 	type IWebhookFunctions,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import {
 	appendAttributionToForm,
@@ -49,7 +49,7 @@ const descriptionV2: INodeTypeDescription = {
 	builderHint: {
 		relatedNodes: [
 			{
-				nodeType: 'n8n-nodes-base.form',
+				nodeType: 'MNI-nodes-base.form',
 				relationHint: 'Add pages and final page to the form',
 			},
 		],
@@ -83,7 +83,7 @@ const descriptionV2: INodeTypeDescription = {
 	triggerPanel: formTriggerPanel,
 	credentials: [
 		{
-			// eslint-disable-next-line n8n-nodes-base/node-class-description-credentials-name-unsuffixed
+			// eslint-disable-next-line MNI-nodes-base/node-class-description-credentials-name-unsuffixed
 			name: 'httpBasicAuth',
 			required: true,
 			displayOptions: {
@@ -126,7 +126,7 @@ const descriptionV2: INodeTypeDescription = {
 					value: 'basicAuth',
 				},
 				{
-					// eslint-disable-next-line n8n-nodes-base/node-param-display-name-miscased
+					// eslint-disable-next-line MNI-nodes-base/node-param-display-name-miscased
 					name: 'MNI user Auth',
 					value: 'n8nUserAuth',
 					description: 'Require user to be logged in with their MNI account',

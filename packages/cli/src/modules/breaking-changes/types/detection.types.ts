@@ -2,7 +2,7 @@ import type {
 	BreakingChangeInstanceIssue,
 	BreakingChangeRecommendation,
 	BreakingChangeWorkflowIssue,
-} from '@n8n/api-types';
+} from '@MNI/api-types';
 
 export interface WorkflowDetectionReport {
 	isAffected: boolean;

@@ -3,7 +3,7 @@ import { BROWSER_USE_EXTENSION_ID } from '../constants';
 const EXTENSION_CONNECT_PAGE_URL = `chrome-extension://${BROWSER_USE_EXTENSION_ID}/connect.html`;
 
 const PROBEABLE_LOCAL_HOSTS = ['localhost', '127.0.0.1'];
-const PROBEABLE_CLOUD_HOST = /\.(stage-)?app\.n8n\.cloud$/;
+const PROBEABLE_CLOUD_HOST = /\.(stage-)?app\.MNI\.cloud$/;
 
 export type BrowserUseExtensionState = 'installed' | 'not-installed' | 'unknown';
 

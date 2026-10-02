@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import ProjectIcon from '@/features/collaboration/projects/components/ProjectIcon.vue';
 import type { ProjectListItem } from '@/features/collaboration/projects/projects.types';
-import { N8nIcon, N8nScrollArea, N8nTooltip, TOOLTIP_DELAY_MS } from '@n8n/design-system';
-import { isIconOrEmoji, type IconOrEmoji } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+import { N8nIcon, N8nScrollArea, N8nTooltip, TOOLTIP_DELAY_MS } from '@MNI/design-system';
+import { isIconOrEmoji, type IconOrEmoji } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 import {
 	ComboboxAnchor,
 	ComboboxContent,
@@ -259,7 +259,7 @@ function suppressTooltip() {
 .triggerProjectIcon {
 	color: var(--text-color--subtle);
 
-	:global(.n8n-icon) {
+	:global(.MNI-icon) {
 		color: var(--text-color--subtle) !important;
 	}
 }

@@ -1,5 +1,5 @@
-import { NodeOperationError } from 'n8n-workflow';
-import type { IExecuteFunctions, INode, NodeParameterValueType } from 'n8n-workflow';
+import { NodeOperationError } from 'MNI-workflow';
+import type { IExecuteFunctions, INode, NodeParameterValueType } from 'MNI-workflow';
 import { mockDeep } from 'vitest-mock-extended';
 
 import { execute as getJob } from '../actions/job/getJob.operation';
@@ -11,7 +11,7 @@ const JOB_ID = 281874479417551;
 const node: INode = {
 	id: '1',
 	name: 'Databricks',
-	type: 'n8n-nodes-base.databricks',
+	type: 'MNI-nodes-base.databricks',
 	typeVersion: 1,
 	position: [0, 0],
 	parameters: {},

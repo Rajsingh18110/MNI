@@ -1,7 +1,7 @@
-import type { StreamChunk } from '@n8n/agents';
-import type { AgentIntegrationConfig } from '@n8n/api-types';
-import { Container } from '@n8n/di';
-import { deepCopy, type Logger } from 'n8n-workflow';
+import type { StreamChunk } from '@MNI/agents';
+import type { AgentIntegrationConfig } from '@MNI/api-types';
+import { Container } from '@MNI/di';
+import { deepCopy, type Logger } from 'MNI-workflow';
 import type { Mock } from 'vitest';
 import { mock } from 'vitest-mock-extended';
 

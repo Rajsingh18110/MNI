@@ -5,8 +5,8 @@ import {
 	N8nDialog,
 	N8nDialogDescription,
 	N8nDialogFooter,
-} from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+} from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 
 import { useWorkflowReviewDialogPreferences } from '@/features/workflow-reviews/composables/useWorkflowReviewDialogPreferences';
 

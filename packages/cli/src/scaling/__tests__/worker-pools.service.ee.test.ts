@@ -1,4 +1,4 @@
-import type { InstanceRegistration } from '@n8n/api-types';
+import type { InstanceRegistration } from '@MNI/api-types';
 import { mock } from 'vitest-mock-extended';
 
 import type { InstanceRegistryService } from '@/modules/instance-registry/instance-registry.service';

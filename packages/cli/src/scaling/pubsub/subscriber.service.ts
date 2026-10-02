@@ -1,11 +1,11 @@
-import { Logger } from '@n8n/backend-common';
-import { ExecutionsConfig, GlobalConfig } from '@n8n/config';
-import { Service } from '@n8n/di';
+import { Logger } from '@MNI/backend-common';
+import { ExecutionsConfig, GlobalConfig } from '@MNI/config';
+import { Service } from '@MNI/di';
 import type { Redis as SingleNodeClient, Cluster as MultiNodeClient } from 'ioredis';
 import debounce from 'lodash/debounce';
-import { InstanceSettings } from 'n8n-core';
-import { jsonParse } from 'n8n-workflow';
-import type { LogMetadata } from 'n8n-workflow';
+import { InstanceSettings } from 'MNI-core';
+import { jsonParse } from 'MNI-workflow';
+import type { LogMetadata } from 'MNI-workflow';
 
 import { RedisClientService } from '@/services/redis-client.service';
 

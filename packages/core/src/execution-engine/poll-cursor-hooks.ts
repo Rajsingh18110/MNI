@@ -1,4 +1,4 @@
-import type { IPollFunctions } from 'n8n-workflow';
+import type { IPollFunctions } from 'MNI-workflow';
 
 /**
  * Runs `poll()` inside the staging scope of the poll functions, so a cursor staged by

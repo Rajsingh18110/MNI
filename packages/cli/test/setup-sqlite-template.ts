@@ -5,7 +5,7 @@
  * migration history.
  *
  * It runs only in CI, so a local run never builds or copies a template.
- * Set N8N_TEST_DISABLE_TEMPLATE_DB=1 to opt out (e.g. when bisecting migration bugs).
+ * Set MNI_TEST_DISABLE_TEMPLATE_DB=1 to opt out (e.g. when bisecting migration bugs).
  */
 import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
@@ -17,36 +17,36 @@ export async function setup() {
 	if (
 		process.env.CI !== 'true' ||
 		process.env.DB_TYPE !== 'sqlite' ||
-		process.env.N8N_TEST_DISABLE_TEMPLATE_DB === '1'
+		process.env.MNI_TEST_DISABLE_TEMPLATE_DB === '1'
 	) {
 		return;
 	}
 
-	templateDir = mkdtempSync(join(tmpdir(), 'n8n-sqlite-template-'));
-	mkdirSync(join(templateDir, '.n8n'));
+	templateDir = mkdtempSync(join(tmpdir(), 'MNI-sqlite-template-'));
+	mkdirSync(join(templateDir, '.MNI'));
 	// Same instance settings as `setup-test-folder.ts` gives each test file.
 	writeFileSync(
-		join(templateDir, '.n8n/config'),
+		join(templateDir, '.MNI/config'),
 		JSON.stringify({ encryptionKey: 'test_key', instanceId: '123' }),
 		{ encoding: 'utf-8', mode: 0o600 },
 	);
 
-	const originalUserFolder = process.env.N8N_USER_FOLDER;
-	process.env.N8N_USER_FOLDER = templateDir;
+	const originalUserFolder = process.env.MNI_USER_FOLDER;
+	process.env.MNI_USER_FOLDER = templateDir;
 	const start = Date.now();
-	const { testDb } = await import('@n8n/backend-test-utils');
-	const { Container } = await import('@n8n/di');
+	const { testDb } = await import('@MNI/backend-test-utils');
+	const { Container } = await import('@MNI/di');
 	try {
 		// `global-setup.ts` already created the config classes with the default
 		// MNI folder. Reset them, so they read the template folder set above.
 		Container.reset();
-		process.env.N8N_TEST_SQLITE_TEMPLATE = await testDb.initSqliteTemplateDb(
-			join(templateDir, '.n8n'),
+		process.env.MNI_TEST_SQLITE_TEMPLATE = await testDb.initSqliteTemplateDb(
+			join(templateDir, '.MNI'),
 		);
 	} finally {
 		Container.reset();
-		if (originalUserFolder === undefined) delete process.env.N8N_USER_FOLDER;
-		else process.env.N8N_USER_FOLDER = originalUserFolder;
+		if (originalUserFolder === undefined) delete process.env.MNI_USER_FOLDER;
+		else process.env.MNI_USER_FOLDER = originalUserFolder;
 	}
 	console.log(`✓ SQLite template DB ready (${Date.now() - start}ms)`);
 }

@@ -1,7 +1,7 @@
 import { SETTINGS_STORE_DEFAULT_STATE } from '@/__tests__/utils';
 import { TelemetryService } from '@/app/plugins/telemetry';
-import { useSettingsStore } from '@n8n/stores/settings.store';
-import { defineTelemetryEvents } from '@n8n/telemetry';
+import { useSettingsStore } from '@MNI/stores/settings.store';
+import { defineTelemetryEvents } from '@MNI/telemetry';
 import merge from 'lodash/merge';
 import { createPinia, setActivePinia } from 'pinia';
 import { z } from 'zod/v4';
@@ -301,33 +301,33 @@ describe('telemetry', () => {
 		it('tracks the enable event when Slack captureResponder is turned on', () => {
 			const trackSpy = vi.spyOn(telemetry, 'track');
 
-			telemetry.trackNodeParametersValuesChange('n8n-nodes-base.slack', {
+			telemetry.trackNodeParametersValuesChange('MNI-nodes-base.slack', {
 				name: 'parameters.captureResponder',
 				value: true,
 			});
 
 			expect(trackSpy).toHaveBeenCalledWith('User enabled advanced HITL', {
-				node_type: 'n8n-nodes-base.slack',
+				node_type: 'MNI-nodes-base.slack',
 			});
 		});
 
 		it('tracks the enable event when Telegram chatApproval is turned on', () => {
 			const trackSpy = vi.spyOn(telemetry, 'track');
 
-			telemetry.trackNodeParametersValuesChange('n8n-nodes-base.telegram', {
+			telemetry.trackNodeParametersValuesChange('MNI-nodes-base.telegram', {
 				name: 'parameters.chatApproval',
 				value: true,
 			});
 
 			expect(trackSpy).toHaveBeenCalledWith('User enabled advanced HITL', {
-				node_type: 'n8n-nodes-base.telegram',
+				node_type: 'MNI-nodes-base.telegram',
 			});
 		});
 
 		it('does not track the enable event when the toggle is turned off', () => {
 			const trackSpy = vi.spyOn(telemetry, 'track');
 
-			telemetry.trackNodeParametersValuesChange('n8n-nodes-base.slack', {
+			telemetry.trackNodeParametersValuesChange('MNI-nodes-base.slack', {
 				name: 'parameters.captureResponder',
 				value: false,
 			});
@@ -338,7 +338,7 @@ describe('telemetry', () => {
 		it('does not track the enable event for an unrelated parameter change', () => {
 			const trackSpy = vi.spyOn(telemetry, 'track');
 
-			telemetry.trackNodeParametersValuesChange('n8n-nodes-base.slack', {
+			telemetry.trackNodeParametersValuesChange('MNI-nodes-base.slack', {
 				name: 'parameters.otherOptions.someField',
 				value: true,
 			});

@@ -1,7 +1,7 @@
-import type { AgentActor, AgentIntegrationConfig, AgentJsonConfig } from '@n8n/api-types';
-import type { User } from '@n8n/db';
-import { Service } from '@n8n/di';
-import { TELEMETRY_EVENT } from '@n8n/telemetry';
+import type { AgentActor, AgentIntegrationConfig, AgentJsonConfig } from '@MNI/api-types';
+import type { User } from '@MNI/db';
+import { Service } from '@MNI/di';
+import { TELEMETRY_EVENT } from '@MNI/telemetry';
 import isEqual from 'lodash/isEqual';
 
 import { Telemetry } from '@/telemetry';
@@ -12,7 +12,7 @@ import { isUnconfiguredAgent } from './utils/agent-capabilities';
 
 export { isUnconfiguredAgent };
 
-export type { AgentActor } from '@n8n/api-types';
+export type { AgentActor } from '@MNI/api-types';
 
 /** Context passed to canonical mutating sidecar services. */
 export type AgentMutationTelemetryContext = {

@@ -1,23 +1,23 @@
 import type { Mocked } from 'vitest';
-import { TELEMETRY_EVENT } from '@n8n/telemetry';
+import { TELEMETRY_EVENT } from '@MNI/telemetry';
 import {
 	Agent as SdkAgent,
 	type CheckpointStore,
 	type CredentialProvider,
 	type SerializableAgentState,
 	type StreamChunk,
-} from '@n8n/agents';
-import { APPROVAL_RESUME_SCHEMA } from '@n8n/agents/tool';
-import { zodToJsonSchema } from '@n8n/ai-utilities/json-schema';
+} from '@MNI/agents';
+import { APPROVAL_RESUME_SCHEMA } from '@MNI/agents/tool';
+import { zodToJsonSchema } from '@MNI/ai-utilities/json-schema';
 import {
 	AGENT_SKILL_INSTRUCTIONS_MAX_LENGTH,
 	type AgentJsonConfig,
 	type AgentTaskDto,
-} from '@n8n/api-types';
-import type { CustomFetch, HttpTransport, OutboundHttp } from '@n8n/backend-network';
-import type { User } from '@n8n/db';
+} from '@MNI/api-types';
+import type { CustomFetch, HttpTransport, OutboundHttp } from '@MNI/backend-network';
+import type { User } from '@MNI/db';
 import { convertArrayToReadableStream, MockLanguageModelV3 } from 'ai/test';
-import { NodeConnectionTypes } from 'n8n-workflow';
+import { NodeConnectionTypes } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import type { CredentialTypes } from '@/credential-types';
@@ -49,7 +49,7 @@ import type { Agent } from '../entities/agent.entity';
 import type { AgentSecureRuntime } from '../runtime/agent-secure-runtime';
 import { getAgentConfigHash } from '../utils/agent-config-hash';
 import * as checkAccess from '@/permissions.ee/check-access';
-import type { InstanceAiCredentialService } from '@n8n/instance-ai';
+import type { InstanceAiCredentialService } from '@MNI/instance-ai';
 
 const ctx = {
 	resumeData: undefined,
@@ -161,7 +161,7 @@ const baseConfig: AgentJsonConfig = {
 };
 
 const fromAiTeamId =
-	"={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('teamId', 'The Linear team ID to create the issue in', 'string') }}";
+	"={{ /*MNI-auto-generated-fromAI-override*/ $fromAI('teamId', 'The Linear team ID to create the issue in', 'string') }}";
 
 const fromAiTitle = "={{ $fromAI('title', 'Issue title', 'string') }}";
 
@@ -169,7 +169,7 @@ function makeLinearNodeTypeWithDynamicTeamId(): ReturnType<NodeTypes['getByNameA
 	return {
 		description: {
 			displayName: 'Linear Tool',
-			name: 'n8n-nodes-base.linearTool',
+			name: 'MNI-nodes-base.linearTool',
 			group: ['transform'],
 			description: 'Use Linear in an agent tool.',
 			version: 1.1,
@@ -216,7 +216,7 @@ function makeLinearToolWithParameters(
 		name: 'Linear: Create Issue',
 		description: 'Create a Linear issue',
 		node: {
-			nodeType: 'n8n-nodes-base.linearTool',
+			nodeType: 'MNI-nodes-base.linearTool',
 			nodeTypeVersion: 1.1,
 			nodeParameters,
 			credentials: {
@@ -698,7 +698,7 @@ describe('AgentsBuilderToolsService', () => {
 			);
 
 			expect(agentsService.updateConfig).not.toHaveBeenCalled();
-			expect(nodeTypes.getByNameAndVersion).toHaveBeenCalledWith('n8n-nodes-base.linearTool', 1.1);
+			expect(nodeTypes.getByNameAndVersion).toHaveBeenCalledWith('MNI-nodes-base.linearTool', 1.1);
 			expect(result).toEqual({
 				ok: false,
 				errors: [

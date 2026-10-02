@@ -1,6 +1,6 @@
 import { expect } from '@playwright/test';
 import type { TestInfo } from '@playwright/test';
-import type { ServiceHelpers } from 'n8n-containers/services/types';
+import type { ServiceHelpers } from 'MNI-containers/services/types';
 
 import {
 	attachReportMetrics,

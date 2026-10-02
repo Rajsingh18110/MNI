@@ -1,5 +1,5 @@
 import { createTestingPinia } from '@pinia/testing';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 
 import { mockedStore, type MockedStore } from '@/__tests__/utils';
 import { useUIStore } from '@/app/stores/ui.store';

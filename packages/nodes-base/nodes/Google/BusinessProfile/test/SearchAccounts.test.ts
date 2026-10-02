@@ -1,4 +1,4 @@
-import type { ILoadOptionsFunctions } from 'n8n-workflow';
+import type { ILoadOptionsFunctions } from 'MNI-workflow';
 
 import { searchAccounts } from '../GenericFunctions';
 
@@ -56,7 +56,7 @@ describe('GenericFunctions - searchAccounts', () => {
 		const result = await searchAccounts.call(mockContext);
 
 		// The request would only return the last result
-		// N8N handles the pagination and adds the previous results to the results array
+		// MNI handles the pagination and adds the previous results to the results array
 		expect(result).toEqual({
 			results: [{ name: 'Test Account 3', value: 'accounts/345' }],
 			paginationToken: undefined,

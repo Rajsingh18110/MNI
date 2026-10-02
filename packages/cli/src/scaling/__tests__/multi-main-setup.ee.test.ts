@@ -1,11 +1,11 @@
-import { mockLogger } from '@n8n/backend-test-utils';
-import type { GlobalConfig } from '@n8n/config';
-import { MultiMainMetadata } from '@n8n/decorators';
-import type { MultiMainEventHandler } from '@n8n/decorators';
-import { Container, Service } from '@n8n/di';
+import { mockLogger } from '@MNI/backend-test-utils';
+import type { GlobalConfig } from '@MNI/config';
+import { MultiMainMetadata } from '@MNI/decorators';
+import type { MultiMainEventHandler } from '@MNI/decorators';
+import { Container, Service } from '@MNI/di';
 import { mock } from 'vitest-mock-extended';
-import type { ErrorReporter, InstanceSettings } from 'n8n-core';
-import { createResultOk, createResultError } from '@n8n/utils/result';
+import type { ErrorReporter, InstanceSettings } from 'MNI-core';
+import { createResultOk, createResultError } from '@MNI/utils/result';
 
 import type { LeaderElectionClient } from '@/scaling/leader-election-client';
 
@@ -36,7 +36,7 @@ function createInstanceSettings(hostId: string) {
 }
 
 describe('MultiMainSetup', () => {
-	const hostId = 'main-n8n-main-0';
+	const hostId = 'main-MNI-main-0';
 	const logger = mockLogger();
 	const metadata = new MultiMainMetadata();
 	const errorReporter = mock<ErrorReporter>();
@@ -154,7 +154,7 @@ describe('MultiMainSetup', () => {
 
 		it('should step down when another host is leader', async () => {
 			client.tryRenewLeaderTtl.mockResolvedValue(
-				createResultOk({ id: 'other-host-is-leader', currentLeaderId: 'main-n8n-main-1' }),
+				createResultOk({ id: 'other-host-is-leader', currentLeaderId: 'main-MNI-main-1' }),
 			);
 			const emit = vi.spyOn(multiMainSetup, 'emit');
 
@@ -228,7 +228,7 @@ describe('MultiMainSetup', () => {
 		});
 
 		it('should stay follower when another instance is leader', async () => {
-			client.getLeader.mockResolvedValue(createResultOk('main-n8n-main-1'));
+			client.getLeader.mockResolvedValue(createResultOk('main-MNI-main-1'));
 			const emit = vi.spyOn(multiMainSetup, 'emit');
 
 			await multiMainSetup['checkLeader']();

@@ -13,7 +13,7 @@ import { toPosix } from './path-utils.js';
 // Bailout patterns are centralised here (vs the original DEVP-194 spec's
 // per-package `n8nTestChanged.inPackageBailouts` field) because the MNI
 // workspace shares the same vitest config helpers + setup file layout via
-// @n8n/vitest-config. If a package ever needs a custom bailout that doesn't
+// @MNI/vitest-config. If a package ever needs a custom bailout that doesn't
 // fit these patterns, switch to per-package config rather than expanding
 // these any further.
 const COMMON_BAILOUT = [
@@ -24,7 +24,7 @@ const COMMON_BAILOUT = [
 ];
 // Frontend packages use vite.config.* for the vitest config too (vitest reads
 // vite.config). Setup files live at src/__tests__/setup.ts per the shared
-// @n8n/vitest-config convention.
+// @MNI/vitest-config convention.
 // Backend packages keep setup and globalSetup files in test/ (e.g. cli's
 // test/global-setup.ts, test/setup-sqlite-template.ts). No test imports a
 // globalSetup file, so `vitest related` would select zero tests for it.
@@ -65,7 +65,7 @@ export function computeScope(options: ComputeScopeOptions): ScopeResult {
 	}
 
 	// Workspace-wide triggers (lockfile, root manifest, universal sinks like
-	// @n8n/db / workflow / core) force RUN_FULL regardless of which package we
+	// @MNI/db / workflow / core) force RUN_FULL regardless of which package we
 	// are scoping. The dep-graph in affected-packages lists the package as
 	// affected, but the in-package filter below would otherwise SKIP it because
 	// the trigger file lives outside the package — a silent false green.

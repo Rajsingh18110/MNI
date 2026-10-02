@@ -11,7 +11,7 @@ import {
 	useWorkflowDocumentStore,
 } from '@/app/stores/workflowDocument.store';
 import { useWorkflowsStore } from '@/app/stores/workflows.store';
-import type { INode, IRunData, ITaskData } from 'n8n-workflow';
+import type { INode, IRunData, ITaskData } from 'MNI-workflow';
 import { useExecutionData } from './useExecutionData';
 
 vi.mock('vue-router', () => ({

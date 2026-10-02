@@ -4,7 +4,7 @@ import { createTestingPinia } from '@pinia/testing';
 import { setActivePinia } from 'pinia';
 import { mockedStore } from '@/__tests__/utils';
 import { usePostHog } from '@/app/stores/posthog.store';
-import { TELEMETRY_EVENT } from '@n8n/telemetry';
+import { TELEMETRY_EVENT } from '@MNI/telemetry';
 
 import type { ThreadRuntime } from '../../instanceAi.store';
 import type { WorkflowSetupSection } from '../workflowSetup.types';
@@ -12,12 +12,12 @@ import { makeWorkflowSetupSection } from '../__tests__/factories';
 import { useWorkflowSetupActions } from './useWorkflowSetupActions';
 
 const telemetryTrack = vi.fn();
-vi.mock('@n8n/composables/useTelemetry', () => ({
+vi.mock('@MNI/composables/useTelemetry', () => ({
 	useTelemetry: () => ({ track: telemetryTrack }),
 }));
 
 const rootStoreState = { instanceId: 'instance-1', pushRef: 'session-1' };
-vi.mock('@n8n/stores/useRootStore', () => ({
+vi.mock('@MNI/stores/useRootStore', () => ({
 	useRootStore: () => rootStoreState,
 }));
 
@@ -195,7 +195,7 @@ describe('useWorkflowSetupActions', () => {
 					expect.objectContaining({
 						node_ids: ['node-a'],
 						input_type: 'credential',
-						node_type: 'n8n-nodes-base.httpRequest',
+						node_type: 'MNI-nodes-base.httpRequest',
 						credential_type: 'typeA',
 					}),
 				],
@@ -257,10 +257,10 @@ describe('useWorkflowSetupActions', () => {
 			'User finished providing input',
 			expect.objectContaining({
 				type: 'setup',
-				explicitly_skipped_inputs: [{ label: 'n8n-nodes-base.httpRequest - typeB', options: [] }],
+				explicitly_skipped_inputs: [{ label: 'MNI-nodes-base.httpRequest - typeB', options: [] }],
 				provided_inputs: [
 					expect.objectContaining({
-						label: 'n8n-nodes-base.httpRequest - typeA',
+						label: 'MNI-nodes-base.httpRequest - typeA',
 						option_chosen: 'true',
 					}),
 				],
@@ -415,22 +415,22 @@ describe('useWorkflowSetupActions', () => {
 			expect.objectContaining({
 				provided_inputs: [
 					{
-						label: 'n8n-nodes-base.httpRequest - typeA',
+						label: 'MNI-nodes-base.httpRequest - typeA',
 						options: [],
 						option_chosen: 'true',
 					},
 					{
-						label: 'n8n-nodes-base.httpRequest - url',
+						label: 'MNI-nodes-base.httpRequest - url',
 						options: [],
 						option_chosen: 'true',
 					},
 					{
-						label: 'n8n-nodes-base.httpRequest - method',
+						label: 'MNI-nodes-base.httpRequest - method',
 						options: [],
 						option_chosen: 'true',
 					},
 					{
-						label: 'n8n-nodes-base.httpRequest - typeB',
+						label: 'MNI-nodes-base.httpRequest - typeB',
 						options: [],
 						option_chosen: 'true',
 					},

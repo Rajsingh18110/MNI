@@ -10,8 +10,8 @@ import type {
 	INodeExecutionData,
 	INodeType,
 	INodeTypeDescription,
-} from 'n8n-workflow';
-import { NodeConnectionTypes, NodeOperationError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeConnectionTypes, NodeOperationError } from 'MNI-workflow';
 
 import {
 	BINARY_AD_ATTRIBUTES,
@@ -39,7 +39,7 @@ export class Ldap implements INodeType {
 		outputs: [NodeConnectionTypes.Main],
 		credentials: [
 			{
-				// eslint-disable-next-line n8n-nodes-base/node-class-description-credentials-name-unsuffixed
+				// eslint-disable-next-line MNI-nodes-base/node-class-description-credentials-name-unsuffixed
 				name: 'ldap',
 				required: true,
 				testedBy: 'ldapConnectionTest',

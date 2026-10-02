@@ -16,7 +16,7 @@
 	align-items: center;
 	gap: var(--spacing--3xs);
 
-	:global(.n8n-icon) {
+	:global(.MNI-icon) {
 		flex-shrink: 0;
 		align-self: baseline;
 		margin-top: var(--spacing--2xs);

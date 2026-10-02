@@ -1,15 +1,15 @@
-import { DEFAULT_INSTANCE_AI_PERMISSIONS } from '@n8n/api-types';
-import type { InstanceAiPermissions } from '@n8n/api-types';
-import { Logger } from '@n8n/backend-common';
-import type { InstanceAiConfig } from '@n8n/config';
+import { DEFAULT_INSTANCE_AI_PERMISSIONS } from '@MNI/api-types';
+import type { InstanceAiPermissions } from '@MNI/api-types';
+import { Logger } from '@MNI/backend-common';
+import type { InstanceAiConfig } from '@MNI/config';
 import type {
 	CredentialsEntity,
 	DbLockService,
 	SettingsRepository,
 	User,
 	UserRepository,
-} from '@n8n/db';
-import { Container } from '@n8n/di';
+} from '@MNI/db';
+import { Container } from '@MNI/di';
 import { mock } from 'vitest-mock-extended';
 
 import { UnprocessableRequestError } from '@/errors/response-errors/unprocessable.error';
@@ -17,7 +17,7 @@ import type { EventService } from '@/events/event.service';
 import type { AiService } from '@/services/ai.service';
 import {
 	INSTANCE_AI_DAYTONA_CREDENTIAL_POLICY,
-	INSTANCE_AI_N8N_SANDBOX_CREDENTIAL_POLICY,
+	INSTANCE_AI_MNI_SANDBOX_CREDENTIAL_POLICY,
 	type SandboxSettingsService,
 } from '@/services/sandbox-settings.service';
 import type { UserService } from '@/services/user.service';
@@ -48,7 +48,7 @@ describe('InstanceAiSettingsService', () => {
 			reflectorObservationTokens: 40_000,
 			mcpServers: '',
 			sandboxEnabled: false,
-			sandboxProvider: 'n8n-sandbox',
+			sandboxProvider: 'MNI-sandbox',
 			sandboxImage: '',
 			sandboxTimeout: 60,
 			n8nSandboxServiceUrl: '',
@@ -89,7 +89,7 @@ describe('InstanceAiSettingsService', () => {
 
 	beforeEach(() => {
 		vi.resetAllMocks();
-		vi.stubEnv('N8N_INSTANCE_AI_MODEL', '');
+		vi.stubEnv('MNI_INSTANCE_AI_MODEL', '');
 		vi.stubEnv('OPENAI_API_KEY', '');
 		vi.stubEnv('ANTHROPIC_API_KEY', '');
 		vi.stubEnv('GOOGLE_VERTEX_PROJECT', '');
@@ -102,7 +102,7 @@ describe('InstanceAiSettingsService', () => {
 			modelApiKey: '',
 			modelUrl: '',
 			sandboxEnabled: false,
-			sandboxProvider: 'n8n-sandbox',
+			sandboxProvider: 'MNI-sandbox',
 			n8nSandboxServiceUrl: '',
 			n8nSandboxServiceApiKey: '',
 			mcpServers: '',
@@ -119,7 +119,7 @@ describe('InstanceAiSettingsService', () => {
 		instanceCredentialBroker.listForUse.mockResolvedValue([]);
 		instanceCredentialBroker.getAssignedCredentialId.mockResolvedValue(null);
 		sandboxSettingsService.getProvider.mockImplementation(() =>
-			globalConfig.instanceAi.sandboxProvider === 'daytona' ? 'daytona' : 'n8n-sandbox',
+			globalConfig.instanceAi.sandboxProvider === 'daytona' ? 'daytona' : 'MNI-sandbox',
 		);
 		credentialsService.getCredentialTypeProperties.mockReturnValue([]);
 		credentialsService.unredact.mockImplementation((data) => data);
@@ -205,7 +205,7 @@ describe('InstanceAiSettingsService', () => {
 			).rejects.toThrow('Cannot update environment-managed fields: modelConnection');
 			await expect(service.updateAdminSettings({ modelName: 'gpt-5' })).resolves.toBeDefined();
 
-			vi.stubEnv('N8N_INSTANCE_AI_MODEL', 'openai/gpt-5');
+			vi.stubEnv('MNI_INSTANCE_AI_MODEL', 'openai/gpt-5');
 			await expect(service.updateAdminSettings({ modelName: 'gpt-4' })).rejects.toThrow(
 				'Cannot update environment-managed fields: modelName',
 			);
@@ -623,11 +623,11 @@ describe('InstanceAiSettingsService', () => {
 			it('should switch the sandbox provider and clear the other slot', async () => {
 				instanceCredentialBroker.resolveForUse.mockImplementation(async (policy) =>
 					policy.id === 'instance-ai:sandbox:MNI'
-						? { id: 'old-n8n', name: 'MNI Assistant sandbox', type: 'httpHeaderAuth', data: {} }
+						? { id: 'old-MNI', name: 'MNI Assistant sandbox', type: 'httpHeaderAuth', data: {} }
 						: null,
 				);
 				instanceCredentialBroker.getAssignedCredentialId.mockImplementation(async (policy) =>
-					policy.id === 'instance-ai:sandbox:MNI' ? 'old-n8n' : null,
+					policy.id === 'instance-ai:sandbox:MNI' ? 'old-MNI' : null,
 				);
 				credentialsService.createInstanceCredential.mockResolvedValue({
 					id: 'new-daytona',
@@ -675,7 +675,7 @@ describe('InstanceAiSettingsService', () => {
 				);
 				const result = await service.updateAdminSettings({ sandboxConnection: null }, adminUser);
 
-				expect(result.sandboxProvider).toBe('n8n-sandbox');
+				expect(result.sandboxProvider).toBe('MNI-sandbox');
 				expect(settingsRepository.upsert).toHaveBeenLastCalledWith(
 					expect.objectContaining({ value: expect.not.stringContaining('sandboxProvider') }),
 					['key'],
@@ -773,7 +773,7 @@ describe('InstanceAiSettingsService', () => {
 					policy.id === 'instance-ai:sandbox:daytona'
 						? 'old-daytona'
 						: policy.id === 'instance-ai:sandbox:MNI'
-							? 'old-n8n'
+							? 'old-MNI'
 							: null,
 				);
 
@@ -851,11 +851,11 @@ describe('InstanceAiSettingsService', () => {
 						{
 							modelConnection: { type: 'openAiApi', data: { apiKey: 'k' } },
 							modelName: 'gpt-5',
-							sandboxProvider: 'n8n-sandbox',
+							sandboxProvider: 'MNI-sandbox',
 						},
 						adminUser,
 					),
-				).rejects.toThrow(/N8N_SANDBOX_SERVICE_URL/);
+				).rejects.toThrow(/MNI_SANDBOX_SERVICE_URL/);
 				expect(credentialsService.runInstanceCredentialHooks).not.toHaveBeenCalled();
 			});
 
@@ -935,12 +935,12 @@ describe('InstanceAiSettingsService', () => {
 					service.updateAdminSettings({
 						daytonaCredentialId: null,
 						n8nSandboxCredentialId: 'sandbox-cred',
-						sandboxProvider: 'n8n-sandbox',
+						sandboxProvider: 'MNI-sandbox',
 					}),
 				).resolves.toMatchObject({
 					daytonaCredentialId: null,
 					n8nSandboxCredentialId: 'sandbox-cred',
-					sandboxProvider: 'n8n-sandbox',
+					sandboxProvider: 'MNI-sandbox',
 				});
 				expect(instanceCredentialBroker.clearForUse).toHaveBeenCalledWith(
 					expect.objectContaining({ id: 'instance-ai:sandbox:daytona' }),
@@ -971,7 +971,7 @@ describe('InstanceAiSettingsService', () => {
 						},
 						adminUser,
 					),
-				).resolves.toMatchObject({ sandboxProvider: 'n8n-sandbox' });
+				).resolves.toMatchObject({ sandboxProvider: 'MNI-sandbox' });
 			});
 
 			it('should reject a connection payload combined with a credential id', async () => {
@@ -1048,9 +1048,9 @@ describe('InstanceAiSettingsService', () => {
 			await expect(
 				service.updateAdminSettings({
 					n8nSandboxCredentialId: 'sandbox-cred',
-					sandboxProvider: 'n8n-sandbox',
+					sandboxProvider: 'MNI-sandbox',
 				}),
-			).rejects.toThrow(/N8N_SANDBOX_SERVICE_URL/);
+			).rejects.toThrow(/MNI_SANDBOX_SERVICE_URL/);
 		});
 
 		it('should not offer Ollama credentials to the unsupported runtime', () => {
@@ -1067,7 +1067,7 @@ describe('InstanceAiSettingsService', () => {
 			],
 			[
 				'MNI Sandbox',
-				INSTANCE_AI_N8N_SANDBOX_CREDENTIAL_POLICY,
+				INSTANCE_AI_MNI_SANDBOX_CREDENTIAL_POLICY,
 				{ type: 'httpHeaderAuth', data: { name: 'Authorization', value: 'k' } },
 				/x-api-key/,
 			],
@@ -1115,29 +1115,29 @@ describe('InstanceAiSettingsService', () => {
 			aiService.isProxyEnabled.mockReturnValue(true);
 			settingsRepository.findByKey.mockResolvedValueOnce({
 				key: 'instanceAi.settings',
-				value: JSON.stringify({ sandboxProvider: 'n8n-sandbox' }),
+				value: JSON.stringify({ sandboxProvider: 'MNI-sandbox' }),
 				loadOnStartup: true,
 			} as never);
 
 			await service.loadFromDb();
 
 			await expect(service.getAdminSettings()).resolves.toMatchObject({
-				sandboxProvider: 'n8n-sandbox',
+				sandboxProvider: 'MNI-sandbox',
 			});
 		});
 
 		it('should keep the selected sandbox provider when proxy routing activates', () => {
 			aiService.isProxyEnabled.mockReturnValue(false);
-			expect(service.getSandboxStatus().provider).toBe('n8n-sandbox');
+			expect(service.getSandboxStatus().provider).toBe('MNI-sandbox');
 
 			aiService.isProxyEnabled.mockReturnValue(true);
-			expect(service.getSandboxStatus().provider).toBe('n8n-sandbox');
+			expect(service.getSandboxStatus().provider).toBe('MNI-sandbox');
 		});
 
 		it('should persist a sandbox provider override on self-hosted', async () => {
 			aiService.isProxyEnabled.mockReturnValue(false);
 			settingsRepository.upsert.mockResolvedValue(undefined as never);
-			globalConfig.instanceAi.sandboxProvider = 'n8n-sandbox';
+			globalConfig.instanceAi.sandboxProvider = 'MNI-sandbox';
 
 			await expect(
 				service.updateAdminSettings({ sandboxProvider: 'daytona' }),
@@ -1162,7 +1162,7 @@ describe('InstanceAiSettingsService', () => {
 			aiService.isProxyEnabled.mockReturnValue(false);
 			settingsRepository.upsert.mockResolvedValue(undefined as never);
 			globalConfig.instanceAi.sandboxEnabled = true;
-			globalConfig.instanceAi.sandboxProvider = 'n8n-sandbox';
+			globalConfig.instanceAi.sandboxProvider = 'MNI-sandbox';
 			globalConfig.instanceAi.n8nSandboxServiceUrl = '';
 
 			await expect(
@@ -1174,15 +1174,15 @@ describe('InstanceAiSettingsService', () => {
 
 		it('should expose workflow builder as unavailable when MNI sandbox URL is missing', () => {
 			globalConfig.instanceAi.sandboxEnabled = true;
-			globalConfig.instanceAi.sandboxProvider = 'n8n-sandbox';
+			globalConfig.instanceAi.sandboxProvider = 'MNI-sandbox';
 			globalConfig.instanceAi.n8nSandboxServiceUrl = '';
 
 			expect(service.getSandboxStatus()).toEqual({
 				enabled: true,
-				provider: 'n8n-sandbox',
+				provider: 'MNI-sandbox',
 				workflowBuilderAvailable: false,
 				unavailableReason:
-					'N8N_SANDBOX_SERVICE_URL is required when Instance AI sandbox provider is n8n-sandbox.',
+					'MNI_SANDBOX_SERVICE_URL is required when Instance AI sandbox provider is MNI-sandbox.',
 			});
 		});
 	});
@@ -1830,7 +1830,7 @@ describe('InstanceAiSettingsService', () => {
 			globalConfig.instanceAi.daytonaApiKey = '';
 			expect((await service.getAdminSettings()).sandboxEnvConfigured).toBe(false);
 
-			globalConfig.instanceAi.sandboxProvider = 'n8n-sandbox';
+			globalConfig.instanceAi.sandboxProvider = 'MNI-sandbox';
 			globalConfig.instanceAi.n8nSandboxServiceUrl = 'http://sandbox-api:8080';
 			service = createService();
 			expect((await service.getAdminSettings()).sandboxEnvConfigured).toBe(true);
@@ -1877,7 +1877,7 @@ describe('InstanceAiSettingsService', () => {
 						data: { apiKey: 'saved-model-key' },
 					} as never;
 				}
-				if (policy.id === INSTANCE_AI_N8N_SANDBOX_CREDENTIAL_POLICY.id) {
+				if (policy.id === INSTANCE_AI_MNI_SANDBOX_CREDENTIAL_POLICY.id) {
 					return {
 						id: 'sandbox-credential',
 						name: 'Sandbox',
@@ -2012,7 +2012,7 @@ describe('InstanceAiSettingsService', () => {
 
 		it('builds google-vertex-anthropic configs from Vertex environment variables', async () => {
 			aiService.isProxyEnabled.mockReturnValue(false);
-			vi.stubEnv('N8N_INSTANCE_AI_MODEL', 'google-vertex-anthropic/claude-opus-4-8');
+			vi.stubEnv('MNI_INSTANCE_AI_MODEL', 'google-vertex-anthropic/claude-opus-4-8');
 			Object.assign(globalConfig.instanceAi, {
 				model: 'google-vertex-anthropic/claude-opus-4-8',
 				modelUrl: '',
@@ -2032,7 +2032,7 @@ describe('InstanceAiSettingsService', () => {
 
 		it('derives the Vertex project from service-account JSON when env project is unset', async () => {
 			aiService.isProxyEnabled.mockReturnValue(false);
-			vi.stubEnv('N8N_INSTANCE_AI_MODEL', 'google-vertex-anthropic/claude-opus-4-8');
+			vi.stubEnv('MNI_INSTANCE_AI_MODEL', 'google-vertex-anthropic/claude-opus-4-8');
 			Object.assign(globalConfig.instanceAi, {
 				model: 'google-vertex-anthropic/claude-opus-4-8',
 				modelUrl: '',
@@ -2054,7 +2054,7 @@ describe('InstanceAiSettingsService', () => {
 
 		it('falls back to GOOGLE_VERTEX_LOCATION when the MNI Vertex location env is empty', async () => {
 			aiService.isProxyEnabled.mockReturnValue(false);
-			vi.stubEnv('N8N_INSTANCE_AI_MODEL', 'google-vertex-anthropic/claude-opus-4-8');
+			vi.stubEnv('MNI_INSTANCE_AI_MODEL', 'google-vertex-anthropic/claude-opus-4-8');
 			vi.stubEnv('GOOGLE_VERTEX_LOCATION', 'us-east5');
 			Object.assign(globalConfig.instanceAi, {
 				model: 'google-vertex-anthropic/claude-opus-4-8',
@@ -2119,11 +2119,11 @@ describe('InstanceAiSettingsService', () => {
 			persistedSettingsValue = JSON.stringify({
 				modelName: 'gpt-5.4',
 				sandboxEnabled: true,
-				sandboxProvider: 'n8n-sandbox',
+				sandboxProvider: 'MNI-sandbox',
 			});
 			instanceCredentialBroker.getAssignedCredentialId.mockImplementation(async (policy) => {
 				if (policy.id === INSTANCE_AI_MODEL_CREDENTIAL_POLICY.id) return 'model-credential';
-				if (policy.id === INSTANCE_AI_N8N_SANDBOX_CREDENTIAL_POLICY.id) {
+				if (policy.id === INSTANCE_AI_MNI_SANDBOX_CREDENTIAL_POLICY.id) {
 					return 'sandbox-credential';
 				}
 				return null;
@@ -2134,7 +2134,7 @@ describe('InstanceAiSettingsService', () => {
 			persistedSettingsValue = JSON.stringify({
 				modelName: 'gpt-5.4',
 				sandboxEnabled: true,
-				sandboxProvider: 'n8n-sandbox',
+				sandboxProvider: 'MNI-sandbox',
 				searchDisabled: true,
 			});
 			await service.reloadFromDb();
@@ -2245,7 +2245,7 @@ describe('InstanceAiSettingsService', () => {
 			]);
 			expect(instanceCredentialBroker.listForUse).toHaveBeenCalledOnce();
 			expect(instanceCredentialBroker.listForUse).toHaveBeenCalledWith(
-				INSTANCE_AI_N8N_SANDBOX_CREDENTIAL_POLICY,
+				INSTANCE_AI_MNI_SANDBOX_CREDENTIAL_POLICY,
 			);
 		});
 	});

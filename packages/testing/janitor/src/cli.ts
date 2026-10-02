@@ -25,7 +25,7 @@ import {
 	changedOverrideTargets,
 	isBackendConfig,
 	isTsconfig,
-} from '@n8n/test-impact';
+} from '@MNI/test-impact';
 import * as fs from 'node:fs';
 import * as path from 'node:path';
 

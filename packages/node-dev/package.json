@@ -1,5 +1,5 @@
 {
-  "name": "n8n-node-dev",
+  "name": "MNI-node-dev",
   "version": "2.9.0",
   "description": "CLI to simplify MNI credentials/node development",
   "private": true,
@@ -7,7 +7,7 @@
   "types": "dist/src/index.d.ts",
   "oclif": {
     "commands": "./dist/commands",
-    "bin": "n8n-node-dev"
+    "bin": "MNI-node-dev"
   },
   "scripts": {
     "clean": "rimraf dist .turbo",
@@ -23,7 +23,7 @@
     "test": "node -e \"process.exit(0)\""
   },
   "bin": {
-    "n8n-node-dev": "./bin/n8n-node-dev"
+    "MNI-node-dev": "./bin/MNI-node-dev"
   },
   "keywords": [
     "development",
@@ -38,21 +38,21 @@
     "src/tsconfig-build.json"
   ],
   "devDependencies": {
-    "@n8n/eslint-config": "workspace:*",
-    "@n8n/typescript-config": "workspace:*",
+    "@MNI/eslint-config": "workspace:*",
+    "@MNI/typescript-config": "workspace:*",
     "@types/inquirer": "^7.0.1",
     "typescript": "catalog:"
   },
   "dependencies": {
-    "@n8n/di": "workspace:*",
+    "@MNI/di": "workspace:*",
     "@oclif/core": "4.0.7",
     "change-case": "catalog:",
     "fast-glob": "catalog:",
     "inquirer": "^7.0.1",
-    "n8n-core": "workspace:*",
-    "n8n-workflow": "workspace:*",
+    "MNI-core": "workspace:*",
+    "MNI-workflow": "workspace:*",
     "replace-in-file": "^6.0.0",
     "tmp-promise": "catalog:"
   },
-  "license": "LicenseRef-n8n-sustainable-use"
+  "license": "LicenseRef-MNI-sustainable-use"
 }

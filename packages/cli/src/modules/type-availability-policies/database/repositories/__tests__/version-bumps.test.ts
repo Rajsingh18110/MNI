@@ -1,4 +1,4 @@
-import type { OperationContext, TransactionRunner } from '@n8n/db';
+import type { OperationContext, TransactionRunner } from '@MNI/db';
 import { mock } from 'vitest-mock-extended';
 
 import { mockEntityManager } from '@test/mocking';
@@ -23,7 +23,7 @@ describe('policy version bumps are delegated to the database', () => {
 	const RULE: PolicyRule = {
 		id: 'r1',
 		action: 'deny',
-		selector: { kind: 'name', value: 'n8n-nodes-base.slack' },
+		selector: { kind: 'name', value: 'MNI-nodes-base.slack' },
 	};
 
 	const ROOT: OperationContext = {};

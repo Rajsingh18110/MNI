@@ -1,8 +1,8 @@
-import { Logger } from '@n8n/backend-common';
-import { ProjectRepository } from '@n8n/db';
-import { Service } from '@n8n/di';
-import { In } from '@n8n/typeorm';
-import { Expression, type IDataObject } from 'n8n-workflow';
+import { Logger } from '@MNI/backend-common';
+import { ProjectRepository } from '@MNI/db';
+import { Service } from '@MNI/di';
+import { In } from '@MNI/typeorm';
+import { Expression, type IDataObject } from 'MNI-workflow';
 
 import { withProjectContext } from './claims-context.builder';
 import type {

@@ -1,4 +1,4 @@
-import { UnexpectedError } from 'n8n-workflow';
+import { UnexpectedError } from 'MNI-workflow';
 import type {
 	ICredentialDataDecryptedObject,
 	ICredentialsHelper,
@@ -12,7 +12,7 @@ import type {
 	WorkflowActivateMode,
 	WorkflowExecuteMode,
 	WorkflowExpression,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import { HookContext } from '../hook-context';

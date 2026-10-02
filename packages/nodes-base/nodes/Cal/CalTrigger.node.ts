@@ -1,5 +1,5 @@
-import type { INodeTypeBaseDescription, IVersionedNodeType } from 'n8n-workflow';
-import { VersionedNodeType } from 'n8n-workflow';
+import type { INodeTypeBaseDescription, IVersionedNodeType } from 'MNI-workflow';
+import { VersionedNodeType } from 'MNI-workflow';
 
 import { CalTriggerV1 } from './v1/CalTriggerV1.node';
 import { CalTriggerV2 } from './v2/CalTriggerV2.node';

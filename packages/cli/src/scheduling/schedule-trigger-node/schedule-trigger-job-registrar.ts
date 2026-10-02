@@ -1,12 +1,12 @@
-import { Logger } from '@n8n/backend-common';
-import { GlobalConfig, WorkflowsConfig } from '@n8n/config';
-import { ScheduledJobMisfirePolicy } from '@n8n/constants';
-import type { EntityManager } from '@n8n/db';
-import { Service } from '@n8n/di';
-import type { Schedule } from '@n8n/scheduler';
-import { computeFirstRunAt, validateSchedule } from '@n8n/scheduler';
-import type { Cron, INode, SchedulingFunctions, Workflow } from 'n8n-workflow';
-import { SCHEDULE_TRIGGER_NODE_TYPE } from 'n8n-workflow';
+import { Logger } from '@MNI/backend-common';
+import { GlobalConfig, WorkflowsConfig } from '@MNI/config';
+import { ScheduledJobMisfirePolicy } from '@MNI/constants';
+import type { EntityManager } from '@MNI/db';
+import { Service } from '@MNI/di';
+import type { Schedule } from '@MNI/scheduler';
+import { computeFirstRunAt, validateSchedule } from '@MNI/scheduler';
+import type { Cron, INode, SchedulingFunctions, Workflow } from 'MNI-workflow';
+import { SCHEDULE_TRIGGER_NODE_TYPE } from 'MNI-workflow';
 
 import { nameDesiredJobs } from '../desired-job-name';
 import { DurableJobProvisioner } from '../durable-job-provisioner';
@@ -129,7 +129,7 @@ export class ScheduleTriggerJobRegistrar {
 
 		if (globalConfig.scheduler.enabled && !workflowsConfig.useWorkflowPublicationService) {
 			this.logger.warn(
-				'N8N_SCHEDULER_ENABLED is set but the workflow publication service is disabled. The durable scheduler cannot take over schedule triggers, which keep using the legacy in-memory engine.',
+				'MNI_SCHEDULER_ENABLED is set but the workflow publication service is disabled. The durable scheduler cannot take over schedule triggers, which keep using the legacy in-memory engine.',
 			);
 		}
 	}

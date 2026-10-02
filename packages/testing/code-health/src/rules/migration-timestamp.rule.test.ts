@@ -11,9 +11,9 @@ import { MigrationTimestampRule } from './migration-timestamp.rule.js';
 // the regime the rule has to handle until real-time catches up.
 const NOW = 1_778_000_000_000;
 
-const COMMON_DIR = path.join('packages', '@n8n', 'db', 'src', 'migrations', 'common');
-const POSTGRES_DIR = path.join('packages', '@n8n', 'db', 'src', 'migrations', 'postgresdb');
-const SQLITE_DIR = path.join('packages', '@n8n', 'db', 'src', 'migrations', 'sqlite');
+const COMMON_DIR = path.join('packages', '@MNI', 'db', 'src', 'migrations', 'common');
+const POSTGRES_DIR = path.join('packages', '@MNI', 'db', 'src', 'migrations', 'postgresdb');
+const SQLITE_DIR = path.join('packages', '@MNI', 'db', 'src', 'migrations', 'sqlite');
 
 function createTempDir(): string {
 	return fs.mkdtempSync(path.join(os.tmpdir(), 'code-health-migration-test-'));

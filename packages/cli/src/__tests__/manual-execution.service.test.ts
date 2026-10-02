@@ -1,7 +1,7 @@
-import { TOOL_EXECUTOR_NODE_NAME } from '@n8n/constants';
-import * as core from 'n8n-core';
-import { DirectedGraph, recreateNodeExecutionStack, WorkflowExecute } from 'n8n-core';
-import { NodeHelpers, UserError } from 'n8n-workflow';
+import { TOOL_EXECUTOR_NODE_NAME } from '@MNI/constants';
+import * as core from 'MNI-core';
+import { DirectedGraph, recreateNodeExecutionStack, WorkflowExecute } from 'MNI-core';
+import { NodeHelpers, UserError } from 'MNI-workflow';
 import type {
 	Workflow,
 	IWorkflowExecutionDataProcess,
@@ -16,14 +16,14 @@ import type {
 	INodeExecutionData,
 	IDestinationNode,
 	INodeTypeDescription,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import type PCancelable from 'p-cancelable';
 import type { Mock } from 'vitest';
 import { mock } from 'vitest-mock-extended';
 
 import { ManualExecutionService } from '@/manual-execution.service';
 
-vi.mock('n8n-core');
+vi.mock('MNI-core');
 
 describe('ManualExecutionService', () => {
 	const manualExecutionService = new ManualExecutionService(mock());
@@ -79,12 +79,12 @@ describe('ManualExecutionService', () => {
 
 		it('should return undefined, even if manual trigger node is available', () => {
 			const scheduleTrigger = mock<INode>({
-				type: 'n8n-nodes-base.scheduleTrigger',
+				type: 'MNI-nodes-base.scheduleTrigger',
 				name: 'Wed 12:00',
 			});
 
 			const manualTrigger = mock<INode>({
-				type: 'n8n-nodes-base.manualTrigger',
+				type: 'MNI-nodes-base.manualTrigger',
 				name: 'When clicking ‘Execute workflow’',
 			});
 
@@ -663,7 +663,7 @@ describe('ManualExecutionService', () => {
 
 			const toolNode = mock<INode>({
 				name: toolNodeName,
-				type: 'n8n-nodes-base.toolTest',
+				type: 'MNI-nodes-base.toolTest',
 				typeVersion: 1,
 			});
 
@@ -750,7 +750,7 @@ describe('ManualExecutionService', () => {
 
 			const toolNode = mock<INode>({
 				name: toolNodeName,
-				type: 'n8n-nodes-base.toolTest',
+				type: 'MNI-nodes-base.toolTest',
 				typeVersion: 1,
 			});
 
@@ -824,7 +824,7 @@ describe('ManualExecutionService', () => {
 
 			const regularNode = mock<INode>({
 				name: regularNodeName,
-				type: 'n8n-nodes-base.code',
+				type: 'MNI-nodes-base.code',
 				typeVersion: 1,
 			});
 
@@ -887,7 +887,7 @@ describe('ManualExecutionService', () => {
 		it('throws a UserError when executing a tool that has no consumer', async () => {
 			const toolNode = mock<INode>({
 				name: 'leafTool',
-				type: 'n8n-nodes-base.toolTest',
+				type: 'MNI-nodes-base.toolTest',
 				typeVersion: 1,
 			});
 
@@ -933,7 +933,7 @@ describe('ManualExecutionService', () => {
 
 			const toolNode = mock<INode>({
 				name: toolNodeName,
-				type: 'n8n-nodes-base.toolTest',
+				type: 'MNI-nodes-base.toolTest',
 				typeVersion: 1,
 			});
 

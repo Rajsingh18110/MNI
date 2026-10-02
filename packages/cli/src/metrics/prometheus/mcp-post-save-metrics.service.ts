@@ -1,5 +1,5 @@
-import { PrometheusMetricsConfig } from '@n8n/config';
-import { Service } from '@n8n/di';
+import { PrometheusMetricsConfig } from '@MNI/config';
+import { Service } from '@MNI/di';
 import promClient from 'prom-client';
 
 import { EventService } from '@/events/event.service';

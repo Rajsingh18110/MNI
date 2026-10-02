@@ -1,14 +1,14 @@
 <script lang="ts" setup>
 import AuthView from './AuthView.vue';
-import { useToast } from '@n8n/composables/useToast';
+import { useToast } from '@MNI/composables/useToast';
 
 import { computed, onMounted, ref } from 'vue';
 import type { IFormBoxConfig } from '@/Interface';
 import { VIEWS } from '@/app/constants';
-import { useSettingsStore } from '@n8n/stores/settings.store';
-import { useUsersStore } from '@n8n/stores/users.store';
-import { useI18n } from '@n8n/i18n';
-import { createPasswordRules } from '@n8n/design-system';
+import { useSettingsStore } from '@MNI/stores/settings.store';
+import { useUsersStore } from '@MNI/stores/users.store';
+import { useI18n } from '@MNI/i18n';
+import { createPasswordRules } from '@MNI/design-system';
 import { useRoute, useRouter } from 'vue-router';
 
 const usersStore = useUsersStore();

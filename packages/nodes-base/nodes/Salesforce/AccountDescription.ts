@@ -1,4 +1,4 @@
-import type { INodeProperties } from 'n8n-workflow';
+import type { INodeProperties } from 'MNI-workflow';
 
 export const accountOperations: INodeProperties[] = [
 	{
@@ -71,7 +71,7 @@ export const accountFields: INodeProperties[] = [
 	/*                                account:create                              */
 	/* -------------------------------------------------------------------------- */
 	{
-		// eslint-disable-next-line n8n-nodes-base/node-param-display-name-wrong-for-dynamic-options
+		// eslint-disable-next-line MNI-nodes-base/node-param-display-name-wrong-for-dynamic-options
 		displayName: 'Match Against',
 		name: 'externalId',
 		type: 'options',

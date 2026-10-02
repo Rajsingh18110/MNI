@@ -20,18 +20,18 @@ import {
 	N8nText,
 	type DropdownMenuItemProps,
 	type EmptyStateIconCards,
-} from '@n8n/design-system';
+} from '@MNI/design-system';
 import {
 	DEFAULT_INSTANCE_AI_PERMISSIONS,
 	type InstanceAiPermissions,
 	type InstanceAiPermissionMode,
-} from '@n8n/api-types';
-import { type BaseTextKey, useI18n } from '@n8n/i18n';
+} from '@MNI/api-types';
+import { type BaseTextKey, useI18n } from '@MNI/i18n';
 import { useRouter } from 'vue-router';
 import { MODAL_CONFIRM, VIEWS } from '@/app/constants';
 import { useDocumentTitle } from '@/app/composables/useDocumentTitle';
 import { useMessage } from '@/app/composables/useMessage';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { useCredentialsStore } from '@/features/credentials/credentials.store';
 import { useInstanceAiBrowserUseExperiment } from '@/experiments/instanceAiBrowserUse';
 // Experiment cleanup: remove with openWorkflowInAssistant.
@@ -65,7 +65,7 @@ const {
 const { isFeatureEnabled: isBrowserUseEnabled } = useInstanceAiBrowserUseExperiment();
 const { isFeatureEnabled: isComputerUseExperimentEnabled } = useInstanceAiComputerUseExperiment();
 
-const DOCS_URL = 'https://docs.n8n.io/deploy/host-n8n/configure-n8n/set-up-n8n-assistant';
+const DOCS_URL = 'https://docs.n8n.io/deploy/host-MNI/configure-MNI/set-up-MNI-assistant';
 
 const isAdmin = computed(() => store.canManage);
 const isEnabled = computed(
@@ -116,7 +116,7 @@ const sandboxValue = computed(() => {
 	if (sandboxCredentialId.value) {
 		return store.settings?.sandboxProvider === 'daytona'
 			? SANDBOX_PROVIDER_LABELS.daytona
-			: SANDBOX_PROVIDER_LABELS['n8n-sandbox'];
+			: SANDBOX_PROVIDER_LABELS['MNI-sandbox'];
 	}
 	return i18n.baseText('settings.n8nAgent.sandbox.env.value');
 });
@@ -479,7 +479,7 @@ function openAiUsageSettings() {
 </script>
 
 <template>
-	<N8nSettingsLayout data-test-id="n8n-agent-settings">
+	<N8nSettingsLayout data-test-id="MNI-agent-settings">
 		<N8nSettingsPageHeader
 			:title="i18n.baseText('settings.n8nAgent')"
 			:description="i18n.baseText('settings.n8nAgent.description')"
@@ -524,14 +524,14 @@ function openAiUsageSettings() {
 								size="medium"
 								:label="i18n.baseText('settings.n8nAgent.status.enable')"
 								:disabled="store.isSaving || isTestingCredential"
-								data-test-id="n8n-agent-enable-button"
+								data-test-id="MNI-agent-enable-button"
 								@click="handleEnable"
 							/>
 							<N8nDropdownMenu
 								v-else
 								:items="disableMenuItems"
 								placement="bottom-end"
-								data-test-id="n8n-agent-status-menu"
+								data-test-id="MNI-agent-status-menu"
 								@select="handleStatusAction"
 							>
 								<template #trigger>
@@ -577,7 +577,7 @@ function openAiUsageSettings() {
 						v-if="showCredentialsRows"
 						:class="{ [$style.dim]: isOff }"
 						:clickable="!isOff && isModelConfigured && !isModelReadOnly"
-						data-test-id="n8n-agent-model-row"
+						data-test-id="MNI-agent-model-row"
 						@click="openModelDialog"
 					>
 						<template #info>
@@ -599,14 +599,14 @@ function openAiUsageSettings() {
 								size="medium"
 								:label="i18n.baseText('settings.n8nAgent.modelCredential.add')"
 								:disabled="store.isSaving"
-								data-test-id="n8n-agent-model-add"
+								data-test-id="MNI-agent-model-add"
 								@click="openModelSetup"
 							/>
 							<N8nText
 								v-else-if="isModelReadOnly"
 								size="small"
 								color="text-light"
-								data-test-id="n8n-agent-model-env-value"
+								data-test-id="MNI-agent-model-env-value"
 							>
 								{{ modelValue }}
 							</N8nText>
@@ -618,7 +618,7 @@ function openAiUsageSettings() {
 						v-if="showSandboxRow"
 						:class="{ [$style.dim]: isOff }"
 						:clickable="!isOff && isSandboxConfigured && !isSandboxEnvManaged"
-						data-test-id="n8n-agent-sandbox-row"
+						data-test-id="MNI-agent-sandbox-row"
 						@click="openSandboxDialog"
 					>
 						<template #info>
@@ -636,14 +636,14 @@ function openAiUsageSettings() {
 								size="medium"
 								:label="i18n.baseText('settings.n8nAgent.sandbox.enable')"
 								:disabled="store.isSaving"
-								data-test-id="n8n-agent-sandbox-enable"
+								data-test-id="MNI-agent-sandbox-enable"
 								@click="enableEnvironmentSandboxIfNeeded"
 							/>
 							<N8nText
 								v-else-if="isSandboxEnvManaged"
 								size="small"
 								color="text-light"
-								data-test-id="n8n-agent-sandbox-env-value"
+								data-test-id="MNI-agent-sandbox-env-value"
 							>
 								{{ sandboxValue }}
 							</N8nText>
@@ -653,7 +653,7 @@ function openAiUsageSettings() {
 								size="medium"
 								:label="i18n.baseText('settings.n8nAgent.sandbox.add')"
 								:disabled="store.isSaving"
-								data-test-id="n8n-agent-sandbox-add"
+								data-test-id="MNI-agent-sandbox-add"
 								@click="openSandboxDialog"
 							/>
 							<N8nSettingsRowConfigure v-else :value="sandboxValue" />
@@ -675,7 +675,7 @@ function openAiUsageSettings() {
 						v-if="showCredentialsRows"
 						:class="{ [$style.dim]: isOff }"
 						:clickable="!isOff && searchState !== 'notset' && !isSearchEnvManaged"
-						data-test-id="n8n-agent-search-row"
+						data-test-id="MNI-agent-search-row"
 						@click="openSearchDialog"
 					>
 						<template #info>
@@ -702,14 +702,14 @@ function openAiUsageSettings() {
 								size="medium"
 								:label="i18n.baseText('settings.n8nAgent.search.setup')"
 								:disabled="store.isSaving"
-								data-test-id="n8n-agent-search-setup"
+								data-test-id="MNI-agent-search-setup"
 								@click="openSearchDialog"
 							/>
 							<N8nText
 								v-else-if="isSearchEnvManaged"
 								size="small"
 								color="text-light"
-								data-test-id="n8n-agent-search-env-value"
+								data-test-id="MNI-agent-search-env-value"
 							>
 								{{ searchValue }}
 							</N8nText>
@@ -728,7 +728,7 @@ function openAiUsageSettings() {
 								:model-value="!(store.settings?.localGatewayDisabled ?? false)"
 								:disabled="store.isSaving || isOff"
 								:aria-label="i18n.baseText('settings.n8nAgent.computerUse.label')"
-								data-test-id="n8n-agent-computer-use-toggle"
+								data-test-id="MNI-agent-computer-use-toggle"
 								@update:model-value="handleComputerUseToggle"
 							/>
 						</template>
@@ -745,7 +745,7 @@ function openAiUsageSettings() {
 								:model-value="store.settings?.browserUseEnabled ?? true"
 								:disabled="store.isSaving || isOff"
 								:aria-label="i18n.baseText('settings.n8nAgent.browserUse.label')"
-								data-test-id="n8n-agent-browser-use-toggle"
+								data-test-id="MNI-agent-browser-use-toggle"
 								@update:model-value="handleBrowserUseToggle"
 							/>
 						</template>
@@ -768,7 +768,7 @@ function openAiUsageSettings() {
 								:model-value="isMcpAccessEnabled"
 								:disabled="store.isSaving || isOff"
 								:aria-label="i18n.baseText('settings.n8nAgent.mcpAccess.label')"
-								data-test-id="n8n-agent-mcp-access-toggle"
+								data-test-id="MNI-agent-mcp-access-toggle"
 								@update:model-value="handleMcpAccessToggle"
 							/>
 						</template>
@@ -790,7 +790,7 @@ function openAiUsageSettings() {
 						:expandable="!isGroupLocked(group)"
 						:expand-label="groupSummary(group)"
 						:collapse-label="groupSummary(group)"
-						:data-test-id="`n8n-agent-permission-group-${group.id}`"
+						:data-test-id="`MNI-agent-permission-group-${group.id}`"
 					>
 						<template v-if="isGroupLocked(group)" #action>
 							<N8nText size="small" color="text-light">{{ groupSummary(group) }}</N8nText>
@@ -806,7 +806,7 @@ function openAiUsageSettings() {
 										:model-value="store.getPermission(key)"
 										size="small"
 										:disabled="store.isSaving || isGroupLocked(group)"
-										:data-test-id="`n8n-agent-permission-${key}`"
+										:data-test-id="`MNI-agent-permission-${key}`"
 										@update:model-value="
 											handlePermissionChange(key, $event as InstanceAiPermissionMode)
 										"
@@ -835,7 +835,7 @@ function openAiUsageSettings() {
 						:title="i18n.baseText('settings.n8nAgent.dataSharing.manage.label')"
 						:description="i18n.baseText('settings.n8nAgent.dataSharing.manage.description')"
 						:clickable="!isOff && store.canManageAiUsage"
-						data-test-id="n8n-agent-data-sharing-row"
+						data-test-id="MNI-agent-data-sharing-row"
 						@click="openAiUsageSettings"
 					>
 						<template v-if="!isOff && store.canManageAiUsage" #action>

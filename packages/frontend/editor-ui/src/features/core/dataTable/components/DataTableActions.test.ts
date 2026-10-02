@@ -35,7 +35,7 @@ vi.mock('@/app/composables/useMessage', () => ({
 	useMessage: () => mockMessage,
 }));
 
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: () => mockToast,
 }));
 
@@ -48,7 +48,7 @@ vi.mock('@/features/core/dataTable/dataTable.store', () => ({
 	}),
 }));
 
-vi.mock('@n8n/i18n', async (importOriginal) => ({
+vi.mock('@MNI/i18n', async (importOriginal) => ({
 	...(await importOriginal()),
 	useI18n: () => ({
 		baseText: (key: string, options?: { interpolate?: { name?: string } }) => {

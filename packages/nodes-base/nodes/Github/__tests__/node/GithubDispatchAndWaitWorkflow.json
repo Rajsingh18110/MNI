@@ -2,7 +2,7 @@
 	"nodes": [
 		{
 			"parameters": {},
-			"type": "n8n-nodes-base.manualTrigger",
+			"type": "MNI-nodes-base.manualTrigger",
 			"typeVersion": 1,
 			"position": [200, -360],
 			"id": "0889ff06-41e2-4786-a0fe-ca330c3711e7",
@@ -39,7 +39,7 @@
 					"cachedResultName": "test-branch"
 				}
 			},
-			"type": "n8n-nodes-base.github",
+			"type": "MNI-nodes-base.github",
 			"typeVersion": 1.1,
 			"position": [220, 0],
 			"id": "105cb5f0-bcc3-4397-ba06-bda8cf46c71b",

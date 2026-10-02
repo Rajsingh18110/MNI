@@ -4,8 +4,8 @@ import type {
 	INodeType,
 	INodeTypeDescription,
 	IPairedItemData,
-} from 'n8n-workflow';
-import { NodeConnectionTypes, deepCopy } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeConnectionTypes, deepCopy } from 'MNI-workflow';
 
 export class SplitInBatchesV2 implements INodeType {
 	description: INodeTypeDescription = {
@@ -26,7 +26,7 @@ export class SplitInBatchesV2 implements INodeType {
 		properties: [
 			{
 				displayName:
-					'You may not need this node — MNI nodes automatically run once for each input item. <a href="https://docs.n8n.io/getting-started/key-concepts/looping.html#using-loops-in-n8n" target="_blank">More info</a>',
+					'You may not need this node — MNI nodes automatically run once for each input item. <a href="https://docs.n8n.io/getting-started/key-concepts/looping.html#using-loops-in-MNI" target="_blank">More info</a>',
 				name: 'splitInBatchesNotice',
 				type: 'notice',
 				default: '',

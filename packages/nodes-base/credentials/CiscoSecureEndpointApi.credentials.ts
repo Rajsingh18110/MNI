@@ -4,7 +4,7 @@ import type {
 	ICredentialType,
 	IHttpRequestOptions,
 	INodeProperties,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { getTokenRequestClient, TOKEN_REQUEST_TIMEOUT } from './common/token-request';
 

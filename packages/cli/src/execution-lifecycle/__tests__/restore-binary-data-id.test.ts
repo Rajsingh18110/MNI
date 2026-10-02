@@ -1,7 +1,7 @@
-import { mockInstance } from '@n8n/backend-test-utils';
-import { Container } from '@n8n/di';
-import { BinaryDataConfig, BinaryDataService } from 'n8n-core';
-import type { IRun } from 'n8n-workflow';
+import { mockInstance } from '@MNI/backend-test-utils';
+import { Container } from '@MNI/di';
+import { BinaryDataConfig, BinaryDataService } from 'MNI-core';
+import type { IRun } from 'MNI-workflow';
 
 import { restoreBinaryDataId } from '@/execution-lifecycle/restore-binary-data-id';
 

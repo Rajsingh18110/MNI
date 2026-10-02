@@ -1,8 +1,8 @@
-import type { ConsentUiHints } from '@n8n/api-types';
-import { Logger } from '@n8n/backend-common';
-import type { User } from '@n8n/db';
-import { Service } from '@n8n/di';
-import { UserError } from 'n8n-workflow';
+import type { ConsentUiHints } from '@MNI/api-types';
+import { Logger } from '@MNI/backend-common';
+import type { User } from '@MNI/db';
+import { Service } from '@MNI/di';
+import { UserError } from 'MNI-workflow';
 
 import { OAuthClientRepository } from './database/repositories/oauth-client.repository';
 import { UserConsentRepository } from './database/repositories/oauth-user-consent.repository';
@@ -14,7 +14,7 @@ import {
 	ProtectedResourceRegistry,
 	type ProtectedResource,
 } from '@/services/protected-resource.registry';
-import { UrlService } from '@n8n/backend-services';
+import { UrlService } from '@MNI/backend-services';
 
 type ConsentDetailsResult =
 	| {

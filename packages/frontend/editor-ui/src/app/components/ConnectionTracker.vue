@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { usePushConnectionStore } from '@/app/stores/pushConnection.store';
 import { useBackendConnectionStore } from '@/app/stores/backendConnection.store';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import { computed } from 'vue';
-import type { BaseTextKey } from '@n8n/i18n';
+import type { BaseTextKey } from '@MNI/i18n';
 
-import { N8nIcon, N8nText, N8nTooltip } from '@n8n/design-system';
+import { N8nIcon, N8nText, N8nTooltip } from '@MNI/design-system';
 
 const pushConnectionStore = usePushConnectionStore();
 const backendConnectionStore = useBackendConnectionStore();
@@ -63,7 +63,7 @@ const connectionStatus = computed<ConnectionStatus>(() => {
 		<div v-if="connectionStatus.hasError" class="connection-lost">
 			<N8nTooltip placement="bottom-end">
 				<template #content>
-					<div v-n8n-html="i18n.baseText(connectionStatus.tooltip)"></div>
+					<div v-MNI-html="i18n.baseText(connectionStatus.tooltip)"></div>
 				</template>
 				<span class="connection-lost-content">
 					<N8nIcon icon="triangle-alert" color="warning" />

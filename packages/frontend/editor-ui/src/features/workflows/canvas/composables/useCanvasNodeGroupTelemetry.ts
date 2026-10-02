@@ -1,9 +1,9 @@
-import { getEmptyGroupAnchor, type IWorkflowGroup } from 'n8n-workflow';
+import { getEmptyGroupAnchor, type IWorkflowGroup } from 'MNI-workflow';
 
-import { useTelemetry } from '@n8n/composables/useTelemetry';
-import { TELEMETRY_EVENT } from '@n8n/telemetry';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
+import { TELEMETRY_EVENT } from '@MNI/telemetry';
 import { injectWorkflowDocumentStore } from '@/app/stores/workflowDocument.store';
-import { useRootStore } from '@n8n/stores/useRootStore';
+import { useRootStore } from '@MNI/stores/useRootStore';
 import type { NodeCreatorOpenSource } from '@/Interface';
 import { countGroupExternalConnections } from './nodeGroupTelemetry.utils';
 import { useEmptyCanvasGroupsFlag } from './useEmptyCanvasGroupsFlag';

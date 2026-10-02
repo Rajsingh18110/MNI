@@ -1,17 +1,17 @@
 <script lang="ts" setup>
 import { ref, computed } from 'vue';
-import { useToast } from '@n8n/composables/useToast';
+import { useToast } from '@MNI/composables/useToast';
 import Modal from '@/app/components/Modal.vue';
 import ProjectSharing from '@/features/collaboration/projects/components/ProjectSharing.vue';
-import { useUsersStore } from '@n8n/stores/users.store';
-import { createEventBus } from '@n8n/utils/event-bus';
+import { useUsersStore } from '@MNI/stores/users.store';
+import { createEventBus } from '@MNI/utils/event-bus';
 import type { ProjectSharingData } from '@/features/collaboration/projects/projects.types';
 import type { ProjectListItem } from '@/features/collaboration/projects/projects.types';
 import { useRemoteProjectSearch } from '@/features/collaboration/projects/projects.utils';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 
 import { ElRadio } from 'element-plus';
-import { N8nButton, N8nInput, N8nInputLabel, N8nText } from '@n8n/design-system';
+import { N8nButton, N8nInput, N8nInputLabel, N8nText } from '@MNI/design-system';
 const props = defineProps<{
 	modalName: string;
 	data: {

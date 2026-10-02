@@ -1,5 +1,5 @@
-import type { INodeType } from 'n8n-workflow';
-import { UnexpectedError } from 'n8n-workflow';
+import type { INodeType } from 'MNI-workflow';
+import { UnexpectedError } from 'MNI-workflow';
 
 import { RESPONSE_ERROR_MESSAGES } from '@/constants';
 

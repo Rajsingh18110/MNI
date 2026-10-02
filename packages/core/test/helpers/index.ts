@@ -1,4 +1,4 @@
-import type { IDeferredPromise } from '@n8n/utils/promise/deferred-promise';
+import type { IDeferredPromise } from '@MNI/utils/promise/deferred-promise';
 import { readdirSync, readFileSync } from 'fs';
 import type {
 	IDataObject,
@@ -11,8 +11,8 @@ import type {
 	NodeLoadingDetails,
 	WorkflowTestData,
 	INodeTypeData,
-} from 'n8n-workflow';
-import { NodeHelpers, UnexpectedError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeHelpers, UnexpectedError } from 'MNI-workflow';
 import path from 'path';
 import { mock } from 'vitest-mock-extended';
 
@@ -100,9 +100,9 @@ export function getNodeTypes(testData: WorkflowTestData[] | WorkflowTestData) {
 	);
 
 	for (const nodeName of nodeNames) {
-		const loadInfo = knownNodes[nodeName.replace('n8n-nodes-base.', '')];
+		const loadInfo = knownNodes[nodeName.replace('MNI-nodes-base.', '')];
 		if (!loadInfo) {
-			throw new UnrecognizedNodeTypeError('n8n-nodes-base', nodeName);
+			throw new UnrecognizedNodeTypeError('MNI-nodes-base', nodeName);
 		}
 		const sourcePath = loadInfo.sourcePath.replace(/^dist\//, './').replace(/\.js$/, '.ts');
 		const nodeSourcePath = path.join(BASE_DIR, 'nodes-base', sourcePath);

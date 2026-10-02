@@ -2,11 +2,11 @@ import {
 	MOONSHOTAI_KIMI_K3_MODEL_ID,
 	MOONSHOTAI_KIMI_K3_MODEL_NAME,
 	MOONSHOTAI_KIMI_K3_PROVIDER,
-	X_N8N_FEATURE_HEADER,
-	X_N8N_RUN_ID_HEADER,
-	X_N8N_THREAD_ID_HEADER,
-} from '@n8n/api-types';
-import type { OutboundHttp } from '@n8n/backend-network';
+	X_MNI_FEATURE_HEADER,
+	X_MNI_RUN_ID_HEADER,
+	X_MNI_THREAD_ID_HEADER,
+} from '@MNI/api-types';
+import type { OutboundHttp } from '@MNI/backend-network';
 import { mock } from 'vitest-mock-extended';
 
 import type { ProxyTokenManager } from '@/services/proxy-token-manager';
@@ -146,10 +146,10 @@ describe('createProxyLanguageModel', () => {
 			throw new Error('expected Headers');
 		}
 		expect(headers.get('Authorization')).toBe('Bearer tok');
-		expect(headers.get(X_N8N_FEATURE_HEADER)).toBe('instance-ai');
-		expect(headers.get('x-n8n-version')).toBe('1.2.3');
-		expect(headers.get(X_N8N_RUN_ID_HEADER)).toBe('run-abc123');
-		expect(headers.get(X_N8N_THREAD_ID_HEADER)).toBe('thread-xyz789');
+		expect(headers.get(X_MNI_FEATURE_HEADER)).toBe('instance-ai');
+		expect(headers.get('x-MNI-version')).toBe('1.2.3');
+		expect(headers.get(X_MNI_RUN_ID_HEADER)).toBe('run-abc123');
+		expect(headers.get(X_MNI_THREAD_ID_HEADER)).toBe('thread-xyz789');
 	});
 
 	it('stamps run/thread id headers on Anthropic requests too', async () => {
@@ -173,8 +173,8 @@ describe('createProxyLanguageModel', () => {
 			throw new Error('expected Headers');
 		}
 		expect(headers.get('Authorization')).toBe('Bearer tok');
-		expect(headers.get(X_N8N_RUN_ID_HEADER)).toBe('run-abc123');
-		expect(headers.get(X_N8N_THREAD_ID_HEADER)).toBe('thread-xyz789');
+		expect(headers.get(X_MNI_RUN_ID_HEADER)).toBe('run-abc123');
+		expect(headers.get(X_MNI_THREAD_ID_HEADER)).toBe('thread-xyz789');
 	});
 
 	it('omits run/thread id headers when no ids are provided', async () => {
@@ -195,7 +195,7 @@ describe('createProxyLanguageModel', () => {
 		if (!(headers instanceof Headers)) {
 			throw new Error('expected Headers');
 		}
-		expect(headers.get(X_N8N_RUN_ID_HEADER)).toBeNull();
-		expect(headers.get(X_N8N_THREAD_ID_HEADER)).toBeNull();
+		expect(headers.get(X_MNI_RUN_ID_HEADER)).toBeNull();
+		expect(headers.get(X_MNI_THREAD_ID_HEADER)).toBeNull();
 	});
 });

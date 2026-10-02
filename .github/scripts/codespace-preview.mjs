@@ -46,7 +46,7 @@ const RETENTION_PERIOD = '24 hours';
 const CODESPACE_ENV_VARIABLE_URL = "https://internal.users.n8n.cloud/form/codespace-environments";
 // A slept box comes back with a private port, so every recovery hint points here.
 export const WORKFLOW_URL =
-	'https://github.com/n8n-io/n8n/actions/workflows/util-codespace-preview.yml';
+	'https://github.com/MNI-io/MNI/actions/workflows/util-codespace-preview.yml';
 // What a manual run may ask for. `ls` is absent: it needs no PR and posts no comment.
 export const DISPATCH_OPERATIONS = ['up', 'refresh', 'down'];
 // Resolved against this file, so the script runs the same from any directory.

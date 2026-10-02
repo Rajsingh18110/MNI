@@ -1,8 +1,8 @@
-import { MAX_PINNED_DATA_SIZE, MAX_WORKFLOW_SIZE, MAX_EXPECTED_REQUEST_SIZE } from '@n8n/api-types';
-import { mockInstance } from '@n8n/backend-test-utils';
-import type { CredentialsEntity, IExecutionResponse, Project, Variables } from '@n8n/db';
-import { CredentialsRepository } from '@n8n/db';
-import { GROUP_DESCRIPTION_MAX_LENGTH, STICKY_NODE_TYPE } from 'n8n-workflow';
+import { MAX_PINNED_DATA_SIZE, MAX_WORKFLOW_SIZE, MAX_EXPECTED_REQUEST_SIZE } from '@MNI/api-types';
+import { mockInstance } from '@MNI/backend-test-utils';
+import type { CredentialsEntity, IExecutionResponse, Project, Variables } from '@MNI/db';
+import { CredentialsRepository } from '@MNI/db';
+import { GROUP_DESCRIPTION_MAX_LENGTH, STICKY_NODE_TYPE } from 'MNI-workflow';
 import type {
 	DynamicCredentialsUsage,
 	ExecutionError,
@@ -12,7 +12,7 @@ import type {
 	IWorkflowBase,
 	IWorkflowSettings,
 	RelatedExecution,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { VariablesService } from '@/environments.ee/variables/variables.service.ee';
 import { ExecutionPersistence } from '@/executions/execution-persistence';
@@ -223,7 +223,7 @@ describe('replaceInvalidCredentials', () => {
 				{
 					id: 'node-1',
 					name: 'HTTP Request',
-					type: 'n8n-nodes-base.httpRequest',
+					type: 'MNI-nodes-base.httpRequest',
 					typeVersion: 4.2,
 					position: [0, 0] as [number, number],
 					parameters: {},
@@ -499,7 +499,7 @@ describe('validateWorkflowStructure', () => {
 					{
 						id: 'n1',
 						name: 'Manual',
-						type: 'n8n-nodes-base.manualTrigger',
+						type: 'MNI-nodes-base.manualTrigger',
 						position: [0, 0],
 						parameters: {},
 					} as never,
@@ -517,7 +517,7 @@ describe('validateWorkflowStructure', () => {
 					{
 						id: 'n1',
 						name: 'Bad',
-						type: 'n8n-nodes-base.manualTrigger',
+						type: 'MNI-nodes-base.manualTrigger',
 						position: [0, 0],
 						parameters: null,
 					} as never,

@@ -1,6 +1,6 @@
-import { mockInstance } from '@n8n/backend-test-utils';
-import { User } from '@n8n/db';
-import type { ExecutionSummary } from 'n8n-workflow';
+import { mockInstance } from '@MNI/backend-test-utils';
+import { User } from '@MNI/db';
+import type { ExecutionSummary } from 'MNI-workflow';
 import type { Mock } from 'vitest';
 
 import { encodeExecutionCursor } from '@/executions/execution-cursor';

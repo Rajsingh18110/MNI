@@ -5,7 +5,7 @@
  * and verifies the full path: configured rule → trigger payload stripped at
  * context establishment → downstream node reads value via `getRuntimeCredential`.
  *
- * Uses two inline test nodes (registered under the `n8n-nodes-base.*` namespace
+ * Uses two inline test nodes (registered under the `MNI-nodes-base.*` namespace
  * the integration `initNodeTypes` helper expects):
  *   - `testSensitiveTrigger` — bare trigger description; never actually fires,
  *     the test feeds its output directly via `nodeExecutionStack`.
@@ -13,11 +13,11 @@
  *     CSV list of aliases and emits one item per alias.
  */
 
-import { ModuleRegistry } from '@n8n/backend-common';
-import { createWorkflow, testDb, testModules } from '@n8n/backend-test-utils';
-import { ExecutionRepository, type IWorkflowDb, type User } from '@n8n/db';
-import { Container } from '@n8n/di';
-import { ExecutionContextHookRegistry } from 'n8n-core';
+import { ModuleRegistry } from '@MNI/backend-common';
+import { createWorkflow, testDb, testModules } from '@MNI/backend-test-utils';
+import { ExecutionRepository, type IWorkflowDb, type User } from '@MNI/db';
+import { Container } from '@MNI/di';
+import { ExecutionContextHookRegistry } from 'MNI-core';
 import type {
 	IExecuteData,
 	IExecuteFunctions,
@@ -28,8 +28,8 @@ import type {
 	IRunExecutionData,
 	ITriggerFunctions,
 	ITriggerResponse,
-} from 'n8n-workflow';
-import { createRunExecutionData, NodeConnectionTypes } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { createRunExecutionData, NodeConnectionTypes } from 'MNI-workflow';
 import { v4 as uuid } from 'uuid';
 
 import { WorkflowRunner } from '@/workflow-runner';
@@ -41,8 +41,8 @@ import * as utils from '../shared/utils';
 // Inline test nodes
 // ---------------------------------------------------------------------------
 
-const TRIGGER_NODE_TYPE = 'n8n-nodes-base.testSensitiveTrigger';
-const ECHO_NODE_TYPE = 'n8n-nodes-base.runtimeCredentialEcho';
+const TRIGGER_NODE_TYPE = 'MNI-nodes-base.testSensitiveTrigger';
+const ECHO_NODE_TYPE = 'MNI-nodes-base.runtimeCredentialEcho';
 
 const testSensitiveTrigger: INodeType = {
 	description: {
@@ -118,7 +118,7 @@ const NODE_TYPES: INodeTypeData = {
 const RULES = {
 	apiKey: { nodeType: '*', path: 'headers.authorization' },
 	formPwd: { nodeType: TRIGGER_NODE_TYPE, path: 'body.password' },
-	wrongNodeType: { nodeType: 'n8n-nodes-base.formTrigger', path: 'body.password' },
+	wrongNodeType: { nodeType: 'MNI-nodes-base.formTrigger', path: 'body.password' },
 	missingPath: { nodeType: '*', path: 'does.not.exist' },
 };
 
@@ -183,8 +183,8 @@ describe('runtime-credentials module — integration', () => {
 
 	beforeAll(async () => {
 		// Module init reads both env vars; they MUST be set before loadModules().
-		process.env.N8N_ENV_FEAT_RUNTIME_CREDENTIALS = 'true';
-		process.env.N8N_SECURITY_SENSITIVE_FIELD_RULES = JSON.stringify(RULES);
+		process.env.MNI_ENV_FEAT_RUNTIME_CREDENTIALS = 'true';
+		process.env.MNI_SECURITY_SENSITIVE_FIELD_RULES = JSON.stringify(RULES);
 
 		await testModules.loadModules(['runtime-credentials']);
 		await testDb.init();
@@ -214,8 +214,8 @@ describe('runtime-credentials module — integration', () => {
 
 	afterAll(async () => {
 		await testDb.terminate();
-		delete process.env.N8N_ENV_FEAT_RUNTIME_CREDENTIALS;
-		delete process.env.N8N_SECURITY_SENSITIVE_FIELD_RULES;
+		delete process.env.MNI_ENV_FEAT_RUNTIME_CREDENTIALS;
+		delete process.env.MNI_SECURITY_SENSITIVE_FIELD_RULES;
 	});
 
 	async function waitForExecution(executionId: string, timeout = 10_000): Promise<void> {

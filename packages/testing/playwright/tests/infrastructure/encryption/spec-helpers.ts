@@ -97,7 +97,7 @@ export async function runBackendCycle(mode: Mode, backend: Backend): Promise<voi
 		throw error;
 	} finally {
 		for (const [name, path] of [
-			[`${backend}-n8n.log`, ctx.logFile],
+			[`${backend}-MNI.log`, ctx.logFile],
 			[`${backend}-metrics.csv`, ctx.metricsFile],
 		] as const) {
 			if (existsSync(path)) {

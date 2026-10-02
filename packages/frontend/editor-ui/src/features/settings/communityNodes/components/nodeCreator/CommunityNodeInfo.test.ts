@@ -4,14 +4,14 @@ import { type TestingPinia, createTestingPinia } from '@pinia/testing';
 import { waitFor } from '@testing-library/vue';
 import { setActivePinia } from 'pinia';
 import { type ComputedRef, ref } from 'vue';
-import type { PublicInstalledPackage } from 'n8n-workflow';
+import type { PublicInstalledPackage } from 'MNI-workflow';
 import type { CommunityNodeDetails } from '@/features/shared/nodeCreator/composables/useViewStacks';
 import CommunityNodeInfo from './CommunityNodeInfo.vue';
 
 const defaultUseInstalledCommunityPackage = {
 	installedPackage: ref({
 		installedVersion: '1.0.0',
-		packageName: 'n8n-nodes-test',
+		packageName: 'MNI-nodes-test',
 	}) as ComputedRef<PublicInstalledPackage>,
 	canUpdatePackage: ref(false),
 	hasUpdateAvailable: ref(false),
@@ -37,7 +37,7 @@ vi.mock('@/app/stores/nodeTypes.store', () => ({
 	})),
 }));
 
-vi.mock('@n8n/stores/users.store', () => ({
+vi.mock('@MNI/stores/users.store', () => ({
 	useUsersStore: vi.fn(() => ({
 		isAdmin: true,
 		isAdminOrOwner: true,
@@ -68,15 +68,15 @@ describe('CommunityNodeInfo', () => {
 		communityNodeDetails: {
 			description: 'Other node description',
 			installed: false,
-			key: 'n8n-nodes-preview-test.OtherNode',
+			key: 'MNI-nodes-preview-test.OtherNode',
 			nodeIcon: undefined,
-			packageName: 'n8n-nodes-test',
+			packageName: 'MNI-nodes-test',
 			title: 'Other Node',
 		},
 		hasSearch: false,
 		items: [
 			{
-				key: 'n8n-nodes-preview-test.OtherNode',
+				key: 'MNI-nodes-preview-test.OtherNode',
 				properties: {
 					defaults: {
 						name: 'OtherNode',
@@ -84,12 +84,12 @@ describe('CommunityNodeInfo', () => {
 					description: 'Other node description',
 					displayName: 'Other Node',
 					group: ['transform'],
-					name: 'n8n-nodes-preview-test.OtherNode',
+					name: 'MNI-nodes-preview-test.OtherNode',
 					outputs: ['main'],
 				},
 				subcategory: '*',
 				type: 'node',
-				uuid: 'n8n-nodes-preview-test.OtherNode-32f238f0-2b05-47ce-b43d-7fab6d7ba3cb',
+				uuid: 'MNI-nodes-preview-test.OtherNode-32f238f0-2b05-47ce-b43d-7fab6d7ba3cb',
 			},
 		],
 		mode: 'community-node',
@@ -130,7 +130,7 @@ describe('CommunityNodeInfo', () => {
 			...defaultUseInstalledCommunityPackage,
 			installedPackage: ref({
 				installedVersion: '1.0.0',
-				packageName: 'n8n-nodes-test',
+				packageName: 'MNI-nodes-test',
 			}) as ComputedRef<PublicInstalledPackage>,
 		});
 
@@ -172,7 +172,7 @@ describe('CommunityNodeInfo', () => {
 			hasUpdateAvailable: ref(true) as ComputedRef<boolean>,
 			installedPackage: ref({
 				installedVersion: '0.0.9',
-				packageName: 'n8n-nodes-test',
+				packageName: 'MNI-nodes-test',
 				updateAvailable: '1.0.1',
 			}) as ComputedRef<PublicInstalledPackage>,
 		});
@@ -188,7 +188,7 @@ describe('CommunityNodeInfo', () => {
 		expect(wrapper.getByTestId('number-of-downloads').textContent).toEqual('9,999');
 		expect(wrapper.getByTestId('publisher-name').textContent).toEqual('contributor');
 		expect(
-			wrapper.getByTestId('update-available').querySelector('.n8n-text')?.textContent?.trim(),
+			wrapper.getByTestId('update-available').querySelector('.MNI-text')?.textContent?.trim(),
 		).toEqual('A new node package version is available');
 	});
 
@@ -217,7 +217,7 @@ describe('CommunityNodeInfo', () => {
 			hasUpdateAvailable: ref(true) as ComputedRef<boolean>,
 			installedPackage: ref({
 				installedVersion: '0.0.9',
-				packageName: 'n8n-nodes-test',
+				packageName: 'MNI-nodes-test',
 				updateAvailable: '1.0.1',
 			}) as ComputedRef<PublicInstalledPackage>,
 		});
@@ -294,7 +294,7 @@ describe('CommunityNodeInfo', () => {
 				...defaultUseInstalledCommunityPackage,
 				installedPackage: ref({
 					installedVersion: '1.0.0',
-					packageName: 'n8n-nodes-test',
+					packageName: 'MNI-nodes-test',
 				}) as ComputedRef<PublicInstalledPackage>,
 			});
 		});
@@ -325,7 +325,7 @@ describe('CommunityNodeInfo', () => {
 					'@/features/credentials/quickConnect/composables/useQuickConnect'
 				);
 				const quickConnectOptionData = {
-					packageName: 'n8n-nodes-test',
+					packageName: 'MNI-nodes-test',
 					credentialType: 'some-credentials',
 					text: 'This packages provides trial access',
 					quickConnectType: 'manual',

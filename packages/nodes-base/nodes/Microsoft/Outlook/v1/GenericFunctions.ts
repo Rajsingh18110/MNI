@@ -6,8 +6,8 @@ import type {
 	INodeExecutionData,
 	IRequestOptions,
 	JsonObject,
-} from 'n8n-workflow';
-import { NodeApiError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeApiError } from 'MNI-workflow';
 
 export async function microsoftApiRequest(
 	this: IExecuteFunctions | ILoadOptionsFunctions,

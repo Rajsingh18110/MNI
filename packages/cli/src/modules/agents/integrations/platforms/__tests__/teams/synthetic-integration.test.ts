@@ -1,5 +1,5 @@
-import type { StreamChunk } from '@n8n/agents';
-import { isRecord } from '@n8n/utils/is-record';
+import type { StreamChunk } from '@MNI/agents';
+import { isRecord } from '@MNI/utils/is-record';
 
 import {
 	createTeamsReplayContext,
@@ -361,7 +361,7 @@ describe('Microsoft Teams integration scenarios', () => {
 
 			expect(ctx.agentExecutor.executeForChatPublished).toHaveBeenCalledWith(
 				expect.objectContaining({
-					message: '@n8n Agent hello agent',
+					message: '@MNI Agent hello agent',
 					author: { id: TEAMS_USER_ID, name: 'Alice' },
 					integrationType: 'teams',
 				}),

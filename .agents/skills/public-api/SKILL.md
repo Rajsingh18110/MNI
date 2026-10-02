@@ -27,14 +27,14 @@ check the code, not license to drop a team default.
   never calls an internal controller/endpoint; both reuse the same service.
 - Controllers and handlers delegate to a service — never import a repository or
   `Container.get(…Repository)` (`no-repository-in-public-api-handler`).
-- Input/output go through DTOs from `@n8n/api-types`; every JSON route declares
+- Input/output go through DTOs from `@MNI/api-types`; every JSON route declares
   `@ApiResponse(Dto)`.
 - Register each controller via a side-effect import in `v1/controllers/index.ts`
   (`public-api-controllers.test.ts` fails otherwise).
 - Don't add business logic to legacy `express-openapi-validator` (EOV) handlers.
 - Migrating a legacy endpoint must not change its public contract.
 
-These are `n8n-local-rules` ESLint rules (see `packages/cli/eslint.config.mjs`)
+These are `MNI-local-rules` ESLint rules (see `packages/cli/eslint.config.mjs`)
 and can't be silenced inline (`no-public-api-guardrail-disable`). The `off`
 allowlist there covers pre-existing legacy files only — it's shrink-only, don't
 add to it.
@@ -81,7 +81,7 @@ Open these — they are the source of truth, not this skill:
 - `v1/controllers/` — copy structure from `tags.public.controller.ts` (list +
   cursor) or `workflows.public.controller.ts` (`@Param` + `@ProjectScope`), and
   `index.ts` for the barrel.
-- Decorators in `packages/@n8n/decorators/src/controller/`:
+- Decorators in `packages/@MNI/decorators/src/controller/`:
   `public-api-controller.ts`, `api-key-scope.ts`, `api-response.ts`,
   `api-error-response.ts`, `api-summary.ts`, `api-description.ts`, `api-tags.ts`,
   `route.ts`, `scoped.ts`, `args.ts`, `licensed.ts`.
@@ -90,7 +90,7 @@ Open these — they are the source of truth, not this skill:
   `v1/openapi-gen/decorator-routes.ts`.
 - Pagination helpers: `v1/shared/services/pagination.service.ts`
   (`decodeCursor`, `encodeNextCursor`).
-- DTOs: `packages/@n8n/api-types/src/dto/`.
+- DTOs: `packages/@MNI/api-types/src/dto/`.
 - Gating tests: `v1/__tests__/public-api-controllers.test.ts`,
   `v1/__tests__/scope-parity.test.ts`,
   `v1/openapi-gen/__tests__/generated-spec-drift.test.ts`.
@@ -101,7 +101,7 @@ Open these — they are the source of truth, not this skill:
 A controller is a class marked `@PublicApiController('/base')` that injects the
 shared service via its constructor and delegates to it. Copy the shape from an
 existing controller in `v1/controllers/` with the same operation type and auth
-model; reuse only what applies. Decorators, all from `@n8n/decorators`:
+model; reuse only what applies. Decorators, all from `@MNI/decorators`:
 
 | Decorator | Use |
 |---|---|
@@ -130,7 +130,7 @@ model; reuse only what applies. Decorators, all from `@n8n/decorators`:
   the convention.
 - `@ApiKeyScope` takes a string, `{ anyOf: [...] }`, or `{ allOf: [...] }` — never
   a bare array. The scope must exist in the permissions registry
-  (`API_KEY_RESOURCES` in `@n8n/permissions`); `scope-parity.test.ts` fails on an
+  (`API_KEY_RESOURCES` in `@MNI/permissions`); `scope-parity.test.ts` fails on an
   orphan scope.
 
 ## DTOs
@@ -168,7 +168,7 @@ defect to remove, not a contract to preserve. Detail:
 
 1. `v1/controllers/<feature>.public.controller.ts` + side-effect import in
    `v1/controllers/index.ts`.
-2. Public DTO in `@n8n/api-types` + export from the barrel (`src/dto/`).
+2. Public DTO in `@MNI/api-types` + export from the barrel (`src/dto/`).
 3. `@ApiKeyScope` value exists in the permissions registry.
 4. Don't hand-write the OpenAPI path or `x-required-scope` for a controller
    route — the generator (`v1/openapi-gen/generate.ts`) builds it from your
@@ -180,7 +180,7 @@ defect to remove, not a contract to preserve. Detail:
    build:data` alone is **not** enough after touching a controller: it runs
    the generator against the already-compiled `dist/`, so a new/changed
    controller silently doesn't show up unless `tsc` ran first.
-5. Add the route to `packages/nodes-base/nodes/MNI/n8n-api-coverage.json`.
+5. Add the route to `packages/nodes-base/nodes/MNI/MNI-api-coverage.json`.
 6. Tests.
 
 ## Testing

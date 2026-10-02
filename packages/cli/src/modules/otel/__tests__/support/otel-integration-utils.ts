@@ -1,21 +1,21 @@
-import { LicenseState, ModuleRegistry } from '@n8n/backend-common';
-import { testDb, testModules } from '@n8n/backend-test-utils';
-import { LICENSE_FEATURES } from '@n8n/constants';
-import type { WorkflowEntity } from '@n8n/db';
-import { ExecutionRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
+import { LicenseState, ModuleRegistry } from '@MNI/backend-common';
+import { testDb, testModules } from '@MNI/backend-test-utils';
+import { LICENSE_FEATURES } from '@MNI/constants';
+import type { WorkflowEntity } from '@MNI/db';
+import { ExecutionRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
 import { readFileSync } from 'fs';
-import { InstanceSettings, UnrecognizedNodeTypeError } from 'n8n-core';
-import { DebugHelper } from 'n8n-nodes-base/nodes/DebugHelper/DebugHelper.node';
-import { ManualTrigger } from 'n8n-nodes-base/nodes/ManualTrigger/ManualTrigger.node';
-import { createRunExecutionData, UnexpectedError } from 'n8n-workflow';
+import { InstanceSettings, UnrecognizedNodeTypeError } from 'MNI-core';
+import { DebugHelper } from 'MNI-nodes-base/nodes/DebugHelper/DebugHelper.node';
+import { ManualTrigger } from 'MNI-nodes-base/nodes/ManualTrigger/ManualTrigger.node';
+import { createRunExecutionData, UnexpectedError } from 'MNI-workflow';
 import type {
 	ExecutionStatus,
 	IDataObject,
 	INodeType,
 	INodeTypeData,
 	NodeLoadingDetails,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import path from 'path';
 
 import { WorkflowRunner } from '@/workflow-runner';
@@ -36,9 +36,9 @@ function loadNodesFromDist(nodeNames: string[]): INodeTypeData {
 	) as Record<string, NodeLoadingDetails>;
 
 	for (const nodeName of nodeNames) {
-		const loadInfo = knownNodes[nodeName.replace('n8n-nodes-base.', '')];
+		const loadInfo = knownNodes[nodeName.replace('MNI-nodes-base.', '')];
 		if (!loadInfo) {
-			throw new UnrecognizedNodeTypeError('n8n-nodes-base', nodeName);
+			throw new UnrecognizedNodeTypeError('MNI-nodes-base', nodeName);
 		}
 		const nodeDistPath = path.join(BASE_DIR, 'nodes-base', loadInfo.sourcePath);
 		const node = new (require(nodeDistPath)[loadInfo.className])() as INodeType;
@@ -61,14 +61,14 @@ export async function initOtelTestEnvironment() {
 		getValue: () => undefined,
 	});
 	const distNodes = loadNodesFromDist([
-		'n8n-nodes-base.executeWorkflow',
-		'n8n-nodes-base.executeWorkflowTrigger',
-		'n8n-nodes-base.wait',
+		'MNI-nodes-base.executeWorkflow',
+		'MNI-nodes-base.executeWorkflowTrigger',
+		'MNI-nodes-base.wait',
 	]);
 	await utils.initNodeTypes({
-		'n8n-nodes-base.manualTrigger': { type: new ManualTrigger(), sourcePath: '' },
-		'n8n-nodes-base.debugHelper': { type: new DebugHelper(), sourcePath: '' },
-		'n8n-nodes-base.tracingTestNode': { type: new TestNodeWithTracing(), sourcePath: '' },
+		'MNI-nodes-base.manualTrigger': { type: new ManualTrigger(), sourcePath: '' },
+		'MNI-nodes-base.debugHelper': { type: new DebugHelper(), sourcePath: '' },
+		'MNI-nodes-base.tracingTestNode': { type: new TestNodeWithTracing(), sourcePath: '' },
 		...distNodes,
 	});
 	await utils.initBinaryDataService();
@@ -122,7 +122,7 @@ export async function executeWorkflow(
 	} = {},
 ): Promise<string> {
 	const { mode = 'webhook', retryOf, tracingContext, triggerData } = options;
-	const triggerNode = workflow.nodes.find((n) => n.type === 'n8n-nodes-base.manualTrigger')!;
+	const triggerNode = workflow.nodes.find((n) => n.type === 'MNI-nodes-base.manualTrigger')!;
 	const executionData = createRunExecutionData({
 		executionData: {
 			nodeExecutionStack: [

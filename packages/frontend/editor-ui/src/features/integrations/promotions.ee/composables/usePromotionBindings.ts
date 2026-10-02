@@ -1,6 +1,6 @@
 import { computed, ref, shallowRef } from 'vue';
-import type { PromotionBindingConsumer, ContinueApplyPackageDto } from '@n8n/api-types';
-import { useRootStore } from '@n8n/stores/useRootStore';
+import type { PromotionBindingConsumer, ContinueApplyPackageDto } from '@MNI/api-types';
+import { useRootStore } from '@MNI/stores/useRootStore';
 import { continueApplyPromotion } from '../promotionsSettings.api';
 import type {
 	BlockedApplyResult,

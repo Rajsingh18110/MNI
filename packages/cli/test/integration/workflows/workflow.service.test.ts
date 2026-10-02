@@ -1,4 +1,4 @@
-import type { Logger } from '@n8n/backend-common';
+import type { Logger } from '@MNI/backend-common';
 import {
 	createWorkflowWithHistory,
 	testDb,
@@ -7,8 +7,8 @@ import {
 	createTeamProject,
 	linkUserToProject,
 	createWorkflow,
-} from '@n8n/backend-test-utils';
-import { GlobalConfig } from '@n8n/config';
+} from '@MNI/backend-test-utils';
+import { GlobalConfig } from '@MNI/config';
 import {
 	SharedWorkflowRepository,
 	type WorkflowEntity,
@@ -19,9 +19,9 @@ import {
 	WorkflowPublicationOutboxStatus,
 	WorkflowRepository,
 	ProjectRepository,
-} from '@n8n/db';
-import { Container } from '@n8n/di';
-import type { INode, INodeType } from 'n8n-workflow';
+} from '@MNI/db';
+import { Container } from '@MNI/di';
+import type { INode, INodeType } from 'MNI-workflow';
 import { v4 as uuid } from 'uuid';
 import { mock } from 'vitest-mock-extended';
 
@@ -181,7 +181,7 @@ describe('update()', () => {
 					{
 						id: 'new-node',
 						name: 'New Node',
-						type: 'n8n-nodes-base.manualTrigger',
+						type: 'MNI-nodes-base.manualTrigger',
 						typeVersion: 1,
 						position: [250, 300],
 						parameters: {},
@@ -218,7 +218,7 @@ describe('update()', () => {
 						{
 							id: 'new-node',
 							name: 'New Node',
-							type: 'n8n-nodes-base.manualTrigger',
+							type: 'MNI-nodes-base.manualTrigger',
 							typeVersion: 1,
 							position: [250, 300],
 							parameters: {},
@@ -275,7 +275,7 @@ describe('update()', () => {
 				{
 					id: 'new-node',
 					name: 'New Node',
-					type: 'n8n-nodes-base.manualTrigger',
+					type: 'MNI-nodes-base.manualTrigger',
 					typeVersion: 1,
 					position: [250, 300],
 					parameters: {},
@@ -306,7 +306,7 @@ describe('update()', () => {
 					{
 						id: 'uuid-1',
 						name: 'Manual Trigger',
-						type: 'n8n-nodes-base.manualTrigger',
+						type: 'MNI-nodes-base.manualTrigger',
 						typeVersion: 1,
 						position: [240, 300],
 						parameters: {},
@@ -314,7 +314,7 @@ describe('update()', () => {
 					{
 						id: 'uuid-2',
 						name: 'Code Node',
-						type: 'n8n-nodes-base.code',
+						type: 'MNI-nodes-base.code',
 						typeVersion: 1,
 						position: [500, 300],
 						parameters: {},
@@ -478,7 +478,7 @@ describe('activateWorkflow()', () => {
 				webhookId: 'version1',
 				name: 'test',
 				typeVersion: 0,
-				type: 'n8n-nodes-base.webhook',
+				type: 'MNI-nodes-base.webhook',
 				position: [1, 2],
 				parameters: {},
 			},
@@ -487,7 +487,7 @@ describe('activateWorkflow()', () => {
 				webhookId: 'version1-2',
 				name: 'test2',
 				typeVersion: 0,
-				type: 'n8n-nodes-base.webhook',
+				type: 'MNI-nodes-base.webhook',
 				position: [1, 2],
 				parameters: {},
 			},
@@ -507,7 +507,7 @@ describe('activateWorkflow()', () => {
 				webhookId: 'version2',
 				name: 'updatedNode',
 				typeVersion: 0,
-				type: 'n8n-nodes-base.webhook',
+				type: 'MNI-nodes-base.webhook',
 				position: [1, 2],
 				parameters: {},
 			},
@@ -527,7 +527,7 @@ describe('activateWorkflow()', () => {
 					webhookId: 'version2',
 					name: 'newNode',
 					typeVersion: 0,
-					type: 'n8n-nodes-base.webhook',
+					type: 'MNI-nodes-base.webhook',
 					position: [1, 2],
 					parameters: {},
 				},
@@ -551,7 +551,7 @@ describe('activateWorkflow()', () => {
 				webhookId: 'version1',
 				name: 'test',
 				typeVersion: 0,
-				type: 'n8n-nodes-base.webhook',
+				type: 'MNI-nodes-base.webhook',
 				position: [1, 2],
 				parameters: {},
 			},
@@ -560,7 +560,7 @@ describe('activateWorkflow()', () => {
 				webhookId: 'version1-2',
 				name: 'test2',
 				typeVersion: 0,
-				type: 'n8n-nodes-base.webhook',
+				type: 'MNI-nodes-base.webhook',
 				position: [1, 2],
 				parameters: {},
 			},
@@ -579,7 +579,7 @@ describe('activateWorkflow()', () => {
 				webhookId: 'version2',
 				name: 'newNode',
 				typeVersion: 0,
-				type: 'n8n-nodes-base.webhook',
+				type: 'MNI-nodes-base.webhook',
 				position: [1, 2],
 				parameters: {},
 			},
@@ -885,7 +885,7 @@ describe('workflow publication outbox', () => {
 						name: 'Cron',
 						parameters: {},
 						position: [0, 0],
-						type: 'n8n-nodes-base.cron',
+						type: 'MNI-nodes-base.cron',
 						typeVersion: 1,
 					},
 				],
@@ -912,7 +912,7 @@ describe('workflow publication outbox', () => {
 						name: 'Cron',
 						parameters: {},
 						position: [0, 0],
-						type: 'n8n-nodes-base.cron',
+						type: 'MNI-nodes-base.cron',
 						typeVersion: 1,
 					},
 					{
@@ -920,7 +920,7 @@ describe('workflow publication outbox', () => {
 						name: 'Disabled Cron',
 						parameters: {},
 						position: [0, 0],
-						type: 'n8n-nodes-base.cron',
+						type: 'MNI-nodes-base.cron',
 						typeVersion: 1,
 						disabled: true,
 					},
@@ -1196,7 +1196,7 @@ describe('publishAsSystem()', () => {
 		{
 			id: uuid(),
 			name: 'Trigger',
-			type: 'n8n-nodes-base.scheduleTrigger',
+			type: 'MNI-nodes-base.scheduleTrigger',
 			typeVersion: 1,
 			position: [0, 0],
 			parameters: {},

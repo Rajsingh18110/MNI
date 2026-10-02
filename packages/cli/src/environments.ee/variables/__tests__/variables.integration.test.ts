@@ -1,6 +1,6 @@
-import { createTeamProject, testDb } from '@n8n/backend-test-utils';
-import { VariablesRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
+import { createTeamProject, testDb } from '@MNI/backend-test-utils';
+import { VariablesRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
 
 let variablesRepository: VariablesRepository;
 

@@ -1,7 +1,7 @@
-import { GlobalConfig } from '@n8n/config';
-import { AuthenticatedRequest } from '@n8n/db';
-import { RestController, StaticRouterMetadata } from '@n8n/decorators';
-import { Container } from '@n8n/di';
+import { GlobalConfig } from '@MNI/config';
+import { AuthenticatedRequest } from '@MNI/db';
+import { RestController, StaticRouterMetadata } from '@MNI/decorators';
+import { Container } from '@MNI/di';
 import { Router } from 'express';
 import { createProxyMiddleware } from 'http-proxy-middleware';
 import type { ClientRequest } from 'node:http';

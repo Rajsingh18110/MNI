@@ -8,8 +8,8 @@ import type {
 	INodeType,
 	INodeTypeBaseDescription,
 	INodeTypeDescription,
-} from 'n8n-workflow';
-import { toPathSegment } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { toPathSegment } from 'MNI-workflow';
 
 import { versionDescription } from './VersionDescription';
 import type { SortData } from '../shared/GenericFunctions';

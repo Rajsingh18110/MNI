@@ -2,9 +2,9 @@ import {
 	sanitizeAgentToolName,
 	type AgentCapabilitySummary,
 	type AgentCapabilityTool,
-} from '@n8n/api-types';
-import type { IconName } from '@n8n/design-system';
-import { nodeNameToToolName } from 'n8n-workflow';
+} from '@MNI/api-types';
+import type { IconName } from '@MNI/design-system';
+import { nodeNameToToolName } from 'MNI-workflow';
 import { formatToolNameForDisplay } from '@/features/agents/utils/toolDisplayName';
 import { MIN_GROUPED_TOOLS_PER_TYPE } from '@/features/agents/components/AgentCapabilitiesSection.utils';
 import {

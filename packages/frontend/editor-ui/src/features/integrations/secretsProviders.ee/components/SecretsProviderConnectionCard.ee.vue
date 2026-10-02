@@ -8,18 +8,18 @@ import {
 	N8nHeading,
 	N8nText,
 	N8nTooltip,
-} from '@n8n/design-system';
-import type { SecretProviderConnection, SecretProviderTypeResponse } from '@n8n/api-types';
+} from '@MNI/design-system';
+import type { SecretProviderConnection, SecretProviderTypeResponse } from '@MNI/api-types';
 import { DateTime } from 'luxon';
 import { isDateObject } from '@/app/utils/typeGuards';
-import { useI18n } from '@n8n/i18n';
-import { useRBACStore } from '@n8n/stores/rbac.store';
+import { useI18n } from '@MNI/i18n';
+import { useRBACStore } from '@MNI/stores/rbac.store';
 import { useProjectsStore } from '@/features/collaboration/projects/projects.store';
 import ProjectIcon from '@/features/collaboration/projects/components/ProjectIcon.vue';
 import { splitName } from '@/features/collaboration/projects/projects.utils';
 import type { ProjectListItem } from '@/features/collaboration/projects/projects.types';
-import { isIconOrEmoji, type IconOrEmoji } from '@n8n/design-system';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { isIconOrEmoji, type IconOrEmoji } from '@MNI/design-system';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 
 const i18n = useI18n();
 const rbacStore = useRBACStore();
@@ -231,7 +231,7 @@ function onAction(action: string) {
 					"
 				>
 					<ProjectIcon :icon="badgeIcon" :border-less="true" size="mini" />
-					<span v-if="!isGlobal" v-n8n-truncate:20="projectName" :class="$style.nowrap">
+					<span v-if="!isGlobal" v-MNI-truncate:20="projectName" :class="$style.nowrap">
 						{{ projectName }}
 					</span>
 					<span v-else>

@@ -3,8 +3,8 @@ import type {
 	INodeListSearchResult,
 	INodePropertyOptions,
 	JsonObject,
-} from 'n8n-workflow';
-import { NodeApiError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeApiError } from 'MNI-workflow';
 
 import { escapeODataValue } from '../../../utils/query-escaping';
 import { DATAVERSE_API_PATH } from './constants';

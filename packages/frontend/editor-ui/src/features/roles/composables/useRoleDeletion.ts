@@ -1,11 +1,11 @@
 import { useMessage } from '@/app/composables/useMessage';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
-import { useToast } from '@n8n/composables/useToast';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
+import { useToast } from '@MNI/composables/useToast';
 import { MODAL_CONFIRM } from '@/app/constants';
 import { useRoleDeleteGuard } from './useRoleDeleteGuard';
-import { useRolesStore } from '@n8n/stores/roles.store';
-import { useI18n } from '@n8n/i18n';
-import type { Role } from '@n8n/permissions';
+import { useRolesStore } from '@MNI/stores/roles.store';
+import { useI18n } from '@MNI/i18n';
+import type { Role } from '@MNI/permissions';
 import { ref } from 'vue';
 import { useRouter, type RouteLocationRaw } from 'vue-router';
 

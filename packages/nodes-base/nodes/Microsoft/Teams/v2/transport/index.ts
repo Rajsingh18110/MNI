@@ -1,5 +1,5 @@
-import type { IExecuteFunctions, IHookFunctions, ILoadOptionsFunctions } from 'n8n-workflow';
-import { NodeApiError } from 'n8n-workflow';
+import type { IExecuteFunctions, IHookFunctions, ILoadOptionsFunctions } from 'MNI-workflow';
+import { NodeApiError } from 'MNI-workflow';
 
 import {
 	buildMicrosoftGraphPath,

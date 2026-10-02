@@ -1,13 +1,13 @@
-import { testDb } from '@n8n/backend-test-utils';
-import { InstanceSettingsLoaderConfig } from '@n8n/config';
-import type { User } from '@n8n/db';
-import { SettingsRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
+import { testDb } from '@MNI/backend-test-utils';
+import { InstanceSettingsLoaderConfig } from '@MNI/config';
+import type { User } from '@MNI/db';
+import { SettingsRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
 import {
 	PERSONAL_SPACE_PUBLISHING_SETTING,
 	PERSONAL_SPACE_SHARING_SETTING,
-} from '@n8n/permissions';
-import { In } from '@n8n/typeorm';
+} from '@MNI/permissions';
+import { In } from '@MNI/typeorm';
 
 import { FeatureNotLicensedError } from '@/errors/feature-not-licensed.error';
 import { CacheService } from '@/services/cache/cache.service';

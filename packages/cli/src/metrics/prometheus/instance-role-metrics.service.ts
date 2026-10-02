@@ -1,13 +1,13 @@
-import { PrometheusMetricsConfig } from '@n8n/config';
-import { OnLeaderStepdown, OnLeaderTakeover } from '@n8n/decorators';
-import { Service } from '@n8n/di';
-import { InstanceSettings } from 'n8n-core';
+import { PrometheusMetricsConfig } from '@MNI/config';
+import { OnLeaderStepdown, OnLeaderTakeover } from '@MNI/decorators';
+import { Service } from '@MNI/di';
+import { InstanceSettings } from 'MNI-core';
 import promClient, { Gauge } from 'prom-client';
 
 import type { PrometheusMetricsCollector } from './base';
 
 /**
- * Exposes `n8n_instance_role_leader` gauge (1 = leader, 0 = follower), updated on leader events.
+ * Exposes `MNI_instance_role_leader` gauge (1 = leader, 0 = follower), updated on leader events.
  * Only enabled on main instances.
  */
 @Service()

@@ -1,12 +1,12 @@
-import type { AgentJsonToolConfig, AiGatewayConfigDto, NodeToolConfig } from '@n8n/api-types';
-import { getRequiredNodeCredentialSlots } from '@n8n/ai-utilities/node-catalog';
-import type { INodeParameters, INodeTypeDescription } from 'n8n-workflow';
-import { NodeHelpers, resolveSupportedCredentialActivation } from 'n8n-workflow';
+import type { AgentJsonToolConfig, AiGatewayConfigDto, NodeToolConfig } from '@MNI/api-types';
+import { getRequiredNodeCredentialSlots } from '@MNI/ai-utilities/node-catalog';
+import type { INodeParameters, INodeTypeDescription } from 'MNI-workflow';
+import { NodeHelpers, resolveSupportedCredentialActivation } from 'MNI-workflow';
 
 import type { NodeTypes } from '@/node-types';
 import { checkAiGatewayEligibility, HTTP_NODE_TYPES } from '@/services/ai-gateway-eligibility';
 
-const N8N_CONNECT_CREDENTIAL_NAME = 'Gateway credits';
+const MNI_CONNECT_CREDENTIAL_NAME = 'Gateway credits';
 const AI_GATEWAY_MANAGED_CREDENTIAL_FLAG = '__aiGatewayManaged';
 
 type NodeToolCredential = NonNullable<NodeToolConfig['credentials']>[string];
@@ -14,7 +14,7 @@ type NodeToolCredential = NonNullable<NodeToolConfig['credentials']>[string];
 function aiGatewayManagedCredential(): NodeToolCredential {
 	return {
 		id: null,
-		name: N8N_CONNECT_CREDENTIAL_NAME,
+		name: MNI_CONNECT_CREDENTIAL_NAME,
 		[AI_GATEWAY_MANAGED_CREDENTIAL_FLAG]: true,
 	};
 }

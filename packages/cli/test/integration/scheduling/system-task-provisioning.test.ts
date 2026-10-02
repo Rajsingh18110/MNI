@@ -1,15 +1,15 @@
-import { Logger } from '@n8n/backend-common';
-import { testDb } from '@n8n/backend-test-utils';
-import { GlobalConfig } from '@n8n/config';
-import { ScheduledJobMisfirePolicy, ScheduledJobOwnerType } from '@n8n/constants';
-import { ScheduledJobRepository, ScheduledTaskRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
-import type { SystemTask, SystemTaskSchedule } from '@n8n/decorators';
-import { UnregisteredOwnerTypeError } from '@n8n/scheduler';
-import { ErrorReporter } from 'n8n-core';
+import { Logger } from '@MNI/backend-common';
+import { testDb } from '@MNI/backend-test-utils';
+import { GlobalConfig } from '@MNI/config';
+import { ScheduledJobMisfirePolicy, ScheduledJobOwnerType } from '@MNI/constants';
+import { ScheduledJobRepository, ScheduledTaskRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
+import type { SystemTask, SystemTaskSchedule } from '@MNI/decorators';
+import { UnregisteredOwnerTypeError } from '@MNI/scheduler';
+import { ErrorReporter } from 'MNI-core';
 import { inc } from 'semver';
 
-import { N8N_VERSION } from '@/constants';
+import { MNI_VERSION } from '@/constants';
 import { EventService } from '@/events/event.service';
 import { DurableJobProvisioner } from '@/scheduling/durable-job-provisioner';
 import {
@@ -76,7 +76,7 @@ describe('system task provisioning', () => {
 			ownerId: TASK_NAME,
 			ownerMemberId: null,
 			taskType: JOB_NAME,
-			payload: { n8nVersion: N8N_VERSION },
+			payload: { n8nVersion: MNI_VERSION },
 			kind: 'interval',
 			intervalSeconds: 60,
 			maxAttempts: 3,
@@ -164,7 +164,7 @@ describe('system task provisioning', () => {
 
 		expect(summary.unchanged).toEqual([{ id: inserted.id, name: JOB_NAME }]);
 		const row = await jobRepo.findOneByOrFail({ name: JOB_NAME });
-		expect(row.payload).toEqual({ n8nVersion: N8N_VERSION });
+		expect(row.payload).toEqual({ n8nVersion: MNI_VERSION });
 		expect(row.intervalSeconds).toBe(60);
 	});
 
@@ -194,7 +194,7 @@ describe('system task provisioning', () => {
 			Container.get(EventService),
 		);
 		await provisioner.provision(systemTaskProvisionRequest(task(), booting, 'UTC', new Date()));
-		await store('from-a-newer-version', inc(N8N_VERSION, 'minor') as string);
+		await store('from-a-newer-version', inc(MNI_VERSION, 'minor') as string);
 		const older = await store('from-an-older-version', '0.0.1');
 
 		await expect(bootingRegistrar.findStale()).resolves.toEqual([
@@ -226,7 +226,7 @@ describe('system task provisioning', () => {
 	it('keeps a listed job another version restamped before the delete ran', async () => {
 		const stale = await store('taken-over', '0.0.1');
 		const [listed] = await registrar.findStale();
-		const newer = inc(N8N_VERSION, 'minor') as string;
+		const newer = inc(MNI_VERSION, 'minor') as string;
 		await jobRepo.update({ id: stale.id }, { payload: { n8nVersion: newer } });
 
 		await expect(provisioner.deprovisionUnchangedJob(listed)).resolves.toEqual({ removed: 0 });

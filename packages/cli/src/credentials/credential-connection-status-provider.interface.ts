@@ -1,4 +1,4 @@
-import type { EntityManager } from '@n8n/typeorm';
+import type { EntityManager } from '@MNI/typeorm';
 
 /** One user's connection to one credential. */
 export type UserConnection = {

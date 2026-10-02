@@ -1,5 +1,5 @@
-import type { IDataObject, IExecuteFunctions, IHttpRequestMethods } from 'n8n-workflow';
-import { NodeOperationError, setSafeObjectProperty } from 'n8n-workflow';
+import type { IDataObject, IExecuteFunctions, IHttpRequestMethods } from 'MNI-workflow';
+import { NodeOperationError, setSafeObjectProperty } from 'MNI-workflow';
 import {
 	dataverseApiRequest,
 	dataverseApiRequestAllItems,

@@ -1,5 +1,5 @@
-import type { Logger } from '@n8n/backend-common';
-import { DbLock } from '@n8n/db';
+import type { Logger } from '@MNI/backend-common';
+import { DbLock } from '@MNI/db';
 import type {
 	DbLockService,
 	OperationContext,
@@ -10,7 +10,7 @@ import type {
 	WorkflowReviewRequest,
 	WorkflowReviewRequestRepository,
 	WorkflowReviewRequestWorkflowRepository,
-} from '@n8n/db';
+} from '@MNI/db';
 import { mock } from 'vitest-mock-extended';
 
 import type { CollaborationService } from '@/collaboration/collaboration.service';

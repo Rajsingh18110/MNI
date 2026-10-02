@@ -1,6 +1,6 @@
-import { OutboundHttp } from '@n8n/backend-network';
-import { Container } from '@n8n/di';
-import { jsonParse, UnexpectedError, LoggerProxy } from 'n8n-workflow';
+import { OutboundHttp } from '@MNI/backend-network';
+import { Container } from '@MNI/di';
+import { jsonParse, UnexpectedError, LoggerProxy } from 'MNI-workflow';
 import { execFile } from 'node:child_process';
 import { access } from 'node:fs/promises';
 import { dirname, isAbsolute, join } from 'node:path';

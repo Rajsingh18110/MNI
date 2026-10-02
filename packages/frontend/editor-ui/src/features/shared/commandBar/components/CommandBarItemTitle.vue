@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import type { IconName, IconOrEmoji, KeyboardShortcut } from '@n8n/design-system';
-import { N8nIcon, N8nKeyboardShortcut } from '@n8n/design-system';
+import type { IconName, IconOrEmoji, KeyboardShortcut } from '@MNI/design-system';
+import { N8nIcon, N8nKeyboardShortcut } from '@MNI/design-system';
 import ProjectIcon from '@/features/collaboration/projects/components/ProjectIcon.vue';
 
 interface Props {

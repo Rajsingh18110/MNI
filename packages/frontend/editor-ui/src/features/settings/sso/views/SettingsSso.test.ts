@@ -1,4 +1,4 @@
-import type { OidcConfigDto, SamlPreferences } from '@n8n/api-types';
+import type { OidcConfigDto, SamlPreferences } from '@MNI/api-types';
 import { createTestingPinia } from '@pinia/testing';
 import { within, waitFor } from '@testing-library/vue';
 import { type MockedStore, mockedStore } from '@/__tests__/utils';
@@ -7,7 +7,7 @@ import userEvent from '@testing-library/user-event';
 import { useSSOStore, SupportedProtocols } from '../sso.store';
 import { createComponentRenderer } from '@/__tests__/render';
 import { usePageRedirectionHelper } from '@/app/composables/usePageRedirectionHelper';
-import type { SamlPreferencesExtractedData } from '@n8n/rest-api-client/api/sso';
+import type { SamlPreferencesExtractedData } from '@MNI/rest-api-client/api/sso';
 
 const renderView = createComponentRenderer(SettingsSso);
 
@@ -15,8 +15,8 @@ const samlConfig = {
 	metadata: 'metadata dummy',
 	metadataUrl:
 		'https://dev-qqkrykgkoo0p63d5.eu.auth0.com/samlp/metadata/KR1cSrRrxaZT2gV8ZhPAUIUHtEY4duhN',
-	entityID: 'https://n8n-tunnel.myhost.com/rest/sso/saml/metadata',
-	returnUrl: 'https://n8n-tunnel.myhost.com/rest/sso/saml/acs',
+	entityID: 'https://MNI-tunnel.myhost.com/rest/sso/saml/metadata',
+	returnUrl: 'https://MNI-tunnel.myhost.com/rest/sso/saml/acs',
 } as SamlPreferences & SamlPreferencesExtractedData;
 
 const oidcConfig = {
@@ -24,7 +24,7 @@ const oidcConfig = {
 } as OidcConfigDto;
 
 const telemetryTrack = vi.fn();
-vi.mock('@n8n/composables/useTelemetry', () => ({
+vi.mock('@MNI/composables/useTelemetry', () => ({
 	useTelemetry: () => ({
 		track: telemetryTrack,
 	}),
@@ -32,7 +32,7 @@ vi.mock('@n8n/composables/useTelemetry', () => ({
 
 const showError = vi.fn();
 const showMessage = vi.fn();
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: () => ({
 		showError,
 		showMessage,
@@ -65,7 +65,7 @@ vi.mock('../provisioning/composables/userRoleProvisioning.store', () => ({
 	useUserRoleProvisioningStore: vi.fn(() => mockProvisioningStore),
 }));
 
-vi.mock('@n8n/rest-api-client/api/roleMappingRule', () => ({
+vi.mock('@MNI/rest-api-client/api/roleMappingRule', () => ({
 	listRoleMappingRules: vi.fn().mockResolvedValue([]),
 	createRoleMappingRule: vi.fn(),
 	updateRoleMappingRule: vi.fn(),

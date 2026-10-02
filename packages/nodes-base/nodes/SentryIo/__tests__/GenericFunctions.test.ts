@@ -1,5 +1,5 @@
 import { mockDeep } from 'vitest-mock-extended';
-import type { IExecuteFunctions } from 'n8n-workflow';
+import type { IExecuteFunctions } from 'MNI-workflow';
 import { sentryIoApiRequest } from '../GenericFunctions';
 
 describe('SentryIo GenericFunctions', () => {

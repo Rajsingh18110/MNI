@@ -1,10 +1,10 @@
-import type { Logger } from '@n8n/backend-common';
-import type { HttpRequestClient, OutboundHttp } from '@n8n/backend-network';
-import type { GlobalConfig } from '@n8n/config';
+import type { Logger } from '@MNI/backend-common';
+import type { HttpRequestClient, OutboundHttp } from '@MNI/backend-network';
+import type { GlobalConfig } from '@MNI/config';
 import { mock } from 'vitest-mock-extended';
-import type { InstanceSettings } from 'n8n-core';
+import type { InstanceSettings } from 'MNI-core';
 
-import { N8N_VERSION } from '@/constants';
+import { MNI_VERSION } from '@/constants';
 import { InstanceRiskReporter } from '@/security-audit/risk-reporters/instance-risk-reporter';
 
 describe('InstanceRiskReporter', () => {
@@ -41,9 +41,9 @@ describe('InstanceRiskReporter', () => {
 		await reporter.report([]);
 
 		expect(request).toHaveBeenCalledWith({
-			url: `${VERSIONS_ENDPOINT}${N8N_VERSION}`,
+			url: `${VERSIONS_ENDPOINT}${MNI_VERSION}`,
 			method: 'GET',
-			headers: { 'n8n-instance-id': 'test-instance-id' },
+			headers: { 'MNI-instance-id': 'test-instance-id' },
 			json: true,
 		});
 	});

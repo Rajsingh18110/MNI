@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { DEFAULT_AGENT_PERSONALISATION } from '@n8n/api-types';
-import { N8nIconPicker, N8nInlineTextEdit } from '@n8n/design-system';
-import type { IconOrEmoji } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+import { DEFAULT_AGENT_PERSONALISATION } from '@MNI/api-types';
+import { N8nIconPicker, N8nInlineTextEdit } from '@MNI/design-system';
+import type { IconOrEmoji } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 
 import type { AgentJsonConfig } from '../types';
 
@@ -196,7 +196,7 @@ function personalisationStyle(value: AgentPersonalisation): Record<string, strin
 }
 
 .personalisationIcon > *,
-.personalisationIcon :global(.n8n-icon) {
+.personalisationIcon :global(.MNI-icon) {
 	position: relative;
 	z-index: 2;
 	filter: drop-shadow(0 8px 8px var(--shadow-color));

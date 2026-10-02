@@ -1,4 +1,4 @@
-import type { Logger } from '@n8n/backend-common';
+import type { Logger } from '@MNI/backend-common';
 
 import { buildDateAnchors } from './date-anchors';
 import { generateJson } from './mock-utils';
@@ -18,7 +18,7 @@ export interface WebSearchMockArgs {
 	excludeDomains?: string[];
 }
 
-/** Mirrors `WebSearchResponse` from @n8n/ai-utilities — what the real tool returns. */
+/** Mirrors `WebSearchResponse` from @MNI/ai-utilities — what the real tool returns. */
 export interface WebSearchMockResult {
 	query: string;
 	results: Array<{ title: string; url: string; snippet: string; publishedDate?: string }>;

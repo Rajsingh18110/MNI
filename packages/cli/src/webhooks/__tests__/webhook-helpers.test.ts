@@ -1,9 +1,9 @@
-import { Logger } from '@n8n/backend-common';
-import { mockInstance } from '@n8n/backend-test-utils';
-import type { Project, User } from '@n8n/db';
-import { UserRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
-import type { EndedMessage, ExecutionResponse } from '@n8n/engine';
+import { Logger } from '@MNI/backend-common';
+import { mockInstance } from '@MNI/backend-test-utils';
+import type { Project, User } from '@MNI/db';
+import { UserRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
+import type { EndedMessage, ExecutionResponse } from '@MNI/engine';
 import type express from 'express';
 import {
 	BinaryDataService,
@@ -11,16 +11,16 @@ import {
 	ExecutionContextService,
 	getHtmlSandboxCSP,
 	isWebhookHtmlSandboxingDisabled,
-} from 'n8n-core';
+} from 'MNI-core';
 
 import type { ExecutionResponseReceiver } from '@/modules/engine-v2/response-channel/execution-response-receiver';
 
-vi.mock('n8n-core', async () => ({
-	...(await vi.importActual<typeof import('n8n-core')>('n8n-core')),
+vi.mock('MNI-core', async () => ({
+	...(await vi.importActual<typeof import('MNI-core')>('MNI-core')),
 	isWebhookHtmlSandboxingDisabled: vi.fn(),
 	getHtmlSandboxCSP: vi.fn(),
 }));
-import { createDeferredPromise, type IDeferredPromise } from '@n8n/utils/promise/deferred-promise';
+import { createDeferredPromise, type IDeferredPromise } from '@MNI/utils/promise/deferred-promise';
 import type {
 	Workflow,
 	INode,
@@ -37,7 +37,7 @@ import type {
 	IRun,
 	IExecuteResponsePromiseData,
 	IDestinationNode,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import {
 	FORM_NODE_TYPE,
 	FORM_TRIGGER_NODE_TYPE,
@@ -51,7 +51,7 @@ import {
 	SEND_AND_WAIT_OPERATION,
 	createRunExecutionData,
 	UserError,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import type { Readable } from 'stream';
 import { finished } from 'stream/promises';
 import { mock, type MockProxy } from 'vitest-mock-extended';
@@ -745,7 +745,7 @@ describe('prepareExecutionData', () => {
 		expect(nodeExecutionStack[0]?.data.main).toBe(webhookResultData.workflowData);
 		// On resume the node is disabled to stop the wait restarting; flag it so the
 		// engine forwards every output branch instead of only the first.
-		// See https://github.com/n8n-io/n8n/issues/12823
+		// See https://github.com/MNI-io/MNI/issues/12823
 		expect(nodeExecutionStack[0]?.metadata?.forwardAllOutputs).toBe(true);
 	});
 
@@ -969,7 +969,7 @@ describe('prepareExecutionData', () => {
 		test('should not merge when node type is not MICROSOFT_AGENT365_TRIGGER_NODE_TYPE', () => {
 			const regularNode = mock<INode>({
 				name: 'Regular Webhook',
-				type: 'n8n-nodes-base.webhook',
+				type: 'MNI-nodes-base.webhook',
 			});
 
 			const existingNodeExecutionStack: IExecuteData[] = [
@@ -1015,7 +1015,7 @@ describe('prepareExecutionData', () => {
 		test('should replace the seeded stack (not merge) for a Webhook node using n8nOAuth2 auth, preserving runtimeData', () => {
 			const identityWebhookNode = mock<INode>({
 				name: 'Webhook',
-				type: 'n8n-nodes-base.webhook',
+				type: 'MNI-nodes-base.webhook',
 				parameters: { authentication: 'n8nOAuth2' },
 			});
 
@@ -1043,7 +1043,7 @@ describe('prepareExecutionData', () => {
 					waitingExecution: {},
 					waitingExecutionSource: {},
 					// eslint-disable-next-line @typescript-eslint/no-explicit-any
-					runtimeData: { version: 1, credentials: { source: 'n8n-oauth' } } as any,
+					runtimeData: { version: 1, credentials: { source: 'MNI-oauth' } } as any,
 				},
 			} as IRunExecutionData;
 
@@ -1062,14 +1062,14 @@ describe('prepareExecutionData', () => {
 			// The established identity (runtimeData) is preserved across the replace.
 			expect(runExecutionData.executionData?.runtimeData).toEqual({
 				version: 1,
-				credentials: { source: 'n8n-oauth' },
+				credentials: { source: 'MNI-oauth' },
 			});
 		});
 
 		test('should not leak the seeded placeholder into output slot 0 for a multi-method n8nOAuth2 webhook', () => {
 			const identityWebhookNode = mock<INode>({
 				name: 'Webhook',
-				type: 'n8n-nodes-base.webhook',
+				type: 'MNI-nodes-base.webhook',
 				parameters: { authentication: 'n8nOAuth2' },
 			});
 
@@ -1483,7 +1483,7 @@ describe('executeWebhook form content type', () => {
 		['a Wait form', WAIT_NODE_TYPE, { resume: 'form' }],
 		[
 			'a custom send-and-wait form',
-			'n8n-nodes-base.gmail',
+			'MNI-nodes-base.gmail',
 			{ operation: SEND_AND_WAIT_OPERATION, responseType: 'customForm' },
 		],
 	])('returns 415 before parsing malformed JSON for %s', async (_name, type, parameters) => {
@@ -1507,7 +1507,7 @@ describe('executeWebhook form content type', () => {
 		['a webhook Wait', WAIT_NODE_TYPE, { resume: 'webhook' }],
 		[
 			'a send-and-wait approval',
-			'n8n-nodes-base.gmail',
+			'MNI-nodes-base.gmail',
 			{ operation: SEND_AND_WAIT_OPERATION, responseType: 'approval' },
 		],
 	])('continues parsing JSON for %s', async (_name, type, parameters) => {
@@ -2752,7 +2752,7 @@ describe('executeWebhook on engine v2', () => {
 			expect(reasonFrom(responseCallback)).toEqual({
 				status: 400,
 				message:
-					'Engine v2 is not available. Enable the `engine-v2` module with N8N_ENABLED_MODULES.',
+					'Engine v2 is not available. Enable the `engine-v2` module with MNI_ENABLED_MODULES.',
 			});
 			expect(workflowRunner.run).not.toHaveBeenCalled();
 		});

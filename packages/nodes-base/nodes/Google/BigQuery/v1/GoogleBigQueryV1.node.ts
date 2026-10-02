@@ -8,8 +8,8 @@ import type {
 	INodeTypeBaseDescription,
 	INodeTypeDescription,
 	JsonObject,
-} from 'n8n-workflow';
-import { NodeConnectionTypes, NodeApiError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeConnectionTypes, NodeApiError } from 'MNI-workflow';
 import { v4 as uuid } from 'uuid';
 
 import { oldVersionNotice } from '@utils/descriptions';
@@ -60,7 +60,7 @@ const versionDescription: INodeTypeDescription = {
 			noDataExpression: true,
 			options: [
 				{
-					// eslint-disable-next-line n8n-nodes-base/node-param-display-name-miscased
+					// eslint-disable-next-line MNI-nodes-base/node-param-display-name-miscased
 					name: 'OAuth2 (recommended)',
 					value: 'oAuth2',
 				},

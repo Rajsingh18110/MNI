@@ -1,4 +1,4 @@
-import type { IHookFunctions } from 'n8n-workflow';
+import type { IHookFunctions } from 'MNI-workflow';
 
 import { calendlyApiRequest } from '../GenericFunctions';
 import type { Mocked } from 'vitest';

@@ -6,7 +6,7 @@ A PR should carry **exactly one** `triage:<state>` label at any time. The skill 
 
 | State                  | Meaning                                                                |
 |------------------------|------------------------------------------------------------------------|
-| `triage:pending`       | Auto-applied by n8n-assistant when the PR opens. Skill removes it.     |
+| `triage:pending`       | Auto-applied by MNI-assistant when the PR opens. Skill removes it.     |
 | `triage:in-progress`   | Skill is actively reviewing. Set in step 2, replaced before exit.      |
 | `triage:complete`      | PR has been triaged to a team (or closed). Terminal.                   |
 | `triage:needs-info`    | Comment posted; contributor needs to address something non-test.       |
@@ -21,7 +21,7 @@ Before transitioning, **check for an existing `triage:in-progress` label**. If p
 Strip any existing `triage:*` state label before adding `triage:in-progress`, so the single-state invariant holds even when re-reviewing a PR that was previously sent back with `triage:needs-info` or `triage:tests-needed`:
 
 ```bash
-gh pr edit <number> --repo n8n-io/n8n \
+gh pr edit <number> --repo MNI-io/MNI \
   --remove-label "triage:pending" \
   --remove-label "triage:needs-info" \
   --remove-label "triage:tests-needed" \
@@ -36,7 +36,7 @@ Only one of those `triage:*` labels will actually be present; `--remove-label` e
 #### Triaged to a team (action path 7B)
 
 ```bash
-gh pr edit <number> --repo n8n-io/n8n \
+gh pr edit <number> --repo MNI-io/MNI \
   --remove-label "triage:in-progress" \
   --remove-label "status:pending-assignment" \
   --add-label "team:<slug>" \
@@ -49,7 +49,7 @@ The `team:<slug>` is taken from `reference/teams.md`. Apply only after the Linea
 #### Closed (action path 7D)
 
 ```bash
-gh pr edit <number> --repo n8n-io/n8n \
+gh pr edit <number> --repo MNI-io/MNI \
   --remove-label "triage:in-progress" \
   --remove-label "status:pending-assignment" \
   --add-label "status:internal-closed" \
@@ -70,7 +70,7 @@ Pick **one** terminal label using this priority:
 When both conditions hold, `triage:tests-needed` wins — it's the more specific signal and the comment already covers everything else.
 
 ```bash
-gh pr edit <number> --repo n8n-io/n8n \
+gh pr edit <number> --repo MNI-io/MNI \
   --remove-label "triage:in-progress" \
   --add-label "triage:tests-needed"   # or triage:needs-info
 ```

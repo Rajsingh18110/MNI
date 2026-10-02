@@ -1,5 +1,5 @@
-import { Workflow, Expression } from 'n8n-workflow';
-import type { INodeTypes, INodeType, INodeTypeDescription, INodeExecutionData } from 'n8n-workflow';
+import { Workflow, Expression } from 'MNI-workflow';
+import type { INodeTypes, INodeType, INodeTypeDescription, INodeExecutionData } from 'MNI-workflow';
 
 // Minimal node types for workflow instantiation
 class TestNodeTypes implements INodeTypes {

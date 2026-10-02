@@ -1,7 +1,7 @@
-import type { ModuleInterface } from '@n8n/decorators';
-import { BackendModule } from '@n8n/decorators';
-import { Container } from '@n8n/di';
-import { InstanceSettings } from 'n8n-core';
+import type { ModuleInterface } from '@MNI/decorators';
+import { BackendModule } from '@MNI/decorators';
+import { Container } from '@MNI/di';
+import { InstanceSettings } from 'MNI-core';
 
 /**
  * Shared OAuth 2.1 authorization server.

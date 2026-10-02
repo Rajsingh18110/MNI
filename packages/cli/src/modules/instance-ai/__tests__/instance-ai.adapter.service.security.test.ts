@@ -1,6 +1,6 @@
 // Mock the barrel import so these adapter tests only exercise local formatting helpers.
-vi.mock('@n8n/instance-ai', async () => {
-	const { WorkflowNotFoundError } = await import('@n8n/instance-ai/errors');
+vi.mock('@MNI/instance-ai', async () => {
+	const { WorkflowNotFoundError } = await import('@MNI/instance-ai/errors');
 	return {
 		WorkflowNotFoundError,
 		wrapUntrustedData(content: string, source: string, label?: string): string {
@@ -26,10 +26,10 @@ vi.mock('@n8n/instance-ai', async () => {
 	};
 });
 
-import type { Logger } from '@n8n/backend-common';
-import type { GlobalConfig } from '@n8n/config';
-import { GLOBAL_MEMBER_ROLE } from '@n8n/db';
-import { Container } from '@n8n/di';
+import type { Logger } from '@MNI/backend-common';
+import type { GlobalConfig } from '@MNI/config';
+import { GLOBAL_MEMBER_ROLE } from '@MNI/db';
+import { Container } from '@MNI/di';
 import type {
 	AiBuilderTemporaryWorkflowRepository,
 	CredentialsEntity,
@@ -38,8 +38,8 @@ import type {
 	ProjectRepository,
 	SharedWorkflowRepository,
 	WorkflowRepository,
-} from '@n8n/db';
-import type { InstanceSettings } from 'n8n-core';
+} from '@MNI/db';
+import type { InstanceSettings } from 'MNI-core';
 import { mock } from 'vitest-mock-extended';
 
 import type { ActiveExecutions } from '@/active-executions';
@@ -66,7 +66,7 @@ import type { InstanceWriteAccessService } from '@/services/instance-write-acces
 import type { NodeTypes } from '@/node-types';
 import type { PolicyEnforcementService } from '@/policy/policy-enforcement.service';
 import type { RoleService } from '@/services/role.service';
-import type { OutboundHttp } from '@n8n/backend-network';
+import type { OutboundHttp } from '@MNI/backend-network';
 import type { AiGatewayService } from '@/services/ai-gateway.service';
 import type { Telemetry } from '@/telemetry';
 import type { WorkflowTemplatesService } from '../workflow-templates.service';
@@ -194,7 +194,7 @@ beforeEach(() => {
 
 describe('exploreResources — credential ownership check', () => {
 	const baseParams = {
-		nodeType: 'n8n-nodes-base.googleSheets',
+		nodeType: 'MNI-nodes-base.googleSheets',
 		version: 1,
 		credentialId: 'cred-123',
 		credentialType: 'googleSheetsOAuth2Api',

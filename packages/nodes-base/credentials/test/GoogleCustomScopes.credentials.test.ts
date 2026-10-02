@@ -1,4 +1,4 @@
-import type { ICredentialType } from 'n8n-workflow';
+import type { ICredentialType } from 'MNI-workflow';
 
 import { GmailOAuth2Api } from '../GmailOAuth2Api.credentials';
 import { GoogleAdsOAuth2Api } from '../GoogleAdsOAuth2Api.credentials';

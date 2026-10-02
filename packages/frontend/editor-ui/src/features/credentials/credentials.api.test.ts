@@ -1,10 +1,10 @@
-import { makeRestApiRequest } from '@n8n/rest-api-client';
-import type { IRestApiContext } from '@n8n/rest-api-client';
+import { makeRestApiRequest } from '@MNI/rest-api-client';
+import type { IRestApiContext } from '@MNI/rest-api-client';
 
 import { oAuth1CredentialAuthorize, oAuth2CredentialAuthorize } from './credentials.api';
 import type { ICredentialsResponse } from './credentials.types';
 
-vi.mock('@n8n/rest-api-client', () => ({
+vi.mock('@MNI/rest-api-client', () => ({
 	makeRestApiRequest: vi.fn(),
 }));
 

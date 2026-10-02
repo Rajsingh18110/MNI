@@ -1,4 +1,4 @@
-import { Time } from '@n8n/constants';
+import { Time } from '@MNI/constants';
 
 export type CsrfStateRequired = {
 	/** Random CSRF token, used to verify the signature of the CSRF state */
@@ -19,9 +19,9 @@ export type CreateCsrfStateData = {
 	origin: 'static-credential' | 'dynamic-credential';
 	resource?: string;
 	/**
-	 * SHA-256 hash of the `n8n-oauth-binding` cookie value captured at flow
+	 * SHA-256 hash of the `MNI-oauth-binding` cookie value captured at flow
 	 * initiation. Verified at callback to ensure the same browser is completing
-	 * the flow. Present only when `N8N_OAUTH_BROWSER_BINDING` was enabled at
+	 * the flow. Present only when `MNI_OAUTH_BROWSER_BINDING` was enabled at
 	 * the time of /auth; absent for flows initiated before/without the feature.
 	 */
 	bindingHash?: string;

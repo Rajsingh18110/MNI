@@ -1,5 +1,5 @@
-import type { LICENSE_FEATURES } from '@n8n/constants';
-import { UserError } from 'n8n-workflow';
+import type { LICENSE_FEATURES } from '@MNI/constants';
+import { UserError } from 'MNI-workflow';
 
 export class FeatureNotLicensedError extends UserError {
 	constructor(

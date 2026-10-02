@@ -1,7 +1,7 @@
 import { createTestingPinia } from '@pinia/testing';
 import { mock } from 'vitest-mock-extended';
 
-import { STORES } from '@n8n/stores';
+import { STORES } from '@MNI/stores';
 import CollaborationPane from './CollaborationPane.vue';
 
 vi.mock('vue-router', async (importOriginal) => {
@@ -14,7 +14,7 @@ vi.mock('vue-router', async (importOriginal) => {
 		}),
 	};
 });
-import type { IUser } from '@n8n/rest-api-client/api/users';
+import type { IUser } from '@MNI/rest-api-client/api/users';
 
 import type { RenderOptions } from '@/__tests__/render';
 import { createComponentRenderer } from '@/__tests__/render';
@@ -64,7 +64,7 @@ describe('CollaborationPane', () => {
 		const { getByTestId } = renderComponent();
 		await waitAllPromises();
 
-		const firstAvatar = getByTestId('user-stack-avatars').querySelector('.n8n-avatar');
+		const firstAvatar = getByTestId('user-stack-avatars').querySelector('.MNI-avatar');
 		// Owner is second in the store but should be rendered first
 		expect(firstAvatar).toHaveAttribute('data-test-id', `user-stack-avatar-${OWNER_USER.id}`);
 	});

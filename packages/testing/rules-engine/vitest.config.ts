@@ -1,3 +1,3 @@
-import { createVitestConfig } from '@n8n/vitest-config/node';
+import { createVitestConfig } from '@MNI/vitest-config/node';
 
 export default createVitestConfig();

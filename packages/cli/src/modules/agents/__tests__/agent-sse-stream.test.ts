@@ -1,6 +1,6 @@
-import type { StreamChunk } from '@n8n/agents';
-import type { AgentSseEvent } from '@n8n/api-types';
-import { LoggerProxy } from 'n8n-workflow';
+import type { StreamChunk } from '@MNI/agents';
+import type { AgentSseEvent } from '@MNI/api-types';
+import { LoggerProxy } from 'MNI-workflow';
 import { EventEmitter } from 'node:events';
 
 import { emitChunkEvents, initSseStream, type FlushableResponse } from '../agent-sse-stream';
@@ -140,7 +140,7 @@ describe('agent-sse-stream — connection setup', () => {
 // stringifyError — tested through emitChunkEvents
 // ---------------------------------------------------------------------------
 
-vi.mock('n8n-workflow', () => ({
+vi.mock('MNI-workflow', () => ({
 	LoggerProxy: {
 		warn: vi.fn(),
 	},

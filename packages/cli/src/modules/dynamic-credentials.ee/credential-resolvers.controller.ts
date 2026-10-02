@@ -9,8 +9,8 @@ import {
 	CredentialResolverType,
 	credentialResolverTypesSchema,
 	type CredentialResolverAffectedWorkflow,
-} from '@n8n/api-types';
-import { AuthenticatedRequest } from '@n8n/db';
+} from '@MNI/api-types';
+import { AuthenticatedRequest } from '@MNI/db';
 import {
 	Body,
 	Delete,
@@ -22,7 +22,7 @@ import {
 	Query,
 	RestController,
 	CredentialResolverValidationError,
-} from '@n8n/decorators';
+} from '@MNI/decorators';
 import { Response } from 'express';
 
 import { BadRequestError } from '@/errors/response-errors/bad-request.error';

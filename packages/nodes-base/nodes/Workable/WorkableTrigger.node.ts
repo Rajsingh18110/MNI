@@ -8,8 +8,8 @@ import type {
 	INodeType,
 	INodeTypeDescription,
 	IWebhookResponseData,
-} from 'n8n-workflow';
-import { NodeConnectionTypes } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeConnectionTypes } from 'MNI-workflow';
 
 import { workableApiRequest } from './GenericFunctions';
 
@@ -17,7 +17,7 @@ export class WorkableTrigger implements INodeType {
 	description: INodeTypeDescription = {
 		displayName: 'Workable Trigger',
 		name: 'workableTrigger',
-		// eslint-disable-next-line n8n-nodes-base/node-class-description-icon-not-svg
+		// eslint-disable-next-line MNI-nodes-base/node-class-description-icon-not-svg
 		icon: 'file:workable.png',
 		group: ['trigger'],
 		version: 1,

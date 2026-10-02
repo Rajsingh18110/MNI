@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue';
-import { useI18n, type BaseTextKey } from '@n8n/i18n';
-import { N8nIcon, N8nText } from '@n8n/design-system';
+import { useI18n, type BaseTextKey } from '@MNI/i18n';
+import { N8nIcon, N8nText } from '@MNI/design-system';
 
 import { useEvaluationsWizardSidepanelStore } from '../../wizardSidepanel.store';
 import { useEvaluationStore } from '../../evaluation.store';

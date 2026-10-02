@@ -1,4 +1,4 @@
-import { AI_GATEWAY_MANAGED_TAG } from '@n8n/api-types';
+import { AI_GATEWAY_MANAGED_TAG } from '@MNI/api-types';
 
 import { sanitizeUnknownAgentCredentials } from '../sanitize-unknown-agent-credentials';
 
@@ -185,7 +185,7 @@ describe('sanitizeUnknownAgentCredentials', () => {
 						type: 'node',
 						name: 'Slack',
 						node: {
-							nodeType: 'n8n-nodes-base.slack',
+							nodeType: 'MNI-nodes-base.slack',
 							nodeTypeVersion: 1,
 							credentials: { slackApi: { id: 'managed', name: 'Managed by MNI' } },
 						},
@@ -229,7 +229,7 @@ describe('sanitizeUnknownAgentCredentials', () => {
 					type: 'node',
 					name: 'Slack',
 					node: {
-						nodeType: 'n8n-nodes-base.slack',
+						nodeType: 'MNI-nodes-base.slack',
 						nodeTypeVersion: 1,
 						credentials: { slackApi: { id: '', name: 'Managed by MNI' } },
 					},
@@ -249,7 +249,7 @@ describe('sanitizeUnknownAgentCredentials', () => {
 						type: 'node',
 						name: 'Slack',
 						node: {
-							nodeType: 'n8n-nodes-base.slackTool',
+							nodeType: 'MNI-nodes-base.slackTool',
 							nodeTypeVersion: 1,
 							credentials: {
 								slackApi: { id: null, name: 'MNI credits', __aiGatewayManaged: true },
@@ -267,7 +267,7 @@ describe('sanitizeUnknownAgentCredentials', () => {
 					type: 'node',
 					name: 'Slack',
 					node: {
-						nodeType: 'n8n-nodes-base.slackTool',
+						nodeType: 'MNI-nodes-base.slackTool',
 						nodeTypeVersion: 1,
 						credentials: {
 							slackApi: { id: null, name: 'MNI credits', __aiGatewayManaged: true },

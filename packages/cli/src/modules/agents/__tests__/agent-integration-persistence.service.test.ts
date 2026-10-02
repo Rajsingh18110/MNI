@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/unbound-method -- mock-based tests intentionally reference unbound methods */
-import type { AgentIntegrationConfig, AgentJsonConfig } from '@n8n/api-types';
-import type { User } from '@n8n/db';
-import { TELEMETRY_EVENT } from '@n8n/telemetry';
-import { OperationalError, UserError } from 'n8n-workflow';
+import type { AgentIntegrationConfig, AgentJsonConfig } from '@MNI/api-types';
+import type { User } from '@MNI/db';
+import { TELEMETRY_EVENT } from '@MNI/telemetry';
+import { OperationalError, UserError } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import type { CredentialsService } from '@/credentials/credentials.service';
@@ -122,7 +122,7 @@ describe('AgentIntegrationPersistenceService', () => {
 		const { service, chatIntegrationRegistry } = setup();
 		chatIntegrationRegistry.list.mockReturnValue([
 			{
-				type: 'n8n_chat',
+				type: 'MNI_chat',
 				displayLabel: 'MNI Chat',
 				displayIcon: 'message-square',
 				credentialTypes: [],

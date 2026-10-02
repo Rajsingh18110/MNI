@@ -1,8 +1,8 @@
-import { Logger } from '@n8n/backend-common';
-import { WorkflowRepository } from '@n8n/db';
-import { Service } from '@n8n/di';
-import { ErrorReporter } from 'n8n-core';
-import type { IDataObject, Workflow } from 'n8n-workflow';
+import { Logger } from '@MNI/backend-common';
+import { WorkflowRepository } from '@MNI/db';
+import { Service } from '@MNI/di';
+import { ErrorReporter } from 'MNI-core';
+import type { IDataObject, Workflow } from 'MNI-workflow';
 
 import { isWorkflowIdValid } from '@/utils';
 

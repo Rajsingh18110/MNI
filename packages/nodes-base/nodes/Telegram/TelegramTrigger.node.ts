@@ -1,7 +1,7 @@
-import { GlobalConfig } from '@n8n/config';
-import { Container } from '@n8n/di';
+import { GlobalConfig } from '@MNI/config';
+import { Container } from '@MNI/di';
 import crypto from 'crypto';
-import { HITL_CALLBACK_PREFIX, TELEGRAM_HITL_WEBHOOK_SUFFIX } from 'n8n-core';
+import { HITL_CALLBACK_PREFIX, TELEGRAM_HITL_WEBHOOK_SUFFIX } from 'MNI-core';
 import type {
 	IHookFunctions,
 	IWebhookFunctions,
@@ -9,8 +9,8 @@ import type {
 	INodeType,
 	INodeTypeDescription,
 	IWebhookResponseData,
-} from 'n8n-workflow';
-import { NodeConnectionTypes } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeConnectionTypes } from 'MNI-workflow';
 
 import type { TelegramWebhookInfo } from './GenericFunctions';
 import { apiRequest, getSecretToken } from './GenericFunctions';
@@ -167,7 +167,7 @@ export class TelegramTrigger implements INodeType {
 						name: 'download',
 						type: 'boolean',
 						default: false,
-						// eslint-disable-next-line n8n-nodes-base/node-param-description-boolean-without-whether
+						// eslint-disable-next-line MNI-nodes-base/node-param-description-boolean-without-whether
 						description:
 							"Telegram delivers the image in multiple sizes. By default, just the large image would be downloaded. If you want to change the size, set the field 'Image Size'.",
 					},

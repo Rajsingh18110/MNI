@@ -21,12 +21,12 @@ const withOneMissingAccount = {
 	footerText: '0 of 1 account connected',
 	credentials: [
 		{
-			key: 'cred-1::system-n8n',
+			key: 'cred-1::system-MNI',
 			id: 'cred-1',
 			name: 'Slack account',
 			connected: false,
 			initial: 'S',
-			resolverId: 'system-n8n',
+			resolverId: 'system-MNI',
 			authorizationUrl: 'https://n8n.example.com/credentials/cred-1/authorize',
 		},
 	],
@@ -61,7 +61,7 @@ describe('chat-shell.handlebars', () => {
 	it('owns the session id so a frame reload continues the conversation', async () => {
 		const html = await renderView(withOneMissingAccount);
 
-		expect(html).toContain("'n8n-chat-shell/sessionId' + window.location.pathname");
+		expect(html).toContain("'MNI-chat-shell/sessionId' + window.location.pathname");
 		expect(html).toContain("'#sessionId=' + encodeURIComponent(sessionId)");
 		// Keyed by path, so two chats on one instance never share a conversation.
 		expect(html).toContain('window.location.pathname');
@@ -86,11 +86,11 @@ describe('chat-shell.handlebars', () => {
 		it('renders the frame even when no accounts are needed', async () => {
 			const html = await renderView({ ...baseView, hasCredentials: false });
 
-			expect(html).toContain("id='n8n-chat-frame'");
+			expect(html).toContain("id='MNI-chat-frame'");
 			expect(html).not.toMatch(/<div[^>]*class='connect-bar/);
-			expect(html).not.toContain("id='n8n-connect-overlay'");
+			expect(html).not.toContain("id='MNI-connect-overlay'");
 			// No status signal is posted into the frame either.
-			expect(html).not.toContain('n8n-chat:credential-status');
+			expect(html).not.toContain('MNI-chat:credential-status');
 		});
 	});
 
@@ -149,7 +149,7 @@ describe('chat-shell.handlebars', () => {
 						connected: true,
 						initial: 'S',
 						account: 'visitor@example.com',
-						revokeUrl: 'https://n8n.example.com/credentials/cred-1/revoke?resolverId=system-n8n',
+						revokeUrl: 'https://n8n.example.com/credentials/cred-1/revoke?resolverId=system-MNI',
 					},
 				],
 			});
@@ -232,7 +232,7 @@ describe('chat-shell.handlebars', () => {
 			const html = await renderView(withOneMissingAccount);
 
 			expect(html).not.toContain('data-refresh-url');
-			expect(html).not.toContain('x-n8n-chat-refresh');
+			expect(html).not.toContain('x-MNI-chat-refresh');
 		});
 
 		// The CSRF guard on the leg: a custom header needs a preflight no other origin
@@ -240,7 +240,7 @@ describe('chat-shell.handlebars', () => {
 		it('asks for a token with the custom header and no cache', async () => {
 			const src = await refreshScript();
 
-			expect(src).toContain("'x-n8n-chat-refresh': '1'");
+			expect(src).toContain("'x-MNI-chat-refresh': '1'");
 			expect(src).toContain("credentials: 'same-origin'");
 			expect(src).toContain("cache: 'no-store'");
 		});
@@ -251,7 +251,7 @@ describe('chat-shell.handlebars', () => {
 		it("delivers every token down the frame's port, never at its window", async () => {
 			const src = await refreshScript();
 
-			expect(src).toContain("port.postMessage({ type: 'n8n-chat-auth-token'");
+			expect(src).toContain("port.postMessage({ type: 'MNI-chat-auth-token'");
 			expect(src).not.toContain('frame.contentWindow.postMessage');
 		});
 
@@ -268,7 +268,7 @@ describe('chat-shell.handlebars', () => {
 
 			expect(src).toContain('pendingToken = token;');
 			expect(src).toContain(
-				"port.postMessage({ type: 'n8n-chat-auth-token', token: pendingToken })",
+				"port.postMessage({ type: 'MNI-chat-auth-token', token: pendingToken })",
 			);
 			// If no port ever arrives, reload rather than fall back to the frame's window.
 			expect(src).toContain('portTimer = setTimeout(portMissing, 10000);');
@@ -287,7 +287,7 @@ describe('chat-shell.handlebars', () => {
 			const html = await renderView(withRefresh);
 
 			expect(html).not.toContain('refreshToken');
-			expect(html).not.toContain('n8n-chat-oauth-refresh');
+			expect(html).not.toContain('MNI-chat-oauth-refresh');
 		});
 	});
 
@@ -383,8 +383,8 @@ describe('chat-shell.handlebars', () => {
 				total: 2,
 				connectedCount: 2,
 				credentials: [
-					{ key: 'cred-1::system-n8n', id: 'cred-1', name: 'Slack account', connected: true },
-					{ key: 'cred-2::system-n8n', id: 'cred-2', name: 'Gmail account', connected: true },
+					{ key: 'cred-1::system-MNI', id: 'cred-1', name: 'Slack account', connected: true },
+					{ key: 'cred-2::system-MNI', id: 'cred-2', name: 'Gmail account', connected: true },
 				],
 			});
 			const source = html.slice(html.lastIndexOf('<script>') + '<script>'.length);
@@ -392,12 +392,12 @@ describe('chat-shell.handlebars', () => {
 
 			const rows = [
 				makeElement({
-					'data-row-key': 'cred-1::system-n8n',
+					'data-row-key': 'cred-1::system-MNI',
 					'data-id': 'cred-1',
 					'data-connected': 'true',
 				}),
 				makeElement({
-					'data-row-key': 'cred-2::system-n8n',
+					'data-row-key': 'cred-2::system-MNI',
 					'data-id': 'cred-2',
 					'data-connected': 'true',
 				}),
@@ -411,9 +411,9 @@ describe('chat-shell.handlebars', () => {
 			const bar = makeElement({ 'data-test-mode': 'false', 'data-use-dialog': 'false' });
 			const overlay = makeElement();
 			const byId: Record<string, Row> = {
-				'n8n-chat-frame': frame,
-				'n8n-connect-bar': bar,
-				'n8n-connect-overlay': overlay,
+				'MNI-chat-frame': frame,
+				'MNI-connect-bar': bar,
+				'MNI-connect-overlay': overlay,
 			};
 
 			const listeners: Array<(event: unknown) => void> = [];
@@ -482,7 +482,7 @@ describe('chat-shell.handlebars', () => {
 				connectedCount: 0,
 				credentials: [
 					{
-						key: 'cred-1::system-n8n',
+						key: 'cred-1::system-MNI',
 						id: 'cred-1',
 						name: 'Slack account',
 						connected: false,
@@ -496,7 +496,7 @@ describe('chat-shell.handlebars', () => {
 			const connectButton = makeElement({
 				'data-url': 'https://n8n.example.com/credentials/cred-1/authorize',
 			});
-			const row = makeElement({ 'data-row-key': 'cred-1::system-n8n', 'data-id': 'cred-1' });
+			const row = makeElement({ 'data-row-key': 'cred-1::system-MNI', 'data-id': 'cred-1' });
 			row.querySelector = (selector: string) => (selector === '.connect' ? connectButton : null);
 
 			// The bar's own connect click, captured so a test can trigger the real
@@ -517,11 +517,11 @@ describe('chat-shell.handlebars', () => {
 			const bar = makeElement({ 'data-test-mode': 'false', 'data-use-dialog': 'false' });
 			const overlay = makeElement();
 			const byId: Record<string, Row> = {
-				'n8n-chat-frame': frame,
-				'n8n-connect-bar': bar,
-				'n8n-connect-overlay': overlay,
-				'n8n-connect-bar-text': barTextEl,
-				'n8n-connect-bar-action': barAction,
+				'MNI-chat-frame': frame,
+				'MNI-connect-bar': bar,
+				'MNI-connect-overlay': overlay,
+				'MNI-connect-bar-text': barTextEl,
+				'MNI-connect-bar-action': barAction,
 			};
 
 			const listeners: Array<(event: unknown) => void> = [];
@@ -586,7 +586,7 @@ describe('chat-shell.handlebars', () => {
 			};
 		}
 
-		const rejection = (ids: unknown) => ({ type: 'n8n-chat-credentials-rejected', ids });
+		const rejection = (ids: unknown) => ({ type: 'MNI-chat-credentials-rejected', ids });
 
 		it('flips only the account the gate named, and re-signals the frame', async () => {
 			const { rows, send } = await runBarScript();
@@ -596,7 +596,7 @@ describe('chat-shell.handlebars', () => {
 			expect(rows[0].getAttribute('data-connected')).toBeNull();
 			expect(rows[1].getAttribute('data-connected')).toBe('true');
 			expect(posted).toEqual([
-				{ type: 'n8n-chat:credential-status', ready: false, missingCount: 1, testMode: false },
+				{ type: 'MNI-chat:credential-status', ready: false, missingCount: 1, testMode: false },
 			]);
 		});
 
@@ -628,7 +628,7 @@ describe('chat-shell.handlebars', () => {
 		it('opens the connect panel when the frame refuses a send', async () => {
 			const { overlay, send } = await runBarScript();
 
-			send({ type: 'n8n-chat-connect-requested' });
+			send({ type: 'MNI-chat-connect-requested' });
 
 			expect([...(overlay.classes as Set<string>)]).toContain('open');
 		});
@@ -636,7 +636,7 @@ describe('chat-shell.handlebars', () => {
 		it('opens the panel only for the frame', async () => {
 			const { overlay, send } = await runBarScript();
 
-			send({ type: 'n8n-chat-connect-requested' }, { notTheFrame: true });
+			send({ type: 'MNI-chat-connect-requested' }, { notTheFrame: true });
 
 			expect([...(overlay.classes as Set<string>)]).not.toContain('open');
 		});
@@ -644,7 +644,7 @@ describe('chat-shell.handlebars', () => {
 		it('opens the dialog for a single missing account too, since a message from the frame is never a real click', async () => {
 			const { overlay, opened, send } = await runSingleAccountBarScript();
 
-			send({ type: 'n8n-chat-connect-requested' });
+			send({ type: 'MNI-chat-connect-requested' });
 
 			expect(opened).toEqual([]);
 			expect([...(overlay.classes as Set<string>)]).toContain('open');

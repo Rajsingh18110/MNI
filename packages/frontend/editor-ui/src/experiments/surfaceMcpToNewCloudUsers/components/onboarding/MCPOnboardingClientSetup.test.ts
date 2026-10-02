@@ -4,7 +4,7 @@ import MCPOnboardingClientSetup from './MCPOnboardingClientSetup.vue';
 
 const mockClipboardCopy = vi.fn();
 
-vi.mock('@n8n/composables/useClipboard', () => ({
+vi.mock('@MNI/composables/useClipboard', () => ({
 	useClipboard: () => ({
 		copy: mockClipboardCopy,
 		copied: { value: false },
@@ -50,7 +50,7 @@ describe('MCPOnboardingClientSetup', () => {
 		const { container } = renderComponent({ props: { client: 'codex' } });
 		const text = container.textContent ?? '';
 
-		expect(text).toContain('[mcp_servers.n8n]');
+		expect(text).toContain('[mcp_servers.MNI]');
 		expect(text).toContain('~/.codex/config.toml');
 		expect(text).toContain('https://example.n8n.cloud/mcp-server/http');
 		expect(text).toContain('complete the MNI OAuth flow');

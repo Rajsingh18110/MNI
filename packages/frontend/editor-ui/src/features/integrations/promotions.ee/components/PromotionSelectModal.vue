@@ -1,19 +1,19 @@
 <script lang="ts" setup>
 import { computed, onMounted, ref, shallowRef } from 'vue';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import { useUIStore } from '@/app/stores/ui.store';
-import { useUsersStore } from '@n8n/stores/users.store';
-import { useRootStore } from '@n8n/stores/useRootStore';
-import { ResponseError } from '@n8n/rest-api-client';
+import { useUsersStore } from '@MNI/stores/users.store';
+import { useRootStore } from '@MNI/stores/useRootStore';
+import { ResponseError } from '@MNI/rest-api-client';
 import { useProjectsStore } from '@/features/collaboration/projects/projects.store';
-import { createEventBus } from '@n8n/utils/event-bus';
+import { createEventBus } from '@MNI/utils/event-bus';
 import { useMessage } from '@/app/composables/useMessage';
-import { useToast } from '@n8n/composables/useToast';
+import { useToast } from '@MNI/composables/useToast';
 import { MODAL_CONFIRM } from '@/app/constants/modals';
 import Modal from '@/app/components/Modal.vue';
 import TimeAgo from '@/app/components/TimeAgo.vue';
-import { N8nButton, N8nCheckbox, N8nInput, N8nText } from '@n8n/design-system';
-import type { PromotableResourceStatus, PromotionDirection } from '@n8n/api-types';
+import { N8nButton, N8nCheckbox, N8nInput, N8nText } from '@MNI/design-system';
+import type { PromotableResourceStatus, PromotionDirection } from '@MNI/api-types';
 import { usePromotionChanges } from '../composables/usePromotionChanges';
 import { promotionEventBus } from '../promotions.eventBus';
 import { applyPromotion } from '../promotionsSettings.api';

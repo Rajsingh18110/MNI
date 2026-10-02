@@ -1,4 +1,4 @@
-import type { INodeProperties } from 'n8n-workflow';
+import type { INodeProperties } from 'MNI-workflow';
 
 import * as append from './append.operation';
 import * as clear from './clear.operation';
@@ -29,10 +29,10 @@ export const description: INodeProperties[] = [
 				action: 'Append data to sheet',
 			},
 			{
-				// eslint-disable-next-line n8n-nodes-base/node-param-option-name-wrong-for-upsert
+				// eslint-disable-next-line MNI-nodes-base/node-param-option-name-wrong-for-upsert
 				name: 'Append or Update',
 				value: 'upsert',
-				// eslint-disable-next-line n8n-nodes-base/node-param-description-wrong-for-upsert
+				// eslint-disable-next-line MNI-nodes-base/node-param-description-wrong-for-upsert
 				description: 'Append a new row or update the current one if it already exists (upsert)',
 				action: 'Append or update a sheet',
 			},

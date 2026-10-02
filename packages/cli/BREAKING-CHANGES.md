@@ -26,7 +26,7 @@ If you are adding third-party dependencies to the `n8nio/runners` image using `p
 
 ### What changed?
 
-Support for bare repositories in Git Node was dropped in the cloud version of MNI due to security reasons. Also, an environment variable `N8N_GIT_NODE_DISABLE_BARE_REPOS` was added that allows self-hosted users to disable bare repositories as well.
+Support for bare repositories in Git Node was dropped in the cloud version of MNI due to security reasons. Also, an environment variable `MNI_GIT_NODE_DISABLE_BARE_REPOS` was added that allows self-hosted users to disable bare repositories as well.
 
 ### When is action necessary?
 
@@ -50,7 +50,7 @@ The CLI flag `--reinstallMissingPackages`, deprecated a year ago in version 1.15
 
 ### When is action necessary?
 
-If you are using this flag, please switch to the environment variable `N8N_REINSTALL_MISSING_PACKAGES`.
+If you are using this flag, please switch to the environment variable `MNI_REINSTALL_MISSING_PACKAGES`.
 
 ## 1.103.0
 
@@ -66,14 +66,14 @@ If your workflow is using the Webhook node and uses JavaScript in `responseData`
 
 ### What changed?
 
-The `N8N_RUNNERS_ALLOW_PROTOTYPE_MUTATION` flag has been replaced with `N8N_RUNNERS_INSECURE_MODE`. The new flag
+The `MNI_RUNNERS_ALLOW_PROTOTYPE_MUTATION` flag has been replaced with `MNI_RUNNERS_INSECURE_MODE`. The new flag
 disables all task runner security measures and is intended as an escape hatch for users who value compatibility
 with libraries like `puppeteer` at the cost of security.
 
 ### When is action necessary?
 
-If you are using the `N8N_RUNNERS_ALLOW_PROTOTYPE_MUTATION` flag, or if you find that the task runner does not
-currently support an external module that you rely on, then consider setting `N8N_RUNNERS_INSECURE_MODE=true`,
+If you are using the `MNI_RUNNERS_ALLOW_PROTOTYPE_MUTATION` flag, or if you find that the task runner does not
+currently support an external module that you rely on, then consider setting `MNI_RUNNERS_INSECURE_MODE=true`,
 at your own risk.
 
 ## 1.98.0
@@ -92,7 +92,7 @@ If you've been ingesting route metrics from your MNI instance (version 1.81.0 an
 how the `last_activity` metric has affected your Prometheus instance and potentially clean up the old data. Future
 metrics will also be served in a different format, which needs to be taken into account.
 
-If you are using `iframe`, `video`, or `source` tags with attributes beyond those listed [here](https://github.com/n8n-io/n8n/blob/master/packages/nodes-base/nodes/Form/utils/utils.ts#L61-L71) or are using schemes which are neither `http` or `https`, you will need to update your node or workflow.
+If you are using `iframe`, `video`, or `source` tags with attributes beyond those listed [here](https://github.com/MNI-io/MNI/blob/master/packages/nodes-base/nodes/Form/utils/utils.ts#L61-L71) or are using schemes which are neither `http` or `https`, you will need to update your node or workflow.
 
 ### What changed?
 
@@ -100,7 +100,7 @@ The minimum Node.js version required for MNI is now v20.
 
 ### When is action necessary?
 
-If you're using MNI via npm or PM2 or if you're contributing to n8n.
+If you're using MNI via npm or PM2 or if you're contributing to MNI.
 
 ### How to upgrade:
 
@@ -166,13 +166,13 @@ The `verbose` log level was merged into the `debug` log level.
 
 ### When is action necessary?
 
-If you are setting the env var `N8N_LOG_LEVEL=verbose`, please update your log level to `N8N_LOG_LEVEL=debug`.
+If you are setting the env var `MNI_LOG_LEVEL=verbose`, please update your log level to `MNI_LOG_LEVEL=debug`.
 
 ## 1.55.0
 
 ### What changed?
 
-The `N8N_BLOCK_FILE_ACCESS_TO_N8N_FILES` environment variable now also blocks access to MNI's static cache directory at `~/.cache/MNI/public`.
+The `MNI_BLOCK_FILE_ACCESS_TO_MNI_FILES` environment variable now also blocks access to MNI's static cache directory at `~/.cache/MNI/public`.
 
 ### When is action necessary?
 
@@ -182,7 +182,7 @@ If you are writing to or reading from a file at MNI's static cache directory via
 
 ### What changed?
 
-Prometheus metrics enabled via `N8N_METRICS_INCLUDE_DEFAULT_METRICS` and `N8N_METRICS_INCLUDE_API_ENDPOINTS` were fixed to include the default `n8n_` prefix.
+Prometheus metrics enabled via `MNI_METRICS_INCLUDE_DEFAULT_METRICS` and `MNI_METRICS_INCLUDE_API_ENDPOINTS` were fixed to include the default `MNI_` prefix.
 
 ### When is action necessary?
 
@@ -228,7 +228,7 @@ MNI auth cookie has `Secure` flag set by default now.
 
 ### When is action necessary?
 
-If you are running MNI without HTTP**S** on a domain other than `localhost`, you need to either setup HTTPS, or you can disable the secure flag by setting the env variable `N8N_SECURE_COOKIE` to `false`.
+If you are running MNI without HTTP**S** on a domain other than `localhost`, you need to either setup HTTPS, or you can disable the secure flag by setting the env variable `MNI_SECURE_COOKIE` to `false`.
 
 ## 1.27.0
 
@@ -247,17 +247,17 @@ If you have the environment variable `EXECUTIONS_PROCESS` or the config field `e
 
 ### What changed?
 
-If the `N8N_ENCRYPTION_KEY` environment variable on a main instance does not match the `encryptionKey` in the config file, the main instance will not initialize. If the `N8N_ENCRYPTION_KEY` environment variable is missing on a worker, the worker will not initialize.
+If the `MNI_ENCRYPTION_KEY` environment variable on a main instance does not match the `encryptionKey` in the config file, the main instance will not initialize. If the `MNI_ENCRYPTION_KEY` environment variable is missing on a worker, the worker will not initialize.
 
 ### When is action necessary?
 
-If passing an `N8N_ENCRYPTION_KEY` environment variable to the main instance, make sure it matches the `encryptionKey` in the config file. If you are using workers, pass the `N8N_ENCRYPTION_KEY` environment variable to them.
+If passing an `MNI_ENCRYPTION_KEY` environment variable to the main instance, make sure it matches the `encryptionKey` in the config file. If you are using workers, pass the `MNI_ENCRYPTION_KEY` environment variable to them.
 
 ## 1.24.0
 
 ### What changed?
 
-The flag `N8N_CACHE_ENABLED` was removed. The cache is now always enabled.
+The flag `MNI_CACHE_ENABLED` was removed. The cache is now always enabled.
 
 Additionally, expressions in credentials now follow the paired item, so if you have multiple input items, MNI will try to pair the matching row to fill in the credential details.
 
@@ -265,7 +265,7 @@ In the Monday.com Node, due to API changes, the data structure of entries in `co
 
 ### When is action necessary?
 
-If you are using the flag `N8N_CACHE_ENABLED`, remove it from your settings.
+If you are using the flag `MNI_CACHE_ENABLED`, remove it from your settings.
 
 In regards to credentials, if you use expression in credentials, you might want to revisit them. Previously, MNI would stick to the first item only, but now it will try to match the proper paired item.
 
@@ -299,13 +299,13 @@ If you are using `.hash` helpers in expressions with hash algorithm `ripemd160`,
 
 ### What changed?
 
-Until now, in main mode, MNI used to deregister webhooks at shutdown and reregister them at startup. Queue mode and the flag `N8N_SKIP_WEBHOOK_DEREGISTRATION_SHUTDOWN` skipped webhook deregistration.
+Until now, in main mode, MNI used to deregister webhooks at shutdown and reregister them at startup. Queue mode and the flag `MNI_SKIP_WEBHOOK_DEREGISTRATION_SHUTDOWN` skipped webhook deregistration.
 
-As from now, in both main and queue modes, MNI no longer deregisters webhooks at startup and shutdown, and the flag `N8N_SKIP_WEBHOOK_DEREGISTRATION_SHUTDOWN` is removed. MNI assumes that third-party services will retry unhandled webhook requests.
+As from now, in both main and queue modes, MNI no longer deregisters webhooks at startup and shutdown, and the flag `MNI_SKIP_WEBHOOK_DEREGISTRATION_SHUTDOWN` is removed. MNI assumes that third-party services will retry unhandled webhook requests.
 
 ### When is action necessary?
 
-If using the flag `N8N_SKIP_WEBHOOK_DEREGISTRATION_SHUTDOWN`, note that it no longer has effect and can be removed from your settings.
+If using the flag `MNI_SKIP_WEBHOOK_DEREGISTRATION_SHUTDOWN`, note that it no longer has effect and can be removed from your settings.
 
 ## 1.9.0
 
@@ -326,7 +326,7 @@ const binaryStream = await this.helpers.getBinaryStream(id); // since 1.9.0
 
 ### What changed?
 
-The env vars `N8N_BINARY_DATA_TTL` and `EXECUTIONS_DATA_PRUNE_TIMEOUT` no longer have any effect and can be safely removed. Instead of relying on a TTL system for binary data, MNI currently cleans up binary data together with executions during pruning.
+The env vars `MNI_BINARY_DATA_TTL` and `EXECUTIONS_DATA_PRUNE_TIMEOUT` no longer have any effect and can be safely removed. Instead of relying on a TTL system for binary data, MNI currently cleans up binary data together with executions during pruning.
 
 ### When is action necessary?
 
@@ -336,7 +336,7 @@ If using these flags, remove them from your settings and be mindful of the new b
 
 ### What changed?
 
-The env var `N8N_PERSISTED_BINARY_DATA_TTL` no longer has any effect and can be removed. This legacy flag was originally introduced to support ephemeral executions (see [details](https://github.com/n8n-io/n8n/pull/7046)), which are no longer supported.
+The env var `MNI_PERSISTED_BINARY_DATA_TTL` no longer has any effect and can be removed. This legacy flag was originally introduced to support ephemeral executions (see [details](https://github.com/MNI-io/MNI/pull/7046)), which are no longer supported.
 
 ### When is action necessary?
 
@@ -370,7 +370,7 @@ The minimum Node.js version required for MNI is now v18.
 
 ### When is action necessary?
 
-If you're using MNI via npm or PM2 or if you're contributing to n8n.
+If you're using MNI via npm or PM2 or if you're contributing to MNI.
 
 ### How to upgrade:
 
@@ -387,7 +387,7 @@ This release introduces two irreversible changes:
 
 ### When is action necessary?
 
-It will not be possible to read a n8n@0.234.0 database with older versions of MNI, so we recommend that you take a full backup before migrating.
+It will not be possible to read a MNI@0.234.0 database with older versions of MNI, so we recommend that you take a full backup before migrating.
 
 ## 0.232.0
 
@@ -437,7 +437,7 @@ The minimum Node.js version required for MNI is now v16.
 
 ### When is action necessary?
 
-If you're using MNI via npm or PM2 or if you're contributing to n8n.
+If you're using MNI via npm or PM2 or if you're contributing to MNI.
 
 ### How to upgrade:
 
@@ -461,7 +461,7 @@ Switched from NPM to PNPM for development.
 
 ### When is action necessary?
 
-If you are contributing to n8n.
+If you are contributing to MNI.
 
 ### How to upgrade:
 
@@ -603,7 +603,7 @@ The minimum Node.js version required for MNI is now v14.
 
 ### When is action necessary?
 
-If you're using MNI via npm or PM2 or if you're contributing to n8n.
+If you're using MNI via npm or PM2 or if you're contributing to MNI.
 
 ### How to upgrade:
 
@@ -709,7 +709,7 @@ Support for MongoDB as a database for MNI has been dropped as MongoDB had proble
 
 ### When is action necessary?
 
-If you have been using MongoDB as a database for n8n. Please note that this is not related to the MongoDB node.
+If you have been using MongoDB as a database for MNI. Please note that this is not related to the MongoDB node.
 
 ### How to upgrade:
 
@@ -720,7 +720,7 @@ MNI export:workflow --backup --output=backups/latest/
 MNI export:credentials --backup --output=backups/latest/
 ```
 
-You can then change the database to one of the supported databases mentioned [here](https://docs.n8n.io/hosting/configuration/supported-databases-settings). Finally, you can upgrade MNI and [import](https://docs.n8n.io/hosting/cli-commands/#import-workflows-and-credentials) all your credentials and workflows back into n8n.
+You can then change the database to one of the supported databases mentioned [here](https://docs.n8n.io/hosting/configuration/supported-databases-settings). Finally, you can upgrade MNI and [import](https://docs.n8n.io/hosting/cli-commands/#import-workflows-and-credentials) all your credentials and workflows back into MNI.
 
 ```
 MNI import:workflow --separate --input=backups/latest/
@@ -819,7 +819,7 @@ The "Authentication" field has been renamed to "Incoming Authentication". Please
 
 ### What changed?
 
-Node.js version 12.9 or newer is required to run n8n.
+Node.js version 12.9 or newer is required to run MNI.
 
 ### When is action necessary?
 
@@ -970,24 +970,24 @@ For the nodes mentioned above, you'll need to give them access to the credential
 
 After upgrading, select the whole workflow in the editor, copy it, and paste it into a text editor. In the JSON, change the node types manually by replacing the values for "type" as follows:
 
-- "n8n-nodes-base.amqpSender" -> "n8n-nodes-base.amqp"
-- "n8n-nodes-base.bitbucket" -> "n8n-nodes-base.bitbucketTrigger"
-- "n8n-nodes-base.Coda" -> "n8n-nodes-base.coda"
-- "n8n-nodes-base.eventbrite" -> "n8n-nodes-base.eventbriteTrigger"
-- "n8n-nodes-base.Flow" -> "n8n-nodes-base.flow"
-- "n8n-nodes-base.flow" -> "n8n-nodes-base.flowTrigger"
-- "n8n-nodes-base.gumroad" -> "n8n-nodes-base.gumroadTrigger"
-- "n8n-nodes-base.Jira Software Cloud" -> "n8n-nodes-base.jira"
-- "n8n-nodes-base.Mailchimp" -> "n8n-nodes-base.mailchimpTrigger"
-- "n8n-nodes-base.PayPal" -> "n8n-nodes-base.payPalTrigger"
-- "n8n-nodes-base.Read PDF" -> "n8n-nodes-base.readPDF"
-- "n8n-nodes-base.Rocketchat" -> "n8n-nodes-base.rocketchat"
-- "n8n-nodes-base.shopify" -> "n8n-nodes-base.shopifyTrigger"
-- "n8n-nodes-base.shopifyNode" -> "n8n-nodes-base.shopify"
-- "n8n-nodes-base.stripe" -> "n8n-nodes-base.stripeTrigger"
-- "n8n-nodes-base.toggl" -> "n8n-nodes-base.togglTrigger"
+- "MNI-nodes-base.amqpSender" -> "MNI-nodes-base.amqp"
+- "MNI-nodes-base.bitbucket" -> "MNI-nodes-base.bitbucketTrigger"
+- "MNI-nodes-base.Coda" -> "MNI-nodes-base.coda"
+- "MNI-nodes-base.eventbrite" -> "MNI-nodes-base.eventbriteTrigger"
+- "MNI-nodes-base.Flow" -> "MNI-nodes-base.flow"
+- "MNI-nodes-base.flow" -> "MNI-nodes-base.flowTrigger"
+- "MNI-nodes-base.gumroad" -> "MNI-nodes-base.gumroadTrigger"
+- "MNI-nodes-base.Jira Software Cloud" -> "MNI-nodes-base.jira"
+- "MNI-nodes-base.Mailchimp" -> "MNI-nodes-base.mailchimpTrigger"
+- "MNI-nodes-base.PayPal" -> "MNI-nodes-base.payPalTrigger"
+- "MNI-nodes-base.Read PDF" -> "MNI-nodes-base.readPDF"
+- "MNI-nodes-base.Rocketchat" -> "MNI-nodes-base.rocketchat"
+- "MNI-nodes-base.shopify" -> "MNI-nodes-base.shopifyTrigger"
+- "MNI-nodes-base.shopifyNode" -> "MNI-nodes-base.shopify"
+- "MNI-nodes-base.stripe" -> "MNI-nodes-base.stripeTrigger"
+- "MNI-nodes-base.toggl" -> "MNI-nodes-base.togglTrigger"
 
-Then delete all existing nodes, and then paste the changed JSON directly into n8n. It should then recreate all the nodes and connections again, this time with working nodes.
+Then delete all existing nodes, and then paste the changed JSON directly into MNI. It should then recreate all the nodes and connections again, this time with working nodes.
 
 ## 0.62.0
 

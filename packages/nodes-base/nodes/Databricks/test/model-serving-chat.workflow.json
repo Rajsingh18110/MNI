@@ -3,7 +3,7 @@
 	"nodes": [
 		{
 			"parameters": {},
-			"type": "n8n-nodes-base.manualTrigger",
+			"type": "MNI-nodes-base.manualTrigger",
 			"typeVersion": 1,
 			"position": [0, 0],
 			"id": "trigger-001",
@@ -19,7 +19,7 @@
 				},
 				"requestBody": "{\"messages\":[{\"role\":\"user\",\"content\":\"Hello!\"}]}"
 			},
-			"type": "n8n-nodes-base.databricks",
+			"type": "MNI-nodes-base.databricks",
 			"typeVersion": 1,
 			"position": [220, 0],
 			"id": "model-query-002",

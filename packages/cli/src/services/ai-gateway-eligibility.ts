@@ -1,5 +1,5 @@
-import type { AiGatewayConfigDto } from '@n8n/api-types';
-import type { INode } from 'n8n-workflow';
+import type { AiGatewayConfigDto } from '@MNI/api-types';
+import type { INode } from 'MNI-workflow';
 
 import { stripToolSuffix } from '@/utils';
 
@@ -12,9 +12,9 @@ const OPERATION_ONLY = '__operation_only__';
  * automatically (an explicit, eligible marker is still honored).
  */
 export const HTTP_NODE_TYPES: ReadonlySet<string> = new Set([
-	'n8n-nodes-base.httpRequest',
-	'@n8n/n8n-nodes-langchain.toolHttpRequest',
-	'n8n-nodes-base.httpRequestTool',
+	'MNI-nodes-base.httpRequest',
+	'@MNI/MNI-nodes-langchain.toolHttpRequest',
+	'MNI-nodes-base.httpRequestTool',
 ]);
 
 export type AiGatewayEligibilityReason =

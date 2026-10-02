@@ -2,16 +2,16 @@
 import CopyInput from '@/app/components/CopyInput.vue';
 import { MODAL_CONFIRM } from '@/app/constants';
 import { SupportedProtocols, useSSOStore } from '../sso.store';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 
-import { N8nButton, N8nInput, N8nOption, N8nSelect } from '@n8n/design-system';
+import { N8nButton, N8nInput, N8nOption, N8nSelect } from '@MNI/design-system';
 import { computed, onMounted, ref } from 'vue';
-import { useToast } from '@n8n/composables/useToast';
+import { useToast } from '@MNI/composables/useToast';
 import { useMessage } from '@/app/composables/useMessage';
 import { useUserRoleProvisioningForm } from '../provisioning/composables/useUserRoleProvisioningForm';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
-import { useRootStore } from '@n8n/stores/useRootStore';
-import { type OidcConfigDto } from '@n8n/api-types';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
+import { useRootStore } from '@MNI/stores/useRootStore';
+import { type OidcConfigDto } from '@MNI/api-types';
 import ConfirmProvisioningDialog from '../provisioning/components/ConfirmProvisioningDialog.vue';
 import RoleMappingRuleEditor from '../provisioning/components/RoleMappingRuleEditor.vue';
 import UserRoleProvisioningDropdown from '../provisioning/components/UserRoleProvisioningDropdown.vue';

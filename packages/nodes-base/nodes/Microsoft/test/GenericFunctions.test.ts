@@ -1,4 +1,4 @@
-import { NodeOperationError, type INode } from 'n8n-workflow';
+import { NodeOperationError, type INode } from 'MNI-workflow';
 
 import {
 	stampItemIndexOnError,
@@ -9,7 +9,7 @@ import {
 const node: INode = {
 	id: 'test-node',
 	name: 'Microsoft Node',
-	type: 'n8n-nodes-base.microsoft',
+	type: 'MNI-nodes-base.microsoft',
 	typeVersion: 1,
 	position: [0, 0],
 	parameters: {},

@@ -87,7 +87,7 @@ export async function seedJourneys(
 			{
 				id: 'schedule-1',
 				name: 'Schedule Trigger',
-				type: 'n8n-nodes-base.scheduleTrigger',
+				type: 'MNI-nodes-base.scheduleTrigger',
 				typeVersion: 1.2,
 				position: [0, 0],
 				parameters: { rule: { interval: [{ field: 'seconds', secondsInterval: 2 }] } },
@@ -95,7 +95,7 @@ export async function seedJourneys(
 			{
 				id: 'http-1',
 				name: 'Self Healthz',
-				type: 'n8n-nodes-base.httpRequest',
+				type: 'MNI-nodes-base.httpRequest',
 				typeVersion: 4.2,
 				position: [200, 0],
 				parameters: {

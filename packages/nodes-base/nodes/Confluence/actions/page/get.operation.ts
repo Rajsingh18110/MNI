@@ -1,4 +1,4 @@
-import type { IDataObject, IExecuteFunctions, INodeProperties } from 'n8n-workflow';
+import type { IDataObject, IExecuteFunctions, INodeProperties } from 'MNI-workflow';
 
 import { confluenceApiRequest } from '../../transport';
 import type { ConfluenceBodyFormat } from '../common';

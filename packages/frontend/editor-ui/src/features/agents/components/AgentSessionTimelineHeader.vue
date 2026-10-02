@@ -12,9 +12,9 @@ import {
 	type IconName,
 	type IconOrEmoji,
 	type PathItem,
-} from '@n8n/design-system';
+} from '@MNI/design-system';
 
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import ProjectIcon from '@/features/collaboration/projects/components/ProjectIcon.vue';
 
 interface SessionDropdownData {
@@ -176,15 +176,15 @@ const i18n = useI18n();
 	min-width: 0;
 }
 
-.topBarLeft :global(.n8n-breadcrumbs) {
+.topBarLeft :global(.MNI-breadcrumbs) {
 	min-width: 0;
 }
 
-.topBarLeft :global(.n8n-breadcrumbs > ul > li:first-child) {
+.topBarLeft :global(.MNI-breadcrumbs > ul > li:first-child) {
 	display: none;
 }
 
-.topBarLeft :global(.n8n-breadcrumbs [data-test-id='breadcrumbs-item']) {
+.topBarLeft :global(.MNI-breadcrumbs [data-test-id='breadcrumbs-item']) {
 	display: flex;
 	align-items: center;
 	height: var(--height--md);

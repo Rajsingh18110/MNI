@@ -4,7 +4,7 @@ let mockIsCloudDeployment = false;
 let mockUserIsTrialing = false;
 let mockIsAdminOrOwner = false;
 
-vi.mock('@n8n/stores/settings.store', () => ({
+vi.mock('@MNI/stores/settings.store', () => ({
 	useSettingsStore: () => ({
 		get isCloudDeployment() {
 			return mockIsCloudDeployment;
@@ -12,7 +12,7 @@ vi.mock('@n8n/stores/settings.store', () => ({
 	}),
 }));
 
-vi.mock('@n8n/stores/cloudPlan.store', () => ({
+vi.mock('@MNI/stores/cloudPlan.store', () => ({
 	useCloudPlanStore: () => ({
 		get userIsTrialing() {
 			return mockUserIsTrialing;
@@ -20,7 +20,7 @@ vi.mock('@n8n/stores/cloudPlan.store', () => ({
 	}),
 }));
 
-vi.mock('@n8n/stores/users.store', () => ({
+vi.mock('@MNI/stores/users.store', () => ({
 	useUsersStore: () => ({
 		get isAdminOrOwner() {
 			return mockIsAdminOrOwner;

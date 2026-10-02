@@ -1,7 +1,7 @@
-import { testDb, createWorkflow } from '@n8n/backend-test-utils';
-import { ExecutionRepository, type IWorkflowDb } from '@n8n/db';
-import { Container } from '@n8n/di';
-import { NodeConnectionTypes } from 'n8n-workflow';
+import { testDb, createWorkflow } from '@MNI/backend-test-utils';
+import { ExecutionRepository, type IWorkflowDb } from '@MNI/db';
+import { Container } from '@MNI/di';
+import { NodeConnectionTypes } from 'MNI-workflow';
 import { v4 as uuid } from 'uuid';
 
 import { WorkflowExecutionService } from '@/workflows/workflow-execution.service';
@@ -29,11 +29,11 @@ describe('sub-workflow error propagation to parent after Wait resume', () => {
 		owner = await createOwner();
 
 		const nodeTypes = loadNodesFromDist([
-			'n8n-nodes-base.manualTrigger',
-			'n8n-nodes-base.executeWorkflow',
-			'n8n-nodes-base.executeWorkflowTrigger',
-			'n8n-nodes-base.wait',
-			'n8n-nodes-base.stopAndError',
+			'MNI-nodes-base.manualTrigger',
+			'MNI-nodes-base.executeWorkflow',
+			'MNI-nodes-base.executeWorkflowTrigger',
+			'MNI-nodes-base.wait',
+			'MNI-nodes-base.stopAndError',
 		]);
 
 		await utils.initNodeTypes(nodeTypes);
@@ -57,14 +57,14 @@ describe('sub-workflow error propagation to parent after Wait resume', () => {
 			nodes: [
 				{
 					parameters: { inputSource: 'passthrough' },
-					type: 'n8n-nodes-base.executeWorkflowTrigger',
+					type: 'MNI-nodes-base.executeWorkflowTrigger',
 					typeVersion: 1.1,
 					id: uuid(),
 					name: 'Trigger',
 				},
 				{
 					parameters: { resume: 'webhook', options: {} },
-					type: 'n8n-nodes-base.wait',
+					type: 'MNI-nodes-base.wait',
 					typeVersion: 1.1,
 					id: uuid(),
 					name: 'Wait',
@@ -72,7 +72,7 @@ describe('sub-workflow error propagation to parent after Wait resume', () => {
 				},
 				{
 					parameters: { errorMessage: SUB_ERROR_MESSAGE },
-					type: 'n8n-nodes-base.stopAndError',
+					type: 'MNI-nodes-base.stopAndError',
 					typeVersion: 1,
 					id: uuid(),
 					name: 'Stop and Error',
@@ -91,7 +91,7 @@ describe('sub-workflow error propagation to parent after Wait resume', () => {
 			nodes: [
 				{
 					parameters: {},
-					type: 'n8n-nodes-base.manualTrigger',
+					type: 'MNI-nodes-base.manualTrigger',
 					typeVersion: 1,
 					id: uuid(),
 					name: 'Trigger',
@@ -101,7 +101,7 @@ describe('sub-workflow error propagation to parent after Wait resume', () => {
 						workflowId: { __rl: true, value: childWorkflowId, mode: 'list' },
 						options: { waitForSubWorkflow: true },
 					},
-					type: 'n8n-nodes-base.executeWorkflow',
+					type: 'MNI-nodes-base.executeWorkflow',
 					typeVersion: 1.2,
 					id: uuid(),
 					name: 'Execute Sub-workflow',

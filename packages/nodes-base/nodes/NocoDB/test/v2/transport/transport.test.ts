@@ -1,4 +1,4 @@
-import type { IDataObject, IHttpRequestMethods } from 'n8n-workflow';
+import type { IDataObject, IHttpRequestMethods } from 'MNI-workflow';
 
 import { apiRequest, apiRequestAllItems, downloadRecordAttachments } from '../../../v2/transport';
 

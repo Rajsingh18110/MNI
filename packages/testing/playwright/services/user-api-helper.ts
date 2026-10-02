@@ -1,4 +1,4 @@
-import type { User } from '@n8n/api-types';
+import type { User } from '@MNI/api-types';
 import type { APIResponse } from '@playwright/test';
 import { customAlphabet } from 'nanoid';
 

@@ -4,7 +4,7 @@
 		{
 			"id": "trigger",
 			"name": "Trigger",
-			"type": "n8n-nodes-base.manualTrigger",
+			"type": "MNI-nodes-base.manualTrigger",
 			"typeVersion": 1,
 			"position": [-220, 300],
 			"parameters": {}
@@ -12,7 +12,7 @@
 		{
 			"id": "a",
 			"name": "Start",
-			"type": "n8n-nodes-base.noOp",
+			"type": "MNI-nodes-base.noOp",
 			"typeVersion": 1,
 			"position": [0, 300],
 			"parameters": {}
@@ -20,7 +20,7 @@
 		{
 			"id": "b",
 			"name": "Middle",
-			"type": "n8n-nodes-base.code",
+			"type": "MNI-nodes-base.code",
 			"typeVersion": 2,
 			"position": [220, 300],
 			"parameters": {
@@ -30,7 +30,7 @@
 		{
 			"id": "c",
 			"name": "End",
-			"type": "n8n-nodes-base.set",
+			"type": "MNI-nodes-base.set",
 			"typeVersion": 3.4,
 			"position": [440, 300],
 			"parameters": {

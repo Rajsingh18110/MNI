@@ -68,7 +68,7 @@ export class InstanceAiDriver {
 	private openedTabs: n8nPage[] = [];
 
 	constructor(config: InstanceAiDriverConfig) {
-		this.n8n = config.n8n;
+		this.MNI = config.MNI;
 		this.baseUrl = config.baseUrl;
 	}
 

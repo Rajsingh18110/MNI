@@ -3,16 +3,16 @@ import {
 	type LockNamespace,
 	LockAcquisitionTimeoutError,
 	Logger,
-} from '@n8n/backend-common';
-import { GlobalConfig } from '@n8n/config';
-import { Service } from '@n8n/di';
+} from '@MNI/backend-common';
+import { GlobalConfig } from '@MNI/config';
+import { Service } from '@MNI/di';
 import type { Cluster, Redis } from 'ioredis';
-import { ensureError } from '@n8n/utils/errors/ensure-error';
-import { sleep } from '@n8n/utils/sleep';
+import { ensureError } from '@MNI/utils/errors/ensure-error';
+import { sleep } from '@MNI/utils/sleep';
 import { createHash, randomUUID } from 'node:crypto';
 
 import { RedisClientService } from '@/services/redis-client.service';
-import { OnShutdown } from '@n8n/decorators';
+import { OnShutdown } from '@MNI/decorators';
 
 const COMMAND_TIMEOUT_MS = 5_000;
 

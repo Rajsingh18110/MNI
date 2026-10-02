@@ -25,8 +25,8 @@ describe('Promotion Git credentials', () => {
 			env: {
 				...process.env,
 				GIT_TERMINAL_PROMPT: '0',
-				N8N_GIT_USERNAME: username,
-				N8N_GIT_PASSWORD: password,
+				MNI_GIT_USERNAME: username,
+				MNI_GIT_PASSWORD: password,
 			},
 		});
 

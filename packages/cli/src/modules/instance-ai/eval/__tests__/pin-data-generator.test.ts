@@ -1,11 +1,11 @@
-import type { WorkflowJSON } from '@n8n/workflow-sdk';
+import type { WorkflowJSON } from '@MNI/workflow-sdk';
 
-vi.mock('@n8n/instance-ai', () => ({
+vi.mock('@MNI/instance-ai', () => ({
 	createEvalAgent: vi.fn(),
 	extractText: vi.fn(),
 }));
 
-import { createEvalAgent, extractText } from '@n8n/instance-ai';
+import { createEvalAgent, extractText } from '@MNI/instance-ai';
 
 import { generatePinData } from '../pin-data-generator';
 
@@ -16,13 +16,13 @@ const workflow = {
 	nodes: [
 		{
 			name: 'Get Posted Keys',
-			type: 'n8n-nodes-base.dataTable',
+			type: 'MNI-nodes-base.dataTable',
 			typeVersion: 1,
 			parameters: { resource: 'row', operation: 'get' },
 		},
 		{
 			name: 'AI Root',
-			type: '@n8n/n8n-nodes-langchain.agent',
+			type: '@MNI/MNI-nodes-langchain.agent',
 			typeVersion: 1,
 			parameters: {},
 		},

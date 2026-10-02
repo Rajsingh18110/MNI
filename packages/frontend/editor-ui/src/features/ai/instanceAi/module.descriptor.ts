@@ -1,5 +1,5 @@
-import { i18n } from '@n8n/i18n';
-import { defineFrontendModule } from '@n8n/frontend-module-sdk';
+import { i18n } from '@MNI/i18n';
+import { defineFrontendModule } from '@MNI/frontend-module-sdk';
 import type { LocationQuery } from 'vue-router';
 import { VIEWS } from '@/app/constants';
 import { INSTANCE_AI_MODALS } from './modals';
@@ -25,8 +25,8 @@ import {
 	useInstanceAiAvailable,
 	useInstanceAiReady,
 } from './composables/useInstanceAiAvailability';
-import { useSettingsStore } from '@n8n/stores/settings.store';
-import { useCloudPlanStore } from '@n8n/stores/cloudPlan.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
+import { useCloudPlanStore } from '@MNI/stores/cloudPlan.store';
 import { canManageInstanceAi } from './instanceAiPermissions';
 
 /**

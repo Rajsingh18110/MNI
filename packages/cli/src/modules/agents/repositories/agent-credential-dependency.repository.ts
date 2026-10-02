@@ -1,6 +1,6 @@
-import { BaseRepository, CredentialsEntity, TransactionRunner } from '@n8n/db';
-import { Service } from '@n8n/di';
-import { DataSource, In, type EntityManager } from '@n8n/typeorm';
+import { BaseRepository, CredentialsEntity, TransactionRunner } from '@MNI/db';
+import { Service } from '@MNI/di';
+import { DataSource, In, type EntityManager } from '@MNI/typeorm';
 
 import { AgentCredentialDependency } from '../entities/agent-credential-dependency.entity';
 import { AgentHistory } from '../entities/agent-history.entity';

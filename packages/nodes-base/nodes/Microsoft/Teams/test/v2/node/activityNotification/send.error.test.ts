@@ -4,7 +4,7 @@ import {
 	type IExecuteFunctions,
 	type INode,
 	type JsonObject,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import type { Mock } from 'vitest';
 import type { MockProxy } from 'vitest-mock-extended';
 
@@ -36,7 +36,7 @@ const GENERIC_APP_ONLY_403 =
 const node: INode = {
 	id: 'teams-node',
 	name: 'Microsoft Teams',
-	type: 'n8n-nodes-base.microsoftTeams',
+	type: 'MNI-nodes-base.microsoftTeams',
 	typeVersion: 2,
 	position: [0, 0],
 	parameters: {},

@@ -1,5 +1,5 @@
-import type { IExecuteFunctions, IRequestOptions } from 'n8n-workflow';
-import { NodeApiError } from 'n8n-workflow';
+import type { IExecuteFunctions, IRequestOptions } from 'MNI-workflow';
+import { NodeApiError } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import { gristApiRequest } from '../GenericFunctions';

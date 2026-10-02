@@ -1,11 +1,11 @@
-import { Logger } from '@n8n/backend-common';
-import { DatabaseConfig } from '@n8n/config';
-import { Time } from '@n8n/constants';
-import { DbConnection, DbLock, DbLockService, WorkflowStatisticsRepository } from '@n8n/db';
-import { OnLeaderStepdown, OnLeaderTakeover, OnShutdown } from '@n8n/decorators';
-import { Service } from '@n8n/di';
-import { ErrorReporter, InstanceSettings } from 'n8n-core';
-import { OperationalError } from 'n8n-workflow';
+import { Logger } from '@MNI/backend-common';
+import { DatabaseConfig } from '@MNI/config';
+import { Time } from '@MNI/constants';
+import { DbConnection, DbLock, DbLockService, WorkflowStatisticsRepository } from '@MNI/db';
+import { OnLeaderStepdown, OnLeaderTakeover, OnShutdown } from '@MNI/decorators';
+import { Service } from '@MNI/di';
+import { ErrorReporter, InstanceSettings } from 'MNI-core';
+import { OperationalError } from 'MNI-workflow';
 import { strict } from 'node:assert';
 
 import { WorkflowStatisticsService } from './workflow-statistics.service';

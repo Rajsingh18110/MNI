@@ -10,7 +10,7 @@ const node: INode = {
 	id: '1',
 	name: 'Test Node',
 	typeVersion: 1,
-	type: 'n8n-nodes-base.test',
+	type: 'MNI-nodes-base.test',
 	position: [0, 0],
 	parameters: {},
 };

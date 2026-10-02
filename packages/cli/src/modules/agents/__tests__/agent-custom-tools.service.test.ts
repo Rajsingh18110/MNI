@@ -1,7 +1,7 @@
-import type { ToolDescriptor } from '@n8n/agents';
-import { mockLogger } from '@n8n/backend-test-utils';
+import type { ToolDescriptor } from '@MNI/agents';
+import { mockLogger } from '@MNI/backend-test-utils';
 import { mock } from 'vitest-mock-extended';
-import { UserError } from 'n8n-workflow';
+import { UserError } from 'MNI-workflow';
 
 import { NotFoundError } from '@/errors/response-errors/not-found.error';
 
@@ -141,7 +141,7 @@ describe('AgentCustomToolsService', () => {
 						type: 'node',
 						name: 'HTTP',
 						node: {
-							nodeType: 'n8n-nodes-base.httpRequest',
+							nodeType: 'MNI-nodes-base.httpRequest',
 							nodeTypeVersion: 4,
 							nodeParameters: {},
 						},
@@ -161,7 +161,7 @@ describe('AgentCustomToolsService', () => {
 				type: 'node',
 				name: 'HTTP',
 				node: {
-					nodeType: 'n8n-nodes-base.httpRequest',
+					nodeType: 'MNI-nodes-base.httpRequest',
 					nodeTypeVersion: 4,
 					nodeParameters: {},
 				},
@@ -191,7 +191,7 @@ describe('AgentCustomToolsService', () => {
 							type: 'node',
 							name: 'HTTP',
 							node: {
-								nodeType: 'n8n-nodes-base.httpRequest',
+								nodeType: 'MNI-nodes-base.httpRequest',
 								nodeTypeVersion: 4,
 								nodeParameters: {},
 							},

@@ -14,12 +14,12 @@ import { useBannersStore } from '@/features/shared/banners/banners.store';
 import { useUIStore } from '@/app/stores/ui.store';
 import { DRAG_EVENT_DATA_KEY } from '@/app/constants';
 import { useChatPanelStore } from '@/features/ai/assistant/chatPanel.store';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { useAiGateway } from '@/app/composables/useAiGateway';
 import type { NodeTypeSelectedPayload } from '@/Interface';
 import { onClickOutside } from '@vueuse/core';
 
-import { N8nIconButton, OVERLAY_LAYER_SELECTOR } from '@n8n/design-system';
+import { N8nIconButton, OVERLAY_LAYER_SELECTOR } from '@MNI/design-system';
 // elements that should not trigger onClickOutside
 const OUTSIDE_CLICK_WHITELIST = [
 	// different modals

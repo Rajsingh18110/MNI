@@ -1,4 +1,4 @@
-import type { ExecutionStatus } from 'n8n-workflow';
+import type { ExecutionStatus } from 'MNI-workflow';
 
 export const DEBUG_PAYWALL_MODAL_KEY = 'debugPaywall';
 

@@ -9,12 +9,12 @@ import {
 	refreshWalletAfterBilledRun,
 	type SimplifiedExecution,
 } from './executionFinished';
-import type { IRunExecutionData, ITaskData, INodeTypeDescription } from 'n8n-workflow';
+import type { IRunExecutionData, ITaskData, INodeTypeDescription } from 'MNI-workflow';
 import {
 	createRunExecutionData,
 	EVALUATION_TRIGGER_NODE_TYPE,
 	WorkflowOperationError,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import type { IExecutionResponse } from '@/features/execution/executions/executions.types';
 import type { INodeUi, IWorkflowDb } from '@/Interface';
 import type { Router } from 'vue-router';
@@ -34,7 +34,7 @@ import { useReadyToRunStore } from '@/features/workflows/readyToRun/stores/ready
 import { useBuilderStore } from '@/features/ai/assistant/builder.store';
 import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';
 import { useAiGatewayStore } from '@/app/stores/aiGateway.store';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { useRunWorkflow } from '@/app/composables/useRunWorkflow';
 import type { PushHandlerOptions } from './types';
 
@@ -55,7 +55,7 @@ const opts: PushHandlerOptions = {
 };
 
 const mockShowMessage = vi.fn();
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: () => ({
 		showMessage: mockShowMessage,
 	}),
@@ -899,7 +899,7 @@ describe('manual execution stats tracking', () => {
 
 			const workflowDocumentStore = useWorkflowDocumentStore(createWorkflowDocumentId(''));
 			workflowDocumentStore.setNodes([
-				mock<INodeUi>({ name: nodeName, type: 'n8n-nodes-base.telegram', typeVersion: 1 }),
+				mock<INodeUi>({ name: nodeName, type: 'MNI-nodes-base.telegram', typeVersion: 1 }),
 			]);
 
 			nodeTypesStore.getNodeType = () =>
@@ -930,7 +930,7 @@ describe('manual execution stats tracking', () => {
 
 			const workflowDocumentStore = useWorkflowDocumentStore(createWorkflowDocumentId(''));
 			workflowDocumentStore.setNodes([
-				mock<INodeUi>({ name: nodeName, type: 'n8n-nodes-base.vonage', typeVersion: 1 }),
+				mock<INodeUi>({ name: nodeName, type: 'MNI-nodes-base.vonage', typeVersion: 1 }),
 			]);
 
 			nodeTypesStore.getNodeType = () =>
@@ -961,7 +961,7 @@ describe('manual execution stats tracking', () => {
 
 			const docStore2 = useWorkflowDocumentStore(createWorkflowDocumentId(''));
 			docStore2.setNodes([
-				mock<INodeUi>({ name: nodeName, type: 'n8n-nodes-base.vonage', typeVersion: 1 }),
+				mock<INodeUi>({ name: nodeName, type: 'MNI-nodes-base.vonage', typeVersion: 1 }),
 			]);
 
 			nodeTypesStore.getNodeType = () =>

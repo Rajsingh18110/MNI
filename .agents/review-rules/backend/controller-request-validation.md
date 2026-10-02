@@ -55,5 +55,5 @@ async activate(req: AuthenticatedRequest) {
 }
 ```
 
-Use a DTO from `@n8n/api-types` or a local `dto/` directory. DTOs must extend
+Use a DTO from `@MNI/api-types` or a local `dto/` directory. DTOs must extend
 `Z.class` from `zod-class` for runtime validation.

@@ -5,10 +5,10 @@ import {
 	executionStarted,
 	agentNodeProgress,
 } from '@/app/composables/usePushConnection/handlers';
-import type { TestWebhookReceived } from '@n8n/api-types/push/webhook';
-import type { BuilderCreditsPushMessage } from '@n8n/api-types/push/builder-credits';
-import type { AgentNodeProgress, PushMessage } from '@n8n/api-types';
-import { pushHandlerRegistry } from '@n8n/frontend-module-sdk';
+import type { TestWebhookReceived } from '@MNI/api-types/push/webhook';
+import type { BuilderCreditsPushMessage } from '@MNI/api-types/push/builder-credits';
+import type { AgentNodeProgress, PushMessage } from '@MNI/api-types';
+import { pushHandlerRegistry } from '@MNI/frontend-module-sdk';
 import { useRouter } from 'vue-router';
 import type { OnPushMessageHandler } from '@/app/stores/pushConnection.store';
 import { createPinia, setActivePinia } from 'pinia';

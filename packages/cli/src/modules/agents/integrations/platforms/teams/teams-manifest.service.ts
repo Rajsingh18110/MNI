@@ -3,8 +3,8 @@ import {
 	TEAMS_DISPLAY_NAME_MAX,
 	type AgentTeamsIntegrationSettings,
 	type TeamsAgentAppManifest,
-} from '@n8n/api-types';
-import { Service } from '@n8n/di';
+} from '@MNI/api-types';
+import { Service } from '@MNI/di';
 import { zipSync } from 'fflate';
 import { readFile } from 'node:fs/promises';
 import { join } from 'node:path';
@@ -76,7 +76,7 @@ const READ_PERMISSIONS = [
 ] as const;
 
 function describeApp(appName: string): string {
-	return `Chat with ${appName}, an agent powered by n8n.`;
+	return `Chat with ${appName}, an agent powered by MNI.`;
 }
 
 @Service()

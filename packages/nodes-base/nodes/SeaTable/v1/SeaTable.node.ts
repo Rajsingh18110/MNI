@@ -1,4 +1,4 @@
-import { NodeConnectionTypes, type INodeTypeDescription } from 'n8n-workflow';
+import { NodeConnectionTypes, type INodeTypeDescription } from 'MNI-workflow';
 
 import { rowFields, rowOperations } from './RowDescription';
 

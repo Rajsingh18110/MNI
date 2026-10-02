@@ -1,10 +1,10 @@
-import type { Agent as RuntimeAgent } from '@n8n/agents';
-import { Logger } from '@n8n/backend-common';
-import { Time } from '@n8n/constants';
-import type { User } from '@n8n/db';
-import { OnPubSubEvent } from '@n8n/decorators';
-import { Service } from '@n8n/di';
-import { UserError } from 'n8n-workflow';
+import type { Agent as RuntimeAgent } from '@MNI/agents';
+import { Logger } from '@MNI/backend-common';
+import { Time } from '@MNI/constants';
+import type { User } from '@MNI/db';
+import { OnPubSubEvent } from '@MNI/decorators';
+import { Service } from '@MNI/di';
+import { UserError } from 'MNI-workflow';
 
 import { CredentialsService } from '@/credentials/credentials.service';
 import type { IAgentConfigurationTelemetryProperties } from '@/interfaces';
@@ -129,7 +129,7 @@ export class AgentRuntimeCacheService {
 		const parts = [params.agentId, params.usePublishedVersion ? 'published' : 'draft'];
 		// ponytail: a whole second runtime per agent just to carry one extra
 		// instruction paragraph. Move to a per-run instruction override if
-		// runtime count becomes a problem — `@n8n/agents` has no such option yet.
+		// runtime count becomes a problem — `@MNI/agents` has no such option yet.
 		if (params.previewChat) parts.push('preview');
 		if (params.integrationType) parts.push(params.integrationType);
 		if (params.allowBackgroundTasks === false) parts.push('no-background-tasks');
@@ -140,7 +140,7 @@ export class AgentRuntimeCacheService {
 		if (sandboxEnabled && params.sandboxPrincipalHash) {
 			parts.push(`sandbox:${params.sandboxPrincipalHash}`);
 		} else if (!params.usePublishedVersion && params.user) {
-			parts.push(`user:${hashAgentSandboxPrincipal({ type: 'n8n-user', userId: params.user.id })}`);
+			parts.push(`user:${hashAgentSandboxPrincipal({ type: 'MNI-user', userId: params.user.id })}`);
 		}
 		return parts.join(':');
 	}

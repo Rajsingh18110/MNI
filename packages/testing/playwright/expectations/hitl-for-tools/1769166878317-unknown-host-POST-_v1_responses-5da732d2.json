@@ -87,7 +87,7 @@
 			"openai-version": ["2020-10-01"],
 			"openai-project": ["proj_QgifAq942u8NFReEIvfWVd00"],
 			"openai-processing-ms": ["5216"],
-			"openai-organization": ["n8n-1"],
+			"openai-organization": ["MNI-1"],
 			"cf-cache-status": ["DYNAMIC"],
 			"alt-svc": ["h3=\":443\"; ma=86400"],
 			"X-Content-Type-Options": ["nosniff"],

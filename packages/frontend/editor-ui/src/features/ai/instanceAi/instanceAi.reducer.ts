@@ -7,13 +7,13 @@ import {
 	findAgent,
 	stateFromAgentTree,
 	isSafeObjectKey,
-} from '@n8n/api-types';
+} from '@MNI/api-types';
 import type {
 	InstanceAiEvent,
 	InstanceAiMessage,
 	InstanceAiAgentNode,
 	AgentRunState,
-} from '@n8n/api-types';
+} from '@MNI/api-types';
 
 /**
  * Per-thread reducer state.

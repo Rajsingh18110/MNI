@@ -4,8 +4,8 @@ import type {
 	INodeType,
 	INodeTypeBaseDescription,
 	INodeTypeDescription,
-} from 'n8n-workflow';
-import { NodeConnectionTypes, SEND_AND_WAIT_OPERATION } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeConnectionTypes, SEND_AND_WAIT_OPERATION } from 'MNI-workflow';
 
 import * as send from './send.operation';
 import * as sendAndWait from './sendAndWait.operation';

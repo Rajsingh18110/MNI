@@ -107,7 +107,7 @@ vue/valid-v-slot
 vue/valid-v-text
 ```
 
-The design-system rule `@n8n/design-system/require-teleported-tooltip-in-dropdown` has the same blocker. It uses `vue-eslint-parser` template services, not TypeScript type information.
+The design-system rule `@MNI/design-system/require-teleported-tooltip-in-dropdown` has the same blocker. It uses `vue-eslint-parser` template services, not TypeScript type information.
 
 Suggested direction:
 
@@ -117,14 +117,14 @@ Suggested direction:
 
 ## Node package blockers
 
-The `n8n-nodes-base` plugin contributes 94 enforced rules:
+The `MNI-nodes-base` plugin contributes 94 enforced rules:
 
-- 12 credential rules in `packages/@n8n/eslint-config/src/configs/nodes.ts`.
+- 12 credential rules in `packages/@MNI/eslint-config/src/configs/nodes.ts`.
 - 82 node rules in the same config.
 
 The blocker is not known type awareness. The plugin needs a compatibility test through Oxlint's JavaScript plugin bridge. Its file-scoped rule tables also need an Oxlint translation.
 
-Use the rule tables in `packages/@n8n/eslint-config/src/configs/nodes.ts` as the canonical list. They change more often than this document and must not be duplicated here.
+Use the rule tables in `packages/@MNI/eslint-config/src/configs/nodes.ts` as the canonical list. They change more often than this document and must not be duplicated here.
 
 Suggested spike:
 
@@ -132,7 +132,7 @@ Suggested spike:
 2. Run all 12 credential rules against representative valid and invalid files.
 3. Run the 82 node rules against representative valid and invalid files.
 4. Compare diagnostics, locations, options, and fixes with ESLint.
-5. Add the working file-scoped tables to `@n8n/oxlint-config/nodes`.
+5. Add the working file-scoped tables to `@MNI/oxlint-config/nodes`.
 
 ## Rules that are not blockers
 
@@ -152,7 +152,7 @@ The main exceptions are:
 2. Resolve decorator-safe `consistent-type-imports` behavior.
 3. Audit and reduce `naming-convention` package overrides.
 4. Re-test the two nursery rules.
-5. Run a JS-plugin bridge spike for `n8n-nodes-base`.
+5. Run a JS-plugin bridge spike for `MNI-nodes-base`.
 6. Keep a template-only ESLint pass for Vue until native template support exists.
 
 ## Validation commands
@@ -173,7 +173,7 @@ node scripts/lint-parity/majority.mjs
 Before changing the config, create the baseline snapshot. After the change, create the second snapshot and compare them:
 
 ```sh
-pnpm turbo run build --filter=@n8n/eslint-config
+pnpm turbo run build --filter=@MNI/eslint-config
 node scripts/lint-parity/snapshot.mjs --out /tmp/lint-before.json
 # Change the config.
 node scripts/lint-parity/snapshot.mjs --out /tmp/lint-after.json
@@ -186,10 +186,10 @@ Run lint from each changed package. Use both linters when the package still has 
 
 - Machine-readable gaps: `scripts/lint-parity/oxlint-gap.json`
 - Parity checker: `scripts/lint-parity/oxlint-parity.mjs`
-- ESLint base: `packages/@n8n/eslint-config/src/configs/base.ts`
-- Oxlint base: `packages/@n8n/oxlint-config/src/configs/base.ts`
-- ESLint frontend: `packages/@n8n/eslint-config/src/configs/frontend.ts`
-- Oxlint frontend: `packages/@n8n/oxlint-config/src/configs/frontend.ts`
-- ESLint nodes: `packages/@n8n/eslint-config/src/configs/nodes.ts`
-- Oxlint nodes: `packages/@n8n/oxlint-config/src/configs/nodes.ts`
-- Functional guardrails: `packages/@n8n/eslint-config/src/configs/functional-guardrails.ts`
+- ESLint base: `packages/@MNI/eslint-config/src/configs/base.ts`
+- Oxlint base: `packages/@MNI/oxlint-config/src/configs/base.ts`
+- ESLint frontend: `packages/@MNI/eslint-config/src/configs/frontend.ts`
+- Oxlint frontend: `packages/@MNI/oxlint-config/src/configs/frontend.ts`
+- ESLint nodes: `packages/@MNI/eslint-config/src/configs/nodes.ts`
+- Oxlint nodes: `packages/@MNI/oxlint-config/src/configs/nodes.ts`
+- Functional guardrails: `packages/@MNI/eslint-config/src/configs/functional-guardrails.ts`

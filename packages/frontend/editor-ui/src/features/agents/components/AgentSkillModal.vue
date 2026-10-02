@@ -3,9 +3,9 @@ import { computed, ref } from 'vue';
 import {
 	AGENT_SKILL_INSTRUCTIONS_MAX_LENGTH,
 	AGENT_SKILL_REFERENCE_MAX_COUNT,
-} from '@n8n/api-types';
-import { N8nButton, N8nCallout, N8nIcon } from '@n8n/design-system';
-import { useI18n, type BaseTextKey } from '@n8n/i18n';
+} from '@MNI/api-types';
+import { N8nButton, N8nCallout, N8nIcon } from '@MNI/design-system';
+import { useI18n, type BaseTextKey } from '@MNI/i18n';
 
 import { useUIStore } from '@/app/stores/ui.store';
 import { useAgentTelemetry } from '../composables/useAgentTelemetry';

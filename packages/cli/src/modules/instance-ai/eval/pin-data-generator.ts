@@ -6,18 +6,18 @@
  * decides which nodes need pin data — this module only generates it.
  *
  * Thin wrapper: prompt building, response parsing, and envelope repair live
- * in `@n8n/workflow-sdk` (`mock-data/`), shared with the ai-workflow-builder
+ * in `@MNI/workflow-sdk` (`mock-data/`), shared with the ai-workflow-builder
  * evals and in-product simulated verification. This module contributes the
  * LLM call (`createEvalAgent`) and the `__schema__` lookup wiring.
  */
 
-import { createEvalAgent, extractText } from '@n8n/instance-ai';
+import { createEvalAgent, extractText } from '@MNI/instance-ai';
 import type {
 	WorkflowJSON,
 	OutputSchemaLookup,
 	PinDataGenerationInstructions,
 	DataTableColumnInfo,
-} from '@n8n/workflow-sdk';
+} from '@MNI/workflow-sdk';
 import {
 	buildDateAnchors,
 	buildFieldViolationRetryMessage,
@@ -28,11 +28,11 @@ import {
 	parsePinDataResponse,
 	PIN_DATA_SYSTEM_PROMPT,
 	repairStructuredOutput,
-} from '@n8n/workflow-sdk';
-import { OperationalError } from 'n8n-workflow';
+} from '@MNI/workflow-sdk';
+import { OperationalError } from 'MNI-workflow';
 
 // Re-exports: existing consumers/tests import these from this module.
-export { findOutputParserTargets, repairStructuredOutput } from '@n8n/workflow-sdk';
+export { findOutputParserTargets, repairStructuredOutput } from '@MNI/workflow-sdk';
 
 type PinData = Record<string, Array<Record<string, unknown>>>;
 

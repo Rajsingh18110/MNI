@@ -4,13 +4,13 @@ import { storeToRefs } from 'pinia';
 import { useRoute, useRouter } from 'vue-router';
 import { useResizeObserver } from '@vueuse/core';
 import { v4 as uuidv4 } from 'uuid';
-import type { InstanceAiAttachment, InstanceAiThreadSource } from '@n8n/api-types';
-import { useI18n, type BaseTextKey } from '@n8n/i18n';
-import { useChatInputAutoFocus } from '@n8n/design-system';
-import { useRootStore } from '@n8n/stores/useRootStore';
-import { useToast } from '@n8n/composables/useToast';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
-import { TELEMETRY_EVENT } from '@n8n/telemetry';
+import type { InstanceAiAttachment, InstanceAiThreadSource } from '@MNI/api-types';
+import { useI18n, type BaseTextKey } from '@MNI/i18n';
+import { useChatInputAutoFocus } from '@MNI/design-system';
+import { useRootStore } from '@MNI/stores/useRootStore';
+import { useToast } from '@MNI/composables/useToast';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
+import { TELEMETRY_EVENT } from '@MNI/telemetry';
 import { countAttachedNodes } from './utils/buildNodesAttachment';
 import { useDocumentTitle } from '@/app/composables/useDocumentTitle';
 import { usePageRedirectionHelper } from '@/app/composables/usePageRedirectionHelper';
@@ -19,8 +19,8 @@ import {
 	INSTANCE_AI_INSPIRATION_FROM_TAXONOMY_EXPERIMENT,
 	INSTANCE_AI_PERSONALIZED_PROMPT_SUGGESTIONS_EXPERIMENT,
 } from '@/app/constants/experiments';
-import { useSettingsStore } from '@n8n/stores/settings.store';
-import { useCloudPlanStore } from '@n8n/stores/cloudPlan.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
+import { useCloudPlanStore } from '@MNI/stores/cloudPlan.store';
 import { useInstanceAiStore } from './instanceAi.store';
 import type { InstanceAiMessageAuthorship, InstanceAiPrefillDeclaration } from './prefills';
 import { useInstanceAiSettingsStore } from './instanceAiSettings.store';

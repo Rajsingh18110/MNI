@@ -1,5 +1,5 @@
-import type { IDataObject, JsonObject } from 'n8n-workflow';
-import { NodeApiError } from 'n8n-workflow';
+import type { IDataObject, JsonObject } from 'MNI-workflow';
+import { NodeApiError } from 'MNI-workflow';
 
 import { NOT_FOUND_CODES, NOT_FOUND_MESSAGE, REQUIRED_PERMISSIONS } from './constants';
 import {

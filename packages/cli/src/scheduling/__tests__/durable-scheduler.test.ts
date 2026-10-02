@@ -1,10 +1,10 @@
-import { mockLogger } from '@n8n/backend-test-utils';
-import type { GlobalConfig } from '@n8n/config';
-import { ScheduledJobOwnerType } from '@n8n/constants';
-import type { DataSource, ScheduledJobRepository, ScheduledTaskRepository } from '@n8n/db';
-import type { Scheduler, SchedulerPasses } from '@n8n/scheduler';
-import { createScheduler } from '@n8n/scheduler';
-import type { InstanceSettings, Tracing } from 'n8n-core';
+import { mockLogger } from '@MNI/backend-test-utils';
+import type { GlobalConfig } from '@MNI/config';
+import { ScheduledJobOwnerType } from '@MNI/constants';
+import type { DataSource, ScheduledJobRepository, ScheduledTaskRepository } from '@MNI/db';
+import type { Scheduler, SchedulerPasses } from '@MNI/scheduler';
+import { createScheduler } from '@MNI/scheduler';
+import type { InstanceSettings, Tracing } from 'MNI-core';
 import { mock } from 'vitest-mock-extended';
 
 import type { PrometheusSchedulerMetricsService } from '@/metrics/prometheus/scheduler-metrics.service';
@@ -20,8 +20,8 @@ import type { WorkflowScheduledJobOwner } from '../workflow-scheduled-job-owner'
 
 // Keep the real exports (e.g. pollLookaheadSeconds) so the wiring is tested
 // against the actual formula; only the scheduler factory is stubbed.
-vi.mock('@n8n/scheduler', async (importOriginal) => ({
-	...(await importOriginal<typeof import('@n8n/scheduler')>()),
+vi.mock('@MNI/scheduler', async (importOriginal) => ({
+	...(await importOriginal<typeof import('@MNI/scheduler')>()),
 	createScheduler: vi.fn(),
 }));
 

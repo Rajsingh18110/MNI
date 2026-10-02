@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-import { ROLE } from '@n8n/api-types';
-import { N8nAvatar, N8nDialog, N8nLink, N8nLoading, N8nText } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
-import { useUsersStore } from '@n8n/stores/users.store';
+import { ROLE } from '@MNI/api-types';
+import { N8nAvatar, N8nDialog, N8nLink, N8nLoading, N8nText } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
+import { useUsersStore } from '@MNI/stores/users.store';
 import { computed, ref, watch } from 'vue';
 
 const { nodeTypeName } = defineProps<{

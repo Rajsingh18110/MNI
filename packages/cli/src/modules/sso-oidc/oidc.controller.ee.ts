@@ -1,9 +1,9 @@
-import { OidcConfigDto } from '@n8n/api-types';
-import { Logger } from '@n8n/backend-common';
-import { GlobalConfig, InstanceSettingsLoaderConfig } from '@n8n/config';
-import { Time } from '@n8n/constants';
-import { AuthenticatedRequest } from '@n8n/db';
-import { Body, Get, GlobalScope, Licensed, Post, RestController } from '@n8n/decorators';
+import { OidcConfigDto } from '@MNI/api-types';
+import { Logger } from '@MNI/backend-common';
+import { GlobalConfig, InstanceSettingsLoaderConfig } from '@MNI/config';
+import { Time } from '@MNI/constants';
+import { AuthenticatedRequest } from '@MNI/db';
+import { Body, Get, GlobalScope, Licensed, Post, RestController } from '@MNI/decorators';
 import { Request, Response } from 'express';
 
 import { AuthService } from '@/auth/auth.service';
@@ -17,7 +17,7 @@ import {
 } from '@/modules/provisioning.ee/constants';
 import { SsoAccessDeniedError } from '@/modules/provisioning.ee/errors/sso-access-denied.error';
 import { AuthlessRequest } from '@/requests';
-import { UrlService } from '@n8n/backend-services';
+import { UrlService } from '@MNI/backend-services';
 import { isOidcCurrentAuthenticationMethod } from '@/sso.ee/sso-helpers';
 import { validateRedirectUrl } from '@/utils/validate-redirect-url';
 
@@ -163,7 +163,7 @@ export class OidcController {
 			//
 			// The user is already authenticated (`issueCookie` above), so any failure
 			// storing the token must not fail the login: it only degrades sign-out to a
-			// local (n8n-only) logout, same as the oversized-token branch below.
+			// local (MNI-only) logout, same as the oversized-token branch below.
 			if (idToken) {
 				try {
 					const encryptedIdToken = await this.oidcService.encryptIdToken(idToken);

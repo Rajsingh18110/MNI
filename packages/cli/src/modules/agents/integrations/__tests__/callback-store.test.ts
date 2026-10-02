@@ -1,6 +1,6 @@
-import { LockService } from '@n8n/backend-common';
-import type { GlobalConfig } from '@n8n/config';
-import { Container } from '@n8n/di';
+import { LockService } from '@MNI/backend-common';
+import type { GlobalConfig } from '@MNI/config';
+import { Container } from '@MNI/di';
 import { mock } from 'vitest-mock-extended';
 
 import { CacheService } from '@/services/cache/cache.service';

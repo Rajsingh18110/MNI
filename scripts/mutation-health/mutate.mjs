@@ -286,7 +286,7 @@ function findPackageRoot(fromAbs) {
 // --- diff-mode planning (pure helpers exported for the unit tests) ---
 
 // Stryker's dry run stops with SIGABRT on the isolated-vm engine. See DEVP-257.
-const BLOCKED_PACKAGES = new Set(['@n8n/expression-runtime']);
+const BLOCKED_PACKAGES = new Set(['@MNI/expression-runtime']);
 
 const NON_SOURCE = [
 	/\.d\.ts$/,
@@ -985,9 +985,9 @@ Options:
                         or package-relative. Required for ${CLI_PACKAGE_DIR} targets.
 
   # one file, whole
-  node scripts/mutation-health/mutate.mjs packages/@n8n/crdt/src/utils.ts
+  node scripts/mutation-health/mutate.mjs packages/@MNI/crdt/src/utils.ts
   # one file, only lines 40-75
-  node scripts/mutation-health/mutate.mjs packages/@n8n/crdt/src/utils.ts:40-75
+  node scripts/mutation-health/mutate.mjs packages/@MNI/crdt/src/utils.ts:40-75
   # package-relative target
   node scripts/mutation-health/mutate.mjs src/cron.ts --package-dir packages/workflow
   # a cli target, scoped to the tests that must kill its mutants

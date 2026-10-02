@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call, @typescript-eslint/unbound-method -- vi mocks */
 import type { Mock } from 'vitest';
-import { mockInstance } from '@n8n/backend-test-utils';
-import { PrometheusMetricsConfig } from '@n8n/config';
+import { mockInstance } from '@MNI/backend-test-utils';
+import { PrometheusMetricsConfig } from '@MNI/config';
 import { mock } from 'vitest-mock-extended';
 import promClient from 'prom-client';
 
@@ -15,7 +15,7 @@ vi.mock('prom-client');
 
 describe('PrometheusInstanceAiMetricsService', () => {
 	const config = mockInstance(PrometheusMetricsConfig, {
-		prefix: 'n8n_',
+		prefix: 'MNI_',
 	});
 	const eventService = mock<EventService>();
 	const runProbe = mock<InstanceAiRunProbe>();
@@ -29,7 +29,7 @@ describe('PrometheusInstanceAiMetricsService', () => {
 	}
 
 	beforeEach(() => {
-		Object.assign(config, { prefix: 'n8n_' });
+		Object.assign(config, { prefix: 'MNI_' });
 		service = new PrometheusInstanceAiMetricsService(config, eventService, runProbe);
 		mockCounterInc = vi.fn();
 		promClient.Counter.prototype.inc = mockCounterInc;
@@ -44,7 +44,7 @@ describe('PrometheusInstanceAiMetricsService', () => {
 	});
 
 	describe('enabled', () => {
-		it('is always on (gated by N8N_METRICS via init)', () => {
+		it('is always on (gated by MNI_METRICS via init)', () => {
 			expect(service.enabled).toBe(true);
 		});
 	});
@@ -54,7 +54,7 @@ describe('PrometheusInstanceAiMetricsService', () => {
 			service.init();
 
 			expect(promClient.Counter).toHaveBeenCalledWith({
-				name: 'n8n_instance_ai_runs_total',
+				name: 'MNI_instance_ai_runs_total',
 				help: 'Total number of Instance AI runs.',
 				labelNames: ['status', 'model'],
 			});
@@ -64,7 +64,7 @@ describe('PrometheusInstanceAiMetricsService', () => {
 			service.init();
 
 			expect(promClient.Histogram).toHaveBeenCalledWith({
-				name: 'n8n_instance_ai_run_duration_seconds',
+				name: 'MNI_instance_ai_run_duration_seconds',
 				help: 'Instance AI run duration in seconds.',
 				labelNames: ['status'],
 				buckets: DURATION_BUCKETS_SECONDS,
@@ -75,7 +75,7 @@ describe('PrometheusInstanceAiMetricsService', () => {
 			service.init();
 
 			expect(promClient.Counter).toHaveBeenCalledWith({
-				name: 'n8n_instance_ai_tokens_total',
+				name: 'MNI_instance_ai_tokens_total',
 				help: 'Total number of tokens used by Instance AI runs.',
 				labelNames: ['type'],
 			});
@@ -85,7 +85,7 @@ describe('PrometheusInstanceAiMetricsService', () => {
 			service.init();
 
 			expect(promClient.Counter).toHaveBeenCalledWith({
-				name: 'n8n_instance_ai_cost_usd_total',
+				name: 'MNI_instance_ai_cost_usd_total',
 				help: 'Total estimated cost in USD of Instance AI runs (models.dev pricing).',
 			});
 		});
@@ -95,7 +95,7 @@ describe('PrometheusInstanceAiMetricsService', () => {
 			service.init();
 
 			const gaugeOptions = (promClient.Gauge as unknown as Mock).mock.calls.find(
-				(c) => c[0]?.name === 'n8n_instance_ai_active_runs',
+				(c) => c[0]?.name === 'MNI_instance_ai_active_runs',
 			)?.[0];
 			expect(gaugeOptions).toBeDefined();
 			expect(gaugeOptions.help).toBe('Number of Instance AI runs currently executing.');

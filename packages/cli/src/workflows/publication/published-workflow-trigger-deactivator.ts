@@ -1,9 +1,9 @@
-import { Logger } from '@n8n/backend-common';
-import { WorkflowsConfig } from '@n8n/config';
-import { Time } from '@n8n/constants';
-import { OnLeaderStepdown, OnShutdown } from '@n8n/decorators';
-import { Service } from '@n8n/di';
-import { ActiveWorkflowTriggers, ErrorReporter, InstanceSettings } from 'n8n-core';
+import { Logger } from '@MNI/backend-common';
+import { WorkflowsConfig } from '@MNI/config';
+import { Time } from '@MNI/constants';
+import { OnLeaderStepdown, OnShutdown } from '@MNI/decorators';
+import { Service } from '@MNI/di';
+import { ActiveWorkflowTriggers, ErrorReporter, InstanceSettings } from 'MNI-core';
 
 import { EventService } from '@/events/event.service';
 import { WorkflowPublicationLifecycleLock } from '@/workflows/publication/workflow-publication-lifecycle-lock';

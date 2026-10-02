@@ -1,4 +1,4 @@
-import type { IExecuteFunctions, IBinaryData, INodeExecutionData } from 'n8n-workflow';
+import type { IExecuteFunctions, IBinaryData, INodeExecutionData } from 'MNI-workflow';
 
 import { Twist } from '../Twist.node';
 import * as GenericFunctions from '../GenericFunctions';

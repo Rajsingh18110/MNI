@@ -1,14 +1,14 @@
-import { StartTestRunRequestDto, type MetricScale } from '@n8n/api-types';
+import { StartTestRunRequestDto, type MetricScale } from '@MNI/api-types';
 import {
 	EvaluationConfigRepository,
 	TestCaseExecutionRepository,
 	TestRunRepository,
-} from '@n8n/db';
-import type { TestRun, User } from '@n8n/db';
-import { Body, Delete, Get, Post, RestController } from '@n8n/decorators';
-import { type Scope } from '@n8n/permissions';
+} from '@MNI/db';
+import type { TestRun, User } from '@MNI/db';
+import { Body, Delete, Get, Post, RestController } from '@MNI/decorators';
+import { type Scope } from '@MNI/permissions';
 import express from 'express';
-import { UnexpectedError } from 'n8n-workflow';
+import { UnexpectedError } from 'MNI-workflow';
 
 import { resolveConfigMetricScales, runMetricScales } from './metric-scales';
 

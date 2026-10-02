@@ -1,7 +1,7 @@
-import { Logger } from '@n8n/backend-common';
-import { mockInstance } from '@n8n/backend-test-utils';
-import { ErrorReporter } from 'n8n-core';
-import { createRunExecutionData, type ITaskData } from 'n8n-workflow';
+import { Logger } from '@MNI/backend-common';
+import { mockInstance } from '@MNI/backend-test-utils';
+import { ErrorReporter } from 'MNI-core';
+import { createRunExecutionData, type ITaskData } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import { ExecutionPersistence } from '@/executions/execution-persistence';

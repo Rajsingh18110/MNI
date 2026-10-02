@@ -15,14 +15,14 @@ import type {
 	SimplifiedNodeType,
 	ToggleNodeCreatorOptions,
 } from '@/Interface';
-import { STORES } from '@n8n/stores';
+import { STORES } from '@MNI/stores';
 import { defineStore } from 'pinia';
 
 import { useExternalHooks } from '@/app/composables/useExternalHooks';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
 import { useAiGatewayStore } from '@/app/stores/aiGateway.store';
 import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { useUIStore } from '@/app/stores/ui.store';
 import { useRouteWorkflowId } from '@/app/composables/useWorkflowId';
 import type { TelemetryNdvType } from '@/app/types/telemetry';
@@ -37,8 +37,8 @@ import {
 } from '@/features/workflows/canvas/canvas.utils';
 import type { Connection } from '@vue-flow/core';
 import get from 'lodash/get';
-import type { IDataObject, NodeConnectionType } from 'n8n-workflow';
-import { NodeConnectionTypes, isCommunityPackageName } from 'n8n-workflow';
+import type { IDataObject, NodeConnectionType } from 'MNI-workflow';
+import { NodeConnectionTypes, isCommunityPackageName } from 'MNI-workflow';
 import { computed, nextTick, ref } from 'vue';
 import { useGetNodeCreatorFilter } from './composables/useGetNodeCreatorFilter';
 import { useViewStacks, type ViewStack } from './composables/useViewStacks';

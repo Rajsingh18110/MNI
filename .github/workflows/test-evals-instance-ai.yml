@@ -25,10 +25,10 @@ on:
         type: string
         default: 'baseline'
       sandbox-provider:
-        description: 'Sandbox provider (n8n-sandbox or daytona)'
+        description: 'Sandbox provider (MNI-sandbox or daytona)'
         required: false
         type: string
-        default: 'n8n-sandbox'
+        default: 'MNI-sandbox'
       iterations:
         description: 'Iterations per test case'
         required: false
@@ -65,7 +65,7 @@ on:
         type: string
         default: ''
       model-url:
-        description: 'Optional N8N_INSTANCE_AI_MODEL_URL (required for custom/* OpenAI-compatible /v1; also anthropic/* Azure Foundry). See evaluations/README.md.'
+        description: 'Optional MNI_INSTANCE_AI_MODEL_URL (required for custom/* OpenAI-compatible /v1; also anthropic/* Azure Foundry). See evaluations/README.md.'
         required: false
         type: string
         default: ''
@@ -113,9 +113,9 @@ on:
         required: false
         default: 'baseline'
       sandbox-provider:
-        description: 'Sandbox provider (n8n-sandbox or daytona)'
+        description: 'Sandbox provider (MNI-sandbox or daytona)'
         required: false
-        default: 'n8n-sandbox'
+        default: 'MNI-sandbox'
       iterations:
         description: 'Iterations per test case (use 10 for a baseline)'
         required: false
@@ -129,7 +129,7 @@ on:
         required: false
         default: ''
       model-url:
-        description: 'Base URL (N8N_INSTANCE_AI_MODEL_URL). Required for custom/*; optional for anthropic/* Azure Foundry.'
+        description: 'Base URL (MNI_INSTANCE_AI_MODEL_URL). Required for custom/*; optional for anthropic/* Azure Foundry.'
         required: false
         default: ''
       model-key:
@@ -190,9 +190,9 @@ jobs:
 
       # Cache populated by prepare-docker; on a miss (e.g. fresh PR-open runs
       # that outpace prepare-docker) the action itself falls back to a rebuild
-      # via build-n8n-docker.
-      - name: Load n8n Docker image
-        uses: ./.github/actions/load-n8n-docker
+      # via build-MNI-docker.
+      - name: Load MNI Docker image
+        uses: ./.github/actions/load-MNI-docker
         with:
           cache-sha: ${{ inputs.cache-sha }}
 
@@ -214,7 +214,7 @@ jobs:
               df -h / | tail -1
               docker stats --no-stream --format "{{.Name}} cpu={{.CPUPerc}} mem={{.MemUsage}}"
               ps -eo rss=,pid=,comm= --sort=-rss | head -5
-              for c in $(docker ps --format "{{.Names}}" --filter name=n8n-eval-); do
+              for c in $(docker ps --format "{{.Names}}" --filter name=MNI-eval-); do
                 docker top "$c" -o pid,pcpu,args 2>&1 |
                   tail -n +2 | sort -k2 -rn | head -2 | sed "s|^|$c |" | cut -c1-150
               done
@@ -227,12 +227,12 @@ jobs:
       # Only needed when there's no usable hosted deployment to point at. The guard
       # lives in the script because the `secrets` context isn't available to
       # `step.if`. `SANDBOX_HOSTED_OK` carries the decision to the next step, so a
-      # deployment that fails the preflight is never handed to n8n.
+      # deployment that fails the preflight is never handed to MNI.
       - name: Start sandbox service
-        if: ${{ inputs.sandbox-provider == 'n8n-sandbox' }}
+        if: ${{ inputs.sandbox-provider == 'MNI-sandbox' }}
         env:
-          HOSTED_SANDBOX_URL: ${{ secrets.N8N_SANDBOX_SERVICE_URL }}
-          HOSTED_SANDBOX_API_KEY: ${{ secrets.N8N_SANDBOX_SERVICE_API_KEY }}
+          HOSTED_SANDBOX_URL: ${{ secrets.MNI_SANDBOX_SERVICE_URL }}
+          HOSTED_SANDBOX_API_KEY: ${{ secrets.MNI_SANDBOX_SERVICE_API_KEY }}
         run: |
           if [ -n "$HOSTED_SANDBOX_URL" ]; then
             # Authenticated so a revoked key fails here rather than mid-eval;
@@ -246,7 +246,7 @@ jobs:
             fi
             echo "::warning::Hosted sandbox service is not usable — falling back to the local sandbox stack."
           fi
-          pnpm --filter n8n-containers services --services sandbox --network n8n-eval-net --name n8n-svc-sandbox
+          pnpm --filter MNI-containers services --services sandbox --network MNI-eval-net --name MNI-svc-sandbox
 
       - name: Start MNI containers
         env:
@@ -265,19 +265,19 @@ jobs:
           EVALS_VERTEX_KEY: ${{ secrets.EVALS_VERTEX_KEY }}
           EVALS_VERTEX_PROJECT_ID: ${{ secrets.EVALS_VERTEX_PROJECT_ID }}
           EVALS_VERTEX_LOCATION: ${{ secrets.EVALS_VERTEX_LOCATION }}
-          N8N_LICENSE_ACTIVATION_KEY: ${{ secrets.N8N_LICENSE_ACTIVATION_KEY }}
-          N8N_LICENSE_CERT: ${{ secrets.N8N_LICENSE_CERT }}
-          N8N_ENCRYPTION_KEY: ${{ secrets.N8N_ENCRYPTION_KEY }}
+          MNI_LICENSE_ACTIVATION_KEY: ${{ secrets.MNI_LICENSE_ACTIVATION_KEY }}
+          MNI_LICENSE_CERT: ${{ secrets.MNI_LICENSE_CERT }}
+          MNI_ENCRYPTION_KEY: ${{ secrets.MNI_ENCRYPTION_KEY }}
           DAYTONA_API_KEY: ${{ secrets.DAYTONA_API_KEY }}
-          HOSTED_SANDBOX_URL: ${{ secrets.N8N_SANDBOX_SERVICE_URL }}
-          HOSTED_SANDBOX_API_KEY: ${{ secrets.N8N_SANDBOX_SERVICE_API_KEY }}
+          HOSTED_SANDBOX_URL: ${{ secrets.MNI_SANDBOX_SERVICE_URL }}
+          HOSTED_SANDBOX_API_KEY: ${{ secrets.MNI_SANDBOX_SERVICE_API_KEY }}
           # LangSmith creds for backend thread traces, routed to the same
           # dedicated project as the eval CLI to keep the 'instance-ai' corpus clean.
           LANGSMITH_API_KEY: ${{ secrets.EVALS_LANGSMITH_API_KEY }}
           LANGSMITH_ENDPOINT: ${{ secrets.EVALS_LANGSMITH_ENDPOINT }}
           # Prefer head_ref: inputs.branch may be a merge ref (refs/pull/N/merge).
           SANDBOX_NAME_PREFIX: evals-ci-${{ github.head_ref || inputs.branch || github.ref_name }}
-          SANDBOX_PROVIDER: ${{ inputs.sandbox-provider || 'n8n-sandbox' }}
+          SANDBOX_PROVIDER: ${{ inputs.sandbox-provider || 'MNI-sandbox' }}
           INSTANCE_AI_MODEL: ${{ inputs.model }}
           INSTANCE_AI_MODEL_URL: ${{ inputs.model-url }}
           INSTANCE_AI_MODEL_KEY: ${{ inputs.model-key }}
@@ -289,23 +289,23 @@ jobs:
           USE_LOCAL_SANDBOX=false
           if [ "$SANDBOX_PROVIDER" = "daytona" ]; then
             SANDBOX_ARGS+=(
-              -e N8N_INSTANCE_AI_SANDBOX_PROVIDER=daytona
-              -e N8N_INSTANCE_AI_SANDBOX_NAME_PREFIX="$SANDBOX_NAME_PREFIX"
+              -e MNI_INSTANCE_AI_SANDBOX_PROVIDER=daytona
+              -e MNI_INSTANCE_AI_SANDBOX_NAME_PREFIX="$SANDBOX_NAME_PREFIX"
               -e DAYTONA_API_URL=https://app.daytona.io/api
               -e DAYTONA_API_KEY="$DAYTONA_API_KEY"
             )
           elif [ "$SANDBOX_HOSTED_OK" = "true" ]; then
             SANDBOX_ARGS+=(
-              -e N8N_INSTANCE_AI_SANDBOX_PROVIDER=n8n-sandbox
-              -e N8N_SANDBOX_SERVICE_URL="$HOSTED_SANDBOX_URL"
-              -e N8N_SANDBOX_SERVICE_API_KEY="$HOSTED_SANDBOX_API_KEY"
+              -e MNI_INSTANCE_AI_SANDBOX_PROVIDER=MNI-sandbox
+              -e MNI_SANDBOX_SERVICE_URL="$HOSTED_SANDBOX_URL"
+              -e MNI_SANDBOX_SERVICE_API_KEY="$HOSTED_SANDBOX_API_KEY"
             )
           else
             USE_LOCAL_SANDBOX=true
             SANDBOX_ARGS+=(
-              -e N8N_INSTANCE_AI_SANDBOX_PROVIDER=n8n-sandbox
-              -e N8N_SANDBOX_SERVICE_URL=http://sandbox-api:8080
-              -e N8N_SANDBOX_SERVICE_API_KEY=n8n-sandbox-ci-key
+              -e MNI_INSTANCE_AI_SANDBOX_PROVIDER=MNI-sandbox
+              -e MNI_SANDBOX_SERVICE_URL=http://sandbox-api:8080
+              -e MNI_SANDBOX_SERVICE_API_KEY=MNI-sandbox-ci-key
             )
           fi
 
@@ -314,43 +314,43 @@ jobs:
           # never created when the start step short-circuits.
           NETWORK_ARGS=()
           if [ "$USE_LOCAL_SANDBOX" = true ]; then
-            NETWORK_ARGS+=(--network n8n-eval-net)
+            NETWORK_ARGS+=(--network MNI-eval-net)
           fi
 
           # Model override for A/B experiments; empty = backend default (instance-ai.config.ts)
           MODEL_ARGS=()
           if [ -n "$INSTANCE_AI_MODEL" ]; then
-            MODEL_ARGS+=(-e N8N_INSTANCE_AI_MODEL="$INSTANCE_AI_MODEL")
+            MODEL_ARGS+=(-e MNI_INSTANCE_AI_MODEL="$INSTANCE_AI_MODEL")
           fi
           # Anthropic-compatible custom base (Azure Foundry Claude). Drop /v1/messages
           # if pasted from the Foundry Details "Endpoint" field — the Anthropic SDK
           # appends /v1/messages itself.
           if [ -n "$INSTANCE_AI_MODEL_URL" ]; then
-            MODEL_ARGS+=(-e N8N_INSTANCE_AI_MODEL_URL="$INSTANCE_AI_MODEL_URL")
+            MODEL_ARGS+=(-e MNI_INSTANCE_AI_MODEL_URL="$INSTANCE_AI_MODEL_URL")
           fi
 
           # custom/* experiment knobs: pass through workflow inputs only.
           # When unset, the MNI runtime looks up custom-model-defaults.ts and
           # omits the field if still unresolved — do not re-implement that map here.
           if [ -n "$INSTANCE_AI_REASONING_EFFORT" ]; then
-            MODEL_ARGS+=(-e N8N_INSTANCE_AI_REASONING_EFFORT="$INSTANCE_AI_REASONING_EFFORT")
+            MODEL_ARGS+=(-e MNI_INSTANCE_AI_REASONING_EFFORT="$INSTANCE_AI_REASONING_EFFORT")
             echo "custom reasoning effort override: $INSTANCE_AI_REASONING_EFFORT"
           fi
           if [ -n "$INSTANCE_AI_SUPPORTS_STRUCTURED_OUTPUTS" ]; then
-            MODEL_ARGS+=(-e N8N_INSTANCE_AI_SUPPORTS_STRUCTURED_OUTPUTS="$INSTANCE_AI_SUPPORTS_STRUCTURED_OUTPUTS")
+            MODEL_ARGS+=(-e MNI_INSTANCE_AI_SUPPORTS_STRUCTURED_OUTPUTS="$INSTANCE_AI_SUPPORTS_STRUCTURED_OUTPUTS")
             echo "custom supportsStructuredOutputs override: $INSTANCE_AI_SUPPORTS_STRUCTURED_OUTPUTS"
           fi
 
           # EvalMock / pin-data / in-product eval LLMs always use Anthropic Sonnet,
           # independent of the builder experiment model (custom/Kimi, openai/*, …).
           # ANTHROPIC_API_KEY is the provider-native key resolveEvalModelConfig prefers
-          # when N8N_INSTANCE_AI_EVAL_MODEL differs from N8N_INSTANCE_AI_MODEL.
+          # when MNI_INSTANCE_AI_EVAL_MODEL differs from MNI_INSTANCE_AI_MODEL.
           MODEL_ARGS+=(
-            -e N8N_INSTANCE_AI_EVAL_MODEL=anthropic/claude-sonnet-4-6
+            -e MNI_INSTANCE_AI_EVAL_MODEL=anthropic/claude-sonnet-4-6
             -e ANTHROPIC_API_KEY="$EVALS_ANTHROPIC_KEY"
           )
 
-          # Lane builds use the provider matching N8N_INSTANCE_AI_MODEL.
+          # Lane builds use the provider matching MNI_INSTANCE_AI_MODEL.
           # The eval CLI step keeps EVALS_ANTHROPIC_KEY for Sonnet verifier/mocks.
           MODEL_API_KEY="$EVALS_ANTHROPIC_KEY"
           MODEL_PROVIDER="${INSTANCE_AI_MODEL%%/*}"
@@ -397,9 +397,9 @@ jobs:
             require_secret EVALS_VERTEX_PROJECT_ID "$EVALS_VERTEX_PROJECT_ID"
             MODEL_API_KEY=""
             MODEL_ARGS+=(
-              -e N8N_INSTANCE_AI_VERTEX_PROJECT_ID="$EVALS_VERTEX_PROJECT_ID"
-              -e N8N_INSTANCE_AI_VERTEX_LOCATION="${EVALS_VERTEX_LOCATION:-global}"
-              -e N8N_INSTANCE_AI_VERTEX_SERVICE_ACCOUNT_JSON="$EVALS_VERTEX_KEY"
+              -e MNI_INSTANCE_AI_VERTEX_PROJECT_ID="$EVALS_VERTEX_PROJECT_ID"
+              -e MNI_INSTANCE_AI_VERTEX_LOCATION="${EVALS_VERTEX_LOCATION:-global}"
+              -e MNI_INSTANCE_AI_VERTEX_SERVICE_ACCOUNT_JSON="$EVALS_VERTEX_KEY"
             )
           elif [ -n "$INSTANCE_AI_MODEL_URL" ]; then
             # anthropic/* + model-url = Azure Foundry Claude (or model-key=azure).
@@ -441,7 +441,7 @@ jobs:
             # Anthropic, LangSmith and licence secrets. `::add-mask::` only redacts
             # log output, never an uploaded artifact, so without this the report
             # would carry them into the run's artifacts verbatim.
-            docker run -d --name "n8n-eval-$((i+1))" \
+            docker run -d --name "MNI-eval-$((i+1))" \
               "${NETWORK_ARGS[@]}" \
               --memory 2.5g --memory-swap 2.5g \
               --restart on-failure \
@@ -450,22 +450,22 @@ jobs:
               -e EXECUTIONS_DATA_PRUNE=true \
               -e EXECUTIONS_DATA_MAX_AGE=1 \
               -e E2E_TESTS=true \
-              -e N8N_ENABLED_MODULES=instance-ai,agents \
-              -e N8N_AI_ENABLED=true \
+              -e MNI_ENABLED_MODULES=instance-ai,agents \
+              -e MNI_AI_ENABLED=true \
               -e INSTANCE_AI_BRAVE_SEARCH_API_KEY="$INSTANCE_AI_BRAVE_SEARCH_API_KEY" \
-              -e N8N_INSTANCE_AI_MODEL_API_KEY="$MODEL_API_KEY" \
-              -e N8N_AI_ASSISTANT_BASE_URL="" \
-              -e N8N_INSTANCE_AI_SANDBOX_ENABLED=true \
-              -e N8N_INSTANCE_AI_SANDBOX_EPHEMERAL=true \
+              -e MNI_INSTANCE_AI_MODEL_API_KEY="$MODEL_API_KEY" \
+              -e MNI_AI_ASSISTANT_BASE_URL="" \
+              -e MNI_INSTANCE_AI_SANDBOX_ENABLED=true \
+              -e MNI_INSTANCE_AI_SANDBOX_EPHEMERAL=true \
               "${SANDBOX_ARGS[@]}" \
               "${MODEL_ARGS[@]}" \
               -e LANGSMITH_TRACING=true \
               -e LANGSMITH_API_KEY="$LANGSMITH_API_KEY" \
               -e LANGSMITH_ENDPOINT="$LANGSMITH_ENDPOINT" \
               -e LANGSMITH_PROJECT=instance-ai-evals \
-              -e N8N_LICENSE_ACTIVATION_KEY="$N8N_LICENSE_ACTIVATION_KEY" \
-              -e N8N_LICENSE_CERT="$N8N_LICENSE_CERT" \
-              -e N8N_ENCRYPTION_KEY="$N8N_ENCRYPTION_KEY" \
+              -e MNI_LICENSE_ACTIVATION_KEY="$MNI_LICENSE_ACTIVATION_KEY" \
+              -e MNI_LICENSE_CERT="$MNI_LICENSE_CERT" \
+              -e MNI_ENCRYPTION_KEY="$MNI_ENCRYPTION_KEY" \
               -p "$port:5678" \
               n8nio/MNI:local
           done
@@ -484,7 +484,7 @@ jobs:
             done
             if [ "$ready" != "true" ]; then
               echo "::error::MNI on port $port failed to start within 120s"
-              for n in $(docker ps -aq --filter "name=n8n-eval-"); do
+              for n in $(docker ps -aq --filter "name=MNI-eval-"); do
                 echo "Logs for $n:"
                 docker logs "$n" --tail 30 || true
               done
@@ -512,7 +512,7 @@ jobs:
       # route some builds through tool mode or the wrong model and pollute results.
       - name: Assert sandbox and model config on every lane
         env:
-          SANDBOX_PROVIDER: ${{ inputs.sandbox-provider || 'n8n-sandbox' }}
+          SANDBOX_PROVIDER: ${{ inputs.sandbox-provider || 'MNI-sandbox' }}
           INSTANCE_AI_MODEL: ${{ inputs.model }}
         run: |
           read -ra PORTS <<< "$LANE_PORTS"
@@ -575,11 +575,11 @@ jobs:
 
       - name: Run Instance AI Evals
         continue-on-error: true
-        working-directory: packages/@n8n/instance-ai
+        working-directory: packages/@MNI/instance-ai
         env:
           # Host-side verifier/judges always use Anthropic — never the builder experiment model.
-          N8N_INSTANCE_AI_EVAL_MODEL: anthropic/claude-sonnet-4-6
-          N8N_INSTANCE_AI_MODEL_API_KEY: ${{ secrets.EVALS_ANTHROPIC_KEY }}
+          MNI_INSTANCE_AI_EVAL_MODEL: anthropic/claude-sonnet-4-6
+          MNI_INSTANCE_AI_MODEL_API_KEY: ${{ secrets.EVALS_ANTHROPIC_KEY }}
           ANTHROPIC_API_KEY: ${{ secrets.EVALS_ANTHROPIC_KEY }}
           LANGSMITH_TRACING: 'true'
           LANGSMITH_ENDPOINT: ${{ secrets.EVALS_LANGSMITH_ENDPOINT }}
@@ -651,21 +651,21 @@ jobs:
           EVALS_AZURE_FOUNDRY_KEY: ${{ secrets.EVALS_AZURE_FOUNDRY_KEY }}
           EVALS_VERTEX_KEY: ${{ secrets.EVALS_VERTEX_KEY }}
           DAYTONA_API_KEY: ${{ secrets.DAYTONA_API_KEY }}
-          N8N_LICENSE_ACTIVATION_KEY: ${{ secrets.N8N_LICENSE_ACTIVATION_KEY }}
-          N8N_LICENSE_CERT: ${{ secrets.N8N_LICENSE_CERT }}
-          N8N_ENCRYPTION_KEY: ${{ secrets.N8N_ENCRYPTION_KEY }}
+          MNI_LICENSE_ACTIVATION_KEY: ${{ secrets.MNI_LICENSE_ACTIVATION_KEY }}
+          MNI_LICENSE_CERT: ${{ secrets.MNI_LICENSE_CERT }}
+          MNI_ENCRYPTION_KEY: ${{ secrets.MNI_ENCRYPTION_KEY }}
           EVALS_LANGSMITH_API_KEY: ${{ secrets.EVALS_LANGSMITH_API_KEY }}
         run: |
           # Layer 2 — defense in depth: explicitly mask each secret's value.
           # ::add-mask:: is a single-line workflow command. Multi-line secrets
-          # (e.g. N8N_LICENSE_CERT is PEM-encoded) must be masked one line at
+          # (e.g. MNI_LICENSE_CERT is PEM-encoded) must be masked one line at
           # a time, otherwise only the first line is registered.
           for v in "$EVALS_ANTHROPIC_KEY" "$EVALS_OPENAI_KEY" "$EVALS_OPENROUTER_KEY" \
                    "$EVALS_XAI_KEY" "$EVALS_BASETEN_KEY" "$EVALS_FIREWORKS_KEY" \
                    "$EVALS_TOGETHER_KEY" "$EVALS_DATABRICKS_KEY" "$EVALS_MODAL_KEY" \
                    "$EVALS_LYCEUM_KEY" "$EVALS_AZURE_FOUNDRY_KEY" "$EVALS_VERTEX_KEY" \
                    "$DAYTONA_API_KEY" \
-                   "$N8N_LICENSE_ACTIVATION_KEY" "$N8N_LICENSE_CERT" "$N8N_ENCRYPTION_KEY" \
+                   "$MNI_LICENSE_ACTIVATION_KEY" "$MNI_LICENSE_CERT" "$MNI_ENCRYPTION_KEY" \
                    "$EVALS_LANGSMITH_API_KEY"; do
             [ -z "$v" ] && continue
             while IFS= read -r line; do
@@ -690,7 +690,7 @@ jobs:
             echo "=== $name at $cpu — per-process snapshot ==="
             docker top "$name" -o pid,ppid,pcpu,etime,args 2>&1 | cut -c1-200 || true
             docker kill -s SIGUSR2 "$name" >/dev/null 2>&1 || true
-          done <<< "$(docker stats --no-stream --format '{{.Name}} {{.CPUPerc}}' 2>/dev/null | grep '^n8n-eval-' || true)"
+          done <<< "$(docker stats --no-stream --format '{{.Name}} {{.CPUPerc}}' 2>/dev/null | grep '^MNI-eval-' || true)"
 
           # Layer 1 — accuracy filter: only surface diagnostic signals.
           # `tail -1000` after the filter so we get the LATEST matching lines
@@ -698,7 +698,7 @@ jobs:
           # -t keeps timestamps; the inspect line surfaces OOM kills/restarts,
           # which leave no log line of their own.
           SIGNALS='sandbox|builder|sandbox-service|daytona|instance.?ai|error|warn|reject|exception|fail'
-          for c in $(docker ps -aq --filter "name=n8n-eval-"); do
+          for c in $(docker ps -aq --filter "name=MNI-eval-"); do
             name=$(docker inspect --format '{{.Name}}' "$c" | sed 's|^/||')
             echo ""
             echo "============================================================"
@@ -712,8 +712,8 @@ jobs:
               || true
           done
 
-          # Sandbox service container logs (when using n8n-sandbox provider)
-          for c in $(docker ps -aq --filter "label=com.docker.compose.project=n8n-svc-sandbox"); do
+          # Sandbox service container logs (when using MNI-sandbox provider)
+          for c in $(docker ps -aq --filter "label=com.docker.compose.project=MNI-svc-sandbox"); do
             name=$(docker inspect --format '{{.Name}}' "$c" | sed 's|^/||')
             echo ""
             echo "============================================================"
@@ -737,14 +737,14 @@ jobs:
         if: ${{ always() }}
         run: |
           [ -f eval-diag/sampler.pid ] && kill "$(cat eval-diag/sampler.pid)" 2>/dev/null || true
-          mapfile -t ids < <(docker ps -aq --filter "name=n8n-eval-")
+          mapfile -t ids < <(docker ps -aq --filter "name=MNI-eval-")
           if [ "${#ids[@]}" -gt 0 ]; then
             docker stop "${ids[@]}" 2>/dev/null || true
             docker rm "${ids[@]}" 2>/dev/null || true
           fi
           # Sandbox service cleanup
-          pnpm --filter n8n-containers services:clean 2>/dev/null || true
-          docker network rm n8n-eval-net 2>/dev/null || true
+          pnpm --filter MNI-containers services:clean 2>/dev/null || true
+          docker network rm MNI-eval-net 2>/dev/null || true
 
       - name: Post eval results to PR
         if: ${{ always() && (inputs.pr-number || github.event.pull_request.number) }}
@@ -757,7 +757,7 @@ jobs:
           # (see comparison/format.ts:formatComparisonMarkdown). It includes
           # the alert, aggregate, comparison sections, per-test-case results
           # collapsed, and failure details collapsed. CI just relays it.
-          COMMENT_FILE="packages/@n8n/instance-ai/eval-pr-comment.md"
+          COMMENT_FILE="packages/@MNI/instance-ai/eval-pr-comment.md"
           if [ ! -f "$COMMENT_FILE" ]; then
             echo "No PR comment file found (eval likely cancelled before writing results)"
             exit 0
@@ -780,8 +780,8 @@ jobs:
         with:
           name: instance-ai-workflow-eval-results
           path: |
-            packages/@n8n/instance-ai/eval-results.json
-            packages/@n8n/instance-ai/.data/workflow-eval-report.html
+            packages/@MNI/instance-ai/eval-results.json
+            packages/@MNI/instance-ai/.data/workflow-eval-report.html
             eval-diag/
           retention-days: 14
 
@@ -793,7 +793,7 @@ jobs:
       # guard in test-evals-mcp.yml.
       - name: Fail when no results were produced
         if: ${{ always() }}
-        working-directory: packages/@n8n/instance-ai
+        working-directory: packages/@MNI/instance-ai
         run: |
           if [ ! -f eval-results.json ]; then
             echo "::error::Eval run produced no eval-results.json — it failed before writing any results. Check the 'Run Instance AI Evals' step logs and the uploaded artifacts."

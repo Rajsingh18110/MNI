@@ -2,7 +2,7 @@
 	"nodes": [
 		{
 			"parameters": {},
-			"type": "n8n-nodes-base.manualTrigger",
+			"type": "MNI-nodes-base.manualTrigger",
 			"typeVersion": 1,
 			"position": [0, 0],
 			"id": "f1c5b6a8-1f5b-4a92-9bb2-3e6e8a8a0001",
@@ -22,7 +22,7 @@
 				},
 				"options": {}
 			},
-			"type": "n8n-nodes-base.set",
+			"type": "MNI-nodes-base.set",
 			"typeVersion": 3.4,
 			"position": [220, 0],
 			"id": "b2e0f1a8-5b8f-4b2b-a0c2-9b3e2d2a0002",
@@ -52,7 +52,7 @@
 				},
 				"options": {}
 			},
-			"type": "n8n-nodes-base.if",
+			"type": "MNI-nodes-base.if",
 			"typeVersion": 2.2,
 			"position": [440, 0],
 			"id": "e5f1a2b8-6c9f-4c2c-b0d2-aa4f3e3b0005",
@@ -72,7 +72,7 @@
 				},
 				"options": {}
 			},
-			"type": "n8n-nodes-base.set",
+			"type": "MNI-nodes-base.set",
 			"typeVersion": 3.4,
 			"position": [660, -80],
 			"id": "c3f1a2b8-6c9f-4c2c-b0d2-aa4f3e3b0003",
@@ -92,7 +92,7 @@
 				},
 				"options": {}
 			},
-			"type": "n8n-nodes-base.set",
+			"type": "MNI-nodes-base.set",
 			"typeVersion": 3.4,
 			"position": [660, 80],
 			"id": "d4f1a2b8-7c9f-4c2c-b0d2-bb5f3e3b0004",

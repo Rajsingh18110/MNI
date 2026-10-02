@@ -1,9 +1,9 @@
-import { LicenseState } from '@n8n/backend-common';
-import { mockInstance, getPersonalProject, testDb } from '@n8n/backend-test-utils';
-import type { CredentialsEntity, User } from '@n8n/db';
-import { GLOBAL_OWNER_ROLE } from '@n8n/db';
-import { Container } from '@n8n/di';
-import { Cipher } from 'n8n-core';
+import { LicenseState } from '@MNI/backend-common';
+import { mockInstance, getPersonalProject, testDb } from '@MNI/backend-test-utils';
+import type { CredentialsEntity, User } from '@MNI/db';
+import { GLOBAL_OWNER_ROLE } from '@MNI/db';
+import { Container } from '@MNI/di';
+import { Cipher } from 'MNI-core';
 import nock from 'nock';
 import { mock } from 'vitest-mock-extended';
 
@@ -31,7 +31,7 @@ const licenseMock = mock<LicenseState>();
 licenseMock.isLicensed.mockReturnValue(true);
 Container.set(LicenseState, licenseMock);
 
-process.env.N8N_ENV_FEAT_DYNAMIC_CREDENTIALS = 'true';
+process.env.MNI_ENV_FEAT_DYNAMIC_CREDENTIALS = 'true';
 
 mockInstance(DynamicCredentialsConfig, {
 	endpointAuthToken: 'static-test-token',

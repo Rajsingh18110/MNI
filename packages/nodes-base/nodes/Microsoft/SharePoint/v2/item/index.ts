@@ -5,8 +5,8 @@ import type {
 	INodeListSearchResult,
 	INodeProperties,
 	ResourceMapperField,
-} from 'n8n-workflow';
-import { NodeOperationError, setSafeObjectProperty } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeOperationError, setSafeObjectProperty } from 'MNI-workflow';
 
 import { type CollectionSearchOptions, searchGraphCollection } from '../helpers/graphSearch';
 import {

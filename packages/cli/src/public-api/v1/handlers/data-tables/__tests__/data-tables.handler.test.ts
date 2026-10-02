@@ -1,6 +1,6 @@
-import { mockInstance } from '@n8n/backend-test-utils';
-import { Container } from '@n8n/di';
-import { GLOBAL_MEMBER_SCOPES, type Scope } from '@n8n/permissions';
+import { mockInstance } from '@MNI/backend-test-utils';
+import { Container } from '@MNI/di';
+import { GLOBAL_MEMBER_SCOPES, type Scope } from '@MNI/permissions';
 import type { Response } from 'express';
 import type { Mock, Mocked } from 'vitest';
 

@@ -7,10 +7,10 @@ import {
 	createBuilderPayload,
 } from './builder.utils';
 import type { IWorkflowDb } from '@/Interface';
-import type { IRunExecutionData } from 'n8n-workflow';
+import type { IRunExecutionData } from 'MNI-workflow';
 
 // Mock workflowHistory API
-vi.mock('@n8n/rest-api-client/api/workflowHistory', () => ({
+vi.mock('@MNI/rest-api-client/api/workflowHistory', () => ({
 	getWorkflowVersionsByIds: vi.fn(),
 }));
 
@@ -143,7 +143,7 @@ describe('builder.utils', () => {
 
 		it('should return map of existing versions', async () => {
 			const restApiContext = { baseUrl: 'http://test.com' };
-			const workflowHistoryModule = await import('@n8n/rest-api-client/api/workflowHistory');
+			const workflowHistoryModule = await import('@MNI/rest-api-client/api/workflowHistory');
 
 			vi.mocked(workflowHistoryModule.getWorkflowVersionsByIds).mockResolvedValueOnce({
 				versions: [
@@ -174,7 +174,7 @@ describe('builder.utils', () => {
 
 		it('should return empty map when API call fails', async () => {
 			const restApiContext = { baseUrl: 'http://test.com' };
-			const workflowHistoryModule = await import('@n8n/rest-api-client/api/workflowHistory');
+			const workflowHistoryModule = await import('@MNI/rest-api-client/api/workflowHistory');
 
 			vi.mocked(workflowHistoryModule.getWorkflowVersionsByIds).mockRejectedValueOnce(
 				new Error('API error'),

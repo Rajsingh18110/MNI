@@ -1,4 +1,4 @@
-import { Logger } from '@n8n/backend-common';
+import { Logger } from '@MNI/backend-common';
 import {
 	CredentialResolver,
 	type CredentialResolverConfiguration,
@@ -6,13 +6,13 @@ import {
 	type CredentialResolverHandle,
 	CredentialResolverValidationError,
 	type ICredentialResolver,
-} from '@n8n/decorators';
-import { Cipher } from 'n8n-core';
+} from '@MNI/decorators';
+import { Cipher } from 'MNI-core';
 import {
 	type ICredentialContext,
 	type ICredentialDataDecryptedObject,
 	jsonParse,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import {
 	SlackSignatureIdentifier,

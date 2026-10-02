@@ -1,5 +1,5 @@
-import { makeRestApiRequest } from '@n8n/rest-api-client';
-import type { IRestApiContext } from '@n8n/rest-api-client';
+import { makeRestApiRequest } from '@MNI/rest-api-client';
+import type { IRestApiContext } from '@MNI/rest-api-client';
 import type {
 	InstanceAiAdminSettingsResponse,
 	InstanceAiAdminSettingsUpdateRequest,
@@ -11,7 +11,7 @@ import type {
 	InstanceAiVerifyModelRequest,
 	InstanceAiVerifySandboxRequest,
 	InstanceAiVerifySearchRequest,
-} from '@n8n/api-types';
+} from '@MNI/api-types';
 
 export async function fetchSettings(
 	context: IRestApiContext,

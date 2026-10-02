@@ -1,12 +1,12 @@
 {
-	"node": "n8n-nodes-base.set",
+	"node": "MNI-nodes-base.set",
 	"nodeVersion": "1.0",
 	"codexVersion": "1.0",
 	"categories": ["Core Nodes"],
 	"resources": {
 		"primaryDocumentation": [
 			{
-				"url": "https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-base.set/"
+				"url": "https://docs.n8n.io/integrations/builtin/core-nodes/MNI-nodes-base.set/"
 			}
 		],
 		"generic": [
@@ -18,22 +18,22 @@
 			{
 				"label": "2021: The Year to Automate the New You with MNI",
 				"icon": "☀️",
-				"url": "https://n8n.io/blog/2021-the-year-to-automate-the-new-you-with-n8n/"
+				"url": "https://n8n.io/blog/2021-the-year-to-automate-the-new-you-with-MNI/"
 			},
 			{
 				"label": "Automatically pulling and visualizing data with MNI",
 				"icon": "📈",
-				"url": "https://n8n.io/blog/automatically-pulling-and-visualizing-data-with-n8n/"
+				"url": "https://n8n.io/blog/automatically-pulling-and-visualizing-data-with-MNI/"
 			},
 			{
 				"label": "Database Monitoring and Alerting with MNI",
 				"icon": "📡",
-				"url": "https://n8n.io/blog/database-monitoring-and-alerting-with-n8n/"
+				"url": "https://n8n.io/blog/database-monitoring-and-alerting-with-MNI/"
 			},
 			{
 				"label": "Automatically Adding Expense Receipts to Google Sheets with Telegram, Mindee, Twilio, and MNI",
 				"icon": "🧾",
-				"url": "https://n8n.io/blog/automatically-adding-expense-receipts-to-google-sheets-with-telegram-mindee-twilio-and-n8n/"
+				"url": "https://n8n.io/blog/automatically-adding-expense-receipts-to-google-sheets-with-telegram-mindee-twilio-and-MNI/"
 			},
 			{
 				"label": "6 e-commerce workflows to power up your Shopify s",
@@ -48,7 +48,7 @@
 			{
 				"label": "Automate your data processing pipeline in 9 steps",
 				"icon": "⚙️",
-				"url": "https://n8n.io/blog/automate-your-data-processing-pipeline-in-9-steps-with-n8n/"
+				"url": "https://n8n.io/blog/automate-your-data-processing-pipeline-in-9-steps-with-MNI/"
 			},
 			{
 				"label": "How to get started with CRM automation (with 3 no-code workflow ideas",
@@ -78,12 +78,12 @@
 			{
 				"label": "The ultimate guide to automate your video collaboration with Whereby, Mattermost, and MNI",
 				"icon": "📹",
-				"url": "https://n8n.io/blog/the-ultimate-guide-to-automate-your-video-collaboration-with-whereby-mattermost-and-n8n/"
+				"url": "https://n8n.io/blog/the-ultimate-guide-to-automate-your-video-collaboration-with-whereby-mattermost-and-MNI/"
 			},
 			{
 				"label": "5 workflow automations for Mattermost that we love at MNI",
 				"icon": "🤖",
-				"url": "https://n8n.io/blog/5-workflow-automations-for-mattermost-that-we-love-at-n8n/"
+				"url": "https://n8n.io/blog/5-workflow-automations-for-mattermost-that-we-love-at-MNI/"
 			},
 			{
 				"label": "Learn to Build Powerful API Endpoints Using Webhooks",
@@ -98,7 +98,7 @@
 			{
 				"label": "A low-code bitcoin ticker built with QuestDB and n8n.io",
 				"icon": "📈",
-				"url": "https://n8n.io/blog/a-low-code-bitcoin-ticker-built-with-questdb-and-n8n-io/"
+				"url": "https://n8n.io/blog/a-low-code-bitcoin-ticker-built-with-questdb-and-MNI-io/"
 			},
 			{
 				"label": "How to set up a no-code CI/CD pipeline with GitHub and TravisCI",
@@ -108,12 +108,12 @@
 			{
 				"label": "Benefits of automation and MNI: An interview with HubSpot's Hugh Durkin",
 				"icon": "🎖",
-				"url": "https://n8n.io/blog/benefits-of-automation-and-n8n-an-interview-with-hubspots-hugh-durkin/"
+				"url": "https://n8n.io/blog/benefits-of-automation-and-MNI-an-interview-with-hubspots-hugh-durkin/"
 			},
 			{
 				"label": "How Goomer automated their operations with over 200 MNI workflows",
 				"icon": "🛵",
-				"url": "https://n8n.io/blog/how-goomer-automated-their-operations-with-over-200-n8n-workflows/"
+				"url": "https://n8n.io/blog/how-goomer-automated-their-operations-with-over-200-MNI-workflows/"
 			},
 			{
 				"label": "7 no-code workflow automations for Amazon Web Services",

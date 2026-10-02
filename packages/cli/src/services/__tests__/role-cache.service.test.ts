@@ -1,8 +1,8 @@
-import { Logger } from '@n8n/backend-common';
-import { mockInstance } from '@n8n/backend-test-utils';
-import { RoleRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
-import { staticRolesWithScope } from '@n8n/permissions';
+import { Logger } from '@MNI/backend-common';
+import { mockInstance } from '@MNI/backend-test-utils';
+import { RoleRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
+import { staticRolesWithScope } from '@MNI/permissions';
 import type { MockedFunction } from 'vitest';
 import { mock } from 'vitest-mock-extended';
 
@@ -10,8 +10,8 @@ import type { CacheService } from '@/services/cache/cache.service';
 import { RoleCacheService } from '@/services/role-cache.service';
 
 // Mock static function
-vi.mock('@n8n/permissions', async () => ({
-	...(await vi.importActual<typeof import('@n8n/permissions')>('@n8n/permissions')),
+vi.mock('@MNI/permissions', async () => ({
+	...(await vi.importActual<typeof import('@MNI/permissions')>('@MNI/permissions')),
 	staticRolesWithScope: vi.fn(),
 }));
 

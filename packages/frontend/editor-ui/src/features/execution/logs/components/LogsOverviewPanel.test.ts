@@ -20,7 +20,7 @@ import {
 	createTestWorkflowExecutionResponse,
 	createTestWorkflowObject,
 } from '@/__tests__/mocks';
-import { createRunExecutionData, NodeConnectionTypes } from 'n8n-workflow';
+import { createRunExecutionData, NodeConnectionTypes } from 'MNI-workflow';
 import { createLogTree, flattenLogEntries } from '../logs.utils';
 import type { useWorkflowDocumentStore } from '@/app/stores/workflowDocument.store';
 import { NO_OP_NODE_TYPE } from '@/app/constants';

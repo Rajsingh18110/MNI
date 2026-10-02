@@ -1,5 +1,5 @@
 import type { Mocked } from 'vitest';
-import type { GlobalConfig } from '@n8n/config';
+import type { GlobalConfig } from '@MNI/config';
 import type {
 	ICredentialContext,
 	ICredentialType,
@@ -7,14 +7,14 @@ import type {
 	INodeType,
 	PlaintextExecutionContext,
 	Themed,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import type { CredentialTypes } from '@/credential-types';
 import type { EnterpriseCredentialsService } from '@/credentials/credentials.service.ee';
 import type { NodeTypes } from '@/node-types';
-import type { UrlService } from '@n8n/backend-services';
-import type { ExecutionContextService } from 'n8n-core';
-import { CredentialsEntity } from '@n8n/db';
+import type { UrlService } from '@MNI/backend-services';
+import type { ExecutionContextService } from 'MNI-core';
+import { CredentialsEntity } from '@MNI/db';
 
 import type { AuthorizeIntentService } from '../authorize-intent.service';
 import type { CredentialResolverWorkflowService } from '../credential-resolver-workflow.service';
@@ -424,11 +424,11 @@ describe('CredentialCheckProxyService', () => {
 
 		it("should use the credential type's own iconUrl, made absolute", async () => {
 			mockCredentialTypes.getByName.mockReturnValue(
-				credentialType({ iconUrl: 'icons/n8n-nodes-base/dist/nodes/Slack/slack.svg' }),
+				credentialType({ iconUrl: 'icons/MNI-nodes-base/dist/nodes/Slack/slack.svg' }),
 			);
 
 			await expect(iconUrlFor('slackOAuth2Api')).resolves.toBe(
-				'http://localhost:5678/icons/n8n-nodes-base/dist/nodes/Slack/slack.svg',
+				'http://localhost:5678/icons/MNI-nodes-base/dist/nodes/Slack/slack.svg',
 			);
 		});
 
@@ -444,16 +444,16 @@ describe('CredentialCheckProxyService', () => {
 
 		it("should resolve a node: icon reference to that node type's icon", async () => {
 			mockCredentialTypes.getByName.mockReturnValue(
-				credentialType({ icon: 'node:n8n-nodes-base.googleSheets' }),
+				credentialType({ icon: 'node:MNI-nodes-base.googleSheets' }),
 			);
 			mockNodeTypes.getByName.mockReturnValue(
-				nodeType('icons/n8n-nodes-base/dist/nodes/Google/Sheet/googleSheets.svg'),
+				nodeType('icons/MNI-nodes-base/dist/nodes/Google/Sheet/googleSheets.svg'),
 			);
 
 			await expect(iconUrlFor('googleSheetsOAuth2Api')).resolves.toBe(
-				'http://localhost:5678/icons/n8n-nodes-base/dist/nodes/Google/Sheet/googleSheets.svg',
+				'http://localhost:5678/icons/MNI-nodes-base/dist/nodes/Google/Sheet/googleSheets.svg',
 			);
-			expect(mockNodeTypes.getByName).toHaveBeenCalledWith('n8n-nodes-base.googleSheets');
+			expect(mockNodeTypes.getByName).toHaveBeenCalledWith('MNI-nodes-base.googleSheets');
 		});
 
 		it('should fall back to the extends chain when the type has no icon of its own', async () => {

@@ -1,6 +1,6 @@
 import { mockDeep } from 'vitest-mock-extended';
 import type { Client } from 'ldapts';
-import type { IExecuteFunctions } from 'n8n-workflow';
+import type { IExecuteFunctions } from 'MNI-workflow';
 
 import * as Helpers from '../Helpers';
 import { Ldap } from '../Ldap.node';
@@ -20,7 +20,7 @@ describe('Ldap', () => {
 
 		executeFunctions.getInputData.mockReturnValue([{ json: {} }]);
 		executeFunctions.getNode.mockReturnValue({
-			type: 'n8n-nodes-base.ldap',
+			type: 'MNI-nodes-base.ldap',
 			name: 'LDAP',
 			id: '1',
 		} as ReturnType<IExecuteFunctions['getNode']>);

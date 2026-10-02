@@ -1,5 +1,5 @@
-import { SettingsRepository } from '@n8n/db';
-import { BreakingChangeRule } from '@n8n/decorators';
+import { SettingsRepository } from '@MNI/db';
+import { BreakingChangeRule } from '@MNI/decorators';
 
 import { NOT_AFFECTED_INSTANCE } from '../../detection-report';
 import type {
@@ -22,7 +22,7 @@ export class ChatHubDeprecatedRule implements IBreakingChangeInstanceRule {
 			version: 'v3',
 			title: 'Chat hub is deprecated and off by default',
 			description:
-				'In v3, the chat hub module is off by default and the Chat section disappears from the UI. You can turn it on again with the N8N_ENABLED_MODULES environment variable, but the feature is removed in v4.',
+				'In v3, the chat hub module is off by default and the Chat section disappears from the UI. You can turn it on again with the MNI_ENABLED_MODULES environment variable, but the feature is removed in v4.',
 			category: BreakingChangeCategory.instance,
 			severity: 'medium',
 			documentationUrl: 'https://docs.n8n.io/changelog/v30-breaking-changes',
@@ -54,7 +54,7 @@ export class ChatHubDeprecatedRule implements IBreakingChangeInstanceRule {
 				{
 					action: 'Turn chat hub on again if you still need it',
 					description:
-						'Add `chat-hub` to the N8N_ENABLED_MODULES environment variable to keep chat hub available in v3. The variable holds a comma-separated list, so keep the modules that you already enable. This is a temporary measure: v4 removes the feature.',
+						'Add `chat-hub` to the MNI_ENABLED_MODULES environment variable to keep chat hub available in v3. The variable holds a comma-separated list, so keep the modules that you already enable. This is a temporary measure: v4 removes the feature.',
 				},
 			],
 		};

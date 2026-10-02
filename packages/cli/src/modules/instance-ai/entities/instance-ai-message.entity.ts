@@ -1,5 +1,5 @@
-import { WithTimestamps } from '@n8n/db';
-import { Column, Entity, Index, PrimaryColumn } from '@n8n/typeorm';
+import { WithTimestamps } from '@MNI/db';
+import { Column, Entity, Index, PrimaryColumn } from '@MNI/typeorm';
 
 @Entity({ name: 'instance_ai_messages' })
 export class InstanceAiMessage extends WithTimestamps {

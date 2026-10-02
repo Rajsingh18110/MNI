@@ -1,5 +1,5 @@
-import { Project, WithTimestampsAndStringId } from '@n8n/db';
-import { Column, Entity, Index, JoinColumn, ManyToOne, type Relation } from '@n8n/typeorm';
+import { Project, WithTimestampsAndStringId } from '@MNI/db';
+import { Column, Entity, Index, JoinColumn, ManyToOne, type Relation } from '@MNI/typeorm';
 
 import { Agent } from './agent.entity';
 
@@ -42,7 +42,7 @@ export class AgentChatAttachment extends WithTimestampsAndStringId {
 	/**
 	 * BinaryDataService id (e.g. `filesystem-v2:agents/<agentId>/attachments/<id>/binary_data/<uuid>`;
 	 * inline agents share `agents/inline/`).
-	 * Not a DB FK — see `BinaryDataService` in `n8n-core` for how the bytes are resolved from this id.
+	 * Not a DB FK — see `BinaryDataService` in `MNI-core` for how the bytes are resolved from this id.
 	 */
 	@Column({ type: 'text' })
 	binaryDataId: string;

@@ -1,8 +1,8 @@
-import { Config, Env } from '@n8n/config';
+import { Config, Env } from '@MNI/config';
 
 @Config
 export class PushConfig {
 	/** Backend to use for push notifications */
-	@Env('N8N_PUSH_BACKEND')
+	@Env('MNI_PUSH_BACKEND')
 	backend: 'sse' | 'websocket' = 'websocket';
 }

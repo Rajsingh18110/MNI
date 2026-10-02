@@ -1,4 +1,4 @@
-import type { IWorkflowBase } from 'n8n-workflow';
+import type { IWorkflowBase } from 'MNI-workflow';
 import { nanoid } from 'nanoid';
 
 import {
@@ -27,7 +27,7 @@ test.use({
 	capability: {
 		env: {
 			TEST_ISOLATION: 'type-availability-policies',
-			N8N_ENABLED_MODULES: 'type-availability-policies',
+			MNI_ENABLED_MODULES: 'type-availability-policies',
 		},
 	},
 });

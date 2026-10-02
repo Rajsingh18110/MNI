@@ -1,7 +1,7 @@
-import type { BuiltTool, CredentialProvider, McpClient, ToolContext } from '@n8n/agents';
-import { Tool } from '@n8n/agents/tool';
-import { McpAuthenticationSchemaTypes, McpOAuth2CredentialTypeSchema } from '@n8n/api-types';
-import type { CustomFetch } from '@n8n/backend-network';
+import type { BuiltTool, CredentialProvider, McpClient, ToolContext } from '@MNI/agents';
+import { Tool } from '@MNI/agents/tool';
+import { McpAuthenticationSchemaTypes, McpOAuth2CredentialTypeSchema } from '@MNI/api-types';
+import type { CustomFetch } from '@MNI/backend-network';
 import { z } from 'zod';
 
 import type { OauthService } from '@/oauth/oauth.service';

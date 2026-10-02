@@ -14,7 +14,7 @@ const confirmMock = vi.hoisted(() => vi.fn());
 const showMessageMock = vi.hoisted(() => vi.fn());
 const routerPushMock = vi.hoisted(() => vi.fn());
 
-vi.mock('@n8n/i18n', async (importOriginal) => ({
+vi.mock('@MNI/i18n', async (importOriginal) => ({
 	...(await importOriginal()),
 	useI18n: () => ({ baseText: (key: string) => key }),
 }));
@@ -23,7 +23,7 @@ vi.mock('@/app/composables/useMessage', () => ({
 	useMessage: () => ({ confirm: confirmMock }),
 }));
 
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: () => ({ showMessage: showMessageMock }),
 }));
 
@@ -112,7 +112,7 @@ function setupStore(overrides: Record<string, unknown> = {}) {
 			permissions: {},
 			mcpAccessEnabled: true,
 			sandboxEnabled: false,
-			sandboxProvider: 'n8n-sandbox',
+			sandboxProvider: 'MNI-sandbox',
 			daytonaCredentialId: null,
 			n8nSandboxCredentialId: null,
 			searchCredentialId: null,

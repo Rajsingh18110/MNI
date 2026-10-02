@@ -1,4 +1,4 @@
-import type { IWorkflowBase } from 'n8n-workflow';
+import type { IWorkflowBase } from 'MNI-workflow';
 import { nanoid } from 'nanoid';
 
 const SECRET_FIELD = 'secret';
@@ -28,7 +28,7 @@ function editFieldsNode(secret: string) {
 	return {
 		id: nanoid(),
 		name: DATA_NODE,
-		type: 'n8n-nodes-base.set',
+		type: 'MNI-nodes-base.set',
 		typeVersion: 3.4,
 		position: [220, 0] as [number, number],
 		parameters: {
@@ -50,7 +50,7 @@ export function webhookWorkflow({
 		name: 'Webhook',
 		webhookId,
 		parameters: { path: webhookId, options: {} },
-		type: 'n8n-nodes-base.webhook',
+		type: 'MNI-nodes-base.webhook',
 		typeVersion: 2,
 		position: [0, 0] as [number, number],
 	};
@@ -72,7 +72,7 @@ export function manualWorkflow({
 	const trigger = {
 		id: nanoid(),
 		name: 'Manual',
-		type: 'n8n-nodes-base.manualTrigger',
+		type: 'MNI-nodes-base.manualTrigger',
 		typeVersion: 1,
 		position: [0, 0] as [number, number],
 		parameters: {},
@@ -98,7 +98,7 @@ export function consoleLogWorkflow({
 	const trigger = {
 		id: nanoid(),
 		name: 'Manual',
-		type: 'n8n-nodes-base.manualTrigger',
+		type: 'MNI-nodes-base.manualTrigger',
 		typeVersion: 1,
 		position: [0, 0] as [number, number],
 		parameters: {},
@@ -106,7 +106,7 @@ export function consoleLogWorkflow({
 	const code = {
 		id: nanoid(),
 		name: CODE_NODE,
-		type: 'n8n-nodes-base.code',
+		type: 'MNI-nodes-base.code',
 		typeVersion: 2,
 		position: [220, 0] as [number, number],
 		parameters: { jsCode: `console.log('${secret}');\nreturn $input.all();` },

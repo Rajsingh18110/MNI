@@ -5,26 +5,26 @@ import {
 	type ChatHubBaseLLMModel,
 	type ChatProviderSettingsDto,
 	type ChatHubAgentKnowledgeItem,
-} from '@n8n/api-types';
-import { Logger } from '@n8n/backend-common';
+} from '@MNI/api-types';
+import { Logger } from '@MNI/backend-common';
 import {
 	DEFAULT_CONTEXT_WINDOW_LENGTH,
 	EMBEDDINGS_NODE_TYPE_MAP,
 	parseMessage,
 	collectChatArtifacts,
-} from '@n8n/chat-hub';
-import type { OperationContext } from '@n8n/db';
+} from '@MNI/chat-hub';
+import type { OperationContext } from '@MNI/db';
 import {
 	SharedWorkflow,
 	SharedWorkflowRepository,
 	User,
 	WorkflowEntity,
 	WorkflowRepository,
-} from '@n8n/db';
-import { Service } from '@n8n/di';
-import { EntityManager } from '@n8n/typeorm';
+} from '@MNI/db';
+import { Service } from '@MNI/di';
+import { EntityManager } from '@MNI/typeorm';
 import { DateTime } from 'luxon';
-import { Cipher } from 'n8n-core';
+import { Cipher } from 'MNI-core';
 import {
 	CHAT_NODE_TYPE,
 	AGENT_LANGCHAIN_NODE_TYPE,
@@ -46,7 +46,7 @@ import {
 	OperationalError,
 	type IBinaryData,
 	type NodeParameterValueType,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import { v4 as uuidv4 } from 'uuid';
 
 import { BadRequestError } from '@/errors/response-errors/bad-request.error';
@@ -100,7 +100,7 @@ export class ChatHubWorkflowService {
 	}
 
 	async deleteChatWorkflow(workflowId: string): Promise<void> {
-		if (process.env.N8N_SKIP_CHAT_WORKFLOW_CLEANUP !== 'true') {
+		if (process.env.MNI_SKIP_CHAT_WORKFLOW_CLEANUP !== 'true') {
 			await this.workflowRepository.delete(workflowId);
 		}
 	}
@@ -344,7 +344,7 @@ export class ChatHubWorkflowService {
 		trx: EntityManager,
 		manual?: boolean,
 	): Promise<{ allowFileUploads: boolean; allowedFilesMimeTypes: string }> {
-		if (model.provider === 'n8n') {
+		if (model.provider === 'MNI') {
 			const workflow = await this.workflowFinderService.findWorkflowForUser(
 				model.workflowId,
 				user,
@@ -763,7 +763,7 @@ ${this.getSystemMessageMetadata(timeZone) + artifactContext}`;
 				options: {
 					enableStreaming,
 					maxTokensFromMemory:
-						model.provider !== 'n8n' && model.provider !== 'custom-agent'
+						model.provider !== 'MNI' && model.provider !== 'custom-agent'
 							? getMaxContextWindowTokens(model.provider, model.model)
 							: undefined,
 					systemMessage,
@@ -782,7 +782,7 @@ ${this.getSystemMessageMetadata(timeZone) + artifactContext}`;
 		conversationModel: ChatHubConversationModel,
 		providerSettings?: ChatProviderSettingsDto,
 	): INode {
-		if (conversationModel.provider === 'n8n' || conversationModel.provider === 'custom-agent') {
+		if (conversationModel.provider === 'MNI' || conversationModel.provider === 'custom-agent') {
 			throw new OperationalError('Custom agent workflows do not require a model node');
 		}
 
@@ -1267,7 +1267,7 @@ Respond the title only:`,
 		executionMetadata: ChatHubAuthenticationMetadata,
 		manual?: boolean,
 	): Promise<PreparedChatWorkflow> {
-		if (model.provider === 'n8n') {
+		if (model.provider === 'MNI') {
 			return await this.prepareWorkflowAgentWorkflow(
 				user,
 				sessionId,

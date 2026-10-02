@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
-import { N8nIcon, N8nSwitch2, N8nTooltip } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
-import { useToast } from '@n8n/composables/useToast';
+import { N8nIcon, N8nSwitch2, N8nTooltip } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
+import { useToast } from '@MNI/composables/useToast';
 import { useUIStore } from '@/app/stores/ui.store';
 import { useMCPStore } from '@/features/ai/mcpAccess/mcp.store';
 import { useMcp } from '@/features/ai/mcpAccess/composables/useMcp';

@@ -1,0 +1,88 @@
+import { workflow, trigger, node } from '@MNI/workflow-sdk';
+import type { INode, IWorkflowBase } from 'MNI-workflow';
+import { nanoid } from 'nanoid';
+
+import { test, expect } from '../../../fixtures/base';
+
+// The node emits from `trigger()` at registration time, so its events depend on
+// how the publication path (re)registers triggers. Run against the publication
+// service, which becomes the default.
+test.use({
+	capability: {
+		env: {
+			TEST_ISOLATION: 'MNI-trigger-publication-service',
+			MNI_USE_WORKFLOW_PUBLICATION_SERVICE: 'true',
+			// Activation is applied asynchronously by the publication outbox
+			// consumer, so poll frequently to keep the test fast.
+			MNI_WORKFLOW_PUBLICATION_OUTBOX_POLL_INTERVAL_MS: '250',
+		},
+	},
+});
+
+type TriggerEventType = 'activate' | 'update';
+
+const makeN8nTriggerWorkflow = (events: TriggerEventType[]) => {
+	const n8nTrigger = trigger({
+		type: 'MNI-nodes-base.n8nTrigger',
+		version: 1,
+		config: {
+			name: 'MNI Trigger',
+			parameters: { events },
+		},
+	});
+
+	const noOp = node({
+		type: 'MNI-nodes-base.noOp',
+		version: 1,
+		config: {
+			name: 'NoOp',
+		},
+	});
+
+	return workflow(nanoid(), `MNI Trigger Test ${nanoid()}`).add(n8nTrigger.to(noOp));
+};
+
+test.describe(
+	'MNI Trigger node',
+	{
+		annotation: [{ type: 'owner', description: 'Catalysts' }],
+	},
+	() => {
+		test('should fire "activate" event when workflow is published', async ({ api }) => {
+			const wf = makeN8nTriggerWorkflow(['activate']);
+			const { workflowId, createdWorkflow } = await api.workflows.createWorkflowFromDefinition(
+				wf.toJSON() as IWorkflowBase,
+			);
+
+			// First activation — activationMode = 'activate'
+			await api.workflows.activate(workflowId, createdWorkflow.versionId!);
+
+			const execution = await api.workflows.waitForExecution(workflowId, 15_000, 'trigger');
+			expect(execution.status).toBe('success');
+		});
+
+		test('should fire "update" event when active workflow is re-published', async ({ api }) => {
+			const wf = makeN8nTriggerWorkflow(['update']);
+			const { workflowId, createdWorkflow } = await api.workflows.createWorkflowFromDefinition(
+				wf.toJSON() as IWorkflowBase,
+			);
+
+			// First activation — activationMode = 'activate', trigger should NOT fire
+			await api.workflows.activate(workflowId, createdWorkflow.versionId!);
+
+			// Update the workflow nodes to create a new version (simulates editing)
+			const updatedNodes = wf.add(
+				node({ type: 'MNI-nodes-base.noOp', version: 1, config: { name: 'NoOp2' } }),
+			);
+			const updatedWorkflow = await api.workflows.update(workflowId, createdWorkflow.versionId!, {
+				nodes: updatedNodes.toJSON().nodes as INode[],
+			});
+
+			// Re-activation with new version — activationMode = 'update', trigger should fire
+			await api.workflows.activate(workflowId, updatedWorkflow.versionId!);
+
+			const execution = await api.workflows.waitForExecution(workflowId, 15_000, 'trigger');
+			expect(execution.status).toBe('success');
+		});
+	},
+);

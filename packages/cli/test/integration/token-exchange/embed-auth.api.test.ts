@@ -1,10 +1,10 @@
-process.env.N8N_ENV_FEAT_TOKEN_EXCHANGE = 'true';
+process.env.MNI_ENV_FEAT_TOKEN_EXCHANGE = 'true';
 
-import { testDb } from '@n8n/backend-test-utils';
-import { AuthIdentity, AuthIdentityRepository, UserRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
+import { testDb } from '@MNI/backend-test-utils';
+import { AuthIdentity, AuthIdentityRepository, UserRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
 import jwt from 'jsonwebtoken';
-import { InstanceSettings } from 'n8n-core';
+import { InstanceSettings } from 'MNI-core';
 import { generateKeyPairSync, randomUUID } from 'node:crypto';
 
 import { EventService } from '@/events/event.service';

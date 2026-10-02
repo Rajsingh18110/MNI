@@ -13,7 +13,7 @@ describe('useCyclingVerb', () => {
 		// The composable must NOT return raw user-facing strings. Returning a
 		// `BaseTextKey` is what lets the render site call
 		// `useI18n().baseText(key)` and respect the active locale — which is
-		// the whole point of moving the verb pool into `@n8n/i18n` instead of
+		// the whole point of moving the verb pool into `@MNI/i18n` instead of
 		// inlining English in the composable. Asserting on the key shape here
 		// pins the contract so a future change can't quietly regress to
 		// returning a string value.

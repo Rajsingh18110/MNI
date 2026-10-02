@@ -6,7 +6,7 @@ import userEvent from '@testing-library/user-event';
 import { waitFor } from '@testing-library/vue';
 import { setActivePinia } from 'pinia';
 import { defineComponent, ref } from 'vue';
-import type { SlotProjectSelection } from '@n8n/frontend-module-sdk';
+import type { SlotProjectSelection } from '@MNI/frontend-module-sdk';
 
 import { createProjectListItem } from '../__tests__/utils';
 import { useProjectsStore } from '../projects.store';

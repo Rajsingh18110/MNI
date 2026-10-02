@@ -1,8 +1,8 @@
-import { LicenseState } from '@n8n/backend-common';
-import { UNLIMITED_LICENSE_QUOTA } from '@n8n/constants';
-import type { TestRun } from '@n8n/db';
-import { TestCaseExecutionRepository, TestRunRepository, WorkflowRepository } from '@n8n/db';
-import { Service } from '@n8n/di';
+import { LicenseState } from '@MNI/backend-common';
+import { UNLIMITED_LICENSE_QUOTA } from '@MNI/constants';
+import type { TestRun } from '@MNI/db';
+import { TestCaseExecutionRepository, TestRunRepository, WorkflowRepository } from '@MNI/db';
+import { Service } from '@MNI/di';
 
 import { PaymentRequiredError } from '@/errors/response-errors/payment-required.error';
 

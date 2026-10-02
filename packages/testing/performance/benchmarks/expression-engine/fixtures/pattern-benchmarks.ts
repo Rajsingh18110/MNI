@@ -6,7 +6,7 @@
  * globally unique. Each name is prefixed with `{engine}: {group} -` to ensure
  * that current and vm benchmarks are distinguishable in reports.
  */
-import type { Workflow, INodeExecutionData } from 'n8n-workflow';
+import type { Workflow, INodeExecutionData } from 'MNI-workflow';
 
 import { defineBench } from '../../bench-options';
 import {

@@ -1,7 +1,7 @@
 import { computed, getCurrentScope, onScopeDispose, ref, watch, type Ref } from 'vue';
-import { useToast } from '@n8n/composables/useToast';
-import { useI18n } from '@n8n/i18n';
-import { truncate } from '@n8n/utils/string/truncate';
+import { useToast } from '@MNI/composables/useToast';
+import { useI18n } from '@MNI/i18n';
+import { truncate } from '@MNI/utils/string/truncate';
 import { useRoute, useRouter } from 'vue-router';
 import type { LocationQueryRaw } from 'vue-router';
 

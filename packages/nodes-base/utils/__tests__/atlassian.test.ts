@@ -1,5 +1,5 @@
-import type { IExecuteFunctions, INode, INodeParameterResourceLocator } from 'n8n-workflow';
-import { NodeApiError, NodeOperationError } from 'n8n-workflow';
+import type { IExecuteFunctions, INode, INodeParameterResourceLocator } from 'MNI-workflow';
+import { NodeApiError, NodeOperationError } from 'MNI-workflow';
 import type { Mock, Mocked } from 'vitest';
 import { mockDeep } from 'vitest-mock-extended';
 
@@ -71,7 +71,7 @@ describe('getAtlassianCloudId', () => {
 		mockNode = {
 			id: 'test-node',
 			name: 'Test Node',
-			type: 'n8n-nodes-base.confluence',
+			type: 'MNI-nodes-base.confluence',
 			typeVersion: 1,
 			position: [0, 0],
 			parameters: {},
@@ -333,7 +333,7 @@ describe('fetchAtlassianAccessibleResources', () => {
 		ctx.getNode.mockReturnValue({
 			id: 'test-node',
 			name: 'Test Node',
-			type: 'n8n-nodes-base.confluence',
+			type: 'MNI-nodes-base.confluence',
 			typeVersion: 1,
 			position: [0, 0],
 			parameters: {},
@@ -392,7 +392,7 @@ describe('fetchAtlassianAccessibleResources', () => {
 		ctx.getNode.mockReturnValue({
 			id: 'test-node',
 			name: 'Test Node',
-			type: 'n8n-nodes-base.confluence',
+			type: 'MNI-nodes-base.confluence',
 			typeVersion: 1,
 			position: [0, 0],
 			parameters: {},
@@ -430,7 +430,7 @@ describe('resolveAtlassianCloudId', () => {
 		ctx.getNode.mockReturnValue({
 			id: 'test-node',
 			name: 'Test Node',
-			type: 'n8n-nodes-base.confluence',
+			type: 'MNI-nodes-base.confluence',
 			typeVersion: 1,
 			position: [0, 0],
 			parameters: {},

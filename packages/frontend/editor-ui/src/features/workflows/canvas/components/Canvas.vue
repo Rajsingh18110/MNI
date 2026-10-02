@@ -17,10 +17,10 @@ import { useMessage } from '@/app/composables/useMessage';
 import { findGroupIdsWithTrigger } from '../nodeGroups.utils';
 import { useNodeGroupRules } from '@/app/composables/useNodeGroupRules';
 import { useSelectionValidation } from '@/app/composables/useSelectionValidation';
-import { useToast } from '@n8n/composables/useToast';
-import { useI18n } from '@n8n/i18n';
-import { useUsersStore } from '@n8n/stores/users.store';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useToast } from '@MNI/composables/useToast';
+import { useI18n } from '@MNI/i18n';
+import { useUsersStore } from '@MNI/stores/users.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';
 import { injectWorkflowDocumentStore } from '@/app/stores/workflowDocument.store';
 import { NODE_CREATOR_SHORTCUT_COACHMARK_KEY } from '@/features/shared/nodeCreator/composables/useNodeCreatorShortcutCoachmark';
@@ -49,13 +49,13 @@ import {
 	updateViewportToContainNodes,
 } from '@/app/utils/nodeViewUtils';
 import { isPresent } from '@/app/utils/typesUtils';
-import { useDeviceSupport } from '@n8n/composables/useDeviceSupport';
-import { useShortKeyPress } from '@n8n/composables/useShortKeyPress';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
-import { TELEMETRY_EVENT } from '@n8n/telemetry';
-import { useRootStore } from '@n8n/stores/useRootStore';
-import type { EventBus } from '@n8n/utils/event-bus';
-import { createEventBus } from '@n8n/utils/event-bus';
+import { useDeviceSupport } from '@MNI/composables/useDeviceSupport';
+import { useShortKeyPress } from '@MNI/composables/useShortKeyPress';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
+import { TELEMETRY_EVENT } from '@MNI/telemetry';
+import { useRootStore } from '@MNI/stores/useRootStore';
+import type { EventBus } from '@MNI/utils/event-bus';
+import { createEventBus } from '@MNI/utils/event-bus';
 import type {
 	Connection,
 	Dimensions,
@@ -73,7 +73,7 @@ import {
 	NodeConnectionTypes,
 	type IConnections,
 	type IWorkflowGroup,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import {
 	createCanvasConnectionHandleString,
 	shouldIgnoreCanvasShortcut,
@@ -2225,7 +2225,7 @@ defineExpose({
 	}
 
 	&.isExperimentalNdvActive {
-		/* stylelint-disable-next-line @n8n/css-var-naming */
+		/* stylelint-disable-next-line @MNI/css-var-naming */
 		--canvas-zoom-compensation-factor: 0.5;
 	}
 

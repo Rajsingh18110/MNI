@@ -1,4 +1,4 @@
-import type { GlobalConfig } from '@n8n/config';
+import type { GlobalConfig } from '@MNI/config';
 import { mock } from 'vitest-mock-extended';
 
 import { SettingsFilePermissionsRule } from '../settings-file-permissions.rule';
@@ -12,16 +12,16 @@ describe('SettingsFilePermissionsRule', () => {
 
 	beforeEach(() => {
 		rule = new SettingsFilePermissionsRule(mockGlobalConfig);
-		originalEnvValue = process.env.N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS;
+		originalEnvValue = process.env.MNI_ENFORCE_SETTINGS_FILE_PERMISSIONS;
 		// Clear env var before each test
-		delete process.env.N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS;
+		delete process.env.MNI_ENFORCE_SETTINGS_FILE_PERMISSIONS;
 	});
 
 	afterEach(() => {
 		if (originalEnvValue === undefined) {
-			delete process.env.N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS;
+			delete process.env.MNI_ENFORCE_SETTINGS_FILE_PERMISSIONS;
 		} else {
-			process.env.N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS = originalEnvValue;
+			process.env.MNI_ENFORCE_SETTINGS_FILE_PERMISSIONS = originalEnvValue;
 		}
 	});
 
@@ -39,8 +39,8 @@ describe('SettingsFilePermissionsRule', () => {
 			expect(result.recommendations).toHaveLength(0);
 		});
 
-		it('should not be affected when N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS is explicitly set to false', async () => {
-			process.env.N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS = 'false';
+		it('should not be affected when MNI_ENFORCE_SETTINGS_FILE_PERMISSIONS is explicitly set to false', async () => {
+			process.env.MNI_ENFORCE_SETTINGS_FILE_PERMISSIONS = 'false';
 
 			const result = await rule.detect();
 
@@ -49,8 +49,8 @@ describe('SettingsFilePermissionsRule', () => {
 			expect(result.recommendations).toHaveLength(0);
 		});
 
-		it('should not be affected when N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS is explicitly set to true', async () => {
-			process.env.N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS = 'true';
+		it('should not be affected when MNI_ENFORCE_SETTINGS_FILE_PERMISSIONS is explicitly set to true', async () => {
+			process.env.MNI_ENFORCE_SETTINGS_FILE_PERMISSIONS = 'true';
 
 			const result = await rule.detect();
 
@@ -59,7 +59,7 @@ describe('SettingsFilePermissionsRule', () => {
 			expect(result.recommendations).toHaveLength(0);
 		});
 
-		it('should be affected when N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS is not set (default behavior change)', async () => {
+		it('should be affected when MNI_ENFORCE_SETTINGS_FILE_PERMISSIONS is not set (default behavior change)', async () => {
 			// Env var is not set (cleared in beforeEach)
 			const result = await rule.detect();
 
@@ -70,7 +70,7 @@ describe('SettingsFilePermissionsRule', () => {
 			expect(result.recommendations[0].action).toBe('Configure volume permissions');
 			expect(result.recommendations[1].action).toBe('Disable enforcement if needed');
 			expect(result.recommendations[1].description).toContain(
-				'N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=false',
+				'MNI_ENFORCE_SETTINGS_FILE_PERMISSIONS=false',
 			);
 			expect(result.recommendations[2].action).toBe('Separate configs for multi-instance setups');
 		});

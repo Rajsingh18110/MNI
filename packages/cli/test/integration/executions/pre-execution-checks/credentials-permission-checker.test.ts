@@ -3,17 +3,17 @@ import {
 	randomCredentialPayload as randomCred,
 	testDb,
 	mockInstance,
-} from '@n8n/backend-test-utils';
-import type { Project, User } from '@n8n/db';
+} from '@MNI/backend-test-utils';
+import type { Project, User } from '@MNI/db';
 import {
 	ProjectRepository,
 	SharedCredentialsRepository,
 	SharedWorkflowRepository,
 	WorkflowRepository,
-} from '@n8n/db';
-import { Container } from '@n8n/di';
-import type { INode, IWorkflowBase } from 'n8n-workflow';
-import { randomInt } from 'n8n-workflow';
+} from '@MNI/db';
+import { Container } from '@MNI/di';
+import type { INode, IWorkflowBase } from 'MNI-workflow';
+import { randomInt } from 'MNI-workflow';
 import { v4 as uuid } from 'uuid';
 
 import { CredentialsPermissionChecker } from '@/executions/pre-execution-checks';
@@ -97,7 +97,7 @@ describe('check()', () => {
 			{
 				id: uuid(),
 				name: 'Start',
-				type: 'n8n-nodes-base.manualTrigger',
+				type: 'MNI-nodes-base.manualTrigger',
 				typeVersion: 1,
 				parameters: {},
 				position: [0, 0],
@@ -126,7 +126,7 @@ describe('check()', () => {
 			{
 				id: uuid(),
 				name: 'Action Network',
-				type: 'n8n-nodes-base.actionNetwork',
+				type: 'MNI-nodes-base.actionNetwork',
 				parameters: {},
 				typeVersion: 1,
 				position: [0, 0],
@@ -140,7 +140,7 @@ describe('check()', () => {
 			{
 				id: uuid(),
 				name: 'Action Network 2',
-				type: 'n8n-nodes-base.actionNetwork',
+				type: 'MNI-nodes-base.actionNetwork',
 				parameters: {},
 				typeVersion: 1,
 				position: [0, 0],
@@ -168,7 +168,7 @@ describe('check()', () => {
 			{
 				id: uuid(),
 				name: 'Action Network',
-				type: 'n8n-nodes-base.actionNetwork',
+				type: 'MNI-nodes-base.actionNetwork',
 				parameters: {},
 				typeVersion: 1,
 				position: [0, 0] as [number, number],
@@ -182,7 +182,7 @@ describe('check()', () => {
 			{
 				id: uuid(),
 				name: 'Action Network 2',
-				type: 'n8n-nodes-base.actionNetwork',
+				type: 'MNI-nodes-base.actionNetwork',
 				parameters: {},
 				typeVersion: 1,
 				position: [0, 0] as [number, number],
@@ -210,7 +210,7 @@ describe('check()', () => {
 			{
 				id: uuid(),
 				name: 'Action Network',
-				type: 'n8n-nodes-base.actionNetwork',
+				type: 'MNI-nodes-base.actionNetwork',
 				parameters: {},
 				typeVersion: 1,
 				position: [0, 0] as [number, number],
@@ -224,7 +224,7 @@ describe('check()', () => {
 			{
 				id: uuid(),
 				name: 'Action Network 2',
-				type: 'n8n-nodes-base.actionNetwork',
+				type: 'MNI-nodes-base.actionNetwork',
 				parameters: {},
 				typeVersion: 1,
 				position: [0, 0] as [number, number],

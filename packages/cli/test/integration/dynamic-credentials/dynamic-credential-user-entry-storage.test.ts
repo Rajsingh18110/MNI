@@ -1,6 +1,6 @@
-import { testDb, testModules } from '@n8n/backend-test-utils';
-import { UserRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
+import { testDb, testModules } from '@MNI/backend-test-utils';
+import { UserRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
 
 import { DynamicCredentialUserEntryStorage } from '@/modules/dynamic-credentials.ee/credential-resolvers/storage/dynamic-credential-user-entry-storage';
 
@@ -13,15 +13,15 @@ describe('DynamicCredentialUserEntryStorage', () => {
 	let previousEnvVar: string | undefined;
 
 	beforeAll(async () => {
-		previousEnvVar = process.env.N8N_ENV_FEAT_DYNAMIC_CREDENTIALS;
-		process.env.N8N_ENV_FEAT_DYNAMIC_CREDENTIALS = 'true';
+		previousEnvVar = process.env.MNI_ENV_FEAT_DYNAMIC_CREDENTIALS;
+		process.env.MNI_ENV_FEAT_DYNAMIC_CREDENTIALS = 'true';
 		await testModules.loadModules(['dynamic-credentials']);
 		await testDb.init();
 		storage = Container.get(DynamicCredentialUserEntryStorage);
 	});
 
 	afterAll(async () => {
-		process.env.N8N_ENV_FEAT_DYNAMIC_CREDENTIALS = previousEnvVar;
+		process.env.MNI_ENV_FEAT_DYNAMIC_CREDENTIALS = previousEnvVar;
 		await testDb.terminate();
 	});
 

@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { i18n } from '@n8n/i18n';
+import { i18n } from '@MNI/i18n';
 
-import { N8nIcon, N8nText } from '@n8n/design-system';
+import { N8nIcon, N8nText } from '@MNI/design-system';
 import AiStarsIcon from '@/app/components/AiStarsIcon.vue';
 import ParameterIssues from '../ParameterIssues.vue';
 defineProps<{
@@ -21,7 +21,7 @@ const emit = defineEmits<{
 		</div>
 		<div :class="$style.overrideInput">
 			<N8nText
-				v-n8n-html="i18n.baseText('parameterOverride.overridePanelText')"
+				v-MNI-html="i18n.baseText('parameterOverride.overridePanelText')"
 				color="text-dark"
 				size="small"
 			/>

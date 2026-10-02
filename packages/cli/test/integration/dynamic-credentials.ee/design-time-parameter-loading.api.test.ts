@@ -21,12 +21,12 @@ import {
 	mockInstance,
 	randomCredentialPayload,
 	testDb,
-} from '@n8n/backend-test-utils';
-import type { Project, User } from '@n8n/db';
-import { CredentialsRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
-import { Cipher } from 'n8n-core';
-import type { NodeLoadingDetails } from 'n8n-workflow';
+} from '@MNI/backend-test-utils';
+import type { Project, User } from '@MNI/db';
+import { CredentialsRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
+import { Cipher } from 'MNI-core';
+import type { NodeLoadingDetails } from 'MNI-workflow';
 import nock from 'nock';
 import { readFileSync } from 'node:fs';
 import path from 'node:path';
@@ -49,7 +49,7 @@ import { loadNodesFromDist } from '../shared/utils/node-types-data';
 
 mockInstance(Telemetry);
 
-process.env.N8N_ENV_FEAT_DYNAMIC_CREDENTIALS = 'true';
+process.env.MNI_ENV_FEAT_DYNAMIC_CREDENTIALS = 'true';
 
 mockInstance(DynamicCredentialsConfig, {
 	endpointAuthToken: 'static-test-token',
@@ -97,7 +97,7 @@ function registerCredentialTypesFromDist(credentialTypeNames: string[]) {
 }
 
 /** Google Sheets `documentId` → "From list" → `spreadSheetsSearch`. */
-const GOOGLE_SHEETS = { name: 'n8n-nodes-base.googleSheets', version: 4.7 };
+const GOOGLE_SHEETS = { name: 'MNI-nodes-base.googleSheets', version: 4.7 };
 const DRIVE_HOST = 'https://www.googleapis.com';
 const DRIVE_FILES_PATH = '/drive/v3/files';
 const PER_USER_ACCESS_TOKEN = 'per-user-access-token';

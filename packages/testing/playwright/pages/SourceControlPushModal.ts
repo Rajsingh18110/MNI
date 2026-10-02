@@ -1,4 +1,4 @@
-import type { GitCommitInfo, SourceControlledFile } from '@n8n/api-types';
+import type { GitCommitInfo, SourceControlledFile } from '@MNI/api-types';
 import type { Locator, Page } from '@playwright/test';
 
 export interface PushResult {

@@ -4,7 +4,7 @@ import type {
 	ICredentialType,
 	IHttpRequestOptions,
 	INodeProperties,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 export class CalendlyApi implements ICredentialType {
 	name = 'calendlyApi';

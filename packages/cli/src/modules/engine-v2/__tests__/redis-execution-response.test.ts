@@ -1,5 +1,5 @@
-import { mockLogger } from '@n8n/backend-test-utils';
-import type { ExecutionResponse } from '@n8n/engine';
+import { mockLogger } from '@MNI/backend-test-utils';
+import type { ExecutionResponse } from '@MNI/engine';
 import { mock, type MockProxy } from 'vitest-mock-extended';
 
 import {

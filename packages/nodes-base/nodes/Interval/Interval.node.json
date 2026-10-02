@@ -1,12 +1,12 @@
 {
-	"node": "n8n-nodes-base.interval",
+	"node": "MNI-nodes-base.interval",
 	"nodeVersion": "1.0",
 	"codexVersion": "1.0",
 	"categories": ["Core Nodes"],
 	"resources": {
 		"primaryDocumentation": [
 			{
-				"url": "https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-base.interval/"
+				"url": "https://docs.n8n.io/integrations/builtin/core-nodes/MNI-nodes-base.interval/"
 			}
 		],
 		"generic": [
@@ -18,7 +18,7 @@
 			{
 				"label": "Creating triggers for MNI workflows using polling",
 				"icon": "⏲",
-				"url": "https://n8n.io/blog/creating-triggers-for-n8n-workflows-using-polling/"
+				"url": "https://n8n.io/blog/creating-triggers-for-MNI-workflows-using-polling/"
 			}
 		]
 	},

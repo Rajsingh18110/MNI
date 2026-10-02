@@ -1,5 +1,5 @@
 import { NodeTestHarness } from '@nodes-testing/node-test-harness';
-import type { IExecuteFunctions } from 'n8n-workflow';
+import type { IExecuteFunctions } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import { SplitOut } from '../SplitOut.node';

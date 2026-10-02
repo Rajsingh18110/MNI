@@ -1,14 +1,14 @@
-import { Logger } from '@n8n/backend-common';
+import { Logger } from '@MNI/backend-common';
 import type {
 	EnforcementPoint,
 	PolicyCheckFailure,
 	PolicyCheckResult,
 	PolicyDecision,
 	PolicyVersionRef,
-} from '@n8n/decorators';
-import { ENFORCEMENT_POINT_METHODS, PolicyCheckMetadata } from '@n8n/decorators';
-import { Container, Service } from '@n8n/di';
-import { OperationalError } from 'n8n-workflow';
+} from '@MNI/decorators';
+import { ENFORCEMENT_POINT_METHODS, PolicyCheckMetadata } from '@MNI/decorators';
+import { Container, Service } from '@MNI/di';
+import { OperationalError } from 'MNI-workflow';
 import { randomUUID } from 'node:crypto';
 
 import type { PolicyContext, PolicyEnforcementBackend } from '@/policy/policy-enforcement-backend';
@@ -165,7 +165,7 @@ export class PolicyDecisionService implements PolicyEnforcementBackend {
 	 * line without building one.
 	 *
 	 * `warn`, not `info`: a blocked action must survive an operator quietening logs. The
-	 * structured half only reaches the console under `N8N_LOG_FORMAT=json` — the text format
+	 * structured half only reaches the console under `MNI_LOG_FORMAT=json` — the text format
 	 * prints the message alone — so the message names the point on its own.
 	 */
 	private audit(input: DecisionAuditInput) {

@@ -1,7 +1,7 @@
-import { mockInstance } from '@n8n/backend-test-utils';
-import type { GlobalConfig } from '@n8n/config';
-import type { Project, User, WorkflowEntity } from '@n8n/db';
-import type { INode, Workflow } from 'n8n-workflow';
+import { mockInstance } from '@MNI/backend-test-utils';
+import type { GlobalConfig } from '@MNI/config';
+import type { Project, User, WorkflowEntity } from '@MNI/db';
+import type { INode, Workflow } from 'MNI-workflow';
 import { v4 as uuid } from 'uuid';
 import { mock } from 'vitest-mock-extended';
 
@@ -12,7 +12,7 @@ import {
 } from '@/errors/subworkflow-policy-denial.error';
 import type { AccessService } from '@/services/access.service';
 import { OwnershipService } from '@/services/ownership.service';
-import type { UrlService } from '@n8n/backend-services';
+import type { UrlService } from '@MNI/backend-services';
 
 import { SubworkflowPolicyChecker } from '../subworkflow-policy-checker';
 
@@ -42,7 +42,7 @@ describe('SubworkflowPolicyChecker', () => {
 	});
 
 	describe('no caller policy', () => {
-		it('should fall back to `N8N_WORKFLOW_CALLER_POLICY_DEFAULT_OPTION`', async () => {
+		it('should fall back to `MNI_WORKFLOW_CALLER_POLICY_DEFAULT_OPTION`', async () => {
 			globalConfig.workflows.callerPolicyDefaultOption = 'none';
 
 			const parentWorkflow = mock<WorkflowEntity>();

@@ -247,9 +247,9 @@ describe('InventoryAnalyzer', () => {
 			const report = analyzer.generate();
 			const json = formatInventoryJSON(report);
 
-			// eslint-disable-next-line n8n-local-rules/no-uncaught-json-parse
+			// eslint-disable-next-line MNI-local-rules/no-uncaught-json-parse
 			expect(() => JSON.parse(json) as unknown).not.toThrow();
-			// eslint-disable-next-line n8n-local-rules/no-uncaught-json-parse
+			// eslint-disable-next-line MNI-local-rules/no-uncaught-json-parse
 			const parsed = JSON.parse(json) as { pages?: unknown; summary?: unknown };
 			expect(parsed.pages).toBeDefined();
 			expect(parsed.summary).toBeDefined();

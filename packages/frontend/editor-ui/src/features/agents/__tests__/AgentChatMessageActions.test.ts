@@ -5,13 +5,13 @@ import AgentChatMessageActions from '../components/AgentChatMessageActions.vue';
 
 const copySpy = vi.fn();
 
-vi.mock('@n8n/composables/useClipboard', () => ({
+vi.mock('@MNI/composables/useClipboard', () => ({
 	useClipboard: function useClipboard() {
 		return { copy: copySpy };
 	},
 }));
 
-vi.mock('@n8n/design-system', () => ({
+vi.mock('@MNI/design-system', () => ({
 	N8nChatActions: {
 		name: 'N8nChatActions',
 		props: ['content'],
@@ -35,7 +35,7 @@ vi.mock('@n8n/design-system', () => ({
 	N8nTooltip: { template: '<div><slot /><slot name="content" /></div>' },
 }));
 
-vi.mock('@n8n/i18n', () => ({
+vi.mock('@MNI/i18n', () => ({
 	useI18n: function useI18n() {
 		return {
 			baseText: function baseText(key: string) {

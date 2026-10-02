@@ -1,4 +1,4 @@
-import type { SourceControlledFile } from '@n8n/api-types';
+import type { SourceControlledFile } from '@MNI/api-types';
 import { IsBoolean, IsOptional, IsString } from 'class-validator';
 
 import type { StatusExportableCredential } from './exportable-credential';

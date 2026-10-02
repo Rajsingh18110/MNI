@@ -1,7 +1,7 @@
-import type { ProjectPoolSettingsResponse } from '@n8n/api-types';
-import { UpdateProjectPoolSettingsDto } from '@n8n/api-types';
-import { LICENSE_FEATURES } from '@n8n/constants';
-import { Body, Get, Licensed, Param, Patch, ProjectScope, RestController } from '@n8n/decorators';
+import type { ProjectPoolSettingsResponse } from '@MNI/api-types';
+import { UpdateProjectPoolSettingsDto } from '@MNI/api-types';
+import { LICENSE_FEATURES } from '@MNI/constants';
+import { Body, Get, Licensed, Param, Patch, ProjectScope, RestController } from '@MNI/decorators';
 import type { Request, Response } from 'express';
 
 import { PoolConfigService } from '@/scaling/pool-config.service.ee';

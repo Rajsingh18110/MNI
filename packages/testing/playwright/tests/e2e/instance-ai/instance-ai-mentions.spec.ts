@@ -9,7 +9,7 @@ const mentionsTestConfig = {
 		...instanceAiTestConfig.capability,
 		env: {
 			...instanceAiTestConfig.capability.env,
-			N8N_FEATURE_FLAG_OVERRIDES: JSON.stringify({
+			MNI_FEATURE_FLAG_OVERRIDES: JSON.stringify({
 				'116_at_mentions_enabled': true,
 				'104_canvas_aia_node_context': false,
 			}),
@@ -19,7 +19,7 @@ const mentionsTestConfig = {
 
 const requirements: TestRequirements = {
 	storage: {
-		N8N_EXPERIMENT_OVERRIDES: JSON.stringify({ '116_at_mentions_enabled': true }),
+		MNI_EXPERIMENT_OVERRIDES: JSON.stringify({ '116_at_mentions_enabled': true }),
 	},
 };
 
@@ -51,7 +51,7 @@ test.describe(
 							{
 								id: 'if-node',
 								name: 'If',
-								type: 'n8n-nodes-base.if',
+								type: 'MNI-nodes-base.if',
 								typeVersion: 2.2,
 								position: [0, 0],
 								parameters: {},

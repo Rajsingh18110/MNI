@@ -14,7 +14,7 @@ import { useAgentProjectNameResolver } from '@/features/agents/composables/useAg
 import { useAgentScopeProjectId } from '@/features/agents/composables/useAgentScopeProjectId';
 import { useAgentResourcesLocator } from '@/features/ndv/parameters/composables/useAgentResourcesLocator';
 import { useInlineAgentsExperiment } from '@/experiments/inlineAgents/useInlineAgentsExperiment';
-import { getDebounceTime, useDebounce } from '@n8n/composables/useDebounce';
+import { getDebounceTime, useDebounce } from '@MNI/composables/useDebounce';
 import { useIntersectionObserver } from '@/app/composables/useIntersectionObserver';
 import { useNodeCreatorStore } from '@/features/shared/nodeCreator/nodeCreator.store';
 
@@ -23,8 +23,8 @@ import { useKeyboardNavigation } from '../../composables/useKeyboardNavigation';
 import { useViewStacks } from '../../composables/useViewStacks';
 
 import ItemsRenderer from '../Renderers/ItemsRenderer.vue';
-import { useI18n } from '@n8n/i18n';
-import { N8nLink, N8nLoading, N8nText } from '@n8n/design-system';
+import { useI18n } from '@MNI/i18n';
+import { N8nLink, N8nLoading, N8nText } from '@MNI/design-system';
 
 const emit = defineEmits<{
 	nodeTypeSelected: [value: NodeTypeSelectedPayload[]];

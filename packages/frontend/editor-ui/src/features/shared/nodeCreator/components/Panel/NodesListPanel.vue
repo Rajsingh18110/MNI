@@ -18,8 +18,8 @@ import { useNodeCreatorStore } from '@/features/shared/nodeCreator/nodeCreator.s
 
 import NodeIcon from '@/app/components/NodeIcon.vue';
 import { getNodeIconSize } from '@/app/utils/nodeIcon';
-import { useDebounce } from '@n8n/composables/useDebounce';
-import { useI18n } from '@n8n/i18n';
+import { useDebounce } from '@MNI/composables/useDebounce';
+import { useI18n } from '@MNI/i18n';
 import { useKeyboardNavigation } from '../../composables/useKeyboardNavigation';
 import { useViewStacks, type ViewStack } from '../../composables/useViewStacks';
 import {
@@ -40,11 +40,11 @@ import CommunityNodeDetails from '@/features/settings/communityNodes/components/
 import CommunityNodeDocsLink from '@/features/settings/communityNodes/components/nodeCreator/CommunityNodeDocsLink.vue';
 import CommunityNodeFooter from '@/features/settings/communityNodes/components/nodeCreator/CommunityNodeFooter.vue';
 import CommunityNodeInfo from '@/features/settings/communityNodes/components/nodeCreator/CommunityNodeInfo.vue';
-import { useUsersStore } from '@n8n/stores/users.store';
+import { useUsersStore } from '@MNI/stores/users.store';
 import { useUIStore } from '@/app/stores/ui.store';
 import { injectWorkflowDocumentStore } from '@/app/stores/workflowDocument.store';
 
-import { N8nIcon, N8nNotice } from '@n8n/design-system';
+import { N8nIcon, N8nNotice } from '@MNI/design-system';
 const i18n = useI18n();
 const { callDebounced, debounce } = useDebounce();
 
@@ -495,8 +495,8 @@ function onBackButton() {
 
 @each $node-type in $supplemental-node-types {
 	.nodes-list-panel-#{$node-type} .nodes-list-panel-header {
-		.n8n-node-icon svg {
-			/* stylelint-disable-next-line @n8n/css-var-naming */
+		.MNI-node-icon svg {
+			/* stylelint-disable-next-line @MNI/css-var-naming */
 			color: var(--node-type-#{$node-type}-color);
 		}
 	}

@@ -1,4 +1,4 @@
-import { isDraftIntegration } from '@n8n/api-types';
+import { isDraftIntegration } from '@MNI/api-types';
 
 import type { AgentJsonConfig, AgentJsonToolRef, AgentResource } from '../types';
 

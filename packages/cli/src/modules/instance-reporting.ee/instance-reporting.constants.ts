@@ -1,4 +1,4 @@
-/** Appended to `N8N_INSTANCE_REPORTING_BASE_URL` to build the receiver's endpoint. */
+/** Appended to `MNI_INSTANCE_REPORTING_BASE_URL` to build the receiver's endpoint. */
 export const INSTANCE_REPORTS_PATH = '/api/v1/instance-reports';
 
 /**

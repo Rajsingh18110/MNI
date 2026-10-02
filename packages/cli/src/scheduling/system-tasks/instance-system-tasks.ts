@@ -1,5 +1,5 @@
-import type { GlobalConfig } from '@n8n/config';
-import type { SystemTaskClass } from '@n8n/decorators';
+import type { GlobalConfig } from '@MNI/config';
+import type { SystemTaskClass } from '@MNI/decorators';
 
 /**
  * Return the system tasks every server command runs, whatever kind of instance

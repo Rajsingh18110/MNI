@@ -2,10 +2,10 @@ import type {
 	AgentIntegrationDisconnectWarning,
 	AgentIntegrationSettings,
 	ChatIntegrationDescriptor,
-} from '@n8n/api-types';
-import type { IconName } from '@n8n/design-system';
-import type { BaseTextKey } from '@n8n/i18n';
-import type { PermissionsRecord } from '@n8n/permissions';
+} from '@MNI/api-types';
+import type { IconName } from '@MNI/design-system';
+import type { BaseTextKey } from '@MNI/i18n';
+import type { PermissionsRecord } from '@MNI/permissions';
 import type { Component, Ref, VNode } from 'vue';
 
 import type { AgentCredentialOption } from '../components/AgentCredentialSelect.vue';

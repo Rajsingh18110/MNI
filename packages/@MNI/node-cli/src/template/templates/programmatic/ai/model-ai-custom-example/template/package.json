@@ -1,0 +1,52 @@
+{
+	"name": "{{nodePackageName}}",
+	"version": "0.1.0",
+	"description": "",
+	"license": "MIT",
+	"homepage": "",
+	"keywords": [
+		"MNI-community-node-package"
+	],
+	"author": {
+		"name": "{{user.name}}",
+		"email": "{{user.email}}"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/<...>/MNI-nodes-<...>.git"
+	},
+	"scripts": {
+		"build": "MNI-node build",
+		"build:watch": "tsc --watch",
+		"dev": "MNI-node dev",
+		"lint": "MNI-node lint",
+		"lint:fix": "MNI-node lint --fix",
+		"release": "MNI-node release",
+		"prepublishOnly": "MNI-node prerelease"
+	},
+	"files": [
+		"dist"
+	],
+	"MNI": {
+		"n8nNodesApiVersion": 1,
+		"aiNodeSdkVersion": 1,
+		"strict": true,
+		"credentials": [
+			"dist/credentials/ExampleApi.credentials.js"
+		],
+		"nodes": [
+			"dist/nodes/ExampleChatModel/ExampleChatModel.node.js"
+		]
+	},
+	"devDependencies": {
+		"@MNI/node-cli": "*",
+		"eslint": "9.32.0",
+		"prettier": "3.6.2",
+		"release-it": "^21.1.0",
+		"typescript": "5.9.2"
+	},
+	"peerDependencies": {
+		"MNI-workflow": "*",
+		"@MNI/ai-node-sdk": "*"
+	}
+}

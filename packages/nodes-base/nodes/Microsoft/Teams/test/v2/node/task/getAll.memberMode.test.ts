@@ -1,7 +1,7 @@
 import type { MockProxy } from 'vitest-mock-extended';
 import { mock } from 'vitest-mock-extended';
 import type { Mock } from 'vitest';
-import type { IExecuteFunctions, INode, NodeParameterValueType } from 'n8n-workflow';
+import type { IExecuteFunctions, INode, NodeParameterValueType } from 'MNI-workflow';
 
 import { versionDescription } from '../../../../v2/actions/versionDescription';
 import { MicrosoftTeamsV2 } from '../../../../v2/MicrosoftTeamsV2.node';

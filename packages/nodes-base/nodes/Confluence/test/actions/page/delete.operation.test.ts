@@ -3,8 +3,8 @@ import type {
 	IGetNodeParameterOptions,
 	INode,
 	INodeParameterResourceLocator,
-} from 'n8n-workflow';
-import { NodeApiError, NodeOperationError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeApiError, NodeOperationError } from 'MNI-workflow';
 import { mockDeep } from 'vitest-mock-extended';
 
 import { execute } from '../../../actions/page/delete.operation';
@@ -20,7 +20,7 @@ const apiRequest = vi.mocked(confluenceApiRequest);
 const mockNode: INode = {
 	id: 'test-node',
 	name: 'Test Confluence Node',
-	type: 'n8n-nodes-base.confluence',
+	type: 'MNI-nodes-base.confluence',
 	typeVersion: 1,
 	position: [0, 0],
 	parameters: {},

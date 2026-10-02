@@ -4,7 +4,7 @@
     {
       "parameters": {},
       "name": "When clicking \"Execute Workflow\"",
-      "type": "n8n-nodes-base.manualTrigger",
+      "type": "MNI-nodes-base.manualTrigger",
       "typeVersion": 1,
       "position": [
         180,
@@ -18,7 +18,7 @@
         "options": {}
       },
       "name": "HTTP Request (v3)",
-      "type": "n8n-nodes-base.httpRequest",
+      "type": "MNI-nodes-base.httpRequest",
       "typeVersion": 3,
       "position": [
         520,
@@ -32,7 +32,7 @@
         "options": {}
       },
       "name": "HTTP Request (v4)",
-      "type": "n8n-nodes-base.httpRequest",
+      "type": "MNI-nodes-base.httpRequest",
       "typeVersion": 4,
       "position": [
         520,

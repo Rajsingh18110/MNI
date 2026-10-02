@@ -1,10 +1,10 @@
-import { Logger } from '@n8n/backend-common';
-import { GlobalConfig } from '@n8n/config';
-import { Time } from '@n8n/constants';
-import type { IWorkflowDb, PollerCursor, PollLeaseFence } from '@n8n/db';
-import { Service } from '@n8n/di';
-import { ensureError } from '@n8n/utils/errors/ensure-error';
-import type { IDeferredPromise } from '@n8n/utils/promise/deferred-promise';
+import { Logger } from '@MNI/backend-common';
+import { GlobalConfig } from '@MNI/config';
+import { Time } from '@MNI/constants';
+import type { IWorkflowDb, PollerCursor, PollLeaseFence } from '@MNI/db';
+import { Service } from '@MNI/di';
+import { ensureError } from '@MNI/utils/errors/ensure-error';
+import type { IDeferredPromise } from '@MNI/utils/promise/deferred-promise';
 import cloneDeep from 'lodash/cloneDeep';
 import isEqual from 'lodash/isEqual';
 import {
@@ -14,7 +14,7 @@ import {
 	TriggerContext,
 	type IGetExecutePollFunctions,
 	type IGetExecuteTriggerFunctions,
-} from 'n8n-core';
+} from 'MNI-core';
 import type {
 	ExecutionError,
 	IExecuteResponsePromiseData,
@@ -27,8 +27,8 @@ import type {
 	PollCursor,
 	WorkflowActivateMode,
 	WorkflowExecuteMode,
-} from 'n8n-workflow';
-import { Workflow, UnexpectedError, createRunExecutionData } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { Workflow, UnexpectedError, createRunExecutionData } from 'MNI-workflow';
 import { AsyncLocalStorage } from 'node:async_hooks';
 
 import { ActiveExecutions } from '@/active-executions';
@@ -60,7 +60,7 @@ export type TriggerFailureHandler = (opts: {
 
 /**
  * Builds the execution-context functions (`IGetExecuteTriggerFunctions` /
- * `IGetExecutePollFunctions`) that n8n-core uses to wire up active and poll
+ * `IGetExecutePollFunctions`) that MNI-core uses to wire up active and poll
  * triggers. Owns the emit logic (dedup handling, donePromise resolution,
  * `workflow-executed` event emission, static-data saves) and the
  * `executeErrorWorkflow` wrapper. Path-specific failure behaviour (e.g.
@@ -174,7 +174,7 @@ export class TriggerExecutionContextFactory {
 	}
 
 	/**
-	 * Return trigger function which gets the global functions from n8n-core
+	 * Return trigger function which gets the global functions from MNI-core
 	 * and overwrites the emit to be able to start it in subprocess
 	 */
 	getExecuteTriggerFunctions(
@@ -298,7 +298,7 @@ export class TriggerExecutionContextFactory {
 	}
 
 	/**
-	 * Return poll function which gets the global functions from n8n-core
+	 * Return poll function which gets the global functions from MNI-core
 	 * and overwrites the emit to be able to start it in subprocess
 	 */
 	getExecutePollFunctions(

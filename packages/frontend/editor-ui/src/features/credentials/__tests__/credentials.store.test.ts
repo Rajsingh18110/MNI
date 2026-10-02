@@ -1,8 +1,8 @@
-import { CREDENTIAL_DESCRIPTIONS_FLAG } from '@n8n/api-types';
+import { CREDENTIAL_DESCRIPTIONS_FLAG } from '@MNI/api-types';
 import { usePostHog } from '@/app/stores/posthog.store';
 import { createPinia, setActivePinia } from 'pinia';
 import { mock } from 'vitest-mock-extended';
-import type { ICredentialType, INodeTypeDescription } from 'n8n-workflow';
+import type { ICredentialType, INodeTypeDescription } from 'MNI-workflow';
 import type { INodeUi } from '@/Interface';
 import type { ICredentialsResponse } from '../credentials.types';
 import * as credentialsApi from '../credentials.api';
@@ -17,7 +17,7 @@ const { useRootStore } = vi.hoisted(() => ({
 	useRootStore: vi.fn(() => mockRootStore),
 }));
 
-vi.mock('@n8n/stores/useRootStore', () => ({
+vi.mock('@MNI/stores/useRootStore', () => ({
 	useRootStore,
 }));
 
@@ -32,7 +32,7 @@ vi.mock('@/app/stores/nodeTypes.store', () => ({
 	useNodeTypesStore: vi.fn(() => mockNodeTypesStore),
 }));
 
-vi.mock('@n8n/stores/settings.store', () => ({
+vi.mock('@MNI/stores/settings.store', () => ({
 	useSettingsStore: vi.fn(() => ({
 		isEnterpriseFeatureEnabled: {
 			sharing: true,
@@ -343,7 +343,7 @@ describe('credentials.store', () => {
 			await store.fetchUsableCredentials({ workflowId: 'wf-1' });
 
 			const credentials = store.allUsableCredentialsForNode(
-				mock<INodeUi>({ type: 'n8n-nodes-base.httpRequest', typeVersion: 1 }),
+				mock<INodeUi>({ type: 'MNI-nodes-base.httpRequest', typeVersion: 1 }),
 			);
 
 			expect(credentials).toEqual([inScope]);

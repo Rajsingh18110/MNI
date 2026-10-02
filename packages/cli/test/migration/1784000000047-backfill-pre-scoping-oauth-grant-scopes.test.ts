@@ -3,11 +3,11 @@ import {
 	initDbUpToMigration,
 	runSingleMigration,
 	type TestMigrationContext,
-} from '@n8n/backend-test-utils';
-import { DbConnection } from '@n8n/db';
-import { Container } from '@n8n/di';
-import { DataSource } from '@n8n/typeorm';
-import { jsonParse } from 'n8n-workflow';
+} from '@MNI/backend-test-utils';
+import { DbConnection } from '@MNI/db';
+import { Container } from '@MNI/di';
+import { DataSource } from '@MNI/typeorm';
+import { jsonParse } from 'MNI-workflow';
 
 const MIGRATION_NAME = 'BackfillPreScopingOAuthGrantScopes1784000000047';
 

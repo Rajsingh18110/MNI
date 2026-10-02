@@ -1,7 +1,7 @@
-import type { CrashedExecution } from '@n8n/db';
-import { ExecutionRepository } from '@n8n/db';
-import { Service } from '@n8n/di';
-import { InstanceSettings } from 'n8n-core';
+import type { CrashedExecution } from '@MNI/db';
+import { ExecutionRepository } from '@MNI/db';
+import { Service } from '@MNI/di';
+import { InstanceSettings } from 'MNI-core';
 
 import { EventService } from '@/events/event.service';
 import type { CrashDetector } from '@/events/maps/relay.event-map';

@@ -3,8 +3,8 @@ import type {
 	INodeParameterResourceLocator,
 	IRunData,
 	INodeExecutionData,
-} from 'n8n-workflow';
-import { NodeConnectionTypes } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeConnectionTypes } from 'MNI-workflow';
 
 type TokenUsageValues = {
 	completionTokens: number;

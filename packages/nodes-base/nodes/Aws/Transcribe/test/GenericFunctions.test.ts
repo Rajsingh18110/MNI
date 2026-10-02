@@ -1,6 +1,6 @@
 import { mock } from 'vitest-mock-extended';
-import type { IExecuteFunctions } from 'n8n-workflow';
-import { NodeApiError, UserError } from 'n8n-workflow';
+import type { IExecuteFunctions } from 'MNI-workflow';
+import { NodeApiError, UserError } from 'MNI-workflow';
 
 import type * as awsUtils from '../../../../credentials/common/aws/utils';
 
@@ -144,7 +144,7 @@ describe('AWS Transcribe Generic Functions', () => {
 				region: 'us-east-1',
 				roleArn: 'arn:aws:iam::123456789012:role/MyRole',
 				externalId: 'ext-id',
-				roleSessionName: 'n8n-session',
+				roleSessionName: 'MNI-session',
 				stsAccessKeyId: 'AKIA-sts',
 				stsSecretAccessKey: 'sts-secret',
 			};
@@ -165,7 +165,7 @@ describe('AWS Transcribe Generic Functions', () => {
 				region: 'us-east-1',
 				roleArn: 'arn:aws:iam::123456789012:role/MyRole',
 				externalId: 'ext-id',
-				roleSessionName: 'n8n-session',
+				roleSessionName: 'MNI-session',
 			};
 			const { context, helpers } = buildContext('assumeRole', assumeRoleCredentials);
 

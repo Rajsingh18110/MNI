@@ -3,29 +3,29 @@ import {
 	getPersonalProject,
 	setActiveVersion,
 	testDb,
-} from '@n8n/backend-test-utils';
-import { GlobalConfig } from '@n8n/config';
-import type { User, WorkflowEntity } from '@n8n/db';
+} from '@MNI/backend-test-utils';
+import { GlobalConfig } from '@MNI/config';
+import type { User, WorkflowEntity } from '@MNI/db';
 import {
 	ExecutionRepository,
 	WebhookRepository,
 	WorkflowPublishedVersionRepository,
-} from '@n8n/db';
-import { Container } from '@n8n/di';
-import { Cipher } from 'n8n-core';
-import { FormTrigger } from 'n8n-nodes-base/nodes/Form/FormTrigger.node';
-import type { CredentialConnectionsRequiredResponse, INode } from 'n8n-workflow';
-import { FORM_TRIGGER_NODE_TYPE } from 'n8n-workflow';
+} from '@MNI/db';
+import { Container } from '@MNI/di';
+import { Cipher } from 'MNI-core';
+import { FormTrigger } from 'MNI-nodes-base/nodes/Form/FormTrigger.node';
+import type { CredentialConnectionsRequiredResponse, INode } from 'MNI-workflow';
+import { FORM_TRIGGER_NODE_TYPE } from 'MNI-workflow';
 import { randomUUID } from 'node:crypto';
 import { agent as testAgent } from 'supertest';
 
 import { SYSTEM_RESOLVER_ID } from '@/modules/dynamic-credentials.ee/constants';
 import { DynamicCredentialUserEntryStorage } from '@/modules/dynamic-credentials.ee/credential-resolvers/storage/dynamic-credential-user-entry-storage';
-import { N8nResolverSeeder } from '@/modules/dynamic-credentials.ee/services/n8n-resolver-seeder.service';
+import { N8nResolverSeeder } from '@/modules/dynamic-credentials.ee/services/MNI-resolver-seeder.service';
 import { OAuthClientRepository } from '@/modules/oauth-server/database/repositories/oauth-client.repository';
 import { OAuthTokenService } from '@/modules/oauth-server/oauth-token.service';
 import { CacheService } from '@/services/cache/cache.service';
-import { UrlService } from '@n8n/backend-services';
+import { UrlService } from '@MNI/backend-services';
 import { WebhookServer } from '@/webhooks/webhook-server';
 
 import { createCredentials } from '../shared/db/credentials';

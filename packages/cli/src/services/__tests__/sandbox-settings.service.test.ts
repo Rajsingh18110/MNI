@@ -1,5 +1,5 @@
-import type { Logger } from '@n8n/backend-common';
-import type { AgentsConfig, InstanceAiConfig } from '@n8n/config';
+import type { Logger } from '@MNI/backend-common';
+import type { AgentsConfig, InstanceAiConfig } from '@MNI/config';
 import { mock } from 'vitest-mock-extended';
 
 import type { InstanceCredentialBroker } from '@/credentials/instance-credential-broker';
@@ -17,7 +17,7 @@ describe('SandboxSettingsService', () => {
 		} as AgentsConfig,
 		instanceAi: {
 			sandboxEnabled: false,
-			sandboxProvider: 'n8n-sandbox',
+			sandboxProvider: 'MNI-sandbox',
 			n8nSandboxServiceUrl: 'http://sandbox-api:8080',
 			n8nSandboxServiceApiKey: '',
 			daytonaApiUrl: '',
@@ -35,7 +35,7 @@ describe('SandboxSettingsService', () => {
 		globalConfig.agents.sandboxEnabled = false;
 		Object.assign(globalConfig.instanceAi, {
 			sandboxEnabled: false,
-			sandboxProvider: 'n8n-sandbox',
+			sandboxProvider: 'MNI-sandbox',
 			n8nSandboxServiceUrl: 'http://sandbox-api:8080',
 			n8nSandboxServiceApiKey: '',
 			daytonaApiUrl: '',

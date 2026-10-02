@@ -1,4 +1,4 @@
-import { createComponentRenderer, mockedStore } from '@n8n/frontend-test-utils';
+import { createComponentRenderer, mockedStore } from '@MNI/frontend-test-utils';
 import { createTestingPinia } from '@pinia/testing';
 import userEvent from '@testing-library/user-event';
 import { screen, waitFor } from '@testing-library/vue';
@@ -9,16 +9,16 @@ import SettingsOpenTelemetryView from './SettingsOpenTelemetryView.vue';
 
 const showMessage = vi.fn();
 const showError = vi.fn();
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: () => ({ showMessage, showError }),
 }));
 
 const telemetryTrack = vi.fn();
-vi.mock('@n8n/composables/useTelemetry', () => ({
+vi.mock('@MNI/composables/useTelemetry', () => ({
 	useTelemetry: () => ({ track: telemetryTrack }),
 }));
 
-vi.mock('@n8n/stores/useRootStore', () => ({
+vi.mock('@MNI/stores/useRootStore', () => ({
 	useRootStore: () => ({ restApiContext: { baseUrl: '', pushRef: '' } }),
 }));
 
@@ -416,7 +416,7 @@ describe('SettingsOpenTelemetryView', () => {
 		await userEvent.type(getByTestId('otel-exporter-endpoint'), 'https://collector.example.com');
 
 		// Service name
-		await userEvent.type(getByTestId('otel-service-name'), 'my-n8n');
+		await userEvent.type(getByTestId('otel-service-name'), 'my-MNI');
 
 		// Tracing path
 		await userEvent.clear(getByTestId('otel-tracing-path'));
@@ -452,7 +452,7 @@ describe('SettingsOpenTelemetryView', () => {
 				expect.anything(),
 				expect.objectContaining({
 					exporterEndpoint: 'https://collector.example.com',
-					exporterServiceName: 'my-n8n',
+					exporterServiceName: 'my-MNI',
 					exporterTracingPath: '/custom/traces',
 					exporterHeaders: 'x-api-key=secret',
 					startupConnectivityTimeoutMs: 5000,
@@ -478,7 +478,7 @@ describe('SettingsOpenTelemetryView', () => {
 	it('renders header keys with masked values when stored headers are redacted', async () => {
 		getOtelSettingsMock.mockResolvedValue(
 			makeSettings({
-				exporterHeaders: 'authorization=__n8n_BLANK_VALUE_e5362baf-c777-4d57-a609-6eaf1f9e87f6',
+				exporterHeaders: 'authorization=__MNI_BLANK_VALUE_e5362baf-c777-4d57-a609-6eaf1f9e87f6',
 				envManagedFields: [],
 			}),
 		);
@@ -502,7 +502,7 @@ describe('SettingsOpenTelemetryView', () => {
 	it('renders header keys with masked, disabled values when headers are env-managed', async () => {
 		getOtelSettingsMock.mockResolvedValue(
 			makeSettings({
-				exporterHeaders: 'authorization=__n8n_BLANK_VALUE_e5362baf-c777-4d57-a609-6eaf1f9e87f6',
+				exporterHeaders: 'authorization=__MNI_BLANK_VALUE_e5362baf-c777-4d57-a609-6eaf1f9e87f6',
 				envManagedFields: ['exporterHeaders'],
 			}),
 		);

@@ -1,4 +1,4 @@
-import { Service } from '@n8n/di';
+import { Service } from '@MNI/di';
 
 import type { SecretsProvider } from './types';
 

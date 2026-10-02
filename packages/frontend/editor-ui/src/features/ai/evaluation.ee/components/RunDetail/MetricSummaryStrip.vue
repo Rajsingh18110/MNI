@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { ElScrollbar } from 'element-plus';
-import type { MetricScale } from '@n8n/api-types';
-import { normalizeMetricScore } from '@n8n/api-types';
+import type { MetricScale } from '@MNI/api-types';
+import { normalizeMetricScore } from '@MNI/api-types';
 import {
 	getUserDefinedMetricNames,
 	normalizeMetricValue,

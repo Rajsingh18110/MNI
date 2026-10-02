@@ -1,10 +1,10 @@
-import type { AgentTeamsIntegrationSettings, TeamsAgentSetupState } from '@n8n/api-types';
-import type { User } from '@n8n/db';
-import { Service } from '@n8n/di';
+import type { AgentTeamsIntegrationSettings, TeamsAgentSetupState } from '@MNI/api-types';
+import type { User } from '@MNI/db';
+import { Service } from '@MNI/di';
 
 import { BadRequestError } from '@/errors/response-errors/bad-request.error';
 import { NotFoundError } from '@/errors/response-errors/not-found.error';
-import { UrlService } from '@n8n/backend-services';
+import { UrlService } from '@MNI/backend-services';
 
 import { TeamsArmTemplateService } from './teams-arm-template.service';
 import { TeamsManifestService } from './teams-manifest.service';
@@ -58,7 +58,7 @@ export class TeamsSetupService {
 			messagingEndpointUrl: this.messagingEndpointUrl(scope),
 			botId: identity?.clientId ?? null,
 			// Withheld while the credential is taken: the deployment would fail in
-			// the portal, and the user would read Azure's wording for an n8n-side
+			// the portal, and the user would read Azure's wording for an MNI-side
 			// choice they can still change here.
 			deployToAzureUrl:
 				credentialId && identity && !claimedBy
@@ -158,7 +158,7 @@ export class TeamsSetupService {
 
 	/**
 	 * Looked up across projects, because the clash is at Microsoft rather than in
-	 * n8n. Connecting is still refused only within the project, by the shared
+	 * MNI. Connecting is still refused only within the project, by the shared
 	 * precondition every channel uses.
 	 */
 	private async credentialClaimedBy(agentId: string, credentialId: string): Promise<string | null> {

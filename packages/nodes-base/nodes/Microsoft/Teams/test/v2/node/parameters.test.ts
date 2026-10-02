@@ -1,6 +1,6 @@
 import { DateTime } from 'luxon';
 import type { MockProxy } from 'vitest-mock-extended';
-import type { IExecuteFunctions } from 'n8n-workflow';
+import type { IExecuteFunctions } from 'MNI-workflow';
 
 import { createExecuteContext, setParams } from './helpers';
 import { optionalText, requiredText } from '../../../v2/helpers/parameters';

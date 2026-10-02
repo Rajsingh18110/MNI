@@ -1,6 +1,6 @@
-import { Time } from '@n8n/constants';
-import type { SystemTaskSchedule } from '@n8n/decorators';
-import { scheduleFromDefinition } from '@n8n/scheduler';
+import { Time } from '@MNI/constants';
+import type { SystemTaskSchedule } from '@MNI/decorators';
+import { scheduleFromDefinition } from '@MNI/scheduler';
 
 import { SystemTaskTimer } from '../system-task-timer';
 

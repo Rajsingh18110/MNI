@@ -14,9 +14,9 @@ import { homedir } from 'node:os';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-const REPOSITORY = 'n8n-io/cat-bot';
-const BUNDLE_ROOT = 'n8n-opencode-harness';
-const PLUGIN_FILE = 'n8n-harness.js';
+const REPOSITORY = 'MNI-io/cat-bot';
+const BUNDLE_ROOT = 'MNI-opencode-harness';
+const PLUGIN_FILE = 'MNI-harness.js';
 const REPO_ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 
 export function validateLock(lock) {
@@ -24,7 +24,7 @@ export function validateLock(lock) {
 		lock?.repository !== REPOSITORY ||
 		!/^[0-9]+\.[0-9]+\.[0-9]+$/.test(lock.version) ||
 		lock.releaseTag !== `harness-v${lock.version}` ||
-		lock.assetName !== `n8n-opencode-harness-${lock.version}.tgz`
+		lock.assetName !== `MNI-opencode-harness-${lock.version}.tgz`
 	) {
 		throw new Error('The agent harness lock is invalid.');
 	}
@@ -81,7 +81,7 @@ function activatePlugin(pluginPath, pluginLink) {
 
 export function installAgentHarness({
 	lockPath = join(REPO_ROOT, 'agent-harness.lock.json'),
-	cacheRoot = join(homedir(), '.cache', 'n8n-agent-harness'),
+	cacheRoot = join(homedir(), '.cache', 'MNI-agent-harness'),
 	pluginLink = join(homedir(), '.config', 'opencode', 'plugins', PLUGIN_FILE),
 	download = downloadReleaseAsset,
 	extract = (archive, destination) =>

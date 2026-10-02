@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 
 defineProps<{
 	data: string;

@@ -1,8 +1,8 @@
 // `{ name, value }` objects below are field-input fixtures, not node params.
-/* eslint-disable n8n-nodes-base/node-param-display-name-miscased */
+/* eslint-disable MNI-nodes-base/node-param-display-name-miscased */
 
-import type { IExecuteFunctions, INode } from 'n8n-workflow';
-import { NodeOperationError } from 'n8n-workflow';
+import type { IExecuteFunctions, INode } from 'MNI-workflow';
+import { NodeOperationError } from 'MNI-workflow';
 import { mockDeep } from 'vitest-mock-extended';
 
 import { dataverseApiRequest, dataverseApiRequestAllItems } from '../GenericFunctions';
@@ -31,7 +31,7 @@ const CREDENTIAL_TYPE = 'microsoftDataverseOAuth2Api';
 const node: INode = {
 	id: 'test-node',
 	name: 'Microsoft Dataverse',
-	type: 'n8n-nodes-base.microsoftDataverse',
+	type: 'MNI-nodes-base.microsoftDataverse',
 	typeVersion: 1,
 	position: [0, 0],
 	parameters: {},

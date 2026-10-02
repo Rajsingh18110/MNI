@@ -5,7 +5,7 @@
       "parameters": {},
       "id": "254a9d9b-43bf-4f6e-a761-d78146a05838",
       "name": "When clicking \"Execute Workflow\"",
-      "type": "n8n-nodes-base.manualTrigger",
+      "type": "MNI-nodes-base.manualTrigger",
       "typeVersion": 1,
       "position": [
         -660,
@@ -35,7 +35,7 @@
       },
       "id": "7e638897-0581-42e6-8b89-494908e0ae75",
       "name": "Bot test",
-      "type": "n8n-nodes-base.discord",
+      "type": "MNI-nodes-base.discord",
       "typeVersion": 2,
       "position": [
         -420,
@@ -52,7 +52,7 @@
       "parameters": {},
       "id": "10450e91-8642-4b92-af15-9d5ad161b527",
       "name": "No Operation, do nothing",
-      "type": "n8n-nodes-base.noOp",
+      "type": "MNI-nodes-base.noOp",
       "typeVersion": 1,
       "position": [
         -200,
@@ -70,7 +70,7 @@
           "channel_id": "1168516240332034067",
           "author": {
             "id": "1070667629972430879",
-            "username": "n8n-node-overhaul",
+            "username": "MNI-node-overhaul",
             "avatar": null,
             "discriminator": "1037",
             "public_flags": 0,

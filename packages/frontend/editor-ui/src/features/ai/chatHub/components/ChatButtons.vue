@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { N8nButton } from '@n8n/design-system';
-import type { ChatHubMessageButton } from '@n8n/api-types';
+import { N8nButton } from '@MNI/design-system';
+import type { ChatHubMessageButton } from '@MNI/api-types';
 
 const { buttons, isDisabled } = defineProps<{
 	buttons: ChatHubMessageButton[];

@@ -1,5 +1,5 @@
-import type { INodeType, INodeTypeDescription } from 'n8n-workflow';
-import { NodeConnectionTypes } from 'n8n-workflow';
+import type { INodeType, INodeTypeDescription } from 'MNI-workflow';
+import { NodeConnectionTypes } from 'MNI-workflow';
 
 import { chatFields, chatOperations } from './ChatDescription';
 import { imageFields, imageOperations } from './ImageDescription';
@@ -24,11 +24,11 @@ export class OpenAi implements INodeType {
 		builderHint: {
 			relatedNodes: [
 				{
-					nodeType: '@n8n/n8n-nodes-langchain.lmChatOpenAi',
+					nodeType: '@MNI/MNI-nodes-langchain.lmChatOpenAi',
 					relationHint: 'For most LLM tasks, text generation, reasoning, use Agent with this model',
 				},
 				{
-					nodeType: '@n8n/n8n-nodes-langchain.agent',
+					nodeType: '@MNI/MNI-nodes-langchain.agent',
 					relationHint: 'For most LLM tasks, text generation, reasoning, tool calls, etc.',
 				},
 			],

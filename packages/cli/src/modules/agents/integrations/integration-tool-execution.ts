@@ -2,8 +2,8 @@ import {
 	APPROVAL_RESUME_SCHEMA,
 	type InterruptibleToolContext,
 	type ToolContext,
-} from '@n8n/agents';
-import { isRecord } from '@n8n/utils/is-record';
+} from '@MNI/agents';
+import { isRecord } from '@MNI/utils/is-record';
 import { z } from 'zod';
 
 import { isTaskRunMemoryResourceId } from '../utils/agent-memory-scope';

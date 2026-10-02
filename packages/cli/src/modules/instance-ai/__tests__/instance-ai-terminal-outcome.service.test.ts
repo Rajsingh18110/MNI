@@ -5,7 +5,7 @@ const terminalOutcomeStorageMock = {
 };
 
 // Manual mock — must be declared before any import that touches the mocked module.
-vi.mock('@n8n/instance-ai', () => ({
+vi.mock('@MNI/instance-ai', () => ({
 	orchestratorAgentId: (runId: string) => `orchestrator-${runId}`,
 	InstanceAiTerminalResponseGuard: class {
 		constructor(private readonly options: { runId: string; rootAgentId: string }) {}
@@ -100,8 +100,8 @@ vi.mock('@n8n/instance-ai', () => ({
 }));
 
 import type { Mock } from 'vitest';
-import type { InstanceAiEvent } from '@n8n/api-types';
-import type { ManagedBackgroundTask, TerminalOutcome } from '@n8n/instance-ai';
+import type { InstanceAiEvent } from '@MNI/api-types';
+import type { ManagedBackgroundTask, TerminalOutcome } from '@MNI/instance-ai';
 
 import {
 	InstanceAiTerminalOutcomeService,

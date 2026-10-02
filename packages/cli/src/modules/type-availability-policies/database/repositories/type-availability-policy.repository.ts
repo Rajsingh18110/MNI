@@ -1,6 +1,6 @@
-import { BaseRepository, TransactionRunner, chunkIds, type OperationContext } from '@n8n/db';
-import { Service } from '@n8n/di';
-import { DataSource, In, type EntityManager } from '@n8n/typeorm';
+import { BaseRepository, TransactionRunner, chunkIds, type OperationContext } from '@MNI/db';
+import { Service } from '@MNI/di';
+import { DataSource, In, type EntityManager } from '@MNI/typeorm';
 import { isDeepStrictEqual } from 'node:util';
 
 import type { PolicyRule } from '../../policy-rule.types';

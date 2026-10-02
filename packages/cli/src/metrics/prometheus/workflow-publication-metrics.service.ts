@@ -1,8 +1,8 @@
-import { PrometheusMetricsConfig, WorkflowsConfig } from '@n8n/config';
-import { Time } from '@n8n/constants';
-import { WorkflowPublicationOutboxRepository, WorkflowPublicationOutboxStatus } from '@n8n/db';
-import { Service } from '@n8n/di';
-import { InstanceSettings } from 'n8n-core';
+import { PrometheusMetricsConfig, WorkflowsConfig } from '@MNI/config';
+import { Time } from '@MNI/constants';
+import { WorkflowPublicationOutboxRepository, WorkflowPublicationOutboxStatus } from '@MNI/db';
+import { Service } from '@MNI/di';
+import { InstanceSettings } from 'MNI-core';
 import promClient from 'prom-client';
 
 import { EventService } from '@/events/event.service';

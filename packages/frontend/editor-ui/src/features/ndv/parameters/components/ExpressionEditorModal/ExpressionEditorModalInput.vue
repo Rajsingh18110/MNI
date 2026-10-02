@@ -16,7 +16,7 @@ import { mappingDropCursor } from '@/features/shared/editors/plugins/codemirror/
 import { editorKeymap } from '@/features/shared/editors/plugins/codemirror/keymap';
 import { expressionCloseBrackets } from '@/features/shared/editors/plugins/codemirror/expressionCloseBrackets';
 import type { TargetNodeParameterContext } from '@/Interface';
-import type { IDataObject } from 'n8n-workflow';
+import type { IDataObject } from 'MNI-workflow';
 
 type Props = {
 	modelValue: string;

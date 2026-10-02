@@ -5,7 +5,7 @@ import {
 	N8nText,
 	N8nTooltip,
 	type SettingsRowLayout,
-} from '@n8n/design-system';
+} from '@MNI/design-system';
 
 defineOptions({ inheritAttrs: false });
 

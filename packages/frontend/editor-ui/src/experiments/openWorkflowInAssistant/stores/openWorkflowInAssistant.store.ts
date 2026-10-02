@@ -1,10 +1,10 @@
 import { computed, ref } from 'vue';
 import { defineStore } from 'pinia';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
-import { STORES } from '@n8n/stores';
-import { useUsersStore } from '@n8n/stores/users.store';
-import { TELEMETRY_EVENT } from '@n8n/telemetry';
-import type { ITelemetryTrackProperties } from 'n8n-workflow';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
+import { STORES } from '@MNI/stores';
+import { useUsersStore } from '@MNI/stores/users.store';
+import { TELEMETRY_EVENT } from '@MNI/telemetry';
+import type { ITelemetryTrackProperties } from 'MNI-workflow';
 
 import { OPEN_WORKFLOW_IN_ASSISTANT_EXPERIMENT } from '@/app/constants/experiments';
 import { usePostHog } from '@/app/stores/posthog.store';

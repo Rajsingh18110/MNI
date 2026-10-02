@@ -1,4 +1,4 @@
-import type { IExecuteSingleFunctions, IHttpRequestOptions, INode } from 'n8n-workflow';
+import type { IExecuteSingleFunctions, IHttpRequestOptions, INode } from 'MNI-workflow';
 
 import { validEmailAndPhonePreSendAction, isEmailValid, isPhoneValid } from '../GenericFunctions';
 import type { Mock } from 'vitest';
@@ -21,7 +21,7 @@ describe('validEmailAndPhonePreSendAction', () => {
 						id: 'mock-node-id',
 						name: 'mock-node',
 						typeVersion: 1,
-						type: 'n8n-nodes-base.mockNode',
+						type: 'MNI-nodes-base.mockNode',
 						position: [0, 0],
 						parameters: {},
 					}) as INode,

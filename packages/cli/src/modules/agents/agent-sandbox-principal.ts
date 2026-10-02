@@ -1,13 +1,13 @@
 import { createHash } from 'node:crypto';
 
-import type { JSONObject } from '@n8n/agents';
+import type { JSONObject } from '@MNI/agents';
 
 /**
  * Cache-scope key for an agent sandbox. It is not the caller identity: for that, see
- * `Principal` in `@n8n/permissions`.
+ * `Principal` in `@MNI/permissions`.
  */
 export type AgentSandboxPrincipal =
-	| { type: 'n8n-user'; userId: string }
+	| { type: 'MNI-user'; userId: string }
 	| {
 			type: 'integration-thread';
 			connectionId: string;
@@ -77,7 +77,7 @@ export function hashAgentSandboxPrincipal(
 	let canonicalPrincipal: string[];
 
 	switch (principal.type) {
-		case 'n8n-user':
+		case 'MNI-user':
 			canonicalPrincipal = [principal.type, principal.userId];
 			break;
 		case 'integration-thread':

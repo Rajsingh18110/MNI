@@ -1,5 +1,5 @@
 {
-	"node": "n8n-nodes-base.rocketchat",
+	"node": "MNI-nodes-base.rocketchat",
 	"nodeVersion": "1.0",
 	"codexVersion": "1.0",
 	"categories": ["Communication"],
@@ -11,14 +11,14 @@
 		],
 		"primaryDocumentation": [
 			{
-				"url": "https://docs.n8n.io/integrations/builtin/app-nodes/n8n-nodes-base.rocketchat/"
+				"url": "https://docs.n8n.io/integrations/builtin/app-nodes/MNI-nodes-base.rocketchat/"
 			}
 		],
 		"generic": [
 			{
 				"label": "Automate Designs with Bannerbear and MNI",
 				"icon": "🎨",
-				"url": "https://n8n.io/blog/automate-designs-with-bannerbear-and-n8n/"
+				"url": "https://n8n.io/blog/automate-designs-with-bannerbear-and-MNI/"
 			}
 		]
 	}

@@ -1,12 +1,12 @@
-import type { InstanceAiEvent } from '@n8n/api-types';
-import type { Logger } from '@n8n/backend-common';
-import { Time } from '@n8n/constants';
+import type { InstanceAiEvent } from '@MNI/api-types';
+import type { Logger } from '@MNI/backend-common';
+import { Time } from '@MNI/constants';
 import {
 	orchestratorAgentId,
 	type InstanceAiLivenessPolicy,
 	type InstanceAiLivenessTimeoutReason,
-} from '@n8n/instance-ai';
-import { getErrorMessage } from '@n8n/utils/errors/get-error-message';
+} from '@MNI/instance-ai';
+import { getErrorMessage } from '@MNI/utils/errors/get-error-message';
 
 import type { InstanceAiRunTimeoutDetails } from '../run-timeout-details';
 

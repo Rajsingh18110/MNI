@@ -1,5 +1,5 @@
 import { v4 as uuidv4 } from 'uuid';
-import type { INode, INodeCredentials, INodeTypeDescription } from 'n8n-workflow';
+import type { INode, INodeCredentials, INodeTypeDescription } from 'MNI-workflow';
 
 import type { IWorkflowDb } from '@/Interface';
 import type { AgentJsonMcpServerConfig, AgentJsonToolRef, NodeToolConfig } from '../types';

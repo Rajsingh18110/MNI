@@ -4,11 +4,11 @@ import { createComponentRenderer } from '@/__tests__/render';
 import SettingsCommunityNodesView from './SettingsCommunityNodesView.vue';
 import { createTestingPinia } from '@pinia/testing';
 import { setActivePinia } from 'pinia';
-import { STORES } from '@n8n/stores';
+import { STORES } from '@MNI/stores';
 import { useCommunityNodesStore } from '../communityNodes.store';
 import { useUIStore } from '@/app/stores/ui.store';
 import { COMMUNITY_PACKAGE_INSTALL_MODAL_KEY } from '../communityNodes.constants';
-import type { PublicInstalledPackage, PublicInstalledNode } from 'n8n-workflow';
+import type { PublicInstalledPackage, PublicInstalledNode } from 'MNI-workflow';
 
 const mockPushInitialize = vi.fn();
 const mockPushTerminate = vi.fn();
@@ -26,7 +26,7 @@ vi.mock('@/app/composables/useExternalHooks', () => ({
 	})),
 }));
 
-vi.mock('@n8n/composables/useTelemetry', () => ({
+vi.mock('@MNI/composables/useTelemetry', () => ({
 	useTelemetry: vi.fn(() => ({
 		track: vi.fn(),
 	})),
@@ -38,7 +38,7 @@ vi.mock('@/app/composables/useDocumentTitle', () => ({
 	})),
 }));
 
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: vi.fn(() => ({
 		showError: vi.fn(),
 	})),
@@ -71,7 +71,7 @@ vi.mock('@/app/utils/rbac/checks', async (importOriginal) => {
 	return { ...actual, isAuthenticated: vi.fn().mockReturnValue(true) };
 });
 
-vi.mock('@n8n/rest-api-client/api/communityNodes', () => ({
+vi.mock('@MNI/rest-api-client/api/communityNodes', () => ({
 	getInstalledCommunityNodes: vi.fn().mockResolvedValue([]),
 	getAvailableCommunityPackageCount: vi.fn().mockResolvedValue(-1),
 	installNewPackage: vi.fn(),
@@ -82,7 +82,7 @@ vi.mock('@n8n/rest-api-client/api/communityNodes', () => ({
 import {
 	getInstalledCommunityNodes,
 	getAvailableCommunityPackageCount,
-} from '@n8n/rest-api-client/api/communityNodes';
+} from '@MNI/rest-api-client/api/communityNodes';
 
 const makePackage = (packageName: string): PublicInstalledPackage => ({
 	packageName,
@@ -230,7 +230,7 @@ describe('SettingsCommunityNodesView', () => {
 		});
 
 		it('hides the header install button when packages are managed by env even if unverified packages are enabled', async () => {
-			const pkg = makePackage('n8n-nodes-managed');
+			const pkg = makePackage('MNI-nodes-managed');
 			const { queryByText } = setup({
 				packages: [pkg],
 				isUnverifiedPackagesEnabled: true,
@@ -243,8 +243,8 @@ describe('SettingsCommunityNodesView', () => {
 	});
 
 	describe('with installed packages', () => {
-		const pkg1 = makePackage('n8n-nodes-first');
-		const pkg2 = makePackage('n8n-nodes-second');
+		const pkg1 = makePackage('MNI-nodes-first');
+		const pkg2 = makePackage('MNI-nodes-second');
 
 		it('renders a card per installed package', async () => {
 			const { getAllByTestId } = setup({ packages: [pkg1, pkg2] });
@@ -252,8 +252,8 @@ describe('SettingsCommunityNodesView', () => {
 
 			const cards = getAllByTestId('community-package-card');
 			expect(cards).toHaveLength(2);
-			expect(cards[0]).toHaveAttribute('data-package-name', 'n8n-nodes-first');
-			expect(cards[1]).toHaveAttribute('data-package-name', 'n8n-nodes-second');
+			expect(cards[0]).toHaveAttribute('data-package-name', 'MNI-nodes-first');
+			expect(cards[1]).toHaveAttribute('data-package-name', 'MNI-nodes-second');
 		});
 
 		it('shows the header install button when unverified packages are enabled', async () => {

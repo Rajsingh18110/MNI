@@ -1,12 +1,12 @@
-import { testDb } from '@n8n/backend-test-utils';
-import type { User } from '@n8n/db';
+import { testDb } from '@MNI/backend-test-utils';
+import type { User } from '@MNI/db';
 import {
 	CredentialsRepository,
 	InstanceCredentialAssignmentRepository,
 	SettingsRepository,
-} from '@n8n/db';
-import { Container } from '@n8n/di';
-import { CREDENTIAL_BLANKING_VALUE } from 'n8n-workflow';
+} from '@MNI/db';
+import { Container } from '@MNI/di';
+import { CREDENTIAL_BLANKING_VALUE } from 'MNI-workflow';
 
 import { CredentialsService } from '@/credentials/credentials.service';
 import { InstanceCredentialBroker } from '@/credentials/instance-credential-broker';
@@ -14,7 +14,7 @@ import { PolicyEnforcementService } from '@/policy/policy-enforcement.service';
 import {
 	INSTANCE_AI_DAYTONA_CREDENTIAL_POLICY,
 	INSTANCE_AI_MODEL_CREDENTIAL_POLICY,
-	INSTANCE_AI_N8N_SANDBOX_CREDENTIAL_POLICY,
+	INSTANCE_AI_MNI_SANDBOX_CREDENTIAL_POLICY,
 	INSTANCE_AI_SEARCH_CREDENTIAL_POLICY,
 	InstanceAiSettingsService,
 } from '@/modules/instance-ai/instance-ai-settings.service';
@@ -42,7 +42,7 @@ describe('InstanceAiSettingsService (integration)', () => {
 		const broker = Container.get(InstanceCredentialBroker);
 		broker.registerUse(INSTANCE_AI_MODEL_CREDENTIAL_POLICY);
 		broker.registerUse(INSTANCE_AI_DAYTONA_CREDENTIAL_POLICY);
-		broker.registerUse(INSTANCE_AI_N8N_SANDBOX_CREDENTIAL_POLICY);
+		broker.registerUse(INSTANCE_AI_MNI_SANDBOX_CREDENTIAL_POLICY);
 		broker.registerUse(INSTANCE_AI_SEARCH_CREDENTIAL_POLICY);
 
 		service = Container.get(InstanceAiSettingsService);

@@ -2,7 +2,7 @@
 import { sanitizeHtml } from '@/app/utils/htmlUtils';
 import { computed, onMounted, ref } from 'vue';
 
-import { N8nText } from '@n8n/design-system';
+import { N8nText } from '@MNI/design-system';
 type Props = {
 	hint: string;
 	highlight?: boolean;
@@ -50,12 +50,12 @@ const simplyText = computed(() => {
 				[$style.redacted]: redacted,
 			}"
 		>
-			<span v-n8n-html="simplyText" data-test-id="parameter-input-hint"></span>
+			<span v-MNI-html="simplyText" data-test-id="parameter-input-hint"></span>
 		</div>
 		<div
 			v-else
 			ref="hintTextRef"
-			v-n8n-html="sanitizeHtml(hint)"
+			v-MNI-html="sanitizeHtml(hint)"
 			:class="{ [$style.singleline]: singleLine, [$style.highlight]: highlight }"
 		></div>
 	</N8nText>

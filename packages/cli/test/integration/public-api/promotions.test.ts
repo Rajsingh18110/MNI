@@ -1,10 +1,10 @@
-import { ApplyPackageResultDto, type ContinueApplyPackageDto } from '@n8n/api-types';
-import { ModuleRegistry } from '@n8n/backend-common';
-import { createTeamProject, getPersonalProject, testDb } from '@n8n/backend-test-utils';
-import type { User } from '@n8n/db';
-import { GLOBAL_MEMBER_ROLE, ProjectRepository, UserRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
-import { createDeferredPromise } from '@n8n/utils/promise/deferred-promise';
+import { ApplyPackageResultDto, type ContinueApplyPackageDto } from '@MNI/api-types';
+import { ModuleRegistry } from '@MNI/backend-common';
+import { createTeamProject, getPersonalProject, testDb } from '@MNI/backend-test-utils';
+import type { User } from '@MNI/db';
+import { GLOBAL_MEMBER_ROLE, ProjectRepository, UserRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
+import { createDeferredPromise } from '@MNI/utils/promise/deferred-promise';
 
 import { BadRequestError } from '@/errors/response-errors/bad-request.error';
 import { PromotionConfigRepository } from '@/modules/promotions.ee/database/repositories/promotion-config.repository';

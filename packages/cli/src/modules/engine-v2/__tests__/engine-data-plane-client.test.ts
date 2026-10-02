@@ -2,12 +2,12 @@ import type {
 	HttpRequestClient,
 	HttpRequestClientOptions,
 	OutboundHttp,
-} from '@n8n/backend-network';
-import type { EngineConfig } from '@n8n/config';
-import { SharedSecretIdentityVerifier } from '@n8n/engine';
-import type { StartExecutionRequest } from '@n8n/engine';
-import type { InstanceSettings } from 'n8n-core';
-import { OperationalError, UserError } from 'n8n-workflow';
+} from '@MNI/backend-network';
+import type { EngineConfig } from '@MNI/config';
+import { SharedSecretIdentityVerifier } from '@MNI/engine';
+import type { StartExecutionRequest } from '@MNI/engine';
+import type { InstanceSettings } from 'MNI-core';
+import { OperationalError, UserError } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import type { ExecutionIdV2 } from '@/executions/execution-id';
@@ -125,7 +125,7 @@ describe('EngineDataPlaneClient', () => {
 			expect(clientOptions?.baseURL).toBe('https://engine.internal:8443');
 		});
 
-		it('opts out of SSRF protection for the n8n-controlled engine host', () => {
+		it('opts out of SSRF protection for the MNI-controlled engine host', () => {
 			expect(clientOptions?.useDefaultSsrfPolicy).toBe('unsafe');
 		});
 

@@ -1,23 +1,23 @@
 import { nextTick } from 'vue';
 import { createComponentRenderer } from '@/__tests__/render';
 import { mockedStore, waitAllPromises } from '@/__tests__/utils';
-import * as usersApi from '@n8n/rest-api-client/api/users';
+import * as usersApi from '@MNI/rest-api-client/api/users';
 import { useProjectPages } from '@/features/collaboration/projects/composables/useProjectPages';
 import { VIEWS } from '@/app/constants';
 import type { WorkflowListResource } from '@/Interface';
-import type { IUser } from '@n8n/rest-api-client/api/users';
+import type { IUser } from '@MNI/rest-api-client/api/users';
 import { useFoldersStore } from '@/features/core/folders/folders.store';
 import { useCredentialsStore } from '@/features/credentials/credentials.store';
 import { useProjectsStore } from '@/features/collaboration/projects/projects.store';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { useSourceControlStore } from '@/features/integrations/sourceControl.ee/sourceControl.store';
 import { promotionEventBus } from '@/features/integrations/promotions.ee/promotions.eventBus';
 import { useTagsStore } from '@/features/shared/tags/tags.store';
-import { useUsersStore } from '@n8n/stores/users.store';
+import { useUsersStore } from '@MNI/stores/users.store';
 import { useWorkflowsListStore } from '@/app/stores/workflowsList.store';
 import type { Project } from '@/features/collaboration/projects/projects.types';
 import WorkflowsView from '@/app/views/WorkflowsView.vue';
-import { STORES } from '@n8n/stores';
+import { STORES } from '@MNI/stores';
 import { createTestingPinia } from '@pinia/testing';
 import userEvent from '@testing-library/user-event';
 import { waitFor, within } from '@testing-library/vue';
@@ -25,7 +25,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import { useReadyToRunStore } from '@/features/workflows/readyToRun/stores/readyToRun.store';
 
 vi.mock('@/features/collaboration/projects/projects.api');
-vi.mock('@n8n/rest-api-client/api/users');
+vi.mock('@MNI/rest-api-client/api/users');
 vi.mock('@/features/integrations/sourceControl.ee/sourceControl.api');
 vi.mock('@/app/composables/useGlobalEntityCreation', () => ({
 	useGlobalEntityCreation: () => ({
@@ -47,7 +47,7 @@ vi.mock('@/experiments/utils', async (importOriginal) => {
 	};
 });
 const mockTrack = vi.fn();
-vi.mock('@n8n/composables/useTelemetry', () => ({
+vi.mock('@MNI/composables/useTelemetry', () => ({
 	useTelemetry: vi.fn(() => ({
 		track: mockTrack,
 	})),
@@ -55,7 +55,7 @@ vi.mock('@n8n/composables/useTelemetry', () => ({
 
 const mockShowError = vi.fn();
 const mockShowMessage = vi.fn();
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: () => ({ showError: mockShowError, showMessage: mockShowMessage }),
 }));
 
@@ -83,7 +83,7 @@ const router = createRouter({
 	],
 });
 
-vi.mock('@n8n/rest-api-client/api/usage', () => ({
+vi.mock('@MNI/rest-api-client/api/usage', () => ({
 	getLicense: vi.fn(),
 }));
 

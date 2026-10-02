@@ -1,4 +1,4 @@
-import type { WorkflowsConfig } from '@n8n/config';
+import type { WorkflowsConfig } from '@MNI/config';
 import { mock } from 'vitest-mock-extended';
 
 import type { WorkflowPublicationOutboxCleanupService } from '../workflow-publication-outbox-cleanup.service';

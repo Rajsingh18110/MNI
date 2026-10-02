@@ -1,6 +1,6 @@
-import { DateTimeColumn, JsonColumn, WithTimestamps } from '@n8n/db';
-import type { SerializableAgentState } from '@n8n/agents';
-import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryColumn } from '@n8n/typeorm';
+import { DateTimeColumn, JsonColumn, WithTimestamps } from '@MNI/db';
+import type { SerializableAgentState } from '@MNI/agents';
+import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryColumn } from '@MNI/typeorm';
 
 import { InstanceAiThread } from './instance-ai-thread.entity';
 

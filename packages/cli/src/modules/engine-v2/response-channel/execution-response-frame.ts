@@ -1,11 +1,11 @@
-import type { Logger } from '@n8n/backend-common';
+import type { Logger } from '@MNI/backend-common';
 import {
 	executionResponseSchema,
 	type ExecutionResponse,
 	type UndeliverableMessage,
-} from '@n8n/engine';
-import { createResultError, createResultOk, toResult, type Result } from '@n8n/utils/result';
-import { UnexpectedError } from 'n8n-workflow';
+} from '@MNI/engine';
+import { createResultError, createResultOk, toResult, type Result } from '@MNI/utils/result';
+import { UnexpectedError } from 'MNI-workflow';
 
 /** A response channel must be able to carry every frame this module produces. */
 const MAX_FRAME_BYTES = 5 * 1024 * 1024;

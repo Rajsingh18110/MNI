@@ -1,5 +1,5 @@
-import type { SourceControlledFile } from '@n8n/api-types';
-import { UnexpectedError, UserError } from 'n8n-workflow';
+import type { SourceControlledFile } from '@MNI/api-types';
+import { UnexpectedError, UserError } from 'MNI-workflow';
 
 import { classifyHttpError } from '@/errors/http-error-classifier';
 import {
@@ -10,7 +10,7 @@ import { ConflictError } from '@/errors/response-errors/conflict.error';
 import { LicenseEulaRequiredError } from '@/errors/response-errors/license-eula-required.error';
 import { NotFoundError } from '@/errors/response-errors/not-found.error';
 import { WorkflowPublishBlockedError } from '@/errors/response-errors/workflow-publish-blocked.error';
-import { toImportBlockedError } from '@/modules/n8n-packages/engine/import-blocked.error';
+import { toImportBlockedError } from '@/modules/MNI-packages/engine/import-blocked.error';
 import { PolicyViolationError } from '@/policy/policy-violation.error';
 
 describe('http-error-serializers', () => {
@@ -127,7 +127,7 @@ describe('http-error-serializers', () => {
 				kind: 'node-type-unavailable',
 				checkId: 'node-type-availability',
 				message: 'Slack is not available in this project',
-				subject: 'n8n-nodes-base.slack',
+				subject: 'MNI-nodes-base.slack',
 				subjectType: 'nodeType',
 			},
 		];

@@ -7,8 +7,8 @@ import type {
 	INodeType,
 	INodeTypeDescription,
 	IPollFunctions,
-} from 'n8n-workflow';
-import { NodeConnectionTypes } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeConnectionTypes } from 'MNI-workflow';
 
 import {
 	googleApiRequest,
@@ -66,12 +66,12 @@ export class GmailTrigger implements INodeType {
 				'When downstream nodes create records (tasks, rows, tickets) per email, guarantee each email is processed exactly once: filter to unread AND mark each email read/labelled after its record is created, or track handled message ids in a Data Table. Otherwise the same email can be reprocessed into duplicates.',
 			relatedNodes: [
 				{
-					nodeType: 'n8n-nodes-base.gmail',
+					nodeType: 'MNI-nodes-base.gmail',
 					relationHint:
 						'Mark polled emails as handled after processing (message markAsRead, or addLabels when the trigger query excludes that label) so they are not picked up again',
 				},
 				{
-					nodeType: 'n8n-nodes-base.dataTable',
+					nodeType: 'MNI-nodes-base.dataTable',
 					relationHint: 'Record handled message ids to skip emails that were already processed',
 				},
 			],
@@ -124,7 +124,7 @@ When this trigger feeds an action that creates records (tasks, rows, tickets, me
 				type: 'options',
 				options: [
 					{
-						// eslint-disable-next-line n8n-nodes-base/node-param-display-name-miscased
+						// eslint-disable-next-line MNI-nodes-base/node-param-display-name-miscased
 						name: 'OAuth2 (recommended)',
 						value: 'oAuth2',
 					},
@@ -230,17 +230,17 @@ When this trigger feeds an action that creates records (tasks, rows, tickets, me
 						hint: 'Filter emails by whether they have been read or not',
 						options: [
 							{
-								// eslint-disable-next-line n8n-nodes-base/node-param-display-name-miscased
+								// eslint-disable-next-line MNI-nodes-base/node-param-display-name-miscased
 								name: 'Unread and read emails',
 								value: 'both',
 							},
 							{
-								// eslint-disable-next-line n8n-nodes-base/node-param-display-name-miscased
+								// eslint-disable-next-line MNI-nodes-base/node-param-display-name-miscased
 								name: 'Unread emails only',
 								value: 'unread',
 							},
 							{
-								// eslint-disable-next-line n8n-nodes-base/node-param-display-name-miscased
+								// eslint-disable-next-line MNI-nodes-base/node-param-display-name-miscased
 								name: 'Read emails only',
 								value: 'read',
 							},

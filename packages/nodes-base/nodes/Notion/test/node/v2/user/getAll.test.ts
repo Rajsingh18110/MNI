@@ -6,7 +6,7 @@ const API_RESPONSE = {
 		{
 			object: 'user',
 			id: 'f215e49c-4677-40c0-9adc-87440d341324',
-			name: 'n8n-test',
+			name: 'MNI-test',
 			avatar_url: null,
 			type: 'bot',
 			bot: {

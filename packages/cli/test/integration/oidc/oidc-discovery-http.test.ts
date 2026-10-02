@@ -1,7 +1,7 @@
-import type { Logger } from '@n8n/backend-common';
-import { OutboundHttp, type SsrfProtectionService } from '@n8n/backend-network';
-import { type LocalServer, startServer } from '@n8n/backend-network/testing';
-import type { SsrfProtectionConfig } from '@n8n/config';
+import type { Logger } from '@MNI/backend-common';
+import { OutboundHttp, type SsrfProtectionService } from '@MNI/backend-network';
+import { type LocalServer, startServer } from '@MNI/backend-network/testing';
+import type { SsrfProtectionConfig } from '@MNI/config';
 import { mock } from 'vitest-mock-extended';
 import * as client from 'openid-client';
 

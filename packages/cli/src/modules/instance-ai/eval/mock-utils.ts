@@ -1,8 +1,8 @@
-import type { FetchFn } from '@n8n/agents';
-import { extractJsonCandidate } from '@n8n/ai-utilities/llm-output';
-import type { Logger } from '@n8n/backend-common';
-import { createEvalAgent, extractText } from '@n8n/instance-ai';
-import { jsonParse } from 'n8n-workflow';
+import type { FetchFn } from '@MNI/agents';
+import { extractJsonCandidate } from '@MNI/ai-utilities/llm-output';
+import type { Logger } from '@MNI/backend-common';
+import { createEvalAgent, extractText } from '@MNI/instance-ai';
+import { jsonParse } from 'MNI-workflow';
 
 // ---------------------------------------------------------------------------
 // Shared plumbing for the eval mocks (MCP, web search): steered LLM-to-JSON

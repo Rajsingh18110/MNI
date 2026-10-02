@@ -8,14 +8,14 @@ import {
 	type McpRegistryConnection,
 	type PrepareMcpRegistryConnectionInput,
 	type PrepareMcpRegistryConnectionResult,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import type { McpRegistryServer, McpRegistryUsesCredential } from './registry/mcp-registry.types';
 
 export { getConfiguredEndpointUrl };
 
-export const MCP_REGISTRY_PACKAGE_NAME = '@n8n/mcp-registry';
-export const LANGCHAIN_PACKAGE_NAME = '@n8n/n8n-nodes-langchain';
+export const MCP_REGISTRY_PACKAGE_NAME = '@MNI/mcp-registry';
+export const LANGCHAIN_PACKAGE_NAME = '@MNI/MNI-nodes-langchain';
 export const MCP_REGISTRY_BASE_NODE_NAME = 'mcpRegistryClientTool';
 export const MCP_BASE_OAUTH2_CREDENTIAL_NAME = 'mcpOAuth2Api';
 

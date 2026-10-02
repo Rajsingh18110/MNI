@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import type { AnnotationVote } from 'n8n-workflow';
+import type { AnnotationVote } from 'MNI-workflow';
 
-import { N8nIconButton } from '@n8n/design-system';
+import { N8nIconButton } from '@MNI/design-system';
 defineProps<{
 	vote: AnnotationVote | null;
 }>();

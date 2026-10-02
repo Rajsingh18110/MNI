@@ -1,5 +1,5 @@
 {
-	"node": "n8n-nodes-base.googleSlides",
+	"node": "MNI-nodes-base.googleSlides",
 	"nodeVersion": "1.0",
 	"codexVersion": "1.0",
 	"categories": ["Marketing"],
@@ -11,7 +11,7 @@
 		],
 		"primaryDocumentation": [
 			{
-				"url": "https://docs.n8n.io/integrations/builtin/app-nodes/n8n-nodes-base.googleslides/"
+				"url": "https://docs.n8n.io/integrations/builtin/app-nodes/MNI-nodes-base.googleslides/"
 			}
 		],
 		"generic": [

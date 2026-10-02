@@ -18,9 +18,9 @@ type RestrictedImports = [
 ];
 
 const EXTRACTED_MODULES = [
-	{ group: '@/features/instanceRegistry', package: '@n8n/frontend-module-instance-registry' },
-	{ group: '@/features/settings/otel', package: '@n8n/frontend-module-otel' },
-	{ group: '@/features/execution/insights', package: '@n8n/frontend-module-insights' },
+	{ group: '@/features/instanceRegistry', package: '@MNI/frontend-module-instance-registry' },
+	{ group: '@/features/settings/otel', package: '@MNI/frontend-module-otel' },
+	{ group: '@/features/execution/insights', package: '@MNI/frontend-module-insights' },
 ];
 
 // One representative path per block in `eslint.config.mjs` that sets the rule, plus

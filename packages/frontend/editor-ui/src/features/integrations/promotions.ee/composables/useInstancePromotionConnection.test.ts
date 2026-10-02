@@ -5,7 +5,7 @@ import {
 } from './useInstancePromotionConnection';
 import * as api from '../promotionsSettings.api';
 
-vi.mock('@n8n/stores/useRootStore', () => ({
+vi.mock('@MNI/stores/useRootStore', () => ({
 	useRootStore: () => ({ publicApiContext: {} }),
 }));
 

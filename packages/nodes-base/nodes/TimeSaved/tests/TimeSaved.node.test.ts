@@ -1,5 +1,5 @@
 import { mock } from 'vitest-mock-extended';
-import type { IExecuteFunctions, INodeExecutionData } from 'n8n-workflow';
+import type { IExecuteFunctions, INodeExecutionData } from 'MNI-workflow';
 
 import { TimeSaved } from '../TimeSaved.node';
 

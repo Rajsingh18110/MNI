@@ -6,13 +6,13 @@ import AuthView from './AuthView.vue';
 import MfaView from './MfaView.vue';
 import SsoSigninCard from '../components/SsoSigninCard.vue';
 
-import { useToast } from '@n8n/composables/useToast';
-import { useI18n } from '@n8n/i18n';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
-import { useNotificationsStore } from '@n8n/stores/notifications.store';
+import { useToast } from '@MNI/composables/useToast';
+import { useI18n } from '@MNI/i18n';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
+import { useNotificationsStore } from '@MNI/stores/notifications.store';
 
-import { useUsersStore } from '@n8n/stores/users.store';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useUsersStore } from '@MNI/stores/users.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { useSSOStore } from '@/features/settings/sso/sso.store';
 
 import type { IFormBoxConfig } from '@/Interface';
@@ -22,13 +22,13 @@ import {
 	VIEWS,
 	MFA_FORM,
 } from '@/app/constants';
-import type { LoginRequestDto } from '@n8n/api-types';
+import type { LoginRequestDto } from '@MNI/api-types';
 import {
 	SSO_ERROR_ACCESS_DENIED,
 	SSO_ERROR_LOGIN_FAILED,
 	SSO_ERROR_QUERY_PARAM,
 	SSO_LOGIN_REQUIRED_ERROR_CODE,
-} from '@n8n/api-types';
+} from '@MNI/api-types';
 
 export type EmailOrLdapLoginIdAndPassword = Pick<
 	LoginRequestDto,

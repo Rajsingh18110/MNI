@@ -1,16 +1,16 @@
 <script setup lang="ts">
 import type { ComponentPublicInstance } from 'vue';
 import { computed, ref, onMounted, onUnmounted, watch } from 'vue';
-import type { EventBus } from '@n8n/utils/event-bus';
-import { createEventBus } from '@n8n/utils/event-bus';
-import { isPlaceholderValue } from '@n8n/utils/placeholder';
+import type { EventBus } from '@MNI/utils/event-bus';
+import { createEventBus } from '@MNI/utils/event-bus';
+import { isPlaceholderValue } from '@MNI/utils/placeholder';
 import type {
 	INodeParameterResourceLocator,
 	INodeProperties,
 	NodeParameterValue,
 	ResourceLocatorModes,
-} from 'n8n-workflow';
-import { useI18n } from '@n8n/i18n';
+} from 'MNI-workflow';
+import { useI18n } from '@MNI/i18n';
 import { onClickOutside } from '@vueuse/core';
 import { useRouter } from 'vue-router';
 import DraggableTarget from '@/app/components/DraggableTarget.vue';
@@ -24,7 +24,7 @@ import { useAgentProjectNameResolver } from '@/features/agents/composables/useAg
 import { useAgentScopeProjectId } from '@/features/agents/composables/useAgentScopeProjectId';
 import { AGENT_BUILDER_VIEW } from '@/features/agents/constants';
 import { useDocumentVisibility } from '@/app/composables/useDocumentVisibility';
-import { useDebounce } from '@n8n/composables/useDebounce';
+import { useDebounce } from '@MNI/composables/useDebounce';
 import { DEBOUNCE_TIME } from '@/app/constants';
 import { openSafeUrl } from '@/app/utils/htmlUtils';
 
@@ -36,7 +36,7 @@ import {
 	N8nOption,
 	N8nSelect,
 	N8nText,
-} from '@n8n/design-system';
+} from '@MNI/design-system';
 
 export interface Props {
 	modelValue: INodeParameterResourceLocator;

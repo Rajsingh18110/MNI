@@ -3,7 +3,7 @@ import {
 	type AgentApproval,
 	type RichCardComponent,
 	type RICH_CARD_BUTTON_STYLES,
-} from '@n8n/api-types';
+} from '@MNI/api-types';
 import type { ButtonStyle } from 'chat';
 import { z } from 'zod';
 
@@ -26,7 +26,7 @@ const _assertRichCardButtonStylesAreChatSdkStyles: (typeof RICH_CARD_BUTTON_STYL
 void _assertRichCardButtonStylesAreChatSdkStyles;
 
 /**
- * Wire schemas for rich-card messages live in `@n8n/api-types`
+ * Wire schemas for rich-card messages live in `@MNI/api-types`
  * (`rich-card.schema.ts`) and are shared verbatim with the editor-ui chat
  * renderer — the contract cannot drift between backend and frontend.
  */

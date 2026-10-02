@@ -6,8 +6,8 @@ import type {
 	INodeTypeDescription,
 	JsonObject,
 	IRequestOptions,
-} from 'n8n-workflow';
-import { NodeApiError, NodeConnectionTypes } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeApiError, NodeConnectionTypes } from 'MNI-workflow';
 import { prepareBinariesDataList } from '../../utils/binary';
 
 export class Mailgun implements INodeType {

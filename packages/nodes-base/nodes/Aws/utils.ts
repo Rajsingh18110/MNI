@@ -1,4 +1,4 @@
-import type { INodeCredentialDescription, INodeProperties } from 'n8n-workflow';
+import type { INodeCredentialDescription, INodeProperties } from 'MNI-workflow';
 
 export const awsNodeCredentials: INodeCredentialDescription[] = [
 	{

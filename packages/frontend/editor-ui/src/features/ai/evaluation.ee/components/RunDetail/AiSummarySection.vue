@@ -6,8 +6,8 @@
 //   2. New endpoint or extension to the existing run detail response carrying
 //      the cached summary.
 //   3. A regenerate-on-demand action wired to the refresh affordance below.
-import { useI18n } from '@n8n/i18n';
-import { N8nHeading, N8nText } from '@n8n/design-system';
+import { useI18n } from '@MNI/i18n';
+import { N8nHeading, N8nText } from '@MNI/design-system';
 
 const locale = useI18n();
 </script>

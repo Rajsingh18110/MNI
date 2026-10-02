@@ -9,8 +9,8 @@ import type {
 	JsonObject,
 	IHttpRequestMethods,
 	IRequestOptions,
-} from 'n8n-workflow';
-import { NodeApiError, UserError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeApiError, UserError } from 'MNI-workflow';
 
 import type { Filter, Address, Search, FilterGroup, ProductAttribute } from './types';
 

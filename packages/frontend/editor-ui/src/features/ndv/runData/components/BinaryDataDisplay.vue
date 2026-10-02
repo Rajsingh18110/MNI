@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import type { IBinaryData, IRunData } from 'n8n-workflow';
+import type { IBinaryData, IRunData } from 'MNI-workflow';
 import BinaryDataDisplayEmbed from './BinaryDataDisplayEmbed.vue';
 import { injectWorkflowExecutionStateStore } from '@/app/stores/workflowExecutionState.store';
 import { useNodeHelpers } from '@/app/composables/useNodeHelpers';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 
-import { N8nButton } from '@n8n/design-system';
+import { N8nButton } from '@MNI/design-system';
 const props = defineProps<{
 	displayData: IBinaryData;
 	windowVisible: boolean;

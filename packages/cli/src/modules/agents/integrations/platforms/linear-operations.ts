@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-import { isRecord } from '@n8n/utils/is-record';
+import { isRecord } from '@MNI/utils/is-record';
 
 import type { ChatInstance } from '../chat-integration.service';
 import { INTEGRATION_ERROR_CODES } from '../integration-error-codes';

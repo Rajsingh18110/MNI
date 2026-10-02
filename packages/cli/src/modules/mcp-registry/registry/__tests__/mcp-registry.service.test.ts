@@ -1,6 +1,6 @@
-import type { Logger } from '@n8n/backend-common';
-import type { GlobalConfig } from '@n8n/config';
-import type { InstanceSettings } from 'n8n-core';
+import type { Logger } from '@MNI/backend-common';
+import type { GlobalConfig } from '@MNI/config';
+import type { InstanceSettings } from 'MNI-core';
 import { mock } from 'vitest-mock-extended';
 
 import type { LoadNodesAndCredentials } from '@/load-nodes-and-credentials';
@@ -365,14 +365,14 @@ describe('McpRegistryService', () => {
 			loader.getConnection = vi.fn().mockReturnValue(connection);
 			loadNodesAndCredentials.loaders[MCP_REGISTRY_PACKAGE_NAME] = loader;
 
-			await expect(service.getConnection('@n8n/mcp-registry.notion')).resolves.toEqual(connection);
-			expect(loader.getConnection).toHaveBeenCalledWith('@n8n/mcp-registry.notion');
+			await expect(service.getConnection('@MNI/mcp-registry.notion')).resolves.toEqual(connection);
+			expect(loader.getConnection).toHaveBeenCalledWith('@MNI/mcp-registry.notion');
 		});
 
 		it('returns undefined when the registry loader is not registered', async () => {
 			const { service } = createService();
 
-			await expect(service.getConnection('@n8n/mcp-registry.notion')).resolves.toBeUndefined();
+			await expect(service.getConnection('@MNI/mcp-registry.notion')).resolves.toBeUndefined();
 		});
 	});
 

@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { N8nIcon, N8nInput, N8nSelect2 } from '@n8n/design-system';
-import type { SelectValue } from '@n8n/design-system';
+import { N8nIcon, N8nInput, N8nSelect2 } from '@MNI/design-system';
+import type { SelectValue } from '@MNI/design-system';
 import { computed, ref, watch } from 'vue';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import { refDebounced } from '@vueuse/core';
 import type { ChatAgentFilter } from '@/features/ai/chatHub/chat.types';
 

@@ -1,4 +1,4 @@
-import { PROJECT_CUSTOM_ROLE_OPERATIONS } from '@n8n/permissions';
+import { PROJECT_CUSTOM_ROLE_OPERATIONS } from '@MNI/permissions';
 
 import {
 	SCOPE_TYPES,

@@ -1,7 +1,7 @@
 import type { Locator } from '@playwright/test';
 import { request } from '@playwright/test';
-import type { IWorkflowBase } from 'n8n-workflow';
-import { CONSOLE_OUTPUT_REDACTED_MESSAGE } from 'n8n-workflow';
+import type { IWorkflowBase } from 'MNI-workflow';
+import { CONSOLE_OUTPUT_REDACTED_MESSAGE } from 'MNI-workflow';
 import { nanoid } from 'nanoid';
 
 import {

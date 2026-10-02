@@ -16,7 +16,7 @@
 		"identifier": "ENG-123",
 		"title": "Investigate customer workflow",
 		"description": "Customer reported unexpected workflow behavior.",
-		"url": "https://linear.app/n8n/issue/ENG-123/investigate-customer-workflow"
+		"url": "https://linear.app/MNI/issue/ENG-123/investigate-customer-workflow"
 	},
 	"mention": {
 		"type": "Comment",
@@ -39,10 +39,10 @@
 				"identifier": "ENG-123",
 				"title": "Investigate customer workflow",
 				"description": "Customer reported unexpected workflow behavior.",
-				"url": "https://linear.app/n8n/issue/ENG-123/investigate-customer-workflow"
+				"url": "https://linear.app/MNI/issue/ENG-123/investigate-customer-workflow"
 			},
 			"createdAt": "2024-06-21T12:00:00.000Z",
-			"url": "https://linear.app/n8n/issue/ENG-123#comment-COMMENT_1"
+			"url": "https://linear.app/MNI/issue/ENG-123#comment-COMMENT_1"
 		}
 	},
 	"followUp": {
@@ -66,10 +66,10 @@
 				"identifier": "ENG-123",
 				"title": "Investigate customer workflow",
 				"description": "Customer reported unexpected workflow behavior.",
-				"url": "https://linear.app/n8n/issue/ENG-123/investigate-customer-workflow"
+				"url": "https://linear.app/MNI/issue/ENG-123/investigate-customer-workflow"
 			},
 			"createdAt": "2024-06-21T12:00:01.000Z",
-			"url": "https://linear.app/n8n/issue/ENG-123#comment-COMMENT_2"
+			"url": "https://linear.app/MNI/issue/ENG-123#comment-COMMENT_2"
 		}
 	},
 	"selfMessage": {
@@ -93,10 +93,10 @@
 				"identifier": "ENG-123",
 				"title": "Investigate customer workflow",
 				"description": "Customer reported unexpected workflow behavior.",
-				"url": "https://linear.app/n8n/issue/ENG-123/investigate-customer-workflow"
+				"url": "https://linear.app/MNI/issue/ENG-123/investigate-customer-workflow"
 			},
 			"createdAt": "2024-06-21T12:00:02.000Z",
-			"url": "https://linear.app/n8n/issue/ENG-123#comment-COMMENT_3"
+			"url": "https://linear.app/MNI/issue/ENG-123#comment-COMMENT_3"
 		}
 	}
 }

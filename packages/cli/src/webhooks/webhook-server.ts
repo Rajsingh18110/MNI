@@ -1,4 +1,4 @@
-import { Container, Service } from '@n8n/di';
+import { Container, Service } from '@MNI/di';
 
 import { AbstractServer } from '@/abstract-server';
 import { ChatServer } from '@/chat/chat-server';

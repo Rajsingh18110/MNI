@@ -10,12 +10,12 @@ import { useAutocompleteTelemetry } from './useAutocompleteTelemetry';
 const trackSpy = vi.fn();
 const setAutocompleteOnboardedSpy = vi.fn();
 
-vi.mock('@n8n/composables/useTelemetry', () => ({
+vi.mock('@MNI/composables/useTelemetry', () => ({
 	useTelemetry: vi.fn(() => ({ track: trackSpy })),
 }));
 
 const mockNdvStoreValue = {
-	activeNode: { type: 'n8n-nodes-base.test' },
+	activeNode: { type: 'MNI-nodes-base.test' },
 	setAutocompleteOnboarded: setAutocompleteOnboardedSpy,
 };
 
@@ -24,7 +24,7 @@ vi.mock('@/features/ndv/shared/ndv.store', () => ({
 	injectNDVStore: vi.fn(() => ({ value: mockNdvStoreValue })),
 }));
 
-vi.mock('@n8n/stores/useRootStore', () => ({
+vi.mock('@MNI/stores/useRootStore', () => ({
 	useRootStore: vi.fn(() => ({
 		instanceId: 'test-instance-id',
 	})),
@@ -79,7 +79,7 @@ describe('useAutocompleteTelemetry', () => {
 				field_type: 'expression',
 				inserted_text: 'foo',
 				instance_id: 'test-instance-id',
-				node_type: 'n8n-nodes-base.test',
+				node_type: 'MNI-nodes-base.test',
 			}),
 		);
 	});

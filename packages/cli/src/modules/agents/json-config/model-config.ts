@@ -1,7 +1,7 @@
-import type { CredentialProvider, ModelConfig, ResolvedCredential } from '@n8n/agents';
-import { getProviderPrefix } from '@n8n/ai-utilities/agent-config';
-import { AI_GATEWAY_MANAGED_TAG } from '@n8n/api-types';
-import { UserError } from 'n8n-workflow';
+import type { CredentialProvider, ModelConfig, ResolvedCredential } from '@MNI/agents';
+import { getProviderPrefix } from '@MNI/ai-utilities/agent-config';
+import { AI_GATEWAY_MANAGED_TAG } from '@MNI/api-types';
+import { UserError } from 'MNI-workflow';
 
 import { mapCredentialForProvider } from './credential-field-mapping';
 

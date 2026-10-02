@@ -1,12 +1,12 @@
-import { Logger } from '@n8n/backend-common';
-import { GlobalConfig } from '@n8n/config';
-import type { InstanceType } from '@n8n/constants';
+import { Logger } from '@MNI/backend-common';
+import { GlobalConfig } from '@MNI/config';
+import type { InstanceType } from '@MNI/constants';
 import type {
 	SystemTask,
 	SystemTaskClass,
 	SystemTaskPlacement,
 	SystemTaskSchedule,
-} from '@n8n/decorators';
+} from '@MNI/decorators';
 import {
 	OnLeaderStepdown,
 	OnLeaderTakeover,
@@ -14,10 +14,10 @@ import {
 	SystemTaskMetadata,
 	resolveSystemTaskSchedule,
 	validateSystemTask,
-} from '@n8n/decorators';
-import { Container, Service } from '@n8n/di';
-import { ErrorReporter, InstanceSettings, Tracing } from 'n8n-core';
-import { UnexpectedError } from 'n8n-workflow';
+} from '@MNI/decorators';
+import { Container, Service } from '@MNI/di';
+import { ErrorReporter, InstanceSettings, Tracing } from 'MNI-core';
+import { UnexpectedError } from 'MNI-workflow';
 import { strict } from 'node:assert';
 
 import { EventService } from '@/events/event.service';

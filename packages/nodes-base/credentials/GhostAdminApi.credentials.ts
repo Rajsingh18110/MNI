@@ -5,7 +5,7 @@ import type {
 	ICredentialType,
 	IHttpRequestOptions,
 	INodeProperties,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 export class GhostAdminApi implements ICredentialType {
 	name = 'ghostAdminApi';

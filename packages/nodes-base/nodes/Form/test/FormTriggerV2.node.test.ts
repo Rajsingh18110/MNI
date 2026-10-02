@@ -4,7 +4,7 @@ import {
 	NodeOperationError,
 	type INodeProperties,
 	type INodePropertyOptions,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 type VersionCnd = { lte?: number; gte?: number };
 type VersionedAuthParam = Omit<INodeProperties, 'options'> & {
@@ -216,7 +216,7 @@ describe('FormTrigger', () => {
 			formSubmittedText: 'Your response has been recorded',
 			formTitle: 'Test Form',
 			n8nWebsiteLink:
-				'https://n8n.io/?utm_source=n8n-internal&utm_medium=form-trigger&utm_campaign=instanceId',
+				'https://n8n.io/?utm_source=MNI-internal&utm_medium=form-trigger&utm_campaign=instanceId',
 			testRun: true,
 			useResponseData: false,
 		});
@@ -314,7 +314,7 @@ describe('FormTrigger', () => {
 				childNodes: [
 					{
 						name: 'Test Respond To Webhook',
-						type: 'n8n-nodes-base.respondToWebhook',
+						type: 'MNI-nodes-base.respondToWebhook',
 						typeVersion: 1,
 						disabled: false,
 					},

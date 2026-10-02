@@ -1,4 +1,4 @@
-import type { NodeTypeAvailability } from '@n8n/api-types';
+import type { NodeTypeAvailability } from '@MNI/api-types';
 import { computed, toValue, type MaybeRefOrGetter } from 'vue';
 
 import { useTypeAvailabilityPoliciesStore } from '../type-availability-policies.store';

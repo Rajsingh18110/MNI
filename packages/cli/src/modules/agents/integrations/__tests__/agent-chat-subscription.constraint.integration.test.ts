@@ -1,6 +1,6 @@
-import { AgentIntegrationSchema } from '@n8n/api-types';
-import { createTeamProject, testDb, testModules } from '@n8n/backend-test-utils';
-import { Container } from '@n8n/di';
+import { AgentIntegrationSchema } from '@MNI/api-types';
+import { createTeamProject, testDb, testModules } from '@MNI/backend-test-utils';
+import { Container } from '@MNI/di';
 
 import { AgentChatSubscriptionRepository } from '../../repositories/agent-chat-subscription.repository';
 import { AgentRepository } from '../../repositories/agent.repository';

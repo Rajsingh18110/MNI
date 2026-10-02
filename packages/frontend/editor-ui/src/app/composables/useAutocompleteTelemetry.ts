@@ -1,11 +1,11 @@
 import { type MaybeRefOrGetter, computed, toValue, watchEffect } from 'vue';
-import { ExpressionExtensions } from 'n8n-workflow';
+import { ExpressionExtensions } from 'MNI-workflow';
 import { EditorView, type ViewUpdate } from '@codemirror/view';
 
 import { useNDVStore } from '@/features/ndv/shared/ndv.store';
 import { injectWorkflowDocumentStore } from '@/app/stores/workflowDocument.store';
-import { useRootStore } from '@n8n/stores/useRootStore';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
+import { useRootStore } from '@MNI/stores/useRootStore';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
 import type { Compartment } from '@codemirror/state';
 import debounce from 'lodash/debounce';
 

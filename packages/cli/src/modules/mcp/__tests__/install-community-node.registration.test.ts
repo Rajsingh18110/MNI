@@ -1,8 +1,8 @@
-import { LicenseState, ModuleRegistry } from '@n8n/backend-common';
-import { mockInstance, mockLogger } from '@n8n/backend-test-utils';
-import { ExecutionsConfig, GlobalConfig, WorkflowsConfig } from '@n8n/config';
-import { ExecutionRepository, ProjectRepository, SharedWorkflowRepository, User } from '@n8n/db';
-import { InstanceSettings } from 'n8n-core';
+import { LicenseState, ModuleRegistry } from '@MNI/backend-common';
+import { mockInstance, mockLogger } from '@MNI/backend-test-utils';
+import { ExecutionsConfig, GlobalConfig, WorkflowsConfig } from '@MNI/config';
+import { ExecutionRepository, ProjectRepository, SharedWorkflowRepository, User } from '@MNI/db';
+import { InstanceSettings } from 'MNI-core';
 
 import { ActiveExecutions } from '@/active-executions';
 import { CollaborationService } from '@/collaboration/collaboration.service';
@@ -23,7 +23,7 @@ import { NodeResourceExplorerService } from '@/services/node-resource-explorer.s
 import { ProjectService } from '@/services/project.service.ee';
 import { RoleService } from '@/services/role.service';
 import { TagService } from '@/services/tag.service';
-import { UrlService } from '@n8n/backend-services';
+import { UrlService } from '@MNI/backend-services';
 import { Telemetry } from '@/telemetry';
 import { WorkflowRunner } from '@/workflow-runner';
 import { WorkflowCreationService } from '@/workflows/workflow-creation.service';
@@ -37,14 +37,14 @@ import { BUILDER_TOOLS, TOOLS_BY_SCOPE } from '../mcp-scopes';
 import { McpConfig } from '../mcp.config';
 import { McpService, type McpFeatureFlags } from '../mcp.service';
 
-vi.mock('@n8n/mcp-apps/server', async (importOriginal) => ({
-	...(await importOriginal<typeof import('@n8n/mcp-apps/server')>()),
+vi.mock('@MNI/mcp-apps/server', async (importOriginal) => ({
+	...(await importOriginal<typeof import('@MNI/mcp-apps/server')>()),
 	registerWorkflowPreviewApp: vi.fn(),
 }));
 
-import { MCP_INSTANCE_SCOPES } from '@n8n/api-types';
-import { Container } from '@n8n/di';
-import * as permissions from '@n8n/permissions';
+import { MCP_INSTANCE_SCOPES } from '@MNI/api-types';
+import { Container } from '@MNI/di';
+import * as permissions from '@MNI/permissions';
 import { mock } from 'vitest-mock-extended';
 
 import { CommunityNodeTypesService } from '@/modules/community-packages/community-node-types.service';
@@ -53,7 +53,7 @@ import { CommunityPackagesLifecycleService } from '@/modules/community-packages/
 
 import type { McpAuthContext } from '../mcp.types';
 
-vi.mock('@n8n/permissions', async (importOriginal) => ({
+vi.mock('@MNI/permissions', async (importOriginal) => ({
 	...(await importOriginal<typeof permissions>()),
 	hasGlobalScope: vi.fn(),
 }));

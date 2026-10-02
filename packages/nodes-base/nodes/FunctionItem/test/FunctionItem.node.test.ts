@@ -1,5 +1,5 @@
-import type { IExecuteFunctions } from 'n8n-workflow';
-import { CONSOLE_OUTPUT_REDACTED_MESSAGE } from 'n8n-workflow';
+import type { IExecuteFunctions } from 'MNI-workflow';
+import { CONSOLE_OUTPUT_REDACTED_MESSAGE } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import { FunctionItem } from '../FunctionItem.node';

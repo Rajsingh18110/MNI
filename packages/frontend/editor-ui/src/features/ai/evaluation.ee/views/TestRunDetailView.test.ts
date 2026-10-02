@@ -11,14 +11,14 @@ import { mock } from 'vitest-mock-extended';
 import { WorkflowIdKey } from '@/app/constants/injectionKeys';
 import { computed } from 'vue';
 
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: () => ({
 		showError: vi.fn(),
 	}),
 }));
 
 const trackMock = vi.fn();
-vi.mock('@n8n/composables/useTelemetry', () => ({
+vi.mock('@MNI/composables/useTelemetry', () => ({
 	useTelemetry: () => ({ track: trackMock }),
 }));
 

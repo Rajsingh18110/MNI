@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import BaseBanner from './BaseBanner.vue';
-import { i18n as locale } from '@n8n/i18n';
-import { useCloudPlanStore } from '@n8n/stores/cloudPlan.store';
+import { i18n as locale } from '@MNI/i18n';
+import { useCloudPlanStore } from '@MNI/stores/cloudPlan.store';
 import { computed } from 'vue';
 import { useRouter } from 'vue-router';
 import type { CloudPlanAndUsageData } from '@/Interface';
@@ -10,7 +10,7 @@ import { TRIAL_INTRO_MODAL_KEY } from '@/app/constants/modals';
 import { VIEWS } from '@/app/constants/navigation';
 import { useUIStore } from '@/app/stores/ui.store';
 import { useTrialIntroModalStore } from '@/experiments/trialIntroModal/stores/trialIntroModal.store';
-import { N8nButton, N8nText, type IconName, type ButtonVariant } from '@n8n/design-system';
+import { N8nButton, N8nText, type IconName, type ButtonVariant } from '@MNI/design-system';
 
 const LEGACY_STYLE_TO_VARIANT: Record<string, ButtonVariant> = {
 	success: 'solid',

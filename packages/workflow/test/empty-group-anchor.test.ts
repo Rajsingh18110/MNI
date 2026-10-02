@@ -37,7 +37,7 @@ describe('empty-group anchor helpers', () => {
 		const ordinaryNoOp = makeNode({ emptyGroupAnchor: false });
 		const markedOtherNode = makeNode({
 			emptyGroupAnchor: true,
-			type: 'n8n-nodes-base.set',
+			type: 'MNI-nodes-base.set',
 		});
 
 		expect(hasEmptyGroupAnchorMarker(anchor)).toBe(true);

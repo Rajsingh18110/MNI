@@ -1,4 +1,4 @@
-import type { Logger } from '@n8n/backend-common';
+import type { Logger } from '@MNI/backend-common';
 import { mock } from 'vitest-mock-extended';
 
 import type { TokenExchangeJtiRepository } from '../../database/repositories/token-exchange-jti.repository';

@@ -2,13 +2,13 @@ import {
 	CreateVariableRequestDto,
 	UpdateVariableRequestDto,
 	NEW_VARIABLE_KEY_REGEX,
-} from '@n8n/api-types';
-import { LicenseState } from '@n8n/backend-common';
-import { UNLIMITED_LICENSE_QUOTA } from '@n8n/constants';
-import type { User, Variables } from '@n8n/db';
-import { generateNanoId, VariablesRepository } from '@n8n/db';
-import { Service } from '@n8n/di';
-import { hasGlobalScope, Scope } from '@n8n/permissions';
+} from '@MNI/api-types';
+import { LicenseState } from '@MNI/backend-common';
+import { UNLIMITED_LICENSE_QUOTA } from '@MNI/constants';
+import type { User, Variables } from '@MNI/db';
+import { generateNanoId, VariablesRepository } from '@MNI/db';
+import { Service } from '@MNI/di';
+import { hasGlobalScope, Scope } from '@MNI/permissions';
 
 import { FeatureNotLicensedError } from '@/errors/feature-not-licensed.error';
 import { ForbiddenError } from '@/errors/response-errors/forbidden.error';

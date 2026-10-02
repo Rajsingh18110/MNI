@@ -1,5 +1,5 @@
-import type { IDataObject, IExecuteFunctions, INodeProperties } from 'n8n-workflow';
-import { NodeOperationError } from 'n8n-workflow';
+import type { IDataObject, IExecuteFunctions, INodeProperties } from 'MNI-workflow';
+import { NodeOperationError } from 'MNI-workflow';
 
 import { returnAllOrLimit } from '@utils/descriptions';
 import { updateDisplayOptions } from '@utils/utilities';

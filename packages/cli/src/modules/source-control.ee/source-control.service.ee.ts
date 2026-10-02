@@ -1,10 +1,10 @@
-import type { PullWorkFolderRequestDto, SourceControlledFile } from '@n8n/api-types';
-import { Logger } from '@n8n/backend-common';
-import { type User } from '@n8n/db';
-import { OnPubSubEvent } from '@n8n/decorators';
-import { Service } from '@n8n/di';
+import type { PullWorkFolderRequestDto, SourceControlledFile } from '@MNI/api-types';
+import { Logger } from '@MNI/backend-common';
+import { type User } from '@MNI/db';
+import { OnPubSubEvent } from '@MNI/decorators';
+import { Service } from '@MNI/di';
 import { writeFileSync } from 'fs';
-import { UnexpectedError, UserError, jsonParse } from 'n8n-workflow';
+import { UnexpectedError, UserError, jsonParse } from 'MNI-workflow';
 import pLimit from 'p-limit';
 import * as path from 'path';
 import type { PushResult } from 'simple-git';

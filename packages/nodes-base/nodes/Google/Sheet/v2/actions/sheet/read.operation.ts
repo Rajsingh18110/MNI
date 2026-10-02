@@ -1,4 +1,4 @@
-import type { IExecuteFunctions, INodeExecutionData, INodeProperties } from 'n8n-workflow';
+import type { IExecuteFunctions, INodeExecutionData, INodeProperties } from 'MNI-workflow';
 
 import { dataLocationOnSheet, outputFormatting } from './commonDescription';
 import type { GoogleSheet } from '../../helpers/GoogleSheet';
@@ -43,7 +43,7 @@ export const readFilter: INodeProperties = {
 			name: 'values',
 			values: [
 				{
-					// eslint-disable-next-line n8n-nodes-base/node-param-display-name-wrong-for-dynamic-options
+					// eslint-disable-next-line MNI-nodes-base/node-param-display-name-wrong-for-dynamic-options
 					displayName: 'Column',
 					name: 'lookupColumn',
 					type: 'options',

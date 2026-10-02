@@ -1,5 +1,5 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
-import { ResponseError } from '@n8n/rest-api-client';
+import { ResponseError } from '@MNI/rest-api-client';
 import { defineComponent, h, inject, type PropType, type Ref, nextTick } from 'vue';
 import userEvent from '@testing-library/user-event';
 import { fireEvent, within } from '@testing-library/vue';
@@ -15,7 +15,7 @@ import { useInstanceAiStore, type ThreadRuntime } from '../instanceAi.store';
 import { usePushConnectionStore } from '@/app/stores/pushConnection.store';
 import { usePostHog } from '@/app/stores/posthog.store';
 import { INSTANCE_AI_SETUP_PANEL_EXPERIMENT } from '@/app/constants/experiments';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { INSTANCE_AI_VIEW, NEW_CONVERSATION_TITLE } from '../constants';
 import {
 	LOCAL_STORAGE_INSTANCE_AI_ARTIFACT_PREVIEW_OPEN,
@@ -26,7 +26,7 @@ import type {
 	InstanceAiAgentNode,
 	InstanceAiHandoffContext,
 	InstanceAiMessage,
-} from '@n8n/api-types';
+} from '@MNI/api-types';
 import {
 	getPendingAgentAttachment,
 	stashPendingAgentAttachment,
@@ -80,11 +80,11 @@ Object.defineProperty(globalThis, 'localStorage', {
 	},
 });
 
-vi.mock('@n8n/composables/useTelemetry', () => ({
+vi.mock('@MNI/composables/useTelemetry', () => ({
 	useTelemetry: () => ({ track: telemetryTrackSpy }),
 }));
 
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: () => ({ showError: showErrorSpy, showMessage: showMessageSpy }),
 }));
 
@@ -788,9 +788,9 @@ describe('InstanceAiThreadView', () => {
 
 		expect(getByTestId('instance-ai-input-context-chip')).toHaveTextContent('SEO Auditor session');
 		expect(getByTestId('instance-ai-input-draft')).toHaveTextContent('Fix the failed tool calls');
-		expect(localStorageState.store.has('n8n-instance-ai-handoff-context:thread-1')).toBe(true);
+		expect(localStorageState.store.has('MNI-instance-ai-handoff-context:thread-1')).toBe(true);
 		expect(
-			JSON.parse(localStorageState.store.get('n8n-instance-ai-composer-draft:thread-1') ?? 'null'),
+			JSON.parse(localStorageState.store.get('MNI-instance-ai-composer-draft:thread-1') ?? 'null'),
 		).toEqual({
 			text: 'Fix the failed tool calls',
 			prefillType: 'handoff_agent_change_request',
@@ -905,8 +905,8 @@ describe('InstanceAiThreadView', () => {
 
 		expect(getByTestId('instance-ai-input-context-chip')).toHaveTextContent('');
 		expect(getByTestId('instance-ai-input-draft')).toHaveTextContent('');
-		expect(localStorageState.store.has('n8n-instance-ai-handoff-context:thread-1')).toBe(false);
-		expect(localStorageState.store.has('n8n-instance-ai-composer-draft:thread-1')).toBe(false);
+		expect(localStorageState.store.has('MNI-instance-ai-handoff-context:thread-1')).toBe(false);
+		expect(localStorageState.store.has('MNI-instance-ai-composer-draft:thread-1')).toBe(false);
 	});
 
 	it('preserves edited text and attachments when artifacts-panel context is dismissed', async () => {
@@ -930,8 +930,8 @@ describe('InstanceAiThreadView', () => {
 		expect(getByTestId('instance-ai-input-context-chip')).toHaveTextContent('');
 		expect(getByTestId('instance-ai-input-draft')).toHaveTextContent('Edited user draft');
 		expect(getByTestId('instance-ai-input-attachments')).toHaveTextContent('attached');
-		expect(localStorageState.store.has('n8n-instance-ai-handoff-context:thread-1')).toBe(false);
-		expect(localStorageState.store.has('n8n-instance-ai-composer-draft:thread-1')).toBe(false);
+		expect(localStorageState.store.has('MNI-instance-ai-handoff-context:thread-1')).toBe(false);
+		expect(localStorageState.store.has('MNI-instance-ai-composer-draft:thread-1')).toBe(false);
 	});
 
 	// Leaving it open puts the agent chat beside the Assistant composer that now
@@ -1103,7 +1103,7 @@ describe('InstanceAiThreadView', () => {
 			},
 		] as typeof store.threads;
 		localStorageState.store.set(
-			'n8n-instance-ai-handoff-context:thread-1',
+			'MNI-instance-ai-handoff-context:thread-1',
 			JSON.stringify({
 				source: 'agent-preview',
 				agentId: 'agent-1',
@@ -1218,7 +1218,7 @@ describe('InstanceAiThreadView', () => {
 				}),
 		);
 		localStorageState.store.set(
-			'n8n-instance-ai-handoff-context:thread-1',
+			'MNI-instance-ai-handoff-context:thread-1',
 			JSON.stringify({
 				source: 'agent-preview',
 				agentId: 'agent-1',
@@ -1260,7 +1260,7 @@ describe('InstanceAiThreadView', () => {
 				}),
 		);
 		localStorageState.store.set(
-			'n8n-instance-ai-handoff-context:thread-1',
+			'MNI-instance-ai-handoff-context:thread-1',
 			JSON.stringify({
 				source: 'agent-preview',
 				agentId: 'agent-1',
@@ -1287,7 +1287,7 @@ describe('InstanceAiThreadView', () => {
 			);
 		});
 		expect(thread.loadThreadStatus).not.toHaveBeenCalled();
-		expect(localStorageState.store.has('n8n-instance-ai-handoff-context:thread-1')).toBe(true);
+		expect(localStorageState.store.has('MNI-instance-ai-handoff-context:thread-1')).toBe(true);
 
 		await userEvent.click(getByTestId('instance-ai-input-submit'));
 
@@ -1302,7 +1302,7 @@ describe('InstanceAiThreadView', () => {
 			},
 		});
 		await vi.waitFor(() => {
-			expect(localStorageState.store.has('n8n-instance-ai-handoff-context:thread-1')).toBe(false);
+			expect(localStorageState.store.has('MNI-instance-ai-handoff-context:thread-1')).toBe(false);
 		});
 
 		resolveHydration('skipped');
@@ -1316,7 +1316,7 @@ describe('InstanceAiThreadView', () => {
 		vi.mocked(thread.loadHistoricalMessages).mockResolvedValue('skipped');
 		vi.mocked(thread.sendMessage).mockResolvedValueOnce(false).mockResolvedValue(true);
 		localStorageState.store.set(
-			'n8n-instance-ai-handoff-context:thread-1',
+			'MNI-instance-ai-handoff-context:thread-1',
 			JSON.stringify({
 				source: 'agent-preview',
 				agentId: 'agent-1',
@@ -1360,7 +1360,7 @@ describe('InstanceAiThreadView', () => {
 				'SEO Auditor session',
 			);
 			expect(getByTestId('instance-ai-input-draft')).toHaveTextContent('Normal message');
-			expect(localStorageState.store.has('n8n-instance-ai-handoff-context:thread-1')).toBe(true);
+			expect(localStorageState.store.has('MNI-instance-ai-handoff-context:thread-1')).toBe(true);
 		});
 
 		await userEvent.click(getByTestId('instance-ai-input-submit'));
@@ -1377,7 +1377,7 @@ describe('InstanceAiThreadView', () => {
 		});
 		await vi.waitFor(() => {
 			expect(getByTestId('instance-ai-input-context-chip')).toHaveTextContent('');
-			expect(localStorageState.store.has('n8n-instance-ai-handoff-context:thread-1')).toBe(false);
+			expect(localStorageState.store.has('MNI-instance-ai-handoff-context:thread-1')).toBe(false);
 		});
 	});
 
@@ -1562,7 +1562,7 @@ describe('InstanceAiThreadView', () => {
 		thread.sseState = 'disconnected';
 		vi.mocked(thread.loadHistoricalMessages).mockResolvedValue('skipped');
 		localStorageState.store.set(
-			'n8n-instance-ai-handoff-context:thread-1',
+			'MNI-instance-ai-handoff-context:thread-1',
 			JSON.stringify({
 				source: 'agent-preview',
 				agentId: 'agent-1',

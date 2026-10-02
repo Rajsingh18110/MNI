@@ -4,15 +4,15 @@ import {
 	CredentialsGetOneRequestQuery,
 	GenerateCredentialNameRequestQuery,
 	TestCredentialRequestDto,
-} from '@n8n/api-types';
-import { LicenseState, Logger } from '@n8n/backend-common';
-import { GlobalConfig } from '@n8n/config';
+} from '@MNI/api-types';
+import { LicenseState, Logger } from '@MNI/backend-common';
+import { GlobalConfig } from '@MNI/config';
 import {
 	SharedCredentials,
 	ProjectRelationRepository,
 	SharedCredentialsRepository,
 	AuthenticatedRequest,
-} from '@n8n/db';
+} from '@MNI/db';
 import {
 	Delete,
 	Get,
@@ -26,11 +26,11 @@ import {
 	Param,
 	Query,
 	Middleware,
-} from '@n8n/decorators';
-import { hasGlobalScope, PROJECT_OWNER_ROLE_SLUG } from '@n8n/permissions';
-import { In } from '@n8n/typeorm';
+} from '@MNI/decorators';
+import { hasGlobalScope, PROJECT_OWNER_ROLE_SLUG } from '@MNI/permissions';
+import { In } from '@MNI/typeorm';
 import type { NextFunction, Response } from 'express';
-import type { ICredentialDataDecryptedObject } from 'n8n-workflow';
+import type { ICredentialDataDecryptedObject } from 'MNI-workflow';
 import { z } from 'zod';
 
 import { CredentialConnectionStatusProxy } from './credential-connection-status-proxy';

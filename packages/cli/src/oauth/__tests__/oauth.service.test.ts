@@ -1,17 +1,17 @@
-import { LockAcquisitionTimeoutError, LockService, Logger } from '@n8n/backend-common';
-import { OutboundHttp, SsrfProtectionService, type HttpRequestClient } from '@n8n/backend-network';
-import { mockInstance } from '@n8n/backend-test-utils';
-import type { OAuth2CredentialData } from '@n8n/client-oauth2';
-import { AuthError as OAuth2AuthError } from '@n8n/client-oauth2';
-import { GlobalConfig, SsrfProtectionConfig } from '@n8n/config';
-import { Time } from '@n8n/constants';
-import type { AuthenticatedRequest, CredentialsEntity, ICredentialsDb, User } from '@n8n/db';
-import { CredentialsRepository } from '@n8n/db';
+import { LockAcquisitionTimeoutError, LockService, Logger } from '@MNI/backend-common';
+import { OutboundHttp, SsrfProtectionService, type HttpRequestClient } from '@MNI/backend-network';
+import { mockInstance } from '@MNI/backend-test-utils';
+import type { OAuth2CredentialData } from '@MNI/client-oauth2';
+import { AuthError as OAuth2AuthError } from '@MNI/client-oauth2';
+import { GlobalConfig, SsrfProtectionConfig } from '@MNI/config';
+import { Time } from '@MNI/constants';
+import type { AuthenticatedRequest, CredentialsEntity, ICredentialsDb, User } from '@MNI/db';
+import { CredentialsRepository } from '@MNI/db';
 import type { Request, Response } from 'express';
-import type { Cipher } from 'n8n-core';
-import { Credentials } from 'n8n-core';
-import type { IHttpRequestOptions, IWorkflowExecuteAdditionalData } from 'n8n-workflow';
-import { UnexpectedError, UserError } from 'n8n-workflow';
+import type { Cipher } from 'MNI-core';
+import { Credentials } from 'MNI-core';
+import type { IHttpRequestOptions, IWorkflowExecuteAdditionalData } from 'MNI-workflow';
+import { UnexpectedError, UserError } from 'MNI-workflow';
 import type { Mock } from 'vitest';
 import { mock } from 'vitest-mock-extended';
 
@@ -37,12 +37,12 @@ import {
 } from '@/oauth/oauth.service';
 import type { OAuthRequest } from '@/requests';
 import { CacheService } from '@/services/cache/cache.service';
-import { UrlService } from '@n8n/backend-services';
+import { UrlService } from '@MNI/backend-services';
 import * as WorkflowExecuteAdditionalData from '@/workflow-execute-additional-data';
 
 vi.mock('@/workflow-execute-additional-data');
-vi.mock('@n8n/client-oauth2', async (importOriginal) => {
-	const actual = await importOriginal<typeof import('@n8n/client-oauth2')>();
+vi.mock('@MNI/client-oauth2', async (importOriginal) => {
+	const actual = await importOriginal<typeof import('@MNI/client-oauth2')>();
 	return { ...actual, ClientOAuth2: vi.fn() };
 });
 vi.mock('pkce-challenge');
@@ -174,22 +174,22 @@ describe('OauthService', () => {
 
 	describe('shouldSkipAuthOnOAuthCallback', () => {
 		it('should return false when env var is not set', () => {
-			delete process.env.N8N_SKIP_AUTH_ON_OAUTH_CALLBACK;
+			delete process.env.MNI_SKIP_AUTH_ON_OAUTH_CALLBACK;
 			expect(shouldSkipAuthOnOAuthCallback()).toBe(false);
 		});
 
 		it('should return false when env var is "false"', () => {
-			process.env.N8N_SKIP_AUTH_ON_OAUTH_CALLBACK = 'false';
+			process.env.MNI_SKIP_AUTH_ON_OAUTH_CALLBACK = 'false';
 			expect(shouldSkipAuthOnOAuthCallback()).toBe(false);
 		});
 
 		it('should return true when env var is "true"', () => {
-			process.env.N8N_SKIP_AUTH_ON_OAUTH_CALLBACK = 'true';
+			process.env.MNI_SKIP_AUTH_ON_OAUTH_CALLBACK = 'true';
 			expect(shouldSkipAuthOnOAuthCallback()).toBe(true);
 		});
 
 		it('should return true when env var is "TRUE" (case insensitive)', () => {
-			process.env.N8N_SKIP_AUTH_ON_OAUTH_CALLBACK = 'TRUE';
+			process.env.MNI_SKIP_AUTH_ON_OAUTH_CALLBACK = 'TRUE';
 			expect(shouldSkipAuthOnOAuthCallback()).toBe(true);
 		});
 	});
@@ -540,7 +540,7 @@ describe('OauthService', () => {
 
 	describe('decodeCsrfState', () => {
 		// Auth logic: dynamic credentials (origin === 'dynamic-credential') always skip user validation.
-		// Static credentials: skip user validation only when N8N_SKIP_AUTH_ON_OAUTH_CALLBACK is true
+		// Static credentials: skip user validation only when MNI_SKIP_AUTH_ON_OAUTH_CALLBACK is true
 		// (e.g. embed/iframe); otherwise req.user.id must match decryptedState.userId (BOLA prevention).
 		// skipAuthOnOAuthCallback is read at module load, so the "skip for static" path is not tested here.
 
@@ -2004,7 +2004,7 @@ describe('OauthService', () => {
 
 	describe('generateAOauth2AuthUri', () => {
 		it('should generate auth URI without dynamic client registration', async () => {
-			const { ClientOAuth2 } = await import('@n8n/client-oauth2');
+			const { ClientOAuth2 } = await import('@MNI/client-oauth2');
 			const mockGetUri = vi.fn().mockReturnValue({
 				toString: () =>
 					'https://example.domain/oauth2/auth?client_id=client_id&redirect_uri=http://localhost:5678/rest/oauth2-credential/callback&response_type=code&state=state&scope=openid',
@@ -2079,7 +2079,7 @@ describe('OauthService', () => {
 		});
 
 		it('should generate auth URI with PKCE flow', async () => {
-			const { ClientOAuth2 } = await import('@n8n/client-oauth2');
+			const { ClientOAuth2 } = await import('@MNI/client-oauth2');
 			const pkceChallenge = await import('pkce-challenge');
 			vi.mocked(pkceChallenge.default).mockResolvedValue({
 				code_verifier: 'code_verifier',
@@ -2132,7 +2132,7 @@ describe('OauthService', () => {
 		});
 
 		it('should generate auth URI with auth query parameters', async () => {
-			const { ClientOAuth2 } = await import('@n8n/client-oauth2');
+			const { ClientOAuth2 } = await import('@MNI/client-oauth2');
 			const mockGetUri = vi.fn().mockReturnValue({
 				toString: () =>
 					'https://example.domain/oauth2/auth?client_id=client_id&redirect_uri=http://localhost:5678/rest/oauth2-credential/callback&response_type=code&state=state&scope=openid&custom_param=value',
@@ -2171,7 +2171,7 @@ describe('OauthService', () => {
 		});
 
 		it('should merge authQueryParameters into the authorize URL query', async () => {
-			const { ClientOAuth2 } = await import('@n8n/client-oauth2');
+			const { ClientOAuth2 } = await import('@MNI/client-oauth2');
 
 			// Capture the options passed into the ClientOAuth2 constructor to prove the service
 			// parses authQueryParameters and sets oAuthOptions.query from it.
@@ -2215,7 +2215,7 @@ describe('OauthService', () => {
 		});
 
 		it('should not set query when credentials have no authQueryParameters', async () => {
-			const { ClientOAuth2 } = await import('@n8n/client-oauth2');
+			const { ClientOAuth2 } = await import('@MNI/client-oauth2');
 
 			let capturedOptions: { query?: Record<string, string> } | undefined;
 			vi.mocked(ClientOAuth2).mockImplementation(function (options) {
@@ -2253,7 +2253,7 @@ describe('OauthService', () => {
 		});
 
 		it('should handle dynamic client registration with root-level server URL', async () => {
-			const { ClientOAuth2 } = await import('@n8n/client-oauth2');
+			const { ClientOAuth2 } = await import('@MNI/client-oauth2');
 			const mockGetUri = vi.fn().mockReturnValue({
 				toString: () =>
 					'https://example.domain/oauth2/auth?client_id=registered_client_id&redirect_uri=http://localhost:5678/rest/oauth2-credential/callback&response_type=code&state=state&scope=openid profile',
@@ -2373,7 +2373,7 @@ describe('OauthService', () => {
 		});
 
 		it('should throw BadRequestError when client registration response is invalid', async () => {
-			const { ClientOAuth2 } = await import('@n8n/client-oauth2');
+			const { ClientOAuth2 } = await import('@MNI/client-oauth2');
 			vi.mocked(ClientOAuth2).mockImplementation(function () {
 				return {} as any;
 			});
@@ -2417,7 +2417,7 @@ describe('OauthService', () => {
 		});
 
 		it('should handle dynamic client registration with client_secret_post authentication', async () => {
-			const { ClientOAuth2 } = await import('@n8n/client-oauth2');
+			const { ClientOAuth2 } = await import('@MNI/client-oauth2');
 			const mockGetUri = vi.fn().mockReturnValue({
 				toString: () =>
 					'https://example.domain/oauth2/auth?client_id=registered_client_id&redirect_uri=http://localhost:5678/rest/oauth2-credential/callback&response_type=code&state=state&scope=openid',
@@ -2474,7 +2474,7 @@ describe('OauthService', () => {
 			// we need to check the actual behavior by verifying the CSRF state doesn't include userId
 			// when the env var is set. However, since it's evaluated at module load, we'll test
 			// that the function works correctly with or without userId
-			const { ClientOAuth2 } = await import('@n8n/client-oauth2');
+			const { ClientOAuth2 } = await import('@MNI/client-oauth2');
 			const mockGetUri = vi.fn().mockReturnValue({
 				toString: () =>
 					'https://example.domain/oauth2/auth?client_id=client_id&redirect_uri=http://localhost:5678/rest/oauth2-credential/callback&response_type=code&state=state&scope=openid',
@@ -2618,7 +2618,7 @@ describe('OauthService', () => {
 
 	describe('generateAOauth2AuthUri with DCR and RFC 8414 compliance', () => {
 		it('should insert .well-known between host and path per RFC 8414', async () => {
-			const { ClientOAuth2 } = await import('@n8n/client-oauth2');
+			const { ClientOAuth2 } = await import('@MNI/client-oauth2');
 			const mockGetUri = vi.fn().mockReturnValue({
 				toString: () =>
 					'https://example.domain/authorize?client_id=registered_client_id&redirect_uri=http://localhost:5678/rest/oauth2-credential/callback&response_type=code&state=state',
@@ -2673,7 +2673,7 @@ describe('OauthService', () => {
 		});
 
 		it('should handle root-level issuer URLs (no path)', async () => {
-			const { ClientOAuth2 } = await import('@n8n/client-oauth2');
+			const { ClientOAuth2 } = await import('@MNI/client-oauth2');
 			const mockGetUri = vi.fn().mockReturnValue({
 				toString: () =>
 					'https://example.domain/authorize?client_id=test_id&redirect_uri=http://localhost:5678/rest/oauth2-credential/callback&response_type=code&state=state',
@@ -2727,7 +2727,7 @@ describe('OauthService', () => {
 		});
 
 		it('should handle issuer URLs with trailing slashes', async () => {
-			const { ClientOAuth2 } = await import('@n8n/client-oauth2');
+			const { ClientOAuth2 } = await import('@MNI/client-oauth2');
 			const mockGetUri = vi.fn().mockReturnValue({
 				toString: () => 'https://example.domain/authorize?client_id=test_id',
 			});
@@ -2777,7 +2777,7 @@ describe('OauthService', () => {
 		});
 
 		it('should handle multi-segment paths correctly', async () => {
-			const { ClientOAuth2 } = await import('@n8n/client-oauth2');
+			const { ClientOAuth2 } = await import('@MNI/client-oauth2');
 			const mockGetUri = vi.fn().mockReturnValue({
 				toString: () => 'https://oauth.example.com/authorize?client_id=test_id',
 			});
@@ -2827,7 +2827,7 @@ describe('OauthService', () => {
 		});
 
 		it('should fall back to OpenID Connect path insertion when RFC 8414 fails', async () => {
-			const { ClientOAuth2 } = await import('@n8n/client-oauth2');
+			const { ClientOAuth2 } = await import('@MNI/client-oauth2');
 			const mockGetUri = vi.fn().mockReturnValue({
 				toString: () => 'https://example.domain/authorize?client_id=test_id',
 			});
@@ -2891,7 +2891,7 @@ describe('OauthService', () => {
 		});
 
 		it('should fall back to OpenID Connect path appending when first two fail', async () => {
-			const { ClientOAuth2 } = await import('@n8n/client-oauth2');
+			const { ClientOAuth2 } = await import('@MNI/client-oauth2');
 			const mockGetUri = vi.fn().mockReturnValue({
 				toString: () => 'https://example.domain/authorize?client_id=test_id',
 			});
@@ -2960,7 +2960,7 @@ describe('OauthService', () => {
 		});
 
 		it('should fall back to origin-only discovery when path-aware variants fail (Atlassian MCP)', async () => {
-			const { ClientOAuth2 } = await import('@n8n/client-oauth2');
+			const { ClientOAuth2 } = await import('@MNI/client-oauth2');
 			const mockGetUri = vi.fn().mockReturnValue({
 				toString: () => 'https://mcp.atlassian.com/authorize?client_id=test_id',
 			});
@@ -3063,7 +3063,7 @@ describe('OauthService', () => {
 		});
 
 		it('should discover authorization server via protected resource metadata (MCP flow)', async () => {
-			const { ClientOAuth2 } = await import('@n8n/client-oauth2');
+			const { ClientOAuth2 } = await import('@MNI/client-oauth2');
 			const mockGetUri = vi.fn().mockReturnValue({
 				toString: () => 'https://auth.example.com/authorize?client_id=test_id',
 			});
@@ -3134,7 +3134,7 @@ describe('OauthService', () => {
 		});
 
 		it('should fall back to direct authorization server discovery when protected resource fails', async () => {
-			const { ClientOAuth2 } = await import('@n8n/client-oauth2');
+			const { ClientOAuth2 } = await import('@MNI/client-oauth2');
 			const mockGetUri = vi.fn().mockReturnValue({
 				toString: () => 'https://example.domain/authorize?client_id=test_id',
 			});
@@ -3201,7 +3201,7 @@ describe('OauthService', () => {
 		});
 
 		it('should skip discovery URLs that resolve with a non-200 status', async () => {
-			const { ClientOAuth2 } = await import('@n8n/client-oauth2');
+			const { ClientOAuth2 } = await import('@MNI/client-oauth2');
 			const pkceChallenge = await import('pkce-challenge');
 			vi.mocked(pkceChallenge.default).mockResolvedValue({
 				code_verifier: 'code_verifier',
@@ -3274,7 +3274,7 @@ describe('OauthService', () => {
 		});
 
 		it('should handle Smithery MCP server with path-specific protected resource discovery', async () => {
-			const { ClientOAuth2 } = await import('@n8n/client-oauth2');
+			const { ClientOAuth2 } = await import('@MNI/client-oauth2');
 			const mockGetUri = vi.fn().mockReturnValue({
 				toString: () => 'https://auth.smithery.ai/authorize?client_id=test_id',
 			});
@@ -3342,7 +3342,7 @@ describe('OauthService', () => {
 		});
 
 		it('should handle Notion MCP server with root protected resource discovery', async () => {
-			const { ClientOAuth2 } = await import('@n8n/client-oauth2');
+			const { ClientOAuth2 } = await import('@MNI/client-oauth2');
 			const mockGetUri = vi.fn().mockReturnValue({
 				toString: () => 'https://mcp.notion.com/authorize?client_id=test_id',
 			});
@@ -3417,7 +3417,7 @@ describe('OauthService', () => {
 		});
 
 		it('should handle VEED.io with fallback to authorization server discovery', async () => {
-			const { ClientOAuth2 } = await import('@n8n/client-oauth2');
+			const { ClientOAuth2 } = await import('@MNI/client-oauth2');
 			const mockGetUri = vi.fn().mockReturnValue({
 				toString: () => 'https://www.veed.io/authorize?client_id=test_id',
 			});
@@ -3515,7 +3515,7 @@ describe('OauthService', () => {
 		});
 
 		it('should succeed when server advertises only authorization_code without refresh_token', async () => {
-			const { ClientOAuth2 } = await import('@n8n/client-oauth2');
+			const { ClientOAuth2 } = await import('@MNI/client-oauth2');
 			const mockGetUri = vi.fn().mockReturnValue({
 				toString: () => 'https://login.commonroom.io/authorize?client_id=test_id',
 			});
@@ -3570,7 +3570,7 @@ describe('OauthService', () => {
 		});
 
 		it('should not produce double /.well-known/ paths when authorization server URL already contains /.well-known/', async () => {
-			const { ClientOAuth2 } = await import('@n8n/client-oauth2');
+			const { ClientOAuth2 } = await import('@MNI/client-oauth2');
 			const mockGetUri = vi.fn().mockReturnValue({
 				toString: () => 'https://example.domain/authorize?client_id=test_id',
 			});
@@ -3670,7 +3670,7 @@ describe('OauthService', () => {
 				data: { client_id: 'rid', client_secret: 'rs' },
 			} as any);
 
-			const { ClientOAuth2 } = await import('@n8n/client-oauth2');
+			const { ClientOAuth2 } = await import('@MNI/client-oauth2');
 			vi.mocked(ClientOAuth2).mockImplementation(function () {
 				return {
 					code: {
@@ -3795,7 +3795,7 @@ describe('OauthService', () => {
 			}) as OAuth2CredentialData;
 
 		const mockClientOAuth2UriFromOptions = async () => {
-			const { ClientOAuth2 } = await import('@n8n/client-oauth2');
+			const { ClientOAuth2 } = await import('@MNI/client-oauth2');
 			vi.mocked(ClientOAuth2).mockImplementation(function (options) {
 				return {
 					code: {
@@ -4923,7 +4923,7 @@ describe('OauthService', () => {
 			};
 
 			const runAtlassianFlow = async (credentialOverrides: Partial<OAuth2CredentialData> = {}) => {
-				const { ClientOAuth2 } = await import('@n8n/client-oauth2');
+				const { ClientOAuth2 } = await import('@MNI/client-oauth2');
 				const pkceChallenge = await import('pkce-challenge');
 				vi.mocked(pkceChallenge.default).mockResolvedValue({
 					code_verifier: 'code_verifier',
@@ -5319,7 +5319,7 @@ describe('OauthService', () => {
 		});
 
 		it('reports a dynamically registered credential whose client registration is gone', async () => {
-			const { ClientOAuth2 } = await import('@n8n/client-oauth2');
+			const { ClientOAuth2 } = await import('@MNI/client-oauth2');
 			// Stands in for the real client: without a client id or token endpoint
 			// the exchange is rejected by the authorization server.
 			const mockToken = {
@@ -5351,7 +5351,7 @@ describe('OauthService', () => {
 		});
 
 		it('refreshes the token with token.refresh() for authorizationCode grant and returns a Bearer header', async () => {
-			const { ClientOAuth2 } = await import('@n8n/client-oauth2');
+			const { ClientOAuth2 } = await import('@MNI/client-oauth2');
 			const refreshed = {
 				data: { access_token: 'new-token', token_type: 'bearer' },
 				accessToken: 'new-token',
@@ -5383,7 +5383,7 @@ describe('OauthService', () => {
 		});
 
 		it('stores and returns the new token expiry time', async () => {
-			const { ClientOAuth2 } = await import('@n8n/client-oauth2');
+			const { ClientOAuth2 } = await import('@MNI/client-oauth2');
 			const refreshed = {
 				data: { access_token: 'new-token', token_type: 'bearer', expires_in: 3600 },
 				accessToken: 'new-token',
@@ -5404,7 +5404,7 @@ describe('OauthService', () => {
 					access_token: 'stale',
 					refresh_token: 'refresh-token',
 					expires_in: 3600,
-					n8n_expires_at: String(timestamp - 1),
+					MNI_expires_at: String(timestamp - 1),
 				},
 			} as unknown as OAuth2CredentialData);
 			vi.spyOn(service, 'encryptAndSaveData').mockResolvedValue(undefined);
@@ -5420,13 +5420,13 @@ describe('OauthService', () => {
 			expect(service.encryptAndSaveData).toHaveBeenCalledWith(credential, {
 				oauthTokenData: expect.objectContaining({
 					access_token: 'new-token',
-					n8n_expires_at: String(expiresAt),
+					MNI_expires_at: String(expiresAt),
 				}),
 			});
 		});
 
 		it('shares one refresh between concurrent callers', async () => {
-			const { ClientOAuth2 } = await import('@n8n/client-oauth2');
+			const { ClientOAuth2 } = await import('@MNI/client-oauth2');
 			let finishRefresh: ((value: unknown) => void) | undefined;
 			const refresh = vi.fn().mockImplementation(
 				async () =>
@@ -5463,7 +5463,7 @@ describe('OauthService', () => {
 		});
 
 		it('uses token data refreshed by another lock holder', async () => {
-			const { ClientOAuth2 } = await import('@n8n/client-oauth2');
+			const { ClientOAuth2 } = await import('@MNI/client-oauth2');
 			credentialsRepository.findOne.mockResolvedValue(makeCredential({ isGlobal: true }) as never);
 			vi.spyOn(service, 'getOAuthCredentials')
 				.mockResolvedValueOnce({
@@ -5484,7 +5484,7 @@ describe('OauthService', () => {
 		});
 
 		it('uses the stored token when the caller has an older token revision', async () => {
-			const { ClientOAuth2 } = await import('@n8n/client-oauth2');
+			const { ClientOAuth2 } = await import('@MNI/client-oauth2');
 			const expiresAt = timestamp + 3_600_000;
 			credentialsRepository.findOne.mockResolvedValue(makeCredential({ isGlobal: true }) as never);
 			vi.spyOn(service, 'getOAuthCredentials').mockResolvedValue({
@@ -5494,7 +5494,7 @@ describe('OauthService', () => {
 					access_token: 'fresh',
 					refresh_token: 'new-refresh',
 					expires_in: 3600,
-					n8n_expires_at: String(expiresAt),
+					MNI_expires_at: String(expiresAt),
 				},
 			} as unknown as OAuth2CredentialData);
 
@@ -5512,7 +5512,7 @@ describe('OauthService', () => {
 		});
 
 		it('refreshes without a credential lease when lease acquisition times out', async () => {
-			const { ClientOAuth2 } = await import('@n8n/client-oauth2');
+			const { ClientOAuth2 } = await import('@MNI/client-oauth2');
 			const mockToken = {
 				refresh: vi.fn().mockResolvedValue({
 					data: { access_token: 'new-token', token_type: 'bearer' },
@@ -5550,7 +5550,7 @@ describe('OauthService', () => {
 
 		describe('outbound network policy', () => {
 			const captureRefreshClientOptions = async () => {
-				const { ClientOAuth2 } = await import('@n8n/client-oauth2');
+				const { ClientOAuth2 } = await import('@MNI/client-oauth2');
 				let capturedOptions: Record<string, unknown> = {};
 				const mockToken = {
 					refresh: vi.fn().mockResolvedValue({
@@ -5611,7 +5611,7 @@ describe('OauthService', () => {
 		});
 
 		it('builds the client with a certificate when certificate authentication is selected', async () => {
-			const { ClientOAuth2 } = await import('@n8n/client-oauth2');
+			const { ClientOAuth2 } = await import('@MNI/client-oauth2');
 			let capturedOptions: unknown;
 			const refreshed = {
 				data: { access_token: 'new-token', token_type: 'bearer' },
@@ -5655,7 +5655,7 @@ describe('OauthService', () => {
 		});
 
 		it('persists the refreshed token data after a successful refresh', async () => {
-			const { ClientOAuth2 } = await import('@n8n/client-oauth2');
+			const { ClientOAuth2 } = await import('@MNI/client-oauth2');
 			const refreshedData = { access_token: 'new-token', token_type: 'bearer' };
 			const refreshed = { data: refreshedData, accessToken: 'new-token' };
 			const mockToken = { refresh: vi.fn().mockResolvedValue(refreshed), client: {} };
@@ -5686,7 +5686,7 @@ describe('OauthService', () => {
 		});
 
 		it('uses credentials.getToken() for clientCredentials grant type', async () => {
-			const { ClientOAuth2 } = await import('@n8n/client-oauth2');
+			const { ClientOAuth2 } = await import('@MNI/client-oauth2');
 			const refreshed = { data: { access_token: 'cc-token' }, accessToken: 'cc-token' };
 			const getToken = vi.fn().mockResolvedValue(refreshed);
 			const mockToken = { refresh: vi.fn(), client: { credentials: { getToken } } };
@@ -5713,7 +5713,7 @@ describe('OauthService', () => {
 		});
 
 		it('passes resource to token refresh and preserves it when the provider does not echo it', async () => {
-			const { ClientOAuth2 } = await import('@n8n/client-oauth2');
+			const { ClientOAuth2 } = await import('@MNI/client-oauth2');
 			const resource = 'https://mcp.example.com/mcp';
 			const refreshed = { data: { access_token: 'cc-token' }, accessToken: 'cc-token' };
 			const getToken = vi.fn().mockResolvedValue(refreshed);
@@ -5749,7 +5749,7 @@ describe('OauthService', () => {
 		});
 
 		it('returns null and logs a warning when the refresh call throws', async () => {
-			const { ClientOAuth2 } = await import('@n8n/client-oauth2');
+			const { ClientOAuth2 } = await import('@MNI/client-oauth2');
 			const mockToken = {
 				refresh: vi.fn().mockRejectedValue(new Error('network timeout')),
 				client: {},
@@ -5778,7 +5778,7 @@ describe('OauthService', () => {
 		});
 
 		it('asks the user to reconnect when the refresh grant is invalid', async () => {
-			const { ClientOAuth2 } = await import('@n8n/client-oauth2');
+			const { ClientOAuth2 } = await import('@MNI/client-oauth2');
 			const mockToken = {
 				refresh: vi
 					.fn()
@@ -5804,7 +5804,7 @@ describe('OauthService', () => {
 		});
 
 		it('rejects the refreshed token when persisting the new token data fails', async () => {
-			const { ClientOAuth2 } = await import('@n8n/client-oauth2');
+			const { ClientOAuth2 } = await import('@MNI/client-oauth2');
 			const refreshed = { data: { access_token: 'new-token' }, accessToken: 'new-token' };
 			const mockToken = { refresh: vi.fn().mockResolvedValue(refreshed), client: {} };
 			vi.mocked(ClientOAuth2).mockImplementation(function () {

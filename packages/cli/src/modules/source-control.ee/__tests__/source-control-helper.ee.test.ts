@@ -1,8 +1,8 @@
-import type { SourceControlledFile } from '@n8n/api-types';
-import { Container } from '@n8n/di';
+import type { SourceControlledFile } from '@MNI/api-types';
+import { Container } from '@MNI/di';
 import { accessSync, constants as fsConstants } from 'fs';
-import { InstanceSettings } from 'n8n-core';
-import type { ICredentialDataDecryptedObject } from 'n8n-workflow';
+import { InstanceSettings } from 'MNI-core';
+import type { ICredentialDataDecryptedObject } from 'MNI-workflow';
 import path from 'path';
 import { mock } from 'vitest-mock-extended';
 
@@ -183,7 +183,7 @@ beforeAll(async () => {
 	sourceControlPreferencesService.getPreferences.mockReturnValue({
 		branchName: 'main',
 		connected: true,
-		repositoryUrl: 'git@example.com:n8ntest/n8n_testrepo.git',
+		repositoryUrl: 'git@example.com:n8ntest/MNI_testrepo.git',
 		branchReadOnly: false,
 		branchColor: '#5296D6',
 		publicKey:
@@ -240,9 +240,9 @@ describe('Source Control Helper', () => {
 
 	describe('getRepoType', () => {
 		it('should get repo type from url', async () => {
-			expect(getRepoType('git@github.com:n8ntest/n8n_testrepo.git')).toBe('github');
-			expect(getRepoType('git@gitlab.com:n8ntest/n8n_testrepo.git')).toBe('gitlab');
-			expect(getRepoType('git@mygitea.io:n8ntest/n8n_testrepo.git')).toBe('other');
+			expect(getRepoType('git@github.com:n8ntest/MNI_testrepo.git')).toBe('github');
+			expect(getRepoType('git@gitlab.com:n8ntest/MNI_testrepo.git')).toBe('gitlab');
+			expect(getRepoType('git@mygitea.io:n8ntest/MNI_testrepo.git')).toBe('other');
 		});
 	});
 

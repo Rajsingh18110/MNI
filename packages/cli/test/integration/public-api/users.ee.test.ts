@@ -1,5 +1,5 @@
-import { createTeamProject, linkUserToProject, testDb } from '@n8n/backend-test-utils';
-import { GLOBAL_MEMBER_ROLE, type User } from '@n8n/db';
+import { createTeamProject, linkUserToProject, testDb } from '@MNI/backend-test-utils';
+import { GLOBAL_MEMBER_ROLE, type User } from '@MNI/db';
 import { v4 as uuid } from 'uuid';
 import validator from 'validator';
 

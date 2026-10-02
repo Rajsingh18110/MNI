@@ -1,0 +1,3 @@
+# @MNI/storybook
+
+This package contains the Storybook setup for MNI components. Storybook is a tool for developing UI components in isolation, which helps in building, testing, and documenting components effectively.

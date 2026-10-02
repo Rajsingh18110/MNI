@@ -1,6 +1,6 @@
 import type { BinaryData } from './types';
 
-export { assertDir, exists } from '@n8n/backend-common';
+export { assertDir, exists } from '@MNI/backend-common';
 
 const STORED_MODES = ['filesystem', 'filesystem-v2', 's3', 'azure', 'database'] as const;
 

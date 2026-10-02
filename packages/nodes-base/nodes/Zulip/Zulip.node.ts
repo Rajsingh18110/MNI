@@ -7,8 +7,8 @@ import type {
 	INodePropertyOptions,
 	INodeType,
 	INodeTypeDescription,
-} from 'n8n-workflow';
-import { NodeConnectionTypes, NodeOperationError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeConnectionTypes, NodeOperationError } from 'MNI-workflow';
 
 import { toMultiOptionsCsv, validateJSON, zulipApiRequest } from './GenericFunctions';
 import { messageFields, messageOperations } from './MessageDescription';

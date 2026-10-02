@@ -1,4 +1,4 @@
-import type { ApiKeyScope } from '@n8n/permissions';
+import type { ApiKeyScope } from '@MNI/permissions';
 import type { APIResponse } from '@playwright/test';
 import { request } from '@playwright/test';
 import { nanoid } from 'nanoid';
@@ -88,7 +88,7 @@ export class PublicApiHelper {
 	}
 
 	private async getApiHeaders(): Promise<Record<string, string>> {
-		return { 'X-N8N-API-KEY': await this.ensureApiKey() };
+		return { 'X-MNI-API-KEY': await this.ensureApiKey() };
 	}
 
 	/**

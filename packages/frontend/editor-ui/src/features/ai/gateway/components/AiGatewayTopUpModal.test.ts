@@ -4,14 +4,14 @@ import { screen } from '@testing-library/vue';
 import userEvent from '@testing-library/user-event';
 import { createTestingPinia } from '@pinia/testing';
 import { setActivePinia } from 'pinia';
-import { ROLE } from '@n8n/api-types';
+import { ROLE } from '@MNI/api-types';
 import { mockedStore } from '@/__tests__/utils';
 import { createComponentRenderer } from '@/__tests__/render';
-import { useUsersStore } from '@n8n/stores/users.store';
+import { useUsersStore } from '@MNI/stores/users.store';
 import { AI_GATEWAY_TOP_UP_MODAL_KEY } from '@/app/constants';
 import type { AiGatewayTopUpVariant } from '@/app/composables/useAiGatewayTopUp';
 import { useUIStore } from '@/app/stores/ui.store';
-import type { IUser } from '@n8n/rest-api-client/api/users';
+import type { IUser } from '@MNI/rest-api-client/api/users';
 import AiGatewayTopUpModal from './AiGatewayTopUpModal.vue';
 
 const mockGoToUpgrade = vi.fn();
@@ -23,8 +23,8 @@ vi.mock('@/app/composables/usePageRedirectionHelper', () => ({
 }));
 
 // N8nAlertDialog (reka-ui) doesn't render its portalled content in jsdom.
-vi.mock('@n8n/design-system', async (importOriginal) => {
-	const actual = await importOriginal<typeof import('@n8n/design-system')>();
+vi.mock('@MNI/design-system', async (importOriginal) => {
+	const actual = await importOriginal<typeof import('@MNI/design-system')>();
 	return {
 		...actual,
 		N8nAlertDialog: {

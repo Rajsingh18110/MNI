@@ -3,7 +3,7 @@ import { createComponentRenderer } from '@/__tests__/render';
 import CredentialEdit from './CredentialEdit.vue';
 import { createTestingPinia } from '@pinia/testing';
 import { CREDENTIAL_EDIT_MODAL_KEY } from '../../credentials.constants';
-import { STORES } from '@n8n/stores';
+import { STORES } from '@MNI/stores';
 import { retry, mockedStore } from '@/__tests__/utils';
 import { useCredentialsStore } from '../../credentials.store';
 import { useExternalSecretsStore } from '@/features/integrations/externalSecrets.ee/externalSecrets.ee.store';
@@ -20,12 +20,12 @@ import type { NewCredentialsModal } from '@/Interface';
 import type { ICredentialsResponse } from '../../credentials.types';
 import { within, waitFor, screen } from '@testing-library/vue';
 import userEvent from '@testing-library/user-event';
-import type { ICredentialType, INode, INodeTypeDescription } from 'n8n-workflow';
-import type { Scope } from '@n8n/permissions';
-import { TELEMETRY_EVENT } from '@n8n/telemetry';
+import type { ICredentialType, INode, INodeTypeDescription } from 'MNI-workflow';
+import type { Scope } from '@MNI/permissions';
+import { TELEMETRY_EVENT } from '@MNI/telemetry';
 import { useAiGatewayStore } from '@/app/stores/aiGateway.store';
 import { reactive } from 'vue';
-import { CREDENTIAL_DESCRIPTION_MAX_LENGTH } from '@n8n/api-types';
+import { CREDENTIAL_DESCRIPTION_MAX_LENGTH } from '@MNI/api-types';
 import { TEMPLATED_CUSTOM_AUTH_CREDENTIAL_TYPE } from '../../templatedAuth.utils';
 
 const { confirmMock, routerCurrentRouteMock, routerReplaceMock } = vi.hoisted(() => ({
@@ -62,7 +62,7 @@ vi.mock('vue-router', async () => ({
 	}),
 }));
 
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: () => ({
 		showError: vi.fn(),
 		showMessage: toastShowMessageMock,
@@ -70,7 +70,7 @@ vi.mock('@n8n/composables/useToast', () => ({
 }));
 
 const telemetryTrackMock = vi.hoisted(() => vi.fn());
-vi.mock('@n8n/composables/useTelemetry', () => ({
+vi.mock('@MNI/composables/useTelemetry', () => ({
 	useTelemetry: () => ({ track: telemetryTrackMock }),
 }));
 
@@ -243,8 +243,8 @@ const oAuth2Api: ICredentialType = {
 			doNotInherit: true,
 		},
 	],
-	iconUrl: 'icons/n8n-nodes-base/dist/nodes/GraphQL/graphql.png',
-	supportedNodes: ['n8n-nodes-base.graphql', 'n8n-nodes-base.httpRequest'],
+	iconUrl: 'icons/MNI-nodes-base/dist/nodes/GraphQL/graphql.png',
+	supportedNodes: ['MNI-nodes-base.graphql', 'MNI-nodes-base.httpRequest'],
 };
 
 const googleOAuth2Api: ICredentialType = {
@@ -284,7 +284,7 @@ const googleOAuth2Api: ICredentialType = {
 			default: 'body',
 		},
 	],
-	iconUrl: 'icons/n8n-nodes-base/dist/credentials/icons/Google.svg',
+	iconUrl: 'icons/MNI-nodes-base/dist/credentials/icons/Google.svg',
 	supportedNodes: [],
 };
 
@@ -302,8 +302,8 @@ const googleBigQueryOAuth2Api: ICredentialType = {
 				'https://www.googleapis.com/auth/bigquery https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/drive',
 		},
 	],
-	iconUrl: 'icons/n8n-nodes-base/dist/nodes/Google/BigQuery/googleBigQuery.svg',
-	supportedNodes: ['n8n-nodes-base.googleBigQuery'],
+	iconUrl: 'icons/MNI-nodes-base/dist/nodes/Google/BigQuery/googleBigQuery.svg',
+	supportedNodes: ['MNI-nodes-base.googleBigQuery'],
 };
 
 const renderComponent = createComponentRenderer(CredentialEdit, {
@@ -497,7 +497,7 @@ describe('CredentialEdit', () => {
 			case: 'valid credential',
 			data: {
 				clientId: 'client_id',
-				clientSecret: '__n8n_EMPTY_VALUE_7b1af746-3729-4c60-9b9b-e08eb29e58da',
+				clientSecret: '__MNI_EMPTY_VALUE_7b1af746-3729-4c60-9b9b-e08eb29e58da',
 			},
 		},
 		{
@@ -507,7 +507,7 @@ describe('CredentialEdit', () => {
 				authUrl: '',
 				accessTokenUrl: '',
 				clientId: 'client_id',
-				clientSecret: '__n8n_EMPTY_VALUE_7b1af746-3729-4c60-9b9b-e08eb29e58da',
+				clientSecret: '__MNI_EMPTY_VALUE_7b1af746-3729-4c60-9b9b-e08eb29e58da',
 				scope: '',
 				authQueryParameters: '',
 				authentication: '',
@@ -773,7 +773,7 @@ describe('CredentialEdit', () => {
 			const ndvStore = mockedStore(useNDVStore, createWorkflowDocumentId('test-workflow-id'));
 			ndvStore.activeNode = {
 				name: 'DiscordTest',
-				type: 'n8n-nodes-base.discord',
+				type: 'MNI-nodes-base.discord',
 				typeVersion: 1,
 				position: [0, 0],
 				parameters: {},
@@ -783,7 +783,7 @@ describe('CredentialEdit', () => {
 			nodeTypesStore.getNodeType = () =>
 				({
 					displayName: 'Discord',
-					name: 'n8n-nodes-base.discord',
+					name: 'MNI-nodes-base.discord',
 					group: ['output'],
 					version: 1,
 					description: 'Discord',
@@ -1019,7 +1019,7 @@ describe('CredentialEdit', () => {
 	test('should use the requested credential type when node has multiple credential types', async () => {
 		const credStore = renderDualCredModal({
 			displayName: 'Dual Credential Test',
-			name: 'n8n-nodes-base.dualCredTest',
+			name: 'MNI-nodes-base.dualCredTest',
 			group: ['transform'],
 			version: 1,
 			description: 'Test node',
@@ -1043,7 +1043,7 @@ describe('CredentialEdit', () => {
 	test('should use the requested credential type when the node has multiple auth options', async () => {
 		const credStore = renderDualCredModal({
 			displayName: 'Dual Auth Test',
-			name: 'n8n-nodes-base.dualAuthTest',
+			name: 'MNI-nodes-base.dualAuthTest',
 			group: ['transform'],
 			version: 1,
 			description: 'Test node',
@@ -1121,7 +1121,7 @@ describe('CredentialEdit', () => {
 
 		const dualAuthNodeType = {
 			displayName: 'Dual Auth Switch Test',
-			name: 'n8n-nodes-base.dualAuthSwitchTest',
+			name: 'MNI-nodes-base.dualAuthSwitchTest',
 			group: ['transform'],
 			version: 1,
 			description: 'Test node',
@@ -1202,7 +1202,7 @@ describe('CredentialEdit', () => {
 			ndvStore.activeNode = {
 				id: 'dual-auth-switch-test-node',
 				name: 'DualAuthSwitchTest',
-				type: 'n8n-nodes-base.dualAuthSwitchTest',
+				type: 'MNI-nodes-base.dualAuthSwitchTest',
 				typeVersion: 1,
 				position: [0, 0],
 				parameters: { authentication: 'serviceAccount' },
@@ -1312,7 +1312,7 @@ describe('CredentialEdit', () => {
 			contextNode = {
 				id: 'node-1',
 				name: 'Test node',
-				type: 'n8n-nodes-base.test',
+				type: 'MNI-nodes-base.test',
 				typeVersion: 1,
 				position: [0, 0],
 				parameters: {},
@@ -2032,7 +2032,7 @@ describe('CredentialEdit', () => {
 			expect(telemetryTrackMock).toHaveBeenCalledWith('User toggled MNI connect credential', {
 				credential_type: credentialType.name,
 				node_type: contextNode.type,
-				mode: 'n8n_connect',
+				mode: 'MNI_connect',
 				workflow_id: 'test-workflow-id',
 			});
 			expect(telemetryTrackMock).toHaveBeenCalledWith('Node credential assigned', {
@@ -2040,7 +2040,7 @@ describe('CredentialEdit', () => {
 				node_type: contextNode.type,
 				workflow_id: 'test-workflow-id',
 				credential_id: null,
-				credential_kind: 'n8n_connect',
+				credential_kind: 'MNI_connect',
 				source: 'credential_error_nudge',
 			});
 		});
@@ -2071,7 +2071,7 @@ describe('CredentialEdit', () => {
 			const contextNode = reactive<INode>({
 				id: 'node-1',
 				name: 'Test node',
-				type: 'n8n-nodes-base.test',
+				type: 'MNI-nodes-base.test',
 				typeVersion: 1,
 				position: [0, 0],
 				parameters: {},
@@ -2099,7 +2099,7 @@ describe('CredentialEdit', () => {
 			const contextNode: INode = {
 				id: 'node-1',
 				name: 'Test node',
-				type: 'n8n-nodes-base.test',
+				type: 'MNI-nodes-base.test',
 				typeVersion: 1,
 				position: [0, 0],
 				parameters: {},
@@ -2332,7 +2332,7 @@ describe('CredentialEdit', () => {
 				// @ts-expect-error data is decrypted
 				data: {
 					clientId: 'client_id',
-					clientSecret: '__n8n_EMPTY_VALUE_7b1af746-3729-4c60-9b9b-e08eb29e58da',
+					clientSecret: '__MNI_EMPTY_VALUE_7b1af746-3729-4c60-9b9b-e08eb29e58da',
 				},
 				createdAt: '2026-05-22T10:00:00.000Z',
 				updatedAt: '2026-05-22T10:00:00.000Z',
@@ -2370,7 +2370,7 @@ describe('CredentialEdit', () => {
 			const credentialsStore = setupOAuthCredential({
 				data: {
 					clientId: 'client_id',
-					clientSecret: '__n8n_EMPTY_VALUE_7b1af746-3729-4c60-9b9b-e08eb29e58da',
+					clientSecret: '__MNI_EMPTY_VALUE_7b1af746-3729-4c60-9b9b-e08eb29e58da',
 					oauthTokenData: { access_token: 'static-token' },
 				},
 				isResolvable: false,
@@ -2415,7 +2415,7 @@ describe('CredentialEdit', () => {
 			const credentialsStore = setupOAuthCredential({
 				data: {
 					clientId: 'client_id',
-					clientSecret: '__n8n_EMPTY_VALUE_7b1af746-3729-4c60-9b9b-e08eb29e58da',
+					clientSecret: '__MNI_EMPTY_VALUE_7b1af746-3729-4c60-9b9b-e08eb29e58da',
 					oauthTokenData: { access_token: 'shared-token' },
 				},
 				isResolvable: true,

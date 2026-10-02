@@ -1,6 +1,6 @@
-import type { BuiltTool } from '@n8n/agents';
-import { Tool } from '@n8n/agents/tool';
-import type { ExecuteAgentWorkflowContext } from 'n8n-workflow';
+import type { BuiltTool } from '@MNI/agents';
+import { Tool } from '@MNI/agents/tool';
+import type { ExecuteAgentWorkflowContext } from 'MNI-workflow';
 import { z } from 'zod';
 
 import {

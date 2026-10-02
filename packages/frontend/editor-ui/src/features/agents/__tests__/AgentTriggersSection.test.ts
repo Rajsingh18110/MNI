@@ -12,7 +12,7 @@ import AgentTriggersSection from '../components/AgentTriggersSection.vue';
 vi.mock('@/features/credentials/credentials.api');
 vi.mock('@/features/credentials/credentials.ee.api');
 
-vi.mock('@n8n/stores/useRootStore', () => ({
+vi.mock('@MNI/stores/useRootStore', () => ({
 	useRootStore: () => ({
 		restApiContext: { baseUrl: 'http://localhost:5678', sessionId: 'test-session' },
 		baseUrl: 'http://localhost:5678',
@@ -26,7 +26,7 @@ vi.mock('@/app/stores/nodeTypes.store', () => ({
 	}),
 }));
 
-vi.mock('@n8n/stores/settings.store', () => ({
+vi.mock('@MNI/stores/settings.store', () => ({
 	useSettingsStore: () => ({
 		isEnterpriseFeatureEnabled: { sharing: true },
 	}),
@@ -60,7 +60,7 @@ vi.mock('../composables/useAgentIntegrationStatus', function mockIntegrationStat
 	};
 });
 
-vi.mock('@n8n/i18n', () => ({
+vi.mock('@MNI/i18n', () => ({
 	useI18n: () => ({ baseText: (key: string) => key }),
 }));
 

@@ -1,11 +1,11 @@
 /**
- * Stable, well-known id of the system-managed N8N self-connect credential resolver
+ * Stable, well-known id of the system-managed MNI self-connect credential resolver
  * seeded by `N8nResolverSeeder` during module init. Downstream tickets (IAM-660 etc.)
  * reference this id from workflow settings and OAuth callbacks.
  *
- * Re-exported from `@n8n/api-types` so the frontend and backend share a single source.
+ * Re-exported from `@MNI/api-types` so the frontend and backend share a single source.
  */
-export { SYSTEM_RESOLVER_ID } from '@n8n/api-types';
+export { SYSTEM_RESOLVER_ID } from '@MNI/api-types';
 
 /**
  * Human-readable name persisted on the seeded row and shown in the workflow-settings
@@ -14,5 +14,5 @@ export { SYSTEM_RESOLVER_ID } from '@n8n/api-types';
  */
 export const SYSTEM_RESOLVER_NAME = 'MNI private credentials';
 
-/** Type name of the N8N self-connect resolver class (matches its `metadata.name`). */
-export const SYSTEM_RESOLVER_TYPE = 'credential-resolver.n8n-1.0';
+/** Type name of the MNI self-connect resolver class (matches its `metadata.name`). */
+export const SYSTEM_RESOLVER_TYPE = 'credential-resolver.MNI-1.0';

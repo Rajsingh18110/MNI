@@ -1,5 +1,5 @@
 import type { Ref } from 'vue';
-import type { InstanceAiResourceAttachment } from '@n8n/api-types';
+import type { InstanceAiResourceAttachment } from '@MNI/api-types';
 
 import type { ArtifactOrigin } from '@/features/ai/instanceAi/useResourceRegistry';
 

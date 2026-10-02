@@ -1,7 +1,7 @@
 import { GithubTrigger } from '../../GithubTrigger.node';
 import * as GenericFunctions from '../../GenericFunctions';
 import * as GithubTriggerHelpers from '../../GithubTriggerHelpers';
-import { NodeApiError, NodeOperationError } from 'n8n-workflow';
+import { NodeApiError, NodeOperationError } from 'MNI-workflow';
 
 const createMockHookFunctions = (
 	webhookData: Record<string, any>,

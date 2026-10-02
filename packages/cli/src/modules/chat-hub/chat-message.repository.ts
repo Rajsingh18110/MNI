@@ -3,12 +3,12 @@ import type {
 	ChatHubMessageStatus,
 	ChatMessageId,
 	ChatSessionId,
-} from '@n8n/api-types';
-import { BaseRepository, TransactionRunner, User, withTransaction } from '@n8n/db';
-import { Service } from '@n8n/di';
-import { DataSource, EntityManager } from '@n8n/typeorm';
-import { QueryDeepPartialEntity } from '@n8n/typeorm/query-builder/QueryPartialEntity';
-import { UnexpectedError, type IBinaryData } from 'n8n-workflow';
+} from '@MNI/api-types';
+import { BaseRepository, TransactionRunner, User, withTransaction } from '@MNI/db';
+import { Service } from '@MNI/di';
+import { DataSource, EntityManager } from '@MNI/typeorm';
+import { QueryDeepPartialEntity } from '@MNI/typeorm/query-builder/QueryPartialEntity';
+import { UnexpectedError, type IBinaryData } from 'MNI-workflow';
 
 import { ChatHubMessage } from './chat-hub-message.entity';
 import { EditMessagePayload, HumanMessagePayload } from './chat-hub.types';

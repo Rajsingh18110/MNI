@@ -9,27 +9,27 @@
 # Prefer to inspect before running?
 #   curl -fsSL https://get.n8n.io -o get-mni.sh && less get-mni.sh && sh get-mni.sh
 #
-# Source: https://github.com/n8n-io/n8n/blob/master/docker/get-mni.sh
+# Source: https://github.com/MNI-io/MNI/blob/master/docker/get-mni.sh
 set -eu
 
 SCRIPT_VERSION="1.4.0"
 # The version to install is derived from the latest stable GitHub release in
-# resolve_n8n_version(); this fallback only applies when that lookup fails.
-FALLBACK_N8N_VERSION="2.32.0"
+# resolve_MNI_version(); this fallback only applies when that lookup fails.
+FALLBACK_MNI_VERSION="2.32.0"
 # Sandbox service release (API, runner and sandbox images ship together).
 # Pinned here, not resolved at run time: the stack definition must match it.
 # --upgrade moves existing installs to this pin.
 SANDBOX_VERSION="1.3.4"
-N8N_DIR="${N8N_DIR:-./MNI}"
-N8N_PORT=5678
-SOURCE_URL="https://github.com/n8n-io/n8n/blob/master/docker/get-mni.sh"
+MNI_DIR="${MNI_DIR:-./MNI}"
+MNI_PORT=5678
+SOURCE_URL="https://github.com/MNI-io/MNI/blob/master/docker/get-mni.sh"
 # The stack definition lives next to this script in the repo and is downloaded
 # at install time. A plain filesystem path also works (used by the test
 # harness to install from a working copy).
-COMPOSE_SOURCE="${N8N_COMPOSE_URL:-https://raw.githubusercontent.com/n8n-io/n8n/master/docker/get-mni-compose.yml}"
-COMPOSE_HISTORY_URL="https://github.com/n8n-io/n8n/commits/master/docker/get-mni-compose.yml"
+COMPOSE_SOURCE="${MNI_COMPOSE_URL:-https://raw.githubusercontent.com/MNI-io/MNI/master/docker/get-mni-compose.yml}"
+COMPOSE_HISTORY_URL="https://github.com/MNI-io/MNI/commits/master/docker/get-mni-compose.yml"
 DOCS_HOSTING_URL="https://docs.n8n.io/hosting/"
-DOCS_EVERYDAY_URL="https://docs.n8n.io/deploy/host-n8n/install-options/one-line-setup#everyday-commands"
+DOCS_EVERYDAY_URL="https://docs.n8n.io/deploy/host-MNI/install-options/one-line-setup#everyday-commands"
 
 UPGRADE=0
 NO_START=0
@@ -114,16 +114,16 @@ Options:
   --version [x.y.z]  Without a value: print script version and the MNI version
                      that would be installed (latest stable). With a value:
                      install (or, with --upgrade, upgrade to) that MNI version.
-  --upgrade          Upgrade an existing install: updates the N8N_VERSION and
-                     N8N_SANDBOX_VERSION lines in .env, points the sandbox image
-                     tags in compose.yml at N8N_SANDBOX_VERSION, pulls images
+  --upgrade          Upgrade an existing install: updates the MNI_VERSION and
+                     MNI_SANDBOX_VERSION lines in .env, points the sandbox image
+                     tags in compose.yml at MNI_SANDBOX_VERSION, pulls images
                      and restarts. Never touches any other configuration or
                      secrets.
-  --no-start         Write the configuration files but don't start n8n.
+  --no-start         Write the configuration files but don't start MNI.
   --help             Show this help.
 
 Environment:
-  N8N_DIR            Install directory (default: ./MNI)
+  MNI_DIR            Install directory (default: ./MNI)
   DO_NOT_TRACK=1     Never offer to send an anonymous failure report.
 
 For production-grade setups (TLS, Postgres, queue mode) see:
@@ -136,12 +136,12 @@ parse_args() {
 		case "$1" in
 			--version)
 				if [ $# -gt 1 ] && [ "${2#-}" = "$2" ]; then
-					valid_n8n_version "$2" ||
+					valid_MNI_version "$2" ||
 						fail "invalid --version '$2' — expected a release version like 2.32.0"
 					REQUESTED_VERSION="$2"
 					shift
 				else
-					say "get-mni.sh v${SCRIPT_VERSION} (installs the latest stable MNI, currently $(resolve_n8n_version), with sandbox service ${SANDBOX_VERSION})"
+					say "get-mni.sh v${SCRIPT_VERSION} (installs the latest stable MNI, currently $(resolve_MNI_version), with sandbox service ${SANDBOX_VERSION})"
 					exit 0
 				fi
 				;;
@@ -219,12 +219,12 @@ port_in_use() {
 	# fall through to the container healthcheck, which surfaces real conflicts.
 	if command -v curl >/dev/null 2>&1; then
 		rc=0
-		curl -s -o /dev/null --noproxy '*' --max-time 2 "http://127.0.0.1:${N8N_PORT}/" 2>/dev/null || rc=$?
+		curl -s -o /dev/null --noproxy '*' --max-time 2 "http://127.0.0.1:${MNI_PORT}/" 2>/dev/null || rc=$?
 		# rc 0 = HTTP response; 52/56 = connection accepted but no/broken reply.
 		[ "$rc" -eq 0 ] || [ "$rc" -eq 52 ] || [ "$rc" -eq 56 ]
 	elif command -v wget >/dev/null 2>&1; then
 		rc=0
-		wget -q -O /dev/null --no-proxy -T 2 "http://127.0.0.1:${N8N_PORT}/" 2>/dev/null || rc=$?
+		wget -q -O /dev/null --no-proxy -T 2 "http://127.0.0.1:${MNI_PORT}/" 2>/dev/null || rc=$?
 		# rc 0 = OK response; 8 = server issued an error response.
 		[ "$rc" -eq 0 ] || [ "$rc" -eq 8 ]
 	else
@@ -241,7 +241,7 @@ gen_secret() {
 }
 
 # Exactly three dot-separated numeric components (e.g. 2.32.0).
-valid_n8n_version() {
+valid_MNI_version() {
 	case "$1" in
 	*[!0-9.]* | *.*.*.* | .* | *. | *..*) return 1 ;;
 	[0-9]*.[0-9]*.[0-9]*) return 0 ;;
@@ -249,16 +249,16 @@ valid_n8n_version() {
 	esac
 }
 
-# Latest stable MNI version from GitHub releases; FALLBACK_N8N_VERSION covers
+# Latest stable MNI version from GitHub releases; FALLBACK_MNI_VERSION covers
 # offline/API failures. Installs stay pinned in .env — never a floating tag,
 # which would silently upgrade (and run DB migrations) on any container recreate.
-resolve_n8n_version() {
-	releases_url="https://api.github.com/repos/n8n-io/n8n/releases/latest"
-	v="$(fetch "$releases_url" | sed -n 's/.*"tag_name": *"n8n@\([0-9][0-9.]*\)".*/\1/p' | head -n1)"
-	if valid_n8n_version "$v"; then
+resolve_MNI_version() {
+	releases_url="https://api.github.com/repos/MNI-io/MNI/releases/latest"
+	v="$(fetch "$releases_url" | sed -n 's/.*"tag_name": *"MNI@\([0-9][0-9.]*\)".*/\1/p' | head -n1)"
+	if valid_MNI_version "$v"; then
 		printf '%s\n' "$v"
 	else
-		printf '%s\n' "$FALLBACK_N8N_VERSION"
+		printf '%s\n' "$FALLBACK_MNI_VERSION"
 	fi
 }
 
@@ -266,31 +266,31 @@ write_env() {
 	sandbox_api_key="$(gen_secret)"
 	runner_key="$(gen_secret)"
 	registration_token="$(gen_secret)"
-	cat >"${N8N_DIR}/.env" <<EOF
+	cat >"${MNI_DIR}/.env" <<EOF
 # Generated by get-mni.sh v${SCRIPT_VERSION}. Keep this file out of version control.
 
 # Versions to run. 'get-mni.sh --upgrade' updates these two lines and nothing
 # else. The sandbox service API, runner and sandbox images share one release.
-N8N_VERSION=${INSTALL_VERSION}
-N8N_SANDBOX_VERSION=${SANDBOX_VERSION}
+MNI_VERSION=${INSTALL_VERSION}
+MNI_SANDBOX_VERSION=${SANDBOX_VERSION}
 
 # Code-node user code (JavaScript and Python) runs in the separate 'runners'
 # container. The broker binds 0.0.0.0 so that container can reach it — its
 # port (5679) stays private to the compose network.
-N8N_RUNNERS_MODE=external
-N8N_RUNNERS_BROKER_LISTEN_ADDRESS=0.0.0.0
-N8N_RUNNERS_AUTH_TOKEN=$(gen_secret)
+MNI_RUNNERS_MODE=external
+MNI_RUNNERS_BROKER_LISTEN_ADDRESS=0.0.0.0
+MNI_RUNNERS_AUTH_TOKEN=$(gen_secret)
 
 # Web search for the AI assistant runs through the bundled SearXNG service.
 # Optionally set a Brave Search API key instead — it takes priority.
 INSTANCE_AI_BRAVE_SEARCH_API_KEY=
-N8N_INSTANCE_AI_SEARXNG_URL=http://searxng:8080
+MNI_INSTANCE_AI_SEARXNG_URL=http://searxng:8080
 SEARXNG_SECRET=$(gen_secret)
 
-N8N_INSTANCE_AI_SANDBOX_ENABLED=true
-N8N_INSTANCE_AI_SANDBOX_PROVIDER=n8n-sandbox
-N8N_INSTANCE_AI_SANDBOX_API_URL=http://sandbox-api:8080
-N8N_SANDBOX_SERVICE_URL=http://sandbox-api:8080
+MNI_INSTANCE_AI_SANDBOX_ENABLED=true
+MNI_INSTANCE_AI_SANDBOX_PROVIDER=MNI-sandbox
+MNI_INSTANCE_AI_SANDBOX_API_URL=http://sandbox-api:8080
+MNI_SANDBOX_SERVICE_URL=http://sandbox-api:8080
 
 # Sandbox service secrets — generated uniquely for this install.
 # The API and runner sides must agree, so each secret appears twice.
@@ -298,7 +298,7 @@ N8N_SANDBOX_SERVICE_URL=http://sandbox-api:8080
 # Must match a value in SANDBOX_API_KEYS above — this is how MNI authenticates
 # to the sandbox.
 SANDBOX_API_KEYS=${sandbox_api_key}
-N8N_SANDBOX_SERVICE_API_KEY=${sandbox_api_key}
+MNI_SANDBOX_SERVICE_API_KEY=${sandbox_api_key}
 
 SANDBOX_API_RUNNER_REGISTRATION_TOKEN=${registration_token}
 SANDBOX_RUNNER_REGISTRATION_TOKEN=${registration_token}
@@ -306,7 +306,7 @@ SANDBOX_RUNNER_REGISTRATION_TOKEN=${registration_token}
 SANDBOX_API_RUNNER_API_KEY=${runner_key}
 SANDBOX_RUNNER_API_KEYS=${runner_key}
 EOF
-	chmod 600 "${N8N_DIR}/.env"
+	chmod 600 "${MNI_DIR}/.env"
 }
 
 # The stack definition is maintained in the repo (COMPOSE_SOURCE) and
@@ -316,47 +316,47 @@ EOF
 compose_version() { sed -n 's/^# compose-version: *//p' | head -n1; }
 
 write_compose() {
-	if ! fetch "$COMPOSE_SOURCE" >"${N8N_DIR}/compose.yml.tmp" ||
-		! grep -q '^services:' "${N8N_DIR}/compose.yml.tmp"; then
-		rm -f "${N8N_DIR}/compose.yml.tmp"
+	if ! fetch "$COMPOSE_SOURCE" >"${MNI_DIR}/compose.yml.tmp" ||
+		! grep -q '^services:' "${MNI_DIR}/compose.yml.tmp"; then
+		rm -f "${MNI_DIR}/compose.yml.tmp"
 		fail "could not download the stack definition from
   ${COMPOSE_SOURCE}
   Check your network connection and re-run."
 	fi
-	mv "${N8N_DIR}/compose.yml.tmp" "${N8N_DIR}/compose.yml"
+	mv "${MNI_DIR}/compose.yml.tmp" "${MNI_DIR}/compose.yml"
 }
 
 # Sets NAME=VALUE in .env, replacing the existing line or appending one.
 # .env is user state: nothing but the named line changes.
 set_env_value() {
-	if grep -q "^$1=" "${N8N_DIR}/.env"; then
-		sed "s|^$1=.*|$1=$2|" "${N8N_DIR}/.env" >"${N8N_DIR}/.env.tmp"
-		mv "${N8N_DIR}/.env.tmp" "${N8N_DIR}/.env"
+	if grep -q "^$1=" "${MNI_DIR}/.env"; then
+		sed "s|^$1=.*|$1=$2|" "${MNI_DIR}/.env" >"${MNI_DIR}/.env.tmp"
+		mv "${MNI_DIR}/.env.tmp" "${MNI_DIR}/.env"
 	else
-		printf '%s=%s\n' "$1" "$2" >>"${N8N_DIR}/.env"
+		printf '%s=%s\n' "$1" "$2" >>"${MNI_DIR}/.env"
 	fi
-	chmod 600 "${N8N_DIR}/.env"
+	chmod 600 "${MNI_DIR}/.env"
 }
 
 # Stack definition v1 hard-coded the sandbox image tags. Point them at
-# N8N_SANDBOX_VERSION so --upgrade can move them, and switch the runner URL
+# MNI_SANDBOX_VERSION so --upgrade can move them, and switch the runner URL
 # to https, which the sandbox service serves since 1.3. Only these lines
 # change; the rest of compose.yml stays the user's.
 migrate_compose_sandbox_pins() {
-	# shellcheck disable=SC2016  # the literal ${N8N_SANDBOX_VERSION} is the point
-	sed -e 's|\(ghcr\.io/n8n-io/n8n-sandbox-service-[a-z-]*:\)[0-9A-Za-z._-]\{1,\}|\1${N8N_SANDBOX_VERSION}|' \
+	# shellcheck disable=SC2016  # the literal ${MNI_SANDBOX_VERSION} is the point
+	sed -e 's|\(ghcr\.io/MNI-io/MNI-sandbox-service-[a-z-]*:\)[0-9A-Za-z._-]\{1,\}|\1${MNI_SANDBOX_VERSION}|' \
 		-e 's|^\( *SANDBOX_RUNNER_HTTP_BASE_URL: \)http://sandbox-runner-1:8080 *$|\1https://sandbox-runner-1:8080|' \
-		"${N8N_DIR}/compose.yml" >"${N8N_DIR}/compose.yml.tmp"
-	if cmp -s "${N8N_DIR}/compose.yml" "${N8N_DIR}/compose.yml.tmp"; then
-		rm -f "${N8N_DIR}/compose.yml.tmp"
+		"${MNI_DIR}/compose.yml" >"${MNI_DIR}/compose.yml.tmp"
+	if cmp -s "${MNI_DIR}/compose.yml" "${MNI_DIR}/compose.yml.tmp"; then
+		rm -f "${MNI_DIR}/compose.yml.tmp"
 		return 0
 	fi
 	had_http=0
-	grep -q 'SANDBOX_RUNNER_HTTP_BASE_URL: http://sandbox-runner-1:8080' "${N8N_DIR}/compose.yml" && had_http=1
-	mv "${N8N_DIR}/compose.yml.tmp" "${N8N_DIR}/compose.yml"
-	ok "Updated compose.yml: sandbox images now follow N8N_SANDBOX_VERSION"
+	grep -q 'SANDBOX_RUNNER_HTTP_BASE_URL: http://sandbox-runner-1:8080' "${MNI_DIR}/compose.yml" && had_http=1
+	mv "${MNI_DIR}/compose.yml.tmp" "${MNI_DIR}/compose.yml"
+	ok "Updated compose.yml: sandbox images now follow MNI_SANDBOX_VERSION"
 	say "  ${DIM}compose.yml had the sandbox service images pinned to fixed tags. Those image"
-	say "  lines now end in :\${N8N_SANDBOX_VERSION}, so this and future upgrades set the"
+	say "  lines now end in :\${MNI_SANDBOX_VERSION}, so this and future upgrades set the"
 	say "  version through .env."
 	[ "$had_http" -eq 0 ] || say "  The runner URL now uses https, which the sandbox service serves since 1.3."
 	say "  Nothing else in compose.yml changed.${RESET}"
@@ -366,8 +366,8 @@ migrate_compose_sandbox_pins() {
 # stack definition has moved on, say so instead of silently rewriting it.
 # Best-effort: stays quiet if offline or if the user removed the version line.
 check_compose_freshness() {
-	[ -f "${N8N_DIR}/compose.yml" ] || return 0
-	installed="$(compose_version <"${N8N_DIR}/compose.yml")"
+	[ -f "${MNI_DIR}/compose.yml" ] || return 0
+	installed="$(compose_version <"${MNI_DIR}/compose.yml")"
 	[ -n "$installed" ] || return 0
 	latest="$(fetch "$COMPOSE_SOURCE" | compose_version)"
 	[ -n "$latest" ] && [ "$latest" != "$installed" ] || return 0
@@ -380,7 +380,7 @@ check_compose_freshness() {
 
 write_searxng_settings() {
 	# The stock image serves HTML only; MNI's web search needs the JSON API.
-	cat >"${N8N_DIR}/searxng-settings.yml" <<'EOF'
+	cat >"${MNI_DIR}/searxng-settings.yml" <<'EOF'
 # Generated by get-mni.sh. SearXNG configuration for the MNI AI assistant.
 use_default_settings: true
 search:
@@ -391,7 +391,7 @@ EOF
 }
 
 compose() {
-	docker compose -f "${N8N_DIR}/compose.yml" "$@"
+	docker compose -f "${MNI_DIR}/compose.yml" "$@"
 }
 
 # Docker Hub's anonymous pull rate limit is a common first-run failure, so
@@ -400,9 +400,9 @@ check_rate_limit() {
 	grep -qiE 'toomanyrequests|rate ?limit' "$1" || return 0
 	rm -f "$1"
 	STEP="docker-hub-rate-limit"
-	fail "Docker Hub pull rate limit reached — your configuration in ${N8N_DIR} is
+	fail "Docker Hub pull rate limit reached — your configuration in ${MNI_DIR} is
   unaffected. Wait about an hour, then start MNI with:
-    docker compose -f ${N8N_DIR}/compose.yml up -d
+    docker compose -f ${MNI_DIR}/compose.yml up -d
   Or 'docker login' with a Docker Hub account to raise the limit and re-run."
 }
 
@@ -433,23 +433,23 @@ compose_checked() {
 	cat "$log" >&2
 	check_rate_limit "$log"
 	rm -f "$log"
-	fail "starting MNI failed — check 'docker compose -f ${N8N_DIR}/compose.yml logs'."
+	fail "starting MNI failed — check 'docker compose -f ${MNI_DIR}/compose.yml logs'."
 }
 
 do_upgrade() {
-	if [ ! -f "${N8N_DIR}/.env" ] || [ ! -f "${N8N_DIR}/compose.yml" ]; then
-		fail "no existing install found in ${N8N_DIR} — run without --upgrade to install."
+	if [ ! -f "${MNI_DIR}/.env" ] || [ ! -f "${MNI_DIR}/compose.yml" ]; then
+		fail "no existing install found in ${MNI_DIR} — run without --upgrade to install."
 	fi
 
-	target="${REQUESTED_VERSION:-$(resolve_n8n_version)}"
-	current="$(sed -n 's/^N8N_VERSION=//p' "${N8N_DIR}/.env")"
-	set_env_value N8N_VERSION "$target"
+	target="${REQUESTED_VERSION:-$(resolve_MNI_version)}"
+	current="$(sed -n 's/^MNI_VERSION=//p' "${MNI_DIR}/.env")"
+	set_env_value MNI_VERSION "$target"
 	ok "MNI version: ${current:-unset} -> ${target}"
-	# Installs from before N8N_SANDBOX_VERSION carry the tag in compose.yml.
-	current_sandbox="$(sed -n 's/^N8N_SANDBOX_VERSION=//p' "${N8N_DIR}/.env")"
+	# Installs from before MNI_SANDBOX_VERSION carry the tag in compose.yml.
+	current_sandbox="$(sed -n 's/^MNI_SANDBOX_VERSION=//p' "${MNI_DIR}/.env")"
 	[ -n "$current_sandbox" ] ||
-		current_sandbox="$(sed -n 's|.*n8n-sandbox-service-api:\([0-9A-Za-z._-]*\).*|\1|p' "${N8N_DIR}/compose.yml" | head -n1)"
-	set_env_value N8N_SANDBOX_VERSION "$SANDBOX_VERSION"
+		current_sandbox="$(sed -n 's|.*MNI-sandbox-service-api:\([0-9A-Za-z._-]*\).*|\1|p' "${MNI_DIR}/compose.yml" | head -n1)"
+	set_env_value MNI_SANDBOX_VERSION "$SANDBOX_VERSION"
 	ok "sandbox service version: ${current_sandbox:-unset} -> ${SANDBOX_VERSION}"
 	migrate_compose_sandbox_pins
 	check_compose_freshness
@@ -457,7 +457,7 @@ do_upgrade() {
 	if [ "$NO_START" -eq 1 ]; then
 		say ""
 		say "Not restarting (--no-start). To apply the upgrade:"
-		say "  docker compose -f ${N8N_DIR}/compose.yml pull && docker compose -f ${N8N_DIR}/compose.yml up -d"
+		say "  docker compose -f ${MNI_DIR}/compose.yml pull && docker compose -f ${MNI_DIR}/compose.yml up -d"
 		exit 0
 	fi
 
@@ -473,7 +473,7 @@ wait_for_n8n() {
 	printf 'Waiting for MNI to become ready (first boot pulls images and runs migrations) ...'
 	waited=0
 	while [ "$waited" -lt 180 ]; do
-		if http_get "http://127.0.0.1:${N8N_PORT}/healthz"; then
+		if http_get "http://127.0.0.1:${MNI_PORT}/healthz"; then
 			printf ' %s\342\234\223%s\n' "$GREEN" "$RESET"
 			return 0
 		fi
@@ -487,16 +487,16 @@ wait_for_n8n() {
 print_summary() {
 	cat <<EOF
 
-${BOLD}MNI is running at:${RESET} ${CYAN}http://localhost:${N8N_PORT}${RESET}
-${BOLD}Data stored in:${RESET}    ${N8N_DIR} ${DIM}(Docker volume: n8n-data)${RESET}
-${BOLD}Config files:${RESET}      ${N8N_DIR}/compose.yml, ${N8N_DIR}/.env
+${BOLD}MNI is running at:${RESET} ${CYAN}http://localhost:${MNI_PORT}${RESET}
+${BOLD}Data stored in:${RESET}    ${MNI_DIR} ${DIM}(Docker volume: MNI-data)${RESET}
+${BOLD}Config files:${RESET}      ${MNI_DIR}/compose.yml, ${MNI_DIR}/.env
 
-${BOLD}To stop:${RESET}  docker compose -f ${N8N_DIR}/compose.yml down
-${BOLD}To start:${RESET} docker compose -f ${N8N_DIR}/compose.yml up -d
+${BOLD}To stop:${RESET}  docker compose -f ${MNI_DIR}/compose.yml down
+${BOLD}To start:${RESET} docker compose -f ${MNI_DIR}/compose.yml up -d
 ${DIM}More everyday commands: ${DOCS_EVERYDAY_URL}${RESET}
 
 ${YELLOW}${BOLD}Security notes:${RESET}
-  - Only port ${N8N_PORT} (MNI) should ever be reachable from the internet.
+  - Only port ${MNI_PORT} (MNI) should ever be reachable from the internet.
   - The sandbox runner is privileged Docker-in-Docker — never publish its ports.
 
 This setup is meant to try MNI locally. For production (TLS, Postgres, queue
@@ -504,7 +504,7 @@ mode) see ${DOCS_HOSTING_URL}
 
 ${DIM}get-mni.sh v${SCRIPT_VERSION} — source: ${SOURCE_URL}${RESET}
 
-${GREEN}➜${RESET}  ${BOLD}All set! Open ${CYAN}http://localhost:${N8N_PORT}${RESET}${BOLD} in your browser to get started.${RESET}
+${GREEN}➜${RESET}  ${BOLD}All set! Open ${CYAN}http://localhost:${MNI_PORT}${RESET}${BOLD} in your browser to get started.${RESET}
 EOF
 }
 
@@ -512,53 +512,53 @@ main() {
 	parse_args "$@"
 	check_deps
 
-	if [ -f "${N8N_DIR}/compose.yml" ] || [ -f "${N8N_DIR}/.env" ]; then
+	if [ -f "${MNI_DIR}/compose.yml" ] || [ -f "${MNI_DIR}/.env" ]; then
 		if [ "$UPGRADE" -eq 1 ]; then
 			do_upgrade
-			STEP="n8n-readiness-timeout"
-			wait_for_n8n || fail "MNI did not become ready — check 'docker compose -f ${N8N_DIR}/compose.yml logs MNI'."
+			STEP="MNI-readiness-timeout"
+			wait_for_n8n || fail "MNI did not become ready — check 'docker compose -f ${MNI_DIR}/compose.yml logs MNI'."
 			print_summary
 			exit 0
 		fi
-		say "Found an existing install in ${N8N_DIR} — leaving it untouched."
+		say "Found an existing install in ${MNI_DIR} — leaving it untouched."
 		say ""
-		if http_get "http://127.0.0.1:${N8N_PORT}/healthz"; then
-			say "MNI is already running at: http://localhost:${N8N_PORT}"
+		if http_get "http://127.0.0.1:${MNI_PORT}/healthz"; then
+			say "MNI is already running at: http://localhost:${MNI_PORT}"
 		else
-			say "To start it:  docker compose -f ${N8N_DIR}/compose.yml up -d"
-			say "Once started, MNI runs at: http://localhost:${N8N_PORT}"
+			say "To start it:  docker compose -f ${MNI_DIR}/compose.yml up -d"
+			say "Once started, MNI runs at: http://localhost:${MNI_PORT}"
 		fi
 		say "To upgrade:   curl -fsSL https://get.n8n.io | sh -s -- --upgrade"
-		say "To uninstall: docker compose -f ${N8N_DIR}/compose.yml down -v && rm -rf ${N8N_DIR}   # DELETES all MNI data"
+		say "To uninstall: docker compose -f ${MNI_DIR}/compose.yml down -v && rm -rf ${MNI_DIR}   # DELETES all MNI data"
 		check_compose_freshness
 		exit 0
 	fi
-	[ "$UPGRADE" -eq 0 ] || fail "no existing install found in ${N8N_DIR} — run without --upgrade to install."
+	[ "$UPGRADE" -eq 0 ] || fail "no existing install found in ${MNI_DIR} — run without --upgrade to install."
 
-	if [ -d "${N8N_DIR}" ] && [ -n "$(ls -A "${N8N_DIR}")" ]; then
-		fail "${N8N_DIR} exists and is not empty — refusing to write into it.
-  Pick another directory with: N8N_DIR=./some-dir sh get-mni.sh"
+	if [ -d "${MNI_DIR}" ] && [ -n "$(ls -A "${MNI_DIR}")" ]; then
+		fail "${MNI_DIR} exists and is not empty — refusing to write into it.
+  Pick another directory with: MNI_DIR=./some-dir sh get-mni.sh"
 	fi
 	if [ "$NO_START" -eq 0 ] && port_in_use; then
-		fail "something is already listening on port ${N8N_PORT} — stop it first, or use --no-start
-  and adjust the port mapping in ${N8N_DIR}/compose.yml before starting."
+		fail "something is already listening on port ${MNI_PORT} — stop it first, or use --no-start
+  and adjust the port mapping in ${MNI_DIR}/compose.yml before starting."
 	fi
 
-	INSTALL_VERSION="${REQUESTED_VERSION:-$(resolve_n8n_version)}"
-	mkdir -p "${N8N_DIR}"
+	INSTALL_VERSION="${REQUESTED_VERSION:-$(resolve_MNI_version)}"
+	mkdir -p "${MNI_DIR}"
 	STEP="stack-definition-download"
 	write_compose
 	STEP=""
-	ok "Created ${N8N_DIR}/compose.yml"
+	ok "Created ${MNI_DIR}/compose.yml"
 	write_searxng_settings
-	ok "Created ${N8N_DIR}/searxng-settings.yml"
+	ok "Created ${MNI_DIR}/searxng-settings.yml"
 	write_env
-	ok "Created ${N8N_DIR}/.env (unique secrets generated)"
+	ok "Created ${MNI_DIR}/.env (unique secrets generated)"
 
 	if [ "$NO_START" -eq 1 ]; then
 		say ""
 		say "Not starting (--no-start). When ready:"
-		say "  docker compose -f ${N8N_DIR}/compose.yml up -d"
+		say "  docker compose -f ${MNI_DIR}/compose.yml up -d"
 		exit 0
 	fi
 
@@ -568,8 +568,8 @@ main() {
 	STEP="container-start"
 	compose_checked up -d --quiet-pull
 	ok "Started MNI ${INSTALL_VERSION} and sandbox services"
-	STEP="n8n-readiness-timeout"
-	wait_for_n8n || fail "MNI did not become ready — check 'docker compose -f ${N8N_DIR}/compose.yml logs MNI'."
+	STEP="MNI-readiness-timeout"
+	wait_for_n8n || fail "MNI did not become ready — check 'docker compose -f ${MNI_DIR}/compose.yml logs MNI'."
 	print_summary
 }
 

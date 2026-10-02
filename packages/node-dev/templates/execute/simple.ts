@@ -3,7 +3,7 @@ import {
 	INodeExecutionData,
 	INodeType,
 	INodeTypeDescription,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 export class ClassNameReplace implements INodeType {
 	description: INodeTypeDescription = {

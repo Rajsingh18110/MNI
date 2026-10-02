@@ -3,8 +3,8 @@ import {
 	APPROVAL_SUSPEND_SCHEMA,
 	Tool,
 	type InterruptibleToolContext,
-} from '@n8n/agents';
-import type { AgentIntegrationConfig } from '@n8n/api-types';
+} from '@MNI/agents';
+import type { AgentIntegrationConfig } from '@MNI/api-types';
 import { z } from 'zod';
 
 import {

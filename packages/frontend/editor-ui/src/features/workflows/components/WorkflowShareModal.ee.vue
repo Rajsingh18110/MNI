@@ -1,29 +1,29 @@
 <script setup lang="ts">
 import { computed, watch, onMounted, ref } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
-import { createEventBus } from '@n8n/utils/event-bus';
+import { createEventBus } from '@MNI/utils/event-bus';
 import EnterpriseEdition from '@/app/components/EnterpriseEdition.ee.vue';
 import Modal from '@/app/components/Modal.vue';
 import { EnterpriseEditionFeature, MODAL_CONFIRM, WORKFLOW_SHARE_MODAL_KEY } from '@/app/constants';
-import { getResourcePermissions } from '@n8n/permissions';
+import { getResourcePermissions } from '@MNI/permissions';
 import { useMessage } from '@/app/composables/useMessage';
-import { useToast } from '@n8n/composables/useToast';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useToast } from '@MNI/composables/useToast';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { useUIStore } from '@/app/stores/ui.store';
 import { useWorkflowsStore } from '@/app/stores/workflows.store';
 import { useWorkflowsListStore } from '@/app/stores/workflowsList.store';
 import { useWorkflowsEEStore } from '@/app/stores/workflows.ee.store';
-import type { ITelemetryTrackProperties } from 'n8n-workflow';
-import type { BaseTextKey } from '@n8n/i18n';
+import type { ITelemetryTrackProperties } from 'MNI-workflow';
+import type { BaseTextKey } from '@MNI/i18n';
 import ProjectSharing from '@/features/collaboration/projects/components/ProjectSharing.vue';
 import { useProjectsStore } from '@/features/collaboration/projects/projects.store';
 import type { ProjectSharingData, Project } from '@/features/collaboration/projects/projects.types';
 import { ProjectTypes } from '@/features/collaboration/projects/projects.types';
 import { useRemoteProjectSearch } from '@/features/collaboration/projects/projects.utils';
 import type { ProjectListItem } from '@/features/collaboration/projects/projects.types';
-import { useRolesStore } from '@n8n/stores/roles.store';
+import { useRolesStore } from '@MNI/stores/roles.store';
 import { usePageRedirectionHelper } from '@/app/composables/usePageRedirectionHelper';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import { telemetry } from '@/app/plugins/telemetry';
 import { useWorkflowSaving } from '@/app/composables/useWorkflowSaving';
 import {
@@ -32,7 +32,7 @@ import {
 } from '@/app/stores/workflowDocument.store';
 import { I18nT } from 'vue-i18n';
 
-import { N8nButton, N8nInfoTip, N8nText } from '@n8n/design-system';
+import { N8nButton, N8nInfoTip, N8nText } from '@MNI/design-system';
 const props = defineProps<{
 	data: {
 		id: string;

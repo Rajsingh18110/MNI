@@ -1,4 +1,4 @@
-import type { User } from '@n8n/db';
+import type { User } from '@MNI/db';
 import z from 'zod';
 
 import type { NodeCatalogService, SearchNodesOptions } from '@/node-catalog';
@@ -8,7 +8,7 @@ import type { Telemetry } from '@/telemetry';
 import { CODE_BUILDER_SEARCH_NODES_TOOL } from './constants';
 import { toN8nConnectCoverage } from '../../mcp-ai-gateway.helper';
 import {
-	LIST_N8N_GATEWAY_SERVICES_TOOL_NAME,
+	LIST_MNI_GATEWAY_SERVICES_TOOL_NAME,
 	USER_CALLED_MCP_TOOL_EVENT,
 } from '../../mcp.constants';
 import type {
@@ -50,7 +50,7 @@ const outputSchema = {
 		})
 		.optional()
 		.describe(
-			`Present when Gateway credits are available. Candidate coverage — cross-reference against the search results, but call ${LIST_N8N_GATEWAY_SERVICES_TOOL_NAME} for exact eligibility (supported actions, min versions, hidden properties).`,
+			`Present when Gateway credits are available. Candidate coverage — cross-reference against the search results, but call ${LIST_MNI_GATEWAY_SERVICES_TOOL_NAME} for exact eligibility (supported actions, min versions, hidden properties).`,
 		),
 } satisfies z.ZodRawShape;
 

@@ -1,10 +1,10 @@
 import type { Mock } from 'vitest';
-import type { Agent as RuntimeAgent } from '@n8n/agents';
-import { mockLogger } from '@n8n/backend-test-utils';
-import type { GlobalConfig } from '@n8n/config';
-import type { User } from '@n8n/db';
+import type { Agent as RuntimeAgent } from '@MNI/agents';
+import { mockLogger } from '@MNI/backend-test-utils';
+import type { GlobalConfig } from '@MNI/config';
+import type { User } from '@MNI/db';
 import { mock } from 'vitest-mock-extended';
-import { OperationalError } from 'n8n-workflow';
+import { OperationalError } from 'MNI-workflow';
 
 import type { CredentialsService } from '@/credentials/credentials.service';
 import type { Publisher } from '@/scaling/pubsub/publisher.service';
@@ -383,7 +383,7 @@ describe('AgentRuntimeCacheService', () => {
 		const second = await service.getRuntime({
 			agentId,
 			projectId,
-			integrationType: 'n8n_chat',
+			integrationType: 'MNI_chat',
 		});
 
 		expect(first.agent).toBe(chatRuntime.agent);
@@ -394,7 +394,7 @@ describe('AgentRuntimeCacheService', () => {
 			agent,
 			expect.anything(),
 			'test',
-			'n8n_chat',
+			'MNI_chat',
 			undefined,
 			undefined,
 			'manual',
@@ -457,8 +457,8 @@ describe('AgentRuntimeCacheService', () => {
 		const agent = makeAgent();
 		const firstRuntime = makeRuntime();
 		const secondRuntime = makeRuntime();
-		const firstPrincipal = hashAgentSandboxPrincipal({ type: 'n8n-user', userId: 'user-a' });
-		const secondPrincipal = hashAgentSandboxPrincipal({ type: 'n8n-user', userId: 'user-b' });
+		const firstPrincipal = hashAgentSandboxPrincipal({ type: 'MNI-user', userId: 'user-a' });
+		const secondPrincipal = hashAgentSandboxPrincipal({ type: 'MNI-user', userId: 'user-b' });
 
 		agentRepository.findByIdAndProjectId.mockResolvedValue(agent);
 		reconstructionService.reconstructFromAgentEntity
@@ -649,7 +649,7 @@ describe('AgentRuntimeCacheService', () => {
 			agentId,
 			projectId,
 			usePublishedVersion: true,
-			integrationType: 'n8n_chat',
+			integrationType: 'MNI_chat',
 			attributionUserId: 'user-1',
 			allowBackgroundTasks: false,
 		});
@@ -660,7 +660,7 @@ describe('AgentRuntimeCacheService', () => {
 			}),
 			expect.anything(),
 			'production',
-			'n8n_chat',
+			'MNI_chat',
 			undefined,
 			undefined,
 			'integrated',

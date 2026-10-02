@@ -4,8 +4,8 @@
  * config refactor can be proved behaviour-neutral instead of eyeballed.
  *
  * Run it once before the change and once after, then compare with `diff.mjs`.
- * `@n8n/eslint-config` is consumed from its built dist, so build it first:
- *   pnpm turbo run build --filter=@n8n/eslint-config
+ * `@MNI/eslint-config` is consumed from its built dist, so build it first:
+ *   pnpm turbo run build --filter=@MNI/eslint-config
  *
  * Severities are normalised so `warn` reads as `off`: every lint script runs
  * with `--quiet`, so a warning is not enforced and a promote/demote between the

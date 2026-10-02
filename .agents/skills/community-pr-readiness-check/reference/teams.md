@@ -31,21 +31,21 @@ Use the canonical owners script at `.github/scripts/owners.mjs`. It parses `.git
    {
      "totalFiles": 12,
      "allocations": [
-       { "team": "@n8n-io/ai", "fileCount": 10, "share": 83, "files": [...] },
-       { "team": "@n8n-io/catalysts", "fileCount": 2, "share": 17, "files": [...] }
+       { "team": "@MNI-io/ai", "fileCount": 10, "share": 83, "files": [...] },
+       { "team": "@MNI-io/catalysts", "fileCount": 2, "share": 17, "files": [...] }
      ]
    }
    ```
    Allocations are already sorted by `fileCount` descending — take the first entry as the winning team.
 4. Clean up: `rm /tmp/pr-<number>-files.txt`.
-5. Strip the `@n8n-io/` prefix from `allocations[0].team` — the GitHub team slug is `nodes`, `iam`, `ai`, etc. If `allocations` is empty (no file matched any rule, which is possible only if `.github/OWNERS` lost its catch-all), fall back to `catalysts`.
+5. Strip the `@MNI-io/` prefix from `allocations[0].team` — the GitHub team slug is `nodes`, `iam`, `ai`, etc. If `allocations` is empty (no file matched any rule, which is possible only if `.github/OWNERS` lost its catch-all), fall back to `catalysts`.
 6. Map the GitHub team slug to its Linear team name and PR label using the table below. The `team` field in the JSON output is the **Linear team name**. If the resolved GitHub team slug has no entry in the table, fall back to `Engineering`.
 
 **Sub-agent fallback**: if `node` execution is denied by the sandbox, read `.github/OWNERS` directly and apply last-match-wins by hand. All the active rules fit on one screen.
 
 ## GitHub team → Linear team → GitHub label
 
-| GitHub team (`@n8n-io/…`) | Linear team             | GitHub team label  |
+| GitHub team (`@MNI-io/…`) | Linear team             | GitHub team label  |
 |---------------------------|-------------------------|--------------------|
 | `catalysts`               | Catalysts               | `team:cats`        |
 | `adore`                   | Adore                   | `team:adore`       |

@@ -1,17 +1,17 @@
-import { mockInstance } from '@n8n/backend-test-utils';
-import { User } from '@n8n/db';
+import { mockInstance } from '@MNI/backend-test-utils';
+import { User } from '@MNI/db';
 import {
 	MANUAL_TRIGGER_NODE_TYPE,
 	WEBHOOK_NODE_TYPE,
 	type INode,
 	type IWorkflowExecutionDataProcess,
 	UnexpectedError,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import type { Mock } from 'vitest';
 
 vi.mock(
-	'@n8n/workflow-sdk',
-	async () => await vi.importActual<typeof import('@n8n/workflow-sdk')>('@n8n/workflow-sdk'),
+	'@MNI/workflow-sdk',
+	async () => await vi.importActual<typeof import('@MNI/workflow-sdk')>('@MNI/workflow-sdk'),
 );
 
 import { ActiveExecutions } from '@/active-executions';
@@ -29,7 +29,7 @@ import { createTestWorkflowTool, testWorkflow } from '../tools/test-workflow.too
 const TRIGGER_NODE_TYPES = new Set([
 	WEBHOOK_NODE_TYPE,
 	MANUAL_TRIGGER_NODE_TYPE,
-	'n8n-nodes-base.scheduleTrigger',
+	'MNI-nodes-base.scheduleTrigger',
 ]);
 
 function createMockNodeTypes() {
@@ -116,7 +116,7 @@ describe('test-workflow MCP tool', () => {
 					{
 						id: 'node-1',
 						name: 'SetNode',
-						type: 'n8n-nodes-base.set',
+						type: 'MNI-nodes-base.set',
 						typeVersion: 1,
 						position: [0, 0],
 						disabled: false,
@@ -212,7 +212,7 @@ describe('test-workflow MCP tool', () => {
 					{
 						id: 'node-1',
 						name: 'SetNode',
-						type: 'n8n-nodes-base.set',
+						type: 'MNI-nodes-base.set',
 						typeVersion: 1,
 						position: [0, 0],
 						disabled: false,
@@ -990,7 +990,7 @@ describe('test-workflow MCP tool', () => {
 					{
 						id: 'node-2',
 						name: 'OtherNode',
-						type: 'n8n-nodes-base.set',
+						type: 'MNI-nodes-base.set',
 						typeVersion: 1,
 						position: [200, 0],
 						disabled: false,

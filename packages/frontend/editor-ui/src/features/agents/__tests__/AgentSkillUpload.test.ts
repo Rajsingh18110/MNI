@@ -6,7 +6,7 @@ import { nextTick } from 'vue';
 
 import AgentSkillUpload from '../components/AgentSkillUpload.vue';
 
-vi.mock('@n8n/i18n', () => ({
+vi.mock('@MNI/i18n', () => ({
 	useI18n: () => ({ baseText: (key: string) => key }),
 }));
 

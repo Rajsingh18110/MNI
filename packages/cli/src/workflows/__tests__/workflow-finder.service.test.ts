@@ -4,7 +4,7 @@ import type {
 	SharedWorkflow,
 	SharedWorkflowRepository,
 	WorkflowRepository,
-} from '@n8n/db';
+} from '@MNI/db';
 import { mock } from 'vitest-mock-extended';
 
 import type { RoleService } from '@/services/role.service';

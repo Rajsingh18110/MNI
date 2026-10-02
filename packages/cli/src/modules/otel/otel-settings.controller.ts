@@ -1,7 +1,7 @@
-import { TestOtelTraceDto, UpdateOtelSettingsDto } from '@n8n/api-types';
-import { ModuleRegistry } from '@n8n/backend-common';
-import { AuthenticatedRequest } from '@n8n/db';
-import { Body, Get, GlobalScope, Post, Put, RestController } from '@n8n/decorators';
+import { TestOtelTraceDto, UpdateOtelSettingsDto } from '@MNI/api-types';
+import { ModuleRegistry } from '@MNI/backend-common';
+import { AuthenticatedRequest } from '@MNI/db';
+import { Body, Get, GlobalScope, Post, Put, RestController } from '@MNI/decorators';
 
 import { OtelLifecycleHandler } from './otel-lifecycle-handler';
 import { OtelSettingsService } from './otel-settings.service';

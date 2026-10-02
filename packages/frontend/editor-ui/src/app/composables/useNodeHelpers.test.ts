@@ -6,13 +6,13 @@ import type {
 	INode,
 	INodeTypeDescription,
 	Workflow,
-} from 'n8n-workflow';
-import { NodeConnectionTypes, NodeHelpers, mapConnectionsByDestination } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeConnectionTypes, NodeHelpers, mapConnectionsByDestination } from 'MNI-workflow';
 import { createTestingPinia } from '@pinia/testing';
 import { useNodeHelpers } from '@/app/composables/useNodeHelpers';
 import { createTestNode, createMockEnterpriseSettings } from '@/__tests__/mocks';
 import { useWorkflowsStore } from '@/app/stores/workflows.store';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { CUSTOM_API_CALL_KEY, EnterpriseEditionFeature } from '@/app/constants';
 import { mockedStore } from '@/__tests__/utils';
 import { mock } from 'vitest-mock-extended';
@@ -111,7 +111,7 @@ describe('useNodeHelpers()', () => {
 			const node: INodeUi = {
 				id: 'node-id',
 				name: 'Code',
-				type: 'n8n-nodes-base.code',
+				type: 'MNI-nodes-base.code',
 				typeVersion: 1,
 				position: [0, 0],
 				parameters: {},
@@ -134,7 +134,7 @@ describe('useNodeHelpers()', () => {
 			const node: INodeUi = {
 				id: 'node-id',
 				name: 'Code',
-				type: 'n8n-nodes-base.code',
+				type: 'MNI-nodes-base.code',
 				typeVersion: 1,
 				position: [0, 0],
 				parameters: {},
@@ -156,7 +156,7 @@ describe('useNodeHelpers()', () => {
 			const node: INodeUi = {
 				id: 'node-id',
 				name: 'Code',
-				type: 'n8n-nodes-base.code',
+				type: 'MNI-nodes-base.code',
 				typeVersion: 1,
 				position: [0, 0],
 				parameters: {},
@@ -178,7 +178,7 @@ describe('useNodeHelpers()', () => {
 			const triggerNode: INodeUi = {
 				id: 'node-id',
 				name: 'Manual Trigger',
-				type: 'n8n-nodes-base.manualTrigger',
+				type: 'MNI-nodes-base.manualTrigger',
 				typeVersion: 1,
 				position: [0, 0],
 				parameters: {},
@@ -200,7 +200,7 @@ describe('useNodeHelpers()', () => {
 			const toolNode: INodeUi = {
 				id: 'node-id',
 				name: 'Tool Node',
-				type: 'n8n-nodes-base.ai-tool',
+				type: 'MNI-nodes-base.ai-tool',
 				typeVersion: 1,
 				position: [0, 0],
 				parameters: {},
@@ -222,7 +222,7 @@ describe('useNodeHelpers()', () => {
 			const node: INodeUi = {
 				id: 'node-id',
 				name: 'Code',
-				type: 'n8n-nodes-base.code',
+				type: 'MNI-nodes-base.code',
 				typeVersion: 1,
 				position: [0, 0],
 				parameters: {},
@@ -592,29 +592,29 @@ describe('useNodeHelpers()', () => {
 		});
 
 		test('should determine based on node parameters if it would be executed once', () => {
-			expect(isSingleExecution('n8n-nodes-base.code', {})).toEqual(true);
-			expect(isSingleExecution('n8n-nodes-base.code', { mode: 'runOnceForEachItem' })).toEqual(
+			expect(isSingleExecution('MNI-nodes-base.code', {})).toEqual(true);
+			expect(isSingleExecution('MNI-nodes-base.code', { mode: 'runOnceForEachItem' })).toEqual(
 				false,
 			);
-			expect(isSingleExecution('n8n-nodes-base.executeWorkflow', {})).toEqual(true);
-			expect(isSingleExecution('n8n-nodes-base.executeWorkflow', { mode: 'each' })).toEqual(false);
-			expect(isSingleExecution('n8n-nodes-base.crateDb', {})).toEqual(true);
-			expect(isSingleExecution('n8n-nodes-base.crateDb', { operation: 'update' })).toEqual(true);
-			expect(isSingleExecution('n8n-nodes-base.timescaleDb', {})).toEqual(true);
-			expect(isSingleExecution('n8n-nodes-base.timescaleDb', { operation: 'update' })).toEqual(
+			expect(isSingleExecution('MNI-nodes-base.executeWorkflow', {})).toEqual(true);
+			expect(isSingleExecution('MNI-nodes-base.executeWorkflow', { mode: 'each' })).toEqual(false);
+			expect(isSingleExecution('MNI-nodes-base.crateDb', {})).toEqual(true);
+			expect(isSingleExecution('MNI-nodes-base.crateDb', { operation: 'update' })).toEqual(true);
+			expect(isSingleExecution('MNI-nodes-base.timescaleDb', {})).toEqual(true);
+			expect(isSingleExecution('MNI-nodes-base.timescaleDb', { operation: 'update' })).toEqual(
 				true,
 			);
-			expect(isSingleExecution('n8n-nodes-base.microsoftSql', {})).toEqual(true);
-			expect(isSingleExecution('n8n-nodes-base.microsoftSql', { operation: 'update' })).toEqual(
+			expect(isSingleExecution('MNI-nodes-base.microsoftSql', {})).toEqual(true);
+			expect(isSingleExecution('MNI-nodes-base.microsoftSql', { operation: 'update' })).toEqual(
 				true,
 			);
-			expect(isSingleExecution('n8n-nodes-base.microsoftSql', { operation: 'delete' })).toEqual(
+			expect(isSingleExecution('MNI-nodes-base.microsoftSql', { operation: 'delete' })).toEqual(
 				true,
 			);
-			expect(isSingleExecution('n8n-nodes-base.questDb', {})).toEqual(true);
-			expect(isSingleExecution('n8n-nodes-base.mongoDb', { operation: 'insert' })).toEqual(true);
-			expect(isSingleExecution('n8n-nodes-base.mongoDb', { operation: 'update' })).toEqual(true);
-			expect(isSingleExecution('n8n-nodes-base.redis', {})).toEqual(true);
+			expect(isSingleExecution('MNI-nodes-base.questDb', {})).toEqual(true);
+			expect(isSingleExecution('MNI-nodes-base.mongoDb', { operation: 'insert' })).toEqual(true);
+			expect(isSingleExecution('MNI-nodes-base.mongoDb', { operation: 'update' })).toEqual(true);
+			expect(isSingleExecution('MNI-nodes-base.redis', {})).toEqual(true);
 		});
 	});
 
@@ -824,17 +824,17 @@ describe('useNodeHelpers()', () => {
 
 	describe('private credentials', () => {
 		const NOTION_API = 'notionApi';
-		const MANUAL_TRIGGER = 'n8n-nodes-base.manualTrigger';
-		const MANUAL_CHAT_TRIGGER = '@n8n/n8n-nodes-langchain.manualChatTrigger';
-		const CHAT_TRIGGER = '@n8n/n8n-nodes-langchain.chatTrigger';
-		const MCP_TRIGGER = '@n8n/n8n-nodes-langchain.mcpTrigger';
-		const WEBHOOK_TRIGGER = 'n8n-nodes-base.webhook';
-		const EXECUTE_WORKFLOW_TRIGGER = 'n8n-nodes-base.executeWorkflowTrigger';
-		const FORM_TRIGGER = 'n8n-nodes-base.formTrigger';
+		const MANUAL_TRIGGER = 'MNI-nodes-base.manualTrigger';
+		const MANUAL_CHAT_TRIGGER = '@MNI/MNI-nodes-langchain.manualChatTrigger';
+		const CHAT_TRIGGER = '@MNI/MNI-nodes-langchain.chatTrigger';
+		const MCP_TRIGGER = '@MNI/MNI-nodes-langchain.mcpTrigger';
+		const WEBHOOK_TRIGGER = 'MNI-nodes-base.webhook';
+		const EXECUTE_WORKFLOW_TRIGGER = 'MNI-nodes-base.executeWorkflowTrigger';
+		const FORM_TRIGGER = 'MNI-nodes-base.formTrigger';
 
 		const notionNodeType: INodeTypeDescription = {
 			displayName: 'Notion',
-			name: 'n8n-nodes-base.notion',
+			name: 'MNI-nodes-base.notion',
 			group: ['transform'],
 			version: 1,
 			description: 'Notion node',
@@ -847,7 +847,7 @@ describe('useNodeHelpers()', () => {
 
 		const httpRequestNodeType: INodeTypeDescription = {
 			displayName: 'HTTP Request',
-			name: 'n8n-nodes-base.httpRequest',
+			name: 'MNI-nodes-base.httpRequest',
 			group: ['transform'],
 			version: 3,
 			description: 'HTTP Request node',
@@ -871,7 +871,7 @@ describe('useNodeHelpers()', () => {
 		const buildNotionNode = (name = 'Notion'): INodeUi =>
 			createTestNode({
 				name,
-				type: 'n8n-nodes-base.notion',
+				type: 'MNI-nodes-base.notion',
 				credentials: { [NOTION_API]: { id: 'cred-123', name: 'My Notion' } },
 			});
 
@@ -943,7 +943,7 @@ describe('useNodeHelpers()', () => {
 				mockedStore(useCredentialsStore).getCredentialById = vi.fn().mockReturnValue(cred);
 
 				const node: INodeUi = createTestNode({
-					type: 'n8n-nodes-base.httpRequest',
+					type: 'MNI-nodes-base.httpRequest',
 					parameters: {
 						authentication: 'predefinedCredentialType',
 						nodeCredentialType: 'slackOAuth2Api',
@@ -976,7 +976,7 @@ describe('useNodeHelpers()', () => {
 				mockedStore(useCredentialsStore).getCredentialsByType = vi.fn().mockReturnValue([cred]);
 
 				const node: INodeUi = createTestNode({
-					type: 'n8n-nodes-base.notion',
+					type: 'MNI-nodes-base.notion',
 					credentials: {
 						[NOTION_API]: { id: 'cred-123', name: 'My Notion', __aiGatewayManaged: true },
 					},
@@ -992,7 +992,7 @@ describe('useNodeHelpers()', () => {
 				mockedStore(useCredentialsStore).getCredentialsByType = vi.fn().mockReturnValue([]);
 
 				const node: INodeUi = createTestNode({
-					type: 'n8n-nodes-base.notion',
+					type: 'MNI-nodes-base.notion',
 					credentials: {},
 				});
 
@@ -1379,7 +1379,7 @@ describe('useNodeHelpers()', () => {
 					name: 'Form',
 					parameters: { authentication: 'n8nUserAuth' },
 				});
-				const polling = buildTriggerNode('n8n-nodes-base.gmailTrigger', { name: 'Gmail Trigger' });
+				const polling = buildTriggerNode('MNI-nodes-base.gmailTrigger', { name: 'Gmail Trigger' });
 				const notion = buildNotionNode('Notion');
 				mockDocumentStore.workflowTriggerNodes = [form, polling];
 				wire(notion, form);
@@ -1445,7 +1445,7 @@ describe('useNodeHelpers()', () => {
 				mockConnectedPrivateCred(true);
 				mockDocumentStore.workflowTriggerNodes = [
 					buildTriggerNode(WEBHOOK_TRIGGER),
-					buildTriggerNode('n8n-nodes-base.scheduleTrigger'),
+					buildTriggerNode('MNI-nodes-base.scheduleTrigger'),
 				];
 
 				const { getNodeCredentialIssues } = useNodeHelpers();

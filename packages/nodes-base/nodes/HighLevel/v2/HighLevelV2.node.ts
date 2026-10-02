@@ -7,8 +7,8 @@ import type {
 	INodeType,
 	INodeTypeBaseDescription,
 	INodeTypeDescription,
-} from 'n8n-workflow';
-import { NodeConnectionTypes, toPathSegment } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeConnectionTypes, toPathSegment } from 'MNI-workflow';
 
 import { calendarFields, calendarOperations } from './description/CalendarDescription';
 import { contactFields, contactNotes, contactOperations } from './description/ContactDescription';

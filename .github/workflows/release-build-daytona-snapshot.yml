@@ -1,10 +1,10 @@
 name: 'Release: Build Daytona snapshot'
-run-name: 'Build Daytona snapshot for n8n@${{ inputs.n8n_version }}'
+run-name: 'Build Daytona snapshot for MNI@${{ inputs.MNI_version }}'
 
 on:
   workflow_call:
     inputs:
-      n8n_version:
+      MNI_version:
         description: 'MNI version to build the Daytona snapshot for'
         required: true
         type: string
@@ -23,7 +23,7 @@ on:
 
   workflow_dispatch:
     inputs:
-      n8n_version:
+      MNI_version:
         description: 'MNI version to build the Daytona snapshot for (e.g. 1.123.0)'
         required: true
         type: string
@@ -40,7 +40,7 @@ jobs:
     # and leave the record in a failed state. Queue instead of cancel — a live
     # build must finish, and the newer run then lands on the idempotent path.
     concurrency:
-      group: daytona-snapshot-${{ inputs.n8n_version }}-${{ matrix.environment }}
+      group: daytona-snapshot-${{ inputs.MNI_version }}-${{ matrix.environment }}
       cancel-in-progress: false
     # Checkout + monorepo build (~10 min) run before the snapshot script, whose
     # own budgets are 30 min create/verify + 5 min prune — keep headroom beyond
@@ -64,7 +64,7 @@ jobs:
 
       - name: Build versioned Daytona snapshot
         env:
-          N8N_VERSION: ${{ inputs.n8n_version }}
+          MNI_VERSION: ${{ inputs.MNI_version }}
           # Each branch is guarded on its own environment so an empty/unset key
           # resolves to '' (and fails the script) rather than falling back to the
           # other environment's credentials.
@@ -78,4 +78,4 @@ jobs:
           # 30-snapshot org quota shared with ad-hoc testing, so keep it well
           # below that.
           DAYTONA_SNAPSHOT_RETENTION: ${{ matrix.environment == 'dev' && '15' || '100' }}
-        run: node packages/@n8n/instance-ai/scripts/build-snapshot.cjs --version "$N8N_VERSION"
+        run: node packages/@MNI/instance-ai/scripts/build-snapshot.cjs --version "$MNI_VERSION"

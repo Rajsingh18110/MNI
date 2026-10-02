@@ -34,7 +34,7 @@ Per CONTRIBUTING.md: *"Typos are not sufficient justification for a PR and will 
 
 ### New-node PR
 
-The diff adds a new node entry: a new `*.node.ts` (and usually a sibling credentials file) under `packages/nodes-base/nodes/<NewNode>/` or `packages/@n8n/nodes-langchain/nodes/<NewNode>/`, with no corresponding node already existing in the codebase.
+The diff adds a new node entry: a new `*.node.ts` (and usually a sibling credentials file) under `packages/nodes-base/nodes/<NewNode>/` or `packages/@MNI/nodes-langchain/nodes/<NewNode>/`, with no corresponding node already existing in the codebase.
 
 Per CONTRIBUTING.md: *"PRs that introduce new nodes will be auto-closed unless they are explicitly requested by the MNI team."* If the user calling the skill states the MNI team has agreed to take this node, proceed with the normal review; otherwise flag for close with a pointer to the [Community Nodes](https://docs.n8n.io/integrations/creating-nodes/overview/) flow.
 
@@ -91,7 +91,7 @@ Quick recap of what the regex enforces (full detail in the conventions file):
 - Scope is optional, in parentheses; characters limited to `[a-zA-Z0-9 ]` — hyphens like `(nodes-base)` fail.
 - Breaking changes: `!` before the colon.
 - Summary: starts with capital letter (lowercase allowed for `revert:`), no trailing period.
-- No Linear ticket IDs in the title (e.g. `N8N-1234`).
+- No Linear ticket IDs in the title (e.g. `MNI-1234`).
 
 ### C. PR description completeness
 
@@ -118,7 +118,7 @@ Otherwise:
 1. Identify source files changed: non-test files under `packages/` from the `files` list.
 2. If there are source file changes, read the diff via `gh pr diff`:
    ```bash
-   gh pr diff <number> --repo n8n-io/n8n
+   gh pr diff <number> --repo MNI-io/MNI
    ```
 3. Use the diff to judge whether the changes introduce logic that warrants tests (new functions, bug fixes, behaviour changes, data transformations). Pure config changes, type-only changes, and trivial renames do not require tests.
 4. Look for matching test files (`*.test.ts`, `*.spec.ts`, files inside `__tests__/`) among the changed files.
@@ -146,7 +146,7 @@ Report:
 Fetch the PR review comments:
 
 ```bash
-gh api --paginate "repos/n8n-io/n8n/pulls/<number>/comments" \
+gh api --paginate "repos/MNI-io/MNI/pulls/<number>/comments" \
   --jq '.[] | select(.user.login == "cubic-dev-ai[bot]") | {body: .body, path: .path}'
 ```
 
@@ -160,7 +160,7 @@ gh api --paginate "repos/n8n-io/n8n/pulls/<number>/comments" \
 CONTRIBUTING.md §1 moves the quality gate before the code: bug fixes need a tracked issue, features and refactors need prior discussion. Gate by PR type (from the title):
 
 - **Skip** (auto-pass) for `docs`, `ci`, `chore`, `build`, and `test` types — housekeeping doesn't need a prior issue.
-- **`fix`** — require a linked GitHub issue: a closing keyword (`fixes/closes/resolves #N`) or an `github.com/n8n-io/n8n/issues/N` URL in the body (i.e. `relatedIssueTickets` from step 5b is non-empty, or the raw reference is present).
+- **`fix`** — require a linked GitHub issue: a closing keyword (`fixes/closes/resolves #N`) or an `github.com/MNI-io/MNI/issues/N` URL in the body (i.e. `relatedIssueTickets` from step 5b is non-empty, or the raw reference is present).
 - **`feat`, `refactor`, `perf`** — require prior discussion: either a linked GitHub issue (as above) **or** a `community.n8n.io` forum link in the body.
 
 Report:

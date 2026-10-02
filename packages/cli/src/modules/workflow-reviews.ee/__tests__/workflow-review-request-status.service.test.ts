@@ -1,12 +1,12 @@
-import type { ListWorkflowReviewRequestsQueryDto } from '@n8n/api-types';
-import type { LicenseState } from '@n8n/backend-common';
-import { User } from '@n8n/db';
+import type { ListWorkflowReviewRequestsQueryDto } from '@MNI/api-types';
+import type { LicenseState } from '@MNI/backend-common';
+import { User } from '@MNI/db';
 import type {
 	UserRepository,
 	WorkflowEntity,
 	WorkflowReviewRequestForWorkflowRow,
 	WorkflowReviewRequestRepository,
-} from '@n8n/db';
+} from '@MNI/db';
 import { mock } from 'vitest-mock-extended';
 
 import { ForbiddenError } from '@/errors/response-errors/forbidden.error';

@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { useDocumentTitle } from '@n8n/composables/useDocumentTitle';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
-import { useToast } from '@n8n/composables/useToast';
+import { useDocumentTitle } from '@MNI/composables/useDocumentTitle';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
+import { useToast } from '@MNI/composables/useToast';
 import {
 	N8nButton,
 	N8nCheckbox,
@@ -18,9 +18,9 @@ import {
 	N8nSettingsRowGroup,
 	N8nSettingsSaveBar,
 	N8nSettingsSection,
-} from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+} from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { computed, ref, watch, onMounted } from 'vue';
 import { onBeforeRouteLeave, type NavigationGuardNext } from 'vue-router';
 

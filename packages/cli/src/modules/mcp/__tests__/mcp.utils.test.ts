@@ -1,8 +1,8 @@
-import type { AuthenticatedRequest } from '@n8n/db';
+import type { AuthenticatedRequest } from '@MNI/db';
 import type { Request } from 'express';
 import { mock } from 'vitest-mock-extended';
 
-import { MANUAL_TRIGGER_NODE_TYPE, WEBHOOK_NODE_TYPE, type INode } from 'n8n-workflow';
+import { MANUAL_TRIGGER_NODE_TYPE, WEBHOOK_NODE_TYPE, type INode } from 'MNI-workflow';
 
 import { MCP_CLIENT_INFO_META_KEY, MCP_PROTOCOL_VERSION_META_KEY } from '../mcp.constants';
 import {

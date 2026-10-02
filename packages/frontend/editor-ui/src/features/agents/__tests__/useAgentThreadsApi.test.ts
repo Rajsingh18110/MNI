@@ -1,6 +1,6 @@
 /* eslint-disable import-x/no-extraneous-dependencies -- test-only pattern */
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { makeRestApiRequest } from '@n8n/rest-api-client';
+import { makeRestApiRequest } from '@MNI/rest-api-client';
 
 import {
 	defaultAgentSessionFilters,
@@ -9,7 +9,7 @@ import {
 	listThreads,
 } from '../composables/useAgentThreadsApi';
 
-vi.mock('@n8n/rest-api-client', () => ({
+vi.mock('@MNI/rest-api-client', () => ({
 	makeRestApiRequest: vi.fn(),
 }));
 

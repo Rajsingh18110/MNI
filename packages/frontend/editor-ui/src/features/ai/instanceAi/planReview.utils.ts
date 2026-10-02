@@ -1,4 +1,4 @@
-import type { InstanceAiToolCallState, PlannedTaskArg, TaskList } from '@n8n/api-types';
+import type { InstanceAiToolCallState, PlannedTaskArg, TaskList } from '@MNI/api-types';
 
 /** Map the simplified task checklist to the richer planned-task shape. */
 function mapTaskItemsToPlannedTasks(tasks?: TaskList): PlannedTaskArg[] | undefined {

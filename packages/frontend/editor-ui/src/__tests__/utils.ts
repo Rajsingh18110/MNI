@@ -1,11 +1,11 @@
 import { within, waitFor } from '@testing-library/vue';
 import userEvent from '@testing-library/user-event';
 import type { ISettingsState } from '@/Interface';
-import { AuthenticationMethod } from '@n8n/api-types';
-import { defaultSettings, getTooltip } from '@n8n/frontend-test-utils';
+import { AuthenticationMethod } from '@MNI/api-types';
+import { defaultSettings, getTooltip } from '@MNI/frontend-test-utils';
 
 // `mockedStore`, `retry`, `waitAllPromises`, `useEmitters` and `getTooltip` now live in
-// `@n8n/frontend-test-utils`, so a module package can reach them. They are re-exported rather
+// `@MNI/frontend-test-utils`, so a module package can reach them. They are re-exported rather
 // than codemodded away: `mockedStore` alone has 200+ importers here, and this file stays for the
 // helpers below it that are bound to the shell (`ISettingsState`) or to editor-ui's own DOM.
 export {
@@ -17,7 +17,7 @@ export {
 	type Emitter,
 	type Emitters,
 	type MockedStore,
-} from '@n8n/frontend-test-utils';
+} from '@MNI/frontend-test-utils';
 
 export const SETTINGS_STORE_DEFAULT_STATE: ISettingsState = {
 	initialized: true,
@@ -78,7 +78,7 @@ export const getSelectedDropdownValue = async (items: NodeListOf<Element>) => {
 /**
  * Query version that returns null if not found
  */
-export const queryTooltip = () => document.querySelector('.n8n-tooltip');
+export const queryTooltip = () => document.querySelector('.MNI-tooltip');
 
 /**
  * Get a within() wrapper for querying inside the tooltip

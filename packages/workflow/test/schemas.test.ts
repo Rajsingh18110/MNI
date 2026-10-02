@@ -23,7 +23,7 @@ describe('normalizeNodeShape', () => {
 		const result = normalizeNodeShape({
 			id: '1',
 			name: 'HTTP Request',
-			type: 'n8n-nodes-base.httpRequest',
+			type: 'MNI-nodes-base.httpRequest',
 			typeVersion: 4.2,
 			position: [0, 0] as [number, number],
 			parameters: null,
@@ -36,7 +36,7 @@ describe('normalizeNodeShape', () => {
 		expect(result).toEqual({
 			id: '1',
 			name: 'HTTP Request',
-			type: 'n8n-nodes-base.httpRequest',
+			type: 'MNI-nodes-base.httpRequest',
 			typeVersion: 4.2,
 			position: [0, 0],
 			parameters: {},

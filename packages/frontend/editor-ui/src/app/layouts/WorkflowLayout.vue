@@ -15,7 +15,7 @@ import AppHeader from '@/app/components/app/AppHeader.vue';
 import AppSidebar from '@/app/components/app/AppSidebar.vue';
 import LogsPanel from '@/features/execution/logs/components/LogsPanel.vue';
 import LoadingView from '@/app/views/LoadingView.vue';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 
 const { layoutProps } = useLayoutProps();
 const assistantStore = useAssistantStore();

@@ -76,7 +76,7 @@ async function runningServer({ stateDir, mainDirectory }) {
 }
 
 async function startServer({ stateDir, mainDirectory, workspaces }) {
-	const tmuxSession = 'n8n-opencode-server';
+	const tmuxSession = 'MNI-opencode-server';
 	if (spawnSync('tmux', ['has-session', '-t', `=${tmuxSession}`]).status === 0) {
 		throw new Error(
 			`OpenCode is still starting or is unhealthy. Check ${stateDir}/server.log, then retry. The running server was not stopped.`,
@@ -91,7 +91,7 @@ async function startServer({ stateDir, mainDirectory, workspaces }) {
 		[
 			'#!/bin/bash',
 			'. /usr/local/lib/codespaces-env.sh 2>/dev/null || true',
-			'unset AGENT_WORKER_TOKEN N8N_DEQUEUE_URL SLACK_BOT_TOKEN',
+			'unset AGENT_WORKER_TOKEN MNI_DEQUEUE_URL SLACK_BOT_TOKEN',
 			`export TURBO_CACHE_DIR=${quote(join(workspaces, '.turbo-cache'))}`,
 			`[ -d "$TURBO_CACHE_DIR" ] || cp -r ${quote(join(mainDirectory, '.turbo/cache'))} "$TURBO_CACHE_DIR" 2>/dev/null || mkdir -p "$TURBO_CACHE_DIR"`,
 			`export OPENCODE_SERVER_USERNAME=opencode OPENCODE_SERVER_PASSWORD=${quote(server.password)}`,
@@ -103,7 +103,7 @@ async function startServer({ stateDir, mainDirectory, workspaces }) {
 				}),
 			)}`,
 			// Interactive sessions use the harness sandbox runtime without a profile.
-			'export N8N_AGENT_RUNTIME=sandbox; unset N8N_AGENT_PROFILE',
+			'export MNI_AGENT_RUNTIME=sandbox; unset MNI_AGENT_PROFILE',
 			`cd ${quote(mainDirectory)} || exit 1`,
 			`exec opencode serve --hostname 127.0.0.1 --port ${server.port} >> ${quote(join(stateDir, 'server.log'))} 2>&1`,
 			'',
@@ -198,7 +198,7 @@ export async function prepareOpenCode({
 	web = false,
 	workspaces = '/workspaces',
 } = {}) {
-	const stateDir = join(workspaces, '.n8n-opencode');
+	const stateDir = join(workspaces, '.MNI-opencode');
 	const mainDirectory = join(workspaces, 'MNI');
 	if (!/^\w[\w-]*$/.test(name)) throw new Error('Invalid OpenCode workspace name.');
 	mkdirSync(stateDir, { recursive: true, mode: 0o700 });

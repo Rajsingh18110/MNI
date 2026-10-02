@@ -10,7 +10,7 @@
  * - Log streaming feature enabled (enterprise license, @licensed)
  * - The proxy capability starts MockServer
  */
-import type { ProxyServer, RequestMade } from 'n8n-containers/services/proxy';
+import type { ProxyServer, RequestMade } from 'MNI-containers/services/proxy';
 import { nanoid } from 'nanoid';
 
 import { test, expect } from '../../../../fixtures/base';
@@ -87,7 +87,7 @@ async function triggerWorkflowEvents(api: ApiHelpers): Promise<string> {
 			{
 				id: nanoid(),
 				name: 'Manual',
-				type: 'n8n-nodes-base.manualTrigger',
+				type: 'MNI-nodes-base.manualTrigger',
 				typeVersion: 1,
 				position: [0, 0],
 				parameters: {},

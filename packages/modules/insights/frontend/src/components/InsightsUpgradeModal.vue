@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { N8nButton, N8nText } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
-import type { BaseTextKey } from '@n8n/i18n';
-import { useBasePageRedirectionHelper } from '@n8n/stores/composables/useBasePageRedirectionHelper';
+import { N8nButton, N8nText } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
+import type { BaseTextKey } from '@MNI/i18n';
+import { useBasePageRedirectionHelper } from '@MNI/stores/composables/useBasePageRedirectionHelper';
 import { ElDialog } from 'element-plus';
 import { computed } from 'vue';
 const model = defineModel<boolean>();

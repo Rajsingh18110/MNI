@@ -1,7 +1,7 @@
 export type RedisClientType = N8nRedisClientType | BullRedisClientType;
 
 /**
- * Redis client used by n8n.
+ * Redis client used by MNI.
  *
  * - `subscriber(MNI)` to listen for messages from scaling mode pubsub channels
  * - `publisher(MNI)` to send messages into scaling mode pubsub channels

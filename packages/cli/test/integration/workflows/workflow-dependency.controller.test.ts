@@ -1,14 +1,14 @@
 import { randomUUID } from 'node:crypto';
 
-import type { AgentJsonConfig } from '@n8n/api-types';
+import type { AgentJsonConfig } from '@MNI/api-types';
 import {
 	createWorkflow,
 	randomCredentialPayload,
 	shareWorkflowWithUsers,
-} from '@n8n/backend-test-utils';
-import { ModuleRegistry } from '@n8n/backend-common';
-import { ProjectRepository, WorkflowDependencyRepository, type User } from '@n8n/db';
-import { Container } from '@n8n/di';
+} from '@MNI/backend-test-utils';
+import { ModuleRegistry } from '@MNI/backend-common';
+import { ProjectRepository, WorkflowDependencyRepository, type User } from '@MNI/db';
+import { Container } from '@MNI/di';
 
 import { AgentCredentialDependency } from '@/modules/agents/entities/agent-credential-dependency.entity';
 import { AgentHistory } from '@/modules/agents/entities/agent-history.entity';

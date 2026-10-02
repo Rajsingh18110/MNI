@@ -1,5 +1,5 @@
-import { isSafeObjectProperty, jsonParse, NodeOperationError } from 'n8n-workflow';
-import type { INode } from 'n8n-workflow';
+import { isSafeObjectProperty, jsonParse, NodeOperationError } from 'MNI-workflow';
+import type { INode } from 'MNI-workflow';
 
 type QueryParameterScalar = string | number | boolean | bigint | Date | null;
 type QueryParameter = QueryParameterScalar | QueryParameterScalar[];

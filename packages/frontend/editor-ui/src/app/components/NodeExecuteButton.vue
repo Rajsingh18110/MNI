@@ -1,15 +1,15 @@
 <script lang="ts" setup>
 import { ref, computed } from 'vue';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import type { ButtonSize, IUpdateInformation } from '@/Interface';
-import type { ButtonVariant } from '@n8n/design-system';
-import { type IconName } from '@n8n/design-system';
-import { N8nButton, N8nTooltip } from '@n8n/design-system';
+import type { ButtonVariant } from '@MNI/design-system';
+import { type IconName } from '@MNI/design-system';
+import { N8nButton, N8nTooltip } from '@MNI/design-system';
 import { injectWorkflowDocumentStore } from '@/app/stores/workflowDocument.store';
 import { injectNDVStore } from '@/features/ndv/shared/ndv.store';
 import { useNodeExecution } from '@/app/composables/useNodeExecution';
 
-const NODE_TEST_STEP_POPUP_COUNT_KEY = 'N8N_NODE_TEST_STEP_POPUP_COUNT';
+const NODE_TEST_STEP_POPUP_COUNT_KEY = 'MNI_NODE_TEST_STEP_POPUP_COUNT';
 const MAX_POPUP_COUNT = 10;
 const POPUP_UPDATE_DELAY = 3000;
 

@@ -1,5 +1,5 @@
-import { LdapSyncDto, UpdateLdapConfigurationDto } from '@n8n/api-types';
-import { Container } from '@n8n/di';
+import { LdapSyncDto, UpdateLdapConfigurationDto } from '@MNI/api-types';
+import { Container } from '@MNI/di';
 
 import { ResponseError } from '@/errors/response-errors/abstract/response.error';
 import { BadRequestError } from '@/errors/response-errors/bad-request.error';

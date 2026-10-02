@@ -2,7 +2,7 @@
 	"nodes": [
 		{
 			"parameters": {},
-			"type": "n8n-nodes-base.manualTrigger",
+			"type": "MNI-nodes-base.manualTrigger",
 			"typeVersion": 1,
 			"position": [-80, -680],
 			"id": "trigger-1",
@@ -16,7 +16,7 @@
 				"input": "Hello world\nThis is a test",
 				"requestOptions": {}
 			},
-			"type": "n8n-nodes-base.perplexity",
+			"type": "MNI-nodes-base.perplexity",
 			"typeVersion": 2,
 			"position": [-40, -380],
 			"id": "embed-node-1",

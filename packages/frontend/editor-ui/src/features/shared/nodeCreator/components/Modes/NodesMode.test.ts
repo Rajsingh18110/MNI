@@ -21,7 +21,7 @@ import { useViewStacks } from '@/features/shared/nodeCreator/composables/useView
 import { useKeyboardNavigation } from '@/features/shared/nodeCreator/composables/useKeyboardNavigation';
 import { useNodeCreatorStore } from '@/features/shared/nodeCreator/nodeCreator.store';
 import { createComponentRenderer } from '@/__tests__/render';
-import { waitAllPromises } from '@n8n/frontend-test-utils';
+import { waitAllPromises } from '@MNI/frontend-test-utils';
 import { mockRestrictedNodeTypes } from '@/__tests__/mocks';
 import { mockSimplifiedNodeType } from '../../__tests__/utils';
 import NodesMode from './NodesMode.vue';
@@ -145,11 +145,11 @@ describe('NodesMode', () => {
 			hasSearch: true,
 			items: [
 				{
-					key: 'n8n-nodes-base.set',
+					key: 'MNI-nodes-base.set',
 					type: 'node',
 					subcategory: '*',
 					properties: mockSimplifiedNodeType({
-						name: 'n8n-nodes-base.set',
+						name: 'MNI-nodes-base.set',
 						displayName: 'Edit Fields',
 						group: ['transform'],
 					}),
@@ -162,17 +162,17 @@ describe('NodesMode', () => {
 
 		await userEvent.click(screen.getByText('Edit Fields'));
 
-		expect(emitted('nodeTypeSelected')).toEqual([[[{ type: 'n8n-nodes-base.set' }]]]);
+		expect(emitted('nodeTypeSelected')).toEqual([[[{ type: 'MNI-nodes-base.set' }]]]);
 	});
 
 	describe('restricted node types', () => {
 		function setNodeElement(): NodeCreateElement {
 			return {
-				key: 'n8n-nodes-base.set',
+				key: 'MNI-nodes-base.set',
 				type: 'node',
 				subcategory: '*',
 				properties: mockSimplifiedNodeType({
-					name: 'n8n-nodes-base.set',
+					name: 'MNI-nodes-base.set',
 					displayName: 'Edit Fields',
 					group: ['transform'],
 				}),
@@ -202,7 +202,7 @@ describe('NodesMode', () => {
 		}
 
 		it('does not add a restricted node on click', async () => {
-			mockRestrictedNodeTypes({ 'n8n-nodes-base.set': 'instance' });
+			mockRestrictedNodeTypes({ 'MNI-nodes-base.set': 'instance' });
 			pushSearchStackWith([setNodeElement()]);
 
 			const { emitted } = render({ pinia });
@@ -214,7 +214,7 @@ describe('NodesMode', () => {
 		});
 
 		it('does not add a restricted node on Enter', async () => {
-			mockRestrictedNodeTypes({ 'n8n-nodes-base.set': 'instance' });
+			mockRestrictedNodeTypes({ 'MNI-nodes-base.set': 'instance' });
 			pushSearchStackWith([setNodeElement()]);
 
 			const { emitted } = render({ pinia });
@@ -242,7 +242,7 @@ describe('NodesMode', () => {
 			expect(screen.queryByText('HTTP Request')).not.toBeInTheDocument();
 
 			await userEvent.click(screen.getByText('Webhook'));
-			expect(emitted('nodeTypeSelected')).toEqual([[[{ type: 'n8n-nodes-base.webhook' }]]]);
+			expect(emitted('nodeTypeSelected')).toEqual([[[{ type: 'MNI-nodes-base.webhook' }]]]);
 		});
 
 		it('still adds an available node on Enter', async () => {
@@ -253,7 +253,7 @@ describe('NodesMode', () => {
 
 			await pressEnterOnFirstItem();
 
-			expect(emitted('nodeTypeSelected')).toEqual([[[{ type: 'n8n-nodes-base.set' }]]]);
+			expect(emitted('nodeTypeSelected')).toEqual([[[{ type: 'MNI-nodes-base.set' }]]]);
 		});
 	});
 
@@ -347,11 +347,11 @@ describe('NodesMode', () => {
 				items: [groupItem],
 				searchItems: [
 					{
-						key: 'n8n-nodes-base.set',
+						key: 'MNI-nodes-base.set',
 						type: 'node',
 						subcategory: '*',
 						properties: mockSimplifiedNodeType({
-							name: 'n8n-nodes-base.set',
+							name: 'MNI-nodes-base.set',
 							displayName: 'Edit Fields',
 						}),
 					},

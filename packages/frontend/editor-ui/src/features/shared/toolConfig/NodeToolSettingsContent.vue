@@ -27,15 +27,15 @@ import {
 } from '@/features/ndv/shared/ndv.utils';
 import { omitOperationOptions } from '@/features/shared/toolConfig/toolConfig.utils';
 import type { INodeUpdatePropertiesInformation, ITab, IUpdateInformation } from '@/Interface';
-import { N8nTabs, N8nText } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+import { N8nTabs, N8nText } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 import {
 	NodeHelpers,
 	deepCopy,
 	type INode,
 	type INodeParameters,
 	type Workflow,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import { computed, onBeforeUnmount, onMounted, provide, ref, shallowRef, watch } from 'vue';
 import {
 	ChatHubToolContextKey,
@@ -45,7 +45,7 @@ import {
 } from '@/app/constants';
 import type { ExpressionLocalResolveContext } from '@/app/types/expressions';
 import useEnvironmentsStore from '@/features/settings/environments.ee/environments.store';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import {
 	createWorkflowDocumentId,
 	disposeWorkflowDocumentStore,

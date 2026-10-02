@@ -1,4 +1,4 @@
-import { UNLIMITED_CREDITS, type InstanceAiCredits } from '@n8n/api-types';
+import { UNLIMITED_CREDITS, type InstanceAiCredits } from '@MNI/api-types';
 
 type ThreadCredits = { threadId: string; totalCreditsUsed: number };
 

@@ -1,7 +1,7 @@
-import type { Logger } from '@n8n/backend-common';
-import type { BinaryDataService } from 'n8n-core';
-import type { IBinaryData, INodeExecutionData } from 'n8n-workflow';
-import { UserError } from 'n8n-workflow';
+import type { Logger } from '@MNI/backend-common';
+import type { BinaryDataService } from 'MNI-core';
+import type { IBinaryData, INodeExecutionData } from 'MNI-workflow';
+import { UserError } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import { EngineV2PayloadGuard } from '@/services/engine-v2-payload-guard.service';

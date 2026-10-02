@@ -1,8 +1,8 @@
-import type { HttpRequestClient, OutboundHttp } from '@n8n/backend-network';
-import { mockLogger } from '@n8n/backend-test-utils';
-import { Time } from '@n8n/constants';
+import type { HttpRequestClient, OutboundHttp } from '@MNI/backend-network';
+import { mockLogger } from '@MNI/backend-test-utils';
+import { Time } from '@MNI/constants';
 import { mock } from 'vitest-mock-extended';
-import type { IHttpRequestOptions } from 'n8n-workflow';
+import type { IHttpRequestOptions } from 'MNI-workflow';
 
 import type { CacheService } from '@/services/cache/cache.service';
 

@@ -1,8 +1,8 @@
 import fc from 'fast-check';
 import type { MockProxy } from 'vitest-mock-extended';
 import { mock } from 'vitest-mock-extended';
-import type { IExecuteFunctions, INode, INodeParameterResourceLocator } from 'n8n-workflow';
-import { NodeOperationError } from 'n8n-workflow';
+import type { IExecuteFunctions, INode, INodeParameterResourceLocator } from 'MNI-workflow';
+import { NodeOperationError } from 'MNI-workflow';
 
 import {
 	blockUrlExtractionRegexp,

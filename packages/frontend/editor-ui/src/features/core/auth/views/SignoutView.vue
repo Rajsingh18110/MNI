@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { VIEWS } from '@/app/constants';
-import { useUsersStore } from '@n8n/stores/users.store';
+import { useUsersStore } from '@MNI/stores/users.store';
 import { useSSOStore } from '@/features/settings/sso/sso.store';
-import { useToast } from '@n8n/composables/useToast';
+import { useToast } from '@MNI/composables/useToast';
 import { useRouter } from 'vue-router';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import { onMounted } from 'vue';
 
 const usersStore = useUsersStore();

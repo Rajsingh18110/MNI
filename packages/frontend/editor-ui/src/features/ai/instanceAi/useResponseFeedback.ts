@@ -1,9 +1,9 @@
 import { ref, computed, type Ref } from 'vue';
-import { isSafeObjectKey } from '@n8n/api-types';
-import { redactTelemetryText } from '@n8n/telemetry';
-import type { InstanceAiMessage, InstanceAiAgentNode } from '@n8n/api-types';
-import type { RatingFeedback } from '@n8n/design-system';
-import type { ITelemetryTrackProperties } from 'n8n-workflow';
+import { isSafeObjectKey } from '@MNI/api-types';
+import { redactTelemetryText } from '@MNI/telemetry';
+import type { InstanceAiMessage, InstanceAiAgentNode } from '@MNI/api-types';
+import type { RatingFeedback } from '@MNI/design-system';
+import type { ITelemetryTrackProperties } from 'MNI-workflow';
 
 // ---------------------------------------------------------------------------
 // Tree traversal helpers (pure functions)

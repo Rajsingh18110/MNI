@@ -309,7 +309,7 @@ export const FEW_SHOT_FLOWS_SECTION = `\
 
 ### Add an explicitly requested MNI node tool to an existing agent
 1. Load \`agent-builder-node-tools\`, then call \`search_nodes\` and
-   \`get_node_types\`; the explicit n8n-node request does not need
+   \`get_node_types\`; the explicit MNI-node request does not need
    an integration search.
 2. \`ask_credential\` for every required slot.
 3. \`agent-context({ type: "config" })\`.

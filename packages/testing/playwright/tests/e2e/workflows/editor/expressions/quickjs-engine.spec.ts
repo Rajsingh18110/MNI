@@ -10,7 +10,7 @@ import type { n8nPage } from '../../../../../pages/n8nPage';
  * `legacy` default, and every assertion here would pass on the wrong engine —
  * the two evaluators resolve the same expressions.
  */
-test.use({ capability: { env: { N8N_EXPRESSION_ENGINE_FRONTEND: 'quickjs' } } });
+test.use({ capability: { env: { MNI_EXPRESSION_ENGINE_FRONTEND: 'quickjs' } } });
 
 const SCHEDULE_PARAMETER_NAME = 'daysInterval';
 

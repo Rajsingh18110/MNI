@@ -1,8 +1,8 @@
 import { startTestRun } from './evaluation.api';
-import * as restApiClient from '@n8n/rest-api-client';
-import type { IRestApiContext } from '@n8n/rest-api-client';
+import * as restApiClient from '@MNI/rest-api-client';
+import type { IRestApiContext } from '@MNI/rest-api-client';
 
-vi.mock('@n8n/rest-api-client', () => ({
+vi.mock('@MNI/rest-api-client', () => ({
 	request: vi.fn(),
 	makeRestApiRequest: vi.fn(),
 }));

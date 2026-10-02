@@ -1,6 +1,6 @@
 import { DateTime } from 'luxon';
 import type { MockProxy } from 'vitest-mock-extended';
-import type { IExecuteFunctions } from 'n8n-workflow';
+import type { IExecuteFunctions } from 'MNI-workflow';
 
 import { createExecuteContext } from '../helpers';
 import { toGraphUtc } from '../../../../v2/actions/onlineMeeting/shared';

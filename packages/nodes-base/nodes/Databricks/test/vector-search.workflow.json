@@ -3,7 +3,7 @@
 	"nodes": [
 		{
 			"parameters": {},
-			"type": "n8n-nodes-base.manualTrigger",
+			"type": "MNI-nodes-base.manualTrigger",
 			"typeVersion": 1,
 			"position": [0, 0],
 			"id": "trigger-001",
@@ -19,7 +19,7 @@
 				"indexType": "DELTA_SYNC",
 				"deltaSyncIndexSpec": "{\"source_table\":\"main.default.source_table\",\"pipeline_type\":\"TRIGGERED\",\"embedding_source_columns\":[{\"name\":\"text\",\"embedding_model_endpoint_name\":\"e5-small-v2\"}],\"columns_to_sync\":[\"id\",\"text\"]}"
 			},
-			"type": "n8n-nodes-base.databricks",
+			"type": "MNI-nodes-base.databricks",
 			"typeVersion": 1,
 			"position": [220, -300],
 			"id": "vs-create-001",
@@ -37,7 +37,7 @@
 				"operation": "getIndex",
 				"indexName": "main.default.search_index"
 			},
-			"type": "n8n-nodes-base.databricks",
+			"type": "MNI-nodes-base.databricks",
 			"typeVersion": 1,
 			"position": [220, -100],
 			"id": "vs-get-001",
@@ -55,7 +55,7 @@
 				"operation": "listIndexes",
 				"endpointName": "vs-endpoint"
 			},
-			"type": "n8n-nodes-base.databricks",
+			"type": "MNI-nodes-base.databricks",
 			"typeVersion": 1,
 			"position": [220, 100],
 			"id": "vs-list-001",
@@ -80,7 +80,7 @@
 				"enableReranking": false,
 				"options": {}
 			},
-			"type": "n8n-nodes-base.databricks",
+			"type": "MNI-nodes-base.databricks",
 			"typeVersion": 1,
 			"position": [220, 300],
 			"id": "vs-query-001",
@@ -105,7 +105,7 @@
 				"enableReranking": false,
 				"options": {}
 			},
-			"type": "n8n-nodes-base.databricks",
+			"type": "MNI-nodes-base.databricks",
 			"typeVersion": 1,
 			"position": [220, 500],
 			"id": "vs-query-vector-001",

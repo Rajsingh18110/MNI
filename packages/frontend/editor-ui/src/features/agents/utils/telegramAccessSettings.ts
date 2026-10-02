@@ -1,4 +1,4 @@
-import type { AgentIntegrationSettings, AgentTelegramIntegrationSettings } from '@n8n/api-types';
+import type { AgentIntegrationSettings, AgentTelegramIntegrationSettings } from '@MNI/api-types';
 
 export const DEFAULT_TELEGRAM_PUBLIC_SETTINGS = {
 	accessMode: 'public',

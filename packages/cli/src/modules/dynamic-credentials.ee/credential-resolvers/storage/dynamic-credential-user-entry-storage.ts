@@ -1,5 +1,5 @@
-import { CredentialResolverHandle } from '@n8n/decorators';
-import { Service } from '@n8n/di';
+import { CredentialResolverHandle } from '@MNI/decorators';
+import { Service } from '@MNI/di';
 
 import { ICredentialEntriesStorage } from './storage-interface';
 import { DynamicCredentialUserEntry } from '../../database/entities/dynamic-credential-user-entry';

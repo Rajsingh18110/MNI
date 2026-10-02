@@ -6,8 +6,8 @@ import type {
 	INodeProperties,
 	INodePropertyCollection,
 	NodeParameterValueType,
-} from 'n8n-workflow';
-import { NodeApiError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeApiError } from 'MNI-workflow';
 
 import { createExecuteContext, meetingHeaders, setParams } from '../helpers';
 import {
@@ -226,7 +226,7 @@ describe('Microsoft Teams V2, onlineMeeting attendees', () => {
 			() => apiRequest.mockResolvedValue({ displayName: 'Ghost' }),
 			'Could not find the user for attendee 1',
 		],
-		// The 429 text is n8n-workflow's status-code copy, not the node's, so only its presence is pinned.
+		// The 429 text is MNI-workflow's status-code copy, not the node's, so only its presence is pinned.
 		['a throttled lookup', () => apiRequest.mockRejectedValue(throttled()), expect.any(String)],
 	])('does not cache %s, so the next item retries it', async (_label, arrange, message) => {
 		ctx.getInputData.mockReturnValue([{ json: {} }, { json: {} }]);

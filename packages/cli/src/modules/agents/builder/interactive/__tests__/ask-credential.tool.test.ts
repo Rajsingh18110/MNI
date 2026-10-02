@@ -1,6 +1,6 @@
-import type { CredentialListItem } from '@n8n/agents';
-import type { InstanceAiCredentialService } from '@n8n/instance-ai';
-import { TELEMETRY_EVENT } from '@n8n/telemetry';
+import type { CredentialListItem } from '@MNI/agents';
+import type { InstanceAiCredentialService } from '@MNI/instance-ai';
+import { TELEMETRY_EVENT } from '@MNI/telemetry';
 import type { Mock } from 'vitest';
 import { mock } from 'vitest-mock-extended';
 
@@ -116,7 +116,7 @@ describe('ask_credential tool', () => {
 		const result = await tool.handler!(
 			{
 				purpose: 'Linear issue creation',
-				nodeType: 'n8n-nodes-base.linearTool',
+				nodeType: 'MNI-nodes-base.linearTool',
 				credentialType: 'linearOAuth2Api',
 				credentialSlot: 'linearOAuth2Api',
 			},

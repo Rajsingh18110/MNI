@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import type { WorkflowReviewInboxItem, WorkflowReviewRequestState } from '@n8n/api-types';
+import type { WorkflowReviewInboxItem, WorkflowReviewRequestState } from '@MNI/api-types';
 import { computed, ref, watch } from 'vue';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import {
 	N8nBadge,
 	N8nButton,
@@ -11,8 +11,8 @@ import {
 	N8nLoading,
 	N8nTabs,
 	N8nText,
-} from '@n8n/design-system';
-import { useUsersStore } from '@n8n/stores/users.store';
+} from '@MNI/design-system';
+import { useUsersStore } from '@MNI/stores/users.store';
 import { useIntersectionObserver } from '@/app/composables/useIntersectionObserver';
 import TimeAgo from '@/app/components/TimeAgo.vue';
 import WorkflowReviewStatusDot from './WorkflowReviewStatusDot.vue';

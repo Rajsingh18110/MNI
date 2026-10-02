@@ -1,11 +1,11 @@
-import type { AuthenticatedRequest, User, UserRepository } from '@n8n/db';
+import type { AuthenticatedRequest, User, UserRepository } from '@MNI/db';
 import type { Response } from 'express';
 import { mock } from 'vitest-mock-extended';
 
 import { NotFoundError } from '@/errors/response-errors/not-found.error';
 import type { UserRequest } from '@/requests';
 import type { JwtService } from '@/services/jwt.service';
-import type { UrlService } from '@n8n/backend-services';
+import type { UrlService } from '@MNI/backend-services';
 import type { UserService } from '@/services/user.service';
 
 import { UsersController } from '../users.controller';

@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { describe, it, expect, vi } from 'vitest';
 import { ref } from 'vue';
-import type { INodeParameterResourceLocator } from 'n8n-workflow';
+import type { INodeParameterResourceLocator } from 'MNI-workflow';
 import { useResourceLocatorModes } from './useResourceLocatorModes';
 
-vi.mock('@n8n/i18n', () => ({
+vi.mock('@MNI/i18n', () => ({
 	useI18n: () => ({ baseText: (key: string) => key }),
 }));
 

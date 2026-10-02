@@ -1,8 +1,8 @@
-import { GlobalConfig } from '@n8n/config';
-import { User, UserRepository } from '@n8n/db';
-import type { IPasswordAuthHandler } from '@n8n/decorators';
-import { AuthHandler } from '@n8n/decorators';
-import { Constructable } from '@n8n/di';
+import { GlobalConfig } from '@MNI/config';
+import { User, UserRepository } from '@MNI/db';
+import type { IPasswordAuthHandler } from '@MNI/decorators';
+import { AuthHandler } from '@MNI/decorators';
+import { Constructable } from '@MNI/di';
 
 import { AuthError } from '@/errors/response-errors/auth.error';
 import { EventService } from '@/events/event.service';

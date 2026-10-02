@@ -1,14 +1,14 @@
-import { isObjectLiteral, Logger } from '@n8n/backend-common';
-import { GlobalConfig } from '@n8n/config';
-import { Time } from '@n8n/constants';
-import { ExecutionRepository } from '@n8n/db';
-import { OnLeaderStepdown, OnLeaderTakeover, OnShutdown } from '@n8n/decorators';
-import { Container, Service } from '@n8n/di';
-import { decodeBufferBody, ErrorReporter, InstanceSettings } from 'n8n-core';
-import { ensureError } from '@n8n/utils/errors/ensure-error';
-import { sleep } from '@n8n/utils/sleep';
-import { jsonStringify, UnexpectedError } from 'n8n-workflow';
-import type { IRun } from 'n8n-workflow';
+import { isObjectLiteral, Logger } from '@MNI/backend-common';
+import { GlobalConfig } from '@MNI/config';
+import { Time } from '@MNI/constants';
+import { ExecutionRepository } from '@MNI/db';
+import { OnLeaderStepdown, OnLeaderTakeover, OnShutdown } from '@MNI/decorators';
+import { Container, Service } from '@MNI/di';
+import { decodeBufferBody, ErrorReporter, InstanceSettings } from 'MNI-core';
+import { ensureError } from '@MNI/utils/errors/ensure-error';
+import { sleep } from '@MNI/utils/sleep';
+import { jsonStringify, UnexpectedError } from 'MNI-workflow';
+import type { IRun } from 'MNI-workflow';
 import assert, { strict } from 'node:assert';
 
 import { ActiveExecutions } from '@/active-executions';
@@ -132,7 +132,7 @@ export class ScalingService {
 		this.scheduleQueueMetrics();
 
 		const { McpServer, QueuedExecutionStrategy, RedisSessionStore } = await import(
-			'@n8n/n8n-nodes-langchain/mcp/core'
+			'@MNI/MNI-nodes-langchain/mcp/core'
 		);
 		const { Publisher } = await import('@/scaling/pubsub/publisher.service.js');
 
@@ -633,7 +633,7 @@ export class ScalingService {
 				const mcpService = Container.get(McpService);
 				mcpService.handleWorkerResponse(executionId, runData);
 			} else {
-				const { McpServer } = await import('@n8n/n8n-nodes-langchain/mcp/core');
+				const { McpServer } = await import('@MNI/MNI-nodes-langchain/mcp/core');
 				const mcpServer = McpServer.instance(this.logger);
 
 				const holdsResponse =

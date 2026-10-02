@@ -1,4 +1,4 @@
-import type { SsrfBridge } from '@n8n/backend-network';
+import type { SsrfBridge } from '@MNI/backend-network';
 import type {
 	DataTableProxyProvider,
 	DynamicCredentialCheckProxyProvider,
@@ -7,7 +7,7 @@ import type {
 	INode,
 	IWorkflowSettings,
 	OauthJweProxyProvider,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import type { ExecutionLifecycleHooks } from './execution-lifecycle-hooks';
 import type { ExternalSecretsProxy } from './external-secrets-proxy';
@@ -29,7 +29,7 @@ export type EvalLlmMockHandler = (
 	node: INode,
 ) => Promise<EvalMockHttpResponse | undefined>;
 
-declare module 'n8n-workflow' {
+declare module 'MNI-workflow' {
 	interface IWorkflowExecuteAdditionalData {
 		hooks?: ExecutionLifecycleHooks;
 		externalSecretsProxy: ExternalSecretsProxy;
@@ -39,7 +39,7 @@ declare module 'n8n-workflow' {
 		 * that owns the credential to decrypt.
 		 */
 		externalSecretProviderKeysAccessibleByCredential?: Set<string>;
-		/** SSRF protection bridge — present only when N8N_SSRF_PROTECTION_ENABLED=true */
+		/** SSRF protection bridge — present only when MNI_SSRF_PROTECTION_ENABLED=true */
 		ssrfBridge?: SsrfBridge;
 		/**
 		 * LLM-based HTTP mock handler for evaluation mode.

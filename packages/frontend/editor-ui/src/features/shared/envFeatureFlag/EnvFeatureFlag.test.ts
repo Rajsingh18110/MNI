@@ -1,9 +1,9 @@
 import { createTestingPinia } from '@pinia/testing';
-import type { FrontendSettings, N8nEnvFeatFlags, N8nEnvFeatFlagValue } from '@n8n/api-types';
+import type { FrontendSettings, N8nEnvFeatFlags, N8nEnvFeatFlagValue } from '@MNI/api-types';
 import { createComponentRenderer } from '@/__tests__/render';
 import { mockedStore, type MockedStore } from '@/__tests__/utils';
 import EnvFeatureFlag from './EnvFeatureFlag.vue';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 
 const renderComponent = createComponentRenderer(EnvFeatureFlag);
 
@@ -13,7 +13,7 @@ describe('EnvFeatureFlag', () => {
 
 	beforeEach(() => {
 		Object.keys(import.meta.env).forEach((key) => {
-			if (key.startsWith('N8N_ENV_FEAT_')) {
+			if (key.startsWith('MNI_ENV_FEAT_')) {
 				delete (import.meta.env as N8nEnvFeatFlags)[key as keyof N8nEnvFeatFlags];
 			}
 		});
@@ -47,7 +47,7 @@ describe('EnvFeatureFlag', () => {
 	])(
 		'should %s render slot content when feature flag value is %s',
 		(value, flagName, shouldRender) => {
-			const envKey: keyof N8nEnvFeatFlags = `N8N_ENV_FEAT_${flagName}`;
+			const envKey: keyof N8nEnvFeatFlags = `MNI_ENV_FEAT_${flagName}`;
 
 			settingsStore.settings.envFeatureFlags = {
 				[envKey]: value,
@@ -72,8 +72,8 @@ describe('EnvFeatureFlag', () => {
 
 	it('should work with different flag names', () => {
 		settingsStore.settings.envFeatureFlags = {
-			N8N_ENV_FEAT_WORKFLOW_DIFFS: 'true',
-			N8N_ENV_FEAT_ANOTHER_FEATURE: 'false',
+			MNI_ENV_FEAT_WORKFLOW_DIFFS: 'true',
+			MNI_ENV_FEAT_ANOTHER_FEATURE: 'false',
 		};
 
 		const { container: container1 } = renderComponent({
@@ -101,11 +101,11 @@ describe('EnvFeatureFlag', () => {
 	describe('runtime vs build-time priority', () => {
 		it('should prioritize runtime settings over build-time env vars', () => {
 			// Set build-time env var
-			(import.meta.env as N8nEnvFeatFlags).N8N_ENV_FEAT_TEST_FLAG = 'true';
+			(import.meta.env as N8nEnvFeatFlags).MNI_ENV_FEAT_TEST_FLAG = 'true';
 
 			// Set runtime setting to override
 			settingsStore.settings.envFeatureFlags = {
-				N8N_ENV_FEAT_TEST_FLAG: 'false',
+				MNI_ENV_FEAT_TEST_FLAG: 'false',
 			};
 
 			const { container } = renderComponent({
@@ -123,7 +123,7 @@ describe('EnvFeatureFlag', () => {
 
 		it('should fallback to build-time env vars when runtime settings are not available', () => {
 			// Set build-time env var
-			(import.meta.env as N8nEnvFeatFlags).N8N_ENV_FEAT_TEST_FLAG = 'true';
+			(import.meta.env as N8nEnvFeatFlags).MNI_ENV_FEAT_TEST_FLAG = 'true';
 
 			// Runtime settings are empty
 			settingsStore.settings.envFeatureFlags = {};

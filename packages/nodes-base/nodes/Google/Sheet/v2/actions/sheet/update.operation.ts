@@ -1,5 +1,5 @@
-import type { IExecuteFunctions, IDataObject, INodeExecutionData } from 'n8n-workflow';
-import { NodeOperationError, UserError } from 'n8n-workflow';
+import type { IExecuteFunctions, IDataObject, INodeExecutionData } from 'MNI-workflow';
+import { NodeOperationError, UserError } from 'MNI-workflow';
 
 import {
 	cellFormat,
@@ -53,7 +53,7 @@ export const description: SheetProperties = [
 		description: 'Whether to insert the input data this node receives in the new row',
 	},
 	{
-		// eslint-disable-next-line n8n-nodes-base/node-param-display-name-miscased, n8n-nodes-base/node-param-display-name-wrong-for-dynamic-options
+		// eslint-disable-next-line MNI-nodes-base/node-param-display-name-miscased, MNI-nodes-base/node-param-display-name-wrong-for-dynamic-options
 		displayName: 'Column to match on',
 		name: 'columnToMatchOn',
 		type: 'options',
@@ -119,7 +119,7 @@ export const description: SheetProperties = [
 				name: 'values',
 				values: [
 					{
-						// eslint-disable-next-line n8n-nodes-base/node-param-display-name-wrong-for-dynamic-options
+						// eslint-disable-next-line MNI-nodes-base/node-param-display-name-wrong-for-dynamic-options
 						displayName: 'Column',
 						name: 'column',
 						type: 'options',

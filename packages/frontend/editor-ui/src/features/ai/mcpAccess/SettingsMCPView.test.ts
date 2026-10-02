@@ -2,21 +2,21 @@ import { nextTick } from 'vue';
 import { createTestingPinia } from '@pinia/testing';
 import { waitFor, within } from '@testing-library/vue';
 import userEvent from '@testing-library/user-event';
-import { capabilities, capabilityRegistry } from '@n8n/frontend-module-sdk';
-import type { McpExposeAllOffer } from '@n8n/frontend-module-sdk';
+import { capabilities, capabilityRegistry } from '@MNI/frontend-module-sdk';
+import type { McpExposeAllOffer } from '@MNI/frontend-module-sdk';
 import type { Mock } from 'vitest';
 import { createComponentRenderer } from '@/__tests__/render';
 import { mockedStore, type MockedStore, waitAllPromises } from '@/__tests__/utils';
 import SettingsMCPView from '@/features/ai/mcpAccess/SettingsMCPView.vue';
 import { useMCPStore } from '@/features/ai/mcpAccess/mcp.store';
-import { useSettingsStore } from '@n8n/stores/settings.store';
-import type { FrontendSettings, OAuthClientResponseDto } from '@n8n/api-types';
+import { useSettingsStore } from '@MNI/stores/settings.store';
+import type { FrontendSettings, OAuthClientResponseDto } from '@MNI/api-types';
 import { MCP_CLIENTS_VIEW, MCP_WORKFLOWS_VIEW } from '@/features/ai/mcpAccess/mcp.constants';
 import type { McpAgent, McpWorkflow } from '@/features/ai/mcpAccess/mcp.types';
 
 import { UNKNOWN_COUNT_VALUE } from '@/features/ai/mcpAccess/mcp.constants';
 import { createOAuthClient } from '@/features/ai/mcpAccess/mcp.test.utils';
-import { useToast } from '@n8n/composables/useToast';
+import { useToast } from '@MNI/composables/useToast';
 
 vi.mock('@/app/components/TimeAgo.vue', () => ({
 	default: {
@@ -46,11 +46,11 @@ vi.mock('@/app/utils/rbac/permissions', () => ({
 	hasPermission: hasPermissionMock,
 }));
 
-vi.mock('@n8n/composables/useTelemetry', () => ({
+vi.mock('@MNI/composables/useTelemetry', () => ({
 	useTelemetry: () => ({ track: trackSpy }),
 }));
 
-vi.mock('@n8n/composables/useToast', () => {
+vi.mock('@MNI/composables/useToast', () => {
 	const showMessage = vi.fn();
 	const showError = vi.fn();
 	return {

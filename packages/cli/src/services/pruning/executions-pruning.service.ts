@@ -1,11 +1,11 @@
-import { Logger } from '@n8n/backend-common';
-import { ExecutionsConfig } from '@n8n/config';
-import { Time } from '@n8n/constants';
-import { ExecutionRepository, DbConnection } from '@n8n/db';
-import { OnLeaderStepdown, OnLeaderTakeover, OnShutdown } from '@n8n/decorators';
-import { Service } from '@n8n/di';
-import { InstanceSettings } from 'n8n-core';
-import { ensureError } from '@n8n/utils/errors/ensure-error';
+import { Logger } from '@MNI/backend-common';
+import { ExecutionsConfig } from '@MNI/config';
+import { Time } from '@MNI/constants';
+import { ExecutionRepository, DbConnection } from '@MNI/db';
+import { OnLeaderStepdown, OnLeaderTakeover, OnShutdown } from '@MNI/decorators';
+import { Service } from '@MNI/di';
+import { InstanceSettings } from 'MNI-core';
+import { ensureError } from '@MNI/utils/errors/ensure-error';
 import { strict } from 'node:assert';
 
 import { ExecutionPersistence } from '@/executions/execution-persistence';

@@ -7,8 +7,8 @@ import type {
 	INode,
 	IPollFunctions,
 	JsonObject,
-} from 'n8n-workflow';
-import { jsonParse, NodeApiError, UserError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { jsonParse, NodeApiError, UserError } from 'MNI-workflow';
 
 import { validateUserTargetId, type UserTargetMessages } from '../../../GenericFunctions';
 

@@ -1,7 +1,7 @@
-import { ModuleRegistry } from '@n8n/backend-common';
-import type { User } from '@n8n/db';
-import { Container } from '@n8n/di';
-import type { InstanceAiAgentContextReader, InstanceAiContext } from '@n8n/instance-ai';
+import { ModuleRegistry } from '@MNI/backend-common';
+import type { User } from '@MNI/db';
+import { Container } from '@MNI/di';
+import type { InstanceAiAgentContextReader, InstanceAiContext } from '@MNI/instance-ai';
 import { mock } from 'vitest-mock-extended';
 
 import { userHasScopes } from '@/permissions.ee/check-access';

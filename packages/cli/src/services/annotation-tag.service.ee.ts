@@ -1,6 +1,6 @@
-import type { AnnotationTagEntity } from '@n8n/db';
-import { AnnotationTagRepository } from '@n8n/db';
-import { Service } from '@n8n/di';
+import type { AnnotationTagEntity } from '@MNI/db';
+import { AnnotationTagRepository } from '@MNI/db';
+import { Service } from '@MNI/di';
 
 import { validateEntity } from '@/generic-helpers';
 

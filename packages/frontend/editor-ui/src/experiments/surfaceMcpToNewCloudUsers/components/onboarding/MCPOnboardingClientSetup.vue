@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { useI18n } from '@n8n/i18n';
-import type { BaseTextKey } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
+import type { BaseTextKey } from '@MNI/i18n';
 import { computed } from 'vue';
 import MCPOnboardingCopyBlock from './MCPOnboardingCopyBlock.vue';
 import type { MCPOnboardingClient } from './types';

@@ -6,8 +6,8 @@ import type {
 	INodeTypeBaseDescription,
 	IWebhookFunctions,
 	IWebhookResponseData,
-} from 'n8n-workflow';
-import { NodeConnectionTypes } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeConnectionTypes } from 'MNI-workflow';
 
 import { getSites, webflowApiRequest } from '../GenericFunctions';
 import { verifySignature } from '../WebflowTriggerHelpers';

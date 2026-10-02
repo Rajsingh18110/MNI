@@ -1,12 +1,12 @@
-import { Logger } from '@n8n/backend-common';
-import { GlobalConfig } from '@n8n/config';
-import { ScheduledJobMisfirePolicy } from '@n8n/constants';
-import type { EntityManager } from '@n8n/db';
-import { Service } from '@n8n/di';
-import type { DesiredJob, Schedule } from '@n8n/scheduler';
-import { computeFirstRunAt } from '@n8n/scheduler';
-import { PollJobManager } from 'n8n-core';
-import type { CronExpression, INode, TriggerTime } from 'n8n-workflow';
+import { Logger } from '@MNI/backend-common';
+import { GlobalConfig } from '@MNI/config';
+import { ScheduledJobMisfirePolicy } from '@MNI/constants';
+import type { EntityManager } from '@MNI/db';
+import { Service } from '@MNI/di';
+import type { DesiredJob, Schedule } from '@MNI/scheduler';
+import { computeFirstRunAt } from '@MNI/scheduler';
+import { PollJobManager } from 'MNI-core';
+import type { CronExpression, INode, TriggerTime } from 'MNI-workflow';
 import { createHash } from 'node:crypto';
 
 import { PollBackoffService } from '@/workflows/triggers/poll-backoff.service';

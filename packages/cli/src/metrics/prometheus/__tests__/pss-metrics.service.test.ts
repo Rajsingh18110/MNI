@@ -1,6 +1,6 @@
 import type { Mock } from 'vitest';
-import { mockInstance } from '@n8n/backend-test-utils';
-import { PrometheusMetricsConfig } from '@n8n/config';
+import { mockInstance } from '@MNI/backend-test-utils';
+import { PrometheusMetricsConfig } from '@MNI/config';
 import { readFileSync } from 'node:fs';
 import promClient from 'prom-client';
 
@@ -13,13 +13,13 @@ const mockedReadFileSync = vi.mocked(readFileSync);
 
 describe('PrometheusPssMetricsService', () => {
 	const config = mockInstance(PrometheusMetricsConfig, {
-		prefix: 'n8n_',
+		prefix: 'MNI_',
 		includeDefaultMetrics: true,
 	});
 	let service: PrometheusPssMetricsService;
 
 	beforeEach(() => {
-		Object.assign(config, { prefix: 'n8n_', includeDefaultMetrics: true });
+		Object.assign(config, { prefix: 'MNI_', includeDefaultMetrics: true });
 		// Default: readFileSync throws so smaps_rollup is not available
 		mockedReadFileSync.mockImplementation(() => {
 			throw new Error('ENOENT: no such file or directory');
@@ -60,7 +60,7 @@ describe('PrometheusPssMetricsService', () => {
 			service.init();
 
 			expect(promClient.Gauge).toHaveBeenCalledWith({
-				name: 'n8n_process_pss_bytes',
+				name: 'MNI_process_pss_bytes',
 				help: 'Proportional Set Size of the process in bytes.',
 				collect: expect.any(Function) as unknown,
 			});

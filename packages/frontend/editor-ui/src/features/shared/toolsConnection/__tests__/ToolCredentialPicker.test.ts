@@ -37,7 +37,7 @@ const baseNodeItem: NodeConnectionItem = {
 	kind: 'node',
 	title: 'Slack',
 	status: 'none',
-	nodeTypeName: 'n8n-nodes-base.slack',
+	nodeTypeName: 'MNI-nodes-base.slack',
 };
 
 function render(

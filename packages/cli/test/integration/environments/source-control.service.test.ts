@@ -1,5 +1,5 @@
-import type { SourceControlledFile } from '@n8n/api-types';
-import { createTeamProject, createWorkflow, testDb, testModules } from '@n8n/backend-test-utils';
+import type { SourceControlledFile } from '@MNI/api-types';
+import { createTeamProject, createWorkflow, testDb, testModules } from '@MNI/backend-test-utils';
 import {
 	CredentialsEntity,
 	type Folder,
@@ -11,10 +11,10 @@ import {
 	type TagEntity,
 	type User,
 	WorkflowEntity,
-} from '@n8n/db';
-import { Container } from '@n8n/di';
+} from '@MNI/db';
+import { Container } from '@MNI/di';
 import * as fastGlob from 'fast-glob';
-import { Cipher } from 'n8n-core';
+import { Cipher } from 'MNI-core';
 import { readFile, writeFile } from 'node:fs/promises';
 import { basename, isAbsolute } from 'node:path';
 import type { Mock } from 'vitest';

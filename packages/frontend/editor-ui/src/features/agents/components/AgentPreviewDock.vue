@@ -5,8 +5,8 @@ import {
 	N8nIconButton,
 	N8nTooltip,
 	TOOLTIP_DELAY_MS,
-} from '@n8n/design-system';
-import { useI18n, type BaseTextKey } from '@n8n/i18n';
+} from '@MNI/design-system';
+import { useI18n, type BaseTextKey } from '@MNI/i18n';
 import { computed, nextTick, useTemplateRef, watch } from 'vue';
 import { useStorage } from '@vueuse/core';
 
@@ -84,7 +84,7 @@ const {
 } = useAgentSessionLangSmithExport();
 const previewChatPage =
 	useTemplateRef<InstanceType<typeof AgentPreviewChatPage>>('previewChatPage');
-const storedLayout = useStorage<string>('N8N_AGENT_PREVIEW_LAYOUT', PreviewLayout.Docked);
+const storedLayout = useStorage<string>('MNI_AGENT_PREVIEW_LAYOUT', PreviewLayout.Docked);
 const layout = computed<PreviewLayout>(() =>
 	storedLayout.value === PreviewLayout.Fullpage ? PreviewLayout.Fullpage : PreviewLayout.Docked,
 );

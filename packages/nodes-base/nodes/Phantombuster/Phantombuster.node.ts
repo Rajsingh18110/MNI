@@ -8,7 +8,7 @@ import {
 	type INodeTypeDescription,
 	NodeApiError,
 	NodeConnectionTypes,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { agentFields, agentOperations } from './AgentDescription';
 import {

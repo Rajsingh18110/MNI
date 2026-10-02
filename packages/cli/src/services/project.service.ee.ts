@@ -1,5 +1,5 @@
-import type { CreateProjectDto, ProjectType, UpdateProjectDto } from '@n8n/api-types';
-import { LicenseState, Logger, ModuleRegistry } from '@n8n/backend-common';
+import type { CreateProjectDto, ProjectType, UpdateProjectDto } from '@MNI/api-types';
+import { LicenseState, Logger, ModuleRegistry } from '@MNI/backend-common';
 import {
 	type User,
 	FolderRepository,
@@ -12,8 +12,8 @@ import {
 	SharedWorkflowRepository,
 	UserRepository,
 	type ProjectListOptions,
-} from '@n8n/db';
-import { Container, Service } from '@n8n/di';
+} from '@MNI/db';
+import { Container, Service } from '@MNI/di';
 import {
 	combineScopes,
 	getAuthPrincipalScopes,
@@ -27,10 +27,10 @@ import {
 	PROJECT_OWNER_ROLE_SLUG,
 	PROJECT_ADMIN_ROLE_SLUG,
 	isAssignableProjectRoleSlug,
-} from '@n8n/permissions';
-import type { FindOptionsWhere, EntityManager } from '@n8n/typeorm';
-import { In } from '@n8n/typeorm';
-import { UserError } from 'n8n-workflow';
+} from '@MNI/permissions';
+import type { FindOptionsWhere, EntityManager } from '@MNI/typeorm';
+import { In } from '@MNI/typeorm';
+import { UserError } from 'MNI-workflow';
 
 import { BadRequestError } from '@/errors/response-errors/bad-request.error';
 import { ConflictError } from '@/errors/response-errors/conflict.error';

@@ -1,9 +1,9 @@
-import type { User } from '@n8n/db';
-import { CredentialsRepository, WorkflowRepository } from '@n8n/db';
-import { Service } from '@n8n/di';
-import { In } from '@n8n/typeorm';
-import { ensureError } from '@n8n/utils/errors/ensure-error';
-import { FULL_ACCESS_NODE_TYPES } from 'n8n-core';
+import type { User } from '@MNI/db';
+import { CredentialsRepository, WorkflowRepository } from '@MNI/db';
+import { Service } from '@MNI/di';
+import { In } from '@MNI/typeorm';
+import { ensureError } from '@MNI/utils/errors/ensure-error';
+import { FULL_ACCESS_NODE_TYPES } from 'MNI-core';
 import {
 	validateWorkflowHasTriggerLikeNode,
 	NodeHelpers,
@@ -13,7 +13,7 @@ import {
 	isTriggerLikeNode,
 	isTriggerNode,
 	classifyTriggerIdentity,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import type {
 	INode,
 	INodes,
@@ -21,7 +21,7 @@ import type {
 	INodeType,
 	IWorkflowSettings,
 	ICredentialType,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { STARTING_NODES } from '@/constants';
 import { CredentialTypes } from '@/credential-types';
@@ -210,7 +210,7 @@ export class WorkflowValidationService {
 
 				// `typeDef.supportedNodes` from the loader holds short node names
 				// (e.g. "mattermost"), but `node.type` is fully qualified
-				// (e.g. "n8n-nodes-base.mattermost"). `getSupportedNodes` returns
+				// (e.g. "MNI-nodes-base.mattermost"). `getSupportedNodes` returns
 				// the post-processed FQ list so the comparison can match.
 				const supportedNodes = this.credentialTypes.getSupportedNodes(credentialType);
 				if (supportedNodes.includes(node.type)) continue;
@@ -489,7 +489,7 @@ export class WorkflowValidationService {
 	 * cannot mask another trigger that can't establish identity. A workflow with no
 	 * triggers provides neither.
 	 *
-	 * The per-trigger classification lives in `classifyTriggerIdentity` (n8n-workflow)
+	 * The per-trigger classification lives in `classifyTriggerIdentity` (MNI-workflow)
 	 * so the editor's trigger-compatibility warning can reuse the exact same rules.
 	 */
 	private classifyTriggerIdentities(
@@ -541,7 +541,7 @@ export class WorkflowValidationService {
 		nodes: INode[],
 	): Promise<SubWorkflowValidationResult> {
 		const executeWorkflowNodes = nodes.filter(
-			(node) => node.type === 'n8n-nodes-base.executeWorkflow' && !node.disabled,
+			(node) => node.type === 'MNI-nodes-base.executeWorkflow' && !node.disabled,
 		);
 
 		if (executeWorkflowNodes.length === 0) {

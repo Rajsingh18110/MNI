@@ -7,10 +7,10 @@ import type {
 	WorkflowEntity,
 	WorkflowPublishHistoryRepository,
 	WorkflowRepository,
-} from '@n8n/db';
-import type { EntityManager, UpdateResult } from '@n8n/typeorm';
-import type { INode, IWorkflowBase } from 'n8n-workflow';
-import { WorkflowActivationError } from 'n8n-workflow';
+} from '@MNI/db';
+import type { EntityManager, UpdateResult } from '@MNI/typeorm';
+import type { INode, IWorkflowBase } from 'MNI-workflow';
+import { WorkflowActivationError } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import type { ActiveWorkflowManager } from '@/active-workflow-manager';
@@ -130,7 +130,7 @@ describe('EnterpriseWorkflowService', () => {
 			const workflow = mock<IWorkflowBase>({
 				nodes: [
 					{
-						type: 'n8n-nodes-base.executeWorkflow',
+						type: 'MNI-nodes-base.executeWorkflow',
 						parameters: {
 							source: 'parameter',
 							workflowJson: JSON.stringify({
@@ -153,7 +153,7 @@ describe('EnterpriseWorkflowService', () => {
 			const workflow = mock<IWorkflowBase>({
 				nodes: [
 					{
-						type: 'n8n-nodes-base.executeWorkflow',
+						type: 'MNI-nodes-base.executeWorkflow',
 						parameters: {
 							source: 'parameter',
 							workflowJson: JSON.stringify({
@@ -201,7 +201,7 @@ describe('EnterpriseWorkflowService', () => {
 			const workflow = mock<IWorkflowBase>({
 				nodes: [
 					{
-						type: 'n8n-nodes-base.executeWorkflow',
+						type: 'MNI-nodes-base.executeWorkflow',
 						parameters: {
 							source: 'parameter',
 							workflowJson: JSON.stringify({
@@ -228,12 +228,12 @@ describe('EnterpriseWorkflowService', () => {
 			const workflow = mock<IWorkflowBase>({
 				nodes: [
 					{
-						type: 'n8n-nodes-base.executeWorkflow',
+						type: 'MNI-nodes-base.executeWorkflow',
 						parameters: {
 							source: 'parameter',
 							workflowJson: JSON.stringify({
 								nodes: [
-									{ type: 'n8n-nodes-base.executeWorkflow', parameters: { workflowJson: inner } },
+									{ type: 'MNI-nodes-base.executeWorkflow', parameters: { workflowJson: inner } },
 								],
 								connections: {},
 							}),
@@ -256,7 +256,7 @@ describe('EnterpriseWorkflowService', () => {
 			({
 				id,
 				name,
-				type: 'n8n-nodes-base.httpRequest',
+				type: 'MNI-nodes-base.httpRequest',
 				typeVersion: 4.2,
 				position: [0, 0],
 				parameters: {},
@@ -278,7 +278,7 @@ describe('EnterpriseWorkflowService', () => {
 			const inlineNode = {
 				id: 'new-inline',
 				name: 'Sub',
-				type: 'n8n-nodes-base.executeWorkflow',
+				type: 'MNI-nodes-base.executeWorkflow',
 				typeVersion: 1.2,
 				position: [0, 0],
 				parameters: {

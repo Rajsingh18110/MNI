@@ -2,12 +2,12 @@
 import { computed, ref } from 'vue';
 
 import Modal from '@/app/components/Modal.vue';
-import { useStorage } from '@n8n/composables/useStorage';
+import { useStorage } from '@MNI/composables/useStorage';
 import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';
 import { useUIStore } from '@/app/stores/ui.store';
 import { getActivatableTriggerNodes, getTriggerNodeServiceName } from '@/app/utils/nodeTypesUtils';
 import { useExecutionsStore } from '@/features/execution/executions/executions.store';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import { useRouter } from 'vue-router';
 import {
 	LOCAL_STORAGE_ACTIVATION_FLAG,
@@ -16,7 +16,7 @@ import {
 	WORKFLOW_SETTINGS_MODAL_KEY,
 } from '@/app/constants';
 
-import { N8nButton, N8nCheckbox, N8nText } from '@n8n/design-system';
+import { N8nButton, N8nCheckbox, N8nText } from '@MNI/design-system';
 import { injectWorkflowDocumentStore } from '@/app/stores/workflowDocument.store';
 
 const checked = ref(false);

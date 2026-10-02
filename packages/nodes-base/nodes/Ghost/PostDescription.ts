@@ -1,4 +1,4 @@
-import type { INodeProperties } from 'n8n-workflow';
+import type { INodeProperties } from 'MNI-workflow';
 
 export const postOperations: INodeProperties[] = [
 	{
@@ -398,7 +398,7 @@ export const postFields: INodeProperties[] = [
 				name: 'fields',
 				type: 'string',
 				default: '',
-				// eslint-disable-next-line n8n-nodes-base/node-param-description-miscased-url
+				// eslint-disable-next-line MNI-nodes-base/node-param-description-miscased-url
 				description:
 					'Limit the fields returned in the response object. E.g. for posts fields=title,url.',
 			},
@@ -443,7 +443,7 @@ export const postFields: INodeProperties[] = [
 				name: 'fields',
 				type: 'string',
 				default: '',
-				// eslint-disable-next-line n8n-nodes-base/node-param-description-miscased-url
+				// eslint-disable-next-line MNI-nodes-base/node-param-description-miscased-url
 				description:
 					'Limit the fields returned in the response object. E.g. for posts fields=title,url.',
 			},
@@ -539,7 +539,7 @@ export const postFields: INodeProperties[] = [
 				name: 'fields',
 				type: 'string',
 				default: '',
-				// eslint-disable-next-line n8n-nodes-base/node-param-description-miscased-url
+				// eslint-disable-next-line MNI-nodes-base/node-param-description-miscased-url
 				description:
 					'Limit the fields returned in the response object. E.g. for posts fields=title,url.',
 			},
@@ -604,7 +604,7 @@ export const postFields: INodeProperties[] = [
 				name: 'fields',
 				type: 'string',
 				default: '',
-				// eslint-disable-next-line n8n-nodes-base/node-param-description-miscased-url
+				// eslint-disable-next-line MNI-nodes-base/node-param-description-miscased-url
 				description:
 					'Limit the fields returned in the response object. E.g. for posts fields=title,url.',
 			},

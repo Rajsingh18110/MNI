@@ -1,5 +1,5 @@
-import { MessageEventBusDestinationTypeNames } from 'n8n-workflow';
-import type { MessageEventBusDestinationSentryOptions } from 'n8n-workflow';
+import { MessageEventBusDestinationTypeNames } from 'MNI-workflow';
+import type { MessageEventBusDestinationSentryOptions } from 'MNI-workflow';
 
 import {
 	MessageEventBusDestinationSentry,

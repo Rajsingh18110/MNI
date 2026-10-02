@@ -1,4 +1,4 @@
-import type { ToolDescriptor } from '@n8n/agents';
+import type { ToolDescriptor } from '@MNI/agents';
 
 import type { AgentHistory } from '../entities/agent-history.entity';
 import type { Agent } from '../entities/agent.entity';

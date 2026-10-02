@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { computed, onBeforeUnmount, onMounted, watch } from 'vue';
 import { useRouter } from 'vue-router';
-import { useI18n } from '@n8n/i18n';
-import { getResourcePermissions } from '@n8n/permissions';
-import { N8nIcon, N8nLink, N8nText } from '@n8n/design-system';
-import { useUsersStore } from '@n8n/stores/users.store';
+import { useI18n } from '@MNI/i18n';
+import { getResourcePermissions } from '@MNI/permissions';
+import { N8nIcon, N8nLink, N8nText } from '@MNI/design-system';
+import { useUsersStore } from '@MNI/stores/users.store';
 import { VIEWS } from '@/app/constants';
 import { useUIStore } from '@/app/stores/ui.store';
 import { useProjectsStore } from '@/features/collaboration/projects/projects.store';

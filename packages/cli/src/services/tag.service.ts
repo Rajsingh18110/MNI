@@ -1,6 +1,6 @@
-import type { TagEntity, ITagWithCountDb } from '@n8n/db';
-import { isUniqueConstraintError, TagRepository, TransactionRunner } from '@n8n/db';
-import { Service } from '@n8n/di';
+import type { TagEntity, ITagWithCountDb } from '@MNI/db';
+import { isUniqueConstraintError, TagRepository, TransactionRunner } from '@MNI/db';
+import { Service } from '@MNI/di';
 
 import { ExternalHooks } from '@/external-hooks';
 import { validateEntity } from '@/generic-helpers';

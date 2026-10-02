@@ -2,8 +2,8 @@ import { routeBinaryProperties } from '@utils/binary';
 import { chunk, flatten } from '@utils/utilities';
 import type { IResult } from 'mssql';
 import mssql from 'mssql';
-import { deepCopy, safeRegex } from 'n8n-workflow';
-import type { IDataObject, IExecuteFunctions, INodeExecutionData } from 'n8n-workflow';
+import { deepCopy, safeRegex } from 'MNI-workflow';
+import type { IDataObject, IExecuteFunctions, INodeExecutionData } from 'MNI-workflow';
 
 import type { ITables, OperationInputData } from './interfaces';
 

@@ -1,4 +1,4 @@
-import type { WorkflowAutoDeactivated } from '@n8n/api-types/push/workflow';
+import type { WorkflowAutoDeactivated } from '@MNI/api-types/push/workflow';
 import { useWorkflowsStore } from '@/app/stores/workflows.store';
 import { useWorkflowsListStore } from '@/app/stores/workflowsList.store';
 import { useWorkflowDocumentStore } from '@/app/stores/workflowDocument.store';

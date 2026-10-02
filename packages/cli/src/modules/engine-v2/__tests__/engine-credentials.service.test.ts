@@ -1,5 +1,5 @@
-import type { Logger } from '@n8n/backend-common';
-import type { IWorkflowExecuteAdditionalData } from 'n8n-workflow';
+import type { Logger } from '@MNI/backend-common';
+import type { IWorkflowExecuteAdditionalData } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import type { CredentialsHelper } from '@/credentials-helper';
@@ -18,7 +18,7 @@ const resolveRequest: ResolveCredentialRequest = {
 	credential: { id: 'cred-1', name: 'Acme API', type: 'httpHeaderAuth' },
 	execution: { executionId: 'exec-1', workflowId: 'wf-1', mode: 'manual' },
 	context: { userId: 'user-1', projectId: 'project-1' },
-	consumer: { nodeType: 'n8n-nodes-base.httpRequest' },
+	consumer: { nodeType: 'MNI-nodes-base.httpRequest' },
 };
 
 const decrypted = { name: 'X-Api-Key', value: 'secret' };
@@ -65,7 +65,7 @@ describe('EngineCredentialsService', () => {
 				'httpHeaderAuth',
 				'manual',
 				expect.objectContaining({
-					node: expect.objectContaining({ type: 'n8n-nodes-base.httpRequest' }),
+					node: expect.objectContaining({ type: 'MNI-nodes-base.httpRequest' }),
 				}),
 			);
 		});

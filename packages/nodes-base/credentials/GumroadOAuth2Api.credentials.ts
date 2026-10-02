@@ -1,4 +1,4 @@
-import type { ICredentialType, INodeProperties } from 'n8n-workflow';
+import type { ICredentialType, INodeProperties } from 'MNI-workflow';
 
 // https://gumroad.com/api#oauth
 export const defaultScopes = ['view_sales'];

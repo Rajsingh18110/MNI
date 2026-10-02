@@ -18,7 +18,7 @@
  * How long a pending intent stays valid before it is silently dropped.
  *
  * The backend applies a publication under an outbox lease
- * (N8N_WORKFLOW_PUBLICATION_OUTBOX_LEASE_SECONDS, default 2 minutes), and a
+ * (MNI_WORKFLOW_PUBLICATION_OUTBOX_LEASE_SECONDS, default 2 minutes), and a
  * record whose lease expired is reclaimed and retried. Cover the default lease
  * plus one retry so a slow publication still gets its success modal; this is
  * only a cleanup safety net — the modal opens when the confirming push

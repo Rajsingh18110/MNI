@@ -1,5 +1,5 @@
-import { intervalFromMilliseconds, SystemTask } from '@n8n/decorators';
-import type { SystemTaskEffects, SystemTaskPlacement, SystemTaskSchedule } from '@n8n/decorators';
+import { intervalFromMilliseconds, SystemTask } from '@MNI/decorators';
+import type { SystemTaskEffects, SystemTaskPlacement, SystemTaskSchedule } from '@MNI/decorators';
 
 import { CheckService } from './check.service';
 import { REGISTRY_CONSTANTS } from '../instance-registry.types';

@@ -1,5 +1,5 @@
 import { mock } from 'vitest-mock-extended';
-import type { ILoadOptionsFunctions, IWebhookFunctions, INodeType } from 'n8n-workflow';
+import type { ILoadOptionsFunctions, IWebhookFunctions, INodeType } from 'MNI-workflow';
 
 import { SlackTrigger } from '../SlackTrigger.node';
 import * as GenericFunctions from '../V2/GenericFunctions';
@@ -723,7 +723,7 @@ describe('SlackTrigger Node', () => {
 				await slackTrigger.methods!.loadOptions!.getUsers.call(mockLoadOptionsFunctions);
 
 			// as [label, value] tuples, to keep the assertion clear of `{ name, value }`
-			// literals that n8n-nodes-base/node-param-display-name-miscased reads as node params
+			// literals that MNI-nodes-base/node-param-display-name-miscased reads as node params
 			expect(result.map((o) => [o.name, o.value])).toEqual([
 				['alertbot', 'U333333333'],
 				['Jane Smith (@jane.smith)', 'U222222222'],

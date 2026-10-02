@@ -8,7 +8,7 @@ exports[`WorkflowHistoryButton > should be enabled if the feature is enabled and
     to="[object Object]"
   >
     
-    <n8n-icon-button-stub
+    <MNI-icon-button-stub
       active="false"
       data-test-id="workflow-history-button"
       disabled="false"

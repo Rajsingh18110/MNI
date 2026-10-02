@@ -6,7 +6,7 @@ import {
 	type INodeType,
 	type INodeTypeDescription,
 	type IPollFunctions,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 interface PollResponseBody {
 	items?: IDataObject[];

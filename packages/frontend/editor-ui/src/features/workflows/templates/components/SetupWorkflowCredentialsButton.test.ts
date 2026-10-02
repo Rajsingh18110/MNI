@@ -135,7 +135,7 @@ describe('SetupWorkflowCredentialsButton', () => {
 				{
 					id: '1',
 					name: 'OpenAI Model',
-					type: '@n8n/n8n-nodes-langchain.lmChatOpenAi',
+					type: '@MNI/MNI-nodes-langchain.lmChatOpenAi',
 					typeVersion: 1,
 					position: [0, 0] as [number, number],
 					parameters: {},
@@ -161,7 +161,7 @@ describe('SetupWorkflowCredentialsButton', () => {
 				{
 					id: '1',
 					name: 'OpenAI Model',
-					type: '@n8n/n8n-nodes-langchain.lmChatOpenAi',
+					type: '@MNI/MNI-nodes-langchain.lmChatOpenAi',
 					typeVersion: 1,
 					position: [0, 0] as [number, number],
 					parameters: {},
@@ -186,7 +186,7 @@ describe('SetupWorkflowCredentialsButton', () => {
 				{
 					id: '1',
 					name: 'OpenAI Model',
-					type: '@n8n/n8n-nodes-langchain.lmChatOpenAi',
+					type: '@MNI/MNI-nodes-langchain.lmChatOpenAi',
 					typeVersion: 1,
 					position: [0, 0] as [number, number],
 					parameters: {},
@@ -212,7 +212,7 @@ describe('SetupWorkflowCredentialsButton', () => {
 				{
 					id: '1',
 					name: 'OpenAI Model',
-					type: '@n8n/n8n-nodes-langchain.lmChatOpenAi',
+					type: '@MNI/MNI-nodes-langchain.lmChatOpenAi',
 					typeVersion: 1,
 					position: [0, 0] as [number, number],
 					parameters: {},
@@ -260,7 +260,7 @@ describe('SetupWorkflowCredentialsButton', () => {
 				{
 					id: '1',
 					name: 'OpenAI Model',
-					type: '@n8n/n8n-nodes-langchain.lmChatOpenAi',
+					type: '@MNI/MNI-nodes-langchain.lmChatOpenAi',
 					typeVersion: 1,
 					position: [0, 0] as [number, number],
 					parameters: {},
@@ -306,7 +306,7 @@ describe('SetupWorkflowCredentialsButton', () => {
 				{
 					id: '1',
 					name: 'OpenAI Model',
-					type: '@n8n/n8n-nodes-langchain.lmChatOpenAi',
+					type: '@MNI/MNI-nodes-langchain.lmChatOpenAi',
 					typeVersion: 1,
 					position: [0, 0] as [number, number],
 					parameters: {},
@@ -314,7 +314,7 @@ describe('SetupWorkflowCredentialsButton', () => {
 				{
 					id: '2',
 					name: 'Disabled Slack',
-					type: 'n8n-nodes-base.slack',
+					type: 'MNI-nodes-base.slack',
 					typeVersion: 1,
 					position: [200, 0] as [number, number],
 					parameters: {},
@@ -351,7 +351,7 @@ describe('SetupWorkflowCredentialsButton', () => {
 				{
 					id: '1',
 					name: 'OpenAI Model',
-					type: '@n8n/n8n-nodes-langchain.lmChatOpenAi',
+					type: '@MNI/MNI-nodes-langchain.lmChatOpenAi',
 					typeVersion: 1,
 					position: [0, 0] as [number, number],
 					parameters: {},

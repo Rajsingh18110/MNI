@@ -4,8 +4,8 @@ import type {
 	INodeListSearchItems,
 	INodeListSearchResult,
 	NodeApiError,
-} from 'n8n-workflow';
-import { NodeOperationError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeOperationError } from 'MNI-workflow';
 
 import { parseToApiNodeOperationError } from '../helpers';
 import { ColumnsFetcher } from '../helpers/columns-fetcher';

@@ -6,8 +6,8 @@ import type {
 	WorkflowExecuteMode,
 	IWorkflowDataProxyAdditionalKeys,
 	IWebhookDescription,
-} from 'n8n-workflow';
-import { NodeHelpers, resolveWebhookDescriptionField } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeHelpers, resolveWebhookDescriptionField } from 'MNI-workflow';
 
 /** Returns the full webhook description of the webhook with the given name */
 export function getWebhookDescription(
@@ -52,7 +52,7 @@ export function getNodeWebhookUrl(
 	}
 
 	// Prefer the field's native resolver (see `webhookDescriptionFields` in
-	// n8n-workflow) so static-parameter nodes never engage the expression engine.
+	// MNI-workflow) so static-parameter nodes never engage the expression engine.
 	const nativePath = resolveWebhookDescriptionField(node, webhookDescription, 'path');
 	const path = nativePath.resolved
 		? nativePath.value

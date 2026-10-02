@@ -7,7 +7,7 @@ import { pathToFileURL } from 'node:url';
 
 import { codespaceEnv } from '../../scripts/codespace-env.mjs';
 
-const DEQUEUE_URL = process.env.N8N_DEQUEUE_URL;
+const DEQUEUE_URL = process.env.MNI_DEQUEUE_URL;
 const TOKEN = process.env.AGENT_WORKER_TOKEN;
 const SLACK_TOKEN = process.env.SLACK_BOT_TOKEN;
 // tmux can retain empty identity values, but the Codespaces files stay current.
@@ -87,11 +87,11 @@ function turnTimeoutMessage(timeout) {
 export function openCodeEnvironment(environment) {
 	const childEnvironment = { ...environment };
 	delete childEnvironment.AGENT_WORKER_TOKEN;
-	delete childEnvironment.N8N_DEQUEUE_URL;
+	delete childEnvironment.MNI_DEQUEUE_URL;
 	delete childEnvironment.SLACK_BOT_TOKEN;
 	childEnvironment.OPENCODE_CONFIG_CONTENT = JSON.stringify(openCodeConfig(childEnvironment));
-	childEnvironment.N8N_AGENT_RUNTIME = 'sandbox';
-	childEnvironment.N8N_AGENT_PROFILE = 'slack';
+	childEnvironment.MNI_AGENT_RUNTIME = 'sandbox';
+	childEnvironment.MNI_AGENT_PROFILE = 'slack';
 	return childEnvironment;
 }
 
@@ -386,7 +386,7 @@ async function handle(turn) {
 
 async function main() {
 	for (const [key, value] of Object.entries({
-		N8N_DEQUEUE_URL: DEQUEUE_URL,
+		MNI_DEQUEUE_URL: DEQUEUE_URL,
 		AGENT_WORKER_TOKEN: TOKEN,
 		OPENROUTER_API_KEY: process.env.OPENROUTER_API_KEY,
 		GITHUB_USER,

@@ -6,8 +6,8 @@ import {
 	UpdateTagPublicDto,
 	UpdatedTagPublicDto,
 	tagIdParamSchema,
-} from '@n8n/api-types';
-import type { AuthenticatedRequest, TagEntity } from '@n8n/db';
+} from '@MNI/api-types';
+import type { AuthenticatedRequest, TagEntity } from '@MNI/db';
 import {
 	ApiDescription,
 	ApiErrorResponse,
@@ -23,7 +23,7 @@ import {
 	PublicApiController,
 	Put,
 	Query,
-} from '@n8n/decorators';
+} from '@MNI/decorators';
 import type { Response } from 'express';
 
 import { ConflictError } from '@/errors/response-errors/conflict.error';

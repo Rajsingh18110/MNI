@@ -1,4 +1,4 @@
-import type { IExecuteSingleFunctions, IN8nHttpFullResponse } from 'n8n-workflow';
+import type { IExecuteSingleFunctions, IN8nHttpFullResponse } from 'MNI-workflow';
 
 import { addNotePostReceiveAction, highLevelApiRequest } from '../GenericFunctions';
 import type { Mock } from 'vitest';

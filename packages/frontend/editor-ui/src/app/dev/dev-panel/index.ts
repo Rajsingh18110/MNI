@@ -2,7 +2,7 @@ import { createApp } from 'vue';
 
 import DevPanel from './DevPanel.vue';
 
-const MOUNT_ID = 'n8n-dev-panel-root';
+const MOUNT_ID = 'MNI-dev-panel-root';
 
 export function mountDevPanel() {
 	if (document.getElementById(MOUNT_ID)) return;

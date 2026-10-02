@@ -22,14 +22,14 @@ exports[`InputPanel > should render 1`] = `
           class="titleSection"
         >
           <span
-            class="n8n-text text-light size-medium bold title title"
+            class="MNI-text text-light size-medium bold title title"
           >
             
             Input
             
           </span>
           <div
-            class="n8n-segment-control segmentControl default"
+            class="MNI-segment-control segmentControl default"
           >
             <div
               aria-orientation="horizontal"
@@ -47,7 +47,7 @@ exports[`InputPanel > should render 1`] = `
               <button
                 aria-checked="true"
                 aria-label="Mapping"
-                class="n8n-segment-control-item item"
+                class="MNI-segment-control-item item"
                 data-active=""
                 data-orientation="horizontal"
                 data-reka-collection-item=""
@@ -73,7 +73,7 @@ exports[`InputPanel > should render 1`] = `
               <button
                 aria-checked="false"
                 aria-label="From AI"
-                class="n8n-segment-control-item item"
+                class="MNI-segment-control-item item"
                 data-orientation="horizontal"
                 data-reka-collection-item=""
                 data-state="unchecked"
@@ -111,7 +111,7 @@ exports[`InputPanel > should render 1`] = `
         <!---->
         <!--v-if-->
         <div
-          class="n8n-segment-control segmentControl default"
+          class="MNI-segment-control segmentControl default"
           data-v-5b5900d0=""
         >
           <div
@@ -130,7 +130,7 @@ exports[`InputPanel > should render 1`] = `
             <button
               aria-checked="true"
               aria-label="Schema"
-              class="n8n-segment-control-item item"
+              class="MNI-segment-control-item item"
               data-active=""
               data-orientation="horizontal"
               data-reka-collection-item=""
@@ -156,7 +156,7 @@ exports[`InputPanel > should render 1`] = `
             <button
               aria-checked="false"
               aria-label="Table"
-              class="n8n-segment-control-item item"
+              class="MNI-segment-control-item item"
               data-orientation="horizontal"
               data-reka-collection-item=""
               data-state="unchecked"
@@ -181,7 +181,7 @@ exports[`InputPanel > should render 1`] = `
             <button
               aria-checked="false"
               aria-label="JSON"
-              class="n8n-segment-control-item item"
+              class="MNI-segment-control-item item"
               data-orientation="horizontal"
               data-reka-collection-item=""
               data-state="unchecked"
@@ -224,7 +224,7 @@ exports[`InputPanel > should render 1`] = `
             <transition-stub
               appear="false"
               css="true"
-              name="n8n-button-fade"
+              name="MNI-button-fade"
               persisted="false"
             >
               <!--v-if-->
@@ -249,7 +249,7 @@ exports[`InputPanel > should render 1`] = `
             <transition-stub
               appear="false"
               css="true"
-              name="n8n-button-fade"
+              name="MNI-button-fade"
               persisted="false"
             >
               <!--v-if-->
@@ -312,7 +312,7 @@ exports[`InputPanel > should render 1`] = `
     >
       <div
         aria-hidden="true"
-        class="n8n-block-ui uiBlocker"
+        class="MNI-block-ui uiBlocker"
         data-v-1a77a378=""
         role="dialog"
         style="display: none;"

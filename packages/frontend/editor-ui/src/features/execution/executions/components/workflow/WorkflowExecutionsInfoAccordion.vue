@@ -1,21 +1,21 @@
 <script setup lang="ts">
 import { computed, ref, watch, onMounted } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { useUIStore } from '@/app/stores/ui.store';
 import { useWorkflowsStore } from '@/app/stores/workflows.store';
 import { WORKFLOW_SETTINGS_MODAL_KEY } from '@/app/constants';
-import type { IWorkflowSettings } from 'n8n-workflow';
+import type { IWorkflowSettings } from 'MNI-workflow';
 import { useNpsSurveyStore } from '@/app/stores/npsSurvey.store';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import { useInjectWorkflowId } from '@/app/composables/useInjectWorkflowId';
 import { useWorkflowSaving } from '@/app/composables/useWorkflowSaving';
 import { injectWorkflowDocumentStore } from '@/app/stores/workflowDocument.store';
-import type { IconColor } from '@n8n/design-system';
-import { type IAccordionItem } from '@n8n/design-system';
-import { type IconName } from '@n8n/design-system';
+import type { IconColor } from '@MNI/design-system';
+import { type IAccordionItem } from '@MNI/design-system';
+import { type IconName } from '@MNI/design-system';
 
-import { N8nInfoAccordion, N8nLink, N8nTooltip } from '@n8n/design-system';
+import { N8nInfoAccordion, N8nLink, N8nTooltip } from '@MNI/design-system';
 interface IWorkflowSaveSettings {
 	saveFailedExecutions: boolean;
 	saveSuccessfulExecutions: boolean;

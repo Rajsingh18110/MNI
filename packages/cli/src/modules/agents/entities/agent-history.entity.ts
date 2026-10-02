@@ -1,5 +1,5 @@
-import { type AgentJsonConfig, type AgentSkill } from '@n8n/api-types';
-import { JsonColumn, WithTimestamps } from '@n8n/db';
+import { type AgentJsonConfig, type AgentSkill } from '@MNI/api-types';
+import { JsonColumn, WithTimestamps } from '@MNI/db';
 import {
 	Column,
 	Entity,
@@ -8,7 +8,7 @@ import {
 	ManyToOne,
 	PrimaryColumn,
 	type Relation,
-} from '@n8n/typeorm';
+} from '@MNI/typeorm';
 
 import type { Agent } from './agent.entity';
 

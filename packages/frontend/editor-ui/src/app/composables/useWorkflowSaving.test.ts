@@ -7,7 +7,7 @@ import {
 	WorkflowIdKey,
 	type EditorEnabledFeatures,
 } from '@/app/constants/injectionKeys';
-import { getDebounceTime } from '@n8n/composables/useDebounce';
+import { getDebounceTime } from '@MNI/composables/useDebounce';
 import { useWorkflowSaving } from './useWorkflowSaving';
 import type { ProjectSharingData } from '@/features/collaboration/projects/projects.types';
 import router from '@/app/router';
@@ -18,13 +18,13 @@ import { useWorkflowsStore } from '@/app/stores/workflows.store';
 import { useWorkflowsListStore } from '@/app/stores/workflowsList.store';
 import { useWorkflowSaveStore } from '@/app/stores/workflowSave.store';
 import { useBackendConnectionStore } from '@/app/stores/backendConnection.store';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { useFocusPanelStore } from '@/app/stores/focusPanel.store';
-import type { WorkflowDataUpdate } from '@n8n/rest-api-client/api/workflows';
-import { ResponseError } from '@n8n/rest-api-client';
+import type { WorkflowDataUpdate } from '@MNI/rest-api-client/api/workflows';
+import { ResponseError } from '@MNI/rest-api-client';
 import { mockedStore } from '@/__tests__/utils';
 import { createTestNode, createTestWorkflow, mockNodeTypeDescription } from '@/__tests__/mocks';
-import { CHAT_TRIGGER_NODE_TYPE, NodeConnectionTypes } from 'n8n-workflow';
+import { CHAT_TRIGGER_NODE_TYPE, NodeConnectionTypes } from 'MNI-workflow';
 import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';
 import {
 	createWorkflowDocumentId,
@@ -67,7 +67,7 @@ vi.mock('@/app/composables/usePolicyViolationToast', () => ({
 	}),
 }));
 
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: () => ({
 		showMessage: showMessageSpy,
 		showToast: vi.fn(() => ({ close: vi.fn() })),
@@ -76,8 +76,8 @@ vi.mock('@n8n/composables/useToast', () => ({
 	}),
 }));
 
-vi.mock('@n8n/permissions', async (importOriginal) => ({
-	...(await importOriginal<typeof import('@n8n/permissions')>()),
+vi.mock('@MNI/permissions', async (importOriginal) => ({
+	...(await importOriginal<typeof import('@MNI/permissions')>()),
 	getResourcePermissions: () => ({
 		workflow: { update: true },
 	}),
@@ -101,7 +101,7 @@ const getDuplicateTestWorkflow = (): WorkflowDataUpdate => ({
 			},
 			id: 'c1e1b6e7-df13-41b1-95f6-42903b85e438',
 			name: 'Webhook',
-			type: 'n8n-nodes-base.webhook',
+			type: 'MNI-nodes-base.webhook',
 			typeVersion: 2,
 			position: [680, 20],
 			webhookId: '5340ae49-2c96-4492-9073-7744d2e52b8a',
@@ -113,7 +113,7 @@ const getDuplicateTestWorkflow = (): WorkflowDataUpdate => ({
 			},
 			id: 'aa5150d8-1d7d-4247-88d8-44c96fe3a37b',
 			name: 'Webhook 2',
-			type: 'n8n-nodes-base.webhook',
+			type: 'MNI-nodes-base.webhook',
 			typeVersion: 2,
 			position: [700, 40],
 			webhookId: 'aa5150d8-1d7d-4247-88d8-44c96fe3a37b',
@@ -127,7 +127,7 @@ const getDuplicateTestWorkflow = (): WorkflowDataUpdate => ({
 			},
 			id: '979d8443-51b1-48e2-b239-acf399b66509',
 			name: 'Wait',
-			type: 'n8n-nodes-base.wait',
+			type: 'MNI-nodes-base.wait',
 			typeVersion: 1.1,
 			position: [900, 20],
 			webhookId: '5340ae49-2c96-4492-9073-7744d2e52b8a',
@@ -457,7 +457,7 @@ describe('useWorkflowSaving', () => {
 				createTestNode({
 					id: 'anchor',
 					name: 'Empty group anchor',
-					type: 'n8n-nodes-base.noOp',
+					type: 'MNI-nodes-base.noOp',
 					parameters: { emptyGroupAnchor: true },
 				}),
 			];
@@ -577,7 +577,7 @@ describe('useWorkflowSaving', () => {
 						},
 						id: 'node-with-expression',
 						name: 'Webhook with expression',
-						type: 'n8n-nodes-base.webhook',
+						type: 'MNI-nodes-base.webhook',
 						typeVersion: 2,
 						position: [680, 20],
 						webhookId: 'original-webhook-id-1',
@@ -589,7 +589,7 @@ describe('useWorkflowSaving', () => {
 						},
 						id: 'node-without-expression',
 						name: 'Webhook with static path',
-						type: 'n8n-nodes-base.webhook',
+						type: 'MNI-nodes-base.webhook',
 						typeVersion: 2,
 						position: [700, 40],
 						webhookId: 'original-webhook-id-2',
@@ -626,7 +626,7 @@ describe('useWorkflowSaving', () => {
 						parameters: {},
 						id: oldId1,
 						name: 'Node 1',
-						type: 'n8n-nodes-base.noOp',
+						type: 'MNI-nodes-base.noOp',
 						typeVersion: 1,
 						position: [0, 0],
 					},
@@ -634,7 +634,7 @@ describe('useWorkflowSaving', () => {
 						parameters: {},
 						id: oldId2,
 						name: 'Node 2',
-						type: 'n8n-nodes-base.noOp',
+						type: 'MNI-nodes-base.noOp',
 						typeVersion: 1,
 						position: [200, 0],
 					},
@@ -672,7 +672,7 @@ describe('useWorkflowSaving', () => {
 				nodes: [
 					createTestNode({
 						name: 'Trello Trigger',
-						type: 'n8n-nodes-base.trelloTrigger',
+						type: 'MNI-nodes-base.trelloTrigger',
 						parameters: { authentication: 'apiKey', id: '4d5ea62fd76aa1136000000c' },
 						webhookId: 'original-node-webhook-id',
 					}),
@@ -1781,7 +1781,7 @@ describe('useWorkflowSaving', () => {
 			const autosaveStore = useWorkflowSaveStore();
 			const settingsStore = mockedStore(useSettingsStore);
 
-			// Mock isAutosaveEnabled to return false (simulating N8N_WORKFLOWS_AUTOSAVE_DISABLED=true)
+			// Mock isAutosaveEnabled to return false (simulating MNI_WORKFLOWS_AUTOSAVE_DISABLED=true)
 			settingsStore.isAutosaveEnabled = false;
 
 			autosaveStore.reset();

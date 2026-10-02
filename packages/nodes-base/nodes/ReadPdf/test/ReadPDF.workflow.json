@@ -2,14 +2,14 @@
 	"nodes": [
 		{
 			"name": "When clicking \"Execute Workflow\"",
-			"type": "n8n-nodes-base.manualTrigger",
+			"type": "MNI-nodes-base.manualTrigger",
 			"typeVersion": 1,
 			"parameters": {},
 			"position": [660, 580]
 		},
 		{
 			"name": "Read sample.pdf",
-			"type": "n8n-nodes-base.readBinaryFile",
+			"type": "MNI-nodes-base.readBinaryFile",
 			"typeVersion": 1,
 			"parameters": {
 				"filePath": "C:\\Test\\sample.pdf"
@@ -18,7 +18,7 @@
 		},
 		{
 			"name": "Read PDF",
-			"type": "n8n-nodes-base.readPDF",
+			"type": "MNI-nodes-base.readPDF",
 			"typeVersion": 1,
 			"parameters": {},
 			"position": [1100, 580]
@@ -53,7 +53,7 @@
 						"Producer": "iLovePDF",
 						"ModDate": "D:20230210122750Z"
 					},
-					"text": "N8N\nSample PDF\nLorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor\ninvidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et\njusto duo dolores et ea rebum.",
+					"text": "MNI\nSample PDF\nLorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor\ninvidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et\njusto duo dolores et ea rebum.",
 					"version": "5.4.296"
 				}
 			}

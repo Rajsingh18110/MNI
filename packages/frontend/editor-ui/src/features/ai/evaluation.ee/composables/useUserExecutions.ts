@@ -1,5 +1,5 @@
-import type { SerializedCursor } from '@n8n/api-types';
-import type { ExecutionSummary } from 'n8n-workflow';
+import type { SerializedCursor } from '@MNI/api-types';
+import type { ExecutionSummary } from 'MNI-workflow';
 
 import { injectWorkflowDocumentStore } from '@/app/stores/workflowDocument.store';
 import { useExecutionsStore } from '@/features/execution/executions/executions.store';

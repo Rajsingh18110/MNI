@@ -1,4 +1,4 @@
-import type { INodeProperties } from 'n8n-workflow';
+import type { INodeProperties } from 'MNI-workflow';
 
 import { updateDisplayOptions } from '@utils/utilities';
 
@@ -24,7 +24,7 @@ export const description: INodeProperties[] = updateDisplayOptions(
 				{
 					name: 'Get Many',
 					value: 'getAll',
-					// eslint-disable-next-line n8n-nodes-base/node-param-operation-option-description-wrong-for-get-many
+					// eslint-disable-next-line MNI-nodes-base/node-param-operation-option-description-wrong-for-get-many
 					description: 'List all the bases',
 					action: 'Get many bases',
 				},

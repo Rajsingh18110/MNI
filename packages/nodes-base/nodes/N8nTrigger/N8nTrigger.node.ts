@@ -3,8 +3,8 @@ import type {
 	INodeType,
 	INodeTypeDescription,
 	ITriggerResponse,
-} from 'n8n-workflow';
-import { NodeConnectionTypes } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeConnectionTypes } from 'MNI-workflow';
 
 type eventType = 'Instance started' | 'Workflow published' | 'Workflow updated' | undefined;
 
@@ -12,7 +12,7 @@ export class N8nTrigger implements INodeType {
 	description: INodeTypeDescription = {
 		displayName: 'MNI Trigger',
 		name: 'n8nTrigger',
-		icon: 'node:n8n-trigger',
+		icon: 'node:MNI-trigger',
 		iconColor: 'pink-red',
 		group: ['trigger'],
 		version: 1,

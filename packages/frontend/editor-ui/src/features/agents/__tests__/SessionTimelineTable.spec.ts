@@ -13,7 +13,7 @@ vi.mock('@/app/stores/nodeTypes.store', function () {
 	};
 });
 
-vi.mock('@n8n/design-system', async (importOriginal) => ({
+vi.mock('@MNI/design-system', async (importOriginal) => ({
 	...(await importOriginal()),
 	N8nRecycleScroller: {
 		name: 'N8nRecycleScroller',

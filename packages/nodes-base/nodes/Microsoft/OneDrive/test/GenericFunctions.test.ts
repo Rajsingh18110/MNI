@@ -6,7 +6,7 @@ import type {
 	IWorkflowMetadata,
 	NodeOperationError,
 	NodeParameterValueType,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import type { Mock, Mocked } from 'vitest';
 import { mockDeep } from 'vitest-mock-extended';
 
@@ -37,7 +37,7 @@ describe('Microsoft OneDrive GenericFunctions', () => {
 		mockNode = {
 			id: 'test-node',
 			name: 'Test OneDrive Node',
-			type: 'n8n-nodes-base.microsoftOneDrive',
+			type: 'MNI-nodes-base.microsoftOneDrive',
 			typeVersion: 1,
 			position: [0, 0],
 			parameters: {},

@@ -2,11 +2,11 @@
 import Modal from '@/app/components/Modal.vue';
 import { EXTERNAL_SECRETS_PROVIDER_MODAL_KEY, MODAL_CONFIRM } from '@/app/constants';
 import { computed, onMounted, ref } from 'vue';
-import type { EventBus } from '@n8n/utils/event-bus';
+import type { EventBus } from '@MNI/utils/event-bus';
 import { useExternalSecretsProvider } from '@/features/integrations/externalSecrets.ee/composables/useExternalSecretsProvider';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import { useMessage } from '@/app/composables/useMessage';
-import { useToast } from '@n8n/composables/useToast';
+import { useToast } from '@MNI/composables/useToast';
 import { useExternalSecretsStore } from '../externalSecrets.ee.store';
 import ParameterInputExpanded from '@/features/ndv/parameters/components/ParameterInputExpanded.vue';
 import type { IUpdateInformation } from '@/Interface';
@@ -14,13 +14,13 @@ import type {
 	ExternalSecretsProviderData,
 	ExternalSecretsProvider,
 } from '../externalSecrets.types';
-import type { IParameterLabel } from 'n8n-workflow';
+import type { IParameterLabel } from 'MNI-workflow';
 import ExternalSecretsProviderImage from './ExternalSecretsProviderImage.ee.vue';
 import ExternalSecretsProviderConnectionSwitch from './ExternalSecretsProviderConnectionSwitch.ee.vue';
-import { createEventBus } from '@n8n/utils/event-bus';
+import { createEventBus } from '@MNI/utils/event-bus';
 import { I18nT } from 'vue-i18n';
 
-import { N8nButton, N8nCallout, N8nLink, N8nNotice } from '@n8n/design-system';
+import { N8nButton, N8nCallout, N8nLink, N8nNotice } from '@MNI/design-system';
 const props = defineProps<{
 	data: { eventBus: EventBus; name: string };
 }>();

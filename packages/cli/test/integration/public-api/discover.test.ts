@@ -1,4 +1,4 @@
-import type { User } from '@n8n/db';
+import type { User } from '@MNI/db';
 
 import { AUTH_COOKIE_NAME } from '@/constants';
 
@@ -24,7 +24,7 @@ beforeEach(() => {
 });
 
 const testWithAPIKey = (method: 'get', url: string, apiKey: string | null) => async () => {
-	void authOwnerAgent.set({ 'X-N8N-API-KEY': apiKey });
+	void authOwnerAgent.set({ 'X-MNI-API-KEY': apiKey });
 	const response = await authOwnerAgent[method](url);
 	expect(response.statusCode).toBe(401);
 };

@@ -1,4 +1,4 @@
-import type { INodeProperties } from 'n8n-workflow';
+import type { INodeProperties } from 'MNI-workflow';
 
 /**
  * App-only target selector. Service Principal (app-only) Microsoft Graph has no

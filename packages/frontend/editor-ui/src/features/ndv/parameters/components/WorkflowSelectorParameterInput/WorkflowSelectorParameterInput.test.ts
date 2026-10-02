@@ -30,7 +30,7 @@ vi.mock('@/app/composables/useDocumentVisibility', () => ({
 	useDocumentVisibility: () => ({ onDocumentVisible }),
 }));
 
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: vi.fn(() => mockToast),
 }));
 

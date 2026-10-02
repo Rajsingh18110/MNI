@@ -4,9 +4,9 @@ import type {
 	AgentSessionLangSmithExportResponse,
 	AgentSessionOrigin,
 	AgentSessionStatus,
-} from '@n8n/api-types';
-import { makeRestApiRequest } from '@n8n/rest-api-client';
-import type { IRestApiContext } from '@n8n/rest-api-client';
+} from '@MNI/api-types';
+import { makeRestApiRequest } from '@MNI/rest-api-client';
+import type { IRestApiContext } from '@MNI/rest-api-client';
 
 export interface AgentExecutionThread extends AgentSessionPreviewAccess {
 	id: string;

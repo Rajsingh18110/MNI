@@ -1,5 +1,5 @@
 import { mock } from 'vitest-mock-extended';
-import type { IExecuteFunctions, IWorkflowDataProxyData } from 'n8n-workflow';
+import type { IExecuteFunctions, IWorkflowDataProxyData } from 'MNI-workflow';
 
 import { getSandboxContext } from '../Sandbox';
 

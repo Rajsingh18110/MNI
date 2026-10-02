@@ -1,4 +1,4 @@
-import type { ProjectIcon, ProjectType } from '@n8n/api-types';
+import type { ProjectIcon, ProjectType } from '@MNI/api-types';
 import type {
 	APIRequest,
 	AuthenticatedRequest,
@@ -7,20 +7,20 @@ import type {
 	User,
 	ListQueryDb,
 	WorkflowHistory,
-} from '@n8n/db';
+} from '@MNI/db';
 import type {
 	AssignableGlobalRole,
 	AssignableProjectRole,
 	GlobalRole,
 	ProjectRole,
 	Scope,
-} from '@n8n/permissions';
+} from '@MNI/permissions';
 import type { Request } from 'express';
 import type {
 	ICredentialDataDecryptedObject,
 	INodeCredentialTestRequest,
 	IPersonalizationSurveyAnswersV4,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 export type AuthlessRequest<
 	RouteParams = {},

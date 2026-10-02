@@ -24,7 +24,7 @@ const newPackages = [];
 for (const { name, private: isPrivate } of packages) {
 	if (isPrivate) continue;
 
-	// Scoped packages must be encoded: @n8n/foo → @n8n%2Ffoo
+	// Scoped packages must be encoded: @MNI/foo → @MNI%2Ffoo
 	const encodedName = name.startsWith('@') ? name.replace('/', '%2F') : name;
 	const url = `https://registry.npmjs.org/${encodedName}`;
 
@@ -79,7 +79,7 @@ Steps to unblock the release, for each new package listed above:
        https://docs.npmjs.com/trusted-publishers
 
      Use the following settings:
-       Repository owner : n8n-io
+       Repository owner : MNI-io
        Repository name  : MNI
        Workflow filename: release-publish.yml
 

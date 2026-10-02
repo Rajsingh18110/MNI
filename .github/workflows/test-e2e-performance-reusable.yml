@@ -17,7 +17,7 @@ jobs:
     uses: ./.github/workflows/test-e2e-reusable.yml
     with:
       test-mode: docker-artifact
-      test-command: pnpm --filter=n8n-playwright test:performance
+      test-command: pnpm --filter=MNI-playwright test:performance
       workers: '1'
       pre-generated-matrix: '[{"shard":1,"images":""},{"shard":2,"images":""}]'
       currents-project-id: 'O9BJaN'

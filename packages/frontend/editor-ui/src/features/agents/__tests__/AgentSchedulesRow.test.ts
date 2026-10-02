@@ -1,11 +1,11 @@
-import type { AgentJsonTaskConfig, AgentTaskDto } from '@n8n/api-types';
+import type { AgentJsonTaskConfig, AgentTaskDto } from '@MNI/api-types';
 import { flushPromises, mount } from '@vue/test-utils';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { AGENT_TASK_MODAL_KEY } from '../constants';
 import AgentSchedulesRow from '../components/AgentSchedulesRow.vue';
 
-vi.mock('@n8n/stores/useRootStore', () => ({
+vi.mock('@MNI/stores/useRootStore', () => ({
 	useRootStore: () => ({ restApiContext: {} }),
 }));
 
@@ -19,7 +19,7 @@ vi.mock('../composables/useAgentApi', () => ({
 	getAgentTasks: (...args: unknown[]) => getAgentTasksSpy(...args),
 }));
 
-vi.mock('@n8n/i18n', () => ({
+vi.mock('@MNI/i18n', () => ({
 	useI18n: () => ({ baseText: (key: string) => key }),
 }));
 

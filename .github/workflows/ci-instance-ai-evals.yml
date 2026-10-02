@@ -19,14 +19,14 @@ on:
   pull_request:
     types: [opened, reopened, ready_for_review]
     paths:
-      - 'packages/@n8n/instance-ai/src/**'
-      - 'packages/@n8n/instance-ai/skills/**'
-      - 'packages/@n8n/instance-ai/knowledge-base/**'
-      - 'packages/@n8n/instance-ai/evaluations/**'
+      - 'packages/@MNI/instance-ai/src/**'
+      - 'packages/@MNI/instance-ai/skills/**'
+      - 'packages/@MNI/instance-ai/knowledge-base/**'
+      - 'packages/@MNI/instance-ai/evaluations/**'
       - 'packages/cli/src/modules/instance-ai/**'
       - 'packages/cli/src/modules/agents/**'
       - 'packages/core/src/execution-engine/eval-mock-helpers.ts'
-      - 'packages/@n8n/agents/src/**'
+      - 'packages/@MNI/agents/src/**'
   workflow_dispatch:
     inputs:
       pr:
@@ -51,7 +51,7 @@ jobs:
   resolve:
     name: Resolve eval target
     if: >-
-      github.repository == 'n8n-io/n8n' &&
+      github.repository == 'MNI-io/MNI' &&
       (github.event_name != 'pull_request' ||
         (github.event.pull_request.draft == false &&
          github.event.pull_request.head.repo.fork == false))
@@ -89,7 +89,7 @@ jobs:
             # after a push - use it only when its parents include the current
             # head (i.e. it reflects the latest push); otherwise fall back to the
             # raw head. Either way a dispatched run can't restore the prepare-docker
-            # image cache (it's scoped to refs/pull/N/merge), so load-n8n-docker
+            # image cache (it's scoped to refs/pull/N/merge), so load-MNI-docker
             # rebuilds from the checkout.
             pr_json=$(gh api "repos/$REPO/pulls/$INPUT_PR")
             head_repo=$(echo "$pr_json" | jq -r '.head.repo.full_name')
@@ -159,7 +159,7 @@ jobs:
               packages/cli/src/modules/agents/json-config/**
               packages/cli/src/modules/agents/adapters/**
               packages/cli/src/modules/agents/instance-ai-builder-delegate.adapter.ts
-              packages/@n8n/instance-ai/skills/agent-builder/**
+              packages/@MNI/instance-ai/skills/agent-builder/**
 
   run-evals:
     name: Instance AI Workflow Evals

@@ -1,6 +1,6 @@
-import { sleep } from '@n8n/utils/sleep';
-import { NodeOperationError } from 'n8n-workflow';
-import type { IExecuteFunctions, INodeExecutionData } from 'n8n-workflow';
+import { sleep } from '@MNI/utils/sleep';
+import { NodeOperationError } from 'MNI-workflow';
+import type { IExecuteFunctions, INodeExecutionData } from 'MNI-workflow';
 
 import { JOB_RUN_DEFAULT_TIMEOUT_SECONDS } from '../../constants';
 import {

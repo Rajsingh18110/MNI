@@ -1,11 +1,11 @@
-import type { BaseTextKey } from '@n8n/i18n';
+import type { BaseTextKey } from '@MNI/i18n';
 import type {
 	AgentIntegrationConfig,
 	AgentJsonConfig,
 	AgentJsonToolConfig,
 	AgentPersonalisation,
 	AgentTaskConfig,
-} from '@n8n/api-types';
+} from '@MNI/api-types';
 
 type AgentTemplateGradient = AgentPersonalisation['gradient'];
 
@@ -88,7 +88,7 @@ export const AGENT_TEMPLATES: readonly AgentTemplate[] = [
 					name: 'Gmail',
 					description: 'Read and send emails through Gmail.',
 					node: {
-						nodeType: 'n8n-nodes-base.gmail',
+						nodeType: 'MNI-nodes-base.gmail',
 						nodeTypeVersion: 2,
 						// `getAll` is valid with no extra fields. The default
 						// `send` operation requires recipient, subject, and body,
@@ -102,7 +102,7 @@ export const AGENT_TEMPLATES: readonly AgentTemplate[] = [
 					name: 'Google Calendar',
 					description: 'Create and update calendar events.',
 					node: {
-						nodeType: 'n8n-nodes-base.googleCalendar',
+						nodeType: 'MNI-nodes-base.googleCalendar',
 						nodeTypeVersion: 1,
 						// `create` requires start and end. Runtime values keep the
 						// tool valid before a calendar is connected.
@@ -148,7 +148,7 @@ export const AGENT_TEMPLATES: readonly AgentTemplate[] = [
 					name: 'Google Calendar',
 					description: 'Find open slots on Google Calendar.',
 					node: {
-						nodeType: 'n8n-nodes-base.googleCalendar',
+						nodeType: 'MNI-nodes-base.googleCalendar',
 						nodeTypeVersion: 1.3,
 						// Availability needs an interval. Runtime values keep the
 						// tool valid before a calendar is connected.

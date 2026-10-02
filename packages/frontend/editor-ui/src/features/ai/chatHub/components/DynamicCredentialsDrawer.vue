@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { DynamicCredentialItem } from '@/features/ai/chatHub/composables/useDynamicCredentialsStatus';
-import { useI18n } from '@n8n/i18n';
-import { N8nButton, N8nIconButton, N8nText, N8nSpinner } from '@n8n/design-system';
+import { useI18n } from '@MNI/i18n';
+import { N8nButton, N8nIconButton, N8nText, N8nSpinner } from '@MNI/design-system';
 
 defineProps<{
 	credentials: DynamicCredentialItem[];

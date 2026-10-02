@@ -1,4 +1,4 @@
-import type { IDataObject, IExecuteFunctions } from 'n8n-workflow';
+import type { IDataObject, IExecuteFunctions } from 'MNI-workflow';
 
 import { execute as activityCreateExecute } from '../../v2/actions/activity/create.operation';
 import { execute as activityUpdateExecute } from '../../v2/actions/activity/update.operation';

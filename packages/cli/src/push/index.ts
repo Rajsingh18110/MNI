@@ -1,14 +1,14 @@
-import type { PushMessage } from '@n8n/api-types';
-import { inProduction, Logger, TypedEmitter } from '@n8n/backend-common';
-import type { User } from '@n8n/db';
-import { OnPubSubEvent, OnShutdown } from '@n8n/decorators';
-import { Container, Service } from '@n8n/di';
-import { toMb } from '@n8n/utils/number/bytes';
+import type { PushMessage } from '@MNI/api-types';
+import { inProduction, Logger, TypedEmitter } from '@MNI/backend-common';
+import type { User } from '@MNI/db';
+import { OnPubSubEvent, OnShutdown } from '@MNI/decorators';
+import { Container, Service } from '@MNI/di';
+import { toMb } from '@MNI/utils/number/bytes';
 import type { Application } from 'express';
 import { ServerResponse } from 'http';
 import type { Server } from 'http';
 import pick from 'lodash/pick';
-import { InstanceSettings } from 'n8n-core';
+import { InstanceSettings } from 'MNI-core';
 import { parse as parseUrl } from 'url';
 import { Server as WSServer } from 'ws';
 

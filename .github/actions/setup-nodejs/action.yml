@@ -15,7 +15,7 @@ inputs:
     required: false
     default: 'false'
   docker-cache-key:
-    description: 'Sticky-disk identity for the Docker layer cache. Required when enable-docker-cache is true. Use n8n-io/n8n: Blacksmith only retains disks that already exist, and a newly created key stays empty across runs, so a per-image key silently disables caching entirely.'
+    description: 'Sticky-disk identity for the Docker layer cache. Required when enable-docker-cache is true. Use MNI-io/MNI: Blacksmith only retains disks that already exist, and a newly created key stays empty across runs, so a per-image key silently disables caching entirely.'
     required: false
     default: ''
   build-command:
@@ -340,7 +340,7 @@ runs:
         retention-days: 7
 
     # When setup-nodejs is nested inside another setup-nodejs invocation
-    # (e.g. load-n8n-docker's rebuild fallback → build-n8n-docker), a turbo
+    # (e.g. load-MNI-docker's rebuild fallback → build-MNI-docker), a turbo
     # cache server is already running and its TURBO_API env is already
     # exported, so the nested builds can just use it. Starting a second
     # server overwrites TURBOGHA_PORT, which both post-runs then read: the

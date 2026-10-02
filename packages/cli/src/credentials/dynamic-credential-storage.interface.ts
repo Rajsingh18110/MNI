@@ -2,7 +2,7 @@ import type {
 	ICredentialContext,
 	ICredentialDataDecryptedObject,
 	IWorkflowSettings,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 /**
  * Metadata for storing credentials to external systems.

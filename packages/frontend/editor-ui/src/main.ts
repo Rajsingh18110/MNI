@@ -7,7 +7,7 @@ import '@vue-flow/minimap/dist/style.css';
 import '@vue-flow/node-resizer/dist/style.css';
 
 import 'vue-json-pretty/lib/styles.css';
-import '@n8n/design-system/css/index.scss';
+import '@MNI/design-system/css/index.scss';
 
 import '@/main.scss';
 import '@/features/ai/assistant/aiBuilderDiff.scss';
@@ -17,9 +17,9 @@ import '@/app/dev/i18nHmr';
 import App from '@/app/App.vue';
 import router from '@/app/router';
 
-import { IconBodyLoaderKey } from '@n8n/design-system';
-import { loadLucideIconBody } from '@n8n/design-system/icons/lucide';
-import { i18nInstance } from '@n8n/i18n';
+import { IconBodyLoaderKey } from '@MNI/design-system';
+import { loadLucideIconBody } from '@MNI/design-system/icons/lucide';
+import { i18nInstance } from '@MNI/i18n';
 
 import { TelemetryPlugin } from '@/app/plugins/telemetry';
 import { GlobalComponentsPlugin } from '@/app/plugins/components';
@@ -74,7 +74,7 @@ app.use(i18nInstance);
 app.use(ChartJSPlugin);
 
 // Opt-in component re-render counter for the canvas performance benchmark.
-// No-op unless the N8N_RENDER_TRACKING localStorage flag is set, so it is
+// No-op unless the MNI_RENDER_TRACKING localStorage flag is set, so it is
 // inert for real users. Must run before mount so the mixin covers every
 // component.
 installRenderTracker(app);

@@ -1,4 +1,4 @@
-import { createVitestConfigWithDecorators } from '@n8n/vitest-config/node-decorators';
+import { createVitestConfigWithDecorators } from '@MNI/vitest-config/node-decorators';
 import path from 'node:path';
 import { mergeConfig } from 'vite';
 import { configDefaults } from 'vitest/config';
@@ -9,14 +9,14 @@ import { workspaceDistExternals } from './vitest.workspace-externals';
 /**
  * Note on alias order/specificity: Vite matches a string alias only when the
  * import equals it or starts with `alias + '/'`, so `@` matches `@/...` but not
- * `@n8n/...` or `@test/...`. The entries are therefore non-overlapping.
+ * `@MNI/...` or `@test/...`. The entries are therefore non-overlapping.
  */
 const alias = {
 	'@test-integration': path.resolve(__dirname, 'test/integration/shared'),
 	'@test': path.resolve(__dirname, 'test/shared'),
-	'@n8n/mcp-apps/server': path.resolve(__dirname, '../@n8n/mcp-apps/src/server/index.ts'),
-	'@n8n/backend-test-utils': path.resolve(__dirname, '../@n8n/backend-test-utils/src/index.ts'),
-	'@n8n/telemetry': path.resolve(__dirname, '../@n8n/telemetry/src'),
+	'@MNI/mcp-apps/server': path.resolve(__dirname, '../@MNI/mcp-apps/src/server/index.ts'),
+	'@MNI/backend-test-utils': path.resolve(__dirname, '../@MNI/backend-test-utils/src/index.ts'),
+	'@MNI/telemetry': path.resolve(__dirname, '../@MNI/telemetry/src'),
 	'@': path.resolve(__dirname, 'src'),
 };
 
@@ -34,7 +34,7 @@ export const baseConfig = mergeConfig(createVitestConfigWithDecorators(), {
 	test: {
 		// Run each test file in its own forked process.
 		// This is load-bearing: cli tests register service
-		// mocks into the `@n8n/di` Container (`mockInstance`), and a shared worker
+		// mocks into the `@MNI/di` Container (`mockInstance`), and a shared worker
 		// would leak that state across files.
 		pool: 'forks',
 		globalSetup: ['./test/global-setup.ts'],

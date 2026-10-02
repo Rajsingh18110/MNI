@@ -1,6 +1,6 @@
-import { PrometheusMetricsConfig } from '@n8n/config';
-import { Service } from '@n8n/di';
-import { EventMessageTypeNames } from 'n8n-workflow';
+import { PrometheusMetricsConfig } from '@MNI/config';
+import { Service } from '@MNI/di';
+import { EventMessageTypeNames } from 'MNI-workflow';
 import promClient, { Counter } from 'prom-client';
 
 import { EventMessageTypes } from '@/eventbus';
@@ -57,7 +57,7 @@ export class PrometheusEventBusMetricsService implements PrometheusMetricsCollec
 	}
 
 	private toMetricName(eventName: string): string | null {
-		const metricName = `${this.config.prefix}${eventName.replace('n8n.', '').replace(/\./g, '_')}_total`;
+		const metricName = `${this.config.prefix}${eventName.replace('MNI.', '').replace(/\./g, '_')}_total`;
 
 		if (promClient.validateMetricName(metricName)) {
 			return metricName;
@@ -90,7 +90,7 @@ export class PrometheusEventBusMetricsService implements PrometheusMetricsCollec
 
 				if (this.config.includeNodeTypeLabel) {
 					nodeLabels.node_type = String(
-						(payload.nodeType ?? 'unknown').replace('n8n-nodes-', '').replace(/\./g, '_'),
+						(payload.nodeType ?? 'unknown').replace('MNI-nodes-', '').replace(/\./g, '_'),
 					);
 				}
 

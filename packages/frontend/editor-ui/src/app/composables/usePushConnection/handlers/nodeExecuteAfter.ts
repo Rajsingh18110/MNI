@@ -1,10 +1,10 @@
-import type { NodeExecuteAfter } from '@n8n/api-types/push/execution';
+import type { NodeExecuteAfter } from '@MNI/api-types/push/execution';
 import { useAssistantStore } from '@/features/ai/assistant/assistant.store';
 import { useWorkflowExecutionStateStore } from '@/app/stores/workflowExecutionState.store';
 import { createExecutionDataId, useExecutionDataStore } from '@/app/stores/executionData.store';
-import type { INodeExecutionData, ITaskData } from 'n8n-workflow';
-import { TRIMMED_TASK_DATA_CONNECTIONS_KEY } from 'n8n-workflow';
-import type { PushPayload } from '@n8n/api-types';
+import type { INodeExecutionData, ITaskData } from 'MNI-workflow';
+import { TRIMMED_TASK_DATA_CONNECTIONS_KEY } from 'MNI-workflow';
+import type { PushPayload } from '@MNI/api-types';
 import { isValidNodeConnectionType } from '@/app/utils/typeGuards';
 import { openFormPopupWindow } from '@/features/execution/executions/executions.utils';
 import { trackNodeExecution } from './trackNodeExecution';

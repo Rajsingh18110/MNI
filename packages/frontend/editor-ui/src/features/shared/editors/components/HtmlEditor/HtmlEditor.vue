@@ -33,7 +33,7 @@ import {
 } from '../../plugins/codemirror/expressionCloseBrackets';
 import { editorKeymap } from '../../plugins/codemirror/keymap';
 import { n8nAutocompletion } from '../../plugins/codemirror/n8nLang';
-import { autoCloseTags, htmlLanguage } from '@n8n/codemirror-lang-html';
+import { autoCloseTags, htmlLanguage } from '@MNI/codemirror-lang-html';
 import { codeEditorTheme } from '../CodeNodeEditor/theme';
 import type { Range, Section } from './types';
 import { nonTakenRanges, pasteHandler } from './utils';

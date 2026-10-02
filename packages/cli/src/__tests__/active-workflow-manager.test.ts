@@ -1,18 +1,18 @@
 /* eslint-disable @typescript-eslint/unbound-method */
-import type { Logger } from '@n8n/backend-common';
-import { mockLogger } from '@n8n/backend-test-utils';
-import type { GlobalConfig, WorkflowsConfig } from '@n8n/config';
-import type { Project, WorkflowEntity, WorkflowHistory, WorkflowRepository } from '@n8n/db';
-import type { UpdateResult } from '@n8n/typeorm';
-import { createDeferredPromise } from '@n8n/utils/promise/deferred-promise';
-import { sleep } from '@n8n/utils/sleep';
-import type { ErrorReporter, InstanceSettings } from 'n8n-core';
+import type { Logger } from '@MNI/backend-common';
+import { mockLogger } from '@MNI/backend-test-utils';
+import type { GlobalConfig, WorkflowsConfig } from '@MNI/config';
+import type { Project, WorkflowEntity, WorkflowHistory, WorkflowRepository } from '@MNI/db';
+import type { UpdateResult } from '@MNI/typeorm';
+import { createDeferredPromise } from '@MNI/utils/promise/deferred-promise';
+import { sleep } from '@MNI/utils/sleep';
+import type { ErrorReporter, InstanceSettings } from 'MNI-core';
 import {
 	ActiveWorkflowTriggers,
 	PollTriggerExecutor,
 	ScheduledTaskManager,
 	Tracing,
-} from 'n8n-core';
+} from 'MNI-core';
 import type {
 	CronExpression,
 	ExecutionError,
@@ -26,8 +26,8 @@ import type {
 	IWorkflowExecuteAdditionalData,
 	WorkflowActivateMode,
 	WorkflowExecuteMode,
-} from 'n8n-workflow';
-import { Workflow, WorkflowActivationError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { Workflow, WorkflowActivationError } from 'MNI-workflow';
 import { mock, type MockProxy } from 'vitest-mock-extended';
 
 import type { ActivationErrorsService } from '@/activation-errors.service';
@@ -104,7 +104,7 @@ describe('ActiveWorkflowManager', () => {
 			});
 
 			test('should return `true` for `init`', () => {
-				// ensure webhooks are populated on init: https://github.com/n8n-io/n8n/pull/8830
+				// ensure webhooks are populated on init: https://github.com/MNI-io/MNI/pull/8830
 				const result = activeWorkflowManager.shouldAddWebhooks('init');
 				expect(result).toBe(true);
 			});
@@ -784,7 +784,7 @@ describe('ActiveWorkflowManager', () => {
 				{
 					id: 'draft-node-1',
 					name: 'Draft Webhook',
-					type: 'n8n-nodes-base.webhook',
+					type: 'MNI-nodes-base.webhook',
 					typeVersion: 1,
 					position: [0, 0] as [number, number],
 					parameters: {},
@@ -795,7 +795,7 @@ describe('ActiveWorkflowManager', () => {
 				{
 					id: 'active-node-1',
 					name: 'Active Webhook',
-					type: 'n8n-nodes-base.webhook',
+					type: 'MNI-nodes-base.webhook',
 					typeVersion: 1,
 					position: [0, 0] as [number, number],
 					parameters: {},

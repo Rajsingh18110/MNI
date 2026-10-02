@@ -1,4 +1,4 @@
-import type { ITaskData } from 'n8n-workflow';
+import type { ITaskData } from 'MNI-workflow';
 
 import { getItemCountByConnectionType } from '../get-item-count-by-connection-type';
 

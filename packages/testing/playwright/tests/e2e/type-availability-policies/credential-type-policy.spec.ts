@@ -1,5 +1,5 @@
-import type { CreateCredentialDto } from '@n8n/api-types';
-import type { IWorkflowBase } from 'n8n-workflow';
+import type { CreateCredentialDto } from '@MNI/api-types';
+import type { IWorkflowBase } from 'MNI-workflow';
 
 import {
 	availabilityInProjects,
@@ -25,7 +25,7 @@ test.use({
 	capability: {
 		env: {
 			TEST_ISOLATION: 'credential-type-policies',
-			N8N_ENABLED_MODULES: 'type-availability-policies',
+			MNI_ENABLED_MODULES: 'type-availability-policies',
 		},
 	},
 });

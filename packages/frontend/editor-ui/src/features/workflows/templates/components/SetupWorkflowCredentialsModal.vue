@@ -1,14 +1,14 @@
 <script lang="ts" setup>
 import Modal from '@/app/components/Modal.vue';
 import { useSetupWorkflowCredentialsModalState } from '../composables/useSetupWorkflowCredentialsModalState';
-import { useI18n, type BaseTextKey } from '@n8n/i18n';
+import { useI18n, type BaseTextKey } from '@MNI/i18n';
 import AppsRequiringCredsNotice from './AppsRequiringCredsNotice.vue';
 import SetupTemplateFormStep from './SetupTemplateFormStep.vue';
 import { computed, onMounted, onUnmounted } from 'vue';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
 import { useUIStore } from '@/app/stores/ui.store';
 
-import { N8nButton, N8nHeading } from '@n8n/design-system';
+import { N8nButton, N8nHeading } from '@MNI/design-system';
 import { injectWorkflowDocumentStore } from '@/app/stores/workflowDocument.store';
 const i18n = useI18n();
 const telemetry = useTelemetry();

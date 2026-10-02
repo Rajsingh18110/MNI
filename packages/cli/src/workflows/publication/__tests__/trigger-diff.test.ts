@@ -1,4 +1,4 @@
-import type { INode } from 'n8n-workflow';
+import type { INode } from 'MNI-workflow';
 
 import { computeTriggerDiff } from '@/workflows/publication/trigger-diff';
 
@@ -7,7 +7,7 @@ describe('computeTriggerDiff', () => {
 		return {
 			id,
 			name: id,
-			type: 'n8n-nodes-base.scheduleTrigger',
+			type: 'MNI-nodes-base.scheduleTrigger',
 			typeVersion: 1,
 			position: [0, 0],
 			parameters: {},
@@ -88,7 +88,7 @@ describe('computeTriggerDiff', () => {
 
 	describe('triggers that are always re-registered on a version change', () => {
 		const n8nTrigger = makeNode('MNI', {
-			type: 'n8n-nodes-base.n8nTrigger',
+			type: 'MNI-nodes-base.n8nTrigger',
 			parameters: { events: ['update'] },
 		});
 
@@ -106,7 +106,7 @@ describe('computeTriggerDiff', () => {
 
 		test('re-registers the deprecated Workflow Trigger the same way', () => {
 			const workflowTrigger = makeNode('legacy', {
-				type: 'n8n-nodes-base.workflowTrigger',
+				type: 'MNI-nodes-base.workflowTrigger',
 				parameters: { events: ['update'] },
 			});
 
@@ -119,7 +119,7 @@ describe('computeTriggerDiff', () => {
 
 		test('re-registers an unchanged Email Trigger (IMAP) so a republish reconnects it', () => {
 			const imapTrigger = makeNode('imap', {
-				type: 'n8n-nodes-base.emailReadImap',
+				type: 'MNI-nodes-base.emailReadImap',
 				typeVersion: 2.1,
 				parameters: { mailbox: 'INBOX' },
 			});
@@ -133,8 +133,8 @@ describe('computeTriggerDiff', () => {
 
 		test('re-registers an unchanged Postgres Trigger so a republish reconnects its LISTEN connection', () => {
 			const postgresTrigger = makeNode('pg', {
-				type: 'n8n-nodes-base.postgresTrigger',
-				parameters: { triggerMode: 'listenTrigger', channelName: 'n8n_channel' },
+				type: 'MNI-nodes-base.postgresTrigger',
+				parameters: { triggerMode: 'listenTrigger', channelName: 'MNI_channel' },
 			});
 
 			const diff = computeTriggerDiff([postgresTrigger], [{ ...postgresTrigger }], {

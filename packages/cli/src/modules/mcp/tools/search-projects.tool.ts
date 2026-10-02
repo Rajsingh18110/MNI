@@ -1,5 +1,5 @@
-import type { LicenseState } from '@n8n/backend-common';
-import type { ProjectRepository, User } from '@n8n/db';
+import type { LicenseState } from '@MNI/backend-common';
+import type { ProjectRepository, User } from '@MNI/db';
 import z from 'zod';
 
 import type { Telemetry } from '@/telemetry';

@@ -1,4 +1,4 @@
-import type { IWorkflowBase } from 'n8n-workflow';
+import type { IWorkflowBase } from 'MNI-workflow';
 
 import type { RISK_CATEGORIES } from '@/security-audit/constants';
 
@@ -47,7 +47,7 @@ export namespace Risk {
 	export type InstanceSection = SectionBase & {
 		location?: NodeLocation[];
 		settings?: Record<string, unknown>;
-		nextVersions?: n8n.Version[];
+		nextVersions?: MNI.Version[];
 	};
 
 	export type StandardReport = {
@@ -69,7 +69,7 @@ export namespace Risk {
 	export type AsyncReportFn = (workflows: IWorkflowBase[]) => Promise<Report | null>;
 }
 
-export namespace n8n {
+export namespace MNI {
 	export type Version = {
 		name: string;
 		nodes: Array<

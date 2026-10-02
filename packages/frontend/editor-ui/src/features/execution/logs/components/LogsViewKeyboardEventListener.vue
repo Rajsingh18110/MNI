@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { type KeyMap, useKeybindings } from '@/app/composables/useKeybindings';
-import { PopOutWindowKey } from '@n8n/composables/injectionKeys';
+import { PopOutWindowKey } from '@MNI/composables/injectionKeys';
 import { useActiveElement } from '@vueuse/core';
 import { ref, computed, toRef, inject } from 'vue';
 

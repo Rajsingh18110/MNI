@@ -7,7 +7,7 @@ This experiment is the fourth iteration in the Instance AI onboarding series to 
 - Iteration brief: https://app.notion.com/p/3685b6e0c94f80e19a41d3c9b8ba1a11
 - Series page: https://app.notion.com/p/3675b6e0c94f8066af22fa8cbdf691cb
 - Prompt matrix source: https://app.notion.com/p/e6498a338a61439282da09685e0d54ee
-- V2 concrete examples dashboard: https://eu.hex.tech/n8n/hex/EXP-AI-assistant-onboarding-new-033SzRiLfkPmGxCB7YMuMI/draft/logic?view=app&tab=v2---concrete-examples
+- V2 concrete examples dashboard: https://eu.hex.tech/MNI/hex/EXP-AI-assistant-onboarding-new-033SzRiLfkPmGxCB7YMuMI/draft/logic?view=app&tab=v2---concrete-examples
 
 ## Hypothesis
 
@@ -133,7 +133,7 @@ Manually verify the Production Cloud metadata payload before rollout. Staging al
 Support an experiment-only browser override so the team can test personalized buckets on deployed instances without changing database or Cloud metadata.
 
 - Read `instanceAiPersonalizedPromptProfile` from the page URL.
-- Persist valid values in `N8N_INSTANCE_AI_PERSONALIZED_PROMPT_PROFILE_OVERRIDE` so testers can navigate and refresh.
+- Persist valid values in `MNI_INSTANCE_AI_PERSONALIZED_PROMPT_PROFILE_OVERRIDE` so testers can navigate and refresh.
 - Accept only exact prompt catalog bucket keys in the form `<role>:<use-case>`, for example `sales:lead-nurturing`, `marketing:role-default`, or `executive-owner:global-top-performers`.
 - Accept `fallback` to force the v2 top-used fallback suggestions.
 - Accept `clear` or an empty value to remove the persisted override.

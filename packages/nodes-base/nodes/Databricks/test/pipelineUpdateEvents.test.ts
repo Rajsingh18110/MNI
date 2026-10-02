@@ -4,8 +4,8 @@ import type {
 	IPollFunctions,
 	JsonObject,
 	NodeParameterValueType,
-} from 'n8n-workflow';
-import { NodeApiError, NodeOperationError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeApiError, NodeOperationError } from 'MNI-workflow';
 import { mock, mockDeep } from 'vitest-mock-extended';
 
 import { DEFAULT_MAX_PAGES, PIPELINE_EVENTS_MAX_PAGE_SIZE, type PipelineEvent } from '../transport';
@@ -18,7 +18,7 @@ import { OVERLAP_MS, toIso } from '../trigger/shared';
 
 const HOST = 'https://adb-example.cloud.databricks.com';
 const PIPELINE_ID = '8199cd89-e2f5-4169-a6aa-656a24c8886d';
-const PIPELINE_NAME = 'n8n-spike-pipeline';
+const PIPELINE_NAME = 'MNI-spike-pipeline';
 const PIPELINE_URL = `${HOST}/pipelines/${PIPELINE_ID}`;
 const UPDATE_ID = '01ee1dae-da54-415a-aba8-0c8b0de503f1';
 const FAILED_UPDATE_ID = '4518bfc6-f9d6-4a17-8038-1ad43f74c6da';
@@ -34,9 +34,9 @@ const FLOOR_MS = CURSOR_MS - OVERLAP_MS;
 const NOW = FAILED_MS + 10 * 60 * 1000;
 const POLL_BUDGET_MS = 36_000;
 const FAILURE_MESSAGE =
-	"Update 4518bf has failed. Failed to analyze flow 'workspace.n8n_spike.n8n_spike_table'.";
+	"Update 4518bf has failed. Failed to analyze flow 'workspace.MNI_spike.MNI_spike_table'.";
 const TRACEBACK =
-	'Traceback (most recent call last):\n  File ".../n8n-spike-dlt-notebook", cell 1, line 7, in n8n_spike_table\n    raise Exception("intentional pipeline failure (MNI spike)") ...';
+	'Traceback (most recent call last):\n  File ".../MNI-spike-dlt-notebook", cell 1, line 7, in MNI_spike_table\n    raise Exception("intentional pipeline failure (MNI spike)") ...';
 const ALL_EVENTS = ['updateCompleted', 'updateFailed', 'updateStarted'];
 const IN_FLIGHT_STATES = [
 	'QUEUED',
@@ -83,9 +83,9 @@ const failedEvent = progressEvent('FAILED', FAILED_AT, FAILED_UPDATE_ID, {
 				message: TRACEBACK,
 				stack: [
 					{
-						declaring_class: 'n8n_spike_table',
-						method_name: 'n8n_spike_table',
-						file_name: 'n8n-spike-dlt-notebook',
+						declaring_class: 'MNI_spike_table',
+						method_name: 'MNI_spike_table',
+						file_name: 'MNI-spike-dlt-notebook',
 						line_number: 7,
 					},
 				],
@@ -97,13 +97,13 @@ const flowEvent = (timestamp: string): PipelineEvent => ({
 	id: `flow:${timestamp}`,
 	event_type: 'flow_progress',
 	level: 'INFO',
-	message: "Flow 'n8n_spike_table' is RUNNING.",
+	message: "Flow 'MNI_spike_table' is RUNNING.",
 	timestamp,
 	origin: {
 		pipeline_id: PIPELINE_ID,
 		pipeline_name: PIPELINE_NAME,
 		update_id: UPDATE_ID,
-		flow_name: 'n8n_spike_table',
+		flow_name: 'MNI_spike_table',
 	},
 	details: { flow_progress: { status: 'RUNNING' } },
 });
@@ -146,9 +146,9 @@ const failedResult = {
 			message: TRACEBACK,
 			stack: [
 				{
-					class: 'n8n_spike_table',
-					method: 'n8n_spike_table',
-					file: 'n8n-spike-dlt-notebook',
+					class: 'MNI_spike_table',
+					method: 'MNI_spike_table',
+					file: 'MNI-spike-dlt-notebook',
 					line: 7,
 				},
 			],

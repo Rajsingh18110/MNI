@@ -1,6 +1,6 @@
 <script lang="ts">
-import type { BaseTextKey } from '@n8n/i18n';
-import type { IconName } from '@n8n/design-system';
+import type { BaseTextKey } from '@MNI/i18n';
+import type { IconName } from '@MNI/design-system';
 
 type EmptyStateConfig = {
 	icon: IconName;
@@ -65,8 +65,8 @@ export function isEmptyStateResourceKey(key: string): key is EmptyStateResourceK
 
 <script lang="ts" setup>
 import { computed } from 'vue';
-import { useI18n } from '@n8n/i18n';
-import { N8nEmptyState } from '@n8n/design-system';
+import { useI18n } from '@MNI/i18n';
+import { N8nEmptyState } from '@MNI/design-system';
 
 const props = withDefaults(
 	defineProps<{

@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
-import type { ExecutionSummary } from 'n8n-workflow';
-import { useI18n } from '@n8n/i18n';
-import { getResourcePermissions } from '@n8n/permissions';
+import type { ExecutionSummary } from 'MNI-workflow';
+import { useI18n } from '@MNI/i18n';
+import { getResourcePermissions } from '@MNI/permissions';
 import { useWorkflowsListStore } from '@/app/stores/workflowsList.store';
 import { useInjectWorkflowId } from '@/app/composables/useInjectWorkflowId';
 
 import { ElDropdown } from 'element-plus';
-import { N8nBadge, N8nButton, N8nHeading, N8nText } from '@n8n/design-system';
+import { N8nBadge, N8nButton, N8nHeading, N8nText } from '@MNI/design-system';
 const props = defineProps<{
 	execution: ExecutionSummary & {
 		customData?: Record<string, string>;
@@ -102,7 +102,7 @@ function onDropdownVisibleChange(visible: boolean) {
 						data-test-id="execution-annotation-data-empty"
 					>
 						<N8nText color="text-base" size="small" align="center">
-							<span v-n8n-html="i18n.baseText('executionAnnotationView.data.notFound')" />
+							<span v-MNI-html="i18n.baseText('executionAnnotationView.data.notFound')" />
 						</N8nText>
 					</div>
 				</div>

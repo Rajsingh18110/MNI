@@ -3,7 +3,7 @@ import {
 	DEPRECATED_TIMEZONE_ONLY_OPERATORS,
 	MULTI_STEP_DATE_OPERATORS,
 } from './GenericFunctions';
-import type { INodeProperties } from 'n8n-workflow';
+import type { INodeProperties } from 'MNI-workflow';
 
 export const operationFields: INodeProperties[] = [
 	// ----------------------------------
@@ -380,7 +380,7 @@ export const operationFields: INodeProperties[] = [
 								name: 'operator',
 								description: 'Operator to compare field and value with',
 								type: 'options',
-								/* eslint-disable n8n-nodes-base/node-param-options-type-unsorted-items */
+								/* eslint-disable MNI-nodes-base/node-param-options-type-unsorted-items */
 								options: [
 									{
 										name: 'Equal',

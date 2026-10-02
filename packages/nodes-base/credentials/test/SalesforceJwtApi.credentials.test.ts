@@ -1,11 +1,11 @@
-import { OutboundHttp } from '@n8n/backend-network';
-import { Container } from '@n8n/di';
+import { OutboundHttp } from '@MNI/backend-network';
+import { Container } from '@MNI/di';
 import jwt from 'jsonwebtoken';
 import type {
 	ICredentialDataDecryptedObject,
 	IHttpRequestHelper,
 	INodeProperties,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import type { Mock } from 'vitest';
 
 import { SalesforceJwtApi, resolveAuthUrl } from '../SalesforceJwtApi.credentials';
@@ -13,7 +13,7 @@ import { SalesforceJwtApi, resolveAuthUrl } from '../SalesforceJwtApi.credential
 vi.mock('jsonwebtoken', () => ({
 	default: { sign: vi.fn() },
 }));
-vi.mock('@n8n/utils/format-pem-block', () => ({
+vi.mock('@MNI/utils/format-pem-block', () => ({
 	formatPemBlock: (key: string) => key,
 }));
 

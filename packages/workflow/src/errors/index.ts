@@ -3,7 +3,7 @@ export { OperationalError, type OperationalErrorOptions } from './base/operation
 export { UnexpectedError, type UnexpectedErrorOptions } from './base/unexpected.error';
 export { UserError, type UserErrorOptions } from './base/user.error';
 export { NodeVersionNotFoundError } from './node-version-not-found.error';
-export { ApplicationError } from '@n8n/errors';
+export { ApplicationError } from '@MNI/errors';
 export { ExpressionError } from './expression.error';
 export {
 	ExecutionCancelledError,
@@ -40,4 +40,4 @@ export { ExpressionClassExtensionError } from './expression-class-extension.erro
 export { ExpressionReservedVariableError } from './expression-reserved-variable.error';
 export { ExpressionWithStatementError } from './expression-with-statement.error';
 export { DbConnectionTimeoutError } from './db-connection-timeout-error';
-export { IsolateError } from '@n8n/errors';
+export { IsolateError } from '@MNI/errors';

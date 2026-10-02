@@ -1,4 +1,4 @@
-import type { INode } from 'n8n-workflow';
+import type { INode } from 'MNI-workflow';
 
 /** Group a workflow's nodes by their `type`, as the workflow rules expect. */
 export function groupNodesByType(nodes: INode[]): Map<string, INode[]> {

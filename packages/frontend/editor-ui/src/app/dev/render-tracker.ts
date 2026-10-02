@@ -7,7 +7,7 @@ import type { App, ComponentPublicInstance } from 'vue';
  * the SPA boots. Real users never set it, so the global mixin below is never
  * installed in normal use and the feature carries no runtime cost for them.
  */
-export const RENDER_TRACKING_STORAGE_KEY = 'N8N_RENDER_TRACKING';
+export const RENDER_TRACKING_STORAGE_KEY = 'MNI_RENDER_TRACKING';
 
 export interface RenderTrackerSnapshot {
 	/** Total component re-renders counted in the current window. */

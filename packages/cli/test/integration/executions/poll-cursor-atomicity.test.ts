@@ -1,11 +1,11 @@
-import { createWorkflow, testDb } from '@n8n/backend-test-utils';
-import { SchedulerConfig, WorkflowsConfig } from '@n8n/config';
+import { createWorkflow, testDb } from '@MNI/backend-test-utils';
+import { SchedulerConfig, WorkflowsConfig } from '@MNI/config';
 import type {
 	CreateExecutionPayload,
 	PollLeaseFence,
 	ScheduledTask,
 	WorkflowEntity,
-} from '@n8n/db';
+} from '@MNI/db';
 import {
 	ExecutionEntity,
 	ExecutionRepository,
@@ -14,9 +14,9 @@ import {
 	ScheduledTaskRepository,
 	ScheduledTaskStatus,
 	TransactionRunner,
-} from '@n8n/db';
-import { Container } from '@n8n/di';
-import { createEmptyRunExecutionData } from 'n8n-workflow';
+} from '@MNI/db';
+import { Container } from '@MNI/di';
+import { createEmptyRunExecutionData } from 'MNI-workflow';
 
 import { ExecutionPersistence } from '@/executions/execution-persistence';
 import { POLL_TRIGGER_TASK_TYPE } from '@/scheduling/poll-trigger-node/poll-trigger-task';

@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import type { INodeParameters, INodeProperties, NodeParameterValueType } from 'n8n-workflow';
+import type { INodeParameters, INodeProperties, NodeParameterValueType } from 'MNI-workflow';
 import { useCollectionOverhaul } from '@/app/composables/useCollectionOverhaul';
 import FixedCollectionParameterLegacy from './FixedCollectionParameterLegacy.vue';
 import FixedCollectionParameterNew from './FixedCollectionParameterNew.vue';

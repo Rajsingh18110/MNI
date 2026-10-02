@@ -1,12 +1,12 @@
-import type { AgentBackgroundJobSignal } from '@n8n/api-types';
-import { N8nAiActivityStep, N8nIcon } from '@n8n/design-system';
+import type { AgentBackgroundJobSignal } from '@MNI/api-types';
+import { N8nAiActivityStep, N8nIcon } from '@MNI/design-system';
 import userEvent from '@testing-library/user-event';
 import { mount } from '@vue/test-utils';
 import { describe, expect, it, vi } from 'vitest';
 
 import AgentChatBackgroundJobSignal from '../components/AgentChatBackgroundJobSignal.vue';
 
-vi.mock('@n8n/i18n', () => ({ useI18n: () => ({ baseText: (key: string) => key }) }));
+vi.mock('@MNI/i18n', () => ({ useI18n: () => ({ baseText: (key: string) => key }) }));
 
 const signal: AgentBackgroundJobSignal = {
 	tasks: [

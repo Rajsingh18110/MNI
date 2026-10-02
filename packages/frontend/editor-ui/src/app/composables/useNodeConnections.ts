@@ -5,7 +5,7 @@ import type {
 import { CanvasConnectionMode } from '@/features/workflows/canvas/canvas.types';
 import type { MaybeRef } from 'vue';
 import { computed, unref } from 'vue';
-import { NodeConnectionTypes } from 'n8n-workflow';
+import { NodeConnectionTypes } from 'MNI-workflow';
 import type { Connection } from '@vue-flow/core';
 import { parseCanvasConnectionHandleString } from '@/features/workflows/canvas/canvas.utils';
 

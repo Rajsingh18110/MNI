@@ -1,4 +1,4 @@
-import { randomEmail, randomName, randomValidPassword } from '@n8n/backend-test-utils';
+import { randomEmail, randomName, randomValidPassword } from '@MNI/backend-test-utils';
 import {
 	AuthIdentity,
 	AuthIdentityRepository,
@@ -9,11 +9,11 @@ import {
 	type Role,
 	UserRepository,
 	type User,
-} from '@n8n/db';
-import { Container } from '@n8n/di';
-import type { ApiKeyScope } from '@n8n/permissions';
-import { getApiKeyScopesForRole } from '@n8n/permissions';
-import type { DeepPartial } from '@n8n/typeorm';
+} from '@MNI/db';
+import { Container } from '@MNI/di';
+import type { ApiKeyScope } from '@MNI/permissions';
+import { getApiKeyScopesForRole } from '@MNI/permissions';
+import type { DeepPartial } from '@MNI/typeorm';
 import { hash } from 'bcryptjs';
 
 import { MfaService } from '@/mfa/mfa.service';

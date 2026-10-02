@@ -99,7 +99,7 @@ describe('useWorkflowSetupInputs', () => {
 
 	it('completes a section once a tested credential is selected and the resource is picked', () => {
 		nodeTypesStore.getNodeType.mockReturnValue({
-			name: 'n8n-nodes-base.slack',
+			name: 'MNI-nodes-base.slack',
 			properties: [
 				{
 					displayName: 'Channel',
@@ -120,7 +120,7 @@ describe('useWorkflowSetupInputs', () => {
 			node: {
 				id: 'slack',
 				name: 'Get Channel History',
-				type: 'n8n-nodes-base.slack',
+				type: 'MNI-nodes-base.slack',
 				typeVersion: 2.5,
 				parameters: { channelId: { __rl: true, mode: 'list', value: '' } },
 			},
@@ -421,7 +421,7 @@ describe('useWorkflowSetupInputs', () => {
 
 	it('tracks parameter values and builds nodeParameters after issues clear', () => {
 		nodeTypesStore.getNodeType.mockReturnValue({
-			name: 'n8n-nodes-base.httpRequest',
+			name: 'MNI-nodes-base.httpRequest',
 			properties: [
 				{ displayName: 'URL', name: 'url', type: 'string', default: '', required: true },
 			],
@@ -474,8 +474,8 @@ describe('useWorkflowSetupInputs', () => {
 			targetNodeName: 'Primary',
 			credentialType: 'httpBasicAuth',
 			credentialTargetNodes: [
-				{ id: 'primary', name: 'Primary', type: 'n8n-nodes-base.httpRequest' },
-				{ id: 'follower', name: 'Follower', type: 'n8n-nodes-base.httpRequest' },
+				{ id: 'primary', name: 'Primary', type: 'MNI-nodes-base.httpRequest' },
+				{ id: 'follower', name: 'Follower', type: 'MNI-nodes-base.httpRequest' },
 			],
 		});
 		const h = setupHarness([groupedSection]);
@@ -500,8 +500,8 @@ describe('useWorkflowSetupInputs', () => {
 			targetNodeName: 'Primary',
 			credentialType: 'httpBasicAuth',
 			credentialTargetNodes: [
-				{ id: 'primary', name: 'Primary', type: 'n8n-nodes-base.httpRequest' },
-				{ id: 'follower', name: 'Follower', type: 'n8n-nodes-base.httpRequest' },
+				{ id: 'primary', name: 'Primary', type: 'MNI-nodes-base.httpRequest' },
+				{ id: 'follower', name: 'Follower', type: 'MNI-nodes-base.httpRequest' },
 			],
 		});
 		const h = setupHarness([groupedSection]);
@@ -524,8 +524,8 @@ describe('useWorkflowSetupInputs', () => {
 			credentialType: 'httpBasicAuth',
 			currentCredentialId: 'current-cred',
 			credentialTargetNodes: [
-				{ id: 'primary', name: 'Primary', type: 'n8n-nodes-base.httpRequest' },
-				{ id: 'follower', name: 'Follower', type: 'n8n-nodes-base.httpRequest' },
+				{ id: 'primary', name: 'Primary', type: 'MNI-nodes-base.httpRequest' },
+				{ id: 'follower', name: 'Follower', type: 'MNI-nodes-base.httpRequest' },
 			],
 		});
 
@@ -544,8 +544,8 @@ describe('useWorkflowSetupInputs', () => {
 			targetNodeName: 'Primary',
 			credentialType: 'httpBasicAuth',
 			credentialTargetNodes: [
-				{ id: 'primary', name: 'Primary', type: 'n8n-nodes-base.httpRequest' },
-				{ id: 'follower', name: 'Follower', type: 'n8n-nodes-base.httpRequest' },
+				{ id: 'primary', name: 'Primary', type: 'MNI-nodes-base.httpRequest' },
+				{ id: 'follower', name: 'Follower', type: 'MNI-nodes-base.httpRequest' },
 			],
 		});
 		const paramsSection = makeWorkflowSetupSection({
@@ -553,7 +553,7 @@ describe('useWorkflowSetupInputs', () => {
 			targetNodeName: 'Params',
 			credentialType: 'httpBasicAuth',
 			parameterNames: ['url'],
-			credentialTargetNodes: [{ id: 'params', name: 'Params', type: 'n8n-nodes-base.httpRequest' }],
+			credentialTargetNodes: [{ id: 'params', name: 'Params', type: 'MNI-nodes-base.httpRequest' }],
 		});
 		const h = setupHarness([groupedSection, paramsSection]);
 
@@ -570,8 +570,8 @@ describe('useWorkflowSetupInputs', () => {
 			targetNodeName: 'Primary',
 			credentialType: 'httpBasicAuth',
 			credentialTargetNodes: [
-				{ id: 'primary', name: 'Primary', type: 'n8n-nodes-base.httpRequest' },
-				{ id: 'follower', name: 'Follower', type: 'n8n-nodes-base.httpRequest' },
+				{ id: 'primary', name: 'Primary', type: 'MNI-nodes-base.httpRequest' },
+				{ id: 'follower', name: 'Follower', type: 'MNI-nodes-base.httpRequest' },
 			],
 		});
 		const h = setupHarness([groupedSection]);

@@ -1,8 +1,8 @@
 import type { Mock } from 'vitest';
-import { mockInstance } from '@n8n/backend-test-utils';
-import { PrometheusMetricsConfig } from '@n8n/config';
+import { mockInstance } from '@MNI/backend-test-utils';
+import { PrometheusMetricsConfig } from '@MNI/config';
 import { mock } from 'vitest-mock-extended';
-import { EventMessageTypeNames } from 'n8n-workflow';
+import { EventMessageTypeNames } from 'MNI-workflow';
 import promClient from 'prom-client';
 
 import { PrometheusEventBusMetricsService } from '../event-bus-metrics.service';
@@ -13,7 +13,7 @@ vi.mock('prom-client');
 
 describe('PrometheusEventBusMetricsService', () => {
 	const config = mockInstance(PrometheusMetricsConfig, {
-		prefix: 'n8n_',
+		prefix: 'MNI_',
 		includeMessageEventBusMetrics: true,
 		includeCredentialTypeLabel: false,
 		includeWorkflowIdLabel: false,
@@ -31,7 +31,7 @@ describe('PrometheusEventBusMetricsService', () => {
 
 	beforeEach(() => {
 		Object.assign(config, {
-			prefix: 'n8n_',
+			prefix: 'MNI_',
 			includeMessageEventBusMetrics: true,
 			includeCredentialTypeLabel: false,
 			includeWorkflowIdLabel: false,
@@ -79,17 +79,17 @@ describe('PrometheusEventBusMetricsService', () => {
 			handler({
 				__type: EventMessageTypeNames.audit,
 				eventName: 'n8n.audit.user.credentials.created',
-				payload: { credentialType: 'n8n-nodes-base.googleApi' },
+				payload: { credentialType: 'MNI-nodes-base.googleApi' },
 			});
 
 			expect(promClient.Counter).toHaveBeenCalledWith({
-				name: 'n8n_audit_user_credentials_created_total',
+				name: 'MNI_audit_user_credentials_created_total',
 				help: 'Total number of n8n.audit.user.credentials.created events.',
 				labelNames: ['credential_type'],
 			});
 
 			expect(mockCounterInc).toHaveBeenCalledWith(
-				{ credential_type: 'n8n-nodes-base_googleApi' },
+				{ credential_type: 'MNI-nodes-base_googleApi' },
 				1,
 			);
 		});
@@ -116,11 +116,11 @@ describe('PrometheusEventBusMetricsService', () => {
 			handler({
 				__type: EventMessageTypeNames.audit,
 				eventName: 'n8n.audit.user.credentials.created',
-				payload: { credentialType: 'n8n-nodes-base.googleApi' },
+				payload: { credentialType: 'MNI-nodes-base.googleApi' },
 			});
 
 			expect(promClient.Counter).toHaveBeenCalledWith({
-				name: 'n8n_audit_user_credentials_created_total',
+				name: 'MNI_audit_user_credentials_created_total',
 				help: 'Total number of n8n.audit.user.credentials.created events.',
 				labelNames: [],
 			});
@@ -154,7 +154,7 @@ describe('PrometheusEventBusMetricsService', () => {
 			});
 
 			expect(promClient.Counter).toHaveBeenCalledWith({
-				name: 'n8n_audit_workflow_created_total',
+				name: 'MNI_audit_workflow_created_total',
 				help: 'Total number of n8n.audit.workflow.created events.',
 				labelNames: ['workflow_id'],
 			});
@@ -174,7 +174,7 @@ describe('PrometheusEventBusMetricsService', () => {
 			});
 
 			expect(promClient.Counter).toHaveBeenCalledWith({
-				name: 'n8n_audit_workflow_created_total',
+				name: 'MNI_audit_workflow_created_total',
 				help: 'Total number of n8n.audit.workflow.created events.',
 				labelNames: ['workflow_name'],
 			});
@@ -190,11 +190,11 @@ describe('PrometheusEventBusMetricsService', () => {
 			handler({
 				__type: EventMessageTypeNames.node,
 				eventName: 'n8n.node.execution.started',
-				payload: { nodeType: 'n8n-nodes-base.if' },
+				payload: { nodeType: 'MNI-nodes-base.if' },
 			});
 
 			expect(promClient.Counter).toHaveBeenCalledWith({
-				name: 'n8n_node_execution_started_total',
+				name: 'MNI_node_execution_started_total',
 				help: 'Total number of n8n.node.execution.started events.',
 				labelNames: ['node_type'],
 			});
@@ -246,12 +246,12 @@ describe('PrometheusEventBusMetricsService', () => {
 				payload: {
 					workflowId: 'wf_123',
 					workflowName: 'Fake Workflow Name',
-					nodeType: 'n8n-nodes-base.if',
+					nodeType: 'MNI-nodes-base.if',
 				},
 			});
 
 			expect(promClient.Counter).toHaveBeenCalledWith({
-				name: 'n8n_node_execution_started_total',
+				name: 'MNI_node_execution_started_total',
 				help: 'Total number of n8n.node.execution.started events.',
 				labelNames: ['workflow_id', 'workflow_name', 'node_type'],
 			});
@@ -274,7 +274,7 @@ describe('PrometheusEventBusMetricsService', () => {
 			});
 
 			expect(promClient.Counter).toHaveBeenCalledWith({
-				name: 'n8n_workflow_execution_finished_total',
+				name: 'MNI_workflow_execution_finished_total',
 				help: 'Total number of n8n.workflow.execution.finished events.',
 				labelNames: ['workflow_id'],
 			});
@@ -306,7 +306,7 @@ describe('PrometheusEventBusMetricsService', () => {
 			});
 
 			expect(promClient.Counter).toHaveBeenCalledWith({
-				name: 'n8n_workflow_execution_finished_total',
+				name: 'MNI_workflow_execution_finished_total',
 				help: 'Total number of n8n.workflow.execution.finished events.',
 				labelNames: [],
 			});
@@ -329,7 +329,7 @@ describe('PrometheusEventBusMetricsService', () => {
 			// Counter should be constructed only once
 			const counterCalls = vi
 				.mocked(promClient.Counter)
-				.mock.calls.filter((c) => c[0]?.name === 'n8n_workflow_execution_finished_total');
+				.mock.calls.filter((c) => c[0]?.name === 'MNI_workflow_execution_finished_total');
 			expect(counterCalls).toHaveLength(1);
 
 			// inc should be called twice

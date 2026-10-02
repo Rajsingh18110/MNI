@@ -1,10 +1,10 @@
-import type { LoginRequestDto } from '@n8n/api-types';
-import { ResolveSignupTokenQueryDto, SSO_LOGIN_REQUIRED_ERROR_CODE } from '@n8n/api-types';
-import { Logger } from '@n8n/backend-common';
-import { mockInstance } from '@n8n/backend-test-utils';
-import type { AuthenticatedRequest, User } from '@n8n/db';
-import { UserRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
+import type { LoginRequestDto } from '@MNI/api-types';
+import { ResolveSignupTokenQueryDto, SSO_LOGIN_REQUIRED_ERROR_CODE } from '@MNI/api-types';
+import { Logger } from '@MNI/backend-common';
+import { mockInstance } from '@MNI/backend-test-utils';
+import type { AuthenticatedRequest, User } from '@MNI/db';
+import { UserRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
 import type { Response } from 'express';
 import { v4 as uuidv4 } from 'uuid';
 import { mock } from 'vitest-mock-extended';

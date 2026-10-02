@@ -1,12 +1,12 @@
-import type { AiInsightsResponse } from '@n8n/api-types';
-import type { LicenseState, Logger } from '@n8n/backend-common';
+import type { AiInsightsResponse } from '@MNI/api-types';
+import type { LicenseState, Logger } from '@MNI/backend-common';
 import type {
 	EvaluationCollection,
 	EvaluationCollectionRepository,
 	EvaluationConfigRepository,
 	TestRun,
 	User,
-} from '@n8n/db';
+} from '@MNI/db';
 import type { Mocked } from 'vitest';
 import { mock } from 'vitest-mock-extended';
 
@@ -19,10 +19,10 @@ import { DETERMINISTIC_MODEL_TAG, EvalInsightsService } from '../eval-insights.s
 import type { InsightsContextBuilder } from '../insights-context-builder';
 import type { InsightsModelResolver } from '../insights-model-resolver';
 
-// Stub the @n8n/agents SDK: the fluent builder is a no-op and `generate` is a
+// Stub the @MNI/agents SDK: the fluent builder is a no-op and `generate` is a
 // controllable mock so tests drive the model's (in)valid structured output.
 const { generateMock } = vi.hoisted(() => ({ generateMock: vi.fn() }));
-vi.mock('@n8n/agents', () => ({
+vi.mock('@MNI/agents', () => ({
 	Agent: class {
 		model() {
 			return this;
@@ -609,7 +609,7 @@ describe('EvalInsightsService', () => {
 						type: 'llm_judge',
 						config: {
 							preset: 'correctness',
-							provider: '@n8n/n8n-nodes-langchain.lmChatOpenAi',
+							provider: '@MNI/MNI-nodes-langchain.lmChatOpenAi',
 							credentialId: 'cred-1',
 							model: 'gpt-4o',
 							outputType: 'numeric',

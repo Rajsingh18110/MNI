@@ -1,9 +1,9 @@
-import { Logger } from '@n8n/backend-common';
-import { ExecutionsConfig } from '@n8n/config';
-import type { User } from '@n8n/db';
-import { ExecutionRepository, UserRepository } from '@n8n/db';
-import { LifecycleMetadata } from '@n8n/decorators';
-import { Container, Service } from '@n8n/di';
+import { Logger } from '@MNI/backend-common';
+import { ExecutionsConfig } from '@MNI/config';
+import type { User } from '@MNI/db';
+import { ExecutionRepository, UserRepository } from '@MNI/db';
+import { LifecycleMetadata } from '@MNI/decorators';
+import { Container, Service } from '@MNI/di';
 import { stringify } from 'flatted';
 import {
 	BinaryDataService,
@@ -11,7 +11,7 @@ import {
 	ExecutionLifecycleHooks,
 	FileLocation,
 	InstanceSettings,
-} from 'n8n-core';
+} from 'MNI-core';
 import type {
 	ExecutionStatus,
 	IRun,
@@ -21,8 +21,8 @@ import type {
 	IWorkflowExecutionDataProcess,
 	RelatedExecution,
 	WorkflowExecuteMode,
-} from 'n8n-workflow';
-import { runDataAttemptedDynamicCredentials, runDataUsedDynamicCredentials } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { runDataAttemptedDynamicCredentials, runDataUsedDynamicCredentials } from 'MNI-workflow';
 
 import { executeErrorWorkflow } from './execute-error-workflow';
 import { restoreBinaryDataId } from './restore-binary-data-id';

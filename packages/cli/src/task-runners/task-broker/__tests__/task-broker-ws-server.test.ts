@@ -1,11 +1,11 @@
-import type { Logger } from '@n8n/backend-common';
-import type { GlobalConfig, TaskRunnersConfig } from '@n8n/config';
-import { Time } from '@n8n/constants';
+import type { Logger } from '@MNI/backend-common';
+import type { GlobalConfig, TaskRunnersConfig } from '@MNI/config';
+import { Time } from '@MNI/constants';
 import { mock } from 'vitest-mock-extended';
 import type WebSocket from 'ws';
 
-import { ShutdownMetadata } from '@n8n/decorators';
-import { Container } from '@n8n/di';
+import { ShutdownMetadata } from '@MNI/decorators';
+import { Container } from '@MNI/di';
 
 import { HIGHEST_SHUTDOWN_PRIORITY, WsStatusCodes } from '@/constants';
 import type { EventService } from '@/events/event.service';
@@ -236,7 +236,7 @@ describe('TaskBrokerWsServer', () => {
 	});
 
 	describe('duplicate runner ID', () => {
-		const idIsAlreadyTaken = () => expect.stringContaining('N8N_RUNNERS_ID');
+		const idIsAlreadyTaken = () => expect.stringContaining('MNI_RUNNERS_ID');
 
 		it('should warn when an ID a live runner holds is claimed again', async () => {
 			const logger = mock<Logger>();

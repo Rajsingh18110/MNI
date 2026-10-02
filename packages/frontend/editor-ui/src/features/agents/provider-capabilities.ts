@@ -5,4 +5,4 @@ export {
 	type ProviderCapabilities,
 	type ReasoningEffort,
 	type AnthropicCacheTtl,
-} from '@n8n/api-types';
+} from '@MNI/api-types';

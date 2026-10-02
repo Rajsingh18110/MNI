@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { N8N_CHAT_ACTION_TOOL_NAME } from '@n8n/api-types';
+import { MNI_CHAT_ACTION_TOOL_NAME } from '@MNI/api-types';
 import { summariseToolCall } from '@/features/ai/shared/agentsChat/interactiveSummary';
 import { DELEGATE_SUB_AGENT_TOOL_NAME } from '../utils/delegate-tool';
 import { WRITE_TODOS_TOOL_NAME } from '../utils/write-todos-tool';
@@ -10,13 +10,13 @@ describe('summariseToolCall', () => {
 	});
 
 	it('returns undefined when output is missing', () => {
-		expect(summariseToolCall(N8N_CHAT_ACTION_TOOL_NAME, undefined)).toBeUndefined();
+		expect(summariseToolCall(MNI_CHAT_ACTION_TOOL_NAME, undefined)).toBeUndefined();
 	});
 
 	it.each([null, 'oops', 42, true, ['x']])(
 		'returns undefined for non-object output (%p)',
 		(value) => {
-			expect(summariseToolCall(N8N_CHAT_ACTION_TOOL_NAME, value)).toBeUndefined();
+			expect(summariseToolCall(MNI_CHAT_ACTION_TOOL_NAME, value)).toBeUndefined();
 		},
 	);
 
@@ -41,7 +41,7 @@ describe('summariseToolCall', () => {
 	});
 });
 
-describe('summariseToolCall — n8n_chat_action', () => {
+describe('summariseToolCall — MNI_chat_action', () => {
 	const cardInput = {
 		action: 'respond',
 		input: {
@@ -63,7 +63,7 @@ describe('summariseToolCall — n8n_chat_action', () => {
 	it('resolves the clicked button to its label', () => {
 		expect(
 			summariseToolCall(
-				N8N_CHAT_ACTION_TOOL_NAME,
+				MNI_CHAT_ACTION_TOOL_NAME,
 				{ type: 'button', value: 'approve_send' },
 				cardInput,
 			),
@@ -81,7 +81,7 @@ describe('summariseToolCall — n8n_chat_action', () => {
 		};
 		expect(
 			summariseToolCall(
-				N8N_CHAT_ACTION_TOOL_NAME,
+				MNI_CHAT_ACTION_TOOL_NAME,
 				{ type: 'button', value: 'confirm' },
 				textButtonInput,
 			),
@@ -91,7 +91,7 @@ describe('summariseToolCall — n8n_chat_action', () => {
 	it('resolves a selected option to its label', () => {
 		expect(
 			summariseToolCall(
-				N8N_CHAT_ACTION_TOOL_NAME,
+				MNI_CHAT_ACTION_TOOL_NAME,
 				{ type: 'select', id: 'next_step', value: 'call' },
 				cardInput,
 			),
@@ -100,11 +100,11 @@ describe('summariseToolCall — n8n_chat_action', () => {
 
 	it('falls back to the raw value when no component matches', () => {
 		expect(
-			summariseToolCall(N8N_CHAT_ACTION_TOOL_NAME, { type: 'button', value: 'unknown' }, cardInput),
+			summariseToolCall(MNI_CHAT_ACTION_TOOL_NAME, { type: 'button', value: 'unknown' }, cardInput),
 		).toBe('unknown');
 	});
 
 	it('returns undefined for display-only action results', () => {
-		expect(summariseToolCall(N8N_CHAT_ACTION_TOOL_NAME, { ok: true }, cardInput)).toBeUndefined();
+		expect(summariseToolCall(MNI_CHAT_ACTION_TOOL_NAME, { ok: true }, cardInput)).toBeUndefined();
 	});
 });

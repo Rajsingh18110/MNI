@@ -1,4 +1,4 @@
-import type { INode } from 'n8n-workflow';
+import type { INode } from 'MNI-workflow';
 
 import { createNode, createWorkflow } from '../../../__tests__/test-helpers';
 import { BreakingChangeCategory } from '../../../types';
@@ -13,7 +13,7 @@ describe('ProcessEnvAccessRule', () => {
 	});
 
 	it('should not be affected by a node that has no parameters', async () => {
-		const node = { ...createNode('Start', 'n8n-nodes-base.manualTrigger'), parameters: undefined };
+		const node = { ...createNode('Start', 'MNI-nodes-base.manualTrigger'), parameters: undefined };
 		const { workflow, nodesGroupedByType } = createWorkflow('wf-1', 'Test Workflow', [
 			node as unknown as INode,
 		]);
@@ -50,7 +50,7 @@ describe('ProcessEnvAccessRule', () => {
 					},
 					{
 						action: 'Enable access if required',
-						description: 'Set N8N_BLOCK_ENV_ACCESS_IN_NODE=false to allow access',
+						description: 'Set MNI_BLOCK_ENV_ACCESS_IN_NODE=false to allow access',
 					},
 				]),
 			);
@@ -58,13 +58,13 @@ describe('ProcessEnvAccessRule', () => {
 	});
 
 	describe('detectWorkflow()', () => {
-		it('should return no issues when N8N_BLOCK_ENV_ACCESS_IN_NODE is set to false', async () => {
-			const originalValue = process.env.N8N_BLOCK_ENV_ACCESS_IN_NODE;
+		it('should return no issues when MNI_BLOCK_ENV_ACCESS_IN_NODE is set to false', async () => {
+			const originalValue = process.env.MNI_BLOCK_ENV_ACCESS_IN_NODE;
 			try {
-				process.env.N8N_BLOCK_ENV_ACCESS_IN_NODE = 'false';
+				process.env.MNI_BLOCK_ENV_ACCESS_IN_NODE = 'false';
 
 				const { workflow, nodesGroupedByType } = createWorkflow('wf-1', 'Test Workflow', [
-					createNode('Code', 'n8n-nodes-base.code', {
+					createNode('Code', 'MNI-nodes-base.code', {
 						code: 'const apiKey = process.env.API_KEY;\nreturn { apiKey };',
 					}),
 				]);
@@ -77,19 +77,19 @@ describe('ProcessEnvAccessRule', () => {
 				});
 			} finally {
 				if (originalValue === undefined) {
-					delete process.env.N8N_BLOCK_ENV_ACCESS_IN_NODE;
+					delete process.env.MNI_BLOCK_ENV_ACCESS_IN_NODE;
 				} else {
-					process.env.N8N_BLOCK_ENV_ACCESS_IN_NODE = originalValue;
+					process.env.MNI_BLOCK_ENV_ACCESS_IN_NODE = originalValue;
 				}
 			}
 		});
 
 		it('should return no issues when no process.env usage is found', async () => {
 			const { workflow, nodesGroupedByType } = createWorkflow('wf-1', 'Clean Workflow', [
-				createNode('Code', 'n8n-nodes-base.code', {
+				createNode('Code', 'MNI-nodes-base.code', {
 					code: 'const data = $input.all();',
 				}),
-				createNode('HTTP', 'n8n-nodes-base.httpRequest', {
+				createNode('HTTP', 'MNI-nodes-base.httpRequest', {
 					url: 'https://api.example.com',
 				}),
 			]);
@@ -104,7 +104,7 @@ describe('ProcessEnvAccessRule', () => {
 
 		it('should detect process.env in Code node', async () => {
 			const { workflow, nodesGroupedByType } = createWorkflow('wf-1', 'Test Workflow', [
-				createNode('Code', 'n8n-nodes-base.code', {
+				createNode('Code', 'MNI-nodes-base.code', {
 					code: 'const apiKey = process.env.API_KEY;\nreturn { apiKey };',
 				}),
 			]);
@@ -123,7 +123,7 @@ describe('ProcessEnvAccessRule', () => {
 
 		it('should detect process.env in node parameters/expressions', async () => {
 			const { workflow, nodesGroupedByType } = createWorkflow('wf-1', 'Test Workflow', [
-				createNode('HTTP', 'n8n-nodes-base.httpRequest', {
+				createNode('HTTP', 'MNI-nodes-base.httpRequest', {
 					url: '{{ process.env.API_URL }}',
 					authentication: 'none',
 				}),
@@ -141,13 +141,13 @@ describe('ProcessEnvAccessRule', () => {
 
 		it('should detect process.env in multiple nodes', async () => {
 			const { workflow, nodesGroupedByType } = createWorkflow('wf-1', 'Test Workflow', [
-				createNode('Code', 'n8n-nodes-base.code', {
+				createNode('Code', 'MNI-nodes-base.code', {
 					code: 'const key = process.env.KEY;',
 				}),
-				createNode('HTTP', 'n8n-nodes-base.httpRequest', {
+				createNode('HTTP', 'MNI-nodes-base.httpRequest', {
 					url: '{{ process.env.API_URL }}',
 				}),
-				createNode('Set', 'n8n-nodes-base.set', {
+				createNode('Set', 'MNI-nodes-base.set', {
 					values: {},
 				}),
 			]);
@@ -162,15 +162,15 @@ describe('ProcessEnvAccessRule', () => {
 		it('should not detect false positives', async () => {
 			const { workflow, nodesGroupedByType } = createWorkflow('wf-1', 'Test Workflow', [
 				// Variable named 'process' but not process.env
-				createNode('Code1', 'n8n-nodes-base.code', {
+				createNode('Code1', 'MNI-nodes-base.code', {
 					code: 'const process = { data: "test" }; return process;',
 				}),
 				// String containing 'process.environment' as text (not process.env)
-				createNode('Code2', 'n8n-nodes-base.code', {
+				createNode('Code2', 'MNI-nodes-base.code', {
 					code: 'const message = "This string mentions process.environment but not the actual object";',
 				}),
 				// process without env
-				createNode('Code3', 'n8n-nodes-base.code', {
+				createNode('Code3', 'MNI-nodes-base.code', {
 					code: 'const pid = process.pid;',
 				}),
 			]);
@@ -203,7 +203,7 @@ describe('ProcessEnvAccessRule', () => {
 			['multiple spaces with optional chaining', 'const x = process  ?.env.VAR;'],
 		])('should detect process.env with %s', async (_description, code) => {
 			const { workflow, nodesGroupedByType } = createWorkflow('wf-1', 'Test Workflow', [
-				createNode('Code', 'n8n-nodes-base.code', { code }),
+				createNode('Code', 'MNI-nodes-base.code', { code }),
 			]);
 
 			const result = await rule.detectWorkflow(workflow, nodesGroupedByType);

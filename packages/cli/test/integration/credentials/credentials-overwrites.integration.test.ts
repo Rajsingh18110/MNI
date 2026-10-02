@@ -1,8 +1,8 @@
-import { mockInstance, testDb } from '@n8n/backend-test-utils';
-import { GlobalConfig } from '@n8n/config';
-import { SettingsRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
-import { Cipher } from 'n8n-core';
+import { mockInstance, testDb } from '@MNI/backend-test-utils';
+import { GlobalConfig } from '@MNI/config';
+import { SettingsRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
+import { Cipher } from 'MNI-core';
 
 import { CredentialTypes } from '@/credential-types';
 import { CredentialsOverwrites } from '@/credentials-overwrites';

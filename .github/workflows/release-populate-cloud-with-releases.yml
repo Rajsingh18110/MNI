@@ -1,5 +1,5 @@
 name: 'Release: Populate cloud with releases'
-run-name: 'Populate cloud with version n8n@${{ inputs.version }}'
+run-name: 'Populate cloud with version MNI@${{ inputs.version }}'
 
 on:
   workflow_dispatch:
@@ -54,14 +54,14 @@ jobs:
       - name: Extract changes
         id: get-changes
         env:
-          PREVIOUS_VERSION_TAG: 'n8n@${{ inputs.previous-version }}'
-          RELEASE_VERSION_TAG: 'n8n@${{ inputs.version }}'
+          PREVIOUS_VERSION_TAG: 'MNI@${{ inputs.previous-version }}'
+          RELEASE_VERSION_TAG: 'MNI@${{ inputs.version }}'
         run: node ./.github/scripts/determine-release-version-changes.mjs
 
       - name: Populate databases
         id: populate-databases
         env:
-          N8N_POPULATE_CLOUD_WEBHOOK_DATA: ${{ secrets.N8N_POPULATE_CLOUD_WEBHOOK_DATA }}
+          MNI_POPULATE_CLOUD_WEBHOOK_DATA: ${{ secrets.MNI_POPULATE_CLOUD_WEBHOOK_DATA }}
           PAYLOAD: |
             {
               "target_version_to_update": "${{ inputs.version }}",

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { N8nIcon, N8nLink } from '@n8n/design-system';
+import { N8nIcon, N8nLink } from '@MNI/design-system';
 import { computed } from 'vue';
 
 import { VIEWS } from '@/app/constants';

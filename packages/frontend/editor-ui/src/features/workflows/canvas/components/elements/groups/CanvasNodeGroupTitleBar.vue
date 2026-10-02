@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { N8nIcon, N8nIconButton, N8nInlineTextEdit, N8nTooltip } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+import { N8nIcon, N8nIconButton, N8nInlineTextEdit, N8nTooltip } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 import { Handle, Position, useVueFlow } from '@vue-flow/core';
 import {
 	computed,
@@ -752,7 +752,7 @@ function onWrapperPointerDown(event: PointerEvent) {
 </template>
 
 <style lang="scss" module>
-@use '@n8n/design-system/css/common/var';
+@use '@MNI/design-system/css/common/var';
 @use '../handles/_canvasHandleStyles.scss' as handleStyles;
 @use '../../../components/elements/nodes/render-types/_canvasNodeStyles.scss' as styles;
 

@@ -11,7 +11,7 @@ import type {
 	ChatHubMessageEdited,
 	ChatSessionId,
 	ChatMessageId,
-} from '@n8n/api-types';
+} from '@MNI/api-types';
 import { usePushConnectionStore } from '@/app/stores/pushConnection.store';
 import { useChatStore } from '../chat.store';
 

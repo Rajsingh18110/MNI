@@ -1,9 +1,9 @@
-import { useTelemetry } from '@n8n/composables/useTelemetry';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
 import {
 	ASSISTANT_MENTION_QUERY_TEXT_MAX_LENGTH,
 	redactTelemetryText,
 	TELEMETRY_EVENT,
-} from '@n8n/telemetry';
+} from '@MNI/telemetry';
 import { toValue, type MaybeRefOrGetter } from 'vue';
 
 import type {

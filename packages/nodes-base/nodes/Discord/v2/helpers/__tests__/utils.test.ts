@@ -1,6 +1,6 @@
 import { mockDeep } from 'vitest-mock-extended';
-import type { IExecuteFunctions, IDataObject } from 'n8n-workflow';
-import { NodeOperationError, jsonParse } from 'n8n-workflow';
+import type { IExecuteFunctions, IDataObject } from 'MNI-workflow';
+import { NodeOperationError, jsonParse } from 'MNI-workflow';
 import { getAuditLogReasonHeaders, prepareMultiPartForm } from '../utils';
 
 describe('Discord V2 Utils', () => {

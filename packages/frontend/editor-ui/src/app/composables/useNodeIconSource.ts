@@ -1,4 +1,4 @@
-import type { INode } from 'n8n-workflow';
+import type { INode } from 'MNI-workflow';
 import { getNodeIconSource, type IconNodeType, type NodeIconSource } from '../utils/nodeIcon';
 import { computed, toValue, type ComputedRef, type MaybeRefOrGetter } from 'vue';
 import { injectWorkflowDocumentStore } from '../stores/workflowDocument.store';

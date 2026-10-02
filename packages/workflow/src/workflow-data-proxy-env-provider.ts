@@ -13,7 +13,7 @@ export type EnvProviderState = {
 export function createEnvProviderState(): EnvProviderState {
 	const isProcessAvailable = typeof process !== 'undefined';
 	const isEnvAccessBlocked = isProcessAvailable
-		? process.env.N8N_BLOCK_ENV_ACCESS_IN_NODE !== 'false'
+		? process.env.MNI_BLOCK_ENV_ACCESS_IN_NODE !== 'false'
 		: false;
 	const env: Record<string, string> =
 		!isProcessAvailable || isEnvAccessBlocked ? {} : (process.env as Record<string, string>);
@@ -62,7 +62,7 @@ export function createEnvProvider(
 				if (providerState.isEnvAccessBlocked) {
 					throw new ExpressionError('access to env vars denied', {
 						causeDetailed:
-							'If you need access please contact the administrator to remove the environment variable ‘N8N_BLOCK_ENV_ACCESS_IN_NODE‘',
+							'If you need access please contact the administrator to remove the environment variable ‘MNI_BLOCK_ENV_ACCESS_IN_NODE‘',
 						runIndex,
 						itemIndex,
 					});

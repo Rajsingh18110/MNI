@@ -1,4 +1,4 @@
-import { modalRegistry } from '@n8n/frontend-module-sdk';
+import { modalRegistry } from '@MNI/frontend-module-sdk';
 import { screen, waitFor } from '@testing-library/vue';
 import { createPinia, setActivePinia } from 'pinia';
 

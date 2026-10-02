@@ -3,8 +3,8 @@ import type {
 	IExecuteFunctions,
 	ILoadOptionsFunctions,
 	INodeTypeBaseDescription,
-} from 'n8n-workflow';
-import { NodeOperationError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeOperationError } from 'MNI-workflow';
 
 import { SwitchV3 } from '../SwitchV3.node';
 import type { Mocked } from 'vitest';
@@ -16,7 +16,7 @@ describe('SwitchV3 Node', () => {
 
 	const baseDescription: INodeTypeBaseDescription = {
 		displayName: 'Switch',
-		name: 'n8n-nodes-base.switch',
+		name: 'MNI-nodes-base.switch',
 		group: ['transform'],
 		description: 'Route items to different outputs',
 	};
@@ -99,7 +99,7 @@ describe('SwitchV3 Node', () => {
 			mockExecuteFunctions.getNode.mockReturnValue({
 				id: 'switch-node',
 				name: 'Switch',
-				type: 'n8n-nodes-base.switch',
+				type: 'MNI-nodes-base.switch',
 				typeVersion: 3.3,
 				position: [0, 0],
 				parameters: {},
@@ -203,7 +203,7 @@ describe('SwitchV3 Node', () => {
 			mockExecuteFunctions.getNode.mockReturnValue({
 				id: 'switch-node',
 				name: 'Switch',
-				type: 'n8n-nodes-base.switch',
+				type: 'MNI-nodes-base.switch',
 				typeVersion: 3.3,
 				position: [0, 0],
 				parameters: {},
@@ -357,7 +357,7 @@ describe('SwitchV3 Node', () => {
 			mockExecuteFunctions.getNode.mockReturnValue({
 				id: 'switch-node',
 				name: 'Switch',
-				type: 'n8n-nodes-base.switch',
+				type: 'MNI-nodes-base.switch',
 				typeVersion: 3.3,
 				position: [0, 0],
 				parameters: {},
@@ -426,7 +426,7 @@ describe('SwitchV3 Node', () => {
 
 			expect(result).toEqual([
 				{
-					// eslint-disable-next-line n8n-nodes-base/node-param-display-name-miscased
+					// eslint-disable-next-line MNI-nodes-base/node-param-display-name-miscased
 					name: 'None (default)',
 					value: 'none',
 					description: 'Items will be ignored',
@@ -455,7 +455,7 @@ describe('SwitchV3 Node', () => {
 
 			expect(result).toEqual([
 				{
-					// eslint-disable-next-line n8n-nodes-base/node-param-display-name-miscased
+					// eslint-disable-next-line MNI-nodes-base/node-param-display-name-miscased
 					name: 'None (default)',
 					value: 'none',
 					description: 'Items will be ignored',
@@ -493,7 +493,7 @@ describe('SwitchV3 Node', () => {
 
 			expect(result).toEqual([
 				{
-					// eslint-disable-next-line n8n-nodes-base/node-param-display-name-miscased
+					// eslint-disable-next-line MNI-nodes-base/node-param-display-name-miscased
 					name: 'None (default)',
 					value: 'none',
 					description: 'Items will be ignored',
@@ -512,7 +512,7 @@ describe('SwitchV3 Node', () => {
 			mockExecuteFunctions.getNode.mockReturnValue({
 				id: 'switch-node',
 				name: 'Switch',
-				type: 'n8n-nodes-base.switch',
+				type: 'MNI-nodes-base.switch',
 				typeVersion: 3.3,
 				position: [0, 0],
 				parameters: {},

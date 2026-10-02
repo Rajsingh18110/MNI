@@ -1,8 +1,8 @@
-import type { WorkflowReviewActivityEntry } from '@n8n/api-types';
+import type { WorkflowReviewActivityEntry } from '@MNI/api-types';
 import { defineStore } from 'pinia';
 import { ref } from 'vue';
 
-import { useRootStore } from '@n8n/stores/useRootStore';
+import { useRootStore } from '@MNI/stores/useRootStore';
 
 import { createWorkflowReviewComment, fetchWorkflowReviewActivity } from './workflowReviews.api';
 import { toError } from './workflowReviews.utils';

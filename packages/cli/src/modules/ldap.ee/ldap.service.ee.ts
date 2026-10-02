@@ -1,16 +1,16 @@
-import { LicenseState, Logger } from '@n8n/backend-common';
-import { GlobalConfig } from '@n8n/config';
-import type { LdapConfig } from '@n8n/constants';
-import { LDAP_FEATURE_NAME } from '@n8n/constants';
-import { isValidEmail, SettingsRepository, User } from '@n8n/db';
-import type { AuthProviderSyncHistory, RunningMode, SyncStatus } from '@n8n/db';
-import type { IPasswordAuthHandler } from '@n8n/decorators';
-import { AuthHandler } from '@n8n/decorators';
-import { Constructable, Container } from '@n8n/di';
-import { lazyImport } from '@n8n/utils/lazy-import';
+import { LicenseState, Logger } from '@MNI/backend-common';
+import { GlobalConfig } from '@MNI/config';
+import type { LdapConfig } from '@MNI/constants';
+import { LDAP_FEATURE_NAME } from '@MNI/constants';
+import { isValidEmail, SettingsRepository, User } from '@MNI/db';
+import type { AuthProviderSyncHistory, RunningMode, SyncStatus } from '@MNI/db';
+import type { IPasswordAuthHandler } from '@MNI/decorators';
+import { AuthHandler } from '@MNI/decorators';
+import { Constructable, Container } from '@MNI/di';
+import { lazyImport } from '@MNI/utils/lazy-import';
 import type { Entry as LdapUser, ClientOptions, Client } from 'ldapts';
-import { Cipher } from 'n8n-core';
-import { CREDENTIAL_BLANKING_VALUE, jsonParse, UnexpectedError } from 'n8n-workflow';
+import { Cipher } from 'MNI-core';
+import { CREDENTIAL_BLANKING_VALUE, jsonParse, UnexpectedError } from 'MNI-workflow';
 import type { ConnectionOptions } from 'tls';
 
 import { BadRequestError } from '@/errors/response-errors/bad-request.error';

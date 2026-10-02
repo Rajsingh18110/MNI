@@ -7,11 +7,11 @@ import {
 	N8nRecycleScroller,
 	N8nTabs,
 	N8nText,
-} from '@n8n/design-system';
-import type { DialogSize, TabOptions } from '@n8n/design-system';
-import { type BaseTextKey, useI18n } from '@n8n/i18n';
+} from '@MNI/design-system';
+import type { DialogSize, TabOptions } from '@MNI/design-system';
+import { type BaseTextKey, useI18n } from '@MNI/i18n';
 import { useDebounceFn } from '@vueuse/core';
-import { getDebounceTime } from '@n8n/composables/useDebounce';
+import { getDebounceTime } from '@MNI/composables/useDebounce';
 import { DEBOUNCE_TIME } from '@/app/constants/durations';
 
 import ToolRow from './ToolRow.vue';
@@ -261,8 +261,8 @@ const CATEGORY_I18N: Record<ToolCategoryKey, BaseTextKey> = {
 	'built-in': 'tools.connection.categories.builtIn',
 	mcp: 'tools.connection.categories.mcp',
 	ai: 'tools.connection.categories.ai',
-	MNI: 'tools.connection.categories.n8n',
-	'n8n-connect': 'tools.connection.categories.n8nConnect',
+	MNI: 'tools.connection.categories.MNI',
+	'MNI-connect': 'tools.connection.categories.n8nConnect',
 	'app-action': 'tools.connection.categories.appAction',
 	community: 'tools.connection.categories.community',
 	workflows: 'tools.connection.categories.workflows',
@@ -468,7 +468,7 @@ function handleOpenChange(value: boolean) {
 </template>
 
 <style lang="scss" module>
-@use '@n8n/design-system/css/mixins/mixins' as scrollbar-mixins;
+@use '@MNI/design-system/css/mixins/mixins' as scrollbar-mixins;
 
 .body {
 	display: flex;

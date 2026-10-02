@@ -1,4 +1,4 @@
-import type { IHttpRequestOptions } from 'n8n-workflow';
+import type { IHttpRequestOptions } from 'MNI-workflow';
 
 import { Aws } from '../Aws.credentials';
 import type { AwsIamCredentialsType } from '../common/aws/types';
@@ -292,7 +292,7 @@ describe('AWS signing (integration, real signer)', () => {
 
 			afterEach(() => {
 				vi.useRealTimers();
-				delete process.env.N8N_AWS_LEGACY_SIGNER;
+				delete process.env.MNI_AWS_LEGACY_SIGNER;
 			});
 
 			function signatureFrom(headers: Record<string, string>): string {
@@ -309,7 +309,7 @@ describe('AWS signing (integration, real signer)', () => {
 				};
 
 				const smithy = await aws.authenticate(credentials, { ...request });
-				process.env.N8N_AWS_LEGACY_SIGNER = 'true';
+				process.env.MNI_AWS_LEGACY_SIGNER = 'true';
 				const legacy = await aws.authenticate(credentials, { ...request });
 
 				const smithySignature = signatureFrom(smithy.headers as Record<string, string>);
@@ -325,7 +325,7 @@ describe('AWS signing (integration, real signer)', () => {
 				};
 
 				const smithy = await aws.authenticate(credentials, { ...request });
-				process.env.N8N_AWS_LEGACY_SIGNER = 'true';
+				process.env.MNI_AWS_LEGACY_SIGNER = 'true';
 				const legacy = await aws.authenticate(credentials, { ...request });
 
 				const smithySignature = signatureFrom(smithy.headers as Record<string, string>);
@@ -338,11 +338,11 @@ describe('AWS signing (integration, real signer)', () => {
 
 	describe('legacy fallback', () => {
 		afterEach(() => {
-			delete process.env.N8N_AWS_LEGACY_SIGNER;
+			delete process.env.MNI_AWS_LEGACY_SIGNER;
 		});
 
-		it('signs via aws4 when N8N_AWS_LEGACY_SIGNER=true', async () => {
-			process.env.N8N_AWS_LEGACY_SIGNER = 'true';
+		it('signs via aws4 when MNI_AWS_LEGACY_SIGNER=true', async () => {
+			process.env.MNI_AWS_LEGACY_SIGNER = 'true';
 
 			const result = await aws.authenticate(credentials, {
 				...baseRequest,
@@ -358,7 +358,7 @@ describe('AWS signing (integration, real signer)', () => {
 		});
 
 		it('signs a vpce Bedrock request with the bedrock service namespace via aws4', async () => {
-			process.env.N8N_AWS_LEGACY_SIGNER = 'true';
+			process.env.MNI_AWS_LEGACY_SIGNER = 'true';
 
 			const result = await aws.authenticate(credentials, {
 				...baseRequest,

@@ -1,4 +1,4 @@
-import type { ILoadOptionsFunctions } from 'n8n-workflow';
+import type { ILoadOptionsFunctions } from 'MNI-workflow';
 import type { Mock } from 'vitest';
 import { mockDeep } from 'vitest-mock-extended';
 
@@ -37,7 +37,7 @@ describe('Confluence listSearch.getPages', () => {
 		vi.mocked(ctx.getNode).mockReturnValue({
 			id: 'test-node',
 			name: 'Test Confluence Node',
-			type: 'n8n-nodes-base.confluence',
+			type: 'MNI-nodes-base.confluence',
 			typeVersion: 1,
 			position: [0, 0],
 			parameters: {},
@@ -126,7 +126,7 @@ describe('Confluence listSearch.getPages', () => {
 			scopedCtx.getNode.mockReturnValue({
 				id: 'test-node',
 				name: 'Test Confluence Node',
-				type: 'n8n-nodes-base.confluence',
+				type: 'MNI-nodes-base.confluence',
 				typeVersion: 1,
 				position: [0, 0],
 				parameters: {},
@@ -596,7 +596,7 @@ describe('Confluence listSearch.getSites', () => {
 		vi.mocked(ctx.getNode).mockReturnValue({
 			id: 'test-node',
 			name: 'Test Confluence Node',
-			type: 'n8n-nodes-base.confluence',
+			type: 'MNI-nodes-base.confluence',
 			typeVersion: 1,
 			position: [0, 0],
 			parameters: {},

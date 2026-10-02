@@ -1,5 +1,5 @@
 # Interactive shell sessions set this guard after they remove worker credentials.
-[ "${N8N_SKIP_CODESPACE_SECRETS:-}" = "1" ] && return
+[ "${MNI_SKIP_CODESPACE_SECRETS:-}" = "1" ] && return
 
 # Login-shell setup for ssh/tmux sessions: export secrets, then do the
 # one-time registrations.

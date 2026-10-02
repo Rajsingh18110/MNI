@@ -1,5 +1,5 @@
-import { isSlackInteractionRequest, parseHitlCallbackReference } from 'n8n-core';
-import { jsonParse, type IDataObject, type IWebhookFunctions } from 'n8n-workflow';
+import { isSlackInteractionRequest, parseHitlCallbackReference } from 'MNI-core';
+import { jsonParse, type IDataObject, type IWebhookFunctions } from 'MNI-workflow';
 
 import { slackApiRequest } from './GenericFunctions';
 import { HITL_APPROVE_ACTION_ID, type SectionBlock } from './MessageInterface';

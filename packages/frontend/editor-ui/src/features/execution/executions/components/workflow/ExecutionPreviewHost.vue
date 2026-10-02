@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 import { computed, nextTick, onMounted, onUnmounted, provide, watch } from 'vue';
-import { deepCopy } from 'n8n-workflow';
-import { useI18n } from '@n8n/i18n';
-import { N8nIcon, N8nText } from '@n8n/design-system';
+import { deepCopy } from 'MNI-workflow';
+import { useI18n } from '@MNI/i18n';
+import { N8nIcon, N8nText } from '@MNI/design-system';
 import NodeView from '@/app/views/NodeView.vue';
 import LogsPanel from '@/features/execution/logs/components/LogsPanel.vue';
 import {

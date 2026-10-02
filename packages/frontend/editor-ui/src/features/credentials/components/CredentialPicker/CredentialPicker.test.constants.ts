@@ -192,14 +192,14 @@ export const TEST_CREDENTIAL_TYPES: ICredentialTypeMap = {
 			},
 		},
 		iconUrl: {
-			light: 'icons/n8n-nodes-base/dist/nodes/OpenAi/openai.svg',
-			dark: 'icons/n8n-nodes-base/dist/nodes/OpenAi/openai.dark.svg',
+			light: 'icons/MNI-nodes-base/dist/nodes/OpenAi/openai.svg',
+			dark: 'icons/MNI-nodes-base/dist/nodes/OpenAi/openai.dark.svg',
 		},
 		supportedNodes: [
-			'n8n-nodes-base.openAi',
-			'@n8n/n8n-nodes-langchain.embeddingsOpenAi',
-			'@n8n/n8n-nodes-langchain.lmChatOpenAi',
-			'@n8n/n8n-nodes-langchain.lmOpenAi',
+			'MNI-nodes-base.openAi',
+			'@MNI/MNI-nodes-langchain.embeddingsOpenAi',
+			'@MNI/MNI-nodes-langchain.lmChatOpenAi',
+			'@MNI/MNI-nodes-langchain.lmOpenAi',
 		],
 	},
 	supabaseApi: {
@@ -242,8 +242,8 @@ export const TEST_CREDENTIAL_TYPES: ICredentialTypeMap = {
 				url: '/',
 			},
 		},
-		iconUrl: 'icons/n8n-nodes-base/dist/nodes/Supabase/supabase.svg',
-		supportedNodes: ['n8n-nodes-base.supabase'],
+		iconUrl: 'icons/MNI-nodes-base/dist/nodes/Supabase/supabase.svg',
+		supportedNodes: ['MNI-nodes-base.supabase'],
 	},
 	slackOAuth2Api: {
 		name: 'slackOAuth2Api',
@@ -296,8 +296,8 @@ export const TEST_CREDENTIAL_TYPES: ICredentialTypeMap = {
 				default: '',
 			},
 		],
-		iconUrl: 'icons/n8n-nodes-base/dist/nodes/Slack/slack.svg',
-		supportedNodes: ['n8n-nodes-base.slack'],
+		iconUrl: 'icons/MNI-nodes-base/dist/nodes/Slack/slack.svg',
+		supportedNodes: ['MNI-nodes-base.slack'],
 	},
 };
 

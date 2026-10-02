@@ -1,8 +1,8 @@
 import { AuthenticationError, ClientSecretCredential } from '@azure/identity';
 import { SecretClient } from '@azure/keyvault-secrets';
 import type { KeyVaultSecret } from '@azure/keyvault-secrets';
-import type { Logger } from '@n8n/backend-common';
-import { UnexpectedError } from 'n8n-workflow';
+import type { Logger } from '@MNI/backend-common';
+import { UnexpectedError } from 'MNI-workflow';
 import type { Mock } from 'vitest';
 import { mock } from 'vitest-mock-extended';
 

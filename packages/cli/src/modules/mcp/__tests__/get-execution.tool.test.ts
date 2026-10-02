@@ -1,6 +1,6 @@
-import { mockInstance } from '@n8n/backend-test-utils';
-import { ExecutionRepository, User } from '@n8n/db';
-import { createEmptyRunExecutionData } from 'n8n-workflow';
+import { mockInstance } from '@MNI/backend-test-utils';
+import { ExecutionRepository, User } from '@MNI/db';
+import { createEmptyRunExecutionData } from 'MNI-workflow';
 import type { Mock } from 'vitest';
 
 import { ExecutionPersistence } from '@/executions/execution-persistence';

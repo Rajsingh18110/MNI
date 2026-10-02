@@ -1,4 +1,4 @@
-import { UUID_V7_PATTERN } from '@n8n/constants';
+import { UUID_V7_PATTERN } from '@MNI/constants';
 import type {
 	INode,
 	INodeExecutionData,
@@ -10,8 +10,8 @@ import type {
 	IWorkflowExecutionDataProcess,
 	StartNodeData,
 	WorkflowExecuteMode,
-} from 'n8n-workflow';
-import { createRunExecutionData, NodeConnectionTypes, UserError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { createRunExecutionData, NodeConnectionTypes, UserError } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import type { CredentialsPermissionChecker } from '@/executions/pre-execution-checks';
@@ -29,10 +29,10 @@ const node = (id: string, name: string, type: string): INode => ({
 	parameters: {},
 });
 
-const MANUAL_TRIGGER = node('trigger-id', 'When clicking Execute', 'n8n-nodes-base.manualTrigger');
-const WEBHOOK_TRIGGER = node('webhook-id', 'Webhook', 'n8n-nodes-base.webhook');
-const SCHEDULE_TRIGGER = node('schedule-id', 'Schedule Trigger', 'n8n-nodes-base.scheduleTrigger');
-const SET_NODE = node('set-id', 'Edit Fields', 'n8n-nodes-base.set');
+const MANUAL_TRIGGER = node('trigger-id', 'When clicking Execute', 'MNI-nodes-base.manualTrigger');
+const WEBHOOK_TRIGGER = node('webhook-id', 'Webhook', 'MNI-nodes-base.webhook');
+const SCHEDULE_TRIGGER = node('schedule-id', 'Schedule Trigger', 'MNI-nodes-base.scheduleTrigger');
+const SET_NODE = node('set-id', 'Edit Fields', 'MNI-nodes-base.set');
 
 function workflow(overrides: Partial<IWorkflowBase> = {}): IWorkflowBase {
 	return {
@@ -249,9 +249,9 @@ describe('EngineV2Dispatcher', () => {
 			const otherTrigger = node(
 				'other-trigger-id',
 				'When clicking Other Execute',
-				'n8n-nodes-base.manualTrigger',
+				'MNI-nodes-base.manualTrigger',
 			);
-			const otherSetNode = node('other-set-id', 'Other Edit Fields', 'n8n-nodes-base.set');
+			const otherSetNode = node('other-set-id', 'Other Edit Fields', 'MNI-nodes-base.set');
 			const data = runData({
 				workflowData: workflow({
 					nodes: [MANUAL_TRIGGER, SET_NODE, otherTrigger, otherSetNode],
@@ -465,7 +465,7 @@ describe('EngineV2Dispatcher', () => {
 
 		describe('a trigger that establishes an identity', () => {
 			const hookedTrigger = {
-				...node('hooked-id', 'Stripe Trigger', 'n8n-nodes-base.stripeTrigger'),
+				...node('hooked-id', 'Stripe Trigger', 'MNI-nodes-base.stripeTrigger'),
 				parameters: { contextEstablishmentHooks: { hooks: [{ hookName: 'HttpHeaderExtractor' }] } },
 			};
 
@@ -523,7 +523,7 @@ describe('EngineV2Dispatcher', () => {
 				});
 
 				await expect(dispatcher.start(data)).rejects.toThrow(
-					'Engine v2 is not available. Enable the `engine-v2` module with N8N_ENABLED_MODULES.',
+					'Engine v2 is not available. Enable the `engine-v2` module with MNI_ENABLED_MODULES.',
 				);
 			});
 

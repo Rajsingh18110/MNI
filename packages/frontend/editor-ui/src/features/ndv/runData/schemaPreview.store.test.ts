@@ -3,12 +3,12 @@ import { useSchemaPreviewStore } from './schemaPreview.store';
 import * as schemaPreviewApi from './schemaPreview.api';
 import type { JSONSchema7 } from 'json-schema';
 import { mock } from 'vitest-mock-extended';
-import type { PushPayload } from '@n8n/api-types';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
-import type { INode } from 'n8n-workflow';
+import type { PushPayload } from '@MNI/api-types';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
+import type { INode } from 'MNI-workflow';
 
 vi.mock('./schemaPreview.api');
-vi.mock('@n8n/composables/useTelemetry', () => {
+vi.mock('@MNI/composables/useTelemetry', () => {
 	const track = vi.fn();
 	return {
 		useTelemetry: () => {
@@ -17,7 +17,7 @@ vi.mock('@n8n/composables/useTelemetry', () => {
 	};
 });
 
-vi.mock('@n8n/stores/useRootStore', () => ({
+vi.mock('@MNI/stores/useRootStore', () => ({
 	useRootStore: vi.fn(() => ({
 		baseUrl: 'https://test.com',
 	})),
@@ -55,7 +55,7 @@ describe('schemaPreview.store', () => {
 			schemaPreviewApiSpy.mockResolvedValueOnce(mockedSchema);
 
 			const options = {
-				nodeType: 'n8n-nodes-base.test',
+				nodeType: 'MNI-nodes-base.test',
 				version: 1.2,
 				resource: 'messages',
 				operation: 'send',
@@ -78,7 +78,7 @@ describe('schemaPreview.store', () => {
 			schemaPreviewApiSpy.mockRejectedValueOnce(error);
 
 			const options = {
-				nodeType: 'n8n-nodes-base.test',
+				nodeType: 'MNI-nodes-base.test',
 				version: 1.2,
 				resource: 'messages',
 				operation: 'send',
@@ -91,7 +91,7 @@ describe('schemaPreview.store', () => {
 
 	describe('trackSchemaPreviewExecution', () => {
 		const options = {
-			nodeType: 'n8n-nodes-base.test',
+			nodeType: 'MNI-nodes-base.test',
 			version: 1.2,
 			resource: 'messages',
 			operation: 'send',
@@ -134,7 +134,7 @@ describe('schemaPreview.store', () => {
 				node_id: 'test-node-id',
 				node_operation: 'send',
 				node_resource: 'messages',
-				node_type: 'n8n-nodes-base.test',
+				node_type: 'MNI-nodes-base.test',
 				node_version: 1.2,
 				output_schema:
 					'{"type":"object","properties":{"foo":{"type":"string"},"quz":{"type":"string"}}}',

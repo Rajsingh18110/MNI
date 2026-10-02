@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { useMessage } from '@/app/composables/useMessage';
 import { MODAL_CONFIRM, VIEWS } from '@/app/constants';
-import { useRolesStore } from '@n8n/stores/roles.store';
-import { useSettingsStore } from '@n8n/stores/settings.store';
-import { useI18n } from '@n8n/i18n';
-import type { Role } from '@n8n/permissions';
+import { useRolesStore } from '@MNI/stores/roles.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
+import { useI18n } from '@MNI/i18n';
+import type { Role } from '@MNI/permissions';
 import { useRouter } from 'vue-router';
 import RolesTable from '../components/RolesTable.vue';
 import { useRolesListActions } from '../composables/useRolesListActions';

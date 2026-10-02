@@ -12,8 +12,8 @@ import type {
 	INodeTypeBaseDescription,
 	INodeTypeDescription,
 	IRequestOptions,
-} from 'n8n-workflow';
-import { NodeConnectionTypes, deepCopy, randomInt } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeConnectionTypes, deepCopy, randomInt } from 'MNI-workflow';
 
 import {
 	contactDescription,

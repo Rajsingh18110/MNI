@@ -1,8 +1,8 @@
-import { parseIncomingMessage } from '@n8n/backend-network';
-import { GlobalConfig } from '@n8n/config';
-import { Container } from '@n8n/di';
+import { parseIncomingMessage } from '@MNI/backend-network';
+import { GlobalConfig } from '@MNI/config';
+import { Container } from '@MNI/di';
 import type { Request, RequestHandler } from 'express';
-import { jsonParse, sanitizeXmlName } from 'n8n-workflow';
+import { jsonParse, sanitizeXmlName } from 'MNI-workflow';
 import { parse as parseQueryString } from 'querystring';
 import getRawBody from 'raw-body';
 import { type Readable } from 'stream';

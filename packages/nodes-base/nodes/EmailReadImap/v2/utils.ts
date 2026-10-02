@@ -3,7 +3,7 @@ import {
 	type FetchMessageObject,
 	type FetchQueryObject,
 	type ImapSimple,
-} from '@n8n/imap';
+} from '@MNI/imap';
 import { simpleParser, type Source as ParserSource } from 'mailparser';
 import {
 	type INodeExecutionData,
@@ -11,7 +11,7 @@ import {
 	type ITriggerFunctions,
 	deepCopy,
 	type IBinaryKeyData,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { toSearchObject, type SearchCriteria } from '../search-criteria';
 

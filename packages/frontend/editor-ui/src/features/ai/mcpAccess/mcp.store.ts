@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia';
-import { capabilities, capabilityRegistry } from '@n8n/frontend-module-sdk';
+import { capabilities, capabilityRegistry } from '@MNI/frontend-module-sdk';
 import { MCP_CLIENTS_PREVIEW_LIMIT, MCP_ENDPOINT, MCP_STORE } from './mcp.constants';
-import { useRootStore } from '@n8n/stores/useRootStore';
+import { useRootStore } from '@MNI/stores/useRootStore';
 import {
 	updateMcpSettings,
 	toggleWorkflowsMcpAccessApi,
@@ -24,7 +24,7 @@ import {
 } from '@/features/ai/mcpAccess/mcp.api';
 import type { McpAgent, McpWorkflow } from '@/features/ai/mcpAccess/mcp.types';
 import { computed, ref } from 'vue';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import {
 	EMPTY_OAUTH_CLIENT_FILTERS,
 	type OAuthClientFilters,
@@ -35,8 +35,8 @@ import type {
 	ListOAuthClientsResponseDto,
 	OAuthClientResponseDto,
 	DeleteOAuthClientResponseDto,
-} from '@n8n/api-types';
-import { i18n } from '@n8n/i18n';
+} from '@MNI/api-types';
+import { i18n } from '@MNI/i18n';
 
 export const useMCPStore = defineStore(MCP_STORE, () => {
 	const rootStore = useRootStore();

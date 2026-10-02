@@ -1,5 +1,5 @@
-import { Tool } from '@n8n/agents/tool';
-import { isRecord } from '@n8n/utils/is-record';
+import { Tool } from '@MNI/agents/tool';
+import { isRecord } from '@MNI/utils/is-record';
 
 import type { AgentKnowledgeMirrorService } from '../../agent-knowledge-mirror.service';
 import {

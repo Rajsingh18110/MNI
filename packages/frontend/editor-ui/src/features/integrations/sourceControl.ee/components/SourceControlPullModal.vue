@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { useLoadingService } from '@/app/composables/useLoadingService';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
-import { useToast } from '@n8n/composables/useToast';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
+import { useToast } from '@MNI/composables/useToast';
 import { VIEWS } from '@/app/constants';
 import {
 	SOURCE_CONTROL_PULL_MODAL_KEY,
@@ -9,7 +9,7 @@ import {
 } from '../sourceControl.constants';
 import { sourceControlEventBus } from '../sourceControl.eventBus';
 import { useProjectsStore } from '@/features/collaboration/projects/projects.store';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { useSourceControlStore } from '../sourceControl.store';
 import type { ProjectListItem } from '@/features/collaboration/projects/projects.types';
 import { useSourceControlFileList } from '../composables/useSourceControlFileList';
@@ -23,10 +23,10 @@ import {
 } from '../sourceControl.utils';
 import type { SourceControlTreeRow } from '../sourceControl.types';
 import { useUIStore } from '@/app/stores/ui.store';
-import { type SourceControlledFile, SOURCE_CONTROL_FILE_TYPE } from '@n8n/api-types';
-import { shouldAutoPublishWorkflow, type AutoPublishMode } from 'n8n-workflow';
-import { useI18n } from '@n8n/i18n';
-import type { EventBus } from '@n8n/utils/event-bus';
+import { type SourceControlledFile, SOURCE_CONTROL_FILE_TYPE } from '@MNI/api-types';
+import { shouldAutoPublishWorkflow, type AutoPublishMode } from 'MNI-workflow';
+import { useI18n } from '@MNI/i18n';
+import type { EventBus } from '@MNI/utils/event-bus';
 import { computed, onBeforeMount, onMounted, ref } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { DynamicScroller, DynamicScrollerItem } from 'vue-virtual-scroller';
@@ -47,7 +47,7 @@ import {
 	N8nSelect,
 	N8nText,
 	N8nTooltip,
-} from '@n8n/design-system';
+} from '@MNI/design-system';
 type SourceControlledFileType = SourceControlledFile['type'];
 type SourceControlledFileWithProject = SourceControlledFile & {
 	project?: ProjectListItem;

@@ -2,7 +2,7 @@ import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { defineComponent, h } from 'vue';
 import { createComponentRenderer } from '@/__tests__/render';
 import { createTestingPinia } from '@pinia/testing';
-import { createEventBus } from '@n8n/utils/event-bus';
+import { createEventBus } from '@MNI/utils/event-bus';
 import AIBuilderDiffModal from './AIBuilderDiffModal.vue';
 import type { IWorkflowDb } from '@/Interface';
 
@@ -45,7 +45,7 @@ vi.mock('@/features/workflows/workflowDiff/WorkflowDiffView.vue', () => ({
 
 // Mock telemetry
 const trackMock = vi.fn();
-vi.mock('@n8n/composables/useTelemetry', () => ({
+vi.mock('@MNI/composables/useTelemetry', () => ({
 	useTelemetry: () => ({
 		track: trackMock,
 	}),
@@ -59,7 +59,7 @@ vi.mock('vue-router', () => ({
 }));
 
 // Mock useI18n
-vi.mock('@n8n/i18n', async (importOriginal) => ({
+vi.mock('@MNI/i18n', async (importOriginal) => ({
 	...(await importOriginal()),
 	useI18n: () => ({
 		baseText: (key: string) => key,
@@ -94,7 +94,7 @@ vi.mock('@/app/composables/useBrowserNotifications', () => ({
 }));
 
 // Mock useToast
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: () => ({
 		showMessage: vi.fn(),
 		showError: vi.fn(),
@@ -102,7 +102,7 @@ vi.mock('@n8n/composables/useToast', () => ({
 }));
 
 // Mock workflowHistory API
-vi.mock('@n8n/rest-api-client/api/workflowHistory', () => ({
+vi.mock('@MNI/rest-api-client/api/workflowHistory', () => ({
 	getWorkflowVersionsByIds: vi.fn(),
 }));
 
@@ -120,7 +120,7 @@ const targetWorkflow = {
 		{
 			id: 'node-1',
 			name: 'New Node',
-			type: 'n8n-nodes-base.httpRequest',
+			type: 'MNI-nodes-base.httpRequest',
 			position: [0, 0],
 			parameters: {},
 			typeVersion: 1,

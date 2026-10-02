@@ -6,7 +6,7 @@ sandbox service that the workflow builder requires.
 
 ### Sandbox service: hosted or local
 
-Set `N8N_SANDBOX_SERVICE_URL` and `N8N_SANDBOX_SERVICE_API_KEY` and the stack
+Set `MNI_SANDBOX_SERVICE_URL` and `MNI_SANDBOX_SERVICE_API_KEY` and the stack
 points MNI at that deployment and starts no sandbox containers. CI supplies both
 as repository secrets, so internal runs use the hosted service.
 
@@ -21,7 +21,7 @@ privileged dind runner + image load, a couple of minutes) when either:
   *not* used: it is unauthenticated and returns a static 200, so it would pass
   with a wrong key.
 
-Nothing else changes between the two paths: the provider is `n8n-sandbox`
+Nothing else changes between the two paths: the provider is `MNI-sandbox`
 either way. The stack logs which one it picked (`Using hosted: Sandbox service
 (API + runner)`), and a failed preflight prints a warning — a GitHub Actions
 `::warning::` annotation in CI, so a silent downgrade to the slow path is
@@ -76,7 +76,7 @@ pnpm test:local:instance-ai --grep "sidebar"  &
 wait
 
 # Pin the port (e.g. for browser inspection at http://localhost:5680)
-N8N_BASE_URL=http://localhost:5680 pnpm test:local:instance-ai --grep "preview"
+MNI_BASE_URL=http://localhost:5680 pnpm test:local:instance-ai --grep "preview"
 
 # Headed browser for visual debugging
 pnpm test:local:instance-ai --grep "preview" --headed
@@ -87,15 +87,15 @@ pnpm test:local:instance-ai --grep "preview" --headed
 It's a thin wrapper over the generic
 [`test:local:isolated`](../../../README.md#testlocalisolated--local-run-with-full-isolation)
 runner that pre-fills the four env vars MNI needs to boot the instance-ai
-module (`N8N_ENABLED_MODULES`, `N8N_INSTANCE_AI_MODEL`,
-`N8N_INSTANCE_AI_MODEL_API_KEY`, `N8N_INSTANCE_AI_LOCAL_GATEWAY_DISABLED`).
+module (`MNI_ENABLED_MODULES`, `MNI_INSTANCE_AI_MODEL`,
+`MNI_INSTANCE_AI_MODEL_API_KEY`, `MNI_INSTANCE_AI_LOCAL_GATEWAY_DISABLED`).
 
 From the isolated runner you get:
 
 - **Random free OS ports** for MNI + the task-runner broker, so multiple
   invocations don't collide.
-- **Throwaway `N8N_USER_FOLDER`** under the OS temp dir, cleaned up on exit.
-  `~/.n8n/database.sqlite` is never touched.
+- **Throwaway `MNI_USER_FOLDER`** under the OS temp dir, cleaned up on exit.
+  `~/.MNI/database.sqlite` is never touched.
 - **`PLAYWRIGHT_ALLOW_CONTAINER_ONLY=true`** so container-tagged (`@mode:*`,
   `@licensed`, and `@db:reset`) tests are selected by the local `e2e` project.
 - **Self-managed MNI** with a `/rest/e2e/reset` readiness check that waits for

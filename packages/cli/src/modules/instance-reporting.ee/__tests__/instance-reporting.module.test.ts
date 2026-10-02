@@ -1,11 +1,11 @@
-import type { FrontendModuleSettings } from '@n8n/api-types';
-import type { ModuleName } from '@n8n/backend-common';
-import { Logger, ModulesConfig } from '@n8n/backend-common';
-import { mockLogger } from '@n8n/backend-test-utils';
-import type { Controller } from '@n8n/decorators';
-import { ControllerRegistryMetadata, ModuleMetadata } from '@n8n/decorators';
-import { Container } from '@n8n/di';
-import { UserError } from 'n8n-workflow';
+import type { FrontendModuleSettings } from '@MNI/api-types';
+import type { ModuleName } from '@MNI/backend-common';
+import { Logger, ModulesConfig } from '@MNI/backend-common';
+import { mockLogger } from '@MNI/backend-test-utils';
+import type { Controller } from '@MNI/decorators';
+import { ControllerRegistryMetadata, ModuleMetadata } from '@MNI/decorators';
+import { Container } from '@MNI/di';
+import { UserError } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import { License } from '@/license';

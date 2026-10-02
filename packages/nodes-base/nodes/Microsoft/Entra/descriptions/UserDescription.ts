@@ -8,7 +8,7 @@ import {
 	type IN8nHttpFullResponse,
 	type INodeExecutionData,
 	type INodeProperties,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { ignoreHttpStatusErrorsConfig } from './common';
 import {
@@ -135,7 +135,7 @@ export const userOperations: INodeProperties[] = [
 				action: 'Get many users',
 			},
 			{
-				// eslint-disable-next-line n8n-nodes-base/node-param-display-name-miscased
+				// eslint-disable-next-line MNI-nodes-base/node-param-display-name-miscased
 				name: 'Remove from Group',
 				value: 'removeGroup',
 				description: 'Remove user from group',
@@ -1075,11 +1075,11 @@ const getFields: INodeProperties[] = [
 		type: 'options',
 	},
 	{
-		// eslint-disable-next-line n8n-nodes-base/node-param-display-name-wrong-for-dynamic-multi-options
+		// eslint-disable-next-line MNI-nodes-base/node-param-display-name-wrong-for-dynamic-multi-options
 		displayName: 'Fields',
 		name: 'fields',
 		default: [],
-		// eslint-disable-next-line n8n-nodes-base/node-param-description-wrong-for-dynamic-multi-options
+		// eslint-disable-next-line MNI-nodes-base/node-param-description-wrong-for-dynamic-multi-options
 		description: 'The fields to add to the output',
 		displayOptions: {
 			show: {
@@ -1229,11 +1229,11 @@ const getAllFields: INodeProperties[] = [
 		type: 'options',
 	},
 	{
-		// eslint-disable-next-line n8n-nodes-base/node-param-display-name-wrong-for-dynamic-multi-options
+		// eslint-disable-next-line MNI-nodes-base/node-param-display-name-wrong-for-dynamic-multi-options
 		displayName: 'Fields',
 		name: 'fields',
 		default: [],
-		// eslint-disable-next-line n8n-nodes-base/node-param-description-wrong-for-dynamic-multi-options
+		// eslint-disable-next-line MNI-nodes-base/node-param-description-wrong-for-dynamic-multi-options
 		description: 'The fields to add to the output',
 		displayOptions: {
 			show: {

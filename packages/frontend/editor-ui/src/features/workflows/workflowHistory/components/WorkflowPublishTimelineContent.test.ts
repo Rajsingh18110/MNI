@@ -4,7 +4,7 @@ import { createComponentRenderer } from '@/__tests__/render';
 import { mockedStore } from '@/__tests__/utils';
 import WorkflowPublishTimelineContent from './WorkflowPublishTimelineContent.vue';
 import { useWorkflowHistoryStore } from '../workflowHistory.store';
-import type { PublishTimelineEvent } from '@n8n/rest-api-client/api/workflowHistory';
+import type { PublishTimelineEvent } from '@MNI/rest-api-client/api/workflowHistory';
 
 const workflowId = 'wf-1';
 

@@ -1,6 +1,6 @@
-import { makeRestApiRequest } from '@n8n/rest-api-client';
-import type { IRestApiContext } from '@n8n/rest-api-client';
-import type { FavoriteResourceType } from '@n8n/api-types';
+import { makeRestApiRequest } from '@MNI/rest-api-client';
+import type { IRestApiContext } from '@MNI/rest-api-client';
+import type { FavoriteResourceType } from '@MNI/api-types';
 
 export type { FavoriteResourceType };
 

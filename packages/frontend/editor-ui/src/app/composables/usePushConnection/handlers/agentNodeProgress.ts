@@ -1,4 +1,4 @@
-import type { AgentNodeProgress } from '@n8n/api-types';
+import type { AgentNodeProgress } from '@MNI/api-types';
 import { useWorkflowExecutionStateStore } from '@/app/stores/workflowExecutionState.store';
 import type { PushHandlerOptions } from './types';
 

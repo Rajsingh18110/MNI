@@ -14,7 +14,7 @@ import ProjectHeader from '@/features/collaboration/projects/components/ProjectH
 import WorkflowCard from '@/app/components/WorkflowCard.vue';
 import WorkflowTagsDropdown from '@/features/shared/tags/components/WorkflowTagsDropdown.vue';
 import { useAutoScrollOnDrag } from '@/app/composables/useAutoScrollOnDrag';
-import { getDebounceTime, useDebounce } from '@n8n/composables/useDebounce';
+import { getDebounceTime, useDebounce } from '@MNI/composables/useDebounce';
 import { useDocumentTitle } from '@/app/composables/useDocumentTitle';
 import { useLatestFetch } from '@/app/composables/useLatestFetch';
 import type {
@@ -27,8 +27,8 @@ import { useDependencies } from '@/app/composables/useDependencies';
 import { useFolders } from '@/features/core/folders/composables/useFolders';
 import { useMessage } from '@/app/composables/useMessage';
 import { useProjectPages } from '@/features/collaboration/projects/composables/useProjectPages';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
-import { useToast } from '@n8n/composables/useToast';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
+import { useToast } from '@MNI/composables/useToast';
 import { hasPermission } from '@/app/utils/rbac/permissions';
 import {
 	DEBOUNCE_TIME,
@@ -51,7 +51,7 @@ import { useTrialIntroModalStore } from '@/experiments/trialIntroModal/stores/tr
 import EmptyStateLayout from '@/app/components/layouts/EmptyStateLayout.vue';
 import { useReadyToRunStore } from '@/features/workflows/readyToRun/stores/readyToRun.store';
 import { useEmptyStateDetection } from '@/features/workflows/readyToRun/composables/useEmptyStateDetection';
-import { InsightsSummary, useInsightsStore } from '@n8n/frontend-module-insights';
+import { InsightsSummary, useInsightsStore } from '@MNI/frontend-module-insights';
 import { useWorkflowsEmptyState } from '@/features/workflows/composables/useWorkflowsEmptyState';
 import type {
 	BaseFilters,
@@ -68,13 +68,13 @@ import { useFavoritesStore } from '@/app/stores/favorites.store';
 import { usePostHog } from '@/app/stores/posthog.store';
 import { WORKFLOW_CARD_MCP_TOGGLE_EXPERIMENT } from '@/app/constants/experiments';
 import { useProjectsStore } from '@/features/collaboration/projects/projects.store';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { useSourceControlStore } from '@/features/integrations/sourceControl.ee/sourceControl.store';
 import { promotionEventBus } from '@/features/integrations/promotions.ee/promotions.eventBus';
 import { useTagsStore } from '@/features/shared/tags/tags.store';
 import { useUIStore } from '@/app/stores/ui.store';
 import { useUsageStore } from '@/features/settings/usage/usage.store';
-import { useUsersStore } from '@n8n/stores/users.store';
+import { useUsersStore } from '@MNI/stores/users.store';
 import { useWorkflowsStore } from '@/app/stores/workflows.store';
 import { useWorkflowsListStore } from '@/app/stores/workflowsList.store';
 import { useCredentialsStore } from '@/features/credentials/credentials.store';
@@ -88,12 +88,12 @@ import {
 	type ProjectSharingData,
 	ProjectTypes,
 } from '@/features/collaboration/projects/projects.types';
-import type { PathItem } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
-import { getResourcePermissions } from '@n8n/permissions';
-import { createEventBus } from '@n8n/utils/event-bus';
+import type { PathItem } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
+import { getResourcePermissions } from '@MNI/permissions';
+import { createEventBus } from '@MNI/utils/event-bus';
 import debounce from 'lodash/debounce';
-import { type IUser, PROJECT_ROOT } from 'n8n-workflow';
+import { type IUser, PROJECT_ROOT } from 'MNI-workflow';
 import { computed, onBeforeUnmount, onMounted, ref, useTemplateRef, watch } from 'vue';
 import { type LocationQueryRaw, useRoute, useRouter } from 'vue-router';
 
@@ -113,7 +113,7 @@ import {
 	N8nSelect,
 	N8nText,
 	N8nTooltip,
-} from '@n8n/design-system';
+} from '@MNI/design-system';
 
 const SEARCH_DEBOUNCE_TIME = getDebounceTime(DEBOUNCE_TIME.INPUT.SEARCH);
 const FILTERS_DEBOUNCE_TIME = 100;

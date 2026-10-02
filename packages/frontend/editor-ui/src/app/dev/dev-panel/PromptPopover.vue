@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { N8nButton, N8nInput } from '@n8n/design-system';
+import { N8nButton, N8nInput } from '@MNI/design-system';
 import { computed, onMounted, onUnmounted, ref, watch } from 'vue';
 
 const props = withDefaults(
@@ -137,7 +137,7 @@ watch(
 .dev-panel-popover {
 	position: fixed;
 	z-index: 2147483646;
-	/* stylelint-disable-next-line @n8n/css-var-naming */
+	/* stylelint-disable-next-line @MNI/css-var-naming */
 	background: var(--background--surface);
 	border: var(--border);
 	border-radius: var(--radius--lg);

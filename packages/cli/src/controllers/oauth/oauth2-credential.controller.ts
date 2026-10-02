@@ -1,14 +1,14 @@
-import { Logger } from '@n8n/backend-common';
-import type { ClientOAuth2Options, OAuth2CredentialData } from '@n8n/client-oauth2';
-import { ClientOAuth2, resolveClientAuthOptions } from '@n8n/client-oauth2';
-import { Get, RestController } from '@n8n/decorators';
+import { Logger } from '@MNI/backend-common';
+import type { ClientOAuth2Options, OAuth2CredentialData } from '@MNI/client-oauth2';
+import { ClientOAuth2, resolveClientAuthOptions } from '@MNI/client-oauth2';
+import { Get, RestController } from '@MNI/decorators';
 import { Response } from 'express';
 import omit from 'lodash/omit';
 import set from 'lodash/set';
 import split from 'lodash/split';
-import type { ICredentialDataDecryptedObject, IDataObject } from 'n8n-workflow';
-import { ensureError } from '@n8n/utils/errors/ensure-error';
-import { jsonParse } from 'n8n-workflow';
+import type { ICredentialDataDecryptedObject, IDataObject } from 'MNI-workflow';
+import { ensureError } from '@MNI/utils/errors/ensure-error';
+import { jsonParse } from 'MNI-workflow';
 
 import { CredentialsOverwrites } from '@/credentials-overwrites';
 import { EventService } from '@/events/event.service';
@@ -118,7 +118,7 @@ export class OAuth2CredentialController {
 
 			const expiresInSeconds = Number(tokenResponse.expires_in);
 			if (Number.isFinite(expiresInSeconds) && expiresInSeconds > 0) {
-				oauthTokenData.n8n_expires_at = String(Date.now() + expiresInSeconds * 1000);
+				oauthTokenData.MNI_expires_at = String(Date.now() + expiresInSeconds * 1000);
 			}
 
 			if (typeof state.resource === 'string') {

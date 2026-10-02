@@ -1,5 +1,5 @@
-import type { ApiKeyAudience } from '@n8n/api-types';
-import type { AuthenticatedRequest, TokenGrant } from '@n8n/db';
+import type { ApiKeyAudience } from '@MNI/api-types';
+import type { AuthenticatedRequest, TokenGrant } from '@MNI/db';
 
 export type AuthStrategyOptions = {
 	audience?: ApiKeyAudience;

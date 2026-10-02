@@ -1,4 +1,4 @@
-import type { IHookFunctions, IWebhookFunctions } from 'n8n-workflow';
+import type { IHookFunctions, IWebhookFunctions } from 'MNI-workflow';
 
 import { AsanaTrigger } from '../AsanaTrigger.node';
 import { verifySignature } from '../AsanaTriggerHelpers';

@@ -7,7 +7,7 @@ import {
 	UserError,
 	WAIT_INDEFINITELY,
 	type IExecuteFunctions,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { Wait } from '../Wait.node';
 

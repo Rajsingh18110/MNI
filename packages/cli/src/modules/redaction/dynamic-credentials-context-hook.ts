@@ -1,13 +1,13 @@
-import { Logger } from '@n8n/backend-common';
-import { CredentialsRepository } from '@n8n/db';
+import { Logger } from '@MNI/backend-common';
+import { CredentialsRepository } from '@MNI/db';
 import {
 	ContextEstablishmentHook,
 	ContextEstablishmentOptions,
 	ContextEstablishmentResult,
 	HookDescription,
 	IContextEstablishmentHook,
-} from '@n8n/decorators';
-import type { PlaintextExecutionContext } from 'n8n-workflow';
+} from '@MNI/decorators';
+import type { PlaintextExecutionContext } from 'MNI-workflow';
 
 import { ExecutingUserIdentifierProxy } from '@/credentials/executing-user-identifier-proxy';
 

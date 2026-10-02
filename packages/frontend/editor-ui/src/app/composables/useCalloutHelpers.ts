@@ -1,12 +1,12 @@
 import { computed } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
-import { useRootStore } from '@n8n/stores/useRootStore';
-import { useUsersStore } from '@n8n/stores/users.store';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
+import { useRootStore } from '@MNI/stores/useRootStore';
+import { useUsersStore } from '@MNI/stores/users.store';
 import { useWorkflowsStore } from '@/app/stores/workflows.store';
 import { useWorkflowsListStore } from '@/app/stores/workflowsList.store';
 import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';
-import { updateCurrentUserSettings } from '@n8n/rest-api-client/api/users';
+import { updateCurrentUserSettings } from '@MNI/rest-api-client/api/users';
 import { VIEWS } from '@/app/constants';
 import {
 	getRagStarterWorkflowJson,

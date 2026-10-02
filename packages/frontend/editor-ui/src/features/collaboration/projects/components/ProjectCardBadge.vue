@@ -1,14 +1,14 @@
 <script lang="ts" setup>
 import { computed } from 'vue';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import { ResourceType, splitName } from '../projects.utils';
 import type { Project } from '../projects.types';
 import { ProjectTypes } from '../projects.types';
 import type { CredentialsResource, FolderResource, WorkflowResource } from '@/Interface';
 import { VIEWS } from '@/app/constants';
-import { type IconOrEmoji, isIconOrEmoji } from '@n8n/design-system';
+import { type IconOrEmoji, isIconOrEmoji } from '@MNI/design-system';
 import ProjectIcon from './ProjectIcon.vue';
-import { N8nBadge, N8nTooltip } from '@n8n/design-system';
+import { N8nBadge, N8nTooltip } from '@MNI/design-system';
 import type { DataTableResource } from '@/features/core/dataTable/types';
 
 type Props = {
@@ -174,9 +174,9 @@ const projectLocation = computed(() => {
 			>
 				<ProjectIcon :icon="badgeIcon" :border-less="true" size="mini" />
 				<RouterLink v-if="projectLocation" :to="projectLocation">
-					<span v-n8n-truncate:20="badgeText" :class="$style.nowrap" />
+					<span v-MNI-truncate:20="badgeText" :class="$style.nowrap" />
 				</RouterLink>
-				<span v-else v-n8n-truncate:20="badgeText" :class="$style.nowrap" />
+				<span v-else v-MNI-truncate:20="badgeText" :class="$style.nowrap" />
 				<slot />
 			</N8nBadge>
 			<template #content>
@@ -229,7 +229,7 @@ const projectLocation = computed(() => {
 .badge {
 	border: var(--border);
 
-	:global(.n8n-text),
+	:global(.MNI-text),
 	a {
 		color: var(--color--text);
 		font-size: var(--font-size--xs);
@@ -240,7 +240,7 @@ const projectLocation = computed(() => {
 .projectBadge {
 	& > span {
 		display: flex;
-		gap: var(--n8n-badge--gap);
+		gap: var(--MNI-badge--gap);
 		justify-content: center;
 		align-items: center;
 	}

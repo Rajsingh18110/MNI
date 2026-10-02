@@ -1,16 +1,16 @@
-import { Logger } from '@n8n/backend-common';
-import { GlobalConfig } from '@n8n/config';
-import { MAX_INTEGER_32BITS_SIGNED, type ScheduledJobMisfirePolicy, Time } from '@n8n/constants';
+import { Logger } from '@MNI/backend-common';
+import { GlobalConfig } from '@MNI/config';
+import { MAX_INTEGER_32BITS_SIGNED, type ScheduledJobMisfirePolicy, Time } from '@MNI/constants';
 import type {
 	EntityManager,
 	NewScheduledJob,
 	ScheduledJobOwner,
 	ScheduledJobOwnerRef,
-} from '@n8n/db';
-import { DataSource, ScheduledJobRepository, ScheduledTaskRepository } from '@n8n/db';
-import { Service } from '@n8n/di';
-import { createJobProvisioner, withOwnerKeys } from '@n8n/scheduler';
-import { ensureError } from '@n8n/utils/errors/ensure-error';
+} from '@MNI/db';
+import { DataSource, ScheduledJobRepository, ScheduledTaskRepository } from '@MNI/db';
+import { Service } from '@MNI/di';
+import { createJobProvisioner, withOwnerKeys } from '@MNI/scheduler';
+import { ensureError } from '@MNI/utils/errors/ensure-error';
 import type {
 	DesiredJob,
 	ExistingJob,
@@ -18,9 +18,9 @@ import type {
 	ProvisionSummary,
 	RunInDeprovisionTransaction,
 	RunInProvisionTransaction,
-} from '@n8n/scheduler';
-import { Tracing } from 'n8n-core';
-import { UserError } from 'n8n-workflow';
+} from '@MNI/scheduler';
+import { Tracing } from 'MNI-core';
+import { UserError } from 'MNI-workflow';
 import { isDeepStrictEqual } from 'node:util';
 
 import { AgentScheduledJobOwner } from './agent-scheduled-job-owner';
@@ -93,7 +93,7 @@ type DeprovisionScope =
  * The write side of the durable scheduler: persists an owner's scheduled jobs.
  * The provisioning logic itself lives in the scheduler package (see
  * {@link createJobProvisioner}); this service only binds that package's
- * transaction ports to the `@n8n/db` repositories and maps between the domain
+ * transaction ports to the `@MNI/db` repositories and maps between the domain
  * `ScheduleDefinition` and the flat `scheduled_job` columns.
  *
  * ## Owning scheduled jobs

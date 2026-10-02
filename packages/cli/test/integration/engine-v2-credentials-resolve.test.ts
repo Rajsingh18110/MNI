@@ -1,12 +1,12 @@
-import { LicenseState } from '@n8n/backend-common';
-import { createWorkflow, testDb } from '@n8n/backend-test-utils';
-import { EngineConfig } from '@n8n/config';
-import type { CredentialsEntity, IWorkflowDb, User } from '@n8n/db';
-import { Container } from '@n8n/di';
-import { mintActionToken } from '@n8n/engine';
-import type { AdditionalDataContext } from '@n8n/node-engine-compatibility';
-import type { IExecuteData, INode } from 'n8n-workflow';
-import { OperationalError } from 'n8n-workflow';
+import { LicenseState } from '@MNI/backend-common';
+import { createWorkflow, testDb } from '@MNI/backend-test-utils';
+import { EngineConfig } from '@MNI/config';
+import type { CredentialsEntity, IWorkflowDb, User } from '@MNI/db';
+import { Container } from '@MNI/di';
+import { mintActionToken } from '@MNI/engine';
+import type { AdditionalDataContext } from '@MNI/node-engine-compatibility';
+import type { IExecuteData, INode } from 'MNI-workflow';
+import { OperationalError } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import { CredentialTypes } from '@/credential-types';
@@ -37,7 +37,7 @@ describe('Engine v2 credential resolve (integration)', () => {
 	let memberCredential: CredentialsEntity;
 	let ownerCredential: CredentialsEntity;
 
-	const httpRequestNode = { type: 'n8n-nodes-base.httpRequest' } as INode;
+	const httpRequestNode = { type: 'MNI-nodes-base.httpRequest' } as INode;
 	const executeData: IExecuteData = { node: httpRequestNode, data: {}, source: null };
 
 	beforeAll(async () => {

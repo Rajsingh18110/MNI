@@ -1,6 +1,6 @@
 /* eslint-disable import-x/no-extraneous-dependencies -- test-only patterns */
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { AI_GATEWAY_MANAGED_TAG } from '@n8n/api-types';
+import { AI_GATEWAY_MANAGED_TAG } from '@MNI/api-types';
 
 const LOCAL_STORAGE_KEY = 'agent-model-credentials-user-1';
 
@@ -36,7 +36,7 @@ vi.mock('@/app/stores/aiGateway.store', () => ({
 	}),
 }));
 
-vi.mock('@n8n/stores/settings.store', () => ({
+vi.mock('@MNI/stores/settings.store', () => ({
 	useSettingsStore: () => ({
 		get isAiGatewayEnabled() {
 			return aiGatewayState.isEnabled.value;

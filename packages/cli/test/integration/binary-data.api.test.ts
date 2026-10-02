@@ -3,10 +3,10 @@ import {
 	mockInstance,
 	shareWorkflowWithUsers,
 	testDb,
-} from '@n8n/backend-test-utils';
-import { BinaryDataRepository, ExecutionRepository, type User } from '@n8n/db';
-import { Container } from '@n8n/di';
-import { BinaryDataService, FileNotFoundError } from 'n8n-core';
+} from '@MNI/backend-test-utils';
+import { BinaryDataRepository, ExecutionRepository, type User } from '@MNI/db';
+import { Container } from '@MNI/di';
+import { BinaryDataService, FileNotFoundError } from 'MNI-core';
 import fsp from 'node:fs/promises';
 import { Readable } from 'node:stream';
 
@@ -29,7 +29,7 @@ afterEach(() => {
 });
 
 describe('GET /binary-data', () => {
-	const binaryFilePath = '/Users/john/.n8n/binaryData/599c5f84007-7d14-4b63-8f1e-d726098d0cc0';
+	const binaryFilePath = '/Users/john/.MNI/binaryData/599c5f84007-7d14-4b63-8f1e-d726098d0cc0';
 	const mimeType = 'text/plain';
 	const fileName = 'test.txt';
 	const buffer = Buffer.from('content');

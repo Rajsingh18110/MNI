@@ -1,4 +1,4 @@
-import type { Logger } from '@n8n/backend-common';
+import type { Logger } from '@MNI/backend-common';
 import type { TextMapPropagator } from '@opentelemetry/api';
 import { context, propagation, SpanStatusCode, trace } from '@opentelemetry/api';
 import { hrTimeToMilliseconds } from '@opentelemetry/core';
@@ -344,7 +344,7 @@ describe('ExecutionLevelTracer', () => {
 			});
 			tracer.startNode({
 				executionId: 'exec-crashed',
-				node: { id: 'n1', name: 'Node1', type: 'n8n-nodes-base.set', typeVersion: 1 },
+				node: { id: 'n1', name: 'Node1', type: 'MNI-nodes-base.set', typeVersion: 1 },
 			});
 
 			tracer.endCrashedWorkflow({
@@ -462,7 +462,7 @@ describe('ExecutionLevelTracer', () => {
 			const httpNode = {
 				id: 'n1',
 				name: 'HTTP Request',
-				type: 'n8n-nodes-base.httpRequest',
+				type: 'MNI-nodes-base.httpRequest',
 				typeVersion: 1,
 			};
 			tracer.startNode({
@@ -491,7 +491,7 @@ describe('ExecutionLevelTracer', () => {
 			// Node span shares the same traceId as the workflow span
 			expect(nodeSpan.spanContext().traceId).toBe(workflowSpan.spanContext().traceId);
 			expect(nodeSpan.attributes['n8n.node.name']).toBe('HTTP Request');
-			expect(nodeSpan.attributes['n8n.node.type']).toBe('n8n-nodes-base.httpRequest');
+			expect(nodeSpan.attributes['n8n.node.type']).toBe('MNI-nodes-base.httpRequest');
 			expect(nodeSpan.attributes['n8n.node.items.input']).toBe(1);
 			expect(nodeSpan.attributes['n8n.node.items.output']).toBe(3);
 		});
@@ -538,7 +538,7 @@ describe('ExecutionLevelTracer', () => {
 				tracingContext: inboundTracingContext,
 				workflow: defaultWorkflow,
 			});
-			const codeNode = { id: 'n1', name: 'Code', type: 'n8n-nodes-base.code', typeVersion: 2 };
+			const codeNode = { id: 'n1', name: 'Code', type: 'MNI-nodes-base.code', typeVersion: 2 };
 			tracer.startNode({
 				executionId: 'exec-js-error',
 				node: codeNode,
@@ -576,7 +576,7 @@ describe('ExecutionLevelTracer', () => {
 				tracingContext: inboundTracingContext,
 				workflow: defaultWorkflow,
 			});
-			const codeNode = { id: 'n1', name: 'Code', type: 'n8n-nodes-base.code', typeVersion: 2 };
+			const codeNode = { id: 'n1', name: 'Code', type: 'MNI-nodes-base.code', typeVersion: 2 };
 			tracer.startNode({
 				executionId: 'exec-python-error',
 				node: codeNode,

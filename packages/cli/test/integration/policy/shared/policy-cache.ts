@@ -1,4 +1,4 @@
-import { Container } from '@n8n/di';
+import { Container } from '@MNI/di';
 
 import { TypeAvailabilityPolicyService } from '@/modules/type-availability-policies/type-availability-policy.service';
 import { CacheService } from '@/services/cache/cache.service';

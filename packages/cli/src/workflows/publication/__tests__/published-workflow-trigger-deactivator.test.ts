@@ -1,7 +1,7 @@
-import type { Logger } from '@n8n/backend-common';
-import type { WorkflowsConfig } from '@n8n/config';
+import type { Logger } from '@MNI/backend-common';
+import type { WorkflowsConfig } from '@MNI/config';
 import { mock } from 'vitest-mock-extended';
-import type { ActiveWorkflowTriggers, ErrorReporter, InstanceSettings } from 'n8n-core';
+import type { ActiveWorkflowTriggers, ErrorReporter, InstanceSettings } from 'MNI-core';
 
 import type { EventService } from '@/events/event.service';
 import { PublishedWorkflowTriggerDeactivator } from '@/workflows/publication/published-workflow-trigger-deactivator';

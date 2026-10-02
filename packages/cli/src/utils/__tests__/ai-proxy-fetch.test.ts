@@ -1,4 +1,4 @@
-import type { HttpTransport, OutboundHttp } from '@n8n/backend-network';
+import type { HttpTransport, OutboundHttp } from '@MNI/backend-network';
 import { mock } from 'vitest-mock-extended';
 
 import {

@@ -4,9 +4,9 @@ import { waitFor } from '@testing-library/vue';
 import { createServer, Response } from 'miragejs';
 import { mock } from 'vitest-mock-extended';
 import { createRouter, createWebHistory } from 'vue-router';
-import type { IUser } from '@n8n/rest-api-client';
-import { useSettingsStore } from '@n8n/stores/settings.store';
-import { useUsersStore } from '@n8n/stores/users.store';
+import type { IUser } from '@MNI/rest-api-client';
+import { useSettingsStore } from '@MNI/stores/settings.store';
+import { useUsersStore } from '@MNI/stores/users.store';
 
 import { createComponentRenderer } from '@/__tests__/render';
 import { mockedStore, waitAllPromises } from '@/__tests__/utils';
@@ -63,7 +63,7 @@ describe('PromotionBanners', () => {
 		settingsStore.isModuleActive.mockReturnValue(true);
 		settingsStore.settings = {
 			...settingsStore.settings,
-			envFeatureFlags: { N8N_ENV_FEAT_PROMOTIONS: 'true' },
+			envFeatureFlags: { MNI_ENV_FEAT_PROMOTIONS: 'true' },
 		};
 		projectsStore.currentProject = createTestProject({
 			id: 'project-1',

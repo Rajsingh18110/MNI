@@ -1,5 +1,5 @@
-import type { LicenseState } from '@n8n/backend-common';
-import type { GlobalConfig, WorkflowsConfig } from '@n8n/config';
+import type { LicenseState } from '@MNI/backend-common';
+import type { GlobalConfig, WorkflowsConfig } from '@MNI/config';
 import type {
 	Project,
 	Role,
@@ -10,12 +10,12 @@ import type {
 	WorkflowPublicationOutboxRepository,
 	WorkflowPublishedVersionRepository,
 	WorkflowTagMappingRepository,
-} from '@n8n/db';
-import { WorkflowEntity, WorkflowHistory } from '@n8n/db';
-import type { Scope } from '@n8n/permissions';
-import type { EntityManager } from '@n8n/typeorm';
-import { QueryFailedError } from '@n8n/typeorm';
-import type { IConnections, INode } from 'n8n-workflow';
+} from '@MNI/db';
+import { WorkflowEntity, WorkflowHistory } from '@MNI/db';
+import type { Scope } from '@MNI/permissions';
+import type { EntityManager } from '@MNI/typeorm';
+import { QueryFailedError } from '@MNI/typeorm';
+import type { IConnections, INode } from 'MNI-workflow';
 import type { Mock } from 'vitest';
 import { mock } from 'vitest-mock-extended';
 import type { MockProxy } from 'vitest-mock-extended';
@@ -29,11 +29,11 @@ import { WorkflowActivationBadRequestError } from '@/errors/response-errors/work
 import { WorkflowDeactivationBadRequestError } from '@/errors/response-errors/workflow-deactivation-bad-request.error';
 import { WorkflowPublishBlockedError } from '@/errors/response-errors/workflow-publish-blocked.error';
 import type { EventService } from '@/events/event.service';
-import type { SharedWorkflowRepository } from '@n8n/db';
+import type { SharedWorkflowRepository } from '@MNI/db';
 import type { ExecutionPersistence } from '@/executions/execution-persistence';
 import type { ExternalHooks, WorkflowLifecycleHookActor } from '@/external-hooks';
 import type { RedactionEnforcementService } from '@/modules/redaction/redaction-enforcement.service';
-import type { PolicyCleared } from '@n8n/decorators';
+import type { PolicyCleared } from '@MNI/decorators';
 import { userHasScopes } from '@/permissions.ee/check-access';
 import type { PolicyEnforcementService } from '@/policy/policy-enforcement.service';
 import { PolicyViolationError } from '@/policy/policy-violation.error';
@@ -779,7 +779,7 @@ describe('WorkflowService', () => {
 				workflowService.update(
 					user,
 					{
-						nodes: [{ name: 'Start', type: 'n8n-nodes-base.manualTrigger', parameters: {} }],
+						nodes: [{ name: 'Start', type: 'MNI-nodes-base.manualTrigger', parameters: {} }],
 					} as unknown as WorkflowEntity,
 					'workflow-1',
 					{ forceSave: true },
@@ -2602,7 +2602,7 @@ describe('WorkflowService', () => {
 			expect(afterUpdateCall?.[1]?.[2]).toEqual(expectedActor);
 		});
 
-		// Bulk import paths (e.g. the n8n-packages workflow importer) pass entities
+		// Bulk import paths (e.g. the MNI-packages workflow importer) pass entities
 		// that may carry `isArchived` from the imported payload. Archiving must only
 		// happen through `archive()`, which runs its side effects (review auto-close,
 		// events) — so `update()` must never persist the flag. If this test breaks,

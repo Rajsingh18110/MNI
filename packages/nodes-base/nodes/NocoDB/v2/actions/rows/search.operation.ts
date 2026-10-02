@@ -5,8 +5,8 @@ import type {
 	INodeExecutionData,
 	INodeProperties,
 	JsonObject,
-} from 'n8n-workflow';
-import { NodeApiError, updateDisplayOptions } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeApiError, updateDisplayOptions } from 'MNI-workflow';
 
 import { apiRequest, apiRequestAllItems, downloadRecordAttachments } from '../../transport';
 
@@ -46,11 +46,11 @@ const searchOptions: INodeProperties = {
 			],
 		},
 		{
-			// eslint-disable-next-line n8n-nodes-base/node-param-display-name-wrong-for-dynamic-multi-options
+			// eslint-disable-next-line MNI-nodes-base/node-param-display-name-wrong-for-dynamic-multi-options
 			displayName: 'Fields',
 			name: 'fields',
 			type: 'multiOptions',
-			// eslint-disable-next-line n8n-nodes-base/node-param-description-wrong-for-dynamic-multi-options
+			// eslint-disable-next-line MNI-nodes-base/node-param-description-wrong-for-dynamic-multi-options
 			description: 'The select fields of the returned rows',
 			typeOptions: {
 				loadOptionsMethod: 'getFields',

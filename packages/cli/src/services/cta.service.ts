@@ -1,6 +1,6 @@
-import type { User } from '@n8n/db';
-import { WorkflowStatisticsRepository } from '@n8n/db';
-import { Service } from '@n8n/di';
+import type { User } from '@MNI/db';
+import { WorkflowStatisticsRepository } from '@MNI/db';
+import { Service } from '@MNI/di';
 
 @Service()
 export class CtaService {

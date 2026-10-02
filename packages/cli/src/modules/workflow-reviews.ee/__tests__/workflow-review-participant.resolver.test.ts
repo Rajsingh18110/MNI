@@ -4,7 +4,7 @@ import type {
 	WorkflowReviewRequest,
 	WorkflowReviewRequestAuthorRepository,
 	WorkflowReviewRequestReviewerRepository,
-} from '@n8n/db';
+} from '@MNI/db';
 import { mock } from 'vitest-mock-extended';
 
 import { WorkflowReviewParticipantResolver } from '../workflow-review-participant.resolver';

@@ -1,0 +1,43 @@
+{
+  "name": "@MNI/backend-test-utils",
+  "version": "1.41.0",
+  "scripts": {
+    "clean": "rimraf dist .turbo",
+    "dev": "pnpm watch",
+    "typecheck": "tsc --noEmit",
+    "build": "tsc -p tsconfig.build.json",
+    "build:unchecked": "tsc -p tsconfig.build.json --noCheck",
+    "format": "biome format --write .",
+    "format:check": "biome ci .",
+    "lint": "eslint . --quiet",
+    "lint:fix": "eslint . --fix",
+    "watch": "tsc -p tsconfig.build.json --watch",
+    "test": "node -e \"process.exit(0)\"",
+    "test:dev": "echo \"WARNING: no test specified\" && exit 0"
+  },
+  "main": "dist/index.js",
+  "module": "src/index.ts",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist/**/*"
+  ],
+  "dependencies": {
+    "@MNI/backend-common": "workspace:*",
+    "@MNI/config": "workspace:*",
+    "@MNI/constants": "workspace:*",
+    "@MNI/db": "workspace:*",
+    "@MNI/di": "workspace:*",
+    "@MNI/permissions": "workspace:*",
+    "@MNI/typeorm": "workspace:*",
+    "MNI-workflow": "workspace:*",
+    "uuid": "catalog:",
+    "vitest": "catalog:",
+    "vitest-mock-extended": "catalog:"
+  },
+  "devDependencies": {
+    "@MNI/eslint-config": "workspace:*",
+    "@MNI/typescript-config": "workspace:*",
+    "typescript": "catalog:typescript"
+  },
+  "license": "LicenseRef-MNI-sustainable-use"
+}

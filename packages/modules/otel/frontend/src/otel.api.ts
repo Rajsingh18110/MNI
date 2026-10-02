@@ -1,5 +1,5 @@
-import type { IRestApiContext } from '@n8n/rest-api-client';
-import { makeRestApiRequest } from '@n8n/rest-api-client';
+import type { IRestApiContext } from '@MNI/rest-api-client';
+import { makeRestApiRequest } from '@MNI/rest-api-client';
 
 import type { OtlpProtocol } from './otel.constants';
 

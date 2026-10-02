@@ -1,5 +1,5 @@
-import type { Project, User } from '@n8n/db';
-import { PROJECT_OWNER_ROLE_SLUG, hasGlobalScope } from '@n8n/permissions';
+import type { Project, User } from '@MNI/db';
+import { PROJECT_OWNER_ROLE_SLUG, hasGlobalScope } from '@MNI/permissions';
 
 import type { RemoteResourceOwner } from './resource-owner';
 

@@ -1,16 +1,16 @@
 <script setup lang="ts">
 import CredentialIcon from '@/features/credentials/components/CredentialIcon.vue';
 import { useCredentialsStore } from '@/features/credentials/credentials.store';
-import { type ChatModelDto, PROVIDER_CREDENTIAL_TYPE_MAP } from '@n8n/api-types';
-import { N8nIcon, N8nTooltip } from '@n8n/design-system';
-import type { IconName } from '@n8n/design-system';
+import { type ChatModelDto, PROVIDER_CREDENTIAL_TYPE_MAP } from '@MNI/api-types';
+import { N8nIcon, N8nTooltip } from '@MNI/design-system';
+import type { IconName } from '@MNI/design-system';
 import { computed } from 'vue';
 import {
 	isLlmProviderModel,
 	personalAgentDefaultIcon,
 	workflowAgentDefaultIcon,
 } from '../chat.utils';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 
 defineProps<{
 	agent: ChatModelDto | null;

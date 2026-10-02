@@ -1,5 +1,5 @@
-import type { INodeProperties } from 'n8n-workflow';
-import { CREDENTIAL_BLANKING_VALUE } from 'n8n-workflow';
+import type { INodeProperties } from 'MNI-workflow';
+import { CREDENTIAL_BLANKING_VALUE } from 'MNI-workflow';
 
 import {
 	collectSecretFieldNames,

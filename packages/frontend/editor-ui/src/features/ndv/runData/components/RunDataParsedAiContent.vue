@@ -1,15 +1,15 @@
 <script setup lang="ts">
-import { useClipboard } from '@n8n/composables/useClipboard';
-import { useI18n } from '@n8n/i18n';
-import { useToast } from '@n8n/composables/useToast';
+import { useClipboard } from '@MNI/composables/useClipboard';
+import { useI18n } from '@MNI/i18n';
+import { useToast } from '@MNI/composables/useToast';
 import { type ParsedAiContent } from '@/app/utils/aiUtils';
-import { type IDataObject } from 'n8n-workflow';
+import { type IDataObject } from 'MNI-workflow';
 import VueMarkdown from 'vue-markdown-render';
 import hljs from 'highlight.js/lib/core';
 import { computed } from 'vue';
 import { createSearchHighlightPlugin } from '@/features/ndv/runData/components/ai/utils';
 
-import { N8nIconButton } from '@n8n/design-system';
+import { N8nIconButton } from '@MNI/design-system';
 import TextWithHighlights from './TextWithHighlights.vue';
 
 const {

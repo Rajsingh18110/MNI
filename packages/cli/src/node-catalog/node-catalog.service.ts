@@ -2,13 +2,13 @@ import type {
 	CodeBuilderSearchResult,
 	NodeRequest,
 	NodeTypeParser,
-} from '@n8n/ai-utilities/node-catalog';
-import { Logger } from '@n8n/backend-common';
-import { BUILTIN_NODES_PACKAGES } from '@n8n/constants';
-import { Container, Service } from '@n8n/di';
+} from '@MNI/ai-utilities/node-catalog';
+import { Logger } from '@MNI/backend-common';
+import { BUILTIN_NODES_PACKAGES } from '@MNI/constants';
+import { Container, Service } from '@MNI/di';
 import * as fs from 'fs/promises';
 import { LRUCache } from 'lru-cache';
-import type { INodeTypeDescription } from 'n8n-workflow';
+import type { INodeTypeDescription } from 'MNI-workflow';
 import * as path from 'path';
 
 import { LoadNodesAndCredentials } from '@/load-nodes-and-credentials';
@@ -148,7 +148,7 @@ export class NodeCatalogService {
 
 	/**
 	 * All loaded node descriptions indexed by their type name (e.g.
-	 * `n8n-nodes-base.set`, `@n8n/mcp-registry.notion`, `n8n-nodes-resend.resend`).
+	 * `MNI-nodes-base.set`, `@MNI/mcp-registry.notion`, `MNI-nodes-resend.resend`).
 	 * Used by `getNodeTypes` to synthesise type-def content for non-built-in
 	 * nodes (registry, custom and community), which have no on-disk artifact.
 	 *
@@ -235,7 +235,7 @@ export class NodeCatalogService {
 	 * Search the node catalog for node IDs matching `queries`.
 	 * Results are cached per `(filter, queries)` pair and invalidated on node-type refresh.
 	 *
-	 * Calls the plain `searchCodeBuilderNodes` helper from `@n8n/ai-workflow-builder`
+	 * Calls the plain `searchCodeBuilderNodes` helper from `@MNI/ai-workflow-builder`
 	 * rather than its LangChain `tool(...)` wrapper. When `LANGCHAIN_TRACING_V2` is on
 	 * (the agents SDK enables it for the OTel exporter), the wrapper would register a
 	 * separate LangSmith root run for every invocation — fragmenting traces. The plain
@@ -269,7 +269,7 @@ export class NodeCatalogService {
 		if (cached) return cached;
 
 		if (!state.search) {
-			const { searchCodeBuilderNodes } = await import('@n8n/ai-utilities/node-catalog');
+			const { searchCodeBuilderNodes } = await import('@MNI/ai-utilities/node-catalog');
 			const nodeTypeParser = this.getNodeTypeParser();
 			state.search = (searchQueries: string[]) =>
 				nodeFilter
@@ -303,7 +303,7 @@ export class NodeCatalogService {
 		const parser = await this.getUninstalledParser();
 		if (!parser) return installed;
 
-		const { formatNodeResult } = await import('@n8n/ai-utilities/node-catalog');
+		const { formatNodeResult } = await import('@MNI/ai-utilities/node-catalog');
 		const candidates = nodeFilter
 			? this.uninstalledCandidates.filter((candidate) => nodeFilter(candidate.name))
 			: this.uninstalledCandidates;
@@ -374,7 +374,7 @@ export class NodeCatalogService {
 
 		const descriptions = entries.map((entry) => entry.description);
 
-		const { NodeTypeParser: NodeTypeParserClass } = await import('@n8n/ai-utilities/node-catalog');
+		const { NodeTypeParser: NodeTypeParserClass } = await import('@MNI/ai-utilities/node-catalog');
 		try {
 			this.uninstalledParser = new NodeTypeParserClass(descriptions);
 		} catch (error) {
@@ -458,7 +458,7 @@ export class NodeCatalogService {
 			// on this instance can act on a discovery result: install() rejects
 			// every call. Offering uninstalled nodes here would only steer the
 			// agent into workflows that cannot run.
-			const { GlobalConfig } = await import('@n8n/config');
+			const { GlobalConfig } = await import('@MNI/config');
 			const { instanceSettingsLoader } = Container.get(GlobalConfig);
 			if (instanceSettingsLoader.communityPackagesManagedByEnv) return null;
 
@@ -484,7 +484,7 @@ export class NodeCatalogService {
 						numberOfDownloads: entry.numberOfDownloads,
 						// Carried, not derived: npm allows dots in package names, so
 						// splitting a node type on the first dot mis-parses a package
-						// like `n8n-nodes-chatwoot.io`.
+						// like `MNI-nodes-chatwoot.io`.
 						packageName: entry.packageName,
 					},
 				}));
@@ -531,7 +531,7 @@ export class NodeCatalogService {
 		}
 
 		if (onDiskIds.length > 0) {
-			const { getNodeTypes } = await import('@n8n/ai-utilities/node-catalog');
+			const { getNodeTypes } = await import('@MNI/ai-utilities/node-catalog');
 			parts.push(getNodeTypes(onDiskIds, { nodeDefinitionDirs: this.nodeDefinitionDirs }));
 		}
 
@@ -653,15 +653,15 @@ export class NodeCatalogService {
 		const cached = this.suggestCache.get(cacheKey);
 		if (cached) return cached;
 
-		const { getSuggestedNodes } = await import('@n8n/ai-utilities/node-catalog');
+		const { getSuggestedNodes } = await import('@MNI/ai-utilities/node-catalog');
 		const result = getSuggestedNodes(this.getNodeTypeParser(), categories);
 		this.suggestCache.set(cacheKey, result);
 		return result;
 	}
 
 	private async doInitialize(): Promise<void> {
-		const { NodeTypeParser: NodeTypeParserClass } = await import('@n8n/ai-utilities/node-catalog');
-		const { setSchemaBaseDirs } = await import('@n8n/workflow-sdk');
+		const { NodeTypeParser: NodeTypeParserClass } = await import('@MNI/ai-utilities/node-catalog');
+		const { setSchemaBaseDirs } = await import('@MNI/workflow-sdk');
 
 		await this.loadNodesAndCredentials.postProcessLoaders();
 		const { nodes: nodeTypeDescriptions } = await this.loadNodesAndCredentials.collectTypes();
@@ -681,7 +681,7 @@ export class NodeCatalogService {
 	private async refreshNodeTypes(): Promise<void> {
 		if (!this.nodeTypeParser) return;
 
-		const { NodeTypeParser: NodeTypeParserClass } = await import('@n8n/ai-utilities/node-catalog');
+		const { NodeTypeParser: NodeTypeParserClass } = await import('@MNI/ai-utilities/node-catalog');
 		const { nodes: nodeTypeDescriptions } = await this.loadNodesAndCredentials.collectTypes();
 		this.nodeTypeParser = new NodeTypeParserClass(nodeTypeDescriptions);
 		this.indexDescriptions(nodeTypeDescriptions);
@@ -745,7 +745,7 @@ export class NodeCatalogService {
 	private async getBuiltinNodeTypeDefinition(
 		request: NodeTypeDefinitionRequest,
 	): Promise<NodeTypeDefinitionResult> {
-		const { getNodeTypeDefinition } = await import('@n8n/ai-utilities/node-catalog');
+		const { getNodeTypeDefinition } = await import('@MNI/ai-utilities/node-catalog');
 		const result = getNodeTypeDefinition(request.nodeId, request.version, this.nodeDefinitionDirs, {
 			resource: request.resource,
 			operation: request.operation,

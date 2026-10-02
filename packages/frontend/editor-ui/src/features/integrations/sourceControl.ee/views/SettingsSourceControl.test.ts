@@ -3,7 +3,7 @@ import { screen, waitFor, within } from '@testing-library/vue';
 import userEvent from '@testing-library/user-event';
 import { createPinia, setActivePinia } from 'pinia';
 import { setupServer } from '@/__tests__/server';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { useSourceControlStore } from '../sourceControl.store';
 import SettingsSourceControl from './SettingsSourceControl.vue';
 import { createComponentRenderer } from '@/__tests__/render';
@@ -26,7 +26,7 @@ describe('SettingsSourceControl', () => {
 	beforeEach(async () => {
 		// The save-settings test asserts on rendered toast content, which needs the
 		// notifier the app registers at bootstrap. Explicit here because it no longer
-		// arrives as a side effect of importing `@n8n/composables/useToast` (N8N-104).
+		// arrives as a side effect of importing `@MNI/composables/useToast` (MNI-104).
 		registerToastNotifier();
 
 		pinia = createPinia();
@@ -125,7 +125,7 @@ describe('SettingsSourceControl', () => {
 		expect(connectButton).toBeDisabled();
 
 		await userEvent.click(repoUrlInput);
-		await userEvent.type(repoUrlInput, '.com:john/n8n-data.git');
+		await userEvent.type(repoUrlInput, '.com:john/MNI-data.git');
 		await userEvent.tab();
 
 		await waitFor(() => expect(connectButton).toBeEnabled());

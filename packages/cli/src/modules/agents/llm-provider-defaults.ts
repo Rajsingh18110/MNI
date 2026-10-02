@@ -3,7 +3,7 @@
  * + model the builder may select when auto-resolving." Used by the resolve_llm
  * tool when there's exactly one LLM-provider credential available.
  *
- * Provider strings match the provider IDs used by `@n8n/agents`'s
+ * Provider strings match the provider IDs used by `@MNI/agents`'s
  * `.model(provider, model)` call.
  *
  * Keep this list narrow — when the canonical default is unclear (e.g. Bedrock,
@@ -11,7 +11,7 @@
  * lets the user pick explicitly.
  *
  * These are hints, not guarantees. For providers supported by
- * `@n8n/ai-utilities/model-discovery`, `resolve_llm` verifies the model it is
+ * `@MNI/ai-utilities/model-discovery`, `resolve_llm` verifies the model it is
  * about to return — the default included — against the credential's live model
  * list, so a default the provider stops serving degrades to a prompt to pick
  * rather than shipping into an agent config.

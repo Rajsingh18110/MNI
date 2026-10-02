@@ -1,7 +1,7 @@
-import { BaseRepository, TransactionRunner, type OperationContext } from '@n8n/db';
-import { Service } from '@n8n/di';
-import { DataSource, IsNull, Not } from '@n8n/typeorm';
-import { isDraftIntegration } from '@n8n/api-types';
+import { BaseRepository, TransactionRunner, type OperationContext } from '@MNI/db';
+import { Service } from '@MNI/di';
+import { DataSource, IsNull, Not } from '@MNI/typeorm';
+import { isDraftIntegration } from '@MNI/api-types';
 
 import { AgentMessageQueue } from '../entities/agent-message-queue.entity';
 import { Agent } from '../entities/agent.entity';

@@ -2,9 +2,9 @@ import { nextTick, ref } from 'vue';
 import { setActivePinia } from 'pinia';
 import { createTestingPinia } from '@pinia/testing';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { ResponseError } from '@n8n/rest-api-client';
+import { ResponseError } from '@MNI/rest-api-client';
 
-import type { INodeTypeDescription } from 'n8n-workflow';
+import type { INodeTypeDescription } from 'MNI-workflow';
 
 import { createTestNode, createTestWorkflow } from '@/__tests__/mocks';
 import { mockedStore } from '@/__tests__/utils';
@@ -611,7 +611,7 @@ describe('useSetupPanelActions', () => {
 		documentStore.hydrate(makeWorkflow());
 		const slackNodeType = {
 			displayName: 'Slack',
-			name: 'n8n-nodes-base.set',
+			name: 'MNI-nodes-base.set',
 			version: 1,
 			group: [],
 			description: '',

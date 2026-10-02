@@ -1,5 +1,5 @@
 import type { Page, TestInfo } from '@playwright/test';
-import type { MetricsHelper } from 'n8n-containers';
+import type { MetricsHelper } from 'MNI-containers';
 
 import { bytesToMb, captureCdpMetrics } from './cdp-metrics';
 import { attachMetric, getStableHeap } from '../../../../utils/performance-helper';

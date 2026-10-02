@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { N8nButton, N8nIcon, N8nText } from '@n8n/design-system';
+import { N8nButton, N8nIcon, N8nText } from '@MNI/design-system';
 
 defineProps<{
 	stepIndex: number;

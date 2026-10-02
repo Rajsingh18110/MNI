@@ -13,7 +13,7 @@ describe('UnverifiedPackagesRule', () => {
 
 	beforeEach(() => {
 		process.env = { ...originalEnv };
-		delete process.env.N8N_UNVERIFIED_PACKAGES_ENABLED;
+		delete process.env.MNI_UNVERIFIED_PACKAGES_ENABLED;
 		communityPackagesConfig.enabled = true;
 		rule = new UnverifiedPackagesRule(communityPackagesConfig);
 	});
@@ -33,7 +33,7 @@ describe('UnverifiedPackagesRule', () => {
 		});
 
 		it('should not be affected when the variable is set to true', async () => {
-			process.env.N8N_UNVERIFIED_PACKAGES_ENABLED = 'true';
+			process.env.MNI_UNVERIFIED_PACKAGES_ENABLED = 'true';
 
 			const result = await rule.detect();
 
@@ -41,7 +41,7 @@ describe('UnverifiedPackagesRule', () => {
 		});
 
 		it('should not be affected when the variable is set to false', async () => {
-			process.env.N8N_UNVERIFIED_PACKAGES_ENABLED = 'false';
+			process.env.MNI_UNVERIFIED_PACKAGES_ENABLED = 'false';
 
 			const result = await rule.detect();
 

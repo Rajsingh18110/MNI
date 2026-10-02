@@ -15,7 +15,7 @@ const templateItem: ResourceItem = {
 	title: 'Chat with your Google Sheet',
 	description: 'Talk to your data using AI',
 	templateId: 7639,
-	nodeTypes: ['n8n-nodes-base.googleSheets'],
+	nodeTypes: ['MNI-nodes-base.googleSheets'],
 	nodeCount: 5,
 	setupTime: '5 min',
 };

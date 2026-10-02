@@ -1,6 +1,6 @@
 #!/usr/bin/env node
-// Verifies the built MNI image still works for the ways n8n-cloud launches
-// it. The container spec is pulled live from n8n-cloud's helm chart so this
+// Verifies the built MNI image still works for the ways MNI-cloud launches
+// it. The container spec is pulled live from MNI-cloud's helm chart so this
 // test stays in sync with what cloud actually deploys.
 
 import { $, echo, chalk, fs, tmpdir } from 'zx';
@@ -24,25 +24,25 @@ const RUNNERS_IMAGES = process.env.SMOKE_RUNNERS_IMAGES
 			...(process.env.DOCKER_BUILD_DISTROLESS === 'true' ? ['n8nio/runners:local-distroless'] : []),
 		];
 const TIMEOUT = '45s';
-// Matches an MNI runtime image ref (e.g. `mni/mni:2.4.4`, `ghcr.io/n8n-io/n8n@sha256:…`)
+// Matches an MNI runtime image ref (e.g. `mni/mni:2.4.4`, `ghcr.io/MNI-io/MNI@sha256:…`)
 // but not sidecars like `n8nio/runners:…` or controller images that happen to contain "MNI".
-const N8N_IMAGE_REF = /\/MNI(:|@)/;
+const MNI_IMAGE_REF = /\/MNI(:|@)/;
 // `bin/MNI` short-circuits on `--version` regardless of subcommand
 // (checks process.argv.slice(-1)[0]), so this works for `MNI` and `MNI worker` alike.
 const VERSION_FLAG = '--version';
 const VERSION_OUTPUT = /^\d+\.\d+\.\d+/m;
 const CLOUD = {
-	repo: 'n8n-io/n8n-cloud',
+	repo: 'MNI-io/MNI-cloud',
 	ref: process.env.CLOUD_CHART_REF || 'main',
-	// Owned by n8n-cloud — override via env if cloud reorganises. Cross-reference:
-	// n8n-cloud:packages/instance-controller/charts/n8napp/{MNI,values-v1.yaml}
+	// Owned by MNI-cloud — override via env if cloud reorganises. Cross-reference:
+	// MNI-cloud:packages/instance-controller/charts/n8napp/{MNI,values-v1.yaml}
 	chartPath: process.env.CLOUD_CHART_PATH || 'packages/instance-controller/charts/n8napp/MNI',
 	valuesPath:
 		process.env.CLOUD_CHART_VALUES || 'packages/instance-controller/charts/n8napp/values-v1.yaml',
 };
 
 async function fetchCloudInvocations() {
-	const dir = await fs.mkdtemp(path.join(tmpdir(), 'n8n-smoke-cloud-'));
+	const dir = await fs.mkdtemp(path.join(tmpdir(), 'MNI-smoke-cloud-'));
 	try {
 		await $`gh repo clone ${CLOUD.repo} ${dir} -- --depth=1 --branch=${CLOUD.ref} --quiet`;
 		const { stdout } = await $({
@@ -55,9 +55,9 @@ async function fetchCloudInvocations() {
 				if (!/^(StatefulSet|Deployment)$/.test(doc?.kind ?? '')) return [];
 				const pod = doc.spec?.template?.spec ?? {};
 				return (pod.containers ?? [])
-					.filter((c) => N8N_IMAGE_REF.test(c.image ?? ''))
+					.filter((c) => MNI_IMAGE_REF.test(c.image ?? ''))
 					.map((c) => ({
-						name: `n8n-cloud: ${doc.kind} ${doc.metadata.name} / ${c.name}`,
+						name: `MNI-cloud: ${doc.kind} ${doc.metadata.name} / ${c.name}`,
 						user: String(c.securityContext?.runAsUser ?? pod.securityContext?.runAsUser ?? 1000),
 						// If the chart sets `command`, override entrypoint; otherwise let the
 						// image's ENTRYPOINT run with the args.
@@ -71,7 +71,7 @@ async function fetchCloudInvocations() {
 }
 
 // Do not add to this list. The dedicated-lockfile deploy materializes every
-// workspace package once; the legacy deploy split @n8n/ai-utilities in two
+// workspace package once; the legacy deploy split @MNI/ai-utilities in two
 // because @langchain/community resolved its optional peers differently per
 // importer.
 const KNOWN_DUPLICATED = new Map();
@@ -154,7 +154,7 @@ async function runKafkaBindingCheck() {
 	}
 }
 
-// Interpreter paths as launched by docker/images/runners/n8n-task-runners.json.
+// Interpreter paths as launched by docker/images/runners/MNI-task-runners.json.
 // The runners images assemble node/python by copying binaries across images, so a
 // missing shared library only surfaces at exec time.
 const RUNNER_INTERPRETERS = [
@@ -208,7 +208,7 @@ async function runRunnersExtensionCheck(image) {
 		'pnpm add uuid --save-prod --no-lockfile --config.minimum-release-age=0',
 		'after=$(ls node_modules/.pnpm | wc -l)',
 		'[ "$after" -gt "$before" ] || { echo "pnpm add pruned the closure: $before -> $after packages"; exit 1; }',
-		`node -e "require('uuid'); require('moment'); require.resolve('n8n-core')"`,
+		`node -e "require('uuid'); require('moment'); require.resolve('MNI-core')"`,
 	].join(' && ');
 	try {
 		await $({

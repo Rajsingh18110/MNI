@@ -1,5 +1,5 @@
 import { defineConfig, globalIgnores } from 'eslint/config';
-import { backendConfig } from '@n8n/eslint-config/backend';
+import { backendConfig } from '@MNI/eslint-config/backend';
 import { createRequire } from 'node:module';
 
 const require = createRequire(import.meta.url);
@@ -14,7 +14,7 @@ const INSTANCE_AI_LAZY_IMPORT_MESSAGE =
 	'Use an existing lazy loader, or add one near first use. Static runtime imports of this dependency undo the Instance AI idle-memory guardrail.';
 
 const POLICY_INTERNAL_RESTRICTION = {
-	name: '@n8n/decorators/policy-internal',
+	name: '@MNI/decorators/policy-internal',
 	message:
 		'Only PolicyEnforcementService may mint a policy clearance. Call enforce*/evaluate* instead.',
 };
@@ -32,10 +32,10 @@ const instanceAiLazyRuntimeImports = [
 }));
 
 const engineV2ModuleOnlyImport = {
-	name: '@n8n/engine',
+	name: '@MNI/engine',
 	allowTypeImports: true,
 	message:
-		'Only src/modules/engine-v2/** may import @n8n/engine at runtime. Use a type import, or reach the engine through EngineDataPlaneProxyService.',
+		'Only src/modules/engine-v2/** may import @MNI/engine at runtime. Use a type import, or reach the engine through EngineDataPlaneProxyService.',
 };
 
 export default defineConfig(
@@ -43,17 +43,17 @@ export default defineConfig(
 	backendConfig,
 	{
 		rules: {
-			'n8n-local-rules/no-dynamic-import-template': 'error',
-			'n8n-local-rules/misplaced-n8n-typeorm-import': 'error',
+			'MNI-local-rules/no-dynamic-import-template': 'error',
+			'MNI-local-rules/misplaced-MNI-typeorm-import': 'error',
 			// Ratchets: the allowlists below only shrink, so an inline disable is the one way to add a violation.
-			'n8n-local-rules/no-guardrail-disable': [
+			'MNI-local-rules/no-guardrail-disable': [
 				'error',
 				{
 					guarded: [
 						{
-							rule: 'misplaced-n8n-typeorm-import',
+							rule: 'misplaced-MNI-typeorm-import',
 							message:
-								'Keep TypeORM in the persistence layer: put the query behind a use-case repository method in @n8n/db.',
+								'Keep TypeORM in the persistence layer: put the query behind a use-case repository method in @MNI/db.',
 						},
 						{
 							rule: 'no-repository-in-public-api-handler',
@@ -74,17 +74,17 @@ export default defineConfig(
 					],
 				},
 			],
-			'n8n-local-rules/no-type-unsafe-event-emitter': 'error',
+			'MNI-local-rules/no-type-unsafe-event-emitter': 'error',
 			// Periodic leader-only work must be a @SystemTask() class; hand-rolled
 			// @OnLeaderTakeover timers are reserved for the allowlisted services below.
-			'n8n-local-rules/no-on-leader-takeover': 'error',
+			'MNI-local-rules/no-on-leader-takeover': 'error',
 			// The clearance minter lives on the `policy-internal` subpath, off the public barrel.
 			// Only PolicyEnforcementService may reach it; callers use enforce*/evaluate*.
 			'@typescript-eslint/no-restricted-imports': [
 				'error',
 				{ paths: [POLICY_INTERNAL_RESTRICTION] },
 			],
-			'n8n-local-rules/project-owned-entity-transfer': [
+			'MNI-local-rules/project-owned-entity-transfer': [
 				'error',
 				{ acknowledged: acknowledgedProjectOwnedEntities },
 			],
@@ -119,7 +119,7 @@ export default defineConfig(
 		files: ['./src/public-api/v1/handlers/**/*.ts', './src/public-api/v1/controllers/**/*.ts'],
 		ignores: ['./src/public-api/**/__tests__/**/*.ts'],
 		rules: {
-			'n8n-local-rules/no-repository-in-public-api-handler': 'error',
+			'MNI-local-rules/no-repository-in-public-api-handler': 'error',
 		},
 	},
 	{
@@ -129,7 +129,7 @@ export default defineConfig(
 			'./src/public-api/v1/handlers/**/*.handler.ee.ts',
 		],
 		rules: {
-			'n8n-local-rules/require-public-api-controller': 'error',
+			'MNI-local-rules/require-public-api-controller': 'error',
 		},
 	},
 	{
@@ -141,13 +141,13 @@ export default defineConfig(
 			'./src/public-api/v1/handlers/data-tables/data-tables.rows.handler.ts',
 			'./src/public-api/v1/handlers/ldap/ldap.handler.ts',
 			'./src/public-api/v1/handlers/log-streaming/log-streaming.handler.ts',
-			'./src/public-api/v1/handlers/n8n-packages/n8n-packages.handler.ts',
+			'./src/public-api/v1/handlers/MNI-packages/MNI-packages.handler.ts',
 			'./src/public-api/v1/handlers/otel/otel.handler.ts',
 			'./src/public-api/v1/handlers/sso-saml/sso-saml.handler.ts',
 			'./src/public-api/v1/handlers/workflows/workflows.handler.ts',
 		],
 		rules: {
-			'n8n-local-rules/require-public-api-controller': 'off',
+			'MNI-local-rules/require-public-api-controller': 'off',
 		},
 	},
 	{
@@ -192,7 +192,7 @@ export default defineConfig(
 		},
 	},
 	{
-		// @n8n/typeorm belongs in the persistence layer; exempt entities/repositories.
+		// @MNI/typeorm belongs in the persistence layer; exempt entities/repositories.
 		// Path-based (not suffix-only) so entity files without the `.entity.ts` suffix are covered.
 		files: [
 			'./src/databases/**/*.ts',
@@ -204,7 +204,7 @@ export default defineConfig(
 			'./src/**/__tests__/**/*.ts',
 		],
 		rules: {
-			'n8n-local-rules/misplaced-n8n-typeorm-import': 'off',
+			'MNI-local-rules/misplaced-MNI-typeorm-import': 'off',
 		},
 	},
 	{
@@ -213,11 +213,11 @@ export default defineConfig(
 		// - security-audit.repository.ts: PackagesRepository, relocation tracked separately
 		files: ['./src/commands/db/revert.ts', './src/security-audit/security-audit.repository.ts'],
 		rules: {
-			'n8n-local-rules/misplaced-n8n-typeorm-import': 'off',
+			'MNI-local-rules/misplaced-MNI-typeorm-import': 'off',
 		},
 	},
 	{
-		// Ratchet allowlist: known @n8n/typeorm leaks pending migration to @n8n/db.
+		// Ratchet allowlist: known @MNI/typeorm leaks pending migration to @MNI/db.
 		// NEVER add to this list — a new leak must fail CI. Entries are removed as each file migrates.
 		files: [
 			// credentials/
@@ -260,7 +260,7 @@ export default defineConfig(
 			'./src/modules/agents/agent-task.service.ts',
 			'./src/modules/agents/builder/agents-builder.service.ts',
 			'./src/modules/agents/instance-ai-builder-delegate.adapter.ts',
-			'./src/modules/agents/integrations/n8n-memory.ts',
+			'./src/modules/agents/integrations/MNI-memory.ts',
 			'./src/modules/agents/tools/workflow-tool-workflow-resolver.ts',
 			'./src/modules/breaking-changes/breaking-changes.service.ts',
 			'./src/modules/chat-hub/chat-hub-credentials.service.ts',
@@ -296,13 +296,13 @@ export default defineConfig(
 			'./src/modules/workflow-index/workflow-dependency-query.service.ts',
 		],
 		rules: {
-			'n8n-local-rules/misplaced-n8n-typeorm-import': 'off',
+			'MNI-local-rules/misplaced-MNI-typeorm-import': 'off',
 		},
 	},
 	{
 		// Ratchet allowlist: known relabel leaks — business logic importing a TypeORM
 		// operator/driver type (`In`, `Not`, `EntityManager`, `FindOptionsWhere`, …) from
-		// `@n8n/db` instead of `@n8n/typeorm`. Same rule, same shrink-only contract:
+		// `@MNI/db` instead of `@MNI/typeorm`. Same rule, same shrink-only contract:
 		// NEVER add to this list — a new relabel must fail CI. Entries removed as each file
 		// drops TypeORM in favor of a use-case repository method.
 		files: [
@@ -332,7 +332,7 @@ export default defineConfig(
 			'./src/workflows/workflow-creation.service.ts',
 		],
 		rules: {
-			'n8n-local-rules/misplaced-n8n-typeorm-import': 'off',
+			'MNI-local-rules/misplaced-MNI-typeorm-import': 'off',
 		},
 	},
 	{
@@ -355,7 +355,7 @@ export default defineConfig(
 			'./src/modules/token-exchange/services/trusted-key.service.ts',
 			'./src/services/pruning/workflow-history-compaction.service.ts',
 		],
-		rules: { 'n8n-local-rules/no-on-leader-takeover': 'off' },
+		rules: { 'MNI-local-rules/no-on-leader-takeover': 'off' },
 	},
 	{
 		// Shrink-only ratchet: periodic leader timers not yet migrated to system
@@ -366,13 +366,13 @@ export default defineConfig(
 			'./src/services/pruning/executions-pruning.service.ts',
 			'./src/services/workflow-statistics-rollup.service.ts',
 		],
-		rules: { 'n8n-local-rules/no-on-leader-takeover': 'off' },
+		rules: { 'MNI-local-rules/no-on-leader-takeover': 'off' },
 	},
 	{
 		files: ['./test/**/*.ts', './src/**/__tests__/**/*.ts'],
 		rules: {
-			'n8n-local-rules/no-type-unsafe-event-emitter': 'off',
-			'n8n-local-rules/no-on-leader-takeover': 'off',
+			'MNI-local-rules/no-type-unsafe-event-emitter': 'off',
+			'MNI-local-rules/no-on-leader-takeover': 'off',
 		},
 	},
 	{
@@ -389,22 +389,22 @@ export default defineConfig(
 			'@typescript-eslint/consistent-type-imports': ['error', { disallowTypeAnnotations: false }],
 			'id-denylist': 'warn',
 			'prefer-const': 'warn',
-			'n8n-local-rules/no-dynamic-import-template': 'off',
+			'MNI-local-rules/no-dynamic-import-template': 'off',
 			'import-x/no-duplicates': 'warn',
 			'import-x/no-default-export': 'warn',
 			'@typescript-eslint/no-unsafe-return': 'warn',
 			'@typescript-eslint/no-unsafe-argument': 'warn',
 			'@typescript-eslint/no-unused-expressions': 'warn',
 			'@typescript-eslint/restrict-template-expressions': 'warn',
-			'n8n-local-rules/no-uncaught-json-parse': 'warn',
+			'MNI-local-rules/no-uncaught-json-parse': 'warn',
 		},
 	},
 	{
 		files: ['**/*.module.ts'],
 
 		rules: {
-			'n8n-local-rules/no-top-level-relative-imports-in-backend-module': 'error',
-			'n8n-local-rules/no-constructor-in-backend-module': 'error',
+			'MNI-local-rules/no-top-level-relative-imports-in-backend-module': 'error',
+			'MNI-local-rules/no-constructor-in-backend-module': 'error',
 		},
 	},
 );

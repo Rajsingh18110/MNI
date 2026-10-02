@@ -12,7 +12,7 @@ describe('AuthorizeIntentService', () => {
 		credentialId: 'cred-1',
 		resolverId: 'resolver-1',
 		identity: 'bearer-jwt',
-		metadata: { source: 'n8n-oauth' },
+		metadata: { source: 'MNI-oauth' },
 	};
 
 	beforeEach(() => vi.clearAllMocks());

@@ -1,5 +1,5 @@
 /* eslint-disable import-x/no-extraneous-dependencies -- test-only patterns */
-import type { DropdownMenuItemProps } from '@n8n/design-system';
+import type { DropdownMenuItemProps } from '@MNI/design-system';
 import userEvent from '@testing-library/user-event';
 import { cleanup, render, screen, waitFor } from '@testing-library/vue';
 import { enableAutoUnmount, flushPromises, mount } from '@vue/test-utils';
@@ -26,7 +26,7 @@ const { clipboardCopy, getThreadDetail, routerResolve, showError, showMessage } 
 	},
 );
 
-vi.mock('@n8n/composables/useClipboard', function mockUseClipboard() {
+vi.mock('@MNI/composables/useClipboard', function mockUseClipboard() {
 	return {
 		useClipboard: function useClipboard() {
 			return { copy: clipboardCopy };
@@ -34,7 +34,7 @@ vi.mock('@n8n/composables/useClipboard', function mockUseClipboard() {
 	};
 });
 
-vi.mock('@n8n/composables/useToast', function mockUseToast() {
+vi.mock('@MNI/composables/useToast', function mockUseToast() {
 	return {
 		useToast: function useToast() {
 			return { showError, showMessage };
@@ -42,7 +42,7 @@ vi.mock('@n8n/composables/useToast', function mockUseToast() {
 	};
 });
 
-vi.mock('@n8n/i18n', function mockUseI18n() {
+vi.mock('@MNI/i18n', function mockUseI18n() {
 	return {
 		useI18n: function useI18n() {
 			return {
@@ -390,7 +390,7 @@ describe('AgentPreviewMoreMenu', function describeMenu() {
 		['webhook', 'Webhook', 'webhook'],
 		['instance-ai', 'agentSessions.origin.instanceAi', 'sparkles'],
 		['chat', 'agentSessions.origin.preview', 'bolt-filled'],
-		['n8n_chat', 'agentSessions.origin.preview', 'bolt-filled'],
+		['MNI_chat', 'agentSessions.origin.preview', 'bolt-filled'],
 		[null, 'agentSessions.origin.preview', 'bolt-filled'],
 	])(
 		'uses the first non-null execution source for %s',

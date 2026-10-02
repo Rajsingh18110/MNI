@@ -3,18 +3,18 @@ import { createTestingPinia } from '@pinia/testing';
 import { screen, waitFor } from '@testing-library/vue';
 import userEvent from '@testing-library/user-event';
 import { vi } from 'vitest';
-import { type FrontendSettings, type Role, ROLE, type UsersList } from '@n8n/api-types';
-import type { IUser } from '@n8n/rest-api-client/api/users';
+import { type FrontendSettings, type Role, ROLE, type UsersList } from '@MNI/api-types';
+import type { IUser } from '@MNI/rest-api-client/api/users';
 import { EnterpriseEditionFeature } from '@/app/constants';
 import { INVITE_USER_MODAL_KEY, DELETE_USER_MODAL_KEY } from '../users.constants';
 import SettingsUsersView from './SettingsUsersView.vue';
 import { createComponentRenderer } from '@/__tests__/render';
 import { useEmitters } from '@/__tests__/utils';
 import { mockedStore, type MockedStore } from '@/__tests__/utils';
-import { useUsersStore } from '@n8n/stores/users.store';
+import { useUsersStore } from '@MNI/stores/users.store';
 import { useUIStore } from '@/app/stores/ui.store';
-import { useSettingsStore } from '@n8n/stores/settings.store';
-import { useRolesStore } from '@n8n/stores/roles.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
+import { useRolesStore } from '@MNI/stores/roles.store';
 import { useSSOStore } from '@/features/settings/sso/sso.store';
 import * as permissions from '@/app/utils/rbac/permissions';
 import type { PermissionTypeOptions } from '@/app/types/rbac';
@@ -59,11 +59,11 @@ const mockPageRedirectionHelper = {
 	goToUpgrade: vi.fn(),
 };
 
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: vi.fn(() => mockToast),
 }));
 
-vi.mock('@n8n/composables/useClipboard', () => ({
+vi.mock('@MNI/composables/useClipboard', () => ({
 	useClipboard: vi.fn(() => mockClipboard),
 }));
 

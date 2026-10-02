@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, onMounted } from 'vue';
-import { N8nBadge } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+import { N8nBadge } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 import { useAiGatewayStore } from '@/app/stores/aiGateway.store';
 
 const aiGatewayStore = useAiGatewayStore();

@@ -18,7 +18,7 @@ import { previewSlugs } from './preview-labels.mjs';
 import { createPhaseScanner, shellPhaseEcho } from './preview-phases.mjs';
 import { shareWithOrg } from './serve-ready.mjs';
 
-const REPO = 'n8n-io/n8n';
+const REPO = 'MNI-io/MNI';
 // Must match a config that has a prebuild, or create takes ~20 min instead of a
 // couple. Prebuilds are per-devcontainer-path, so a new config is cold until one is
 // configured for it in repo settings and has run. Override to borrow another
@@ -31,8 +31,8 @@ const MACHINE = process.env.PREVIEW_MACHINE ?? 'basicLinux32gb';
 const IDLE_TIMEOUT = '2h';
 const RETENTION_PERIOD = '24h';
 // Only used to build the URL printed here. The in-box script reads the codespace's
-// own N8N_PORT and prints the authoritative URL, so override both or neither.
-const PORT = process.env.N8N_PORT ?? '5678';
+// own MNI_PORT and prints the authoritative URL, so override both or neither.
+const PORT = process.env.MNI_PORT ?? '5678';
 const PREFIX = 'preview/pr-';
 // GitHub hands VS Code a per-codespace forwarding domain, but it is not readable
 // from here. Every box uses this one; the in-box script prints the resolved value.

@@ -1,7 +1,7 @@
-import { TypedEmitter } from '@n8n/backend-common';
-import { Service } from '@n8n/di';
-import type { IDeferredPromise } from '@n8n/utils/promise/deferred-promise';
-import { NodeApiError, UnexpectedError } from 'n8n-workflow';
+import { TypedEmitter } from '@MNI/backend-common';
+import { Service } from '@MNI/di';
+import type { IDeferredPromise } from '@MNI/utils/promise/deferred-promise';
+import { NodeApiError, UnexpectedError } from 'MNI-workflow';
 import type {
 	Workflow,
 	INode,
@@ -14,7 +14,7 @@ import type {
 	IExecuteResponsePromiseData,
 	IRun,
 	ExecutionError,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import assert from 'node:assert';
 
 import type { IGetExecuteTriggerFunctions } from './interfaces';

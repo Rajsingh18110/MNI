@@ -1,6 +1,6 @@
 import { createTestingPinia } from '@pinia/testing';
-import type { IUser } from '@n8n/rest-api-client';
-import { useUsersStore } from '@n8n/stores/users.store';
+import type { IUser } from '@MNI/rest-api-client';
+import { useUsersStore } from '@MNI/stores/users.store';
 import { waitFor } from '@testing-library/vue';
 import userEvent from '@testing-library/user-event';
 import { mock } from 'vitest-mock-extended';
@@ -22,7 +22,7 @@ vi.mock('../promotionsSettings.api', () => api);
 const mockShowError = vi.fn();
 const mockShowMessage = vi.fn();
 
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: () => ({ showError: mockShowError, showMessage: mockShowMessage }),
 }));
 

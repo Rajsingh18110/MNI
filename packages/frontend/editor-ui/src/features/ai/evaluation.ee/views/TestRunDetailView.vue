@@ -1,15 +1,15 @@
 <script setup lang="ts">
 import type { TestCaseExecutionRecord, TestRunRecord } from '../evaluation.api';
-import { useI18n } from '@n8n/i18n';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
-import { useToast } from '@n8n/composables/useToast';
+import { useI18n } from '@MNI/i18n';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
+import { useToast } from '@MNI/composables/useToast';
 import { VIEWS } from '@/app/constants';
 import { useInjectWorkflowId } from '@/app/composables/useInjectWorkflowId';
 import { useEvaluationStore } from '../evaluation.store';
 import { computed, onBeforeUnmount, onMounted, ref } from 'vue';
 import { useRouter } from 'vue-router';
 import orderBy from 'lodash/orderBy';
-import { N8nIcon, N8nLoading, N8nText } from '@n8n/design-system';
+import { N8nIcon, N8nLoading, N8nText } from '@MNI/design-system';
 import { getUserDefinedMetricNames } from '../evaluation.utils';
 import MetricSummaryStrip from '../components/RunDetail/MetricSummaryStrip.vue';
 import RunStatusPill from '../components/RunDetail/RunStatusPill.vue';

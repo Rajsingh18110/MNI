@@ -1,5 +1,5 @@
-import { mockInstance } from '@n8n/backend-test-utils';
-import { User } from '@n8n/db';
+import { mockInstance } from '@MNI/backend-test-utils';
+import { User } from '@MNI/db';
 import type { Mock } from 'vitest';
 
 import { CollaborationService } from '@/collaboration/collaboration.service';
@@ -131,7 +131,7 @@ describe('unpublish-workflow MCP tool', () => {
 				});
 
 				expect(workflowService.deactivateWorkflow).toHaveBeenCalledWith(user, 'wf-1', {
-					source: 'n8n-mcp',
+					source: 'MNI-mcp',
 				});
 
 				expect(collaborationService.broadcastWorkflowUpdate).toHaveBeenCalledWith('wf-1', user.id);

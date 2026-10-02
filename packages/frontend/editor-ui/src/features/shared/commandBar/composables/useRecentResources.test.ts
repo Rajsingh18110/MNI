@@ -20,7 +20,7 @@ vi.mock('@vueuse/core', async (importOriginal) => {
 	return {
 		...(actual as object),
 		useLocalStorage: vi.fn((key: string, defaultValue: unknown) => {
-			if (key === 'n8n-recent-nodes') {
+			if (key === 'MNI-recent-nodes') {
 				return recentNodesRef;
 			}
 			return ref(defaultValue);
@@ -52,7 +52,7 @@ vi.mock('vue-router', async (importOriginal) => {
 	};
 });
 
-vi.mock('@n8n/i18n', async (importOriginal) => ({
+vi.mock('@MNI/i18n', async (importOriginal) => ({
 	...(await importOriginal()),
 	useI18n: () => ({
 		baseText: (key: string) => key,
@@ -84,10 +84,10 @@ describe('useRecentResources', () => {
 		Object.defineProperty(workflowDocumentStore, 'findNodeByPartialId', {
 			value: vi.fn((nodeId: string) => {
 				if (nodeId === 'node-1') {
-					return { id: 'node-1', name: 'Test Node 1', type: 'n8n-nodes-base.httpRequest' };
+					return { id: 'node-1', name: 'Test Node 1', type: 'MNI-nodes-base.httpRequest' };
 				}
 				if (nodeId === 'node-2') {
-					return { id: 'node-2', name: 'Test Node 2', type: 'n8n-nodes-base.slack' };
+					return { id: 'node-2', name: 'Test Node 2', type: 'MNI-nodes-base.slack' };
 				}
 				return null;
 			}),

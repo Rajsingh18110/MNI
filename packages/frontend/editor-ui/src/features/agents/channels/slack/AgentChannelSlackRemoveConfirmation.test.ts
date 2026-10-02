@@ -3,7 +3,7 @@ import { describe, expect, it, vi } from 'vitest';
 
 import AgentChannelSlackRemoveConfirmation from './AgentChannelSlackRemoveConfirmation.vue';
 
-vi.mock('@n8n/i18n', () => ({
+vi.mock('@MNI/i18n', () => ({
 	useI18n: () => ({ baseText: (key: string) => key }),
 }));
 

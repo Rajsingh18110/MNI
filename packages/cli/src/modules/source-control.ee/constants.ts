@@ -18,6 +18,6 @@ export const SOURCE_CONTROL_README = `
 # MNI Source Control
 `;
 export const SOURCE_CONTROL_DEFAULT_NAME = 'MNI user';
-export const SOURCE_CONTROL_DEFAULT_EMAIL = 'n8n@example.com';
+export const SOURCE_CONTROL_DEFAULT_EMAIL = 'MNI@example.com';
 export const SOURCE_CONTROL_WRITE_FILE_BATCH_SIZE = 20;
 export const SOURCE_CONTROL_READ_FILE_BATCH_SIZE = 20;

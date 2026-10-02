@@ -1,11 +1,11 @@
-import type { User } from '@n8n/db';
+import type { User } from '@MNI/db';
 import {
 	ProjectSecretsProviderAccessRepository,
 	SecretsProviderConnectionRepository,
-} from '@n8n/db';
-import { Service } from '@n8n/di';
-import type { Scope } from '@n8n/permissions';
-import { combineScopes, getAuthPrincipalScopes, hasGlobalScope } from '@n8n/permissions';
+} from '@MNI/db';
+import { Service } from '@MNI/di';
+import type { Scope } from '@MNI/permissions';
+import { combineScopes, getAuthPrincipalScopes, hasGlobalScope } from '@MNI/permissions';
 
 import { ForbiddenError } from '@/errors/response-errors/forbidden.error';
 import { NotFoundError } from '@/errors/response-errors/not-found.error';

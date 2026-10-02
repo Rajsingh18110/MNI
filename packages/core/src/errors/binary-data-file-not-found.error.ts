@@ -1,4 +1,4 @@
-import { UnexpectedError } from 'n8n-workflow';
+import { UnexpectedError } from 'MNI-workflow';
 
 export class BinaryDataFileNotFoundError extends UnexpectedError {
 	constructor(fileId: string) {

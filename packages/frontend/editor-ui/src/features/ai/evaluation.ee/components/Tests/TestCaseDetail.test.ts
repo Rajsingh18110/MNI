@@ -11,7 +11,7 @@ import { useEvaluationStore } from '../../evaluation.store';
 
 // ─── Module-level mocks ───────────────────────────────────────────────────────
 
-vi.mock('@n8n/i18n', async (importOriginal) => ({
+vi.mock('@MNI/i18n', async (importOriginal) => ({
 	...(await importOriginal()),
 	useI18n: () => ({
 		baseText: (key: string, opts?: { interpolate?: Record<string, string> }) => {
@@ -34,7 +34,7 @@ vi.mock('@/app/composables/useWorkflowId', async () => {
 	};
 });
 
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: () => ({ showError: vi.fn(), showMessage: vi.fn() }),
 }));
 
@@ -49,7 +49,7 @@ vi.mock('../../composables/useSliceInputs', () => ({
 }));
 
 vi.mock('../../composables/useAiRootNodes', () => ({
-	useAiRootNodes: () => ref([{ name: 'Darwin', type: '@n8n/n8n-nodes-langchain.agent' }]),
+	useAiRootNodes: () => ref([{ name: 'Darwin', type: '@MNI/MNI-nodes-langchain.agent' }]),
 }));
 
 vi.mock('@/app/stores/workflowDocument.store', () => ({
@@ -57,7 +57,7 @@ vi.mock('@/app/stores/workflowDocument.store', () => ({
 		ref({
 			workflowId: 'wf-1',
 			allNodes: [
-				{ name: 'Darwin', type: '@n8n/n8n-nodes-langchain.agent' },
+				{ name: 'Darwin', type: '@MNI/MNI-nodes-langchain.agent' },
 				{ name: 'ToolA', type: 'tool' },
 			],
 			connectionsBySourceNode: {

@@ -1,5 +1,5 @@
 import { computed, reactive, ref, watch, type Ref } from 'vue';
-import type { INodeProperties } from 'n8n-workflow';
+import type { INodeProperties } from 'MNI-workflow';
 
 import type { NodeGroupItem, NodeSetupState } from '@/features/setupPanel/setupPanel.types';
 import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';

@@ -1,7 +1,7 @@
-import { mockInstance } from '@n8n/backend-test-utils';
-import { TOOL_EXECUTOR_NODE_NAME } from '@n8n/constants';
-import { ExecutionRepository } from '@n8n/db';
-import type { IExecutionResponse } from '@n8n/db';
+import { mockInstance } from '@MNI/backend-test-utils';
+import { TOOL_EXECUTOR_NODE_NAME } from '@MNI/constants';
+import { ExecutionRepository } from '@MNI/db';
+import type { IExecutionResponse } from '@MNI/db';
 import { mock } from 'vitest-mock-extended';
 
 import type { ExecutionPersistence } from '@/executions/execution-persistence';
@@ -10,7 +10,7 @@ import {
 	CHAT_TOOL_NODE_TYPE,
 	NodeConnectionTypes,
 	RESPOND_TO_WEBHOOK_NODE_TYPE,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import type { Mock } from 'vitest';
 
 import * as WorkflowExecuteAdditionalData from '@/workflow-execute-additional-data';
@@ -347,7 +347,7 @@ describe('ChatExecutionManager', () => {
 			// HITL tools carry a generated `<base>HitlTool` type (e.g. chatHitlTool),
 			// not CHAT_TOOL_NODE_TYPE, but must get the same resume fix-up so the
 			// approval is logged on the ai_tool channel and the gated tool executes.
-			const HITL_TOOL_NODE_TYPE = '@n8n/n8n-nodes-langchain.chatHitlTool';
+			const HITL_TOOL_NODE_TYPE = '@MNI/MNI-nodes-langchain.chatHitlTool';
 			const message: ChatMessage = { sessionId: '123', action: 'sendMessage', chatInput: '' };
 
 			function makeHitlToolExecution() {
@@ -686,7 +686,7 @@ describe('ChatExecutionManager', () => {
 			const message: ChatMessage = { sessionId: '123', action: 'sendMessage', chatInput: 'input' };
 			const toolNode = {
 				name: 'My Tool',
-				type: 'n8n-nodes-base.myTool',
+				type: 'MNI-nodes-base.myTool',
 				typeVersion: 1,
 				parameters: {},
 			};
@@ -833,7 +833,7 @@ describe('ChatExecutionManager', () => {
 		});
 
 		it('allows a chat-based HITL tool (inherits onMessage)', () => {
-			const execution = makeExecution('@n8n/n8n-nodes-langchain.chatHitlTool');
+			const execution = makeExecution('@MNI/MNI-nodes-langchain.chatHitlTool');
 			mockWorkflow(execution, true);
 
 			expect(chatExecutionManager.canResumeOverChat(execution)).toBe(true);
@@ -849,7 +849,7 @@ describe('ChatExecutionManager', () => {
 		it('applies the blockUserInput carve-out to a chat-based HITL tool', () => {
 			// chatHitlTool inherits onMessage and retains blockUserInput; the carve-out
 			// must reach it even though its type is not literally CHAT_(TOOL_)NODE_TYPE.
-			const execution = makeExecution('@n8n/n8n-nodes-langchain.chatHitlTool', {
+			const execution = makeExecution('@MNI/MNI-nodes-langchain.chatHitlTool', {
 				blockUserInput: true,
 			});
 			mockWorkflow(execution, true);
@@ -858,21 +858,21 @@ describe('ChatExecutionManager', () => {
 		});
 
 		it('refuses a Send-and-Wait node (no onMessage)', () => {
-			const execution = makeExecution('n8n-nodes-base.telegram', { operation: 'sendAndWait' });
+			const execution = makeExecution('MNI-nodes-base.telegram', { operation: 'sendAndWait' });
 			mockWorkflow(execution, false);
 
 			expect(chatExecutionManager.canResumeOverChat(execution)).toBe(false);
 		});
 
 		it('refuses a non-chat HITL tool (no onMessage)', () => {
-			const execution = makeExecution('n8n-nodes-base.telegramHitlTool');
+			const execution = makeExecution('MNI-nodes-base.telegramHitlTool');
 			mockWorkflow(execution, false);
 
 			expect(chatExecutionManager.canResumeOverChat(execution)).toBe(false);
 		});
 
 		it('refuses a plain Wait node (no onMessage)', () => {
-			const execution = makeExecution('n8n-nodes-base.wait', { resume: 'timeInterval' });
+			const execution = makeExecution('MNI-nodes-base.wait', { resume: 'timeInterval' });
 			mockWorkflow(execution, false);
 
 			expect(chatExecutionManager.canResumeOverChat(execution)).toBe(false);
@@ -885,7 +885,7 @@ describe('ChatExecutionManager', () => {
 			const decoy = { name: 'Decoy', type: CHAT_NODE_TYPE, typeVersion: 1, parameters: {} };
 			const gate = {
 				name: 'Manager approval',
-				type: 'n8n-nodes-base.telegram',
+				type: 'MNI-nodes-base.telegram',
 				typeVersion: 1,
 				parameters: { operation: 'sendAndWait' },
 			};
@@ -928,7 +928,7 @@ describe('ChatExecutionManager', () => {
 		it('reports the wrapped tool type for a tool-executor entry, not the executor', () => {
 			const toolNode = {
 				name: 'My Tool',
-				type: 'n8n-nodes-base.telegramHitlTool',
+				type: 'MNI-nodes-base.telegramHitlTool',
 				typeVersion: 1,
 				parameters: {},
 			};
@@ -942,7 +942,7 @@ describe('ChatExecutionManager', () => {
 							{
 								node: {
 									name: TOOL_EXECUTOR_NODE_NAME,
-									type: '@n8n/n8n-nodes-langchain.toolExecutor',
+									type: '@MNI/MNI-nodes-langchain.toolExecutor',
 									parameters: { node: 'My Tool' },
 								},
 								data: { main: [[]] },
@@ -958,7 +958,7 @@ describe('ChatExecutionManager', () => {
 			vi.spyOn(chatExecutionManager as any, 'getWorkflow').mockReturnValue(workflow);
 
 			expect(chatExecutionManager.resolveResumeNodeType(execution)).toBe(
-				'n8n-nodes-base.telegramHitlTool',
+				'MNI-nodes-base.telegramHitlTool',
 			);
 		});
 

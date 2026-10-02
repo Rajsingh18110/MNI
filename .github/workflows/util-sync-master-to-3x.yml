@@ -41,7 +41,7 @@ permissions: {}
 jobs:
   sync:
     name: Sync master into 3.x
-    if: github.repository == 'n8n-io/n8n'
+    if: github.repository == 'MNI-io/MNI'
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -54,8 +54,8 @@ jobs:
         id: app-token
         uses: actions/create-github-app-token@29824e69f54612133e76f7eaac726eef6c875baf # v2.2.1
         with:
-          app-id: ${{ secrets.N8N_ASSISTANT_APP_ID }}
-          private-key: ${{ secrets.N8N_ASSISTANT_PRIVATE_KEY }}
+          app-id: ${{ secrets.MNI_ASSISTANT_APP_ID }}
+          private-key: ${{ secrets.MNI_ASSISTANT_PRIVATE_KEY }}
           # Scope the installation token to only what the sync needs.
           permission-contents: write # force-push 3.x / push the conflict branch
           permission-pull-requests: write # open the conflict PR

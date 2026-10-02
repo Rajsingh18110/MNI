@@ -1,6 +1,6 @@
 import { mockDeep } from 'vitest-mock-extended';
-import { constructExecutionMetaData } from 'n8n-core';
-import type { IExecuteFunctions } from 'n8n-workflow';
+import { constructExecutionMetaData } from 'MNI-core';
+import type { IExecuteFunctions } from 'MNI-workflow';
 import pgPromise from 'pg-promise';
 
 import { PostgresV1 } from '../../v1/PostgresV1.node';

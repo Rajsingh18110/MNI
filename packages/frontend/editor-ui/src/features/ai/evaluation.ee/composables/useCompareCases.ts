@@ -1,5 +1,5 @@
 import orderBy from 'lodash/orderBy';
-import type { JsonObject } from 'n8n-workflow';
+import type { JsonObject } from 'MNI-workflow';
 import { computed, ref, watch, type Ref } from 'vue';
 
 import type { TestCaseExecutionRecord } from '../evaluation.api';

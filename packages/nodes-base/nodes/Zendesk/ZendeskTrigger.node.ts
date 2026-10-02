@@ -7,8 +7,8 @@ import type {
 	INodeType,
 	INodeTypeDescription,
 	IWebhookResponseData,
-} from 'n8n-workflow';
-import { NodeConnectionTypes, NodeOperationError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeConnectionTypes, NodeOperationError } from 'MNI-workflow';
 
 import { conditionFields } from './ConditionDescription';
 import { zendeskApiRequest, zendeskApiRequestAllItems } from './GenericFunctions';
@@ -343,7 +343,7 @@ export class ZendeskTrigger implements INodeType {
 
 					const bodyTrigger: IDataObject = {
 						trigger: {
-							title: `n8n-webhook:${urlParts.pathname}`,
+							title: `MNI-webhook:${urlParts.pathname}`,
 							conditions: {
 								all: resultAll,
 								any: resultAny,

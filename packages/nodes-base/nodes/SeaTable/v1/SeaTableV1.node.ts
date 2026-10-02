@@ -7,8 +7,8 @@ import type {
 	INodeType,
 	INodeTypeDescription,
 	INodeTypeBaseDescription,
-} from 'n8n-workflow';
-import { NodeOperationError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeOperationError } from 'MNI-workflow';
 
 import {
 	getTableColumns,

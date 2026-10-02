@@ -5,8 +5,8 @@ import {
 	mockInstance,
 	shareWorkflowWithUsers,
 	testDb,
-} from '@n8n/backend-test-utils';
-import type { User } from '@n8n/db';
+} from '@MNI/backend-test-utils';
+import type { User } from '@MNI/db';
 
 import { TestWebhooks } from '@/webhooks/test-webhooks';
 

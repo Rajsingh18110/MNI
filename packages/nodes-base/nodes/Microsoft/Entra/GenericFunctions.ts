@@ -13,13 +13,13 @@ import type {
 	INodePropertyOptions,
 	INodeListSearchResult,
 	INodeListSearchItems,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import {
 	isResourceLocatorValue,
 	NodeApiError,
 	NodeOperationError,
 	sanitizeXmlName,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import { parseStringPromise } from 'xml2js';
 
 import { escapeODataSearchValue, escapeODataValue } from '@utils/query-escaping';

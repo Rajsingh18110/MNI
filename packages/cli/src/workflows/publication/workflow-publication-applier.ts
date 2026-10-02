@@ -1,4 +1,4 @@
-import { Logger } from '@n8n/backend-common';
+import { Logger } from '@MNI/backend-common';
 import {
 	WorkflowEntity,
 	WorkflowHistory,
@@ -8,11 +8,11 @@ import {
 	WorkflowPublishedVersionRepository,
 	WorkflowRepository,
 	type WorkflowPublicationTriggerKind,
-} from '@n8n/db';
-import { Service } from '@n8n/di';
-import { TELEMETRY_EVENT } from '@n8n/telemetry';
-import { ensureError } from '@n8n/utils/errors/ensure-error';
-import { UserError, type INode, type WorkflowActivateMode } from 'n8n-workflow';
+} from '@MNI/db';
+import { Service } from '@MNI/di';
+import { TELEMETRY_EVENT } from '@MNI/telemetry';
+import { ensureError } from '@MNI/utils/errors/ensure-error';
+import { UserError, type INode, type WorkflowActivateMode } from 'MNI-workflow';
 
 import { NodeTypes } from '@/node-types';
 import { enforceWorkflowPublishPolicy } from '@/policy/enforce-workflow-publish';

@@ -1,11 +1,11 @@
-import type { Types } from 'n8n-core';
+import type { Types } from 'MNI-core';
 import type {
 	INodeProperties,
 	INodeTypeBaseDescription,
 	INodeTypeDescription,
 	KnownNodesAndCredentials,
-} from 'n8n-workflow';
-import { deepCopy, NodeConnectionTypes } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { deepCopy, NodeConnectionTypes } from 'MNI-workflow';
 
 import { copyCredentialSupport, isFullDescription, setToolCodex } from './utils';
 

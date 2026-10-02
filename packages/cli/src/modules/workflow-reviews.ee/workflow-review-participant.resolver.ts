@@ -1,11 +1,11 @@
-import type { WorkflowReviewEligibleReviewer } from '@n8n/api-types';
+import type { WorkflowReviewEligibleReviewer } from '@MNI/api-types';
 import {
 	UserRepository,
 	WorkflowReviewRequestAuthorRepository,
 	WorkflowReviewRequestReviewerRepository,
 	type WorkflowReviewRequest,
-} from '@n8n/db';
-import { Service } from '@n8n/di';
+} from '@MNI/db';
+import { Service } from '@MNI/di';
 
 import { toEligibleReviewer } from './workflow-review.mapper';
 

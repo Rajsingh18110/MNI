@@ -1,4 +1,4 @@
-import type { AgentDbMessage } from '@n8n/agents';
+import type { AgentDbMessage } from '@MNI/agents';
 import type {
 	InstanceAiEnsureThreadResponse,
 	InstanceAiEvent,
@@ -10,11 +10,11 @@ import type {
 	InstanceAiThreadMessagesResponse,
 	InstanceAiThreadOrigin,
 	InstanceAiThreadSource,
-} from '@n8n/api-types';
-import { Logger } from '@n8n/backend-common';
-import { GlobalConfig } from '@n8n/config';
-import type { InstanceAiConfig } from '@n8n/config';
-import { Service } from '@n8n/di';
+} from '@MNI/api-types';
+import { Logger } from '@MNI/backend-common';
+import { GlobalConfig } from '@MNI/config';
+import type { InstanceAiConfig } from '@MNI/config';
+import { Service } from '@MNI/di';
 import { z } from 'zod';
 import { randomUUID } from 'node:crypto';
 import {
@@ -24,7 +24,7 @@ import {
 	withBoundAgentTarget,
 	type AgentBuilderTarget,
 	type AgentTreeSnapshot,
-} from '@n8n/instance-ai';
+} from '@MNI/instance-ai';
 
 import { BadRequestError } from '@/errors/response-errors/bad-request.error';
 import { ForbiddenError } from '@/errors/response-errors/forbidden.error';

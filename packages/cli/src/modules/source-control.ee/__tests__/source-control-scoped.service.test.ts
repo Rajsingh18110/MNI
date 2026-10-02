@@ -1,5 +1,5 @@
-import type { AuthenticatedRequest, Project } from '@n8n/db';
-import { hasGlobalScope } from '@n8n/permissions';
+import type { AuthenticatedRequest, Project } from '@MNI/db';
+import { hasGlobalScope } from '@MNI/permissions';
 import { mock } from 'vitest-mock-extended';
 
 import { ForbiddenError } from '@/errors/response-errors/forbidden.error';
@@ -8,8 +8,8 @@ import type { SourceControlContextFactory } from '../source-control-context.fact
 import { SourceControlScopedService } from '../source-control-scoped.service';
 import type { SourceControlContext } from '../types/source-control-context';
 
-vi.mock('@n8n/permissions', async () => ({
-	...(await vi.importActual<typeof import('@n8n/permissions')>('@n8n/permissions')),
+vi.mock('@MNI/permissions', async () => ({
+	...(await vi.importActual<typeof import('@MNI/permissions')>('@MNI/permissions')),
 	hasGlobalScope: vi.fn(),
 }));
 

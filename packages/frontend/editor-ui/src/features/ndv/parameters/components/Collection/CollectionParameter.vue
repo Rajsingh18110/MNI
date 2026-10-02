@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import type { IUpdateInformation } from '@/Interface';
-import type { INodeParameters, INodeProperties } from 'n8n-workflow';
+import type { INodeParameters, INodeProperties } from 'MNI-workflow';
 
 import { useCollectionOverhaul } from '@/app/composables/useCollectionOverhaul';
 import CollectionParameterLegacy from './CollectionParameterLegacy.vue';

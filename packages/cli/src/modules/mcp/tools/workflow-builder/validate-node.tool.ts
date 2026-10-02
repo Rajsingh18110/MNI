@@ -1,4 +1,4 @@
-import type { User } from '@n8n/db';
+import type { User } from '@MNI/db';
 import z from 'zod';
 
 import type { Telemetry } from '@/telemetry';
@@ -14,7 +14,7 @@ const nodeInputSchema = z.object({
 		.describe('Optional node name. Echoed back in the result so callers can correlate.'),
 	type: z
 		.string()
-		.describe('Full node type, e.g. "n8n-nodes-base.set" or "@n8n/n8n-nodes-langchain.agent".'),
+		.describe('Full node type, e.g. "MNI-nodes-base.set" or "@MNI/MNI-nodes-langchain.agent".'),
 	typeVersion: z.number().positive().default(1).describe('Node type version. Defaults to 1.'),
 	parameters: z
 		.record(z.unknown())
@@ -103,7 +103,7 @@ export const createValidateNodeTool = (
 		};
 
 		try {
-			const { validateNodeConfig } = await import('@n8n/workflow-sdk');
+			const { validateNodeConfig } = await import('@MNI/workflow-sdk');
 
 			const results = nodes.map((node, index) => {
 				const result = validateNodeConfig(

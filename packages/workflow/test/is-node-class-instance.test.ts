@@ -2,7 +2,7 @@ import type { INodeTypeDescription } from '../src/interfaces';
 import { Node, isNodeClassInstance } from '../src/interfaces';
 
 /**
- * `isNodeClassInstance` is a replacement for `instanceof Node`, which fails when n8n-workflow
+ * `isNodeClassInstance` is a replacement for `instanceof Node`, which fails when MNI-workflow
  * is duplicated in the dependency tree in certain setups (namely, MNI installed via npm).
  */
 
@@ -21,7 +21,7 @@ describe('isNodeClassInstance', () => {
 		expect(isNodeClassInstance(Object.create(Node.prototype))).toBe(true);
 	});
 
-	it('returns true for a Node subclass from a duplicated n8n-workflow copy', () => {
+	it('returns true for a Node subclass from a duplicated MNI-workflow copy', () => {
 		// A second copy brands its own prototype with the same global symbol. Model that: an object
 		// whose prototype carries the tag but which is NOT instanceof this copy's Node.
 		const duplicatedProto = {};

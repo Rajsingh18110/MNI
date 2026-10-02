@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { computed, provide, useTemplateRef } from 'vue';
-import { nodeIssuesToString, type IRunData } from 'n8n-workflow';
-import { useRootStore } from '@n8n/stores/useRootStore';
+import { nodeIssuesToString, type IRunData } from 'MNI-workflow';
+import { useRootStore } from '@MNI/stores/useRootStore';
 import WorkflowCanvasHost from '@/app/components/WorkflowCanvasHost.vue';
 import {
 	EditorEnabledFeaturesKey,

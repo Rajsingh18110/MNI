@@ -13,10 +13,10 @@ import type {
 import * as credentialsApi from './credentials.api';
 import * as credentialsEeApi from './credentials.ee.api';
 import { EnterpriseEditionFeature } from '@/app/constants';
-import { STORES } from '@n8n/stores';
-import { i18n } from '@n8n/i18n';
+import { STORES } from '@MNI/stores';
+import { i18n } from '@MNI/i18n';
 import type { ProjectSharingData } from '@/features/collaboration/projects/projects.types';
-import { makeRestApiRequest } from '@n8n/rest-api-client';
+import { makeRestApiRequest } from '@MNI/rest-api-client';
 import { getAppNameFromCredType } from '@/app/utils/nodeTypesUtils';
 import { splitName } from '@/features/collaboration/projects/projects.utils';
 import { isEmpty } from '@/app/utils/typesUtils';
@@ -27,12 +27,12 @@ import type {
 	INodeCredentialTestResult,
 	INodeTypeDescription,
 	NodeParameterValueType,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import { defineStore } from 'pinia';
 import { computed, ref, type DeepReadonly } from 'vue';
 import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';
-import { useRootStore } from '@n8n/stores/useRootStore';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useRootStore } from '@MNI/stores/useRootStore';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import * as aiApi from '@/features/ai/assistant/assistant.api';
 
 const DEFAULT_CREDENTIAL_NAME = 'Unnamed credential';

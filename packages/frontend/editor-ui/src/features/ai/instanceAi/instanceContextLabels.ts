@@ -1,5 +1,5 @@
-import type { InstanceAiTimelineEntry } from '@n8n/api-types';
-import { useI18n } from '@n8n/i18n';
+import type { InstanceAiTimelineEntry } from '@MNI/api-types';
+import { useI18n } from '@MNI/i18n';
 
 type I18n = ReturnType<typeof useI18n>;
 

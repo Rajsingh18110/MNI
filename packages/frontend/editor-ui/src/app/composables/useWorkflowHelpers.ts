@@ -18,7 +18,7 @@ import type {
 	GenericValue,
 	NodeParameterValue,
 	NodeParameterValueType,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import {
 	CHAT_TRIGGER_NODE_TYPE,
 	createEmptyRunExecutionData,
@@ -27,30 +27,30 @@ import {
 	NodeConnectionTypes,
 	NodeHelpers,
 	WEBHOOK_NODE_TYPE,
-} from 'n8n-workflow';
-import * as workflowUtils from 'n8n-workflow/common';
+} from 'MNI-workflow';
+import * as workflowUtils from 'MNI-workflow/common';
 
 import type { INodeTypesMaxCount, IWorkflowDb, TargetItem, XYPosition } from '@/Interface';
 import type { ICredentialsResponse } from '@/features/credentials/credentials.types';
-import type { ITag } from '@n8n/rest-api-client/api/tags';
-import type { WorkflowData, WorkflowDataUpdate } from '@n8n/rest-api-client/api/workflows';
+import type { ITag } from '@MNI/rest-api-client/api/tags';
+import type { WorkflowData, WorkflowDataUpdate } from '@MNI/rest-api-client/api/workflows';
 
 import get from 'lodash/get';
 
 import { useEnvironmentsStore } from '@/features/settings/environments.ee/environments.store';
-import { useRootStore } from '@n8n/stores/useRootStore';
+import { useRootStore } from '@MNI/stores/useRootStore';
 import { useNDVStore } from '@/features/ndv/shared/ndv.store';
 import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';
 import { useUIStore } from '@/app/stores/ui.store';
 import { useWorkflowsStore } from '@/app/stores/workflows.store';
 import { useWorkflowsListStore } from '@/app/stores/workflowsList.store';
 import { getSourceItems } from '@/app/utils/pairedItemUtils';
-import * as workflowHistoryApi from '@n8n/rest-api-client/api/workflowHistory';
+import * as workflowHistoryApi from '@MNI/rest-api-client/api/workflowHistory';
 import { convertWorkflowTagsToIds } from '@/app/utils/workflowUtils';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import { useProjectsStore } from '@/features/collaboration/projects/projects.store';
 import { useTagsStore } from '@/features/shared/tags/tags.store';
-import { findWebhook } from '@n8n/rest-api-client/api/webhooks';
+import { findWebhook } from '@MNI/rest-api-client/api/webhooks';
 import type { ExpressionLocalResolveContext } from '@/app/types/expressions';
 import {
 	useWorkflowDocumentStore,

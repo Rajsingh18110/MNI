@@ -1,9 +1,9 @@
-import type { SamlAcsDto, SamlPreferences } from '@n8n/api-types';
-import { GlobalConfig } from '@n8n/config';
-import type { User } from '@n8n/db';
-import { AuthIdentity, AuthIdentityRepository, UserRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
-import { randomString } from 'n8n-workflow';
+import type { SamlAcsDto, SamlPreferences } from '@MNI/api-types';
+import { GlobalConfig } from '@MNI/config';
+import type { User } from '@MNI/db';
+import { AuthIdentity, AuthIdentityRepository, UserRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
+import { randomString } from 'MNI-workflow';
 import type { FlowResult } from 'samlify/types/src/flow';
 
 import { AuthError } from '@/errors/response-errors/auth.error';

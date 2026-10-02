@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { computed, ref, watch, onUnmounted } from 'vue';
-import { N8nButton, N8nIcon, N8nIconButton } from '@n8n/design-system';
+import { N8nButton, N8nIcon, N8nIconButton } from '@MNI/design-system';
 import {
 	GMAIL_ICON_SVG,
 	ANTHROPIC_ICON_SVG,

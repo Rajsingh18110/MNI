@@ -62,7 +62,7 @@ const {
 	run,
 } = await import('./required-reviews.mjs');
 
-const REPO = 'n8n-io/n8n';
+const REPO = 'MNI-io/MNI';
 
 /** @param {string} head @param {string} base @param {string} [headRepo] */
 function pullRequestFor(head, base, headRepo = REPO) {
@@ -262,7 +262,7 @@ describe('buildStatus', () => {
 	});
 
 	it('stays pending with the missing team slugs', () => {
-		const status = buildStatus(['@n8n-io/qa-dx', '@n8n-io/migrations-review'], 2);
+		const status = buildStatus(['@MNI-io/qa-dx', '@MNI-io/migrations-review'], 2);
 
 		assert.equal(status.state, 'pending');
 		assert.equal(status.description, 'Waiting for approval from: qa-dx, migrations-review');
@@ -307,7 +307,7 @@ describe('run', () => {
 	});
 
 	it('sets a pending status when a required team has not approved', async () => {
-		resolveRequiredTeamsImpl = () => new Map([['@n8n-io/qa-dx', ['a.ts']]]);
+		resolveRequiredTeamsImpl = () => new Map([['@MNI-io/qa-dx', ['a.ts']]]);
 		getPrReviewsImpl = async () => [
 			{ user: { login: 'outsider' }, state: 'APPROVED', submitted_at: '2026-01-01T00:00:00Z' },
 		];
@@ -335,8 +335,8 @@ describe('run', () => {
 	it('sets a success status when a member of each required team approved', async () => {
 		resolveRequiredTeamsImpl = () =>
 			new Map([
-				['@n8n-io/qa-dx', ['a.ts']],
-				['@n8n-io/migrations-review', ['m.ts']],
+				['@MNI-io/qa-dx', ['a.ts']],
+				['@MNI-io/migrations-review', ['m.ts']],
 			]);
 		getPrReviewsImpl = async () => [
 			{ user: { login: 'poly' }, state: 'APPROVED', submitted_at: '2026-01-01T00:00:00Z' },
@@ -351,7 +351,7 @@ describe('run', () => {
 	});
 
 	it('checks membership per approver and required team', async () => {
-		resolveRequiredTeamsImpl = () => new Map([['@n8n-io/qa-dx', ['a.ts']]]);
+		resolveRequiredTeamsImpl = () => new Map([['@MNI-io/qa-dx', ['a.ts']]]);
 		getPrReviewsImpl = async () => [
 			{ user: { login: 'poly' }, state: 'APPROVED', submitted_at: '2026-01-01T00:00:00Z' },
 		];
@@ -367,7 +367,7 @@ describe('run', () => {
 	});
 
 	it('does not check membership when there is no approval', async () => {
-		resolveRequiredTeamsImpl = () => new Map([['@n8n-io/qa-dx', ['a.ts']]]);
+		resolveRequiredTeamsImpl = () => new Map([['@MNI-io/qa-dx', ['a.ts']]]);
 		const isTeamMember = mock.fn(async () => true);
 		isTeamMemberImpl = isTeamMember;
 
@@ -379,7 +379,7 @@ describe('run', () => {
 	});
 
 	it('does not count an approval that was later dismissed', async () => {
-		resolveRequiredTeamsImpl = () => new Map([['@n8n-io/qa-dx', ['a.ts']]]);
+		resolveRequiredTeamsImpl = () => new Map([['@MNI-io/qa-dx', ['a.ts']]]);
 		getPrReviewsImpl = async () => [
 			{ user: { login: 'poly' }, state: 'APPROVED', submitted_at: '2026-01-01T00:00:00Z' },
 			{ user: { login: 'poly' }, state: 'DISMISSED', submitted_at: '2026-01-02T00:00:00Z' },
@@ -406,7 +406,7 @@ describe('run', () => {
 
 	it('evaluates PRs into branches other than master', async () => {
 		getPullRequestByIdImpl = async () => pullRequestFor('feature/x', 'release-candidate/2.9.x');
-		resolveRequiredTeamsImpl = () => new Map([['@n8n-io/qa-dx', ['a.ts']]]);
+		resolveRequiredTeamsImpl = () => new Map([['@MNI-io/qa-dx', ['a.ts']]]);
 
 		await run();
 
@@ -419,7 +419,7 @@ describe('run', () => {
 		getPullRequestByIdImpl = async () => pullRequestFor('sync/master-to-3x', '3.x');
 		const getChangedFiles = mock.fn(async () => new Set(['a.ts']));
 		getChangedFilesImpl = getChangedFiles;
-		resolveRequiredTeamsImpl = () => new Map([['@n8n-io/qa-dx', ['a.ts']]]);
+		resolveRequiredTeamsImpl = () => new Map([['@MNI-io/qa-dx', ['a.ts']]]);
 
 		await run();
 
@@ -433,7 +433,7 @@ describe('run', () => {
 
 	it('does not exempt a fork branch that is named like an exempt route', async () => {
 		getPullRequestByIdImpl = async () => pullRequestFor('sync/master-to-3x', '3.x', 'someone/MNI');
-		resolveRequiredTeamsImpl = () => new Map([['@n8n-io/qa-dx', ['a.ts']]]);
+		resolveRequiredTeamsImpl = () => new Map([['@MNI-io/qa-dx', ['a.ts']]]);
 
 		await run();
 

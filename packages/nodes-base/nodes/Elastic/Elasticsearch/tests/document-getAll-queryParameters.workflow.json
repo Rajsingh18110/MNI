@@ -3,7 +3,7 @@
 	"nodes": [
 		{
 			"parameters": {},
-			"type": "n8n-nodes-base.manualTrigger",
+			"type": "MNI-nodes-base.manualTrigger",
 			"typeVersion": 1,
 			"position": [0, 0],
 			"id": "trigger-id",
@@ -22,7 +22,7 @@
 					"queryParameters": "={{ ['john\", \"boost\": \"2'] }}"
 				}
 			},
-			"type": "n8n-nodes-base.elasticsearch",
+			"type": "MNI-nodes-base.elasticsearch",
 			"typeVersion": 1,
 			"position": [200, 0],
 			"id": "elasticsearch-getAll",

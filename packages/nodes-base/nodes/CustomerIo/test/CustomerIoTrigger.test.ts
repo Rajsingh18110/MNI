@@ -1,5 +1,5 @@
 import { mock } from 'vitest-mock-extended';
-import type { IWebhookFunctions, INodeType } from 'n8n-workflow';
+import type { IWebhookFunctions, INodeType } from 'MNI-workflow';
 
 import { CustomerIoTrigger } from '../CustomerIoTrigger.node';
 

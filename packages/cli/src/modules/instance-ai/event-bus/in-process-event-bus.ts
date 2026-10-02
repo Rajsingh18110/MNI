@@ -1,9 +1,9 @@
-import type { InstanceAiEvent } from '@n8n/api-types';
-import { Logger } from '@n8n/backend-common';
-import { OnPubSubEvent } from '@n8n/decorators';
-import { Service } from '@n8n/di';
-import type { InstanceAiEventBus, StoredEvent } from '@n8n/instance-ai';
-import { InstanceSettings } from 'n8n-core';
+import type { InstanceAiEvent } from '@MNI/api-types';
+import { Logger } from '@MNI/backend-common';
+import { OnPubSubEvent } from '@MNI/decorators';
+import { Service } from '@MNI/di';
+import type { InstanceAiEventBus, StoredEvent } from '@MNI/instance-ai';
+import { InstanceSettings } from 'MNI-core';
 import { EventEmitter } from 'node:events';
 
 import { MAX_PUBSUB_PAYLOAD_BYTES } from '@/scaling/constants';

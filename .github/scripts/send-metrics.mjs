@@ -5,7 +5,7 @@
  *
  * Usage (fire-and-forget — best-effort, never blocks CI):
  *   import { sendMetrics, metric } from './send-metrics.mjs';
- *   sendMetrics([metric('build-duration', 45.2, 's', { package: '@n8n/cli' })])
+ *   sendMetrics([metric('build-duration', 45.2, 's', { package: '@MNI/cli' })])
  *     .catch((err) => console.warn(`[metrics] send failed: ${err.message}`));
  *
  * Env: QA_METRICS_WEBHOOK_URL, QA_METRICS_WEBHOOK_USER, QA_METRICS_WEBHOOK_PASSWORD

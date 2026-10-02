@@ -1,6 +1,6 @@
 import type { KafkaJS } from '@confluentinc/kafka-javascript';
 import type { SchemaRegistry } from '@kafkajs/confluent-schema-registry';
-import { ensureError } from '@n8n/utils/errors/ensure-error';
+import { ensureError } from '@MNI/utils/errors/ensure-error';
 import type {
 	IExecuteFunctions,
 	IDataObject,
@@ -9,8 +9,8 @@ import type {
 	INodeType,
 	INodeTypeBaseDescription,
 	INodeTypeDescription,
-} from 'n8n-workflow';
-import { jsonParse, NodeConnectionTypes, NodeError, NodeOperationError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { jsonParse, NodeConnectionTypes, NodeError, NodeOperationError } from 'MNI-workflow';
 
 import { generatePairedItemData } from '@utils/utilities';
 
@@ -289,7 +289,7 @@ const versionDescription: INodeTypeDescription = {
 					default: 'none',
 					description:
 						'Codec used to compress messages. Version 1 of the Kafka Trigger cannot read Snappy, LZ4 or Zstd — use GZIP or None while version 1 triggers consume this topic.',
-					// eslint-disable-next-line n8n-nodes-base/node-param-options-type-unsorted-items -- 'None' (no compression) reads better last than between LZ4 and Snappy
+					// eslint-disable-next-line MNI-nodes-base/node-param-options-type-unsorted-items -- 'None' (no compression) reads better last than between LZ4 and Snappy
 					options: [
 						{ name: 'GZIP', value: 'gzip' },
 						{ name: 'LZ4', value: 'lz4' },

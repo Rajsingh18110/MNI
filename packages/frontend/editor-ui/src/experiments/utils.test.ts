@@ -15,7 +15,7 @@ vi.mock('@/app/stores/posthog.store', () => ({
 }));
 
 let isTrialing = false;
-vi.mock('@n8n/stores/cloudPlan.store', () => ({
+vi.mock('@MNI/stores/cloudPlan.store', () => ({
 	useCloudPlanStore: vi.fn(() => ({
 		userIsTrialing: isTrialing,
 		currentUserCloudInfo: {
@@ -31,7 +31,7 @@ vi.mock('@/app/stores/workflowsList.store', () => ({
 }));
 
 const mockTrack = vi.fn();
-vi.mock('@n8n/composables/useTelemetry', () => ({
+vi.mock('@MNI/composables/useTelemetry', () => ({
 	useTelemetry: vi.fn(() => ({
 		track: mockTrack,
 	})),

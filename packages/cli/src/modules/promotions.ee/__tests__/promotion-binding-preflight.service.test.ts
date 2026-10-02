@@ -1,18 +1,18 @@
-import { promotionBindingPreflightResultSchema } from '@n8n/api-types';
-import type { CredentialsRepository, ProjectRepository, VariablesRepository } from '@n8n/db';
-import type { INode } from 'n8n-workflow';
+import { promotionBindingPreflightResultSchema } from '@MNI/api-types';
+import type { CredentialsRepository, ProjectRepository, VariablesRepository } from '@MNI/db';
+import type { INode } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import type { CredentialTypes } from '@/credential-types';
-import { VariableRequirementsExtractor } from '@/modules/n8n-packages/entities/variable/variable-requirements.extractor';
+import { VariableRequirementsExtractor } from '@/modules/MNI-packages/entities/variable/variable-requirements.extractor';
 import type {
 	InventoryCredential,
 	InventoryVariable,
 	InventoryWorkflow,
 	PackageDirectoryInventory,
 	PackageDirectoryInventoryReader,
-} from '@/modules/n8n-packages/io/directory/package-directory-inventory-reader';
-import type { PackageImportConfig } from '@/modules/n8n-packages/n8n-packages.config';
+} from '@/modules/MNI-packages/io/directory/package-directory-inventory-reader';
+import type { PackageImportConfig } from '@/modules/MNI-packages/MNI-packages.config';
 
 import { PromotionBindingPreflightService } from '../promotion-binding-preflight.service';
 
@@ -45,7 +45,7 @@ function credentialNode(
 	return {
 		id: `node-${name}`,
 		name,
-		type: 'n8n-nodes-base.github',
+		type: 'MNI-nodes-base.github',
 		typeVersion: 1,
 		position: [0, 0],
 		parameters: {},
@@ -57,7 +57,7 @@ function variableNode(name: string, expression: string): INode {
 	return {
 		id: `node-${name}`,
 		name,
-		type: 'n8n-nodes-base.set',
+		type: 'MNI-nodes-base.set',
 		typeVersion: 1,
 		position: [0, 0],
 		parameters: { value: expression },
@@ -614,7 +614,7 @@ describe('PromotionBindingPreflightService', () => {
 						{
 							id: 'exec',
 							name: 'Execute',
-							type: 'n8n-nodes-base.executeWorkflow',
+							type: 'MNI-nodes-base.executeWorkflow',
 							typeVersion: 1,
 							position: [0, 0],
 							parameters: { workflowJson: inline },

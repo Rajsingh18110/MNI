@@ -1,8 +1,8 @@
 // The barrel is mocked so this file exercises the adapter's own wiring rather than pulling the
 // whole instance-ai package in behind it, matching the other adapter tests.
-vi.mock('@n8n/instance-ai', async () => {
+vi.mock('@MNI/instance-ai', async () => {
 	const { WorkflowSaveConflictError, WorkflowNotFoundError, WorkflowEditorLockedError } =
-		await import('@n8n/instance-ai/errors');
+		await import('@MNI/instance-ai/errors');
 	return {
 		WorkflowSaveConflictError,
 		WorkflowNotFoundError,
@@ -21,15 +21,15 @@ vi.mock('@n8n/instance-ai', async () => {
 	};
 });
 
-vi.mock('@n8n/ai-utilities', () => ({
+vi.mock('@MNI/ai-utilities', () => ({
 	braveSearch: vi.fn(),
 	searxngSearch: vi.fn(),
 }));
 
-import type { Logger } from '@n8n/backend-common';
-import { INSTANCE_AI_NODE_USAGE_FLAG } from '@n8n/api-types';
-import type { OutboundHttp } from '@n8n/backend-network';
-import type { GlobalConfig } from '@n8n/config';
+import type { Logger } from '@MNI/backend-common';
+import { INSTANCE_AI_NODE_USAGE_FLAG } from '@MNI/api-types';
+import type { OutboundHttp } from '@MNI/backend-network';
+import type { GlobalConfig } from '@MNI/config';
 import type {
 	AiBuilderTemporaryWorkflowRepository,
 	ExecutionRepository,
@@ -37,10 +37,10 @@ import type {
 	SharedWorkflowRepository,
 	User,
 	WorkflowRepository,
-} from '@n8n/db';
-import { GLOBAL_MEMBER_ROLE } from '@n8n/db';
-import { Container } from '@n8n/di';
-import type { InstanceSettings } from 'n8n-core';
+} from '@MNI/db';
+import { GLOBAL_MEMBER_ROLE } from '@MNI/db';
+import { Container } from '@MNI/di';
+import type { InstanceSettings } from 'MNI-core';
 import { mock } from 'vitest-mock-extended';
 
 import type { ActiveExecutions } from '@/active-executions';
@@ -213,7 +213,7 @@ describe('InstanceAiAdapterService node usage', () => {
 			const dependencyQueryService = mock<WorkflowDependencyQueryService>();
 			dependencyQueryService.getNodeTypeUsage.mockResolvedValue({
 				workflowsInScope: 3,
-				nodeTypes: [{ nodeType: 'n8n-nodes-base.slack', workflowCount: 2 }],
+				nodeTypes: [{ nodeType: 'MNI-nodes-base.slack', workflowCount: 2 }],
 			});
 			const service = buildAdapter({ dependencyQueryService });
 
@@ -228,7 +228,7 @@ describe('InstanceAiAdapterService node usage', () => {
 			});
 			expect(result).toEqual({
 				workflowsInScope: 3,
-				nodeTypes: [{ nodeType: 'n8n-nodes-base.slack', workflowCount: 2 }],
+				nodeTypes: [{ nodeType: 'MNI-nodes-base.slack', workflowCount: 2 }],
 			});
 		});
 
@@ -266,7 +266,7 @@ describe('InstanceAiAdapterService node usage', () => {
 
 			const context = service.createContext(user, { nodeUsageEnabled: true });
 			const result = await context.workflowService.nodeUsage?.({
-				nodeType: 'n8n-nodes-base.slack',
+				nodeType: 'MNI-nodes-base.slack',
 			});
 
 			expect(result).toEqual({
@@ -290,7 +290,7 @@ describe('InstanceAiAdapterService node usage', () => {
 				projectId: 'bound-project',
 				nodeUsageEnabled: true,
 			});
-			await context.workflowService.list({ nodeTypes: ['n8n-nodes-base.slack'], query: 'sync' });
+			await context.workflowService.list({ nodeTypes: ['MNI-nodes-base.slack'], query: 'sync' });
 
 			// Both reads carry the node-type filter: the second exists to say how many the *name*
 			// filter hid, which would misreport if the two scopes differed.
@@ -299,7 +299,7 @@ describe('InstanceAiAdapterService node usage', () => {
 				filter: {
 					isArchived: false,
 					projectId: 'bound-project',
-					nodeTypes: ['n8n-nodes-base.slack'],
+					nodeTypes: ['MNI-nodes-base.slack'],
 					query: 'sync',
 				},
 			});
@@ -308,7 +308,7 @@ describe('InstanceAiAdapterService node usage', () => {
 				filter: {
 					isArchived: false,
 					projectId: 'bound-project',
-					nodeTypes: ['n8n-nodes-base.slack'],
+					nodeTypes: ['MNI-nodes-base.slack'],
 				},
 			});
 		});
@@ -318,7 +318,7 @@ describe('InstanceAiAdapterService node usage', () => {
 			const service = buildAdapter({});
 
 			const context = service.createContext(user, { projectId: 'bound-project' });
-			await context.workflowService.list({ nodeTypes: ['n8n-nodes-base.slack'] });
+			await context.workflowService.list({ nodeTypes: ['MNI-nodes-base.slack'] });
 
 			expect(workflowService.getMany).toHaveBeenCalledWith(user, {
 				take: 50,

@@ -1,19 +1,19 @@
 import { createPinia, setActivePinia } from 'pinia';
 
 import { useConsentStore } from './consent.store';
-import { ResponseError } from '@n8n/rest-api-client/utils';
+import { ResponseError } from '@MNI/rest-api-client/utils';
 
 const { getConsentDetails, approveConsent } = vi.hoisted(() => ({
 	getConsentDetails: vi.fn(),
 	approveConsent: vi.fn(),
 }));
 
-vi.mock('@n8n/rest-api-client/api/consent', () => ({
+vi.mock('@MNI/rest-api-client/api/consent', () => ({
 	getConsentDetails,
 	approveConsent,
 }));
 
-vi.mock('@n8n/stores/useRootStore', () => ({
+vi.mock('@MNI/stores/useRootStore', () => ({
 	useRootStore: vi.fn(() => ({
 		restApiContext: { baseUrl: 'http://localhost:5678', pushRef: 'test' },
 	})),

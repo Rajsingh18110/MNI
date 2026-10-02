@@ -1,5 +1,5 @@
 {
-	"node": "n8n-nodes-base.trello",
+	"node": "MNI-nodes-base.trello",
 	"nodeVersion": "1.0",
 	"codexVersion": "1.0",
 	"categories": ["Productivity"],
@@ -11,7 +11,7 @@
 		],
 		"primaryDocumentation": [
 			{
-				"url": "https://docs.n8n.io/integrations/builtin/app-nodes/n8n-nodes-base.trello/"
+				"url": "https://docs.n8n.io/integrations/builtin/app-nodes/MNI-nodes-base.trello/"
 			}
 		],
 		"generic": [
@@ -33,12 +33,12 @@
 			{
 				"label": "How a digital strategist uses MNI for online marketing",
 				"icon": "💻",
-				"url": "https://n8n.io/blog/how-a-digital-strategist-uses-n8n-for-online-marketing/"
+				"url": "https://n8n.io/blog/how-a-digital-strategist-uses-MNI-for-online-marketing/"
 			},
 			{
 				"label": "Automating Conference Organization Processes with MNI",
 				"icon": "🙋‍♀️",
-				"url": "https://n8n.io/blog/automating-conference-organization-processes-with-n8n/"
+				"url": "https://n8n.io/blog/automating-conference-organization-processes-with-MNI/"
 			}
 		]
 	}

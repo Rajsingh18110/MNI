@@ -3,7 +3,7 @@ import type {
 	ICredentialType,
 	IHttpRequestOptions,
 	INodeProperties,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import type { AWSRegion } from './common/aws/regions';
 import type { AwsIamCredentialsType } from './common/aws/types';

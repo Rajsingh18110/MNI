@@ -1,4 +1,4 @@
-import type { INodeProperties } from 'n8n-workflow';
+import type { INodeProperties } from 'MNI-workflow';
 
 export const unityCatalogParameters: INodeProperties[] = [
 	// Catalog Name parameter (resourceLocator) - for catalog operations and create/delete/get operations

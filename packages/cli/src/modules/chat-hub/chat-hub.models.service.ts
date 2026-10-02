@@ -6,16 +6,16 @@ import {
 	type ChatHubProvider,
 	type ChatModelDto,
 	type ChatModelsResponse,
-} from '@n8n/api-types';
-import { In, WorkflowRepository, type User, type WorkflowEntity } from '@n8n/db';
-import { Service } from '@n8n/di';
-import { Scope } from '@n8n/permissions';
+} from '@MNI/api-types';
+import { In, WorkflowRepository, type User, type WorkflowEntity } from '@MNI/db';
+import { Service } from '@MNI/di';
+import { Scope } from '@MNI/permissions';
 import {
 	CHAT_TRIGGER_NODE_TYPE,
 	type INodeCredentials,
 	type INodePropertyOptions,
 	type IWorkflowExecuteAdditionalData,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { CredentialsFinderService } from '@/credentials/credentials-finder.service';
 import { DynamicNodeParametersService } from '@/services/dynamic-node-parameters.service';
@@ -54,7 +54,7 @@ export class ChatHubModelsService {
 				async (provider: ChatHubProvider) => {
 					const credentials: INodeCredentials = {};
 
-					if (provider !== 'n8n' && provider !== 'custom-agent') {
+					if (provider !== 'MNI' && provider !== 'custom-agent') {
 						const credentialId = credentialIds[provider];
 						if (!credentialId) {
 							return [provider, { models: [] }];
@@ -162,7 +162,7 @@ export class ChatHubModelsService {
 				const rawModels = await this.fetchNvidiaModels(credentials, additionalData);
 				return { models: this.transformAndFilterModels(rawModels, 'nvidia') };
 			}
-			case 'n8n':
+			case 'MNI':
 				return { models: await this.fetchAgentWorkflowsAsModels(user) };
 			case 'custom-agent':
 				return { models: await this.chatHubAgentService.getAgentsByUserIdAsModels(user.id) };
@@ -208,7 +208,7 @@ export class ChatHubModelsService {
 		return await this.nodeParametersService.getOptionsViaLoadOptions(
 			{
 				// From Gemini node
-				// https://github.com/n8n-io/n8n/blob/master/packages/%40n8n/nodes-langchain/nodes/llms/LmChatGoogleGemini/LmChatGoogleGemini.node.ts#L75
+				// https://github.com/MNI-io/MNI/blob/master/packages/%40n8n/nodes-langchain/nodes/llms/LmChatGoogleGemini/LmChatGoogleGemini.node.ts#L75
 				routing: {
 					request: {
 						method: 'GET',
@@ -260,7 +260,7 @@ export class ChatHubModelsService {
 		return await this.nodeParametersService.getOptionsViaLoadOptions(
 			{
 				// From Ollama Model node
-				// https://github.com/n8n-io/n8n/blob/master/packages/%40n8n/nodes-langchain/nodes/llms/LMOllama/description.ts#L24
+				// https://github.com/MNI-io/MNI/blob/master/packages/%40n8n/nodes-langchain/nodes/llms/LMOllama/description.ts#L24
 				routing: {
 					request: {
 						method: 'GET',
@@ -774,7 +774,7 @@ export class ChatHubModelsService {
 			description: chatTriggerParams.agentDescription ?? null,
 			icon: chatTriggerParams.agentIcon ?? null,
 			model: {
-				provider: 'n8n',
+				provider: 'MNI',
 				workflowId: id,
 			},
 			createdAt: activeVersion.createdAt ? activeVersion.createdAt.toISOString() : null,

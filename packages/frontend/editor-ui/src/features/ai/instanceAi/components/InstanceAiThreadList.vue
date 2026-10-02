@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-import { N8nButton, N8nText } from '@n8n/design-system';
-import type { ActionDropdownItem, DropdownMenuItemProps } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
-import type { InstanceAiThreadSummary } from '@n8n/api-types';
+import { N8nButton, N8nText } from '@MNI/design-system';
+import type { ActionDropdownItem, DropdownMenuItemProps } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
+import type { InstanceAiThreadSummary } from '@MNI/api-types';
 import { useEventListener } from '@vueuse/core';
 import { computed, nextTick, ref, useId, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
@@ -10,7 +10,7 @@ import { INSTANCE_AI_VIEW, INSTANCE_AI_THREAD_VIEW, INSTANCE_AI_THREADS_VIEW } f
 import { useInstanceAiStore } from '../instanceAi.store';
 import { clearPendingThreadHandoff } from '../composables/useInstanceAiHandoff';
 import { useInstanceAiThreadHistory } from '../composables/useInstanceAiThreadHistory';
-import { useToast } from '@n8n/composables/useToast';
+import { useToast } from '@MNI/composables/useToast';
 import ChatHistoryDropdown, {
 	type ChatHistoryItemData,
 } from '@/features/ai/shared/components/ChatHistoryDropdown.vue';

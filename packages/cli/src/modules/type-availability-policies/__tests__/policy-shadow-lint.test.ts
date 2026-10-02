@@ -11,17 +11,17 @@ const rule = (overrides: RuleOverrides): PolicyRule => ({
 /** Stands in for `NodeTypes.resolveBaseName`: `gmailTool` is a synthetic variant of `gmail`. */
 const policedType = (name: string) => ({
 	name,
-	baseName: name === 'n8n-nodes-base.gmailTool' ? 'n8n-nodes-base.gmail' : name,
+	baseName: name === 'MNI-nodes-base.gmailTool' ? 'MNI-nodes-base.gmail' : name,
 });
 
 describe('lintRulesForShadowing', () => {
 	it('flags a later name rule shadowed by an earlier package rule for the same package', () => {
 		const rules = [
-			rule({ id: 'allow-package', selector: { kind: 'package', value: 'n8n-nodes-base' } }),
+			rule({ id: 'allow-package', selector: { kind: 'package', value: 'MNI-nodes-base' } }),
 			rule({
 				id: 'deny-slack',
 				action: 'deny',
-				selector: { kind: 'name', value: 'n8n-nodes-base.slack' },
+				selector: { kind: 'name', value: 'MNI-nodes-base.slack' },
 			}),
 		];
 
@@ -33,18 +33,18 @@ describe('lintRulesForShadowing', () => {
 	it.each([
 		[
 			'different packages',
-			{ kind: 'package', value: 'n8n-nodes-base' } as const,
-			{ kind: 'package', value: 'n8n-nodes-other' } as const,
+			{ kind: 'package', value: 'MNI-nodes-base' } as const,
+			{ kind: 'package', value: 'MNI-nodes-other' } as const,
 		],
 		[
 			'different type names',
-			{ kind: 'name', value: 'n8n-nodes-base.slack' } as const,
-			{ kind: 'name', value: 'n8n-nodes-base.gmail' } as const,
+			{ kind: 'name', value: 'MNI-nodes-base.slack' } as const,
+			{ kind: 'name', value: 'MNI-nodes-base.gmail' } as const,
 		],
 		[
 			'a name rule followed by an unrelated package rule',
-			{ kind: 'name', value: 'n8n-nodes-base.slack' } as const,
-			{ kind: 'package', value: 'n8n-nodes-other' } as const,
+			{ kind: 'name', value: 'MNI-nodes-base.slack' } as const,
+			{ kind: 'package', value: 'MNI-nodes-other' } as const,
 		],
 	])('does not flag disjoint selectors (%s)', (_description, earlierSelector, laterSelector) => {
 		const rules = [
@@ -57,11 +57,11 @@ describe('lintRulesForShadowing', () => {
 
 	it('flags a name rule for a synthetic tool variant placed after the rule for its base node', () => {
 		const rules = [
-			rule({ id: 'allow-gmail', selector: { kind: 'name', value: 'n8n-nodes-base.gmail' } }),
+			rule({ id: 'allow-gmail', selector: { kind: 'name', value: 'MNI-nodes-base.gmail' } }),
 			rule({
 				id: 'deny-gmail-tool',
 				action: 'deny',
-				selector: { kind: 'name', value: 'n8n-nodes-base.gmailTool' },
+				selector: { kind: 'name', value: 'MNI-nodes-base.gmailTool' },
 			}),
 		];
 
@@ -76,9 +76,9 @@ describe('lintRulesForShadowing', () => {
 			rule({
 				id: 'deny-gmail-tool',
 				action: 'deny',
-				selector: { kind: 'name', value: 'n8n-nodes-base.gmailTool' },
+				selector: { kind: 'name', value: 'MNI-nodes-base.gmailTool' },
 			}),
-			rule({ id: 'allow-gmail', selector: { kind: 'name', value: 'n8n-nodes-base.gmail' } }),
+			rule({ id: 'allow-gmail', selector: { kind: 'name', value: 'MNI-nodes-base.gmail' } }),
 		];
 
 		expect(lintRulesForShadowing(rules, undefined, policedType)).toEqual([]);
@@ -87,8 +87,8 @@ describe('lintRulesForShadowing', () => {
 	it('does not flag a name rule followed by a package rule for its own package', () => {
 		// A single type can never cover a whole package, so this direction never shadows.
 		const rules = [
-			rule({ id: 'earlier', selector: { kind: 'name', value: 'n8n-nodes-base.slack' } }),
-			rule({ id: 'later', selector: { kind: 'package', value: 'n8n-nodes-base' } }),
+			rule({ id: 'earlier', selector: { kind: 'name', value: 'MNI-nodes-base.slack' } }),
+			rule({ id: 'later', selector: { kind: 'package', value: 'MNI-nodes-base' } }),
 		];
 
 		expect(lintRulesForShadowing(rules)).toEqual([]);
@@ -99,12 +99,12 @@ describe('lintRulesForShadowing', () => {
 			rule({
 				id: 'allow-slack',
 				action: 'allow',
-				selector: { kind: 'name', value: 'n8n-nodes-base.slack' },
+				selector: { kind: 'name', value: 'MNI-nodes-base.slack' },
 			}),
 			rule({
 				id: 'deny-slack',
 				action: 'deny',
-				selector: { kind: 'name', value: 'n8n-nodes-base.slack' },
+				selector: { kind: 'name', value: 'MNI-nodes-base.slack' },
 			}),
 		];
 
@@ -115,9 +115,9 @@ describe('lintRulesForShadowing', () => {
 
 	it('reports the earliest shadowing rule when more than one earlier rule would match', () => {
 		const rules = [
-			rule({ id: 'first-package', selector: { kind: 'package', value: 'n8n-nodes-base' } }),
-			rule({ id: 'second-package', selector: { kind: 'package', value: 'n8n-nodes-base' } }),
-			rule({ id: 'later-name', selector: { kind: 'name', value: 'n8n-nodes-base.slack' } }),
+			rule({ id: 'first-package', selector: { kind: 'package', value: 'MNI-nodes-base' } }),
+			rule({ id: 'second-package', selector: { kind: 'package', value: 'MNI-nodes-base' } }),
+			rule({ id: 'later-name', selector: { kind: 'name', value: 'MNI-nodes-base.slack' } }),
 		];
 
 		expect(lintRulesForShadowing(rules)).toEqual([
@@ -130,9 +130,9 @@ describe('lintRulesForShadowing', () => {
 		// Stands in for the `credential-types` resolver: a credential type name (e.g.
 		// `slackApi`) carries no package prefix, unlike a node type.
 		const resolvePackage = (typeName: string) =>
-			typeName === 'slackApi' ? 'n8n-nodes-base' : null;
+			typeName === 'slackApi' ? 'MNI-nodes-base' : null;
 		const rules = [
-			rule({ id: 'allow-package', selector: { kind: 'package', value: 'n8n-nodes-base' } }),
+			rule({ id: 'allow-package', selector: { kind: 'package', value: 'MNI-nodes-base' } }),
 			rule({ id: 'deny-slack-api', action: 'deny', selector: { kind: 'name', value: 'slackApi' } }),
 		];
 
@@ -143,9 +143,9 @@ describe('lintRulesForShadowing', () => {
 
 	it('does not flag a name rule whose package the resolver cannot determine', () => {
 		const resolvePackage = (typeName: string) =>
-			typeName === 'slackApi' ? 'n8n-nodes-base' : null;
+			typeName === 'slackApi' ? 'MNI-nodes-base' : null;
 		const rules = [
-			rule({ id: 'allow-package', selector: { kind: 'package', value: 'n8n-nodes-base' } }),
+			rule({ id: 'allow-package', selector: { kind: 'package', value: 'MNI-nodes-base' } }),
 			rule({ id: 'deny-other-api', action: 'deny', selector: { kind: 'name', value: 'otherApi' } }),
 		];
 
@@ -156,9 +156,9 @@ describe('lintRulesForShadowing', () => {
 		// A name selector shadowed by the same exact name earlier, and separately by an earlier
 		// package rule for its package: whichever of the two occurred first should be reported.
 		const nameFirst = [
-			rule({ id: 'earlier-name', selector: { kind: 'name', value: 'n8n-nodes-base.slack' } }),
-			rule({ id: 'later-package', selector: { kind: 'package', value: 'n8n-nodes-base' } }),
-			rule({ id: 'later-name', selector: { kind: 'name', value: 'n8n-nodes-base.slack' } }),
+			rule({ id: 'earlier-name', selector: { kind: 'name', value: 'MNI-nodes-base.slack' } }),
+			rule({ id: 'later-package', selector: { kind: 'package', value: 'MNI-nodes-base' } }),
+			rule({ id: 'later-name', selector: { kind: 'name', value: 'MNI-nodes-base.slack' } }),
 		];
 
 		expect(lintRulesForShadowing(nameFirst)).toEqual([
@@ -166,9 +166,9 @@ describe('lintRulesForShadowing', () => {
 		]);
 
 		const packageFirst = [
-			rule({ id: 'earlier-package', selector: { kind: 'package', value: 'n8n-nodes-base' } }),
-			rule({ id: 'later-name-1', selector: { kind: 'name', value: 'n8n-nodes-base.slack' } }),
-			rule({ id: 'later-name-2', selector: { kind: 'name', value: 'n8n-nodes-base.slack' } }),
+			rule({ id: 'earlier-package', selector: { kind: 'package', value: 'MNI-nodes-base' } }),
+			rule({ id: 'later-name-1', selector: { kind: 'name', value: 'MNI-nodes-base.slack' } }),
+			rule({ id: 'later-name-2', selector: { kind: 'name', value: 'MNI-nodes-base.slack' } }),
 		];
 
 		expect(lintRulesForShadowing(packageFirst)).toEqual([
@@ -181,7 +181,7 @@ describe('lintRulesForShadowing', () => {
 		expect(lintRulesForShadowing([])).toEqual([]);
 		expect(
 			lintRulesForShadowing([
-				rule({ id: 'only', selector: { kind: 'name', value: 'n8n-nodes-base.slack' } }),
+				rule({ id: 'only', selector: { kind: 'name', value: 'MNI-nodes-base.slack' } }),
 			]),
 		).toEqual([]);
 	});

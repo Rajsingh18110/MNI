@@ -6,14 +6,14 @@ import ButtonParameter, { type Props } from './ButtonParameter.vue';
 import { useNDVStore, injectNDVStore } from '@/features/ndv/shared/ndv.store';
 import { useWorkflowsStore } from '@/app/stores/workflows.store';
 import { usePostHog } from '@/app/stores/posthog.store';
-import { useRootStore } from '@n8n/stores/useRootStore';
-import { useToast } from '@n8n/composables/useToast';
-import type { INodeProperties } from 'n8n-workflow';
+import { useRootStore } from '@MNI/stores/useRootStore';
+import { useToast } from '@MNI/composables/useToast';
+import type { INodeProperties } from 'MNI-workflow';
 
 vi.mock('@/features/ndv/shared/ndv.store');
 vi.mock('@/app/stores/workflows.store');
 vi.mock('@/app/stores/posthog.store');
-vi.mock('@n8n/stores/useRootStore');
+vi.mock('@MNI/stores/useRootStore');
 vi.mock('@/features/ai/assistant/assistant.api');
 vi.mock('@/app/stores/workflowDocument.store', async () => {
 	const actual = await vi.importActual('@/app/stores/workflowDocument.store');
@@ -29,7 +29,7 @@ vi.mock('@/app/stores/workflowDocument.store', async () => {
 		injectWorkflowDocumentStore: vi.fn(() => shallowRef(mockStore)),
 	};
 });
-vi.mock('@n8n/i18n', async (importOriginal) => ({
+vi.mock('@MNI/i18n', async (importOriginal) => ({
 	...(await importOriginal()),
 	useI18n: () => ({
 		baseText: vi.fn().mockReturnValue('Mocked Text'),
@@ -39,7 +39,7 @@ vi.mock('@n8n/i18n', async (importOriginal) => ({
 		}),
 	}),
 }));
-vi.mock('@n8n/composables/useToast');
+vi.mock('@MNI/composables/useToast');
 vi.mock('@/app/composables/useEditorContext', () => ({
 	useEditorContext: () => ({
 		aiAssistant: { value: true },

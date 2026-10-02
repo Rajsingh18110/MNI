@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { N8nIcon, N8nText, N8nTooltip } from '@n8n/design-system';
-import type { IconName } from '@n8n/design-system';
+import { N8nIcon, N8nText, N8nTooltip } from '@MNI/design-system';
+import type { IconName } from '@MNI/design-system';
 import { computed } from 'vue';
 
 const props = withDefaults(
@@ -91,7 +91,7 @@ const emit = defineEmits<{
 </template>
 
 <style module lang="scss">
-@use '@n8n/design-system/css/mixins/_focus.scss' as focus;
+@use '@MNI/design-system/css/mixins/_focus.scss' as focus;
 .chip {
 	display: inline-flex;
 	align-items: center;

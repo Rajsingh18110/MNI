@@ -1,5 +1,5 @@
-import { TestCaseExecutionErrorCode } from '@n8n/db';
-import type { IDataObject } from 'n8n-workflow';
+import { TestCaseExecutionErrorCode } from '@MNI/db';
+import type { IDataObject } from 'MNI-workflow';
 
 import { TestCaseExecutionError } from '@/evaluation.ee/test-runner/errors.ee';
 

@@ -1,15 +1,15 @@
 import { beforeEach, describe, it, expect, vi } from 'vitest';
 import { mount } from '@vue/test-utils';
-import { TELEMETRY_EVENT } from '@n8n/telemetry';
+import { TELEMETRY_EVENT } from '@MNI/telemetry';
 import CreditsSettingsDropdown from './CreditsSettingsDropdown.vue';
 
 const { telemetryTrack } = vi.hoisted(() => ({ telemetryTrack: vi.fn() }));
 
-vi.mock('@n8n/composables/useTelemetry', () => ({
+vi.mock('@MNI/composables/useTelemetry', () => ({
 	useTelemetry: () => ({ track: telemetryTrack }),
 }));
 
-vi.mock('@n8n/i18n', () => {
+vi.mock('@MNI/i18n', () => {
 	const baseText = (key: string, options?: { interpolate?: Record<string, string> }) => {
 		if (options?.interpolate) {
 			return `${key} [${JSON.stringify(options.interpolate)}]`;

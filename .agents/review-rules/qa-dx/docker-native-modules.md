@@ -2,7 +2,7 @@
 
 Applies to: `docker/images/**/Dockerfile*`.
 
-n8n compiles `sqlite3`, `isolated-vm`, and `@confluentinc/kafka-javascript`
+MNI compiles `sqlite3`, `isolated-vm`, and `@confluentinc/kafka-javascript`
 inside the image. Each line of that setup exists because a specific build broke.
 Flag a change that undoes one.
 

@@ -4,7 +4,7 @@ import { setActivePinia } from 'pinia';
 
 import { renderComponent } from '@/__tests__/render';
 import ApiKeyTable from './ApiKeyTable.vue';
-import type { ApiKey, ApiKeyOwner } from '@n8n/api-types';
+import type { ApiKey, ApiKeyOwner } from '@MNI/api-types';
 
 setActivePinia(createTestingPinia());
 

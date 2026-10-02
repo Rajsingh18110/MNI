@@ -1,11 +1,11 @@
-import type { Logger } from '@n8n/backend-common';
+import type { Logger } from '@MNI/backend-common';
 import type {
 	AiBuilderTemporaryWorkflow,
 	AiBuilderTemporaryWorkflowRepository,
 	User,
 	UserRepository,
-} from '@n8n/db';
-import type { InstanceAiContext } from '@n8n/instance-ai';
+} from '@MNI/db';
+import type { InstanceAiContext } from '@MNI/instance-ai';
 import { mock } from 'vitest-mock-extended';
 
 import type { InstanceAiThread } from '../entities/instance-ai-thread.entity';
@@ -13,7 +13,7 @@ import type { InstanceAiThreadRepository } from '../repositories/instance-ai-thr
 
 // The adapter service (a value dependency of the service under test) pulls in
 // the heavy AI runtime at module-load time; stub it out.
-vi.mock('@n8n/instance-ai', () => ({
+vi.mock('@MNI/instance-ai', () => ({
 	BuilderTemplatesService: class {},
 	builderTemplatesOptionsFromEnv: vi.fn(),
 	wrapUntrustedData: vi.fn((value: unknown) => value),

@@ -1,10 +1,10 @@
 import type { Mock } from 'vitest';
-import { mockInstance } from '@n8n/backend-test-utils';
-import type { WorkflowsConfig } from '@n8n/config';
-import { PrometheusMetricsConfig } from '@n8n/config';
-import type { WorkflowPublicationOutboxRepository } from '@n8n/db';
+import { mockInstance } from '@MNI/backend-test-utils';
+import type { WorkflowsConfig } from '@MNI/config';
+import { PrometheusMetricsConfig } from '@MNI/config';
+import type { WorkflowPublicationOutboxRepository } from '@MNI/db';
 import { mock } from 'vitest-mock-extended';
-import type { InstanceSettings } from 'n8n-core';
+import type { InstanceSettings } from 'MNI-core';
 import promClient from 'prom-client';
 
 import { PrometheusWorkflowPublicationMetricsService } from '../workflow-publication-metrics.service';
@@ -16,7 +16,7 @@ vi.mock('prom-client');
 
 describe('PrometheusWorkflowPublicationMetricsService', () => {
 	const config = mockInstance(PrometheusMetricsConfig, {
-		prefix: 'n8n_',
+		prefix: 'MNI_',
 		includeWorkflowPublicationMetrics: true,
 		workflowPublicationMetricInterval: 60,
 	});
@@ -32,7 +32,7 @@ describe('PrometheusWorkflowPublicationMetricsService', () => {
 
 	beforeEach(() => {
 		Object.assign(config, {
-			prefix: 'n8n_',
+			prefix: 'MNI_',
 			includeWorkflowPublicationMetrics: true,
 			workflowPublicationMetricInterval: 60,
 		});
@@ -94,18 +94,18 @@ describe('PrometheusWorkflowPublicationMetricsService', () => {
 			const gaugeNames = (promClient.Gauge as unknown as Mock).mock.calls.map((c) => c[0].name);
 			expect(gaugeNames).toEqual(
 				expect.arrayContaining([
-					'n8n_workflow_publication_outbox_records',
-					'n8n_workflow_publication_outbox_oldest_active_record_age_seconds',
+					'MNI_workflow_publication_outbox_records',
+					'MNI_workflow_publication_outbox_oldest_active_record_age_seconds',
 				]),
 			);
 
 			const counterNames = (promClient.Counter as unknown as Mock).mock.calls.map((c) => c[0].name);
 			expect(counterNames).toEqual(
 				expect.arrayContaining([
-					'n8n_workflow_publication_outbox_record_outcomes_total',
-					'n8n_workflow_publication_trigger_node_operations_total',
-					'n8n_workflow_publication_outbox_cleanup_deleted_records_total',
-					'n8n_workflow_publication_reconciliation_deficient_workflows_total',
+					'MNI_workflow_publication_outbox_record_outcomes_total',
+					'MNI_workflow_publication_trigger_node_operations_total',
+					'MNI_workflow_publication_outbox_cleanup_deleted_records_total',
+					'MNI_workflow_publication_reconciliation_deficient_workflows_total',
 				]),
 			);
 
@@ -114,10 +114,10 @@ describe('PrometheusWorkflowPublicationMetricsService', () => {
 			);
 			expect(histogramNames).toEqual(
 				expect.arrayContaining([
-					'n8n_workflow_publication_outbox_record_duration_seconds',
-					'n8n_workflow_publication_trigger_operation_duration_seconds',
-					'n8n_workflow_publication_outbox_cleanup_duration_seconds',
-					'n8n_workflow_publication_reconciliation_duration_seconds',
+					'MNI_workflow_publication_outbox_record_duration_seconds',
+					'MNI_workflow_publication_trigger_operation_duration_seconds',
+					'MNI_workflow_publication_outbox_cleanup_duration_seconds',
+					'MNI_workflow_publication_reconciliation_duration_seconds',
 				]),
 			);
 		});
@@ -208,7 +208,7 @@ describe('PrometheusWorkflowPublicationMetricsService', () => {
 			service.init();
 
 			const set = vi.fn();
-			await gaugeOptsFor('n8n_workflow_publication_outbox_records').collect.call({ set });
+			await gaugeOptsFor('MNI_workflow_publication_outbox_records').collect.call({ set });
 
 			expect(set).toHaveBeenCalledWith({ status: 'pending' }, 2);
 			expect(set).toHaveBeenCalledWith({ status: 'failed' }, 1);
@@ -226,7 +226,7 @@ describe('PrometheusWorkflowPublicationMetricsService', () => {
 
 			const set = vi.fn();
 			await gaugeOptsFor(
-				'n8n_workflow_publication_outbox_oldest_active_record_age_seconds',
+				'MNI_workflow_publication_outbox_oldest_active_record_age_seconds',
 			).collect.call({ set });
 
 			const pendingCall = set.mock.calls.find((c) => c[0].status === 'pending');
@@ -241,7 +241,7 @@ describe('PrometheusWorkflowPublicationMetricsService', () => {
 			);
 			service.init();
 
-			await gaugeOptsFor('n8n_workflow_publication_outbox_records').collect.call({ set: vi.fn() });
+			await gaugeOptsFor('MNI_workflow_publication_outbox_records').collect.call({ set: vi.fn() });
 
 			// 60s interval → 60_000ms TTL; Dates are serialized to epoch ms.
 			expect(cacheService.set).toHaveBeenCalledWith(
@@ -260,7 +260,7 @@ describe('PrometheusWorkflowPublicationMetricsService', () => {
 			service.init();
 
 			const set = vi.fn();
-			await gaugeOptsFor('n8n_workflow_publication_outbox_records').collect.call({ set });
+			await gaugeOptsFor('MNI_workflow_publication_outbox_records').collect.call({ set });
 
 			expect(outboxRepository.getRecordStatsByStatus).not.toHaveBeenCalled();
 			expect(set).toHaveBeenCalledWith({ status: 'pending' }, 5);

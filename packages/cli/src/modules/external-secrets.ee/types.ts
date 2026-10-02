@@ -1,7 +1,7 @@
-import { Time } from '@n8n/constants';
-import type { AuthenticatedRequest } from '@n8n/db';
-import { Container } from '@n8n/di';
-import type { IDataObject, INodeProperties } from 'n8n-workflow';
+import { Time } from '@MNI/constants';
+import type { AuthenticatedRequest } from '@MNI/db';
+import { Container } from '@MNI/di';
+import type { IDataObject, INodeProperties } from 'MNI-workflow';
 
 import { ExternalSecretsConfig } from './external-secrets.config';
 import { withTimeout } from './with-timeout';

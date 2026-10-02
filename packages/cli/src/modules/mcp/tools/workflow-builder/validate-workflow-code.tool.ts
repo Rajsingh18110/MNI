@@ -1,6 +1,6 @@
-import type { User } from '@n8n/db';
-import { toEngineConnections, toGroupValidationNodes } from '@n8n/workflow-sdk';
-import { validateWorkflowGroups } from 'n8n-workflow';
+import type { User } from '@MNI/db';
+import { toEngineConnections, toGroupValidationNodes } from '@MNI/workflow-sdk';
+import { validateWorkflowGroups } from 'MNI-workflow';
 import z from 'zod';
 
 import type { NodeTypes } from '@/node-types';
@@ -80,7 +80,7 @@ export const createValidateWorkflowCodeTool = (
 
 		try {
 			const { ParseValidateHandler, stripImportStatements } = await import(
-				'@n8n/ai-workflow-builder'
+				'@MNI/ai-workflow-builder'
 			);
 			const handler = new ParseValidateHandler({
 				generatePinData: false,

@@ -1,8 +1,8 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { setActivePinia, createPinia, getActivePinia } from 'pinia';
 import { nextTick } from 'vue';
-import { NodeConnectionTypes, SEND_AND_WAIT_OPERATION, WAIT_INDEFINITELY } from 'n8n-workflow';
-import type { INode } from 'n8n-workflow';
+import { NodeConnectionTypes, SEND_AND_WAIT_OPERATION, WAIT_INDEFINITELY } from 'MNI-workflow';
+import type { INode } from 'MNI-workflow';
 import {
 	useExecutionDataStore,
 	createExecutionDataId,

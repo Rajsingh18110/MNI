@@ -1,16 +1,16 @@
-import { LicenseState, Logger } from '@n8n/backend-common';
-import { OutboundHttp, type HttpRequestClient, isHttpRequestError } from '@n8n/backend-network';
-import { Time } from '@n8n/constants';
-import type { User } from '@n8n/db';
-import { WorkflowRepository } from '@n8n/db';
-import { Service } from '@n8n/di';
-import { ensureError } from '@n8n/utils/errors/ensure-error';
+import { LicenseState, Logger } from '@MNI/backend-common';
+import { OutboundHttp, type HttpRequestClient, isHttpRequestError } from '@MNI/backend-network';
+import { Time } from '@MNI/constants';
+import type { User } from '@MNI/db';
+import { WorkflowRepository } from '@MNI/db';
+import { Service } from '@MNI/di';
+import { ensureError } from '@MNI/utils/errors/ensure-error';
 
 import { BadRequestError } from '@/errors/response-errors/bad-request.error';
 import { LicenseEulaRequiredError } from '@/errors/response-errors/license-eula-required.error';
 import { EventService } from '@/events/event.service';
 import { License } from '@/license';
-import { UrlService } from '@n8n/backend-services';
+import { UrlService } from '@MNI/backend-services';
 
 const REQUEST_TIMEOUT_MS = 30 * Time.seconds.toMilliseconds;
 
@@ -37,7 +37,7 @@ export class LicenseService {
 		outboundHttp: OutboundHttp,
 	) {
 		this.http = outboundHttp.requests({
-			useDefaultSsrfPolicy: 'unsafe', // Fixed, n8n-controlled host
+			useDefaultSsrfPolicy: 'unsafe', // Fixed, MNI-controlled host
 			timeout: REQUEST_TIMEOUT_MS,
 		});
 	}

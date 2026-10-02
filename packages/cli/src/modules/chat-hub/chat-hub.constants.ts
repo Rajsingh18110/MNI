@@ -2,13 +2,13 @@ import type {
 	ChatHubLLMProvider,
 	ChatHubVectorStoreProvider,
 	ChatModelMetadataDto,
-} from '@n8n/api-types';
-import type { ExecutionStatus, INodeTypeNameVersion } from 'n8n-workflow';
+} from '@MNI/api-types';
+import type { ExecutionStatus, INodeTypeNameVersion } from 'MNI-workflow';
 import {
 	CHAT_HUB_VECTOR_STORE_PG_VECTOR_NODE_TYPE,
 	CHAT_HUB_VECTOR_STORE_PINECONE_NODE_TYPE,
 	CHAT_HUB_VECTOR_STORE_QDRANT_NODE_TYPE,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import type { ChatTriggerResponseMode } from './chat-hub.types';
 
@@ -38,63 +38,63 @@ export const CHAT_TRIGGER_NODE_MIN_VERSION = 1.2;
 
 export const PROVIDER_NODE_TYPE_MAP: Record<ChatHubLLMProvider, INodeTypeNameVersion> = {
 	openai: {
-		name: '@n8n/n8n-nodes-langchain.lmChatOpenAi',
+		name: '@MNI/MNI-nodes-langchain.lmChatOpenAi',
 		version: 1.3,
 	},
 	anthropic: {
-		name: '@n8n/n8n-nodes-langchain.lmChatAnthropic',
+		name: '@MNI/MNI-nodes-langchain.lmChatAnthropic',
 		version: 1.3,
 	},
 	google: {
-		name: '@n8n/n8n-nodes-langchain.lmChatGoogleGemini',
+		name: '@MNI/MNI-nodes-langchain.lmChatGoogleGemini',
 		version: 1.2,
 	},
 	ollama: {
-		name: '@n8n/n8n-nodes-langchain.lmChatOllama',
+		name: '@MNI/MNI-nodes-langchain.lmChatOllama',
 		version: 1,
 	},
 	azureOpenAi: {
-		name: '@n8n/n8n-nodes-langchain.lmChatAzureOpenAi',
+		name: '@MNI/MNI-nodes-langchain.lmChatAzureOpenAi',
 		version: 1,
 	},
 	azureEntraId: {
-		name: '@n8n/n8n-nodes-langchain.lmChatAzureOpenAi',
+		name: '@MNI/MNI-nodes-langchain.lmChatAzureOpenAi',
 		version: 1,
 	},
 	awsBedrock: {
-		name: '@n8n/n8n-nodes-langchain.lmChatAwsBedrock',
+		name: '@MNI/MNI-nodes-langchain.lmChatAwsBedrock',
 		version: 1.1,
 	},
 	vercelAiGateway: {
-		name: '@n8n/n8n-nodes-langchain.lmChatVercelAiGateway',
+		name: '@MNI/MNI-nodes-langchain.lmChatVercelAiGateway',
 		version: 1,
 	},
 	xAiGrok: {
-		name: '@n8n/n8n-nodes-langchain.lmChatXAiGrok',
+		name: '@MNI/MNI-nodes-langchain.lmChatXAiGrok',
 		version: 1,
 	},
 	groq: {
-		name: '@n8n/n8n-nodes-langchain.lmChatGroq',
+		name: '@MNI/MNI-nodes-langchain.lmChatGroq',
 		version: 1,
 	},
 	openRouter: {
-		name: '@n8n/n8n-nodes-langchain.lmChatOpenRouter',
+		name: '@MNI/MNI-nodes-langchain.lmChatOpenRouter',
 		version: 1,
 	},
 	deepSeek: {
-		name: '@n8n/n8n-nodes-langchain.lmChatDeepSeek',
+		name: '@MNI/MNI-nodes-langchain.lmChatDeepSeek',
 		version: 1,
 	},
 	cohere: {
-		name: '@n8n/n8n-nodes-langchain.lmChatCohere',
+		name: '@MNI/MNI-nodes-langchain.lmChatCohere',
 		version: 1,
 	},
 	mistralCloud: {
-		name: '@n8n/n8n-nodes-langchain.lmChatMistralCloud',
+		name: '@MNI/MNI-nodes-langchain.lmChatMistralCloud',
 		version: 1,
 	},
 	nvidia: {
-		name: '@n8n/n8n-nodes-langchain.lmChatNvidia',
+		name: '@MNI/MNI-nodes-langchain.lmChatNvidia',
 		version: 1,
 	},
 };

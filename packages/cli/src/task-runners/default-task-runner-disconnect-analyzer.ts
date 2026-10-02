@@ -1,5 +1,5 @@
-import { GlobalConfig } from '@n8n/config';
-import { Container, Service } from '@n8n/di';
+import { GlobalConfig } from '@MNI/config';
+import { Container, Service } from '@MNI/di';
 
 import type {
 	DisconnectAnalyzer,

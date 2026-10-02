@@ -1,6 +1,6 @@
-import { AiPreferenceListQueryDto, AiPreferenceRequestDto } from '@n8n/api-types';
-import { AuthenticatedRequest } from '@n8n/db';
-import { Body, Delete, Get, Patch, Post, Query, RestController } from '@n8n/decorators';
+import { AiPreferenceListQueryDto, AiPreferenceRequestDto } from '@MNI/api-types';
+import { AuthenticatedRequest } from '@MNI/db';
+import { Body, Delete, Get, Patch, Post, Query, RestController } from '@MNI/decorators';
 import type { Response } from 'express';
 
 import { AiPreferenceService } from '@/services/ai-preference.service';

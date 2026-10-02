@@ -1,13 +1,13 @@
-import type { Logger } from '@n8n/backend-common';
-import { RoutingNode, UnrecognizedNodeTypeError } from 'n8n-core';
+import type { Logger } from '@MNI/backend-common';
+import { RoutingNode, UnrecognizedNodeTypeError } from 'MNI-core';
 import type {
 	LoadedClass,
 	INodeType,
 	IVersionedNodeType,
 	INodeTypeBaseDescription,
 	INodeTypeDescription,
-} from 'n8n-workflow';
-import { NodeVersionNotFoundError, VersionedNodeType } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeVersionNotFoundError, VersionedNodeType } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import type { LoadNodesAndCredentials } from '@/load-nodes-and-credentials';
@@ -23,7 +23,7 @@ describe('NodeTypes', () => {
 		sourcePath: '',
 		type: {
 			description: mock<INodeTypeDescription>({
-				name: 'n8n-nodes-base.nonVersioned',
+				name: 'MNI-nodes-base.nonVersioned',
 				usableAsTool: undefined,
 			}),
 			supplyData: undefined,
@@ -35,7 +35,7 @@ describe('NodeTypes', () => {
 		sourcePath: '',
 		type: {
 			description: mock<INodeTypeDescription>({
-				name: 'n8n-nodes-base.versioned',
+				name: 'MNI-nodes-base.versioned',
 			}),
 			currentVersion: 2,
 			nodeVersions: {
@@ -54,14 +54,14 @@ describe('NodeTypes', () => {
 		sourcePath: '',
 		type: new VersionedNodeType(
 			{ 1: v1Node, 2: v2Node },
-			mock<INodeTypeBaseDescription>({ name: 'n8n-nodes-base.realVersioned', defaultVersion: 2 }),
+			mock<INodeTypeBaseDescription>({ name: 'MNI-nodes-base.realVersioned', defaultVersion: 2 }),
 		),
 	};
 	const toolNode: LoadedClass<INodeType> = {
 		sourcePath: '',
 		type: {
 			description: mock<INodeTypeDescription>({
-				name: 'n8n-nodes-base.toolNode',
+				name: 'MNI-nodes-base.toolNode',
 				displayName: 'TestNode',
 				properties: [],
 			}),
@@ -72,7 +72,7 @@ describe('NodeTypes', () => {
 		sourcePath: '',
 		type: {
 			description: mock<INodeTypeDescription>({
-				name: 'n8n-nodes-base.testNode',
+				name: 'MNI-nodes-base.testNode',
 				displayName: 'TestNode',
 				usableAsTool: true,
 				properties: [],
@@ -84,7 +84,7 @@ describe('NodeTypes', () => {
 		sourcePath: '',
 		type: {
 			description: mock<INodeTypeDescription>({
-				name: 'n8n-nodes-base.declarativeNode',
+				name: 'MNI-nodes-base.declarativeNode',
 				displayName: 'Declarative Node',
 				usableAsTool: true,
 				properties: [],
@@ -103,7 +103,7 @@ describe('NodeTypes', () => {
 		sourcePath: '',
 		type: {
 			description: {
-				name: 'n8n-nodes-base.plainToolNode',
+				name: 'MNI-nodes-base.plainToolNode',
 				displayName: 'Plain Tool Node',
 				description: 'A plain tool node',
 				group: ['transform'],
@@ -121,21 +121,21 @@ describe('NodeTypes', () => {
 		sourcePath: '',
 		type: {
 			description: {
-				name: 'n8n-nodes-base.partiallyToolCapable',
+				name: 'MNI-nodes-base.partiallyToolCapable',
 				displayName: 'Partially Tool Capable',
 			} as unknown as INodeTypeDescription,
 			currentVersion: 2,
 			nodeVersions: {
 				1: {
 					description: {
-						name: 'n8n-nodes-base.partiallyToolCapable',
+						name: 'MNI-nodes-base.partiallyToolCapable',
 						version: 1,
 						properties: [],
 					},
 				} as unknown as INodeType,
 				2: {
 					description: {
-						name: 'n8n-nodes-base.partiallyToolCapable',
+						name: 'MNI-nodes-base.partiallyToolCapable',
 						version: 2,
 						usableAsTool: true,
 						properties: [],
@@ -151,7 +151,7 @@ describe('NodeTypes', () => {
 		sourcePath: '',
 		type: {
 			description: {
-				name: 'n8n-nodes-base.multiVersion',
+				name: 'MNI-nodes-base.multiVersion',
 				displayName: 'Multi Version Node',
 				version: [1, 1.1, 2],
 				properties: [],
@@ -163,7 +163,7 @@ describe('NodeTypes', () => {
 		sourcePath: '',
 		type: {
 			description: {
-				name: 'n8n-nodes-base.hitlNode',
+				name: 'MNI-nodes-base.hitlNode',
 				displayName: 'Hitl Node',
 				version: 1,
 				properties: [{ displayName: 'Operation', name: 'operation', type: 'string', default: '' }],
@@ -175,7 +175,7 @@ describe('NodeTypes', () => {
 		sourcePath: '',
 		type: {
 			description: {
-				name: 'n8n-nodes-base.realTool',
+				name: 'MNI-nodes-base.realTool',
 				displayName: 'Real Tool',
 				version: 1,
 				properties: [],
@@ -187,7 +187,7 @@ describe('NodeTypes', () => {
 		sourcePath: '',
 		type: {
 			description: {
-				name: 'n8n-nodes-base.replacementToolNode',
+				name: 'MNI-nodes-base.replacementToolNode',
 				displayName: 'Replacement Tool Node',
 				description: 'Original description',
 				version: 1,
@@ -203,14 +203,14 @@ describe('NodeTypes', () => {
 		sourcePath: '',
 		type: {
 			description: {
-				name: 'n8n-nodes-base.versionedToolCapable',
+				name: 'MNI-nodes-base.versionedToolCapable',
 				displayName: 'Versioned Tool Capable',
 			} as unknown as INodeTypeDescription,
 			currentVersion: 2,
 			nodeVersions: {
 				1: {
 					description: {
-						name: 'n8n-nodes-base.versionedToolCapable',
+						name: 'MNI-nodes-base.versionedToolCapable',
 						version: 1,
 						usableAsTool: true,
 						properties: [
@@ -221,7 +221,7 @@ describe('NodeTypes', () => {
 				} as unknown as INodeType,
 				2: {
 					description: {
-						name: 'n8n-nodes-base.versionedToolCapable',
+						name: 'MNI-nodes-base.versionedToolCapable',
 						version: 2,
 						usableAsTool: true,
 						properties: [
@@ -240,7 +240,7 @@ describe('NodeTypes', () => {
 		sourcePath: '',
 		type: {
 			description: mock<INodeTypeDescription>({
-				name: 'n8n-nodes-community.testNode',
+				name: 'MNI-nodes-community.testNode',
 				displayName: 'TestNode',
 				usableAsTool: true,
 				properties: [],
@@ -251,7 +251,7 @@ describe('NodeTypes', () => {
 
 	loadNodesAndCredentials.getNode.mockImplementation((fullNodeType) => {
 		const [packageName, nodeType] = fullNodeType.split('.');
-		if (packageName === 'n8n-nodes-base') {
+		if (packageName === 'MNI-nodes-base') {
 			if (nodeType === 'nonVersioned') return nonVersionedNode;
 			if (nodeType === 'versioned') return versionedNode;
 			if (nodeType === 'realVersioned') return realVersionedNode;
@@ -265,12 +265,12 @@ describe('NodeTypes', () => {
 			if (nodeType === 'realTool') return realToolNode;
 			if (nodeType === 'replacementToolNode') return replacementToolNode;
 			if (nodeType === 'versionedToolCapable') return versionedToolCapableNode;
-		} else if (fullNodeType === 'n8n-nodes-community.testNode') return communityNode;
+		} else if (fullNodeType === 'MNI-nodes-community.testNode') return communityNode;
 		throw new UnrecognizedNodeTypeError(packageName, nodeType);
 	});
 
 	loadNodesAndCredentials.recognizesNode.mockImplementation(
-		(name) => name === 'n8n-nodes-base.realTool',
+		(name) => name === 'MNI-nodes-base.realTool',
 	);
 
 	beforeEach(() => {
@@ -280,29 +280,29 @@ describe('NodeTypes', () => {
 
 	describe('resolveBaseName', () => {
 		it('resolves a synthetic Tool variant to the node it was generated from', () => {
-			expect(nodeTypes.resolveBaseName('n8n-nodes-base.testNodeTool')).toEqual({
-				baseName: 'n8n-nodes-base.testNode',
+			expect(nodeTypes.resolveBaseName('MNI-nodes-base.testNodeTool')).toEqual({
+				baseName: 'MNI-nodes-base.testNode',
 				isSyntheticTool: true,
 			});
 		});
 
 		it('resolves a synthetic HitlTool variant to the node it was generated from', () => {
-			expect(nodeTypes.resolveBaseName('n8n-nodes-base.hitlNodeHitlTool')).toEqual({
-				baseName: 'n8n-nodes-base.hitlNode',
+			expect(nodeTypes.resolveBaseName('MNI-nodes-base.hitlNodeHitlTool')).toEqual({
+				baseName: 'MNI-nodes-base.hitlNode',
 				isSyntheticTool: true,
 			});
 		});
 
 		it('leaves a real on-disk node whose name ends in Tool as it is', () => {
-			expect(nodeTypes.resolveBaseName('n8n-nodes-base.realTool')).toEqual({
-				baseName: 'n8n-nodes-base.realTool',
+			expect(nodeTypes.resolveBaseName('MNI-nodes-base.realTool')).toEqual({
+				baseName: 'MNI-nodes-base.realTool',
 				isSyntheticTool: false,
 			});
 		});
 
 		it('leaves a name without a tool suffix as it is', () => {
-			expect(nodeTypes.resolveBaseName('n8n-nodes-base.testNode')).toEqual({
-				baseName: 'n8n-nodes-base.testNode',
+			expect(nodeTypes.resolveBaseName('MNI-nodes-base.testNode')).toEqual({
+				baseName: 'MNI-nodes-base.testNode',
 				isSyntheticTool: false,
 			});
 		});
@@ -310,7 +310,7 @@ describe('NodeTypes', () => {
 
 	describe('getByName', () => {
 		it('should return node type when it exists', () => {
-			const result = nodeTypes.getByName('n8n-nodes-base.nonVersioned');
+			const result = nodeTypes.getByName('MNI-nodes-base.nonVersioned');
 			expect(result).toBe(nonVersionedNode.type);
 		});
 	});
@@ -323,15 +323,15 @@ describe('NodeTypes', () => {
 		});
 
 		it('should throw an error if the node-type does not exist', () => {
-			expect(() => nodeTypes.getByNameAndVersion('n8n-nodes-base.unknownNode')).toThrow(
-				'Unrecognized node type: n8n-nodes-base.unknownNode',
+			expect(() => nodeTypes.getByNameAndVersion('MNI-nodes-base.unknownNode')).toThrow(
+				'Unrecognized node type: MNI-nodes-base.unknownNode',
 			);
 		});
 
 		it('should throw NodeVersionNotFoundError (not an opaque TypeError) for an unknown version', () => {
 			let caught: unknown;
 			try {
-				nodeTypes.getByNameAndVersion('n8n-nodes-base.realVersioned', 4.4);
+				nodeTypes.getByNameAndVersion('MNI-nodes-base.realVersioned', 4.4);
 			} catch (error) {
 				caught = error;
 			}
@@ -342,37 +342,37 @@ describe('NodeTypes', () => {
 				"Cannot read properties of undefined (reading 'execute')",
 			);
 			expect(error.message).toBe(
-				'Node type "n8n-nodes-base.realVersioned" is not available in version 4.4. Available versions: 1, 2. Use the latest version 2.',
+				'Node type "MNI-nodes-base.realVersioned" is not available in version 4.4. Available versions: 1, 2. Use the latest version 2.',
 			);
 			expect(error.availableVersions).toEqual([1, 2]);
 		});
 
 		it('should return a regular node-type without version', () => {
-			const result = nodeTypes.getByNameAndVersion('n8n-nodes-base.nonVersioned');
+			const result = nodeTypes.getByNameAndVersion('MNI-nodes-base.nonVersioned');
 			expect(result).toBe(nonVersionedNode.type);
 		});
 
 		it('should return a regular node-type with version', () => {
-			const result = nodeTypes.getByNameAndVersion('n8n-nodes-base.versioned');
+			const result = nodeTypes.getByNameAndVersion('MNI-nodes-base.versioned');
 			expect(result).toBe(v2Node);
 		});
 
 		it('should throw when a node-type is requested as tool, but does not support being used as one', () => {
-			expect(() => nodeTypes.getByNameAndVersion('n8n-nodes-base.nonVersionedTool')).toThrow(
+			expect(() => nodeTypes.getByNameAndVersion('MNI-nodes-base.nonVersionedTool')).toThrow(
 				'Node cannot be used as a tool',
 			);
 		});
 
 		it('should throw when a node-type is requested as tool, but the original node is already a tool', () => {
-			expect(() => nodeTypes.getByNameAndVersion('n8n-nodes-base.toolNodeTool')).toThrow(
+			expect(() => nodeTypes.getByNameAndVersion('MNI-nodes-base.toolNodeTool')).toThrow(
 				'Node already has a `supplyData` method',
 			);
 		});
 
 		it('should return the tool node-type when requested as tool', () => {
-			const result = nodeTypes.getByNameAndVersion('n8n-nodes-base.testNodeTool');
+			const result = nodeTypes.getByNameAndVersion('MNI-nodes-base.testNodeTool');
 			expect(result).not.toEqual(toolSupportingNode.type);
-			expect(result.description.name).toEqual('n8n-nodes-base.testNodeTool');
+			expect(result.description.name).toEqual('MNI-nodes-base.testNodeTool');
 			expect(result.description.displayName).toEqual('TestNode Tool');
 			expect(result.description.codex?.categories).toContain('AI');
 			expect(result.description.inputs).toEqual([]);
@@ -380,9 +380,9 @@ describe('NodeTypes', () => {
 		});
 
 		it('should return a tool node-type from a community node,  when requested as tool', () => {
-			const result = nodeTypes.getByNameAndVersion('n8n-nodes-community.testNodeTool');
+			const result = nodeTypes.getByNameAndVersion('MNI-nodes-community.testNodeTool');
 			expect(result).not.toEqual(toolSupportingNode.type);
-			expect(result.description.name).toEqual('n8n-nodes-community.testNodeTool');
+			expect(result.description.name).toEqual('MNI-nodes-community.testNodeTool');
 			expect(result.description.displayName).toEqual('TestNode Tool');
 			expect(result.description.codex?.categories).toContain('AI');
 			expect(result.description.inputs).toEqual([]);
@@ -390,7 +390,7 @@ describe('NodeTypes', () => {
 		});
 
 		it('should return a declarative node-type with an `.execute` method', async () => {
-			const result = nodeTypes.getByNameAndVersion('n8n-nodes-base.declarativeNode');
+			const result = nodeTypes.getByNameAndVersion('MNI-nodes-base.declarativeNode');
 			expect(result).toBe(declarativeNode.type);
 			expect(result.execute).toBeDefined();
 
@@ -400,27 +400,27 @@ describe('NodeTypes', () => {
 		});
 
 		it('should resolve each version of a synthetic tool independently, not the first-cached one', () => {
-			const v1 = nodeTypes.getByNameAndVersion('n8n-nodes-base.versionedToolCapableTool', 1);
+			const v1 = nodeTypes.getByNameAndVersion('MNI-nodes-base.versionedToolCapableTool', 1);
 			expect(v1.description.version).toBe(1);
 			expect(v1.description.properties.some((p) => p.name === 'databaseId')).toBe(true);
 
-			const v2 = nodeTypes.getByNameAndVersion('n8n-nodes-base.versionedToolCapableTool', 2);
+			const v2 = nodeTypes.getByNameAndVersion('MNI-nodes-base.versionedToolCapableTool', 2);
 			expect(v2.description.version).toBe(2);
 			expect(v2.description.properties.some((p) => p.name === 'dataSourceId')).toBe(true);
 
 			// Re-fetch v1: caching v2 must not clobber the v1 entry.
-			const v1Again = nodeTypes.getByNameAndVersion('n8n-nodes-base.versionedToolCapableTool', 1);
+			const v1Again = nodeTypes.getByNameAndVersion('MNI-nodes-base.versionedToolCapableTool', 1);
 			expect(v1Again.description.version).toBe(1);
 
 			// No version resolves to the current version and caches independently.
-			const vDefault = nodeTypes.getByNameAndVersion('n8n-nodes-base.versionedToolCapableTool');
+			const vDefault = nodeTypes.getByNameAndVersion('MNI-nodes-base.versionedToolCapableTool');
 			expect(vDefault.description.version).toBe(2);
 		});
 
 		it('should return a declarative node-type as a tool with an `.execute` method', async () => {
-			const result = nodeTypes.getByNameAndVersion('n8n-nodes-base.declarativeNodeTool');
+			const result = nodeTypes.getByNameAndVersion('MNI-nodes-base.declarativeNodeTool');
 			expect(result).not.toEqual(declarativeNode.type);
-			expect(result.description.name).toEqual('n8n-nodes-base.declarativeNodeTool');
+			expect(result.description.name).toEqual('MNI-nodes-base.declarativeNodeTool');
 			expect(result.description.displayName).toEqual('Declarative Node Tool');
 			expect(result.description.codex?.categories).toContain('AI');
 			expect(result.description.inputs).toEqual([]);
@@ -435,39 +435,39 @@ describe('NodeTypes', () => {
 
 	describe('getSupportedVersions', () => {
 		it('should return the single version of a plain node type', () => {
-			expect(nodeTypes.getSupportedVersions('n8n-nodes-base.hitlNode')).toEqual([1]);
+			expect(nodeTypes.getSupportedVersions('MNI-nodes-base.hitlNode')).toEqual([1]);
 		});
 
 		it('should return every version of a plain node type with a version array', () => {
-			expect(nodeTypes.getSupportedVersions('n8n-nodes-base.multiVersion')).toEqual([1, 1.1, 2]);
+			expect(nodeTypes.getSupportedVersions('MNI-nodes-base.multiVersion')).toEqual([1, 1.1, 2]);
 		});
 
 		it('should return the nodeVersions keys of a versioned node type', () => {
-			expect(nodeTypes.getSupportedVersions('n8n-nodes-base.versioned')).toEqual([1, 2]);
+			expect(nodeTypes.getSupportedVersions('MNI-nodes-base.versioned')).toEqual([1, 2]);
 		});
 
 		it('should return undefined for an unknown node type', () => {
-			expect(nodeTypes.getSupportedVersions('n8n-nodes-base.unknownNode')).toBeUndefined();
+			expect(nodeTypes.getSupportedVersions('MNI-nodes-base.unknownNode')).toBeUndefined();
 			expect(nodeTypes.getSupportedVersions('invalid-package.unknownNode')).toBeUndefined();
 		});
 
 		it('should resolve a Tool-suffixed name against its base node', () => {
-			expect(nodeTypes.getSupportedVersions('n8n-nodes-base.plainToolNodeTool')).toEqual([1]);
+			expect(nodeTypes.getSupportedVersions('MNI-nodes-base.plainToolNodeTool')).toEqual([1]);
 		});
 
 		it('should not count versions that cannot be used as a tool for a Tool-suffixed name', () => {
 			// The base node exists at version 1 but is not usableAsTool, so no
 			// version can satisfy the synthetic tool wrapper …
-			expect(nodeTypes.getSupportedVersions('n8n-nodes-base.hitlNodeTool')).toEqual([]);
+			expect(nodeTypes.getSupportedVersions('MNI-nodes-base.hitlNodeTool')).toEqual([]);
 			// … while HitlTool wrappers have no usability requirement.
-			expect(nodeTypes.getSupportedVersions('n8n-nodes-base.hitlNodeHitlTool')).toEqual([1]);
+			expect(nodeTypes.getSupportedVersions('MNI-nodes-base.hitlNodeHitlTool')).toEqual([1]);
 		});
 
 		it('should keep only tool-capable versions of a versioned node for a Tool-suffixed name', () => {
-			expect(nodeTypes.getSupportedVersions('n8n-nodes-base.partiallyToolCapableTool')).toEqual([
+			expect(nodeTypes.getSupportedVersions('MNI-nodes-base.partiallyToolCapableTool')).toEqual([
 				2,
 			]);
-			expect(nodeTypes.getSupportedVersions('n8n-nodes-base.partiallyToolCapable')).toEqual([1, 2]);
+			expect(nodeTypes.getSupportedVersions('MNI-nodes-base.partiallyToolCapable')).toEqual([1, 2]);
 		});
 
 		it('should warn and return undefined when the node fails to load for another reason', () => {
@@ -475,10 +475,10 @@ describe('NodeTypes', () => {
 				throw new TypeError('boom');
 			});
 
-			expect(nodeTypes.getSupportedVersions('n8n-nodes-base.hitlNode')).toBeUndefined();
+			expect(nodeTypes.getSupportedVersions('MNI-nodes-base.hitlNode')).toBeUndefined();
 			expect(logger.warn).toHaveBeenCalledWith(
 				'Failed to resolve node type while listing supported versions',
-				{ nodeType: 'n8n-nodes-base.hitlNode', error: 'boom' },
+				{ nodeType: 'MNI-nodes-base.hitlNode', error: 'boom' },
 			);
 		});
 
@@ -487,10 +487,10 @@ describe('NodeTypes', () => {
 			// instead of throwing; the reads after it must still fail closed.
 			loadNodesAndCredentials.getNode.mockReturnValueOnce(Object as never);
 
-			expect(nodeTypes.getSupportedVersions('n8n-nodes-base.poisoned')).toBeUndefined();
+			expect(nodeTypes.getSupportedVersions('MNI-nodes-base.poisoned')).toBeUndefined();
 			expect(logger.warn).toHaveBeenCalledWith(
 				'Failed to resolve node type while listing supported versions',
-				expect.objectContaining({ nodeType: 'n8n-nodes-base.poisoned' }),
+				expect.objectContaining({ nodeType: 'MNI-nodes-base.poisoned' }),
 			);
 		});
 
@@ -512,19 +512,19 @@ describe('NodeTypes', () => {
 			const resolvedPath = '/nodes-base/dist/nodes/NonVersioned/NonVersioned.node.js';
 			loadNodesAndCredentials.resolveNodeSourcePath.mockReturnValueOnce(resolvedPath);
 
-			const result = nodeTypes.getWithSourcePath('n8n-nodes-base.nonVersioned', 1);
+			const result = nodeTypes.getWithSourcePath('MNI-nodes-base.nonVersioned', 1);
 
 			expect(result).toHaveProperty('description');
 			expect(result.sourcePath).toBe(resolvedPath);
 			expect(loadNodesAndCredentials.resolveNodeSourcePath).toHaveBeenCalledWith(
-				'n8n-nodes-base.nonVersioned',
+				'MNI-nodes-base.nonVersioned',
 				nonVersionedNode.sourcePath,
 			);
 		});
 
 		it('should throw error for non-existent node', () => {
-			expect(() => nodeTypes.getWithSourcePath('n8n-nodes-base.nonExistent', 1)).toThrow(
-				'Unrecognized node type: n8n-nodes-base.nonExistent',
+			expect(() => nodeTypes.getWithSourcePath('MNI-nodes-base.nonExistent', 1)).toThrow(
+				'Unrecognized node type: MNI-nodes-base.nonExistent',
 			);
 		});
 	});
@@ -532,34 +532,34 @@ describe('NodeTypes', () => {
 	describe('getKnownTypes', () => {
 		it('should return known node types', () => {
 			// @ts-expect-error readonly property
-			loadNodesAndCredentials.knownNodes = ['n8n-nodes-base.nonVersioned'];
+			loadNodesAndCredentials.knownNodes = ['MNI-nodes-base.nonVersioned'];
 			const result = nodeTypes.getKnownTypes();
-			expect(result).toEqual(['n8n-nodes-base.nonVersioned']);
+			expect(result).toEqual(['MNI-nodes-base.nonVersioned']);
 		});
 	});
 
 	describe('getNodeTypeDescriptions', () => {
 		it('should return descriptions for valid node types', () => {
 			const result = nodeTypes.getNodeTypeDescriptions([
-				{ name: 'n8n-nodes-base.nonVersioned', version: 1 },
+				{ name: 'MNI-nodes-base.nonVersioned', version: 1 },
 			]);
 
 			expect(result).toHaveLength(1);
-			expect(result[0].name).toBe('n8n-nodes-base.nonVersioned');
+			expect(result[0].name).toBe('MNI-nodes-base.nonVersioned');
 		});
 
 		it('should throw error for invalid node type', () => {
 			expect(() =>
-				nodeTypes.getNodeTypeDescriptions([{ name: 'n8n-nodes-base.nonExistent', version: 1 }]),
-			).toThrow('Unrecognized node type: n8n-nodes-base.nonExistent');
+				nodeTypes.getNodeTypeDescriptions([{ name: 'MNI-nodes-base.nonExistent', version: 1 }]),
+			).toThrow('Unrecognized node type: MNI-nodes-base.nonExistent');
 		});
 
 		it('should resolve a synthetic tool node type into a complete, serializable description', () => {
 			const [result] = nodeTypes.getNodeTypeDescriptions([
-				{ name: 'n8n-nodes-base.plainToolNodeTool', version: 1 },
+				{ name: 'MNI-nodes-base.plainToolNodeTool', version: 1 },
 			]);
 
-			expect(result.name).toBe('n8n-nodes-base.plainToolNodeTool');
+			expect(result.name).toBe('MNI-nodes-base.plainToolNodeTool');
 			expect(result.outputs).toEqual(['ai_tool']);
 			// Base fields must survive: the runner can't build the node without them.
 			expect(result.version).toBe(1);
@@ -570,29 +570,29 @@ describe('NodeTypes', () => {
 
 		it('should resolve a synthetic HITL tool node type', () => {
 			const [result] = nodeTypes.getNodeTypeDescriptions([
-				{ name: 'n8n-nodes-base.hitlNodeHitlTool', version: 1 },
+				{ name: 'MNI-nodes-base.hitlNodeHitlTool', version: 1 },
 			]);
 
-			expect(result.name).toBe('n8n-nodes-base.hitlNodeHitlTool');
+			expect(result.name).toBe('MNI-nodes-base.hitlNodeHitlTool');
 			expect(result.version).toBe(1);
 			expect(Array.isArray(result.properties)).toBe(true);
 		});
 
 		it('should apply object-form usableAsTool replacements when building a synthetic tool', () => {
 			const [result] = nodeTypes.getNodeTypeDescriptions([
-				{ name: 'n8n-nodes-base.replacementToolNodeTool', version: 1 },
+				{ name: 'MNI-nodes-base.replacementToolNodeTool', version: 1 },
 			]);
 
-			expect(result.name).toBe('n8n-nodes-base.replacementToolNodeTool');
+			expect(result.name).toBe('MNI-nodes-base.replacementToolNodeTool');
 			expect(result.description).toBe('Replaced via replacements');
 		});
 
 		it('should not convert a real on-disk node whose type ends in Tool', () => {
 			const [result] = nodeTypes.getNodeTypeDescriptions([
-				{ name: 'n8n-nodes-base.realTool', version: 1 },
+				{ name: 'MNI-nodes-base.realTool', version: 1 },
 			]);
 
-			expect(result.name).toBe('n8n-nodes-base.realTool');
+			expect(result.name).toBe('MNI-nodes-base.realTool');
 			expect(result.outputs).toBeUndefined();
 		});
 	});

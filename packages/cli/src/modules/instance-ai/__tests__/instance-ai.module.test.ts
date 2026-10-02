@@ -1,5 +1,5 @@
-import { InstanceAiConfig } from '@n8n/config';
-import { Container } from '@n8n/di';
+import { InstanceAiConfig } from '@MNI/config';
+import { Container } from '@MNI/di';
 import { mock } from 'vitest-mock-extended';
 
 import { InstanceAiCheckpointPruningTask } from '../instance-ai-checkpoint-pruning.task';

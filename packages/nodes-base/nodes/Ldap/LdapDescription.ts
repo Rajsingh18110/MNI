@@ -1,4 +1,4 @@
-import type { INodeProperties } from 'n8n-workflow';
+import type { INodeProperties } from 'MNI-workflow';
 
 export const ldapFields: INodeProperties[] = [
 	// ----------------------------------
@@ -110,7 +110,7 @@ export const ldapFields: INodeProperties[] = [
 	//         Compare
 	// ----------------------------------
 	{
-		// eslint-disable-next-line n8n-nodes-base/node-param-display-name-wrong-for-dynamic-options
+		// eslint-disable-next-line MNI-nodes-base/node-param-display-name-wrong-for-dynamic-options
 		displayName: 'Attribute ID',
 		name: 'id',
 		type: 'options',
@@ -119,7 +119,7 @@ export const ldapFields: INodeProperties[] = [
 		typeOptions: {
 			loadOptionsMethod: 'getAttributesForDn',
 		},
-		// eslint-disable-next-line n8n-nodes-base/node-param-description-wrong-for-dynamic-options
+		// eslint-disable-next-line MNI-nodes-base/node-param-description-wrong-for-dynamic-options
 		description: 'The ID of the attribute to compare',
 		displayOptions: {
 			show: {
@@ -301,7 +301,7 @@ export const ldapFields: INodeProperties[] = [
 		description: 'The distinguished name of the subtree to search in',
 	},
 	{
-		// eslint-disable-next-line n8n-nodes-base/node-param-display-name-wrong-for-dynamic-options
+		// eslint-disable-next-line MNI-nodes-base/node-param-display-name-wrong-for-dynamic-options
 		displayName: 'Search For',
 		name: 'searchFor',
 		type: 'options',
@@ -314,7 +314,7 @@ export const ldapFields: INodeProperties[] = [
 				operation: ['search'],
 			},
 		},
-		// eslint-disable-next-line n8n-nodes-base/node-param-description-wrong-for-dynamic-options
+		// eslint-disable-next-line MNI-nodes-base/node-param-description-wrong-for-dynamic-options
 		description: 'Directory object class to search for',
 	},
 	{
@@ -331,7 +331,7 @@ export const ldapFields: INodeProperties[] = [
 		description: 'Custom LDAP filter. Escape these chars * ( ) \\ with a backslash "\\".',
 	},
 	{
-		// eslint-disable-next-line n8n-nodes-base/node-param-display-name-wrong-for-dynamic-options
+		// eslint-disable-next-line MNI-nodes-base/node-param-display-name-wrong-for-dynamic-options
 		displayName: 'Attribute',
 		name: 'attribute',
 		type: 'options',
@@ -340,7 +340,7 @@ export const ldapFields: INodeProperties[] = [
 		typeOptions: {
 			loadOptionsMethod: 'getAttributes',
 		},
-		// eslint-disable-next-line n8n-nodes-base/node-param-description-wrong-for-dynamic-options
+		// eslint-disable-next-line MNI-nodes-base/node-param-description-wrong-for-dynamic-options
 		description: 'Attribute to search for',
 		displayOptions: {
 			show: {

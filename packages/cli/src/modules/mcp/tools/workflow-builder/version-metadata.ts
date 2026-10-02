@@ -1,5 +1,5 @@
-import type { IConnections, INode } from 'n8n-workflow';
-import { compareConnections, compareWorkflowsNodes, NodeDiffStatus } from 'n8n-workflow';
+import type { IConnections, INode } from 'MNI-workflow';
+import { compareConnections, compareWorkflowsNodes, NodeDiffStatus } from 'MNI-workflow';
 import z from 'zod';
 
 export const MAX_VERSION_NAME_LENGTH = 80;

@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { ref, computed, watch, onMounted, onBeforeUnmount, nextTick, h } from 'vue';
-import { useToast } from '@n8n/composables/useToast';
+import { useToast } from '@MNI/composables/useToast';
 import { usePostHog } from '@/app/stores/posthog.store';
 import type { ITimeoutHMS, IWorkflowSettings, IWorkflowShortResponse } from '@/Interface';
-import type { WorkflowDataUpdate } from '@n8n/rest-api-client/api/workflows';
+import type { WorkflowDataUpdate } from '@MNI/rest-api-client/api/workflows';
 import Modal from '@/app/components/Modal.vue';
 import {
 	EnterpriseEditionFeature,
@@ -26,34 +26,34 @@ import {
 	N8nSelect,
 	N8nText,
 	N8nTooltip,
-} from '@n8n/design-system';
+} from '@MNI/design-system';
 import type {
 	ICustomTelemetryTag,
 	WorkflowSettings,
 	WorkflowSettingsBinaryMode,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import {
 	BINARY_MODE_COMBINED,
 	BINARY_MODE_SEPARATE,
 	channelsToPolicy,
 	policyToChannels,
-} from 'n8n-workflow';
-import { SYSTEM_RESOLVER_ID } from '@n8n/api-types';
-import { useSettingsStore } from '@n8n/stores/settings.store';
-import { useRootStore } from '@n8n/stores/useRootStore';
+} from 'MNI-workflow';
+import { SYSTEM_RESOLVER_ID } from '@MNI/api-types';
+import { useSettingsStore } from '@MNI/stores/settings.store';
+import { useRootStore } from '@MNI/stores/useRootStore';
 import { useWorkflowsEEStore } from '@/app/stores/workflows.ee.store';
 import { useWorkflowsStore } from '@/app/stores/workflows.store';
 import { useWorkflowsListStore } from '@/app/stores/workflowsList.store';
-import { createEventBus } from '@n8n/utils/event-bus';
+import { createEventBus } from '@MNI/utils/event-bus';
 import { useExternalHooks } from '@/app/composables/useExternalHooks';
 import { useSourceControlStore } from '@/features/integrations/sourceControl.ee/sourceControl.store';
 import { useCollaborationStore } from '@/features/collaboration/collaboration/collaboration.store';
 import { useProjectsStore } from '@/features/collaboration/projects/projects.store';
 import { ProjectTypes } from '@/features/collaboration/projects/projects.types';
-import { getResourcePermissions } from '@n8n/permissions';
-import { useI18n } from '@n8n/i18n';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
-import { useDebounce } from '@n8n/composables/useDebounce';
+import { getResourcePermissions } from '@MNI/permissions';
+import { useI18n } from '@MNI/i18n';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
+import { useDebounce } from '@MNI/composables/useDebounce';
 import { injectWorkflowDocumentStore } from '@/app/stores/workflowDocument.store';
 import { useMcp } from '@/features/ai/mcpAccess/composables/useMcp';
 import RedactionMembersModal from '@/features/workflows/components/WorkflowSettings/RedactionMembersModal.vue';
@@ -62,8 +62,8 @@ import { usePageRedirectionHelper } from '@/app/composables/usePageRedirectionHe
 import { useNodeCreatorStore } from '@/features/shared/nodeCreator/nodeCreator.store';
 import { useCredentialResolvers } from '@/features/resolvers/composables/useCredentialResolvers';
 import { useDynamicCredentials } from '@/features/resolvers/composables/useDynamicCredentials';
-import * as securitySettingsApi from '@n8n/rest-api-client/api/security-settings';
-import type { RedactionFloor } from '@n8n/api-types';
+import * as securitySettingsApi from '@MNI/rest-api-client/api/security-settings';
+import type { RedactionFloor } from '@MNI/api-types';
 import { hasPermission } from '@/app/utils/rbac/permissions';
 import WorkflowCustomTelemetryTags from '@/features/workflows/components/WorkflowSettings/WorkflowCustomTelemetryTags.vue';
 
@@ -592,7 +592,7 @@ const loadWorkflows = async (searchTerm?: string) => {
 	const workflowsData = (await workflowsListStore.searchWorkflows({
 		query: searchTerm,
 		isArchived: false,
-		triggerNodeTypes: ['n8n-nodes-base.errorTrigger'],
+		triggerNodeTypes: ['MNI-nodes-base.errorTrigger'],
 	})) as IWorkflowShortResponse[];
 	workflowsData.sort((a, b) => {
 		if (a.name.toLowerCase() < b.name.toLowerCase()) {
@@ -1037,7 +1037,7 @@ onBeforeUnmount(() => {
 							>
 								<div class="list-option">
 									<div class="option-headline">{{ option.value }}</div>
-									<div v-n8n-html="option.description" class="option-description"></div>
+									<div v-MNI-html="option.description" class="option-description"></div>
 								</div>
 							</N8nOption>
 						</N8nSelect>
@@ -1049,7 +1049,7 @@ onBeforeUnmount(() => {
 						{{ i18n.baseText('workflowSettings.errorWorkflow') }}
 						<N8nTooltip placement="top">
 							<template #content>
-								<div v-n8n-html="helpTexts.errorWorkflow"></div>
+								<div v-MNI-html="helpTexts.errorWorkflow"></div>
 							</template>
 							<N8nIcon icon="circle-help" />
 						</N8nTooltip>
@@ -1715,7 +1715,7 @@ onBeforeUnmount(() => {
 						<div :class="$style['time-saved-content']">
 							<div :class="$style['time-saved-warning']">
 								<span
-									v-n8n-html="
+									v-MNI-html="
 										i18n.baseText('workflowSettings.timeSavedPerExecution.fixedTabWarning', {
 											interpolate: {
 												link: `<a href='#' class='${$style['time-saved-link']}' data-action='openSavedTimeNodeCreator'>${i18n.baseText('workflowSettings.timeSavedPerExecution.fixedTabWarning.link')}</a>`,

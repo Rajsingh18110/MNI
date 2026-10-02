@@ -1,5 +1,5 @@
-import { mockInstance } from '@n8n/backend-test-utils';
-import { User } from '@n8n/db';
+import { mockInstance } from '@MNI/backend-test-utils';
+import { User } from '@MNI/db';
 
 import { FolderService } from '@/services/folder.service';
 import { ProjectService } from '@/services/project.service.ee';

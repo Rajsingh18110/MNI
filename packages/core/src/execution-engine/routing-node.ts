@@ -3,7 +3,7 @@
 /* eslint-disable @typescript-eslint/prefer-nullish-coalescing */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import { sleep } from '@n8n/utils/sleep';
+import { sleep } from '@MNI/utils/sleep';
 import get from 'lodash/get';
 import merge from 'lodash/merge';
 import set from 'lodash/set';
@@ -14,7 +14,7 @@ import {
 	NodeConnectionTypes,
 	getCredentialAllowedDomains,
 	toHostname,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import type {
 	ICredentialDataDecryptedObject,
 	ICredentialsDecrypted,
@@ -38,7 +38,7 @@ import type {
 	JsonObject,
 	INodeCredentialDescription,
 	IExecutePaginationFunctions,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import url from 'node:url';
 
 import { type ExecuteContext, ExecuteSingleContext } from './node-execution-context';

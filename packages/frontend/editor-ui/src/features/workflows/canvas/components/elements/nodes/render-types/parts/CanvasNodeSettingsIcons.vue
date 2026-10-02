@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { useCanvasNode } from '../../../../../composables/useCanvasNode';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 
-import { N8nIcon, N8nTooltip } from '@n8n/design-system';
+import { N8nIcon, N8nTooltip } from '@MNI/design-system';
 import { injectWorkflowDocumentStore } from '@/app/stores/workflowDocument.store';
 const { name } = useCanvasNode();
 const i18n = useI18n();

@@ -1,12 +1,12 @@
-import { LicenseState } from '@n8n/backend-common';
-import { createTeamProject, mockInstance, testDb } from '@n8n/backend-test-utils';
-import type { Project } from '@n8n/db';
+import { LicenseState } from '@MNI/backend-common';
+import { createTeamProject, mockInstance, testDb } from '@MNI/backend-test-utils';
+import type { Project } from '@MNI/db';
 import {
 	ProjectSecretsProviderAccessRepository,
 	SecretsProviderConnectionRepository,
-} from '@n8n/db';
-import { Container } from '@n8n/di';
-import { Cipher } from 'n8n-core';
+} from '@MNI/db';
+import { Container } from '@MNI/di';
+import { Cipher } from 'MNI-core';
 import type { Response } from 'superagent';
 import { mock } from 'vitest-mock-extended';
 

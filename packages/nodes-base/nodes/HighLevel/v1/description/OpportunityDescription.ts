@@ -1,4 +1,4 @@
-import type { INodeProperties } from 'n8n-workflow';
+import type { INodeProperties } from 'MNI-workflow';
 
 import {
 	contactIdentifierPreSendAction,
@@ -262,12 +262,12 @@ const createProperties: INodeProperties[] = [
 		},
 		options: [
 			{
-				// eslint-disable-next-line n8n-nodes-base/node-param-display-name-wrong-for-dynamic-options
+				// eslint-disable-next-line MNI-nodes-base/node-param-display-name-wrong-for-dynamic-options
 				displayName: 'Assigned To',
 				name: 'assignedTo',
 				type: 'options',
 				default: '',
-				// eslint-disable-next-line n8n-nodes-base/node-param-description-wrong-for-dynamic-options
+				// eslint-disable-next-line MNI-nodes-base/node-param-description-wrong-for-dynamic-options
 				description:
 					'Choose staff member from the list, or specify an ID using an <a href="https://docs.n8n.io/code/expressions/">expression</a>',
 				typeOptions: {
@@ -420,12 +420,12 @@ const getAllProperties: INodeProperties[] = [
 		},
 		options: [
 			{
-				// eslint-disable-next-line n8n-nodes-base/node-param-display-name-wrong-for-dynamic-options
+				// eslint-disable-next-line MNI-nodes-base/node-param-display-name-wrong-for-dynamic-options
 				displayName: 'Assigned To',
 				name: 'assignedTo',
 				type: 'options',
 				default: '',
-				// eslint-disable-next-line n8n-nodes-base/node-param-description-wrong-for-dynamic-options
+				// eslint-disable-next-line MNI-nodes-base/node-param-description-wrong-for-dynamic-options
 				description:
 					'Choose staff member from the list, or specify an ID using an <a href="https://docs.n8n.io/code/expressions/">expression</a>',
 				typeOptions: {
@@ -584,12 +584,12 @@ const updateProperties: INodeProperties[] = [
 		},
 		options: [
 			{
-				// eslint-disable-next-line n8n-nodes-base/node-param-display-name-wrong-for-dynamic-options
+				// eslint-disable-next-line MNI-nodes-base/node-param-display-name-wrong-for-dynamic-options
 				displayName: 'Assigned To',
 				name: 'assignedTo',
 				type: 'options',
 				default: '',
-				// eslint-disable-next-line n8n-nodes-base/node-param-description-wrong-for-dynamic-options
+				// eslint-disable-next-line MNI-nodes-base/node-param-description-wrong-for-dynamic-options
 				description:
 					'Choose staff member from the list, or specify an ID using an <a href="https://docs.n8n.io/code/expressions/">expression</a>',
 				typeOptions: {

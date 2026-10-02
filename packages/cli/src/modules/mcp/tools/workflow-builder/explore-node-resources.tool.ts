@@ -1,4 +1,4 @@
-import type { User } from '@n8n/db';
+import type { User } from '@MNI/db';
 import z from 'zod';
 
 import { MCP_EXPLORE_NODE_RESOURCES_TOOL } from './constants';
@@ -13,7 +13,7 @@ const inputSchema = {
 	nodeType: z
 		.string()
 		.describe(
-			'Fully-qualified node type ID from search_nodes / get_node_types, e.g. "n8n-nodes-base.slack".',
+			'Fully-qualified node type ID from search_nodes / get_node_types, e.g. "MNI-nodes-base.slack".',
 		),
 	version: z
 		.number()

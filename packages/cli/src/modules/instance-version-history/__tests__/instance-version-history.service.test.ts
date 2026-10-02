@@ -1,14 +1,14 @@
-import { mockLogger } from '@n8n/backend-test-utils';
-import type { InstanceSettings } from 'n8n-core';
+import { mockLogger } from '@MNI/backend-test-utils';
+import type { InstanceSettings } from 'MNI-core';
 import type { MockProxy } from 'vitest-mock-extended';
 import { mock } from 'vitest-mock-extended';
 
 import type { InstanceVersionHistoryRepository } from '../database/repositories/instance-version-history.repository';
 import { InstanceVersionHistoryService } from '../instance-version-history.service';
 
-// Mock N8N_VERSION
+// Mock MNI_VERSION
 vi.mock('@/constants', () => ({
-	N8N_VERSION: '2.5.0',
+	MNI_VERSION: '2.5.0',
 }));
 
 describe('InstanceVersionHistoryService', () => {

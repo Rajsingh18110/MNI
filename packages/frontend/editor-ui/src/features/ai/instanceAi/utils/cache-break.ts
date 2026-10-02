@@ -1,5 +1,5 @@
-import type { CacheBreakCause, StepCacheBreak } from '@n8n/api-types';
-import type { BaseTextKey, useI18n } from '@n8n/i18n';
+import type { CacheBreakCause, StepCacheBreak } from '@MNI/api-types';
+import type { BaseTextKey, useI18n } from '@MNI/i18n';
 
 const CAUSE_KEYS: Record<CacheBreakCause, BaseTextKey> = {
 	tools: 'instanceAi.debug.runDebug.cacheBreakCause.tools',

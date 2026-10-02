@@ -12,7 +12,7 @@ permissions:
 
 jobs:
   check_branch:
-    if: ${{ github.repository == 'n8n-io/n8n-private' }}
+    if: ${{ github.repository == 'MNI-io/MNI-private' }}
     name: enforce-bundle-branches-only-in-private
     runs-on: ubuntu-latest
 

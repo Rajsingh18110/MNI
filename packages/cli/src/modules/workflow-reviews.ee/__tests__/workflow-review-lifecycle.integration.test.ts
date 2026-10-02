@@ -1,7 +1,7 @@
-import type { SourceControlledFile } from '@n8n/api-types';
-import { createTeamProject, mockInstance, testDb } from '@n8n/backend-test-utils';
-import { GlobalConfig } from '@n8n/config';
-import type { Project, User } from '@n8n/db';
+import type { SourceControlledFile } from '@MNI/api-types';
+import { createTeamProject, mockInstance, testDb } from '@MNI/backend-test-utils';
+import { GlobalConfig } from '@MNI/config';
+import type { Project, User } from '@MNI/db';
 import {
 	FolderRepository,
 	ProjectRepository,
@@ -13,9 +13,9 @@ import {
 	WorkflowReviewLifecycleRepository,
 	WorkflowReviewRequestRepository,
 	WorkflowReviewRequestWorkflowRepository,
-} from '@n8n/db';
-import { Container } from '@n8n/di';
-import type { InstanceSettings } from 'n8n-core';
+} from '@MNI/db';
+import { Container } from '@MNI/di';
+import type { InstanceSettings } from 'MNI-core';
 import { readFile } from 'node:fs/promises';
 import { v4 as uuid } from 'uuid';
 import { mock } from 'vitest-mock-extended';

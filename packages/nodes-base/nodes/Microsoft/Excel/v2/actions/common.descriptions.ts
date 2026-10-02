@@ -1,4 +1,4 @@
-import type { INodeProperties } from 'n8n-workflow';
+import type { INodeProperties } from 'MNI-workflow';
 
 export const workbookRLC: INodeProperties = {
 	displayName: 'Workbook',
@@ -119,7 +119,7 @@ export const rawDataOutput: INodeProperties = {
 					displayName: 'RAW Data',
 					name: 'rawData',
 					type: 'boolean',
-					// eslint-disable-next-line n8n-nodes-base/node-param-default-wrong-for-boolean
+					// eslint-disable-next-line MNI-nodes-base/node-param-default-wrong-for-boolean
 					default: 0,
 					description:
 						'Whether the data should be returned RAW instead of parsed into keys according to their header',

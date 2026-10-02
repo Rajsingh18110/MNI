@@ -9,8 +9,8 @@ import type {
 	IDataObject,
 	IExecuteFunctions,
 	INodeExecutionData,
-} from 'n8n-workflow';
-import { deepCopy, NodeOperationError, BINARY_ENCODING } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { deepCopy, NodeOperationError, BINARY_ENCODING } from 'MNI-workflow';
 import type { TextContent as PdfTextContent } from 'pdfjs-dist/types/src/display/api';
 
 export type JsonToSpreadsheetBinaryFormat = 'csv' | 'html' | 'rtf' | 'ods' | 'xls' | 'xlsx';

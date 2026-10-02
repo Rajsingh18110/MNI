@@ -1,8 +1,8 @@
-import { CredentialsEntity, CredentialsRepository, In, User, WorkflowRepository } from '@n8n/db';
-import { ICredentialResolver } from '@n8n/decorators';
-import { Service } from '@n8n/di';
-import { Cipher } from 'n8n-core';
-import { ICredentialContext, INode, isNodeWithWorkflowSelector, jsonParse } from 'n8n-workflow';
+import { CredentialsEntity, CredentialsRepository, In, User, WorkflowRepository } from '@MNI/db';
+import { ICredentialResolver } from '@MNI/decorators';
+import { Service } from '@MNI/di';
+import { Cipher } from 'MNI-core';
+import { ICredentialContext, INode, isNodeWithWorkflowSelector, jsonParse } from 'MNI-workflow';
 
 import { DynamicCredentialsProxy } from '@/credentials/dynamic-credentials-proxy';
 import { BadRequestError } from '@/errors/response-errors/bad-request.error';
@@ -10,7 +10,7 @@ import { NotFoundError } from '@/errors/response-errors/not-found.error';
 import { WorkflowFinderService } from '@/workflows/workflow-finder.service';
 
 import { DynamicCredentialResolverRegistry } from './credential-resolver-registry.service';
-import { carriesN8nIdentity } from '../credential-resolvers/identifiers/n8n-identifier';
+import { carriesN8nIdentity } from '../credential-resolvers/identifiers/MNI-identifier';
 import { DynamicCredentialResolverRepository } from '../database/repositories/credential-resolver.repository';
 
 // Upper bound on distinct workflows traversed per status check. Bounds the number of sequential

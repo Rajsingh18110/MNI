@@ -16,23 +16,23 @@ the test.
   /api/v1/instance-reports` with **201** on success. Any other status counts as
   a rejection.
 - The receiver trusts the license certificate this instance sends. This applies
-  to the default run; with `N8N_INSTANCE_REPORTING_AUTH_TOKEN` set (scenario
+  to the default run; with `MNI_INSTANCE_REPORTING_AUTH_TOKEN` set (scenario
   5.4c) no certificate is needed. The
-  instance sends whatever `N8N_LICENSE_CERT` holds, so either use a real
-  n8n-issued certificate, or a certificate minted by a development CA that the
+  instance sends whatever `MNI_LICENSE_CERT` holds, so either use a real
+  MNI-issued certificate, or a certificate minted by a development CA that the
   receiver is configured to trust (see the receiver's `mock-license` tooling
-  and `N8N_MONITORING_ADDITIONAL_ISSUER_CERTS`). A development certificate
+  and `MNI_MONITORING_ADDITIONAL_ISSUER_CERTS`). A development certificate
   makes the license SDK log `cert could not be initialized` once at boot; the
   instance then runs as community and still reports.
 - Keep the receiver's request log visible. You must see the raw body.
 - `sqlite3` is installed. The dev instance uses SQLite at
-  `~/.n8n/database.sqlite` unless you set another database.
+  `~/.MNI/database.sqlite` unless you set another database.
 - An MNI owner account exists on the instance (the report reads insights as the
   instance owner). Complete the setup screen first if this is a fresh
-  `~/.n8n`.
+  `~/.MNI`.
 
 ```bash
-export N8N_DB=~/.n8n/database.sqlite   # used by the snippets below
+export MNI_DB=~/.MNI/database.sqlite   # used by the snippets below
 ```
 
 ## 1. Start the instance
@@ -40,37 +40,37 @@ export N8N_DB=~/.n8n/database.sqlite   # used by the snippets below
 ```bash
 cd packages/cli
 
-export N8N_ENABLED_MODULES=instance-reporting
-export N8N_INSTANCE_REPORTING_BASE_URL=http://127.0.0.1:3456
-export N8N_INSTANCE_REPORTING_LABEL=local-dev
-export N8N_LICENSE_CERT='<certificate the receiver trusts, see prerequisites>'
+export MNI_ENABLED_MODULES=instance-reporting
+export MNI_INSTANCE_REPORTING_BASE_URL=http://127.0.0.1:3456
+export MNI_INSTANCE_REPORTING_LABEL=local-dev
+export MNI_LICENSE_CERT='<certificate the receiver trusts, see prerequisites>'
 
 # Compact insights quickly, so raw rows reach insights_by_period in a minute.
-export N8N_INSIGHTS_COMPACTION_INTERVAL_MINUTES=1
-export N8N_INSIGHTS_FLUSH_INTERVAL_SECONDS=5
+export MNI_INSIGHTS_COMPACTION_INTERVAL_MINUTES=1
+export MNI_INSIGHTS_FLUSH_INTERVAL_SECONDS=5
 
-export N8N_LOG_LEVEL=debug
-export N8N_LOG_SCOPES=instance-reporting
+export MNI_LOG_LEVEL=debug
+export MNI_LOG_SCOPES=instance-reporting
 
 pnpm dev
 ```
 
 Expected on the first boot:
 
-- No warning about `N8N_INSTANCE_REPORTING_BASE_URL` being unset, and none
+- No warning about `MNI_INSTANCE_REPORTING_BASE_URL` being unset, and none
   about a missing license certificate.
 - The log line `Started the instance reporting timer`.
 - A `Resolved the instance reporting time` line with a random `HH:mm` at or
   after `03:00`.
 
-Note: `N8N_INSIGHTS_COMPACTION_INTERVAL_MINUTES=1` does not move the report
+Note: `MNI_INSIGHTS_COMPACTION_INTERVAL_MINUTES=1` does not move the report
 time, because the floor stays at 03:00 UTC. Do not raise that variable above
 90 minutes unless you want to test the shift behaviour (step 6).
 
 Check the persisted time:
 
 ```bash
-sqlite3 "$N8N_DB" \
+sqlite3 "$MNI_DB" \
   "SELECT value FROM settings WHERE key = 'features.centralInstanceMonitoring';"
 ```
 
@@ -87,7 +87,7 @@ today do not appear in the daily point. Produce both parts:
    Check the cumulative source:
 
    ```bash
-   sqlite3 "$N8N_DB" \
+   sqlite3 "$MNI_DB" \
      "SELECT SUM(rootCount) FROM workflow_statistics
       WHERE name IN ('production_success', 'production_error');"
    ```
@@ -99,7 +99,7 @@ today do not appear in the daily point. Produce both parts:
    for compaction, then confirm the executions reached `insights_by_period`:
 
    ```bash
-   sqlite3 "$N8N_DB" \
+   sqlite3 "$MNI_DB" \
      "SELECT type, periodUnit, periodStart, value FROM insights_by_period
       ORDER BY periodStart DESC LIMIT 10;"
    ```
@@ -108,7 +108,7 @@ today do not appear in the daily point. Produce both parts:
    (`type` 2 = success, 3 = failure; the daily point is their sum):
 
    ```bash
-   sqlite3 "$N8N_DB" \
+   sqlite3 "$MNI_DB" \
      "UPDATE insights_by_period
       SET periodStart = datetime(periodStart, '-1 day');"
    ```
@@ -116,7 +116,7 @@ today do not appear in the daily point. Produce both parts:
    Record the expected daily total:
 
    ```bash
-   sqlite3 "$N8N_DB" \
+   sqlite3 "$MNI_DB" \
      "SELECT SUM(value) FROM insights_by_period
       WHERE type IN (2, 3)
         AND periodStart >= date('now', '-1 day')
@@ -133,7 +133,7 @@ instance. The first tick sees the slot passed and no delivered row for today,
 so it reports at once.
 
 ```bash
-sqlite3 "$N8N_DB" \
+sqlite3 "$MNI_DB" \
   "UPDATE settings SET value = '{\"reportTime\":\"03:00\"}'
    WHERE key = 'features.centralInstanceMonitoring';"
 ```
@@ -147,9 +147,9 @@ ahead and the tick correctly skips.
 with:
 
 - no `Authorization` header (the token is unset in this run)
-- `licenseCert`: the exact value of `N8N_LICENSE_CERT`
+- `licenseCert`: the exact value of `MNI_LICENSE_CERT`
 - `instanceId`: a 64-character hex string, equal to the instance id in
-  `~/.n8n/config`
+  `~/.MNI/config`
 - `batchId`: a UUID-like id, equal to the row id from the query below
 - `label`: `local-dev`
 - `n8nVersion`: the version in `packages/cli/package.json`
@@ -164,7 +164,7 @@ yesterday's UTC date, not today's.
 **MNI side.**
 
 ```bash
-sqlite3 -header "$N8N_DB" \
+sqlite3 -header "$MNI_DB" \
   "SELECT id, reportDate, createdAt, deliveredAt, attempts, lastError, dataPoints
    FROM instance_monitoring_report ORDER BY createdAt DESC LIMIT 5;"
 ```
@@ -182,26 +182,26 @@ Run these after step 4. Each is short.
 | 5.1 | No second report the same day | Restart the instance | No new request, no new row. `hasSettledToday` short-circuits the tick |
 | 5.2 | Retry resends the same measurement | Make the receiver answer 500. Delete today's delivered row, then restart | Request arrives, `lastError` holds `rejected with status 500`, `deliveredAt` NULL, `attempts` grows. Retries land ~5 minutes apart, 3 attempts in total, then `Giving up on the instance report for today`. Every retry carries the **same** `batchId` and the same values — no re-measurement |
 | 5.3 | Recovery keeps the pending row | During 5.2, switch the receiver back to 201 before the third attempt | The next attempt reuses the pending row and marks it delivered. No second row for the day |
-| 5.4 | Untrusted certificate | Set `N8N_LICENSE_CERT` to a certificate the receiver does not trust (any well-formed one from another CA), clear today's row, restart | The receiver answers 401, delivery fails, `lastError` names the status. Nothing is marked delivered |
-| 5.4b | No certificate | Unset `N8N_LICENSE_CERT`, clear today's row, restart | Warning `no license certificate, so no reports will be sent`; no timer, no request, no row |
-| 5.4c | Token set | Set `N8N_INSTANCE_REPORTING_AUTH_TOKEN` to a token the receiver accepts, unset `N8N_LICENSE_CERT`, clear today's row, restart | No certificate warning. The request carries `Authorization: Bearer <token>` and the body has no `licenseCert`. The receiver answers 201 and the row is marked delivered |
+| 5.4 | Untrusted certificate | Set `MNI_LICENSE_CERT` to a certificate the receiver does not trust (any well-formed one from another CA), clear today's row, restart | The receiver answers 401, delivery fails, `lastError` names the status. Nothing is marked delivered |
+| 5.4b | No certificate | Unset `MNI_LICENSE_CERT`, clear today's row, restart | Warning `no license certificate, so no reports will be sent`; no timer, no request, no row |
+| 5.4c | Token set | Set `MNI_INSTANCE_REPORTING_AUTH_TOKEN` to a token the receiver accepts, unset `MNI_LICENSE_CERT`, clear today's row, restart | No certificate warning. The request carries `Authorization: Bearer <token>` and the body has no `licenseCert`. The receiver answers 201 and the row is marked delivered |
 | 5.5 | Non-201 success code is a failure | Make the receiver answer 200 | Treated as a rejection: `Instance report was rejected with status 200` |
 | 5.6 | Receiver down | Stop the receiver, clear today's row, restart | Delivery fails with a connection error in `lastError`; the instance stays healthy and keeps serving |
 | 5.7 | Redirect is not followed | Make the receiver answer 302 to another local port | The report is rejected with status 302. The second port never sees the license certificate |
-| 5.8 | Base URL unset | Unset `N8N_INSTANCE_REPORTING_BASE_URL`, restart | Warning `enabled but N8N_INSTANCE_REPORTING_BASE_URL is unset`; no timer, no request |
-| 5.9 | Insights disabled | `N8N_DISABLED_MODULES=insights`, restart | Startup fails with the `UserError` that names both variables |
+| 5.8 | Base URL unset | Unset `MNI_INSTANCE_REPORTING_BASE_URL`, restart | Warning `enabled but MNI_INSTANCE_REPORTING_BASE_URL is unset`; no timer, no request |
+| 5.9 | Insights disabled | `MNI_DISABLED_MODULES=insights`, restart | Startup fails with the `UserError` that names both variables |
 | 5.10 | Trailing slash in the base URL | Use `http://127.0.0.1:3456/`, clear today's row, restart | The path is still `/api/v1/instance-reports`, with no double slash |
 | 5.11 | Slot still ahead | Set `reportTime` to a time later today, clear today's row, restart | No request. The log shows the timer armed for the remaining interval |
 
 `clear today's row` means:
 
 ```bash
-sqlite3 "$N8N_DB" "DELETE FROM instance_monitoring_report;"
+sqlite3 "$MNI_DB" "DELETE FROM instance_monitoring_report;"
 ```
 
 ## 6. Optional: compaction-window healing
 
-Set `N8N_INSIGHTS_COMPACTION_INTERVAL_MINUTES=240` (floor becomes 480 minutes
+Set `MNI_INSIGHTS_COMPACTION_INTERVAL_MINUTES=240` (floor becomes 480 minutes
 = 08:00 UTC) with a stored `reportTime` of `03:30`, then restart. Expected: the
 warning `Moved the instance reporting time later so it clears the insights
 compaction window`, and the settings row now holds a time at or after `08:00`.
@@ -210,13 +210,13 @@ Reset the variable afterwards.
 ## 7. Cleanup
 
 ```bash
-sqlite3 "$N8N_DB" "DELETE FROM instance_monitoring_report;"
-sqlite3 "$N8N_DB" "DELETE FROM settings WHERE key = 'features.centralInstanceMonitoring';"
+sqlite3 "$MNI_DB" "DELETE FROM instance_monitoring_report;"
+sqlite3 "$MNI_DB" "DELETE FROM settings WHERE key = 'features.centralInstanceMonitoring';"
 ```
 
-Unset the `N8N_INSTANCE_REPORTING_*`, `N8N_LICENSE_CERT` and `N8N_INSIGHTS_*`
+Unset the `MNI_INSTANCE_REPORTING_*`, `MNI_LICENSE_CERT` and `MNI_INSIGHTS_*`
 variables, or start a new shell. The backdated `insights_by_period` rows stay wrong for the Insights
-UI; drop them, or use a throwaway `N8N_USER_FOLDER` for the whole test if you
+UI; drop them, or use a throwaway `MNI_USER_FOLDER` for the whole test if you
 want your dev data untouched.
 
 ## Notes and known limits
@@ -228,7 +228,7 @@ want your dev data untouched.
   all UTC. Convert before you read the local clock.
 - **Multi-main.** Only the leader holds the timer. A single dev instance is
   always the leader, so this plan cannot show handover. To cover it, run two
-  mains against the same Postgres with `N8N_MULTI_MAIN_SETUP_ENABLED=true` and
+  mains against the same Postgres with `MNI_MULTI_MAIN_SETUP_ENABLED=true` and
   confirm only one request arrives per day, and that the follower starts the
   timer after the leader stops.
 - **Request timeout.** Delivery gives up after 30 seconds. A receiver that

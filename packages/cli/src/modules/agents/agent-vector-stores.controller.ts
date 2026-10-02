@@ -1,6 +1,6 @@
-import { TestAgentVectorStoreDto, type VectorStoreTestResult } from '@n8n/api-types';
-import type { AuthenticatedRequest } from '@n8n/db';
-import { Body, Post, ProjectScope, RestController } from '@n8n/decorators';
+import { TestAgentVectorStoreDto, type VectorStoreTestResult } from '@MNI/api-types';
+import type { AuthenticatedRequest } from '@MNI/db';
+import { Body, Post, ProjectScope, RestController } from '@MNI/decorators';
 import type { Response } from 'express';
 
 import { AgentVectorStoresService } from './agent-vector-stores.service';

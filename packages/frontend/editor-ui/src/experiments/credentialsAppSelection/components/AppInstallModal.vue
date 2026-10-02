@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue';
-import { N8nButton, N8nText, N8nIcon, N8nTooltip } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+import { N8nButton, N8nText, N8nIcon, N8nTooltip } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 import { useInstallNode } from '@/features/settings/communityNodes/composables/useInstallNode';
-import { useUsersStore } from '@n8n/stores/users.store';
+import { useUsersStore } from '@MNI/stores/users.store';
 import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';
 import { removePreviewToken } from '@/features/shared/nodeCreator/nodeCreator.utils';
 import NodeIcon from '@/app/components/NodeIcon.vue';
@@ -12,7 +12,7 @@ import ContactAdministratorToInstall from '@/features/settings/communityNodes/co
 import OfficialIcon from 'virtual:icons/mdi/verified';
 import type { AppEntry } from '../composables/useAppCredentials';
 import type { SimplifiedNodeType } from '@/Interface';
-import type { Icon, ThemeIconColor } from 'n8n-workflow';
+import type { Icon, ThemeIconColor } from 'MNI-workflow';
 
 const APP_INSTALL_MODAL_KEY = 'appInstallModal';
 

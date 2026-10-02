@@ -1,4 +1,4 @@
-import type { INodeProperties } from 'n8n-workflow';
+import type { INodeProperties } from 'MNI-workflow';
 
 export const ticketDescription: INodeProperties[] = [
 	// ----------------------------------
@@ -303,7 +303,7 @@ export const ticketDescription: INodeProperties[] = [
 		placeholder: 'Add Field',
 		options: [
 			{
-				/* eslint-disable n8n-nodes-base/node-param-description-wrong-for-dynamic-options, n8n-nodes-base/node-param-display-name-wrong-for-dynamic-options */
+				/* eslint-disable MNI-nodes-base/node-param-description-wrong-for-dynamic-options, MNI-nodes-base/node-param-display-name-wrong-for-dynamic-options */
 				displayName: 'Custom Fields',
 				name: 'customFieldsUi',
 				type: 'fixedCollection',
@@ -433,7 +433,7 @@ export const ticketDescription: INodeProperties[] = [
 				description: 'Internal note for the ticket',
 			},
 			{
-				/* eslint-disable n8n-nodes-base/node-param-description-wrong-for-dynamic-options, n8n-nodes-base/node-param-display-name-wrong-for-dynamic-options */
+				/* eslint-disable MNI-nodes-base/node-param-description-wrong-for-dynamic-options, MNI-nodes-base/node-param-display-name-wrong-for-dynamic-options */
 				displayName: 'Custom Fields',
 				name: 'customFieldsUi',
 				type: 'fixedCollection',

@@ -5,7 +5,7 @@
 		"parameters": {},
 		"id": "3db51d12-a71b-4d0d-84db-1d4c46454c40",
 		"name": "When clicking \"Execute Workflow\"",
-		"type": "n8n-nodes-base.manualTrigger",
+		"type": "MNI-nodes-base.manualTrigger",
 		"typeVersion": 1,
 		"position": [
 		  160,
@@ -19,7 +19,7 @@
 		},
 		"id": "96f38d87-0bdd-420c-b981-26fd55d11cb2",
 		"name": "HTTP Request",
-		"type": "n8n-nodes-base.httpRequest",
+		"type": "MNI-nodes-base.httpRequest",
 		"typeVersion": 3,
 		"position": [
 		  460,
@@ -42,7 +42,7 @@
 		},
 		"id": "85ca0a5b-3ff4-491d-ba51-990fdf2b757f",
 		"name": "HTTP Request fake header",
-		"type": "n8n-nodes-base.httpRequest",
+		"type": "MNI-nodes-base.httpRequest",
 		"typeVersion": 3,
 		"position": [
 		  460,
@@ -69,7 +69,7 @@
 		},
 		"id": "68d6e51a-66ea-45bf-928c-55efd2493cf0",
 		"name": "HTTP Request with query",
-		"type": "n8n-nodes-base.httpRequest",
+		"type": "MNI-nodes-base.httpRequest",
 		"typeVersion": 3,
 		"position": [
 		  460,
@@ -84,7 +84,7 @@
 		},
 		"id": "38ec1a50-7f0e-4749-822d-f26370b00694",
 		"name": "HTTP Request empty header",
-		"type": "n8n-nodes-base.httpRequest",
+		"type": "MNI-nodes-base.httpRequest",
 		"typeVersion": 3,
 		"position": [
 		  460,

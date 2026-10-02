@@ -1,7 +1,7 @@
 import { effectScope, watch } from 'vue';
 import { until } from '@vueuse/core';
-import { useToast } from '@n8n/composables/useToast';
-import { useI18n } from '@n8n/i18n';
+import { useToast } from '@MNI/composables/useToast';
+import { useI18n } from '@MNI/i18n';
 
 import { listenForModalChanges, useUIStore } from '@/app/stores/ui.store';
 import { INSTANCE_AI_BROWSER_USE_SETUP_MODAL_KEY } from '../constants';

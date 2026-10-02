@@ -1,6 +1,6 @@
-import { createTeamProject, testDb, testModules } from '@n8n/backend-test-utils';
-import { TransactionRunner, type OperationContext } from '@n8n/db';
-import { Container } from '@n8n/di';
+import { createTeamProject, testDb, testModules } from '@MNI/backend-test-utils';
+import { TransactionRunner, type OperationContext } from '@MNI/db';
+import { Container } from '@MNI/di';
 
 import { TypeAvailabilityPolicyAttachmentRepository } from '@/modules/type-availability-policies/database/repositories/type-availability-policy-attachment.repository';
 import { TypeAvailabilityPolicyScopeRepository } from '@/modules/type-availability-policies/database/repositories/type-availability-policy-scope.repository';
@@ -18,13 +18,13 @@ const ROOT: OperationContext = {};
 const DENY_SLACK: PolicyRule = {
 	id: 'rule-1',
 	action: 'deny',
-	selector: { kind: 'name', value: 'n8n-nodes-base.slack' },
+	selector: { kind: 'name', value: 'MNI-nodes-base.slack' },
 };
 
 const ALLOW_BASE: PolicyRule = {
 	id: 'rule-2',
 	action: 'allow',
-	selector: { kind: 'package', value: 'n8n-nodes-base' },
+	selector: { kind: 'package', value: 'MNI-nodes-base' },
 };
 
 describe('type availability policy repositories', () => {
@@ -183,7 +183,7 @@ describe('type availability policy repositories', () => {
 			// Same rule, keys serialised in another order — as a client or an env
 			// config could plausibly send it.
 			const reordered = {
-				selector: { value: 'n8n-nodes-base.slack', kind: 'name' },
+				selector: { value: 'MNI-nodes-base.slack', kind: 'name' },
 				action: 'deny',
 				id: 'rule-1',
 			} as unknown as PolicyRule;

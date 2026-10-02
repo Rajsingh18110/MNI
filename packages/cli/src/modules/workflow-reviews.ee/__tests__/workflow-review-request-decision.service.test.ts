@@ -1,5 +1,5 @@
-import type { DecideWorkflowReviewRequestDto } from '@n8n/api-types';
-import type { LicenseState, Logger } from '@n8n/backend-common';
+import type { DecideWorkflowReviewRequestDto } from '@MNI/api-types';
+import type { LicenseState, Logger } from '@MNI/backend-common';
 import type {
 	DbLockService,
 	Project,
@@ -19,8 +19,8 @@ import type {
 	WorkflowRepository,
 	Transaction,
 	OperationContext,
-} from '@n8n/db';
-import { DbLock } from '@n8n/db';
+} from '@MNI/db';
+import { DbLock } from '@MNI/db';
 import { mock } from 'vitest-mock-extended';
 
 import { WorkflowReviewAuthorizationService } from '../workflow-review-authorization.service';

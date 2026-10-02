@@ -7,13 +7,13 @@ import type {
 	INodeExecutionData,
 	INodeType,
 	INodeTypeDescription,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import {
 	NodeConnectionTypes,
 	deepCopy,
 	NodeOperationError,
 	CONSOLE_OUTPUT_REDACTED_MESSAGE,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { vmResolver } from '../Code/JavaScriptSandbox';
 
@@ -50,7 +50,7 @@ export class FunctionItem implements INodeType {
 				},
 				type: 'string',
 				default: `// Code here will run once per input item.
-// More info and help: https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-base.functionitem/
+// More info and help: https://docs.n8n.io/integrations/builtin/core-nodes/MNI-nodes-base.functionitem/
 // Tip: You can use luxon for dates and $jmespath for querying JSON structures
 
 // Add a new field called 'myNewField' to the JSON of the item

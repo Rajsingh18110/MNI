@@ -1,4 +1,4 @@
-import type { IWorkflowBase } from 'n8n-workflow';
+import type { IWorkflowBase } from 'MNI-workflow';
 import { nanoid } from 'nanoid';
 
 import { test, expect } from '../../../fixtures/base';
@@ -47,7 +47,7 @@ test.describe(
 							},
 							options: {},
 						},
-						type: 'n8n-nodes-base.formTrigger',
+						type: 'MNI-nodes-base.formTrigger',
 						typeVersion: 2.5,
 						position: [0, 0],
 						id: nanoid(),
@@ -88,7 +88,7 @@ test.describe(
 							path: webhookPath,
 							options: {},
 						},
-						type: 'n8n-nodes-base.webhook',
+						type: 'MNI-nodes-base.webhook',
 						typeVersion: 2,
 						position: [0, 0],
 						id: nanoid(),

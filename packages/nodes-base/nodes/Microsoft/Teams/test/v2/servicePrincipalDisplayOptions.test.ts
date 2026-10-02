@@ -1,4 +1,4 @@
-import type { INodeProperties } from 'n8n-workflow';
+import type { INodeProperties } from 'MNI-workflow';
 
 import { MicrosoftTeamsTrigger } from '../../MicrosoftTeamsTrigger.node';
 import { versionDescription } from '../../v2/actions/versionDescription';

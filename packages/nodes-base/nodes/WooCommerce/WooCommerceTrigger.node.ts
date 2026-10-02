@@ -6,8 +6,8 @@ import type {
 	INodeType,
 	INodeTypeDescription,
 	IWebhookResponseData,
-} from 'n8n-workflow';
-import { NodeConnectionTypes, NodeOperationError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeConnectionTypes, NodeOperationError } from 'MNI-workflow';
 
 import { verifySignature } from '../../utils/webhook-signature-verification';
 import { getAutomaticSecret, woocommerceApiRequest } from './GenericFunctions';

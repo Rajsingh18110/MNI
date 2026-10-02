@@ -1,6 +1,6 @@
-import { PrometheusMetricsConfig } from '@n8n/config';
-import { Service } from '@n8n/di';
-import { Cipher } from 'n8n-core';
+import { PrometheusMetricsConfig } from '@MNI/config';
+import { Service } from '@MNI/di';
+import { Cipher } from 'MNI-core';
 import promClient from 'prom-client';
 
 import type { PrometheusMetricsCollector } from './base';
@@ -9,8 +9,8 @@ import { DURATION_BUCKETS_SECONDS } from './constant';
 /**
  * Tracks decrypt and key-lookup latency on the read path as histograms.
  * Registers:
- * - `n8n_encryption_decrypt_duration_seconds`
- * - `n8n_encryption_key_lookup_duration_seconds`
+ * - `MNI_encryption_decrypt_duration_seconds`
+ * - `MNI_encryption_key_lookup_duration_seconds`
  */
 @Service()
 export class PrometheusEncryptionMetricsService implements PrometheusMetricsCollector {

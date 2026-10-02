@@ -1,4 +1,4 @@
-import { credentialDescriptionSchema } from '@n8n/api-types';
+import { credentialDescriptionSchema } from '@MNI/api-types';
 import {
 	CredentialsEntity,
 	CredentialsRepository,
@@ -12,17 +12,17 @@ import {
 	UserRepository,
 	GLOBAL_OWNER_ROLE,
 	type OperationContext,
-} from '@n8n/db';
-import { Command, type PolicyCleared } from '@n8n/decorators';
-import { Container } from '@n8n/di';
-import { PROJECT_OWNER_ROLE_SLUG } from '@n8n/permissions';
-import type { EntityManager } from '@n8n/typeorm';
+} from '@MNI/db';
+import { Command, type PolicyCleared } from '@MNI/decorators';
+import { Container } from '@MNI/di';
+import { PROJECT_OWNER_ROLE_SLUG } from '@MNI/permissions';
+import type { EntityManager } from '@MNI/typeorm';
 import glob from 'fast-glob';
 import fs from 'fs';
 import omit from 'lodash/omit';
 import pick from 'lodash/pick';
-import { Cipher } from 'n8n-core';
-import { jsonParse, UserError, type ICredentialDataDecryptedObject } from 'n8n-workflow';
+import { Cipher } from 'MNI-core';
+import { jsonParse, UserError, type ICredentialDataDecryptedObject } from 'MNI-workflow';
 import { z } from 'zod';
 
 import { CredentialDescriptionsService } from '@/credentials/credential-descriptions.service';

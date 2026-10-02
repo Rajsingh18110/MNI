@@ -3,7 +3,7 @@ import { render } from '@testing-library/vue';
 import userEvent from '@testing-library/user-event';
 import { createTestingPinia } from '@pinia/testing';
 import { setActivePinia } from 'pinia';
-import type { PolicyViolation } from '@n8n/api-types';
+import type { PolicyViolation } from '@MNI/api-types';
 
 import { createTestNode, createTestWorkflow, mockNodeTypeDescription } from '@/__tests__/mocks';
 import { mockedStore } from '@/__tests__/utils';
@@ -24,17 +24,17 @@ const closeSpy = vi.fn();
 
 showMessageSpy.mockReturnValue({ close: closeSpy });
 
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: () => ({ showMessage: showMessageSpy }),
 }));
 
 const trackSpy = vi.hoisted(() => vi.fn());
 
-vi.mock('@n8n/composables/useTelemetry', () => ({
+vi.mock('@MNI/composables/useTelemetry', () => ({
 	useTelemetry: () => ({ track: trackSpy }),
 }));
 
-const SLACK_NODE_TYPE = 'n8n-nodes-base.slack';
+const SLACK_NODE_TYPE = 'MNI-nodes-base.slack';
 
 const slackViolation: PolicyViolation = {
 	kind: 'node-type-unavailable',
@@ -50,7 +50,7 @@ function prepareWorkflowWithTwoSlackNodes() {
 		id: 'w1',
 		nodes: [
 			createTestNode({ id: 'slack-1', name: 'Slack', type: SLACK_NODE_TYPE }),
-			createTestNode({ id: 'set-1', name: 'Set', type: 'n8n-nodes-base.set' }),
+			createTestNode({ id: 'set-1', name: 'Set', type: 'MNI-nodes-base.set' }),
 			createTestNode({ id: 'slack-2', name: 'Slack1', type: SLACK_NODE_TYPE }),
 		],
 	});
@@ -117,10 +117,10 @@ describe('usePolicyViolationToast', () => {
 				createTestNode({
 					id: 'github-1',
 					name: 'GitHub',
-					type: 'n8n-nodes-base.github',
+					type: 'MNI-nodes-base.github',
 					credentials: { githubApi: { id: 'c1', name: 'GitHub account' } },
 				}),
-				createTestNode({ id: 'set-1', name: 'Set', type: 'n8n-nodes-base.set' }),
+				createTestNode({ id: 'set-1', name: 'Set', type: 'MNI-nodes-base.set' }),
 			],
 		});
 		useWorkflowsStore().setWorkflowId(workflow.id);

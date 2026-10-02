@@ -1,4 +1,4 @@
-import type { IWorkflowGroup } from 'n8n-workflow';
+import type { IWorkflowGroup } from 'MNI-workflow';
 import type { INodeUi } from '@/Interface';
 import { STICKY_NODE_TYPE } from '@/app/constants/nodeTypes';
 import { GRID_SIZE } from '@/app/utils/nodeViewUtils';

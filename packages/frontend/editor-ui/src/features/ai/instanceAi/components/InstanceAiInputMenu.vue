@@ -8,10 +8,10 @@ import {
 	N8nSpinner,
 	N8nText,
 	N8nTooltip,
-} from '@n8n/design-system';
-import { useI18n, type BaseTextKey } from '@n8n/i18n';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
-import { TELEMETRY_EVENT } from '@n8n/telemetry';
+} from '@MNI/design-system';
+import { useI18n, type BaseTextKey } from '@MNI/i18n';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
+import { TELEMETRY_EVENT } from '@MNI/telemetry';
 import type { ToolConnectionStatus } from '@/features/shared/toolsConnection/types';
 import {
 	type InputMenuItem,

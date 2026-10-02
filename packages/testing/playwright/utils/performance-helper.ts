@@ -1,5 +1,5 @@
 import type { Page, TestInfo } from '@playwright/test';
-import type { MetricsHelper } from 'n8n-containers';
+import type { MetricsHelper } from 'MNI-containers';
 import { createWriteStream } from 'node:fs';
 import { mkdir, writeFile } from 'node:fs/promises';
 import { Readable } from 'node:stream';
@@ -14,10 +14,10 @@ interface HeapSnapshotResult {
 	message?: string;
 }
 
-const HEAP_USED_QUERY = 'n8n_nodejs_heap_size_used_bytes / 1024 / 1024';
-const HEAP_TOTAL_QUERY = 'n8n_nodejs_heap_size_total_bytes / 1024 / 1024';
-const RSS_QUERY = 'n8n_process_resident_memory_bytes / 1024 / 1024';
-const PSS_QUERY = 'n8n_process_pss_bytes / 1024 / 1024';
+const HEAP_USED_QUERY = 'MNI_nodejs_heap_size_used_bytes / 1024 / 1024';
+const HEAP_TOTAL_QUERY = 'MNI_nodejs_heap_size_total_bytes / 1024 / 1024';
+const RSS_QUERY = 'MNI_process_resident_memory_bytes / 1024 / 1024';
+const PSS_QUERY = 'MNI_process_pss_bytes / 1024 / 1024';
 
 export async function measurePerformance(
 	page: Page,

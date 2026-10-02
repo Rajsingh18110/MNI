@@ -1,8 +1,8 @@
 import { existsSync, readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 
-import { isRecord } from '@n8n/utils/is-record';
-import type { INodeProperties, INodeType, IPollFunctions } from 'n8n-workflow';
+import { isRecord } from '@MNI/utils/is-record';
+import type { INodeProperties, INodeType, IPollFunctions } from 'MNI-workflow';
 import { mockDeep } from 'vitest-mock-extended';
 
 import { Databricks } from '../Databricks.node';
@@ -82,7 +82,7 @@ describe('DatabricksTrigger', () => {
 	it('should be registered in the package manifest', () => {
 		const manifest = JSON.parse(
 			readFileSync(resolve(__dirname, '../../../package.json'), 'utf8'),
-		) as { n8n: { nodes: string[] } };
+		) as { MNI: { nodes: string[] } };
 
 		expect(manifest.n8n.nodes).toContain('dist/nodes/Databricks/DatabricksTrigger.node.js');
 	});

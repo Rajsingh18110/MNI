@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import type { WorkflowReviewInboxItem, WorkflowReviewRequestDetail } from '@n8n/api-types';
-import { N8nCallout, N8nTabs, N8nText } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+import type { WorkflowReviewInboxItem, WorkflowReviewRequestDetail } from '@MNI/api-types';
+import { N8nCallout, N8nTabs, N8nText } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 import { computed, provide } from 'vue';
 
 import { ReviewLinkedWorkflowsKey } from '../constants';
@@ -230,7 +230,7 @@ const tabOptions = computed(() => [
 	justify-content: space-between;
 	gap: var(--spacing--sm);
 
-	> :global(.n8n-tabs) {
+	> :global(.MNI-tabs) {
 		transform: translateY(var(--spacing--xs));
 	}
 }

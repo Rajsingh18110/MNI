@@ -1,6 +1,6 @@
-import { GlobalConfig } from '@n8n/config';
-import type { User } from '@n8n/db';
-import { Container } from '@n8n/di';
+import { GlobalConfig } from '@MNI/config';
+import type { User } from '@MNI/db';
+import { Container } from '@MNI/di';
 
 import { createOwner, createMember } from '@test-integration/db/users';
 import type { SuperAgentTest } from '@test-integration/types';

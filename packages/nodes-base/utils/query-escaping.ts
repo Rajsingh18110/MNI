@@ -1,5 +1,5 @@
-import { NodeOperationError, UserError } from 'n8n-workflow';
-import type { INode } from 'n8n-workflow';
+import { NodeOperationError, UserError } from 'MNI-workflow';
+import type { INode } from 'MNI-workflow';
 
 /**
  * Query languages differ in how a literal quote is written, so pick the helper

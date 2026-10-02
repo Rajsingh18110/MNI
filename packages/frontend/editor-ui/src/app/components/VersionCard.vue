@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { N8nBadge } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
-import type { Version, VersionNode } from '@n8n/rest-api-client/api/versions';
+import { N8nBadge } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
+import type { Version, VersionNode } from '@MNI/rest-api-client/api/versions';
 
 import NodeIcon from './NodeIcon.vue';
 import TimeAgo from './TimeAgo.vue';
@@ -32,7 +32,7 @@ const nodeName = (node: VersionNode): string => {
 					{{ `${i18n.baseText('versionCard.version')} ${version.name}` }}
 				</div>
 				<WarningTooltip v-if="version.hasSecurityIssue">
-					<span v-n8n-html="i18n.baseText('versionCard.thisVersionHasASecurityIssue')"></span>
+					<span v-MNI-html="i18n.baseText('versionCard.thisVersionHasASecurityIssue')"></span>
 				</WarningTooltip>
 				<N8nBadge
 					v-if="version.hasSecurityFix"
@@ -57,7 +57,7 @@ const nodeName = (node: VersionNode): string => {
 		<div>
 			<div
 				v-if="version.description"
-				v-n8n-html="version.description"
+				v-MNI-html="version.description"
 				:class="$style.description"
 			></div>
 			<div v-if="version.nodes && version.nodes.length > 0" :class="$style.nodes">

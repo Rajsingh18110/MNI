@@ -3,7 +3,7 @@ import { execFileSync } from 'child_process';
 import { mkdtempSync, writeFileSync, readFileSync, rmSync } from 'fs';
 import { join } from 'path';
 import { tmpdir } from 'os';
-import type { IWebhookFunctions } from 'n8n-workflow';
+import type { IWebhookFunctions } from 'MNI-workflow';
 
 import {
 	type AwsSnsMessage,

@@ -5,7 +5,7 @@ import { useEvalCollectionsFlag } from './useEvalCollectionsFlag';
 const settingsState = { collectionsEnabled: false };
 const posthogState = { enabled: false };
 
-vi.mock('@n8n/stores/settings.store', () => ({
+vi.mock('@MNI/stores/settings.store', () => ({
 	useSettingsStore: () => ({
 		settings: { evaluation: { collectionsEnabled: settingsState.collectionsEnabled } },
 	}),

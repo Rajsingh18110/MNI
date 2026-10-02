@@ -1,7 +1,7 @@
-import { Container } from '@n8n/di';
+import { Container } from '@MNI/di';
 import { type Response } from 'express';
 import jwt from 'jsonwebtoken';
-import { InstanceSettings } from 'n8n-core';
+import { InstanceSettings } from 'MNI-core';
 import type { MockProxy } from 'vitest-mock-extended';
 import { mock } from 'vitest-mock-extended';
 import {
@@ -11,7 +11,7 @@ import {
 	type NodeTypeAndVersion,
 	NodeOperationError,
 	FORM_TRIGGER_NODE_TYPE,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { renderFormNode, getFormTriggerNode } from '../utils/formNodeUtils';
 
@@ -127,7 +127,7 @@ describe('formNodeUtils', () => {
 			formSubmittedHeader: undefined,
 			formSubmittedText: 'Your response has been recorded',
 			formTitle: 'Test Title',
-			n8nWebsiteLink: 'https://n8n.io/?utm_source=n8n-internal&utm_medium=form-trigger',
+			n8nWebsiteLink: 'https://n8n.io/?utm_source=MNI-internal&utm_medium=form-trigger',
 			testRun: true,
 			useResponseData: true,
 		});
@@ -326,7 +326,7 @@ describe('formNodeUtils', () => {
 
 			expect(cookie).toHaveBeenCalledWith(
 				// Named for the run, so concurrent forms don't overwrite each other.
-				'n8n-form-auth-ex-execution-1',
+				'MNI-form-auth-ex-execution-1',
 				expect.any(String),
 				expect.objectContaining({ httpOnly: true, sameSite: 'lax', path: '/form-waiting' }),
 			);
@@ -392,7 +392,7 @@ describe('formNodeUtils', () => {
 			};
 			const otherNode: NodeTypeAndVersion = {
 				name: 'OtherNode',
-				type: 'n8n-nodes-base.other',
+				type: 'MNI-nodes-base.other',
 				typeVersion: 1,
 				disabled: false,
 			};
@@ -453,7 +453,7 @@ describe('formNodeUtils', () => {
 		it('should throw NodeOperationError when no form trigger nodes are found', () => {
 			const otherNode: NodeTypeAndVersion = {
 				name: 'OtherNode',
-				type: 'n8n-nodes-base.other',
+				type: 'MNI-nodes-base.other',
 				typeVersion: 1,
 				disabled: false,
 			};
@@ -519,13 +519,13 @@ describe('formNodeUtils', () => {
 			};
 			const webhookNode: NodeTypeAndVersion = {
 				name: 'WebhookNode',
-				type: 'n8n-nodes-base.webhook',
+				type: 'MNI-nodes-base.webhook',
 				typeVersion: 1,
 				disabled: false,
 			};
 			const httpNode: NodeTypeAndVersion = {
 				name: 'HttpNode',
-				type: 'n8n-nodes-base.httpRequest',
+				type: 'MNI-nodes-base.httpRequest',
 				typeVersion: 1,
 				disabled: false,
 			};

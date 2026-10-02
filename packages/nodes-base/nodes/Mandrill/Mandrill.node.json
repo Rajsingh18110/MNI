@@ -1,5 +1,5 @@
 {
-	"node": "n8n-nodes-base.mandrill",
+	"node": "MNI-nodes-base.mandrill",
 	"nodeVersion": "1.0",
 	"codexVersion": "1.0",
 	"categories": ["Communication", "Development"],
@@ -11,14 +11,14 @@
 		],
 		"primaryDocumentation": [
 			{
-				"url": "https://docs.n8n.io/integrations/builtin/app-nodes/n8n-nodes-base.mandrill/"
+				"url": "https://docs.n8n.io/integrations/builtin/app-nodes/MNI-nodes-base.mandrill/"
 			}
 		],
 		"generic": [
 			{
 				"label": "Love at first sight: Ricardo’s MNI journey",
 				"icon": "❤️",
-				"url": "https://n8n.io/blog/love-at-first-sight-ricardos-n8n-journey/"
+				"url": "https://n8n.io/blog/love-at-first-sight-ricardos-MNI-journey/"
 			}
 		]
 	}

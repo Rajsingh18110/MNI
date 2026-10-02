@@ -5,7 +5,7 @@ import { envForSlugs, previewSlugs } from './preview-labels.mjs';
 
 const labels = (...names) => names.map((name) => ({ name }));
 const noSecret = () => undefined;
-const withSecret = (value) => (name) => (name === 'N8N_LICENSE_ACTIVATION_KEY' ? value : undefined);
+const withSecret = (value) => (name) => (name === 'MNI_LICENSE_ACTIVATION_KEY' ? value : undefined);
 
 describe('previewSlugs', () => {
 	it('keeps preview: labels and strips the prefix', () => {
@@ -48,7 +48,7 @@ describe('envForSlugs', () => {
 	it('gives an enterprise preview the sandbox tenant and the key', () => {
 		const { env, warnings } = envForSlugs(['enterprise'], withSecret('sandbox-key'));
 
-		assert.deepEqual(env, ['N8N_LICENSE_TENANT_ID=1001', 'N8N_LICENSE_ACTIVATION_KEY=sandbox-key']);
+		assert.deepEqual(env, ['MNI_LICENSE_TENANT_ID=1001', 'MNI_LICENSE_ACTIVATION_KEY=sandbox-key']);
 		assert.deepEqual(warnings, []);
 	});
 
@@ -59,17 +59,17 @@ describe('envForSlugs', () => {
 
 		assert.deepEqual(env, []);
 		assert.equal(warnings.length, 1);
-		assert.match(warnings[0], /N8N_LICENSE_ACTIVATION_KEY codespace secret/);
+		assert.match(warnings[0], /MNI_LICENSE_ACTIVATION_KEY codespace secret/);
 	});
 
 	it('maps debug to the log level', () => {
-		assert.deepEqual(envForSlugs(['debug'], noSecret).env, ['N8N_LOG_LEVEL=debug']);
+		assert.deepEqual(envForSlugs(['debug'], noSecret).env, ['MNI_LOG_LEVEL=debug']);
 	});
 
 	it('warns about a slug it does not know, and keeps the rest', () => {
 		const { env, warnings } = envForSlugs(['debug', 'teleport'], noSecret);
 
-		assert.deepEqual(env, ['N8N_LOG_LEVEL=debug']);
+		assert.deepEqual(env, ['MNI_LOG_LEVEL=debug']);
 		assert.match(warnings[0], /preview:teleport/);
 	});
 

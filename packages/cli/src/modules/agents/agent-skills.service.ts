@@ -3,11 +3,11 @@ import {
 	type AgentJsonConfig,
 	type AgentSkill,
 	type AgentSkillMutationResponse,
-} from '@n8n/api-types';
-import { Logger } from '@n8n/backend-common';
-import { Container, Service } from '@n8n/di';
+} from '@MNI/api-types';
+import { Logger } from '@MNI/backend-common';
+import { Container, Service } from '@MNI/di';
 import isEqual from 'lodash/isEqual';
-import { UserError } from 'n8n-workflow';
+import { UserError } from 'MNI-workflow';
 
 import { ConflictError } from '@/errors/response-errors/conflict.error';
 import { NotFoundError } from '@/errors/response-errors/not-found.error';

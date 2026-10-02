@@ -1,5 +1,5 @@
-import type { ExecutionOptions } from '@n8n/agents';
-import type { AiConfig } from '@n8n/config';
+import type { ExecutionOptions } from '@MNI/agents';
+import type { AiConfig } from '@MNI/config';
 
 /**
  * Operator overrides for the agent runtime's model-stream stall deadlines

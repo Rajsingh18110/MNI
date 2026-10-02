@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { ref, useTemplateRef } from 'vue';
 import { useDropZone } from '@vueuse/core';
-import { N8nButton, N8nIcon, N8nText } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+import { N8nButton, N8nIcon, N8nText } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 
 import { AgentSkillImportError, useAgentSkillImport } from '../composables/useAgentSkillImport';
 import type { AgentSkill } from '../types';

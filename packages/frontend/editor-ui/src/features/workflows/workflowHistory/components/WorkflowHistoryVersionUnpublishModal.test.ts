@@ -1,7 +1,7 @@
 import { createComponentRenderer } from '@/__tests__/render';
 import { createTestingPinia } from '@pinia/testing';
 import { waitFor } from '@testing-library/vue';
-import { createEventBus } from '@n8n/utils/event-bus';
+import { createEventBus } from '@MNI/utils/event-bus';
 import { VIEWS, WORKFLOW_HISTORY_VERSION_UNPUBLISH } from '@/app/constants';
 import { AGENT_BUILDER_VIEW } from '@/features/agents/constants';
 import * as workflowDependenciesApi from '@/app/api/workflow-dependencies';

@@ -7,8 +7,8 @@ import type {
 	ILoadOptionsFunctions,
 	IWebhookFunctions,
 	JsonObject,
-} from 'n8n-workflow';
-import { NodeApiError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeApiError } from 'MNI-workflow';
 
 import type {
 	WhatsAppAppWebhookSubscriptionsResponse,
@@ -119,7 +119,7 @@ export const createMessage = (
 	let n8nAttribution: string = '';
 	if (sendAndWaitConfig.appendAttribution) {
 		const attributionText = 'This message was sent automatically with ';
-		const link = createUtmCampaignLink('n8n-nodes-base.whatsapp', instanceId);
+		const link = createUtmCampaignLink('MNI-nodes-base.whatsapp', instanceId);
 		n8nAttribution = `\n\n${attributionText}${link}`;
 	}
 

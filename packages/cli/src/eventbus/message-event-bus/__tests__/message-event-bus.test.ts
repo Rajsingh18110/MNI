@@ -1,7 +1,7 @@
-import type { Logger } from '@n8n/backend-common';
-import type { GlobalConfig } from '@n8n/config';
-import type { ExecutionRepository } from '@n8n/db';
-import type { InstanceSettings } from 'n8n-core';
+import type { Logger } from '@MNI/backend-common';
+import type { GlobalConfig } from '@MNI/config';
+import type { ExecutionRepository } from '@MNI/db';
+import type { InstanceSettings } from 'MNI-core';
 import { mkdtempSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';

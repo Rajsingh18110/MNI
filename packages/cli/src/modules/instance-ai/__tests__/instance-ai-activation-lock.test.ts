@@ -1,5 +1,5 @@
-import { UNLIMITED_CREDITS, type InstanceAiCredits } from '@n8n/api-types';
-import type { User } from '@n8n/db';
+import { UNLIMITED_CREDITS, type InstanceAiCredits } from '@MNI/api-types';
+import type { User } from '@MNI/db';
 import { mock } from 'vitest-mock-extended';
 
 import type { Push } from '@/push';
@@ -22,7 +22,7 @@ describe('InstanceAiCreditService activation lock', () => {
 			activatedAt?: number;
 			/** Whether the instance has met the message threshold. */
 			messageThresholdMet?: boolean;
-			/** Value of `N8N_INSTANCE_AI_ACTIVATION_LOCK_MESSAGE_THRESHOLD`. */
+			/** Value of `MNI_INSTANCE_AI_ACTIVATION_LOCK_MESSAGE_THRESHOLD`. */
 			messageThreshold?: number;
 			/** `quotaLocked` stays required here so each case states the service's verdict. */
 			lockResult?: InstanceAiCredits & { quotaLocked: boolean };

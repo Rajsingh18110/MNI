@@ -3,10 +3,10 @@ import { useRouter } from 'vue-router';
 import { createTestingPinia } from '@pinia/testing';
 import merge from 'lodash/merge';
 import SamlOnboarding from './SamlOnboarding.vue';
-import { STORES } from '@n8n/stores';
+import { STORES } from '@MNI/stores';
 import { SETTINGS_STORE_DEFAULT_STATE, waitAllPromises } from '@/__tests__/utils';
 import { createComponentRenderer } from '@/__tests__/render';
-import { useUsersStore } from '@n8n/stores/users.store';
+import { useUsersStore } from '@MNI/stores/users.store';
 
 vi.mock('vue-router', () => {
 	const push = vi.fn();

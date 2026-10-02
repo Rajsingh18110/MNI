@@ -5,8 +5,8 @@ import type {
 	IHttpRequestMethods,
 	INode,
 	INodeExecutionData,
-} from 'n8n-workflow';
-import { NodeApiError, NodeOperationError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeApiError, NodeOperationError } from 'MNI-workflow';
 import type { Mock } from 'vitest';
 
 import { brandfetchApiRequest, fetchAndPrepareBinaryData } from '../../v1/GenericFunctions';
@@ -14,7 +14,7 @@ import { brandfetchApiRequest, fetchAndPrepareBinaryData } from '../../v1/Generi
 export const node: INode = {
 	id: 'c4a5ca75-18c7-4cc8-bf7d-5d57bb7d84da',
 	name: 'Brandfetch',
-	type: 'n8n-nodes-base.Brandfetch',
+	type: 'MNI-nodes-base.Brandfetch',
 	typeVersion: 1,
 	position: [0, 0],
 	parameters: {

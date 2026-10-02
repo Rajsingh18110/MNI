@@ -1,5 +1,5 @@
-import type { IConnections, INode, INodeType, INodeTypes } from 'n8n-workflow';
-import { Workflow } from 'n8n-workflow';
+import type { IConnections, INode, INodeType, INodeTypes } from 'MNI-workflow';
+import { Workflow } from 'MNI-workflow';
 
 export type WorkflowTriggerVersion = { nodes: INode[]; connections: IConnections };
 

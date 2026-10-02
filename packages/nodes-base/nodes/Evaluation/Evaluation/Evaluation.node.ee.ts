@@ -1,11 +1,11 @@
-/* eslint-disable n8n-nodes-base/node-filename-against-convention */
+/* eslint-disable MNI-nodes-base/node-filename-against-convention */
 import type {
 	IExecuteFunctions,
 	INodeType,
 	INodeTypeDescription,
 	INodeExecutionData,
-} from 'n8n-workflow';
-import { metricRequiresModelConnection } from 'n8n-workflow'; // See packages/workflow/src/evaluation-helpers.ts
+} from 'MNI-workflow';
+import { metricRequiresModelConnection } from 'MNI-workflow'; // See packages/workflow/src/evaluation-helpers.ts
 
 import {
 	setCheckIfEvaluatingProperties,

@@ -1,5 +1,5 @@
 const fs = require('fs');
-const file = 'packages/frontend/@n8n/i18n/src/locales/en.json';
+const file = 'packages/frontend/@MNI/i18n/src/locales/en.json';
 const data = JSON.parse(fs.readFileSync(file, 'utf8'));
 
 function replaceN8n(str) {
@@ -17,7 +17,7 @@ for (const key in data) {
   // skip technical keys but update the value
   if (data[key] && typeof data[key] === 'string') {
     // Preserve license mention if needed, or replace.
-    // The instructions say: "About screen... preserve technically necessary information such as: version, license... Do not falsely claim that MNI is the original author of n8n."
+    // The instructions say: "About screen... preserve technically necessary information such as: version, license... Do not falsely claim that MNI is the original author of MNI."
     if (key.includes('license') || key.includes('License')) continue;
     
     // safe replace

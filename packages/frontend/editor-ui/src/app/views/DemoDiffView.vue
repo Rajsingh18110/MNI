@@ -2,8 +2,8 @@
 import { ref, onMounted, onUnmounted } from 'vue';
 import WorkflowDiffView from '@/features/workflows/workflowDiff/WorkflowDiffView.vue';
 import type { IWorkflowDb } from '@/Interface';
-import { useRootStore } from '@n8n/stores/useRootStore';
-import { useI18n } from '@n8n/i18n';
+import { useRootStore } from '@MNI/stores/useRootStore';
+import { useI18n } from '@MNI/i18n';
 import { isPostMessageOriginAllowed } from '@/app/utils/postMessageUtils';
 
 const rootStore = useRootStore();

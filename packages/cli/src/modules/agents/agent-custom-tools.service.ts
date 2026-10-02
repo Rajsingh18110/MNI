@@ -1,13 +1,13 @@
-import { type ToolDescriptor } from '@n8n/agents';
+import { type ToolDescriptor } from '@MNI/agents';
 import {
 	type AgentJsonConfig,
 	type AgentJsonToolConfig,
 	CUSTOM_TOOL_ID_REGEX,
-} from '@n8n/api-types';
-import { Logger } from '@n8n/backend-common';
-import { Service } from '@n8n/di';
+} from '@MNI/api-types';
+import { Logger } from '@MNI/backend-common';
+import { Service } from '@MNI/di';
 import isEqual from 'lodash/isEqual';
-import { UserError } from 'n8n-workflow';
+import { UserError } from 'MNI-workflow';
 
 import {
 	AgentModificationTelemetryService,

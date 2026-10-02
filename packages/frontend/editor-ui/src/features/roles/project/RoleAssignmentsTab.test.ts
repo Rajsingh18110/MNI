@@ -2,10 +2,10 @@ import { createComponentRenderer } from '@/__tests__/render';
 import { createTestingPinia } from '@pinia/testing';
 import userEvent from '@testing-library/user-event';
 import { waitFor } from '@testing-library/vue';
-import { useRolesStore } from '@n8n/stores/roles.store';
+import { useRolesStore } from '@MNI/stores/roles.store';
 import { mockedStore, type MockedStore } from '@/__tests__/utils';
 import RoleAssignmentsTab from './RoleAssignmentsTab.vue';
-import type { RoleAssignmentsResponse, RoleProjectAssignment } from '@n8n/api-types';
+import type { RoleAssignmentsResponse, RoleProjectAssignment } from '@MNI/api-types';
 
 vi.mock('vue-router', async () => {
 	const actual = await vi.importActual('vue-router');
@@ -56,7 +56,7 @@ describe('RoleAssignmentsTab', () => {
 
 			const { container } = renderComponent({ props: { roleSlug: 'test-role' } });
 
-			expect(container.querySelector('.n8n-loading')).toBeInTheDocument();
+			expect(container.querySelector('.MNI-loading')).toBeInTheDocument();
 		});
 	});
 

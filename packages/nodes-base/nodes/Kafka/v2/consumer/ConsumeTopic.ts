@@ -1,6 +1,6 @@
 import type { KafkaJS } from '@confluentinc/kafka-javascript';
-import { sleep } from '@n8n/utils/sleep';
-import type { Logger } from 'n8n-workflow';
+import { sleep } from '@MNI/utils/sleep';
+import type { Logger } from 'MNI-workflow';
 
 import type { DataEmitter } from './DataEmitter';
 import type { KafkaMessageParser } from './MessageParser';

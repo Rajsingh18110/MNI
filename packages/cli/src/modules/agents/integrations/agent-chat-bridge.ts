@@ -1,4 +1,4 @@
-import { isAttachmentValidationError, type AgentMessage, type StreamChunk } from '@n8n/agents';
+import { isAttachmentValidationError, type AgentMessage, type StreamChunk } from '@MNI/agents';
 import {
 	MAX_AGENT_CHAT_ATTACHMENT_FILENAME_LENGTH,
 	MAX_AGENT_CHAT_ATTACHMENT_SIZE_BYTES,
@@ -6,13 +6,13 @@ import {
 	MAX_AGENT_CHAT_ATTACHMENTS_PER_MESSAGE,
 	type AgentIntegrationConfig,
 	type AgentMessageAuthor,
-} from '@n8n/api-types';
-import { LockNamespace, LockService } from '@n8n/backend-common';
-import { type HttpRequestClient, OutboundHttp } from '@n8n/backend-network';
-import { Container } from '@n8n/di';
-import { isRecord } from '@n8n/utils/is-record';
+} from '@MNI/api-types';
+import { LockNamespace, LockService } from '@MNI/backend-common';
+import { type HttpRequestClient, OutboundHttp } from '@MNI/backend-network';
+import { Container } from '@MNI/di';
+import { isRecord } from '@MNI/utils/is-record';
 import type { Attachment, Author, CardElement, Chat, Message, Thread } from 'chat';
-import { UserError, type Logger } from 'n8n-workflow';
+import { UserError, type Logger } from 'MNI-workflow';
 
 import { CacheService } from '@/services/cache/cache.service';
 
@@ -170,7 +170,7 @@ function errorText(error: unknown): string {
 		return `⚠️ ${error.message}`;
 	}
 	if (error instanceof UserError) {
-		return `⚠️ This agent is misconfigured: ${error.message} An agent owner has to fix this in n8n.`;
+		return `⚠️ This agent is misconfigured: ${error.message} An agent owner has to fix this in MNI.`;
 	}
 	return '⚠️ Something went wrong while processing your request. Please try again.';
 }

@@ -1,5 +1,5 @@
-import type { INode } from 'n8n-workflow';
-import { NodeError, NodeOperationError } from 'n8n-workflow';
+import type { INode } from 'MNI-workflow';
+import { NodeError, NodeOperationError } from 'MNI-workflow';
 
 /**
  * Stamps `context.itemIndex` on a `NodeError` that does not carry one yet, so a

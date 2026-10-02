@@ -1,23 +1,23 @@
 <script lang="ts" setup>
 import { ref, watch, onMounted, nextTick } from 'vue';
 import { MAX_WORKFLOW_NAME_LENGTH } from '@/app/constants';
-import { useToast } from '@n8n/composables/useToast';
+import { useToast } from '@MNI/composables/useToast';
 import WorkflowTagsDropdown from '@/features/shared/tags/components/WorkflowTagsDropdown.vue';
 import Modal from '@/app/components/Modal.vue';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { useWorkflowsStore } from '@/app/stores/workflows.store';
 import { useWorkflowsListStore } from '@/app/stores/workflowsList.store';
-import type { WorkflowDataCreate } from '@n8n/rest-api-client/api/workflows';
-import { createEventBus, type EventBus } from '@n8n/utils/event-bus';
+import type { WorkflowDataCreate } from '@MNI/rest-api-client/api/workflows';
+import { createEventBus, type EventBus } from '@MNI/utils/event-bus';
 import { useCredentialsStore } from '@/features/credentials/credentials.store';
 import { useWorkflowHelpers } from '@/app/composables/useWorkflowHelpers';
 import { useRouter } from 'vue-router';
-import { useI18n } from '@n8n/i18n';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
+import { useI18n } from '@MNI/i18n';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
 import { useWorkflowSaving } from '@/app/composables/useWorkflowSaving';
 import { useEmptyCanvasGroupsFlag } from '@/features/workflows/canvas/composables/useEmptyCanvasGroupsFlag';
 
-import { N8nButton, N8nInput } from '@n8n/design-system';
+import { N8nButton, N8nInput } from '@MNI/design-system';
 const props = defineProps<{
 	modalName: string;
 	isActive: boolean;

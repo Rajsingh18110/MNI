@@ -5,7 +5,7 @@ import type {
 	IExecuteSingleFunctions,
 	IDataObject,
 	IHttpRequestMethods,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { getAwsCredentials } from '../../GenericFunctions';
 

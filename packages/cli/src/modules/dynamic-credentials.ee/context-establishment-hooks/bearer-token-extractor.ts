@@ -4,7 +4,7 @@ import {
 	ContextEstablishmentResult,
 	HookDescription,
 	IContextEstablishmentHook,
-} from '@n8n/decorators';
+} from '@MNI/decorators';
 
 import { HttpHeaderExtractor } from './http-header-extractor';
 

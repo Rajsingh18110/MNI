@@ -1,6 +1,6 @@
 import type { Mock } from 'vitest';
-import type { DatabaseConfig, PrometheusMetricsConfig } from '@n8n/config';
-import { DbConnectionMetrics, type DbConnection, type DbPoolStats } from '@n8n/db';
+import type { DatabaseConfig, PrometheusMetricsConfig } from '@MNI/config';
+import { DbConnectionMetrics, type DbConnection, type DbPoolStats } from '@MNI/db';
 import promClient from 'prom-client';
 
 import { PrometheusDbPoolMetricsService } from '../db-pool-metrics.service';
@@ -14,7 +14,7 @@ type GaugeConfig = {
 };
 
 const buildConfig = (overrides: Partial<PrometheusMetricsConfig> = {}) =>
-	({ prefix: 'n8n_', includeDbPoolMetrics: true, ...overrides }) as PrometheusMetricsConfig;
+	({ prefix: 'MNI_', includeDbPoolMetrics: true, ...overrides }) as PrometheusMetricsConfig;
 
 const buildDatabaseConfig = (overrides: Partial<DatabaseConfig> = {}) =>
 	({
@@ -87,14 +87,14 @@ describe('PrometheusDbPoolMetricsService', () => {
 			const names = gaugeConfigs().map((g) => g.name);
 			expect(names).toEqual(
 				expect.arrayContaining([
-					'n8n_db_pool_connections_active',
-					'n8n_db_pool_connections_idle',
-					'n8n_db_pool_requests_pending',
-					'n8n_db_pool_connections_max',
+					'MNI_db_pool_connections_active',
+					'MNI_db_pool_connections_idle',
+					'MNI_db_pool_requests_pending',
+					'MNI_db_pool_connections_max',
 				]),
 			);
 			expect(promClient.Histogram).toHaveBeenCalledWith(
-				expect.objectContaining({ name: 'n8n_db_pool_acquire_seconds' }),
+				expect.objectContaining({ name: 'MNI_db_pool_acquire_seconds' }),
 			);
 		});
 
@@ -143,15 +143,15 @@ describe('PrometheusDbPoolMetricsService', () => {
 		});
 
 		it('reports active connections', () => {
-			expect(runCollect('n8n_db_pool_connections_active')).toHaveBeenCalledWith(3);
+			expect(runCollect('MNI_db_pool_connections_active')).toHaveBeenCalledWith(3);
 		});
 
 		it('reports idle connections', () => {
-			expect(runCollect('n8n_db_pool_connections_idle')).toHaveBeenCalledWith(2);
+			expect(runCollect('MNI_db_pool_connections_idle')).toHaveBeenCalledWith(2);
 		});
 
 		it('reports pending requests', () => {
-			expect(runCollect('n8n_db_pool_requests_pending')).toHaveBeenCalledWith(1);
+			expect(runCollect('MNI_db_pool_requests_pending')).toHaveBeenCalledWith(1);
 		});
 	});
 
@@ -163,7 +163,7 @@ describe('PrometheusDbPoolMetricsService', () => {
 			new DbConnectionMetrics(),
 		).init();
 
-		expect(runCollect('n8n_db_pool_connections_active')).not.toHaveBeenCalled();
+		expect(runCollect('MNI_db_pool_connections_active')).not.toHaveBeenCalled();
 	});
 
 	describe('acquire-latency histogram', () => {

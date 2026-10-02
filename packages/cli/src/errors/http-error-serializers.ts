@@ -1,4 +1,4 @@
-import { isWorkflowPublishBlockedDetails } from '@n8n/api-types';
+import { isWorkflowPublishBlockedDetails } from '@MNI/api-types';
 
 import { HttpErrorKind, type HttpErrorDescriptor } from '@/errors/http-error-classifier';
 

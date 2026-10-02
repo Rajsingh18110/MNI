@@ -4,21 +4,21 @@ import { ref, reactive, nextTick, effectScope, type Ref } from 'vue';
 import { flushPromises } from '@vue/test-utils';
 import {
 	APPROVAL_TOOL_NAME,
-	N8N_CHAT_ACTION_TOOL_NAME,
+	MNI_CHAT_ACTION_TOOL_NAME,
 	WAIT_TOOL_NAME,
 	type AgentChatMessagesResponse,
 	type AgentSseEvent,
-} from '@n8n/api-types';
+} from '@MNI/api-types';
 
-vi.mock('@n8n/stores/useRootStore', () => ({
+vi.mock('@MNI/stores/useRootStore', () => ({
 	useRootStore: () => ({ restApiContext: { baseUrl: 'http://localhost:5678' } }),
 }));
 
-vi.mock('@n8n/i18n', () => ({
+vi.mock('@MNI/i18n', () => ({
 	useI18n: () => ({ baseText: (k: string) => k }),
 }));
 
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: () => ({ showError: vi.fn() }),
 }));
 
@@ -409,7 +409,7 @@ describe('useAgentChatStream — SDK-aligned event handling', () => {
 					{
 						type: 'tool-call',
 						toolCallId: 'tc-question',
-						toolName: N8N_CHAT_ACTION_TOOL_NAME,
+						toolName: MNI_CHAT_ACTION_TOOL_NAME,
 						input: {
 							action: 'respond',
 							input: {
@@ -426,7 +426,7 @@ describe('useAgentChatStream — SDK-aligned event handling', () => {
 						payload: {
 							toolCallId: 'tc-question',
 							runId: 'run-question',
-							toolName: N8N_CHAT_ACTION_TOOL_NAME,
+							toolName: MNI_CHAT_ACTION_TOOL_NAME,
 							input: { type: 'integration_action' },
 						},
 					},
@@ -485,7 +485,7 @@ describe('useAgentChatStream — SDK-aligned event handling', () => {
 			{
 				type: 'tool-call',
 				toolCallId: 'tc-question',
-				toolName: N8N_CHAT_ACTION_TOOL_NAME,
+				toolName: MNI_CHAT_ACTION_TOOL_NAME,
 				input: {
 					action: 'respond',
 					input: {
@@ -500,7 +500,7 @@ describe('useAgentChatStream — SDK-aligned event handling', () => {
 				payload: {
 					toolCallId: 'tc-question',
 					runId: 'run-question',
-					toolName: N8N_CHAT_ACTION_TOOL_NAME,
+					toolName: MNI_CHAT_ACTION_TOOL_NAME,
 					input: { type: 'integration_action' },
 				},
 			},
@@ -1944,14 +1944,14 @@ describe('useAgentChatStream — SDK-aligned event handling', () => {
 		const sidecar = {
 			type: 'integration_action',
 			action: 'respond',
-			integrationConnectionId: 'n8n_chat',
+			integrationConnectionId: 'MNI_chat',
 			messageContext: null,
 		};
 		const events: AgentSseEvent[] = [
 			{
 				type: 'tool-call',
 				toolCallId: 'tc-1',
-				toolName: N8N_CHAT_ACTION_TOOL_NAME,
+				toolName: MNI_CHAT_ACTION_TOOL_NAME,
 				input: cardInput,
 			},
 			{
@@ -1959,7 +1959,7 @@ describe('useAgentChatStream — SDK-aligned event handling', () => {
 				payload: {
 					toolCallId: 'tc-1',
 					runId: 'run-1',
-					toolName: N8N_CHAT_ACTION_TOOL_NAME,
+					toolName: MNI_CHAT_ACTION_TOOL_NAME,
 					input: sidecar,
 				},
 			},
@@ -1977,12 +1977,12 @@ describe('useAgentChatStream — SDK-aligned event handling', () => {
 		expect(tc.input).toEqual(cardInput); // NOT clobbered by the sidecar
 		expect(tc.suspendPayload).toEqual(sidecar);
 		expect(tc.state).toBe('suspended');
-		expect(msg.interactive?.toolName).toBe(N8N_CHAT_ACTION_TOOL_NAME);
+		expect(msg.interactive?.toolName).toBe(MNI_CHAT_ACTION_TOOL_NAME);
 		expect(msg.interactive?.runId).toBe('run-1');
 		expect(msg.status).toBe('awaitingUser');
 	});
 
-	it('renders a resolved display-only n8n_chat card when its tool result arrives', async () => {
+	it('renders a resolved display-only MNI_chat card when its tool result arrives', async () => {
 		// Display-only cards (no interactive components) never suspend — the
 		// card must still attach to the message when the tool resolves.
 		const cardInput = {
@@ -2001,13 +2001,13 @@ describe('useAgentChatStream — SDK-aligned event handling', () => {
 			{
 				type: 'tool-call',
 				toolCallId: 'tc-2',
-				toolName: N8N_CHAT_ACTION_TOOL_NAME,
+				toolName: MNI_CHAT_ACTION_TOOL_NAME,
 				input: cardInput,
 			},
 			{
 				type: 'tool-result',
 				toolCallId: 'tc-2',
-				toolName: N8N_CHAT_ACTION_TOOL_NAME,
+				toolName: MNI_CHAT_ACTION_TOOL_NAME,
 				output: { ok: true },
 			},
 			{ type: 'done' },
@@ -2020,12 +2020,12 @@ describe('useAgentChatStream — SDK-aligned event handling', () => {
 		await nextTick();
 
 		const msg = hook.messages.value.at(-1)!;
-		expect(msg.interactive?.toolName).toBe(N8N_CHAT_ACTION_TOOL_NAME);
+		expect(msg.interactive?.toolName).toBe(MNI_CHAT_ACTION_TOOL_NAME);
 		expect(msg.interactive?.resolvedAt).toBeDefined();
 		expect(msg.status).not.toBe('awaitingUser');
 	});
 
-	it('keeps multiple resolved n8n_chat cards from one streamed assistant message', async () => {
+	it('keeps multiple resolved MNI_chat cards from one streamed assistant message', async () => {
 		const firstCardInput = {
 			action: 'respond',
 			input: {
@@ -2052,25 +2052,25 @@ describe('useAgentChatStream — SDK-aligned event handling', () => {
 			{
 				type: 'tool-call',
 				toolCallId: 'tc-card-1',
-				toolName: N8N_CHAT_ACTION_TOOL_NAME,
+				toolName: MNI_CHAT_ACTION_TOOL_NAME,
 				input: firstCardInput,
 			},
 			{
 				type: 'tool-result',
 				toolCallId: 'tc-card-1',
-				toolName: N8N_CHAT_ACTION_TOOL_NAME,
+				toolName: MNI_CHAT_ACTION_TOOL_NAME,
 				output: { ok: true },
 			},
 			{
 				type: 'tool-call',
 				toolCallId: 'tc-card-2',
-				toolName: N8N_CHAT_ACTION_TOOL_NAME,
+				toolName: MNI_CHAT_ACTION_TOOL_NAME,
 				input: secondCardInput,
 			},
 			{
 				type: 'tool-result',
 				toolCallId: 'tc-card-2',
-				toolName: N8N_CHAT_ACTION_TOOL_NAME,
+				toolName: MNI_CHAT_ACTION_TOOL_NAME,
 				output: { ok: true },
 			},
 			{ type: 'done' },
@@ -2089,7 +2089,7 @@ describe('useAgentChatStream — SDK-aligned event handling', () => {
 			'tc-card-2',
 		]);
 		expect(
-			msg.interactives?.every((payload) => payload.toolName === N8N_CHAT_ACTION_TOOL_NAME),
+			msg.interactives?.every((payload) => payload.toolName === MNI_CHAT_ACTION_TOOL_NAME),
 		).toBe(true);
 	});
 
@@ -2117,14 +2117,14 @@ describe('useAgentChatStream — SDK-aligned event handling', () => {
 		const sidecar = {
 			type: 'integration_action',
 			action: 'respond',
-			integrationConnectionId: 'n8n_chat',
+			integrationConnectionId: 'MNI_chat',
 			messageContext: null,
 		};
 		const events: AgentSseEvent[] = [
 			{
 				type: 'tool-call',
 				toolCallId: 'tc-card-1',
-				toolName: N8N_CHAT_ACTION_TOOL_NAME,
+				toolName: MNI_CHAT_ACTION_TOOL_NAME,
 				input: firstCardInput,
 			},
 			{
@@ -2132,14 +2132,14 @@ describe('useAgentChatStream — SDK-aligned event handling', () => {
 				payload: {
 					toolCallId: 'tc-card-1',
 					runId: 'run-card-1',
-					toolName: N8N_CHAT_ACTION_TOOL_NAME,
+					toolName: MNI_CHAT_ACTION_TOOL_NAME,
 					input: sidecar,
 				},
 			},
 			{
 				type: 'tool-call',
 				toolCallId: 'tc-card-2',
-				toolName: N8N_CHAT_ACTION_TOOL_NAME,
+				toolName: MNI_CHAT_ACTION_TOOL_NAME,
 				input: secondCardInput,
 			},
 			{
@@ -2147,14 +2147,14 @@ describe('useAgentChatStream — SDK-aligned event handling', () => {
 				payload: {
 					toolCallId: 'tc-card-2',
 					runId: 'run-card-2',
-					toolName: N8N_CHAT_ACTION_TOOL_NAME,
+					toolName: MNI_CHAT_ACTION_TOOL_NAME,
 					input: sidecar,
 				},
 			},
 			{
 				type: 'tool-result',
 				toolCallId: 'tc-card-1',
-				toolName: N8N_CHAT_ACTION_TOOL_NAME,
+				toolName: MNI_CHAT_ACTION_TOOL_NAME,
 				output: { type: 'button', value: 'yes' },
 			},
 			{ type: 'done' },
@@ -2197,7 +2197,7 @@ describe('useAgentChatStream — loadHistory', () => {
 		vi.restoreAllMocks();
 	});
 
-	it('re-arms a suspended n8n_chat_action card from the chat history sidecar', async () => {
+	it('re-arms a suspended MNI_chat_action card from the chat history sidecar', async () => {
 		const cardInput = {
 			action: 'respond',
 			input: { message: { card: { components: [{ type: 'button', value: 'ok' }] } } },
@@ -2210,7 +2210,7 @@ describe('useAgentChatStream — loadHistory', () => {
 					content: [
 						{
 							type: 'tool-call',
-							toolName: N8N_CHAT_ACTION_TOOL_NAME,
+							toolName: MNI_CHAT_ACTION_TOOL_NAME,
 							toolCallId: 'tc-1',
 							input: cardInput,
 							state: 'pending',
@@ -2226,12 +2226,12 @@ describe('useAgentChatStream — loadHistory', () => {
 		await hook.loadHistory();
 
 		const msg = hook.messages.value.at(-1)!;
-		expect(msg.interactive?.toolName).toBe(N8N_CHAT_ACTION_TOOL_NAME);
+		expect(msg.interactive?.toolName).toBe(MNI_CHAT_ACTION_TOOL_NAME);
 		expect(msg.interactive?.runId).toBe('run-9');
 		expect(msg.status).toBe('awaitingUser');
 	});
 
-	it('re-arms a suspended n8n_chat_action card from continued session history', async () => {
+	it('re-arms a suspended MNI_chat_action card from continued session history', async () => {
 		const cardInput = {
 			action: 'respond',
 			input: { message: { card: { components: [{ type: 'button', value: 'approve' }] } } },
@@ -2244,7 +2244,7 @@ describe('useAgentChatStream — loadHistory', () => {
 					content: [
 						{
 							type: 'tool-call',
-							toolName: N8N_CHAT_ACTION_TOOL_NAME,
+							toolName: MNI_CHAT_ACTION_TOOL_NAME,
 							toolCallId: 'tc-continued',
 							input: cardInput,
 							state: 'pending',
@@ -2265,7 +2265,7 @@ describe('useAgentChatStream — loadHistory', () => {
 			'thread-1',
 		);
 		const msg = hook.messages.value.at(-1)!;
-		expect(msg.interactive?.toolName).toBe(N8N_CHAT_ACTION_TOOL_NAME);
+		expect(msg.interactive?.toolName).toBe(MNI_CHAT_ACTION_TOOL_NAME);
 		expect(msg.interactive?.runId).toBe('run-continued');
 		expect(msg.status).toBe('awaitingUser');
 	});
@@ -3185,8 +3185,8 @@ describe('useAgentChatStream — execution recovery', () => {
 			resumeData: { approved: true },
 		},
 		{
-			toolName: N8N_CHAT_ACTION_TOOL_NAME,
-			cardName: N8N_CHAT_ACTION_TOOL_NAME,
+			toolName: MNI_CHAT_ACTION_TOOL_NAME,
+			cardName: MNI_CHAT_ACTION_TOOL_NAME,
 			input: {
 				action: 'respond',
 				input: {
@@ -3404,7 +3404,7 @@ describe('useAgentChatStream — execution recovery', () => {
 					content: '',
 					status: 'awaitingUser',
 					interactive: {
-						toolName: N8N_CHAT_ACTION_TOOL_NAME,
+						toolName: MNI_CHAT_ACTION_TOOL_NAME,
 						toolCallId: 'tc-1',
 						runId: 'run-1',
 						input: { card: { components: [{ type: 'button', label: 'Yes', value: 'yes' }] } },

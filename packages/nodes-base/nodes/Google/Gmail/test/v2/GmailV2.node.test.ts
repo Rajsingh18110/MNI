@@ -1,7 +1,7 @@
-/* eslint-disable n8n-nodes-base/node-param-display-name-miscased */
+/* eslint-disable MNI-nodes-base/node-param-display-name-miscased */
 import { NodeTestHarness } from '@nodes-testing/node-test-harness';
 import { mock, mockDeep } from 'vitest-mock-extended';
-import { jsonParse, type ILoadOptionsFunctions, type INode } from 'n8n-workflow';
+import { jsonParse, type ILoadOptionsFunctions, type INode } from 'MNI-workflow';
 import nock from 'nock';
 
 import { getGmailAliases, getLabels, getThreadMessages } from '../../v2/loadOptions';

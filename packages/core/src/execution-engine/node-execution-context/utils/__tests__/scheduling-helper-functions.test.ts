@@ -1,4 +1,4 @@
-import type { Workflow } from 'n8n-workflow';
+import type { Workflow } from 'MNI-workflow';
 import type { Mock } from 'vitest';
 import { mock } from 'vitest-mock-extended';
 

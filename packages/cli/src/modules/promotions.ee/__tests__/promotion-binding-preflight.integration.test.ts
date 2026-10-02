@@ -1,15 +1,15 @@
-import { promotionBindingPreflightResultSchema } from '@n8n/api-types';
-import { createTeamProject, mockInstance, testDb, testModules } from '@n8n/backend-test-utils';
-import type { Project, User } from '@n8n/db';
+import { promotionBindingPreflightResultSchema } from '@MNI/api-types';
+import { createTeamProject, mockInstance, testDb, testModules } from '@MNI/backend-test-utils';
+import type { Project, User } from '@MNI/db';
 import {
 	CredentialsRepository,
 	ProjectRepository,
 	SharedCredentialsRepository,
 	VariablesRepository,
 	WorkflowRepository,
-} from '@n8n/db';
-import { Container } from '@n8n/di';
-import type { INode } from 'n8n-workflow';
+} from '@MNI/db';
+import { Container } from '@MNI/di';
+import type { INode } from 'MNI-workflow';
 import { mkdir, mkdtemp, readdir, readFile, rm, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
@@ -26,7 +26,7 @@ let service: PromotionBindingPreflightService;
 let sourceDir: string;
 
 beforeAll(async () => {
-	await testModules.loadModules(['n8n-packages', 'promotions']);
+	await testModules.loadModules(['MNI-packages', 'promotions']);
 	await testDb.init();
 	mockInstance(CredentialTypes).recognizes.mockReturnValue(true);
 	service = Container.get(PromotionBindingPreflightService);
@@ -84,7 +84,7 @@ function regionNode(name = 'Region'): INode {
 	return {
 		id: `node-${name}`,
 		name,
-		type: 'n8n-nodes-base.set',
+		type: 'MNI-nodes-base.set',
 		typeVersion: 1,
 		position: [0, 0],
 		parameters: { note: '={{ $vars.REGION }}' },
@@ -96,7 +96,7 @@ function credentialNode(name: string, type: string, id: string): INode {
 	return {
 		id: `node-${name}`,
 		name,
-		type: 'n8n-nodes-base.github',
+		type: 'MNI-nodes-base.github',
 		typeVersion: 1,
 		position: [0, 0],
 		parameters: {},

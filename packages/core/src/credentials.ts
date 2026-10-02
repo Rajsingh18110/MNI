@@ -1,7 +1,7 @@
-import { isObjectLiteral } from '@n8n/backend-common';
-import { Container } from '@n8n/di';
-import type { ICredentialDataDecryptedObject, ICredentialsEncrypted } from 'n8n-workflow';
-import { ICredentials, jsonParse, OperationalError, UnexpectedError } from 'n8n-workflow';
+import { isObjectLiteral } from '@MNI/backend-common';
+import { Container } from '@MNI/di';
+import type { ICredentialDataDecryptedObject, ICredentialsEncrypted } from 'MNI-workflow';
+import { ICredentials, jsonParse, OperationalError, UnexpectedError } from 'MNI-workflow';
 import * as a from 'node:assert';
 
 import { CREDENTIAL_ERRORS } from '@/constants';

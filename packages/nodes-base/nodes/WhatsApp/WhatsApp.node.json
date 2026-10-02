@@ -1,5 +1,5 @@
 {
-	"node": "n8n-nodes-base.whatsApp",
+	"node": "MNI-nodes-base.whatsApp",
 	"nodeVersion": "1.0",
 	"codexVersion": "1.0",
 	"categories": ["Communication", "HITL"],
@@ -15,7 +15,7 @@
 		],
 		"primaryDocumentation": [
 			{
-				"url": "https://docs.n8n.io/integrations/builtin/app-nodes/n8n-nodes-base.whatsapp/"
+				"url": "https://docs.n8n.io/integrations/builtin/app-nodes/MNI-nodes-base.whatsapp/"
 			}
 		]
 	}

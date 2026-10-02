@@ -14,9 +14,9 @@ import { fireEvent, waitFor, within } from '@testing-library/vue';
 import { flushPromises } from '@vue/test-utils';
 import userEvent from '@testing-library/user-event';
 import type { useNodeTypesStore } from '@/app/stores/nodeTypes.store';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { mockedStore } from '@/__tests__/utils';
-import { createEventBus } from '@n8n/utils/event-bus';
+import { createEventBus } from '@MNI/utils/event-bus';
 import {
 	createTestExpressionLocalResolveContext,
 	createMockEnterpriseSettings,
@@ -29,7 +29,7 @@ import {
 	type INodeProperties,
 	type INodePropertyOptions,
 	type NodeParameterValueType,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import type {
 	INodeUpdatePropertiesInformation,
 	IWorkflowDb,
@@ -37,9 +37,9 @@ import type {
 } from '@/Interface';
 import { mock } from 'vitest-mock-extended';
 import { ExpressionLocalResolveContextSymbol } from '@/app/constants';
-import { parameterInputRegistry } from '@n8n/frontend-module-sdk';
+import { parameterInputRegistry } from '@MNI/frontend-module-sdk';
 import type { PropType } from 'vue';
-import type { EventBus } from '@n8n/utils/event-bus';
+import type { EventBus } from '@MNI/utils/event-bus';
 
 function getNdvStateMock(): Partial<ReturnType<typeof useNDVStore>> {
 	return {
@@ -959,7 +959,7 @@ describe('ParameterInput.vue', () => {
 					aStr: 'test',
 				},
 				position: [0, 0],
-				type: 'n8n-nodes-base.httpRequest',
+				type: 'MNI-nodes-base.httpRequest',
 				typeVersion: 1,
 			},
 		};
@@ -1164,7 +1164,7 @@ describe('ParameterInput.vue', () => {
 					name: 'Test Node',
 					parameters: {},
 					position: [0, 0],
-					type: 'n8n-nodes-base.httpRequest',
+					type: 'MNI-nodes-base.httpRequest',
 					typeVersion: 1,
 				},
 			};
@@ -1187,7 +1187,7 @@ describe('ParameterInput.vue', () => {
 			await waitFor(() => {
 				expect(mockBuilderState.trackWorkflowBuilderJourney).toHaveBeenCalledWith(
 					'field_focus_placeholder_in_ndv',
-					{ node_type: 'n8n-nodes-base.httpRequest' },
+					{ node_type: 'MNI-nodes-base.httpRequest' },
 				);
 			});
 		});
@@ -1201,7 +1201,7 @@ describe('ParameterInput.vue', () => {
 					name: 'Test Node',
 					parameters: {},
 					position: [0, 0],
-					type: 'n8n-nodes-base.httpRequest',
+					type: 'MNI-nodes-base.httpRequest',
 					typeVersion: 1,
 				},
 			};
@@ -1233,7 +1233,7 @@ describe('ParameterInput.vue', () => {
 					name: 'Test Node',
 					parameters: {},
 					position: [0, 0],
-					type: 'n8n-nodes-base.httpRequest',
+					type: 'MNI-nodes-base.httpRequest',
 					typeVersion: 1,
 				},
 			};
@@ -1267,7 +1267,7 @@ describe('ParameterInput.vue', () => {
 				name: 'Test Node',
 				parameters: { model: 'gpt-3.5-turbo' },
 				position: [0, 0] as [number, number],
-				type: '@n8n/n8n-nodes-langchain.lmChatOpenAi',
+				type: '@MNI/MNI-nodes-langchain.lmChatOpenAi',
 				typeVersion: 1,
 				credentials: { openAiApi: { id: '1', name: 'OpenAI Account 1' } } as Record<
 					string,
@@ -1393,7 +1393,7 @@ describe('ParameterInput.vue', () => {
 				name: 'Test Node',
 				parameters: { temperature: 0.9 },
 				position: [0, 0] as [number, number],
-				type: '@n8n/n8n-nodes-langchain.lmChatOpenAi',
+				type: '@MNI/MNI-nodes-langchain.lmChatOpenAi',
 				typeVersion: 1,
 				credentials: {
 					openAiApi: { id: '1', name: 'OpenAI Account 1' },
@@ -1450,7 +1450,7 @@ describe('ParameterInput.vue', () => {
 					name: 'Test Node',
 					parameters: { model: 'gpt-4' },
 					position: [0, 0] as [number, number],
-					type: '@n8n/n8n-nodes-langchain.lmChatOpenAi',
+					type: '@MNI/MNI-nodes-langchain.lmChatOpenAi',
 					typeVersion: 1,
 					credentials: {
 						openAiApi: { id: '1', name: 'OpenAI Account 1' },
@@ -1490,7 +1490,7 @@ describe('ParameterInput.vue', () => {
 				name: 'Test Node',
 				parameters: { model: 'gpt-3.5-turbo' },
 				position: [0, 0] as [number, number],
-				type: '@n8n/n8n-nodes-langchain.lmChatOpenAi',
+				type: '@MNI/MNI-nodes-langchain.lmChatOpenAi',
 				typeVersion: 1,
 				credentials: {} as Record<string, { id: string; name: string }>,
 			});

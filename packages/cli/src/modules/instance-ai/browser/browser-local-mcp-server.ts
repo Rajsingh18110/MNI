@@ -1,24 +1,24 @@
-import { zodSchemaToJsonSchema } from '@n8n/ai-utilities/json-schema';
+import { zodSchemaToJsonSchema } from '@MNI/ai-utilities/json-schema';
 import type {
 	InstanceAiPermissionMode,
 	InstanceGatewayResourceDecision,
 	McpTool,
 	McpToolCallRequest,
 	McpToolCallResult,
-} from '@n8n/api-types';
+} from '@MNI/api-types';
 import {
 	GATEWAY_CONFIRMATION_REQUIRED_PREFIX,
 	mcpToolCallResultSchema,
 	mcpToolSchema,
-} from '@n8n/api-types';
-import type { Logger } from '@n8n/backend-common';
-import type { DomainAccessTracker, LocalMcpServer } from '@n8n/instance-ai';
+} from '@MNI/api-types';
+import type { Logger } from '@MNI/backend-common';
+import type { DomainAccessTracker, LocalMcpServer } from '@MNI/instance-ai';
 import type {
 	AffectedResource,
 	BrowserToolkit,
 	ToolContext,
 	ToolDefinition,
-} from '@n8n/mcp-browser';
+} from '@MNI/mcp-browser';
 
 export interface BrowserDomainGate {
 	tracker: DomainAccessTracker;

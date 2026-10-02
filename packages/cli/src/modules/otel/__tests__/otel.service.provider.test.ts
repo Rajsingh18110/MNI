@@ -1,5 +1,5 @@
-import type { Logger } from '@n8n/backend-common';
-import type { OutboundHttp } from '@n8n/backend-network';
+import type { Logger } from '@MNI/backend-common';
+import type { OutboundHttp } from '@MNI/backend-network';
 import type { Context } from '@opentelemetry/api';
 import {
 	context,
@@ -16,14 +16,14 @@ import {
 	SimpleSpanProcessor,
 } from '@opentelemetry/sdk-trace-node';
 import { mock } from 'vitest-mock-extended';
-import type { InstanceSettings } from 'n8n-core';
+import type { InstanceSettings } from 'MNI-core';
 
 import type { OtelSettingsService } from '../otel-settings.service';
 import type { OtelConfig } from '../otel.config';
 import { ATTR } from '../otel.constants';
 import { OtelService } from '../otel.service';
 
-import { N8N_VERSION } from '@/constants';
+import { MNI_VERSION } from '@/constants';
 
 const { exportedSpans } = vi.hoisted(() => ({ exportedSpans: [] as ReadableSpan[] }));
 
@@ -132,12 +132,12 @@ describe('OtelService tracer provider', () => {
 		it('exports MNI spans through its own provider and leaves the foreign exporter empty', async () => {
 			await service.init();
 
-			service.getTracer('n8n-workflow').startSpan('workflow.execute').end();
+			service.getTracer('MNI-workflow').startSpan('workflow.execute').end();
 
 			expect(exportedSpanNames()).toEqual(['workflow.execute']);
 			expect(exportedSpans[0].resource.attributes).toMatchObject({
 				[ATTR.OTEL_SERVICE_NAME]: 'MNI',
-				[ATTR.OTEL_SERVICE_VERSION]: N8N_VERSION,
+				[ATTR.OTEL_SERVICE_VERSION]: MNI_VERSION,
 				[ATTR.INSTANCE_ID]: 'inst-1',
 				[ATTR.INSTANCE_ROLE]: 'main',
 			});
@@ -148,7 +148,7 @@ describe('OtelService tracer provider', () => {
 			await service.init();
 			await service.restart();
 
-			service.getTracer('n8n-workflow').startSpan('workflow.execute').end();
+			service.getTracer('MNI-workflow').startSpan('workflow.execute').end();
 			trace.getTracer('foreign').startSpan('GET /webhook').end();
 
 			expect(exportedSpanNames()).toEqual(['workflow.execute']);
@@ -176,7 +176,7 @@ describe('OtelService tracer provider', () => {
 
 			trace.getTracer('third-party').startSpan('http.request').end();
 			const headers: Record<string, string> = {};
-			const span = service.getTracer('n8n-workflow').startSpan('workflow.execute');
+			const span = service.getTracer('MNI-workflow').startSpan('workflow.execute');
 			propagation.inject(trace.setSpan(context.active(), span), headers);
 			span.end();
 
@@ -201,7 +201,7 @@ describe('OtelService tracer provider', () => {
 			await service.shutdown();
 
 			expect(activeContextInside(markedContext)).toBe(markedContext);
-			expect(service.getTracer('n8n-workflow').startSpan('workflow.execute').isRecording()).toBe(
+			expect(service.getTracer('MNI-workflow').startSpan('workflow.execute').isRecording()).toBe(
 				false,
 			);
 		});
@@ -211,12 +211,12 @@ describe('OtelService tracer provider', () => {
 				.mockResolvedValueOnce(disabledSettings)
 				.mockResolvedValueOnce(enabledSettings);
 			await service.init();
-			expect(service.getTracer('n8n-workflow').startSpan('workflow.execute').isRecording()).toBe(
+			expect(service.getTracer('MNI-workflow').startSpan('workflow.execute').isRecording()).toBe(
 				false,
 			);
 
 			await service.restart();
-			service.getTracer('n8n-workflow').startSpan('workflow.execute').end();
+			service.getTracer('MNI-workflow').startSpan('workflow.execute').end();
 			trace.getTracer('third-party').startSpan('http.request').end();
 
 			expect(exportedSpanNames()).toEqual(['workflow.execute', 'http.request']);

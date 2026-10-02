@@ -1,4 +1,4 @@
-import { Service } from '@n8n/di';
+import { Service } from '@MNI/di';
 
 import { CHANNEL_RATE_LIMIT_COOLDOWN_MS } from './channel-rate-limit';
 

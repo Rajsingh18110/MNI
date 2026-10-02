@@ -1,6 +1,6 @@
 import * as a from 'assert';
-import type { IConnections, INode, WorkflowParameters, NodeConnectionType } from 'n8n-workflow';
-import { NodeConnectionTypes, Workflow } from 'n8n-workflow';
+import type { IConnections, INode, WorkflowParameters, NodeConnectionType } from 'MNI-workflow';
+import { NodeConnectionTypes, Workflow } from 'MNI-workflow';
 
 export type GraphConnection = {
 	from: INode;

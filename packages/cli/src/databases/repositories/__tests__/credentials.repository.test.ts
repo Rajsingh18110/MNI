@@ -1,5 +1,5 @@
-import { CredentialsEntity, CredentialsRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
+import { CredentialsEntity, CredentialsRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
 import { mock } from 'vitest-mock-extended';
 
 import { mockEntityManager } from '@test/mocking';

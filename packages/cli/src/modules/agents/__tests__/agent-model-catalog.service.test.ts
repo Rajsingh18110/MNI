@@ -1,6 +1,6 @@
-import { AI_GATEWAY_MANAGED_TAG } from '@n8n/api-types';
-import { mockLogger } from '@n8n/backend-test-utils';
-import type { User } from '@n8n/db';
+import { AI_GATEWAY_MANAGED_TAG } from '@MNI/api-types';
+import { mockLogger } from '@MNI/backend-test-utils';
+import type { User } from '@MNI/db';
 import { mock } from 'vitest-mock-extended';
 
 import { AgentModelCatalogService } from '../agent-model-catalog.service';
@@ -8,7 +8,7 @@ import type { AgentDefaultModelResolverService } from '../agent-default-model-re
 import type { BuilderModelLiveLookupService } from '../builder/builder-model-live-lookup.service';
 
 const fetchProviderCatalog = vi.fn();
-vi.mock('@n8n/agents', () => ({
+vi.mock('@MNI/agents', () => ({
 	fetchProviderCatalog: (...args: unknown[]) => fetchProviderCatalog(...args) as unknown,
 }));
 

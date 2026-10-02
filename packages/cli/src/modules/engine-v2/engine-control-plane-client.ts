@@ -1,7 +1,7 @@
-import type { HttpRequestClient } from '@n8n/backend-network';
-import { Service } from '@n8n/di';
-import type { LifecycleEvent } from '@n8n/engine';
-import { OperationalError } from 'n8n-workflow';
+import type { HttpRequestClient } from '@MNI/backend-network';
+import { Service } from '@MNI/di';
+import type { LifecycleEvent } from '@MNI/engine';
+import { OperationalError } from 'MNI-workflow';
 
 import { EngineControlPlaneTransport } from './engine-control-plane-transport';
 import { STATUS_CALLBACK_PATH } from './engine-v2.constants';

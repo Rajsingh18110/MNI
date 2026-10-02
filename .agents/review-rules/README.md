@@ -14,8 +14,8 @@ clear, when to stay silent, what never to say — lives once in
 | Directory   | Agent    | Scope                                               |
 |-------------|----------|-----------------------------------------------------|
 | `security/` | Security | backend packages, nodes, and the frontend render surface |
-| `backend/`  | Backend  | `cli`, `@n8n/db`, `core`, `workflow`, node packages |
-| `db-migrations/` | DB migrations | `@n8n/db` migrations + their tests in `cli` |
+| `backend/`  | Backend  | `cli`, `@MNI/db`, `core`, `workflow`, node packages |
+| `db-migrations/` | DB migrations | `@MNI/db` migrations + their tests in `cli` |
 | `frontend/` | Frontend | `packages/frontend`                                 |
 | `qa-dx/`    | QA & DX  | `.github`, `docker`, `scripts`, `patches`, `packages/testing`, the lint/test/TS config packages, baselines |
 | `testing/`  | Backend + Frontend | any package with a test suite            |
@@ -28,7 +28,7 @@ agents shouldn't be able to produce.
 
 All five slots are used, so a new domain now merges into an existing agent. QA &
 DX covers the build, test, and CI surface — the same paths `.github/OWNERS`
-assigns to `@n8n-io/qa-dx`. Code-quality rules that happen to apply broadly
+assigns to `@MNI-io/qa-dx`. Code-quality rules that happen to apply broadly
 (error classes, `any`, lazy imports) are backend rules, not QA & DX ones. DB
 migrations is split out of Backend because a migration is permanent and runs
 unattended on every instance, so it is judged against a different bar.

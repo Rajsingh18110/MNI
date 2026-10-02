@@ -2,10 +2,10 @@ import { screen, within } from '@testing-library/vue';
 import userEvent from '@testing-library/user-event';
 import { createComponentRenderer } from '@/__tests__/render';
 import SecretsProviderConnectionCard from './SecretsProviderConnectionCard.ee.vue';
-import type { SecretProviderConnection, SecretProviderTypeResponse } from '@n8n/api-types';
+import type { SecretProviderConnection, SecretProviderTypeResponse } from '@MNI/api-types';
 import { DateTime } from 'luxon';
 import { createTestingPinia } from '@pinia/testing';
-import { useRBACStore } from '@n8n/stores/rbac.store';
+import { useRBACStore } from '@MNI/stores/rbac.store';
 
 export const MOCK_PROVIDER_TYPES: SecretProviderTypeResponse[] = [
 	{

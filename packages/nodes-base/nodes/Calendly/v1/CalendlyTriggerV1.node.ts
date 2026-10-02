@@ -10,7 +10,7 @@ import {
 	type INodeTypeBaseDescription,
 	NodeConnectionTypes,
 	NodeOperationError,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { verifySignature } from '../CalendlyTriggerHelpers';
 import { calendlyApiRequest } from '../GenericFunctions';
@@ -92,7 +92,7 @@ export class CalendlyTriggerV1 implements INodeType {
 					type: 'options',
 					options: [
 						{
-							// eslint-disable-next-line n8n-nodes-base/node-param-display-name-miscased
+							// eslint-disable-next-line MNI-nodes-base/node-param-display-name-miscased
 							name: 'OAuth2 (recommended)',
 							value: 'oAuth2',
 						},

@@ -1,5 +1,5 @@
-import { type CredentialsEntity, WithCreatedAt } from '@n8n/db';
-import { Entity, Index, JoinColumn, ManyToOne, PrimaryColumn, type Relation } from '@n8n/typeorm';
+import { type CredentialsEntity, WithCreatedAt } from '@MNI/db';
+import { Entity, Index, JoinColumn, ManyToOne, PrimaryColumn, type Relation } from '@MNI/typeorm';
 
 import type { Agent } from './agent.entity';
 

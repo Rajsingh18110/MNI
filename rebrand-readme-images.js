@@ -3,11 +3,11 @@ const fs = require('fs');
 const files = [
   './README.md',
   './docker/images/mni/README.md',
-  './packages/frontend/@n8n/design-system/README.md',
+  './packages/frontend/@MNI/design-system/README.md',
   './packages/frontend/editor-ui/README.md',
   './packages/core/README.md',
-  './packages/@n8n/nodes-langchain/README.md',
-  './packages/@n8n/workflow-sdk/README.md',
+  './packages/@MNI/nodes-langchain/README.md',
+  './packages/@MNI/workflow-sdk/README.md',
   './packages/node-dev/README.md',
   './packages/nodes-base/README.md',
   './packages/workflow/README.md'

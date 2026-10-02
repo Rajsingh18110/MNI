@@ -48,12 +48,12 @@ describe('CanvasNodeAgentChips', () => {
 
 	it("renders the node's icon for a node-tool chip when the node type resolves", () => {
 		getNodeTypeMock.mockReturnValue({
-			name: 'n8n-nodes-base.telegramTool',
+			name: 'MNI-nodes-base.telegramTool',
 			displayName: 'Telegram',
 		});
 
 		const { getByTestId } = renderComponent({
-			props: { chips: [chip('Send message', { nodeType: 'n8n-nodes-base.telegramTool' })] },
+			props: { chips: [chip('Send message', { nodeType: 'MNI-nodes-base.telegramTool' })] },
 		});
 
 		expect(getByTestId('chip-node-icon')).toBeInTheDocument();
@@ -63,7 +63,7 @@ describe('CanvasNodeAgentChips', () => {
 		getNodeTypeMock.mockReturnValue(null);
 
 		const { queryByTestId } = renderComponent({
-			props: { chips: [chip('Send message', { nodeType: 'n8n-nodes-base.unknownTool' })] },
+			props: { chips: [chip('Send message', { nodeType: 'MNI-nodes-base.unknownTool' })] },
 		});
 
 		expect(queryByTestId('chip-node-icon')).toBeNull();

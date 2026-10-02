@@ -6,8 +6,8 @@ import type {
 	JsonObject,
 	IHttpRequestMethods,
 	IRequestOptions,
-} from 'n8n-workflow';
-import { isSafeObjectProperty, NodeApiError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { isSafeObjectProperty, NodeApiError } from 'MNI-workflow';
 
 import { getGoogleAccessToken } from '../../GenericFunctions';
 

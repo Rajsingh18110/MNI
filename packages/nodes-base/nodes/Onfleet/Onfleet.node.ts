@@ -9,7 +9,7 @@ import {
 	type INodeTypeDescription,
 	type IRequestOptions,
 	NodeConnectionTypes,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { adminFields, adminOperations } from './descriptions/AdministratorDescription';
 import { containerFields, containerOperations } from './descriptions/ContainerDescription';
@@ -131,7 +131,7 @@ export class Onfleet implements INodeType {
 				const options: IRequestOptions = {
 					headers: {
 						'Content-Type': 'application/json',
-						'User-Agent': 'n8n-onfleet',
+						'User-Agent': 'MNI-onfleet',
 					},
 					auth: {
 						user: credentials.apiKey as string,

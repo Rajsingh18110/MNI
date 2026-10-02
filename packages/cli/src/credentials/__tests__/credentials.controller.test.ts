@@ -6,7 +6,7 @@ vi.mock('@/generic-helpers', () => ({
 	validateEntity: vi.fn(),
 }));
 
-import type { LicenseState } from '@n8n/backend-common';
+import type { LicenseState } from '@MNI/backend-common';
 import type {
 	AuthenticatedRequest,
 	ICredentialsDb,
@@ -15,9 +15,9 @@ import type {
 	SharedCredentialsRepository,
 	CredentialsEntity,
 	CredentialsRepository,
-} from '@n8n/db';
-import { GLOBAL_OWNER_ROLE, GLOBAL_MEMBER_ROLE } from '@n8n/db';
-import type { Scope } from '@n8n/permissions';
+} from '@MNI/db';
+import { GLOBAL_OWNER_ROLE, GLOBAL_MEMBER_ROLE } from '@MNI/db';
+import type { Scope } from '@MNI/permissions';
 import { mock } from 'vitest-mock-extended';
 
 import { BadRequestError } from '@/errors/response-errors/bad-request.error';

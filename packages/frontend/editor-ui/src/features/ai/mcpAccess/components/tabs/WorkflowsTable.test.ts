@@ -59,7 +59,7 @@ describe('WorkflowsTable', () => {
 				},
 			});
 
-			expect(container.querySelector('.n8n-loading')).toBeInTheDocument();
+			expect(container.querySelector('.MNI-loading')).toBeInTheDocument();
 			expect(queryByTestId('mcp-workflow-table')).not.toBeInTheDocument();
 		});
 	});

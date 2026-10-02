@@ -5,7 +5,7 @@
       "parameters": {},
       "id": "28f1f78e-0d50-4bfe-aa16-1a53f0832793",
       "name": "When clicking \"Execute Workflow\"",
-      "type": "n8n-nodes-base.manualTrigger",
+      "type": "MNI-nodes-base.manualTrigger",
       "typeVersion": 1,
       "position": [
         520,
@@ -47,7 +47,7 @@
       },
       "id": "e1c2eafd-4a1e-48aa-bc0e-d5a03644fedc",
       "name": "Microsoft Teams",
-      "type": "n8n-nodes-base.microsoftTeams",
+      "type": "MNI-nodes-base.microsoftTeams",
       "typeVersion": 2,
       "position": [
         740,
@@ -64,7 +64,7 @@
       "parameters": {},
       "id": "a05a3079-3431-44b8-a317-79e5d8babe25",
       "name": "No Operation, do nothing",
-      "type": "n8n-nodes-base.noOp",
+      "type": "MNI-nodes-base.noOp",
       "typeVersion": 1,
       "position": [
         1040,

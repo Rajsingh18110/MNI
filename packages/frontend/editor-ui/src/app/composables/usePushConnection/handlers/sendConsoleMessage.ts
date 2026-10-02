@@ -1,4 +1,4 @@
-import type { SendConsoleMessage } from '@n8n/api-types/push/debug';
+import type { SendConsoleMessage } from '@MNI/api-types/push/debug';
 
 /**
  * Handles the 'sendConsoleMessage' event from the push connection, which indicates

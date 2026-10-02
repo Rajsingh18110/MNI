@@ -8,7 +8,7 @@ import type { INodeUi } from '@/Interface';
 import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';
 import BuilderSetupCard from './BuilderSetupCard.vue';
 
-vi.mock('@n8n/i18n', async (importOriginal) => ({
+vi.mock('@MNI/i18n', async (importOriginal) => ({
 	...(await importOriginal()),
 	useI18n: () => ({
 		baseText: (key: string) => key,
@@ -106,7 +106,7 @@ vi.mock('@/features/credentials/credentials.store', () => ({
 function createNode(overrides: Partial<INodeUi> = {}): INodeUi {
 	return createTestNode({
 		name: 'Test Node',
-		type: 'n8n-nodes-base.httpRequest',
+		type: 'MNI-nodes-base.httpRequest',
 		...overrides,
 	}) as INodeUi;
 }
@@ -244,7 +244,7 @@ describe('BuilderSetupCard', () => {
 			nodeTypesStore.isToolNode = () => true;
 
 			const { queryByTestId } = render(
-				{ node: createNode({ type: '@n8n/n8n-nodes-langchain.chatTool' }) },
+				{ node: createNode({ type: '@MNI/MNI-nodes-langchain.chatTool' }) },
 				{ totalCards: 2, stepIndex: 0 },
 			);
 			expect(queryByTestId('trigger-execute-button')).not.toBeInTheDocument();

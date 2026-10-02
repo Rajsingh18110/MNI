@@ -16,20 +16,20 @@ const PREVIEW: ConfigEnv = { command: 'serve', mode: 'production', isPreview: tr
 describe('resolveDevPorts', () => {
 	it.each([
 		['unset', {}, 5678, 8080],
-		['empty', { N8N_PORT: '', N8N_EDITOR_PORT: '' }, 5678, 8080],
-		['set', { N8N_PORT: '5699', N8N_EDITOR_PORT: '8082' }, 5699, 8082],
+		['empty', { MNI_PORT: '', MNI_EDITOR_PORT: '' }, 5678, 8080],
+		['set', { MNI_PORT: '5699', MNI_EDITOR_PORT: '8082' }, 5699, 8082],
 	])('resolves %s ports', (_label, env, backendPort, editorPort) => {
 		expect(resolveDevPorts(env)).toEqual({ backendPort, editorPort });
 	});
 
 	it.each(['abc', '0', '70000', '5699.5', '-1'])('rejects the malformed port %s', (value) => {
-		expect(() => resolveDevPorts({ N8N_EDITOR_PORT: value })).toThrow(
-			`N8N_EDITOR_PORT must be a port number, got: ${value}`,
+		expect(() => resolveDevPorts({ MNI_EDITOR_PORT: value })).toThrow(
+			`MNI_EDITOR_PORT must be a port number, got: ${value}`,
 		);
 	});
 
 	it('names the offending variable', () => {
-		expect(() => resolveDevPorts({ N8N_PORT: 'abc' })).toThrow(/^N8N_PORT must be/);
+		expect(() => resolveDevPorts({ MNI_PORT: 'abc' })).toThrow(/^MNI_PORT must be/);
 	});
 });
 
@@ -41,8 +41,8 @@ describe('BACKEND_PROXY_PATTERN', () => {
 		'/rest/settings',
 		'/rest/push?pushRef=abc',
 		'/types/nodes.json',
-		'/schemas/n8n-nodes-base.set/1.json',
-		'/icons/n8n-nodes-base/dist/nodes/Set/set.svg',
+		'/schemas/MNI-nodes-base.set/1.json',
+		'/icons/MNI-nodes-base/dist/nodes/Set/set.svg',
 		'/webhook-test/abc',
 		'/form/abc',
 		'/healthz/readiness',
@@ -63,8 +63,8 @@ describe('devServerPlugin', () => {
 		expect(devServerPlugin({}).apply).toBe('serve');
 	});
 
-	it('binds the editor port and proxies backend routes to N8N_PORT', () => {
-		expect(runConfigHook({ N8N_PORT: '5699', N8N_EDITOR_PORT: '8082' }, DEV)).toEqual({
+	it('binds the editor port and proxies backend routes to MNI_PORT', () => {
+		expect(runConfigHook({ MNI_PORT: '5699', MNI_EDITOR_PORT: '8082' }, DEV)).toEqual({
 			server: {
 				host: '0.0.0.0',
 				port: 8082,
@@ -108,10 +108,10 @@ describe('devServerPlugin', () => {
 		['vitest', VITEST],
 		['preview', PREVIEW],
 	])('stays out of the way of %s', (_label, configEnv) => {
-		expect(runConfigHook({ N8N_EDITOR_PORT: '8082' }, configEnv)).toBeUndefined();
+		expect(runConfigHook({ MNI_EDITOR_PORT: '8082' }, configEnv)).toBeUndefined();
 	});
 
 	it('does not validate ports outside the dev server', () => {
-		expect(() => runConfigHook({ N8N_EDITOR_PORT: 'abc' }, VITEST)).not.toThrow();
+		expect(() => runConfigHook({ MNI_EDITOR_PORT: 'abc' }, VITEST)).not.toThrow();
 	});
 });

@@ -7,7 +7,7 @@ import {
 	type INodeTypeDescription,
 	type IWebhookResponseData,
 	NodeConnectionTypes,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { capitalizeFirstLetter, linearApiRequest } from './GenericFunctions';
 import { verifySignature } from './LinearTriggerHelpers';

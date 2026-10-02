@@ -1,5 +1,5 @@
 import { mockDeep } from 'vitest-mock-extended';
-import type { ILoadOptionsFunctions, INodePropertyOptions } from 'n8n-workflow';
+import type { ILoadOptionsFunctions, INodePropertyOptions } from 'MNI-workflow';
 
 import * as GenericFunctions from '../GenericFunctions';
 import { Jenkins } from '../Jenkins.node';

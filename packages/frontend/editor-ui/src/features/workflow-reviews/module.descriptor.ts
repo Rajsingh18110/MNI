@@ -1,4 +1,4 @@
-import { defineFrontendModule } from '@n8n/frontend-module-sdk';
+import { defineFrontendModule } from '@MNI/frontend-module-sdk';
 
 import { VIEWS } from '@/app/constants';
 

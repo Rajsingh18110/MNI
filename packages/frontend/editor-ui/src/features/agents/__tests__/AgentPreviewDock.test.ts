@@ -23,7 +23,7 @@ vi.mock('../composables/useAgentSessionLangSmithExport', () => ({
 	}),
 }));
 
-vi.mock('@n8n/i18n', () => ({
+vi.mock('@MNI/i18n', () => ({
 	useI18n: () => ({ baseText: (key: string) => key }),
 }));
 
@@ -31,8 +31,8 @@ vi.mock('../agentSessions.store', () => ({
 	useAgentSessionsStore: () => ({ loading: false }),
 }));
 
-vi.mock('@n8n/design-system', async (importOriginal) => ({
-	useDropdownSearch: (await importOriginal<typeof import('@n8n/design-system')>())
+vi.mock('@MNI/design-system', async (importOriginal) => ({
+	useDropdownSearch: (await importOriginal<typeof import('@MNI/design-system')>())
 		.useDropdownSearch,
 	N8nActionDropdown: {
 		name: 'N8nActionDropdown',
@@ -159,7 +159,7 @@ function mountDock(
 describe('AgentPreviewDock', () => {
 	beforeEach(function resetMocks() {
 		vi.clearAllMocks();
-		localStorage.removeItem('N8N_AGENT_PREVIEW_LAYOUT');
+		localStorage.removeItem('MNI_AGENT_PREVIEW_LAYOUT');
 	});
 
 	it('renders the session switcher before the compact actions', () => {
@@ -387,7 +387,7 @@ describe('AgentPreviewDock', () => {
 	});
 
 	it('only enables Escape when the dock is open and contains focus', async function checksEscapeScope() {
-		localStorage.setItem('N8N_AGENT_PREVIEW_LAYOUT', 'floating');
+		localStorage.setItem('MNI_AGENT_PREVIEW_LAYOUT', 'floating');
 		const host = document.createElement('div');
 		const outsideButton = document.createElement('button');
 		document.body.append(host, outsideButton);
@@ -416,13 +416,13 @@ describe('AgentPreviewDock', () => {
 	});
 
 	it('docks the preview before opening the session view', async () => {
-		/** TODO: Remove this test when https://linear.app/n8n/issue/AGENT-808 removes preview chat from the session trace view. */
-		localStorage.setItem('N8N_AGENT_PREVIEW_LAYOUT', 'fullpage');
+		/** TODO: Remove this test when https://linear.app/MNI/issue/AGENT-808 removes preview chat from the session trace view. */
+		localStorage.setItem('MNI_AGENT_PREVIEW_LAYOUT', 'fullpage');
 		const wrapper = mountDock();
 
 		await wrapper.get('[data-testid="agent-preview-view-session-btn"]').trigger('click');
 
-		expect(localStorage.getItem('N8N_AGENT_PREVIEW_LAYOUT')).toBe('docked');
+		expect(localStorage.getItem('MNI_AGENT_PREVIEW_LAYOUT')).toBe('docked');
 		expect(wrapper.emitted('view-trace')).toEqual([[]]);
 	});
 });

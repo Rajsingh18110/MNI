@@ -9,16 +9,16 @@ import {
 	useWorkflowDocumentStore,
 	createWorkflowDocumentId,
 } from '@/app/stores/workflowDocument.store';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
 import {
 	NodeConnectionTypes,
 	STICKY_NODE_TYPE,
 	TRIMMED_TASK_DATA_CONNECTIONS_KEY,
-} from 'n8n-workflow';
-import type { NodeConnectionType, INodeTypeDescription } from 'n8n-workflow';
+} from 'MNI-workflow';
+import type { NodeConnectionType, INodeTypeDescription } from 'MNI-workflow';
 
-vi.mock('@n8n/composables/useToast', () => ({ useToast: vi.fn(() => ({ showError: vi.fn() })) }));
-vi.mock('@n8n/i18n', async (importActual) => ({
+vi.mock('@MNI/composables/useToast', () => ({ useToast: vi.fn(() => ({ showError: vi.fn() })) }));
+vi.mock('@MNI/i18n', async (importActual) => ({
 	...(await importActual()),
 	useI18n: () => ({
 		baseText: (key: string) => key,
@@ -148,7 +148,7 @@ describe('usePinnedData', () => {
 			const spy = vi.spyOn(telemetry, 'track');
 			const node = ref({
 				name: 'testNode',
-				type: 'n8n-nodes-base.httpRequest',
+				type: 'MNI-nodes-base.httpRequest',
 				id: 'test-node-id',
 			} as INodeUi);
 			const pinnedData = usePinnedData(node, {
@@ -162,7 +162,7 @@ describe('usePinnedData', () => {
 				'Ndv data pinning success',
 				expect.objectContaining({
 					pinning_source: 'pin-icon-click',
-					node_type: 'n8n-nodes-base.httpRequest',
+					node_type: 'MNI-nodes-base.httpRequest',
 					view: 'json',
 					run_index: 2,
 					workflow_id: 'test-workflow-id',
@@ -297,9 +297,9 @@ describe('usePinnedData', () => {
 			const node = ref({
 				name: 'zero output node',
 				typeVersion: 1,
-				type: 'n8n-nodes-base.stopAndError',
+				type: 'MNI-nodes-base.stopAndError',
 			} as INodeUi);
-			getNodeType.mockReturnValue(makeNodeType([], 'n8n-nodes-base.stopAndError'));
+			getNodeType.mockReturnValue(makeNodeType([], 'MNI-nodes-base.stopAndError'));
 
 			const { canPinNode } = usePinnedData(node);
 

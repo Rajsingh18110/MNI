@@ -1,7 +1,7 @@
-import { testDb } from '@n8n/backend-test-utils';
-import { RoleRepository, type User } from '@n8n/db';
-import { Container } from '@n8n/di';
-import { MANDATORY_INSTANCE_SCOPES } from '@n8n/permissions';
+import { testDb } from '@MNI/backend-test-utils';
+import { RoleRepository, type User } from '@MNI/db';
+import { Container } from '@MNI/di';
+import { MANDATORY_INSTANCE_SCOPES } from '@MNI/permissions';
 
 import { createCustomRoleWithScopeSlugs, createRole } from '@test-integration/db/roles';
 import {

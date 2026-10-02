@@ -1,6 +1,6 @@
-import type { Logger } from '@n8n/backend-common';
-import { mockInstance } from '@n8n/backend-test-utils';
-import type { User } from '@n8n/db';
+import type { Logger } from '@MNI/backend-common';
+import { mockInstance } from '@MNI/backend-test-utils';
+import type { User } from '@MNI/db';
 import type { Application } from 'express';
 import type { Server, ServerResponse } from 'node:http';
 import type { Socket } from 'node:net';
@@ -20,9 +20,9 @@ vi.mock('ws', async () => ({
 	Server: vi.fn(),
 }));
 vi.unmock('@/push');
-vi.mock('@n8n/backend-common', async () => {
+vi.mock('@MNI/backend-common', async () => {
 	return {
-		...(await vi.importActual<typeof import('@n8n/backend-common')>('@n8n/backend-common')),
+		...(await vi.importActual<typeof import('@MNI/backend-common')>('@MNI/backend-common')),
 		inProduction: true,
 	};
 });

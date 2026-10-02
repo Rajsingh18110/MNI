@@ -1,11 +1,11 @@
-import type { AiGatewayConfigDto } from '@n8n/api-types';
-import type { User } from '@n8n/db';
-import type { INode, INodeParameters, INodeTypeDescription, IWorkflowBase } from 'n8n-workflow';
+import type { AiGatewayConfigDto } from '@MNI/api-types';
+import type { User } from '@MNI/db';
+import type { INode, INodeParameters, INodeTypeDescription, IWorkflowBase } from 'MNI-workflow';
 import {
 	NodeHelpers,
 	getCredentialActivationParameters,
 	resolveSupportedCredentialActivation,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import type { CredentialsService } from '@/credentials/credentials.service';
 import type { NodeTypes } from '@/node-types';
@@ -23,7 +23,7 @@ import { MCP_CREDENTIALS_AUTOASSIGN_EVENT } from '../../mcp.constants';
 const AI_GATEWAY_CREDENTIAL_NAME = 'Gateway credits';
 
 /**
- * Attach the managed (n8n-credits) sentinel to `credentialType` and, unless it's
+ * Attach the managed (MNI-credits) sentinel to `credentialType` and, unless it's
  * already the active slot, switch the node's parameters so it becomes one. The
  * single path for every managed assignment, so auth and credential can't drift.
  * An already-active slot is left untouched — rewriting a valid `show` value would
@@ -429,7 +429,7 @@ export function trackAutoassignOutcomes(
 				credential_type: outcome.credentialType,
 				node_type: nodeType,
 				workflow_id: workflowId ?? '',
-				credential_kind: outcome.source === 'aiGateway' ? 'n8n_connect' : 'own',
+				credential_kind: outcome.source === 'aiGateway' ? 'MNI_connect' : 'own',
 				source: 'mcp',
 			});
 		}

@@ -1,11 +1,11 @@
-import type { AgentSnapshot, AttributeValue, BuiltTelemetry } from '@n8n/agents';
-import { Telemetry } from '@n8n/agents';
-import { AgentsConfig } from '@n8n/config';
-import { Service } from '@n8n/di';
+import type { AgentSnapshot, AttributeValue, BuiltTelemetry } from '@MNI/agents';
+import { Telemetry } from '@MNI/agents';
+import { AgentsConfig } from '@MNI/config';
+import { Service } from '@MNI/di';
 
 import { OtelService } from '@/modules/otel/otel.service';
 
-const AGENTS_TRACER_NAME = '@n8n/agents';
+const AGENTS_TRACER_NAME = '@MNI/agents';
 
 interface AgentRunTracingMetadataBase {
 	agentId: string;

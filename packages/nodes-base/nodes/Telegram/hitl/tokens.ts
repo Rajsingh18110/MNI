@@ -1,6 +1,6 @@
-import { Container } from '@n8n/di';
+import { Container } from '@MNI/di';
 import { createHmac } from 'crypto';
-import { InstanceSettings } from 'n8n-core';
+import { InstanceSettings } from 'MNI-core';
 
 /**
  * Derives the `secret_token` registered with Telegram's `setWebhook` for HITL
@@ -21,7 +21,7 @@ export function deriveHitlSecretToken(accessToken: string): string {
 	// Telegram's secret_token accepts 1-256 chars of A-Za-z0-9_-, exactly the
 	// base64url alphabet.
 	return createHmac('sha256', secret)
-		.update(`n8n-telegram-hitl-secret:${botId}`)
+		.update(`MNI-telegram-hitl-secret:${botId}`)
 		.digest('base64url')
 		.slice(0, 43);
 }

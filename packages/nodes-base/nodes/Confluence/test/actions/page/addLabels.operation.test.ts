@@ -1,4 +1,4 @@
-import { NodeOperationError } from 'n8n-workflow';
+import { NodeOperationError } from 'MNI-workflow';
 
 import { execute } from '../../../actions/page/addLabels.operation';
 import { confluenceApiRequest } from '../../../transport';

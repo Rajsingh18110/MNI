@@ -1,13 +1,13 @@
-import { TOOL_EXECUTOR_NODE_NAME } from '@n8n/constants';
-import type { IExecutionResponse } from '@n8n/db';
-import type { IDataObject, IExecuteData, INode, Workflow } from 'n8n-workflow';
+import { TOOL_EXECUTOR_NODE_NAME } from '@MNI/constants';
+import type { IExecutionResponse } from '@MNI/db';
+import type { IDataObject, IExecuteData, INode, Workflow } from 'MNI-workflow';
 import {
 	CHAT_NODE_TYPE,
 	CHAT_TOOL_NODE_TYPE,
 	CHAT_WAIT_USER_REPLY,
 	RESPOND_TO_WEBHOOK_NODE_TYPE,
 	SEND_AND_WAIT_OPERATION,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import {
 	getMessage,
@@ -504,7 +504,7 @@ describe('shouldResumeImmediately', () => {
 describe('redirectIfToolExecutor', () => {
 	const toolNode: INode = {
 		name: 'My Tool',
-		type: 'n8n-nodes-base.myTool',
+		type: 'MNI-nodes-base.myTool',
 		typeVersion: 1,
 		position: [0, 0],
 		parameters: {},
@@ -527,7 +527,7 @@ describe('redirectIfToolExecutor', () => {
 		return {
 			node: {
 				name: TOOL_EXECUTOR_NODE_NAME,
-				type: '@n8n/n8n-nodes-langchain.toolExecutor',
+				type: '@MNI/MNI-nodes-langchain.toolExecutor',
 				parameters: toolNodeName ? { node: toolNodeName } : {},
 				typeVersion: 1,
 				position: [0, 0],
@@ -541,7 +541,7 @@ describe('redirectIfToolExecutor', () => {
 
 	function plainData(name: string): IExecuteData {
 		return {
-			node: { name, type: 'n8n-nodes-base.noOp', parameters: {}, typeVersion: 1 },
+			node: { name, type: 'MNI-nodes-base.noOp', parameters: {}, typeVersion: 1 },
 			data: { main: [[]] },
 			source: null,
 		} as unknown as IExecuteData;
@@ -644,7 +644,7 @@ describe('redirectIfToolExecutor', () => {
 describe('findResumeNode', () => {
 	const toolNode: INode = {
 		name: 'My Tool',
-		type: 'n8n-nodes-base.myTool',
+		type: 'MNI-nodes-base.myTool',
 		typeVersion: 1,
 		position: [0, 0],
 		parameters: {},
@@ -656,7 +656,7 @@ describe('findResumeNode', () => {
 		return {
 			node: {
 				name: TOOL_EXECUTOR_NODE_NAME,
-				type: '@n8n/n8n-nodes-langchain.toolExecutor',
+				type: '@MNI/MNI-nodes-langchain.toolExecutor',
 				parameters: toolNodeName ? { node: toolNodeName } : {},
 				typeVersion: 1,
 				position: [0, 0],
@@ -721,7 +721,7 @@ describe('findResumeNode', () => {
 	it('follows the parked stack node, ignoring a divergent lastNodeExecuted', () => {
 		// The engine resumes nodeExecutionStack[0]; if resultData.lastNodeExecuted
 		// named a different node, findResumeNode must still follow the stack entry.
-		const gate = { name: 'Gate', type: 'n8n-nodes-base.telegram', typeVersion: 1, parameters: {} };
+		const gate = { name: 'Gate', type: 'MNI-nodes-base.telegram', typeVersion: 1, parameters: {} };
 		const executionData = parkedData(gate);
 		const getNode = vi.fn().mockImplementation((name: string) => (name === 'Gate' ? gate : null));
 		const workflow = { getNode } as unknown as Workflow;
@@ -852,7 +852,7 @@ describe('getLastNodeExecuted (TOOL_EXECUTOR_NODE_NAME path)', () => {
 
 		expect(result).toEqual({
 			name: TOOL_EXECUTOR_NODE_NAME,
-			type: '@n8n/n8n-nodes-langchain.toolExecutor',
+			type: '@MNI/MNI-nodes-langchain.toolExecutor',
 			parameters: {},
 			id: '',
 			typeVersion: 1,

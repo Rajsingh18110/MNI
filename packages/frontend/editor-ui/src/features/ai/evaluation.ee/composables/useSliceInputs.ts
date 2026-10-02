@@ -7,7 +7,7 @@ import {
 	MANUAL_CHAT_TRIGGER_LANGCHAIN_NODE_TYPE,
 	getParentNodes,
 	mapConnectionsByDestination,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { injectWorkflowDocumentStore } from '@/app/stores/workflowDocument.store';
 import {

@@ -1,7 +1,7 @@
-import { ModuleRegistry, Logger } from '@n8n/backend-common';
-import { InstanceSettingsLoaderConfig } from '@n8n/config';
-import { type AuthenticatedRequest } from '@n8n/db';
-import { Body, Post, Get, Patch, RestController, GlobalScope } from '@n8n/decorators';
+import { ModuleRegistry, Logger } from '@MNI/backend-common';
+import { InstanceSettingsLoaderConfig } from '@MNI/config';
+import { type AuthenticatedRequest } from '@MNI/db';
+import { Body, Post, Get, Patch, RestController, GlobalScope } from '@MNI/decorators';
 import type { Response } from 'express';
 
 import { ForbiddenError } from '@/errors/response-errors/forbidden.error';

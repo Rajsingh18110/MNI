@@ -9,7 +9,7 @@ import {
 	NodeConnectionTypes,
 	type INodeExecutionData,
 	type ITaskDataConnections,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import { useWorkflowsStore } from '@/app/stores/workflows.store';
 import type { JSONSchema7 } from 'json-schema';
 import { mock } from 'vitest-mock-extended';

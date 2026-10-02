@@ -1,6 +1,6 @@
-import type { WorkflowRepository, WorkflowEntity } from '@n8n/db';
-import { Container } from '@n8n/di';
-import type { INode } from 'n8n-workflow';
+import type { WorkflowRepository, WorkflowEntity } from '@MNI/db';
+import { Container } from '@MNI/di';
+import type { INode } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import type { ActiveExecutions } from '@/active-executions';
@@ -29,7 +29,7 @@ function makeExecuteWorkflowTriggerNode(overrides: Partial<INode> = {}): INode {
 	return {
 		id: 'trigger-node-id',
 		name: TRIGGER_NAME,
-		type: 'n8n-nodes-base.executeWorkflowTrigger',
+		type: 'MNI-nodes-base.executeWorkflowTrigger',
 		typeVersion: 1.1,
 		position: [0, 0],
 		parameters: { inputSource: 'passthrough' },
@@ -41,7 +41,7 @@ function makeManualTriggerNode(): INode {
 	return {
 		id: 'manual-trigger-id',
 		name: 'Manual Trigger',
-		type: 'n8n-nodes-base.manualTrigger',
+		type: 'MNI-nodes-base.manualTrigger',
 		typeVersion: 1,
 		position: [0, 0],
 		parameters: {},
@@ -52,7 +52,7 @@ function makeRespondToWebhookNode(overrides: Partial<INode> = {}): INode {
 	return {
 		id: 'respond-node-id',
 		name: 'Respond to Webhook',
-		type: 'n8n-nodes-base.respondToWebhook',
+		type: 'MNI-nodes-base.respondToWebhook',
 		typeVersion: 1.5,
 		position: [0, 0],
 		parameters: { respondWith: 'firstIncomingItem' },
@@ -322,7 +322,7 @@ describe('workflow tool compatibility', () => {
 	it('rejects workflows with only a schedule trigger', () => {
 		const workflow = makeWorkflow(
 			{},
-			makeExecuteWorkflowTriggerNode({ type: 'n8n-nodes-base.scheduleTrigger' }),
+			makeExecuteWorkflowTriggerNode({ type: 'MNI-nodes-base.scheduleTrigger' }),
 		);
 
 		expect(() => detectTriggerNode(workflow)).toThrow(
@@ -346,7 +346,7 @@ describe('workflow tool compatibility', () => {
 				{
 					id: 'wait-node-id',
 					name: 'Wait',
-					type: 'n8n-nodes-base.wait',
+					type: 'MNI-nodes-base.wait',
 					typeVersion: 1.1,
 					position: [0, 0],
 					parameters: { resume: 'webhook' },
@@ -367,7 +367,7 @@ describe('workflow tool compatibility', () => {
 				{
 					id: 'form-node-id',
 					name: 'Form',
-					type: 'n8n-nodes-base.form',
+					type: 'MNI-nodes-base.form',
 					typeVersion: 1,
 					position: [0, 0],
 					parameters: {},

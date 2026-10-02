@@ -1,8 +1,8 @@
-import { Logger } from '@n8n/backend-common';
-import { GlobalConfig } from '@n8n/config';
-import { Service } from '@n8n/di';
+import { Logger } from '@MNI/backend-common';
+import { GlobalConfig } from '@MNI/config';
+import { Service } from '@MNI/di';
 import pick from 'lodash/pick';
-import { ErrorReporter } from 'n8n-core';
+import { ErrorReporter } from 'MNI-core';
 import path from 'node:path';
 import type { Transporter } from 'nodemailer';
 import { createTransport } from 'nodemailer';
@@ -59,7 +59,7 @@ export class NodeMailer {
 				html: mailData.body,
 				attachments: [
 					{
-						cid: 'n8n-logo',
+						cid: 'MNI-logo',
 						filename: 'mni-logo.png',
 						path: path.resolve(__dirname, 'templates/mni-logo.png'),
 						contentDisposition: 'inline',

@@ -1,7 +1,7 @@
-import { createTeamProject, testDb } from '@n8n/backend-test-utils';
-import { RoleMappingRuleRepository } from '@n8n/db';
-import type { User } from '@n8n/db';
-import { Container } from '@n8n/di';
+import { createTeamProject, testDb } from '@MNI/backend-test-utils';
+import { RoleMappingRuleRepository } from '@MNI/db';
+import type { User } from '@MNI/db';
+import { Container } from '@MNI/di';
 
 import { RESPONSE_ERROR_MESSAGES } from '@/constants';
 

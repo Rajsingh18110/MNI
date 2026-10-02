@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import type { INodeTypeDescription, IWebhookDescription } from 'n8n-workflow';
-import { useToast } from '@n8n/composables/useToast';
+import type { INodeTypeDescription, IWebhookDescription } from 'MNI-workflow';
+import { useToast } from '@MNI/composables/useToast';
 import {
 	CHAT_TRIGGER_NODE_TYPE,
 	FORM_TRIGGER_NODE_TYPE,
@@ -8,16 +8,16 @@ import {
 	OPEN_URL_PANEL_TRIGGER_NODE_TYPES,
 	PRODUCTION_ONLY_TRIGGER_NODE_TYPES,
 } from '@/app/constants';
-import { useClipboard } from '@n8n/composables/useClipboard';
+import { useClipboard } from '@MNI/composables/useClipboard';
 import { useWorkflowHelpers } from '@/app/composables/useWorkflowHelpers';
 import type { INodeUi } from '@/Interface';
 import { computed, ref, watch } from 'vue';
 import { computedAsync } from '@vueuse/core';
-import { useI18n } from '@n8n/i18n';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
+import { useI18n } from '@MNI/i18n';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
 
 import { ElCol, ElCollapseTransition, ElRow } from 'element-plus';
-import { N8nIcon, N8nSegmentControl, N8nTooltip } from '@n8n/design-system';
+import { N8nIcon, N8nSegmentControl, N8nTooltip } from '@MNI/design-system';
 const props = defineProps<{
 	node: INodeUi;
 	nodeTypeDescription: INodeTypeDescription | null;

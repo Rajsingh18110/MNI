@@ -6,8 +6,8 @@ import type {
 	JsonObject,
 	IHttpRequestMethods,
 	IRequestOptions,
-} from 'n8n-workflow';
-import { NodeApiError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeApiError } from 'MNI-workflow';
 
 export const SECURITY_SCORECARD_API_BASE_URL = 'https://api.securityscorecard.io';
 const SECURITY_SCORECARD_REPORT_FILES_PATH = '/reports/files/';

@@ -1,7 +1,7 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { defineComponent, h, nextTick, reactive, ref } from 'vue';
 import { USER_TYPED_MESSAGE, type InstanceAiPrefillType } from '../prefills';
-import { useI18n, type BaseTextKey } from '@n8n/i18n';
+import { useI18n, type BaseTextKey } from '@MNI/i18n';
 import { createTestingPinia } from '@pinia/testing';
 import { setActivePinia } from 'pinia';
 import { fireEvent } from '@testing-library/vue';
@@ -10,7 +10,7 @@ import { createComponentRenderer } from '@/__tests__/render';
 import { mockedStore } from '@/__tests__/utils';
 import InstanceAiEmptyView from '../InstanceAiEmptyView.vue';
 import { useInstanceAiStore, type ThreadRuntime } from '../instanceAi.store';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { INSTANCE_AI_THREAD_VIEW } from '../constants';
 import { useProjectsStore } from '@/features/collaboration/projects/projects.store';
 import type { Project, ProjectListItem } from '@/features/collaboration/projects/projects.types';
@@ -238,23 +238,23 @@ vi.mock('@/app/composables/usePageRedirectionHelper', () => ({
 	usePageRedirectionHelper: () => ({ goToUpgrade: vi.fn() }),
 }));
 
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: () => ({ showError: showErrorMock }),
 }));
 
-vi.mock('@n8n/composables/useTelemetry', () => ({
+vi.mock('@MNI/composables/useTelemetry', () => ({
 	useTelemetry: () => ({ track: telemetryTrack }),
 }));
 
-vi.mock('@n8n/stores/cloudPlan.store', () => ({
+vi.mock('@MNI/stores/cloudPlan.store', () => ({
 	useCloudPlanStore: () => cloudPlanStoreMock,
 }));
 
-vi.mock('@n8n/stores/settings.store', () => ({
+vi.mock('@MNI/stores/settings.store', () => ({
 	useSettingsStore: () => appSettingsStoreMock,
 }));
 
-vi.mock('@n8n/stores/useRootStore', () => ({
+vi.mock('@MNI/stores/useRootStore', () => ({
 	useRootStore: () => ({ pushRef: 'test-push-ref' }),
 }));
 

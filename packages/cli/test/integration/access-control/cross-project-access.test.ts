@@ -5,8 +5,8 @@ import {
 	createWorkflow,
 	mockInstance,
 	testDb,
-} from '@n8n/backend-test-utils';
-import type { Project, User, Role } from '@n8n/db';
+} from '@MNI/backend-test-utils';
+import type { Project, User, Role } from '@MNI/db';
 
 import { UserManagementMailer } from '@/user-management/email';
 
@@ -407,7 +407,7 @@ describe('Cross-Project Access Control Tests', () => {
 					id: 'uuid-1234',
 					parameters: {},
 					name: 'Start',
-					type: 'n8n-nodes-base.manualTrigger',
+					type: 'MNI-nodes-base.manualTrigger',
 					typeVersion: 1,
 					position: [240, 300],
 				},

@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { computed, onBeforeUnmount, onMounted, ref } from 'vue';
-import { useI18n } from '@n8n/i18n';
-import { Workflow } from 'n8n-workflow';
+import { useI18n } from '@MNI/i18n';
+import { Workflow } from 'MNI-workflow';
 import { useExecutionsStore } from '@/features/execution/executions/executions.store';
 import { useWorkflowHelpers } from '@/app/composables/useWorkflowHelpers';
 import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';

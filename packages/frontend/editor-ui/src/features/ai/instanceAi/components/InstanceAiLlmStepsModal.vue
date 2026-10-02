@@ -6,12 +6,12 @@ import {
 	N8nDialogTitle,
 	N8nIcon,
 	N8nText,
-} from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+} from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 import { computed, nextTick, ref, watch } from 'vue';
 import { useThread } from '../instanceAi.store';
 import { useInstanceAiDebugStore } from '../instanceAiDebug.store';
-import { parseStepCacheBreaks, parseStepSummary } from '@n8n/api-types';
+import { parseStepCacheBreaks, parseStepSummary } from '@MNI/api-types';
 import { describeCacheBreak } from '../utils/cache-break';
 import InstanceAiLlmStepDetail from './InstanceAiLlmStepDetail.vue';
 import InstanceAiRunWorkflowCodeSection from './InstanceAiRunWorkflowCodeSection.vue';

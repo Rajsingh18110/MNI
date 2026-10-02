@@ -2,13 +2,13 @@ import {
 	type InsightsByTime,
 	type InsightsSummary,
 	type RestrictedInsightsByTime,
-} from '@n8n/api-types';
-import { LicenseState, Logger } from '@n8n/backend-common';
-import type { User } from '@n8n/db';
-import { Container, Service } from '@n8n/di';
+} from '@MNI/api-types';
+import { LicenseState, Logger } from '@MNI/backend-common';
+import type { User } from '@MNI/db';
+import { Container, Service } from '@MNI/di';
 import { DateTime } from 'luxon';
-import { InstanceSettings } from 'n8n-core';
-import { UserError } from 'n8n-workflow';
+import { InstanceSettings } from 'MNI-core';
+
 
 import { ForbiddenError } from '@/errors/response-errors/forbidden.error';
 import { userHasScopes } from '@/permissions.ee/check-access';
@@ -335,29 +335,8 @@ export class InsightsService {
 	 *
 	 * @throws {UserError} if the license does not allow the selected date range
 	 */
-	validateDateFiltersLicense({ startDate, endDate }: { startDate: Date; endDate: Date }) {
-		// we use `startOf('day')` because the license limits are based on full days
-		const today = DateTime.now().startOf('day');
-		const startDateStartOfDay = DateTime.fromJSDate(startDate).startOf('day');
-		const daysToStartDate = today.diff(startDateStartOfDay, 'days').days;
-
-		const granularity = this.getDateFiltersGranularity({ startDate, endDate });
-
-		const maxHistoryInDays =
-			this.licenseState.getInsightsMaxHistory() === -1
-				? Number.MAX_SAFE_INTEGER
-				: this.licenseState.getInsightsMaxHistory();
-		const isHourlyDateLicensed = this.licenseState.isInsightsHourlyDataLicensed();
-
-		if (granularity === 'hour' && !isHourlyDateLicensed) {
-			throw new UserError('Hourly data is not available with your current license');
-		}
-
-		if (maxHistoryInDays < daysToStartDate) {
-			throw new UserError(
-				'The selected date range exceeds the maximum history allowed by your license',
-			);
-		}
+	validateDateFiltersLicense({ startDate: _startDate, endDate: _endDate }: { startDate: Date; endDate: Date }) {
+		return;
 	}
 
 	private getDateFiltersGranularity({

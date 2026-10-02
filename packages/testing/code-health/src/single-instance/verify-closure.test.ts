@@ -41,7 +41,7 @@ describe('runVerifyClosure', () => {
 		expect(runVerifyClosure(join(ROOT, 'dirty'))).toBe(EXIT_DUPLICATES_FOUND);
 	});
 
-	// build-n8n.mjs reads the exit code to tell "found duplicates" apart from "never ran". A
+	// build-MNI.mjs reads the exit code to tell "found duplicates" apart from "never ran". A
 	// missing package or an unresolvable import also exits 1, so the finding must not use 1.
 	it('does not signal a finding with an exit code a failed toolchain also produces', () => {
 		expect(EXIT_DUPLICATES_FOUND).not.toBe(0);

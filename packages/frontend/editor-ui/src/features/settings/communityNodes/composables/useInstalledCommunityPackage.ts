@@ -1,8 +1,8 @@
 import { useCommunityNodesStore } from '../communityNodes.store';
 import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';
-import { useSettingsStore } from '@n8n/stores/settings.store';
-import { useUsersStore } from '@n8n/stores/users.store';
-import { isCommunityPackageName, type PublicInstalledPackage } from 'n8n-workflow';
+import { useSettingsStore } from '@MNI/stores/settings.store';
+import { useUsersStore } from '@MNI/stores/users.store';
+import { isCommunityPackageName, type PublicInstalledPackage } from 'MNI-workflow';
 import { isCommunityPackageUpdateAvailable } from '../communityNodes.utils';
 import { computed, type MaybeRefOrGetter, onMounted, ref, watch, toValue } from 'vue';
 

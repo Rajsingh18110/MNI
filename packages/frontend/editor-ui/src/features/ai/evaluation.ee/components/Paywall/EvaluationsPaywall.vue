@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import { COMMUNITY_PLUS_ENROLLMENT_MODAL } from '@/features/settings/usage/usage.constants';
 import { useUIStore } from '@/app/stores/ui.store';
 
-import { N8nEmptyState } from '@n8n/design-system';
+import { N8nEmptyState } from '@MNI/design-system';
 const i18n = useI18n();
 const uiStore = useUIStore();
 

@@ -1,25 +1,25 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { setActivePinia, createPinia } from 'pinia';
 import { useChatStore } from './chat.store';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import * as chatApi from './chat.api';
-import type { ChatHubToolDto, ChatHubAgentDto, ChatHubSessionDto } from '@n8n/api-types';
-import type { INode } from 'n8n-workflow';
+import type { ChatHubToolDto, ChatHubAgentDto, ChatHubSessionDto } from '@MNI/api-types';
+import type { INode } from 'MNI-workflow';
 
-vi.mock('@n8n/stores/useRootStore', () => ({
+vi.mock('@MNI/stores/useRootStore', () => ({
 	useRootStore: () => ({ restApiContext: {} }),
 }));
 
-vi.mock('@n8n/i18n', () => ({
+vi.mock('@MNI/i18n', () => ({
 	useI18n: () => ({ baseText: (key: string) => key }),
 	i18n: { baseText: (key: string) => key },
 }));
 
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: () => ({ showError: vi.fn(), showMessage: vi.fn() }),
 }));
 
-vi.mock('@n8n/composables/useTelemetry', () => ({
+vi.mock('@MNI/composables/useTelemetry', () => ({
 	useTelemetry: () => ({ track: vi.fn() }),
 }));
 
@@ -27,7 +27,7 @@ function createMockNode(overrides: Partial<INode> = {}): INode {
 	return {
 		id: 'tool-1',
 		name: 'Test Tool',
-		type: 'n8n-nodes-base.testTool',
+		type: 'MNI-nodes-base.testTool',
 		typeVersion: 1,
 		position: [0, 0],
 		parameters: {},

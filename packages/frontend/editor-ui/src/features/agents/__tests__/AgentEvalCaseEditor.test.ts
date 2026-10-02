@@ -8,7 +8,7 @@ import AgentEvalCaseEditor from '../components/AgentEvalCaseEditor.vue';
 
 configure({ testIdAttribute: 'data-testid' });
 
-vi.mock('@n8n/i18n', async (importOriginal) => ({
+vi.mock('@MNI/i18n', async (importOriginal) => ({
 	...(await importOriginal()),
 	useI18n: () => ({ baseText: (key: string) => `mocked-${key}` }),
 }));

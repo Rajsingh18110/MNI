@@ -1,5 +1,5 @@
-import type { BreakingChangeWorkflowIssue } from '@n8n/api-types';
-import type { INode } from 'n8n-workflow';
+import type { BreakingChangeWorkflowIssue } from '@MNI/api-types';
+import type { INode } from 'MNI-workflow';
 
 import type { InstanceDetectionReport, WorkflowDetectionReport } from './types';
 

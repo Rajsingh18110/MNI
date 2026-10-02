@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import type { AgentConfigValidationIssue } from '@n8n/api-types';
-import { N8nText } from '@n8n/design-system';
-import { useI18n, type BaseTextKey } from '@n8n/i18n';
-import { extractFromAICalls, type INode } from 'n8n-workflow';
+import type { AgentConfigValidationIssue } from '@MNI/api-types';
+import { N8nText } from '@MNI/design-system';
+import { useI18n, type BaseTextKey } from '@MNI/i18n';
+import { extractFromAICalls, type INode } from 'MNI-workflow';
 import { computed, ref, watch } from 'vue';
 
 import { HTTP_REQUEST_NODE_TYPE, HTTP_REQUEST_TOOL_NODE_TYPE } from '@/app/constants/nodeTypes';

@@ -1,4 +1,4 @@
-import type { AgentPersistedMessageDto } from '@n8n/api-types';
+import type { AgentPersistedMessageDto } from '@MNI/api-types';
 
 import { convertDbMessages } from '../messageMappers';
 

@@ -8,9 +8,9 @@ import {
 	createWorkflowWithHistory,
 	linkUserToProject,
 	shareWorkflowWithUsers,
-} from '@n8n/backend-test-utils';
-import { GlobalConfig } from '@n8n/config';
-import type { Project, TagEntity, User, WorkflowHistory } from '@n8n/db';
+} from '@MNI/backend-test-utils';
+import { GlobalConfig } from '@MNI/config';
+import type { Project, TagEntity, User, WorkflowHistory } from '@MNI/db';
 import {
 	WorkflowRepository,
 	ProjectRepository,
@@ -19,11 +19,11 @@ import {
 	ProjectRelationRepository,
 	UserRepository,
 	WorkflowPublishedVersionRepository,
-} from '@n8n/db';
-import { Container } from '@n8n/di';
-import { Not } from '@n8n/typeorm';
-import { InstanceSettings } from 'n8n-core';
-import type { INode } from 'n8n-workflow';
+} from '@MNI/db';
+import { Container } from '@MNI/di';
+import { Not } from '@MNI/typeorm';
+import { InstanceSettings } from 'MNI-core';
+import type { INode } from 'MNI-workflow';
 import { v4 as uuid } from 'uuid';
 
 import { ActiveWorkflowManager } from '@/active-workflow-manager';
@@ -166,7 +166,7 @@ afterEach(async () => {
 
 const testWithAPIKey =
 	(method: 'get' | 'post' | 'put' | 'delete', url: string, apiKey: string | null) => async () => {
-		void authOwnerAgent.set({ 'X-N8N-API-KEY': apiKey });
+		void authOwnerAgent.set({ 'X-MNI-API-KEY': apiKey });
 		const response = await authOwnerAgent[method](url);
 		expect(response.statusCode).toBe(401);
 	};
@@ -250,7 +250,7 @@ describe('GET /workflows', () => {
 						name: 'Schedule Trigger',
 						parameters: {},
 						position: [-20, 260],
-						type: 'n8n-nodes-base.scheduleTrigger',
+						type: 'MNI-nodes-base.scheduleTrigger',
 						typeVersion: 1,
 					},
 				],
@@ -1095,7 +1095,7 @@ describe('GET /workflows/:id/:versionId', () => {
 				{
 					id: 'node1',
 					name: 'Start',
-					type: 'n8n-nodes-base.manualTrigger',
+					type: 'MNI-nodes-base.manualTrigger',
 					parameters: {},
 					position: [0, 0] as [number, number],
 					typeVersion: 1,
@@ -1181,7 +1181,7 @@ describe('GET /workflows/:workflowId/versions/:workflowVersionId', () => {
 				{
 					id: 'node1',
 					name: 'Start',
-					type: 'n8n-nodes-base.manualTrigger',
+					type: 'MNI-nodes-base.manualTrigger',
 					parameters: {},
 					position: [0, 0] as [number, number],
 					typeVersion: 1,
@@ -1526,7 +1526,7 @@ describe.each(['activate', 'publish'])('POST /workflows/:id/%s', (action) => {
 						name: 'Start',
 						parameters: {},
 						position: [-20, 260],
-						type: 'n8n-nodes-base.manualTrigger',
+						type: 'MNI-nodes-base.manualTrigger',
 						typeVersion: 1,
 					},
 				],
@@ -2071,7 +2071,7 @@ describe('POST /workflows', () => {
 		id: 'uuid-1234',
 		parameters: {},
 		name: 'Start',
-		type: 'n8n-nodes-base.manualTrigger',
+		type: 'MNI-nodes-base.manualTrigger',
 		typeVersion: 1,
 		position: [240, 300],
 	} as const;
@@ -2101,7 +2101,7 @@ describe('POST /workflows', () => {
 					id: 'uuid-1234',
 					parameters: {},
 					name: 'Start',
-					type: 'n8n-nodes-base.manualTrigger',
+					type: 'MNI-nodes-base.manualTrigger',
 					typeVersion: 1,
 					position: [240, 300],
 				},
@@ -2124,7 +2124,7 @@ describe('POST /workflows', () => {
 					id: 'uuid-5678',
 					parameters: {},
 					name: 'Tagged NoOp',
-					type: 'n8n-nodes-base.noOp',
+					type: 'MNI-nodes-base.noOp',
 					typeVersion: 1,
 					position: [460, 300],
 					customTelemetryTags: {
@@ -2246,7 +2246,7 @@ describe('POST /workflows', () => {
 					id: 'uuid-5678',
 					parameters: {},
 					name: 'Step A',
-					type: 'n8n-nodes-base.noOp',
+					type: 'MNI-nodes-base.noOp',
 					typeVersion: 1,
 					position: [460, 300],
 				},
@@ -2254,7 +2254,7 @@ describe('POST /workflows', () => {
 					id: 'uuid-9012',
 					parameters: {},
 					name: 'Step B',
-					type: 'n8n-nodes-base.noOp',
+					type: 'MNI-nodes-base.noOp',
 					typeVersion: 1,
 					position: [680, 300],
 				},
@@ -2293,7 +2293,7 @@ describe('POST /workflows', () => {
 					id: 'uuid-1234',
 					parameters: { path: 'test-hook', httpMethod: 'POST' },
 					name: 'Webhook',
-					type: 'n8n-nodes-base.webhook',
+					type: 'MNI-nodes-base.webhook',
 					typeVersion: 2,
 					position: [250, 300],
 				},
@@ -2411,7 +2411,7 @@ describe('POST /workflows', () => {
 					id: 'uuid-1234',
 					parameters: {},
 					name: 'Hacker News',
-					type: 'n8n-nodes-base.hackerNews',
+					type: 'MNI-nodes-base.hackerNews',
 					typeVersion: 1,
 					position: [240, 300],
 				},
@@ -2671,7 +2671,7 @@ describe('POST /workflows redaction floor enforcement', () => {
 		id: 'uuid-redaction',
 		parameters: {},
 		name: 'Start',
-		type: 'n8n-nodes-base.manualTrigger',
+		type: 'MNI-nodes-base.manualTrigger',
 		typeVersion: 1,
 		position: [240, 300],
 	} as const;
@@ -2753,7 +2753,7 @@ describe('PUT /workflows/:id redaction floor enforcement', () => {
 		id: 'uuid-redaction',
 		parameters: {},
 		name: 'Start',
-		type: 'n8n-nodes-base.manualTrigger',
+		type: 'MNI-nodes-base.manualTrigger',
 		typeVersion: 1,
 		position: [240, 300],
 	} as const;
@@ -2832,7 +2832,7 @@ describe('PUT /workflows/:id', () => {
 					id: 'uuid-1234',
 					parameters: {},
 					name: 'Start',
-					type: 'n8n-nodes-base.manualTrigger',
+					type: 'MNI-nodes-base.manualTrigger',
 					typeVersion: 1,
 					position: [240, 300],
 				},
@@ -2859,7 +2859,7 @@ describe('PUT /workflows/:id', () => {
 					id: 'uuid-1234',
 					parameters: {},
 					name: 'Start',
-					type: 'n8n-nodes-base.manualTrigger',
+					type: 'MNI-nodes-base.manualTrigger',
 					typeVersion: 1,
 					position: [240, 300],
 				},
@@ -2935,7 +2935,7 @@ describe('PUT /workflows/:id', () => {
 					id: 'uuid-1234',
 					parameters: {},
 					name: 'Start',
-					type: 'n8n-nodes-base.manualTrigger',
+					type: 'MNI-nodes-base.manualTrigger',
 					typeVersion: 1,
 					position: [240, 300],
 				},
@@ -2963,7 +2963,7 @@ describe('PUT /workflows/:id', () => {
 					id: 'uuid-1234',
 					parameters: {},
 					name: 'Start',
-					type: 'n8n-nodes-base.manualTrigger',
+					type: 'MNI-nodes-base.manualTrigger',
 					typeVersion: 1,
 					position: [240, 300],
 				},
@@ -2985,7 +2985,7 @@ describe('PUT /workflows/:id', () => {
 					id: 'uuid-1234',
 					parameters: {},
 					name: 'Start',
-					type: 'n8n-nodes-base.manualTrigger',
+					type: 'MNI-nodes-base.manualTrigger',
 					typeVersion: 1,
 					position: [240, 300],
 				},
@@ -2993,7 +2993,7 @@ describe('PUT /workflows/:id', () => {
 					id: 'uuid-5678',
 					parameters: {},
 					name: 'Cron',
-					type: 'n8n-nodes-base.cron',
+					type: 'MNI-nodes-base.cron',
 					typeVersion: 1,
 					position: [400, 300],
 					customTelemetryTags: {
@@ -3077,7 +3077,7 @@ describe('PUT /workflows/:id', () => {
 					id: 'uuid-updated',
 					parameters: { triggerTimes: { item: [{ mode: 'everyMinute' }] } },
 					name: 'Updated Cron',
-					type: 'n8n-nodes-base.cron',
+					type: 'MNI-nodes-base.cron',
 					typeVersion: 1,
 					position: [300, 400],
 				},
@@ -3119,7 +3119,7 @@ describe('PUT /workflows/:id', () => {
 					id: 'uuid-updated',
 					parameters: { triggerTimes: { item: [{ mode: 'everyMinute' }] } },
 					name: 'Updated Cron',
-					type: 'n8n-nodes-base.cron',
+					type: 'MNI-nodes-base.cron',
 					typeVersion: 1,
 					position: [300, 400],
 				},
@@ -3245,7 +3245,7 @@ describe('PUT /workflows/:id', () => {
 					id: 'uuid-1',
 					parameters: {},
 					name: 'Start',
-					type: 'n8n-nodes-base.manualTrigger',
+					type: 'MNI-nodes-base.manualTrigger',
 					typeVersion: 1,
 					position: [240, 300],
 				},
@@ -3253,7 +3253,7 @@ describe('PUT /workflows/:id', () => {
 					id: 'uuid-2',
 					parameters: {},
 					name: 'Cron',
-					type: 'n8n-nodes-base.cron',
+					type: 'MNI-nodes-base.cron',
 					typeVersion: 1,
 					position: [400, 300],
 				},
@@ -3452,7 +3452,7 @@ describe('PUT /workflows/:id', () => {
 		const triggerNode: INode = {
 			id: 'trigger-node',
 			name: 'Manual Trigger',
-			type: 'n8n-nodes-base.manualTrigger',
+			type: 'MNI-nodes-base.manualTrigger',
 			typeVersion: 1,
 			position: [0, 0],
 			parameters: {},
@@ -3465,7 +3465,7 @@ describe('PUT /workflows/:id', () => {
 		): INode => ({
 			id: 'http-node',
 			name: 'HTTP Request',
-			type: 'n8n-nodes-base.httpRequest',
+			type: 'MNI-nodes-base.httpRequest',
 			typeVersion: 4.2,
 			position: [200, 0],
 			parameters: {
@@ -3483,7 +3483,7 @@ describe('PUT /workflows/:id', () => {
 			({
 				id: 'string-credential-node',
 				name: 'String Credential Node',
-				type: 'n8n-nodes-base.httpRequest',
+				type: 'MNI-nodes-base.httpRequest',
 				typeVersion: 4.2,
 				position: [200, 0],
 				parameters: {
@@ -3643,7 +3643,7 @@ describe('PUT /workflows/:id', () => {
 			id: 'uuid-1234',
 			parameters: {},
 			name: 'Start',
-			type: 'n8n-nodes-base.manualTrigger',
+			type: 'MNI-nodes-base.manualTrigger',
 			typeVersion: 1,
 			position: [240, 300],
 		} as const;
@@ -3760,7 +3760,7 @@ describe('GET /workflows/:id/tags', () => {
 
 	test('should fail due to invalid API Key', testWithAPIKey('get', '/workflows/2/tags', 'abcXYZ'));
 
-	test('should fail if N8N_WORKFLOW_TAGS_DISABLED', async () => {
+	test('should fail if MNI_WORKFLOW_TAGS_DISABLED', async () => {
 		globalConfig.tags.disabled = true;
 
 		const response = await authOwnerAgent.get('/workflows/2/tags');
@@ -3816,7 +3816,7 @@ describe('PUT /workflows/:id/tags', () => {
 
 	test('should fail due to invalid API Key', testWithAPIKey('put', '/workflows/2/tags', 'abcXYZ'));
 
-	test('should fail if N8N_WORKFLOW_TAGS_DISABLED', async () => {
+	test('should fail if MNI_WORKFLOW_TAGS_DISABLED', async () => {
 		globalConfig.tags.disabled = true;
 
 		const response = await authOwnerAgent.put('/workflows/2/tags').send([]);
@@ -4181,7 +4181,7 @@ return [
 				{
 					id: 'code-node-1',
 					name: 'Code',
-					type: 'n8n-nodes-base.code',
+					type: 'MNI-nodes-base.code',
 					typeVersion: 2,
 					position: [250, 300],
 					parameters: {
@@ -4219,7 +4219,7 @@ return [
 
 		const createdWorkflowId = createResponse.body.id;
 		const codeNode = createResponse.body.nodes.find(
-			(node: INode) => node.type === 'n8n-nodes-base.code',
+			(node: INode) => node.type === 'MNI-nodes-base.code',
 		);
 
 		expect(codeNode).toBeDefined();
@@ -4239,7 +4239,7 @@ return [
 		expect(getResponse.statusCode).toBe(200);
 
 		const retrievedCodeNode = getResponse.body.nodes.find(
-			(node: INode) => node.type === 'n8n-nodes-base.code',
+			(node: INode) => node.type === 'MNI-nodes-base.code',
 		);
 
 		expect(retrievedCodeNode).toBeDefined();
@@ -4263,7 +4263,7 @@ return [
 				{
 					id: 'code-node-1',
 					name: 'Code',
-					type: 'n8n-nodes-base.code',
+					type: 'MNI-nodes-base.code',
 					typeVersion: 2,
 					position: [250, 300],
 					parameters: {
@@ -4310,7 +4310,7 @@ return [{ json: result }];
 				{
 					id: 'code-node-1',
 					name: 'Code',
-					type: 'n8n-nodes-base.code',
+					type: 'MNI-nodes-base.code',
 					typeVersion: 2,
 					position: [250, 300],
 					parameters: {
@@ -4346,7 +4346,7 @@ return [{ json: result }];
 		expect(updateResponse.body.name).toBe('Updated Code Node Workflow');
 
 		const updatedCodeNode = updateResponse.body.nodes.find(
-			(node: INode) => node.type === 'n8n-nodes-base.code',
+			(node: INode) => node.type === 'MNI-nodes-base.code',
 		);
 
 		expect(updatedCodeNode).toBeDefined();
@@ -4365,7 +4365,7 @@ return [{ json: result }];
 		expect(getResponse.statusCode).toBe(200);
 
 		const retrievedUpdatedNode = getResponse.body.nodes.find(
-			(node: INode) => node.type === 'n8n-nodes-base.code',
+			(node: INode) => node.type === 'MNI-nodes-base.code',
 		);
 
 		expect(retrievedUpdatedNode).toBeDefined();

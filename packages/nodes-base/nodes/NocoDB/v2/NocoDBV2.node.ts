@@ -4,7 +4,7 @@ import type {
 	INodeType,
 	INodeTypeBaseDescription,
 	INodeTypeDescription,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { router } from './actions/router';
 import * as methods from './methods';

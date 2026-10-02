@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
-import { N8nButton, N8nText } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
-import type { ExecutionSummary } from 'n8n-workflow';
+import { N8nButton, N8nText } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
+import type { ExecutionSummary } from 'MNI-workflow';
 
 import { useEvaluationsWizardSidepanelStore } from '../../wizardSidepanel.store';
-import { useToast } from '@n8n/composables/useToast';
+import { useToast } from '@MNI/composables/useToast';
 import { useCreateCaseFromExecution } from '../../composables/useCreateCaseFromExecution';
 import { useUserExecutions } from '../../composables/useUserExecutions';
 import ExecutionRow from './ExecutionRow.vue';
@@ -132,7 +132,7 @@ async function handleCreateManual() {
 	padding: 0;
 	cursor: pointer;
 
-	&:hover :global(.n8n-text) {
+	&:hover :global(.MNI-text) {
 		text-decoration: underline;
 	}
 }

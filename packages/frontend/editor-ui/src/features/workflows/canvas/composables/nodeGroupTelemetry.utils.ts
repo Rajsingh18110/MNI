@@ -1,4 +1,4 @@
-import type { IConnections, INode, IWorkflowGroup } from 'n8n-workflow';
+import type { IConnections, INode, IWorkflowGroup } from 'MNI-workflow';
 
 // Experiment cleanup: remove with emptyCanvasGroups (121_empty_canvas_groups).
 export function countGroupExternalConnections(

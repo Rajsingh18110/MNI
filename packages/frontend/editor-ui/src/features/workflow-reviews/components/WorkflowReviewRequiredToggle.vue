@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { N8nDropdownMenuItem, N8nSwitch, N8nText } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+import { N8nDropdownMenuItem, N8nSwitch, N8nText } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 
 import { useReviewRequiredStore } from '@/features/workflow-reviews/reviewRequired.store';
 import { useWorkflowReviewStatusStore } from '@/features/workflow-reviews/reviewStatus.store';

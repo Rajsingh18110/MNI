@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import type { WorkflowReviewActivityEntry, WorkflowReviewClosedReason } from '@n8n/api-types';
-import { N8nCallout, N8nIcon, N8nText } from '@n8n/design-system';
-import { type BaseTextKey, useI18n } from '@n8n/i18n';
+import type { WorkflowReviewActivityEntry, WorkflowReviewClosedReason } from '@MNI/api-types';
+import { N8nCallout, N8nIcon, N8nText } from '@MNI/design-system';
+import { type BaseTextKey, useI18n } from '@MNI/i18n';
 import { computed, inject } from 'vue';
 import { I18nT } from 'vue-i18n';
 

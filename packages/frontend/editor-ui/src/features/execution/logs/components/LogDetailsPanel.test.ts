@@ -19,7 +19,7 @@ import { LOG_DETAILS_PANEL_STATE } from '@/features/execution/logs/logs.constant
 import { type GroupLogEntry, type NodeLogEntry, isGroupLog } from '../logs.types';
 import { createTestLogEntry } from '../__test__/mocks';
 import { createLogTree } from '../logs.utils';
-import { createRunExecutionData, NodeConnectionTypes } from 'n8n-workflow';
+import { createRunExecutionData, NodeConnectionTypes } from 'MNI-workflow';
 import { HTML_NODE_TYPE } from '@/app/constants';
 import { MESSAGE_AN_AGENT_NODE_TYPE } from '@/app/constants/nodeTypes';
 import { AGENT_SESSION_DETAIL_VIEW } from '@/features/agents/constants';

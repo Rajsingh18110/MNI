@@ -18,7 +18,7 @@ Two gates, both required:
 
 1. The license feature `feat:typeAvailabilityPolicies`. Without it, `init()` never runs, so the
    controllers are not mounted and no check is registered.
-2. `N8N_ENABLED_MODULES=type-availability-policies`. This module is not a default module yet.
+2. `MNI_ENABLED_MODULES=type-availability-policies`. This module is not a default module yet.
 
 **Set the environment variable on every instance type.** The module has no instance-type
 restriction, but each process reads its own configuration. An instance that enables it only on
@@ -26,7 +26,7 @@ main enforces saves and publishes, and enforces nothing at all on its queue work
 execution there is admitted.
 
 The break-glass levers stay the ones the substrate documents: remove this module from
-`N8N_ENABLED_MODULES`, or disable `policy-infrastructure` to stop every policy feature.
+`MNI_ENABLED_MODULES`, or disable `policy-infrastructure` to stop every policy feature.
 
 ## What each point decides
 
@@ -142,8 +142,8 @@ One violation per blocked type, deduplicated, in the order the types first appea
 {
 	"kind": "node-type-unavailable",
 	"checkId": "node-type-availability",
-	"message": "Node type \"n8n-nodes-base.slack\" is blocked by an instance policy",
-	"subject": "n8n-nodes-base.slack",
+	"message": "Node type \"MNI-nodes-base.slack\" is blocked by an instance policy",
+	"subject": "MNI-nodes-base.slack",
 	"subjectType": "nodeType",
 	"scope": "instance",
 	"matchedRuleId": "rule-7"
@@ -176,8 +176,8 @@ never by a project's bare default. `policy-evaluator.ts` owns that law and is pu
 the place to read it.
 
 A `name` rule for a node also covers the `Tool` and `HitlTool` variants the registry generates
-from it at startup: a rule for `n8n-nodes-base.gmail` denies `n8n-nodes-base.gmailTool` and
-`n8n-nodes-base.gmailHitlTool` too. A real node whose name ends in `Tool` is not a variant of
+from it at startup: a rule for `MNI-nodes-base.gmail` denies `MNI-nodes-base.gmailTool` and
+`MNI-nodes-base.gmailHitlTool` too. A real node whose name ends in `Tool` is not a variant of
 anything, and only its own name matches it. When one rule names the base and another names the
 variant, the first match in rule order decides, as it does when a `name` and a `package` rule
 overlap; a variant rule placed after its base rule can never match, and the write-time shadow
@@ -243,7 +243,7 @@ through a sealed repository method, and the lint rule that guards that has no al
   so the decryption goes through.
 - **A policy change applies at once, plus up to 1 second.** The write drops the shared entry,
   which reaches every process, because every deployment with more than one process reading
-  policy shares one Redis cache — unless `N8N_CACHE_BACKEND=memory` is set by hand in queue
+  policy shares one Redis cache — unless `MNI_CACHE_BACKEND=memory` is set by hand in queue
   mode. What is left is each process's 1-second shared read, so that is the staleness window a
   builder or an execution can see.
 

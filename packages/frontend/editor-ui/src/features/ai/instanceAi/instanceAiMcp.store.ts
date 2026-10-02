@@ -1,15 +1,15 @@
 import { defineStore } from 'pinia';
 import { computed, reactive, ref } from 'vue';
-import { useRootStore } from '@n8n/stores/useRootStore';
+import { useRootStore } from '@MNI/stores/useRootStore';
 import type {
 	InstanceAiMcpConnectionResponse,
 	InstanceAiMcpConnectionFailureReason,
 	InstanceAiMcpConnectionToolResponse,
 	InstanceAiMcpConnectionToolsResponse,
 	McpRegistryServerResponse,
-} from '@n8n/api-types';
-import { useToast } from '@n8n/composables/useToast';
-import { i18n } from '@n8n/i18n';
+} from '@MNI/api-types';
+import { useToast } from '@MNI/composables/useToast';
+import { i18n } from '@MNI/i18n';
 import {
 	listenForCredentialChanges,
 	useCredentialsStore,

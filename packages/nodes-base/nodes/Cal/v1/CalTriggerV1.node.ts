@@ -10,7 +10,7 @@ import {
 	type INodeTypeDescription,
 	type IWebhookResponseData,
 	NodeConnectionTypes,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { verifySignature } from '../CalTriggerHelpers';
 import { calApiRequest, sortOptionParameters } from '../GenericFunctions';

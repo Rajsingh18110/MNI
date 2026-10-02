@@ -1,15 +1,15 @@
 <script lang="ts" setup>
 import AnnotationTagsDropdown from '@/features/shared/tags/components/AnnotationTagsDropdown.ee.vue';
-import { useDebounce } from '@n8n/composables/useDebounce';
+import { useDebounce } from '@MNI/composables/useDebounce';
 import { usePageRedirectionHelper } from '@/app/composables/usePageRedirectionHelper';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
 import { EnterpriseEditionFeature } from '@/app/constants';
 import type { IWorkflowDb, IWorkflowShortResponse } from '@/Interface';
 import type { ExecutionFilterMetadata, ExecutionFilterType } from '../executions.types';
-import { i18n as locale } from '@n8n/i18n';
-import { useSettingsStore } from '@n8n/stores/settings.store';
-import { makeRestApiRequest } from '@n8n/rest-api-client';
-import { useRootStore } from '@n8n/stores/useRootStore';
+import { i18n as locale } from '@MNI/i18n';
+import { useSettingsStore } from '@MNI/stores/settings.store';
+import { makeRestApiRequest } from '@MNI/rest-api-client';
+import { useRootStore } from '@MNI/stores/useRootStore';
 import { convertToDisplayDate } from '@/app/utils/formatters/dateFormatter';
 import { isEmpty } from '@/app/utils/typesUtils';
 import { computed, onBeforeMount, reactive, ref, watch } from 'vue';
@@ -26,7 +26,7 @@ import {
 	N8nPopover,
 	N8nSelect,
 	N8nTooltip,
-} from '@n8n/design-system';
+} from '@MNI/design-system';
 
 export type ExecutionFilterProps = {
 	workflows?: Array<IWorkflowDb | IWorkflowShortResponse>;

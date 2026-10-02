@@ -190,10 +190,10 @@ describe('StaleOverridesRule', () => {
 	it('does not flag descendant override when parent is present', () => {
 		writeWorkspace(tmpDir, 'packages:\n  - packages/*\ncatalog: {}\n');
 		writeOverrides(tmpDir, {
-			overrides: { '@n8n/typeorm>@sentry/node': '10.0.0' },
+			overrides: { '@MNI/typeorm>@sentry/node': '10.0.0' },
 		});
 		writeLock(tmpDir, {
-			packages: ['@n8n/typeorm@0.3.20', '@sentry/node@10.0.0'],
+			packages: ['@MNI/typeorm@0.3.20', '@sentry/node@10.0.0'],
 		});
 
 		const violations = rule.analyze(context());

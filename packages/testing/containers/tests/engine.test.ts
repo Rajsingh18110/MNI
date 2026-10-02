@@ -13,12 +13,12 @@ const postgresEnv: Record<string, string> = {
 	DB_TYPE: 'postgresdb',
 	DB_POSTGRESDB_HOST: 'postgres',
 	DB_POSTGRESDB_PORT: '5432',
-	DB_POSTGRESDB_DATABASE: 'n8n_db',
-	DB_POSTGRESDB_USER: 'n8n_user',
+	DB_POSTGRESDB_DATABASE: 'MNI_db',
+	DB_POSTGRESDB_USER: 'MNI_user',
 	DB_POSTGRESDB_PASSWORD: 'test_password',
-	N8N_ENCRYPTION_KEY: 'test-encryption-key',
-	N8N_LOG_LEVEL: 'debug',
-	N8N_RUNNERS_MODE: 'external',
+	MNI_ENCRYPTION_KEY: 'test-encryption-key',
+	MNI_LOG_LEVEL: 'debug',
+	MNI_RUNNERS_MODE: 'external',
 };
 
 const projectName = 'proj';
@@ -26,8 +26,8 @@ const authSecret = 'test-stack-secret'.repeat(3);
 const engineOptions = { projectName, authSecret };
 const dedicatedEngineEnv = {
 	...postgresEnv,
-	N8N_ENGINE_DATABASE_URL:
-		'postgres://engine_user:engine_test_password@engine-postgres:5432/n8n_engine',
+	MNI_ENGINE_DATABASE_URL:
+		'postgres://engine_user:engine_test_password@engine-postgres:5432/MNI_engine',
 };
 
 describe('applyEngineEnv', () => {
@@ -45,15 +45,15 @@ describe('applyEngineEnv', () => {
 
 			applyEngineEnv(env, { engine: 'in-process', mains: 1, isQueueMode: false, projectName });
 
-			expect(env.N8N_ENABLED_MODULES).toBe('engine-v2');
+			expect(env.MNI_ENABLED_MODULES).toBe('engine-v2');
 		});
 
 		test('keeps modules the caller already enabled', () => {
-			const env = { ...postgresEnv, N8N_ENABLED_MODULES: 'insights,engine-v2' };
+			const env = { ...postgresEnv, MNI_ENABLED_MODULES: 'insights,engine-v2' };
 
 			applyEngineEnv(env, { engine: 'in-process', mains: 1, isQueueMode: false, projectName });
 
-			expect(env.N8N_ENABLED_MODULES).toBe('insights,engine-v2');
+			expect(env.MNI_ENABLED_MODULES).toBe('insights,engine-v2');
 		});
 
 		test('points the data plane at its own database on the stack Postgres', () => {
@@ -61,17 +61,17 @@ describe('applyEngineEnv', () => {
 
 			applyEngineEnv(env, { engine: 'in-process', mains: 1, isQueueMode: false, projectName });
 
-			expect(env.N8N_ENGINE_DATABASE_URL).toBe(
-				`postgres://n8n_user:test_password@postgres:5432/${ENGINE_DATABASE}`,
+			expect(env.MNI_ENGINE_DATABASE_URL).toBe(
+				`postgres://MNI_user:test_password@postgres:5432/${ENGINE_DATABASE}`,
 			);
 		});
 
 		test('keeps an explicit data plane database URL', () => {
-			const env = { ...postgresEnv, N8N_ENGINE_DATABASE_URL: 'postgres://engine-postgres/db' };
+			const env = { ...postgresEnv, MNI_ENGINE_DATABASE_URL: 'postgres://engine-postgres/db' };
 
 			applyEngineEnv(env, { engine: 'in-process', mains: 1, isQueueMode: false, projectName });
 
-			expect(env.N8N_ENGINE_DATABASE_URL).toBe('postgres://engine-postgres/db');
+			expect(env.MNI_ENGINE_DATABASE_URL).toBe('postgres://engine-postgres/db');
 		});
 
 		test('leaves the mode unset so the module hosts the data plane', () => {
@@ -79,7 +79,7 @@ describe('applyEngineEnv', () => {
 
 			applyEngineEnv(env, { engine: 'in-process', mains: 1, isQueueMode: false, projectName });
 
-			expect(env.N8N_ENGINE_MODE).toBeUndefined();
+			expect(env.MNI_ENGINE_MODE).toBeUndefined();
 		});
 	});
 
@@ -87,7 +87,7 @@ describe('applyEngineEnv', () => {
 		const containerEnv = (): Record<string, string> => {
 			const env: Record<string, string> = {
 				...postgresEnv,
-				N8N_ENGINE_DATABASE_URL: 'postgres://engine-postgres/db',
+				MNI_ENGINE_DATABASE_URL: 'postgres://engine-postgres/db',
 			};
 			applyEngineEnv(env, { engine: 'container', mains: 1, isQueueMode: false, ...engineOptions });
 			return env;
@@ -95,35 +95,35 @@ describe('applyEngineEnv', () => {
 
 		test('enables the engine-v2 module in remote mode', () => {
 			expect(containerEnv()).toMatchObject({
-				N8N_ENABLED_MODULES: 'engine-v2',
-				N8N_ENGINE_MODE: 'remote',
+				MNI_ENABLED_MODULES: 'engine-v2',
+				MNI_ENGINE_MODE: 'remote',
 			});
 		});
 
 		test('points the main at the engine container', () => {
-			expect(containerEnv().N8N_ENGINE_BASE_URL).toBe('http://proj-n8n-engine:3000');
+			expect(containerEnv().MNI_ENGINE_BASE_URL).toBe('http://proj-MNI-engine:3000');
 		});
 
 		test('opens the control plane server to the engine container on the stack port', () => {
 			expect(containerEnv()).toMatchObject({
-				N8N_ENGINE_CONTROL_PLANE_HOST: '0.0.0.0',
-				N8N_ENGINE_CONTROL_PLANE_PORT: '3001',
+				MNI_ENGINE_CONTROL_PLANE_HOST: '0.0.0.0',
+				MNI_ENGINE_CONTROL_PLANE_PORT: '3001',
 			});
 		});
 
 		test('keeps the control plane port the engine dials, whatever the caller set', () => {
-			const env: Record<string, string> = { ...postgresEnv, N8N_ENGINE_CONTROL_PLANE_PORT: '4001' };
+			const env: Record<string, string> = { ...postgresEnv, MNI_ENGINE_CONTROL_PLANE_PORT: '4001' };
 			applyEngineEnv(env, { engine: 'container', mains: 1, isQueueMode: false, ...engineOptions });
 
-			expect(env.N8N_ENGINE_CONTROL_PLANE_PORT).toBe('3001');
+			expect(env.MNI_ENGINE_CONTROL_PLANE_PORT).toBe('3001');
 		});
 
 		test('shares the secret both planes verify against', () => {
-			expect(containerEnv().N8N_ENGINE_AUTH_SECRET).toBe(authSecret);
+			expect(containerEnv().MNI_ENGINE_AUTH_SECRET).toBe(authSecret);
 		});
 
 		test('gives the main no data plane database, even when a service provided one', () => {
-			expect(containerEnv().N8N_ENGINE_DATABASE_URL).toBeUndefined();
+			expect(containerEnv().MNI_ENGINE_DATABASE_URL).toBeUndefined();
 		});
 	});
 
@@ -174,35 +174,35 @@ describe('engineContainerEnv', () => {
 
 	test('has no encryption key, since it holds no credential store', () => {
 		expect(
-			engineContainerEnv(dedicatedEngineEnv, engineOptions).N8N_ENCRYPTION_KEY,
+			engineContainerEnv(dedicatedEngineEnv, engineOptions).MNI_ENCRYPTION_KEY,
 		).toBeUndefined();
 	});
 
 	test('keeps the rest of the shared env', () => {
-		expect(engineContainerEnv(dedicatedEngineEnv, engineOptions).N8N_LOG_LEVEL).toBe('debug');
+		expect(engineContainerEnv(dedicatedEngineEnv, engineOptions).MNI_LOG_LEVEL).toBe('debug');
 	});
 
 	test('requires a dedicated data plane database URL', () => {
-		expect(() => engineContainerEnv(postgresEnv, engineOptions)).toThrow(/N8N_ENGINE_DATABASE_URL/);
+		expect(() => engineContainerEnv(postgresEnv, engineOptions)).toThrow(/MNI_ENGINE_DATABASE_URL/);
 	});
 
 	test('keeps an explicit data plane database URL', () => {
 		const env = engineContainerEnv(
-			{ ...postgresEnv, N8N_ENGINE_DATABASE_URL: 'postgres://engine-postgres/db' },
+			{ ...postgresEnv, MNI_ENGINE_DATABASE_URL: 'postgres://engine-postgres/db' },
 			engineOptions,
 		);
 
-		expect(env.N8N_ENGINE_DATABASE_URL).toBe('postgres://engine-postgres/db');
+		expect(env.MNI_ENGINE_DATABASE_URL).toBe('postgres://engine-postgres/db');
 	});
 
 	test('dials the control plane server on the main', () => {
 		expect(
-			engineContainerEnv(dedicatedEngineEnv, engineOptions).N8N_ENGINE_CONTROL_PLANE_BASE_URL,
-		).toBe('http://proj-n8n:3001');
+			engineContainerEnv(dedicatedEngineEnv, engineOptions).MNI_ENGINE_CONTROL_PLANE_BASE_URL,
+		).toBe('http://proj-MNI:3001');
 	});
 
 	test('shares the secret both planes verify against', () => {
-		expect(engineContainerEnv(dedicatedEngineEnv, engineOptions).N8N_ENGINE_AUTH_SECRET).toBe(
+		expect(engineContainerEnv(dedicatedEngineEnv, engineOptions).MNI_ENGINE_AUTH_SECRET).toBe(
 			authSecret,
 		);
 	});
@@ -219,12 +219,12 @@ describe('engineContainerEnv', () => {
 
 	test('serves on the address the main dials and the stack probes, whatever the caller set', () => {
 		const env = engineContainerEnv(
-			{ ...dedicatedEngineEnv, N8N_ENGINE_HOST: '127.0.0.1', N8N_ENGINE_PORT: '4000' },
+			{ ...dedicatedEngineEnv, MNI_ENGINE_HOST: '127.0.0.1', MNI_ENGINE_PORT: '4000' },
 			engineOptions,
 		);
 
-		expect(env.N8N_ENGINE_HOST).toBe('0.0.0.0');
-		expect(env.N8N_ENGINE_PORT).toBe('3000');
+		expect(env.MNI_ENGINE_HOST).toBe('0.0.0.0');
+		expect(env.MNI_ENGINE_PORT).toBe('3000');
 	});
 });
 

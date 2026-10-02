@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue';
 import { CollapsibleRoot } from 'reka-ui';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import {
 	N8nAnimatedCollapsibleContent,
 	N8nButton,
@@ -11,7 +11,7 @@ import {
 	N8nRadioGroup,
 	N8nRadioGroupItem,
 	N8nText,
-} from '@n8n/design-system';
+} from '@MNI/design-system';
 import { validateRedirectUri } from '@/features/ai/mcpAccess/redirect-uris.utils';
 
 type UrlMode = 'all' | 'trusted';
@@ -236,7 +236,7 @@ const onSave = () => emit('save', result.value);
 </template>
 
 <style lang="scss" module>
-@use '@n8n/design-system/css/mixins/motion';
+@use '@MNI/design-system/css/mixins/motion';
 
 // The settings-surface blur motion, shared with N8nSettingsRow's expand region
 // and the collapsible section above, so the rows and the section move as one.

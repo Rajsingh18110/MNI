@@ -1,5 +1,5 @@
 import { createHmac, timingSafeEqual } from 'crypto';
-import { UnexpectedError } from 'n8n-workflow';
+import { UnexpectedError } from 'MNI-workflow';
 
 /**
  * Versioned prefix for every HITL callback reference. Platform webhook handlers
@@ -71,7 +71,7 @@ export interface ParsedHitlCallbackReference {
 }
 
 function buildHmacInput(executionId: string, decision: HitlCallbackDecision): string {
-	return `n8n-hitl-callback:v1:${executionId}:${decision}`;
+	return `MNI-hitl-callback:v1:${executionId}:${decision}`;
 }
 
 function computeHmac(executionId: string, decision: HitlCallbackDecision, secret: string): string {

@@ -1,4 +1,4 @@
-import { UserError } from 'n8n-workflow';
+import { UserError } from 'MNI-workflow';
 
 export class TaskRunnerFailedHeartbeatError extends UserError {
 	description: string;
@@ -14,7 +14,7 @@ export class TaskRunnerFailedHeartbeatError extends UserError {
 				'Optimize your script to prevent CPU-intensive operations, e.g. by breaking them down into smaller chunks or batch processing.',
 			ensureTermination:
 				'Ensure that all paths in your script are able to terminate, i.e. no infinite loops.',
-			increaseInterval: `If your task can reasonably keep the task runner busy for more than ${heartbeatInterval} ${heartbeatInterval === 1 ? 'second' : 'seconds'}, increase the heartbeat interval using the N8N_RUNNERS_HEARTBEAT_INTERVAL environment variable.`,
+			increaseInterval: `If your task can reasonably keep the task runner busy for more than ${heartbeatInterval} ${heartbeatInterval === 1 ? 'second' : 'seconds'}, increase the heartbeat interval using the MNI_RUNNERS_HEARTBEAT_INTERVAL environment variable.`,
 		};
 
 		const suggestions = [fixes.optimizeScript, fixes.ensureTermination];

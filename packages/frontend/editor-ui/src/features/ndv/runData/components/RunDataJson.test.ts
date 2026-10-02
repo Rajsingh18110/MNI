@@ -47,7 +47,7 @@ const renderComponent = createComponentRenderer(RunDataJson, {
 			},
 			id: '820ea733-d8a6-4379-8e73-88a2347ea003',
 			name: 'Set',
-			type: 'n8n-nodes-base.set',
+			type: 'MNI-nodes-base.set',
 			typeVersion: 1,
 			position: [380, 1060],
 			disabled: false,

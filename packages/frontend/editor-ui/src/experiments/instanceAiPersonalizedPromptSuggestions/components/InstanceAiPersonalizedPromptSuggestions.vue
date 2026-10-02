@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { computed, ref } from 'vue';
-import { useI18n } from '@n8n/i18n';
-import { N8nIcon } from '@n8n/design-system';
+import { useI18n } from '@MNI/i18n';
+import { N8nIcon } from '@MNI/design-system';
 
 import type {
 	PersonalizedPromptDisplaySuggestion,
@@ -190,7 +190,7 @@ function toggleSuggestions() {
 </template>
 
 <style module lang="scss">
-@use '@n8n/design-system/css/mixins/motion';
+@use '@MNI/design-system/css/mixins/motion';
 
 .suggestions {
 	width: 100%;

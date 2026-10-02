@@ -29,17 +29,17 @@ import { createExecutionDataId, useExecutionDataStore } from '@/app/stores/execu
 import { WorkflowDocumentStoreKey, WorkflowIdKey } from '@/app/constants/injectionKeys';
 import { useCanvasOperations } from '@/app/composables/useCanvasOperations';
 import { useNDVStore } from '@/features/ndv/shared/ndv.store';
-import { createRunExecutionData, deepCopy } from 'n8n-workflow';
+import { createRunExecutionData, deepCopy } from 'MNI-workflow';
 import { createTestTaskData } from '@/__tests__/mocks';
 import { useLogsStore } from '@/app/stores/logs.store';
 import { useUIStore } from '@/app/stores/ui.store';
 import { LOGS_PANEL_STATE } from '../logs.constants';
-import { ChatOptionsSymbol, ChatSymbol } from '@n8n/chat/constants';
+import { ChatOptionsSymbol, ChatSymbol } from '@MNI/chat/constants';
 import { userEvent } from '@testing-library/user-event';
-import { useToast } from '@n8n/composables/useToast';
+import { useToast } from '@MNI/composables/useToast';
 import type { IWorkflowDb } from '@/Interface';
 
-vi.mock('@n8n/composables/useToast', () => {
+vi.mock('@MNI/composables/useToast', () => {
 	const showMessage = vi.fn();
 	const showError = vi.fn();
 	return {

@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { type IconOrEmoji } from '@n8n/design-system';
+import { type IconOrEmoji } from '@MNI/design-system';
 
-import { N8nIcon, N8nText } from '@n8n/design-system';
+import { N8nIcon, N8nText } from '@MNI/design-system';
 type Props = {
 	icon: IconOrEmoji;
 	size?: 'mini' | 'small' | 'medium' | 'large';

@@ -1,5 +1,5 @@
-import { mockLogger } from '@n8n/backend-test-utils';
-import type { Settings, SettingsRepository } from '@n8n/db';
+import { mockLogger } from '@MNI/backend-test-utils';
+import type { Settings, SettingsRepository } from '@MNI/db';
 import type { Mocked } from 'vitest';
 import { mock } from 'vitest-mock-extended';
 

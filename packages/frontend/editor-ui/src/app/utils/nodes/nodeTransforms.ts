@@ -11,13 +11,13 @@ import type {
 	INodeCredentials,
 	FromAIArgument,
 	INodePropertyOptions,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import {
 	isHitlToolType,
 	NodeHelpers,
 	normalizeNodeShape,
 	traverseNodeParameters,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';
 import { getCredentialTypeName, isCredentialOnlyNodeType } from '@/app/utils/credentialOnlyNodes';
 import {

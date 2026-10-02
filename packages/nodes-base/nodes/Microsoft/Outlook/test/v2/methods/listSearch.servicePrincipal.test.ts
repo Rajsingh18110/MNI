@@ -1,4 +1,4 @@
-import type { ILoadOptionsFunctions, INode } from 'n8n-workflow';
+import type { ILoadOptionsFunctions, INode } from 'MNI-workflow';
 import type { Mock, Mocked } from 'vitest';
 import { mockDeep } from 'vitest-mock-extended';
 
@@ -22,7 +22,7 @@ describe('MicrosoftOutlookV2 - listSearch Service Principal mailbox rewrite', ()
 		const mockNode: INode = {
 			id: 'test-node',
 			name: 'Microsoft Outlook',
-			type: 'n8n-nodes-base.microsoftOutlook',
+			type: 'MNI-nodes-base.microsoftOutlook',
 			typeVersion: 2,
 			position: [0, 0],
 			parameters: {},

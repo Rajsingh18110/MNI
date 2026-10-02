@@ -11,14 +11,14 @@ import {
 import { backendBySpecDir, BACKEND_BY_SPEC_DIR, coverageOptions } from '../coverage-options';
 
 const pkgMap = new Map([
-	['n8n-core', 'packages/core'],
-	['@n8n/db', 'packages/@n8n/db'],
+	['MNI-core', 'packages/core'],
+	['@MNI/db', 'packages/@MNI/db'],
 ]);
 
 describe('resolveBackendUrl', () => {
 	it('maps a node_modules/<pkg>/dist url to the repo dist path', () => {
 		const r = resolveBackendUrl(
-			'file:///usr/local/lib/node_modules/n8n-core/dist/nodes/If/If.node.js',
+			'file:///usr/local/lib/node_modules/MNI-core/dist/nodes/If/If.node.js',
 			pkgMap,
 		);
 		expect(r).not.toBeNull();
@@ -30,9 +30,9 @@ describe('resolveBackendUrl', () => {
 	});
 
 	it('handles @scoped packages', () => {
-		const r = resolveBackendUrl('file:///app/node_modules/@n8n/db/dist/entities/user.js', pkgMap);
+		const r = resolveBackendUrl('file:///app/node_modules/@MNI/db/dist/entities/user.js', pkgMap);
 		expect(r!.repoDistFile.replace(/\\/g, '/')).toMatch(
-			/packages\/@n8n\/db\/dist\/entities\/user\.js$/,
+			/packages\/@MNI\/db\/dist\/entities\/user\.js$/,
 		);
 	});
 

@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
     inputs:
       version-tag:
-        description: 'Version tag (e.g. n8n@2.7.0).'
+        description: 'Version tag (e.g. MNI@2.7.0).'
         required: true
         type: string
 
@@ -29,8 +29,8 @@ jobs:
         id: generate_token
         uses: actions/create-github-app-token@29824e69f54612133e76f7eaac726eef6c875baf # v2.2.1
         with:
-          app-id: ${{ secrets.N8N_ASSISTANT_APP_ID }}
-          private-key: ${{ secrets.N8N_ASSISTANT_PRIVATE_KEY }}
+          app-id: ${{ secrets.MNI_ASSISTANT_APP_ID }}
+          private-key: ${{ secrets.MNI_ASSISTANT_PRIVATE_KEY }}
 
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1

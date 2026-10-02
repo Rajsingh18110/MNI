@@ -1,18 +1,18 @@
 <script lang="ts" setup>
 import { computed, onMounted, ref } from 'vue';
 import { useRouter } from 'vue-router';
-import { useI18n } from '@n8n/i18n';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
-import { useToast } from '@n8n/composables/useToast';
-import { TELEMETRY_EVENT } from '@n8n/telemetry';
+import { useI18n } from '@MNI/i18n';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
+import { useToast } from '@MNI/composables/useToast';
+import { TELEMETRY_EVENT } from '@MNI/telemetry';
 import {
 	N8nButton,
 	N8nHeading,
 	N8nSettingsLayout,
 	N8nSettingsPageHeader,
 	N8nText,
-} from '@n8n/design-system';
-import type { TableOptions } from '@n8n/design-system';
+} from '@MNI/design-system';
+import type { TableOptions } from '@MNI/design-system';
 
 import { useDocumentTitle } from '@/app/composables/useDocumentTitle';
 import { useMessage } from '@/app/composables/useMessage';
@@ -22,7 +22,7 @@ import PreferenceModal from '../components/PreferenceModal.vue';
 import PreferencesTable from '../components/PreferencesTable.vue';
 import { PREFERENCES_DEFAULT_PAGE_SIZE } from '../context.constants';
 import { useContextStore } from '../context.store';
-import type { AiPreferenceScope } from '@n8n/api-types';
+import type { AiPreferenceScope } from '@MNI/api-types';
 
 import type { Preference } from '../context.types';
 import { preferenceScope } from '../context.utils';

@@ -2,8 +2,8 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { shallowMount, flushPromises } from '@vue/test-utils';
 import { nextTick, reactive } from 'vue';
-import type { PushMessage } from '@n8n/api-types';
-import { N8nEmptyState } from '@n8n/design-system';
+import type { PushMessage } from '@MNI/api-types';
+import { N8nEmptyState } from '@MNI/design-system';
 import type * as AgentBuilderSessionModule from '@/features/agents/composables/useAgentBuilderSession';
 import AgentSessionTimelineView from '../views/AgentSessionTimelineView.vue';
 import AgentSessionTimelinePanel from '../components/AgentSessionTimelinePanel.vue';
@@ -63,7 +63,7 @@ vi.mock('vue-router', () => ({
 	}),
 }));
 
-vi.mock('@n8n/stores/useRootStore', () => ({
+vi.mock('@MNI/stores/useRootStore', () => ({
 	useRootStore: () => ({ restApiContext: {} }),
 }));
 
@@ -147,7 +147,7 @@ async function renderPrivateTimeline() {
 
 describe('AgentSessionTimelineView', () => {
 	beforeEach(() => {
-		localStorage.removeItem('N8N_AGENT_PREVIEW_OPEN:p1:a1');
+		localStorage.removeItem('MNI_AGENT_PREVIEW_OPEN:p1:a1');
 		agentPermissions.canUpdate.value = true;
 		deleteSession.mockClear();
 		fetchSessionThreads.mockReset().mockResolvedValue(undefined);
@@ -324,7 +324,7 @@ describe('AgentSessionTimelineView', () => {
 	});
 
 	it('keeps an ineligible timeline read-only with a saved open dock', async () => {
-		localStorage.setItem('N8N_AGENT_PREVIEW_OPEN:p1:a1', 'true');
+		localStorage.setItem('MNI_AGENT_PREVIEW_OPEN:p1:a1', 'true');
 		const wrapper = shallowMount(AgentSessionTimelineView);
 		await flushPromises();
 		wrapper.findComponent(AgentSessionTimelinePanel).vm.$emit('loaded', {

@@ -4,7 +4,7 @@ import path from 'node:path';
 /**
  * A value-import cycle between two `@Service()` modules is not a style problem:
  * whichever module the graph is entered at gets an unresolved `design:paramtypes`
- * entry for the other, and `@n8n/di` silently injects `undefined` for it. The
+ * entry for the other, and `@MNI/di` silently injects `undefined` for it. The
  * class then fails at call time with "Cannot read properties of undefined",
  * hundreds of test files away from the import that caused it.
  *

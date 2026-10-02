@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { computed, onMounted, ref, shallowRef, watch } from 'vue';
 import { parseDate, type CalendarDate } from '@internationalized/date';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import {
 	N8nAlertDialog,
 	N8nButton,
@@ -16,11 +16,11 @@ import {
 	N8nText,
 	type DateRange,
 	type DateValue,
-} from '@n8n/design-system';
-import type { TableHeader, TableOptions } from '@n8n/design-system';
+} from '@MNI/design-system';
+import type { TableHeader, TableOptions } from '@MNI/design-system';
 
 import { useDocumentTitle } from '@/app/composables/useDocumentTitle';
-import { useToast } from '@n8n/composables/useToast';
+import { useToast } from '@MNI/composables/useToast';
 
 import { useEncryptionKeysStore } from '../encryption-keys.store';
 import type { EncryptionKey, EncryptionKeySortField } from '../encryption-keys.types';
@@ -31,7 +31,7 @@ const { showMessage, showError } = useToast();
 const store = useEncryptionKeysStore();
 
 const DOCS_URL =
-	'https://docs.n8n.io/deploy/host-n8n/configure-n8n/security/rotate-encryption-keys';
+	'https://docs.n8n.io/deploy/host-MNI/configure-MNI/security/rotate-encryption-keys';
 
 const SORT_FIELDS: readonly EncryptionKeySortField[] = ['createdAt', 'updatedAt', 'status'];
 

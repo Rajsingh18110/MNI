@@ -1,7 +1,7 @@
-import { SKILL_LOAD_TOOL_NAME, type StreamChunk } from '@n8n/agents';
-import type { AgentNodeCapability, PushPayload } from '@n8n/api-types';
-import { isRecord } from '@n8n/utils/is-record';
-import type { ExecuteAgentInvocationContext, IWorkflowExecuteAdditionalData } from 'n8n-workflow';
+import { SKILL_LOAD_TOOL_NAME, type StreamChunk } from '@MNI/agents';
+import type { AgentNodeCapability, PushPayload } from '@MNI/api-types';
+import { isRecord } from '@MNI/utils/is-record';
+import type { ExecuteAgentInvocationContext, IWorkflowExecuteAdditionalData } from 'MNI-workflow';
 
 type WorkflowAgentStreamEvent =
 	| { type: 'response-begin' }

@@ -1,4 +1,4 @@
-import { createTeamProject, testDb, testModules } from '@n8n/backend-test-utils';
+import { createTeamProject, testDb, testModules } from '@MNI/backend-test-utils';
 import {
 	type Role,
 	GLOBAL_MEMBER_ROLE,
@@ -8,9 +8,9 @@ import {
 	type User,
 	PROJECT_ADMIN_ROLE,
 	GLOBAL_ADMIN_ROLE,
-} from '@n8n/db';
-import { Container } from '@n8n/di';
-import type { EntityManager } from '@n8n/typeorm';
+} from '@MNI/db';
+import { Container } from '@MNI/di';
+import type { EntityManager } from '@MNI/typeorm';
 import { mock } from 'vitest-mock-extended';
 
 import { createUser } from '@test-integration/db/users';

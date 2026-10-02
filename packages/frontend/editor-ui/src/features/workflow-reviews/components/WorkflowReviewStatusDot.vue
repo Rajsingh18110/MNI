@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import type { WorkflowReviewRequestDecision, WorkflowReviewRequestState } from '@n8n/api-types';
-import { useI18n } from '@n8n/i18n';
+import type { WorkflowReviewRequestDecision, WorkflowReviewRequestState } from '@MNI/api-types';
+import { useI18n } from '@MNI/i18n';
 import { computed } from 'vue';
 
 import { getWorkflowReviewStatusDisplay } from '../workflowReviewStatus.utils';

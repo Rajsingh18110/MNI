@@ -6,14 +6,14 @@
  * behaviour the RFC asks for and the one users will call a bug — "my old workflow saves but
  * will not run" — so it is worth pinning on the real paths rather than in the check's own tests.
  */
-import { createWorkflow, createWorkflowWithHistory, testDb } from '@n8n/backend-test-utils';
-import { WorkflowsConfig } from '@n8n/config';
-import { LICENSE_FEATURES } from '@n8n/constants';
-import { ExecutionRepository, WorkflowRepository, type IWorkflowDb, type User } from '@n8n/db';
-import { PolicyCheckMetadata } from '@n8n/decorators';
-import { Container } from '@n8n/di';
-import { InstanceSettings } from 'n8n-core';
-import { createRunExecutionData, type INode } from 'n8n-workflow';
+import { createWorkflow, createWorkflowWithHistory, testDb } from '@MNI/backend-test-utils';
+import { WorkflowsConfig } from '@MNI/config';
+import { LICENSE_FEATURES } from '@MNI/constants';
+import { ExecutionRepository, WorkflowRepository, type IWorkflowDb, type User } from '@MNI/db';
+import { PolicyCheckMetadata } from '@MNI/decorators';
+import { Container } from '@MNI/di';
+import { InstanceSettings } from 'MNI-core';
+import { createRunExecutionData, type INode } from 'MNI-workflow';
 import { v4 as uuid } from 'uuid';
 
 import { ActiveWorkflowManager } from '@/active-workflow-manager';
@@ -26,9 +26,9 @@ import { clearPolicyCache } from './shared/policy-cache';
 
 const CHECK_ID = 'node-type-availability';
 
-const MANUAL_TRIGGER = 'n8n-nodes-base.manualTrigger';
-const SCHEDULE_TRIGGER = 'n8n-nodes-base.scheduleTrigger';
-const SET = 'n8n-nodes-base.set';
+const MANUAL_TRIGGER = 'MNI-nodes-base.manualTrigger';
+const SCHEDULE_TRIGGER = 'MNI-nodes-base.scheduleTrigger';
+const SET = 'MNI-nodes-base.set';
 
 const testServer = utils.setupTestServer({
 	endpointGroups: ['workflows', 'activeWorkflows', 'type-availability-policies'],

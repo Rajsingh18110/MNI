@@ -10,9 +10,9 @@ interface RuntimeBenchmarkProfile {
 export const VM_EAGER_BENCHMARK_PROFILE: RuntimeBenchmarkProfile = {
 	isolationSuffix: 'vm-eager',
 	env: {
-		N8N_EXPRESSION_ENGINE: 'vm',
-		N8N_EXPRESSION_ENGINE_LAZY_ACQUIRE: 'false',
-		N8N_EXPRESSION_ENGINE_COMPILE_CACHE: 'false',
+		MNI_EXPRESSION_ENGINE: 'vm',
+		MNI_EXPRESSION_ENGINE_LAZY_ACQUIRE: 'false',
+		MNI_EXPRESSION_ENGINE_COMPILE_CACHE: 'false',
 	},
 	dimensions: {
 		runtime_profile: 'v1 eager',
@@ -27,9 +27,9 @@ export const VM_EAGER_BENCHMARK_PROFILE: RuntimeBenchmarkProfile = {
 export const VM_LAZY_CACHE_BENCHMARK_PROFILE: RuntimeBenchmarkProfile = {
 	isolationSuffix: 'vm-lazy-cache',
 	env: {
-		N8N_EXPRESSION_ENGINE: 'vm',
-		N8N_EXPRESSION_ENGINE_LAZY_ACQUIRE: 'true',
-		N8N_EXPRESSION_ENGINE_COMPILE_CACHE: 'true',
+		MNI_EXPRESSION_ENGINE: 'vm',
+		MNI_EXPRESSION_ENGINE_LAZY_ACQUIRE: 'true',
+		MNI_EXPRESSION_ENGINE_COMPILE_CACHE: 'true',
 	},
 	dimensions: {
 		runtime_profile: 'v1 lazy/cache',

@@ -1,14 +1,14 @@
-import { Logger } from '@n8n/backend-common';
-import type { HttpRequestClient } from '@n8n/backend-network';
-import { OutboundHttp } from '@n8n/backend-network';
-import { Time } from '@n8n/constants';
-import { LicenseMetricsRepository } from '@n8n/db';
-import { Service } from '@n8n/di';
-import { isRecord } from '@n8n/utils/is-record';
-import { InstanceSettings } from 'n8n-core';
-import { OperationalError } from 'n8n-workflow';
+import { Logger } from '@MNI/backend-common';
+import type { HttpRequestClient } from '@MNI/backend-network';
+import { OutboundHttp } from '@MNI/backend-network';
+import { Time } from '@MNI/constants';
+import { LicenseMetricsRepository } from '@MNI/db';
+import { Service } from '@MNI/di';
+import { isRecord } from '@MNI/utils/is-record';
+import { InstanceSettings } from 'MNI-core';
+import { OperationalError } from 'MNI-workflow';
 
-import { N8N_VERSION } from '@/constants';
+import { MNI_VERSION } from '@/constants';
 import { EventService } from '@/events/event.service';
 import { License } from '@/license';
 import { InsightsService } from '@/modules/insights/insights.service';
@@ -168,7 +168,7 @@ export class InstanceReportingService {
 			instanceId: this.instanceSettings.instanceId,
 			batchId: report.id,
 			...(this.config.instanceReportingLabel ? { label: this.config.instanceReportingLabel } : {}),
-			n8nVersion: N8N_VERSION,
+			n8nVersion: MNI_VERSION,
 			dataPoints: report.dataPoints,
 			...(licenseCert ? { licenseCert } : {}),
 		};

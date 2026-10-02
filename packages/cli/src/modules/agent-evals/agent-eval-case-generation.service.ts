@@ -1,17 +1,17 @@
-import type { Agent } from '@n8n/agents';
-import { getProviderPrefix } from '@n8n/ai-utilities/agent-config';
+import type { Agent } from '@MNI/agents';
+import { getProviderPrefix } from '@MNI/ai-utilities/agent-config';
 import {
 	MANAGED_CREDENTIAL_TOKEN,
 	type AgentEvalDraftCase,
 	type AgentJsonConfig,
 	type GenerateDraftCasesOptions,
 	type GenerateDraftCasesResult,
-} from '@n8n/api-types';
-import { Logger } from '@n8n/backend-common';
-import type { User } from '@n8n/db';
-import { AgentEvalDatasetRepository } from '@n8n/db';
-import { Service } from '@n8n/di';
-import { OperationalError, UserError } from 'n8n-workflow';
+} from '@MNI/api-types';
+import { Logger } from '@MNI/backend-common';
+import type { User } from '@MNI/db';
+import { AgentEvalDatasetRepository } from '@MNI/db';
+import { Service } from '@MNI/di';
+import { OperationalError, UserError } from 'MNI-workflow';
 
 import { CredentialsService } from '@/credentials/credentials.service';
 import { ForbiddenError } from '@/errors/response-errors/forbidden.error';
@@ -198,7 +198,7 @@ export class AgentEvalCaseGenerationService {
 	): Promise<AgentEvalDraftCase[]> {
 		// Lazy-load the agents SDK so it stays out of the boot path for instances
 		// that never generate cases.
-		const { Agent } = await import('@n8n/agents');
+		const { Agent } = await import('@MNI/agents');
 		const agent: Agent = new Agent('agent-eval-case-generation')
 			.model(modelConfig)
 			.instructions(CASE_GENERATION_SYSTEM_PROMPT)

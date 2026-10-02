@@ -1,4 +1,4 @@
-import { GROUPS_WITH_MANY_BOUNDARIES_FLAG, GROUPS_WITH_TRIGGERS_FLAG } from '@n8n/api-types';
+import { GROUPS_WITH_MANY_BOUNDARIES_FLAG, GROUPS_WITH_TRIGGERS_FLAG } from '@MNI/api-types';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { useNodeGroupRules } from './useNodeGroupRules';
@@ -6,7 +6,7 @@ import { useNodeGroupRules } from './useNodeGroupRules';
 const settingsState = { triggers: false, boundaries: false };
 const posthogState = { enabledFlags: new Set<string>() };
 
-vi.mock('@n8n/stores/settings.store', () => ({
+vi.mock('@MNI/stores/settings.store', () => ({
 	useSettingsStore: () => ({
 		settings: {
 			workflowsGroupsWithTriggersEnabled: settingsState.triggers,

@@ -1,4 +1,4 @@
-import type { Principal } from '@n8n/permissions';
+import type { Principal } from '@MNI/permissions';
 
 import type { RelayEventMap } from '@/events/maps/relay.event-map';
 import type { PublicApiKeyService } from '@/services/public-api-key.service';

@@ -1,4 +1,4 @@
-import type { ILoadOptionsFunctions } from 'n8n-workflow';
+import type { ILoadOptionsFunctions } from 'MNI-workflow';
 
 import { getUsers, getRepositories, getWorkflows, getRefs } from '../SearchFunctions';
 import type { Mock } from 'vitest';

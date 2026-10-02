@@ -1,8 +1,8 @@
-import { Service } from '@n8n/di';
+import { Service } from '@MNI/di';
 import type express from 'express';
-import type { ParsedHitlCallbackReference } from 'n8n-core';
-import { markSlackInteractionRequest, parseHitlCallbackReference } from 'n8n-core';
-import { jsonParse } from 'n8n-workflow';
+import type { ParsedHitlCallbackReference } from 'MNI-core';
+import { markSlackInteractionRequest, parseHitlCallbackReference } from 'MNI-core';
+import { jsonParse } from 'MNI-workflow';
 
 import { HitlInteractionWebhooks } from './hitl-interaction-webhooks';
 import type { IWebhookResponseCallbackData, WaitingWebhookRequest } from './webhook.types';
@@ -18,7 +18,7 @@ interface SlackInteractionPayload {
  */
 @Service()
 export class SlackInteractionWebhooks extends HitlInteractionWebhooks {
-	protected readonly platformNodeType = 'n8n-nodes-base.slack';
+	protected readonly platformNodeType = 'MNI-nodes-base.slack';
 
 	protected async parseCallback(
 		req: WaitingWebhookRequest,

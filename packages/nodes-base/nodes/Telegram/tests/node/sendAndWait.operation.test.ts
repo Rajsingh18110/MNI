@@ -1,8 +1,8 @@
-import { Container } from '@n8n/di';
-import { InstanceSettings, parseHitlCallbackReference } from 'n8n-core';
+import { Container } from '@MNI/di';
+import { InstanceSettings, parseHitlCallbackReference } from 'MNI-core';
 import type { MockProxy } from 'vitest-mock-extended';
 import { mock } from 'vitest-mock-extended';
-import { type INode, SEND_AND_WAIT_OPERATION, type IExecuteFunctions } from 'n8n-workflow';
+import { type INode, SEND_AND_WAIT_OPERATION, type IExecuteFunctions } from 'MNI-workflow';
 
 import * as genericFunctions from '../../GenericFunctions';
 import { Telegram } from '../../Telegram.node';
@@ -80,7 +80,7 @@ describe('Test Telegram, message => sendAndWait', () => {
 					],
 				],
 			},
-			text: 'my message\n\n_This message was sent automatically with _[MNI](https://n8n.io/?utm_source=n8n-internal&utm_medium=powered_by&utm_campaign=n8n-nodes-base.telegram_instanceId)',
+			text: 'my message\n\n_This message was sent automatically with _[MNI](https://n8n.io/?utm_source=MNI-internal&utm_medium=powered_by&utm_campaign=MNI-nodes-base.telegram_instanceId)',
 		});
 	});
 

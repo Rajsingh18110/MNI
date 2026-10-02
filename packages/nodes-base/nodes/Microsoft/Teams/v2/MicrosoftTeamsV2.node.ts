@@ -3,7 +3,7 @@ import type {
 	INodeType,
 	INodeTypeDescription,
 	INodeTypeBaseDescription,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { sendAndWaitWebhook } from '@utils/sendAndWait/utils';
 

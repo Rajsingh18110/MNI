@@ -1,4 +1,4 @@
-import type { IDataObject, ILoadOptionsFunctions } from 'n8n-workflow';
+import type { IDataObject, ILoadOptionsFunctions } from 'MNI-workflow';
 import type { Mock } from 'vitest';
 
 import { googleApiRequestAllItems } from '../GenericFunctions';

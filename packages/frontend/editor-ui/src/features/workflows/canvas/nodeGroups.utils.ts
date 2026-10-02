@@ -1,4 +1,4 @@
-import type { IWorkflowGroup } from 'n8n-workflow';
+import type { IWorkflowGroup } from 'MNI-workflow';
 
 import { RemoveNodeGroupCommand } from '@/app/models/history';
 import type { useHistoryStore } from '@/app/stores/history.store';

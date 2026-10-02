@@ -1,6 +1,6 @@
-import { isSuppressed } from '@n8n/rules-engine';
-import { AstRule } from '@n8n/rules-engine/ast';
-import type { AstProjectConfig } from '@n8n/rules-engine/ast';
+import { isSuppressed } from '@MNI/rules-engine';
+import { AstRule } from '@MNI/rules-engine/ast';
+import type { AstProjectConfig } from '@MNI/rules-engine/ast';
 import { SyntaxKind, type Project, type SourceFile, type CallExpression } from 'ts-morph';
 
 import { getConfig, ruleAllows } from '../config.js';

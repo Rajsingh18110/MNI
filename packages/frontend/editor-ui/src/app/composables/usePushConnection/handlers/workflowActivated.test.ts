@@ -1,7 +1,7 @@
 import { createPinia, setActivePinia } from 'pinia';
 import { mock } from 'vitest-mock-extended';
 import type { Router } from 'vue-router';
-import type { WorkflowActivated } from '@n8n/api-types/push/workflow';
+import type { WorkflowActivated } from '@MNI/api-types/push/workflow';
 import { workflowActivated } from './workflowActivated';
 import {
 	createWorkflowDocumentId,
@@ -53,7 +53,7 @@ vi.mock('@/app/stores/ui.store', () => ({
 	useUIStore: () => mockUIStore,
 }));
 
-vi.mock('@n8n/stores/settings.store', () => ({
+vi.mock('@MNI/stores/settings.store', () => ({
 	useSettingsStore: () => mockSettingsStore,
 }));
 

@@ -1,5 +1,5 @@
-import type { AgentIntegrationConfig, AgentJsonConfig } from '@n8n/api-types';
-export { sanitizeAgentToolName as sanitizeToolName } from '@n8n/api-types';
+import type { AgentIntegrationConfig, AgentJsonConfig } from '@MNI/api-types';
+export { sanitizeAgentToolName as sanitizeToolName } from '@MNI/api-types';
 
 import type { Agent } from '../entities/agent.entity';
 

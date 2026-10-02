@@ -3,13 +3,13 @@ import {
 	type ChatSessionId,
 	ChatHubConversationModel,
 	chatHubMessageWithButtonsSchema,
-} from '@n8n/api-types';
-import { Logger } from '@n8n/backend-common';
-import { ExecutionRepository, IExecutionResponse, User } from '@n8n/db';
-import { Service } from '@n8n/di';
+} from '@MNI/api-types';
+import { Logger } from '@MNI/backend-common';
+import { ExecutionRepository, IExecutionResponse, User } from '@MNI/db';
+import { Service } from '@MNI/di';
 import type { Response } from 'express';
-import { sleep } from '@n8n/utils/sleep';
-import { InstanceSettings } from 'n8n-core';
+import { sleep } from '@MNI/utils/sleep';
+import { InstanceSettings } from 'MNI-core';
 import {
 	OperationalError,
 	ManualExecutionCancelledError,
@@ -22,7 +22,7 @@ import {
 	INodeExecutionData,
 	jsonStringify,
 	IRun,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import { v4 as uuidv4 } from 'uuid';
 
 import { ActiveExecutions } from '@/active-executions';
@@ -86,7 +86,7 @@ export class ChatHubExecutionService {
 	 * For streaming mode, this waits for completion and handles cleanup.
 	 * For non-streaming modes (lastNode/responseNodes), this starts the execution
 	 * and returns immediately - the watcher service handles completion via lifecycle events.
-	 * In this mode no cleanup happens, as temporary workflows are only created for streaming mode with non-n8n providers.
+	 * In this mode no cleanup happens, as temporary workflows are only created for streaming mode with non-MNI providers.
 	 */
 	async executeChatWorkflowWithCleanup(
 		user: User,
@@ -100,9 +100,9 @@ export class ChatHubExecutionService {
 		pushRef?: string,
 	) {
 		const executionMode =
-			pushRef && model.provider === 'n8n'
+			pushRef && model.provider === 'MNI'
 				? 'manual'
-				: model.provider === 'n8n'
+				: model.provider === 'MNI'
 					? 'webhook'
 					: 'chat';
 		const { id: workflowId } = workflowData;
@@ -144,7 +144,7 @@ export class ChatHubExecutionService {
 			);
 			await this.chatStreamService.endExecution(user.id, sessionId, 'error');
 		} finally {
-			if (model.provider !== 'n8n') {
+			if (model.provider !== 'MNI') {
 				await this.chatHubWorkflowService.deleteChatWorkflow(workflowId);
 			}
 		}

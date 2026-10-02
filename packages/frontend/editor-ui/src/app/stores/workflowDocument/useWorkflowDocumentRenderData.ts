@@ -1,12 +1,12 @@
 import { computed, effectScope, onScopeDispose, shallowReactive, type ComputedRef } from 'vue';
 import isEqual from 'lodash/isEqual';
-import { structuralComputed } from '@n8n/composables/structuralComputed';
-import { useI18n } from '@n8n/i18n';
+import { structuralComputed } from '@MNI/composables/structuralComputed';
+import { useI18n } from '@MNI/i18n';
 import {
 	isEmptyGroupAnchor,
 	type INodeParameterResourceLocator,
 	type INodeTypeDescription,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import {
 	useWorkflowDocumentStore,
 	type WorkflowDocumentId,

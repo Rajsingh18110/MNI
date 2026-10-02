@@ -7,8 +7,8 @@ import type {
 	ILoadOptionsFunctions,
 	INodeExecutionData,
 	IPollFunctions,
-} from 'n8n-workflow';
-import { isResourceLocatorValue } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { isResourceLocatorValue } from 'MNI-workflow';
 
 import { prepareApiError, validateMailbox } from '../helpers/utils';
 

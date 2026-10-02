@@ -4,11 +4,11 @@ import { mount } from '@vue/test-utils';
 import type { ChatMessageAttachment } from '@/features/ai/shared/agentsChat/types';
 import AgentChatMessageAttachments from '../components/AgentChatMessageAttachments.vue';
 
-vi.mock('@n8n/stores/useRootStore', () => ({
+vi.mock('@MNI/stores/useRootStore', () => ({
 	useRootStore: () => ({ restApiContext: { baseUrl: '/rest' } }),
 }));
 
-vi.mock('@n8n/i18n', () => ({
+vi.mock('@MNI/i18n', () => ({
 	useI18n: () => ({ baseText: (key: string) => key }),
 }));
 

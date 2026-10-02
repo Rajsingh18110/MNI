@@ -1,12 +1,12 @@
-import type { InstanceAiSandboxProvider } from '@n8n/api-types';
-import { normalizeSandboxProvider as normalizeRuntimeSandboxProvider } from '@n8n/agents/sandbox';
-import { Logger } from '@n8n/backend-common';
-import { GlobalConfig } from '@n8n/config';
-import type { AgentsConfig, DeploymentConfig, InstanceAiConfig } from '@n8n/config';
-import type { OperationContext } from '@n8n/db';
-import { Service } from '@n8n/di';
-import { ensureError } from '@n8n/utils/errors/ensure-error';
-import type { ICredentialDataDecryptedObject } from 'n8n-workflow';
+import type { InstanceAiSandboxProvider } from '@MNI/api-types';
+import { normalizeSandboxProvider as normalizeRuntimeSandboxProvider } from '@MNI/agents/sandbox';
+import { Logger } from '@MNI/backend-common';
+import { GlobalConfig } from '@MNI/config';
+import type { AgentsConfig, DeploymentConfig, InstanceAiConfig } from '@MNI/config';
+import type { OperationContext } from '@MNI/db';
+import { Service } from '@MNI/di';
+import { ensureError } from '@MNI/utils/errors/ensure-error';
+import type { ICredentialDataDecryptedObject } from 'MNI-workflow';
 
 import {
 	InstanceCredentialBroker,
@@ -15,7 +15,7 @@ import {
 } from '@/credentials/instance-credential-broker';
 import { UnprocessableRequestError } from '@/errors/response-errors/unprocessable.error';
 
-const N8N_SANDBOX_HEADER_NAME = 'x-api-key';
+const MNI_SANDBOX_HEADER_NAME = 'x-api-key';
 
 type SandboxCredential = {
 	type: string;
@@ -49,9 +49,9 @@ function requireHttpUrl(type: string, data: ICredentialDataDecryptedObject, fiel
 
 function parseSandboxServiceCredential({ type, data }: SandboxCredential): string {
 	const headerName = requireConnectionValue(type, data, 'name').toLowerCase();
-	if (headerName !== N8N_SANDBOX_HEADER_NAME) {
+	if (headerName !== MNI_SANDBOX_HEADER_NAME) {
 		throw new UnprocessableRequestError(
-			`The credential's header name must be "${N8N_SANDBOX_HEADER_NAME}" but is "${headerName}"`,
+			`The credential's header name must be "${MNI_SANDBOX_HEADER_NAME}" but is "${headerName}"`,
 		);
 	}
 	return requireConnectionValue(type, data, 'value');
@@ -73,7 +73,7 @@ export const INSTANCE_AI_DAYTONA_CREDENTIAL_POLICY: InstanceCredentialUse = {
 	validate: parseDaytonaCredential,
 };
 
-export const INSTANCE_AI_N8N_SANDBOX_CREDENTIAL_POLICY: InstanceCredentialUse = {
+export const INSTANCE_AI_MNI_SANDBOX_CREDENTIAL_POLICY: InstanceCredentialUse = {
 	id: 'instance-ai:sandbox:MNI',
 	credentialTypes: ['httpHeaderAuth'],
 	validate: parseSandboxServiceCredential,
@@ -111,7 +111,7 @@ export class SandboxSettingsService {
 	registerCredentialUses(): void {
 		if (this.credentialUsesRegistered) return;
 		this.instanceCredentialBroker.registerUse(INSTANCE_AI_DAYTONA_CREDENTIAL_POLICY);
-		this.instanceCredentialBroker.registerUse(INSTANCE_AI_N8N_SANDBOX_CREDENTIAL_POLICY);
+		this.instanceCredentialBroker.registerUse(INSTANCE_AI_MNI_SANDBOX_CREDENTIAL_POLICY);
 		this.credentialUsesRegistered = true;
 	}
 
@@ -147,7 +147,7 @@ export class SandboxSettingsService {
 			apiKey: n8nSandboxServiceApiKey || undefined,
 		};
 		const resolved = await this.resolveServiceCredential(
-			INSTANCE_AI_N8N_SANDBOX_CREDENTIAL_POLICY,
+			INSTANCE_AI_MNI_SANDBOX_CREDENTIAL_POLICY,
 			'MNI Sandbox',
 			ctx,
 		);
@@ -159,7 +159,7 @@ export class SandboxSettingsService {
 		} catch (error) {
 			this.warnCredentialFallback(
 				'MNI Sandbox',
-				INSTANCE_AI_N8N_SANDBOX_CREDENTIAL_POLICY.id,
+				INSTANCE_AI_MNI_SANDBOX_CREDENTIAL_POLICY.id,
 				ensureError(error).message,
 			);
 			return envConfig;

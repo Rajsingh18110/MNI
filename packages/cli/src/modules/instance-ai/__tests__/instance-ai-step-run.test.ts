@@ -1,4 +1,4 @@
-import { TOOL_EXECUTOR_NODE_NAME } from '@n8n/constants';
+import { TOOL_EXECUTOR_NODE_NAME } from '@MNI/constants';
 import {
 	cleanRunData,
 	DirectedGraph,
@@ -6,9 +6,9 @@ import {
 	findSubgraph,
 	handleCycles,
 	rewireGraph,
-} from 'n8n-core';
-import type { IConnections, INode, IRunData, ITaskData, NodeConnectionType } from 'n8n-workflow';
-import { NodeConnectionTypes } from 'n8n-workflow';
+} from 'MNI-core';
+import type { IConnections, INode, IRunData, ITaskData, NodeConnectionType } from 'MNI-workflow';
+import { NodeConnectionTypes } from 'MNI-workflow';
 
 import {
 	buildMockedStepRunData,
@@ -27,7 +27,7 @@ function node(name: string, options: { disabled?: boolean; type?: string } = {})
 	return {
 		id: name,
 		name,
-		type: options.type ?? 'n8n-nodes-base.noOp',
+		type: options.type ?? 'MNI-nodes-base.noOp',
 		typeVersion: 1,
 		position: [0, 0],
 		parameters: {},
@@ -446,7 +446,7 @@ describe('planStepRun', () => {
 		describe('a Loop Over Items node above the target', () => {
 			const loopNodes = [
 				node('Trigger'),
-				node('Loop', { type: 'n8n-nodes-base.splitInBatches' }),
+				node('Loop', { type: 'MNI-nodes-base.splitInBatches' }),
 				node('Body'),
 				node('Target'),
 			];
@@ -1058,25 +1058,25 @@ describe('tool arguments', () => {
 	describe('isToolkitNode', () => {
 		it('is true for the MCP Client Tool, which holds several tools', () => {
 			expect(
-				isToolkitNode(node('MCP Client', { type: '@n8n/n8n-nodes-langchain.mcpClientTool' })),
+				isToolkitNode(node('MCP Client', { type: '@MNI/MNI-nodes-langchain.mcpClientTool' })),
 			).toBe(true);
 		});
 
-		// A registry server is saved as `@n8n/mcp-registry.<slug>`. The runtime
+		// A registry server is saved as `@MNI/mcp-registry.<slug>`. The runtime
 		// class behind every one of them is hidden and never appears as a node
 		// type, so matching that class name matches nothing a user can build.
 		it('is true for a node the MCP registry added, whatever the server slug', () => {
-			expect(isToolkitNode(node('Linear', { type: '@n8n/mcp-registry.linear' }))).toBe(true);
-			expect(isToolkitNode(node('Notion', { type: '@n8n/mcp-registry.notionMcp' }))).toBe(true);
+			expect(isToolkitNode(node('Linear', { type: '@MNI/mcp-registry.linear' }))).toBe(true);
+			expect(isToolkitNode(node('Notion', { type: '@MNI/mcp-registry.notionMcp' }))).toBe(true);
 		});
 
 		it('is false for a type that only starts like the registry package', () => {
-			expect(isToolkitNode(node('Decoy', { type: '@n8n/mcp-registryish.thing' }))).toBe(false);
+			expect(isToolkitNode(node('Decoy', { type: '@MNI/mcp-registryish.thing' }))).toBe(false);
 		});
 
 		it('is false for a node that supplies one tool', () => {
 			expect(
-				isToolkitNode(node('Calculator', { type: '@n8n/n8n-nodes-langchain.toolCalculator' })),
+				isToolkitNode(node('Calculator', { type: '@MNI/MNI-nodes-langchain.toolCalculator' })),
 			).toBe(false);
 		});
 	});

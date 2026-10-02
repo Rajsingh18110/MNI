@@ -1,5 +1,5 @@
-import { mockInstance } from '@n8n/backend-test-utils';
-import { User } from '@n8n/db';
+import { mockInstance } from '@MNI/backend-test-utils';
+import { User } from '@MNI/db';
 
 import { Telemetry } from '@/telemetry';
 
@@ -7,11 +7,11 @@ import { createValidateNodeTool } from '../tools/workflow-builder/validate-node.
 
 const mockValidateNodeConfig = vi.fn();
 
-vi.mock('@n8n/workflow-sdk', () => ({
+vi.mock('@MNI/workflow-sdk', () => ({
 	validateNodeConfig: (...args: unknown[]) => mockValidateNodeConfig(...args),
 }));
 
-vi.mock('@n8n/ai-workflow-builder', () => ({
+vi.mock('@MNI/ai-workflow-builder', () => ({
 	CODE_BUILDER_VALIDATE_NODE_TOOL: {
 		toolName: 'validate_node_config',
 		displayTitle: 'Validating node config',
@@ -59,7 +59,7 @@ describe('validate-node MCP tool', () => {
 				{
 					nodes: [
 						{
-							type: 'n8n-nodes-base.set',
+							type: 'MNI-nodes-base.set',
 							typeVersion: 3,
 							parameters: { mode: 'manual', assignments: { assignments: [] } },
 						},
@@ -73,7 +73,7 @@ describe('validate-node MCP tool', () => {
 			expect(response.results).toEqual([
 				{
 					index: 0,
-					type: 'n8n-nodes-base.set',
+					type: 'MNI-nodes-base.set',
 					valid: true,
 				},
 			]);
@@ -91,7 +91,7 @@ describe('validate-node MCP tool', () => {
 				{
 					nodes: [
 						{
-							type: 'n8n-nodes-base.set',
+							type: 'MNI-nodes-base.set',
 							typeVersion: 3,
 							parameters: { mode: 'bogus' },
 						},
@@ -105,7 +105,7 @@ describe('validate-node MCP tool', () => {
 			expect(response.results).toEqual([
 				{
 					index: 0,
-					type: 'n8n-nodes-base.set',
+					type: 'MNI-nodes-base.set',
 					valid: false,
 					errors: [{ path: 'mode', message: 'Invalid value: expected "manual" or "raw"' }],
 				},
@@ -122,8 +122,8 @@ describe('validate-node MCP tool', () => {
 			const result = await tool.handler(
 				{
 					nodes: [
-						{ name: 'Set', type: 'n8n-nodes-base.set', typeVersion: 3, parameters: {} },
-						{ name: 'HTTP', type: 'n8n-nodes-base.httpRequest', typeVersion: 4, parameters: {} },
+						{ name: 'Set', type: 'MNI-nodes-base.set', typeVersion: 3, parameters: {} },
+						{ name: 'HTTP', type: 'MNI-nodes-base.httpRequest', typeVersion: 4, parameters: {} },
 					],
 				},
 				{} as never,
@@ -136,13 +136,13 @@ describe('validate-node MCP tool', () => {
 			expect(results[0]).toEqual({
 				index: 0,
 				name: 'Set',
-				type: 'n8n-nodes-base.set',
+				type: 'MNI-nodes-base.set',
 				valid: true,
 			});
 			expect(results[1]).toEqual({
 				index: 1,
 				name: 'HTTP',
-				type: 'n8n-nodes-base.httpRequest',
+				type: 'MNI-nodes-base.httpRequest',
 				valid: false,
 				errors: [{ path: 'url', message: 'URL is required' }],
 			});
@@ -157,13 +157,13 @@ describe('validate-node MCP tool', () => {
 			const tool = createTool();
 			await tool.handler(
 				{
-					nodes: [{ type: 'n8n-nodes-base.noOp', typeVersion: 1, parameters: {} }],
+					nodes: [{ type: 'MNI-nodes-base.noOp', typeVersion: 1, parameters: {} }],
 				},
 				{} as never,
 			);
 
 			expect(mockValidateNodeConfig).toHaveBeenCalledWith(
-				'n8n-nodes-base.noOp',
+				'MNI-nodes-base.noOp',
 				1,
 				{ parameters: {}, subnodes: undefined },
 				{ isToolNode: undefined },
@@ -178,7 +178,7 @@ describe('validate-node MCP tool', () => {
 				{
 					nodes: [
 						{
-							type: 'n8n-nodes-base.httpRequest',
+							type: 'MNI-nodes-base.httpRequest',
 							typeVersion: 4,
 							parameters: { url: 'https://example.com' },
 							isToolNode: true,
@@ -189,7 +189,7 @@ describe('validate-node MCP tool', () => {
 			);
 
 			expect(mockValidateNodeConfig).toHaveBeenCalledWith(
-				'n8n-nodes-base.httpRequest',
+				'MNI-nodes-base.httpRequest',
 				4,
 				{ parameters: { url: 'https://example.com' }, subnodes: undefined },
 				{ isToolNode: true },
@@ -199,7 +199,7 @@ describe('validate-node MCP tool', () => {
 		test('forwards subnodes inside the config object', async () => {
 			mockValidateNodeConfig.mockReturnValue({ valid: true, errors: [] });
 			const subnodes = {
-				model: { type: '@n8n/n8n-nodes-langchain.lmChatOpenAi', version: 1 },
+				model: { type: '@MNI/MNI-nodes-langchain.lmChatOpenAi', version: 1 },
 			};
 
 			const tool = createTool();
@@ -207,7 +207,7 @@ describe('validate-node MCP tool', () => {
 				{
 					nodes: [
 						{
-							type: '@n8n/n8n-nodes-langchain.agent',
+							type: '@MNI/MNI-nodes-langchain.agent',
 							typeVersion: 1,
 							parameters: { agent: 'conversationalAgent' },
 							subnodes,
@@ -218,7 +218,7 @@ describe('validate-node MCP tool', () => {
 			);
 
 			expect(mockValidateNodeConfig).toHaveBeenCalledWith(
-				'@n8n/n8n-nodes-langchain.agent',
+				'@MNI/MNI-nodes-langchain.agent',
 				1,
 				{ parameters: { agent: 'conversationalAgent' }, subnodes },
 				{ isToolNode: undefined },
@@ -257,8 +257,8 @@ describe('validate-node MCP tool', () => {
 			await tool.handler(
 				{
 					nodes: [
-						{ type: 'n8n-nodes-base.set', typeVersion: 3, parameters: {} },
-						{ type: 'n8n-nodes-base.httpRequest', typeVersion: 4, parameters: {} },
+						{ type: 'MNI-nodes-base.set', typeVersion: 3, parameters: {} },
+						{ type: 'MNI-nodes-base.httpRequest', typeVersion: 4, parameters: {} },
 					],
 				},
 				{} as never,
@@ -286,7 +286,7 @@ describe('validate-node MCP tool', () => {
 			const tool = createTool();
 			const result = await tool.handler(
 				{
-					nodes: [{ type: 'n8n-nodes-base.set', typeVersion: 3, parameters: {} }],
+					nodes: [{ type: 'MNI-nodes-base.set', typeVersion: 3, parameters: {} }],
 				},
 				{} as never,
 			);

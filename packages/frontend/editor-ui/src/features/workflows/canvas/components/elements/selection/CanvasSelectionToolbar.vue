@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import KeyboardShortcutTooltip from '@/app/components/KeyboardShortcutTooltip.vue';
 import { computed } from 'vue';
-import { useI18n } from '@n8n/i18n';
-import { N8nIconButton } from '@n8n/design-system';
+import { useI18n } from '@MNI/i18n';
+import { N8nIconButton } from '@MNI/design-system';
 import { getRectOfNodes } from '@vue-flow/core';
 import type { GraphNode } from '@vue-flow/core';
 
@@ -10,7 +10,7 @@ import { useVueFlowTransformPaneTeleport } from '../../../composables/useVueFlow
 import { useCanvasNodeGroupActions } from '../../../composables/useCanvasNodeGroupActions';
 import { useSelectionValidation } from '@/app/composables/useSelectionValidation';
 import { useIsNodeContextEnabled } from '@/features/ai/instanceAi/composables/useIsNodeContextEnabled';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import type { BoundingBox } from '../../../canvas.types';
 
 const TOOLBAR_OFFSET_PX = 12;
@@ -167,7 +167,7 @@ function onExtractWorkflowClick() {
 </template>
 
 <style lang="scss" module>
-@use '@n8n/design-system/css/common/var';
+@use '@MNI/design-system/css/common/var';
 
 .toolbar {
 	position: absolute;

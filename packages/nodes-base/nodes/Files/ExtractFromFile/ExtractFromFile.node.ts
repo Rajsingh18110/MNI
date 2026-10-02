@@ -3,15 +3,15 @@ import type {
 	INodeExecutionData,
 	INodeType,
 	INodeTypeDescription,
-} from 'n8n-workflow';
-import { NodeConnectionTypes } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeConnectionTypes } from 'MNI-workflow';
 
 import * as moveTo from './actions/moveTo.operation';
 import * as pdf from './actions/pdf.operation';
 import * as spreadsheet from './actions/spreadsheet.operation';
 
 export class ExtractFromFile implements INodeType {
-	// eslint-disable-next-line n8n-nodes-base/node-class-description-missing-subtitle
+	// eslint-disable-next-line MNI-nodes-base/node-class-description-missing-subtitle
 	description: INodeTypeDescription = {
 		displayName: 'Extract from File',
 		name: 'extractFromFile',
@@ -31,7 +31,7 @@ export class ExtractFromFile implements INodeType {
 				name: 'operation',
 				type: 'options',
 				noDataExpression: true,
-				// eslint-disable-next-line n8n-nodes-base/node-param-options-type-unsorted-items
+				// eslint-disable-next-line MNI-nodes-base/node-param-options-type-unsorted-items
 				options: [
 					{
 						name: 'Extract From CSV',

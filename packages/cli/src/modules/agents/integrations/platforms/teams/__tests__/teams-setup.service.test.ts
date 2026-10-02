@@ -1,13 +1,13 @@
 import { mock } from 'vitest-mock-extended';
 import { unzipSync } from 'fflate';
-import type { GlobalConfig } from '@n8n/config';
-import type { User } from '@n8n/db';
-import type { InstanceSettings } from 'n8n-core';
+import type { GlobalConfig } from '@MNI/config';
+import type { User } from '@MNI/db';
+import type { InstanceSettings } from 'MNI-core';
 
 import { JwtService } from '@/services/jwt.service';
 
 import type { CredentialsService } from '@/credentials/credentials.service';
-import type { UrlService } from '@n8n/backend-services';
+import type { UrlService } from '@MNI/backend-services';
 
 import type { Agent } from '../../../../entities/agent.entity';
 import { AgentCredentialLookupService } from '../../../agent-credential-lookup.service';

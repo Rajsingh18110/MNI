@@ -1,4 +1,4 @@
-import { parseImports } from '@n8n/rules-engine/ast';
+import { parseImports } from '@MNI/rules-engine/ast';
 import * as fs from 'node:fs';
 import * as path from 'node:path';
 import { Project } from 'ts-morph';

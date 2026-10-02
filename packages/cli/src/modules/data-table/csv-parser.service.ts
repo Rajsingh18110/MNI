@@ -1,6 +1,6 @@
-import { safeJoinPath } from '@n8n/backend-common';
-import { GlobalConfig } from '@n8n/config';
-import { Service } from '@n8n/di';
+import { safeJoinPath } from '@MNI/backend-common';
+import { GlobalConfig } from '@MNI/config';
+import { Service } from '@MNI/di';
 import { parse } from 'csv-parse';
 import { createReadStream } from 'fs';
 

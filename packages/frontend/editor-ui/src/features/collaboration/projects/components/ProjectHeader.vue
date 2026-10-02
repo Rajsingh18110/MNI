@@ -2,33 +2,33 @@
 import { computed, ref } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { useElementSize, useResizeObserver } from '@vueuse/core';
-import type { TabOptions, UserAction } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+import type { TabOptions, UserAction } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 import { ProjectTypes } from '../projects.types';
 import { useProjectsStore } from '../projects.store';
 import ProjectTabs from './ProjectTabs.vue';
 import ProjectIcon from './ProjectIcon.vue';
-import { getResourcePermissions } from '@n8n/permissions';
+import { getResourcePermissions } from '@MNI/permissions';
 import { EnterpriseEditionFeature, VIEWS } from '@/app/constants';
 import { useSourceControlStore } from '@/features/integrations/sourceControl.ee/sourceControl.store';
 import ProjectCreateResource from './ProjectCreateResource.vue';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { useProjectPages } from '@/features/collaboration/projects/composables/useProjectPages';
 import { truncateTextToFitWidth } from '@/app/utils/formatters/textFormatter';
-import { type IconName } from '@n8n/design-system';
-import type { IUser } from 'n8n-workflow';
-import { type IconOrEmoji, isIconOrEmoji } from '@n8n/design-system';
+import { type IconName } from '@MNI/design-system';
+import type { IUser } from 'MNI-workflow';
+import { type IconOrEmoji, isIconOrEmoji } from '@MNI/design-system';
 import { useUIStore } from '@/app/stores/ui.store';
 import { PROJECT_DATA_TABLES } from '@/features/core/dataTable/constants';
 import { useAgentPermissions } from '@/features/agents/composables/useAgentPermissions';
 import ReadyToRunButton from '@/features/workflows/readyToRun/components/ReadyToRunButton.vue';
 import PromotionBanners from '@/features/integrations/promotions.ee/components/PromotionBanners.vue';
 
-import { N8nButton, N8nHeading, N8nIconButton, N8nText, N8nTooltip } from '@n8n/design-system';
+import { N8nButton, N8nHeading, N8nIconButton, N8nText, N8nTooltip } from '@MNI/design-system';
 import { VARIABLE_MODAL_KEY } from '@/features/settings/environments.ee/environments.constants';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
 import { useCreateAgent } from '@/features/agents/composables/useCreateAgent';
-import { useUsersStore } from '@n8n/stores/users.store';
+import { useUsersStore } from '@MNI/stores/users.store';
 import { useFavoritesStore } from '@/app/stores/favorites.store';
 
 const route = useRoute();
@@ -539,7 +539,7 @@ const onSelect = (action: string, source: CreateSource) => {
 </template>
 
 <style lang="scss" module>
-@use '@n8n/design-system/css/mixins/breakpoints';
+@use '@MNI/design-system/css/mixins/breakpoints';
 
 .projectHeader {
 	display: flex;

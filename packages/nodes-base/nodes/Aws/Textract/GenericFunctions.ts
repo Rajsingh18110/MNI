@@ -11,8 +11,8 @@ import type {
 	JsonObject,
 	IHttpRequestMethods,
 	IRequestOptions,
-} from 'n8n-workflow';
-import { NodeApiError, sanitizeXmlName } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeApiError, sanitizeXmlName } from 'MNI-workflow';
 import { URL } from 'url';
 import { parseString } from 'xml2js';
 import { getAwsCredentials } from '../GenericFunctions';

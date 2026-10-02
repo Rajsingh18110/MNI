@@ -1,9 +1,9 @@
 <script lang="ts" setup>
 import { computed, inject, nextTick, ref } from 'vue';
-import { N8nIcon } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
-import type { INodeTypeDescription } from 'n8n-workflow';
-import type { InstanceAiNodesAttachment } from '@n8n/api-types';
+import { N8nIcon } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
+import type { INodeTypeDescription } from 'MNI-workflow';
+import type { InstanceAiNodesAttachment } from '@MNI/api-types';
 import type { INodeUi } from '@/Interface';
 import NodeChip from './NodeChip.vue';
 import NodeIcon from '@/app/components/NodeIcon.vue';

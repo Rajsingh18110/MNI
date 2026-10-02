@@ -1,5 +1,5 @@
-import type { PromotionDirection } from '@n8n/api-types';
-import { Logger } from '@n8n/backend-common';
+import type { PromotionDirection } from '@MNI/api-types';
+import { Logger } from '@MNI/backend-common';
 import {
 	createTeamProject,
 	createWorkflow,
@@ -7,16 +7,16 @@ import {
 	linkUserToProject,
 	mockInstance,
 	testDb,
-} from '@n8n/backend-test-utils';
-import { GlobalConfig } from '@n8n/config';
+} from '@MNI/backend-test-utils';
+import { GlobalConfig } from '@MNI/config';
 import {
 	FolderRepository,
 	SharedWorkflowRepository,
 	VariablesRepository,
 	WorkflowRepository,
-} from '@n8n/db';
-import { Container } from '@n8n/di';
-import { Cipher, type InstanceSettings } from 'n8n-core';
+} from '@MNI/db';
+import { Container } from '@MNI/di';
+import { Cipher, type InstanceSettings } from 'MNI-core';
 import { mkdtempSync } from 'node:fs';
 import { mkdtemp, rm } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
@@ -32,8 +32,8 @@ import { DataTableService } from '@/modules/data-table/data-table.service';
 import {
 	buildWorkflowReferencingDataTables,
 	buildWorkflowReferencingVariables,
-} from '@/modules/n8n-packages/__tests__/utils/test-builders';
-import { N8nPackagesService } from '@/modules/n8n-packages/n8n-packages.service';
+} from '@/modules/MNI-packages/__tests__/utils/test-builders';
+import { N8nPackagesService } from '@/modules/MNI-packages/MNI-packages.service';
 import { createMember, createOwner } from '@test-integration/db/users';
 import { createFolder } from '@test-integration/db/folders';
 import { createVariable } from '@test-integration/db/variables';
@@ -53,7 +53,7 @@ Container.set(
 mockInstance(ActiveWorkflowManager);
 const server = setupTestServer({
 	endpointGroups: ['promotions'],
-	modules: ['promotions', 'n8n-packages', 'data-table'],
+	modules: ['promotions', 'MNI-packages', 'data-table'],
 	enabledFeatures: ['feat:gitConnections', 'feat:projectRole:admin'],
 });
 
@@ -271,7 +271,7 @@ it('logs file hashes without workflow content', async () => {
 				{
 					id: 'diagnostic-node',
 					name: 'Diagnostic',
-					type: 'n8n-nodes-base.noOp',
+					type: 'MNI-nodes-base.noOp',
 					typeVersion: 1,
 					position: [0, 0],
 					parameters: { value: 'fixture-base-value' },
@@ -297,7 +297,7 @@ it('logs file hashes without workflow content', async () => {
 			{
 				id: 'diagnostic-node',
 				name: 'Diagnostic',
-				type: 'n8n-nodes-base.noOp',
+				type: 'MNI-nodes-base.noOp',
 				typeVersion: 1,
 				position: [0, 0],
 				parameters: {
@@ -584,7 +584,7 @@ it('lists nothing after apply, although the destination mints its own version', 
 			{
 				id: 'set',
 				name: 'Set',
-				type: 'n8n-nodes-base.set',
+				type: 'MNI-nodes-base.set',
 				typeVersion: 1,
 				position: [0, 0],
 				parameters: {},

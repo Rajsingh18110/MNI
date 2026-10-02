@@ -1,7 +1,7 @@
 import { test } from '@playwright/test';
 import { appendFileSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
-import type { N8NStack } from 'n8n-containers/stack';
+import type { N8NStack } from 'MNI-containers/stack';
 
 /** One backend run's mutable state: paths, metrics, and the current phase. */
 export interface CycleContext {

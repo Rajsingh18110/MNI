@@ -1,5 +1,5 @@
-import { mockInstance } from '@n8n/backend-test-utils';
-import { PrometheusMetricsConfig } from '@n8n/config';
+import { mockInstance } from '@MNI/backend-test-utils';
+import { PrometheusMetricsConfig } from '@MNI/config';
 import promClient from 'prom-client';
 import type { Mock } from 'vitest';
 import { mock } from 'vitest-mock-extended';
@@ -12,7 +12,7 @@ vi.mock('prom-client');
 
 describe('PrometheusMcpPostSaveMetricsService', () => {
 	const config = mockInstance(PrometheusMetricsConfig, {
-		prefix: 'n8n_',
+		prefix: 'MNI_',
 		includeMcpPostSaveMetrics: true,
 	});
 	const eventService = mock<EventService>();
@@ -22,7 +22,7 @@ describe('PrometheusMcpPostSaveMetricsService', () => {
 	let counterInc: Mock;
 
 	beforeEach(() => {
-		Object.assign(config, { prefix: 'n8n_', includeMcpPostSaveMetrics: true });
+		Object.assign(config, { prefix: 'MNI_', includeMcpPostSaveMetrics: true });
 
 		service = new PrometheusMcpPostSaveMetricsService(config, eventService);
 
@@ -65,7 +65,7 @@ describe('PrometheusMcpPostSaveMetricsService', () => {
 			service.init();
 
 			expect(counterCtor).toHaveBeenCalledWith({
-				name: 'n8n_mcp_post_save_failures_total',
+				name: 'MNI_mcp_post_save_failures_total',
 				help: 'MCP workflow-builder tool failures that occurred after a successful database write (hooks, telemetry, auto-assign). The client still receives success — these are observability-only.',
 				labelNames: ['tool', 'error_type'],
 			});

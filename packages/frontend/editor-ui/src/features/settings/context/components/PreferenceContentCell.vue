@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
-import { useElementOverflow } from '@n8n/composables/useElementOverflow';
-import { N8nTooltip } from '@n8n/design-system';
+import { useElementOverflow } from '@MNI/composables/useElementOverflow';
+import { N8nTooltip } from '@MNI/design-system';
 
 /** Two-line clamp. The tooltip renders through a slot, so user text is never parsed as HTML. */
 const props = defineProps<{
@@ -38,7 +38,7 @@ const { isOverflowing: isClamped } = useElementOverflow(textEl, 'y', [() => prop
 	overflow-wrap: anywhere;
 }
 
-:global(.n8n-tooltip).tooltip {
+:global(.MNI-tooltip).tooltip {
 	max-width: 480px;
 }
 

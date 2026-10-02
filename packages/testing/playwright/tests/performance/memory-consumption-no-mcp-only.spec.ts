@@ -5,7 +5,7 @@ test.use({
 	capability: {
 		services: ['victoriaLogs', 'victoriaMetrics', 'vector'],
 		env: {
-			N8N_DISABLED_MODULES: 'mcp',
+			MNI_DISABLED_MODULES: 'mcp',
 		},
 	},
 });

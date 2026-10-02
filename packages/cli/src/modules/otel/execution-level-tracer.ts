@@ -1,5 +1,5 @@
-import { Logger } from '@n8n/backend-common';
-import { Service } from '@n8n/di';
+import { Logger } from '@MNI/backend-common';
+import { Service } from '@MNI/di';
 import type { Context, Exception, Span } from '@opentelemetry/api';
 import {
 	context,
@@ -10,7 +10,7 @@ import {
 	trace,
 } from '@opentelemetry/api';
 import { W3CTraceContextPropagator } from '@opentelemetry/core';
-import type { ExecutionStatus } from 'n8n-workflow';
+import type { ExecutionStatus } from 'MNI-workflow';
 
 import { WorkflowCrashedError } from '@/errors/workflow-crashed.error';
 
@@ -27,7 +27,7 @@ import { ATTR } from './otel.constants';
 import { OtelService } from './otel.service';
 import type { TracingContext } from './tracing-context';
 
-const TRACER_NAME = 'n8n-workflow';
+const TRACER_NAME = 'MNI-workflow';
 const propagator = new W3CTraceContextPropagator();
 const UNKNOWN_ERROR_TYPE = 'UnknownError';
 const OBJECT_ERROR_TYPE = 'Object';

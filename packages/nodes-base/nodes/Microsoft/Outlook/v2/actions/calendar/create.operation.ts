@@ -1,4 +1,4 @@
-import type { IDataObject, IExecuteFunctions, INodeProperties } from 'n8n-workflow';
+import type { IDataObject, IExecuteFunctions, INodeProperties } from 'MNI-workflow';
 
 import { updateDisplayOptions } from '@utils/utilities';
 
@@ -22,7 +22,7 @@ export const properties: INodeProperties[] = [
 		default: {},
 		options: [
 			{
-				// eslint-disable-next-line n8n-nodes-base/node-param-display-name-wrong-for-dynamic-options
+				// eslint-disable-next-line MNI-nodes-base/node-param-display-name-wrong-for-dynamic-options
 				displayName: 'Calendar Group',
 				name: 'calendarGroup',
 				type: 'options',

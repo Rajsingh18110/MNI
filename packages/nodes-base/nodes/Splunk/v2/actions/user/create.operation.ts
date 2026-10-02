@@ -1,4 +1,4 @@
-import type { INodeProperties, IExecuteFunctions, IDataObject } from 'n8n-workflow';
+import type { INodeProperties, IExecuteFunctions, IDataObject } from 'MNI-workflow';
 
 import { updateDisplayOptions } from '../../../../../utils/utilities';
 import type { SplunkFeedResponse } from '../../helpers/interfaces';
@@ -15,7 +15,7 @@ const properties: INodeProperties[] = [
 		default: '',
 	},
 	{
-		// eslint-disable-next-line n8n-nodes-base/node-param-display-name-wrong-for-dynamic-multi-options
+		// eslint-disable-next-line MNI-nodes-base/node-param-display-name-wrong-for-dynamic-multi-options
 		displayName: 'Roles',
 		name: 'roles',
 		type: 'multiOptions',

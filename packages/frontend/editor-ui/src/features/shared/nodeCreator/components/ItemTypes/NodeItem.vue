@@ -14,13 +14,13 @@ import { computed, ref, type ComponentPublicInstance } from 'vue';
 import NodeIcon from '@/app/components/NodeIcon.vue';
 import { getNodeIconSize } from '@/app/utils/nodeIcon';
 import { useNodeCreatorStore } from '@/features/shared/nodeCreator/nodeCreator.store';
-import { isCommunityPackageName } from 'n8n-workflow';
+import { isCommunityPackageName } from 'MNI-workflow';
 import OfficialIcon from 'virtual:icons/mdi/verified';
 
 import { useNodeType } from '@/app/composables/useNodeType';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
 import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import { useActions } from '../../composables/useActions';
 import { useViewStacks } from '../../composables/useViewStacks';
 import {
@@ -30,8 +30,8 @@ import {
 	shouldShowCommunityNodeDetails,
 } from '../../nodeCreator.utils';
 
-import { N8nIcon, N8nNodeCreatorNode, N8nTooltip } from '@n8n/design-system';
-import { RestrictedNodePopover } from '@n8n/frontend-module-type-availability-policies';
+import { N8nIcon, N8nNodeCreatorNode, N8nTooltip } from '@MNI/design-system';
+import { RestrictedNodePopover } from '@MNI/frontend-module-type-availability-policies';
 export interface Props {
 	nodeType: SimplifiedNodeType;
 	subcategory?: string;
@@ -247,7 +247,7 @@ function onCommunityNodeTooltipClick(event: MouseEvent) {
 			<N8nTooltip placement="top" :show-after="500">
 				<template #content>
 					<p
-						v-n8n-html="
+						v-MNI-html="
 							i18n.baseText('generic.communityNode.tooltip', {
 								interpolate: {
 									packageName: nodeType.name.split('.')[0],

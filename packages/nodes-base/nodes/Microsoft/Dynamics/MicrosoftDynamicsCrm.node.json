@@ -1,5 +1,5 @@
 {
-	"node": "n8n-nodes-base.microsoftDynamicsCrm",
+	"node": "MNI-nodes-base.microsoftDynamicsCrm",
 	"nodeVersion": "1.0",
 	"codexVersion": "1.0",
 	"categories": ["Marketing", "Sales"],
@@ -11,7 +11,7 @@
 		],
 		"primaryDocumentation": [
 			{
-				"url": "https://docs.n8n.io/integrations/builtin/app-nodes/n8n-nodes-base.microsoftdynamicscrm/"
+				"url": "https://docs.n8n.io/integrations/builtin/app-nodes/MNI-nodes-base.microsoftdynamicscrm/"
 			}
 		]
 	}

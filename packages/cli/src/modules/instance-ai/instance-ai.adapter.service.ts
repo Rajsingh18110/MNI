@@ -1,4 +1,4 @@
-import { braveSearch, searxngSearch, type WebSearchResponse } from '@n8n/ai-utilities';
+import { braveSearch, searxngSearch, type WebSearchResponse } from '@MNI/ai-utilities';
 import {
 	AI_GATEWAY_MANAGED_TAG,
 	AI_ASSISTANT_AT_MENTIONS_FLAG,
@@ -22,13 +22,13 @@ import {
 	INSTANCE_AI_PROGRESSIVE_BUILDING_ENABLED_VARIANT,
 	INSTANCE_AI_CONCISE_STYLE_FLAG,
 	INSTANCE_AI_CONCISE_STYLE_ENABLED_VARIANT,
-} from '@n8n/api-types';
-import type { AiGatewayConfigDto } from '@n8n/api-types';
-import { LicenseState, Logger, ModuleRegistry } from '@n8n/backend-common';
-import { OutboundHttp } from '@n8n/backend-network';
-import { GlobalConfig } from '@n8n/config';
-import { Time, TOOL_EXECUTOR_NODE_NAME } from '@n8n/constants';
-import type { User, ExecutionSummaries, EvaluationConfig } from '@n8n/db';
+} from '@MNI/api-types';
+import type { AiGatewayConfigDto } from '@MNI/api-types';
+import { LicenseState, Logger, ModuleRegistry } from '@MNI/backend-common';
+import { OutboundHttp } from '@MNI/backend-network';
+import { GlobalConfig } from '@MNI/config';
+import { Time, TOOL_EXECUTOR_NODE_NAME } from '@MNI/constants';
+import type { User, ExecutionSummaries, EvaluationConfig } from '@MNI/db';
 import {
 	AiBuilderTemporaryWorkflowRepository,
 	ExecutionRepository,
@@ -37,9 +37,9 @@ import {
 	SharedWorkflowRepository,
 	WorkflowEntity,
 	WorkflowRepository,
-} from '@n8n/db';
-import { redactTelemetryText, TELEMETRY_EVENT } from '@n8n/telemetry';
-import { Container, Service } from '@n8n/di';
+} from '@MNI/db';
+import { redactTelemetryText, TELEMETRY_EVENT } from '@MNI/telemetry';
+import { Container, Service } from '@MNI/di';
 import type {
 	InstanceAiContext,
 	InstanceAiConversationHistoryReader,
@@ -95,7 +95,7 @@ import type {
 	McpRegistryServerSummary,
 	ModelConfig,
 	FolderResolutionFailure,
-} from '@n8n/instance-ai';
+} from '@MNI/instance-ai';
 import {
 	BuilderTemplatesService,
 	builderTemplatesOptionsFromEnv,
@@ -105,11 +105,11 @@ import {
 	WorkflowNotFoundError,
 	FolderResolutionError,
 	WorkflowEditorLockedError,
-} from '@n8n/instance-ai';
-import { hasGlobalScope, type Scope } from '@n8n/permissions';
-import { LessThan } from '@n8n/typeorm';
-import type { WorkflowJSON } from '@n8n/workflow-sdk';
-import { InstanceSettings } from 'n8n-core';
+} from '@MNI/instance-ai';
+import { hasGlobalScope, type Scope } from '@MNI/permissions';
+import { LessThan } from '@MNI/typeorm';
+import type { WorkflowJSON } from '@MNI/workflow-sdk';
+import { InstanceSettings } from 'MNI-core';
 import {
 	type ICredentialsDecrypted,
 	type IDataObject,
@@ -142,7 +142,7 @@ import {
 	jsonParse,
 	createRunExecutionData,
 	calculateWorkflowChecksum,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import { nanoid } from 'nanoid';
 import { randomUUID } from 'node:crypto';
 import { readFile } from 'node:fs/promises';
@@ -904,7 +904,7 @@ export class InstanceAiAdapterService {
 		if (!this.templatesService) {
 			this.templatesService = new BuilderTemplatesService({
 				...builderTemplatesOptionsFromEnv({ logger: this.logger }),
-				cacheDir: path.join(this.instanceSettings.n8nFolder, 'n8n-sdk-templates'),
+				cacheDir: path.join(this.instanceSettings.n8nFolder, 'MNI-sdk-templates'),
 				logger: this.logger,
 			});
 		}
@@ -1508,7 +1508,7 @@ export class InstanceAiAdapterService {
 					versionId: options?.versionId,
 					name: options?.name,
 					description: options?.description,
-					source: 'n8n-ai',
+					source: 'MNI-ai',
 				});
 				if (!wf.activeVersionId) {
 					throw new Error(`Workflow ${workflowId} was not activated — no active version set`);
@@ -1532,7 +1532,7 @@ export class InstanceAiAdapterService {
 			async unpublish(workflowId: string) {
 				await assertNotLockedByEditor(workflowId);
 				await workflowService.deactivateWorkflow(user, workflowId, {
-					source: 'n8n-ai',
+					source: 'MNI-ai',
 				});
 				await notifyWorkflowUpdated(workflowId);
 			},
@@ -1724,7 +1724,7 @@ export class InstanceAiAdapterService {
 					}
 
 					updated = await workflowService.update(user, updateData, saved.id, {
-						source: 'n8n-ai',
+						source: 'MNI-ai',
 						...(placement ? { parentFolderId: placement.id } : {}),
 					});
 				} catch (error) {
@@ -1822,7 +1822,7 @@ export class InstanceAiAdapterService {
 					}
 
 					updated = await workflowService.update(user, updateData, workflowId, {
-						source: 'n8n-ai',
+						source: 'MNI-ai',
 						...(options?.expectedChecksum ? { expectedChecksum: options.expectedChecksum } : {}),
 					});
 				} catch (error) {
@@ -1928,7 +1928,7 @@ export class InstanceAiAdapterService {
 				} as Partial<WorkflowEntity>);
 
 				const updated = await workflowService.update(user, updateData, workflowId, {
-					source: 'n8n-ai',
+					source: 'MNI-ai',
 				});
 
 				await notifyWorkflowUpdated(workflowId);
@@ -4017,7 +4017,7 @@ export class InstanceAiAdapterService {
 
 				// Dynamic `inputs` expressions resolve via workflow.expression, which
 				// needs a V8 isolate acquired for this workflow when
-				// N8N_EXPRESSION_ENGINE=vm — otherwise the VM bridge throws "No bridge
+				// MNI_EXPRESSION_ENGINE=vm — otherwise the VM bridge throws "No bridge
 				// acquired" and getNodeInputs silently returns []. No-op in legacy mode.
 				await workflow.expression.acquireIsolate();
 				try {
@@ -4127,7 +4127,7 @@ export class InstanceAiAdapterService {
 							}
 							await workflowService.update(user, workflow, workflowId, {
 								parentFolderId: folderId,
-								source: 'n8n-ai',
+								source: 'MNI-ai',
 							});
 						},
 					}
@@ -4164,7 +4164,7 @@ export class InstanceAiAdapterService {
 					}
 				}
 
-				await workflowService.update(user, workflow, workflowId, { tagIds, source: 'n8n-ai' });
+				await workflowService.update(user, workflow, workflowId, { tagIds, source: 'MNI-ai' });
 				return tagNames;
 			},
 
@@ -4633,7 +4633,7 @@ function foldToolExecutorRun(
 
 /**
  * The execution result the agent sees, plus the error string telemetry may use.
- * They differ when `N8N_AI_ALLOW_SENDING_PARAMETER_VALUES` is on: that setting
+ * They differ when `MNI_AI_ALLOW_SENDING_PARAMETER_VALUES` is on: that setting
  * opts the operator into sending upstream response content (`error.description`
  * / `.messages`, which routinely echo API keys and record-level PII) *to the
  * model*, not into MNI's product analytics. So the telemetry copy is always
@@ -4667,7 +4667,7 @@ export async function extractExecutionOutcome(
 					? 'waiting'
 					: 'success';
 
-	// When N8N_AI_ALLOW_SENDING_PARAMETER_VALUES is disabled, only return
+	// When MNI_AI_ALLOW_SENDING_PARAMETER_VALUES is disabled, only return
 	// status + error — no full node output data flows to the LLM provider
 	const resultData: Record<string, unknown> = {};
 	// All nodes that ran — including zero-output ones, which `resultData`
@@ -5063,7 +5063,7 @@ const KNOWN_TRIGGER_TYPES = new Set([
 
 /**
  * Find the trigger node to start from: known types first, then the canonical
- * n8n-workflow detection — the same detection the instance-ai simulation planner
+ * MNI-workflow detection — the same detection the instance-ai simulation planner
  * uses, so a trigger the planner simulates (e.g. suffix-less
  * cron/emailReadImap) is always found here too.
  *

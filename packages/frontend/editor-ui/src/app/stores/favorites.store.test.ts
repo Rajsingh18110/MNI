@@ -3,14 +3,14 @@ import { useFavoritesStore } from './favorites.store';
 import * as favoritesApi from '@/app/api/favorites';
 import type { UserFavorite } from '@/app/api/favorites';
 
-vi.mock('@n8n/stores/useRootStore', () => ({
+vi.mock('@MNI/stores/useRootStore', () => ({
 	useRootStore: vi.fn(() => ({
 		restApiContext: { baseUrl: 'http://localhost:5678', pushRef: 'test' },
 	})),
 }));
 
 const track = vi.fn();
-vi.mock('@n8n/composables/useTelemetry', () => ({
+vi.mock('@MNI/composables/useTelemetry', () => ({
 	useTelemetry: () => ({ track }),
 }));
 

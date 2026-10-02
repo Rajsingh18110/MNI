@@ -1,4 +1,4 @@
-import { UserError } from 'n8n-workflow';
+import { UserError } from 'MNI-workflow';
 
 export class DecompressedSizeExceededError extends UserError {
 	constructor(maxOutputSize: number) {

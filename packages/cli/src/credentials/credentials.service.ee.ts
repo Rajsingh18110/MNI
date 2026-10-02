@@ -1,16 +1,16 @@
-import type { CredentialConnectionStatus } from '@n8n/api-types';
-import { LicenseState } from '@n8n/backend-common';
-import type { User } from '@n8n/db';
+import type { CredentialConnectionStatus } from '@MNI/api-types';
+import { LicenseState } from '@MNI/backend-common';
+import type { User } from '@MNI/db';
 import {
 	CredentialsEntity,
 	Project,
 	SharedCredentials,
 	SharedCredentialsRepository,
-} from '@n8n/db';
-import { Service } from '@n8n/di';
-import { hasGlobalScope } from '@n8n/permissions';
-import { In, type EntityManager } from '@n8n/typeorm';
-import type { ICredentialDataDecryptedObject } from 'n8n-workflow';
+} from '@MNI/db';
+import { Service } from '@MNI/di';
+import { hasGlobalScope } from '@MNI/permissions';
+import { In, type EntityManager } from '@MNI/typeorm';
+import type { ICredentialDataDecryptedObject } from 'MNI-workflow';
 
 import { NotFoundError } from '@/errors/response-errors/not-found.error';
 import { TransferCredentialError } from '@/errors/response-errors/transfer-credential.error';

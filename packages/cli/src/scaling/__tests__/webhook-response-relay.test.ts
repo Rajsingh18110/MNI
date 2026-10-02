@@ -1,9 +1,9 @@
-import type { Logger } from '@n8n/backend-common';
-import type { ExecutionsConfig } from '@n8n/config';
-import { decodeBufferBody, ENCODED_BUFFER_KEY, FileLocation, FileTooLargeError } from 'n8n-core';
-import type { BinaryDataConfig, BinaryDataService } from 'n8n-core';
-import { OperationalError } from 'n8n-workflow';
-import type { IBinaryData, IExecuteResponsePromiseData } from 'n8n-workflow';
+import type { Logger } from '@MNI/backend-common';
+import type { ExecutionsConfig } from '@MNI/config';
+import { decodeBufferBody, ENCODED_BUFFER_KEY, FileLocation, FileTooLargeError } from 'MNI-core';
+import type { BinaryDataConfig, BinaryDataService } from 'MNI-core';
+import { OperationalError } from 'MNI-workflow';
+import type { IBinaryData, IExecuteResponsePromiseData } from 'MNI-workflow';
 import { Readable } from 'node:stream';
 import { mock } from 'vitest-mock-extended';
 
@@ -276,10 +276,10 @@ describe('WebhookResponseRelay', () => {
 			expect((error as WebhookResponseTooLargeError).message).not.toContain('MiB');
 			expect((error as WebhookResponseTooLargeError).description).toContain('3 MiB');
 			expect((error as WebhookResponseTooLargeError).description).toContain(
-				'N8N_BINARY_DATA_DATABASE_MAX_FILE_SIZE',
+				'MNI_BINARY_DATA_DATABASE_MAX_FILE_SIZE',
 			);
 			expect((error as WebhookResponseTooLargeError).description).toContain(
-				'N8N_WEBHOOK_RESPONSE_RELAY_SIZE_MAX',
+				'MNI_WEBHOOK_RESPONSE_RELAY_SIZE_MAX',
 			);
 			expect((error as WebhookResponseTooLargeError).cause).toBeInstanceOf(FileTooLargeError);
 		});
@@ -323,10 +323,10 @@ describe('WebhookResponseRelay', () => {
 			expect((error as WebhookResponseTooLargeError).message).not.toContain('MiB');
 			expect((error as WebhookResponseTooLargeError).description).toContain('The limit is 2 MiB');
 			expect((error as WebhookResponseTooLargeError).description).toContain(
-				'N8N_WEBHOOK_RESPONSE_RELAY_OFFLOAD_ENABLED',
+				'MNI_WEBHOOK_RESPONSE_RELAY_OFFLOAD_ENABLED',
 			);
 			expect((error as WebhookResponseTooLargeError).description).not.toContain(
-				'N8N_DEFAULT_BINARY_DATA_MODE',
+				'MNI_DEFAULT_BINARY_DATA_MODE',
 			);
 		});
 
@@ -366,10 +366,10 @@ describe('WebhookResponseRelay', () => {
 			expect((error as WebhookResponseTooLargeError).message).not.toContain('MiB');
 			expect((error as WebhookResponseTooLargeError).description).toContain('The limit is 2 MiB');
 			expect((error as WebhookResponseTooLargeError).description).toContain(
-				'N8N_DEFAULT_BINARY_DATA_MODE',
+				'MNI_DEFAULT_BINARY_DATA_MODE',
 			);
 			expect((error as WebhookResponseTooLargeError).description).toContain(
-				'N8N_WEBHOOK_RESPONSE_RELAY_SIZE_MAX',
+				'MNI_WEBHOOK_RESPONSE_RELAY_SIZE_MAX',
 			);
 		});
 	});
@@ -447,7 +447,7 @@ describe('WebhookResponseRelay', () => {
 			expect((error as WebhookResponseTooLargeError).message).not.toContain('MiB');
 			expect((error as WebhookResponseTooLargeError).description).toContain('The limit is 2 MiB');
 			expect((error as WebhookResponseTooLargeError).description).toContain(
-				'N8N_WEBHOOK_RESPONSE_RELAY_SIZE_MAX',
+				'MNI_WEBHOOK_RESPONSE_RELAY_SIZE_MAX',
 			);
 		});
 	});
@@ -608,7 +608,7 @@ describe('WebhookResponseRelay', () => {
 				.restoreOffloadedBody(offloadedResponse('json'), { reclaim: true, context: ctx })
 				.catch((e: OperationalError) => e);
 
-			expect((error as OperationalError).description).toContain('N8N_DEFAULT_BINARY_DATA_MODE');
+			expect((error as OperationalError).description).toContain('MNI_DEFAULT_BINARY_DATA_MODE');
 		});
 
 		it('reports which execution the unreadable body belongs to', async () => {

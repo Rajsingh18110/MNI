@@ -5,7 +5,7 @@
 			"parameters": {},
 			"id": "5e3a0f7c-0000-4000-8000-000000000001",
 			"name": "When clicking \"Execute Workflow\"",
-			"type": "n8n-nodes-base.manualTrigger",
+			"type": "MNI-nodes-base.manualTrigger",
 			"typeVersion": 1,
 			"position": [0, 0]
 		},
@@ -20,7 +20,7 @@
 			},
 			"id": "5e3a0f7c-0000-4000-8000-000000000002",
 			"name": "LoneScale Enrich",
-			"type": "n8n-nodes-base.loneScale",
+			"type": "MNI-nodes-base.loneScale",
 			"typeVersion": 1,
 			"position": [240, -200],
 			"credentials": {
@@ -46,7 +46,7 @@
 			},
 			"id": "5e3a0f7c-0000-4000-8000-000000000003",
 			"name": "LoneScale Source",
-			"type": "n8n-nodes-base.loneScale",
+			"type": "MNI-nodes-base.loneScale",
 			"typeVersion": 1,
 			"position": [240, 0],
 			"credentials": {
@@ -64,7 +64,7 @@
 			},
 			"id": "5e3a0f7c-0000-4000-8000-000000000004",
 			"name": "LoneScale Search",
-			"type": "n8n-nodes-base.loneScale",
+			"type": "MNI-nodes-base.loneScale",
 			"typeVersion": 1,
 			"position": [240, 200],
 			"credentials": {

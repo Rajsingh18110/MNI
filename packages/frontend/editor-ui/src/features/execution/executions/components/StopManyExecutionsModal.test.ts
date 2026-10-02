@@ -5,7 +5,7 @@ import { STOP_MANY_EXECUTIONS_MODAL_KEY } from '@/app/constants';
 import StopManyExecutionsModal from './StopManyExecutionsModal.vue';
 import type { RenderResult } from '@testing-library/vue';
 
-vi.mock('@n8n/composables/useToast', () => {
+vi.mock('@MNI/composables/useToast', () => {
 	const showError = vi.fn();
 	const showMessage = vi.fn();
 	return {
@@ -16,7 +16,7 @@ vi.mock('@n8n/composables/useToast', () => {
 	};
 });
 
-vi.mock('@n8n/composables/useTelemetry', () => {
+vi.mock('@MNI/composables/useTelemetry', () => {
 	const track = vi.fn();
 	return {
 		useTelemetry: () => ({

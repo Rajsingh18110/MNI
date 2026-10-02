@@ -4,7 +4,7 @@
  * for testing execution context propagation across workflows.
  */
 
-import type { IExecutionContext } from 'n8n-workflow';
+import type { IExecutionContext } from 'MNI-workflow';
 
 /**
  * Validates the basic structure and required fields of an execution context.

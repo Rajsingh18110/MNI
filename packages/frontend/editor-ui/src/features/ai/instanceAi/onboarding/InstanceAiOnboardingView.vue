@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed, onMounted, ref } from 'vue';
 import { useRouter } from 'vue-router';
-import { useI18n } from '@n8n/i18n';
-import { useToast } from '@n8n/composables/useToast';
+import { useI18n } from '@MNI/i18n';
+import { useToast } from '@MNI/composables/useToast';
 import { MODAL_CONFIRM, VIEWS } from '@/app/constants';
 import { useMessage } from '@/app/composables/useMessage';
 import { useCredentialsStore } from '@/features/credentials/credentials.store';

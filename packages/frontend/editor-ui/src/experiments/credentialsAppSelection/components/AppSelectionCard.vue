@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { N8nIcon, N8nText, N8nTooltip } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+import { N8nIcon, N8nText, N8nTooltip } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 import NodeIcon from '@/app/components/NodeIcon.vue';
 import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';
 import { removePreviewToken } from '@/features/shared/nodeCreator/nodeCreator.utils';
 import type { AppInfo } from '../composables/useAppCredentials';
 import type { SimplifiedNodeType } from '@/Interface';
-import type { Icon, ThemeIconColor } from 'n8n-workflow';
+import type { Icon, ThemeIconColor } from 'MNI-workflow';
 
 type CardState = 'default' | 'loading' | 'connected' | 'error';
 
@@ -161,7 +161,7 @@ const nodeTypeForIcon = computed((): SimplifiedNodeType | null => {
 </template>
 
 <style lang="scss" module>
-@use '@n8n/design-system/css/mixins/motion';
+@use '@MNI/design-system/css/mixins/motion';
 
 .card {
 	position: relative;

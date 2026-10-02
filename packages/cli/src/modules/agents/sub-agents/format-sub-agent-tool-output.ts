@@ -1,7 +1,7 @@
 import {
 	generateResultToDelegateSubAgentOutput,
 	type DelegateSubAgentToolOutput,
-} from '@n8n/agents';
+} from '@MNI/agents';
 
 import type { SubAgentRunResult } from './sub-agent-runner';
 

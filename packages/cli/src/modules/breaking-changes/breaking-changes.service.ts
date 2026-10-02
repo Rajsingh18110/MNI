@@ -1,17 +1,17 @@
-import type { BreakingChangeAffectedWorkflow } from '@n8n/api-types';
+import type { BreakingChangeAffectedWorkflow } from '@MNI/api-types';
 import {
 	BreakingChangeInstanceRuleResult,
 	BreakingChangeReportResult,
 	BreakingChangeVersion,
 	BreakingChangeWorkflowRuleResult,
-} from '@n8n/api-types';
-import { Logger } from '@n8n/backend-common';
-import { Time } from '@n8n/constants';
-import { WorkflowRepository, WorkflowStatisticsRepository } from '@n8n/db';
-import { BreakingChangeRuleMetadata } from '@n8n/decorators';
-import { Container, Service } from '@n8n/di';
-import { In } from '@n8n/typeorm';
-import { ErrorReporter } from 'n8n-core';
+} from '@MNI/api-types';
+import { Logger } from '@MNI/backend-common';
+import { Time } from '@MNI/constants';
+import { WorkflowRepository, WorkflowStatisticsRepository } from '@MNI/db';
+import { BreakingChangeRuleMetadata } from '@MNI/decorators';
+import { Container, Service } from '@MNI/di';
+import { In } from '@MNI/typeorm';
+import { ErrorReporter } from 'MNI-core';
 
 import { CacheService } from '@/services/cache/cache.service';
 
@@ -25,7 +25,7 @@ import type {
 	IBreakingChangeWorkflowRule,
 	WorkflowDetectionReport,
 } from './types';
-import { N8N_VERSION } from '../../constants';
+import { MNI_VERSION } from '../../constants';
 
 interface WorkflowMetadata {
 	name: string;
@@ -390,7 +390,7 @@ export class BreakingChangeService {
 		return {
 			generatedAt: new Date(),
 			targetVersion,
-			currentVersion: N8N_VERSION,
+			currentVersion: MNI_VERSION,
 			workflowResults,
 			instanceResults,
 		};

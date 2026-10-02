@@ -1,9 +1,9 @@
-import { useRootStore } from '@n8n/stores/useRootStore';
-import { useSettingsStore } from '@n8n/stores/settings.store';
-import { useInstanceRegistryStore } from '@n8n/frontend-module-instance-registry';
-import { useDeviceSupport } from '@n8n/composables/useDeviceSupport';
-import type { InstanceRegistration } from '@n8n/api-types';
-import type { WorkflowSettings } from 'n8n-workflow';
+import { useRootStore } from '@MNI/stores/useRootStore';
+import { useSettingsStore } from '@MNI/stores/settings.store';
+import { useInstanceRegistryStore } from '@MNI/frontend-module-instance-registry';
+import { useDeviceSupport } from '@MNI/composables/useDeviceSupport';
+import type { InstanceRegistration } from '@MNI/api-types';
+import type { WorkflowSettings } from 'MNI-workflow';
 
 type ClusterInstanceSummary = Pick<
 	InstanceRegistration,

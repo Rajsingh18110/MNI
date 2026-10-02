@@ -12,19 +12,19 @@ import {
 	createWorkflowWithHistory,
 	setActiveVersion,
 	testDb,
-} from '@n8n/backend-test-utils';
-import { WorkflowsConfig } from '@n8n/config';
-import { ProjectRepository, WorkflowRepository, type Project, type User } from '@n8n/db';
+} from '@MNI/backend-test-utils';
+import { WorkflowsConfig } from '@MNI/config';
+import { ProjectRepository, WorkflowRepository, type Project, type User } from '@MNI/db';
 import type {
 	PolicyCheckResult,
 	RegisteredPolicyCheck,
 	WorkflowPublishContext,
-} from '@n8n/decorators';
-import { PolicyCheck, PolicyCheckMetadata } from '@n8n/decorators';
-import { Container } from '@n8n/di';
-import { InstanceSettings } from 'n8n-core';
-import { ScheduleTrigger } from 'n8n-nodes-base/nodes/Schedule/ScheduleTrigger.node';
-import type { INode, INodeTypeData } from 'n8n-workflow';
+} from '@MNI/decorators';
+import { PolicyCheck, PolicyCheckMetadata } from '@MNI/decorators';
+import { Container } from '@MNI/di';
+import { InstanceSettings } from 'MNI-core';
+import { ScheduleTrigger } from 'MNI-nodes-base/nodes/Schedule/ScheduleTrigger.node';
+import type { INode, INodeTypeData } from 'MNI-workflow';
 import { v4 as uuid } from 'uuid';
 
 import { ActiveWorkflowManager } from '@/active-workflow-manager';
@@ -95,7 +95,7 @@ const originalUseWorkflowPublicationService = workflowsConfig.useWorkflowPublica
 const scheduleNode = (name: string): INode => ({
 	id: uuid(),
 	name,
-	type: 'n8n-nodes-base.scheduleTrigger',
+	type: 'MNI-nodes-base.scheduleTrigger',
 	typeVersion: 1,
 	position: [0, 0],
 	parameters: {},
@@ -109,7 +109,7 @@ beforeAll(async () => {
 	// A real trigger type: `ActiveWorkflowManager` is not mocked here, so the allowed cases
 	// register for real. The default interval never fires within a test run.
 	const nodes: INodeTypeData = {
-		'n8n-nodes-base.scheduleTrigger': { type: new ScheduleTrigger(), sourcePath: '' },
+		'MNI-nodes-base.scheduleTrigger': { type: new ScheduleTrigger(), sourcePath: '' },
 	};
 	await utils.initNodeTypes(nodes);
 
@@ -164,7 +164,7 @@ const expectedViolation = {
 	kind: VIOLATION_KIND,
 	checkId: CHECK_ID,
 	message: deniedMessage(BLOCKED_NODE_NAME),
-	subject: 'n8n-nodes-base.scheduleTrigger',
+	subject: 'MNI-nodes-base.scheduleTrigger',
 	subjectType: 'nodeType',
 	scope: 'project',
 };

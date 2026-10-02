@@ -1,4 +1,4 @@
-import { BreakingChangeRule } from '@n8n/decorators';
+import { BreakingChangeRule } from '@MNI/decorators';
 
 import { NOT_AFFECTED_INSTANCE } from '../../detection-report';
 import type {
@@ -26,20 +26,20 @@ export class CompressionNodeLimitsRule implements IBreakingChangeInstanceRule {
 	async detect(): Promise<InstanceDetectionReport> {
 		const instanceIssues: InstanceDetectionReport['instanceIssues'] = [];
 
-		if (process.env.N8N_COMPRESSION_NODE_MAX_DECOMPRESSED_SIZE_BYTES === undefined) {
+		if (process.env.MNI_COMPRESSION_NODE_MAX_DECOMPRESSED_SIZE_BYTES === undefined) {
 			instanceIssues.push({
 				title: 'Instance relies on the current default decompressed size limit',
 				description:
-					'N8N_COMPRESSION_NODE_MAX_DECOMPRESSED_SIZE_BYTES is not set, so this instance uses the default of 2 GiB. After the update, decompressing more than 256 MiB will fail.',
+					'MNI_COMPRESSION_NODE_MAX_DECOMPRESSED_SIZE_BYTES is not set, so this instance uses the default of 2 GiB. After the update, decompressing more than 256 MiB will fail.',
 				level: 'info',
 			});
 		}
 
-		if (process.env.N8N_COMPRESSION_NODE_MAX_ZIP_ENTRIES === undefined) {
+		if (process.env.MNI_COMPRESSION_NODE_MAX_ZIP_ENTRIES === undefined) {
 			instanceIssues.push({
 				title: 'Instance relies on the current default ZIP entries limit',
 				description:
-					'N8N_COMPRESSION_NODE_MAX_ZIP_ENTRIES is not set, so this instance uses the default of 5000 entries. After the update, ZIP archives with more than 1000 entries will fail to decompress.',
+					'MNI_COMPRESSION_NODE_MAX_ZIP_ENTRIES is not set, so this instance uses the default of 5000 entries. After the update, ZIP archives with more than 1000 entries will fail to decompress.',
 				level: 'info',
 			});
 		}
@@ -55,7 +55,7 @@ export class CompressionNodeLimitsRule implements IBreakingChangeInstanceRule {
 				{
 					action: 'Set the compression limits explicitly',
 					description:
-						'If your workflows decompress large archives, set N8N_COMPRESSION_NODE_MAX_DECOMPRESSED_SIZE_BYTES and N8N_COMPRESSION_NODE_MAX_ZIP_ENTRIES to keep the current limits.',
+						'If your workflows decompress large archives, set MNI_COMPRESSION_NODE_MAX_DECOMPRESSED_SIZE_BYTES and MNI_COMPRESSION_NODE_MAX_ZIP_ENTRIES to keep the current limits.',
 				},
 			],
 		};

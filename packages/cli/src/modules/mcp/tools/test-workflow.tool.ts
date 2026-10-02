@@ -1,7 +1,7 @@
-import { Time } from '@n8n/constants';
-import type { User } from '@n8n/db';
-import { normalizePinData } from '@n8n/workflow-sdk';
-import { ensureError } from '@n8n/utils/errors/ensure-error';
+import { Time } from '@MNI/constants';
+import type { User } from '@MNI/db';
+import { normalizePinData } from '@MNI/workflow-sdk';
+import { ensureError } from '@MNI/utils/errors/ensure-error';
 import {
 	type IPinData,
 	type INodeExecutionData,
@@ -9,7 +9,7 @@ import {
 	createRunExecutionData,
 	jsonStringify,
 	isTriggerNode,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import z from 'zod';
 
 import type { ActiveExecutions } from '@/active-executions';

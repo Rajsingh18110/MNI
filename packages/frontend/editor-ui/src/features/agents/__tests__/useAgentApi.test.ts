@@ -1,6 +1,6 @@
 /* eslint-disable import-x/no-extraneous-dependencies -- test-only pattern */
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { getFullApiResponse, makeRestApiRequest } from '@n8n/rest-api-client';
+import { getFullApiResponse, makeRestApiRequest } from '@MNI/rest-api-client';
 
 import {
 	cancelAgentChatExecution,
@@ -15,7 +15,7 @@ import {
 } from '../composables/useAgentApi';
 import type { AgentResource, AgentJsonConfig } from '../types';
 
-vi.mock('@n8n/rest-api-client', () => ({
+vi.mock('@MNI/rest-api-client', () => ({
 	getFullApiResponse: vi.fn(),
 	makeRestApiRequest: vi.fn(),
 }));
@@ -215,7 +215,7 @@ describe('useAgentApi', () => {
 				integrations: [
 					{ type: 'telegram', credentialId: 'cred-telegram-1' },
 					{ type: 'slack', credentialId: 'cred-slack-1', settings: { channel: 'C1' } },
-					{ type: 'n8n_chat', credentialId: '' },
+					{ type: 'MNI_chat', credentialId: '' },
 				],
 			} as unknown as AgentJsonConfig;
 			const cloned = { id: 'agent-2', name: 'Support Agent (copy)' } as unknown as AgentResource;
@@ -237,7 +237,7 @@ describe('useAgentApi', () => {
 			expect(postBody.schema.integrations).toEqual([
 				{ type: 'telegram', credentialId: '' },
 				{ type: 'slack', credentialId: '', settings: { channel: 'C1' } },
-				{ type: 'n8n_chat', credentialId: '' },
+				{ type: 'MNI_chat', credentialId: '' },
 			]);
 		});
 	});

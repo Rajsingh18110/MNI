@@ -1,5 +1,5 @@
 import { computed, unref, type Ref } from 'vue';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import { formatTimestamp } from '../utils';
 
 type PublishInfo = {

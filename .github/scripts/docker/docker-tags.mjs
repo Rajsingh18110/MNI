@@ -4,7 +4,7 @@ import { appendFileSync } from 'node:fs';
 
 class TagGenerator {
 	constructor() {
-		this.githubOwner = process.env.GITHUB_REPOSITORY_OWNER || 'n8n-io';
+		this.githubOwner = process.env.GITHUB_REPOSITORY_OWNER || 'MNI-io';
 		this.dockerUsername = process.env.DOCKER_USERNAME || 'n8nio';
 		this.githubOutput = process.env.GITHUB_OUTPUT || null;
 	}
@@ -18,7 +18,7 @@ class TagGenerator {
 			versionSuffix = '-distroless';
 		}
 
-		if (image === 'n8n-pc') {
+		if (image === 'MNI-pc') {
 			imageName = 'MNI';
 			versionSuffix = '-pc';
 		}
@@ -87,7 +87,7 @@ class TagGenerator {
 	}
 
 	generateAll({ version, platform, includeDockerHub = false, sha = '', date = '' }) {
-		const images = ['MNI', 'n8n-pc', 'runners', 'runners-distroless'];
+		const images = ['MNI', 'MNI-pc', 'runners', 'runners-distroless'];
 		const results = {};
 
 		for (const image of images) {

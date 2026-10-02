@@ -2,12 +2,12 @@
 import { reactive, ref } from 'vue';
 import { useRouter } from 'vue-router';
 
-import { useToast } from '@n8n/composables/useToast';
-import { useI18n } from '@n8n/i18n';
-import { createPasswordRules } from '@n8n/design-system';
+import { useToast } from '@MNI/composables/useToast';
+import { useI18n } from '@MNI/i18n';
+import { createPasswordRules } from '@MNI/design-system';
 
-import { useSettingsStore } from '@n8n/stores/settings.store';
-import { useUsersStore } from '@n8n/stores/users.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
+import { useUsersStore } from '@MNI/stores/users.store';
 
 import type { IFormBoxConfig } from '@/Interface';
 import { VIEWS } from '@/app/constants';

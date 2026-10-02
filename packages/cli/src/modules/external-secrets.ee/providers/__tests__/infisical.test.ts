@@ -1,7 +1,7 @@
-import { Logger } from '@n8n/backend-common';
-import { createFakeOutboundHttp, type Route } from '@n8n/backend-network/testing';
-import { mockInstance } from '@n8n/backend-test-utils';
-import type { IHttpRequestOptions } from 'n8n-workflow';
+import { Logger } from '@MNI/backend-common';
+import { createFakeOutboundHttp, type Route } from '@MNI/backend-network/testing';
+import { mockInstance } from '@MNI/backend-test-utils';
+import type { IHttpRequestOptions } from 'MNI-workflow';
 
 import { ExternalSecretsConfig } from '../../external-secrets.config';
 import { InfisicalProvider } from '../infisical';

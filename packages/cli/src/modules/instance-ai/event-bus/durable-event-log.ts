@@ -1,8 +1,8 @@
-import { INSTANCE_AI_EPHEMERAL_EVENT_TYPES, type InstanceAiEvent } from '@n8n/api-types';
-import { Logger } from '@n8n/backend-common';
-import { isUniqueConstraintError } from '@n8n/db';
-import { Service } from '@n8n/di';
-import type { StoredEvent } from '@n8n/instance-ai';
+import { INSTANCE_AI_EPHEMERAL_EVENT_TYPES, type InstanceAiEvent } from '@MNI/api-types';
+import { Logger } from '@MNI/backend-common';
+import { isUniqueConstraintError } from '@MNI/db';
+import { Service } from '@MNI/di';
+import type { StoredEvent } from '@MNI/instance-ai';
 
 import { DurableLogMetrics } from './durable-log-metrics';
 import { InstanceAiEventLogRepository } from '../repositories/instance-ai-event-log.repository';

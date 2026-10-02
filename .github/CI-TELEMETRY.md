@@ -33,7 +33,7 @@ Container startup payloads also include:
   },
   "stages": [
     {
-      "name": "n8n-startup",
+      "name": "MNI-startup",
       "source": "local",
       "startedAt": "2026-03-16T12:00:00.000Z",
       "elapsedMs": 4200,
@@ -41,7 +41,7 @@ Container startup payloads also include:
       "errorMessage": "readiness failed"
     }
   ],
-  "failure_phase": "n8n-startup"
+  "failure_phase": "MNI-startup"
 }
 ```
 
@@ -105,7 +105,7 @@ benchmark_name   STRING
 metric_name      STRING NOT NULL
 value            FLOAT64 NOT NULL
 unit             STRING
-dimensions       JSON                 -- {"nodes": 10, "trigger": "kafka", "package": "@n8n/cli"}
+dimensions       JSON                 -- {"nodes": 10, "trigger": "kafka", "package": "@MNI/cli"}
 git_sha          STRING
 git_branch       STRING
 git_pr           INT64

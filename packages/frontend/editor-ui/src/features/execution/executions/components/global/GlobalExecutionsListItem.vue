@@ -3,16 +3,16 @@ import AnimatedSpinner from '@/app/components/AnimatedSpinner.vue';
 import ExecutionsTime from '../ExecutionsTime.vue';
 import GlobalExecutionsListItemQueuedTooltip from './GlobalExecutionsListItemQueuedTooltip.vue';
 import { useExecutionHelpers } from '../../composables/useExecutionHelpers';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import { VIEWS } from '@/app/constants';
-import type { PermissionsRecord } from '@n8n/permissions';
+import type { PermissionsRecord } from '@MNI/permissions';
 import { convertToDisplayDate } from '@/app/utils/formatters/dateFormatter';
 import { checkExhaustive } from '@/app/utils/typeGuards';
-import type { IconColor } from '@n8n/design-system';
-import type { ExecutionStatus, ExecutionSummary } from 'n8n-workflow';
-import { isIndefiniteWait } from 'n8n-workflow';
+import type { IconColor } from '@MNI/design-system';
+import type { ExecutionStatus, ExecutionSummary } from 'MNI-workflow';
+import { isIndefiniteWait } from 'MNI-workflow';
 import { computed, ref, useCssModule } from 'vue';
-import { type IconName } from '@n8n/design-system';
+import { type IconName } from '@MNI/design-system';
 
 import { ElDropdown, ElDropdownItem, ElDropdownMenu } from 'element-plus';
 import {
@@ -22,7 +22,7 @@ import {
 	N8nIconButton,
 	N8nText,
 	N8nTooltip,
-} from '@n8n/design-system';
+} from '@MNI/design-system';
 import PrivateCredentialIcon from '@/features/resolvers/components/PrivateCredentialIcon.vue';
 type Command = 'retrySaved' | 'retryOriginal' | 'delete';
 

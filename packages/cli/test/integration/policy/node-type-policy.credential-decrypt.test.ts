@@ -3,12 +3,12 @@
  * with `CredentialsHelper.getDecrypted` as the host. The pair of cases is the point — a lock
  * keyed on the credential's type would pass the refusal and fail the hand-over.
  */
-import { testDb } from '@n8n/backend-test-utils';
-import { LICENSE_FEATURES } from '@n8n/constants';
-import { ProjectRepository, type User } from '@n8n/db';
-import { PolicyCheckMetadata } from '@n8n/decorators';
-import { Container } from '@n8n/di';
-import type { IExecuteData, IWorkflowExecuteAdditionalData } from 'n8n-workflow';
+import { testDb } from '@MNI/backend-test-utils';
+import { LICENSE_FEATURES } from '@MNI/constants';
+import { ProjectRepository, type User } from '@MNI/db';
+import { PolicyCheckMetadata } from '@MNI/decorators';
+import { Container } from '@MNI/di';
+import type { IExecuteData, IWorkflowExecuteAdditionalData } from 'MNI-workflow';
 
 import { CredentialsHelper } from '@/credentials-helper';
 
@@ -20,8 +20,8 @@ import { clearPolicyCache } from './shared/policy-cache';
 
 const CHECK_ID = 'node-type-availability';
 
-const SLACK = 'n8n-nodes-base.slack';
-const HTTP_REQUEST = 'n8n-nodes-base.httpRequest';
+const SLACK = 'MNI-nodes-base.slack';
+const HTTP_REQUEST = 'MNI-nodes-base.httpRequest';
 
 const testServer = utils.setupTestServer({
 	endpointGroups: ['type-availability-policies'],

@@ -1,10 +1,10 @@
-import { LicenseState } from '@n8n/backend-common';
-import type { BooleanLicenseFeature } from '@n8n/constants';
-import { UNLIMITED_LICENSE_QUOTA } from '@n8n/constants';
-import type { AuthenticatedRequest } from '@n8n/db';
-import { ControllerRegistryMetadata } from '@n8n/decorators';
-import type { AccessScope, ApiKeyScopeRequirement, Controller } from '@n8n/decorators';
-import { Container, Service } from '@n8n/di';
+import { LicenseState } from '@MNI/backend-common';
+import type { BooleanLicenseFeature } from '@MNI/constants';
+import { UNLIMITED_LICENSE_QUOTA } from '@MNI/constants';
+import type { AuthenticatedRequest } from '@MNI/db';
+import { ControllerRegistryMetadata } from '@MNI/decorators';
+import type { AccessScope, ApiKeyScopeRequirement, Controller } from '@MNI/decorators';
+import { Container, Service } from '@MNI/di';
 import type { Request, RequestHandler, Response, Router } from 'express';
 import { Router as createRouter } from 'express';
 import { z } from 'zod';

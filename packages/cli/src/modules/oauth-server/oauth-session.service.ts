@@ -1,5 +1,5 @@
-import { Time } from '@n8n/constants';
-import { Service } from '@n8n/di';
+import { Time } from '@MNI/constants';
+import { Service } from '@MNI/di';
 import { Response } from 'express';
 import { z } from 'zod';
 
@@ -17,7 +17,7 @@ const oauthSessionPayloadSchema = z.object({
 
 export type OAuthSessionPayload = z.infer<typeof oauthSessionPayloadSchema>;
 
-export const OAUTH_SESSION_COOKIE_NAME = 'n8n-oauth-session';
+export const OAUTH_SESSION_COOKIE_NAME = 'MNI-oauth-session';
 const SESSION_EXPIRY_MS = 10 * Time.minutes.toMilliseconds; // 10 minutes
 
 /**

@@ -1,7 +1,7 @@
-import type { BannerName } from '@n8n/api-types';
-import { SettingsRepository } from '@n8n/db';
-import { Service } from '@n8n/di';
-import { ErrorReporter } from 'n8n-core';
+import type { BannerName } from '@MNI/api-types';
+import { SettingsRepository } from '@MNI/db';
+import { Service } from '@MNI/di';
+import { ErrorReporter } from 'MNI-core';
 
 import config from '@/config';
 

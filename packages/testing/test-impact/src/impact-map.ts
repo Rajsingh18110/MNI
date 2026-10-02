@@ -333,7 +333,7 @@ function buildDirIndex(map: ImpactMap): Map<string, Set<string>> {
  * covered) otherwise forces 'broad' — counterintuitive for a new file in a
  * well-covered area ("no spec touches this exact path, so run all of them").
  * With it on, the file instead selects the specs covering its NEAREST covered
- * ancestor directory (e.g. a new `@n8n/instance-ai/…` file → the instance-ai
+ * ancestor directory (e.g. a new `@MNI/instance-ai/…` file → the instance-ai
  * specs). Only a file with NO covered ancestor at all still forces broad.
  * Deliberate trade: a new file is assumed exercised by the specs that exercise
  * its directory — a sound superset in practice, far cheaper than the whole suite.

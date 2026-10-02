@@ -3,7 +3,7 @@ import { useUIStore } from '@/app/stores/ui.store';
 import { computed, ref, watch } from 'vue';
 import { getMousePosition } from '@/app/utils/nodeViewUtils';
 import { useContextMenuItems, type ContextMenuAction } from './useContextMenuItems';
-import { getEmptyGroupAnchor } from 'n8n-workflow';
+import { getEmptyGroupAnchor } from 'MNI-workflow';
 import { isPresent } from '@/app/utils/typesUtils';
 import { injectWorkflowDocumentStore } from '@/app/stores/workflowDocument.store';
 

@@ -1,4 +1,4 @@
-import type { CredentialProvider } from '@n8n/agents';
+import type { CredentialProvider } from '@MNI/agents';
 import { mock } from 'vitest-mock-extended';
 
 import { resolveEmbeddingProviderOptionsFromCredential } from '../embedding-credential';

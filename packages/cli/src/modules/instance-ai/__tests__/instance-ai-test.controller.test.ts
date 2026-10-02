@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-vi.mock('@n8n/instance-ai', () => ({
+vi.mock('@MNI/instance-ai', () => ({
 	workflowLoopStateSchema: z.string(),
 	attemptRecordSchema: z.object({}),
 	workflowBuildOutcomeSchema: z.string(),
@@ -11,7 +11,7 @@ vi.mock('../eval/execution.service', () => ({
 	EvalExecutionService: vi.fn(),
 }));
 
-import type { ProjectRepository, UserRepository, WorkflowRepository } from '@n8n/db';
+import type { ProjectRepository, UserRepository, WorkflowRepository } from '@MNI/db';
 import type { Request, Response } from 'express';
 import { mock } from 'vitest-mock-extended';
 

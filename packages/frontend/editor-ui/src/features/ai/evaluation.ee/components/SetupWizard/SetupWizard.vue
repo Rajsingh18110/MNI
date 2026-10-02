@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import { ref, computed } from 'vue';
 import { useEvaluationStore } from '../../evaluation.store';
 import { VIEWS } from '@/app/constants';
@@ -9,7 +9,7 @@ import { useUsageStore } from '@/features/settings/usage/usage.store';
 import { usePageRedirectionHelper } from '@/app/composables/usePageRedirectionHelper';
 import { I18nT } from 'vue-i18n';
 
-import { N8nButton, N8nCallout, N8nText } from '@n8n/design-system';
+import { N8nButton, N8nCallout, N8nText } from '@MNI/design-system';
 import { injectWorkflowDocumentStore } from '@/app/stores/workflowDocument.store';
 import { useWorkflowEvaluationState } from '../../composables/useWorkflowEvaluationState';
 defineEmits<{

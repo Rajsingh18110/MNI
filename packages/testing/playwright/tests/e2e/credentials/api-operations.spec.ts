@@ -1,4 +1,4 @@
-import type { CreateCredentialDto } from '@n8n/api-types';
+import type { CreateCredentialDto } from '@MNI/api-types';
 
 import { test, expect } from '../../../fixtures/base';
 

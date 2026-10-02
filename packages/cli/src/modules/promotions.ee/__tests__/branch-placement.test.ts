@@ -1,4 +1,4 @@
-import type { PackageManifest } from '@/modules/n8n-packages/spec/manifest.schema';
+import type { PackageManifest } from '@/modules/MNI-packages/spec/manifest.schema';
 
 import { containerPlacement, pinPath, staleWorkflowTargets } from '../branch-placement';
 

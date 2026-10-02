@@ -3,9 +3,9 @@ import type {
 	BreakingChangeRecommendation,
 	BreakingChangeRuleSeverity,
 	BreakingChangeVersion,
-} from '@n8n/api-types';
-import type { WorkflowEntity } from '@n8n/db';
-import type { INode } from 'n8n-workflow';
+} from '@MNI/api-types';
+import type { WorkflowEntity } from '@MNI/db';
+import type { INode } from 'MNI-workflow';
 
 import type {
 	BatchWorkflowDetectionReport,

@@ -1,10 +1,10 @@
-import { mockInstance } from '@n8n/backend-test-utils';
-import { User } from '@n8n/db';
+import { mockInstance } from '@MNI/backend-test-utils';
+import { User } from '@MNI/db';
 import {
 	NODE_GROUPS_REFERENCE,
 	WORKFLOW_PATTERNS_DETAILED,
 	WORKFLOW_SDK_PATTERNS,
-} from '@n8n/workflow-sdk/prompts/sdk-reference';
+} from '@MNI/workflow-sdk/prompts/sdk-reference';
 
 import { Telemetry } from '@/telemetry';
 
@@ -15,8 +15,8 @@ import { getSdkReferenceContent } from '../tools/workflow-builder/sdk-reference-
 const structuredOf = (result: { structuredContent?: unknown }) =>
 	result.structuredContent as Record<string, unknown> | undefined;
 
-vi.mock('@n8n/ai-workflow-builder', () => ({
-	SDK_IMPORT_STATEMENT: "import { workflow } from '@n8n/workflow-sdk';",
+vi.mock('@MNI/ai-workflow-builder', () => ({
+	SDK_IMPORT_STATEMENT: "import { workflow } from '@MNI/workflow-sdk';",
 	MCP_GET_SDK_REFERENCE_TOOL: {
 		toolName: 'get_workflow_sdk_reference',
 		displayTitle: 'Get SDK Reference',

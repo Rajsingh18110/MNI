@@ -42,7 +42,7 @@ jobs:
         with:
           build-command: 'pnpm build:deploy'
         env:
-          N8N_GENERATE_LICENSES: 'true'
+          MNI_GENERATE_LICENSES: 'true'
 
       # build:deploy already runs this gate. Run it again against the final file
       # so validation cannot report success without checking that artifact.
@@ -50,4 +50,4 @@ jobs:
         run: |
           node scripts/licenses/check-sbom-licenses.mjs \
             sbom-source.cdx.json \
-            --allow-ref=LicenseRef-n8n-sustainable-use --allow-ref=LicenseRef-n8n-enterprise
+            --allow-ref=LicenseRef-MNI-sustainable-use --allow-ref=LicenseRef-MNI-enterprise

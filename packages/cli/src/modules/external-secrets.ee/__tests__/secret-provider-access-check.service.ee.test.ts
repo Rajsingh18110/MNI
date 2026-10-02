@@ -2,8 +2,8 @@ import type {
 	ProjectSecretsProviderAccessRepository,
 	SecretsProviderConnectionRepository,
 	User,
-} from '@n8n/db';
-import type { Scope } from '@n8n/permissions';
+} from '@MNI/db';
+import type { Scope } from '@MNI/permissions';
 import { mock } from 'vitest-mock-extended';
 
 import { ForbiddenError } from '@/errors/response-errors/forbidden.error';

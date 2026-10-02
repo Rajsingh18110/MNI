@@ -1,9 +1,9 @@
-import type { ExecutionSummary, RelatedExecution } from 'n8n-workflow';
+import type { ExecutionSummary, RelatedExecution } from 'MNI-workflow';
 import { convertToDisplayDate } from '@/app/utils/formatters/dateFormatter';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import { useRouter } from 'vue-router';
 import { VIEWS } from '@/app/constants';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
 import type { IRunDataDisplayMode } from '@/Interface';
 
 export interface IExecutionUIData {
@@ -96,7 +96,7 @@ export function useExecutionHelpers() {
 		const { workflowId, executionId } = info;
 
 		// Rendered as a real `<a href target="_blank">`, so the URL must include the
-		// router base (N8N_PATH). Use `.href` (base-included), not `.fullPath`, else the
+		// router base (MNI_PATH). Use `.href` (base-included), not `.fullPath`, else the
 		// base is dropped and the link 404s under a sub-path (cf. openExecutionInNewTab).
 		return router.resolve({
 			name: VIEWS.EXECUTION_PREVIEW,

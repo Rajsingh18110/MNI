@@ -1,5 +1,5 @@
-import { Service } from '@n8n/di';
-import { lifecycleEventBatchSchema } from '@n8n/engine';
+import { Service } from '@MNI/di';
+import { lifecycleEventBatchSchema } from '@MNI/engine';
 import type { Request, Response } from 'express';
 
 import { BadRequestError } from '@/errors/response-errors/bad-request.error';

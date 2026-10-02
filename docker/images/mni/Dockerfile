@@ -1,5 +1,5 @@
 ARG NODE_VERSION=26.7.0
-ARG N8N_VERSION=snapshot
+ARG MNI_VERSION=snapshot
 
 # The digest pins node:26.7.0-alpine3.24 for amd64 and arm64. Change the tag and the digest together.
 ARG BUILDER_IMAGE=node:26.7.0-alpine3.24@sha256:aadf416b2cdce311a8811ba3f0608a61b77dbf997500e2eafe781b51f6a0b019
@@ -48,11 +48,11 @@ RUN BUILD_LIBRDKAFKA=0 node "$NODE_GYP" rebuild --release
 # when you change RUNTIME_IMAGE above.
 FROM ${RUNTIME_IMAGE}
 
-ARG N8N_VERSION
-ARG N8N_RELEASE_TYPE=dev
+ARG MNI_VERSION
+ARG MNI_RELEASE_TYPE=dev
 ARG IMAGE_DESCRIPTION="Workflow Automation Tool"
 ENV NODE_ENV=production
-ENV N8N_RELEASE_TYPE=${N8N_RELEASE_TYPE}
+ENV MNI_RELEASE_TYPE=${MNI_RELEASE_TYPE}
 ENV SHELL=/bin/sh
 
 WORKDIR /home/node
@@ -73,13 +73,13 @@ COPY --from=native-builder /build/node_modules/@confluentinc/kafka-javascript/bu
 
 # The base image keeps node in /usr/bin and has no /usr/local/bin.
 RUN set -e; \
-    N8N=/usr/local/lib/node_modules/MNI; \
-    kafka=$(echo "$N8N"/node_modules/.pnpm/@confluentinc+kafka-javascript@*/node_modules/@confluentinc/kafka-javascript); \
+    MNI=/usr/local/lib/node_modules/MNI; \
+    kafka=$(echo "$MNI"/node_modules/.pnpm/@confluentinc+kafka-javascript@*/node_modules/@confluentinc/kafka-javascript); \
     install -D /tmp/confluent-kafka-javascript.node "$kafka/build/Release/confluent-kafka-javascript.node"; \
-    rm -rf "$N8N"/node_modules/.pnpm/isolated-vm@*/node_modules/isolated-vm/prebuilds; \
+    rm -rf "$MNI"/node_modules/.pnpm/isolated-vm@*/node_modules/isolated-vm/prebuilds; \
     mkdir -p /usr/local/bin; \
-    ln -s "$N8N/bin/MNI" /usr/local/bin/MNI; \
-    mkdir -p /home/node/.n8n; \
+    ln -s "$MNI/bin/MNI" /usr/local/bin/MNI; \
+    mkdir -p /home/node/.MNI; \
     chown -R node:node /home/node; \
     rm -rf /root/.npm /tmp/*
 
@@ -89,5 +89,5 @@ ENTRYPOINT ["tini", "--", "/docker-entrypoint.sh"]
 
 LABEL org.opencontainers.image.title="MNI" \
       org.opencontainers.image.description="${IMAGE_DESCRIPTION}" \
-      org.opencontainers.image.source="https://github.com/n8n-io/n8n" \
-      org.opencontainers.image.version=${N8N_VERSION}
+      org.opencontainers.image.source="https://github.com/MNI-io/MNI" \
+      org.opencontainers.image.version=${MNI_VERSION}

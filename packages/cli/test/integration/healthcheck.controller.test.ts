@@ -1,4 +1,4 @@
-import { testDb } from '@n8n/backend-test-utils';
+import { testDb } from '@MNI/backend-test-utils';
 
 import { setupTestServer } from '@test-integration/utils';
 

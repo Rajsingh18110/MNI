@@ -1,8 +1,8 @@
 import '../../controllers';
 
-import { ApplyPackageResultDto } from '@n8n/api-types';
-import { ControllerRegistryMetadata } from '@n8n/decorators';
-import { Container } from '@n8n/di';
+import { ApplyPackageResultDto } from '@MNI/api-types';
+import { ControllerRegistryMetadata } from '@MNI/decorators';
+import { Container } from '@MNI/di';
 import type { OpenAPIV3 } from 'openapi-types';
 import { parse } from 'yaml';
 import fs from 'node:fs';

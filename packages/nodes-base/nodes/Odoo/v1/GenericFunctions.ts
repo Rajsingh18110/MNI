@@ -5,8 +5,8 @@ import type {
 	ILoadOptionsFunctions,
 	JsonObject,
 	IRequestOptions,
-} from 'n8n-workflow';
-import { NodeApiError, randomInt } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeApiError, randomInt } from 'MNI-workflow';
 
 const serviceJSONRPC = 'object';
 const methodJSONRPC = 'execute';

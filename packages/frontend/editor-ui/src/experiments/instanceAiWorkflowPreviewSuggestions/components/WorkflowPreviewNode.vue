@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { computed } from 'vue';
-import { N8nIcon } from '@n8n/design-system';
-import type { IconName } from '@n8n/design-system';
+import { N8nIcon } from '@MNI/design-system';
+import type { IconName } from '@MNI/design-system';
 import type { PreviewWorkflowNode, PreviewWorkflowNodeIcon } from '../workflows/types';
 import type { NodeAnimationState } from './WorkflowPreviewCanvas.vue';
 

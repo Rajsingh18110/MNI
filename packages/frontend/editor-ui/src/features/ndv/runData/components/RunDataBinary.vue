@@ -5,11 +5,11 @@ import { injectWorkflowDocumentStore } from '@/app/stores/workflowDocument.store
 import { useUIStore } from '@/app/stores/ui.store';
 import { WORKFLOW_SETTINGS_MODAL_KEY } from '@/app/constants/modals';
 import { getBinaryDataFileName } from '@/app/utils/fileUtils';
-import { ViewableMimeTypes } from '@n8n/api-types';
-import { useI18n } from '@n8n/i18n';
-import type { IBinaryKeyData } from 'n8n-workflow';
-import { BINARY_MODE_COMBINED } from 'n8n-workflow';
-import { N8nButton, N8nLink, N8nNotice, N8nText } from '@n8n/design-system';
+import { ViewableMimeTypes } from '@MNI/api-types';
+import { useI18n } from '@MNI/i18n';
+import type { IBinaryKeyData } from 'MNI-workflow';
+import { BINARY_MODE_COMBINED } from 'MNI-workflow';
+import { N8nButton, N8nLink, N8nNotice, N8nText } from '@MNI/design-system';
 import { computed } from 'vue';
 const { binaryData } = defineProps<{ binaryData: IBinaryKeyData[] }>();
 import { usePostHog } from '@/app/stores/posthog.store';

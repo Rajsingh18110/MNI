@@ -1,13 +1,13 @@
-import { Service } from '@n8n/di';
-import type { IDeferredPromise } from '@n8n/utils/promise/deferred-promise';
+import { Service } from '@MNI/di';
+import type { IDeferredPromise } from '@MNI/utils/promise/deferred-promise';
 import type {
 	IExecuteResponsePromiseData,
 	INodeExecutionData,
 	IRun,
 	IWorkflowBase,
 	WorkflowExecuteMode,
-} from 'n8n-workflow';
-import { UserError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { UserError } from 'MNI-workflow';
 
 import { EngineV2Dispatcher } from '@/services/engine-v2-dispatcher.service';
 import { EngineV2PayloadGuard } from '@/services/engine-v2-payload-guard.service';

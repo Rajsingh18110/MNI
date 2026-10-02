@@ -1,4 +1,4 @@
-import type { ILoadOptionsFunctions, INodeListSearchResult, INodeProperties } from 'n8n-workflow';
+import type { ILoadOptionsFunctions, INodeListSearchResult, INodeProperties } from 'MNI-workflow';
 
 import { searchDriveItems } from '../helpers/graphSearch';
 import { resolveSiteId } from '../site';

@@ -1,6 +1,6 @@
-import { OnLifecycleEvent } from '@n8n/decorators';
-import type { WorkflowExecuteBeforeContext } from '@n8n/decorators';
-import { Service } from '@n8n/di';
+import { OnLifecycleEvent } from '@MNI/decorators';
+import type { WorkflowExecuteBeforeContext } from '@MNI/decorators';
+import { Service } from '@MNI/di';
 
 import { PolicyEnforcementService } from '@/policy/policy-enforcement.service';
 import { OwnershipService } from '@/services/ownership.service';

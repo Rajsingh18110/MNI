@@ -5,15 +5,15 @@ import type {
 	BreakingChangeRecommendation,
 	BreakingChangeWorkflowRuleResult,
 	WorkflowMigrationResult,
-} from '@n8n/api-types';
-import { N8nButton, N8nCallout, N8nHeading, N8nLink, N8nText } from '@n8n/design-system';
-import * as breakingChangesApi from '@n8n/rest-api-client/api/breaking-changes';
-import { ResponseError } from '@n8n/rest-api-client';
-import { useI18n } from '@n8n/i18n';
-import { useRootStore } from '@n8n/stores/useRootStore';
+} from '@MNI/api-types';
+import { N8nButton, N8nCallout, N8nHeading, N8nLink, N8nText } from '@MNI/design-system';
+import * as breakingChangesApi from '@MNI/rest-api-client/api/breaking-changes';
+import { ResponseError } from '@MNI/rest-api-client';
+import { useI18n } from '@MNI/i18n';
+import { useRootStore } from '@MNI/stores/useRootStore';
 import { useWorkflowsStore } from '@/app/stores/workflows.store';
-import { useToast } from '@n8n/composables/useToast';
-import type { EventBus } from '@n8n/utils/event-bus';
+import { useToast } from '@MNI/composables/useToast';
+import type { EventBus } from '@MNI/utils/event-bus';
 import { computed, ref } from 'vue';
 
 type AffectedWorkflow = BreakingChangeWorkflowRuleResult['affectedWorkflows'][number];

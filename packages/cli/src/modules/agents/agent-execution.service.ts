@@ -4,14 +4,14 @@ import type {
 	AgentSessionPreviewAccess,
 	AgentSessionQueryFilters,
 	AgentSessionStatus,
-} from '@n8n/api-types';
-import { Logger } from '@n8n/backend-common';
-import type { StorageLocation } from '@n8n/blob-storage';
-import { TransactionRunner, type OperationContext } from '@n8n/db';
-import { Service } from '@n8n/di';
+} from '@MNI/api-types';
+import { Logger } from '@MNI/backend-common';
+import type { StorageLocation } from '@MNI/blob-storage';
+import { TransactionRunner, type OperationContext } from '@MNI/db';
+import { Service } from '@MNI/di';
 import chunk from 'lodash/chunk';
-import { ErrorReporter, StorageConfig } from 'n8n-core';
-import { OperationalError, UnexpectedError } from 'n8n-workflow';
+import { ErrorReporter, StorageConfig } from 'MNI-core';
+import { OperationalError, UnexpectedError } from 'MNI-workflow';
 
 import { ConflictError } from '@/errors/response-errors/conflict.error';
 import type { AgentRunTelemetryType, IAgentConfigurationTelemetryProperties } from '@/interfaces';
@@ -42,13 +42,13 @@ import {
 	AgentExecutionLogStore,
 	type AgentExecutionLogRef,
 } from './execution-log/agent-execution-log-store';
-import { N8nMemory } from './integrations/n8n-memory';
-import { N8NCheckpointStorage } from './integrations/n8n-checkpoint-storage';
+import { N8nMemory } from './integrations/MNI-memory';
+import { N8NCheckpointStorage } from './integrations/MNI-checkpoint-storage';
 import { draftChatMemoryResourceId } from './utils/agent-memory-scope';
 import {
 	canContinueThreadInPreview,
 	canUseTopLevelDraftThread,
-	N8N_CHAT_PRODUCTION_SOURCE,
+	MNI_CHAT_PRODUCTION_SOURCE,
 	threadBelongsTo,
 	type AgentSessionMode,
 } from './utils/agent-thread-access';
@@ -870,7 +870,7 @@ export class AgentExecutionService {
 		)
 			return false;
 		const sources = await this.agentExecutionRepository.findFirstSourceByThreadIds([threadId]);
-		return sources.get(threadId) === N8N_CHAT_PRODUCTION_SOURCE;
+		return sources.get(threadId) === MNI_CHAT_PRODUCTION_SOURCE;
 	}
 
 	private async canUseUnrecordedDraftThread(

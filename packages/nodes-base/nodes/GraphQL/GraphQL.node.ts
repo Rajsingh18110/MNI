@@ -1,4 +1,4 @@
-/* eslint-disable n8n-nodes-base/node-filename-against-convention */
+/* eslint-disable MNI-nodes-base/node-filename-against-convention */
 import type {
 	IExecuteFunctions,
 	IDataObject,
@@ -9,14 +9,14 @@ import type {
 	IRequestOptionsSimplified,
 	IRequestOptions,
 	IHttpRequestMethods,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import {
 	ExecutionBaseError,
 	NodeApiError,
 	NodeConnectionTypes,
 	NodeOperationError,
 	jsonParse,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { getAllowedDomains, getOAuth2AdditionalParameters } from '../HttpRequest/GenericFunctions';
 
@@ -24,7 +24,7 @@ export class GraphQL implements INodeType {
 	description: INodeTypeDescription = {
 		displayName: 'GraphQL',
 		name: 'graphql',
-		// eslint-disable-next-line n8n-nodes-base/node-class-description-icon-not-svg
+		// eslint-disable-next-line MNI-nodes-base/node-class-description-icon-not-svg
 		icon: 'file:graphql.png',
 		group: ['input'],
 		version: [1, 1.1],
@@ -106,7 +106,7 @@ export class GraphQL implements INodeType {
 				name: 'authentication',
 				type: 'options',
 				noDataExpression: true,
-				// eslint-disable-next-line n8n-nodes-base/node-param-options-type-unsorted-items
+				// eslint-disable-next-line MNI-nodes-base/node-param-options-type-unsorted-items
 				options: [
 					{
 						name: 'Predefined Credential Type',
@@ -195,7 +195,7 @@ export class GraphQL implements INodeType {
 				name: 'allowUnauthorizedCerts',
 				type: 'boolean',
 				default: false,
-				// eslint-disable-next-line n8n-nodes-base/node-param-description-wrong-for-ignore-ssl-issues
+				// eslint-disable-next-line MNI-nodes-base/node-param-description-wrong-for-ignore-ssl-issues
 				description:
 					'Whether to download the response even if SSL certificate validation is not possible',
 			},

@@ -4,7 +4,7 @@ import type {
 	IHookFunctions,
 	INode,
 	IWebhookFunctions,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import { mock, mockDeep } from 'vitest-mock-extended';
 
 import { testWebhookTriggerNode } from '@test/nodes/TriggerHelpers';
@@ -112,7 +112,7 @@ describe('JiraTrigger', () => {
 						events: ['jira:issue_created'],
 						excludeBody: false,
 						filters: {},
-						name: 'n8n-webhook:https://n8n.local/webhook/id',
+						name: 'MNI-webhook:https://n8n.local/webhook/id',
 						url: 'https://n8n.local/webhook/id',
 					}),
 				}),
@@ -179,7 +179,7 @@ describe('JiraTrigger', () => {
 						events: ['jira:issue_created'],
 						excludeBody: false,
 						filters: {},
-						name: 'n8n-webhook:https://n8n.local/webhook/id',
+						name: 'MNI-webhook:https://n8n.local/webhook/id',
 						url: 'https://n8n.local/webhook/id',
 					}),
 				}),
@@ -793,7 +793,7 @@ describe('JiraTrigger', () => {
 						events: ['jira:issue_created'],
 						excludeBody: false,
 						filters: {},
-						name: 'n8n-webhook:https://n8n.local/webhook/id',
+						name: 'MNI-webhook:https://n8n.local/webhook/id',
 						url: 'https://n8n.local/webhook/id',
 					}),
 				}),

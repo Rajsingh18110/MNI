@@ -1,4 +1,4 @@
-import type { FavoriteResourceType } from '@n8n/api-types';
+import type { FavoriteResourceType } from '@MNI/api-types';
 import {
 	FolderRepository,
 	ProjectRepository,
@@ -6,10 +6,10 @@ import {
 	WorkflowRepository,
 	type Project,
 	type User,
-} from '@n8n/db';
-import { Service } from '@n8n/di';
-import { hasGlobalScope } from '@n8n/permissions';
-import { In } from '@n8n/typeorm';
+} from '@MNI/db';
+import { Service } from '@MNI/di';
+import { hasGlobalScope } from '@MNI/permissions';
+import { In } from '@MNI/typeorm';
 
 import { BadRequestError } from '@/errors/response-errors/bad-request.error';
 import { NotFoundError } from '@/errors/response-errors/not-found.error';

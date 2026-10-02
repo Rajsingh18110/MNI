@@ -6,9 +6,9 @@ import type {
 	AnnotationVote,
 	ExecutionStatus,
 	WorkflowExecuteMode,
-} from 'n8n-workflow';
-import type { ExecutionRedactionQueryDto, SerializedCursor } from '@n8n/api-types';
-import { compareExecutionListItems } from '@n8n/api-types';
+} from 'MNI-workflow';
+import type { ExecutionRedactionQueryDto, SerializedCursor } from '@MNI/api-types';
+import { compareExecutionListItems } from '@MNI/api-types';
 import type {
 	ExecutionFilterType,
 	ExecutionsQueryFilter,
@@ -19,15 +19,15 @@ import type {
 	IExecutionsListResponse,
 	IExecutionsStopData,
 } from './executions.types';
-import { useRootStore } from '@n8n/stores/useRootStore';
-import { makeRestApiRequest } from '@n8n/rest-api-client';
+import { useRootStore } from '@MNI/stores/useRootStore';
+import { makeRestApiRequest } from '@MNI/rest-api-client';
 import {
 	unflattenExecutionData,
 	executionFilterToQueryFilter,
 	getDefaultExecutionFilters,
 } from './executions.utils';
 import { useProjectsStore } from '@/features/collaboration/projects/projects.store';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 
 export const useExecutionsStore = defineStore('executions', () => {
 	const rootStore = useRootStore();

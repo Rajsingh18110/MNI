@@ -3,7 +3,7 @@ import type {
 	ITemplatesCollection,
 	ITemplatesCollectionFull,
 	ITemplatesWorkflow,
-} from '@n8n/rest-api-client/api/templates';
+} from '@MNI/rest-api-client/api/templates';
 
 export function isTemplatesWorkflow(
 	template: ITemplatesWorkflow | ITemplatesCollection | ITemplatesCollectionFull | null,

@@ -34,8 +34,8 @@ import {
 	type ViewUpdate,
 } from '@codemirror/view';
 import { indentationMarkers } from '@replit/codemirror-indentation-markers';
-import { html } from '@n8n/codemirror-lang-html';
-import { jsonParse, type CodeExecutionMode, type IDataObject } from 'n8n-workflow';
+import { html } from '@MNI/codemirror-lang-html';
+import { jsonParse, type CodeExecutionMode, type IDataObject } from 'MNI-workflow';
 import { v4 as uuid } from 'uuid';
 import {
 	computed,

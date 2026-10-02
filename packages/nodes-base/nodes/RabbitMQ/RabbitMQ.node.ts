@@ -1,4 +1,4 @@
-/* eslint-disable n8n-nodes-base/node-filename-against-convention */
+/* eslint-disable MNI-nodes-base/node-filename-against-convention */
 import type * as amqplib from 'amqplib';
 import type {
 	IExecuteFunctions,
@@ -10,8 +10,8 @@ import type {
 	INodeType,
 	INodeTypeDescription,
 	JsonObject,
-} from 'n8n-workflow';
-import { NodeApiError, NodeConnectionTypes, NodeOperationError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeApiError, NodeConnectionTypes, NodeOperationError } from 'MNI-workflow';
 
 import {
 	parsePublishArguments,
@@ -370,7 +370,7 @@ export class RabbitMQ implements INodeType {
 			): Promise<INodeCredentialTestResult> {
 				try {
 					const connection = await rabbitmqConnect(credential.data as RabbitMQCredentials);
-					await connection.close();
+					await (connection as any).close();
 				} catch (error) {
 					return {
 						status: 'Error',
@@ -465,7 +465,7 @@ export class RabbitMQ implements INodeType {
 				});
 
 				await channel.close();
-				await channel.connection.close();
+				await  (channel.connection as any).close();
 			} else if (mode === 'exchange') {
 				const exchange = this.getNodeParameter('exchange', 0) as string;
 
@@ -540,7 +540,7 @@ export class RabbitMQ implements INodeType {
 				});
 
 				await channel.close();
-				await channel.connection.close();
+				await  (channel.connection as any).close();
 			} else {
 				throw new NodeOperationError(this.getNode(), `The operation "${mode}" is not known!`);
 			}
@@ -549,7 +549,7 @@ export class RabbitMQ implements INodeType {
 		} catch (error) {
 			if (channel) {
 				await channel.close();
-				await channel.connection.close();
+				await  (channel.connection as any).close();
 			}
 			throw error;
 		}

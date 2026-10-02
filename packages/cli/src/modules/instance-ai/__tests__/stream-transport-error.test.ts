@@ -1,4 +1,4 @@
-import { ModelStreamStallError } from '@n8n/agents';
+import { ModelStreamStallError } from '@MNI/agents';
 
 import { QuotaExhaustedStreamError } from '../instance-ai.service';
 import { isStreamTransportError } from '../stream-transport-error';

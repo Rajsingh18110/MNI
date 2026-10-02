@@ -1,6 +1,6 @@
-import { VersionQueryDto, VersionSinceDateQueryDto } from '@n8n/api-types';
-import { AuthenticatedRequest } from '@n8n/db';
-import { Get, Query, RestController } from '@n8n/decorators';
+import { VersionQueryDto, VersionSinceDateQueryDto } from '@MNI/api-types';
+import { AuthenticatedRequest } from '@MNI/db';
+import { Get, Query, RestController } from '@MNI/decorators';
 import type { Response } from 'express';
 
 import { InstanceVersionHistoryService } from './instance-version-history.service';

@@ -9,12 +9,12 @@ import type {
 	UpsertDataTableRowDto,
 	UpdateDataTableDto,
 	UpdateDataTableRowDto,
-} from '@n8n/api-types';
-import { Logger } from '@n8n/backend-common';
-import { ProjectRelationRepository, ProjectRepository, type User } from '@n8n/db';
-import { Service } from '@n8n/di';
-import { hasGlobalScope, type Scope } from '@n8n/permissions';
-import { In, type EntityManager } from '@n8n/typeorm';
+} from '@MNI/api-types';
+import { Logger } from '@MNI/backend-common';
+import { ProjectRelationRepository, ProjectRepository, type User } from '@MNI/db';
+import { Service } from '@MNI/di';
+import { hasGlobalScope, type Scope } from '@MNI/permissions';
+import { In, type EntityManager } from '@MNI/typeorm';
 import { DateTime } from 'luxon';
 import type {
 	DataTableColumnJsType,
@@ -28,8 +28,8 @@ import type {
 	DataTableInfoById,
 	DataTableColumnType,
 	DataTableRowReturnWithState,
-} from 'n8n-workflow';
-import { DATA_TABLE_SYSTEM_COLUMN_TYPE_MAP, validateFieldType } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { DATA_TABLE_SYSTEM_COLUMN_TYPE_MAP, validateFieldType } from 'MNI-workflow';
 
 import { DataTableColumn } from './data-table-column.entity';
 import { DataTableColumnRepository } from './data-table-column.repository';

@@ -2,7 +2,7 @@
 	"nodes": [
 		{
 			"parameters": {},
-			"type": "n8n-nodes-base.manualTrigger",
+			"type": "MNI-nodes-base.manualTrigger",
 			"typeVersion": 1,
 			"position": [0, 0],
 			"id": "c3c3e440-8930-4c57-be62-3cf3fa801601",
@@ -21,7 +21,7 @@
 				"data": "[[\"Name\",\"Email\"],[\"Franklin\",\"frank@example.com\"]]",
 				"options": {}
 			},
-			"type": "n8n-nodes-base.microsoftExcelSharePoint",
+			"type": "MNI-nodes-base.microsoftExcelSharePoint",
 			"typeVersion": 1,
 			"position": [200, 0],
 			"id": "c3c3e440-8930-4c57-be62-3cf3fa801602",

@@ -1,6 +1,6 @@
-import type { ModuleInterface } from '@n8n/decorators';
-import { BackendModule } from '@n8n/decorators';
-import { Container } from '@n8n/di';
+import type { ModuleInterface } from '@MNI/decorators';
+import { BackendModule } from '@MNI/decorators';
+import { Container } from '@MNI/di';
 
 @BackendModule({ name: 'instance-version-history', instanceTypes: ['main'] })
 export class InstanceVersionHistoryModule implements ModuleInterface {

@@ -7,9 +7,9 @@ import {
 	N8nTooltip,
 	updatedIconSet,
 	type IconName,
-} from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
-import type { ChatIntegrationDescriptor } from '@n8n/api-types';
+} from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
+import type { ChatIntegrationDescriptor } from '@MNI/api-types';
 import { computed } from 'vue';
 import type { AgentChannelConnectAction } from '../channels/types';
 
@@ -128,7 +128,7 @@ const statusTooltip = computed(() => {
 </template>
 
 <style module lang="scss">
-@use '@n8n/design-system/css/mixins/focus';
+@use '@MNI/design-system/css/mixins/focus';
 
 .channelItem {
 	display: flex;

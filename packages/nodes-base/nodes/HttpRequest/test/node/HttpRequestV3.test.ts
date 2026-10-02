@@ -1,5 +1,5 @@
 import FormData from 'form-data';
-import { NodeHelpers } from 'n8n-workflow';
+import { NodeHelpers } from 'MNI-workflow';
 import type {
 	IExecuteFunctions,
 	INodeParameters,
@@ -7,7 +7,7 @@ import type {
 	INodeTypeBaseDescription,
 	JsonObject,
 	JsonValue,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { HttpRequestV3 } from '../../V3/HttpRequestV3.node';
 import { createErrorDetails } from '../../V3/utils/error-details';
@@ -42,7 +42,7 @@ describe('HttpRequestV3', () => {
 			getNodeParameter: vi.fn(),
 			getNode: vi.fn(() => {
 				return {
-					type: 'n8n-nodes-base.httpRequest',
+					type: 'MNI-nodes-base.httpRequest',
 					typeVersion: 3,
 				};
 			}),
@@ -208,7 +208,7 @@ describe('HttpRequestV3', () => {
 					case 'specifyBody':
 						return 'keypair';
 					case 'bodyParameters.parameters':
-						// eslint-disable-next-line n8n-nodes-base/node-param-display-name-miscased
+						// eslint-disable-next-line MNI-nodes-base/node-param-display-name-miscased
 						return [{ name: 'depth', value: '1' }];
 					case 'options':
 						return options;
@@ -314,7 +314,7 @@ describe('HttpRequestV3', () => {
 
 	it('should pass multipart binary uploads as FormData', async () => {
 		(executeFunctions.getNode as Mock).mockReturnValue({
-			type: 'n8n-nodes-base.httpRequest',
+			type: 'MNI-nodes-base.httpRequest',
 			typeVersion: 4.4,
 		});
 		(executeFunctions.getInputData as Mock).mockReturnValue([{ json: {} }]);
@@ -336,7 +336,7 @@ describe('HttpRequestV3', () => {
 					return [
 						{
 							parameterType: 'formBinaryData',
-							// eslint-disable-next-line n8n-nodes-base/node-param-display-name-miscased
+							// eslint-disable-next-line MNI-nodes-base/node-param-display-name-miscased
 							name: 'file',
 							value: '',
 							inputDataFieldName: 'data0',
@@ -370,7 +370,7 @@ describe('HttpRequestV3', () => {
 
 	it('should include a fallback filename for multipart binary uploads without fileName', async () => {
 		(executeFunctions.getNode as Mock).mockReturnValue({
-			type: 'n8n-nodes-base.httpRequest',
+			type: 'MNI-nodes-base.httpRequest',
 			typeVersion: 4.4,
 		});
 		(executeFunctions.getInputData as Mock).mockReturnValue([{ json: {} }]);
@@ -392,7 +392,7 @@ describe('HttpRequestV3', () => {
 					return [
 						{
 							parameterType: 'formBinaryData',
-							// eslint-disable-next-line n8n-nodes-base/node-param-display-name-miscased
+							// eslint-disable-next-line MNI-nodes-base/node-param-display-name-miscased
 							name: 'file',
 							value: '',
 							inputDataFieldName: 'data0',
@@ -1199,7 +1199,7 @@ describe('HttpRequestV3', () => {
 									parameters: [
 										{
 											type: 'qs',
-											// eslint-disable-next-line n8n-nodes-base/node-param-display-name-miscased
+											// eslint-disable-next-line MNI-nodes-base/node-param-display-name-miscased
 											name: 'page',
 											value: '1',
 										},
@@ -1292,7 +1292,7 @@ describe('HttpRequestV3', () => {
 									parameters: [
 										{
 											type: '__proto__' as unknown as 'qs',
-											// eslint-disable-next-line n8n-nodes-base/node-param-display-name-miscased
+											// eslint-disable-next-line MNI-nodes-base/node-param-display-name-miscased
 											name: 'page',
 											value: '1',
 										},

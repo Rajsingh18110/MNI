@@ -2,24 +2,24 @@ import type {
 	AgentSessionOrigin,
 	AgentSessionQueryFilters,
 	AgentSessionStatus,
-} from '@n8n/api-types';
+} from '@MNI/api-types';
 import {
 	Agent as RuntimeAgent,
 	Tool,
 	type SerializableAgentState,
 	type StreamChunk,
-} from '@n8n/agents';
-import { createTeamProject, mockLogger, testDb, testModules } from '@n8n/backend-test-utils';
-import { AgentsConfig, AiConfig } from '@n8n/config';
-import type { OperationContext, User } from '@n8n/db';
-import { Container } from '@n8n/di';
-import { DataSource, EntityManager } from '@n8n/typeorm';
-import { generateNanoId } from '@n8n/utils/generate-nano-id';
-import { createDeferredPromise } from '@n8n/utils/promise/deferred-promise';
+} from '@MNI/agents';
+import { createTeamProject, mockLogger, testDb, testModules } from '@MNI/backend-test-utils';
+import { AgentsConfig, AiConfig } from '@MNI/config';
+import type { OperationContext, User } from '@MNI/db';
+import { Container } from '@MNI/di';
+import { DataSource, EntityManager } from '@MNI/typeorm';
+import { generateNanoId } from '@MNI/utils/generate-nano-id';
+import { createDeferredPromise } from '@MNI/utils/promise/deferred-promise';
 import { convertArrayToReadableStream, MockLanguageModelV3 } from 'ai/test';
 import chunk from 'lodash/chunk';
-import type { ErrorReporter, StorageConfig } from 'n8n-core';
-import { jsonParse } from 'n8n-workflow';
+import type { ErrorReporter, StorageConfig } from 'MNI-core';
+import { jsonParse } from 'MNI-workflow';
 import { createRequire } from 'node:module';
 import { v4 as uuid } from 'uuid';
 import { mock } from 'vitest-mock-extended';
@@ -59,8 +59,8 @@ import type { AgentBackgroundJobService } from '@/modules/agents/background/agen
 import type { AgentWakeService } from '@/modules/agents/background/agent-wake.service';
 import { ExecutionRecorder, type TimelineEvent } from '@/modules/agents/execution-recorder';
 import type { AgentExecutionLogStore } from '@/modules/agents/execution-log/agent-execution-log-store';
-import { N8NCheckpointStorage } from '@/modules/agents/integrations/n8n-checkpoint-storage';
-import { N8nMemory } from '@/modules/agents/integrations/n8n-memory';
+import { N8NCheckpointStorage } from '@/modules/agents/integrations/MNI-checkpoint-storage';
+import { N8nMemory } from '@/modules/agents/integrations/MNI-memory';
 import { AgentCheckpointRepository } from '@/modules/agents/repositories/agent-checkpoint.repository';
 import { AgentChatAttachment } from '@/modules/agents/entities/agent-chat-attachment.entity';
 import type { AgentExecutionThread } from '@/modules/agents/entities/agent-execution-thread.entity';
@@ -75,8 +75,8 @@ import { createMember, createAdmin } from '../../shared/db/users';
 
 // Share the transaction class loaded by the built BaseRepository.
 const { TypeOrmTransaction, TypeOrmTransactionRunner } = createRequire(__filename)(
-	'@n8n/db/dist/services/typeorm-transaction',
-) as typeof import('@n8n/db/dist/services/typeorm-transaction');
+	'@MNI/db/dist/services/typeorm-transaction',
+) as typeof import('@MNI/db/dist/services/typeorm-transaction');
 
 describe('AgentExecutionRepository', () => {
 	const viewerId = uuid();
@@ -419,7 +419,7 @@ describe('AgentExecutionRepository', () => {
 										hostMetadata: encodeAgentSandboxHostMetadata({
 											projectId,
 											principalHash: hashAgentSandboxPrincipal({
-												type: 'n8n-user',
+												type: 'MNI-user',
 												userId: user.id,
 											}),
 										}),

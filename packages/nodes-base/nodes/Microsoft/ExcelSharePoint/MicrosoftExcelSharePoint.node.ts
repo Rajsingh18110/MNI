@@ -3,8 +3,8 @@ import type {
 	INodeExecutionData,
 	INodeType,
 	INodeTypeDescription,
-} from 'n8n-workflow';
-import { NodeConnectionTypes, NodeOperationError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeConnectionTypes, NodeOperationError } from 'MNI-workflow';
 
 import * as appendTable from './actions/table/append.operation';
 import * as convertTableToRange from './actions/table/convertToRange.operation';
@@ -122,10 +122,10 @@ export class MicrosoftExcelSharePoint implements INodeType {
 						action: 'Append rows to sheet',
 					},
 					{
-						// eslint-disable-next-line n8n-nodes-base/node-param-option-name-wrong-for-upsert
+						// eslint-disable-next-line MNI-nodes-base/node-param-option-name-wrong-for-upsert
 						name: 'Append or Update',
 						value: 'upsert',
-						// eslint-disable-next-line n8n-nodes-base/node-param-description-wrong-for-upsert
+						// eslint-disable-next-line MNI-nodes-base/node-param-description-wrong-for-upsert
 						description: 'Append a new row or update the current one if it already exists (upsert)',
 						action: 'Append or update rows in sheet',
 					},

@@ -1,7 +1,7 @@
 ---
 name: MNI:telemetry
 description: >-
-  Guides adding, changing, and reviewing telemetry through the `@n8n/telemetry`
+  Guides adding, changing, and reviewing telemetry through the `@MNI/telemetry`
   event registry. Use when working on telemetry, analytics, tracking, product
   events, `track()` calls, or RudderStack/PostHog product events, in frontend
   or backend code — and whenever you need to find which registered telemetry
@@ -12,13 +12,13 @@ description: >-
 
 ## The registry
 
-Events migrated to the registry live in `packages/@n8n/telemetry` as one entry per event — its exact emitted name, a description, and a zod schema typing its properties — organized per product domain in `src/events/` and composed into `TELEMETRY_EVENT.<DOMAIN>.<EVENT>`. The package defines registered events and never depends on transport SDKs.
+Events migrated to the registry live in `packages/@MNI/telemetry` as one entry per event — its exact emitted name, a description, and a zod schema typing its properties — organized per product domain in `src/events/` and composed into `TELEMETRY_EVENT.<DOMAIN>.<EVENT>`. The package defines registered events and never depends on transport SDKs.
 
 **To find which events are registered, what they mean, or what properties they carry, run the catalog first:**
 
 ```bash
-pnpm --filter @n8n/telemetry catalog          # human-readable, grouped by domain
-pnpm --filter @n8n/telemetry catalog --json   # structured, for programmatic use
+pnpm --filter @MNI/telemetry catalog          # human-readable, grouped by domain
+pnpm --filter @MNI/telemetry catalog --json   # structured, for programmatic use
 ```
 
 The registry is being adopted incrementally. Events not yet registered do not appear in the catalog, so search `track()` call sites when the catalog has no match.
@@ -26,7 +26,7 @@ The registry is being adopted incrementally. Events not yet registered do not ap
 Pass the entry itself to `track()` — it resolves the emitted name internally:
 
 ```ts
-import { TELEMETRY_EVENT } from '@n8n/telemetry';
+import { TELEMETRY_EVENT } from '@MNI/telemetry';
 
 telemetry.track(TELEMETRY_EVENT.PLATFORM.USER_IS_PART_OF_EXPERIMENT, {
 	name: experimentName,
@@ -39,11 +39,11 @@ Both `track()` implementations accept registry entries and plain strings. Plain 
 - Frontend: `packages/frontend/editor-ui/src/app/plugins/telemetry/index.ts`
 - Backend: `packages/cli/src/telemetry/index.ts`
 
-Entries get property autocomplete and compile-time checks — typo'd, missing, or wrongly typed properties fail typecheck. When the telemetry transport is initialized, `track()` additionally validates registered-event payloads via `getEventValidationError` (shared from `@n8n/telemetry`) and logs a warning on mismatch, including unrecognized properties that slipped past structural typing. A validation warning does not stop the event from being emitted.
+Entries get property autocomplete and compile-time checks — typo'd, missing, or wrongly typed properties fail typecheck. When the telemetry transport is initialized, `track()` additionally validates registered-event payloads via `getEventValidationError` (shared from `@MNI/telemetry`) and logs a warning on mismatch, including unrecognized properties that slipped past structural typing. A validation warning does not stop the event from being emitted.
 
 ## Adding an event
 
-1. **Check the catalog first** (`pnpm --filter @n8n/telemetry catalog`). If an existing event covers the same user action from another surface, augment it with a property instead of adding a near-duplicate event.
+1. **Check the catalog first** (`pnpm --filter @MNI/telemetry catalog`). If an existing event covers the same user action from another surface, augment it with a property instead of adding a near-duplicate event.
 2. **Pick the domain by the event's subject** — what the event is about, never the surface that triggered it. `User opened Credential modal` is CREDENTIALS whether opened from the NDV, template setup, or chat. The trigger context goes into a `source` property.
 3. **Name it with the house grammar:** sentence case, actor first, past-tense verb, specific object (`User pinned node data`). No template interpolation in names — variability goes into properties. The name must snake_case cleanly into a BigQuery table name: no punctuation beyond spaces, no casing that collides after snake_casing.
 4. **Write the entry `description`** stating what the event means and when it fires — a registry test rejects blank descriptions. Document individual properties with `.describe()` where the key alone is not obvious.

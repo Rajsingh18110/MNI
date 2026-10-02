@@ -1,7 +1,7 @@
-import { createTeamProject, linkUserToProject, testDb } from '@n8n/backend-test-utils';
-import { LICENSE_FEATURES } from '@n8n/constants';
-import type { Project, User } from '@n8n/db';
-import { Container } from '@n8n/di';
+import { createTeamProject, linkUserToProject, testDb } from '@MNI/backend-test-utils';
+import { LICENSE_FEATURES } from '@MNI/constants';
+import type { Project, User } from '@MNI/db';
+import { Container } from '@MNI/di';
 
 import { EventService } from '@/events/event.service';
 import { TypeAvailabilityPolicyRepository } from '@/modules/type-availability-policies/database/repositories/type-availability-policy.repository';

@@ -1,10 +1,10 @@
 <script lang="ts" setup>
 import { computed, ref } from 'vue';
-import { useI18n } from '@n8n/i18n';
-import type { BaseTextKey } from '@n8n/i18n';
-import { N8nBadge, N8nTooltip } from '@n8n/design-system';
-import { N8nDropdownMenu } from '@n8n/design-system';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
+import { useI18n } from '@MNI/i18n';
+import type { BaseTextKey } from '@MNI/i18n';
+import { N8nBadge, N8nTooltip } from '@MNI/design-system';
+import { N8nDropdownMenu } from '@MNI/design-system';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
 import { useDependencies } from '@/app/composables/useDependencies';
 import { useDependencyMenu } from '@/app/composables/useDependencyMenu';
 

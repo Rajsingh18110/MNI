@@ -5,7 +5,7 @@ import type {
 	INodeProperties,
 	INodeTypeDescription,
 	Themed,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import {
 	getMcpRegistryCredentialTypeName,

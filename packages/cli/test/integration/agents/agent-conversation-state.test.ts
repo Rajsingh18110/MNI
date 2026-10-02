@@ -1,16 +1,16 @@
-import type { SerializableAgentState } from '@n8n/agents';
-import { Logger } from '@n8n/backend-common';
-import { createTeamProject, testDb, testModules } from '@n8n/backend-test-utils';
-import { AgentsConfig } from '@n8n/config';
-import { Container } from '@n8n/di';
-import { TransactionRunner } from '@n8n/db';
+import type { SerializableAgentState } from '@MNI/agents';
+import { Logger } from '@MNI/backend-common';
+import { createTeamProject, testDb, testModules } from '@MNI/backend-test-utils';
+import { AgentsConfig } from '@MNI/config';
+import { Container } from '@MNI/di';
+import { TransactionRunner } from '@MNI/db';
 import { AgentMessageQueueRepository } from '@/modules/agents/repositories/agent-message-queue.repository';
-import { DataSource } from '@n8n/typeorm';
+import { DataSource } from '@MNI/typeorm';
 import { randomUUID } from 'node:crypto';
 
 import { AgentConversationStateService } from '@/modules/agents/agent-conversation-state.service';
 import type { Agent } from '@/modules/agents/entities/agent.entity';
-import { N8NCheckpointStorage } from '@/modules/agents/integrations/n8n-checkpoint-storage';
+import { N8NCheckpointStorage } from '@/modules/agents/integrations/MNI-checkpoint-storage';
 import { AgentCheckpointRepository } from '@/modules/agents/repositories/agent-checkpoint.repository';
 import { AgentExecutionThreadRepository } from '@/modules/agents/repositories/agent-execution-thread.repository';
 import { AgentExecutionRepository } from '@/modules/agents/repositories/agent-execution.repository';

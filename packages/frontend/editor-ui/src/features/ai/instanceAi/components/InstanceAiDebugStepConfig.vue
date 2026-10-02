@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import type { ReadableStepConfig } from '@n8n/api-types';
-import { useI18n } from '@n8n/i18n';
+import type { ReadableStepConfig } from '@MNI/api-types';
+import { useI18n } from '@MNI/i18n';
 import { computed } from 'vue';
 import InstanceAiDebugJsonPanel from './InstanceAiDebugJsonPanel.vue';
 

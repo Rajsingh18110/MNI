@@ -3,13 +3,12 @@ import {
 	N8nButton,
 	N8nHeading,
 	N8nIcon,
-	N8nPreviewBadge,
 	N8nSettingsRow,
 	N8nSettingsRowConfigure,
 	N8nSettingsRowGroup,
 	N8nText,
-} from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+} from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 
 defineProps<{
 	incomplete: boolean;
@@ -40,7 +39,6 @@ const i18n = useI18n();
 			<N8nHeading tag="h1" size="2xlarge" bold :class="$style.title">
 				{{ i18n.baseText('instanceAi.onboarding.title') }}
 			</N8nHeading>
-			<N8nPreviewBadge v-if="!incomplete" :class="$style.preview" size="medium" />
 
 			<N8nText v-if="incomplete" tag="p" color="text-base" size="large" :class="$style.lede">
 				{{ i18n.baseText('instanceAi.onboarding.incomplete.lede') }}
@@ -135,7 +133,7 @@ const i18n = useI18n();
 </template>
 
 <style lang="scss" module>
-@use '@n8n/design-system/css/mixins/motion.scss' as motion;
+@use '@MNI/design-system/css/mixins/motion.scss' as motion;
 
 .page {
 	flex: 1;

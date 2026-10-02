@@ -2,8 +2,8 @@ import { NodeTestHarness } from '@nodes-testing/node-test-harness';
 import { generateKeyPairSync } from 'crypto';
 import { mockDeep } from 'vitest-mock-extended';
 import jwt from 'jsonwebtoken';
-import type { IExecuteFunctions } from 'n8n-workflow';
-import { NodeOperationError } from 'n8n-workflow';
+import type { IExecuteFunctions } from 'MNI-workflow';
+import { NodeOperationError } from 'MNI-workflow';
 
 import { Jwt } from '../Jwt.node';
 
@@ -36,7 +36,7 @@ describe('JWT Node - custom header claims', () => {
 		ctx.getNode.mockReturnValue({
 			id: 'jwt-node',
 			name: 'JWT',
-			type: 'n8n-nodes-base.jwt',
+			type: 'MNI-nodes-base.jwt',
 			typeVersion: 1,
 			position: [0, 0],
 			parameters: {},

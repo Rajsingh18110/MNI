@@ -10,12 +10,12 @@ const SCHEDULE_INTERVAL_SECONDS = 2;
 test.use({
 	capability: {
 		env: {
-			N8N_SCHEDULER_ENABLED: 'true',
-			N8N_USE_WORKFLOW_PUBLICATION_SERVICE: 'true',
-			N8N_SCHEDULER_MATERIALIZATION_INTERVAL: '1',
-			N8N_SCHEDULER_MATERIALIZATION_WINDOW: '2',
-			N8N_SCHEDULER_EXECUTOR_INTERVAL: '1',
-			N8N_SCHEDULER_MISFIRE_GRACE: '3',
+			MNI_SCHEDULER_ENABLED: 'true',
+			MNI_USE_WORKFLOW_PUBLICATION_SERVICE: 'true',
+			MNI_SCHEDULER_MATERIALIZATION_INTERVAL: '1',
+			MNI_SCHEDULER_MATERIALIZATION_WINDOW: '2',
+			MNI_SCHEDULER_EXECUTOR_INTERVAL: '1',
+			MNI_SCHEDULER_MISFIRE_GRACE: '3',
 		},
 	},
 });
@@ -34,7 +34,7 @@ test.describe(
 
 			const createdWorkflow = await api.workflows.getWorkflow(workflowId);
 			const triggerNode = createdWorkflow.nodes.find(
-				(node) => node.type === 'n8n-nodes-base.scheduleTrigger',
+				(node) => node.type === 'MNI-nodes-base.scheduleTrigger',
 			);
 			expect(
 				triggerNode,

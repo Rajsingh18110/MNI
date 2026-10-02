@@ -1,13 +1,13 @@
-import { ScheduledJobOwnerType } from '@n8n/constants';
-import type { ScheduledJob, ScheduledJobRepository } from '@n8n/db';
+import { ScheduledJobOwnerType } from '@MNI/constants';
+import type { ScheduledJob, ScheduledJobRepository } from '@MNI/db';
 import { inc } from 'semver';
 import { mock } from 'vitest-mock-extended';
 
-import { N8N_VERSION } from '@/constants';
+import { MNI_VERSION } from '@/constants';
 
 import { SystemTaskScheduledJobOwner } from '../system-task-scheduled-job-owner';
 
-const NEWER_VERSION = inc(N8N_VERSION, 'minor') as string;
+const NEWER_VERSION = inc(MNI_VERSION, 'minor') as string;
 const OLDER_VERSION = '0.0.1';
 
 const row = (
@@ -62,7 +62,7 @@ describe('SystemTaskScheduledJobOwner', () => {
 			);
 		});
 
-		it.each([N8N_VERSION, OLDER_VERSION])(
+		it.each([MNI_VERSION, OLDER_VERSION])(
 			'reports a task stamped by version %s, not newer than this one, as gone',
 			async (n8nVersion) => {
 				jobs.findPayloadsByOwnerIds.mockResolvedValue([row('prune-executions', { n8nVersion })]);

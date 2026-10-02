@@ -2,9 +2,9 @@
 import { describe, it, expect } from 'vitest';
 import { mount } from '@vue/test-utils';
 import { vi } from 'vitest';
-import type { AgentVersionListItemDto } from '@n8n/api-types';
+import type { AgentVersionListItemDto } from '@MNI/api-types';
 
-vi.mock('@n8n/i18n', () => ({
+vi.mock('@MNI/i18n', () => ({
 	useI18n: () => ({
 		baseText: (k: string, opts?: { interpolate?: Record<string, string> }) => {
 			if (!opts?.interpolate) return k;
@@ -13,7 +13,7 @@ vi.mock('@n8n/i18n', () => ({
 	}),
 }));
 
-vi.mock('@n8n/design-system', () => ({
+vi.mock('@MNI/design-system', () => ({
 	N8nActionToggle: {
 		name: 'N8nActionToggle',
 		template:

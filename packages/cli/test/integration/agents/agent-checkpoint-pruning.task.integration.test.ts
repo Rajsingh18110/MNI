@@ -1,18 +1,18 @@
-import type { SerializableAgentState } from '@n8n/agents';
-import type { Logger } from '@n8n/backend-common';
-import { createTeamProject, testDb, testModules } from '@n8n/backend-test-utils';
-import { AgentsConfig } from '@n8n/config';
-import { Time } from '@n8n/constants';
-import { TransactionRunner, DbConnectionOptions } from '@n8n/db';
-import { Container } from '@n8n/di';
-import type { QueryRunner } from '@n8n/typeorm';
-import { DataSource, IsNull, Not } from '@n8n/typeorm';
+import type { SerializableAgentState } from '@MNI/agents';
+import type { Logger } from '@MNI/backend-common';
+import { createTeamProject, testDb, testModules } from '@MNI/backend-test-utils';
+import { AgentsConfig } from '@MNI/config';
+import { Time } from '@MNI/constants';
+import { TransactionRunner, DbConnectionOptions } from '@MNI/db';
+import { Container } from '@MNI/di';
+import type { QueryRunner } from '@MNI/typeorm';
+import { DataSource, IsNull, Not } from '@MNI/typeorm';
 import { v4 as uuid } from 'uuid';
 import { mock } from 'vitest-mock-extended';
 
 import { AgentCheckpointPruningTask } from '@/modules/agents/agent-checkpoint-pruning.task';
 import type { Agent } from '@/modules/agents/entities/agent.entity';
-import { N8NCheckpointStorage } from '@/modules/agents/integrations/n8n-checkpoint-storage';
+import { N8NCheckpointStorage } from '@/modules/agents/integrations/MNI-checkpoint-storage';
 import { AgentCheckpointRepository } from '@/modules/agents/repositories/agent-checkpoint.repository';
 import { AgentRepository } from '@/modules/agents/repositories/agent.repository';
 import { AgentMessageQueueRepository } from '@/modules/agents/repositories/agent-message-queue.repository';

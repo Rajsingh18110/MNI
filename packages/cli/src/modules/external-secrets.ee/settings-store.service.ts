@@ -1,7 +1,7 @@
-import { SettingsRepository } from '@n8n/db';
-import { Service } from '@n8n/di';
-import { Cipher } from 'n8n-core';
-import { jsonParse, UnexpectedError } from 'n8n-workflow';
+import { SettingsRepository } from '@MNI/db';
+import { Service } from '@MNI/di';
+import { Cipher } from 'MNI-core';
+import { jsonParse, UnexpectedError } from 'MNI-workflow';
 
 import { EXTERNAL_SECRETS_DB_KEY } from './constants';
 import type { ExternalSecretsSettings, SecretsProviderSettings } from './types';

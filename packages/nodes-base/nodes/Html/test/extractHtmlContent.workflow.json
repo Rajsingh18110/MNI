@@ -5,7 +5,7 @@
 			"parameters": {},
 			"id": "b421815f-bbeb-480d-a759-6a0360a050b6",
 			"name": "When clicking \"Execute Workflow\"",
-			"type": "n8n-nodes-base.manualTrigger",
+			"type": "MNI-nodes-base.manualTrigger",
 			"typeVersion": 1,
 			"position": [480, 780]
 		},
@@ -26,7 +26,7 @@
 			},
 			"id": "73ed18ec-3a26-4300-b917-240faa810a33",
 			"name": "HTML",
-			"type": "n8n-nodes-base.html",
+			"type": "MNI-nodes-base.html",
 			"typeVersion": 1.2,
 			"position": [1280, 260]
 		},
@@ -46,7 +46,7 @@
 			},
 			"id": "d8eaf4c4-be91-43ba-b5ff-efcc7ece60b0",
 			"name": "HTML2",
-			"type": "n8n-nodes-base.html",
+			"type": "MNI-nodes-base.html",
 			"typeVersion": 1.2,
 			"position": [1280, 600]
 		},
@@ -66,7 +66,7 @@
 			},
 			"id": "145a5168-69fd-49bd-a2a0-07841854937c",
 			"name": "HTML3",
-			"type": "n8n-nodes-base.html",
+			"type": "MNI-nodes-base.html",
 			"typeVersion": 1.2,
 			"position": [1280, 760]
 		},
@@ -87,7 +87,7 @@
 			},
 			"id": "7a370ce9-e4c4-46e0-89a4-881a6c8a7019",
 			"name": "HTML1",
-			"type": "n8n-nodes-base.html",
+			"type": "MNI-nodes-base.html",
 			"typeVersion": 1.2,
 			"position": [1280, 420]
 		},
@@ -107,7 +107,7 @@
 			},
 			"id": "64c9005d-f9fe-457e-8e24-f1c59e76aeae",
 			"name": "HTML4",
-			"type": "n8n-nodes-base.html",
+			"type": "MNI-nodes-base.html",
 			"typeVersion": 1.2,
 			"position": [1280, 940]
 		},
@@ -127,7 +127,7 @@
 			},
 			"id": "eef6b477-2c28-4c20-884f-93bbd48f9d0d",
 			"name": "HTML5",
-			"type": "n8n-nodes-base.html",
+			"type": "MNI-nodes-base.html",
 			"typeVersion": 1.2,
 			"position": [1280, 1120]
 		},
@@ -147,7 +147,7 @@
 			},
 			"id": "a548e5e3-0dcd-4f52-a581-bd046ef325b3",
 			"name": "HTML6",
-			"type": "n8n-nodes-base.html",
+			"type": "MNI-nodes-base.html",
 			"typeVersion": 1.2,
 			"position": [1280, 1280]
 		},
@@ -159,7 +159,7 @@
 			},
 			"id": "ed46f03d-6cde-4225-beab-fdbe82bf095f",
 			"name": "Code",
-			"type": "n8n-nodes-testing.testData",
+			"type": "MNI-nodes-testing.testData",
 			"typeVersion": 1,
 			"position": [780, 740]
 		},
@@ -167,7 +167,7 @@
 			"parameters": {},
 			"id": "9d4c07df-3348-4b0e-b144-dfb038bddb99",
 			"name": "No Operation, do nothing",
-			"type": "n8n-nodes-base.noOp",
+			"type": "MNI-nodes-base.noOp",
 			"typeVersion": 1,
 			"position": [1500, 260]
 		},
@@ -175,7 +175,7 @@
 			"parameters": {},
 			"id": "0dd56421-7e3a-4908-a933-c4e09de6b7d5",
 			"name": "No Operation, do nothing1",
-			"type": "n8n-nodes-base.noOp",
+			"type": "MNI-nodes-base.noOp",
 			"typeVersion": 1,
 			"position": [1580, 620]
 		},
@@ -183,7 +183,7 @@
 			"parameters": {},
 			"id": "15c21267-b4b7-4805-ad40-32060400fcef",
 			"name": "No Operation, do nothing2",
-			"type": "n8n-nodes-base.noOp",
+			"type": "MNI-nodes-base.noOp",
 			"typeVersion": 1,
 			"position": [1600, 780]
 		},
@@ -191,7 +191,7 @@
 			"parameters": {},
 			"id": "d6fd1d78-e24b-4237-bd66-620130f0e5fc",
 			"name": "No Operation, do nothing3",
-			"type": "n8n-nodes-base.noOp",
+			"type": "MNI-nodes-base.noOp",
 			"typeVersion": 1,
 			"position": [1640, 1140]
 		},
@@ -199,7 +199,7 @@
 			"parameters": {},
 			"id": "f8b7457b-7b46-4af6-958c-ad770f29e587",
 			"name": "No Operation, do nothing4",
-			"type": "n8n-nodes-base.noOp",
+			"type": "MNI-nodes-base.noOp",
 			"typeVersion": 1,
 			"position": [1560, 960]
 		},
@@ -207,7 +207,7 @@
 			"parameters": {},
 			"id": "f509b012-78ea-4e14-9ee4-ebdd562efe3e",
 			"name": "No Operation, do nothing5",
-			"type": "n8n-nodes-base.noOp",
+			"type": "MNI-nodes-base.noOp",
 			"typeVersion": 1,
 			"position": [1560, 420]
 		},
@@ -215,7 +215,7 @@
 			"parameters": {},
 			"id": "173f20fb-80aa-42d1-97b1-fc7a751fbedd",
 			"name": "No Operation, do nothing6",
-			"type": "n8n-nodes-base.noOp",
+			"type": "MNI-nodes-base.noOp",
 			"typeVersion": 1,
 			"position": [1580, 1300]
 		}

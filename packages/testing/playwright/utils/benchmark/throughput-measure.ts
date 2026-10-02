@@ -2,10 +2,10 @@
  * Throughput benchmark measurement — VictoriaMetrics counter-based completion tracking.
  *
  * Polls a PromQL counter at regular intervals to measure sustained throughput.
- * Trigger-agnostic: works with any trigger type that increments n8n_workflow_success_total.
+ * Trigger-agnostic: works with any trigger type that increments MNI_workflow_success_total.
  */
 import type { TestInfo } from '@playwright/test';
-import type { MetricsHelper } from 'n8n-containers';
+import type { MetricsHelper } from 'MNI-containers';
 
 import { attachMetric } from '../performance-helper';
 
@@ -210,13 +210,13 @@ export function measureSteadyPhases(
 
 // --- PromQL queries ---
 
-export const WORKFLOW_SUCCESS_QUERY = 'n8n_workflow_success_total';
-export const QUEUE_JOBS_COMPLETED_QUERY = 'n8n_scaling_mode_queue_jobs_completed';
+export const WORKFLOW_SUCCESS_QUERY = 'MNI_workflow_success_total';
+export const QUEUE_JOBS_COMPLETED_QUERY = 'MNI_scaling_mode_queue_jobs_completed';
 export type CompletionCounterReader = () => Promise<number>;
 
 /**
  * Returns the completion metric for the current Playwright project.
- * `n8n_workflow_success_total` is per-receiver-instance; summed via
+ * `MNI_workflow_success_total` is per-receiver-instance; summed via
  * `sum(last_over_time(...[5m]))` for the system-wide total. The wide lookback
  * tolerates transient scrape misses.
  */
@@ -231,7 +231,7 @@ export function resolveMetricQuery(_testInfo: TestInfo): string {
  * Records samples at each poll interval to calculate throughput.
  *
  * The metricQuery parameter allows switching between single-main
- * (`n8n_workflow_success_total`) and queue mode (`n8n_scaling_mode_queue_jobs_completed`).
+ * (`MNI_workflow_success_total`) and queue mode (`MNI_scaling_mode_queue_jobs_completed`).
  * For continuous generation tests, set expectedCount to Infinity and use timeoutMs as the run duration.
  */
 export async function waitForThroughput(

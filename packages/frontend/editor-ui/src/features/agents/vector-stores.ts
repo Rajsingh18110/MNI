@@ -1,4 +1,4 @@
-import { AGENT_VECTOR_STORE_CREDENTIAL_TYPES, type AgentVectorStoreProvider } from '@n8n/api-types';
+import { AGENT_VECTOR_STORE_CREDENTIAL_TYPES, type AgentVectorStoreProvider } from '@MNI/api-types';
 
 export interface AgentVectorStoreProviderDefinition {
 	displayName: string;

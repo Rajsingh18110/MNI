@@ -1,5 +1,5 @@
-import type { ChatHubProvider, ChatHubMessageType, ChatHubMessageStatus } from '@n8n/api-types';
-import { ExecutionEntity, WithTimestamps, WorkflowEntity } from '@n8n/db';
+import type { ChatHubProvider, ChatHubMessageType, ChatHubMessageStatus } from '@MNI/api-types';
+import { ExecutionEntity, WithTimestamps, WorkflowEntity } from '@MNI/db';
 import {
 	Column,
 	Entity,
@@ -7,8 +7,8 @@ import {
 	JoinColumn,
 	type Relation,
 	PrimaryGeneratedColumn,
-} from '@n8n/typeorm';
-import type { IBinaryData } from 'n8n-workflow';
+} from '@MNI/typeorm';
+import type { IBinaryData } from 'MNI-workflow';
 
 import type { ChatHubSession } from './chat-hub-session.entity';
 

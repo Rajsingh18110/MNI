@@ -7,9 +7,9 @@ import '../controllers';
 
 import { OpenAPIRegistry, OpenApiGeneratorV3 } from '@asteasolutions/zod-to-openapi';
 import type { RouteConfig } from '@asteasolutions/zod-to-openapi';
-import type { ResponseDtoClass } from '@n8n/decorators';
-import { isRecord } from '@n8n/utils/is-record';
-import { UnexpectedError } from 'n8n-workflow';
+import type { ResponseDtoClass } from '@MNI/decorators';
+import { isRecord } from '@MNI/utils/is-record';
+import { UnexpectedError } from 'MNI-workflow';
 import { z } from 'zod';
 
 import type { ResolvedPublicApiRoute } from '@/public-api/public-api-route-resolver';

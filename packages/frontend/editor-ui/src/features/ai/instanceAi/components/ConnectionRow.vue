@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { computed } from 'vue';
-import { N8nText } from '@n8n/design-system';
-import type { IconName } from '@n8n/design-system';
+import { N8nText } from '@MNI/design-system';
+import type { IconName } from '@MNI/design-system';
 import ToolIcon from '@/features/shared/toolsConnection/ToolIcon.vue';
 import type { ToolIconSource } from '@/features/shared/toolsConnection/types';
 

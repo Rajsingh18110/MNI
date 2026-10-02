@@ -3,8 +3,8 @@ import type {
 	INode,
 	ILoadOptionsFunctions,
 	INodeExecutionData,
-} from 'n8n-workflow';
-import { jsonParse, NodeApiError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { jsonParse, NodeApiError } from 'MNI-workflow';
 import get from 'lodash/get';
 import type { Mock, Mocked } from 'vitest';
 import { mockDeep } from 'vitest-mock-extended';
@@ -59,7 +59,7 @@ describe('Salesforce', () => {
 		mockNode = {
 			id: 'test-node-id',
 			name: 'Salesforce Test',
-			type: 'n8n-nodes-base.salesforce',
+			type: 'MNI-nodes-base.salesforce',
 			typeVersion: 1,
 			position: [0, 0],
 			parameters: {},

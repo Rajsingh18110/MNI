@@ -1,6 +1,6 @@
-import type { FetchFn, McpToolCallSettledEvent } from '@n8n/agents';
-import type { AgentJsonConfig } from '@n8n/api-types';
-import type { IWorkflowExecuteAdditionalData } from 'n8n-workflow';
+import type { FetchFn, McpToolCallSettledEvent } from '@MNI/agents';
+import type { AgentJsonConfig } from '@MNI/api-types';
+import type { IWorkflowExecuteAdditionalData } from 'MNI-workflow';
 
 import type { ReferencedToolKind } from './tool-registry';
 

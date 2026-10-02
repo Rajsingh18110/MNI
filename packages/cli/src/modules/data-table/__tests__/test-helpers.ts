@@ -1,4 +1,4 @@
-import { Container } from '@n8n/di';
+import { Container } from '@MNI/di';
 
 import { DataTableSizeValidator } from '../data-table-size-validator.service';
 

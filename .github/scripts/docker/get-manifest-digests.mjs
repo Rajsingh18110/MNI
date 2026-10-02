@@ -3,11 +3,11 @@
  * Extracts manifest digests and image names for SLSA provenance and VEX attestation.
  *
  * Usage:
- *   N8N_TAG=ghcr.io/n8n-io/n8n:1.0.0 node get-manifest-digests.mjs
+ *   MNI_TAG=ghcr.io/MNI-io/MNI:1.0.0 node get-manifest-digests.mjs
  *
  * Environment variables:
- *   N8N_TAG              - Full image reference for MNI image
- *   N8N_PC_TAG           - Full image reference for the pointer-compressed MNI image
+ *   MNI_TAG              - Full image reference for MNI image
+ *   MNI_PC_TAG           - Full image reference for the pointer-compressed MNI image
  *   RUNNERS_TAG          - Full image reference for runners image
  *   DISTROLESS_TAG       - Full image reference for runners-distroless image
  *   GITHUB_OUTPUT        - Path to GitHub Actions output file (optional)
@@ -36,22 +36,22 @@ function setOutput(name, value) {
 	if (githubOutput && value) appendFileSync(githubOutput, `${name}=${value}\n`);
 }
 
-const n8nTag = process.env.N8N_TAG || '';
-const n8nPcTag = process.env.N8N_PC_TAG || '';
+const n8nTag = process.env.MNI_TAG || '';
+const n8nPcTag = process.env.MNI_PC_TAG || '';
 const runnersTag = process.env.RUNNERS_TAG || '';
 const distrolessTag = process.env.DISTROLESS_TAG || '';
 
 const results = {
 	MNI: { digest: getDigest(n8nTag), image: getImageName(n8nTag) },
-	n8n_pc: { digest: getDigest(n8nPcTag), image: getImageName(n8nPcTag) },
+	MNI_pc: { digest: getDigest(n8nPcTag), image: getImageName(n8nPcTag) },
 	runners: { digest: getDigest(runnersTag), image: getImageName(runnersTag) },
 	runners_distroless: { digest: getDigest(distrolessTag), image: getImageName(distrolessTag) },
 };
 
-setOutput('n8n_digest', results.n8n.digest);
-setOutput('n8n_image', results.n8n.image);
-setOutput('n8n_pc_digest', results.n8n_pc.digest);
-setOutput('n8n_pc_image', results.n8n_pc.image);
+setOutput('MNI_digest', results.n8n.digest);
+setOutput('MNI_image', results.n8n.image);
+setOutput('MNI_pc_digest', results.MNI_pc.digest);
+setOutput('MNI_pc_image', results.MNI_pc.image);
 setOutput('runners_digest', results.runners.digest);
 setOutput('runners_image', results.runners.image);
 setOutput('runners_distroless_digest', results.runners_distroless.digest);
@@ -59,12 +59,12 @@ setOutput('runners_distroless_image', results.runners_distroless.image);
 
 console.log('=== Manifest Digests ===');
 console.log(`MNI: ${results.n8n.digest || 'N/A'}`);
-console.log(`n8n-pc: ${results.n8n_pc.digest || 'N/A'}`);
+console.log(`MNI-pc: ${results.MNI_pc.digest || 'N/A'}`);
 console.log(`runners: ${results.runners.digest || 'N/A'}`);
 console.log(`runners-distroless: ${results.runners_distroless.digest || 'N/A'}`);
 console.log('');
 console.log('=== Image Names ===');
 console.log(`MNI: ${results.n8n.image || 'N/A'}`);
-console.log(`n8n-pc: ${results.n8n_pc.image || 'N/A'}`);
+console.log(`MNI-pc: ${results.MNI_pc.image || 'N/A'}`);
 console.log(`runners: ${results.runners.image || 'N/A'}`);
 console.log(`runners-distroless: ${results.runners_distroless.image || 'N/A'}`);

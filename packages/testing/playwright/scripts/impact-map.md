@@ -89,7 +89,7 @@ file in a well-covered area is almost certainly exercised by the same specs as
 its neighbours. So instead we use a **sibling fallback**:
 
 > An unmapped file selects the specs covering its **nearest covered ancestor
-> directory**. A new `packages/@n8n/instance-ai/foo.ts` → the `instance-ai`
+> directory**. A new `packages/@MNI/instance-ai/foo.ts` → the `instance-ai`
 > specs, not all 172.
 
 Only a file with **no covered ancestor at all** (a genuinely unknown area)

@@ -1,7 +1,7 @@
-import { type ProvisioningConfigDto } from '@n8n/api-types';
-import type { LicenseState } from '@n8n/backend-common';
-import type { InstanceSettingsLoaderConfig } from '@n8n/config';
-import { type AuthenticatedRequest } from '@n8n/db';
+import { type ProvisioningConfigDto } from '@MNI/api-types';
+import type { LicenseState } from '@MNI/backend-common';
+import type { InstanceSettingsLoaderConfig } from '@MNI/config';
+import { type AuthenticatedRequest } from '@MNI/db';
 import { type Response } from 'express';
 import { mock } from 'vitest-mock-extended';
 
@@ -44,9 +44,9 @@ describe('ProvisioningController', () => {
 			const configResponse: ProvisioningConfigDto = {
 				scopesProvisionInstanceRole: true,
 				scopesProvisionProjectRoles: true,
-				scopesName: 'n8n_test_scope',
-				scopesInstanceRoleClaimName: 'n8n_test_instance_role',
-				scopesProjectsRolesClaimName: 'n8n_test_projects_roles',
+				scopesName: 'MNI_test_scope',
+				scopesInstanceRoleClaimName: 'MNI_test_instance_role',
+				scopesProjectsRolesClaimName: 'MNI_test_projects_roles',
 				scopesUseExpressionMapping: false,
 			};
 
@@ -92,9 +92,9 @@ describe('ProvisioningController', () => {
 			const configResponse: ProvisioningConfigDto = {
 				scopesProvisionInstanceRole: false,
 				scopesProvisionProjectRoles: false,
-				scopesName: 'n8n_test_scope',
-				scopesInstanceRoleClaimName: 'n8n_test_instance_role',
-				scopesProjectsRolesClaimName: 'n8n_test_projects_roles',
+				scopesName: 'MNI_test_scope',
+				scopesInstanceRoleClaimName: 'MNI_test_instance_role',
+				scopesProjectsRolesClaimName: 'MNI_test_projects_roles',
 				scopesUseExpressionMapping: false,
 			};
 

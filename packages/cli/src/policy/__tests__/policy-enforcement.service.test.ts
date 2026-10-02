@@ -1,5 +1,5 @@
-import type { PolicedWorkflow, PolicyDecision, PolicyViolation } from '@n8n/decorators';
-import { UnexpectedError } from 'n8n-workflow';
+import type { PolicedWorkflow, PolicyDecision, PolicyViolation } from '@MNI/decorators';
+import { UnexpectedError } from 'MNI-workflow';
 import { mock, type MockProxy } from 'vitest-mock-extended';
 
 import type { PolicyEnforcementBackend } from '../policy-enforcement-backend';
@@ -11,7 +11,7 @@ const savedWorkflow: PolicedWorkflow = { id: 'wf-1', name: 'My workflow', nodes:
 const violation: PolicyViolation = {
 	kind: 'node-type-unavailable',
 	checkId: 'node-type-availability',
-	message: 'The node type n8n-nodes-base.slack is not available on this instance',
+	message: 'The node type MNI-nodes-base.slack is not available on this instance',
 };
 
 const cleared: PolicyDecision = { violations: [] };
@@ -162,7 +162,7 @@ describe('PolicyEnforcementService', () => {
 		});
 
 		it('throws with every violation instead of minting', async () => {
-			const second = { ...violation, subject: 'n8n-nodes-base.code' };
+			const second = { ...violation, subject: 'MNI-nodes-base.code' };
 			backend.enforce.mockResolvedValue({ violations: [violation, second] });
 
 			const error = await service
@@ -280,7 +280,7 @@ describe('PolicyEnforcementService', () => {
 			const token = await service.enforceCredentialDecrypt({
 				credentialType: 'slackApi',
 				credentialId: 'cred-1',
-				consumer: { nodeType: 'n8n-nodes-base.slack' },
+				consumer: { nodeType: 'MNI-nodes-base.slack' },
 				projectId: null,
 			});
 

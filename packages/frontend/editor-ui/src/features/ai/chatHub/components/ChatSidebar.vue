@@ -1,9 +1,9 @@
 <script lang="ts" setup>
 import { nextTick, computed } from 'vue';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import { useRouter } from 'vue-router';
 import { VIEWS } from '@/app/constants';
-import { type IMenuItem, N8nResizeWrapper } from '@n8n/design-system';
+import { type IMenuItem, N8nResizeWrapper } from '@MNI/design-system';
 import { useSettingsItems } from '@/app/composables/useSettingsItems';
 import { useKeybindings } from '@/app/composables/useKeybindings';
 import {
@@ -11,7 +11,7 @@ import {
 	MIN_SIDEBAR_WIDTH,
 	useSidebarLayout,
 } from '@/app/composables/useSidebarLayout';
-import { N8nScrollArea } from '@n8n/design-system';
+import { N8nScrollArea } from '@MNI/design-system';
 import BottomMenu from '@/app/components/BottomMenu.vue';
 import MainSidebarHeader from '@/app/components/MainSidebarHeader.vue';
 import ChatSidebarContent from '@/features/ai/chatHub/components/ChatSidebarContent.vue';

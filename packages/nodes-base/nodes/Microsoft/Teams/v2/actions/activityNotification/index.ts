@@ -1,4 +1,4 @@
-import type { INodeProperties } from 'n8n-workflow';
+import type { INodeProperties } from 'MNI-workflow';
 
 import * as send from './send.operation';
 import { ACTIVITY_NOTIFICATION_SETUP_URL } from '../../transport/forbiddenHints';

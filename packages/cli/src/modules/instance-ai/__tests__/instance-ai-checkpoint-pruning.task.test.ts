@@ -1,4 +1,4 @@
-import type { InstanceAiConfig } from '@n8n/config';
+import type { InstanceAiConfig } from '@MNI/config';
 import { mock } from 'vitest-mock-extended';
 
 import { InstanceAiCheckpointPruningTask } from '../instance-ai-checkpoint-pruning.task';

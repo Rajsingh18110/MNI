@@ -1,5 +1,5 @@
-import { buildHitlCallbackReference, markSlackInteractionRequest } from 'n8n-core';
-import type { IWebhookFunctions } from 'n8n-workflow';
+import { buildHitlCallbackReference, markSlackInteractionRequest } from 'MNI-core';
+import type { IWebhookFunctions } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import * as sendAndWaitUtils from '../../../../../utils/sendAndWait/utils';

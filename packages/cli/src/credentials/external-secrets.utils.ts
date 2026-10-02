@@ -1,6 +1,6 @@
-import { SECRETS_PROVIDER_KEY_PATTERN } from '@n8n/api-types';
+import { SECRETS_PROVIDER_KEY_PATTERN } from '@MNI/api-types';
 import get from 'lodash/get';
-import type { ICredentialDataDecryptedObject } from 'n8n-workflow';
+import type { ICredentialDataDecryptedObject } from 'MNI-workflow';
 
 import { getAllKeyPaths } from '@/utils';
 

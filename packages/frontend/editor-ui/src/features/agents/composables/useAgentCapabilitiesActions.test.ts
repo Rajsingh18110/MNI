@@ -20,16 +20,16 @@ vi.mock('@/app/stores/ui.store', () => ({
 }));
 vi.mock('@/app/stores/nodeTypes.store', () => ({
 	useNodeTypesStore: () => ({
-		getNodeType: () => ({ name: 'n8n-nodes-base.mcpClientTool', version: 1 }),
+		getNodeType: () => ({ name: 'MNI-nodes-base.mcpClientTool', version: 1 }),
 	}),
 }));
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: () => ({ showError: vi.fn(), showMessage: vi.fn() }),
 }));
-vi.mock('@n8n/stores/useRootStore', () => ({
+vi.mock('@MNI/stores/useRootStore', () => ({
 	useRootStore: () => ({ restApiContext: { baseUrl: '', pushRef: '' } }),
 }));
-vi.mock('@n8n/i18n', () => ({
+vi.mock('@MNI/i18n', () => ({
 	useI18n: () => ({ baseText: (key: string) => key }),
 }));
 

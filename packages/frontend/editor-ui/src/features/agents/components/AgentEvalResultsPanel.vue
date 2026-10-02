@@ -8,9 +8,9 @@
  * loaded page, so paging can't change what the header claims.
  */
 import { computed, onBeforeUnmount, onMounted, watch } from 'vue';
-import { N8nBadge, N8nButton, N8nSpinner, N8nText, N8nTooltip } from '@n8n/design-system';
-import { useToast } from '@n8n/composables/useToast';
-import { useI18n } from '@n8n/i18n';
+import { N8nBadge, N8nButton, N8nSpinner, N8nText, N8nTooltip } from '@MNI/design-system';
+import { useToast } from '@MNI/composables/useToast';
+import { useI18n } from '@MNI/i18n';
 
 import { useAgentEvalsStore } from '../agentEvals.store';
 import type { AgentEvalVote } from '../agentEvals.types';

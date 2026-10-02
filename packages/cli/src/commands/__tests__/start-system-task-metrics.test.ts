@@ -1,13 +1,13 @@
 import '@/zod-alias-support';
 
-import { Logger } from '@n8n/backend-common';
-import { mockInstance, mockLogger } from '@n8n/backend-test-utils';
-import { GlobalConfig } from '@n8n/config';
-import { DbConnection, SettingsRepository } from '@n8n/db';
-import { SystemTaskMetadata } from '@n8n/decorators';
-import { Container } from '@n8n/di';
+import { Logger } from '@MNI/backend-common';
+import { mockInstance, mockLogger } from '@MNI/backend-test-utils';
+import { GlobalConfig } from '@MNI/config';
+import { DbConnection, SettingsRepository } from '@MNI/db';
+import { SystemTaskMetadata } from '@MNI/decorators';
+import { Container } from '@MNI/di';
 import type { NextFunction, Request, Response } from 'express';
-import { ErrorReporter, InstanceSettings } from 'n8n-core';
+import { ErrorReporter, InstanceSettings } from 'MNI-core';
 import promClient from 'prom-client';
 
 import { ActiveWorkflowManager } from '@/active-workflow-manager';
@@ -111,7 +111,7 @@ describe('Start system task metrics', () => {
 		config.endpoints.disableProductionWebhooksOnMainProcess = true;
 		config.endpoints.metrics.enable = true;
 		config.endpoints.metrics.includeSystemTaskMetrics = true;
-		config.endpoints.metrics.prefix = 'n8n_';
+		config.endpoints.metrics.prefix = 'MNI_';
 		config.executions.mode = 'regular';
 		config.workflows.useWorkflowPublicationService = false;
 		config.credentials.overwrite.endpoint = '';
@@ -142,7 +142,7 @@ describe('Start system task metrics', () => {
 	}
 
 	async function seriesOf(name: string) {
-		const metric = promClient.register.getSingleMetric(`n8n_system_task_${name}`);
+		const metric = promClient.register.getSingleMetric(`MNI_system_task_${name}`);
 		return (await metric?.get())?.values ?? [];
 	}
 

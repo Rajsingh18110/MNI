@@ -1,4 +1,4 @@
-import { formatPemBlock } from '@n8n/utils/format-pem-block';
+import { formatPemBlock } from '@MNI/utils/format-pem-block';
 import jwt from 'jsonwebtoken';
 import type {
 	IDataObject,
@@ -6,8 +6,8 @@ import type {
 	INodeExecutionData,
 	INodeType,
 	INodeTypeDescription,
-} from 'n8n-workflow';
-import { NodeConnectionTypes, NodeOperationError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeConnectionTypes, NodeOperationError } from 'MNI-workflow';
 
 import { parseJsonParameter } from '../Set/v2/helpers/utils';
 
@@ -57,7 +57,7 @@ export class Jwt implements INodeType {
 		outputs: [NodeConnectionTypes.Main],
 		credentials: [
 			{
-				// eslint-disable-next-line n8n-nodes-base/node-class-description-credentials-name-unsuffixed
+				// eslint-disable-next-line MNI-nodes-base/node-class-description-credentials-name-unsuffixed
 				name: 'jwtAuth',
 				required: true,
 			},

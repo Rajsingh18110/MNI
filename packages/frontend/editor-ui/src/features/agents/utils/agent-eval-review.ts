@@ -1,5 +1,5 @@
-import { isRecord } from '@n8n/utils/is-record';
-import type { JsonObject } from 'n8n-workflow';
+import { isRecord } from '@MNI/utils/is-record';
+import type { JsonObject } from 'MNI-workflow';
 
 import type { AgentEvalRatingRecord, AgentEvalVote } from '../agentEvals.types';
 

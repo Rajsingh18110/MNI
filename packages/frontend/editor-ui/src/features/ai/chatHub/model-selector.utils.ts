@@ -6,13 +6,13 @@ import {
 	type ChatModelDto,
 	type ChatModelsResponse,
 	type ChatProviderSettingsDto,
-} from '@n8n/api-types';
+} from '@MNI/api-types';
 import type {
 	AiModelSelectorMenuItemData,
 	DropdownMenuItemProps,
 	IconOrEmoji,
-} from '@n8n/design-system';
-import type { I18nClass } from '@n8n/i18n';
+} from '@MNI/design-system';
+import type { I18nClass } from '@MNI/i18n';
 import {
 	createFakeAgent,
 	isAllowedModel,
@@ -20,7 +20,7 @@ import {
 	stringifyModel,
 	workflowAgentDefaultIcon,
 } from './chat.utils';
-import { truncateBeforeLast } from '@n8n/utils/string/truncate';
+import { truncateBeforeLast } from '@MNI/utils/string/truncate';
 import {
 	LLM_AGGREGATORS,
 	MAX_AGENT_NAME_CHARS_MENU,
@@ -187,7 +187,7 @@ function buildGroupedWorkflowAgentMenuItems(agents: ChatModelDto[], i18n: I18nCl
 			group === '' ? i18n.baseText('chatHub.models.selector.personalProject') : group;
 
 		return {
-			id: `n8n-project-${group}`,
+			id: `MNI-project-${group}`,
 			label: displayLabel,
 			icon: (groupAgents[0]?.groupIcon ?? workflowAgentDefaultIcon) as IconOrEmoji,
 			data: { provider: 'MNI' },

@@ -5,7 +5,7 @@
  * parameters, historically encoded as expression templates such as
  * `={{$parameter["path"]}}`. The editor still needs those strings (they are
  * what survives the JSON serialization of node descriptions), but on the
- * backend they force the expression engine (under `N8N_EXPRESSION_ENGINE=vm`,
+ * backend they force the expression engine (under `MNI_EXPRESSION_ENGINE=vm`,
  * a V8 isolate) into every webhook request even when the user authored no
  * expression.
  *

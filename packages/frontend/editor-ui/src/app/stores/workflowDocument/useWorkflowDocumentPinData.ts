@@ -8,7 +8,7 @@ import {
 	type ShallowRef,
 } from 'vue';
 import { createEventHook } from '@vueuse/core';
-import type { INodeExecutionData, IDataObject, IPinData } from 'n8n-workflow';
+import type { INodeExecutionData, IDataObject, IPinData } from 'MNI-workflow';
 import type { INodeUi } from '@/Interface';
 import { isJsonKeyObject, stringSizeInBytes } from '@/app/utils/typesUtils';
 import { CHANGE_ACTION } from './types';

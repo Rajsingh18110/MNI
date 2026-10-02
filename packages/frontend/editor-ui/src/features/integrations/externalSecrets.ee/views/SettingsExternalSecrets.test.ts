@@ -1,11 +1,11 @@
 import { createTestingPinia } from '@pinia/testing';
 import merge from 'lodash/merge';
 import { EnterpriseEditionFeature } from '@/app/constants';
-import { STORES } from '@n8n/stores';
+import { STORES } from '@MNI/stores';
 import { SETTINGS_STORE_DEFAULT_STATE } from '@/__tests__/utils';
 import SettingsExternalSecrets from './SettingsExternalSecrets.vue';
 import { createComponentRenderer } from '@/__tests__/render';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { setupServer } from '@/__tests__/server';
 
 let pinia: ReturnType<typeof createTestingPinia>;

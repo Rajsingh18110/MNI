@@ -121,7 +121,7 @@ function merge(inputsDir, outLcov, outMap) {
 
 mkdirSync(OUT, { recursive: true });
 
-// node_modules holds bundled-dependency lcovs (e.g. cli/node_modules/n8n-core);
+// node_modules holds bundled-dependency lcovs (e.g. cli/node_modules/MNI-core);
 // they'd double-count and mis-qualify, so keep only first-party package lcovs.
 const firstParty = (name, p) =>
 	name === 'lcov.info' && !p.includes(`${path.sep}node_modules${path.sep}`);

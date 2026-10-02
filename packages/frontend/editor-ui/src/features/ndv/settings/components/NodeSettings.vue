@@ -10,8 +10,8 @@ import type {
 	INodeParameters,
 	NodeConnectionType,
 	NodeParameterValue,
-} from 'n8n-workflow';
-import { NodeConnectionTypes, NodeHelpers, deepCopy, isCommunityPackageName } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeConnectionTypes, NodeHelpers, deepCopy, isCommunityPackageName } from 'MNI-workflow';
 import { computed, inject, onBeforeUnmount, onMounted, ref, useTemplateRef, watch } from 'vue';
 
 import { BASE_NODE_SURVEY_URL, VIEWS } from '@/app/constants';
@@ -38,9 +38,9 @@ import { useNodeHelpers } from '@/app/composables/useNodeHelpers';
 import {
 	RestrictedNodePanel,
 	useNodeTypeRestriction,
-} from '@n8n/frontend-module-type-availability-policies';
+} from '@MNI/frontend-module-type-availability-policies';
 import { useNodeSettingsParameters } from '@/features/ndv/settings/composables/useNodeSettingsParameters';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
 import { importCurlEventBus } from '@/app/event-bus';
 import { ndvEventBus } from '@/features/ndv/shared/ndv.eventBus';
 import NodeStorageLimitCallout from '@/features/core/dataTable/components/NodeStorageLimitCallout.vue';
@@ -49,7 +49,7 @@ import { useCredentialsStore } from '@/features/credentials/credentials.store';
 import { useHistoryStore } from '@/app/stores/history.store';
 import { injectNDVStore } from '@/features/ndv/shared/ndv.store';
 import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';
-import { useUsersStore } from '@n8n/stores/users.store';
+import { useUsersStore } from '@MNI/stores/users.store';
 import { useWorkflowsListStore } from '@/app/stores/workflowsList.store';
 import type { NodeSettingsTab } from '@/app/types/nodeSettings';
 import {
@@ -59,17 +59,17 @@ import {
 	getNodeSettingsInitialValues,
 	nameIsParameter,
 } from '../../shared/ndv.utils';
-import { useI18n } from '@n8n/i18n';
-import type { EventBus } from '@n8n/utils/event-bus';
+import { useI18n } from '@MNI/i18n';
+import type { EventBus } from '@MNI/utils/event-bus';
 import { useResizeObserver } from '@vueuse/core';
 import CommunityNodeFooter from '@/features/settings/communityNodes/components/nodeCreator/CommunityNodeFooter.vue';
 import CommunityNodeUpdateInfo from '@/features/settings/communityNodes/components/nodeCreator/CommunityNodeUpdateInfo.vue';
 import QuickConnectBanner from '@/features/credentials/quickConnect/components/QuickConnectBanner.vue';
 import { useQuickConnect } from '@/features/credentials/quickConnect/composables/useQuickConnect';
 
-import { N8nBlockUi, N8nIcon, N8nNotice, N8nText } from '@n8n/design-system';
+import { N8nBlockUi, N8nIcon, N8nNotice, N8nText } from '@MNI/design-system';
 import { useRoute } from 'vue-router';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { injectWorkflowDocumentStore } from '@/app/stores/workflowDocument.store';
 import { ProjectTypes } from '@/features/collaboration/projects/projects.types';
 import { useEditorContext } from '@/app/composables/useEditorContext';

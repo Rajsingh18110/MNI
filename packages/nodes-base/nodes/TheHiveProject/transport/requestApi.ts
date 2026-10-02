@@ -5,7 +5,7 @@ import type {
 	IDataObject,
 	IHttpRequestOptions,
 	IHttpRequestMethods,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 export async function theHiveApiRequest(
 	this: IHookFunctions | IExecuteFunctions | ILoadOptionsFunctions,

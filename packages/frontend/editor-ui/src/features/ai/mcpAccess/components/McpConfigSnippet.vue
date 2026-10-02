@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { useI18n } from '@n8n/i18n';
-import { useClipboard } from '@n8n/composables/useClipboard';
-import { N8nButton, N8nMarkdown, N8nTooltip } from '@n8n/design-system';
+import { useI18n } from '@MNI/i18n';
+import { useClipboard } from '@MNI/composables/useClipboard';
+import { N8nButton, N8nMarkdown, N8nTooltip } from '@MNI/design-system';
 import { MCP_TOOLTIP_DELAY } from '@/features/ai/mcpAccess/mcp.constants';
 
 const props = defineProps<{
@@ -57,7 +57,7 @@ const handleCopy = async () => {
 .container {
 	position: relative;
 
-	:global(.n8n-markdown) {
+	:global(.MNI-markdown) {
 		width: 100%;
 	}
 

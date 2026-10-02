@@ -3,9 +3,9 @@ import {
 	PutInstancePolicyDto,
 	ReplaceAttachmentsDto,
 	UpdatePolicyDocumentDto,
-} from '@n8n/api-types';
-import { LICENSE_FEATURES } from '@n8n/constants';
-import { AuthenticatedRequest } from '@n8n/db';
+} from '@MNI/api-types';
+import { LICENSE_FEATURES } from '@MNI/constants';
+import { AuthenticatedRequest } from '@MNI/db';
 import {
 	Body,
 	Delete,
@@ -17,7 +17,7 @@ import {
 	Post,
 	Put,
 	RestController,
-} from '@n8n/decorators';
+} from '@MNI/decorators';
 import type { Response } from 'express';
 
 import { NotFoundError } from '@/errors/response-errors/not-found.error';

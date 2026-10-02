@@ -1,5 +1,5 @@
-import type { INode } from 'n8n-workflow';
-import { NodeOperationError, UserError } from 'n8n-workflow';
+import type { INode } from 'MNI-workflow';
+import { NodeOperationError, UserError } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import {

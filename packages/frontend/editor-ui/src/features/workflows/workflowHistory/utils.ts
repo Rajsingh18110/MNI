@@ -2,8 +2,8 @@ import type { IWorkflowDb } from '@/Interface';
 import type {
 	WorkflowPublishHistory,
 	WorkflowHistory,
-} from '@n8n/rest-api-client/api/workflowHistory';
-import { useI18n } from '@n8n/i18n';
+} from '@MNI/rest-api-client/api/workflowHistory';
+import { useI18n } from '@MNI/i18n';
 import dateformat from 'dateformat';
 
 export const getLastPublishedVersion = (

@@ -197,7 +197,7 @@ ended the thread in.
   `get_conversation_workflow_build` returns it. Its `contentStatus` says what you
   actually get: `stored-json` is ready to work with; `compilable-source` means only
   the builder's code was kept, which
-  [`parseSeedWorkflowCode`](../../../packages/@n8n/instance-ai/evaluations/harness/parse-seed-workflow.ts)
+  [`parseSeedWorkflowCode`](../../../packages/@MNI/instance-ai/evaluations/harness/parse-seed-workflow.ts)
   turns back into a workflow; `unrecoverable` and `unrecoverable-intermediate` mean
   there is nothing to read. About one build in five has no stored JSON, so don't
   assume. And don't reach for a **later** build instead — that one is the workflow

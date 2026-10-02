@@ -51,30 +51,30 @@ function captureLog(fn) {
 
 describe('servePort', () => {
 	it('defaults to 5678', () => {
-		delete process.env.N8N_PORT;
+		delete process.env.MNI_PORT;
 		assert.equal(servePort(), '5678');
 	});
 
-	it('honours N8N_PORT', () => {
-		process.env.N8N_PORT = '5679';
+	it('honours MNI_PORT', () => {
+		process.env.MNI_PORT = '5679';
 		assert.equal(servePort(), '5679');
 	});
 });
 
 describe('serveHealthPath', () => {
 	it('defaults to /healthz', () => {
-		delete process.env.N8N_ENDPOINT_HEALTH;
+		delete process.env.MNI_ENDPOINT_HEALTH;
 		assert.equal(serveHealthPath(), '/healthz');
 	});
 
 	// The backend config takes the path without a slash, so both spellings must work.
 	it('adds the leading slash when the config omits it', () => {
-		process.env.N8N_ENDPOINT_HEALTH = 'alive';
+		process.env.MNI_ENDPOINT_HEALTH = 'alive';
 		assert.equal(serveHealthPath(), '/alive');
 	});
 
 	it('does not double the leading slash', () => {
-		process.env.N8N_ENDPOINT_HEALTH = '/alive';
+		process.env.MNI_ENDPOINT_HEALTH = '/alive';
 		assert.equal(serveHealthPath(), '/alive');
 	});
 });

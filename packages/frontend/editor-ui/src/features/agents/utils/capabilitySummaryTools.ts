@@ -1,4 +1,4 @@
-import type { AgentCapabilitySummary, AgentJsonToolConfig } from '@n8n/api-types';
+import type { AgentCapabilitySummary, AgentJsonToolConfig } from '@MNI/api-types';
 
 /**
  * Shape stored tool configs like a capability summary's `tools` so surfaces

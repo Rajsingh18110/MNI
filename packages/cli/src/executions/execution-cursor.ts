@@ -1,4 +1,4 @@
-import type { SerializedCursor } from '@n8n/api-types';
+import type { SerializedCursor } from '@MNI/api-types';
 import { z } from 'zod';
 
 import { BadRequestError } from '@/errors/response-errors/bad-request.error';

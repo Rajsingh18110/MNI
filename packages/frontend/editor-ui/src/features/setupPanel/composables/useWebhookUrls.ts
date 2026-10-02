@@ -1,6 +1,6 @@
 import { computed, toValue, type MaybeRef } from 'vue';
 import { computedAsync } from '@vueuse/core';
-import type { IWebhookDescription } from 'n8n-workflow';
+import type { IWebhookDescription } from 'MNI-workflow';
 import { CHAT_TRIGGER_NODE_TYPE } from '@/app/constants/nodeTypes';
 
 import type { INodeUi } from '@/Interface';

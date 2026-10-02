@@ -1,10 +1,10 @@
-import { TELEMETRY_EVENT } from '@n8n/telemetry';
+import { TELEMETRY_EVENT } from '@MNI/telemetry';
 
 import { useMcp } from '@/features/ai/mcpAccess/composables/useMcp';
 
 const { trackSpy } = vi.hoisted(() => ({ trackSpy: vi.fn() }));
 
-vi.mock('@n8n/composables/useTelemetry', () => ({
+vi.mock('@MNI/composables/useTelemetry', () => ({
 	useTelemetry: () => ({ track: trackSpy }),
 }));
 

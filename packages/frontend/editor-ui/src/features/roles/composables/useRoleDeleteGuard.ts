@@ -1,7 +1,7 @@
-import { useI18n } from '@n8n/i18n';
-import type { Role } from '@n8n/permissions';
-import { useRBACStore } from '@n8n/stores/rbac.store';
-import { useUsersStore } from '@n8n/stores/users.store';
+import { useI18n } from '@MNI/i18n';
+import type { Role } from '@MNI/permissions';
+import { useRBACStore } from '@MNI/stores/rbac.store';
+import { useUsersStore } from '@MNI/stores/users.store';
 
 /**
  * Central place for the rules that make a custom role non-deletable, mirroring the

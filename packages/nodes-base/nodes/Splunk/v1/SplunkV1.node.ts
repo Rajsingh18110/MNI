@@ -7,8 +7,8 @@ import type {
 	INodeType,
 	INodeTypeDescription,
 	INodeTypeBaseDescription,
-} from 'n8n-workflow';
-import { NodeApiError, NodeConnectionTypes, NodeOperationError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeApiError, NodeConnectionTypes, NodeOperationError } from 'MNI-workflow';
 
 import {
 	firedAlertOperations,

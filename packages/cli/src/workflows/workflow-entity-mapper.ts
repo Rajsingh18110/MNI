@@ -1,4 +1,4 @@
-import { WorkflowEntity } from '@n8n/db';
+import { WorkflowEntity } from '@MNI/db';
 
 // Allowlist of fields that may be written from a client payload. This is the security
 // boundary: relations/internal fields (e.g. `parentFolder`, `active`, `triggerCount`) are

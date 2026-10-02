@@ -9,13 +9,13 @@ vi.mock('openid-client', async () => ({
 	fetchUserInfo: fetchUserInfoMock,
 }));
 
-import type { OidcConfigDto, ProvisioningConfigDto } from '@n8n/api-types';
-import { LicenseState } from '@n8n/backend-common';
-import { createTeamProject, getProjectRoleForUser, testDb } from '@n8n/backend-test-utils';
-import { GlobalConfig } from '@n8n/config';
-import { type User, UserRepository, RoleRepository, RoleMappingRuleRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
-import { UserError } from 'n8n-workflow';
+import type { OidcConfigDto, ProvisioningConfigDto } from '@MNI/api-types';
+import { LicenseState } from '@MNI/backend-common';
+import { createTeamProject, getProjectRoleForUser, testDb } from '@MNI/backend-test-utils';
+import { GlobalConfig } from '@MNI/config';
+import { type User, UserRepository, RoleRepository, RoleMappingRuleRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
+import { UserError } from 'MNI-workflow';
 import type * as mocked_oidc_client from 'openid-client';
 // Assigned in beforeAll rather than top-level await (tsconfig module forbids TLA).
 let real_odic_client: typeof import('openid-client');
@@ -218,7 +218,7 @@ describe('OIDC service', () => {
 
 			const mockConfiguration = new real_odic_client.Configuration(
 				{
-					issuer: 'https://example.com/auth/realms/n8n',
+					issuer: 'https://example.com/auth/realms/MNI',
 					client_id: 'initial-client-id',
 					redirect_uris: ['http://n8n.io/sso/oidc/callback'],
 					response_types: ['code'],
@@ -281,7 +281,7 @@ describe('OIDC service', () => {
 	it('should generate a valid authentication URL', async () => {
 		const mockConfiguration = new real_odic_client.Configuration(
 			{
-				issuer: 'https://example.com/auth/realms/n8n',
+				issuer: 'https://example.com/auth/realms/MNI',
 				client_id: 'test-client-id',
 				redirect_uris: ['http://n8n.io/sso/oidc/callback'],
 				response_types: ['code'],
@@ -317,7 +317,7 @@ describe('OIDC service', () => {
 		expect(authUrl.url.searchParams.get('prompt')).toBeDefined();
 		expect(authUrl.url.searchParams.get('prompt')).toEqual('consent');
 		expect(authUrl.url.searchParams.get('state')).toBeDefined();
-		expect(authUrl.url.searchParams.get('state')?.startsWith('n8n_state:')).toBe(true);
+		expect(authUrl.url.searchParams.get('state')?.startsWith('MNI_state:')).toBe(true);
 
 		expect(authUrl.state).toBeDefined();
 		expect(authUrl.nonce).toBeDefined();
@@ -327,7 +327,7 @@ describe('OIDC service', () => {
 		beforeAll(async () => {
 			const mockConfiguration = new real_odic_client.Configuration(
 				{
-					issuer: 'https://example.com/auth/realms/n8n',
+					issuer: 'https://example.com/auth/realms/MNI',
 					client_id: 'test-client-id',
 					redirect_uris: ['http://n8n.io/sso/oidc/callback'],
 					response_types: ['code'],
@@ -376,7 +376,7 @@ describe('OIDC service', () => {
 			expect(authUrl.url.searchParams.get('prompt')).toBeDefined();
 			expect(authUrl.url.searchParams.get('prompt')).toEqual('consent');
 			expect(authUrl.url.searchParams.get('state')).toBeDefined();
-			expect(authUrl.url.searchParams.get('state')?.startsWith('n8n_state:')).toBe(true);
+			expect(authUrl.url.searchParams.get('state')?.startsWith('MNI_state:')).toBe(true);
 
 			expect(authUrl.state).toBeDefined();
 			expect(authUrl.nonce).toBeDefined();
@@ -388,7 +388,7 @@ describe('OIDC service', () => {
 			// @ts-expect-error - provisioningConfig is private and only accessible within the class
 			Container.get(ProvisioningService).provisioningConfig.scopesProvisionInstanceRole = false;
 			// @ts-expect-error - provisioningConfig is private and only accessible within the class
-			Container.get(ProvisioningService).provisioningConfig.scopesName = 'n8n_test_scope';
+			Container.get(ProvisioningService).provisioningConfig.scopesName = 'MNI_test_scope';
 			const authUrl = await oidcService.generateLoginUrl();
 
 			validateUrl(authUrl);
@@ -401,11 +401,11 @@ describe('OIDC service', () => {
 			// @ts-expect-error - provisioningConfig is private and only accessible within the class
 			Container.get(ProvisioningService).provisioningConfig.scopesProvisionInstanceRole = false;
 			// @ts-expect-error - provisioningConfig is private and only accessible within the class
-			Container.get(ProvisioningService).provisioningConfig.scopesName = 'n8n_test_scope';
+			Container.get(ProvisioningService).provisioningConfig.scopesName = 'MNI_test_scope';
 			const authUrl = await oidcService.generateLoginUrl();
 
 			validateUrl(authUrl);
-			expect(authUrl.url.searchParams.get('scope')).toEqual('openid email profile n8n_test_scope');
+			expect(authUrl.url.searchParams.get('scope')).toEqual('openid email profile MNI_test_scope');
 		});
 
 		it('should include the provisioning scope if instance provisioning is enabled', async () => {
@@ -414,11 +414,11 @@ describe('OIDC service', () => {
 			// @ts-expect-error - provisioningConfig is private and only accessible within the class
 			Container.get(ProvisioningService).provisioningConfig.scopesProvisionInstanceRole = true;
 			// @ts-expect-error - provisioningConfig is private and only accessible within the class
-			Container.get(ProvisioningService).provisioningConfig.scopesName = 'n8n_test_scope';
+			Container.get(ProvisioningService).provisioningConfig.scopesName = 'MNI_test_scope';
 			const authUrl = await oidcService.generateLoginUrl();
 
 			validateUrl(authUrl);
-			expect(authUrl.url.searchParams.get('scope')).toEqual('openid email profile n8n_test_scope');
+			expect(authUrl.url.searchParams.get('scope')).toEqual('openid email profile MNI_test_scope');
 		});
 
 		it('should include the provisioning scope if project and instance provisioning is enabled', async () => {
@@ -427,11 +427,11 @@ describe('OIDC service', () => {
 			// @ts-expect-error - provisioningConfig is private and only accessible within the class
 			Container.get(ProvisioningService).provisioningConfig.scopesProvisionInstanceRole = true;
 			// @ts-expect-error - provisioningConfig is private and only accessible within the class
-			Container.get(ProvisioningService).provisioningConfig.scopesName = 'n8n_test_scope';
+			Container.get(ProvisioningService).provisioningConfig.scopesName = 'MNI_test_scope';
 			const authUrl = await oidcService.generateLoginUrl();
 
 			validateUrl(authUrl);
-			expect(authUrl.url.searchParams.get('scope')).toEqual('openid email profile n8n_test_scope');
+			expect(authUrl.url.searchParams.get('scope')).toEqual('openid email profile MNI_test_scope');
 		});
 	});
 
@@ -456,7 +456,7 @@ describe('OIDC service', () => {
 		beforeEach(() => {
 			mockConfiguration = new real_odic_client.Configuration(
 				{
-					issuer: 'https://example.com/auth/realms/n8n',
+					issuer: 'https://example.com/auth/realms/MNI',
 					client_id: 'test-client-id',
 					redirect_uris: ['http://n8n.io/sso/oidc/callback'],
 					response_types: ['code'],
@@ -505,14 +505,14 @@ describe('OIDC service', () => {
 			// @ts-expect-error - provisioningConfig is private and only accessible within the class
 			Container.get(ProvisioningService).provisioningConfig.scopesProvisionInstanceRole = true;
 			// @ts-expect-error - provisioningConfig is private and only accessible within the class
-			Container.get(ProvisioningService).provisioningConfig.scopesName = 'n8n_test_scope';
+			Container.get(ProvisioningService).provisioningConfig.scopesName = 'MNI_test_scope';
 
 			await oidcService.updateConfig({ ...baseConfig, additionalScopes: 'groups' });
 
 			const authUrl = await oidcService.generateLoginUrl();
 
 			expect(authUrl.url.searchParams.get('scope')).toEqual(
-				'openid email profile n8n_test_scope groups',
+				'openid email profile MNI_test_scope groups',
 			);
 
 			// @ts-expect-error - provisioningConfig is private and only accessible within the class
@@ -542,7 +542,7 @@ describe('OIDC service', () => {
 		it('should include additional scopes in the test authorization URL', async () => {
 			const mockConfiguration = new real_odic_client.Configuration(
 				{
-					issuer: 'https://example.com/auth/realms/n8n',
+					issuer: 'https://example.com/auth/realms/MNI',
 					client_id: 'test-client-id',
 					redirect_uris: ['http://n8n.io/sso/oidc/callback'],
 					response_types: ['code'],
@@ -572,7 +572,7 @@ describe('OIDC service', () => {
 		it('should only use default scopes when additionalScopes is empty in test URL', async () => {
 			const mockConfiguration = new real_odic_client.Configuration(
 				{
-					issuer: 'https://example.com/auth/realms/n8n',
+					issuer: 'https://example.com/auth/realms/MNI',
 					client_id: 'test-client-id',
 					redirect_uris: ['http://n8n.io/sso/oidc/callback'],
 					response_types: ['code'],
@@ -616,7 +616,7 @@ describe('OIDC service', () => {
 				claims: () => {
 					return {
 						sub: 'mock-subject',
-						iss: 'https://example.com/auth/realms/n8n',
+						iss: 'https://example.com/auth/realms/MNI',
 						aud: 'test-client-id',
 						iat: Math.floor(Date.now() / 1000) - 1000,
 						exp: Math.floor(Date.now() / 1000) + 3600,
@@ -662,7 +662,7 @@ describe('OIDC service', () => {
 				claims: () => {
 					return {
 						sub: 'mock-subject',
-						iss: 'https://example.com/auth/realms/n8n',
+						iss: 'https://example.com/auth/realms/MNI',
 						aud: 'test-client-id',
 						iat: Math.floor(Date.now() / 1000) - 1000,
 						exp: Math.floor(Date.now() / 1000) + 3600,
@@ -700,7 +700,7 @@ describe('OIDC service', () => {
 				claims: () => {
 					return {
 						sub: 'mock-subject-1',
-						iss: 'https://example.com/auth/realms/n8n',
+						iss: 'https://example.com/auth/realms/MNI',
 						aud: 'test-client-id',
 						iat: Math.floor(Date.now() / 1000) - 1000,
 						exp: Math.floor(Date.now() / 1000) + 3600,
@@ -738,7 +738,7 @@ describe('OIDC service', () => {
 				claims: () => {
 					return {
 						sub: 'mock-subject-3',
-						iss: 'https://example.com/auth/realms/n8n',
+						iss: 'https://example.com/auth/realms/MNI',
 						aud: 'test-client-id',
 						iat: Math.floor(Date.now() / 1000) - 1000,
 						exp: Math.floor(Date.now() / 1000) + 3600,
@@ -778,7 +778,7 @@ describe('OIDC service', () => {
 				claims: () => {
 					return {
 						sub: 'attacker-subject-unverified',
-						iss: 'https://example.com/auth/realms/n8n',
+						iss: 'https://example.com/auth/realms/MNI',
 						aud: 'test-client-id',
 						iat: Math.floor(Date.now() / 1000) - 1000,
 						exp: Math.floor(Date.now() / 1000) + 3600,
@@ -821,7 +821,7 @@ describe('OIDC service', () => {
 				claims: () => {
 					return {
 						sub: 'mock-subject-3',
-						iss: 'https://example.com/auth/realms/n8n',
+						iss: 'https://example.com/auth/realms/MNI',
 						aud: 'test-client-id',
 						iat: Math.floor(Date.now() / 1000) - 1000,
 						exp: Math.floor(Date.now() / 1000) + 3600,
@@ -858,7 +858,7 @@ describe('OIDC service', () => {
 				claims: () => {
 					return {
 						sub: 'mock-subject-invalid',
-						iss: 'https://example.com/auth/realms/n8n',
+						iss: 'https://example.com/auth/realms/MNI',
 						aud: 'test-client-id',
 						iat: Math.floor(Date.now() / 1000) - 1000,
 						exp: Math.floor(Date.now() / 1000) + 3600,
@@ -903,7 +903,7 @@ describe('OIDC service', () => {
 				claims: () => {
 					return {
 						sub: 'mock-subject-multi',
-						iss: 'https://example.com/auth/realms/n8n',
+						iss: 'https://example.com/auth/realms/MNI',
 						aud: 'test-client-id',
 						iat: Math.floor(Date.now() / 1000) - 1000,
 						exp: Math.floor(Date.now() / 1000) + 3600,
@@ -1025,7 +1025,7 @@ describe('OIDC service', () => {
 					claims: () => {
 						return {
 							sub,
-							iss: 'https://example.com/auth/realms/n8n',
+							iss: 'https://example.com/auth/realms/MNI',
 							aud: 'test-client-id',
 							iat: Math.floor(Date.now() / 1000) - 1000,
 							exp: Math.floor(Date.now() / 1000) + 3600,
@@ -1064,7 +1064,7 @@ describe('OIDC service', () => {
 				// @ts-expect-error - provisioningConfig is private
 				provisioningService.provisioningConfig.scopesProvisionProjectRoles = false;
 				// @ts-expect-error - provisioningConfig is private
-				provisioningService.provisioningConfig.scopesInstanceRoleClaimName = 'n8n_instance_role';
+				provisioningService.provisioningConfig.scopesInstanceRoleClaimName = 'MNI_instance_role';
 
 				const state = oidcService.generateState();
 				const nonce = oidcService.generateNonce();
@@ -1073,7 +1073,7 @@ describe('OIDC service', () => {
 				);
 
 				const mockTokens = createProvisioningMockTokens('new-instance-role-sub', {
-					n8n_instance_role: 'global:admin',
+					MNI_instance_role: 'global:admin',
 				});
 				authorizationCodeGrantMock.mockResolvedValueOnce(mockTokens);
 				fetchUserInfoMock.mockResolvedValueOnce({
@@ -1102,7 +1102,7 @@ describe('OIDC service', () => {
 				// @ts-expect-error - provisioningConfig is private
 				provisioningService.provisioningConfig.scopesProvisionProjectRoles = true;
 				// @ts-expect-error - provisioningConfig is private
-				provisioningService.provisioningConfig.scopesProjectsRolesClaimName = 'n8n_projects';
+				provisioningService.provisioningConfig.scopesProjectsRolesClaimName = 'MNI_projects';
 
 				const state = oidcService.generateState();
 				const nonce = oidcService.generateNonce();
@@ -1111,7 +1111,7 @@ describe('OIDC service', () => {
 				);
 
 				const mockTokens = createProvisioningMockTokens('new-project-role-sub', {
-					n8n_projects: [`${project.id}:editor`],
+					MNI_projects: [`${project.id}:editor`],
 				});
 				authorizationCodeGrantMock.mockResolvedValueOnce(mockTokens);
 				fetchUserInfoMock.mockResolvedValueOnce({
@@ -1136,9 +1136,9 @@ describe('OIDC service', () => {
 				// @ts-expect-error - provisioningConfig is private
 				provisioningService.provisioningConfig.scopesProvisionProjectRoles = true;
 				// @ts-expect-error - provisioningConfig is private
-				provisioningService.provisioningConfig.scopesInstanceRoleClaimName = 'n8n_instance_role';
+				provisioningService.provisioningConfig.scopesInstanceRoleClaimName = 'MNI_instance_role';
 				// @ts-expect-error - provisioningConfig is private
-				provisioningService.provisioningConfig.scopesProjectsRolesClaimName = 'n8n_projects';
+				provisioningService.provisioningConfig.scopesProjectsRolesClaimName = 'MNI_projects';
 
 				const state = oidcService.generateState();
 				const nonce = oidcService.generateNonce();
@@ -1147,8 +1147,8 @@ describe('OIDC service', () => {
 				);
 
 				const mockTokens = createProvisioningMockTokens('new-both-provisioning-sub', {
-					n8n_instance_role: 'global:admin',
-					n8n_projects: [`${project.id}:editor`],
+					MNI_instance_role: 'global:admin',
+					MNI_projects: [`${project.id}:editor`],
 				});
 				authorizationCodeGrantMock.mockResolvedValueOnce(mockTokens);
 				fetchUserInfoMock.mockResolvedValueOnce({
@@ -1194,7 +1194,7 @@ describe('OIDC service', () => {
 					});
 					await roleMappingRuleRepository.save(
 						roleMappingRuleRepository.create({
-							expression: "{{ $claims.n8n_role === 'admin' }}",
+							expression: "{{ $claims.MNI_role === 'admin' }}",
 							role: adminRole,
 							type: 'instance',
 							order: 0,
@@ -1208,7 +1208,7 @@ describe('OIDC service', () => {
 					);
 
 					const mockTokens = createProvisioningMockTokens('oidc-expr-instance-role-sub', {
-						n8n_role: 'admin',
+						MNI_role: 'admin',
 					});
 					authorizationCodeGrantMock.mockResolvedValueOnce(mockTokens);
 					fetchUserInfoMock.mockResolvedValueOnce({
@@ -1340,7 +1340,7 @@ describe('OIDC service', () => {
 				claims: () => {
 					return {
 						sub: 'mock-subject-userinfo-error',
-						iss: 'https://example.com/auth/realms/n8n',
+						iss: 'https://example.com/auth/realms/MNI',
 						aud: 'test-client-id',
 						iat: Math.floor(Date.now() / 1000) - 1000,
 						exp: Math.floor(Date.now() / 1000) + 3600,
@@ -1396,7 +1396,7 @@ describe('OIDC service', () => {
 		});
 
 		it('should throw an error for an invalid random part of the state', () => {
-			const invalid = Container.get(JwtService).sign({ state: 'n8n_state:invalid-state' });
+			const invalid = Container.get(JwtService).sign({ state: 'MNI_state:invalid-state' });
 			expect(() => oidcService.verifyState(invalid)).toThrow(BadRequestError);
 		});
 
@@ -1410,7 +1410,7 @@ describe('OIDC service', () => {
 		});
 
 		it('should throw an error for an invalid random part of the nonce', () => {
-			const invalid = Container.get(JwtService).sign({ nonce: 'n8n_nonce:invalid-nonce' });
+			const invalid = Container.get(JwtService).sign({ nonce: 'MNI_nonce:invalid-nonce' });
 			expect(() => oidcService.verifyNonce(invalid)).toThrow(BadRequestError);
 		});
 	});

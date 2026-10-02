@@ -1,5 +1,5 @@
 {
-	"node": "n8n-nodes-base.microsoftTeams",
+	"node": "MNI-nodes-base.microsoftTeams",
 	"nodeVersion": "1.0",
 	"codexVersion": "1.0",
 	"categories": ["Communication", "HITL"],
@@ -15,7 +15,7 @@
 		],
 		"primaryDocumentation": [
 			{
-				"url": "https://docs.n8n.io/integrations/builtin/app-nodes/n8n-nodes-base.microsoftteams/"
+				"url": "https://docs.n8n.io/integrations/builtin/app-nodes/MNI-nodes-base.microsoftteams/"
 			}
 		]
 	}

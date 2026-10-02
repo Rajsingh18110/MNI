@@ -4,12 +4,12 @@ import type {
 	INodeExecutionData,
 	INodeType,
 	INodeTypeDescription,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import {
 	ManualExecutionCancelledError,
 	NodeConnectionTypes,
 	NodeOperationError,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 export interface IExecReturnData {
 	exitCode: number;

@@ -1,5 +1,5 @@
-import { ControllerRegistryMetadata, type Controller } from '@n8n/decorators';
-import { Container } from '@n8n/di';
+import { ControllerRegistryMetadata, type Controller } from '@MNI/decorators';
+import { Container } from '@MNI/di';
 
 import { LicenseController } from '../license.controller';
 

@@ -1,4 +1,4 @@
-import type { ModalDefinition } from '@n8n/frontend-module-sdk';
+import type { ModalDefinition } from '@MNI/frontend-module-sdk';
 
 import { EXAMPLE_FEATURE_MODAL_KEY } from './exampleFeature.constants';
 

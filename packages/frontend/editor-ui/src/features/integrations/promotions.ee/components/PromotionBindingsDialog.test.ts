@@ -1,8 +1,8 @@
-import { createComponentRenderer } from '@n8n/frontend-test-utils';
-import { createDeferredPromise } from '@n8n/utils/promise/deferred-promise';
+import { createComponentRenderer } from '@MNI/frontend-test-utils';
+import { createDeferredPromise } from '@MNI/utils/promise/deferred-promise';
 import { fireEvent, waitFor, within } from '@testing-library/vue';
 import userEvent from '@testing-library/user-event';
-import type { ApplyPackageResultDto } from '@n8n/api-types';
+import type { ApplyPackageResultDto } from '@MNI/api-types';
 import PromotionBindingsDialog from './PromotionBindingsDialog.vue';
 import { continueApplyPromotion } from '../promotionsSettings.api';
 import {
@@ -14,7 +14,7 @@ import {
 	variable,
 } from '../__tests__/bindings.fixtures';
 
-vi.mock('@n8n/stores/useRootStore', () => ({
+vi.mock('@MNI/stores/useRootStore', () => ({
 	useRootStore: () => ({ publicApiContext: { baseUrl: '/custom/api/v1' } }),
 }));
 vi.mock('../promotionsSettings.api');

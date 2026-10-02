@@ -19,11 +19,11 @@ executes; the data is pinned onto it.
 
 - Shape source: `__schema__` preview schemas shipped next to each node
   (`packages/nodes-base/nodes/<Node>/__schema__/v<version>/<resource>/<operation>.json`),
-  resolved through n8n-core's `resolveOutputSchemaPath`/`loadOutputSchema` and
+  resolved through MNI-core's `resolveOutputSchemaPath`/`loadOutputSchema` and
   `LoadNodesAndCredentials.createOutputSchemaLookup()`. Prompt building and
-  parsing live in `@n8n/workflow-sdk` (`mock-data/`).
+  parsing live in `@MNI/workflow-sdk` (`mock-data/`).
 - Used by: Phase 1.5 bypass pin data (`pin-data-generator.ts`) and in-product
-  simulated verification (`@n8n/instance-ai`
+  simulated verification (`@MNI/instance-ai`
   `generate-simulation-fixtures.service.ts`).
 
 ## Credential connection tests — a separate, opt-in surface

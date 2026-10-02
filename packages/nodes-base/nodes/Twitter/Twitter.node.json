@@ -1,5 +1,5 @@
 {
-	"node": "n8n-nodes-base.twitter",
+	"node": "MNI-nodes-base.twitter",
 	"nodeVersion": "1.0",
 	"codexVersion": "1.0",
 	"categories": ["Marketing"],
@@ -11,7 +11,7 @@
 		],
 		"primaryDocumentation": [
 			{
-				"url": "https://docs.n8n.io/integrations/builtin/app-nodes/n8n-nodes-base.twitter/"
+				"url": "https://docs.n8n.io/integrations/builtin/app-nodes/MNI-nodes-base.twitter/"
 			}
 		],
 		"generic": [
@@ -23,12 +23,12 @@
 			{
 				"label": "Automate your data processing pipeline in 9 steps",
 				"icon": "⚙️",
-				"url": "https://n8n.io/blog/automate-your-data-processing-pipeline-in-9-steps-with-n8n/"
+				"url": "https://n8n.io/blog/automate-your-data-processing-pipeline-in-9-steps-with-MNI/"
 			},
 			{
 				"label": "5 workflow automations for Mattermost that we love at MNI",
 				"icon": "🤖",
-				"url": "https://n8n.io/blog/5-workflow-automations-for-mattermost-that-we-love-at-n8n/"
+				"url": "https://n8n.io/blog/5-workflow-automations-for-mattermost-that-we-love-at-MNI/"
 			}
 		]
 	},

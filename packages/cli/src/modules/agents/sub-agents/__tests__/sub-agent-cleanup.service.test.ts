@@ -1,5 +1,5 @@
-import { mockLogger } from '@n8n/backend-test-utils';
-import type { AgentJsonConfig } from '@n8n/api-types';
+import { mockLogger } from '@MNI/backend-test-utils';
+import type { AgentJsonConfig } from '@MNI/api-types';
 import { mock } from 'vitest-mock-extended';
 
 import type { AgentRuntimeCacheService } from '../../agent-runtime-cache.service';

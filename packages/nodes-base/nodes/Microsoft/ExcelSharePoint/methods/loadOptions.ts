@@ -1,4 +1,4 @@
-import type { ILoadOptionsFunctions, INodePropertyOptions } from 'n8n-workflow';
+import type { ILoadOptionsFunctions, INodePropertyOptions } from 'MNI-workflow';
 
 import { parseAddress } from '../../Excel/v2/helpers/utils';
 import { fetchTableColumnNames } from '../helpers/tableRead';

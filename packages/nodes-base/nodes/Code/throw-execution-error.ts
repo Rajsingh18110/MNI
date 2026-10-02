@@ -1,4 +1,4 @@
-import { UnexpectedError } from 'n8n-workflow';
+import { UnexpectedError } from 'MNI-workflow';
 
 import { isWrappableError, WrappedExecutionError } from './errors/WrappedExecutionError';
 

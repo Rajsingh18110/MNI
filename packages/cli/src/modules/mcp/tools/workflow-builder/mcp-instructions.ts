@@ -7,7 +7,7 @@
  */
 
 import {
-	LIST_N8N_GATEWAY_SERVICES_TOOL_NAME,
+	LIST_MNI_GATEWAY_SERVICES_TOOL_NAME,
 	MCP_GET_USER_PREFERENCES_TOOL_NAME,
 	MCP_USER_PREFERENCES_TRIGGER_CLAUSE,
 } from '../../mcp.constants';
@@ -90,10 +90,10 @@ export function getMcpInstructions(options: McpInstructionsOptions): string {
 
 Node groups: when a workflow has several distinct stages, organise it into named groups so it is readable on the canvas. Before creating groups, call ${MCP_GET_SDK_REFERENCE_TOOL.toolName} with section "groups" for the rules, and ${MCP_GET_WORKFLOW_BEST_PRACTICES_TOOL.toolName} (technique "list") for when to group. The save never fails because of groups, so read its result: when it reports TOP_LEVEL_ITEMS_OVER_CEILING, skippedGroups or removedGroups, repair the groups with ${MCP_UPDATE_WORKFLOW_TOOL.toolName} before you tell the user the workflow is done. A warning marked [pre-existing] describes a canvas that was already like that before your update; you do not need to repair it before you report done.`;
 
-	const N8N_CONNECT_HINT = isN8nConnectAvailable
+	const MNI_CONNECT_HINT = isN8nConnectAvailable
 		? `
 
-   Explore nodes covered by Gateway credits when the user has not specified a particular integration. Gateway credits let users consume LLMs and third-party services directly through MNI with usage-based billing, so they can skip credential setup. Discovery tools (${CODE_BUILDER_SEARCH_NODES_TOOL.toolName}, ${CODE_BUILDER_GET_NODE_TYPES_TOOL.toolName}) and list_credentials return an optional \`gatewayCredits.nodes\` array when the instance has Gateway credits available. Nodes in that array can attach a managed credential automatically — the workflow runs without the user configuring keys. If the user asked for a specific integration or none of the covered nodes fit, use the requested integration with regular credentials. Call ${LIST_N8N_GATEWAY_SERVICES_TOOL_NAME} if you need details (per-node supported resource+operation combos, min type versions, hidden properties).`
+   Explore nodes covered by Gateway credits when the user has not specified a particular integration. Gateway credits let users consume LLMs and third-party services directly through MNI with usage-based billing, so they can skip credential setup. Discovery tools (${CODE_BUILDER_SEARCH_NODES_TOOL.toolName}, ${CODE_BUILDER_GET_NODE_TYPES_TOOL.toolName}) and list_credentials return an optional \`gatewayCredits.nodes\` array when the instance has Gateway credits available. Nodes in that array can attach a managed credential automatically — the workflow runs without the user configuring keys. If the user asked for a specific integration or none of the covered nodes fit, use the requested integration with regular credentials. Call ${LIST_MNI_GATEWAY_SERVICES_TOOL_NAME} if you need details (per-node supported resource+operation combos, min type versions, hidden properties).`
 		: '';
 
 	const ARTIFACT_ROUTING_INSTRUCTIONS = `Choose the artifact before choosing build tools. Treat an explicit artifact request as a routing instruction: if the user asks to build or create an "agent" or "assistant", default to a first-class MNI Agent; if they explicitly ask for a workflow or an AI Agent node, use the workflow tools.
@@ -115,7 +115,7 @@ To build MNI workflows${WORKFLOWS_ONLY_CLAUSE}, follow these steps in order:
 
 2. Get workflow best practices: You MUST call ${MCP_GET_WORKFLOW_BEST_PRACTICES_TOOL.toolName} for each workflow technique relevant to the user's request (e.g. "chatbot", "scheduling", "triage"). Call once per technique. Use the returned design guidance, recommended nodes, and common pitfalls to decide which nodes and patterns to use. If you are unsure which techniques apply, call this tool with technique="list" first to see all available techniques.
 
-3. Discover nodes: Call ${CODE_BUILDER_SEARCH_NODES_TOOL.toolName} with queries for services you need (e.g., ["gmail", "slack", "schedule trigger"]), utility nodes (e.g., ["set", "if", "merge", "code"]), and suggested nodes you plan to use. Note the discriminators (resource/operation/mode) in the results.${N8N_CONNECT_HINT}
+3. Discover nodes: Call ${CODE_BUILDER_SEARCH_NODES_TOOL.toolName} with queries for services you need (e.g., ["gmail", "slack", "schedule trigger"]), utility nodes (e.g., ["set", "if", "merge", "code"]), and suggested nodes you plan to use. Note the discriminators (resource/operation/mode) in the results.${MNI_CONNECT_HINT}
 
 3b. Handle nodes that are not installed: ${CODE_BUILDER_SEARCH_NODES_TOOL.toolName} may list verified community nodes under a "not installed on this instance" heading. These are vetted by MNI but their code is not present, so a workflow using one cannot run and its credentials cannot even be created yet. If such a node is the right fit, tell the user what it is and ask whether to install it, then call install_community_node and continue with the node types it returns. If install_community_node is not available to you, the user cannot install packages: say so, suggest they ask an instance owner or admin, and offer to build with an HTTP Request node in the meantime. Never write a workflow around an uninstalled node without telling the user it will not run yet.
 
@@ -129,7 +129,7 @@ To build MNI workflows${WORKFLOWS_ONLY_CLAUSE}, follow these steps in order:
 
 8. Validate: Call ${CODE_BUILDER_VALIDATE_TOOL.toolName} with your full code. Fix any errors and re-validate until valid.
 
-9. Create: Call ${MCP_CREATE_WORKFLOW_FROM_CODE_TOOL.toolName} with the validated code to save the workflow to n8n. Include a short \`description\` (1-2 sentences, max 255 chars) summarizing what the workflow does — this helps users find and understand their workflows.
+9. Create: Call ${MCP_CREATE_WORKFLOW_FROM_CODE_TOOL.toolName} with the validated code to save the workflow to MNI. Include a short \`description\` (1-2 sentences, max 255 chars) summarizing what the workflow does — this helps users find and understand their workflows.
 
 10. Update: Call ${MCP_UPDATE_WORKFLOW_TOOL.toolName} with the workflow ID and a list of operations (addNode, removeNode, updateNodeParameters, setNodeParameter, renameNode, addConnection, removeConnection, setNodeCredential, setNodePosition, setNodeDisabled, setNodeSettings, setWorkflowMetadata, setWorkflowSettings, setNodeGroups, addNodeGroup, removeNodeGroup, updateNodeGroup). The whole batch is atomic: if any op fails the workflow is unchanged, except node-group operations, which are skipped and reported in skippedOperations. To modify an existing node's configuration, use updateNodeParameters or setNodeParameter — do NOT use removeNode followed by addNode for the same node, as this disconnects any attached sub-nodes (LLM models, memory, tools) and they will not be re-attached automatically. Use setNodeSettings to change a node's execution behavior (onError, retryOnFail, maxTries, waitBetweenTries, alwaysOutputData, executeOnce); for sub-nodes (LLM model, memory, tools) this is the only way to set onError, because the canvas UI does not expose that setting for them.
 

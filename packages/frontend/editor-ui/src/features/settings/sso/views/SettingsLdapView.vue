@@ -3,20 +3,20 @@ import type { CSSProperties } from 'vue';
 import { computed, onMounted, ref } from 'vue';
 import { capitalizeFirstLetter } from '@/app/utils/htmlUtils';
 import { convertToDisplayDate } from '@/app/utils/typesUtils';
-import { useToast } from '@n8n/composables/useToast';
+import { useToast } from '@MNI/composables/useToast';
 import { useMessage } from '@/app/composables/useMessage';
 import { useDocumentTitle } from '@/app/composables/useDocumentTitle';
 import type { IFormInput, IFormInputs } from '@/Interface';
-import type { LdapConfig, LdapSyncData, LdapSyncTable } from '@n8n/rest-api-client/api/ldap';
+import type { LdapConfig, LdapSyncData, LdapSyncTable } from '@MNI/rest-api-client/api/ldap';
 import { MODAL_CONFIRM } from '@/app/constants';
 
 import humanizeDuration from 'humanize-duration';
 import type { Events } from 'v3-infinite-loading';
 import InfiniteLoading from 'v3-infinite-loading';
-import { useSettingsStore } from '@n8n/stores/settings.store';
-import { createFormEventBus } from '@n8n/design-system';
+import { useSettingsStore } from '@MNI/stores/settings.store';
+import { createFormEventBus } from '@MNI/design-system';
 import type { TableColumnCtx } from 'element-plus';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import { usePageRedirectionHelper } from '@/app/composables/usePageRedirectionHelper';
 import { useSSOStore } from '../sso.store';
 
@@ -27,7 +27,7 @@ import {
 	N8nFormInputs,
 	N8nHeading,
 	N8nInfoTip,
-} from '@n8n/design-system';
+} from '@MNI/design-system';
 type TableRow = {
 	status: string;
 	startAt: string;
@@ -656,7 +656,7 @@ onMounted(async () => {
 			</div>
 			<div :class="$style.docsInfoTip">
 				<N8nInfoTip theme="info" type="note">
-					<span v-n8n-html="i18n.baseText('settings.ldap.infoTip')"></span>
+					<span v-MNI-html="i18n.baseText('settings.ldap.infoTip')"></span>
 				</N8nInfoTip>
 			</div>
 			<div :class="$style.settingsForm">

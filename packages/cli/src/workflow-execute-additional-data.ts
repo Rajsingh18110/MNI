@@ -1,14 +1,14 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 
-import type { PushMessage, PushType } from '@n8n/api-types';
-import { Logger, ModuleRegistry } from '@n8n/backend-common';
-import { SsrfProtectionService } from '@n8n/backend-network';
-import { ExecutionsConfig, GlobalConfig, SsrfProtectionConfig, WorkflowsConfig } from '@n8n/config';
-import { Time } from '@n8n/constants';
-import { ExecutionRepository, WorkflowRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
+import type { PushMessage, PushType } from '@MNI/api-types';
+import { Logger, ModuleRegistry } from '@MNI/backend-common';
+import { SsrfProtectionService } from '@MNI/backend-network';
+import { ExecutionsConfig, GlobalConfig, SsrfProtectionConfig, WorkflowsConfig } from '@MNI/config';
+import { Time } from '@MNI/constants';
+import { ExecutionRepository, WorkflowRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
 import type { JSONSchema7 } from 'json-schema';
-import { ExternalSecretsProxy, WorkflowExecute } from 'n8n-core';
+import { ExternalSecretsProxy, WorkflowExecute } from 'MNI-core';
 import type {
 	AiEvent,
 	EnvProviderState,
@@ -36,7 +36,7 @@ import type {
 	IWorkflowSettings,
 	RelatedExecution,
 	WorkflowExecuteMode,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import {
 	OperationalError,
 	UnexpectedError,
@@ -45,7 +45,7 @@ import {
 	mergeRunsPerBranch,
 	attachDynamicCredentialsUsage,
 	summarizeDynamicCredentialsUsage,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import {
 	createWorkflowAgentStreamObserver,
@@ -70,7 +70,7 @@ import {
 import type { UpdateExecutionPayload } from '@/interfaces';
 import { NodeTypes } from '@/node-types';
 import { Push } from '@/push';
-import { UrlService } from '@n8n/backend-services';
+import { UrlService } from '@MNI/backend-services';
 import { TaskRequester } from '@/task-runners/task-managers/task-requester';
 import { findSubworkflowStart } from '@/utils';
 import { objectToError } from '@/utils/object-to-error';
@@ -502,10 +502,10 @@ async function listAgents(userId: string): Promise<Array<{ id: string; name: str
  * pre-1.2 triggers can opt in via the `returnOutput` parameter
  * and otherwise stay on `lastRunOnly` for backward compatibility.
  * Sub-workflows without an `Execute Workflow Trigger` keep the legacy output too.
- * See n8n-io/n8n#9989
+ * See MNI-io/MNI#9989
  */
 export function triggerReturnsLastRunOnly(nodes: INode[]): boolean {
-	const trigger = nodes.find((node) => node.type === 'n8n-nodes-base.executeWorkflowTrigger');
+	const trigger = nodes.find((node) => node.type === 'MNI-nodes-base.executeWorkflowTrigger');
 	const triggerVersion = trigger?.typeVersion ?? 1;
 	return triggerVersion < 1.2 && trigger?.parameters?.returnOutput !== 'allRuns';
 }
@@ -517,7 +517,7 @@ export function triggerReturnsLastRunOnly(nodes: INode[]): boolean {
  * The caller can additionally force the legacy single-run output via `returnLastRunOnly`
  * (used by LangChain tool/retriever callers that need a single-answer output).
  * Pinned data on the last node always wins in manual mode.
- * See n8n-io/n8n#9989.
+ * See MNI-io/MNI#9989.
  */
 export function buildSubWorkflowOutput(
 	data: IRun,

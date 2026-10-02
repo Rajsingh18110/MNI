@@ -3,13 +3,13 @@ import { fireEvent, waitFor } from '@testing-library/vue';
 import { waitAllPromises, getTooltip, hoverTooltipTrigger } from '@/__tests__/utils';
 import SettingsPersonalView from './SettingsPersonalView.vue';
 import { confirmPasswordEventBus } from '../auth.eventBus';
-import { useSettingsStore } from '@n8n/stores/settings.store';
-import { useUsersStore } from '@n8n/stores/users.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
+import { useUsersStore } from '@MNI/stores/users.store';
 import { createComponentRenderer } from '@/__tests__/render';
 import { setupServer } from '@/__tests__/server';
-import { AuthenticationMethod, ROLE } from '@n8n/api-types';
+import { AuthenticationMethod, ROLE } from '@MNI/api-types';
 import { useUIStore } from '@/app/stores/ui.store';
-import { useCloudPlanStore } from '@n8n/stores/cloudPlan.store';
+import { useCloudPlanStore } from '@MNI/stores/cloudPlan.store';
 import { useSSOStore } from '@/features/settings/sso/sso.store';
 
 let pinia: ReturnType<typeof createPinia>;

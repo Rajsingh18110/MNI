@@ -1,4 +1,4 @@
-import type { INodeProperties } from 'n8n-workflow';
+import type { INodeProperties } from 'MNI-workflow';
 
 export const tweetOperations: INodeProperties[] = [
 	{
@@ -347,7 +347,7 @@ export const tweetFields: INodeProperties[] = [
 				displayName: 'Tweet Fields',
 				name: 'tweetFieldsObject',
 				type: 'multiOptions',
-				// eslint-disable-next-line n8n-nodes-base/node-param-multi-options-type-unsorted-items
+				// eslint-disable-next-line MNI-nodes-base/node-param-multi-options-type-unsorted-items
 				options: [
 					{
 						name: 'Attachments',

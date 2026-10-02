@@ -1,15 +1,15 @@
 import type { Mock, Mocked } from 'vitest';
-import type { SamlPreferences } from '@n8n/api-types';
-import type { HttpRequestClient, OutboundHttp } from '@n8n/backend-network';
-import { mockInstance, mockLogger } from '@n8n/backend-test-utils';
-import type { GlobalConfig } from '@n8n/config';
-import { SettingsRepository } from '@n8n/db';
-import type { UserRepository, Settings, User } from '@n8n/db';
-import { Container } from '@n8n/di';
+import type { SamlPreferences } from '@MNI/api-types';
+import type { HttpRequestClient, OutboundHttp } from '@MNI/backend-network';
+import { mockInstance, mockLogger } from '@MNI/backend-test-utils';
+import type { GlobalConfig } from '@MNI/config';
+import { SettingsRepository } from '@MNI/db';
+import type { UserRepository, Settings, User } from '@MNI/db';
+import { Container } from '@MNI/di';
 import type express from 'express';
 import { mock } from 'vitest-mock-extended';
-import type { Cipher, InstanceSettings } from 'n8n-core';
-import { CREDENTIAL_BLANKING_VALUE } from 'n8n-workflow';
+import type { Cipher, InstanceSettings } from 'MNI-core';
+import { CREDENTIAL_BLANKING_VALUE } from 'MNI-workflow';
 import type { IdentityProviderInstance, ServiceProviderInstance } from 'samlify';
 
 import { BadRequestError } from '@/errors/response-errors/bad-request.error';
@@ -17,7 +17,7 @@ import { ForbiddenError } from '@/errors/response-errors/forbidden.error';
 import type { ProvisioningService } from '@/modules/provisioning.ee/provisioning.service.ee';
 import { Publisher } from '@/scaling/pubsub/publisher.service';
 import type { CacheService } from '@/services/cache/cache.service';
-import type { UrlService } from '@n8n/backend-services';
+import type { UrlService } from '@MNI/backend-services';
 import * as ssoHelpers from '@/sso.ee/sso-helpers';
 
 import { SAML_PREFERENCES_DB_KEY } from '../constants';
@@ -198,7 +198,7 @@ describe('SamlService', () => {
 		await validator.init();
 	});
 
-	const originalEnv = process.env.N8N_ENV_FEAT_SIGNED_SAML_REQUESTS;
+	const originalEnv = process.env.MNI_ENV_FEAT_SIGNED_SAML_REQUESTS;
 
 	beforeEach(async () => {
 		vi.resetAllMocks();
@@ -242,15 +242,15 @@ describe('SamlService', () => {
 			outboundHttp,
 		);
 		// Mock GlobalConfig container access
-		Container.set(require('@n8n/config').GlobalConfig, globalConfig);
+		Container.set(require('@MNI/config').GlobalConfig, globalConfig);
 	});
 
 	afterEach(() => {
 		// Restore original environment variable
 		if (originalEnv !== undefined) {
-			process.env.N8N_ENV_FEAT_SIGNED_SAML_REQUESTS = originalEnv;
+			process.env.MNI_ENV_FEAT_SIGNED_SAML_REQUESTS = originalEnv;
 		} else {
-			delete process.env.N8N_ENV_FEAT_SIGNED_SAML_REQUESTS;
+			delete process.env.MNI_ENV_FEAT_SIGNED_SAML_REQUESTS;
 		}
 	});
 
@@ -261,18 +261,18 @@ describe('SamlService', () => {
 			['empty string', ''],
 			['"0"', '0'],
 			['"no"', 'no'],
-		])('should return false when N8N_ENV_FEAT_SIGNED_SAML_REQUESTS is %s', (_, value) => {
+		])('should return false when MNI_ENV_FEAT_SIGNED_SAML_REQUESTS is %s', (_, value) => {
 			if (value === undefined) {
-				delete process.env.N8N_ENV_FEAT_SIGNED_SAML_REQUESTS;
+				delete process.env.MNI_ENV_FEAT_SIGNED_SAML_REQUESTS;
 			} else {
-				process.env.N8N_ENV_FEAT_SIGNED_SAML_REQUESTS = value;
+				process.env.MNI_ENV_FEAT_SIGNED_SAML_REQUESTS = value;
 			}
 
 			expect(samlService.isSignedSamlRequestsEnabled()).toBe(false);
 		});
 
-		it('should return true when N8N_ENV_FEAT_SIGNED_SAML_REQUESTS is "true"', () => {
-			process.env.N8N_ENV_FEAT_SIGNED_SAML_REQUESTS = 'true';
+		it('should return true when MNI_ENV_FEAT_SIGNED_SAML_REQUESTS is "true"', () => {
+			process.env.MNI_ENV_FEAT_SIGNED_SAML_REQUESTS = 'true';
 
 			expect(samlService.isSignedSamlRequestsEnabled()).toBe(true);
 		});
@@ -921,7 +921,7 @@ describe('SamlService', () => {
 
 		describe('feature flag gate', () => {
 			it('should throw BadRequestError when setting signingPrivateKey with feature flag disabled', async () => {
-				delete process.env.N8N_ENV_FEAT_SIGNED_SAML_REQUESTS;
+				delete process.env.MNI_ENV_FEAT_SIGNED_SAML_REQUESTS;
 
 				await expect(
 					samlService.setSamlPreferences({
@@ -932,7 +932,7 @@ describe('SamlService', () => {
 			});
 
 			it('should throw BadRequestError when setting signingCertificate with feature flag disabled', async () => {
-				delete process.env.N8N_ENV_FEAT_SIGNED_SAML_REQUESTS;
+				delete process.env.MNI_ENV_FEAT_SIGNED_SAML_REQUESTS;
 
 				await expect(
 					samlService.setSamlPreferences({
@@ -945,7 +945,7 @@ describe('SamlService', () => {
 
 		describe('PEM format validation', () => {
 			beforeEach(() => {
-				process.env.N8N_ENV_FEAT_SIGNED_SAML_REQUESTS = 'true';
+				process.env.MNI_ENV_FEAT_SIGNED_SAML_REQUESTS = 'true';
 			});
 
 			it('should throw BadRequestError for invalid private key PEM format', async () => {
@@ -969,7 +969,7 @@ describe('SamlService', () => {
 
 		describe('key/cert completeness', () => {
 			beforeEach(() => {
-				process.env.N8N_ENV_FEAT_SIGNED_SAML_REQUESTS = 'true';
+				process.env.MNI_ENV_FEAT_SIGNED_SAML_REQUESTS = 'true';
 			});
 
 			it('should throw BadRequestError when authnRequestsSigned=true but signingPrivateKey missing', async () => {
@@ -999,7 +999,7 @@ describe('SamlService', () => {
 
 		describe('key/cert pair matching', () => {
 			beforeEach(() => {
-				process.env.N8N_ENV_FEAT_SIGNED_SAML_REQUESTS = 'true';
+				process.env.MNI_ENV_FEAT_SIGNED_SAML_REQUESTS = 'true';
 			});
 
 			it('should throw BadRequestError when key and cert do not match', async () => {
@@ -1027,7 +1027,7 @@ describe('SamlService', () => {
 
 		describe('encryption', () => {
 			beforeEach(() => {
-				process.env.N8N_ENV_FEAT_SIGNED_SAML_REQUESTS = 'true';
+				process.env.MNI_ENV_FEAT_SIGNED_SAML_REQUESTS = 'true';
 			});
 
 			it('should encrypt signingPrivateKey when storing', async () => {
@@ -1065,7 +1065,7 @@ describe('SamlService', () => {
 
 		describe('decryption', () => {
 			beforeEach(() => {
-				process.env.N8N_ENV_FEAT_SIGNED_SAML_REQUESTS = 'true';
+				process.env.MNI_ENV_FEAT_SIGNED_SAML_REQUESTS = 'true';
 			});
 
 			it('should decrypt stored private key via getDecryptedSigningPrivateKey', async () => {
@@ -1086,7 +1086,7 @@ describe('SamlService', () => {
 			});
 
 			it('should return undefined when feature flag is disabled', async () => {
-				delete process.env.N8N_ENV_FEAT_SIGNED_SAML_REQUESTS;
+				delete process.env.MNI_ENV_FEAT_SIGNED_SAML_REQUESTS;
 				await samlService.loadPreferencesWithoutValidation({
 					signingPrivateKey: 'encrypted:some-key',
 				});
@@ -1127,7 +1127,7 @@ describe('SamlService', () => {
 
 		describe('DB round-trip', () => {
 			beforeEach(() => {
-				process.env.N8N_ENV_FEAT_SIGNED_SAML_REQUESTS = 'true';
+				process.env.MNI_ENV_FEAT_SIGNED_SAML_REQUESTS = 'true';
 			});
 
 			it('should not double-encrypt when loading already-encrypted key from DB', async () => {
@@ -1182,7 +1182,7 @@ describe('SamlService', () => {
 
 		describe('EC key support', () => {
 			beforeEach(() => {
-				process.env.N8N_ENV_FEAT_SIGNED_SAML_REQUESTS = 'true';
+				process.env.MNI_ENV_FEAT_SIGNED_SAML_REQUESTS = 'true';
 			});
 
 			it('should accept matching EC key (PKCS#8) and cert pair', async () => {
@@ -1268,7 +1268,7 @@ describe('SamlService', () => {
 
 		describe('blanking value (redaction marker)', () => {
 			beforeEach(() => {
-				process.env.N8N_ENV_FEAT_SIGNED_SAML_REQUESTS = 'true';
+				process.env.MNI_ENV_FEAT_SIGNED_SAML_REQUESTS = 'true';
 			});
 
 			it('should not update signing key when blanking value is received', async () => {
@@ -1294,7 +1294,7 @@ describe('SamlService', () => {
 			});
 
 			it('should not trigger feature flag check for blanking value', async () => {
-				delete process.env.N8N_ENV_FEAT_SIGNED_SAML_REQUESTS;
+				delete process.env.MNI_ENV_FEAT_SIGNED_SAML_REQUESTS;
 
 				// Blanking value should be silently ignored, not rejected
 				await expect(
@@ -1318,7 +1318,7 @@ describe('SamlService', () => {
 
 		describe('clearing signing keys', () => {
 			beforeEach(() => {
-				process.env.N8N_ENV_FEAT_SIGNED_SAML_REQUESTS = 'true';
+				process.env.MNI_ENV_FEAT_SIGNED_SAML_REQUESTS = 'true';
 			});
 
 			it('should clear signing private key when empty string is sent', async () => {

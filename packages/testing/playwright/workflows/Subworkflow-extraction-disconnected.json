@@ -2,7 +2,7 @@
 	"nodes": [
 		{
 			"parameters": {},
-			"type": "n8n-nodes-base.manualTrigger",
+			"type": "MNI-nodes-base.manualTrigger",
 			"typeVersion": 1,
 			"position": [0, -5],
 			"id": "41b93a1d-ca68-49c1-b252-323e57f58ba9",
@@ -22,7 +22,7 @@
 				},
 				"options": {}
 			},
-			"type": "n8n-nodes-base.set",
+			"type": "MNI-nodes-base.set",
 			"typeVersion": 3.4,
 			"position": [220, -5],
 			"id": "afd95339-62f5-4efd-bcaa-637cec90ab0f",
@@ -42,7 +42,7 @@
 				},
 				"options": {}
 			},
-			"type": "n8n-nodes-base.set",
+			"type": "MNI-nodes-base.set",
 			"typeVersion": 3.4,
 			"position": [220, 180],
 			"id": "763e2dc4-1701-47fd-a767-843c48fb06bd",
@@ -62,7 +62,7 @@
 				},
 				"options": {}
 			},
-			"type": "n8n-nodes-base.set",
+			"type": "MNI-nodes-base.set",
 			"typeVersion": 3.4,
 			"position": [440, 180],
 			"id": "c279107f-08c2-4be6-9016-d19215cfeb9e",

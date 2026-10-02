@@ -28,7 +28,7 @@ on:
 jobs:
   prepare:
     name: Compute date tag
-    if: github.repository == 'n8n-io/n8n'
+    if: github.repository == 'MNI-io/MNI'
     runs-on: ubuntu-latest
     permissions: {}
     outputs:
@@ -52,7 +52,7 @@ jobs:
     uses: ./.github/workflows/docker-build-push.yml # zizmor: ignore[excessive-permissions,secrets-inherit]
     with:
       ref: '3.x'
-      n8n_version: 'v3-nightly'
+      MNI_version: 'v3-nightly'
       release_type: 'nightly'
       date_tag: ${{ needs.prepare.outputs.date_tag }}
       push_enabled: true
@@ -100,7 +100,7 @@ jobs:
         env:
           RC_VERSION: v3-rc
           DATE_TAG: ${{ needs.prepare.outputs.date_tag }}
-          N8N_IMAGE: ${{ needs.build.outputs.n8n_image }}
+          MNI_IMAGE: ${{ needs.build.outputs.MNI_image }}
           MAX_PER_DAY: '50'
         run: |
           set -euo pipefail
@@ -123,7 +123,7 @@ jobs:
 
           RC_NUMBER=''
           for n in $(seq 1 "$MAX_PER_DAY"); do
-            if ! tag_exists "${N8N_IMAGE}:${RC_VERSION}-${DATE_TAG}.${n}"; then
+            if ! tag_exists "${MNI_IMAGE}:${RC_VERSION}-${DATE_TAG}.${n}"; then
               RC_NUMBER=$n
               break
             fi
@@ -145,8 +145,8 @@ jobs:
           DATE_TAG: ${{ needs.prepare.outputs.date_tag }}
           RC_NUMBER: ${{ steps.rc.outputs.number }}
           DOCKER_BASE: ${{ secrets.DOCKER_USERNAME }}
-          N8N_IMAGE: ${{ needs.build.outputs.n8n_image }}
-          N8N_DIGEST: ${{ needs.build.outputs.n8n_digest }}
+          MNI_IMAGE: ${{ needs.build.outputs.MNI_image }}
+          MNI_DIGEST: ${{ needs.build.outputs.MNI_digest }}
           RUNNERS_IMAGE: ${{ needs.build.outputs.runners_image }}
           RUNNERS_DIGEST: ${{ needs.build.outputs.runners_digest }}
           DISTROLESS_IMAGE: ${{ needs.build.outputs.runners_distroless_image }}
@@ -194,6 +194,6 @@ jobs:
             echo "Immutable references (\`${RC_VERSION}\` and \`${RC_VERSION}-${DATE_TAG}\` now point here too):"
           } >> "$GITHUB_STEP_SUMMARY"
 
-          promote "$N8N_IMAGE" "$N8N_DIGEST" "${DOCKER_BASE}/n8n" ""
+          promote "$MNI_IMAGE" "$MNI_DIGEST" "${DOCKER_BASE}/MNI" ""
           promote "$RUNNERS_IMAGE" "$RUNNERS_DIGEST" "${DOCKER_BASE}/runners" ""
           promote "$DISTROLESS_IMAGE" "$DISTROLESS_DIGEST" "${DOCKER_BASE}/runners" "-distroless"

@@ -1,5 +1,5 @@
-import type { PromotionDirection } from '@n8n/api-types';
-import { promotionGitApplySettingsSchema, promotionGitPromoteSettingsSchema } from '@n8n/api-types';
+import type { PromotionDirection } from '@MNI/api-types';
+import { promotionGitApplySettingsSchema, promotionGitPromoteSettingsSchema } from '@MNI/api-types';
 
 import type { ResolvedPromotionConfig } from './promotions.types';
 

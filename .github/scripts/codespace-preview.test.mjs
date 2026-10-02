@@ -34,7 +34,7 @@ const START = Date.parse('2026-09-17T09:35:00Z');
 const PROGRESS = {
 	pr: 1234,
 	operation: 'up',
-	runUrl: 'https://github.com/n8n-io/n8n/actions/runs/1',
+	runUrl: 'https://github.com/MNI-io/MNI/actions/runs/1',
 	sha: PREVIEW.sha,
 	phase: 'build',
 	startedAt: START,
@@ -106,7 +106,7 @@ describe('parsePreviewJson', () => {
 		const stdout = [
 			'Creating a preview box for PR #1234 (my-branch)…',
 			'Waiting for psychic-umbrella-q7w6gwx to accept ssh…',
-			'> n8n@1.0.0 build /workspaces/MNI',
+			'> MNI@1.0.0 build /workspaces/MNI',
 			'Tasks:    112 successful, 112 total',
 			'Ready: the backend answers /healthz on port 5678.',
 			JSON.stringify(PREVIEW),
@@ -164,7 +164,7 @@ describe('hasPreviewBox', () => {
 	});
 
 	it('handles the empty listing preview.mjs prints when nothing exists', () => {
-		assert.equal(hasPreviewBox('No preview boxes on n8n-io/n8n.', 37), false);
+		assert.equal(hasPreviewBox('No preview boxes on MNI-io/MNI.', 37), false);
 		assert.equal(hasPreviewBox('', 37), false);
 	});
 });
@@ -187,14 +187,14 @@ describe('comment bodies', () => {
 		expired: expiredComment({ pr: PREVIEW.pr }),
 		failure: failureComment({
 			operation: 'up',
-			runUrl: 'https://github.com/n8n-io/n8n/actions/runs/1',
+			runUrl: 'https://github.com/MNI-io/MNI/actions/runs/1',
 			message: '`preview up` exited 1',
 		}),
 		progress: progressComment(PROGRESS),
 		cancelled: cancelledComment({
 			pr: PREVIEW.pr,
 			operation: 'up',
-			runUrl: 'https://github.com/n8n-io/n8n/actions/runs/1',
+			runUrl: 'https://github.com/MNI-io/MNI/actions/runs/1',
 		}),
 	};
 

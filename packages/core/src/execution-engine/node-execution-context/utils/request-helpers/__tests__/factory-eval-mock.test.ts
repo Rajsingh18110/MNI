@@ -1,4 +1,4 @@
-import type { INode, IWorkflowExecuteAdditionalData, Workflow } from 'n8n-workflow';
+import type { INode, IWorkflowExecuteAdditionalData, Workflow } from 'MNI-workflow';
 import { mock, mockDeep } from 'vitest-mock-extended';
 
 import type { EvalLlmMockHandler } from '@/execution-engine';
@@ -7,7 +7,7 @@ import { getRequestHelperFunctions } from '../factory';
 
 describe('request helpers under the eval mock', () => {
 	const workflow = mock<Workflow>();
-	const node = mock<INode>({ name: 'HTTP Request', type: 'n8n-nodes-base.httpRequest' });
+	const node = mock<INode>({ name: 'HTTP Request', type: 'MNI-nodes-base.httpRequest' });
 	const notFound = {
 		statusCode: 404,
 		headers: { 'content-type': 'application/json' },

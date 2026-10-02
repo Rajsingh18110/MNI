@@ -5,7 +5,7 @@
 			"parameters": {},
 			"id": "f3f2c2a0-2505-4000-8000-000000000001",
 			"name": "Manual Trigger",
-			"type": "n8n-nodes-base.manualTrigger",
+			"type": "MNI-nodes-base.manualTrigger",
 			"typeVersion": 1,
 			"position": [240, 300]
 		},
@@ -15,7 +15,7 @@
 			},
 			"id": "f3f2c2a0-2505-4000-8000-000000000002",
 			"name": "Create PDF",
-			"type": "n8n-nodes-base.code",
+			"type": "MNI-nodes-base.code",
 			"typeVersion": 2,
 			"position": [460, 300]
 		},
@@ -26,7 +26,7 @@
 			},
 			"id": "f3f2c2a0-2505-4000-8000-000000000003",
 			"name": "Populate VS",
-			"type": "@n8n/n8n-nodes-langchain.vectorStoreInMemory",
+			"type": "@MNI/MNI-nodes-langchain.vectorStoreInMemory",
 			"typeVersion": 1,
 			"position": [800, 300]
 		},
@@ -40,7 +40,7 @@
 			},
 			"id": "f3f2c2a0-2505-4000-8000-000000000004",
 			"name": "Default Data Loader",
-			"type": "@n8n/n8n-nodes-langchain.documentDefaultDataLoader",
+			"type": "@MNI/MNI-nodes-langchain.documentDefaultDataLoader",
 			"typeVersion": 1,
 			"position": [820, 520]
 		},
@@ -51,7 +51,7 @@
 			},
 			"id": "f3f2c2a0-2505-4000-8000-000000000006",
 			"name": "Character Text Splitter",
-			"type": "@n8n/n8n-nodes-langchain.textSplitterCharacterTextSplitter",
+			"type": "@MNI/MNI-nodes-langchain.textSplitterCharacterTextSplitter",
 			"typeVersion": 1,
 			"position": [820, 720]
 		},
@@ -68,7 +68,7 @@
 			},
 			"id": "f3f2c2a0-2505-4000-8000-000000000005",
 			"name": "Fake Embeddings",
-			"type": "@n8n/n8n-nodes-langchain.code",
+			"type": "@MNI/MNI-nodes-langchain.code",
 			"typeVersion": 1,
 			"position": [580, 520]
 		}

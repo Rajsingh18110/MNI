@@ -33,7 +33,7 @@ const mockEventBus = {
 	off: vi.fn(),
 };
 
-vi.mock('@n8n/utils/event-bus', () => ({
+vi.mock('@MNI/utils/event-bus', () => ({
 	createEventBus: () => mockEventBus,
 }));
 

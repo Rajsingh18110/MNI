@@ -1,12 +1,12 @@
 import { createTestingPinia, type TestingPinia } from '@pinia/testing';
-import type { ICredentialType, INodeTypeDescription } from 'n8n-workflow';
+import type { ICredentialType, INodeTypeDescription } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import CredentialIcon from './CredentialIcon.vue';
 
 import { createComponentRenderer } from '@/__tests__/render';
 import { useCredentialsStore } from '../credentials.store';
-import { useRootStore } from '@n8n/stores/useRootStore';
+import { useRootStore } from '@MNI/stores/useRootStore';
 import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';
 
 describe('CredentialIcon', () => {
@@ -20,7 +20,7 @@ describe('CredentialIcon', () => {
 	});
 
 	it('shows correct icon when iconUrl is set on credential', () => {
-		const testIconUrl = 'icons/n8n-nodes-base/dist/nodes/Test/test.svg';
+		const testIconUrl = 'icons/MNI-nodes-base/dist/nodes/Test/test.svg';
 		useCredentialsStore().setCredentialTypes([
 			mock<ICredentialType>({
 				name: 'test',
@@ -60,11 +60,11 @@ describe('CredentialIcon', () => {
 	});
 
 	it('shows correct icon when credential has an icon with node: prefix', () => {
-		const testIconUrl = 'icons/n8n-nodes-base/dist/nodes/Test/test.svg';
+		const testIconUrl = 'icons/MNI-nodes-base/dist/nodes/Test/test.svg';
 		useCredentialsStore().setCredentialTypes([
 			mock<ICredentialType>({
 				name: 'test',
-				icon: 'node:n8n-nodes-base.test',
+				icon: 'node:MNI-nodes-base.test',
 				iconColor: 'azure',
 			}),
 		]);
@@ -72,7 +72,7 @@ describe('CredentialIcon', () => {
 		useNodeTypesStore().setNodeTypes([
 			mock<INodeTypeDescription>({
 				version: 1,
-				name: 'n8n-nodes-base.test',
+				name: 'MNI-nodes-base.test',
 				iconUrl: testIconUrl,
 			}),
 		]);
@@ -91,14 +91,14 @@ describe('CredentialIcon', () => {
 		useCredentialsStore().setCredentialTypes([
 			mock<ICredentialType>({
 				name: 'httpQueryAuth',
-				icon: 'node:n8n-nodes-base.httpRequest',
+				icon: 'node:MNI-nodes-base.httpRequest',
 			}),
 		]);
 
 		useNodeTypesStore().setNodeTypes([
 			mock<INodeTypeDescription>({
 				version: 1,
-				name: 'n8n-nodes-base.httpRequest',
+				name: 'MNI-nodes-base.httpRequest',
 				icon: 'node:http-request',
 				iconUrl: undefined,
 			}),
@@ -118,7 +118,7 @@ describe('CredentialIcon', () => {
 		useCredentialsStore().setCredentialTypes([
 			mock<ICredentialType>({
 				name: 'test',
-				icon: 'node:n8n-nodes-base.test',
+				icon: 'node:MNI-nodes-base.test',
 				iconColor: 'azure',
 			}),
 		]);

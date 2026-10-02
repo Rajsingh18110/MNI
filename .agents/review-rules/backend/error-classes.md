@@ -1,6 +1,6 @@
 # Throw a typed error, not a plain Error
 
-Applies to: backend packages (`cli`, `@n8n/db`, `core`, `workflow`) and the node packages.
+Applies to: backend packages (`cli`, `@MNI/db`, `core`, `workflow`) and the node packages.
 
 The `no-plain-errors` lint rule is switched off repo-wide, so nothing catches
 this. Flag `throw new Error(...)` in new code and pick by cause:

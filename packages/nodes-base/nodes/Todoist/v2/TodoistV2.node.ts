@@ -10,7 +10,7 @@ import {
 	type INodeTypeDescription,
 	NodeConnectionTypes,
 	NodeOperationError,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import type { TodoistProjectType } from './Service';
 import {
@@ -103,7 +103,7 @@ const versionDescription: INodeTypeDescription = {
 			name: 'resource',
 			type: 'options',
 			noDataExpression: true,
-			// eslint-disable-next-line n8n-nodes-base/node-param-options-type-unsorted-items
+			// eslint-disable-next-line MNI-nodes-base/node-param-options-type-unsorted-items
 			options: [
 				{
 					name: 'Task',
@@ -557,7 +557,7 @@ const versionDescription: INodeTypeDescription = {
 			],
 		},
 		{
-			// eslint-disable-next-line n8n-nodes-base/node-param-display-name-wrong-for-dynamic-multi-options
+			// eslint-disable-next-line MNI-nodes-base/node-param-display-name-wrong-for-dynamic-multi-options
 			displayName: 'Label Names',
 			name: 'labels',
 			type: 'multiOptions',
@@ -641,7 +641,7 @@ const versionDescription: INodeTypeDescription = {
 					name: 'auto_reminder',
 					type: 'boolean',
 					default: false,
-					// eslint-disable-next-line n8n-nodes-base/node-param-description-boolean-without-whether
+					// eslint-disable-next-line MNI-nodes-base/node-param-description-boolean-without-whether
 					description:
 						'When this option is enabled, the default reminder will be added to the new item if it has a due date with time set',
 				},
@@ -955,7 +955,7 @@ const versionDescription: INodeTypeDescription = {
 						'2-letter code specifying language in case due_string is not written in English',
 				},
 				{
-					// eslint-disable-next-line n8n-nodes-base/node-param-display-name-wrong-for-dynamic-multi-options
+					// eslint-disable-next-line MNI-nodes-base/node-param-display-name-wrong-for-dynamic-multi-options
 					displayName: 'Label Names',
 					name: 'labels',
 					type: 'multiOptions',

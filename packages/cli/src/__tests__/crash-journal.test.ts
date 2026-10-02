@@ -1,15 +1,15 @@
-import { Service } from '@n8n/di';
-import { sleep } from '@n8n/utils/sleep';
+import { Service } from '@MNI/di';
+import { sleep } from '@MNI/utils/sleep';
 import { existsSync } from 'fs';
 import { mkdir, utimes } from 'fs/promises';
 
 // Hoisted so the assertions can reach the spy without importing the mocked
-// module here, which would run the factory below before `@n8n/di` initialises.
+// module here, which would run the factory below before `@MNI/di` initialises.
 const { loggerError } = vi.hoisted(() => ({ loggerError: vi.fn() }));
 
 // `inProduction` is derived from NODE_ENV at import time, which is `test` here,
 // so force it on — otherwise `init()` bails before reaching the guard under test.
-vi.mock('@n8n/backend-common', () => {
+vi.mock('@MNI/backend-common', () => {
 	@Service()
 	class Logger {
 		error = loggerError;
@@ -18,10 +18,10 @@ vi.mock('@n8n/backend-common', () => {
 	return { inProduction: true, Logger };
 });
 
-vi.mock('n8n-core', () => {
+vi.mock('MNI-core', () => {
 	@Service()
 	class InstanceSettings {
-		n8nFolder = '/tmp/n8n-crash-journal-test';
+		n8nFolder = '/tmp/MNI-crash-journal-test';
 	}
 
 	return { InstanceSettings };
@@ -29,25 +29,25 @@ vi.mock('n8n-core', () => {
 
 vi.mock('fs');
 vi.mock('fs/promises');
-vi.mock('@n8n/utils/sleep');
+vi.mock('@MNI/utils/sleep');
 
 import { init } from '../crash-journal';
 
 describe('crash journal init()', () => {
-	const originalDevReload = process.env.N8N_DEV_RELOAD;
+	const originalDevReload = process.env.MNI_DEV_RELOAD;
 
 	beforeEach(() => {
 		vi.mocked(existsSync).mockReturnValue(true); // a journal from a previous session
 	});
 
 	afterEach(() => {
-		if (originalDevReload === undefined) delete process.env.N8N_DEV_RELOAD;
-		else process.env.N8N_DEV_RELOAD = originalDevReload;
+		if (originalDevReload === undefined) delete process.env.MNI_DEV_RELOAD;
+		else process.env.MNI_DEV_RELOAD = originalDevReload;
 		vi.clearAllMocks();
 	});
 
-	it('skips the crash-loop pause and the journal write when N8N_DEV_RELOAD is enabled', async () => {
-		process.env.N8N_DEV_RELOAD = 'true';
+	it('skips the crash-loop pause and the journal write when MNI_DEV_RELOAD is enabled', async () => {
+		process.env.MNI_DEV_RELOAD = 'true';
 
 		await init();
 
@@ -57,8 +57,8 @@ describe('crash journal init()', () => {
 		expect(loggerError).not.toHaveBeenCalled();
 	});
 
-	it('pauses and rewrites the journal when N8N_DEV_RELOAD is not set', async () => {
-		delete process.env.N8N_DEV_RELOAD;
+	it('pauses and rewrites the journal when MNI_DEV_RELOAD is not set', async () => {
+		delete process.env.MNI_DEV_RELOAD;
 
 		await init();
 

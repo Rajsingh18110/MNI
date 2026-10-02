@@ -11,11 +11,11 @@ import { SETTINGS_STORE_DEFAULT_STATE } from '@/__tests__/utils';
 import WorkflowHistoryPage from './WorkflowHistory.vue';
 import { useWorkflowHistoryStore } from '../workflowHistory.store';
 import { useWorkflowsListStore } from '@/app/stores/workflowsList.store';
-import { STORES } from '@n8n/stores';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { STORES } from '@MNI/stores';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { VIEWS } from '@/app/constants';
 import { workflowHistoryDataFactory, workflowVersionDataFactory } from '../__tests__/utils';
-import type { WorkflowVersion } from '@n8n/rest-api-client/api/workflowHistory';
+import type { WorkflowVersion } from '@MNI/rest-api-client/api/workflowHistory';
 import type { IWorkflowDb } from '@/Interface';
 import { telemetry } from '@/app/plugins/telemetry';
 import { registerToastNotifier } from '@/app/init/toastNotifier';
@@ -111,7 +111,7 @@ describe('WorkflowHistory', () => {
 	beforeEach(() => {
 		// This suite asserts on rendered toast content, which needs the notifier the
 		// app registers at bootstrap. Explicit here because it no longer arrives as a
-		// side effect of importing `@n8n/composables/useToast` (N8N-104).
+		// side effect of importing `@MNI/composables/useToast` (MNI-104).
 		registerToastNotifier();
 
 		pinia = createTestingPinia({

@@ -1,4 +1,4 @@
-import type { IWorkflowBase } from 'n8n-workflow';
+import type { IWorkflowBase } from 'MNI-workflow';
 import { nanoid } from 'nanoid';
 
 import { expect, test } from '../../../fixtures/base';
@@ -19,7 +19,7 @@ const LONG_SESSION_TITLE =
 test.use({
 	capability: {
 		env: {
-			N8N_ENABLED_MODULES: 'agents',
+			MNI_ENABLED_MODULES: 'agents',
 			TEST_ISOLATION: 'agent-sessions-tool-run-data',
 		},
 	},
@@ -33,7 +33,7 @@ function childWorkflow(): Partial<IWorkflowBase> {
 			{
 				id: nanoid(),
 				name: CHILD_TRIGGER_NAME,
-				type: 'n8n-nodes-base.executeWorkflowTrigger',
+				type: 'MNI-nodes-base.executeWorkflowTrigger',
 				typeVersion: 1.1,
 				position: [0, 0],
 				parameters: { inputSource: 'passthrough' },
@@ -41,7 +41,7 @@ function childWorkflow(): Partial<IWorkflowBase> {
 			{
 				id: nanoid(),
 				name: CHILD_INPUT_NODE_NAME,
-				type: 'n8n-nodes-base.set',
+				type: 'MNI-nodes-base.set',
 				typeVersion: 3.4,
 				position: [240, 0],
 				parameters: {
@@ -61,7 +61,7 @@ function childWorkflow(): Partial<IWorkflowBase> {
 			{
 				id: nanoid(),
 				name: CHILD_OUTPUT_NODE_NAME,
-				type: 'n8n-nodes-base.set',
+				type: 'MNI-nodes-base.set',
 				typeVersion: 3.4,
 				position: [480, 0],
 				parameters: {

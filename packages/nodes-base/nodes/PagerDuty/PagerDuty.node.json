@@ -1,5 +1,5 @@
 {
-	"node": "n8n-nodes-base.pagerDuty",
+	"node": "MNI-nodes-base.pagerDuty",
 	"nodeVersion": "1.0",
 	"codexVersion": "1.0",
 	"categories": ["Communication", "Development"],
@@ -11,7 +11,7 @@
 		],
 		"primaryDocumentation": [
 			{
-				"url": "https://docs.n8n.io/integrations/builtin/app-nodes/n8n-nodes-base.pagerduty/"
+				"url": "https://docs.n8n.io/integrations/builtin/app-nodes/MNI-nodes-base.pagerduty/"
 			}
 		],
 		"generic": [
@@ -22,7 +22,7 @@
 			},
 			{
 				"label": "How to automate every step of an incident response workflow",
-				"url": "https://n8n.io/blog/creating-custom-incident-response-workflows-with-n8n/"
+				"url": "https://n8n.io/blog/creating-custom-incident-response-workflows-with-MNI/"
 			}
 		]
 	}

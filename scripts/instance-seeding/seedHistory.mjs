@@ -20,12 +20,12 @@ const { stringify } = require(
 	require.resolve('flatted', { paths: [path.join(REPO, 'packages/cli')] }),
 );
 
-// Mirrors `getN8nFolder()` in @n8n/config: the `.n8n` directory sits *inside*
-// N8N_USER_FOLDER, so joining the db name straight onto that variable looks one
+// Mirrors `getN8nFolder()` in @MNI/config: the `.MNI` directory sits *inside*
+// MNI_USER_FOLDER, so joining the db name straight onto that variable looks one
 // directory too high.
 const DB_PATH =
 	process.env.DB_SQLITE_DATABASE ??
-	path.join(process.env.N8N_USER_FOLDER ?? os.homedir(), '.n8n', 'database.sqlite');
+	path.join(process.env.MNI_USER_FOLDER ?? os.homedir(), '.MNI', 'database.sqlite');
 
 const SEED_PREFIX = '[seed] ';
 // Threads have no name to prefix, so they carry this in `metadata` instead. It is how
@@ -75,27 +75,27 @@ const FAILURE = {
 // An error must name a node that exists in its own workflow and say something that
 // node could say. One shared message produces records that contradict themselves.
 const NODE_FAILURES = {
-	'n8n-nodes-base.gmail': {
+	'MNI-nodes-base.gmail': {
 		message: 'Forbidden - perhaps check your credentials?',
 		description: 'The Gmail credential has no valid token. Reconnect the account.',
 	},
-	'n8n-nodes-base.slack': {
+	'MNI-nodes-base.slack': {
 		message: 'Bad request - please check your parameters',
 		description: 'channel_not_found: the bot is not a member of that channel.',
 	},
-	'n8n-nodes-base.linear': {
+	'MNI-nodes-base.linear': {
 		message: 'Authorization failed - please check your credentials',
 		description: 'The Linear API key was rejected.',
 	},
-	'n8n-nodes-base.httpRequest': {
+	'MNI-nodes-base.httpRequest': {
 		message: 'The service refused the connection - perhaps it is offline',
 		description: 'connect ETIMEDOUT: the enrichment API did not respond.',
 	},
-	'n8n-nodes-base.dataTable': {
+	'MNI-nodes-base.dataTable': {
 		message: 'Bad request - please check your parameters',
 		description: 'The referenced column does not exist on this data table.',
 	},
-	'@n8n/n8n-nodes-langchain.agent': {
+	'@MNI/MNI-nodes-langchain.agent': {
 		message: 'Bad request - please check your parameters',
 		description: 'The model returned no output for this prompt.',
 	},
@@ -250,7 +250,7 @@ function main() {
 			const isFailing = short === FAILING_WORKFLOW;
 
 			// Scheduled workflows run often, webhook-driven ones sporadically.
-			const scheduled = wf.nodes.some((n) => n.type === 'n8n-nodes-base.scheduleTrigger');
+			const scheduled = wf.nodes.some((n) => n.type === 'MNI-nodes-base.scheduleTrigger');
 			const runs = scheduled ? DAYS * 2 : Math.ceil(DAYS / 2);
 
 			for (let i = 0; i < runs; i++) {

@@ -1,5 +1,5 @@
 import { assert, describe, it, expect } from 'vitest';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import userEvent from '@testing-library/user-event';
 import { createComponentRenderer } from '@/__tests__/render';
 import AgentBuilderIntro from '../components/AgentBuilderIntro.vue';

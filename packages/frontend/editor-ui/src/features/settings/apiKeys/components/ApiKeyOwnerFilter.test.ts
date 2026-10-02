@@ -1,6 +1,6 @@
 import userEvent from '@testing-library/user-event';
 import { waitFor } from '@testing-library/vue';
-import type { IUser } from '@n8n/design-system';
+import type { IUser } from '@MNI/design-system';
 
 import { createComponentRenderer } from '@/__tests__/render';
 import ApiKeyOwnerFilter from './ApiKeyOwnerFilter.vue';

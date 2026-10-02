@@ -1,8 +1,8 @@
-import { Time } from '@n8n/constants';
-import type { Schedule } from '@n8n/scheduler';
-import { computeFirstRunAt, computeNextRunAt } from '@n8n/scheduler';
-import { ensureError } from '@n8n/utils/errors/ensure-error';
-import { UnexpectedError } from 'n8n-workflow';
+import { Time } from '@MNI/constants';
+import type { Schedule } from '@MNI/scheduler';
+import { computeFirstRunAt, computeNextRunAt } from '@MNI/scheduler';
+import { ensureError } from '@MNI/utils/errors/ensure-error';
+import { UnexpectedError } from 'MNI-workflow';
 
 /**
  * Node fires a timeout longer than this straight away (the delay is a signed

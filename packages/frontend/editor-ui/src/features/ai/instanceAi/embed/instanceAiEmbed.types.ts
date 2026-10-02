@@ -1,5 +1,5 @@
-import { isRecord } from '@n8n/utils/is-record';
-import type { InstanceAiAgentAttachment } from '@n8n/api-types';
+import { isRecord } from '@MNI/utils/is-record';
+import type { InstanceAiAgentAttachment } from '@MNI/api-types';
 
 import { INSTANCE_AI_AGENT_BUILDER_TARGETS_METADATA_KEY } from '../constants';
 import {

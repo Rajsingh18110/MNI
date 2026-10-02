@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { computed } from 'vue';
-import { N8nIcon, N8nText, type IconName } from '@n8n/design-system';
-import { i18n, type BaseTextKey } from '@n8n/i18n';
+import { N8nIcon, N8nText, type IconName } from '@MNI/design-system';
+import { i18n, type BaseTextKey } from '@MNI/i18n';
 import type { TerminalState } from '../workflowSetup.types';
 
 const props = defineProps<{ state: TerminalState }>();

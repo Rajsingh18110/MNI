@@ -1,5 +1,5 @@
-import type { AgentConfigValidationIssue } from '@n8n/api-types';
-import type { BaseTextKey } from '@n8n/i18n';
+import type { AgentConfigValidationIssue } from '@MNI/api-types';
+import type { BaseTextKey } from '@MNI/i18n';
 
 import { workflowToolTriggerLabel } from './workflowToolTriggers';
 

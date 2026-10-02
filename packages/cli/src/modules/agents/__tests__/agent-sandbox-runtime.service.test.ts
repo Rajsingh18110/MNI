@@ -3,12 +3,12 @@ import type {
 	SandboxProvider,
 	WorkspaceFilesystem,
 	WorkspaceSandbox,
-} from '@n8n/agents/sandbox';
-import type { Logger } from '@n8n/backend-common';
-import type { AgentsConfig } from '@n8n/config';
+} from '@MNI/agents/sandbox';
+import type { Logger } from '@MNI/backend-common';
+import type { AgentsConfig } from '@MNI/config';
 import type { AiAssistantClient } from '@n8n_io/ai-assistant-sdk';
 import { mock } from 'vitest-mock-extended';
-import type { InstanceSettings } from 'n8n-core';
+import type { InstanceSettings } from 'MNI-core';
 
 import type { AiService } from '../../../services/ai.service';
 import type { SandboxSettingsService } from '../../../services/sandbox-settings.service';
@@ -23,8 +23,8 @@ const { createSandboxMock, createFilesystemMock } = vi.hoisted(() => ({
 	createFilesystemMock: vi.fn(),
 }));
 
-vi.mock('@n8n/agents/sandbox', async (importOriginal) => ({
-	...(await importOriginal<typeof import('@n8n/agents/sandbox')>()),
+vi.mock('@MNI/agents/sandbox', async (importOriginal) => ({
+	...(await importOriginal<typeof import('@MNI/agents/sandbox')>()),
 	createSandbox: createSandboxMock,
 	createFilesystem: createFilesystemMock,
 }));
@@ -39,7 +39,7 @@ const principalHash = hashAgentSandboxPrincipal({
 	platformThreadId: 'U/raw:123',
 });
 const otherPrincipalHash = hashAgentSandboxPrincipal({
-	type: 'n8n-user',
+	type: 'MNI-user',
 	userId: 'user/123:raw',
 });
 const workspaceSandboxId = 'cd7bd5bf-d6c4-5a24-a100-43c5158ab50d';
@@ -178,10 +178,10 @@ describe('AgentSandboxRuntimeService', () => {
 				daytonaApiUrl: 'https://daytona.example',
 				daytonaApiKey: 'test-key',
 				labels: {
-					'n8n-agents-knowledgebase': 'true',
-					'n8n-project-id': projectId,
-					'n8n-agent-id': agentId,
-					'n8n-agent-sandbox-kind': 'knowledge',
+					'MNI-agents-knowledgebase': 'true',
+					'MNI-project-id': projectId,
+					'MNI-agent-id': agentId,
+					'MNI-agent-sandbox-kind': 'knowledge',
 				},
 				timeout: 300_000,
 				createTimeoutSeconds: 300,
@@ -255,10 +255,10 @@ describe('AgentSandboxRuntimeService', () => {
 			},
 		]);
 		expect(configs[0].labels).toEqual({
-			'n8n-project-id': projectId,
-			'n8n-agent-id': agentId,
-			'n8n-agent-sandbox-kind': 'workspace',
-			'n8n-agent-principal-hash': principalHash,
+			'MNI-project-id': projectId,
+			'MNI-agent-id': agentId,
+			'MNI-agent-sandbox-kind': 'workspace',
+			'MNI-agent-principal-hash': principalHash,
 		});
 		expect(
 			configs.map(({ ephemeral, autoStopInterval, autoArchiveInterval, autoDeleteInterval }) => [
@@ -294,7 +294,7 @@ describe('AgentSandboxRuntimeService', () => {
 
 	it('uses distinct deterministic workspace and knowledge IDs for the MNI sandbox', async () => {
 		const service = makeService({
-			sandboxSettingsService: makeSandboxSettingsService('n8n-sandbox'),
+			sandboxSettingsService: makeSandboxSettingsService('MNI-sandbox'),
 		});
 
 		await service.acquireWorkspaceSandbox(projectId, agentId, principalHash);
@@ -306,7 +306,7 @@ describe('AgentSandboxRuntimeService', () => {
 		]);
 		expect(createSandboxMock.mock.calls[1][0]).toEqual(
 			expect.objectContaining({
-				provider: 'n8n-sandbox',
+				provider: 'MNI-sandbox',
 				serviceUrl: 'https://sandbox.example',
 				apiKey: 'sandbox-key',
 			}),
@@ -316,7 +316,7 @@ describe('AgentSandboxRuntimeService', () => {
 	it('marks the MNI sandbox knowledge sandbox ephemeral when configured, but never the workspace', async () => {
 		const service = makeService({
 			configOverrides: { sandboxEphemeral: true },
-			sandboxSettingsService: makeSandboxSettingsService('n8n-sandbox'),
+			sandboxSettingsService: makeSandboxSettingsService('MNI-sandbox'),
 		});
 
 		await service.acquireWorkspaceSandbox(projectId, agentId, principalHash);
@@ -326,12 +326,12 @@ describe('AgentSandboxRuntimeService', () => {
 	});
 
 	it('reports how to configure a missing MNI sandbox service URL', async () => {
-		const settingsService = makeSandboxSettingsService('n8n-sandbox');
+		const settingsService = makeSandboxSettingsService('MNI-sandbox');
 		settingsService.resolveN8nSandboxConfig.mockResolvedValue({});
 		const service = makeService({ sandboxSettingsService: settingsService });
 
 		await expect(service.warmKnowledgeSandbox(projectId, agentId)).rejects.toThrow(
-			/N8N_SANDBOX_SERVICE_URL/,
+			/MNI_SANDBOX_SERVICE_URL/,
 		);
 		expect(createSandboxMock).not.toHaveBeenCalled();
 	});
@@ -373,7 +373,7 @@ describe('AgentSandboxRuntimeService', () => {
 		});
 
 		await expect(service.warmKnowledgeSandbox(projectId, agentId)).rejects.toThrow(
-			/requires a snapshot.*N8N_AGENTS_AI_SANDBOX_SNAPSHOT/s,
+			/requires a snapshot.*MNI_AGENTS_AI_SANDBOX_SNAPSHOT/s,
 		);
 		expect(createSandboxMock).not.toHaveBeenCalled();
 	});

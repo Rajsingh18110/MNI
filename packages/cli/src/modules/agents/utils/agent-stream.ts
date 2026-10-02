@@ -1,4 +1,4 @@
-import type { StreamChunk } from '@n8n/agents';
+import type { StreamChunk } from '@MNI/agents';
 
 export async function* streamAgentChunks(
 	stream: ReadableStream<StreamChunk>,

@@ -1,9 +1,9 @@
 import type {
 	CreateWorkflowReviewRequestDto,
 	GetWorkflowReviewEligibleReviewersQueryDto,
-} from '@n8n/api-types';
-import type { LicenseState, Logger } from '@n8n/backend-common';
-import { DbLock, User } from '@n8n/db';
+} from '@MNI/api-types';
+import type { LicenseState, Logger } from '@MNI/backend-common';
+import { DbLock, User } from '@MNI/db';
 import type {
 	AuthIdentity,
 	DbLockService,
@@ -21,7 +21,7 @@ import type {
 	WorkflowReviewRequestRepository,
 	WorkflowReviewRequestReviewerRepository,
 	WorkflowReviewRequestWorkflowRepository,
-} from '@n8n/db';
+} from '@MNI/db';
 import { mock } from 'vitest-mock-extended';
 
 import type { CollaborationService } from '@/collaboration/collaboration.service';

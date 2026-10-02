@@ -3,10 +3,10 @@ import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 
 const fixtureDirectory = fileURLToPath(
-	new URL('../../packages/@n8n/eslint-config/src/rules/fixtures/raw-enum/', import.meta.url),
+	new URL('../../packages/@MNI/eslint-config/src/rules/fixtures/raw-enum/', import.meta.url),
 );
 const oxlintPackageDirectory = fileURLToPath(
-	new URL('../../packages/@n8n/oxlint-config/', import.meta.url),
+	new URL('../../packages/@MNI/oxlint-config/', import.meta.url),
 );
 
 const run = (command, args, cwd) => {
@@ -43,11 +43,11 @@ const oxlint = JSON.parse(
 
 const eslintDiagnostics = eslint
 	.flatMap(({ messages }) => messages)
-	.filter(({ ruleId }) => ruleId === 'n8n-local-rules/no-raw-enum')
+	.filter(({ ruleId }) => ruleId === 'MNI-local-rules/no-raw-enum')
 	.map(({ ruleId, message, line, column }) => ({ ruleId, message, line, column }));
 
 const oxlintDiagnostics = oxlint.diagnostics
-	.filter(({ code }) => code === 'n8n-local-rules(no-raw-enum)')
+	.filter(({ code }) => code === 'MNI-local-rules(no-raw-enum)')
 	.map(({ code, message, labels }) => ({
 		ruleId: code.replace('(', '/').replace(')', ''),
 		message,

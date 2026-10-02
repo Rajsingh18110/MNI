@@ -1,7 +1,7 @@
 import type {
 	ListWorkflowReviewActivityResponse,
 	WorkflowReviewActivityEntry,
-} from '@n8n/api-types';
+} from '@MNI/api-types';
 import { createPinia, setActivePinia } from 'pinia';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 

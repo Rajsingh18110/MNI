@@ -19,7 +19,7 @@ on:
 jobs:
   publish-api-schema:
     name: Cloudflare Pages
-    if: github.repository == 'n8n-io/n8n'
+    if: github.repository == 'MNI-io/MNI'
     runs-on: blacksmith-2vcpu-ubuntu-2204
     permissions:
       contents: read
@@ -73,5 +73,5 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy api-schema-publish --project-name=n8n-openapi --branch=${{ github.ref_name }} --commit-hash=${{ github.sha }}
+          command: pages deploy api-schema-publish --project-name=MNI-openapi --branch=${{ github.ref_name }} --commit-hash=${{ github.sha }}
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}

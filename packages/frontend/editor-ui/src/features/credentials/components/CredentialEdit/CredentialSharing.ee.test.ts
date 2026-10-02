@@ -2,22 +2,22 @@ import { createComponentRenderer } from '@/__tests__/render';
 import { createTestingPinia } from '@pinia/testing';
 import { setActivePinia } from 'pinia';
 import CredentialSharing from './CredentialSharing.ee.vue';
-import { useUsersStore } from '@n8n/stores/users.store';
+import { useUsersStore } from '@MNI/stores/users.store';
 import { useProjectsStore } from '@/features/collaboration/projects/projects.store';
-import { useSettingsStore } from '@n8n/stores/settings.store';
-import { useRolesStore } from '@n8n/stores/roles.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
+import { useRolesStore } from '@MNI/stores/roles.store';
 import type { ICredentialsResponse } from '../../credentials.types';
-import { createEventBus } from '@n8n/utils/event-bus';
+import { createEventBus } from '@MNI/utils/event-bus';
 import { getDropdownItems } from '@/__tests__/utils';
-import { useI18n } from '@n8n/i18n';
-import type * as I18nModule from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
+import type * as I18nModule from '@MNI/i18n';
 import { ProjectTypes } from '@/features/collaboration/projects/projects.types';
 import {
 	createProjectListItem,
 	createTestProject,
 } from '@/features/collaboration/projects/__tests__/utils';
 
-vi.mock('@n8n/i18n', async (importOriginal) => {
+vi.mock('@MNI/i18n', async (importOriginal) => {
 	const actual = await importOriginal<typeof I18nModule>();
 	return {
 		...actual,

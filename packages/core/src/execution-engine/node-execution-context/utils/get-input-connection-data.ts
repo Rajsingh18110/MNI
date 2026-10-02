@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
 import { DynamicStructuredTool, StructuredTool, Tool } from '@langchain/core/tools';
-import { sleep } from '@n8n/utils/sleep';
+import { sleep } from '@MNI/utils/sleep';
 import type {
 	AINodeConnectionType,
 	ChatNodeMessageWithButtons,
@@ -22,7 +22,7 @@ import type {
 	SupplyData,
 	Workflow,
 	WorkflowExecuteMode,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import {
 	UnexpectedError,
 	ExecutionBaseError,
@@ -30,7 +30,7 @@ import {
 	NodeOperationError,
 	UserError,
 	isHitlToolType,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import z, { ZodType } from 'zod';
 
 import { StructuredToolkit, type SupplyDataToolResponse } from './ai-tool-types';

@@ -1,4 +1,4 @@
-import type { LicenseState } from '@n8n/backend-common';
+import type { LicenseState } from '@MNI/backend-common';
 import { mock } from 'vitest-mock-extended';
 
 import type { WorkflowReviewPolicyService } from '@/services/workflow-review-policy.service';

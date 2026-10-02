@@ -1,4 +1,4 @@
-import type { IBinaryData, IRequestOptions } from 'n8n-workflow';
+import type { IBinaryData, IRequestOptions } from 'MNI-workflow';
 
 export const setFilename = (
 	preparedBinaryData: IBinaryData,

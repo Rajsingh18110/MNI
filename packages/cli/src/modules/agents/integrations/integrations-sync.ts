@@ -1,6 +1,6 @@
-import { type AgentIntegrationConfig } from '@n8n/api-types';
-import type { Logger } from '@n8n/backend-common';
-import { Container } from '@n8n/di';
+import { type AgentIntegrationConfig } from '@MNI/api-types';
+import type { Logger } from '@MNI/backend-common';
+import { Container } from '@MNI/di';
 
 import type { Agent } from '../entities/agent.entity';
 

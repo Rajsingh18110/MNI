@@ -2,7 +2,7 @@
 	"nodes": [
 		{
 			"parameters": {},
-			"type": "n8n-nodes-base.manualTrigger",
+			"type": "MNI-nodes-base.manualTrigger",
 			"typeVersion": 1,
 			"position": [260, 360],
 			"id": "9ed2b86b-7c24-4ea0-a328-92d9e6dba35a",
@@ -21,7 +21,7 @@
 			},
 			"id": "e788623f-5d4a-4e76-b7f6-3e9389e2fe29",
 			"name": "getAllUsers",
-			"type": "n8n-nodes-base.awsCognito",
+			"type": "MNI-nodes-base.awsCognito",
 			"typeVersion": 1,
 			"position": [460, 360],
 			"alwaysOutputData": true,

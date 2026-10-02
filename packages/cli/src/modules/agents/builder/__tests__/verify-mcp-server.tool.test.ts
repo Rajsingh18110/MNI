@@ -1,5 +1,5 @@
-import type { CredentialProvider, McpClient } from '@n8n/agents';
-import type { CustomFetch } from '@n8n/backend-network';
+import type { CredentialProvider, McpClient } from '@MNI/agents';
+import type { CustomFetch } from '@MNI/backend-network';
 import { mock } from 'vitest-mock-extended';
 
 import type { OauthService } from '@/oauth/oauth.service';
@@ -213,7 +213,7 @@ describe('buildVerifyMcpServerTool', () => {
 				transport: 'sse',
 				authentication: 'bearerAuth',
 				credential: 'cred-42',
-				metadata: { nodeTypeName: '@n8n/mcp-registry.example' },
+				metadata: { nodeTypeName: '@MNI/mcp-registry.example' },
 				connectionTimeoutMs: 42_000,
 			},
 			{} as never,
@@ -226,7 +226,7 @@ describe('buildVerifyMcpServerTool', () => {
 				transport: 'sse',
 				authentication: 'bearerAuth',
 				credential: 'cred-42',
-				metadata: { nodeTypeName: '@n8n/mcp-registry.example' },
+				metadata: { nodeTypeName: '@MNI/mcp-registry.example' },
 				connectionTimeoutMs: 42_000,
 			}),
 			expect.objectContaining({

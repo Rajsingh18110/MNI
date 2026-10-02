@@ -1,6 +1,6 @@
-import { Logger } from '@n8n/backend-common';
-import { TaskRunnersConfig } from '@n8n/config';
-import { Service } from '@n8n/di';
+import { Logger } from '@MNI/backend-common';
+import { TaskRunnersConfig } from '@MNI/config';
+import { Service } from '@MNI/di';
 import assert from 'node:assert/strict';
 import { spawn } from 'node:child_process';
 import * as process from 'node:process';
@@ -32,7 +32,7 @@ export class JsTaskRunnerProcess extends TaskRunnerProcessBase {
 	}
 
 	startProcess(grantToken: string, taskBrokerUri: string, runnerId: string): ChildProcess {
-		const startScript = require.resolve('@n8n/task-runner/start');
+		const startScript = require.resolve('@MNI/task-runner/start');
 		const flags = this.runnerConfig.insecureMode
 			? []
 			: ['--disallow-code-generation-from-strings', '--disable-proto=delete'];
@@ -63,24 +63,24 @@ export class JsTaskRunnerProcess extends TaskRunnerProcessBase {
 			NODE_FUNCTION_ALLOW_EXTERNAL: process.env.NODE_FUNCTION_ALLOW_EXTERNAL,
 
 			// sentry
-			N8N_SENTRY_DSN: process.env.N8N_SENTRY_DSN,
-			N8N_VERSION: process.env.N8N_VERSION,
+			MNI_SENTRY_DSN: process.env.MNI_SENTRY_DSN,
+			MNI_VERSION: process.env.MNI_VERSION,
 			ENVIRONMENT: process.env.ENVIRONMENT,
 			DEPLOYMENT_NAME: process.env.DEPLOYMENT_NAME,
 
 			// runner
-			N8N_RUNNERS_ID: runnerId,
-			N8N_RUNNERS_GRANT_TOKEN: grantToken,
-			N8N_RUNNERS_TASK_BROKER_URI: taskBrokerUri,
-			N8N_RUNNERS_MAX_PAYLOAD: this.runnerConfig.maxPayload.toString(),
-			N8N_RUNNERS_MAX_CONCURRENCY: this.runnerConfig.maxConcurrency.toString(),
-			N8N_RUNNERS_TASK_TIMEOUT: this.runnerConfig.taskTimeout.toString(),
-			N8N_RUNNERS_HEARTBEAT_INTERVAL: this.runnerConfig.heartbeatInterval.toString(),
-			N8N_RUNNERS_INSECURE_MODE: process.env.N8N_RUNNERS_INSECURE_MODE,
+			MNI_RUNNERS_ID: runnerId,
+			MNI_RUNNERS_GRANT_TOKEN: grantToken,
+			MNI_RUNNERS_TASK_BROKER_URI: taskBrokerUri,
+			MNI_RUNNERS_MAX_PAYLOAD: this.runnerConfig.maxPayload.toString(),
+			MNI_RUNNERS_MAX_CONCURRENCY: this.runnerConfig.maxConcurrency.toString(),
+			MNI_RUNNERS_TASK_TIMEOUT: this.runnerConfig.taskTimeout.toString(),
+			MNI_RUNNERS_HEARTBEAT_INTERVAL: this.runnerConfig.heartbeatInterval.toString(),
+			MNI_RUNNERS_INSECURE_MODE: process.env.MNI_RUNNERS_INSECURE_MODE,
 			// Forwarded so the internal runner's graceful-shutdown grace can be coordinated
 			// with MNI's (otherwise it falls back to the runner's own default).
-			N8N_RUNNERS_GRACEFUL_SHUTDOWN_TIMEOUT: process.env.N8N_RUNNERS_GRACEFUL_SHUTDOWN_TIMEOUT,
-			N8N_RUNNERS_SHUTDOWN_FORCE_KILL_MARGIN: process.env.N8N_RUNNERS_SHUTDOWN_FORCE_KILL_MARGIN,
+			MNI_RUNNERS_GRACEFUL_SHUTDOWN_TIMEOUT: process.env.MNI_RUNNERS_GRACEFUL_SHUTDOWN_TIMEOUT,
+			MNI_RUNNERS_SHUTDOWN_FORCE_KILL_MARGIN: process.env.MNI_RUNNERS_SHUTDOWN_FORCE_KILL_MARGIN,
 		});
 
 		if (this.runnerConfig.maxOldSpaceSize) {

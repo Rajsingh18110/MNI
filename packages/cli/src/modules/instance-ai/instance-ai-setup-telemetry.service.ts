@@ -4,14 +4,14 @@ import {
 	type InstanceAiAdminSettingsResponse,
 	type InstanceAiComponentSource,
 	type InstanceAiWebSearchSource,
-} from '@n8n/api-types';
-import { Logger } from '@n8n/backend-common';
-import { GlobalConfig } from '@n8n/config';
-import type { InstanceAiConfig, DeploymentConfig } from '@n8n/config';
-import { SettingsRepository } from '@n8n/db';
-import { Service } from '@n8n/di';
-import { TELEMETRY_EVENT, type InferTelemetryProps } from '@n8n/telemetry';
-import { ensureError } from '@n8n/utils/errors/ensure-error';
+} from '@MNI/api-types';
+import { Logger } from '@MNI/backend-common';
+import { GlobalConfig } from '@MNI/config';
+import type { InstanceAiConfig, DeploymentConfig } from '@MNI/config';
+import { SettingsRepository } from '@MNI/db';
+import { Service } from '@MNI/di';
+import { TELEMETRY_EVENT, type InferTelemetryProps } from '@MNI/telemetry';
+import { ensureError } from '@MNI/utils/errors/ensure-error';
 
 import { InstanceCredentialBroker } from '@/credentials/instance-credential-broker';
 import type { InstanceCredentialUse } from '@/credentials/instance-credential-broker';
@@ -118,9 +118,9 @@ export class InstanceAiSetupTelemetryService {
 		return provider === 'brave' || provider === 'searxng' ? provider : null;
 	}
 
-	private sandboxTypeOf(selection: AdminCredentialSelection): 'daytona' | 'n8n-sandbox' | null {
+	private sandboxTypeOf(selection: AdminCredentialSelection): 'daytona' | 'MNI-sandbox' | null {
 		if (selection.daytonaCredentialId) return 'daytona';
-		if (selection.n8nSandboxCredentialId) return 'n8n-sandbox';
+		if (selection.n8nSandboxCredentialId) return 'MNI-sandbox';
 		return null;
 	}
 

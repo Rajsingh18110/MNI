@@ -7,8 +7,8 @@ import type {
 	IExecuteData,
 	IWebhookDescription,
 	NodeParameterValueType,
-} from 'n8n-workflow';
-import { resolveWebhookDescriptionField } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { resolveWebhookDescriptionField } from 'MNI-workflow';
 
 /** The description's evaluable fields — the symbol key holds the resolver map. */
 type WebhookDescriptionKey = Exclude<keyof IWebhookDescription, symbol>;
@@ -71,7 +71,7 @@ export class WebhookExecutionContext {
 	/**
 	 * Resolves a description field without the expression engine when the field
 	 * declares a native resolver and the node's parameters are static (see
-	 * `webhookDescriptionFields` in n8n-workflow). Like the engine path, the
+	 * `webhookDescriptionFields` in MNI-workflow). Like the engine path, the
 	 * resolved value is returned as-is: `defaultValue` only stands in for a
 	 * field the description does not define at all.
 	 */

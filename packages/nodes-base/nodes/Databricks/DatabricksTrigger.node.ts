@@ -6,7 +6,7 @@ import {
 	type INodeType,
 	type INodeTypeDescription,
 	type IPollFunctions,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { authenticationProperty, databricksCredentials } from './authentication';
 import { DATABRICKS_TRIGGER_NODE_VERSION } from './constants';

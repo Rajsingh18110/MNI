@@ -320,7 +320,7 @@ describe('useAssistantMentionSources', () => {
 						{
 							id: 'if-node',
 							name: 'If',
-							type: 'n8n-nodes-base.if',
+							type: 'MNI-nodes-base.if',
 							typeVersion: 2.2,
 						},
 					],
@@ -475,7 +475,7 @@ describe('useAssistantMentionSources', () => {
 			{
 				id: 'if-node',
 				name: 'If',
-				type: 'n8n-nodes-base.if',
+				type: 'MNI-nodes-base.if',
 				typeVersion: 2.2,
 				position: [0, 0],
 				parameters: {},

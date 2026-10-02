@@ -1,7 +1,7 @@
-import { mockInstance } from '@n8n/backend-test-utils';
-import { GlobalConfig } from '@n8n/config';
-import { Time } from '@n8n/constants';
-import { sleep } from '@n8n/utils/sleep';
+import { mockInstance } from '@MNI/backend-test-utils';
+import { GlobalConfig } from '@MNI/config';
+import { Time } from '@MNI/constants';
+import { sleep } from '@MNI/utils/sleep';
 
 import config from '@/config';
 import { CacheService } from '@/services/cache/cache.service';

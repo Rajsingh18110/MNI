@@ -1,8 +1,8 @@
-import { Logger } from '@n8n/backend-common';
-import { Time } from '@n8n/constants';
-import { OnLeaderStepdown, OnLeaderTakeover, OnShutdown } from '@n8n/decorators';
-import { Service } from '@n8n/di';
-import { InstanceSettings } from 'n8n-core';
+import { Logger } from '@MNI/backend-common';
+import { Time } from '@MNI/constants';
+import { OnLeaderStepdown, OnLeaderTakeover, OnShutdown } from '@MNI/decorators';
+import { Service } from '@MNI/di';
+import { InstanceSettings } from 'MNI-core';
 import { strict } from 'node:assert';
 
 import { EventService } from '@/events/event.service';

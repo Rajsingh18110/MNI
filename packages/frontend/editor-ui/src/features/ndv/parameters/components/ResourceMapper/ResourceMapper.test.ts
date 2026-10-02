@@ -11,7 +11,7 @@ import userEvent from '@testing-library/user-event';
 import { createComponentRenderer } from '@/__tests__/render';
 import type { MockInstance } from 'vitest';
 import { useProjectsStore } from '@/features/collaboration/projects/projects.store';
-import type { ResourceMapperTypeOptions, ResourceMapperValue } from 'n8n-workflow';
+import type { ResourceMapperTypeOptions, ResourceMapperValue } from 'MNI-workflow';
 import { createTestNode, createTestNodeProperties } from '@/__tests__/mocks';
 import { createTestingPinia } from '@pinia/testing';
 import {
@@ -813,7 +813,7 @@ describe('ResourceMapper::Workflow Inputs', () => {
 		createTestingPinia();
 		nodeTypesStore = mockedStore(useNodeTypesStore);
 		nodeTypesStore.nodeTypes = {
-			'n8n-nodes-base.executeWorkflow': {
+			'MNI-nodes-base.executeWorkflow': {
 				1.2: EXECUTE_WORKFLOW_NODE_TYPE_TEST,
 			},
 		};

@@ -19,7 +19,7 @@ jobs:
     if: >-
       github.event_name == 'pull_request' &&
       !github.event.pull_request.head.repo.fork &&
-      github.repository == 'n8n-io/n8n'
+      github.repository == 'MNI-io/MNI'
     runs-on: ubuntu-slim
     continue-on-error: true
     permissions:

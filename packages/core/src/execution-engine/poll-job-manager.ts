@@ -1,4 +1,4 @@
-import type { INode, TriggerTime } from 'n8n-workflow';
+import type { INode, TriggerTime } from 'MNI-workflow';
 
 /**
  * Port for provisioning a poll trigger's poll times as scheduler jobs. Which

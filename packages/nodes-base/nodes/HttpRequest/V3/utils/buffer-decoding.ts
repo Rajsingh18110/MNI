@@ -1,4 +1,4 @@
-import type { IExecuteFunctions } from 'n8n-workflow';
+import type { IExecuteFunctions } from 'MNI-workflow';
 import type { Readable } from 'stream';
 
 const CHINESE_ENCODINGS = ['gb18030', 'gbk', 'gb2312'] as const;

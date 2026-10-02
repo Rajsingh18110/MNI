@@ -10,7 +10,7 @@ import {
 	type INodeType,
 	type INodeTypeDescription,
 	NodeConnectionTypes,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { flatten, generatePairedItemData, getResolvables } from '@utils/utilities';
 
@@ -190,7 +190,7 @@ export class MicrosoftSql implements INodeType {
 				},
 				default: 'id',
 				required: true,
-				// eslint-disable-next-line n8n-nodes-base/node-param-description-miscased-id
+				// eslint-disable-next-line MNI-nodes-base/node-param-description-miscased-id
 				description:
 					'Name of the property which decides which rows in the database should be updated. Normally that would be "id".',
 			},
@@ -238,7 +238,7 @@ export class MicrosoftSql implements INodeType {
 				},
 				default: 'id',
 				required: true,
-				// eslint-disable-next-line n8n-nodes-base/node-param-description-miscased-id
+				// eslint-disable-next-line MNI-nodes-base/node-param-description-miscased-id
 				description:
 					'Name of the property which decides which rows in the database should be deleted. Normally that would be "id".',
 			},

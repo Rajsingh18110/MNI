@@ -1,4 +1,4 @@
-import type { JsonValue } from 'n8n-workflow';
+import type { JsonValue } from 'MNI-workflow';
 
 import type { CacheService } from '@/services/cache/cache.service';
 

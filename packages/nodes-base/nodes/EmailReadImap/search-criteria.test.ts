@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/naming-convention -- keys are IMAP search keys and header names */
-import type { SearchObject } from '@n8n/imap';
+import type { SearchObject } from '@MNI/imap';
 
 import { toSearchObject } from './search-criteria';
 

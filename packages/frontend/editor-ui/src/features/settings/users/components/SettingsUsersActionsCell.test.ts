@@ -2,11 +2,11 @@ import { createTestingPinia } from '@pinia/testing';
 import { screen, within } from '@testing-library/vue';
 import userEvent from '@testing-library/user-event';
 import { vi } from 'vitest';
-import { ROLE, type UsersList } from '@n8n/api-types';
-import { type UserAction } from '@n8n/design-system';
+import { ROLE, type UsersList } from '@MNI/api-types';
+import { type UserAction } from '@MNI/design-system';
 import SettingsUsersActionsCell from './SettingsUsersActionsCell.vue';
 import { createComponentRenderer } from '@/__tests__/render';
-import type { IUser } from '@n8n/rest-api-client/api/users';
+import type { IUser } from '@MNI/rest-api-client/api/users';
 
 const baseUser: UsersList['items'][number] = {
 	id: '1',

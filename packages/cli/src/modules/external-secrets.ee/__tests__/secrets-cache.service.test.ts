@@ -1,5 +1,5 @@
-import { mockLogger } from '@n8n/backend-test-utils';
-import { Container } from '@n8n/di';
+import { mockLogger } from '@MNI/backend-test-utils';
+import { Container } from '@MNI/di';
 
 import { AnotherDummyProvider, DummyProvider } from '@test/external-secrets/utils';
 

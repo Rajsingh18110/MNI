@@ -1,5 +1,5 @@
 import { createPinia, setActivePinia } from 'pinia';
-import { CREDENTIAL_DESCRIPTIONS_FLAG } from '@n8n/api-types';
+import { CREDENTIAL_DESCRIPTIONS_FLAG } from '@MNI/api-types';
 import { usePostHog } from '@/app/stores/posthog.store';
 import { useCredentialDescriptionsExperiment } from './useCredentialDescriptionsExperiment';
 

@@ -5,11 +5,11 @@ import {
 	ChatHubConversationModel,
 	ChatHubN8nModel,
 	ChatHubCustomAgentModel,
-} from '@n8n/api-types';
-import { Logger } from '@n8n/backend-common';
-import { User } from '@n8n/db';
-import type { EntityManager } from '@n8n/db';
-import { Service } from '@n8n/di';
+} from '@MNI/api-types';
+import { Logger } from '@MNI/backend-common';
+import { User } from '@MNI/db';
+import type { EntityManager } from '@MNI/db';
+import { Service } from '@MNI/di';
 import {
 	OperationalError,
 	type INodeCredentials,
@@ -20,7 +20,7 @@ import {
 	INode,
 	type IBinaryData,
 	UserError,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { BadRequestError } from '@/errors/response-errors/bad-request.error';
 import { ExecutionPersistence } from '@/executions/execution-persistence';
@@ -103,7 +103,7 @@ export class ChatHubTitleService {
 			);
 
 			const providerSettings =
-				resolvedModel.provider !== 'n8n' && resolvedModel.provider !== 'custom-agent'
+				resolvedModel.provider !== 'MNI' && resolvedModel.provider !== 'custom-agent'
 					? await this.chatHubSettingsService.getProviderSettings(resolvedModel.provider, trx)
 					: undefined;
 
@@ -160,7 +160,7 @@ export class ChatHubTitleService {
 		credentialId: string;
 		projectId: string;
 	}> {
-		if (model.provider === 'n8n') {
+		if (model.provider === 'MNI') {
 			return await this.resolveFromN8nWorkflow(user, model, trx);
 		}
 

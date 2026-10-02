@@ -7,13 +7,13 @@ import type {
 	INodeType,
 	INodeTypeDescription,
 	JsonObject,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import {
 	NodeApiError,
 	NodeConnectionTypes,
 	NodeOperationError,
 	sanitizeXmlName,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import { URLSearchParams } from 'url';
 import { parseString } from 'xml2js';
 

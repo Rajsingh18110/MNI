@@ -1,5 +1,5 @@
-import { RoleMappingRuleRepository } from '@n8n/db';
-import { Service } from '@n8n/di';
+import { RoleMappingRuleRepository } from '@MNI/db';
+import { Service } from '@MNI/di';
 
 import type { RoleDeletionChecker } from '@/services/role-deletion-check-proxy.service';
 

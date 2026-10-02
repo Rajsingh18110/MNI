@@ -1,5 +1,5 @@
-import { metricScalesFromConfig, metricScalesFromSnapshot, type MetricScale } from '@n8n/api-types';
-import type { EvaluationConfigRepository, TestRun } from '@n8n/db';
+import { metricScalesFromConfig, metricScalesFromSnapshot, type MetricScale } from '@MNI/api-types';
+import type { EvaluationConfigRepository, TestRun } from '@MNI/db';
 
 /**
  * Metric-name → scale map from a workflow's current eval config — the default

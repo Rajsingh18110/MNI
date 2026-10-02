@@ -26,7 +26,7 @@ vi.mock('@/app/stores/workflowDocument.store', async (importOriginal) => ({
 }));
 
 // Mock i18n to return translation keys instead of translated strings
-vi.mock('@n8n/i18n', () => {
+vi.mock('@MNI/i18n', () => {
 	const i18n = {
 		baseText: (key: string) => key,
 		nodeText: () => ({
@@ -60,8 +60,8 @@ import {
 	TEST_NODE_WITH_ISSUES,
 	FIXED_COLLECTION_PARAMETERS,
 } from './ParameterInputList.test.constants';
-import { FORM_NODE_TYPE, FORM_TRIGGER_NODE_TYPE } from 'n8n-workflow';
-import type { INode, INodeProperties } from 'n8n-workflow';
+import { FORM_NODE_TYPE, FORM_TRIGGER_NODE_TYPE } from 'MNI-workflow';
+import type { INode, INodeProperties } from 'MNI-workflow';
 import type { INodeUi } from '@/Interface';
 import type { MockInstance } from 'vitest';
 import { WAIT_NODE_TYPE, AGENT_NODE_TYPE } from '@/app/constants';
@@ -76,7 +76,7 @@ vi.mock('@/app/composables/useMessage', () => ({
 	}),
 }));
 
-vi.mock('@n8n/rest-api-client/api/users', () => ({
+vi.mock('@MNI/rest-api-client/api/users', () => ({
 	updateCurrentUserSettings: vi.fn(),
 }));
 

@@ -1,13 +1,13 @@
-import { SYSTEM_RESOLVER_ID } from '@n8n/api-types';
-import { LicenseState } from '@n8n/backend-common';
-import type { CredentialsEntity, ICredentialsDb } from '@n8n/db';
+import { SYSTEM_RESOLVER_ID } from '@MNI/api-types';
+import { LicenseState } from '@MNI/backend-common';
+import type { CredentialsEntity, ICredentialsDb } from '@MNI/db';
 import {
 	CredentialsRepository,
 	isEntityNotFoundError,
 	SecretsProviderConnectionRepository,
-} from '@n8n/db';
-import { Service } from '@n8n/di';
-import { Credentials, getAdditionalKeys } from 'n8n-core';
+} from '@MNI/db';
+import { Service } from '@MNI/di';
+import { Credentials, getAdditionalKeys } from 'MNI-core';
 import type {
 	CredentialInformation,
 	ICredentialDataDecryptedObject,
@@ -26,7 +26,7 @@ import type {
 	IExecuteData,
 	IGetDecryptedCredentialsOptions,
 	IDataObject,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import {
 	ICredentialsHelper,
 	NodeHelpers,
@@ -37,7 +37,7 @@ import {
 	getCredentialOwnRequestAllowedDomains,
 	isExpression,
 	jsonParse,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { CredentialTypes } from '@/credential-types';
 import { CredentialsOverwrites } from '@/credentials-overwrites';
@@ -202,7 +202,7 @@ export class CredentialsHelper extends ICredentialsHelper {
 		// check if the node is the mockup node used for testing
 		// if so, it means this is a credential test and not normal node execution
 		const isTestingCredentials =
-			node?.parameters?.temp === '' && node?.type === 'n8n-nodes-base.noOp';
+			node?.parameters?.temp === '' && node?.type === 'MNI-nodes-base.noOp';
 
 		if (credentialType.preAuthentication) {
 			if (typeof credentialType.preAuthentication === 'function') {

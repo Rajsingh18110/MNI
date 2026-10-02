@@ -17,11 +17,11 @@ const changelogStream = new ConventionalChangelog()
 	.readRepository()
 	.loadPreset('angular')
 	.tags({
-		prefix: 'n8n@',
+		prefix: 'MNI@',
 	})
 	.context({
 		version: packageJson.version,
-		repoUrl: 'https://github.com/n8n-io/n8n',
+		repoUrl: 'https://github.com/MNI-io/MNI',
 	})
 	.options({
 		releaseCount: 1,

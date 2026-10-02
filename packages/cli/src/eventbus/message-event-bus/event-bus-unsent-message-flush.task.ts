@@ -1,6 +1,6 @@
-import { GlobalConfig } from '@n8n/config';
-import { intervalFromMilliseconds, SystemTask } from '@n8n/decorators';
-import type { SystemTaskEffects, SystemTaskPlacement, SystemTaskSchedule } from '@n8n/decorators';
+import { GlobalConfig } from '@MNI/config';
+import { intervalFromMilliseconds, SystemTask } from '@MNI/decorators';
+import type { SystemTaskEffects, SystemTaskPlacement, SystemTaskSchedule } from '@MNI/decorators';
 
 import { MessageEventBus } from './message-event-bus';
 

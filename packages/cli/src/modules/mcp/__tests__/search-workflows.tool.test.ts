@@ -1,14 +1,14 @@
 import type { Mock } from 'vitest';
-import { mockInstance } from '@n8n/backend-test-utils';
-import { User } from '@n8n/db';
-import type { Folder, WorkflowEntity } from '@n8n/db';
-import type { INode } from 'n8n-workflow';
+import { mockInstance } from '@MNI/backend-test-utils';
+import { User } from '@MNI/db';
+import type { Folder, WorkflowEntity } from '@MNI/db';
+import type { INode } from 'MNI-workflow';
 import {
 	EXECUTE_WORKFLOW_TRIGGER_NODE_TYPE,
 	MANUAL_TRIGGER_NODE_TYPE,
 	PROJECT_ROOT,
 	SCHEDULE_TRIGGER_NODE_TYPE,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import { v4 as uuid } from 'uuid';
 
 import { FolderNotFoundError } from '@/errors/folder-not-found.error';

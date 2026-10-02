@@ -23,7 +23,7 @@ import { test, expect } from '../../../fixtures/base';
 // setting; in parallel workers against a shared instance, one file's
 // disabled-state test can break the other's OAuth flow mid-request. In
 // container runs this gives the OAuth spec its own worker/container. (Local
-// runs against a shared N8N_BASE_URL ignore this — run the two files
+// runs against a shared MNI_BASE_URL ignore this — run the two files
 // sequentially.)
 test.use({ capability: { env: { TEST_ISOLATION: 'mcp-oauth' } } });
 

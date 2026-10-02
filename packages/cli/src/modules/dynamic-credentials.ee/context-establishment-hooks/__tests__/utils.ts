@@ -1,5 +1,5 @@
-import type { ContextEstablishmentOptions } from '@n8n/decorators';
-import type { INodeExecutionData } from 'n8n-workflow';
+import type { ContextEstablishmentOptions } from '@MNI/decorators';
+import type { INodeExecutionData } from 'MNI-workflow';
 
 // Factory functions for test data
 export const createTriggerItem = (headers?: Record<string, unknown>): INodeExecutionData => ({

@@ -1,4 +1,4 @@
-import type { ASK_USER_TOOL_ID } from '@n8n/instance-ai';
+import type { ASK_USER_TOOL_ID } from '@MNI/instance-ai';
 
 // Stored-content markers shared by the SQL prefilter and the JSON parsing.
 

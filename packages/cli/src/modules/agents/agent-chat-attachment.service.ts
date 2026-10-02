@@ -1,11 +1,11 @@
-import { isAttachmentMediaTypeSupported } from '@n8n/api-types';
-import { Logger } from '@n8n/backend-common';
-import type { SourceType } from '@n8n/db';
-import { Service } from '@n8n/di';
-import { generateNanoId } from '@n8n/utils/generate-nano-id';
-import type { BuiltFileStore, ContentFileRef } from '@n8n/agents';
-import { BinaryDataService, FileLocation, FileNotFoundError } from 'n8n-core';
-import { OperationalError, type IBinaryData } from 'n8n-workflow';
+import { isAttachmentMediaTypeSupported } from '@MNI/api-types';
+import { Logger } from '@MNI/backend-common';
+import type { SourceType } from '@MNI/db';
+import { Service } from '@MNI/di';
+import { generateNanoId } from '@MNI/utils/generate-nano-id';
+import type { BuiltFileStore, ContentFileRef } from '@MNI/agents';
+import { BinaryDataService, FileLocation, FileNotFoundError } from 'MNI-core';
+import { OperationalError, type IBinaryData } from 'MNI-workflow';
 import type { Readable } from 'node:stream';
 
 import { AgentChatAttachment } from './entities/agent-chat-attachment.entity';
@@ -19,7 +19,7 @@ import {
 import { threadBelongsTo } from './utils/agent-thread-access';
 
 // Typed against `SourceType` so a drift from the `binary_data` schema enum
-// (see `packages/@n8n/db/src/entities/binary-data-file.ts`) is a compile error.
+// (see `packages/@MNI/db/src/entities/binary-data-file.ts`) is a compile error.
 const ATTACHMENT_SOURCE_TYPE: SourceType = 'agent_chat_attachment';
 
 export interface StoreInboundAttachmentParams {

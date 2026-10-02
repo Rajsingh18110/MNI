@@ -1,9 +1,9 @@
-import { createWorkflow, testDb } from '@n8n/backend-test-utils';
-import { ExecutionRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
+import { createWorkflow, testDb } from '@MNI/backend-test-utils';
+import { ExecutionRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
 import { parse, stringify } from 'flatted';
-import type { IRun, INode, ITaskData } from 'n8n-workflow';
-import { createRunExecutionData, WAIT_INDEFINITELY } from 'n8n-workflow';
+import type { IRun, INode, ITaskData } from 'MNI-workflow';
+import { createRunExecutionData, WAIT_INDEFINITELY } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import * as WorkflowHelpers from '@/workflow-helpers';

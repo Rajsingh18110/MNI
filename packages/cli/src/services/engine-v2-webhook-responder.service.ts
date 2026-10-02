@@ -1,9 +1,9 @@
-import { Logger } from '@n8n/backend-common';
-import { EngineConfig } from '@n8n/config';
-import { Service } from '@n8n/di';
-import type { EndedMessage, ExecutionResponse } from '@n8n/engine';
-import { decodeBufferBody } from 'n8n-core';
-import { OperationalError, UnexpectedError } from 'n8n-workflow';
+import { Logger } from '@MNI/backend-common';
+import { EngineConfig } from '@MNI/config';
+import { Service } from '@MNI/di';
+import type { EndedMessage, ExecutionResponse } from '@MNI/engine';
+import { decodeBufferBody } from 'MNI-core';
+import { OperationalError, UnexpectedError } from 'MNI-workflow';
 
 import type { ExecutionIdV2 } from '@/executions/execution-id';
 import type {

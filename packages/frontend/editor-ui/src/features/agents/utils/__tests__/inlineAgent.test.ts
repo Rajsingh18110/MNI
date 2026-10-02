@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import type { InlineAgentConfig } from '@n8n/api-types';
+import type { InlineAgentConfig } from '@MNI/api-types';
 
 import { generateInlineSkillId, inlineAgentToCapabilitySummary } from '../inlineAgent';
 

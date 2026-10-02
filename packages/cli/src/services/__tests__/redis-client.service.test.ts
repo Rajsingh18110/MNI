@@ -1,6 +1,6 @@
-import { Logger } from '@n8n/backend-common';
-import { mockInstance } from '@n8n/backend-test-utils';
-import { GlobalConfig } from '@n8n/config';
+import { Logger } from '@MNI/backend-common';
+import { mockInstance } from '@MNI/backend-test-utils';
+import { GlobalConfig } from '@MNI/config';
 import Redis from 'ioredis';
 import type { Mock } from 'vitest';
 

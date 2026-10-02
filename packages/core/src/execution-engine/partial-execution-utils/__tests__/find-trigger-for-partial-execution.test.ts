@@ -1,5 +1,5 @@
-import type { IConnections, INode, INodeType, INodeTypes, IPinData, IRunData } from 'n8n-workflow';
-import { NodeConnectionTypes, Workflow } from 'n8n-workflow';
+import type { IConnections, INode, INodeType, INodeTypes, IPinData, IRunData } from 'MNI-workflow';
+import { NodeConnectionTypes, Workflow } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import { createNodeData, toIConnections, toITaskData } from './helpers';
@@ -23,13 +23,13 @@ describe('findTriggerForPartialExecution', () => {
 
 	const createNode = (name: string, type: string, disabled = false) =>
 		mock<INode>({ name, type, disabled });
-	const manualTriggerNode = createNode('ManualTrigger', 'n8n-nodes-base.manualTrigger');
-	const disabledTriggerNode = createNode('DisabledTrigger', 'n8n-nodes-base.manualTrigger', true);
-	const pinnedTrigger = createNode('PinnedTrigger', 'n8n-nodes-base.manualTrigger');
-	const setNode = createNode('Set', 'n8n-nodes-base.set');
-	const noOpNode = createNode('No Operation', 'n8n-nodes-base.noOp');
-	const webhookNode = createNode('Webhook', 'n8n-nodes-base.webhook');
-	const webhookNode1 = createNode('Webhook1', 'n8n-nodes-base.webhook');
+	const manualTriggerNode = createNode('ManualTrigger', 'MNI-nodes-base.manualTrigger');
+	const disabledTriggerNode = createNode('DisabledTrigger', 'MNI-nodes-base.manualTrigger', true);
+	const pinnedTrigger = createNode('PinnedTrigger', 'MNI-nodes-base.manualTrigger');
+	const setNode = createNode('Set', 'MNI-nodes-base.set');
+	const noOpNode = createNode('No Operation', 'MNI-nodes-base.noOp');
+	const webhookNode = createNode('Webhook', 'MNI-nodes-base.webhook');
+	const webhookNode1 = createNode('Webhook1', 'MNI-nodes-base.webhook');
 
 	beforeEach(() => {
 		nodeTypes.getByNameAndVersion.mockImplementation((type) => {
@@ -220,8 +220,8 @@ describe('findTriggerForPartialExecution', () => {
 
 		it('should prefer triggers that have run data', () => {
 			// ARRANGE
-			const trigger1 = createNodeData({ name: 'trigger1', type: 'n8n-nodes-base.manualTrigger' });
-			const trigger2 = createNodeData({ name: 'trigger2', type: 'n8n-nodes-base.manualTrigger' });
+			const trigger1 = createNodeData({ name: 'trigger1', type: 'MNI-nodes-base.manualTrigger' });
+			const trigger2 = createNodeData({ name: 'trigger2', type: 'MNI-nodes-base.manualTrigger' });
 			const node = createNodeData({ name: 'node' });
 			const workflow = new DirectedGraph()
 				.addNodes(trigger1, trigger2, node)

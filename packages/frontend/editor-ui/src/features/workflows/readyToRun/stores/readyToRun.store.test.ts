@@ -23,13 +23,13 @@ vi.mock('vue-router', () => ({
 	}),
 }));
 
-vi.mock('@n8n/composables/useTelemetry', () => ({
+vi.mock('@MNI/composables/useTelemetry', () => ({
 	useTelemetry: () => ({
 		track: mockTrack,
 	}),
 }));
 
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: () => ({
 		showError: mockShowError,
 	}),
@@ -41,7 +41,7 @@ vi.mock('@/app/constants', () => ({
 	},
 }));
 
-vi.mock('n8n-workflow', () => ({
+vi.mock('MNI-workflow', () => ({
 	OPEN_AI_API_CREDENTIAL_TYPE: 'openAiApi',
 	deepCopy: <T>(value: T) => structuredClone(value),
 }));
@@ -97,7 +97,7 @@ const mockCurrentUser = {
 	},
 };
 
-vi.mock('@n8n/stores/users.store', () => ({
+vi.mock('@MNI/stores/users.store', () => ({
 	useUsersStore: () => ({
 		get currentUser() {
 			return mockCurrentUser.value;
@@ -107,7 +107,7 @@ vi.mock('@n8n/stores/users.store', () => ({
 
 const mockIsAiCreditsEnabled = { value: true };
 
-vi.mock('@n8n/stores/settings.store', () => ({
+vi.mock('@MNI/stores/settings.store', () => ({
 	useSettingsStore: () => ({
 		get isAiCreditsEnabled() {
 			return mockIsAiCreditsEnabled.value;
@@ -115,7 +115,7 @@ vi.mock('@n8n/stores/settings.store', () => ({
 	}),
 }));
 
-vi.mock('@n8n/i18n', () => ({
+vi.mock('@MNI/i18n', () => ({
 	useI18n: () => ({
 		baseText: (key: string) => key,
 	}),

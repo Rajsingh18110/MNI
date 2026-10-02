@@ -5,8 +5,8 @@ import type {
 	IRunExecutionData,
 	ITaskData,
 	ITaskDataConnections,
-} from 'n8n-workflow';
-import { BINARY_IN_JSON_PROPERTY, createRunExecutionData } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { BINARY_IN_JSON_PROPERTY, createRunExecutionData } from 'MNI-workflow';
 
 import { sumBinaryDataBytes } from '../sum-binary-data-bytes';
 

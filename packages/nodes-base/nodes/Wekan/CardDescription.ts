@@ -1,4 +1,4 @@
-import type { INodeProperties } from 'n8n-workflow';
+import type { INodeProperties } from 'MNI-workflow';
 
 export const cardOperations: INodeProperties[] = [
 	// ----------------------------------
@@ -677,7 +677,7 @@ export const cardFields: INodeProperties[] = [
 				name: 'isOverTime',
 				type: 'boolean',
 				default: false,
-				// eslint-disable-next-line n8n-nodes-base/node-param-description-boolean-without-whether
+				// eslint-disable-next-line MNI-nodes-base/node-param-description-boolean-without-whether
 				description: 'The new over time field of the card',
 			},
 			{

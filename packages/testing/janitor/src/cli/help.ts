@@ -228,7 +228,7 @@ When neither --changed-files nor $CHANGED_FILES is set, returns ALL packages
 (safe default for local dev).
 
 Bailout triggers (return ALL packages): pnpm-lock.yaml, root package.json,
-anything under packages/@n8n/db/ (entities and migrations resolved at
+anything under packages/@MNI/db/ (entities and migrations resolved at
 runtime via the DI container by every consuming package's integration tests).
 `);
 }

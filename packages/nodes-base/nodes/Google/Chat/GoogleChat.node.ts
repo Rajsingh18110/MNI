@@ -13,8 +13,8 @@ import type {
 	INodeTypeDescription,
 	IRequestOptions,
 	JsonObject,
-} from 'n8n-workflow';
-import { NodeConnectionTypes, NodeOperationError, SEND_AND_WAIT_OPERATION } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeConnectionTypes, NodeOperationError, SEND_AND_WAIT_OPERATION } from 'MNI-workflow';
 
 import {
 	// attachmentFields,
@@ -92,7 +92,7 @@ export class GoogleChat implements INodeType {
 				type: 'options',
 				options: [
 					{
-						// eslint-disable-next-line n8n-nodes-base/node-param-display-name-miscased
+						// eslint-disable-next-line MNI-nodes-base/node-param-display-name-miscased
 						name: 'OAuth2 (recommended)',
 						value: 'oAuth2',
 					},

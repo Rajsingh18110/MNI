@@ -1,5 +1,5 @@
-import type { IDataObject, INodeProperties } from 'n8n-workflow';
-import { jsonParse } from 'n8n-workflow';
+import type { IDataObject, INodeProperties } from 'MNI-workflow';
+import { jsonParse } from 'MNI-workflow';
 
 export const questionsOperations: INodeProperties[] = [
 	{

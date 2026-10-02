@@ -4,20 +4,20 @@ import {
 	mockInstance,
 	setActiveVersion,
 	testDb,
-} from '@n8n/backend-test-utils';
-import { WorkflowsConfig } from '@n8n/config';
+} from '@MNI/backend-test-utils';
+import { WorkflowsConfig } from '@MNI/config';
 import {
 	WorkflowPublicationOutboxRepository,
 	WorkflowPublicationRetryStateRepository,
 	WorkflowPublicationTriggerStatusRepository,
 	WorkflowPublishedVersionRepository,
 	WorkflowRepository,
-} from '@n8n/db';
-import { Container } from '@n8n/di';
-import { ActiveWorkflowTriggers, ExternalSecretsProxy, InstanceSettings } from 'n8n-core';
-import { ManualTrigger } from 'n8n-nodes-base/nodes/ManualTrigger/ManualTrigger.node';
-import { ScheduleTrigger } from 'n8n-nodes-base/nodes/Schedule/ScheduleTrigger.node';
-import type { INode, INodeTypeData } from 'n8n-workflow';
+} from '@MNI/db';
+import { Container } from '@MNI/di';
+import { ActiveWorkflowTriggers, ExternalSecretsProxy, InstanceSettings } from 'MNI-core';
+import { ManualTrigger } from 'MNI-nodes-base/nodes/ManualTrigger/ManualTrigger.node';
+import { ScheduleTrigger } from 'MNI-nodes-base/nodes/Schedule/ScheduleTrigger.node';
+import type { INode, INodeTypeData } from 'MNI-workflow';
 
 import { ActiveExecutions } from '@/active-executions';
 import { ActiveWorkflowManager } from '@/active-workflow-manager';
@@ -59,7 +59,7 @@ let originalUseWorkflowPublicationService: boolean;
 const scheduleNode = (suffix: string): INode => ({
 	id: `node-${suffix}`,
 	name: `Schedule ${suffix}`,
-	type: 'n8n-nodes-base.scheduleTrigger',
+	type: 'MNI-nodes-base.scheduleTrigger',
 	typeVersion: 1,
 	position: [0, 0],
 	parameters: {},
@@ -68,7 +68,7 @@ const scheduleNode = (suffix: string): INode => ({
 const manualTriggerNode = (suffix: string): INode => ({
 	id: `node-${suffix}`,
 	name: `Manual ${suffix}`,
-	type: 'n8n-nodes-base.manualTrigger',
+	type: 'MNI-nodes-base.manualTrigger',
 	typeVersion: 1,
 	position: [0, 0],
 	parameters: {},
@@ -78,8 +78,8 @@ beforeAll(async () => {
 	await testDb.init();
 
 	const nodes: INodeTypeData = {
-		'n8n-nodes-base.scheduleTrigger': { type: new ScheduleTrigger(), sourcePath: '' },
-		'n8n-nodes-base.manualTrigger': { type: new ManualTrigger(), sourcePath: '' },
+		'MNI-nodes-base.scheduleTrigger': { type: new ScheduleTrigger(), sourcePath: '' },
+		'MNI-nodes-base.manualTrigger': { type: new ManualTrigger(), sourcePath: '' },
 	};
 	await utils.initNodeTypes(nodes);
 

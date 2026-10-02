@@ -5,9 +5,9 @@ import {
 	setActiveVersion,
 	createWorkflowHistory,
 	createTeamProject,
-} from '@n8n/backend-test-utils';
-import { WorkflowRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
+} from '@MNI/backend-test-utils';
+import { WorkflowRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
 import fs from 'fs';
 import { nanoid } from 'nanoid';
 import os from 'os';
@@ -25,7 +25,7 @@ let testOutputDir: string;
 
 beforeEach(async () => {
 	await testDb.truncate(['WorkflowEntity', 'WorkflowHistory']);
-	testOutputDir = fs.mkdtempSync(path.join(os.tmpdir(), 'n8n-export-test-'));
+	testOutputDir = fs.mkdtempSync(path.join(os.tmpdir(), 'MNI-export-test-'));
 });
 
 afterEach(() => {
@@ -103,7 +103,7 @@ test('should export current draft version when no flags set', async () => {
 				id: 'uuid-draft',
 				parameters: {},
 				name: 'Draft Node',
-				type: 'n8n-nodes-base.manualTrigger',
+				type: 'MNI-nodes-base.manualTrigger',
 				typeVersion: 1,
 				position: [240, 300],
 			},
@@ -131,7 +131,7 @@ test('should export specified version with --version flag', async () => {
 				id: 'uuid-v1',
 				parameters: {},
 				name: 'Version 1 Node',
-				type: 'n8n-nodes-base.manualTrigger',
+				type: 'MNI-nodes-base.manualTrigger',
 				typeVersion: 1,
 				position: [240, 300],
 			},
@@ -147,7 +147,7 @@ test('should export specified version with --version flag', async () => {
 			id: 'uuid-v2',
 			parameters: {},
 			name: 'Version 2 Node',
-			type: 'n8n-nodes-base.manualTrigger',
+			type: 'MNI-nodes-base.manualTrigger',
 			typeVersion: 1,
 			position: [240, 300],
 		},
@@ -175,7 +175,7 @@ test('should export published version with --published flag', async () => {
 				id: 'uuid-published',
 				parameters: {},
 				name: 'Published Node',
-				type: 'n8n-nodes-base.manualTrigger',
+				type: 'MNI-nodes-base.manualTrigger',
 				typeVersion: 1,
 				position: [240, 300],
 			},
@@ -194,7 +194,7 @@ test('should export published version with --published flag', async () => {
 			id: 'uuid-draft',
 			parameters: {},
 			name: 'Draft Node',
-			type: 'n8n-nodes-base.manualTrigger',
+			type: 'MNI-nodes-base.manualTrigger',
 			typeVersion: 1,
 			position: [240, 300],
 		},
@@ -242,7 +242,7 @@ test('should merge historical nodes with current metadata', async () => {
 				id: 'uuid-v1',
 				parameters: {},
 				name: 'Version 1 Node',
-				type: 'n8n-nodes-base.manualTrigger',
+				type: 'MNI-nodes-base.manualTrigger',
 				typeVersion: 1,
 				position: [240, 300],
 			},
@@ -259,7 +259,7 @@ test('should merge historical nodes with current metadata', async () => {
 			id: 'uuid-v2',
 			parameters: {},
 			name: 'Version 2 Node',
-			type: 'n8n-nodes-base.manualTrigger',
+			type: 'MNI-nodes-base.manualTrigger',
 			typeVersion: 1,
 			position: [240, 300],
 		},
@@ -418,7 +418,7 @@ test('should export nodeGroups from historical version', async () => {
 				id: 'uuid-v1',
 				parameters: {},
 				name: 'Version 1 Node',
-				type: 'n8n-nodes-base.manualTrigger',
+				type: 'MNI-nodes-base.manualTrigger',
 				typeVersion: 1,
 				position: [240, 300],
 			},
@@ -435,7 +435,7 @@ test('should export nodeGroups from historical version', async () => {
 			id: 'uuid-v2',
 			parameters: {},
 			name: 'Version 2 Node',
-			type: 'n8n-nodes-base.manualTrigger',
+			type: 'MNI-nodes-base.manualTrigger',
 			typeVersion: 1,
 			position: [240, 300],
 		},

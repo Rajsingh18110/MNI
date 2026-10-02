@@ -73,7 +73,7 @@ describe('NodeItem', () => {
 			pinia,
 			props: {
 				nodeType: mockSimplifiedNodeType({
-					name: 'n8n-nodes-base.set',
+					name: 'MNI-nodes-base.set',
 					displayName: 'Edit Fields',
 					group: ['transform'],
 				}),
@@ -102,14 +102,14 @@ describe('NodeItem', () => {
 	});
 
 	it('sets the drag data to the result of getAddedNodesAndConnections', async () => {
-		const addedNodesAndConnections = { nodes: [{ type: 'n8n-nodes-base.slack' }], connections: [] };
+		const addedNodesAndConnections = { nodes: [{ type: 'MNI-nodes-base.slack' }], connections: [] };
 		mockGetAddedNodesAndConnections.mockReturnValue(addedNodesAndConnections);
 
 		const { findByTestId } = render({
 			pinia,
 			props: {
 				nodeType: mockSimplifiedNodeType({
-					name: 'n8n-nodes-base.slack',
+					name: 'MNI-nodes-base.slack',
 					displayName: 'Slack',
 					group: ['output'],
 				}),
@@ -120,7 +120,7 @@ describe('NodeItem', () => {
 		const dataTransfer = dispatchDragStart(draggable);
 
 		expect(mockGetAddedNodesAndConnections).toHaveBeenCalledWith([
-			{ type: 'n8n-nodes-base.slack' },
+			{ type: 'MNI-nodes-base.slack' },
 		]);
 		expect(dataTransfer.setData).toHaveBeenCalledWith(
 			DRAG_EVENT_DATA_KEY,
@@ -134,7 +134,7 @@ describe('NodeItem', () => {
 				pinia,
 				props: {
 					nodeType: mockSimplifiedNodeType({
-						name: 'n8n-nodes-preview-firecrawl.firecrawl',
+						name: 'MNI-nodes-preview-firecrawl.firecrawl',
 						displayName: 'Firecrawl',
 						description: 'Scrape websites with Firecrawl',
 					}),
@@ -150,7 +150,7 @@ describe('NodeItem', () => {
 				pinia,
 				props: {
 					nodeType: mockSimplifiedNodeType({
-						name: '@mendable/n8n-nodes-firecrawl.firecrawl',
+						name: '@mendable/MNI-nodes-firecrawl.firecrawl',
 						displayName: 'Firecrawl',
 						description: 'Scrape websites with Firecrawl',
 					}),
@@ -166,7 +166,7 @@ describe('NodeItem', () => {
 				pinia,
 				props: {
 					nodeType: mockSimplifiedNodeType({
-						name: 'n8n-nodes-base.slack',
+						name: 'MNI-nodes-base.slack',
 						displayName: 'Slack',
 						description: 'Consume Slack API',
 					}),
@@ -182,7 +182,7 @@ describe('NodeItem', () => {
 				pinia,
 				props: {
 					nodeType: mockSimplifiedNodeType({
-						name: '@mendable/n8n-nodes-firecrawl.firecrawl',
+						name: '@mendable/MNI-nodes-firecrawl.firecrawl',
 						displayName: 'Firecrawl',
 						description: 'Scrape websites with Firecrawl',
 					}),
@@ -205,7 +205,7 @@ describe('NodeItem', () => {
 				pinia,
 				props: {
 					nodeType: mockSimplifiedNodeType({
-						name: '@n8n/n8n-nodes-langchain.anthropic',
+						name: '@MNI/MNI-nodes-langchain.anthropic',
 						displayName: 'Anthropic',
 						description: 'Interact with Anthropic AI models',
 					}),
@@ -220,13 +220,13 @@ describe('NodeItem', () => {
 	describe('restricted node type', () => {
 		const gmail = () =>
 			mockSimplifiedNodeType({
-				name: 'n8n-nodes-base.gmail',
+				name: 'MNI-nodes-base.gmail',
 				displayName: 'Gmail',
 				group: ['output'],
 			});
 
 		it('is greyed, locked, not draggable and has no action arrow', () => {
-			mockRestrictedNodeTypes({ 'n8n-nodes-base.gmail': 'instance' });
+			mockRestrictedNodeTypes({ 'MNI-nodes-base.gmail': 'instance' });
 
 			const { container, getByTestId } = render({ pinia, props: { nodeType: gmail() } });
 
@@ -238,7 +238,7 @@ describe('NodeItem', () => {
 		});
 
 		it('opens the explanation for the hovered row, anchored to the row', async () => {
-			mockRestrictedNodeTypes({ 'n8n-nodes-base.gmail': 'instance' });
+			mockRestrictedNodeTypes({ 'MNI-nodes-base.gmail': 'instance' });
 
 			const { getByTestId } = render({ pinia, props: { nodeType: gmail() } });
 			expect(screen.queryByTestId('node-restricted-popover')).not.toBeInTheDocument();
@@ -249,7 +249,7 @@ describe('NodeItem', () => {
 		});
 
 		it('opens the explanation for the keyboard-active row with its scope', async () => {
-			mockRestrictedNodeTypes({ 'n8n-nodes-base.gmail': 'project' });
+			mockRestrictedNodeTypes({ 'MNI-nodes-base.gmail': 'project' });
 
 			render({ pinia, props: { nodeType: gmail(), active: true } });
 
@@ -257,13 +257,13 @@ describe('NodeItem', () => {
 		});
 
 		it('treats a credential-only node like the HTTP Request node it wraps', () => {
-			mockRestrictedNodeTypes({ 'n8n-nodes-base.httpRequest': 'instance' });
+			mockRestrictedNodeTypes({ 'MNI-nodes-base.httpRequest': 'instance' });
 
 			const { queryByTestId } = render({
 				pinia,
 				props: {
 					nodeType: mockSimplifiedNodeType({
-						name: 'n8n-creds-base.sysdigApi',
+						name: 'MNI-creds-base.sysdigApi',
 						displayName: 'Sysdig',
 						group: ['output'],
 					}),

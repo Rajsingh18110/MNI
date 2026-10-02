@@ -1,6 +1,6 @@
-import { PrometheusMetricsConfig } from '@n8n/config';
-import { Service } from '@n8n/di';
-import { InstanceSettings, TriggersAndPollers } from 'n8n-core';
+import { PrometheusMetricsConfig } from '@MNI/config';
+import { Service } from '@MNI/di';
+import { InstanceSettings, TriggersAndPollers } from 'MNI-core';
 import promClient from 'prom-client';
 
 import { EventService } from '@/events/event.service';
@@ -57,7 +57,7 @@ export class PrometheusPollTriggerMetricsService implements PrometheusMetricsCol
 
 		const timeouts = new promClient.Counter({
 			name: `${prefix}poll_trigger_timeouts_total`,
-			help: 'Total number of polls the durable scheduler abandoned after they exceeded N8N_SCHEDULER_POLL_TIMEOUT, by node type.',
+			help: 'Total number of polls the durable scheduler abandoned after they exceeded MNI_SCHEDULER_POLL_TIMEOUT, by node type.',
 			labelNames: ['node_type'],
 		});
 

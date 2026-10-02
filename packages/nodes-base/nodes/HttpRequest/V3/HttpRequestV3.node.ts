@@ -14,9 +14,9 @@ import type {
 	IRequestOptions,
 	IHttpRequestMethods,
 	ICredentialDataDecryptedObject,
-} from 'n8n-workflow';
-import { ensureError } from '@n8n/utils/errors/ensure-error';
-import { sleep } from '@n8n/utils/sleep';
+} from 'MNI-workflow';
+import { ensureError } from '@MNI/utils/errors/ensure-error';
+import { sleep } from '@MNI/utils/sleep';
 import {
 	BINARY_ENCODING,
 	NodeApiError,
@@ -25,7 +25,7 @@ import {
 	jsonParse,
 	removeCircularRefs,
 	setSafeObjectProperty,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import type { Readable } from 'stream';
 
 import { applyTemplatedAuth } from '@utils/templated-auth';

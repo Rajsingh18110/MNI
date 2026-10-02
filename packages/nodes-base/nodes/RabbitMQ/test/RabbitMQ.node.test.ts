@@ -1,6 +1,6 @@
 import type { Channel, Connection } from 'amqplib';
 import { mock, mockDeep } from 'vitest-mock-extended';
-import { UserError, type IExecuteFunctions, type INode } from 'n8n-workflow';
+import { UserError, type IExecuteFunctions, type INode } from 'MNI-workflow';
 
 import * as GenericFunctions from '../GenericFunctions';
 import { RabbitMQ } from '../RabbitMQ.node';
@@ -20,7 +20,7 @@ describe('RabbitMQ node', () => {
 		executeFunctions.getNode.mockReturnValue({
 			id: 'node-id',
 			name: 'RabbitMQ',
-			type: 'n8n-nodes-base.rabbitmq',
+			type: 'MNI-nodes-base.rabbitmq',
 			typeVersion,
 			position: [0, 0],
 			parameters: {},

@@ -1,12 +1,12 @@
-import { mockLogger, mockInstance } from '@n8n/backend-test-utils';
-import type { WorkflowHistory } from '@n8n/db';
+import { mockLogger, mockInstance } from '@MNI/backend-test-utils';
+import type { WorkflowHistory } from '@MNI/db';
 import {
 	User,
 	WorkflowHistoryRepository,
 	WorkflowPublishHistoryRepository,
 	WorkflowRepository,
-} from '@n8n/db';
-import type { UpdateResult } from '@n8n/typeorm';
+} from '@MNI/db';
+import type { UpdateResult } from '@MNI/typeorm';
 import { mockClear } from 'vitest-mock-extended';
 
 import { SharedWorkflowNotFoundError } from '@/errors/shared-workflow-not-found.error';
@@ -148,7 +148,7 @@ describe('WorkflowHistoryService', () => {
 			});
 		});
 
-		it('should annotate authors with "(via MCP)" when source is n8n-mcp', async () => {
+		it('should annotate authors with "(via MCP)" when source is MNI-mcp', async () => {
 			// Arrange
 			const workflow = getWorkflow({ addNodeWithoutCreds: true });
 			const workflowId = '123';
@@ -157,7 +157,7 @@ describe('WorkflowHistoryService', () => {
 			workflow.versionId = '456';
 
 			// Act
-			await workflowHistoryService.saveVersion(testUser, workflow, workflowId, false, 'n8n-mcp');
+			await workflowHistoryService.saveVersion(testUser, workflow, workflowId, false, 'MNI-mcp');
 
 			// Assert
 			expect(workflowHistoryRepository.insert).toHaveBeenCalledWith(
@@ -196,7 +196,7 @@ describe('WorkflowHistoryService', () => {
 				workflow,
 				workflowId,
 				false,
-				'n8n-mcp',
+				'MNI-mcp',
 				undefined,
 				{ name: 'Added Slack alert', description: 'Notifies #ops on failure' },
 			);
@@ -224,7 +224,7 @@ describe('WorkflowHistoryService', () => {
 				workflow,
 				workflowId,
 				false,
-				'n8n-mcp',
+				'MNI-mcp',
 				undefined,
 				{ name: 'Added Slack alert' },
 			);

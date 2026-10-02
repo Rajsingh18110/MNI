@@ -1,11 +1,11 @@
 <script lang="ts" setup>
 import { computed, onMounted, ref } from 'vue';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import { useMessage } from '@/app/composables/useMessage';
-import { createEventBus } from '@n8n/utils/event-bus';
+import { createEventBus } from '@MNI/utils/event-bus';
 import type { IUpdateInformation } from '@/Interface';
-import type { SecretProviderTypeResponse } from '@n8n/api-types';
-import type { IParameterLabel } from 'n8n-workflow';
+import type { SecretProviderTypeResponse } from '@MNI/api-types';
+import type { IParameterLabel } from 'MNI-workflow';
 import {
 	SECRETS_PROVIDER_CONNECTION_MODAL_KEY,
 	MODAL_CONFIRM,
@@ -31,11 +31,11 @@ import {
 	N8nInfoTip,
 	N8nTooltip,
 	type IMenuItem,
-} from '@n8n/design-system';
+} from '@MNI/design-system';
 import { useProjectsStore } from '@/features/collaboration/projects/projects.store';
-import type { IconOrEmoji } from '@n8n/design-system';
+import type { IconOrEmoji } from '@MNI/design-system';
 import { useUIStore } from '@/app/stores/ui.store';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import Banner from '@/app/components/Banner.vue';
 import type { ProjectSharingData } from '@/features/collaboration/projects/projects.types';
 

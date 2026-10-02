@@ -1,6 +1,6 @@
-import { Logger } from '@n8n/backend-common';
-import { ExecutionsConfig } from '@n8n/config';
-import type { EvaluationConfig, User } from '@n8n/db';
+import { Logger } from '@MNI/backend-common';
+import { ExecutionsConfig } from '@MNI/config';
+import type { EvaluationConfig, User } from '@MNI/db';
 import {
 	EvaluationCollectionRepository,
 	EvaluationConfigRepository,
@@ -10,11 +10,11 @@ import {
 	TestRunErrorCode,
 	TestRunRepository,
 	WorkflowRepository,
-} from '@n8n/db';
-import { OnPubSubEvent } from '@n8n/decorators';
-import { Service } from '@n8n/di';
-import { In } from '@n8n/typeorm';
-import { ErrorReporter, InstanceSettings } from 'n8n-core';
+} from '@MNI/db';
+import { OnPubSubEvent } from '@MNI/decorators';
+import { Service } from '@MNI/di';
+import { In } from '@MNI/typeorm';
+import { ErrorReporter, InstanceSettings } from 'MNI-core';
 import {
 	EVALUATION_NODE_TYPE,
 	EVALUATION_TRIGGER_NODE_TYPE,
@@ -24,7 +24,7 @@ import {
 	DEFAULT_EVALUATION_METRIC,
 	ManualExecutionCancelledError,
 	createRunExecutionData,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import type {
 	IDataObject,
 	IRun,
@@ -34,7 +34,7 @@ import type {
 	AssignmentCollectionValue,
 	GenericValue,
 	JsonObject,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import assert from 'node:assert';
 import pLimit from 'p-limit';
 

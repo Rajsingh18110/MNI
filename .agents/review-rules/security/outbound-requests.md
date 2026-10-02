@@ -1,9 +1,9 @@
 # Outbound requests
 
 Applies to: `packages/cli`, `packages/core`, `packages/nodes-base`,
-`packages/@n8n/nodes-langchain`.
+`packages/@MNI/nodes-langchain`.
 
-A URL is user-controlled unless the code shows otherwise. The recurring finding is not a weak allowlist but a working check the new path never calls: `n8n-workflow` exports `assertUrlAllowed`, `assertCredentialAllowsUrl` and `getCredentialAllowedDomains`, and a request surface reaching none of them is the finding.
+A URL is user-controlled unless the code shows otherwise. The recurring finding is not a weak allowlist but a working check the new path never calls: `MNI-workflow` exports `assertUrlAllowed`, `assertCredentialAllowsUrl` and `getCredentialAllowedDomains`, and a request surface reaching none of them is the finding.
 
 Flag NEW code where:
 

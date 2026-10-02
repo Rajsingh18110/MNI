@@ -1,17 +1,17 @@
 import { computed } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
-import { useI18n } from '@n8n/i18n';
-import { N8nIcon } from '@n8n/design-system';
+import { useI18n } from '@MNI/i18n';
+import { N8nIcon } from '@MNI/design-system';
 import { useExecutionsStore } from '@/features/execution/executions/executions.store';
 import { useWorkflowsListStore } from '@/app/stores/workflowsList.store';
-import { useSettingsStore } from '@n8n/stores/settings.store';
-import { useToast } from '@n8n/composables/useToast';
+import { useSettingsStore } from '@MNI/stores/settings.store';
+import { useToast } from '@MNI/composables/useToast';
 import { useMessage } from '@/app/composables/useMessage';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
-import { getResourcePermissions } from '@n8n/permissions';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
+import { getResourcePermissions } from '@MNI/permissions';
 import { EnterpriseEditionFeature, MODAL_CONFIRM, VIEWS } from '@/app/constants';
 import { executionRetryMessage } from '@/features/execution/executions/executions.utils';
-import type { ExecutionSummary, AnnotationVote } from 'n8n-workflow';
+import type { ExecutionSummary, AnnotationVote } from 'MNI-workflow';
 import type { CommandGroup, CommandBarItem } from '../types';
 
 const ITEM_ID = {

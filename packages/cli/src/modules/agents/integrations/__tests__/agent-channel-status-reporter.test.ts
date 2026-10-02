@@ -1,6 +1,6 @@
-import { mockLogger } from '@n8n/backend-test-utils';
-import { AgentsConfig } from '@n8n/config';
-import { Time } from '@n8n/constants';
+import { mockLogger } from '@MNI/backend-test-utils';
+import { AgentsConfig } from '@MNI/config';
+import { Time } from '@MNI/constants';
 import { mock } from 'vitest-mock-extended';
 
 import type { AgentChannelStatus } from '../../entities/agent-channel-status.entity';

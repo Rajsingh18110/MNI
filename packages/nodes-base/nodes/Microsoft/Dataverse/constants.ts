@@ -14,11 +14,11 @@ export const DATAVERSE_API_PATH = '/api/data/v9.2';
  * A descriptive agent string lets Microsoft correlate traffic to this node in
  * support/telemetry scenarios.
  */
-export const USER_AGENT_PREFIX = 'n8n-nodes-base.microsoftDataverse';
+export const USER_AGENT_PREFIX = 'MNI-nodes-base.microsoftDataverse';
 
 /**
  * Build the `User-Agent` including the node's version so requests are
- * attributable to a specific node version (e.g. `n8n-nodes-base.microsoftDataverse/1.0`).
+ * attributable to a specific node version (e.g. `MNI-nodes-base.microsoftDataverse/1.0`).
  * Pass `this.getNode().typeVersion` from the execution/load-options context.
  * A whole-number version is normalized to include a minor (`1` -> `1.0`).
  */

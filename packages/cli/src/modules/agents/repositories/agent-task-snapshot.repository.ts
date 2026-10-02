@@ -1,5 +1,5 @@
-import { Service } from '@n8n/di';
-import { DataSource, Repository, type EntityManager } from '@n8n/typeorm';
+import { Service } from '@MNI/di';
+import { DataSource, Repository, type EntityManager } from '@MNI/typeorm';
 
 import { AgentTaskSnapshot } from '../entities/agent-task-snapshot.entity';
 

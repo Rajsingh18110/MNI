@@ -1,5 +1,5 @@
-import type { AssignableGlobalRole } from '@n8n/permissions';
-import type { IUser } from '@n8n/rest-api-client/api/users';
+import type { AssignableGlobalRole } from '@MNI/permissions';
+import type { IUser } from '@MNI/rest-api-client/api/users';
 
 export type ILogInStatus = 'LoggedIn' | 'LoggedOut';
 

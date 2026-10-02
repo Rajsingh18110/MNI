@@ -1,10 +1,10 @@
-import type { ValidationWarning } from '@n8n/ai-workflow-builder';
-import type { Logger } from '@n8n/backend-common';
-import type { GlobalConfig } from '@n8n/config';
-import { type User, type SharedWorkflowRepository, WorkflowEntity } from '@n8n/db';
-import { hasGlobalScope } from '@n8n/permissions';
+import type { ValidationWarning } from '@MNI/ai-workflow-builder';
+import type { Logger } from '@MNI/backend-common';
+import type { GlobalConfig } from '@MNI/config';
+import { type User, type SharedWorkflowRepository, WorkflowEntity } from '@MNI/db';
+import { hasGlobalScope } from '@MNI/permissions';
 import isEqual from 'lodash/isEqual';
-import { Workflow, type INode, type IWorkflowSettings } from 'n8n-workflow';
+import { Workflow, type INode, type IWorkflowSettings } from 'MNI-workflow';
 import { z } from 'zod';
 
 import type { CollaborationService } from '@/collaboration/collaboration.service';
@@ -16,7 +16,7 @@ import type { McpPostSaveMetricsService } from '@/modules/mcp/mcp-post-save-metr
 import type { NodeTypes } from '@/node-types';
 import type { AiGatewayService } from '@/services/ai-gateway.service';
 import type { TagService } from '@/services/tag.service';
-import type { UrlService } from '@n8n/backend-services';
+import type { UrlService } from '@MNI/backend-services';
 import type { Telemetry } from '@/telemetry';
 import {
 	dropInvalidWorkflowGroups,
@@ -68,7 +68,7 @@ const MAX_OPERATIONS_PER_CALL = 100;
 
 // JSON round-trip intentionally: we want the shape the DB would have stored,
 // which drops `undefined` properties. `deepCopy` preserves them, breaking recovery.
-// eslint-disable-next-line n8n-local-rules/no-json-parse-json-stringify
+// eslint-disable-next-line MNI-local-rules/no-json-parse-json-stringify
 const normalize = (value: unknown) => JSON.parse(JSON.stringify(value ?? null));
 const operationTypes = [
 	'updateNodeParameters',
@@ -123,7 +123,7 @@ const credentialsInputSchema = z.record(
 );
 const nodeInputSchema = z.object({
 	name: z.string().describe('Unique node name.'),
-	type: z.string().describe('Node type, e.g. "n8n-nodes-base.set".'),
+	type: z.string().describe('Node type, e.g. "MNI-nodes-base.set".'),
 	typeVersion: z.number(),
 	parameters: z.record(z.string(), z.unknown()).optional(),
 	position: positionInputSchema().optional(),
@@ -1012,7 +1012,7 @@ async function collectValidationWarnings(
 	existing: Pick<WorkflowEntity, 'name' | 'nodes' | 'connections'>,
 	nodeTypes: NodeTypes,
 ): Promise<Array<ValidationWarning & { preExisting?: boolean }>> {
-	const { ParseValidateHandler, getWarningKey } = await import('@n8n/ai-workflow-builder');
+	const { ParseValidateHandler, getWarningKey } = await import('@MNI/ai-workflow-builder');
 
 	const validator = new ParseValidateHandler({
 		generatePinData: false,
@@ -1344,7 +1344,7 @@ export const createUpdateWorkflowTool = (
 				updateAttempted = true;
 				const updatedWorkflow = await workflowService.update(user, workflowUpdateData, workflowId, {
 					aiBuilderAssisted: hasNonTagOperations,
-					source: 'n8n-mcp',
+					source: 'MNI-mcp',
 					versionName: versionMetadata.name,
 					versionDescription: versionMetadata.description,
 					...(tagIds !== undefined ? { tagIds } : {}),

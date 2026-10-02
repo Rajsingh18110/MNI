@@ -4,9 +4,9 @@ import {
 	COMMUNITY_NODES_INSTALLATION_DOCS_URL,
 } from '../communityNodes.constants';
 import CommunityPackageCard from '../components/CommunityPackageCard.vue';
-import { useToast } from '@n8n/composables/useToast';
+import { useToast } from '@MNI/composables/useToast';
 import { useDocumentTitle } from '@/app/composables/useDocumentTitle';
-import type { PublicInstalledPackage } from 'n8n-workflow';
+import type { PublicInstalledPackage } from 'MNI-workflow';
 
 import { useCommunityNodesStore } from '../communityNodes.store';
 import { useUIStore } from '@/app/stores/ui.store';
@@ -15,11 +15,11 @@ import { useExternalHooks } from '@/app/composables/useExternalHooks';
 import { useRouter } from 'vue-router';
 import { usePushConnection } from '@/app/composables/usePushConnection';
 import { usePushConnectionStore } from '@/app/stores/pushConnection.store';
-import { useI18n } from '@n8n/i18n';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useI18n } from '@MNI/i18n';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 
-import { N8nEmptyState, N8nButton, N8nHeading, N8nNotice } from '@n8n/design-system';
+import { N8nEmptyState, N8nButton, N8nHeading, N8nNotice } from '@MNI/design-system';
 const PACKAGE_COUNT_THRESHOLD = 31;
 
 const loading = ref(false);

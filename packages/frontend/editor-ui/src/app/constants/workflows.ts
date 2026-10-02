@@ -1,5 +1,5 @@
-import { BINARY_MODE_SEPARATE } from 'n8n-workflow';
-import type { IWorkflowSettings } from 'n8n-workflow';
+import { BINARY_MODE_SEPARATE } from 'MNI-workflow';
+import type { IWorkflowSettings } from 'MNI-workflow';
 
 export const DEFAULT_NODETYPE_VERSION = 1;
 export const DEFAULT_NEW_WORKFLOW_NAME = 'My workflow';

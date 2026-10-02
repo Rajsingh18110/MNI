@@ -1,6 +1,6 @@
-import { Logger } from '@n8n/backend-common';
-import { mockInstance } from '@n8n/backend-test-utils';
-import { TaskRunnersConfig } from '@n8n/config';
+import { Logger } from '@MNI/backend-common';
+import { mockInstance } from '@MNI/backend-test-utils';
+import { TaskRunnersConfig } from '@MNI/config';
 import type { ChildProcess, SpawnOptions } from 'node:child_process';
 import { mock } from 'vitest-mock-extended';
 
@@ -45,11 +45,11 @@ describe('PyTaskRunnerProcess', () => {
 
 		test.each([
 			'PATH',
-			'N8N_RUNNERS_STDLIB_ALLOW',
-			'N8N_RUNNERS_EXTERNAL_ALLOW',
-			'N8N_RUNNERS_ALLOW_TRANSITIVE_IMPORTS',
-			'N8N_RUNNERS_BUILTINS_DENY',
-			'N8N_BLOCK_RUNNER_ENV_ACCESS',
+			'MNI_RUNNERS_STDLIB_ALLOW',
+			'MNI_RUNNERS_EXTERNAL_ALLOW',
+			'MNI_RUNNERS_ALLOW_TRANSITIVE_IMPORTS',
+			'MNI_RUNNERS_BUILTINS_DENY',
+			'MNI_BLOCK_RUNNER_ENV_ACCESS',
 		])('should propagate %s from env as is', async (envVar) => {
 			process.env[envVar] = 'custom value';
 
@@ -67,20 +67,20 @@ describe('PyTaskRunnerProcess', () => {
 			await taskRunnerProcess.start();
 
 			const { env } = spawnMock.mock.calls[0][2] as SpawnOptions;
-			expect(env!.N8N_RUNNERS_ID).toEqual(expect.stringMatching(/.+/));
-			expect(authService.createGrantToken).toHaveBeenCalledWith(env!.N8N_RUNNERS_ID);
+			expect(env!.MNI_RUNNERS_ID).toEqual(expect.stringMatching(/.+/));
+			expect(authService.createGrantToken).toHaveBeenCalledWith(env!.MNI_RUNNERS_ID);
 		});
 
 		it('should not let an operator-set runner ID override the assigned one', async () => {
-			process.env.N8N_RUNNERS_ID = 'operator-set';
+			process.env.MNI_RUNNERS_ID = 'operator-set';
 
 			try {
 				await taskRunnerProcess.start();
 
 				const { env } = spawnMock.mock.calls[0][2] as SpawnOptions;
-				expect(env!.N8N_RUNNERS_ID).not.toBe('operator-set');
+				expect(env!.MNI_RUNNERS_ID).not.toBe('operator-set');
 			} finally {
-				delete process.env.N8N_RUNNERS_ID;
+				delete process.env.MNI_RUNNERS_ID;
 			}
 		});
 

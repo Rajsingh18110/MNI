@@ -1,4 +1,4 @@
-import type { INodeType, ISupplyDataFunctions, INode } from 'n8n-workflow';
+import type { INodeType, ISupplyDataFunctions, INode } from 'MNI-workflow';
 import type { Mock } from 'vitest';
 import { mock } from 'vitest-mock-extended';
 import { z } from 'zod';
@@ -399,7 +399,7 @@ describe('createNodeAsTool', () => {
 				varyingSpacing3: "={{ $FROMai('param3', 'Description3', 'boolean') }}",
 				wrongCapitalization: "={{$fromai('param4','Description4','number')}}",
 				templateLiteralParam:
-					// eslint-disable-next-line n8n-local-rules/no-interpolation-in-regular-string
+					// eslint-disable-next-line MNI-local-rules/no-interpolation-in-regular-string
 					"={{ `Value is: ${$fromAI('templatedParam', 'Templated param description', 'string')}` }}",
 			};
 

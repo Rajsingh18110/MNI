@@ -1,4 +1,4 @@
-import { Tournament } from '@n8n/tournament';
+import { Tournament } from '@MNI/tournament';
 import { existsSync, unlinkSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
@@ -73,9 +73,9 @@ describe('PrototypeSanitizer', () => {
 
 		it.each([
 			['constructor', '{{ Number[`constructor`] }}', { Number }],
-			// eslint-disable-next-line n8n-local-rules/no-interpolation-in-regular-string
+			// eslint-disable-next-line MNI-local-rules/no-interpolation-in-regular-string
 			['constructor (Number)', '{{ Number[`constr${`uct`}or`] }}', { Number }],
-			// eslint-disable-next-line n8n-local-rules/no-interpolation-in-regular-string
+			// eslint-disable-next-line MNI-local-rules/no-interpolation-in-regular-string
 			['constructor (Object)', "{{ Object[`constr${'uct'}or`] }}", { Object }],
 			['__proto__', '{{ ({})[`__proto__`] }}', {}],
 			['mainModule', '{{ process[`mainModule`] }}', { process: {} }],
@@ -210,7 +210,7 @@ describe('PrototypeSanitizer', () => {
 				}).not.toThrow();
 
 				expect(() => {
-					// eslint-disable-next-line n8n-local-rules/no-interpolation-in-regular-string
+					// eslint-disable-next-line MNI-local-rules/no-interpolation-in-regular-string
 					tournament.execute('{{ `template ${100}$` }}', {});
 				}).not.toThrow();
 			});
@@ -746,7 +746,7 @@ describe('PrototypeSanitizer', () => {
 		});
 
 		it('should not expose the host process through a template expression', () => {
-			// eslint-disable-next-line n8n-local-rules/no-interpolation-in-regular-string
+			// eslint-disable-next-line MNI-local-rules/no-interpolation-in-regular-string
 			const result = tournament.execute('{{ `${JSON.stringify({...process})}` }}', {
 				__sanitize: sanitizer,
 				JSON,
@@ -1166,7 +1166,7 @@ describe('ThisSanitizer', () => {
 		it('should not resolve host globals through arrow-captured identifiers', () => {
 			expect(() => {
 				tournament.execute(
-					// eslint-disable-next-line n8n-local-rules/no-interpolation-in-regular-string
+					// eslint-disable-next-line MNI-local-rules/no-interpolation-in-regular-string
 					"{{ ((R,p)=>R.get(p,'getBuiltinModule'))((()=>Reflect)(),(()=>process)())('child_process').execSync('id').toString() }}",
 					{ __sanitize: sanitizer },
 				);

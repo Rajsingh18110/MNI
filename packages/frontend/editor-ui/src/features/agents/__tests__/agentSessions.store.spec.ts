@@ -21,7 +21,7 @@ vi.mock('../composables/useAgentThreadsApi', async (importOriginal) => ({
 		args[3].previewOnly ? listPreviewThreads(...args) : listThreads(...args),
 }));
 
-vi.mock('@n8n/stores/useRootStore', () => ({
+vi.mock('@MNI/stores/useRootStore', () => ({
 	useRootStore: () => ({ restApiContext: { baseUrl: '/rest' } }),
 }));
 

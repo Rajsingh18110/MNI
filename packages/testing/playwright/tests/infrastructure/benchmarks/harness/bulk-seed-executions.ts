@@ -1,4 +1,4 @@
-import type { ServiceHelpers } from 'n8n-containers/services/types';
+import type { ServiceHelpers } from 'MNI-containers/services/types';
 
 /**
  * Bypasses TypeORM and the MNI execution lifecycle so 100k+ rows seed in seconds.

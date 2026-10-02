@@ -1,6 +1,6 @@
 import { ref, watch, type Ref } from 'vue';
-import type { PromotionDirection } from '@n8n/api-types';
-import { useRootStore } from '@n8n/stores/useRootStore';
+import type { PromotionDirection } from '@MNI/api-types';
+import { useRootStore } from '@MNI/stores/useRootStore';
 import { useLatestFetch } from '@/app/composables/useLatestFetch';
 import { getPromotableChanges } from '../promotions.api';
 

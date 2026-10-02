@@ -4,9 +4,9 @@ import {
 	mockInstance,
 	randomCredentialPayload,
 	testDb,
-} from '@n8n/backend-test-utils';
-import type { Project, User } from '@n8n/db';
-import { Container } from '@n8n/di';
+} from '@MNI/backend-test-utils';
+import type { Project, User } from '@MNI/db';
+import { Container } from '@MNI/di';
 
 import { EventService } from '@/events/event.service';
 import {
@@ -26,7 +26,7 @@ import { setupTestServer } from '../shared/utils';
 
 mockInstance(Telemetry);
 
-process.env.N8N_ENV_FEAT_DYNAMIC_CREDENTIALS = 'true';
+process.env.MNI_ENV_FEAT_DYNAMIC_CREDENTIALS = 'true';
 
 mockInstance(DynamicCredentialsConfig, {
 	endpointAuthToken: 'static-test-token',

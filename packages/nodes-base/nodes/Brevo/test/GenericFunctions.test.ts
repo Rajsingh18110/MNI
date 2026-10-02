@@ -1,4 +1,4 @@
-import type { IBinaryData, IExecuteSingleFunctions, IHttpRequestOptions } from 'n8n-workflow';
+import type { IBinaryData, IExecuteSingleFunctions, IHttpRequestOptions } from 'MNI-workflow';
 
 import { BrevoNode } from '../GenericFunctions';
 

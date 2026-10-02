@@ -21,14 +21,14 @@ import {
 	mockInstance,
 	randomCredentialPayload,
 	testDb,
-} from '@n8n/backend-test-utils';
-import { GlobalConfig } from '@n8n/config';
-import type { Project, User, WorkflowEntity } from '@n8n/db';
-import { Container } from '@n8n/di';
-import type { DirectoryLoader } from 'n8n-core';
-import { Cipher, UnrecognizedNodeTypeError } from 'n8n-core';
-import type { INode, INodeType, NodeLoadingDetails } from 'n8n-workflow';
-import { CHAT_TRIGGER_NODE_TYPE } from 'n8n-workflow';
+} from '@MNI/backend-test-utils';
+import { GlobalConfig } from '@MNI/config';
+import type { Project, User, WorkflowEntity } from '@MNI/db';
+import { Container } from '@MNI/di';
+import type { DirectoryLoader } from 'MNI-core';
+import { Cipher, UnrecognizedNodeTypeError } from 'MNI-core';
+import type { INode, INodeType, NodeLoadingDetails } from 'MNI-workflow';
+import { CHAT_TRIGGER_NODE_TYPE } from 'MNI-workflow';
 import nock from 'nock';
 import { randomUUID } from 'node:crypto';
 import { readFileSync } from 'node:fs';
@@ -38,7 +38,7 @@ import { agent as testAgent } from 'supertest';
 import { LoadNodesAndCredentials } from '@/load-nodes-and-credentials';
 import { SYSTEM_RESOLVER_ID } from '@/modules/dynamic-credentials.ee/constants';
 import { DynamicCredentialUserEntryStorage } from '@/modules/dynamic-credentials.ee/credential-resolvers/storage/dynamic-credential-user-entry-storage';
-import { N8nResolverSeeder } from '@/modules/dynamic-credentials.ee/services/n8n-resolver-seeder.service';
+import { N8nResolverSeeder } from '@/modules/dynamic-credentials.ee/services/MNI-resolver-seeder.service';
 import { CacheService } from '@/services/cache/cache.service';
 import { Telemetry } from '@/telemetry';
 import { WebhookServer } from '@/webhooks/webhook-server';
@@ -51,7 +51,7 @@ import { loadNodesFromDist } from '../shared/utils/node-types-data';
 
 mockInstance(Telemetry);
 
-process.env.N8N_ENV_FEAT_DYNAMIC_CREDENTIALS = 'true';
+process.env.MNI_ENV_FEAT_DYNAMIC_CREDENTIALS = 'true';
 
 const testServer = setupTestServer({
 	endpointGroups: ['workflows', 'credentials'],
@@ -59,7 +59,7 @@ const testServer = setupTestServer({
 	modules: ['dynamic-credentials'],
 });
 
-const HTTP_REQUEST = 'n8n-nodes-base.httpRequest';
+const HTTP_REQUEST = 'MNI-nodes-base.httpRequest';
 const CREDENTIAL_TYPE = 'googleSheetsOAuth2Api';
 const VENDOR_HOST = 'https://api.example.test';
 const VENDOR_PATH = '/ping';
@@ -107,7 +107,7 @@ function registerCredentialTypesFromDist(credentialTypeNames: string[]) {
 function registerChatTrigger() {
 	const distPath = path.resolve(
 		__dirname,
-		'../../../../@n8n/nodes-langchain/dist/nodes/trigger/ChatTrigger/ChatTrigger.node.js',
+		'../../../../@MNI/nodes-langchain/dist/nodes/trigger/ChatTrigger/ChatTrigger.node.js',
 	);
 	// eslint-disable-next-line @typescript-eslint/no-var-requires
 	const { ChatTrigger } = require(distPath);

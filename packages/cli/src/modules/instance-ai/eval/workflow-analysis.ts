@@ -1,10 +1,10 @@
-import { extractJsonCandidate } from '@n8n/ai-utilities/llm-output';
-import { Logger } from '@n8n/backend-common';
-import { Container } from '@n8n/di';
-import { createEvalAgent, extractText } from '@n8n/instance-ai';
-// AI root node types (single source in @n8n/workflow-sdk mock-data) — lets
+import { extractJsonCandidate } from '@MNI/ai-utilities/llm-output';
+import { Logger } from '@MNI/backend-common';
+import { Container } from '@MNI/di';
+import { createEvalAgent, extractText } from '@MNI/instance-ai';
+// AI root node types (single source in @MNI/workflow-sdk mock-data) — lets
 // the typo guard accept a no-sub-node Agent.
-import { isAiRootNodeType } from '@n8n/workflow-sdk';
+import { isAiRootNodeType } from '@MNI/workflow-sdk';
 import {
 	findAiRootNodeNames,
 	type INode,
@@ -13,7 +13,7 @@ import {
 	jsonParse,
 	mapConnectionsByDestination,
 	UserError,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { buildDateAnchors } from './date-anchors';
 import { extractNodeConfig } from './node-config';
@@ -35,35 +35,35 @@ function findAiSubNodeNames(workflow: IWorkflowBase): Set<string> {
 
 /** Node types that bypass the HTTP mock handler (non-HTTP protocols or non-helper HTTP). */
 const BYPASS_NODE_TYPES = new Set([
-	'n8n-nodes-base.redis',
-	'n8n-nodes-base.mongoDb',
-	'n8n-nodes-base.mySql',
-	'n8n-nodes-base.postgres',
-	'n8n-nodes-base.microsoftSql',
-	'n8n-nodes-base.snowflake',
-	'n8n-nodes-base.kafka',
-	'n8n-nodes-base.rabbitmq',
-	'n8n-nodes-base.mqtt',
-	'n8n-nodes-base.amqp',
-	'n8n-nodes-base.ftp',
-	'n8n-nodes-base.ssh',
-	'n8n-nodes-base.ldap',
-	'n8n-nodes-base.emailSend',
-	'n8n-nodes-base.rssFeedRead',
-	'n8n-nodes-base.git',
+	'MNI-nodes-base.redis',
+	'MNI-nodes-base.mongoDb',
+	'MNI-nodes-base.mySql',
+	'MNI-nodes-base.postgres',
+	'MNI-nodes-base.microsoftSql',
+	'MNI-nodes-base.snowflake',
+	'MNI-nodes-base.kafka',
+	'MNI-nodes-base.rabbitmq',
+	'MNI-nodes-base.mqtt',
+	'MNI-nodes-base.amqp',
+	'MNI-nodes-base.ftp',
+	'MNI-nodes-base.ssh',
+	'MNI-nodes-base.ldap',
+	'MNI-nodes-base.emailSend',
+	'MNI-nodes-base.rssFeedRead',
+	'MNI-nodes-base.git',
 ]);
 
 /** LLM sub-node types whose vendor URL can be rewritten to the wire server (must match `EVAL_PROVIDER_URL_FIELD`). */
-const SUPPORTED_VENDOR_LLM_SUB_NODE_TYPES = new Set(['@n8n/n8n-nodes-langchain.lmChatOpenAi']);
+const SUPPORTED_VENDOR_LLM_SUB_NODE_TYPES = new Set(['@MNI/MNI-nodes-langchain.lmChatOpenAi']);
 
 /** `lm*` nodes bake the vendor base URL into the SDK; only credential URL rewrite can intercept them. */
 function isVendorLlmSubNode(nodeType: string): boolean {
-	return nodeType.startsWith('@n8n/n8n-nodes-langchain.lm');
+	return nodeType.startsWith('@MNI/MNI-nodes-langchain.lm');
 }
 
 /** `embeddings*` nodes bake the vendor base URL into the SDK, exactly as `lm*` do. */
 function isVendorEmbeddingsSubNode(nodeType: string): boolean {
-	return nodeType.startsWith('@n8n/n8n-nodes-langchain.embeddings');
+	return nodeType.startsWith('@MNI/MNI-nodes-langchain.embeddings');
 }
 
 /** Sub-nodes the HTTP mock never sees: only a credential URL rewrite intercepts them. */
@@ -74,12 +74,12 @@ export function isVendorSdkSubNode(nodeType: string | undefined): boolean {
 
 /** MCP registry nodes talk via the MCP SDK's own transport, not MNI's HTTP helper — the mock can't reach them, so their root must stay pinned. */
 function isMcpRegistryNode(nodeType: string): boolean {
-	return nodeType.startsWith('@n8n/mcp-registry.');
+	return nodeType.startsWith('@MNI/mcp-registry.');
 }
 
 /** Non-empty `options.baseURL` on the LangChain OpenAI node beats credentials.url — credential rewrite isn't enough. */
 function hasUnsafeBaseUrlOverride(node: INode): boolean {
-	if (node.type === '@n8n/n8n-nodes-langchain.lmChatOpenAi') {
+	if (node.type === '@MNI/MNI-nodes-langchain.lmChatOpenAi') {
 		const options = (node.parameters?.options ?? {}) as Record<string, unknown>;
 		const baseURL = options.baseURL;
 		return typeof baseURL === 'string' && baseURL.trim().length > 0;
@@ -90,15 +90,15 @@ function hasUnsafeBaseUrlOverride(node: INode): boolean {
 /** AI sub-nodes that speak non-HTTP protocols — can't be intercepted, so their root must stay pinned. */
 const PROTOCOL_BINARY_SUB_NODE_TYPES = new Set([
 	// Memory backends
-	'@n8n/n8n-nodes-langchain.memoryPostgresChat',
-	'@n8n/n8n-nodes-langchain.memoryRedisChat',
-	'@n8n/n8n-nodes-langchain.memoryMongoDbChat',
+	'@MNI/MNI-nodes-langchain.memoryPostgresChat',
+	'@MNI/MNI-nodes-langchain.memoryRedisChat',
+	'@MNI/MNI-nodes-langchain.memoryMongoDbChat',
 	// Vector stores
-	'@n8n/n8n-nodes-langchain.vectorStorePGVector',
-	'@n8n/n8n-nodes-langchain.vectorStoreMongoDBAtlas',
-	'@n8n/n8n-nodes-langchain.vectorStoreRedis',
-	'@n8n/n8n-nodes-langchain.vectorStoreMilvus',
-	'@n8n/n8n-nodes-langchain.chatHubVectorStorePGVector',
+	'@MNI/MNI-nodes-langchain.vectorStorePGVector',
+	'@MNI/MNI-nodes-langchain.vectorStoreMongoDBAtlas',
+	'@MNI/MNI-nodes-langchain.vectorStoreRedis',
+	'@MNI/MNI-nodes-langchain.vectorStoreMilvus',
+	'@MNI/MNI-nodes-langchain.chatHubVectorStorePGVector',
 ]);
 
 /** Data Table row-read operations. Their output is the scenario's "stored state" — left
@@ -112,7 +112,7 @@ const DATA_TABLE_READ_OPERATIONS = new Set(['get', 'rowExists', 'rowNotExists'])
 const DATA_TABLE_ROW_EMITTING_OPERATIONS = new Set(['get']);
 
 export function isDataTableRead(node: INode): boolean {
-	if (node.type !== 'n8n-nodes-base.dataTable') return false;
+	if (node.type !== 'MNI-nodes-base.dataTable') return false;
 	const params = node.parameters as { resource?: string; operation?: string } | undefined;
 	// Node defaults: resource 'row', operation 'insert' (a write) — only pin explicit reads.
 	return (
@@ -172,16 +172,16 @@ export interface TriggerBinaryRequirement {
  * detector below handles them without needing entries here.
  */
 const BINARY_CONSUMER_NODE_TYPES: Record<string, Omit<TriggerBinaryRequirement, 'propertyName'>> = {
-	'n8n-nodes-base.extractFromFile': { contentType: 'application/pdf', filename: 'input.pdf' },
-	'n8n-nodes-base.readBinaryFile': {
+	'MNI-nodes-base.extractFromFile': { contentType: 'application/pdf', filename: 'input.pdf' },
+	'MNI-nodes-base.readBinaryFile': {
 		contentType: 'application/octet-stream',
 		filename: 'input.bin',
 	},
-	'n8n-nodes-base.writeBinaryFile': {
+	'MNI-nodes-base.writeBinaryFile': {
 		contentType: 'application/octet-stream',
 		filename: 'input.bin',
 	},
-	'@n8n/n8n-nodes-langchain.documentBinaryInputLoader': {
+	'@MNI/MNI-nodes-langchain.documentBinaryInputLoader': {
 		contentType: 'application/pdf',
 		filename: 'input.pdf',
 	},
@@ -193,7 +193,7 @@ const BINARY_CONSUMER_NODE_TYPES: Record<string, Omit<TriggerBinaryRequirement, 
  * Looked up ONLY after a positive expression match — never on node type alone.
  */
 const PREFERRED_BINARY_DEFAULTS: Record<string, Omit<TriggerBinaryRequirement, 'propertyName'>> = {
-	'n8n-nodes-base.telegram': { contentType: 'audio/ogg', filename: 'voice.ogg' },
+	'MNI-nodes-base.telegram': { contentType: 'audio/ogg', filename: 'voice.ogg' },
 };
 
 const BINARY_EXPRESSION_RE = /\$binary\.([A-Za-z_][\w-]*)/;

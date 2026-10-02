@@ -1,4 +1,4 @@
-import type { ExecutionDataStorageLocation } from '@n8n/db';
+import type { ExecutionDataStorageLocation } from '@MNI/db';
 
 /**
  * A "read" spans fetching the bundle from its store AND deserializing it into usable data, so a

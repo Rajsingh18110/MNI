@@ -1,6 +1,6 @@
 import type { Mock } from 'vitest';
 import type { MockProxy } from 'vitest-mock-extended';
-import type { IExecuteFunctions } from 'n8n-workflow';
+import type { IExecuteFunctions } from 'MNI-workflow';
 
 import { createExecuteContext, meetingHeaders, setParams } from '../helpers';
 import { versionDescription } from '../../../../v2/actions/versionDescription';

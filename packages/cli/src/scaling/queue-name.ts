@@ -1,5 +1,5 @@
-import type { WorkerPoolConfig } from '@n8n/config';
-import type { InstanceSettings } from 'n8n-core';
+import type { WorkerPoolConfig } from '@MNI/config';
+import type { InstanceSettings } from 'MNI-core';
 
 export const DEFAULT_QUEUE_NAME = 'jobs';
 

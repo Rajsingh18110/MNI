@@ -1,18 +1,18 @@
 <script lang="ts" setup>
-import type { SamlPreferences } from '@n8n/api-types';
+import type { SamlPreferences } from '@MNI/api-types';
 import { SupportedProtocols, useSSOStore } from '../sso.store';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import { captureMessage } from '@sentry/vue';
 
-import { N8nButton, N8nInput, N8nOption, N8nSegmentControl, N8nSelect } from '@n8n/design-system';
-import { useClipboard } from '@n8n/composables/useClipboard';
-import { useToast } from '@n8n/composables/useToast';
+import { N8nButton, N8nInput, N8nOption, N8nSegmentControl, N8nSelect } from '@MNI/design-system';
+import { useClipboard } from '@MNI/composables/useClipboard';
+import { useToast } from '@MNI/composables/useToast';
 import { useMessage } from '@/app/composables/useMessage';
 import { computed, onMounted, ref } from 'vue';
 import UserRoleProvisioningDropdown from '../provisioning/components/UserRoleProvisioningDropdown.vue';
 import { useUserRoleProvisioningForm } from '../provisioning/composables/useUserRoleProvisioningForm';
-import { useRootStore } from '@n8n/stores/useRootStore';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
+import { useRootStore } from '@MNI/stores/useRootStore';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
 import ConfirmProvisioningDialog from '../provisioning/components/ConfirmProvisioningDialog.vue';
 import RoleMappingRuleEditor from '../provisioning/components/RoleMappingRuleEditor.vue';
 import { MODAL_CONFIRM } from '@/app/constants/modals';

@@ -23,7 +23,7 @@ env:
 jobs:
   bench:
     name: Benchmarks
-    if: github.repository == 'n8n-io/n8n'
+    if: github.repository == 'MNI-io/MNI'
     runs-on: ${{ vars.RUNNER_PROVIDER == 'github' && 'ubuntu-latest' || 'blacksmith-2vcpu-ubuntu-2204' }}
     steps:
       - uses: useblacksmith/checkout@bcec731f1eb1367240608d1c889a75b96db6ec53 # v1.5.0
@@ -40,4 +40,4 @@ jobs:
         uses: CodSpeedHQ/action@281164b0f014a4e7badd2c02cecad9b595b70537 # v4.11.1
         with:
           mode: simulation
-          run: CODSPEED=true pnpm --filter=@n8n/performance bench
+          run: CODSPEED=true pnpm --filter=@MNI/performance bench

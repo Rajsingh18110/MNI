@@ -1,5 +1,5 @@
-import { Service } from '@n8n/di';
-import type { IWorkflowBase } from 'n8n-workflow';
+import { Service } from '@MNI/di';
+import type { IWorkflowBase } from 'MNI-workflow';
 
 import { FILESYSTEM_INTERACTION_NODE_TYPES, FILESYSTEM_REPORT } from '@/security-audit/constants';
 import type { RiskReporter, Risk } from '@/security-audit/types';

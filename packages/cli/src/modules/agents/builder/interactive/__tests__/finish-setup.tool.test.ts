@@ -1,6 +1,6 @@
-import type { CredentialListItem } from '@n8n/agents';
-import type { InstanceAiCredentialService } from '@n8n/instance-ai';
-import { TELEMETRY_EVENT } from '@n8n/telemetry';
+import type { CredentialListItem } from '@MNI/agents';
+import type { InstanceAiCredentialService } from '@MNI/instance-ai';
+import { TELEMETRY_EVENT } from '@MNI/telemetry';
 import type { Mock } from 'vitest';
 import { mock } from 'vitest-mock-extended';
 import type { z } from 'zod';

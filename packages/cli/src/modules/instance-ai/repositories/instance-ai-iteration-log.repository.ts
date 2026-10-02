@@ -1,5 +1,5 @@
-import { Service } from '@n8n/di';
-import { DataSource, Repository } from '@n8n/typeorm';
+import { Service } from '@MNI/di';
+import { DataSource, Repository } from '@MNI/typeorm';
 
 import { InstanceAiIterationLog } from '../entities/instance-ai-iteration-log.entity';
 

@@ -1,6 +1,6 @@
 /* eslint-disable import-x/no-extraneous-dependencies -- test-only patterns */
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
-import type { PushMessage } from '@n8n/api-types';
+import type { PushMessage } from '@MNI/api-types';
 import { enableAutoUnmount, mount, flushPromises } from '@vue/test-utils';
 import { reactive } from 'vue';
 import AgentSessionTimelinePanel from '../components/AgentSessionTimelinePanel.vue';
@@ -20,7 +20,7 @@ const pushStore = reactive({
 	}),
 });
 
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: () => ({ showError }),
 }));
 

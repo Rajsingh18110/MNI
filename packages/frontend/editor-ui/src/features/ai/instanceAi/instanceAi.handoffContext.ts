@@ -1,5 +1,5 @@
-import type { InstanceAiHandoffContext } from '@n8n/api-types';
-import type { BaseTextKey } from '@n8n/i18n';
+import type { InstanceAiHandoffContext } from '@MNI/api-types';
+import type { BaseTextKey } from '@MNI/i18n';
 
 type AgentPreviewContext = Extract<InstanceAiHandoffContext, { source: 'agent-preview' }>;
 

@@ -89,7 +89,7 @@ describe('CanvasNodeRenderer', () => {
 					...createCanvasProvide(),
 					...createCanvasNodeProvide({
 						data: {
-							type: 'n8n-nodes-base.messageAnAgent',
+							type: 'MNI-nodes-base.messageAnAgent',
 							render: {
 								type: CanvasNodeRenderType.Agent,
 								options: { agentId: { __rl: true, mode: 'list', value: '' } },

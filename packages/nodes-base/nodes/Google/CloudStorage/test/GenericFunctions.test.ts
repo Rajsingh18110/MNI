@@ -4,7 +4,7 @@ import type {
 	IExecuteSingleFunctions,
 	IHttpRequestOptions,
 	ILoadOptionsFunctions,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { getGoogleAccessToken } from '../../GenericFunctions';
 import { authenticateServiceAccount, searchProjects } from '../GenericFunctions';
@@ -43,13 +43,13 @@ describe('Google Cloud Storage GenericFunctions', () => {
 
 			expect(result.results).toEqual([
 				{
-					// eslint-disable-next-line n8n-nodes-base/node-param-display-name-miscased
+					// eslint-disable-next-line MNI-nodes-base/node-param-display-name-miscased
 					name: 'My Project (my-project)',
 					value: 'my-project',
 					url: 'https://console.cloud.google.com/storage/browser?project=my-project',
 				},
 				{
-					// eslint-disable-next-line n8n-nodes-base/node-param-display-name-miscased
+					// eslint-disable-next-line MNI-nodes-base/node-param-display-name-miscased
 					name: 'Other Project (other-project)',
 					value: 'other-project',
 					url: 'https://console.cloud.google.com/storage/browser?project=other-project',
@@ -182,7 +182,7 @@ describe('Google Cloud Storage GenericFunctions', () => {
 
 				expect(result.results).toEqual([
 					{
-						// eslint-disable-next-line n8n-nodes-base/node-param-display-name-miscased
+						// eslint-disable-next-line MNI-nodes-base/node-param-display-name-miscased
 						name: 'SA Project (sa-project)',
 						value: 'sa-project',
 						url: 'https://console.cloud.google.com/storage/browser?project=sa-project',

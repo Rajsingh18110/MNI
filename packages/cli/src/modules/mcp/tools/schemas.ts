@@ -4,7 +4,7 @@ import type {
 	IWorkflowGroup,
 	IWorkflowSettings,
 	WorkflowFEMeta,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import z from 'zod';
 
 export const nodeCredentialSummarySchema = z

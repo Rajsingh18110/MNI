@@ -1,6 +1,6 @@
 import type { Mocked } from 'vitest';
 import { mock } from 'vitest-mock-extended';
-import type { WorkflowEntity } from '@n8n/db';
+import type { WorkflowEntity } from '@MNI/db';
 import type { Request, Response } from 'express';
 import { BadRequestError } from '@/errors/response-errors/bad-request.error';
 import { NotFoundError } from '@/errors/response-errors/not-found.error';
@@ -8,9 +8,9 @@ import type { DynamicCredentialCorsService } from '../services/dynamic-credentia
 import type { DynamicCredentialWebService } from '../services/dynamic-credential-web.service';
 import { WorkflowStatusController } from '../workflow-status.controller';
 import type { CredentialResolverWorkflowService } from '../services/credential-resolver-workflow.service';
-import type { UrlService } from '@n8n/backend-services';
+import type { UrlService } from '@MNI/backend-services';
 import type { WorkflowFinderService } from '@/workflows/workflow-finder.service';
-import type { GlobalConfig } from '@n8n/config';
+import type { GlobalConfig } from '@MNI/config';
 
 vi.mock('../utils', () => ({
 	getDynamicCredentialMiddlewares: vi.fn(() => undefined),

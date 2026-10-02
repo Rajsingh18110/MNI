@@ -1,4 +1,4 @@
-import { UserError, type IHttpRequestOptions } from 'n8n-workflow';
+import { UserError, type IHttpRequestOptions } from 'MNI-workflow';
 
 import { regions, type AWSRegion } from './regions';
 import * as systemCredentialsUtils from './system-credentials-utils';
@@ -34,7 +34,7 @@ const { mockResolveProxyUrl, mockCreateHttpsProxyAgent } = vi.hoisted(() => ({
 	mockCreateHttpsProxyAgent: vi.fn().mockReturnValue({ type: 'mock-https-agent' }),
 }));
 
-vi.mock('@n8n/backend-network/proxy', () => ({
+vi.mock('@MNI/backend-network/proxy', () => ({
 	resolveProxyUrl: mockResolveProxyUrl,
 	createHttpsProxyAgent: mockCreateHttpsProxyAgent,
 }));
@@ -523,9 +523,9 @@ describe('assumeRole', () => {
 			expect(lastCallArg().params).not.toHaveProperty('ExternalId');
 		});
 
-		it('defaults RoleSessionName to n8n-session when roleSessionName is absent', async () => {
+		it('defaults RoleSessionName to MNI-session when roleSessionName is absent', async () => {
 			await assumeRole({ ...baseCredentials, roleSessionName: '' }, 'us-east-1');
-			expect(lastCallArg().params.RoleSessionName).toBe('n8n-session');
+			expect(lastCallArg().params.RoleSessionName).toBe('MNI-session');
 		});
 	});
 

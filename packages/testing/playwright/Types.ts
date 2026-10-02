@@ -1,4 +1,4 @@
-import type { FrontendModuleSettings, FrontendSettings } from '@n8n/api-types';
+import type { FrontendModuleSettings, FrontendSettings } from '@MNI/api-types';
 
 type DeepPartial<T> = T extends Array<infer U>
 	? Array<DeepPartial<U>>
@@ -41,7 +41,7 @@ export class TestError extends Error {
  *     }
  *   },
  *   storage: {
- *     'n8n-telemetry': '{"enabled": true}'
+ *     'MNI-telemetry': '{"enabled": true}'
  *   }
  * };
  * ```
@@ -112,8 +112,8 @@ export interface TestRequirements {
 	 * @example
 	 * ```typescript
 	 * storage: {
-	 *   'n8n-telemetry': '{"enabled": true}',
-	 *   'n8n-instance-id': 'test-instance-id'
+	 *   'MNI-telemetry': '{"enabled": true}',
+	 *   'MNI-instance-id': 'test-instance-id'
 	 * }
 	 * ```
 	 */

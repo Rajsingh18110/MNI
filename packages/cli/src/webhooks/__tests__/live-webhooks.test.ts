@@ -1,6 +1,6 @@
-import { mockLogger } from '@n8n/backend-test-utils';
-import type { ExpressionEngineConfig, WorkflowsConfig } from '@n8n/config';
-import type { WebhookEntity, WorkflowEntity, WorkflowHistory, WorkflowRepository } from '@n8n/db';
+import { mockLogger } from '@MNI/backend-test-utils';
+import type { ExpressionEngineConfig, WorkflowsConfig } from '@MNI/config';
+import type { WebhookEntity, WorkflowEntity, WorkflowHistory, WorkflowRepository } from '@MNI/db';
 import type { Response } from 'express';
 import type {
 	IConnections,
@@ -14,14 +14,14 @@ import type {
 	IWorkflowBase,
 	IWorkflowExecuteAdditionalData,
 	Workflow,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import {
 	fromFunction,
 	fromParameter,
 	WEBHOOK_NODE_TYPE,
 	webhookDescriptionFields,
 	WorkflowExpression,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import type { Mock, MockInstance } from 'vitest';
 import { mock } from 'vitest-mock-extended';
 
@@ -158,7 +158,7 @@ describe('LiveWebhooks', () => {
 			const createWebhookNode = (id: string, position: [number, number]): INode => ({
 				id,
 				name: NODE_NAME,
-				type: 'n8n-nodes-base.webhook',
+				type: 'MNI-nodes-base.webhook',
 				typeVersion: 1,
 				position,
 				parameters: { path: WEBHOOK_PATH, httpMethod },
@@ -210,7 +210,7 @@ describe('LiveWebhooks', () => {
 				{
 					id: 'webhook-node',
 					name: NODE_NAME,
-					type: 'n8n-nodes-base.webhook',
+					type: 'MNI-nodes-base.webhook',
 					typeVersion: 1,
 					position: [0, 0],
 					parameters: { path: WEBHOOK_PATH, httpMethod: 'GET' },
@@ -335,7 +335,7 @@ describe('LiveWebhooks', () => {
 			const createWebhookNode = (id: string, name: string): INode => ({
 				id,
 				name,
-				type: 'n8n-nodes-base.webhook',
+				type: 'MNI-nodes-base.webhook',
 				typeVersion: 1,
 				position: [0, 0],
 				parameters: { path: WEBHOOK_PATH, httpMethod },
@@ -344,7 +344,7 @@ describe('LiveWebhooks', () => {
 			const createSetNode = (id: string, name: string, value: string): INode => ({
 				id,
 				name,
-				type: 'n8n-nodes-base.set',
+				type: 'MNI-nodes-base.set',
 				typeVersion: 1,
 				position: [200, 0],
 				parameters: {
@@ -423,7 +423,7 @@ describe('LiveWebhooks', () => {
 			const webhookNode: INode = {
 				id: 'webhook-node',
 				name: NODE_NAME,
-				type: 'n8n-nodes-base.webhook',
+				type: 'MNI-nodes-base.webhook',
 				typeVersion: 1,
 				position: [0, 0],
 				parameters: { path: WEBHOOK_PATH, httpMethod: 'GET' },
@@ -472,7 +472,7 @@ describe('LiveWebhooks', () => {
 				{
 					id: 'webhook-node-active',
 					name: NODE_NAME,
-					type: 'n8n-nodes-base.webhook',
+					type: 'MNI-nodes-base.webhook',
 					typeVersion: 1,
 					position: [100, 200],
 					parameters: { path: WEBHOOK_PATH, httpMethod: 'GET' },
@@ -524,7 +524,7 @@ describe('LiveWebhooks', () => {
 		const buildWebhookNode = (id: string, allowedOrigins: string): INode => ({
 			id,
 			name: NODE_NAME,
-			type: 'n8n-nodes-base.webhook',
+			type: 'MNI-nodes-base.webhook',
 			typeVersion: 1,
 			position: [0, 0],
 			parameters: {
@@ -604,7 +604,7 @@ describe('LiveWebhooks', () => {
 
 		const setupMocks = (
 			declaredNodeType: 'form' | 'webhook' | 'mcp' | undefined,
-			nodeTypeName = 'n8n-nodes-base.webhook',
+			nodeTypeName = 'MNI-nodes-base.webhook',
 		) => {
 			const node: INode = {
 				id: 'trigger-node',
@@ -679,7 +679,7 @@ describe('LiveWebhooks', () => {
 			mock<WebhookRequest>({ method: httpMethod, params: { path: webhookPath } });
 
 		it('executes a form trigger on the form route family', async () => {
-			setupMocks('form', 'n8n-nodes-base.formTrigger');
+			setupMocks('form', 'MNI-nodes-base.formTrigger');
 
 			await expect(
 				liveWebhooks.executeWebhook(buildRequest(), mock<Response>(), 'form'),
@@ -687,7 +687,7 @@ describe('LiveWebhooks', () => {
 		});
 
 		it('returns a not-found error when a form trigger is requested on the webhook route family', async () => {
-			setupMocks('form', 'n8n-nodes-base.formTrigger');
+			setupMocks('form', 'MNI-nodes-base.formTrigger');
 
 			await expect(
 				liveWebhooks.executeWebhook(buildRequest(), mock<Response>(), 'webhook'),
@@ -711,7 +711,7 @@ describe('LiveWebhooks', () => {
 		});
 
 		it('executes an mcp trigger on the mcp route family', async () => {
-			setupMocks('mcp', '@n8n/n8n-nodes-langchain.mcpTrigger');
+			setupMocks('mcp', '@MNI/MNI-nodes-langchain.mcpTrigger');
 
 			await expect(
 				liveWebhooks.executeWebhook(buildRequest(), mock<Response>(), 'mcp'),
@@ -719,7 +719,7 @@ describe('LiveWebhooks', () => {
 		});
 
 		it('returns a not-found error when an mcp trigger is requested on the form route family', async () => {
-			setupMocks('mcp', '@n8n/n8n-nodes-langchain.mcpTrigger');
+			setupMocks('mcp', '@MNI/MNI-nodes-langchain.mcpTrigger');
 
 			await expect(
 				liveWebhooks.executeWebhook(buildRequest(), mock<Response>(), 'form'),
@@ -727,7 +727,7 @@ describe('LiveWebhooks', () => {
 		});
 
 		it('executes without family scoping when expectedNodeType is not provided', async () => {
-			setupMocks('form', 'n8n-nodes-base.formTrigger');
+			setupMocks('form', 'MNI-nodes-base.formTrigger');
 
 			await expect(
 				liveWebhooks.executeWebhook(buildRequest(), mock<Response>()),
@@ -917,7 +917,7 @@ describe('LiveWebhooks', () => {
 		});
 
 		it('acquires for a trigger type that is not on the allowlist', async () => {
-			const request = setupMocks({ nodeType: 'n8n-nodes-base.formTrigger' });
+			const request = setupMocks({ nodeType: 'MNI-nodes-base.formTrigger' });
 
 			await liveWebhooks.executeWebhook(request, mock<Response>());
 

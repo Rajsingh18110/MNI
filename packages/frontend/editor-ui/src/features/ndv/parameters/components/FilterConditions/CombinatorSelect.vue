@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { useI18n } from '@n8n/i18n';
-import type { FilterTypeCombinator } from 'n8n-workflow';
+import { useI18n } from '@MNI/i18n';
+import type { FilterTypeCombinator } from 'MNI-workflow';
 
-import { N8nOption, N8nSelect } from '@n8n/design-system';
+import { N8nOption, N8nSelect } from '@MNI/design-system';
 interface Props {
 	options: FilterTypeCombinator[];
 	selected: FilterTypeCombinator;

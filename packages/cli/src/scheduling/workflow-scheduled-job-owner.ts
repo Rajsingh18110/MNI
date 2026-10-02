@@ -1,9 +1,9 @@
-import { ScheduledJobOwnerType } from '@n8n/constants';
-import type { ScheduledJobOwner, ScheduledJobOwnerRef } from '@n8n/db';
-import { WorkflowPublishedVersionRepository } from '@n8n/db';
-import { Service } from '@n8n/di';
+import { ScheduledJobOwnerType } from '@MNI/constants';
+import type { ScheduledJobOwner, ScheduledJobOwnerRef } from '@MNI/db';
+import { WorkflowPublishedVersionRepository } from '@MNI/db';
+import { Service } from '@MNI/di';
 
-import type { ScheduledJobOwnerResolver } from '@n8n/scheduler';
+import type { ScheduledJobOwnerResolver } from '@MNI/scheduler';
 
 /**
  * Marks a workflow as the owner of the scheduled jobs its trigger nodes create.

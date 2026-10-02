@@ -1,4 +1,4 @@
-import type { TestWebhookReceived } from '@n8n/api-types/push/webhook';
+import type { TestWebhookReceived } from '@MNI/api-types/push/webhook';
 import { useWorkflowExecutionStateStore } from '@/app/stores/workflowExecutionState.store';
 import type { PushHandlerOptions } from './types';
 

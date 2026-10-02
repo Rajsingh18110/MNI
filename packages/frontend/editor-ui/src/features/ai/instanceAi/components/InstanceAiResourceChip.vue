@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { N8nIcon, N8nTooltip, TOOLTIP_DELAY_MS } from '@n8n/design-system';
+import { N8nIcon, N8nTooltip, TOOLTIP_DELAY_MS } from '@MNI/design-system';
 import { computed, useTemplateRef } from 'vue';
 import AssistantMentionBreadcrumbs from '@/features/ai/assistant-at-mentions/AssistantMentionBreadcrumbs.vue';
 
@@ -60,7 +60,7 @@ function handleRemoveKeydown(event: KeyboardEvent): void {
 </template>
 
 <style module lang="scss">
-:global(.n8n-tooltip).tooltip {
+:global(.MNI-tooltip).tooltip {
 	max-width: 320px;
 	--breadcrumbs--color--ancestor: var(--color--neutral-500);
 }

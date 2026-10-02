@@ -22,7 +22,7 @@
 			},
 			"id": "853f9e11-e59b-4f21-81ba-08ec2d69c87a",
 			"name": "Edit Fields",
-			"type": "n8n-nodes-base.set",
+			"type": "MNI-nodes-base.set",
 			"typeVersion": 3.2,
 			"position": [900, 580]
 		},
@@ -30,7 +30,7 @@
 			"parameters": {},
 			"id": "8310a9da-b02b-4a77-80d4-7c2de5bcbae8",
 			"name": "When clicking \"Execute Workflow\"",
-			"type": "n8n-nodes-base.manualTrigger",
+			"type": "MNI-nodes-base.manualTrigger",
 			"typeVersion": 1,
 			"position": [180, 600]
 		},
@@ -44,7 +44,7 @@
 			},
 			"id": "0f1fb40d-0c6c-455d-bb3b-0c0fa818e063",
 			"name": "Code",
-			"type": "n8n-nodes-testing.testData",
+			"type": "MNI-nodes-testing.testData",
 			"typeVersion": 1,
 			"position": [420, 520]
 		},
@@ -58,7 +58,7 @@
 			},
 			"id": "873fcccc-86c1-40fd-bdae-2bb31e971382",
 			"name": "Code1",
-			"type": "n8n-nodes-testing.testData",
+			"type": "MNI-nodes-testing.testData",
 			"typeVersion": 1,
 			"position": [420, 680]
 		},
@@ -69,7 +69,7 @@
 			},
 			"id": "b81a2372-9f8b-4899-b2fd-c581bcf930d8",
 			"name": "Merge3",
-			"type": "n8n-nodes-base.merge",
+			"type": "MNI-nodes-base.merge",
 			"typeVersion": 2,
 			"position": [700, 580]
 		}

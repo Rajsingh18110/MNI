@@ -1,4 +1,4 @@
-import type { ExecutionsConfig } from '@n8n/config';
+import type { ExecutionsConfig } from '@MNI/config';
 import { mock } from 'vitest-mock-extended';
 
 import { PreExecuteErrorCreatesExecutionRule } from '../pre-execute-error-creates-execution.rule';

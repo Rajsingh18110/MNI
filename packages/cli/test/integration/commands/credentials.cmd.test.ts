@@ -1,11 +1,11 @@
-import { GlobalConfig } from '@n8n/config';
-import { CREDENTIAL_DESCRIPTION_MAX_LENGTH, CREDENTIAL_DESCRIPTIONS_FLAG } from '@n8n/api-types';
-import { getPersonalProject, mockInstance, testDb } from '@n8n/backend-test-utils';
-import { CredentialsEntity, DbLock, DbLockService, InstanceCredentialAssignment } from '@n8n/db';
-import type { ContentImportContext, PolicyViolation } from '@n8n/decorators';
-import { Container } from '@n8n/di';
+import { GlobalConfig } from '@MNI/config';
+import { CREDENTIAL_DESCRIPTION_MAX_LENGTH, CREDENTIAL_DESCRIPTIONS_FLAG } from '@MNI/api-types';
+import { getPersonalProject, mockInstance, testDb } from '@MNI/backend-test-utils';
+import { CredentialsEntity, DbLock, DbLockService, InstanceCredentialAssignment } from '@MNI/db';
+import type { ContentImportContext, PolicyViolation } from '@MNI/decorators';
+import { Container } from '@MNI/di';
 import * as fs from 'fs';
-import { jsonParse } from 'n8n-workflow';
+import { jsonParse } from 'MNI-workflow';
 import { nanoid } from 'nanoid';
 import * as os from 'os';
 import * as path from 'path';
@@ -241,7 +241,7 @@ test.each([
 			'--input=./test/integration/commands/import-credentials/credentials-description.json',
 		]);
 
-		const temporaryDirectory = fs.mkdtempSync(path.join(os.tmpdir(), 'n8n-credential-import-'));
+		const temporaryDirectory = fs.mkdtempSync(path.join(os.tmpdir(), 'MNI-credential-import-'));
 		const inputPath = path.join(temporaryDirectory, 'credentials.json');
 		fs.writeFileSync(
 			inputPath,
@@ -281,7 +281,7 @@ test.each([false, undefined])(
 		} else {
 			Container.get(GlobalConfig).featureFlags.override[CREDENTIAL_DESCRIPTIONS_FLAG] = enabled;
 		}
-		const temporaryDirectory = fs.mkdtempSync(path.join(os.tmpdir(), 'n8n-credential-import-'));
+		const temporaryDirectory = fs.mkdtempSync(path.join(os.tmpdir(), 'MNI-credential-import-'));
 		const inputPath = path.join(temporaryDirectory, 'credentials.json');
 		fs.writeFileSync(
 			inputPath,
@@ -778,7 +778,7 @@ test.each([
 	});
 	await encryptCredentialData(entity);
 	const credential = await createCredentials(entity);
-	const temporaryDirectory = fs.mkdtempSync(path.join(os.tmpdir(), 'n8n-credential-import-'));
+	const temporaryDirectory = fs.mkdtempSync(path.join(os.tmpdir(), 'MNI-credential-import-'));
 	const inputPath = path.join(temporaryDirectory, 'credentials.json');
 	fs.writeFileSync(
 		inputPath,
@@ -801,7 +801,7 @@ test.each([
 
 test('import:credentials should drop a pending authorization deadline carried in the file', async () => {
 	await createOwner();
-	const temporaryDirectory = fs.mkdtempSync(path.join(os.tmpdir(), 'n8n-credential-import-'));
+	const temporaryDirectory = fs.mkdtempSync(path.join(os.tmpdir(), 'MNI-credential-import-'));
 	const inputPath = path.join(temporaryDirectory, 'credentials.json');
 	fs.writeFileSync(
 		inputPath,
@@ -874,7 +874,7 @@ describe('content-import policy', () => {
 			Container.get(PolicyEnforcementService),
 			'enforceContentImport',
 		);
-		temporaryDirectory = fs.mkdtempSync(path.join(os.tmpdir(), 'n8n-credential-import-'));
+		temporaryDirectory = fs.mkdtempSync(path.join(os.tmpdir(), 'MNI-credential-import-'));
 	});
 
 	afterEach(() => {

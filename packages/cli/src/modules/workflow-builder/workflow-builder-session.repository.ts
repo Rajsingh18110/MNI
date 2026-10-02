@@ -7,9 +7,9 @@ import {
 	type ISessionStorage,
 	type LangchainMessage,
 	type StoredSession,
-} from '@n8n/ai-workflow-builder';
-import { Service } from '@n8n/di';
-import { DataSource, Repository } from '@n8n/typeorm';
+} from '@MNI/ai-workflow-builder';
+import { Service } from '@MNI/di';
+import { DataSource, Repository } from '@MNI/typeorm';
 import { randomUUID } from 'node:crypto';
 
 import { WorkflowBuilderSession } from './workflow-builder-session.entity';

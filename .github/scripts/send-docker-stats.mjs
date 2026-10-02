@@ -2,7 +2,7 @@
 /**
  * Sends Docker build stats to the unified QA metrics webhook.
  *
- * Reads manifests produced by build-n8n.mjs and dockerize-n8n.mjs and emits
+ * Reads manifests produced by build-MNI.mjs and dockerize-MNI.mjs and emits
  * per-image docker-image-size metrics and build duration metrics with
  * {image, platform} dimensions.
  *

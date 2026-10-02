@@ -1,7 +1,7 @@
-import type { Logger } from '@n8n/backend-common';
-import type { IExecutionResponse } from '@n8n/db';
-import type { WorkflowExecuteAfterContext, WorkflowExecuteResumeContext } from '@n8n/decorators';
-import type { IRun } from 'n8n-workflow';
+import type { Logger } from '@MNI/backend-common';
+import type { IExecutionResponse } from '@MNI/db';
+import type { WorkflowExecuteAfterContext, WorkflowExecuteResumeContext } from '@MNI/decorators';
+import type { IRun } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import type { ChatExecutionManager } from '@/chat/chat-execution-manager';
@@ -367,7 +367,7 @@ describe('ChatHubExecutionWatcherService', () => {
 					executionStore.get.mockResolvedValue(context);
 					chatHubExecutionService.extractMessage.mockReturnValue('Webhook response');
 
-					const execution = createExecution('n8n-nodes-base.respondToWebhook');
+					const execution = createExecution('MNI-nodes-base.respondToWebhook');
 					executionPersistence.findSingleExecution.mockResolvedValue(execution);
 
 					await service.handleWorkflowExecuteAfter(
@@ -409,7 +409,7 @@ describe('ChatHubExecutionWatcherService', () => {
 					executionStore.get.mockResolvedValue(context);
 					chatHubExecutionService.extractMessage.mockReturnValue(undefined);
 
-					const execution = createExecution('@n8n/n8n-nodes-langchain.chat', {
+					const execution = createExecution('@MNI/MNI-nodes-langchain.chat', {
 						waitUserReply: false,
 					});
 					executionPersistence.findSingleExecution.mockResolvedValue(execution);
@@ -426,7 +426,7 @@ describe('ChatHubExecutionWatcherService', () => {
 					executionStore.get.mockResolvedValue(context);
 					chatHubExecutionService.extractMessage.mockReturnValue(undefined);
 
-					const execution = createExecution('@n8n/n8n-nodes-langchain.chat', {
+					const execution = createExecution('@MNI/MNI-nodes-langchain.chat', {
 						operation: 'sendAndWait',
 					});
 					executionPersistence.findSingleExecution.mockResolvedValue(execution);

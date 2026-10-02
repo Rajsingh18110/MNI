@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import type { IconName } from '@n8n/design-system';
+import type { IconName } from '@MNI/design-system';
 
-import { N8nIcon } from '@n8n/design-system';
+import { N8nIcon } from '@MNI/design-system';
 const { icon } = defineProps<{
 	title?: string;
 	wide?: boolean;

@@ -1,9 +1,9 @@
-import type { InstanceAiWorkflowSetupNode } from '@n8n/api-types';
+import type { InstanceAiWorkflowSetupNode } from '@MNI/api-types';
 import { computed, type ComputedRef, type Ref } from 'vue';
 import { isExpression } from '@/app/utils/expressions';
 import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';
 import { isHttpRequestNodeType } from '@/features/setupPanel/setupPanel.utils';
-import { isResourceLocatorValue, NodeHelpers, type INodeParameters } from 'n8n-workflow';
+import { isResourceLocatorValue, NodeHelpers, type INodeParameters } from 'MNI-workflow';
 import type { WorkflowSetupSection } from '../workflowSetup.types';
 import { buildSectionId } from '../workflowSetup.helpers';
 import { AI_GATEWAY_MANAGED_TAG } from '../../constants';

@@ -1,7 +1,7 @@
 import { createPinia, setActivePinia } from 'pinia';
 import { mock } from 'vitest-mock-extended';
 import type { Router } from 'vue-router';
-import type { WorkflowDeactivated } from '@n8n/api-types/push/workflow';
+import type { WorkflowDeactivated } from '@MNI/api-types/push/workflow';
 import { workflowDeactivated } from './workflowDeactivated';
 import {
 	createWorkflowDocumentId,
@@ -27,7 +27,7 @@ vi.mock('@/app/composables/workflowPublicationConfirmation', () => ({
 	clearPendingActivationModal: mockClearPendingActivationModal,
 }));
 
-vi.mock('@n8n/stores/settings.store', () => ({
+vi.mock('@MNI/stores/settings.store', () => ({
 	useSettingsStore: () => mockSettingsStore,
 }));
 

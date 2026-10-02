@@ -1,12 +1,12 @@
 {
 	"name": "MNI",
 	"dockerComposeFile": "docker-compose.yml",
-	"service": "n8n",
+	"service": "MNI",
 	"workspaceFolder": "/workspaces",
 	"mounts": [
 		"type=bind,source=${localWorkspaceFolder},target=/workspaces,consistency=cached",
 		"type=bind,source=${localEnv:HOME}/.ssh,target=/home/node/.ssh,consistency=cached",
-		"type=bind,source=${localEnv:HOME}/.n8n,target=/home/node/.n8n,consistency=cached"
+		"type=bind,source=${localEnv:HOME}/.MNI,target=/home/node/.MNI,consistency=cached"
 	],
 	"forwardPorts": [8080, 5678],
 	"postCreateCommand": "corepack install && pnpm install",

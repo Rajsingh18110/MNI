@@ -2,7 +2,7 @@ import { useLocalStorage } from '@vueuse/core';
 import { ref } from 'vue';
 
 import { LOCAL_STORAGE_WORKFLOW_REVIEW_INBOX_COLLAPSED_SECTIONS } from '@/app/constants/localStorage';
-import { useUsersStore } from '@n8n/stores/users.store';
+import { useUsersStore } from '@MNI/stores/users.store';
 
 /** Only the open tab is sectioned, so only those two sections can collapse. */
 export type CollapsibleReviewInboxSection = 'waiting' | 'authored';

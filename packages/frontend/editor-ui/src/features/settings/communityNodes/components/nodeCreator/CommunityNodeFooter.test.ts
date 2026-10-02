@@ -6,7 +6,7 @@ import CommunityNodeFooter from './CommunityNodeFooter.vue';
 import { createComponentRenderer } from '@/__tests__/render';
 import { vi } from 'vitest';
 import { ref } from 'vue';
-import type { PublicInstalledPackage } from 'n8n-workflow';
+import type { PublicInstalledPackage } from 'MNI-workflow';
 
 // Mock the useInstalledCommunityPackage composable
 const mockInstalledPackage = ref<PublicInstalledPackage>();
@@ -41,7 +41,7 @@ describe('CommunityNodeInfo - links & bugs URL', () => {
 			ok: true,
 			json: async () => ({
 				bugs: {
-					url: 'https://github.com/n8n-io/n8n/issues',
+					url: 'https://github.com/MNI-io/MNI/issues',
 				},
 			}),
 		});
@@ -60,8 +60,8 @@ describe('CommunityNodeInfo - links & bugs URL', () => {
 	it('calls router.push to open settings page when "Manage" is clicked', async () => {
 		const { getByText } = createComponentRenderer(CommunityNodeFooter)({
 			props: {
-				packageName: 'n8n-nodes-test',
-				nodeTypeName: 'n8n-nodes-test.test',
+				packageName: 'MNI-nodes-test',
+				nodeTypeName: 'MNI-nodes-test.test',
 				showManage: true,
 			},
 		});
@@ -75,8 +75,8 @@ describe('CommunityNodeInfo - links & bugs URL', () => {
 	it('Manage should not be in the footer', () => {
 		const { queryByText } = createComponentRenderer(CommunityNodeFooter)({
 			props: {
-				packageName: 'n8n-nodes-test',
-				nodeTypeName: 'n8n-nodes-test.test',
+				packageName: 'MNI-nodes-test',
+				nodeTypeName: 'MNI-nodes-test.test',
 				showManage: false,
 			},
 		});
@@ -86,7 +86,7 @@ describe('CommunityNodeInfo - links & bugs URL', () => {
 
 	it('displays "Legacy" when an update is available', () => {
 		mockInstalledPackage.value = {
-			packageName: 'n8n-nodes-test',
+			packageName: 'MNI-nodes-test',
 			installedVersion: '1.0.0',
 			installedNodes: [],
 			createdAt: new Date(),
@@ -96,8 +96,8 @@ describe('CommunityNodeInfo - links & bugs URL', () => {
 
 		const { getByText } = createComponentRenderer(CommunityNodeFooter)({
 			props: {
-				packageName: 'n8n-nodes-test',
-				nodeTypeName: 'n8n-nodes-test.test',
+				packageName: 'MNI-nodes-test',
+				nodeTypeName: 'MNI-nodes-test.test',
 				showManage: false,
 			},
 		});
@@ -107,7 +107,7 @@ describe('CommunityNodeInfo - links & bugs URL', () => {
 
 	it('displays "Latest" when no update is available', () => {
 		mockInstalledPackage.value = {
-			packageName: 'n8n-nodes-test',
+			packageName: 'MNI-nodes-test',
 			installedVersion: '1.0.0',
 			installedNodes: [],
 			createdAt: new Date(),
@@ -116,8 +116,8 @@ describe('CommunityNodeInfo - links & bugs URL', () => {
 
 		const { getByText } = createComponentRenderer(CommunityNodeFooter)({
 			props: {
-				packageName: 'n8n-nodes-test',
-				nodeTypeName: 'n8n-nodes-test.test',
+				packageName: 'MNI-nodes-test',
+				nodeTypeName: 'MNI-nodes-test.test',
 				showManage: false,
 			},
 		});
@@ -129,8 +129,8 @@ describe('CommunityNodeInfo - links & bugs URL', () => {
 		// mockInstalledPackage.value is already undefined from beforeEach
 		const { queryByText } = createComponentRenderer(CommunityNodeFooter)({
 			props: {
-				packageName: 'n8n-nodes-test',
-				nodeTypeName: 'n8n-nodes-test.test',
+				packageName: 'MNI-nodes-test',
+				nodeTypeName: 'MNI-nodes-test.test',
 				showManage: false,
 			},
 		});

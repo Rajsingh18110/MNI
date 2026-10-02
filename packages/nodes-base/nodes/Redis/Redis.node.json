@@ -1,5 +1,5 @@
 {
-	"node": "n8n-nodes-base.redis",
+	"node": "MNI-nodes-base.redis",
 	"nodeVersion": "1.0",
 	"codexVersion": "1.0",
 	"categories": ["Development", "Data & Storage"],
@@ -11,14 +11,14 @@
 		],
 		"primaryDocumentation": [
 			{
-				"url": "https://docs.n8n.io/integrations/builtin/app-nodes/n8n-nodes-base.redis/"
+				"url": "https://docs.n8n.io/integrations/builtin/app-nodes/MNI-nodes-base.redis/"
 			}
 		],
 		"generic": [
 			{
 				"label": "Why this Product Manager loves workflow automation with MNI",
 				"icon": "🧠",
-				"url": "https://n8n.io/blog/why-this-product-manager-loves-workflow-automation-with-n8n/"
+				"url": "https://n8n.io/blog/why-this-product-manager-loves-workflow-automation-with-MNI/"
 			}
 		]
 	}

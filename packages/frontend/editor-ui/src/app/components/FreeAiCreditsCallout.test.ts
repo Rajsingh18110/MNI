@@ -2,26 +2,26 @@
 import { fireEvent, screen, waitFor } from '@testing-library/vue';
 import FreeAiCreditsCallout from '@/app/components/FreeAiCreditsCallout.vue';
 import { useCredentialsStore } from '@/features/credentials/credentials.store';
-import { useSettingsStore } from '@n8n/stores/settings.store';
-import { useUsersStore } from '@n8n/stores/users.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
+import { useUsersStore } from '@MNI/stores/users.store';
 import { useNDVStore } from '@/features/ndv/shared/ndv.store';
 import { useProjectsStore } from '@/features/collaboration/projects/projects.store';
-import { useRootStore } from '@n8n/stores/useRootStore';
-import { useToast } from '@n8n/composables/useToast';
+import { useRootStore } from '@MNI/stores/useRootStore';
+import { useToast } from '@MNI/composables/useToast';
 import { renderComponent } from '@/__tests__/render';
 import { mockedStore } from '@/__tests__/utils';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
 import { useFreeAiCredits } from '@/app/composables/useFreeAiCredits';
 
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: vi.fn(),
 }));
 
-vi.mock('@n8n/composables/useTelemetry', () => ({
+vi.mock('@MNI/composables/useTelemetry', () => ({
 	useTelemetry: vi.fn(),
 }));
 
-vi.mock('@n8n/stores/settings.store', () => ({
+vi.mock('@MNI/stores/settings.store', () => ({
 	useSettingsStore: vi.fn(),
 }));
 
@@ -29,7 +29,7 @@ vi.mock('@/features/credentials/credentials.store', () => ({
 	useCredentialsStore: vi.fn(),
 }));
 
-vi.mock('@n8n/stores/users.store', () => ({
+vi.mock('@MNI/stores/users.store', () => ({
 	useUsersStore: vi.fn(),
 }));
 
@@ -45,7 +45,7 @@ vi.mock('@/features/collaboration/projects/projects.store', () => ({
 	useProjectsStore: vi.fn(),
 }));
 
-vi.mock('@n8n/stores/useRootStore', () => ({
+vi.mock('@MNI/stores/useRootStore', () => ({
 	useRootStore: vi.fn(),
 }));
 
@@ -92,7 +92,7 @@ describe('FreeAiCreditsCallout', () => {
 		});
 
 		(useNDVStore as any).mockReturnValue({
-			activeNode: { type: '@n8n/n8n-nodes-langchain.openAi' },
+			activeNode: { type: '@MNI/MNI-nodes-langchain.openAi' },
 		});
 
 		(useProjectsStore as any).mockReturnValue({
@@ -232,7 +232,7 @@ describe('FreeAiCreditsCallout', () => {
 
 	it('should not be able to claim credits if active node it is not a valid node', async () => {
 		(useNDVStore as any).mockReturnValue({
-			activeNode: { type: '@n8n/n8n-nodes.jira' },
+			activeNode: { type: '@MNI/MNI-nodes.jira' },
 		});
 
 		renderComponent(FreeAiCreditsCallout);

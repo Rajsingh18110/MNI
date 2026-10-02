@@ -3,7 +3,7 @@
 	"nodes": [
 		{
 			"parameters": {},
-			"type": "n8n-nodes-base.manualTrigger",
+			"type": "MNI-nodes-base.manualTrigger",
 			"typeVersion": 1,
 			"position": [-220, 600],
 			"id": "56d46635-cd55-4ca2-aa50-cc7f9767abc7",
@@ -18,7 +18,7 @@
 					"subject": "Email"
 				}
 			},
-			"type": "n8n-nodes-base.salesforce",
+			"type": "MNI-nodes-base.salesforce",
 			"typeVersion": 1,
 			"position": [0, 100],
 			"id": "4797a994-e082-445e-a2ca-65e30503e055",
@@ -32,7 +32,7 @@
 		},
 		{
 			"parameters": {},
-			"type": "n8n-nodes-base.noOp",
+			"type": "MNI-nodes-base.noOp",
 			"typeVersion": 1,
 			"position": [220, 100],
 			"id": "8639e379-1a63-4d2e-9032-28a9d2191a82",
@@ -45,7 +45,7 @@
 				"returnAll": true,
 				"options": {}
 			},
-			"type": "n8n-nodes-base.salesforce",
+			"type": "MNI-nodes-base.salesforce",
 			"typeVersion": 1,
 			"position": [0, 300],
 			"id": "a4a735c1-02d5-42e7-8dbb-873ca7ed2a79",
@@ -59,7 +59,7 @@
 		},
 		{
 			"parameters": {},
-			"type": "n8n-nodes-base.noOp",
+			"type": "MNI-nodes-base.noOp",
 			"typeVersion": 1,
 			"position": [220, 300],
 			"id": "4b9bc48b-695c-40d5-be6b-d8d117e2ffc0",
@@ -71,7 +71,7 @@
 				"operation": "get",
 				"taskId": "id1"
 			},
-			"type": "n8n-nodes-base.salesforce",
+			"type": "MNI-nodes-base.salesforce",
 			"typeVersion": 1,
 			"position": [0, 500],
 			"id": "910ee66b-8a1b-46b9-a156-dd7ebb932dac",
@@ -85,7 +85,7 @@
 		},
 		{
 			"parameters": {},
-			"type": "n8n-nodes-base.noOp",
+			"type": "MNI-nodes-base.noOp",
 			"typeVersion": 1,
 			"position": [220, 500],
 			"id": "570eb762-96e4-4639-9ad7-c6c67a6b2f43",
@@ -96,7 +96,7 @@
 				"resource": "task",
 				"operation": "getSummary"
 			},
-			"type": "n8n-nodes-base.salesforce",
+			"type": "MNI-nodes-base.salesforce",
 			"typeVersion": 1,
 			"position": [0, 700],
 			"id": "7a27cca0-ac81-4b15-b64e-149b94dc1dd2",
@@ -110,7 +110,7 @@
 		},
 		{
 			"parameters": {},
-			"type": "n8n-nodes-base.noOp",
+			"type": "MNI-nodes-base.noOp",
 			"typeVersion": 1,
 			"position": [220, 700],
 			"id": "fc825f3a-24eb-4d4c-b7df-d872e9bae2c3",
@@ -125,7 +125,7 @@
 					"description": "New description"
 				}
 			},
-			"type": "n8n-nodes-base.salesforce",
+			"type": "MNI-nodes-base.salesforce",
 			"typeVersion": 1,
 			"position": [0, 900],
 			"id": "e3bb44cd-fcd8-407f-b700-63fe7cd94650",
@@ -139,7 +139,7 @@
 		},
 		{
 			"parameters": {},
-			"type": "n8n-nodes-base.noOp",
+			"type": "MNI-nodes-base.noOp",
 			"typeVersion": 1,
 			"position": [220, 900],
 			"id": "e7e8325c-4b2e-4aff-b077-e87b93cb5849",
@@ -151,7 +151,7 @@
 				"operation": "delete",
 				"taskId": "id1"
 			},
-			"type": "n8n-nodes-base.salesforce",
+			"type": "MNI-nodes-base.salesforce",
 			"typeVersion": 1,
 			"position": [0, 1100],
 			"id": "aa00475d-ea3e-4bf6-838c-34ec986b891f",
@@ -165,7 +165,7 @@
 		},
 		{
 			"parameters": {},
-			"type": "n8n-nodes-base.noOp",
+			"type": "MNI-nodes-base.noOp",
 			"typeVersion": 1,
 			"position": [220, 1100],
 			"id": "3199b901-5b75-4ee1-8e47-39e49c9160ba",

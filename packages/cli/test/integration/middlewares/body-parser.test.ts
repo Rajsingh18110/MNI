@@ -1,4 +1,4 @@
-/* eslint-disable n8n-local-rules/no-uncaught-json-parse */
+/* eslint-disable MNI-local-rules/no-uncaught-json-parse */
 import type { Request, Response } from 'express';
 import { createServer } from 'http';
 import request from 'supertest';

@@ -1,13 +1,13 @@
 <script setup lang="ts">
-import { N8nIcon } from '@n8n/design-system';
+import { N8nIcon } from '@MNI/design-system';
 import { saveAs } from 'file-saver';
 import { useWorkflowsStore } from '@/app/stores/workflows.store';
 import { useUIStore } from '@/app/stores/ui.store';
 import { BINARY_DATA_VIEW_MODAL_KEY } from '@/app/constants';
 import { computed } from 'vue';
 import type { BinaryMetadata } from '@/Interface';
-import { useToast } from '@n8n/composables/useToast';
-import { useI18n } from '@n8n/i18n';
+import { useToast } from '@MNI/composables/useToast';
+import { useI18n } from '@MNI/i18n';
 import { getBinaryDataFileName } from '@/app/utils/fileUtils';
 
 const BYTES_THRESHOLD = 1048576; // 1MB

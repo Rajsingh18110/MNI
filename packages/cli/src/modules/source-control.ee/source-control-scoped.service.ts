@@ -1,4 +1,4 @@
-import { WorkflowRepository } from '@n8n/db';
+import { WorkflowRepository } from '@MNI/db';
 import {
 	type AuthenticatedRequest,
 	type CredentialsEntity,
@@ -6,10 +6,10 @@ import {
 	type Project,
 	type WorkflowEntity,
 	type WorkflowTagMapping,
-} from '@n8n/db';
-import { Service } from '@n8n/di';
-import { hasGlobalScope } from '@n8n/permissions';
-import type { FindOptionsWhere } from '@n8n/typeorm';
+} from '@MNI/db';
+import { Service } from '@MNI/di';
+import { hasGlobalScope } from '@MNI/permissions';
+import type { FindOptionsWhere } from '@MNI/typeorm';
 
 import { ForbiddenError } from '@/errors/response-errors/forbidden.error';
 import type { DataTable } from '@/modules/data-table/data-table.entity';

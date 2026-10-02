@@ -1,7 +1,7 @@
-import { Z } from '@n8n/api-types';
-import { ControllerRegistryMetadata } from '@n8n/decorators';
-import type { Controller } from '@n8n/decorators';
-import { Container } from '@n8n/di';
+import { Z } from '@MNI/api-types';
+import { ControllerRegistryMetadata } from '@MNI/decorators';
+import type { Controller } from '@MNI/decorators';
+import { Container } from '@MNI/di';
 import { z } from 'zod';
 
 /**

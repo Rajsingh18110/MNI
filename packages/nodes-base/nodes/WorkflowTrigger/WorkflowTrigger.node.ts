@@ -3,8 +3,8 @@ import type {
 	INodeType,
 	INodeTypeDescription,
 	ITriggerResponse,
-} from 'n8n-workflow';
-import { NodeConnectionTypes } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeConnectionTypes } from 'MNI-workflow';
 
 type eventType = 'Workflow activated' | 'Workflow updated' | undefined;
 type activationType = 'activate' | 'update';

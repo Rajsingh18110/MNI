@@ -1,9 +1,9 @@
-import { AgentTeamsPackageDto } from '@n8n/api-types';
-import type { TeamsAgentSetupState, TeamsCredentialCheck } from '@n8n/api-types';
-import { Time } from '@n8n/constants';
-import type { AuthenticatedRequest } from '@n8n/db';
-import type { CorsOptions } from '@n8n/decorators';
-import { Body, Get, Options, Param, Post, ProjectScope, RestController } from '@n8n/decorators';
+import { AgentTeamsPackageDto } from '@MNI/api-types';
+import type { TeamsAgentSetupState, TeamsCredentialCheck } from '@MNI/api-types';
+import { Time } from '@MNI/constants';
+import type { AuthenticatedRequest } from '@MNI/db';
+import type { CorsOptions } from '@MNI/decorators';
+import { Body, Get, Options, Param, Post, ProjectScope, RestController } from '@MNI/decorators';
 import type { Request, Response } from 'express';
 
 import { TeamsCredentialCheckService } from './integrations/platforms/teams/teams-credential-check.service';
@@ -78,7 +78,7 @@ export class AgentTeamsIntegrationsController {
 		);
 
 		res.setHeader('Content-Type', 'application/zip');
-		res.setHeader('Content-Disposition', 'attachment; filename="n8n-agent-teams-app.zip"');
+		res.setHeader('Content-Disposition', 'attachment; filename="MNI-agent-teams-app.zip"');
 		res.send(archive);
 	}
 

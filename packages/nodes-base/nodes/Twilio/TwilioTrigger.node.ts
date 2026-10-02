@@ -5,7 +5,7 @@ import {
 	type INodeTypeDescription,
 	type IWebhookResponseData,
 	NodeConnectionTypes,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { twilioTriggerApiRequest } from './GenericFunctions';
 import { verifySignature } from './TwilioTriggerHelpers';

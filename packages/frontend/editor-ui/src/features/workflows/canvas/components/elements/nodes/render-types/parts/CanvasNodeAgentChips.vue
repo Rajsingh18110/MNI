@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { N8nActionDropdown, N8nTooltip } from '@n8n/design-system';
-import type { ActionDropdownItem } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+import { N8nActionDropdown, N8nTooltip } from '@MNI/design-system';
+import type { ActionDropdownItem } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 import NodeIcon from '@/app/components/NodeIcon.vue';
 import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';
 import AgentChipButton from '@/features/agents/components/AgentChipButton.vue';

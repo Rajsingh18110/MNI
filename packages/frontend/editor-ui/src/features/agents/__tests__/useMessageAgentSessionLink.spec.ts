@@ -2,7 +2,7 @@ import { describe, it, expect } from 'vitest';
 import { computed, defineComponent, h } from 'vue';
 import { mount } from '@vue/test-utils';
 import { createRouter, createWebHistory } from 'vue-router';
-import type { ITaskData } from 'n8n-workflow';
+import type { ITaskData } from 'MNI-workflow';
 
 import { MESSAGE_AN_AGENT_NODE_TYPE } from '@/app/constants/nodeTypes';
 import { AGENT_SESSION_DETAIL_VIEW } from '@/features/agents/constants';
@@ -140,7 +140,7 @@ describe('useMessageAgentSessionLink', () => {
 				node: {
 					id: 'n',
 					name: 'Other',
-					type: 'n8n-nodes-base.set',
+					type: 'MNI-nodes-base.set',
 					typeVersion: 1,
 					parameters: {},
 					position: [0, 0],

@@ -1,18 +1,18 @@
 <script setup lang="ts">
 import { useDocumentTitle } from '@/app/composables/useDocumentTitle';
-import { useToast } from '@n8n/composables/useToast';
+import { useToast } from '@MNI/composables/useToast';
 import { VIEWS } from '@/app/constants';
 import { CUSTOM_ROLES_DOCS_URL } from '@/app/constants/urls';
-import { useRolesStore } from '@n8n/stores/roles.store';
-import { useSettingsStore } from '@n8n/stores/settings.store';
-import type { TabOptions } from '@n8n/design-system';
-import { N8nBadge, N8nButton, N8nHeading, N8nLink, N8nTabs, N8nText } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+import { useRolesStore } from '@MNI/stores/roles.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
+import type { TabOptions } from '@MNI/design-system';
+import { N8nBadge, N8nButton, N8nHeading, N8nLink, N8nTabs, N8nText } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 import { computed, onMounted, ref, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import InstanceRolesView from './instance/InstanceRolesView.vue';
 import ProjectRolesView from './project/ProjectRolesView.vue';
-import { useRBACStore } from '@n8n/stores/rbac.store';
+import { useRBACStore } from '@MNI/stores/rbac.store';
 
 type RolesTab = 'instance' | 'project';
 const DEFAULT_TAB: RolesTab = 'instance';

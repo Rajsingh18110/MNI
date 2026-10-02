@@ -8,7 +8,7 @@ export const valueLookupPathSchema = z.object({
 export type ValueLookupPath = z.infer<typeof valueLookupPathSchema>;
 
 /**
- * Schema for `N8N_SECURITY_SENSITIVE_FIELD_RULES` (or its `_FILE` variant).
+ * Schema for `MNI_SECURITY_SENSITIVE_FIELD_RULES` (or its `_FILE` variant).
  *
  * Flat object keyed by a logical alias. Each rule pairs a node-type matcher
  * with a dot-path into the trigger item's `.json`. The `*` node-type
@@ -21,7 +21,7 @@ export type ValueLookupPath = z.infer<typeof valueLookupPathSchema>;
  * {
  *   "api_key": { "nodeType": "*", "path": "headers.authorization" },
  *   "form_password": {
- *     "nodeType": "n8n-nodes-base.formTrigger",
+ *     "nodeType": "MNI-nodes-base.formTrigger",
  *     "path": "body.password"
  *   }
  * }

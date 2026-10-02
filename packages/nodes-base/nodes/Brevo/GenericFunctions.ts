@@ -5,8 +5,8 @@ import type {
 	IRequestOptions,
 	IWebhookFunctions,
 	JsonObject,
-} from 'n8n-workflow';
-import { BINARY_ENCODING, jsonParse, NodeOperationError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { BINARY_ENCODING, jsonParse, NodeOperationError } from 'MNI-workflow';
 import MailComposer from 'nodemailer/lib/mail-composer';
 export namespace BrevoNode {
 	type ValidEmailFields = { to: string } | { sender: string } | { cc: string } | { bcc: string };

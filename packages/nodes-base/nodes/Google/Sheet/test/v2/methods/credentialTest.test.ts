@@ -1,5 +1,5 @@
 import { mock } from 'vitest-mock-extended';
-import type { ICredentialsDecrypted, ICredentialTestFunctions } from 'n8n-workflow';
+import type { ICredentialsDecrypted, ICredentialTestFunctions } from 'MNI-workflow';
 
 import { getGoogleAccessToken } from '../../../../GenericFunctions';
 import { googleApiCredentialTest } from '../../../v2/methods/credentialTest';

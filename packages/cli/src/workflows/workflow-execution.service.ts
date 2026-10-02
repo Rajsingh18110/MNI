@@ -1,23 +1,23 @@
-import { Logger } from '@n8n/backend-common';
-import { GlobalConfig, WorkflowsConfig } from '@n8n/config';
+import { Logger } from '@MNI/backend-common';
+import { GlobalConfig, WorkflowsConfig } from '@MNI/config';
 import type {
 	Project,
 	User,
 	CreateExecutionPayload,
 	WorkflowEntity,
 	PollLeaseFence,
-} from '@n8n/db';
-import { WorkflowRepository } from '@n8n/db';
-import { Service } from '@n8n/di';
-import { ensureError } from '@n8n/utils/errors/ensure-error';
-import type { IDeferredPromise } from '@n8n/utils/promise/deferred-promise';
+} from '@MNI/db';
+import { WorkflowRepository } from '@MNI/db';
+import { Service } from '@MNI/di';
+import { ensureError } from '@MNI/utils/errors/ensure-error';
+import type { IDeferredPromise } from '@MNI/utils/promise/deferred-promise';
 import type { Response } from 'express';
 import {
 	DirectedGraph,
 	ErrorReporter,
 	ExecutionContextService,
 	anyReachableRootHasRunData,
-} from 'n8n-core';
+} from 'MNI-core';
 import type {
 	IExecuteData,
 	IExecuteResponsePromiseData,
@@ -30,14 +30,14 @@ import type {
 	IWorkflowExecutionDataProcess,
 	IWorkflowBase,
 	PollCursor,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import {
 	OperationalError,
 	SubworkflowOperationError,
 	UnexpectedError,
 	Workflow,
 	createRunExecutionData,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { ExecutionAlreadyResumingError } from '@/errors/execution-already-resuming.error';
 import { PreExecuteBlockedError } from '@/errors/pre-execute-blocked.error';
@@ -806,7 +806,7 @@ export class WorkflowExecutionService {
 					!node.disabled &&
 					pinData?.[node.name] &&
 					['trigger', 'webhook'].some((suffix) => node.type.toLowerCase().endsWith(suffix)) &&
-					node.type !== 'n8n-nodes-base.respondToWebhook',
+					node.type !== 'MNI-nodes-base.respondToWebhook',
 			)
 			.sort((a) => (a.type.endsWith('webhook') ? -1 : 1));
 	}

@@ -3,7 +3,7 @@ import { createTestingPinia } from '@pinia/testing';
 import { createComponentRenderer } from '@/__tests__/render';
 import { mockedStore } from '@/__tests__/utils';
 import { fireEvent, waitFor } from '@testing-library/vue';
-import { SUPPORTED_WORKFLOW_TOOL_TRIGGERS } from '@n8n/api-types';
+import { SUPPORTED_WORKFLOW_TOOL_TRIGGERS } from '@MNI/api-types';
 
 import { useWorkflowsListStore } from '@/app/stores/workflowsList.store';
 import WorkflowToolConfigContent from '../components/WorkflowToolConfigContent.vue';
@@ -21,7 +21,7 @@ vi.mock('vue-router', async (importOriginal) => {
 	};
 });
 
-vi.mock('@n8n/i18n', () => {
+vi.mock('@MNI/i18n', () => {
 	const i18n = {
 		baseText: (key: string) => key,
 	};
@@ -30,8 +30,8 @@ vi.mock('@n8n/i18n', () => {
 
 // Element Plus' select is unusable in jsdom, so only the select/option pair is
 // swapped for click-driven stubs; every other design-system export stays real.
-vi.mock('@n8n/design-system', async (importOriginal) => {
-	const actual = await importOriginal<typeof import('@n8n/design-system')>();
+vi.mock('@MNI/design-system', async (importOriginal) => {
+	const actual = await importOriginal<typeof import('@MNI/design-system')>();
 	const { defineComponent, inject, provide } = await import('vue');
 
 	return {
@@ -364,7 +364,7 @@ describe('WorkflowToolConfigContent', () => {
 				...workflow(name, overrides),
 				nodes: [
 					{
-						type: 'n8n-nodes-base.executeWorkflowTrigger',
+						type: 'MNI-nodes-base.executeWorkflowTrigger',
 						parameters: {
 							inputSource: 'workflowInputs',
 							workflowInputs: { values: fields },
@@ -417,7 +417,7 @@ describe('WorkflowToolConfigContent', () => {
 					...workflow('Notify Sales'),
 					nodes: [
 						{
-							type: 'n8n-nodes-base.executeWorkflowTrigger',
+							type: 'MNI-nodes-base.executeWorkflowTrigger',
 							parameters: { inputSource: 'passthrough' },
 						},
 					],

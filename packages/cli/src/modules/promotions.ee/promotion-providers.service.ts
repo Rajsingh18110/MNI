@@ -5,11 +5,11 @@ import type {
 	PromotionProviderCreatedPublicDto,
 	PromotionProviderPublicDto,
 	UpdatePromotionProviderDto,
-} from '@n8n/api-types';
-import { promotionGitSshKeyConfigSchema } from '@n8n/api-types';
-import { Service } from '@n8n/di';
-import { Cipher } from 'n8n-core';
-import { jsonParse } from 'n8n-workflow';
+} from '@MNI/api-types';
+import { promotionGitSshKeyConfigSchema } from '@MNI/api-types';
+import { Service } from '@MNI/di';
+import { Cipher } from 'MNI-core';
+import { jsonParse } from 'MNI-workflow';
 
 import { BadRequestError } from '@/errors/response-errors/bad-request.error';
 import { ConflictError } from '@/errors/response-errors/conflict.error';

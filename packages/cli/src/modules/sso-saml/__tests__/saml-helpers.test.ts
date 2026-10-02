@@ -1,9 +1,9 @@
-import { mockInstance } from '@n8n/backend-test-utils';
-import type { AuthIdentity } from '@n8n/db';
-import { generateNanoId, User, AuthIdentityRepository, UserRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
+import { mockInstance } from '@MNI/backend-test-utils';
+import type { AuthIdentity } from '@MNI/db';
+import { generateNanoId, User, AuthIdentityRepository, UserRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
 
-import { UrlService } from '@n8n/backend-services';
+import { UrlService } from '@MNI/backend-services';
 
 import * as helpers from '../saml-helpers';
 import type { SamlUserAttributes } from '../types';
@@ -14,7 +14,7 @@ mockInstance(AuthIdentityRepository);
 describe('sso/saml/samlHelpers', () => {
 	describe('updateUserFromSamlAttributes', () => {
 		// We need to use `save` so that that the subscriber in
-		// packages/@n8n/db/src/entities/Project.ts receives the full user.
+		// packages/@MNI/db/src/entities/Project.ts receives the full user.
 		// With `update` it would only receive the updated fields, e.g. the `id`
 		// would be missing.
 		test('does not user `Repository.update`, but `Repository.save` instead', async () => {
@@ -30,7 +30,7 @@ describe('sso/saml/samlHelpers', () => {
 				lastName: 'Nathaniel',
 				email: 'n@8.n',
 				userPrincipalName: 'Huh?',
-				n8nInstanceRole: 'n8n_instance_role',
+				n8nInstanceRole: 'MNI_instance_role',
 			};
 
 			userRepository.findOne.mockImplementationOnce(async (_) => user);
@@ -286,7 +286,7 @@ describe('sso/saml/samlHelpers', () => {
 					lastName: 'test',
 					userPrincipalName: 'test',
 					customDepartment: 'engineering',
-					groups: ['devops', 'n8n-admins'],
+					groups: ['devops', 'MNI-admins'],
 				},
 			},
 		} as any;
@@ -310,7 +310,7 @@ describe('sso/saml/samlHelpers', () => {
 			lastName: 'test',
 			userPrincipalName: 'test',
 			customDepartment: 'engineering',
-			groups: ['devops', 'n8n-admins'],
+			groups: ['devops', 'MNI-admins'],
 		});
 	});
 

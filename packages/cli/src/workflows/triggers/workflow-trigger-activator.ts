@@ -1,14 +1,14 @@
 import assert from 'node:assert/strict';
 
-import { Logger } from '@n8n/backend-common';
-import { WorkflowsConfig } from '@n8n/config';
-import type { IWorkflowDb, WorkflowEntity, WorkflowPublicationTriggerKind } from '@n8n/db';
-import { WorkflowRepository } from '@n8n/db';
-import { Service } from '@n8n/di';
-import { ErrorReporter, SpanStatus, Tracing } from 'n8n-core';
-import { ensureError } from '@n8n/utils/errors/ensure-error';
-import { createResultError, createResultOk, type Result } from '@n8n/utils/result';
-import { sleep } from '@n8n/utils/sleep';
+import { Logger } from '@MNI/backend-common';
+import { WorkflowsConfig } from '@MNI/config';
+import type { IWorkflowDb, WorkflowEntity, WorkflowPublicationTriggerKind } from '@MNI/db';
+import { WorkflowRepository } from '@MNI/db';
+import { Service } from '@MNI/di';
+import { ErrorReporter, SpanStatus, Tracing } from 'MNI-core';
+import { ensureError } from '@MNI/utils/errors/ensure-error';
+import { createResultError, createResultOk, type Result } from '@MNI/utils/result';
+import { sleep } from '@MNI/utils/sleep';
 import type {
 	INode,
 	IWebhookData,
@@ -17,7 +17,7 @@ import type {
 	WorkflowActivateMode,
 	WorkflowExecuteMode,
 	WorkflowId,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import {
 	ERROR_TRIGGER_NODE_TYPE,
 	EXECUTE_WORKFLOW_TRIGGER_NODE_TYPE,
@@ -25,7 +25,7 @@ import {
 	UserError,
 	Workflow,
 	WorkflowActivationError,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { ActivationErrorsService } from '@/activation-errors.service';
 import {

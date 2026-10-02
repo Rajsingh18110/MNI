@@ -1,6 +1,6 @@
 import { ref } from 'vue';
 import { useSourceControlFileList } from './useSourceControlFileList';
-import type { SourceControlledFile } from '@n8n/api-types';
+import type { SourceControlledFile } from '@MNI/api-types';
 
 const createFile = (overrides: Partial<SourceControlledFile> = {}): SourceControlledFile => ({
 	id: 'wf-1',

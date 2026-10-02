@@ -5,11 +5,11 @@ import { mount, type VueWrapper } from '@vue/test-utils';
 import AgentPreviewHeader from '../components/AgentPreviewHeader.vue';
 import AgentSessionTimelineHeader from '../components/AgentSessionTimelineHeader.vue';
 
-vi.mock('@n8n/i18n', () => ({
+vi.mock('@MNI/i18n', () => ({
 	useI18n: () => ({ baseText: (key: string) => key }),
 }));
 
-vi.mock('@n8n/design-system', () => ({
+vi.mock('@MNI/design-system', () => ({
 	N8nIcon: { template: '<i v-bind="$attrs" :data-icon="icon"></i>', props: ['icon', 'size'] },
 	N8nButton: {
 		name: 'N8nButton',

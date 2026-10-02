@@ -1,5 +1,5 @@
-import type { ModuleRegistry } from '@n8n/backend-common';
-import type { ModuleSettings } from '@n8n/decorators';
+import type { ModuleRegistry } from '@MNI/backend-common';
+import type { ModuleSettings } from '@MNI/decorators';
 import type { NextFunction, Request, Response } from 'express';
 import { mock } from 'vitest-mock-extended';
 

@@ -1,6 +1,6 @@
 import type { Mock } from 'vitest';
-import { mockInstance } from '@n8n/backend-test-utils';
-import { PrometheusMetricsConfig } from '@n8n/config';
+import { mockInstance } from '@MNI/backend-test-utils';
+import { PrometheusMetricsConfig } from '@MNI/config';
 import { mock } from 'vitest-mock-extended';
 import promClient from 'prom-client';
 
@@ -12,7 +12,7 @@ vi.mock('prom-client');
 
 describe('PrometheusCacheMetricsService', () => {
 	const config = mockInstance(PrometheusMetricsConfig, {
-		prefix: 'n8n_',
+		prefix: 'MNI_',
 		includeCacheMetrics: true,
 	});
 	const cacheService = mock<CacheService>();
@@ -20,7 +20,7 @@ describe('PrometheusCacheMetricsService', () => {
 	let mockCounterInc: Mock;
 
 	beforeEach(() => {
-		Object.assign(config, { prefix: 'n8n_', includeCacheMetrics: true });
+		Object.assign(config, { prefix: 'MNI_', includeCacheMetrics: true });
 		service = new PrometheusCacheMetricsService(cacheService, config);
 		mockCounterInc = vi.fn();
 		promClient.Counter.prototype.inc = mockCounterInc;
@@ -52,7 +52,7 @@ describe('PrometheusCacheMetricsService', () => {
 			service.init();
 
 			expect(promClient.Counter).toHaveBeenCalledWith({
-				name: 'n8n_cache_hits_total',
+				name: 'MNI_cache_hits_total',
 				help: 'Total number of cache hits.',
 			});
 		});
@@ -61,7 +61,7 @@ describe('PrometheusCacheMetricsService', () => {
 			service.init();
 
 			expect(promClient.Counter).toHaveBeenCalledWith({
-				name: 'n8n_cache_misses_total',
+				name: 'MNI_cache_misses_total',
 				help: 'Total number of cache misses.',
 			});
 		});
@@ -70,7 +70,7 @@ describe('PrometheusCacheMetricsService', () => {
 			service.init();
 
 			expect(promClient.Counter).toHaveBeenCalledWith({
-				name: 'n8n_cache_updates_total',
+				name: 'MNI_cache_updates_total',
 				help: 'Total number of cache updates.',
 			});
 		});

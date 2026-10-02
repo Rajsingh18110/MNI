@@ -7,14 +7,14 @@ import { getDropdownItems, mockedStore } from '@/__tests__/utils';
 import type { MockedStore } from '@/__tests__/utils';
 import { PROJECT_MOVE_RESOURCE_MODAL } from '../projects.constants';
 import ProjectMoveResourceModal from './ProjectMoveResourceModal.vue';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
 import { useProjectsStore } from '../projects.store';
 import { useWorkflowsListStore } from '@/app/stores/workflowsList.store';
 import { useCredentialsStore } from '@/features/credentials/credentials.store';
 import type { ComponentProps } from 'vue-component-type-helpers';
 import { ResourceType } from '../projects.utils';
 import { ProjectTypes } from '../projects.types';
-import type { ProjectSharingData } from 'n8n-workflow';
+import type { ProjectSharingData } from 'MNI-workflow';
 import type { ICredentialsResponse } from '@/features/credentials/credentials.types';
 
 const isPrivateCredentialsEnabled = { value: false };

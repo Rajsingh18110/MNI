@@ -1,11 +1,11 @@
-import { inTest, Logger, safeJoinPath } from '@n8n/backend-common';
-import { GlobalConfig } from '@n8n/config';
-import { Container } from '@n8n/di';
+import { inTest, Logger, safeJoinPath } from '@MNI/backend-common';
+import { GlobalConfig } from '@MNI/config';
+import { Container } from '@MNI/di';
 import { once as eventOnce } from 'events';
 import { createReadStream, existsSync, rmSync } from 'fs';
 import remove from 'lodash/remove';
-import { InstanceSettings } from 'n8n-core';
-import { EventMessageTypeNames, jsonParse } from 'n8n-workflow';
+import { InstanceSettings } from 'MNI-core';
+import { EventMessageTypeNames, jsonParse } from 'MNI-workflow';
 import { parse } from 'path';
 import readline from 'readline';
 import { Worker } from 'worker_threads';
@@ -255,7 +255,7 @@ export class MessageEventBusLogWriter {
 					) {
 						aborted = true;
 						this.logger.warn(
-							`Event log ${logFileName} exceeded ${maxMessagesPerParse} in-memory messages during parse; aborting to prevent out-of-memory. Some unfinished execution recovery may be skipped. Tune via N8N_EVENTBUS_LOGWRITER_MAXMESSAGESPERPARSE.`,
+							`Event log ${logFileName} exceeded ${maxMessagesPerParse} in-memory messages during parse; aborting to prevent out-of-memory. Some unfinished execution recovery may be skipped. Tune via MNI_EVENTBUS_LOGWRITER_MAXMESSAGESPERPARSE.`,
 						);
 						rl.close();
 						stream.destroy();
@@ -269,7 +269,7 @@ export class MessageEventBusLogWriter {
 					) {
 						aborted = true;
 						this.logger.warn(
-							`Event log ${logFileName} exceeded ${maxTotalMessagesPerFile} total lines during parse; aborting to prevent out-of-memory. Tune via N8N_EVENTBUS_LOGWRITER_MAXTOTALMESSAGESPERFILE.`,
+							`Event log ${logFileName} exceeded ${maxTotalMessagesPerFile} total lines during parse; aborting to prevent out-of-memory. Tune via MNI_EVENTBUS_LOGWRITER_MAXTOTALMESSAGESPERFILE.`,
 						);
 						rl.close();
 						stream.destroy();

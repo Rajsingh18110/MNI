@@ -1,9 +1,9 @@
 <script lang="ts" setup>
 import { computed, onMounted, ref, type Component } from 'vue';
-import { ROLE } from '@n8n/api-types';
-import { N8nAlertDialog, N8nText } from '@n8n/design-system';
-import { useI18n, type BaseTextKey } from '@n8n/i18n';
-import { useUsersStore } from '@n8n/stores/users.store';
+import { ROLE } from '@MNI/api-types';
+import { N8nAlertDialog, N8nText } from '@MNI/design-system';
+import { useI18n, type BaseTextKey } from '@MNI/i18n';
+import { useUsersStore } from '@MNI/stores/users.store';
 import { AI_GATEWAY_TOP_UP_MODAL_KEY } from '@/app/constants';
 import type { AiGatewayTopUpVariant } from '@/app/composables/useAiGatewayTopUp';
 import { usePageRedirectionHelper } from '@/app/composables/usePageRedirectionHelper';

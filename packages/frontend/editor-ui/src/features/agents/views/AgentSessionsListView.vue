@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { useMessage } from '@/app/composables/useMessage';
-import { useToast } from '@n8n/composables/useToast';
+import { useToast } from '@MNI/composables/useToast';
 import { MODAL_CONFIRM } from '@/app/constants';
 import { convertToDisplayDate } from '@/app/utils/formatters/dateFormatter';
 import { useAgentSessionsStore } from '@/features/agents/agentSessions.store';
@@ -12,7 +12,7 @@ import type {
 	AgentSessionStatus,
 } from '@/features/agents/composables/useAgentThreadsApi';
 import AgentSessionsFilter from '@/features/agents/components/AgentSessionsFilter.vue';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import { computed, onBeforeUnmount, onMounted } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 
@@ -23,8 +23,8 @@ import {
 	N8nBadge,
 	N8nTableBase,
 	N8nText,
-} from '@n8n/design-system';
-import type { ActionDropdownItem, IconName } from '@n8n/design-system';
+} from '@MNI/design-system';
+import type { ActionDropdownItem, IconName } from '@MNI/design-system';
 import { ElSkeletonItem } from 'element-plus';
 
 type TraceTarget = { agentId: string; threadId: string };
@@ -158,7 +158,7 @@ function originPresentation(thread: AgentExecutionThread): OriginPresentation {
 		case 'teams':
 			return { icon: source, label: source.charAt(0).toUpperCase() + source.slice(1) };
 		case 'chat':
-		case 'n8n_chat':
+		case 'MNI_chat':
 		case undefined:
 			return { icon: 'flask-conical', label: i18n.baseText('agentSessions.origin.preview') };
 		default:
@@ -388,7 +388,7 @@ async function onFiltersChange(value: AgentSessionFilters) {
 </template>
 
 <style module lang="scss">
-@use '@n8n/design-system/css/mixins/_focus.scss' as focus;
+@use '@MNI/design-system/css/mixins/_focus.scss' as focus;
 
 .wrapper {
 	display: flex;

@@ -9,7 +9,7 @@ import type {
 	INodePropertyOptions,
 	IHttpRequestMethods,
 	IRequestOptions,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 /**
  * Make an API request to Stripe

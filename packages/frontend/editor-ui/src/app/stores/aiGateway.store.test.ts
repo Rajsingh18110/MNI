@@ -1,6 +1,6 @@
 import { createPinia, setActivePinia } from 'pinia';
 import { describe, it, vi, beforeEach, expect } from 'vitest';
-import type { INode } from 'n8n-workflow';
+import type { INode } from 'MNI-workflow';
 import { useAiGatewayStore, usesFreeCreditsLabel } from './aiGateway.store';
 
 const mockGetGatewayConfig = vi.fn();
@@ -13,7 +13,7 @@ vi.mock('@/features/ai/assistant/assistant.api', () => ({
 	getGatewayUsage: (...args: unknown[]) => mockGetGatewayUsage(...args),
 }));
 
-vi.mock('@n8n/stores/useRootStore', () => ({
+vi.mock('@MNI/stores/useRootStore', () => ({
 	useRootStore: vi.fn(() => ({
 		restApiContext: { baseUrl: 'http://localhost:5678', sessionId: '' },
 	})),
@@ -22,32 +22,32 @@ vi.mock('@n8n/stores/useRootStore', () => ({
 const OPERATION_ONLY = '__operation_only__';
 
 const MOCK_CONFIG = {
-	nodes: ['@n8n/n8n-nodes-langchain.lmChatGoogleGemini'],
+	nodes: ['@MNI/MNI-nodes-langchain.lmChatGoogleGemini'],
 	credentialTypes: ['googlePalmApi'],
 	providerConfig: {
 		googlePalmApi: { gatewayPath: '/v1/gateway/google', urlField: 'host', apiKeyField: 'apiKey' },
 	},
 	supportedActions: {
-		'@n8n/n8n-nodes-langchain.openAi': {
+		'@MNI/MNI-nodes-langchain.openAi': {
 			text: ['message', 'response', 'classify'],
 			image: ['analyze', 'generate', 'edit'],
 			audio: ['generate', 'transcribe', 'translate'],
 		},
-		'@n8n/n8n-nodes-langchain.googleGemini': {
+		'@MNI/MNI-nodes-langchain.googleGemini': {
 			text: ['message'],
 			image: ['generate'],
 		},
-		'@n8n/n8n-nodes-langchain.anthropic': {
+		'@MNI/MNI-nodes-langchain.anthropic': {
 			text: ['message'],
 			image: ['analyze'],
 			document: ['analyze'],
 		},
-		'n8n-nodes-pdfco.PDFco Api': {
+		'MNI-nodes-pdfco.PDFco Api': {
 			[OPERATION_ONLY]: ['AI Invoice Parser', 'Merge PDF'],
 		},
 	},
 	hiddenNodeProperties: {
-		'n8n-nodes-browserbase.browserbase': ['modelSource'],
+		'MNI-nodes-browserbase.browserbase': ['modelSource'],
 	},
 };
 
@@ -407,7 +407,7 @@ describe('aiGateway.store', () => {
 			const store = useAiGatewayStore();
 			await store.fetchConfig();
 
-			expect(store.isNodeSupported('@n8n/n8n-nodes-langchain.lmChatGoogleGemini')).toBe(true);
+			expect(store.isNodeSupported('@MNI/MNI-nodes-langchain.lmChatGoogleGemini')).toBe(true);
 		});
 
 		it('should return false when the node is not in the config', async () => {
@@ -421,12 +421,12 @@ describe('aiGateway.store', () => {
 		it('should return false when config has not been loaded', () => {
 			const store = useAiGatewayStore();
 
-			expect(store.isNodeSupported('@n8n/n8n-nodes-langchain.lmChatGoogleGemini')).toBe(false);
+			expect(store.isNodeSupported('@MNI/MNI-nodes-langchain.lmChatGoogleGemini')).toBe(false);
 		});
 	});
 
 	describe('isNodeEligible()', () => {
-		const nodeType = '@n8n/n8n-nodes-langchain.openAi';
+		const nodeType = '@MNI/MNI-nodes-langchain.openAi';
 		const config = {
 			nodes: [nodeType],
 			credentialTypes: ['openAiApi'],
@@ -546,7 +546,7 @@ describe('aiGateway.store', () => {
 			const store = useAiGatewayStore();
 			await store.fetchConfig();
 
-			expect(store.isActionSupported('@n8n/n8n-nodes-langchain.openAi', 'text', 'message')).toBe(
+			expect(store.isActionSupported('@MNI/MNI-nodes-langchain.openAi', 'text', 'message')).toBe(
 				true,
 			);
 		});
@@ -556,7 +556,7 @@ describe('aiGateway.store', () => {
 			const store = useAiGatewayStore();
 			await store.fetchConfig();
 
-			expect(store.isActionSupported('@n8n/n8n-nodes-langchain.openAi', 'text', 'unknownOp')).toBe(
+			expect(store.isActionSupported('@MNI/MNI-nodes-langchain.openAi', 'text', 'unknownOp')).toBe(
 				false,
 			);
 		});
@@ -566,7 +566,7 @@ describe('aiGateway.store', () => {
 			const store = useAiGatewayStore();
 			await store.fetchConfig();
 
-			expect(store.isActionSupported('@n8n/n8n-nodes-langchain.openAi', 'file', 'upload')).toBe(
+			expect(store.isActionSupported('@MNI/MNI-nodes-langchain.openAi', 'file', 'upload')).toBe(
 				false,
 			);
 		});
@@ -577,7 +577,7 @@ describe('aiGateway.store', () => {
 			await store.fetchConfig();
 
 			expect(
-				store.isActionSupported('@n8n/n8n-nodes-langchain.lmChatGoogleGemini', 'text', 'message'),
+				store.isActionSupported('@MNI/MNI-nodes-langchain.lmChatGoogleGemini', 'text', 'message'),
 			).toBe(true);
 		});
 
@@ -587,7 +587,7 @@ describe('aiGateway.store', () => {
 			const store = useAiGatewayStore();
 			await store.fetchConfig();
 
-			expect(store.isActionSupported('@n8n/n8n-nodes-langchain.openAi', 'text', 'message')).toBe(
+			expect(store.isActionSupported('@MNI/MNI-nodes-langchain.openAi', 'text', 'message')).toBe(
 				true,
 			);
 		});
@@ -595,7 +595,7 @@ describe('aiGateway.store', () => {
 		it('should return true when config has not been loaded', () => {
 			const store = useAiGatewayStore();
 
-			expect(store.isActionSupported('@n8n/n8n-nodes-langchain.openAi', 'file', 'upload')).toBe(
+			expect(store.isActionSupported('@MNI/MNI-nodes-langchain.openAi', 'file', 'upload')).toBe(
 				true,
 			);
 		});
@@ -607,9 +607,9 @@ describe('aiGateway.store', () => {
 
 			// "openAiTool" is not a config key, but its base "openAi" is.
 			expect(
-				store.isActionSupported('@n8n/n8n-nodes-langchain.openAiTool', 'text', 'message'),
+				store.isActionSupported('@MNI/MNI-nodes-langchain.openAiTool', 'text', 'message'),
 			).toBe(true);
-			expect(store.isActionSupported('@n8n/n8n-nodes-langchain.openAiTool', 'file', 'upload')).toBe(
+			expect(store.isActionSupported('@MNI/MNI-nodes-langchain.openAiTool', 'file', 'upload')).toBe(
 				false,
 			);
 		});
@@ -621,7 +621,7 @@ describe('aiGateway.store', () => {
 				await store.fetchConfig();
 
 				expect(
-					store.isActionSupported('n8n-nodes-pdfco.PDFco Api', undefined, 'AI Invoice Parser'),
+					store.isActionSupported('MNI-nodes-pdfco.PDFco Api', undefined, 'AI Invoice Parser'),
 				).toBe(true);
 			});
 
@@ -631,7 +631,7 @@ describe('aiGateway.store', () => {
 				await store.fetchConfig();
 
 				expect(
-					store.isActionSupported('n8n-nodes-pdfco.PDFco Api', undefined, 'Unknown Operation'),
+					store.isActionSupported('MNI-nodes-pdfco.PDFco Api', undefined, 'Unknown Operation'),
 				).toBe(false);
 			});
 
@@ -641,7 +641,7 @@ describe('aiGateway.store', () => {
 				await store.fetchConfig();
 
 				expect(
-					store.isActionSupported('@n8n/n8n-nodes-langchain.openAi', undefined, 'message'),
+					store.isActionSupported('@MNI/MNI-nodes-langchain.openAi', undefined, 'message'),
 				).toBe(false);
 			});
 		});
@@ -649,7 +649,7 @@ describe('aiGateway.store', () => {
 
 	describe('isNodePropertyHidden()', () => {
 		const managedNode = {
-			type: 'n8n-nodes-browserbase.browserbase',
+			type: 'MNI-nodes-browserbase.browserbase',
 			credentials: { browserbaseApi: { id: null, name: '', __aiGatewayManaged: true } },
 		} as unknown as INode;
 
@@ -675,7 +675,7 @@ describe('aiGateway.store', () => {
 			await store.fetchConfig();
 
 			const node = {
-				type: '@n8n/n8n-nodes-langchain.openAi',
+				type: '@MNI/MNI-nodes-langchain.openAi',
 				credentials: { openAiApi: { id: null, name: '', __aiGatewayManaged: true } },
 			} as unknown as INode;
 
@@ -703,7 +703,7 @@ describe('aiGateway.store', () => {
 			await store.fetchConfig();
 
 			const node = {
-				type: 'n8n-nodes-browserbase.browserbase',
+				type: 'MNI-nodes-browserbase.browserbase',
 				credentials: { browserbaseApi: { id: 'cred-1', name: 'My Key' } },
 			} as unknown as INode;
 
@@ -715,7 +715,7 @@ describe('aiGateway.store', () => {
 			const store = useAiGatewayStore();
 			await store.fetchConfig();
 
-			const node = { type: 'n8n-nodes-browserbase.browserbase' } as unknown as INode;
+			const node = { type: 'MNI-nodes-browserbase.browserbase' } as unknown as INode;
 
 			expect(store.isNodePropertyHidden(node, 'modelSource')).toBe(false);
 		});
@@ -734,7 +734,7 @@ describe('aiGateway.store', () => {
 			await store.fetchConfig();
 
 			const toolNode = {
-				type: 'n8n-nodes-browserbase.browserbaseTool',
+				type: 'MNI-nodes-browserbase.browserbaseTool',
 				credentials: { browserbaseApi: { id: null, name: '', __aiGatewayManaged: true } },
 			} as unknown as INode;
 
@@ -745,7 +745,7 @@ describe('aiGateway.store', () => {
 	describe('isActionOptionVisible()', () => {
 		const managedNode = (parameters: Record<string, unknown> = {}) =>
 			({
-				type: '@n8n/n8n-nodes-langchain.openAi',
+				type: '@MNI/MNI-nodes-langchain.openAi',
 				parameters,
 				credentials: { openAiApi: { id: null, name: '', __aiGatewayManaged: true } },
 			}) as unknown as INode;
@@ -764,7 +764,7 @@ describe('aiGateway.store', () => {
 			await store.fetchConfig();
 
 			const node = {
-				type: '@n8n/n8n-nodes-langchain.openAi',
+				type: '@MNI/MNI-nodes-langchain.openAi',
 				parameters: {},
 				credentials: { openAiApi: { id: 'cred-1', name: 'My Key' } },
 			} as unknown as INode;
@@ -778,7 +778,7 @@ describe('aiGateway.store', () => {
 			await store.fetchConfig();
 
 			const node = {
-				type: '@n8n/n8n-nodes-langchain.lmChatGoogleGemini',
+				type: '@MNI/MNI-nodes-langchain.lmChatGoogleGemini',
 				parameters: {},
 				credentials: { openAiApi: { id: null, name: '', __aiGatewayManaged: true } },
 			} as unknown as INode;
@@ -809,7 +809,7 @@ describe('aiGateway.store', () => {
 				await store.fetchConfig();
 
 				const node = {
-					type: 'n8n-nodes-pdfco.PDFco Api',
+					type: 'MNI-nodes-pdfco.PDFco Api',
 					parameters: {},
 					credentials: { pdfcoApi: { id: null, name: '', __aiGatewayManaged: true } },
 				} as unknown as INode;
@@ -855,7 +855,7 @@ describe('aiGateway.store', () => {
 				await store.fetchConfig();
 
 				const node = {
-					type: 'n8n-nodes-pdfco.PDFco Api',
+					type: 'MNI-nodes-pdfco.PDFco Api',
 					parameters: {},
 					credentials: { pdfcoApi: { id: null, name: '', __aiGatewayManaged: true } },
 				} as unknown as INode;
@@ -871,7 +871,7 @@ describe('aiGateway.store', () => {
 			await store.fetchConfig();
 
 			const toolNode = {
-				type: '@n8n/n8n-nodes-langchain.openAiTool',
+				type: '@MNI/MNI-nodes-langchain.openAiTool',
 				parameters: { resource: 'text' },
 				credentials: { openAiApi: { id: null, name: '', __aiGatewayManaged: true } },
 			} as unknown as INode;
@@ -919,7 +919,7 @@ describe('aiGateway.store', () => {
 			await store.fetchConfig();
 
 			expect(
-				store.isNodeTypeVersionSupported('@n8n/n8n-nodes-langchain.lmChatGoogleGemini', 1),
+				store.isNodeTypeVersionSupported('@MNI/MNI-nodes-langchain.lmChatGoogleGemini', 1),
 			).toBe(true);
 		});
 

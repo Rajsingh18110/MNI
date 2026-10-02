@@ -1,8 +1,8 @@
-import type { Logger } from '@n8n/backend-common';
-import type { EngineConfig } from '@n8n/config';
-import type { ExecutionResponse } from '@n8n/engine';
-import { createDeferredPromise, type IDeferredPromise } from '@n8n/utils/promise/deferred-promise';
-import { ENCODED_BUFFER_KEY } from 'n8n-core';
+import type { Logger } from '@MNI/backend-common';
+import type { EngineConfig } from '@MNI/config';
+import type { ExecutionResponse } from '@MNI/engine';
+import { createDeferredPromise, type IDeferredPromise } from '@MNI/utils/promise/deferred-promise';
+import { ENCODED_BUFFER_KEY } from 'MNI-core';
 import { mock } from 'vitest-mock-extended';
 
 import { createExecutionIdV2 } from '@/executions/execution-id';
@@ -17,7 +17,7 @@ const TIMEOUT_MS = 50_000;
 
 /**
  * Stands in for the receiver. Only `src/modules/engine-v2/**` may import
- * `@n8n/engine` at runtime, and the receiver's own suite covers the frame round
+ * `@MNI/engine` at runtime, and the receiver's own suite covers the frame round
  * trip; what matters here is what the responder does with a response.
  *
  * Handlers are per execution, as the real receiver's are. A response for

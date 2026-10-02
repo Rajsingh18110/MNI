@@ -3,11 +3,11 @@ import {
 	initDbUpToMigration,
 	runSingleMigration,
 	type TestMigrationContext,
-} from '@n8n/backend-test-utils';
-import { GlobalConfig } from '@n8n/config';
-import { DbConnection } from '@n8n/db';
-import { Container } from '@n8n/di';
-import { DataSource } from '@n8n/typeorm';
+} from '@MNI/backend-test-utils';
+import { GlobalConfig } from '@MNI/config';
+import { DbConnection } from '@MNI/db';
+import { Container } from '@MNI/di';
+import { DataSource } from '@MNI/typeorm';
 import { randomUUID } from 'node:crypto';
 
 const MIGRATION_NAME = 'ActivateExecuteWorkflowTriggerWorkflows1763048000000';
@@ -160,7 +160,7 @@ describe('ActivateExecuteWorkflowTriggerWorkflows Migration', () => {
 					{
 						id: randomUUID(),
 						name: 'Execute Workflow Trigger',
-						type: 'n8n-nodes-base.executeWorkflowTrigger',
+						type: 'MNI-nodes-base.executeWorkflowTrigger',
 						parameters: { inputSource: 'passthrough' },
 						typeVersion: 1,
 						position: [0, 0],
@@ -180,7 +180,7 @@ describe('ActivateExecuteWorkflowTriggerWorkflows Migration', () => {
 					{
 						id: randomUUID(),
 						name: 'Execute Workflow Trigger',
-						type: 'n8n-nodes-base.executeWorkflowTrigger',
+						type: 'MNI-nodes-base.executeWorkflowTrigger',
 						parameters: { inputSource: 'jsonExample' },
 						typeVersion: 1,
 						position: [0, 0],
@@ -200,7 +200,7 @@ describe('ActivateExecuteWorkflowTriggerWorkflows Migration', () => {
 					{
 						id: randomUUID(),
 						name: 'Execute Workflow Trigger',
-						type: 'n8n-nodes-base.executeWorkflowTrigger',
+						type: 'MNI-nodes-base.executeWorkflowTrigger',
 						parameters: {
 							workflowInputs: {
 								values: [{ name: 'input1', type: 'string' }],
@@ -224,7 +224,7 @@ describe('ActivateExecuteWorkflowTriggerWorkflows Migration', () => {
 					{
 						id: randomUUID(),
 						name: 'Execute Workflow Trigger',
-						type: 'n8n-nodes-base.executeWorkflowTrigger',
+						type: 'MNI-nodes-base.executeWorkflowTrigger',
 						parameters: {
 							workflowInputs: {
 								values: [{ type: 'string' }], // missing 'name' field
@@ -248,7 +248,7 @@ describe('ActivateExecuteWorkflowTriggerWorkflows Migration', () => {
 					{
 						id: randomUUID(),
 						name: 'Execute Workflow Trigger',
-						type: 'n8n-nodes-base.executeWorkflowTrigger',
+						type: 'MNI-nodes-base.executeWorkflowTrigger',
 						parameters: {},
 						typeVersion: 1,
 						position: [0, 0],
@@ -268,7 +268,7 @@ describe('ActivateExecuteWorkflowTriggerWorkflows Migration', () => {
 					{
 						id: randomUUID(),
 						name: 'Execute Workflow Trigger',
-						type: 'n8n-nodes-base.executeWorkflowTrigger',
+						type: 'MNI-nodes-base.executeWorkflowTrigger',
 						parameters: {
 							workflowInputs: {
 								values: [{ name: 'chatInput' }, { name: 'sessionId' }, { name: 'env' }],
@@ -292,7 +292,7 @@ describe('ActivateExecuteWorkflowTriggerWorkflows Migration', () => {
 					{
 						id: randomUUID(),
 						name: 'Error Trigger',
-						type: 'n8n-nodes-base.errorTrigger',
+						type: 'MNI-nodes-base.errorTrigger',
 						parameters: {},
 						typeVersion: 1,
 						position: [0, 0],
@@ -312,7 +312,7 @@ describe('ActivateExecuteWorkflowTriggerWorkflows Migration', () => {
 					{
 						id: randomUUID(),
 						name: 'Execute Workflow Trigger',
-						type: 'n8n-nodes-base.executeWorkflowTrigger',
+						type: 'MNI-nodes-base.executeWorkflowTrigger',
 						parameters: { inputSource: 'passthrough' },
 						typeVersion: 1,
 						position: [0, 0],
@@ -320,7 +320,7 @@ describe('ActivateExecuteWorkflowTriggerWorkflows Migration', () => {
 					{
 						id: randomUUID(),
 						name: 'Schedule Trigger',
-						type: 'n8n-nodes-base.scheduleTrigger',
+						type: 'MNI-nodes-base.scheduleTrigger',
 						parameters: {},
 						typeVersion: 1,
 						position: [200, 0],
@@ -328,7 +328,7 @@ describe('ActivateExecuteWorkflowTriggerWorkflows Migration', () => {
 					{
 						id: randomUUID(),
 						name: 'Webhook',
-						type: 'n8n-nodes-base.webhook',
+						type: 'MNI-nodes-base.webhook',
 						parameters: {},
 						typeVersion: 1,
 						position: [400, 0],
@@ -348,7 +348,7 @@ describe('ActivateExecuteWorkflowTriggerWorkflows Migration', () => {
 					{
 						id: randomUUID(),
 						name: 'Schedule Trigger',
-						type: 'n8n-nodes-base.scheduleTrigger',
+						type: 'MNI-nodes-base.scheduleTrigger',
 						parameters: {},
 						typeVersion: 1,
 						position: [0, 0],
@@ -368,7 +368,7 @@ describe('ActivateExecuteWorkflowTriggerWorkflows Migration', () => {
 					{
 						id: randomUUID(),
 						name: 'Execute Workflow Trigger',
-						type: 'n8n-nodes-base.executeWorkflowTrigger',
+						type: 'MNI-nodes-base.executeWorkflowTrigger',
 						parameters: { inputSource: 'passthrough' },
 						typeVersion: 1,
 						position: [0, 0],
@@ -376,7 +376,7 @@ describe('ActivateExecuteWorkflowTriggerWorkflows Migration', () => {
 					{
 						id: randomUUID(),
 						name: 'Error Trigger',
-						type: 'n8n-nodes-base.errorTrigger',
+						type: 'MNI-nodes-base.errorTrigger',
 						parameters: {},
 						typeVersion: 1,
 						position: [200, 0],
@@ -396,7 +396,7 @@ describe('ActivateExecuteWorkflowTriggerWorkflows Migration', () => {
 					{
 						id: randomUUID(),
 						name: 'Execute Workflow Trigger',
-						type: 'n8n-nodes-base.executeWorkflowTrigger',
+						type: 'MNI-nodes-base.executeWorkflowTrigger',
 						parameters: { inputSource: 'passthrough' },
 						typeVersion: 1,
 						position: [0, 0],
@@ -417,7 +417,7 @@ describe('ActivateExecuteWorkflowTriggerWorkflows Migration', () => {
 					{
 						id: randomUUID(),
 						name: 'Error Trigger',
-						type: 'n8n-nodes-base.errorTrigger',
+						type: 'MNI-nodes-base.errorTrigger',
 						parameters: {},
 						typeVersion: 1,
 						position: [0, 0],
@@ -452,7 +452,7 @@ describe('ActivateExecuteWorkflowTriggerWorkflows Migration', () => {
 						name: 'Test Invalid JSON with Control Characters',
 						// Invalid JSON with unescaped newline (simulating the production issue)
 						nodes:
-							'[{"id":"test","type":"n8n-nodes-base.executeWorkflowTrigger","parameters":{"inputSource":"passthrough","description":"MEASUREMENT DETAILS: \\"N/A\\"\\nMEASUREMENT TYPE: \\"N/A\\"\n"},"typeVersion":1,"position":[0,0]}]',
+							'[{"id":"test","type":"MNI-nodes-base.executeWorkflowTrigger","parameters":{"inputSource":"passthrough","description":"MEASUREMENT DETAILS: \\"N/A\\"\\nMEASUREMENT TYPE: \\"N/A\\"\n"},"typeVersion":1,"position":[0,0]}]',
 						connections: '{}',
 						active: false,
 						versionId: randomUUID(),
@@ -542,12 +542,12 @@ describe('ActivateExecuteWorkflowTriggerWorkflows Migration', () => {
 
 			const nodes = JSON.parse(workflow!.nodes);
 			const executeWorkflowTrigger = nodes.find(
-				(n: { type: string }) => n.type === 'n8n-nodes-base.executeWorkflowTrigger',
+				(n: { type: string }) => n.type === 'MNI-nodes-base.executeWorkflowTrigger',
 			);
 			const scheduleTrigger = nodes.find(
-				(n: { type: string }) => n.type === 'n8n-nodes-base.scheduleTrigger',
+				(n: { type: string }) => n.type === 'MNI-nodes-base.scheduleTrigger',
 			);
-			const webhook = nodes.find((n: { type: string }) => n.type === 'n8n-nodes-base.webhook');
+			const webhook = nodes.find((n: { type: string }) => n.type === 'MNI-nodes-base.webhook');
 
 			expect(executeWorkflowTrigger.disabled).toBeUndefined();
 			expect(scheduleTrigger.disabled).toBe(true);
@@ -597,7 +597,7 @@ describe('ActivateExecuteWorkflowTriggerWorkflows Migration', () => {
 
 		// PostgreSQL enforces strict JSON validation and won't allow invalid JSON to be inserted,
 		// so we skip this test for PostgreSQL
-		// eslint-disable-next-line n8n-local-rules/no-skipped-tests
+		// eslint-disable-next-line MNI-local-rules/no-skipped-tests
 		const testFn = Container.get(GlobalConfig).database.type === 'postgresdb' ? it.skip : it;
 		testFn(
 			'should skip workflows with invalid JSON containing unescaped control characters',

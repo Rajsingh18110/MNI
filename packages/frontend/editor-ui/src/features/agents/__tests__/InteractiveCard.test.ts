@@ -1,12 +1,12 @@
 /* eslint-disable import-x/no-extraneous-dependencies -- test-only */
 import { mount } from '@vue/test-utils';
-import { APPROVAL_TOOL_NAME, WAIT_TOOL_NAME } from '@n8n/api-types';
+import { APPROVAL_TOOL_NAME, WAIT_TOOL_NAME } from '@MNI/api-types';
 import { describe, expect, it, vi } from 'vitest';
 
 import InteractiveCard from '../components/interactive/InteractiveCard.vue';
 import type { InteractivePayload } from '@/features/ai/shared/agentsChat/types';
 
-vi.mock('@n8n/i18n', () => {
+vi.mock('@MNI/i18n', () => {
 	const i18n = {
 		baseText: (key: string, options?: { interpolate?: Record<string, string> }) => {
 			if (key === 'agents.chat.approval.title') return 'Approval required';
@@ -141,7 +141,7 @@ describe('InteractiveCard', () => {
 		});
 
 		expect(wrapper.text()).toContain('Waiting on "Approval workflow"');
-		const buttons = wrapper.findAll('[data-testid="n8n-chat-card-button"]');
+		const buttons = wrapper.findAll('[data-testid="MNI-chat-card-button"]');
 		expect(buttons.map((button) => button.text())).toEqual([
 			'Check for the result',
 			'Stop waiting',

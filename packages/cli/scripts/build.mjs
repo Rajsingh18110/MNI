@@ -15,7 +15,7 @@ const SPEC_THEME_FILENAME = 'swagger-theme.css';
 
 const YAML_STRINGIFY_OPTS = { singleQuote: true, aliasDuplicateObjects: false, lineWidth: 0 };
 
-const publicApiEnabled = process.env.N8N_PUBLIC_API_DISABLED !== 'true';
+const publicApiEnabled = process.env.MNI_PUBLIC_API_DISABLED !== 'true';
 
 generateUserManagementEmailTemplates();
 generateTimezoneData();

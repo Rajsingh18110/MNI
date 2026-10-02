@@ -1,12 +1,12 @@
 <script lang="ts" setup>
-import { N8nButton, N8nCard, N8nInput, N8nText } from '@n8n/design-system';
-import { useI18n, type BaseTextKey } from '@n8n/i18n';
-import type { InstanceAiConfirmation, InstanceAiConfirmRequest } from '@n8n/api-types';
-import { useRootStore } from '@n8n/stores/useRootStore';
+import { N8nButton, N8nCard, N8nInput, N8nText } from '@MNI/design-system';
+import { useI18n, type BaseTextKey } from '@MNI/i18n';
+import type { InstanceAiConfirmation, InstanceAiConfirmRequest } from '@MNI/api-types';
+import { useRootStore } from '@MNI/stores/useRootStore';
 import { useInstanceAiSettingsStore } from '../instanceAiSettings.store';
-import { redactTelemetryProperties } from '@n8n/telemetry';
+import { redactTelemetryProperties } from '@MNI/telemetry';
 import { computed, ref } from 'vue';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
 import { useThread, type PendingConfirmationItem } from '../instanceAi.store';
 import { isPendingItemFloating } from '../confirmationKinds';
 import { formatApprovalDetails } from '../approvalDetails';

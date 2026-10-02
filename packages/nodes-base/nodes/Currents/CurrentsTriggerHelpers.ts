@@ -1,5 +1,5 @@
 import { randomBytes } from 'crypto';
-import { toPathSegment, type IHookFunctions, type IWebhookFunctions } from 'n8n-workflow';
+import { toPathSegment, type IHookFunctions, type IWebhookFunctions } from 'MNI-workflow';
 
 import { verifySignature as verifySignatureGeneric } from '../../utils/webhook-signature-verification';
 

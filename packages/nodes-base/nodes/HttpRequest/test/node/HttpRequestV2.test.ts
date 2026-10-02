@@ -1,4 +1,4 @@
-import type { IExecuteFunctions, INodeTypeBaseDescription } from 'n8n-workflow';
+import type { IExecuteFunctions, INodeTypeBaseDescription } from 'MNI-workflow';
 
 import { HttpRequestV2 } from '../../V2/HttpRequestV2.node';
 import type { Mock } from 'vitest';
@@ -32,7 +32,7 @@ describe('HttpRequestV2', () => {
 			getNodeParameter: vi.fn(),
 			getNode: vi.fn(() => {
 				return {
-					type: 'n8n-nodes-base.httpRequest',
+					type: 'MNI-nodes-base.httpRequest',
 					typeVersion: 2,
 				};
 			}),

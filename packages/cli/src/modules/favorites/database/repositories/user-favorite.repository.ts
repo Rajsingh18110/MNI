@@ -1,6 +1,6 @@
-import type { FavoriteResourceType } from '@n8n/api-types';
-import { Service } from '@n8n/di';
-import { DataSource, In, Repository } from '@n8n/typeorm';
+import type { FavoriteResourceType } from '@MNI/api-types';
+import { Service } from '@MNI/di';
+import { DataSource, In, Repository } from '@MNI/typeorm';
 
 import { UserFavorite } from '../entities/user-favorite.entity';
 

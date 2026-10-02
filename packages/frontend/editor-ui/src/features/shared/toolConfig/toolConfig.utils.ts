@@ -1,5 +1,5 @@
-import type { INodeTypeDescription } from 'n8n-workflow';
-import { deepCopy, isINodePropertyOptions } from 'n8n-workflow';
+import type { INodeTypeDescription } from 'MNI-workflow';
+import { deepCopy, isINodePropertyOptions } from 'MNI-workflow';
 
 /**
  * Returns a copy of the description with the given option values removed from

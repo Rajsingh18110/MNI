@@ -1,4 +1,4 @@
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 
 interface ThreadLike {
 	title: string | null;

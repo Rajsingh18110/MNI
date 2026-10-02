@@ -31,8 +31,8 @@ export const postgres: Service<PostgresResult> = {
 		const builder = new PostgreSqlContainer(TEST_CONTAINER_IMAGES.postgres)
 			.withNetwork(network)
 			.withNetworkAliases(HOSTNAME)
-			.withDatabase('n8n_db')
-			.withUsername('n8n_user')
+			.withDatabase('MNI_db')
+			.withUsername('MNI_user')
 			.withPassword('test_password')
 			.withStartupTimeout(60000)
 			.withLabels({

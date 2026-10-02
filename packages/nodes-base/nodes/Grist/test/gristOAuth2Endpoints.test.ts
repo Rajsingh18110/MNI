@@ -1,5 +1,5 @@
-import type { INode, INodeParameters, INodeTypes } from 'n8n-workflow';
-import { Workflow } from 'n8n-workflow';
+import type { INode, INodeParameters, INodeTypes } from 'MNI-workflow';
+import { Workflow } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import { GristOAuth2Api } from '../../../credentials/GristOAuth2Api.credentials';

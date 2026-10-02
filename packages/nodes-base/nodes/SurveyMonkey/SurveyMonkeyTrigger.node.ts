@@ -9,8 +9,8 @@ import type {
 	INodeType,
 	INodeTypeDescription,
 	IWebhookResponseData,
-} from 'n8n-workflow';
-import { deepCopy, jsonParse, NodeConnectionTypes, NodeOperationError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { deepCopy, jsonParse, NodeConnectionTypes, NodeOperationError } from 'MNI-workflow';
 
 import { idsExist, surveyMonkeyApiRequest, surveyMonkeyRequestAllItems } from './GenericFunctions';
 import type { IAnswer, IChoice, IOther, IQuestion, IRow } from './Interfaces';
@@ -291,7 +291,7 @@ export class SurveyMonkeyTrigger implements INodeType {
 					},
 				},
 				default: true,
-				// eslint-disable-next-line n8n-nodes-base/node-param-description-boolean-without-whether
+				// eslint-disable-next-line MNI-nodes-base/node-param-description-boolean-without-whether
 				description:
 					'By default the webhook-data only contain the IDs. If this option gets activated, it will resolve the data automatically.',
 			},

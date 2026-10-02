@@ -24,8 +24,8 @@
  * - Page instantiation in composables (if they need to create pages)
  */
 
-import { AstRule } from '@n8n/rules-engine/ast';
-import type { AstProjectConfig } from '@n8n/rules-engine/ast';
+import { AstRule } from '@MNI/rules-engine/ast';
+import type { AstProjectConfig } from '@MNI/rules-engine/ast';
 import { SyntaxKind, type Project, type SourceFile } from 'ts-morph';
 
 import { getConfig, ruleAllows } from '../config.js';

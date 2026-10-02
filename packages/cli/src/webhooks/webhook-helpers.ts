@@ -1,11 +1,11 @@
-import { Logger } from '@n8n/backend-common';
-import { ExecutionsConfig, GlobalConfig } from '@n8n/config';
-import type { Project } from '@n8n/db';
-import { UserRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
-import { ensureError } from '@n8n/utils/errors/ensure-error';
-import { isRecord } from '@n8n/utils/is-record';
-import { createDeferredPromise, type IDeferredPromise } from '@n8n/utils/promise/deferred-promise';
+import { Logger } from '@MNI/backend-common';
+import { ExecutionsConfig, GlobalConfig } from '@MNI/config';
+import type { Project } from '@MNI/db';
+import { UserRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
+import { ensureError } from '@MNI/utils/errors/ensure-error';
+import { isRecord } from '@MNI/utils/is-record';
+import { createDeferredPromise, type IDeferredPromise } from '@MNI/utils/promise/deferred-promise';
 import type express from 'express';
 import merge from 'lodash/merge';
 import {
@@ -14,7 +14,7 @@ import {
 	establishExecutionContext,
 	ExecutionContextService,
 	WAITING_TOKEN_QUERY_PARAM,
-} from 'n8n-core';
+} from 'MNI-core';
 import type {
 	IBinaryData,
 	IDataObject,
@@ -37,7 +37,7 @@ import type {
 	WebhookResponseData,
 	IDestinationNode,
 	IUser,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import {
 	CHAT_TRIGGER_NODE_TYPE,
 	createRunExecutionData,
@@ -55,7 +55,7 @@ import {
 	WAIT_NODE_TYPE,
 	WEBHOOK_NODE_TYPE,
 	WorkflowConfigurationError,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import { Readable } from 'node:stream';
 import { finished } from 'stream/promises';
 
@@ -712,7 +712,7 @@ export function prepareExecutionData(
 		// The resuming node is flagged as disabled to stop the wait from starting over,
 		// so mark it to forward every output branch (not just the first). Otherwise items
 		// routed to outputs other than 0 are silently dropped.
-		// See https://github.com/n8n-io/n8n/issues/12823
+		// See https://github.com/MNI-io/MNI/issues/12823
 		const resumingNodeExecutionData = runExecutionData.executionData!.nodeExecutionStack[0];
 		resumingNodeExecutionData.data.main = webhookResultData.workflowData ?? [];
 		resumingNodeExecutionData.metadata = {

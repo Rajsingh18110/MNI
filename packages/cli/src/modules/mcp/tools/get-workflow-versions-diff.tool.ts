@@ -1,9 +1,9 @@
-import type { User } from '@n8n/db';
-import { ensureError } from '@n8n/utils/errors/ensure-error';
+import type { User } from '@MNI/db';
+import { ensureError } from '@MNI/utils/errors/ensure-error';
 import { diff } from 'json-diff';
 import omit from 'lodash/omit';
-import type { IConnections, INode, INodeConnectionsDiff } from 'n8n-workflow';
-import { compareConnections, compareWorkflowsNodes, NodeDiffStatus } from 'n8n-workflow';
+import type { IConnections, INode, INodeConnectionsDiff } from 'MNI-workflow';
+import { compareConnections, compareWorkflowsNodes, NodeDiffStatus } from 'MNI-workflow';
 import z from 'zod';
 
 import type { Telemetry } from '@/telemetry';

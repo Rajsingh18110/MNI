@@ -12,7 +12,7 @@ export const telegramBot = (overrides: Partial<TelegramUserFixture> = {}): Teleg
 	id: 777000,
 	is_bot: true,
 	first_name: 'MNI Agent',
-	username: 'n8n_agent_bot',
+	username: 'MNI_agent_bot',
 	...overrides,
 });
 

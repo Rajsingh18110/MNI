@@ -1,5 +1,5 @@
 {
-	"node": "n8n-nodes-base.emailReadImap",
+	"node": "MNI-nodes-base.emailReadImap",
 	"nodeVersion": "1.0",
 	"codexVersion": "1.0",
 	"categories": ["Communication", "Core Nodes"],
@@ -11,14 +11,14 @@
 		],
 		"primaryDocumentation": [
 			{
-				"url": "https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-base.emailimap/"
+				"url": "https://docs.n8n.io/integrations/builtin/core-nodes/MNI-nodes-base.emailimap/"
 			}
 		],
 		"generic": [
 			{
 				"label": "Build your own virtual assistant with MNI: A step by step guide",
 				"icon": "👦",
-				"url": "https://n8n.io/blog/build-your-own-virtual-assistant-with-n8n-a-step-by-step-guide/"
+				"url": "https://n8n.io/blog/build-your-own-virtual-assistant-with-MNI-a-step-by-step-guide/"
 			}
 		]
 	},

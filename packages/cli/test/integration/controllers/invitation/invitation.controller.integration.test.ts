@@ -4,17 +4,17 @@ import {
 	randomInvalidPassword,
 	randomName,
 	randomValidPassword,
-} from '@n8n/backend-test-utils';
-import type { User } from '@n8n/db';
+} from '@MNI/backend-test-utils';
+import type { User } from '@MNI/db';
 import {
 	GLOBAL_ADMIN_ROLE,
 	GLOBAL_MEMBER_ROLE,
 	ProjectRelationRepository,
 	UserRepository,
-} from '@n8n/db';
-import { Container } from '@n8n/di';
-import { PROJECT_OWNER_ROLE_SLUG } from '@n8n/permissions';
-import { Not } from '@n8n/typeorm';
+} from '@MNI/db';
+import { Container } from '@MNI/di';
+import { PROJECT_OWNER_ROLE_SLUG } from '@MNI/permissions';
+import { Not } from '@MNI/typeorm';
 
 import { EventService } from '@/events/event.service';
 import { ExternalHooks } from '@/external-hooks';

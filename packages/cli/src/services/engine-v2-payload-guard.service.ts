@@ -1,8 +1,8 @@
-import { Logger } from '@n8n/backend-common';
-import { Service } from '@n8n/di';
-import { BinaryDataService } from 'n8n-core';
-import type { IBinaryData, INodeExecutionData } from 'n8n-workflow';
-import { UserError } from 'n8n-workflow';
+import { Logger } from '@MNI/backend-common';
+import { Service } from '@MNI/di';
+import { BinaryDataService } from 'MNI-core';
+import type { IBinaryData, INodeExecutionData } from 'MNI-workflow';
+import { UserError } from 'MNI-workflow';
 
 /** Output slots as a trigger produces them; v1 uses `null` for a slot it has no data for. */
 type PayloadSlots = Array<INodeExecutionData[] | null | undefined>;

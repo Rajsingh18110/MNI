@@ -6,8 +6,8 @@
  * Results are cached per query to avoid redundant fetches.
  */
 
-import { Logger } from '@n8n/backend-common';
-import { Container } from '@n8n/di';
+import { Logger } from '@MNI/backend-common';
+import { Container } from '@MNI/di';
 
 const CONTEXT7_BASE_URL = 'https://context7.com/api/v2';
 const FETCH_TIMEOUT_MS = 10_000;

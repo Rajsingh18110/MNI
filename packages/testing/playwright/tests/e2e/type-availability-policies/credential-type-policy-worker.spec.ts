@@ -13,7 +13,7 @@ test.use({
 	capability: {
 		env: {
 			TEST_ISOLATION: 'credential-type-policies-queue',
-			N8N_ENABLED_MODULES: 'type-availability-policies',
+			MNI_ENABLED_MODULES: 'type-availability-policies',
 		},
 	},
 });

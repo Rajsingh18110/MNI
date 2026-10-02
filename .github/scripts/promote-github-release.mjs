@@ -10,7 +10,7 @@ import {
  * Promotes a GitHub release to latest
  *
  * Required env variables:
- *	- RELEASE_TAG	 - Release tag on git e.g. n8n@2.13.0
+ *	- RELEASE_TAG	 - Release tag on git e.g. MNI@2.13.0
  *
  * GitHub variables
  *	- GITHUB_TOKEN	-	 Used to authenticate to octokit - Can be overwritten for privileged access

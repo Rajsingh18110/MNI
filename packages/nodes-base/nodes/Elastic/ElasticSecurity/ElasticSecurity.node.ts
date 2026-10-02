@@ -6,8 +6,8 @@ import type {
 	INodePropertyOptions,
 	INodeType,
 	INodeTypeDescription,
-} from 'n8n-workflow';
-import { toPathSegment, NodeConnectionTypes, NodeOperationError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { toPathSegment, NodeConnectionTypes, NodeOperationError } from 'MNI-workflow';
 
 import {
 	caseCommentFields,

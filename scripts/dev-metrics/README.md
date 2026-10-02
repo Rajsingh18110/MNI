@@ -11,7 +11,7 @@ remembered. Today only `pnpm` is tracked; add another CLI in one line.
 ## How it works
 
 On opt-in we **replace the tracked binary with a shim in place**: the original
-is moved next to it as `<binary>.n8n-real`, and a shim takes its path. Every
+is moved next to it as `<binary>.MNI-real`, and a shim takes its path. Every
 invocation — interactive, non-interactive, or from an AI agent — hits the shim,
 which runs the real binary, times it, and reports usage. No shell function, no
 rc editing, no PATH-ordering dependence.
@@ -21,21 +21,21 @@ pnpm install
   └─ scripts/prepare.mjs
        └─ scripts/dev-metrics/setup.mjs   ← asks once (git email @n8n.io; prompts via /dev/tty)
             └─ on "yes": replace $(command -v pnpm) with a shim,
-                          save the original as pnpm.n8n-real
+                          save the original as pnpm.MNI-real
 
 pnpm <anything>
-  └─ pnpm shim → runs pnpm.n8n-real, then (backgrounded) →
-       track.mjs  (installed copy in ~/.n8n/dev/bin) → RudderStack (n8n-dev)
+  └─ pnpm shim → runs pnpm.MNI-real, then (backgrounded) →
+       track.mjs  (installed copy in ~/.MNI/dev/bin) → RudderStack (MNI-dev)
 ```
 
 - Replaced **in place**, so it works regardless of PATH order. If the binary's
   dir isn't writable it's skipped (rare — corepack pnpm lives in a user-writable
   dir).
-- `N8N_DEV_SHIM_ACTIVE` guards against double-counting nested calls (e.g.
+- `MNI_DEV_SHIM_ACTIVE` guards against double-counting nested calls (e.g.
   `turbo -> pnpm`) and the tracker's own `<bin> --version` probe.
-- The tracker (`track.mjs`) is **copied to `~/.n8n/dev/bin`** and run from there, so
+- The tracker (`track.mjs`) is **copied to `~/.MNI/dev/bin`** and run from there, so
   it's independent of which checkout (or none) you're in. Install only overwrites
-  the copy when the checkout's `// n8n-track-version` is newer, so the newest
+  the copy when the checkout's `// MNI-track-version` is newer, so the newest
   version wins and an older checkout can't downgrade it. It self-scopes: it checks
   the monorepo root from the command's cwd, so pnpm runs outside any MNI checkout
   send nothing. pnpm prompts via `/dev/tty` because it pipes lifecycle-script stdio.
@@ -43,11 +43,11 @@ pnpm <anything>
 | File | Role |
 | --- | --- |
 | `setup.mjs` | Consent prompt; replaces/restores binaries; `--status`/`--enable`/`--disable`/`--reset`. |
-| `shadow-shim.sh` | Shim template (versioned via `# n8n-shadow-shim-version`); rendered per binary with the binary name, saved-real path, and its dir baked in. |
-| `track.mjs` | Builds the anonymous event and POSTs it to RudderStack (fire-and-forget). Copied to `~/.n8n/dev/bin` on install; the shim runs that copy. |
+| `shadow-shim.sh` | Shim template (versioned via `# MNI-shadow-shim-version`); rendered per binary with the binary name, saved-real path, and its dir baked in. |
+| `track.mjs` | Builds the anonymous event and POSTs it to RudderStack (fire-and-forget). Copied to `~/.MNI/dev/bin` on install; the shim runs that copy. |
 | `capture-server.mjs` | Local capture stub for testing — logs every event instead of sending it upstream. |
 
-State lives in `~/.n8n/dev/dev-telemetry.json` (separate from MNI's secret `config`):
+State lives in `~/.MNI/dev/dev-telemetry.json` (separate from MNI's secret `config`):
 
 ```json
 { "schemaVersion": 1, "consent": "granted", "anonId": "<uuid>", "week": "2026-W26" }
@@ -115,7 +115,7 @@ The tracker sends its raw argv like any other binary; no per-binary code needed.
 
 Existing installs pick up the new binary on the next `pnpm install` (the granted
 bootstrap re-runs the install, which is idempotent). The shim itself is versioned
-via `# n8n-shadow-shim-version`; shims are re-rendered when their content changes
+via `# MNI-shadow-shim-version`; shims are re-rendered when their content changes
 (version bump or a moved real binary). Each binary's version is detected per
 command by the backgrounded tracker (`<bin> --version`), so it's always current.
 
@@ -126,17 +126,17 @@ pnpm dev-metrics:opt-in                         # opt in + replace binaries with
 pnpm dev-metrics:status                         # show consent + per-binary shim status
 pnpm dev-metrics:reset                          # restore binaries + wipe state -> first-run
 node scripts/dev-metrics/setup.mjs --disable    # opt out (records denied) + restore binaries
-export N8N_DEV_TELEMETRY=0                       # runtime kill switch (no sending)
+export MNI_DEV_TELEMETRY=0                       # runtime kill switch (no sending)
 ```
 
-Defaults point at the `n8n-dev` RudderStack workspace (its data plane + HTTP
+Defaults point at the `MNI-dev` RudderStack workspace (its data plane + HTTP
 source write key, baked into `track.mjs` — client-side keys, safe to ship).
-Override with `N8N_DEV_METRICS_RUDDERSTACK_URL` / `N8N_DEV_METRICS_RUDDERSTACK_KEY`
+Override with `MNI_DEV_METRICS_RUDDERSTACK_URL` / `MNI_DEV_METRICS_RUDDERSTACK_KEY`
 (e.g. point the URL at the local stub when testing).
 
 ## Testing locally
 
-`track.mjs` reads its data plane from `N8N_DEV_METRICS_RUDDERSTACK_URL`, so you
+`track.mjs` reads its data plane from `MNI_DEV_METRICS_RUDDERSTACK_URL`, so you
 can point it at the bundled stub instead of the real one and watch events arrive.
 
 ```bash
@@ -146,10 +146,10 @@ node scripts/dev-metrics/capture-server.mjs --port 9999 --out /tmp/events.jsonl
 
 ```bash
 # terminal B — drive the tracker directly (fastest; run from inside the repo)
-U=$(mktemp -d); mkdir -p "$U/.n8n/dev"; echo '{"consent":"granted"}' > "$U/.n8n/dev/dev-telemetry.json"
-N8N_USER_FOLDER="$U" \
-N8N_DEV_METRICS_RUDDERSTACK_URL=http://localhost:9999 \
-N8N_DEV_TRACK_BIN=pnpm N8N_DEV_TRACK_MS=1234 N8N_DEV_TRACK_CODE=0 N8N_DEV_TRACK_CWD="$PWD" \
+U=$(mktemp -d); mkdir -p "$U/.MNI/dev"; echo '{"consent":"granted"}' > "$U/.MNI/dev/dev-telemetry.json"
+MNI_USER_FOLDER="$U" \
+MNI_DEV_METRICS_RUDDERSTACK_URL=http://localhost:9999 \
+MNI_DEV_TRACK_BIN=pnpm MNI_DEV_TRACK_MS=1234 MNI_DEV_TRACK_CODE=0 MNI_DEV_TRACK_CWD="$PWD" \
 node scripts/dev-metrics/track.mjs run build   # argv after the script = the command's args
 ```
 
@@ -157,21 +157,21 @@ To exercise the **full path** (actually type `pnpm`), point the tracker at the
 stub, opt in, run a command, then restore:
 
 ```bash
-export N8N_DEV_METRICS_RUDDERSTACK_URL=http://localhost:9999
+export MNI_DEV_METRICS_RUDDERSTACK_URL=http://localhost:9999
 node scripts/dev-metrics/setup.mjs --enable   # replaces pnpm with the shim in place
 pnpm list          # → event appears in terminal A (wait ~1s; it's backgrounded)
 node scripts/dev-metrics/setup.mjs --reset    # restores the real pnpm
 ```
 
 Nothing is sent unless **consent is granted** and the command runs **inside an
-MNI checkout**; `N8N_DEV_TELEMETRY=0` disables sending entirely.
+MNI checkout**; `MNI_DEV_TELEMETRY=0` disables sending entirely.
 
 `sh scripts/dev-metrics/test/selfcheck.sh` runs the whole enable→run→reset flow
 against a fake binary in a temp dir (never touches your real pnpm).
 
 ## Querying
 
-Once the `n8n-dev` RudderStack source is wired to a destination (warehouse /
+Once the `MNI-dev` RudderStack source is wired to a destination (warehouse /
 analytics tool), query the `dev:cli_command` events there:
 
 - **Most-used commands:** derive a subcommand from `args` (e.g. its first token)

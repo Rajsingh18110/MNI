@@ -1,6 +1,6 @@
 import type { MockProxy } from 'vitest-mock-extended';
 import { mock } from 'vitest-mock-extended';
-import { type IExecuteFunctions } from 'n8n-workflow';
+import { type IExecuteFunctions } from 'MNI-workflow';
 
 import * as googleHelpers from '../../GenericFunctions';
 import { googleApiRequest } from '../GenericFunctions';

@@ -1,6 +1,6 @@
-import type { WorkflowHistory } from '@n8n/db';
-import { WorkflowHistoryRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
+import type { WorkflowHistory } from '@MNI/db';
+import { WorkflowHistoryRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
 import { v4 as uuid } from 'uuid';
 
 export async function createWorkflowHistoryItem(
@@ -18,7 +18,7 @@ export async function createWorkflowHistoryItem(
 					name: 'Start',
 					parameters: {},
 					position: [-20, 260],
-					type: 'n8n-nodes-base.manualTrigger',
+					type: 'MNI-nodes-base.manualTrigger',
 					typeVersion: 1,
 				},
 			],

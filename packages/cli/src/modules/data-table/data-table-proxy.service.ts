@@ -1,8 +1,8 @@
-import type { DataTableListOptions, ListDataTableQueryDto } from '@n8n/api-types';
-import { Logger } from '@n8n/backend-common';
-import type { User } from '@n8n/db';
-import { Service } from '@n8n/di';
-import { type Scope } from '@n8n/permissions';
+import type { DataTableListOptions, ListDataTableQueryDto } from '@MNI/api-types';
+import { Logger } from '@MNI/backend-common';
+import type { User } from '@MNI/db';
+import { Service } from '@MNI/di';
+import { type Scope } from '@MNI/permissions';
 import {
 	AddDataTableColumnOptions,
 	CreateDataTableOptions,
@@ -23,7 +23,7 @@ import {
 	UpsertDataTableRowOptions,
 	Workflow,
 	NodeOperationError,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { ForbiddenError } from '@/errors/response-errors/forbidden.error';
 import { userHasScopes } from '@/permissions.ee/check-access';
@@ -35,10 +35,10 @@ import { DataTableService } from './data-table.service';
 import { DataTableNotFoundError } from './errors/data-table-not-found.error';
 
 const ALLOWED_NODES = [
-	'n8n-nodes-base.dataTable',
-	'n8n-nodes-base.dataTableTool',
-	'n8n-nodes-base.evaluationTrigger',
-	'n8n-nodes-base.evaluation',
+	'MNI-nodes-base.dataTable',
+	'MNI-nodes-base.dataTableTool',
+	'MNI-nodes-base.evaluationTrigger',
+	'MNI-nodes-base.evaluation',
 ] as const;
 
 type AllowedNode = (typeof ALLOWED_NODES)[number];

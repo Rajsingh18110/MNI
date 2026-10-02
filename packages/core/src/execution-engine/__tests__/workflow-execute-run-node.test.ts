@@ -15,14 +15,14 @@ const ctor = <T extends object, A extends any[]>(impl: (...args: A) => T) =>
 	};
 
 // Mock all external dependencies first, before any imports
-vi.mock('@n8n/config', async (importActual) => ({
+vi.mock('@MNI/config', async (importActual) => ({
 	...(await importActual()),
 	GlobalConfig: vi.fn().mockImplementation(() => ({
 		sentry: { backendDsn: '' },
 	})),
 }));
 
-vi.mock('@n8n/di', () => ({
+vi.mock('@MNI/di', () => ({
 	Container: {
 		get: vi.fn(),
 	},
@@ -66,8 +66,8 @@ vi.mock('../../utils/convert-binary-data.ts', () => ({
 }));
 
 // Now import the real classes
-import { GlobalConfig } from '@n8n/config';
-import { Container } from '@n8n/di';
+import { GlobalConfig } from '@MNI/config';
+import { Container } from '@MNI/di';
 import type {
 	ExecutionBaseError,
 	IExecuteData,
@@ -77,14 +77,14 @@ import type {
 	ITaskDataConnections,
 	IWorkflowExecuteAdditionalData,
 	Workflow,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import {
 	NodeApiError,
 	NodeOperationError,
 	Node,
 	createRunExecutionData,
 	UnexpectedError,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import type { Mock, Mocked, MockedClass } from 'vitest';
 import { mock } from 'vitest-mock-extended';
 
@@ -265,7 +265,7 @@ describe('WorkflowExecute.runNode - Real Implementation', () => {
 			// Regression test for the waiting-webhook resume path: the resuming node
 			// is flagged disabled and its data.main holds the full set of output
 			// branches returned by webhook(). All branches must be forwarded, not
-			// just output 0. See https://github.com/n8n-io/n8n/issues/12823
+			// just output 0. See https://github.com/MNI-io/MNI/issues/12823
 			const disabledNode = { ...mockNode, disabled: true };
 			const outputBranches = [[], [{ json: { action: 'Decline' } }], []];
 			const executionData = {
@@ -358,7 +358,7 @@ describe('WorkflowExecute.runNode - Real Implementation', () => {
 			).rejects.toThrow('Generic error');
 		});
 
-		it('should create new Error with message and stack for non-n8n error types from previous execution', async () => {
+		it('should create new Error with message and stack for non-MNI error types from previous execution', async () => {
 			const originalError = {
 				name: 'SomeCustomError',
 				message: 'Custom error message',

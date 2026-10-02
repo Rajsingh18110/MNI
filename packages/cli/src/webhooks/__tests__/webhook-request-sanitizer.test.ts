@@ -31,7 +31,7 @@ describe('webhookRequestSanitizer', () => {
 	describe('when cookie is present in header', () => {
 		it('should remove cookie from cookie header', () => {
 			mockRequest.headers = {
-				cookie: 'n8n-auth=abc123; other-cookie=value; another-cookie=test',
+				cookie: 'MNI-auth=abc123; other-cookie=value; another-cookie=test',
 			};
 
 			sanitizeWebhookRequest(mockRequest);
@@ -41,7 +41,7 @@ describe('webhookRequestSanitizer', () => {
 
 		it('should remove cookie when it is the only cookie', () => {
 			mockRequest.headers = {
-				cookie: 'n8n-auth=abc123',
+				cookie: 'MNI-auth=abc123',
 			};
 
 			sanitizeWebhookRequest(mockRequest);
@@ -51,7 +51,7 @@ describe('webhookRequestSanitizer', () => {
 
 		it('should remove cookie when it is the last cookie', () => {
 			mockRequest.headers = {
-				cookie: 'other-cookie=value; n8n-auth=abc123',
+				cookie: 'other-cookie=value; MNI-auth=abc123',
 			};
 
 			sanitizeWebhookRequest(mockRequest);
@@ -61,7 +61,7 @@ describe('webhookRequestSanitizer', () => {
 
 		it('should remove cookie when it is in the middle', () => {
 			mockRequest.headers = {
-				cookie: 'first-cookie=value1; n8n-auth=abc123; last-cookie=value2',
+				cookie: 'first-cookie=value1; MNI-auth=abc123; last-cookie=value2',
 			};
 
 			sanitizeWebhookRequest(mockRequest);
@@ -69,9 +69,9 @@ describe('webhookRequestSanitizer', () => {
 			expect(mockRequest.headers.cookie).toBe('first-cookie=value1; last-cookie=value2');
 		});
 
-		it('should handle multiple n8n-auth cookies', () => {
+		it('should handle multiple MNI-auth cookies', () => {
 			mockRequest.headers = {
-				cookie: 'n8n-auth=abc123; other-cookie=value; n8n-auth=def456',
+				cookie: 'MNI-auth=abc123; other-cookie=value; MNI-auth=def456',
 			};
 
 			sanitizeWebhookRequest(mockRequest);
@@ -81,7 +81,7 @@ describe('webhookRequestSanitizer', () => {
 
 		it('should handle whitespace around cookies', () => {
 			mockRequest.headers = {
-				cookie: '  n8n-auth=abc123  ;  other-cookie=value  ',
+				cookie: '  MNI-auth=abc123  ;  other-cookie=value  ',
 			};
 
 			sanitizeWebhookRequest(mockRequest);
@@ -89,19 +89,19 @@ describe('webhookRequestSanitizer', () => {
 			expect(mockRequest.headers.cookie).toBe('other-cookie=value');
 		});
 
-		it('should not remove cookies that start with n8n-auth but are not exact match', () => {
+		it('should not remove cookies that start with MNI-auth but are not exact match', () => {
 			mockRequest.headers = {
-				cookie: 'n8n-auth-extra=value; other-cookie=value',
+				cookie: 'MNI-auth-extra=value; other-cookie=value',
 			};
 
 			sanitizeWebhookRequest(mockRequest);
 
-			expect(mockRequest.headers.cookie).toBe('n8n-auth-extra=value; other-cookie=value');
+			expect(mockRequest.headers.cookie).toBe('MNI-auth-extra=value; other-cookie=value');
 		});
 	});
 
 	describe('when cookie is not present in header', () => {
-		it('should not modify cookie header when n8n-auth is not present', () => {
+		it('should not modify cookie header when MNI-auth is not present', () => {
 			const originalCookie = 'other-cookie=value; another-cookie=test';
 			mockRequest.headers = {
 				cookie: originalCookie,
@@ -114,19 +114,19 @@ describe('webhookRequestSanitizer', () => {
 
 		it('should handle case sensitivity correctly', () => {
 			mockRequest.headers = {
-				cookie: 'N8N-AUTH=abc123; other-cookie=value',
+				cookie: 'MNI-AUTH=abc123; other-cookie=value',
 			};
 
 			sanitizeWebhookRequest(mockRequest);
 
-			expect(mockRequest.headers.cookie).toBe('N8N-AUTH=abc123; other-cookie=value');
+			expect(mockRequest.headers.cookie).toBe('MNI-AUTH=abc123; other-cookie=value');
 		});
 	});
 
 	describe('when cookie is present in parsed cookies', () => {
-		it('should remove n8n-auth from parsed cookies object', () => {
+		it('should remove MNI-auth from parsed cookies object', () => {
 			mockRequest.cookies = {
-				'n8n-auth': 'abc123',
+				'MNI-auth': 'abc123',
 				'other-cookie': 'value',
 			};
 
@@ -137,9 +137,9 @@ describe('webhookRequestSanitizer', () => {
 			});
 		});
 
-		it('should handle when n8n-auth is the only cookie in parsed cookies', () => {
+		it('should handle when MNI-auth is the only cookie in parsed cookies', () => {
 			mockRequest.cookies = {
-				'n8n-auth': 'abc123',
+				'MNI-auth': 'abc123',
 			};
 
 			sanitizeWebhookRequest(mockRequest);
@@ -147,7 +147,7 @@ describe('webhookRequestSanitizer', () => {
 			expect(mockRequest.cookies).toEqual({});
 		});
 
-		it('should not modify other cookies when n8n-auth is not present in parsed cookies', () => {
+		it('should not modify other cookies when MNI-auth is not present in parsed cookies', () => {
 			const originalCookies = {
 				'other-cookie': 'value',
 				'another-cookie': 'test',
@@ -160,13 +160,13 @@ describe('webhookRequestSanitizer', () => {
 		});
 	});
 
-	describe('when both header and parsed cookies contain n8n-auth', () => {
-		it('should remove n8n-auth from both header and parsed cookies', () => {
+	describe('when both header and parsed cookies contain MNI-auth', () => {
+		it('should remove MNI-auth from both header and parsed cookies', () => {
 			mockRequest.headers = {
-				cookie: 'n8n-auth=abc123; other-cookie=value',
+				cookie: 'MNI-auth=abc123; other-cookie=value',
 			};
 			mockRequest.cookies = {
-				'n8n-auth': 'abc123',
+				'MNI-auth': 'abc123',
 				'other-cookie': 'value',
 			};
 
@@ -212,7 +212,7 @@ describe('webhookRequestSanitizer', () => {
 
 		it('should handle malformed cookies without equals sign', () => {
 			mockRequest.headers = {
-				cookie: 'n8n-auth; other-cookie=value',
+				cookie: 'MNI-auth; other-cookie=value',
 			};
 
 			sanitizeWebhookRequest(mockRequest);
@@ -221,10 +221,10 @@ describe('webhookRequestSanitizer', () => {
 		});
 	});
 
-	describe('when n8n-browserId is present in header', () => {
-		it('should remove n8n-browserId from cookie header', () => {
+	describe('when MNI-browserId is present in header', () => {
+		it('should remove MNI-browserId from cookie header', () => {
 			mockRequest.headers = {
-				cookie: 'n8n-browserId=abc123; other-cookie=value',
+				cookie: 'MNI-browserId=abc123; other-cookie=value',
 			};
 
 			sanitizeWebhookRequest(mockRequest);
@@ -232,9 +232,9 @@ describe('webhookRequestSanitizer', () => {
 			expect(mockRequest.headers.cookie).toBe('other-cookie=value');
 		});
 
-		it('should remove n8n-browserId from parsed cookies', () => {
+		it('should remove MNI-browserId from parsed cookies', () => {
 			mockRequest.cookies = {
-				'n8n-browserId': 'abc123',
+				'MNI-browserId': 'abc123',
 				'other-cookie': 'value',
 			};
 
@@ -245,9 +245,9 @@ describe('webhookRequestSanitizer', () => {
 			});
 		});
 
-		it('should remove both n8n-auth and n8n-browserId from cookie header', () => {
+		it('should remove both MNI-auth and MNI-browserId from cookie header', () => {
 			mockRequest.headers = {
-				cookie: 'n8n-auth=abc123; n8n-browserId=def456; other-cookie=value',
+				cookie: 'MNI-auth=abc123; MNI-browserId=def456; other-cookie=value',
 			};
 
 			sanitizeWebhookRequest(mockRequest);
@@ -255,10 +255,10 @@ describe('webhookRequestSanitizer', () => {
 			expect(mockRequest.headers.cookie).toBe('other-cookie=value');
 		});
 
-		it('should remove both n8n-auth and n8n-browserId from parsed cookies', () => {
+		it('should remove both MNI-auth and MNI-browserId from parsed cookies', () => {
 			mockRequest.cookies = {
-				'n8n-auth': 'abc123',
-				'n8n-browserId': 'def456',
+				'MNI-auth': 'abc123',
+				'MNI-browserId': 'def456',
 				'other-cookie': 'value',
 			};
 
@@ -275,9 +275,9 @@ describe('webhookRequestSanitizer', () => {
 	// names embed the workflow or execution they were minted for, hence the suffixes.
 	describe('when the form cookies are present', () => {
 		const formCookieNames = [
-			'n8n-form-auth-wf-a-workflow-id',
-			'n8n-form-auth-ex-12345',
-			'n8n-form-oauth',
+			'MNI-form-auth-wf-a-workflow-id',
+			'MNI-form-auth-ex-12345',
+			'MNI-form-oauth',
 		];
 
 		it.each(formCookieNames)('should remove %s from the header', (name) => {
@@ -305,31 +305,31 @@ describe('webhookRequestSanitizer', () => {
 
 		it('should leave an unrelated cookie that merely begins with the prefix', () => {
 			mockRequest.headers = {
-				cookie: 'n8n-form-authentic=abc123; n8n-form-auth-ex-12345=def',
+				cookie: 'MNI-form-authentic=abc123; MNI-form-auth-ex-12345=def',
 			};
 			mockRequest.cookies = {
-				'n8n-form-authentic': 'abc123',
-				'n8n-form-auth-ex-12345': 'def',
+				'MNI-form-authentic': 'abc123',
+				'MNI-form-auth-ex-12345': 'def',
 			};
 
 			sanitizeWebhookRequest(mockRequest);
 
-			expect(mockRequest.headers.cookie).toBe('n8n-form-authentic=abc123');
-			expect(mockRequest.cookies).toEqual({ 'n8n-form-authentic': 'abc123' });
+			expect(mockRequest.headers.cookie).toBe('MNI-form-authentic=abc123');
+			expect(mockRequest.cookies).toEqual({ 'MNI-form-authentic': 'abc123' });
 		});
 
 		it('should remove every disallowed cookie in one pass', () => {
 			mockRequest.headers = {
 				cookie:
-					'n8n-auth=a; n8n-browserId=b; n8n-form-auth-ex-12345=c; n8n-form-oauth=d; n8n-chat-oauth=e; n8n-chat-oauth-refresh=f; other-cookie=value',
+					'MNI-auth=a; MNI-browserId=b; MNI-form-auth-ex-12345=c; MNI-form-oauth=d; MNI-chat-oauth=e; MNI-chat-oauth-refresh=f; other-cookie=value',
 			};
 			mockRequest.cookies = {
-				'n8n-auth': 'a',
-				'n8n-browserId': 'b',
-				'n8n-form-auth-ex-12345': 'c',
-				'n8n-form-oauth': 'd',
-				'n8n-chat-oauth': 'e',
-				'n8n-chat-oauth-refresh': 'f',
+				'MNI-auth': 'a',
+				'MNI-browserId': 'b',
+				'MNI-form-auth-ex-12345': 'c',
+				'MNI-form-oauth': 'd',
+				'MNI-chat-oauth': 'e',
+				'MNI-chat-oauth-refresh': 'f',
 				'other-cookie': 'value',
 			};
 
@@ -341,7 +341,7 @@ describe('webhookRequestSanitizer', () => {
 	});
 
 	describe('cookies MNI issues for its own flows', () => {
-		const N8N_ISSUED_COOKIES = [
+		const MNI_ISSUED_COOKIES = [
 			OAUTH_SESSION_COOKIE_NAME,
 			OAUTH_BINDING_COOKIE_NAME,
 			OIDC_ID_TOKEN_COOKIE_NAME,
@@ -349,7 +349,7 @@ describe('webhookRequestSanitizer', () => {
 			OIDC_NONCE_COOKIE_NAME,
 		];
 
-		it.each(N8N_ISSUED_COOKIES)('should remove %s from the cookie header', (name) => {
+		it.each(MNI_ISSUED_COOKIES)('should remove %s from the cookie header', (name) => {
 			mockRequest.headers = { cookie: `${name}=abc123; other-cookie=value` };
 
 			sanitizeWebhookRequest(mockRequest);
@@ -357,7 +357,7 @@ describe('webhookRequestSanitizer', () => {
 			expect(mockRequest.headers.cookie).toBe('other-cookie=value');
 		});
 
-		it.each(N8N_ISSUED_COOKIES)('should remove %s from the parsed cookies', (name) => {
+		it.each(MNI_ISSUED_COOKIES)('should remove %s from the parsed cookies', (name) => {
 			mockRequest.cookies = { [name]: 'abc123', 'other-cookie': 'value' };
 
 			sanitizeWebhookRequest(mockRequest);
@@ -370,7 +370,7 @@ describe('webhookRequestSanitizer', () => {
 	// still receives these. Every other webhook must not see them — the `-refresh` one
 	// carries a 30-day credential.
 	describe('when the chat cookies are present', () => {
-		const chatCookieNames = ['n8n-chat-oauth', 'n8n-chat-oauth-refresh'];
+		const chatCookieNames = ['MNI-chat-oauth', 'MNI-chat-oauth-refresh'];
 
 		it.each(chatCookieNames)('should remove %s from the header', (name) => {
 			mockRequest.headers = {

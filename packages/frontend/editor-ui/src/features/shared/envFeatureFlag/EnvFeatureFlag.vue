@@ -4,7 +4,7 @@ import { useEnvFeatureFlag } from './useEnvFeatureFlag';
 
 /*
   EnvFeatureFlag conditionally renders content based on environment variable based feature flags
-  Environment variable feature flags are defined in form of `N8N_ENV_FEAT_<FEATURE_NAME>`
+  Environment variable feature flags are defined in form of `MNI_ENV_FEAT_<FEATURE_NAME>`
   The component's name property should be in uppercase and match the environment variable name without the prefix
   Usage example: <EnvFeatureFlag name="FEATURE_NAME"> Feature content </EnvFeatureFlag>
  */

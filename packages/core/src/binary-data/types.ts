@@ -1,4 +1,4 @@
-import type { BlobMetadata, PreWriteBlobMetadata } from '@n8n/blob-storage';
+import type { BlobMetadata, PreWriteBlobMetadata } from '@MNI/blob-storage';
 import type { Readable } from 'stream';
 
 import type { BINARY_DATA_MODES } from './binary-data.config';

@@ -31,27 +31,27 @@ describe('evaluateType', () => {
 					{
 						id: 'deny-execute-command',
 						action: 'deny',
-						selector: { kind: 'name', value: 'n8n-nodes-base.executeCommand' },
+						selector: { kind: 'name', value: 'MNI-nodes-base.executeCommand' },
 					},
 					{
 						id: 'deny-code',
 						action: 'deny',
-						selector: { kind: 'name', value: 'n8n-nodes-base.code' },
+						selector: { kind: 'name', value: 'MNI-nodes-base.code' },
 					},
 					{
 						id: 'allow-package',
 						action: 'allow',
-						selector: { kind: 'package', value: 'n8n-nodes-base' },
+						selector: { kind: 'package', value: 'MNI-nodes-base' },
 					},
 				],
 			}),
 		];
 
-		expect(evaluateType(attachments, 'deny', type('n8n-nodes-base.code'))).toEqual({
+		expect(evaluateType(attachments, 'deny', type('MNI-nodes-base.code'))).toEqual({
 			action: 'deny',
 			matchedRuleId: 'deny-code',
 		});
-		expect(evaluateType(attachments, 'deny', type('n8n-nodes-base.slack'))).toEqual({
+		expect(evaluateType(attachments, 'deny', type('MNI-nodes-base.slack'))).toEqual({
 			action: 'allow',
 			matchedRuleId: 'allow-package',
 		});
@@ -63,12 +63,12 @@ describe('evaluateType', () => {
 			const attachments = [
 				attachment({
 					rules: [
-						{ id: 'r1', action: 'deny', selector: { kind: 'name', value: 'n8n-nodes-base.slack' } },
+						{ id: 'r1', action: 'deny', selector: { kind: 'name', value: 'MNI-nodes-base.slack' } },
 					],
 				}),
 			];
 
-			expect(evaluateType(attachments, defaultAction, type('n8n-nodes-base.gmail'))).toEqual({
+			expect(evaluateType(attachments, defaultAction, type('MNI-nodes-base.gmail'))).toEqual({
 				action: defaultAction,
 				matchedRuleId: null,
 			});
@@ -83,22 +83,22 @@ describe('evaluateType', () => {
 						{
 							id: 'r1',
 							action: 'allow',
-							selector: { kind: 'name', value: 'n8n-nodes-base.slack' },
+							selector: { kind: 'name', value: 'MNI-nodes-base.slack' },
 						},
 					],
 				}),
 			],
 			'allow',
-			type('n8n-nodes-base.slack'),
+			type('MNI-nodes-base.slack'),
 		);
-		const defaultAllow = evaluateType([], 'allow', type('n8n-nodes-base.slack'));
+		const defaultAllow = evaluateType([], 'allow', type('MNI-nodes-base.slack'));
 
 		expect(explicitAllow).toEqual({ action: 'allow', matchedRuleId: 'r1' });
 		expect(defaultAllow).toEqual({ action: 'allow', matchedRuleId: null });
 	});
 
 	it('returns the default action with no attachments at all', () => {
-		expect(evaluateType([], 'deny', type('n8n-nodes-base.slack'))).toEqual({
+		expect(evaluateType([], 'deny', type('MNI-nodes-base.slack'))).toEqual({
 			action: 'deny',
 			matchedRuleId: null,
 		});
@@ -113,7 +113,7 @@ describe('evaluateType', () => {
 					{
 						id: 'normal-rule',
 						action: 'allow',
-						selector: { kind: 'name', value: 'n8n-nodes-base.slack' },
+						selector: { kind: 'name', value: 'MNI-nodes-base.slack' },
 					},
 				],
 			}),
@@ -124,13 +124,13 @@ describe('evaluateType', () => {
 					{
 						id: 'floor-rule',
 						action: 'deny',
-						selector: { kind: 'name', value: 'n8n-nodes-base.slack' },
+						selector: { kind: 'name', value: 'MNI-nodes-base.slack' },
 					},
 				],
 			}),
 		];
 
-		expect(evaluateType(attachments, 'allow', type('n8n-nodes-base.slack'))).toEqual({
+		expect(evaluateType(attachments, 'allow', type('MNI-nodes-base.slack'))).toEqual({
 			action: 'deny',
 			matchedRuleId: 'floor-rule',
 		});
@@ -144,7 +144,7 @@ describe('evaluateType', () => {
 					{
 						id: 'later',
 						action: 'allow',
-						selector: { kind: 'name', value: 'n8n-nodes-base.slack' },
+						selector: { kind: 'name', value: 'MNI-nodes-base.slack' },
 					},
 				],
 			}),
@@ -154,13 +154,13 @@ describe('evaluateType', () => {
 					{
 						id: 'earlier',
 						action: 'deny',
-						selector: { kind: 'name', value: 'n8n-nodes-base.slack' },
+						selector: { kind: 'name', value: 'MNI-nodes-base.slack' },
 					},
 				],
 			}),
 		];
 
-		expect(evaluateType(attachments, 'allow', type('n8n-nodes-base.slack'))).toEqual({
+		expect(evaluateType(attachments, 'allow', type('MNI-nodes-base.slack'))).toEqual({
 			action: 'deny',
 			matchedRuleId: 'earlier',
 		});
@@ -171,18 +171,18 @@ describe('evaluateType', () => {
 			attachment({
 				priority: 1,
 				rules: [
-					{ id: 'r1', action: 'deny', selector: { kind: 'name', value: 'n8n-nodes-base.gmail' } },
+					{ id: 'r1', action: 'deny', selector: { kind: 'name', value: 'MNI-nodes-base.gmail' } },
 				],
 			}),
 			attachment({
 				priority: 2,
 				rules: [
-					{ id: 'r2', action: 'allow', selector: { kind: 'name', value: 'n8n-nodes-base.slack' } },
+					{ id: 'r2', action: 'allow', selector: { kind: 'name', value: 'MNI-nodes-base.slack' } },
 				],
 			}),
 		];
 
-		expect(evaluateType(attachments, 'deny', type('n8n-nodes-base.slack'))).toEqual({
+		expect(evaluateType(attachments, 'deny', type('MNI-nodes-base.slack'))).toEqual({
 			action: 'allow',
 			matchedRuleId: 'r2',
 		});
@@ -193,20 +193,20 @@ describe('evaluateType', () => {
 			const attachments = [
 				attachment({
 					rules: [
-						{ id: 'r1', action: 'deny', selector: { kind: 'name', value: 'n8n-nodes-base.slack' } },
+						{ id: 'r1', action: 'deny', selector: { kind: 'name', value: 'MNI-nodes-base.slack' } },
 					],
 				}),
 			];
 
-			expect(evaluateType(attachments, 'allow', type('n8n-nodes-base.slackTrigger'))).toEqual({
+			expect(evaluateType(attachments, 'allow', type('MNI-nodes-base.slackTrigger'))).toEqual({
 				action: 'allow',
 				matchedRuleId: null,
 			});
 		});
 
 		describe('tool variants', () => {
-			const GMAIL = 'n8n-nodes-base.gmail';
-			const GMAIL_TOOL = 'n8n-nodes-base.gmailTool';
+			const GMAIL = 'MNI-nodes-base.gmail';
+			const GMAIL_TOOL = 'MNI-nodes-base.gmailTool';
 			const denyGmail: PolicyRule = {
 				id: 'deny-gmail',
 				action: 'deny',
@@ -254,7 +254,7 @@ describe('evaluateType', () => {
 });
 
 describe('evaluateComposedType', () => {
-	const TYPE = 'n8n-nodes-base.slack';
+	const TYPE = 'MNI-nodes-base.slack';
 	const allowRule = (id: string) =>
 		attachment({ rules: [{ id, action: 'allow', selector: { kind: 'name', value: TYPE } }] });
 	const denyRule = (id: string) =>
@@ -374,9 +374,9 @@ describe('partitionTypesByAction', () => {
 	});
 
 	const TYPES = [
-		'n8n-nodes-base.code',
-		'n8n-nodes-base.executeCommand',
-		'@acme/n8n-nodes-acme.thing',
+		'MNI-nodes-base.code',
+		'MNI-nodes-base.executeCommand',
+		'@acme/MNI-nodes-acme.thing',
 	];
 	const POLICED_TYPES = TYPES.map((name) => type(name));
 
@@ -389,49 +389,49 @@ describe('partitionTypesByAction', () => {
 	});
 
 	it('expands a package selector across every type in that package', () => {
-		const rules = [rule('r1', 'deny', { kind: 'package', value: 'n8n-nodes-base' })];
+		const rules = [rule('r1', 'deny', { kind: 'package', value: 'MNI-nodes-base' })];
 
 		expect(partitionTypesByAction(rules, 'allow', POLICED_TYPES)).toEqual({
-			allow: ['@acme/n8n-nodes-acme.thing'],
-			deny: ['n8n-nodes-base.code', 'n8n-nodes-base.executeCommand'],
+			allow: ['@acme/MNI-nodes-acme.thing'],
+			deny: ['MNI-nodes-base.code', 'MNI-nodes-base.executeCommand'],
 			delegate: [],
 		});
 	});
 
 	it('keeps first-match order, so an earlier name rule survives a later package rule', () => {
 		const rules = [
-			rule('r1', 'allow', { kind: 'name', value: 'n8n-nodes-base.code' }),
-			rule('r2', 'deny', { kind: 'package', value: 'n8n-nodes-base' }),
+			rule('r1', 'allow', { kind: 'name', value: 'MNI-nodes-base.code' }),
+			rule('r2', 'deny', { kind: 'package', value: 'MNI-nodes-base' }),
 		];
 
 		expect(partitionTypesByAction(rules, 'allow', POLICED_TYPES)).toEqual({
-			allow: ['n8n-nodes-base.code', '@acme/n8n-nodes-acme.thing'],
-			deny: ['n8n-nodes-base.executeCommand'],
+			allow: ['MNI-nodes-base.code', '@acme/MNI-nodes-acme.thing'],
+			deny: ['MNI-nodes-base.executeCommand'],
 			delegate: [],
 		});
 	});
 
 	it('separates delegated types from allowed and denied ones', () => {
-		const rules = [rule('r1', 'delegate', { kind: 'name', value: 'n8n-nodes-base.code' })];
+		const rules = [rule('r1', 'delegate', { kind: 'name', value: 'MNI-nodes-base.code' })];
 
 		expect(partitionTypesByAction(rules, 'allow', POLICED_TYPES)).toEqual({
-			allow: ['n8n-nodes-base.executeCommand', '@acme/n8n-nodes-acme.thing'],
+			allow: ['MNI-nodes-base.executeCommand', '@acme/MNI-nodes-acme.thing'],
 			deny: [],
-			delegate: ['n8n-nodes-base.code'],
+			delegate: ['MNI-nodes-base.code'],
 		});
 	});
 
 	it('buckets a tool variant under its own name when a base-node rule decides it', () => {
-		const rules = [rule('r1', 'deny', { kind: 'name', value: 'n8n-nodes-base.code' })];
+		const rules = [rule('r1', 'deny', { kind: 'name', value: 'MNI-nodes-base.code' })];
 		const types = [
-			type('n8n-nodes-base.code'),
-			type('n8n-nodes-base.codeTool', 'n8n-nodes-base.code'),
-			type('n8n-nodes-base.executeCommand'),
+			type('MNI-nodes-base.code'),
+			type('MNI-nodes-base.codeTool', 'MNI-nodes-base.code'),
+			type('MNI-nodes-base.executeCommand'),
 		];
 
 		expect(partitionTypesByAction(rules, 'allow', types)).toEqual({
-			allow: ['n8n-nodes-base.executeCommand'],
-			deny: ['n8n-nodes-base.code', 'n8n-nodes-base.codeTool'],
+			allow: ['MNI-nodes-base.executeCommand'],
+			deny: ['MNI-nodes-base.code', 'MNI-nodes-base.codeTool'],
 			delegate: [],
 		});
 	});

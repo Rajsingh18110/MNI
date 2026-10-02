@@ -1,4 +1,4 @@
-import type { IDataObject, IHttpRequestMethods, IHttpRequestOptions } from 'n8n-workflow';
+import type { IDataObject, IHttpRequestMethods, IHttpRequestOptions } from 'MNI-workflow';
 
 import { SERVICE_PRINCIPAL_AUTH, type ExcelSharePointCredentialType } from '../helpers/constants';
 import { buildRequestOptions } from '../helpers/converters';

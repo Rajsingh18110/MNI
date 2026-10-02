@@ -7,7 +7,7 @@ import {
 	SUB_AGENT_MAX_CHILDREN_DEFAULT,
 	SUB_AGENT_MAX_CHILDREN_MAX,
 	SUB_AGENT_MAX_CHILDREN_MIN,
-} from '@n8n/api-types';
+} from '@MNI/api-types';
 
 import type { AgentJsonConfig } from '../types';
 import type { AgentModelSelection } from '../model-providers';
@@ -30,7 +30,7 @@ const agentModelSelectorCredentialHandlers = new Map<
 	(provider: string, credentialId: string | null) => void
 >();
 
-vi.mock('@n8n/i18n', () => ({
+vi.mock('@MNI/i18n', () => ({
 	useI18n: () => ({
 		baseText: (key: string) =>
 			({
@@ -58,7 +58,7 @@ vi.mock('@n8n/i18n', () => ({
 }));
 
 vi.mock('../composables/useModelCatalog', async () => {
-	const { AI_GATEWAY_MANAGED_TAG: managedTag } = await import('@n8n/api-types');
+	const { AI_GATEWAY_MANAGED_TAG: managedTag } = await import('@MNI/api-types');
 	const anthropicModel = (model: string, name: string) => ({
 		provider: 'anthropic',
 		model,
@@ -107,11 +107,11 @@ vi.mock('../composables/useAgentModelCredentials', () => ({
 	}),
 }));
 
-vi.mock('@n8n/stores/users.store', () => ({
+vi.mock('@MNI/stores/users.store', () => ({
 	useUsersStore: () => ({ currentUserId: 'user-1' }),
 }));
 
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: () => ({ showError: showErrorMock }),
 }));
 
@@ -139,7 +139,7 @@ vi.mock('../components/AgentModelSelector.vue', () => ({
 	},
 }));
 
-vi.mock('@n8n/design-system', () => ({
+vi.mock('@MNI/design-system', () => ({
 	N8nIconButton: {
 		template: '<button :disabled="disabled" v-bind="$attrs"><slot /></button>',
 		props: ['disabled', 'ariaLabel', 'icon', 'variant', 'size', 'iconSize'],

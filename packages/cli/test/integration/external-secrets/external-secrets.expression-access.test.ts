@@ -7,19 +7,19 @@
  * that secret. The secret must not appear in the execution output.
  */
 
-import { LicenseState } from '@n8n/backend-common';
-import { createWorkflow, mockInstance, testDb } from '@n8n/backend-test-utils';
-import { ExecutionRepository, type IWorkflowDb } from '@n8n/db';
-import { Container } from '@n8n/di';
-import { ExternalSecretsProxy } from 'n8n-core';
+import { LicenseState } from '@MNI/backend-common';
+import { createWorkflow, mockInstance, testDb } from '@MNI/backend-test-utils';
+import { ExecutionRepository, type IWorkflowDb } from '@MNI/db';
+import { Container } from '@MNI/di';
+import { ExternalSecretsProxy } from 'MNI-core';
 import type {
 	ICredentialType,
 	IExecuteFunctions,
 	INodeExecutionData,
 	INodeType,
 	INodeTypeData,
-} from 'n8n-workflow';
-import { isTerminalExecutionStatus, NodeConnectionTypes } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { isTerminalExecutionStatus, NodeConnectionTypes } from 'MNI-workflow';
 
 import { LoadNodesAndCredentials } from '@/load-nodes-and-credentials';
 import { WorkflowExecutionService } from '@/workflows/workflow-execution.service';
@@ -38,7 +38,7 @@ const licenseMock = mockInstance(LicenseState);
 licenseMock.isLicensed.mockReturnValue(true);
 
 const CREDENTIAL_TYPE_NAME = 'secretsTestCredential';
-const ECHO_NODE_TYPE = 'n8n-nodes-base.credentialSecretsEcho';
+const ECHO_NODE_TYPE = 'MNI-nodes-base.credentialSecretsEcho';
 
 const secretsTestCredential: ICredentialType = {
 	name: CREDENTIAL_TYPE_NAME,
@@ -95,7 +95,7 @@ describe('External secrets — expression access', () => {
 		await testDb.init();
 
 		const nodeTypes: INodeTypeData = {
-			...loadNodesFromDist(['n8n-nodes-base.manualTrigger', 'n8n-nodes-base.set']),
+			...loadNodesFromDist(['MNI-nodes-base.manualTrigger', 'MNI-nodes-base.set']),
 			[ECHO_NODE_TYPE]: { type: credentialSecretsEchoNode, sourcePath: '' },
 		};
 		await utils.initNodeTypes(nodeTypes);
@@ -151,14 +151,14 @@ describe('External secrets — expression access', () => {
 				nodes: [
 					{
 						name: 'Trigger',
-						type: 'n8n-nodes-base.manualTrigger',
+						type: 'MNI-nodes-base.manualTrigger',
 						typeVersion: 1,
 						position: [0, 0],
 						parameters: {},
 					},
 					{
 						name: 'Edit Fields',
-						type: 'n8n-nodes-base.set',
+						type: 'MNI-nodes-base.set',
 						typeVersion: 3.4,
 						position: [200, 0],
 						parameters: {
@@ -237,7 +237,7 @@ describe('External secrets — expression access', () => {
 				nodes: [
 					{
 						name: 'Trigger',
-						type: 'n8n-nodes-base.manualTrigger',
+						type: 'MNI-nodes-base.manualTrigger',
 						typeVersion: 1,
 						position: [0, 0],
 						parameters: {},

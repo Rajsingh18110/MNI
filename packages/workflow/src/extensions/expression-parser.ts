@@ -22,7 +22,7 @@ export const escapeCode = (text: string): string => {
 };
 
 export const splitExpression = (expression: string): ExpressionChunk[] => {
-	// Mirror @n8n/tournament's splitExpression: always emit an initial text
+	// Mirror @MNI/tournament's splitExpression: always emit an initial text
 	// chunk so downstream consumers can rely on chunks[0] being defined.
 	if (expression === '') {
 		return [{ type: 'text', text: '' }];

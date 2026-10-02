@@ -3,8 +3,8 @@ import type {
 	InstanceAiAgentNode,
 	InstanceAiMessage,
 	InstanceAiTimelineEntry,
-} from '@n8n/api-types';
-import type { BaseTextKey } from '@n8n/i18n';
+} from '@MNI/api-types';
+import type { BaseTextKey } from '@MNI/i18n';
 
 const AGENT_ACTIVITY_KEYS: Record<InstanceAiAgentActivity, BaseTextKey> = {
 	creating: 'instanceAi.agentActivity.creating',

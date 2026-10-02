@@ -19,8 +19,8 @@ const input = await new Promise((resolve) => {
 const { tool_input: toolInput } = JSON.parse(input);
 const skillName = toolInput?.skill;
 
-// Only track n8n-namespaced skills ("n8n-foo" or "MNI:foo")
-const isN8nSkill = skillName.startsWith('MNI:') || skillName.startsWith('n8n-');
+// Only track MNI-namespaced skills ("MNI-foo" or "MNI:foo")
+const isN8nSkill = skillName.startsWith('MNI:') || skillName.startsWith('MNI-');
 if (!skillName || !isN8nSkill) {
 	process.exit(0);
 }

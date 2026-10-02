@@ -4,11 +4,11 @@ import { useMcpJsonNudgeEligibility } from '@/experiments/mcpJsonNudge/composabl
 import type { McpJsonNudgeAction } from '@/experiments/mcpJsonNudge/composables/useMcpJsonNudgeTrigger';
 import McpClientLogoCards from '@/features/ai/mcpAccess/components/McpClientLogoCards.vue';
 import { MCP_SETTINGS_VIEW } from '@/features/ai/mcpAccess/mcp.constants';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
-import { N8nButton, N8nCheckbox, N8nText } from '@n8n/design-system';
-import { type BaseTextKey, useI18n } from '@n8n/i18n';
-import { TELEMETRY_EVENT } from '@n8n/telemetry';
-import { createEventBus } from '@n8n/utils/event-bus';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
+import { N8nButton, N8nCheckbox, N8nText } from '@MNI/design-system';
+import { type BaseTextKey, useI18n } from '@MNI/i18n';
+import { TELEMETRY_EVENT } from '@MNI/telemetry';
+import { createEventBus } from '@MNI/utils/event-bus';
 import { computed, onBeforeUnmount, onMounted, ref } from 'vue';
 import { useRouter } from 'vue-router';
 import {

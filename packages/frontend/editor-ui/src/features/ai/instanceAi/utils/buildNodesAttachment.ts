@@ -1,10 +1,10 @@
-import type { IConnections } from 'n8n-workflow';
-import { mapConnectionsByDestination, getChildNodes, getParentNodes } from 'n8n-workflow';
+import type { IConnections } from 'MNI-workflow';
+import { mapConnectionsByDestination, getChildNodes, getParentNodes } from 'MNI-workflow';
 import {
 	MAX_INSTANCE_AI_NODES_PER_SET,
 	type InstanceAiAttachment,
 	type InstanceAiNodesAttachment,
-} from '@n8n/api-types';
+} from '@MNI/api-types';
 
 export interface NodeContextNode {
 	id: string;

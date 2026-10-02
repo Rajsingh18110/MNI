@@ -1,5 +1,5 @@
-import { ModuleMetadata } from '@n8n/decorators';
-import { Container } from '@n8n/di';
+import { ModuleMetadata } from '@MNI/decorators';
+import { Container } from '@MNI/di';
 
 import '../sso-oidc/sso-oidc.module';
 import '../sso-saml/sso-saml.module';

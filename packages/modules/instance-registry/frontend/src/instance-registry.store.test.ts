@@ -1,4 +1,4 @@
-import type { ClusterInfoResponse } from '@n8n/api-types';
+import type { ClusterInfoResponse } from '@MNI/api-types';
 import { setActivePinia, createPinia } from 'pinia';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 
@@ -8,11 +8,11 @@ const mocks = vi.hoisted(() => ({
 	getClusterInfo: vi.fn(),
 }));
 
-vi.mock('@n8n/rest-api-client/api/instance-registry', () => ({
+vi.mock('@MNI/rest-api-client/api/instance-registry', () => ({
 	getClusterInfo: mocks.getClusterInfo,
 }));
 
-vi.mock('@n8n/stores/useRootStore', () => ({
+vi.mock('@MNI/stores/useRootStore', () => ({
 	useRootStore: () => ({
 		restApiContext: { baseUrl: 'http://localhost', sessionId: 'test' },
 	}),

@@ -1,6 +1,6 @@
 import { copyInviteLink } from './invite-link.utils';
-import type { useClipboard } from '@n8n/composables/useClipboard';
-import type { useUsersStore } from '@n8n/stores/users.store';
+import type { useClipboard } from '@MNI/composables/useClipboard';
+import type { useUsersStore } from '@MNI/stores/users.store';
 
 describe('copyInviteLink', () => {
 	const link = 'https://example.com/signup?token=generated-token';

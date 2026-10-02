@@ -1,5 +1,5 @@
 import { createHmac, timingSafeEqual } from 'crypto';
-import type { IWebhookFunctions } from 'n8n-workflow';
+import type { IWebhookFunctions } from 'MNI-workflow';
 
 /**
  * Verifies the Zendesk webhook signature using HMAC-SHA256.

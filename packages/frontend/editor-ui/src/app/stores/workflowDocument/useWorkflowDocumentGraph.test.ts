@@ -25,8 +25,8 @@ import {
 	CHAT_TRIGGER_NODE_TYPE,
 	MANUAL_CHAT_TRIGGER_LANGCHAIN_NODE_TYPE,
 	NodeConnectionTypes,
-} from 'n8n-workflow';
-import type { IConnections } from 'n8n-workflow';
+} from 'MNI-workflow';
+import type { IConnections } from 'MNI-workflow';
 import { createTestNode } from '@/__tests__/mocks';
 import type { INodeUi } from '@/Interface';
 import {
@@ -280,7 +280,7 @@ describe('useWorkflowDocumentGraph', () => {
 		it('returns false when node has no Chat Trigger parent', () => {
 			const graph = seedAndCreateGraph(
 				[
-					createNode({ name: 'Manual Trigger', type: 'n8n-nodes-base.manualTrigger' }),
+					createNode({ name: 'Manual Trigger', type: 'MNI-nodes-base.manualTrigger' }),
 					createNode({ name: 'Agent' }),
 				],
 				{
@@ -333,7 +333,7 @@ describe('useWorkflowDocumentGraph', () => {
 		it('returns false when node has no chat or manual chat trigger parent', () => {
 			const graph = seedAndCreateGraph(
 				[
-					createNode({ name: 'Manual Trigger', type: 'n8n-nodes-base.manualTrigger' }),
+					createNode({ name: 'Manual Trigger', type: 'MNI-nodes-base.manualTrigger' }),
 					createNode({ name: 'Agent' }),
 				],
 				{
@@ -373,7 +373,7 @@ describe('useWorkflowDocumentGraph', () => {
 		it('returns false when tool node is connected to an agent that has no Chat Trigger parent', () => {
 			const graph = seedAndCreateGraph(
 				[
-					createNode({ name: 'Manual Trigger', type: 'n8n-nodes-base.manualTrigger' }),
+					createNode({ name: 'Manual Trigger', type: 'MNI-nodes-base.manualTrigger' }),
 					createNode({ name: 'AI Agent' }),
 					createNode({ name: 'My Tool' }),
 				],
@@ -412,7 +412,7 @@ describe('useWorkflowDocumentGraph', () => {
 			const result = graph.getNodeByNameFromWorkflow('A');
 			expect(result).not.toBeNull();
 			expect(result?.name).toBe('A');
-			expect(result?.type).toBe('n8n-nodes-base.set');
+			expect(result?.type).toBe('MNI-nodes-base.set');
 		});
 
 		it('getNodeByNameFromWorkflow returns null for unknown node', () => {
@@ -423,7 +423,7 @@ describe('useWorkflowDocumentGraph', () => {
 
 		it('getStartNode returns a start node from the workflow', () => {
 			const graph = seedAndCreateGraph([
-				createNode({ name: 'Trigger', type: 'n8n-nodes-base.manualTrigger' }),
+				createNode({ name: 'Trigger', type: 'MNI-nodes-base.manualTrigger' }),
 			]);
 
 			const startNode = graph.getStartNode();

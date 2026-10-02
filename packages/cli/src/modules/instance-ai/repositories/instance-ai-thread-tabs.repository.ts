@@ -1,6 +1,6 @@
-import type { InstanceAiThreadTabsState } from '@n8n/api-types';
-import { Service } from '@n8n/di';
-import { DataSource, Repository } from '@n8n/typeorm';
+import type { InstanceAiThreadTabsState } from '@MNI/api-types';
+import { Service } from '@MNI/di';
+import { DataSource, Repository } from '@MNI/typeorm';
 
 import { InstanceAiThreadTabs } from '../entities/instance-ai-thread-tabs.entity';
 

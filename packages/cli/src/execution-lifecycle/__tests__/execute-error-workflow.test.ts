@@ -1,15 +1,15 @@
-import { Logger } from '@n8n/backend-common';
-import { mockInstance } from '@n8n/backend-test-utils';
-import { GlobalConfig } from '@n8n/config';
-import { Container } from '@n8n/di';
-import { ErrorReporter } from 'n8n-core';
-import type { INode, IRun, IWorkflowBase } from 'n8n-workflow';
-import { createRunExecutionData, NodeOperationError } from 'n8n-workflow';
+import { Logger } from '@MNI/backend-common';
+import { mockInstance } from '@MNI/backend-test-utils';
+import { GlobalConfig } from '@MNI/config';
+import { Container } from '@MNI/di';
+import { ErrorReporter } from 'MNI-core';
+import type { INode, IRun, IWorkflowBase } from 'MNI-workflow';
+import { createRunExecutionData, NodeOperationError } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import { PolicyViolationError } from '@/policy/policy-violation.error';
 import { OwnershipService } from '@/services/ownership.service';
-import { UrlService } from '@n8n/backend-services';
+import { UrlService } from '@MNI/backend-services';
 import { WorkflowExecutionService } from '@/workflows/workflow-execution.service';
 
 import { executeErrorWorkflow } from '../execute-error-workflow';
@@ -29,7 +29,7 @@ describe('executeErrorWorkflow', () => {
 
 	const mockNode = mock<INode>({
 		name: 'TestNode',
-		type: 'n8n-nodes-base.set',
+		type: 'MNI-nodes-base.set',
 		typeVersion: 1,
 		position: [0, 0],
 		parameters: {},
@@ -38,7 +38,7 @@ describe('executeErrorWorkflow', () => {
 	beforeEach(() => {
 		vi.resetAllMocks();
 		globalConfig.nodes = mock<GlobalConfig['nodes']>({
-			errorTriggerType: 'n8n-nodes-base.errorTrigger',
+			errorTriggerType: 'MNI-nodes-base.errorTrigger',
 		});
 	});
 
@@ -162,7 +162,7 @@ describe('executeErrorWorkflow', () => {
 			const workflowData = mock<IWorkflowBase>({
 				id: 'workflow-123',
 				settings: {},
-				nodes: [mock<INode>({ type: 'n8n-nodes-base.errorTrigger' })],
+				nodes: [mock<INode>({ type: 'MNI-nodes-base.errorTrigger' })],
 			});
 
 			executeErrorWorkflow(workflowData, makeRunData(violation()), 'internal');

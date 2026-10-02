@@ -6,16 +6,16 @@ import {
 	linkUserToProject,
 	mockInstance,
 	testDb,
-} from '@n8n/backend-test-utils';
-import type { Project, User } from '@n8n/db';
+} from '@MNI/backend-test-utils';
+import type { Project, User } from '@MNI/db';
 import {
 	ProjectRelationRepository,
 	ProjectRepository,
 	WorkflowPublishedVersionRepository,
 	WorkflowRepository,
-} from '@n8n/db';
-import { Container } from '@n8n/di';
-import { InstanceSettings } from 'n8n-core';
+} from '@MNI/db';
+import { Container } from '@MNI/di';
+import { InstanceSettings } from 'MNI-core';
 
 import { ActiveWorkflowManager } from '@/active-workflow-manager';
 import { Telemetry } from '@/telemetry';
@@ -50,7 +50,7 @@ const UPDATE_ONLY_KEY_SCOPES = ['workflow:list', 'workflow:read', 'workflow:upda
 
 const changedNodes = (workflow: { nodes: unknown[] }) =>
 	(workflow.nodes as Array<Record<string, unknown>>).map((node) =>
-		node.type === 'n8n-nodes-base.cron'
+		node.type === 'MNI-nodes-base.cron'
 			? { ...node, parameters: { triggerTimes: { item: [{ mode: 'everyMinute' }] } } }
 			: node,
 	);

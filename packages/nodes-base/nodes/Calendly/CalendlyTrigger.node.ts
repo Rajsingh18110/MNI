@@ -1,5 +1,5 @@
-import type { INodeTypeBaseDescription, IVersionedNodeType } from 'n8n-workflow';
-import { VersionedNodeType } from 'n8n-workflow';
+import type { INodeTypeBaseDescription, IVersionedNodeType } from 'MNI-workflow';
+import { VersionedNodeType } from 'MNI-workflow';
 
 import { CalendlyTriggerV1 } from './v1/CalendlyTriggerV1.node';
 import { CalendlyTriggerV2 } from './v2/CalendlyTriggerV2.node';

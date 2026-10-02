@@ -1,4 +1,4 @@
-import type { InstanceAiLivenessSurface, InstanceAiLivenessTimeoutReason } from '@n8n/instance-ai';
+import type { InstanceAiLivenessSurface, InstanceAiLivenessTimeoutReason } from '@MNI/instance-ai';
 
 export type InstanceAiRunTimeoutDetails = {
 	reason: InstanceAiLivenessTimeoutReason;

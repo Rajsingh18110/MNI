@@ -1,8 +1,8 @@
 import { defineStore } from 'pinia';
 import { computed, ref } from 'vue';
 
-import { STORES } from '@n8n/stores';
-import { useRootStore } from '@n8n/stores/useRootStore';
+import { STORES } from '@MNI/stores';
+import { useRootStore } from '@MNI/stores/useRootStore';
 
 import * as evalCollectionsApi from './evalCollections.api';
 import type {

@@ -1,5 +1,5 @@
-import { WithTimestamps, JsonColumn, Project } from '@n8n/db';
-import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryColumn } from '@n8n/typeorm';
+import { WithTimestamps, JsonColumn, Project } from '@MNI/db';
+import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryColumn } from '@MNI/typeorm';
 
 @Entity({ name: 'instance_ai_threads' })
 @Index(['resourceId', 'updatedAt', 'id'])

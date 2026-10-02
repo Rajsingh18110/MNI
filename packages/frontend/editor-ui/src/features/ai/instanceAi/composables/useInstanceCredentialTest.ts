@@ -1,10 +1,10 @@
 import { ref } from 'vue';
-import { i18n } from '@n8n/i18n';
+import { i18n } from '@MNI/i18n';
 import {
 	displayParameter,
 	type ICredentialDataDecryptedObject,
 	type ICredentialsDecrypted,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import { useCredentialsStore } from '@/features/credentials/credentials.store';
 import { useCredentialTestInBackground } from '@/features/credentials/composables/useCredentialTestInBackground';
 

@@ -5,8 +5,8 @@ import type {
 	ILoadOptionsFunctions,
 	IRequestOptions,
 	JsonObject,
-} from 'n8n-workflow';
-import { NodeApiError, NodeOperationError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeApiError, NodeOperationError } from 'MNI-workflow';
 import { v4 as uuid } from 'uuid';
 
 export async function matrixApiRequest(

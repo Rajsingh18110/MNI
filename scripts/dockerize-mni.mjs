@@ -60,7 +60,7 @@ const compiledTaskRunnerDir = path.join(rootDir, 'dist', 'task-runner-javascript
 function selectTargets() {
 	// The pc target only differs by its base images, so it keeps the plain name -
 	// downstream jobs load `mni/mni:local` either way.
-	const targets = [pointerCompressed ? 'n8n-pc' : 'MNI', 'runners'];
+	const targets = [pointerCompressed ? 'MNI-pc' : 'MNI', 'runners'];
 	if (withDistroless) targets.push('runners-distroless');
 	if (withBaseImage) targets.unshift('base');
 	return targets;
@@ -129,13 +129,13 @@ async function getImageSize(imageName) {
 async function checkPrerequisites() {
 	if (!(await fs.pathExists(compiledAppDir))) {
 		echo(chalk.red(`Error: Compiled app directory not found at ${compiledAppDir}`));
-		echo(chalk.yellow('Please run build-n8n.mjs first!'));
+		echo(chalk.yellow('Please run build-MNI.mjs first!'));
 		process.exit(1);
 	}
 
 	if (!(await fs.pathExists(compiledTaskRunnerDir))) {
 		echo(chalk.red(`Error: Task runner directory not found at ${compiledTaskRunnerDir}`));
-		echo(chalk.yellow('Please run build-n8n.mjs first!'));
+		echo(chalk.yellow('Please run build-MNI.mjs first!'));
 		process.exit(1);
 	}
 }
@@ -206,7 +206,7 @@ async function buildWithPodman(platform) {
 }
 
 async function main() {
-	echo(chalk.blue.bold('===== Docker Build for n8n & Runners ====='));
+	echo(chalk.blue.bold('===== Docker Build for MNI & Runners ====='));
 
 	await checkPrerequisites();
 
@@ -259,7 +259,7 @@ async function main() {
 		imageNames = await buildWithPodman(platform);
 	} else {
 		if (process.env.DOCKER_PLATFORM) process.env.PLATFORMS = process.env.DOCKER_PLATFORM;
-		if (pointerCompressed) process.env.N8N_PC_TAGS = `${imageBaseName}:${imageTag}`;
+		if (pointerCompressed) process.env.MNI_PC_TAGS = `${imageBaseName}:${imageTag}`;
 		const plan = await bakePlan(targets);
 		platform = plan.target[targets[0]].platforms.join(',');
 		imageNames = targets.map((name) => plan.target[name].tags[0]);

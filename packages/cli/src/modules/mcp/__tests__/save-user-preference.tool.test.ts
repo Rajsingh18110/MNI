@@ -1,8 +1,8 @@
-import type { AiPreferenceDto } from '@n8n/api-types';
-import { AI_PREFERENCE_CONTENT_MAX_LENGTH, AI_PREFERENCE_MAX_PER_SCOPE } from '@n8n/api-types';
-import { mockInstance, mockLogger } from '@n8n/backend-test-utils';
-import { GLOBAL_OWNER_ROLE, User } from '@n8n/db';
-import { TELEMETRY_EVENT } from '@n8n/telemetry';
+import type { AiPreferenceDto } from '@MNI/api-types';
+import { AI_PREFERENCE_CONTENT_MAX_LENGTH, AI_PREFERENCE_MAX_PER_SCOPE } from '@MNI/api-types';
+import { mockInstance, mockLogger } from '@MNI/backend-test-utils';
+import { GLOBAL_OWNER_ROLE, User } from '@MNI/db';
+import { TELEMETRY_EVENT } from '@MNI/telemetry';
 import { CLIENT_CAPABILITIES_META_KEY } from '@modelcontextprotocol/server';
 import type { InputRequiredResult } from '@modelcontextprotocol/server';
 
@@ -11,7 +11,7 @@ import { BadRequestError } from '@/errors/response-errors/bad-request.error';
 import { ConflictError } from '@/errors/response-errors/conflict.error';
 import { ForbiddenError } from '@/errors/response-errors/forbidden.error';
 import { AiPreferenceService } from '@/services/ai-preference.service';
-import { UrlService } from '@n8n/backend-services';
+import { UrlService } from '@MNI/backend-services';
 import { Telemetry } from '@/telemetry';
 
 import { USER_CALLED_MCP_TOOL_EVENT } from '../mcp.constants';

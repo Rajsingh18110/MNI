@@ -1,7 +1,7 @@
 import CanvasNode from './CanvasNode.vue';
 import { createComponentRenderer } from '@/__tests__/render';
 import { createPinia, setActivePinia } from 'pinia';
-import { NodeConnectionTypes } from 'n8n-workflow';
+import { NodeConnectionTypes } from 'MNI-workflow';
 import { computed, type ComputedRef } from 'vue';
 import { fireEvent } from '@testing-library/vue';
 import {

@@ -1,18 +1,18 @@
 import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';
 import { createTestingPinia } from '@pinia/testing';
 import { setActivePinia } from 'pinia';
-import { STORES } from '@n8n/stores';
+import { STORES } from '@MNI/stores';
 import CommunityPackageCard from './CommunityPackageCard.vue';
 import { createComponentRenderer } from '@/__tests__/render';
-import type { PublicInstalledNode, PublicInstalledPackage } from 'n8n-workflow';
+import type { PublicInstalledNode, PublicInstalledPackage } from 'MNI-workflow';
 
 const communityPackage: PublicInstalledPackage = {
-	packageName: 'n8n-nodes-test',
+	packageName: 'MNI-nodes-test',
 	installedVersion: '1.0.0',
 	installedNodes: [
-		{ name: 'OldNode', type: 'n8n-nodes-test.oldNode' } as PublicInstalledNode,
-		{ name: 'TestNode', type: 'n8n-nodes-test.testNode' } as PublicInstalledNode,
-		{ name: 'OtherNode', type: 'n8n-nodes-test.otherNode' } as PublicInstalledNode,
+		{ name: 'OldNode', type: 'MNI-nodes-test.oldNode' } as PublicInstalledNode,
+		{ name: 'TestNode', type: 'MNI-nodes-test.testNode' } as PublicInstalledNode,
+		{ name: 'OtherNode', type: 'MNI-nodes-test.otherNode' } as PublicInstalledNode,
 	],
 	createdAt: new Date(0),
 	updatedAt: new Date(0),
@@ -55,7 +55,7 @@ describe('CommunityPackageCard', () => {
 		nodeTypesStore.getCommunityNodeAttributes = vi
 			.fn()
 			.mockImplementation(async (nodeType) =>
-				nodeType === 'n8n-nodes-test.testNode' ? { npmVersion: '2.0.0' } : null,
+				nodeType === 'MNI-nodes-test.testNode' ? { npmVersion: '2.0.0' } : null,
 			);
 
 		const { getByText } = renderComponent({
@@ -68,11 +68,11 @@ describe('CommunityPackageCard', () => {
 
 		expect(nodeTypesStore.getCommunityNodeAttributes).toHaveBeenNthCalledWith(
 			1,
-			'n8n-nodes-test.oldNode',
+			'MNI-nodes-test.oldNode',
 		);
 		expect(nodeTypesStore.getCommunityNodeAttributes).toHaveBeenNthCalledWith(
 			2,
-			'n8n-nodes-test.testNode',
+			'MNI-nodes-test.testNode',
 		);
 		expect(nodeTypesStore.getCommunityNodeAttributes).toHaveBeenCalledTimes(2);
 		expect(getByText('Update')).toBeInTheDocument();

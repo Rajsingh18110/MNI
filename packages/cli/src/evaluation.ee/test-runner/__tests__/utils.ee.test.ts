@@ -1,5 +1,5 @@
-import { NodeConnectionTypes } from 'n8n-workflow';
-import type { IRunData } from 'n8n-workflow';
+import { NodeConnectionTypes } from 'MNI-workflow';
+import type { IRunData } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import { extractTokenUsage } from '../utils.ee';

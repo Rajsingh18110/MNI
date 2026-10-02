@@ -2,10 +2,10 @@
 import type { IHeaderParams, SortDirection } from 'ag-grid-community';
 import { useDataTableTypes } from '@/features/core/dataTable/composables/useDataTableTypes';
 import { ref, computed, onMounted, onUnmounted, useTemplateRef } from 'vue';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import { isAGGridCellType } from '@/features/core/dataTable/typeGuards';
-import { N8nActionDropdown, N8nIcon, N8nIconButton, N8nInlineTextEdit } from '@n8n/design-system';
-import { DATA_TABLE_SYSTEM_COLUMNS } from 'n8n-workflow';
+import { N8nActionDropdown, N8nIcon, N8nIconButton, N8nInlineTextEdit } from '@MNI/design-system';
+import { DATA_TABLE_SYSTEM_COLUMNS } from 'MNI-workflow';
 
 export type HeaderParamsWithDelete = IHeaderParams & {
 	onDelete?: (columnId: string) => void;
@@ -256,7 +256,7 @@ onUnmounted(() => {
 </template>
 
 <style lang="scss">
-@use '@n8n/design-system/css/mixins/utils';
+@use '@MNI/design-system/css/mixins/utils';
 
 // TODO: neither scoped nor module works here. Is there a way to resolve this?
 .data-table-column-header-wrapper {
@@ -283,8 +283,8 @@ onUnmounted(() => {
 	gap: var(--spacing--2xs);
 	min-width: 0;
 
-	.n8n-icon,
-	.n8n-inline-text-edit,
+	.MNI-icon,
+	.MNI-inline-text-edit,
 	.ag-header-cell-text {
 		display: inline-flex;
 		align-items: center;
@@ -293,7 +293,7 @@ onUnmounted(() => {
 	}
 }
 
-.data-table-column-header-icon-wrapper .n8n-icon {
+.data-table-column-header-icon-wrapper .MNI-icon {
 	flex-shrink: 0;
 }
 
@@ -302,7 +302,7 @@ onUnmounted(() => {
 	min-width: 0;
 
 	// Remove overflow hidden when inline edit is active to show border
-	&.n8n-inline-text-edit--active,
+	&.MNI-inline-text-edit--active,
 	&:focus-within {
 		overflow: visible;
 	}

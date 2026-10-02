@@ -1,4 +1,4 @@
-import { isRecord } from '@n8n/utils/is-record';
+import { isRecord } from '@MNI/utils/is-record';
 import { useLocalStorage } from '@vueuse/core';
 import { defineStore } from 'pinia';
 import { computed } from 'vue';

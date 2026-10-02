@@ -1,6 +1,6 @@
-import { MOONSHOTAI_KIMI_K3_MODEL_ID, UNLIMITED_CREDITS } from '@n8n/api-types';
-import type { OutboundHttp } from '@n8n/backend-network';
-import type { User } from '@n8n/db';
+import { MOONSHOTAI_KIMI_K3_MODEL_ID, UNLIMITED_CREDITS } from '@MNI/api-types';
+import type { OutboundHttp } from '@MNI/backend-network';
+import type { User } from '@MNI/db';
 import { mock } from 'vitest-mock-extended';
 
 import type { AiService } from '@/services/ai.service';

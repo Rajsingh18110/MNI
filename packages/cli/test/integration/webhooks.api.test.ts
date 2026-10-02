@@ -3,8 +3,8 @@ import {
 	mockInstance,
 	createActiveWorkflow,
 	deleteWorkflowAndWebhooks,
-} from '@n8n/backend-test-utils';
-import { type IWorkflowDb, type User, type WorkflowEntity } from '@n8n/db';
+} from '@MNI/backend-test-utils';
+import { type IWorkflowDb, type User, type WorkflowEntity } from '@MNI/db';
 import { existsSync, readFileSync } from 'node:fs';
 import { readFile, rm } from 'node:fs/promises';
 import { Readable } from 'node:stream';
@@ -15,7 +15,7 @@ import {
 	type INodeType,
 	type INodeTypeDescription,
 	type IWebhookFunctions,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import { agent as testAgent } from 'supertest';
 
 import { createUser } from './shared/db/users';

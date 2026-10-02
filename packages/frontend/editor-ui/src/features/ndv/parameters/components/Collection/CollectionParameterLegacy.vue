@@ -9,17 +9,17 @@ import type {
 	INodePropertyCollection,
 	INodePropertyOptions,
 	NodeParameterValueType,
-} from 'n8n-workflow';
-import { deepCopy, isINodeProperties, isINodePropertyCollection } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { deepCopy, isINodeProperties, isINodePropertyCollection } from 'MNI-workflow';
 
 import get from 'lodash/get';
 
 import { injectNDVStore } from '@/features/ndv/shared/ndv.store';
 import { useNodeHelpers } from '@/app/composables/useNodeHelpers';
 import { useAiGatewayStore } from '@/app/stores/aiGateway.store';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 
-import { N8nButton, N8nOption, N8nSelect, N8nText } from '@n8n/design-system';
+import { N8nButton, N8nOption, N8nSelect, N8nText } from '@MNI/design-system';
 import { isPresent } from '@/app/utils/typesUtils';
 
 const selectedOption = ref<string | undefined>(undefined);

@@ -7,20 +7,20 @@ import WorkflowExecutionsCard from './WorkflowExecutionsCard.vue';
 import WorkflowExecutionsInfoAccordion from './WorkflowExecutionsInfoAccordion.vue';
 import ExecutionsFilter from '../ExecutionsFilter.vue';
 import { VIEWS } from '@/app/constants';
-import type { ExecutionSummary } from 'n8n-workflow';
+import type { ExecutionSummary } from 'MNI-workflow';
 import { useExecutionsStore } from '../../executions.store';
 import type { IWorkflowDb } from '@/Interface';
 import type { ExecutionFilterType } from '../../executions.types';
 import { isComponentPublicInstance } from '@/app/utils/typeGuards';
-import { getResourcePermissions } from '@n8n/permissions';
-import { useI18n } from '@n8n/i18n';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { getResourcePermissions } from '@MNI/permissions';
+import { useI18n } from '@MNI/i18n';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import ConcurrentExecutionsHeader from '../ConcurrentExecutionsHeader.vue';
 import ExecutionStopAllText from '../ExecutionStopAllText.vue';
 import { usePageRedirectionHelper } from '@/app/composables/usePageRedirectionHelper';
 import { useIntersectionObserver } from '@/app/composables/useIntersectionObserver';
 
-import { N8nCheckbox, N8nHeading, N8nLoading, N8nText } from '@n8n/design-system';
+import { N8nCheckbox, N8nHeading, N8nLoading, N8nText } from '@MNI/design-system';
 type AutoScrollDeps = { activeExecutionSet: boolean; cardsMounted: boolean; scroll: boolean };
 
 const props = defineProps<{

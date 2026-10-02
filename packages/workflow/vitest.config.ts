@@ -1,5 +1,5 @@
 import { defineConfig } from 'vitest/config';
-import { createBaseInlineConfig } from '@n8n/vitest-config/node';
+import { createBaseInlineConfig } from '@MNI/vitest-config/node';
 
 const { reporters, outputFile, ...sharedTestConfig } = createBaseInlineConfig({
 	include: ['test/**/*.test.ts'],
@@ -15,21 +15,21 @@ export default defineConfig({
 				test: {
 					...sharedTestConfig,
 					name: 'vm-engine',
-					env: { N8N_EXPRESSION_ENGINE: 'vm' },
+					env: { MNI_EXPRESSION_ENGINE: 'vm' },
 				},
 			},
 			{
 				test: {
 					...sharedTestConfig,
 					name: 'legacy-engine',
-					env: { N8N_EXPRESSION_ENGINE: 'legacy' },
+					env: { MNI_EXPRESSION_ENGINE: 'legacy' },
 				},
 			},
 			{
 				test: {
 					...sharedTestConfig,
 					name: 'quickjs-engine',
-					env: { N8N_EXPRESSION_ENGINE: 'quickjs' },
+					env: { MNI_EXPRESSION_ENGINE: 'quickjs' },
 				},
 			},
 		],

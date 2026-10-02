@@ -2,27 +2,27 @@ import { chatWithAssistant } from '@/features/ai/assistant/assistant.api';
 import { type VIEWS, EDITABLE_CANVAS_VIEWS } from '@/app/constants';
 import { CREDENTIAL_EDIT_MODAL_KEY } from '@/features/credentials/credentials.constants';
 import { ASSISTANT_ENABLED_VIEWS } from './constants';
-import { STORES } from '@n8n/stores';
+import { STORES } from '@MNI/stores';
 import type { ChatRequest } from '@/features/ai/assistant/assistant.types';
-import type { ChatUI } from '@n8n/design-system';
+import type { ChatUI } from '@MNI/design-system';
 import { defineStore } from 'pinia';
-import type { PushPayload } from '@n8n/api-types';
+import type { PushPayload } from '@MNI/api-types';
 import { computed, onScopeDispose, ref, watch } from 'vue';
 import {
 	useWorkflowDocumentStore,
 	createWorkflowDocumentId,
 } from '@/app/stores/workflowDocument.store';
 import { useNDVStore } from '@/features/ndv/shared/ndv.store';
-import { useRootStore } from '@n8n/stores/useRootStore';
-import { useUsersStore } from '@n8n/stores/users.store';
+import { useRootStore } from '@MNI/stores/useRootStore';
+import { useUsersStore } from '@MNI/stores/users.store';
 import { useRoute } from 'vue-router';
-import { useSettingsStore } from '@n8n/stores/settings.store';
-import { assert } from '@n8n/utils/assert';
+import { useSettingsStore } from '@MNI/stores/settings.store';
+import { assert } from '@MNI/utils/assert';
 import { useWorkflowsStore } from '@/app/stores/workflows.store';
 import { useWorkflowExecutionStateStore } from '@/app/stores/workflowExecutionState.store';
-import type { ICredentialType, NodeError, INode } from 'n8n-workflow';
-import { useI18n } from '@n8n/i18n';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
+import type { ICredentialType, NodeError, INode } from 'MNI-workflow';
+import { useI18n } from '@MNI/i18n';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
 import { useUIStore } from '@/app/stores/ui.store';
 import { useChatPanelStateStore } from './chatPanelState.store';
 import { useCredentialsStore } from '@/features/credentials/credentials.store';

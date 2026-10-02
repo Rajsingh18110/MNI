@@ -1,4 +1,4 @@
-import type { IDataObject, INodeTypeBaseDescription, IWebhookFunctions } from 'n8n-workflow';
+import type { IDataObject, INodeTypeBaseDescription, IWebhookFunctions } from 'MNI-workflow';
 import type { Mock } from 'vitest';
 
 import { WebflowTriggerV2 } from '../V2/WebflowTriggerV2.node';

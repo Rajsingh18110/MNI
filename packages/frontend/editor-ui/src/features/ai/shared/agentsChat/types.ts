@@ -2,9 +2,9 @@ import {
 	type AgentMessageAuthor,
 	type APPROVAL_TOOL_NAME,
 	type AgentBackgroundJobSignal,
-	type N8N_CHAT_ACTION_TOOL_NAME,
+	type MNI_CHAT_ACTION_TOOL_NAME,
 	type WAIT_TOOL_NAME,
-} from '@n8n/api-types';
+} from '@MNI/api-types';
 
 import type { N8nChatInteractionInput, N8nChatResumeValue } from './n8nChatInteraction';
 
@@ -94,7 +94,7 @@ export type InteractivePayload =
 			resolvedValue?: ApprovalResume;
 	  })
 	| (InteractivePayloadBase & {
-			toolName: typeof N8N_CHAT_ACTION_TOOL_NAME;
+			toolName: typeof MNI_CHAT_ACTION_TOOL_NAME;
 			input: N8nChatInteractionInput;
 			resolvedValue?: N8nChatResumeValue;
 	  })

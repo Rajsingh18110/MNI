@@ -1,6 +1,6 @@
-import { Logger } from '@n8n/backend-common';
-import { Service } from '@n8n/di';
-import { ensureError } from '@n8n/utils/errors/ensure-error';
+import { Logger } from '@MNI/backend-common';
+import { Service } from '@MNI/di';
+import { ensureError } from '@MNI/utils/errors/ensure-error';
 
 import { ExternalSecretsProviders } from './external-secrets-providers.ee';
 import type { SecretsProvider, SecretsProviderSettings } from './types';

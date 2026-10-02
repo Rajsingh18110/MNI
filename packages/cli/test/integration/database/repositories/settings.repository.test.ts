@@ -1,7 +1,7 @@
-import { testDb } from '@n8n/backend-test-utils';
-import { SettingsRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
-import { DataSource } from '@n8n/typeorm';
+import { testDb } from '@MNI/backend-test-utils';
+import { SettingsRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
+import { DataSource } from '@MNI/typeorm';
 
 describe('SettingsRepository', () => {
 	let settingsRepository: SettingsRepository;

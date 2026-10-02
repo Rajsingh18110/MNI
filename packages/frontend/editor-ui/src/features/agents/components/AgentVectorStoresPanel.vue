@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { AgentJsonVectorStoreConfig } from '@n8n/api-types';
+import type { AgentJsonVectorStoreConfig } from '@MNI/api-types';
 import {
 	N8nEmptyState,
 	N8nActionDropdown,
@@ -7,9 +7,9 @@ import {
 	N8nTableBase,
 	N8nTooltip,
 	N8nText,
-} from '@n8n/design-system';
-import type { ActionDropdownItem } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+} from '@MNI/design-system';
+import type { ActionDropdownItem } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 
 import CredentialIcon from '@/features/credentials/components/CredentialIcon.vue';
 import { AGENT_VECTOR_STORE_PROVIDER_DEFINITIONS } from '../vector-stores';

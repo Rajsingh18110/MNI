@@ -1,12 +1,12 @@
 import { createTestingPinia } from '@pinia/testing';
 import { mount } from '@vue/test-utils';
 import { defineComponent } from 'vue';
-import { useRolesStore } from '@n8n/stores/roles.store';
-import { useRBACStore } from '@n8n/stores/rbac.store';
+import { useRolesStore } from '@MNI/stores/roles.store';
+import { useRBACStore } from '@MNI/stores/rbac.store';
 import { mockedStore, waitAllPromises, type MockedStore } from '@/__tests__/utils';
-import type { Role } from '@n8n/permissions';
+import type { Role } from '@MNI/permissions';
 import { useRoleDeletion } from './useRoleDeletion';
-import { useUsersStore } from '@n8n/stores/users.store';
+import { useUsersStore } from '@MNI/stores/users.store';
 
 const mockShowError = vi.fn();
 const mockShowMessage = vi.fn();
@@ -14,7 +14,7 @@ const mockConfirm = vi.fn();
 const mockTrack = vi.fn();
 const mockPush = vi.fn();
 
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: () => ({ showError: mockShowError, showMessage: mockShowMessage }),
 }));
 
@@ -22,7 +22,7 @@ vi.mock('@/app/composables/useMessage', () => ({
 	useMessage: () => ({ confirm: mockConfirm }),
 }));
 
-vi.mock('@n8n/composables/useTelemetry', () => ({
+vi.mock('@MNI/composables/useTelemetry', () => ({
 	useTelemetry: () => ({ track: mockTrack }),
 }));
 

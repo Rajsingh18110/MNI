@@ -1,15 +1,15 @@
-import { formatPemBlock } from '@n8n/utils/format-pem-block';
+import { formatPemBlock } from '@MNI/utils/format-pem-block';
 import get from 'lodash/get';
 import set from 'lodash/set';
 import { Binary, MongoClient, ObjectId } from 'mongodb';
-import { NodeOperationError } from 'n8n-workflow';
+import { NodeOperationError } from 'MNI-workflow';
 import type {
 	ICredentialDataDecryptedObject,
 	IDataObject,
 	IExecuteFunctions,
 	INode,
 	INodeExecutionData,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import { createSecureContext } from 'tls';
 
 import { routeBinaryProperties } from '@utils/binary';
@@ -229,7 +229,7 @@ export async function connectMongoClient(
 ) {
 	let client: MongoClient;
 	const driverInfo = {
-		name: 'n8n_crud',
+		name: 'MNI_crud',
 		version: nodeVersion > 0 ? nodeVersion.toString() : 'unknown',
 	};
 

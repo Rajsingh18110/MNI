@@ -1,8 +1,8 @@
 import type { DateValue } from '@internationalized/date';
 import { getLocalTimeZone, isToday, now, toCalendarDateTime, today } from '@internationalized/date';
-import type { InsightsDateRange, InsightsSummary, InsightsSummaryType } from '@n8n/api-types';
-import type { DateRange } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+import type { InsightsDateRange, InsightsSummary, InsightsSummaryType } from '@MNI/api-types';
+import type { DateRange } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 import dateformat from 'dateformat';
 
 import {

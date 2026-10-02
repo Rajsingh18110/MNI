@@ -1,8 +1,8 @@
-import type { BuiltTool, CredentialListItem, CredentialProvider } from '@n8n/agents';
-import { Tool } from '@n8n/agents/tool';
-import { isModelDiscoveryProvider } from '@n8n/ai-utilities/model-discovery';
-import { AI_GATEWAY_MANAGED_TAG } from '@n8n/api-types';
-import { OPEN_AI_API_CREDENTIAL_TYPE } from 'n8n-workflow';
+import type { BuiltTool, CredentialListItem, CredentialProvider } from '@MNI/agents';
+import { Tool } from '@MNI/agents/tool';
+import { isModelDiscoveryProvider } from '@MNI/ai-utilities/model-discovery';
+import { AI_GATEWAY_MANAGED_TAG } from '@MNI/api-types';
+import { OPEN_AI_API_CREDENTIAL_TYPE } from 'MNI-workflow';
 import { z } from 'zod';
 
 import {
@@ -15,7 +15,7 @@ import { BUILDER_TOOLS } from '../builder-tool-names';
 import type { ModelChoice } from '../model-lookup.types';
 
 /** User-facing name written for an MNI credits (AI Gateway managed) model credential. */
-const N8N_CONNECT_CREDENTIAL_NAME = 'Gateway credits';
+const MNI_CONNECT_CREDENTIAL_NAME = 'Gateway credits';
 
 export interface ModelLookup {
 	list(credentialId: string, credentialType: string, provider: string): Promise<ModelChoice[]>;
@@ -283,7 +283,7 @@ async function resolveManagedCredentialForProvider(
 
 	const managed: CredentialListItem = {
 		id: AI_GATEWAY_MANAGED_TAG,
-		name: N8N_CONNECT_CREDENTIAL_NAME,
+		name: MNI_CONNECT_CREDENTIAL_NAME,
 		type: credentialType,
 	};
 	if (model?.trim()) {
@@ -292,7 +292,7 @@ async function resolveManagedCredentialForProvider(
 	return await resolveDefaultModelForCredential(managed, defaults, deps.modelLookup);
 }
 
-/** Distinct gateway-served providers, for resolving an unqualified n8n-credits request. */
+/** Distinct gateway-served providers, for resolving an unqualified MNI-credits request. */
 async function servedGatewayProviders(deps: ResolveLlmToolDeps): Promise<string[]> {
 	const served = new Set<string>();
 	for (const defaults of Object.values(LLM_PROVIDER_DEFAULTS)) {
@@ -420,7 +420,7 @@ export function buildResolveLlmTool(deps: ResolveLlmToolDeps): BuiltTool {
 					) {
 						managedCredentials.push({
 							id: AI_GATEWAY_MANAGED_TAG,
-							name: N8N_CONNECT_CREDENTIAL_NAME,
+							name: MNI_CONNECT_CREDENTIAL_NAME,
 							type: credentialType,
 						});
 					}

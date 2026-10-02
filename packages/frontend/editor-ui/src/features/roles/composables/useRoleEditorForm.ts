@@ -1,7 +1,7 @@
-import { useToast } from '@n8n/composables/useToast';
-import { useRolesStore } from '@n8n/stores/roles.store';
-import { useI18n, type BaseTextKey } from '@n8n/i18n';
-import type { Role } from '@n8n/permissions';
+import { useToast } from '@MNI/composables/useToast';
+import { useRolesStore } from '@MNI/stores/roles.store';
+import { useI18n, type BaseTextKey } from '@MNI/i18n';
+import type { Role } from '@MNI/permissions';
 import { useAsyncState } from '@vueuse/core';
 import isEqual from 'lodash/isEqual';
 import sortBy from 'lodash/sortBy';

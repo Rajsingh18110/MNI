@@ -3,7 +3,7 @@ import type { WebSocket } from 'ws';
 
 export const BROWSER_USE_WS_NAMESPACE = '/browser-use';
 
-export const CDP_TOKEN_HEADER = 'x-n8n-cdp-token';
+export const CDP_TOKEN_HEADER = 'x-MNI-cdp-token';
 
 export const EXTENSION_VERSION_QUERY_PARAM = 'extensionVersion';
 

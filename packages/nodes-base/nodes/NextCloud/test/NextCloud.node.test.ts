@@ -4,8 +4,8 @@ import type {
 	INode,
 	INodeExecutionData,
 	INodeType,
-} from 'n8n-workflow';
-import { NodeApiError, NodeOperationError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeApiError, NodeOperationError } from 'MNI-workflow';
 import type { Mock } from 'vitest';
 
 import { NextCloud } from '../NextCloud.node';
@@ -119,7 +119,7 @@ function buildExecuteFunctions({
 				({
 					id: 'nextcloud-node',
 					name: 'Nextcloud',
-					type: 'n8n-nodes-base.nextCloud',
+					type: 'MNI-nodes-base.nextCloud',
 					typeVersion: 1,
 					position: [0, 0],
 					parameters: {},

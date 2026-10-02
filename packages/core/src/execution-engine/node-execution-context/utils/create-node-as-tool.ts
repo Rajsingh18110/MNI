@@ -5,14 +5,14 @@ import type {
 	INodeType,
 	FromAIArgument,
 	ISupplyDataFunctions,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import {
 	generateZodSchema,
 	NodeOperationError,
 	traverseNodeParameters,
 	NodeHelpers,
 	nodeNameToToolName,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import { z } from 'zod';
 
 export type CreateNodeAsToolOptions = {

@@ -6,7 +6,7 @@ import {
 	generateBaseline,
 	saveBaseline,
 	filterReportByBaseline,
-} from '@n8n/rules-engine';
+} from '@MNI/rules-engine';
 import * as fs from 'node:fs';
 import * as path from 'node:path';
 

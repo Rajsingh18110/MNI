@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, defineAsyncComponent } from 'vue';
 import type { Component } from 'vue';
-import { modalRegistry } from '@n8n/frontend-module-sdk';
+import { modalRegistry } from '@MNI/frontend-module-sdk';
 import ModalRoot from '@/app/components/ModalRoot.vue';
 
 // Type guard to check if component is an async component factory

@@ -22,9 +22,9 @@ const INVALID_LICENSE_FILE_PATTERN = /(readme|package\.json|changelog|history)/i
 
 const FIRST_PARTY_PATTERNS = [
 	/^pkg:npm\/%40n8n\//,
-	/^pkg:npm\/%40n8n_/,
-	/^pkg:npm\/n8n-/,
-	/^pkg:npm\/n8n@/,
+	/^pkg:npm\/%40MNI_/,
+	/^pkg:npm\/MNI-/,
+	/^pkg:npm\/MNI@/,
 ];
 
 function isFirstParty(purl) {

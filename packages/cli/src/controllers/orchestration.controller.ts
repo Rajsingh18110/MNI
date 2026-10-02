@@ -1,5 +1,5 @@
-import type { AuthenticatedRequest } from '@n8n/db';
-import { Post, RestController, GlobalScope } from '@n8n/decorators';
+import type { AuthenticatedRequest } from '@MNI/db';
+import { Post, RestController, GlobalScope } from '@MNI/decorators';
 
 import { License } from '@/license';
 import { WorkerStatusService } from '@/scaling/worker-status.service.ee';

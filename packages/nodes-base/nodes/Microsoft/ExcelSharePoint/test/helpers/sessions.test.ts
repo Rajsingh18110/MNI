@@ -1,4 +1,4 @@
-import type { IExecuteFunctions } from 'n8n-workflow';
+import type { IExecuteFunctions } from 'MNI-workflow';
 import type { Mock } from 'vitest';
 import type { DeepMockProxy } from 'vitest-mock-extended';
 import { mockDeep } from 'vitest-mock-extended';

@@ -1,4 +1,4 @@
-import type { INodeTypeDescription } from 'n8n-workflow';
+import type { INodeTypeDescription } from 'MNI-workflow';
 import { getNodeIconSource } from '@/app/utils/nodeIcon';
 import type { ToolIconSource } from '@/features/shared/toolsConnection/types';
 

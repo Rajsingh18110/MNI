@@ -3,8 +3,8 @@ import type {
 	ICredentialType,
 	IHttpRequestOptions,
 	INodeProperties,
-} from 'n8n-workflow';
-import { UserError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { UserError } from 'MNI-workflow';
 
 import { type AWSRegion } from './common/aws/regions';
 import { type AwsAssumeRoleCredentialsType } from './common/aws/types';
@@ -42,7 +42,7 @@ export class AwsAssumeRole implements ICredentialType {
 			displayName: 'STS Access Key ID',
 			name: 'stsAccessKeyId',
 			description: 'Access Key ID to use for the STS.AssumeRole call',
-			// eslint-disable-next-line n8n-nodes-base/cred-class-field-type-options-password-missing
+			// eslint-disable-next-line MNI-nodes-base/cred-class-field-type-options-password-missing
 			type: 'string',
 			displayOptions: {
 				show: {
@@ -111,7 +111,7 @@ export class AwsAssumeRole implements ICredentialType {
 			description: 'Name for the role session',
 			type: 'string',
 			required: true,
-			default: 'n8n-session',
+			default: 'MNI-session',
 		},
 		...awsCustomEndpoints,
 	];

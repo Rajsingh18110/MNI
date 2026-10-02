@@ -8,15 +8,15 @@ import { VIEWS } from '@/app/constants';
 import SettingsInstanceAiView from '../views/SettingsInstanceAiView.vue';
 import ConnectionDialog from '../components/settings/ConnectionDialog.vue';
 import { useInstanceAiSettingsStore } from '../instanceAiSettings.store';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { hasPermission } from '@/app/utils/rbac/permissions';
 import { useCredentialsStore } from '@/features/credentials/credentials.store';
 import { fetchSettings } from '../instanceAi.settings.api';
-import type { FrontendModuleSettings } from '@n8n/api-types';
-import type { ICredentialType } from 'n8n-workflow';
+import type { FrontendModuleSettings } from '@MNI/api-types';
+import type { ICredentialType } from 'MNI-workflow';
 import { defaultModuleSettings } from './createThreadComponentRenderer';
 
-vi.mock('@n8n/i18n', async (importOriginal) => ({
+vi.mock('@MNI/i18n', async (importOriginal) => ({
 	...(await importOriginal()),
 	useI18n: () => ({
 		baseText: (key: string) => key,
@@ -170,7 +170,7 @@ describe('SettingsInstanceAiView', () => {
 				permissions: {},
 				mcpAccessEnabled: true,
 				sandboxEnabled: false,
-				sandboxProvider: 'n8n-sandbox',
+				sandboxProvider: 'MNI-sandbox',
 				daytonaCredentialId: null,
 				n8nSandboxCredentialId: null,
 				searchCredentialId: null,
@@ -190,11 +190,11 @@ describe('SettingsInstanceAiView', () => {
 				props: { open: true, setup: true },
 			});
 
-			await findByTestId('n8n-agent-search-dialog-save');
-			expect(getByTestId('n8n-agent-search-dialog-cancel')).toBeVisible();
-			expect(getByTestId('n8n-agent-search-dialog-save')).toBeVisible();
-			expect(queryByTestId('n8n-agent-search-dialog-step')).toBeNull();
-			expect(queryByTestId('n8n-agent-search-dialog-back')).toBeNull();
+			await findByTestId('MNI-agent-search-dialog-save');
+			expect(getByTestId('MNI-agent-search-dialog-cancel')).toBeVisible();
+			expect(getByTestId('MNI-agent-search-dialog-save')).toBeVisible();
+			expect(queryByTestId('MNI-agent-search-dialog-step')).toBeNull();
+			expect(queryByTestId('MNI-agent-search-dialog-back')).toBeNull();
 		});
 
 		it('offers compatible credentials without listing the assigned credential twice', async () => {
@@ -216,7 +216,7 @@ describe('SettingsInstanceAiView', () => {
 			const { findByTestId, findByText, queryByText } = renderModelDialog({
 				props: { open: true },
 			});
-			const existing = await findByTestId('n8n-agent-model-existing-credential-select');
+			const existing = await findByTestId('MNI-agent-model-existing-credential-select');
 			await fireEvent.click(existing.querySelector('input')!);
 
 			expect(await findByText('Backup model · Anthropic')).toBeInTheDocument();
@@ -228,8 +228,8 @@ describe('SettingsInstanceAiView', () => {
 				props: { open: true },
 			});
 
-			expect(await findByTestId('n8n-agent-model-provider-select')).toBeVisible();
-			expect(queryByTestId('n8n-agent-model-existing-credential-select')).toBeNull();
+			expect(await findByTestId('MNI-agent-model-provider-select')).toBeVisible();
+			expect(queryByTestId('MNI-agent-model-existing-credential-select')).toBeNull();
 			expect(queryByTestId('assistant-model-base-url')).toBeNull();
 		});
 
@@ -242,8 +242,8 @@ describe('SettingsInstanceAiView', () => {
 				props: { open: true },
 			});
 
-			expect(await findByTestId('n8n-agent-model-provider-select')).toBeVisible();
-			expect(queryByTestId('n8n-agent-model-existing-credential-select')).toBeNull();
+			expect(await findByTestId('MNI-agent-model-provider-select')).toBeVisible();
+			expect(queryByTestId('MNI-agent-model-existing-credential-select')).toBeNull();
 		});
 
 		it('chains missing setup steps while keeping settings-style actions', async () => {
@@ -259,7 +259,7 @@ describe('SettingsInstanceAiView', () => {
 				}
 				if (draft.sandboxConnection) {
 					next.n8nSandboxCredentialId = 'saved-sandbox';
-					next.sandboxProvider = 'n8n-sandbox';
+					next.sandboxProvider = 'MNI-sandbox';
 					next.sandboxEnabled = true;
 					next.n8nSandboxServiceUrl = draft.n8nSandboxServiceUrl ?? null;
 				}
@@ -270,28 +270,28 @@ describe('SettingsInstanceAiView', () => {
 			});
 
 			const { findByTestId, getByTestId, queryByTestId } = renderComponent();
-			await fireEvent.click(getByTestId('n8n-agent-model-add'));
-			const modelApiKey = await findByTestId('n8n-agent-model-api-key-input');
+			await fireEvent.click(getByTestId('MNI-agent-model-add'));
+			const modelApiKey = await findByTestId('MNI-agent-model-api-key-input');
 			await fireEvent.update(modelApiKey.querySelector('input') ?? modelApiKey, 'model-key');
-			expect(queryByTestId('n8n-agent-model-dialog-step')).toBeNull();
-			await fireEvent.click(getByTestId('n8n-agent-model-dialog-save'));
+			expect(queryByTestId('MNI-agent-model-dialog-step')).toBeNull();
+			await fireEvent.click(getByTestId('MNI-agent-model-dialog-save'));
 
-			await fireEvent.click(await findByTestId('assistant-sandbox-n8n-sandbox'));
+			await fireEvent.click(await findByTestId('assistant-sandbox-MNI-sandbox'));
 			const sandboxUrl = getByTestId('assistant-sandbox-url');
 			await fireEvent.update(
 				sandboxUrl.querySelector('input') ?? sandboxUrl,
 				'http://sandbox:3200',
 			);
-			const sandboxApiKey = getByTestId('n8n-agent-sandbox-api-key-input');
+			const sandboxApiKey = getByTestId('MNI-agent-sandbox-api-key-input');
 			await fireEvent.update(sandboxApiKey.querySelector('input') ?? sandboxApiKey, 'sandbox-key');
-			expect(queryByTestId('n8n-agent-sandbox-dialog-step')).toBeNull();
-			await fireEvent.click(getByTestId('n8n-agent-sandbox-dialog-save'));
+			expect(queryByTestId('MNI-agent-sandbox-dialog-step')).toBeNull();
+			await fireEvent.click(getByTestId('MNI-agent-sandbox-dialog-save'));
 
 			await fireEvent.click(await findByTestId('assistant-search-disabled'));
-			expect(queryByTestId('n8n-agent-search-dialog-step')).toBeNull();
-			await fireEvent.click(getByTestId('n8n-agent-search-dialog-save'));
+			expect(queryByTestId('MNI-agent-search-dialog-step')).toBeNull();
+			await fireEvent.click(getByTestId('MNI-agent-search-dialog-save'));
 
-			await waitFor(() => expect(queryByTestId('n8n-agent-search-dialog-save')).toBeNull());
+			await waitFor(() => expect(queryByTestId('MNI-agent-search-dialog-save')).toBeNull());
 			expect(store.settings).toMatchObject({
 				modelCredentialId: 'saved-model',
 				n8nSandboxCredentialId: 'saved-sandbox',
@@ -313,7 +313,7 @@ describe('SettingsInstanceAiView', () => {
 				},
 			});
 			const { getByTestId, getByText } = renderComponent();
-			expect(getByTestId('n8n-agent-status-menu')).toBeVisible();
+			expect(getByTestId('MNI-agent-status-menu')).toBeVisible();
 			expect(getByText('settings.n8nAgent.status.enabled')).toBeVisible();
 		});
 
@@ -327,7 +327,7 @@ describe('SettingsInstanceAiView', () => {
 				},
 			});
 			const { getByTestId, getByText } = renderComponent();
-			expect(getByTestId('n8n-agent-status-menu')).toBeVisible();
+			expect(getByTestId('MNI-agent-status-menu')).toBeVisible();
 			expect(getByText('settings.n8nAgent.status.setupRequired')).toBeVisible();
 		});
 
@@ -343,8 +343,8 @@ describe('SettingsInstanceAiView', () => {
 			setModuleSettings(settingsStore, { ...defaultModuleSettings, enabled: false });
 
 			const { getByTestId, getByText, queryByTestId } = renderComponent();
-			expect(getByTestId('n8n-agent-enable-button')).toBeVisible();
-			expect(queryByTestId('n8n-agent-status-menu')).toBeNull();
+			expect(getByTestId('MNI-agent-enable-button')).toBeVisible();
+			expect(queryByTestId('MNI-agent-status-menu')).toBeNull();
 			expect(getByText('settings.n8nAgent.permissions.title')).toBeVisible();
 		});
 	});
@@ -379,17 +379,17 @@ describe('SettingsInstanceAiView', () => {
 	describe('credential rows', () => {
 		it('shows add buttons when nothing is configured', () => {
 			const { getByTestId } = renderComponent();
-			expect(getByTestId('n8n-agent-model-add')).toBeVisible();
-			expect(getByTestId('n8n-agent-sandbox-add')).toBeVisible();
-			expect(getByTestId('n8n-agent-search-setup')).toBeVisible();
+			expect(getByTestId('MNI-agent-model-add')).toBeVisible();
+			expect(getByTestId('MNI-agent-sandbox-add')).toBeVisible();
+			expect(getByTestId('MNI-agent-search-setup')).toBeVisible();
 		});
 
 		it('opens search setup from the unconfigured row', async () => {
 			const { findByTestId, getByTestId } = renderComponent();
 
-			await fireEvent.click(getByTestId('n8n-agent-search-setup'));
+			await fireEvent.click(getByTestId('MNI-agent-search-setup'));
 
-			expect(await findByTestId('n8n-agent-search-provider-select')).toBeVisible();
+			expect(await findByTestId('MNI-agent-search-provider-select')).toBeVisible();
 		});
 
 		it('shows an explicit disabled search decision as configured', () => {
@@ -397,7 +397,7 @@ describe('SettingsInstanceAiView', () => {
 
 			const { getByText, queryByTestId } = renderComponent();
 
-			expect(queryByTestId('n8n-agent-search-setup')).toBeNull();
+			expect(queryByTestId('MNI-agent-search-setup')).toBeNull();
 			expect(getByText('instanceAi.onboarding.disabled')).toBeVisible();
 		});
 
@@ -408,7 +408,7 @@ describe('SettingsInstanceAiView', () => {
 			});
 
 			const { getByText, queryByTestId } = renderComponent();
-			expect(queryByTestId('n8n-agent-model-add')).toBeNull();
+			expect(queryByTestId('MNI-agent-model-add')).toBeNull();
 			expect(getByText('OpenAI · gpt-4o')).toBeVisible();
 		});
 
@@ -430,11 +430,11 @@ describe('SettingsInstanceAiView', () => {
 			vi.spyOn(store, 'verifyModel').mockResolvedValue({ ok: true });
 
 			const { findByTestId, findByText, getByTestId } = renderComponent();
-			await fireEvent.click(getByTestId('n8n-agent-model-row'));
+			await fireEvent.click(getByTestId('MNI-agent-model-row'));
 
-			const providerInput = await findByTestId('n8n-agent-model-provider-input');
-			const apiKeyInput = getByTestId('n8n-agent-model-api-key-input');
-			const modelField = getByTestId('n8n-agent-model-name-input');
+			const providerInput = await findByTestId('MNI-agent-model-provider-input');
+			const apiKeyInput = getByTestId('MNI-agent-model-api-key-input');
+			const modelField = getByTestId('MNI-agent-model-name-input');
 			const modelInput =
 				modelField.tagName === 'INPUT'
 					? (modelField as HTMLInputElement)
@@ -445,7 +445,7 @@ describe('SettingsInstanceAiView', () => {
 
 			await fireEvent.click(modelInput);
 			await fireEvent.click(await findByText('claude-opus-5 · instanceAi.onboarding.recommended'));
-			await fireEvent.click(getByTestId('n8n-agent-model-dialog-save'));
+			await fireEvent.click(getByTestId('MNI-agent-model-dialog-save'));
 			await waitFor(() => expect(store.draft).toMatchObject({ modelName: 'claude-opus-5' }));
 		});
 
@@ -467,13 +467,13 @@ describe('SettingsInstanceAiView', () => {
 
 			const { getByTestId, queryByTestId } = renderComponent();
 			await waitFor(() => expect(store.isLoading).toBe(false));
-			expect(getByTestId('n8n-agent-model-env-value')).toBeVisible();
-			expect(getByTestId('n8n-agent-sandbox-env-value')).toBeVisible();
+			expect(getByTestId('MNI-agent-model-env-value')).toBeVisible();
+			expect(getByTestId('MNI-agent-sandbox-env-value')).toBeVisible();
 
-			await fireEvent.click(getByTestId('n8n-agent-model-row'));
-			await fireEvent.click(getByTestId('n8n-agent-sandbox-row'));
-			expect(queryByTestId('n8n-agent-model-dialog')).toBeNull();
-			expect(queryByTestId('n8n-agent-sandbox-dialog')).toBeNull();
+			await fireEvent.click(getByTestId('MNI-agent-model-row'));
+			await fireEvent.click(getByTestId('MNI-agent-sandbox-row'));
+			expect(queryByTestId('MNI-agent-model-dialog')).toBeNull();
+			expect(queryByTestId('MNI-agent-sandbox-dialog')).toBeNull();
 		});
 
 		it('enables an environment-managed sandbox on an active instance', async () => {
@@ -488,23 +488,23 @@ describe('SettingsInstanceAiView', () => {
 			const save = vi.spyOn(store, 'save').mockResolvedValue(true);
 			const { getByTestId, queryByTestId } = renderComponent();
 
-			await fireEvent.click(getByTestId('n8n-agent-sandbox-enable'));
+			await fireEvent.click(getByTestId('MNI-agent-sandbox-enable'));
 
 			expect(store.draft.sandboxEnabled).toBe(true);
 			expect(save).toHaveBeenCalledOnce();
-			expect(queryByTestId('n8n-agent-sandbox-dialog')).toBeNull();
+			expect(queryByTestId('MNI-agent-sandbox-dialog')).toBeNull();
 		});
 
 		it('shows environment-managed search without an edit affordance', async () => {
 			store.$patch({ settings: { ...store.settings!, searchEnvConfigured: true } });
 
 			const { getByText, getByTestId, queryByTestId } = renderComponent();
-			expect(queryByTestId('n8n-agent-search-setup')).toBeNull();
+			expect(queryByTestId('MNI-agent-search-setup')).toBeNull();
 			expect(getByText('instanceAi.onboarding.foundOnServer')).toBeVisible();
-			expect(getByTestId('n8n-agent-search-env-value')).toBeVisible();
+			expect(getByTestId('MNI-agent-search-env-value')).toBeVisible();
 
-			await fireEvent.click(getByTestId('n8n-agent-search-row'));
-			expect(queryByTestId('n8n-agent-search-provider-select')).toBeNull();
+			await fireEvent.click(getByTestId('MNI-agent-search-row'));
+			expect(queryByTestId('MNI-agent-search-provider-select')).toBeNull();
 		});
 
 		it('fetches credential types on mount so deep links can render connection fields', () => {
@@ -517,18 +517,18 @@ describe('SettingsInstanceAiView', () => {
 			setModuleSettings(settingsStore, { ...defaultModuleSettings, proxyEnabled: true });
 
 			const { getByTestId, queryByTestId } = renderComponent();
-			expect(queryByTestId('n8n-agent-model-row')).toBeNull();
-			expect(getByTestId('n8n-agent-sandbox-row')).toBeVisible();
-			expect(queryByTestId('n8n-agent-search-row')).toBeNull();
+			expect(queryByTestId('MNI-agent-model-row')).toBeNull();
+			expect(getByTestId('MNI-agent-sandbox-row')).toBeVisible();
+			expect(queryByTestId('MNI-agent-search-row')).toBeNull();
 		});
 
 		it('hides provider rows on cloud deployments', () => {
 			setModuleSettings(settingsStore, { ...defaultModuleSettings, cloudManaged: true });
 
 			const { queryByTestId } = renderComponent();
-			expect(queryByTestId('n8n-agent-model-row')).toBeNull();
-			expect(queryByTestId('n8n-agent-sandbox-row')).toBeNull();
-			expect(queryByTestId('n8n-agent-search-row')).toBeNull();
+			expect(queryByTestId('MNI-agent-model-row')).toBeNull();
+			expect(queryByTestId('MNI-agent-sandbox-row')).toBeNull();
+			expect(queryByTestId('MNI-agent-search-row')).toBeNull();
 		});
 	});
 
@@ -536,7 +536,7 @@ describe('SettingsInstanceAiView', () => {
 		it('links to the AI usage settings instead of duplicating its controls', async () => {
 			const { getByTestId } = renderComponent();
 
-			await fireEvent.click(getByTestId('n8n-agent-data-sharing-row'));
+			await fireEvent.click(getByTestId('MNI-agent-data-sharing-row'));
 
 			expect(routerPushMock).toHaveBeenCalledWith({ name: VIEWS.AI_SETTINGS });
 		});
@@ -547,7 +547,7 @@ describe('SettingsInstanceAiView', () => {
 			);
 			const { getByTestId } = renderComponent();
 
-			await fireEvent.click(getByTestId('n8n-agent-data-sharing-row'));
+			await fireEvent.click(getByTestId('MNI-agent-data-sharing-row'));
 
 			expect(routerPushMock).not.toHaveBeenCalled();
 		});
@@ -556,7 +556,7 @@ describe('SettingsInstanceAiView', () => {
 	describe('Browser use settings', () => {
 		it('shows the browser use toggle when the experiment is enabled', () => {
 			const { getByTestId } = renderComponent();
-			expect(getByTestId('n8n-agent-browser-use-toggle')).toBeVisible();
+			expect(getByTestId('MNI-agent-browser-use-toggle')).toBeVisible();
 		});
 
 		it('hides the browser use toggle when the experiment is disabled', () => {
@@ -564,14 +564,14 @@ describe('SettingsInstanceAiView', () => {
 
 			const { queryByTestId } = renderComponent();
 
-			expect(queryByTestId('n8n-agent-browser-use-toggle')).toBeNull();
+			expect(queryByTestId('MNI-agent-browser-use-toggle')).toBeNull();
 		});
 	});
 
 	describe('Computer use settings', () => {
 		it('shows the computer use toggle when the experiment is enabled', () => {
 			const { getByTestId } = renderComponent();
-			expect(getByTestId('n8n-agent-computer-use-toggle')).toBeVisible();
+			expect(getByTestId('MNI-agent-computer-use-toggle')).toBeVisible();
 		});
 
 		it('hides the computer use toggle when the experiment is disabled', () => {
@@ -579,14 +579,14 @@ describe('SettingsInstanceAiView', () => {
 
 			const { queryByTestId } = renderComponent();
 
-			expect(queryByTestId('n8n-agent-computer-use-toggle')).toBeNull();
+			expect(queryByTestId('MNI-agent-computer-use-toggle')).toBeNull();
 		});
 	});
 
 	describe('MCP servers settings', () => {
 		it('renders the MCP access toggle for admins', () => {
 			const { getByTestId } = renderComponent();
-			expect(getByTestId('n8n-agent-mcp-access-toggle')).toBeVisible();
+			expect(getByTestId('MNI-agent-mcp-access-toggle')).toBeVisible();
 		});
 
 		it('persists a change to the MCP access toggle', async () => {
@@ -594,7 +594,7 @@ describe('SettingsInstanceAiView', () => {
 			const save = vi.spyOn(store, 'save').mockResolvedValue(true);
 			const { getByTestId } = renderComponent();
 
-			await fireEvent.click(getByTestId('n8n-agent-mcp-access-toggle'));
+			await fireEvent.click(getByTestId('MNI-agent-mcp-access-toggle'));
 
 			expect(setField).toHaveBeenCalledWith('mcpAccessEnabled', false);
 			expect(save).toHaveBeenCalled();
@@ -605,7 +605,7 @@ describe('SettingsInstanceAiView', () => {
 
 			await fireEvent.click(getByLabelText('Toggle settings.n8nAgent.permissions.group.mcp'));
 
-			await waitFor(() => expect(getByTestId('n8n-agent-permission-executeMcpTool')).toBeVisible());
+			await waitFor(() => expect(getByTestId('MNI-agent-permission-executeMcpTool')).toBeVisible());
 		});
 
 		it('locks the MCP permission group when MCP access is disabled', () => {
@@ -615,7 +615,7 @@ describe('SettingsInstanceAiView', () => {
 
 			expect(getByText('settings.n8nAgent.permissions.group.mcpDisabled')).toBeVisible();
 			expect(queryByLabelText('Toggle settings.n8nAgent.permissions.group.mcp')).toBeNull();
-			expect(queryByTestId('n8n-agent-permission-executeMcpTool')).toBeNull();
+			expect(queryByTestId('MNI-agent-permission-executeMcpTool')).toBeNull();
 		});
 
 		it('offers only always_allow and blocked for createPreference', async () => {
@@ -627,7 +627,7 @@ describe('SettingsInstanceAiView', () => {
 			await fireEvent.click(
 				getByLabelText('Toggle settings.n8nAgent.permissions.group.preferences'),
 			);
-			const select = await waitFor(() => getByTestId('n8n-agent-permission-createPreference'));
+			const select = await waitFor(() => getByTestId('MNI-agent-permission-createPreference'));
 			expect(select).toBeVisible();
 
 			await fireEvent.click(select.querySelector('input')!);
@@ -653,7 +653,7 @@ describe('SettingsInstanceAiView', () => {
 				'system',
 				'web',
 			]) {
-				expect(getByTestId(`n8n-agent-permission-group-${group}`)).toBeVisible();
+				expect(getByTestId(`MNI-agent-permission-group-${group}`)).toBeVisible();
 			}
 		});
 
@@ -662,7 +662,7 @@ describe('SettingsInstanceAiView', () => {
 
 			await fireEvent.click(getByLabelText('Toggle settings.n8nAgent.permissions.group.nodes'));
 
-			await waitFor(() => expect(getByTestId('n8n-agent-permission-executeNode')).toBeVisible());
+			await waitFor(() => expect(getByTestId('MNI-agent-permission-executeNode')).toBeVisible());
 		});
 
 		it('summarises non-default permissions as exceptions', () => {
@@ -674,10 +674,10 @@ describe('SettingsInstanceAiView', () => {
 			});
 
 			const { getByTestId } = renderComponent();
-			expect(getByTestId('n8n-agent-permission-group-workflows').textContent).toContain(
+			expect(getByTestId('MNI-agent-permission-group-workflows').textContent).toContain(
 				'settings.n8nAgent.permissions.group.exceptions',
 			);
-			expect(getByTestId('n8n-agent-permission-group-folders').textContent).toContain(
+			expect(getByTestId('MNI-agent-permission-group-folders').textContent).toContain(
 				'settings.n8nAgent.permissions.group.default',
 			);
 		});
@@ -687,8 +687,8 @@ describe('SettingsInstanceAiView', () => {
 
 			const { queryByTestId, getByTestId } = renderComponent();
 
-			expect(queryByTestId('n8n-agent-permission-group-preferences')).toBeNull();
-			expect(getByTestId('n8n-agent-permission-group-workflows')).toBeVisible();
+			expect(queryByTestId('MNI-agent-permission-group-preferences')).toBeNull();
+			expect(getByTestId('MNI-agent-permission-group-workflows')).toBeVisible();
 		});
 
 		it('summarises the untouched Preferences group as the default', () => {
@@ -696,7 +696,7 @@ describe('SettingsInstanceAiView', () => {
 			// against require_approval would read the untouched group as an
 			// exception.
 			const { getByTestId } = renderComponent();
-			expect(getByTestId('n8n-agent-permission-group-preferences').textContent).toContain(
+			expect(getByTestId('MNI-agent-permission-group-preferences').textContent).toContain(
 				'settings.n8nAgent.permissions.group.default',
 			);
 		});
@@ -707,9 +707,9 @@ describe('SettingsInstanceAiView', () => {
 			const { getByTestId, getByLabelText, getAllByText } = renderComponent();
 
 			await fireEvent.click(getByLabelText('Toggle settings.n8nAgent.permissions.group.folders'));
-			await waitFor(() => expect(getByTestId('n8n-agent-permission-createFolder')).toBeVisible());
+			await waitFor(() => expect(getByTestId('MNI-agent-permission-createFolder')).toBeVisible());
 
-			const select = getByTestId('n8n-agent-permission-createFolder');
+			const select = getByTestId('MNI-agent-permission-createFolder');
 			await fireEvent.click(select.querySelector('input')!);
 			await fireEvent.click(getAllByText('settings.n8nAgent.permissions.alwaysAllow')[0]);
 

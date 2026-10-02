@@ -1,7 +1,7 @@
-import { LicenseState } from '@n8n/backend-common';
-import { mockInstance } from '@n8n/backend-test-utils';
-import type { InboxVisibility, User, WorkflowReviewRequest } from '@n8n/db';
-import { WorkflowReviewInboxRepository, WorkflowReviewRequestWorkflowRepository } from '@n8n/db';
+import { LicenseState } from '@MNI/backend-common';
+import { mockInstance } from '@MNI/backend-test-utils';
+import type { InboxVisibility, User, WorkflowReviewRequest } from '@MNI/db';
+import { WorkflowReviewInboxRepository, WorkflowReviewRequestWorkflowRepository } from '@MNI/db';
 import { mock } from 'vitest-mock-extended';
 
 import type { WorkflowReviewAuthorizationService } from '../workflow-review-authorization.service';

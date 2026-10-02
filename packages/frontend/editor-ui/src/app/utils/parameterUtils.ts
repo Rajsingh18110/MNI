@@ -1,7 +1,7 @@
 import get from 'lodash/get';
 import set from 'lodash/set';
 import unset from 'lodash/unset';
-import type { ICredentialDataDecryptedObject, INodeParameters } from 'n8n-workflow';
+import type { ICredentialDataDecryptedObject, INodeParameters } from 'MNI-workflow';
 
 const ARRAY_PATH_PATTERN = /(.*)\[(\d+)\]$/;
 

@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import { N8nIcon, N8nTooltip } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
-import type { AllRolesMap } from '@n8n/permissions';
+import { N8nIcon, N8nTooltip } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
+import type { AllRolesMap } from '@MNI/permissions';
 import { computed } from 'vue';
 import type { ProjectMemberData } from '../projects.types';
 

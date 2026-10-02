@@ -10,7 +10,7 @@
  * - Only one dedicated worker accesses OPFS at a time (prevents corruption)
  */
 
-import type { INodeTypeDescription } from 'n8n-workflow';
+import type { INodeTypeDescription } from 'MNI-workflow';
 import { coordinator, registerTab } from './coordinator';
 import type { SQLiteParam } from './data/types';
 

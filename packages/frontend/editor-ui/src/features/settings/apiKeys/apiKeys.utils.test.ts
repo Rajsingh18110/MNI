@@ -1,4 +1,4 @@
-import type { ApiKeyScope } from '@n8n/permissions';
+import type { ApiKeyScope } from '@MNI/permissions';
 
 import { classifyScope, getReadOnlyScopes, groupScopes, inferSelectionMode } from './apiKeys.utils';
 

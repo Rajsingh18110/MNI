@@ -14,7 +14,7 @@ and missing tests. Do not make code changes unless the user explicitly asks for 
 
 ## Input
 
-The user must provide a **GitHub pull request URL** (e.g. `https://github.com/n8n-io/n8n/pull/1234`).
+The user must provide a **GitHub pull request URL** (e.g. `https://github.com/MNI-io/MNI/pull/1234`).
 
 If not provided, ask for it before proceeding.
 
@@ -124,7 +124,7 @@ but make sure the diff has been checked against these common failure modes.
 - Migrations, foreign keys, rollback behavior, and entity fields line up
 - Resource ownership and project/user scoping are enforced in services, not just routes
 - Authenticated controller routes use `@ProjectScope` or `@GlobalScope`
-- Package boundaries are respected; `cli` or n8n-specific concepts should not leak into generic SDK packages
+- Package boundaries are respected; `cli` or MNI-specific concepts should not leak into generic SDK packages
 
 ### Readability
 

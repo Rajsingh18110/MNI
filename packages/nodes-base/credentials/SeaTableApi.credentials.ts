@@ -4,7 +4,7 @@ import type {
 	ICredentialType,
 	INodeProperties,
 	INodePropertyOptions,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 // Get options for timezones
 const timezones: INodePropertyOptions[] = moment.tz
@@ -57,7 +57,7 @@ export class SeaTableApi implements ICredentialType {
 			name: 'token',
 			type: 'string',
 			description:
-				'The API-Token of the SeaTable base you would like to use with n8n. MNI can only connect to one base at a time.',
+				'The API-Token of the SeaTable base you would like to use with MNI. MNI can only connect to one base at a time.',
 			typeOptions: { password: true },
 			default: '',
 		},

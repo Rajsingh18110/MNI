@@ -10,7 +10,7 @@ import {
 	useWorkflowDocumentStore,
 	createWorkflowDocumentId,
 } from '@/app/stores/workflowDocument.store';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 
 const isSelectionGroupableMock = vi.fn();
 const isSelectionExtractableMock = vi.fn();

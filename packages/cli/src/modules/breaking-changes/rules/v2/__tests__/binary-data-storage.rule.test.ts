@@ -1,5 +1,5 @@
-import type { ExecutionsConfig } from '@n8n/config';
-import type { BinaryDataConfig } from 'n8n-core';
+import type { ExecutionsConfig } from '@MNI/config';
+import type { BinaryDataConfig } from 'MNI-core';
 import { mock } from 'vitest-mock-extended';
 
 import { BinaryDataStorageRule } from '../binary-data-storage.rule';

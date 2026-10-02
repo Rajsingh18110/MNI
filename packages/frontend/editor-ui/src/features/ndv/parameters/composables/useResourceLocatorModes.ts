@@ -1,11 +1,11 @@
 import type { Ref } from 'vue';
 import { computed } from 'vue';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import type {
 	INodeParameterResourceLocator,
 	INodePropertyMode,
 	ResourceLocatorModes,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 /**
  * Mode handling (list/id) for a resource-locator–style input. Shared by the

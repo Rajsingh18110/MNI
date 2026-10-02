@@ -11,8 +11,8 @@
  * features — the builder banner above nudges users there.
  */
 import { computed, inject } from 'vue';
-import { N8nMarkdownEditor, N8nSectionHeader, N8nText } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+import { N8nMarkdownEditor, N8nSectionHeader, N8nText } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 
 import AgentInfoPanel from '@/features/agents/components/AgentInfoPanel.vue';
 import AgentCapabilitiesSection from '@/features/agents/components/AgentCapabilitiesSection.vue';

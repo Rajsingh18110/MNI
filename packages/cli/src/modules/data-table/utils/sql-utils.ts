@@ -3,19 +3,19 @@ import {
 	dataTableIdSchema,
 	DATA_TABLE_COLUMN_ERROR_MESSAGE,
 	type DataTableCreateColumnSchema,
-} from '@n8n/api-types';
-import { GlobalConfig } from '@n8n/config';
-import { DslColumn } from '@n8n/db';
-import { Container } from '@n8n/di';
-import type { DataSourceOptions } from '@n8n/typeorm';
+} from '@MNI/api-types';
+import { GlobalConfig } from '@MNI/config';
+import { DslColumn } from '@MNI/db';
+import { Container } from '@MNI/di';
+import type { DataSourceOptions } from '@MNI/typeorm';
 import type {
 	DataTableColumnJsType,
 	DataTableColumnType,
 	DataTableRawRowsReturn,
 	DataTableRowReturn,
 	DataTableRowsReturn,
-} from 'n8n-workflow';
-import { DATA_TABLE_SYSTEM_COLUMN_TYPE_MAP, UnexpectedError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { DATA_TABLE_SYSTEM_COLUMN_TYPE_MAP, UnexpectedError } from 'MNI-workflow';
 
 import { NotFoundError } from '@/errors/response-errors/not-found.error';
 

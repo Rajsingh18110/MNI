@@ -1,4 +1,4 @@
-import type { IDataObject, IHttpRequestMethods, IHttpRequestOptions } from 'n8n-workflow';
+import type { IDataObject, IHttpRequestMethods, IHttpRequestOptions } from 'MNI-workflow';
 
 import { DEFAULT_GRAPH_BASE_URL } from './constants';
 

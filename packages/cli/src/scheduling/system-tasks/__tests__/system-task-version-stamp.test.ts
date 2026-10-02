@@ -1,21 +1,21 @@
 import { inc } from 'semver';
 
-import { N8N_VERSION } from '@/constants';
+import { MNI_VERSION } from '@/constants';
 
 import { stampedByNewerVersion, versionStamp } from '../system-task-version-stamp';
 
 describe('versionStamp', () => {
 	it("carries this instance's version", () => {
-		expect(versionStamp()).toEqual({ n8nVersion: N8N_VERSION });
+		expect(versionStamp()).toEqual({ n8nVersion: MNI_VERSION });
 	});
 });
 
 describe('stampedByNewerVersion', () => {
 	it('is true for a stamp newer than this version', () => {
-		expect(stampedByNewerVersion({ n8nVersion: inc(N8N_VERSION, 'minor') })).toBe(true);
+		expect(stampedByNewerVersion({ n8nVersion: inc(MNI_VERSION, 'minor') })).toBe(true);
 	});
 
-	it.each([N8N_VERSION, '0.0.1'])(
+	it.each([MNI_VERSION, '0.0.1'])(
 		'is false for version %s, not newer than this one',
 		(n8nVersion) => {
 			expect(stampedByNewerVersion({ n8nVersion })).toBe(false);

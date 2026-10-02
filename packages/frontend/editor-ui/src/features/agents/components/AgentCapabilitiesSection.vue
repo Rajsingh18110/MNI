@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import NodeIcon from '@/app/components/NodeIcon.vue';
 import { AI_MCP_TOOL_NODE_TYPE } from '@/app/constants/nodeTypes';
-import { useToast } from '@n8n/composables/useToast';
+import { useToast } from '@MNI/composables/useToast';
 import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';
 import { useUIStore } from '@/app/stores/ui.store';
-import type { AgentConfigValidationIssue, AgentJsonTaskConfig } from '@n8n/api-types';
-import { N8nDropdownMenu, N8nIcon, N8nTooltip } from '@n8n/design-system';
-import type { IconName } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+import type { AgentConfigValidationIssue, AgentJsonTaskConfig } from '@MNI/api-types';
+import { N8nDropdownMenu, N8nIcon, N8nTooltip } from '@MNI/design-system';
+import type { IconName } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 import { computed, onMounted, watch } from 'vue';
 import type { AgentJsonConfig, AgentJsonMcpServerConfig, AgentJsonToolRef } from '../types';
 import type { AgentSkill, CustomToolEntry } from '../types';

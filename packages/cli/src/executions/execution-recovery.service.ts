@@ -1,5 +1,5 @@
-import { Logger } from '@n8n/backend-common';
-import { ExecutionsConfig } from '@n8n/config';
+import { Logger } from '@MNI/backend-common';
+import { ExecutionsConfig } from '@MNI/config';
 import {
 	type IExecutionResponse,
 	ExecutionRepository,
@@ -7,15 +7,15 @@ import {
 	WorkflowEntity,
 	WorkflowRepository,
 	User,
-} from '@n8n/db';
-import { Container, Service } from '@n8n/di';
-import { PROJECT_ADMIN_ROLE_SLUG, PROJECT_OWNER_ROLE_SLUG } from '@n8n/permissions';
-import { ensureError } from '@n8n/utils/errors/ensure-error';
-import { sleep } from '@n8n/utils/sleep';
+} from '@MNI/db';
+import { Container, Service } from '@MNI/di';
+import { PROJECT_ADMIN_ROLE_SLUG, PROJECT_OWNER_ROLE_SLUG } from '@MNI/permissions';
+import { ensureError } from '@MNI/utils/errors/ensure-error';
+import { sleep } from '@MNI/utils/sleep';
 import type { DateTime } from 'luxon';
-import { InstanceSettings } from 'n8n-core';
-import { createEmptyRunExecutionData } from 'n8n-workflow';
-import type { IRun, ITaskData } from 'n8n-workflow';
+import { InstanceSettings } from 'MNI-core';
+import { createEmptyRunExecutionData } from 'MNI-workflow';
+import type { IRun, ITaskData } from 'MNI-workflow';
 
 import { ARTIFICIAL_TASK_DATA } from '@/constants';
 import { NodeCrashedError } from '@/errors/node-crashed.error';

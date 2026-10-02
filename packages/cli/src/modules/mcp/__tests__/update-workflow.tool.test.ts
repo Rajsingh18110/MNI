@@ -1,13 +1,13 @@
-import { Logger } from '@n8n/backend-common';
-import { mockInstance } from '@n8n/backend-test-utils';
-import { GlobalConfig } from '@n8n/config';
-import { SharedWorkflowRepository, User, WorkflowEntity, type Project } from '@n8n/db';
+import { Logger } from '@MNI/backend-common';
+import { mockInstance } from '@MNI/backend-test-utils';
+import { GlobalConfig } from '@MNI/config';
+import { SharedWorkflowRepository, User, WorkflowEntity, type Project } from '@MNI/db';
 import {
 	ERROR_TRIGGER_NODE_TYPE,
 	NodeConnectionTypes,
 	type IConnections,
 	type INode,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import type { Mock } from 'vitest';
 import { mock } from 'vitest-mock-extended';
 import { z } from 'zod';
@@ -24,7 +24,7 @@ import { SubworkflowPolicyChecker } from '@/executions/pre-execution-checks/subw
 import { NodeTypes } from '@/node-types';
 import type { AiGatewayService } from '@/services/ai-gateway.service';
 import { TagService } from '@/services/tag.service';
-import { UrlService } from '@n8n/backend-services';
+import { UrlService } from '@MNI/backend-services';
 import { Telemetry } from '@/telemetry';
 import { WorkflowFinderService } from '@/workflows/workflow-finder.service';
 import { WorkflowPublishedDataService } from '@/workflows/workflow-published-data.service';
@@ -42,7 +42,7 @@ vi.mock('../tools/workflow-builder/credentials-auto-assign', () => ({
 }));
 
 const mockValidateJSON = vi.fn().mockReturnValue([]);
-vi.mock('@n8n/ai-workflow-builder', () => ({
+vi.mock('@MNI/ai-workflow-builder', () => ({
 	MCP_UPDATE_WORKFLOW_TOOL: {
 		toolName: 'update_workflow',
 		displayTitle: 'Updating workflow',
@@ -64,7 +64,7 @@ const parseResult = (result: { content: Array<{ type: string; text?: string }> }
 const makeNode = (overrides: Partial<INode> = {}): INode => ({
 	id: 'node-id',
 	name: 'A',
-	type: 'n8n-nodes-base.set',
+	type: 'MNI-nodes-base.set',
 	typeVersion: 1,
 	position: [0, 0],
 	parameters: {},
@@ -146,10 +146,10 @@ describe('update-workflow MCP tool', () => {
 		});
 		nodeTypes = mockInstance(NodeTypes);
 		nodeTypes.getByNameAndVersion.mockImplementation(((type: string) => {
-			if (type === '@n8n/n8n-nodes-langchain.agent') {
+			if (type === '@MNI/MNI-nodes-langchain.agent') {
 				return { description: { group: ['transform'], outputs: [NodeConnectionTypes.Main] } };
 			}
-			if (type === '@n8n/n8n-nodes-langchain.agentTool') {
+			if (type === '@MNI/MNI-nodes-langchain.agentTool') {
 				return { description: { group: ['transform'], outputs: [NodeConnectionTypes.AiTool] } };
 			}
 			// The group validator resolves trigger-ness via description.group; an
@@ -506,7 +506,7 @@ describe('update-workflow MCP tool', () => {
 				name: 'Existing',
 				settings: { availableInMCP: true },
 				nodes: [
-					makeNode({ id: 'trigger', name: 'Trigger', type: 'n8n-nodes-base.manualTrigger' }),
+					makeNode({ id: 'trigger', name: 'Trigger', type: 'MNI-nodes-base.manualTrigger' }),
 					makeNode({ id: 'a', name: 'A', position: [200, 0] }),
 					makeNode({ id: 'b', name: 'B', position: [400, 0] }),
 				],
@@ -519,15 +519,15 @@ describe('update-workflow MCP tool', () => {
 		beforeEach(() => {
 			// The group validator resolves trigger-ness via description.group.
 			nodeTypes.getByNameAndVersion.mockImplementation(((type: string) => {
-				if (type === 'n8n-nodes-base.manualTrigger') {
+				if (type === 'MNI-nodes-base.manualTrigger') {
 					return { description: { group: ['trigger'], outputs: [NodeConnectionTypes.Main] } };
 				}
 
-				if (type === '@n8n/n8n-nodes-langchain.agent') {
+				if (type === '@MNI/MNI-nodes-langchain.agent') {
 					return { description: { group: ['transform'], outputs: [NodeConnectionTypes.Main] } };
 				}
 
-				if (type === '@n8n/n8n-nodes-langchain.agentTool') {
+				if (type === '@MNI/MNI-nodes-langchain.agentTool') {
 					return { description: { group: ['transform'], outputs: [NodeConnectionTypes.AiTool] } };
 				}
 				return { description: { group: ['transform'], outputs: [NodeConnectionTypes.Main] } };
@@ -720,11 +720,11 @@ describe('update-workflow MCP tool', () => {
 					name: 'Existing',
 					settings: { availableInMCP: true },
 					nodes: [
-						makeNode({ id: 'agent', name: 'Agent', type: '@n8n/n8n-nodes-langchain.agent' }),
+						makeNode({ id: 'agent', name: 'Agent', type: '@MNI/MNI-nodes-langchain.agent' }),
 						makeNode({
 							id: 'model',
 							name: 'Model',
-							type: '@n8n/n8n-nodes-langchain.agentTool',
+							type: '@MNI/MNI-nodes-langchain.agentTool',
 							position: [200, 0],
 						}),
 					],
@@ -842,7 +842,7 @@ describe('update-workflow MCP tool', () => {
 			findWorkflowMock.mockResolvedValue(
 				Object.assign(buildWorkflowWithTrigger(), {
 					nodes: [
-						makeNode({ id: 'trigger', name: 'Trigger', type: 'n8n-nodes-base.manualTrigger' }),
+						makeNode({ id: 'trigger', name: 'Trigger', type: 'MNI-nodes-base.manualTrigger' }),
 						makeNode({ id: 'a', name: 'A', position: [200, 0] }),
 						makeNode({ id: 'b', name: 'B', position: [400, 0] }),
 						makeNode({ id: 'c', name: 'C', position: [600, 200] }),
@@ -948,7 +948,7 @@ describe('update-workflow MCP tool', () => {
 					name: 'Existing',
 					settings: { availableInMCP: true },
 					nodes: [
-						makeNode({ id: 'trigger', name: 'Trigger', type: 'n8n-nodes-base.manualTrigger' }),
+						makeNode({ id: 'trigger', name: 'Trigger', type: 'MNI-nodes-base.manualTrigger' }),
 						makeNode({ id: 'a', name: 'A', position: [200, 0] }),
 						makeNode({ id: 'b', name: 'B', position: [400, 0] }),
 						makeNode({ id: 'c', name: 'C', position: [600, 0] }),
@@ -998,7 +998,7 @@ describe('update-workflow MCP tool', () => {
 				{
 					workflowId: 'wf-1',
 					operations: [
-						{ type: 'addNode', node: { name: 'C', type: 'n8n-nodes-base.set', typeVersion: 1 } },
+						{ type: 'addNode', node: { name: 'C', type: 'MNI-nodes-base.set', typeVersion: 1 } },
 						{ type: 'addConnection', source: 'A', target: 'C' },
 					],
 				},
@@ -1278,7 +1278,7 @@ describe('update-workflow MCP tool', () => {
 					makeNode({
 						id: 'a',
 						name: 'HTTP Request',
-						type: 'n8n-nodes-base.httpRequest',
+						type: 'MNI-nodes-base.httpRequest',
 						typeVersion: 4.2,
 						parameters: { url: 'https://example.com' },
 						onError: 'continueErrorOutput',
@@ -2123,7 +2123,7 @@ describe('update-workflow MCP tool', () => {
 			});
 
 			test('honors a custom error trigger type (NODES_ERROR_TRIGGER_TYPE)', async () => {
-				const customType = 'n8n-nodes-base.customErrorTrigger';
+				const customType = 'MNI-nodes-base.customErrorTrigger';
 				globalConfig = mockInstance(GlobalConfig, {
 					tags: { disabled: false },
 					executions: { maxTimeout: 3600, timeout: -1 },
@@ -2152,7 +2152,7 @@ describe('update-workflow MCP tool', () => {
 				});
 
 				// The published version has the configured custom trigger, so it is accepted
-				// even though it lacks the default n8n-nodes-base.errorTrigger.
+				// even though it lacks the default MNI-nodes-base.errorTrigger.
 				expect(result.isError).toBeUndefined();
 				expect(workflowService.update).toHaveBeenCalled();
 			});
@@ -2573,7 +2573,7 @@ describe('update-workflow MCP tool', () => {
 				user,
 				expect.any(WorkflowEntity),
 				'wf-1',
-				expect.objectContaining({ aiBuilderAssisted: true, source: 'n8n-mcp' }),
+				expect.objectContaining({ aiBuilderAssisted: true, source: 'MNI-mcp' }),
 			);
 			expect(updateMock.mock.calls[0][1].name).toBe('Renamed');
 			expect(updateMock.mock.calls[0][1].meta).toEqual(
@@ -2595,7 +2595,7 @@ describe('update-workflow MCP tool', () => {
 				operations: [
 					{
 						type: 'addNode',
-						node: { name: 'C', type: 'n8n-nodes-base.slack', typeVersion: 1 },
+						node: { name: 'C', type: 'MNI-nodes-base.slack', typeVersion: 1 },
 					},
 					{
 						type: 'updateNodeParameters',
@@ -2649,7 +2649,7 @@ describe('update-workflow MCP tool', () => {
 				operations: [
 					{
 						type: 'addNode',
-						node: { name: 'C', type: 'n8n-nodes-base.slack', typeVersion: 1 },
+						node: { name: 'C', type: 'MNI-nodes-base.slack', typeVersion: 1 },
 					},
 				],
 			});
@@ -2696,7 +2696,7 @@ describe('update-workflow MCP tool', () => {
 			await callHandler({
 				workflowId: 'wf-1',
 				operations: [
-					{ type: 'addNode', node: { name: 'C', type: 'n8n-nodes-base.slack', typeVersion: 1 } },
+					{ type: 'addNode', node: { name: 'C', type: 'MNI-nodes-base.slack', typeVersion: 1 } },
 				],
 			});
 
@@ -2729,7 +2729,7 @@ describe('update-workflow MCP tool', () => {
 			const result = await callHandler({
 				workflowId: 'wf-1',
 				operations: [
-					{ type: 'addNode', node: { name: 'C', type: 'n8n-nodes-base.slack', typeVersion: 1 } },
+					{ type: 'addNode', node: { name: 'C', type: 'MNI-nodes-base.slack', typeVersion: 1 } },
 				],
 			});
 
@@ -2751,7 +2751,7 @@ describe('update-workflow MCP tool', () => {
 						type: 'addNode',
 						node: {
 							name: 'HTTP Request',
-							type: 'n8n-nodes-base.httpRequest',
+							type: 'MNI-nodes-base.httpRequest',
 							typeVersion: 1,
 						},
 					},
@@ -2766,7 +2766,7 @@ describe('update-workflow MCP tool', () => {
 
 		test('assigns webhookId to a webhook node added via addNode', async () => {
 			nodeTypes.getByNameAndVersion.mockImplementation(((type: string) => {
-				if (type === 'n8n-nodes-base.webhook') {
+				if (type === 'MNI-nodes-base.webhook') {
 					return { description: { webhooks: [{ httpMethod: 'GET', path: '' }] } };
 				}
 				return { description: {} };
@@ -2777,7 +2777,7 @@ describe('update-workflow MCP tool', () => {
 				operations: [
 					{
 						type: 'addNode',
-						node: { name: 'Webhook', type: 'n8n-nodes-base.webhook', typeVersion: 1 },
+						node: { name: 'Webhook', type: 'MNI-nodes-base.webhook', typeVersion: 1 },
 					},
 				],
 			});
@@ -3053,13 +3053,13 @@ describe('update-workflow MCP tool', () => {
 							makeNode({
 								id: 'manager',
 								name: 'Manager Agent',
-								type: '@n8n/n8n-nodes-langchain.agent',
+								type: '@MNI/MNI-nodes-langchain.agent',
 								typeVersion: 3,
 							}),
 							makeNode({
 								id: 'worker',
 								name: 'Worker Agent',
-								type: '@n8n/n8n-nodes-langchain.agent',
+								type: '@MNI/MNI-nodes-langchain.agent',
 								typeVersion: 3,
 								position: [200, 0],
 							}),
@@ -3085,20 +3085,20 @@ describe('update-workflow MCP tool', () => {
 				const response = parseResult(result);
 				expect(response.error).toContain('Worker Agent');
 				expect(response.error).toContain('Manager Agent');
-				expect(response.error).toContain('@n8n/n8n-nodes-langchain.agentTool');
+				expect(response.error).toContain('@MNI/MNI-nodes-langchain.agentTool');
 			});
 		});
 
 		describe('credential validation', () => {
 			beforeEach(() => {
 				nodeTypes.getByNameAndVersion.mockImplementation(((type: string) => {
-					if (type === 'n8n-nodes-base.slack') {
+					if (type === 'MNI-nodes-base.slack') {
 						return { description: { credentials: [{ name: 'slackApi' }] } };
 					}
-					if (type === 'n8n-nodes-base.set') {
+					if (type === 'MNI-nodes-base.set') {
 						return { description: { credentials: [] } };
 					}
-					if (type === 'n8n-nodes-base.httpRequest') {
+					if (type === 'MNI-nodes-base.httpRequest') {
 						// HTTP Request declares its predefined/generic credential selectors
 						// as `credentialsSelect` properties rather than static credentials.
 						return {
@@ -3136,7 +3136,7 @@ describe('update-workflow MCP tool', () => {
 			test('rejects setNodeCredential with a non-existent credential id', async () => {
 				findWorkflowMock.mockResolvedValue(
 					Object.assign(buildExistingWorkflow(), {
-						nodes: [makeNode({ id: 's', name: 'Slack', type: 'n8n-nodes-base.slack' })],
+						nodes: [makeNode({ id: 's', name: 'Slack', type: 'MNI-nodes-base.slack' })],
 						connections: {},
 					}),
 				);
@@ -3164,7 +3164,7 @@ describe('update-workflow MCP tool', () => {
 			test('rejects setNodeCredential when credential type does not match the key', async () => {
 				findWorkflowMock.mockResolvedValue(
 					Object.assign(buildExistingWorkflow(), {
-						nodes: [makeNode({ id: 's', name: 'Slack', type: 'n8n-nodes-base.slack' })],
+						nodes: [makeNode({ id: 's', name: 'Slack', type: 'MNI-nodes-base.slack' })],
 						connections: {},
 					}),
 				);
@@ -3191,7 +3191,7 @@ describe('update-workflow MCP tool', () => {
 			test('rejects setNodeCredential when the node type does not accept the credential key', async () => {
 				findWorkflowMock.mockResolvedValue(
 					Object.assign(buildExistingWorkflow(), {
-						nodes: [makeNode({ id: 's', name: 'Setter', type: 'n8n-nodes-base.set' })],
+						nodes: [makeNode({ id: 's', name: 'Setter', type: 'MNI-nodes-base.set' })],
 						connections: {},
 					}),
 				);
@@ -3218,7 +3218,7 @@ describe('update-workflow MCP tool', () => {
 			test('accepts a setNodeCredential whose id, type and key all match', async () => {
 				findWorkflowMock.mockResolvedValue(
 					Object.assign(buildExistingWorkflow(), {
-						nodes: [makeNode({ id: 's', name: 'Slack', type: 'n8n-nodes-base.slack' })],
+						nodes: [makeNode({ id: 's', name: 'Slack', type: 'MNI-nodes-base.slack' })],
 						connections: {},
 					}),
 				);
@@ -3250,7 +3250,7 @@ describe('update-workflow MCP tool', () => {
 							makeNode({
 								id: 'h',
 								name: 'HTTP Request',
-								type: 'n8n-nodes-base.httpRequest',
+								type: 'MNI-nodes-base.httpRequest',
 								typeVersion: 4,
 								parameters: {
 									authentication: 'predefinedCredentialType',
@@ -3291,7 +3291,7 @@ describe('update-workflow MCP tool', () => {
 							type: 'addNode',
 							node: {
 								name: 'HTTP Request',
-								type: 'n8n-nodes-base.httpRequest',
+								type: 'MNI-nodes-base.httpRequest',
 								typeVersion: 4,
 								parameters: {
 									authentication: 'predefinedCredentialType',
@@ -3314,7 +3314,7 @@ describe('update-workflow MCP tool', () => {
 							makeNode({
 								id: 'h',
 								name: 'HTTP Request',
-								type: 'n8n-nodes-base.httpRequest',
+								type: 'MNI-nodes-base.httpRequest',
 								typeVersion: 4,
 								parameters: {},
 							}),
@@ -3352,7 +3352,7 @@ describe('update-workflow MCP tool', () => {
 							makeNode({
 								id: 'h',
 								name: 'HTTP Request',
-								type: 'n8n-nodes-base.httpRequest',
+								type: 'MNI-nodes-base.httpRequest',
 								typeVersion: 4,
 								parameters: {},
 							}),
@@ -3396,7 +3396,7 @@ describe('update-workflow MCP tool', () => {
 							makeNode({
 								id: 'h',
 								name: 'HTTP Request',
-								type: 'n8n-nodes-base.httpRequest',
+								type: 'MNI-nodes-base.httpRequest',
 								typeVersion: 4,
 								parameters: {},
 							}),
@@ -3438,7 +3438,7 @@ describe('update-workflow MCP tool', () => {
 							makeNode({
 								id: 's',
 								name: 'Setter',
-								type: 'n8n-nodes-base.set',
+								type: 'MNI-nodes-base.set',
 								parameters: { nodeCredentialType: 'githubApi' },
 							}),
 						],
@@ -3468,7 +3468,7 @@ describe('update-workflow MCP tool', () => {
 			test('rejects setNodeCredential with a credential from another project', async () => {
 				findWorkflowMock.mockResolvedValue(
 					Object.assign(buildExistingWorkflow(), {
-						nodes: [makeNode({ id: 's', name: 'Slack', type: 'n8n-nodes-base.slack' })],
+						nodes: [makeNode({ id: 's', name: 'Slack', type: 'MNI-nodes-base.slack' })],
 						connections: {},
 					}),
 				);
@@ -3501,7 +3501,7 @@ describe('update-workflow MCP tool', () => {
 							type: 'addNode',
 							node: {
 								name: 'Slack',
-								type: 'n8n-nodes-base.slack',
+								type: 'MNI-nodes-base.slack',
 								typeVersion: 1,
 								credentials: {
 									slackApi: { id: 'cred-other-project', name: 'Other Project Slack' },
@@ -3525,7 +3525,7 @@ describe('update-workflow MCP tool', () => {
 							type: 'addNode',
 							node: {
 								name: 'Slack',
-								type: 'n8n-nodes-base.slack',
+								type: 'MNI-nodes-base.slack',
 								typeVersion: 1,
 								credentials: {
 									slackApi: { id: 'cred-missing', name: 'Whatever' },
@@ -3549,7 +3549,7 @@ describe('update-workflow MCP tool', () => {
 							type: 'addNode',
 							node: {
 								name: 'Slack',
-								type: 'n8n-nodes-base.slack',
+								type: 'MNI-nodes-base.slack',
 								typeVersion: 1,
 								credentials: { slackApi: { name: 'My Slack' } },
 							},
@@ -3570,7 +3570,7 @@ describe('update-workflow MCP tool', () => {
 
 			const dataTableNode = (name: string, dataTableId: ReturnType<typeof dataTableLocator>) => ({
 				name,
-				type: 'n8n-nodes-base.dataTable',
+				type: 'MNI-nodes-base.dataTable',
 				typeVersion: 1,
 				parameters: { dataTableId },
 			});
@@ -3644,7 +3644,7 @@ describe('update-workflow MCP tool', () => {
 							makeNode({
 								id: 'dt',
 								name: 'DT',
-								type: 'n8n-nodes-base.dataTable',
+								type: 'MNI-nodes-base.dataTable',
 								typeVersion: 1,
 								parameters: { dataTableId: dataTableLocator('id', 'dt-1') },
 							}),
@@ -3705,7 +3705,7 @@ describe('update-workflow MCP tool', () => {
 							makeNode({
 								id: 'dt',
 								name: 'DT',
-								type: 'n8n-nodes-base.dataTable',
+								type: 'MNI-nodes-base.dataTable',
 								typeVersion: 1,
 								parameters: { dataTableId: dataTableLocator('id', 'long-gone') },
 							}),

@@ -1,7 +1,7 @@
-import type { RedactionFloor } from '@n8n/api-types';
-import type { LicenseState } from '@n8n/backend-common';
-import type { ContextEstablishmentOptions } from '@n8n/decorators';
-import type { IRedactionSetting, Workflow, WorkflowSettings } from 'n8n-workflow';
+import type { RedactionFloor } from '@MNI/api-types';
+import type { LicenseState } from '@MNI/backend-common';
+import type { ContextEstablishmentOptions } from '@MNI/decorators';
+import type { IRedactionSetting, Workflow, WorkflowSettings } from 'MNI-workflow';
 import type { MockProxy } from 'vitest-mock-extended';
 import { mock } from 'vitest-mock-extended';
 
@@ -255,7 +255,7 @@ describe('RedactionContextHook', () => {
 		});
 
 		it('reports isApplicableToTriggerNode === false (global, not user-facing)', () => {
-			expect(hook.isApplicableToTriggerNode('n8n-nodes-base.webhook')).toBe(false);
+			expect(hook.isApplicableToTriggerNode('MNI-nodes-base.webhook')).toBe(false);
 		});
 	});
 });

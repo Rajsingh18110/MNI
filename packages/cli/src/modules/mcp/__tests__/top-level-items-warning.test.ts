@@ -1,4 +1,4 @@
-import type { IConnections, INode } from 'n8n-workflow';
+import type { IConnections, INode } from 'MNI-workflow';
 
 import { topLevelItemsWarning } from '../tools/workflow-builder/top-level-items-warning';
 
@@ -6,7 +6,7 @@ const makeNodes = (count: number): INode[] =>
 	Array.from({ length: count }, (_, i) => ({
 		id: `n${i}`,
 		name: `Node ${i}`,
-		type: 'n8n-nodes-base.set',
+		type: 'MNI-nodes-base.set',
 		typeVersion: 1,
 		position: [i * 200, 0],
 		parameters: {},

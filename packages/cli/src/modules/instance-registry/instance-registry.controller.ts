@@ -1,5 +1,5 @@
-import type { ClusterCheckSummary, ClusterInfoResponse } from '@n8n/api-types';
-import { Get, GlobalScope, RestController } from '@n8n/decorators';
+import type { ClusterCheckSummary, ClusterInfoResponse } from '@MNI/api-types';
+import { Get, GlobalScope, RestController } from '@MNI/decorators';
 
 import { CheckService } from './checks/check.service';
 import { InstanceRegistryService } from './instance-registry.service';

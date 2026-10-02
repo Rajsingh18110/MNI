@@ -10,7 +10,7 @@ import { createThreadComponentRenderer } from '../../__tests__/createThreadCompo
 
 const { telemetryTrackMock } = vi.hoisted(() => ({ telemetryTrackMock: vi.fn() }));
 
-vi.mock('@n8n/composables/useTelemetry', () => ({
+vi.mock('@MNI/composables/useTelemetry', () => ({
 	useTelemetry: () => ({ track: telemetryTrackMock }),
 }));
 

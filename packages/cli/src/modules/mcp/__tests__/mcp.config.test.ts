@@ -1,4 +1,4 @@
-import { Container } from '@n8n/di';
+import { Container } from '@MNI/di';
 
 import { McpConfig } from '../mcp.config';
 
@@ -8,8 +8,8 @@ describe('McpConfig', () => {
 	});
 
 	afterEach(() => {
-		delete process.env.N8N_MCP_SERVER_RATE_LIMIT;
-		delete process.env.N8N_MCP_BASE_URL;
+		delete process.env.MNI_MCP_SERVER_RATE_LIMIT;
+		delete process.env.MNI_MCP_BASE_URL;
 	});
 
 	it('applies the documented default limit', () => {
@@ -19,7 +19,7 @@ describe('McpConfig', () => {
 	});
 
 	it('reads the limit from its environment variable', () => {
-		process.env.N8N_MCP_SERVER_RATE_LIMIT = '500';
+		process.env.MNI_MCP_SERVER_RATE_LIMIT = '500';
 
 		const config = Container.get(McpConfig);
 
@@ -27,7 +27,7 @@ describe('McpConfig', () => {
 	});
 
 	it('accepts 0 to disable rate limiting for the endpoint', () => {
-		process.env.N8N_MCP_SERVER_RATE_LIMIT = '0';
+		process.env.MNI_MCP_SERVER_RATE_LIMIT = '0';
 
 		const config = Container.get(McpConfig);
 
@@ -37,7 +37,7 @@ describe('McpConfig', () => {
 	it.each(['-5', 'abc', '1.5'])(
 		'falls back to the default when given an invalid value (%s)',
 		(value) => {
-			process.env.N8N_MCP_SERVER_RATE_LIMIT = value;
+			process.env.MNI_MCP_SERVER_RATE_LIMIT = value;
 
 			const config = Container.get(McpConfig);
 
@@ -51,21 +51,21 @@ describe('McpConfig', () => {
 		});
 
 		it('reads and normalizes the URL from its environment variable', () => {
-			process.env.N8N_MCP_BASE_URL = 'https://n8n-mcp.example.com/';
+			process.env.MNI_MCP_BASE_URL = 'https://MNI-mcp.example.com/';
 
-			expect(Container.get(McpConfig).baseUrl).toBe('https://n8n-mcp.example.com');
+			expect(Container.get(McpConfig).baseUrl).toBe('https://MNI-mcp.example.com');
 		});
 
 		it('preserves a subpath while stripping query and fragment', () => {
-			process.env.N8N_MCP_BASE_URL = 'https://example.com/n8n/?foo=1#bar';
+			process.env.MNI_MCP_BASE_URL = 'https://example.com/MNI/?foo=1#bar';
 
-			expect(Container.get(McpConfig).baseUrl).toBe('https://example.com/n8n');
+			expect(Container.get(McpConfig).baseUrl).toBe('https://example.com/MNI');
 		});
 
 		it.each(['not-a-url', 'ftp://example.com', '//half-a-url'])(
 			'falls back to unset when given an invalid value (%s)',
 			(value) => {
-				process.env.N8N_MCP_BASE_URL = value;
+				process.env.MNI_MCP_BASE_URL = value;
 
 				expect(Container.get(McpConfig).baseUrl).toBe('');
 			},

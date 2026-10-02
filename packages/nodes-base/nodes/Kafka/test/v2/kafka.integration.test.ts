@@ -2,29 +2,29 @@
  * Exercises the v2 consumer against a real Kafka broker, provisioned by
  * testcontainers, so this needs nothing set up by hand.
  *
- *   pnpm --filter n8n-nodes-base test:integration:skip kafka
+ *   pnpm --filter MNI-nodes-base test:integration:skip kafka
  *
  * On "Could not find a working container runtime strategy", point testcontainers
  * at your Docker socket. With Colima:
  *
  *   DOCKER_HOST="unix://$HOME/.colima/default/docker.sock" \
  *   TESTCONTAINERS_DOCKER_SOCKET_OVERRIDE=/var/run/docker.sock \
- *   pnpm --filter n8n-nodes-base test:integration:skip kafka
+ *   pnpm --filter MNI-nodes-base test:integration:skip kafka
  *
  * Schema Registry decoding is not covered: the shared Kafka service has no
  * registry. It is verified by the unit tests with a mocked client, and by the
  * manual evidence on ENT-222.
  */
-import { sleep } from '@n8n/utils/sleep';
+import { sleep } from '@MNI/utils/sleep';
 import { Kafka, type Consumer } from 'kafkajs';
-import { createServiceStack, type N8NStack } from 'n8n-containers';
+import { createServiceStack, type N8NStack } from 'MNI-containers';
 import type {
 	IBinaryData,
 	INodeExecutionData,
 	INodeTypeBaseDescription,
 	ITriggerFunctions,
 	Logger,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import { testTriggerNode } from '@test/nodes/TriggerHelpers';
@@ -56,7 +56,7 @@ beforeAll(async () => {
 	};
 
 	credentials = {
-		clientId: 'n8n-kafka-integration',
+		clientId: 'MNI-kafka-integration',
 		brokers: kafka.meta.externalBroker,
 		ssl: false,
 		authentication: false,
@@ -73,7 +73,7 @@ afterAll(async () => {
 	await stack?.stop();
 });
 
-const uniqueTopic = (prefix: string) => `n8n-v2-${prefix}-${Date.now()}`;
+const uniqueTopic = (prefix: string) => `MNI-v2-${prefix}-${Date.now()}`;
 
 async function createTopic(topic: string) {
 	await inBroker(

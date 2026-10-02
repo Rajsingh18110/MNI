@@ -2,21 +2,21 @@ import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { createTestingPinia } from '@pinia/testing';
 import { setActivePinia } from 'pinia';
 import { mockedStore } from '@/__tests__/utils';
-import { useCloudPlanStore } from '@n8n/stores/cloudPlan.store';
-import { useUsersStore } from '@n8n/stores/users.store';
+import { useCloudPlanStore } from '@MNI/stores/cloudPlan.store';
+import { useUsersStore } from '@MNI/stores/users.store';
 import { useUIStore } from '@/app/stores/ui.store';
-import { AI_GATEWAY_TOP_UP_MODAL_KEY, CLOUD_N8N_CONNECT_TOP_UP_PATH } from '@/app/constants';
+import { AI_GATEWAY_TOP_UP_MODAL_KEY, CLOUD_MNI_CONNECT_TOP_UP_PATH } from '@/app/constants';
 import { useAiGatewayTopUp } from './useAiGatewayTopUp';
 
 const trackMock = vi.fn();
 const showErrorMock = vi.fn();
 const goToCloudDashboardMock = vi.hoisted(() => vi.fn());
 
-vi.mock('@n8n/composables/useTelemetry', () => ({
+vi.mock('@MNI/composables/useTelemetry', () => ({
 	useTelemetry: () => ({ track: trackMock }),
 }));
 
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: () => ({ showError: showErrorMock }),
 }));
 
@@ -61,7 +61,7 @@ describe('useAiGatewayTopUp', () => {
 		await openTopUp({ source: 'settings_page' });
 
 		expect(goToCloudDashboardMock).toHaveBeenCalledWith({
-			redirectionPath: CLOUD_N8N_CONNECT_TOP_UP_PATH,
+			redirectionPath: CLOUD_MNI_CONNECT_TOP_UP_PATH,
 			mode: 'open',
 		});
 		expect(uiStore.openModalWithData).not.toHaveBeenCalled();

@@ -2,7 +2,7 @@
 
 // Verifies the @confluentinc/kafka-javascript native binding (librdkafka) loads
 // correctly inside a built MNI image. Resolves the module the same way MNI's
-// runtime would - from within n8n-nodes-base, not via a hardcoded pnpm store path,
+// runtime would - from within MNI-nodes-base, not via a hardcoded pnpm store path,
 // since that path's hash suffix depends on the exact dependency graph.
 
 import { createRequire } from 'node:module';
@@ -13,11 +13,11 @@ import path from 'node:path';
 const REQUIRED_FEATURES = ['ssl', 'sasl_scram'];
 const COMPRESSION_CODECS = ['gzip', 'snappy', 'lz4', 'zstd'];
 
-const n8nInstallDir = process.env.N8N_INSTALL_DIR || '/usr/local/lib/node_modules/MNI';
+const n8nInstallDir = process.env.MNI_INSTALL_DIR || '/usr/local/lib/node_modules/MNI';
 const nodesBasePackageJson =
 	process.env.NODES_BASE_PACKAGE_JSON ||
-	path.join(n8nInstallDir, 'node_modules/n8n-nodes-base/package.json');
-// n8n-nodes-base is a pnpm symlink; resolve it so require() walks up from its real
+	path.join(n8nInstallDir, 'node_modules/MNI-nodes-base/package.json');
+// MNI-nodes-base is a pnpm symlink; resolve it so require() walks up from its real
 // location in the pnpm virtual store, where its dependencies actually live.
 const require = createRequire(realpathSync(nodesBasePackageJson));
 

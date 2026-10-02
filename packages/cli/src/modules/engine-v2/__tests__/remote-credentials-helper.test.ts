@@ -1,4 +1,4 @@
-import type { AdditionalDataContext } from '@n8n/node-engine-compatibility';
+import type { AdditionalDataContext } from '@MNI/node-engine-compatibility';
 import type {
 	ICredentialsHelper,
 	ICredentialType,
@@ -11,9 +11,9 @@ import type {
 	INodeProperties,
 	IWorkflowExecuteAdditionalData,
 	Workflow,
-} from 'n8n-workflow';
-import { UnimplementedError } from '@n8n/engine';
-import { UnexpectedError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { UnimplementedError } from '@MNI/engine';
+import { UnexpectedError } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import type { EngineCredentialsClient } from '../engine-credentials-client';
@@ -31,8 +31,8 @@ const nodeCredentials: INodeCredentialsDetails = { id: 'cred-1', name: 'Acme API
 const type = 'httpHeaderAuth';
 const decrypted = { name: 'X-Api-Key', value: 'secret' };
 
-const httpRequestNode = mock<INode>({ type: 'n8n-nodes-base.httpRequest' });
-const chatModelNode = mock<INode>({ type: '@n8n/n8n-nodes-langchain.lmChatOpenAi' });
+const httpRequestNode = mock<INode>({ type: 'MNI-nodes-base.httpRequest' });
+const chatModelNode = mock<INode>({ type: '@MNI/MNI-nodes-langchain.lmChatOpenAi' });
 const executeData: IExecuteData = { node: httpRequestNode, data: {}, source: null };
 const additionalData = mock<IWorkflowExecuteAdditionalData>();
 
@@ -72,7 +72,7 @@ describe('RemoteCredentialsHelper', () => {
 					credential: { id: 'cred-1', name: 'Acme API', type },
 					execution: { executionId: 'exec-1', workflowId: 'wf-1', mode: 'manual' },
 					context: { userId: 'user-1', projectId: 'project-1' },
-					consumer: { nodeType: 'n8n-nodes-base.httpRequest' },
+					consumer: { nodeType: 'MNI-nodes-base.httpRequest' },
 				},
 				expect.anything(),
 			);
@@ -98,7 +98,7 @@ describe('RemoteCredentialsHelper', () => {
 
 			expect(client.resolve).toHaveBeenCalledWith(
 				expect.objectContaining({
-					consumer: { nodeType: '@n8n/n8n-nodes-langchain.lmChatOpenAi' },
+					consumer: { nodeType: '@MNI/MNI-nodes-langchain.lmChatOpenAi' },
 				}),
 				expect.anything(),
 			);
@@ -265,10 +265,10 @@ describe('RemoteCredentialsHelper', () => {
 		it('isCredentialUsableByNode forwards to the delegate', () => {
 			vi.mocked(delegate.isCredentialUsableByNode).mockReturnValue(false);
 
-			expect(helper.isCredentialUsableByNode(type, 'n8n-nodes-base.httpRequest')).toBe(false);
+			expect(helper.isCredentialUsableByNode(type, 'MNI-nodes-base.httpRequest')).toBe(false);
 			expect(delegate.isCredentialUsableByNode).toHaveBeenCalledExactlyOnceWith(
 				type,
-				'n8n-nodes-base.httpRequest',
+				'MNI-nodes-base.httpRequest',
 			);
 		});
 

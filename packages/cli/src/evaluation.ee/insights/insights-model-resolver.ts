@@ -1,26 +1,26 @@
-import type { ModelConfig } from '@n8n/agents';
-import type { EvaluationConfig, User } from '@n8n/db';
-import { EvaluationConfigRepository } from '@n8n/db';
-import { Service } from '@n8n/di';
+import type { ModelConfig } from '@MNI/agents';
+import type { EvaluationConfig, User } from '@MNI/db';
+import { EvaluationConfigRepository } from '@MNI/db';
+import { Service } from '@MNI/di';
 
 import { CredentialsFinderService } from '@/credentials/credentials-finder.service';
 import { CredentialsService } from '@/credentials/credentials.service';
 
-// LLM-judge provider node types → `@n8n/agents` provider prefix. Only the
+// LLM-judge provider node types → `@MNI/agents` provider prefix. Only the
 // api-key-based providers are wired for insights; anything else (Ollama,
 // Vertex, Bedrock, Azure, and the regional clouds) maps to null so insights
 // fall back to the deterministic summary rather than guess a config shape.
 const PROVIDER_PREFIX_BY_NODE_TYPE = new Map<string, string>([
-	['@n8n/n8n-nodes-langchain.lmChatOpenAi', 'openai'],
-	['@n8n/n8n-nodes-langchain.lmChatAnthropic', 'anthropic'],
-	['@n8n/n8n-nodes-langchain.lmChatGoogleGemini', 'google'],
-	['@n8n/n8n-nodes-langchain.lmChatXAiGrok', 'xai'],
-	['@n8n/n8n-nodes-langchain.lmChatGroq', 'groq'],
-	['@n8n/n8n-nodes-langchain.lmChatDeepSeek', 'deepseek'],
-	['@n8n/n8n-nodes-langchain.lmChatCohere', 'cohere'],
-	['@n8n/n8n-nodes-langchain.lmChatMistralCloud', 'mistral'],
-	['@n8n/n8n-nodes-langchain.lmChatOpenRouter', 'openrouter'],
-	['@n8n/n8n-nodes-langchain.lmChatVercelAiGateway', 'vercel'],
+	['@MNI/MNI-nodes-langchain.lmChatOpenAi', 'openai'],
+	['@MNI/MNI-nodes-langchain.lmChatAnthropic', 'anthropic'],
+	['@MNI/MNI-nodes-langchain.lmChatGoogleGemini', 'google'],
+	['@MNI/MNI-nodes-langchain.lmChatXAiGrok', 'xai'],
+	['@MNI/MNI-nodes-langchain.lmChatGroq', 'groq'],
+	['@MNI/MNI-nodes-langchain.lmChatDeepSeek', 'deepseek'],
+	['@MNI/MNI-nodes-langchain.lmChatCohere', 'cohere'],
+	['@MNI/MNI-nodes-langchain.lmChatMistralCloud', 'mistral'],
+	['@MNI/MNI-nodes-langchain.lmChatOpenRouter', 'openrouter'],
+	['@MNI/MNI-nodes-langchain.lmChatVercelAiGateway', 'vercel'],
 ]);
 
 // Providers whose MNI credential default base URL omits the version path the
@@ -28,7 +28,7 @@ const PROVIDER_PREFIX_BY_NODE_TYPE = new Map<string, string>([
 const SKIP_CREDENTIAL_BASE_URL = new Set(['google', 'cohere']);
 
 export type ResolvedInsightsModel = {
-	// Ready-to-use `@n8n/agents` model config with the decrypted key embedded —
+	// Ready-to-use `@MNI/agents` model config with the decrypted key embedded —
 	// passed straight to `Agent.model()`.
 	modelConfig: ModelConfig;
 	// `provider/model` id for telemetry + the response's `modelUsed` field.
@@ -37,7 +37,7 @@ export type ResolvedInsightsModel = {
 
 /**
  * Resolves a collection's evaluation-config LLM-judge metric into a ready-to-use
- * `@n8n/agents` model config, reusing the same provider + credential the user
+ * `@MNI/agents` model config, reusing the same provider + credential the user
  * already configured for judging. Returns null when there's no judge metric or
  * its provider isn't one we map — callers then fall back to deterministic
  * insights.

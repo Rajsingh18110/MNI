@@ -1,12 +1,12 @@
-import { AuthenticationMethod, type OidcConfigDto, type SamlPreferences } from '@n8n/api-types';
+import { AuthenticationMethod, type OidcConfigDto, type SamlPreferences } from '@MNI/api-types';
 import { computed, ref } from 'vue';
 import { defineStore } from 'pinia';
-import { useRootStore } from '@n8n/stores/useRootStore';
-import * as ssoApi from '@n8n/rest-api-client/api/sso';
-import type { SamlPreferencesExtractedData } from '@n8n/rest-api-client/api/sso';
-import * as ldapApi from '@n8n/rest-api-client/api/ldap';
-import type { LdapConfig } from '@n8n/rest-api-client/api/ldap';
-import type { IDataObject } from 'n8n-workflow';
+import { useRootStore } from '@MNI/stores/useRootStore';
+import * as ssoApi from '@MNI/rest-api-client/api/sso';
+import type { SamlPreferencesExtractedData } from '@MNI/rest-api-client/api/sso';
+import * as ldapApi from '@MNI/rest-api-client/api/ldap';
+import type { LdapConfig } from '@MNI/rest-api-client/api/ldap';
+import type { IDataObject } from 'MNI-workflow';
 
 export const SupportedProtocols = {
 	SAML: 'saml',

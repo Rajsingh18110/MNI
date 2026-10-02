@@ -6,11 +6,11 @@ name: 'Docker Build Smoke Test'
 #
 # Full chain: pnpm install → pnpm build (no Turbo cache) →
 #             build base image (no Docker cache) →
-#             build n8n + runners images (no Docker cache)
+#             build MNI + runners images (no Docker cache)
 
 env:
   # The images copy native bindings from the host build, so both have to use the same
-  # Node. dockerize-n8n.mjs reads this env for the image builds. Keep in sync with
+  # Node. dockerize-MNI.mjs reads this env for the image builds. Keep in sync with
   # NODE_VERSION in docker-build-push.yml, which is what the published images use.
   NODE_VERSION: '26.7.0'
   # Also build the distroless runners image and exec-check
@@ -36,8 +36,8 @@ on:
       - '.github/scripts/docker/should-smoke-build.mjs'
       # These drive the build and the image distribution, so a change here can
       # break the chain without touching a Dockerfile.
-      - '.github/actions/build-n8n-docker/action.yml'
-      - '.github/actions/load-n8n-docker/action.yml'
+      - '.github/actions/build-MNI-docker/action.yml'
+      - '.github/actions/load-MNI-docker/action.yml'
       - '.github/actions/setup-nodejs/action.yml'
       - '.github/workflows/docker-build-push.yml'
       - 'patches/**'
@@ -118,12 +118,12 @@ jobs:
       - id: cloud-token
         uses: actions/create-github-app-token@29824e69f54612133e76f7eaac726eef6c875baf # v2.2.1
         with:
-          app-id: ${{ secrets.N8N_ASSISTANT_APP_ID }}
-          private-key: ${{ secrets.N8N_ASSISTANT_PRIVATE_KEY }}
-          owner: n8n-io
-          repositories: n8n-cloud
+          app-id: ${{ secrets.MNI_ASSISTANT_APP_ID }}
+          private-key: ${{ secrets.MNI_ASSISTANT_PRIVATE_KEY }}
+          owner: MNI-io
+          repositories: MNI-cloud
 
-      - name: Verify image against live n8n-cloud helm chart
+      - name: Verify image against live MNI-cloud helm chart
         env:
           GH_TOKEN: ${{ steps.cloud-token.outputs.token }}
         run: pnpm build:docker:smoke

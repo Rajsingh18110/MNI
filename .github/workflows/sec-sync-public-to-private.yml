@@ -1,4 +1,4 @@
-# Sync n8n-io/n8n to n8n-io/n8n-private
+# Sync MNI-io/MNI to MNI-io/MNI-private
 #
 # Runs hourly to keep private in sync with public.
 # Can also be triggered manually for conflict recovery.
@@ -27,7 +27,7 @@ on:
 
 jobs:
   sync-from-public:
-    if: github.repository == 'n8n-io/n8n-private'
+    if: github.repository == 'MNI-io/MNI-private'
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -38,8 +38,8 @@ jobs:
         id: app-token
         uses: actions/create-github-app-token@29824e69f54612133e76f7eaac726eef6c875baf # v2.2.1
         with:
-          app-id: ${{ secrets.N8N_ASSISTANT_APP_ID }}
-          private-key: ${{ secrets.N8N_ASSISTANT_PRIVATE_KEY }}
+          app-id: ${{ secrets.MNI_ASSISTANT_APP_ID }}
+          private-key: ${{ secrets.MNI_ASSISTANT_PRIVATE_KEY }}
 
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -53,7 +53,7 @@ jobs:
           EVENT_NAME: ${{ github.event_name }}
           FORCE: ${{ inputs.force }}
         run: |
-          git fetch https://github.com/n8n-io/n8n.git master:public-master
+          git fetch https://github.com/MNI-io/n8n.git master:public-master
 
           # Check if private is ahead of public, ignore Bundle commits
           AHEAD_COUNT=$(git rev-list public-master..HEAD --pretty=oneline --grep="chore: Bundle" --invert-grep --count)
@@ -81,7 +81,7 @@ jobs:
           EVENT_NAME: ${{ github.event_name }}
           FORCE: ${{ inputs.force }}
         run: |
-          git fetch https://github.com/n8n-io/n8n.git 1.x:public-1.x
+          git fetch https://github.com/MNI-io/n8n.git 1.x:public-1.x
           git checkout 1.x
 
           # Check if private is ahead of public, ignore Bundle commits

@@ -1,4 +1,4 @@
-import { getPersonalProject, testDb } from '@n8n/backend-test-utils';
+import { getPersonalProject, testDb } from '@MNI/backend-test-utils';
 
 import * as helpers from '@/modules/sso-saml/saml-helpers';
 import type { SamlUserAttributes } from '@/modules/sso-saml/types';
@@ -22,7 +22,7 @@ describe('sso/saml/samlHelpers', () => {
 				lastName: 'Nathaniel',
 				email: 'nathan@n8n.io',
 				userPrincipalName: 'Huh?',
-				n8nInstanceRole: 'n8n_instance_role',
+				n8nInstanceRole: 'MNI_instance_role',
 			};
 
 			//

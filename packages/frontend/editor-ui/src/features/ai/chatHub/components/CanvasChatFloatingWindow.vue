@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed, nextTick, ref, useTemplateRef, watch } from 'vue';
 import { useStorage } from '@vueuse/core';
-import { useI18n } from '@n8n/i18n';
-import { N8nFloatingWindow, N8nText } from '@n8n/design-system';
+import { useI18n } from '@MNI/i18n';
+import { N8nFloatingWindow, N8nText } from '@MNI/design-system';
 import { LOCAL_STORAGE_FLOATING_CHAT_WINDOW } from '@/app/constants';
 import { useChatHubPanelStore } from '@/features/ai/chatHub/chatHubPanel.store';
 import CanvasChatHubPanel from './CanvasChatHubPanel.vue';

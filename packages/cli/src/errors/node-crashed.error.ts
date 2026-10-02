@@ -1,5 +1,5 @@
-import type { INode } from 'n8n-workflow';
-import { NodeOperationError } from 'n8n-workflow';
+import type { INode } from 'MNI-workflow';
+import { NodeOperationError } from 'MNI-workflow';
 
 export class NodeCrashedError extends NodeOperationError {
 	constructor(node: INode) {

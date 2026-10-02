@@ -1,5 +1,5 @@
 {
-	"node": "n8n-nodes-base.microsoftOutlook",
+	"node": "MNI-nodes-base.microsoftOutlook",
 	"nodeVersion": "1.0",
 	"codexVersion": "1.0",
 	"categories": ["Communication", "HITL"],
@@ -14,7 +14,7 @@
 		],
 		"primaryDocumentation": [
 			{
-				"url": "https://docs.n8n.io/integrations/builtin/app-nodes/n8n-nodes-base.microsoftoutlook/"
+				"url": "https://docs.n8n.io/integrations/builtin/app-nodes/MNI-nodes-base.microsoftoutlook/"
 			}
 		]
 	},

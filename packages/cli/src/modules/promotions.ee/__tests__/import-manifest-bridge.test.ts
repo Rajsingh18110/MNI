@@ -2,8 +2,8 @@ import { mkdir, mkdtemp, readFile, rm, symlink, writeFile } from 'node:fs/promis
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 
-import { N8N_VERSION } from '@/constants';
-import { packageManifestSchema } from '@/modules/n8n-packages/spec/manifest.schema';
+import { MNI_VERSION } from '@/constants';
+import { packageManifestSchema } from '@/modules/MNI-packages/spec/manifest.schema';
 
 import { readLeftoverManifest, writeImportManifest } from '../import-manifest-bridge';
 
@@ -11,7 +11,7 @@ describe('import-manifest-bridge', () => {
 	let exportFolder: string;
 
 	beforeEach(async () => {
-		exportFolder = await mkdtemp(path.join(tmpdir(), 'n8n-import-manifest-'));
+		exportFolder = await mkdtemp(path.join(tmpdir(), 'MNI-import-manifest-'));
 	});
 
 	afterEach(async () => {
@@ -87,7 +87,7 @@ describe('import-manifest-bridge', () => {
 			JSON.parse(await readFile(path.join(exportFolder, 'manifest.json'), 'utf-8')),
 		);
 		expect(written.sourceId).toBe('inst-test');
-		expect(written.sourceN8nVersion).toBe(N8N_VERSION);
+		expect(written.sourceN8nVersion).toBe(MNI_VERSION);
 		expect(written.projects).toEqual([{ id: 'p1', name: 'Alpha', target: 'projects/alpha' }]);
 		expect(written.workflows).toEqual(
 			expect.arrayContaining([

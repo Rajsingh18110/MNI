@@ -1,6 +1,6 @@
-import { inTest, Logger } from '@n8n/backend-common';
-import { EngineConfig } from '@n8n/config';
-import { Service } from '@n8n/di';
+import { inTest, Logger } from '@MNI/backend-common';
+import { EngineConfig } from '@MNI/config';
+import { Service } from '@MNI/di';
 import express, { type Application } from 'express';
 import { createServer, type Server } from 'node:http';
 import type { AddressInfo } from 'node:net';
@@ -92,7 +92,7 @@ export class EngineControlPlaneServer {
 
 		// Auth is per route, because each route requires its own token scope. It
 		// runs before the body parser, so an unauthenticated body is never read.
-		// MNI's parser bounds the body by `N8N_PAYLOAD_SIZE_MAX`.
+		// MNI's parser bounds the body by `MNI_PAYLOAD_SIZE_MAX`.
 		app.post(
 			STATUS_CALLBACK_PATH,
 			createEngineControlPlaneAuthMiddleware(

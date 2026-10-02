@@ -1,4 +1,4 @@
-import { Container } from '@n8n/di';
+import { Container } from '@MNI/di';
 
 import { ExternalSecretsConfig } from '../external-secrets.config';
 
@@ -8,13 +8,13 @@ describe('ExternalSecretsConfig', () => {
 	});
 
 	afterEach(() => {
-		delete process.env.N8N_EXTERNAL_SECRETS_CONNECT_TIMEOUT;
-		delete process.env.N8N_EXTERNAL_SECRETS_REFRESH_TIMEOUT;
+		delete process.env.MNI_EXTERNAL_SECRETS_CONNECT_TIMEOUT;
+		delete process.env.MNI_EXTERNAL_SECRETS_REFRESH_TIMEOUT;
 	});
 
 	it('reads the timeouts from their environment variables', () => {
-		process.env.N8N_EXTERNAL_SECRETS_CONNECT_TIMEOUT = '5';
-		process.env.N8N_EXTERNAL_SECRETS_REFRESH_TIMEOUT = '90';
+		process.env.MNI_EXTERNAL_SECRETS_CONNECT_TIMEOUT = '5';
+		process.env.MNI_EXTERNAL_SECRETS_REFRESH_TIMEOUT = '90';
 
 		const config = Container.get(ExternalSecretsConfig);
 
@@ -25,8 +25,8 @@ describe('ExternalSecretsConfig', () => {
 	it.each(['0', '-1', '1.5', '2147484', 'abc'])(
 		'falls back to the default timeout when given %s',
 		(value) => {
-			process.env.N8N_EXTERNAL_SECRETS_CONNECT_TIMEOUT = value;
-			process.env.N8N_EXTERNAL_SECRETS_REFRESH_TIMEOUT = value;
+			process.env.MNI_EXTERNAL_SECRETS_CONNECT_TIMEOUT = value;
+			process.env.MNI_EXTERNAL_SECRETS_REFRESH_TIMEOUT = value;
 
 			const config = Container.get(ExternalSecretsConfig);
 

@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { useI18n } from '@n8n/i18n';
-import type { BaseTextKey } from '@n8n/i18n';
-import type { IUser } from '@n8n/design-system';
+import { useI18n } from '@MNI/i18n';
+import type { BaseTextKey } from '@MNI/i18n';
+import type { IUser } from '@MNI/design-system';
 import {
 	N8nBadge,
 	N8nButton,
@@ -12,10 +12,10 @@ import {
 	N8nPopover,
 	N8nSelect,
 	N8nUserSelect,
-} from '@n8n/design-system';
+} from '@MNI/design-system';
 
-import type { McpClientConnectedPeriod, McpClientTypeFilter } from '@n8n/api-types';
-import { MCP_CLIENT_CONNECTED_PERIODS, MCP_CLIENT_TYPE_FILTERS } from '@n8n/api-types';
+import type { McpClientConnectedPeriod, McpClientTypeFilter } from '@MNI/api-types';
+import { MCP_CLIENT_CONNECTED_PERIODS, MCP_CLIENT_TYPE_FILTERS } from '@MNI/api-types';
 
 import type { OAuthClientFilters } from '../../clients.utils';
 

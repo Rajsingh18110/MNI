@@ -5,7 +5,7 @@ import type {
 	InstanceAiProviderConnection,
 	InstanceAiVerificationFailure,
 	InstanceAiVerificationResponse,
-} from '@n8n/api-types';
+} from '@MNI/api-types';
 import {
 	N8nBadge,
 	N8nButton,
@@ -22,8 +22,8 @@ import {
 	N8nRadioGroupItem,
 	N8nSelect,
 	N8nText,
-} from '@n8n/design-system';
-import { type BaseTextKey, useI18n } from '@n8n/i18n';
+} from '@MNI/design-system';
+import { type BaseTextKey, useI18n } from '@MNI/i18n';
 import { TIME } from '@/app/constants/durations';
 import { useCredentialsStore } from '@/features/credentials/credentials.store';
 import { SANDBOX_PROVIDER_LABELS } from '../constants';
@@ -42,14 +42,14 @@ import { sanitizeFailureDetail } from './sanitizeFailureDetail';
 import type { InstanceAiOnboardingStep } from './useInstanceAiOnboarding';
 
 const DAYTONA_API_URL = 'https://app.daytona.io/api';
-const N8N_SANDBOX_HEADER = 'x-api-key';
+const MNI_SANDBOX_HEADER = 'x-api-key';
 const STATIC_SECRET_MASK = '••••••••••••';
 const SANDBOX_DOCS_URL =
-	'https://docs.n8n.io/deploy/host-n8n/configure-n8n/set-up-n8n-assistant#setup-2-self-host-the-sandbox-manually-advanced';
+	'https://docs.n8n.io/deploy/host-MNI/configure-MNI/set-up-MNI-assistant#setup-2-self-host-the-sandbox-manually-advanced';
 const SEARCH_DOCS_URL =
-	'https://docs.n8n.io/deploy/host-n8n/configure-n8n/set-up-n8n-assistant#enable-web-search';
+	'https://docs.n8n.io/deploy/host-MNI/configure-MNI/set-up-MNI-assistant#enable-web-search';
 const BRAVE_SEARCH_KEYS_URL = 'https://api-dashboard.search.brave.com/app/keys';
-const ENV_DOCS_URL = 'https://docs.n8n.io/deploy/host-n8n/configure-n8n/set-up-n8n-assistant';
+const ENV_DOCS_URL = 'https://docs.n8n.io/deploy/host-MNI/configure-MNI/set-up-MNI-assistant';
 const SUCCESS_PAUSE_MS = TIME.SECOND * 1.5;
 const DEFAULT_MODEL_PROVIDER = INSTANCE_AI_MODEL_PROVIDERS[0]!;
 const DEFAULT_MODEL_NAME = INSTANCE_AI_CURATED_MODELS[DEFAULT_MODEL_PROVIDER.id][0] ?? '';
@@ -102,7 +102,7 @@ const modelProvider = ref<InstanceAiModelProvider>('anthropic');
 const modelApiKey = ref('');
 const modelBaseUrl = ref('');
 const modelName = ref<string>(DEFAULT_MODEL_NAME);
-const sandboxProvider = ref<'n8n-sandbox' | 'daytona' | null>(null);
+const sandboxProvider = ref<'MNI-sandbox' | 'daytona' | null>(null);
 const sandboxServiceUrl = ref('');
 const sandboxApiKey = ref('');
 const daytonaApiKey = ref('');
@@ -149,7 +149,7 @@ function assignedCredentialId(): string | null {
 
 function credentialProviderLabel(credential: InstanceAiProviderConnection): string {
 	if (credential.type === 'daytonaApi') return SANDBOX_PROVIDER_LABELS.daytona;
-	if (credential.type === 'httpHeaderAuth') return SANDBOX_PROVIDER_LABELS['n8n-sandbox'];
+	if (credential.type === 'httpHeaderAuth') return SANDBOX_PROVIDER_LABELS['MNI-sandbox'];
 	return credentialsStore.getCredentialTypeByName(credential.type)?.displayName ?? credential.type;
 }
 
@@ -227,13 +227,13 @@ const stepReady = computed(() => {
 	if (props.step === 'sandbox') {
 		if (sandboxEnvManaged.value) return true;
 		if (selectedExistingCredentialId.value) {
-			return sandboxProvider.value === 'n8n-sandbox'
+			return sandboxProvider.value === 'MNI-sandbox'
 				? Boolean(sandboxServiceUrl.value.trim())
 				: true;
 		}
 		if (isProxyDaytonaSelection.value) return true;
 		if (sandboxProvider.value === 'daytona') return Boolean(daytonaApiKey.value.trim());
-		if (sandboxProvider.value === 'n8n-sandbox') {
+		if (sandboxProvider.value === 'MNI-sandbox') {
 			return Boolean(sandboxServiceUrl.value.trim() && sandboxApiKey.value.trim());
 		}
 		return false;
@@ -264,7 +264,7 @@ const primaryLabel = computed(() => {
 	return i18n.baseText('instanceAi.onboarding.wizard.continue');
 });
 const settingsTestPrefix = computed(() =>
-	props.step === 'done' ? 'n8n-agent' : `n8n-agent-${props.step}`,
+	props.step === 'done' ? 'MNI-agent' : `MNI-agent-${props.step}`,
 );
 const dialogTestId = computed(() =>
 	props.surface === 'settings' ? `${settingsTestPrefix.value}-dialog` : 'assistant-setup-wizard',
@@ -319,7 +319,7 @@ function applyExistingCredential(credential: InstanceAiProviderConnection): void
 			INSTANCE_AI_CURATED_MODELS[modelProvider.value][0] ||
 			'';
 	} else if (props.step === 'sandbox') {
-		sandboxProvider.value = credential.type === 'daytonaApi' ? 'daytona' : 'n8n-sandbox';
+		sandboxProvider.value = credential.type === 'daytonaApi' ? 'daytona' : 'MNI-sandbox';
 	} else if (props.step === 'search') {
 		searchProvider.value = credential.type === 'braveSearchApi' ? 'brave' : 'searxng';
 	}
@@ -381,7 +381,7 @@ async function hydrateSandbox(generation: number): Promise<void> {
 		? store.settings?.daytonaCredentialId
 		: store.settings?.n8nSandboxCredentialId;
 	if (!credentialId) return;
-	sandboxProvider.value = isDaytona ? 'daytona' : 'n8n-sandbox';
+	sandboxProvider.value = isDaytona ? 'daytona' : 'MNI-sandbox';
 	const assigned = store.serviceCredentials.find(({ id }) => id === credentialId);
 	if (readOnly.value && assigned) {
 		applyExistingCredential(assigned);
@@ -509,10 +509,10 @@ function sandboxConnection(): InstanceAiConnectionUpdate | undefined {
 			data: { apiUrl: DAYTONA_API_URL, apiKey: daytonaApiKey.value.trim() },
 		};
 	}
-	if (sandboxProvider.value === 'n8n-sandbox') {
+	if (sandboxProvider.value === 'MNI-sandbox') {
 		return {
 			type: 'httpHeaderAuth',
-			data: { name: N8N_SANDBOX_HEADER, value: sandboxApiKey.value.trim() },
+			data: { name: MNI_SANDBOX_HEADER, value: sandboxApiKey.value.trim() },
 		};
 	}
 	return undefined;
@@ -548,7 +548,7 @@ async function saveVerifiedSandbox(connection: InstanceAiConnectionUpdate): Prom
 	store.setField('sandboxConnection', connection);
 	store.setField('sandboxProvider', sandboxProvider.value ?? undefined);
 	store.setField('sandboxEnabled', true);
-	if (sandboxProvider.value === 'n8n-sandbox') {
+	if (sandboxProvider.value === 'MNI-sandbox') {
 		store.setField('n8nSandboxServiceUrl', sandboxServiceUrl.value.trim());
 	}
 	const saved = await store.save(false);
@@ -575,12 +575,12 @@ async function saveExistingCredential(): Promise<boolean> {
 		store.setField('modelCredentialId', credential.id);
 		store.setField('modelName', modelName.value.trim());
 	} else if (props.step === 'sandbox') {
-		const provider = credential.type === 'daytonaApi' ? 'daytona' : 'n8n-sandbox';
+		const provider = credential.type === 'daytonaApi' ? 'daytona' : 'MNI-sandbox';
 		store.setField('daytonaCredentialId', provider === 'daytona' ? credential.id : null);
-		store.setField('n8nSandboxCredentialId', provider === 'n8n-sandbox' ? credential.id : null);
+		store.setField('n8nSandboxCredentialId', provider === 'MNI-sandbox' ? credential.id : null);
 		store.setField('sandboxProvider', provider);
 		store.setField('sandboxEnabled', true);
-		if (provider === 'n8n-sandbox') {
+		if (provider === 'MNI-sandbox') {
 			store.setField('n8nSandboxServiceUrl', sandboxServiceUrl.value.trim());
 		}
 	} else if (props.step === 'search') {
@@ -626,7 +626,7 @@ async function runVerification(): Promise<InstanceAiVerificationResponse | null>
 		return await store.verifySandbox({
 			provider: sandboxProvider.value,
 			connection,
-			...(sandboxProvider.value === 'n8n-sandbox'
+			...(sandboxProvider.value === 'MNI-sandbox'
 				? { serviceUrl: sandboxServiceUrl.value.trim() }
 				: {}),
 		});
@@ -799,7 +799,7 @@ const existingCredentialLabel = (credential: InstanceAiProviderConnection) =>
 									: STATIC_SECRET_MASK
 							"
 							disabled
-							:data-test-id="surface === 'settings' ? 'n8n-agent-model-provider-input' : undefined"
+							:data-test-id="surface === 'settings' ? 'MNI-agent-model-provider-input' : undefined"
 						/>
 						<N8nSelect
 							v-else
@@ -808,7 +808,7 @@ const existingCredentialLabel = (credential: InstanceAiProviderConnection) =>
 							:teleported="true"
 							:data-test-id="
 								surface === 'settings'
-									? 'n8n-agent-model-provider-select'
+									? 'MNI-agent-model-provider-select'
 									: 'assistant-model-provider'
 							"
 							@update:model-value="selectModelProvider"
@@ -861,7 +861,7 @@ const existingCredentialLabel = (credential: InstanceAiProviderConnection) =>
 									: modelConfig.placeholder
 							"
 							:data-test-id="
-								surface === 'settings' ? 'n8n-agent-model-api-key-input' : 'assistant-model-api-key'
+								surface === 'settings' ? 'MNI-agent-model-api-key-input' : 'assistant-model-api-key'
 							"
 						/>
 					</N8nInputLabel>
@@ -879,7 +879,7 @@ const existingCredentialLabel = (credential: InstanceAiProviderConnection) =>
 							filterable
 							:disabled="readOnly"
 							:data-test-id="
-								surface === 'settings' ? 'n8n-agent-model-name-input' : 'assistant-model-name'
+								surface === 'settings' ? 'MNI-agent-model-name-input' : 'assistant-model-name'
 							"
 							@update:model-value="modelName = String($event ?? '')"
 						>
@@ -903,7 +903,7 @@ const existingCredentialLabel = (credential: InstanceAiProviderConnection) =>
 							:placeholder="modelNameLocked ? STATIC_SECRET_MASK : 'qwen3-coder'"
 							:spellcheck="false"
 							:data-test-id="
-								surface === 'settings' ? 'n8n-agent-model-name-input' : 'assistant-model-name'
+								surface === 'settings' ? 'MNI-agent-model-name-input' : 'assistant-model-name'
 							"
 						/>
 					</N8nInputLabel>
@@ -968,7 +968,7 @@ const existingCredentialLabel = (credential: InstanceAiProviderConnection) =>
 					:model-value="sandboxProvider ?? undefined"
 					orientation="vertical"
 					:class="$style.joinedCards"
-					:data-test-id="surface === 'settings' ? 'n8n-agent-sandbox-provider-select' : undefined"
+					:data-test-id="surface === 'settings' ? 'MNI-agent-sandbox-provider-select' : undefined"
 					@update:model-value="selectSandboxProvider"
 				>
 					<div
@@ -988,11 +988,11 @@ const existingCredentialLabel = (credential: InstanceAiProviderConnection) =>
 							<span :class="$style.optionTitle">
 								<N8nText bold step="sm">{{ provider.onboardingLabel }}</N8nText>
 								<N8nBadge
-									:variant="provider.id === 'n8n-sandbox' ? 'secondary' : 'outline'"
+									:variant="provider.id === 'MNI-sandbox' ? 'secondary' : 'outline'"
 									:class="$style.optionBadge"
 								>
 									{{
-										provider.id === 'n8n-sandbox'
+										provider.id === 'MNI-sandbox'
 											? i18n.baseText('instanceAi.onboarding.sandbox.freeRecommended')
 											: i18n.baseText('instanceAi.onboarding.sandbox.paid')
 									}}
@@ -1000,7 +1000,7 @@ const existingCredentialLabel = (credential: InstanceAiProviderConnection) =>
 							</span>
 							<N8nText color="text-base" step="sm" :class="$style.optionDescription">
 								{{
-									provider.id === 'n8n-sandbox'
+									provider.id === 'MNI-sandbox'
 										? i18n.baseText('instanceAi.onboarding.sandbox.n8nDescription')
 										: i18n.baseText('instanceAi.onboarding.sandbox.daytonaDescription')
 								}}
@@ -1010,9 +1010,9 @@ const existingCredentialLabel = (credential: InstanceAiProviderConnection) =>
 				</N8nRadioGroup>
 
 				<div
-					v-if="!sandboxEnvManaged && sandboxProvider === 'n8n-sandbox'"
+					v-if="!sandboxEnvManaged && sandboxProvider === 'MNI-sandbox'"
 					:class="$style.fields"
-					:data-test-id="surface === 'settings' ? 'n8n-agent-sandbox-connection-fields' : undefined"
+					:data-test-id="surface === 'settings' ? 'MNI-agent-sandbox-connection-fields' : undefined"
 				>
 					<N8nText step="xs">
 						{{ i18n.baseText('instanceAi.onboarding.sandbox.installDescription') }}
@@ -1052,7 +1052,7 @@ const existingCredentialLabel = (credential: InstanceAiProviderConnection) =>
 							:placeholder="i18n.baseText('instanceAi.onboarding.sandbox.apiKeyPlaceholder')"
 							:data-test-id="
 								surface === 'settings'
-									? 'n8n-agent-sandbox-api-key-input'
+									? 'MNI-agent-sandbox-api-key-input'
 									: 'assistant-sandbox-api-key'
 							"
 						/>
@@ -1066,7 +1066,7 @@ const existingCredentialLabel = (credential: InstanceAiProviderConnection) =>
 						!isProxyDaytonaSelection
 					"
 					:class="$style.fields"
-					:data-test-id="surface === 'settings' ? 'n8n-agent-sandbox-connection-fields' : undefined"
+					:data-test-id="surface === 'settings' ? 'MNI-agent-sandbox-connection-fields' : undefined"
 				>
 					<N8nInputLabel
 						:class="$style.compactLabel"
@@ -1133,7 +1133,7 @@ const existingCredentialLabel = (credential: InstanceAiProviderConnection) =>
 					:model-value="searchProvider ?? undefined"
 					orientation="vertical"
 					:class="$style.joinedCards"
-					:data-test-id="surface === 'settings' ? 'n8n-agent-search-provider-select' : undefined"
+					:data-test-id="surface === 'settings' ? 'MNI-agent-search-provider-select' : undefined"
 					@update:model-value="selectSearchProvider"
 				>
 					<div
@@ -1186,7 +1186,7 @@ const existingCredentialLabel = (credential: InstanceAiProviderConnection) =>
 						searchProvider !== 'disabled'
 					"
 					:class="$style.fields"
-					:data-test-id="surface === 'settings' ? 'n8n-agent-search-connection-fields' : undefined"
+					:data-test-id="surface === 'settings' ? 'MNI-agent-search-connection-fields' : undefined"
 				>
 					<N8nText v-if="searchProvider === 'searxng'" step="xs">
 						{{ i18n.baseText('instanceAi.onboarding.search.installDescription') }}
@@ -1392,7 +1392,7 @@ const existingCredentialLabel = (credential: InstanceAiProviderConnection) =>
 	min-width: 0;
 }
 
-.compactLabel :global(.n8n-input-label) {
+.compactLabel :global(.MNI-input-label) {
 	padding-bottom: var(--spacing--4xs);
 }
 

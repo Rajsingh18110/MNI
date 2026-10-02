@@ -1,5 +1,5 @@
-/* eslint-disable n8n-nodes-base/node-filename-against-convention */
-import { NodeConnectionTypes, type INodeTypeDescription } from 'n8n-workflow';
+/* eslint-disable MNI-nodes-base/node-filename-against-convention */
+import { NodeConnectionTypes, type INodeTypeDescription } from 'MNI-workflow';
 
 import * as mode from './mode';
 import { configuredInputs } from '../helpers/utils';
@@ -21,19 +21,19 @@ export const versionDescription: INodeTypeDescription = {
 				content: `<patterns>
 <pattern title="Combine two branches by matching key (combineByFields, default)">
 const usersApi = node({
-  type: 'n8n-nodes-base.httpRequest',
+  type: 'MNI-nodes-base.httpRequest',
   version: 4.2,
   config: { name: 'Fetch Users', parameters: { url: 'https://api.example.com/users' } }
 });
 
 const ordersApi = node({
-  type: 'n8n-nodes-base.httpRequest',
+  type: 'MNI-nodes-base.httpRequest',
   version: 4.2,
   config: { name: 'Fetch Orders', parameters: { url: 'https://api.example.com/orders' } }
 });
 
 const mergeNode = merge({
-  type: 'n8n-nodes-base.merge',
+  type: 'MNI-nodes-base.merge',
   version: 3.2,
   config: {
     name: 'Merge by ID',
@@ -54,19 +54,19 @@ ordersApi.to(mergeNode.input(1));
 
 <pattern title="Append items from parallel branches (append)">
 const branchA = node({
-  type: 'n8n-nodes-base.set',
+  type: 'MNI-nodes-base.set',
   version: 3.4,
   config: { name: 'Branch A', parameters: {} }
 });
 
 const branchB = node({
-  type: 'n8n-nodes-base.set',
+  type: 'MNI-nodes-base.set',
   version: 3.4,
   config: { name: 'Branch B', parameters: {} }
 });
 
 const mergeNode = merge({
-  type: 'n8n-nodes-base.merge',
+  type: 'MNI-nodes-base.merge',
   version: 3.2,
   config: {
     name: 'Append',
@@ -80,7 +80,7 @@ branchB.to(mergeNode.input(1));
 
 <pattern title="Three or more inputs with SQL (combineBySql)">
 const mergeNode = merge({
-  type: 'n8n-nodes-base.merge',
+  type: 'MNI-nodes-base.merge',
   version: 3.2,
   config: {
     name: 'SQL Merge',

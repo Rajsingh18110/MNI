@@ -3,7 +3,7 @@ import { defineStore } from 'pinia';
 import { computed } from 'vue';
 
 import { LOCAL_STORAGE_PARALLEL_EVAL_BY_WORKFLOW } from '@/app/constants/localStorage';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 
 // Sentinel used for workflows that haven't been saved yet (no id assigned).
 // Mirrors the per-workflow localStorage pattern used elsewhere in the editor.
@@ -13,7 +13,7 @@ export const DEFAULT_PARALLEL_CONCURRENCY = 3;
 
 // Hard upper bound for the slider, mirrored on the BE in
 // `test-runner.service.ee.ts`'s `runTest` clamp. Admins can lower this via
-// `N8N_CONCURRENCY_EVALUATION_LIMIT`; they cannot raise it.
+// `MNI_CONCURRENCY_EVALUATION_LIMIT`; they cannot raise it.
 const SLIDER_HARD_MAX = 10;
 
 interface PerWorkflowState {
@@ -33,7 +33,7 @@ const buildDefaultState = (): PerWorkflowState => ({
  *
  * Visibility is derived from `maxConcurrency`: when the effective evaluation
  * concurrency limit resolves to 1 (Community/Pro tier, or an explicit
- * `N8N_CONCURRENCY_EVALUATION_LIMIT=1` override), `isConcurrencyAvailable`
+ * `MNI_CONCURRENCY_EVALUATION_LIMIT=1` override), `isConcurrencyAvailable`
  * is `false` and the surrounding UI must hide every control — the header
  * collapses to a plain Run Test button, byte-identical to the legacy flow.
  *
@@ -66,7 +66,7 @@ export const useParallelEvalStore = defineStore('parallelEval', () => {
 	// Drives header-level UI gating. When the effective limit is 1, hide the
 	// caret, the popover, and any label — the Run Test split-button collapses
 	// to a single solid button. This is the AC for Community/Pro tiers and
-	// for self-hosters who set `N8N_CONCURRENCY_EVALUATION_LIMIT=1`.
+	// for self-hosters who set `MNI_CONCURRENCY_EVALUATION_LIMIT=1`.
 	const isConcurrencyAvailable = computed(() => maxConcurrency.value > 1);
 
 	const resolveKey = (workflowId: string | undefined): string =>
@@ -87,7 +87,7 @@ export const useParallelEvalStore = defineStore('parallelEval', () => {
 		ensureEntry(resolveKey(workflowId)).parallelEnabled;
 
 	// Read-side clamp (no mutation): if the admin lowers
-	// `N8N_CONCURRENCY_EVALUATION_LIMIT` below a previously-stored value, the
+	// `MNI_CONCURRENCY_EVALUATION_LIMIT` below a previously-stored value, the
 	// UI surfaces the capped number while leaving the user's preference intact
 	// in localStorage so it returns naturally if the cap is later raised.
 	const concurrencyValue = (workflowId: string | undefined): number =>

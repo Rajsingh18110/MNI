@@ -27,7 +27,7 @@ pnpm build:docker # from root first to test against local changes
 ```bash
 pnpm test:all                 									# Run all tests (fresh containers, pnpm build:docker from root first to ensure local containers)
 pnpm test:local           											# Starts a local server and runs the E2E tests
-N8N_BASE_URL=localhost:5068 pnpm test:local			# Runs the E2E tests against the running instance
+MNI_BASE_URL=localhost:5068 pnpm test:local			# Runs the E2E tests against the running instance
 ```
 
 ## Test Layout
@@ -88,7 +88,7 @@ servers need, and let dev mode pick them up.
 ```bash
 # Terminal 1 — boot only the services. Writes packages/cli/bin/.env with the
 # host:port + credentials. Containers stay running in the background.
-pnpm --filter n8n-containers services --services postgres,redis,mailpit,proxy
+pnpm --filter MNI-containers services --services postgres,redis,mailpit,proxy
 
 # Terminal 2 — run MNI locally as usual. It picks up the .env automatically.
 # Add `pnpm dev:fe:editor` in a third terminal for frontend hot reload.
@@ -101,9 +101,9 @@ containers makes startup faster.
 | Service | What dev mode gets | Use when… |
 |---------|--------------------|-----------|
 | `postgres` | `DB_*` vars → PostgreSQL backend | testing migrations or PG-specific queries |
-| `redis` | `QUEUE_*`/`N8N_CACHE_*` → queue mode + cache | testing queue mode or distributed cache |
-| `mailpit` | `N8N_SMTP_*` → captured SMTP at `http://localhost:<mapped-port>` | testing email flows |
-| `proxy` | `HTTP_PROXY`/`HTTPS_PROXY`/`N8N_PROXY_*` → MockServer | testing outbound HTTP via the proxy |
+| `redis` | `QUEUE_*`/`MNI_CACHE_*` → queue mode + cache | testing queue mode or distributed cache |
+| `mailpit` | `MNI_SMTP_*` → captured SMTP at `http://localhost:<mapped-port>` | testing email flows |
+| `proxy` | `HTTP_PROXY`/`HTTPS_PROXY`/`MNI_PROXY_*` → MockServer | testing outbound HTTP via the proxy |
 
 Other available services: `kafka`, `gitea`, `keycloak`, `kent`, `victoriaLogs`,
 `victoriaMetrics`, `vector`, `tracing`, `localstack`, `cloudflared`, `ngrok`.
@@ -112,7 +112,7 @@ See `packages/testing/containers/README.md` for the full list.
 **Tear down when you're done:**
 
 ```bash
-pnpm --filter n8n-containers services:clean
+pnpm --filter MNI-containers services:clean
 ```
 
 This stops the containers and removes `packages/cli/bin/.env`.
@@ -125,12 +125,12 @@ test container. Run these tests with a container project.
 
 When developing with separate backend and frontend servers (e.g., backend on port 5680, frontend on port 8080), you can use the following environment variables:
 
-- **`N8N_BASE_URL`**: Backend server URL (also used as frontend URL if `N8N_EDITOR_URL` is not set)
-- **`N8N_EDITOR_URL`**: Frontend server URL (when set, overrides frontend URL while backend uses `N8N_BASE_URL`)
+- **`MNI_BASE_URL`**: Backend server URL (also used as frontend URL if `MNI_EDITOR_URL` is not set)
+- **`MNI_EDITOR_URL`**: Frontend server URL (when set, overrides frontend URL while backend uses `MNI_BASE_URL`)
 
 **How it works:**
-- **Backend URL** (for API calls): Always uses `N8N_BASE_URL`
-- **Frontend URL** (for browser navigation): Uses `N8N_EDITOR_URL` if set, otherwise falls back to `N8N_BASE_URL`
+- **Backend URL** (for API calls): Always uses `MNI_BASE_URL`
+- **Frontend URL** (for browser navigation): Uses `MNI_EDITOR_URL` if set, otherwise falls back to `MNI_BASE_URL`
 
 This allows you to:
 - Test against a backend on port 5680 while the frontend dev server runs on port 8080
@@ -165,22 +165,22 @@ situations where `test:local`'s defaults aren't enough:
 
 - **Random free OS port** for MNI's HTTP server and the task-runner broker, so
   multiple instances can run in parallel without colliding on `5678`/`5679`.
-  Pin a port with `N8N_BASE_URL=http://localhost:5680 …` when you need a
+  Pin a port with `MNI_BASE_URL=http://localhost:5680 …` when you need a
   stable URL for browser inspection.
-- **Throwaway `N8N_USER_FOLDER`** under the OS temp dir (cleaned up on exit).
-  MNI creates `.n8n/` (sqlite DB, encryption key) inside it, fully isolated
-  from your local `~/.n8n` install.
+- **Throwaway `MNI_USER_FOLDER`** under the OS temp dir (cleaned up on exit).
+  MNI creates `.MNI/` (sqlite DB, encryption key) inside it, fully isolated
+  from your local `~/.MNI` install.
 - **Container-tagged tests included.** The local project selects `@licensed`,
   `@db:reset`, and `@mode:*` tests. Service-backed tests still skip because
   local mode does not provide the service container helpers.
-- **Self-managed n8n.** Boots MNI with a readiness check against
+- **Self-managed MNI.** Boots MNI with a readiness check against
   `/rest/e2e/reset`, so the run waits for the E2E controller itself, and skips
   Playwright's own webServer.
 
-Pass extra MNI env via `N8N_TEST_ENV` (the same convention `test:local` uses):
+Pass extra MNI env via `MNI_TEST_ENV` (the same convention `test:local` uses):
 
 ```bash
-N8N_TEST_ENV='{"N8N_ENABLED_MODULES":"my-module"}' \
+MNI_TEST_ENV='{"MNI_ENABLED_MODULES":"my-module"}' \
   pnpm test:local:isolated tests/e2e/my-module
 ```
 
@@ -222,7 +222,7 @@ that runs engine v2 in its own container (`containerConfig.engine:
 remote mode and dials the engine over the stack network. The engine container
 runs `MNI engine`, has no `DB_*` env and no encryption key, resolves
 credentials through the main's control plane server, and keeps its own
-`n8n_engine` database on the dedicated `engine-postgres` service. Execution
+`MNI_engine` database on the dedicated `engine-postgres` service. Execution
 responses travel back to the main over the stack's Redis. Under that stack
 every workflow the API helpers create gets `settings.engineType = 'v2'`, so a
 spec proves parity without changes.
@@ -244,10 +244,10 @@ The project only picks up specs with an `@engine:*` tag for now. Tag a spec
 specs that engine v2 does not run yet:
 
 ```bash
-pnpm --filter=n8n-playwright test:container:engine-v2:e2e tests/e2e/api/manual-run-outcome.spec.ts
+pnpm --filter=MNI-playwright test:container:engine-v2:e2e tests/e2e/api/manual-run-outcome.spec.ts
 ```
 
-For a local stack with the engine: `pnpm --filter n8n-containers stack --engine`.
+For a local stack with the engine: `pnpm --filter MNI-containers stack --engine`.
 
 ### Worker Isolation (Fresh Database)
 
@@ -321,7 +321,7 @@ test.describe('Log Streaming @licensed', () => {
 > **Note:** `@licensed` tests are skipped in local mode (`test:local`) and only run in container mode where a license is available.
 
 **Enterprise license for testing:**
-To run `@licensed` tests or manually test enterprise features, set `N8N_LICENSE_TENANT_ID` and `N8N_LICENSE_ACTIVATION_KEY` in your environment. The containers package reads these variables automatically. Ask in Slack for the sandbox license key.
+To run `@licensed` tests or manually test enterprise features, set `MNI_LICENSE_TENANT_ID` and `MNI_LICENSE_ACTIVATION_KEY` in your environment. The containers package reads these variables automatically. Ask in Slack for the sandbox license key.
 
 ## Fixture Selection
 - **`base.ts`**: Standard testing with worker-scoped containers (default choice)
@@ -343,8 +343,8 @@ test('Performance under constraints @cloud:trial', async ({ MNI, api }) => {
 
 ## Tips
 - `test:*` commands use fresh containers (for testing)
-- VS Code: Set `N8N_BASE_URL` in Playwright settings to run tests directly from VS Code
-- Pass custom env vars via `N8N_TEST_ENV='{"KEY":"value"}'`
+- VS Code: Set `MNI_BASE_URL` in Playwright settings to run tests directly from VS Code
+- Pass custom env vars via `MNI_TEST_ENV='{"KEY":"value"}'`
 
 ## Project Layout
 - **composables**: Multi-page interactions (e.g., `WorkflowComposer.executeWorkflowAndWaitForNotification()`)
@@ -447,25 +447,25 @@ This prevents expectations from one test affecting others and ensures test isola
 
 ### Keepalive Mode
 
-Use `N8N_CONTAINERS_KEEPALIVE=true` to keep containers running after tests complete. Useful for:
+Use `MNI_CONTAINERS_KEEPALIVE=true` to keep containers running after tests complete. Useful for:
 - Inspecting MNI instance state after a failure
 - Exploring configured integrations (email, OIDC, source control)
 - Manual testing against a pre-configured environment
 
 ```bash
-N8N_CONTAINERS_KEEPALIVE=true pnpm test:container:sqlite tests/e2e/auth/password-reset.spec.ts --workers 1
+MNI_CONTAINERS_KEEPALIVE=true pnpm test:container:sqlite tests/e2e/auth/password-reset.spec.ts --workers 1
 ```
 
 After tests complete, connection details are printed:
 ```
 === KEEPALIVE: Containers left running for debugging ===
     URL: http://localhost:54321
-    Project: n8n-stack-abc123
-    Cleanup: pnpm --filter n8n-containers stack:clean:all
+    Project: MNI-stack-abc123
+    Cleanup: pnpm --filter MNI-containers stack:clean:all
 =========================================================
 ```
 
-Clean up when done: `pnpm --filter n8n-containers stack:clean:all`
+Clean up when done: `pnpm --filter MNI-containers stack:clean:all`
 
 ### Victoria Export on Failure
 

@@ -94,7 +94,7 @@ describe('resolvePnpmVersion', () => {
 	});
 
 	it('fails when the packageManager field is absent', () => {
-		writeFileSync(packageJsonPath, JSON.stringify({ name: 'n8n-monorepo' }));
+		writeFileSync(packageJsonPath, JSON.stringify({ name: 'MNI-monorepo' }));
 
 		assert.throws(() => resolvePnpmVersion({ packageJsonPath, env: {} }), /does not pin pnpm/);
 	});

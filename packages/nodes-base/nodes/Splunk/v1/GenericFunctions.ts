@@ -5,11 +5,11 @@ import type {
 	JsonObject,
 	IRequestOptions,
 	IHttpRequestMethods,
-} from 'n8n-workflow';
-import { NodeApiError, NodeOperationError, sanitizeXmlName } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeApiError, NodeOperationError, sanitizeXmlName } from 'MNI-workflow';
 import { parseString } from 'xml2js';
 
-import { sleep } from '@n8n/utils/sleep';
+import { sleep } from '@MNI/utils/sleep';
 import {
 	SPLUNK,
 	type SplunkError,

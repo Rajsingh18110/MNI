@@ -1,4 +1,4 @@
-import type { INodeProperties } from 'n8n-workflow';
+import type { INodeProperties } from 'MNI-workflow';
 
 export const messageOperations: INodeProperties[] = [
 	{
@@ -57,7 +57,7 @@ export const messageFields: INodeProperties[] = [
 	/*                                message:sendPrivate                         */
 	/* -------------------------------------------------------------------------- */
 	{
-		// eslint-disable-next-line n8n-nodes-base/node-param-display-name-wrong-for-dynamic-multi-options
+		// eslint-disable-next-line MNI-nodes-base/node-param-display-name-wrong-for-dynamic-multi-options
 		displayName: 'To',
 		name: 'to',
 		type: 'multiOptions',

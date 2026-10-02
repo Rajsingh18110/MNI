@@ -1,5 +1,5 @@
 import { mockDeep } from 'vitest-mock-extended';
-import type { ILoadOptionsFunctions } from 'n8n-workflow';
+import type { ILoadOptionsFunctions } from 'MNI-workflow';
 
 import { getCategoriesNames, getFolders, getCalendarGroups } from '../../../v2/methods/loadOptions';
 import * as transport from '../../../v2/transport';
@@ -94,11 +94,11 @@ describe('MicrosoftOutlookV2 - loadOptions methods', () => {
 			const result = await getCategoriesNames.call(mockLoadOptionsFunctions);
 
 			expect(result).toEqual([
-				// eslint-disable-next-line n8n-nodes-base/node-param-display-name-miscased
+				// eslint-disable-next-line MNI-nodes-base/node-param-display-name-miscased
 				{ name: 'Category with "quotes"', value: 'Category with "quotes"' },
-				// eslint-disable-next-line n8n-nodes-base/node-param-display-name-miscased
+				// eslint-disable-next-line MNI-nodes-base/node-param-display-name-miscased
 				{ name: "Category with 'apostrophes'", value: "Category with 'apostrophes'" },
-				// eslint-disable-next-line n8n-nodes-base/node-param-display-name-miscased
+				// eslint-disable-next-line MNI-nodes-base/node-param-display-name-miscased
 				{ name: 'Category with & symbols', value: 'Category with & symbols' },
 				{ name: 'Category With Unicode: 🔥', value: 'Category With Unicode: 🔥' },
 			]);
@@ -287,7 +287,7 @@ describe('MicrosoftOutlookV2 - loadOptions methods', () => {
 				{ name: 'My "Work" Calendar', value: 'group1' },
 				{ name: "John's Calendar", value: 'group2' },
 				{ name: 'Team & Projects', value: 'group3' },
-				// eslint-disable-next-line n8n-nodes-base/node-param-display-name-miscased
+				// eslint-disable-next-line MNI-nodes-base/node-param-display-name-miscased
 				{ name: 'Calendar with unicode: =�', value: 'group4' },
 			]);
 		});

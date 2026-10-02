@@ -1,5 +1,5 @@
-import { WithTimestamps } from '@n8n/db';
-import { Column, Entity, Index, PrimaryColumn } from '@n8n/typeorm';
+import { WithTimestamps } from '@MNI/db';
+import { Column, Entity, Index, PrimaryColumn } from '@MNI/typeorm';
 
 /**
  * Attaches one policy to one scope, at a position in that scope's evaluation order.

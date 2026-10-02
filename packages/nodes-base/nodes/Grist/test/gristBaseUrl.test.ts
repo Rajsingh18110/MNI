@@ -1,5 +1,5 @@
-import type { INodeParameters } from 'n8n-workflow';
-import { NodeHelpers } from 'n8n-workflow';
+import type { INodeParameters } from 'MNI-workflow';
+import { NodeHelpers } from 'MNI-workflow';
 
 import { GristApi } from '../../../credentials/GristApi.credentials';
 import { gristBaseUrl } from '../GenericFunctions';

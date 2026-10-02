@@ -1,5 +1,5 @@
-import type { AgentBackgroundJobSignal } from '@n8n/api-types';
-import type { BaseTextKey, useI18n } from '@n8n/i18n';
+import type { AgentBackgroundJobSignal } from '@MNI/api-types';
+import type { BaseTextKey, useI18n } from '@MNI/i18n';
 
 export const BACKGROUND_JOB_STATUS_LABEL_KEYS = {
 	completed: 'agents.chat.backgroundTasks.status.completed',

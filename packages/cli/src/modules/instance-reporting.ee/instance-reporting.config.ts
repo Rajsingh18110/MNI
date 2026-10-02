@@ -1,11 +1,11 @@
-import { Config, Env } from '@n8n/config';
+import { Config, Env } from '@MNI/config';
 
 @Config
 export class InstanceReportingConfig {
 	/**
 	 * @beta - breaking changes may still occur
 	 */
-	@Env('N8N_INSTANCE_REPORTING_LABEL')
+	@Env('MNI_INSTANCE_REPORTING_LABEL')
 	instanceReportingLabel: string = '';
 
 	/**
@@ -14,7 +14,7 @@ export class InstanceReportingConfig {
 	 *
 	 * @beta - breaking changes may still occur
 	 */
-	@Env('N8N_INSTANCE_REPORTING_BASE_URL')
+	@Env('MNI_INSTANCE_REPORTING_BASE_URL')
 	instanceReportingBaseUrl: string = '';
 
 	/**
@@ -23,6 +23,6 @@ export class InstanceReportingConfig {
 	 *
 	 * @beta - breaking changes may still occur
 	 */
-	@Env('N8N_INSTANCE_REPORTING_AUTH_TOKEN')
+	@Env('MNI_INSTANCE_REPORTING_AUTH_TOKEN')
 	instanceReportingAuthToken: string = '';
 }

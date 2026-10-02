@@ -1,4 +1,4 @@
-import type { ModalDefinition } from '@n8n/frontend-module-sdk';
+import type { ModalDefinition } from '@MNI/frontend-module-sdk';
 import { PROMOTION_SELECT_MODAL_KEY } from './promotions.constants';
 
 export const PROMOTIONS_MODALS: ModalDefinition[] = [

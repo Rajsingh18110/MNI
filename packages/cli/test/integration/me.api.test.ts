@@ -4,12 +4,12 @@ import {
 	randomValidPassword,
 	testDb,
 	mockInstance,
-} from '@n8n/backend-test-utils';
-import { GlobalConfig } from '@n8n/config';
-import type { User } from '@n8n/db';
-import { GLOBAL_OWNER_ROLE, ProjectRepository, UserRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
-import type { IPersonalizationSurveyAnswersV4 } from 'n8n-workflow';
+} from '@MNI/backend-test-utils';
+import { GlobalConfig } from '@MNI/config';
+import type { User } from '@MNI/db';
+import { GLOBAL_OWNER_ROLE, ProjectRepository, UserRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
+import type { IPersonalizationSurveyAnswersV4 } from 'MNI-workflow';
 import validator from 'validator';
 
 import { SUCCESS_RESPONSE_BODY } from './shared/constants';
@@ -464,7 +464,7 @@ describe('Owner', () => {
 const SURVEY: IPersonalizationSurveyAnswersV4 = {
 	version: 'v4',
 	personalization_survey_submitted_at: '2024-08-21T13:05:51.709Z',
-	personalization_survey_n8n_version: '1.0.0',
+	personalization_survey_MNI_version: '1.0.0',
 	automationGoalDevops: ['test'],
 	automationGoalDevopsOther: 'test',
 	companyIndustryExtended: ['test'],
@@ -484,7 +484,7 @@ const SURVEY: IPersonalizationSurveyAnswersV4 = {
 const EMPTY_SURVEY: IPersonalizationSurveyAnswersV4 = {
 	version: 'v4',
 	personalization_survey_submitted_at: '2024-08-21T13:05:51.709Z',
-	personalization_survey_n8n_version: '1.0.0',
+	personalization_survey_MNI_version: '1.0.0',
 };
 
 const VALID_PATCH_ME_PAYLOADS = [

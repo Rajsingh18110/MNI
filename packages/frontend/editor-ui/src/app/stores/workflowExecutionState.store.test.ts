@@ -7,7 +7,7 @@
  * dispose lifecycle.
  */
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
-import type { AgentNodeProgress } from '@n8n/api-types';
+import type { AgentNodeProgress } from '@MNI/api-types';
 import { setActivePinia, createPinia, getActivePinia } from 'pinia';
 import { defineComponent, provide, shallowRef } from 'vue';
 import { createComponentRenderer } from '@/__tests__/render';
@@ -30,7 +30,7 @@ import {
 	createRunExecutionData,
 	TRIMMED_TASK_DATA_CONNECTIONS_KEY,
 	type ExecutionSummary,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import { IN_PROGRESS_EXECUTION_ID } from '@/app/constants/placeholders';
 
 function makeExecution(overrides: Partial<IExecutionResponse> = {}): IExecutionResponse {
@@ -1483,7 +1483,7 @@ describe('workflowExecutionState.store', () => {
 			documentStore.addNode({
 				id: 'a-id',
 				name: 'Node A',
-				type: 'n8n-nodes-base.set',
+				type: 'MNI-nodes-base.set',
 				typeVersion: 1,
 				position: [0, 0],
 				parameters: {},
@@ -1491,7 +1491,7 @@ describe('workflowExecutionState.store', () => {
 			documentStore.addNode({
 				id: 'b-id',
 				name: 'Node B',
-				type: 'n8n-nodes-base.set',
+				type: 'MNI-nodes-base.set',
 				typeVersion: 1,
 				position: [0, 0],
 				parameters: {},
@@ -1745,7 +1745,7 @@ describe('workflowExecutionState.store', () => {
 				id: 'node-1',
 				name: 'Node 1',
 				position: [0, 0],
-				type: 'n8n-nodes-base.set',
+				type: 'MNI-nodes-base.set',
 				typeVersion: 1,
 				parameters: {},
 			});

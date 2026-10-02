@@ -1,6 +1,6 @@
-import type { Project } from '@n8n/db';
-import { WorkflowOperationError } from 'n8n-workflow';
-import type { INode } from 'n8n-workflow';
+import type { Project } from '@MNI/db';
+import { WorkflowOperationError } from 'MNI-workflow';
+import type { INode } from 'MNI-workflow';
 
 type CallerType = 'workflow' | 'agent';
 

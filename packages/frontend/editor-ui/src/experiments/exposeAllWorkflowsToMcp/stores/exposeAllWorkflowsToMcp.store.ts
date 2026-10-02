@@ -1,8 +1,8 @@
-import { useTelemetry } from '@n8n/composables/useTelemetry';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
 import { EXPOSE_ALL_WORKFLOWS_TO_MCP_EXPERIMENT } from '@/app/constants/experiments';
 import { usePostHog } from '@/app/stores/posthog.store';
 import { getExperimentTelemetryPayload } from '@/experiments/utils';
-import { STORES } from '@n8n/stores';
+import { STORES } from '@MNI/stores';
 import { defineStore } from 'pinia';
 import { computed } from 'vue';
 

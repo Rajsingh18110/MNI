@@ -14,15 +14,15 @@ import type {
 	RuntimeSkillLinkedFiles,
 	RuntimeSkillSource,
 	Agent as RuntimeAgent,
-} from '@n8n/agents';
-import { modelConfigToId } from '@n8n/agents';
-import { wrapToolForApproval } from '@n8n/agents/tool';
+} from '@MNI/agents';
+import { modelConfigToId } from '@MNI/agents';
+import { wrapToolForApproval } from '@MNI/agents/tool';
 import {
 	getNativeWebSearchProviderTools,
 	getProviderPrefix,
 	hasNativeWebSearchProvider,
 	isNativeWebSearchRequested,
-} from '@n8n/ai-utilities/agent-config';
+} from '@MNI/ai-utilities/agent-config';
 import {
 	AI_GATEWAY_MANAGED_TAG,
 	MANAGED_CREDENTIAL_TOKEN,
@@ -33,8 +33,8 @@ import {
 	type AgentJsonMemoryConfig,
 	type AgentJsonToolConfig,
 	type AgentJsonSkillConfig,
-} from '@n8n/api-types';
-import { UserError } from 'n8n-workflow';
+} from '@MNI/api-types';
+import { UserError } from 'MNI-workflow';
 import { createHash } from 'crypto';
 import { z } from 'zod';
 
@@ -158,7 +158,7 @@ export async function buildFromJson(
 	toolDescriptors: Record<string, ToolDescriptor>,
 	options: BuildFromJsonOptions,
 ): Promise<RuntimeAgent> {
-	const { Agent, createRuntimeSkillRegistry } = await import('@n8n/agents');
+	const { Agent, createRuntimeSkillRegistry } = await import('@MNI/agents');
 	const agent = new Agent(config.name);
 
 	const resolvedModelConfig = await resolveModelConfig(config, options.credentialProvider);
@@ -339,7 +339,7 @@ function buildFallbackWebSearchTool(
 		inputSchema: WEB_SEARCH_INPUT_SCHEMA,
 		handler: async (input) => {
 			const args = WEB_SEARCH_INPUT_SCHEMA.parse(input);
-			const { braveSearch, searxngSearch } = await import('@n8n/ai-utilities');
+			const { braveSearch, searxngSearch } = await import('@MNI/ai-utilities');
 			const searchOptions = {
 				maxResults: args.maxResults,
 				includeDomains: args.includeDomains,
@@ -524,7 +524,7 @@ async function applyMemoryFromConfig(
 	credentialProvider: CredentialProvider,
 	resolveManagedEmbeddingProviderOptions?: ManagedEmbeddingProviderOptionsResolver,
 ) {
-	const { Memory } = await import('@n8n/agents');
+	const { Memory } = await import('@MNI/agents');
 	const memory = new Memory();
 
 	const builtMemory = memoryFactory(memoryConfig);
@@ -544,7 +544,7 @@ async function applyMemoryFromConfig(
 		const observationalMemory = memoryConfig.observationalMemory;
 
 		const { createObservationLogObserveFn, createObservationLogReflectFn } = await import(
-			'@n8n/agents'
+			'@MNI/agents'
 		);
 
 		memory.observationalMemory({
@@ -593,7 +593,7 @@ async function resolveEpisodicMemoryJsonConfig(
 	resolveManagedEmbeddingProviderOptions?: ManagedEmbeddingProviderOptionsResolver,
 ) {
 	const { DEFAULT_EPISODIC_MEMORY_EMBEDDING_MODEL, createEpisodicMemoryReflectFn } = await import(
-		'@n8n/agents'
+		'@MNI/agents'
 	);
 	const embeddingModel = DEFAULT_EPISODIC_MEMORY_EMBEDDING_MODEL;
 	const embeddingProviderOptions =

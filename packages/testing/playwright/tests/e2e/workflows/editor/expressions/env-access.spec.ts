@@ -9,7 +9,7 @@ test.use({
 	capability: {
 		env: {
 			TEST_ISOLATION: 'expression-env-access',
-			N8N_BLOCK_ENV_ACCESS_IN_NODE: 'false',
+			MNI_BLOCK_ENV_ACCESS_IN_NODE: 'false',
 			E2E_ENV_PREVIEW_PROBE: 'probe-value',
 		},
 	},
@@ -24,7 +24,7 @@ test.describe(
 		test.beforeEach(async ({ MNI, n8nContainer }) => {
 			test.skip(
 				!n8nContainer,
-				'container-only: the backend must start with N8N_BLOCK_ENV_ACCESS_IN_NODE set',
+				'container-only: the backend must start with MNI_BLOCK_ENV_ACCESS_IN_NODE set',
 			);
 			await n8n.start.fromBlankCanvas();
 		});

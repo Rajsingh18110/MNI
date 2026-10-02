@@ -18,7 +18,7 @@ import {
 // exercised against a real tree rather than a hand-built path string.
 let ROOT: string;
 
-const WORKSPACE = new Set(['@n8n/api-types', 'MNI']);
+const WORKSPACE = new Set(['@MNI/api-types', 'MNI']);
 const NO_EXEMPTIONS = new Set<string>();
 
 function pkg(relDir: string, manifest: Record<string, unknown>): void {
@@ -32,12 +32,12 @@ beforeAll(() => {
 	// hoisted copy npm picked for the root project
 	pkg('node_modules/zod', { name: 'zod', version: '4.4.3' });
 	// a workspace package of ours pinning its own copy -> fix is a manifest change in this repo
-	pkg('node_modules/@n8n/api-types', {
-		name: '@n8n/api-types',
+	pkg('node_modules/@MNI/api-types', {
+		name: '@MNI/api-types',
 		version: '1.0.0',
 		dependencies: { zod: '^3.25.0' },
 	});
-	pkg('node_modules/@n8n/api-types/node_modules/zod', { name: 'zod', version: '3.25.76' });
+	pkg('node_modules/@MNI/api-types/node_modules/zod', { name: 'zod', version: '3.25.76' });
 	// a third-party package pinning an incompatible range -> fix is upstream / the catalog
 	pkg('node_modules/third-party', {
 		name: 'third-party',
@@ -72,7 +72,7 @@ describe('attributeCopy', () => {
 
 	// Which section declared it decides the fix, so attribution has to keep it.
 	it('records the section the range came from', () => {
-		expect(attribute('node_modules/@n8n/api-types/node_modules/zod', '3.25.76').section).toBe(
+		expect(attribute('node_modules/@MNI/api-types/node_modules/zod', '3.25.76').section).toBe(
 			'dependencies',
 		);
 		expect(attribute('node_modules/third-party/node_modules/zod', '3.20.1').section).toBe(
@@ -82,8 +82,8 @@ describe('attributeCopy', () => {
 	});
 
 	it('flags a requirer that is one of our own packages', () => {
-		const copy = attribute('node_modules/@n8n/api-types/node_modules/zod', '3.25.76');
-		expect(copy).toMatchObject({ requiredBy: '@n8n/api-types', isWorkspace: true });
+		const copy = attribute('node_modules/@MNI/api-types/node_modules/zod', '3.25.76');
+		expect(copy).toMatchObject({ requiredBy: '@MNI/api-types', isWorkspace: true });
 		expect(describeOrigin(copy)).toContain('[workspace package]');
 	});
 
@@ -143,7 +143,7 @@ describe('explainDuplicates', () => {
 		expect(zod.name).toBe('zod');
 		expect(zod.copies.map((c) => c.requiredBy)).toEqual([
 			null,
-			'@n8n/api-types',
+			'@MNI/api-types',
 			'silent',
 			'third-party',
 		]);
@@ -187,7 +187,7 @@ describe('formatCuratedReport', () => {
 describe('formatRemediation', () => {
 	it('tells our own packages to move the library to peerDependencies', () => {
 		const output = formatRemediation(explainAll(), { exemptPackages: NO_EXEMPTIONS }).join('\n');
-		expect(output).toContain('- zod <- @n8n/api-types (dependencies "^3.25.0")');
+		expect(output).toContain('- zod <- @MNI/api-types (dependencies "^3.25.0")');
 		expect(output).toContain('"peerDependencies"');
 	});
 
@@ -215,17 +215,17 @@ describe('formatRemediation', () => {
 		expect(output).not.toContain('"peerDependencies"');
 	});
 
-	// The compliant shape: @n8n/api-types, n8n-core and n8n-workflow all declare zod only as a peer,
+	// The compliant shape: @MNI/api-types, MNI-core and MNI-workflow all declare zod only as a peer,
 	// so they are the likeliest requirers in the real closure — and there is nothing for them to move.
 	it('does not propose a peer move for a package that already declares the peer', () => {
 		const peerRoot = join(ROOT, 'peer');
 		pkg('peer/node_modules/zod', { name: 'zod', version: '4.4.3' });
-		pkg('peer/node_modules/@n8n/api-types', {
-			name: '@n8n/api-types',
+		pkg('peer/node_modules/@MNI/api-types', {
+			name: '@MNI/api-types',
 			version: '1.0.0',
 			peerDependencies: { zod: '3.25.76' },
 		});
-		pkg('peer/node_modules/@n8n/api-types/node_modules/zod', { name: 'zod', version: '3.25.76' });
+		pkg('peer/node_modules/@MNI/api-types/node_modules/zod', { name: 'zod', version: '3.25.76' });
 
 		const explained = explainDuplicates(
 			peerRoot,
@@ -235,21 +235,21 @@ describe('formatRemediation', () => {
 		const output = formatRemediation(explained, { exemptPackages: NO_EXEMPTIONS }).join('\n');
 
 		expect(output).toContain('already declare the library as a peer');
-		expect(output).toContain('- zod <- @n8n/api-types (peerDependencies "3.25.76")');
+		expect(output).toContain('- zod <- @MNI/api-types (peerDependencies "3.25.76")');
 		expect(output).not.toContain('Move it to "peerDependencies"');
 	});
 
 	// reflect-metadata is curated but pin-only, so the peer rule does not cover it either.
 	it('does not propose a peer move for a curated library outside the peer rule', () => {
 		const copy = attribute(
-			'node_modules/@n8n/api-types/node_modules/zod',
+			'node_modules/@MNI/api-types/node_modules/zod',
 			'3.25.76',
 			'reflect-metadata',
 		);
 		const explained = [
 			{
 				name: 'reflect-metadata',
-				copies: [{ ...copy, requiredBy: '@n8n/api-types', range: '^0.2.0', isWorkspace: true }],
+				copies: [{ ...copy, requiredBy: '@MNI/api-types', range: '^0.2.0', isWorkspace: true }],
 			},
 		];
 
@@ -266,7 +266,7 @@ describe('formatRemediation', () => {
 
 	it('numbers the steps consecutively whichever ones apply', () => {
 		const output = formatRemediation(explainAll(), {
-			exemptPackages: new Set(['@n8n/api-types']),
+			exemptPackages: new Set(['@MNI/api-types']),
 		}).join('\n');
 		expect(output).toContain('  1. Our own packages that legitimately own a copy');
 		expect(output).toContain('  2. Third-party packages');

@@ -1,5 +1,5 @@
-import { Command } from '@n8n/decorators';
-import { Container } from '@n8n/di';
+import { Command } from '@MNI/decorators';
+import { Container } from '@MNI/di';
 
 import { License } from '@/license';
 

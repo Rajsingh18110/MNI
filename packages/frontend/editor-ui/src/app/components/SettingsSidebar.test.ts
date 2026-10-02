@@ -9,7 +9,7 @@ vi.mock('../composables/useSettingsItems', () => ({
 	useSettingsItems: () => ({
 		settingsItems: ref([
 			{
-				id: 'settings-n8n-connect',
+				id: 'settings-MNI-connect',
 				label: 'Gateway credits',
 			},
 		]),
@@ -33,6 +33,6 @@ describe('SettingsSidebar', () => {
 		const { getByText } = renderComponent();
 		getByText('Gateway credits').click();
 
-		expect(handleSettingsItemSelectMock).toHaveBeenCalledWith('settings-n8n-connect');
+		expect(handleSettingsItemSelectMock).toHaveBeenCalledWith('settings-MNI-connect');
 	});
 });

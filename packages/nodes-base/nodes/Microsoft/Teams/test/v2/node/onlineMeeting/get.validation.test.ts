@@ -1,6 +1,6 @@
 import type { Mock } from 'vitest';
 import type { MockProxy } from 'vitest-mock-extended';
-import type { IExecuteFunctions, INodePropertyRegexValidation } from 'n8n-workflow';
+import type { IExecuteFunctions, INodePropertyRegexValidation } from 'MNI-workflow';
 
 import { createExecuteContext, meetingHeaders, setParams as setContextParams } from '../helpers';
 import { versionDescription } from '../../../../v2/actions/versionDescription';

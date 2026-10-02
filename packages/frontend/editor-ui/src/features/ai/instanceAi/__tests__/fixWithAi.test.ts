@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { buildFixWithAiPrompt, isFixWithAiError } from '../fixWithAi';
 
-vi.mock('@n8n/i18n', () => ({
+vi.mock('@MNI/i18n', () => ({
 	useI18n: () => ({
 		baseText: (key: string, options?: { interpolate?: Record<string, string | number> }) => {
 			if (!options?.interpolate) return key;

@@ -1,6 +1,6 @@
-# @n8n/code-health
+# @MNI/code-health
 
-Static analysis for monorepo dependency hygiene. Built on `@n8n/rules-engine`.
+Static analysis for monorepo dependency hygiene. Built on `@MNI/rules-engine`.
 
 ## What it does
 
@@ -9,13 +9,13 @@ Scans repository files for structural and dependency-policy violations:
 - **ADR convention violations** — ADR filenames, locations, metadata, sections, owners, spacing, and local references that do not match the repository format
 - **Hardcoded catalog deps** — dependencies using a pinned version when `pnpm-workspace.yaml` already defines a catalog entry
 - **Cross-package version drift** — the same dependency appearing in multiple packages with different versions
-- **Encryption boundary coverage** — every package that depends on `n8n-core` or `@n8n/db` composes the encryption-boundary ESLint config at `error` severity and contains no ESLint directive that silences it
+- **Encryption boundary coverage** — every package that depends on `MNI-core` or `@MNI/db` composes the encryption-boundary ESLint config at `error` severity and contains no ESLint directive that silences it
 
 ## Usage
 
 ```bash
 # Build first
-pnpm --filter=@n8n/code-health build
+pnpm --filter=@MNI/code-health build
 
 # Run analysis (uses baseline if present)
 node packages/testing/code-health/dist/cli.js
@@ -95,4 +95,4 @@ when you need that chain.
 
 ## Adding rules
 
-Rules extend `BaseRule<CodeHealthContext>` from `@n8n/rules-engine`. See `src/rules/catalog-violations.rule.ts` for the pattern. Register new rules in `src/index.ts`.
+Rules extend `BaseRule<CodeHealthContext>` from `@MNI/rules-engine`. See `src/rules/catalog-violations.rule.ts` for the pattern. Register new rules in `src/index.ts`.

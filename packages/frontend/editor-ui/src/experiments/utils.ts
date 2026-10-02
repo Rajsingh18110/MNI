@@ -1,9 +1,9 @@
-import { useTelemetry } from '@n8n/composables/useTelemetry';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
 import { EXTRA_TEMPLATE_LINKS_EXPERIMENT } from '@/app/constants';
-import { useCloudPlanStore } from '@n8n/stores/cloudPlan.store';
+import { useCloudPlanStore } from '@MNI/stores/cloudPlan.store';
 import { usePostHog } from '@/app/stores/posthog.store';
 import { useWorkflowsListStore } from '@/app/stores/workflowsList.store';
-import type { FeatureFlags, ITelemetryTrackProperties } from 'n8n-workflow';
+import type { FeatureFlags, ITelemetryTrackProperties } from 'MNI-workflow';
 
 type ExperimentDefinition<TName extends string = string> = {
 	name: TName;

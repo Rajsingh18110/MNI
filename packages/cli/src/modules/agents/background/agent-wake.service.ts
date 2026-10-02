@@ -1,10 +1,10 @@
-import { LockNamespace, LockService, Logger } from '@n8n/backend-common';
-import { AgentsConfig } from '@n8n/config';
-import { UserRepository } from '@n8n/db';
-import { OnPubSubEvent } from '@n8n/decorators';
-import { Service } from '@n8n/di';
-import { InstanceSettings } from 'n8n-core';
-import { OperationalError, UnexpectedError } from 'n8n-workflow';
+import { LockNamespace, LockService, Logger } from '@MNI/backend-common';
+import { AgentsConfig } from '@MNI/config';
+import { UserRepository } from '@MNI/db';
+import { OnPubSubEvent } from '@MNI/decorators';
+import { Service } from '@MNI/di';
+import { InstanceSettings } from 'MNI-core';
+import { OperationalError, UnexpectedError } from 'MNI-workflow';
 
 import { userHasScopes } from '@/permissions.ee/check-access';
 import { Publisher } from '@/scaling/pubsub/publisher.service';
@@ -205,7 +205,7 @@ export class AgentWakeService {
 	): Promise<ExecuteForWakeConfig['identity']> {
 		const userId = userIdFromDraftChatMemoryResourceId(resourceId);
 		if (userId) {
-			const expectedHash = hashAgentSandboxPrincipal({ type: 'n8n-user', userId });
+			const expectedHash = hashAgentSandboxPrincipal({ type: 'MNI-user', userId });
 			if (expectedHash !== principalHash) {
 				throw new UnexpectedError('Draft wake identity does not match its principal');
 			}

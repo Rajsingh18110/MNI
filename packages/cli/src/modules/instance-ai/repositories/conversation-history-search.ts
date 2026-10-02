@@ -1,4 +1,4 @@
-import { escapeLike, LIKE_ESCAPE_CLAUSE } from '@n8n/db';
+import { escapeLike, LIKE_ESCAPE_CLAUSE } from '@MNI/db';
 
 import {
 	ASK_USER_TOOL_NAME,

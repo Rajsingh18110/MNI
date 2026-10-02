@@ -1,12 +1,12 @@
 <script lang="ts" setup>
 import { computed, ref } from 'vue';
 import { ElSwitch } from 'element-plus';
-import { N8nAlertDialog, N8nPreviewBadge, N8nSettingsRow, N8nText } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
-import { useRootStore } from '@n8n/stores/useRootStore';
-import * as securitySettingsApi from '@n8n/rest-api-client/api/security-settings';
-import { useToast } from '@n8n/composables/useToast';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { N8nAlertDialog, N8nPreviewBadge, N8nSettingsRow, N8nText } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
+import { useRootStore } from '@MNI/stores/useRootStore';
+import * as securitySettingsApi from '@MNI/rest-api-client/api/security-settings';
+import { useToast } from '@MNI/composables/useToast';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 
 const props = defineProps<{
 	initialEnabled: boolean;

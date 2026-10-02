@@ -1,7 +1,7 @@
 import { DateTime } from 'luxon';
 import moment from 'moment-timezone';
-import type { IDataObject, IExecuteFunctions, INodeProperties } from 'n8n-workflow';
-import { NodeOperationError } from 'n8n-workflow';
+import type { IDataObject, IExecuteFunctions, INodeProperties } from 'MNI-workflow';
+import { NodeOperationError } from 'MNI-workflow';
 
 import { updateDisplayOptions } from '@utils/utilities';
 
@@ -41,7 +41,7 @@ export const properties: INodeProperties[] = [
 		options: [
 			eventAttendeesField,
 			{
-				// eslint-disable-next-line n8n-nodes-base/node-param-display-name-wrong-for-dynamic-multi-options
+				// eslint-disable-next-line MNI-nodes-base/node-param-display-name-wrong-for-dynamic-multi-options
 				displayName: 'Categories',
 				name: 'categories',
 				type: 'multiOptions',

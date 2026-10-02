@@ -7,7 +7,7 @@ import type {
 	ConsumerConfig,
 } from 'kafkajs';
 import { SchemaRegistry } from '@kafkajs/confluent-schema-registry';
-import { formatPemBlock } from '@n8n/utils/format-pem-block';
+import { formatPemBlock } from '@MNI/utils/format-pem-block';
 import type {
 	Logger,
 	ITriggerFunctions,
@@ -18,11 +18,11 @@ import type {
 	INodeExecutionData,
 	FunctionsBase,
 	RequestHelperFunctions,
-} from 'n8n-workflow';
-import { ensureError } from '@n8n/utils/errors/ensure-error';
-import { scrubSecretsInText } from '@n8n/utils/scrub-secrets';
-import { sleep } from '@n8n/utils/sleep';
-import { jsonParse, NodeOperationError, OperationalError, UserError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { ensureError } from '@MNI/utils/errors/ensure-error';
+import { scrubSecretsInText } from '@MNI/utils/scrub-secrets';
+import { sleep } from '@MNI/utils/sleep';
+import { jsonParse, NodeOperationError, OperationalError, UserError } from 'MNI-workflow';
 import http from 'node:http';
 import https from 'node:https';
 import type { ConnectionOptions } from 'node:tls';

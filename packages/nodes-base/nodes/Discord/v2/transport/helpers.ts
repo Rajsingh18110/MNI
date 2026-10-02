@@ -5,8 +5,8 @@ import type {
 	IHookFunctions,
 	ILoadOptionsFunctions,
 	IRequestOptions,
-} from 'n8n-workflow';
-import { sleep } from '@n8n/utils/sleep';
+} from 'MNI-workflow';
+import { sleep } from '@MNI/utils/sleep';
 
 const MAX_RATE_LIMIT_RETRIES = 3;
 const MAX_RATE_LIMIT_SLEEP_MS = 60_000;

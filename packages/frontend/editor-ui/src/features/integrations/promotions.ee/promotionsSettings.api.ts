@@ -20,9 +20,9 @@ import type {
 	UpdatePromotionProviderDto,
 	UpsertPromotionApplyConfigDto,
 	UpsertPromotionPromoteConfigDto,
-} from '@n8n/api-types';
-import type { PublicApiContext } from '@n8n/rest-api-client';
-import { request } from '@n8n/rest-api-client';
+} from '@MNI/api-types';
+import type { PublicApiContext } from '@MNI/rest-api-client';
+import { request } from '@MNI/rest-api-client';
 
 /** Includes the SSH public key. */
 export type PromotionProvider = PromotionProviderPublicDto;

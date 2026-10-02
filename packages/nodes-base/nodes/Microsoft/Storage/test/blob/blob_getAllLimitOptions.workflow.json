@@ -2,7 +2,7 @@
 	"nodes": [
 		{
 			"parameters": {},
-			"type": "n8n-nodes-base.manualTrigger",
+			"type": "MNI-nodes-base.manualTrigger",
 			"typeVersion": 1,
 			"position": [0, 0],
 			"id": "99f866fa-f63c-477d-a0d0-48fbdb8a344a",
@@ -34,7 +34,7 @@
 				},
 				"requestOptions": {}
 			},
-			"type": "n8n-nodes-base.azureStorage",
+			"type": "MNI-nodes-base.azureStorage",
 			"typeVersion": 1,
 			"position": [660, 0],
 			"id": "ab1b6258-5c75-4893-90bf-ef591264420c",

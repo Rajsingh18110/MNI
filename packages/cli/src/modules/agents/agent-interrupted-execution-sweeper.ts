@@ -1,6 +1,6 @@
-import { Logger } from '@n8n/backend-common';
-import { AgentsConfig } from '@n8n/config';
-import { Service } from '@n8n/di';
+import { Logger } from '@MNI/backend-common';
+import { AgentsConfig } from '@MNI/config';
+import { Service } from '@MNI/di';
 
 import { AgentExecutionService } from './agent-execution.service';
 import { AgentBackgroundJobService } from './background/agent-background-job.service';

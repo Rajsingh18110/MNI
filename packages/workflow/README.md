@@ -1,13 +1,13 @@
 ![MNI - Workflow Automation](https://raw.githubusercontent.com/Rajsingh18110/MNI/main/assets/mni-screenshot-readme.png)
 
-# n8n-workflow
+# MNI-workflow
 
 Workflow base code for MNI
 
 ```
-npm install n8n-workflow
+npm install MNI-workflow
 ```
 
 ## License
 
-You can find the license information [here](https://github.com/n8n-io/n8n/blob/master/README.md#license)
+You can find the license information [here](https://github.com/MNI-io/MNI/blob/master/README.md#license)

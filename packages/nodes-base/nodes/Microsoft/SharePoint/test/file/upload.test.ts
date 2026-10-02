@@ -22,7 +22,7 @@ describe('Microsoft SharePoint Node', () => {
 						createdBy: {
 							application: {
 								id: 'b9c26603-3c9b-4050-b848-27dfab0a52fa',
-								displayName: 'sharepoint-n8n-test',
+								displayName: 'sharepoint-MNI-test',
 							},
 							user: {
 								email: 'john@doe.onmicrosoft.com',
@@ -36,7 +36,7 @@ describe('Microsoft SharePoint Node', () => {
 						lastModifiedBy: {
 							application: {
 								id: 'b9c26603-3c9b-4050-b848-27dfab0a52fa',
-								displayName: 'sharepoint-n8n-test',
+								displayName: 'sharepoint-MNI-test',
 							},
 							user: {
 								email: 'john@doe.onmicrosoft.com',

@@ -9,8 +9,8 @@ import type {
 	INodeTypeDescription,
 	JsonObject,
 	NodeExecutionHint,
-} from 'n8n-workflow';
-import { NodeConnectionTypes, NodeApiError, NodeOperationError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeConnectionTypes, NodeApiError, NodeOperationError } from 'MNI-workflow';
 import { v4 as uuid } from 'uuid';
 
 import { calendarFields, calendarOperations } from './CalendarDescription';
@@ -49,7 +49,7 @@ export class GoogleCalendar implements INodeType {
 		builderHint: {
 			relatedNodes: [
 				{
-					nodeType: 'n8n-nodes-base.googleCalendarTool',
+					nodeType: 'MNI-nodes-base.googleCalendarTool',
 					relationHint: 'Tool version for AI Agent use',
 				},
 			],

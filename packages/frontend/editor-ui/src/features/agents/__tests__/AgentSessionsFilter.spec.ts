@@ -4,7 +4,7 @@ import { describe, expect, it, vi } from 'vitest';
 import AgentSessionsFilter from '../components/AgentSessionsFilter.vue';
 import { defaultAgentSessionFilters } from '../composables/useAgentThreadsApi';
 
-vi.mock('@n8n/design-system', () => ({
+vi.mock('@MNI/design-system', () => ({
 	N8nPopover: {
 		template: '<div><slot name="trigger" /><slot name="content" /></div>',
 	},

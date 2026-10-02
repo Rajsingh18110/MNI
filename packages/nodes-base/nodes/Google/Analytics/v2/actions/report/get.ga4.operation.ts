@@ -3,7 +3,7 @@ import type {
 	IDataObject,
 	INodeExecutionData,
 	INodeProperties,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import {
 	dimensionDropdown,
@@ -91,7 +91,7 @@ export const description: INodeProperties[] = [
 		name: 'dateRange',
 		type: 'options',
 		required: true,
-		// eslint-disable-next-line n8n-nodes-base/node-param-options-type-unsorted-items
+		// eslint-disable-next-line MNI-nodes-base/node-param-options-type-unsorted-items
 		options: [
 			{
 				name: 'Last 7 Days',
@@ -217,7 +217,7 @@ export const description: INodeProperties[] = [
 		},
 	},
 	{
-		// eslint-disable-next-line n8n-nodes-base/node-param-display-name-miscased
+		// eslint-disable-next-line MNI-nodes-base/node-param-display-name-miscased
 		displayName: 'Dimensions to split by',
 		name: 'dimensionsGA4',
 		type: 'fixedCollection',
@@ -278,7 +278,7 @@ export const description: INodeProperties[] = [
 		description: 'Max number of results to return',
 	},
 	{
-		// eslint-disable-next-line n8n-nodes-base/node-param-display-name-wrong-for-simplify
+		// eslint-disable-next-line MNI-nodes-base/node-param-display-name-wrong-for-simplify
 		displayName: 'Simplify Output',
 		name: 'simple',
 		type: 'boolean',

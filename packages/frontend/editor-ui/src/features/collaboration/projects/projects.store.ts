@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia';
 import { ref, watch, computed } from 'vue';
 import { useRoute } from 'vue-router';
-import { useRootStore } from '@n8n/stores/useRootStore';
+import { useRootStore } from '@MNI/stores/useRootStore';
 import * as dataTableApi from '@/features/core/dataTable/dataTable.api';
 import * as projectsApi from './projects.api';
 import * as workflowsApi from '@/app/api/workflows';
@@ -12,23 +12,23 @@ import {
 	getProjectPoolSettings,
 	getProjectSecretProviderConnectionsByProjectId,
 	updateProjectPoolSettings,
-} from '@n8n/rest-api-client';
+} from '@MNI/rest-api-client';
 import type { Project, ProjectListItem, ProjectsCount } from './projects.types';
 import { ProjectTypes } from './projects.types';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { hasPermission } from '@/app/utils/rbac/permissions';
 import type { IWorkflowDb } from '@/Interface';
 import { useCredentialsStore } from '@/features/credentials/credentials.store';
-import { STORES } from '@n8n/stores';
-import { useUsersStore } from '@n8n/stores/users.store';
-import { getResourcePermissions } from '@n8n/permissions';
+import { STORES } from '@MNI/stores';
+import { useUsersStore } from '@MNI/stores/users.store';
+import { getResourcePermissions } from '@MNI/permissions';
 import type {
 	CreateProjectDto,
 	ProjectPoolSettingsResponse,
 	SecretProviderConnection,
 	UpdateProjectDto,
 	UpdateProjectPoolSettingsDto,
-} from '@n8n/api-types';
+} from '@MNI/api-types';
 import { useSourceControlStore } from '@/features/integrations/sourceControl.ee/sourceControl.store';
 import { hasRole } from '@/app/utils/rbac/checks';
 import { useFavoritesStore } from '@/app/stores/favorites.store';

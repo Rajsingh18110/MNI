@@ -1,10 +1,10 @@
-import { Logger } from '@n8n/backend-common';
-import type { Migration } from '@n8n/db';
-import { wrapMigration, DbConnectionOptions } from '@n8n/db';
-import { Command } from '@n8n/decorators';
-import { Container } from '@n8n/di';
-import type { DataSourceOptions as ConnectionOptions } from '@n8n/typeorm';
-import { MigrationExecutor, DataSource as Connection } from '@n8n/typeorm';
+import { Logger } from '@MNI/backend-common';
+import type { Migration } from '@MNI/db';
+import { wrapMigration, DbConnectionOptions } from '@MNI/db';
+import { Command } from '@MNI/decorators';
+import { Container } from '@MNI/di';
+import type { DataSourceOptions as ConnectionOptions } from '@MNI/typeorm';
+import { MigrationExecutor, DataSource as Connection } from '@MNI/typeorm';
 
 // This function is extracted to make it easier to unit test it.
 // Mocking turned into a mess due to this command using typeorm and the db
@@ -35,7 +35,7 @@ export async function main(
 
 	if (lastMigrationInstance === undefined) {
 		logger.error(
-			`The last migration that was executed is "${lastExecutedMigration.name}", but I could not find that migration's code in the currently installed version of n8n.`,
+			`The last migration that was executed is "${lastExecutedMigration.name}", but I could not find that migration's code in the currently installed version of MNI.`,
 		);
 		logger.error(
 			'This usually means that you downgraded MNI before running `MNI db:revert`. Please upgrade MNI again and run `MNI db:revert` and then downgrade again.',

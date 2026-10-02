@@ -1,8 +1,8 @@
-import type { CredentialListItem } from '@n8n/agents';
-import { AI_GATEWAY_MANAGED_TAG, type AgentModelCredentialConfig } from '@n8n/api-types';
-import { isModelDiscoveryProvider } from '@n8n/ai-utilities/model-discovery';
-import type { User } from '@n8n/db';
-import { Service } from '@n8n/di';
+import type { CredentialListItem } from '@MNI/agents';
+import { AI_GATEWAY_MANAGED_TAG, type AgentModelCredentialConfig } from '@MNI/api-types';
+import { isModelDiscoveryProvider } from '@MNI/ai-utilities/model-discovery';
+import type { User } from '@MNI/db';
+import { Service } from '@MNI/di';
 
 import { CredentialsService } from '@/credentials/credentials.service';
 import { AiGatewayService } from '@/services/ai-gateway.service';

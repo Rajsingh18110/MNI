@@ -4,15 +4,15 @@ import {
 	createWorkflowHistory,
 	createWorkflowWithHistory,
 	testDb,
-} from '@n8n/backend-test-utils';
+} from '@MNI/backend-test-utils';
 import {
 	WorkflowHistoryRepository,
 	WorkflowPublishedVersionRepository,
 	WorkflowReviewRequestRepository,
 	WorkflowReviewRequestWorkflowRepository,
-} from '@n8n/db';
-import { Container } from '@n8n/di';
-import { RULES, type INode } from 'n8n-workflow';
+} from '@MNI/db';
+import { Container } from '@MNI/di';
+import { RULES, type INode } from 'MNI-workflow';
 import { v4 as uuid } from 'uuid';
 
 describe('WorkflowHistoryRepository', () => {

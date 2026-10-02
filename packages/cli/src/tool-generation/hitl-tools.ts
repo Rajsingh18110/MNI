@@ -1,4 +1,4 @@
-import type { Types } from 'n8n-core';
+import type { Types } from 'MNI-core';
 import type {
 	IExecuteFunctions,
 	INodeProperties,
@@ -6,8 +6,8 @@ import type {
 	INodeTypeBaseDescription,
 	INodeTypeDescription,
 	KnownNodesAndCredentials,
-} from 'n8n-workflow';
-import { deepCopy, NodeConnectionTypes, SEND_AND_WAIT_OPERATION } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { deepCopy, NodeConnectionTypes, SEND_AND_WAIT_OPERATION } from 'MNI-workflow';
 
 import { copyCredentialSupport, isFullDescription, setToolCodex } from './utils';
 
@@ -196,7 +196,7 @@ export function convertNodeToHitlTool<
 				displayName: 'Human review',
 				type: NodeConnectionTypes.AiTool,
 				filter: {
-					nodes: ['@n8n/n8n-nodes-langchain.agent', '@n8n/n8n-nodes-langchain.agentTool'],
+					nodes: ['@MNI/MNI-nodes-langchain.agent', '@MNI/MNI-nodes-langchain.agentTool'],
 				},
 			},
 		];

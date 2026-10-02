@@ -8,8 +8,8 @@ import type {
 	JsonObject,
 	IHttpRequestMethods,
 	IRequestOptions,
-} from 'n8n-workflow';
-import { NodeApiError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeApiError } from 'MNI-workflow';
 
 export async function venafiApiRequest(
 	this: IExecuteFunctions | ILoadOptionsFunctions | IHookFunctions,

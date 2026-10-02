@@ -57,7 +57,7 @@ describe('Expression.disposeExpressionEngine', () => {
 		const { readFile } = await import('node:fs/promises');
 		const require = createRequire(import.meta.url);
 		const runtimeBundle = await readFile(
-			require.resolve('@n8n/expression-runtime/runtime-bundle.iife.js'),
+			require.resolve('@MNI/expression-runtime/runtime-bundle.iife.js'),
 			'utf8',
 		);
 		const options = {

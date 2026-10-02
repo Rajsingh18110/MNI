@@ -1,7 +1,7 @@
-import { Container } from '@n8n/di';
-import { InstanceSettings } from 'n8n-core';
-import type { IExecuteFunctions, INode, Logger } from 'n8n-workflow';
-import { NodeOperationError } from 'n8n-workflow';
+import { Container } from '@MNI/di';
+import { InstanceSettings } from 'MNI-core';
+import type { IExecuteFunctions, INode, Logger } from 'MNI-workflow';
+import { NodeOperationError } from 'MNI-workflow';
 import type { Mock } from 'vitest';
 import type { MockProxy } from 'vitest-mock-extended';
 import { mock } from 'vitest-mock-extended';
@@ -171,10 +171,10 @@ describe('prepareChatApproval', () => {
 			name === 'responseType' ? 'approval' : true,
 		);
 		context.getSignedResumeUrl.mockReturnValue(
-			'https://mybot.example.com/n8n-instance/webhook-waiting/42/node-1?approved=true&signature=abc',
+			'https://mybot.example.com/MNI-instance/webhook-waiting/42/node-1?approved=true&signature=abc',
 		);
 		mockWebhookInfo({
-			url: 'https://mybot.example.com/n8n-instance/webhook/abc123/webhook',
+			url: 'https://mybot.example.com/MNI-instance/webhook/abc123/webhook',
 			allowed_updates: ['callback_query'],
 		});
 

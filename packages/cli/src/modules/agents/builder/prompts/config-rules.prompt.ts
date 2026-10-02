@@ -1,5 +1,5 @@
-import { zodSchemaToJsonSchema } from '@n8n/ai-utilities/json-schema';
-import { AgentJsonConfigBaseSchema, AgentModelSchema } from '@n8n/api-types';
+import { zodSchemaToJsonSchema } from '@MNI/ai-utilities/json-schema';
+import { AgentJsonConfigBaseSchema, AgentModelSchema } from '@MNI/api-types';
 import type { ZodObject, ZodRawShape } from 'zod';
 import { z } from 'zod';
 

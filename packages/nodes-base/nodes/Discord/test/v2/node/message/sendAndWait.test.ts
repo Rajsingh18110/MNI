@@ -1,6 +1,6 @@
 import type { MockProxy } from 'vitest-mock-extended';
 import { mock } from 'vitest-mock-extended';
-import { SEND_AND_WAIT_OPERATION, type IExecuteFunctions } from 'n8n-workflow';
+import { SEND_AND_WAIT_OPERATION, type IExecuteFunctions } from 'MNI-workflow';
 
 import { versionDescription } from '../../../../v2/actions/versionDescription';
 import { DiscordV2 } from '../../../../v2/DiscordV2.node';
@@ -92,7 +92,7 @@ describe('Test DiscordV2, message => sendAndWait', () => {
 					{
 						color: 5814783,
 						description:
-							'my message\n\n_This message was sent automatically with _[MNI](https://n8n.io/?utm_source=n8n-internal&utm_medium=powered_by&utm_campaign=n8n-nodes-base.discord_instanceId)',
+							'my message\n\n_This message was sent automatically with _[MNI](https://n8n.io/?utm_source=MNI-internal&utm_medium=powered_by&utm_campaign=MNI-nodes-base.discord_instanceId)',
 					},
 				],
 			},

@@ -1,6 +1,6 @@
 import type { Mock } from 'vitest';
-import { mockInstance } from '@n8n/backend-test-utils';
-import { PrometheusMetricsConfig } from '@n8n/config';
+import { mockInstance } from '@MNI/backend-test-utils';
+import { PrometheusMetricsConfig } from '@MNI/config';
 import promClient from 'prom-client';
 
 import { PrometheusVersionMetricsService } from '../version-metrics.service';
@@ -9,13 +9,13 @@ vi.mock('prom-client');
 
 describe('PrometheusVersionMetricsService', () => {
 	const config = mockInstance(PrometheusMetricsConfig, {
-		prefix: 'n8n_',
+		prefix: 'MNI_',
 	});
 	let service: PrometheusVersionMetricsService;
 	let mockGaugeSet: Mock;
 
 	beforeEach(() => {
-		Object.assign(config, { prefix: 'n8n_' });
+		Object.assign(config, { prefix: 'MNI_' });
 		service = new PrometheusVersionMetricsService(config);
 		mockGaugeSet = vi.fn();
 		promClient.Gauge.prototype.set = mockGaugeSet;
@@ -36,7 +36,7 @@ describe('PrometheusVersionMetricsService', () => {
 			service.init();
 
 			expect(promClient.Gauge).toHaveBeenCalledWith({
-				name: 'n8n_version_info',
+				name: 'MNI_version_info',
 				help: 'MNI version info.',
 				labelNames: ['version', 'major', 'minor', 'patch'],
 			});

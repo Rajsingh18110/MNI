@@ -40,7 +40,7 @@ vi.mock('../agentEvals.api', () => ({
 	startRun,
 }));
 
-vi.mock('@n8n/stores/useRootStore', () => ({
+vi.mock('@MNI/stores/useRootStore', () => ({
 	useRootStore: vi.fn(() => ({
 		restApiContext: { instanceId: 'test-instance-id' },
 	})),

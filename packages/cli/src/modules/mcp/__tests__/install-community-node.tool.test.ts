@@ -1,5 +1,5 @@
-import { User } from '@n8n/db';
-import * as permissions from '@n8n/permissions';
+import { User } from '@MNI/db';
+import * as permissions from '@MNI/permissions';
 import type { Mocked } from 'vitest';
 import { mock } from 'vitest-mock-extended';
 
@@ -11,15 +11,15 @@ import type { Telemetry } from '@/telemetry';
 
 import { createInstallCommunityNodeTool } from '../tools/workflow-builder/install-community-node.tool';
 
-vi.mock('@n8n/permissions', async (importOriginal) => ({
+vi.mock('@MNI/permissions', async (importOriginal) => ({
 	...(await importOriginal<typeof permissions>()),
 	hasGlobalScope: vi.fn(),
 }));
 
 const hasGlobalScope = vi.mocked(permissions.hasGlobalScope);
 
-const NODE_TYPE = '@mendable/n8n-nodes-firecrawl.firecrawl';
-const PACKAGE = '@mendable/n8n-nodes-firecrawl';
+const NODE_TYPE = '@mendable/MNI-nodes-firecrawl.firecrawl';
+const PACKAGE = '@mendable/MNI-nodes-firecrawl';
 
 /** Exact catalog entry for NODE_TYPE: official and not installed unless overridden. */
 const catalogEntry = (overrides: Record<string, unknown> = {}) =>
@@ -217,7 +217,7 @@ describe('install_community_node MCP tool', () => {
 			// could leak the npm error text.
 			class BadRequestError extends Error {}
 			lifecycleService.install.mockRejectedValue(
-				new BadRequestError('Package n8n-nodes-sketchy is not vetted for installation'),
+				new BadRequestError('Package MNI-nodes-sketchy is not vetted for installation'),
 			);
 
 			const structured = await callExpectingError();
@@ -253,7 +253,7 @@ describe('install_community_node MCP tool', () => {
 			// The message is built around the npm execFile rejection, so it can carry
 			// a private registry URL or a host path. Only the class name is safe.
 			lifecycleService.install.mockRejectedValue(
-				new Error('npm ERR! 404 --registry=https://npm.internal.example.corp /home/node/.n8n'),
+				new Error('npm ERR! 404 --registry=https://npm.internal.example.corp /home/node/.MNI'),
 			);
 
 			const structured = await callExpectingError();
@@ -281,8 +281,8 @@ describe('install_community_node MCP tool', () => {
 	describe('package names with dots', () => {
 		test('installs a package whose npm name contains a dot', async () => {
 			// npm allows dots, so deriving the package from the node type by
-			// splitting on the first dot would ask for `n8n-nodes-chatwoot`.
-			const DOTTED_PACKAGE = 'n8n-nodes-chatwoot.io';
+			// splitting on the first dot would ask for `MNI-nodes-chatwoot`.
+			const DOTTED_PACKAGE = 'MNI-nodes-chatwoot.io';
 			const DOTTED_NODE = `${DOTTED_PACKAGE}.chatwoot`;
 			communityNodeTypesService.findVettedNodeType.mockResolvedValue(
 				catalogEntry({ name: DOTTED_NODE, packageName: DOTTED_PACKAGE }),

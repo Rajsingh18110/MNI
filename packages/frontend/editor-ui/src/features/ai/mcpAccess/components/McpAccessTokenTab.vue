@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import { computed, onMounted, ref } from 'vue';
-import { useI18n } from '@n8n/i18n';
-import { useToast } from '@n8n/composables/useToast';
+import { useI18n } from '@MNI/i18n';
+import { useToast } from '@MNI/composables/useToast';
 import { useMCPStore } from '@/features/ai/mcpAccess/mcp.store';
 import {
 	LOADING_INDICATOR_TIMEOUT,
 	MCP_TOOLTIP_DELAY,
 } from '@/features/ai/mcpAccess/mcp.constants';
-import { N8nLoading, N8nTooltip, N8nButton, N8nNotice } from '@n8n/design-system';
+import { N8nLoading, N8nTooltip, N8nButton, N8nNotice } from '@MNI/design-system';
 import ConnectionParameter from '@/features/ai/mcpAccess/components/ConnectionParameter.vue';
 import McpConfigSnippet from '@/features/ai/mcpAccess/components/McpConfigSnippet.vue';
 
@@ -33,7 +33,7 @@ const apiKey = computed(() => mcpStore.currentUserMCPKey);
 const connectionString = computed(() => {
 	return `{
   "mcpServers": {
-    "n8n-mcp": {
+    "MNI-mcp": {
       "type": "http",
       "url": "${props.serverUrl}",
       "headers": {

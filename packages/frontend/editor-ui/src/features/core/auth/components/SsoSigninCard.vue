@@ -12,8 +12,8 @@ import {
 	N8nIcon,
 	N8nLink,
 	N8nText,
-} from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+} from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 
 import type { IFormBoxConfig } from '@/Interface';
 import type { EmailOrLdapLoginIdAndPassword } from '../views/SigninView.vue';
@@ -109,7 +109,7 @@ const onSubmit = (values: unknown) => {
 </script>
 
 <template>
-	<div :class="['n8n-form-box', $style.container]" data-test-id="sso-signin-card">
+	<div :class="['MNI-form-box', $style.container]" data-test-id="sso-signin-card">
 		<div :class="$style.heading">
 			<N8nHeading size="xlarge">{{ form.title }}</N8nHeading>
 			<N8nText tag="p" size="medium" color="text-base" align="center">
@@ -211,7 +211,7 @@ const onSubmit = (values: unknown) => {
 </template>
 
 <style lang="scss" module>
-@use '@n8n/design-system/css/mixins/motion';
+@use '@MNI/design-system/css/mixins/motion';
 
 // Same chrome as N8nFormBox, so the card matches the other auth pages.
 .container {

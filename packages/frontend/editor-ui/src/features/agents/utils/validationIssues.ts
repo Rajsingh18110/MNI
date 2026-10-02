@@ -1,4 +1,4 @@
-import type { AgentConfigValidationIssue } from '@n8n/api-types';
+import type { AgentConfigValidationIssue } from '@MNI/api-types';
 
 /**
  * A warning blocks publishing but not the draft preview: the workflow tool is

@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Pre-bundles @n8n/agents (Tool SDK) + zod into a single CJS string consumed
+ * Pre-bundles @MNI/agents (Tool SDK) + zod into a single CJS string consumed
  * by the V8 isolate at runtime (see src/modules/agents/runtime/agent-secure-runtime.ts).
  *
  * Running this at build time means:
@@ -20,11 +20,11 @@ const CLI_ROOT = path.resolve(__dirname, '..');
 const OUTPUT_FILE = path.resolve(CLI_ROOT, 'dist', 'agent-library-bundle.js');
 
 export async function buildAgentLibraryBundle({ silent = false } = {}) {
-	// Resolve @n8n/agents from the cli package so we get the workspace-linked
+	// Resolve @MNI/agents from the cli package so we get the workspace-linked
 	// copy regardless of where this script is invoked from.
 	const requireFromCli = createRequire(path.join(CLI_ROOT, 'package.json'));
 	const toSlash = (p) => p.replace(/\\/g, '/');
-	const agentsPath = toSlash(requireFromCli.resolve('@n8n/agents'));
+	const agentsPath = toSlash(requireFromCli.resolve('@MNI/agents'));
 	const agentsSrcDir = agentsPath.replace(/dist\/index\.js$/, 'dist/');
 
 	// Import only the Tool builder (needed for describe() + handler execution)
@@ -35,7 +35,7 @@ export async function buildAgentLibraryBundle({ silent = false } = {}) {
 		const zod = require('zod');
 
 		globalThis.__modules = {
-			'@n8n/agents': { Tool },
+			'@MNI/agents': { Tool },
 			'zod': zod,
 		};
 	`;

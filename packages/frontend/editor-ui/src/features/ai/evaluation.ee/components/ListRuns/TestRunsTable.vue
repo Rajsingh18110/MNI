@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import type { TestRunRecord } from '../../evaluation.api';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import { computed } from 'vue';
 import type { TestTableColumn } from '../shared/TestTableBase.vue';
-import type { BaseTextKey } from '@n8n/i18n';
+import type { BaseTextKey } from '@MNI/i18n';
 import TestTableBase from '../shared/TestTableBase.vue';
 import {
 	statusDictionary,
@@ -11,7 +11,7 @@ import {
 	resolveCompilationFailureReason,
 } from '../../evaluation.constants';
 import { I18nT } from 'vue-i18n';
-import { N8nHeading, N8nIcon, N8nText, N8nTooltip } from '@n8n/design-system';
+import { N8nHeading, N8nIcon, N8nText, N8nTooltip } from '@MNI/design-system';
 import AnimatedSpinner from '@/app/components/AnimatedSpinner.vue';
 const emit = defineEmits<{
 	rowClick: [run: TestRunRecord & { index: number }];

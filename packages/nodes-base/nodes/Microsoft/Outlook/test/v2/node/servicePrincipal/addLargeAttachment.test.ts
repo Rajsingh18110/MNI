@@ -1,4 +1,4 @@
-import type { IExecuteFunctions, INode } from 'n8n-workflow';
+import type { IExecuteFunctions, INode } from 'MNI-workflow';
 import type { Mock, Mocked } from 'vitest';
 import { mockDeep } from 'vitest-mock-extended';
 
@@ -15,7 +15,7 @@ describe('Microsoft Outlook V2 - Service Principal MessageAttachment:add (large 
 	const mockNode: INode = {
 		id: 'test-node-id',
 		name: 'Microsoft Outlook Test',
-		type: 'n8n-nodes-base.microsoftOutlook',
+		type: 'MNI-nodes-base.microsoftOutlook',
 		typeVersion: 2,
 		position: [0, 0],
 		parameters: {},

@@ -1,13 +1,13 @@
-import { TOOL_EXECUTOR_NODE_NAME } from '@n8n/constants';
-import type { IExecutionResponse } from '@n8n/db';
-import type { ChatNodeMessage, IExecuteData, INode, Workflow } from 'n8n-workflow';
+import { TOOL_EXECUTOR_NODE_NAME } from '@MNI/constants';
+import type { IExecutionResponse } from '@MNI/db';
+import type { ChatNodeMessage, IExecuteData, INode, Workflow } from 'MNI-workflow';
 import {
 	CHAT_WAIT_USER_REPLY,
 	CHAT_NODE_TYPE,
 	RESPOND_TO_WEBHOOK_NODE_TYPE,
 	SEND_AND_WAIT_OPERATION,
 	CHAT_TOOL_NODE_TYPE,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 const AI_TOOL = 'ai_tool';
 
@@ -176,7 +176,7 @@ export function getLastNodeExecuted(execution: IExecutionResponse) {
 	if (lastNodeExecuted === TOOL_EXECUTOR_NODE_NAME) {
 		return {
 			name: TOOL_EXECUTOR_NODE_NAME,
-			type: '@n8n/n8n-nodes-langchain.toolExecutor',
+			type: '@MNI/MNI-nodes-langchain.toolExecutor',
 			parameters: {},
 			id: '',
 			typeVersion: 1,

@@ -1,8 +1,8 @@
-import { LicenseState } from '@n8n/backend-common';
-import { testDb } from '@n8n/backend-test-utils';
-import type { AuthenticatedRequest } from '@n8n/db';
-import { InvalidAuthTokenRepository, UserRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
+import { LicenseState } from '@MNI/backend-common';
+import { testDb } from '@MNI/backend-test-utils';
+import type { AuthenticatedRequest } from '@MNI/db';
+import { InvalidAuthTokenRepository, UserRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
 import { mock } from 'vitest-mock-extended';
 
 import { AuthService } from '@/auth/auth.service';

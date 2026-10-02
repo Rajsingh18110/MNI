@@ -8,7 +8,7 @@ import {
 	type Ref,
 } from 'vue';
 import { createEventHook } from '@vueuse/core';
-import { structuralComputed } from '@n8n/composables/structuralComputed';
+import { structuralComputed } from '@MNI/composables/structuralComputed';
 import type {
 	INode,
 	INodeCredentials,
@@ -18,8 +18,8 @@ import type {
 	INodeParameters,
 	INodeTypeDescription,
 	Workflow,
-} from 'n8n-workflow';
-import { NodeHelpers } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeHelpers } from 'MNI-workflow';
 import type {
 	INodeUi,
 	INodeUpdatePropertiesInformation,
@@ -377,7 +377,7 @@ export function useWorkflowDocumentNodes(deps: WorkflowDocumentNodesDeps) {
 		nodes.value.filter(
 			(node) =>
 				node.type.includes('langchain') ||
-				(node.type === 'n8n-nodes-base.evaluation' && node.parameters?.operation === 'setMetrics'),
+				(node.type === 'MNI-nodes-base.evaluation' && node.parameters?.operation === 'setMetrics'),
 		),
 	);
 

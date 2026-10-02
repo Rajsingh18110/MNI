@@ -1,7 +1,7 @@
 import { CredentialDescriptionsService } from '@/credentials/credential-descriptions.service';
 import type { PostHogClient } from '@/posthog';
-import { CREDENTIAL_DESCRIPTION_MAX_LENGTH } from '@n8n/api-types';
-import type { Logger } from '@n8n/backend-common';
+import { CREDENTIAL_DESCRIPTION_MAX_LENGTH } from '@MNI/api-types';
+import type { Logger } from '@MNI/backend-common';
 import type {
 	CredentialsRepository,
 	ICredentialsDb,
@@ -16,7 +16,7 @@ import type {
 	DbLockService,
 	TransactionRunner,
 	ProjectRelation,
-} from '@n8n/db';
+} from '@MNI/db';
 import {
 	CredentialIdConflictError,
 	CredentialsEntity,
@@ -24,11 +24,11 @@ import {
 	GLOBAL_OWNER_ROLE,
 	GLOBAL_MEMBER_ROLE,
 	type Role,
-} from '@n8n/db';
-import type { PolicyCleared } from '@n8n/decorators';
-import type { EntityManager, FindOptionsWhere } from '@n8n/typeorm';
-import { CREDENTIAL_ERRORS, CredentialDataError, Credentials, type ErrorReporter } from 'n8n-core';
-import { OAuth2Api } from 'n8n-nodes-base/credentials/OAuth2Api.credentials';
+} from '@MNI/db';
+import type { PolicyCleared } from '@MNI/decorators';
+import type { EntityManager, FindOptionsWhere } from '@MNI/typeorm';
+import { CREDENTIAL_ERRORS, CredentialDataError, Credentials, type ErrorReporter } from 'MNI-core';
+import { OAuth2Api } from 'MNI-nodes-base/credentials/OAuth2Api.credentials';
 import {
 	CREDENTIAL_BLANKING_VALUE,
 	CREDENTIAL_EMPTY_VALUE,
@@ -36,7 +36,7 @@ import {
 	type ICredentialDataDecryptedObject,
 	type ICredentialType,
 	type INodeProperties,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import type { MockInstance } from 'vitest';
 import { mock } from 'vitest-mock-extended';
 

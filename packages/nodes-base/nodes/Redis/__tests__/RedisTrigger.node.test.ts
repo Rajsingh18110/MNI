@@ -1,6 +1,6 @@
 import { captor, mock } from 'vitest-mock-extended';
-import { returnJsonArray } from 'n8n-core';
-import type { ICredentialDataDecryptedObject, ITriggerFunctions } from 'n8n-workflow';
+import { returnJsonArray } from 'MNI-core';
+import type { ICredentialDataDecryptedObject, ITriggerFunctions } from 'MNI-workflow';
 
 import { RedisTrigger } from '../RedisTrigger.node';
 import type { RedisClient } from '../types';

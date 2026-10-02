@@ -18,12 +18,12 @@ const assertDevPort = (env: NodeJS.ProcessEnv, name: string, fallback: number): 
 };
 
 /**
- * N8N_PORT is the backend's own listen-port var. It moves the proxy target, so
+ * MNI_PORT is the backend's own listen-port var. It moves the proxy target, so
  * the pair relocates a whole dev instance next to the default one.
  */
 export const resolveDevPorts = (env: NodeJS.ProcessEnv) => ({
-	backendPort: assertDevPort(env, 'N8N_PORT', DEFAULT_BACKEND_PORT),
-	editorPort: assertDevPort(env, 'N8N_EDITOR_PORT', DEFAULT_EDITOR_PORT),
+	backendPort: assertDevPort(env, 'MNI_PORT', DEFAULT_BACKEND_PORT),
+	editorPort: assertDevPort(env, 'MNI_EDITOR_PORT', DEFAULT_EDITOR_PORT),
 });
 
 /**
@@ -35,7 +35,7 @@ export const BACKEND_PROXY_PATTERN =
 
 /**
  * Dev-server topology, kept out of the `serve` script so the env vars work on
- * Windows too (`cross-env` cannot expand `${N8N_PORT:-5678}`).
+ * Windows too (`cross-env` cannot expand `${MNI_PORT:-5678}`).
  *
  * The editor and the backend share one origin through the proxy. The Host
  * header stays the editor's (no `changeOrigin`), so the push origin check
@@ -45,7 +45,7 @@ export const BACKEND_PROXY_PATTERN =
  * (serve/production) and vitest (serve/test).
  */
 export const devServerPlugin = (env: NodeJS.ProcessEnv): Plugin => ({
-	name: 'n8n-dev-server-topology',
+	name: 'MNI-dev-server-topology',
 	apply: 'serve',
 	config: (_config, { mode, isPreview }) => {
 		if (mode !== 'development' || isPreview) return;

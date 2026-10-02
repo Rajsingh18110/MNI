@@ -1,15 +1,15 @@
 import { createComponentRenderer } from '@/__tests__/render';
 import { SETTINGS_STORE_DEFAULT_STATE } from '@/__tests__/utils';
 import FixedCollectionParameterNew, { type Props } from './FixedCollectionParameterNew.vue';
-import { STORES } from '@n8n/stores';
+import { STORES } from '@MNI/stores';
 import { createTestingPinia } from '@pinia/testing';
 import userEvent from '@testing-library/user-event';
 import { waitFor } from '@testing-library/vue';
 import { PiniaVuePlugin, setActivePinia } from 'pinia';
 import { computed, nextTick } from 'vue';
 import { flushPromises, mount, type VueWrapper } from '@vue/test-utils';
-import { i18nInstance } from '@n8n/i18n';
-import { N8nPlugin } from '@n8n/design-system';
+import { i18nInstance } from '@MNI/i18n';
+import { N8nPlugin } from '@MNI/design-system';
 import { GlobalDirectivesPlugin } from '@/app/plugins/directives';
 import { WorkflowDocumentStoreKey } from '@/app/constants/injectionKeys';
 import {
@@ -19,7 +19,7 @@ import {
 import { useWorkflowsStore } from '@/app/stores/workflows.store';
 import FixedCollectionItemList from './FixedCollectionItemList.vue';
 import FixedCollectionItem from './FixedCollectionItem.vue';
-import type { INodeParameters, INodeProperties } from 'n8n-workflow';
+import type { INodeParameters, INodeProperties } from 'MNI-workflow';
 
 // Instantiates a store that derives the workflow id from the route. These tests run
 // without a router, so resolve the id directly.

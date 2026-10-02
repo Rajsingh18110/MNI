@@ -54,7 +54,7 @@ const createTriggerCard = (overrides: Partial<NodeSetupState> = {}): SetupCardIt
 	state: {
 		node: createTestNode({
 			name: overrides.node?.name ?? 'Webhook Trigger',
-			type: 'n8n-nodes-base.webhook',
+			type: 'MNI-nodes-base.webhook',
 		}) as INodeUi,
 		parameterIssues: {},
 		isTrigger: true,
@@ -67,7 +67,7 @@ const createCredentialCard = (overrides: Partial<NodeSetupState> = {}): SetupCar
 	state: {
 		node: createTestNode({
 			name: overrides.node?.name ?? 'OpenAI',
-			type: 'n8n-nodes-base.openAi',
+			type: 'MNI-nodes-base.openAi',
 		}) as INodeUi,
 		parameterIssues: {},
 		isTrigger: false,

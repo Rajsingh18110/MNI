@@ -1,5 +1,5 @@
-import type { ILoadOptionsFunctions } from 'n8n-workflow';
-import { NodeOperationError } from 'n8n-workflow';
+import type { ILoadOptionsFunctions } from 'MNI-workflow';
+import { NodeOperationError } from 'MNI-workflow';
 
 import {
 	getSheetHeaderRow,
@@ -140,7 +140,7 @@ describe('Google Sheets Functions', () => {
 
 			expect(result).toEqual([
 				{ name: 'Header1', value: 'Header1' },
-				// eslint-disable-next-line n8n-nodes-base/node-param-display-name-miscased
+				// eslint-disable-next-line MNI-nodes-base/node-param-display-name-miscased
 				{ name: 'New column ...', value: 'newColumn' },
 			]);
 		});
@@ -159,10 +159,10 @@ describe('Google Sheets Functions', () => {
 			);
 
 			expect(result).toEqual([
-				// eslint-disable-next-line n8n-nodes-base/node-param-display-name-miscased
+				// eslint-disable-next-line MNI-nodes-base/node-param-display-name-miscased
 				{ name: 'col_1', value: 'col_1' },
 				{ name: 'Header1', value: 'Header1' },
-				// eslint-disable-next-line n8n-nodes-base/node-param-display-name-miscased
+				// eslint-disable-next-line MNI-nodes-base/node-param-display-name-miscased
 				{ name: 'col_3', value: 'col_3' },
 			]);
 		});

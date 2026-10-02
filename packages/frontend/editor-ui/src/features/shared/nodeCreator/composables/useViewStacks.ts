@@ -50,13 +50,13 @@ import {
 
 import { isNodeViewItem, type NodeViewItem, type NodeViewItemSection } from '../views/viewsData';
 import { AINodesView } from '../views/viewsData';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import { useKeyboardNavigation } from './useKeyboardNavigation';
 
 import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';
-import { AI_TRANSFORM_NODE_TYPE, NodeConnectionTypes } from 'n8n-workflow';
-import type { NodeConnectionType, INodeFilter } from 'n8n-workflow';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { AI_TRANSFORM_NODE_TYPE, NodeConnectionTypes } from 'MNI-workflow';
+import type { NodeConnectionType, INodeFilter } from 'MNI-workflow';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 
 export type CommunityNodeDetails = {
 	key: string;

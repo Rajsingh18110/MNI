@@ -1,4 +1,4 @@
-import type { IDataObject, ITriggerFunctions } from 'n8n-workflow';
+import type { IDataObject, ITriggerFunctions } from 'MNI-workflow';
 import pgPromise from 'pg-promise';
 
 import {
@@ -24,7 +24,7 @@ const invalidIdentifiers = [
 ];
 
 describe('validatePostgresIdentifier', () => {
-	it.each(['n8n_channel', '_fn1', 'MyTrigger', 'a', 'x_1_y'])(
+	it.each(['MNI_channel', '_fn1', 'MyTrigger', 'a', 'x_1_y'])(
 		'accepts the valid identifier %s',
 		(name) => {
 			expect(() => validatePostgresIdentifier(name, 'Channel name')).not.toThrow();
@@ -39,9 +39,9 @@ describe('validatePostgresIdentifier', () => {
 describe('prepareNames', () => {
 	it('returns safe defaults when no names are provided', () => {
 		const names = prepareNames('abc-123', 'trigger', {});
-		expect(names.functionName).toBe('n8n_trigger_function_abc_123');
-		expect(names.triggerName).toBe('n8n_trigger_abc_123');
-		expect(names.channelName).toBe('n8n_channel_abc_123');
+		expect(names.functionName).toBe('MNI_trigger_function_abc_123');
+		expect(names.triggerName).toBe('MNI_trigger_abc_123');
+		expect(names.channelName).toBe('MNI_channel_abc_123');
 	});
 
 	it('strips a trailing () from a provided function name', () => {
@@ -194,11 +194,11 @@ describe('PostgresTrigger.trigger (Table Row Change Events mode)', () => {
 		await response.closeFunction?.();
 
 		expect(connection.any).toHaveBeenCalledWith('DROP FUNCTION IF EXISTS $1:name CASCADE', [
-			'n8n_trigger_function_node_1',
+			'MNI_trigger_function_node_1',
 		]);
 		expect(connection.any).toHaveBeenCalledWith(
 			'DROP TRIGGER IF EXISTS $1:name ON $2:name.$3:name CASCADE',
-			['n8n_trigger_node_1', 'public', 'users'],
+			['MNI_trigger_node_1', 'public', 'users'],
 		);
 	});
 

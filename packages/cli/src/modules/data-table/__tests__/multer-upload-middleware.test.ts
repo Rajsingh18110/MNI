@@ -1,6 +1,6 @@
 import type { Mock } from 'vitest';
-import type { Logger } from '@n8n/backend-common';
-import type { GlobalConfig } from '@n8n/config';
+import type { Logger } from '@MNI/backend-common';
+import type { GlobalConfig } from '@MNI/config';
 import type { Request, Response } from 'express';
 import * as fsPromises from 'fs/promises';
 import { mock } from 'vitest-mock-extended';

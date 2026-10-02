@@ -8,8 +8,8 @@ import type {
 	IDataObject,
 	IHttpRequestOptions,
 	JsonObject,
-} from 'n8n-workflow';
-import { NodeApiError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeApiError } from 'MNI-workflow';
 
 /**
  * Make an API request to Mattermost

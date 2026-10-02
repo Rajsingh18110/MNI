@@ -1,6 +1,6 @@
 import { readFile as fsReadFile } from 'fs/promises';
 import { mockDeep, type DeepMockProxy } from 'vitest-mock-extended';
-import type { IExecuteFunctions, INode } from 'n8n-workflow';
+import type { IExecuteFunctions, INode } from 'MNI-workflow';
 
 import { getWorkflowInfo } from './GenericFunctions';
 

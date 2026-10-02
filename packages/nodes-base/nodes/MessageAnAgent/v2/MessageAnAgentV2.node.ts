@@ -4,7 +4,7 @@ import type {
 	INodeType,
 	INodeTypeBaseDescription,
 	INodeTypeDescription,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { commonProperties, execute, messageProperty, sharedVersionDescription } from '../shared';
 

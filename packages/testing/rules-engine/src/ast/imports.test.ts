@@ -61,11 +61,11 @@ describe('parseImports', () => {
 	// AST over regex: dynamic forms are runtime dependencies a regex over
 	// import/export statements would silently miss.
 	it('catches dynamic import() and require() as runtime', () => {
-		expect(parse("async function f() { await import('@n8n/di'); }")).toEqual([
-			{ specifier: '@n8n/di', typeOnly: false },
+		expect(parse("async function f() { await import('@MNI/di'); }")).toEqual([
+			{ specifier: '@MNI/di', typeOnly: false },
 		]);
-		expect(parse("const di = require('@n8n/di');")).toEqual([
-			{ specifier: '@n8n/di', typeOnly: false },
+		expect(parse("const di = require('@MNI/di');")).toEqual([
+			{ specifier: '@MNI/di', typeOnly: false },
 		]);
 	});
 });

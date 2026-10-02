@@ -1,4 +1,4 @@
-import type { InstanceAiNodesAttachment } from '@n8n/api-types';
+import type { InstanceAiNodesAttachment } from '@MNI/api-types';
 
 import {
 	asStoredThreadContextSection,

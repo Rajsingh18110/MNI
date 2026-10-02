@@ -1,16 +1,16 @@
 import type { Mocked } from 'vitest';
-import { type AgentJsonConfig } from '@n8n/api-types';
-import type { Logger } from '@n8n/backend-common';
-import type { CustomFetch, HttpTransport, OutboundHttp } from '@n8n/backend-network';
-import { mockLogger } from '@n8n/backend-test-utils';
-import type { AiConfig, GlobalConfig } from '@n8n/config';
+import { type AgentJsonConfig } from '@MNI/api-types';
+import type { Logger } from '@MNI/backend-common';
+import type { CustomFetch, HttpTransport, OutboundHttp } from '@MNI/backend-network';
+import { mockLogger } from '@MNI/backend-test-utils';
+import type { AiConfig, GlobalConfig } from '@MNI/config';
 import type {
 	User,
 	CredentialsEntity,
 	ProjectRelationRepository,
 	WorkflowRepository,
-} from '@n8n/db';
-import { Container } from '@n8n/di';
+} from '@MNI/db';
+import { Container } from '@MNI/di';
 import { mock } from 'vitest-mock-extended';
 
 import type { ActiveExecutions } from '@/active-executions';
@@ -62,8 +62,8 @@ import { ChatIntegrationRegistry } from '../integrations/agent-chat-integration'
 import { ChatIntegrationActionExecutor } from '../integrations/integration-action-executor';
 import { ChatIntegrationContextQueryExecutor } from '../integrations/integration-context-query-executor';
 import { IntegrationMessageContextService } from '../integrations/integration-message-context.service';
-import type { N8NCheckpointStorage } from '../integrations/n8n-checkpoint-storage';
-import type { N8nMemory } from '../integrations/n8n-memory';
+import type { N8NCheckpointStorage } from '../integrations/MNI-checkpoint-storage';
+import type { N8nMemory } from '../integrations/MNI-memory';
 import type { AgentFileRepository } from '../repositories/agent-file.repository';
 import type { AgentHistoryRepository } from '../repositories/agent-history.repository';
 import type { AgentTaskSnapshotRepository } from '../repositories/agent-task-snapshot.repository';

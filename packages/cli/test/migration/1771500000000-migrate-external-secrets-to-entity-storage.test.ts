@@ -3,11 +3,11 @@ import {
 	initDbUpToMigration,
 	runSingleMigration,
 	type TestMigrationContext,
-} from '@n8n/backend-test-utils';
-import { DbConnection } from '@n8n/db';
-import { Container } from '@n8n/di';
-import { DataSource } from '@n8n/typeorm';
-import { Cipher } from 'n8n-core';
+} from '@MNI/backend-test-utils';
+import { DbConnection } from '@MNI/db';
+import { Container } from '@MNI/di';
+import { DataSource } from '@MNI/typeorm';
+import { Cipher } from 'MNI-core';
 
 const MIGRATION_NAME = 'MigrateExternalSecretsToEntityStorage1771500000000';
 const EXTERNAL_SECRETS_DB_KEY = 'feature.externalSecrets';

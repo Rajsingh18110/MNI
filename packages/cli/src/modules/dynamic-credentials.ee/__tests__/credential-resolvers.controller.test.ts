@@ -1,7 +1,7 @@
-import type { AuthenticatedRequest } from '@n8n/db';
-import { CredentialResolverValidationError, type ICredentialResolver } from '@n8n/decorators';
+import type { AuthenticatedRequest } from '@MNI/db';
+import { CredentialResolverValidationError, type ICredentialResolver } from '@MNI/decorators';
 import type { Response } from 'express';
-import { CREDENTIAL_BLANKING_VALUE } from 'n8n-workflow';
+import { CREDENTIAL_BLANKING_VALUE } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import { BadRequestError } from '@/errors/response-errors/bad-request.error';

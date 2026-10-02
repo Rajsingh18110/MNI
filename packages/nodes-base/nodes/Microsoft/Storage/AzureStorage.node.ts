@@ -1,5 +1,5 @@
-import type { INodeType, INodeTypeDescription } from 'n8n-workflow';
-import { NodeConnectionTypes } from 'n8n-workflow';
+import type { INodeType, INodeTypeDescription } from 'MNI-workflow';
+import { NodeConnectionTypes } from 'MNI-workflow';
 
 import { blobFields, blobOperations, containerFields, containerOperations } from './descriptions';
 import { getBlobs, getContainers } from './GenericFunctions';

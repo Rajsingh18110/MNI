@@ -3,8 +3,8 @@ import {
 	isDraftAgentConfig,
 	MANAGED_CREDENTIAL_TOKEN,
 	SUB_AGENT_TASK_DIFFICULTIES,
-} from '@n8n/api-types';
-import { isRecord } from '@n8n/utils/is-record';
+} from '@MNI/api-types';
+import { isRecord } from '@MNI/utils/is-record';
 
 function clearUnknownCredentialId(
 	credentialId: unknown,

@@ -1,21 +1,21 @@
-import type { LicenseState } from '@n8n/backend-common';
-import type { HttpRequestClient, OutboundHttp } from '@n8n/backend-network';
-import type { GlobalConfig } from '@n8n/config';
-import type { Project, User, UserRepository } from '@n8n/db';
-import type { InstanceSettings } from 'n8n-core';
-import { UserError } from 'n8n-workflow';
+import type { LicenseState } from '@MNI/backend-common';
+import type { HttpRequestClient, OutboundHttp } from '@MNI/backend-network';
+import type { GlobalConfig } from '@MNI/config';
+import type { Project, User, UserRepository } from '@MNI/db';
+import type { InstanceSettings } from 'MNI-core';
+import { UserError } from 'MNI-workflow';
 import type { Mock, Mocked } from 'vitest';
 import { mock } from 'vitest-mock-extended';
 
-import { N8N_VERSION, AI_ASSISTANT_SDK_VERSION } from '@/constants';
+import { MNI_VERSION, AI_ASSISTANT_SDK_VERSION } from '@/constants';
 import { FeatureNotLicensedError } from '@/errors/feature-not-licensed.error';
 import { BadRequestError } from '@/errors/response-errors/bad-request.error';
 import type { License } from '@/license';
 import { AiGatewayService } from '@/services/ai-gateway.service';
 import type { OwnershipService } from '@/services/ownership.service';
-import type { UrlService } from '@n8n/backend-services';
+import type { UrlService } from '@MNI/backend-services';
 
-const INSTANCE_BASE_URL = 'https://my-n8n.example.com';
+const INSTANCE_BASE_URL = 'https://my-MNI.example.com';
 
 const BASE_URL = 'http://gateway.test';
 const INSTANCE_ID = 'test-instance-id';
@@ -25,9 +25,9 @@ const CONSUMER_ID = 'consumer-test-uuid';
 
 const MOCK_GATEWAY_CONFIG = {
 	nodes: [
-		'@n8n/n8n-nodes-langchain.lmChatGoogleGemini',
-		'@n8n/n8n-nodes-langchain.embeddingsGoogleGemini',
-		'@n8n/n8n-nodes-langchain.googleGemini',
+		'@MNI/MNI-nodes-langchain.lmChatGoogleGemini',
+		'@MNI/MNI-nodes-langchain.embeddingsGoogleGemini',
+		'@MNI/MNI-nodes-langchain.googleGemini',
 	],
 	credentialTypes: ['googlePalmApi'],
 	providerConfig: {
@@ -260,7 +260,7 @@ describe('AiGatewayService', () => {
 					credentialType: 'openAiApi',
 					userId: USER_ID,
 					node: {
-						type: 'n8n-nodes-base.httpRequest',
+						type: 'MNI-nodes-base.httpRequest',
 						typeVersion: 4.5,
 						parameters: {},
 					},
@@ -299,7 +299,7 @@ describe('AiGatewayService', () => {
 						'x-user-id': USER_ID,
 						'x-consumer-id': CONSUMER_ID,
 						'x-sdk-version': AI_ASSISTANT_SDK_VERSION,
-						'x-n8n-version': N8N_VERSION,
+						'x-MNI-version': MNI_VERSION,
 						'x-instance-id': INSTANCE_ID,
 					},
 					body: { licenseCert: LICENSE_CERT, instanceUrl: INSTANCE_BASE_URL },

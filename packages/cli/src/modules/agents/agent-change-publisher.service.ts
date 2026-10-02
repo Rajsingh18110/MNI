@@ -1,6 +1,6 @@
-import { Logger } from '@n8n/backend-common';
-import { GlobalConfig } from '@n8n/config';
-import { Service } from '@n8n/di';
+import { Logger } from '@MNI/backend-common';
+import { GlobalConfig } from '@MNI/config';
+import { Service } from '@MNI/di';
 
 import type { PubSub } from '@/scaling/pubsub/pubsub.types';
 import { Publisher } from '@/scaling/pubsub/publisher.service';

@@ -36,7 +36,7 @@ const {
 let documentAddEventListenerSpy: ReturnType<typeof vi.spyOn>;
 let documentRemoveEventListenerSpy: ReturnType<typeof vi.spyOn>;
 
-vi.mock('@n8n/i18n', () => ({
+vi.mock('@MNI/i18n', () => ({
 	useI18n: () => ({
 		baseText: (key: string, options?: { interpolate?: Record<string, string | number> }) => {
 			if (key === 'executionDetails.runningTimeFinished') {
@@ -71,7 +71,7 @@ vi.mock('vue-router', () => ({
 	useRouter: () => ({ push: routerPush }),
 }));
 
-vi.mock('@n8n/design-system', () => ({
+vi.mock('@MNI/design-system', () => ({
 	N8nActionDropdown: {
 		name: 'N8nActionDropdown',
 		template: '<div data-test-id="agent-session-actions" />',
@@ -143,7 +143,7 @@ vi.mock('@/app/composables/useMessage', () => ({
 	useMessage: () => ({ confirm: vi.fn() }),
 }));
 
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: () => ({ showError: vi.fn(), showMessage: vi.fn() }),
 }));
 
@@ -166,7 +166,7 @@ vi.mock('@/features/agents/constants', () => ({
 	EXECUTIONS_SECTION_KEY: '__executions',
 }));
 
-vi.mock('@n8n/api-types', () => ({}));
+vi.mock('@MNI/api-types', () => ({}));
 
 vi.mock('element-plus', () => ({
 	ElSkeletonItem: { template: '<div />' },
@@ -423,7 +423,7 @@ describe('AgentSessionsListView', () => {
 		[{ source: 'mcp' }, 'MCP', 'flask-conical'],
 		[{ source: null }, 'Preview', 'flask-conical'],
 		[{ source: 'chat' }, 'Preview', 'flask-conical'],
-		[{ source: 'n8n_chat' }, 'Preview', 'flask-conical'],
+		[{ source: 'MNI_chat' }, 'Preview', 'flask-conical'],
 		[{ source: 'workflow' }, 'Workflow', 'workflow'],
 		[{ source: 'subagent' }, 'Sub-agent', 'bot'],
 		[{ parentThreadId: 'parent-1', source: 'slack' }, 'Sub-agent', 'bot'],

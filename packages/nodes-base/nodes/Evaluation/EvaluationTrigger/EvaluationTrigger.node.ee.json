@@ -1,12 +1,12 @@
 {
-	"node": "n8n-nodes-base.evaluationTrigger",
+	"node": "MNI-nodes-base.evaluationTrigger",
 	"nodeVersion": "1.0",
 	"codexVersion": "1.0",
 	"categories": ["Utility"],
 	"resources": {
 		"primaryDocumentation": [
 			{
-				"url": "https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-base.evaluationtrigger/"
+				"url": "https://docs.n8n.io/integrations/builtin/core-nodes/MNI-nodes-base.evaluationtrigger/"
 			}
 		],
 		"generic": []

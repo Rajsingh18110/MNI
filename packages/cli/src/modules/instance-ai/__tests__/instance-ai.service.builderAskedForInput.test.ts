@@ -2,7 +2,7 @@ import type { Mock } from 'vitest';
 import type { z as zType } from 'zod';
 
 // Manual mocks — must be declared before any imports that touch the mocked modules.
-vi.mock('@n8n/instance-ai', async () => {
+vi.mock('@MNI/instance-ai', async () => {
 	const { z } = await vi.importActual<{ z: typeof zType }>('zod');
 	return {
 		McpClientManager: class {
@@ -30,7 +30,7 @@ vi.mock('@n8n/instance-ai', async () => {
 	};
 });
 
-import { TELEMETRY_EVENT } from '@n8n/telemetry';
+import { TELEMETRY_EVENT } from '@MNI/telemetry';
 
 import { InstanceAiService } from '../instance-ai.service';
 

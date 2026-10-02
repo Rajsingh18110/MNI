@@ -1,5 +1,5 @@
 {
-  "name": "n8n-workflow",
+  "name": "MNI-workflow",
   "version": "2.41.0",
   "description": "Workflow base code of MNI",
   "types": "dist/esm/index.d.ts",
@@ -46,10 +46,10 @@
   ],
   "devDependencies": {
     "@langchain/core": "catalog:",
-    "@n8n/config": "workspace:*",
-    "@n8n/playwright-janitor": "workspace:*",
-    "@n8n/typescript-config": "workspace:*",
-    "@n8n/vitest-config": "workspace:*",
+    "@MNI/config": "workspace:*",
+    "@MNI/playwright-janitor": "workspace:*",
+    "@MNI/typescript-config": "workspace:*",
+    "@MNI/vitest-config": "workspace:*",
     "@stryker-mutator/core": "catalog:",
     "@stryker-mutator/vitest-runner": "catalog:",
     "@types/express": "catalog:",
@@ -71,11 +71,11 @@
   },
   "dependencies": {
     "@codemirror/autocomplete": "catalog:",
-    "@n8n/constants": "workspace:*",
-    "@n8n/errors": "workspace:*",
-    "@n8n/utils": "workspace:*",
-    "@n8n/expression-runtime": "workspace:*",
-    "@n8n/tournament": "workspace:*",
+    "@MNI/constants": "workspace:*",
+    "@MNI/errors": "workspace:*",
+    "@MNI/utils": "workspace:*",
+    "@MNI/expression-runtime": "workspace:*",
+    "@MNI/tournament": "workspace:*",
     "@sentry/node": "catalog:sentry",
     "ast-types": "0.16.1",
     "axios": "catalog:",
@@ -100,5 +100,5 @@
   "peerDependencies": {
     "zod": "catalog:"
   },
-  "license": "LicenseRef-n8n-sustainable-use"
+  "license": "LicenseRef-MNI-sustainable-use"
 }

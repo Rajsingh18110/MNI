@@ -4,8 +4,8 @@ import type {
 	INodeTypeDescription,
 	ITriggerResponse,
 	TriggerTime,
-} from 'n8n-workflow';
-import { NodeConnectionTypes, NodeHelpers, toCronExpression } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeConnectionTypes, NodeHelpers, toCronExpression } from 'MNI-workflow';
 
 export class Cron implements INodeType {
 	description: INodeTypeDescription = {

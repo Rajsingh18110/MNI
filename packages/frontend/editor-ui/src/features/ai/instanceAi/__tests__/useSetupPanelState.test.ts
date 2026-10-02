@@ -1,6 +1,6 @@
 import { computed, reactive, ref, toValue } from 'vue';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import type { InstanceAiAgentNode, InstanceAiSetupItem } from '@n8n/api-types';
+import type { InstanceAiAgentNode, InstanceAiSetupItem } from '@MNI/api-types';
 import { useWorkflowSetupItems } from '@/features/setupPanel/composables/useWorkflowSetupItems';
 import { isAgentEditingWorkflow } from '../canvasPreview.utils';
 import { useSetupPanelState, type SetupPanelThreadSource } from '../composables/useSetupPanelState';

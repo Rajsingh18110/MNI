@@ -1,4 +1,4 @@
-import type { IDataObject, IRunExecutionData, IWorkflowExecuteAdditionalData } from 'n8n-workflow';
+import type { IDataObject, IRunExecutionData, IWorkflowExecuteAdditionalData } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import { PLACEHOLDER_EMPTY_EXECUTION_ID } from '@/constants';

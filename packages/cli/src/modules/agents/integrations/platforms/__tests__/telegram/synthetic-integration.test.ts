@@ -119,7 +119,7 @@ describe('Telegram Bot API integration scenarios', () => {
 					message_id: 21,
 					from: user,
 					chat: group,
-					text: '@n8n_agent_bot hello group',
+					text: '@MNI_agent_bot hello group',
 				},
 			}),
 		});
@@ -129,7 +129,7 @@ describe('Telegram Bot API integration scenarios', () => {
 
 			expect(ctx.agentExecutor.executeForChatPublished).toHaveBeenCalledWith(
 				expect.objectContaining({
-					message: '@n8n_agent_bot hello group',
+					message: '@MNI_agent_bot hello group',
 					integrationType: 'telegram',
 				}),
 			);
@@ -178,7 +178,7 @@ describe('Telegram Bot API integration scenarios', () => {
 					message_id: 23,
 					chat: group,
 					message_thread_id: 42,
-					text: '@n8n_agent_bot topic question',
+					text: '@MNI_agent_bot topic question',
 				},
 			}),
 		});

@@ -1,7 +1,7 @@
-import type { BreakingChangeAffectedWorkflow, BreakingChangeRecommendation } from '@n8n/api-types';
-import type { WorkflowEntity } from '@n8n/db';
-import { BreakingChangeRule } from '@n8n/decorators';
-import type { INode } from 'n8n-workflow';
+import type { BreakingChangeAffectedWorkflow, BreakingChangeRecommendation } from '@MNI/api-types';
+import type { WorkflowEntity } from '@MNI/db';
+import { BreakingChangeRule } from '@MNI/decorators';
+import type { INode } from 'MNI-workflow';
 
 import { reportAffectedNodes } from '../../detection-report';
 import type {
@@ -11,7 +11,7 @@ import type {
 } from '../../types';
 import { BreakingChangeCategory } from '../../types';
 
-const EXECUTE_WORKFLOW_NODE_TYPE = 'n8n-nodes-base.executeWorkflow';
+const EXECUTE_WORKFLOW_NODE_TYPE = 'MNI-nodes-base.executeWorkflow';
 const REMOVED_SOURCES = ['localFile', 'url'];
 
 const SOURCE_LABELS: Record<string, string> = {

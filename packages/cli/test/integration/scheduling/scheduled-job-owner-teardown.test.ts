@@ -1,13 +1,13 @@
-import { createWorkflowWithHistory, testDb } from '@n8n/backend-test-utils';
-import type { WorkflowEntity } from '@n8n/db';
+import { createWorkflowWithHistory, testDb } from '@MNI/backend-test-utils';
+import type { WorkflowEntity } from '@MNI/db';
 import {
 	DataSource,
 	ScheduledJobRepository,
 	ScheduledTaskRepository,
 	WorkflowPublishedVersionRepository,
-} from '@n8n/db';
-import { Container } from '@n8n/di';
-import { ScheduledJobMisfirePolicy } from '@n8n/constants';
+} from '@MNI/db';
+import { Container } from '@MNI/di';
+import { ScheduledJobMisfirePolicy } from '@MNI/constants';
 import { v4 as uuid } from 'uuid';
 
 import { DurableJobProvisioner } from '@/scheduling/durable-job-provisioner';

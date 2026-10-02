@@ -1,7 +1,7 @@
-import { getPersonalProject, createWorkflow, testDb } from '@n8n/backend-test-utils';
-import type { Project, User, Folder } from '@n8n/db';
-import { FolderRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
+import { getPersonalProject, createWorkflow, testDb } from '@MNI/backend-test-utils';
+import type { Project, User, Folder } from '@MNI/db';
+import { FolderRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
 import { DateTime } from 'luxon';
 
 import { createFolder } from '@test-integration/db/folders';

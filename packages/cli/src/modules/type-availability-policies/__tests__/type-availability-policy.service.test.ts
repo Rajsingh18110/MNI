@@ -1,6 +1,6 @@
-import { mockLogger } from '@n8n/backend-test-utils';
-import type { OperationContext, TransactionRunner } from '@n8n/db';
-import type { NodeLoader } from 'n8n-workflow';
+import { mockLogger } from '@MNI/backend-test-utils';
+import type { OperationContext, TransactionRunner } from '@MNI/db';
+import type { NodeLoader } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import { ConflictError } from '@/errors/response-errors/conflict.error';
@@ -44,13 +44,13 @@ function makeLoader(packageName: string, overrides: Partial<NodeLoader> = {}): N
 const RULE: PolicyRule = {
 	id: 'r1',
 	action: 'deny',
-	selector: { kind: 'name', value: 'n8n-nodes-base.slack' },
+	selector: { kind: 'name', value: 'MNI-nodes-base.slack' },
 };
 
 const DELEGATE_RULE: PolicyRule = {
 	id: 'r-delegate',
 	action: 'delegate',
-	selector: { kind: 'name', value: 'n8n-nodes-base.slack' },
+	selector: { kind: 'name', value: 'MNI-nodes-base.slack' },
 };
 
 const DELEGATE_RULE_AT_PROJECT_SCOPE = 'A rule cannot use action "delegate" at project scope';
@@ -112,8 +112,8 @@ describe('TypeAvailabilityPolicyService', () => {
 		transactionRunner.run.mockImplementation(async (_ctx, fn) => await fn(ROOT));
 		// The real repository always answers with an array; an unstubbed mock answers undefined.
 		scopeRepository.findScopeKeysByIds.mockResolvedValue([]);
-		// Every fixture rule names `n8n-nodes-base`, so it must resolve as an installed package.
-		loadNodesAndCredentials.loaders = { 'n8n-nodes-base': makeLoader('n8n-nodes-base') };
+		// Every fixture rule names `MNI-nodes-base`, so it must resolve as an installed package.
+		loadNodesAndCredentials.loaders = { 'MNI-nodes-base': makeLoader('MNI-nodes-base') };
 		nodeTypes.resolveBaseName.mockImplementation((name) => ({
 			baseName: name,
 			isSyntheticTool: false,
@@ -145,7 +145,7 @@ describe('TypeAvailabilityPolicyService', () => {
 			const floorRule: PolicyRule = {
 				id: 'floor',
 				action: 'allow',
-				selector: { kind: 'package', value: 'n8n-nodes-base' },
+				selector: { kind: 'package', value: 'MNI-nodes-base' },
 			};
 			attachmentRepository.listAttachmentsForScope.mockResolvedValue([
 				{ policyId: 'normal', rules: [RULE], priority: 0, isFloor: false },
@@ -311,7 +311,7 @@ describe('TypeAvailabilityPolicyService', () => {
 			const shadowed: PolicyRule = {
 				id: 'r2',
 				action: 'allow',
-				selector: { kind: 'name', value: 'n8n-nodes-base.slack' },
+				selector: { kind: 'name', value: 'MNI-nodes-base.slack' },
 			};
 
 			const { warnings } = await service.createPolicyDocument(KIND, [RULE, shadowed], 'user-1');
@@ -324,11 +324,11 @@ describe('TypeAvailabilityPolicyService', () => {
 			const rule: PolicyRule = {
 				id: 'r1',
 				action: 'deny',
-				selector: { kind: 'package', value: 'n8n-nodes-not-installed' },
+				selector: { kind: 'package', value: 'MNI-nodes-not-installed' },
 			};
 
 			await expect(service.createPolicyDocument(KIND, [rule], 'user-1')).rejects.toThrow(
-				'Package rule names a package that is not installed: n8n-nodes-not-installed',
+				'Package rule names a package that is not installed: MNI-nodes-not-installed',
 			);
 			expect(policyRepository.createPolicy).not.toHaveBeenCalled();
 		});
@@ -338,7 +338,7 @@ describe('TypeAvailabilityPolicyService', () => {
 			const rule: PolicyRule = {
 				id: 'r1',
 				action: 'deny',
-				selector: { kind: 'package', value: 'n8n-nodes-base' },
+				selector: { kind: 'package', value: 'MNI-nodes-base' },
 			};
 
 			await expect(service.createPolicyDocument(KIND, [rule], 'user-1')).resolves.toBeDefined();
@@ -356,13 +356,13 @@ describe('TypeAvailabilityPolicyService', () => {
 			const rule: PolicyRule = {
 				id: 'r1',
 				action: 'deny',
-				selector: { kind: 'package', value: 'n8n-nodes-not-installed' },
+				selector: { kind: 'package', value: 'MNI-nodes-not-installed' },
 			};
 
 			await expect(
 				service.updatePolicyDocument(KIND, 'policy-1', [rule], 1, 'user-1'),
 			).rejects.toThrow(
-				'Package rule names a package that is not installed: n8n-nodes-not-installed',
+				'Package rule names a package that is not installed: MNI-nodes-not-installed',
 			);
 			expect(transactionRunner.run).not.toHaveBeenCalled();
 		});
@@ -736,7 +736,7 @@ describe('TypeAvailabilityPolicyService', () => {
 			const rule: PolicyRule = {
 				id: 'r1',
 				action: 'deny',
-				selector: { kind: 'package', value: 'n8n-nodes-not-installed' },
+				selector: { kind: 'package', value: 'MNI-nodes-not-installed' },
 			};
 
 			await expect(
@@ -748,7 +748,7 @@ describe('TypeAvailabilityPolicyService', () => {
 					'user-1',
 				),
 			).rejects.toThrow(
-				'Package rule names a package that is not installed: n8n-nodes-not-installed',
+				'Package rule names a package that is not installed: MNI-nodes-not-installed',
 			);
 			expect(transactionRunner.run).not.toHaveBeenCalled();
 		});
@@ -851,7 +851,7 @@ describe('TypeAvailabilityPolicyService', () => {
 			const delegateRule: PolicyRule = {
 				id: 'r1',
 				action: 'delegate',
-				selector: { kind: 'name', value: 'n8n-nodes-base.slack' },
+				selector: { kind: 'name', value: 'MNI-nodes-base.slack' },
 			};
 
 			await expect(
@@ -1105,7 +1105,7 @@ describe('TypeAvailabilityPolicyService', () => {
 
 	describe('evaluateComposedType', () => {
 		const PROJECT_ID = 'project-1';
-		const TYPE = 'n8n-nodes-base.slack';
+		const TYPE = 'MNI-nodes-base.slack';
 
 		it('reads the instance and project scopes and composes their verdicts', async () => {
 			const instanceScope = makeScope({ projectId: null, defaultAction: 'delegate', version: 1 });
@@ -1172,7 +1172,7 @@ describe('TypeAvailabilityPolicyService', () => {
 		it('matches a credential type against a package rule via the loader that loaded it', async () => {
 			const CREDENTIAL_TYPE = 'slackApi';
 			loadNodesAndCredentials.loaders = {
-				'n8n-nodes-base': makeLoader('n8n-nodes-base', {
+				'MNI-nodes-base': makeLoader('MNI-nodes-base', {
 					known: {
 						nodes: {},
 						credentials: {
@@ -1184,7 +1184,7 @@ describe('TypeAvailabilityPolicyService', () => {
 			const packageDenyRule: PolicyRule = {
 				id: 'deny-package',
 				action: 'deny',
-				selector: { kind: 'package', value: 'n8n-nodes-base' },
+				selector: { kind: 'package', value: 'MNI-nodes-base' },
 			};
 			const instanceScope = makeScope({
 				kind: CREDENTIAL_TYPES_KIND,
@@ -1218,7 +1218,7 @@ describe('TypeAvailabilityPolicyService', () => {
 			const packageDenyRule: PolicyRule = {
 				id: 'deny-package',
 				action: 'deny',
-				selector: { kind: 'package', value: 'n8n-nodes-base' },
+				selector: { kind: 'package', value: 'MNI-nodes-base' },
 			};
 			const instanceScope = makeScope({ projectId: null, defaultAction: 'allow', version: 1 });
 			scopeRepository.findScopeByKindAndProject.mockImplementation(async (_kind, projectId) =>
@@ -1248,17 +1248,17 @@ describe('TypeAvailabilityPolicyService', () => {
 			const instanceDeny: PolicyRule = {
 				id: 'instance-deny',
 				action: 'deny',
-				selector: { kind: 'name', value: 'n8n-nodes-base.executeCommand' },
+				selector: { kind: 'name', value: 'MNI-nodes-base.executeCommand' },
 			};
 			const instanceDelegate: PolicyRule = {
 				id: 'instance-delegate',
 				action: 'delegate',
-				selector: { kind: 'name', value: 'n8n-nodes-base.code' },
+				selector: { kind: 'name', value: 'MNI-nodes-base.code' },
 			};
 			const projectDeny: PolicyRule = {
 				id: 'project-deny',
 				action: 'deny',
-				selector: { kind: 'name', value: 'n8n-nodes-base.slack' },
+				selector: { kind: 'name', value: 'MNI-nodes-base.slack' },
 			};
 			const instanceScope = makeScope({ projectId: null, defaultAction: 'allow' });
 			const projectScope = makeScope({
@@ -1279,36 +1279,36 @@ describe('TypeAvailabilityPolicyService', () => {
 			]);
 
 			const result = await service.evaluateComposedTypes(KIND, PROJECT_ID, [
-				'n8n-nodes-base.gmail',
-				'n8n-nodes-base.executeCommand',
-				'n8n-nodes-base.code',
-				'n8n-nodes-base.slack',
+				'MNI-nodes-base.gmail',
+				'MNI-nodes-base.executeCommand',
+				'MNI-nodes-base.code',
+				'MNI-nodes-base.slack',
 			]);
 
 			expect(result).toEqual([
 				{
-					name: 'n8n-nodes-base.gmail',
+					name: 'MNI-nodes-base.gmail',
 					action: 'allow',
 					scope: 'instance',
 					matchedRuleId: null,
 					optInAvailable: false,
 				},
 				{
-					name: 'n8n-nodes-base.executeCommand',
+					name: 'MNI-nodes-base.executeCommand',
 					action: 'deny',
 					scope: 'instance',
 					matchedRuleId: 'instance-deny',
 					optInAvailable: false,
 				},
 				{
-					name: 'n8n-nodes-base.code',
+					name: 'MNI-nodes-base.code',
 					action: 'deny',
 					scope: 'instance',
 					matchedRuleId: 'instance-delegate',
 					optInAvailable: true,
 				},
 				{
-					name: 'n8n-nodes-base.slack',
+					name: 'MNI-nodes-base.slack',
 					action: 'deny',
 					scope: 'project',
 					matchedRuleId: 'project-deny',
@@ -1328,7 +1328,7 @@ describe('TypeAvailabilityPolicyService', () => {
 
 	describe('evaluateComposedTypesFor', () => {
 		const PROJECT_ID = 'project-1';
-		const TYPE = 'n8n-nodes-base.slack';
+		const TYPE = 'MNI-nodes-base.slack';
 
 		it('reports the version of both scopes it read', async () => {
 			scopeRepository.findScopeByKindAndProject.mockImplementation(async (_kind, projectId) =>
@@ -1423,8 +1423,8 @@ describe('TypeAvailabilityPolicyService', () => {
 		});
 
 		describe('tool variants', () => {
-			const GMAIL = 'n8n-nodes-base.gmail';
-			const GMAIL_TOOL = 'n8n-nodes-base.gmailTool';
+			const GMAIL = 'MNI-nodes-base.gmail';
+			const GMAIL_TOOL = 'MNI-nodes-base.gmailTool';
 
 			beforeEach(() => {
 				scopeRepository.findScopeByKindAndProject.mockResolvedValue(makeScope({ projectId: null }));
@@ -1471,7 +1471,7 @@ describe('TypeAvailabilityPolicyService', () => {
 	 */
 	describe('the evaluation read cache', () => {
 		const INSTANCE_KEY = 'type-availability-policy:scope:node-types:instance';
-		const TYPE = 'n8n-nodes-base.slack';
+		const TYPE = 'MNI-nodes-base.slack';
 		const TEN_MINUTES = 600_000;
 
 		it('caches an unconfigured scope as its allow-all object, not as an absent value', async () => {
@@ -1650,7 +1650,7 @@ describe('TypeAvailabilityPolicyService', () => {
 	 */
 	describe('coalescing concurrent reads', () => {
 		const INSTANCE_KEY = 'type-availability-policy:scope:node-types:instance';
-		const TYPE = 'n8n-nodes-base.slack';
+		const TYPE = 'MNI-nodes-base.slack';
 
 		/** A store read that finishes only once the test opens it. */
 		function gate() {
@@ -1818,7 +1818,7 @@ describe('TypeAvailabilityPolicyService', () => {
 	 * parse of every rule, for each decision.
 	 */
 	describe('the in-process memo', () => {
-		const TYPE = 'n8n-nodes-base.slack';
+		const TYPE = 'MNI-nodes-base.slack';
 		const CACHED_DENY = {
 			scopeId: 'scope-1',
 			kind: KIND,

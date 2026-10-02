@@ -1,6 +1,6 @@
-import type { CreateCredentialDto, CredentialConnectionStatus } from '@n8n/api-types';
-import { Logger } from '@n8n/backend-common';
-import { Time } from '@n8n/constants';
+import type { CreateCredentialDto, CredentialConnectionStatus } from '@MNI/api-types';
+import { Logger } from '@MNI/backend-common';
+import { Time } from '@MNI/constants';
 import {
 	Project,
 	TransactionRunner,
@@ -14,7 +14,7 @@ import {
 	ProjectRepository,
 	SharedCredentialsRepository,
 	UserRepository,
-} from '@n8n/db';
+} from '@MNI/db';
 import type {
 	ListQueryDb,
 	SlimProject,
@@ -24,17 +24,17 @@ import type {
 	OperationContext,
 	CredentialSharingRelation,
 	ProjectRelation,
-} from '@n8n/db';
-import type { PolicyCleared } from '@n8n/decorators';
-import { Service } from '@n8n/di';
-import { hasGlobalScope, PROJECT_OWNER_ROLE_SLUG, type Scope } from '@n8n/permissions';
+} from '@MNI/db';
+import type { PolicyCleared } from '@MNI/decorators';
+import { Service } from '@MNI/di';
+import { hasGlobalScope, PROJECT_OWNER_ROLE_SLUG, type Scope } from '@MNI/permissions';
 import {
 	In,
 	type EntityManager,
 	type FindOptionsRelations,
 	type FindOptionsWhere,
-} from '@n8n/typeorm';
-import { CredentialDataError, Credentials, ErrorReporter } from 'n8n-core';
+} from '@MNI/typeorm';
+import { CredentialDataError, Credentials, ErrorReporter } from 'MNI-core';
 import type {
 	ICredentialDataDecryptedObject,
 	ICredentialsDecrypted,
@@ -43,7 +43,7 @@ import type {
 	INodeParameters,
 	INodeProperties,
 	INodePropertyCollection,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import {
 	CREDENTIAL_BLANKING_VALUE,
 	CREDENTIAL_EMPTY_VALUE,
@@ -54,7 +54,7 @@ import {
 	jsonParse,
 	jsonStringify,
 	NodeHelpers,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { isCredSharingEnabled } from '@/constants/credential-sharing';
 import { CredentialTypes } from '@/credential-types';

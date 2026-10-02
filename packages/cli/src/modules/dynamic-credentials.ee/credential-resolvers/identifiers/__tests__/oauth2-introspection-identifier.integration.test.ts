@@ -3,10 +3,10 @@ import {
 	InMemoryDnsCache,
 	OutboundHttp,
 	SsrfProtectionService,
-} from '@n8n/backend-network';
-import { startServer, type LocalServer } from '@n8n/backend-network/testing';
-import { mockLogger } from '@n8n/backend-test-utils';
-import { SsrfProtectionConfig } from '@n8n/config';
+} from '@MNI/backend-network';
+import { startServer, type LocalServer } from '@MNI/backend-network/testing';
+import { mockLogger } from '@MNI/backend-test-utils';
+import { SsrfProtectionConfig } from '@MNI/config';
 import { mock } from 'vitest-mock-extended';
 import type { IncomingHttpHeaders } from 'node:http';
 

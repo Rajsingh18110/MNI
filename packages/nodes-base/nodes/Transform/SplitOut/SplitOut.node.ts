@@ -1,6 +1,6 @@
 import get from 'lodash/get';
 import unset from 'lodash/unset';
-import { NodeOperationError, deepCopy, NodeConnectionTypes } from 'n8n-workflow';
+import { NodeOperationError, deepCopy, NodeConnectionTypes } from 'MNI-workflow';
 import type {
 	IBinaryData,
 	IDataObject,
@@ -8,7 +8,7 @@ import type {
 	INodeExecutionData,
 	INodeType,
 	INodeTypeDescription,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { prepareFieldsArray } from '../utils/utils';
 import { FieldsTracker } from './utils';
@@ -31,7 +31,7 @@ export class SplitOut implements INodeType {
 		builderHint: {
 			relatedNodes: [
 				{
-					nodeType: 'n8n-nodes-base.aggregate',
+					nodeType: 'MNI-nodes-base.aggregate',
 					relationHint: 'Reverse operation - combine items back',
 				},
 			],

@@ -5,14 +5,14 @@ import { useUIStore } from '@/app/stores/ui.store';
 import { useExecutionDebugging } from './useExecutionDebugging';
 import type { INodeUi } from '@/Interface';
 import type { IExecutionResponse } from '../executions.types';
-import { useToast } from '@n8n/composables/useToast';
+import { useToast } from '@MNI/composables/useToast';
 import type { useWorkflowDocumentStore } from '@/app/stores/workflowDocument.store';
 import { useAiSimulatedExecutionsStore } from '@/app/stores/aiSimulatedExecutions.store';
 import { useWorkflowExecutionStateStore } from '@/app/stores/workflowExecutionState.store';
-import { TRIMMED_TASK_DATA_CONNECTIONS_KEY } from 'n8n-workflow';
+import { TRIMMED_TASK_DATA_CONNECTIONS_KEY } from 'MNI-workflow';
 import { MODAL_CONFIRM, VIEWS } from '@/app/constants';
 
-vi.mock('@n8n/composables/useToast', () => {
+vi.mock('@MNI/composables/useToast', () => {
 	const showToast = vi.fn();
 	return {
 		useToast: () => ({

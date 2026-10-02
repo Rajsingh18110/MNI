@@ -5,7 +5,7 @@ import { defineComponent, h, reactive, ref } from 'vue';
 import { fireEvent, waitFor } from '@testing-library/vue';
 import userEvent from '@testing-library/user-event';
 import { flushPromises } from '@vue/test-utils';
-import type { InstanceAiMessage, InstanceAiSetupItem } from '@n8n/api-types';
+import type { InstanceAiMessage, InstanceAiSetupItem } from '@MNI/api-types';
 import { createComponentRenderer } from '@/__tests__/render';
 import { mockNodeTypeDescription } from '@/__tests__/mocks';
 import type { INodeUi } from '@/Interface';
@@ -122,7 +122,7 @@ vi.mock('../../../composables/useSetupPanelActions', async () => {
 	};
 });
 
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: () => ({ showMessage: showMessageMock }),
 }));
 
@@ -149,7 +149,7 @@ vi.mock('@/features/credentials/credentials.store', () => ({
 vi.mock('@/app/stores/nodeTypes.store', () => ({
 	useNodeTypesStore: () => ({
 		getNodeType: (name: string) =>
-			name === 'n8n-nodes-base.slack'
+			name === 'MNI-nodes-base.slack'
 				? mockNodeTypeDescription({
 						properties: [{ name: 'channel', displayName: 'Channel', type: 'string', default: '' }],
 					})
@@ -174,7 +174,7 @@ const parametersItem: InstanceAiSetupItem = {
 const slackNode = {
 	id: 'node-1',
 	name: 'Send Slack',
-	type: 'n8n-nodes-base.slack',
+	type: 'MNI-nodes-base.slack',
 	typeVersion: 1,
 	position: [0, 0],
 	parameters: {},

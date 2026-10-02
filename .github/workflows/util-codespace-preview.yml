@@ -67,7 +67,7 @@ jobs:
     # It needs no label gate — dispatch already requires write access, and
     # `preview.mjs` still refuses a fork head.
     if: |
-      github.repository == 'n8n-io/n8n' &&
+      github.repository == 'MNI-io/MNI' &&
       (
         github.event_name == 'workflow_dispatch' ||
         (

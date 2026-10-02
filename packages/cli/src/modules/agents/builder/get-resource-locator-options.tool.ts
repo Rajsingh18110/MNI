@@ -1,5 +1,5 @@
-import { Tool } from '@n8n/agents/tool';
-import type { BuiltTool } from '@n8n/agents';
+import { Tool } from '@MNI/agents/tool';
+import type { BuiltTool } from '@MNI/agents';
 import {
 	collectDynamicNodeParameterPaths,
 	detectAuthenticationParameterValue,
@@ -11,9 +11,9 @@ import {
 	toDynamicParameterPath,
 	toLoadedOptionParameterValue,
 	toResourceLocatorParameterValue,
-} from '@n8n/ai-utilities/node-catalog';
-import type { User } from '@n8n/db';
-import type { INodeParameters } from 'n8n-workflow';
+} from '@MNI/ai-utilities/node-catalog';
+import type { User } from '@MNI/db';
+import type { INodeParameters } from 'MNI-workflow';
 import { z } from 'zod';
 
 import type { NodeTypes } from '@/node-types';

@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/unbound-method -- mock-based tests intentionally reference unbound methods */
-import type { AgentIntegrationConfig } from '@n8n/api-types';
+import type { AgentIntegrationConfig } from '@MNI/api-types';
 import type { Mocked } from 'vitest';
 import { mock } from 'vitest-mock-extended';
 
@@ -477,7 +477,7 @@ describe('AgentIntegrationsController channel status', () => {
 					name: 'Agent',
 					model: 'openai:gpt-4o-mini',
 					instructions: 'Help',
-					integrations: [{ type: 'n8n_chat', credentialId: '' }],
+					integrations: [{ type: 'MNI_chat', credentialId: '' }],
 				},
 			},
 		} as Agent;
@@ -486,18 +486,18 @@ describe('AgentIntegrationsController channel status', () => {
 		expect(response.integrations).toEqual([
 			{ type: slack.type, credentialId: slack.credentialId, status: 'starting' },
 			{ type: telegram.type, credentialId: telegram.credentialId, status: 'starting' },
-			{ type: 'n8n_chat', status: 'connected' },
+			{ type: 'MNI_chat', status: 'connected' },
 		]);
 		const unpublished = {
 			...agent,
 			activeVersionId: null,
 			activeVersion: null,
-			integrations: [...agent.integrations, { type: 'n8n_chat', credentialId: '' }],
+			integrations: [...agent.integrations, { type: 'MNI_chat', credentialId: '' }],
 		} as Agent;
 		const { response: unpublishedResponse } = await statusOf(unpublished, []);
 		expect(unpublishedResponse.n8nChat).toEqual({ draftEnabled: true, publishedEnabled: false });
 		expect(unpublishedResponse.integrations).toContainEqual({
-			type: 'n8n_chat',
+			type: 'MNI_chat',
 			status: 'configured',
 		});
 	});

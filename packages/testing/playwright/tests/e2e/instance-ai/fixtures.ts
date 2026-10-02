@@ -618,15 +618,15 @@ export const instanceAiTestConfig = {
 		workers: 0,
 		services: ['proxy', 'sandbox'],
 		env: {
-			N8N_ENABLED_MODULES: 'instance-ai',
-			N8N_INSTANCE_AI_MODEL: 'anthropic/claude-sonnet-4-6',
-			N8N_INSTANCE_AI_MODEL_API_KEY: ANTHROPIC_API_KEY,
-			N8N_INSTANCE_AI_LOCAL_GATEWAY_DISABLED: 'true',
-			N8N_INSTANCE_AI_SANDBOX_ENABLED: 'true',
-			N8N_INSTANCE_AI_SANDBOX_TIMEOUT: '600000',
+			MNI_ENABLED_MODULES: 'instance-ai',
+			MNI_INSTANCE_AI_MODEL: 'anthropic/claude-sonnet-4-6',
+			MNI_INSTANCE_AI_MODEL_API_KEY: ANTHROPIC_API_KEY,
+			MNI_INSTANCE_AI_LOCAL_GATEWAY_DISABLED: 'true',
+			MNI_INSTANCE_AI_SANDBOX_ENABLED: 'true',
+			MNI_INSTANCE_AI_SANDBOX_TIMEOUT: '600000',
 			// Prevent community-node-types requests to api-staging.n8n.io
 			// from polluting proxy recordings
-			N8N_VERIFIED_PACKAGES_ENABLED: 'false',
+			MNI_VERIFIED_PACKAGES_ENABLED: 'false',
 		},
 	},
 } as const;

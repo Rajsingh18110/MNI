@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, ref, useCssModule } from 'vue';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import { useCanvasNode } from '../../../composables/useCanvasNode';
 import { CanvasNodeRenderType } from '../../../canvas.types';
 import { useCanvas } from '../../../composables/useCanvas';
@@ -12,7 +12,7 @@ import { useFocusedNodesStore } from '@/features/ai/assistant/focusedNodes.store
 import { useIsNodeContextEnabled } from '@/features/ai/instanceAi/composables/useIsNodeContextEnabled';
 import CanvasNodeStatusIcons from './render-types/parts/CanvasNodeStatusIcons.vue';
 
-import { N8nIconButton, N8nTooltip } from '@n8n/design-system';
+import { N8nIconButton, N8nTooltip } from '@MNI/design-system';
 import CanvasNodeStickyColorSelector from './toolbar/CanvasNodeStickyColorSelector.vue';
 
 const emit = defineEmits<{
@@ -295,7 +295,7 @@ function onAddToChat() {
 		justify-content: space-between;
 		align-items: center;
 		padding-bottom: var(--spacing--3xs);
-		/* stylelint-disable-next-line @n8n/css-var-naming */
+		/* stylelint-disable-next-line @MNI/css-var-naming */
 		zoom: var(--canvas-zoom-compensation-factor, 1);
 		margin-bottom: var(--spacing--2xs);
 	}

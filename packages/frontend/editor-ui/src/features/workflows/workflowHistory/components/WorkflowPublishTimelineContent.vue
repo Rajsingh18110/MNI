@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { ref, computed, onMounted } from 'vue';
 import dateformat from 'dateformat';
-import { useI18n } from '@n8n/i18n';
-import { N8nText, N8nLoading, N8nIcon, N8nTooltip } from '@n8n/design-system';
-import type { PublishTimelineEvent } from '@n8n/rest-api-client/api/workflowHistory';
+import { useI18n } from '@MNI/i18n';
+import { N8nText, N8nLoading, N8nIcon, N8nTooltip } from '@MNI/design-system';
+import type { PublishTimelineEvent } from '@MNI/rest-api-client/api/workflowHistory';
 import { useWorkflowHistoryStore } from '../workflowHistory.store';
 import { formatTimestamp, generateVersionLabelFromId } from '../utils';
 import WorkflowHistoryPublishedTooltip from './WorkflowHistoryPublishedTooltip.vue';

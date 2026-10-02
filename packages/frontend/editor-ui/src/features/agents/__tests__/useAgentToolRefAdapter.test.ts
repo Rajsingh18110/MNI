@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from 'vitest';
-import type { INode, INodeTypeDescription } from 'n8n-workflow';
+import type { INode, INodeTypeDescription } from 'MNI-workflow';
 
 import type { IWorkflowDb } from '@/Interface';
 import {
@@ -15,7 +15,7 @@ vi.mock('uuid', () => ({ v4: () => 'mocked-uuid' }));
 
 function makeNodeType(overrides: Partial<INodeTypeDescription> = {}): INodeTypeDescription {
 	return {
-		name: 'n8n-nodes-base.slack',
+		name: 'MNI-nodes-base.slack',
 		displayName: 'Slack',
 		description: 'Send messages to Slack',
 		version: 1,
@@ -36,7 +36,7 @@ describe('useAgentToolRefAdapter', () => {
 				name: 'Post to channel',
 				description: 'Send a Slack message',
 				node: {
-					nodeType: 'n8n-nodes-base.slack',
+					nodeType: 'MNI-nodes-base.slack',
 					nodeTypeVersion: 2,
 					nodeParameters: { channel: 'general' },
 				},
@@ -47,7 +47,7 @@ describe('useAgentToolRefAdapter', () => {
 			expect(node).toEqual({
 				id: 'mocked-uuid',
 				name: 'Post to channel',
-				type: 'n8n-nodes-base.slack',
+				type: 'MNI-nodes-base.slack',
 				typeVersion: 2,
 				parameters: { channel: 'general' },
 				credentials: undefined,
@@ -64,9 +64,9 @@ describe('useAgentToolRefAdapter', () => {
 			const ref: AgentJsonToolRef = {
 				name: undefined as unknown as string,
 				type: 'node',
-				node: { nodeType: 'n8n-nodes-base.slack', nodeTypeVersion: 1, nodeParameters: {} },
+				node: { nodeType: 'MNI-nodes-base.slack', nodeTypeVersion: 1, nodeParameters: {} },
 			};
-			expect(toolRefToNode(ref)?.name).toBe('n8n-nodes-base.slack');
+			expect(toolRefToNode(ref)?.name).toBe('MNI-nodes-base.slack');
 		});
 
 		it('forwards the stored nodeType unchanged so the form resolves the right variant', () => {
@@ -76,9 +76,9 @@ describe('useAgentToolRefAdapter', () => {
 			const ref: AgentJsonToolRef = {
 				type: 'node',
 				name: 'Slack',
-				node: { nodeType: 'n8n-nodes-base.slackTool', nodeTypeVersion: 1, nodeParameters: {} },
+				node: { nodeType: 'MNI-nodes-base.slackTool', nodeTypeVersion: 1, nodeParameters: {} },
 			};
-			expect(toolRefToNode(ref)?.type).toBe('n8n-nodes-base.slackTool');
+			expect(toolRefToNode(ref)?.type).toBe('MNI-nodes-base.slackTool');
 		});
 
 		it('converts strict credentials to INodeCredentials', () => {
@@ -86,7 +86,7 @@ describe('useAgentToolRefAdapter', () => {
 				type: 'node',
 				name: 'Slack',
 				node: {
-					nodeType: 'n8n-nodes-base.slack',
+					nodeType: 'MNI-nodes-base.slack',
 					nodeTypeVersion: 1,
 					nodeParameters: {},
 					credentials: { slackApi: { id: 'cred-1', name: 'Prod Slack' } },
@@ -102,7 +102,7 @@ describe('useAgentToolRefAdapter', () => {
 				type: 'node',
 				name: 'Slack',
 				node: {
-					nodeType: 'n8n-nodes-base.slack',
+					nodeType: 'MNI-nodes-base.slack',
 					nodeTypeVersion: 1,
 					nodeParameters: {},
 					credentials: { slackApi: { id: null, name: 'MNI credits', __aiGatewayManaged: true } },
@@ -145,11 +145,11 @@ describe('useAgentToolRefAdapter', () => {
 			// break that feature — so we store the variant name as-is.
 			const ref = nodeTypeToNewToolRef(
 				makeNodeType({
-					name: 'n8n-nodes-base.slackTool',
+					name: 'MNI-nodes-base.slackTool',
 					displayName: 'Slack Tool',
 				}),
 			);
-			expect(ref.node?.nodeType).toBe('n8n-nodes-base.slackTool');
+			expect(ref.node?.nodeType).toBe('MNI-nodes-base.slackTool');
 			// Display label still drops the " Tool" suffix so the sidebar reads "Slack".
 			expect(ref.name).toBe('Slack');
 		});
@@ -178,7 +178,7 @@ describe('useAgentToolRefAdapter', () => {
 		it('does not persist an input schema for non-native tool nodes', () => {
 			const ref = nodeTypeToNewToolRef(
 				makeNodeType({
-					name: 'n8n-nodes-base.slackTool',
+					name: 'MNI-nodes-base.slackTool',
 					displayName: 'Slack Tool',
 					outputs: ['ai_tool'],
 					properties: [
@@ -196,13 +196,13 @@ describe('useAgentToolRefAdapter', () => {
 				type: 'node',
 				name: 'Slack',
 				description: 'Send a Slack message',
-				node: { nodeType: 'n8n-nodes-base.slack', nodeTypeVersion: 1, nodeParameters: {} },
+				node: { nodeType: 'MNI-nodes-base.slack', nodeTypeVersion: 1, nodeParameters: {} },
 			};
 
 			const node: INode = {
 				id: 'n-1',
 				name: 'Slack v2',
-				type: 'n8n-nodes-base.slack',
+				type: 'MNI-nodes-base.slack',
 				typeVersion: 2,
 				parameters: { channel: 'general' },
 				position: [0, 0],
@@ -215,7 +215,7 @@ describe('useAgentToolRefAdapter', () => {
 				name: 'Slack v2',
 				description: 'Send a Slack message',
 				node: {
-					nodeType: 'n8n-nodes-base.slack',
+					nodeType: 'MNI-nodes-base.slack',
 					nodeTypeVersion: 2,
 					nodeParameters: { channel: 'general' },
 					credentials: undefined,
@@ -227,12 +227,12 @@ describe('useAgentToolRefAdapter', () => {
 			const original: AgentJsonToolRef = {
 				type: 'node',
 				name: 'Slack',
-				node: { nodeType: 'n8n-nodes-base.slack', nodeTypeVersion: 1, nodeParameters: {} },
+				node: { nodeType: 'MNI-nodes-base.slack', nodeTypeVersion: 1, nodeParameters: {} },
 			};
 			const node: INode = {
 				id: 'n-1',
 				name: 'Slack',
-				type: 'n8n-nodes-base.slack',
+				type: 'MNI-nodes-base.slack',
 				typeVersion: 1,
 				parameters: {},
 				position: [0, 0],
@@ -252,12 +252,12 @@ describe('useAgentToolRefAdapter', () => {
 			const original: AgentJsonToolRef = {
 				type: 'node',
 				name: 'Slack',
-				node: { nodeType: 'n8n-nodes-base.slack', nodeTypeVersion: 1, nodeParameters: {} },
+				node: { nodeType: 'MNI-nodes-base.slack', nodeTypeVersion: 1, nodeParameters: {} },
 			};
 			const node: INode = {
 				id: 'n-1',
 				name: 'Slack',
-				type: 'n8n-nodes-base.slack',
+				type: 'MNI-nodes-base.slack',
 				typeVersion: 1,
 				parameters: {},
 				position: [0, 0],
@@ -279,12 +279,12 @@ describe('useAgentToolRefAdapter', () => {
 			const original: AgentJsonToolRef = {
 				type: 'node',
 				name: 'Slack',
-				node: { nodeType: 'n8n-nodes-base.slack', nodeTypeVersion: 1, nodeParameters: {} },
+				node: { nodeType: 'MNI-nodes-base.slack', nodeTypeVersion: 1, nodeParameters: {} },
 			};
 			const node: INode = {
 				id: 'n-1',
 				name: 'Slack',
-				type: 'n8n-nodes-base.slack',
+				type: 'MNI-nodes-base.slack',
 				typeVersion: 1,
 				parameters: {},
 				position: [0, 0],
@@ -320,7 +320,7 @@ describe('useAgentToolRefAdapter', () => {
 				type: 'node',
 				name: 'Slack',
 				node: {
-					nodeType: 'n8n-nodes-base.slack',
+					nodeType: 'MNI-nodes-base.slack',
 					nodeTypeVersion: 1,
 					nodeParameters: {},
 				},
@@ -329,7 +329,7 @@ describe('useAgentToolRefAdapter', () => {
 			const node: INode = {
 				id: 'n-1',
 				name: 'Slack',
-				type: 'n8n-nodes-base.slack',
+				type: 'MNI-nodes-base.slack',
 				typeVersion: 1,
 				position: [0, 0],
 				parameters: {
@@ -467,7 +467,7 @@ describe('useAgentToolRefAdapter', () => {
 			const nodeRef: AgentJsonToolRef = {
 				type: 'node',
 				name: 'Slack',
-				node: { nodeType: 'n8n-nodes-base.slack', nodeTypeVersion: 1, nodeParameters: {} },
+				node: { nodeType: 'MNI-nodes-base.slack', nodeTypeVersion: 1, nodeParameters: {} },
 			};
 			expect(
 				updateWorkflowToolRef(nodeRef, {

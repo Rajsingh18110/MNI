@@ -43,11 +43,11 @@ export const RELEASE_TRACKS = /** @type { const } */ ([
  * @typedef {{ tag: ReleaseVersion, version: SemVer }} TagVersionInfo
  * */
 
-export const RELEASE_PREFIX = 'n8n@';
+export const RELEASE_PREFIX = 'MNI@';
 
 /**
- * Given a list of tags, return the highest semver for tags like "n8n@2.7.0".
- * Returns the *tag string* (e.g. "n8n@2.7.0") or null.
+ * Given a list of tags, return the highest semver for tags like "MNI@2.7.0".
+ * Returns the *tag string* (e.g. "MNI@2.7.0") or null.
  *
  * @param {string[]} tags
  *
@@ -87,7 +87,7 @@ export function ensureReleaseTrack(track) {
 
 /**
  * Resolve a release track tag (stable/beta/etc.) to the corresponding
- * n8n@x.y.z tag pointing at the same commit.
+ * MNI@x.y.z tag pointing at the same commit.
  *
  * Returns null if the track tag or release tag is missing.
  *
@@ -111,7 +111,7 @@ export function resolveReleaseTagForTrack(track) {
 
 /**
  * Resolve a release track tag (stable/beta/etc.) to the corresponding
- * release-candidate/<major>.<minor>.x branch, based on the n8n@<x.y.z> tag
+ * release-candidate/<major>.<minor>.x branch, based on the MNI@<x.y.z> tag
  * pointing at the same commit.
  *
  * Queries tags via `git ls-remote` so it works with shallow checkouts where
@@ -494,7 +494,7 @@ export async function getPrReviews(pullRequestNumber) {
  * Test whether a user is an active member of an org team.
  *
  * Team slugs are the part after the org, e.g. `catalysts` for
- * `@n8n-io/catalysts`. Requires a token with org members read access
+ * `@MNI-io/catalysts`. Requires a token with org members read access
  * (the plain GITHUB_TOKEN cannot read team membership). Returns false
  * for pending invitations and for teams that do not exist.
  *
@@ -608,7 +608,7 @@ export async function postOrUpdateComment(pullRequestNumber, body, botMarker) {
  * Request review from the given GitHub teams on a PR.
  *
  * Team slugs are the part after the org, e.g. `catalysts` for
- * `@n8n-io/catalysts`. Re-requesting an already-requested team is a no-op on
+ * `@MNI-io/catalysts`. Re-requesting an already-requested team is a no-op on
  * GitHub's side, so this is safe to call on every PR update.
  *
  * @param { number } pullRequestNumber

@@ -1,4 +1,4 @@
-import type { IDataObject, ILoadOptionsFunctions, INodePropertyOptions } from 'n8n-workflow';
+import type { IDataObject, ILoadOptionsFunctions, INodePropertyOptions } from 'MNI-workflow';
 
 import type { MysqlNodeCredentials } from '../helpers/interfaces';
 import { escapeSqlIdentifier } from '../helpers/utils';
@@ -30,7 +30,7 @@ export async function getColumns(this: ILoadOptionsFunctions): Promise<INodeProp
 		return (columns || []).map((column: IDataObject) => ({
 			name: column.Field as string,
 			value: column.Field as string,
-			// eslint-disable-next-line n8n-nodes-base/node-param-description-lowercase-first-char
+			// eslint-disable-next-line MNI-nodes-base/node-param-description-lowercase-first-char
 			description: `type: ${(column.Type as string).toUpperCase()}, nullable: ${
 				column.Null as string
 			}`,

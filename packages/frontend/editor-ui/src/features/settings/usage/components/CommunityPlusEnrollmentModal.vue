@@ -1,17 +1,17 @@
 <script lang="ts" setup="">
 import { ref } from 'vue';
-import { createEventBus } from '@n8n/utils/event-bus';
-import type { Validatable, IValidator } from '@n8n/design-system';
+import { createEventBus } from '@MNI/utils/event-bus';
+import type { Validatable, IValidator } from '@MNI/design-system';
 import { VALID_EMAIL_REGEX } from '@/app/constants';
 import { COMMUNITY_PLUS_DOCS_URL } from '../usage.constants';
 import Modal from '@/app/components/Modal.vue';
-import { useI18n } from '@n8n/i18n';
-import { useToast } from '@n8n/composables/useToast';
+import { useI18n } from '@MNI/i18n';
+import { useToast } from '@MNI/composables/useToast';
 import { useUsageStore } from '../usage.store';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
-import { useUsersStore } from '@n8n/stores/users.store';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
+import { useUsersStore } from '@MNI/stores/users.store';
 
-import { N8nButton, N8nFormInput, N8nText } from '@n8n/design-system';
+import { N8nButton, N8nFormInput, N8nText } from '@MNI/design-system';
 const props = defineProps<{
 	modalName: string;
 	data?: {

@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import userEvent from '@testing-library/user-event';
 import { createComponentRenderer } from '@/__tests__/render';
-import type { PlannedTaskArg } from '@n8n/api-types';
+import type { PlannedTaskArg } from '@MNI/api-types';
 
 import PlanReviewPanel from '../components/PlanReviewPanel.vue';
 

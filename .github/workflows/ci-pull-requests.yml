@@ -33,7 +33,7 @@ jobs:
       engine_e2e: ${{ fromJSON(steps.ci-filter.outputs.results)['engine-e2e'] == true }}
       # The main E2E suite runs. Read by e2e-matrix and e2e.
       run_e2e: >-
-        ${{ github.repository == 'n8n-io/n8n' && github.event_name != 'merge_group' &&
+        ${{ github.repository == 'MNI-io/MNI' && github.event_name != 'merge_group' &&
         (fromJSON(steps.ci-filter.outputs.results).runtime == true
           || fromJSON(steps.ci-filter.outputs.results).e2e == true
           || contains(github.event.pull_request.labels.*.name, 'force-e2e')) }}
@@ -64,7 +64,7 @@ jobs:
           filters: |
             ci:
               **
-              !packages/@n8n/task-runner-python/**
+              !packages/@MNI/task-runner-python/**
               !.github/**
               !**/*.md
               !**/LICENSE
@@ -72,7 +72,7 @@ jobs:
               .github/workflows/test-linting-reusable.yml
             runtime:
               **
-              !packages/@n8n/task-runner-python/**
+              !packages/@MNI/task-runner-python/**
               !.github/**
               !**/*.md
               !**/LICENSE
@@ -80,7 +80,7 @@ jobs:
               !**/*.test.ts
               !**/*.spec.ts
               !packages/testing/playwright/**
-              !packages/frontend/@n8n/storybook/**
+              !packages/frontend/@MNI/storybook/**
               !.devcontainer/**
               !scripts/agent-setup.mjs
               !scripts/backend-module/**
@@ -91,7 +91,7 @@ jobs:
               !scripts/sync-agent-skill-links.mjs
             unit:
               **
-              !packages/@n8n/task-runner-python/**
+              !packages/@MNI/task-runner-python/**
               !packages/testing/playwright/**
               !.github/**
               .github/workflows/test-unit-reusable.yml
@@ -109,8 +109,8 @@ jobs:
             e2e:
               .github/workflows/test-e2e-*.yml
               .github/workflows/prepare-docker-reusable.yml
-              .github/actions/build-n8n-docker/**
-              .github/actions/load-n8n-docker/**
+              .github/actions/build-MNI-docker/**
+              .github/actions/load-MNI-docker/**
               packages/testing/playwright/**
               packages/testing/containers/**
             dev-server-smoke:
@@ -118,17 +118,17 @@ jobs:
               # If this job becomes too slow, use a smaller glob. Do not delete the assertion.
               packages/frontend/editor-ui/src/**
               pnpm-workspace.yaml
-              packages/@n8n/*/package.json
-              packages/frontend/@n8n/frontend-vite-config/**
+              packages/@MNI/*/package.json
+              packages/frontend/@MNI/frontend-vite-config/**
               packages/testing/playwright/tests/dev-server-smoke/**
               packages/testing/playwright/playwright.config.ts
               packages/testing/playwright/playwright-projects.ts
               packages/testing/playwright/package.json
               .github/workflows/test-dev-server-smoke-reusable.yml
             frontend-declarations:
-              packages/frontend/@n8n/design-system/**
-              packages/frontend/@n8n/chat/**
-              packages/frontend/@n8n/frontend-vite-config/**
+              packages/frontend/@MNI/design-system/**
+              packages/frontend/@MNI/chat/**
+              packages/frontend/@MNI/frontend-vite-config/**
               turbo.json
               .github/workflows/test-frontend-declarations-reusable.yml
               .github/actions/setup-nodejs/**
@@ -158,9 +158,9 @@ jobs:
             # a skipped job as a pass, so the gap would be silent.
             # Use force-engine-e2e when changing the engine job in this workflow.
             engine-e2e:
-              packages/@n8n/engine/**
-              packages/@n8n/node-engine-compatibility/**
-              packages/@n8n/config/src/configs/engine.config.ts
+              packages/@MNI/engine/**
+              packages/@MNI/node-engine-compatibility/**
+              packages/@MNI/config/src/configs/engine.config.ts
               packages/cli/src/modules/engine-v2/**
               packages/cli/src/commands/engine.ts
               packages/cli/src/commands/base-command.ts
@@ -172,8 +172,8 @@ jobs:
               packages/testing/containers/**
               packages/testing/playwright/**
             instance-ai-workflow-eval:
-              packages/@n8n/instance-ai/src/**
-              packages/@n8n/instance-ai/evaluations/**
+              packages/@MNI/instance-ai/src/**
+              packages/@MNI/instance-ai/evaluations/**
               packages/cli/src/modules/instance-ai/**
               packages/core/src/execution-engine/eval-mock-helpers.ts
               .github/workflows/test-evals-discovery.yml
@@ -187,9 +187,9 @@ jobs:
               packages/cli/test/shared/db/**
               packages/cli/test/setup-testcontainers.js
               packages/cli/test/teardown-testcontainers.js
-              packages/@n8n/db/**
-              packages/@n8n/backend-test-utils/**
-              packages/@n8n/scheduler/src/**
+              packages/@MNI/db/**
+              packages/@MNI/backend-test-utils/**
+              packages/@MNI/scheduler/src/**
               packages/cli/src/**/*.integration.test.ts
               packages/cli/src/modules/instance-registry/**
               packages/cli/vitest.*
@@ -205,8 +205,8 @@ jobs:
             # Sub-filter of db. Lists the paths that can change a migration
             # test result. Gates the migration step inside each DB matrix leg.
             db-migrations:
-              packages/@n8n/db/**
-              packages/@n8n/backend-test-utils/**
+              packages/@MNI/db/**
+              packages/@MNI/backend-test-utils/**
               packages/cli/test/migration/**
               packages/cli/test/shared/db/**
               packages/cli/test/setup-testcontainers.js
@@ -225,7 +225,7 @@ jobs:
         if: fromJSON(steps.ci-filter.outputs.results).ci || fromJSON(steps.ci-filter.outputs.results).e2e
         uses: ./.github/actions/setup-nodejs
         with:
-          build-command: ${{ fromJSON(steps.ci-filter.outputs.results).ci && 'pnpm build' || 'pnpm turbo run build --filter=@n8n/playwright-janitor --filter=@n8n/workflow-sdk...' }}
+          build-command: ${{ fromJSON(steps.ci-filter.outputs.results).ci && 'pnpm build' || 'pnpm turbo run build --filter=@MNI/playwright-janitor --filter=@MNI/workflow-sdk...' }}
 
       - name: Report build critical path
         if: fromJSON(steps.ci-filter.outputs.results).ci
@@ -264,7 +264,7 @@ jobs:
       - name: Install format tools
         uses: ./.github/actions/setup-nodejs
         with:
-          install-command: pnpm install --frozen-lockfile --filter n8n-monorepo --ignore-scripts
+          install-command: pnpm install --frozen-lockfile --filter MNI-monorepo --ignore-scripts
           build-command: ''
           # Keep the partial pnpm store separate from the full install cache.
           cache-dependency-path: |
@@ -340,7 +340,7 @@ jobs:
     name: Prepare E2E
     needs: [install-and-build, format-check]
     if: >-
-      github.repository == 'n8n-io/n8n' &&
+      github.repository == 'MNI-io/MNI' &&
       github.event_name != 'merge_group' &&
       (needs.install-and-build.outputs.runtime == 'true'
         || needs.install-and-build.outputs.e2e == 'true'
@@ -382,7 +382,7 @@ jobs:
       - name: Setup Node.js
         uses: ./.github/actions/setup-nodejs
         with:
-          build-command: pnpm turbo run build --filter=@n8n/playwright-janitor --filter=@n8n/workflow-sdk...
+          build-command: pnpm turbo run build --filter=@MNI/playwright-janitor --filter=@MNI/workflow-sdk...
 
       - name: Generate shard matrix
         id: generate-matrix
@@ -411,7 +411,7 @@ jobs:
     with:
       branch: ${{ needs.install-and-build.outputs.commit_sha }}
       test-mode: docker-artifact
-      test-command: ${{ github.event.pull_request.head.repo.fork == true && 'pnpm --filter=n8n-playwright test:container:sqlite:e2e --grep-invert=@licensed' || 'pnpm --filter=n8n-playwright test:container:multi-main:e2e' }}
+      test-command: ${{ github.event.pull_request.head.repo.fork == true && 'pnpm --filter=MNI-playwright test:container:sqlite:e2e --grep-invert=@licensed' || 'pnpm --filter=MNI-playwright test:container:multi-main:e2e' }}
       workers: '1'
       pre-generated-matrix: ${{ needs.e2e-matrix.outputs.matrix }}
       artifact-prefix: e2e
@@ -436,7 +436,7 @@ jobs:
     with:
       branch: ${{ needs.install-and-build.outputs.commit_sha }}
       test-mode: docker-artifact
-      test-command: pnpm --filter=n8n-playwright test:container:engine-v2:e2e
+      test-command: pnpm --filter=MNI-playwright test:container:engine-v2:e2e
       workers: '1'
       artifact-prefix: e2e-engine
     secrets: inherit
@@ -454,7 +454,7 @@ jobs:
       ref: ${{ needs.install-and-build.outputs.commit_sha }}
     secrets: inherit
 
-  # `@n8n/design-system` and `@n8n/chat` emit their declarations only when `RELEASE` is set,
+  # `@MNI/design-system` and `@MNI/chat` emit their declarations only when `RELEASE` is set,
   # because no consumer in this repo reads them and the emit costs ~15s of build time. No other
   # CI job builds them that way, so a break in the declaration emit would first show up in a
   # release.
@@ -521,7 +521,7 @@ jobs:
       needs.install-and-build.result == 'success' &&
       needs.format-check.result == 'success' &&
       needs.install-and-build.outputs.instance_ai_workflow_eval == 'true' &&
-      github.repository == 'n8n-io/n8n' &&
+      github.repository == 'MNI-io/MNI' &&
       github.event_name != 'merge_group' &&
       (github.event_name != 'pull_request' || !github.event.pull_request.head.repo.fork)
     uses: ./.github/workflows/test-evals-discovery.yml
@@ -564,7 +564,7 @@ jobs:
           job-results: ${{ toJSON(needs) }}
 
   # A red `chore: Bundle/*` PR blocks publishing every fix batched into it, so the
-  # failure is announced instead of waiting to be noticed. Only fires in n8n-private,
+  # failure is announced instead of waiting to be noticed. Only fires in MNI-private,
   # where bundle branches exist.
   notify-bundle-pr-failure:
     name: Notify Slack on bundle PR failure
@@ -612,12 +612,12 @@ jobs:
       # Not `gh api --method DELETE`: written on Blacksmith runners, where
       # actions/cache is transparently intercepted, so GitHub's cache has no
       # such entry and the REST call would no-op.
-      # Key must track build-n8n-docker/load-n8n-docker; a mismatch makes the
+      # Key must track build-MNI-docker/load-MNI-docker; a mismatch makes the
       # delete a silent no-op rather than a failure.
       - name: Delete the image tarball from the cache
         uses: useblacksmith/cache-delete@941f534fcf46c8d0a89feeceeb0f5377d82dd5e7 # v2
         with:
-          key: n8n-docker-image-v2-standard-${{ github.sha }}
+          key: MNI-docker-image-v2-standard-${{ github.sha }}
 
   # Posts a QA metrics comparison comment on the PR.
   # Runs after all checks so any job can emit metrics before this reports.
@@ -629,5 +629,5 @@ jobs:
     if: always() && needs.e2e-performance.result == 'success'
     uses: ./.github/workflows/util-qa-metrics-comment-reusable.yml
     with:
-      metrics: memory-heap-used-baseline,memory-rss-baseline,instance-ai-heap-used-baseline,instance-ai-rss-baseline,agents-heap-used-baseline,agents-rss-baseline,docker-image-size-n8n,docker-image-size-runners,canvas-cold-load-S-ms,canvas-cold-load-M-ms,canvas-cold-load-L-ms,canvas-server-heap-M-mb,canvas-server-heap-L-mb,canvas-browser-heap-M-mb,canvas-browser-heap-L-mb,canvas-pan-frame-p95-M-ms,canvas-pan-frame-p95-L-ms,canvas-tidy-up-M-ms,canvas-tidy-up-L-ms,canvas-exec-heavy-M-ms,canvas-exec-heavy-L-ms
+      metrics: memory-heap-used-baseline,memory-rss-baseline,instance-ai-heap-used-baseline,instance-ai-rss-baseline,agents-heap-used-baseline,agents-rss-baseline,docker-image-size-MNI,docker-image-size-runners,canvas-cold-load-S-ms,canvas-cold-load-M-ms,canvas-cold-load-L-ms,canvas-server-heap-M-mb,canvas-server-heap-L-mb,canvas-browser-heap-M-mb,canvas-browser-heap-L-mb,canvas-pan-frame-p95-M-ms,canvas-pan-frame-p95-L-ms,canvas-tidy-up-M-ms,canvas-tidy-up-L-ms,canvas-exec-heavy-M-ms,canvas-exec-heavy-L-ms
     secrets: inherit

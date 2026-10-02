@@ -1,10 +1,10 @@
-import { Logger } from '@n8n/backend-common';
-import { SharedWorkflowRepository } from '@n8n/db';
-import { OnLifecycleEvent, type WorkflowExecuteAfterContext } from '@n8n/decorators';
-import { Service } from '@n8n/di';
-import { In } from '@n8n/typeorm';
+import { Logger } from '@MNI/backend-common';
+import { SharedWorkflowRepository } from '@MNI/db';
+import { OnLifecycleEvent, type WorkflowExecuteAfterContext } from '@MNI/decorators';
+import { Service } from '@MNI/di';
+import { In } from '@MNI/typeorm';
 import { DateTime } from 'luxon';
-import { IRun, type ExecutionStatus, type WorkflowExecuteMode } from 'n8n-workflow';
+import { IRun, type ExecutionStatus, type WorkflowExecuteMode } from 'MNI-workflow';
 
 import { InsightsMetadata } from '@/modules/insights/database/entities/insights-metadata';
 import { InsightsRaw } from '@/modules/insights/database/entities/insights-raw';

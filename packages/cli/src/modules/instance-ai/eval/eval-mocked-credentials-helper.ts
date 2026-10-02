@@ -1,9 +1,9 @@
 import type {
 	InstanceAiEvalMockedCredential,
 	InstanceAiEvalRewrittenCredential,
-} from '@n8n/api-types';
-import type { Logger } from '@n8n/backend-common';
-import { buildEvalMockCredentials } from 'n8n-core';
+} from '@MNI/api-types';
+import type { Logger } from '@MNI/backend-common';
+import { buildEvalMockCredentials } from 'MNI-core';
 import type {
 	ICredentialDataDecryptedObject,
 	ICredentials,
@@ -19,8 +19,8 @@ import type {
 	IWorkflowExecuteAdditionalData,
 	Workflow,
 	WorkflowExecuteMode,
-} from 'n8n-workflow';
-import { ICredentialsHelper } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { ICredentialsHelper } from 'MNI-workflow';
 
 import { CredentialNotFoundError } from '@/errors/credential-not-found.error';
 

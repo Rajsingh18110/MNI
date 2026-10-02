@@ -1,5 +1,5 @@
 {
-	"extends": ["@n8n/typescript-config/modern/tsconfig.go.json"],
+	"extends": ["@MNI/typescript-config/modern/tsconfig.go.json"],
 	"compilerOptions": {
 		"paths": {
 			"@credentials/*": ["./credentials/*"],
@@ -41,7 +41,7 @@
 	],
 	"exclude": [],
 	"references": [
-		{ "path": "../@n8n/imap/tsconfig.build.json" },
+		{ "path": "../@MNI/imap/tsconfig.build.json" },
 		{ "path": "../workflow/tsconfig.build.esm.json" },
 		{ "path": "../core/tsconfig.build.json" }
 	]

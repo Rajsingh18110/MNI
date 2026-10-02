@@ -748,7 +748,7 @@
       "testCount": 1,
       "flakyRate": 0
     },
-    "tests/e2e/nodes/n8n-trigger.spec.ts": {
+    "tests/e2e/nodes/MNI-trigger.spec.ts": {
       "avgDuration": 24054,
       "testCount": 2,
       "flakyRate": 0

@@ -1,6 +1,6 @@
-import type { InstanceAiThreadTabsState } from '@n8n/api-types';
-import { JsonColumn, User, WithTimestamps } from '@n8n/db';
-import { Entity, Index, JoinColumn, ManyToOne, PrimaryColumn } from '@n8n/typeorm';
+import type { InstanceAiThreadTabsState } from '@MNI/api-types';
+import { JsonColumn, User, WithTimestamps } from '@MNI/db';
+import { Entity, Index, JoinColumn, ManyToOne, PrimaryColumn } from '@MNI/typeorm';
 
 import { InstanceAiThread } from './instance-ai-thread.entity';
 

@@ -14,7 +14,7 @@ const { fullWidth = false } = defineProps<{
 </template>
 
 <style lang="scss" module>
-@use '@n8n/design-system/css/mixins/breakpoints';
+@use '@MNI/design-system/css/mixins/breakpoints';
 
 .wrapper {
 	display: flex;

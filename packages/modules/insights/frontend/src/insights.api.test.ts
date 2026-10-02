@@ -5,8 +5,8 @@ import type {
 	InsightsByWorkflow,
 	ListInsightsWorkflowQueryDto,
 	InsightsDateFilterDto,
-} from '@n8n/api-types';
-import { makeRestApiRequest } from '@n8n/rest-api-client';
+} from '@MNI/api-types';
+import { makeRestApiRequest } from '@MNI/rest-api-client';
 import { expect } from 'vitest';
 
 import {
@@ -17,7 +17,7 @@ import {
 	serializeInsightsFilter,
 } from './insights.api';
 
-vi.mock('@n8n/rest-api-client', () => ({
+vi.mock('@MNI/rest-api-client', () => ({
 	makeRestApiRequest: vi.fn(),
 }));
 

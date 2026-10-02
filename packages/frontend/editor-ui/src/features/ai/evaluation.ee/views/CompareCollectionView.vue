@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import { N8nButton, N8nText } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+import { N8nButton, N8nText } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue';
 import { useRouter } from 'vue-router';
 
 import { VIEWS } from '@/app/constants';
-import { useToast } from '@n8n/composables/useToast';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
+import { useToast } from '@MNI/composables/useToast';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
 import { usePostHog } from '@/app/stores/posthog.store';
 
 import CompareHeader from '../components/Compare/CompareHeader.vue';

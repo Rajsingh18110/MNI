@@ -1,5 +1,5 @@
 import { useEventListener } from '@vueuse/core';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { toValue, type MaybeRefOrGetter } from 'vue';
 
 import { openSafeUrl } from '@/app/utils/htmlUtils';
@@ -10,7 +10,7 @@ function shouldOpenInNewTab(href: string | null): boolean {
 
 /**
  * Makes any link clicked inside the Node Details View open in a new tab, if
- * N8N_CANVAS_ONLY is enabled.
+ * MNI_CANVAS_ONLY is enabled.
  */
 export function useCanvasOnlyExternalLinks(root: MaybeRefOrGetter<HTMLElement | null | undefined>) {
 	const settingsStore = useSettingsStore();

@@ -30,12 +30,12 @@ const mockConfirm = vi.fn();
 const mockShowError = vi.fn();
 const mockShowMessage = vi.fn();
 
-vi.mock('@n8n/design-system', async () => ({
-	...(await vi.importActual<object>('@n8n/design-system')),
+vi.mock('@MNI/design-system', async () => ({
+	...(await vi.importActual<object>('@MNI/design-system')),
 	useMessage: () => ({ confirm: mockConfirm }),
 }));
 
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: () => ({ showError: mockShowError, showMessage: mockShowMessage }),
 }));
 

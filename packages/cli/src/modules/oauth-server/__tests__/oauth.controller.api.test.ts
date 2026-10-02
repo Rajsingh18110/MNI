@@ -1,12 +1,12 @@
-import { testDb } from '@n8n/backend-test-utils';
-import { GlobalConfig } from '@n8n/config';
-import type { User } from '@n8n/db';
-import { ControllerRegistryMetadata, type Controller } from '@n8n/decorators';
-import { Container } from '@n8n/di';
+import { testDb } from '@MNI/backend-test-utils';
+import { GlobalConfig } from '@MNI/config';
+import type { User } from '@MNI/db';
+import { ControllerRegistryMetadata, type Controller } from '@MNI/decorators';
+import { Container } from '@MNI/di';
 
 import { McpSettingsService } from '@/modules/mcp/mcp.settings.service';
 import { ProtectedResourceRegistry } from '@/services/protected-resource.registry';
-import { UrlService } from '@n8n/backend-services';
+import { UrlService } from '@MNI/backend-services';
 import { createOwner } from '@test-integration/db/users';
 import { setupTestServer } from '@test-integration/utils';
 
@@ -718,7 +718,7 @@ describe('Full authorization-code flow (PKCE)', () => {
 		const setCookies = Array.isArray(rawSetCookie) ? rawSetCookie : [rawSetCookie];
 		const sessionCookie = setCookies
 			.map((cookie) => cookie.split(';')[0])
-			.find((cookie) => cookie.startsWith('n8n-oauth-session='));
+			.find((cookie) => cookie.startsWith('MNI-oauth-session='));
 		expect(sessionCookie).toBeDefined();
 
 		// 3. Consent approval as an authenticated user.

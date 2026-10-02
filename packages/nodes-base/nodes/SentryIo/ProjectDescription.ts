@@ -1,4 +1,4 @@
-import type { INodeProperties } from 'n8n-workflow';
+import type { INodeProperties } from 'MNI-workflow';
 
 export const projectOperations: INodeProperties[] = [
 	{
@@ -238,7 +238,7 @@ export const projectFields: INodeProperties[] = [
 				name: 'isBookmarked',
 				type: 'boolean',
 				default: false,
-				// eslint-disable-next-line n8n-nodes-base/node-param-description-boolean-without-whether
+				// eslint-disable-next-line MNI-nodes-base/node-param-description-boolean-without-whether
 				description: 'The new platform for the updated project',
 			},
 			{

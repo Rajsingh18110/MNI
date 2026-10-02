@@ -1,4 +1,4 @@
-import type { FolderResolutionFailure } from '@n8n/instance-ai';
+import type { FolderResolutionFailure } from '@MNI/instance-ai';
 
 /** Folders one project contributes to a resolution scan. Folders are an
  *  organisational layer, not a corpus. Past this, a miss is reported, not guessed. */

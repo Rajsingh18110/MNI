@@ -3,8 +3,8 @@
 # Format: <pattern> <@org/team> [required]
 #
 # Examples:
-#   packages/foo/        @n8n-io/team-a            advisory reviewer recommendation
-#   packages/foo/bar.ts  @n8n-io/team-b required   team approval blocks merge
+#   packages/foo/        @MNI-io/team-a            advisory reviewer recommendation
+#   packages/foo/bar.ts  @MNI-io/team-b required   team approval blocks merge
 #
 # Last-match-wins: specific rules MUST come AFTER general rules.
 #
@@ -17,253 +17,253 @@
 # Validated by ci-owners-validation.yml (`node .github/scripts/owners/owners.mjs --check`).
 
 # Default catch-all (ensures every file gets at least one reviewer)
-*                                                       @n8n-io/catalysts
+*                                                       @MNI-io/catalysts
 
 # Catalysts
 
-packages/core/                                          @n8n-io/catalysts
-packages/workflow/                                      @n8n-io/catalysts
-packages/workflow/stryker.config.mjs                    @n8n-io/qa-dx
-packages/@n8n/config/                                   @n8n-io/catalysts
-packages/@n8n/backend-common/                           @n8n-io/catalysts
-packages/@n8n/backend-network/                          @n8n-io/catalysts
-packages/@n8n/backend-services/                         @n8n-io/catalysts
-packages/@n8n/backend-test-utils/                       @n8n-io/catalysts
-packages/@n8n/di/                                       @n8n-io/catalysts
-packages/@n8n/errors/                                   @n8n-io/catalysts
-packages/@n8n/constants/                                @n8n-io/catalysts
-packages/@n8n/utils/                                    @n8n-io/catalysts
-packages/@n8n/api-types/                                @n8n-io/catalysts
-packages/@n8n/workflow-sdk/                             @n8n-io/ai-assistant
-packages/@n8n/task-runner/                              @n8n-io/catalysts
-packages/@n8n/task-runner-python/                       @n8n-io/catalysts
-packages/@n8n/expression-runtime/                       @n8n-io/catalysts
-packages/@n8n/db/                                       @n8n-io/catalysts
-packages/@n8n/json-schema-to-zod/                       @n8n-io/catalysts
-packages/@n8n/crdt/                                     @n8n-io/catalysts
-packages/@n8n/extension-sdk/                            @n8n-io/catalysts
-packages/@n8n/eslint-config/                            @n8n-io/qa-dx required
-packages/@n8n/typescript-config/                        @n8n-io/qa-dx
+packages/core/                                          @MNI-io/catalysts
+packages/workflow/                                      @MNI-io/catalysts
+packages/workflow/stryker.config.mjs                    @MNI-io/qa-dx
+packages/@MNI/config/                                   @MNI-io/catalysts
+packages/@MNI/backend-common/                           @MNI-io/catalysts
+packages/@MNI/backend-network/                          @MNI-io/catalysts
+packages/@MNI/backend-services/                         @MNI-io/catalysts
+packages/@MNI/backend-test-utils/                       @MNI-io/catalysts
+packages/@MNI/di/                                       @MNI-io/catalysts
+packages/@MNI/errors/                                   @MNI-io/catalysts
+packages/@MNI/constants/                                @MNI-io/catalysts
+packages/@MNI/utils/                                    @MNI-io/catalysts
+packages/@MNI/api-types/                                @MNI-io/catalysts
+packages/@MNI/workflow-sdk/                             @MNI-io/ai-assistant
+packages/@MNI/task-runner/                              @MNI-io/catalysts
+packages/@MNI/task-runner-python/                       @MNI-io/catalysts
+packages/@MNI/expression-runtime/                       @MNI-io/catalysts
+packages/@MNI/db/                                       @MNI-io/catalysts
+packages/@MNI/json-schema-to-zod/                       @MNI-io/catalysts
+packages/@MNI/crdt/                                     @MNI-io/catalysts
+packages/@MNI/extension-sdk/                            @MNI-io/catalysts
+packages/@MNI/eslint-config/                            @MNI-io/qa-dx required
+packages/@MNI/typescript-config/                        @MNI-io/qa-dx
 
-packages/@n8n/db/src/migrations/                        @n8n-io/migrations-review required
+packages/@MNI/db/src/migrations/                        @MNI-io/migrations-review required
 
 # Top-level paths
-scripts/                                                @n8n-io/qa-dx
-patches/                                                @n8n-io/qa-dx
-assets/                                                 @n8n-io/adore
-security/                                               @n8n-io/qa-dx
-.code-health-baseline.json                              @n8n-io/qa-dx required
-OWNERS                                                  @n8n-io/qa-dx required
+scripts/                                                @MNI-io/qa-dx
+patches/                                                @MNI-io/qa-dx
+assets/                                                 @MNI-io/adore
+security/                                               @MNI-io/qa-dx
+.code-health-baseline.json                              @MNI-io/qa-dx required
+OWNERS                                                  @MNI-io/qa-dx required
 
-# @n8n/cli
-packages/@n8n/cli/                                      @n8n-io/adore
-packages/@n8n/cli/src/commands/credential/              @n8n-io/iam
-packages/@n8n/cli/src/commands/user/                    @n8n-io/iam
-packages/@n8n/cli/src/commands/data-table/              @n8n-io/adore
-packages/@n8n/cli/src/commands/tag/                     @n8n-io/adore
-packages/@n8n/cli/src/commands/project/                 @n8n-io/ligo
-packages/@n8n/cli/src/commands/source-control/          @n8n-io/ligo
-packages/@n8n/cli/src/commands/variable/                @n8n-io/ligo
-packages/@n8n/cli/src/commands/skill/                   @n8n-io/ai
+# @MNI/cli
+packages/@MNI/cli/                                      @MNI-io/adore
+packages/@MNI/cli/src/commands/credential/              @MNI-io/iam
+packages/@MNI/cli/src/commands/user/                    @MNI-io/iam
+packages/@MNI/cli/src/commands/data-table/              @MNI-io/adore
+packages/@MNI/cli/src/commands/tag/                     @MNI-io/adore
+packages/@MNI/cli/src/commands/project/                 @MNI-io/ligo
+packages/@MNI/cli/src/commands/source-control/          @MNI-io/ligo
+packages/@MNI/cli/src/commands/variable/                @MNI-io/ligo
+packages/@MNI/cli/src/commands/skill/                   @MNI-io/ai
 
 # packages/cli
-packages/cli/                                           @n8n-io/catalysts
-packages/cli/src/scaling/                               @n8n-io/catalysts
-packages/cli/src/concurrency/                           @n8n-io/catalysts
-packages/cli/src/execution-lifecycle/                   @n8n-io/catalysts
-packages/cli/src/executions/                            @n8n-io/catalysts
-packages/cli/src/task-runners/                          @n8n-io/catalysts
-packages/cli/src/webhooks/                              @n8n-io/catalysts
-packages/cli/src/push/                                  @n8n-io/catalysts
-packages/cli/src/commands/                              @n8n-io/catalysts
-packages/cli/src/config/                                @n8n-io/catalysts
-packages/cli/src/eventbus/                              @n8n-io/catalysts
-packages/cli/src/events/                                @n8n-io/catalysts
-packages/cli/src/security-audit/                        @n8n-io/catalysts
-packages/cli/src/modules/workflow-index/                @n8n-io/catalysts
-packages/cli/src/modules/breaking-changes/              @n8n-io/catalysts
-packages/cli/src/workflows/publication/                 @n8n-io/catalysts required
-packages/cli/src/modules/otel/                          @n8n-io/ligo
+packages/cli/                                           @MNI-io/catalysts
+packages/cli/src/scaling/                               @MNI-io/catalysts
+packages/cli/src/concurrency/                           @MNI-io/catalysts
+packages/cli/src/execution-lifecycle/                   @MNI-io/catalysts
+packages/cli/src/executions/                            @MNI-io/catalysts
+packages/cli/src/task-runners/                          @MNI-io/catalysts
+packages/cli/src/webhooks/                              @MNI-io/catalysts
+packages/cli/src/push/                                  @MNI-io/catalysts
+packages/cli/src/commands/                              @MNI-io/catalysts
+packages/cli/src/config/                                @MNI-io/catalysts
+packages/cli/src/eventbus/                              @MNI-io/catalysts
+packages/cli/src/events/                                @MNI-io/catalysts
+packages/cli/src/security-audit/                        @MNI-io/catalysts
+packages/cli/src/modules/workflow-index/                @MNI-io/catalysts
+packages/cli/src/modules/breaking-changes/              @MNI-io/catalysts
+packages/cli/src/workflows/publication/                 @MNI-io/catalysts required
+packages/cli/src/modules/otel/                          @MNI-io/ligo
 
-packages/cli/src/auth/                                  @n8n-io/iam
-packages/cli/src/credentials/                           @n8n-io/iam
-packages/cli/src/mfa/                                   @n8n-io/iam
-packages/cli/src/oauth/                                 @n8n-io/iam
-packages/cli/src/permissions.ee/                        @n8n-io/iam
-packages/cli/src/sso.ee/                                @n8n-io/iam
-packages/cli/src/user-management/                       @n8n-io/iam
-packages/cli/src/license/                               @n8n-io/iam
-packages/cli/src/modules/ldap.ee/                       @n8n-io/iam
-packages/cli/src/modules/log-streaming.ee/              @n8n-io/iam
-packages/cli/src/modules/sso-oidc/                      @n8n-io/iam
-packages/cli/src/modules/sso-saml/                      @n8n-io/iam
-packages/cli/src/modules/provisioning.ee/               @n8n-io/iam
-packages/cli/src/modules/dynamic-credentials.ee/        @n8n-io/iam
-packages/cli/src/modules/redaction/                     @n8n-io/iam
-packages/cli/src/modules/instance-registry/             @n8n-io/iam
-packages/cli/src/modules/token-exchange/                @n8n-io/iam
+packages/cli/src/auth/                                  @MNI-io/iam
+packages/cli/src/credentials/                           @MNI-io/iam
+packages/cli/src/mfa/                                   @MNI-io/iam
+packages/cli/src/oauth/                                 @MNI-io/iam
+packages/cli/src/permissions.ee/                        @MNI-io/iam
+packages/cli/src/sso.ee/                                @MNI-io/iam
+packages/cli/src/user-management/                       @MNI-io/iam
+packages/cli/src/license/                               @MNI-io/iam
+packages/cli/src/modules/ldap.ee/                       @MNI-io/iam
+packages/cli/src/modules/log-streaming.ee/              @MNI-io/iam
+packages/cli/src/modules/sso-oidc/                      @MNI-io/iam
+packages/cli/src/modules/sso-saml/                      @MNI-io/iam
+packages/cli/src/modules/provisioning.ee/               @MNI-io/iam
+packages/cli/src/modules/dynamic-credentials.ee/        @MNI-io/iam
+packages/cli/src/modules/redaction/                     @MNI-io/iam
+packages/cli/src/modules/instance-registry/             @MNI-io/iam
+packages/cli/src/modules/token-exchange/                @MNI-io/iam
 
-packages/cli/src/environments.ee/                       @n8n-io/ligo
-packages/cli/src/public-api/                            @n8n-io/ligo
-packages/cli/src/modules/source-control.ee/             @n8n-io/ligo
-packages/cli/src/modules/external-secrets.ee/           @n8n-io/ligo
-packages/cli/src/modules/insights/                      @n8n-io/ligo
+packages/cli/src/environments.ee/                       @MNI-io/ligo
+packages/cli/src/public-api/                            @MNI-io/ligo
+packages/cli/src/modules/source-control.ee/             @MNI-io/ligo
+packages/cli/src/modules/external-secrets.ee/           @MNI-io/ligo
+packages/cli/src/modules/insights/                      @MNI-io/ligo
 
-packages/cli/src/collaboration/                         @n8n-io/catalysts
-packages/cli/src/binary-data/                           @n8n-io/catalysts
-packages/cli/src/posthog/                               @n8n-io/adore
-packages/cli/src/modules/data-table/                    @n8n-io/adore
+packages/cli/src/collaboration/                         @MNI-io/catalysts
+packages/cli/src/binary-data/                           @MNI-io/catalysts
+packages/cli/src/posthog/                               @MNI-io/adore
+packages/cli/src/modules/data-table/                    @MNI-io/adore
 
-packages/cli/src/evaluation.ee/                         @n8n-io/ai
-packages/cli/src/chat/                                  @n8n-io/ai
-packages/cli/src/tool-generation/                       @n8n-io/ai
-packages/cli/src/modules/workflow-builder/              @n8n-io/ai
-packages/cli/src/modules/mcp/                           @n8n-io/adore
-packages/cli/src/modules/quick-connect/                 @n8n-io/ai
-packages/cli/src/modules/chat-hub/                      @n8n-io/ai
-packages/cli/src/modules/instance-ai/                   @n8n-io/ai-assistant
+packages/cli/src/evaluation.ee/                         @MNI-io/ai
+packages/cli/src/chat/                                  @MNI-io/ai
+packages/cli/src/tool-generation/                       @MNI-io/ai
+packages/cli/src/modules/workflow-builder/              @MNI-io/ai
+packages/cli/src/modules/mcp/                           @MNI-io/adore
+packages/cli/src/modules/quick-connect/                 @MNI-io/ai
+packages/cli/src/modules/chat-hub/                      @MNI-io/ai
+packages/cli/src/modules/instance-ai/                   @MNI-io/ai-assistant
 
-packages/cli/src/modules/community-packages/            @n8n-io/nodes
+packages/cli/src/modules/community-packages/            @MNI-io/nodes
 
 # CLI controllers
-packages/cli/src/controllers/auth.controller.ts         						@n8n-io/iam
-packages/cli/src/controllers/invitation.controller.ts   						@n8n-io/iam
-packages/cli/src/controllers/me.controller.ts           						@n8n-io/iam
-packages/cli/src/controllers/mfa.controller.ts          						@n8n-io/iam
-packages/cli/src/controllers/owner.controller.ts        						@n8n-io/iam
-packages/cli/src/controllers/password-reset.controller.ts 					@n8n-io/iam
-packages/cli/src/controllers/role.controller.ts         						@n8n-io/iam
-packages/cli/src/controllers/users.controller.ts        						@n8n-io/iam
-packages/cli/src/controllers/user-settings.controller.ts 						@n8n-io/iam
-packages/cli/src/controllers/api-keys.controller.ts     						@n8n-io/iam
-packages/cli/src/controllers/security-settings.controller.ts 				@n8n-io/iam
-packages/cli/src/controllers/oauth/                     						@n8n-io/iam
-packages/cli/src/controllers/ai.controller.ts           						@n8n-io/ai
-packages/cli/src/controllers/annotation-tags.controller.ee.ts 			@n8n-io/ai
-packages/cli/src/controllers/cta.controller.ts         							@n8n-io/adore
-packages/cli/src/controllers/folder.controller.ts       						@n8n-io/adore
-packages/cli/src/controllers/tags.controller.ts         						@n8n-io/adore
-packages/cli/src/controllers/binary-data.controller.ts  						@n8n-io/adore
-packages/cli/src/controllers/posthog.controller.ts      						@n8n-io/adore
-packages/cli/src/controllers/translation.controller.ts  						@n8n-io/adore
-packages/cli/src/controllers/project.controller.ts      						@n8n-io/ligo
-packages/cli/src/controllers/workflow-statistics.controller.ts 			@n8n-io/ligo
-packages/cli/src/controllers/node-types.controller.ts   						@n8n-io/nodes
-packages/cli/src/controllers/dynamic-node-parameters.controller.ts 	@n8n-io/nodes
-packages/cli/src/controllers/e2e.controller.ts          						@n8n-io/qa-dx
+packages/cli/src/controllers/auth.controller.ts         						@MNI-io/iam
+packages/cli/src/controllers/invitation.controller.ts   						@MNI-io/iam
+packages/cli/src/controllers/me.controller.ts           						@MNI-io/iam
+packages/cli/src/controllers/mfa.controller.ts          						@MNI-io/iam
+packages/cli/src/controllers/owner.controller.ts        						@MNI-io/iam
+packages/cli/src/controllers/password-reset.controller.ts 					@MNI-io/iam
+packages/cli/src/controllers/role.controller.ts         						@MNI-io/iam
+packages/cli/src/controllers/users.controller.ts        						@MNI-io/iam
+packages/cli/src/controllers/user-settings.controller.ts 						@MNI-io/iam
+packages/cli/src/controllers/api-keys.controller.ts     						@MNI-io/iam
+packages/cli/src/controllers/security-settings.controller.ts 				@MNI-io/iam
+packages/cli/src/controllers/oauth/                     						@MNI-io/iam
+packages/cli/src/controllers/ai.controller.ts           						@MNI-io/ai
+packages/cli/src/controllers/annotation-tags.controller.ee.ts 			@MNI-io/ai
+packages/cli/src/controllers/cta.controller.ts         							@MNI-io/adore
+packages/cli/src/controllers/folder.controller.ts       						@MNI-io/adore
+packages/cli/src/controllers/tags.controller.ts         						@MNI-io/adore
+packages/cli/src/controllers/binary-data.controller.ts  						@MNI-io/adore
+packages/cli/src/controllers/posthog.controller.ts      						@MNI-io/adore
+packages/cli/src/controllers/translation.controller.ts  						@MNI-io/adore
+packages/cli/src/controllers/project.controller.ts      						@MNI-io/ligo
+packages/cli/src/controllers/workflow-statistics.controller.ts 			@MNI-io/ligo
+packages/cli/src/controllers/node-types.controller.ts   						@MNI-io/nodes
+packages/cli/src/controllers/dynamic-node-parameters.controller.ts 	@MNI-io/nodes
+packages/cli/src/controllers/e2e.controller.ts          						@MNI-io/qa-dx
 
 # CLI services
-packages/cli/src/services/jwt.service.ts                @n8n-io/iam
-packages/cli/src/services/user.service.ts               @n8n-io/iam
-packages/cli/src/services/role.service.ts               @n8n-io/iam
-packages/cli/src/services/role-cache.service.ts         @n8n-io/iam
-packages/cli/src/services/password.utility.ts           @n8n-io/iam
-packages/cli/src/services/public-api-key.service.ts     @n8n-io/iam
-packages/cli/src/services/security-settings.service.ts  @n8n-io/iam
-packages/cli/src/services/static-auth-service.ts        @n8n-io/iam
-packages/cli/src/services/access.service.ts             @n8n-io/iam
-packages/cli/src/services/ai.service.ts                 @n8n-io/ai
-packages/cli/src/services/ai-usage.service.ts           @n8n-io/ai
-packages/cli/src/services/ai-workflow-builder.service.ts @n8n-io/ai
-packages/cli/src/services/annotation-tag.service.ee.ts  @n8n-io/ai
-packages/cli/src/services/folder.service.ts             @n8n-io/adore
-packages/cli/src/services/tag.service.ts                @n8n-io/adore
-packages/cli/src/services/cta.service.ts                @n8n-io/adore
-packages/cli/src/services/frontend.service.ts           @n8n-io/adore
-packages/cli/src/services/banner.service.ts             @n8n-io/adore
-packages/cli/src/services/project.service.ee.ts         @n8n-io/ligo
-packages/cli/src/services/workflow-statistics.service.ts @n8n-io/ligo
-packages/cli/src/services/export.service.ts             @n8n-io/ligo
-packages/cli/src/services/import.service.ts             @n8n-io/ligo
-packages/cli/src/services/ownership.service.ts          @n8n-io/ligo
-packages/cli/src/services/dynamic-node-parameters.service.ts @n8n-io/nodes
+packages/cli/src/services/jwt.service.ts                @MNI-io/iam
+packages/cli/src/services/user.service.ts               @MNI-io/iam
+packages/cli/src/services/role.service.ts               @MNI-io/iam
+packages/cli/src/services/role-cache.service.ts         @MNI-io/iam
+packages/cli/src/services/password.utility.ts           @MNI-io/iam
+packages/cli/src/services/public-api-key.service.ts     @MNI-io/iam
+packages/cli/src/services/security-settings.service.ts  @MNI-io/iam
+packages/cli/src/services/static-auth-service.ts        @MNI-io/iam
+packages/cli/src/services/access.service.ts             @MNI-io/iam
+packages/cli/src/services/ai.service.ts                 @MNI-io/ai
+packages/cli/src/services/ai-usage.service.ts           @MNI-io/ai
+packages/cli/src/services/ai-workflow-builder.service.ts @MNI-io/ai
+packages/cli/src/services/annotation-tag.service.ee.ts  @MNI-io/ai
+packages/cli/src/services/folder.service.ts             @MNI-io/adore
+packages/cli/src/services/tag.service.ts                @MNI-io/adore
+packages/cli/src/services/cta.service.ts                @MNI-io/adore
+packages/cli/src/services/frontend.service.ts           @MNI-io/adore
+packages/cli/src/services/banner.service.ts             @MNI-io/adore
+packages/cli/src/services/project.service.ee.ts         @MNI-io/ligo
+packages/cli/src/services/workflow-statistics.service.ts @MNI-io/ligo
+packages/cli/src/services/export.service.ts             @MNI-io/ligo
+packages/cli/src/services/import.service.ts             @MNI-io/ligo
+packages/cli/src/services/ownership.service.ts          @MNI-io/ligo
+packages/cli/src/services/dynamic-node-parameters.service.ts @MNI-io/nodes
 
 # Adore
 
-packages/frontend/editor-ui/                            @n8n-io/frontend
-packages/frontend/editor-ui/src/features/ai/            @n8n-io/ai
-packages/frontend/editor-ui/src/features/credentials/   @n8n-io/iam
-packages/frontend/editor-ui/src/features/execution/     @n8n-io/ligo
-packages/frontend/editor-ui/src/features/integrations/  @n8n-io/ligo
+packages/frontend/editor-ui/                            @MNI-io/frontend
+packages/frontend/editor-ui/src/features/ai/            @MNI-io/ai
+packages/frontend/editor-ui/src/features/credentials/   @MNI-io/iam
+packages/frontend/editor-ui/src/features/execution/     @MNI-io/ligo
+packages/frontend/editor-ui/src/features/integrations/  @MNI-io/ligo
 
-packages/frontend/@n8n/design-system/                   @n8n-io/design-engineering
-packages/frontend/@n8n/stores/                          @n8n-io/frontend
-packages/frontend/@n8n/composables/                     @n8n-io/frontend
-packages/frontend/@n8n/rest-api-client/                 @n8n-io/frontend
-packages/frontend/@n8n/storybook/                       @n8n-io/design-engineering
-packages/frontend/@n8n/i18n/                            @n8n-io/frontend
-packages/@n8n/stylelint-config/                         @n8n-io/qa-dx
+packages/frontend/@MNI/design-system/                   @MNI-io/design-engineering
+packages/frontend/@MNI/stores/                          @MNI-io/frontend
+packages/frontend/@MNI/composables/                     @MNI-io/frontend
+packages/frontend/@MNI/rest-api-client/                 @MNI-io/frontend
+packages/frontend/@MNI/storybook/                       @MNI-io/design-engineering
+packages/frontend/@MNI/i18n/                            @MNI-io/frontend
+packages/@MNI/stylelint-config/                         @MNI-io/qa-dx
 
 # AI
 
-packages/@n8n/instance-ai/                              @n8n-io/ai-assistant
-packages/@n8n/nodes-langchain/                          @n8n-io/ai
-packages/@n8n/ai-utilities/                             @n8n-io/ai
-packages/@n8n/ai-node-sdk/                              @n8n-io/ai
-packages/@n8n/ai-workflow-builder.ee/                   @n8n-io/ai
-packages/@n8n/agents/                                   @n8n-io/ai
-packages/frontend/@n8n/chat/                            @n8n-io/ai
+packages/@MNI/instance-ai/                              @MNI-io/ai-assistant
+packages/@MNI/nodes-langchain/                          @MNI-io/ai
+packages/@MNI/ai-utilities/                             @MNI-io/ai
+packages/@MNI/ai-node-sdk/                              @MNI-io/ai
+packages/@MNI/ai-workflow-builder.ee/                   @MNI-io/ai
+packages/@MNI/agents/                                   @MNI-io/ai
+packages/frontend/@MNI/chat/                            @MNI-io/ai
 
 # Chat
 
-packages/@n8n/chat-hub/                                 @n8n-io/ai
+packages/@MNI/chat-hub/                                 @MNI-io/ai
 
 # Nodes
 
-packages/@n8n/codemirror-lang/                          @n8n-io/nodes
-packages/@n8n/codemirror-lang-html/                     @n8n-io/nodes
-packages/@n8n/codemirror-lang-sql/                      @n8n-io/nodes
-packages/nodes-base/                                    @n8n-io/nodes
-packages/@n8n/decorators/                               @n8n-io/catalysts
-packages/node-dev/                                      @n8n-io/nodes
-packages/@n8n/create-node/                              @n8n-io/nodes
-packages/@n8n/node-cli/                                 @n8n-io/nodes
-packages/@n8n/imap/                                     @n8n-io/iam
-packages/@n8n/syslog-client/                            @n8n-io/iam
-packages/@n8n/scan-community-package/                   @n8n-io/nodes
-packages/@n8n/eslint-plugin-community-nodes/            @n8n-io/nodes
-packages/@n8n/computer-use/                             @n8n-io/nodes
-packages/@n8n/local-gateway/                            @n8n-io/nodes
-packages/@n8n/mcp-browser/                              @n8n-io/nodes
-packages/@n8n/mcp-browser-extension/                    @n8n-io/nodes
+packages/@MNI/codemirror-lang/                          @MNI-io/nodes
+packages/@MNI/codemirror-lang-html/                     @MNI-io/nodes
+packages/@MNI/codemirror-lang-sql/                      @MNI-io/nodes
+packages/nodes-base/                                    @MNI-io/nodes
+packages/@MNI/decorators/                               @MNI-io/catalysts
+packages/node-dev/                                      @MNI-io/nodes
+packages/@MNI/create-node/                              @MNI-io/nodes
+packages/@MNI/node-cli/                                 @MNI-io/nodes
+packages/@MNI/imap/                                     @MNI-io/iam
+packages/@MNI/syslog-client/                            @MNI-io/iam
+packages/@MNI/scan-community-package/                   @MNI-io/nodes
+packages/@MNI/eslint-plugin-community-nodes/            @MNI-io/nodes
+packages/@MNI/computer-use/                             @MNI-io/nodes
+packages/@MNI/local-gateway/                            @MNI-io/nodes
+packages/@MNI/mcp-browser/                              @MNI-io/nodes
+packages/@MNI/mcp-browser-extension/                    @MNI-io/nodes
 
 # IAM
 
-packages/@n8n/permissions/                              @n8n-io/iam
-packages/@n8n/client-oauth2/                            @n8n-io/iam
+packages/@MNI/permissions/                              @MNI-io/iam
+packages/@MNI/client-oauth2/                            @MNI-io/iam
 
 # LiGo
 
-packages/extensions/insights/                           @n8n-io/ligo
+packages/extensions/insights/                           @MNI-io/ligo
 
 # Governance & Observability
 
-packages/modules/type-availability-policies/            @n8n-io/governance-and-observability
-packages/cli/src/modules/type-availability-policies/    @n8n-io/governance-and-observability
+packages/modules/type-availability-policies/            @MNI-io/governance-and-observability
+packages/cli/src/modules/type-availability-policies/    @MNI-io/governance-and-observability
 
 # CI/CD
 
-.github/                                       					@n8n-io/qa-dx
-.github/workflows/                                      @n8n-io/qa-dx required
-.github/scripts/                                        @n8n-io/qa-dx required
-.github/actions/                                        @n8n-io/qa-dx required
-.github/poutine-rules/                                  @n8n-io/qa-dx required
-docker/                                                 @n8n-io/qa-dx
-docker/get-n8n.sh                                       @n8n-io/qa-dx required
+.github/                                       					@MNI-io/qa-dx
+.github/workflows/                                      @MNI-io/qa-dx required
+.github/scripts/                                        @MNI-io/qa-dx required
+.github/actions/                                        @MNI-io/qa-dx required
+.github/poutine-rules/                                  @MNI-io/qa-dx required
+docker/                                                 @MNI-io/qa-dx
+docker/get-MNI.sh                                       @MNI-io/qa-dx required
 
 # QA
 
-packages/testing/                                       @n8n-io/qa-dx
-packages/@n8n/benchmark/                                @n8n-io/qa-dx
-packages/@n8n/vitest-config/                            @n8n-io/qa-dx
+packages/testing/                                       @MNI-io/qa-dx
+packages/@MNI/benchmark/                                @MNI-io/qa-dx
+packages/@MNI/vitest-config/                            @MNI-io/qa-dx
 
 # Encryption boundary (IAM) — the encryption area and its guardrail rules.
 # Widening a constraint (allowed paths, banned methods) needs security review;
-# see packages/@n8n/eslint-config/src/configs/encryption-boundary.ts.
+# see packages/@MNI/eslint-config/src/configs/encryption-boundary.ts.
 
-packages/core/src/encryption/                           @n8n-io/iam required
-packages/cli/src/modules/encryption-key-manager/        @n8n-io/iam required
-packages/@n8n/db/src/entities/deployment-key.ts         @n8n-io/iam required
-packages/@n8n/db/src/repositories/deployment-key.repository.ts @n8n-io/iam required
-packages/@n8n/eslint-config/src/configs/encryption-boundary.ts @n8n-io/iam required
-packages/@n8n/eslint-config/src/rules/no-encryption-guardrail-disable.ts @n8n-io/iam required
+packages/core/src/encryption/                           @MNI-io/iam required
+packages/cli/src/modules/encryption-key-manager/        @MNI-io/iam required
+packages/@MNI/db/src/entities/deployment-key.ts         @MNI-io/iam required
+packages/@MNI/db/src/repositories/deployment-key.repository.ts @MNI-io/iam required
+packages/@MNI/eslint-config/src/configs/encryption-boundary.ts @MNI-io/iam required
+packages/@MNI/eslint-config/src/rules/no-encryption-guardrail-disable.ts @MNI-io/iam required

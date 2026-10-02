@@ -1,8 +1,8 @@
-import type { Logger } from '@n8n/backend-common';
-import { testDb, testModules } from '@n8n/backend-test-utils';
-import { Container } from '@n8n/di';
-import { createDeferredPromise } from '@n8n/utils/promise/deferred-promise';
-import type { InstanceSettings } from 'n8n-core';
+import type { Logger } from '@MNI/backend-common';
+import { testDb, testModules } from '@MNI/backend-test-utils';
+import { Container } from '@MNI/di';
+import { createDeferredPromise } from '@MNI/utils/promise/deferred-promise';
+import type { InstanceSettings } from 'MNI-core';
 import { mock } from 'vitest-mock-extended';
 
 import type { LoadNodesAndCredentials } from '@/load-nodes-and-credentials';

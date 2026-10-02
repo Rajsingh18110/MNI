@@ -1,9 +1,9 @@
-import { useTelemetry } from '@n8n/composables/useTelemetry';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
 import { TEMPLATE_RECO_V2, VIEWS } from '@/app/constants';
-import { useCloudPlanStore } from '@n8n/stores/cloudPlan.store';
+import { useCloudPlanStore } from '@MNI/stores/cloudPlan.store';
 import { usePostHog } from '@/app/stores/posthog.store';
 import { useTemplatesStore } from '@/features/workflows/templates/templates.store';
-import { STORES } from '@n8n/stores';
+import { STORES } from '@MNI/stores';
 import { defineStore } from 'pinia';
 import { computed } from 'vue';
 import { NODE_DATA, type PredefinedNodeData } from '../nodes/predefinedData';

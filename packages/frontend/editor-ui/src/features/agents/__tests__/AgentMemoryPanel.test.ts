@@ -1,21 +1,21 @@
-import { MANAGED_CREDENTIAL_TOKEN } from '@n8n/api-types';
+import { MANAGED_CREDENTIAL_TOKEN } from '@MNI/api-types';
 import { createTestingPinia } from '@pinia/testing';
 import { mount } from '@vue/test-utils';
 import { describe, expect, it, vi } from 'vitest';
 import { computed } from 'vue';
 
-import { defaultSettings } from '@n8n/frontend-test-utils';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { defaultSettings } from '@MNI/frontend-test-utils';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import AgentMemoryPanel from '../components/AgentMemoryPanel.vue';
 import type { AgentJsonConfig } from '../types';
 
-vi.mock('@n8n/i18n', () => ({
+vi.mock('@MNI/i18n', () => ({
 	useI18n: () => ({
 		baseText: (key: string) => key,
 	}),
 }));
 
-vi.mock('@n8n/design-system', () => ({
+vi.mock('@MNI/design-system', () => ({
 	N8nButton: {
 		template:
 			'<button :data-testid="$attrs[\'data-testid\']" :disabled="disabled" @click="$emit(\'click\')"><slot /></button>',

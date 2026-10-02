@@ -1,4 +1,4 @@
-import type { ICredentialTestRequest, ICredentialType, INodeProperties } from 'n8n-workflow';
+import type { ICredentialTestRequest, ICredentialType, INodeProperties } from 'MNI-workflow';
 
 import { DATABRICKS_PARTNER_USER_AGENT } from '../nodes/Databricks/constants';
 

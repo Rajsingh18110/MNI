@@ -3,7 +3,7 @@ import { mount } from '@vue/test-utils';
 import { describe, expect, it, vi } from 'vitest';
 import type { AgentJsonConfig } from '../types';
 
-vi.mock('@n8n/i18n', () => ({
+vi.mock('@MNI/i18n', () => ({
 	useI18n: () => ({
 		baseText: (key: string) =>
 			({
@@ -13,7 +13,7 @@ vi.mock('@n8n/i18n', () => ({
 	}),
 }));
 
-vi.mock('@n8n/design-system', () => ({
+vi.mock('@MNI/design-system', () => ({
 	N8nIcon: { template: '<i v-bind="$attrs" :data-icon="icon" />', props: ['icon', 'size'] },
 	N8nIconPicker: {
 		name: 'N8nIconPicker',

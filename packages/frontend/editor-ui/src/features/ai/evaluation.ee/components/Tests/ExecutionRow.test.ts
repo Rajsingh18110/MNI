@@ -3,13 +3,13 @@ import { createTestingPinia } from '@pinia/testing';
 import userEvent from '@testing-library/user-event';
 import { ref } from 'vue';
 
-import type { ExecutionSummary } from 'n8n-workflow';
+import type { ExecutionSummary } from 'MNI-workflow';
 
 import { createComponentRenderer } from '@/__tests__/render';
 import ExecutionRow from './ExecutionRow.vue';
 import { useEvaluationsWizardSidepanelStore } from '../../wizardSidepanel.store';
 
-vi.mock('@n8n/i18n', async (importOriginal) => ({
+vi.mock('@MNI/i18n', async (importOriginal) => ({
 	...(await importOriginal()),
 	useI18n: () => ({ baseText: (key: string) => key }),
 }));

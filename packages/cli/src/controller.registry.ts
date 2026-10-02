@@ -1,21 +1,21 @@
-import type { ZodClass } from '@n8n/api-types';
-import { inProduction } from '@n8n/backend-common';
-import { GlobalConfig } from '@n8n/config';
-import { type BooleanLicenseFeature } from '@n8n/constants';
-import { isAuthenticatedRequest } from '@n8n/db';
-import { ControllerRegistryMetadata } from '@n8n/decorators';
+import type { ZodClass } from '@MNI/api-types';
+import { inProduction } from '@MNI/backend-common';
+import { GlobalConfig } from '@MNI/config';
+import { type BooleanLicenseFeature } from '@MNI/constants';
+import { isAuthenticatedRequest } from '@MNI/db';
+import { ControllerRegistryMetadata } from '@MNI/decorators';
 import type {
 	AccessScope,
 	Controller,
 	RateLimiterLimits,
 	StaticRouterMetadata,
 	KeyedRateLimiterConfig,
-} from '@n8n/decorators';
-import { Container, Service } from '@n8n/di';
-import { ensureError } from '@n8n/utils/errors/ensure-error';
+} from '@MNI/decorators';
+import { Container, Service } from '@MNI/di';
+import { ensureError } from '@MNI/utils/errors/ensure-error';
 import { Router } from 'express';
 import type { Application, Request, Response, RequestHandler } from 'express';
-import { UnexpectedError } from 'n8n-workflow';
+import { UnexpectedError } from 'MNI-workflow';
 import assert from 'node:assert';
 
 import { AuthService } from '@/auth/auth.service';

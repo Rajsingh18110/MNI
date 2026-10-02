@@ -1,13 +1,13 @@
 import { computed, reactive } from 'vue';
 import { defineStore } from 'pinia';
 import { EnterpriseEditionFeature } from '@/app/constants';
-import { useSettingsStore } from '@n8n/stores/settings.store';
-import { useRootStore } from '@n8n/stores/useRootStore';
+import { useSettingsStore } from '@MNI/stores/settings.store';
+import { useRootStore } from '@MNI/stores/useRootStore';
 import * as vcApi from './sourceControl.api';
 import type { SourceControlPreferences, SshKeyTypes } from './sourceControl.types';
 import type { TupleToUnion } from '@/app/utils/typeHelpers';
-import type { SourceControlledFile } from '@n8n/api-types';
-import type { AutoPublishMode } from 'n8n-workflow';
+import type { SourceControlledFile } from '@MNI/api-types';
+import type { AutoPublishMode } from 'MNI-workflow';
 
 const DEFAULT_BRANCH_COLOR = '#5296D6';
 

@@ -1,4 +1,4 @@
-import type { SourceControlledFile } from '@n8n/api-types';
+import type { SourceControlledFile } from '@MNI/api-types';
 import orderBy from 'lodash/orderBy';
 import { computed, type Ref } from 'vue';
 

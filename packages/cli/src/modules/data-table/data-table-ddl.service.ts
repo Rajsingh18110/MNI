@@ -1,7 +1,7 @@
-import { CreateTable, DslColumn, withTransaction } from '@n8n/db';
-import { Service } from '@n8n/di';
-import { DataSource, DataSourceOptions, EntityManager } from '@n8n/typeorm';
-import { UnexpectedError } from 'n8n-workflow';
+import { CreateTable, DslColumn, withTransaction } from '@MNI/db';
+import { Service } from '@MNI/di';
+import { DataSource, DataSourceOptions, EntityManager } from '@MNI/typeorm';
+import { UnexpectedError } from 'MNI-workflow';
 
 import { DataTableColumn } from './data-table-column.entity';
 import {

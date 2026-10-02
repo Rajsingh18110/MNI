@@ -1,8 +1,8 @@
-import type { ExecutionSummaries } from '@n8n/db';
+import type { ExecutionSummaries } from '@MNI/db';
 import type { NextFunction, Request, Response } from 'express';
 import { validate } from 'jsonschema';
-import type { JsonObject } from 'n8n-workflow';
-import { jsonParse, UnexpectedError } from 'n8n-workflow';
+import type { JsonObject } from 'MNI-workflow';
+import { jsonParse, UnexpectedError } from 'MNI-workflow';
 
 import { BadRequestError } from '@/errors/response-errors/bad-request.error';
 import * as ResponseHelper from '@/response-helper';

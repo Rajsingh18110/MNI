@@ -4,7 +4,7 @@ import { createTestingPinia } from '@pinia/testing';
 import { setActivePinia } from 'pinia';
 import { fireEvent } from '@testing-library/vue';
 import { flushPromises, mount } from '@vue/test-utils';
-import type { InstanceAiHandoffContext } from '@n8n/api-types';
+import type { InstanceAiHandoffContext } from '@MNI/api-types';
 
 import { mockedStore } from '@/__tests__/utils';
 import { createComponentRenderer } from '@/__tests__/render';
@@ -30,7 +30,7 @@ vi.mock('vue-router', async (importOriginal) => ({
 
 const showError = vi.hoisted(() => vi.fn());
 const showMessage = vi.hoisted(() => vi.fn());
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: () => ({ showError, showMessage }),
 }));
 

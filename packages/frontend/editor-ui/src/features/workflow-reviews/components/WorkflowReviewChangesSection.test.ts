@@ -3,9 +3,9 @@ import type {
 	WorkflowReviewRequestState,
 	WorkflowReviewRequestWorkflowDetail,
 	WorkflowReviewVersionSnapshot,
-} from '@n8n/api-types';
+} from '@MNI/api-types';
 import { createTestingPinia } from '@pinia/testing';
-import type { INode } from 'n8n-workflow';
+import type { INode } from 'MNI-workflow';
 import { isReactive, reactive } from 'vue';
 import { createComponentRenderer } from '@/__tests__/render';
 import type { IWorkflowDb } from '@/Interface';
@@ -50,7 +50,7 @@ function makeNode(overrides: Partial<INode> = {}): INode {
 	return {
 		id: 'node-1',
 		name: 'Node 1',
-		type: 'n8n-nodes-base.noOp',
+		type: 'MNI-nodes-base.noOp',
 		typeVersion: 1,
 		position: [0, 0],
 		parameters: {},

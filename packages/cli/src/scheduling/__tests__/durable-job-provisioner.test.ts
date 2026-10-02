@@ -1,16 +1,16 @@
-import type { Logger } from '@n8n/backend-common';
-import type { GlobalConfig } from '@n8n/config';
-import { ScheduledJobMisfirePolicy } from '@n8n/constants';
+import type { Logger } from '@MNI/backend-common';
+import type { GlobalConfig } from '@MNI/config';
+import { ScheduledJobMisfirePolicy } from '@MNI/constants';
 import type {
 	DataSource,
 	ScheduledJob,
 	ScheduledJobRepository,
 	ScheduledTaskRepository,
-} from '@n8n/db';
-import type { DesiredJob, ProvisionSummary, ScheduleDefinition } from '@n8n/scheduler';
-import type { EntityManager } from '@n8n/typeorm';
-import type { Tracing } from 'n8n-core';
-import { UserError } from 'n8n-workflow';
+} from '@MNI/db';
+import type { DesiredJob, ProvisionSummary, ScheduleDefinition } from '@MNI/scheduler';
+import type { EntityManager } from '@MNI/typeorm';
+import type { Tracing } from 'MNI-core';
+import { UserError } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import { DurableJobProvisioner } from '../durable-job-provisioner';

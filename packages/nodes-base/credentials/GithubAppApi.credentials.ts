@@ -1,4 +1,4 @@
-import { formatPemBlock } from '@n8n/utils/format-pem-block';
+import { formatPemBlock } from '@MNI/utils/format-pem-block';
 import jwt from 'jsonwebtoken';
 import type {
 	IAuthenticateGeneric,
@@ -7,7 +7,7 @@ import type {
 	ICredentialType,
 	IHttpRequestHelper,
 	INodeProperties,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 export class GithubAppApi implements ICredentialType {
 	name = 'githubAppApi';

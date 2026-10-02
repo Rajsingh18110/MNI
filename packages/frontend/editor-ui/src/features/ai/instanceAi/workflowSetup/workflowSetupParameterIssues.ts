@@ -1,7 +1,7 @@
-import { findPlaceholderDetails } from '@n8n/utils/placeholder';
+import { findPlaceholderDetails } from '@MNI/utils/placeholder';
 import type { INodeUi } from '@/Interface';
-import type { INodeParameters, INodeProperties, INodeTypeDescription } from 'n8n-workflow';
-import { NodeHelpers } from 'n8n-workflow';
+import type { INodeParameters, INodeProperties, INodeTypeDescription } from 'MNI-workflow';
+import { NodeHelpers } from 'MNI-workflow';
 
 export function getWorkflowSetupParameterIssues(
 	node: INodeUi,

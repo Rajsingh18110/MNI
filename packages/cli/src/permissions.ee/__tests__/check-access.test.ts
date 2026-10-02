@@ -5,9 +5,9 @@ import {
 	SharedWorkflowRepository,
 	CredentialsRepository,
 	type User,
-} from '@n8n/db';
-import { Container } from '@n8n/di';
-import { type Scope } from '@n8n/permissions';
+} from '@MNI/db';
+import { Container } from '@MNI/di';
+import { type Scope } from '@MNI/permissions';
 import type { Mock } from 'vitest';
 import { mock } from 'vitest-mock-extended';
 

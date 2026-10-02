@@ -4,18 +4,18 @@
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 
-import { LockNamespace, LockService, SingleFlightLease } from '@n8n/backend-common';
-import { isFormDataInstance, removeEmptyBody, type SsrfBridge } from '@n8n/backend-network';
+import { LockNamespace, LockService, SingleFlightLease } from '@MNI/backend-common';
+import { isFormDataInstance, removeEmptyBody, type SsrfBridge } from '@MNI/backend-network';
 import type {
 	ClientOAuth2Options,
 	ClientOAuth2RequestObject,
 	ClientOAuth2Token,
 	ClientOAuth2TokenData,
 	OAuth2CredentialData,
-} from '@n8n/client-oauth2';
-import { AuthError, ClientOAuth2, resolveClientAuthOptions } from '@n8n/client-oauth2';
-import { Container } from '@n8n/di';
-import { isRecord } from '@n8n/utils/is-record';
+} from '@MNI/client-oauth2';
+import { AuthError, ClientOAuth2, resolveClientAuthOptions } from '@MNI/client-oauth2';
+import { Container } from '@MNI/di';
+import { isRecord } from '@MNI/utils/is-record';
 import type { AxiosError } from 'axios';
 import { createHmac } from 'crypto';
 import get from 'lodash/get';
@@ -30,14 +30,14 @@ import type {
 	IWorkflowExecuteAdditionalData,
 	WorkflowExecuteMode,
 	Logger as WorkflowLogger,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import {
 	OperationalError,
 	jsonParse,
 	NodeOperationError,
 	UserError,
 	UnexpectedError,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import type { Token } from 'oauth-1.0a';
 import clientOAuth1 from 'oauth-1.0a';
 import { Stream } from 'stream';
@@ -98,7 +98,7 @@ function addExpiresAt(tokenData: ClientOAuth2TokenData): ClientOAuth2TokenData {
 
 	return {
 		...tokenData,
-		n8n_expires_at: String(Date.now() + expiresInSeconds * 1000),
+		MNI_expires_at: String(Date.now() + expiresInSeconds * 1000),
 	};
 }
 
@@ -341,7 +341,7 @@ const TOKEN_EXPIRY_BUFFER_MS = 60_000;
  * expired, so callers fall back to refreshing when the expiry is unknown.
  */
 function isStoredTokenUnexpired(credentials: OAuth2CredentialData): boolean {
-	const expiresAt = Number(credentials.oauthTokenData?.n8n_expires_at);
+	const expiresAt = Number(credentials.oauthTokenData?.MNI_expires_at);
 	return Number.isFinite(expiresAt) && Date.now() + TOKEN_EXPIRY_BUFFER_MS < expiresAt;
 }
 

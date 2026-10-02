@@ -3,10 +3,10 @@ import { flushPromises } from '@vue/test-utils';
 import { setActivePinia } from 'pinia';
 import { createTestingPinia, type TestingPinia } from '@pinia/testing';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import type { ICredentialType, INodeParameters } from 'n8n-workflow';
+import type { ICredentialType, INodeParameters } from 'MNI-workflow';
 import { createTestNode, createTestWorkflow, mockNodeTypeDescription } from '@/__tests__/mocks';
 import { mockedStore } from '@/__tests__/utils';
-import type { InstanceAiAgentNode, InstanceAiSetupItem } from '@n8n/api-types';
+import type { InstanceAiAgentNode, InstanceAiSetupItem } from '@MNI/api-types';
 import type { INodeUi, IWorkflowDb } from '@/Interface';
 import { useSetupPanelState } from '@/features/ai/instanceAi/composables/useSetupPanelState';
 import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';
@@ -17,7 +17,7 @@ import type {
 import { useCredentialsStore } from '@/features/credentials/credentials.store';
 import { useWorkflowsListStore } from '@/app/stores/workflowsList.store';
 import { useWorkflowsStore } from '@/app/stores/workflows.store';
-import { makeRestApiRequest } from '@n8n/rest-api-client';
+import { makeRestApiRequest } from '@MNI/rest-api-client';
 import {
 	createWorkflowDocumentId,
 	disposeWorkflowDocumentStore,
@@ -34,7 +34,7 @@ vi.mock('@/features/setupPanel/setupPanel.utils', () => ({
 	getNodeCredentialTypes: vi.fn().mockReturnValue([]),
 	getNodeParametersIssues: vi.fn().mockReturnValue({}),
 }));
-vi.mock('@n8n/rest-api-client', async (importOriginal) => ({
+vi.mock('@MNI/rest-api-client', async (importOriginal) => ({
 	...(await importOriginal<object>()),
 	makeRestApiRequest: vi.fn(),
 }));

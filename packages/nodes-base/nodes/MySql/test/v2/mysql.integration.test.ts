@@ -1,7 +1,7 @@
 import { describe, test, expect, beforeAll, afterAll } from 'vitest';
-import { createServiceStack, type N8NStack } from 'n8n-containers';
-import { constructExecutionMetaData } from 'n8n-core';
-import type { IDataObject, IExecuteFunctions, INode } from 'n8n-workflow';
+import { createServiceStack, type N8NStack } from 'MNI-containers';
+import { constructExecutionMetaData } from 'MNI-core';
+import type { IDataObject, IExecuteFunctions, INode } from 'MNI-workflow';
 
 import { router } from '../../v2/actions/router';
 import type { MysqlNodeCredentials } from '../../v2/helpers/interfaces';
@@ -38,7 +38,7 @@ const node: INode = {
 	id: '1',
 	name: 'MySQL',
 	typeVersion: 2.5,
-	type: 'n8n-nodes-base.mySql',
+	type: 'MNI-nodes-base.mySql',
 	position: [0, 0],
 	parameters: {},
 };

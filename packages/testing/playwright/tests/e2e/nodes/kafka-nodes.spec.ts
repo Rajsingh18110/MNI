@@ -22,7 +22,7 @@ test.describe(
 				type: 'kafka',
 				data: {
 					brokers: 'kafka:9092',
-					clientId: 'n8n-test-producer',
+					clientId: 'MNI-test-producer',
 					ssl: false,
 					authentication: false,
 				},
@@ -34,14 +34,14 @@ test.describe(
 					{
 						id: '1',
 						name: 'Manual Trigger',
-						type: 'n8n-nodes-base.manualTrigger',
+						type: 'MNI-nodes-base.manualTrigger',
 						typeVersion: 1,
 						position: [0, 0] as [number, number],
 					},
 					{
 						id: '2',
 						name: 'Set',
-						type: 'n8n-nodes-base.set',
+						type: 'MNI-nodes-base.set',
 						typeVersion: 3,
 						position: [200, 0] as [number, number],
 						parameters: {
@@ -52,7 +52,7 @@ test.describe(
 					{
 						id: '3',
 						name: 'Kafka',
-						type: 'n8n-nodes-base.kafka',
+						type: 'MNI-nodes-base.kafka',
 						typeVersion: 1,
 						position: [400, 0] as [number, number],
 						parameters: {
@@ -102,7 +102,7 @@ test.describe(
 		test('Kafka Trigger node processes messages', async ({ api, services }) => {
 			const kafka = services.kafka;
 			const topic = `trigger-test-${nanoid()}`;
-			const groupId = `n8n-test-group-${nanoid()}`;
+			const groupId = `MNI-test-group-${nanoid()}`;
 
 			await kafka.createTopic(topic, 1);
 
@@ -111,7 +111,7 @@ test.describe(
 				type: 'kafka',
 				data: {
 					brokers: 'kafka:9092',
-					clientId: 'n8n-test',
+					clientId: 'MNI-test',
 					ssl: false,
 					authentication: false,
 				},
@@ -123,7 +123,7 @@ test.describe(
 					{
 						id: '1',
 						name: 'Kafka Trigger',
-						type: 'n8n-nodes-base.kafkaTrigger',
+						type: 'MNI-nodes-base.kafkaTrigger',
 						typeVersion: 1.1,
 						position: [0, 0] as [number, number],
 						parameters: {
@@ -145,7 +145,7 @@ test.describe(
 					{
 						id: '2',
 						name: 'No Operation',
-						type: 'n8n-nodes-base.noOp',
+						type: 'MNI-nodes-base.noOp',
 						typeVersion: 1,
 						position: [200, 0] as [number, number],
 					},

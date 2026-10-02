@@ -1,6 +1,6 @@
 import { mock } from 'vitest-mock-extended';
-import type { IWorkflowTemplateNode } from '@n8n/rest-api-client/api/templates';
-import type { INodeParameters } from 'n8n-workflow';
+import type { IWorkflowTemplateNode } from '@MNI/rest-api-client/api/templates';
+import type { INodeParameters } from 'MNI-workflow';
 import {
 	clearAllNodeResourceLocatorValues,
 	clearResourceLocatorValues,
@@ -16,7 +16,7 @@ describe('templateTransforms', () => {
 			};
 			const node = mock<IWorkflowTemplateNode>({
 				id: 'twitter',
-				type: 'n8n-nodes-base.twitter',
+				type: 'MNI-nodes-base.twitter',
 				credentials: {
 					twitterOAuth1Api: 'old1',
 				},
@@ -46,7 +46,7 @@ describe('templateTransforms', () => {
 			};
 			const node = mock<IWorkflowTemplateNode>({
 				id: 'twitter',
-				type: 'n8n-nodes-base.twitter',
+				type: 'MNI-nodes-base.twitter',
 			});
 			const toReplaceWith = {
 				[keyFromCredentialTypeAndName('twitterOAuth1Api', 'old1')]: {

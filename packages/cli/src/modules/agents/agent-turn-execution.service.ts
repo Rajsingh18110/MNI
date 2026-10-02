@@ -4,12 +4,12 @@ import type {
 	ResumeOptions,
 	RunOptions,
 	StreamChunk,
-} from '@n8n/agents';
-import type { AgentBackgroundJobSignal } from '@n8n/api-types';
-import { Logger } from '@n8n/backend-common';
-import { Service } from '@n8n/di';
-import { isRecord } from '@n8n/utils/is-record';
-import { UnexpectedError } from 'n8n-workflow';
+} from '@MNI/agents';
+import type { AgentBackgroundJobSignal } from '@MNI/api-types';
+import { Logger } from '@MNI/backend-common';
+import { Service } from '@MNI/di';
+import { isRecord } from '@MNI/utils/is-record';
+import { UnexpectedError } from 'MNI-workflow';
 
 import type { AgentSessionMode } from './utils/agent-thread-access';
 import { AgentExecutionRecordingError } from './agent-execution-recording.error';

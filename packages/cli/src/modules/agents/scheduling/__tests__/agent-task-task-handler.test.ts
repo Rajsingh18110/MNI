@@ -1,5 +1,5 @@
-import type { Logger } from '@n8n/backend-common';
-import { createDispatchReporter, type ClaimedTask } from '@n8n/scheduler';
+import type { Logger } from '@MNI/backend-common';
+import { createDispatchReporter, type ClaimedTask } from '@MNI/scheduler';
 import { mock } from 'vitest-mock-extended';
 
 import type { AgentTaskService } from '../../agent-task.service';

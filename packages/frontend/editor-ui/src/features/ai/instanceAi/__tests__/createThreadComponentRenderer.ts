@@ -2,7 +2,7 @@ import { vi } from 'vitest';
 import { defineComponent, h, reactive, ref, type Component } from 'vue';
 import { createComponentRenderer, type RenderOptions } from '@/__tests__/render';
 import { provideThread, useInstanceAiStore, type ThreadRuntime } from '../instanceAi.store';
-import type { FrontendModuleSettings, InstanceAiMessage } from '@n8n/api-types';
+import type { FrontendModuleSettings, InstanceAiMessage } from '@MNI/api-types';
 import {
 	USER_TYPED_MESSAGE,
 	type InstanceAiMessageAuthorship,

@@ -1,6 +1,6 @@
-import { ALWAYS_SENSITIVE_HEADERS } from '@n8n/utils/redaction/sensitive-headers';
+import { ALWAYS_SENSITIVE_HEADERS } from '@MNI/utils/redaction/sensitive-headers';
 import { mkdir, readFile, readdir, rm } from 'fs/promises';
-import { jsonParse } from 'n8n-workflow';
+import { jsonParse } from 'MNI-workflow';
 import { join, resolve } from 'path';
 
 export interface WebhookRecord {
@@ -52,7 +52,7 @@ const DEFAULT_FETCH_URL_PATTERNS = [
 	/linear\.app/i,
 ];
 
-const SANITIZED_N8N_HOST = 'https://n8n.host.com';
+const SANITIZED_MNI_HOST = 'https://n8n.host.com';
 
 function sanitizeHeaderValue(key: string, value: string): string {
 	const normalizedKey = key.toLowerCase();
@@ -66,7 +66,7 @@ function sanitizeWebhookHeaderValue(key: string, value: string): string {
 		return '111.111.111.111';
 	}
 	if (normalizedKey === 'host' || normalizedKey === 'x-forwarded-host') {
-		return SANITIZED_N8N_HOST;
+		return SANITIZED_MNI_HOST;
 	}
 	return sanitizeHeaderValue(key, value);
 }
@@ -81,7 +81,7 @@ function sanitizeUrl(url: string): string {
 function sanitizeWebhookUrl(url: string): string {
 	try {
 		const parsed = new URL(url);
-		return `${SANITIZED_N8N_HOST}${parsed.pathname}${parsed.search}${parsed.hash}`;
+		return `${SANITIZED_MNI_HOST}${parsed.pathname}${parsed.search}${parsed.hash}`;
 	} catch {
 		return url;
 	}
@@ -151,7 +151,7 @@ function sanitizeSessionId(value: string): string {
 }
 
 function defaultSessionId(): string {
-	const ref = process.env.N8N_AGENT_INTEGRATION_RECORDING_REF ?? 'local';
+	const ref = process.env.MNI_AGENT_INTEGRATION_RECORDING_REF ?? 'local';
 	return `session-${sanitizeSessionId(ref)}-${Date.now()}`;
 }
 
@@ -237,15 +237,15 @@ export class ChannelIntegrationRecorder {
 
 	constructor(options: { enabled?: boolean; sessionId?: string; recordingDir?: string } = {}) {
 		this.enabled =
-			options.enabled ?? process.env.N8N_AGENT_INTEGRATION_RECORDING_ENABLED === 'true';
+			options.enabled ?? process.env.MNI_AGENT_INTEGRATION_RECORDING_ENABLED === 'true';
 		this.sessionId = sanitizeSessionId(
 			options.sessionId ??
-				process.env.N8N_AGENT_INTEGRATION_RECORDING_SESSION_ID ??
+				process.env.MNI_AGENT_INTEGRATION_RECORDING_SESSION_ID ??
 				defaultSessionId(),
 		);
 		this.recordingDir =
 			options.recordingDir ??
-			process.env.N8N_AGENT_INTEGRATION_RECORDING_DIR ??
+			process.env.MNI_AGENT_INTEGRATION_RECORDING_DIR ??
 			defaultRecordingDir();
 	}
 

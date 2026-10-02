@@ -9,7 +9,7 @@ const COLLECTION_ID = 'col-e2e';
 // are stubbed below, so no backend flag or real eval run is needed.
 const requirements: TestRequirements = {
 	storage: {
-		N8N_EXPERIMENT_OVERRIDES: JSON.stringify({ '084_eval_collections': true }),
+		MNI_EXPERIMENT_OVERRIDES: JSON.stringify({ '084_eval_collections': true }),
 	},
 };
 

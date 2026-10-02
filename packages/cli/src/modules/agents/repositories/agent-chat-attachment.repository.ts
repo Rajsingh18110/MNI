@@ -1,5 +1,5 @@
-import { Service } from '@n8n/di';
-import { DataSource, In, Repository } from '@n8n/typeorm';
+import { Service } from '@MNI/di';
+import { DataSource, In, Repository } from '@MNI/typeorm';
 
 import { AgentChatAttachment } from '../entities/agent-chat-attachment.entity';
 

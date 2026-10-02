@@ -3,8 +3,8 @@ import type {
 	IExecuteFunctions,
 	INodeExecutionData,
 	INodeProperties,
-} from 'n8n-workflow';
-import { toPathSegment } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { toPathSegment } from 'MNI-workflow';
 
 import {
 	extractBlockId,

@@ -2,8 +2,8 @@ import type {
 	SamlConfigurationResponse,
 	SamlPreferences,
 	UpdateSamlConfigurationDto,
-} from '@n8n/api-types';
-import { CREDENTIAL_BLANKING_VALUE } from 'n8n-workflow';
+} from '@MNI/api-types';
+import { CREDENTIAL_BLANKING_VALUE } from 'MNI-workflow';
 
 import {
 	getServiceProviderEntityId,

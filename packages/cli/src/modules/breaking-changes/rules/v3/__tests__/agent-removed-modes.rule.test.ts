@@ -1,7 +1,7 @@
 import { createNode, createWorkflow } from '../../../__tests__/test-helpers';
 import { AgentRemovedModesRule } from '../agent-removed-modes.rule';
 
-const AGENT_NODE_TYPE = '@n8n/n8n-nodes-langchain.agent';
+const AGENT_NODE_TYPE = '@MNI/MNI-nodes-langchain.agent';
 
 describe('AgentRemovedModesRule', () => {
 	let rule: AgentRemovedModesRule;
@@ -13,7 +13,7 @@ describe('AgentRemovedModesRule', () => {
 	describe('detectWorkflow()', () => {
 		it('should not be affected when there is no AI Agent node', async () => {
 			const { workflow, nodesGroupedByType } = createWorkflow('wf-1', 'Test Workflow', [
-				createNode('HTTP', 'n8n-nodes-base.httpRequest'),
+				createNode('HTTP', 'MNI-nodes-base.httpRequest'),
 			]);
 
 			const result = await rule.detectWorkflow(workflow, nodesGroupedByType);

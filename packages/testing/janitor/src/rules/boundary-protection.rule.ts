@@ -1,6 +1,6 @@
-import type { Violation } from '@n8n/rules-engine';
-import { AstRule } from '@n8n/rules-engine/ast';
-import type { AstProjectConfig } from '@n8n/rules-engine/ast';
+import type { Violation } from '@MNI/rules-engine';
+import { AstRule } from '@MNI/rules-engine/ast';
+import type { AstProjectConfig } from '@MNI/rules-engine/ast';
 import type { Project } from 'ts-morph';
 
 import { getConfig } from '../config.js';
@@ -10,7 +10,7 @@ import { isExcludedPage } from '../utils/paths.js';
 /**
  * Pages must not import other pages directly. Janitor-owned (playwright domain
  * logic via {@link isPageImport} + config-driven {@link isExcludedPage}) but
- * built on the shared `@n8n/rules-engine/ast` substrate rather than a janitor base.
+ * built on the shared `@MNI/rules-engine/ast` substrate rather than a janitor base.
  */
 export class BoundaryProtectionRule extends AstRule<{ rootDir: string }> {
 	readonly id = 'boundary-protection';

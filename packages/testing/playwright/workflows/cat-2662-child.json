@@ -6,7 +6,7 @@
 			"parameters": { "inputSource": "passthrough" },
 			"id": "child-trigger",
 			"name": "When Executed by Another Workflow",
-			"type": "n8n-nodes-base.executeWorkflowTrigger",
+			"type": "MNI-nodes-base.executeWorkflowTrigger",
 			"typeVersion": 1.1,
 			"position": [0, 0]
 		},
@@ -16,7 +16,7 @@
 			},
 			"id": "child-delay-1",
 			"name": "Delay 1",
-			"type": "n8n-nodes-base.code",
+			"type": "MNI-nodes-base.code",
 			"typeVersion": 2,
 			"position": [220, 0]
 		},
@@ -26,7 +26,7 @@
 			},
 			"id": "child-delay-2",
 			"name": "Delay 2",
-			"type": "n8n-nodes-base.code",
+			"type": "MNI-nodes-base.code",
 			"typeVersion": 2,
 			"position": [440, 0]
 		},
@@ -36,7 +36,7 @@
 			},
 			"id": "child-delay-3",
 			"name": "Delay 3",
-			"type": "n8n-nodes-base.code",
+			"type": "MNI-nodes-base.code",
 			"typeVersion": 2,
 			"position": [660, 0]
 		}

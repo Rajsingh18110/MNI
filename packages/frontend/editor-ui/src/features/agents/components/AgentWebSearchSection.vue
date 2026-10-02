@@ -9,10 +9,10 @@ import {
 	N8nText,
 	N8nIcon,
 	type DropdownMenuItemProps,
-} from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
-import { getResourcePermissions } from '@n8n/permissions';
-import { AI_GATEWAY_MANAGED_TAG } from '@n8n/api-types';
+} from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
+import { getResourcePermissions } from '@MNI/permissions';
+import { AI_GATEWAY_MANAGED_TAG } from '@MNI/api-types';
 
 import { useAiGateway } from '@/app/composables/useAiGateway';
 import { useUIStore } from '@/app/stores/ui.store';

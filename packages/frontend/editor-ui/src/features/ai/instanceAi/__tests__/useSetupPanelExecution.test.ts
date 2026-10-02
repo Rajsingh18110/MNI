@@ -3,10 +3,10 @@ import { createTestingPinia } from '@pinia/testing';
 import { setActivePinia } from 'pinia';
 import { flushPromises } from '@vue/test-utils';
 import { mock } from 'vitest-mock-extended';
-import { TELEMETRY_EVENT } from '@n8n/telemetry';
-import type { PushMessage, InstanceAiMessage } from '@n8n/api-types';
-import type { TerminalExecutionStatus } from 'n8n-workflow';
-import { useRootStore } from '@n8n/stores/useRootStore';
+import { TELEMETRY_EVENT } from '@MNI/telemetry';
+import type { PushMessage, InstanceAiMessage } from '@MNI/api-types';
+import type { TerminalExecutionStatus } from 'MNI-workflow';
+import { useRootStore } from '@MNI/stores/useRootStore';
 import { mockedStore } from '@/__tests__/utils';
 import { createTestNode, createTestWorkflow } from '@/__tests__/mocks';
 import { getWorkflow } from '@/app/api/workflows';
@@ -30,12 +30,12 @@ import { useSetupPanelExecution } from '../composables/useSetupPanelExecution';
 
 vi.mock('@/app/api/workflows', () => ({ getWorkflow: vi.fn() }));
 const { track } = vi.hoisted(() => ({ track: vi.fn() }));
-vi.mock('@n8n/composables/useTelemetry', () => ({ useTelemetry: () => ({ track }) }));
-vi.mock('@n8n/composables/useToast', () => ({ useToast: () => ({ showMessage: vi.fn() }) }));
+vi.mock('@MNI/composables/useTelemetry', () => ({ useTelemetry: () => ({ track }) }));
+vi.mock('@MNI/composables/useToast', () => ({ useToast: () => ({ showMessage: vi.fn() }) }));
 
 const workflow = createTestWorkflow({
 	id: 'wf-1',
-	nodes: [createTestNode({ name: 'Start', type: 'n8n-nodes-base.manualTrigger' })],
+	nodes: [createTestNode({ name: 'Start', type: 'MNI-nodes-base.manualTrigger' })],
 });
 const handlers = new Set<(event: PushMessage) => void>();
 const scopes: Array<ReturnType<typeof effectScope>> = [];
@@ -79,7 +79,7 @@ describe('useSetupPanelExecution', () => {
 		vi.mocked(getWorkflow).mockReset().mockResolvedValue(workflow);
 		const nodeTypes = mockedStore(useNodeTypesStore);
 		nodeTypes.loadNodeTypesIfNotLoaded.mockResolvedValue(undefined);
-		nodeTypes.isTriggerNode = vi.fn((type: string) => type === 'n8n-nodes-base.manualTrigger');
+		nodeTypes.isTriggerNode = vi.fn((type: string) => type === 'MNI-nodes-base.manualTrigger');
 		const push = mockedStore(usePushConnectionStore);
 		push.isConnected = true;
 		push.addEventListener.mockImplementation((handler) => {
@@ -278,7 +278,7 @@ describe('useSetupPanelExecution', () => {
 		const { executeWorkflow, workflowId, workflows, isRunning } = harness();
 		const otherWorkflow = createTestWorkflow({
 			id: 'wf-2',
-			nodes: [createTestNode({ name: 'Second start', type: 'n8n-nodes-base.manualTrigger' })],
+			nodes: [createTestNode({ name: 'Second start', type: 'MNI-nodes-base.manualTrigger' })],
 		});
 		vi.mocked(getWorkflow).mockImplementation(async (_context, id) =>
 			id === otherWorkflow.id ? otherWorkflow : workflow,
@@ -413,7 +413,7 @@ describe('useSetupPanelExecution', () => {
 			...workflow,
 			nodes: [
 				workflow.nodes[0],
-				createTestNode({ name: 'Selected', type: 'n8n-nodes-base.manualTrigger', disabled }),
+				createTestNode({ name: 'Selected', type: 'MNI-nodes-base.manualTrigger', disabled }),
 			],
 		});
 		useWorkflowExecutionStateStore(createWorkflowDocumentId('wf-1')).setSelectedTriggerNodeName(

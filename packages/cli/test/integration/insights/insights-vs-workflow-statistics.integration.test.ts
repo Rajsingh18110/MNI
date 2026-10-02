@@ -7,13 +7,13 @@
  * It configures the system for fast flushing and drives compaction explicitly.
  */
 
-import { createTeamProject, createWorkflow, testDb, testModules } from '@n8n/backend-test-utils';
-import { GlobalConfig } from '@n8n/config';
-import type { Project, WorkflowEntity } from '@n8n/db';
-import { ExecutionRepository, StatisticsNames, WorkflowStatisticsRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
-import { InstanceSettings } from 'n8n-core';
-import { createRunExecutionData } from 'n8n-workflow';
+import { createTeamProject, createWorkflow, testDb, testModules } from '@MNI/backend-test-utils';
+import { GlobalConfig } from '@MNI/config';
+import type { Project, WorkflowEntity } from '@MNI/db';
+import { ExecutionRepository, StatisticsNames, WorkflowStatisticsRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
+import { InstanceSettings } from 'MNI-core';
+import { createRunExecutionData } from 'MNI-workflow';
 
 import { InsightsByPeriodRepository } from '@/modules/insights/database/repositories/insights-by-period.repository';
 import { InsightsCollectionService } from '@/modules/insights/insights-collection.service';
@@ -28,18 +28,18 @@ import { createSimpleWorkflowFixture } from '../shared/workflow-fixtures';
 describe('Insights vs Workflow Statistics Integration', () => {
 	beforeAll(async () => {
 		// Configure insights for fast flushing and compaction BEFORE loading modules
-		process.env.N8N_INSIGHTS_FLUSH_BATCH_SIZE = '10'; // Flush after 10 events
-		process.env.N8N_INSIGHTS_FLUSH_INTERVAL_SECONDS = '1'; // Flush every 1 second
-		process.env.N8N_INSIGHTS_COMPACTION_BATCH_SIZE = '100'; // Process up to 100 items per batch
+		process.env.MNI_INSIGHTS_FLUSH_BATCH_SIZE = '10'; // Flush after 10 events
+		process.env.MNI_INSIGHTS_FLUSH_INTERVAL_SECONDS = '1'; // Flush every 1 second
+		process.env.MNI_INSIGHTS_COMPACTION_BATCH_SIZE = '100'; // Process up to 100 items per batch
 
 		await testModules.loadModules(['insights']);
 		await testDb.init();
 
 		// Load required node types from dist folder
 		const nodeTypes = loadNodesFromDist([
-			'n8n-nodes-base.manualTrigger',
-			'n8n-nodes-base.executeWorkflow',
-			'n8n-nodes-base.executeWorkflowTrigger',
+			'MNI-nodes-base.manualTrigger',
+			'MNI-nodes-base.executeWorkflow',
+			'MNI-nodes-base.executeWorkflowTrigger',
 		]);
 
 		await utils.initNodeTypes(nodeTypes);

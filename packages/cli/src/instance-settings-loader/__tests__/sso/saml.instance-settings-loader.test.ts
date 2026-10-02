@@ -1,6 +1,6 @@
-import type { Logger } from '@n8n/backend-common';
-import type { InstanceSettingsLoaderConfig } from '@n8n/config';
-import type { SettingsRepository } from '@n8n/db';
+import type { Logger } from '@MNI/backend-common';
+import type { InstanceSettingsLoaderConfig } from '@MNI/config';
+import type { SettingsRepository } from '@MNI/db';
 import { mock } from 'vitest-mock-extended';
 
 import { SamlInstanceSettingsLoader } from '../../loaders/sso/saml.instance-settings-loader';
@@ -30,7 +30,7 @@ describe('SamlInstanceSettingsLoader', () => {
 			const loader = createLoader({ samlLoginEnabled: true });
 
 			await expect(loader.apply()).rejects.toThrow(
-				'At least one of N8N_SSO_SAML_METADATA or N8N_SSO_SAML_METADATA_URL is required',
+				'At least one of MNI_SSO_SAML_METADATA or MNI_SSO_SAML_METADATA_URL is required',
 			);
 		});
 

@@ -10,7 +10,7 @@ import {
 	type ChatHubLLMProvider,
 	type AgentIconOrEmoji,
 	type ChatProviderSettingsDto,
-} from '@n8n/api-types';
+} from '@MNI/api-types';
 import type {
 	ChatMessage,
 	GroupedConversations,
@@ -20,7 +20,7 @@ import type {
 	ChatConversation,
 } from './chat.types';
 import { CHAT_VIEW } from './constants';
-import type { IconName } from '@n8n/design-system';
+import type { IconName } from '@MNI/design-system';
 
 export function getRelativeDate(now: Date, dateString: string): string {
 	const date = new Date(dateString);

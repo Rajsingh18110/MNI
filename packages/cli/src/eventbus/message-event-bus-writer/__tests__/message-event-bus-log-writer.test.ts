@@ -1,8 +1,8 @@
-import { Logger } from '@n8n/backend-common';
-import { GlobalConfig } from '@n8n/config';
-import { Container } from '@n8n/di';
-import { InstanceSettings } from 'n8n-core';
-import { EventMessageTypeNames } from 'n8n-workflow';
+import { Logger } from '@MNI/backend-common';
+import { GlobalConfig } from '@MNI/config';
+import { Container } from '@MNI/di';
+import { InstanceSettings } from 'MNI-core';
+import { EventMessageTypeNames } from 'MNI-workflow';
 import { mkdtempSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';

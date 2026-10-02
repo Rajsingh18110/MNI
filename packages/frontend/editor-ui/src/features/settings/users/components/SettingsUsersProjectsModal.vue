@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { computed, ref } from 'vue';
-import type { UserProject } from '@n8n/api-types';
-import { useI18n } from '@n8n/i18n';
+import type { UserProject } from '@MNI/api-types';
+import { useI18n } from '@MNI/i18n';
 import {
 	N8nDialog,
 	N8nDialogHeader,
@@ -9,10 +9,10 @@ import {
 	N8nText,
 	N8nInput,
 	N8nIcon,
-} from '@n8n/design-system';
+} from '@MNI/design-system';
 import ProjectIcon from '@/features/collaboration/projects/components/ProjectIcon.vue';
 import { DEFAULT_PROJECT_ICON } from '@/features/collaboration/projects/projects.constants';
-import { useRolesStore } from '@n8n/stores/roles.store';
+import { useRolesStore } from '@MNI/stores/roles.store';
 
 const props = defineProps<{
 	open: boolean;

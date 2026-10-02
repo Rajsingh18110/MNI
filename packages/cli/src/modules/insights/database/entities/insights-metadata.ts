@@ -1,4 +1,4 @@
-import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from '@n8n/typeorm';
+import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from '@MNI/typeorm';
 
 @Entity()
 export class InsightsMetadata extends BaseEntity {

@@ -1,5 +1,5 @@
 import { LOCAL_STORAGE_CHAT_HUB_CREDENTIALS } from '@/app/constants';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { credentialsMapSchema, type CredentialsMap } from '@/features/ai/chatHub/chat.types';
 import { useProjectsStore } from '@/features/collaboration/projects/projects.store';
 import { useCredentialsStore } from '@/features/credentials/credentials.store';
@@ -7,7 +7,7 @@ import {
 	chatHubProviderSchema,
 	PROVIDER_CREDENTIAL_TYPE_MAP,
 	type ChatHubProvider,
-} from '@n8n/api-types';
+} from '@MNI/api-types';
 import { useLocalStorage } from '@vueuse/core';
 import { computed, ref, watch } from 'vue';
 import { isLlmProvider } from '../chat.utils';

@@ -1,5 +1,5 @@
-import { NodeApiError } from 'n8n-workflow';
-import type { INodeExecutionData, IN8nHttpFullResponse, JsonObject } from 'n8n-workflow';
+import { NodeApiError } from 'MNI-workflow';
+import type { INodeExecutionData, IN8nHttpFullResponse, JsonObject } from 'MNI-workflow';
 
 import { handleError } from '../../helpers/errorHandler';
 

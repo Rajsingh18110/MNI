@@ -46,15 +46,15 @@ describe('matchGlob', () => {
 	it('scoped package pattern matches files in that package', () => {
 		assert.ok(
 			matchGlob(
-				'packages/@n8n/task-runner-python/src/main.py',
-				'packages/@n8n/task-runner-python/**',
+				'packages/@MNI/task-runner-python/src/main.py',
+				'packages/@MNI/task-runner-python/**',
 			),
 		);
 	});
 
 	it('scoped package pattern does not match other packages', () => {
 		assert.ok(
-			!matchGlob('packages/@n8n/config/src/index.ts', 'packages/@n8n/task-runner-python/**'),
+			!matchGlob('packages/@MNI/config/src/index.ts', 'packages/@MNI/task-runner-python/**'),
 		);
 	});
 
@@ -80,7 +80,7 @@ describe('matchGlob', () => {
 	});
 
 	it('**/ in middle matches nested paths', () => {
-		assert.ok(matchGlob('packages/@n8n/db/src/deep/file.ts', 'packages/@n8n/db/**'));
+		assert.ok(matchGlob('packages/@MNI/db/src/deep/file.ts', 'packages/@MNI/db/**'));
 	});
 });
 
@@ -93,34 +93,34 @@ describe('parseFilters', () => {
 	});
 
 	it('parses single-line with multiple patterns', () => {
-		const filters = parseFilters('db: packages/@n8n/db/** packages/cli/**');
-		assert.deepEqual(filters.get('db'), ['packages/@n8n/db/**', 'packages/cli/**']);
+		const filters = parseFilters('db: packages/@MNI/db/** packages/cli/**');
+		assert.deepEqual(filters.get('db'), ['packages/@MNI/db/**', 'packages/cli/**']);
 	});
 
 	it('parses multi-line filter', () => {
 		const input = `non-python:
   **
-  !packages/@n8n/task-runner-python/**`;
+  !packages/@MNI/task-runner-python/**`;
 		const filters = parseFilters(input);
-		assert.deepEqual(filters.get('non-python'), ['**', '!packages/@n8n/task-runner-python/**']);
+		assert.deepEqual(filters.get('non-python'), ['**', '!packages/@MNI/task-runner-python/**']);
 	});
 
 	it('parses YAML-list-style multi-line filter', () => {
 		const input = `db:
-  - packages/@n8n/db/**
+  - packages/@MNI/db/**
   - packages/cli/**`;
 		const filters = parseFilters(input);
-		assert.deepEqual(filters.get('db'), ['packages/@n8n/db/**', 'packages/cli/**']);
+		assert.deepEqual(filters.get('db'), ['packages/@MNI/db/**', 'packages/cli/**']);
 	});
 
 	it('parses mixed single and multi-line', () => {
 		const input = `non-python:
   **
-  !packages/@n8n/task-runner-python/**
+  !packages/@MNI/task-runner-python/**
 workflows: .github/**`;
 		const filters = parseFilters(input);
 		assert.equal(filters.size, 2);
-		assert.deepEqual(filters.get('non-python'), ['**', '!packages/@n8n/task-runner-python/**']);
+		assert.deepEqual(filters.get('non-python'), ['**', '!packages/@MNI/task-runner-python/**']);
 		assert.deepEqual(filters.get('workflows'), ['.github/**']);
 	});
 
@@ -130,7 +130,7 @@ workflows: .github/**`;
 workflows: .github/**
 
 # Another comment
-db: packages/@n8n/db/**`;
+db: packages/@MNI/db/**`;
 		const filters = parseFilters(input);
 		assert.equal(filters.size, 2);
 	});
@@ -151,22 +151,22 @@ other: .github/**`;
 describe('evaluateFilter', () => {
 	it('python-only files with non-python filter returns false', () => {
 		const files = [
-			'packages/@n8n/task-runner-python/src/main.py',
-			'packages/@n8n/task-runner-python/pyproject.toml',
+			'packages/@MNI/task-runner-python/src/main.py',
+			'packages/@MNI/task-runner-python/pyproject.toml',
 		];
-		const patterns = ['**', '!packages/@n8n/task-runner-python/**'];
+		const patterns = ['**', '!packages/@MNI/task-runner-python/**'];
 		assert.equal(evaluateFilter(files, patterns), false);
 	});
 
 	it('mixed python and non-python returns true', () => {
-		const files = ['packages/@n8n/task-runner-python/src/main.py', 'packages/cli/src/index.ts'];
-		const patterns = ['**', '!packages/@n8n/task-runner-python/**'];
+		const files = ['packages/@MNI/task-runner-python/src/main.py', 'packages/cli/src/index.ts'];
+		const patterns = ['**', '!packages/@MNI/task-runner-python/**'];
 		assert.equal(evaluateFilter(files, patterns), true);
 	});
 
 	it('non-python files with non-python filter returns true', () => {
 		const files = ['packages/cli/src/index.ts', 'packages/core/src/utils.ts'];
-		const patterns = ['**', '!packages/@n8n/task-runner-python/**'];
+		const patterns = ['**', '!packages/@MNI/task-runner-python/**'];
 		assert.equal(evaluateFilter(files, patterns), true);
 	});
 
@@ -178,9 +178,9 @@ describe('evaluateFilter', () => {
 
 	it('list-style parsed db filter matches db package changes', () => {
 		const filters = parseFilters(`db:
-  - packages/@n8n/db/**
+  - packages/@MNI/db/**
   - packages/cli/**`);
-		assert.equal(evaluateFilter(['packages/@n8n/db/src/index.ts'], filters.get('db') ?? []), true);
+		assert.equal(evaluateFilter(['packages/@MNI/db/src/index.ts'], filters.get('db') ?? []), true);
 	});
 
 	it('non-.github files with workflows filter returns false', () => {
@@ -194,11 +194,11 @@ describe('evaluateFilter', () => {
 	});
 
 	it('last matching pattern wins (gitignore semantics)', () => {
-		const files = ['packages/@n8n/task-runner-python/src/main.py'];
+		const files = ['packages/@MNI/task-runner-python/src/main.py'];
 		const patterns = [
 			'**',
-			'!packages/@n8n/task-runner-python/**',
-			'packages/@n8n/task-runner-python/**',
+			'!packages/@MNI/task-runner-python/**',
+			'packages/@MNI/task-runner-python/**',
 		];
 		assert.equal(evaluateFilter(files, patterns), true);
 	});
@@ -235,7 +235,7 @@ describe('formatChangedFilesOutput', () => {
 describe('runtime filter', () => {
 	const runtimePatterns = [
 		'**',
-		'!packages/@n8n/task-runner-python/**',
+		'!packages/@MNI/task-runner-python/**',
 		'!.github/**',
 		'!**/*.md',
 		'!**/LICENSE',
@@ -243,7 +243,7 @@ describe('runtime filter', () => {
 		'!**/*.test.ts',
 		'!**/*.spec.ts',
 		'!packages/testing/playwright/**',
-		'!packages/frontend/@n8n/storybook/**',
+		'!packages/frontend/@MNI/storybook/**',
 		'!scripts/agent-setup.mjs',
 		'!scripts/backend-module/**',
 		'!scripts/licenses/**',
@@ -272,7 +272,7 @@ describe('runtime filter', () => {
 
 	it('does not trigger on storybook files', () => {
 		assert.equal(
-			evaluateFilter(['packages/frontend/@n8n/storybook/preview.ts'], runtimePatterns),
+			evaluateFilter(['packages/frontend/@MNI/storybook/preview.ts'], runtimePatterns),
 			false,
 		);
 	});
@@ -290,7 +290,7 @@ describe('runtime filter', () => {
 
 	it('does not trigger on task-runner-python changes', () => {
 		assert.equal(
-			evaluateFilter(['packages/@n8n/task-runner-python/src/main.py'], runtimePatterns),
+			evaluateFilter(['packages/@MNI/task-runner-python/src/main.py'], runtimePatterns),
 			false,
 		);
 	});
@@ -312,9 +312,9 @@ describe('runtime filter', () => {
 	});
 
 	it('still triggers on build/release-relevant scripts', () => {
-		assert.equal(evaluateFilter(['scripts/build-n8n.mjs'], runtimePatterns), true);
-		assert.equal(evaluateFilter(['scripts/dockerize-n8n.mjs'], runtimePatterns), true);
-		assert.equal(evaluateFilter(['scripts/smoke-n8n-image.mjs'], runtimePatterns), true);
+		assert.equal(evaluateFilter(['scripts/build-MNI.mjs'], runtimePatterns), true);
+		assert.equal(evaluateFilter(['scripts/dockerize-MNI.mjs'], runtimePatterns), true);
+		assert.equal(evaluateFilter(['scripts/smoke-MNI-image.mjs'], runtimePatterns), true);
 	});
 });
 

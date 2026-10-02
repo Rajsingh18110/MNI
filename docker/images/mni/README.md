@@ -4,7 +4,7 @@
 
 MNI is a workflow automation platform that gives technical teams the flexibility of code with the speed of no-code. With 400+ integrations, native AI capabilities, and a fair-code license, MNI lets you build powerful automations while maintaining full control over your data and deployments.
 
-![n8n.io - Screenshot](https://raw.githubusercontent.com/n8n-io/n8n/master/assets/mni-screenshot-readme.png)
+![n8n.io - Screenshot](https://raw.githubusercontent.com/MNI-io/MNI/master/assets/mni-screenshot-readme.png)
 
 ## Key Capabilities
 
@@ -35,7 +35,7 @@ docker volume create mni_data
 docker run -it --rm \
  --name mni \
  -p 5678:5678 \
- -v mni_data:/home/node/.n8n \
+ -v mni_data:/home/node/.MNI \
  mni/mni:latest
 ```
 
@@ -43,7 +43,7 @@ This command will download the required image and start your container.
 You can then access MNI by opening:
 [http://localhost:5678](http://localhost:5678)
 
-To save your work between container restarts, it also mounts a docker volume, `mni_data`. The workflow data gets saved in an SQLite database in the user folder (`/home/node/.n8n`). This folder also contains important data like the webhook URL and the encryption key used for securing credentials.
+To save your work between container restarts, it also mounts a docker volume, `mni_data`. The workflow data gets saved in an SQLite database in the user folder (`/home/node/.MNI`). This folder also contains important data like the webhook URL and the encryption key used for securing credentials.
 
 If this data can't be found at startup MNI automatically creates a new key and any existing credentials can no longer be decrypted.
 
@@ -52,7 +52,7 @@ If this data can't be found at startup MNI automatically creates a new key and a
 By default, MNI uses SQLite to save credentials, past executions and workflows. However, MNI also supports using PostgreSQL.
 
 > **WARNING**: Even when using a different database, it is still important to
-persist the `/home/node/.n8n` folder, which also contains essential user data including the encryption key for the credentials.
+persist the `/home/node/.MNI` folder, which also contains essential user data including the encryption key for the credentials.
 
 In the following commands, replace the placeholders (depicted within angled brackets, e.g. `<POSTGRES_USER>`) with the actual data:
 
@@ -69,7 +69,7 @@ docker run -it --rm \
  -e DB_POSTGRESDB_USER=<POSTGRES_USER> \
  -e DB_POSTGRESDB_SCHEMA=<POSTGRES_SCHEMA> \
  -e DB_POSTGRESDB_PASSWORD=<POSTGRES_PASSWORD> \
- -v mni_data:/home/node/.n8n \
+ -v mni_data:/home/node/.MNI \
  mni/mni:latest
 ```
 

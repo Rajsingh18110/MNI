@@ -1,10 +1,10 @@
-import { isRecord } from '@n8n/utils/is-record';
+import { isRecord } from '@MNI/utils/is-record';
 import {
 	type IDataObject,
 	type INodeProperties,
 	type IExecuteFunctions,
 	NodeOperationError,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { updateDisplayOptions } from '@utils/utilities';
 

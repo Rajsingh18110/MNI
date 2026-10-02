@@ -1,6 +1,6 @@
-import type { Logger } from '@n8n/backend-common';
-import { UnrecognizedCredentialTypeError, UnrecognizedNodeTypeError } from 'n8n-core';
-import type { INodeType, INodeTypeDescription, NodeLoader } from 'n8n-workflow';
+import type { Logger } from '@MNI/backend-common';
+import { UnrecognizedCredentialTypeError, UnrecognizedNodeTypeError } from 'MNI-core';
+import type { INodeType, INodeTypeDescription, NodeLoader } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import type { LoadNodesAndCredentials } from '@/load-nodes-and-credentials';
@@ -157,8 +157,8 @@ describe('McpRegistryNodeLoader', () => {
 				(baseNode as typeof baseNode & { setRegistryRuntime: ReturnType<typeof vi.fn> })
 					.setRegistryRuntime,
 			).toHaveBeenCalledOnce();
-			expect(loader.getConnection('@n8n/mcp-registry.notion')).toMatchObject({
-				nodeTypeName: '@n8n/mcp-registry.notion',
+			expect(loader.getConnection('@MNI/mcp-registry.notion')).toMatchObject({
+				nodeTypeName: '@MNI/mcp-registry.notion',
 				endpointUrl: 'https://mcp.notion.com/mcp',
 				endpointHostname: 'mcp.notion.com',
 				transport: 'httpStreamable',
@@ -324,7 +324,7 @@ describe('McpRegistryNodeLoader', () => {
 			const runtime = setRegistryRuntime.mock.calls[0][0] as {
 				resolveConnection: (nodeTypeName: string, selector?: string) => unknown;
 			};
-			expect(runtime.resolveConnection('@n8n/mcp-registry.gitHub', 'oAuth2')).toMatchObject({
+			expect(runtime.resolveConnection('@MNI/mcp-registry.gitHub', 'oAuth2')).toMatchObject({
 				binding: { credentialType: 'githubOAuth2Api', selector: 'oAuth2' },
 				connection: {
 					endpointUrl: 'https://api.githubcopilot.com/mcp/',
@@ -406,7 +406,7 @@ describe('McpRegistryNodeLoader', () => {
 			loader.setServers([databricksGenieTemplatedMockServer]);
 			await loader.loadAll();
 
-			const connection = loader.getConnection('@n8n/mcp-registry.databricksGenie');
+			const connection = loader.getConnection('@MNI/mcp-registry.databricksGenie');
 			const result = getRegisteredPrepareConnection(baseNode)({
 				connection,
 				credentialType: 'databricksGenieMcpOAuth2Api',
@@ -419,7 +419,7 @@ describe('McpRegistryNodeLoader', () => {
 			expect(result).toMatchObject({
 				ok: true,
 				value: {
-					headers: { Authorization: 'Bearer token', 'User-Agent': 'n8n_DatabricksNode' },
+					headers: { Authorization: 'Bearer token', 'User-Agent': 'MNI_DatabricksNode' },
 				},
 			});
 		});
@@ -430,7 +430,7 @@ describe('McpRegistryNodeLoader', () => {
 			loader.setServers([notionMockServer]);
 			await loader.loadAll();
 
-			const connection = loader.getConnection('@n8n/mcp-registry.notion');
+			const connection = loader.getConnection('@MNI/mcp-registry.notion');
 			const result = getRegisteredPrepareConnection(baseNode)({
 				connection,
 				credentialType: 'notionMcpOAuth2Api',
@@ -506,7 +506,7 @@ describe('McpRegistryNodeLoader', () => {
 			expect(loader.types.credentials).toEqual([]);
 			expect(loader.known.nodes).toEqual({});
 			expect(loader.known.credentials).toEqual({});
-			expect(loader.getConnection('@n8n/mcp-registry.notion')).toBeUndefined();
+			expect(loader.getConnection('@MNI/mcp-registry.notion')).toBeUndefined();
 			expect(() => loader.getNode('notion')).toThrow(UnrecognizedNodeTypeError);
 			expect(() => loader.getCredential('notionMcpOAuth2Api')).toThrow(
 				UnrecognizedCredentialTypeError,

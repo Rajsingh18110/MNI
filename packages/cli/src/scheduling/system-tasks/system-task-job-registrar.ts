@@ -1,12 +1,12 @@
-import { Logger } from '@n8n/backend-common';
-import { GlobalConfig } from '@n8n/config';
-import type { ScheduledJob } from '@n8n/db';
-import { ScheduledJobRepository } from '@n8n/db';
-import type { SystemTask } from '@n8n/decorators';
-import { resolveSystemTaskRunOptions, resolveSystemTaskSchedule } from '@n8n/decorators';
-import { Service } from '@n8n/di';
-import { computeFirstRunAt, scheduleFromDefinition } from '@n8n/scheduler';
-import { ErrorReporter } from 'n8n-core';
+import { Logger } from '@MNI/backend-common';
+import { GlobalConfig } from '@MNI/config';
+import type { ScheduledJob } from '@MNI/db';
+import { ScheduledJobRepository } from '@MNI/db';
+import type { SystemTask } from '@MNI/decorators';
+import { resolveSystemTaskRunOptions, resolveSystemTaskSchedule } from '@MNI/decorators';
+import { Service } from '@MNI/di';
+import { computeFirstRunAt, scheduleFromDefinition } from '@MNI/scheduler';
+import { ErrorReporter } from 'MNI-core';
 
 import { EventService } from '@/events/event.service';
 

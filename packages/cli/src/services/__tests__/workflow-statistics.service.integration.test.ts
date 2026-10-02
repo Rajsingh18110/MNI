@@ -5,17 +5,17 @@ import {
 	createWorkflow,
 	testDb,
 	mockInstance,
-} from '@n8n/backend-test-utils';
-import { DatabaseConfig, GlobalConfig } from '@n8n/config';
-import type { IWorkflowDb, Project, WorkflowEntity, WorkflowRepository, User } from '@n8n/db';
-import { SettingsRepository, StatisticsNames, WorkflowStatisticsRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
+} from '@MNI/backend-test-utils';
+import { DatabaseConfig, GlobalConfig } from '@MNI/config';
+import type { IWorkflowDb, Project, WorkflowEntity, WorkflowRepository, User } from '@MNI/db';
+import { SettingsRepository, StatisticsNames, WorkflowStatisticsRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
 import {
 	QueryFailedError,
 	DataSource,
 	type EntityManager,
 	type EntityMetadata,
-} from '@n8n/typeorm';
+} from '@MNI/typeorm';
 
 import { mock } from 'vitest-mock-extended';
 import {
@@ -25,7 +25,7 @@ import {
 	type IRun,
 	type WorkflowExecuteMode,
 	type WorkflowExecutionSource,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { EventService } from '@/events/event.service';
 import { INSTANCE_ACTIVATED_SETTINGS_KEY } from '@/services/instance-activation.service';
@@ -583,7 +583,7 @@ describe('WorkflowStatisticsService', () => {
 			);
 		});
 
-		test('does not emit instance-first-production-workflow-failed for waiting status (N8N-9680)', async () => {
+		test('does not emit instance-first-production-workflow-failed for waiting status (MNI-9680)', async () => {
 			// ARRANGE - simulates the bug scenario where a workflow enters wait state
 			const runData: IRun = {
 				finished: false,
@@ -1002,7 +1002,7 @@ describe('WorkflowStatisticsService', () => {
 				databaseConfig,
 			);
 			globalConfig.diagnostics.enabled = true;
-			globalConfig.deployment.type = 'n8n-testing';
+			globalConfig.deployment.type = 'MNI-testing';
 			vi.mocked(ownershipService.getWorkflowProjectCached).mockResolvedValue(project);
 			vi.mocked(ownershipService.getPersonalProjectOwnerCached).mockResolvedValue(user);
 		});
@@ -1054,7 +1054,7 @@ describe('WorkflowStatisticsService', () => {
 		test('should emit event with no `userId` if workflow is owned by team project', async () => {
 			const workflowId = '123';
 			vi.mocked(ownershipService.getPersonalProjectOwnerCached).mockResolvedValueOnce(null);
-			const node = mock<INode>({ id: '123', type: 'n8n-nodes-base.noOp', credentials: {} });
+			const node = mock<INode>({ id: '123', type: 'MNI-nodes-base.noOp', credentials: {} });
 
 			await workflowStatisticsService.nodeFetchedData(workflowId, node);
 

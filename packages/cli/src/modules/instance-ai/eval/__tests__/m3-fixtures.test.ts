@@ -1,4 +1,4 @@
-import type { EvalLlmMockHandler, EvalMockHttpResponse } from 'n8n-core';
+import type { EvalLlmMockHandler, EvalMockHttpResponse } from 'MNI-core';
 import type {
 	ICredentialDataDecryptedObject,
 	ICredentialsHelper,
@@ -7,7 +7,7 @@ import type {
 	INode,
 	INodeCredentialsDetails,
 	IWorkflowExecuteAdditionalData,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { EvalMockedCredentialsHelper } from '../eval-mocked-credentials-helper';
 import { type InterceptedTurn, LlmWireServer } from '../llm-wire-server';
@@ -39,7 +39,7 @@ describe('M3 fixtures — Agent + Chat Model + HTTP tool + MemoryBufferWindow', 
 	const llmSubNode: INode = {
 		id: 'sub-1',
 		name: 'OpenAI Chat Model',
-		type: '@n8n/n8n-nodes-langchain.lmChatOpenAi',
+		type: '@MNI/MNI-nodes-langchain.lmChatOpenAi',
 		typeVersion: 1,
 		position: [0, 0],
 		parameters: { model: 'gpt-4o-mini' },
@@ -47,7 +47,7 @@ describe('M3 fixtures — Agent + Chat Model + HTTP tool + MemoryBufferWindow', 
 	const toolNode: INode = {
 		id: 'tool-1',
 		name: 'Get Order Status Tool',
-		type: 'n8n-nodes-base.httpRequestTool',
+		type: 'MNI-nodes-base.httpRequestTool',
 		typeVersion: 1,
 		position: [200, 0],
 		parameters: { url: 'https://orders.example.com/v1/orders/{{ $fromAI("orderId") }}' },

@@ -1,6 +1,6 @@
 import type { MockProxy } from 'vitest-mock-extended';
 import { mock } from 'vitest-mock-extended';
-import type { IExecuteFunctions, IBinaryData } from 'n8n-workflow';
+import type { IExecuteFunctions, IBinaryData } from 'MNI-workflow';
 
 import * as genericFunctions from '../../GenericFunctions';
 import { MicrosoftOneDrive } from '../../MicrosoftOneDrive.node';
@@ -24,7 +24,7 @@ describe('Test MicrosoftOneDrive, file > upload', () => {
 	const mockNode = {
 		id: 'test-node-id',
 		name: 'Microsoft OneDrive Test',
-		type: 'n8n-nodes-base.microsoftOneDrive',
+		type: 'MNI-nodes-base.microsoftOneDrive',
 		typeVersion: 1.1,
 		position: [0, 0] as [number, number],
 		parameters: {},

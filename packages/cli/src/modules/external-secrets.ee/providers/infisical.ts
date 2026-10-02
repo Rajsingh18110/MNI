@@ -1,13 +1,13 @@
-import { Logger } from '@n8n/backend-common';
+import { Logger } from '@MNI/backend-common';
 import {
 	type HttpRequestClient,
 	httpStatusFromError,
 	isConnectionRefusedError,
 	OutboundHttp,
-} from '@n8n/backend-network';
-import { Time } from '@n8n/constants';
-import { Container } from '@n8n/di';
-import { type INodeProperties, UnexpectedError } from 'n8n-workflow';
+} from '@MNI/backend-network';
+import { Time } from '@MNI/constants';
+import { Container } from '@MNI/di';
+import { type INodeProperties, UnexpectedError } from 'MNI-workflow';
 
 import { DOCS_HELP_NOTICE } from '../constants';
 import { ExternalSecretsConfig } from '../external-secrets.config';

@@ -1,13 +1,13 @@
 import { CredentialsHelper } from '@nodes-testing/credentials-helper';
 import { NodeTestHarness } from '@nodes-testing/node-test-harness';
-import { convertN8nRequestToAxios } from '@n8n/backend-network/testing';
+import { convertN8nRequestToAxios } from '@MNI/backend-network/testing';
 import type {
 	IExecuteSingleFunctions,
 	ILoadOptionsFunctions,
 	IN8nHttpFullResponse,
 	WorkflowTestData,
-} from 'n8n-workflow';
-import { NodeConnectionTypes } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeConnectionTypes } from 'MNI-workflow';
 import nock from 'nock';
 import type { MockInstance } from 'vitest';
 
@@ -42,7 +42,7 @@ describe('Microsoft Entra Node', () => {
 						nodes: [
 							{
 								parameters: {},
-								type: 'n8n-nodes-base.manualTrigger',
+								type: 'MNI-nodes-base.manualTrigger',
 								typeVersion: 1,
 								position: [0, 0],
 								id: '1307e408-a8a5-464e-b858-494953e2f43b',
@@ -61,7 +61,7 @@ describe('Microsoft Entra Node', () => {
 									output: 'raw',
 									requestOptions: {},
 								},
-								type: 'n8n-nodes-base.microsoftEntra',
+								type: 'MNI-nodes-base.microsoftEntra',
 								typeVersion: 1,
 								position: [220, 0],
 								id: '3429f7f2-dfca-4b72-8913-43a582e96e66',
@@ -434,7 +434,7 @@ describe('Microsoft Entra Node', () => {
 						nodes: [
 							{
 								parameters: {},
-								type: 'n8n-nodes-base.manualTrigger',
+								type: 'MNI-nodes-base.manualTrigger',
 								typeVersion: 1,
 								position: [0, 0],
 								id: '1307e408-a8a5-464e-b858-494953e2f43b',
@@ -450,7 +450,7 @@ describe('Microsoft Entra Node', () => {
 									output: 'simple',
 									requestOptions: {},
 								},
-								type: 'n8n-nodes-base.microsoftEntra',
+								type: 'MNI-nodes-base.microsoftEntra',
 								typeVersion: 1,
 								position: [220, 0],
 								id: '3429f7f2-dfca-4b72-8913-43a582e96e66',

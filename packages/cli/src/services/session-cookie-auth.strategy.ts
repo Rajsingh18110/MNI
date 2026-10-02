@@ -1,6 +1,6 @@
-import type { AuthenticatedRequest, TokenGrant, User } from '@n8n/db';
-import { Service } from '@n8n/di';
-import { getApiKeyScopesForRole } from '@n8n/permissions';
+import type { AuthenticatedRequest, TokenGrant, User } from '@MNI/db';
+import { Service } from '@MNI/di';
+import { getApiKeyScopesForRole } from '@MNI/permissions';
 import { JsonWebTokenError, TokenExpiredError } from 'jsonwebtoken';
 
 import { AuthService } from '@/auth/auth.service';
@@ -10,7 +10,7 @@ import { AuthError } from '@/errors/response-errors/auth.error';
 import type { AuthStrategy, AuthStrategyOptions } from './auth-strategy.types';
 
 /**
- * Lets the public API accept the browser's `n8n-auth` session cookie as an
+ * Lets the public API accept the browser's `MNI-auth` session cookie as an
  * alternative to an API key.
  */
 @Service()

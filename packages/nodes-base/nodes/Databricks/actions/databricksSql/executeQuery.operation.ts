@@ -1,7 +1,7 @@
-import { NodeOperationError } from 'n8n-workflow';
-import type { IDataObject, IExecuteFunctions, INodeExecutionData } from 'n8n-workflow';
+import { NodeOperationError } from 'MNI-workflow';
+import type { IDataObject, IExecuteFunctions, INodeExecutionData } from 'MNI-workflow';
 
-import { sleep } from '@n8n/utils/sleep';
+import { sleep } from '@MNI/utils/sleep';
 import {
 	databricksApiRequest,
 	extractResourceLocatorValue,

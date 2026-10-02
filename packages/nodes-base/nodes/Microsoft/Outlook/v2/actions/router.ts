@@ -1,5 +1,5 @@
-import type { IExecuteFunctions, INodeExecutionData, JsonObject } from 'n8n-workflow';
-import { NodeOperationError, SEND_AND_WAIT_OPERATION } from 'n8n-workflow';
+import type { IExecuteFunctions, INodeExecutionData, JsonObject } from 'MNI-workflow';
+import { NodeOperationError, SEND_AND_WAIT_OPERATION } from 'MNI-workflow';
 
 import * as calendar from './calendar';
 import * as contact from './contact';

@@ -1,4 +1,4 @@
-import type { AgentJsonConfig, AgentJsonWorkflowToolConfig } from '@n8n/api-types';
+import type { AgentJsonConfig, AgentJsonWorkflowToolConfig } from '@MNI/api-types';
 
 /**
  * Every workflow reference in an agent config. Only workflow tools carry one

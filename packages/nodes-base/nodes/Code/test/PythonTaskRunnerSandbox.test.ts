@@ -1,7 +1,7 @@
 import { mock } from 'vitest-mock-extended';
-import type { IExecuteFunctions } from 'n8n-workflow';
-import { createResultOk, createResultError } from '@n8n/utils/result';
-import { NodeOperationError } from 'n8n-workflow';
+import type { IExecuteFunctions } from 'MNI-workflow';
+import { createResultOk, createResultError } from '@MNI/utils/result';
+import { NodeOperationError } from 'MNI-workflow';
 
 import { PythonTaskRunnerSandbox } from '../PythonTaskRunnerSandbox';
 
@@ -25,7 +25,7 @@ const createMockExecuteFunctions = (inputData: any[] = []) => {
 	executeFunctions.getNode.mockReturnValue({
 		id: 'node-id',
 		name: 'Code',
-		type: 'n8n-nodes-base.code',
+		type: 'MNI-nodes-base.code',
 		typeVersion: 1,
 		position: [0, 0],
 		parameters: {},

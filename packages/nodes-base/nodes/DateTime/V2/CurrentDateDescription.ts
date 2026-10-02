@@ -1,4 +1,4 @@
-import type { INodeProperties } from 'n8n-workflow';
+import type { INodeProperties } from 'MNI-workflow';
 
 import { includeInputFields } from './common.descriptions';
 
@@ -20,7 +20,7 @@ export const CurrentDateDescription: INodeProperties[] = [
 		name: 'includeTime',
 		type: 'boolean',
 		default: true,
-		// eslint-disable-next-line n8n-nodes-base/node-param-description-boolean-without-whether
+		// eslint-disable-next-line MNI-nodes-base/node-param-description-boolean-without-whether
 		description: 'When deactivated, the time will be set to midnight',
 		displayOptions: {
 			show: {

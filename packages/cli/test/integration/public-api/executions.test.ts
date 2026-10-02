@@ -6,11 +6,11 @@ import {
 	mockInstance,
 	shareWorkflowWithUsers,
 	testDb,
-} from '@n8n/backend-test-utils';
-import type { ExecutionEntity, IExecutionResponse, User } from '@n8n/db';
-import { Container } from '@n8n/di';
-import { InstanceSettings } from 'n8n-core';
-import { type ExecutionStatus } from 'n8n-workflow';
+} from '@MNI/backend-test-utils';
+import type { ExecutionEntity, IExecutionResponse, User } from '@MNI/db';
+import { Container } from '@MNI/di';
+import { InstanceSettings } from 'MNI-core';
+import { type ExecutionStatus } from 'MNI-workflow';
 import type { MockInstance } from 'vitest';
 
 import { ActiveExecutions } from '@/active-executions';
@@ -46,8 +46,8 @@ mockInstance(Telemetry);
 mockInstance(CommunityPackagesService);
 mockInstance(InstanceSettings, {
 	isMultiMain: false,
-	n8nFolder: '/tmp/n8n-test',
-	nodesDownloadDir: '/tmp/n8n-test/nodes',
+	n8nFolder: '/tmp/MNI-test',
+	nodesDownloadDir: '/tmp/MNI-test/nodes',
 });
 
 const testServer = utils.setupTestServer({ endpointGroups: ['publicApi'] });
@@ -88,7 +88,7 @@ afterEach(async () => {
 
 const testWithAPIKey =
 	(method: 'get' | 'post' | 'put' | 'delete', url: string, apiKey: string | null) => async () => {
-		void authOwnerAgent.set({ 'X-N8N-API-KEY': apiKey });
+		void authOwnerAgent.set({ 'X-MNI-API-KEY': apiKey });
 		const response = await authOwnerAgent[method](url);
 		expect(response.statusCode).toBe(401);
 	};

@@ -1,4 +1,4 @@
-import type { Settings, SettingsRepository } from '@n8n/db';
+import type { Settings, SettingsRepository } from '@MNI/db';
 import { mock } from 'vitest-mock-extended';
 
 import { ChatHubDeprecatedRule } from '../chat-hub-deprecated.rule';
@@ -43,7 +43,7 @@ describe('ChatHubDeprecatedRule', () => {
 			expect(result.instanceIssues).toHaveLength(1);
 			expect(result.instanceIssues[0].level).toBe('warning');
 			expect(result.recommendations).toHaveLength(1);
-			expect(result.recommendations[0].description).toContain('N8N_ENABLED_MODULES');
+			expect(result.recommendations[0].description).toContain('MNI_ENABLED_MODULES');
 		});
 	});
 });

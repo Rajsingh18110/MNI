@@ -3,7 +3,7 @@
 	"nodes": [
 		{
 			"parameters": {},
-			"type": "n8n-nodes-base.manualTrigger",
+			"type": "MNI-nodes-base.manualTrigger",
 			"typeVersion": 1,
 			"position": [-240, 100],
 			"id": "e3a94904-ddfa-4fe8-bac2-e2c796c677a3",
@@ -14,7 +14,7 @@
 				"resource": "search",
 				"query": "SELECT id, name, type FROM Account"
 			},
-			"type": "n8n-nodes-base.salesforce",
+			"type": "MNI-nodes-base.salesforce",
 			"typeVersion": 1,
 			"position": [-20, 100],
 			"id": "0fcf65ac-c9a3-48b5-9c39-599216208b62",
@@ -28,7 +28,7 @@
 		},
 		{
 			"parameters": {},
-			"type": "n8n-nodes-base.noOp",
+			"type": "MNI-nodes-base.noOp",
 			"typeVersion": 1,
 			"position": [200, 100],
 			"id": "8319a07f-465f-4456-b6b0-012aa36ce08b",

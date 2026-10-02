@@ -3,8 +3,8 @@ import { createTestingPinia } from '@pinia/testing';
 import { setActivePinia } from 'pinia';
 import { ref, shallowRef } from 'vue';
 import { fireEvent, waitFor } from '@testing-library/vue';
-import { createRunExecutionData, type INodeTypeDescription, type IRunData } from 'n8n-workflow';
-import type { NodeTypeAvailabilityScope } from '@n8n/api-types';
+import { createRunExecutionData, type INodeTypeDescription, type IRunData } from 'MNI-workflow';
+import type { NodeTypeAvailabilityScope } from '@MNI/api-types';
 
 import { createTestNode, createTestWorkflow, mockRestrictedNodeTypes } from '@/__tests__/mocks';
 import { createComponentRenderer } from '@/__tests__/render';
@@ -16,7 +16,7 @@ import type { UseNdvAgentConfigReturn } from '@/features/ndv/agents/composables/
 import { ndvEventBus } from '@/features/ndv/shared/ndv.eventBus';
 import { useNDVStore } from '@/features/ndv/shared/ndv.store';
 import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { useWorkflowsStore } from '@/app/stores/workflows.store';
 import {
 	createWorkflowDocumentId,
@@ -47,13 +47,13 @@ vi.mock('@/app/composables/useWorkflowId', async () => {
 
 const httpNode = createTestNode({
 	name: 'HTTP Request',
-	type: 'n8n-nodes-base.httpRequest',
+	type: 'MNI-nodes-base.httpRequest',
 	typeVersion: 4,
 });
 
 const httpNodeType = {
 	displayName: 'HTTP Request',
-	name: 'n8n-nodes-base.httpRequest',
+	name: 'MNI-nodes-base.httpRequest',
 	group: ['transform'],
 	description: 'Make HTTP requests',
 	version: 4,

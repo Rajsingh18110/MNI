@@ -4,22 +4,22 @@ import {
 	COMMUNITY_PACKAGE_CONFIRM_MODAL_KEY,
 	COMMUNITY_PACKAGE_MANAGE_ACTIONS,
 } from '../communityNodes.constants';
-import { useToast } from '@n8n/composables/useToast';
+import { useToast } from '@MNI/composables/useToast';
 import { useCommunityNodesStore } from '../communityNodes.store';
 import { findVettedCommunityNodeAttributes, isNodesApiVersionError } from '../communityNodes.utils';
-import { createEventBus } from '@n8n/utils/event-bus';
-import { useI18n } from '@n8n/i18n';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
+import { createEventBus } from '@MNI/utils/event-bus';
+import { useI18n } from '@MNI/i18n';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
 import { computed, onMounted, ref } from 'vue';
 import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';
-import type { CommunityNodeType } from '@n8n/api-types';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import type { CommunityNodeType } from '@MNI/api-types';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import semver from 'semver';
 import { useUIStore } from '@/app/stores/ui.store';
 import { useWorkflowsListStore } from '@/app/stores/workflowsList.store';
 import type { WorkflowResource } from '@/Interface';
 
-import { N8nButton, N8nNotice, N8nText } from '@n8n/design-system';
+import { N8nButton, N8nNotice, N8nText } from '@MNI/design-system';
 import NodesInWorkflowTable from './NodesInWorkflowTable.vue';
 
 export type CommunityPackageManageMode = 'uninstall' | 'update' | 'view-documentation';

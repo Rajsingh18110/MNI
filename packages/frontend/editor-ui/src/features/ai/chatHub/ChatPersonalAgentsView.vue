@@ -1,24 +1,24 @@
 <script setup lang="ts">
 import { useChatStore } from '@/features/ai/chatHub/chat.store';
-import { useToast } from '@n8n/composables/useToast';
+import { useToast } from '@MNI/composables/useToast';
 import { useMessage } from '@/app/composables/useMessage';
 import { MODAL_CONFIRM } from '@/app/constants';
-import { N8nButton, N8nText } from '@n8n/design-system';
+import { N8nButton, N8nText } from '@MNI/design-system';
 import { computed, ref, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { useUIStore } from '@/app/stores/ui.store';
 import ChatAgentCard from '@/features/ai/chatHub/components/ChatAgentCard.vue';
 import ChatAgentSearchSort from '@/features/ai/chatHub/components/ChatAgentSearchSort.vue';
 import { useChatCredentials } from '@/features/ai/chatHub/composables/useChatCredentials';
-import { useUsersStore } from '@n8n/stores/users.store';
-import { type ChatHubConversationModel } from '@n8n/api-types';
+import { useUsersStore } from '@MNI/stores/users.store';
+import { type ChatHubConversationModel } from '@MNI/api-types';
 import { filterAndSortAgents, stringifyModel } from '@/features/ai/chatHub/chat.utils';
 import type { ChatAgentFilter } from '@/features/ai/chatHub/chat.types';
 import { useMediaQuery } from '@vueuse/core';
 import { AGENT_EDITOR_MODAL_KEY, MOBILE_MEDIA_QUERY } from '@/features/ai/chatHub/constants';
 import ChatLayout from '@/features/ai/chatHub/components/ChatLayout.vue';
 import SkeletonAgentCard from '@/features/ai/chatHub/components/SkeletonAgentCard.vue';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 
 const chatStore = useChatStore();
 const uiStore = useUIStore();

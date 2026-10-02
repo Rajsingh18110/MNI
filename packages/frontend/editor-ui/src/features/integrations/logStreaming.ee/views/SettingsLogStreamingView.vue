@@ -4,20 +4,20 @@ import { v4 as uuid } from 'uuid';
 import { hasPermission } from '@/app/utils/rbac/permissions';
 import { useCredentialsStore } from '@/features/credentials/credentials.store';
 import { useLogStreamingStore } from '../logStreaming.store';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { useUIStore } from '@/app/stores/ui.store';
 import { LOG_STREAM_MODAL_KEY, EnterpriseEditionFeature } from '@/app/constants';
-import type { MessageEventBusDestinationOptions } from 'n8n-workflow';
-import { deepCopy, defaultMessageEventBusDestinationOptions } from 'n8n-workflow';
+import type { MessageEventBusDestinationOptions } from 'MNI-workflow';
+import { deepCopy, defaultMessageEventBusDestinationOptions } from 'MNI-workflow';
 import EventDestinationCard from '../components/EventDestinationCard.vue';
-import { createEventBus } from '@n8n/utils/event-bus';
+import { createEventBus } from '@MNI/utils/event-bus';
 import { useDocumentTitle } from '@/app/composables/useDocumentTitle';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import { usePageRedirectionHelper } from '@/app/composables/usePageRedirectionHelper';
 import { injectWorkflowDocumentStore } from '@/app/stores/workflowDocument.store';
 
 import { ElCol, ElRow, ElSwitch } from 'element-plus';
-import { N8nEmptyState, N8nButton, N8nHeading, N8nInfoTip, N8nNotice } from '@n8n/design-system';
+import { N8nEmptyState, N8nButton, N8nHeading, N8nInfoTip, N8nNotice } from '@MNI/design-system';
 const environment = process.env.NODE_ENV;
 
 const settingsStore = useSettingsStore();
@@ -190,7 +190,7 @@ async function onEdit(destinationId?: string) {
 		<template v-if="isLicensed">
 			<div class="mb-l">
 				<N8nInfoTip theme="info" type="note">
-					<span v-n8n-html="i18n.baseText('settings.log-streaming.infoText')"></span>
+					<span v-MNI-html="i18n.baseText('settings.log-streaming.infoText')"></span>
 				</N8nInfoTip>
 			</div>
 			<N8nNotice
@@ -228,7 +228,7 @@ async function onEdit(destinationId?: string) {
 					@click:button="addDestination"
 				>
 					<template #heading>
-						<span v-n8n-html="i18n.baseText(`settings.log-streaming.addFirstTitle`)" />
+						<span v-MNI-html="i18n.baseText(`settings.log-streaming.addFirstTitle`)" />
 					</template>
 				</N8nEmptyState>
 			</div>
@@ -236,7 +236,7 @@ async function onEdit(destinationId?: string) {
 		<template v-else>
 			<div v-if="i18n.baseText('settings.log-streaming.infoText')" class="mb-l">
 				<N8nInfoTip theme="info" type="note">
-					<span v-n8n-html="i18n.baseText('settings.log-streaming.infoText')"></span>
+					<span v-MNI-html="i18n.baseText('settings.log-streaming.infoText')"></span>
 				</N8nInfoTip>
 			</div>
 			<div data-test-id="action-box-unlicensed">
@@ -246,7 +246,7 @@ async function onEdit(destinationId?: string) {
 					@click:button="goToUpgrade"
 				>
 					<template #heading>
-						<span v-n8n-html="i18n.baseText('settings.log-streaming.actionBox.title')" />
+						<span v-MNI-html="i18n.baseText('settings.log-streaming.actionBox.title')" />
 					</template>
 				</N8nEmptyState>
 			</div>

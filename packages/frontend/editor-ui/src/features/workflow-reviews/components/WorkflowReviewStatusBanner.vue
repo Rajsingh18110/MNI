@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import type { WorkflowReviewRequestForWorkflow } from '@n8n/api-types';
-import { N8nButton, N8nHeading, N8nPopover, N8nText, N8nTooltip } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+import type { WorkflowReviewRequestForWorkflow } from '@MNI/api-types';
+import { N8nButton, N8nHeading, N8nPopover, N8nText, N8nTooltip } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 import { computed, ref } from 'vue';
 
 import { getVersionLabel } from '@/features/workflows/workflowHistory/utils';
@@ -216,7 +216,7 @@ const onSubmitChanges = () => {
 </template>
 
 <style lang="scss" module>
-@use '@n8n/design-system/css/mixins/focus';
+@use '@MNI/design-system/css/mixins/focus';
 
 .pill {
 	display: inline-flex;

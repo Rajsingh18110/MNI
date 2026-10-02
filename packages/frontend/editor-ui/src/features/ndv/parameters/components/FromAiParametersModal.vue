@@ -1,15 +1,15 @@
 <script setup lang="ts">
 import Modal from '@/app/components/Modal.vue';
 import { useRunWorkflow } from '@/app/composables/useRunWorkflow';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
 import { FROM_AI_PARAMETERS_MODAL_KEY } from '@/app/constants';
 import { injectWorkflowDocumentStore } from '@/app/stores/workflowDocument.store';
 import { injectNDVStore } from '@/features/ndv/shared/ndv.store';
-import type { FormFieldValueUpdate } from '@n8n/design-system';
-import { N8nButton, N8nCallout, N8nFormInputs, N8nText } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
-import { useAgentRequestStore, type IAgentRequest } from '@n8n/stores/useAgentRequestStore';
-import { createEventBus } from '@n8n/utils/event-bus';
+import type { FormFieldValueUpdate } from '@MNI/design-system';
+import { N8nButton, N8nCallout, N8nFormInputs, N8nText } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
+import { useAgentRequestStore, type IAgentRequest } from '@MNI/stores/useAgentRequestStore';
+import { createEventBus } from '@MNI/utils/event-bus';
 import { ElCol, ElRow } from 'element-plus';
 import { computed, ref } from 'vue';
 import { useRouter } from 'vue-router';

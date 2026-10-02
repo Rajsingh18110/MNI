@@ -1,5 +1,5 @@
-import type { GetUserQueryDto, ListUsersQueryDto } from '@n8n/api-types';
-import type { AuthenticatedRequest, User } from '@n8n/db';
+import type { GetUserQueryDto, ListUsersQueryDto } from '@MNI/api-types';
+import type { AuthenticatedRequest, User } from '@MNI/db';
 import type { Response } from 'express';
 import { mock } from 'vitest-mock-extended';
 

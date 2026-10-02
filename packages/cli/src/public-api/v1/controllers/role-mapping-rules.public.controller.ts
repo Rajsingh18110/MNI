@@ -6,9 +6,9 @@ import {
 	RoleMappingRulePublicDto,
 	UpdateRoleMappingRulePublicDto,
 	roleMappingRuleIdParamSchema,
-} from '@n8n/api-types';
-import { LicenseState } from '@n8n/backend-common';
-import { AuthenticatedRequest } from '@n8n/db';
+} from '@MNI/api-types';
+import { LicenseState } from '@MNI/backend-common';
+import { AuthenticatedRequest } from '@MNI/db';
 import {
 	ApiDescription,
 	ApiErrorResponse,
@@ -24,7 +24,7 @@ import {
 	Post,
 	PublicApiController,
 	Query,
-} from '@n8n/decorators';
+} from '@MNI/decorators';
 import type { Response } from 'express';
 
 import { ForbiddenError } from '@/errors/response-errors/forbidden.error';

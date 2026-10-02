@@ -1,7 +1,7 @@
-import type { UpdateWorkflowHistoryVersionDto } from '@n8n/api-types';
-import { mockInstance } from '@n8n/backend-test-utils';
-import type { AuthenticatedRequest, User } from '@n8n/db';
-import { Container } from '@n8n/di';
+import type { UpdateWorkflowHistoryVersionDto } from '@MNI/api-types';
+import { mockInstance } from '@MNI/backend-test-utils';
+import type { AuthenticatedRequest, User } from '@MNI/db';
+import { Container } from '@MNI/di';
 import { mock } from 'vitest-mock-extended';
 
 import { NotFoundError } from '@/errors/response-errors/not-found.error';

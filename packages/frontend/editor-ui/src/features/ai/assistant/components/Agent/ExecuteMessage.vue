@@ -9,14 +9,14 @@ import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';
 import { useUIStore } from '@/app/stores/ui.store';
 
 import { useInjectWorkflowId } from '@/app/composables/useInjectWorkflowId';
-import { useI18n, type BaseTextKey } from '@n8n/i18n';
+import { useI18n, type BaseTextKey } from '@MNI/i18n';
 import { computed, onMounted, ref, watch } from 'vue';
 
 import NodeIssueItem from './NodeIssueItem.vue';
 import CredentialsSetupCard from './CredentialsSetupCard.vue';
 import BuilderSetupWizard from './BuilderSetupWizard.vue';
 import CanvasRunWorkflowButton from '@/features/workflows/canvas/components/elements/buttons/CanvasRunWorkflowButton.vue';
-import { N8nTooltip, N8nIcon, N8nButton } from '@n8n/design-system';
+import { N8nTooltip, N8nIcon, N8nButton } from '@MNI/design-system';
 import { useBuilderStore } from '@/features/ai/assistant/builder.store';
 import { useBuilderExecution } from '@/features/ai/assistant/composables/useBuilderExecution';
 import { SETUP_CREDENTIALS_MODAL_KEY } from '@/app/constants';

@@ -3,7 +3,7 @@ import { createTestingPinia } from '@pinia/testing';
 import { setActivePinia } from 'pinia';
 import { fireEvent, waitFor } from '@testing-library/vue';
 import userEvent from '@testing-library/user-event';
-import { CREDENTIAL_BLANKING_VALUE } from 'n8n-workflow';
+import { CREDENTIAL_BLANKING_VALUE } from 'MNI-workflow';
 import TemplatedAuthSimpleView from './TemplatedAuthSimpleView.vue';
 
 // ParameterInputExpanded transitively derives the workflow id from the route

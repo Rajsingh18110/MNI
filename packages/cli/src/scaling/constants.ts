@@ -1,4 +1,4 @@
-import { Time } from '@n8n/constants';
+import { Time } from '@MNI/constants';
 
 import type { PubSub } from './pubsub/pubsub.types';
 

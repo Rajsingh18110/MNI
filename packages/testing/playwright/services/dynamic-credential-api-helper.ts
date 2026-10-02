@@ -18,7 +18,7 @@ export interface WorkflowExecutionStatus {
 
 /**
  * Static endpoint auth token used in e2e tests.
- * Must match N8N_DYNAMIC_CREDENTIALS_ENDPOINT_AUTH_TOKEN in the 'dynamic-credentials' capability.
+ * Must match MNI_DYNAMIC_CREDENTIALS_ENDPOINT_AUTH_TOKEN in the 'dynamic-credentials' capability.
  */
 export const DYNAMIC_CRED_ENDPOINT_TOKEN = 'e2e-test-endpoint-token';
 
@@ -173,7 +173,7 @@ export class DynamicCredentialApiHelper {
 	 * POSTs to the `authorizationUrl` returned by the execution-status endpoint.
 	 *
 	 * The execution-status response includes a full `authorizationUrl` for each
-	 * missing credential (e.g. `https://n8n:5678/rest/credentials/:id/authorize?resolverId=...`).
+	 * missing credential (e.g. `https://MNI:5678/rest/credentials/:id/authorize?resolverId=...`).
 	 * This helper extracts the path+query from that URL and posts to it using the
 	 * api.request context, so that the session cookie is included automatically.
 	 *

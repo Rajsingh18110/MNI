@@ -1,12 +1,12 @@
-import type { PromotionConnectionScope } from '@n8n/api-types';
+import type { PromotionConnectionScope } from '@MNI/api-types';
 import {
 	BaseRepository,
 	isUniqueConstraintError,
 	type OperationContext,
 	TransactionRunner,
-} from '@n8n/db';
-import { Service } from '@n8n/di';
-import { DataSource, type FindOptionsWhere } from '@n8n/typeorm';
+} from '@MNI/db';
+import { Service } from '@MNI/di';
+import { DataSource, type FindOptionsWhere } from '@MNI/typeorm';
 
 import { PromotionConnection } from '../entities/promotion-connection.entity';
 import { PromotionConflictError } from '../promotion-conflict.error';

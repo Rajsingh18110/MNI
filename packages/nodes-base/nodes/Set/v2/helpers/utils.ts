@@ -10,7 +10,7 @@ import {
 	validateFieldType,
 	isBinaryValue,
 	BINARY_MODE_COMBINED,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import type {
 	AssignmentCollectionValue,
 	FieldType,
@@ -19,7 +19,7 @@ import type {
 	INode,
 	INodeExecutionData,
 	ISupplyDataFunctions,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import type { SetNodeOptions } from './interfaces';
 import { INCLUDE } from './interfaces';

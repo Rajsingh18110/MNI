@@ -3,8 +3,8 @@ import type {
 	INodeExecutionData,
 	INodeType,
 	INodeTypeDescription,
-} from 'n8n-workflow';
-import { assertParamIsNumber, NodeConnectionTypes, NodeOperationError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { assertParamIsNumber, NodeConnectionTypes, NodeOperationError } from 'MNI-workflow';
 
 export class TimeSaved implements INodeType {
 	description: INodeTypeDescription = {

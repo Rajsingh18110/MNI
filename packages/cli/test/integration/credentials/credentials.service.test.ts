@@ -3,9 +3,9 @@ import {
 	linkUserToProject,
 	randomCredentialPayload,
 	testDb,
-} from '@n8n/backend-test-utils';
-import type { CredentialsEntity, User } from '@n8n/db';
-import { Container } from '@n8n/di';
+} from '@MNI/backend-test-utils';
+import type { CredentialsEntity, User } from '@MNI/db';
+import { Container } from '@MNI/di';
 
 import { CredentialsFinderService } from '@/credentials/credentials-finder.service';
 import { CredentialsService } from '@/credentials/credentials.service';

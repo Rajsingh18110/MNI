@@ -1,7 +1,7 @@
-import type { InstanceAiThreadTabsState } from '@n8n/api-types';
-import { createTeamProject, testDb, testModules } from '@n8n/backend-test-utils';
-import { UserRepository, type Project, type User } from '@n8n/db';
-import { Container } from '@n8n/di';
+import type { InstanceAiThreadTabsState } from '@MNI/api-types';
+import { createTeamProject, testDb, testModules } from '@MNI/backend-test-utils';
+import { UserRepository, type Project, type User } from '@MNI/db';
+import { Container } from '@MNI/di';
 import { randomUUID } from 'node:crypto';
 
 import { InstanceAiThreadTabsRepository } from '@/modules/instance-ai/repositories/instance-ai-thread-tabs.repository';

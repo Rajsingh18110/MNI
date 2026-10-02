@@ -1,4 +1,4 @@
-import type { Logger } from '@n8n/backend-common';
+import type { Logger } from '@MNI/backend-common';
 import type { MockedFunction } from 'vitest';
 import { mock } from 'vitest-mock-extended';
 
@@ -23,12 +23,12 @@ describe('McpRegistryApiClient', () => {
 	let logger: Logger;
 	let credentialTypes: CredentialTypes;
 	const originalEnv = process.env.ENVIRONMENT;
-	const originalDevUrl = process.env.N8N_MCP_SERVERS_DEV_URL;
+	const originalDevUrl = process.env.MNI_MCP_SERVERS_DEV_URL;
 
 	beforeEach(() => {
 		vi.clearAllMocks();
 		delete process.env.ENVIRONMENT;
-		delete process.env.N8N_MCP_SERVERS_DEV_URL;
+		delete process.env.MNI_MCP_SERVERS_DEV_URL;
 		logger = mock<Logger>();
 		credentialTypes = mock<CredentialTypes>();
 		credentialTypes.recognizes = vi.fn().mockReturnValue(true);
@@ -48,9 +48,9 @@ describe('McpRegistryApiClient', () => {
 			delete process.env.ENVIRONMENT;
 		}
 		if (originalDevUrl !== undefined) {
-			process.env.N8N_MCP_SERVERS_DEV_URL = originalDevUrl;
+			process.env.MNI_MCP_SERVERS_DEV_URL = originalDevUrl;
 		} else {
-			delete process.env.N8N_MCP_SERVERS_DEV_URL;
+			delete process.env.MNI_MCP_SERVERS_DEV_URL;
 		}
 	});
 
@@ -106,9 +106,9 @@ describe('McpRegistryApiClient', () => {
 			);
 		});
 
-		it('should use N8N_MCP_SERVERS_DEV_URL override when ENVIRONMENT is dev', async () => {
+		it('should use MNI_MCP_SERVERS_DEV_URL override when ENVIRONMENT is dev', async () => {
 			process.env.ENVIRONMENT = 'dev';
-			process.env.N8N_MCP_SERVERS_DEV_URL = 'http://localhost:9999/api/mcp-servers';
+			process.env.MNI_MCP_SERVERS_DEV_URL = 'http://localhost:9999/api/mcp-servers';
 			mockPaginatedRequest.mockResolvedValue([]);
 
 			await client.fetchAllServers();
@@ -120,8 +120,8 @@ describe('McpRegistryApiClient', () => {
 			);
 		});
 
-		it('should ignore N8N_MCP_SERVERS_DEV_URL when ENVIRONMENT is not dev', async () => {
-			process.env.N8N_MCP_SERVERS_DEV_URL = 'http://localhost:9999/api/mcp-servers';
+		it('should ignore MNI_MCP_SERVERS_DEV_URL when ENVIRONMENT is not dev', async () => {
+			process.env.MNI_MCP_SERVERS_DEV_URL = 'http://localhost:9999/api/mcp-servers';
 			mockPaginatedRequest.mockResolvedValue([]);
 
 			await client.fetchAllServers();

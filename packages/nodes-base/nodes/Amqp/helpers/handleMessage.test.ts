@@ -1,5 +1,5 @@
-import type { IDeferredPromise } from '@n8n/utils/promise/deferred-promise';
-import type { ITriggerFunctions, IRun } from 'n8n-workflow';
+import type { IDeferredPromise } from '@MNI/utils/promise/deferred-promise';
+import type { ITriggerFunctions, IRun } from 'MNI-workflow';
 import type { EventContext } from 'rhea';
 import type { Mocked } from 'vitest';
 import { mockDeep } from 'vitest-mock-extended';

@@ -1,11 +1,11 @@
-import { STORES } from '@n8n/stores';
+import { STORES } from '@MNI/stores';
 import { defineStore } from 'pinia';
-import { useRootStore } from '@n8n/stores/useRootStore';
+import { useRootStore } from '@MNI/stores/useRootStore';
 
-import * as consentApi from '@n8n/rest-api-client/api/consent';
+import * as consentApi from '@MNI/rest-api-client/api/consent';
 import { type Ref, ref } from 'vue';
-import type { ConsentDetails } from '@n8n/rest-api-client/api/consent';
-import { ResponseError } from '@n8n/rest-api-client/utils';
+import type { ConsentDetails } from '@MNI/rest-api-client/api/consent';
+import { ResponseError } from '@MNI/rest-api-client/utils';
 
 export const useConsentStore = defineStore(STORES.CONSENT, () => {
 	const consentDetails = ref<ConsentDetails | null>(null);

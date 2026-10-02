@@ -1,5 +1,5 @@
 import { useRouter } from 'vue-router';
-import { generateNanoId } from '@n8n/utils/generate-nano-id';
+import { generateNanoId } from '@MNI/utils/generate-nano-id';
 import { AGENT_BUILDER_VIEW, PENDING_AGENT_ID_STATE } from '../constants';
 import { useAgentTelemetry, type AgentCreateSource } from './useAgentTelemetry';
 

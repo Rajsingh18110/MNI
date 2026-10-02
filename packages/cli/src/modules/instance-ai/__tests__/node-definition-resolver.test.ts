@@ -9,7 +9,7 @@ describe('resolveNodeTypeDefinition', () => {
 
 	beforeAll(() => {
 		defsDir = mkdtempSync(join(tmpdir(), 'node-defs-'));
-		const setDir = join(defsDir, 'nodes', 'n8n-nodes-base', 'set', 'v34');
+		const setDir = join(defsDir, 'nodes', 'MNI-nodes-base', 'set', 'v34');
 		mkdirSync(setDir, { recursive: true });
 		writeFileSync(join(setDir, 'mode_manual.ts'), '// manual mode def');
 		writeFileSync(join(setDir, 'mode_raw.ts'), '// raw mode def');
@@ -20,14 +20,14 @@ describe('resolveNodeTypeDefinition', () => {
 	});
 
 	it('returns a single definition when the mode discriminator is given', () => {
-		const result = resolveNodeTypeDefinition('n8n-nodes-base.set', [defsDir], { mode: 'manual' });
+		const result = resolveNodeTypeDefinition('MNI-nodes-base.set', [defsDir], { mode: 'manual' });
 
 		expect(result.error).toBeUndefined();
 		expect(result.content).toBe('// manual mode def');
 	});
 
 	it('returns all mode variants instead of an error when the mode is omitted', () => {
-		const result = resolveNodeTypeDefinition('n8n-nodes-base.set', [defsDir]);
+		const result = resolveNodeTypeDefinition('MNI-nodes-base.set', [defsDir]);
 
 		expect(result.error).toBeUndefined();
 		expect(result.content).toContain('definitions for all 2 modes');
@@ -38,7 +38,7 @@ describe('resolveNodeTypeDefinition', () => {
 	});
 
 	it('still errors for an invalid explicit mode', () => {
-		const result = resolveNodeTypeDefinition('n8n-nodes-base.set', [defsDir], { mode: 'nope' });
+		const result = resolveNodeTypeDefinition('MNI-nodes-base.set', [defsDir], { mode: 'nope' });
 
 		expect(result.error).toContain("Invalid mode 'nope'");
 	});
@@ -49,7 +49,7 @@ describe('resolveNodeTypeDefinition — resource/operation split', () => {
 
 	beforeAll(() => {
 		defsDir = mkdtempSync(join(tmpdir(), 'node-defs-ro-'));
-		const msgDir = join(defsDir, 'nodes', 'n8n-nodes-base', 'slack', 'v22', 'resource_message');
+		const msgDir = join(defsDir, 'nodes', 'MNI-nodes-base', 'slack', 'v22', 'resource_message');
 		mkdirSync(msgDir, { recursive: true });
 		writeFileSync(join(msgDir, 'operation_post.ts'), '// slack post def');
 		writeFileSync(join(msgDir, 'operation_update.ts'), '// slack update def');
@@ -60,14 +60,14 @@ describe('resolveNodeTypeDefinition — resource/operation split', () => {
 	});
 
 	it('errors with the full resource→operations index when discriminators are omitted', () => {
-		const result = resolveNodeTypeDefinition('n8n-nodes-base.slack', [defsDir]);
+		const result = resolveNodeTypeDefinition('MNI-nodes-base.slack', [defsDir]);
 
 		expect(result.error).toContain('requires resource and operation discriminators');
 		expect(result.error).toContain('message (post, update)');
 	});
 
 	it('returns the definition when both discriminators are given', () => {
-		const result = resolveNodeTypeDefinition('n8n-nodes-base.slack', [defsDir], {
+		const result = resolveNodeTypeDefinition('MNI-nodes-base.slack', [defsDir], {
 			resource: 'message',
 			operation: 'post',
 		});
@@ -84,7 +84,7 @@ describe('resolveNodeTypeDefinition — latest version resolution', () => {
 		defsDir = mkdtempSync(join(tmpdir(), 'node-defs-versions-'));
 		// Notion ships versions 1, 2, 2.1, 2.2 and 3, so on disk its version
 		// dirs are v1, v2, v21, v22, v3 (the dot is dropped when naming).
-		const notionDir = join(defsDir, 'nodes', 'n8n-nodes-base', 'notion');
+		const notionDir = join(defsDir, 'nodes', 'MNI-nodes-base', 'notion');
 		for (const [version, content] of [
 			['v1', '// notion v1 get def'],
 			['v2', '// notion v2 get def'],
@@ -103,7 +103,7 @@ describe('resolveNodeTypeDefinition — latest version resolution', () => {
 	});
 
 	it('treats v3 as latest, not v2.2, when no version is requested', () => {
-		const result = resolveNodeTypeDefinition('n8n-nodes-base.notion', [defsDir], {
+		const result = resolveNodeTypeDefinition('MNI-nodes-base.notion', [defsDir], {
 			resource: 'databasePage',
 			operation: 'get',
 		});
@@ -119,7 +119,7 @@ describe('resolveNodeTypeDefinition — version segment handling', () => {
 
 	beforeAll(() => {
 		defsDir = mkdtempSync(join(tmpdir(), 'node-defs-versions-'));
-		const nodesDir = join(defsDir, 'nodes', 'n8n-nodes-base');
+		const nodesDir = join(defsDir, 'nodes', 'MNI-nodes-base');
 
 		mkdirSync(join(nodesDir, 'set'), { recursive: true });
 		writeFileSync(join(nodesDir, 'set', 'v2.ts'), '// set v2 def');
@@ -135,7 +135,7 @@ describe('resolveNodeTypeDefinition — version segment handling', () => {
 	});
 
 	it('resolves the definition for a plain version', () => {
-		const result = resolveNodeTypeDefinition('n8n-nodes-base.set', [defsDir], { version: '2' });
+		const result = resolveNodeTypeDefinition('MNI-nodes-base.set', [defsDir], { version: '2' });
 
 		expect(result.error).toBeUndefined();
 		expect(result.content).toBe('// set v2 def');
@@ -144,7 +144,7 @@ describe('resolveNodeTypeDefinition — version segment handling', () => {
 	it.each(['v./../../webhook/v2', 'v./../../../../index', '../webhook/v2', '..', 'latest'])(
 		'rejects the version value %j',
 		(version) => {
-			const result = resolveNodeTypeDefinition('n8n-nodes-base.set', [defsDir], { version });
+			const result = resolveNodeTypeDefinition('MNI-nodes-base.set', [defsDir], { version });
 
 			expect(result.error).toContain('not found for node');
 			expect(result.content).toBe('');

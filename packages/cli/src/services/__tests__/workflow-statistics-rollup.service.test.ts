@@ -1,10 +1,10 @@
-import type { Logger } from '@n8n/backend-common';
-import type { DatabaseConfig } from '@n8n/config';
-import type { DbConnection, DbLockService, WorkflowStatisticsRepository } from '@n8n/db';
-import { StatisticsNames } from '@n8n/db';
+import type { Logger } from '@MNI/backend-common';
+import type { DatabaseConfig } from '@MNI/config';
+import type { DbConnection, DbLockService, WorkflowStatisticsRepository } from '@MNI/db';
+import { StatisticsNames } from '@MNI/db';
 import { mock } from 'vitest-mock-extended';
-import type { ErrorReporter, InstanceSettings } from 'n8n-core';
-import { OperationalError } from 'n8n-workflow';
+import type { ErrorReporter, InstanceSettings } from 'MNI-core';
+import { OperationalError } from 'MNI-workflow';
 
 import type { WorkflowStatisticsService } from '../workflow-statistics.service';
 import { WorkflowStatisticsRollupService } from '../workflow-statistics-rollup.service';

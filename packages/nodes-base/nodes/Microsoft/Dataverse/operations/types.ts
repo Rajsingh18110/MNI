@@ -3,7 +3,7 @@ import type {
 	IExecuteFunctions,
 	INodeProperties,
 	INodePropertyOptions,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 /**
  * Single record-operation definition. The node composes UI from the registry

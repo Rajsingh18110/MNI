@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useUIStore } from '@/app/stores/ui.store';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { hasPermission } from '@/app/utils/rbac/permissions';
 import { EnterpriseEditionFeature } from '@/app/constants';
 import { INVITE_USER_MODAL_KEY } from '@/features/settings/users/users.constants';
@@ -13,12 +13,12 @@ import {
 	N8nLink,
 	N8nText,
 	N8nTooltip,
-} from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+} from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 import { computed } from 'vue';
 import { I18nT } from 'vue-i18n';
 import CredentialIcon from '@/features/credentials/components/CredentialIcon.vue';
-import { ROLE } from '@n8n/api-types';
+import { ROLE } from '@MNI/api-types';
 
 defineProps<{
 	showWelcomeScreen: boolean;
@@ -166,7 +166,7 @@ function handleUpgradeClick() {
 </template>
 
 <style lang="scss" module>
-@use '@n8n/design-system/css/mixins/breakpoints';
+@use '@MNI/design-system/css/mixins/breakpoints';
 
 .header {
 	display: flex;

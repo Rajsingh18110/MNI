@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import type { IConnections } from 'n8n-workflow';
+import type { IConnections } from 'MNI-workflow';
 import {
 	orderSelectionIntoSet,
 	resolveSetNeighbors,
@@ -9,7 +9,7 @@ import {
 	countAttachedNodes,
 } from './buildNodesAttachment';
 import type { NodeContextWorkflow } from './buildNodesAttachment';
-import { instanceAiNodesAttachmentSchema, type InstanceAiAttachment } from '@n8n/api-types';
+import { instanceAiNodesAttachmentSchema, type InstanceAiAttachment } from '@MNI/api-types';
 
 function wf(over: Partial<NodeContextWorkflow> = {}): NodeContextWorkflow {
 	return {

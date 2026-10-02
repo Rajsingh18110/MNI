@@ -1,4 +1,4 @@
-import type { BuiltTool, StreamChunk } from '@n8n/agents';
+import type { BuiltTool, StreamChunk } from '@MNI/agents';
 
 import { buildToolCallDetails, ExecutionRecorder, type TimelineEvent } from '../execution-recorder';
 import { buildToolRegistry } from '../tool-registry';
@@ -59,7 +59,7 @@ describe('ExecutionRecorder', () => {
 				description: 'Read rows from the configured ledger table',
 				metadata: {
 					kind: 'node',
-					nodeType: 'n8n-nodes-base.dataTableTool',
+					nodeType: 'MNI-nodes-base.dataTableTool',
 					nodeTypeVersion: 1.1,
 					displayName: 'Check ledger',
 					nodeParameters: {
@@ -78,7 +78,7 @@ describe('ExecutionRecorder', () => {
 			kind: 'node',
 			input: {},
 			node: {
-				type: 'n8n-nodes-base.dataTableTool',
+				type: 'MNI-nodes-base.dataTableTool',
 				typeVersion: 1.1,
 				parameters: {
 					resource: 'row',
@@ -449,7 +449,7 @@ function nodeTool(
 describe('ExecutionRecorder — node-tool $fromAI resolution', () => {
 	it('substitutes a full-string $fromAI expression with the LLM-provided value', () => {
 		const registry = buildToolRegistry([
-			nodeTool('generate_image', '@n8n/n8n-nodes-langchain.openAi', {
+			nodeTool('generate_image', '@MNI/MNI-nodes-langchain.openAi', {
 				resource: 'image',
 				operation: 'generate',
 				prompt: "={{ $fromAI('prompt', 'Image description', 'string') }}",
@@ -481,7 +481,7 @@ describe('ExecutionRecorder — node-tool $fromAI resolution', () => {
 
 	it('falls back to the $fromAI default when the LLM did not provide the key', () => {
 		const registry = buildToolRegistry([
-			nodeTool('send_message', 'n8n-nodes-base.slack', {
+			nodeTool('send_message', 'MNI-nodes-base.slack', {
 				channel: "={{ $fromAI('channel', 'Channel name', 'string', 'general') }}",
 			}),
 		]);
@@ -506,8 +506,8 @@ describe('ExecutionRecorder — node-tool $fromAI resolution', () => {
 
 	it('substitutes $fromAI inside an auto-generated-marker template', () => {
 		const registry = buildToolRegistry([
-			nodeTool('search', 'n8n-nodes-base.http', {
-				url: "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('query', 'Search term', 'string') }}",
+			nodeTool('search', 'MNI-nodes-base.http', {
+				url: "={{ /*MNI-auto-generated-fromAI-override*/ $fromAI('query', 'Search term', 'string') }}",
 			}),
 		]);
 		const rec = new ExecutionRecorder(registry);
@@ -531,7 +531,7 @@ describe('ExecutionRecorder — node-tool $fromAI resolution', () => {
 
 	it('walks nested objects in nodeParameters and resolves each $fromAI', () => {
 		const registry = buildToolRegistry([
-			nodeTool('image', '@n8n/n8n-nodes-langchain.openAi', {
+			nodeTool('image', '@MNI/MNI-nodes-langchain.openAi', {
 				options: {
 					size: "={{ $fromAI('size', 'Image size', 'string', '1024x1024') }}",
 					nested: { nested2: "={{ $fromAI('quality', 'Quality', 'string', 'medium') }}" },
@@ -561,7 +561,7 @@ describe('ExecutionRecorder — node-tool $fromAI resolution', () => {
 
 	it('leaves the raw template in place when extraction fails', () => {
 		const registry = buildToolRegistry([
-			nodeTool('broken', 'n8n-nodes-base.set', {
+			nodeTool('broken', 'MNI-nodes-base.set', {
 				field: '={{ $fromAI(unbalanced ',
 			}),
 		]);
@@ -586,7 +586,7 @@ describe('ExecutionRecorder — node-tool $fromAI resolution', () => {
 
 	it('sanitizes resolved node parameters before recording them', () => {
 		const registry = buildToolRegistry([
-			nodeTool('send_secret', 'n8n-nodes-base.http', {
+			nodeTool('send_secret', 'MNI-nodes-base.http', {
 				password: "={{ $fromAI('password', 'Password', 'string') }}",
 				body: {
 					apiKey: "={{ $fromAI('apiKey', 'API key', 'string') }}",
@@ -818,7 +818,7 @@ describe('ExecutionRecorder — tool-result error normalization', () => {
 			error: {
 				message: 'Node tool validation failed',
 				code: 'NODE_TOOL_VALIDATION',
-				details: { nodeType: 'n8n-nodes-base.httpRequestTool' },
+				details: { nodeType: 'MNI-nodes-base.httpRequestTool' },
 			},
 		} as never);
 		rec.record({ type: 'finish', finishReason: 'error' } as StreamChunk);
@@ -827,7 +827,7 @@ describe('ExecutionRecorder — tool-result error normalization', () => {
 
 		expect(record.error).toContain('Node tool validation failed');
 		expect(record.error).toContain('NODE_TOOL_VALIDATION');
-		expect(record.error).toContain('n8n-nodes-base.httpRequestTool');
+		expect(record.error).toContain('MNI-nodes-base.httpRequestTool');
 	});
 
 	it('scrubs secrets from Error-shaped stream errors', () => {
@@ -847,7 +847,7 @@ describe('ExecutionRecorder — tool-result error normalization', () => {
 describe('ExecutionRecorder — node-tool {{$json.x}} resolution', () => {
 	it('resolves a full-string {{$json.path}} expression using the LLM args', () => {
 		const registry = buildToolRegistry([
-			nodeTool('send_message', 'n8n-nodes-base.telegramTool', {
+			nodeTool('send_message', 'MNI-nodes-base.telegramTool', {
 				resource: 'message',
 				operation: 'sendMessage',
 				chatId: '={{$json.chat_id}}',
@@ -880,7 +880,7 @@ describe('ExecutionRecorder — node-tool {{$json.x}} resolution', () => {
 
 	it('resolves a nested {{$json.path.sub}} lookup', () => {
 		const registry = buildToolRegistry([
-			nodeTool('post', 'n8n-nodes-base.http', {
+			nodeTool('post', 'MNI-nodes-base.http', {
 				url: '={{ $json.target.url }}',
 			}),
 		]);
@@ -905,7 +905,7 @@ describe('ExecutionRecorder — node-tool {{$json.x}} resolution', () => {
 
 	it('leaves the raw template in place when the path is missing', () => {
 		const registry = buildToolRegistry([
-			nodeTool('post', 'n8n-nodes-base.http', {
+			nodeTool('post', 'MNI-nodes-base.http', {
 				url: '={{ $json.target.url }}',
 			}),
 		]);
@@ -930,7 +930,7 @@ describe('ExecutionRecorder — node-tool {{$json.x}} resolution', () => {
 
 	it('still resolves $fromAI calls when both styles are mixed', () => {
 		const registry = buildToolRegistry([
-			nodeTool('post', 'n8n-nodes-base.http', {
+			nodeTool('post', 'MNI-nodes-base.http', {
 				url: "={{ $fromAI('endpoint', 'API endpoint', 'string') }}",
 				body: '={{ $json.payload }}',
 			}),

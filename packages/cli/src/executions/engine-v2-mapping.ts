@@ -1,10 +1,10 @@
-import type { ExecutionStatus } from '@n8n/engine';
+import type { ExecutionStatus } from '@MNI/engine';
 import assert from 'node:assert';
 import {
 	WorkflowExecuteModeList,
 	type ExecutionStatus as ExecutionStatusV1,
 	type WorkflowExecuteMode,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 /** A status added later reads as `unknown` rather than being guessed at. */
 const V1_STATUS_BY_V2_STATUS = new Map<ExecutionStatus, ExecutionStatusV1>([

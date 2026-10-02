@@ -1,6 +1,6 @@
-import { mockInstance } from '@n8n/backend-test-utils';
-import { EngineConfig, ExecutionsConfig, GlobalConfig } from '@n8n/config';
-import { Container } from '@n8n/di';
+import { mockInstance } from '@MNI/backend-test-utils';
+import { EngineConfig, ExecutionsConfig, GlobalConfig } from '@MNI/config';
+import { Container } from '@MNI/di';
 import { mock } from 'vitest-mock-extended';
 
 import { EngineDataPlaneProxyService } from '@/services/engine-data-plane-proxy.service';
@@ -69,7 +69,7 @@ describe('EngineV2Module', () => {
 				executionId: '01a038ae-c4a8-7799-8a3e-e3c2ca055cfa',
 				callerContext: { hostMode: 'trigger' },
 			};
-			await expect(proxy.startExecution(request)).rejects.toThrow('N8N_ENABLED_MODULES');
+			await expect(proxy.startExecution(request)).rejects.toThrow('MNI_ENABLED_MODULES');
 
 			await module.init();
 			await proxy.startExecution(request);
@@ -165,7 +165,7 @@ describe('EngineV2Module', () => {
 		it('refuses to start without a shared secret', async () => {
 			engineConfig.authSecret = '';
 
-			await expect(module.init()).rejects.toThrow('N8N_ENGINE_AUTH_SECRET');
+			await expect(module.init()).rejects.toThrow('MNI_ENGINE_AUTH_SECRET');
 			expect(controlPlaneServer.start).not.toHaveBeenCalled();
 		});
 
@@ -180,7 +180,7 @@ describe('EngineV2Module', () => {
 		it('refuses to start without the data plane address', async () => {
 			engineConfig.baseUrl = '';
 
-			await expect(module.init()).rejects.toThrow('N8N_ENGINE_BASE_URL');
+			await expect(module.init()).rejects.toThrow('MNI_ENGINE_BASE_URL');
 			expect(controlPlaneServer.start).not.toHaveBeenCalled();
 		});
 

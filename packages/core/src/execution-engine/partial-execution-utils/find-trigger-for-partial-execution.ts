@@ -5,7 +5,7 @@ import {
 	type INodeType,
 	type IRunData,
 	type Workflow,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import type { DirectedGraph } from './directed-graph';
 
@@ -129,7 +129,7 @@ export function findTriggerForPartialExecution(
 //				!node.disabled &&
 //				pinData?.[node.name] &&
 //				['trigger', 'webhook'].some((suffix) => node.type.toLowerCase().endsWith(suffix)) &&
-//				node.type !== 'n8n-nodes-base.respondToWebhook',
+//				node.type !== 'MNI-nodes-base.respondToWebhook',
 //		)
 //		.sort((a) => (a.type.endsWith('webhook') ? -1 : 1));
 //}

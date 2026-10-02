@@ -2,18 +2,18 @@ import {
 	DATA_TABLE_COLUMN_ERROR_MESSAGE,
 	type DataTableCreateColumnSchema,
 	type ListDataTableQueryDto,
-} from '@n8n/api-types';
-import { Logger } from '@n8n/backend-common';
-import { GlobalConfig } from '@n8n/config';
-import { parseListQuerySortBy, Project, withTransaction } from '@n8n/db';
-import { Service } from '@n8n/di';
-import { DataSource, EntityManager, In, Repository, SelectQueryBuilder } from '@n8n/typeorm';
+} from '@MNI/api-types';
+import { Logger } from '@MNI/backend-common';
+import { GlobalConfig } from '@MNI/config';
+import { parseListQuerySortBy, Project, withTransaction } from '@MNI/db';
+import { Service } from '@MNI/di';
+import { DataSource, EntityManager, In, Repository, SelectQueryBuilder } from '@MNI/typeorm';
 import {
 	DATA_TABLE_SYSTEM_COLUMNS,
 	DATA_TABLE_SYSTEM_TESTING_COLUMN,
 	UnexpectedError,
-} from 'n8n-workflow';
-import type { DataTableInfo, DataTablesSizeData } from 'n8n-workflow';
+} from 'MNI-workflow';
+import type { DataTableInfo, DataTablesSizeData } from 'MNI-workflow';
 
 import { DataTableColumn } from './data-table-column.entity';
 import { DataTableDDLService } from './data-table-ddl.service';

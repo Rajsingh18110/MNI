@@ -1,5 +1,5 @@
 import { mock, mockDeep } from 'vitest-mock-extended';
-import type { IExecuteFunctions, INode } from 'n8n-workflow';
+import type { IExecuteFunctions, INode } from 'MNI-workflow';
 import { Mailjet } from '../Mailjet.node';
 import * as GenericFunctions from '../GenericFunctions';
 import type { Mocked, MockInstance } from 'vitest';
@@ -29,7 +29,7 @@ describe('Mailjet Node', () => {
 			mock<INode>({
 				id: 'test-mailjet-node',
 				name: 'Mailjet Test',
-				type: 'n8n-nodes-base.mailjet',
+				type: 'MNI-nodes-base.mailjet',
 				typeVersion: 1,
 				position: [0, 0],
 				parameters: {},

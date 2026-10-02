@@ -1,6 +1,6 @@
 /* eslint-disable import-x/no-extraneous-dependencies -- test-only patterns */
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import type { AgentVersionListItemDto } from '@n8n/api-types';
+import type { AgentVersionListItemDto } from '@MNI/api-types';
 
 const mocks = vi.hoisted(() => ({
 	listAgentVersions: vi.fn(),
@@ -23,18 +23,18 @@ vi.mock('../composables/useAgentConfirmationModal', () => ({
 	}),
 }));
 
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: () => ({
 		showMessage: mocks.showMessage,
 		showError: mocks.showError,
 	}),
 }));
 
-vi.mock('@n8n/i18n', () => ({
+vi.mock('@MNI/i18n', () => ({
 	useI18n: () => ({ baseText: (k: string) => k }),
 }));
 
-vi.mock('@n8n/stores/useRootStore', () => ({
+vi.mock('@MNI/stores/useRootStore', () => ({
 	useRootStore: () => ({ restApiContext: { baseUrl: '/rest', pushRef: 'ref' } }),
 }));
 

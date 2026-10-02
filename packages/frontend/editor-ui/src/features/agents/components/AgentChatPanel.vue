@@ -17,9 +17,9 @@ import {
 	N8nInput,
 	N8nLink,
 	N8nTooltip,
-} from '@n8n/design-system';
+} from '@MNI/design-system';
 import { createReusableTemplate, useDocumentVisibility, useIntervalFn } from '@vueuse/core';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import {
 	type AgentChatQueueItem,
 	APPROVAL_TOOL_NAME,
@@ -28,8 +28,8 @@ import {
 	MAX_AGENT_CHAT_ATTACHMENT_SIZE_MB,
 	MAX_AGENT_CHAT_ATTACHMENTS_PER_MESSAGE,
 	PROVIDER_CAPABILITIES,
-} from '@n8n/api-types';
-import { useToast } from '@n8n/composables/useToast';
+} from '@MNI/api-types';
+import { useToast } from '@MNI/composables/useToast';
 import ChatInputBase from '@/features/ai/shared/components/ChatInputBase.vue';
 import AttachmentPreview from '@/features/ai/instanceAi/components/AttachmentPreview.vue';
 import { useAgentChatStream } from '../composables/useAgentChatStream';
@@ -937,7 +937,7 @@ onBeforeUnmount(() => {
 </template>
 
 <style lang="scss" module>
-@use '@n8n/design-system/css/mixins/motion';
+@use '@MNI/design-system/css/mixins/motion';
 
 .panel {
 	position: relative;
@@ -993,7 +993,7 @@ onBeforeUnmount(() => {
 	border-bottom: var(--border);
 }
 
-.messageQueue :global(.n8n-icon) {
+.messageQueue :global(.MNI-icon) {
 	color: light-dark(var(--color--neutral-600), var(--color--neutral-400));
 }
 

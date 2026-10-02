@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { useRouter } from 'vue-router';
-import { N8nAssistantIcon, N8nButton, N8nTooltip } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+import { N8nAssistantIcon, N8nButton, N8nTooltip } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 
 import type { WorkflowResource } from '@/Interface';
 import { INSTANCE_AI_NEW_VIEW, INSTANCE_AI_SOURCE_QUERY } from '@/features/ai/instanceAi/constants';

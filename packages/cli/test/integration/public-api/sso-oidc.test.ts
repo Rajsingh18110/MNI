@@ -1,7 +1,7 @@
-import { testDb } from '@n8n/backend-test-utils';
-import { InstanceSettingsLoaderConfig } from '@n8n/config';
-import { SettingsRepository, type User } from '@n8n/db';
-import { Container } from '@n8n/di';
+import { testDb } from '@MNI/backend-test-utils';
+import { InstanceSettingsLoaderConfig } from '@MNI/config';
+import { SettingsRepository, type User } from '@MNI/db';
+import { Container } from '@MNI/di';
 import { vi } from 'vitest';
 
 import { FeatureNotLicensedError } from '@/errors/feature-not-licensed.error';
@@ -28,7 +28,7 @@ vi.mock('openid-client', async (importOriginal) => {
 });
 
 const validConfig = {
-	clientId: 'n8n-client',
+	clientId: 'MNI-client',
 	clientSecret: 'super-secret',
 	discoveryEndpoint: 'https://accounts.example.com/.well-known/openid-configuration',
 	loginEnabled: false,

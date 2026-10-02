@@ -1,7 +1,7 @@
-import { deriveInstanceAiSetupState } from '@n8n/api-types';
-import type { InstanceAiAdminSettingsResponse, InstanceAiProviderConnection } from '@n8n/api-types';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
-import { TELEMETRY_EVENT, type InferTelemetryProps } from '@n8n/telemetry';
+import { deriveInstanceAiSetupState } from '@MNI/api-types';
+import type { InstanceAiAdminSettingsResponse, InstanceAiProviderConnection } from '@MNI/api-types';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
+import { TELEMETRY_EVENT, type InferTelemetryProps } from '@MNI/telemetry';
 import { ref, watch } from 'vue';
 
 import {

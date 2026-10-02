@@ -1,4 +1,4 @@
-import type { WorkflowHistory } from '@n8n/rest-api-client/api/workflowHistory';
+import type { WorkflowHistory } from '@MNI/rest-api-client/api/workflowHistory';
 import {
 	computeTimelineEntries,
 	generateVersionLabelFromId,
@@ -8,7 +8,7 @@ import {
 } from './utils';
 import { workflowHistoryDataFactory } from './__tests__/utils';
 
-vi.mock('@n8n/i18n', () => ({
+vi.mock('@MNI/i18n', () => ({
 	useI18n: () => ({
 		baseText: (key: string) => key,
 	}),

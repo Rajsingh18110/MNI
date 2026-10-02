@@ -3,13 +3,13 @@ import { BreakingChangeCategory } from '../../../types';
 import { RemovedNodesV3Rule } from '../removed-nodes.rule';
 
 const removedNodeTypes = [
-	'@n8n/n8n-nodes-langchain.documentGithubLoader',
-	'@n8n/n8n-nodes-langchain.memoryMotorhead',
-	'n8n-nodes-base.orbit',
-	'@n8n/n8n-nodes-langchain.memoryZep',
-	'@n8n/n8n-nodes-langchain.vectorStoreZep',
-	'@n8n/n8n-nodes-langchain.vectorStoreZepInsert',
-	'@n8n/n8n-nodes-langchain.vectorStoreZepLoad',
+	'@MNI/MNI-nodes-langchain.documentGithubLoader',
+	'@MNI/MNI-nodes-langchain.memoryMotorhead',
+	'MNI-nodes-base.orbit',
+	'@MNI/MNI-nodes-langchain.memoryZep',
+	'@MNI/MNI-nodes-langchain.vectorStoreZep',
+	'@MNI/MNI-nodes-langchain.vectorStoreZepInsert',
+	'@MNI/MNI-nodes-langchain.vectorStoreZepLoad',
 ];
 
 describe('RemovedNodesV3Rule', () => {
@@ -37,7 +37,7 @@ describe('RemovedNodesV3Rule', () => {
 
 	it('returns no issues when no removed nodes are found', async () => {
 		const { workflow, nodesGroupedByType } = createWorkflow('wf-1', 'Test Workflow', [
-			createNode('Not removed', 'n8n-nodes-base.notRemoved'),
+			createNode('Not removed', 'MNI-nodes-base.notRemoved'),
 		]);
 
 		await expect(rule.detectWorkflow(workflow, nodesGroupedByType)).resolves.toEqual({
@@ -68,9 +68,9 @@ describe('RemovedNodesV3Rule', () => {
 
 	it('detects multiple removed nodes in a workflow', async () => {
 		const { workflow, nodesGroupedByType } = createWorkflow('wf-1', 'Test Workflow', [
-			createNode('Zep', '@n8n/n8n-nodes-langchain.memoryZep'),
-			createNode('Orbit', 'n8n-nodes-base.orbit'),
-			createNode('HTTP Request', 'n8n-nodes-base.httpRequest'),
+			createNode('Zep', '@MNI/MNI-nodes-langchain.memoryZep'),
+			createNode('Orbit', 'MNI-nodes-base.orbit'),
+			createNode('HTTP Request', 'MNI-nodes-base.httpRequest'),
 		]);
 
 		const result = await rule.detectWorkflow(workflow, nodesGroupedByType);

@@ -1,4 +1,4 @@
-import type { IExecuteData, IRunData, EngineRequest, INodeExecutionData } from 'n8n-workflow';
+import type { IExecuteData, IRunData, EngineRequest, INodeExecutionData } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import { DirectedGraph } from '../partial-execution-utils';

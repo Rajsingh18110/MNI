@@ -1,4 +1,4 @@
-import type { IDataObject, ResourceMapperField } from 'n8n-workflow';
+import type { IDataObject, ResourceMapperField } from 'MNI-workflow';
 
 export interface AgentSchemaProperty {
 	description?: string;

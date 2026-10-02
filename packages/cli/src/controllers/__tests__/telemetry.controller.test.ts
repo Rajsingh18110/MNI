@@ -1,9 +1,9 @@
 import type { Mock, Mocked } from 'vitest';
-import type { HttpRequestClient, OutboundHttp } from '@n8n/backend-network';
-import type { GlobalConfig } from '@n8n/config';
-import type { AuthenticatedRequest } from '@n8n/db';
-import { ControllerRegistryMetadata } from '@n8n/decorators';
-import { Container } from '@n8n/di';
+import type { HttpRequestClient, OutboundHttp } from '@MNI/backend-network';
+import type { GlobalConfig } from '@MNI/config';
+import type { AuthenticatedRequest } from '@MNI/db';
+import { ControllerRegistryMetadata } from '@MNI/decorators';
+import { Container } from '@MNI/di';
 import type { NextFunction, Response } from 'express';
 import { mock } from 'vitest-mock-extended';
 

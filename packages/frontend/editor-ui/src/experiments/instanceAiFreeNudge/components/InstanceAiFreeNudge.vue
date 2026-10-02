@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 import { computed, watch } from 'vue';
 import { storeToRefs } from 'pinia';
-import { N8nIconButton, N8nStatusDot, N8nText } from '@n8n/design-system';
-import { useI18n, type BaseTextKey } from '@n8n/i18n';
+import { N8nIconButton, N8nStatusDot, N8nText } from '@MNI/design-system';
+import { useI18n, type BaseTextKey } from '@MNI/i18n';
 
 import { useInstanceAiFreeNudgeStore } from '../stores/instanceAiFreeNudge.store';
 

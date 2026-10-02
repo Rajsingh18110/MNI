@@ -3,7 +3,7 @@
 exports[`V1 Banner > should render banner 1`] = `
 <div>
   <div
-    class="n8n-callout callout warning onlyBottomBorder callout v1container"
+    class="MNI-callout callout warning onlyBottomBorder callout v1container"
     data-test-id="banners-V1"
     role="alert"
   >
@@ -13,14 +13,14 @@ exports[`V1 Banner > should render banner 1`] = `
       <div
         class="icon"
       >
-        <n8n-icon-stub
+        <MNI-icon-stub
           icon="info"
           size="medium"
           spin="false"
         />
       </div>
       <span
-        class="n8n-text size-small regular"
+        class="MNI-text size-small regular"
       >
         
         
@@ -54,7 +54,7 @@ exports[`V1 Banner > should render banner 1`] = `
     >
       
       
-      <n8n-icon-stub
+      <MNI-icon-stub
         class="clickable"
         data-test-id="banner-V1-close"
         icon="x"
@@ -71,7 +71,7 @@ exports[`V1 Banner > should render banner 1`] = `
 exports[`V1 Banner > should render banner with dismiss call if user is owner 1`] = `
 <div>
   <div
-    class="n8n-callout callout warning onlyBottomBorder callout v1container"
+    class="MNI-callout callout warning onlyBottomBorder callout v1container"
     data-test-id="banners-V1"
     role="alert"
   >
@@ -81,14 +81,14 @@ exports[`V1 Banner > should render banner with dismiss call if user is owner 1`]
       <div
         class="icon"
       >
-        <n8n-icon-stub
+        <MNI-icon-stub
           icon="info"
           size="medium"
           spin="false"
         />
       </div>
       <span
-        class="n8n-text size-small regular"
+        class="MNI-text size-small regular"
       >
         
         
@@ -129,7 +129,7 @@ exports[`V1 Banner > should render banner with dismiss call if user is owner 1`]
     >
       
       
-      <n8n-icon-stub
+      <MNI-icon-stub
         class="clickable"
         data-test-id="banner-V1-close"
         icon="x"

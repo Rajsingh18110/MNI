@@ -1,5 +1,5 @@
 import { defineStore, getActivePinia } from 'pinia';
-import { STORES } from '@n8n/stores';
+import { STORES } from '@MNI/stores';
 import { computed, inject, provide, ref, shallowRef, watchEffect, type ShallowRef } from 'vue';
 import { WorkflowDocumentStoreKey } from '@/app/constants/injectionKeys';
 import { useWorkflowDocumentActive } from './workflowDocument/useWorkflowDocumentActive';
@@ -38,10 +38,10 @@ import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';
 import { assignNodeId, serializeNode } from '@/app/utils/nodes/nodeTransforms';
 import type { WorkflowObjectAccessors } from '../types';
 import type { IWorkflowDb } from '@/Interface';
-import type { INode, ProjectSharingData } from 'n8n-workflow';
-import { deepCopy, nodeIssuesToString } from 'n8n-workflow';
-import type { WorkflowData } from '@n8n/rest-api-client/api/workflows';
-import type { Scope } from '@n8n/permissions';
+import type { INode, ProjectSharingData } from 'MNI-workflow';
+import { deepCopy, nodeIssuesToString } from 'MNI-workflow';
+import type { WorkflowData } from '@MNI/rest-api-client/api/workflows';
+import type { Scope } from '@MNI/permissions';
 import type { IUsedCredential } from '@/features/credentials/credentials.types';
 import { useWorkflowsStore } from './workflows.store';
 

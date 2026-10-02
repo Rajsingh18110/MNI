@@ -7,11 +7,11 @@ import {
 	THREE_DAYS_IN_MILLIS,
 	NPS_SURVEY_MODAL_KEY,
 } from '@/app/constants';
-import { useRootStore } from '@n8n/stores/useRootStore';
-import type { IUserSettings, NpsSurveyState } from 'n8n-workflow';
-import { useSettingsStore } from '@n8n/stores/settings.store';
-import { updateNpsSurveyState } from '@n8n/rest-api-client/api/npsSurvey';
-import { assert } from '@n8n/utils/assert';
+import { useRootStore } from '@MNI/stores/useRootStore';
+import type { IUserSettings, NpsSurveyState } from 'MNI-workflow';
+import { useSettingsStore } from '@MNI/stores/settings.store';
+import { updateNpsSurveyState } from '@MNI/rest-api-client/api/npsSurvey';
+import { assert } from '@MNI/utils/assert';
 
 export const MAXIMUM_TIMES_TO_SHOW_SURVEY_IF_IGNORED = 3;
 

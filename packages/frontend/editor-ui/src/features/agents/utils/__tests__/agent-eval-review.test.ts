@@ -1,4 +1,4 @@
-import type { JsonObject } from 'n8n-workflow';
+import type { JsonObject } from 'MNI-workflow';
 
 import type { AgentEvalRatingRecord } from '../../agentEvals.types';
 import type { ReviewDraft } from '../agent-eval-review';

@@ -75,19 +75,19 @@ describe('mergeV8CoverageByUrl', () => {
 
 describe('resolveSourcePath', () => {
 	// Mirrors the real layout: frontend packages sit a level deeper, and
-	// `@n8n/nodes-langchain` is dir-only (its package name differs).
+	// `@MNI/nodes-langchain` is dir-only (its package name differs).
 	const index = {
 		names: new Map([
-			['@n8n/design-system', 'packages/frontend/@n8n/design-system'],
-			['n8n-workflow', 'packages/workflow'],
+			['@MNI/design-system', 'packages/frontend/@MNI/design-system'],
+			['MNI-workflow', 'packages/workflow'],
 		]),
 		dirs: new Set([
 			'packages',
 			'packages/cli',
 			'packages/cli/src',
 			'packages/cli/src/auth',
-			'packages/@n8n/nodes-langchain',
-			'packages/@n8n/nodes-langchain/nodes',
+			'packages/@MNI/nodes-langchain',
+			'packages/@MNI/nodes-langchain/nodes',
 		]),
 	};
 
@@ -117,8 +117,8 @@ describe('resolveSourcePath', () => {
 	});
 
 	test('prefers the dir form when dir and package name disagree', () => {
-		expect(resolveSourcePath('@n8n/nodes-langchain/nodes/Agent.ts', index)).toBe(
-			'packages/@n8n/nodes-langchain/nodes/Agent.ts',
+		expect(resolveSourcePath('@MNI/nodes-langchain/nodes/Agent.ts', index)).toBe(
+			'packages/@MNI/nodes-langchain/nodes/Agent.ts',
 		);
 	});
 
@@ -126,14 +126,14 @@ describe('resolveSourcePath', () => {
 	test('resolves a scoped specifier whose dir is nested', () => {
 		expect(
 			resolveSourcePath(
-				'@n8n/design-system/src/components/N8nDropdownMenu/DropdownMenu.vue',
+				'@MNI/design-system/src/components/N8nDropdownMenu/DropdownMenu.vue',
 				index,
 			),
-		).toBe('packages/frontend/@n8n/design-system/src/components/N8nDropdownMenu/DropdownMenu.vue');
+		).toBe('packages/frontend/@MNI/design-system/src/components/N8nDropdownMenu/DropdownMenu.vue');
 	});
 
 	test('resolves an unscoped specifier whose dir differs from its name', () => {
-		expect(resolveSourcePath('n8n-workflow/src/Expression.ts', index)).toBe(
+		expect(resolveSourcePath('MNI-workflow/src/Expression.ts', index)).toBe(
 			'packages/workflow/src/Expression.ts',
 		);
 	});

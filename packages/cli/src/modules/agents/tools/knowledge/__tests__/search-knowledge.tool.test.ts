@@ -1,4 +1,4 @@
-import type { BuiltTool } from '@n8n/agents';
+import type { BuiltTool } from '@MNI/agents';
 import { mock } from 'vitest-mock-extended';
 
 import type { AgentKnowledgeMirrorService } from '../../../agent-knowledge-mirror.service';

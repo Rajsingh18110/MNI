@@ -9,9 +9,9 @@ import type {
 	INodeParameters,
 	IRunExecutionData,
 	ITaskData,
-} from 'n8n-workflow';
-import type { ChatUI } from '@n8n/design-system';
-import type { FrontendSettings, QuickReplyType } from '@n8n/api-types';
+} from 'MNI-workflow';
+import type { ChatUI } from '@MNI/design-system';
+import type { FrontendSettings, QuickReplyType } from '@MNI/api-types';
 
 export namespace ChatRequest {
 	export interface NodeExecutionSchema {
@@ -196,7 +196,7 @@ export namespace ChatRequest {
 		role: 'assistant' | 'user';
 		type: 'message'; // API uses 'message' instead of 'text'
 		text: string;
-		step?: 'n8n_documentation' | 'n8n_forum';
+		step?: 'MNI_documentation' | 'MNI_forum';
 		codeSnippet?: string;
 		quickReplies?: ChatUI.QuickReply[];
 		/** Version ID for restore functionality - sent by backend on user messages */

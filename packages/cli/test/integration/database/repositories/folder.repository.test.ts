@@ -1,6 +1,6 @@
-import { testDb } from '@n8n/backend-test-utils';
-import { FolderRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
+import { testDb } from '@MNI/backend-test-utils';
+import { FolderRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
 
 const SQLITE_MAX_BIND_PARAMETERS = 32_766;
 

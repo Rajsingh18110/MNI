@@ -1,6 +1,6 @@
 import { createComponentRenderer } from '@/__tests__/render';
 import ConnectionTracker from '@/app/components/ConnectionTracker.vue';
-import { STORES } from '@n8n/stores';
+import { STORES } from '@MNI/stores';
 import { createTestingPinia } from '@pinia/testing';
 import { setActivePinia } from 'pinia';
 

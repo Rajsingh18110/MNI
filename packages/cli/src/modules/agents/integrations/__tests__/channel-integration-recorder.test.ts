@@ -8,7 +8,7 @@ describe('ChannelIntegrationRecorder', () => {
 	let recordingDir: string;
 
 	beforeEach(async () => {
-		recordingDir = await mkdtemp(join(tmpdir(), 'n8n-channel-recordings-'));
+		recordingDir = await mkdtemp(join(tmpdir(), 'MNI-channel-recordings-'));
 	});
 
 	afterEach(async () => {

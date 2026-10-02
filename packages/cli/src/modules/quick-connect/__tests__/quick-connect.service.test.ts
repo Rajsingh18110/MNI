@@ -1,6 +1,6 @@
-import type { Logger } from '@n8n/backend-common';
-import type { User } from '@n8n/db';
-import { Container } from '@n8n/di';
+import type { Logger } from '@MNI/backend-common';
+import type { User } from '@MNI/db';
+import { Container } from '@MNI/di';
 import { mock } from 'vitest-mock-extended';
 
 import { BadRequestError } from '@/errors/response-errors/bad-request.error';
@@ -93,7 +93,7 @@ describe('QuickConnectService', () => {
 		it('should register firecrawl handler when configured', async () => {
 			const testConfig = [
 				{
-					packageName: '@n8n/firecrawl',
+					packageName: '@MNI/firecrawl',
 					credentialType: 'firecrawlApi',
 					text: 'Firecrawl Integration',
 					quickConnectType: 'firecrawl',
@@ -104,7 +104,7 @@ describe('QuickConnectService', () => {
 					},
 				},
 			];
-			process.env.N8N_QUICK_CONNECT_OPTIONS = JSON.stringify(testConfig);
+			process.env.MNI_QUICK_CONNECT_OPTIONS = JSON.stringify(testConfig);
 
 			// Reinitialize config to pick up env variable
 			config = Container.get(QuickConnectConfig);
@@ -119,14 +119,14 @@ describe('QuickConnectService', () => {
 		it('should not register handlers for non-backend quickConnectTypes', async () => {
 			const testConfig = [
 				{
-					packageName: '@n8n/oauth-service',
+					packageName: '@MNI/oauth-service',
 					credentialType: 'oauthApi',
 					text: 'OAuth Service',
 					quickConnectType: 'oauth',
 					serviceName: 'OAuth Service',
 				},
 			];
-			process.env.N8N_QUICK_CONNECT_OPTIONS = JSON.stringify(testConfig);
+			process.env.MNI_QUICK_CONNECT_OPTIONS = JSON.stringify(testConfig);
 
 			config = Container.get(QuickConnectConfig);
 			service = new QuickConnectService(logger, config);
@@ -138,7 +138,7 @@ describe('QuickConnectService', () => {
 		});
 
 		it('should handle empty config', async () => {
-			process.env.N8N_QUICK_CONNECT_OPTIONS = '[]';
+			process.env.MNI_QUICK_CONNECT_OPTIONS = '[]';
 
 			config = Container.get(QuickConnectConfig);
 			service = new QuickConnectService(logger, config);
@@ -151,7 +151,7 @@ describe('QuickConnectService', () => {
 		it('should register multiple backend handlers', async () => {
 			const testConfig = [
 				{
-					packageName: '@n8n/firecrawl',
+					packageName: '@MNI/firecrawl',
 					credentialType: 'firecrawlApi',
 					text: 'Firecrawl Integration',
 					quickConnectType: 'firecrawl',
@@ -162,7 +162,7 @@ describe('QuickConnectService', () => {
 					},
 				},
 			];
-			process.env.N8N_QUICK_CONNECT_OPTIONS = JSON.stringify(testConfig);
+			process.env.MNI_QUICK_CONNECT_OPTIONS = JSON.stringify(testConfig);
 
 			config = Container.get(QuickConnectConfig);
 			service = new QuickConnectService(logger, config);
@@ -174,6 +174,6 @@ describe('QuickConnectService', () => {
 	});
 
 	afterEach(() => {
-		delete process.env.N8N_QUICK_CONNECT_OPTIONS;
+		delete process.env.MNI_QUICK_CONNECT_OPTIONS;
 	});
 });

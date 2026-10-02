@@ -8,9 +8,9 @@ const NPM_REGISTRY = 'https://registry.npmjs.org';
 // (release-standalone-package.yml), so their `latest` follows the newest beta
 // on npm instead of the version recorded in the stable checkout.
 const STANDALONE_PACKAGES_FOLLOWING_BETA = new Set([
-	'@n8n/create-node',
-	'@n8n/eslint-plugin-community-nodes',
-	'@n8n/scan-community-package',
+	'@MNI/create-node',
+	'@MNI/eslint-plugin-community-nodes',
+	'@MNI/scan-community-package',
 ]);
 
 /**
@@ -20,7 +20,7 @@ const STANDALONE_PACKAGES_FOLLOWING_BETA = new Set([
  * @param {string} token
  */
 async function setDistTag(name, version, tag, token) {
-	// Scoped package names need both @ and / encoded (e.g. @n8n/foo → %40n8n%2ffoo)
+	// Scoped package names need both @ and / encoded (e.g. @MNI/foo → %40n8n%2ffoo)
 	const encodedName = encodeURIComponent(name);
 	const url = `${NPM_REGISTRY}/-/package/${encodedName}/dist-tags/${tag}`;
 
@@ -68,7 +68,7 @@ async function setLatestForMonorepoPackages() {
 
 	const publishedPackages = packages //
 		.filter((pkg) => !pkg.private)
-		.filter((pkg) => pkg.name.startsWith('@n8n/'))
+		.filter((pkg) => pkg.name.startsWith('@MNI/'))
 		.filter((pkg) => pkg.version);
 
 	const failures = [];

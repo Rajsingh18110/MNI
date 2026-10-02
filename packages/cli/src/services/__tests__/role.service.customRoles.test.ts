@@ -1,10 +1,10 @@
-import type { CreateRoleDto, UpdateRoleDto } from '@n8n/api-types';
-import type { LicenseState } from '@n8n/backend-common';
-import { Logger } from '@n8n/backend-common';
-import { mockInstance } from '@n8n/backend-test-utils';
-import type { Role, Scope as DBScope } from '@n8n/db';
-import { RoleRepository, ScopeRepository } from '@n8n/db';
-import { MANDATORY_INSTANCE_SCOPES } from '@n8n/permissions';
+import type { CreateRoleDto, UpdateRoleDto } from '@MNI/api-types';
+import type { LicenseState } from '@MNI/backend-common';
+import { Logger } from '@MNI/backend-common';
+import { mockInstance } from '@MNI/backend-test-utils';
+import type { Role, Scope as DBScope } from '@MNI/db';
+import { RoleRepository, ScopeRepository } from '@MNI/db';
+import { MANDATORY_INSTANCE_SCOPES } from '@MNI/permissions';
 import { mock } from 'vitest-mock-extended';
 
 import { BadRequestError } from '@/errors/response-errors/bad-request.error';

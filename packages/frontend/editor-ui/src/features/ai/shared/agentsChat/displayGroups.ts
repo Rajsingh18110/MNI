@@ -1,4 +1,4 @@
-import type { AgentBackgroundJobSignal } from '@n8n/api-types';
+import type { AgentBackgroundJobSignal } from '@MNI/api-types';
 
 import { summariseToolCall } from './interactiveSummary';
 import { getMessageInteractives } from './messageMappers';

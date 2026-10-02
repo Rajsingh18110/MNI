@@ -1,4 +1,4 @@
-import { ensureError } from '@n8n/utils/errors/ensure-error';
+import { ensureError } from '@MNI/utils/errors/ensure-error';
 
 import { FolderNotFoundError } from '@/errors/folder-not-found.error';
 import type { Telemetry } from '@/telemetry';

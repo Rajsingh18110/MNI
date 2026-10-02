@@ -1,6 +1,6 @@
-import { GlobalConfig } from '@n8n/config';
-import { Service } from '@n8n/di';
-import { DataSource, Repository } from '@n8n/typeorm';
+import { GlobalConfig } from '@MNI/config';
+import { Service } from '@MNI/di';
+import { DataSource, Repository } from '@MNI/typeorm';
 import assert from 'node:assert';
 
 import { TokenExchangeJti } from '../entities/token-exchange-jti.entity';

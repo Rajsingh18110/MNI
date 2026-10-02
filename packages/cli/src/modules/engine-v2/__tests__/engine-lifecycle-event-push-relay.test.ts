@@ -1,6 +1,6 @@
-import type { Logger } from '@n8n/backend-common';
-import type { LifecycleEvent } from '@n8n/engine';
-import type { PushMessage } from '@n8n/api-types';
+import type { Logger } from '@MNI/backend-common';
+import type { LifecycleEvent } from '@MNI/engine';
+import type { PushMessage } from '@MNI/api-types';
 import { mock } from 'vitest-mock-extended';
 
 import type { Push } from '@/push';

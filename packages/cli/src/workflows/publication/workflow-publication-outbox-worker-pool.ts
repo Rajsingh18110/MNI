@@ -1,4 +1,4 @@
-import { ensureError } from '@n8n/utils/errors/ensure-error';
+import { ensureError } from '@MNI/utils/errors/ensure-error';
 
 interface OutboxWorkerPoolOptions {
 	/** A single worker's work: claim and process records until none remain. */

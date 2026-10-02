@@ -1,4 +1,4 @@
-import type { ModuleRegistry } from '@n8n/backend-common';
+import type { ModuleRegistry } from '@MNI/backend-common';
 
 import { NotFoundError } from '@/errors/response-errors/not-found.error';
 

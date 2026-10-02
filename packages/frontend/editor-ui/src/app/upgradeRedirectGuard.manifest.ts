@@ -1,4 +1,4 @@
-import { setDefaultUpgradeRedirectGuard } from '@n8n/stores/registries/upgradeRedirectGuard';
+import { setDefaultUpgradeRedirectGuard } from '@MNI/stores/registries/upgradeRedirectGuard';
 
 /**
  * The upgrade-CTA guard, for callers that cannot import it themselves — a module

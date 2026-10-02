@@ -1,5 +1,5 @@
-import type { PolicyViolation } from '@n8n/decorators';
-import { UserError } from 'n8n-workflow';
+import type { PolicyViolation } from '@MNI/decorators';
+import { UserError } from 'MNI-workflow';
 
 import { classifyHttpError, HttpErrorKind } from '@/errors/http-error-classifier';
 import { serializeInternalRestError } from '@/errors/http-error-serializers';
@@ -13,8 +13,8 @@ import {
 const violation = (overrides: Partial<PolicyViolation> = {}): PolicyViolation => ({
 	kind: 'node-type-unavailable',
 	checkId: 'node-type-availability',
-	message: 'The node type n8n-nodes-base.slack is not available on this instance',
-	subject: 'n8n-nodes-base.slack',
+	message: 'The node type MNI-nodes-base.slack is not available on this instance',
+	subject: 'MNI-nodes-base.slack',
 	subjectType: 'node-type',
 	scope: 'instance',
 	...overrides,
@@ -71,7 +71,7 @@ describe('PolicyViolationError', () => {
 		it('classifies as a responseError carrying the violations in meta', () => {
 			const violations: NonEmptyViolations = [
 				violation(),
-				violation({ subject: 'n8n-nodes-base.code' }),
+				violation({ subject: 'MNI-nodes-base.code' }),
 			];
 			const error = new PolicyViolationError(violations);
 

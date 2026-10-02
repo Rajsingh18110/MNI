@@ -1,4 +1,4 @@
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 
 const SECOND = 1000;
 const MINUTE = 60 * SECOND;

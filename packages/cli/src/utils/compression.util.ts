@@ -1,4 +1,4 @@
-import { safeJoinPath } from '@n8n/backend-common';
+import { safeJoinPath } from '@MNI/backend-common';
 import * as fflate from 'fflate';
 import { createWriteStream, mkdirSync } from 'fs';
 import type { FileHandle } from 'fs/promises';

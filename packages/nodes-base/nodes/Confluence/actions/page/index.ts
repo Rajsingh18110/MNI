@@ -1,4 +1,4 @@
-import type { INodeProperties } from 'n8n-workflow';
+import type { INodeProperties } from 'MNI-workflow';
 
 import * as addComment from './addComment.operation';
 import * as addLabels from './addLabels.operation';

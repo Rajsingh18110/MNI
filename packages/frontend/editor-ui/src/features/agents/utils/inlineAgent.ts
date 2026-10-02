@@ -1,5 +1,5 @@
-import type { AgentCapabilitySummary, InlineAgentConfig } from '@n8n/api-types';
-import { generateNanoId } from '@n8n/utils/generate-nano-id';
+import type { AgentCapabilitySummary, InlineAgentConfig } from '@MNI/api-types';
+import { generateNanoId } from '@MNI/utils/generate-nano-id';
 
 import type { INodeUi } from '@/Interface';
 

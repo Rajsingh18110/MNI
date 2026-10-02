@@ -1,6 +1,6 @@
-import { ListAgentSessionsQueryDto, type AgentSessionPreviewAccess } from '@n8n/api-types';
-import type { AuthenticatedRequest } from '@n8n/db';
-import { Delete, Get, Post, ProjectScope, Query, RestController } from '@n8n/decorators';
+import { ListAgentSessionsQueryDto, type AgentSessionPreviewAccess } from '@MNI/api-types';
+import type { AuthenticatedRequest } from '@MNI/db';
+import { Delete, Get, Post, ProjectScope, Query, RestController } from '@MNI/decorators';
 import type { Response } from 'express';
 
 import { NotFoundError } from '@/errors/response-errors/not-found.error';

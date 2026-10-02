@@ -1,4 +1,4 @@
-import { i18n as realI18n, type BaseTextKey, type I18nClass } from '@n8n/i18n';
+import { i18n as realI18n, type BaseTextKey, type I18nClass } from '@MNI/i18n';
 import { describe, expect, it, vi } from 'vitest';
 
 import { EXTENDED_PROMPT_MAX_LENGTH } from '@/features/ai/shared/constants';
@@ -98,7 +98,7 @@ describe('buildAgentFixWithAssistantPrompt', () => {
 		expect(baseText).toHaveBeenCalledWith(
 			'agents.builder.preview.fixWithAssistantPrompt.template',
 			{
-				interpolate: { diagnostics: '__N8N_ASSISTANT_DRAFT_BODY__' },
+				interpolate: { diagnostics: '__MNI_ASSISTANT_DRAFT_BODY__' },
 			},
 		);
 	});

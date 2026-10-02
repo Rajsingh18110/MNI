@@ -1,6 +1,6 @@
 import { capitalCase } from 'change-case';
 import moment from 'moment-timezone';
-import type { IDataObject, INodeProperties } from 'n8n-workflow';
+import type { IDataObject, INodeProperties } from 'MNI-workflow';
 
 import { splitPropertyKey } from '../../helpers/utils';
 

@@ -1,5 +1,5 @@
-import { Time } from '@n8n/constants';
-import { Service } from '@n8n/di';
+import { Time } from '@MNI/constants';
+import { Service } from '@MNI/di';
 
 import { EngineV2PushSession } from '@/services/engine-v2-push-session';
 

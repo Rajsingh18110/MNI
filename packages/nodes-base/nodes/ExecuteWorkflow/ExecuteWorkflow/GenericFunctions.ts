@@ -1,11 +1,11 @@
 import { readFile as fsReadFile } from 'fs/promises';
-import { NodeOperationError, jsonParse } from 'n8n-workflow';
+import { NodeOperationError, jsonParse } from 'MNI-workflow';
 import type {
 	IExecuteFunctions,
 	IExecuteWorkflowInfo,
 	INodeParameterResourceLocator,
 	IRequestOptions,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 export async function getWorkflowInfo(this: IExecuteFunctions, source: string, itemIndex = 0) {
 	const workflowInfo: IExecuteWorkflowInfo = {};

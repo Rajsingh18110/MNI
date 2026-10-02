@@ -17,7 +17,7 @@ import { DEV_PANEL_ROOT_ATTR, useElementPicker } from './useElementPicker';
 type TrackedAnnotation = Annotation & { elements: Element[] };
 
 const MARKER_SIZE = 22;
-const VISIBILITY_STORAGE_KEY = 'n8n-dev-panel:visible';
+const VISIBILITY_STORAGE_KEY = 'MNI-dev-panel:visible';
 
 function loadVisibility(): boolean {
 	try {

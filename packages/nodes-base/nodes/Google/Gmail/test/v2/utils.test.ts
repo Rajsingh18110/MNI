@@ -1,6 +1,6 @@
 import { mock } from 'vitest-mock-extended';
 import { DateTime } from 'luxon';
-import type { IExecuteFunctions, INode } from 'n8n-workflow';
+import type { IExecuteFunctions, INode } from 'MNI-workflow';
 
 import type { IEmail } from '@utils/sendAndWait/interfaces';
 
@@ -19,7 +19,7 @@ const node: INode = {
 	id: '1',
 	name: 'Gmail node',
 	typeVersion: 2,
-	type: 'n8n-nodes-base.gmail',
+	type: 'MNI-nodes-base.gmail',
 	position: [50, 50],
 	parameters: {
 		operation: 'getAll',

@@ -1,9 +1,9 @@
-import { Service } from '@n8n/di';
+import { Service } from '@MNI/di';
 import {
 	UnexpectedError,
 	type N8nOAuth2FlowResult,
 	type N8nOAuth2RefreshResult,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 /**
  * The in-process OAuth2 flow for first-party trigger resources. Every method resolves a

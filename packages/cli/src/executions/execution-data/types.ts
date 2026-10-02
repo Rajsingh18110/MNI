@@ -1,6 +1,6 @@
-import type { ExecutionDataStorageLocation } from '@n8n/db';
-import type { WorkflowDocument } from '@n8n/engine';
-import type { IWorkflowBase } from 'n8n-workflow';
+import type { ExecutionDataStorageLocation } from '@MNI/db';
+import type { WorkflowDocument } from '@MNI/engine';
+import type { IWorkflowBase } from 'MNI-workflow';
 
 /** Storage locations served by the execution-data JSON store. `db` is handled natively by `DbStore`. */
 export type BlobStorageLocation = Exclude<ExecutionDataStorageLocation, 'db'>;
@@ -33,7 +33,7 @@ export function toWorkflowSnapshot(workflow: WorkflowSnapshot): WorkflowSnapshot
  * The same projection, shaped for the engine v2 start request. The data plane
  * stores it beside the execution and reports it back, without reading into it,
  * so it crosses the boundary as plain JSON. The cast is unavoidable: the engine
- * has no `n8n-workflow` dependency, and `INode` and friends are interfaces, so
+ * has no `MNI-workflow` dependency, and `INode` and friends are interfaces, so
  * they never gain the index signature `JsonObject` asks for.
  */
 export function toWorkflowDocument(workflow: WorkflowSnapshot): WorkflowDocument {

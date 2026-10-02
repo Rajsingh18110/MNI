@@ -1,9 +1,9 @@
-import { ModuleRegistry } from '@n8n/backend-common';
-import { ScheduledJobOwnerType } from '@n8n/constants';
-import type { ScheduledJobOwner, ScheduledJobOwnerRef } from '@n8n/db';
-import { Container, Service } from '@n8n/di';
-import type { ScheduledJobOwnerResolver } from '@n8n/scheduler';
-import { UnexpectedError } from 'n8n-workflow';
+import { ModuleRegistry } from '@MNI/backend-common';
+import { ScheduledJobOwnerType } from '@MNI/constants';
+import type { ScheduledJobOwner, ScheduledJobOwnerRef } from '@MNI/db';
+import { Container, Service } from '@MNI/di';
+import type { ScheduledJobOwnerResolver } from '@MNI/scheduler';
+import { UnexpectedError } from 'MNI-workflow';
 
 /**
  * Marks an agent as the owner of the scheduled jobs that its published tasks create.

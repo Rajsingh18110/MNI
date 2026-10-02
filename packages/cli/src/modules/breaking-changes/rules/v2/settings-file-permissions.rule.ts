@@ -1,5 +1,5 @@
-import { GlobalConfig } from '@n8n/config';
-import { BreakingChangeRule } from '@n8n/decorators';
+import { GlobalConfig } from '@MNI/config';
+import { BreakingChangeRule } from '@MNI/decorators';
 
 import type {
 	BreakingChangeRuleMetadata,
@@ -37,9 +37,9 @@ export class SettingsFilePermissionsRule implements IBreakingChangeInstanceRule 
 			};
 		}
 
-		// If N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS is explicitly set to any value, users are not affected
+		// If MNI_ENFORCE_SETTINGS_FILE_PERMISSIONS is explicitly set to any value, users are not affected
 		// because they've already handled the configuration and are aware of this setting.
-		if (process.env.N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS) {
+		if (process.env.MNI_ENFORCE_SETTINGS_FILE_PERMISSIONS) {
 			return {
 				isAffected: false,
 				instanceIssues: [],
@@ -61,17 +61,17 @@ export class SettingsFilePermissionsRule implements IBreakingChangeInstanceRule 
 				{
 					action: 'Configure volume permissions',
 					description:
-						'If using Docker or Kubernetes with volume mounts for .n8n directory, ensure the mounted volume has proper ownership and chmod 600 can be enforced on the config file',
+						'If using Docker or Kubernetes with volume mounts for .MNI directory, ensure the mounted volume has proper ownership and chmod 600 can be enforced on the config file',
 				},
 				{
 					action: 'Disable enforcement if needed',
 					description:
-						'Set N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=false to disable permission enforcement',
+						'Set MNI_ENFORCE_SETTINGS_FILE_PERMISSIONS=false to disable permission enforcement',
 				},
 				{
 					action: 'Separate configs for multi-instance setups',
 					description:
-						'In multi-main or queue setups, give each instance its own .n8n directory or use N8N_ENCRYPTION_KEY environment variable instead of relying on the config file',
+						'In multi-main or queue setups, give each instance its own .MNI directory or use MNI_ENCRYPTION_KEY environment variable instead of relying on the config file',
 				},
 			],
 		};

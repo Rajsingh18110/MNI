@@ -5,12 +5,12 @@ import {
 	type ChatModelDto,
 	type ChatHubAgentKnowledgeItem,
 	type ChatHubAgentKnowledgeItemStatus,
-} from '@n8n/api-types';
-import { Logger } from '@n8n/backend-common';
-import type { EntityManager, User } from '@n8n/db';
-import { Service } from '@n8n/di';
+} from '@MNI/api-types';
+import { Logger } from '@MNI/backend-common';
+import type { EntityManager, User } from '@MNI/db';
+import { Service } from '@MNI/di';
 import { readFile, unlink } from 'fs/promises';
-import { type IBinaryData } from 'n8n-workflow';
+import { type IBinaryData } from 'MNI-workflow';
 import { nanoid } from 'nanoid';
 import { v4 as uuidv4 } from 'uuid';
 

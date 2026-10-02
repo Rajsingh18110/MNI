@@ -1,6 +1,6 @@
-import type { InstanceAiEvent } from '@n8n/api-types';
-import type { Logger } from '@n8n/backend-common';
-import type { User } from '@n8n/db';
+import type { InstanceAiEvent } from '@MNI/api-types';
+import type { Logger } from '@MNI/backend-common';
+import type { User } from '@MNI/db';
 import {
 	continueInstanceAiTraceContext,
 	orchestratorAgentId,
@@ -12,12 +12,12 @@ import {
 	type ModelConfig,
 	type RunStateRegistry,
 	type ServiceProxyConfig,
-} from '@n8n/instance-ai';
-import { getErrorMessage } from '@n8n/utils/errors/get-error-message';
+} from '@MNI/instance-ai';
+import { getErrorMessage } from '@MNI/utils/errors/get-error-message';
 import { nanoid } from 'nanoid';
 import { v5 as uuidv5 } from 'uuid';
 
-import { N8N_VERSION, WORKFLOW_SDK_VERSION } from '@/constants';
+import { MNI_VERSION, WORKFLOW_SDK_VERSION } from '@/constants';
 import type { AiService } from '@/services/ai.service';
 import { ProxyTokenManager } from '@/services/proxy-token-manager';
 
@@ -222,7 +222,7 @@ export class InstanceAiTracingService {
 				agent_id: orchestratorAgentId(options.runId),
 				...options.metadata,
 			},
-			n8nVersion: N8N_VERSION,
+			n8nVersion: MNI_VERSION,
 			workflowSdkVersion: WORKFLOW_SDK_VERSION,
 			browserExtension: options.browserExtension,
 		});

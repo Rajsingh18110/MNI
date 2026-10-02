@@ -1,5 +1,5 @@
 import { flushPromises } from '@vue/test-utils';
-import { ResponseError } from '@n8n/rest-api-client';
+import { ResponseError } from '@MNI/rest-api-client';
 import { ref } from 'vue';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
@@ -17,7 +17,7 @@ const mocks = vi.hoisted(() => ({
 	authorizeNewCredential: vi.fn(),
 }));
 
-vi.mock('@n8n/stores/useRootStore', () => ({
+vi.mock('@MNI/stores/useRootStore', () => ({
 	useRootStore: () => ({ restApiContext: {}, urlBaseEditor: 'https://n8n.test' }),
 }));
 

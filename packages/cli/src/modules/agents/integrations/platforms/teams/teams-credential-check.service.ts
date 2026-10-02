@@ -1,8 +1,8 @@
-import type { TeamsCredentialCheck } from '@n8n/api-types';
-import { Logger } from '@n8n/backend-common';
-import { OutboundHttp } from '@n8n/backend-network';
-import type { User } from '@n8n/db';
-import { Service } from '@n8n/di';
+import type { TeamsCredentialCheck } from '@MNI/api-types';
+import { Logger } from '@MNI/backend-common';
+import { OutboundHttp } from '@MNI/backend-network';
+import type { User } from '@MNI/db';
+import { Service } from '@MNI/di';
 import { AgentCredentialLookupService } from '../../agent-credential-lookup.service';
 import { stringProperty } from '../../integration-helpers';
 

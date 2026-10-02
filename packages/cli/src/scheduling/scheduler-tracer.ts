@@ -1,5 +1,5 @@
-import type { Tracer } from '@n8n/scheduler';
-import type { Tracing } from 'n8n-core';
+import type { Tracer } from '@MNI/scheduler';
+import type { Tracing } from 'MNI-core';
 
 /**
  * Adapts MNI's Sentry-backed {@link Tracing} to the scheduler package's minimal

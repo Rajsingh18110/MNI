@@ -1,5 +1,5 @@
-import type { SerializableAgentState } from '@n8n/agents';
-import type { AgentMessageAuthor } from '@n8n/api-types';
+import type { SerializableAgentState } from '@MNI/agents';
+import type { AgentMessageAuthor } from '@MNI/api-types';
 import type { Author } from 'chat';
 import type { BridgeExecutionContext } from '../integrations/agent-chat-integration';
 

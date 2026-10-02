@@ -13,14 +13,14 @@ import type {
 	OAuthTokens,
 	OAuthTokenRevocationRequest,
 } from '@modelcontextprotocol/sdk/shared/auth.js';
-import type { McpClientConnectedPeriod, McpClientTypeFilter } from '@n8n/api-types';
-import { getMcpClientType, MCP_CLIENT_TYPE_FILTER_BUCKETS } from '@n8n/api-types';
-import { Logger } from '@n8n/backend-common';
-import { GlobalConfig } from '@n8n/config';
-import { INSTANCE_MCP_RESOURCE_ID } from '@n8n/constants';
-import type { User } from '@n8n/db';
-import { Service } from '@n8n/di';
-import { hasGlobalScope } from '@n8n/permissions';
+import type { McpClientConnectedPeriod, McpClientTypeFilter } from '@MNI/api-types';
+import { getMcpClientType, MCP_CLIENT_TYPE_FILTER_BUCKETS } from '@MNI/api-types';
+import { Logger } from '@MNI/backend-common';
+import { GlobalConfig } from '@MNI/config';
+import { INSTANCE_MCP_RESOURCE_ID } from '@MNI/constants';
+import type { User } from '@MNI/db';
+import { Service } from '@MNI/di';
+import { hasGlobalScope } from '@MNI/permissions';
 import type { Response } from 'express';
 
 import { AuthService } from '@/auth/auth.service';
@@ -30,7 +30,7 @@ import {
 	ProtectedResourceRegistry,
 	type ProtectedResource,
 } from '@/services/protected-resource.registry';
-import { UrlService } from '@n8n/backend-services';
+import { UrlService } from '@MNI/backend-services';
 import { UserManagementMailer } from '@/user-management/email';
 
 import { OAuthClient } from './database/entities/oauth-client.entity';

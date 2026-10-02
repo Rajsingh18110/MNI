@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useMessage } from '@/app/composables/useMessage';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
-import { useToast } from '@n8n/composables/useToast';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
+import { useToast } from '@MNI/composables/useToast';
 import { MODAL_CONFIRM } from '@/app/constants';
 import {
 	DATA_TABLE_CARD_ACTIONS,
@@ -11,12 +11,12 @@ import {
 
 import { useDataTableStore } from '@/features/core/dataTable/dataTable.store';
 import type { DataTable } from '@/features/core/dataTable/dataTable.types';
-import type { IUser, UserAction } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+import type { IUser, UserAction } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 import { computed } from 'vue';
 import { escapeHtml } from '@/app/utils/htmlUtils';
 
-import { N8nActionToggle } from '@n8n/design-system';
+import { N8nActionToggle } from '@MNI/design-system';
 import { useUIStore } from '@/app/stores/ui.store';
 import { useFavoritesStore } from '@/app/stores/favorites.store';
 import DownloadDataTableModal from './DownloadDataTableModal.vue';

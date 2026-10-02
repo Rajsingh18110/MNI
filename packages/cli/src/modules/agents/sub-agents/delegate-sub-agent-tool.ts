@@ -5,9 +5,9 @@ import {
 	type InlineSubAgentProviderToolsResolver,
 	type ModelConfig,
 	type SubAgentTaskDifficulty,
-} from '@n8n/agents';
-import type { SubAgentRunPolicy, SubAgentSource } from '@n8n/api-types';
-import { OperationalError, UserError } from 'n8n-workflow';
+} from '@MNI/agents';
+import type { SubAgentRunPolicy, SubAgentSource } from '@MNI/api-types';
+import { OperationalError, UserError } from 'MNI-workflow';
 
 import { ResponseError } from '@/errors/response-errors/abstract/response.error';
 

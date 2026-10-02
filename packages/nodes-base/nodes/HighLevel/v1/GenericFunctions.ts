@@ -16,8 +16,8 @@ import type {
 	IPollFunctions,
 	IRequestOptions,
 	IWebhookFunctions,
-} from 'n8n-workflow';
-import { NodeApiError, toPathSegment } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeApiError, toPathSegment } from 'MNI-workflow';
 
 const VALID_EMAIL_REGEX =
 	/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;

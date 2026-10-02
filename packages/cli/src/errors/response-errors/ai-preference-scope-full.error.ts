@@ -1,4 +1,4 @@
-import type { AiPreferenceScope } from '@n8n/api-types';
+import type { AiPreferenceScope } from '@MNI/api-types';
 
 import { BadRequestError } from './bad-request.error';
 

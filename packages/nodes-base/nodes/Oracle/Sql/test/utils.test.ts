@@ -1,5 +1,5 @@
 import { DateTime } from 'luxon';
-import type { IDataObject, IExecuteFunctions, INode, INodeExecutionData } from 'n8n-workflow';
+import type { IDataObject, IExecuteFunctions, INode, INodeExecutionData } from 'MNI-workflow';
 import * as oracleDBTypes from 'oracledb';
 import { mock } from 'vitest-mock-extended';
 
@@ -866,7 +866,7 @@ describe('Test configureQueryRunner', () => {
 	});
 });
 
-// eslint-disable-next-line n8n-local-rules/no-skipped-tests
+// eslint-disable-next-line MNI-local-rules/no-skipped-tests
 describe.skip('configureQueryRunner stack overflow regression', () => {
 	it('should handle large out bind datasets without stack overflow', async () => {
 		const chunkSize = 250_000;

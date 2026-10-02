@@ -1,4 +1,4 @@
-import { UnexpectedError } from 'n8n-workflow';
+import { UnexpectedError } from 'MNI-workflow';
 import type {
 	ICredentialDataDecryptedObject,
 	INode,
@@ -9,7 +9,7 @@ import type {
 	WorkflowExecuteMode,
 	IWebhookData,
 	WebhookType,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { NodeExecutionContext } from './node-execution-context';
 import { getRequestHelperFunctions } from './utils/request-helper-functions';

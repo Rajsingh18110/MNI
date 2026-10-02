@@ -2,9 +2,9 @@ import type {
 	RoleAssignmentsResponse,
 	RoleMembersResponse,
 	RoleProjectMembersResponse,
-} from '@n8n/api-types';
-import { CreateRoleDto } from '@n8n/api-types';
-import { LicenseState, Logger } from '@n8n/backend-common';
+} from '@MNI/api-types';
+import { CreateRoleDto } from '@MNI/api-types';
+import { LicenseState, Logger } from '@MNI/backend-common';
 import {
 	CredentialsEntity,
 	SharedCredentials,
@@ -18,16 +18,16 @@ import {
 	Scope as DBScope,
 	ScopeRepository,
 	GLOBAL_ADMIN_ROLE,
-} from '@n8n/db';
-import type { EntityManager } from '@n8n/db';
-import { Service } from '@n8n/di';
+} from '@MNI/db';
+import type { EntityManager } from '@MNI/db';
+import { Service } from '@MNI/di';
 import type {
 	Scope,
 	Role as RoleDTO,
 	AssignableProjectRole,
 	AssignableGlobalRole,
 	RoleNamespace,
-} from '@n8n/permissions';
+} from '@MNI/permissions';
 import {
 	combineScopes,
 	CUSTOM_ROLE_SCOPE_WHITELIST,
@@ -38,8 +38,8 @@ import {
 	PROJECT_EDITOR_ROLE_SLUG,
 	PROJECT_VIEWER_ROLE_SLUG,
 	withMandatoryInstanceScopes,
-} from '@n8n/permissions';
-import { UnexpectedError, UserError } from 'n8n-workflow';
+} from '@MNI/permissions';
+import { UnexpectedError, UserError } from 'MNI-workflow';
 
 import { BadRequestError } from '@/errors/response-errors/bad-request.error';
 import { NotFoundError } from '@/errors/response-errors/not-found.error';
@@ -454,7 +454,7 @@ export class RoleService {
 
 	/**
 	 * Enhanced rolesWithScope function that combines static roles with database roles
-	 * This replaces the original rolesWithScope function from @n8n/permissions
+	 * This replaces the original rolesWithScope function from @MNI/permissions
 	 */
 	async rolesWithScope(
 		namespace: RoleNamespace,

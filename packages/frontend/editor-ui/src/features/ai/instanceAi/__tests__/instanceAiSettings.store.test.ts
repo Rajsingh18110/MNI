@@ -1,17 +1,17 @@
 import { setActivePinia, createPinia } from 'pinia';
 import { computed } from 'vue';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import type { FrontendModuleSettings, InstanceAiUserPreferencesResponse } from '@n8n/api-types';
+import type { FrontendModuleSettings, InstanceAiUserPreferencesResponse } from '@MNI/api-types';
 import { usePostHog } from '@/app/stores/posthog.store';
 import { INSTANCE_AI_SETUP_PANEL_EXPERIMENT } from '@/app/constants/experiments';
 
-vi.mock('@n8n/stores/useRootStore', () => ({
+vi.mock('@MNI/stores/useRootStore', () => ({
 	useRootStore: vi.fn().mockReturnValue({
 		restApiContext: { baseUrl: 'http://localhost:5678/rest' },
 	}),
 }));
 
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: vi.fn().mockReturnValue({
 		showMessage: vi.fn(),
 		showError: vi.fn(),
@@ -29,7 +29,7 @@ vi.mock('@/app/utils/rbac/permissions', () => ({
 	hasPermission: vi.fn().mockReturnValue(false),
 }));
 
-vi.mock('@n8n/i18n', () => ({
+vi.mock('@MNI/i18n', () => ({
 	i18n: { baseText: (key: string) => key },
 }));
 
@@ -87,7 +87,7 @@ vi.mock('../instanceAi.api', () => ({
 }));
 
 import { useInstanceAiSettingsStore } from '../instanceAiSettings.store';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { hasPermission } from '@/app/utils/rbac/permissions';
 
 type InstanceAiModuleSettings = NonNullable<FrontendModuleSettings['instance-ai']>;
@@ -350,7 +350,7 @@ describe('useInstanceAiSettingsStore', () => {
 			setModuleSettings(settingsStore, {
 				sandboxEnabled: true,
 				workflowBuilderAvailable: false,
-				sandboxUnavailableReason: 'N8N_SANDBOX_SERVICE_URL is required.',
+				sandboxUnavailableReason: 'MNI_SANDBOX_SERVICE_URL is required.',
 			});
 
 			expect(store.isWorkflowBuilderAvailable).toBe(false);
@@ -365,7 +365,7 @@ describe('useInstanceAiSettingsStore', () => {
 			mcpServers: '',
 			mcpAccessEnabled: true,
 			sandboxEnabled: false,
-			sandboxProvider: 'n8n-sandbox',
+			sandboxProvider: 'MNI-sandbox',
 			sandboxImage: '',
 			sandboxTimeout: 60,
 			daytonaCredentialId: null,
@@ -445,7 +445,7 @@ describe('useInstanceAiSettingsStore', () => {
 			mockVerifySandbox.mockResolvedValue({ ok: true, startupMs: 20 });
 			mockVerifySearch.mockResolvedValue({ ok: true, resultCount: 10 });
 			const modelPayload = { modelName: 'gpt-5.6-sol' };
-			const sandboxPayload = { provider: 'n8n-sandbox' as const };
+			const sandboxPayload = { provider: 'MNI-sandbox' as const };
 			const searchPayload = {
 				connection: { type: 'braveSearchApi', data: { apiKey: 'key' } },
 			};
@@ -554,7 +554,7 @@ describe('useInstanceAiSettingsStore', () => {
 				permissions: {},
 				mcpServers: '',
 				sandboxEnabled: false,
-				sandboxProvider: 'n8n-sandbox',
+				sandboxProvider: 'MNI-sandbox',
 				sandboxImage: '',
 				sandboxTimeout: 60,
 				daytonaCredentialId: null,

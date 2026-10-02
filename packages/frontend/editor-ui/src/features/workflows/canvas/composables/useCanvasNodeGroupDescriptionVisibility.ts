@@ -1,5 +1,5 @@
 import { computed, ref, type InjectionKey } from 'vue';
-import type { IWorkflowGroup } from 'n8n-workflow';
+import type { IWorkflowGroup } from 'MNI-workflow';
 import type { NodeGroupChangeEvent } from '@/app/stores/workflowDocument/useWorkflowDocumentNodeGroups';
 import { CHANGE_ACTION } from '@/app/stores/workflowDocument/types';
 import { LOCAL_STORAGE_CANVAS_GROUP_DESCRIPTION_PINNED } from '@/app/constants/localStorage';

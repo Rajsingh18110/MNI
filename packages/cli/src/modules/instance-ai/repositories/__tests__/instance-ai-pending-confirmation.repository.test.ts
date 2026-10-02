@@ -1,4 +1,4 @@
-import type { DeleteResult, EntityManager, Repository } from '@n8n/typeorm';
+import type { DeleteResult, EntityManager, Repository } from '@MNI/typeorm';
 import { mock } from 'vitest-mock-extended';
 
 import type { InstanceAiPendingConfirmation } from '../../entities/instance-ai-pending-confirmation.entity';

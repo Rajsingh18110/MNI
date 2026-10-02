@@ -1,13 +1,13 @@
-import { useToast } from '@n8n/composables/useToast';
-import { useI18n } from '@n8n/i18n';
-import type { IDataObject, INodeExecutionData, IPinData } from 'n8n-workflow';
+import { useToast } from '@MNI/composables/useToast';
+import { useI18n } from '@MNI/i18n';
+import type { IDataObject, INodeExecutionData, IPinData } from 'MNI-workflow';
 import {
 	isTrimmedNodeExecutionData,
 	jsonParse,
 	jsonStringify,
 	NodeConnectionTypes,
 	NodeHelpers,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import {
 	MAX_EXPECTED_REQUEST_SIZE,
 	MAX_PINNED_DATA_SIZE,
@@ -23,10 +23,10 @@ import {
 } from '@/app/stores/workflowDocument.store';
 import type { INodeUi, IRunDataDisplayMode } from '@/Interface';
 import { useExternalHooks } from '@/app/composables/useExternalHooks';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
 import type { MaybeRef } from 'vue';
 import { computed, unref } from 'vue';
-import { useRootStore } from '@n8n/stores/useRootStore';
+import { useRootStore } from '@MNI/stores/useRootStore';
 import { useNodeType } from '@/app/composables/useNodeType';
 import { useDataSchema } from './useDataSchema';
 import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';

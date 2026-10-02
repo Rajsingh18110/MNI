@@ -44,7 +44,7 @@ const { mocks } = vi.hoisted(() => ({
 		parentsByNode: {} as Record<string, string[]>,
 
 		// rootStore
-		restApiContext: { baseUrl: 'http://n8n', pushRef: 'push-ref' } as unknown,
+		restApiContext: { baseUrl: 'http://MNI', pushRef: 'push-ref' } as unknown,
 
 		// data table api
 		fetchDataTablesApi: vi.fn(),
@@ -159,7 +159,7 @@ vi.mock('@/app/stores/nodeTypes.store', () => ({
 	useNodeTypesStore: () => ({ isTriggerNode: mocks.isTriggerNode }),
 }));
 
-vi.mock('@n8n/stores/useRootStore', () => ({
+vi.mock('@MNI/stores/useRootStore', () => ({
 	useRootStore: () => ({ restApiContext: mocks.restApiContext }),
 }));
 
@@ -193,15 +193,15 @@ vi.mock('./buildEvaluationConfigDto', () => ({
 	buildEvaluationConfigDto: (...args: unknown[]) => mocks.buildEvaluationConfigDto(...args),
 }));
 
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: () => ({ showError: mocks.showError }),
 }));
 
-vi.mock('@n8n/composables/useTelemetry', () => ({
+vi.mock('@MNI/composables/useTelemetry', () => ({
 	useTelemetry: () => ({ track: mocks.track }),
 }));
 
-vi.mock('@n8n/i18n', () => ({
+vi.mock('@MNI/i18n', () => ({
 	useI18n: () => ({ baseText: (key: string) => key }),
 }));
 
@@ -217,9 +217,9 @@ vi.mock('@/app/stores/focusPanel.store', () => ({
 	}),
 }));
 
-// n8n-workflow graph helpers — keep real logic but mock the module so vi can
+// MNI-workflow graph helpers — keep real logic but mock the module so vi can
 // intercept. resolveSlice uses isTriggerNode; we control that through mocks.
-vi.mock('n8n-workflow', () => ({
+vi.mock('MNI-workflow', () => ({
 	getParentNodes: vi.fn((_byDest, name, _type, depth) => {
 		if (depth === undefined) {
 			return mocks.ancestorsOf[name] ?? (name === 'AI Agent' ? ['Trigger'] : []);
@@ -229,7 +229,7 @@ vi.mock('n8n-workflow', () => ({
 		return mocks.parentsByNode[name] ?? [];
 	}),
 	mapConnectionsByDestination: vi.fn(() => ({})),
-	EVALUATION_TRIGGER_NODE_TYPE: 'n8n-nodes-base.evaluationTrigger',
+	EVALUATION_TRIGGER_NODE_TYPE: 'MNI-nodes-base.evaluationTrigger',
 }));
 
 // ---------------------------------------------------------------------------
@@ -785,7 +785,7 @@ describe('useTestCasePersistence', () => {
 			mocks.allNodes = [
 				{ name: 'Trigger A', type: 'trigger' },
 				{ name: 'Trigger B', type: 'trigger' },
-				{ name: 'Old Eval Trigger', type: 'n8n-nodes-base.evaluationTrigger' },
+				{ name: 'Old Eval Trigger', type: 'MNI-nodes-base.evaluationTrigger' },
 			];
 			mocks.parentsByNode['Start Node'] = ['Trigger A', 'Trigger B', 'Old Eval Trigger'];
 
@@ -812,8 +812,8 @@ describe('useTestCasePersistence', () => {
 			// non-evaluation count is 0, but there genuinely are 2 upstream parents,
 			// so the message shouldn't claim "found 0".
 			mocks.allNodes = [
-				{ name: 'Old Eval Trigger A', type: 'n8n-nodes-base.evaluationTrigger' },
-				{ name: 'Old Eval Trigger B', type: 'n8n-nodes-base.evaluationTrigger' },
+				{ name: 'Old Eval Trigger A', type: 'MNI-nodes-base.evaluationTrigger' },
+				{ name: 'Old Eval Trigger B', type: 'MNI-nodes-base.evaluationTrigger' },
 			];
 			mocks.parentsByNode['Start Node'] = ['Old Eval Trigger A', 'Old Eval Trigger B'];
 

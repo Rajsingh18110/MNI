@@ -1,4 +1,4 @@
-import type { ILoadOptionsFunctions } from 'n8n-workflow';
+import type { ILoadOptionsFunctions } from 'MNI-workflow';
 import { beforeEach, describe, expect, it, vi, type Mock } from 'vitest';
 
 import { getDatabases, getDataSources } from '../../v3/methods/listSearch';

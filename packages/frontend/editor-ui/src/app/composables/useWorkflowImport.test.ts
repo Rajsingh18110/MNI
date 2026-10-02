@@ -3,7 +3,7 @@ import { shallowRef } from 'vue';
 import { setActivePinia } from 'pinia';
 import { createTestingPinia } from '@pinia/testing';
 import { useWorkflowImport } from './useWorkflowImport';
-import type { WorkflowDataUpdate } from '@n8n/rest-api-client/api/workflows';
+import type { WorkflowDataUpdate } from '@MNI/rest-api-client/api/workflows';
 import { VIEWS } from '@/app/constants';
 
 const mockResetWorkspace = vi.hoisted(() => vi.fn());
@@ -45,7 +45,7 @@ describe('useWorkflowImport', () => {
 	const createWorkflowData = (overrides: Partial<WorkflowDataUpdate> = {}): WorkflowDataUpdate =>
 		({
 			id: 'test-workflow',
-			nodes: [{ name: 'Node 1', type: 'n8n-nodes-base.noOp', position: [0, 0] }],
+			nodes: [{ name: 'Node 1', type: 'MNI-nodes-base.noOp', position: [0, 0] }],
 			connections: {},
 			...overrides,
 		}) as WorkflowDataUpdate;

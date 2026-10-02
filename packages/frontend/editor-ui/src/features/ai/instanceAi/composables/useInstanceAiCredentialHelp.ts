@@ -1,5 +1,5 @@
 import { toValue, type MaybeRefOrGetter } from 'vue';
-import type { InstanceAiThreadSource } from '@n8n/api-types';
+import type { InstanceAiThreadSource } from '@MNI/api-types';
 
 import { useProjectsStore } from '@/features/collaboration/projects/projects.store';
 import type { InstanceAiCredentialHelpHandler } from '@/app/composables/useInstanceAiEditorCapability';

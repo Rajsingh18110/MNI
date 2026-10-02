@@ -1,8 +1,8 @@
-import { Logger } from '@n8n/backend-common';
-import { OutboundHttp } from '@n8n/backend-network';
-import { Service } from '@n8n/di';
+import { Logger } from '@MNI/backend-common';
+import { OutboundHttp } from '@MNI/backend-network';
+import { Service } from '@MNI/di';
 import type { Algorithm } from 'jsonwebtoken';
-import { OperationalError } from 'n8n-workflow';
+import { OperationalError } from 'MNI-workflow';
 import { createPublicKey } from 'node:crypto';
 import { z } from 'zod';
 

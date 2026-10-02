@@ -1,15 +1,15 @@
-import { Logger, LicenseState } from '@n8n/backend-common';
-import type { User } from '@n8n/db';
-import { ProjectRelationRepository, SharedWorkflowRepository, UserRepository } from '@n8n/db';
-import { Service } from '@n8n/di';
+import { Logger, LicenseState } from '@MNI/backend-common';
+import type { User } from '@MNI/db';
+import { ProjectRelationRepository, SharedWorkflowRepository, UserRepository } from '@MNI/db';
+import { Service } from '@MNI/di';
 import {
 	hasGlobalScope,
 	type ProjectRole,
 	type WorkflowSharingRole,
 	type Scope,
 	PROJECT_OWNER_ROLE_SLUG,
-} from '@n8n/permissions';
-import { In } from '@n8n/typeorm';
+} from '@MNI/permissions';
+import { In } from '@MNI/typeorm';
 
 import { RoleService } from '@/services/role.service';
 

@@ -9,8 +9,8 @@
 // XX denotes that the node is disabled
 // PD denotes that the node has pinned data
 
-import type { INode } from 'n8n-workflow';
-import { NodeConnectionTypes } from 'n8n-workflow';
+import type { INode } from 'MNI-workflow';
+import { NodeConnectionTypes } from 'MNI-workflow';
 
 import { createNodeData, defaultWorkflowParameter } from './helpers';
 import { DirectedGraph } from '../directed-graph';

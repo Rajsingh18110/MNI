@@ -54,7 +54,7 @@ if (values.help) {
 	process.stdout.write(HELP);
 	process.exit(0);
 }
-if (mode === 'playwright' && values.filter) fail('playwright always runs in n8n-playwright');
+if (mode === 'playwright' && values.filter) fail('playwright always runs in MNI-playwright');
 if (mode === 'test' && !values.filter) fail('Vitest needs an owning package (--filter)');
 if (mode !== 'test' && mode !== 'playwright' && (values.script || runnerArgs.length)) {
 	fail('only test commands accept a script or runner arguments');
@@ -71,7 +71,7 @@ if (['test', 'playwright'].includes(mode) && !/^test(?::[\w:-]+)?$/.test(script)
 if (/:(?:dev|watch|ui)(?::|$)/.test(script)) fail('watch and UI scripts need a terminal');
 if (values.script && !['test', 'playwright'].includes(mode)) fail('--script needs a test command');
 
-const packageName = mode === 'playwright' ? 'n8n-playwright' : values.filter;
+const packageName = mode === 'playwright' ? 'MNI-playwright' : values.filter;
 const args = packageName
 	? [`--filter=${packageName}`, '--fail-if-no-match', 'run', script, ...runnerArgs]
 	: ['run', mode];

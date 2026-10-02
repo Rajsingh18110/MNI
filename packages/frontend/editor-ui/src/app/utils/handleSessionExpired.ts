@@ -1,6 +1,6 @@
-import { useNotificationsStore } from '@n8n/stores/notifications.store';
-import { useRootStore } from '@n8n/stores/useRootStore';
-import { useUsersStore } from '@n8n/stores/users.store';
+import { useNotificationsStore } from '@MNI/stores/notifications.store';
+import { useRootStore } from '@MNI/stores/useRootStore';
+import { useUsersStore } from '@MNI/stores/users.store';
 import type { Router } from 'vue-router';
 
 import { VIEWS } from '@/app/constants';
@@ -8,7 +8,7 @@ import { useSessionExpiryStore } from '@/app/stores/sessionExpiry.store';
 import { useUIStore } from '@/app/stores/ui.store';
 import { getSanitizedCurrentPath } from '@/app/utils/urlUtils';
 
-// currentUser excludes failed-login 401s; handled dedupes concurrent ones; baseURL excludes non-n8n hosts.
+// currentUser excludes failed-login 401s; handled dedupes concurrent ones; baseURL excludes non-MNI hosts.
 export async function handleSessionExpired(router: Router, baseURL: string): Promise<void> {
 	const usersStore = useUsersStore();
 	const sessionExpiryStore = useSessionExpiryStore();

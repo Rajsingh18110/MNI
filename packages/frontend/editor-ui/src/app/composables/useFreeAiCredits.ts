@@ -1,13 +1,13 @@
 import { computed, ref, toValue, type MaybeRefOrGetter } from 'vue';
-import { OPEN_AI_API_CREDENTIAL_TYPE } from 'n8n-workflow';
+import { OPEN_AI_API_CREDENTIAL_TYPE } from 'MNI-workflow';
 import type { ICredentialsResponse } from '@/features/credentials/credentials.types';
 import { useCredentialsStore } from '@/features/credentials/credentials.store';
 import { useProjectsStore } from '@/features/collaboration/projects/projects.store';
-import { useSettingsStore } from '@n8n/stores/settings.store';
-import { useUsersStore } from '@n8n/stores/users.store';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
-import { useToast } from '@n8n/composables/useToast';
-import { useI18n } from '@n8n/i18n';
+import { useSettingsStore } from '@MNI/stores/settings.store';
+import { useUsersStore } from '@MNI/stores/users.store';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
+import { useToast } from '@MNI/composables/useToast';
+import { useI18n } from '@MNI/i18n';
 
 const showSuccessCallout = ref(false);
 

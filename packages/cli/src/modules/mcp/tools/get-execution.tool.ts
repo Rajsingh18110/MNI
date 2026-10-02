@@ -1,8 +1,8 @@
-import { type ExecutionRepository, type User } from '@n8n/db';
-import { Container } from '@n8n/di';
-import type { IRunExecutionData, IRunData, ITaskDataConnections, IPinData } from 'n8n-workflow';
-import { ensureError } from '@n8n/utils/errors/ensure-error';
-import { jsonStringify, replaceCircularReferences } from 'n8n-workflow';
+import { type ExecutionRepository, type User } from '@MNI/db';
+import { Container } from '@MNI/di';
+import type { IRunExecutionData, IRunData, ITaskDataConnections, IPinData } from 'MNI-workflow';
+import { ensureError } from '@MNI/utils/errors/ensure-error';
+import { jsonStringify, replaceCircularReferences } from 'MNI-workflow';
 import z from 'zod';
 
 import { USER_CALLED_MCP_TOOL_EVENT } from '../mcp.constants';

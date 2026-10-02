@@ -39,7 +39,7 @@ describe('TriggerPanel.vue', () => {
 		setActivePinia(createTestingPinia({ stubActions: false }));
 		workflowsStore = mockedStore(useWorkflowsStore);
 		workflowsStore.setWorkflowId('1');
-		const node = createTestNode({ id: '0', name: 'Webhook', type: 'n8n-nodes-base.webhook' });
+		const node = createTestNode({ id: '0', name: 'Webhook', type: 'MNI-nodes-base.webhook' });
 
 		workflowDocStore = useWorkflowDocumentStore(
 			createWorkflowDocumentId(workflowsStore.workflowId),
@@ -49,7 +49,7 @@ describe('TriggerPanel.vue', () => {
 
 		nodeTypesStore = mockedStore(useNodeTypesStore);
 		const nodeTypeDescription = mockNodeTypeDescription({
-			name: 'n8n-nodes-base.webhook',
+			name: 'MNI-nodes-base.webhook',
 			displayName: 'Webhook',
 			webhooks: [{ name: 'default', httpMethod: 'POST', path: 'webhook' }],
 		});

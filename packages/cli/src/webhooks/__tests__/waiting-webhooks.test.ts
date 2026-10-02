@@ -1,10 +1,10 @@
-import type { EndpointsConfig } from '@n8n/config';
-import type { IExecutionResponse } from '@n8n/db';
+import type { EndpointsConfig } from '@MNI/config';
+import type { IExecutionResponse } from '@MNI/db';
 import type express from 'express';
-import type { InstanceSettings } from 'n8n-core';
-import { WAITING_TOKEN_QUERY_PARAM } from 'n8n-core';
-import type { INodeParameters, IWorkflowBase, Workflow } from 'n8n-workflow';
-import { SEND_AND_WAIT_OPERATION } from 'n8n-workflow';
+import type { InstanceSettings } from 'MNI-core';
+import { WAITING_TOKEN_QUERY_PARAM } from 'MNI-core';
+import type { INodeParameters, IWorkflowBase, Workflow } from 'MNI-workflow';
+import { SEND_AND_WAIT_OPERATION } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import { ConflictError } from '@/errors/response-errors/conflict.error';
@@ -277,7 +277,7 @@ describe('WaitingWebhooks', () => {
 						{
 							id: nodeId,
 							name: 'SendAndWaitNode',
-							type: 'n8n-nodes-base.sendAndWait',
+							type: 'MNI-nodes-base.sendAndWait',
 							parameters: { operation: SEND_AND_WAIT_OPERATION },
 							typeVersion: 1,
 							position: [0, 0],
@@ -341,7 +341,7 @@ describe('WaitingWebhooks', () => {
 						{
 							id: 'wait-node-id',
 							name: 'WaitNode',
-							type: 'n8n-nodes-base.wait',
+							type: 'MNI-nodes-base.wait',
 							parameters: { operation: 'webhook' },
 							typeVersion: 1,
 							position: [0, 0],
@@ -444,7 +444,7 @@ describe('WaitingWebhooks', () => {
 
 		it('redirects a Wait node resuming on form submission', async () => {
 			executionPersistence.findSingleExecution.mockResolvedValue(
-				buildExecution({ nodeType: 'n8n-nodes-base.wait', nodeParameters: { resume: 'form' } }),
+				buildExecution({ nodeType: 'MNI-nodes-base.wait', nodeParameters: { resume: 'form' } }),
 			);
 			const res = buildRes();
 			const req = mock<WaitingWebhookRequest>({
@@ -461,7 +461,7 @@ describe('WaitingWebhooks', () => {
 
 		it('redirects a Form node', async () => {
 			executionPersistence.findSingleExecution.mockResolvedValue(
-				buildExecution({ nodeType: 'n8n-nodes-base.form' }),
+				buildExecution({ nodeType: 'MNI-nodes-base.form' }),
 			);
 			const res = buildRes();
 			const req = mock<WaitingWebhookRequest>({
@@ -481,7 +481,7 @@ describe('WaitingWebhooks', () => {
 
 		it('does not redirect a Wait node resuming on webhook call', async () => {
 			executionPersistence.findSingleExecution.mockResolvedValue(
-				buildExecution({ nodeType: 'n8n-nodes-base.wait', nodeParameters: { resume: 'webhook' } }),
+				buildExecution({ nodeType: 'MNI-nodes-base.wait', nodeParameters: { resume: 'webhook' } }),
 			);
 			mockWebhookService.getNodeWebhooks.mockReturnValue([
 				{
@@ -530,7 +530,7 @@ describe('WaitingWebhooks', () => {
 				identicalEndpointsConfig,
 			);
 			executionPersistence.findSingleExecution.mockResolvedValue(
-				buildExecution({ nodeType: 'n8n-nodes-base.wait', nodeParameters: { resume: 'form' } }),
+				buildExecution({ nodeType: 'MNI-nodes-base.wait', nodeParameters: { resume: 'form' } }),
 			);
 			mockWebhookService.getNodeWebhooks.mockReturnValue([]);
 			vi.spyOn(WorkflowExecuteAdditionalData, 'getBase').mockResolvedValue({} as any);
@@ -651,7 +651,7 @@ describe('WaitingWebhooks', () => {
 							{
 								node: {
 									name: lastNodeExecuted,
-									type: '@n8n/n8n-nodes-langchain.someHitlTool',
+									type: '@MNI/MNI-nodes-langchain.someHitlTool',
 									typeVersion: 1,
 									parameters: {},
 									id: 'node-id',
@@ -683,7 +683,7 @@ describe('WaitingWebhooks', () => {
 					nodes: [
 						{
 							name: lastNodeExecuted,
-							type: '@n8n/n8n-nodes-langchain.someHitlTool',
+							type: '@MNI/MNI-nodes-langchain.someHitlTool',
 							typeVersion: 1,
 							parameters: {},
 							id: 'node-id',
@@ -774,7 +774,7 @@ describe('WaitingWebhooks', () => {
 							{
 								node: {
 									name: lastNodeExecuted,
-									type: 'n8n-nodes-base.wait',
+									type: 'MNI-nodes-base.wait',
 									typeVersion: 1,
 									parameters: {},
 									id: 'node-id',
@@ -801,7 +801,7 @@ describe('WaitingWebhooks', () => {
 					nodes: [
 						{
 							name: lastNodeExecuted,
-							type: 'n8n-nodes-base.wait',
+							type: 'MNI-nodes-base.wait',
 							typeVersion: 1,
 							parameters: {},
 							id: 'node-id',
@@ -865,7 +865,7 @@ describe('WaitingWebhooks', () => {
 							{
 								node: {
 									name: lastNodeExecuted,
-									type: 'n8n-nodes-base.wait',
+									type: 'MNI-nodes-base.wait',
 									typeVersion: 1,
 									parameters: {},
 									id: 'node-id',
@@ -898,7 +898,7 @@ describe('WaitingWebhooks', () => {
 					nodes: [
 						{
 							name: lastNodeExecuted,
-							type: 'n8n-nodes-base.wait',
+							type: 'MNI-nodes-base.wait',
 							typeVersion: 1,
 							parameters: {},
 							id: 'node-id',
@@ -1000,7 +1000,7 @@ describe('WaitingWebhooks', () => {
 							{
 								node: {
 									name: lastNodeExecuted,
-									type: '@n8n/n8n-nodes-langchain.someHitlTool',
+									type: '@MNI/MNI-nodes-langchain.someHitlTool',
 									typeVersion: 1,
 									parameters: {},
 									id: 'node-id',
@@ -1033,7 +1033,7 @@ describe('WaitingWebhooks', () => {
 					nodes: [
 						{
 							name: lastNodeExecuted,
-							type: '@n8n/n8n-nodes-langchain.someHitlTool',
+							type: '@MNI/MNI-nodes-langchain.someHitlTool',
 							typeVersion: 1,
 							parameters: {},
 							id: 'node-id',
@@ -1135,7 +1135,7 @@ describe('WaitingWebhooks', () => {
 							{
 								node: {
 									name: lastNodeExecuted,
-									type: 'n8n-nodes-base.wait',
+									type: 'MNI-nodes-base.wait',
 									typeVersion: 1,
 									parameters: {},
 									id: 'node-id',
@@ -1168,7 +1168,7 @@ describe('WaitingWebhooks', () => {
 					nodes: [
 						{
 							name: lastNodeExecuted,
-							type: 'n8n-nodes-base.wait',
+							type: 'MNI-nodes-base.wait',
 							typeVersion: 1,
 							parameters: {},
 							id: 'node-id',
@@ -1265,7 +1265,7 @@ describe('WaitingWebhooks', () => {
 							{
 								node: {
 									name: lastNodeExecuted,
-									type: 'n8n-nodes-base.wait',
+									type: 'MNI-nodes-base.wait',
 									typeVersion: 1,
 									parameters: {},
 									id: 'node-id',
@@ -1298,7 +1298,7 @@ describe('WaitingWebhooks', () => {
 					nodes: [
 						{
 							name: lastNodeExecuted,
-							type: 'n8n-nodes-base.wait',
+							type: 'MNI-nodes-base.wait',
 							typeVersion: 1,
 							parameters: {},
 							id: 'node-id',
@@ -1455,7 +1455,7 @@ describe('WaitingWebhooks', () => {
 			vi.spyOn(WorkflowExecuteAdditionalData, 'getBase').mockResolvedValue({} as any);
 			executionPersistence.findSingleExecution.mockResolvedValue(
 				createMockExecution({
-					nodeType: 'n8n-nodes-base.wait',
+					nodeType: 'MNI-nodes-base.wait',
 					nodeName: 'WaitNode',
 					nodeId: 'node-id',
 				}),
@@ -1516,7 +1516,7 @@ describe('WaitingWebhooks', () => {
 			const sendAndWaitNodeId = 'send-and-wait-node-id';
 			executionPersistence.findSingleExecution.mockResolvedValue(
 				createMockExecution({
-					nodeType: 'n8n-nodes-base.sendAndWait',
+					nodeType: 'MNI-nodes-base.sendAndWait',
 					nodeName: 'SendAndWaitNode',
 					nodeId: sendAndWaitNodeId,
 					nodeParameters: { operation: SEND_AND_WAIT_OPERATION },
@@ -1540,7 +1540,7 @@ describe('WaitingWebhooks', () => {
 		it('should not emit for form-resume execution (redirected, not resumed here)', async () => {
 			executionPersistence.findSingleExecution.mockResolvedValue(
 				createMockExecution({
-					nodeType: 'n8n-nodes-base.wait',
+					nodeType: 'MNI-nodes-base.wait',
 					nodeName: 'WaitNode',
 					nodeId: 'node-id',
 					nodeParameters: { resume: 'form' },
@@ -1564,7 +1564,7 @@ describe('WaitingWebhooks', () => {
 			const sendAndWaitNodeId = 'send-and-wait-node-id';
 			executionPersistence.findSingleExecution.mockResolvedValue(
 				createMockExecution({
-					nodeType: 'n8n-nodes-base.emailSend',
+					nodeType: 'MNI-nodes-base.emailSend',
 					nodeName: 'SendAndWaitNode',
 					nodeId: sendAndWaitNodeId,
 					typeVersion: 2,

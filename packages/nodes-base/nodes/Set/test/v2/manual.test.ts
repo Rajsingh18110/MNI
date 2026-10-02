@@ -1,12 +1,12 @@
 import get from 'lodash/get';
-import { constructExecutionMetaData } from 'n8n-core';
+import { constructExecutionMetaData } from 'MNI-core';
 import {
 	NodeOperationError,
 	type IDataObject,
 	type IExecuteFunctions,
 	type IGetNodeParameterOptions,
 	type INode,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { type SetNodeOptions } from '../../v2/helpers/interfaces';
 import { execute } from '../../v2/manual.mode';
@@ -14,7 +14,7 @@ import { execute } from '../../v2/manual.mode';
 const node: INode = {
 	id: '11',
 	name: 'Set Node',
-	type: 'n8n-nodes-base.set',
+	type: 'MNI-nodes-base.set',
 	typeVersion: 3.4,
 	position: [42, 42],
 	parameters: {
@@ -83,7 +83,7 @@ describe('test Set2, manual Mode', () => {
 		const assignments = {
 			assignments: [
 				{
-					// eslint-disable-next-line n8n-nodes-base/node-param-display-name-miscased
+					// eslint-disable-next-line MNI-nodes-base/node-param-display-name-miscased
 					name: 'test',
 					value: '{ ok: 1 }',
 					type: 'object',
@@ -103,7 +103,7 @@ describe('test Set2, manual Mode', () => {
 		const assignments = {
 			assignments: [
 				{
-					// eslint-disable-next-line n8n-nodes-base/node-param-display-name-miscased
+					// eslint-disable-next-line MNI-nodes-base/node-param-display-name-miscased
 					name: 'test',
 					value: '{ ok: 1',
 					type: 'object',

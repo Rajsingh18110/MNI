@@ -1,6 +1,6 @@
-import { LicenseState } from '@n8n/backend-common';
-import { mockInstance } from '@n8n/backend-test-utils';
-import { ProjectRepository, User } from '@n8n/db';
+import { LicenseState } from '@MNI/backend-common';
+import { mockInstance } from '@MNI/backend-test-utils';
+import { ProjectRepository, User } from '@MNI/db';
 
 import { Telemetry } from '@/telemetry';
 

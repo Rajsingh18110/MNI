@@ -11,7 +11,7 @@ import SqlEditor from '@/features/shared/editors/components/SqlEditor/SqlEditor.
 import { useFocusPanelStore } from '@/app/stores/focusPanel.store';
 import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';
 import { computed, nextTick, ref, watch, toRef } from 'vue';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import {
 	formatAsExpression,
 	getParameterTypeOption,
@@ -30,12 +30,12 @@ import {
 	HTML_NODE_TYPE,
 	type INodeProperties,
 	isResourceLocatorValue,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import { useEnvironmentsStore } from '@/features/settings/environments.ee/environments.store';
 import { htmlEditorEventBus } from '@/app/event-bus';
 import { hasFocusOnInput, isFocusableEl } from '@/app/utils/typesUtils';
 import type { INodeUi, TargetNodeParameterContext } from '@/Interface';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
 import { computedAsync } from '@vueuse/core';
 import { useExecutionData } from '@/features/execution/executions/composables/useExecutionData';
 import { injectWorkflowDocumentStore } from '@/app/stores/workflowDocument.store';
@@ -50,7 +50,7 @@ import { type CanvasNode, CanvasNodeRenderType } from '@/features/workflows/canv
 import { useCanvasOperations } from '@/app/composables/useCanvasOperations';
 import { useSetupPanelStore } from '@/features/setupPanel/setupPanel.store';
 
-import { N8nIcon, N8nInfoTip, N8nInput, N8nSegmentControl, N8nText } from '@n8n/design-system';
+import { N8nIcon, N8nInfoTip, N8nInput, N8nSegmentControl, N8nText } from '@MNI/design-system';
 import { useInjectWorkflowId } from '@/app/composables/useInjectWorkflowId';
 defineOptions({ name: 'FocusPanel' });
 

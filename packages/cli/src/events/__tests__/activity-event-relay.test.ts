@@ -1,5 +1,5 @@
-import type { Logger } from '@n8n/backend-common';
-import type { GlobalConfig } from '@n8n/config';
+import type { Logger } from '@MNI/backend-common';
+import type { GlobalConfig } from '@MNI/config';
 import type {
 	ActivityEventRepository,
 	WorkflowHistory,
@@ -7,8 +7,8 @@ import type {
 	Project,
 	SharedCredentialsRepository,
 	SharedWorkflowRepository,
-} from '@n8n/db';
-import type { INode } from 'n8n-workflow';
+} from '@MNI/db';
+import type { INode } from 'MNI-workflow';
 import { mock, type MockProxy } from 'vitest-mock-extended';
 
 import { EventService } from '@/events/event.service';
@@ -227,18 +227,18 @@ describe('ActivityEventRelay', () => {
 				(s) =>
 					s.emit('workflow-created', {
 						user,
-						workflow: workflowWith([node('n8n-nodes-base.slack')]),
+						workflow: workflowWith([node('MNI-nodes-base.slack')]),
 						publicApi: false,
 						projectId: 'project1',
 						projectType: 'team',
-						source: 'n8n-ai',
+						source: 'MNI-ai',
 					}),
 				{
 					category: 'workflow',
 					action: 'created',
 					resourceId: 'workflow1',
 					resourceName: 'Lead enrichment',
-					data: { source: 'n8n-ai', nodeCount: 1 },
+					data: { source: 'MNI-ai', nodeCount: 1 },
 				},
 			],
 			[
@@ -246,7 +246,7 @@ describe('ActivityEventRelay', () => {
 				(s) =>
 					s.emit('workflow-saved', {
 						user,
-						workflow: workflowWith([node('n8n-nodes-base.slack')]),
+						workflow: workflowWith([node('MNI-nodes-base.slack')]),
 						publicApi: false,
 						source: 'ui',
 					}),
@@ -511,7 +511,7 @@ describe('ActivityEventRelay', () => {
 		const savedWith = (event: Partial<RelayEventMap['workflow-saved']>) => {
 			eventService.emit('workflow-saved', {
 				user,
-				workflow: workflowWith([node('n8n-nodes-base.slack')]),
+				workflow: workflowWith([node('MNI-nodes-base.slack')]),
 				publicApi: false,
 				...event,
 			});
@@ -524,8 +524,8 @@ describe('ActivityEventRelay', () => {
 			relayWith({ flagOverride: true });
 
 			savedWith({
-				workflow: workflowWith([node('n8n-nodes-base.slack'), node('n8n-nodes-base.httpRequest')]),
-				previousWorkflow: workflowWith([node('n8n-nodes-base.slack'), node('n8n-nodes-base.set')]),
+				workflow: workflowWith([node('MNI-nodes-base.slack'), node('MNI-nodes-base.httpRequest')]),
+				previousWorkflow: workflowWith([node('MNI-nodes-base.slack'), node('MNI-nodes-base.set')]),
 				source: 'ui',
 				aiBuilderAssisted: true,
 				settingsChanged: { timezone: { from: 'UTC', to: 'CET' } },
@@ -565,10 +565,10 @@ describe('ActivityEventRelay', () => {
 
 			savedWith({
 				workflow: workflowWith([
-					node('n8n-nodes-base.slack', 'a'),
-					node('n8n-nodes-base.slack', 'b'),
+					node('MNI-nodes-base.slack', 'a'),
+					node('MNI-nodes-base.slack', 'b'),
 				]),
-				previousWorkflow: workflowWith([node('n8n-nodes-base.slack', 'a')]),
+				previousWorkflow: workflowWith([node('MNI-nodes-base.slack', 'a')]),
 				source: 'ui',
 			});
 			await flushPromises();
@@ -602,13 +602,13 @@ describe('ActivityEventRelay', () => {
 
 			const many = (count: number, prefix: string) =>
 				Array.from({ length: count }, (_, i) =>
-					node(`@n8n/n8n-nodes-langchain.${prefix}${'x'.repeat(40)}${i}`),
+					node(`@MNI/MNI-nodes-langchain.${prefix}${'x'.repeat(40)}${i}`),
 				);
 
 			savedWith({
 				workflow: workflowWith(many(30, 'added')),
 				previousWorkflow: workflowWith(many(30, 'removed')),
-				source: 'n8n-ai',
+				source: 'MNI-ai',
 				settingsChanged: { timezone: { from: 'UTC', to: 'CET' } },
 			});
 			await flushPromises();
@@ -616,7 +616,7 @@ describe('ActivityEventRelay', () => {
 			const data = recordedData();
 			expect(JSON.stringify(data).length).toBeLessThanOrEqual(512);
 			expect(data).toEqual({
-				source: 'n8n-ai',
+				source: 'MNI-ai',
 				nodeCount: 30,
 				nodesAddedTotal: 30,
 				nodesRemovedTotal: 30,

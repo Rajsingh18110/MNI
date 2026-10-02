@@ -2,7 +2,7 @@
 	"nodes": [
 		{
 			"parameters": {},
-			"type": "n8n-nodes-base.manualTrigger",
+			"type": "MNI-nodes-base.manualTrigger",
 			"typeVersion": 1,
 			"position": [200, 120],
 			"id": "b4205abf-7102-4e53-8aed-7bd047acfaf4",
@@ -20,7 +20,7 @@
 				"userName": "UserTest",
 				"requestOptions": {}
 			},
-			"type": "n8n-nodes-base.awsIam",
+			"type": "MNI-nodes-base.awsIam",
 			"typeVersion": 1,
 			"position": [400, 120],
 			"id": "64bbfce7-cc7d-4e69-82d3-d4ecac5ad389",

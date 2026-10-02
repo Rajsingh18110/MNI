@@ -1,5 +1,5 @@
-import { generateNanoId, type OperationContext, type TransactionRunner } from '@n8n/db';
-import { UnexpectedError } from 'n8n-workflow';
+import { generateNanoId, type OperationContext, type TransactionRunner } from '@MNI/db';
+import { UnexpectedError } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import { mockEntityManager } from '@test/mocking';
@@ -9,8 +9,8 @@ import { TypeAvailabilityPolicy } from '../../entities/type-availability-policy.
 import { TypeAvailabilityPolicyScopeRepository } from '../type-availability-policy-scope.repository';
 import { TypeAvailabilityPolicyRepository } from '../type-availability-policy.repository';
 
-vi.mock('@n8n/db', async (importOriginal) => ({
-	...(await importOriginal<typeof import('@n8n/db')>()),
+vi.mock('@MNI/db', async (importOriginal) => ({
+	...(await importOriginal<typeof import('@MNI/db')>()),
 	generateNanoId: vi.fn(),
 }));
 

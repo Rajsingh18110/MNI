@@ -1,7 +1,7 @@
-import type { AgentMessage } from '@n8n/agents';
-import type { AgentMessageAuthor } from '@n8n/api-types';
-import { DateTimeColumn, JsonColumn, WithTimestampsAndStringId } from '@n8n/db';
-import { Column, Entity, Index, JoinColumn, ManyToOne } from '@n8n/typeorm';
+import type { AgentMessage } from '@MNI/agents';
+import type { AgentMessageAuthor } from '@MNI/api-types';
+import { DateTimeColumn, JsonColumn, WithTimestampsAndStringId } from '@MNI/db';
+import { Column, Entity, Index, JoinColumn, ManyToOne } from '@MNI/typeorm';
 
 import { AgentThreadEntity } from './agent-thread.entity';
 

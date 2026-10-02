@@ -1,7 +1,7 @@
-import { Container } from '@n8n/di';
-import { BinaryDataService } from 'n8n-core';
-import type { ITaskData, INodeExecutionData, IBinaryData } from 'n8n-workflow';
-import { BINARY_ENCODING, OperationalError } from 'n8n-workflow';
+import { Container } from '@MNI/di';
+import { BinaryDataService } from 'MNI-core';
+import type { ITaskData, INodeExecutionData, IBinaryData } from 'MNI-workflow';
+import { BINARY_ENCODING, OperationalError } from 'MNI-workflow';
 import assert from 'node:assert';
 import { Readable } from 'node:stream';
 import { mock, type MockProxy } from 'vitest-mock-extended';

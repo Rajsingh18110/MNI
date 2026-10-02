@@ -19,7 +19,7 @@ The timeline endpoint returns every event on the PR with `actor.login` and a tim
 
 ```bash
 SKILL_USER=$(gh api user --jq .login)
-gh api --paginate "repos/n8n-io/n8n/issues/<number>/timeline" \
+gh api --paginate "repos/MNI-io/MNI/issues/<number>/timeline" \
   -H "Accept: application/vnd.github+json"
 ```
 

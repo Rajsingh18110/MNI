@@ -1,5 +1,5 @@
 import { VALID_EMAIL_REGEX } from '@/app/constants';
-import { i18n } from '@n8n/i18n';
+import { i18n } from '@MNI/i18n';
 import { useEnvironmentsStore } from '@/features/settings/environments.ee/environments.store';
 import { useExternalSecretsStore } from '@/features/integrations/externalSecrets.ee/externalSecrets.ee.store';
 import type {
@@ -10,14 +10,14 @@ import type {
 } from '@codemirror/autocomplete';
 import uniqBy from 'lodash/uniqBy';
 import { DateTime } from 'luxon';
-import type { Alias, DocMetadata, IDataObject, NativeDoc } from 'n8n-workflow';
+import type { Alias, DocMetadata, IDataObject, NativeDoc } from 'MNI-workflow';
 import {
 	Expression,
 	ExpressionExtensions,
 	NativeMethods,
 	validateFieldType,
 	type AliasCompletion,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import {
 	ARRAY_NUMBER_ONLY_METHODS,
 	ARRAY_RECOMMENDED_OPTIONS,
@@ -66,7 +66,7 @@ import {
 import { javascriptLanguage } from '@codemirror/lang-javascript';
 import { isPairedItemIntermediateNodesError } from '@/app/utils/expressions';
 import type { TargetNodeParameterContext } from '@/Interface';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import type { WorkflowDocumentId } from '@/app/stores/workflowDocument.store';
 
 /**
@@ -879,13 +879,13 @@ export const executionOptions = () => {
 		{
 			name: 'resumeUrl',
 			returnType: 'string',
-			docURL: 'https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-base.wait/',
+			docURL: 'https://docs.n8n.io/integrations/builtin/core-nodes/MNI-nodes-base.wait/',
 			description: i18n.baseText('codeNodeEditor.completer.$execution.resumeUrl'),
 		},
 		{
 			name: 'resumeFormUrl',
 			returnType: 'string',
-			docURL: 'https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-base.wait/',
+			docURL: 'https://docs.n8n.io/integrations/builtin/core-nodes/MNI-nodes-base.wait/',
 			description: i18n.baseText('codeNodeEditor.completer.$execution.resumeFormUrl'),
 		},
 		{

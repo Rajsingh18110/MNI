@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 import { computed } from 'vue';
-import { useI18n } from '@n8n/i18n';
-import { N8nButton, N8nDataTableServer, N8nText, N8nTooltip } from '@n8n/design-system';
-import type { TableHeader, TableOptions } from '@n8n/design-system';
+import { useI18n } from '@MNI/i18n';
+import { N8nButton, N8nDataTableServer, N8nText, N8nTooltip } from '@MNI/design-system';
+import type { TableHeader, TableOptions } from '@MNI/design-system';
 
 import PreferenceContentCell from './PreferenceContentCell.vue';
 import PreferenceScopeBadge from './PreferenceScopeBadge.vue';

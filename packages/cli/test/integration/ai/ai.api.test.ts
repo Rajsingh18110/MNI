@@ -1,14 +1,14 @@
-import { testDb } from '@n8n/backend-test-utils';
-import type { Project, User } from '@n8n/db';
+import { testDb } from '@MNI/backend-test-utils';
+import type { Project, User } from '@MNI/db';
 import {
 	CredentialsRepository,
 	ProjectRepository,
 	SharedCredentialsRepository,
 	UserRepository,
-} from '@n8n/db';
-import { Container } from '@n8n/di';
+} from '@MNI/db';
+import { Container } from '@MNI/di';
 import { randomUUID } from 'crypto';
-import { OPEN_AI_API_CREDENTIAL_TYPE } from 'n8n-workflow';
+import { OPEN_AI_API_CREDENTIAL_TYPE } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import { FREE_AI_CREDITS_CREDENTIAL_NAME } from '@/constants';

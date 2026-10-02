@@ -4,8 +4,8 @@ import type {
 	INodeExecutionData,
 	INodeType,
 	INodeTypeDescription,
-} from 'n8n-workflow';
-import { BINARY_ENCODING, NodeConnectionTypes } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { BINARY_ENCODING, NodeConnectionTypes } from 'MNI-workflow';
 
 import { awsApiRequestREST, keysTPascalCase } from './GenericFunctions';
 import { awsNodeAuthOptions, awsNodeCredentials } from '../utils';

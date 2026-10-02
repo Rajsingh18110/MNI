@@ -1,12 +1,12 @@
-import { LicenseState, Logger } from '@n8n/backend-common';
-import type { User } from '@n8n/db';
-import { Service } from '@n8n/di';
+import { LicenseState, Logger } from '@MNI/backend-common';
+import type { User } from '@MNI/db';
+import { Service } from '@MNI/di';
 import {
 	channelsToPolicy,
 	runDataUsedDynamicCredentials,
 	WorkflowExecuteMode,
 	WorkflowSettings,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { isCredSharingEnabled } from '@/constants/credential-sharing';
 import { ForbiddenError } from '@/errors/response-errors/forbidden.error';

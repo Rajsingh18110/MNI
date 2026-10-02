@@ -1,4 +1,4 @@
-import type { PartialAdditionalData, TaskData } from '@n8n/task-runner';
+import type { PartialAdditionalData, TaskData } from '@MNI/task-runner';
 import {
 	createRunExecutionData,
 	type IExecuteContextData,
@@ -6,7 +6,7 @@ import {
 	type INodeExecutionData,
 	type IRunExecutionData,
 	type Workflow,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import { DataRequestResponseBuilder } from '../data-request-response-builder';

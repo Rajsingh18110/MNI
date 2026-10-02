@@ -1,4 +1,4 @@
-import type { IRunExecutionData } from 'n8n-workflow';
+import type { IRunExecutionData } from 'MNI-workflow';
 
 import {
 	RuntimeCredentialProxyService,

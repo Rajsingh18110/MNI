@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useToast } from '@n8n/composables/useToast';
+import { useToast } from '@MNI/composables/useToast';
 import { useEventListener } from '@vueuse/core';
 import DiffBadge from '@/features/workflows/workflowDiff/DiffBadge.vue';
 import WorkflowDiffEmptyState from '@/features/workflows/workflowDiff/WorkflowDiffEmptyState.vue';
@@ -12,12 +12,12 @@ import { useWorkflowDiffUI } from '@/features/workflows/workflowDiff/useWorkflow
 import type { IWorkflowDb, INodeUi } from '@/Interface';
 import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';
 import { removeWorkflowExecutionData } from '@/app/utils/workflowUtils';
-import type { BaseTextKey } from '@n8n/i18n';
-import { useI18n } from '@n8n/i18n';
-import { NodeDiffStatus } from 'n8n-workflow';
+import type { BaseTextKey } from '@MNI/i18n';
+import { useI18n } from '@MNI/i18n';
+import { NodeDiffStatus } from 'MNI-workflow';
 import { computed, ref, useCssModule, onMounted } from 'vue';
 import { telemetry } from '@/app/plugins/telemetry';
-import { useRootStore } from '@n8n/stores/useRootStore';
+import { useRootStore } from '@MNI/stores/useRootStore';
 
 import { ElDropdown, ElDropdownMenu } from 'element-plus';
 import {
@@ -27,7 +27,7 @@ import {
 	N8nIconButton,
 	N8nSegmentControl,
 	N8nText,
-} from '@n8n/design-system';
+} from '@MNI/design-system';
 
 const props = withDefaults(
 	defineProps<{

@@ -1,13 +1,13 @@
 /* eslint-disable @typescript-eslint/unbound-method */
-import type { Logger } from '@n8n/backend-common';
-import { ScheduledJobMisfirePolicy } from '@n8n/constants';
-import { mockLogger } from '@n8n/backend-test-utils';
-import type { GlobalConfig, WorkflowsConfig } from '@n8n/config';
-import type { EntityManager } from '@n8n/db';
-import type { CronDefinition } from '@n8n/scheduler';
-import { ScheduleTrigger } from 'n8n-nodes-base/nodes/Schedule/ScheduleTrigger.node';
-import type { Cron, CronExpression, INode, INodeParameters, INodeTypes } from 'n8n-workflow';
-import { SCHEDULE_TRIGGER_NODE_TYPE, Workflow } from 'n8n-workflow';
+import type { Logger } from '@MNI/backend-common';
+import { ScheduledJobMisfirePolicy } from '@MNI/constants';
+import { mockLogger } from '@MNI/backend-test-utils';
+import type { GlobalConfig, WorkflowsConfig } from '@MNI/config';
+import type { EntityManager } from '@MNI/db';
+import type { CronDefinition } from '@MNI/scheduler';
+import { ScheduleTrigger } from 'MNI-nodes-base/nodes/Schedule/ScheduleTrigger.node';
+import type { Cron, CronExpression, INode, INodeParameters, INodeTypes } from 'MNI-workflow';
+import { SCHEDULE_TRIGGER_NODE_TYPE, Workflow } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import type { DurableJobProvisioner } from '../../durable-job-provisioner';
@@ -125,7 +125,7 @@ describe('ScheduleTriggerJobRegistrar', () => {
 		});
 
 		it('does not intercept other node types', () => {
-			const other = mock<INode>({ id: NODE_ID, type: 'n8n-nodes-base.gmailTrigger' });
+			const other = mock<INode>({ id: NODE_ID, type: 'MNI-nodes-base.gmailTrigger' });
 			expect(makeRegistrar().interceptsNode(other)).toBe(false);
 		});
 

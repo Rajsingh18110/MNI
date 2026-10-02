@@ -10,13 +10,13 @@ import {
 import { useWorkflowExecutionStateStore } from '@/app/stores/workflowExecutionState.store';
 import type { IWorkflowDb, IWorkflowSettings } from '@/Interface';
 
-import type { INodeTypeDescription } from 'n8n-workflow';
+import type { INodeTypeDescription } from 'MNI-workflow';
 import { useUIStore } from '@/app/stores/ui.store';
-import * as apiUtils from '@n8n/rest-api-client';
+import * as apiUtils from '@MNI/rest-api-client';
 import { createTestWorkflow, createTestWorkflowExecutionResponse } from '@/__tests__/mocks';
 import { useSourceControlStore } from '@/features/integrations/sourceControl.ee/sourceControl.store';
-import type { WorkflowHistory } from '@n8n/rest-api-client';
-import type { WorkflowPublicationStatus } from '@n8n/api-types';
+import type { WorkflowHistory } from '@MNI/rest-api-client';
+import type { WorkflowPublicationStatus } from '@MNI/api-types';
 
 vi.mock('@/app/api/workflows', () => ({
 	getWorkflows: vi.fn(),
@@ -43,7 +43,7 @@ vi.mock('@/app/stores/nodeTypes.store', () => ({
 }));
 
 const track = vi.fn();
-vi.mock('@n8n/composables/useTelemetry', () => ({
+vi.mock('@MNI/composables/useTelemetry', () => ({
 	useTelemetry: () => ({ track }),
 }));
 
@@ -63,8 +63,8 @@ vi.mock('@/features/integrations/sourceControl.ee/sourceControl.store', () => ({
 	})),
 }));
 
-vi.mock('@n8n/permissions', async (importOriginal) => ({
-	...(await importOriginal<typeof import('@n8n/permissions')>()),
+vi.mock('@MNI/permissions', async (importOriginal) => ({
+	...(await importOriginal<typeof import('@MNI/permissions')>()),
 	getResourcePermissions: vi.fn((scopes: string[] = []) => ({
 		workflow: {
 			update: scopes.includes('workflow:update'),
@@ -250,7 +250,7 @@ describe('useWorkflowsStore', () => {
 				isArchived: false,
 				projectId: 'project-123',
 				tags: ['tag1', 'tag2'],
-				nodeTypes: ['n8n-nodes-base.httpRequest'],
+				nodeTypes: ['MNI-nodes-base.httpRequest'],
 			});
 
 			expect(workflowsApi.getWorkflows).toHaveBeenCalledWith(
@@ -260,7 +260,7 @@ describe('useWorkflowsStore', () => {
 					isArchived: false,
 					projectId: 'project-123',
 					tags: ['tag1', 'tag2'],
-					nodeTypes: ['n8n-nodes-base.httpRequest'],
+					nodeTypes: ['MNI-nodes-base.httpRequest'],
 				},
 				undefined,
 				undefined,

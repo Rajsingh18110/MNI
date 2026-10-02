@@ -3,7 +3,7 @@ ARG PNPM_VERSION=12.4.2
 ARG PYTHON_VERSION=3.13
 
 # ==============================================================================
-# STAGE 1: JavaScript runner (@n8n/task-runner) artifact from CI
+# STAGE 1: JavaScript runner (@MNI/task-runner) artifact from CI
 # ==============================================================================
 FROM node:${NODE_VERSION}-alpine3.24 AS javascript-runner-builder
 COPY ./dist/task-runner-javascript /app/task-runner-javascript
@@ -40,7 +40,7 @@ RUN rm -f node_modules/.modules.yaml && \
     pnpm add moment@2.30.1 --save-prod --no-lockfile --config.minimum-release-age=0
 
 # ==============================================================================
-# STAGE 2: Python runner build (@n8n/task-runner-python) with uv
+# STAGE 2: Python runner build (@MNI/task-runner-python) with uv
 # Produces a relocatable venv tied to the python version used
 # ==============================================================================
 FROM python:${PYTHON_VERSION}-alpine AS python-runner-builder
@@ -63,9 +63,9 @@ RUN set -e; \
 
 WORKDIR /app/task-runner-python
 
-COPY packages/@n8n/task-runner-python/pyproject.toml \
-     packages/@n8n/task-runner-python/uv.lock** \
-     packages/@n8n/task-runner-python/.python-version** \
+COPY packages/@MNI/task-runner-python/pyproject.toml \
+     packages/@MNI/task-runner-python/uv.lock** \
+     packages/@MNI/task-runner-python/.python-version** \
      ./
 
 RUN uv venv
@@ -76,7 +76,7 @@ RUN uv sync \
 			--no-dev \
 			--all-extras
 
-COPY packages/@n8n/task-runner-python/ ./
+COPY packages/@MNI/task-runner-python/ ./
 RUN uv sync \
       --frozen \
 			--no-dev \
@@ -100,8 +100,8 @@ RUN set -e; \
         *) echo "Unsupported platform: $TARGETPLATFORM" && exit 1 ;; \
     esac; \
     mkdir /launcher-temp && cd /launcher-temp; \
-    wget -q "https://github.com/n8n-io/task-runner-launcher/releases/download/${LAUNCHER_VERSION}/task-runner-launcher-${LAUNCHER_VERSION}-linux-${ARCH_NAME}.tar.gz"; \
-    wget -q "https://github.com/n8n-io/task-runner-launcher/releases/download/${LAUNCHER_VERSION}/task-runner-launcher-${LAUNCHER_VERSION}-linux-${ARCH_NAME}.tar.gz.sha256"; \
+    wget -q "https://github.com/MNI-io/task-runner-launcher/releases/download/${LAUNCHER_VERSION}/task-runner-launcher-${LAUNCHER_VERSION}-linux-${ARCH_NAME}.tar.gz"; \
+    wget -q "https://github.com/MNI-io/task-runner-launcher/releases/download/${LAUNCHER_VERSION}/task-runner-launcher-${LAUNCHER_VERSION}-linux-${ARCH_NAME}.tar.gz.sha256"; \
     echo "$(cat task-runner-launcher-${LAUNCHER_VERSION}-linux-${ARCH_NAME}.tar.gz.sha256) task-runner-launcher-${LAUNCHER_VERSION}-linux-${ARCH_NAME}.tar.gz" > checksum.sha256; \
     sha256sum -c checksum.sha256; \
     mkdir -p /launcher-bin; \
@@ -119,11 +119,11 @@ RUN npm i -g "pnpm@${PNPM_VERSION}"
 # STAGE 5: Runtime
 # ==============================================================================
 FROM python:${PYTHON_VERSION}-alpine AS runtime
-ARG N8N_VERSION=snapshot
-ARG N8N_RELEASE_TYPE=dev
+ARG MNI_VERSION=snapshot
+ARG MNI_RELEASE_TYPE=dev
 
 ENV NODE_ENV=production \
-    N8N_RELEASE_TYPE=${N8N_RELEASE_TYPE} \
+    MNI_RELEASE_TYPE=${MNI_RELEASE_TYPE} \
     SHELL=/bin/sh
 
 # Bring `uv` over from python-runner-builder, to make the image easier to extend
@@ -151,7 +151,7 @@ WORKDIR /home/runner
 COPY --from=javascript-runner-builder --chown=root:root /app/task-runner-javascript /opt/runners/task-runner-javascript
 COPY --from=python-runner-builder --chown=root:root /app/task-runner-python /opt/runners/task-runner-python
 COPY --from=launcher-downloader /launcher-bin/* /usr/local/bin/
-COPY --chown=root:root docker/images/runners/n8n-task-runners.json /etc/n8n-task-runners.json
+COPY --chown=root:root docker/images/runners/MNI-task-runners.json /etc/MNI-task-runners.json
 
 USER runner
 
@@ -161,6 +161,6 @@ CMD ["javascript", "python"]
 
 LABEL org.opencontainers.image.title="MNI task runners" \
       org.opencontainers.image.description="Sidecar image providing MNI task runners for JavaScript and Python code execution" \
-      org.opencontainers.image.source="https://github.com/n8n-io/n8n" \
+      org.opencontainers.image.source="https://github.com/MNI-io/MNI" \
       org.opencontainers.image.url="https://n8n.io" \
-      org.opencontainers.image.version="${N8N_VERSION}"
+      org.opencontainers.image.version="${MNI_VERSION}"

@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { ref, watch, onUnmounted } from 'vue';
-import { N8nIcon } from '@n8n/design-system';
+import { N8nIcon } from '@MNI/design-system';
 
 interface ChatMessage {
 	from: 'user' | 'agent';

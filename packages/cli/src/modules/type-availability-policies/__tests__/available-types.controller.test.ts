@@ -1,6 +1,6 @@
-import { LICENSE_FEATURES } from '@n8n/constants';
-import { ControllerRegistryMetadata } from '@n8n/decorators';
-import { Container } from '@n8n/di';
+import { LICENSE_FEATURES } from '@MNI/constants';
+import { ControllerRegistryMetadata } from '@MNI/decorators';
+import { Container } from '@MNI/di';
 import type { Request, Response } from 'express';
 import { mock } from 'vitest-mock-extended';
 
@@ -54,7 +54,7 @@ describe('AvailableTypesController.getAvailableTypes', () => {
 	const response = mock<Response>();
 
 	const verdict = (overrides: Partial<ComposedTypeVerdict>): ComposedTypeVerdict => ({
-		name: 'n8n-nodes-base.slack',
+		name: 'MNI-nodes-base.slack',
 		action: 'allow',
 		scope: 'instance',
 		matchedRuleId: null,
@@ -69,16 +69,16 @@ describe('AvailableTypesController.getAvailableTypes', () => {
 
 	it('evaluates every known type name, including synthesized tool variants', async () => {
 		nodeTypes.getKnownTypes.mockReturnValue({
-			'n8n-nodes-base.slack': { className: 'Slack', sourcePath: '' },
-			'n8n-nodes-base.slackTool': { className: 'Slack', sourcePath: '' },
+			'MNI-nodes-base.slack': { className: 'Slack', sourcePath: '' },
+			'MNI-nodes-base.slackTool': { className: 'Slack', sourcePath: '' },
 		});
 		service.evaluateComposedTypes.mockResolvedValue([]);
 
 		await controller.getAvailableTypes(request, response, 'project-1');
 
 		expect(service.evaluateComposedTypes).toHaveBeenCalledWith('node-types', 'project-1', [
-			'n8n-nodes-base.slack',
-			'n8n-nodes-base.slackTool',
+			'MNI-nodes-base.slack',
+			'MNI-nodes-base.slackTool',
 		]);
 	});
 
@@ -87,7 +87,7 @@ describe('AvailableTypesController.getAvailableTypes', () => {
 
 		const result = await controller.getAvailableTypes(request, response, 'project-1');
 
-		expect(result).toStrictEqual([{ name: 'n8n-nodes-base.slack', available: true }]);
+		expect(result).toStrictEqual([{ name: 'MNI-nodes-base.slack', available: true }]);
 	});
 
 	it('reports the denying scope and rule of an unavailable type', async () => {
@@ -99,7 +99,7 @@ describe('AvailableTypesController.getAvailableTypes', () => {
 
 		expect(result).toEqual([
 			{
-				name: 'n8n-nodes-base.slack',
+				name: 'MNI-nodes-base.slack',
 				available: false,
 				scope: 'project',
 				matchedRuleId: 'r1',
@@ -115,7 +115,7 @@ describe('AvailableTypesController.getAvailableTypes', () => {
 		const result = await controller.getAvailableTypes(request, response, 'project-1');
 
 		expect(result).toStrictEqual([
-			{ name: 'n8n-nodes-base.slack', available: false, scope: 'project' },
+			{ name: 'MNI-nodes-base.slack', available: false, scope: 'project' },
 		]);
 	});
 
@@ -133,7 +133,7 @@ describe('AvailableTypesController.getAvailableTypes', () => {
 
 		expect(result).toEqual([
 			{
-				name: 'n8n-nodes-base.slack',
+				name: 'MNI-nodes-base.slack',
 				available: false,
 				scope: 'instance',
 				matchedRuleId: 'delegate-rule',

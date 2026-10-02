@@ -1,5 +1,5 @@
-import type { ByteStore } from '@n8n/blob-storage';
-import { jsonParse, UnexpectedError } from 'n8n-workflow';
+import type { ByteStore } from '@MNI/blob-storage';
+import { jsonParse, UnexpectedError } from 'MNI-workflow';
 import { createReadStream } from 'node:fs';
 import type { Readable } from 'node:stream';
 import { v4 as uuid } from 'uuid';

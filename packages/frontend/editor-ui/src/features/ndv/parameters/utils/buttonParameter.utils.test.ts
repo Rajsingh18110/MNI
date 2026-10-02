@@ -6,14 +6,14 @@ import type { AskAiRequest } from '@/features/ai/assistant/assistant.types';
 import type { Schema } from '@/Interface';
 import { createWorkflowDocumentId } from '@/app/stores/workflowDocument.store';
 
-vi.mock('@n8n/stores/useRootStore', () => ({
+vi.mock('@MNI/stores/useRootStore', () => ({
 	useRootStore: () => ({
 		pushRef: 'mockRootPushRef',
 		restApiContext: {},
 	}),
 }));
 
-vi.mock('@n8n/stores/settings.store', () => ({
+vi.mock('@MNI/stores/settings.store', () => ({
 	useSettingsStore: vi.fn(() => ({ settings: {}, isAskAiEnabled: true })),
 }));
 

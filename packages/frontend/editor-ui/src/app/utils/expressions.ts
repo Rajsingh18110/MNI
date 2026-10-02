@@ -1,7 +1,7 @@
-import { i18n } from '@n8n/i18n';
+import { i18n } from '@MNI/i18n';
 import type { ResolvableState } from '@/app/types/expressions';
-import type { Result } from '@n8n/utils/result';
-import { ExpressionError, ExpressionParser, isExpression, type IPinData } from 'n8n-workflow';
+import type { Result } from '@MNI/utils/result';
+import { ExpressionError, ExpressionParser, isExpression, type IPinData } from 'MNI-workflow';
 import { isObject } from '@/app/utils/objectUtils';
 
 export { isExpression };

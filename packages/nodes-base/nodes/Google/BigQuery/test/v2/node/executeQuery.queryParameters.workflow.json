@@ -5,7 +5,7 @@
 			"parameters": {},
 			"id": "7db7d51a-83c2-4aa0-a736-9c3d1c031b60",
 			"name": "When clicking \"Execute Workflow\"",
-			"type": "n8n-nodes-base.manualTrigger",
+			"type": "MNI-nodes-base.manualTrigger",
 			"typeVersion": 1,
 			"position": [360, 340]
 		},
@@ -19,7 +19,7 @@
 					"cachedResultName": "test-project",
 					"cachedResultUrl": "https://console.cloud.google.com/bigquery?project=test-project"
 				},
-				"sqlQuery": "SELECT * FROM bigquery_node_dev_test_dataset.test_json WHERE email = @email AND name = @name AND n8n_variable = @n8n_variable;",
+				"sqlQuery": "SELECT * FROM bigquery_node_dev_test_dataset.test_json WHERE email = @email AND name = @name AND MNI_variable = @MNI_variable;",
 				"options": {
 					"queryParameters": {
 						"namedParameters": [
@@ -32,7 +32,7 @@
 								"value": "Test Testerson"
 							},
 							{
-								"name": "n8n_variable",
+								"name": "MNI_variable",
 								"value": "={{ 40 + 2 }}"
 							}
 						]
@@ -41,7 +41,7 @@
 			},
 			"id": "83d00275-0f98-4d5e-a3d6-bbca940ff8ac",
 			"name": "Google BigQuery",
-			"type": "n8n-nodes-base.googleBigQuery",
+			"type": "MNI-nodes-base.googleBigQuery",
 			"typeVersion": 2,
 			"position": [620, 340],
 			"credentials": {

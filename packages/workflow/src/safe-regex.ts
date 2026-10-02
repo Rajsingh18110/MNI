@@ -93,7 +93,7 @@ function nativeEngine(): RegexEngine {
 		warnedAboutBrowserFallback = true;
 		LoggerProxy.warn('Using native regular expression engine without timeout protection');
 	}
-	/* eslint-disable n8n-local-rules/no-dynamic-regexp -- isomorphic native fallback; backend overrides via setSafeRegexEngine */
+	/* eslint-disable MNI-local-rules/no-dynamic-regexp -- isomorphic native fallback; backend overrides via setSafeRegexEngine */
 	return {
 		exec: (pattern, input, flags) => new RegExp(pattern, flags).exec(input),
 		test: (pattern, input, flags) => new RegExp(pattern, flags).test(input),
@@ -103,7 +103,7 @@ function nativeEngine(): RegexEngine {
 			Array.from(input.matchAll(new RegExp(pattern, globalFlag(flags)))),
 		split: (pattern, input, flags) => input.split(new RegExp(pattern, flags)),
 	};
-	/* eslint-enable n8n-local-rules/no-dynamic-regexp */
+	/* eslint-enable MNI-local-rules/no-dynamic-regexp */
 }
 
 function nodeVmEngine(vm: VmModule): RegexEngine {

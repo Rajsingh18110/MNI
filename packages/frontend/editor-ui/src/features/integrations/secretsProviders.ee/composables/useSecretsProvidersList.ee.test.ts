@@ -1,15 +1,15 @@
 import { createTestingPinia } from '@pinia/testing';
 import merge from 'lodash/merge';
 import { useSecretsProvidersList } from './useSecretsProvidersList.ee';
-import { useSettingsStore } from '@n8n/stores/settings.store';
-import { useRBACStore } from '@n8n/stores/rbac.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
+import { useRBACStore } from '@MNI/stores/rbac.store';
 import { EnterpriseEditionFeature } from '@/app/constants';
-import type { SecretProviderConnection, SecretProviderTypeResponse } from '@n8n/api-types';
-import * as secretsProviderApi from '@n8n/rest-api-client';
-import { STORES } from '@n8n/stores';
+import type { SecretProviderConnection, SecretProviderTypeResponse } from '@MNI/api-types';
+import * as secretsProviderApi from '@MNI/rest-api-client';
+import { STORES } from '@MNI/stores';
 import { SETTINGS_STORE_DEFAULT_STATE } from '@/__tests__/utils';
 
-vi.mock('@n8n/rest-api-client', () => ({
+vi.mock('@MNI/rest-api-client', () => ({
 	getSecretProviderTypes: vi.fn(),
 	getSecretProviderConnections: vi.fn(),
 	getSecretProviderConnectionByKey: vi.fn(),

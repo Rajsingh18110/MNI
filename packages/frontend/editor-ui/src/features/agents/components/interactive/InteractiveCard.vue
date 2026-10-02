@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { APPROVAL_TOOL_NAME, N8N_CHAT_ACTION_TOOL_NAME, WAIT_TOOL_NAME } from '@n8n/api-types';
+import { APPROVAL_TOOL_NAME, MNI_CHAT_ACTION_TOOL_NAME, WAIT_TOOL_NAME } from '@MNI/api-types';
 import type { AgentsChatInteractionRenderer } from '@/features/ai/shared/agentsChat/interactionRegistry';
 import InteractionRenderer from '@/features/ai/shared/agentsChat/components/InteractionRenderer.vue';
 import type { InteractivePayload } from '@/features/ai/shared/agentsChat/types';
@@ -45,9 +45,9 @@ const interactiveRenderers = [
 	{
 		key: 'chat_action',
 		component: N8nChatActionCard,
-		matches: (payload) => payload.toolName === N8N_CHAT_ACTION_TOOL_NAME,
+		matches: (payload) => payload.toolName === MNI_CHAT_ACTION_TOOL_NAME,
 		getProps: (payload) => {
-			if (payload.toolName !== N8N_CHAT_ACTION_TOOL_NAME) return {};
+			if (payload.toolName !== MNI_CHAT_ACTION_TOOL_NAME) return {};
 			return {
 				input: payload.input,
 				resolvedValue: payload.resolvedValue,

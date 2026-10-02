@@ -23,9 +23,9 @@
 // execution ends without producing a response. What the HTTP caller receives in
 // that case is decided in `packages/cli`, not here.
 
-import { createDeferredPromise } from '@n8n/utils/promise/deferred-promise';
-import type { IExecuteFunctions, INodeTypeData, INodeTypeDescription, IRun } from 'n8n-workflow';
-import { NodeConnectionTypes, NodeOperationError, Workflow } from 'n8n-workflow';
+import { createDeferredPromise } from '@MNI/utils/promise/deferred-promise';
+import type { IExecuteFunctions, INodeTypeData, INodeTypeDescription, IRun } from 'MNI-workflow';
+import { NodeConnectionTypes, NodeOperationError, Workflow } from 'MNI-workflow';
 
 import * as Helpers from '@test/helpers';
 

@@ -1,29 +1,29 @@
-import { Logger } from '@n8n/backend-common';
-import { Time } from '@n8n/constants';
+import { Logger } from '@MNI/backend-common';
+import { Time } from '@MNI/constants';
 import {
 	ActivityEventRepository,
 	activityEventCategories,
 	ExecutionRepository,
 	ProjectRepository,
 	WorkflowRepository,
-} from '@n8n/db';
+} from '@MNI/db';
 import type {
 	ActivityProjectScope,
 	ActivityEvent,
 	ActivityEventCategory,
 	ActivityResourceType,
 	User,
-} from '@n8n/db';
-import { Service } from '@n8n/di';
-import type { InstanceAiActivityEntry, InstanceAiActivityExpansion } from '@n8n/instance-ai';
+} from '@MNI/db';
+import { Service } from '@MNI/di';
+import type { InstanceAiActivityEntry, InstanceAiActivityExpansion } from '@MNI/instance-ai';
 import type {
 	InstanceContextAbsenceReason,
 	InstanceContextInjection,
 	InstanceContextLegs,
-} from '@n8n/api-types';
-import { hasGlobalScope } from '@n8n/permissions';
-import { isRecord } from '@n8n/utils/is-record';
-import type { IDataObject } from 'n8n-workflow';
+} from '@MNI/api-types';
+import { hasGlobalScope } from '@MNI/permissions';
+import { isRecord } from '@MNI/utils/is-record';
+import type { IDataObject } from 'MNI-workflow';
 
 import { userHasScopes } from '@/permissions.ee/check-access';
 import { ProjectService } from '@/services/project.service.ee';
@@ -1178,8 +1178,8 @@ function nodeChange(data: IDataObject): string {
 /** `source` is server-set per code path, so it answers "the assistant or the user" authoritatively. */
 function provenanceClause(data: IDataObject): string {
 	const source = readString(data, 'source');
-	if (source === 'n8n-ai') return 'by the assistant';
-	if (source === 'api' || source === 'n8n-mcp') return `via ${source}`;
+	if (source === 'MNI-ai') return 'by the assistant';
+	if (source === 'api' || source === 'MNI-mcp') return `via ${source}`;
 	if (source === 'import') return 'imported';
 	return '';
 }

@@ -1,5 +1,5 @@
 import { mockDeep } from 'vitest-mock-extended';
-import type { IExecuteFunctions, ILoadOptionsFunctions } from 'n8n-workflow';
+import type { IExecuteFunctions, ILoadOptionsFunctions } from 'MNI-workflow';
 
 import {
 	awsApiRequest,

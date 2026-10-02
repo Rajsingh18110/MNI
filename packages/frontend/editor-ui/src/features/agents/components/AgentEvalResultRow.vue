@@ -9,8 +9,8 @@
  * run, and nothing here grades an answer automatically.
  */
 import { computed } from 'vue';
-import { N8nBadge, N8nButton, N8nIcon, N8nInput, N8nSpinner, N8nText } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+import { N8nBadge, N8nButton, N8nIcon, N8nInput, N8nSpinner, N8nText } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 
 import type { AgentEvalResultRecord, AgentEvalVote } from '../agentEvals.types';
 import {

@@ -5,12 +5,12 @@ import type {
 	ICredentialDataDecryptedObject,
 	ICredentialType,
 	INodeTypeDescription,
-} from 'n8n-workflow';
-import { NodeConnectionTypes } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeConnectionTypes } from 'MNI-workflow';
 import { createTestingPinia } from '@pinia/testing';
 import type { RenderOptions } from '@/__tests__/render';
 import { createComponentRenderer } from '@/__tests__/render';
-import { STORES } from '@n8n/stores';
+import { STORES } from '@MNI/stores';
 import { vi } from 'vitest';
 import { useCredentialsStore } from '../../credentials.store';
 import { useNDVStore } from '@/features/ndv/shared/ndv.store';
@@ -18,7 +18,7 @@ import { createWorkflowDocumentId } from '@/app/stores/workflowDocument.store';
 import { useWorkflowsStore } from '@/app/stores/workflows.store';
 import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';
 import { mockedStore } from '@/__tests__/utils';
-import { addCredentialTranslation } from '@n8n/i18n';
+import { addCredentialTranslation } from '@MNI/i18n';
 import type { INodeUi } from '@/Interface';
 
 // Instantiates a store that derives the workflow id from the route. These tests run
@@ -31,8 +31,8 @@ vi.mock('@/app/composables/useWorkflowId', async () => {
 	};
 });
 
-vi.mock('@n8n/i18n', async () => {
-	const actual = await vi.importActual('@n8n/i18n');
+vi.mock('@MNI/i18n', async () => {
+	const actual = await vi.importActual('@MNI/i18n');
 	return {
 		...actual,
 		addCredentialTranslation: vi.fn(),
@@ -1008,7 +1008,7 @@ describe('CredentialConfig', () => {
 
 		const twoAuthNodeType = {
 			displayName: 'Dropbox',
-			name: 'n8n-nodes-base.dropbox',
+			name: 'MNI-nodes-base.dropbox',
 			group: ['input'],
 			version: 1,
 			description: 'Access data on Dropbox',
@@ -1066,7 +1066,7 @@ describe('CredentialConfig', () => {
 			const ndvStore = mockedStore(useNDVStore, createWorkflowDocumentId('test-workflow-id'));
 			ndvStore.activeNode = {
 				parameters: { authentication: 'accessToken' },
-				type: 'n8n-nodes-base.dropbox',
+				type: 'MNI-nodes-base.dropbox',
 				typeVersion: 1,
 				position: [0, 0],
 				id: 'test-node-id',

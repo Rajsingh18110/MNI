@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { N8nSegmentControl, N8nText, N8nTooltip } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+import { N8nSegmentControl, N8nText, N8nTooltip } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 import { computed, ref } from 'vue';
 
 import type { CompareMetricGroup, CompareVersion } from '../../composables/useCompareData';

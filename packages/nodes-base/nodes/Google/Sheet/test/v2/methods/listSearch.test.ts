@@ -1,5 +1,5 @@
-import type { ILoadOptionsFunctions } from 'n8n-workflow';
-import { NodeOperationError } from 'n8n-workflow';
+import type { ILoadOptionsFunctions } from 'MNI-workflow';
+import { NodeOperationError } from 'MNI-workflow';
 import type { Mock } from 'vitest';
 
 import { sheetsSearch, spreadSheetsSearch } from '../../../v2/methods/listSearch';

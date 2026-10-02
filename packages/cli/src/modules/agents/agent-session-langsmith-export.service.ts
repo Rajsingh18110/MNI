@@ -1,18 +1,18 @@
-import { redactDeep, redactText } from '@n8n/agents';
-import type { AgentSessionLangSmithExportResponse } from '@n8n/api-types';
-import { buildProxyHeaders } from '@n8n/api-types';
-import { Logger } from '@n8n/backend-common';
-import { OutboundHttp } from '@n8n/backend-network';
-import type { User } from '@n8n/db';
-import { Service } from '@n8n/di';
-import { isRecord } from '@n8n/utils/is-record';
-import { SUPPORTED_PII_CATEGORIES } from '@n8n/utils/redaction/pii-patterns';
+import { redactDeep, redactText } from '@MNI/agents';
+import type { AgentSessionLangSmithExportResponse } from '@MNI/api-types';
+import { buildProxyHeaders } from '@MNI/api-types';
+import { Logger } from '@MNI/backend-common';
+import { OutboundHttp } from '@MNI/backend-network';
+import type { User } from '@MNI/db';
+import { Service } from '@MNI/di';
+import { isRecord } from '@MNI/utils/is-record';
+import { SUPPORTED_PII_CATEGORIES } from '@MNI/utils/redaction/pii-patterns';
 import type { Client } from 'langsmith';
-import { UserError } from 'n8n-workflow';
+import { UserError } from 'MNI-workflow';
 import { nanoid } from 'nanoid';
 import { v5 as uuidv5 } from 'uuid';
 
-import { N8N_VERSION } from '@/constants';
+import { MNI_VERSION } from '@/constants';
 import { ConflictError } from '@/errors/response-errors/conflict.error';
 import { NotFoundError } from '@/errors/response-errors/not-found.error';
 import { ServiceUnavailableError } from '@/errors/response-errors/service-unavailable.error';
@@ -26,14 +26,14 @@ import type { AgentExecution } from './entities/agent-execution.entity';
 import type { TimelineEvent } from './execution-recorder';
 import { AgentExecutionThreadRepository } from './repositories/agent-execution-thread.repository';
 
-const LANGSMITH_PROJECT = 'n8n-user-agents-debug';
+const LANGSMITH_PROJECT = 'MNI-user-agents-debug';
 const MAX_RUNS_PER_BATCH = 100;
 const MAX_BATCH_SIZE_BYTES = 5 * 1024 * 1024;
 const MAX_FIELD_CHARS = 50_000;
 const EXPORT_TIMEOUT_MS = 60_000;
-const EXPORT_NAMESPACE = uuidv5('n8n-agent-session-langsmith-export', uuidv5.URL);
+const EXPORT_NAMESPACE = uuidv5('MNI-agent-session-langsmith-export', uuidv5.URL);
 // `detect` includes `crypto-wallet`, so `redactText`/`redactDeep` stay on
-// `@n8n/agents`, which binds the Node-only Base58Check validator.
+// `@MNI/agents`, which binds the Node-only Base58Check validator.
 const REDACTION_OPTIONS = {
 	secrets: true,
 	detect: SUPPORTED_PII_CATEGORIES,
@@ -195,7 +195,7 @@ export class AgentSessionLangSmithExportService {
 		});
 		const proxyHeaders = buildProxyHeaders({
 			feature: 'agent-builder',
-			n8nVersion: N8N_VERSION,
+			n8nVersion: MNI_VERSION,
 		});
 		const transportFetch = createAiProxyFetch(this.outboundHttp);
 		const fetchImplementation: typeof globalThis.fetch = async (request, init) => {
@@ -256,7 +256,7 @@ function buildSessionRun(session: LoadedSession, path: string): DraftRun {
 			childSessionCount: session.children.length,
 		},
 		metadata: {
-			n8nVersion: N8N_VERSION,
+			n8nVersion: MNI_VERSION,
 			threadId: session.thread.id,
 			agentId: session.thread.agentId,
 			agentName: session.thread.agentName,

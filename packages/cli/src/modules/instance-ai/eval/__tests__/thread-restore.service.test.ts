@@ -1,5 +1,5 @@
-import { ModuleRegistry, type LicenseState } from '@n8n/backend-common';
-import { mockInstance } from '@n8n/backend-test-utils';
+import { ModuleRegistry, type LicenseState } from '@MNI/backend-common';
+import { mockInstance } from '@MNI/backend-test-utils';
 import type {
 	CredentialsEntity,
 	CredentialsRepository,
@@ -10,9 +10,9 @@ import type {
 	WorkflowEntity,
 	WorkflowPublishedVersionRepository,
 	WorkflowRepository,
-} from '@n8n/db';
-import type { PolicyCleared, PolicyViolation } from '@n8n/decorators';
-import type { EntityManager } from '@n8n/typeorm';
+} from '@MNI/db';
+import type { PolicyCleared, PolicyViolation } from '@MNI/decorators';
+import type { EntityManager } from '@MNI/typeorm';
 import { mock } from 'vitest-mock-extended';
 
 import { BadRequestError } from '@/errors/response-errors/bad-request.error';
@@ -31,7 +31,7 @@ function makeNode(overrides: Record<string, unknown> = {}): Record<string, unkno
 	return {
 		id: 'node-1',
 		name: 'Slack',
-		type: 'n8n-nodes-base.slack',
+		type: 'MNI-nodes-base.slack',
 		typeVersion: 2.2,
 		position: [100, 200],
 		parameters: { channel: '#cosmic-otter-alerts' },
@@ -390,7 +390,7 @@ describe('EvalThreadRestoreService', () => {
 			kind: 'test-denial',
 			checkId: 'test-check',
 			message: 'Denied by the test policy check',
-			subject: 'n8n-nodes-base.slack',
+			subject: 'MNI-nodes-base.slack',
 			subjectType: 'nodeType',
 		};
 
@@ -567,7 +567,7 @@ describe('EvalThreadRestoreService', () => {
 
 		it('rewrites seed data-table ids in workflow nodes to the recreated ids', async () => {
 			const node = makeNode({
-				type: 'n8n-nodes-base.dataTable',
+				type: 'MNI-nodes-base.dataTable',
 				parameters: { dataTableId: { __rl: true, mode: 'id', value: 'dt-old' } },
 			});
 
@@ -630,7 +630,7 @@ describe('EvalThreadRestoreService', () => {
 						type: 'node' as const,
 						name: 'read_leads',
 						node: {
-							nodeType: 'n8n-nodes-base.dataTable',
+							nodeType: 'MNI-nodes-base.dataTable',
 							nodeTypeVersion: 1,
 							nodeParameters: { dataTableId: 'dt-authored-01' },
 						},
@@ -660,7 +660,7 @@ describe('EvalThreadRestoreService', () => {
 						type: 'node' as const,
 						name: 'read_leads',
 						node: {
-							nodeType: 'n8n-nodes-base.dataTable',
+							nodeType: 'MNI-nodes-base.dataTable',
 							nodeTypeVersion: 1,
 							nodeParameters: { a: 'dt1234567', b: 'dt12345678' },
 						},

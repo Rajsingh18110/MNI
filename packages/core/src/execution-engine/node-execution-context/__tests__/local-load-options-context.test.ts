@@ -4,14 +4,14 @@ import type {
 	IWorkflowBase,
 	IWorkflowExecuteAdditionalData,
 	IWorkflowLoader,
-} from 'n8n-workflow';
-import { Workflow } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { Workflow } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import { LocalLoadOptionsContext } from '../local-load-options-context';
 import { LoadWorkflowNodeContext } from '../workflow-node-context';
 
-vi.mock('n8n-workflow', async (importActual) => ({
+vi.mock('MNI-workflow', async (importActual) => ({
 	...(await importActual()),
 	Workflow: vi.fn(),
 }));
@@ -27,7 +27,7 @@ describe('LocalLoadOptionsContext', () => {
 	});
 
 	describe('getWorkflowNodeContext', () => {
-		const targetNodeType = 'n8n-nodes-base.executeWorkflowTrigger';
+		const targetNodeType = 'MNI-nodes-base.executeWorkflowTrigger';
 
 		it('should return null when workflowId parameter is missing', async () => {
 			additionalData.currentNodeParameters = {};
@@ -99,7 +99,7 @@ describe('LocalLoadOptionsContext', () => {
 			};
 
 			const otherNode = mock<INode>({
-				type: 'n8n-nodes-base.otherNode',
+				type: 'MNI-nodes-base.otherNode',
 				name: 'Other Node',
 			});
 			const dbWorkflow = mock<IWorkflowBase>({
@@ -210,7 +210,7 @@ describe('LocalLoadOptionsContext', () => {
 				name: 'Regular Trigger',
 			});
 			const activeVersionNode = mock<INode>({
-				type: 'n8n-nodes-base.otherNode',
+				type: 'MNI-nodes-base.otherNode',
 				name: 'Other Node',
 			});
 			const dbWorkflow = mock<IWorkflowBase>({

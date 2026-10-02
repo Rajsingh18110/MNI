@@ -16,8 +16,8 @@ import type {
 	INode,
 	INodeParameters,
 	ITelemetryTrackProperties,
-} from 'n8n-workflow';
-import { NodeHelpers } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeHelpers } from 'MNI-workflow';
 import CredentialIcon from '../CredentialIcon.vue';
 
 import CredentialConfig from './CredentialConfig.vue';
@@ -26,7 +26,7 @@ import CredentialSharing from './CredentialSharing.ee.vue';
 import SaveButton from '@/app/components/SaveButton.vue';
 import { useMessage } from '@/app/composables/useMessage';
 import { useNodeHelpers } from '@/app/composables/useNodeHelpers';
-import { useToast } from '@n8n/composables/useToast';
+import { useToast } from '@MNI/composables/useToast';
 import { CREDENTIAL_EDIT_MODAL_KEY } from '../../credentials.constants';
 import { EnterpriseEditionFeature, MODAL_CONFIRM } from '@/app/constants';
 import { useCredentialsStore } from '../../credentials.store';
@@ -37,26 +37,26 @@ import {
 	waitForOAuthCallback,
 } from '../../composables/oauthCallback';
 import { useNDVStore } from '@/features/ndv/shared/ndv.store';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { useUIStore } from '@/app/stores/ui.store';
 import { provideWorkflowDocumentStore } from '@/app/stores/workflowDocument.store';
 import type { ProjectSharingData } from '@/features/collaboration/projects/projects.types';
-import { assert } from '@n8n/utils/assert';
-import { createEventBus } from '@n8n/utils/event-bus';
+import { assert } from '@MNI/utils/assert';
+import { createEventBus } from '@MNI/utils/event-bus';
 
 import { useExternalHooks } from '@/app/composables/useExternalHooks';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
 import { useProjectsStore } from '@/features/collaboration/projects/projects.store';
 import { useExternalSecretsStore } from '@/features/integrations/externalSecrets.ee/externalSecrets.ee.store';
-import { useRootStore } from '@n8n/stores/useRootStore';
-import { sendUserEvent, type DynamicNotification } from '@n8n/rest-api-client/api/cloudPlans';
+import { useRootStore } from '@MNI/stores/useRootStore';
+import { sendUserEvent, type DynamicNotification } from '@MNI/rest-api-client/api/cloudPlans';
 import {
 	getAppNameFromCredType,
 	getNodeCredentialForSelectedAuthType,
 	updateNodeAuthType,
 } from '@/app/utils/nodeTypesUtils';
 import { isCredentialModalState, isValidCredentialResponse } from '@/app/utils/typeGuards';
-import { useI18n, type BaseTextKey } from '@n8n/i18n';
+import { useI18n, type BaseTextKey } from '@MNI/i18n';
 import { useElementSize } from '@vueuse/core';
 import { useRouter } from 'vue-router';
 
@@ -72,7 +72,7 @@ import {
 	N8nSpinner,
 	N8nText,
 	type IMenuItem,
-} from '@n8n/design-system';
+} from '@MNI/design-system';
 import { usePrivateCredentials } from '@/features/resolvers/composables/usePrivateCredentials';
 import PrivateCredentialIcon from '@/features/resolvers/components/PrivateCredentialIcon.vue';
 import TypeToConfirmDialog from './TypeToConfirmDialog.vue';
@@ -80,7 +80,7 @@ import { useQuickConnect } from '../../quickConnect/composables/useQuickConnect'
 import { useCredentialForm } from '../../composables/useCredentialForm';
 import type { CredentialModeOption } from './CredentialModeSelector.vue';
 import { useAiGateway } from '@/app/composables/useAiGateway';
-import { TELEMETRY_EVENT } from '@n8n/telemetry';
+import { TELEMETRY_EVENT } from '@MNI/telemetry';
 import { useAiGatewayStore } from '@/app/stores/aiGateway.store';
 
 type Props = {
@@ -795,7 +795,7 @@ async function useGatewayCredits(): Promise<void> {
 	telemetry.track('User toggled MNI connect credential', {
 		credential_type: type,
 		node_type: node.type,
-		mode: 'n8n_connect',
+		mode: 'MNI_connect',
 		workflow_id: workflowId,
 	});
 	telemetry.track('Node credential assigned', {
@@ -803,7 +803,7 @@ async function useGatewayCredits(): Promise<void> {
 		node_type: node.type,
 		workflow_id: workflowId,
 		credential_id: null,
-		credential_kind: 'n8n_connect',
+		credential_kind: 'MNI_connect',
 		source: 'credential_error_nudge',
 	});
 

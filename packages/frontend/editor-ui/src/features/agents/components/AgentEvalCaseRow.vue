@@ -4,8 +4,8 @@
  * answer does. The check is advisory — nothing grades against it automatically —
  * so it reads as a note rather than an assertion.
  */
-import { N8nIcon, N8nIconButton, N8nText, N8nTooltip } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+import { N8nIcon, N8nIconButton, N8nText, N8nTooltip } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 import { computed } from 'vue';
 
 const props = defineProps<{

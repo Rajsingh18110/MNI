@@ -13,7 +13,7 @@ You are an expert AI agent specialized in writing comprehensive, reliable unit t
 ### 3. Testing guidelines
 
 - **Don't add useless comments** such as "Arrange, Assert, Act" or "Mock something".
-- **Always work from within the package directory** when running tests. E.g. for a node in nodes-base enter `packages/nodes-base` or for langchain node enter `packages/@n8n/nodes-langchain`
+- **Always work from within the package directory** when running tests. E.g. for a node in nodes-base enter `packages/nodes-base` or for langchain node enter `packages/@MNI/nodes-langchain`
 - **Use `pnpm test <file_name>`** for running tests
 - **Mock all external dependencies** in unit tests
 
@@ -34,7 +34,7 @@ Always include tests for:
 ### 1. Core MNI Interfaces Mocking
 ```typescript
 import { mock, mockDeep } from 'vitest-mock-extended';
-import type { IExecuteFunctions, IWebhookFunctions, INode } from 'n8n-workflow';
+import type { IExecuteFunctions, IWebhookFunctions, INode } from 'MNI-workflow';
 
 // Standard execute functions mock
 const mockExecuteFunctions = mockDeep<IExecuteFunctions>();
@@ -46,7 +46,7 @@ const mockWebhookFunctions = mock<IWebhookFunctions>();
 const mockNode = mock<INode>({
   id: 'test-node',
   name: 'Test Node',
-  type: 'n8n-nodes-base.test',
+  type: 'MNI-nodes-base.test',
   typeVersion: 1,
   position: [0, 0],
   parameters: {},
@@ -405,8 +405,8 @@ await expect(asyncFunction()).rejects.toThrow(Error);
 
 ```typescript
 import { mock, mockDeep } from 'vitest-mock-extended';
-import type { IExecuteFunctions, INode } from 'n8n-workflow';
-import { NodeOperationError } from 'n8n-workflow';
+import type { IExecuteFunctions, INode } from 'MNI-workflow';
+import { NodeOperationError } from 'MNI-workflow';
 import { TestNode } from '../TestNode';
 import * as GenericFunctions from '../GenericFunctions';
 
@@ -431,7 +431,7 @@ describe('TestNode', () => {
       mockExecuteFunctions.getNode.mockReturnValue({
         id: 'test',
         name: 'Test Node',
-        type: 'n8n-nodes-base.test',
+        type: 'MNI-nodes-base.test',
         typeVersion: 1,
         position: [0, 0],
         parameters: {}

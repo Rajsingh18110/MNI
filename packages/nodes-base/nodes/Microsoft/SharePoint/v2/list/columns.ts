@@ -4,7 +4,7 @@ import type {
 	INodeProperties,
 	ResourceMapperField,
 	ResourceMapperFields,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { assertPathSegment } from '../helpers/utils';
 import { resolveSiteId } from '../site';

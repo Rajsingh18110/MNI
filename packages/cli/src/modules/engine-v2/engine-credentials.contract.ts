@@ -1,5 +1,5 @@
-import { WorkflowExecuteModeList } from 'n8n-workflow';
-import type { ICredentialDataDecryptedObject } from 'n8n-workflow';
+import { WorkflowExecuteModeList } from 'MNI-workflow';
+import type { ICredentialDataDecryptedObject } from 'MNI-workflow';
 import { z } from 'zod';
 
 /**

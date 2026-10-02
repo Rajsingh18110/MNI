@@ -1,9 +1,9 @@
-import type { GenerateInsightsDto } from '@n8n/api-types';
-import { EVAL_COLLECTIONS_FLAG } from '@n8n/api-types';
-import type { Logger } from '@n8n/backend-common';
-import type { AuthenticatedRequest, User } from '@n8n/db';
-import { ControllerRegistryMetadata } from '@n8n/decorators';
-import { Container } from '@n8n/di';
+import type { GenerateInsightsDto } from '@MNI/api-types';
+import { EVAL_COLLECTIONS_FLAG } from '@MNI/api-types';
+import type { Logger } from '@MNI/backend-common';
+import type { AuthenticatedRequest, User } from '@MNI/db';
+import { ControllerRegistryMetadata } from '@MNI/decorators';
+import { Container } from '@MNI/di';
 import type { Mocked } from 'vitest';
 import { mock } from 'vitest-mock-extended';
 

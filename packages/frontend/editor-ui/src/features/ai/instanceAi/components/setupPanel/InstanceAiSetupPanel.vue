@@ -9,18 +9,18 @@ import {
 	watch,
 } from 'vue';
 import { useLocalStorage, usePreferredReducedMotion, useTimeoutFn } from '@vueuse/core';
-import { useUsersStore } from '@n8n/stores/users.store';
-import { useRootStore } from '@n8n/stores/useRootStore';
+import { useUsersStore } from '@MNI/stores/users.store';
+import { useRootStore } from '@MNI/stores/useRootStore';
 import {
 	N8nSetupPanel,
 	N8nButton,
 	N8nIcon,
 	N8nText,
 	type SetupPanelItem,
-} from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
-import { NodeHelpers } from 'n8n-workflow';
-import { useToast } from '@n8n/composables/useToast';
+} from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
+import { NodeHelpers } from 'MNI-workflow';
+import { useToast } from '@MNI/composables/useToast';
 import type { INodeUi } from '@/Interface';
 import {
 	LOCAL_STORAGE_INSTANCE_AI_SETUP_ITEMS,

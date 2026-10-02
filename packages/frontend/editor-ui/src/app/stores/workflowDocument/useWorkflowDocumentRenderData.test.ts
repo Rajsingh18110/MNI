@@ -1,7 +1,7 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { computed, effectScope, ref } from 'vue';
 import { setActivePinia, createPinia } from 'pinia';
-import type { INode } from 'n8n-workflow';
+import type { INode } from 'MNI-workflow';
 import type { INodeUi } from '@/Interface';
 import {
 	createTestNode,
@@ -23,7 +23,7 @@ import {
 } from '@/features/workflows/canvas/canvas.types';
 import { useWorkflowDocumentRenderData } from './useWorkflowDocumentRenderData';
 
-const TEST_TRIGGER_NODE_TYPE = 'n8n-nodes-base.testTrigger';
+const TEST_TRIGGER_NODE_TYPE = 'MNI-nodes-base.testTrigger';
 
 // External-surface mocks only — node-types and dirtiness pull in unrelated
 // stores that aren't needed to exercise renderData's wiring. The actual
@@ -45,11 +45,11 @@ vi.mock('@/app/stores/nodeTypes.store', () => ({
 	useNodeTypesStore: vi.fn(() => ({
 		isConfigNode: isConfigNodeSpy,
 		isConfigurableNode: () => false,
-		isTriggerNode: (type: string) => type === 'n8n-nodes-base.testTrigger',
+		isTriggerNode: (type: string) => type === 'MNI-nodes-base.testTrigger',
 		getNodeType: (type: string) =>
-			type === 'n8n-nodes-base.testTrigger'
+			type === 'MNI-nodes-base.testTrigger'
 				? {
-						name: 'n8n-nodes-base.testTrigger',
+						name: 'MNI-nodes-base.testTrigger',
 						displayName: 'Test Trigger',
 						description: '',
 						version: 1,
@@ -241,12 +241,12 @@ describe('useWorkflowDocumentRenderData — fusion projections', () => {
 
 	it('returns a sticky-note render type for sticky nodes', () => {
 		const { docId } = setupWorkflow('wf-fusion-sticky', [
-			{ id: 's', name: 'Sticky', type: 'n8n-nodes-base.stickyNote' },
+			{ id: 's', name: 'Sticky', type: 'MNI-nodes-base.stickyNote' },
 		]);
 		const { renderData } = createRenderData(docId);
 
 		const render = renderData.renderTypeByNodeId.get('s')?.value;
-		expect(render?.type).toBe('n8n-nodes-base.stickyNote');
+		expect(render?.type).toBe('MNI-nodes-base.stickyNote');
 	});
 
 	it('returns an agent render type threading the agentId for v2 AI Agent nodes', () => {
@@ -255,7 +255,7 @@ describe('useWorkflowDocumentRenderData — fusion projections', () => {
 			{
 				id: 'ag',
 				name: 'Agent',
-				type: 'n8n-nodes-base.messageAnAgent',
+				type: 'MNI-nodes-base.messageAnAgent',
 				typeVersion: 2,
 				parameters: { agentId },
 			},
@@ -263,7 +263,7 @@ describe('useWorkflowDocumentRenderData — fusion projections', () => {
 		const { renderData } = createRenderData(docId);
 
 		const render = renderData.renderTypeByNodeId.get('ag')?.value;
-		expect(render?.type).toBe('n8n-nodes-base.messageAnAgent');
+		expect(render?.type).toBe('MNI-nodes-base.messageAnAgent');
 		expect(render && 'options' in render ? render.options : undefined).toEqual({
 			agentId,
 			// No stored agentSource resolves to referenced (pre-switch nodes).
@@ -285,7 +285,7 @@ describe('useWorkflowDocumentRenderData — fusion projections', () => {
 			{
 				id: 'ag',
 				name: 'Agent',
-				type: 'n8n-nodes-base.messageAnAgent',
+				type: 'MNI-nodes-base.messageAnAgent',
 				typeVersion: 2,
 				parameters: { agentSource: 'inline', inlineAgent },
 			},
@@ -316,7 +316,7 @@ describe('useWorkflowDocumentRenderData — fusion projections', () => {
 			{
 				id: 'ag1',
 				name: 'Agent v1',
-				type: 'n8n-nodes-base.messageAnAgent',
+				type: 'MNI-nodes-base.messageAnAgent',
 				typeVersion: 1,
 				parameters: { agentId: { __rl: true, mode: 'list', value: 'agent-1' } },
 			},
@@ -328,7 +328,7 @@ describe('useWorkflowDocumentRenderData — fusion projections', () => {
 
 	it('assigns z-index entries only for sticky notes via additionalPropertiesByNodeId', () => {
 		const { docId } = setupWorkflow('wf-fusion-additional', [
-			{ id: 's1', name: 'Sticky1', type: 'n8n-nodes-base.stickyNote' },
+			{ id: 's1', name: 'Sticky1', type: 'MNI-nodes-base.stickyNote' },
 			{ id: 'n1', name: 'Node1', type: 'test' },
 		]);
 		const { renderData } = createRenderData(docId);

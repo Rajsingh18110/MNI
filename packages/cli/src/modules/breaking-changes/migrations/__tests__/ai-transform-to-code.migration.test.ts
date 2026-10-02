@@ -17,7 +17,7 @@ describe('aiTransformToCode migration', () => {
 		const result = aiTransformToCode.migrate(node);
 
 		expect(result.node).toEqual({
-			type: 'n8n-nodes-base.code',
+			type: 'MNI-nodes-base.code',
 			typeVersion: 2,
 			parameters: {
 				mode: 'runOnceForAllItems',

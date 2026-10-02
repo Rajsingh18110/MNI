@@ -13,7 +13,7 @@ const PREFIX = PREVIEW_LABEL_PREFIX;
 // The sandbox tenant. The default (1) is production self-hosted, which rejects a
 // sandbox key. Matches packages/testing/containers/services/n8n.ts.
 const LICENSE_TENANT_ID = '1001';
-const LICENSE_KEY_SECRET = 'N8N_LICENSE_ACTIVATION_KEY';
+const LICENSE_KEY_SECRET = 'MNI_LICENSE_ACTIVATION_KEY';
 
 /**
  * Slugs of the `preview:*` labels on a PR.
@@ -56,11 +56,11 @@ export function envForSlugs(slugs, readSecret) {
 					);
 					break;
 				}
-				env.push(`N8N_LICENSE_TENANT_ID=${LICENSE_TENANT_ID}`, `${LICENSE_KEY_SECRET}=${key}`);
+				env.push(`MNI_LICENSE_TENANT_ID=${LICENSE_TENANT_ID}`, `${LICENSE_KEY_SECRET}=${key}`);
 				break;
 			}
 			case 'debug':
-				env.push('N8N_LOG_LEVEL=debug');
+				env.push('MNI_LOG_LEVEL=debug');
 				break;
 			default:
 				warnings.push(`Ignoring preview:${slug} — no such preview toggle.`);

@@ -1,8 +1,8 @@
 import { createNode, createWorkflow } from '../../../__tests__/test-helpers';
 import { ChatTriggerEmbeddedJsonRule } from '../chat-trigger-embedded-json.rule';
 
-const CHAT_TRIGGER = '@n8n/n8n-nodes-langchain.chatTrigger';
-const CHAT_TRIGGER_LEGACY = 'n8n-nodes-langchain.chatTrigger';
+const CHAT_TRIGGER = '@MNI/MNI-nodes-langchain.chatTrigger';
+const CHAT_TRIGGER_LEGACY = 'MNI-nodes-langchain.chatTrigger';
 
 describe('ChatTriggerEmbeddedJsonRule', () => {
 	let rule: ChatTriggerEmbeddedJsonRule;
@@ -14,7 +14,7 @@ describe('ChatTriggerEmbeddedJsonRule', () => {
 	describe('detectWorkflow()', () => {
 		it('should not be affected when there is no Chat Trigger node', async () => {
 			const { workflow, nodesGroupedByType } = createWorkflow('wf-1', 'Test Workflow', [
-				createNode('HTTP', 'n8n-nodes-base.httpRequest'),
+				createNode('HTTP', 'MNI-nodes-base.httpRequest'),
 			]);
 
 			const result = await rule.detectWorkflow(workflow, nodesGroupedByType);

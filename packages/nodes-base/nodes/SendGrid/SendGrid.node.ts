@@ -9,7 +9,7 @@ import {
 	type INodePropertyOptions,
 	type INodeType,
 	type INodeTypeDescription,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { escapeSgqlLikeValue } from '@utils/query-escaping';
 

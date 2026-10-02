@@ -4,9 +4,9 @@ import type {
 	ProjectRepository,
 	SharedWorkflowRepository,
 	User,
-} from '@n8n/db';
-import type { EntityManager } from '@n8n/typeorm';
-import type { INodeCredentials } from 'n8n-workflow';
+} from '@MNI/db';
+import type { EntityManager } from '@MNI/typeorm';
+import type { INodeCredentials } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import type { CredentialsFinderService } from '@/credentials/credentials-finder.service';

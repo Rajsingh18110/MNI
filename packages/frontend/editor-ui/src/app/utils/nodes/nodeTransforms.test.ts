@@ -1,8 +1,8 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest';
 import { createTestingPinia } from '@pinia/testing';
 import { setActivePinia } from 'pinia';
-import { NodeHelpers } from 'n8n-workflow';
-import type { INodePropertyOptions, INodeTypeDescription } from 'n8n-workflow';
+import { NodeHelpers } from 'MNI-workflow';
+import type { INodePropertyOptions, INodeTypeDescription } from 'MNI-workflow';
 
 import { getParameterDisplayableOptions, serializeNode } from './nodeTransforms';
 import type { INodeUi } from '@/Interface';
@@ -16,8 +16,8 @@ vi.mock('@/features/shared/envFeatureFlag/useEnvFeatureFlag', () => ({
 // Controls which env feature flags the mocked composable reports as enabled.
 const enabledEnvFeatureFlags = new Set<string>();
 
-vi.mock('n8n-workflow', async (importOriginal) => {
-	const original = await importOriginal<typeof import('n8n-workflow')>();
+vi.mock('MNI-workflow', async (importOriginal) => {
+	const original = await importOriginal<typeof import('MNI-workflow')>();
 	return {
 		...original,
 		NodeHelpers: {
@@ -396,7 +396,7 @@ describe('serializeNode', () => {
 
 	it('does not throw when a known node type has null credentials or parameters', () => {
 		const knownNodeType = {
-			name: 'n8n-nodes-base.httpRequest',
+			name: 'MNI-nodes-base.httpRequest',
 			displayName: 'HTTP Request',
 			version: 1,
 			description: '',
@@ -412,7 +412,7 @@ describe('serializeNode', () => {
 		vi.mocked(NodeHelpers.getNodeParameters).mockReturnValue({});
 
 		const node = createNode({
-			type: 'n8n-nodes-base.httpRequest',
+			type: 'MNI-nodes-base.httpRequest',
 			credentials: null as unknown as INodeUi['credentials'],
 			parameters: null as unknown as INodeUi['parameters'],
 			webhookId: null as unknown as string,
@@ -432,7 +432,7 @@ describe('serializeNode', () => {
 			expect.objectContaining({
 				id: 'id',
 				name: 'Test Node',
-				type: 'n8n-nodes-base.httpRequest',
+				type: 'MNI-nodes-base.httpRequest',
 				parameters: {},
 			}),
 			knownNodeType,
@@ -450,7 +450,7 @@ describe('serializeNode', () => {
 		// declared; generic/predefined auth types come from the genericAuthType and
 		// nodeCredentialType parameters.
 		const httpRequestNodeType = {
-			name: 'n8n-nodes-base.httpRequest',
+			name: 'MNI-nodes-base.httpRequest',
 			displayName: 'HTTP Request',
 			version: 1,
 			description: '',
@@ -472,7 +472,7 @@ describe('serializeNode', () => {
 			nodeTypeProvider.getNodeType.mockReturnValue(httpRequestNodeType);
 
 			const node = createNode({
-				type: 'n8n-nodes-base.httpRequest',
+				type: 'MNI-nodes-base.httpRequest',
 				parameters: { authentication: 'genericCredentialType', genericAuthType: 'httpHeaderAuth' },
 				credentials: {
 					httpHeaderAuth: { id: '1', name: 'Header Auth' },
@@ -489,7 +489,7 @@ describe('serializeNode', () => {
 			nodeTypeProvider.getNodeType.mockReturnValue(httpRequestNodeType);
 
 			const node = createNode({
-				type: 'n8n-nodes-base.httpRequest',
+				type: 'MNI-nodes-base.httpRequest',
 				parameters: { authentication: 'predefinedCredentialType', nodeCredentialType: 'slackApi' },
 				credentials: {
 					slackApi: { id: '1', name: 'Slack' },
@@ -506,7 +506,7 @@ describe('serializeNode', () => {
 			nodeTypeProvider.getNodeType.mockReturnValue(httpRequestNodeType);
 
 			const node = createNode({
-				type: 'n8n-nodes-base.httpRequest',
+				type: 'MNI-nodes-base.httpRequest',
 				parameters: {
 					authentication: 'genericCredentialType',
 					genericAuthType: 'httpHeaderAuth',
@@ -530,7 +530,7 @@ describe('serializeNode', () => {
 			nodeTypeProvider.getNodeType.mockReturnValue(httpRequestNodeType);
 
 			const node = createNode({
-				type: 'n8n-nodes-base.httpRequest',
+				type: 'MNI-nodes-base.httpRequest',
 				parameters: {
 					authentication: 'genericCredentialType',
 					genericAuthType: '={{ $json.authType }}',
@@ -553,7 +553,7 @@ describe('serializeNode', () => {
 			nodeTypeProvider.getNodeType.mockReturnValue(httpRequestNodeType);
 
 			const node = createNode({
-				type: 'n8n-nodes-base.httpRequest',
+				type: 'MNI-nodes-base.httpRequest',
 				parameters: {
 					authentication: 'predefinedCredentialType',
 					nodeCredentialType: 'slackApi',
@@ -598,7 +598,7 @@ describe('serializeNode', () => {
 			} as INodeTypeDescription);
 
 			const node = createNode({
-				type: 'n8n-nodes-base.httpRequest',
+				type: 'MNI-nodes-base.httpRequest',
 				parameters: {
 					authentication: 'predefinedCredentialType',
 					nodeCredentialType: 'slackApi',
@@ -617,7 +617,7 @@ describe('serializeNode', () => {
 
 		it('filters declared credentials by display state and drops unknown types', () => {
 			const declaredNodeType = {
-				name: 'n8n-nodes-base.testNode',
+				name: 'MNI-nodes-base.testNode',
 				displayName: 'Test Node',
 				version: 1,
 				description: '',
@@ -634,7 +634,7 @@ describe('serializeNode', () => {
 			nodeTypeProvider.getNodeType.mockReturnValue(declaredNodeType);
 
 			const node = createNode({
-				type: 'n8n-nodes-base.testNode',
+				type: 'MNI-nodes-base.testNode',
 				credentials: {
 					shownApi: { id: '1', name: 'Shown' },
 					hiddenApi: { id: '2', name: 'Hidden' },

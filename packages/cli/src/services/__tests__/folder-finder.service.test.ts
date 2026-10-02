@@ -1,4 +1,4 @@
-import type { Folder, FolderRepository, User } from '@n8n/db';
+import type { Folder, FolderRepository, User } from '@MNI/db';
 import { mock } from 'vitest-mock-extended';
 
 import type { RoleService } from '@/services/role.service';

@@ -1,7 +1,7 @@
-import { testDb } from '@n8n/backend-test-utils';
-import { GlobalConfig } from '@n8n/config';
-import { SettingsRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
+import { testDb } from '@MNI/backend-test-utils';
+import { GlobalConfig } from '@MNI/config';
+import { SettingsRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
 
 import { ProvisioningInstanceSettingsLoader } from '@/instance-settings-loader/loaders/sso/provisioning.instance-settings-loader';
 import { PROVISIONING_PREFERENCES_DB_KEY } from '@/modules/provisioning.ee/constants';

@@ -1,11 +1,11 @@
-import { Logger } from '@n8n/backend-common';
-import type { SsrfBridge } from '@n8n/backend-network';
-import { mockInstance } from '@n8n/backend-test-utils';
-import type { ClientOAuth2 } from '@n8n/client-oauth2';
-import { type CredentialsEntity, type User } from '@n8n/db';
-import { Container } from '@n8n/di';
+import { Logger } from '@MNI/backend-common';
+import type { SsrfBridge } from '@MNI/backend-network';
+import { mockInstance } from '@MNI/backend-test-utils';
+import type { ClientOAuth2 } from '@MNI/client-oauth2';
+import { type CredentialsEntity, type User } from '@MNI/db';
+import { Container } from '@MNI/di';
 import type { Response } from 'express';
-import { UserError } from 'n8n-workflow';
+import { UserError } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import { OAuth2CredentialController } from '@/controllers/oauth/oauth2-credential.controller';
@@ -17,8 +17,8 @@ import { OauthService } from '@/oauth/oauth.service';
 import type { OAuthRequest } from '@/requests';
 
 vi.mock('axios');
-vi.mock('@n8n/client-oauth2', async (importOriginal) => {
-	const actual = await importOriginal<typeof import('@n8n/client-oauth2')>();
+vi.mock('@MNI/client-oauth2', async (importOriginal) => {
+	const actual = await importOriginal<typeof import('@MNI/client-oauth2')>();
 	return { ...actual, ClientOAuth2: vi.fn() };
 });
 vi.mock('pkce-challenge');
@@ -96,7 +96,7 @@ describe('OAuth2CredentialController', () => {
 		});
 
 		it('should exchange the code for a valid token, and save it to DB for static credential', async () => {
-			const { ClientOAuth2 } = await import('@n8n/client-oauth2');
+			const { ClientOAuth2 } = await import('@MNI/client-oauth2');
 			const mockGetToken = vi.fn().mockResolvedValue({
 				data: { access_token: 'new_token', refresh_token: 'refresh_token' },
 			});
@@ -153,7 +153,7 @@ describe('OAuth2CredentialController', () => {
 
 		describe('outbound network policy', () => {
 			const runCallback = async () => {
-				const { ClientOAuth2 } = await import('@n8n/client-oauth2');
+				const { ClientOAuth2 } = await import('@MNI/client-oauth2');
 				const mockGetToken = vi.fn().mockResolvedValue({
 					data: { access_token: 'new_token', refresh_token: 'refresh_token' },
 				});
@@ -232,7 +232,7 @@ describe('OAuth2CredentialController', () => {
 		});
 
 		it('should build the client with a certificate when certificate authentication is selected', async () => {
-			const { ClientOAuth2 } = await import('@n8n/client-oauth2');
+			const { ClientOAuth2 } = await import('@MNI/client-oauth2');
 			const mockGetToken = vi.fn().mockResolvedValue({
 				data: { access_token: 'new_token', refresh_token: 'refresh_token' },
 			});
@@ -288,7 +288,7 @@ describe('OAuth2CredentialController', () => {
 		});
 
 		it('should not send a client secret when certificate authentication is selected but a stale secret is stored', async () => {
-			const { ClientOAuth2 } = await import('@n8n/client-oauth2');
+			const { ClientOAuth2 } = await import('@MNI/client-oauth2');
 			const mockGetToken = vi.fn().mockResolvedValue({
 				data: { access_token: 'new_token', refresh_token: 'refresh_token' },
 			});
@@ -354,7 +354,7 @@ describe('OAuth2CredentialController', () => {
 		});
 
 		it('should pass state resource to token exchange and store it for static credentials', async () => {
-			const { ClientOAuth2 } = await import('@n8n/client-oauth2');
+			const { ClientOAuth2 } = await import('@MNI/client-oauth2');
 			const mockGetToken = vi.fn().mockResolvedValue({
 				data: { access_token: 'new_token', refresh_token: 'refresh_token' },
 			});
@@ -416,7 +416,7 @@ describe('OAuth2CredentialController', () => {
 		});
 
 		it('should handle dynamic credential callback successfully', async () => {
-			const { ClientOAuth2 } = await import('@n8n/client-oauth2');
+			const { ClientOAuth2 } = await import('@MNI/client-oauth2');
 			const oauthTokenData = { access_token: 'new_token', refresh_token: 'refresh_token' };
 			const mockGetToken = vi.fn().mockResolvedValue({
 				data: oauthTokenData,
@@ -491,7 +491,7 @@ describe('OAuth2CredentialController', () => {
 		});
 
 		it('should store state resource for dynamic credentials', async () => {
-			const { ClientOAuth2 } = await import('@n8n/client-oauth2');
+			const { ClientOAuth2 } = await import('@MNI/client-oauth2');
 			const mockGetToken = vi.fn().mockResolvedValue({
 				data: { access_token: 'new_token', refresh_token: 'refresh_token' },
 			});
@@ -559,7 +559,7 @@ describe('OAuth2CredentialController', () => {
 		});
 
 		it('should render error when credentialResolverId is missing for dynamic credential', async () => {
-			const { ClientOAuth2 } = await import('@n8n/client-oauth2');
+			const { ClientOAuth2 } = await import('@MNI/client-oauth2');
 			const mockGetToken = vi.fn().mockResolvedValue({
 				data: { access_token: 'new_token', refresh_token: 'refresh_token' },
 			});
@@ -614,7 +614,7 @@ describe('OAuth2CredentialController', () => {
 		});
 
 		it('should render error when authorizationHeader is missing for dynamic credential', async () => {
-			const { ClientOAuth2 } = await import('@n8n/client-oauth2');
+			const { ClientOAuth2 } = await import('@MNI/client-oauth2');
 			const mockGetToken = vi.fn().mockResolvedValue({
 				data: { access_token: 'new_token', refresh_token: 'refresh_token' },
 			});
@@ -669,7 +669,7 @@ describe('OAuth2CredentialController', () => {
 		});
 
 		it('should render error when authorizationHeader does not start with Bearer', async () => {
-			const { ClientOAuth2 } = await import('@n8n/client-oauth2');
+			const { ClientOAuth2 } = await import('@MNI/client-oauth2');
 			const mockGetToken = vi.fn().mockResolvedValue({
 				data: { access_token: 'new_token', refresh_token: 'refresh_token' },
 			});
@@ -725,7 +725,7 @@ describe('OAuth2CredentialController', () => {
 		});
 
 		it('should handle static credential callback when origin is undefined', async () => {
-			const { ClientOAuth2 } = await import('@n8n/client-oauth2');
+			const { ClientOAuth2 } = await import('@MNI/client-oauth2');
 			const mockGetToken = vi.fn().mockResolvedValue({
 				data: { access_token: 'new_token', refresh_token: 'refresh_token' },
 			});
@@ -781,7 +781,7 @@ describe('OAuth2CredentialController', () => {
 		});
 
 		it('should handle PKCE flow', async () => {
-			const { ClientOAuth2 } = await import('@n8n/client-oauth2');
+			const { ClientOAuth2 } = await import('@MNI/client-oauth2');
 			const mockGetToken = vi.fn().mockResolvedValue({
 				data: { access_token: 'new_token' },
 			});
@@ -836,7 +836,7 @@ describe('OAuth2CredentialController', () => {
 		});
 
 		it('should include client_id and client_secret in body for PKCE flow with body authentication', async () => {
-			const { ClientOAuth2 } = await import('@n8n/client-oauth2');
+			const { ClientOAuth2 } = await import('@MNI/client-oauth2');
 			const mockGetToken = vi.fn().mockResolvedValue({
 				data: { access_token: 'new_token' },
 			});
@@ -897,7 +897,7 @@ describe('OAuth2CredentialController', () => {
 		it('should send code_verifier for authorization code flow when PKCE is enabled', async () => {
 			const now = 1_700_000_000_000;
 			vi.spyOn(Date, 'now').mockReturnValue(now);
-			const { ClientOAuth2 } = await import('@n8n/client-oauth2');
+			const { ClientOAuth2 } = await import('@MNI/client-oauth2');
 			const mockGetToken = vi.fn().mockResolvedValue({
 				data: {
 					access_token: 'new_token',
@@ -958,14 +958,14 @@ describe('OAuth2CredentialController', () => {
 				expect.objectContaining({
 					oauthTokenData: expect.objectContaining({
 						expires_at: 'provider-expiry',
-						n8n_expires_at: String(now + 3_600_000),
+						MNI_expires_at: String(now + 3_600_000),
 					}),
 				}),
 			);
 		});
 
 		it('should send code_verifier with client authentication fields for body-authenticated authorization code flow', async () => {
-			const { ClientOAuth2 } = await import('@n8n/client-oauth2');
+			const { ClientOAuth2 } = await import('@MNI/client-oauth2');
 			const mockGetToken = vi.fn().mockResolvedValue({
 				data: { access_token: 'new_token' },
 			});
@@ -1028,7 +1028,7 @@ describe('OAuth2CredentialController', () => {
 			const now = 1_700_000_000_000;
 			const existingExpiresAt = String(now + 60_000);
 			vi.spyOn(Date, 'now').mockReturnValue(now);
-			const { ClientOAuth2 } = await import('@n8n/client-oauth2');
+			const { ClientOAuth2 } = await import('@MNI/client-oauth2');
 			vi.mocked(ClientOAuth2).mockImplementation(function () {
 				return {
 					code: { getToken: vi.fn().mockResolvedValue({ data: { access_token: 'new_token' } }) },
@@ -1042,7 +1042,7 @@ describe('OAuth2CredentialController', () => {
 					oauthTokenData: {
 						access_token: 'old_token',
 						expires_in: 3600,
-						n8n_expires_at: existingExpiresAt,
+						MNI_expires_at: existingExpiresAt,
 					},
 				},
 				{
@@ -1079,14 +1079,14 @@ describe('OAuth2CredentialController', () => {
 					oauthTokenData: expect.objectContaining({
 						access_token: 'new_token',
 						expires_in: 3600,
-						n8n_expires_at: existingExpiresAt,
+						MNI_expires_at: existingExpiresAt,
 					}),
 				}),
 			);
 		});
 
 		it('should handle body authentication method', async () => {
-			const { ClientOAuth2 } = await import('@n8n/client-oauth2');
+			const { ClientOAuth2 } = await import('@MNI/client-oauth2');
 			const mockGetToken = vi.fn().mockResolvedValue({
 				data: { access_token: 'new_token' },
 			});
@@ -1143,7 +1143,7 @@ describe('OAuth2CredentialController', () => {
 		});
 
 		it('should ignore a non-string state.resource (malformed state)', async () => {
-			const { ClientOAuth2 } = await import('@n8n/client-oauth2');
+			const { ClientOAuth2 } = await import('@MNI/client-oauth2');
 			const mockGetToken = vi.fn().mockResolvedValue({
 				data: { access_token: 'new_token', refresh_token: 'refresh_token' },
 			});
@@ -1199,7 +1199,7 @@ describe('OAuth2CredentialController', () => {
 		});
 
 		it('should handle callback with additional query parameters', async () => {
-			const { ClientOAuth2 } = await import('@n8n/client-oauth2');
+			const { ClientOAuth2 } = await import('@MNI/client-oauth2');
 			const mockGetToken = vi.fn().mockResolvedValue({
 				data: { access_token: 'new_token' },
 			});
@@ -1271,7 +1271,7 @@ describe('OAuth2CredentialController', () => {
 
 			async function setupCallback(jweEnabled: boolean, tokenResponse: Record<string, unknown>) {
 				const mockGetToken = vi.fn().mockResolvedValue({ data: { ...tokenResponse } });
-				const { ClientOAuth2 } = await import('@n8n/client-oauth2');
+				const { ClientOAuth2 } = await import('@MNI/client-oauth2');
 				vi.mocked(ClientOAuth2).mockImplementation(function () {
 					return { code: { getToken: mockGetToken } } as any;
 				});
@@ -1383,7 +1383,7 @@ describe('OAuth2CredentialController', () => {
 				const mockGetToken = vi
 					.fn()
 					.mockResolvedValue({ data: { access_token: 'jwe-blob', refresh_token: 'r' } });
-				const { ClientOAuth2 } = await import('@n8n/client-oauth2');
+				const { ClientOAuth2 } = await import('@MNI/client-oauth2');
 				vi.mocked(ClientOAuth2).mockImplementation(function () {
 					return { code: { getToken: mockGetToken } } as any;
 				});
@@ -1444,7 +1444,7 @@ describe('OAuth2CredentialController', () => {
 		});
 
 		it('should handle errors and render error page', async () => {
-			const { ClientOAuth2 } = await import('@n8n/client-oauth2');
+			const { ClientOAuth2 } = await import('@MNI/client-oauth2');
 			const mockGetToken = vi.fn().mockRejectedValue(new Error('Token exchange failed'));
 			vi.mocked(ClientOAuth2).mockImplementation(function () {
 				return { code: { getToken: mockGetToken } } as any;

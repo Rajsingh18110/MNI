@@ -1,11 +1,11 @@
-import { inTest, Logger } from '@n8n/backend-common';
-import { GlobalConfig } from '@n8n/config';
-import { Time } from '@n8n/constants';
-import { Service } from '@n8n/di';
+import { inTest, Logger } from '@MNI/backend-common';
+import { GlobalConfig } from '@MNI/config';
+import { Time } from '@MNI/constants';
+import { Service } from '@MNI/di';
 import compression from 'compression';
 import express from 'express';
 import { rateLimit as expressRateLimit } from 'express-rate-limit';
-import { ErrorReporter } from 'n8n-core';
+import { ErrorReporter } from 'MNI-core';
 import * as a from 'node:assert/strict';
 import { randomBytes } from 'node:crypto';
 import {
@@ -195,9 +195,9 @@ export class TaskBrokerServer {
 
 		// The task broker is an internal server (not publicly accessible) used
 		// exclusively by the task-runner-launcher. Its health endpoint must always
-		// be /healthz, independent of N8N_ENDPOINT_HEALTH, which is intended for
+		// be /healthz, independent of MNI_ENDPOINT_HEALTH, which is intended for
 		// external-facing servers. Platforms such as Cloud Run reserve /healthz at
-		// the ingress level, so users set N8N_ENDPOINT_HEALTH=health to avoid
+		// the ingress level, so users set MNI_ENDPOINT_HEALTH=health to avoid
 		// conflicts on the public URL — but that restriction does not apply to
 		// internal container-to-container traffic on the broker port.
 		this.app.get('/healthz', (_, res) => {
@@ -246,7 +246,7 @@ export class TaskBrokerServer {
 
 			if (!result.isValid) {
 				this.logger.warn(
-					`Task runner connection attempt failed: ${result.reason}. If the runner startup exceeds grant token TTL ${this.globalConfig.taskRunners.grantTokenTtl}s, increase N8N_RUNNERS_GRANT_TOKEN_TTL`,
+					`Task runner connection attempt failed: ${result.reason}. If the runner startup exceeds grant token TTL ${this.globalConfig.taskRunners.grantTokenTtl}s, increase MNI_RUNNERS_GRANT_TOKEN_TTL`,
 					{ runnerId: reportedRunnerId },
 				);
 				this.failUpgradeRequest(socket, result.statusCode);
@@ -288,7 +288,7 @@ export class TaskBrokerServer {
 
 		if (boundRunnerId !== reportedRunnerId) {
 			this.logger.warn(
-				`Task runner identified as "${reportedRunnerId}" but was assigned "${boundRunnerId}", registering it under the assigned ID. Check that N8N_RUNNERS_ID reaches the runner.`,
+				`Task runner identified as "${reportedRunnerId}" but was assigned "${boundRunnerId}", registering it under the assigned ID. Check that MNI_RUNNERS_ID reaches the runner.`,
 			);
 		}
 

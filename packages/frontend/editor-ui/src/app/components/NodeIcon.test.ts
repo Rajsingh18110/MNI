@@ -13,7 +13,7 @@ vi.mock('@/app/composables/useNodeIconSource', () => ({
 	},
 }));
 
-vi.mock('@n8n/design-system', () => ({
+vi.mock('@MNI/design-system', () => ({
 	N8nNodeIcon: defineComponent({
 		props: ['type', 'src', 'name', 'disabled', 'size', 'circle'],
 		setup() {
@@ -25,7 +25,7 @@ vi.mock('@n8n/design-system', () => ({
 import NodeIcon from './NodeIcon.vue';
 
 const setNodeType: SimplifiedNodeType = {
-	name: 'n8n-nodes-base.set',
+	name: 'MNI-nodes-base.set',
 	displayName: 'Edit Fields',
 	description: '',
 	group: ['input'],
@@ -34,7 +34,7 @@ const setNodeType: SimplifiedNodeType = {
 };
 
 const calendarNodeType: SimplifiedNodeType = {
-	name: 'n8n-nodes-base.googleCalendar',
+	name: 'MNI-nodes-base.googleCalendar',
 	displayName: 'Google Calendar',
 	description: '',
 	group: ['input'],

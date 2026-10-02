@@ -1,5 +1,5 @@
-import type { ModuleRegistry, Logger } from '@n8n/backend-common';
-import type { AuthenticatedRequest } from '@n8n/db';
+import type { ModuleRegistry, Logger } from '@MNI/backend-common';
+import type { AuthenticatedRequest } from '@MNI/db';
 import { mock } from 'vitest-mock-extended';
 
 import { ChatHubSettingsController } from '../chat-hub.settings.controller';

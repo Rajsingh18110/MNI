@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { N8nText } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+import { N8nText } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 import { computed, ref } from 'vue';
 import { useThread } from '../instanceAi.store';
 import ApprovalOptionList, { type ApprovalOption } from './ApprovalOptionList.vue';

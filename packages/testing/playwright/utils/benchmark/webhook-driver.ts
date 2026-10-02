@@ -1,5 +1,5 @@
-import { trigger } from '@n8n/workflow-sdk';
-import type { IWorkflowBase } from 'n8n-workflow';
+import { trigger } from '@MNI/workflow-sdk';
+import type { IWorkflowBase } from 'MNI-workflow';
 import { nanoid } from 'nanoid';
 
 import type { PayloadSize, NodeOutputSize, TriggerScenario } from './types';
@@ -38,7 +38,7 @@ export function setupWebhook(ctx: WebhookSetupContext): WebhookHandle {
 	} = ctx.scenario;
 
 	const webhookTrigger = trigger({
-		type: 'n8n-nodes-base.webhook',
+		type: 'MNI-nodes-base.webhook',
 		version: 2,
 		config: {
 			name: 'Webhook',

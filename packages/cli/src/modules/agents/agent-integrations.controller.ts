@@ -4,9 +4,9 @@ import {
 	type AgentDisconnectIntegrationResponse,
 	type AgentIntegrationConnectResponse,
 	type AgentIntegrationStatusResponse,
-} from '@n8n/api-types';
-import type { AuthenticatedRequest } from '@n8n/db';
-import { Body, Get, Param, Post, ProjectScope, RestController } from '@n8n/decorators';
+} from '@MNI/api-types';
+import type { AuthenticatedRequest } from '@MNI/db';
+import { Body, Get, Param, Post, ProjectScope, RestController } from '@MNI/decorators';
 import type { Request, Response } from 'express';
 
 import { AgentIntegrationManagementService } from './agent-integration-management.service';
@@ -117,11 +117,11 @@ export class AgentIntegrationsController {
 			),
 			n8nChat: {
 				draftEnabled:
-					agent.integrations?.some((integration) => integration.type === 'n8n_chat') ?? false,
+					agent.integrations?.some((integration) => integration.type === 'MNI_chat') ?? false,
 				publishedEnabled:
 					agent.activeVersionId !== null &&
 					(agent.activeVersion?.schema?.integrations?.some(
-						(integration) => integration.type === 'n8n_chat',
+						(integration) => integration.type === 'MNI_chat',
 					) ??
 						false),
 			},

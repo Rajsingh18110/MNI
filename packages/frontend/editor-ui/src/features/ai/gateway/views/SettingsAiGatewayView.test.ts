@@ -24,7 +24,7 @@ vi.mock('@/features/ai/assistant/assistant.api', () => ({
 	getGatewayUsage: (...args: unknown[]) => mockGetGatewayUsage(...args),
 }));
 
-vi.mock('@n8n/stores/useRootStore', () => ({
+vi.mock('@MNI/stores/useRootStore', () => ({
 	useRootStore: vi.fn(() => ({
 		restApiContext: { baseUrl: 'http://localhost:5678', sessionId: '' },
 	})),

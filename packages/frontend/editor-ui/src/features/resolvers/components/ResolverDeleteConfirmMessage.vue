@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import type { CredentialResolverAffectedWorkflow } from '@n8n/api-types';
-import { N8nLink, N8nText } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+import type { CredentialResolverAffectedWorkflow } from '@MNI/api-types';
+import { N8nLink, N8nText } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 import { computed } from 'vue';
 import { useRouter } from 'vue-router';
 import { VIEWS } from '@/app/constants';

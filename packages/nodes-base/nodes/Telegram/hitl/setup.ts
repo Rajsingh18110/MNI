@@ -1,8 +1,8 @@
-import { GlobalConfig } from '@n8n/config';
-import { Container } from '@n8n/di';
-import { buildResumeUrlSuffix, TELEGRAM_HITL_WEBHOOK_SUFFIX } from 'n8n-core';
-import type { IExecuteFunctions } from 'n8n-workflow';
-import { NodeOperationError } from 'n8n-workflow';
+import { GlobalConfig } from '@MNI/config';
+import { Container } from '@MNI/di';
+import { buildResumeUrlSuffix, TELEGRAM_HITL_WEBHOOK_SUFFIX } from 'MNI-core';
+import type { IExecuteFunctions } from 'MNI-workflow';
+import { NodeOperationError } from 'MNI-workflow';
 
 import { deriveHitlSecretToken } from './tokens';
 import type { TelegramWebhookInfo } from '../GenericFunctions';
@@ -145,7 +145,7 @@ export async function prepareChatApproval(context: IExecuteFunctions): Promise<b
 		}
 		throw new NodeOperationError(
 			context.getNode(),
-			'The Telegram Trigger claiming this bot was activated before one-tap approval support. Re-activate that workflow (or update the trigger to the latest version) so callback buttons reach n8n.',
+			'The Telegram Trigger claiming this bot was activated before one-tap approval support. Re-activate that workflow (or update the trigger to the latest version) so callback buttons reach MNI.',
 		);
 	}
 

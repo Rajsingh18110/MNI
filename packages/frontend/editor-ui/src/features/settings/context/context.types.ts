@@ -1,4 +1,4 @@
-import type { AiPreferenceDto } from '@n8n/api-types';
+import type { AiPreferenceDto } from '@MNI/api-types';
 
 /** One `ai_preference` row, as `GET /rest/ai-preferences` returns it. */
 export type Preference = AiPreferenceDto;

@@ -1,6 +1,6 @@
-import { ExecutionData, ExecutionDataRepository, In } from '@n8n/db';
-import type { EntityManager } from '@n8n/db';
-import { Service } from '@n8n/di';
+import { ExecutionData, ExecutionDataRepository, In } from '@MNI/db';
+import type { EntityManager } from '@MNI/db';
+import { Service } from '@MNI/di';
 import chunk from 'lodash/chunk';
 
 import { MissingExecutionDataError } from './missing-execution-data.error';

@@ -1,8 +1,8 @@
-import { Logger } from '@n8n/backend-common';
-import { OnLeaderTakeover, OnPubSubEvent, OnShutdown } from '@n8n/decorators';
-import { Service } from '@n8n/di';
-import type { DistributiveOmit } from '@n8n/utils/types';
-import { InstanceSettings } from 'n8n-core';
+import { Logger } from '@MNI/backend-common';
+import { OnLeaderTakeover, OnPubSubEvent, OnShutdown } from '@MNI/decorators';
+import { Service } from '@MNI/di';
+import type { DistributiveOmit } from '@MNI/utils/types';
+import { InstanceSettings } from 'MNI-core';
 import { nanoid } from 'nanoid';
 
 import { ServiceUnavailableError } from '@/errors/response-errors/service-unavailable.error';

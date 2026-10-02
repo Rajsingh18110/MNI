@@ -1,10 +1,10 @@
-import { Logger, TypedEmitter } from '@n8n/backend-common';
-import { GlobalConfig } from '@n8n/config';
-import { Time } from '@n8n/constants';
-import { MultiMainMetadata } from '@n8n/decorators';
-import type { MultiMainEventHandler } from '@n8n/decorators';
-import { Container, Service } from '@n8n/di';
-import { ErrorReporter, InstanceSettings } from 'n8n-core';
+import { Logger, TypedEmitter } from '@MNI/backend-common';
+import { GlobalConfig } from '@MNI/config';
+import { Time } from '@MNI/constants';
+import { MultiMainMetadata } from '@MNI/decorators';
+import type { MultiMainEventHandler } from '@MNI/decorators';
+import { Container, Service } from '@MNI/di';
+import { ErrorReporter, InstanceSettings } from 'MNI-core';
 import assert from 'node:assert';
 
 import { LeaderElectionClient } from '@/scaling/leader-election-client';

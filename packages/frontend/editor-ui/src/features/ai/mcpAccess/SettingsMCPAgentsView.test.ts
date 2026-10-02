@@ -6,8 +6,8 @@ import { createComponentRenderer } from '@/__tests__/render';
 import { mockedStore, type MockedStore } from '@/__tests__/utils';
 import SettingsMCPAgentsView from '@/features/ai/mcpAccess/SettingsMCPAgentsView.vue';
 import { useMCPStore } from '@/features/ai/mcpAccess/mcp.store';
-import { useSettingsStore } from '@n8n/stores/settings.store';
-import type { FrontendSettings } from '@n8n/api-types';
+import { useSettingsStore } from '@MNI/stores/settings.store';
+import type { FrontendSettings } from '@MNI/api-types';
 import { MCP_SETTINGS_VIEW } from '@/features/ai/mcpAccess/mcp.constants';
 import type { McpAgent } from '@/features/ai/mcpAccess/mcp.types';
 

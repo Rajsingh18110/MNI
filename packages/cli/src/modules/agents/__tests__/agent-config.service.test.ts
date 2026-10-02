@@ -1,8 +1,8 @@
 import type { Mocked } from 'vitest';
-import { DEFAULT_AGENT_PERSONALISATION, type AgentJsonConfig } from '@n8n/api-types';
-import { mockLogger } from '@n8n/backend-test-utils';
-import type { User, WorkflowRepository } from '@n8n/db';
-import { TELEMETRY_EVENT } from '@n8n/telemetry';
+import { DEFAULT_AGENT_PERSONALISATION, type AgentJsonConfig } from '@MNI/api-types';
+import { mockLogger } from '@MNI/backend-test-utils';
+import type { User, WorkflowRepository } from '@MNI/db';
+import { TELEMETRY_EVENT } from '@MNI/telemetry';
 import { mock } from 'vitest-mock-extended';
 
 import type { CredentialsService } from '@/credentials/credentials.service';
@@ -155,7 +155,7 @@ describe('AgentConfigService', () => {
 						type: 'node',
 						name: 'HTTP Request',
 						inputSchema: { type: 'object' },
-						node: { nodeType: 'n8n-nodes-base.httpRequestTool', nodeTypeVersion: 4 },
+						node: { nodeType: 'MNI-nodes-base.httpRequestTool', nodeTypeVersion: 4 },
 					},
 				],
 			});
@@ -299,7 +299,7 @@ describe('AgentConfigService', () => {
 								type: 'node',
 								name: 'Fetch page',
 								node: {
-									nodeType: 'n8n-nodes-base.httpRequestTool',
+									nodeType: 'MNI-nodes-base.httpRequestTool',
 									nodeTypeVersion: 4.5,
 									nodeParameters: {
 										url: "={{ $fromAI('url', 'The URL to inspect', 'string') }}",
@@ -433,14 +433,14 @@ describe('AgentConfigService', () => {
 				projectId,
 				{
 					...baseConfig,
-					integrations: [{ type: 'slack', credentialId: 'slack-cred' }, { type: 'n8n_chat' }],
+					integrations: [{ type: 'slack', credentialId: 'slack-cred' }, { type: 'MNI_chat' }],
 				},
 				user,
 				fencedOn(agent),
 			);
 			expect(agent.integrations).toEqual([
 				{ type: 'slack', credentialId: '' },
-				{ type: 'n8n_chat', credentialId: '' },
+				{ type: 'MNI_chat', credentialId: '' },
 			]);
 			const saved = agentRepository.saveDraftFenced.mock.calls.at(-1)?.[0];
 			expect(saved?.integrations).toEqual(agent.integrations);

@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { N8nText } from '@n8n/design-system';
+import { N8nText } from '@MNI/design-system';
 
 import type { AgentJsonConfig } from '../types';
 import AgentPersonalisationIcon from './AgentPersonalisationIcon.vue';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 
 const i18n = useI18n();
 
@@ -27,7 +27,7 @@ defineProps<{
 </template>
 
 <style module lang="scss">
-@use '@n8n/design-system/css/mixins/motion';
+@use '@MNI/design-system/css/mixins/motion';
 
 .emptyState {
 	display: flex;

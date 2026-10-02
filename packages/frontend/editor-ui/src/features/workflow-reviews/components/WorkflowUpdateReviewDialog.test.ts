@@ -1,4 +1,4 @@
-import { ResponseError, type WorkflowVersionData } from '@n8n/rest-api-client';
+import { ResponseError, type WorkflowVersionData } from '@MNI/rest-api-client';
 import { createPinia, setActivePinia } from 'pinia';
 import userEvent from '@testing-library/user-event';
 import { waitFor } from '@testing-library/vue';
@@ -24,7 +24,7 @@ const GENERATED_VERSION_NAME = 'Version 3f2a9c17';
 
 const mockShowError = vi.fn();
 
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: () => ({ showError: mockShowError }),
 }));
 

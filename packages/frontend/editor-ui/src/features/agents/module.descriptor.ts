@@ -1,5 +1,5 @@
 import { VIEWS } from '@/app/constants';
-import { defineFrontendModule } from '@n8n/frontend-module-sdk';
+import { defineFrontendModule } from '@MNI/frontend-module-sdk';
 import {
 	AGENTS_LIST_VIEW,
 	AGENT_BUILDER_VIEW,

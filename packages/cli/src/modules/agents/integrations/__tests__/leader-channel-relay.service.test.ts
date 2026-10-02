@@ -1,5 +1,5 @@
-import { mockLogger } from '@n8n/backend-test-utils';
-import type { InstanceSettings } from 'n8n-core';
+import { mockLogger } from '@MNI/backend-test-utils';
+import type { InstanceSettings } from 'MNI-core';
 import { mock } from 'vitest-mock-extended';
 
 import type { Publisher } from '@/scaling/pubsub/publisher.service';

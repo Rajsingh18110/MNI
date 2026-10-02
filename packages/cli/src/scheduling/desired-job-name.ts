@@ -1,5 +1,5 @@
-import type { DesiredJob, Schedule } from '@n8n/scheduler';
-import { scheduleFingerprint } from '@n8n/scheduler';
+import type { DesiredJob, Schedule } from '@MNI/scheduler';
+import { scheduleFingerprint } from '@MNI/scheduler';
 
 /**
  * Name a trigger node's schedules for provisioning, one format for every

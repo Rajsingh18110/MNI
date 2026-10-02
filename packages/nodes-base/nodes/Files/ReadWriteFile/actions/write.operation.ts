@@ -3,8 +3,8 @@ import type {
 	INodeExecutionData,
 	INodeProperties,
 	JsonObject,
-} from 'n8n-workflow';
-import { BINARY_ENCODING, NodeApiError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { BINARY_ENCODING, NodeApiError } from 'MNI-workflow';
 import type { Readable } from 'stream';
 
 import { updateDisplayOptions } from '@utils/utilities';

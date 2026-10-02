@@ -6,7 +6,7 @@ describe('TaskRunnerTaskTimeoutRule', () => {
 
 	beforeEach(() => {
 		process.env = { ...originalEnv };
-		delete process.env.N8N_RUNNERS_TASK_TIMEOUT;
+		delete process.env.MNI_RUNNERS_TASK_TIMEOUT;
 		rule = new TaskRunnerTaskTimeoutRule();
 	});
 
@@ -25,7 +25,7 @@ describe('TaskRunnerTaskTimeoutRule', () => {
 		});
 
 		it('should not be affected when the variable is set', async () => {
-			process.env.N8N_RUNNERS_TASK_TIMEOUT = '300';
+			process.env.MNI_RUNNERS_TASK_TIMEOUT = '300';
 
 			const result = await rule.detect();
 

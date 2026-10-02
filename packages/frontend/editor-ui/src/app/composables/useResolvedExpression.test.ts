@@ -7,7 +7,7 @@ import { createTestWorkflowExecutionResponse } from '@/__tests__/mocks';
 import type { IExecutionResponse } from '@/features/execution/executions/executions.types';
 import { setActivePinia } from 'pinia';
 import { createTestingPinia } from '@pinia/testing';
-import { createRunExecutionData } from 'n8n-workflow';
+import { createRunExecutionData } from 'MNI-workflow';
 import {
 	useWorkflowDocumentStore,
 	createWorkflowDocumentId,

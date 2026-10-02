@@ -1,10 +1,10 @@
 <script lang="ts" setup>
 import { computed } from 'vue';
-import { ROLE } from '@n8n/api-types';
-import { N8nCallout, N8nOption, N8nSelect } from '@n8n/design-system';
-import { useI18n, type BaseTextKey } from '@n8n/i18n';
+import { ROLE } from '@MNI/api-types';
+import { N8nCallout, N8nOption, N8nSelect } from '@MNI/design-system';
+import { useI18n, type BaseTextKey } from '@MNI/i18n';
 import { type SupportedProtocolType } from '../../sso.store';
-import { useRBACStore } from '@n8n/stores/rbac.store';
+import { useRBACStore } from '@MNI/stores/rbac.store';
 import DefaultConditionRow from './DefaultConditionRow.vue';
 
 export type RoleAssignmentSetting = 'manual' | 'instance' | 'instance_and_project';
@@ -165,7 +165,7 @@ const ssoKey = (key: string) => i18n.baseText(`settings.sso.settings.${key}` as 
 	background-color: var(--color--background);
 	border-color: var(--color--foreground);
 
-	:global(.n8n-callout-icon svg) {
+	:global(.MNI-callout-icon svg) {
 		color: var(--color--text--shade-1);
 	}
 }

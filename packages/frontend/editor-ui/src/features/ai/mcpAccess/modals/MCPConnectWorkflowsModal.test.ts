@@ -7,10 +7,10 @@ import { mockedStore, type MockedStore } from '@/__tests__/utils';
 import MCPConnectWorkflowsModal from '@/features/ai/mcpAccess/modals/MCPConnectWorkflowsModal.vue';
 import { useMCPStore } from '@/features/ai/mcpAccess/mcp.store';
 import { createWorkflow } from '@/features/ai/mcpAccess/mcp.test.utils';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
 import { type Mock } from 'vitest';
 
-vi.mock('@n8n/composables/useTelemetry', () => {
+vi.mock('@MNI/composables/useTelemetry', () => {
 	const track = vi.fn();
 	return {
 		useTelemetry: () => ({

@@ -23,7 +23,7 @@ for (let { name, path, version, private: isPrivate } of packages) {
 		},
 		repository: {
 			type: 'git',
-			url: 'git+https://github.com/n8n-io/n8n.git',
+			url: 'git+https://github.com/MNI-io/n8n.git',
 		},
 	};
 

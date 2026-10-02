@@ -1,7 +1,7 @@
-import { GlobalConfig } from '@n8n/config';
-import { Service } from '@n8n/di';
-import { toMb } from '@n8n/utils/number/bytes';
-import { DataTableSizeStatus, DataTablesSizeData } from 'n8n-workflow';
+import { GlobalConfig } from '@MNI/config';
+import { Service } from '@MNI/di';
+import { toMb } from '@MNI/utils/number/bytes';
+import { DataTableSizeStatus, DataTablesSizeData } from 'MNI-workflow';
 
 import { Telemetry } from '@/telemetry';
 

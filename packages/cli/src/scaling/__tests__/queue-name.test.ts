@@ -1,4 +1,4 @@
-import type { WorkerPoolConfig } from '@n8n/config';
+import type { WorkerPoolConfig } from '@MNI/config';
 
 import { resolveQueueName, resolveWorkerPoolName } from '../queue-name';
 

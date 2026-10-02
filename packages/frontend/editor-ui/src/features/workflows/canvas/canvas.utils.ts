@@ -3,7 +3,7 @@ import type {
 	IConnections,
 	INodeTypeDescription,
 	NodeConnectionType,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import { computed, shallowReactive, type Ref } from 'vue';
 import type { INodeUi } from '@/Interface';
 import type {
@@ -17,7 +17,7 @@ import type {
 import { CanvasConnectionMode } from './canvas.types';
 import type { Connection } from '@vue-flow/core';
 import { isValidCanvasConnectionMode, isValidNodeConnectionType } from '@/app/utils/typeGuards';
-import { NodeConnectionTypes } from 'n8n-workflow';
+import { NodeConnectionTypes } from 'MNI-workflow';
 import { NODE_MIN_INPUT_ITEMS_COUNT } from '@/app/constants';
 import { calculateNodeSize } from '@/app/utils/nodeViewUtils';
 import { CanvasRenderDataKey } from '@/app/constants/injectionKeys';

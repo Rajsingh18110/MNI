@@ -1,4 +1,4 @@
-import type { IWorkflowBase } from 'n8n-workflow';
+import type { IWorkflowBase } from 'MNI-workflow';
 
 import type { makeScheduleTriggerWorkflow } from './schedule-trigger-workflow';
 import { expect } from '../../../fixtures/base';

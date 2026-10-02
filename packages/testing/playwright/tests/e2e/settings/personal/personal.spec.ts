@@ -5,7 +5,7 @@ const INVALID_NAMES = [
 	'http://n8n.io',
 	'www.n8n.io',
 	'n8n.io',
-	'n8n.бг',
+	'MNI.бг',
 	'n8n.io/home',
 	'n8n.io/home?send=true',
 	'<a href="#">Jack</a>',

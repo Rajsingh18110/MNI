@@ -1,9 +1,9 @@
-import { Service } from '@n8n/di';
-import { UserError } from 'n8n-workflow';
+import { Service } from '@MNI/di';
+import { UserError } from 'MNI-workflow';
 import { createHmac } from 'node:crypto';
 
 import { JwtService } from '@/services/jwt.service';
-import { UrlService } from '@n8n/backend-services';
+import { UrlService } from '@MNI/backend-services';
 
 import { sanitiseAppName } from '../../integration-helpers';
 
@@ -13,7 +13,7 @@ import { sanitiseAppName } from '../../integration-helpers';
  */
 const TOKEN_TTL = '15m';
 
-/** Scopes the token to this route, so no other n8n-signed token is accepted. */
+/** Scopes the token to this route, so no other MNI-signed token is accepted. */
 const TOKEN_SUBJECT = 'teams-arm-template';
 
 interface TeamsArmTokenClaims {
@@ -64,7 +64,7 @@ export class TeamsArmTemplateService {
 		// with a message that names neither MNI nor the setting behind it.
 		if (!options.messagingEndpoint.startsWith('https://')) {
 			throw new UserError(
-				"The Teams bot needs an HTTPS messaging endpoint. Set N8N_WEBHOOK_URL to this instance's public HTTPS URL.",
+				"The Teams bot needs an HTTPS messaging endpoint. Set MNI_WEBHOOK_URL to this instance's public HTTPS URL.",
 			);
 		}
 
@@ -99,7 +99,7 @@ export class TeamsArmTemplateService {
 				messagingEndpoint: {
 					type: 'string',
 					defaultValue: options.messagingEndpoint,
-					metadata: { description: 'Where Teams delivers messages. Filled in by n8n.' },
+					metadata: { description: 'Where Teams delivers messages. Filled in by MNI.' },
 				},
 				// Bot registrations are not regional.
 				location: { type: 'string', defaultValue: 'global' },
@@ -200,6 +200,6 @@ export class TeamsArmTemplateService {
 			.slice(0, 40)
 			.replace(/-+$/, '');
 		// An Azure Bot name must start with a letter.
-		return /^[a-z]/.test(slug) ? `${slug}-${suffix}` : `n8n-agent-${suffix}`;
+		return /^[a-z]/.test(slug) ? `${slug}-${suffix}` : `MNI-agent-${suffix}`;
 	}
 }

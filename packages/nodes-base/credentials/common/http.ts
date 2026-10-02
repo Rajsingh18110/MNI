@@ -1,4 +1,4 @@
-import type { IHttpRequestOptions, IRequestOptions } from 'n8n-workflow';
+import type { IHttpRequestOptions, IRequestOptions } from 'MNI-workflow';
 
 export const getUrl = (options: IHttpRequestOptions | IRequestOptions): string => {
 	if (options.url) {

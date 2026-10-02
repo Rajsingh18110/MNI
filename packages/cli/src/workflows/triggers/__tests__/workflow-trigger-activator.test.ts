@@ -1,16 +1,16 @@
 /* eslint-disable @typescript-eslint/unbound-method */
-import type { WorkflowsConfig } from '@n8n/config';
-import type { IWorkflowDb, WorkflowEntity, WorkflowRepository } from '@n8n/db';
-import { createDeferredPromise } from '@n8n/utils/promise/deferred-promise';
-import type { ErrorReporter, Span, Tracing } from 'n8n-core';
-import type { IWebhookData, IWorkflowExecuteAdditionalData } from 'n8n-workflow';
+import type { WorkflowsConfig } from '@MNI/config';
+import type { IWorkflowDb, WorkflowEntity, WorkflowRepository } from '@MNI/db';
+import { createDeferredPromise } from '@MNI/utils/promise/deferred-promise';
+import type { ErrorReporter, Span, Tracing } from 'MNI-core';
+import type { IWebhookData, IWorkflowExecuteAdditionalData } from 'MNI-workflow';
 import {
 	UserError,
 	WebhookPathTakenError,
 	WorkflowActivationError,
 	WorkflowDeactivationError,
 	WorkflowExpression,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import { mock, type MockProxy } from 'vitest-mock-extended';
 
 import type { ActivationErrorsService } from '@/activation-errors.service';
@@ -29,7 +29,7 @@ import type { WorkflowStaticDataService } from '@/workflows/workflow-static-data
 
 import { createNodeTypes, logger, node } from './trigger-test-utils';
 
-vi.mock('@n8n/utils/sleep', () => ({
+vi.mock('@MNI/utils/sleep', () => ({
 	sleep: vi.fn(),
 }));
 
@@ -98,7 +98,7 @@ describe('WorkflowTriggerActivator', () => {
 				node('t', 'trigger'),
 				node('p', 'poll'),
 				node('w', 'webhook'),
-				node('regular', 'n8n-nodes-base.set'),
+				node('regular', 'MNI-nodes-base.set'),
 				node('disabled', 'trigger', { disabled: true }),
 			],
 			connections: {},
@@ -176,9 +176,9 @@ describe('WorkflowTriggerActivator', () => {
 			const activator = buildActivator();
 
 			const kinds = activator.getTriggerKinds([
-				node('manual', 'n8n-nodes-base.manualTrigger'),
-				node('sub-workflow', 'n8n-nodes-base.executeWorkflowTrigger'),
-				node('error', 'n8n-nodes-base.errorTrigger'),
+				node('manual', 'MNI-nodes-base.manualTrigger'),
+				node('sub-workflow', 'MNI-nodes-base.executeWorkflowTrigger'),
+				node('error', 'MNI-nodes-base.errorTrigger'),
 				node('t', 'trigger'),
 			]);
 
@@ -204,7 +204,7 @@ describe('WorkflowTriggerActivator', () => {
 			const result = await activator.getNodesWithUnregisteredWebhooks(
 				mock<WorkflowEntity>({ id: 'wf-1', name: 'Test workflow', staticData: {}, settings: {} }),
 				{
-					nodes: [node('w', 'webhook'), node('regular', 'n8n-nodes-base.set')],
+					nodes: [node('w', 'webhook'), node('regular', 'MNI-nodes-base.set')],
 					connections: {},
 				},
 			);
@@ -223,7 +223,7 @@ describe('WorkflowTriggerActivator', () => {
 
 			const result = await activator.getNodesWithUnregisteredWebhooks(
 				mock<WorkflowEntity>({ id: 'wf-1', name: 'Test workflow', staticData: {}, settings: {} }),
-				{ nodes: [node('regular', 'n8n-nodes-base.set')], connections: {} },
+				{ nodes: [node('regular', 'MNI-nodes-base.set')], connections: {} },
 			);
 
 			expect(result).toEqual(new Set());
@@ -696,7 +696,7 @@ describe('WorkflowTriggerActivator', () => {
 			const gone = (id: string, name: string) => ({
 				id,
 				name,
-				type: 'n8n-nodes-gone.trigger',
+				type: 'MNI-nodes-gone.trigger',
 				typeVersion: 1,
 				position: [0, 0] as [number, number],
 				parameters: {},
@@ -736,7 +736,7 @@ describe('WorkflowTriggerActivator', () => {
 			const gone = (id: string) => ({
 				id,
 				name: id,
-				type: 'n8n-nodes-gone.trigger',
+				type: 'MNI-nodes-gone.trigger',
 				typeVersion: 1,
 				position: [0, 0] as [number, number],
 				parameters: {},

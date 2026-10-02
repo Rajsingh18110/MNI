@@ -1,7 +1,7 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { setActivePinia, createPinia } from 'pinia';
 import { ref } from 'vue';
-import type { INode } from 'n8n-workflow';
+import type { INode } from 'MNI-workflow';
 import { useAiGateway } from './useAiGateway';
 import { useAiGatewayStore } from '@/app/stores/aiGateway.store';
 
@@ -26,7 +26,7 @@ vi.mock('vue-router', () => ({
 	useRouter: vi.fn(() => ({})),
 }));
 
-vi.mock('@n8n/stores/useRootStore', () => ({
+vi.mock('@MNI/stores/useRootStore', () => ({
 	useRootStore: vi.fn(() => ({
 		restApiContext: { baseUrl: 'http://localhost:5678', sessionId: '' },
 	})),
@@ -35,7 +35,7 @@ vi.mock('@n8n/stores/useRootStore', () => ({
 const mockIsAiGatewayEnabled = ref(false);
 const mockIsAiGatewayCloudUbbEnabled = ref(false);
 
-vi.mock('@n8n/stores/settings.store', () => ({
+vi.mock('@MNI/stores/settings.store', () => ({
 	useSettingsStore: vi.fn(() => ({
 		isAiGatewayEnabled: mockIsAiGatewayEnabled.value,
 		isAiGatewayCloudUbbEnabled: mockIsAiGatewayCloudUbbEnabled.value,
@@ -144,7 +144,7 @@ describe('useAiGateway', () => {
 
 	describe('isNodePropertyHidden()', () => {
 		const managedNode = {
-			type: 'n8n-nodes-base.browserbase',
+			type: 'MNI-nodes-base.browserbase',
 			credentials: { browserbaseApi: { id: null, name: '', __aiGatewayManaged: true } },
 		} as unknown as INode;
 
@@ -153,7 +153,7 @@ describe('useAiGateway', () => {
 				nodes: [],
 				credentialTypes: [],
 				providerConfig: {},
-				hiddenNodeProperties: { 'n8n-nodes-base.browserbase': ['modelSource'] },
+				hiddenNodeProperties: { 'MNI-nodes-base.browserbase': ['modelSource'] },
 			});
 			const aiGatewayStore = useAiGatewayStore();
 			await aiGatewayStore.fetchConfig();
@@ -175,20 +175,20 @@ describe('useAiGateway', () => {
 				nodes: [],
 				credentialTypes: [],
 				providerConfig: {},
-				minNodeTypeVersion: { 'n8n-nodes-base.browserbase': 2 },
+				minNodeTypeVersion: { 'MNI-nodes-base.browserbase': 2 },
 			});
 			const aiGatewayStore = useAiGatewayStore();
 			await aiGatewayStore.fetchConfig();
 
 			const { isNodeTypeVersionSupported } = useAiGateway();
-			expect(isNodeTypeVersionSupported('n8n-nodes-base.browserbase', 2)).toBe(true);
-			expect(isNodeTypeVersionSupported('n8n-nodes-base.browserbase', 1)).toBe(false);
+			expect(isNodeTypeVersionSupported('MNI-nodes-base.browserbase', 2)).toBe(true);
+			expect(isNodeTypeVersionSupported('MNI-nodes-base.browserbase', 1)).toBe(false);
 		});
 	});
 
 	describe('isActionOptionVisible()', () => {
 		const managedNode = {
-			type: 'n8n-nodes-base.browserbase',
+			type: 'MNI-nodes-base.browserbase',
 			parameters: {},
 			credentials: { browserbaseApi: { id: null, name: '', __aiGatewayManaged: true } },
 		} as unknown as INode;
@@ -198,7 +198,7 @@ describe('useAiGateway', () => {
 				nodes: [],
 				credentialTypes: [],
 				providerConfig: {},
-				supportedActions: { 'n8n-nodes-base.browserbase': { session: ['create'] } },
+				supportedActions: { 'MNI-nodes-base.browserbase': { session: ['create'] } },
 			});
 			const aiGatewayStore = useAiGatewayStore();
 			await aiGatewayStore.fetchConfig();

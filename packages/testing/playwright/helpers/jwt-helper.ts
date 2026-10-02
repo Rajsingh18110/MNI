@@ -15,7 +15,7 @@ export function getPublicKeyPem(): string {
 	return publicKey;
 }
 
-/** Returns JSON string for N8N_TOKEN_EXCHANGE_TRUSTED_KEYS env var */
+/** Returns JSON string for MNI_TOKEN_EXCHANGE_TRUSTED_KEYS env var */
 export function getTrustedKeysConfig(): string {
 	return JSON.stringify([
 		{

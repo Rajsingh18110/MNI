@@ -6,7 +6,7 @@ import type {
 	IWebhookFunctions,
 	IHttpRequestMethods,
 	IRequestOptions,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 export function getCredentialsType(
 	this: IExecuteFunctions | IWebhookFunctions | IHookFunctions | ILoadOptionsFunctions,

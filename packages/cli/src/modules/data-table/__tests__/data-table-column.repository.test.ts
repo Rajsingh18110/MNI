@@ -1,5 +1,5 @@
-import { testModules } from '@n8n/backend-test-utils';
-import type { DataSource, EntityManager } from '@n8n/typeorm';
+import { testModules } from '@MNI/backend-test-utils';
+import type { DataSource, EntityManager } from '@MNI/typeorm';
 import type { Mock, Mocked } from 'vitest';
 import { mock } from 'vitest-mock-extended';
 

@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { N8nCard, N8nIcon, N8nText, type IconName } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+import { N8nCard, N8nIcon, N8nText, type IconName } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 import { computed, inject } from 'vue';
 
 const i18n = useI18n();

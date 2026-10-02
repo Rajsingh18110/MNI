@@ -1,10 +1,10 @@
-import type { CommandResult } from '@n8n/agents/sandbox';
-import { Logger } from '@n8n/backend-common';
-import { AgentsConfig } from '@n8n/config';
-import { Service } from '@n8n/di';
-import { runSerially } from '@n8n/utils/run-serially';
+import type { CommandResult } from '@MNI/agents/sandbox';
+import { Logger } from '@MNI/backend-common';
+import { AgentsConfig } from '@MNI/config';
+import { Service } from '@MNI/di';
+import { runSerially } from '@MNI/utils/run-serially';
 import escapeRegExp from 'lodash/escapeRegExp';
-import { OperationalError, safeRegex } from 'n8n-workflow';
+import { OperationalError, safeRegex } from 'MNI-workflow';
 import { nanoid } from 'nanoid';
 
 import { BadRequestError } from '@/errors/response-errors/bad-request.error';

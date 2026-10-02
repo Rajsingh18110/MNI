@@ -1,12 +1,12 @@
-/* eslint-disable n8n-nodes-base/node-param-display-name-wrong-for-dynamic-options */
-/* eslint-disable n8n-nodes-base/node-param-description-wrong-for-dynamic-options */
+/* eslint-disable MNI-nodes-base/node-param-display-name-wrong-for-dynamic-options */
+/* eslint-disable MNI-nodes-base/node-param-description-wrong-for-dynamic-options */
 import {
 	type IDataObject,
 	type INodeExecutionData,
 	type INodeProperties,
 	type IExecuteFunctions,
 	updateDisplayOptions,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { seaTableApiRequest } from '../../GenericFunctions';
 

@@ -1,4 +1,4 @@
-vi.mock('n8n-core', () => ({
+vi.mock('MNI-core', () => ({
 	getHtmlSandboxCSP: vi.fn(
 		() =>
 			'sandbox allow-downloads allow-forms allow-modals allow-orientation-lock allow-pointer-lock allow-popups allow-presentation allow-scripts allow-top-navigation-by-user-activation allow-top-navigation-to-custom-protocols',
@@ -17,12 +17,12 @@ vi.mock('fs/promises', async () => ({
 
 import { rm } from 'fs/promises';
 import type * as _fsPromises from 'fs/promises';
-import { Container } from '@n8n/di';
+import { Container } from '@MNI/di';
 import type { Request } from 'express';
 import jwt from 'jsonwebtoken';
 import { mock } from 'vitest-mock-extended';
 import { DateTime } from 'luxon';
-import { InstanceSettings } from 'n8n-core';
+import { InstanceSettings } from 'MNI-core';
 import type {
 	CredentialCheckResult,
 	CredentialCheckStatus,
@@ -34,8 +34,8 @@ import type {
 	IWorkflowSettings,
 	MultiPartFormData,
 	NodeTypeAndVersion,
-} from 'n8n-workflow';
-import { BINARY_MODE_COMBINED, FORM_TRIGGER_NODE_TYPE, WAIT_NODE_TYPE } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { BINARY_MODE_COMBINED, FORM_TRIGGER_NODE_TYPE, WAIT_NODE_TYPE } from 'MNI-workflow';
 
 import {
 	formWebhook,
@@ -116,7 +116,7 @@ describe('FormTrigger, sanitizeHtml', () => {
 				expected: '<video><source></source></video>',
 			},
 			{
-				html: "<iframe srcdoc=\"<script>fetch('https://YOURDOMAIN.app.n8n.cloud/webhook/pepe?id='+localStorage.getItem('n8n-browserId'))</script>\"></iframe>",
+				html: "<iframe srcdoc=\"<script>fetch('https://YOURDOMAIN.app.n8n.cloud/webhook/pepe?id='+localStorage.getItem('MNI-browserId'))</script>\"></iframe>",
 				expected:
 					'<iframe referrerpolicy="strict-origin-when-cross-origin" allow="fullscreen; autoplay; encrypted-media"></iframe>',
 			},
@@ -391,7 +391,7 @@ describe('sanitizeCustomCss', () => {
 	});
 
 	it('should preserve CSS child combinator selectors (>)', () => {
-		const css = '#n8n-form > div.form-header > p { text-align: left; }';
+		const css = '#MNI-form > div.form-header > p { text-align: left; }';
 		expect(sanitizeCustomCss(css)).toBe(css);
 	});
 
@@ -422,7 +422,7 @@ describe('sanitizeCustomCss', () => {
 
 	it('should preserve complex CSS with multiple selectors and properties', () => {
 		const css = `
-			#n8n-form > div.form-header > p { text-align: left; }
+			#MNI-form > div.form-header > p { text-align: left; }
 			.form-container > .input-group + .input-group { margin-top: 1rem; }
 			button:hover { background-color: #0056b3; }
 		`;
@@ -605,7 +605,7 @@ describe('FormTrigger, formWebhook', () => {
 			formSubmittedText: 'Your response has been recorded',
 			formTitle: 'Test Form',
 			n8nWebsiteLink:
-				'https://n8n.io/?utm_source=n8n-internal&utm_medium=form-trigger&utm_campaign=instanceId',
+				'https://n8n.io/?utm_source=MNI-internal&utm_medium=form-trigger&utm_campaign=instanceId',
 			testRun: true,
 			useResponseData: false,
 		});
@@ -681,7 +681,7 @@ describe('FormTrigger, formWebhook', () => {
 				formSubmittedText: 'Your response has been recorded',
 				formTitle: 'Test Form',
 				n8nWebsiteLink:
-					'https://n8n.io/?utm_source=n8n-internal&utm_medium=form-trigger&utm_campaign=instanceId',
+					'https://n8n.io/?utm_source=MNI-internal&utm_medium=form-trigger&utm_campaign=instanceId',
 				testRun: true,
 				useResponseData: false,
 			});
@@ -727,7 +727,7 @@ describe('FormTrigger, formWebhook', () => {
 			formSubmittedText: 'Your response has been recorded',
 			formTitle: 'Test Form',
 			n8nWebsiteLink:
-				'https://n8n.io/?utm_source=n8n-internal&utm_medium=form-trigger&utm_campaign=instanceId',
+				'https://n8n.io/?utm_source=MNI-internal&utm_medium=form-trigger&utm_campaign=instanceId',
 			testRun: true,
 			useResponseData: false,
 		});
@@ -935,7 +935,7 @@ describe('FormTrigger, formWebhook', () => {
 			const ctx = mock<IWebhookFunctions>();
 			const { writeHead } = setupContext(ctx, {
 				method: 'GET',
-				headers: { cookie: 'n8n-form-oauth=%E0%A4%A' },
+				headers: { cookie: 'MNI-form-oauth=%E0%A4%A' },
 			});
 			ctx.beginN8nOAuth2Flow.mockResolvedValue('http://localhost:5678/oauth/authorize?state=abc');
 
@@ -1005,7 +1005,7 @@ describe('FormTrigger, formWebhook', () => {
 			expect(render).not.toHaveBeenCalled();
 			expect(writeHead).toHaveBeenCalledWith(302, { Location: resourceUrl });
 			expect(cookie).toHaveBeenCalledWith(
-				'n8n-form-oauth',
+				'MNI-form-oauth',
 				'as-token',
 				expect.objectContaining({ httpOnly: true, sameSite: 'lax' }),
 			);
@@ -1086,7 +1086,7 @@ describe('FormTrigger, formWebhook', () => {
 			const ctx = mock<IWebhookFunctions>();
 			const { render, clearCookie } = setupContext(ctx, {
 				method: 'GET',
-				headers: { cookie: 'n8n-form-oauth=as-token' },
+				headers: { cookie: 'MNI-form-oauth=as-token' },
 			});
 			ctx.validateN8nOAuth2Token.mockResolvedValue({ valid: true, user: authedUser });
 
@@ -1094,7 +1094,7 @@ describe('FormTrigger, formWebhook', () => {
 
 			expect(ctx.validateN8nOAuth2Token).toHaveBeenCalledWith('as-token', resourceUrl);
 			expect(ctx.beginN8nOAuth2Flow).not.toHaveBeenCalled();
-			expect(clearCookie).toHaveBeenCalledWith('n8n-form-oauth', expect.any(Object));
+			expect(clearCookie).toHaveBeenCalledWith('MNI-form-oauth', expect.any(Object));
 			expect(render).toHaveBeenCalledWith(
 				'form-trigger',
 				expect.objectContaining({ authToken: 'as-token' }),
@@ -1106,7 +1106,7 @@ describe('FormTrigger, formWebhook', () => {
 			const ctx = mock<IWebhookFunctions>();
 			const { writeHead, render } = setupContext(ctx, {
 				method: 'GET',
-				headers: { cookie: 'n8n-form-oauth=stale-token' },
+				headers: { cookie: 'MNI-form-oauth=stale-token' },
 			});
 			ctx.validateN8nOAuth2Token.mockResolvedValue({ valid: false, reason: 'invalid_token' });
 			ctx.beginN8nOAuth2Flow.mockResolvedValue('http://localhost:5678/oauth/authorize?state=fresh');
@@ -1154,7 +1154,7 @@ describe('FormTrigger, formWebhook', () => {
 			const ctx = mock<IWebhookFunctions>();
 			const { render } = setupContext(ctx, {
 				method: 'GET',
-				headers: { cookie: 'n8n-form-oauth=as-token' },
+				headers: { cookie: 'MNI-form-oauth=as-token' },
 			});
 			ctx.validateN8nOAuth2Token.mockResolvedValue({ valid: true, user: authedUser });
 
@@ -1353,7 +1353,7 @@ describe('FormTrigger, formWebhook', () => {
 				const res = setupContext(ctx, {
 					method: 'GET',
 					query: overrides.query,
-					headers: { cookie: 'n8n-form-oauth=as-token', ...(overrides.headers ?? {}) },
+					headers: { cookie: 'MNI-form-oauth=as-token', ...(overrides.headers ?? {}) },
 				});
 				ctx.validateN8nOAuth2Token.mockResolvedValue({ valid: true, user: authedUser });
 				return res;
@@ -1527,7 +1527,7 @@ describe('FormTrigger, prepareFormData', () => {
 			formDescriptionMetadata: 'This is a test form',
 			formSubmittedText: 'Thank you for your submission',
 			n8nWebsiteLink:
-				'https://n8n.io/?utm_source=n8n-internal&utm_medium=form-trigger&utm_campaign=test-instance',
+				'https://n8n.io/?utm_source=MNI-internal&utm_medium=form-trigger&utm_campaign=test-instance',
 			formFields: [
 				{
 					id: 'field-0',
@@ -1627,7 +1627,7 @@ describe('FormTrigger, prepareFormData', () => {
 			formDescription: 'This is a test form',
 			formDescriptionMetadata: 'This is a test form',
 			formSubmittedText: 'Your response has been recorded',
-			n8nWebsiteLink: 'https://n8n.io/?utm_source=n8n-internal&utm_medium=form-trigger',
+			n8nWebsiteLink: 'https://n8n.io/?utm_source=MNI-internal&utm_medium=form-trigger',
 			formFields: [
 				{
 					id: 'field-0',
@@ -2291,7 +2291,7 @@ describe('prepareFormReturnItem', () => {
 			copyBinaryFile: vi.fn().mockResolvedValue({}),
 		}),
 	});
-	const formNode = mock<INode>({ type: 'n8n-nodes-base.formTrigger' });
+	const formNode = mock<INode>({ type: 'MNI-nodes-base.formTrigger' });
 
 	beforeEach(() => {
 		vi.clearAllMocks();
@@ -3161,7 +3161,7 @@ describe('FormTrigger, isFormConnected', () => {
 	it('should return false if Wait node is connected but resume parameter is not form', async () => {
 		const result = isFormConnected([
 			mock<NodeTypeAndVersion>({
-				type: 'n8n-nodes-base.wait',
+				type: 'MNI-nodes-base.wait',
 				parameters: {
 					resume: 'timeInterval',
 				},
@@ -3172,7 +3172,7 @@ describe('FormTrigger, isFormConnected', () => {
 	it('should return true if Wait node is connected and resume parameter is form', async () => {
 		const result = isFormConnected([
 			mock<NodeTypeAndVersion>({
-				type: 'n8n-nodes-base.wait',
+				type: 'MNI-nodes-base.wait',
 				parameters: {
 					resume: 'form',
 				},
@@ -3183,7 +3183,7 @@ describe('FormTrigger, isFormConnected', () => {
 	it('should return true if Form node is connected', async () => {
 		const result = isFormConnected([
 			mock<NodeTypeAndVersion>({
-				type: 'n8n-nodes-base.form',
+				type: 'MNI-nodes-base.form',
 			}),
 		]);
 		expect(result).toBe(true);
@@ -3219,7 +3219,7 @@ describe('validateResponseModeConfiguration', () => {
 			typeVersion: 2.1,
 		} as INode);
 		webhookFunctions.getChildNodes.mockReturnValue([
-			{ type: 'n8n-nodes-base.respondToWebhook' } as NodeTypeAndVersion,
+			{ type: 'MNI-nodes-base.respondToWebhook' } as NodeTypeAndVersion,
 		]);
 
 		expect(() => validateResponseModeConfiguration(webhookFunctions)).toThrow(
@@ -3230,7 +3230,7 @@ describe('validateResponseModeConfiguration', () => {
 	test('throws error if "Respond to Webhook" node is connected, version >= 2.2', () => {
 		webhookFunctions.getNodeParameter.mockReturnValue('responseNode');
 		webhookFunctions.getChildNodes.mockReturnValue([
-			{ type: 'n8n-nodes-base.respondToWebhook' } as NodeTypeAndVersion,
+			{ type: 'MNI-nodes-base.respondToWebhook' } as NodeTypeAndVersion,
 		]);
 
 		expect(() => validateResponseModeConfiguration(webhookFunctions)).toThrow(
@@ -3853,8 +3853,8 @@ describe('validateFormPageAuth', () => {
 	 * trigger, before a run exists — to the workflow. */
 	const formAuthCookieName = (binding: { workflowId?: string; executionId?: string }) =>
 		binding.executionId
-			? `n8n-form-auth-ex-${binding.executionId}`
-			: `n8n-form-auth-wf-${binding.workflowId}`;
+			? `MNI-form-auth-ex-${binding.executionId}`
+			: `MNI-form-auth-wf-${binding.workflowId}`;
 
 	/** The cookie the form pages present, as the page renders set it. An explicit
 	 * `cookieName` mimics a stale or foreign token sitting under a name the served
@@ -3920,7 +3920,7 @@ describe('validateFormPageAuth', () => {
 	});
 
 	it('responds with 302 redirect when cookie is invalid on GET', async () => {
-		const { ctx, res } = buildContext('GET', 'n8n-auth=bad.token');
+		const { ctx, res } = buildContext('GET', 'MNI-auth=bad.token');
 		ctx.validateCookieAuth.mockRejectedValue(new Error('Unauthorized'));
 
 		const result = await validateFormPageAuth(ctx, 'n8nUserAuth');
@@ -3934,7 +3934,7 @@ describe('validateFormPageAuth', () => {
 	});
 
 	it('returns the authedUser when cookie validates', async () => {
-		const { ctx } = buildContext('GET', 'n8n-auth=valid.jwt.token');
+		const { ctx } = buildContext('GET', 'MNI-auth=valid.jwt.token');
 		ctx.validateCookieAuth.mockResolvedValue(authedUser);
 
 		const result = await validateFormPageAuth(ctx, 'n8nUserAuth');
@@ -3944,8 +3944,8 @@ describe('validateFormPageAuth', () => {
 		expect(result.responded).toBeFalsy();
 	});
 
-	it('parses n8n-auth alongside other cookies', async () => {
-		const { ctx } = buildContext('GET', 'other=value; n8n-auth=valid.jwt.token; another=thing');
+	it('parses MNI-auth alongside other cookies', async () => {
+		const { ctx } = buildContext('GET', 'other=value; MNI-auth=valid.jwt.token; another=thing');
 		ctx.validateCookieAuth.mockResolvedValue(authedUser);
 
 		const result = await validateFormPageAuth(ctx, 'n8nUserAuth');
@@ -4110,7 +4110,7 @@ describe('validateFormPageAuth', () => {
 		});
 
 		it('ignores a malformed cookie', async () => {
-			const { ctx, res } = buildContext('GET', 'n8n-form-auth-ex-exec-id=garbage');
+			const { ctx, res } = buildContext('GET', 'MNI-form-auth-ex-exec-id=garbage');
 
 			const result = await validateFormPageAuth(ctx, 'n8nUserAuth');
 
@@ -4121,7 +4121,7 @@ describe('validateFormPageAuth', () => {
 		it('falls back to the session cookie when the form cookie does not verify', async () => {
 			const { ctx } = buildContext(
 				'GET',
-				'n8n-form-auth-ex-exec-id=garbage; n8n-auth=valid.jwt.token',
+				'MNI-form-auth-ex-exec-id=garbage; MNI-auth=valid.jwt.token',
 			);
 			ctx.validateCookieAuth.mockResolvedValue(authedUser);
 
@@ -4136,7 +4136,7 @@ describe('validateFormPageAuth', () => {
 		it('falls back to the session cookie when the form cookie value cannot be decoded', async () => {
 			const { ctx } = buildContext(
 				'GET',
-				'n8n-form-auth-ex-exec-id=%E0%A4%A; n8n-auth=valid.jwt.token',
+				'MNI-form-auth-ex-exec-id=%E0%A4%A; MNI-auth=valid.jwt.token',
 			);
 			ctx.validateCookieAuth.mockResolvedValue(authedUser);
 
@@ -4147,7 +4147,7 @@ describe('validateFormPageAuth', () => {
 		});
 
 		it('redirects rather than throwing when an undecodable cookie is all the request has', async () => {
-			const { ctx, res } = buildContext('GET', 'n8n-form-auth-ex-exec-id=%E0%A4%A');
+			const { ctx, res } = buildContext('GET', 'MNI-form-auth-ex-exec-id=%E0%A4%A');
 
 			const result = await validateFormPageAuth(ctx, 'n8nUserAuth');
 
@@ -4166,7 +4166,7 @@ describe('validateFormPageAuth', () => {
 			};
 			const { ctx } = buildContext(
 				'GET',
-				`${pageAuthCookie({ workflowId: WORKFLOW_ID })}; n8n-auth=valid.jwt.token`,
+				`${pageAuthCookie({ workflowId: WORKFLOW_ID })}; MNI-auth=valid.jwt.token`,
 			);
 			ctx.validateCookieAuth.mockResolvedValue(otherUser);
 
@@ -4178,7 +4178,7 @@ describe('validateFormPageAuth', () => {
 		it('keeps the cookie when the session belongs to the same user', async () => {
 			const { ctx } = buildContext(
 				'GET',
-				`${pageAuthCookie({ workflowId: WORKFLOW_ID })}; n8n-auth=valid.jwt.token`,
+				`${pageAuthCookie({ workflowId: WORKFLOW_ID })}; MNI-auth=valid.jwt.token`,
 			);
 			ctx.validateCookieAuth.mockResolvedValue(authedUser);
 
@@ -4191,7 +4191,7 @@ describe('validateFormPageAuth', () => {
 		it('keeps the cookie when the session alongside it no longer validates', async () => {
 			const { ctx } = buildContext(
 				'GET',
-				`${pageAuthCookie({ workflowId: WORKFLOW_ID })}; n8n-auth=stale.jwt.token`,
+				`${pageAuthCookie({ workflowId: WORKFLOW_ID })}; MNI-auth=stale.jwt.token`,
 			);
 			ctx.validateCookieAuth.mockRejectedValue(new Error('Unauthorized'));
 

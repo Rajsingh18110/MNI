@@ -1,6 +1,6 @@
 import type { Mock } from 'vitest';
-import { mockInstance } from '@n8n/backend-test-utils';
-import { PrometheusMetricsConfig } from '@n8n/config';
+import { mockInstance } from '@MNI/backend-test-utils';
+import { PrometheusMetricsConfig } from '@MNI/config';
 import promClient from 'prom-client';
 
 import { PrometheusWebhookAndFormMetricsService } from '../webhook-and-form-metrics.service';
@@ -9,7 +9,7 @@ vi.mock('prom-client');
 
 describe('PrometheusWebhookAndFormMetricsService', () => {
 	const config = mockInstance(PrometheusMetricsConfig, {
-		prefix: 'n8n_',
+		prefix: 'MNI_',
 		includeWebhookMetrics: true,
 		includeFormMetrics: true,
 	});
@@ -19,7 +19,7 @@ describe('PrometheusWebhookAndFormMetricsService', () => {
 
 	beforeEach(() => {
 		Object.assign(config, {
-			prefix: 'n8n_',
+			prefix: 'MNI_',
 			includeWebhookMetrics: true,
 			includeFormMetrics: true,
 		});
@@ -58,7 +58,7 @@ describe('PrometheusWebhookAndFormMetricsService', () => {
 			service.init();
 
 			expect(promClient.Histogram).toHaveBeenCalledWith({
-				name: 'n8n_webhook_request_duration_seconds',
+				name: 'MNI_webhook_request_duration_seconds',
 				help: 'Duration of webhook requests served by MNI, in seconds.',
 				labelNames: ['method', 'status_code', 'webhook_path', 'workflow_id'],
 				buckets: [0.003, 0.03, 0.1, 0.3, 1.5, 10],
@@ -70,7 +70,7 @@ describe('PrometheusWebhookAndFormMetricsService', () => {
 			service.init();
 
 			expect(promClient.Histogram).toHaveBeenCalledWith({
-				name: 'n8n_form_submission_duration_seconds',
+				name: 'MNI_form_submission_duration_seconds',
 				help: 'Duration of form submissions (POST) served by MNI, in seconds.',
 				labelNames: ['status_code', 'form_path', 'workflow_id'],
 				buckets: [0.003, 0.03, 0.1, 0.3, 1.5, 10],

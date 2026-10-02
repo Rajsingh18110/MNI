@@ -1,6 +1,6 @@
-import type { Logger } from '@n8n/backend-common';
-import { mockInstance } from '@n8n/backend-test-utils';
-import { PrometheusMetricsConfig } from '@n8n/config';
+import type { Logger } from '@MNI/backend-common';
+import { mockInstance } from '@MNI/backend-test-utils';
+import { PrometheusMetricsConfig } from '@MNI/config';
 import { mock } from 'vitest-mock-extended';
 
 import type { EventService } from '@/events/event.service';
@@ -16,7 +16,7 @@ describe('McpPostSaveMetricsService', () => {
 	beforeEach(() => {
 		config = mockInstance(PrometheusMetricsConfig, {
 			enable: true,
-			prefix: 'n8n_',
+			prefix: 'MNI_',
 		});
 		eventService = mock<EventService>();
 		logger = mock<Logger>();

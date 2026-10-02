@@ -5,11 +5,11 @@ import { screen } from '@testing-library/vue';
 import userEvent from '@testing-library/user-event';
 import { createPinia, setActivePinia } from 'pinia';
 import { vi } from 'vitest';
-import type { AllRolesMap, ProjectRole } from '@n8n/permissions';
+import type { AllRolesMap, ProjectRole } from '@MNI/permissions';
 import ProjectMembersRoleCell from './ProjectMembersRoleCell.vue';
 import type { ProjectMemberData } from '../projects.types';
-import { useSettingsStore } from '@n8n/stores/settings.store';
-import { useUsersStore } from '@n8n/stores/users.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
+import { useUsersStore } from '@MNI/stores/users.store';
 
 vi.mock('vue-router', async () => {
 	const actual = await vi.importActual('vue-router');

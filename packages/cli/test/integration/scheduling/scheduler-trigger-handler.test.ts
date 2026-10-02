@@ -1,15 +1,15 @@
-import { testDb, createWorkflowWithHistory, setActiveVersion } from '@n8n/backend-test-utils';
+import { testDb, createWorkflowWithHistory, setActiveVersion } from '@MNI/backend-test-utils';
 import {
 	DataSource,
 	ExecutionRepository,
 	ScheduledJobRepository,
 	ScheduledTaskRepository,
 	WorkflowPublishedVersionRepository,
-} from '@n8n/db';
-import { Container } from '@n8n/di';
-import { createScheduler } from '@n8n/scheduler';
-import type { Scheduler, SchedulerPasses } from '@n8n/scheduler';
-import { NodeConnectionTypes } from 'n8n-workflow';
+} from '@MNI/db';
+import { Container } from '@MNI/di';
+import { createScheduler } from '@MNI/scheduler';
+import type { Scheduler, SchedulerPasses } from '@MNI/scheduler';
+import { NodeConnectionTypes } from 'MNI-workflow';
 import { v4 as uuid } from 'uuid';
 
 import { buildMaterializerTransaction } from '@/scheduling/durable-scheduler';
@@ -44,7 +44,7 @@ describe('schedule-trigger occurrence to a real execution', () => {
 		owner = await createOwner();
 
 		await utils.initNodeTypes(
-			loadNodesFromDist(['n8n-nodes-base.scheduleTrigger', 'n8n-nodes-base.noOp']),
+			loadNodesFromDist(['MNI-nodes-base.scheduleTrigger', 'MNI-nodes-base.noOp']),
 		);
 		await utils.initBinaryDataService();
 
@@ -84,7 +84,7 @@ describe('schedule-trigger occurrence to a real execution', () => {
 					{
 						id: triggerNodeId,
 						name: 'ScheduleTrigger',
-						type: 'n8n-nodes-base.scheduleTrigger',
+						type: 'MNI-nodes-base.scheduleTrigger',
 						typeVersion: 1,
 						position: [0, 0],
 						parameters: {},
@@ -92,7 +92,7 @@ describe('schedule-trigger occurrence to a real execution', () => {
 					{
 						id: uuid(),
 						name: 'NoOp',
-						type: 'n8n-nodes-base.noOp',
+						type: 'MNI-nodes-base.noOp',
 						typeVersion: 1,
 						position: [200, 0],
 						parameters: {},

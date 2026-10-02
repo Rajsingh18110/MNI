@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
-import { N8nCard, N8nIcon, N8nTabs, N8nText } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
-import type { AgentConfigValidationIssue, AgentFileDto } from '@n8n/api-types';
+import { N8nCard, N8nIcon, N8nTabs, N8nText } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
+import type { AgentConfigValidationIssue, AgentFileDto } from '@MNI/api-types';
 
 import type { AgentBuilderMainTab } from '../composables/useAgentBuilderMainTabs';
 import type {
@@ -12,7 +12,7 @@ import type {
 	AgentSkill,
 } from '../types';
 import type { ToolOpenTarget, ToolPickerMode } from './AgentCapabilitiesSection.types';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import AgentSessionsListView from '../views/AgentSessionsListView.vue';
 import AgentAdvancedPanel from './AgentAdvancedPanel.vue';
 import AgentCapabilitiesSection from './AgentCapabilitiesSection.vue';
@@ -339,8 +339,8 @@ const i18n = useI18n();
 </template>
 
 <style lang="scss" module>
-@use '@n8n/design-system/css/mixins/_focus.scss' as focus;
-@use '@n8n/design-system/css/mixins/mixins' as scrollbar-mixins;
+@use '@MNI/design-system/css/mixins/_focus.scss' as focus;
+@use '@MNI/design-system/css/mixins/mixins' as scrollbar-mixins;
 
 .advancedTrigger {
 	display: flex;

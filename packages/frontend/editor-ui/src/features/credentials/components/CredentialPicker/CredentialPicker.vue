@@ -2,16 +2,16 @@
 import { computed, ref, watch } from 'vue';
 import { listenForModalChanges, useUIStore } from '@/app/stores/ui.store';
 import { listenForCredentialChanges, useCredentialsStore } from '../../credentials.store';
-import { assert } from '@n8n/utils/assert';
+import { assert } from '@MNI/utils/assert';
 import CredentialsDropdown from './CredentialsDropdown.vue';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import { CREDENTIAL_EDIT_MODAL_KEY } from '../../credentials.constants';
 
-import { N8nButton, N8nIconButton, N8nTooltip } from '@n8n/design-system';
-import type { ButtonProps, SelectSize } from '@n8n/design-system';
-import { getResourcePermissions } from '@n8n/permissions';
+import { N8nButton, N8nIconButton, N8nTooltip } from '@MNI/design-system';
+import type { ButtonProps, SelectSize } from '@MNI/design-system';
+import { getResourcePermissions } from '@MNI/permissions';
 import { useProjectsStore } from '@/features/collaboration/projects/projects.store';
-import { useToast } from '@n8n/composables/useToast';
+import { useToast } from '@MNI/composables/useToast';
 import type { ICredentialsDecryptedResponse, ICredentialsResponse } from '../../credentials.types';
 import { useMessage } from '@/app/composables/useMessage';
 import { MODAL_CONFIRM } from '@/app/constants';

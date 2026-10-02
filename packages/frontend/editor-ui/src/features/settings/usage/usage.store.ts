@@ -1,9 +1,9 @@
 import { computed, reactive, ref } from 'vue';
 import { defineStore } from 'pinia';
-import type { UsageState } from '@n8n/api-types';
-import * as usageApi from '@n8n/rest-api-client/api/usage';
-import { useRootStore } from '@n8n/stores/useRootStore';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import type { UsageState } from '@MNI/api-types';
+import * as usageApi from '@MNI/rest-api-client/api/usage';
+import { useRootStore } from '@MNI/stores/useRootStore';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 
 export type UsageTelemetry = {
 	instance_id: string;

@@ -1,7 +1,7 @@
-import { mockInstance } from '@n8n/backend-test-utils';
+import { mockInstance } from '@MNI/backend-test-utils';
 import { mock } from 'vitest-mock-extended';
-import type { IRun } from 'n8n-workflow';
-import { NodeOperationError } from 'n8n-workflow';
+import type { IRun } from 'MNI-workflow';
+import { NodeOperationError } from 'MNI-workflow';
 
 import { ExecutionPersistence } from '@/executions/execution-persistence';
 

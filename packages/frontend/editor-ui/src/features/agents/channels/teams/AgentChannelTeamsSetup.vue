@@ -1,17 +1,17 @@
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue';
 import { saveAs } from 'file-saver';
-import { N8nButton, N8nCopyInput, N8nInput, N8nStepper, N8nText } from '@n8n/design-system';
-import { TEAMS_DESCRIPTION_MAX, TEAMS_DISPLAY_NAME_MAX } from '@n8n/api-types';
+import { N8nButton, N8nCopyInput, N8nInput, N8nStepper, N8nText } from '@MNI/design-system';
+import { TEAMS_DESCRIPTION_MAX, TEAMS_DISPLAY_NAME_MAX } from '@MNI/api-types';
 import type {
 	AgentTeamsIntegrationSettings,
 	ChatIntegrationDescriptor,
 	TeamsAgentSetupState,
 	TeamsCredentialCheck,
-} from '@n8n/api-types';
-import { useI18n } from '@n8n/i18n';
-import { useRootStore } from '@n8n/stores/useRootStore';
-import type { PermissionsRecord } from '@n8n/permissions';
+} from '@MNI/api-types';
+import { useI18n } from '@MNI/i18n';
+import { useRootStore } from '@MNI/stores/useRootStore';
+import type { PermissionsRecord } from '@MNI/permissions';
 import AgentIntegrationCredentialConnection from '../../components/AgentIntegrationCredentialConnection.vue';
 import type { AgentCredentialOption } from '../../components/AgentCredentialSelect.vue';
 import AgentChannelTeamsAvailability, {
@@ -203,7 +203,7 @@ async function downloadPackage() {
 			credentialId.value || undefined,
 			currentSettings.value,
 		);
-		saveAs(blob, 'n8n-agent-teams-app.zip');
+		saveAs(blob, 'MNI-agent-teams-app.zip');
 		agentTelemetry.trackDownloadedTeamsAppPackage({ agentId: props.agentId, status: 'success' });
 	} catch {
 		downloadError.value = i18n.baseText('agents.channels.teams.setup.install.downloadFailed');

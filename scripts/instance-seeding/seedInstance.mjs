@@ -14,10 +14,10 @@ import {
 	preferenceWorkflows,
 } from './preference-profile.mjs';
 
-const BASE = process.env.N8N_BASE_URL ?? 'http://localhost:5678';
-const KEY = process.env.N8N_API_KEY;
+const BASE = process.env.MNI_BASE_URL ?? 'http://localhost:5678';
+const KEY = process.env.MNI_API_KEY;
 if (!KEY) {
-	console.error('N8N_API_KEY env var required');
+	console.error('MNI_API_KEY env var required');
 	process.exit(1);
 }
 
@@ -244,7 +244,7 @@ const LYNCHPIN_CRED_RECIPES = [
 const HEADERS = {
 	'Content-Type': 'application/json',
 	Accept: 'application/json',
-	'X-N8N-API-KEY': KEY,
+	'X-MNI-API-KEY': KEY,
 };
 
 let totalReq = 0;
@@ -306,7 +306,7 @@ const CRED_RECIPES = [
 	{
 		type: 'httpBasicAuth',
 		fields: () => ({
-			user: pickWord(['svc-bot', 'integrations', 'n8n-runner']),
+			user: pickWord(['svc-bot', 'integrations', 'MNI-runner']),
 			password: rand(20),
 			allowedHttpRequestDomains: 'none',
 		}),
@@ -353,7 +353,7 @@ const CRED_RECIPES = [
 		fields: () => ({
 			accessToken: `ghp_${rand(36)}`,
 			server: 'https://api.github.com',
-			user: 'n8n-bot',
+			user: 'MNI-bot',
 			allowedHttpRequestDomains: 'none',
 		}),
 		nameFn: () => `GitHub (${pickWord(['CI', 'Release', 'Issues', 'Insights'])})`,
@@ -443,7 +443,7 @@ function workflowNodes({ theme, credPick, subWorkflowIds, dataTableRef, centralD
 			parameters: { httpMethod: 'POST', path: `seed-${rand(8)}`, responseMode: 'lastNode' },
 			id: rand(36),
 			name: 'Webhook',
-			type: 'n8n-nodes-base.webhook',
+			type: 'MNI-nodes-base.webhook',
 			typeVersion: 2,
 			position: [240, 300],
 			webhookId: rand(36),
@@ -453,7 +453,7 @@ function workflowNodes({ theme, credPick, subWorkflowIds, dataTableRef, centralD
 			parameters: { rule: { interval: [{ field: 'hours', hoursInterval: randInt([1, 12]) }] } },
 			id: rand(36),
 			name: 'Schedule Trigger',
-			type: 'n8n-nodes-base.scheduleTrigger',
+			type: 'MNI-nodes-base.scheduleTrigger',
 			typeVersion: 1.2,
 			position: [240, 300],
 		});
@@ -462,7 +462,7 @@ function workflowNodes({ theme, credPick, subWorkflowIds, dataTableRef, centralD
 			parameters: {},
 			id: rand(36),
 			name: "When clicking 'Execute workflow'",
-			type: 'n8n-nodes-base.manualTrigger',
+			type: 'MNI-nodes-base.manualTrigger',
 			typeVersion: 1,
 			position: [240, 300],
 		});
@@ -481,7 +481,7 @@ function workflowNodes({ theme, credPick, subWorkflowIds, dataTableRef, centralD
 		},
 		id: rand(36),
 		name: 'Edit Fields',
-		type: 'n8n-nodes-base.set',
+		type: 'MNI-nodes-base.set',
 		typeVersion: 3.4,
 		position: [460, 300],
 	});
@@ -511,7 +511,7 @@ function workflowNodes({ theme, credPick, subWorkflowIds, dataTableRef, centralD
 					},
 					id: rand(36),
 					name: 'HTTP Request',
-					type: 'n8n-nodes-base.httpRequest',
+					type: 'MNI-nodes-base.httpRequest',
 					typeVersion: 4.2,
 					position: [680, 300],
 					credentials: { [httpCred.type]: { id: httpCred.id, name: httpCred.name } },
@@ -528,7 +528,7 @@ function workflowNodes({ theme, credPick, subWorkflowIds, dataTableRef, centralD
 					},
 					id: rand(36),
 					name: 'Slack',
-					type: 'n8n-nodes-base.slack',
+					type: 'MNI-nodes-base.slack',
 					typeVersion: 2.2,
 					position: [680, 300],
 					credentials: { slackApi: { id: httpCred.id, name: httpCred.name } },
@@ -540,7 +540,7 @@ function workflowNodes({ theme, credPick, subWorkflowIds, dataTableRef, centralD
 					parameters: { resource: 'page', operation: 'create', pageId: 'root', title: theme },
 					id: rand(36),
 					name: 'Notion',
-					type: 'n8n-nodes-base.notion',
+					type: 'MNI-nodes-base.notion',
 					typeVersion: 2.2,
 					position: [680, 300],
 					credentials: { notionApi: { id: httpCred.id, name: httpCred.name } },
@@ -552,12 +552,12 @@ function workflowNodes({ theme, credPick, subWorkflowIds, dataTableRef, centralD
 					parameters: {
 						resource: 'issue',
 						operation: 'getAll',
-						owner: 'n8n-io',
+						owner: 'MNI-io',
 						repository: 'MNI',
 					},
 					id: rand(36),
 					name: 'GitHub',
-					type: 'n8n-nodes-base.github',
+					type: 'MNI-nodes-base.github',
 					typeVersion: 1,
 					position: [680, 300],
 					credentials: { githubApi: { id: httpCred.id, name: httpCred.name } },
@@ -569,7 +569,7 @@ function workflowNodes({ theme, credPick, subWorkflowIds, dataTableRef, centralD
 					parameters: { resource: 'text', operation: 'message', model: 'gpt-4o-mini' },
 					id: rand(36),
 					name: 'OpenAI',
-					type: 'n8n-nodes-base.openAi',
+					type: 'MNI-nodes-base.openAi',
 					typeVersion: 1.3,
 					position: [680, 300],
 					credentials: { openAiApi: { id: httpCred.id, name: httpCred.name } },
@@ -588,7 +588,7 @@ function workflowNodes({ theme, credPick, subWorkflowIds, dataTableRef, centralD
 				},
 				id: rand(36),
 				name: isPg ? 'Postgres' : 'MySQL',
-				type: isPg ? 'n8n-nodes-base.postgres' : 'n8n-nodes-base.mySql',
+				type: isPg ? 'MNI-nodes-base.postgres' : 'MNI-nodes-base.mySql',
 				typeVersion: isPg ? 2.5 : 2.4,
 				position: [900, 300],
 				credentials: { [dbCred.type]: { id: dbCred.id, name: dbCred.name } },
@@ -607,7 +607,7 @@ function workflowNodes({ theme, credPick, subWorkflowIds, dataTableRef, centralD
 			},
 			id: rand(36),
 			name: 'Customers',
-			type: 'n8n-nodes-base.dataTable',
+			type: 'MNI-nodes-base.dataTable',
 			typeVersion: 1.1,
 			position: [1120, 300],
 		});
@@ -624,7 +624,7 @@ function workflowNodes({ theme, credPick, subWorkflowIds, dataTableRef, centralD
 			},
 			id: rand(36),
 			name: 'Data table',
-			type: 'n8n-nodes-base.dataTable',
+			type: 'MNI-nodes-base.dataTable',
 			typeVersion: 1.1,
 			position: [centralDataTableRef ? 1340 : 1120, 300],
 		});
@@ -641,7 +641,7 @@ function workflowNodes({ theme, credPick, subWorkflowIds, dataTableRef, centralD
 				parameters: { workflowId: { __rl: true, value: subId, mode: 'id' }, mode: 'each' },
 				id: rand(36),
 				name: nodeName,
-				type: 'n8n-nodes-base.executeWorkflow',
+				type: 'MNI-nodes-base.executeWorkflow',
 				typeVersion: 1.2,
 				position: [baseX + i * 220, 300],
 			});

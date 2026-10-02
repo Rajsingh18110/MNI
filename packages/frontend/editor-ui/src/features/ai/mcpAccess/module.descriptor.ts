@@ -1,6 +1,6 @@
-import { useI18n } from '@n8n/i18n';
-import { defineFrontendModule } from '@n8n/frontend-module-sdk';
-import { useRBACStore } from '@n8n/stores/rbac.store';
+import { useI18n } from '@MNI/i18n';
+import { defineFrontendModule } from '@MNI/frontend-module-sdk';
+import { useRBACStore } from '@MNI/stores/rbac.store';
 import {
 	MCP_AGENTS_VIEW,
 	MCP_CLIENTS_VIEW,

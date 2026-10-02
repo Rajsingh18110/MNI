@@ -1,5 +1,5 @@
-import { AzureByteStore, S3ByteStore } from '@n8n/blob-storage';
-import { Container } from '@n8n/di';
+import { AzureByteStore, S3ByteStore } from '@MNI/blob-storage';
+import { Container } from '@MNI/di';
 
 import type { ExecutionDataJsonStore } from '@/executions/execution-data/execution-data-json-store';
 
@@ -20,13 +20,13 @@ export async function registerAgentBlobByteStores(stores: {
 	const { executionDataJsonStore, agentExecutionLogStore, agentKnowledgeFileStore } = stores;
 
 	if (executionDataJsonStore.hasLocation('s3')) {
-		const { ObjectStoreService } = await import('@n8n/blob-storage/object-store');
+		const { ObjectStoreService } = await import('@MNI/blob-storage/object-store');
 		const s3Store = new S3ByteStore(Container.get(ObjectStoreService));
 		agentExecutionLogStore.registerByteStore('s3', s3Store);
 		agentKnowledgeFileStore.registerByteStore('s3', s3Store);
 	}
 	if (executionDataJsonStore.hasLocation('az')) {
-		const { AzureBlobService } = await import('@n8n/blob-storage/azure-blob');
+		const { AzureBlobService } = await import('@MNI/blob-storage/azure-blob');
 		const azStore = new AzureByteStore(Container.get(AzureBlobService));
 		agentExecutionLogStore.registerByteStore('az', azStore);
 		agentKnowledgeFileStore.registerByteStore('az', azStore);

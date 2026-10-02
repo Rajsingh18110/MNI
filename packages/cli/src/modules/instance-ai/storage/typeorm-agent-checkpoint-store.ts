@@ -1,7 +1,7 @@
-import { Service } from '@n8n/di';
-import type { CheckpointStore, SerializableAgentState } from '@n8n/agents';
-import { LessThan } from '@n8n/typeorm';
-import { UnexpectedError, UserError } from 'n8n-workflow';
+import { Service } from '@MNI/di';
+import type { CheckpointStore, SerializableAgentState } from '@MNI/agents';
+import { LessThan } from '@MNI/typeorm';
+import { UnexpectedError, UserError } from 'MNI-workflow';
 
 import { InstanceAiCheckpointRepository } from '../repositories/instance-ai-checkpoint.repository';
 

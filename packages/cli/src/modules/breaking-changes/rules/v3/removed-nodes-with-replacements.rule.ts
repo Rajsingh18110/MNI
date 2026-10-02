@@ -1,7 +1,7 @@
-import type { BreakingChangeAffectedWorkflow, BreakingChangeRecommendation } from '@n8n/api-types';
-import type { WorkflowEntity } from '@n8n/db';
-import { BreakingChangeRule } from '@n8n/decorators';
-import type { INode } from 'n8n-workflow';
+import type { BreakingChangeAffectedWorkflow, BreakingChangeRecommendation } from '@MNI/api-types';
+import type { WorkflowEntity } from '@MNI/db';
+import { BreakingChangeRule } from '@MNI/decorators';
+import type { INode } from 'MNI-workflow';
 
 import type {
 	BreakingChangeRuleMetadata,
@@ -73,7 +73,7 @@ function createNodeReplacementRule({
 export const BinaryInputLoaderRemovedRule = createNodeReplacementRule({
 	id: 'binary-input-loader-removed',
 	removedNodeName: 'Binary Input Loader',
-	removedNodeType: '@n8n/n8n-nodes-langchain.documentBinaryInputLoader',
+	removedNodeType: '@MNI/MNI-nodes-langchain.documentBinaryInputLoader',
 	recommendations: [
 		{
 			action: 'Replace with Default Data Loader',
@@ -85,7 +85,7 @@ export const BinaryInputLoaderRemovedRule = createNodeReplacementRule({
 export const ChatMessagesRetrieverRemovedRule = createNodeReplacementRule({
 	id: 'chat-messages-retriever-removed',
 	removedNodeName: 'Chat Messages Retriever',
-	removedNodeType: '@n8n/n8n-nodes-langchain.memoryChatRetriever',
+	removedNodeType: '@MNI/MNI-nodes-langchain.memoryChatRetriever',
 	recommendations: [
 		{
 			action: 'Replace with Memory Manager',
@@ -98,7 +98,7 @@ export const ChatMessagesRetrieverRemovedRule = createNodeReplacementRule({
 export const ConvertToFromBinaryDataRemovedRule = createNodeReplacementRule({
 	id: 'convert-to-from-binary-data-removed',
 	removedNodeName: 'Convert to/from binary data',
-	removedNodeType: 'n8n-nodes-base.moveBinaryData',
+	removedNodeType: 'MNI-nodes-base.moveBinaryData',
 	recommendations: [
 		{
 			action: 'Replace with Convert to File',
@@ -116,7 +116,7 @@ export const ConvertToFromBinaryDataRemovedRule = createNodeReplacementRule({
 export const CronRemovedRule = createNodeReplacementRule({
 	id: 'cron-removed',
 	removedNodeName: 'Cron',
-	removedNodeType: 'n8n-nodes-base.cron',
+	removedNodeType: 'MNI-nodes-base.cron',
 	recommendations: [
 		{
 			action: 'Replace with Schedule Trigger',
@@ -128,7 +128,7 @@ export const CronRemovedRule = createNodeReplacementRule({
 export const FunctionRemovedRule = createNodeReplacementRule({
 	id: 'function-removed',
 	removedNodeName: 'Function',
-	removedNodeType: 'n8n-nodes-base.function',
+	removedNodeType: 'MNI-nodes-base.function',
 	recommendations: [
 		{
 			action: 'Replace with Code',
@@ -140,7 +140,7 @@ export const FunctionRemovedRule = createNodeReplacementRule({
 export const FunctionItemRemovedRule = createNodeReplacementRule({
 	id: 'function-item-removed',
 	removedNodeName: 'Function Item',
-	removedNodeType: 'n8n-nodes-base.functionItem',
+	removedNodeType: 'MNI-nodes-base.functionItem',
 	recommendations: [
 		{
 			action: 'Replace with Code',
@@ -152,7 +152,7 @@ export const FunctionItemRemovedRule = createNodeReplacementRule({
 export const HtmlExtractRemovedRule = createNodeReplacementRule({
 	id: 'html-extract-removed',
 	removedNodeName: 'HTML Extract',
-	removedNodeType: 'n8n-nodes-base.htmlExtract',
+	removedNodeType: 'MNI-nodes-base.htmlExtract',
 	recommendations: [
 		{
 			action: 'Replace with HTML',
@@ -164,7 +164,7 @@ export const HtmlExtractRemovedRule = createNodeReplacementRule({
 export const HttpRequestToolRemovedRule = createNodeReplacementRule({
 	id: 'http-request-tool-removed',
 	removedNodeName: 'HTTP Request Tool',
-	removedNodeType: '@n8n/n8n-nodes-langchain.toolHttpRequest',
+	removedNodeType: '@MNI/MNI-nodes-langchain.toolHttpRequest',
 	recommendations: [
 		{
 			action: 'Replace with HTTP Request',
@@ -176,7 +176,7 @@ export const HttpRequestToolRemovedRule = createNodeReplacementRule({
 export const ICalendarRemovedRule = createNodeReplacementRule({
 	id: 'i-calendar-removed',
 	removedNodeName: 'iCalendar',
-	removedNodeType: 'n8n-nodes-base.iCal',
+	removedNodeType: 'MNI-nodes-base.iCal',
 	recommendations: [
 		{
 			action: 'Replace with Convert to File',
@@ -188,7 +188,7 @@ export const ICalendarRemovedRule = createNodeReplacementRule({
 export const ItemListsRemovedRule = createNodeReplacementRule({
 	id: 'item-lists-removed',
 	removedNodeName: 'Item Lists',
-	removedNodeType: 'n8n-nodes-base.itemLists',
+	removedNodeType: 'MNI-nodes-base.itemLists',
 	recommendations: [
 		{
 			action: 'Replace with Aggregate',
@@ -220,7 +220,7 @@ export const ItemListsRemovedRule = createNodeReplacementRule({
 export const InMemoryVectorStoreInsertRemovedRule = createNodeReplacementRule({
 	id: 'in-memory-vector-store-insert-removed',
 	removedNodeName: 'In Memory Vector Store Insert',
-	removedNodeType: '@n8n/n8n-nodes-langchain.vectorStoreInMemoryInsert',
+	removedNodeType: '@MNI/MNI-nodes-langchain.vectorStoreInMemoryInsert',
 	recommendations: [
 		{
 			action: 'Replace with In-Memory Vector Store',
@@ -232,7 +232,7 @@ export const InMemoryVectorStoreInsertRemovedRule = createNodeReplacementRule({
 export const InMemoryVectorStoreLoadRemovedRule = createNodeReplacementRule({
 	id: 'in-memory-vector-store-load-removed',
 	removedNodeName: 'In Memory Vector Store Load',
-	removedNodeType: '@n8n/n8n-nodes-langchain.vectorStoreInMemoryLoad',
+	removedNodeType: '@MNI/MNI-nodes-langchain.vectorStoreInMemoryLoad',
 	recommendations: [
 		{
 			action: 'Replace with In-Memory Vector Store',
@@ -244,7 +244,7 @@ export const InMemoryVectorStoreLoadRemovedRule = createNodeReplacementRule({
 export const IntervalRemovedRule = createNodeReplacementRule({
 	id: 'interval-removed',
 	removedNodeName: 'Interval',
-	removedNodeType: 'n8n-nodes-base.interval',
+	removedNodeType: 'MNI-nodes-base.interval',
 	recommendations: [
 		{
 			action: 'Replace with Schedule Trigger',
@@ -256,7 +256,7 @@ export const IntervalRemovedRule = createNodeReplacementRule({
 export const JsonInputLoaderRemovedRule = createNodeReplacementRule({
 	id: 'json-input-loader-removed',
 	removedNodeName: 'JSON Input Loader',
-	removedNodeType: '@n8n/n8n-nodes-langchain.documentJsonInputLoader',
+	removedNodeType: '@MNI/MNI-nodes-langchain.documentJsonInputLoader',
 	recommendations: [
 		{
 			action: 'Replace with Default Data Loader',
@@ -268,7 +268,7 @@ export const JsonInputLoaderRemovedRule = createNodeReplacementRule({
 export const ManualChatTriggerRemovedRule = createNodeReplacementRule({
 	id: 'manual-chat-trigger-removed',
 	removedNodeName: 'Manual Chat Trigger',
-	removedNodeType: '@n8n/n8n-nodes-langchain.manualChatTrigger',
+	removedNodeType: '@MNI/MNI-nodes-langchain.manualChatTrigger',
 	recommendations: [
 		{
 			action: 'Replace with Chat Trigger',
@@ -280,7 +280,7 @@ export const ManualChatTriggerRemovedRule = createNodeReplacementRule({
 export const OpenAiAssistantRemovedRule = createNodeReplacementRule({
 	id: 'openai-assistant-removed',
 	removedNodeName: 'OpenAI Assistant',
-	removedNodeType: '@n8n/n8n-nodes-langchain.openAiAssistant',
+	removedNodeType: '@MNI/MNI-nodes-langchain.openAiAssistant',
 	recommendations: [
 		{
 			action: 'Replace with OpenAI',
@@ -292,7 +292,7 @@ export const OpenAiAssistantRemovedRule = createNodeReplacementRule({
 export const OpenAiRemovedRule = createNodeReplacementRule({
 	id: 'openai-removed',
 	removedNodeName: 'OpenAI',
-	removedNodeType: 'n8n-nodes-base.openAi',
+	removedNodeType: 'MNI-nodes-base.openAi',
 	recommendations: [
 		{
 			action: 'Replace with OpenAI',
@@ -304,7 +304,7 @@ export const OpenAiRemovedRule = createNodeReplacementRule({
 export const OpenAiModelRemovedRule = createNodeReplacementRule({
 	id: 'openai-model-removed',
 	removedNodeName: 'OpenAI Model',
-	removedNodeType: '@n8n/n8n-nodes-langchain.lmOpenAi',
+	removedNodeType: '@MNI/MNI-nodes-langchain.lmOpenAi',
 	recommendations: [
 		{
 			action: 'Replace with OpenAI Chat Model',
@@ -316,7 +316,7 @@ export const OpenAiModelRemovedRule = createNodeReplacementRule({
 export const PineconeInsertRemovedRule = createNodeReplacementRule({
 	id: 'pinecone-insert-removed',
 	removedNodeName: 'Pinecone: Insert',
-	removedNodeType: '@n8n/n8n-nodes-langchain.vectorStorePineconeInsert',
+	removedNodeType: '@MNI/MNI-nodes-langchain.vectorStorePineconeInsert',
 	recommendations: [
 		{
 			action: 'Replace with Pinecone Vector Store',
@@ -328,7 +328,7 @@ export const PineconeInsertRemovedRule = createNodeReplacementRule({
 export const PineconeLoadRemovedRule = createNodeReplacementRule({
 	id: 'pinecone-load-removed',
 	removedNodeName: 'Pinecone: Load',
-	removedNodeType: '@n8n/n8n-nodes-langchain.vectorStorePineconeLoad',
+	removedNodeType: '@MNI/MNI-nodes-langchain.vectorStorePineconeLoad',
 	recommendations: [
 		{
 			action: 'Replace with Pinecone Vector Store',
@@ -340,7 +340,7 @@ export const PineconeLoadRemovedRule = createNodeReplacementRule({
 export const ReadBinaryFileRemovedRule = createNodeReplacementRule({
 	id: 'read-binary-file-removed',
 	removedNodeName: 'Read Binary File',
-	removedNodeType: 'n8n-nodes-base.readBinaryFile',
+	removedNodeType: 'MNI-nodes-base.readBinaryFile',
 	recommendations: [
 		{
 			action: 'Replace with Read/Write Files from Disk',
@@ -353,7 +353,7 @@ export const ReadBinaryFileRemovedRule = createNodeReplacementRule({
 export const ReadBinaryFilesRemovedRule = createNodeReplacementRule({
 	id: 'read-binary-files-removed',
 	removedNodeName: 'Read Binary Files',
-	removedNodeType: 'n8n-nodes-base.readBinaryFiles',
+	removedNodeType: 'MNI-nodes-base.readBinaryFiles',
 	recommendations: [
 		{
 			action: 'Replace with Read/Write Files from Disk',
@@ -366,7 +366,7 @@ export const ReadBinaryFilesRemovedRule = createNodeReplacementRule({
 export const ReadPdfRemovedRule = createNodeReplacementRule({
 	id: 'read-pdf-removed',
 	removedNodeName: 'Read PDF',
-	removedNodeType: 'n8n-nodes-base.readPDF',
+	removedNodeType: 'MNI-nodes-base.readPDF',
 	recommendations: [
 		{
 			action: 'Replace with Extract From File',
@@ -378,7 +378,7 @@ export const ReadPdfRemovedRule = createNodeReplacementRule({
 export const SerpApiGoogleSearchRemovedRule = createNodeReplacementRule({
 	id: 'serpapi-google-search-removed',
 	removedNodeName: 'SerpApi (Google Search)',
-	removedNodeType: '@n8n/n8n-nodes-langchain.toolSerpApi',
+	removedNodeType: '@MNI/MNI-nodes-langchain.toolSerpApi',
 	recommendations: [
 		{
 			action: 'Replace with SerpApi',
@@ -391,7 +391,7 @@ export const SerpApiGoogleSearchRemovedRule = createNodeReplacementRule({
 export const SupabaseInsertRemovedRule = createNodeReplacementRule({
 	id: 'supabase-insert-removed',
 	removedNodeName: 'Supabase: Insert',
-	removedNodeType: '@n8n/n8n-nodes-langchain.vectorStoreSupabaseInsert',
+	removedNodeType: '@MNI/MNI-nodes-langchain.vectorStoreSupabaseInsert',
 	recommendations: [
 		{
 			action: 'Replace with Supabase Vector Store',
@@ -403,7 +403,7 @@ export const SupabaseInsertRemovedRule = createNodeReplacementRule({
 export const SupabaseLoadRemovedRule = createNodeReplacementRule({
 	id: 'supabase-load-removed',
 	removedNodeName: 'Supabase: Load',
-	removedNodeType: '@n8n/n8n-nodes-langchain.vectorStoreSupabaseLoad',
+	removedNodeType: '@MNI/MNI-nodes-langchain.vectorStoreSupabaseLoad',
 	recommendations: [
 		{
 			action: 'Replace with Supabase Vector Store',
@@ -415,7 +415,7 @@ export const SupabaseLoadRemovedRule = createNodeReplacementRule({
 export const WorkflowTriggerRemovedRule = createNodeReplacementRule({
 	id: 'workflow-trigger-removed',
 	removedNodeName: 'Workflow Trigger',
-	removedNodeType: 'n8n-nodes-base.workflowTrigger',
+	removedNodeType: 'MNI-nodes-base.workflowTrigger',
 	recommendations: [
 		{
 			action: 'Replace with MNI Trigger',
@@ -427,7 +427,7 @@ export const WorkflowTriggerRemovedRule = createNodeReplacementRule({
 export const WriteBinaryFileRemovedRule = createNodeReplacementRule({
 	id: 'write-binary-file-removed',
 	removedNodeName: 'Write Binary File',
-	removedNodeType: 'n8n-nodes-base.writeBinaryFile',
+	removedNodeType: 'MNI-nodes-base.writeBinaryFile',
 	recommendations: [
 		{
 			action: 'Replace with Read/Write Files from Disk',
@@ -440,60 +440,60 @@ export const WriteBinaryFileRemovedRule = createNodeReplacementRule({
 export const directNodeReplacementRules = [
 	{
 		rule: BinaryInputLoaderRemovedRule,
-		removedNodeType: '@n8n/n8n-nodes-langchain.documentBinaryInputLoader',
+		removedNodeType: '@MNI/MNI-nodes-langchain.documentBinaryInputLoader',
 	},
 	{
 		rule: ChatMessagesRetrieverRemovedRule,
-		removedNodeType: '@n8n/n8n-nodes-langchain.memoryChatRetriever',
+		removedNodeType: '@MNI/MNI-nodes-langchain.memoryChatRetriever',
 	},
-	{ rule: ConvertToFromBinaryDataRemovedRule, removedNodeType: 'n8n-nodes-base.moveBinaryData' },
-	{ rule: CronRemovedRule, removedNodeType: 'n8n-nodes-base.cron' },
-	{ rule: FunctionRemovedRule, removedNodeType: 'n8n-nodes-base.function' },
-	{ rule: FunctionItemRemovedRule, removedNodeType: 'n8n-nodes-base.functionItem' },
-	{ rule: HtmlExtractRemovedRule, removedNodeType: 'n8n-nodes-base.htmlExtract' },
-	{ rule: HttpRequestToolRemovedRule, removedNodeType: '@n8n/n8n-nodes-langchain.toolHttpRequest' },
-	{ rule: ICalendarRemovedRule, removedNodeType: 'n8n-nodes-base.iCal' },
-	{ rule: ItemListsRemovedRule, removedNodeType: 'n8n-nodes-base.itemLists' },
+	{ rule: ConvertToFromBinaryDataRemovedRule, removedNodeType: 'MNI-nodes-base.moveBinaryData' },
+	{ rule: CronRemovedRule, removedNodeType: 'MNI-nodes-base.cron' },
+	{ rule: FunctionRemovedRule, removedNodeType: 'MNI-nodes-base.function' },
+	{ rule: FunctionItemRemovedRule, removedNodeType: 'MNI-nodes-base.functionItem' },
+	{ rule: HtmlExtractRemovedRule, removedNodeType: 'MNI-nodes-base.htmlExtract' },
+	{ rule: HttpRequestToolRemovedRule, removedNodeType: '@MNI/MNI-nodes-langchain.toolHttpRequest' },
+	{ rule: ICalendarRemovedRule, removedNodeType: 'MNI-nodes-base.iCal' },
+	{ rule: ItemListsRemovedRule, removedNodeType: 'MNI-nodes-base.itemLists' },
 	{
 		rule: InMemoryVectorStoreInsertRemovedRule,
-		removedNodeType: '@n8n/n8n-nodes-langchain.vectorStoreInMemoryInsert',
+		removedNodeType: '@MNI/MNI-nodes-langchain.vectorStoreInMemoryInsert',
 	},
 	{
 		rule: InMemoryVectorStoreLoadRemovedRule,
-		removedNodeType: '@n8n/n8n-nodes-langchain.vectorStoreInMemoryLoad',
+		removedNodeType: '@MNI/MNI-nodes-langchain.vectorStoreInMemoryLoad',
 	},
-	{ rule: IntervalRemovedRule, removedNodeType: 'n8n-nodes-base.interval' },
+	{ rule: IntervalRemovedRule, removedNodeType: 'MNI-nodes-base.interval' },
 	{
 		rule: JsonInputLoaderRemovedRule,
-		removedNodeType: '@n8n/n8n-nodes-langchain.documentJsonInputLoader',
+		removedNodeType: '@MNI/MNI-nodes-langchain.documentJsonInputLoader',
 	},
 	{
 		rule: ManualChatTriggerRemovedRule,
-		removedNodeType: '@n8n/n8n-nodes-langchain.manualChatTrigger',
+		removedNodeType: '@MNI/MNI-nodes-langchain.manualChatTrigger',
 	},
-	{ rule: OpenAiAssistantRemovedRule, removedNodeType: '@n8n/n8n-nodes-langchain.openAiAssistant' },
-	{ rule: OpenAiRemovedRule, removedNodeType: 'n8n-nodes-base.openAi' },
-	{ rule: OpenAiModelRemovedRule, removedNodeType: '@n8n/n8n-nodes-langchain.lmOpenAi' },
+	{ rule: OpenAiAssistantRemovedRule, removedNodeType: '@MNI/MNI-nodes-langchain.openAiAssistant' },
+	{ rule: OpenAiRemovedRule, removedNodeType: 'MNI-nodes-base.openAi' },
+	{ rule: OpenAiModelRemovedRule, removedNodeType: '@MNI/MNI-nodes-langchain.lmOpenAi' },
 	{
 		rule: PineconeInsertRemovedRule,
-		removedNodeType: '@n8n/n8n-nodes-langchain.vectorStorePineconeInsert',
+		removedNodeType: '@MNI/MNI-nodes-langchain.vectorStorePineconeInsert',
 	},
 	{
 		rule: PineconeLoadRemovedRule,
-		removedNodeType: '@n8n/n8n-nodes-langchain.vectorStorePineconeLoad',
+		removedNodeType: '@MNI/MNI-nodes-langchain.vectorStorePineconeLoad',
 	},
-	{ rule: ReadBinaryFileRemovedRule, removedNodeType: 'n8n-nodes-base.readBinaryFile' },
-	{ rule: ReadBinaryFilesRemovedRule, removedNodeType: 'n8n-nodes-base.readBinaryFiles' },
-	{ rule: ReadPdfRemovedRule, removedNodeType: 'n8n-nodes-base.readPDF' },
-	{ rule: SerpApiGoogleSearchRemovedRule, removedNodeType: '@n8n/n8n-nodes-langchain.toolSerpApi' },
+	{ rule: ReadBinaryFileRemovedRule, removedNodeType: 'MNI-nodes-base.readBinaryFile' },
+	{ rule: ReadBinaryFilesRemovedRule, removedNodeType: 'MNI-nodes-base.readBinaryFiles' },
+	{ rule: ReadPdfRemovedRule, removedNodeType: 'MNI-nodes-base.readPDF' },
+	{ rule: SerpApiGoogleSearchRemovedRule, removedNodeType: '@MNI/MNI-nodes-langchain.toolSerpApi' },
 	{
 		rule: SupabaseInsertRemovedRule,
-		removedNodeType: '@n8n/n8n-nodes-langchain.vectorStoreSupabaseInsert',
+		removedNodeType: '@MNI/MNI-nodes-langchain.vectorStoreSupabaseInsert',
 	},
 	{
 		rule: SupabaseLoadRemovedRule,
-		removedNodeType: '@n8n/n8n-nodes-langchain.vectorStoreSupabaseLoad',
+		removedNodeType: '@MNI/MNI-nodes-langchain.vectorStoreSupabaseLoad',
 	},
-	{ rule: WorkflowTriggerRemovedRule, removedNodeType: 'n8n-nodes-base.workflowTrigger' },
-	{ rule: WriteBinaryFileRemovedRule, removedNodeType: 'n8n-nodes-base.writeBinaryFile' },
+	{ rule: WorkflowTriggerRemovedRule, removedNodeType: 'MNI-nodes-base.workflowTrigger' },
+	{ rule: WriteBinaryFileRemovedRule, removedNodeType: 'MNI-nodes-base.writeBinaryFile' },
 ];

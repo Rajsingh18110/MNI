@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { N8nIcon, N8nText } from '@n8n/design-system';
+import { N8nIcon, N8nText } from '@MNI/design-system';
 import { formatDeltaPercent, getDeltaTone, type DeltaTone } from '../../evaluation.utils';
 
 // `delta` is an already-normalized [-1, 1] score difference, so it renders

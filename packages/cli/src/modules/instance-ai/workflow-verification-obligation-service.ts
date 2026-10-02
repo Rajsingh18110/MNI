@@ -12,7 +12,7 @@ import {
 	type WorkflowLoopWorkItemRecord,
 	type WorkflowVerificationObligation,
 	type WorkflowVerificationObligationSource,
-} from '@n8n/instance-ai';
+} from '@MNI/instance-ai';
 
 import type { TypeORMAgentMemory } from './storage/typeorm-agent-memory';
 

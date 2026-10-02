@@ -14,8 +14,8 @@ import {
 	createTestWorkflow,
 	createTestWorkflowExecutionResponse,
 } from '@/__tests__/mocks';
-import { createRunExecutionData, type INode, type IRunExecutionData } from 'n8n-workflow';
-import { useToast } from '@n8n/composables/useToast';
+import { createRunExecutionData, type INode, type IRunExecutionData } from 'MNI-workflow';
+import { useToast } from '@MNI/composables/useToast';
 import { useWorkflowExecutionStateStore } from '@/app/stores/workflowExecutionState.store';
 import {
 	createWorkflowDocumentId,
@@ -23,7 +23,7 @@ import {
 } from '@/app/stores/workflowDocument.store';
 import { computed } from 'vue';
 
-vi.mock('@n8n/composables/useToast');
+vi.mock('@MNI/composables/useToast');
 
 describe(useLogsExecutionData, () => {
 	let workflowsStore: ReturnType<typeof mockedStore<typeof useWorkflowsStore>>;

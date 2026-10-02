@@ -9,13 +9,13 @@ import {
 	type SandboxProvider,
 	type WorkspaceFilesystem,
 	type WorkspaceSandbox,
-} from '@n8n/agents/sandbox';
-import { Logger } from '@n8n/backend-common';
-import { AgentsConfig } from '@n8n/config';
-import { Service } from '@n8n/di';
-import { redactText } from '@n8n/utils/redaction/redact-text';
-import { InstanceSettings } from 'n8n-core';
-import { OperationalError } from 'n8n-workflow';
+} from '@MNI/agents/sandbox';
+import { Logger } from '@MNI/backend-common';
+import { AgentsConfig } from '@MNI/config';
+import { Service } from '@MNI/di';
+import { redactText } from '@MNI/utils/redaction/redact-text';
+import { InstanceSettings } from 'MNI-core';
+import { OperationalError } from 'MNI-workflow';
 import { nanoid } from 'nanoid';
 import { v5 as uuidv5 } from 'uuid';
 
@@ -34,11 +34,11 @@ const WORKSPACE_SANDBOX_NAME_PREFIX = 'agent-ws-';
 const KNOWLEDGE_SANDBOX_NAME_PREFIX = 'agent-kb-';
 const MAX_SANDBOX_ERROR_DETAIL_CHARS = 2_000;
 
-const LABEL_KNOWLEDGE_BASE = 'n8n-agents-knowledgebase';
-const LABEL_PROJECT_ID = 'n8n-project-id';
-const LABEL_AGENT_ID = 'n8n-agent-id';
-const LABEL_SANDBOX_KIND = 'n8n-agent-sandbox-kind';
-const LABEL_PRINCIPAL_HASH = 'n8n-agent-principal-hash';
+const LABEL_KNOWLEDGE_BASE = 'MNI-agents-knowledgebase';
+const LABEL_PROJECT_ID = 'MNI-project-id';
+const LABEL_AGENT_ID = 'MNI-agent-id';
+const LABEL_SANDBOX_KIND = 'MNI-agent-sandbox-kind';
+const LABEL_PRINCIPAL_HASH = 'MNI-agent-principal-hash';
 
 const DEFAULT_SANDBOX_IMAGE = 'daytonaio/sandbox:0.5.0';
 const WORKSPACE_AUTO_STOP_INTERVAL_MINUTES = 5;
@@ -304,7 +304,7 @@ export class AgentSandboxRuntimeService {
 	): Promise<void> {
 		const sandboxes = [
 			['daytona', daytonaName],
-			['n8n-sandbox', n8nSandboxId],
+			['MNI-sandbox', n8nSandboxId],
 		] as const;
 
 		for (const [provider, sandboxId] of sandboxes) {
@@ -431,7 +431,7 @@ export class AgentSandboxRuntimeService {
 		const client = await this.aiService.getClient();
 		if (!snapshot) {
 			throw new OperationalError(
-				'Agent knowledge sandbox requires a snapshot when Daytona is reached through the AI service proxy. Set N8N_AGENTS_AI_SANDBOX_SNAPSHOT to a snapshot available to the instance.',
+				'Agent knowledge sandbox requires a snapshot when Daytona is reached through the AI service proxy. Set MNI_AGENTS_AI_SANDBOX_SNAPSHOT to a snapshot available to the instance.',
 			);
 		}
 
@@ -459,13 +459,13 @@ export class AgentSandboxRuntimeService {
 		const normalizedServiceUrl = serviceUrl?.trim();
 		if (!normalizedServiceUrl) {
 			throw new OperationalError(
-				'Agent knowledge sandbox requires the MNI sandbox service URL. Set N8N_SANDBOX_SERVICE_URL.',
+				'Agent knowledge sandbox requires the MNI sandbox service URL. Set MNI_SANDBOX_SERVICE_URL.',
 			);
 		}
 
 		return {
 			enabled: true,
-			provider: 'n8n-sandbox',
+			provider: 'MNI-sandbox',
 			id: sandboxId,
 			serviceUrl: normalizedServiceUrl,
 			apiKey,

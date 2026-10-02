@@ -1,6 +1,6 @@
 import type { Tool } from '@langchain/core/tools';
 import { DynamicStructuredTool } from '@langchain/core/tools';
-import * as n8nUtilsSleep from '@n8n/utils/sleep';
+import * as n8nUtilsSleep from '@MNI/utils/sleep';
 import type {
 	INode,
 	ITaskDataConnections,
@@ -17,8 +17,8 @@ import type {
 	EngineRequest,
 	WorkflowExecuteMode,
 	CloseFunction,
-} from 'n8n-workflow';
-import { NodeConnectionTypes, NodeOperationError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeConnectionTypes, NodeOperationError } from 'MNI-workflow';
 import type { Mock } from 'vitest';
 import { mock } from 'vitest-mock-extended';
 import { z } from 'zod';
@@ -1225,7 +1225,7 @@ describe('HITL Tool handling', () => {
 		it('should not treat regular tools as HITL tools', async () => {
 			const regularToolNode = mock<INode>({
 				name: 'Regular Tool',
-				type: 'n8n-nodes-base.httpRequest',
+				type: 'MNI-nodes-base.httpRequest',
 				disabled: false,
 			});
 
@@ -1261,14 +1261,14 @@ describe('HITL Tool handling', () => {
 
 		it('should identify HITL tools by type suffix ending in HitlTool', () => {
 			const hitlTypes = [
-				'@n8n/n8n-nodes-langchain.toolWorkflowHitlTool',
+				'@MNI/MNI-nodes-langchain.toolWorkflowHitlTool',
 				'test.HitlTool',
 				'myPackage.customHitlTool',
 			];
 
 			const nonHitlTypes = [
-				'n8n-nodes-base.httpRequest',
-				'@n8n/n8n-nodes-langchain.toolWorkflow',
+				'MNI-nodes-base.httpRequest',
+				'@MNI/MNI-nodes-langchain.toolWorkflow',
 				'test.regularTool',
 			];
 
@@ -1631,7 +1631,7 @@ describe('extendResponseMetadata', () => {
 		extendResponseMetadata(toolkit, { name: 'HITL Node' } as INode);
 		expect(toolkit.tools[0].metadata?.sourceNodeName).toBe('HITL Node');
 	});
-	it('should extend metadata for toolkits whose class identity differs (duplicated n8n-core)', () => {
+	it('should extend metadata for toolkits whose class identity differs (duplicated MNI-core)', () => {
 		const tool = new DynamicStructuredTool({
 			name: 'test_tool',
 			description: 'Test tool',

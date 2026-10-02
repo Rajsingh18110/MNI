@@ -1,4 +1,4 @@
-import { BreakingChangeRule } from '@n8n/decorators';
+import { BreakingChangeRule } from '@MNI/decorators';
 import { constants } from 'node:fs';
 import { access } from 'node:fs/promises';
 import { join } from 'node:path';

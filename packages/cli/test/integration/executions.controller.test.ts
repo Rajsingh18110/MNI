@@ -5,14 +5,14 @@ import {
 	shareWorkflowWithUsers,
 	testDb,
 	mockInstance,
-} from '@n8n/backend-test-utils';
-import type { User } from '@n8n/db';
-import { WorkflowRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
-import type { ExecutionSnapshot, StepDetail } from '@n8n/engine';
+} from '@MNI/backend-test-utils';
+import type { User } from '@MNI/db';
+import { WorkflowRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
+import type { ExecutionSnapshot, StepDetail } from '@MNI/engine';
 import { parse } from 'flatted';
-import type { INode } from 'n8n-workflow';
-import { MANUAL_TRIGGER_NODE_TYPE } from 'n8n-workflow';
+import type { INode } from 'MNI-workflow';
+import { MANUAL_TRIGGER_NODE_TYPE } from 'MNI-workflow';
 
 import { ConcurrencyControlService } from '@/concurrency/concurrency-control.service';
 import { EngineDataPlaneProxyService } from '@/services/engine-data-plane-proxy.service';
@@ -272,7 +272,7 @@ describe('GET /executions/:id', () => {
 		const ranWorkflow = (workflowId: string) => ({
 			id: workflowId,
 			name: 'As it ran',
-			nodes: [{ name: 'Trigger', type: 'n8n-nodes-base.manualTrigger' }],
+			nodes: [{ name: 'Trigger', type: 'MNI-nodes-base.manualTrigger' }],
 			connections: {},
 			settings: {},
 			nodeGroups: [],

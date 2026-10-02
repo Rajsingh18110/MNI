@@ -6,7 +6,7 @@
 				"path": "ed3b98bb-78c4-4cad-98ce-386eef1a4f92",
 				"options": {}
 			},
-			"type": "n8n-nodes-base.webhook",
+			"type": "MNI-nodes-base.webhook",
 			"typeVersion": 2.1,
 			"position": [368, 240],
 			"id": "8e006fb7-c2d6-4799-9feb-14032cb11293",
@@ -20,7 +20,7 @@
 					"webhookSuffix": "some-suffix"
 				}
 			},
-			"type": "n8n-nodes-base.wait",
+			"type": "MNI-nodes-base.wait",
 			"typeVersion": 1.1,
 			"position": [608, 240],
 			"id": "b4da7ce5-4af6-413a-808f-b2aeee8ed684",

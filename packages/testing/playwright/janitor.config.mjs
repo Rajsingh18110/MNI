@@ -5,7 +5,7 @@
  */
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
-import { defineConfig } from '@n8n/playwright-janitor';
+import { defineConfig } from '@MNI/playwright-janitor';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -69,7 +69,7 @@ export default defineConfig({
 			],
 		},
 		'api-purity': { enabled: true, severity: 'warning' },
-		// Enforce facade pattern - access pages through n8n.* instead of new *Page()
+		// Enforce facade pattern - access pages through MNI.* instead of new *Page()
 		'no-direct-page-instantiation': { enabled: true, severity: 'error' },
 	},
 

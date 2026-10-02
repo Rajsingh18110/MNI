@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useToast } from '@n8n/composables/useToast';
+import { useToast } from '@MNI/composables/useToast';
 import {
 	N8nEmptyState,
 	N8nIcon,
@@ -10,9 +10,9 @@ import {
 	N8nSettingsRowConfigure,
 	N8nSettingsRowGroup,
 	N8nSettingsSection,
-} from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
-import { useRootStore } from '@n8n/stores/useRootStore';
+} from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
+import { useRootStore } from '@MNI/stores/useRootStore';
 import { nextTick, onMounted, ref, useTemplateRef } from 'vue';
 
 import { useDocumentTitle } from '@/app/composables/useDocumentTitle';

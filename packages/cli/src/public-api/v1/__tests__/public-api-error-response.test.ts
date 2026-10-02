@@ -1,6 +1,6 @@
 import type { Response } from 'express';
 import { BadRequest, Unauthorized } from 'express-openapi-validator/dist/framework/types';
-import { UnexpectedError, UserError, OperationalError } from 'n8n-workflow';
+import { UnexpectedError, UserError, OperationalError } from 'MNI-workflow';
 
 import { BadRequestError } from '@/errors/response-errors/bad-request.error';
 import { ConflictError } from '@/errors/response-errors/conflict.error';
@@ -100,7 +100,7 @@ describe('sendPublicApiErrorResponse', () => {
 		const res = createMockRes();
 		const err = new Unauthorized({
 			path: '/api/v1/insights/summary',
-			message: "'X-N8N-API-KEY' header required",
+			message: "'X-MNI-API-KEY' header required",
 		});
 		sendPublicApiErrorResponse(res, err, { hasSessionCookie: true });
 		expect(res._payload.statusCode).toBe(401);

@@ -1,6 +1,6 @@
 import { OpenAPIRegistry } from '@asteasolutions/zod-to-openapi';
-import { Z } from '@n8n/api-types';
-import { UnexpectedError } from 'n8n-workflow';
+import { Z } from '@MNI/api-types';
+import { UnexpectedError } from 'MNI-workflow';
 import { z } from 'zod';
 
 import {

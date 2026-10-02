@@ -9,10 +9,10 @@ import {
 	TransferWorkflowBodyDto,
 	UpdateWorkflowDto,
 	type WorkflowPublicationStatus,
-} from '@n8n/api-types';
-import { Logger } from '@n8n/backend-common';
-import { OutboundHttp, SsrfBlockedIpError } from '@n8n/backend-network';
-import { GlobalConfig } from '@n8n/config';
+} from '@MNI/api-types';
+import { Logger } from '@MNI/backend-common';
+import { OutboundHttp, SsrfBlockedIpError } from '@MNI/backend-network';
+import { GlobalConfig } from '@MNI/config';
 import {
 	AuthenticatedRequest,
 	ProjectRelationRepository,
@@ -20,7 +20,7 @@ import {
 	SharedWorkflow,
 	WorkflowEntity,
 	WorkflowRepository,
-} from '@n8n/db';
+} from '@MNI/db';
 import {
 	Body,
 	Delete,
@@ -33,12 +33,12 @@ import {
 	Put,
 	Query,
 	RestController,
-} from '@n8n/decorators';
-import { hasGlobalScope, PROJECT_OWNER_ROLE_SLUG } from '@n8n/permissions';
-import { In, type FindOptionsRelations } from '@n8n/typeorm';
-import { ensureError } from '@n8n/utils/errors/ensure-error';
+} from '@MNI/decorators';
+import { hasGlobalScope, PROJECT_OWNER_ROLE_SLUG } from '@MNI/permissions';
+import { In, type FindOptionsRelations } from '@MNI/typeorm';
+import { ensureError } from '@MNI/utils/errors/ensure-error';
 import express from 'express';
-import { calculateWorkflowChecksum } from 'n8n-workflow';
+import { calculateWorkflowChecksum } from 'MNI-workflow';
 
 import { AuthService } from '@/auth/auth.service';
 import { BadRequestError } from '@/errors/response-errors/bad-request.error';
@@ -188,7 +188,7 @@ export class WorkflowsController {
 
 		const workflowData = await this.fetchWorkflowFromUrl(query.url);
 
-		// Do a very basic check if it is really a n8n-workflow-json
+		// Do a very basic check if it is really a MNI-workflow-json
 		if (
 			workflowData?.nodes === undefined ||
 			!Array.isArray(workflowData.nodes) ||

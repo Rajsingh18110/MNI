@@ -1,6 +1,6 @@
 import { mock, mockDeep } from 'vitest-mock-extended';
-import type { IExecuteFunctions, ILoadOptionsFunctions, INode } from 'n8n-workflow';
-import { NodeApiError } from 'n8n-workflow';
+import type { IExecuteFunctions, ILoadOptionsFunctions, INode } from 'MNI-workflow';
+import { NodeApiError } from 'MNI-workflow';
 
 import { getGoogleAccessToken } from '../../../GenericFunctions';
 import {
@@ -31,7 +31,7 @@ describe('GoogleFirebaseCloudFirestore > GenericFunctions', () => {
 		mockNode = mock<INode>({
 			id: 'test-node',
 			name: 'Test CloudFirestore Node',
-			type: 'n8n-nodes-base.googleFirebaseCloudFirestore',
+			type: 'MNI-nodes-base.googleFirebaseCloudFirestore',
 			typeVersion: 1,
 			position: [0, 0],
 			parameters: {},

@@ -1,5 +1,5 @@
 import { DateTime } from 'luxon';
-import type { IDataObject, IExecuteFunctions, INodeProperties } from 'n8n-workflow';
+import type { IDataObject, IExecuteFunctions, INodeProperties } from 'MNI-workflow';
 
 import { updateDisplayOptions } from '@utils/utilities';
 
@@ -22,7 +22,7 @@ export const properties: INodeProperties[] = [
 				description: 'Setting attendees on update replaces the entire attendee list',
 			},
 			{
-				// eslint-disable-next-line n8n-nodes-base/node-param-display-name-wrong-for-dynamic-multi-options
+				// eslint-disable-next-line MNI-nodes-base/node-param-display-name-wrong-for-dynamic-multi-options
 				displayName: 'Categories',
 				name: 'categories',
 				type: 'multiOptions',

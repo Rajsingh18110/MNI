@@ -1,5 +1,5 @@
 import type { BrowserContext, Page } from '@playwright/test';
-import type { IWorkflowBase } from 'n8n-workflow';
+import type { IWorkflowBase } from 'MNI-workflow';
 
 import { test, expect } from '../../../fixtures/base';
 import type { n8nPage } from '../../../pages/n8nPage';
@@ -82,7 +82,7 @@ function formWorkflow(options: { withNextPage: boolean }): {
 				authentication: 'n8nUserAuth',
 				options: {},
 			},
-			type: 'n8n-nodes-base.formTrigger',
+			type: 'MNI-nodes-base.formTrigger',
 			typeVersion: 2.6,
 			position: [0, 0],
 			id: crypto.randomUUID(),
@@ -97,7 +97,7 @@ function formWorkflow(options: { withNextPage: boolean }): {
 
 	nodes.push({
 		parameters: { options: { formDescription: 'Step 2' } },
-		type: 'n8n-nodes-base.form',
+		type: 'MNI-nodes-base.form',
 		typeVersion: 2.5,
 		position: [208, 0],
 		id: crypto.randomUUID(),

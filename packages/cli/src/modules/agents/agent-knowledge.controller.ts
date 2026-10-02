@@ -1,6 +1,6 @@
-import type { AuthenticatedRequest } from '@n8n/db';
-import { Container } from '@n8n/di';
-import { Delete, Get, Param, Post, ProjectScope, RestController } from '@n8n/decorators';
+import type { AuthenticatedRequest } from '@MNI/db';
+import { Container } from '@MNI/di';
+import { Delete, Get, Param, Post, ProjectScope, RestController } from '@MNI/decorators';
 import type { Response } from 'express';
 import multer from 'multer';
 

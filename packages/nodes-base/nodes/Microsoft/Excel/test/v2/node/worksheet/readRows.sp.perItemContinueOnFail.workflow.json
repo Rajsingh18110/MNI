@@ -5,7 +5,7 @@
 			"parameters": {},
 			"id": "7a000000-0000-4000-8000-000000000001",
 			"name": "When clicking \"Execute Workflow\"",
-			"type": "n8n-nodes-base.manualTrigger",
+			"type": "MNI-nodes-base.manualTrigger",
 			"typeVersion": 1,
 			"position": [0, 0]
 		},
@@ -15,7 +15,7 @@
 			},
 			"id": "7a000000-0000-4000-8000-000000000002",
 			"name": "Test Data",
-			"type": "n8n-nodes-testing.testData",
+			"type": "MNI-nodes-testing.testData",
 			"typeVersion": 1,
 			"position": [200, 0]
 		},
@@ -43,7 +43,7 @@
 			},
 			"id": "7a000000-0000-4000-8000-000000000003",
 			"name": "Microsoft Excel 365",
-			"type": "n8n-nodes-base.microsoftExcel",
+			"type": "MNI-nodes-base.microsoftExcel",
 			"typeVersion": 2,
 			"position": [400, 0],
 			"onError": "continueRegularOutput",

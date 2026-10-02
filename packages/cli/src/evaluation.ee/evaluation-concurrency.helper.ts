@@ -1,4 +1,4 @@
-import type { ExecutionsConfig } from '@n8n/config';
+import type { ExecutionsConfig } from '@MNI/config';
 
 import type { License } from '@/license';
 
@@ -6,7 +6,7 @@ import type { License } from '@/license';
  * Tier defaults applied when neither the env override nor the license quota
  * are set. The license server (via `quota:evaluations:concurrencyLimit`)
  * can override these per-customer without a code release; self-hosted
- * operators retain final control via `N8N_CONCURRENCY_EVALUATION_LIMIT`.
+ * operators retain final control via `MNI_CONCURRENCY_EVALUATION_LIMIT`.
  */
 export const EVALUATION_TIER_DEFAULTS = {
 	Community: 1,
@@ -15,7 +15,7 @@ export const EVALUATION_TIER_DEFAULTS = {
 	Enterprise: 5,
 } as const;
 
-const EVALUATION_CONCURRENCY_ENV_VAR = 'N8N_CONCURRENCY_EVALUATION_LIMIT';
+const EVALUATION_CONCURRENCY_ENV_VAR = 'MNI_CONCURRENCY_EVALUATION_LIMIT';
 const EVALUATION_CONCURRENCY_QUOTA = 'quota:evaluations:concurrencyLimit';
 
 /**
@@ -48,7 +48,7 @@ function readLicenseQuota(license: License): number | undefined {
  * Resolve the effective evaluation concurrency limit for this instance.
  *
  * Order of precedence:
- * 1. `N8N_CONCURRENCY_EVALUATION_LIMIT` env var (operator escape hatch)
+ * 1. `MNI_CONCURRENCY_EVALUATION_LIMIT` env var (operator escape hatch)
  * 2. `quota:evaluations:concurrencyLimit` license entitlement (per-customer
  *    override issued by the license-management service)
  * 3. License-tier default (Community/Pro = 1, Business = 3, Enterprise = 5)

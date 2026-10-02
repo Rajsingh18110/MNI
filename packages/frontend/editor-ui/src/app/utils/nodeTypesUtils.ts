@@ -4,7 +4,7 @@ import type {
 	INodeUpdatePropertiesInformation,
 	NodeAuthenticationOption,
 } from '@/Interface';
-import type { ITemplatesNode } from '@n8n/rest-api-client/api/templates';
+import type { ITemplatesNode } from '@MNI/rest-api-client/api/templates';
 import {
 	CORE_NODES_CATEGORY,
 	MAIN_AUTH_FIELD_NAME,
@@ -14,7 +14,7 @@ import {
 	TEMPLATES_NODES_FILTER,
 } from '@/app/constants';
 import type { WorkflowObjectAccessors } from '@/app/types/workflow';
-import { i18n as locale } from '@n8n/i18n';
+import { i18n as locale } from '@MNI/i18n';
 import { useCredentialsStore } from '@/features/credentials/credentials.store';
 import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';
 import { isJsonKeyObject } from '@/app/utils/typesUtils';
@@ -31,7 +31,7 @@ import {
 	type NodeParameterValueType,
 	type ResourceMapperField,
 	type Themed,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 /*
 	Constants and utility functions mainly used to get information about
 	or manipulate node types and nodes.
@@ -611,7 +611,7 @@ function getAuthModeIndependentCredentials(nodeType: INodeTypeDescription | null
 /**
  * Returns the credential type names in `node.credentials` that are safe to remove
  * because the node's current configuration doesn't use them (see
- * `getActiveCredentialTypes` in n8n-workflow).
+ * `getActiveCredentialTypes` in MNI-workflow).
  *
  * Returns an empty array when the active set cannot be determined statically
  * (e.g. unknown node type or an expression in a credential-type parameter), since

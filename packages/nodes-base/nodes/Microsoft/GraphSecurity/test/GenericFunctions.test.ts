@@ -1,6 +1,6 @@
 import { mockDeep } from 'vitest-mock-extended';
-import type { IExecuteFunctions, INode } from 'n8n-workflow';
-import { NodeApiError, NodeOperationError } from 'n8n-workflow';
+import type { IExecuteFunctions, INode } from 'MNI-workflow';
+import { NodeApiError, NodeOperationError } from 'MNI-workflow';
 
 import {
 	msGraphSecurityApiRequest,
@@ -22,7 +22,7 @@ describe('Microsoft GraphSecurity GenericFunctions', () => {
 		mockNode = {
 			id: 'test-node',
 			name: 'Test GraphSecurity Node',
-			type: 'n8n-nodes-base.microsoftGraphSecurity',
+			type: 'MNI-nodes-base.microsoftGraphSecurity',
 			typeVersion: 1,
 			position: [0, 0],
 			parameters: {},

@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import Modal from '@/app/components/Modal.vue';
-import { useToast } from '@n8n/composables/useToast';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useToast } from '@MNI/composables/useToast';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { EXPOSE_ALL_WORKFLOWS_TO_MCP_MODAL_KEY } from '@/experiments/exposeAllWorkflowsToMcp/constants';
 import { useExposeAllWorkflowsToMcpStore } from '@/experiments/exposeAllWorkflowsToMcp/stores/exposeAllWorkflowsToMcp.store';
 import { useMCPStore } from '@/features/ai/mcpAccess/mcp.store';
 import { useMcp } from '@/features/ai/mcpAccess/composables/useMcp';
-import { N8nButton, N8nText } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
-import { createEventBus } from '@n8n/utils/event-bus';
+import { N8nButton, N8nText } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
+import { createEventBus } from '@MNI/utils/event-bus';
 import { computed, onBeforeUnmount, onMounted, ref } from 'vue';
 
 const props = defineProps<{

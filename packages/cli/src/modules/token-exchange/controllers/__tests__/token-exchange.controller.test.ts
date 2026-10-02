@@ -1,8 +1,8 @@
-import { mockInstance } from '@n8n/backend-test-utils';
-import { Container } from '@n8n/di';
+import { mockInstance } from '@MNI/backend-test-utils';
+import { Container } from '@MNI/di';
 import type { Response } from 'express';
-import { ErrorReporter } from 'n8n-core';
-import { UnexpectedError } from 'n8n-workflow';
+import { ErrorReporter } from 'MNI-core';
+import { UnexpectedError } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import { AuthError } from '@/errors/response-errors/auth.error';

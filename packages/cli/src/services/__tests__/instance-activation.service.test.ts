@@ -1,4 +1,4 @@
-import type { Settings, SettingsRepository } from '@n8n/db';
+import type { Settings, SettingsRepository } from '@MNI/db';
 import { mock } from 'vitest-mock-extended';
 
 import {

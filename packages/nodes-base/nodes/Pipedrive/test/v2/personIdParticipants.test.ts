@@ -1,4 +1,4 @@
-import type { IDataObject, IExecuteFunctions } from 'n8n-workflow';
+import type { IDataObject, IExecuteFunctions } from 'MNI-workflow';
 import type { Mock } from 'vitest';
 
 import { execute as activityCreateExecute } from '../../v2/actions/activity/create.operation';

@@ -14,22 +14,22 @@ import {
 	type SchemaNode,
 } from '@/app/composables/useDataSchema';
 import { useExternalHooks } from '@/app/composables/useExternalHooks';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import { useNodeHelpers } from '@/app/composables/useNodeHelpers';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
 import { useCalloutHelpers } from '@/app/composables/useCalloutHelpers';
 import { injectNDVStore } from '@/features/ndv/shared/ndv.store';
 import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';
 import { injectWorkflowDocumentStore } from '@/app/stores/workflowDocument.store';
 import { executionDataToJson } from '@/app/utils/nodeTypesUtils';
-import { createResultError } from '@n8n/utils/result';
+import { createResultError } from '@MNI/utils/result';
 import {
 	type IRunExecutionData,
 	type NodeConnectionType,
 	NodeConnectionTypes,
 	type IConnectedNode,
 	type IDataObject,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import { computed, ref, watch } from 'vue';
 import {
 	DynamicScroller,
@@ -41,7 +41,7 @@ import MappingPill from './MappingPill.vue';
 import { EnterpriseEditionFeature, PLACEHOLDER_FILLED_AT_EXECUTION_TIME } from '@/app/constants';
 import useEnvironmentsStore from '@/features/settings/environments.ee/environments.store';
 import { useSchemaPreviewStore } from '@/features/ndv/runData/schemaPreview.store';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { isEmpty } from '@/app/utils/typesUtils';
 import { asyncComputed } from '@vueuse/core';
 import 'vue-virtual-scroller/dist/vue-virtual-scroller.css';
@@ -51,7 +51,7 @@ import { I18nT } from 'vue-i18n';
 import { useTelemetryContext } from '@/app/composables/useTelemetryContext';
 import NDVEmptyState from '@/features/ndv/panel/components/NDVEmptyState.vue';
 
-import { N8nCallout, N8nIcon, N8nText, N8nTooltip } from '@n8n/design-system';
+import { N8nCallout, N8nIcon, N8nText, N8nTooltip } from '@MNI/design-system';
 type Props = {
 	nodes?: IConnectedNode[];
 	node?: INodeUi | null;
@@ -409,7 +409,7 @@ const items = computed(() => {
 		allItems = flattenNodeSchema.value;
 
 		if (
-			props.node?.type === 'n8n-nodes-base.merge' &&
+			props.node?.type === 'MNI-nodes-base.merge' &&
 			props.paneType === 'output' &&
 			props.data &&
 			props.data.length > 1
@@ -581,7 +581,7 @@ const onDragEnd = (el: HTMLElement) => {
 
 						<div
 							v-else-if="item.type === 'notice'"
-							v-n8n-html="item.message"
+							v-MNI-html="item.message"
 							class="notice"
 							:style="{ '--schema-level': item.level }"
 						/>
@@ -689,19 +689,19 @@ const onDragEnd = (el: HTMLElement) => {
 	color: var(--color--text);
 	font-size: var(--font-size--2xs);
 	line-height: var(--line-height--lg);
-	/* stylelint-disable-next-line @n8n/css-var-naming */
+	/* stylelint-disable-next-line @MNI/css-var-naming */
 	margin-left: calc(var(--spacing--lg) * var(--schema-level));
 }
 
 .empty-schema {
 	padding-bottom: var(--spacing--xs);
-	/* stylelint-disable-next-line @n8n/css-var-naming */
+	/* stylelint-disable-next-line @MNI/css-var-naming */
 	margin-left: calc((var(--spacing--xl) * var(--schema-level)));
 }
 
 .callout-wrapper {
 	padding-bottom: var(--spacing--xs);
-	/* stylelint-disable-next-line @n8n/css-var-naming */
+	/* stylelint-disable-next-line @MNI/css-var-naming */
 	margin-left: calc(var(--spacing--lg) * var(--schema-level));
 }
 

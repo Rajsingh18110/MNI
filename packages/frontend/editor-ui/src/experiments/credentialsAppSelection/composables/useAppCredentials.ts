@@ -2,14 +2,14 @@ import { computed, ref, watch } from 'vue';
 import { useCredentialsStore } from '@/features/credentials/credentials.store';
 import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';
 import { removePreviewToken } from '@/features/shared/nodeCreator/nodeCreator.utils';
-import type { CommunityNodeType } from '@n8n/api-types';
+import type { CommunityNodeType } from '@MNI/api-types';
 import type {
 	ICredentialType,
 	INodeTypeDescription,
 	INodeOutputConfiguration,
 	NodeConnectionType,
-} from 'n8n-workflow';
-import { NodeConnectionTypes } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeConnectionTypes } from 'MNI-workflow';
 
 export interface AppInfo {
 	name: string;
@@ -106,32 +106,32 @@ const BUNDLED_APP_POPULARITY: Record<string, number> = {
 
 // Core/utility nodes that shouldn't be shown in app selection
 const EXCLUDED_NODE_NAMES = [
-	'n8n-nodes-base.httpRequest',
-	'n8n-nodes-base.webhook',
-	'n8n-nodes-base.code',
-	'n8n-nodes-base.scheduleTrigger',
-	'n8n-nodes-base.emailSend',
-	'n8n-nodes-base.set',
-	'n8n-nodes-base.if',
-	'n8n-nodes-base.switch',
-	'n8n-nodes-base.merge',
-	'n8n-nodes-base.splitInBatches',
-	'n8n-nodes-base.noOp',
-	'n8n-nodes-base.start',
-	'n8n-nodes-base.stickyNote',
-	'n8n-nodes-base.executeWorkflow',
-	'n8n-nodes-base.executeWorkflowTrigger',
-	'n8n-nodes-base.respondToWebhook',
-	'n8n-nodes-base.manualTrigger',
-	'n8n-nodes-base.errorTrigger',
-	'n8n-nodes-base.function',
-	'n8n-nodes-base.functionItem',
+	'MNI-nodes-base.httpRequest',
+	'MNI-nodes-base.webhook',
+	'MNI-nodes-base.code',
+	'MNI-nodes-base.scheduleTrigger',
+	'MNI-nodes-base.emailSend',
+	'MNI-nodes-base.set',
+	'MNI-nodes-base.if',
+	'MNI-nodes-base.switch',
+	'MNI-nodes-base.merge',
+	'MNI-nodes-base.splitInBatches',
+	'MNI-nodes-base.noOp',
+	'MNI-nodes-base.start',
+	'MNI-nodes-base.stickyNote',
+	'MNI-nodes-base.executeWorkflow',
+	'MNI-nodes-base.executeWorkflowTrigger',
+	'MNI-nodes-base.respondToWebhook',
+	'MNI-nodes-base.manualTrigger',
+	'MNI-nodes-base.errorTrigger',
+	'MNI-nodes-base.function',
+	'MNI-nodes-base.functionItem',
 ];
 
 // Exclude all LangChain nodes (AI tools)
 const isLangChainNode = (nodeName: string): boolean => {
 	// cspell:disable-next-line
-	return nodeName.startsWith('@n8n/n8n-nodes-langchain.');
+	return nodeName.startsWith('@MNI/MNI-nodes-langchain.');
 };
 
 const isExcludedNode = (nodeName: string): boolean => {

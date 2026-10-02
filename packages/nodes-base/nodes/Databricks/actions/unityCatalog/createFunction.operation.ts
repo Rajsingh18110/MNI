@@ -1,4 +1,4 @@
-import { jsonParse, type IExecuteFunctions, type INodeExecutionData } from 'n8n-workflow';
+import { jsonParse, type IExecuteFunctions, type INodeExecutionData } from 'MNI-workflow';
 
 import {
 	databricksApiRequest,

@@ -39,7 +39,7 @@ describe('RemovedNodesRule', () => {
 	describe('detectWorkflow()', () => {
 		it('should return no issues when no removed nodes are found', async () => {
 			const { workflow, nodesGroupedByType } = createWorkflow('wf-1', 'Test Workflow', [
-				createNode('NotDeleted', 'n8n-nodes-base.not-deleted'),
+				createNode('NotDeleted', 'MNI-nodes-base.not-deleted'),
 			]);
 			const result = await rule.detectWorkflow(workflow, nodesGroupedByType);
 
@@ -52,15 +52,15 @@ describe('RemovedNodesRule', () => {
 		it.each([
 			{
 				nodeName: 'Spontit',
-				nodeType: 'n8n-nodes-base.spontit',
+				nodeType: 'MNI-nodes-base.spontit',
 			},
 			{
 				nodeName: 'CrowdDev',
-				nodeType: 'n8n-nodes-base.crowdDev',
+				nodeType: 'MNI-nodes-base.crowdDev',
 			},
 			{
 				nodeName: 'Kitemaker',
-				nodeType: 'n8n-nodes-base.kitemaker',
+				nodeType: 'MNI-nodes-base.kitemaker',
 			},
 		])('should detect removed node: %s', async ({ nodeName, nodeType }) => {
 			const { workflow, nodesGroupedByType } = createWorkflow('wf-1', 'Test Workflow', [
@@ -82,9 +82,9 @@ describe('RemovedNodesRule', () => {
 
 		it('should detect multiple removed nodes in the same workflow', async () => {
 			const { workflow, nodesGroupedByType } = createWorkflow('wf-1', 'Test Workflow', [
-				createNode('Spontit', 'n8n-nodes-base.spontit'),
-				createNode('CrowdDev', 'n8n-nodes-base.crowdDev'),
-				createNode('HTTP', 'n8n-nodes-base.httpRequest'), // Not removed
+				createNode('Spontit', 'MNI-nodes-base.spontit'),
+				createNode('CrowdDev', 'MNI-nodes-base.crowdDev'),
+				createNode('HTTP', 'MNI-nodes-base.httpRequest'), // Not removed
 			]);
 
 			const result = await rule.detectWorkflow(workflow, nodesGroupedByType);
@@ -93,10 +93,10 @@ describe('RemovedNodesRule', () => {
 			expect(result.issues).toEqual(
 				expect.arrayContaining([
 					expect.objectContaining({
-						title: "Node 'n8n-nodes-base.spontit' with name 'Spontit' has been removed",
+						title: "Node 'MNI-nodes-base.spontit' with name 'Spontit' has been removed",
 					}),
 					expect.objectContaining({
-						title: "Node 'n8n-nodes-base.crowdDev' with name 'CrowdDev' has been removed",
+						title: "Node 'MNI-nodes-base.crowdDev' with name 'CrowdDev' has been removed",
 					}),
 				]),
 			);

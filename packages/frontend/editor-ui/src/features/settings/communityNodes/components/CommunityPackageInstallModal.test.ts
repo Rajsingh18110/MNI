@@ -2,7 +2,7 @@ import { createComponentRenderer } from '@/__tests__/render';
 import { retry } from '@/__tests__/utils';
 import { useInstallNode } from '../composables/useInstallNode';
 import { COMMUNITY_PACKAGE_INSTALL_MODAL_KEY } from '../communityNodes.constants';
-import { STORES } from '@n8n/stores';
+import { STORES } from '@MNI/stores';
 import { createTestingPinia } from '@pinia/testing';
 import userEvent from '@testing-library/user-event';
 import { vi, type MockedFunction } from 'vitest';
@@ -10,7 +10,7 @@ import { ref } from 'vue';
 import CommunityPackageInstallModal from './CommunityPackageInstallModal.vue';
 
 vi.mock('../composables/useInstallNode');
-vi.mock('@n8n/composables/useTelemetry', () => ({
+vi.mock('@MNI/composables/useTelemetry', () => ({
 	useTelemetry: () => ({
 		track: vi.fn(),
 		pageEventQueue: [],
@@ -83,12 +83,12 @@ describe('CommunityPackageInstallModal', () => {
 
 	describe('Package Name Input', () => {
 		it('should initialize with provided package name', async () => {
-			const { getByTestId } = renderComponent({ packageName: 'n8n-nodes-custom' });
+			const { getByTestId } = renderComponent({ packageName: 'MNI-nodes-custom' });
 
 			await retry(() => expect(getByTestId('communityPackageInstall-modal')).toBeInTheDocument());
 
 			const packageNameInput = getByTestId('package-name-input');
-			expect(packageNameInput).toHaveValue('n8n-nodes-custom');
+			expect(packageNameInput).toHaveValue('MNI-nodes-custom');
 		});
 
 		it('should clean npm commands on blur', async () => {
@@ -98,10 +98,10 @@ describe('CommunityPackageInstallModal', () => {
 
 			const packageNameInput = getByTestId('package-name-input');
 
-			await userEvent.type(packageNameInput, 'npm install n8n-nodes-test');
+			await userEvent.type(packageNameInput, 'npm install MNI-nodes-test');
 			await userEvent.tab(); // Trigger blur
 
-			expect(packageNameInput).toHaveValue('n8n-nodes-test');
+			expect(packageNameInput).toHaveValue('MNI-nodes-test');
 		});
 
 		it('should clean npm i commands on blur', async () => {
@@ -111,10 +111,10 @@ describe('CommunityPackageInstallModal', () => {
 
 			const packageNameInput = getByTestId('package-name-input');
 
-			await userEvent.type(packageNameInput, 'npm i n8n-nodes-test');
+			await userEvent.type(packageNameInput, 'npm i MNI-nodes-test');
 			await userEvent.tab(); // Trigger blur
 
-			expect(packageNameInput).toHaveValue('n8n-nodes-test');
+			expect(packageNameInput).toHaveValue('MNI-nodes-test');
 		});
 
 		it('should be disabled when loading', async () => {
@@ -148,7 +148,7 @@ describe('CommunityPackageInstallModal', () => {
 			const packageNameInput = getByTestId('package-name-input');
 			const installButton = getByTestId('install-community-package-button');
 
-			await userEvent.type(packageNameInput, 'n8n-nodes-test');
+			await userEvent.type(packageNameInput, 'MNI-nodes-test');
 
 			expect(installButton).toBeDisabled();
 
@@ -180,7 +180,7 @@ describe('CommunityPackageInstallModal', () => {
 			const packageNameInput = getByTestId('package-name-input');
 			const installButton = getByTestId('install-community-package-button');
 
-			await userEvent.type(packageNameInput, 'n8n-nodes-test');
+			await userEvent.type(packageNameInput, 'MNI-nodes-test');
 
 			expect(installButton).toBeDisabled();
 		});
@@ -193,7 +193,7 @@ describe('CommunityPackageInstallModal', () => {
 			const packageNameInput = getByTestId('package-name-input');
 			const installButton = getByTestId('install-community-package-button');
 
-			await userEvent.type(packageNameInput, 'n8n-nodes-test');
+			await userEvent.type(packageNameInput, 'MNI-nodes-test');
 			await userEvent.click(getByTestId('user-agreement-checkbox'));
 
 			expect(installButton).toBeEnabled();
@@ -217,21 +217,21 @@ describe('CommunityPackageInstallModal', () => {
 		it('should call installNode with correct parameters on successful install', async () => {
 			mockInstallNode.mockResolvedValue({ success: true });
 
-			const { getByTestId } = renderComponent({ nodeType: 'n8n-nodes-test.TestNode' });
+			const { getByTestId } = renderComponent({ nodeType: 'MNI-nodes-test.TestNode' });
 
 			await retry(() => expect(getByTestId('communityPackageInstall-modal')).toBeInTheDocument());
 
 			const packageNameInput = getByTestId('package-name-input');
 			const installButton = getByTestId('install-community-package-button');
 
-			await userEvent.type(packageNameInput, 'n8n-nodes-test');
+			await userEvent.type(packageNameInput, 'MNI-nodes-test');
 			await userEvent.click(getByTestId('user-agreement-checkbox'));
 			await userEvent.click(installButton);
 
 			expect(mockInstallNode).toHaveBeenCalledWith({
 				type: 'unverified',
-				packageName: 'n8n-nodes-test',
-				nodeType: 'n8n-nodes-test.TestNode',
+				packageName: 'MNI-nodes-test',
+				nodeType: 'MNI-nodes-test.TestNode',
 				telemetry: {
 					hasQuickConnect: false,
 					source: 'cnr settings page',
@@ -253,7 +253,7 @@ describe('CommunityPackageInstallModal', () => {
 			const packageNameInput = getByTestId('package-name-input');
 			const installButton = getByTestId('install-community-package-button');
 
-			await userEvent.type(packageNameInput, 'n8n-nodes-test');
+			await userEvent.type(packageNameInput, 'MNI-nodes-test');
 			await userEvent.click(getByTestId('user-agreement-checkbox'));
 			await userEvent.click(installButton);
 

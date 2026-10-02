@@ -1,6 +1,6 @@
-import type { IconName } from '@n8n/design-system';
-import type { BaseTextKey } from '@n8n/i18n';
-import type { FilterConditionValue, FilterOperatorValue } from 'n8n-workflow';
+import type { IconName } from '@MNI/design-system';
+import type { BaseTextKey } from '@MNI/i18n';
+import type { FilterConditionValue, FilterOperatorValue } from 'MNI-workflow';
 
 export interface FilterOperator extends FilterOperatorValue {
 	name: BaseTextKey;

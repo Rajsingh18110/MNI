@@ -9,7 +9,7 @@ import { useInstanceAiSettingsStore } from '../instanceAiSettings.store';
 
 import InstanceAiOnboardingWizard from './InstanceAiOnboardingWizard.vue';
 
-vi.mock('@n8n/i18n', async (importOriginal) => ({
+vi.mock('@MNI/i18n', async (importOriginal) => ({
 	...(await importOriginal()),
 	useI18n: () => ({ baseText: (key: string) => key }),
 }));
@@ -52,7 +52,7 @@ function setupStore(overrides: Record<string, unknown> = {}) {
 			permissions: {},
 			mcpAccessEnabled: true,
 			sandboxEnabled: false,
-			sandboxProvider: 'n8n-sandbox',
+			sandboxProvider: 'MNI-sandbox',
 			daytonaCredentialId: null,
 			n8nSandboxCredentialId: null,
 			searchCredentialId: null,
@@ -333,7 +333,7 @@ describe('InstanceAiOnboardingWizard', () => {
 			props: { step: 'sandbox' },
 		});
 
-		await fireEvent.click(await findByTestId('assistant-sandbox-n8n-sandbox'));
+		await fireEvent.click(await findByTestId('assistant-sandbox-MNI-sandbox'));
 		await fireEvent.update(inputFor(getByTestId('assistant-sandbox-url')), ' http://sandbox:3200 ');
 		await fireEvent.update(inputFor(getByTestId('assistant-sandbox-api-key')), ' sandbox-key ');
 		await fireEvent.click(getByTestId('wizard-primary'));
@@ -344,13 +344,13 @@ describe('InstanceAiOnboardingWizard', () => {
 		};
 		await waitFor(() =>
 			expect(store.verifySandbox).toHaveBeenCalledWith({
-				provider: 'n8n-sandbox',
+				provider: 'MNI-sandbox',
 				connection,
 				serviceUrl: 'http://sandbox:3200',
 			}),
 		);
 		expect(store.setField).toHaveBeenCalledWith('sandboxConnection', connection);
-		expect(store.setField).toHaveBeenCalledWith('sandboxProvider', 'n8n-sandbox');
+		expect(store.setField).toHaveBeenCalledWith('sandboxProvider', 'MNI-sandbox');
 		expect(store.setField).toHaveBeenCalledWith('sandboxEnabled', true);
 		expect(store.setField).toHaveBeenCalledWith('n8nSandboxServiceUrl', 'http://sandbox:3200');
 		expect(store.refreshCredentials).toHaveBeenCalled();
@@ -405,10 +405,10 @@ describe('InstanceAiOnboardingWizard', () => {
 			props: { step: 'sandbox', editMode: true, surface: 'settings' },
 		});
 
-		const existingCredential = await findByTestId('n8n-agent-sandbox-existing-credential-select');
+		const existingCredential = await findByTestId('MNI-agent-sandbox-existing-credential-select');
 		await fireEvent.click(inputFor(existingCredential));
 		await fireEvent.click(await findByText('Existing Daytona · Daytona'));
-		await fireEvent.click(getByTestId('n8n-agent-sandbox-dialog-save'));
+		await fireEvent.click(getByTestId('MNI-agent-sandbox-dialog-save'));
 
 		await waitFor(() =>
 			expect(store.setField).toHaveBeenCalledWith('daytonaCredentialId', 'existing-daytona'),
@@ -422,7 +422,7 @@ describe('InstanceAiOnboardingWizard', () => {
 
 	it('confirms an environment-managed sandbox and enables it', async () => {
 		const { pinia, store } = setupStore({
-			sandboxProvider: 'n8n-sandbox',
+			sandboxProvider: 'MNI-sandbox',
 			sandboxEnvConfigured: true,
 		});
 		vi.mocked(store.verifySandbox).mockResolvedValue({ ok: true });
@@ -435,7 +435,7 @@ describe('InstanceAiOnboardingWizard', () => {
 		await fireEvent.click(getByTestId('wizard-primary'));
 
 		await waitFor(() =>
-			expect(store.verifySandbox).toHaveBeenCalledWith({ provider: 'n8n-sandbox' }),
+			expect(store.verifySandbox).toHaveBeenCalledWith({ provider: 'MNI-sandbox' }),
 		);
 		expect(store.setField).toHaveBeenCalledWith('sandboxEnabled', true);
 		expect(store.save).toHaveBeenCalledWith(false);
@@ -451,7 +451,7 @@ describe('InstanceAiOnboardingWizard', () => {
 
 		const freeLabel = await findByText('instanceAi.onboarding.search.free');
 		expect(freeLabel).toBeVisible();
-		expect(freeLabel.closest('.n8n-badge')).not.toBeNull();
+		expect(freeLabel.closest('.MNI-badge')).not.toBeNull();
 		await fireEvent.click(await findByTestId('assistant-search-disabled'));
 		await fireEvent.click(getByTestId('wizard-primary'));
 
@@ -554,10 +554,10 @@ describe('InstanceAiOnboardingWizard', () => {
 			props: { step: 'search', editMode: true, surface: 'settings' },
 		});
 
-		const existingCredential = await findByTestId('n8n-agent-search-existing-credential-select');
+		const existingCredential = await findByTestId('MNI-agent-search-existing-credential-select');
 		await fireEvent.click(inputFor(existingCredential));
 		await fireEvent.click(await findByText('Existing Brave · braveSearchApi'));
-		await fireEvent.click(getByTestId('n8n-agent-search-dialog-save'));
+		await fireEvent.click(getByTestId('MNI-agent-search-dialog-save'));
 
 		await waitFor(() =>
 			expect(store.setField).toHaveBeenCalledWith('searchCredentialId', 'existing-brave'),

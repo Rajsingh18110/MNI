@@ -1,8 +1,8 @@
-import type { InstanceRegistration } from '@n8n/api-types';
-import { mockLogger } from '@n8n/backend-test-utils';
-import type { GlobalConfig } from '@n8n/config';
+import type { InstanceRegistration } from '@MNI/api-types';
+import { mockLogger } from '@MNI/backend-test-utils';
+import type { GlobalConfig } from '@MNI/config';
 import type { Redis as SingleNodeClient } from 'ioredis';
-import { jsonStringify } from 'n8n-workflow';
+import { jsonStringify } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import type { RedisClientService } from '@/services/redis-client.service';

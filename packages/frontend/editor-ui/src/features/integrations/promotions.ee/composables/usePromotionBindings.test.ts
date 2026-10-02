@@ -1,6 +1,6 @@
-import { createDeferredPromise } from '@n8n/utils/promise/deferred-promise';
-import { ResponseError } from '@n8n/rest-api-client';
-import type { ApplyPackageResultDto } from '@n8n/api-types';
+import { createDeferredPromise } from '@MNI/utils/promise/deferred-promise';
+import { ResponseError } from '@MNI/rest-api-client';
+import type { ApplyPackageResultDto } from '@MNI/api-types';
 import { promotionBindingKey, usePromotionBindings } from './usePromotionBindings';
 import { continueApplyPromotion } from '../promotionsSettings.api';
 import {
@@ -13,7 +13,7 @@ import {
 } from '../__tests__/bindings.fixtures';
 import type { CreatedPromotionBinding, MissingPromotionBinding } from '../promotions.types';
 
-vi.mock('@n8n/stores/useRootStore', () => ({
+vi.mock('@MNI/stores/useRootStore', () => ({
 	useRootStore: () => ({ publicApiContext: { baseUrl: '/custom/api/v1' } }),
 }));
 vi.mock('../promotionsSettings.api');

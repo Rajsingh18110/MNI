@@ -1,5 +1,5 @@
 {
-  "name": "@n8n/test-impact",
+  "name": "@MNI/test-impact",
   "private": true,
   "version": "0.1.0",
   "description": "Test Impact Analysis: coverage-map selection + shard orchestration for MNI CI. Framework-agnostic core.",

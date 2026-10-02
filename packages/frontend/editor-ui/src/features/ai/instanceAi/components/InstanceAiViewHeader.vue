@@ -1,9 +1,9 @@
 <script lang="ts" setup>
 import { computed } from 'vue';
 import { useRoute } from 'vue-router';
-import { N8nButton, N8nCallout, N8nTooltip, TOOLTIP_DELAY_MS } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
-import type { InstanceAiThreadSummary } from '@n8n/api-types';
+import { N8nButton, N8nCallout, N8nTooltip, TOOLTIP_DELAY_MS } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
+import type { InstanceAiThreadSummary } from '@MNI/api-types';
 import { useSourceControlStore } from '@/features/integrations/sourceControl.ee/sourceControl.store';
 import { usePageRedirectionHelper } from '@/app/composables/usePageRedirectionHelper';
 import { useInstanceAiStore } from '../instanceAi.store';
@@ -132,7 +132,7 @@ function handleThreadSelect(threadId: string) {
 	display: flex;
 	align-items: center;
 	gap: var(--spacing--2xs);
-	background-color: var(--n8n-ia-header--background, var(--background--surface));
+	background-color: var(--MNI-ia-header--background, var(--background--surface));
 }
 
 .headerActions {

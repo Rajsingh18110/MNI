@@ -23,8 +23,8 @@ import { useSourceControlStore } from '@/features/integrations/sourceControl.ee/
 import { useUIStore } from '@/app/stores/ui.store';
 import { useWorkflowsStore } from '@/app/stores/workflows.store';
 import { useFocusedNodesStore } from '@/features/ai/assistant/focusedNodes.store';
-import { useSettingsStore } from '@n8n/stores/settings.store';
-import { useTypeAvailabilityPoliciesStore } from '@n8n/frontend-module-type-availability-policies';
+import { useSettingsStore } from '@MNI/stores/settings.store';
+import { useTypeAvailabilityPoliciesStore } from '@MNI/frontend-module-type-availability-policies';
 import {
 	useWorkflowDocumentStore,
 	createWorkflowDocumentId,
@@ -101,7 +101,7 @@ import {
 	NodeHelpers,
 	WEBHOOK_NODE_TYPE,
 	WORKFLOW_TOOL_LANGCHAIN_NODE_TYPE,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 const nodeFactory = (data: Partial<INodeUi> = {}): INodeUi => ({
 	id: faker.string.uuid(),
@@ -903,7 +903,7 @@ describe('useContextMenu', () => {
 
 	it('should disable execute step option for sub-nodes (AI tool nodes)', () => {
 		const { open, isOpen, actions, targetNodeIds } = useContextMenu();
-		const subNode = nodeFactory({ type: 'n8n-nodes-base.hackerNewsTool' });
+		const subNode = nodeFactory({ type: 'MNI-nodes-base.hackerNewsTool' });
 		vi.spyOn(workflowDocumentStore, 'getNodeById').mockReturnValue(subNode);
 		vi.spyOn(NodeHelpers, 'isExecutable').mockReturnValueOnce(false).mockReturnValueOnce(false);
 		open(mockEvent, { source: 'node-right-click', nodeId: subNode.id });
@@ -1068,7 +1068,7 @@ describe('useContextMenu', () => {
 	});
 
 	describe('restricted node type', () => {
-		const restrictedNode = nodeFactory({ type: 'n8n-nodes-base.slack' });
+		const restrictedNode = nodeFactory({ type: 'MNI-nodes-base.slack' });
 
 		beforeEach(() => {
 			workflowDocumentStore.setNodes([...nodes, restrictedNode]);

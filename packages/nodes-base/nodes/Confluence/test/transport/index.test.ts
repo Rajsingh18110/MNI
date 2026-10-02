@@ -1,6 +1,6 @@
 import FormData from 'form-data';
-import type { IExecuteFunctions, ILoadOptionsFunctions, INode, JsonObject } from 'n8n-workflow';
-import { NodeApiError, NodeOperationError } from 'n8n-workflow';
+import type { IExecuteFunctions, ILoadOptionsFunctions, INode, JsonObject } from 'MNI-workflow';
+import { NodeApiError, NodeOperationError } from 'MNI-workflow';
 import type { Mock, Mocked } from 'vitest';
 import { mockDeep } from 'vitest-mock-extended';
 
@@ -88,7 +88,7 @@ describe('confluenceApiRequest', () => {
 		mockNode = {
 			id: 'test-node',
 			name: 'Test Confluence Node',
-			type: 'n8n-nodes-base.confluence',
+			type: 'MNI-nodes-base.confluence',
 			typeVersion: 1,
 			position: [0, 0],
 			parameters: {},
@@ -359,7 +359,7 @@ describe('confluenceApiRequestBinary', () => {
 		ctx.getNode.mockReturnValue({
 			id: 'test-node',
 			name: 'Test Confluence Node',
-			type: 'n8n-nodes-base.confluence',
+			type: 'MNI-nodes-base.confluence',
 			typeVersion: 1,
 			position: [0, 0],
 			parameters: {},
@@ -499,7 +499,7 @@ describe('confluenceApiRequestUpload', () => {
 		ctx.getNode.mockReturnValue({
 			id: 'test-node',
 			name: 'Test Confluence Node',
-			type: 'n8n-nodes-base.confluence',
+			type: 'MNI-nodes-base.confluence',
 			typeVersion: 1,
 			position: [0, 0],
 			parameters: {},
@@ -620,7 +620,7 @@ describe('credential routing (authentication selector)', () => {
 		ctx.getNode.mockReturnValue({
 			id: 'test-node',
 			name: 'Test Confluence Node',
-			type: 'n8n-nodes-base.confluence',
+			type: 'MNI-nodes-base.confluence',
 			typeVersion: 1,
 			position: [0, 0],
 			parameters: {},
@@ -721,7 +721,7 @@ describe('credential routing (authentication selector)', () => {
 		loadCtx.getNode.mockReturnValue({
 			id: 'test-node',
 			name: 'Test Confluence Node',
-			type: 'n8n-nodes-base.confluence',
+			type: 'MNI-nodes-base.confluence',
 			typeVersion: 1,
 			position: [0, 0],
 			parameters: {},

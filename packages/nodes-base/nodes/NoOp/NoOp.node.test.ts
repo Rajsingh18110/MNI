@@ -1,4 +1,4 @@
-import { getNodeParameters } from 'n8n-workflow';
+import { getNodeParameters } from 'MNI-workflow';
 
 import { NoOp } from './NoOp.node';
 

@@ -1,9 +1,9 @@
-import { Logger } from '@n8n/backend-common';
-import { mockInstance } from '@n8n/backend-test-utils';
-import { type AuthenticatedRequest, type CredentialsEntity } from '@n8n/db';
-import { Container } from '@n8n/di';
+import { Logger } from '@MNI/backend-common';
+import { mockInstance } from '@MNI/backend-test-utils';
+import { type AuthenticatedRequest, type CredentialsEntity } from '@MNI/db';
+import { Container } from '@MNI/di';
 import type { Request, Response } from 'express';
-import { Cipher } from 'n8n-core';
+import { Cipher } from 'MNI-core';
 import { mock } from 'vitest-mock-extended';
 
 import { CredentialsFinderService } from '@/credentials/credentials-finder.service';
@@ -19,7 +19,7 @@ import {
 	DynamicCredentialService,
 } from '@/modules/dynamic-credentials.ee/services';
 import { OauthService } from '@/oauth/oauth.service';
-import { UrlService } from '@n8n/backend-services';
+import { UrlService } from '@MNI/backend-services';
 
 import { DynamicCredentialWebService } from '../services/dynamic-credential-web.service';
 
@@ -592,7 +592,7 @@ describe('DynamicCredentialsController', () => {
 				credentialId: 'cred-1',
 				resolverId: 'resolver-123',
 				identity: 'bearer-jwt',
-				metadata: { source: 'n8n-oauth' },
+				metadata: { source: 'MNI-oauth' },
 			});
 			enterpriseCredentialsService.getOne.mockResolvedValue(mockCredential);
 			oauthService.generateAOauth2AuthUri.mockResolvedValue(
@@ -608,7 +608,7 @@ describe('DynamicCredentialsController', () => {
 					origin: 'dynamic-credential',
 					authorizationHeader: 'Bearer bearer-jwt',
 					credentialResolverId: 'resolver-123',
-					authMetadata: { source: 'n8n-oauth' },
+					authMetadata: { source: 'MNI-oauth' },
 				}),
 				req,
 				res,
@@ -1128,7 +1128,7 @@ describe('DynamicCredentialsController', () => {
 			resolverRepository.findOneBy.mockResolvedValue(mockResolverEntity);
 			// Session-derived context, as built for `authSource=cookie`.
 			dynamicCredentialWebService.getCredentialContextFromRequest.mockReturnValue({
-				identity: 'n8n-session-jwt',
+				identity: 'MNI-session-jwt',
 				version: 1 as const,
 				metadata: { source: 'cookie-source', method: 'POST', endpoint: 'rest' },
 			});

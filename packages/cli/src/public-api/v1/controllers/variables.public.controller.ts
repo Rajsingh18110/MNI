@@ -7,9 +7,9 @@ import {
 	VariableListPublicDto,
 	variableIdParamSchema,
 	type VariablePublic,
-} from '@n8n/api-types';
-import { LICENSE_FEATURES } from '@n8n/constants';
-import type { AuthenticatedRequest, Variables } from '@n8n/db';
+} from '@MNI/api-types';
+import { LICENSE_FEATURES } from '@MNI/constants';
+import type { AuthenticatedRequest, Variables } from '@MNI/db';
 import {
 	ApiDescription,
 	ApiErrorResponse,
@@ -26,7 +26,7 @@ import {
 	PublicApiController,
 	Put,
 	Query,
-} from '@n8n/decorators';
+} from '@MNI/decorators';
 import type { Response } from 'express';
 
 import { toPublicProject } from '@/public-api/v1/shared/project.mapper';

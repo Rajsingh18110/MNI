@@ -1,10 +1,10 @@
-import type { CreateProjectPublicDto, CreatedProjectPublicDto } from '@n8n/api-types';
-import { request, type PublicApiContext } from '@n8n/rest-api-client';
-import type { IRestApiContext } from '@n8n/rest-api-client';
-import { getFullApiResponse, makeRestApiRequest } from '@n8n/rest-api-client';
+import type { CreateProjectPublicDto, CreatedProjectPublicDto } from '@MNI/api-types';
+import { request, type PublicApiContext } from '@MNI/rest-api-client';
+import type { IRestApiContext } from '@MNI/rest-api-client';
+import { getFullApiResponse, makeRestApiRequest } from '@MNI/rest-api-client';
 import type { Project, ProjectListItem, ProjectsCount } from './projects.types';
-import type { CreateProjectDto, UpdateProjectDto } from '@n8n/api-types';
-import type { AssignableProjectRole } from '@n8n/permissions';
+import type { CreateProjectDto, UpdateProjectDto } from '@MNI/api-types';
+import type { AssignableProjectRole } from '@MNI/permissions';
 
 export const getAllProjects = async (context: IRestApiContext): Promise<ProjectListItem[]> => {
 	return await makeRestApiRequest(context, 'GET', '/projects');

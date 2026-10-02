@@ -1,6 +1,6 @@
 /**
  * One-click sign-in for preview instances. Loaded through EXTERNAL_HOOK_FILES by
- * scripts/codespace-preview/preview-serve.mjs, so it is never part of a packaged n8n.
+ * scripts/codespace-preview/preview-serve.mjs, so it is never part of a packaged MNI.
  *
  * The route performs an ordinary login on the visitor's behalf: it calls
  * /rest/login with the preview instance's own seeded credentials and forwards the
@@ -9,7 +9,7 @@
  * rather than a different way in.
  *
  * Only enable this on a throwaway instance whose port is org-visible. It refuses to
- * register unless N8N_PREVIEW_SIGNIN is exactly "1", so loading the file by
+ * register unless MNI_PREVIEW_SIGNIN is exactly "1", so loading the file by
  * accident does nothing.
  *
  * Calling /rest/login rather than AuthService keeps this working across changes to
@@ -17,7 +17,7 @@
  *
  * Two things make the route reachable:
  *  - `n8n.ready` fires after configure(), so the SPA catch-all is already
- *    registered. N8N_ADDITIONAL_NON_UI_ROUTES must list this path, or
+ *    registered. MNI_ADDITIONAL_NON_UI_ROUTES must list this path, or
  *    historyApiHandler answers with index.html before the route is reached.
  *  - the handler is registered on server.app, which AbstractServer exposes.
  */
@@ -27,7 +27,7 @@ module.exports = {
 	MNI: {
 		ready: [
 			async function previewSignin(server) {
-				if (process.env.N8N_PREVIEW_SIGNIN !== '1') return;
+				if (process.env.MNI_PREVIEW_SIGNIN !== '1') return;
 
 				const email = process.env.PREVIEW_OWNER_EMAIL;
 				const password = process.env.PREVIEW_OWNER_PASSWORD;
@@ -38,7 +38,7 @@ module.exports = {
 					return;
 				}
 
-				const port = process.env.N8N_PORT ?? '5678';
+				const port = process.env.MNI_PORT ?? '5678';
 
 				server.app.get(ROUTE, async (_req, res) => {
 					const fallback = `Sign in as ${email} instead.`;

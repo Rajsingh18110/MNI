@@ -10,7 +10,7 @@
 | createdAt | timestamp(3) with time zone | CURRENT_TIMESTAMP(3) | false |  |  |  |
 | evidenceText | text |  | false |  |  | Redacted exact evidence from the source message |
 | id | varchar(36) |  | false | [public.agents_memory_entry_sources](public.agents_memory_entry_sources.md) |  |  |
-| kind | varchar(32) |  | false |  |  | Reason the agent flagged this candidate; see EpisodicMemoryCaptureKind in @n8n/agents |
+| kind | varchar(32) |  | false |  |  | Reason the agent flagged this candidate; see EpisodicMemoryCaptureKind in @MNI/agents |
 | resourceId | varchar(255) |  | false |  | [public.agents_resources](public.agents_resources.md) | Resource scope for the eventual episodic memory entry |
 | runId | varchar(255) |  | false |  |  | Agent run that issued the memory capture tool call |
 | sourceMessageId | varchar(36) |  | true |  | [public.agents_messages](public.agents_messages.md) | Persisted message that contains the exact source evidence |

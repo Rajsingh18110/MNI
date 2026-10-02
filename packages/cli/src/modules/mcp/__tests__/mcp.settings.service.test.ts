@@ -1,9 +1,9 @@
-import type { Logger } from '@n8n/backend-common';
-import type { GlobalConfig } from '@n8n/config';
-import type { Settings, SettingsRepository, User, WorkflowRepository } from '@n8n/db';
-import { WorkflowEntity } from '@n8n/db';
-import type { EntityManager, FindOperator } from '@n8n/typeorm';
-import { calculateWorkflowChecksum } from 'n8n-workflow';
+import type { Logger } from '@MNI/backend-common';
+import type { GlobalConfig } from '@MNI/config';
+import type { Settings, SettingsRepository, User, WorkflowRepository } from '@MNI/db';
+import { WorkflowEntity } from '@MNI/db';
+import type { EntityManager, FindOperator } from '@MNI/typeorm';
+import { calculateWorkflowChecksum } from 'MNI-workflow';
 import type { Mock } from 'vitest';
 import { mock } from 'vitest-mock-extended';
 
@@ -341,7 +341,7 @@ describe('McpSettingsService', () => {
 					{
 						id: 'node-1',
 						name: 'Manual Trigger',
-						type: 'n8n-nodes-base.manualTrigger',
+						type: 'MNI-nodes-base.manualTrigger',
 						typeVersion: 1,
 						position: [0, 0] as [number, number],
 						parameters: {},

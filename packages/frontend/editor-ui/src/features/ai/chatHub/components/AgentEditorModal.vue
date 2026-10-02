@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { useMessage } from '@/app/composables/useMessage';
-import { useToast } from '@n8n/composables/useToast';
+import { useToast } from '@MNI/composables/useToast';
 import { useUIStore } from '@/app/stores/ui.store';
 import { useChatStore } from '@/features/ai/chatHub/chat.store';
-import { useUsersStore } from '@n8n/stores/users.store';
-import { useSettingsStore } from '@n8n/stores/settings.store';
-import { useRootStore } from '@n8n/stores/useRootStore';
+import { useUsersStore } from '@MNI/stores/users.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
+import { useRootStore } from '@MNI/stores/useRootStore';
 import { fetchChatModelsApi, fetchAgentApi } from '@/features/ai/chatHub/chat.api';
 import Modal from '@/app/components/Modal.vue';
 import ModelSelector from '@/features/ai/chatHub/components/ModelSelector.vue';
@@ -18,7 +18,7 @@ import {
 	type ChatHubProvider,
 	type ChatModelDto,
 	type ChatHubAgentKnowledgeItem,
-} from '@n8n/api-types';
+} from '@MNI/api-types';
 import {
 	N8nButton,
 	N8nHeading,
@@ -27,13 +27,13 @@ import {
 	N8nInputLabel,
 	N8nText,
 	N8nCallout,
-} from '@n8n/design-system';
-import type { IconOrEmoji } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
-import { assert } from '@n8n/utils/assert';
+} from '@MNI/design-system';
+import type { IconOrEmoji } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
+import { assert } from '@MNI/utils/assert';
 import { computed, onMounted, ref, useTemplateRef, watch } from 'vue';
 import { useDocumentVisibility, useTimeoutPoll } from '@vueuse/core';
-import type { SuggestedPrompt } from '@n8n/api-types';
+import type { SuggestedPrompt } from '@MNI/api-types';
 import type { CredentialsMap } from '../chat.types';
 import SuggestedPromptsEditor from './SuggestedPromptsEditor.vue';
 import ToolsSelector from './ToolsSelector.vue';
@@ -47,7 +47,7 @@ import { useCustomAgent } from '@/features/ai/chatHub/composables/useCustomAgent
 import { useFileDrop } from '@/features/ai/shared/composables/useFileDrop';
 import { usePostHog } from '@/app/stores/posthog.store';
 import { CHAT_HUB_SEMANTIC_SEARCH_EXPERIMENT } from '@/app/constants';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
 import { useCredentialsStore } from '@/features/credentials/credentials.store';
 
 const props = defineProps<{

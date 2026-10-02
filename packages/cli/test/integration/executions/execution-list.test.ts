@@ -4,11 +4,11 @@ import {
 	linkUserToProject,
 	mockInstance,
 	testDb,
-} from '@n8n/backend-test-utils';
-import type { ExecutionSummaries, User } from '@n8n/db';
-import { ExecutionListRepository, ExecutionRepository, SharedWorkflowRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
-import type { ExecutionListItem } from '@n8n/engine';
+} from '@MNI/backend-test-utils';
+import type { ExecutionSummaries, User } from '@MNI/db';
+import { ExecutionListRepository, ExecutionRepository, SharedWorkflowRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
+import type { ExecutionListItem } from '@MNI/engine';
 import { mock } from 'vitest-mock-extended';
 
 import { ConcurrencyControlService } from '@/concurrency/concurrency-control.service';

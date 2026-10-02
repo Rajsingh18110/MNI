@@ -4,22 +4,22 @@ import { createTestingPinia } from '@pinia/testing';
 import type { MockInstance } from 'vitest';
 import { fireEvent, waitFor, within } from '@testing-library/vue';
 import userEvent from '@testing-library/user-event';
-import { SYSTEM_RESOLVER_ID, type FrontendSettings } from '@n8n/api-types';
+import { SYSTEM_RESOLVER_ID, type FrontendSettings } from '@MNI/api-types';
 import { createComponentRenderer } from '@/__tests__/render';
 import { createTestWorkflow } from '@/__tests__/mocks';
 import { getDropdownItems, mockedStore, type MockedStore } from '@/__tests__/utils';
 import { EnterpriseEditionFeature } from '@/app/constants';
-import { useRBACStore } from '@n8n/stores/rbac.store';
+import { useRBACStore } from '@MNI/stores/rbac.store';
 import WorkflowSettingsVue from '@/features/workflows/components/WorkflowSettings/WorkflowSettings.vue';
 import { useWorkflowsStore } from '@/app/stores/workflows.store';
 import { useWorkflowsListStore } from '@/app/stores/workflowsList.store';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { useSourceControlStore } from '@/features/integrations/sourceControl.ee/sourceControl.store';
 import { useProjectsStore } from '@/features/collaboration/projects/projects.store';
 import type { Project } from '@/features/collaboration/projects/projects.types';
-import * as restApiClient from '@n8n/rest-api-client';
+import * as restApiClient from '@MNI/rest-api-client';
 import { mock } from 'vitest-mock-extended';
-import { BINARY_MODE_COMBINED } from 'n8n-workflow';
+import { BINARY_MODE_COMBINED } from 'MNI-workflow';
 import {
 	useWorkflowDocumentStore,
 	createWorkflowDocumentId,
@@ -30,7 +30,7 @@ const toast = {
 	showError: vi.fn(),
 };
 
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: () => toast,
 }));
 
@@ -49,7 +49,7 @@ vi.mock('vue-router', async () => ({
 	},
 }));
 
-vi.mock('@n8n/rest-api-client', async (importOriginal) => {
+vi.mock('@MNI/rest-api-client', async (importOriginal) => {
 	const actual = await importOriginal<typeof restApiClient>();
 	return {
 		...actual,
@@ -59,7 +59,7 @@ vi.mock('@n8n/rest-api-client', async (importOriginal) => {
 });
 
 const getSecuritySettings = vi.fn();
-vi.mock('@n8n/rest-api-client/api/security-settings', () => ({
+vi.mock('@MNI/rest-api-client/api/security-settings', () => ({
 	getSecuritySettings: (...args: unknown[]) => getSecuritySettings(...args),
 	updateSecuritySettings: vi.fn(),
 }));
@@ -185,7 +185,7 @@ describe('WorkflowSettingsVue', () => {
 		settingsStore.settings = mock<FrontendSettings>({
 			enterprise: {},
 			envFeatureFlags: {
-				N8N_ENV_FEAT_DYNAMIC_CREDENTIALS: true,
+				MNI_ENV_FEAT_DYNAMIC_CREDENTIALS: true,
 			},
 			activeModules: ['dynamic-credentials'],
 			releaseChannel: 'stable',
@@ -847,7 +847,7 @@ describe('WorkflowSettingsVue', () => {
 			{
 				id: SYSTEM_RESOLVER_ID,
 				name: 'MNI Resolver',
-				type: 'n8n-internal-type',
+				type: 'MNI-internal-type',
 				config: '{}',
 				createdAt: new Date(),
 				updatedAt: new Date(),
@@ -861,8 +861,8 @@ describe('WorkflowSettingsVue', () => {
 				options: [{ name: 'url', type: 'string', displayName: 'URL', default: '' }],
 			},
 			{
-				name: 'n8n-internal-type',
-				displayName: 'N8N Resolver',
+				name: 'MNI-internal-type',
+				displayName: 'MNI Resolver',
 				options: [],
 			},
 		];

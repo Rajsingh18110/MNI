@@ -8,7 +8,7 @@
 		{
 			"parameters": {},
 			"name": "Start",
-			"type": "n8n-nodes-base.manualTrigger",
+			"type": "MNI-nodes-base.manualTrigger",
 			"typeVersion": 1,
 			"position": [250, 300],
 			"id": "71b4c90c-bc69-40af-ae0d-4148c869e90f"
@@ -20,7 +20,7 @@
 				"filters": {}
 			},
 			"name": "Hunter",
-			"type": "n8n-nodes-base.hunter",
+			"type": "MNI-nodes-base.hunter",
 			"typeVersion": 1,
 			"position": [450, 300],
 			"credentials": {
@@ -39,7 +39,7 @@
 				"lastname": "test"
 			},
 			"name": "Hunter1",
-			"type": "n8n-nodes-base.hunter",
+			"type": "MNI-nodes-base.hunter",
 			"typeVersion": 1,
 			"position": [600, 300],
 			"credentials": {
@@ -56,7 +56,7 @@
 				"email": "nodeqa@n8n.io"
 			},
 			"name": "Hunter2",
-			"type": "n8n-nodes-base.hunter",
+			"type": "MNI-nodes-base.hunter",
 			"typeVersion": 1,
 			"position": [750, 300],
 			"credentials": {

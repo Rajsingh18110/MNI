@@ -5,14 +5,14 @@ import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { createMockAgent } from '../__test__/data';
 import ChatPrompt from './ChatPrompt.vue';
 
-vi.mock('@n8n/stores/users.store', () => ({
+vi.mock('@MNI/stores/users.store', () => ({
 	useUsersStore: () => ({
 		currentUserId: 'user-123',
 		currentUser: { id: 'user-123', firstName: 'Test', fullName: 'Test User' },
 	}),
 }));
 
-vi.mock('@n8n/stores/settings.store', () => ({
+vi.mock('@MNI/stores/settings.store', () => ({
 	useSettingsStore: () => ({
 		settings: {},
 		moduleSettings: {},

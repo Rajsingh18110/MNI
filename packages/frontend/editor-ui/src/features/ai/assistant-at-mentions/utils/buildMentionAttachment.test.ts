@@ -44,7 +44,7 @@ describe('buildMentionAttachment', () => {
 		const nodes = Array.from({ length: 55 }, (_, index) => ({
 			id: `n${index}`,
 			name: `Node ${index}`,
-			type: 'n8n-nodes-base.noOp',
+			type: 'MNI-nodes-base.noOp',
 			typeVersion: 1,
 		}));
 		const index = projectWorkflowArtifact({

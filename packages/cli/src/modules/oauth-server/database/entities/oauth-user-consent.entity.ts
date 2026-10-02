@@ -1,5 +1,5 @@
-import { JsonColumn, User } from '@n8n/db';
-import { Column, Entity, Index, ManyToOne, PrimaryGeneratedColumn, Unique } from '@n8n/typeorm';
+import { JsonColumn, User } from '@MNI/db';
+import { Column, Entity, Index, ManyToOne, PrimaryGeneratedColumn, Unique } from '@MNI/typeorm';
 
 import { OAuthClient } from './oauth-client.entity';
 

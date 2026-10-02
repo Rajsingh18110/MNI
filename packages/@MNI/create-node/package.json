@@ -1,0 +1,26 @@
+{
+  "name": "@MNI/create-node",
+  "version": "0.49.0",
+  "description": "Official CLI to create new community nodes for MNI",
+  "bin": {
+    "create-node": "bin/create-node.cjs"
+  },
+  "files": [
+    "bin",
+    "dist"
+  ],
+  "scripts": {
+    "start": "node bin/create-node.cjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MNI-io/n8n.git"
+  },
+  "dependencies": {
+    "@MNI/node-cli": "workspace:*"
+  },
+  "devDependencies": {
+    "@MNI/typescript-config": "workspace:*"
+  },
+  "license": "LicenseRef-MNI-sustainable-use"
+}

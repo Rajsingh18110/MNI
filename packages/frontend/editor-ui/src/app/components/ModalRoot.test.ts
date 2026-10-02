@@ -1,7 +1,7 @@
 import { createPinia, setActivePinia } from 'pinia';
 import { nextTick } from 'vue';
 import { screen } from '@testing-library/vue';
-import { modalRegistry } from '@n8n/frontend-module-sdk';
+import { modalRegistry } from '@MNI/frontend-module-sdk';
 
 import ModalRoot from '@/app/components/ModalRoot.vue';
 import { useUIStore } from '@/app/stores/ui.store';

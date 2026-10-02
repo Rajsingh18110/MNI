@@ -4,7 +4,7 @@ import {
 	type INodeExecutionData,
 	type WorkflowExecuteMode,
 	NodeOperationError,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import type { TextKeys } from './result-validation';
 import { validateRunCodeAllItems, validateRunCodeEachItem } from './result-validation';

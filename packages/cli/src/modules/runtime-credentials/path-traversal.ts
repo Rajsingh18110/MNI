@@ -1,4 +1,4 @@
-import type { IDataObject } from 'n8n-workflow';
+import type { IDataObject } from 'MNI-workflow';
 
 type DataValue = IDataObject[string];
 

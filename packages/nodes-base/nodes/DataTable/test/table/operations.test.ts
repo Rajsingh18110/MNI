@@ -4,7 +4,7 @@ import type {
 	IDataTableProjectAggregateService,
 	IDataTableProjectService,
 	INode,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import * as clearOperation from '../../actions/table/clear.operation';
 import * as createOperation from '../../actions/table/create.operation';
@@ -15,7 +15,7 @@ import * as updateOperation from '../../actions/table/update.operation';
 const mockNode: INode = {
 	id: 'test-node',
 	name: 'Test Node',
-	type: 'n8n-nodes-base.dataTable',
+	type: 'MNI-nodes-base.dataTable',
 	typeVersion: 1,
 	position: [0, 0],
 	parameters: {},

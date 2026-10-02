@@ -27,16 +27,16 @@ import {
 	InstanceAiEvalSeedDataTableRowsRequest,
 	findSeedFolderIssues,
 	findUnbackedSeedWorkflowTools,
-} from '@n8n/api-types';
+} from '@MNI/api-types';
 import type {
 	InstanceAiAdminSettingsResponse,
 	InstanceAiEvalThreadMemoryResponse,
 	InstanceAiEvent,
-} from '@n8n/api-types';
-import { ModuleRegistry } from '@n8n/backend-common';
-import { GlobalConfig } from '@n8n/config';
-import { AuthenticatedRequest, User, UserRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
+} from '@MNI/api-types';
+import { ModuleRegistry } from '@MNI/backend-common';
+import { GlobalConfig } from '@MNI/config';
+import { AuthenticatedRequest, User, UserRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
 import {
 	RestController,
 	GlobalScope,
@@ -50,20 +50,20 @@ import {
 	Param,
 	Body,
 	Query,
-} from '@n8n/decorators';
-import type { StoredEvent } from '@n8n/instance-ai';
-import { hasGlobalScope } from '@n8n/permissions';
+} from '@MNI/decorators';
+import type { StoredEvent } from '@MNI/instance-ai';
+import { hasGlobalScope } from '@MNI/permissions';
 import {
 	buildAgentTreeFromEvents,
 	clearedAgentBuilderTargetMetadata,
 	seedAgentBuilderTargetMetadata,
-} from '@n8n/instance-ai';
+} from '@MNI/instance-ai';
 import {
 	OversizedAttachmentError,
 	UnsupportedAttachmentError,
 	validateAttachmentMimeTypes,
 	validateAttachmentSizes,
-} from '@n8n/instance-ai/parsers';
+} from '@MNI/instance-ai/parsers';
 import type { NextFunction, Request, Response } from 'express';
 import { randomUUID, timingSafeEqual } from 'node:crypto';
 import { InstanceAiBrowserSessionService } from './browser/instance-ai-browser-session.service';
@@ -93,7 +93,7 @@ import { NotFoundError } from '@/errors/response-errors/not-found.error';
 import { Push } from '@/push';
 import { Publisher } from '@/scaling/pubsub/publisher.service';
 import { ProjectService } from '@/services/project.service.ee';
-import { UrlService } from '@n8n/backend-services';
+import { UrlService } from '@MNI/backend-services';
 
 type FlushableResponse = Response & { flush?: () => void };
 
@@ -1386,7 +1386,7 @@ export class InstanceAiController {
 			? Math.max(0, Math.ceil((expiresAt.getTime() - Date.now()) / 1000))
 			: null;
 		const baseUrl = this.urlService.getInstanceBaseUrl();
-		const command = `npx @n8n/computer-use ${baseUrl} ${token}`;
+		const command = `npx @MNI/computer-use ${baseUrl} ${token}`;
 		return { token, command, expiresAt: expiresAt?.toISOString() ?? null, ttlSeconds };
 	}
 

@@ -1,8 +1,8 @@
-import { Time } from '@n8n/constants';
-import { Post, RestController } from '@n8n/decorators';
-import { Container } from '@n8n/di';
+import { Time } from '@MNI/constants';
+import { Post, RestController } from '@MNI/decorators';
+import { Container } from '@MNI/di';
 import type { Response } from 'express';
-import { ErrorReporter } from 'n8n-core';
+import { ErrorReporter } from 'MNI-core';
 import { z, ZodError } from 'zod';
 
 import { AuthError } from '@/errors/response-errors/auth.error';

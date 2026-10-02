@@ -1,12 +1,12 @@
-import type { AiPreferenceDto, AiPreferenceScope } from '@n8n/api-types';
-import { aiPreferenceScopeOf } from '@n8n/api-types';
-import type { InferTelemetryProps, TELEMETRY_EVENT } from '@n8n/telemetry';
+import type { AiPreferenceDto, AiPreferenceScope } from '@MNI/api-types';
+import { aiPreferenceScopeOf } from '@MNI/api-types';
+import type { InferTelemetryProps, TELEMETRY_EVENT } from '@MNI/telemetry';
 import z from 'zod';
 
 import { NotFoundError } from '@/errors/response-errors/not-found.error';
 import type { AiPreferenceWriteRejection } from '@/services/ai-preference-write';
 import { secondsSinceSaved, toAiPreferenceWriteRejection } from '@/services/ai-preference-write';
-import type { UrlService } from '@n8n/backend-services';
+import type { UrlService } from '@MNI/backend-services';
 
 /**
  * Why a write by id did not land. The shared rejections plus `not_found`, which only a tool that

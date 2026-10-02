@@ -1,5 +1,5 @@
 import { NodeTestHarness } from '@nodes-testing/node-test-harness';
-import { NodeConnectionTypes, type WorkflowTestData } from 'n8n-workflow';
+import { NodeConnectionTypes, type WorkflowTestData } from 'MNI-workflow';
 
 import { credentials } from '../../__tests__/credentials';
 
@@ -8,7 +8,7 @@ describe('AwsSqs Node', () => {
 	const messageAttributeValue = 'left&segment=value';
 	const messageDeduplicationId = 'dedup&segment=value';
 	const messageGroupId = 'group&segment=value';
-	const queuePath = '/123456789012/n8n-node-test-fifo.fifo';
+	const queuePath = '/123456789012/MNI-node-test-fifo.fifo';
 
 	const testData: WorkflowTestData = {
 		description: 'should preserve reserved characters in request parameter values',
@@ -19,7 +19,7 @@ describe('AwsSqs Node', () => {
 						parameters: {},
 						id: '5d4c45ed-1368-4ea3-a97c-2d46664f4656',
 						name: 'When clicking ‘Execute workflow’',
-						type: 'n8n-nodes-base.manualTrigger',
+						type: 'MNI-nodes-base.manualTrigger',
 						typeVersion: 1,
 						position: [720, 380],
 					},
@@ -44,7 +44,7 @@ describe('AwsSqs Node', () => {
 						},
 						id: 'bf664a84-bd26-413b-94d3-7f2935883ce3',
 						name: 'AWS SQS',
-						type: 'n8n-nodes-base.awsSqs',
+						type: 'MNI-nodes-base.awsSqs',
 						typeVersion: 1,
 						position: [940, 380],
 						credentials: {

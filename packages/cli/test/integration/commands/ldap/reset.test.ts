@@ -5,15 +5,15 @@ import {
 	mockInstance,
 	createWorkflow,
 	randomCredentialPayload,
-} from '@n8n/backend-test-utils';
+} from '@MNI/backend-test-utils';
 import {
 	CredentialsRepository,
 	SharedCredentialsRepository,
 	SharedWorkflowRepository,
 	WorkflowRepository,
-} from '@n8n/db';
-import { Container } from '@n8n/di';
-import { EntityNotFoundError } from '@n8n/typeorm';
+} from '@MNI/db';
+import { Container } from '@MNI/di';
+import { EntityNotFoundError } from '@MNI/typeorm';
 import { v4 as uuid } from 'uuid';
 
 import { Reset } from '@/commands/ldap/reset';

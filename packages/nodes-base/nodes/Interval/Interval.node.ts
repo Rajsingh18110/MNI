@@ -3,8 +3,8 @@ import type {
 	INodeType,
 	INodeTypeDescription,
 	ITriggerResponse,
-} from 'n8n-workflow';
-import { NodeConnectionTypes, NodeOperationError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeConnectionTypes, NodeOperationError } from 'MNI-workflow';
 
 export class Interval implements INodeType {
 	description: INodeTypeDescription = {

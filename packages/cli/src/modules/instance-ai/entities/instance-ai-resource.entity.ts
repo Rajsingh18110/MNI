@@ -1,5 +1,5 @@
-import { WithTimestamps, JsonColumn } from '@n8n/db';
-import { Column, Entity, PrimaryColumn } from '@n8n/typeorm';
+import { WithTimestamps, JsonColumn } from '@MNI/db';
+import { Column, Entity, PrimaryColumn } from '@MNI/typeorm';
 
 @Entity({ name: 'instance_ai_resources' })
 export class InstanceAiResource extends WithTimestamps {

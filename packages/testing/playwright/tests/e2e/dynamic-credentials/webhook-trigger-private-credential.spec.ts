@@ -17,7 +17,7 @@ import { test, expect } from '../../../fixtures/base';
  * without holding `workflow:execute`.
  *
  * The `dynamic-credentials` capability starts Keycloak for OAuth2.
- * It also enables the seeded `system-n8n` resolver.
+ * It also enables the seeded `system-MNI` resolver.
  */
 test.use({ capability: 'dynamic-credentials' });
 
@@ -54,7 +54,7 @@ test.describe(
 			await api.setMaxTeamProjectsQuota(-1);
 			const project = await api.projects.createProject('Dynamic Credentials');
 
-			// Resolvable: the seeded `system-n8n` resolver stores its tokens per MNI user.
+			// Resolvable: the seeded `system-MNI` resolver stores its tokens per MNI user.
 			const credential = await api.credentials.createCredential({
 				name: `Webhook Private OAuth2 ${nanoid()}`,
 				type: 'oAuth2Api',
@@ -79,7 +79,7 @@ test.describe(
 							{
 								id: nanoid(),
 								name: 'Webhook',
-								type: 'n8n-nodes-base.webhook',
+								type: 'MNI-nodes-base.webhook',
 								typeVersion: 2.1,
 								position: [0, 0] as [number, number],
 								parameters: {
@@ -95,7 +95,7 @@ test.describe(
 							{
 								id: nanoid(),
 								name: 'HTTP Request',
-								type: 'n8n-nodes-base.httpRequest',
+								type: 'MNI-nodes-base.httpRequest',
 								typeVersion: 4.2,
 								position: [200, 0] as [number, number],
 								parameters: {

@@ -3,7 +3,7 @@ import type {
 	IExecuteFunctions,
 	INodeExecutionData,
 	INodeProperties,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { DATA_TABLE_ID_FIELD } from '../../common/fields';
 import { getDataTableProxyExecute } from '../../common/utils';

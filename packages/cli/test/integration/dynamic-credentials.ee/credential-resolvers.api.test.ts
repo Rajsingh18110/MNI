@@ -1,10 +1,10 @@
-import { LicenseState } from '@n8n/backend-common';
-import { mockInstance } from '@n8n/backend-test-utils';
-import type { User } from '@n8n/db';
-import { GLOBAL_OWNER_ROLE, GLOBAL_MEMBER_ROLE } from '@n8n/db';
-import { Container } from '@n8n/di';
-import { InstanceSettings } from 'n8n-core';
-import { CREDENTIAL_BLANKING_VALUE } from 'n8n-workflow';
+import { LicenseState } from '@MNI/backend-common';
+import { mockInstance } from '@MNI/backend-test-utils';
+import type { User } from '@MNI/db';
+import { GLOBAL_OWNER_ROLE, GLOBAL_MEMBER_ROLE } from '@MNI/db';
+import { Container } from '@MNI/di';
+import { InstanceSettings } from 'MNI-core';
+import { CREDENTIAL_BLANKING_VALUE } from 'MNI-workflow';
 import nock from 'nock';
 import { mock } from 'vitest-mock-extended';
 
@@ -15,7 +15,7 @@ import {
 } from '@/modules/dynamic-credentials.ee/constants';
 import { DynamicCredentialResolverRepository } from '@/modules/dynamic-credentials.ee/database/repositories/credential-resolver.repository';
 import { DynamicCredentialResolverService } from '@/modules/dynamic-credentials.ee/services/credential-resolver.service';
-import { N8nResolverSeeder } from '@/modules/dynamic-credentials.ee/services/n8n-resolver-seeder.service';
+import { N8nResolverSeeder } from '@/modules/dynamic-credentials.ee/services/MNI-resolver-seeder.service';
 import { Telemetry } from '@/telemetry';
 
 import { createUser } from '../shared/db/users';
@@ -28,7 +28,7 @@ const licenseMock = mock<LicenseState>();
 licenseMock.isLicensed.mockReturnValue(true);
 Container.set(LicenseState, licenseMock);
 
-process.env.N8N_ENV_FEAT_DYNAMIC_CREDENTIALS = 'true';
+process.env.MNI_ENV_FEAT_DYNAMIC_CREDENTIALS = 'true';
 
 const testServer = utils.setupTestServer({
 	endpointGroups: ['credentials'],

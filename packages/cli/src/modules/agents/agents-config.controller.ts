@@ -1,6 +1,6 @@
-import { type AgentConfigValidationResponse, UpdateAgentConfigDto } from '@n8n/api-types';
-import type { AuthenticatedRequest } from '@n8n/db';
-import { Body, Delete, Get, Param, ProjectScope, Put, RestController } from '@n8n/decorators';
+import { type AgentConfigValidationResponse, UpdateAgentConfigDto } from '@MNI/api-types';
+import type { AuthenticatedRequest } from '@MNI/db';
+import { Body, Delete, Get, Param, ProjectScope, Put, RestController } from '@MNI/decorators';
 import type { Response } from 'express';
 
 import { AgentsCredentialProvider } from './adapters/agents-credential-provider';

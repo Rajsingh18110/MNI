@@ -4,7 +4,7 @@ import { createPinia, setActivePinia } from 'pinia';
 import { screen } from '@testing-library/vue';
 import userEvent from '@testing-library/user-event';
 
-import { getDebounceTime } from '@n8n/composables/useDebounce';
+import { getDebounceTime } from '@MNI/composables/useDebounce';
 import { CHAT_TRIGGER_NODE_TYPE, DEBOUNCE_TIME, MESSAGE_AN_AGENT_NODE_TYPE } from '@/app/constants';
 import { useNodeCreatorStore } from '@/features/shared/nodeCreator/nodeCreator.store';
 import { useViewStacks } from '@/features/shared/nodeCreator/composables/useViewStacks';
@@ -217,7 +217,7 @@ describe('AgentsMode', () => {
 	it('does not preset the message when connecting to a non-chat-trigger node', async () => {
 		const { useUIStore } = await import('@/app/stores/ui.store');
 		useUIStore().lastInteractedWithNodeId = 'some-node-id';
-		getNodeById.mockReturnValue({ id: 'some-node-id', type: 'n8n-nodes-base.set' });
+		getNodeById.mockReturnValue({ id: 'some-node-id', type: 'MNI-nodes-base.set' });
 		pushAgentsViewStack();
 		render({ pinia });
 		await nextTick();

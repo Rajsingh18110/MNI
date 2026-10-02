@@ -1,4 +1,4 @@
-import { sleep } from '@n8n/utils/sleep';
+import { sleep } from '@MNI/utils/sleep';
 import type {
 	IDataObject,
 	IExecuteFunctions,
@@ -6,8 +6,8 @@ import type {
 	IHttpRequestOptions,
 	ILoadOptionsFunctions,
 	JsonObject,
-} from 'n8n-workflow';
-import { NodeApiError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeApiError } from 'MNI-workflow';
 import { DATAVERSE_API_PATH, buildUserAgent } from './constants';
 
 /** Headers we send to Dataverse must be string-valued. */
@@ -257,7 +257,7 @@ async function dispatchWithRetry(
 }
 
 /**
- * Resolve the Dataverse environment base URL from the n8n-stored credential,
+ * Resolve the Dataverse environment base URL from the MNI-stored credential,
  * stripping trailing slashes so `${baseUrl}${DATAVERSE_API_PATH}…` always has
  * exactly one slash between segments. Matches the credential's scope and
  * baseURL normalization (`/\/+$/`) so all three agree. Throws early with an

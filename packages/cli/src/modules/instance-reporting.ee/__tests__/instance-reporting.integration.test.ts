@@ -1,16 +1,16 @@
-import { createFakeOutboundHttp, type Route } from '@n8n/backend-network/testing';
+import { createFakeOutboundHttp, type Route } from '@MNI/backend-network/testing';
 import {
 	createTeamProject,
 	createWorkflow,
 	mockLogger,
 	testDb,
 	testModules,
-} from '@n8n/backend-test-utils';
-import { Time } from '@n8n/constants';
-import { LicenseMetricsRepository, SettingsRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
+} from '@MNI/backend-test-utils';
+import { Time } from '@MNI/constants';
+import { LicenseMetricsRepository, SettingsRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
 import { DateTime } from 'luxon';
-import { InstanceSettings } from 'n8n-core';
+import { InstanceSettings } from 'MNI-core';
 import type { MockInstance } from 'vitest';
 import { mock } from 'vitest-mock-extended';
 

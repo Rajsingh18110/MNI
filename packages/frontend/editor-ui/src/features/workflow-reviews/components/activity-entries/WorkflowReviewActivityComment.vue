@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import type { WorkflowReviewActivityEntry, WorkflowReviewActivityMessage } from '@n8n/api-types';
-import { N8nText } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+import type { WorkflowReviewActivityEntry, WorkflowReviewActivityMessage } from '@MNI/api-types';
+import { N8nText } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 
 import TimeAgo from '@/app/components/TimeAgo.vue';
 

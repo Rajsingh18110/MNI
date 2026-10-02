@@ -43,7 +43,7 @@ describe('shouldRefreshMcpOAuth2Token', () => {
 	it('refreshes an expiring client credentials token without a refresh token', () => {
 		expect(
 			shouldRefreshMcpOAuth2Token(
-				{ expires_in: 3600, n8n_expires_at: String(now + 60_000) },
+				{ expires_in: 3600, MNI_expires_at: String(now + 60_000) },
 				'clientCredentials',
 			),
 		).toBe(true);
@@ -52,7 +52,7 @@ describe('shouldRefreshMcpOAuth2Token', () => {
 	it('does not refresh an authorization code token without a refresh token', () => {
 		expect(
 			shouldRefreshMcpOAuth2Token(
-				{ expires_in: 3600, n8n_expires_at: String(now + 60_000) },
+				{ expires_in: 3600, MNI_expires_at: String(now + 60_000) },
 				'authorizationCode',
 			),
 		).toBe(false);

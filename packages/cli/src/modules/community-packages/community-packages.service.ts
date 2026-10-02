@@ -1,20 +1,20 @@
-import { Logger } from '@n8n/backend-common';
-import { OutboundHttp, type HttpRequestClient } from '@n8n/backend-network';
-import { BUILTIN_NODES_PACKAGES, LICENSE_FEATURES, Time } from '@n8n/constants';
-import { OnPubSubEvent } from '@n8n/decorators';
-import { Service } from '@n8n/di';
-import type { PackageDirectoryLoader } from 'n8n-core';
-import { InstanceSettings } from 'n8n-core';
-import { ensureError } from '@n8n/utils/errors/ensure-error';
+import { Logger } from '@MNI/backend-common';
+import { OutboundHttp, type HttpRequestClient } from '@MNI/backend-network';
+import { BUILTIN_NODES_PACKAGES, LICENSE_FEATURES, Time } from '@MNI/constants';
+import { OnPubSubEvent } from '@MNI/decorators';
+import { Service } from '@MNI/di';
+import type { PackageDirectoryLoader } from 'MNI-core';
+import { InstanceSettings } from 'MNI-core';
+import { ensureError } from '@MNI/utils/errors/ensure-error';
 import {
 	checkNodesApiVersion,
 	jsonParse,
-	N8N_NODES_API_VERSION,
+	MNI_NODES_API_VERSION,
 	UnexpectedError,
 	UserError,
 	type NodesApiVersionPackageJson,
 	type PublicInstalledPackage,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import { execFile } from 'node:child_process';
 import { access, constants, mkdir, readFile, rename, rm, writeFile } from 'node:fs/promises';
 import { join, relative, resolve, sep } from 'node:path';
@@ -90,7 +90,7 @@ export class CommunityPackagesService {
 		outboundHttp: OutboundHttp,
 	) {
 		this.http = outboundHttp.requests({
-			useDefaultSsrfPolicy: 'unsafe', // Fixed, n8n-controlled host
+			useDefaultSsrfPolicy: 'unsafe', // Fixed, MNI-controlled host
 			timeout: REQUEST_TIMEOUT_MS,
 		});
 	}
@@ -233,11 +233,11 @@ export class CommunityPackagesService {
 	}
 
 	async checkNpmPackageStatus(packageName: string) {
-		const N8N_BACKEND_SERVICE_URL = 'https://api.n8n.io/api/package';
+		const MNI_BACKEND_SERVICE_URL = 'https://api.n8n.io/api/package';
 
 		try {
 			const response = await this.http.request<CommunityPackages.PackageStatusCheck>({
-				url: N8N_BACKEND_SERVICE_URL,
+				url: MNI_BACKEND_SERVICE_URL,
 				method: 'POST',
 				body: { name: packageName },
 				json: true,
@@ -309,10 +309,10 @@ export class CommunityPackagesService {
 		throw new IncompatibleNodesApiVersionError(
 			isMalformed
 				? `This community node declares an invalid MNI node API version (${JSON.stringify(check.declared)}). Install a version of the package with valid metadata or contact the package author.`
-				: "This community node isn't compatible with your version of n8n. Update MNI to use it.",
+				: "This community node isn't compatible with your version of MNI. Update MNI to use it.",
 			{
 				requiredNodesApiVersion: isMalformed ? null : Number(check.declared),
-				supportedNodesApiVersion: N8N_NODES_API_VERSION,
+				supportedNodesApiVersion: MNI_NODES_API_VERSION,
 			},
 		);
 	}
@@ -370,7 +370,7 @@ export class CommunityPackagesService {
 				const requirement =
 					apiVersionCheck.reason === 'malformed'
 						? `an invalid n8nNodesApiVersion (${JSON.stringify(apiVersionCheck.declared)})`
-						: `node API version ${String(apiVersionCheck.declared)}, but this MNI version supports up to ${N8N_NODES_API_VERSION}`;
+						: `node API version ${String(apiVersionCheck.declared)}, but this MNI version supports up to ${MNI_NODES_API_VERSION}`;
 				this.logger.warn(
 					`Not reinstalling package "${installedPackage.packageName}": it requires ${requirement}. Upgrade MNI to use this package, or uninstall it in Settings > Community nodes.`,
 				);

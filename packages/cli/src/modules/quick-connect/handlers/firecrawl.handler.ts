@@ -1,7 +1,7 @@
-import { OutboundHttp, type HttpRequestClient } from '@n8n/backend-network';
-import { Time } from '@n8n/constants';
-import type { User } from '@n8n/db';
-import { Service } from '@n8n/di';
+import { OutboundHttp, type HttpRequestClient } from '@MNI/backend-network';
+import { Time } from '@MNI/constants';
+import type { User } from '@MNI/db';
+import { Service } from '@MNI/di';
 
 import { FirecrawlQuickConnect } from '../quick-connect.config';
 import { IQuickConnectHandler } from './handler.interface';

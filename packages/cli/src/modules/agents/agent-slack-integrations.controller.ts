@@ -8,9 +8,9 @@ import {
 	type SlackManagedAppSettings,
 	type SlackManagedSetupState,
 	UpdateSlackManagedAppSettingsDto,
-} from '@n8n/api-types';
-import type { AuthenticatedRequest } from '@n8n/db';
-import { Body, Get, Param, Post, ProjectScope, RestController } from '@n8n/decorators';
+} from '@MNI/api-types';
+import type { AuthenticatedRequest } from '@MNI/db';
+import { Body, Get, Param, Post, ProjectScope, RestController } from '@MNI/decorators';
 import type { Request, Response } from 'express';
 
 import { SlackManagedSetupService } from './integrations/platforms/slack/slack-managed-setup.service';

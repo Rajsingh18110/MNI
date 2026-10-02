@@ -1,4 +1,4 @@
-import { type PushMessage } from '@n8n/api-types';
+import { type PushMessage } from '@MNI/api-types';
 import EventEmitter from 'node:events';
 import { mock } from 'vitest-mock-extended';
 

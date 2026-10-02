@@ -6,8 +6,8 @@ import type {
 	INodePropertyOptions,
 	INodeType,
 	INodeTypeDescription,
-} from 'n8n-workflow';
-import { NodeConnectionTypes } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeConnectionTypes } from 'MNI-workflow';
 
 import { lingvaNexApiRequest } from './GenericFunctions';
 
@@ -15,7 +15,7 @@ export class LingvaNex implements INodeType {
 	description: INodeTypeDescription = {
 		displayName: 'LingvaNex',
 		name: 'lingvaNex',
-		// eslint-disable-next-line n8n-nodes-base/node-class-description-icon-not-svg
+		// eslint-disable-next-line MNI-nodes-base/node-class-description-icon-not-svg
 		icon: 'file:lingvanex.png',
 		group: ['output'],
 		version: 1,
@@ -66,7 +66,7 @@ export class LingvaNex implements INodeType {
 				},
 			},
 			{
-				// eslint-disable-next-line n8n-nodes-base/node-param-display-name-wrong-for-dynamic-options
+				// eslint-disable-next-line MNI-nodes-base/node-param-display-name-wrong-for-dynamic-options
 				displayName: 'Translate To',
 				name: 'translateTo',
 				type: 'options',
@@ -96,7 +96,7 @@ export class LingvaNex implements INodeType {
 				},
 				options: [
 					{
-						// eslint-disable-next-line n8n-nodes-base/node-param-display-name-wrong-for-dynamic-options
+						// eslint-disable-next-line MNI-nodes-base/node-param-display-name-wrong-for-dynamic-options
 						displayName: 'From',
 						name: 'from',
 						type: 'options',

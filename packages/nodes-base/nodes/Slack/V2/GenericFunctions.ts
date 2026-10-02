@@ -1,6 +1,6 @@
-import { Container } from '@n8n/di';
+import { Container } from '@MNI/di';
 import get from 'lodash/get';
-import { buildHitlCallbackReference, InstanceSettings } from 'n8n-core';
+import { buildHitlCallbackReference, InstanceSettings } from 'MNI-core';
 import type {
 	IDataObject,
 	IExecuteFunctions,
@@ -9,10 +9,10 @@ import type {
 	IHttpRequestMethods,
 	IRequestOptions,
 	IWebhookFunctions,
-} from 'n8n-workflow';
-import { NodeOperationError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeOperationError } from 'MNI-workflow';
 
-import { sleep } from '@n8n/utils/sleep';
+import { sleep } from '@MNI/utils/sleep';
 import {
 	HITL_APPROVE_ACTION_ID,
 	HITL_DECLINE_ACTION_ID,
@@ -408,8 +408,8 @@ export function getMessageContent(
 	) as IDataObject;
 
 	const { id } = this.getWorkflow();
-	const automatedMessage = `_Automated with this <${this.getInstanceBaseUrl()}workflow/${id}?utm_source=n8n-internal&utm_medium=powered_by&utm_campaign=${encodeURIComponent(
-		'n8n-nodes-base.slack',
+	const automatedMessage = `_Automated with this <${this.getInstanceBaseUrl()}workflow/${id}?utm_source=MNI-internal&utm_medium=powered_by&utm_campaign=${encodeURIComponent(
+		'MNI-nodes-base.slack',
 	)}${instanceId ? '_' + instanceId : ''}|MNI workflow>_`;
 	const messageType = this.getNodeParameter('messageType', i) as string;
 
@@ -599,7 +599,7 @@ export function createSendAndWaitMessageBody(context: IExecuteFunctions) {
 	if (config.appendAttribution) {
 		const instanceId = context.getInstanceId();
 		const attributionText = 'This message was sent automatically with ';
-		const link = createUtmCampaignLink('n8n-nodes-base.slack', instanceId);
+		const link = createUtmCampaignLink('MNI-nodes-base.slack', instanceId);
 		body.blocks.push({
 			type: 'section',
 			text: {

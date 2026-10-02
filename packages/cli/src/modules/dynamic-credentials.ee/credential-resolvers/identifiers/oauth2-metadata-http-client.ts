@@ -1,8 +1,8 @@
-import { Logger } from '@n8n/backend-common';
-import { OutboundHttp, type HttpRequestClient } from '@n8n/backend-network';
-import { Time } from '@n8n/constants';
-import { Service } from '@n8n/di';
-import type { IHttpRequestOptions, IN8nHttpFullResponse } from 'n8n-workflow';
+import { Logger } from '@MNI/backend-common';
+import { OutboundHttp, type HttpRequestClient } from '@MNI/backend-network';
+import { Time } from '@MNI/constants';
+import { Service } from '@MNI/di';
+import type { IHttpRequestOptions, IN8nHttpFullResponse } from 'MNI-workflow';
 import type { z } from 'zod';
 
 import { IdentifierValidationError } from './identifier-interface';

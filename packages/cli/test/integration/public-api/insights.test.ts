@@ -1,11 +1,11 @@
-import { insightsSummarySchema } from '@n8n/api-types';
+import { insightsSummarySchema } from '@MNI/api-types';
 import {
 	createTeamProject,
 	createWorkflow,
 	linkUserToProject,
 	testDb,
-} from '@n8n/backend-test-utils';
-import { type Project, type User } from '@n8n/db';
+} from '@MNI/backend-test-utils';
+import { type Project, type User } from '@MNI/db';
 import { DateTime } from 'luxon';
 
 import { AUTH_COOKIE_NAME } from '@/constants';

@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import type { ViewUpdate } from '@codemirror/view';
-import type { CodeExecutionMode, CodeNodeEditorLanguage } from 'n8n-workflow';
+import type { CodeExecutionMode, CodeNodeEditorLanguage } from 'MNI-workflow';
 import { computed, onBeforeUnmount, onMounted, ref, toRaw, watch } from 'vue';
 
 import { CODE_NODE_TYPE } from '@/app/constants';
 import { codeNodeEditorEventBus } from '@/app/event-bus';
-import { useRootStore } from '@n8n/stores/useRootStore';
+import { useRootStore } from '@MNI/stores/useRootStore';
 
 import { useCodeEditor } from '../../composables/useCodeEditor';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
 import { CODE_PLACEHOLDERS } from './constants';
 import { useLinter } from './linter';
 import { injectWorkflowDocumentStore } from '@/app/stores/workflowDocument.store';

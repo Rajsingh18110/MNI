@@ -1,9 +1,9 @@
 import { Expression } from '../src/expression';
 
-// Only runs when N8N_EXPRESSION_ENGINE is set to 'vm' or 'quickjs'.
+// Only runs when MNI_EXPRESSION_ENGINE is set to 'vm' or 'quickjs'.
 // Initializes the expression evaluator once per vitest worker before all tests,
 // and disposes it after.
-const engine = process.env.N8N_EXPRESSION_ENGINE as 'vm' | 'quickjs' | undefined;
+const engine = process.env.MNI_EXPRESSION_ENGINE as 'vm' | 'quickjs' | undefined;
 if (engine === 'vm' || engine === 'quickjs') {
 	beforeAll(async () => {
 		await Expression.initExpressionEngine({

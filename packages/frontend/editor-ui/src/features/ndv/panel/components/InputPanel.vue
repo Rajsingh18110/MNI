@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import { useInjectWorkflowId } from '@/app/composables/useInjectWorkflowId';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
 import {
 	CRON_NODE_TYPE,
 	INTERVAL_NODE_TYPE,
@@ -21,7 +21,7 @@ import {
 	type NodeConnectionType,
 	NodeConnectionTypes,
 	NodeHelpers,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import { computed, ref, watch } from 'vue';
 import InputNodeSelect from './InputNodeSelect.vue';
 import NodeExecuteButton from '@/app/components/NodeExecuteButton.vue';
@@ -35,7 +35,7 @@ import { type SearchShortcut } from '@/features/workflows/canvas/canvas.types';
 import { useRouter } from 'vue-router';
 import { useRunWorkflow } from '@/app/composables/useRunWorkflow';
 
-import { N8nSegmentControl, N8nText } from '@n8n/design-system';
+import { N8nSegmentControl, N8nText } from '@MNI/design-system';
 type MappingMode = 'debugging' | 'mapping';
 
 export type Props = {
@@ -591,7 +591,7 @@ function handleChangeCollapsingColumn(columnName: string | null) {
 
 		<template #node-waiting>
 			<NDVEmptyState :title="i18n.baseText('ndv.output.waitNodeWaiting.title')" wide>
-				<span v-n8n-html="waitingMessage"></span>
+				<span v-MNI-html="waitingMessage"></span>
 			</NDVEmptyState>
 		</template>
 

@@ -1,6 +1,6 @@
-import type { CredentialProvider } from '@n8n/agents';
-import { getProviderPrefix } from '@n8n/ai-utilities/agent-config';
-import { getRequiredNodeCredentialSlots } from '@n8n/ai-utilities/node-catalog';
+import type { CredentialProvider } from '@MNI/agents';
+import { getProviderPrefix } from '@MNI/ai-utilities/agent-config';
+import { getRequiredNodeCredentialSlots } from '@MNI/ai-utilities/node-catalog';
 import {
 	AgentModelSchema,
 	AI_GATEWAY_MANAGED_TAG,
@@ -19,15 +19,15 @@ import {
 	type AgentJsonNodeToolConfig,
 	type AgentJsonWorkflowToolConfig,
 	type AgentSkill,
-} from '@n8n/api-types';
-import { WorkflowRepository, type WorkflowEntity } from '@n8n/db';
-import { Service } from '@n8n/di';
+} from '@MNI/api-types';
+import { WorkflowRepository, type WorkflowEntity } from '@MNI/db';
+import { Service } from '@MNI/di';
 import {
 	isMcpOAuth2Authentication,
 	NodeHelpers,
 	type INodeParameters,
 	type INodeTypeDescription,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { getMissingSkillIds } from '@/modules/agents/utils/agent-missing-skill-ids';
 import { NodeTypes } from '@/node-types';
@@ -485,7 +485,7 @@ export class AgentValidationService {
 	) {
 		for (let index = 0; index < integrations.length; index++) {
 			const integration = integrations[index];
-			if (integration.type === 'n8n_chat') continue;
+			if (integration.type === 'MNI_chat') continue;
 			const path = `integrations.${index}.credentialId`;
 			const capability: AgentConfigValidationIssue['capability'] = {
 				kind: 'channel',

@@ -1,5 +1,5 @@
 import { shallowRef } from 'vue';
-import { createRunExecutionData, NodeConnectionTypes, type ExecutionError } from 'n8n-workflow';
+import { createRunExecutionData, NodeConnectionTypes, type ExecutionError } from 'MNI-workflow';
 import {
 	createTestNode,
 	createTestTaskData,

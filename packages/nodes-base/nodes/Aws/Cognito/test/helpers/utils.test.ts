@@ -1,7 +1,7 @@
 import { mock } from 'vitest-mock-extended';
 import type { MockProxy } from 'vitest-mock-extended';
-import type { IExecuteSingleFunctions, IHttpRequestOptions } from 'n8n-workflow';
-import { NodeOperationError, NodeApiError } from 'n8n-workflow';
+import type { IExecuteSingleFunctions, IHttpRequestOptions } from 'MNI-workflow';
+import { NodeOperationError, NodeApiError } from 'MNI-workflow';
 
 import {
 	getUserPool,

@@ -1,14 +1,14 @@
 {
-  "name": "n8n-core",
+  "name": "MNI-core",
   "version": "2.41.0",
   "description": "Core functionality of MNI",
   "main": "dist/index",
   "types": "dist/index.d.ts",
   "bin": {
-    "n8n-copy-static-files": "./bin/copy-static-files",
-    "n8n-generate-translations": "./bin/generate-translations",
-    "n8n-generate-metadata": "./bin/generate-metadata",
-    "n8n-generate-node-defs": "./bin/generate-node-defs"
+    "MNI-copy-static-files": "./bin/copy-static-files",
+    "MNI-generate-translations": "./bin/generate-translations",
+    "MNI-generate-metadata": "./bin/generate-metadata",
+    "MNI-generate-node-defs": "./bin/generate-node-defs"
   },
   "scripts": {
     "clean": "rimraf dist .turbo",
@@ -31,9 +31,9 @@
     "bin"
   ],
   "devDependencies": {
-    "@n8n/playwright-janitor": "workspace:*",
-    "@n8n/typescript-config": "workspace:*",
-    "@n8n/typeorm": "workspace:*",
+    "@MNI/playwright-janitor": "workspace:*",
+    "@MNI/typescript-config": "workspace:*",
+    "@MNI/typeorm": "workspace:*",
     "@types/express": "catalog:",
     "@types/jsonwebtoken": "catalog:",
     "@types/lodash": "catalog:",
@@ -42,7 +42,7 @@
     "@types/ms": "catalog:",
     "@types/ssh2": "catalog:",
     "@types/uuid": "catalog:",
-    "@n8n/vitest-config": "workspace:*",
+    "@MNI/vitest-config": "workspace:*",
     "@vitest/coverage-istanbul": "catalog:",
     "@vitest/coverage-v8": "catalog:",
     "axios": "catalog:",
@@ -59,17 +59,17 @@
   },
   "dependencies": {
     "@langchain/core": "catalog:",
-    "@n8n/backend-common": "workspace:*",
-    "@n8n/backend-network": "workspace:*",
-    "@n8n/blob-storage": "workspace:*",
-    "@n8n/client-oauth2": "workspace:*",
-    "@n8n/config": "workspace:*",
-    "@n8n/constants": "workspace:*",
-    "@n8n/decorators": "workspace:*",
-    "@n8n/di": "workspace:*",
-    "@n8n/errors": "workspace:*",
-    "@n8n/utils": "workspace:*",
-    "@n8n/workflow-sdk": "workspace:*",
+    "@MNI/backend-common": "workspace:*",
+    "@MNI/backend-network": "workspace:*",
+    "@MNI/blob-storage": "workspace:*",
+    "@MNI/client-oauth2": "workspace:*",
+    "@MNI/config": "workspace:*",
+    "@MNI/constants": "workspace:*",
+    "@MNI/decorators": "workspace:*",
+    "@MNI/di": "workspace:*",
+    "@MNI/errors": "workspace:*",
+    "@MNI/utils": "workspace:*",
+    "@MNI/workflow-sdk": "workspace:*",
     "@sentry/core": "catalog:sentry",
     "@sentry/node": "catalog:sentry",
     "@sentry/node-native": "catalog:sentry",
@@ -85,7 +85,7 @@
     "luxon": "catalog:",
     "mime-types": "catalog:",
     "ms": "catalog:",
-    "n8n-workflow": "workspace:*",
+    "MNI-workflow": "workspace:*",
     "nanoid": "catalog:",
     "oauth-1.0a": "2.2.6",
     "p-cancelable": "2.1.1",
@@ -94,5 +94,5 @@
     "ssh2": "catalog:",
     "uuid": "catalog:"
   },
-  "license": "LicenseRef-n8n-sustainable-use"
+  "license": "LicenseRef-MNI-sustainable-use"
 }

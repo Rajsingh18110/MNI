@@ -1,11 +1,11 @@
-import type { Violation } from '@n8n/rules-engine';
+import type { Violation } from '@MNI/rules-engine';
 import {
 	AstRule,
 	classHasDecorator,
 	getDecoratorByName,
 	getDecoratorObjectFlag,
-} from '@n8n/rules-engine/ast';
-import type { AstProjectConfig } from '@n8n/rules-engine/ast';
+} from '@MNI/rules-engine/ast';
+import type { AstProjectConfig } from '@MNI/rules-engine/ast';
 import type { Project } from 'ts-morph';
 
 import type { CodeHealthContext } from '../context.js';

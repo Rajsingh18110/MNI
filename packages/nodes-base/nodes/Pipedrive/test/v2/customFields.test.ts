@@ -1,4 +1,4 @@
-import type { IDataObject, INodeExecutionData } from 'n8n-workflow';
+import type { IDataObject, INodeExecutionData } from 'MNI-workflow';
 
 import { encodeCustomFieldsV2, resolveCustomFieldsV2 } from '../../v2/helpers/customFields';
 import { addFieldsToBody } from '../../v2/helpers/fields';

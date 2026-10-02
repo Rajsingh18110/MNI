@@ -1,4 +1,4 @@
-import { Service } from '@n8n/di';
+import { Service } from '@MNI/di';
 
 /**
  * Lets a module react to workflow mutations without core depending on the

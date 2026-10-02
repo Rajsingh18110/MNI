@@ -1,4 +1,4 @@
-import type { InstanceAiAdminSettingsResponse } from '@n8n/api-types';
+import type { InstanceAiAdminSettingsResponse } from '@MNI/api-types';
 
 import { deriveInstanceAiConfiguration } from './useInstanceAiConfiguration';
 
@@ -10,7 +10,7 @@ function createSettings(
 		permissions: {} as InstanceAiAdminSettingsResponse['permissions'],
 		mcpAccessEnabled: false,
 		sandboxEnabled: false,
-		sandboxProvider: 'n8n-sandbox',
+		sandboxProvider: 'MNI-sandbox',
 		daytonaCredentialId: null,
 		n8nSandboxCredentialId: null,
 		searchCredentialId: null,

@@ -2,15 +2,15 @@
 import type { IAiDataContent } from '@/Interface';
 import capitalize from 'lodash/capitalize';
 import { computed, onMounted, ref, watch } from 'vue';
-import type { NodeConnectionType, NodeError } from 'n8n-workflow';
-import { NodeConnectionTypes } from 'n8n-workflow';
+import type { NodeConnectionType, NodeError } from 'MNI-workflow';
+import { NodeConnectionTypes } from 'MNI-workflow';
 import RunDataAi from '../RunDataParsedAiContent.vue';
 import { parseAiContent } from '@/app/utils/aiUtils';
-import { N8nButton, N8nIcon, N8nSegmentControl } from '@n8n/design-system';
+import { N8nButton, N8nIcon, N8nSegmentControl } from '@MNI/design-system';
 import NodeErrorView from '../error/NodeErrorView.vue';
 import { saveAs } from 'file-saver';
 import { MAX_DISPLAY_DATA_SIZE_LOGS_VIEW } from '@/app/constants';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import NDVEmptyState from '@/features/ndv/panel/components/NDVEmptyState.vue';
 
 const props = defineProps<{
@@ -136,7 +136,7 @@ watch(
 					"
 					:class="$style.warningState"
 				>
-					<span v-n8n-html="i18n.baseText('ndv.tooMuchData.message')" />
+					<span v-MNI-html="i18n.baseText('ndv.tooMuchData.message')" />
 				</NDVEmptyState>
 				<div :class="$style.warningActions">
 					<N8nButton
@@ -240,7 +240,7 @@ watch(
 	align-items: center;
 }
 
-.warningActions :global(.n8n-button) {
+.warningActions :global(.MNI-button) {
 	min-width: 9rem;
 }
 </style>

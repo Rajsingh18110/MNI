@@ -1,17 +1,17 @@
 import { usePostHog } from '@/app/stores/posthog.store';
 import { MODAL_CONFIRM } from '@/app/constants';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { useQuickConnect } from './useQuickConnect';
-import type { QuickConnectOption } from '@n8n/api-types';
+import type { QuickConnectOption } from '@MNI/api-types';
 import { mockedStore, SETTINGS_STORE_DEFAULT_STATE } from '@/__tests__/utils';
 import { setActivePinia } from 'pinia';
 import { createTestingPinia } from '@pinia/testing';
-import { STORES } from '@n8n/stores';
+import { STORES } from '@MNI/stores';
 import merge from 'lodash/merge';
-import type * as i18n from '@n8n/i18n';
+import type * as i18n from '@MNI/i18n';
 
-vi.mock('@n8n/composables/useTelemetry', () => {
+vi.mock('@MNI/composables/useTelemetry', () => {
 	const track = vi.fn();
 	return { useTelemetry: () => ({ track }) };
 });
@@ -33,7 +33,7 @@ vi.mock('../../composables/useCredentialOAuth', () => ({
 const { mockToastShowError } = vi.hoisted(() => ({
 	mockToastShowError: vi.fn(),
 }));
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: () => ({
 		showError: mockToastShowError,
 	}),
@@ -42,7 +42,7 @@ vi.mock('@n8n/composables/useToast', () => ({
 const { mockI18nBaseText } = vi.hoisted(() => ({
 	mockI18nBaseText: vi.fn((key: string) => key),
 }));
-vi.mock('@n8n/i18n', async (importOriginal) => {
+vi.mock('@MNI/i18n', async (importOriginal) => {
 	const actual = await importOriginal<typeof i18n>();
 	return {
 		...actual,
@@ -97,7 +97,7 @@ const mockUsersState = vi.hoisted(() => ({
 		lastName?: string | null;
 	} | null,
 }));
-vi.mock('@n8n/stores/users.store', () => ({
+vi.mock('@MNI/stores/users.store', () => ({
 	useUsersStore: () => mockUsersState,
 }));
 
@@ -142,7 +142,7 @@ describe('useQuickConnect()', () => {
 
 	describe('quick connect configured', () => {
 		const quickConnectOptionData: QuickConnectOption = {
-			packageName: 'n8n-nodes-base',
+			packageName: 'MNI-nodes-base',
 			credentialType: 'googleSheetsOAuth2Api',
 			text: 'Google Sheets',
 			quickConnectType: 'oauth',
@@ -159,14 +159,14 @@ describe('useQuickConnect()', () => {
 				const { getQuickConnectOption } = useQuickConnect();
 
 				expect(
-					getQuickConnectOption('googleSheetsOAuth2Api', 'n8n-nodes-base.googleSheets'),
+					getQuickConnectOption('googleSheetsOAuth2Api', 'MNI-nodes-base.googleSheets'),
 				).toEqual(quickConnectOptionData);
 			});
 
 			it('returns undefined when credential type does not match', () => {
 				const { getQuickConnectOption } = useQuickConnect();
 
-				expect(getQuickConnectOption('slackOAuth2Api', 'n8n-nodes-base.slack')).toBe(undefined);
+				expect(getQuickConnectOption('slackOAuth2Api', 'MNI-nodes-base.slack')).toBe(undefined);
 			});
 
 			it('returns undefined when package name does not match', () => {
@@ -181,7 +181,7 @@ describe('useQuickConnect()', () => {
 				settingsStore.moduleSettings['quick-connect'] = {
 					options: [
 						{
-							packageName: '@n8n',
+							packageName: '@MNI',
 							credentialType: 'openAiApi',
 							text: 'OpenAI',
 							quickConnectType: 'oauth',
@@ -198,7 +198,7 @@ describe('useQuickConnect()', () => {
 				settingsStore.moduleSettings['quick-connect'] = { options: [] };
 				const { getQuickConnectOption } = useQuickConnect();
 
-				expect(getQuickConnectOption('googleSheetsOAuth2Api', 'n8n-nodes-base.googleSheets')).toBe(
+				expect(getQuickConnectOption('googleSheetsOAuth2Api', 'MNI-nodes-base.googleSheets')).toBe(
 					undefined,
 				);
 			});
@@ -207,7 +207,7 @@ describe('useQuickConnect()', () => {
 				settingsStore.moduleSettings = {};
 				const { getQuickConnectOption } = useQuickConnect();
 
-				expect(getQuickConnectOption('googleSheetsOAuth2Api', 'n8n-nodes-base.googleSheets')).toBe(
+				expect(getQuickConnectOption('googleSheetsOAuth2Api', 'MNI-nodes-base.googleSheets')).toBe(
 					undefined,
 				);
 			});
@@ -275,7 +275,7 @@ describe('useQuickConnect()', () => {
 			it('returns correct option for configured package', () => {
 				const { getQuickConnectOptionByPackageName } = useQuickConnect();
 
-				expect(getQuickConnectOptionByPackageName('n8n-nodes-base')).toEqual(
+				expect(getQuickConnectOptionByPackageName('MNI-nodes-base')).toEqual(
 					quickConnectOptionData,
 				);
 			});
@@ -290,13 +290,13 @@ describe('useQuickConnect()', () => {
 		it('reacts to settings store changes', () => {
 			const { getQuickConnectOptionByPackageName } = useQuickConnect();
 
-			expect(getQuickConnectOptionByPackageName('n8n-nodes-base')).toEqual(quickConnectOptionData);
+			expect(getQuickConnectOptionByPackageName('MNI-nodes-base')).toEqual(quickConnectOptionData);
 
 			settingsStore.moduleSettings['quick-connect'] = {
 				options: [],
 			};
 
-			expect(getQuickConnectOptionByPackageName('n8n-nodes-base')).toBe(undefined);
+			expect(getQuickConnectOptionByPackageName('MNI-nodes-base')).toBe(undefined);
 		});
 
 		describe('connect()', () => {
@@ -306,7 +306,7 @@ describe('useQuickConnect()', () => {
 
 				await connect({
 					credentialTypeName: 'googleSheetsOAuth2Api',
-					nodeType: 'n8n-nodes-base.googleSheets',
+					nodeType: 'MNI-nodes-base.googleSheets',
 					source: 'node_type',
 					serviceName: 'Google',
 				});
@@ -314,7 +314,7 @@ describe('useQuickConnect()', () => {
 				expect(telemetry.track).toHaveBeenCalledWith('User clicked quick connect button', {
 					source: 'node_type',
 					credential_type: 'googleSheetsOAuth2Api',
-					node_type: 'n8n-nodes-base.googleSheets',
+					node_type: 'MNI-nodes-base.googleSheets',
 				});
 			});
 
@@ -325,14 +325,14 @@ describe('useQuickConnect()', () => {
 				const { connect } = useQuickConnect();
 				await connect({
 					credentialTypeName: 'slackOAuth2Api',
-					nodeType: 'n8n-nodes-base.slack',
+					nodeType: 'MNI-nodes-base.slack',
 					source: 'node_type',
 					serviceName: 'Slack',
 				});
 
 				expect(mockCreateAndAuthorize).toHaveBeenCalledWith(
 					'slackOAuth2Api',
-					'n8n-nodes-base.slack',
+					'MNI-nodes-base.slack',
 				);
 			});
 
@@ -342,14 +342,14 @@ describe('useQuickConnect()', () => {
 				mockCreateAndAuthorize.mockResolvedValue(null);
 				await useQuickConnect().connect({
 					credentialTypeName: 'slackOAuth2Api',
-					nodeType: 'n8n-nodes-base.slack',
+					nodeType: 'MNI-nodes-base.slack',
 					source: 'credential_type',
 					serviceName: 'Slack',
 					description: 'Stored description',
 				});
 				expect(mockCreateAndAuthorize).toHaveBeenCalledExactlyOnceWith(
 					'slackOAuth2Api',
-					'n8n-nodes-base.slack',
+					'MNI-nodes-base.slack',
 				);
 			});
 
@@ -359,7 +359,7 @@ describe('useQuickConnect()', () => {
 
 				await useQuickConnect().connect({
 					credentialTypeName: 'slackOAuth2Api',
-					nodeType: 'n8n-nodes-base.slack',
+					nodeType: 'MNI-nodes-base.slack',
 					source: 'credential_type',
 					serviceName: 'Slack',
 					description: 'Use for production alerts',
@@ -367,12 +367,12 @@ describe('useQuickConnect()', () => {
 
 				expect(mockCreateAndAuthorize).toHaveBeenCalledExactlyOnceWith(
 					'slackOAuth2Api',
-					'n8n-nodes-base.slack',
+					'MNI-nodes-base.slack',
 					{ description: 'Use for production alerts' },
 				);
 			});
 
-			describe.each(['@n8n/n8n-nodes-langchain', '@n8n/n8n-nodes-langchain.pinecone'])(
+			describe.each(['@MNI/MNI-nodes-langchain', '@MNI/MNI-nodes-langchain.pinecone'])(
 				'pinecone quick connect with packageName configured as "%s"',
 				(packageName) => {
 					const pineconeOption: QuickConnectOption = {
@@ -424,7 +424,7 @@ describe('useQuickConnect()', () => {
 						const { connect } = useQuickConnect();
 						const result = await connect({
 							credentialTypeName: 'pineconeApi',
-							nodeType: '@n8n/n8n-nodes-langchain.pinecone',
+							nodeType: '@MNI/MNI-nodes-langchain.pinecone',
 							source: 'node_type',
 							serviceName: 'Pinecone',
 						});
@@ -464,7 +464,7 @@ describe('useQuickConnect()', () => {
 						const { connect } = useQuickConnect();
 						await connect({
 							credentialTypeName: 'pineconeApi',
-							nodeType: '@n8n/n8n-nodes-langchain.pinecone',
+							nodeType: '@MNI/MNI-nodes-langchain.pinecone',
 							source: 'node_type',
 							serviceName: 'Pinecone',
 						});
@@ -487,7 +487,7 @@ describe('useQuickConnect()', () => {
 						const { connect } = useQuickConnect();
 						await connect({
 							credentialTypeName: 'pineconeApi',
-							nodeType: '@n8n/n8n-nodes-langchain.pinecone',
+							nodeType: '@MNI/MNI-nodes-langchain.pinecone',
 							source: 'node_type',
 							serviceName: 'Pinecone',
 						});
@@ -502,7 +502,7 @@ describe('useQuickConnect()', () => {
 						const { connect } = useQuickConnect();
 						const result = await connect({
 							credentialTypeName: 'pineconeApi',
-							nodeType: '@n8n/n8n-nodes-langchain.pinecone',
+							nodeType: '@MNI/MNI-nodes-langchain.pinecone',
 							source: 'node_type',
 							serviceName: 'Pinecone',
 						});
@@ -524,7 +524,7 @@ describe('useQuickConnect()', () => {
 						const { connect } = useQuickConnect();
 						const result = await connect({
 							credentialTypeName: 'pineconeApi',
-							nodeType: '@n8n/n8n-nodes-langchain.pinecone',
+							nodeType: '@MNI/MNI-nodes-langchain.pinecone',
 							source: 'node_type',
 							serviceName: 'Pinecone',
 						});
@@ -548,7 +548,7 @@ describe('useQuickConnect()', () => {
 						const { connect } = useQuickConnect();
 						const result = await connect({
 							credentialTypeName: 'pineconeApi',
-							nodeType: '@n8n/n8n-nodes-langchain.pinecone',
+							nodeType: '@MNI/MNI-nodes-langchain.pinecone',
 							source: 'node_type',
 							serviceName: 'Pinecone',
 						});
@@ -562,7 +562,7 @@ describe('useQuickConnect()', () => {
 
 					describe('firecrawl quick connect', () => {
 						const firecrawlOption: QuickConnectOption = {
-							packageName: 'n8n-nodes-firecrawl',
+							packageName: 'MNI-nodes-firecrawl',
 							credentialType: 'firecrawlApi',
 							text: 'Firecrawl',
 							quickConnectType: 'firecrawl',
@@ -592,7 +592,7 @@ describe('useQuickConnect()', () => {
 							const { connect } = useQuickConnect();
 							await connect({
 								credentialTypeName: 'firecrawlApi',
-								nodeType: 'n8n-nodes-firecrawl.firecrawl',
+								nodeType: 'MNI-nodes-firecrawl.firecrawl',
 								source: 'node_type',
 								serviceName: 'Firecrawl',
 							});
@@ -615,7 +615,7 @@ describe('useQuickConnect()', () => {
 							const { connect } = useQuickConnect();
 							await connect({
 								credentialTypeName: 'firecrawlApi',
-								nodeType: 'n8n-nodes-firecrawl.firecrawl',
+								nodeType: 'MNI-nodes-firecrawl.firecrawl',
 								source: 'node_type',
 								serviceName: 'Firecrawl',
 							});
@@ -637,7 +637,7 @@ describe('useQuickConnect()', () => {
 							const { connect } = useQuickConnect();
 							await connect({
 								credentialTypeName: 'firecrawlApi',
-								nodeType: 'n8n-nodes-firecrawl.firecrawl',
+								nodeType: 'MNI-nodes-firecrawl.firecrawl',
 								source: 'node_type',
 								serviceName: 'Firecrawl',
 							});
@@ -662,7 +662,7 @@ describe('useQuickConnect()', () => {
 							const { connect } = useQuickConnect();
 							const result = await connect({
 								credentialTypeName: 'firecrawlApi',
-								nodeType: 'n8n-nodes-firecrawl.firecrawl',
+								nodeType: 'MNI-nodes-firecrawl.firecrawl',
 								source: 'node_type',
 								serviceName: 'Firecrawl',
 							});
@@ -683,7 +683,7 @@ describe('useQuickConnect()', () => {
 							const { connect } = useQuickConnect();
 							const result = await connect({
 								credentialTypeName: 'firecrawlApi',
-								nodeType: 'n8n-nodes-firecrawl.firecrawl',
+								nodeType: 'MNI-nodes-firecrawl.firecrawl',
 								source: 'node_type',
 								serviceName: 'Firecrawl',
 							});
@@ -696,7 +696,7 @@ describe('useQuickConnect()', () => {
 							mockedStore(usePostHog).isFeatureEnabled.mockReturnValue(false);
 							await useQuickConnect().connect({
 								credentialTypeName: 'firecrawlApi',
-								nodeType: 'n8n-nodes-firecrawl.firecrawl',
+								nodeType: 'MNI-nodes-firecrawl.firecrawl',
 								source: 'credential_type',
 								serviceName: 'Firecrawl',
 								description: 'Stored description',
@@ -708,7 +708,7 @@ describe('useQuickConnect()', () => {
 						it('includes the description in the created credential', async () => {
 							await useQuickConnect().connect({
 								credentialTypeName: 'firecrawlApi',
-								nodeType: 'n8n-nodes-firecrawl.firecrawl',
+								nodeType: 'MNI-nodes-firecrawl.firecrawl',
 								source: 'credential_type',
 								serviceName: 'Firecrawl',
 								description: 'Use for test crawls',
@@ -744,7 +744,7 @@ describe('useQuickConnect()', () => {
 								const { connect } = useQuickConnect();
 								await connect({
 									credentialTypeName: 'firecrawlApi',
-									nodeType: 'n8n-nodes-firecrawl.firecrawl',
+									nodeType: 'MNI-nodes-firecrawl.firecrawl',
 									source: 'node_type',
 									serviceName: 'Firecrawl',
 								});
@@ -771,7 +771,7 @@ describe('useQuickConnect()', () => {
 								const { connect } = useQuickConnect();
 								await connect({
 									credentialTypeName: 'firecrawlApi',
-									nodeType: 'n8n-nodes-firecrawl.firecrawl',
+									nodeType: 'MNI-nodes-firecrawl.firecrawl',
 									source: 'node_type',
 									serviceName: 'Firecrawl',
 								});
@@ -802,7 +802,7 @@ describe('useQuickConnect()', () => {
 								const { connect } = useQuickConnect();
 								await connect({
 									credentialTypeName: 'firecrawlApi',
-									nodeType: 'n8n-nodes-firecrawl.firecrawl',
+									nodeType: 'MNI-nodes-firecrawl.firecrawl',
 									source: 'node_type',
 									serviceName: 'Firecrawl',
 								});

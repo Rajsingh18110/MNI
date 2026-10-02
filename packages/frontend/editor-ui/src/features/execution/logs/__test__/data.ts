@@ -12,7 +12,7 @@ import {
 	WorkflowOperationError,
 	type IRunData,
 	type Workflow,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import type { LogTreeCreationContext } from '../logs.types';
 
 export function createTestLogTreeCreationContext(

@@ -6,14 +6,14 @@ import type {
 	INodeProperties,
 	INodePropertyCollection,
 	NodeParameterValueType,
-} from 'n8n-workflow';
-import { deepCopy, isINodePropertyCollectionList } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { deepCopy, isINodePropertyCollectionList } from 'MNI-workflow';
 
 import get from 'lodash/get';
 import isEqual from 'lodash/isEqual';
 
 import { computed, ref, watch, onBeforeMount } from 'vue';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import ParameterInputList from '../ParameterInputList.vue';
 import Draggable from 'vuedraggable';
 import { injectNDVStore } from '@/features/ndv/shared/ndv.store';
@@ -28,7 +28,7 @@ import {
 	N8nOption,
 	N8nSelect,
 	N8nText,
-} from '@n8n/design-system';
+} from '@MNI/design-system';
 import { injectWorkflowDocumentStore } from '@/app/stores/workflowDocument.store';
 
 const locale = useI18n();

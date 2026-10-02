@@ -1,4 +1,4 @@
-import { generateContentLengthHeader, isFormDataInstance } from '@n8n/backend-network/testing';
+import { generateContentLengthHeader, isFormDataInstance } from '@MNI/backend-network/testing';
 import type { AxiosRequestConfig } from 'axios';
 import FormData from 'form-data';
 import { Readable } from 'stream';

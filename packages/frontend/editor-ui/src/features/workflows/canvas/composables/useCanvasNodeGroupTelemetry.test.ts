@@ -1,8 +1,8 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { computed } from 'vue';
-import type { IWorkflowGroup } from 'n8n-workflow';
-import { NodeConnectionTypes } from 'n8n-workflow';
-import { TELEMETRY_EVENT } from '@n8n/telemetry';
+import type { IWorkflowGroup } from 'MNI-workflow';
+import { NodeConnectionTypes } from 'MNI-workflow';
+import { TELEMETRY_EVENT } from '@MNI/telemetry';
 import { createTestNode } from '@/__tests__/mocks';
 import { NO_OP_NODE_TYPE } from '@/app/constants';
 
@@ -17,7 +17,7 @@ const workflowDocumentStore = vi.hoisted(() => ({
 	connectionsBySourceNode: {},
 }));
 
-vi.mock('@n8n/composables/useTelemetry', () => ({
+vi.mock('@MNI/composables/useTelemetry', () => ({
 	useTelemetry: vi.fn(() => ({ track: trackSpy })),
 }));
 
@@ -25,7 +25,7 @@ vi.mock('@/app/stores/workflowDocument.store', () => ({
 	injectWorkflowDocumentStore: vi.fn(() => computed(() => workflowDocumentStore)),
 }));
 
-vi.mock('@n8n/stores/useRootStore', () => ({
+vi.mock('@MNI/stores/useRootStore', () => ({
 	useRootStore: vi.fn(() => ({ pushRef: 'push-ref-test' })),
 }));
 

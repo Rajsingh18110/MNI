@@ -3,7 +3,7 @@
 	"nodes": [
 		{
 			"parameters": {},
-			"type": "n8n-nodes-base.manualTrigger",
+			"type": "MNI-nodes-base.manualTrigger",
 			"typeVersion": 1,
 			"position": [0, -40],
 			"id": "efd3f04e-8695-4f2c-8f8d-0b0166390d3f",
@@ -12,7 +12,7 @@
 		{
 			"parameters": {
 				"operation": "getAll",
-				"tableName": "n8n-testing",
+				"tableName": "MNI-testing",
 				"keyConditionExpression": "id = :idVal",
 				"eavUi": {
 					"eavValues": [
@@ -35,7 +35,7 @@
 					}
 				}
 			},
-			"type": "n8n-nodes-base.awsDynamoDb",
+			"type": "MNI-nodes-base.awsDynamoDb",
 			"typeVersion": 1,
 			"position": [220, -340],
 			"id": "fe8a7fbf-83af-45bb-ae58-77f143ce2f30",
@@ -50,7 +50,7 @@
 		{
 			"parameters": {
 				"operation": "get",
-				"tableName": "n8n-testing",
+				"tableName": "MNI-testing",
 				"keysUi": {
 					"keyValues": [
 						{
@@ -75,7 +75,7 @@
 					}
 				}
 			},
-			"type": "n8n-nodes-base.awsDynamoDb",
+			"type": "MNI-nodes-base.awsDynamoDb",
 			"typeVersion": 1,
 			"position": [220, -140],
 			"id": "4cbddd91-c851-4ef6-b76a-d84d84f1d598",
@@ -89,7 +89,7 @@
 		},
 		{
 			"parameters": {
-				"tableName": "n8n-testing",
+				"tableName": "MNI-testing",
 				"fieldsUi": {
 					"fieldValues": [
 						{
@@ -126,7 +126,7 @@
 					}
 				}
 			},
-			"type": "n8n-nodes-base.awsDynamoDb",
+			"type": "MNI-nodes-base.awsDynamoDb",
 			"typeVersion": 1,
 			"position": [220, 60],
 			"id": "17eee2d1-6547-4d99-b168-74d407cc252c",
@@ -141,7 +141,7 @@
 		{
 			"parameters": {
 				"operation": "delete",
-				"tableName": "n8n-testing",
+				"tableName": "MNI-testing",
 				"keysUi": {
 					"keyValues": [
 						{
@@ -174,7 +174,7 @@
 					}
 				}
 			},
-			"type": "n8n-nodes-base.awsDynamoDb",
+			"type": "MNI-nodes-base.awsDynamoDb",
 			"typeVersion": 1,
 			"position": [220, 260],
 			"id": "6d266500-16b0-4ee9-a3b2-a4300bc23b1f",

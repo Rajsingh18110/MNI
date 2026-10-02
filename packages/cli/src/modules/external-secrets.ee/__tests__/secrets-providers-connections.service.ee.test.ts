@@ -1,12 +1,12 @@
-import { mockLogger } from '@n8n/backend-test-utils';
+import { mockLogger } from '@MNI/backend-test-utils';
 import type {
 	ProjectSecretsProviderAccess,
 	ProjectSecretsProviderAccessRepository,
 	SecretsProviderConnection,
 	SecretsProviderConnectionRepository,
-} from '@n8n/db';
-import { In } from '@n8n/typeorm';
-import { CREDENTIAL_BLANKING_VALUE, type IDataObject, type INodeProperties } from 'n8n-workflow';
+} from '@MNI/db';
+import { In } from '@MNI/typeorm';
+import { CREDENTIAL_BLANKING_VALUE, type IDataObject, type INodeProperties } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import type { CredentialDependencyService } from '@/credentials/credential-dependency.service';

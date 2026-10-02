@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import type { CallbackManager as CallbackManagerLC } from '@langchain/core/callbacks/manager';
-import type { LogScope } from '@n8n/config';
+import type { LogScope } from '@MNI/config';
 import type { AxiosProxyConfig, GenericAbortSignal } from 'axios';
 import type * as express from 'express';
 import type FormData from 'form-data';
@@ -38,8 +38,8 @@ import type {
 	WorkflowExecuteModeValues as WorkflowExecuteMode,
 } from './execution-context';
 import type { ExecutionStatus } from './execution-status';
-import type { IDeferredPromise } from '@n8n/utils/promise/deferred-promise';
-import type { Result } from '@n8n/utils/result';
+import type { IDeferredPromise } from '@MNI/utils/promise/deferred-promise';
+import type { Result } from '@MNI/utils/result';
 import type { Workflow } from './workflow';
 import type { EnvProviderState } from './workflow-data-proxy-env-provider';
 import type { IRunExecutionData } from './run-execution-data/run-execution-data';
@@ -778,7 +778,7 @@ namespace ExecuteFunctions {
 	}
 
 	export type GetNodeParameterFn = {
-		// @TECH_DEBT: Refactor to remove this barely used overload - N8N-5632
+		// @TECH_DEBT: Refactor to remove this barely used overload - MNI-5632
 		getNodeParameter<T extends { resource: string }>(
 			parameterName: 'resource',
 			itemIndex?: number,
@@ -992,7 +992,7 @@ interface NodeHelperFunctions {
  *   `SsrfProtectionConfig.enabled`. Reserve this for destinations that must
  *   stay guarded even on instances that leave protection off.
  * - `'unsafe'`: the client bypasses the policy unconditionally. Reserve this
- *   for fixed, n8n-owned or operator-configured destinations, and state the
+ *   for fixed, MNI-owned or operator-configured destinations, and state the
  *   reason in a comment at the call site.
  */
 export type UseDefaultSsrfPolicy = 'safe' | 'enforced' | 'unsafe';
@@ -1878,7 +1878,7 @@ export interface INodeExecutionData {
 	 * - Put execution to wait after sending.
 	 *
 	 * See example in
-	 * packages/@n8n/nodes-langchain/nodes/trigger/ChatTrigger/Chat.node.ts
+	 * packages/@MNI/nodes-langchain/nodes/trigger/ChatTrigger/Chat.node.ts
 	 */
 	sendMessage?: ChatNodeMessage;
 
@@ -2181,7 +2181,7 @@ export interface INodeProperties {
 	displayOptions?: IDisplayOptions;
 	/**
 	 * Hides the property unless the named instance-level env feature flag is
-	 * truthy. The value is the flag suffix without the `N8N_ENV_FEAT_` prefix
+	 * truthy. The value is the flag suffix without the `MNI_ENV_FEAT_` prefix
 	 */
 	envFeatureFlag?: Uppercase<string>;
 	options?: Array<INodePropertyOptions | INodeProperties | INodePropertyCollection>;
@@ -2289,7 +2289,7 @@ export interface INodePropertyOptions {
 	// it needs to be implemented, if needed
 	disabledOptions?: undefined;
 	// When set, the option is hidden in the editor unless the matching
-	// `N8N_ENV_FEAT_<envFeatureFlag>` flag is enabled.
+	// `MNI_ENV_FEAT_<envFeatureFlag>` flag is enabled.
 	envFeatureFlag?: Uppercase<string>;
 }
 
@@ -2378,7 +2378,7 @@ export interface ExecuteWorkflowData extends DynamicCredentialsUsage {
 
 /**
  * Inline agent definition embedded in the calling node's parameters. Kept
- * structurally loose here (this package cannot depend on `@n8n/api-types`);
+ * structurally loose here (this package cannot depend on `@MNI/api-types`);
  * the execution layer validates it against `InlineAgentConfigSchema`.
  */
 export interface InlineAgentPayload {
@@ -2697,7 +2697,7 @@ export type EngineResponse<T = unknown> = {
 
 /**
  * Tag identifying `Node` subclasses. `Symbol.for` interns into the global symbol
- * registry, so every copy of `n8n-workflow` loaded in the same process resolves the identical
+ * registry, so every copy of `MNI-workflow` loaded in the same process resolves the identical
  * symbol, regardless of the dependency tree layout.
  */
 const NODE_CLASS_TAG: unique symbol = Symbol.for('n8n.workflow.NodeClass');
@@ -2722,7 +2722,7 @@ export abstract class Node {
 /**
  * Returns `true` when `nodeType` is an instance of a `Node` subclass (a node using the new
  * context API). Prefer this over `nodeType instanceof Node` at runtime: it survives
- * `n8n-workflow` module duplication, which breaks `instanceof`.
+ * `MNI-workflow` module duplication, which breaks `instanceof`.
  */
 export function isNodeClassInstance(nodeType: unknown): nodeType is Node {
 	return typeof nodeType === 'object' && nodeType !== null && NODE_CLASS_TAG in nodeType;
@@ -3068,7 +3068,7 @@ export type BuilderHintOutputs = Partial<Record<NodeConnectionType, IBuilderHint
  * Related node with explanation of why it's related
  */
 export interface IRelatedNode {
-	/** The node type ID (e.g., '@n8n/n8n-nodes-langchain.memoryBufferWindow') */
+	/** The node type ID (e.g., '@MNI/MNI-nodes-langchain.memoryBufferWindow') */
 	nodeType: string;
 	/** Brief explanation of why this node is related (e.g., 'Maintains conversation history') */
 	relationHint: string;
@@ -3385,7 +3385,7 @@ export type INodeTypeData = LoadedData<INodeType | IVersionedNodeType>;
 
 /**
  * Contract that the runtime consumes from each node source. Implemented by the
- * filesystem-backed `DirectoryLoader` in `n8n-core` and in modules
+ * filesystem-backed `DirectoryLoader` in `MNI-core` and in modules
  */
 export interface NodeLoader {
 	packageName: string;
@@ -3468,11 +3468,11 @@ export interface RelatedAgentRun {
 	threadId: string;
 	runId: string;
 	toolCallId: string;
-	/** Chat platform the run came from, or `n8n_chat` for the in-app preview. */
+	/** Chat platform the run came from, or `MNI_chat` for the in-app preview. */
 	integrationType?: string;
 	/**
 	 * The run started in the in-app preview chat. `integrationType` cannot say
-	 * this: MCP and AI Assistant test runs use `n8n_chat` too, and they must
+	 * this: MCP and AI Assistant test runs use `MNI_chat` too, and they must
 	 * resume on the runtime they started on.
 	 */
 	previewChat?: boolean;
@@ -4177,22 +4177,22 @@ export interface INodeGraphItem {
 	method?: string; // HTTP Request node v2
 	src_node_id?: string;
 	src_instance_id?: string;
-	agent?: string; //@n8n/n8n-nodes-langchain.agent
-	is_streaming?: boolean; //@n8n/n8n-nodes-langchain.agent
+	agent?: string; //@MNI/MNI-nodes-langchain.agent
+	is_streaming?: boolean; //@MNI/MNI-nodes-langchain.agent
 	prompts?: IDataObject[] | IDataObject; //ai node's prompts, cloud only
-	use_responses_api?: boolean; //@n8n/n8n-nodes-langchain.lmChatOpenAi
+	use_responses_api?: boolean; //@MNI/MNI-nodes-langchain.lmChatOpenAi
 	toolSettings?: IDataObject; //various langchain tool's settings
 	sql?: string; //merge node combineBySql, cloud only
-	workflow_id?: string; //@n8n/n8n-nodes-langchain.toolWorkflow and n8n-nodes-base.executeWorkflow
-	response_mode?: string; // @n8n/n8n-nodes-langchain.chatTrigger, n8n-nodes-base.webhook selected response mode
-	public_chat?: boolean; // @n8n/n8n-nodes-langchain.chatTrigger
+	workflow_id?: string; //@MNI/MNI-nodes-langchain.toolWorkflow and MNI-nodes-base.executeWorkflow
+	response_mode?: string; // @MNI/MNI-nodes-langchain.chatTrigger, MNI-nodes-base.webhook selected response mode
+	public_chat?: boolean; // @MNI/MNI-nodes-langchain.chatTrigger
 	runs?: number;
 	items_total?: number;
 	metric_names?: string[];
 	language?: string; // only for Code node: 'javascript' or 'python' or 'pythonNative'
 	package_version?: string; // only for community nodes
-	used_guardrails?: string[]; // only for @n8n/n8n-nodes-langchain.guardrails
-	mcp_client_auth_method?: string; // for @n8n/n8n-nodes-langchain.mcpClientTool and @n8n/n8n-nodes-langchain.mcpClient
+	used_guardrails?: string[]; // only for @MNI/MNI-nodes-langchain.guardrails
+	mcp_client_auth_method?: string; // for @MNI/MNI-nodes-langchain.mcpClientTool and @MNI/MNI-nodes-langchain.mcpClient
 	mcp_server_domain_base?: string; // registrable domain of MCP server URL, for mcpClientTool / mcpClient
 	ai_model?: string; // AI model for model nodes and standalone AI nodes
 	ai_input_tokens?: number; // AI input (prompt) tokens for model nodes
@@ -4528,7 +4528,7 @@ export type CallbackManager = CallbackManagerLC;
 export type IPersonalizationSurveyAnswersV4 = {
 	version: 'v4';
 	personalization_survey_submitted_at: string;
-	personalization_survey_n8n_version: string;
+	personalization_survey_MNI_version: string;
 	automationGoalDevops?: string[] | null;
 	automationGoalDevopsOther?: string | null;
 	companyIndustryExtended?: string[] | null;

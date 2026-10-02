@@ -16,7 +16,7 @@ describe('buildAgentConfigFingerprint', () => {
 				type: 'node',
 				name: 'zulu',
 				node: {
-					nodeType: 'n8n-nodes-base.zulu',
+					nodeType: 'MNI-nodes-base.zulu',
 					nodeTypeVersion: 1,
 					nodeParameters: {},
 					credentials: {},
@@ -118,7 +118,7 @@ describe('buildAgentConfigFingerprint', () => {
 					type: 'node',
 					name: 'new-tool',
 					node: {
-						nodeType: 'n8n-nodes-base.new-tool',
+						nodeType: 'MNI-nodes-base.new-tool',
 						nodeTypeVersion: 1,
 						nodeParameters: {},
 						credentials: {},

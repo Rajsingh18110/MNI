@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, nextTick, onMounted, onUnmounted, ref, watch } from 'vue';
-import { useI18n } from '@n8n/i18n';
-import { N8nIcon, N8nTooltip } from '@n8n/design-system';
+import { useI18n } from '@MNI/i18n';
+import { N8nIcon, N8nTooltip } from '@MNI/design-system';
 import { usePersonalizedTemplatesV3Store } from '../stores/personalizedTemplatesV3.store';
 
 const personalizedTemplatesV3Store = usePersonalizedTemplatesV3Store();

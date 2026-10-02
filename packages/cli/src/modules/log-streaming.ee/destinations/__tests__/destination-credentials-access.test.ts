@@ -1,5 +1,5 @@
-import type { CredentialsEntity, User } from '@n8n/db';
-import type { MessageEventBusDestinationOptions } from 'n8n-workflow';
+import type { CredentialsEntity, User } from '@MNI/db';
+import type { MessageEventBusDestinationOptions } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import type { CredentialsFinderService } from '@/credentials/credentials-finder.service';

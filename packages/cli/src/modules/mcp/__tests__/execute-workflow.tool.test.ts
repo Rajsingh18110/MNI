@@ -1,8 +1,8 @@
 import type { Mock } from 'vitest';
-import { mockInstance } from '@n8n/backend-test-utils';
-import { WorkflowsConfig } from '@n8n/config';
-import { User } from '@n8n/db';
-import { Container } from '@n8n/di';
+import { mockInstance } from '@MNI/backend-test-utils';
+import { WorkflowsConfig } from '@MNI/config';
+import { User } from '@MNI/db';
+import { Container } from '@MNI/di';
 import type { MockProxy } from 'vitest-mock-extended';
 import {
 	CHAT_TRIGGER_NODE_TYPE,
@@ -12,7 +12,7 @@ import {
 	WEBHOOK_NODE_TYPE,
 	type INode,
 	type IWorkflowExecutionDataProcess,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import { v4 as uuid } from 'uuid';
 
 import { createWorkflow, createWorkflowHistoryVersion } from './mock.utils';
@@ -305,7 +305,7 @@ describe('execute-workflow MCP tool', () => {
 						{
 							id: 'node-1',
 							name: 'Error Trigger',
-							type: 'n8n-nodes-base.errorTrigger',
+							type: 'MNI-nodes-base.errorTrigger',
 							typeVersion: 1,
 							position: [0, 0],
 							disabled: false,
@@ -351,7 +351,7 @@ describe('execute-workflow MCP tool', () => {
 						{
 							id: 'node-1',
 							name: 'Error Trigger',
-							type: 'n8n-nodes-base.errorTrigger',
+							type: 'MNI-nodes-base.errorTrigger',
 							typeVersion: 1,
 							position: [0, 0],
 							disabled: false,
@@ -389,7 +389,7 @@ describe('execute-workflow MCP tool', () => {
 						{
 							id: 'node-1',
 							name: 'Error Trigger',
-							type: 'n8n-nodes-base.errorTrigger',
+							type: 'MNI-nodes-base.errorTrigger',
 							typeVersion: 1,
 							position: [0, 0],
 							disabled: false,

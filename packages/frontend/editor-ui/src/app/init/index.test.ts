@@ -1,20 +1,20 @@
 import { mockedStore, SETTINGS_STORE_DEFAULT_STATE } from '@/__tests__/utils';
 import { EnterpriseEditionFeature } from '@/app/constants';
 import { initializeAuthenticatedFeatures, initializeCore, state } from '@/app/init';
-import { AuthenticationMethod } from '@n8n/api-types';
-import { useCloudPlanStore } from '@n8n/stores/cloudPlan.store';
+import { AuthenticationMethod } from '@MNI/api-types';
+import { useCloudPlanStore } from '@MNI/stores/cloudPlan.store';
 import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { useSourceControlStore } from '@/features/integrations/sourceControl.ee/sourceControl.store';
 import { useSSOStore } from '@/features/settings/sso/sso.store';
-import { useUsersStore } from '@n8n/stores/users.store';
+import { useUsersStore } from '@MNI/stores/users.store';
 import { usePostHog } from '@/app/stores/posthog.store';
-import { useVersionsStore } from '@n8n/stores/versions.store';
+import { useVersionsStore } from '@MNI/stores/versions.store';
 import { useBannersStore } from '@/features/shared/banners/banners.store';
-import type { Cloud, CurrentUserResponse } from '@n8n/rest-api-client';
-import type { IUser } from '@n8n/rest-api-client/api/users';
-import { STORES } from '@n8n/stores';
-import { useRootStore } from '@n8n/stores/useRootStore';
+import type { Cloud, CurrentUserResponse } from '@MNI/rest-api-client';
+import type { IUser } from '@MNI/rest-api-client/api/users';
+import { STORES } from '@MNI/stores';
+import { useRootStore } from '@MNI/stores/useRootStore';
 import { createTestingPinia } from '@pinia/testing';
 import { AxiosError } from 'axios';
 import merge from 'lodash/merge';
@@ -55,7 +55,7 @@ const moduleRegistrations = [
 	moduleInitializer.registerModuleParameterInputs,
 ];
 
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: () => ({ showMessage, showToast }),
 	// The factory replaces the whole module, so it has to name every export the
 	// real one has. Nothing here asserts on `setNotify` — its only caller,
@@ -75,7 +75,7 @@ vi.mock('@/app/init/expressionEngine', () => ({
 	initializeExpressionEngine: vi.fn(),
 }));
 
-vi.mock('@n8n/stores/users.store', () => ({
+vi.mock('@MNI/stores/users.store', () => ({
 	useUsersStore: vi.fn().mockReturnValue({
 		initialize: vi.fn(),
 		registerLoginHook: vi.fn(),

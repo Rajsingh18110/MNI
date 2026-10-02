@@ -1,6 +1,6 @@
 # Lazy-load heavy or native modules
 
-Applies to: backend packages (`cli`, `@n8n/db`, `core`, `workflow`) and the node packages.
+Applies to: backend packages (`cli`, `@MNI/db`, `core`, `workflow`) and the node packages.
 
 A top-level `import` of a module used only on a specific code path loads it into
 every process at startup, raising baseline memory. Native modules (e.g.

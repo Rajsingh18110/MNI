@@ -20,8 +20,8 @@ describe('reportAffectedNodes', () => {
 	});
 
 	it('adds the node identity to the issue of every affected node', () => {
-		const set = createNode('Set', 'n8n-nodes-base.set');
-		const code = createNode('Code', 'n8n-nodes-base.code');
+		const set = createNode('Set', 'MNI-nodes-base.set');
+		const code = createNode('Code', 'MNI-nodes-base.code');
 
 		const report = reportAffectedNodes([set, code], (node) => ({
 			title: `Node '${node.name}' is affected`,

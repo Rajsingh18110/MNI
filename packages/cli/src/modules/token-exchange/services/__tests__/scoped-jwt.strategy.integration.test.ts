@@ -1,8 +1,8 @@
-import { testDb } from '@n8n/backend-test-utils';
-import type { AuthenticatedRequest } from '@n8n/db';
-import { UserRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
-import type { InstanceSettings } from 'n8n-core';
+import { testDb } from '@MNI/backend-test-utils';
+import type { AuthenticatedRequest } from '@MNI/db';
+import { UserRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
+import type { InstanceSettings } from 'MNI-core';
 import { mock } from 'vitest-mock-extended';
 
 import { JwtService } from '@/services/jwt.service';

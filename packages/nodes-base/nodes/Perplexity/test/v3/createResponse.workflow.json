@@ -2,7 +2,7 @@
 	"nodes": [
 		{
 			"parameters": {},
-			"type": "n8n-nodes-base.manualTrigger",
+			"type": "MNI-nodes-base.manualTrigger",
 			"typeVersion": 1,
 			"position": [-80, -680],
 			"id": "a9105e3d-172b-411e-8c06-767a3ce1003a",
@@ -20,7 +20,7 @@
 				"input": "What is 2+2?",
 				"requestOptions": {}
 			},
-			"type": "n8n-nodes-base.perplexity",
+			"type": "MNI-nodes-base.perplexity",
 			"typeVersion": 3,
 			"position": [-40, -380],
 			"id": "agent-node-v3",

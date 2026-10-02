@@ -1,7 +1,7 @@
 import type { MockProxy } from 'vitest-mock-extended';
 import { mock } from 'vitest-mock-extended';
-import type { ILoadOptionsFunctions } from 'n8n-workflow';
-import { NodeOperationError } from 'n8n-workflow';
+import type { ILoadOptionsFunctions } from 'MNI-workflow';
+import { NodeOperationError } from 'MNI-workflow';
 
 import type { ColumnInfo } from '../../v2/helpers/interfaces';
 import { getEnums, getEnumValues, getTableSchema } from '../../v2/helpers/utils';

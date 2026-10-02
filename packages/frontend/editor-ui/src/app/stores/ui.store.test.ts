@@ -1,5 +1,5 @@
 import { createPinia, setActivePinia } from 'pinia';
-import { modalRegistry } from '@n8n/frontend-module-sdk';
+import { modalRegistry } from '@MNI/frontend-module-sdk';
 
 import type { INodeUi, ModalState, NewCredentialsModal } from '@/Interface';
 import { IMPORT_CURL_MODAL_KEY } from '@/app/constants';

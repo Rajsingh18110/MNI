@@ -7,7 +7,7 @@ import { type LogEntry, isNodeLog } from '@/features/execution/logs/logs.types';
 
 /**
  * Session identifiers the MessageAnAgent node emits in its output JSON. Kept
- * structural so we don't have to import the runtime type from `n8n-workflow`
+ * structural so we don't have to import the runtime type from `MNI-workflow`
  * just to read simple string fields.
  */
 type MessageAgentSession = {

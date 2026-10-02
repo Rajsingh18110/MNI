@@ -1,13 +1,13 @@
-import { LicenseState } from '@n8n/backend-common';
+import { LicenseState } from '@MNI/backend-common';
 import {
 	linkUserToProject,
 	createTeamProject,
 	getAllProjectRelations,
 	createWorkflow,
 	testDb,
-} from '@n8n/backend-test-utils';
-import { SharedWorkflowRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
+} from '@MNI/backend-test-utils';
+import { SharedWorkflowRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
 import { LicenseMocker } from '@test-integration/license';
 
 import { createUser } from './shared/db/users';

@@ -21,8 +21,8 @@ export const sendMessageResponse = {
 		from: {
 			id: 9876543210,
 			is_bot: true,
-			first_name: '@n8n',
-			username: 'n8n_test_bot',
+			first_name: '@MNI',
+			username: 'MNI_test_bot',
 		},
 		chat: {
 			id: 123456789,
@@ -43,7 +43,7 @@ export const sendMessageResponse = {
 				offset: 44,
 				length: 3,
 				type: 'text_link',
-				url: 'https://n8n.io/?utm_source=n8n-internal&utm_medium=powered_by&utm_campaign=n8n-nodes-base.telegram_8c8c5237b8e37b006a7adce87f4369350c58e41f3ca9de16196d3197f69eabcd',
+				url: 'https://n8n.io/?utm_source=MNI-internal&utm_medium=powered_by&utm_campaign=MNI-nodes-base.telegram_8c8c5237b8e37b006a7adce87f4369350c58e41f3ca9de16196d3197f69eabcd',
 			},
 		],
 		link_preview_options: {
@@ -60,8 +60,8 @@ export const sendMediaGroupResponse = {
 			from: {
 				id: 9876543210,
 				is_bot: true,
-				first_name: '@n8n',
-				username: 'n8n_test_bot',
+				first_name: '@MNI',
+				username: 'MNI_test_bot',
 			},
 			chat: {
 				id: 123456789,
@@ -108,8 +108,8 @@ export const sendLocationMessageResponse = {
 		from: {
 			id: 9876543210,
 			is_bot: true,
-			first_name: '@n8n',
-			username: 'n8n_test_bot',
+			first_name: '@MNI',
+			username: 'MNI_test_bot',
 		},
 		chat: {
 			id: 123456789,
@@ -124,8 +124,8 @@ export const sendLocationMessageResponse = {
 			from: {
 				id: 9876543210,
 				is_bot: true,
-				first_name: '@n8n',
-				username: 'n8n_test_bot',
+				first_name: '@MNI',
+				username: 'MNI_test_bot',
 			},
 			chat: {
 				id: 123456789,
@@ -146,7 +146,7 @@ export const sendLocationMessageResponse = {
 					offset: 44,
 					length: 3,
 					type: 'text_link',
-					url: 'https://n8n.io/?utm_source=n8n-internal&utm_medium=powered_by&utm_campaign=n8n-nodes-base.telegram_8c8c5237b8e37b006a7adce87f4369350c58e41f3ca9de16196d3197f69eabcd',
+					url: 'https://n8n.io/?utm_source=MNI-internal&utm_medium=powered_by&utm_campaign=MNI-nodes-base.telegram_8c8c5237b8e37b006a7adce87f4369350c58e41f3ca9de16196d3197f69eabcd',
 				},
 			],
 			link_preview_options: {
@@ -172,8 +172,8 @@ export const sendStickerResponse = {
 		from: {
 			id: 9876543210,
 			is_bot: true,
-			first_name: '@n8n',
-			username: 'n8n_test_bot',
+			first_name: '@MNI',
+			username: 'MNI_test_bot',
 		},
 		chat: {
 			id: 123456789,
@@ -214,8 +214,8 @@ export const editMessageTextResponse = {
 		from: {
 			id: 9876543210,
 			is_bot: true,
-			first_name: '@n8n',
-			username: 'n8n_test_bot',
+			first_name: '@MNI',
+			username: 'MNI_test_bot',
 		},
 		chat: {
 			id: 123456789,
@@ -251,8 +251,8 @@ export const chatAdministratorsResponse = {
 			user: {
 				id: 9876543210,
 				is_bot: true,
-				first_name: '@n8n',
-				username: 'n8n_test_bot',
+				first_name: '@MNI',
+				username: 'MNI_test_bot',
 			},
 			status: 'administrator',
 			can_be_edited: false,
@@ -293,8 +293,8 @@ export const sendAnimationMessageResponse = {
 		from: {
 			id: 9876543210,
 			is_bot: true,
-			first_name: '@n8n',
-			username: 'n8n_test_bot',
+			first_name: '@MNI',
+			username: 'MNI_test_bot',
 		},
 		chat: {
 			id: 123456789,
@@ -360,8 +360,8 @@ export const sendAudioResponse = {
 		from: {
 			id: 9876543210,
 			is_bot: true,
-			first_name: '@n8n',
-			username: 'n8n_test_bot',
+			first_name: '@MNI',
+			username: 'MNI_test_bot',
 		},
 		chat: {
 			id: 123456789,

@@ -1,5 +1,5 @@
-import type { ErrorLevel } from '@n8n/errors';
-import { NodeOperationError, type INode, type NodeApiError } from 'n8n-workflow';
+import type { ErrorLevel } from '@MNI/errors';
+import { NodeOperationError, type INode, type NodeApiError } from 'MNI-workflow';
 
 export const JSONSafeParse = <T>(source?: string) => {
 	try {

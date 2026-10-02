@@ -1,6 +1,6 @@
-import type { Logger } from '@n8n/backend-common';
-import { mockLogger } from '@n8n/backend-test-utils';
-import { createDeferredPromise } from '@n8n/utils/promise/deferred-promise';
+import type { Logger } from '@MNI/backend-common';
+import { mockLogger } from '@MNI/backend-test-utils';
+import { createDeferredPromise } from '@MNI/utils/promise/deferred-promise';
 import { mkdir, mkdtemp, readFile, rm, stat, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
@@ -167,7 +167,7 @@ describe('PromotionsGitService (git operations)', () => {
 		vi.clearAllMocks();
 		logger.scoped.mockReturnValue(logger);
 		mockGit.env.mockReturnValue(mockGit);
-		rootFolder = await mkdtemp(path.join(tmpdir(), 'n8n-promotions-op-'));
+		rootFolder = await mkdtemp(path.join(tmpdir(), 'MNI-promotions-op-'));
 		paths = {
 			rootFolder,
 			repositoryFolder: path.join(rootFolder, 'repository'),
@@ -254,8 +254,8 @@ describe('PromotionsGitService (git operations)', () => {
 			const options = JSON.stringify(simpleGitMock.mock.calls);
 			expect(options).not.toContain(tokenCredentials.username);
 			expect(options).not.toContain(tokenCredentials.password);
-			expect(mockGit.env).toHaveBeenCalledWith('N8N_GIT_USERNAME', tokenCredentials.username);
-			expect(mockGit.env).toHaveBeenCalledWith('N8N_GIT_PASSWORD', tokenCredentials.password);
+			expect(mockGit.env).toHaveBeenCalledWith('MNI_GIT_USERNAME', tokenCredentials.username);
+			expect(mockGit.env).toHaveBeenCalledWith('MNI_GIT_PASSWORD', tokenCredentials.password);
 		});
 
 		it('reports a stalled clone as a retryable 503 and removes the partial checkout', async () => {
@@ -346,7 +346,7 @@ describe('PromotionsGitService (git operations)', () => {
 				author: { name: 'Ada Lovelace', email: 'ada@example.com' },
 				commitMessage: 'sync',
 				force: false,
-				stagePathspec: 'n8n-export',
+				stagePathspec: 'MNI-export',
 				onCheckoutRestored,
 				...over,
 			});
@@ -361,12 +361,12 @@ describe('PromotionsGitService (git operations)', () => {
 			mockGit.revparse.mockResolvedValueOnce('commit\n');
 
 			const result = await call({
-				targetBranchName: 'n8n-promotion/2026-01-01T00-00-00-000Z',
+				targetBranchName: 'MNI-promotion/2026-01-01T00-00-00-000Z',
 			});
 
 			expect(mockGit.push).toHaveBeenCalledWith(
 				'origin',
-				'HEAD:refs/heads/n8n-promotion/2026-01-01T00-00-00-000Z',
+				'HEAD:refs/heads/MNI-promotion/2026-01-01T00-00-00-000Z',
 			);
 			expect(mockGit.raw).toHaveBeenCalledWith(['reset', '--hard', 'base']);
 			expect(onCheckoutRestored).toHaveBeenCalled();
@@ -378,13 +378,13 @@ describe('PromotionsGitService (git operations)', () => {
 			mockGit.revparse.mockResolvedValueOnce('commit\n');
 			mockGit.push.mockRejectedValueOnce(new Error('remote: rejected'));
 
-			await expect(call({ targetBranchName: 'n8n-promotion/x' })).rejects.toThrow(BadRequestError);
+			await expect(call({ targetBranchName: 'MNI-promotion/x' })).rejects.toThrow(BadRequestError);
 			expect(mockGit.raw).toHaveBeenCalledWith(['reset', '--hard', 'base']);
 			expect(onCheckoutRestored).toHaveBeenCalled();
 		});
 
 		it('rejects a new branch push when the local base branch does not exist', async () => {
-			await expect(call({ targetBranchName: 'n8n-promotion/x' })).rejects.toThrow(
+			await expect(call({ targetBranchName: 'MNI-promotion/x' })).rejects.toThrow(
 				'Local branch does not exist: main',
 			);
 			expect(mockGit.commit).not.toHaveBeenCalled();
@@ -395,12 +395,12 @@ describe('PromotionsGitService (git operations)', () => {
 			mockGit.raw.mockResolvedValueOnce('base\n').mockRejectedValueOnce(new Error('reset failed'));
 			mockGit.revparse.mockResolvedValueOnce('commit\n');
 
-			await expect(call({ targetBranchName: 'n8n-promotion/x' })).resolves.toEqual({
+			await expect(call({ targetBranchName: 'MNI-promotion/x' })).resolves.toEqual({
 				commitSha: 'commit',
 			});
 			expect(logger.warn).toHaveBeenCalledWith('Failed to restore Git checkout after promotion', {
 				branchName: 'main',
-				targetBranchName: 'n8n-promotion/x',
+				targetBranchName: 'MNI-promotion/x',
 			});
 			expect(onCheckoutRestored).not.toHaveBeenCalled();
 		});
@@ -412,7 +412,7 @@ describe('PromotionsGitService (git operations)', () => {
 				new GitPluginError(undefined, 'timeout', 'block timeout reached'),
 			);
 
-			await expect(call({ targetBranchName: 'n8n-promotion/x' })).rejects.toThrow(
+			await expect(call({ targetBranchName: 'MNI-promotion/x' })).rejects.toThrow(
 				ServiceUnavailableError,
 			);
 			expect(onCheckoutRestored).not.toHaveBeenCalled();
@@ -437,7 +437,7 @@ describe('PromotionsGitService (git operations)', () => {
 					);
 				}
 
-				const result = call({ targetBranchName: 'n8n-promotion/x' });
+				const result = call({ targetBranchName: 'MNI-promotion/x' });
 
 				if (pushFails) {
 					await expect(result).rejects.toThrow(ServiceUnavailableError);
@@ -450,7 +450,7 @@ describe('PromotionsGitService (git operations)', () => {
 					'Failed to trust the Git checkout after promotion',
 					{
 						branchName: 'main',
-						targetBranchName: 'n8n-promotion/x',
+						targetBranchName: 'MNI-promotion/x',
 					},
 				);
 			},
@@ -521,7 +521,7 @@ describe('PromotionsGitService (git operations)', () => {
 			paths,
 			branchName: 'main',
 			configId,
-			pathspecs: ['n8n-export/manifest.json', 'n8n-export/projects/'],
+			pathspecs: ['MNI-export/manifest.json', 'MNI-export/projects/'],
 		});
 
 		beforeEach(() => {
@@ -530,7 +530,7 @@ describe('PromotionsGitService (git operations)', () => {
 		});
 
 		it('lists the tree at the fetched tip and returns that commit', async () => {
-			mockGit.raw.mockResolvedValueOnce('100644 blob b1\tn8n-export/manifest.json\0');
+			mockGit.raw.mockResolvedValueOnce('100644 blob b1\tMNI-export/manifest.json\0');
 
 			const result = await gitService.listBranchTree(operation());
 
@@ -546,12 +546,12 @@ describe('PromotionsGitService (git operations)', () => {
 				'-z',
 				commitSha,
 				'--',
-				'n8n-export/manifest.json',
-				'n8n-export/projects/',
+				'MNI-export/manifest.json',
+				'MNI-export/projects/',
 			]);
 			expect(result).toEqual({
 				commitSha,
-				lsTreeOutput: '100644 blob b1\tn8n-export/manifest.json\0',
+				lsTreeOutput: '100644 blob b1\tMNI-export/manifest.json\0',
 			});
 		});
 
@@ -587,8 +587,8 @@ describe('PromotionsGitService (git operations)', () => {
 	describe('readFilesAtCommit', () => {
 		const commitSha = 'c'.repeat(40);
 		const filePaths = [
-			'n8n-export/manifest.json',
-			'n8n-export/projects/a-p1/workflows/b-w1/workflow.json',
+			'MNI-export/manifest.json',
+			'MNI-export/projects/a-p1/workflows/b-w1/workflow.json',
 		];
 		const read = async (over: Record<string, unknown> = {}) =>
 			await gitService.readFilesAtCommit({
@@ -630,7 +630,7 @@ describe('PromotionsGitService (git operations)', () => {
 				paths,
 				branchName: 'main',
 				configId,
-				pathspecs: ['n8n-export/'],
+				pathspecs: ['MNI-export/'],
 			});
 			await vi.waitFor(() => expect(mockGit.fetch).toHaveBeenCalledTimes(1));
 

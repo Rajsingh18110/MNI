@@ -1,9 +1,9 @@
-import type { ConsentUiHints } from '@n8n/api-types';
-import { Logger } from '@n8n/backend-common';
-import type { User } from '@n8n/db';
-import { Service } from '@n8n/di';
-import { ensureError } from '@n8n/utils/errors/ensure-error';
-import type { OAuthResourceGrant } from 'n8n-workflow';
+import type { ConsentUiHints } from '@MNI/api-types';
+import { Logger } from '@MNI/backend-common';
+import type { User } from '@MNI/db';
+import { Service } from '@MNI/di';
+import { ensureError } from '@MNI/utils/errors/ensure-error';
+import type { OAuthResourceGrant } from 'MNI-workflow';
 
 /**
  * Descriptor for an OAuth 2.1 protected resource served by this instance.

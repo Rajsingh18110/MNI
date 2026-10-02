@@ -1,4 +1,4 @@
-import { DateTimeColumn, WithTimestamps } from '@n8n/db';
+import { DateTimeColumn, WithTimestamps } from '@MNI/db';
 import {
 	Column,
 	Entity,
@@ -7,7 +7,7 @@ import {
 	ManyToOne,
 	PrimaryColumn,
 	type Relation,
-} from '@n8n/typeorm';
+} from '@MNI/typeorm';
 
 import { Agent } from './agent.entity';
 

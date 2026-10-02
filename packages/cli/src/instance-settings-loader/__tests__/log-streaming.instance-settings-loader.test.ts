@@ -1,7 +1,7 @@
-import type { Logger } from '@n8n/backend-common';
-import type { InstanceSettingsLoaderConfig } from '@n8n/config';
-import type { EntityManager } from '@n8n/typeorm';
-import { MessageEventBusDestinationTypeNames } from 'n8n-workflow';
+import type { Logger } from '@MNI/backend-common';
+import type { InstanceSettingsLoaderConfig } from '@MNI/config';
+import type { EntityManager } from '@MNI/typeorm';
+import { MessageEventBusDestinationTypeNames } from 'MNI-workflow';
 import type { Mock } from 'vitest';
 import { mock } from 'vitest-mock-extended';
 

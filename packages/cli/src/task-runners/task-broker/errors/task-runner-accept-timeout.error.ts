@@ -1,4 +1,4 @@
-import { OperationalError } from 'n8n-workflow';
+import { OperationalError } from 'MNI-workflow';
 
 export class TaskRunnerAcceptTimeoutError extends OperationalError {
 	constructor(taskId: string, runnerId: string) {

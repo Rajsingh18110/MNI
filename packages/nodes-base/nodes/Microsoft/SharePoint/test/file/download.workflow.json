@@ -2,7 +2,7 @@
 	"nodes": [
 		{
 			"parameters": {},
-			"type": "n8n-nodes-base.manualTrigger",
+			"type": "MNI-nodes-base.manualTrigger",
 			"typeVersion": 1,
 			"position": [0, 0],
 			"id": "37ab6212-d506-4b53-b63e-14b6a2a05907",
@@ -30,7 +30,7 @@
 				},
 				"requestOptions": {}
 			},
-			"type": "n8n-nodes-base.microsoftSharePoint",
+			"type": "MNI-nodes-base.microsoftSharePoint",
 			"typeVersion": 1,
 			"position": [220, 0],
 			"id": "f9037af8-4f52-4f9f-b8ae-de860f890792",

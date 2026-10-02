@@ -3,11 +3,11 @@ import NodeExecuteButton from '@/app/components/NodeExecuteButton.vue';
 import NodeIcon from '@/app/components/NodeIcon.vue';
 import { type INodeUi } from '@/Interface';
 import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';
-import { useI18n } from '@n8n/i18n';
-import { type INodeProperties } from 'n8n-workflow';
+import { useI18n } from '@MNI/i18n';
+import { type INodeProperties } from 'MNI-workflow';
 import { computed } from 'vue';
 
-import { N8nIconButton, N8nInlineTextEdit, N8nText } from '@n8n/design-system';
+import { N8nIconButton, N8nInlineTextEdit, N8nText } from '@MNI/design-system';
 const { node, parameter, isExecutable } = defineProps<{
 	node: INodeUi;
 	parameter?: INodeProperties;

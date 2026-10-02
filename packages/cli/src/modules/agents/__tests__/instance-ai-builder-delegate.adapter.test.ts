@@ -4,12 +4,12 @@ import type {
 	CredentialProvider,
 	SerializableAgentState,
 	StreamChunk,
-} from '@n8n/agents';
-import type { AgentJsonConfig, AgentSkill } from '@n8n/api-types';
-import type { User } from '@n8n/db';
-import type { InstanceAiCredentialService } from '@n8n/instance-ai';
-import { Like } from '@n8n/typeorm';
-import { UserError } from 'n8n-workflow';
+} from '@MNI/agents';
+import type { AgentJsonConfig, AgentSkill } from '@MNI/api-types';
+import type { User } from '@MNI/db';
+import type { InstanceAiCredentialService } from '@MNI/instance-ai';
+import { Like } from '@MNI/typeorm';
+import { UserError } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import { ForbiddenError } from '@/errors/response-errors/forbidden.error';
@@ -27,7 +27,7 @@ import {
 import type { AgentConfigService } from '../agent-config.service';
 import { getAgentConfigHash } from '../utils/agent-config-hash';
 import type { AgentSkillsService } from '../agent-skills.service';
-import type { N8nMemory, N8nMemoryImpl } from '../integrations/n8n-memory';
+import type { N8nMemory, N8nMemoryImpl } from '../integrations/MNI-memory';
 import type { AgentThreadRepository } from '../repositories/agent-thread.repository';
 
 function setup(options: { useEvalModelCatalog?: boolean } = {}) {

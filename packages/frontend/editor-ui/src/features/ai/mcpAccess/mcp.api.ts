@@ -5,10 +5,10 @@ import type {
 	DeleteOAuthClientResponseDto,
 	McpClientConnectedPeriod,
 	McpClientTypeFilter,
-} from '@n8n/api-types';
+} from '@MNI/api-types';
 import type { McpAgent, McpWorkflow } from './mcp.types';
-import type { IRestApiContext } from '@n8n/rest-api-client';
-import { makeRestApiRequest, getFullApiResponse } from '@n8n/rest-api-client';
+import type { IRestApiContext } from '@MNI/rest-api-client';
+import { makeRestApiRequest, getFullApiResponse } from '@MNI/rest-api-client';
 
 export type McpSettingsResponse = {
 	mcpAccessEnabled: boolean;

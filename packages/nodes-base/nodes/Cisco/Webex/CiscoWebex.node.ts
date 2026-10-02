@@ -7,8 +7,8 @@ import type {
 	INodePropertyOptions,
 	INodeType,
 	INodeTypeDescription,
-} from 'n8n-workflow';
-import { NodeConnectionTypes } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeConnectionTypes } from 'MNI-workflow';
 
 import {
 	meetingFields,
@@ -24,7 +24,7 @@ export class CiscoWebex implements INodeType {
 	description: INodeTypeDescription = {
 		displayName: 'Webex by Cisco',
 		name: 'ciscoWebex',
-		// eslint-disable-next-line n8n-nodes-base/node-class-description-icon-not-svg
+		// eslint-disable-next-line MNI-nodes-base/node-class-description-icon-not-svg
 		icon: 'file:ciscoWebex.png',
 		group: ['transform'],
 		version: 1,

@@ -14,18 +14,18 @@ import type {
 	IDataObject,
 	IWorkflowBase,
 	IDestinationNode,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import {
 	createRunExecutionData,
 	NodeConnectionTypes,
 	TelemetryHelpers,
 	BINARY_MODE_COMBINED,
-} from 'n8n-workflow';
-import { retry } from '@n8n/utils/retry';
+} from 'MNI-workflow';
+import { retry } from '@MNI/utils/retry';
 import { until } from '@vueuse/core';
 import { computed, getCurrentInstance, type Ref } from 'vue';
 
-import { useToast } from '@n8n/composables/useToast';
+import { useToast } from '@MNI/composables/useToast';
 import { useMessage } from '@/app/composables/useMessage';
 import { useNodeHelpers } from '@/app/composables/useNodeHelpers';
 
@@ -39,7 +39,7 @@ import {
 	RESPOND_TO_WEBHOOK_NODE_TYPE,
 } from '@/app/constants';
 
-import { useRootStore } from '@n8n/stores/useRootStore';
+import { useRootStore } from '@MNI/stores/useRootStore';
 import { useWorkflowsStore } from '@/app/stores/workflows.store';
 import { useWorkflowExecutionStateStore } from '@/app/stores/workflowExecutionState.store';
 import {
@@ -51,21 +51,21 @@ import { useExternalHooks } from '@/app/composables/useExternalHooks';
 import { useWorkflowHelpers } from '@/app/composables/useWorkflowHelpers';
 import type { useRouter } from 'vue-router';
 import { isEmpty } from '@/app/utils/typesUtils';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import get from 'lodash/get';
 import { useExecutionsStore } from '@/features/execution/executions/executions.store';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { useUIStore } from '@/app/stores/ui.store';
 import { useNodeDirtiness } from '@/app/composables/useNodeDirtiness';
 import { useCanvasOperations } from './useCanvasOperations';
-import { chatEventBus } from '@n8n/chat/event-buses';
-import { useAgentRequestStore } from '@n8n/stores/useAgentRequestStore';
+import { chatEventBus } from '@MNI/chat/event-buses';
+import { useAgentRequestStore } from '@MNI/stores/useAgentRequestStore';
 import { useWorkflowSaving } from './useWorkflowSaving';
 import { useDocumentTitle } from './useDocumentTitle';
 import { useEditorContext } from './useEditorContext';
 import { useRunWorkflowApi } from './useRunWorkflowApi';
-import { useChat } from '@n8n/chat/composables';
+import { useChat } from '@MNI/chat/composables';
 import type { WorkflowObjectAccessors } from '../types';
 
 export function useRunWorkflow(useRunWorkflowOpts: {
@@ -159,7 +159,7 @@ export function useRunWorkflow(useRunWorkflowOpts: {
 
 			const isNewWorkflow = !workflowsStore.isWorkflowSaved[workflowDocumentStore.value.workflowId];
 
-			// With N8N_WORKFLOWS_AUTOSAVE_DISABLED=true the editor no longer
+			// With MNI_WORKFLOWS_AUTOSAVE_DISABLED=true the editor no longer
 			// force-saves before executing, so canvas-only edits would be
 			// dropped by the executor (it only ever runs the DB copy). Prompt
 			// the user to save first so the run reflects the canvas. ADO-5328.

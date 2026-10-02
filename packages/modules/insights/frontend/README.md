@@ -1,14 +1,14 @@
-# @n8n/frontend-module-insights
+# @MNI/frontend-module-insights
 
 Frontend feature module. Consumed from source by the editor-ui shell; there is no
 build step and no `dist`.
 
 ## Two entry points, on purpose
 
-- `@n8n/frontend-module-insights` — `useInsightsStore` and `InsightsSummary`, for
+- `@MNI/frontend-module-insights` — `useInsightsStore` and `InsightsSummary`, for
   the shell views that show the summary widget. Every one of them reaches it
   through a lazy `import()`.
-- `@n8n/frontend-module-insights/insights.module` — the descriptor, for
+- `@MNI/frontend-module-insights/insights.module` — the descriptor, for
   `src/app/modules.manifest.ts`.
 
 The split is measured, not stylistic. The manifest is imported eagerly at boot,
@@ -19,9 +19,9 @@ entries against 346, and 99 stylesheet links against 98). Keep component code ou
 of the descriptor's entry.
 
 ```bash
-pnpm turbo typecheck --filter=@n8n/frontend-module-insights
-pnpm turbo lint --filter=@n8n/frontend-module-insights
-pnpm turbo test --filter=@n8n/frontend-module-insights
+pnpm turbo typecheck --filter=@MNI/frontend-module-insights
+pnpm turbo lint --filter=@MNI/frontend-module-insights
+pnpm turbo test --filter=@MNI/frontend-module-insights
 ```
 
 Go through turbo, not `pnpm --filter <pkg> typecheck`: this package is consumed
@@ -30,13 +30,13 @@ yet. Turbo builds them first; the bare pnpm form does not.
 
 ## Import rules
 
-- Depend on foundation and platform packages only (`@n8n/design-system`,
-  `@n8n/stores`, `@n8n/composables`, `@n8n/i18n`, `@n8n/rest-api-client`,
-  `@n8n/api-types`, `@n8n/permissions`, `@n8n/frontend-constants`,
-  `@n8n/utils`, `@n8n/frontend-module-sdk`). Never import another
-  `@n8n/frontend-module-*`, and never import `@/…` from the shell.
-- `@n8n/stores` and `@n8n/composables` are **subpath-only** — import
-  `@n8n/stores/settings.store`, not `@n8n/stores`.
+- Depend on foundation and platform packages only (`@MNI/design-system`,
+  `@MNI/stores`, `@MNI/composables`, `@MNI/i18n`, `@MNI/rest-api-client`,
+  `@MNI/api-types`, `@MNI/permissions`, `@MNI/frontend-constants`,
+  `@MNI/utils`, `@MNI/frontend-module-sdk`). Never import another
+  `@MNI/frontend-module-*`, and never import `@/…` from the shell.
+- `@MNI/stores` and `@MNI/composables` are **subpath-only** — import
+  `@MNI/stores/settings.store`, not `@MNI/stores`.
 - The no-cross-module rule is currently a convention: the shared tsconfig base
   omits sibling modules from `paths`, which blocks an accidental import but not
   a deliberate one (declaring the dependency makes it typecheck clean). The
@@ -57,8 +57,8 @@ must load lazily — see the note in `src/insights.module.ts`.
 design-system, a telemetry stub). It is deliberately not the shell's
 `@/__tests__/render`, which also provides the workflow document store and the
 touch-events directive — editor-core concerns no insights component reads. The
-shared harness (`@n8n/vitest-config/setup/frontend`) cannot host a Vue renderer:
+shared harness (`@MNI/vitest-config/setup/frontend`) cannot host a Vue renderer:
 it must not import vue, pinia or i18n, or the turbo graph gains a cycle.
 
 Store-level fixtures that several packages need live next to the store instead:
-`@n8n/stores/__tests__/defaultSettings` and `@n8n/stores/__tests__/mockedStore`.
+`@MNI/stores/__tests__/defaultSettings` and `@MNI/stores/__tests__/mockedStore`.

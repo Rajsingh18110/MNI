@@ -1,12 +1,12 @@
-import type { ToolContext } from '@n8n/agents';
-import { N8N_CHAT_INTEGRATION_TYPE } from '@n8n/api-types';
-import { Logger } from '@n8n/backend-common';
-import { UserRepository } from '@n8n/db';
-import { OnLifecycleEvent, OnPubSubEvent, type WorkflowExecuteAfterContext } from '@n8n/decorators';
-import { Service } from '@n8n/di';
-import { InstanceSettings } from 'n8n-core';
-import type { RelatedAgentRun } from 'n8n-workflow';
-import { isTerminalExecutionStatus } from 'n8n-workflow';
+import type { ToolContext } from '@MNI/agents';
+import { MNI_CHAT_INTEGRATION_TYPE } from '@MNI/api-types';
+import { Logger } from '@MNI/backend-common';
+import { UserRepository } from '@MNI/db';
+import { OnLifecycleEvent, OnPubSubEvent, type WorkflowExecuteAfterContext } from '@MNI/decorators';
+import { Service } from '@MNI/di';
+import { InstanceSettings } from 'MNI-core';
+import type { RelatedAgentRun } from 'MNI-workflow';
+import { isTerminalExecutionStatus } from 'MNI-workflow';
 
 import { Publisher } from '@/scaling/pubsub/publisher.service';
 
@@ -14,7 +14,7 @@ import { AgentExecutionUpdateBroadcaster } from './agent-execution-update-broadc
 import { AgentExecutionOrchestratorService } from './agent-execution-orchestrator.service';
 import { AgentRepository } from './repositories/agent.repository';
 import { productionChatMemoryResourceId } from './utils/agent-memory-scope';
-import { N8N_CHAT_PRODUCTION_SOURCE } from './utils/agent-thread-access';
+import { MNI_CHAT_PRODUCTION_SOURCE } from './utils/agent-thread-access';
 import { AgentTestRunService } from './agent-test-run.service';
 import {
 	AgentBackgroundJobService,
@@ -25,7 +25,7 @@ import {
 import { ChatIntegrationService } from './integrations/chat-integration.service';
 import { readIntegrationMessageContext } from './integrations/integration-message-context';
 import { IntegrationMessageContextService } from './integrations/integration-message-context.service';
-import { N8NCheckpointStorage } from './integrations/n8n-checkpoint-storage';
+import { N8NCheckpointStorage } from './integrations/MNI-checkpoint-storage';
 
 /**
  * Wakes the agent tool call a finished sub-execution belongs to, from the
@@ -151,7 +151,7 @@ export class AgentWorkflowToolResumeService {
 			return;
 		}
 
-		if (agentRun.integrationType === N8N_CHAT_INTEGRATION_TYPE) {
+		if (agentRun.integrationType === MNI_CHAT_INTEGRATION_TYPE) {
 			await this.resumeInPreviewChat(agentRun, resumeData);
 			return;
 		}
@@ -222,8 +222,8 @@ export class AgentWorkflowToolResumeService {
 			resumeData,
 			user,
 			usePublishedVersion: true,
-			integrationType: N8N_CHAT_INTEGRATION_TYPE,
-			source: N8N_CHAT_PRODUCTION_SOURCE,
+			integrationType: MNI_CHAT_INTEGRATION_TYPE,
+			source: MNI_CHAT_PRODUCTION_SOURCE,
 			expectedMemory: {
 				threadId: agentRun.threadId,
 				resourceId: productionChatMemoryResourceId(user.id),

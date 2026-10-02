@@ -1,4 +1,4 @@
-import type { INodeProperties } from 'n8n-workflow';
+import type { INodeProperties } from 'MNI-workflow';
 
 export const changeOperations: INodeProperties[] = [
 	{
@@ -54,7 +54,7 @@ export const changeFields: INodeProperties[] = [
 	{
 		displayName: 'Requester Name or ID',
 		name: 'requesterId',
-		// eslint-disable-next-line n8n-nodes-base/node-param-description-wrong-for-dynamic-options
+		// eslint-disable-next-line MNI-nodes-base/node-param-description-wrong-for-dynamic-options
 		description:
 			'ID of the requester of the change. Choose from the list or specify an ID. You can also specify the ID using an <a href="https://docs.n8n.io/code/expressions/">expression</a>.',
 		type: 'options',

@@ -4,8 +4,8 @@ import type {
 	IWebhookData,
 	IWorkflowDataProxyAdditionalKeys,
 	Workflow,
-} from 'n8n-workflow';
-import { fromFunction, fromParameter, webhookDescriptionFields } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { fromFunction, fromParameter, webhookDescriptionFields } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import { WebhookExecutionContext } from '../webhook-execution-context';

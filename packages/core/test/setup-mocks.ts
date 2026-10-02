@@ -4,16 +4,16 @@ import { join } from 'node:path';
 
 import 'reflect-metadata';
 
-const originalUserFolder = process.env.N8N_USER_FOLDER;
-const testUserFolder = mkdtempSync(join(tmpdir(), 'n8n-core-test-'));
+const originalUserFolder = process.env.MNI_USER_FOLDER;
+const testUserFolder = mkdtempSync(join(tmpdir(), 'MNI-core-test-'));
 
-process.env.N8N_USER_FOLDER = testUserFolder;
+process.env.MNI_USER_FOLDER = testUserFolder;
 
 afterAll(() => {
 	if (originalUserFolder === undefined) {
-		delete process.env.N8N_USER_FOLDER;
+		delete process.env.MNI_USER_FOLDER;
 	} else {
-		process.env.N8N_USER_FOLDER = originalUserFolder;
+		process.env.MNI_USER_FOLDER = originalUserFolder;
 	}
 
 	rmSync(testUserFolder, { recursive: true, force: true });

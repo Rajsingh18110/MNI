@@ -1,5 +1,5 @@
-import { BaseRule } from '@n8n/rules-engine';
-import type { Violation } from '@n8n/rules-engine';
+import { BaseRule } from '@MNI/rules-engine';
+import type { Violation } from '@MNI/rules-engine';
 import { kebabCase } from 'change-case';
 import * as path from 'node:path';
 

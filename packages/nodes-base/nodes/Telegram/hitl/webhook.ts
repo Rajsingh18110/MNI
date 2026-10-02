@@ -1,6 +1,6 @@
 import { timingSafeEqual } from 'crypto';
-import { isTelegramInteractionRequest, parseHitlCallbackReference } from 'n8n-core';
-import type { IWebhookFunctions, IWebhookResponseData } from 'n8n-workflow';
+import { isTelegramInteractionRequest, parseHitlCallbackReference } from 'MNI-core';
+import type { IWebhookFunctions, IWebhookResponseData } from 'MNI-workflow';
 
 import type { TelegramChatApprovalOptions } from './descriptions';
 import { deriveHitlSecretToken } from './tokens';

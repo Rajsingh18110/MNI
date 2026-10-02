@@ -9,7 +9,7 @@ import {
 	type InjectionKey,
 	type Ref,
 } from 'vue';
-import type { InstanceAiCredentialFlow, InstanceAiWorkflowSetupNode } from '@n8n/api-types';
+import type { InstanceAiCredentialFlow, InstanceAiWorkflowSetupNode } from '@MNI/api-types';
 import { useCredentialTestInBackground } from '@/features/credentials/composables/useCredentialTestInBackground';
 import type { INodeUi } from '@/Interface';
 import { useThread } from '../../instanceAi.store';

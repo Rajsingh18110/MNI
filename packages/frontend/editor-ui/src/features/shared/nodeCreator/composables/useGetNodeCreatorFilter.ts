@@ -1,7 +1,7 @@
 import { AGENT_NODE_TYPE, AGENT_TOOL_NODE_TYPE } from '@/app/constants';
 import type { INodeUi } from '@/Interface';
-import type { NodeConnectionType, INodeInputConfiguration } from 'n8n-workflow';
-import { NodeHelpers, NodeConnectionTypes, isHitlToolType } from 'n8n-workflow';
+import type { NodeConnectionType, INodeInputConfiguration } from 'MNI-workflow';
+import { NodeHelpers, NodeConnectionTypes, isHitlToolType } from 'MNI-workflow';
 import type { NodeCreatorFilter } from './useViewStacks';
 import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';
 import { injectWorkflowDocumentStore } from '@/app/stores/workflowDocument.store';

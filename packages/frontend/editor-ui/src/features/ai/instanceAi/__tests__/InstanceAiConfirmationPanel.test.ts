@@ -7,7 +7,7 @@ import type {
 	InstanceAiConfirmation,
 	InstanceAiToolCallState,
 	InstanceAiAgentNode,
-} from '@n8n/api-types';
+} from '@MNI/api-types';
 import InstanceAiConfirmationPanel from '../components/InstanceAiConfirmationPanel.vue';
 import { useInstanceAiStore, type ThreadRuntime } from '../instanceAi.store';
 import type { QuestionAnswer } from '../components/InstanceAiQuestions.vue';
@@ -16,7 +16,7 @@ import type { QuestionAnswer } from '../components/InstanceAiQuestions.vue';
 // Mocks
 // ---------------------------------------------------------------------------
 
-vi.mock('@n8n/i18n', async (importOriginal) => ({
+vi.mock('@MNI/i18n', async (importOriginal) => ({
 	...(await importOriginal()),
 	useI18n: () => ({
 		baseText: (key: string, opts?: { interpolate?: Record<string, string> }) => {
@@ -60,11 +60,11 @@ vi.mock('@n8n/i18n', async (importOriginal) => ({
 }));
 
 const mockTelemetryTrack = vi.fn();
-vi.mock('@n8n/composables/useTelemetry', () => ({
+vi.mock('@MNI/composables/useTelemetry', () => ({
 	useTelemetry: () => ({ track: mockTelemetryTrack }),
 }));
 
-vi.mock('@n8n/stores/useRootStore', () => ({
+vi.mock('@MNI/stores/useRootStore', () => ({
 	useRootStore: () => ({ instanceId: 'test-instance-id' }),
 }));
 
@@ -366,7 +366,7 @@ describe('InstanceAiConfirmationPanel telemetry', () => {
 					message: 'Document > Create',
 					resourceName: 'Google Sheets node',
 				},
-				{ action: 'execute', type: 'n8n-nodes-base.googleSheets' },
+				{ action: 'execute', type: 'MNI-nodes-base.googleSheets' },
 				'nodes',
 			);
 			const { getByText } = renderComponent({ props: { kind: 'floating' } });
@@ -943,7 +943,7 @@ describe('InstanceAiConfirmationPanel telemetry', () => {
 			injectPendingConfirmation(thread, {
 				requestId: 'req-continue',
 				severity: 'info',
-				message: 'Enter the values privately into n8n.',
+				message: 'Enter the values privately into MNI.',
 				inputType: 'continue',
 			});
 			const confirmSpy = vi.spyOn(thread, 'confirmAction').mockResolvedValue(true);
@@ -965,7 +965,7 @@ describe('InstanceAiConfirmationPanel telemetry', () => {
 					type: 'continue',
 					provided_inputs: [
 						{
-							label: 'Enter the values privately into n8n.',
+							label: 'Enter the values privately into MNI.',
 							options: ['continue'],
 							option_chosen: 'continue',
 						},
@@ -1021,7 +1021,7 @@ describe('InstanceAiConfirmationPanel telemetry', () => {
 					{
 						node: {
 							name: 'Slack',
-							type: 'n8n-nodes-base.slack',
+							type: 'MNI-nodes-base.slack',
 							typeVersion: 2,
 							parameters: {},
 							position: [0, 0],

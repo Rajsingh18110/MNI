@@ -1,6 +1,6 @@
-import type { WorkflowPublishBlockedReason } from '@n8n/api-types';
-import { WorkflowReviewRequestRepository } from '@n8n/db';
-import { Service } from '@n8n/di';
+import type { WorkflowPublishBlockedReason } from '@MNI/api-types';
+import { WorkflowReviewRequestRepository } from '@MNI/db';
+import { Service } from '@MNI/di';
 
 import { WorkflowPublishBlockedError } from '@/errors/response-errors/workflow-publish-blocked.error';
 import type { WorkflowPublishGuard } from '@/workflows/workflow-publish-guard-proxy.service';

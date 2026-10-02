@@ -10,7 +10,7 @@ test.describe(
 		test.describe('With experimental NDV in focus panel enabled', () => {
 			const requirements: TestRequirements = {
 				storage: {
-					N8N_EXPERIMENT_OVERRIDES: JSON.stringify({ ndv_in_focus_panel: 'variant' }),
+					MNI_EXPERIMENT_OVERRIDES: JSON.stringify({ ndv_in_focus_panel: 'variant' }),
 				},
 			};
 

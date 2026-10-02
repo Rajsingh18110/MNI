@@ -1,13 +1,13 @@
-import { inDevelopment, Logger } from '@n8n/backend-common';
-import { OutboundHttp, type HttpRequestClient } from '@n8n/backend-network';
-import { GlobalConfig } from '@n8n/config';
-import { Time } from '@n8n/constants';
-import { separate } from '@n8n/db';
-import { Container, Service } from '@n8n/di';
-import { InstanceSettings } from 'n8n-core';
-import type { IWorkflowBase } from 'n8n-workflow';
+import { inDevelopment, Logger } from '@MNI/backend-common';
+import { OutboundHttp, type HttpRequestClient } from '@MNI/backend-network';
+import { GlobalConfig } from '@MNI/config';
+import { Time } from '@MNI/constants';
+import { separate } from '@MNI/db';
+import { Container, Service } from '@MNI/di';
+import { InstanceSettings } from 'MNI-core';
+import type { IWorkflowBase } from 'MNI-workflow';
 
-import { N8N_VERSION } from '@/constants';
+import { MNI_VERSION } from '@/constants';
 import { CommunityPackagesConfig } from '@/modules/community-packages/community-packages.config';
 import { isApiKeyAuthEnabled } from '@/public-api';
 import {
@@ -16,7 +16,7 @@ import {
 	WEBHOOK_NODE_TYPE,
 	WEBHOOK_VALIDATOR_NODE_TYPES,
 } from '@/security-audit/constants';
-import type { RiskReporter, Risk, n8n } from '@/security-audit/types';
+import type { RiskReporter, Risk, MNI } from '@/security-audit/types';
 import { toFlaggedNode } from '@/security-audit/utils';
 
 const REQUEST_TIMEOUT_MS = 30 * Time.seconds.toMilliseconds;
@@ -32,7 +32,7 @@ export class InstanceRiskReporter implements RiskReporter {
 		outboundHttp: OutboundHttp,
 	) {
 		this.http = outboundHttp.requests({
-			useDefaultSsrfPolicy: 'unsafe', // Fixed, n8n-controlled host
+			useDefaultSsrfPolicy: 'unsafe', // Fixed, MNI-controlled host
 			timeout: REQUEST_TIMEOUT_MS,
 		});
 	}
@@ -161,17 +161,17 @@ export class InstanceRiskReporter implements RiskReporter {
 		const BASE_URL = this.globalConfig.versionNotifications.endpoint;
 		const { instanceId } = this.instanceSettings;
 
-		const response = await this.http.request<n8n.Version[]>({
+		const response = await this.http.request<MNI.Version[]>({
 			url: BASE_URL + currentVersionName,
 			method: 'GET',
-			headers: { 'n8n-instance-id': instanceId },
+			headers: { 'MNI-instance-id': instanceId },
 			json: true,
 		});
 
 		return response;
 	}
 
-	private removeIconData(versions: n8n.Version[]) {
+	private removeIconData(versions: MNI.Version[]) {
 		return versions.map((version) => {
 			if (version.nodes.length === 0) return version;
 
@@ -181,7 +181,7 @@ export class InstanceRiskReporter implements RiskReporter {
 		});
 	}
 
-	private classify(versions: n8n.Version[], currentVersionName: string) {
+	private classify(versions: MNI.Version[], currentVersionName: string) {
 		const [pass, fail] = separate(versions, (v) => v.name === currentVersionName);
 
 		return { currentVersion: pass[0], nextVersions: fail };
@@ -190,7 +190,7 @@ export class InstanceRiskReporter implements RiskReporter {
 	private async getOutdatedState() {
 		let versions = [];
 
-		const localVersion = N8N_VERSION;
+		const localVersion = MNI_VERSION;
 
 		try {
 			versions = await this.getNextVersions(localVersion).then((v) => this.removeIconData(v));

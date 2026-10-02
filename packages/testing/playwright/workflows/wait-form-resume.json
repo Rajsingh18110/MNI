@@ -10,7 +10,7 @@
 			},
 			"id": "webhook-trigger",
 			"name": "Webhook",
-			"type": "n8n-nodes-base.webhook",
+			"type": "MNI-nodes-base.webhook",
 			"typeVersion": 1,
 			"position": [300, 300],
 			"webhookId": "start-wait-form-test-id"
@@ -31,7 +31,7 @@
 			},
 			"id": "capture-url",
 			"name": "Capture Form URL",
-			"type": "n8n-nodes-base.set",
+			"type": "MNI-nodes-base.set",
 			"typeVersion": 3.3,
 			"position": [500, 300]
 		},
@@ -52,7 +52,7 @@
 			},
 			"id": "wait-form",
 			"name": "Wait for Form",
-			"type": "n8n-nodes-base.wait",
+			"type": "MNI-nodes-base.wait",
 			"typeVersion": 1.1,
 			"position": [700, 300]
 		},
@@ -72,7 +72,7 @@
 			},
 			"id": "result",
 			"name": "Result",
-			"type": "n8n-nodes-base.set",
+			"type": "MNI-nodes-base.set",
 			"typeVersion": 3.3,
 			"position": [900, 300]
 		}

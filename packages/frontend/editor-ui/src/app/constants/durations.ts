@@ -60,6 +60,6 @@ export const HOVER_DELAY = {
 	LEAVE: 150,
 } as const;
 
-// `DEBOUNCE_TIME` moved to `@n8n/frontend-constants/durations` so a module outside the
+// `DEBOUNCE_TIME` moved to `@MNI/frontend-constants/durations` so a module outside the
 // shell can debounce with the same values. Re-exported here for existing importers.
-export { DEBOUNCE_TIME } from '@n8n/frontend-constants/durations';
+export { DEBOUNCE_TIME } from '@MNI/frontend-constants/durations';

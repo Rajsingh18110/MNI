@@ -1,6 +1,6 @@
-import { Role, RoleRepository, Scope, ScopeRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
-import type { Scope as ScopeType } from '@n8n/permissions';
+import { Role, RoleRepository, Scope, ScopeRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
+import type { Scope as ScopeType } from '@MNI/permissions';
 
 import { RoleCacheService } from '@/services/role-cache.service';
 

@@ -5,7 +5,7 @@ import {
 	type IRunExecutionData,
 	type ITaskStartedData,
 	type IWorkflowGroup,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import { useWorkflowsStore } from '@/app/stores/workflows.store';
 import { injectWorkflowExecutionStateStore } from '@/app/stores/workflowExecutionState.store';
 import { injectWorkflowDocumentStore } from '@/app/stores/workflowDocument.store';
@@ -16,13 +16,13 @@ import {
 	findSubExecutionLocator,
 	mergeStartData,
 } from '@/features/execution/logs/logs.utils';
-import { useToast } from '@n8n/composables/useToast';
+import { useToast } from '@MNI/composables/useToast';
 import type { LatestNodeInfo, LogEntry, LogTreeFilter } from '../logs.types';
 import { isChatNode } from '@/app/utils/aiUtils';
 import { CHAT_TRIGGER_NODE_TYPE, LOGS_EXECUTION_DATA_THROTTLE_DURATION } from '@/app/constants';
 import { useChatHubPanelStore } from '@/features/ai/chatHub/chatHubPanel.store';
 import { useThrottleFn } from '@vueuse/core';
-import { useThrottleWithReactiveDelay } from '@n8n/composables/useThrottleWithReactiveDelay';
+import { useThrottleWithReactiveDelay } from '@MNI/composables/useThrottleWithReactiveDelay';
 import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';
 
 interface UseLogsExecutionDataOptions {

@@ -2,7 +2,7 @@ import type {
 	IHttpRequestOptions,
 	ILoadOptionsFunctions,
 	INodeListSearchResult,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import {
 	databricksApiRequest,

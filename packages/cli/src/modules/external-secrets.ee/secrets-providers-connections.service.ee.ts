@@ -8,18 +8,18 @@ import {
 	type SecretsProviderType,
 	type TestSecretProviderConnectionResponse,
 	testSecretProviderConnectionResponseSchema,
-} from '@n8n/api-types';
-import { Logger } from '@n8n/backend-common';
-import type { SecretsProviderAccessRole, SecretsProviderConnection } from '@n8n/db';
+} from '@MNI/api-types';
+import { Logger } from '@MNI/backend-common';
+import type { SecretsProviderAccessRole, SecretsProviderConnection } from '@MNI/db';
 import {
 	ProjectSecretsProviderAccessRepository,
 	SecretsProviderConnectionRepository,
-} from '@n8n/db';
-import { Service } from '@n8n/di';
-import { In } from '@n8n/typeorm';
-import { Cipher } from 'n8n-core';
-import type { IDataObject } from 'n8n-workflow';
-import { jsonParse } from 'n8n-workflow';
+} from '@MNI/db';
+import { Service } from '@MNI/di';
+import { In } from '@MNI/typeorm';
+import { Cipher } from 'MNI-core';
+import type { IDataObject } from 'MNI-workflow';
+import { jsonParse } from 'MNI-workflow';
 
 import {
 	CredentialDependencyService,

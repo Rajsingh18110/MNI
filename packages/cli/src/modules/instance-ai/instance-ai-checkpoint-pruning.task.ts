@@ -1,6 +1,6 @@
-import { InstanceAiConfig } from '@n8n/config';
-import { intervalFromMilliseconds, SystemTask } from '@n8n/decorators';
-import type { SystemTaskEffects, SystemTaskPlacement, SystemTaskSchedule } from '@n8n/decorators';
+import { InstanceAiConfig } from '@MNI/config';
+import { intervalFromMilliseconds, SystemTask } from '@MNI/decorators';
+import type { SystemTaskEffects, SystemTaskPlacement, SystemTaskSchedule } from '@MNI/decorators';
 
 import { InstanceAiService } from './instance-ai.service';
 

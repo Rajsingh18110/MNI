@@ -10,13 +10,13 @@ import {
 } from './useWorkflowPublicationStatusSync';
 import { useWorkflowsStore } from '@/app/stores/workflows.store';
 import { useWorkflowsListStore } from '@/app/stores/workflowsList.store';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import {
 	useWorkflowDocumentStore,
 	createWorkflowDocumentId,
 	type WorkflowDocumentId,
 } from '@/app/stores/workflowDocument.store';
-import type { WorkflowPublicationStatus } from '@n8n/api-types';
+import type { WorkflowPublicationStatus } from '@MNI/api-types';
 import type { INodeUi, IWorkflowDb } from '@/Interface';
 
 const TEST_WORKFLOW_ID = 'wf-pub-sync';

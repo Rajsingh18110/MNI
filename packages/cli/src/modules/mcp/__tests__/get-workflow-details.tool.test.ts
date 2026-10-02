@@ -1,6 +1,6 @@
-import { mockInstance } from '@n8n/backend-test-utils';
-import { User, type WorkflowEntity } from '@n8n/db';
-import type { INode, INodeTypes } from 'n8n-workflow';
+import { mockInstance } from '@MNI/backend-test-utils';
+import { User, type WorkflowEntity } from '@MNI/db';
+import type { INode, INodeTypes } from 'MNI-workflow';
 import { v4 as uuid } from 'uuid';
 import { mock } from 'vitest-mock-extended';
 
@@ -118,7 +118,7 @@ describe('get-workflow-details MCP tool', () => {
 					{
 						id: 'node-1',
 						name: 'OpenAI',
-						type: '@n8n/n8n-nodes-langchain.openAi',
+						type: '@MNI/MNI-nodes-langchain.openAi',
 						typeVersion: 1,
 						position: [0, 0],
 						disabled: false,
@@ -130,7 +130,7 @@ describe('get-workflow-details MCP tool', () => {
 					{
 						id: 'node-2',
 						name: 'HTTP Request',
-						type: 'n8n-nodes-base.httpRequest',
+						type: 'MNI-nodes-base.httpRequest',
 						typeVersion: 1,
 						position: [0, 0],
 						disabled: false,
@@ -368,7 +368,7 @@ describe('get-workflow-details MCP tool', () => {
 			const skeletonNode = {
 				id: 'node-1',
 				name: 'Webhook',
-				type: 'n8n-nodes-base.webhook',
+				type: 'MNI-nodes-base.webhook',
 				typeVersion: 1,
 				position: [0, 0],
 				webhookId: 'hook-1',
@@ -530,7 +530,7 @@ describe('get-workflow-details MCP tool', () => {
 					{
 						id: 'node-1',
 						name: 'Gmail Trigger',
-						type: 'n8n-nodes-base.gmailTrigger',
+						type: 'MNI-nodes-base.gmailTrigger',
 						typeVersion: 1.4,
 						position: [0, 0],
 						disabled: false,
@@ -539,7 +539,7 @@ describe('get-workflow-details MCP tool', () => {
 					{
 						id: 'node-2',
 						name: 'Disabled Trigger',
-						type: 'n8n-nodes-base.telegramTrigger',
+						type: 'MNI-nodes-base.telegramTrigger',
 						typeVersion: 1,
 						position: [100, 0],
 						disabled: true,

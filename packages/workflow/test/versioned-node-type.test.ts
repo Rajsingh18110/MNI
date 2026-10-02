@@ -6,7 +6,7 @@ const v1 = { description: {} } as INodeType;
 const v2 = { description: {} } as INodeType;
 
 const baseDescription = {
-	name: 'n8n-nodes-base.example',
+	name: 'MNI-nodes-base.example',
 	defaultVersion: 2,
 } as INodeTypeBaseDescription;
 
@@ -33,12 +33,12 @@ describe('VersionedNodeType', () => {
 
 			expect(caught).toBeInstanceOf(NodeVersionNotFoundError);
 			const error = caught as NodeVersionNotFoundError;
-			expect(error.nodeType).toBe('n8n-nodes-base.example');
+			expect(error.nodeType).toBe('MNI-nodes-base.example');
 			expect(error.version).toBe(4.4);
 			expect(error.availableVersions).toEqual([1, 2]);
 			expect(error.latestVersion).toBe(2);
 			expect(error.message).toBe(
-				'Node type "n8n-nodes-base.example" is not available in version 4.4. Available versions: 1, 2. Use the latest version 2.',
+				'Node type "MNI-nodes-base.example" is not available in version 4.4. Available versions: 1, 2. Use the latest version 2.',
 			);
 		});
 	});

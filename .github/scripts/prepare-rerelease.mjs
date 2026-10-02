@@ -5,7 +5,7 @@
  *
  * Bumps only the root and `packages/cli` package.json files: the root version
  * drives every publish output (git tag, Docker tags, GitHub Release, SBOM) and
- * `packages/cli` drives the runtime `N8N_VERSION`. Every other package keeps
+ * `packages/cli` drives the runtime `MNI_VERSION`. Every other package keeps
  * its version, so `pnpm publish -r` skips the ones already on npm and publishes
  * whichever ones the failed run never got to.
  *
@@ -111,13 +111,13 @@ export async function assertRereleaseIsWarranted(failedVersion, nextVersion, fet
 
 	if (!failedIsPublished) {
 		throw new Error(
-			`n8n@${failedVersion} is not on npm, so that version is not burned. Re-run the failed jobs of the original release instead, or dispatch with force to override.`,
+			`MNI@${failedVersion} is not on npm, so that version is not burned. Re-run the failed jobs of the original release instead, or dispatch with force to override.`,
 		);
 	}
 
 	if (nextIsPublished) {
 		throw new Error(
-			`n8n@${nextVersion} is already on npm. Re-release from ${nextVersion} instead of ${failedVersion}.`,
+			`MNI@${nextVersion} is already on npm. Re-release from ${nextVersion} instead of ${failedVersion}.`,
 		);
 	}
 }
@@ -128,7 +128,7 @@ export async function assertRereleaseIsWarranted(failedVersion, nextVersion, fet
  * @param {string} date ISO date, e.g. "2026-08-27"
  */
 export function buildChangelogEntry(failedVersion, nextVersion, date) {
-	const compareUrl = `https://github.com/n8n-io/n8n/compare/n8n@${failedVersion}...n8n@${nextVersion}`;
+	const compareUrl = `https://github.com/MNI-io/MNI/compare/MNI@${failedVersion}...MNI@${nextVersion}`;
 	return [
 		`## [${nextVersion}](${compareUrl}) (${date})`,
 		'',

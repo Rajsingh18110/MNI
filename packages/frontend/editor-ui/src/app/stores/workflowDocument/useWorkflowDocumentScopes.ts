@@ -1,6 +1,6 @@
 import { readonly, ref } from 'vue';
 import { createEventHook } from '@vueuse/core';
-import type { Scope } from '@n8n/permissions';
+import type { Scope } from '@MNI/permissions';
 import { CHANGE_ACTION } from './types';
 import type { ChangeAction, ChangeEvent } from './types';
 

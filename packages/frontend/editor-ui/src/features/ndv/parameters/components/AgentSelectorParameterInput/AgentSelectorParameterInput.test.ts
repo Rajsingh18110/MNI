@@ -31,11 +31,11 @@ vi.mock('@/app/composables/useDocumentVisibility', () => ({
 	useDocumentVisibility: () => ({ onDocumentVisible: vi.fn() }),
 }));
 
-vi.mock('@n8n/composables/useTelemetry', () => ({
+vi.mock('@MNI/composables/useTelemetry', () => ({
 	useTelemetry: () => ({ track: vi.fn() }),
 }));
 
-vi.mock('@n8n/stores/useRootStore', () => ({
+vi.mock('@MNI/stores/useRootStore', () => ({
 	useRootStore: () => ({ restApiContext: { baseUrl: '', pushRef: '' } }),
 }));
 

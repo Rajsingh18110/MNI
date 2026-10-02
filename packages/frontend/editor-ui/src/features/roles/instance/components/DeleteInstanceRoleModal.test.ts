@@ -2,7 +2,7 @@ import { createComponentRenderer } from '@/__tests__/render';
 import { createPinia, setActivePinia } from 'pinia';
 import { waitFor } from '@testing-library/vue';
 import userEvent from '@testing-library/user-event';
-import type { Role } from '@n8n/permissions';
+import type { Role } from '@MNI/permissions';
 import DeleteInstanceRoleModal from './DeleteInstanceRoleModal.vue';
 
 // The real ElDialog teleports to #app-modals; stub it so the modal content renders inline.

@@ -1,4 +1,4 @@
-import { useToast } from '@n8n/composables/useToast';
+import { useToast } from '@MNI/composables/useToast';
 import { createTestingPinia } from '@pinia/testing';
 import userEvent from '@testing-library/user-event';
 import { createComponentRenderer } from '@/__tests__/render';
@@ -7,7 +7,7 @@ import { mockedStore, waitAllPromises } from '@/__tests__/utils';
 import { useReviewActivityStore } from '../reviewActivity.store';
 import WorkflowReviewDecisionPopover from './WorkflowReviewDecisionPopover.vue';
 
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: vi.fn(),
 }));
 

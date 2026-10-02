@@ -3,17 +3,17 @@ import type {
 	DatasetCandidateField,
 	DatasetCandidateResponse,
 	DatasetColumnMapping,
-} from '@n8n/api-types';
-import type { EvaluationConfig, User } from '@n8n/db';
-import { EvaluationConfigRepository } from '@n8n/db';
-import { Service } from '@n8n/di';
-import type { Scope } from '@n8n/permissions';
+} from '@MNI/api-types';
+import type { EvaluationConfig, User } from '@MNI/db';
+import { EvaluationConfigRepository } from '@MNI/db';
+import { Service } from '@MNI/di';
+import type { Scope } from '@MNI/permissions';
 import {
 	EVALUATION_TRIGGER_NODE_TYPE,
 	getParentNodes,
 	jsonStringify,
 	mapConnectionsByDestination,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import type {
 	DataTableColumnJsType,
 	DataTableRow,
@@ -21,7 +21,7 @@ import type {
 	IRunData,
 	IWorkflowBase,
 	JsonValue,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { BadRequestError } from '@/errors/response-errors/bad-request.error';
 import { ForbiddenError } from '@/errors/response-errors/forbidden.error';

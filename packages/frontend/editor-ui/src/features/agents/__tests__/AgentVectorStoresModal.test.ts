@@ -12,7 +12,7 @@ const testAgentVectorStoreMock = vi.fn();
 const showMessageMock = vi.fn();
 const showErrorMock = vi.fn();
 
-vi.mock('@n8n/i18n', () => ({
+vi.mock('@MNI/i18n', () => ({
 	useI18n: () => ({
 		baseText: (key: string, options?: { interpolate?: Record<string, string> }) =>
 			key === 'agents.builder.vectorStores.modal.defaultName'
@@ -23,16 +23,16 @@ vi.mock('@n8n/i18n', () => ({
 	}),
 }));
 
-vi.mock('@n8n/stores/useRootStore', () => ({
+vi.mock('@MNI/stores/useRootStore', () => ({
 	useRootStore: () => ({ restApiContext: {} }),
 }));
 
-vi.mock('@n8n/permissions', async (importOriginal) => ({
-	...(await importOriginal<typeof import('@n8n/permissions')>()),
+vi.mock('@MNI/permissions', async (importOriginal) => ({
+	...(await importOriginal<typeof import('@MNI/permissions')>()),
 	getResourcePermissions: () => ({ credential: { create: true } }),
 }));
 
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: () => ({ showMessage: showMessageMock, showError: showErrorMock }),
 }));
 

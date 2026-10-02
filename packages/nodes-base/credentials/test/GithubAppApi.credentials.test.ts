@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken';
-import type { ICredentialDataDecryptedObject, IHttpRequestHelper } from 'n8n-workflow';
+import type { ICredentialDataDecryptedObject, IHttpRequestHelper } from 'MNI-workflow';
 
 import { GithubAppApi } from '../GithubAppApi.credentials';
 import type { Mock } from 'vitest';
@@ -8,7 +8,7 @@ vi.mock('jsonwebtoken', () => ({
 	default: { sign: vi.fn() },
 }));
 
-vi.mock('@n8n/utils/format-pem-block', () => ({
+vi.mock('@MNI/utils/format-pem-block', () => ({
 	formatPemBlock: (key: string) => key,
 }));
 

@@ -1,8 +1,8 @@
-import { LicenseState, Logger } from '@n8n/backend-common';
-import { mockInstance } from '@n8n/backend-test-utils';
-import type { User } from '@n8n/db';
-import type { INode, IRunExecutionData, ITaskData, WorkflowExecuteMode } from 'n8n-workflow';
-import { shouldRedactConsoleOutput } from 'n8n-workflow';
+import { LicenseState, Logger } from '@MNI/backend-common';
+import { mockInstance } from '@MNI/backend-test-utils';
+import type { User } from '@MNI/db';
+import type { INode, IRunExecutionData, ITaskData, WorkflowExecuteMode } from 'MNI-workflow';
+import { shouldRedactConsoleOutput } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import { ForbiddenError } from '@/errors/response-errors/forbidden.error';
@@ -181,7 +181,7 @@ describe('ExecutionRedactionService', () => {
 		({
 			id: 'node-1',
 			name: 'SomeNode',
-			type: 'n8n-nodes-base.noOp',
+			type: 'MNI-nodes-base.noOp',
 			typeVersion: 1,
 			position: [0, 0],
 			parameters: {},
@@ -1146,7 +1146,7 @@ describe('ExecutionRedactionService', () => {
 					{
 						id: 'node-2',
 						name: 'NoIdNode',
-						type: 'n8n-nodes-base.noOp',
+						type: 'MNI-nodes-base.noOp',
 						typeVersion: 1,
 						position: [0, 0],
 						parameters: {},

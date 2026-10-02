@@ -2,7 +2,7 @@ import {
 	type IExecuteFunctions,
 	type INodeExecutionData,
 	type INodeProperties,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { requestAllFiles } from './helpers';
 import { wrapData } from '../../../../utils/utilities';
@@ -88,7 +88,7 @@ export async function execute(
 	 * Returns the files in one of two formats:
 	 * - A single JSON item containing an array of all files (when outputSingleItem = true)
 	 * - Multiple JSON items, one per file
-	 * Data structure reference: https://docs.n8n.io/build/work-with-data/understand-n8ns-data-structure
+	 * Data structure reference: https://docs.n8n.io/build/work-with-data/understand-MNIs-data-structure
 	 */
 	if (outputSingleItem) {
 		return this.helpers.returnJsonArray({ ...responseData });

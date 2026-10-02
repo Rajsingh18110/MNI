@@ -1,6 +1,6 @@
-import { createManyActiveWorkflows, createManyWorkflows, testDb } from '@n8n/backend-test-utils';
-import { StatisticsNames, LicenseMetricsRepository, WorkflowStatisticsRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
+import { createManyActiveWorkflows, createManyWorkflows, testDb } from '@MNI/backend-test-utils';
+import { StatisticsNames, LicenseMetricsRepository, WorkflowStatisticsRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
 
 import { createManyCredentials } from './shared/db/credentials';
 import { createAdmin, createMember, createOwner, createUser } from './shared/db/users';

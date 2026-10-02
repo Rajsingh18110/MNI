@@ -1,8 +1,8 @@
-import type { HttpRequestClient, OutboundHttp } from '@n8n/backend-network';
-import { mockInstance } from '@n8n/backend-test-utils';
+import type { HttpRequestClient, OutboundHttp } from '@MNI/backend-network';
+import { mockInstance } from '@MNI/backend-test-utils';
 import { mock } from 'vitest-mock-extended';
-import { MessageEventBusDestinationTypeNames } from 'n8n-workflow';
-import type { IHttpRequestOptions, MessageEventBusDestinationWebhookOptions } from 'n8n-workflow';
+import { MessageEventBusDestinationTypeNames } from 'MNI-workflow';
+import type { IHttpRequestOptions, MessageEventBusDestinationWebhookOptions } from 'MNI-workflow';
 
 import { CredentialsHelper } from '@/credentials-helper';
 import type { MessageEventBus } from '@/eventbus/message-event-bus/message-event-bus';

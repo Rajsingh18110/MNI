@@ -4,8 +4,8 @@ import type {
 	IExecuteSingleFunctions,
 	IHttpRequestOptions,
 	INodeProperties,
-} from 'n8n-workflow';
-import { jsonParse, updateDisplayOptions } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { jsonParse, updateDisplayOptions } from 'MNI-workflow';
 
 import type { Filters } from '../../helpers/interfaces';
 import { userPoolResourceLocator } from '../common.description';

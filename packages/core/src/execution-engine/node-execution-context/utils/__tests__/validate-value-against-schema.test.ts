@@ -1,4 +1,4 @@
-import { ExpressionError, type IDataObject, type INode, type INodeType } from 'n8n-workflow';
+import { ExpressionError, type IDataObject, type INode, type INodeType } from 'MNI-workflow';
 
 import { validateValueAgainstSchema } from '../validate-value-against-schema';
 
@@ -166,7 +166,7 @@ describe('validateValueAgainstSchema', () => {
 				options: {},
 			},
 			name: 'Edit Fields2',
-			type: 'n8n-nodes-base.set',
+			type: 'MNI-nodes-base.set',
 			typeVersion: 3,
 		} as unknown as INode;
 
@@ -233,7 +233,7 @@ describe('validateValueAgainstSchema', () => {
 				options: {},
 			},
 			name: 'Edit Fields2',
-			type: 'n8n-nodes-base.set',
+			type: 'MNI-nodes-base.set',
 			typeVersion: 3,
 		} as unknown as INode;
 
@@ -368,7 +368,7 @@ describe('validateValueAgainstSchema', () => {
 					},
 					id: '8d6cec63-8db1-440c-8966-4d6311ee69a9',
 					name: 'add products to DB',
-					type: 'n8n-nodes-base.postgres',
+					type: 'MNI-nodes-base.postgres',
 					typeVersion: 2.3,
 					position: [420, 0],
 				};
@@ -444,7 +444,7 @@ describe('validateValueAgainstSchema', () => {
 					},
 					id: '8d6cec63-8db1-440c-8966-4d6311ee69a9',
 					name: 'add products to DB',
-					type: 'n8n-nodes-base.postgres',
+					type: 'MNI-nodes-base.postgres',
 					typeVersion: 2.3,
 					position: [420, 0],
 				};
@@ -519,7 +519,7 @@ describe('validateValueAgainstSchema', () => {
 					},
 					id: '8d6cec63-8db1-440c-8966-4d6311ee69a9',
 					name: 'call sub-workflow',
-					type: 'n8n-nodes-base.executeWorkflow',
+					type: 'MNI-nodes-base.executeWorkflow',
 					typeVersion,
 					position: [420, 0],
 				}) as unknown as INode;
@@ -615,7 +615,7 @@ describe('validateValueAgainstSchema', () => {
 					},
 					id: '8d6cec63-8db1-440c-8966-4d6311ee69a9',
 					name: 'add products to DB',
-					type: 'n8n-nodes-base.postgres',
+					type: 'MNI-nodes-base.postgres',
 					typeVersion: 2.3,
 					position: [420, 0],
 				}) as unknown as INode;

@@ -1,8 +1,8 @@
-import { CREDENTIAL_DESCRIPTIONS_FLAG } from '@n8n/api-types';
-import { createTeamProject, mockInstance, testDb } from '@n8n/backend-test-utils';
-import { GlobalConfig } from '@n8n/config';
-import { CredentialsEntity, CredentialsRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
+import { CREDENTIAL_DESCRIPTIONS_FLAG } from '@MNI/api-types';
+import { createTeamProject, mockInstance, testDb } from '@MNI/backend-test-utils';
+import { GlobalConfig } from '@MNI/config';
+import { CredentialsEntity, CredentialsRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
 import fs from 'fs';
 import os from 'os';
 import path from 'path';
@@ -21,7 +21,7 @@ let testOutputDir: string;
 
 beforeEach(async () => {
 	await testDb.truncate(['CredentialsEntity', 'SharedCredentials']);
-	testOutputDir = fs.mkdtempSync(path.join(os.tmpdir(), 'n8n-export-credentials-test-'));
+	testOutputDir = fs.mkdtempSync(path.join(os.tmpdir(), 'MNI-export-credentials-test-'));
 });
 
 afterEach(() => {

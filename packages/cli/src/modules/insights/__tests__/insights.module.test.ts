@@ -1,8 +1,8 @@
-import { LicenseState, Logger } from '@n8n/backend-common';
-import { createTeamProject, mockLogger, testDb } from '@n8n/backend-test-utils';
-import type { InstanceType } from '@n8n/constants';
-import { Container } from '@n8n/di';
-import { InstanceSettings } from 'n8n-core';
+import { LicenseState, Logger } from '@MNI/backend-common';
+import { createTeamProject, mockLogger, testDb } from '@MNI/backend-test-utils';
+import type { InstanceType } from '@MNI/constants';
+import { Container } from '@MNI/di';
+import { InstanceSettings } from 'MNI-core';
 import type { MockProxy } from 'vitest-mock-extended';
 import { mock } from 'vitest-mock-extended';
 

@@ -6,20 +6,20 @@ import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';
 import { useUIStore } from '@/app/stores/ui.store';
 import { useChatStore } from '@/features/ai/chatHub/chat.store';
 import ToolsManagerModal from './ToolsManagerModal.vue';
-import { NodeConnectionTypes, type INode, type INodeTypeDescription } from 'n8n-workflow';
+import { NodeConnectionTypes, type INode, type INodeTypeDescription } from 'MNI-workflow';
 import { fireEvent, waitFor } from '@testing-library/vue';
 import userEvent from '@testing-library/user-event';
 import { MODAL_CONFIRM } from '@/app/constants';
-import type { ChatHubToolDto } from '@n8n/api-types';
+import type { ChatHubToolDto } from '@MNI/api-types';
 
 vi.mock('virtual:node-popularity-data', () => ({
 	default: [
-		{ id: 'n8n-nodes-base.toolA', popularity: 100 },
-		{ id: 'n8n-nodes-base.toolB', popularity: 50 },
+		{ id: 'MNI-nodes-base.toolA', popularity: 100 },
+		{ id: 'MNI-nodes-base.toolB', popularity: 50 },
 	],
 }));
 
-vi.mock('@n8n/i18n', () => {
+vi.mock('@MNI/i18n', () => {
 	const i18n = {
 		baseText: (key: string, opts?: { interpolate?: Record<string, unknown> }) => {
 			if (opts?.interpolate) {
@@ -61,7 +61,7 @@ vi.mock('@/app/composables/useMessage', () => ({
 }));
 
 const mockShowError = vi.fn();
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: () => ({ showError: mockShowError }),
 }));
 
@@ -75,7 +75,7 @@ vi.mock('uuid', () => ({
 
 const TOOL_NODE_TYPE_A: INodeTypeDescription = {
 	displayName: 'Tool A',
-	name: 'n8n-nodes-base.toolA',
+	name: 'MNI-nodes-base.toolA',
 	group: ['transform'],
 	version: 1,
 	description: 'A tool for testing',
@@ -87,7 +87,7 @@ const TOOL_NODE_TYPE_A: INodeTypeDescription = {
 
 const TOOL_NODE_TYPE_B: INodeTypeDescription = {
 	displayName: 'Tool B',
-	name: 'n8n-nodes-base.toolB',
+	name: 'MNI-nodes-base.toolB',
 	group: ['transform'],
 	version: 1,
 	description: 'Another tool for testing',
@@ -99,7 +99,7 @@ const TOOL_NODE_TYPE_B: INodeTypeDescription = {
 
 const TOOL_NODE_TYPE_WITH_INPUTS: INodeTypeDescription = {
 	...TOOL_NODE_TYPE_A,
-	name: 'n8n-nodes-base.toolWithInputs',
+	name: 'MNI-nodes-base.toolWithInputs',
 	displayName: 'Tool With Inputs',
 	inputs: ['main'],
 };
@@ -109,7 +109,7 @@ function createMockToolDto(overrides: Partial<INode> = {}, enabled = true): Chat
 		definition: {
 			id: 'tool-1',
 			name: 'Configured Tool A',
-			type: 'n8n-nodes-base.toolA',
+			type: 'MNI-nodes-base.toolA',
 			typeVersion: 1,
 			position: [0, 0],
 			parameters: {},
@@ -193,13 +193,13 @@ describe('ToolsManagerModal', () => {
 		chatStore = mockedStore(useChatStore);
 
 		nodeTypesStore.getNodeType = vi.fn().mockImplementation((name: string) => {
-			if (name === 'n8n-nodes-base.toolA') return TOOL_NODE_TYPE_A;
-			if (name === 'n8n-nodes-base.toolB') return TOOL_NODE_TYPE_B;
-			if (name === 'n8n-nodes-base.toolWithInputs') return TOOL_NODE_TYPE_WITH_INPUTS;
+			if (name === 'MNI-nodes-base.toolA') return TOOL_NODE_TYPE_A;
+			if (name === 'MNI-nodes-base.toolB') return TOOL_NODE_TYPE_B;
+			if (name === 'MNI-nodes-base.toolWithInputs') return TOOL_NODE_TYPE_WITH_INPUTS;
 			return null;
 		});
 		nodeTypesStore.visibleNodeTypesByOutputConnectionTypeNames = {
-			[NodeConnectionTypes.AiTool]: ['n8n-nodes-base.toolA', 'n8n-nodes-base.toolB'],
+			[NodeConnectionTypes.AiTool]: ['MNI-nodes-base.toolA', 'MNI-nodes-base.toolB'],
 		};
 
 		chatStore.configuredTools = [];
@@ -274,7 +274,7 @@ describe('ToolsManagerModal', () => {
 
 	it('should filter out tools with inputs', () => {
 		nodeTypesStore.visibleNodeTypesByOutputConnectionTypeNames = {
-			[NodeConnectionTypes.AiTool]: ['n8n-nodes-base.toolA', 'n8n-nodes-base.toolWithInputs'],
+			[NodeConnectionTypes.AiTool]: ['MNI-nodes-base.toolA', 'MNI-nodes-base.toolWithInputs'],
 		};
 
 		const { container, getByText, queryByText } = renderComponent({ props: defaultProps() });

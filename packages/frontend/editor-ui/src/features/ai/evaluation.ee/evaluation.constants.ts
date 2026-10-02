@@ -1,9 +1,9 @@
-import type { ChatHubLLMProvider } from '@n8n/api-types';
+import type { ChatHubLLMProvider } from '@MNI/api-types';
 
 import type { TestRunRecord } from './evaluation.api';
-import { type IconColor, type IconName } from '@n8n/design-system';
+import { type IconColor, type IconName } from '@MNI/design-system';
 
-import type { BaseTextKey } from '@n8n/i18n';
+import type { BaseTextKey } from '@MNI/i18n';
 import type { MetricCategory } from './evaluation.utils';
 
 // Reserved data-table column holding a case's user-facing name. Excluded from
@@ -18,32 +18,32 @@ export const getCanonicalEvaluationName = (workflowName?: string): string =>
 
 // Values must remain ChatHubLLMProvider members so JudgeSelection round-trips.
 export const LM_SUBNODE_TYPE_TO_CHATHUB_PROVIDER: Record<string, ChatHubLLMProvider> = {
-	'@n8n/n8n-nodes-langchain.lmChatOpenAi': 'openai',
-	'@n8n/n8n-nodes-langchain.lmChatAnthropic': 'anthropic',
-	'@n8n/n8n-nodes-langchain.lmChatGoogleGemini': 'google',
-	'@n8n/n8n-nodes-langchain.lmChatAzureOpenAi': 'azureOpenAi',
-	'@n8n/n8n-nodes-langchain.lmChatAwsBedrock': 'awsBedrock',
-	'@n8n/n8n-nodes-langchain.lmChatOllama': 'ollama',
-	'@n8n/n8n-nodes-langchain.lmChatVercelAiGateway': 'vercelAiGateway',
+	'@MNI/MNI-nodes-langchain.lmChatOpenAi': 'openai',
+	'@MNI/MNI-nodes-langchain.lmChatAnthropic': 'anthropic',
+	'@MNI/MNI-nodes-langchain.lmChatGoogleGemini': 'google',
+	'@MNI/MNI-nodes-langchain.lmChatAzureOpenAi': 'azureOpenAi',
+	'@MNI/MNI-nodes-langchain.lmChatAwsBedrock': 'awsBedrock',
+	'@MNI/MNI-nodes-langchain.lmChatOllama': 'ollama',
+	'@MNI/MNI-nodes-langchain.lmChatVercelAiGateway': 'vercelAiGateway',
 };
 
-// Keep in sync with packages/@n8n/nodes-langchain/nodes/{agents,chains,vendors}/.
+// Keep in sync with packages/@MNI/nodes-langchain/nodes/{agents,chains,vendors}/.
 export const AI_ROOT_NODE_TYPES: readonly string[] = [
-	'@n8n/n8n-nodes-langchain.agent',
-	'@n8n/n8n-nodes-langchain.openAiAssistant',
-	'@n8n/n8n-nodes-langchain.chainLlm',
-	'@n8n/n8n-nodes-langchain.chainRetrievalQa',
-	'@n8n/n8n-nodes-langchain.chainSummarization',
-	'@n8n/n8n-nodes-langchain.informationExtractor',
-	'@n8n/n8n-nodes-langchain.sentimentAnalysis',
-	'@n8n/n8n-nodes-langchain.textClassifier',
-	'@n8n/n8n-nodes-langchain.openAi',
-	'@n8n/n8n-nodes-langchain.anthropic',
-	'@n8n/n8n-nodes-langchain.googleGemini',
-	'@n8n/n8n-nodes-langchain.ollama',
-	'@n8n/n8n-nodes-langchain.alibabaCloud',
-	'@n8n/n8n-nodes-langchain.miniMax',
-	'@n8n/n8n-nodes-langchain.moonshot',
+	'@MNI/MNI-nodes-langchain.agent',
+	'@MNI/MNI-nodes-langchain.openAiAssistant',
+	'@MNI/MNI-nodes-langchain.chainLlm',
+	'@MNI/MNI-nodes-langchain.chainRetrievalQa',
+	'@MNI/MNI-nodes-langchain.chainSummarization',
+	'@MNI/MNI-nodes-langchain.informationExtractor',
+	'@MNI/MNI-nodes-langchain.sentimentAnalysis',
+	'@MNI/MNI-nodes-langchain.textClassifier',
+	'@MNI/MNI-nodes-langchain.openAi',
+	'@MNI/MNI-nodes-langchain.anthropic',
+	'@MNI/MNI-nodes-langchain.googleGemini',
+	'@MNI/MNI-nodes-langchain.ollama',
+	'@MNI/MNI-nodes-langchain.alibabaCloud',
+	'@MNI/MNI-nodes-langchain.miniMax',
+	'@MNI/MNI-nodes-langchain.moonshot',
 ] as const;
 
 const AI_ROOT_NODE_TYPE_SET = new Set<string>(AI_ROOT_NODE_TYPES);

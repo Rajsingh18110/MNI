@@ -1,5 +1,5 @@
-/* eslint-disable n8n-nodes-base/node-param-display-name-miscased */
-import { NodeConnectionTypes, type INodeParameters, type WorkflowTestData } from 'n8n-workflow';
+/* eslint-disable MNI-nodes-base/node-param-display-name-miscased */
+import { NodeConnectionTypes, type INodeParameters, type WorkflowTestData } from 'MNI-workflow';
 import nock from 'nock';
 import type { Mock } from 'vitest';
 
@@ -15,13 +15,13 @@ export const entraWorkflow = (
 			parameters: {},
 			id: '416e4fc1-5055-4e61-854e-a6265256ac26',
 			name: 'When clicking ‘Execute workflow’',
-			type: 'n8n-nodes-base.manualTrigger',
+			type: 'MNI-nodes-base.manualTrigger',
 			position: [820, 380],
 			typeVersion: 1,
 		},
 		{
 			parameters: { requestOptions: {}, ...parameters },
-			type: 'n8n-nodes-base.microsoftEntra',
+			type: 'MNI-nodes-base.microsoftEntra',
 			typeVersion: 1,
 			position: [220, 0],
 			id: '3429f7f2-dfca-4b72-8913-43a582e96e66',

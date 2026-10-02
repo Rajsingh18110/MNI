@@ -5,7 +5,7 @@ import { createComponentRenderer } from '@/__tests__/render';
 import InstanceAiView from '../InstanceAiView.vue';
 import { useInstanceAiSettingsStore } from '../instanceAiSettings.store';
 import { INSTANCE_AI_VIEW } from '../constants';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { hasPermission } from '@/app/utils/rbac/permissions';
 import { useDocumentTitle } from '@/app/composables/useDocumentTitle';
 
@@ -29,11 +29,11 @@ vi.mock('vue-router', async (importOriginal) => ({
 	RouterView: { template: '<div data-test-id="router-view-stub" />' },
 }));
 
-vi.mock('@n8n/composables/useTelemetry', () => ({
+vi.mock('@MNI/composables/useTelemetry', () => ({
 	useTelemetry: () => ({ track: telemetryTrack }),
 }));
 
-vi.mock('@n8n/composables/useDeviceSupport', () => ({
+vi.mock('@MNI/composables/useDeviceSupport', () => ({
 	useDeviceSupport: () => ({
 		isCtrlKeyPressed: (event: KeyboardEvent) => event.ctrlKey || event.metaKey,
 	}),
@@ -43,7 +43,7 @@ vi.mock('@/app/utils/rbac/permissions', () => ({
 	hasPermission: vi.fn().mockReturnValue(false),
 }));
 
-vi.mock('@n8n/stores/useRootStore', () => ({
+vi.mock('@MNI/stores/useRootStore', () => ({
 	useRootStore: () => ({ instanceId: TEST_INSTANCE_ID }),
 }));
 

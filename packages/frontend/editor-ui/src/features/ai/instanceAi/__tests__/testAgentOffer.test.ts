@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import type { AgentCapabilitySummary } from '@n8n/api-types';
+import type { AgentCapabilitySummary } from '@MNI/api-types';
 
 import { isAgentWorthTesting, testAgentOfferKey } from '../testAgentOffer';
 

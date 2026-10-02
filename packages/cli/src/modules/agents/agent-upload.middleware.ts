@@ -2,8 +2,8 @@ import {
 	ALLOWED_AGENT_FILE_EXTENSIONS,
 	MAX_AGENT_FILE_SIZE_BYTES,
 	MAX_AGENT_FILES_PER_UPLOAD,
-} from '@n8n/api-types';
-import { Service } from '@n8n/di';
+} from '@MNI/api-types';
+import { Service } from '@MNI/di';
 import type { RequestHandler } from 'express';
 import multer from 'multer';
 import { unlink } from 'node:fs/promises';

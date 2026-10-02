@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, defineAsyncComponent, ref } from 'vue';
 import VueJsonPretty from 'vue-json-pretty';
-import type { INodeExecutionData, IRunExecutionData } from 'n8n-workflow';
+import type { INodeExecutionData, IRunExecutionData } from 'MNI-workflow';
 import Draggable from '@/app/components/Draggable.vue';
 import { executionDataToJson } from '@/app/utils/nodeTypesUtils';
 import { isString } from '@/app/utils/typeGuards';
@@ -13,7 +13,7 @@ import { getMappedExpression } from '@/app/utils/mappingUtils';
 import { nonExistingJsonPath } from '@/app/constants';
 import { useExternalHooks } from '@/app/composables/useExternalHooks';
 import TextWithHighlights from './TextWithHighlights.vue';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
 import { useElementSize } from '@vueuse/core';
 import { useTelemetryContext } from '@/app/composables/useTelemetryContext';
 import { injectWorkflowDocumentStore } from '@/app/stores/workflowDocument.store';

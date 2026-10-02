@@ -1,5 +1,5 @@
 import { createTestingPinia } from '@pinia/testing';
-import { AGENT_TASK_OBJECTIVE_MAX_LENGTH, type AgentTaskDto } from '@n8n/api-types';
+import { AGENT_TASK_OBJECTIVE_MAX_LENGTH, type AgentTaskDto } from '@MNI/api-types';
 import { configure, fireEvent, waitFor } from '@testing-library/vue';
 import { defineComponent, h, nextTick, onMounted, watch } from 'vue';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
@@ -7,7 +7,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { createComponentRenderer } from '@/__tests__/render';
 import { mockedStore } from '@/__tests__/utils';
 import { useUIStore } from '@/app/stores/ui.store';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 
 import AgentTaskModal from '../components/AgentTaskModal.vue';
 import { formatScheduleDateTime } from '../utils/scheduleBuilder';
@@ -16,7 +16,7 @@ import { AgentModalTestStub } from './utils/AgentModalTestStub';
 // Components use `data-testid`; the global setup configures `data-test-id`.
 configure({ testIdAttribute: 'data-testid' });
 
-vi.mock('@n8n/i18n', () => {
+vi.mock('@MNI/i18n', () => {
 	const i18n = {
 		baseText: (key: string, options?: { interpolate?: Record<string, string> }) => {
 			if (key === 'agents.builder.tasks.schedule.summary') {
@@ -32,7 +32,7 @@ const { rootStoreMock } = vi.hoisted(() => ({
 	rootStoreMock: { restApiContext: {}, timezone: 'UTC' },
 }));
 
-vi.mock('@n8n/stores/useRootStore', () => ({
+vi.mock('@MNI/stores/useRootStore', () => ({
 	useRootStore: () => rootStoreMock,
 }));
 

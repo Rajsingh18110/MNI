@@ -6,22 +6,22 @@ import { getActivePinia, setActivePinia } from 'pinia';
 import userEvent from '@testing-library/user-event';
 import { fireEvent, waitFor, within } from '@testing-library/vue';
 import { flushPromises } from '@vue/test-utils';
-import { ResponseError } from '@n8n/rest-api-client';
-import { useSettingsStore } from '@n8n/stores/settings.store';
-import { useRootStore } from '@n8n/stores/useRootStore';
+import { ResponseError } from '@MNI/rest-api-client';
+import { useSettingsStore } from '@MNI/stores/settings.store';
+import { useRootStore } from '@MNI/stores/useRootStore';
 import {
 	deepCopy,
 	NodeConnectionTypes,
 	type INodeProperties,
 	type INodeTypeDescription,
 	type AssignmentCollectionValue,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import type {
 	InstanceAiAgentNode,
 	InstanceAiCredentialSetupHint,
 	InstanceAiSetupItem,
 	PushMessage,
-} from '@n8n/api-types';
+} from '@MNI/api-types';
 import { createComponentRenderer, type RenderOptions } from '@/__tests__/render';
 import { createTestNode, createTestWorkflow } from '@/__tests__/mocks';
 import { mockedStore } from '@/__tests__/utils';
@@ -54,7 +54,7 @@ const { showMessage, testCredentialInBackground, authorize } = vi.hoisted(() => 
 	authorize: vi.fn(),
 }));
 
-vi.mock('@n8n/composables/useToast', () => ({ useToast: () => ({ showMessage }) }));
+vi.mock('@MNI/composables/useToast', () => ({ useToast: () => ({ showMessage }) }));
 vi.mock('@/features/credentials/composables/useCredentialTestInBackground', () => ({
 	useCredentialTestInBackground: () => ({ testCredentialInBackground }),
 }));
@@ -573,12 +573,12 @@ describe('InstanceAiSetupPanel interactions', () => {
 
 	it('keeps a completed workflow dismissed when its execution finishes on another artifact', async () => {
 		saved.nodes[0].parameters = { channel: 'ready', options: { value: 'ready' } };
-		saved.nodes.push(createTestNode({ name: 'Start', type: 'n8n-nodes-base.manualTrigger' }));
+		saved.nodes.push(createTestNode({ name: 'Start', type: 'MNI-nodes-base.manualTrigger' }));
 		const nodeTypes = mockedStore(useNodeTypesStore);
 		const notifyType = nodeTypes.allNodeTypes[0];
 		const triggerType: INodeTypeDescription = {
 			...notifyType,
-			name: 'n8n-nodes-base.manualTrigger',
+			name: 'MNI-nodes-base.manualTrigger',
 			group: ['trigger'],
 			credentials: [],
 			properties: [],
@@ -592,7 +592,7 @@ describe('InstanceAiSetupPanel interactions', () => {
 			deepCopy(id === otherWorkflow.id ? otherWorkflow : saved),
 		);
 		mockedStore(useNodeTypesStore).isTriggerNode = vi.fn(
-			(type) => type === 'n8n-nodes-base.manualTrigger',
+			(type) => type === 'MNI-nodes-base.manualTrigger',
 		);
 		const handlers = new Set<(event: PushMessage) => void>();
 		const push = mockedStore(usePushConnectionStore);

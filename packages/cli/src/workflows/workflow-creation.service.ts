@@ -1,7 +1,7 @@
-import type { RedactionFloor } from '@n8n/api-types';
-import { LicenseState, Logger } from '@n8n/backend-common';
-import { GlobalConfig } from '@n8n/config';
-import type { EntityManager, User, Project, Folder } from '@n8n/db';
+import type { RedactionFloor } from '@MNI/api-types';
+import { LicenseState, Logger } from '@MNI/backend-common';
+import { GlobalConfig } from '@MNI/config';
+import type { EntityManager, User, Project, Folder } from '@MNI/db';
 import {
 	ProjectRepository,
 	SharedWorkflow,
@@ -9,9 +9,9 @@ import {
 	TagRepository,
 	WorkflowEntity,
 	WorkflowRepository,
-} from '@n8n/db';
-import { Service } from '@n8n/di';
-import { PROJECT_ROOT } from 'n8n-workflow';
+} from '@MNI/db';
+import { Service } from '@MNI/di';
+import { PROJECT_ROOT } from 'MNI-workflow';
 import { v4 as uuid } from 'uuid';
 
 import { CredentialsFinderService } from '@/credentials/credentials-finder.service';

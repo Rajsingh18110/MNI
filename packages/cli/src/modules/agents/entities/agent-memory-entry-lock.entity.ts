@@ -1,5 +1,5 @@
-import { DateTimeColumn, WithTimestamps } from '@n8n/db';
-import { Column, Entity, Index, PrimaryColumn } from '@n8n/typeorm';
+import { DateTimeColumn, WithTimestamps } from '@MNI/db';
+import { Column, Entity, Index, PrimaryColumn } from '@MNI/typeorm';
 
 @Entity({ name: 'agents_memory_entry_locks' })
 @Index(['resourceId'])

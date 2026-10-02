@@ -1,5 +1,5 @@
-import { NodeOperationError } from 'n8n-workflow';
-import type { IExecuteFunctions, INodeExecutionData } from 'n8n-workflow';
+import { NodeOperationError } from 'MNI-workflow';
+import type { IExecuteFunctions, INodeExecutionData } from 'MNI-workflow';
 
 import { JOBS_ARRAY_PAGE_SIZE, JOBS_PAGES_MAX } from '../../constants';
 import { fetchDatabricksPage, getActiveCredentialType, getHost, readIdParameter } from '../helpers';

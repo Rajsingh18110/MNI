@@ -1,5 +1,5 @@
-import type { IExecuteFunctions, IDataObject } from 'n8n-workflow';
-import { NodeOperationError } from 'n8n-workflow';
+import type { IExecuteFunctions, IDataObject } from 'MNI-workflow';
+import { NodeOperationError } from 'MNI-workflow';
 import { validateAttachmentUrl, downloadAttachments, formatSubmission } from '../GenericFunctions';
 import type { Mock } from 'vitest';
 

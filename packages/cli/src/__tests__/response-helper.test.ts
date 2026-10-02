@@ -1,7 +1,7 @@
-import { mockInstance } from '@n8n/backend-test-utils';
+import { mockInstance } from '@MNI/backend-test-utils';
 import type { Request, Response } from 'express';
-import { ErrorReporter } from 'n8n-core';
-import { UserError } from 'n8n-workflow';
+import { ErrorReporter } from 'MNI-core';
+import { UserError } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import { ConflictError } from '@/errors/response-errors/conflict.error';

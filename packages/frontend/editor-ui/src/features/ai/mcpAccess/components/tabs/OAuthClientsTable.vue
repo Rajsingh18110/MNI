@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { useI18n } from '@n8n/i18n';
-import type { BaseTextKey } from '@n8n/i18n';
-import type { OAuthClientResponseDto } from '@n8n/api-types';
+import { useI18n } from '@MNI/i18n';
+import type { BaseTextKey } from '@MNI/i18n';
+import type { OAuthClientResponseDto } from '@MNI/api-types';
 import {
 	N8nButton,
 	N8nDataTableServer,
@@ -10,16 +10,16 @@ import {
 	N8nLoading,
 	N8nTabs,
 	N8nText,
-} from '@n8n/design-system';
-import type { IUser, TabOptions } from '@n8n/design-system';
+} from '@MNI/design-system';
+import type { IUser, TabOptions } from '@MNI/design-system';
 import { computed, ref } from 'vue';
 import debounce from 'lodash/debounce';
 import { useMCPStore } from '@/features/ai/mcpAccess/mcp.store';
-import { useRBACStore } from '@n8n/stores/rbac.store';
-import { useUsersStore } from '@n8n/stores/users.store';
-import { getDebounceTime } from '@n8n/composables/useDebounce';
+import { useRBACStore } from '@MNI/stores/rbac.store';
+import { useUsersStore } from '@MNI/stores/users.store';
+import { getDebounceTime } from '@MNI/composables/useDebounce';
 import { DEBOUNCE_TIME } from '@/app/constants';
-import type { TableHeader } from '@n8n/design-system';
+import type { TableHeader } from '@MNI/design-system';
 import TimeAgo from '@/app/components/TimeAgo.vue';
 import { EMPTY_OAUTH_CLIENT_FILTERS, getAccessSummary, getClientBrand } from '../../clients.utils';
 import type { OAuthClientFilters } from '../../clients.utils';

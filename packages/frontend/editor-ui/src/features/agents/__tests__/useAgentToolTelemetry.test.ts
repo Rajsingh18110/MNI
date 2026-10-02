@@ -1,12 +1,12 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { TELEMETRY_EVENT } from '@n8n/telemetry';
+import { TELEMETRY_EVENT } from '@MNI/telemetry';
 
 import { useAgentToolTelemetry } from '../composables/useAgentToolTelemetry';
 import type { AgentJsonToolRef } from '../types';
 
 const trackMock = vi.fn();
 
-vi.mock('@n8n/composables/useTelemetry', () => ({
+vi.mock('@MNI/composables/useTelemetry', () => ({
 	useTelemetry: () => ({ track: trackMock }),
 }));
 
@@ -18,7 +18,7 @@ function nodeRef(
 		name: 'Slack',
 		requireApproval: false,
 		node: {
-			nodeType: 'n8n-nodes-base.slack',
+			nodeType: 'MNI-nodes-base.slack',
 			nodeTypeVersion: 1,
 			nodeParameters: {},
 			...overrides,
@@ -48,7 +48,7 @@ describe('useAgentToolTelemetry', () => {
 
 		expect(trackMock).toHaveBeenCalledWith(TELEMETRY_EVENT.AGENTS.USER_EDITED_AGENT_TOOL, {
 			tool_type: 'node',
-			node_type: 'n8n-nodes-base.slack',
+			node_type: 'MNI-nodes-base.slack',
 			agent_id: 'agent-42',
 		});
 	});

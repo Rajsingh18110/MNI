@@ -1,14 +1,14 @@
-import { useRootStore } from '@n8n/stores/useRootStore';
-import * as roleMappingRuleApi from '@n8n/rest-api-client/api/roleMappingRule';
+import { useRootStore } from '@MNI/stores/useRootStore';
+import * as roleMappingRuleApi from '@MNI/rest-api-client/api/roleMappingRule';
 import type {
 	RoleMappingRuleResponse,
 	CreateRoleMappingRuleInput,
 	PatchRoleMappingRuleInput,
-} from '@n8n/rest-api-client/api/roleMappingRule';
+} from '@MNI/rest-api-client/api/roleMappingRule';
 
 /**
  * API layer for role mapping rules.
- * Delegates to the REST API client in @n8n/rest-api-client.
+ * Delegates to the REST API client in @MNI/rest-api-client.
  */
 export function useRoleMappingRulesApi() {
 	const rootStore = useRootStore();

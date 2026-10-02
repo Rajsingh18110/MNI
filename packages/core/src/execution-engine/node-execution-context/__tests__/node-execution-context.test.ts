@@ -1,4 +1,4 @@
-import { Container } from '@n8n/di';
+import { Container } from '@MNI/di';
 import type {
 	INode,
 	INodeType,
@@ -9,8 +9,8 @@ import type {
 	Workflow,
 	WorkflowExecuteMode,
 	WorkflowExpression,
-} from 'n8n-workflow';
-import { CHAT_TRIGGER_NODE_TYPE, createRunExecutionData, NodeConnectionTypes } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { CHAT_TRIGGER_NODE_TYPE, createRunExecutionData, NodeConnectionTypes } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import { InstanceSettings } from '@/instance-settings';
@@ -203,7 +203,7 @@ describe('NodeExecutionContext', () => {
 		it('should set executionContext on additionalData before retrieving credentials', async () => {
 			const credentialDetails = { id: 'cred123', name: 'Test Credential' };
 			const testNode = mock<INode>({
-				type: 'n8n-nodes-base.httpRequest',
+				type: 'MNI-nodes-base.httpRequest',
 			});
 			testNode.credentials = { testCredential: credentialDetails };
 
@@ -261,7 +261,7 @@ describe('NodeExecutionContext', () => {
 		});
 
 		it('should not build mock credentials in eval mode when the node has other credentials configured but not the requested type', async () => {
-			const testNode = mock<INode>({ type: 'n8n-nodes-base.graphql' });
+			const testNode = mock<INode>({ type: 'MNI-nodes-base.graphql' });
 			testNode.credentials = { httpHeaderAuth: { id: 'cred1', name: 'Header' } };
 
 			const getCredentialsProperties = vi
@@ -289,7 +289,7 @@ describe('NodeExecutionContext', () => {
 			// Agent-tool eval runs execute in 'internal' mode (and their
 			// workflow-tool sub-executions in 'chat'/'manual') — handler presence,
 			// not mode, is the bypass discriminator.
-			const testNode = mock<INode>({ type: 'n8n-nodes-base.slack' });
+			const testNode = mock<INode>({ type: 'MNI-nodes-base.slack' });
 			testNode.credentials = undefined;
 
 			const getDecrypted = vi.fn().mockResolvedValue({ token: '<api-key>' });
@@ -317,7 +317,7 @@ describe('NodeExecutionContext', () => {
 
 		it('refuses to decrypt a restricted credential for a node not in supportedNodes', async () => {
 			const credentialDetails = { id: 'cred-r1', name: 'Restricted creds' };
-			const httpNode = mock<INode>({ type: 'n8n-nodes-base.httpRequest' });
+			const httpNode = mock<INode>({ type: 'MNI-nodes-base.httpRequest' });
 			httpNode.credentials = { restrictedApi: credentialDetails };
 
 			const mockCredentialsHelper = {
@@ -338,7 +338,7 @@ describe('NodeExecutionContext', () => {
 			);
 			expect(mockCredentialsHelper.isCredentialUsableByNode).toHaveBeenCalledWith(
 				'restrictedApi',
-				'n8n-nodes-base.httpRequest',
+				'MNI-nodes-base.httpRequest',
 			);
 			expect(mockCredentialsHelper.getDecrypted).not.toHaveBeenCalled();
 		});
@@ -349,7 +349,7 @@ describe('NodeExecutionContext', () => {
 			// verify that when the helper says "yes", _getCredentials calls through
 			// to getDecrypted — including on httpRequest nodes (fullAccess=true).
 			const credentialDetails = { id: 'cred-x', name: 'Some Cred' };
-			const httpNode = mock<INode>({ type: 'n8n-nodes-base.httpRequest' });
+			const httpNode = mock<INode>({ type: 'MNI-nodes-base.httpRequest' });
 			httpNode.credentials = { someCred: credentialDetails };
 
 			const mockCredentialsHelper = {
@@ -372,7 +372,7 @@ describe('NodeExecutionContext', () => {
 	describe('_getRunlessCredentials', () => {
 		it('should pass placeholder execute data that only carries the node', async () => {
 			const credentialDetails = { id: 'cred-runless', name: 'Runless Cred' };
-			const runlessNode = mock<INode>({ type: 'n8n-nodes-base.httpRequest' });
+			const runlessNode = mock<INode>({ type: 'MNI-nodes-base.httpRequest' });
 			runlessNode.credentials = { someCred: credentialDetails };
 
 			const mockCredentialsHelper = {

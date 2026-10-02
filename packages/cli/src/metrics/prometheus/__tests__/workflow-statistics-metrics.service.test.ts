@@ -1,6 +1,6 @@
-import { mockInstance } from '@n8n/backend-test-utils';
-import { PrometheusMetricsConfig } from '@n8n/config';
-import type { LicenseMetricsRepository } from '@n8n/db';
+import { mockInstance } from '@MNI/backend-test-utils';
+import { PrometheusMetricsConfig } from '@MNI/config';
+import type { LicenseMetricsRepository } from '@MNI/db';
 import { mock } from 'vitest-mock-extended';
 import promClient from 'prom-client';
 
@@ -24,7 +24,7 @@ const MOCK_METRICS = {
 
 describe('PrometheusWorkflowStatisticsMetricsService', () => {
 	const config = mockInstance(PrometheusMetricsConfig, {
-		prefix: 'n8n_',
+		prefix: 'MNI_',
 		includeWorkflowStatistics: true,
 		workflowStatisticsInterval: 30,
 	});
@@ -43,7 +43,7 @@ describe('PrometheusWorkflowStatisticsMetricsService', () => {
 
 	beforeEach(() => {
 		Object.assign(config, {
-			prefix: 'n8n_',
+			prefix: 'MNI_',
 			includeWorkflowStatistics: true,
 			workflowStatisticsInterval: 30,
 		});
@@ -83,47 +83,47 @@ describe('PrometheusWorkflowStatisticsMetricsService', () => {
 		it('should create production_executions gauge', () => {
 			service.init();
 			expect(promClient.Gauge).toHaveBeenCalledWith(
-				expect.objectContaining({ name: 'n8n_production_executions' }),
+				expect.objectContaining({ name: 'MNI_production_executions' }),
 			);
 		});
 
 		it('should create production_root_executions gauge', () => {
 			service.init();
 			expect(promClient.Gauge).toHaveBeenCalledWith(
-				expect.objectContaining({ name: 'n8n_production_root_executions' }),
+				expect.objectContaining({ name: 'MNI_production_root_executions' }),
 			);
 		});
 
 		it('should create manual_executions gauge', () => {
 			service.init();
 			expect(promClient.Gauge).toHaveBeenCalledWith(
-				expect.objectContaining({ name: 'n8n_manual_executions' }),
+				expect.objectContaining({ name: 'MNI_manual_executions' }),
 			);
 		});
 
 		it('should create enabled_users gauge', () => {
 			service.init();
 			expect(promClient.Gauge).toHaveBeenCalledWith(
-				expect.objectContaining({ name: 'n8n_enabled_users' }),
+				expect.objectContaining({ name: 'MNI_enabled_users' }),
 			);
 		});
 
 		it('should create users gauge', () => {
 			service.init();
-			expect(promClient.Gauge).toHaveBeenCalledWith(expect.objectContaining({ name: 'n8n_users' }));
+			expect(promClient.Gauge).toHaveBeenCalledWith(expect.objectContaining({ name: 'MNI_users' }));
 		});
 
 		it('should create workflows gauge', () => {
 			service.init();
 			expect(promClient.Gauge).toHaveBeenCalledWith(
-				expect.objectContaining({ name: 'n8n_workflows' }),
+				expect.objectContaining({ name: 'MNI_workflows' }),
 			);
 		});
 
 		it('should create credentials gauge', () => {
 			service.init();
 			expect(promClient.Gauge).toHaveBeenCalledWith(
-				expect.objectContaining({ name: 'n8n_credentials' }),
+				expect.objectContaining({ name: 'MNI_credentials' }),
 			);
 		});
 
@@ -177,7 +177,7 @@ describe('PrometheusWorkflowStatisticsMetricsService', () => {
 
 		it('users — sets correct value from totalUsers', async () => {
 			service.init();
-			const collectFn = extractGaugeCollect('n8n_users');
+			const collectFn = extractGaugeCollect('MNI_users');
 			const mockGauge = { set: vi.fn() };
 			await collectFn.call(mockGauge as unknown as promClient.Gauge<string>);
 
@@ -186,7 +186,7 @@ describe('PrometheusWorkflowStatisticsMetricsService', () => {
 
 		it('workflows — sets correct value from totalWorkflows', async () => {
 			service.init();
-			const collectFn = extractGaugeCollect('n8n_workflows');
+			const collectFn = extractGaugeCollect('MNI_workflows');
 			const mockGauge = { set: vi.fn() };
 			await collectFn.call(mockGauge as unknown as promClient.Gauge<string>);
 

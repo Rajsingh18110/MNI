@@ -1,6 +1,6 @@
-import { GlobalConfig } from '@n8n/config';
-import { Container } from '@n8n/di';
-import { sleep } from '@n8n/utils/sleep';
+import { GlobalConfig } from '@MNI/config';
+import { Container } from '@MNI/di';
+import { sleep } from '@MNI/utils/sleep';
 import random from 'lodash/random';
 
 import config from '@/config';

@@ -8,13 +8,13 @@ import type {
 	INodeExecutionData,
 	INodeType,
 	IRunExecutionData,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import {
 	BaseError,
 	NodeConnectionTypes,
 	UnexpectedError,
 	createRunExecutionData,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import { NodeTypes } from '@test/helpers';

@@ -5,7 +5,7 @@ import {
 	type INodeTypeDescription,
 	type IWebhookResponseData,
 	NodeConnectionTypes,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { apiRequest } from './GenericFunctions';
 import { verifySignature } from './TrelloTriggerHelpers';

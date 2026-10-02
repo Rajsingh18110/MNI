@@ -1,7 +1,7 @@
 import type { Mocked } from 'vitest';
-import type { InstanceRegistration } from '@n8n/api-types';
-import { ControllerRegistryMetadata, type Controller } from '@n8n/decorators';
-import { Container } from '@n8n/di';
+import type { InstanceRegistration } from '@MNI/api-types';
+import { ControllerRegistryMetadata, type Controller } from '@MNI/decorators';
+import { Container } from '@MNI/di';
 import { mock } from 'vitest-mock-extended';
 
 import type { CheckService } from '../checks/check.service';

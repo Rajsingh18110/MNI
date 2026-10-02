@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import { useProjectsStore } from '@/features/collaboration/projects/projects.store';
 import { ProjectTypes } from '@/features/collaboration/projects/projects.types';
 import { computed, onBeforeUnmount, ref, watch } from 'vue';
 import { useFoldersStore } from '../folders.store';
 import type { FolderPathItem, FolderShortInfo } from '../folders.types';
-import type { IUser } from 'n8n-workflow';
+import type { IUser } from 'MNI-workflow';
 import ProjectBreadcrumb from '@/features/core/folders/components/ProjectBreadcrumb.vue';
 import {
 	N8nBreadcrumbs,
@@ -16,7 +16,7 @@ import {
 	type DropdownMenuItemProps,
 	type PathItem,
 	type UserAction,
-} from '@n8n/design-system';
+} from '@MNI/design-system';
 
 type FolderBreadcrumbAction = UserAction<IUser> & {
 	children?: FolderBreadcrumbAction[];

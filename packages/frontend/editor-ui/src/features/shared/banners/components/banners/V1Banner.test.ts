@@ -1,9 +1,9 @@
 import { createComponentRenderer } from '@/__tests__/render';
 import V1Banner from './V1Banner.vue';
 import { createPinia, setActivePinia } from 'pinia';
-import { useUsersStore } from '@n8n/stores/users.store';
-import { ROLE } from '@n8n/api-types';
-import type { IUser } from '@n8n/rest-api-client/api/users';
+import { useUsersStore } from '@MNI/stores/users.store';
+import { ROLE } from '@MNI/api-types';
+import type { IUser } from '@MNI/rest-api-client/api/users';
 
 const renderComponent = createComponentRenderer(V1Banner, {
 	global: {

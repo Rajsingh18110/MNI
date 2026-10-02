@@ -1,6 +1,6 @@
-import { DataTableFilter, ListDataTableContentQueryDto } from '@n8n/api-types';
-import { withTransaction } from '@n8n/db';
-import { Service } from '@n8n/di';
+import { DataTableFilter, ListDataTableContentQueryDto } from '@MNI/api-types';
+import { withTransaction } from '@MNI/db';
+import { Service } from '@MNI/di';
 import {
 	DataSource,
 	DataSourceOptions,
@@ -10,7 +10,7 @@ import {
 	ObjectLiteral,
 	EntityManager,
 	DeleteQueryBuilder,
-} from '@n8n/typeorm';
+} from '@MNI/typeorm';
 import {
 	DataTableColumnJsType,
 	DataTableRows,
@@ -23,7 +23,7 @@ import {
 	DataTableRowReturnWithState,
 	DataTableRawRowReturn,
 	UserError,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { DataTableColumn } from './data-table-column.entity';
 import { DataTableUserTableName } from './data-table.types';

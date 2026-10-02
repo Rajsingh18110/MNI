@@ -7,7 +7,7 @@
 			"id": "c055762a-8fe7-4141-a639-df2372f30060",
 			"typeVersion": 1.1,
 			"name": "When Executed by Another Workflow",
-			"type": "n8n-nodes-base.executeWorkflowTrigger",
+			"type": "MNI-nodes-base.executeWorkflowTrigger",
 			"position": [272, 352]
 		},
 		{
@@ -15,7 +15,7 @@
 				"resume": "webhook",
 				"options": {}
 			},
-			"type": "n8n-nodes-base.wait",
+			"type": "MNI-nodes-base.wait",
 			"typeVersion": 1.1,
 			"position": [704, 352],
 			"id": "949ed603-c2fc-4ea9-a663-675959c44d44",
@@ -42,7 +42,7 @@
 				},
 				"options": {}
 			},
-			"type": "n8n-nodes-base.set",
+			"type": "MNI-nodes-base.set",
 			"typeVersion": 3.4,
 			"position": [928, 352],
 			"id": "e48dd6df-03d7-4c91-923c-e2f51b828de4",
@@ -68,7 +68,7 @@
 				},
 				"options": {}
 			},
-			"type": "n8n-nodes-base.set",
+			"type": "MNI-nodes-base.set",
 			"typeVersion": 3.4,
 			"position": [480, 352],
 			"id": "f5ba9e8a-6510-42c2-a264-972cbb4cc912",

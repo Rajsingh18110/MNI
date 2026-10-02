@@ -1,10 +1,10 @@
-import type { LockService, Logger } from '@n8n/backend-common';
-import { OutboundHttp, type SsrfProtectionService } from '@n8n/backend-network';
-import { type LocalServer, startServer } from '@n8n/backend-network/testing';
-import type { GlobalConfig, SsrfProtectionConfig } from '@n8n/config';
-import type { CredentialsRepository } from '@n8n/db';
+import type { LockService, Logger } from '@MNI/backend-common';
+import { OutboundHttp, type SsrfProtectionService } from '@MNI/backend-network';
+import { type LocalServer, startServer } from '@MNI/backend-network/testing';
+import type { GlobalConfig, SsrfProtectionConfig } from '@MNI/config';
+import type { CredentialsRepository } from '@MNI/db';
 import { mock } from 'vitest-mock-extended';
-import type { Cipher } from 'n8n-core';
+import type { Cipher } from 'MNI-core';
 import type { IncomingHttpHeaders } from 'node:http';
 
 import type { AuthService } from '@/auth/auth.service';
@@ -17,7 +17,7 @@ import type { OAuthBrowserBindingService } from '@/oauth/oauth-browser-binding.s
 import type { OAuthJweServiceProxy } from '@/oauth/oauth-jwe-service.proxy';
 import { OauthService, type OAuth1CredentialData } from '@/oauth/oauth.service';
 import type { CacheService } from '@/services/cache/cache.service';
-import type { UrlService } from '@n8n/backend-services';
+import type { UrlService } from '@MNI/backend-services';
 
 interface Received {
 	method?: string;

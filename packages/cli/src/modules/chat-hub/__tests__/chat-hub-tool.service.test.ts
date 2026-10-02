@@ -1,7 +1,7 @@
-import type { Logger } from '@n8n/backend-common';
-import type { User } from '@n8n/db';
-import type { EntityManager } from '@n8n/typeorm';
-import type { INode, INodeType } from 'n8n-workflow';
+import type { Logger } from '@MNI/backend-common';
+import type { User } from '@MNI/db';
+import type { EntityManager } from '@MNI/typeorm';
+import type { INode, INodeType } from 'MNI-workflow';
 import { v4 as uuid } from 'uuid';
 import { mock } from 'vitest-mock-extended';
 
@@ -19,7 +19,7 @@ const mockDefinition: INode = {
 		active: true,
 		options: {},
 	},
-	type: 'n8n-nodes-base.httpRequestTool',
+	type: 'MNI-nodes-base.httpRequestTool',
 	typeVersion: 4.4,
 	position: [0, 0],
 	id: uuid(),
@@ -178,7 +178,7 @@ describe('ChatHubToolService', () => {
 				...mockDefinition,
 				parameters: {
 					...mockDefinition.parameters,
-					active: "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Active', ``, 'boolean') }}",
+					active: "={{ /*MNI-auto-generated-fromAI-override*/ $fromAI('Active', ``, 'boolean') }}",
 				},
 			};
 			const created = makeTool();

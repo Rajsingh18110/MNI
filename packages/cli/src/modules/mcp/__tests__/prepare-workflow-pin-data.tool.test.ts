@@ -1,12 +1,12 @@
-import type { Logger } from '@n8n/backend-common';
-import { mockInstance } from '@n8n/backend-test-utils';
-import { User } from '@n8n/db';
+import type { Logger } from '@MNI/backend-common';
+import { mockInstance } from '@MNI/backend-test-utils';
+import { User } from '@MNI/db';
 import {
 	WEBHOOK_NODE_TYPE,
 	MANUAL_TRIGGER_NODE_TYPE,
 	HTTP_REQUEST_NODE_TYPE,
 	type INode,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import type { Mock } from 'vitest';
 
 import { ExecutionService } from '@/executions/execution.service';
@@ -21,14 +21,14 @@ import {
 	preparePinData,
 } from '../tools/prepare-workflow-pin-data.tool';
 
-// Mock @n8n/workflow-sdk functions — keep real implementations for shared utils
+// Mock @MNI/workflow-sdk functions — keep real implementations for shared utils
 // (needsPinData, normalizePinData), but mock functions that do file I/O or
 // process execution data so tests stay isolated.
 const mockDiscoverOutputSchemaForNode = vi.fn();
 const mockInferSchemasFromRunData = vi.fn();
 
-vi.mock('@n8n/workflow-sdk', async () => {
-	const actual = await vi.importActual<typeof import('@n8n/workflow-sdk')>('@n8n/workflow-sdk');
+vi.mock('@MNI/workflow-sdk', async () => {
+	const actual = await vi.importActual<typeof import('@MNI/workflow-sdk')>('@MNI/workflow-sdk');
 	return {
 		...actual,
 		discoverOutputSchemaForNode: (...args: unknown[]) => mockDiscoverOutputSchemaForNode(...args),
@@ -40,13 +40,13 @@ vi.mock('@n8n/workflow-sdk', async () => {
 const TRIGGER_NODE_TYPES = new Set([
 	WEBHOOK_NODE_TYPE,
 	MANUAL_TRIGGER_NODE_TYPE,
-	'n8n-nodes-base.scheduleTrigger',
+	'MNI-nodes-base.scheduleTrigger',
 ]);
 
 function createMockNodeTypes() {
 	const instance = mockInstance(NodeTypes);
 	instance.getByNameAndVersion.mockImplementation(((type: string) => {
-		if (type === 'n8n-nodes-base.unknownNode') throw new Error(`Unknown node type: ${type}`);
+		if (type === 'MNI-nodes-base.unknownNode') throw new Error(`Unknown node type: ${type}`);
 		return {
 			description: {
 				name: type,
@@ -170,7 +170,7 @@ describe('prepare-workflow-pin-data MCP tool', () => {
 					{
 						id: 'node-2',
 						name: 'SlackNode',
-						type: 'n8n-nodes-base.slack',
+						type: 'MNI-nodes-base.slack',
 						typeVersion: 1,
 						position: [200, 0],
 						disabled: false,
@@ -249,7 +249,7 @@ describe('prepare-workflow-pin-data MCP tool', () => {
 					{
 						id: 'node-2',
 						name: 'SetNode',
-						type: 'n8n-nodes-base.set',
+						type: 'MNI-nodes-base.set',
 						typeVersion: 3,
 						position: [200, 0],
 						disabled: false,
@@ -258,7 +258,7 @@ describe('prepare-workflow-pin-data MCP tool', () => {
 					{
 						id: 'node-3',
 						name: 'IfNode',
-						type: 'n8n-nodes-base.if',
+						type: 'MNI-nodes-base.if',
 						typeVersion: 2,
 						position: [400, 0],
 						disabled: false,
@@ -297,7 +297,7 @@ describe('prepare-workflow-pin-data MCP tool', () => {
 					{
 						id: 'node-2',
 						name: 'UnknownNode',
-						type: 'n8n-nodes-base.unknownNode',
+						type: 'MNI-nodes-base.unknownNode',
 						typeVersion: 1,
 						position: [200, 0],
 						disabled: false,
@@ -336,7 +336,7 @@ describe('prepare-workflow-pin-data MCP tool', () => {
 					{
 						id: 'node-2',
 						name: 'DisabledNode',
-						type: 'n8n-nodes-base.set',
+						type: 'MNI-nodes-base.set',
 						typeVersion: 1,
 						position: [200, 0],
 						disabled: true,
@@ -396,7 +396,7 @@ describe('prepare-workflow-pin-data MCP tool', () => {
 					{
 						id: 'node-2',
 						name: 'SlackNode',
-						type: 'n8n-nodes-base.slack',
+						type: 'MNI-nodes-base.slack',
 						typeVersion: 1,
 						position: [200, 0],
 						disabled: false,
@@ -439,7 +439,7 @@ describe('prepare-workflow-pin-data MCP tool', () => {
 					{
 						id: 'node-2',
 						name: 'SlackNode',
-						type: 'n8n-nodes-base.slack',
+						type: 'MNI-nodes-base.slack',
 						typeVersion: 1,
 						position: [200, 0],
 						disabled: false,
@@ -523,7 +523,7 @@ describe('prepare-workflow-pin-data MCP tool', () => {
 					{
 						id: 'node-2',
 						name: 'SlackNode',
-						type: 'n8n-nodes-base.slack',
+						type: 'MNI-nodes-base.slack',
 						typeVersion: 1,
 						position: [200, 0],
 						disabled: false,
@@ -640,7 +640,7 @@ describe('prepare-workflow-pin-data MCP tool', () => {
 					{
 						id: 'node-2',
 						name: 'SlackNode',
-						type: 'n8n-nodes-base.slack',
+						type: 'MNI-nodes-base.slack',
 						typeVersion: 1,
 						position: [200, 0],
 						disabled: false,
@@ -684,7 +684,7 @@ describe('prepare-workflow-pin-data MCP tool', () => {
 
 			// Schema discovery for GmailNode
 			mockDiscoverOutputSchemaForNode.mockImplementation((type: string) => {
-				if (type === 'n8n-nodes-base.gmail') {
+				if (type === 'MNI-nodes-base.gmail') {
 					return definitionSchema;
 				}
 				return undefined;
@@ -705,7 +705,7 @@ describe('prepare-workflow-pin-data MCP tool', () => {
 					{
 						id: 'node-2',
 						name: 'SlackNode',
-						type: 'n8n-nodes-base.slack',
+						type: 'MNI-nodes-base.slack',
 						typeVersion: 1,
 						position: [200, 0],
 						disabled: false,
@@ -715,7 +715,7 @@ describe('prepare-workflow-pin-data MCP tool', () => {
 					{
 						id: 'node-3',
 						name: 'GmailNode',
-						type: 'n8n-nodes-base.gmail',
+						type: 'MNI-nodes-base.gmail',
 						typeVersion: 2,
 						position: [400, 0],
 						disabled: false,
@@ -725,7 +725,7 @@ describe('prepare-workflow-pin-data MCP tool', () => {
 					{
 						id: 'node-4',
 						name: 'SetNode',
-						type: 'n8n-nodes-base.set',
+						type: 'MNI-nodes-base.set',
 						typeVersion: 3,
 						position: [600, 0],
 						disabled: false,
@@ -743,7 +743,7 @@ describe('prepare-workflow-pin-data MCP tool', () => {
 					{
 						id: 'node-6',
 						name: 'DisabledNode',
-						type: 'n8n-nodes-base.set',
+						type: 'MNI-nodes-base.set',
 						typeVersion: 1,
 						position: [1000, 0],
 						disabled: true,

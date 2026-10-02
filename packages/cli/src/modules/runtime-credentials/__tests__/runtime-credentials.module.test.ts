@@ -1,4 +1,4 @@
-import { Container } from '@n8n/di';
+import { Container } from '@MNI/di';
 
 import { RuntimeCredentialsModule } from '../runtime-credentials.module';
 
@@ -11,7 +11,7 @@ describe('RuntimeCredentialsModule', () => {
 	});
 
 	afterEach(() => {
-		delete process.env.N8N_ENV_FEAT_RUNTIME_CREDENTIALS;
+		delete process.env.MNI_ENV_FEAT_RUNTIME_CREDENTIALS;
 	});
 
 	describe('init', () => {
@@ -20,7 +20,7 @@ describe('RuntimeCredentialsModule', () => {
 		});
 
 		it('loads without error when the feature flag is on', async () => {
-			process.env.N8N_ENV_FEAT_RUNTIME_CREDENTIALS = 'true';
+			process.env.MNI_ENV_FEAT_RUNTIME_CREDENTIALS = 'true';
 			await expect(module.init()).resolves.toBeUndefined();
 		});
 	});

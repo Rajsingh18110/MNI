@@ -1,15 +1,15 @@
 name: 'Release: Attach SBOM'
-run-name: 'Release: Attach SBOM for n8n@${{ inputs.n8n_version }}'
+run-name: 'Release: Attach SBOM for MNI@${{ inputs.MNI_version }}'
 
 on:
   workflow_call:
     inputs:
-      n8n_version:
+      MNI_version:
         description: 'MNI version to generate SBOM for'
         required: true
         type: string
       release_tag_ref:
-        description: 'Git reference to checkout (e.g. n8n@1.2.3)'
+        description: 'Git reference to checkout (e.g. MNI@1.2.3)'
         required: true
         type: string
     secrets:
@@ -18,12 +18,12 @@ on:
 
   workflow_dispatch:
     inputs:
-      n8n_version:
+      MNI_version:
         description: 'MNI version to generate SBOM for'
         required: true
         type: string
       release_tag_ref:
-        description: 'Git reference to checkout (e.g. n8n@1.2.3)'
+        description: 'Git reference to checkout (e.g. MNI@1.2.3)'
         required: true
         type: string
 
@@ -56,7 +56,7 @@ jobs:
           # Opt in to SBOM + THIRD_PARTY_LICENSES.md generation. Regular CI Docker
           # builds skip it; only this release SBOM job and explicit local opt-ins
           # produce sbom-source.cdx.json + packages/cli/THIRD_PARTY_LICENSES.md.
-          N8N_GENERATE_LICENSES: 'true'
+          MNI_GENERATE_LICENSES: 'true'
 
       # Release-blocking gate. build:deploy already enriches + gates the SBOM via
       # the generate-licenses pipeline; re-run the gate here as an explicit,
@@ -66,7 +66,7 @@ jobs:
         run: |
           node scripts/licenses/check-sbom-licenses.mjs \
             sbom-source.cdx.json \
-            --allow-ref=LicenseRef-n8n-sustainable-use --allow-ref=LicenseRef-n8n-enterprise
+            --allow-ref=LicenseRef-MNI-sustainable-use --allow-ref=LicenseRef-MNI-enterprise
 
       - name: Attest SBOM for release
         uses: actions/attest@59d89421af93a897026c735860bf21b6eb4f7b26 # v4.1.0

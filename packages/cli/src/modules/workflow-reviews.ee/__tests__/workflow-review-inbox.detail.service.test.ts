@@ -1,4 +1,4 @@
-import type { LicenseState } from '@n8n/backend-common';
+import type { LicenseState } from '@MNI/backend-common';
 import type {
 	User,
 	WorkflowHistory,
@@ -7,7 +7,7 @@ import type {
 	WorkflowReviewRequestState,
 	WorkflowReviewRequestWorkflowDetailRow,
 	WorkflowReviewRequestWorkflowRepository,
-} from '@n8n/db';
+} from '@MNI/db';
 import { mock } from 'vitest-mock-extended';
 
 import { ForbiddenError } from '@/errors/response-errors/forbidden.error';

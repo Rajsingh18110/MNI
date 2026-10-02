@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/unbound-method */
-import type { Logger } from '@n8n/backend-common';
-import type { Settings, SettingsRepository } from '@n8n/db';
+import type { Logger } from '@MNI/backend-common';
+import type { Settings, SettingsRepository } from '@MNI/db';
 import { mkdtempSync, rmSync, writeFileSync } from 'fs';
-import { CREDENTIAL_BLANKING_VALUE } from 'n8n-workflow';
+import { CREDENTIAL_BLANKING_VALUE } from 'MNI-workflow';
 import { tmpdir } from 'os';
 import { join } from 'path';
 import { mock } from 'vitest-mock-extended';
@@ -25,7 +25,7 @@ describe('OtelSettingsService', () => {
 		// Strip any OTel env vars inherited from the test runner so each test
 		// starts from a known state.
 		for (const key of Object.keys(process.env)) {
-			if (key.startsWith('N8N_OTEL_')) delete process.env[key];
+			if (key.startsWith('MNI_OTEL_')) delete process.env[key];
 		}
 		service = new OtelSettingsService(config, settingsRepository, logger);
 	});
@@ -98,7 +98,7 @@ describe('OtelSettingsService', () => {
 			const persisted: Partial<OtelConfig> = {
 				enabled: true,
 				exporterEndpoint: 'https://collector.example.com',
-				exporterServiceName: 'n8n-prod',
+				exporterServiceName: 'MNI-prod',
 				tracesSampleRate: 0.5,
 				includeNodeSpans: false,
 			};
@@ -111,7 +111,7 @@ describe('OtelSettingsService', () => {
 
 			expect(result.enabled).toBe(true);
 			expect(result.exporterEndpoint).toBe('https://collector.example.com');
-			expect(result.exporterServiceName).toBe('n8n-prod');
+			expect(result.exporterServiceName).toBe('MNI-prod');
 			expect(result.tracesSampleRate).toBe(0.5);
 			expect(result.includeNodeSpans).toBe(false);
 			expect(result.exporterTracingPath).toBe('/v1/traces');
@@ -123,7 +123,7 @@ describe('OtelSettingsService', () => {
 			settingsRepository.findByKey.mockResolvedValue({
 				value: JSON.stringify({ enabled: true, exporterEndpoint: 'https://from-db' }),
 			} as Settings);
-			process.env.N8N_OTEL_EXPORTER_OTLP_ENDPOINT = 'https://from-env';
+			process.env.MNI_OTEL_EXPORTER_OTLP_ENDPOINT = 'https://from-env';
 
 			const configWithEnv = new OtelConfig();
 			configWithEnv.exporterEndpoint = 'https://from-env';
@@ -164,7 +164,7 @@ describe('OtelSettingsService', () => {
 			settingsRepository.findByKey.mockResolvedValue({
 				value: JSON.stringify({ exporterProtocol: 'http/protobuf' }),
 			} as Settings);
-			process.env.N8N_OTEL_EXPORTER_OTLP_PROTOCOL = 'grpc';
+			process.env.MNI_OTEL_EXPORTER_OTLP_PROTOCOL = 'grpc';
 
 			const configWithEnv = new OtelConfig();
 			configWithEnv.exporterProtocol = 'grpc';
@@ -181,8 +181,8 @@ describe('OtelSettingsService', () => {
 			settingsRepository.findByKey.mockResolvedValue({
 				value: JSON.stringify({ enabled: false, exporterEndpoint: 'https://from-db' }),
 			} as Settings);
-			process.env.N8N_OTEL_ENABLED = 'true';
-			process.env.N8N_OTEL_EXPORTER_OTLP_ENDPOINT = 'https://from-env';
+			process.env.MNI_OTEL_ENABLED = 'true';
+			process.env.MNI_OTEL_EXPORTER_OTLP_ENDPOINT = 'https://from-env';
 
 			const configWithEnv = new OtelConfig();
 			configWithEnv.enabled = true;
@@ -200,7 +200,7 @@ describe('OtelSettingsService', () => {
 
 		it('masks env-managed exporterHeaders in the settings response', async () => {
 			settingsRepository.findByKey.mockResolvedValue(null);
-			process.env.N8N_OTEL_EXPORTER_OTLP_HEADERS = 'authorization=Bearer secret-token';
+			process.env.MNI_OTEL_EXPORTER_OTLP_HEADERS = 'authorization=Bearer secret-token';
 
 			const configWithEnv = new OtelConfig();
 			configWithEnv.exporterHeaders = 'authorization=Bearer secret-token';
@@ -247,16 +247,16 @@ describe('OtelSettingsService', () => {
 				}
 			});
 
-			it('treats headers from N8N_OTEL_EXPORTER_OTLP_HEADERS_FILE as env-managed and masks them', async () => {
+			it('treats headers from MNI_OTEL_EXPORTER_OTLP_HEADERS_FILE as env-managed and masks them', async () => {
 				const dir = mkdtempSync(join(tmpdir(), 'otel-headers-'));
 				tempHeadersDir = dir;
 				const headersFile = join(dir, 'headers');
 				writeFileSync(headersFile, 'authorization=Bearer file-secret');
-				process.env.N8N_OTEL_EXPORTER_OTLP_HEADERS_FILE = headersFile;
+				process.env.MNI_OTEL_EXPORTER_OTLP_HEADERS_FILE = headersFile;
 				settingsRepository.findByKey.mockResolvedValue(null);
 
 				// Mirror what the config factory does when it reads the _FILE variant
-				// (covered by @n8n/config's own decorator tests)
+				// (covered by @MNI/config's own decorator tests)
 				const configFromFile = new OtelConfig();
 				configFromFile.exporterHeaders = 'authorization=Bearer file-secret';
 
@@ -269,7 +269,7 @@ describe('OtelSettingsService', () => {
 			});
 
 			it('does not treat an empty _FILE variable as env-managed', async () => {
-				process.env.N8N_OTEL_EXPORTER_OTLP_HEADERS_FILE = '';
+				process.env.MNI_OTEL_EXPORTER_OTLP_HEADERS_FILE = '';
 				settingsRepository.findByKey.mockResolvedValue(null);
 
 				await service.loadSettings();
@@ -304,7 +304,7 @@ describe('OtelSettingsService', () => {
 			exporterEndpoint: 'https://collector.example.com',
 			exporterTracingPath: '/v1/traces',
 			exporterHeaders: 'auth=token',
-			exporterServiceName: 'n8n-prod',
+			exporterServiceName: 'MNI-prod',
 			tracesSampleRate: 0.7,
 			startupConnectivityTimeoutMs: 5_000,
 			includeNodeSpans: false,
@@ -336,8 +336,8 @@ describe('OtelSettingsService', () => {
 		});
 
 		it('replaces env-managed fields with env-var values before persisting', async () => {
-			process.env.N8N_OTEL_EXPORTER_OTLP_ENDPOINT = 'https://from-env';
-			process.env.N8N_OTEL_EXPORTER_OTLP_PROTOCOL = 'grpc';
+			process.env.MNI_OTEL_EXPORTER_OTLP_ENDPOINT = 'https://from-env';
+			process.env.MNI_OTEL_EXPORTER_OTLP_PROTOCOL = 'grpc';
 			const configWithEnv = new OtelConfig();
 			configWithEnv.exporterEndpoint = 'https://from-env';
 			configWithEnv.exporterProtocol = 'grpc';
@@ -396,7 +396,7 @@ describe('OtelSettingsService', () => {
 			exporterProtocol: 'grpc',
 			exporterEndpoint: 'https://collector.example.com',
 			exporterTracingPath: '/v1/traces',
-			exporterServiceName: 'n8n-prod',
+			exporterServiceName: 'MNI-prod',
 			exporterHeaders: 'auth=token',
 			startupConnectivityTimeoutMs: 5_000,
 		};
@@ -421,7 +421,7 @@ describe('OtelSettingsService', () => {
 		});
 
 		it('overrides env-managed fields with the canonical env-var value', () => {
-			process.env.N8N_OTEL_EXPORTER_OTLP_ENDPOINT = 'https://from-env';
+			process.env.MNI_OTEL_EXPORTER_OTLP_ENDPOINT = 'https://from-env';
 			const configWithEnv = new OtelConfig();
 			configWithEnv.exporterEndpoint = 'https://from-env';
 			const serviceWithEnv = new OtelSettingsService(configWithEnv, settingsRepository, logger);
@@ -432,11 +432,11 @@ describe('OtelSettingsService', () => {
 			});
 
 			expect(result.exporterEndpoint).toBe('https://from-env');
-			expect(result.exporterServiceName).toBe('n8n-prod');
+			expect(result.exporterServiceName).toBe('MNI-prod');
 		});
 
 		it('overrides an env-managed exporter protocol with the canonical env-var value', () => {
-			process.env.N8N_OTEL_EXPORTER_OTLP_PROTOCOL = 'grpc';
+			process.env.MNI_OTEL_EXPORTER_OTLP_PROTOCOL = 'grpc';
 			const configWithEnv = new OtelConfig();
 			configWithEnv.exporterProtocol = 'grpc';
 			const serviceWithEnv = new OtelSettingsService(configWithEnv, settingsRepository, logger);

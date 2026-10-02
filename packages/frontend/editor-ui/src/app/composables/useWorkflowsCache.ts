@@ -1,5 +1,5 @@
 import { indexedDbCache } from '@/app/plugins/cache';
-import { jsonParse } from 'n8n-workflow';
+import { jsonParse } from 'MNI-workflow';
 import { ref } from 'vue';
 
 const actionTypes = [
@@ -24,7 +24,7 @@ export interface WorkflowSettings {
 export function useWorkflowSettingsCache() {
 	const isCacheLoading = ref<boolean>(true);
 	const cachePromise = ref(
-		indexedDbCache('n8n-local', 'workflows').finally(() => {
+		indexedDbCache('MNI-local', 'workflows').finally(() => {
 			isCacheLoading.value = false;
 		}),
 	);

@@ -1,19 +1,19 @@
-import { ScheduledJobMisfirePolicy } from '@n8n/constants';
-import { testDb } from '@n8n/backend-test-utils';
+import { ScheduledJobMisfirePolicy } from '@MNI/constants';
+import { testDb } from '@MNI/backend-test-utils';
 import type {
 	NewScheduledJob,
 	ScheduledJob as ScheduledJobEntity,
 	ScheduledTask as ScheduledTaskEntity,
 	TerminalTaskStatus,
-} from '@n8n/db';
+} from '@MNI/db';
 import {
 	DbConnectionOptions,
 	ScheduledJobRepository,
 	ScheduledTask,
 	ScheduledTaskRepository,
-} from '@n8n/db';
-import { Container } from '@n8n/di';
-import { DataSource, In } from '@n8n/typeorm';
+} from '@MNI/db';
+import { Container } from '@MNI/di';
+import { DataSource, In } from '@MNI/typeorm';
 
 import { selfOwned, workflowOwned } from './shared/job-factory';
 

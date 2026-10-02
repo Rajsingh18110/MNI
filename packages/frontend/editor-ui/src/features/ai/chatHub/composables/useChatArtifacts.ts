@@ -1,7 +1,7 @@
 import { computed, ref, watch, type ComputedRef, type Ref } from 'vue';
 import type { ChatMessage } from '../chat.types';
-import { collectChatArtifacts } from '@n8n/chat-hub';
-import { useResizablePanel } from '@n8n/design-system';
+import { collectChatArtifacts } from '@MNI/chat-hub';
+import { useResizablePanel } from '@MNI/design-system';
 
 export function useChatArtifacts(
 	container: Ref<HTMLElement>,
@@ -22,7 +22,7 @@ export function useChatArtifacts(
 	const panelResizer = useResizablePanel({
 		container,
 		width: {
-			localStorageKey: 'N8N_CHAT_ARTIFACT_VIEWER_WIDTH',
+			localStorageKey: 'MNI_CHAT_ARTIFACT_VIEWER_WIDTH',
 			defaultSize: function getDefaultWidth(size) {
 				return size * 0.6;
 			},

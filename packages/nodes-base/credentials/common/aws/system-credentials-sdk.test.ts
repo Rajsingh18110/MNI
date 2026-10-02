@@ -1,4 +1,4 @@
-import { UserError } from 'n8n-workflow';
+import { UserError } from 'MNI-workflow';
 
 global.fetch = vi.fn();
 
@@ -31,8 +31,8 @@ const { mockReadFile } = vi.hoisted(() => ({
 }));
 
 vi.mock('node:fs/promises', () => ({ readFile: mockReadFile }));
-vi.mock('@n8n/di', () => ({ Container: mockContainer }));
-vi.mock('@n8n/config', () => ({ SecurityConfig: MockSecurityConfig }));
+vi.mock('@MNI/di', () => ({ Container: mockContainer }));
+vi.mock('@MNI/config', () => ({ SecurityConfig: MockSecurityConfig }));
 vi.mock('@aws-sdk/credential-providers', () => ({
 	fromEnv,
 	fromWebToken,
@@ -169,7 +169,7 @@ describe('system-credentials-sdk', () => {
 				expect(fromWebToken).toHaveBeenCalledWith({
 					webIdentityToken: 'jwt-token',
 					roleArn: 'arn:aws:iam::123456789012:role/my-role',
-					roleSessionName: 'n8n-web-identity-session',
+					roleSessionName: 'MNI-web-identity-session',
 					clientConfig: {
 						maxAttempts: 1,
 						requestHandler: { requestTimeout: 2000, connectionTimeout: 2000 },
@@ -183,7 +183,7 @@ describe('system-credentials-sdk', () => {
 				expect(fromWebToken).toHaveBeenCalledWith({
 					webIdentityToken: 'jwt-token',
 					roleArn: 'arn:aws:iam::123456789012:role/my-role',
-					roleSessionName: 'n8n-web-identity-session',
+					roleSessionName: 'MNI-web-identity-session',
 					clientConfig: {
 						region: 'eu-west-1',
 						maxAttempts: 1,
@@ -445,7 +445,7 @@ describe('system-credentials-sdk', () => {
 			expect(fromWebToken).toHaveBeenCalledWith({
 				webIdentityToken: 'jwt-token',
 				roleArn: 'set',
-				roleSessionName: 'n8n-web-identity-session',
+				roleSessionName: 'MNI-web-identity-session',
 				clientConfig: { region: 'us-east-1', maxAttempts: 1, requestHandler: expect.any(Object) },
 			});
 		});

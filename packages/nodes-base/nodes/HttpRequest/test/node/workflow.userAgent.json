@@ -5,7 +5,7 @@
 			"parameters": {},
 			"id": "8a43a8dc-6e32-4a5e-9b3c-3a4d5e6f7a8b",
 			"name": "When clicking \"Execute Workflow\"",
-			"type": "n8n-nodes-base.manualTrigger",
+			"type": "MNI-nodes-base.manualTrigger",
 			"typeVersion": 1,
 			"position": [160, 720]
 		},
@@ -16,7 +16,7 @@
 			},
 			"id": "1aa13a8d-6e32-4a5e-9b3c-3a4d5e6f7a01",
 			"name": "HTTP Request default UA",
-			"type": "n8n-nodes-base.httpRequest",
+			"type": "MNI-nodes-base.httpRequest",
 			"typeVersion": 3,
 			"position": [460, 600]
 		},
@@ -36,7 +36,7 @@
 			},
 			"id": "2bb13a8d-6e32-4a5e-9b3c-3a4d5e6f7a02",
 			"name": "HTTP Request custom UA",
-			"type": "n8n-nodes-base.httpRequest",
+			"type": "MNI-nodes-base.httpRequest",
 			"typeVersion": 3,
 			"position": [460, 800]
 		}

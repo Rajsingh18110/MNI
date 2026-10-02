@@ -1,7 +1,7 @@
-import { LicenseState, Logger } from '@n8n/backend-common';
-import { SettingsRepository, UserRepository } from '@n8n/db';
-import { Service } from '@n8n/di';
-import { Cipher } from 'n8n-core';
+import { LicenseState, Logger } from '@MNI/backend-common';
+import { SettingsRepository, UserRepository } from '@MNI/db';
+import { Service } from '@MNI/di';
+import { Cipher } from 'MNI-core';
 import { v4 as uuid } from 'uuid';
 
 import { InvalidMfaCodeError } from '@/errors/response-errors/invalid-mfa-code.error';

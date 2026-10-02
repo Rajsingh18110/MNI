@@ -1,4 +1,4 @@
-import { TypedEmitter } from '@n8n/backend-common';
+import { TypedEmitter } from '@MNI/backend-common';
 
 import { SlidingWindowSignal } from '../sliding-window-signal';
 

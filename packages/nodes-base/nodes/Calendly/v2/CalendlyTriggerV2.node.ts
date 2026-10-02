@@ -10,7 +10,7 @@ import {
 	type INodeTypeBaseDescription,
 	NodeConnectionTypes,
 	NodeOperationError,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { verifySignature } from '../CalendlyTriggerHelpers';
 import { calendlyApiRequest } from '../GenericFunctions';

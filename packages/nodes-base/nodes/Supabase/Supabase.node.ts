@@ -10,8 +10,8 @@ import type {
 	INodePropertyOptions,
 	INodeType,
 	INodeTypeDescription,
-} from 'n8n-workflow';
-import { NodeConnectionTypes, NodeOperationError, toPathSegment } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeConnectionTypes, NodeOperationError, toPathSegment } from 'MNI-workflow';
 
 import {
 	appendFilterStringToEndpoint,

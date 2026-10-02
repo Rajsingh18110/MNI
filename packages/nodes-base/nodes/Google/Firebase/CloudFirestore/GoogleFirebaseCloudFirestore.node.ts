@@ -6,8 +6,8 @@ import type {
 	INodePropertyOptions,
 	INodeType,
 	INodeTypeDescription,
-} from 'n8n-workflow';
-import { NodeConnectionTypes } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeConnectionTypes } from 'MNI-workflow';
 
 import { parseAndResolveQueryParameters } from '@utils/query-parameters';
 
@@ -25,7 +25,7 @@ export class GoogleFirebaseCloudFirestore implements INodeType {
 	description: INodeTypeDescription = {
 		displayName: 'Google Cloud Firestore',
 		name: 'googleFirebaseCloudFirestore',
-		// eslint-disable-next-line n8n-nodes-base/node-class-description-icon-not-svg
+		// eslint-disable-next-line MNI-nodes-base/node-class-description-icon-not-svg
 		icon: 'file:googleFirebaseCloudFirestore.png',
 		group: ['input'],
 		version: [1, 1.1],
@@ -65,7 +65,7 @@ export class GoogleFirebaseCloudFirestore implements INodeType {
 				type: 'options',
 				options: [
 					{
-						// eslint-disable-next-line n8n-nodes-base/node-param-display-name-miscased
+						// eslint-disable-next-line MNI-nodes-base/node-param-display-name-miscased
 						name: 'OAuth2 (recommended)',
 						value: 'googleFirebaseCloudFirestoreOAuth2Api',
 					},

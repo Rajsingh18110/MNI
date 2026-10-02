@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
-import { N8nButton, N8nIcon, N8nText } from '@n8n/design-system';
+import { N8nButton, N8nIcon, N8nText } from '@MNI/design-system';
 import { useUIStore } from '@/app/stores/ui.store';
 import AgentModal from './modals/AgentModal.vue';
 

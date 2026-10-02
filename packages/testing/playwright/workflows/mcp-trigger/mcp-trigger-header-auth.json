@@ -9,7 +9,7 @@
 			},
 			"id": "mcp-trigger-node",
 			"name": "MCP Server Trigger",
-			"type": "@n8n/n8n-nodes-langchain.mcpTrigger",
+			"type": "@MNI/MNI-nodes-langchain.mcpTrigger",
 			"typeVersion": 2,
 			"position": [300, 300],
 			"credentials": {}
@@ -24,7 +24,7 @@
 			},
 			"id": "add-tool-node",
 			"name": "Add Tool",
-			"type": "@n8n/n8n-nodes-langchain.toolCode",
+			"type": "@MNI/MNI-nodes-langchain.toolCode",
 			"typeVersion": 1.1,
 			"position": [500, 300]
 		}

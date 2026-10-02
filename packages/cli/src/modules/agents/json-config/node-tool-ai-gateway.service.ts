@@ -1,5 +1,5 @@
-import type { AgentJsonToolConfig } from '@n8n/api-types';
-import { Service } from '@n8n/di';
+import type { AgentJsonToolConfig } from '@MNI/api-types';
+import { Service } from '@MNI/di';
 
 import { NodeTypes } from '@/node-types';
 import { AiGatewayService } from '@/services/ai-gateway.service';

@@ -1,8 +1,8 @@
-import { testDb } from '@n8n/backend-test-utils';
-import { InstanceSettingsLoaderConfig } from '@n8n/config';
-import type { User } from '@n8n/db';
-import { Container } from '@n8n/di';
-import { CREDENTIAL_BLANKING_VALUE } from 'n8n-workflow';
+import { testDb } from '@MNI/backend-test-utils';
+import { InstanceSettingsLoaderConfig } from '@MNI/config';
+import type { User } from '@MNI/db';
+import { Container } from '@MNI/di';
+import { CREDENTIAL_BLANKING_VALUE } from 'MNI-workflow';
 
 import { FeatureNotLicensedError } from '@/errors/feature-not-licensed.error';
 import { SamlService } from '@/modules/sso-saml/saml.service.ee';
@@ -36,7 +36,7 @@ describe('SAML SSO configuration in Public API', () => {
 	});
 
 	afterEach(() => {
-		delete process.env.N8N_ENV_FEAT_SIGNED_SAML_REQUESTS;
+		delete process.env.MNI_ENV_FEAT_SIGNED_SAML_REQUESTS;
 		setManagedByEnv(false);
 	});
 
@@ -64,7 +64,7 @@ describe('SAML SSO configuration in Public API', () => {
 
 		it('redacts certificates and secrets on read', async () => {
 			testServer.license.enable('feat:saml');
-			process.env.N8N_ENV_FEAT_SIGNED_SAML_REQUESTS = 'true';
+			process.env.MNI_ENV_FEAT_SIGNED_SAML_REQUESTS = 'true';
 
 			await testServer
 				.authAgentFor(owner)
@@ -152,7 +152,7 @@ describe('SAML SSO configuration in Public API', () => {
 
 		it('accepts a GET response body as a PUT body and preserves redacted secrets', async () => {
 			testServer.license.enable('feat:saml');
-			process.env.N8N_ENV_FEAT_SIGNED_SAML_REQUESTS = 'true';
+			process.env.MNI_ENV_FEAT_SIGNED_SAML_REQUESTS = 'true';
 
 			await testServer
 				.authAgentFor(owner)
@@ -236,7 +236,7 @@ describe('SAML SSO configuration in Public API', () => {
 
 		it('rejects a well-formed body with invalid values with 400', async () => {
 			testServer.license.enable('feat:saml');
-			process.env.N8N_ENV_FEAT_SIGNED_SAML_REQUESTS = 'true';
+			process.env.MNI_ENV_FEAT_SIGNED_SAML_REQUESTS = 'true';
 
 			const samlService = Container.get(SamlService);
 			type PrivatePrefs = { _samlPreferences: typeof samlService.samlPreferences };

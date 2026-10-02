@@ -4,7 +4,7 @@ import { fireEvent } from '@testing-library/vue';
 import { createComponentRenderer } from '@/__tests__/render';
 import { mockedStore } from '@/__tests__/utils';
 import NodeIssueItem from './NodeIssueItem.vue';
-import type { INodeTypeDescription } from 'n8n-workflow';
+import type { INodeTypeDescription } from 'MNI-workflow';
 import { createTestingPinia } from '@pinia/testing';
 import { setActivePinia } from 'pinia';
 import { useNDVStore } from '@/features/ndv/shared/ndv.store';
@@ -52,7 +52,7 @@ describe('NodeIssueItem', () => {
 
 	it('opens NDV on edit button click', async () => {
 		const nodeType = {
-			name: 'n8n-nodes-base.linear',
+			name: 'MNI-nodes-base.linear',
 			displayName: 'Linear',
 		} as INodeTypeDescription;
 		const { getByLabelText } = renderComponent({
@@ -70,7 +70,7 @@ describe('NodeIssueItem', () => {
 
 	it('emits click event when item is clicked', async () => {
 		const nodeType = {
-			name: 'n8n-nodes-base.linear',
+			name: 'MNI-nodes-base.linear',
 			displayName: 'Linear',
 		} as INodeTypeDescription;
 		const { getByLabelText, emitted } = renderComponent({

@@ -1,9 +1,9 @@
 /**
- * before/after content of changed files, for the `@n8n/test-impact` content-aware
+ * before/after content of changed files, for the `@MNI/test-impact` content-aware
  * classifiers. Any read failure → '' so a classifier stays conservative (an
  * unreadable file is treated as impactful).
  */
-import { type FileDiffs } from '@n8n/test-impact';
+import { type FileDiffs } from '@MNI/test-impact';
 import { existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 

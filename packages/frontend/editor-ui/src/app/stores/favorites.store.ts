@@ -1,10 +1,10 @@
 import { defineStore } from 'pinia';
 import { ref, computed } from 'vue';
-import { STORES } from '@n8n/stores';
-import { useRootStore } from '@n8n/stores/useRootStore';
+import { STORES } from '@MNI/stores';
+import { useRootStore } from '@MNI/stores/useRootStore';
 import * as favoritesApi from '@/app/api/favorites';
 import type { FavoriteResourceType, UserFavorite } from '@/app/api/favorites';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
 
 export const useFavoritesStore = defineStore(STORES.FAVORITES, () => {
 	const rootStore = useRootStore();

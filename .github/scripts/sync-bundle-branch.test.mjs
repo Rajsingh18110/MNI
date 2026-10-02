@@ -31,16 +31,16 @@ const PRE_HEAD = 'PREHEAD';
 const BASE = 'BASESHA';
 const PUBLIC = 'PUBLICSHA';
 const MERGE_TREE = 'MERGETREEOID';
-const REMOTE = 'https://x-access-token:tok@github.com/n8n-io/n8n-private.git';
+const REMOTE = 'https://x-access-token:tok@github.com/MNI-io/MNI-private.git';
 // Spelled out rather than imported: a duplicated literal is what makes the "the private token
 // never reaches the public repo" assertion below a real one.
-const PUBLIC_REMOTE = 'https://github.com/n8n-io/n8n.git';
+const PUBLIC_REMOTE = 'https://github.com/MNI-io/n8n.git';
 
 const env = {
 	BUNDLE_BRANCH: 'bundle/2.x',
 	BASE_BRANCH: 'master',
 	GH_TOKEN: 'tok',
-	GITHUB_REPOSITORY: 'n8n-io/n8n-private',
+	GITHUB_REPOSITORY: 'MNI-io/MNI-private',
 };
 
 const isMerge = (a) => a[0] === 'merge';

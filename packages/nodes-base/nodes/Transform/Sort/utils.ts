@@ -1,5 +1,5 @@
-import type { IExecuteFunctions, INodeExecutionData } from 'n8n-workflow';
-import { NodeOperationError } from 'n8n-workflow';
+import type { IExecuteFunctions, INodeExecutionData } from 'MNI-workflow';
+import { NodeOperationError } from 'MNI-workflow';
 
 import { JsTaskRunnerSandbox } from '../../Code/JsTaskRunnerSandbox';
 

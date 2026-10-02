@@ -8,18 +8,18 @@
  */
 import { computed, onMounted, useCssModule } from 'vue';
 import { useRouter, type RouteLocationRaw } from 'vue-router';
-import type { AgentConfigValidationIssue } from '@n8n/api-types';
+import type { AgentConfigValidationIssue } from '@MNI/api-types';
 import {
 	N8nBreadcrumbs,
 	N8nButton,
 	N8nDropdownMenu,
 	N8nDropdownMenuItem,
 	N8nIcon,
-} from '@n8n/design-system';
-import type { IconOrEmoji, PathItem } from '@n8n/design-system';
-import type { DropdownMenuItemProps } from '@n8n/design-system';
-import type { ActionDropdownItem } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+} from '@MNI/design-system';
+import type { IconOrEmoji, PathItem } from '@MNI/design-system';
+import type { DropdownMenuItemProps } from '@MNI/design-system';
+import type { ActionDropdownItem } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 import { PROJECT_AGENTS } from '@/features/agents/constants';
 import ProjectIcon from '@/features/collaboration/projects/components/ProjectIcon.vue';
 
@@ -258,7 +258,7 @@ function onMenuSelect(id: string) {
 	background-color: var(--background--surface);
 	border-bottom: var(--border);
 	flex-shrink: 0;
-	height: var(--n8n--agent-builder-header-height, var(--height--4xl));
+	height: var(--MNI--agent-builder-header-height, var(--height--4xl));
 	overflow-x: auto;
 	overflow-y: hidden;
 	scrollbar-width: thin;
@@ -272,22 +272,22 @@ function onMenuSelect(id: string) {
 	min-width: max-content;
 }
 
-.left :global(.n8n-breadcrumbs) {
+.left :global(.MNI-breadcrumbs) {
 	min-width: max-content;
 }
 
-.left :global(.n8n-breadcrumbs > ul > li:first-child) {
+.left :global(.MNI-breadcrumbs > ul > li:first-child) {
 	display: none;
 }
 
-.left :global(.n8n-breadcrumbs [data-test-id='breadcrumbs-item']) {
+.left :global(.MNI-breadcrumbs [data-test-id='breadcrumbs-item']) {
 	display: flex;
 	align-items: center;
 	min-height: var(--height--md);
 	padding: var(--spacing--2xs) var(--spacing--xs);
 }
 
-.left :global(.n8n-breadcrumbs [data-test-id='breadcrumbs-item'] *) {
+.left :global(.MNI-breadcrumbs [data-test-id='breadcrumbs-item'] *) {
 	line-height: var(--line-height--sm);
 }
 
@@ -337,7 +337,7 @@ function onMenuSelect(id: string) {
 }
 
 .headerActionsMenu {
-	--n8n--dropdown-menu-width: var(--spacing--5xl);
+	--MNI--dropdown-menu-width: var(--spacing--5xl);
 }
 
 .destructiveItem,

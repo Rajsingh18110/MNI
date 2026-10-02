@@ -8,7 +8,7 @@ import {
 	type INodeType,
 	type INodeTypeDescription,
 	type ResourceMapperFields,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { remoteOptions, resourceMapperFields, returnData, searchOptions } from './mock';
 

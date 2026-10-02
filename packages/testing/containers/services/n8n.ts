@@ -9,7 +9,7 @@ import {
 	createReadinessProbe,
 	createSilentLogConsumer,
 } from '../helpers/utils';
-import { N8nImagePullPolicy } from '../n8n-image-pull-policy';
+import { N8nImagePullPolicy } from '../MNI-image-pull-policy';
 import type { StartupDeadline } from '../startup-deadline';
 import { TEST_CONTAINER_IMAGES } from '../test-containers';
 import {
@@ -21,17 +21,17 @@ import {
 } from './engine';
 import type { FileToMount } from './types';
 
-const N8N_IMAGE = TEST_CONTAINER_IMAGES.n8n;
+const MNI_IMAGE = TEST_CONTAINER_IMAGES.MNI;
 
 // In-container path that NODE_V8_COVERAGE writes to when coverage collection is
 // enabled (via StackConfig.coverageHostDir); bind-mounted to a host subdir.
 const CONTAINER_COVERAGE_DIR = '/cov';
-// Must match N8N_PORT / QUEUE_HEALTH_CHECK_PORT defaults.
-const N8N_READINESS_PORT = 5678;
-const N8N_STARTUP_TIMEOUT_MS = 60_000;
+// Must match MNI_PORT / QUEUE_HEALTH_CHECK_PORT defaults.
+const MNI_READINESS_PORT = 5678;
+const MNI_STARTUP_TIMEOUT_MS = 60_000;
 // withReadTimeout doubles as the poll interval (testcontainers IntervalRetry); the
 // default 1000ms leaves up to a second of stale-poll latency after the process is ready.
-const N8N_READ_TIMEOUT_MS = 250;
+const MNI_READ_TIMEOUT_MS = 250;
 
 export interface N8NStartupDiagnostics {
 	attemptId?: string;
@@ -53,20 +53,20 @@ export class N8NStartupError extends Error {
 }
 
 const BASE_ENV: Record<string, string> = {
-	N8N_LOG_LEVEL: 'debug',
-	N8N_ENCRYPTION_KEY: process.env.N8N_ENCRYPTION_KEY ?? 'test-encryption-key',
+	MNI_LOG_LEVEL: 'debug',
+	MNI_ENCRYPTION_KEY: process.env.MNI_ENCRYPTION_KEY ?? 'test-encryption-key',
 	E2E_TESTS: 'false',
 	QUEUE_HEALTH_CHECK_ACTIVE: 'true',
-	N8N_DIAGNOSTICS_ENABLED: 'false',
-	N8N_METRICS: 'true',
+	MNI_DIAGNOSTICS_ENABLED: 'false',
+	MNI_METRICS: 'true',
 	NODE_ENV: 'development',
-	N8N_DYNAMIC_BANNERS_ENABLED: 'false',
-	N8N_LICENSE_TENANT_ID: process.env.N8N_LICENSE_TENANT_ID ?? '1001',
-	N8N_LICENSE_ACTIVATION_KEY: process.env.N8N_LICENSE_ACTIVATION_KEY ?? '',
-	N8N_LICENSE_CERT: process.env.N8N_LICENSE_CERT ?? '',
-	N8N_RUNNERS_MODE: 'external',
-	N8N_RUNNERS_AUTH_TOKEN: 'test',
-	N8N_RUNNERS_BROKER_LISTEN_ADDRESS: '0.0.0.0',
+	MNI_DYNAMIC_BANNERS_ENABLED: 'false',
+	MNI_LICENSE_TENANT_ID: process.env.MNI_LICENSE_TENANT_ID ?? '1001',
+	MNI_LICENSE_ACTIVATION_KEY: process.env.MNI_LICENSE_ACTIVATION_KEY ?? '',
+	MNI_LICENSE_CERT: process.env.MNI_LICENSE_CERT ?? '',
+	MNI_RUNNERS_MODE: 'external',
+	MNI_RUNNERS_AUTH_TOKEN: 'test',
+	MNI_RUNNERS_BROKER_LISTEN_ADDRESS: '0.0.0.0',
 	// Expose V8 garbage collector for memory profiling in performance tests
 	NODE_OPTIONS: '--expose-gc',
 };
@@ -169,18 +169,18 @@ function computeEnvironment(options: N8NInstancesOptions): ComputedEnvironment {
 		env.OFFLOAD_MANUAL_EXECUTIONS_TO_WORKERS = 'true';
 
 		if (mains > 1) {
-			if (!process.env.N8N_LICENSE_ACTIVATION_KEY && !process.env.N8N_LICENSE_CERT) {
+			if (!process.env.MNI_LICENSE_ACTIVATION_KEY && !process.env.MNI_LICENSE_CERT) {
 				throw new Error(
-					'N8N_LICENSE_ACTIVATION_KEY or N8N_LICENSE_CERT is required for multi-main instances',
+					'MNI_LICENSE_ACTIVATION_KEY or MNI_LICENSE_CERT is required for multi-main instances',
 				);
 			}
-			env.N8N_MULTI_MAIN_SETUP_ENABLED = 'true';
+			env.MNI_MULTI_MAIN_SETUP_ENABLED = 'true';
 		}
 	}
 
 	if (mains === 1 && baseUrl && !serviceEnvironment.WEBHOOK_URL) {
 		env.WEBHOOK_URL = baseUrl;
-		env.N8N_PORT = '5678';
+		env.MNI_PORT = '5678';
 	}
 
 	if (engineEnvironment && env.WEBHOOK_URL) {
@@ -223,10 +223,10 @@ interface ContainerStartResult {
 }
 
 const SERVICE_LABEL: Record<InstanceRole, string> = {
-	main: 'n8n-main',
-	webhook: 'n8n-webhook',
-	worker: 'n8n-worker',
-	engine: 'n8n-engine',
+	main: 'MNI-main',
+	webhook: 'MNI-webhook',
+	worker: 'MNI-worker',
+	engine: 'MNI-engine',
 };
 
 async function createContainer(
@@ -254,16 +254,16 @@ async function createContainer(
 	const readiness =
 		role === 'engine'
 			? { path: '/healthz', port: ENGINE_PORT }
-			: { path: '/healthz/readiness', port: N8N_READINESS_PORT };
+			: { path: '/healthz/readiness', port: MNI_READINESS_PORT };
 	const { strategy: waitStrategy, getLastBody: getLastReadinessBody } = createReadinessProbe(
 		readiness.path,
 		readiness.port,
 		{
 			startupTimeoutMs: Math.min(
-				startupTimeoutMs ?? N8N_STARTUP_TIMEOUT_MS,
+				startupTimeoutMs ?? MNI_STARTUP_TIMEOUT_MS,
 				startupDeadline.remainingMs,
 			),
-			readTimeoutMs: N8N_READ_TIMEOUT_MS,
+			readTimeoutMs: MNI_READ_TIMEOUT_MS,
 		},
 	);
 
@@ -271,7 +271,7 @@ async function createContainer(
 		? { ...environment, NODE_V8_COVERAGE: CONTAINER_COVERAGE_DIR }
 		: environment;
 
-	const containerImage = image ?? N8N_IMAGE;
+	const containerImage = image ?? MNI_IMAGE;
 	let container = new GenericContainer(containerImage)
 		.withEnvironment(containerEnvironment)
 		.withLabels({
@@ -292,7 +292,7 @@ async function createContainer(
 	const bindMounts: Array<{ source: string; target: string; mode: 'rw' }> = [];
 
 	if (userHomeHostDir) {
-		// The whole home is mounted (not just ~/.n8n) so the settings file and
+		// The whole home is mounted (not just ~/.MNI) so the settings file and
 		// the sqlite database live on the host and a different image can boot
 		// on the same data later.
 		mkdirSync(userHomeHostDir, { recursive: true });
@@ -396,7 +396,7 @@ export async function createN8NInstances(
 		reuseEngine = false,
 	} = options;
 
-	const log = createElapsedLogger('n8n-instances');
+	const log = createElapsedLogger('MNI-instances');
 	const { environment, engineEnvironment } = computeEnvironment(options);
 	const containers: StartedTestContainer[] = [];
 	const diagnostics: N8NStartupDiagnostics = { attemptId, logs: {}, readinessPayloads: {} };
@@ -467,7 +467,7 @@ export async function createN8NInstances(
 	const instances: InstanceConfig[] = [
 		...Array.from({ length: mains }, (_, i): InstanceConfig => {
 			const num = i + 1;
-			const name = mains > 1 ? `${projectName}-n8n-main-${num}` : `${projectName}-n8n`;
+			const name = mains > 1 ? `${projectName}-MNI-main-${num}` : `${projectName}-MNI`;
 			return {
 				name,
 				role: 'main',
@@ -478,7 +478,7 @@ export async function createN8NInstances(
 		}),
 		...Array.from({ length: webhooks }, (_, i): InstanceConfig => {
 			const num = i + 1;
-			const name = `${projectName}-n8n-webhook-${num}`;
+			const name = `${projectName}-MNI-webhook-${num}`;
 			return {
 				name,
 				role: 'webhook',
@@ -489,7 +489,7 @@ export async function createN8NInstances(
 		...Array.from(
 			{ length: workers },
 			(_, i): InstanceConfig => ({
-				name: `${projectName}-n8n-worker-${i + 1}`,
+				name: `${projectName}-MNI-worker-${i + 1}`,
 				role: 'worker',
 				instanceNumber: i + 1,
 			}),

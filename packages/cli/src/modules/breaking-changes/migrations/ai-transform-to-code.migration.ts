@@ -23,7 +23,7 @@ export const aiTransformToCode: NodeMigration = {
 
 		return {
 			node: {
-				type: 'n8n-nodes-base.code',
+				type: 'MNI-nodes-base.code',
 				typeVersion: 2,
 				parameters: {
 					mode: 'runOnceForAllItems',

@@ -1,8 +1,8 @@
-import { Logger } from '@n8n/backend-common';
-import { Time } from '@n8n/constants';
-import type { AuthenticatedRequest, TokenGrant } from '@n8n/db';
-import { ApiKeyRepository } from '@n8n/db';
-import { Service } from '@n8n/di';
+import { Logger } from '@MNI/backend-common';
+import { Time } from '@MNI/constants';
+import type { AuthenticatedRequest, TokenGrant } from '@MNI/db';
+import { ApiKeyRepository } from '@MNI/db';
+import { Service } from '@MNI/di';
 import { TokenExpiredError } from 'jsonwebtoken';
 
 import { isApiKeyAuthEnabled } from '@/public-api';
@@ -11,7 +11,7 @@ import type { AuthStrategy, AuthStrategyOptions } from './auth-strategy.types';
 import { JwtService } from './jwt.service';
 import { API_KEY_AUDIENCE, API_KEY_ISSUER, PREFIX_LEGACY_API_KEY } from './public-api-key.service';
 
-const API_KEY_HEADER = 'x-n8n-api-key';
+const API_KEY_HEADER = 'x-MNI-api-key';
 const LAST_USED_AT_THROTTLE_MS = 1 * Time.minutes.toMilliseconds;
 
 @Service()

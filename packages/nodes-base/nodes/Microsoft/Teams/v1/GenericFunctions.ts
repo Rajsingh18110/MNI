@@ -5,8 +5,8 @@ import type {
 	JsonObject,
 	IHttpRequestMethods,
 	IRequestOptions,
-} from 'n8n-workflow';
-import { NodeApiError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeApiError } from 'MNI-workflow';
 
 export async function microsoftApiRequest(
 	this: IExecuteFunctions | ILoadOptionsFunctions,
@@ -105,8 +105,8 @@ export function prepareMessage(
 ) {
 	if (includeLinkToWorkflow) {
 		const { id } = this.getWorkflow();
-		const link = `${this.getInstanceBaseUrl()}workflow/${id}?utm_source=n8n-internal&utm_medium=powered_by&utm_campaign=${encodeURIComponent(
-			'n8n-nodes-base.microsoftTeams',
+		const link = `${this.getInstanceBaseUrl()}workflow/${id}?utm_source=MNI-internal&utm_medium=powered_by&utm_campaign=${encodeURIComponent(
+			'MNI-nodes-base.microsoftTeams',
 		)}${instanceId ? '_' + instanceId : ''}`;
 		messageType = 'html';
 		message = `${message}<br><br><em> Powered by <a href="${link}">this MNI workflow</a> </em>`;

@@ -32,7 +32,7 @@ describe('container telemetry webhook contract', () => {
 		configureTelemetryWebhook(server.url);
 		const telemetry = new TelemetryRecorder({});
 
-		telemetry.startStage('n8n-startup');
+		telemetry.startStage('MNI-startup');
 		telemetry.finishStage();
 		telemetry.flush(true);
 		await waitForRequest();
@@ -43,7 +43,7 @@ describe('container telemetry webhook contract', () => {
 		);
 		expect(request.payload.attempt_id).toMatch(/^[0-9a-f-]{36}$/);
 		expect(request.payload.stages).toEqual([
-			expect.objectContaining({ name: 'n8n-startup', outcome: 'success' }),
+			expect.objectContaining({ name: 'MNI-startup', outcome: 'success' }),
 		]);
 		expect(request.payload.metrics?.[0]?.metric_name).toBe('stack-startup-stage');
 		expect(request.payload.metrics?.[0]?.dimensions?.attempt_id).toBe(request.payload.attempt_id);
@@ -54,7 +54,7 @@ describe('container telemetry webhook contract', () => {
 		configureTelemetryWebhook(server.url);
 		const telemetry = new TelemetryRecorder({});
 
-		telemetry.startStage('n8n-startup');
+		telemetry.startStage('MNI-startup');
 		await new Promise((resolve) => setTimeout(resolve, 2));
 		telemetry.finishStage('failure', new Error('startup failed'));
 		telemetry.flush(false, 'startup failed');
@@ -64,7 +64,7 @@ describe('container telemetry webhook contract', () => {
 		expect(request.payload.success).toBe(false);
 		expect(request.payload.attempt_id).toMatch(/^[0-9a-f-]{36}$/);
 		const stages = request.payload.stages as Array<Record<string, unknown>>;
-		expect(stages[0]).toMatchObject({ name: 'n8n-startup', outcome: 'failure' });
+		expect(stages[0]).toMatchObject({ name: 'MNI-startup', outcome: 'failure' });
 		expect(typeof stages[0]?.elapsedMs).toBe('number');
 		expect((request.payload.stages as Array<{ elapsedMs: number }>)[0].elapsedMs).toBeGreaterThan(
 			0,

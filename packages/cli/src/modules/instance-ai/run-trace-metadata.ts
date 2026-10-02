@@ -1,5 +1,5 @@
-import type { InstanceAiEvent } from '@n8n/api-types';
-import type { InstanceAiLivenessTimeoutReason } from '@n8n/instance-ai';
+import type { InstanceAiEvent } from '@MNI/api-types';
+import type { InstanceAiLivenessTimeoutReason } from '@MNI/instance-ai';
 
 import type { InstanceAiRunTimeoutDetails } from './run-timeout-details';
 

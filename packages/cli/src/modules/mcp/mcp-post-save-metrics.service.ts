@@ -1,6 +1,6 @@
-import { Logger } from '@n8n/backend-common';
-import { PrometheusMetricsConfig } from '@n8n/config';
-import { Service } from '@n8n/di';
+import { Logger } from '@MNI/backend-common';
+import { PrometheusMetricsConfig } from '@MNI/config';
+import { Service } from '@MNI/di';
 
 import { EventService } from '@/events/event.service';
 

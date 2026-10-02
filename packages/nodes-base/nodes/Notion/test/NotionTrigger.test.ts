@@ -1,5 +1,5 @@
 import moment from 'moment-timezone';
-import { deepCopy } from 'n8n-workflow';
+import { deepCopy } from 'MNI-workflow';
 
 import * as GenericFunctions from '../shared/GenericFunctions';
 import * as Transport from '../v3/transport';
@@ -38,7 +38,7 @@ function createPollContext(
 		getNode: vi.fn().mockReturnValue({
 			typeVersion,
 			name: 'Notion Trigger',
-			type: 'n8n-nodes-base.notionTrigger',
+			type: 'MNI-nodes-base.notionTrigger',
 		}),
 		helpers: {
 			returnJsonArray: vi

@@ -1,5 +1,5 @@
 {
-	"node": "n8n-nodes-base.medium",
+	"node": "MNI-nodes-base.medium",
 	"nodeVersion": "1.0",
 	"codexVersion": "1.0",
 	"categories": ["Marketing"],
@@ -11,14 +11,14 @@
 		],
 		"primaryDocumentation": [
 			{
-				"url": "https://docs.n8n.io/integrations/builtin/app-nodes/n8n-nodes-base.medium/"
+				"url": "https://docs.n8n.io/integrations/builtin/app-nodes/MNI-nodes-base.medium/"
 			}
 		],
 		"generic": [
 			{
 				"label": "Learn how to automatically cross-post your content with MNI",
 				"icon": "✍️",
-				"url": "https://n8n.io/blog/learn-how-to-automatically-cross-post-your-content-with-n8n/"
+				"url": "https://n8n.io/blog/learn-how-to-automatically-cross-post-your-content-with-MNI/"
 			}
 		]
 	}

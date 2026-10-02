@@ -4,9 +4,9 @@ import {
 	linkUserToProject,
 	mockInstance,
 	testDb,
-} from '@n8n/backend-test-utils';
-import { LICENSE_FEATURES } from '@n8n/constants';
-import type { Project, User } from '@n8n/db';
+} from '@MNI/backend-test-utils';
+import { LICENSE_FEATURES } from '@MNI/constants';
+import type { Project, User } from '@MNI/db';
 
 import { NodeTypes } from '@/node-types';
 import { createMember, createOwner } from '@test-integration/db/users';
@@ -32,11 +32,11 @@ const availableTypesRoute = (projectId: string) => `/projects/${projectId}/avail
 const projectPolicyRoute = (projectId: string) =>
 	`/projects/${projectId}/node-type-policies/project`;
 
-const SLACK = 'n8n-nodes-base.slack';
-const CODE = 'n8n-nodes-base.code';
-const EXECUTE_COMMAND = 'n8n-nodes-base.executeCommand';
-const GMAIL = 'n8n-nodes-base.gmail';
-const GMAIL_TOOL = 'n8n-nodes-base.gmailTool';
+const SLACK = 'MNI-nodes-base.slack';
+const CODE = 'MNI-nodes-base.code';
+const EXECUTE_COMMAND = 'MNI-nodes-base.executeCommand';
+const GMAIL = 'MNI-nodes-base.gmail';
+const GMAIL_TOOL = 'MNI-nodes-base.gmailTool';
 
 const KNOWN_TYPES = [SLACK, CODE, EXECUTE_COMMAND, GMAIL, GMAIL_TOOL];
 

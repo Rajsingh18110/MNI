@@ -1,5 +1,5 @@
-import type { ExecutionSnapshot, ExecutionStatus, StepDetail, WorkflowDocument } from '@n8n/engine';
-import type { ExecutionStatus as ExecutionStatusV1 } from 'n8n-workflow';
+import type { ExecutionSnapshot, ExecutionStatus, StepDetail, WorkflowDocument } from '@MNI/engine';
+import type { ExecutionStatus as ExecutionStatusV1 } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import type { EngineDataPlaneProxyService } from '@/services/engine-data-plane-proxy.service';
@@ -29,7 +29,7 @@ const step = (overrides: Partial<StepDetail> = {}): StepDetail => ({
 const workflowDocument = (overrides: WorkflowDocument = {}): WorkflowDocument => ({
 	id: WORKFLOW_ID,
 	name: 'v2',
-	nodes: [{ name: 'Trigger', type: 'n8n-nodes-base.manualTrigger' }],
+	nodes: [{ name: 'Trigger', type: 'MNI-nodes-base.manualTrigger' }],
 	connections: {},
 	settings: { engineType: 'v2' },
 	nodeGroups: [],
@@ -313,7 +313,7 @@ describe('EngineV2ExecutionReader', () => {
 				// The live workflow may now call this node anything; the read does not
 				// consult it. The name matches the run-data key built from the graph.
 				expect(result?.workflowData.nodes).toEqual([
-					{ name: 'Trigger', type: 'n8n-nodes-base.manualTrigger' },
+					{ name: 'Trigger', type: 'MNI-nodes-base.manualTrigger' },
 				]);
 				expect(Object.keys(result?.data.resultData.runData ?? {})).toEqual(['Trigger']);
 			});
@@ -323,8 +323,8 @@ describe('EngineV2ExecutionReader', () => {
 					snapshot({
 						workflow: workflowDocument({
 							nodes: [
-								{ name: 'Trigger', type: 'n8n-nodes-base.manualTrigger' },
-								{ name: 'Deleted Later', type: 'n8n-nodes-base.set' },
+								{ name: 'Trigger', type: 'MNI-nodes-base.manualTrigger' },
+								{ name: 'Deleted Later', type: 'MNI-nodes-base.set' },
 							],
 						}),
 					}),

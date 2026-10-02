@@ -1,5 +1,5 @@
-import type { User } from '@n8n/db';
-import type { OAuthResourceGrant } from 'n8n-workflow';
+import type { User } from '@MNI/db';
+import type { OAuthResourceGrant } from 'MNI-workflow';
 
 import type { ProtectedResource } from '@/services/protected-resource.registry';
 import type { WorkflowFinderService } from '@/workflows/workflow-finder.service';

@@ -1,6 +1,6 @@
-import type { User } from '@n8n/db';
-import type { INode, INodeTypeDescription, IWorkflowBase } from 'n8n-workflow';
-import { NodeHelpers } from 'n8n-workflow';
+import type { User } from '@MNI/db';
+import type { INode, INodeTypeDescription, IWorkflowBase } from 'MNI-workflow';
+import { NodeHelpers } from 'MNI-workflow';
 
 import type { CredentialsService } from '@/credentials/credentials.service';
 import { NotFoundError } from '@/errors/response-errors/not-found.error';

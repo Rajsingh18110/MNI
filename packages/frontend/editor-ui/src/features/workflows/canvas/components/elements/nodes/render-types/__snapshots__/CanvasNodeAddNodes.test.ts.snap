@@ -21,7 +21,7 @@ exports[`CanvasNodeAddNodes > should render node correctly 1`] = `
     >
       <svg
         aria-hidden="true"
-        class="n8n-icon"
+        class="MNI-icon"
         data-icon="plus"
         focusable="false"
         height="40px"

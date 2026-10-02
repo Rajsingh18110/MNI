@@ -1,22 +1,22 @@
-import type { InstanceAiVerificationFailure } from '@n8n/api-types';
-import type { Logger } from '@n8n/backend-common';
-import type { OutboundHttp } from '@n8n/backend-network';
-import type { GlobalConfig, InstanceAiConfig } from '@n8n/config';
-import type { User } from '@n8n/db';
+import type { InstanceAiVerificationFailure } from '@MNI/api-types';
+import type { Logger } from '@MNI/backend-common';
+import type { OutboundHttp } from '@MNI/backend-network';
+import type { GlobalConfig, InstanceAiConfig } from '@MNI/config';
+import type { User } from '@MNI/db';
 import { mock } from 'vitest-mock-extended';
 
 const raceWithAbortMock = vi.hoisted(() => vi.fn());
 
-vi.mock('@n8n/agents', () => ({ createModel: vi.fn(), raceWithAbort: raceWithAbortMock }));
+vi.mock('@MNI/agents', () => ({ createModel: vi.fn(), raceWithAbort: raceWithAbortMock }));
 vi.mock('ai', () => ({ generateText: vi.fn() }));
-vi.mock('@n8n/instance-ai', () => ({ createSandbox: vi.fn(), createWorkspace: vi.fn() }));
-vi.mock('@n8n/ai-utilities', () => ({ braveSearch: vi.fn(), searxngSearch: vi.fn() }));
+vi.mock('@MNI/instance-ai', () => ({ createSandbox: vi.fn(), createWorkspace: vi.fn() }));
+vi.mock('@MNI/ai-utilities', () => ({ braveSearch: vi.fn(), searxngSearch: vi.fn() }));
 vi.mock('@/utils/ai-proxy-fetch', () => ({ createAiProxyFetch: vi.fn(() => vi.fn()) }));
 
-import { braveSearch, searxngSearch } from '@n8n/ai-utilities';
-import { createModel } from '@n8n/agents';
-import { createSandbox, createWorkspace } from '@n8n/instance-ai';
-import { TELEMETRY_EVENT } from '@n8n/telemetry';
+import { braveSearch, searxngSearch } from '@MNI/ai-utilities';
+import { createModel } from '@MNI/agents';
+import { createSandbox, createWorkspace } from '@MNI/instance-ai';
+import { TELEMETRY_EVENT } from '@MNI/telemetry';
 import { generateText } from 'ai';
 
 import type { InstanceAiModelService } from '../instance-ai-model.service';
@@ -28,7 +28,7 @@ import type { Telemetry } from '@/telemetry';
 describe('InstanceAiVerificationService', () => {
 	const globalConfig = mock<GlobalConfig>({
 		instanceAi: {
-			sandboxProvider: 'n8n-sandbox',
+			sandboxProvider: 'MNI-sandbox',
 			sandboxImage: 'sandbox-image',
 			sandboxTimeout: 60,
 			n8nSandboxServiceUrl: 'https://env.sandbox',
@@ -59,7 +59,7 @@ describe('InstanceAiVerificationService', () => {
 				await (typeof work === 'function' ? work() : work),
 		);
 		Object.assign(globalConfig.instanceAi, {
-			sandboxProvider: 'n8n-sandbox',
+			sandboxProvider: 'MNI-sandbox',
 			sandboxImage: 'sandbox-image',
 			sandboxTimeout: 60,
 			n8nSandboxServiceUrl: 'https://env.sandbox',
@@ -204,7 +204,7 @@ describe('InstanceAiVerificationService', () => {
 
 			await expect(
 				service.verifySandbox(user, {
-					provider: 'n8n-sandbox',
+					provider: 'MNI-sandbox',
 					connection,
 					serviceUrl: 'https://draft.sandbox',
 				}),
@@ -215,7 +215,7 @@ describe('InstanceAiVerificationService', () => {
 			);
 			expect(createSandboxMock).toHaveBeenCalledWith({
 				enabled: true,
-				provider: 'n8n-sandbox',
+				provider: 'MNI-sandbox',
 				serviceUrl: 'https://draft.sandbox',
 				apiKey: 'saved-key',
 				timeout: 60,
@@ -308,7 +308,7 @@ describe('InstanceAiVerificationService', () => {
 
 			expect(createSandboxMock).toHaveBeenCalledWith({
 				enabled: true,
-				provider: 'n8n-sandbox',
+				provider: 'MNI-sandbox',
 				serviceUrl: 'https://saved.sandbox',
 				apiKey: 'saved-key',
 				timeout: 60,

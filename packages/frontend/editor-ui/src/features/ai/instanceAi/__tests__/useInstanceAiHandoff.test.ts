@@ -20,10 +20,10 @@ vi.mock('vue-router', async (importOriginal) => ({
 	}),
 }));
 vi.mock('uuid', () => ({ v4: () => 'thread-1' }));
-vi.mock('@n8n/stores/useRootStore', () => ({
+vi.mock('@MNI/stores/useRootStore', () => ({
 	useRootStore: () => ({ restApiContext: {}, pushRef: 'push-ref' }),
 }));
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: () => ({ showError: mocks.showError }),
 }));
 vi.mock('../composables/useInstanceAiAvailability', () => ({
@@ -89,7 +89,7 @@ describe('useInstanceAiHandoff', () => {
 				credentialType: 'gmailOAuth2',
 				displayName: 'Gmail OAuth2 API',
 				nodeName: 'Gmail',
-				nodeType: 'n8n-nodes-base.gmail',
+				nodeType: 'MNI-nodes-base.gmail',
 				documentationUrl:
 					'https://docs.n8n.io/integrations/builtin/credentials/google/oauth-single-service/',
 				oauthRedirectUrl: 'http://localhost:5678/rest/oauth2-credential/callback',
@@ -100,7 +100,7 @@ describe('useInstanceAiHandoff', () => {
 				credentialType: 'gmailOAuth2',
 				displayName: 'Gmail OAuth2 API',
 				nodeName: 'Gmail',
-				nodeType: 'n8n-nodes-base.gmail',
+				nodeType: 'MNI-nodes-base.gmail',
 				documentationUrl:
 					'https://docs.n8n.io/integrations/builtin/credentials/google/oauth-single-service/',
 				oauthRedirectUrl: 'http://localhost:5678/rest/oauth2-credential/callback',
@@ -173,7 +173,7 @@ describe('useInstanceAiHandoff', () => {
 	// draft are hand-offs, so naming either one would mis-attribute the other --
 	// report the read-path fallback instead of guessing.
 	it('replays a composer draft stashed by a previous deploy under the fallback type', () => {
-		localStorage.setItem('n8n-instance-ai-composer-draft:thread-1', 'Fix the failed tool calls');
+		localStorage.setItem('MNI-instance-ai-composer-draft:thread-1', 'Fix the failed tool calls');
 
 		expect(getPendingComposerDraft('thread-1')).toEqual({
 			text: 'Fix the failed tool calls',
@@ -384,11 +384,11 @@ describe('useInstanceAiHandoff', () => {
 		expect(mocks.sendMessage).not.toHaveBeenCalled();
 	});
 
-	// A stashed opener is always n8n-authored -- every stash comes from a hand-off.
+	// A stashed opener is always MNI-authored -- every stash comes from a hand-off.
 	// Reporting it as user-typed would be the misclassification the type prevents.
 	it('replays an opening message stashed by a previous deploy as an untyped pre-fill', () => {
 		localStorage.setItem(
-			'n8n-instance-ai-first-message:thread-1',
+			'MNI-instance-ai-first-message:thread-1',
 			JSON.stringify({ message: 'Set up the credential' }),
 		);
 
@@ -401,7 +401,7 @@ describe('useInstanceAiHandoff', () => {
 	// The draft is text the user is about to send, so an unreadable envelope must
 	// not discard it.
 	it('keeps a composer draft whose stored envelope is unusable', () => {
-		localStorage.setItem('n8n-instance-ai-composer-draft:thread-1', JSON.stringify({ nope: 1 }));
+		localStorage.setItem('MNI-instance-ai-composer-draft:thread-1', JSON.stringify({ nope: 1 }));
 
 		expect(getPendingComposerDraft('thread-1')).toEqual({
 			text: JSON.stringify({ nope: 1 }),
@@ -413,7 +413,7 @@ describe('useInstanceAiHandoff', () => {
 	// certainly not put the raw envelope in the composer for them to send.
 	it('keeps the draft text when the stored pre-fill type is not recognised', () => {
 		localStorage.setItem(
-			'n8n-instance-ai-composer-draft:thread-1',
+			'MNI-instance-ai-composer-draft:thread-1',
 			JSON.stringify({ text: 'Fix the failed tool calls', prefillType: 'retired_catalog' }),
 		);
 

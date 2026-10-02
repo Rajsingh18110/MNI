@@ -1,4 +1,4 @@
-import { splitModelId } from '@n8n/ai-utilities/agent-config';
+import { splitModelId } from '@MNI/ai-utilities/agent-config';
 import {
 	DEFAULT_AGENT_PERSONALISATION,
 	getRandomAgentPersonalisationGradient,
@@ -10,11 +10,11 @@ import {
 	type AgentModelCredentialConfig,
 	type AgentSkill,
 	type ListAgentsQueryDto,
-} from '@n8n/api-types';
-import { Logger } from '@n8n/backend-common';
-import { In, isUniqueConstraintError, ProjectRelationRepository, type User } from '@n8n/db';
-import { Container, Service } from '@n8n/di';
-import { hasGlobalScope } from '@n8n/permissions';
+} from '@MNI/api-types';
+import { Logger } from '@MNI/backend-common';
+import { In, isUniqueConstraintError, ProjectRelationRepository, type User } from '@MNI/db';
+import { Container, Service } from '@MNI/di';
+import { hasGlobalScope } from '@MNI/permissions';
 import { v4 as uuid } from 'uuid';
 
 // `CredentialsService` reaches `workflow-execute-additional-data`, which
@@ -199,7 +199,7 @@ export class AgentsService {
 		// source's channel credentialId would block the original from republishing
 		// or reconnecting (and the reconciler records that 409 on the source's row).
 		const draftIntegrations = integrations.map((integration) =>
-			integration.type === 'n8n_chat' ? integration : { ...integration, credentialId: '' },
+			integration.type === 'MNI_chat' ? integration : { ...integration, credentialId: '' },
 		);
 		return { schemaConfig, integrations: draftIntegrations };
 	}

@@ -1,5 +1,5 @@
-import type { ModuleRegistry } from '@n8n/backend-common';
-import { Container } from '@n8n/di';
+import type { ModuleRegistry } from '@MNI/backend-common';
+import { Container } from '@MNI/di';
 import { mock } from 'vitest-mock-extended';
 
 import { AgentRepository } from '@/modules/agents/repositories/agent.repository';

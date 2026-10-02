@@ -1,10 +1,10 @@
-import { mockInstance, testDb } from '@n8n/backend-test-utils';
-import { GlobalConfig } from '@n8n/config';
-import { DeploymentKey, DeploymentKeyRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
-import { DataSource, type Repository } from '@n8n/typeorm';
+import { mockInstance, testDb } from '@MNI/backend-test-utils';
+import { GlobalConfig } from '@MNI/config';
+import { DeploymentKey, DeploymentKeyRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
+import { DataSource, type Repository } from '@MNI/typeorm';
 import jsonwebtoken from 'jsonwebtoken';
-import { Cipher, InstanceSettings } from 'n8n-core';
+import { Cipher, InstanceSettings } from 'MNI-core';
 
 import { JwtService } from '@/services/jwt.service';
 
@@ -13,7 +13,7 @@ const INSTANCE_ENCRYPTION_KEY = 'signing-secrets-instance-key';
 beforeAll(async () => {
 	mockInstance(InstanceSettings, {
 		encryptionKey: INSTANCE_ENCRYPTION_KEY,
-		n8nFolder: '/tmp/n8n-test',
+		n8nFolder: '/tmp/MNI-test',
 		instanceType: 'main',
 		canSeedDeploymentState: true,
 	});

@@ -1,8 +1,8 @@
 import type * as JoplinTurndownGfm from '@joplin/turndown-plugin-gfm';
 import type { Readability as TReadability } from '@mozilla/readability';
 import type * as ReadabilityMod from '@mozilla/readability';
-import type { HttpTransport } from '@n8n/backend-network';
-import type { FetchedPage } from '@n8n/instance-ai';
+import type { HttpTransport } from '@MNI/backend-network';
+import type { FetchedPage } from '@MNI/instance-ai';
 import type * as LinkedomMod from 'linkedom';
 import type { parseHTML as TParseHtml } from 'linkedom';
 import type TTurndownService from 'turndown';
@@ -97,7 +97,7 @@ export async function fetchAndExtract(
 		response = await customFetch(url, {
 			signal,
 			headers: {
-				'User-Agent': 'n8n-instance-ai/1.0 (content extraction)',
+				'User-Agent': 'MNI-instance-ai/1.0 (content extraction)',
 				Accept:
 					'text/html,application/xhtml+xml,application/xml;q=0.9,text/plain;q=0.8,application/pdf;q=0.7,*/*;q=0.5',
 			},

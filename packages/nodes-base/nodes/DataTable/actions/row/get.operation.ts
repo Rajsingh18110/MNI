@@ -5,7 +5,7 @@ import {
 	type IExecuteFunctions,
 	type INodeExecutionData,
 	type INodeProperties,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { ROWS_LIMIT_DEFAULT } from '../../common/constants';
 import { executeSelectMany, getSelectFields } from '../../common/selectMany';
@@ -56,11 +56,11 @@ export const description: INodeProperties[] = [
 		description: 'Whether to sort the results by a column',
 	},
 	{
-		// eslint-disable-next-line n8n-nodes-base/node-param-display-name-wrong-for-dynamic-options
+		// eslint-disable-next-line MNI-nodes-base/node-param-display-name-wrong-for-dynamic-options
 		displayName: 'Order By Column',
 		name: 'orderByColumn',
 		type: 'options',
-		// eslint-disable-next-line n8n-nodes-base/node-param-description-wrong-for-dynamic-options
+		// eslint-disable-next-line MNI-nodes-base/node-param-description-wrong-for-dynamic-options
 		description:
 			'Choose from the list, or specify using an <a href="https://docs.n8n.io/code/expressions/">expression</a>',
 		typeOptions: {

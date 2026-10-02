@@ -1,5 +1,5 @@
-import type { TaskList } from '@n8n/api-types';
-import type { Logger } from '@n8n/backend-common';
+import type { TaskList } from '@MNI/api-types';
+import type { Logger } from '@MNI/backend-common';
 import {
 	deriveWorkflowVerificationObligationFromOutcome,
 	orchestratorAgentId,
@@ -10,8 +10,8 @@ import {
 	type PlannedTaskRecord,
 	type WorkflowBuildOutcome,
 	type WorkflowVerificationObligation,
-} from '@n8n/instance-ai';
-import { getErrorMessage } from '@n8n/utils/errors/get-error-message';
+} from '@MNI/instance-ai';
+import { getErrorMessage } from '@MNI/utils/errors/get-error-message';
 
 import type { InProcessEventBus } from './event-bus/in-process-event-bus';
 import type { TypeORMAgentMemory } from './storage/typeorm-agent-memory';

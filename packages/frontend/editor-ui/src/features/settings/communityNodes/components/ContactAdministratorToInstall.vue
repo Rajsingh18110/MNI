@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { useUsersStore } from '@n8n/stores/users.store';
-import { N8nIcon, N8nText } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+import { useUsersStore } from '@MNI/stores/users.store';
+import { N8nIcon, N8nText } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 import { computed, onMounted, useCssModule } from 'vue';
 
 interface Props {

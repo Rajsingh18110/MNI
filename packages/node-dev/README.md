@@ -4,13 +4,13 @@
 
 > **This package is deprecated and no more updates will be published to npm**
 
-# n8n-node-dev
+# MNI-node-dev
 
 Currently very simple and not very sophisticated CLI which makes it easier
-to create credentials and nodes in TypeScript for n8n.
+to create credentials and nodes in TypeScript for MNI.
 
 ```
-npm install n8n-node-dev -g
+npm install MNI-node-dev -g
 ```
 
 ## Contents
@@ -26,7 +26,7 @@ npm install n8n-node-dev -g
 
 ## Usage
 
-The commandline tool can be started with `n8n-node-dev <COMMAND>`
+The commandline tool can be started with `MNI-node-dev <COMMAND>`
 
 ## Commands
 
@@ -35,7 +35,7 @@ The following commands exist:
 ### build
 
 Builds credentials and nodes in the current folder and copies them into the
-MNI custom extension folder (`~/.n8n/custom/`) unless destination path is
+MNI custom extension folder (`~/.MNI/custom/`) unless destination path is
 overwritten with `--destination <FOLDER_PATH>`
 
 When "--watch" gets set it starts in watch mode and automatically builds and
@@ -47,7 +47,7 @@ Creates new basic credentials or node of the selected type to have a first start
 
 ## Create a node
 
-The easiest way to create a new node is via the "n8n-node-dev" cli. It sets up
+The easiest way to create a new node is via the "MNI-node-dev" cli. It sets up
 all the basics.
 
 A MNI node is a JavaScript file (normally written in TypeScript) which describes
@@ -70,7 +70,7 @@ import {
 	INodeExecutionData,
 	INodeType,
 	INodeTypeDescription,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 
 export class MyNode implements INodeType {
@@ -219,4 +219,4 @@ All properties are optional. However, most only work when the node-property is o
 
 ## License
 
-You can find the license information [here](https://github.com/n8n-io/n8n/blob/master/README.md#license)
+You can find the license information [here](https://github.com/MNI-io/MNI/blob/master/README.md#license)

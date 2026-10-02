@@ -3,14 +3,14 @@ import type { IUpdateInformation } from '@/Interface';
 import InputTriple from '../InputTriple/InputTriple.vue';
 import ParameterInputFull from '../ParameterInputFull.vue';
 import ParameterIssues from '../ParameterIssues.vue';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import { DateTime } from 'luxon';
 import type {
 	FilterConditionValue,
 	FilterOptionsValue,
 	INodeProperties,
 	NodeParameterValue,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import { computed, nextTick, ref, watch } from 'vue';
 import { computedAsync, until } from '@vueuse/core';
 import OperatorSelect from './OperatorSelect.vue';
@@ -24,9 +24,9 @@ import {
 	resolveCondition,
 } from './utils';
 import type { ConditionResult } from './types';
-import { useDebounce } from '@n8n/composables/useDebounce';
+import { useDebounce } from '@MNI/composables/useDebounce';
 
-import { N8nIcon, N8nIconButton, N8nTooltip } from '@n8n/design-system';
+import { N8nIcon, N8nIconButton, N8nTooltip } from '@MNI/design-system';
 import { injectWorkflowDocumentStore } from '@/app/stores/workflowDocument.store';
 interface Props {
 	path: string;

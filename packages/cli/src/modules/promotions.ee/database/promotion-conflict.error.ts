@@ -1,4 +1,4 @@
-import { UserError } from 'n8n-workflow';
+import { UserError } from 'MNI-workflow';
 
 /** The duplicates a promotions write can hit. */
 export type PromotionConflictKind =

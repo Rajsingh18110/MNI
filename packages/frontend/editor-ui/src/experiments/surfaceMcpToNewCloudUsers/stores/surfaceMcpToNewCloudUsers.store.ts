@@ -1,9 +1,9 @@
-import { useTelemetry } from '@n8n/composables/useTelemetry';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
 import { SURFACE_MCP_TO_NEW_CLOUD_USERS_EXPERIMENT } from '@/app/constants/experiments';
 import { usePostHog } from '@/app/stores/posthog.store';
 import { getExperimentTelemetryPayload } from '@/experiments/utils';
-import { STORES } from '@n8n/stores';
-import type { ITelemetryTrackProperties } from 'n8n-workflow';
+import { STORES } from '@MNI/stores';
+import type { ITelemetryTrackProperties } from 'MNI-workflow';
 import { defineStore } from 'pinia';
 import { computed } from 'vue';
 import type { MCPOnboardingClient as SurfaceMcpOnboardingClient } from '../components/onboarding/types';

@@ -1,5 +1,5 @@
-import type { User } from '@n8n/db';
-import { ensureError } from '@n8n/utils/errors/ensure-error';
+import type { User } from '@MNI/db';
+import { ensureError } from '@MNI/utils/errors/ensure-error';
 import z from 'zod';
 
 import type { Telemetry } from '@/telemetry';

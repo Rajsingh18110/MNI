@@ -1,12 +1,12 @@
-import type { InstanceRegistration } from '@n8n/api-types';
-import type { Logger } from '@n8n/backend-common';
+import type { InstanceRegistration } from '@MNI/api-types';
+import type { Logger } from '@MNI/backend-common';
 import type {
 	ClusterCheckContext,
 	ClusterCheckMetadata,
 	ClusterCheckResult,
 	IClusterCheck,
-} from '@n8n/decorators';
-import { Container } from '@n8n/di';
+} from '@MNI/decorators';
+import { Container } from '@MNI/di';
 import type { MockInstance, Mocked } from 'vitest';
 import { mock } from 'vitest-mock-extended';
 

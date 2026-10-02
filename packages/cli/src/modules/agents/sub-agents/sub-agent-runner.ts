@@ -16,19 +16,19 @@ import {
 	type StreamResult,
 	type SubAgentTaskDifficulty,
 	type SubAgentTaskPath,
-} from '@n8n/agents';
+} from '@MNI/agents';
 import type {
 	ResolvedSubAgentSource,
 	RunnableAgentJsonConfig,
 	SubAgentSource,
 	SubAgentSpawnRequest,
-} from '@n8n/api-types';
-import { Logger } from '@n8n/backend-common';
-import { AiConfig } from '@n8n/config';
-import type { User } from '@n8n/db';
-import { Container, Service } from '@n8n/di';
-import { isRecord } from '@n8n/utils/is-record';
-import { UserError } from 'n8n-workflow';
+} from '@MNI/api-types';
+import { Logger } from '@MNI/backend-common';
+import { AiConfig } from '@MNI/config';
+import type { User } from '@MNI/db';
+import { Container, Service } from '@MNI/di';
+import { isRecord } from '@MNI/utils/is-record';
+import { UserError } from 'MNI-workflow';
 import { v4 as uuid } from 'uuid';
 
 import type { AgentRunTelemetryType } from '@/interfaces';
@@ -47,7 +47,7 @@ import {
 import type { AgentSandboxRuntime } from '../agent-sandbox-runtime.service';
 import { buildAgentConfigurationTelemetryFromConfig } from '../agent-telemetry';
 import type { ExecutionRecorder, MessageRecord } from '../execution-recorder';
-import { N8NCheckpointStorage } from '../integrations/n8n-checkpoint-storage';
+import { N8NCheckpointStorage } from '../integrations/MNI-checkpoint-storage';
 import { buildProviderToolsForModel } from '../json-config/from-json-config';
 import { modelStreamStallOptions } from '../model-stream-stall-options';
 import type { WorkflowToolExecutionMode } from '../tools/workflow-tool-factory';

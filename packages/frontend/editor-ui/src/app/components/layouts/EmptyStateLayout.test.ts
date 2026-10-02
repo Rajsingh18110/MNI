@@ -2,14 +2,14 @@ import { createComponentRenderer } from '@/__tests__/render';
 import { mockedStore } from '@/__tests__/utils';
 import EmptyStateLayout from './EmptyStateLayout.vue';
 import { createTestingPinia } from '@pinia/testing';
-import { useUsersStore } from '@n8n/stores/users.store';
+import { useUsersStore } from '@MNI/stores/users.store';
 import { useProjectsStore } from '@/features/collaboration/projects/projects.store';
 import { useSourceControlStore } from '@/features/integrations/sourceControl.ee/sourceControl.store';
 import { useReadyToRunStore } from '@/features/workflows/readyToRun/stores/readyToRun.store';
 import { useBannersStore } from '@/features/shared/banners/banners.store';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import userEvent from '@testing-library/user-event';
-import type { IUser } from '@n8n/rest-api-client/api/users';
+import type { IUser } from '@MNI/rest-api-client/api/users';
 
 const surfaceMcpEmptyState = vi.hoisted(() => ({
 	showTile: false,

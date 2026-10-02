@@ -5,7 +5,7 @@
 			"parameters": {},
 			"id": "e539c1c7-e5f2-4e38-9f2f-77ecb958d1d1",
 			"name": "When clicking \"Execute Workflow\"",
-			"type": "n8n-nodes-base.manualTrigger",
+			"type": "MNI-nodes-base.manualTrigger",
 			"typeVersion": 1,
 			"position": [0, 0]
 		},
@@ -15,7 +15,7 @@
 			},
 			"id": "c7a61fc7-46d5-4b3f-b7c0-0d38ac53ef57",
 			"name": "Code",
-			"type": "n8n-nodes-testing.testData",
+			"type": "MNI-nodes-testing.testData",
 			"typeVersion": 1,
 			"position": [220, 0]
 		},
@@ -41,7 +41,7 @@
 			},
 			"id": "948b6a9b-4f6c-4dbe-a21b-13c3fc3dbe59",
 			"name": "Switch",
-			"type": "n8n-nodes-base.switch",
+			"type": "MNI-nodes-base.switch",
 			"typeVersion": 1,
 			"position": [440, 0]
 		},
@@ -49,7 +49,7 @@
 			"parameters": {},
 			"id": "f7fb1f31-d11f-4204-b9d7-cb2ae1fb15d6",
 			"name": "Regex Match",
-			"type": "n8n-nodes-base.noOp",
+			"type": "MNI-nodes-base.noOp",
 			"typeVersion": 1,
 			"position": [660, -100]
 		},
@@ -57,7 +57,7 @@
 			"parameters": {},
 			"id": "d6203921-0664-44b5-9889-b87d51529a77",
 			"name": "Regex Not Match",
-			"type": "n8n-nodes-base.noOp",
+			"type": "MNI-nodes-base.noOp",
 			"typeVersion": 1,
 			"position": [660, 100]
 		}

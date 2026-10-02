@@ -1,4 +1,4 @@
-import type { IExecuteSingleFunctions, IHttpRequestOptions } from 'n8n-workflow';
+import type { IExecuteSingleFunctions, IHttpRequestOptions } from 'MNI-workflow';
 import type { Mock } from 'vitest';
 
 import { opportunityUpdatePreSendAction, taskUpdatePreSendAction } from '../GenericFunctions';

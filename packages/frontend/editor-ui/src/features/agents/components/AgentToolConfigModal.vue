@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { N8nButton, N8nIcon } from '@n8n/design-system';
-import { useI18n, type BaseTextKey } from '@n8n/i18n';
+import { N8nButton, N8nIcon } from '@MNI/design-system';
+import { useI18n, type BaseTextKey } from '@MNI/i18n';
 import { computed, ref } from 'vue';
 
 import { useUIStore } from '@/app/stores/ui.store';

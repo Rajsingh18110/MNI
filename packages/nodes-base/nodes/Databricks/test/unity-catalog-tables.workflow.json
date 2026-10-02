@@ -3,7 +3,7 @@
 	"nodes": [
 		{
 			"parameters": {},
-			"type": "n8n-nodes-base.manualTrigger",
+			"type": "MNI-nodes-base.manualTrigger",
 			"typeVersion": 1,
 			"position": [0, 0],
 			"id": "trigger-001",
@@ -22,7 +22,7 @@
 					"value": "default"
 				}
 			},
-			"type": "n8n-nodes-base.databricks",
+			"type": "MNI-nodes-base.databricks",
 			"typeVersion": 1,
 			"position": [220, -300],
 			"id": "uc-list-tables-001",
@@ -51,7 +51,7 @@
 					"value": "main.default.my_table"
 				}
 			},
-			"type": "n8n-nodes-base.databricks",
+			"type": "MNI-nodes-base.databricks",
 			"typeVersion": 1,
 			"position": [220, -100],
 			"id": "uc-get-table-001",
@@ -79,7 +79,7 @@
 				"storageLocation": "s3://my-bucket/main/default/new_table",
 				"tableAdditionalFields": {}
 			},
-			"type": "n8n-nodes-base.databricks",
+			"type": "MNI-nodes-base.databricks",
 			"typeVersion": 1,
 			"position": [220, 100],
 			"id": "uc-create-table-001",
@@ -108,7 +108,7 @@
 					"value": "main.default.old_table"
 				}
 			},
-			"type": "n8n-nodes-base.databricks",
+			"type": "MNI-nodes-base.databricks",
 			"typeVersion": 1,
 			"position": [220, 300],
 			"id": "uc-delete-table-001",

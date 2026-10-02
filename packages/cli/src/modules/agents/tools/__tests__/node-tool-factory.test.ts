@@ -1,5 +1,5 @@
-import type { AgentJsonToolConfig } from '@n8n/api-types';
-import { Container } from '@n8n/di';
+import type { AgentJsonToolConfig } from '@MNI/api-types';
+import { Container } from '@MNI/di';
 import { z } from 'zod';
 
 import type { EphemeralNodeExecutor } from '@/node-execution';
@@ -22,7 +22,7 @@ const baseToolSchema = {
 	type: 'node' as const,
 	name: 'Google Drive',
 	node: {
-		nodeType: 'n8n-nodes-base.googleDriveTool',
+		nodeType: 'MNI-nodes-base.googleDriveTool',
 		nodeTypeVersion: 1,
 		nodeParameters: {},
 	},
@@ -62,7 +62,7 @@ describe('resolveNodeTool → tool name sanitization', () => {
 			{
 				...baseToolSchema,
 				node: {
-					nodeType: 'n8n-nodes-base.httpRequest',
+					nodeType: 'MNI-nodes-base.httpRequest',
 					nodeTypeVersion: 4,
 					nodeParameters: {},
 				},
@@ -75,9 +75,9 @@ describe('resolveNodeTool → tool name sanitization', () => {
 
 		await tool.handler!({ url: 'https://example.com' }, {} as never);
 
-		expect(getByNameAndVersion).toHaveBeenCalledWith('n8n-nodes-base.httpRequestTool', 4);
+		expect(getByNameAndVersion).toHaveBeenCalledWith('MNI-nodes-base.httpRequestTool', 4);
 		expect(executeInline).toHaveBeenCalledWith(
-			expect.objectContaining({ nodeType: 'n8n-nodes-base.httpRequestTool' }),
+			expect.objectContaining({ nodeType: 'MNI-nodes-base.httpRequestTool' }),
 		);
 	});
 
@@ -88,7 +88,7 @@ describe('resolveNodeTool → tool name sanitization', () => {
 				node: {
 					...baseToolSchema.node,
 					nodeParameters: {
-						url: "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('url', 'The URL to request', 'string') }}",
+						url: "={{ /*MNI-auto-generated-fromAI-override*/ $fromAI('url', 'The URL to request', 'string') }}",
 					},
 				},
 			},
@@ -144,7 +144,7 @@ describe('resolveNodeTool → tool name sanitization', () => {
 			{
 				...baseToolSchema,
 				node: {
-					nodeType: '@n8n/n8n-nodes-langchain.toolWikipedia',
+					nodeType: '@MNI/MNI-nodes-langchain.toolWikipedia',
 					nodeTypeVersion: 1,
 					nodeParameters: {},
 				},
@@ -174,7 +174,7 @@ describe('resolveNodeTool → tool name sanitization', () => {
 				...baseToolSchema,
 				description: 'Use this to think',
 				node: {
-					nodeType: '@n8n/n8n-nodes-langchain.toolThink',
+					nodeType: '@MNI/MNI-nodes-langchain.toolThink',
 					nodeTypeVersion: 1.1,
 					nodeParameters: {},
 				},

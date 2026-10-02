@@ -7,7 +7,7 @@ import {
 	type INodeTypeDescription,
 	toPathSegment,
 	NodeConnectionTypes,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import {
 	databaseUrlExtractionRegexp,

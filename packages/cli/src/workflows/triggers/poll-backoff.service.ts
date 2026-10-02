@@ -1,9 +1,9 @@
-import { Logger } from '@n8n/backend-common';
-import { SchedulerConfig, WorkflowsConfig } from '@n8n/config';
-import type { PollerFailureState, PollerFullState } from '@n8n/db';
-import { PollerStateRepository } from '@n8n/db';
-import { Service } from '@n8n/di';
-import { ErrorReporter } from 'n8n-core';
+import { Logger } from '@MNI/backend-common';
+import { SchedulerConfig, WorkflowsConfig } from '@MNI/config';
+import type { PollerFailureState, PollerFullState } from '@MNI/db';
+import { PollerStateRepository } from '@MNI/db';
+import { Service } from '@MNI/di';
+import { ErrorReporter } from 'MNI-core';
 
 import { isDurablePollerChainEnabled } from '@/scheduling/poll-trigger-node/durable-poller-chain';
 import {

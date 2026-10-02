@@ -1,4 +1,4 @@
-import { OperationalError } from 'n8n-workflow';
+import { OperationalError } from 'MNI-workflow';
 
 export class ExecutionAlreadyResumingError extends OperationalError {
 	constructor(executionId: string) {

@@ -1,18 +1,18 @@
 // Manual mocks — must be declared before any imports that touch the mocked modules.
-vi.mock('@n8n/agents', async (importOriginal) => ({
-	...(await importOriginal<typeof import('@n8n/agents')>()),
+vi.mock('@MNI/agents', async (importOriginal) => ({
+	...(await importOriginal<typeof import('@MNI/agents')>()),
 	createScopedWorkspace: vi.fn((workspace: unknown) => workspace),
 }));
 
-vi.mock('@n8n/agents/sandbox', async (importOriginal) => ({
-	...(await importOriginal<typeof import('@n8n/agents/sandbox')>()),
+vi.mock('@MNI/agents/sandbox', async (importOriginal) => ({
+	...(await importOriginal<typeof import('@MNI/agents/sandbox')>()),
 	getPromptWorkspaceRoot: vi.fn(() => '/home/daytona/workspace'),
 	getWorkspaceRoot: vi.fn(async () => '/home/daytona/workspace'),
 }));
 
-vi.mock('@n8n/instance-ai', async () => {
+vi.mock('@MNI/instance-ai', async () => {
 	const { z } = await vi.importActual<typeof import('zod')>('zod');
-	const profiles = await vi.importActual<typeof import('@n8n/instance-ai')>('@n8n/instance-ai');
+	const profiles = await vi.importActual<typeof import('@MNI/instance-ai')>('@MNI/instance-ai');
 	return {
 		resolvePromptProfile: profiles.resolvePromptProfile,
 		assertInstanceAiPromptVersion: profiles.assertInstanceAiPromptVersion,
@@ -246,19 +246,19 @@ import type {
 	MemoryTaskUsageReport,
 	ScopedMemoryTaskEvent,
 	SerializableAgentState,
-} from '@n8n/agents';
+} from '@MNI/agents';
 import type {
 	AiPreferencesAppliedPayload,
 	InstanceAiEvent,
 	InstanceContextInjection,
 	InstanceContextSurface,
-} from '@n8n/api-types';
-import type { InstanceAiHandoffContext } from '@n8n/api-types';
-import { ModuleRegistry } from '@n8n/backend-common';
-import type { InstanceAiConfig } from '@n8n/config';
-import type { User } from '@n8n/db';
-import { Container } from '@n8n/di';
-import { TELEMETRY_EVENT } from '@n8n/telemetry';
+} from '@MNI/api-types';
+import type { InstanceAiHandoffContext } from '@MNI/api-types';
+import { ModuleRegistry } from '@MNI/backend-common';
+import type { InstanceAiConfig } from '@MNI/config';
+import type { User } from '@MNI/db';
+import { Container } from '@MNI/di';
+import { TELEMETRY_EVENT } from '@MNI/telemetry';
 import {
 	createLazyRuntimeWorkspace,
 	createLazyWorkspaceRuntimeSkillSource,
@@ -282,9 +282,9 @@ import {
 	type ModelConfig,
 	type TraceStatus,
 	type WorkflowVerificationObligation,
-} from '@n8n/instance-ai';
-import type { ErrorReporter } from 'n8n-core';
-import { UserError } from 'n8n-workflow';
+} from '@MNI/instance-ai';
+import type { ErrorReporter } from 'MNI-core';
+import { UserError } from 'MNI-workflow';
 import type { Mock, MockedFunction } from 'vitest';
 
 import { InstanceAiBuilderDelegateAdapterService } from '@/modules/agents/instance-ai-builder-delegate.adapter';
@@ -921,7 +921,7 @@ describe('InstanceAiService — runtime workspace setup', () => {
 			getAdminSettings: vi.fn(() => ({ localGatewayDisabled: false, sandboxEnabled: true })),
 			getSandboxStatus: vi.fn(() => ({
 				enabled: true,
-				provider: 'n8n-sandbox',
+				provider: 'MNI-sandbox',
 				workflowBuilderAvailable: true,
 				unavailableReason: null,
 			})),
@@ -1146,7 +1146,7 @@ describe('InstanceAiService — runtime workspace setup', () => {
 				id: 'instance-ai-thread-thread-1',
 				name: 'instance-ai-thread-thread-1',
 				labels: expect.objectContaining({
-					'n8n-builder': 'instance-ai-thread-thread-1',
+					'MNI-builder': 'instance-ai-thread-thread-1',
 					thread_id: 'thread-1',
 				}),
 			}),
@@ -1164,9 +1164,9 @@ describe('InstanceAiService — runtime workspace setup', () => {
 		(loadInstanceAiPromptSkills as Mock).mockClear();
 		service.settingsService.getSandboxStatus.mockReturnValue({
 			enabled: true,
-			provider: 'n8n-sandbox',
+			provider: 'MNI-sandbox',
 			workflowBuilderAvailable: false,
-			unavailableReason: 'N8N_SANDBOX_SERVICE_URL is required.',
+			unavailableReason: 'MNI_SANDBOX_SERVICE_URL is required.',
 		});
 
 		const unavailableEnvironment = await service.createExecutionEnvironment(
@@ -1287,7 +1287,7 @@ describe('InstanceAiService — runtime workspace setup', () => {
 			getAdminSettings: vi.fn(() => ({ localGatewayDisabled: false, sandboxEnabled: true })),
 			getSandboxStatus: vi.fn(() => ({
 				enabled: true,
-				provider: 'n8n-sandbox',
+				provider: 'MNI-sandbox',
 				workflowBuilderAvailable: true,
 				unavailableReason: null,
 			})),

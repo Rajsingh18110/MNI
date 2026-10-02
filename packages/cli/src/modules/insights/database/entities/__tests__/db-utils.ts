@@ -1,8 +1,8 @@
-import type { WorkflowEntity } from '@n8n/db';
-import { SharedWorkflowRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
+import type { WorkflowEntity } from '@MNI/db';
+import { SharedWorkflowRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
 import type { DateTime } from 'luxon';
-import type { IWorkflowBase } from 'n8n-workflow';
+import type { IWorkflowBase } from 'MNI-workflow';
 
 import { InsightsByPeriodRepository } from '../../repositories/insights-by-period.repository';
 import { InsightsMetadataRepository } from '../../repositories/insights-metadata.repository';

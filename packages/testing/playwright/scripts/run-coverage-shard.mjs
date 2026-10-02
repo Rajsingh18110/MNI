@@ -43,7 +43,7 @@ try {
 	execFileSync('docker', ['rm', cid], { stdio: 'ignore' });
 	sh('pnpm', ['coverage:emit-shard'], {
 		IMAGE_DIST_ROOT: `${process.cwd()}/img-dist`,
-		N8N_COVERAGE_DIR: `${process.cwd()}/coverage/.backend-v8`,
+		MNI_COVERAGE_DIR: `${process.cwd()}/coverage/.backend-v8`,
 		// monocart's generate() is memory-hungry; containers are stopped, RAM is free.
 		NODE_OPTIONS: '--max-old-space-size=12288',
 	});

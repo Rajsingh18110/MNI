@@ -1,8 +1,8 @@
 import { useRouter } from 'vue-router';
-import { TELEMETRY_EVENT, type InferTelemetryProps } from '@n8n/telemetry';
-import { useToast } from '@n8n/composables/useToast';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
-import { useI18n } from '@n8n/i18n';
+import { TELEMETRY_EVENT, type InferTelemetryProps } from '@MNI/telemetry';
+import { useToast } from '@MNI/composables/useToast';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
+import { useI18n } from '@MNI/i18n';
 import { useInstanceAiStore } from '../instanceAi.store';
 import { useInstanceAiHandoff, stashPendingDraftAttachment } from './useInstanceAiHandoff';
 import { useIsNodeContextEnabled } from './useIsNodeContextEnabled';

@@ -8,9 +8,9 @@ import {
 	N8nDialogFooter,
 	N8nDialogTitle,
 	N8nIcon,
-} from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
-import type { PromotionBindingConsumer } from '@n8n/api-types';
+} from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
+import type { PromotionBindingConsumer } from '@MNI/api-types';
 import { usePromotionBindings } from '../composables/usePromotionBindings';
 import type {
 	AppliedResult,

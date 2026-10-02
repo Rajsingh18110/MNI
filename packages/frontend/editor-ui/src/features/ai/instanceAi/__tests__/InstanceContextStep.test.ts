@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import type { InstanceAiTimelineEntry } from '@n8n/api-types';
+import type { InstanceAiTimelineEntry } from '@MNI/api-types';
 import { createComponentRenderer } from '@/__tests__/render';
 import InstanceContextStep from '../components/InstanceContextStep.vue';
 

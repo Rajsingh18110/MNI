@@ -3,11 +3,11 @@ vi.mock('../npm-utils', async () => ({
 	executeNpmCommand: vi.fn(),
 }));
 
-import { Logger } from '@n8n/backend-common';
-import { mockInstance } from '@n8n/backend-test-utils';
-import { Container } from '@n8n/di';
-import { InstanceSettings } from 'n8n-core';
-import { N8N_NODES_API_VERSION } from 'n8n-workflow';
+import { Logger } from '@MNI/backend-common';
+import { mockInstance } from '@MNI/backend-test-utils';
+import { Container } from '@MNI/di';
+import { InstanceSettings } from 'MNI-core';
+import { MNI_NODES_API_VERSION } from 'MNI-workflow';
 import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import path from 'path';
@@ -285,7 +285,7 @@ describe('node API compatibility at startup', () => {
 	};
 
 	beforeEach(() => {
-		downloadDir = mkdtempSync(path.join(tmpdir(), 'n8n-community-packages-'));
+		downloadDir = mkdtempSync(path.join(tmpdir(), 'MNI-community-packages-'));
 		nodeModulesDir = path.join(downloadDir, 'node_modules');
 		mkdirSync(nodeModulesDir);
 	});
@@ -295,11 +295,11 @@ describe('node API compatibility at startup', () => {
 	});
 
 	test('boots with an incompatible package on disk and registers no loader for it', async () => {
-		writePackage('n8n-nodes-future', {
+		writePackage('MNI-nodes-future', {
 			nodes: ['dist/nodes/Future.node.js'],
-			n8nNodesApiVersion: N8N_NODES_API_VERSION + 1,
+			n8nNodesApiVersion: MNI_NODES_API_VERSION + 1,
 		});
-		writePackage('n8n-nodes-good');
+		writePackage('MNI-nodes-good');
 
 		const originalSettings = Container.get(InstanceSettings);
 		mockInstance(InstanceSettings, { nodesDownloadDir: downloadDir });
@@ -308,15 +308,15 @@ describe('node API compatibility at startup', () => {
 
 		Container.set(InstanceSettings, originalSettings);
 
-		expect(loaders.map((loader) => loader.packageName)).toEqual(['n8n-nodes-good']);
+		expect(loaders.map((loader) => loader.packageName)).toEqual(['MNI-nodes-good']);
 		expect(Container.get(Logger).warn).toHaveBeenCalledWith(
-			expect.stringContaining('n8n-nodes-future'),
+			expect.stringContaining('MNI-nodes-future'),
 		);
 	});
 
 	test('registers loaders for compatible and legacy packages on disk', async () => {
-		writePackage('n8n-nodes-explicit', { n8nNodesApiVersion: N8N_NODES_API_VERSION });
-		writePackage('n8n-nodes-legacy');
+		writePackage('MNI-nodes-explicit', { n8nNodesApiVersion: MNI_NODES_API_VERSION });
+		writePackage('MNI-nodes-legacy');
 
 		const originalSettings = Container.get(InstanceSettings);
 		mockInstance(InstanceSettings, { nodesDownloadDir: downloadDir });
@@ -326,8 +326,8 @@ describe('node API compatibility at startup', () => {
 		Container.set(InstanceSettings, originalSettings);
 
 		expect(loaders.map((loader) => loader.packageName).sort()).toEqual([
-			'n8n-nodes-explicit',
-			'n8n-nodes-legacy',
+			'MNI-nodes-explicit',
+			'MNI-nodes-legacy',
 		]);
 	});
 });

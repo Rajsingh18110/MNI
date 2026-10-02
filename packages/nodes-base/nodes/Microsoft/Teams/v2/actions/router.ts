@@ -5,7 +5,7 @@ import {
 	type JsonObject,
 	NodeOperationError,
 	SEND_AND_WAIT_OPERATION,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import * as activityNotification from './activityNotification';
 import * as channel from './channel';

@@ -1,5 +1,5 @@
-import type { CreateAgentEvalRatingPayload } from '@n8n/api-types';
-import type { Logger, ModuleRegistry } from '@n8n/backend-common';
+import type { CreateAgentEvalRatingPayload } from '@MNI/api-types';
+import type { Logger, ModuleRegistry } from '@MNI/backend-common';
 import type {
 	AgentEvalRating,
 	AgentEvalRatingRepository,
@@ -8,7 +8,7 @@ import type {
 	AgentEvalRun,
 	AgentEvalRunRepository,
 	User,
-} from '@n8n/db';
+} from '@MNI/db';
 import type { Mocked } from 'vitest';
 import { mock } from 'vitest-mock-extended';
 

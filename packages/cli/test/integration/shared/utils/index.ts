@@ -1,7 +1,7 @@
-import type { Logger } from '@n8n/backend-common';
-import { mockInstance } from '@n8n/backend-test-utils';
-import { WorkflowEntity } from '@n8n/db';
-import { Container } from '@n8n/di';
+import type { Logger } from '@MNI/backend-common';
+import { mockInstance } from '@MNI/backend-test-utils';
+import { WorkflowEntity } from '@MNI/db';
+import { Container } from '@MNI/di';
 import {
 	BinaryDataConfig,
 	BinaryDataService,
@@ -9,19 +9,19 @@ import {
 	UnrecognizedNodeTypeError,
 	type DirectoryLoader,
 	type ErrorReporter,
-} from 'n8n-core';
-import { Ftp } from 'n8n-nodes-base/credentials/Ftp.credentials';
-import { GithubApi } from 'n8n-nodes-base/credentials/GithubApi.credentials';
-import { HttpBasicAuth } from 'n8n-nodes-base/credentials/HttpBasicAuth.credentials';
-import { HttpHeaderAuth } from 'n8n-nodes-base/credentials/HttpHeaderAuth.credentials';
-import { OpenAiApi } from 'n8n-nodes-base/credentials/OpenAiApi.credentials';
-import { Cron } from 'n8n-nodes-base/nodes/Cron/Cron.node';
-import { FormTrigger } from 'n8n-nodes-base/nodes/Form/FormTrigger.node';
-import { ManualTrigger } from 'n8n-nodes-base/nodes/ManualTrigger/ManualTrigger.node';
-import { ScheduleTrigger } from 'n8n-nodes-base/nodes/Schedule/ScheduleTrigger.node';
-import { Set } from 'n8n-nodes-base/nodes/Set/Set.node';
-import { Webhook as WebhookNode } from 'n8n-nodes-base/nodes/Webhook/Webhook.node';
-import type { INodeProperties, INodeType, INodeTypeData, INode } from 'n8n-workflow';
+} from 'MNI-core';
+import { Ftp } from 'MNI-nodes-base/credentials/Ftp.credentials';
+import { GithubApi } from 'MNI-nodes-base/credentials/GithubApi.credentials';
+import { HttpBasicAuth } from 'MNI-nodes-base/credentials/HttpBasicAuth.credentials';
+import { HttpHeaderAuth } from 'MNI-nodes-base/credentials/HttpHeaderAuth.credentials';
+import { OpenAiApi } from 'MNI-nodes-base/credentials/OpenAiApi.credentials';
+import { Cron } from 'MNI-nodes-base/nodes/Cron/Cron.node';
+import { FormTrigger } from 'MNI-nodes-base/nodes/Form/FormTrigger.node';
+import { ManualTrigger } from 'MNI-nodes-base/nodes/ManualTrigger/ManualTrigger.node';
+import { ScheduleTrigger } from 'MNI-nodes-base/nodes/Schedule/ScheduleTrigger.node';
+import { Set } from 'MNI-nodes-base/nodes/Set/Set.node';
+import { Webhook as WebhookNode } from 'MNI-nodes-base/nodes/Webhook/Webhook.node';
+import type { INodeProperties, INodeType, INodeTypeData, INode } from 'MNI-workflow';
 import type request from 'supertest';
 import { v4 as uuid } from 'uuid';
 import { mock } from 'vitest-mock-extended';
@@ -43,7 +43,7 @@ export async function initActiveWorkflowManager() {
 	mockInstance(BinaryDataConfig);
 	mockInstance(InstanceSettings, {
 		isMultiMain: false,
-		n8nFolder: '/tmp/n8n-test',
+		n8nFolder: '/tmp/MNI-test',
 	});
 
 	mockInstance(Push);
@@ -113,38 +113,38 @@ function minimalNodeType(name: string, properties: INodeProperties[] = []): INod
 function buildDefaultNodes(): INodeTypeData {
 	ScheduleTrigger.prototype.trigger = async () => ({});
 	return {
-		'n8n-nodes-base.manualTrigger': {
+		'MNI-nodes-base.manualTrigger': {
 			type: new ManualTrigger(),
 			sourcePath: '',
 		},
-		'n8n-nodes-base.cron': {
+		'MNI-nodes-base.cron': {
 			type: new Cron(),
 			sourcePath: '',
 		},
-		'n8n-nodes-base.set': {
+		'MNI-nodes-base.set': {
 			type: new Set(),
 			sourcePath: '',
 		},
-		'n8n-nodes-base.scheduleTrigger': {
+		'MNI-nodes-base.scheduleTrigger': {
 			type: new ScheduleTrigger(),
 			sourcePath: '',
 		},
-		'n8n-nodes-base.formTrigger': {
+		'MNI-nodes-base.formTrigger': {
 			type: new FormTrigger(),
 			sourcePath: '',
 		},
-		'n8n-nodes-base.webhook': {
+		'MNI-nodes-base.webhook': {
 			// The real node: publishing resolves a webhook node's parameters against its
 			// description, which a mock-wrapped description does not survive.
 			type: new WebhookNode() as unknown as INodeType,
 			sourcePath: '',
 		},
 		// Minimal mocks for node types the package-import fixtures reference at typeVersion 1.
-		'n8n-nodes-base.httpRequest': minimalNodeType('n8n-nodes-base.httpRequest'),
-		'n8n-nodes-base.dataTable': minimalNodeType('n8n-nodes-base.dataTable'),
+		'MNI-nodes-base.httpRequest': minimalNodeType('MNI-nodes-base.httpRequest'),
+		'MNI-nodes-base.dataTable': minimalNodeType('MNI-nodes-base.dataTable'),
 		// `workflowId` is declared so the sub-workflow reference survives parameter resolution —
 		// publishing validates it, and a dropped parameter silently skips that check.
-		'n8n-nodes-base.executeWorkflow': minimalNodeType('n8n-nodes-base.executeWorkflow', [
+		'MNI-nodes-base.executeWorkflow': minimalNodeType('MNI-nodes-base.executeWorkflow', [
 			{ displayName: 'Workflow', name: 'workflowId', type: 'workflowSelector', default: '' },
 		]),
 	};
@@ -162,8 +162,8 @@ export async function initNodeTypes(customNodes?: INodeTypeData) {
 	const nodes = customNodes ?? buildDefaultNodes();
 	const loader = mock<DirectoryLoader>();
 	loader.getNode.mockImplementation((nodeType) => {
-		const node = nodes[`n8n-nodes-base.${nodeType}`];
-		if (!node) throw new UnrecognizedNodeTypeError('n8n-nodes-base', nodeType);
+		const node = nodes[`MNI-nodes-base.${nodeType}`];
+		if (!node) throw new UnrecognizedNodeTypeError('MNI-nodes-base', nodeType);
 		return node;
 	});
 
@@ -174,7 +174,7 @@ export async function initNodeTypes(customNodes?: INodeTypeData) {
 	Object.assign(loader, { known: { nodes: {}, credentials: {} } });
 
 	const loadNodesAndCredentials = Container.get(LoadNodesAndCredentials);
-	loadNodesAndCredentials.loaders = { 'n8n-nodes-base': loader };
+	loadNodesAndCredentials.loaders = { 'MNI-nodes-base': loader };
 	loadNodesAndCredentials.loaded.nodes = nodes;
 }
 
@@ -233,7 +233,7 @@ export function makeWorkflow(options?: {
 	const node: INode = {
 		id: uuid(),
 		name: 'Cron',
-		type: 'n8n-nodes-base.cron',
+		type: 'MNI-nodes-base.cron',
 		parameters: {},
 		typeVersion: 1,
 		position: [740, 240],

@@ -1,5 +1,5 @@
-import type { InstanceRegistration, PushMessage } from '@n8n/api-types';
-import { Logger } from '@n8n/backend-common';
+import type { InstanceRegistration, PushMessage } from '@MNI/api-types';
+import { Logger } from '@MNI/backend-common';
 import type {
 	ClusterCheckAuditEvent,
 	ClusterCheckContext,
@@ -8,9 +8,9 @@ import type {
 	ClusterCheckWarning,
 	ClusterStateDiff,
 	IClusterCheck,
-} from '@n8n/decorators';
-import { ClusterCheckMetadata } from '@n8n/decorators';
-import { Container, Service } from '@n8n/di';
+} from '@MNI/decorators';
+import { ClusterCheckMetadata } from '@MNI/decorators';
+import { Container, Service } from '@MNI/di';
 
 import type { EventNamesAuditType } from '@/eventbus/event-message-classes';
 import type { EventPayloadAudit } from '@/eventbus/event-message-classes/event-message-audit';

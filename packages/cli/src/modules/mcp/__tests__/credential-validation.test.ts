@@ -1,5 +1,5 @@
-import type { User } from '@n8n/db';
-import type { INode, INodeTypeDescription, INodeCredentialDescription } from 'n8n-workflow';
+import type { User } from '@MNI/db';
+import type { INode, INodeTypeDescription, INodeCredentialDescription } from 'MNI-workflow';
 
 import { validateWorkflowCredentialReferences } from '../tools/workflow-builder/credential-validation';
 
@@ -14,7 +14,7 @@ function makeNode(overrides: Partial<INode> = {}): INode {
 	return {
 		id: 'node-1',
 		name: 'Slack',
-		type: 'n8n-nodes-base.slack',
+		type: 'MNI-nodes-base.slack',
 		typeVersion: 1,
 		position: [0, 0],
 		parameters: {},
@@ -28,7 +28,7 @@ function makeNodeTypeDescription(
 	const credentials: INodeCredentialDescription[] = [{ name: 'slackApi', required: true }];
 	return {
 		displayName: 'Slack',
-		name: 'n8n-nodes-base.slack',
+		name: 'MNI-nodes-base.slack',
 		group: ['transform'],
 		version: 1,
 		description: '',
@@ -72,7 +72,7 @@ function createMocks({
 describe('validateWorkflowCredentialReferences', () => {
 	test('passes when no node has a credential reference', async () => {
 		const { credentialsService, nodeTypes } = createMocks({
-			nodeTypeDescriptions: new Map([['n8n-nodes-base.slack', makeNodeTypeDescription()]]),
+			nodeTypeDescriptions: new Map([['MNI-nodes-base.slack', makeNodeTypeDescription()]]),
 		});
 
 		const result = await validateWorkflowCredentialReferences(
@@ -91,7 +91,7 @@ describe('validateWorkflowCredentialReferences', () => {
 	test('passes when the credential is reachable from the project', async () => {
 		const { credentialsService, nodeTypes } = createMocks({
 			usableCredentials: [{ id: 'cred-1', name: 'My Slack', type: 'slackApi' }],
-			nodeTypeDescriptions: new Map([['n8n-nodes-base.slack', makeNodeTypeDescription()]]),
+			nodeTypeDescriptions: new Map([['MNI-nodes-base.slack', makeNodeTypeDescription()]]),
 		});
 
 		const result = await validateWorkflowCredentialReferences(
@@ -112,7 +112,7 @@ describe('validateWorkflowCredentialReferences', () => {
 		const { credentialsService, nodeTypes } = createMocks({
 			usableCredentials: [],
 			getOneImpl: async (id) => ({ id, name: 'Other Project Slack', type: 'slackApi' }),
-			nodeTypeDescriptions: new Map([['n8n-nodes-base.slack', makeNodeTypeDescription()]]),
+			nodeTypeDescriptions: new Map([['MNI-nodes-base.slack', makeNodeTypeDescription()]]),
 		});
 
 		const result = await validateWorkflowCredentialReferences(
@@ -137,7 +137,7 @@ describe('validateWorkflowCredentialReferences', () => {
 	test('fails for a credential that cannot be found at all', async () => {
 		const { credentialsService, nodeTypes } = createMocks({
 			usableCredentials: [],
-			nodeTypeDescriptions: new Map([['n8n-nodes-base.slack', makeNodeTypeDescription()]]),
+			nodeTypeDescriptions: new Map([['MNI-nodes-base.slack', makeNodeTypeDescription()]]),
 		});
 
 		const result = await validateWorkflowCredentialReferences(
@@ -156,7 +156,7 @@ describe('validateWorkflowCredentialReferences', () => {
 	test('fails when the usable credential has a mismatched type', async () => {
 		const { credentialsService, nodeTypes } = createMocks({
 			usableCredentials: [{ id: 'cred-1', name: 'Wrong', type: 'discordApi' }],
-			nodeTypeDescriptions: new Map([['n8n-nodes-base.slack', makeNodeTypeDescription()]]),
+			nodeTypeDescriptions: new Map([['MNI-nodes-base.slack', makeNodeTypeDescription()]]),
 		});
 
 		const result = await validateWorkflowCredentialReferences(
@@ -175,7 +175,7 @@ describe('validateWorkflowCredentialReferences', () => {
 	test('skips disabled nodes', async () => {
 		const { credentialsService, nodeTypes } = createMocks({
 			usableCredentials: [],
-			nodeTypeDescriptions: new Map([['n8n-nodes-base.slack', makeNodeTypeDescription()]]),
+			nodeTypeDescriptions: new Map([['MNI-nodes-base.slack', makeNodeTypeDescription()]]),
 		});
 
 		const result = await validateWorkflowCredentialReferences(
@@ -200,7 +200,7 @@ describe('validateWorkflowCredentialReferences', () => {
 			usableCredentials: [],
 			nodeTypeDescriptions: new Map([
 				[
-					'n8n-nodes-base.slack',
+					'MNI-nodes-base.slack',
 					makeNodeTypeDescription({
 						credentials: [
 							{
@@ -238,8 +238,8 @@ describe('validateWorkflowCredentialReferences', () => {
 			getOneImpl: async (id) => ({ id, name: 'GitHub account', type: 'githubApi' }),
 			nodeTypeDescriptions: new Map([
 				[
-					'n8n-nodes-base.httpRequest',
-					makeNodeTypeDescription({ name: 'n8n-nodes-base.httpRequest', credentials: [] }),
+					'MNI-nodes-base.httpRequest',
+					makeNodeTypeDescription({ name: 'MNI-nodes-base.httpRequest', credentials: [] }),
 				],
 			]),
 		});
@@ -248,7 +248,7 @@ describe('validateWorkflowCredentialReferences', () => {
 			[
 				makeNode({
 					name: 'Fetch PR Comments',
-					type: 'n8n-nodes-base.httpRequest',
+					type: 'MNI-nodes-base.httpRequest',
 					parameters: {
 						authentication: 'predefinedCredentialType',
 						nodeCredentialType: 'githubApi',
@@ -273,8 +273,8 @@ describe('validateWorkflowCredentialReferences', () => {
 			usableCredentials: [],
 			nodeTypeDescriptions: new Map([
 				[
-					'n8n-nodes-base.httpRequest',
-					makeNodeTypeDescription({ name: 'n8n-nodes-base.httpRequest', credentials: [] }),
+					'MNI-nodes-base.httpRequest',
+					makeNodeTypeDescription({ name: 'MNI-nodes-base.httpRequest', credentials: [] }),
 				],
 			]),
 		});
@@ -283,7 +283,7 @@ describe('validateWorkflowCredentialReferences', () => {
 			[
 				makeNode({
 					name: 'HTTP Request',
-					type: 'n8n-nodes-base.httpRequest',
+					type: 'MNI-nodes-base.httpRequest',
 					parameters: {
 						authentication: 'predefinedCredentialType',
 						// Resolves only at execution time, so the active types can't be
@@ -310,8 +310,8 @@ describe('validateWorkflowCredentialReferences', () => {
 			usableCredentials: [],
 			nodeTypeDescriptions: new Map([
 				[
-					'n8n-nodes-base.httpRequest',
-					makeNodeTypeDescription({ name: 'n8n-nodes-base.httpRequest', credentials: [] }),
+					'MNI-nodes-base.httpRequest',
+					makeNodeTypeDescription({ name: 'MNI-nodes-base.httpRequest', credentials: [] }),
 				],
 			]),
 		});
@@ -320,7 +320,7 @@ describe('validateWorkflowCredentialReferences', () => {
 			[
 				makeNode({
 					name: 'HTTP Request',
-					type: 'n8n-nodes-base.httpRequest',
+					type: 'MNI-nodes-base.httpRequest',
 					parameters: {
 						authentication: 'genericCredentialType',
 						genericAuthType: '={{ $json.authType }}',
@@ -344,8 +344,8 @@ describe('validateWorkflowCredentialReferences', () => {
 			usableCredentials: [{ id: 'cred-1', name: 'GitHub account', type: 'githubApi' }],
 			nodeTypeDescriptions: new Map([
 				[
-					'n8n-nodes-base.httpRequest',
-					makeNodeTypeDescription({ name: 'n8n-nodes-base.httpRequest', credentials: [] }),
+					'MNI-nodes-base.httpRequest',
+					makeNodeTypeDescription({ name: 'MNI-nodes-base.httpRequest', credentials: [] }),
 				],
 			]),
 		});
@@ -354,7 +354,7 @@ describe('validateWorkflowCredentialReferences', () => {
 			[
 				makeNode({
 					name: 'HTTP Request',
-					type: 'n8n-nodes-base.httpRequest',
+					type: 'MNI-nodes-base.httpRequest',
 					parameters: {
 						authentication: 'predefinedCredentialType',
 						nodeCredentialType: '={{ $json.credType }}',

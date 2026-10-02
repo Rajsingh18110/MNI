@@ -6,13 +6,13 @@ MNI's **test platform** — the infrastructure that decides what to test, runs i
 
 | Package | Name | Purpose | Entry point | Consumed by |
 |---|---|---|---|---|
-| **rules-engine** | `@n8n/rules-engine` | Generic, typed rules engine for static-analysis tools (register → run → report). The shared substrate. | library | janitor, code-health |
-| **test-impact** | `@n8n/test-impact` | Test Impact Analysis: build the coverage→impact map, select impacted specs, distribute them across shards. Framework-agnostic. | library | janitor (CLI), playwright |
-| **janitor** | `@n8n/playwright-janitor` | Static analysis + architecture enforcement for the Playwright suite; also hosts the impact/orchestrate CLI used by CI. | `janitor` CLI | playwright, CI |
-| **code-health** | `@n8n/code-health` | Static analysis for monorepo dependency hygiene. | `code-health` CLI | CI |
-| **containers** | `n8n-containers` | Composable Docker stack for tests (sqlite / postgres / queue / multi-main / observability / kafka …). | `stack:*` scripts | playwright, local dev |
-| **playwright** | `n8n-playwright` | The E2E harness — page objects, composables, fixtures, and the shard distributor that drives CI. | `test:*` scripts | CI, local dev |
-| **performance** | `@n8n/performance` | Microbenchmarks for critical code paths (`bench`, baseline, compare). | `bench:*` scripts | CI (nightly), local |
+| **rules-engine** | `@MNI/rules-engine` | Generic, typed rules engine for static-analysis tools (register → run → report). The shared substrate. | library | janitor, code-health |
+| **test-impact** | `@MNI/test-impact` | Test Impact Analysis: build the coverage→impact map, select impacted specs, distribute them across shards. Framework-agnostic. | library | janitor (CLI), playwright |
+| **janitor** | `@MNI/playwright-janitor` | Static analysis + architecture enforcement for the Playwright suite; also hosts the impact/orchestrate CLI used by CI. | `janitor` CLI | playwright, CI |
+| **code-health** | `@MNI/code-health` | Static analysis for monorepo dependency hygiene. | `code-health` CLI | CI |
+| **containers** | `MNI-containers` | Composable Docker stack for tests (sqlite / postgres / queue / multi-main / observability / kafka …). | `stack:*` scripts | playwright, local dev |
+| **playwright** | `MNI-playwright` | The E2E harness — page objects, composables, fixtures, and the shard distributor that drives CI. | `test:*` scripts | CI, local dev |
+| **performance** | `@MNI/performance` | Microbenchmarks for critical code paths (`bench`, baseline, compare). | `bench:*` scripts | CI (nightly), local |
 
 ## How they fit together
 

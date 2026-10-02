@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { useConsentStore } from '@/app/stores/consent.store';
 import { useDocumentTitle } from '@/app/composables/useDocumentTitle';
-import { useI18n } from '@n8n/i18n';
-import type { BaseTextKey } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
+import type { BaseTextKey } from '@MNI/i18n';
 import { onMounted, onUnmounted, computed, ref, watch } from 'vue';
-import type { ConsentDetailsPicker } from '@n8n/rest-api-client/api/consent';
+import type { ConsentDetailsPicker } from '@MNI/rest-api-client/api/consent';
 import {
 	N8nButton,
 	N8nCallout,
@@ -15,11 +15,11 @@ import {
 	N8nNotice,
 	N8nText,
 	N8nTooltip,
-} from '@n8n/design-system';
+} from '@MNI/design-system';
 import { MCP_SCOPE_GROUPS } from '@/features/ai/mcpAccess/mcp.constants';
 import { getClientBrand } from '@/features/ai/mcpAccess/clients.utils';
-import { useToast } from '@n8n/composables/useToast';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
+import { useToast } from '@MNI/composables/useToast';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
 import ScopesSelector from '@/app/components/scopes/ScopesSelector.vue';
 
 const consentStore = useConsentStore();

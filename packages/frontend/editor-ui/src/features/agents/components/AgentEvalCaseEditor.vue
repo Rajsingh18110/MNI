@@ -7,8 +7,8 @@
  * someone is halfway through typing. Removal lives here because the design gives
  * a row no delete affordance of its own.
  */
-import { N8nButton, N8nInput, N8nInputLabel } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+import { N8nButton, N8nInput, N8nInputLabel } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 import { computed, ref, watch } from 'vue';
 
 const props = defineProps<{

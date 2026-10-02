@@ -1,4 +1,4 @@
-import { mockInstance } from '@n8n/backend-test-utils';
+import { mockInstance } from '@MNI/backend-test-utils';
 import {
 	GLOBAL_MEMBER_ROLE,
 	GLOBAL_OWNER_ROLE,
@@ -9,16 +9,16 @@ import {
 	type Project,
 	type Role,
 	type User,
-} from '@n8n/db';
-import { Container } from '@n8n/di';
+} from '@MNI/db';
+import { Container } from '@MNI/di';
 import {
 	PROJECT_ADMIN_ROLE_SLUG,
 	PROJECT_EDITOR_ROLE_SLUG,
 	PROJECT_OWNER_ROLE_SLUG,
 	PROJECT_VIEWER_ROLE_SLUG,
 	type Scope,
-} from '@n8n/permissions';
-import { In } from '@n8n/typeorm';
+} from '@MNI/permissions';
+import { In } from '@MNI/typeorm';
 import type { Mock } from 'vitest';
 import { mock } from 'vitest-mock-extended';
 

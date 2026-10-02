@@ -34,10 +34,10 @@ function stubBuildWorkflow(_prompt: string): Promise<StubBuildResult> {
 	return Promise.resolve({
 		workflow: {
 			nodes: [
-				{ type: 'n8n-nodes-base.scheduleTrigger', name: 'Every day at 8am' },
-				{ type: 'n8n-nodes-base.httpRequest', name: 'OpenMeteo' },
-				{ type: 'n8n-nodes-base.if', name: 'Will it rain?' },
-				{ type: 'n8n-nodes-base.gmail', name: 'Send rain alert' },
+				{ type: 'MNI-nodes-base.scheduleTrigger', name: 'Every day at 8am' },
+				{ type: 'MNI-nodes-base.httpRequest', name: 'OpenMeteo' },
+				{ type: 'MNI-nodes-base.if', name: 'Will it rain?' },
+				{ type: 'MNI-nodes-base.gmail', name: 'Send rain alert' },
 			],
 		},
 		tokensUsed: 1234,
@@ -59,10 +59,10 @@ test.describe(
 				);
 
 				expect(result.workflow.nodes.map((n) => n.type)).toContain(
-					'n8n-nodes-base.scheduleTrigger',
+					'MNI-nodes-base.scheduleTrigger',
 				);
-				expect(result.workflow.nodes.map((n) => n.type)).toContain('n8n-nodes-base.gmail');
-				expect(result.workflow.nodes.map((n) => n.type)).toContain('n8n-nodes-base.if');
+				expect(result.workflow.nodes.map((n) => n.type)).toContain('MNI-nodes-base.gmail');
+				expect(result.workflow.nodes.map((n) => n.type)).toContain('MNI-nodes-base.if');
 				expect(result.tokensUsed).toBeGreaterThan(0);
 			});
 		}

@@ -1,13 +1,13 @@
-import type { Logger } from '@n8n/backend-common';
-import { GLOBAL_OWNER_ROLE, type User, type WorkflowRepository } from '@n8n/db';
+import type { Logger } from '@MNI/backend-common';
+import { GLOBAL_OWNER_ROLE, type User, type WorkflowRepository } from '@MNI/db';
 import {
 	CredentialResolverValidationError,
 	type CredentialResolverConfiguration,
 	type ICredentialResolver,
-} from '@n8n/decorators';
-import { Not, type UpdateResult } from '@n8n/typeorm';
-import type { Cipher } from 'n8n-core';
-import { CREDENTIAL_BLANKING_VALUE, UnexpectedError } from 'n8n-workflow';
+} from '@MNI/decorators';
+import { Not, type UpdateResult } from '@MNI/typeorm';
+import type { Cipher } from 'MNI-core';
+import { CREDENTIAL_BLANKING_VALUE, UnexpectedError } from 'MNI-workflow';
 import type { Mocked } from 'vitest';
 
 import type { ActiveWorkflowManager } from '@/active-workflow-manager';
@@ -758,9 +758,9 @@ describe('DynamicCredentialResolverService', () => {
 	});
 
 	describe('getAvailablePublicTypes', () => {
-		it('omits the system N8N resolver type', () => {
+		it('omits the system MNI resolver type', () => {
 			const systemType = {
-				metadata: { name: SYSTEM_RESOLVER_TYPE, displayName: 'N8N Resolver', options: [] },
+				metadata: { name: SYSTEM_RESOLVER_TYPE, displayName: 'MNI Resolver', options: [] },
 			} as unknown as ICredentialResolver;
 			const oauthType = {
 				metadata: { name: 'credential-resolver.oauth2-1.0', displayName: 'OAuth2', options: [] },

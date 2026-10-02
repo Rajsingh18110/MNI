@@ -2,14 +2,14 @@ import { createTestingPinia } from '@pinia/testing';
 import { screen, within } from '@testing-library/vue';
 import userEvent from '@testing-library/user-event';
 import { vi } from 'vitest';
-import { ROLE, type UsersList } from '@n8n/api-types';
-import type { AllRolesMap } from '@n8n/permissions';
+import { ROLE, type UsersList } from '@MNI/api-types';
+import type { AllRolesMap } from '@MNI/permissions';
 import SettingsUsersRoleCell from './SettingsUsersRoleCell.vue';
 import { createComponentRenderer } from '@/__tests__/render';
 import { hasPermission } from '@/app/utils/rbac/permissions';
 
 // Mock the dropdown primitives to expose items as buttons and the trigger slot for assertions.
-vi.mock('@n8n/design-system', async (importOriginal) => {
+vi.mock('@MNI/design-system', async (importOriginal) => {
 	const original = await importOriginal<object>();
 	return {
 		...original,

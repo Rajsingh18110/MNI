@@ -1,6 +1,6 @@
 import type { Mocked } from 'vitest';
-import type { GlobalConfig } from '@n8n/config';
-import { mockLogger } from '@n8n/backend-test-utils';
+import type { GlobalConfig } from '@MNI/config';
+import { mockLogger } from '@MNI/backend-test-utils';
 import { mock } from 'vitest-mock-extended';
 import type { StateAdapter, Lock, QueueEntry } from 'chat';
 
@@ -9,7 +9,7 @@ import type { Publisher } from '@/scaling/pubsub/publisher.service';
 import { AgentChangePublisher } from '../../agent-change-publisher.service';
 import { AgentChatSubscriptionStateService } from '../agent-chat-subscription-state.service';
 import type { AgentChatSubscriptionRepository } from '../../repositories/agent-chat-subscription.repository';
-import type { AgentIntegrationConfig } from '@n8n/api-types';
+import type { AgentIntegrationConfig } from '@MNI/api-types';
 
 const slackIntegration: AgentIntegrationConfig = {
 	type: 'slack',

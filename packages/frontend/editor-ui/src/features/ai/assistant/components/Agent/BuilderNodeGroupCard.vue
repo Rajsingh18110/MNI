@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, toRef, watch } from 'vue';
-import { useI18n, type BaseTextKey } from '@n8n/i18n';
-import { N8nButton, N8nIcon, N8nText } from '@n8n/design-system';
+import { useI18n, type BaseTextKey } from '@MNI/i18n';
+import { N8nButton, N8nIcon, N8nText } from '@MNI/design-system';
 
 import NodeIcon from '@/app/components/NodeIcon.vue';
 import TriggerExecuteButton from '@/features/setupPanel/components/TriggerExecuteButton.vue';

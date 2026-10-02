@@ -1,10 +1,10 @@
-import { createTeamProject, testDb, testModules } from '@n8n/backend-test-utils';
-import { DbConnectionOptions, type Project } from '@n8n/db';
-import { Container } from '@n8n/di';
-import type { SerializableAgentState } from '@n8n/agents';
-import type { QueryRunner } from '@n8n/typeorm';
-import { DataSource, IsNull, Not } from '@n8n/typeorm';
-import { sleep } from '@n8n/utils/sleep';
+import { createTeamProject, testDb, testModules } from '@MNI/backend-test-utils';
+import { DbConnectionOptions, type Project } from '@MNI/db';
+import { Container } from '@MNI/di';
+import type { SerializableAgentState } from '@MNI/agents';
+import type { QueryRunner } from '@MNI/typeorm';
+import { DataSource, IsNull, Not } from '@MNI/typeorm';
+import { sleep } from '@MNI/utils/sleep';
 import { randomUUID } from 'node:crypto';
 
 import { InstanceAiCheckpointRepository } from '@/modules/instance-ai/repositories/instance-ai-checkpoint.repository';

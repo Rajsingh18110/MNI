@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-import type { ChatHubExecutionEnd, ChatHubStreamError } from '@n8n/api-types';
-import { mockInstance, testDb, testModules, createActiveWorkflow } from '@n8n/backend-test-utils';
-import type { User, CredentialsEntity } from '@n8n/db';
-import { ExecutionRepository, SettingsRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
-import { InstanceSettings, BinaryDataService, Cipher } from 'n8n-core';
+import type { ChatHubExecutionEnd, ChatHubStreamError } from '@MNI/api-types';
+import { mockInstance, testDb, testModules, createActiveWorkflow } from '@MNI/backend-test-utils';
+import type { User, CredentialsEntity } from '@MNI/db';
+import { ExecutionRepository, SettingsRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
+import { InstanceSettings, BinaryDataService, Cipher } from 'MNI-core';
 import {
 	CHAT_TRIGGER_NODE_TYPE,
 	CHAT_NODE_TYPE,
@@ -14,7 +14,7 @@ import {
 	type INode,
 	type IRun,
 	type IWorkflowBase,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import type { MockInstance } from 'vitest';
 import { mock } from 'vitest-mock-extended';
 
@@ -1410,7 +1410,7 @@ describe('chatHub', () => {
 								{
 									id: 'agent-1',
 									name: 'AI Agent',
-									type: '@n8n/n8n-nodes-langchain.agent',
+									type: '@MNI/MNI-nodes-langchain.agent',
 									typeVersion: 2.2,
 									position: [200, 0],
 									parameters: {},
@@ -1547,7 +1547,7 @@ describe('chatHub', () => {
 								{
 									id: 'agent-1',
 									name: 'AI Agent',
-									type: '@n8n/n8n-nodes-langchain.agent',
+									type: '@MNI/MNI-nodes-langchain.agent',
 									typeVersion: 2.2,
 									position: [200, 0],
 									parameters: {},
@@ -1661,7 +1661,7 @@ describe('chatHub', () => {
 								{
 									id: 'code-1',
 									name: 'Code Node',
-									type: 'n8n-nodes-base.code',
+									type: 'MNI-nodes-base.code',
 									typeVersion: 1,
 									position: [200, 0],
 									parameters: {},
@@ -2721,7 +2721,7 @@ describe('chatHub', () => {
 								{
 									id: 'agent-1',
 									name: 'AI Agent',
-									type: '@n8n/n8n-nodes-langchain.agent',
+									type: '@MNI/MNI-nodes-langchain.agent',
 									typeVersion: 2.2,
 									position: [200, 0],
 									parameters: {},
@@ -2856,7 +2856,7 @@ describe('chatHub', () => {
 								{
 									id: 'agent-1',
 									name: 'AI Agent',
-									type: '@n8n/n8n-nodes-langchain.agent',
+									type: '@MNI/MNI-nodes-langchain.agent',
 									typeVersion: 2.2,
 									position: [200, 0],
 									parameters: {},
@@ -2972,7 +2972,7 @@ describe('chatHub', () => {
 								{
 									id: 'agent-1',
 									name: 'AI Agent',
-									type: '@n8n/n8n-nodes-langchain.agent',
+									type: '@MNI/MNI-nodes-langchain.agent',
 									typeVersion: 2.2,
 									position: [200, 0],
 									parameters: {},

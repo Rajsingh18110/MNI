@@ -1,4 +1,4 @@
-import type { ListQueryDb } from '@n8n/db';
+import type { ListQueryDb } from '@MNI/db';
 import type { Response, NextFunction } from 'express';
 import type { MockInstance } from 'vitest';
 

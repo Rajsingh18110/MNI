@@ -4,10 +4,10 @@ import type {
 	WorkflowReviewRequestState,
 	WorkflowReviewRequestWorkflowDetail,
 	WorkflowReviewVersionSnapshot,
-} from '@n8n/api-types';
-import { N8nCallout, N8nText } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
-import { deepCopy } from 'n8n-workflow';
+} from '@MNI/api-types';
+import { N8nCallout, N8nText } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
+import { deepCopy } from 'MNI-workflow';
 import isEqual from 'lodash/isEqual';
 import omit from 'lodash/omit';
 import { computed, markRaw } from 'vue';

@@ -1,9 +1,9 @@
-import { Container } from '@n8n/di';
+import { Container } from '@MNI/di';
 import get from 'lodash/get';
-import { BinaryDataService } from 'n8n-core';
-import { createResultError, createResultOk, type Result } from '@n8n/utils/result';
-import type { INodeExecutionData, ITaskData, WebhookResponseData } from 'n8n-workflow';
-import { BINARY_ENCODING, OperationalError } from 'n8n-workflow';
+import { BinaryDataService } from 'MNI-core';
+import { createResultError, createResultOk, type Result } from '@MNI/utils/result';
+import type { INodeExecutionData, ITaskData, WebhookResponseData } from 'MNI-workflow';
+import { BINARY_ENCODING, OperationalError } from 'MNI-workflow';
 import type { Readable } from 'node:stream';
 
 /** Response that is not a stream */

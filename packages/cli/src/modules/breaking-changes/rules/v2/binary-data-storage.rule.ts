@@ -1,6 +1,6 @@
-import { ExecutionsConfig } from '@n8n/config';
-import { BreakingChangeRule } from '@n8n/decorators';
-import { BinaryDataConfig } from 'n8n-core';
+import { ExecutionsConfig } from '@MNI/config';
+import { BreakingChangeRule } from '@MNI/decorators';
+import { BinaryDataConfig } from 'MNI-core';
 
 import type {
 	BreakingChangeRuleMetadata,

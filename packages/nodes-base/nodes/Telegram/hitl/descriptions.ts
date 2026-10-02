@@ -1,4 +1,4 @@
-import type { INodeProperties } from 'n8n-workflow';
+import type { INodeProperties } from 'MNI-workflow';
 
 /**
  * The advanced HITL section for Send and Wait: one-tap approval inside the

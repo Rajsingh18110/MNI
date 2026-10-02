@@ -1,4 +1,4 @@
-import { UnexpectedError } from 'n8n-workflow';
+import { UnexpectedError } from 'MNI-workflow';
 
 export class UnknownAuthTypeError extends UnexpectedError {
 	constructor(authType: string) {

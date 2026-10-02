@@ -63,7 +63,7 @@ export function getMcpClientCatalog(serverUrl: string): McpClientCategoryGroup[]
 	const codexSnippet = `[features]
 experimental_use_rmcp_client = true
 
-[mcp_servers.n8n]
+[mcp_servers.MNI]
 url = "${serverUrl}"`;
 	const geminiSnippet = `{
   "mcpServers": {
@@ -130,7 +130,7 @@ url = "${serverUrl}"`;
 					name: 'Claude.ai',
 					category: 'web',
 					icon: ClaudeIcon,
-					addUrl: 'https://claude.ai/directory/connectors/n8n',
+					addUrl: 'https://claude.ai/directory/connectors/MNI',
 				},
 				{
 					id: 'chatgpt',

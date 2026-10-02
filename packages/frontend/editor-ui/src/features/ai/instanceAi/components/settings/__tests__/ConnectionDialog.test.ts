@@ -6,7 +6,7 @@ import { useCredentialsStore } from '@/features/credentials/credentials.store';
 import { useInstanceAiSettingsStore } from '../../../instanceAiSettings.store';
 import ConnectionDialog from '../ConnectionDialog.vue';
 
-vi.mock('@n8n/i18n', async (importOriginal) => ({
+vi.mock('@MNI/i18n', async (importOriginal) => ({
 	...(await importOriginal()),
 	useI18n: () => ({ baseText: (key: string) => key }),
 }));
@@ -51,7 +51,7 @@ describe('ConnectionDialog', () => {
 				permissions: {},
 				mcpAccessEnabled: true,
 				sandboxEnabled: false,
-				sandboxProvider: 'n8n-sandbox',
+				sandboxProvider: 'MNI-sandbox',
 				daytonaCredentialId: null,
 				n8nSandboxCredentialId: null,
 				searchCredentialId: null,
@@ -78,17 +78,17 @@ describe('ConnectionDialog', () => {
 	it('uses Cancel and Save without onboarding progress in both direct and setup contexts', async () => {
 		const direct = renderDialog({ props: { kind: 'search', open: true } });
 
-		expect(await direct.findByTestId('n8n-agent-search-dialog-cancel')).toBeVisible();
-		expect(direct.getByTestId('n8n-agent-search-dialog-save')).toBeVisible();
-		expect(direct.queryByTestId('n8n-agent-search-dialog-step')).toBeNull();
-		expect(direct.queryByTestId('n8n-agent-search-dialog-back')).toBeNull();
+		expect(await direct.findByTestId('MNI-agent-search-dialog-cancel')).toBeVisible();
+		expect(direct.getByTestId('MNI-agent-search-dialog-save')).toBeVisible();
+		expect(direct.queryByTestId('MNI-agent-search-dialog-step')).toBeNull();
+		expect(direct.queryByTestId('MNI-agent-search-dialog-back')).toBeNull();
 		direct.unmount();
 
 		const setup = renderDialog({ props: { kind: 'search', open: true, setup: true } });
-		expect(await setup.findByTestId('n8n-agent-search-dialog-cancel')).toBeVisible();
-		expect(setup.getByTestId('n8n-agent-search-dialog-save')).toBeVisible();
-		expect(setup.queryByTestId('n8n-agent-search-dialog-step')).toBeNull();
-		expect(setup.queryByTestId('n8n-agent-search-dialog-back')).toBeNull();
+		expect(await setup.findByTestId('MNI-agent-search-dialog-cancel')).toBeVisible();
+		expect(setup.getByTestId('MNI-agent-search-dialog-save')).toBeVisible();
+		expect(setup.queryByTestId('MNI-agent-search-dialog-step')).toBeNull();
+		expect(setup.queryByTestId('MNI-agent-search-dialog-back')).toBeNull();
 	});
 
 	it('uses the same provider and model dropdowns as onboarding', async () => {
@@ -96,8 +96,8 @@ describe('ConnectionDialog', () => {
 			props: { kind: 'model', open: true },
 		});
 
-		const provider = await findByTestId('n8n-agent-model-provider-select');
-		expect(getByTestId('n8n-agent-model-name-input')).toBeVisible();
+		const provider = await findByTestId('MNI-agent-model-provider-select');
+		expect(getByTestId('MNI-agent-model-name-input')).toBeVisible();
 		expect(queryByTestId('assistant-model-base-url')).toBeNull();
 
 		await fireEvent.click(inputFor(provider));
@@ -110,8 +110,8 @@ describe('ConnectionDialog', () => {
 			props: { kind: 'sandbox', open: true },
 		});
 
-		expect(await findByTestId('n8n-agent-sandbox-provider-select')).toBeVisible();
-		expect(queryByTestId('n8n-agent-sandbox-existing-credential-select')).toBeNull();
+		expect(await findByTestId('MNI-agent-sandbox-provider-select')).toBeVisible();
+		expect(queryByTestId('MNI-agent-sandbox-existing-credential-select')).toBeNull();
 	});
 
 	it('assigns a selected compatible credential', async () => {
@@ -125,10 +125,10 @@ describe('ConnectionDialog', () => {
 			props: { kind: 'model', open: true },
 		});
 
-		const existing = await findByTestId('n8n-agent-model-existing-credential-select');
+		const existing = await findByTestId('MNI-agent-model-existing-credential-select');
 		await fireEvent.click(inputFor(existing));
 		await fireEvent.click(await findByText('Existing Anthropic · Anthropic'));
-		await fireEvent.click(getByTestId('n8n-agent-model-dialog-save'));
+		await fireEvent.click(getByTestId('MNI-agent-model-dialog-save'));
 
 		await waitFor(() => expect(emitted().saved).toEqual([[]]));
 		expect(store.setField).toHaveBeenCalledWith('modelCredentialId', 'anthropic-id');
@@ -152,8 +152,8 @@ describe('ConnectionDialog', () => {
 		});
 
 		expect(await findByText('instanceAi.onboarding.env.title')).toBeVisible();
-		expect(queryByTestId('n8n-agent-sandbox-provider-select')).toBeNull();
-		expect(getByTestId('n8n-agent-sandbox-dialog-save')).toBeDisabled();
+		expect(queryByTestId('MNI-agent-sandbox-provider-select')).toBeNull();
+		expect(getByTestId('MNI-agent-sandbox-dialog-save')).toBeDisabled();
 	});
 
 	it('keeps setup open after save so the parent can move to the next connection', async () => {
@@ -163,7 +163,7 @@ describe('ConnectionDialog', () => {
 		});
 
 		await fireEvent.click(await findByTestId('assistant-search-disabled'));
-		await fireEvent.click(getByTestId('n8n-agent-search-dialog-save'));
+		await fireEvent.click(getByTestId('MNI-agent-search-dialog-save'));
 
 		await waitFor(() => expect(emitted().saved).toEqual([[]]));
 		expect(emitted()['update:open']).toBeUndefined();

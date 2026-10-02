@@ -7,7 +7,7 @@
  * reach the clients that read them, the tool reaches the rest, and the instructions are what makes
  * either get called.
  */
-import type { User } from '@n8n/db';
+import type { User } from '@MNI/db';
 import z from 'zod';
 
 import type {

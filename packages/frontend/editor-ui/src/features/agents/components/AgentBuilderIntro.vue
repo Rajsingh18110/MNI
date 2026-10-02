@@ -5,8 +5,8 @@
  * chatting about it) and offers one-click starter templates. The host owns
  * the apply; this component only emits the chosen template.
  */
-import { N8nHeading, N8nIcon, N8nText } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+import { N8nHeading, N8nIcon, N8nText } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 import { AGENT_TEMPLATES, type AgentTemplate } from '../agentTemplates';
 import AgentPersonalisationIcon from './AgentPersonalisationIcon.vue';
 
@@ -64,8 +64,8 @@ const i18n = useI18n();
 </template>
 
 <style lang="scss" module>
-@use '@n8n/design-system/css/mixins/_focus.scss' as focus;
-@use '@n8n/design-system/css/mixins/motion';
+@use '@MNI/design-system/css/mixins/_focus.scss' as focus;
+@use '@MNI/design-system/css/mixins/motion';
 
 .intro {
 	display: flex;

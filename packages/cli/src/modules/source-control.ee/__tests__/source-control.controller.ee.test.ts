@@ -1,8 +1,8 @@
-import type { PullWorkFolderRequestDto, PushWorkFolderRequestDto } from '@n8n/api-types';
-import type { AuthenticatedRequest, Project, User } from '@n8n/db';
-import { ControllerRegistryMetadata, type Controller } from '@n8n/decorators';
-import { Container } from '@n8n/di';
-import * as permissions from '@n8n/permissions';
+import type { PullWorkFolderRequestDto, PushWorkFolderRequestDto } from '@MNI/api-types';
+import type { AuthenticatedRequest, Project, User } from '@MNI/db';
+import { ControllerRegistryMetadata, type Controller } from '@MNI/decorators';
+import { Container } from '@MNI/di';
+import * as permissions from '@MNI/permissions';
 import type { Response } from 'express';
 import type { Mock } from 'vitest';
 import { mock } from 'vitest-mock-extended';
@@ -19,8 +19,8 @@ import type { SourceControlRequest } from '../types/requests';
 import { SourceControlContext } from '../types/source-control-context';
 import type { SourceControlGetStatus } from '../types/source-control-get-status';
 
-vi.mock('@n8n/permissions', async () => {
-	const actual = await vi.importActual<typeof import('@n8n/permissions')>('@n8n/permissions');
+vi.mock('@MNI/permissions', async () => {
+	const actual = await vi.importActual<typeof import('@MNI/permissions')>('@MNI/permissions');
 	return {
 		...actual,
 		hasGlobalScope: vi.fn(actual.hasGlobalScope),

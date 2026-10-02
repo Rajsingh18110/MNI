@@ -1,7 +1,7 @@
-import { SecurityPolicyPublicDto, UpdateSecurityPolicyDto } from '@n8n/api-types';
-import { InstanceSettingsLoaderConfig } from '@n8n/config';
-import { LICENSE_FEATURES } from '@n8n/constants';
-import type { AuthenticatedRequest } from '@n8n/db';
+import { SecurityPolicyPublicDto, UpdateSecurityPolicyDto } from '@MNI/api-types';
+import { InstanceSettingsLoaderConfig } from '@MNI/config';
+import { LICENSE_FEATURES } from '@MNI/constants';
+import type { AuthenticatedRequest } from '@MNI/db';
 import {
 	ApiDescription,
 	ApiErrorResponse,
@@ -14,7 +14,7 @@ import {
 	Licensed,
 	PublicApiController,
 	Put,
-} from '@n8n/decorators';
+} from '@MNI/decorators';
 import type { Response } from 'express';
 
 import { ConflictError } from '@/errors/response-errors/conflict.error';

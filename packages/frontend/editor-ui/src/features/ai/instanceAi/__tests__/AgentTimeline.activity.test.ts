@@ -3,7 +3,7 @@ import { createTestingPinia } from '@pinia/testing';
 import { createThreadComponentRenderer } from './createThreadComponentRenderer';
 import AgentTimeline from '../components/AgentTimeline.vue';
 import { ACTIVITY_INDICATOR_DELAY_MS } from '../agentTimeline.utils';
-import type { InstanceAiAgentNode } from '@n8n/api-types';
+import type { InstanceAiAgentNode } from '@MNI/api-types';
 
 const renderComponent = createThreadComponentRenderer(AgentTimeline, {
 	global: {

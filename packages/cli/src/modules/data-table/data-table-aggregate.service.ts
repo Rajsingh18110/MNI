@@ -1,8 +1,8 @@
-import type { ListDataTableQueryDto } from '@n8n/api-types';
-import { Logger } from '@n8n/backend-common';
-import { ProjectRelationRepository, User } from '@n8n/db';
-import { Service } from '@n8n/di';
-import { hasGlobalScope } from '@n8n/permissions';
+import type { ListDataTableQueryDto } from '@MNI/api-types';
+import { Logger } from '@MNI/backend-common';
+import { ProjectRelationRepository, User } from '@MNI/db';
+import { Service } from '@MNI/di';
+import { hasGlobalScope } from '@MNI/permissions';
 
 import { RoleService } from '@/services/role.service';
 

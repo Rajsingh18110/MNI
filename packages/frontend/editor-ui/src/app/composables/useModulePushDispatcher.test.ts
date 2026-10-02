@@ -1,5 +1,5 @@
-import type { PushMessage } from '@n8n/api-types';
-import { pushHandlerRegistry } from '@n8n/frontend-module-sdk';
+import type { PushMessage } from '@MNI/api-types';
+import { pushHandlerRegistry } from '@MNI/frontend-module-sdk';
 import { flushPromises, mount } from '@vue/test-utils';
 import { createPinia, setActivePinia } from 'pinia';
 import { beforeEach, describe, expect, it, vi } from 'vitest';

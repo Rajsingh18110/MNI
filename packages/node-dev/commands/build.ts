@@ -1,6 +1,6 @@
-import { Container } from '@n8n/di';
+import { Container } from '@MNI/di';
 import { Command, Flags } from '@oclif/core';
-import { InstanceSettings } from 'n8n-core';
+import { InstanceSettings } from 'MNI-core';
 
 import type { IBuildOptions } from '../src';
 import { buildFiles } from '../src';
@@ -9,9 +9,9 @@ export class Build extends Command {
 	static description = 'Builds credentials and nodes and copies it to MNI custom extension folder';
 
 	static examples = [
-		'$ n8n-node-dev build',
-		'$ n8n-node-dev build --destination ~/n8n-nodes',
-		'$ n8n-node-dev build --watch',
+		'$ MNI-node-dev build',
+		'$ MNI-node-dev build --destination ~/MNI-nodes',
+		'$ MNI-node-dev build --watch',
 	];
 
 	static flags = {

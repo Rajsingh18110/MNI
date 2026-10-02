@@ -14,17 +14,17 @@ vi.hoisted(() => {
  * `policy-infrastructure` module — and therefore `CredentialsHelper.getDecrypted`'s
  * enforcement — is wired the same way on a worker as it is on main (IAM-1133).
  */
-import { mockInstance, testModules } from '@n8n/backend-test-utils';
-import { ExecutionsConfig } from '@n8n/config';
-import { Container } from '@n8n/di';
+import { mockInstance, testModules } from '@MNI/backend-test-utils';
+import { ExecutionsConfig } from '@MNI/config';
+import { Container } from '@MNI/di';
 import {
 	PolicyCheck,
 	type CredentialDecryptContext,
 	type PolicyCheckResult,
 	type RegisteredPolicyCheck,
-} from '@n8n/decorators';
-import { BinaryDataService, DataDeduplicationService } from 'n8n-core';
-import type { IExecuteData, IWorkflowExecuteAdditionalData } from 'n8n-workflow';
+} from '@MNI/decorators';
+import { BinaryDataService, DataDeduplicationService } from 'MNI-core';
+import type { IExecuteData, IWorkflowExecuteAdditionalData } from 'MNI-workflow';
 
 import { Worker } from '@/commands/worker';
 import config from '@/config';
@@ -49,7 +49,7 @@ import { saveCredential } from '../shared/db/credentials';
 import { createOwner } from '../shared/db/users';
 
 const BLOCKED_CREDENTIAL_TYPE = 'iam1133TestCredential';
-const BLOCKED_NODE_TYPE = 'n8n-nodes-base.iam1133BlockedConsumer';
+const BLOCKED_NODE_TYPE = 'MNI-nodes-base.iam1133BlockedConsumer';
 const CHECK_ID = 'iam1133.deny-blocked-consumer';
 
 const consumerOf = (nodeType: string): IExecuteData =>
@@ -168,7 +168,7 @@ describe('credentialDecrypt policy enforcement — queue-mode worker process', (
 			{ id: credential.id, name: credential.name },
 			credential.type,
 			'internal',
-			consumerOf('n8n-nodes-base.noOp'),
+			consumerOf('MNI-nodes-base.noOp'),
 			true,
 		);
 

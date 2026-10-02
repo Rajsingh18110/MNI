@@ -1,8 +1,8 @@
-import { ShutdownMetadata } from '@n8n/decorators';
-import type { ShutdownServiceClass } from '@n8n/decorators';
-import { Container } from '@n8n/di';
-import type { ErrorReporter } from 'n8n-core';
-import { UnexpectedError } from 'n8n-workflow';
+import { ShutdownMetadata } from '@MNI/decorators';
+import type { ShutdownServiceClass } from '@MNI/decorators';
+import { Container } from '@MNI/di';
+import type { ErrorReporter } from 'MNI-core';
+import { UnexpectedError } from 'MNI-workflow';
 import type { MockInstance } from 'vitest';
 import { mock } from 'vitest-mock-extended';
 

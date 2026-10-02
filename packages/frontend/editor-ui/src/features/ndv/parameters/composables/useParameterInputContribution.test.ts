@@ -1,6 +1,6 @@
 import { ref } from 'vue';
-import type { NodePropertyTypes } from 'n8n-workflow';
-import { parameterInputRegistry } from '@n8n/frontend-module-sdk';
+import type { NodePropertyTypes } from 'MNI-workflow';
+import { parameterInputRegistry } from '@MNI/frontend-module-sdk';
 
 import { useParameterInputContribution } from './useParameterInputContribution';
 

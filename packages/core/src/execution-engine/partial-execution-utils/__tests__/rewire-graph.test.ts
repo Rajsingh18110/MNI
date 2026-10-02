@@ -1,5 +1,5 @@
-import { TOOL_EXECUTOR_NODE_NAME } from '@n8n/constants';
-import { type INode, NodeConnectionTypes } from 'n8n-workflow';
+import { TOOL_EXECUTOR_NODE_NAME } from '@MNI/constants';
+import { type INode, NodeConnectionTypes } from 'MNI-workflow';
 
 import { createNodeData } from './helpers';
 import { DirectedGraph } from '../directed-graph';
@@ -7,7 +7,7 @@ import { rewireGraph } from '../rewire-graph';
 
 describe('rewireGraph()', () => {
 	it('rewires a simple graph with a tool node', () => {
-		const tool = createNodeData({ name: 'tool', type: 'n8n-nodes-base.ai-tool' });
+		const tool = createNodeData({ name: 'tool', type: 'MNI-nodes-base.ai-tool' });
 		const root = createNodeData({ name: 'root' });
 		const trigger = createNodeData({ name: 'trigger' });
 
@@ -41,7 +41,7 @@ describe('rewireGraph()', () => {
 	});
 
 	it('rewires all incoming connections of the root node to the executorNode', () => {
-		const tool = createNodeData({ name: 'tool', type: 'n8n-nodes-base.ai-tool' });
+		const tool = createNodeData({ name: 'tool', type: 'MNI-nodes-base.ai-tool' });
 		const root = createNodeData({ name: 'root' });
 		const trigger = createNodeData({ name: 'trigger' });
 		const secondNode = createNodeData({ name: 'secondNode' });
@@ -73,7 +73,7 @@ describe('rewireGraph()', () => {
 	});
 
 	it('ignores non-main connections when rewiring', () => {
-		const tool = createNodeData({ name: 'tool', type: 'n8n-nodes-base.ai-tool' });
+		const tool = createNodeData({ name: 'tool', type: 'MNI-nodes-base.ai-tool' });
 		const root = createNodeData({ name: 'root' });
 		const parent = createNodeData({ name: 'parent' });
 		const trigger = createNodeData({ name: 'trigger' });
@@ -104,7 +104,7 @@ describe('rewireGraph()', () => {
 	});
 
 	it('sets rewireOutputLogTo to AiTool on the tool node', () => {
-		const tool = createNodeData({ name: 'tool', type: 'n8n-nodes-base.ai-tool' });
+		const tool = createNodeData({ name: 'tool', type: 'MNI-nodes-base.ai-tool' });
 		const trigger = createNodeData({ name: 'trigger' });
 		const root = createNodeData({ name: 'root' });
 
@@ -121,7 +121,7 @@ describe('rewireGraph()', () => {
 	});
 
 	it('should not rewire when the tool has no root', () => {
-		const tool = createNodeData({ name: 'tool', type: 'n8n-nodes-base.ai-tool' });
+		const tool = createNodeData({ name: 'tool', type: 'MNI-nodes-base.ai-tool' });
 		const root = createNodeData({ name: 'root' });
 
 		const graph = new DirectedGraph();
@@ -132,7 +132,7 @@ describe('rewireGraph()', () => {
 	});
 
 	it('removes the root node from the graph', () => {
-		const tool = createNodeData({ name: 'tool', type: 'n8n-nodes-base.ai-tool' });
+		const tool = createNodeData({ name: 'tool', type: 'MNI-nodes-base.ai-tool' });
 		const root = createNodeData({ name: 'root' });
 
 		const graph = new DirectedGraph();
@@ -145,7 +145,7 @@ describe('rewireGraph()', () => {
 	});
 
 	it('sets parameters.query and toolName on the executor node', () => {
-		const tool = createNodeData({ name: 'tool', type: 'n8n-nodes-base.ai-tool' });
+		const tool = createNodeData({ name: 'tool', type: 'MNI-nodes-base.ai-tool' });
 		const trigger = createNodeData({ name: 'trigger' });
 		const root = createNodeData({ name: 'root' });
 		const agentRequest = {
@@ -178,9 +178,9 @@ describe('rewireGraph()', () => {
 		// Create a hierarchy: trigger -> topAgent <- agentTool <- leafTool
 		// This simulates an agent (topAgent) that has an agent tool, that has a tool that's being manually executed
 		const trigger = createNodeData({ name: 'trigger' });
-		const topAgent = createNodeData({ name: 'topAgent', type: 'n8n-nodes-base.ai-agent' });
-		const agentTool = createNodeData({ name: 'agentTool', type: 'n8n-nodes-base.ai-agent-tool' });
-		const leafTool = createNodeData({ name: 'leafTool', type: 'n8n-nodes-base.ai-tool' });
+		const topAgent = createNodeData({ name: 'topAgent', type: 'MNI-nodes-base.ai-agent' });
+		const agentTool = createNodeData({ name: 'agentTool', type: 'MNI-nodes-base.ai-agent-tool' });
+		const leafTool = createNodeData({ name: 'leafTool', type: 'MNI-nodes-base.ai-tool' });
 
 		const graph = new DirectedGraph();
 		graph.addNodes(trigger, topAgent, agentTool, leafTool);
@@ -235,10 +235,10 @@ describe('rewireGraph()', () => {
 		// that node back in the run.
 		const trigger = createNodeData({ name: 'trigger' });
 		const upstream = createNodeData({ name: 'upstream' });
-		const agent = createNodeData({ name: 'agent', type: 'n8n-nodes-base.ai-agent' });
+		const agent = createNodeData({ name: 'agent', type: 'MNI-nodes-base.ai-agent' });
 		const downstream = createNodeData({ name: 'downstream' });
 		const final = createNodeData({ name: 'final' });
-		const tool = createNodeData({ name: 'tool', type: 'n8n-nodes-base.ai-tool' });
+		const tool = createNodeData({ name: 'tool', type: 'MNI-nodes-base.ai-tool' });
 
 		const graph = new DirectedGraph();
 		graph.addNodes(trigger, upstream, agent, downstream, final, tool);

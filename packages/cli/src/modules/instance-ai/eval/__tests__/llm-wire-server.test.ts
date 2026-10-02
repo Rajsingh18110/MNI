@@ -1,6 +1,6 @@
-import type { Logger } from '@n8n/backend-common';
-import type { EvalLlmMockHandler } from 'n8n-core';
-import type { INode } from 'n8n-workflow';
+import type { Logger } from '@MNI/backend-common';
+import type { EvalLlmMockHandler } from 'MNI-core';
+import type { INode } from 'MNI-workflow';
 import OpenAI from 'openai';
 import type { Mock } from 'vitest';
 
@@ -27,7 +27,7 @@ function makeSubNode(overrides: Partial<INode> & { name: string }): INode {
 		typeVersion: 1,
 		position: [0, 0] as [number, number],
 		parameters: {},
-		type: '@n8n/n8n-nodes-langchain.lmChatOpenAi',
+		type: '@MNI/MNI-nodes-langchain.lmChatOpenAi',
 		...overrides,
 	};
 }
@@ -375,7 +375,7 @@ describe('LlmWireServer', () => {
 			expect(warn.mock.calls[0][0]).toContain('Unmapped');
 			const [, node] = (mockHandler as unknown as Mock).mock.calls[0];
 			expect(node.name).toBe('Unmapped');
-			expect(node.type).toBe('@n8n/eval-wire-server.unknown-vendor-llm');
+			expect(node.type).toBe('@MNI/eval-wire-server.unknown-vendor-llm');
 		});
 
 		it('decodes URL-encoded root names with special characters', async () => {

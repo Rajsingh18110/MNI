@@ -1,11 +1,11 @@
 import { nextTick, ref } from 'vue';
 import { vi, describe, it, expect, beforeEach } from 'vitest';
-import type { PromotionChanges } from '@n8n/api-types';
+import type { PromotionChanges } from '@MNI/api-types';
 import { waitAllPromises } from '@/__tests__/utils';
 import { usePromotionChangeCount } from './usePromotionChangeCount';
 import * as api from '../promotions.api';
 
-vi.mock('@n8n/stores/useRootStore', () => ({
+vi.mock('@MNI/stores/useRootStore', () => ({
 	useRootStore: () => ({ restApiContext: {} }),
 }));
 

@@ -1,8 +1,8 @@
-import type { AgentExecutionStatus } from '@n8n/api-types';
-import { BaseRepository, TransactionRunner, type OperationContext } from '@n8n/db';
-import { Service } from '@n8n/di';
-import { DataSource, IsNull, LessThanOrEqual, Not } from '@n8n/typeorm';
-import type { QueryDeepPartialEntity } from '@n8n/typeorm/query-builder/QueryPartialEntity';
+import type { AgentExecutionStatus } from '@MNI/api-types';
+import { BaseRepository, TransactionRunner, type OperationContext } from '@MNI/db';
+import { Service } from '@MNI/di';
+import { DataSource, IsNull, LessThanOrEqual, Not } from '@MNI/typeorm';
+import type { QueryDeepPartialEntity } from '@MNI/typeorm/query-builder/QueryPartialEntity';
 
 import { AgentExecution } from '../entities/agent-execution.entity';
 import { AgentExecutionMessageLink } from '../entities/agent-execution-message-link.entity';

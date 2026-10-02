@@ -1,11 +1,11 @@
-import { Container } from '@n8n/di';
-import type { IBinaryKeyData, IRunNodeResponse, WorkflowSettingsBinaryMode } from 'n8n-workflow';
+import { Container } from '@MNI/di';
+import type { IBinaryKeyData, IRunNodeResponse, WorkflowSettingsBinaryMode } from 'MNI-workflow';
 import {
 	BINARY_ENCODING,
 	BINARY_IN_JSON_PROPERTY,
 	BINARY_MODE_COMBINED,
 	UnexpectedError,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { BinaryDataConfig } from '../binary-data/binary-data.config';
 import { prepareBinaryData } from '../execution-engine/node-execution-context/utils/binary-helper-functions';

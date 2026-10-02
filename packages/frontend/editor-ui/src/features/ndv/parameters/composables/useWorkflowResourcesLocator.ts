@@ -5,7 +5,7 @@ import type { Router } from 'vue-router';
 import { VIEWS } from '@/app/constants';
 
 import type { IWorkflowDb, WorkflowListResource } from '@/Interface';
-import type { NodeParameterValue } from 'n8n-workflow';
+import type { NodeParameterValue } from 'MNI-workflow';
 import { useNDVStore } from '@/features/ndv/shared/ndv.store';
 import { injectWorkflowDocumentStore } from '@/app/stores/workflowDocument.store';
 import { useCanvasOperations } from '@/app/composables/useCanvasOperations';
@@ -78,7 +78,7 @@ export function useWorkflowResourcesLocator(router: Router) {
 		const parentWorkflowId = workflowsStore.workflowId;
 
 		const filters: WorkflowListFilters = {
-			triggerNodeTypes: ['n8n-nodes-base.executeWorkflowTrigger'],
+			triggerNodeTypes: ['MNI-nodes-base.executeWorkflowTrigger'],
 		};
 		if (searchFilter.value) {
 			filters.query = searchFilter.value;

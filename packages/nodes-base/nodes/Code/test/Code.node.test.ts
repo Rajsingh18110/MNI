@@ -1,7 +1,7 @@
 import type { MockProxy } from 'vitest-mock-extended';
 import { mock } from 'vitest-mock-extended';
-import { normalizeItems } from 'n8n-core';
-import type { IExecuteFunctions, INode, IWorkflowDataProxyData } from 'n8n-workflow';
+import { normalizeItems } from 'MNI-core';
+import type { IExecuteFunctions, INode, IWorkflowDataProxyData } from 'MNI-workflow';
 
 import { Code } from '../Code.node';
 import { PythonTaskRunnerSandbox } from '../PythonTaskRunnerSandbox';

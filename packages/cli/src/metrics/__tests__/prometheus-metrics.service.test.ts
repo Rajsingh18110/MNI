@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/unbound-method -- vi mocks */
 import type { Mock, Mocked } from 'vitest';
-import type { Logger } from '@n8n/backend-common';
+import type { Logger } from '@MNI/backend-common';
 import type express from 'express';
 import { mock } from 'vitest-mock-extended';
 import promClient from 'prom-client';
@@ -194,7 +194,7 @@ describe('PrometheusMetricsService', () => {
 		});
 
 		it('should return metrics string with correct content-type when /metrics handler is called', async () => {
-			const metricsString = '# HELP n8n_version_info\nn8n_version_info 1';
+			const metricsString = '# HELP MNI_version_info\nMNI_version_info 1';
 			(promClient.register.metrics as Mock).mockResolvedValue(metricsString);
 			vi.spyOn(promClient.register, 'contentType', 'get').mockReturnValue(
 				'text/plain; version=0.0.4; charset=utf-8',

@@ -48,7 +48,7 @@ jobs:
     name: ${{ matrix.mode }} cycle (${{ matrix.db }})
     # The mirror repository must not run this suite: its runners run out of
     # disk during the image build, and the cron would fire twice.
-    if: github.repository == 'n8n-io/n8n'
+    if: github.repository == 'MNI-io/MNI'
     runs-on: ubuntu-latest
     timeout-minutes: 60
     strategy:
@@ -83,7 +83,7 @@ jobs:
           mkdir -p "$WORK_ROOT"
           if [ -n "$FROM_IMAGE_INPUT" ]; then export FROM_IMAGE="$FROM_IMAGE_INPUT"; fi
           set -o pipefail
-          pnpm --filter=n8n-playwright test:encryption:"$MODE" 2>&1 | tee "$WORK_ROOT/run.log"
+          pnpm --filter=MNI-playwright test:encryption:"$MODE" 2>&1 | tee "$WORK_ROOT/run.log"
           echo "PASS: ${MODE}-cycle — all requested backends green ($DB)" | tee -a "$WORK_ROOT/run.log"
 
       - name: Write run summary

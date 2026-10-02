@@ -1,5 +1,5 @@
-import { mockLogger } from '@n8n/backend-test-utils';
-import type { IDataObject, INodeExecutionData } from 'n8n-workflow';
+import { mockLogger } from '@MNI/backend-test-utils';
+import type { IDataObject, INodeExecutionData } from 'MNI-workflow';
 import type { MockProxy } from 'vitest-mock-extended';
 import { mock } from 'vitest-mock-extended';
 
@@ -24,11 +24,11 @@ describe('RuntimeCredentialsService', () => {
 			['single universal rule', '{"api_key":{"nodeType":"*","path":"headers.authorization"}}'],
 			[
 				'type-specific rule',
-				'{"form_pw":{"nodeType":"n8n-nodes-base.formTrigger","path":"body.password"}}',
+				'{"form_pw":{"nodeType":"MNI-nodes-base.formTrigger","path":"body.password"}}',
 			],
 			[
 				'multiple aliases combined',
-				'{"api_key":{"nodeType":"*","path":"headers.authorization"},"form_pw":{"nodeType":"n8n-nodes-base.formTrigger","path":"body.password"}}',
+				'{"api_key":{"nodeType":"*","path":"headers.authorization"},"form_pw":{"nodeType":"MNI-nodes-base.formTrigger","path":"body.password"}}',
 			],
 		])('accepts %s', (_name, raw) => {
 			config.sensitiveFieldRules = raw;
@@ -46,7 +46,7 @@ describe('RuntimeCredentialsService', () => {
 			['empty nodeType string', '{"api_key":{"nodeType":"","path":"headers.authorization"}}'],
 		])('throws on %s', (_name, raw) => {
 			config.sensitiveFieldRules = raw;
-			expect(() => service.init()).toThrow(/N8N_SECURITY_SENSITIVE_FIELD_RULES/);
+			expect(() => service.init()).toThrow(/MNI_SECURITY_SENSITIVE_FIELD_RULES/);
 		});
 	});
 
@@ -82,16 +82,16 @@ describe('RuntimeCredentialsService', () => {
 			},
 			{
 				name: 'type-specific rule applies when trigger type matches',
-				rules: { form_pw: { nodeType: 'n8n-nodes-base.formTrigger', path: 'body.password' } },
-				triggerType: 'n8n-nodes-base.formTrigger',
+				rules: { form_pw: { nodeType: 'MNI-nodes-base.formTrigger', path: 'body.password' } },
+				triggerType: 'MNI-nodes-base.formTrigger',
 				input: [{ body: { password: 'p' } }],
 				expectedJson: [{ body: { password: undefined } }],
 				expectedArtifacts: { form_pw: ['p'] },
 			},
 			{
 				name: 'type-specific rule omitted when trigger type does not match',
-				rules: { form_pw: { nodeType: 'n8n-nodes-base.formTrigger', path: 'body.password' } },
-				triggerType: 'n8n-nodes-base.webhook',
+				rules: { form_pw: { nodeType: 'MNI-nodes-base.formTrigger', path: 'body.password' } },
+				triggerType: 'MNI-nodes-base.webhook',
 				input: [{ body: { password: 'p' } }],
 				expectedJson: [{ body: { password: 'p' } }],
 				expectedArtifacts: {},
@@ -100,9 +100,9 @@ describe('RuntimeCredentialsService', () => {
 				name: 'multiple aliases populate independently when both match',
 				rules: {
 					api_key: { nodeType: '*', path: 'headers.authorization' },
-					form_pw: { nodeType: 'n8n-nodes-base.formTrigger', path: 'body.password' },
+					form_pw: { nodeType: 'MNI-nodes-base.formTrigger', path: 'body.password' },
 				},
-				triggerType: 'n8n-nodes-base.formTrigger',
+				triggerType: 'MNI-nodes-base.formTrigger',
 				input: [{ headers: { authorization: 'a' }, body: { password: 'p' } }],
 				expectedJson: [{ headers: { authorization: undefined }, body: { password: undefined } }],
 				expectedArtifacts: { api_key: ['a'], form_pw: ['p'] },
@@ -151,7 +151,7 @@ describe('RuntimeCredentialsService', () => {
 			'$name',
 			({
 				rules,
-				triggerType = 'n8n-nodes-base.webhook',
+				triggerType = 'MNI-nodes-base.webhook',
 				input,
 				expectedJson,
 				expectedArtifacts,
@@ -171,7 +171,7 @@ describe('RuntimeCredentialsService', () => {
 			const items = [item({ headers: { authorization: 'x' } })];
 			const json = items[0].json;
 
-			const result = service.strip(items, 'n8n-nodes-base.webhook');
+			const result = service.strip(items, 'MNI-nodes-base.webhook');
 
 			expect(result.triggerItems).toBe(items);
 			expect(result.triggerItems[0].json).toBe(json);

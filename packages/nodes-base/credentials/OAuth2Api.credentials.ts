@@ -1,4 +1,4 @@
-import type { ICredentialType, INodeProperties } from 'n8n-workflow';
+import type { ICredentialType, INodeProperties } from 'MNI-workflow';
 
 export class OAuth2Api implements ICredentialType {
 	name = 'oAuth2Api';
@@ -129,7 +129,7 @@ export class OAuth2Api implements ICredentialType {
 		},
 		// WARNING: if you are extending from this credentials and allow user to set their own scopes
 		// you HAVE TO add it to GENERIC_OAUTH2_CREDENTIALS_WITH_EDITABLE_SCOPE in packages/cli/src/constants.ts
-		// track any updates to this behavior in N8N-7424
+		// track any updates to this behavior in MNI-7424
 		{
 			displayName: 'Scope',
 			name: 'scope',

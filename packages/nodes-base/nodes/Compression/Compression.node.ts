@@ -1,5 +1,5 @@
-import { CompressionNodeConfig } from '@n8n/config';
-import { Container } from '@n8n/di';
+import { CompressionNodeConfig } from '@MNI/config';
+import { Container } from '@MNI/di';
 import * as fflate from 'fflate';
 import * as mime from 'mime-types';
 import {
@@ -10,7 +10,7 @@ import {
 	type INodeExecutionData,
 	type INodeType,
 	type INodeTypeDescription,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import { buffer } from 'node:stream/consumers';
 import { promisify } from 'util';
 

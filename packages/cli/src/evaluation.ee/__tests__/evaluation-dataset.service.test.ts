@@ -1,9 +1,9 @@
 import type { Mocked, MockedFunction } from 'vitest';
-import type { AddDatasetRowDto } from '@n8n/api-types';
-import type { EvaluationConfig, IExecutionResponse, User } from '@n8n/db';
-import type { EvaluationConfigRepository } from '@n8n/db';
+import type { AddDatasetRowDto } from '@MNI/api-types';
+import type { EvaluationConfig, IExecutionResponse, User } from '@MNI/db';
+import type { EvaluationConfigRepository } from '@MNI/db';
 import { mock } from 'vitest-mock-extended';
-import type { IConnections, IRunData } from 'n8n-workflow';
+import type { IConnections, IRunData } from 'MNI-workflow';
 
 import { BadRequestError } from '@/errors/response-errors/bad-request.error';
 import { ForbiddenError } from '@/errors/response-errors/forbidden.error';
@@ -185,8 +185,8 @@ describe('EvaluationDatasetService', () => {
 						Start: { main: [[{ node: 'End', type: 'main', index: 0 }]] },
 					},
 					nodes: [
-						{ name: 'Trigger', type: 'n8n-nodes-base.manualTrigger' },
-						{ name: 'EvalTrigger', type: 'n8n-nodes-base.evaluationTrigger' },
+						{ name: 'Trigger', type: 'MNI-nodes-base.manualTrigger' },
+						{ name: 'EvalTrigger', type: 'MNI-nodes-base.evaluationTrigger' },
 					],
 					runData: {
 						Trigger: nodeOutput({ question: 'fromRealTrigger' }),
@@ -208,7 +208,7 @@ describe('EvaluationDatasetService', () => {
 						EvalTrigger: { main: [[{ node: 'Start', type: 'main', index: 0 }]] },
 						Start: { main: [[{ node: 'End', type: 'main', index: 0 }]] },
 					},
-					nodes: [{ name: 'EvalTrigger', type: 'n8n-nodes-base.evaluationTrigger' }],
+					nodes: [{ name: 'EvalTrigger', type: 'MNI-nodes-base.evaluationTrigger' }],
 					runData: {
 						EvalTrigger: nodeOutput({ question: 'fromEvalTrigger' }),
 						End: nodeOutput({ answer: 'A1' }),

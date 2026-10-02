@@ -1,8 +1,8 @@
-import { createActiveWorkflow, testDb } from '@n8n/backend-test-utils';
-import { GlobalConfig } from '@n8n/config';
-import { WorkflowRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
-import { NodeConnectionTypes } from 'n8n-workflow';
+import { createActiveWorkflow, testDb } from '@MNI/backend-test-utils';
+import { GlobalConfig } from '@MNI/config';
+import { WorkflowRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
+import { NodeConnectionTypes } from 'MNI-workflow';
 import nock from 'nock';
 import { v4 as uuid } from 'uuid';
 import { mock } from 'vitest-mock-extended';
@@ -15,7 +15,7 @@ import { toReportTitle } from '@/security-audit/utils';
 import {
 	getRiskSection,
 	saveManualTriggerWorkflow,
-	MOCK_09990_N8N_VERSION,
+	MOCK_09990_MNI_VERSION,
 	simulateOutdatedInstanceOnce,
 	simulateUpToDateInstance,
 } from './utils';
@@ -28,12 +28,12 @@ beforeAll(async () => {
 
 	securityAuditService = new SecurityAuditService(Container.get(WorkflowRepository), mock());
 
-	originalN8nVersion = constants.N8N_VERSION;
+	originalN8nVersion = constants.MNI_VERSION;
 });
 
-// Reset nock + the mutated N8N_VERSION constant between tests so each test
+// Reset nock + the mutated MNI_VERSION constant between tests so each test
 // starts from the up-to-date baseline. `simulateOutdatedInstanceOnce` mutates
-// `constants.N8N_VERSION` and registers a `.once()` interceptor; without this
+// `constants.MNI_VERSION` and registers a `.once()` interceptor; without this
 // reset, later tests inherit the stale version + a consumed interceptor and
 // fail on requests to api.n8n.io for the leftover version. Previously masked
 // by the `workerIdleMemoryLimit: '1MB'` per-file worker recycling.
@@ -41,14 +41,14 @@ beforeEach(async () => {
 	await testDb.truncate(['WorkflowEntity', 'WorkflowHistory', 'WorkflowPublishHistory']);
 	nock.cleanAll();
 	// The ESM export is read-only under Vitest, so spy the getter instead of assigning.
-	vi.spyOn(constants, 'N8N_VERSION', 'get').mockReturnValue(originalN8nVersion);
+	vi.spyOn(constants, 'MNI_VERSION', 'get').mockReturnValue(originalN8nVersion);
 	simulateUpToDateInstance();
 });
 
 afterAll(async () => {
 	nock.cleanAll();
 	// The ESM export is read-only under Vitest, so spy the getter instead of assigning.
-	vi.spyOn(constants, 'N8N_VERSION', 'get').mockReturnValue(originalN8nVersion);
+	vi.spyOn(constants, 'MNI_VERSION', 'get').mockReturnValue(originalN8nVersion);
 	await testDb.terminate();
 });
 
@@ -66,7 +66,7 @@ test('should report webhook lacking authentication', async () => {
 				},
 				id: targetNodeId,
 				name: 'Webhook',
-				type: 'n8n-nodes-base.webhook',
+				type: 'MNI-nodes-base.webhook',
 				typeVersion: 1,
 				position: [0, 0] as [number, number],
 				webhookId: uuid(),
@@ -105,7 +105,7 @@ test('should not report webhooks having basic or header auth', async () => {
 					},
 					id: uuid(),
 					name: 'Webhook',
-					type: 'n8n-nodes-base.webhook',
+					type: 'MNI-nodes-base.webhook',
 					typeVersion: 1,
 					position: [0, 0] as [number, number],
 					webhookId: uuid(),
@@ -143,7 +143,7 @@ test('should not report webhooks validated by direct children', async () => {
 					},
 					id: uuid(),
 					name: 'Webhook',
-					type: 'n8n-nodes-base.webhook',
+					type: 'MNI-nodes-base.webhook',
 					typeVersion: 1,
 					position: [0, 0] as [number, number],
 					webhookId: uuid(),
@@ -222,7 +222,7 @@ test('should report outdated instance when outdated', async () => {
 
 	expect(section.nextVersions).toHaveLength(1);
 
-	expect(section.nextVersions[0].name).toBe(MOCK_09990_N8N_VERSION.name);
+	expect(section.nextVersions[0].name).toBe(MOCK_09990_MNI_VERSION.name);
 });
 
 test('should not report outdated instance when up to date', async () => {
@@ -258,7 +258,7 @@ test('should report security settings', async () => {
 			publicApiEnabled: true,
 		},
 		nodes: {
-			nodesExclude: 'n8n-nodes-base.executeCommand, n8n-nodes-base.localFileTrigger',
+			nodesExclude: 'MNI-nodes-base.executeCommand, MNI-nodes-base.localFileTrigger',
 			nodesInclude: 'none',
 		},
 		telemetry: { diagnosticsEnabled: true },

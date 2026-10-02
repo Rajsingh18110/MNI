@@ -4,12 +4,12 @@ import { createTestingPinia } from '@pinia/testing';
 import { configure, fireEvent, waitFor } from '@testing-library/vue';
 
 import AgentChannelTeamsSetup from './AgentChannelTeamsSetup.vue';
-import type { TeamsCredentialCheck } from '@n8n/api-types';
-import { TELEMETRY_EVENT } from '@n8n/telemetry';
+import type { TeamsCredentialCheck } from '@MNI/api-types';
+import { TELEMETRY_EVENT } from '@MNI/telemetry';
 
 import { checkTeamsCredential, fetchTeamsAppPackage, getTeamsSetupState } from './api';
 
-vi.mock('@n8n/i18n', async (importOriginal) => ({
+vi.mock('@MNI/i18n', async (importOriginal) => ({
 	...(await importOriginal()),
 	useI18n: () => ({
 		// Keeps interpolated values assertable, since the key stands in for the copy.
@@ -19,7 +19,7 @@ vi.mock('@n8n/i18n', async (importOriginal) => ({
 }));
 
 const { trackMock } = vi.hoisted(() => ({ trackMock: vi.fn() }));
-vi.mock('@n8n/composables/useTelemetry', () => ({
+vi.mock('@MNI/composables/useTelemetry', () => ({
 	useTelemetry: () => ({ track: trackMock }),
 }));
 
@@ -40,7 +40,7 @@ configure({ testIdAttribute: 'data-testid' });
 const ENDPOINT = 'https://n8n.example.com/rest/projects/p/agents/v2/a/webhooks/teams';
 const DEPLOY_URL = 'https://portal.azure.com/#create/Microsoft.Template/uri/encoded';
 const DEFAULT_NAME = 'Support Bot';
-const DEFAULT_DESCRIPTION = 'Chat with Support Bot, an agent powered by n8n.';
+const DEFAULT_DESCRIPTION = 'Chat with Support Bot, an agent powered by MNI.';
 const CLIENT_ID = '11111111-2222-3333-4444-555555555555';
 
 const renderComponent = createComponentRenderer(AgentChannelTeamsSetup);

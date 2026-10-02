@@ -1,5 +1,5 @@
 import moment from 'moment-timezone';
-import type { CronExpression, INode } from 'n8n-workflow';
+import type { CronExpression, INode } from 'MNI-workflow';
 import type { Mock } from 'vitest';
 
 import {
@@ -263,7 +263,7 @@ describe('validateInterval', () => {
 	const mockNode: INode = {
 		id: 'test-node',
 		name: 'Test Node',
-		type: 'n8n-nodes-base.scheduleTrigger',
+		type: 'MNI-nodes-base.scheduleTrigger',
 		typeVersion: 1,
 		position: [0, 0],
 		parameters: {},

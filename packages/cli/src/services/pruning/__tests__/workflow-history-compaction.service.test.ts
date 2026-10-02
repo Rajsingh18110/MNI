@@ -1,8 +1,8 @@
-import { mockLogger } from '@n8n/backend-test-utils';
-import type { GlobalConfig, WorkflowHistoryCompactionConfig } from '@n8n/config';
-import { Time } from '@n8n/constants';
-import type { DbConnection, WorkflowHistoryRepository } from '@n8n/db';
-import type { InstanceSettings } from 'n8n-core';
+import { mockLogger } from '@MNI/backend-test-utils';
+import type { GlobalConfig, WorkflowHistoryCompactionConfig } from '@MNI/config';
+import { Time } from '@MNI/constants';
+import type { DbConnection, WorkflowHistoryRepository } from '@MNI/db';
+import type { InstanceSettings } from 'MNI-core';
 import { mock } from 'vitest-mock-extended';
 
 import type { EventService } from '@/events/event.service';

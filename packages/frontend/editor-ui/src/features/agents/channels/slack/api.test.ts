@@ -1,4 +1,4 @@
-import { ResponseError } from '@n8n/rest-api-client';
+import { ResponseError } from '@MNI/rest-api-client';
 import { describe, expect, it } from 'vitest';
 
 import { getSlackApiErrorCode } from './api';

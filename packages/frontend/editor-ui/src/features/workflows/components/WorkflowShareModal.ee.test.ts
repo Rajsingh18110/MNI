@@ -2,7 +2,7 @@ import { reactive, shallowRef } from 'vue';
 import { createTestingPinia } from '@pinia/testing';
 import userEvent from '@testing-library/user-event';
 import { waitFor } from '@testing-library/vue';
-import type { FrontendSettings } from '@n8n/api-types';
+import type { FrontendSettings } from '@MNI/api-types';
 import {
 	createProjectListItem,
 	createTestProject,
@@ -12,11 +12,11 @@ import type { MockedStore } from '@/__tests__/utils';
 import { mockedStore, getDropdownItems } from '@/__tests__/utils';
 import { createComponentRenderer } from '@/__tests__/render';
 import WorkflowShareModal from './WorkflowShareModal.ee.vue';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { useWorkflowsStore } from '@/app/stores/workflows.store';
 import { useWorkflowsEEStore } from '@/app/stores/workflows.ee.store';
 import { useProjectsStore } from '@/features/collaboration/projects/projects.store';
-import { useRolesStore } from '@n8n/stores/roles.store';
+import { useRolesStore } from '@MNI/stores/roles.store';
 import type {
 	ProjectListItem,
 	ProjectSharingData,
@@ -47,7 +47,7 @@ vi.mock('vue-router', async (importOriginal) => {
 		}),
 	};
 });
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: () => ({
 		showMessage: vi.fn(),
 		showError: vi.fn(),
@@ -67,11 +67,11 @@ vi.mock('@/app/composables/useWorkflowSaving', () => ({
 const mockGetResourcePermissions = vi.fn(() => ({
 	workflow: { share: true },
 }));
-vi.mock('@n8n/permissions', async (importOriginal) => ({
-	...(await importOriginal<typeof import('@n8n/permissions')>()),
+vi.mock('@MNI/permissions', async (importOriginal) => ({
+	...(await importOriginal<typeof import('@MNI/permissions')>()),
 	getResourcePermissions: () => mockGetResourcePermissions(),
 }));
-vi.mock('@n8n/utils/event-bus', () => ({
+vi.mock('@MNI/utils/event-bus', () => ({
 	createEventBus: () => ({
 		emit: vi.fn(),
 	}),

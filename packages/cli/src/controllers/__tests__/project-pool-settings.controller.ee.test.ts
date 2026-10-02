@@ -1,4 +1,4 @@
-import { UpdateProjectPoolSettingsDto } from '@n8n/api-types';
+import { UpdateProjectPoolSettingsDto } from '@MNI/api-types';
 import type { Request, Response } from 'express';
 import { mock } from 'vitest-mock-extended';
 

@@ -1,5 +1,5 @@
-import type { IDataObject, INodeParameters, INodeType, INodeTypes } from 'n8n-workflow';
-import { Workflow, WEBHOOK_RESOLVERS, webhookDescriptionIsNativelyResolvable } from 'n8n-workflow';
+import type { IDataObject, INodeParameters, INodeType, INodeTypes } from 'MNI-workflow';
+import { Workflow, WEBHOOK_RESOLVERS, webhookDescriptionIsNativelyResolvable } from 'MNI-workflow';
 
 import { defaultWebhookDescription } from '../description';
 import { Webhook } from '../Webhook.node';
@@ -24,7 +24,7 @@ const nodeWithParameters = (parameters: INodeParameters) => {
 		nodes: [
 			{
 				name: 'Webhook',
-				type: 'n8n-nodes-base.webhook',
+				type: 'MNI-nodes-base.webhook',
 				typeVersion: 2.1,
 				id: 'webhook-1',
 				position: [0, 0],

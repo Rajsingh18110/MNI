@@ -1,8 +1,8 @@
 import { onMounted, onUnmounted, ref } from 'vue';
 import { useBackendConnectionStore } from '@/app/stores/backendConnection.store';
 import { useHeartbeat } from '@/app/push-connection/useHeartbeat';
-import { useSettingsStore } from '@n8n/stores/settings.store';
-import { useRootStore } from '@n8n/stores/useRootStore';
+import { useSettingsStore } from '@MNI/stores/settings.store';
+import { useRootStore } from '@MNI/stores/useRootStore';
 
 const HEALTH_CHECK_INTERVAL = 10000;
 const HEALTH_CHECK_TIMEOUT = 5000;

@@ -1,11 +1,11 @@
-import { Logger } from '@n8n/backend-common';
-import { GlobalConfig } from '@n8n/config';
-import { ExecutionRepository, WorkflowRepository } from '@n8n/db';
-import { Service } from '@n8n/di';
-import { In, IsNull, Not } from '@n8n/typeorm';
+import { Logger } from '@MNI/backend-common';
+import { GlobalConfig } from '@MNI/config';
+import { ExecutionRepository, WorkflowRepository } from '@MNI/db';
+import { Service } from '@MNI/di';
+import { In, IsNull, Not } from '@MNI/typeorm';
 import EventEmitter from 'events';
 import uniqby from 'lodash/uniqBy';
-import { InstanceSettings } from 'n8n-core';
+import { InstanceSettings } from 'MNI-core';
 import { existsSync } from 'node:fs';
 
 import { ExecutionCrashService } from '../../executions/execution-crash.service';
@@ -50,7 +50,7 @@ export interface MessageEventBusInitializeOptions {
 
 @Service()
 // TODO: Convert to TypedEventEmitter
-// eslint-disable-next-line n8n-local-rules/no-type-unsafe-event-emitter
+// eslint-disable-next-line MNI-local-rules/no-type-unsafe-event-emitter
 export class MessageEventBus extends EventEmitter {
 	private isInitialized = false;
 
@@ -132,7 +132,7 @@ export class MessageEventBus extends EventEmitter {
 		const stale = candidates.filter((p) => existsSync(p));
 		if (stale.length > 0) {
 			this.logger.warn(
-				`N8N_EVENTBUS_LOGWRITER_LOGFULLPATH is set, but event log file(s) at the default location still exist: ${stale.join(', ')}. ` +
+				`MNI_EVENTBUS_LOGWRITER_LOGFULLPATH is set, but event log file(s) at the default location still exist: ${stale.join(', ')}. ` +
 					'These files are no longer being written to and may contain unsent events from a previous run. ' +
 					'Drain or relocate them as part of the migration.',
 			);

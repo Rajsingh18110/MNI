@@ -1,6 +1,6 @@
-import { Logger } from '@n8n/backend-common';
-import { InstanceSettingsLoaderConfig } from '@n8n/config';
-import { Service } from '@n8n/di';
+import { Logger } from '@MNI/backend-common';
+import { InstanceSettingsLoaderConfig } from '@MNI/config';
+import { Service } from '@MNI/di';
 import { z } from 'zod';
 
 import { OwnershipService } from '@/services/ownership.service';
@@ -16,17 +16,17 @@ const ownerEnvSchema = z
 			.string()
 			.min(
 				1,
-				'N8N_INSTANCE_OWNER_EMAIL is required when N8N_INSTANCE_OWNER_MANAGED_BY_ENV is true',
+				'MNI_INSTANCE_OWNER_EMAIL is required when MNI_INSTANCE_OWNER_MANAGED_BY_ENV is true',
 			),
 		ownerPasswordHash: z
 			.string()
 			.min(
 				1,
-				'N8N_INSTANCE_OWNER_PASSWORD_HASH is required when N8N_INSTANCE_OWNER_MANAGED_BY_ENV is true',
+				'MNI_INSTANCE_OWNER_PASSWORD_HASH is required when MNI_INSTANCE_OWNER_MANAGED_BY_ENV is true',
 			)
 			.regex(
 				BCRYPT_HASH_RE,
-				'N8N_INSTANCE_OWNER_PASSWORD_HASH is not a valid bcrypt hash. Provide a pre-hashed bcrypt string.',
+				'MNI_INSTANCE_OWNER_PASSWORD_HASH is not a valid bcrypt hash. Provide a pre-hashed bcrypt string.',
 			),
 		ownerFirstName: z.string(),
 		ownerLastName: z.string(),
@@ -59,7 +59,7 @@ export class OwnerInstanceSettingsLoader {
 			return 'skipped';
 		}
 
-		this.logger.info('N8N_INSTANCE_OWNER_MANAGED_BY_ENV is enabled — applying owner env vars');
+		this.logger.info('MNI_INSTANCE_OWNER_MANAGED_BY_ENV is enabled — applying owner env vars');
 
 		const result = ownerEnvSchema.safeParse(this.instanceSettingsLoaderConfig);
 

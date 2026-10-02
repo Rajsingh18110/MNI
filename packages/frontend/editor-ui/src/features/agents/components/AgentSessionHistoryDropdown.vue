@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import type { ActionDropdownItem } from '@n8n/design-system';
-import { useDropdownSearch } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+import type { ActionDropdownItem } from '@MNI/design-system';
+import { useDropdownSearch } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 import { computed } from 'vue';
 
 import ChatHistoryDropdown from '@/features/ai/shared/components/ChatHistoryDropdown.vue';

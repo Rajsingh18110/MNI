@@ -1,22 +1,22 @@
 <script setup lang="ts">
 import Modal from '@/app/components/Modal.vue';
 import WorkflowDiffView from '@/features/workflows/workflowDiff/WorkflowDiffView.vue';
-import { useToast } from '@n8n/composables/useToast';
+import { useToast } from '@MNI/composables/useToast';
 import { WORKFLOW_DIFF_MODAL_KEY } from '@/app/constants';
 import type { IWorkflowDb } from '@/Interface';
-import type { SourceControlledFileStatus } from '@n8n/api-types';
+import type { SourceControlledFileStatus } from '@MNI/api-types';
 import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';
 import { useSourceControlStore } from '@/features/integrations/sourceControl.ee/sourceControl.store';
 import { useWorkflowsListStore } from '@/app/stores/workflowsList.store';
-import { useI18n } from '@n8n/i18n';
-import type { EventBus } from '@n8n/utils/event-bus';
+import { useI18n } from '@MNI/i18n';
+import type { EventBus } from '@MNI/utils/event-bus';
 import { useAsyncState } from '@vueuse/core';
 import { computed, onMounted, onUnmounted, ref, useCssModule } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { telemetry } from '@/app/plugins/telemetry';
-import { useRootStore } from '@n8n/stores/useRootStore';
+import { useRootStore } from '@MNI/stores/useRootStore';
 
-import { N8nIcon, N8nText } from '@n8n/design-system';
+import { N8nIcon, N8nText } from '@MNI/design-system';
 
 const props = defineProps<{
 	data: {

@@ -1,5 +1,5 @@
 import type { StartSpanOptions } from '@sentry/core';
-import type { INode, Workflow } from 'n8n-workflow';
+import type { INode, Workflow } from 'MNI-workflow';
 import type { Mocked } from 'vitest';
 import { mock } from 'vitest-mock-extended';
 
@@ -165,7 +165,7 @@ describe('tracing', () => {
 			const node = mock<INode>({
 				id: 'node-456',
 				name: 'Test Node',
-				type: 'n8n-nodes-base.httpRequest',
+				type: 'MNI-nodes-base.httpRequest',
 				typeVersion: 2,
 			});
 
@@ -174,7 +174,7 @@ describe('tracing', () => {
 			expect(attributes).toEqual({
 				'n8n.node.id': 'node-456',
 				'n8n.node.name': 'Test Node',
-				'n8n.node.type': 'n8n-nodes-base.httpRequest',
+				'n8n.node.type': 'MNI-nodes-base.httpRequest',
 				'n8n.node.type_version': 2,
 			});
 		});

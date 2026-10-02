@@ -1,6 +1,6 @@
-import { toJsonValue, type JSONValue } from '@n8n/utils/json/to-json-value';
-import { NodeApiError, LoggerProxy } from 'n8n-workflow';
-import type { IDataObject, INode, JsonObject } from 'n8n-workflow';
+import { toJsonValue, type JSONValue } from '@MNI/utils/json/to-json-value';
+import { NodeApiError, LoggerProxy } from 'MNI-workflow';
+import type { IDataObject, INode, JsonObject } from 'MNI-workflow';
 
 /**
  * Looks for body in the error object in the following order:

@@ -29,7 +29,7 @@ function findRepoRoot(): string {
 }
 
 export interface WorkspaceIndex {
-	/** e.g. `@n8n/design-system` → `packages/frontend/@n8n/design-system`. */
+	/** e.g. `@MNI/design-system` → `packages/frontend/@MNI/design-system`. */
 	names: ReadonlyMap<string, string>;
 	/** Every dir under `packages/` — tells a dir-relative path from a package specifier. */
 	dirs: ReadonlySet<string>;
@@ -49,7 +49,7 @@ export function buildWorkspaceIndex(repoRoot: string): WorkspaceIndex {
 				const { name } = JSON.parse(readFileSync(manifest, 'utf8')) as { name?: string };
 				if (name) names.set(name, rel);
 			}
-			walk(abs, rel); // packages nest (packages/frontend/@n8n/*)
+			walk(abs, rel); // packages nest (packages/frontend/@MNI/*)
 		}
 	};
 	walk(join(repoRoot, 'packages'), 'packages');
@@ -101,7 +101,7 @@ export const coverageOptions: CoverageReportOptions = {
 	outputDir: './coverage',
 	// 'v8' = interactive HTML; 'lcovonly' = lcov.info for Codecov; summary to stdout.
 	reports: ['v8', 'lcovonly', 'console-summary'],
-	// Frontend: keep app bundles served by n8n. Backend: keep MNI's own
+	// Frontend: keep app bundles served by MNI. Backend: keep MNI's own
 	// packages (the collect step rewrites their urls to repo dist paths).
 	entryFilter: (entry) =>
 		entry.url.includes('/assets/') || /\/packages\/[^/]+(?:\/[^/]+)?\/dist\//.test(entry.url),

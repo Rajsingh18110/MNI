@@ -1,5 +1,5 @@
-import { DateTimeColumn, WithTimestamps } from '@n8n/db';
-import { Column, Entity, PrimaryColumn } from '@n8n/typeorm';
+import { DateTimeColumn, WithTimestamps } from '@MNI/db';
+import { Column, Entity, PrimaryColumn } from '@MNI/typeorm';
 
 import type { TrustedKeySourceStatus, TrustedKeySourceType } from '../../token-exchange.schemas';
 

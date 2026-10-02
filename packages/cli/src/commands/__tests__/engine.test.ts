@@ -1,7 +1,7 @@
-import { mockInstance } from '@n8n/backend-test-utils';
-import { EngineConfig } from '@n8n/config';
-import { DbConnection } from '@n8n/db';
-import { ErrorReporter } from 'n8n-core';
+import { mockInstance } from '@MNI/backend-test-utils';
+import { EngineConfig } from '@MNI/config';
+import { DbConnection } from '@MNI/db';
+import { ErrorReporter } from 'MNI-core';
 import { mock } from 'vitest-mock-extended';
 
 import * as CrashJournal from '@/crash-journal';
@@ -61,13 +61,13 @@ describe('Engine', () => {
 			Object.entries(originalEnv).filter(
 				([key]) =>
 					!key.startsWith('DB_') &&
-					key !== 'N8N_ENCRYPTION_KEY' &&
-					key !== 'N8N_ENCRYPTION_KEY_FILE',
+					key !== 'MNI_ENCRYPTION_KEY' &&
+					key !== 'MNI_ENCRYPTION_KEY_FILE',
 			),
 		);
 		engineConfig = mockInstance(EngineConfig, {
 			authSecret: 'a'.repeat(32),
-			controlPlaneBaseUrl: 'http://n8n-main:3001',
+			controlPlaneBaseUrl: 'http://MNI-main:3001',
 		});
 	});
 
@@ -107,16 +107,16 @@ describe('Engine', () => {
 		});
 
 		it('refuses to boot with the control plane encryption key', async () => {
-			process.env.N8N_ENCRYPTION_KEY = 'secret';
+			process.env.MNI_ENCRYPTION_KEY = 'secret';
 
-			await expect(createEngine().init()).rejects.toThrow('N8N_ENCRYPTION_KEY');
+			await expect(createEngine().init()).rejects.toThrow('MNI_ENCRYPTION_KEY');
 			expect(loadNodesAndCredentials.init).not.toHaveBeenCalled();
 		});
 
 		it('refuses to boot with a control plane encryption key file', async () => {
-			process.env.N8N_ENCRYPTION_KEY_FILE = '/tmp/key';
+			process.env.MNI_ENCRYPTION_KEY_FILE = '/tmp/key';
 
-			await expect(createEngine().init()).rejects.toThrow('N8N_ENCRYPTION_KEY_FILE');
+			await expect(createEngine().init()).rejects.toThrow('MNI_ENCRYPTION_KEY_FILE');
 			expect(loadNodesAndCredentials.init).not.toHaveBeenCalled();
 		});
 
@@ -143,13 +143,13 @@ describe('Engine', () => {
 		it('refuses to boot without the shared secret', async () => {
 			engineConfig.authSecret = '';
 
-			await expect(createEngine().init()).rejects.toThrow('N8N_ENGINE_AUTH_SECRET');
+			await expect(createEngine().init()).rejects.toThrow('MNI_ENGINE_AUTH_SECRET');
 		});
 
 		it('refuses to boot without the control plane address', async () => {
 			engineConfig.controlPlaneBaseUrl = '';
 
-			await expect(createEngine().init()).rejects.toThrow('N8N_ENGINE_CONTROL_PLANE_BASE_URL');
+			await expect(createEngine().init()).rejects.toThrow('MNI_ENGINE_CONTROL_PLANE_BASE_URL');
 		});
 
 		it('never opens, migrates or reads the control plane database', async () => {

@@ -1,5 +1,5 @@
-import { N8N_CHAT_ACTION_TOOL_NAME } from '@n8n/api-types';
-import { isRecord } from '@n8n/utils/is-record';
+import { MNI_CHAT_ACTION_TOOL_NAME } from '@MNI/api-types';
+import { isRecord } from '@MNI/utils/is-record';
 
 import {
 	cardChoiceLabel,
@@ -10,7 +10,7 @@ import {
 /**
  * Build a one-line human-readable label for a resolved interactive tool call.
  * Used by `AgentChatToolSteps` to show the user's answer beside the tool name
- * (e.g. "→ n8n_chat_action · Approve & Send") so resolved cards leave a compact
+ * (e.g. "→ MNI_chat_action · Approve & Send") so resolved cards leave a compact
  * trace in scrollback instead of vanishing.
  *
  * Returns `undefined` for non-interactive tools or when the output isn't
@@ -26,7 +26,7 @@ export function summariseToolCall(
 	// throwing when a malformed payload sneaks through.
 	if (!isRecord(output)) return undefined;
 
-	if (toolName === N8N_CHAT_ACTION_TOOL_NAME) {
+	if (toolName === MNI_CHAT_ACTION_TOOL_NAME) {
 		// Answered cards clear from the chat — surface the picked label here.
 		// Display-only cards resolve with an action result (not a resume
 		// value), which fails this parse and correctly yields no summary.

@@ -1,4 +1,4 @@
-import type { INodeListSearchItems, INodeListSearchResult } from 'n8n-workflow';
+import type { INodeListSearchItems, INodeListSearchResult } from 'MNI-workflow';
 
 import type { AuthContext, GraphListResponse, NamedGraphItem } from './interfaces';
 import { microsoftApiRequest } from '../transport';

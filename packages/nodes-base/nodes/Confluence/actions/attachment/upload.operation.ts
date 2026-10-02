@@ -1,5 +1,5 @@
 import FormData from 'form-data';
-import type { IDataObject, IExecuteFunctions, INodeProperties } from 'n8n-workflow';
+import type { IDataObject, IExecuteFunctions, INodeProperties } from 'MNI-workflow';
 
 import { confluenceApiRequestUpload } from '../../transport';
 import { optionalSpaceRLC, pageRLC, resolvePageId } from '../common';

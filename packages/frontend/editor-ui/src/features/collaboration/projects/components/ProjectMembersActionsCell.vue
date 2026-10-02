@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 import type { ProjectMemberData } from '../projects.types';
-import type { UserAction } from '@n8n/design-system';
+import type { UserAction } from '@MNI/design-system';
 
-import { N8nActionToggle } from '@n8n/design-system';
+import { N8nActionToggle } from '@MNI/design-system';
 const props = defineProps<{
 	data: ProjectMemberData;
 	actions: Array<UserAction<ProjectMemberData>>;

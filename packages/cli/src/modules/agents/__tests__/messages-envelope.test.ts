@@ -1,5 +1,5 @@
-import type { SerializableAgentState } from '@n8n/agents';
-import { N8N_CHAT_ACTION_TOOL_NAME, type AgentPersistedMessageDto } from '@n8n/api-types';
+import type { SerializableAgentState } from '@MNI/agents';
+import { MNI_CHAT_ACTION_TOOL_NAME, type AgentPersistedMessageDto } from '@MNI/api-types';
 
 import { withOpenSuspensions } from '../utils/messages-envelope';
 
@@ -128,7 +128,7 @@ describe('withOpenSuspensions', () => {
 						content: [
 							{
 								type: 'tool-call',
-								toolName: N8N_CHAT_ACTION_TOOL_NAME,
+								toolName: MNI_CHAT_ACTION_TOOL_NAME,
 								toolCallId: 'tc-display',
 								input: displayCardInput,
 								state: 'resolved',
@@ -142,7 +142,7 @@ describe('withOpenSuspensions', () => {
 						content: [
 							{
 								type: 'tool-call',
-								toolName: N8N_CHAT_ACTION_TOOL_NAME,
+								toolName: MNI_CHAT_ACTION_TOOL_NAME,
 								toolCallId: 'tc-active',
 								input: activeCardInput,
 								state: 'pending',
@@ -184,7 +184,7 @@ describe('withOpenSuspensions', () => {
 				content: [
 					{
 						type: 'tool-call',
-						toolName: N8N_CHAT_ACTION_TOOL_NAME,
+						toolName: MNI_CHAT_ACTION_TOOL_NAME,
 						toolCallId: 'tc-1',
 						state: 'pending',
 					},
@@ -205,7 +205,7 @@ describe('withOpenSuspensions', () => {
 						content: [
 							{
 								type: 'tool-call',
-								toolName: N8N_CHAT_ACTION_TOOL_NAME,
+								toolName: MNI_CHAT_ACTION_TOOL_NAME,
 								toolCallId: 'tc-1',
 								input: cardInput,
 								state: 'pending',
@@ -242,7 +242,7 @@ describe('withOpenSuspensions', () => {
 				content: [
 					{
 						type: 'tool-call',
-						toolName: N8N_CHAT_ACTION_TOOL_NAME,
+						toolName: MNI_CHAT_ACTION_TOOL_NAME,
 						toolCallId: 'tc-1',
 						state: 'pending',
 					},
@@ -263,7 +263,7 @@ describe('withOpenSuspensions', () => {
 						content: [
 							{
 								type: 'tool-call',
-								toolName: N8N_CHAT_ACTION_TOOL_NAME,
+								toolName: MNI_CHAT_ACTION_TOOL_NAME,
 								toolCallId: 'tc-1',
 								input: cardInput,
 								state: 'pending',
@@ -300,7 +300,7 @@ describe('withOpenSuspensions', () => {
 				content: [
 					{
 						type: 'tool-call',
-						toolName: N8N_CHAT_ACTION_TOOL_NAME,
+						toolName: MNI_CHAT_ACTION_TOOL_NAME,
 						toolCallId: 'tc-1',
 						input: cardInput,
 						state: 'resolved',
@@ -323,7 +323,7 @@ describe('withOpenSuspensions', () => {
 						content: [
 							{
 								type: 'tool-call',
-								toolName: N8N_CHAT_ACTION_TOOL_NAME,
+								toolName: MNI_CHAT_ACTION_TOOL_NAME,
 								toolCallId: 'tc-1',
 								input: cardInput,
 								state: 'pending',

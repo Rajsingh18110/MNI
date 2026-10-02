@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import type { AgentCapabilitySummary } from '@n8n/api-types';
+import type { AgentCapabilitySummary } from '@MNI/api-types';
 import { buildAgentCardChips } from './canvasNodeAgentChips.utils';
 
 function makeSummary(overrides: Partial<AgentCapabilitySummary> = {}): AgentCapabilitySummary {
@@ -131,7 +131,7 @@ describe('buildAgentCardChips', () => {
 				{
 					type: 'node',
 					name: 'Send Message',
-					nodeType: 'n8n-nodes-base.telegramTool',
+					nodeType: 'MNI-nodes-base.telegramTool',
 					nodeTypeVersion: 2,
 				},
 				{ type: 'workflow', name: 'Run WF' },
@@ -140,7 +140,7 @@ describe('buildAgentCardChips', () => {
 
 		const chips = buildAgentCardChips(summary);
 		const nodeChip = chips.find((c) => c.label === 'Send message');
-		expect(nodeChip).toMatchObject({ nodeType: 'n8n-nodes-base.telegramTool', nodeTypeVersion: 2 });
+		expect(nodeChip).toMatchObject({ nodeType: 'MNI-nodes-base.telegramTool', nodeTypeVersion: 2 });
 		// Workflow tools don't carry a node type.
 		expect(chips.find((c) => c.label === 'Run wf')?.nodeType).toBeUndefined();
 	});
@@ -151,13 +151,13 @@ describe('buildAgentCardChips', () => {
 				{
 					type: 'node',
 					name: 'Send Message',
-					nodeType: 'n8n-nodes-base.telegramTool',
+					nodeType: 'MNI-nodes-base.telegramTool',
 					nodeTypeVersion: 1,
 				},
 				{
 					type: 'node',
 					name: 'Get Chat',
-					nodeType: 'n8n-nodes-base.telegramTool',
+					nodeType: 'MNI-nodes-base.telegramTool',
 					nodeTypeVersion: 1,
 				},
 			],
@@ -167,7 +167,7 @@ describe('buildAgentCardChips', () => {
 		expect(chips).toHaveLength(1);
 		expect(chips[0]).toMatchObject({
 			label: '2 Telegram',
-			nodeType: 'n8n-nodes-base.telegramTool',
+			nodeType: 'MNI-nodes-base.telegramTool',
 			nodeTypeVersion: 1,
 			activityKeys: ['tool:Send_Message', 'tool:Get_Chat'],
 		});

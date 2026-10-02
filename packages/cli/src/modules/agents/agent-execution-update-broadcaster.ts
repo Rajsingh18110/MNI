@@ -1,8 +1,8 @@
-import type { PushPayload } from '@n8n/api-types';
-import { Logger } from '@n8n/backend-common';
-import { OnPubSubEvent } from '@n8n/decorators';
-import { Service } from '@n8n/di';
-import { InstanceSettings } from 'n8n-core';
+import type { PushPayload } from '@MNI/api-types';
+import { Logger } from '@MNI/backend-common';
+import { OnPubSubEvent } from '@MNI/decorators';
+import { Service } from '@MNI/di';
+import { InstanceSettings } from 'MNI-core';
 
 import { Push } from '@/push';
 import type { PubSubCommandMap } from '@/scaling/pubsub/pubsub.event-map';

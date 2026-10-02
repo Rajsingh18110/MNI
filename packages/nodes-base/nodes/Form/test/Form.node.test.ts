@@ -7,14 +7,14 @@ import type {
 	IWebhookFunctions,
 	IWorkflowSettings,
 	NodeTypeAndVersion,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import {
 	createRunExecutionData,
 	FORM_NODE_TYPE,
 	FORM_TRIGGER_NODE_TYPE,
 	UserError,
 	Workflow,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import type { MockProxy } from 'vitest-mock-extended';
 import { mock } from 'vitest-mock-extended';
 
@@ -77,7 +77,7 @@ describe('Form Node', () => {
 		it('should put execution to wait if operation is not completion', async () => {
 			mockExecuteFunctions.getNodeParameter.mockReturnValue('page');
 			mockExecuteFunctions.getParentNodes.mockReturnValue([
-				mock<NodeTypeAndVersion>({ type: 'n8n-nodes-base.formTrigger' }),
+				mock<NodeTypeAndVersion>({ type: 'MNI-nodes-base.formTrigger' }),
 			]);
 			mockExecuteFunctions.getChildNodes.mockReturnValue([]);
 			mockExecuteFunctions.getNode.mockReturnValue(mock<INode>());
@@ -90,7 +90,7 @@ describe('Form Node', () => {
 		it('should fail the node when the redirect response cannot be dispatched', async () => {
 			mockExecuteFunctions.getNodeParameter.mockReturnValue('page');
 			mockExecuteFunctions.getParentNodes.mockReturnValue([
-				mock<NodeTypeAndVersion>({ type: 'n8n-nodes-base.formTrigger' }),
+				mock<NodeTypeAndVersion>({ type: 'MNI-nodes-base.formTrigger' }),
 			]);
 			mockExecuteFunctions.getChildNodes.mockReturnValue([]);
 			mockExecuteFunctions.getNode.mockReturnValue(mock<INode>());
@@ -102,10 +102,10 @@ describe('Form Node', () => {
 		it('should throw an error if completion is not the last Form node', async () => {
 			mockExecuteFunctions.getNodeParameter.mockReturnValue('completion');
 			mockExecuteFunctions.getParentNodes.mockReturnValue([
-				mock<NodeTypeAndVersion>({ type: 'n8n-nodes-base.formTrigger' }),
+				mock<NodeTypeAndVersion>({ type: 'MNI-nodes-base.formTrigger' }),
 			]);
 			mockExecuteFunctions.getChildNodes.mockReturnValue([
-				mock<NodeTypeAndVersion>({ type: 'n8n-nodes-base.form' }),
+				mock<NodeTypeAndVersion>({ type: 'MNI-nodes-base.form' }),
 			]);
 			mockExecuteFunctions.getNode.mockReturnValue(mock<INode>());
 
@@ -118,7 +118,7 @@ describe('Form Node', () => {
 			const inputData: INodeExecutionData[] = [{ json: { test: 'data' } }];
 			mockExecuteFunctions.getNodeParameter.mockReturnValue('completion');
 			mockExecuteFunctions.getParentNodes.mockReturnValue([
-				mock<NodeTypeAndVersion>({ type: 'n8n-nodes-base.formTrigger' }),
+				mock<NodeTypeAndVersion>({ type: 'MNI-nodes-base.formTrigger' }),
 			]);
 			mockExecuteFunctions.getChildNodes.mockReturnValue([]);
 			mockExecuteFunctions.getInputData.mockReturnValue(inputData);
@@ -147,7 +147,7 @@ describe('Form Node', () => {
 			mockWebhookFunctions.getRequestObject.mockReturnValue({ method: 'GET' } as Request);
 			mockWebhookFunctions.getParentNodes.mockReturnValue([
 				{
-					type: 'n8n-nodes-base.formTrigger',
+					type: 'MNI-nodes-base.formTrigger',
 					name: 'Form Trigger',
 					typeVersion: 2.1,
 					disabled: false,
@@ -212,7 +212,7 @@ describe('Form Node', () => {
 				],
 				formSubmittedText: 'Your response has been recorded',
 				formTitle: 'Form Title',
-				n8nWebsiteLink: 'https://n8n.io/?utm_source=n8n-internal&utm_medium=form-trigger',
+				n8nWebsiteLink: 'https://n8n.io/?utm_source=MNI-internal&utm_medium=form-trigger',
 				testRun: true,
 				useResponseData: true,
 				formSubmittedHeader: undefined,
@@ -226,7 +226,7 @@ describe('Form Node', () => {
 			} as Request);
 			mockWebhookFunctions.getParentNodes.mockReturnValue([
 				{
-					type: 'n8n-nodes-base.formTrigger',
+					type: 'MNI-nodes-base.formTrigger',
 					name: 'Form Trigger',
 					typeVersion: 2.1,
 					disabled: false,
@@ -335,7 +335,7 @@ describe('Form Node', () => {
 				});
 				mockWebhookFunctions.getParentNodes.mockReturnValue([
 					{
-						type: 'n8n-nodes-base.formTrigger',
+						type: 'MNI-nodes-base.formTrigger',
 						name: 'Form Trigger',
 						typeVersion: 2.1,
 						disabled: false,
@@ -360,7 +360,7 @@ describe('Form Node', () => {
 				expect(mockResponseObject.render).toHaveBeenCalledWith('form-trigger-completion', {
 					// The attribution footer is on for every case here, so it always
 					// carries the link it points at.
-					n8nWebsiteLink: 'https://n8n.io/?utm_source=n8n-internal&utm_medium=form-trigger',
+					n8nWebsiteLink: 'https://n8n.io/?utm_source=MNI-internal&utm_medium=form-trigger',
 					...expected,
 				});
 			}
@@ -377,7 +377,7 @@ describe('Form Node', () => {
 			mockWebhookFunctions.getRequestObject.mockReturnValue({ method: 'GET' } as Request);
 			mockWebhookFunctions.getParentNodes.mockReturnValue([
 				{
-					type: 'n8n-nodes-base.formTrigger',
+					type: 'MNI-nodes-base.formTrigger',
 					name: 'Form Trigger',
 					typeVersion: 2.1,
 					disabled: false,
@@ -426,7 +426,7 @@ describe('Form Node', () => {
 			});
 			mockWebhookFunctions.getParentNodes.mockReturnValue([
 				{
-					type: 'n8n-nodes-base.formTrigger',
+					type: 'MNI-nodes-base.formTrigger',
 					name: 'Form Trigger',
 					typeVersion: 2.1,
 					disabled: false,
@@ -476,7 +476,7 @@ describe('Form Node', () => {
 				mockWebhookFunctions.getRequestObject.mockReturnValue({ method: 'GET' } as Request);
 				mockWebhookFunctions.getParentNodes.mockReturnValue([
 					{
-						type: 'n8n-nodes-base.formTrigger',
+						type: 'MNI-nodes-base.formTrigger',
 						name: 'Form Trigger',
 						typeVersion: 2.1,
 						disabled: false,
@@ -532,7 +532,7 @@ describe('Form Node', () => {
 
 	describe('node references with special characters', () => {
 		// intentionally have a string with special chars and interpolation-looking part
-		// eslint-disable-next-line n8n-local-rules/no-interpolation-in-regular-string
+		// eslint-disable-next-line MNI-local-rules/no-interpolation-in-regular-string
 		const triggerName = '"Form\'s" \\ ${Trigger}';
 		const triggerNode = {
 			id: 'trigger-id',
@@ -740,7 +740,7 @@ describe('Form Node', () => {
 		) => {
 			mockWebhookFunctions.getParentNodes.mockReturnValue([
 				{
-					type: 'n8n-nodes-base.formTrigger',
+					type: 'MNI-nodes-base.formTrigger',
 					name: 'Form Trigger',
 					typeVersion: 2.6,
 					disabled: false,
@@ -803,10 +803,10 @@ describe('Form Node', () => {
 			mockWebhookFunctions.getRequestObject.mockReturnValue({
 				method: 'GET',
 				originalUrl: '/form-waiting/exec',
-				headers: { cookie: 'n8n-auth=valid.jwt.token' },
+				headers: { cookie: 'MNI-auth=valid.jwt.token' },
 				query: {},
 			} as unknown as Request);
-			mockWebhookFunctions.getNode.mockReturnValue(mock<INode>({ type: 'n8n-nodes-base.form' }));
+			mockWebhookFunctions.getNode.mockReturnValue(mock<INode>({ type: 'MNI-nodes-base.form' }));
 			mockWebhookFunctions.getNodeParameter.mockImplementation((paramName: string) => {
 				if (paramName === 'operation') return 'page';
 				if (paramName === 'useJson') return false;
@@ -828,11 +828,11 @@ describe('Form Node', () => {
 				method: 'POST',
 				contentType: 'multipart/form-data',
 				originalUrl: '/form-waiting/exec',
-				headers: { cookie: 'n8n-auth=valid.jwt.token' },
+				headers: { cookie: 'MNI-auth=valid.jwt.token' },
 				query: {},
 			} as unknown as Request);
 			mockWebhookFunctions.getNode.mockReturnValue(
-				mock<INode>({ type: 'n8n-nodes-base.form', typeVersion: 2.6 }),
+				mock<INode>({ type: 'MNI-nodes-base.form', typeVersion: 2.6 }),
 			);
 			mockWebhookFunctions.getNodeParameter.mockImplementation((paramName: string) => {
 				if (paramName === 'operation') return 'page';
@@ -864,11 +864,11 @@ describe('Form Node', () => {
 				method: 'POST',
 				contentType: 'multipart/form-data',
 				originalUrl: '/form-waiting/exec',
-				headers: { cookie: 'n8n-auth=valid.jwt.token' },
+				headers: { cookie: 'MNI-auth=valid.jwt.token' },
 				query: {},
 			} as unknown as Request);
 			mockWebhookFunctions.getNode.mockReturnValue(
-				mock<INode>({ type: 'n8n-nodes-base.form', typeVersion: 2.6 }),
+				mock<INode>({ type: 'MNI-nodes-base.form', typeVersion: 2.6 }),
 			);
 			mockWebhookFunctions.getNodeParameter.mockImplementation((paramName: string) => {
 				if (paramName === 'operation') return 'page';
@@ -910,7 +910,7 @@ describe('Form Node', () => {
 				headers: {},
 				query: {},
 			} as unknown as Request);
-			mockWebhookFunctions.getNode.mockReturnValue(mock<INode>({ type: 'n8n-nodes-base.form' }));
+			mockWebhookFunctions.getNode.mockReturnValue(mock<INode>({ type: 'MNI-nodes-base.form' }));
 			mockWebhookFunctions.getNodeParameter.mockImplementation((paramName: string) => {
 				if (paramName === 'operation') return 'page';
 				if (paramName === 'useJson') return false;
@@ -944,11 +944,11 @@ describe('Form Node', () => {
 					method: 'POST',
 					contentType: 'multipart/form-data',
 					originalUrl: '/form-waiting/exec',
-					headers: { cookie: 'n8n-auth=valid.jwt.token' },
+					headers: { cookie: 'MNI-auth=valid.jwt.token' },
 					query: {},
 				} as unknown as Request);
 				mockWebhookFunctions.getNode.mockReturnValue(
-					mock<INode>({ type: 'n8n-nodes-base.form', typeVersion: 2.6 }),
+					mock<INode>({ type: 'MNI-nodes-base.form', typeVersion: 2.6 }),
 				);
 				mockWebhookFunctions.getNodeParameter.mockImplementation((paramName: string) => {
 					if (paramName === 'operation') return operation;
@@ -1072,7 +1072,7 @@ describe('Form Node', () => {
 			});
 			mockWebhookFunctions.getParentNodes.mockReturnValue([
 				{
-					type: 'n8n-nodes-base.formTrigger',
+					type: 'MNI-nodes-base.formTrigger',
 					name: 'Form Trigger',
 					typeVersion: 2.1,
 					disabled: false,
@@ -1096,7 +1096,7 @@ describe('Form Node', () => {
 			expect(result).toEqual({ noWebhookResponse: true });
 			expect(mockResponseObject.render).toHaveBeenCalledWith('form-trigger-completion', {
 				appendAttribution: 'test',
-				n8nWebsiteLink: 'https://n8n.io/?utm_source=n8n-internal&utm_medium=form-trigger',
+				n8nWebsiteLink: 'https://n8n.io/?utm_source=MNI-internal&utm_medium=form-trigger',
 				formTitle: 'test',
 				message: 'Test Message',
 				redirectUrl: 'https://n8n.io',

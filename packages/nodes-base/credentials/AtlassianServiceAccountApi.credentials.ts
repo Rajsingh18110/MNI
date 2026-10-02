@@ -1,4 +1,4 @@
-import { httpStatusFromError } from '@n8n/backend-network';
+import { httpStatusFromError } from '@MNI/backend-network';
 import type {
 	ICredentialDataDecryptedObject,
 	ICredentialTestRequest,
@@ -7,8 +7,8 @@ import type {
 	IHttpRequestOptions,
 	INodeProperties,
 	Icon,
-} from 'n8n-workflow';
-import { OperationalError, UserError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { OperationalError, UserError } from 'MNI-workflow';
 
 import {
 	getTokenRequestClient,

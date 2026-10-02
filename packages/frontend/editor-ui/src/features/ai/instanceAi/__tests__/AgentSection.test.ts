@@ -1,6 +1,6 @@
 import { createTestingPinia } from '@pinia/testing';
 import { mount } from '@vue/test-utils';
-import type { InstanceAiAgentNode, InstanceAiTargetResource } from '@n8n/api-types';
+import type { InstanceAiAgentNode, InstanceAiTargetResource } from '@MNI/api-types';
 import { defineComponent, h, type PropType } from 'vue';
 import { beforeEach, describe, expect, it } from 'vitest';
 import AgentSection from '../components/AgentSection.vue';

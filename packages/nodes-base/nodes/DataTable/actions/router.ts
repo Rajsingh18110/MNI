@@ -4,8 +4,8 @@ import type {
 	AllEntities,
 	DataTableRowOperation,
 	DataTableTableOperation,
-} from 'n8n-workflow';
-import { NodeApiError, NodeOperationError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeApiError, NodeOperationError } from 'MNI-workflow';
 
 import * as row from './row/Row.resource';
 import * as table from './table/Table.resource';

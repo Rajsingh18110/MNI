@@ -1,19 +1,19 @@
 import { computed, ref, h } from 'vue';
 import type { Ref } from 'vue';
-import type { ChatUI } from '@n8n/design-system';
-import type { INodeParameters } from 'n8n-workflow';
-import { deepCopy } from 'n8n-workflow';
-import { assert } from '@n8n/utils/assert';
+import type { ChatUI } from '@MNI/design-system';
+import type { INodeParameters } from 'MNI-workflow';
+import { deepCopy } from 'MNI-workflow';
+import { assert } from '@MNI/utils/assert';
 import { replaceCode } from '@/features/ai/assistant/assistant.api';
-import { useRootStore } from '@n8n/stores/useRootStore';
+import { useRootStore } from '@MNI/stores/useRootStore';
 import {
 	useWorkflowDocumentStore,
 	createWorkflowDocumentId,
 	injectWorkflowDocumentStore,
 } from '@/app/stores/workflowDocument.store';
 import { useNDVStore } from '@/features/ndv/shared/ndv.store';
-import { useI18n } from '@n8n/i18n';
-import { useToast } from '@n8n/composables/useToast';
+import { useI18n } from '@MNI/i18n';
+import { useToast } from '@MNI/composables/useToast';
 import { codeNodeEditorEventBus } from '@/app/event-bus';
 import { ndvEventBus } from '@/features/ndv/shared/ndv.eventBus';
 import type { IUpdateInformation } from '@/Interface';

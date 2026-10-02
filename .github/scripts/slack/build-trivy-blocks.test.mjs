@@ -7,7 +7,7 @@ import assert from 'node:assert/strict';
 import buildTrivyBlocks from './build-trivy-blocks.mjs';
 
 const ENV = {
-	GITHUB_REPOSITORY: 'n8n-io/n8n',
+	GITHUB_REPOSITORY: 'MNI-io/MNI',
 	GITHUB_SERVER_URL: 'https://github.com',
 	GITHUB_RUN_ID: '1',
 };
@@ -18,7 +18,7 @@ function build(report) {
 	writeFileSync(path, JSON.stringify(report));
 	return buildTrivyBlocks({
 		results: path,
-		imageRef: 'ghcr.io/n8n-io/n8n:nightly',
+		imageRef: 'ghcr.io/MNI-io/MNI:nightly',
 		env: ENV,
 	});
 }
@@ -92,5 +92,5 @@ test('emits view-report button with run url from GH env', () => {
 		{ VulnerabilityID: 'CVE-1', Severity: 'HIGH', PkgName: 'a', InstalledVersion: '1' },
 	] }] });
 	const actions = blocks.find((b) => b.type === 'actions');
-	assert.equal(actions.elements[0].url, 'https://github.com/n8n-io/n8n/actions/runs/1');
+	assert.equal(actions.elements[0].url, 'https://github.com/MNI-io/MNI/actions/runs/1');
 });

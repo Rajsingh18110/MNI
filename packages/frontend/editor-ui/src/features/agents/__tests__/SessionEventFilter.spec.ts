@@ -3,7 +3,7 @@ import { mount } from '@vue/test-utils';
 import SessionEventFilter from '../components/SessionEventFilter.vue';
 import type { FilterOption } from '../session-timeline.types';
 
-vi.mock('@n8n/design-system', () => ({
+vi.mock('@MNI/design-system', () => ({
 	N8nButton: { template: '<button><slot /></button>' },
 	N8nDropdownMenu: {
 		props: ['items'],

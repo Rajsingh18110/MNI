@@ -1,7 +1,7 @@
-import { Redactable } from '@n8n/decorators';
-import { Service } from '@n8n/di';
-import { InstanceSettings } from 'n8n-core';
-import type { IWorkflowBase, JsonValue } from 'n8n-workflow';
+import { Redactable } from '@MNI/decorators';
+import { Service } from '@MNI/di';
+import { InstanceSettings } from 'MNI-core';
+import type { IWorkflowBase, JsonValue } from 'MNI-workflow';
 
 import { EventMessageGeneric } from '@/eventbus/event-message-classes/event-message-generic';
 import { MessageEventBus } from '@/eventbus/message-event-bus/message-event-bus';
@@ -74,10 +74,10 @@ export class LogStreamingEventRelay extends EventRelay {
 
 	init() {
 		this.setupListeners({
-			'n8n-package-imported': (event) => this.packageImported(event),
-			'n8n-package-exported': (event) => this.packageExported(event),
-			'n8n-package-export-failed': (event) => this.packageExportFailed(event),
-			'n8n-package-import-failed': (event) => this.packageImportFailed(event),
+			'MNI-package-imported': (event) => this.packageImported(event),
+			'MNI-package-exported': (event) => this.packageExported(event),
+			'MNI-package-export-failed': (event) => this.packageExportFailed(event),
+			'MNI-package-import-failed': (event) => this.packageImportFailed(event),
 			'workflow-created': (event) => this.workflowCreated(event),
 			'workflow-deleted': (event) => this.workflowDeleted(event),
 			'workflow-archived': (event) => this.workflowArchived(event),
@@ -196,9 +196,9 @@ export class LogStreamingEventRelay extends EventRelay {
 	// #region Workflow
 
 	@Redactable()
-	private packageImported({ user, counts, ...rest }: RelayEventMap['n8n-package-imported']) {
+	private packageImported({ user, counts, ...rest }: RelayEventMap['MNI-package-imported']) {
 		void this.eventBus.sendAuditEvent({
-			eventName: 'n8n.audit.n8n-package.import.success',
+			eventName: 'n8n.audit.MNI-package.import.success',
 			payload: { ...user, ...rest },
 		});
 	}
@@ -210,17 +210,17 @@ export class LogStreamingEventRelay extends EventRelay {
 		credentialExportPolicy,
 		includeArchivedWorkflows,
 		...rest
-	}: RelayEventMap['n8n-package-exported']) {
+	}: RelayEventMap['MNI-package-exported']) {
 		void this.eventBus.sendAuditEvent({
-			eventName: 'n8n.audit.n8n-package.export.success',
+			eventName: 'n8n.audit.MNI-package.export.success',
 			payload: { ...user, ...rest },
 		});
 	}
 
 	@Redactable()
-	private packageExportFailed({ user, ...rest }: RelayEventMap['n8n-package-export-failed']) {
+	private packageExportFailed({ user, ...rest }: RelayEventMap['MNI-package-export-failed']) {
 		void this.eventBus.sendAuditEvent({
-			eventName: 'n8n.audit.n8n-package.export.failed',
+			eventName: 'n8n.audit.MNI-package.export.failed',
 			payload: { ...user, operation: 'export', ...rest },
 		});
 	}
@@ -236,9 +236,9 @@ export class LogStreamingEventRelay extends EventRelay {
 	}
 
 	@Redactable()
-	private packageImportFailed({ user, ...rest }: RelayEventMap['n8n-package-import-failed']) {
+	private packageImportFailed({ user, ...rest }: RelayEventMap['MNI-package-import-failed']) {
 		void this.eventBus.sendAuditEvent({
-			eventName: 'n8n.audit.n8n-package.import.failed',
+			eventName: 'n8n.audit.MNI-package.import.failed',
 			payload: { ...user, operation: 'import', ...rest },
 		});
 	}

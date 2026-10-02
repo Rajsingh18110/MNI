@@ -1,6 +1,6 @@
 import { computed, shallowReactive, toValue, watch, type MaybeRefOrGetter } from 'vue';
 
-import type { InstanceAiAgentNode, InstanceAiSetupItem } from '@n8n/api-types';
+import type { InstanceAiAgentNode, InstanceAiSetupItem } from '@MNI/api-types';
 import { useWorkflowSetupItems } from '@/features/setupPanel/composables/useWorkflowSetupItems';
 import { isAgentEditingWorkflow } from '../canvasPreview.utils';
 

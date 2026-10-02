@@ -35,7 +35,7 @@ interface ContainerSample {
 	netTx: number;
 }
 
-const PROJECT_NAME_PREFIX = process.env.PLAYWRIGHT_PROJECT_NAME_PREFIX ?? 'n8n-stack-';
+const PROJECT_NAME_PREFIX = process.env.PLAYWRIGHT_PROJECT_NAME_PREFIX ?? 'MNI-stack-';
 
 function parseBytes(input: string): number {
 	const match = input.trim().match(/^([\d.]+)\s*([kMG]i?B)?$/);

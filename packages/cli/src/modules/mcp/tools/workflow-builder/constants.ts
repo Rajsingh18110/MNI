@@ -16,4 +16,4 @@ export {
 	MCP_UPDATE_WORKFLOW_TOOL,
 	MCP_EXPLORE_NODE_RESOURCES_TOOL,
 	MCP_GET_WORKFLOW_BEST_PRACTICES_TOOL,
-} from '@n8n/ai-workflow-builder';
+} from '@MNI/ai-workflow-builder';

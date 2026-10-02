@@ -1,4 +1,4 @@
-import type { IDataObject, INode, INodeTypeBaseDescription, ITriggerFunctions } from 'n8n-workflow';
+import type { IDataObject, INode, INodeTypeBaseDescription, ITriggerFunctions } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import { type ICredentialsDataImap } from '@credentials/Imap.credentials';
@@ -7,8 +7,8 @@ import { EmailReadImapV1 } from './EmailReadImapV1.node';
 
 const { connectMock } = vi.hoisted(() => ({ connectMock: vi.fn() }));
 
-vi.mock('@n8n/imap', async (importOriginal) => ({
-	...(await importOriginal<typeof import('@n8n/imap')>()),
+vi.mock('@MNI/imap', async (importOriginal) => ({
+	...(await importOriginal<typeof import('@MNI/imap')>()),
 	ImapSimple: { connect: connectMock },
 }));
 
@@ -41,7 +41,7 @@ const createConnection = () => {
 	};
 };
 
-// Reconnecting itself belongs to @n8n/imap and is covered there; the node only asks for it.
+// Reconnecting itself belongs to @MNI/imap and is covered there; the node only asks for it.
 describe('EmailReadImapV1 reconnection', () => {
 	const baseDescription: INodeTypeBaseDescription = {
 		displayName: 'EmailReadImapV1',

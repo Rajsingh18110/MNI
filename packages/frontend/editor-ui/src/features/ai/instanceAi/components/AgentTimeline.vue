@@ -3,8 +3,8 @@ import type {
 	InstanceAiAgentNode,
 	InstanceAiTimelineEntry,
 	InstanceAiToolCallState,
-} from '@n8n/api-types';
-import { useI18n } from '@n8n/i18n';
+} from '@MNI/api-types';
+import { useI18n } from '@MNI/i18n';
 import { computed } from 'vue';
 import {
 	buildTimelineBlocks,
@@ -12,8 +12,8 @@ import {
 	isStreamingTimelineEntry,
 	type ArtifactInfo,
 } from '../agentTimeline.utils';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
-import { useRootStore } from '@n8n/stores/useRootStore';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
+import { useRootStore } from '@MNI/stores/useRootStore';
 import { useThread } from '../instanceAi.store';
 import { resolvePlanTasks } from '../planReview.utils';
 import AgentSection from './AgentSection.vue';
@@ -339,10 +339,10 @@ function handlePlanDeny(tc: InstanceAiToolCallState) {
 <style lang="scss" module>
 .timeline {
 	/** Keep in sync with the nested activity rail overshoot in N8nAiActivityStep. */
-	--n8n--ai-activity-step-gap: var(--spacing--2xs);
+	--MNI--ai-activity-step-gap: var(--spacing--2xs);
 	display: flex;
 	flex-direction: column;
-	gap: var(--n8n--ai-activity-step-gap);
+	gap: var(--MNI--ai-activity-step-gap);
 }
 
 .timelineItem {

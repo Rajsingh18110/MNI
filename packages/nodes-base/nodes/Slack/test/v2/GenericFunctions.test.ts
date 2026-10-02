@@ -1,7 +1,7 @@
-import type { IExecuteFunctions } from 'n8n-workflow';
-import { NodeOperationError } from 'n8n-workflow';
+import type { IExecuteFunctions } from 'MNI-workflow';
+import { NodeOperationError } from 'MNI-workflow';
 
-import { sleep } from '@n8n/utils/sleep';
+import { sleep } from '@MNI/utils/sleep';
 import {
 	slackApiRequest,
 	slackApiRequestAllItems,
@@ -12,14 +12,14 @@ import {
 	getMessageContent,
 } from '../../V2/GenericFunctions';
 import type { Mock, Mocked } from 'vitest';
-import type * as _importType0 from 'n8n-workflow';
+import type * as _importType0 from 'MNI-workflow';
 
-vi.mock('n8n-workflow', async () => ({
-	...(await vi.importActual<typeof _importType0>('n8n-workflow')),
+vi.mock('MNI-workflow', async () => ({
+	...(await vi.importActual<typeof _importType0>('MNI-workflow')),
 	NodeApiError: vi.fn(),
 }));
 
-vi.mock('@n8n/utils/sleep', () => ({
+vi.mock('@MNI/utils/sleep', () => ({
 	sleep: vi.fn().mockResolvedValue(undefined),
 }));
 
@@ -32,7 +32,7 @@ describe('Slack V2 > GenericFunctions', () => {
 			helpers: {
 				requestWithAuthentication: vi.fn(),
 			},
-			getNode: vi.fn().mockReturnValue({ type: 'n8n-nodes-base.slack', typeVersion: 2 }),
+			getNode: vi.fn().mockReturnValue({ type: 'MNI-nodes-base.slack', typeVersion: 2 }),
 			getNodeParameter: vi.fn().mockReturnValue('accessToken'),
 			getWorkflow: vi.fn().mockReturnValue({ id: 'workflow-123', active: true }),
 			getInstanceBaseUrl: vi.fn().mockReturnValue('https://test.n8n.io/'),
@@ -1344,7 +1344,7 @@ describe('Slack V2 > GenericFunctions', () => {
 					type: 'section',
 					text: {
 						type: 'mrkdwn',
-						text: '_Automated with this <https://test.n8n.io/workflow/workflow-123?utm_source=n8n-internal&utm_medium=powered_by&utm_campaign=n8n-nodes-base.slack_instance-123|MNI workflow>_',
+						text: '_Automated with this <https://test.n8n.io/workflow/workflow-123?utm_source=MNI-internal&utm_medium=powered_by&utm_campaign=MNI-nodes-base.slack_instance-123|MNI workflow>_',
 					},
 				});
 				expect(result.text).toBe('Fallback text');
@@ -1409,7 +1409,7 @@ describe('Slack V2 > GenericFunctions', () => {
 
 				expect((result as any).blocks).toHaveLength(2);
 				expect((result as any).blocks[1].text.text).toBe(
-					'_Automated with this <https://test.n8n.io/workflow/workflow-123?utm_source=n8n-internal&utm_medium=powered_by&utm_campaign=n8n-nodes-base.slack|MNI workflow>_',
+					'_Automated with this <https://test.n8n.io/workflow/workflow-123?utm_source=MNI-internal&utm_medium=powered_by&utm_campaign=MNI-nodes-base.slack|MNI workflow>_',
 				);
 			});
 
@@ -1555,7 +1555,7 @@ describe('Slack V2 > GenericFunctions', () => {
 					title: 'Warning attachment',
 				});
 				expect((result as any).attachments[2]).toEqual({
-					text: '_Automated with this <https://test.n8n.io/workflow/workflow-123?utm_source=n8n-internal&utm_medium=powered_by&utm_campaign=n8n-nodes-base.slack_instance-123|MNI workflow>_',
+					text: '_Automated with this <https://test.n8n.io/workflow/workflow-123?utm_source=MNI-internal&utm_medium=powered_by&utm_campaign=MNI-nodes-base.slack_instance-123|MNI workflow>_',
 				});
 			});
 
@@ -1627,7 +1627,7 @@ describe('Slack V2 > GenericFunctions', () => {
 				// Plus the attribution link is added
 				expect((result as any).attachments).toHaveLength(15);
 				expect((result as any).attachments[(result as any).attachments.length - 1]).toEqual({
-					text: '_Automated with this <https://test.n8n.io/workflow/workflow-123?utm_source=n8n-internal&utm_medium=powered_by&utm_campaign=n8n-nodes-base.slack_instance-123|MNI workflow>_',
+					text: '_Automated with this <https://test.n8n.io/workflow/workflow-123?utm_source=MNI-internal&utm_medium=powered_by&utm_campaign=MNI-nodes-base.slack_instance-123|MNI workflow>_',
 				});
 			});
 		});

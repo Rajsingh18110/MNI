@@ -7,8 +7,8 @@ import {
 	N8nDialogHeader,
 	N8nDialogTitle,
 	N8nText,
-} from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+} from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 import { ref, watch } from 'vue';
 
 const props = defineProps<{

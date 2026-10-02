@@ -1,4 +1,4 @@
-import { Command } from '@n8n/decorators';
+import { Command } from '@MNI/decorators';
 import { z } from 'zod';
 
 import { BaseCommand } from '../base-command';

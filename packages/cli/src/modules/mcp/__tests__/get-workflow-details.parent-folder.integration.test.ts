@@ -3,10 +3,10 @@ import {
 	createWorkflow,
 	linkUserToProject,
 	testDb,
-} from '@n8n/backend-test-utils';
-import type { Project, User } from '@n8n/db';
-import { Container } from '@n8n/di';
-import type { INodeTypes } from 'n8n-workflow';
+} from '@MNI/backend-test-utils';
+import type { Project, User } from '@MNI/db';
+import { Container } from '@MNI/di';
+import type { INodeTypes } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import type { CredentialsService } from '@/credentials/credentials.service';

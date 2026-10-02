@@ -1,4 +1,4 @@
-import { AI_PREFERENCES_MAX_IDS_FILTER } from '@n8n/api-types';
+import { AI_PREFERENCES_MAX_IDS_FILTER } from '@MNI/api-types';
 import { createTestingPinia } from '@pinia/testing';
 import { setActivePinia } from 'pinia';
 

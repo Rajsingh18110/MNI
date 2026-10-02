@@ -4,7 +4,7 @@ import type { TestRequirements } from '../../../Types';
 const requirements: TestRequirements = {
 	workflow: 'manual-trigger-with-code.json',
 	storage: {
-		N8N_EXPERIMENT_OVERRIDES: JSON.stringify({ ndv_in_focus_panel: 'variant' }),
+		MNI_EXPERIMENT_OVERRIDES: JSON.stringify({ ndv_in_focus_panel: 'variant' }),
 	},
 };
 

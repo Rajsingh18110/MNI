@@ -20,7 +20,7 @@ vi.mock('@/app/stores/workflowDocument.store', () => ({
 	injectWorkflowDocumentStore: () => ({ value: { workflowId: 'wf-1' } }),
 }));
 
-vi.mock('@n8n/composables/useTelemetry', () => ({
+vi.mock('@MNI/composables/useTelemetry', () => ({
 	useTelemetry: () => ({ track: mockTrack }),
 }));
 

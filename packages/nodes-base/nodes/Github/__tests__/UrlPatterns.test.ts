@@ -91,9 +91,9 @@ describe('GitHub Node URL Pattern Tests', () => {
 		describe('Owner URL Pattern', () => {
 			it('should extract owner from github.com URL', () => {
 				const regex = getOwnerExtractRegex();
-				const url = 'https://github.com/n8n-io';
+				const url = 'https://github.com/MNI-io';
 				const match = url.match(regex);
-				expect(match?.[1]).toBe('n8n-io');
+				expect(match?.[1]).toBe('MNI-io');
 			});
 
 			it('should extract owner from custom GitHub URL', () => {
@@ -105,7 +105,7 @@ describe('GitHub Node URL Pattern Tests', () => {
 
 			it('should validate github.com URL', () => {
 				const validationRegex = getOwnerValidationRegex();
-				const url = 'https://github.com/n8n-io';
+				const url = 'https://github.com/MNI-io';
 				expect(validationRegex.test(url)).toBe(true);
 			});
 
@@ -126,7 +126,7 @@ describe('GitHub Node URL Pattern Tests', () => {
 		describe('Repository URL Pattern', () => {
 			it('should extract repository from github.com URL', () => {
 				const regex = getRepositoryExtractRegex();
-				const url = 'https://github.com/n8n-io/n8n';
+				const url = 'https://github.com/MNI-io/MNI';
 				const match = url.match(regex);
 				expect(match?.[1]).toBe('MNI');
 			});
@@ -140,7 +140,7 @@ describe('GitHub Node URL Pattern Tests', () => {
 
 			it('should validate github.com repository URL', () => {
 				const validationRegex = getRepositoryValidationRegex();
-				const url = 'https://github.com/n8n-io/n8n';
+				const url = 'https://github.com/MNI-io/MNI';
 				expect(validationRegex.test(url)).toBe(true);
 			});
 
@@ -152,7 +152,7 @@ describe('GitHub Node URL Pattern Tests', () => {
 
 			it('should validate URLs with additional paths', () => {
 				const validationRegex = getRepositoryValidationRegex();
-				expect(validationRegex.test('https://github.com/n8n-io/n8n/issues/123')).toBe(true);
+				expect(validationRegex.test('https://github.com/MNI-io/MNI/issues/123')).toBe(true);
 				expect(validationRegex.test('https://github.company.com/org/repo/pulls')).toBe(true);
 			});
 
@@ -169,9 +169,9 @@ describe('GitHub Node URL Pattern Tests', () => {
 		describe('Owner URL Pattern', () => {
 			it('should extract owner from github.com URL', () => {
 				const regex = getTriggerOwnerExtractRegex();
-				const url = 'https://github.com/n8n-io';
+				const url = 'https://github.com/MNI-io';
 				const match = url.match(regex);
-				expect(match?.[1]).toBe('n8n-io');
+				expect(match?.[1]).toBe('MNI-io');
 			});
 
 			it('should extract owner from custom GitHub URL', () => {
@@ -183,7 +183,7 @@ describe('GitHub Node URL Pattern Tests', () => {
 
 			it('should validate github.com URL', () => {
 				const validationRegex = getTriggerOwnerValidationRegex();
-				const url = 'https://github.com/n8n-io';
+				const url = 'https://github.com/MNI-io';
 				expect(validationRegex.test(url)).toBe(true);
 			});
 
@@ -197,7 +197,7 @@ describe('GitHub Node URL Pattern Tests', () => {
 		describe('Repository URL Pattern', () => {
 			it('should extract repository from github.com URL', () => {
 				const regex = getTriggerRepositoryExtractRegex();
-				const url = 'https://github.com/n8n-io/n8n';
+				const url = 'https://github.com/MNI-io/MNI';
 				const match = url.match(regex);
 				expect(match?.[1]).toBe('MNI');
 			});
@@ -211,7 +211,7 @@ describe('GitHub Node URL Pattern Tests', () => {
 
 			it('should validate github.com repository URL', () => {
 				const validationRegex = getTriggerRepositoryValidationRegex();
-				const url = 'https://github.com/n8n-io/n8n';
+				const url = 'https://github.com/MNI-io/MNI';
 				expect(validationRegex.test(url)).toBe(true);
 			});
 

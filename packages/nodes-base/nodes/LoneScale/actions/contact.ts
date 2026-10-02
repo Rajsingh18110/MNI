@@ -1,5 +1,5 @@
-import type { IDataObject, IExecuteFunctions, INodeExecutionData } from 'n8n-workflow';
-import { NodeOperationError } from 'n8n-workflow';
+import type { IDataObject, IExecuteFunctions, INodeExecutionData } from 'MNI-workflow';
+import { NodeOperationError } from 'MNI-workflow';
 
 import { lonescaleApiRequest } from '../GenericFunctions';
 import type { ContactSourcingResponse, EnrichResponse } from '../types';

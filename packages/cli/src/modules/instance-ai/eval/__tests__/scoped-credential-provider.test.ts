@@ -1,4 +1,4 @@
-import type { CredentialListItem, ResolvedCredential } from '@n8n/agents';
+import type { CredentialListItem, ResolvedCredential } from '@MNI/agents';
 
 import { scopeCredentialProvider } from '../scoped-credential-provider';
 

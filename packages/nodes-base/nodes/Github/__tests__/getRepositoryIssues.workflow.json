@@ -3,7 +3,7 @@
 	"nodes": [
 		{
 			"parameters": {},
-			"type": "n8n-nodes-base.manualTrigger",
+			"type": "MNI-nodes-base.manualTrigger",
 			"typeVersion": 1,
 			"position": [0, 0],
 			"id": "trigger-id",
@@ -26,7 +26,7 @@
 				"returnAll": true,
 				"getRepositoryIssuesFilters": {}
 			},
-			"type": "n8n-nodes-base.github",
+			"type": "MNI-nodes-base.github",
 			"typeVersion": 1,
 			"position": [200, 0],
 			"id": "github-node-id",
@@ -40,7 +40,7 @@
 		},
 		{
 			"parameters": {},
-			"type": "n8n-nodes-base.noOp",
+			"type": "MNI-nodes-base.noOp",
 			"typeVersion": 1,
 			"position": [400, 0],
 			"id": "noop-id",

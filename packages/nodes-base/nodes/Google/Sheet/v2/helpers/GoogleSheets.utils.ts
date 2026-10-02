@@ -6,8 +6,8 @@ import type {
 	INodePropertyOptions,
 	INode,
 	ResourceMapperField,
-} from 'n8n-workflow';
-import { NodeOperationError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeOperationError } from 'MNI-workflow';
 
 import type { GoogleSheet } from './GoogleSheet';
 import type {

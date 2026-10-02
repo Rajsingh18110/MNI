@@ -1,6 +1,6 @@
 /* eslint-disable import-x/no-extraneous-dependencies -- test-only patterns */
 import { createPinia, getActivePinia, setActivePinia } from 'pinia';
-import { createRunExecutionData, NodeConnectionTypes } from 'n8n-workflow';
+import { createRunExecutionData, NodeConnectionTypes } from 'MNI-workflow';
 import { computed, defineComponent, nextTick, ref } from 'vue';
 import { flushPromises, mount, type DOMWrapper } from '@vue/test-utils';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
@@ -59,7 +59,7 @@ function makeExecution(outputStatus = 200, id = EXECUTION_ID) {
 	const trigger = createTestNode({
 		id: 'trigger',
 		name: 'When Executed by Another Workflow',
-		type: 'n8n-nodes-base.executeWorkflowTrigger',
+		type: 'MNI-nodes-base.executeWorkflowTrigger',
 	});
 	const action = createTestNode({ id: 'action', name: 'HTTP Request' });
 

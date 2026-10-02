@@ -1,4 +1,4 @@
-import { ManualExecutionCancelledError, TimeoutExecutionCancelledError } from 'n8n-workflow';
+import { ManualExecutionCancelledError, TimeoutExecutionCancelledError } from 'MNI-workflow';
 
 import type { ActiveExecutions } from '@/active-executions';
 

@@ -1,8 +1,8 @@
-import { Logger } from '@n8n/backend-common';
-import { SettingsRepository } from '@n8n/db';
-import { Service } from '@n8n/di';
+import { Logger } from '@MNI/backend-common';
+import { SettingsRepository } from '@MNI/db';
+import { Service } from '@MNI/di';
 import { randomInt } from 'node:crypto';
-import { jsonParse } from 'n8n-workflow';
+import { jsonParse } from 'MNI-workflow';
 
 import { InsightsConfig } from '@/modules/insights/insights.config';
 import { CENTRAL_INSTANCE_MONITORING_SETTINGS_KEY } from './instance-reporting.constants';

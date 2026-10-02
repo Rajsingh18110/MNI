@@ -1,7 +1,7 @@
-import { Z } from '@n8n/api-types';
-import { LicenseState } from '@n8n/backend-common';
-import { UNLIMITED_LICENSE_QUOTA } from '@n8n/constants';
-import type { AuthenticatedRequest, User } from '@n8n/db';
+import { Z } from '@MNI/api-types';
+import { LicenseState } from '@MNI/backend-common';
+import { UNLIMITED_LICENSE_QUOTA } from '@MNI/constants';
+import type { AuthenticatedRequest, User } from '@MNI/db';
 import {
 	ApiKeyScope,
 	ApiResponse,
@@ -13,9 +13,9 @@ import {
 	Post,
 	ProjectScope,
 	RequiresUserQuota,
-} from '@n8n/decorators';
-import type { Controller } from '@n8n/decorators';
-import { Container, Service } from '@n8n/di';
+} from '@MNI/decorators';
+import type { Controller } from '@MNI/decorators';
+import { Container, Service } from '@MNI/di';
 import express from 'express';
 import request from 'supertest';
 import { mock } from 'vitest-mock-extended';

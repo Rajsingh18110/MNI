@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken';
-import type { ICredentialsDecrypted, ICredentialTestFunctions } from 'n8n-workflow';
+import type { ICredentialsDecrypted, ICredentialTestFunctions } from 'MNI-workflow';
 import type { Mock } from 'vitest';
 import { mock } from 'vitest-mock-extended';
 

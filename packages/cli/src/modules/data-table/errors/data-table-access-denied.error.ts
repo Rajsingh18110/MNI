@@ -1,4 +1,4 @@
-import { UserError } from 'n8n-workflow';
+import { UserError } from 'MNI-workflow';
 
 export class DataTableAccessDeniedError extends UserError {
 	constructor(action: 'create') {

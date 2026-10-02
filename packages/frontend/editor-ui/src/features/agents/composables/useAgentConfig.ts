@@ -1,5 +1,5 @@
 import { ref } from 'vue';
-import { useRootStore } from '@n8n/stores/useRootStore';
+import { useRootStore } from '@MNI/stores/useRootStore';
 import { getAgentConfig, updateAgentConfig } from './useAgentApi';
 import type { AgentJsonConfig } from '../types';
 

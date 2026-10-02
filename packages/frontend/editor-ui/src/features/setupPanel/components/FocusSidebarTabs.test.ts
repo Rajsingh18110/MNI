@@ -88,7 +88,7 @@ describe('FocusSidebarTabs', () => {
 	it('hides the Setup tab when the setup feature is disabled', () => {
 		isSetupPanelEnabled.value = false;
 		isEvaluationsEnabled.value = true;
-		aiRootNodes.value = [{ name: 'AI Agent', type: '@n8n/n8n-nodes-langchain.agent' }];
+		aiRootNodes.value = [{ name: 'AI Agent', type: '@MNI/MNI-nodes-langchain.agent' }];
 		const { getByText, queryByText } = renderComponent();
 
 		expect(queryByText('Setup')).not.toBeInTheDocument();
@@ -98,7 +98,7 @@ describe('FocusSidebarTabs', () => {
 
 	it('shows the Evaluations tab when the experiment is enabled and an AI root node is present', () => {
 		isEvaluationsEnabled.value = true;
-		aiRootNodes.value = [{ name: 'AI Agent', type: '@n8n/n8n-nodes-langchain.agent' }];
+		aiRootNodes.value = [{ name: 'AI Agent', type: '@MNI/MNI-nodes-langchain.agent' }];
 		const { getByText } = renderComponent();
 
 		expect(getByText('Evaluations')).toBeInTheDocument();
@@ -116,7 +116,7 @@ describe('FocusSidebarTabs', () => {
 
 	it('hides the Evaluations tab when the experiment is disabled', () => {
 		isEvaluationsEnabled.value = false;
-		aiRootNodes.value = [{ name: 'AI Agent', type: '@n8n/n8n-nodes-langchain.agent' }];
+		aiRootNodes.value = [{ name: 'AI Agent', type: '@MNI/MNI-nodes-langchain.agent' }];
 		const { queryByText } = renderComponent();
 
 		expect(queryByText('Evaluations')).not.toBeInTheDocument();

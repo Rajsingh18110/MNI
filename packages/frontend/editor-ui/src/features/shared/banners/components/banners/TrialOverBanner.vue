@@ -1,9 +1,9 @@
 <script lang="ts" setup>
 import BaseBanner from './BaseBanner.vue';
 import { usePageRedirectionHelper } from '@/app/composables/usePageRedirectionHelper';
-import { i18n as locale } from '@n8n/i18n';
+import { i18n as locale } from '@MNI/i18n';
 
-import { N8nButton } from '@n8n/design-system';
+import { N8nButton } from '@MNI/design-system';
 
 const pageRedirectionHelper = usePageRedirectionHelper();
 
@@ -19,7 +19,7 @@ function onUpgradePlanClick() {
 		</template>
 		<template #trailingContent>
 			<N8nButton
-				class="n8n-button--success"
+				class="MNI-button--success"
 				variant="solid"
 				icon="zap"
 				size="small"

@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { computed, useCssModule, watch, watchEffect } from 'vue';
 import { useVueFlow } from '@vue-flow/core';
-import type { INodeParameterResourceLocator, INodeProperties } from 'n8n-workflow';
-import { N8nIcon, N8nText, N8nTooltip } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+import type { INodeParameterResourceLocator, INodeProperties } from 'MNI-workflow';
+import { N8nIcon, N8nText, N8nTooltip } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 import { useCanvasNode } from '../../../../composables/useCanvasNode';
 import type { CanvasNodeAgentRender } from '../../../../canvas.types';
 import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';

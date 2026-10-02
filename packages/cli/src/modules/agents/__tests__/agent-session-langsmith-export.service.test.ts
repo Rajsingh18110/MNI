@@ -1,9 +1,9 @@
-import { mockLogger } from '@n8n/backend-test-utils';
-import type { CustomFetch, HttpTransport, OutboundHttp } from '@n8n/backend-network';
-import type { User } from '@n8n/db';
+import { mockLogger } from '@MNI/backend-test-utils';
+import type { CustomFetch, HttpTransport, OutboundHttp } from '@MNI/backend-network';
+import type { User } from '@MNI/db';
 import { mock } from 'vitest-mock-extended';
 
-import { N8N_VERSION } from '@/constants';
+import { MNI_VERSION } from '@/constants';
 import { NotFoundError } from '@/errors/response-errors/not-found.error';
 import type { AiService } from '@/services/ai.service';
 
@@ -110,7 +110,7 @@ function makeExecution(overrides: Partial<AgentExecution> = {}): AgentExecution 
 				startTime: Date.parse('2026-08-14T09:00:00.500Z'),
 				endTime: Date.parse('2026-08-14T09:00:00.600Z'),
 				success: false,
-				nodeType: 'n8n-nodes-base.httpRequest',
+				nodeType: 'MNI-nodes-base.httpRequest',
 				nodeTypeVersion: 4,
 				nodeDisplayName: 'HTTP Request',
 				nodeParameters: { authentication: 'none' },
@@ -327,20 +327,20 @@ describe('AgentSessionLangSmithExportService', () => {
 		expect(JSON.stringify(firstRuns)).not.toContain('third-value');
 		expect(JSON.stringify(firstRuns)).not.toContain('deep-boundary-secret');
 		expect(JSON.stringify(firstRuns)).toContain('[REDACTED]');
-		expect(firstRuns[0].extra.metadata.n8nVersion).toBe(N8N_VERSION);
+		expect(firstRuns[0].extra.metadata.n8nVersion).toBe(MNI_VERSION);
 		expect(firstRuns[1].inputs.attachments).toEqual([
 			{ id: 'attachment-1', fileName: 'notes.txt', mimeType: 'text/plain', sizeBytes: 42 },
 		]);
 		expect(firstRuns[4]).toMatchObject({
 			error: 'Failed for [REDACTED]',
-			extra: { metadata: { success: false, nodeType: 'n8n-nodes-base.httpRequest' } },
+			extra: { metadata: { success: false, nodeType: 'MNI-nodes-base.httpRequest' } },
 		});
 		expect(firstRuns[5].outputs.childTrace).toMatchObject({
 			text: 'Inline answer',
 			steps: [{ toolName: 'lookup' }],
 		});
 		expect(firstRuns[7].parent_run_id).toBe(firstRuns[6].id);
-		expect(firstRuns.every((run) => run.session_name === 'n8n-user-agents-debug')).toBe(true);
+		expect(firstRuns.every((run) => run.session_name === 'MNI-user-agents-debug')).toBe(true);
 		expect(firstRuns.every((run) => !('project_name' in run))).toBe(true);
 
 		batchIngestRunsMock.mockClear();

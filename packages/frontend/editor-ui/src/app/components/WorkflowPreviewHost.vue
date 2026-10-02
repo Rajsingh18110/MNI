@@ -1,9 +1,9 @@
 <script lang="ts" setup>
 import { computed, nextTick, onBeforeUnmount, provide, shallowRef, watch } from 'vue';
-import { N8nIcon } from '@n8n/design-system';
+import { N8nIcon } from '@MNI/design-system';
 import NodeView from '@/app/views/NodeView.vue';
 import type { IWorkflowDb, INodeUi } from '@/Interface';
-import type { IWorkflowTemplate } from '@n8n/rest-api-client/api/templates';
+import type { IWorkflowTemplate } from '@MNI/rest-api-client/api/templates';
 import {
 	EditorEnabledFeaturesKey,
 	WorkflowDocumentStoreKey,

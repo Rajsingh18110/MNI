@@ -11,7 +11,7 @@
 			},
 			"id": "1a2b3c4d-0001-4000-8000-000000000001",
 			"name": "Webhook",
-			"type": "n8n-nodes-base.webhook",
+			"type": "MNI-nodes-base.webhook",
 			"typeVersion": 1,
 			"position": [460, 460],
 			"webhookId": "0c2e9f1a-6d2b-4f0e-8a3c-2b6f1d4e7a90"
@@ -22,7 +22,7 @@
 			},
 			"id": "1a2b3c4d-0001-4000-8000-000000000002",
 			"name": "Process",
-			"type": "n8n-nodes-base.set",
+			"type": "MNI-nodes-base.set",
 			"typeVersion": 1,
 			"position": [720, 460]
 		}

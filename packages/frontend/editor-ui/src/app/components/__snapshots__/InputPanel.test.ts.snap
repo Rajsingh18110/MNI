@@ -21,14 +21,14 @@ exports[`InputPanel > should render 1`] = `
           class="titleSection"
         >
           <span
-            class="n8n-text text-light size-medium bold title title"
+            class="MNI-text text-light size-medium bold title title"
           >
             
             Input
             
           </span>
           <div
-            class="n8n-segment-control segmentControl"
+            class="MNI-segment-control segmentControl"
             data-test-id="input-panel-mode"
             aria-orientation="horizontal"
             aria-required="false"
@@ -42,7 +42,7 @@ exports[`InputPanel > should render 1`] = `
             <button
               aria-checked="true"
               aria-label="Mapping"
-              class="n8n-segment-control-item item medium hoverable"
+              class="MNI-segment-control-item item medium hoverable"
               data-orientation="horizontal"
               data-reka-collection-item=""
               data-state="checked"
@@ -61,7 +61,7 @@ exports[`InputPanel > should render 1`] = `
             <button
               aria-checked="false"
               aria-label="From AI"
-              class="n8n-segment-control-item item medium hoverable"
+              class="MNI-segment-control-item item medium hoverable"
               data-orientation="horizontal"
               data-reka-collection-item=""
               data-state="unchecked"
@@ -89,7 +89,7 @@ exports[`InputPanel > should render 1`] = `
         <!---->
         <!--v-if-->
         <div
-          class="n8n-segment-control segmentControl"
+          class="MNI-segment-control segmentControl"
           data-test-id="ndv-run-data-display-mode"
           data-v-2e5cd75c=""
           aria-orientation="horizontal"
@@ -104,7 +104,7 @@ exports[`InputPanel > should render 1`] = `
           <button
             aria-checked="true"
             aria-label="Schema"
-            class="n8n-segment-control-item item medium hoverable"
+            class="MNI-segment-control-item item medium hoverable"
             data-orientation="horizontal"
             data-reka-collection-item=""
             data-state="checked"
@@ -123,7 +123,7 @@ exports[`InputPanel > should render 1`] = `
           <button
             aria-checked="false"
             aria-label="Table"
-            class="n8n-segment-control-item item medium hoverable"
+            class="MNI-segment-control-item item medium hoverable"
             data-orientation="horizontal"
             data-reka-collection-item=""
             data-state="unchecked"
@@ -141,7 +141,7 @@ exports[`InputPanel > should render 1`] = `
           <button
             aria-checked="false"
             aria-label="JSON"
-            class="n8n-segment-control-item item medium hoverable"
+            class="MNI-segment-control-item item medium hoverable"
             data-orientation="horizontal"
             data-reka-collection-item=""
             data-state="unchecked"
@@ -223,7 +223,7 @@ exports[`InputPanel > should render 1`] = `
     >
       <div
         aria-hidden="true"
-        class="n8n-block-ui uiBlocker"
+        class="MNI-block-ui uiBlocker"
         data-v-1a77a378=""
         role="dialog"
         style="display: none;"

@@ -1,5 +1,5 @@
-import { Time } from '@n8n/constants';
-import { UserError } from 'n8n-workflow';
+import { Time } from '@MNI/constants';
+import { UserError } from 'MNI-workflow';
 
 import type { WorkflowNotFoundReason } from './mcp.types';
 

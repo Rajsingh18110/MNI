@@ -1,4 +1,4 @@
-import { mockLogger } from '@n8n/backend-test-utils';
+import { mockLogger } from '@MNI/backend-test-utils';
 import {
 	GLOBAL_ADMIN_ROLE,
 	GLOBAL_MEMBER_ROLE,
@@ -11,9 +11,9 @@ import {
 	type Variables,
 	type WorkflowEntity,
 	type WorkflowRepository,
-} from '@n8n/db';
-import { Container } from '@n8n/di';
-import { InstanceSettings } from 'n8n-core';
+} from '@MNI/db';
+import { Container } from '@MNI/di';
+import { InstanceSettings } from 'MNI-core';
 import { mock } from 'vitest-mock-extended';
 
 import { ForbiddenError } from '@/errors/response-errors/forbidden.error';

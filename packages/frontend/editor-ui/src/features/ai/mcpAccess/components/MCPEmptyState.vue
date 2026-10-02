@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { N8nButton, N8nIcon, N8nTooltip } from '@n8n/design-system';
+import { N8nButton, N8nIcon, N8nTooltip } from '@MNI/design-system';
 import { MCP_DOCS_PAGE_URL } from '@/features/ai/mcpAccess/mcp.constants';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import McpEmptyStateCard from '@/features/ai/mcpAccess/components/McpEmptyStateCard.vue';
 
 type Props = {

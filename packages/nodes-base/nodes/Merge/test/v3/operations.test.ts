@@ -1,4 +1,4 @@
-import type { IDataObject, INode } from 'n8n-workflow';
+import type { IDataObject, INode } from 'MNI-workflow';
 
 import { createMockExecuteFunction } from '@test/nodes/Helpers';
 
@@ -9,7 +9,7 @@ const node: INode = {
 	id: '123456',
 	name: 'Merge',
 	typeVersion: 3,
-	type: 'n8n-nodes-base.merge',
+	type: 'MNI-nodes-base.merge',
 	position: [50, 50],
 	parameters: {},
 };

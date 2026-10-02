@@ -16,7 +16,7 @@ export type EngineMode = 'in-process' | 'container';
 export const ENGINE_MODULE = 'engine-v2';
 
 /** The data plane keeps its own database on the stack Postgres. */
-export const ENGINE_DATABASE = 'n8n_engine';
+export const ENGINE_DATABASE = 'MNI_engine';
 
 /** Port the engine container serves on. The main dials it; the stack probes it. */
 export const ENGINE_PORT = 3000;
@@ -33,7 +33,7 @@ const CONNECTION_KEYS = [
 ] as const;
 
 /** Env the engine container must never receive: control plane database access and its key. */
-const CONTROL_PLANE_ONLY_KEYS = ['N8N_ENCRYPTION_KEY', 'N8N_ENCRYPTION_KEY_FILE'];
+const CONTROL_PLANE_ONLY_KEYS = ['MNI_ENCRYPTION_KEY', 'MNI_ENCRYPTION_KEY_FILE'];
 const CONTROL_PLANE_ONLY_PREFIXES = ['DB_'];
 
 interface EngineEnvOptions {
@@ -46,12 +46,12 @@ interface EngineEnvOptions {
 }
 
 export function engineHostname(projectName: string): string {
-	return `${projectName}-n8n-engine`;
+	return `${projectName}-MNI-engine`;
 }
 
 /** The single main's network alias. `assertEngineSupported` guarantees there is one. */
 function mainHostname(projectName: string): string {
-	return `${projectName}-n8n`;
+	return `${projectName}-MNI`;
 }
 
 /**
@@ -83,10 +83,10 @@ export function assertEngineSupported({
 
 /**
  * The data plane database URL: an explicit one from a service, else the
- * `n8n_engine` database on the Postgres the `DB_POSTGRESDB_*` values name.
+ * `MNI_engine` database on the Postgres the `DB_POSTGRESDB_*` values name.
  */
 function resolveEngineDatabaseUrl(env: Record<string, string>): string {
-	if (env.N8N_ENGINE_DATABASE_URL) return env.N8N_ENGINE_DATABASE_URL;
+	if (env.MNI_ENGINE_DATABASE_URL) return env.MNI_ENGINE_DATABASE_URL;
 
 	// `env` types every value as present, so a missing one would otherwise reach
 	// the URL as the literal `undefined` and fail at engine boot.
@@ -117,26 +117,26 @@ export function applyEngineEnv(
 
 	assertEngineSupported({ engine, mains, isQueueMode, usePostgres: env.DB_TYPE === 'postgresdb' });
 
-	const modules = (env.N8N_ENABLED_MODULES ?? '').split(',').filter(Boolean);
+	const modules = (env.MNI_ENABLED_MODULES ?? '').split(',').filter(Boolean);
 	if (!modules.includes(ENGINE_MODULE)) modules.push(ENGINE_MODULE);
-	env.N8N_ENABLED_MODULES = modules.join(',');
+	env.MNI_ENABLED_MODULES = modules.join(',');
 
 	if (engine === 'container') {
 		if (!authSecret) throw new Error('Container engine mode needs a shared auth secret');
-		env.N8N_ENGINE_MODE = 'remote';
-		env.N8N_ENGINE_BASE_URL = `http://${engineHostname(projectName)}:${ENGINE_PORT}`;
+		env.MNI_ENGINE_MODE = 'remote';
+		env.MNI_ENGINE_BASE_URL = `http://${engineHostname(projectName)}:${ENGINE_PORT}`;
 		// Loopback by default; the engine container dials it over the stack network.
 		// The stack owns the port too: the engine env dials it and a caller's
 		// `env` must not move it.
-		env.N8N_ENGINE_CONTROL_PLANE_HOST = '0.0.0.0';
-		env.N8N_ENGINE_CONTROL_PLANE_PORT = String(ENGINE_CONTROL_PLANE_PORT);
-		env.N8N_ENGINE_AUTH_SECRET = authSecret;
+		env.MNI_ENGINE_CONTROL_PLANE_HOST = '0.0.0.0';
+		env.MNI_ENGINE_CONTROL_PLANE_PORT = String(ENGINE_CONTROL_PLANE_PORT);
+		env.MNI_ENGINE_AUTH_SECRET = authSecret;
 		// The main never touches the data plane database in this mode.
-		delete env.N8N_ENGINE_DATABASE_URL;
+		delete env.MNI_ENGINE_DATABASE_URL;
 		return;
 	}
 
-	env.N8N_ENGINE_DATABASE_URL = resolveEngineDatabaseUrl(env);
+	env.MNI_ENGINE_DATABASE_URL = resolveEngineDatabaseUrl(env);
 }
 
 /**
@@ -152,8 +152,8 @@ export function engineContainerEnv(
 	{ projectName, authSecret }: Pick<EngineEnvOptions, 'projectName'> & { authSecret: string },
 ): Record<string, string> {
 	if (!authSecret) throw new Error('Container engine mode needs a shared auth secret');
-	const databaseUrl = sharedEnv.N8N_ENGINE_DATABASE_URL;
-	if (!databaseUrl) throw new Error('Container engine mode needs N8N_ENGINE_DATABASE_URL');
+	const databaseUrl = sharedEnv.MNI_ENGINE_DATABASE_URL;
+	if (!databaseUrl) throw new Error('Container engine mode needs MNI_ENGINE_DATABASE_URL');
 
 	const env = Object.fromEntries(
 		Object.entries(sharedEnv).filter(
@@ -165,12 +165,12 @@ export function engineContainerEnv(
 
 	return {
 		...env,
-		N8N_ENGINE_DATABASE_URL: databaseUrl,
-		N8N_ENGINE_AUTH_SECRET: authSecret,
-		N8N_ENGINE_CONTROL_PLANE_BASE_URL: `http://${mainHostname(projectName)}:${ENGINE_CONTROL_PLANE_PORT}`,
+		MNI_ENGINE_DATABASE_URL: databaseUrl,
+		MNI_ENGINE_AUTH_SECRET: authSecret,
+		MNI_ENGINE_CONTROL_PLANE_BASE_URL: `http://${mainHostname(projectName)}:${ENGINE_CONTROL_PLANE_PORT}`,
 		// The main dials this address and the stack probes it, so a caller's `env`
 		// must not move it or bind it to loopback.
-		N8N_ENGINE_HOST: '0.0.0.0',
-		N8N_ENGINE_PORT: String(ENGINE_PORT),
+		MNI_ENGINE_HOST: '0.0.0.0',
+		MNI_ENGINE_PORT: String(ENGINE_PORT),
 	};
 }

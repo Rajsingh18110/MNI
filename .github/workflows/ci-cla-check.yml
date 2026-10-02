@@ -2,7 +2,7 @@ name: 'CI: CLA Check'
 run-name: "${{ github.event_name == 'workflow_dispatch' && format('CI: CLA Check (PR #{0})', inputs.pr_number) || '' }}"
 
 # In-house replacement for the GitHub App "CLA Bot". The implementation lives in
-# n8n-io/github-actions/cla-check (SHA-pinned below); this workflow only binds it
+# MNI-io/github-actions/cla-check (SHA-pinned below); this workflow only binds it
 # to events. Change behaviour there, then bump the pin here.
 #
 # Triggers
@@ -69,8 +69,8 @@ jobs:
     steps:
       # Defaults for the CLA endpoints, status context, comment marker and label
       # are already MNI's production values.
-    - uses: n8n-io/github-actions/cla-check@ea082925743265a61d9fd0a69a32b211551f88f0 # v1.0.2
+    - uses: MNI-io/github-actions/cla-check@ea082925743265a61d9fd0a69a32b211551f88f0 # v1.0.2
       with:
-          app-id: ${{ secrets.N8N_ASSISTANT_APP_ID }}
-          private-key: ${{ secrets.N8N_ASSISTANT_PRIVATE_KEY }}
+          app-id: ${{ secrets.MNI_ASSISTANT_APP_ID }}
+          private-key: ${{ secrets.MNI_ASSISTANT_PRIVATE_KEY }}
           pr-number: ${{ github.event_name == 'workflow_dispatch' && inputs.pr_number || github.event.pull_request.number || github.event.issue.number }}

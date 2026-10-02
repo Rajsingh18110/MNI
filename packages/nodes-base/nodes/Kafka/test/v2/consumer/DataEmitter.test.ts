@@ -1,7 +1,7 @@
-import { createDeferredPromise } from '@n8n/utils/promise/deferred-promise';
-import { sleep } from '@n8n/utils/sleep';
-import type { INode, INodeExecutionData, IRun, Logger } from 'n8n-workflow';
-import { NodeOperationError } from 'n8n-workflow';
+import { createDeferredPromise } from '@MNI/utils/promise/deferred-promise';
+import { sleep } from '@MNI/utils/sleep';
+import type { INode, INodeExecutionData, IRun, Logger } from 'MNI-workflow';
+import { NodeOperationError } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import {
@@ -10,7 +10,7 @@ import {
 	type DataEmitterOptions,
 } from '../../../v2/consumer/DataEmitter';
 
-vi.mock('@n8n/utils/sleep', () => ({ sleep: vi.fn(async () => {}) }));
+vi.mock('@MNI/utils/sleep', () => ({ sleep: vi.fn(async () => {}) }));
 
 const ITEMS: INodeExecutionData[] = [{ json: { message: 'hello' } }];
 

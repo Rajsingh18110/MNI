@@ -1,5 +1,5 @@
-import { UserError } from 'n8n-workflow';
-import type { IBinaryData, INodeExecutionData } from 'n8n-workflow';
+import { UserError } from 'MNI-workflow';
+import type { IBinaryData, INodeExecutionData } from 'MNI-workflow';
 
 import { normalizeItems } from '../normalize-items';
 

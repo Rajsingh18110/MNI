@@ -1,12 +1,12 @@
 import FormData from 'form-data';
 import { Readable } from 'stream';
-import { jsonParse } from 'n8n-workflow';
+import { jsonParse } from 'MNI-workflow';
 import type {
 	ICredentialDataDecryptedObject,
 	IDataObject,
 	INodeExecutionData,
 	IRequestOptions,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import {
 	REDACTED,

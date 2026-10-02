@@ -3,8 +3,8 @@ import {
 	readDataTableReadParameters,
 	type DataTableReadCondition,
 	type DataTableReadParameters,
-} from '@n8n/workflow-sdk';
-import type { INode, INodeExecutionData } from 'n8n-workflow';
+} from '@MNI/workflow-sdk';
+import type { INode, INodeExecutionData } from 'MNI-workflow';
 
 type Row = INodeExecutionData['json'];
 type RowPredicate = (row: Row) => boolean;

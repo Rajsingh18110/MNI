@@ -39,7 +39,7 @@ function handleSelect(value: MCPOnboardingClient) {
 </template>
 
 <style lang="scss" module>
-@use '@n8n/design-system/css/mixins/_focus.scss' as focus;
+@use '@MNI/design-system/css/mixins/_focus.scss' as focus;
 
 .picker {
 	display: grid;

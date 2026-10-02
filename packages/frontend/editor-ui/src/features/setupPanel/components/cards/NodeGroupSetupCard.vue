@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, ref, toRef, watch } from 'vue';
-import { N8nIcon, N8nText } from '@n8n/design-system';
+import { N8nIcon, N8nText } from '@MNI/design-system';
 
 import NodeIcon from '@/app/components/NodeIcon.vue';
 import SetupCard from '@/features/setupPanel/components/cards/SetupCard.vue';

@@ -1,4 +1,4 @@
-import { formatPemBlock } from '@n8n/utils/format-pem-block';
+import { formatPemBlock } from '@MNI/utils/format-pem-block';
 import jwt from 'jsonwebtoken';
 import set from 'lodash/set';
 import type {
@@ -10,7 +10,7 @@ import type {
 	INodeProperties,
 	INodeType,
 	INodeTypeDescription,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import {
 	jsonParse,
 	NodeOperationError,
@@ -20,7 +20,7 @@ import {
 	CHAT_TRIGGER_NODE_TYPE,
 	WAIT_NODE_TYPE,
 	WAIT_INDEFINITELY,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import type { Readable } from 'stream';
 
 import { getBinaryResponse } from './utils/binary';
@@ -92,10 +92,10 @@ export class RespondToWebhook implements INodeType {
 		},
 		builderHint: {
 			searchHint:
-				'Only works with webhook node (n8n-nodes-base.webhook) with responseMode set to "responseNode"',
+				'Only works with webhook node (MNI-nodes-base.webhook) with responseMode set to "responseNode"',
 			relatedNodes: [
 				{
-					nodeType: 'n8n-nodes-base.webhook',
+					nodeType: 'MNI-nodes-base.webhook',
 					relationHint: 'Required trigger - set responseMode to "responseNode"',
 				},
 			],
@@ -126,7 +126,7 @@ export class RespondToWebhook implements INodeType {
 			},
 			{
 				displayName:
-					'Verify that the "Webhook" node\'s "Respond" parameter is set to "Using Respond to Webhook Node". <a href="https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-base.respondtowebhook/" target="_blank">More details',
+					'Verify that the "Webhook" node\'s "Respond" parameter is set to "Using Respond to Webhook Node". <a href="https://docs.n8n.io/integrations/builtin/core-nodes/MNI-nodes-base.respondtowebhook/" target="_blank">More details',
 				name: 'generalNotice',
 				type: 'notice',
 				default: '',

@@ -88,11 +88,11 @@ describe('detectBrowserUseExtension', () => {
 describe('probeable origins vs. the extension manifest', () => {
 	// Read lazily: a missing or moved manifest should fail only these cases, not the probe
 	// tests above. `process.cwd()` is the package root, per the convention in
-	// @n8n/composables/src/__tests__/packageBoundary.test.ts (jsdom gives no `file:` URL).
+	// @MNI/composables/src/__tests__/packageBoundary.test.ts (jsdom gives no `file:` URL).
 	function readManifest() {
 		const manifestPath = path.resolve(
 			process.cwd(),
-			'../../@n8n/mcp-browser-extension/manifest.json',
+			'../../@MNI/mcp-browser-extension/manifest.json',
 		);
 		return JSON.parse(readFileSync(manifestPath, 'utf8')) as {
 			key: string;

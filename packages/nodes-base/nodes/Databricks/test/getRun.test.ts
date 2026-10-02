@@ -1,4 +1,4 @@
-import type { IExecuteFunctions, INode } from 'n8n-workflow';
+import type { IExecuteFunctions, INode } from 'MNI-workflow';
 import { mockDeep } from 'vitest-mock-extended';
 
 import { execute as getRun } from '../actions/job/getRun.operation';
@@ -9,7 +9,7 @@ const HOST = 'https://adb-1234567890.1.azuredatabricks.net';
 const node: INode = {
 	id: '1',
 	name: 'Databricks',
-	type: 'n8n-nodes-base.databricks',
+	type: 'MNI-nodes-base.databricks',
 	typeVersion: 1,
 	position: [0, 0],
 	parameters: {},

@@ -1,4 +1,4 @@
-import type { INodePropertyMode, INodePropertyModeValidation } from 'n8n-workflow';
+import type { INodePropertyMode, INodePropertyModeValidation } from 'MNI-workflow';
 
 import { userRLC } from '../../../../v2/descriptions';
 

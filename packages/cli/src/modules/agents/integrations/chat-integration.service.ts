@@ -2,22 +2,22 @@ import {
 	AgentIntegrationConfig,
 	isCredentialAgentIntegration,
 	type AgentIntegrationSettings,
-} from '@n8n/api-types';
-import { Logger } from '@n8n/backend-common';
-import { GlobalConfig } from '@n8n/config';
-import { Time } from '@n8n/constants';
-import { OnLeaderStepdown, OnPubSubEvent, OnShutdown } from '@n8n/decorators';
-import { Container, Service } from '@n8n/di';
-import { ensureError } from '@n8n/utils/errors/ensure-error';
-import { createDeferredPromise } from '@n8n/utils/promise/deferred-promise';
+} from '@MNI/api-types';
+import { Logger } from '@MNI/backend-common';
+import { GlobalConfig } from '@MNI/config';
+import { Time } from '@MNI/constants';
+import { OnLeaderStepdown, OnPubSubEvent, OnShutdown } from '@MNI/decorators';
+import { Container, Service } from '@MNI/di';
+import { ensureError } from '@MNI/utils/errors/ensure-error';
+import { createDeferredPromise } from '@MNI/utils/promise/deferred-promise';
 import type { Channel, Chat as ChatSdk, StateAdapter, Thread, UserInfo } from 'chat';
-import { InstanceSettings } from 'n8n-core';
-import { OperationalError, UnexpectedError } from 'n8n-workflow';
+import { InstanceSettings } from 'MNI-core';
+import { OperationalError, UnexpectedError } from 'MNI-workflow';
 
 import { LOWEST_SHUTDOWN_PRIORITY } from '@/constants';
 import { CredentialsService } from '@/credentials/credentials.service';
 import type { PubSubCommandMap } from '@/scaling/pubsub/pubsub.event-map';
-import { UrlService } from '@n8n/backend-services';
+import { UrlService } from '@MNI/backend-services';
 
 import { AgentChatBridge } from './agent-chat-bridge';
 import {
@@ -1207,7 +1207,7 @@ export class ChatIntegrationService {
 
 			chat = new Chat({
 				concurrency: 'concurrent',
-				userName: `n8n-agent-${agentId}`,
+				userName: `MNI-agent-${agentId}`,
 				// Use the platform type as the adapter key (e.g. 'slack') so that
 				// bot.webhooks.slack maps correctly to the handler.
 				adapters: { [integration.type]: adapter } as Record<string, never>,

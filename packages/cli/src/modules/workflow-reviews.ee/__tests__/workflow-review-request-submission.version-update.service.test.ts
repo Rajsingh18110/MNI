@@ -1,6 +1,6 @@
-import type { UpdateWorkflowReviewRequestVersionDto } from '@n8n/api-types';
-import type { LicenseState, Logger } from '@n8n/backend-common';
-import { DbLock } from '@n8n/db';
+import type { UpdateWorkflowReviewRequestVersionDto } from '@MNI/api-types';
+import type { LicenseState, Logger } from '@MNI/backend-common';
+import { DbLock } from '@MNI/db';
 import type {
 	DbLockService,
 	Project,
@@ -20,7 +20,7 @@ import type {
 	WorkflowRepository,
 	Transaction,
 	OperationContext,
-} from '@n8n/db';
+} from '@MNI/db';
 import { mock } from 'vitest-mock-extended';
 
 import type { CollaborationService } from '@/collaboration/collaboration.service';

@@ -7,8 +7,8 @@ import type {
 	INodeParameterResourceLocator,
 	IRequestOptions,
 	JsonObject,
-} from 'n8n-workflow';
-import { NodeApiError, NodeOperationError, OperationalError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeApiError, NodeOperationError, OperationalError } from 'MNI-workflow';
 
 export type ExcelCredentialType =
 	| 'microsoftExcelOAuth2Api'

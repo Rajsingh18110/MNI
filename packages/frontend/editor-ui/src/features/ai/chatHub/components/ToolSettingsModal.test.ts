@@ -4,12 +4,12 @@ import { createTestingPinia } from '@pinia/testing';
 import { mockedStore } from '@/__tests__/utils';
 import { useUIStore } from '@/app/stores/ui.store';
 import ToolSettingsModal from './ToolSettingsModal.vue';
-import type { INode } from 'n8n-workflow';
+import type { INode } from 'MNI-workflow';
 import { waitFor } from '@testing-library/vue';
 import userEvent from '@testing-library/user-event';
 import { defineComponent, onMounted, ref } from 'vue';
 
-vi.mock('@n8n/i18n', () => {
+vi.mock('@MNI/i18n', () => {
 	const i18n = {
 		baseText: (key: string) => key,
 		nodeText: () => ({
@@ -44,7 +44,7 @@ function createMockNode(overrides: Partial<INode> = {}): INode {
 	return {
 		id: 'test-node-id',
 		name: 'Test Tool',
-		type: 'n8n-nodes-base.testTool',
+		type: 'MNI-nodes-base.testTool',
 		typeVersion: 1,
 		position: [0, 0],
 		parameters: {},

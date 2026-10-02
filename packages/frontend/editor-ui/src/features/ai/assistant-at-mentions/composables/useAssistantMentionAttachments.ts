@@ -1,7 +1,7 @@
 import {
 	MAX_INSTANCE_AI_ATTACHMENTS_PER_MESSAGE,
 	type InstanceAiResourceAttachment,
-} from '@n8n/api-types';
+} from '@MNI/api-types';
 import { onScopeDispose, toValue, watch, type MaybeRefOrGetter, type Ref } from 'vue';
 
 import {

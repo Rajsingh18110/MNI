@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import type { SecretProviderTypeResponse } from '@n8n/api-types';
+import type { SecretProviderTypeResponse } from '@MNI/api-types';
 import { computed } from 'vue';
 
 import infisical from '../../externalSecrets.ee/assets/images/infisical.webp';

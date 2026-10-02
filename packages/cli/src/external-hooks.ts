@@ -1,24 +1,24 @@
-import type { FrontendSettings } from '@n8n/api-types';
-import { Logger } from '@n8n/backend-common';
-import type { ClientOAuth2Options } from '@n8n/client-oauth2';
-import { GlobalConfig } from '@n8n/config';
-import type { TagEntity, User, ICredentialsDb, PublicUser } from '@n8n/db';
+import type { FrontendSettings } from '@MNI/api-types';
+import { Logger } from '@MNI/backend-common';
+import type { ClientOAuth2Options } from '@MNI/client-oauth2';
+import { GlobalConfig } from '@MNI/config';
+import type { TagEntity, User, ICredentialsDb, PublicUser } from '@MNI/db';
 import {
 	CredentialsRepository,
 	WorkflowRepository,
 	SettingsRepository,
 	UserRepository,
-} from '@n8n/db';
-import { Service } from '@n8n/di';
-import { ErrorReporter } from 'n8n-core';
+} from '@MNI/db';
+import { Service } from '@MNI/di';
+import { ErrorReporter } from 'MNI-core';
 import type {
 	IRun,
 	IWorkflowBase,
 	Workflow,
 	WorkflowExecuteMode,
 	WorkflowExecutionSource,
-} from 'n8n-workflow';
-import { UnexpectedError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { UnexpectedError } from 'MNI-workflow';
 import type clientOAuth1 from 'oauth-1.0a';
 
 import type { AbstractServer } from '@/abstract-server';

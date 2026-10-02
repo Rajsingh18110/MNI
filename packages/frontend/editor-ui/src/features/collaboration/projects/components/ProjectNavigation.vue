@@ -3,12 +3,12 @@ import { useGlobalEntityCreation } from '@/app/composables/useGlobalEntityCreati
 import { VIEWS } from '@/app/constants';
 import { sourceControlEventBus } from '@/features/integrations/sourceControl.ee/sourceControl.eventBus';
 import { promotionEventBus } from '@/features/integrations/promotions.ee/promotions.eventBus';
-import { useUsersStore } from '@n8n/stores/users.store';
-import { useSettingsStore } from '@n8n/stores/settings.store';
-import { N8nIcon, N8nMenuItem, N8nText } from '@n8n/design-system';
-import type { IMenuItem } from '@n8n/design-system';
-import type { InstanceAiThreadSummary } from '@n8n/api-types';
-import { useI18n } from '@n8n/i18n';
+import { useUsersStore } from '@MNI/stores/users.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
+import { N8nIcon, N8nMenuItem, N8nText } from '@MNI/design-system';
+import type { IMenuItem } from '@MNI/design-system';
+import type { InstanceAiThreadSummary } from '@MNI/api-types';
+import { useI18n } from '@MNI/i18n';
 import { computed, onBeforeMount, onBeforeUnmount, ref, watch } from 'vue';
 import { useRoute } from 'vue-router';
 import { useProjectsStore } from '../projects.store';

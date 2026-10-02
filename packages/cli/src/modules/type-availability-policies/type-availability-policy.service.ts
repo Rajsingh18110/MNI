@@ -1,10 +1,10 @@
-import type { NodeTypeAvailabilityScope } from '@n8n/api-types';
-import { Logger } from '@n8n/backend-common';
-import { Time } from '@n8n/constants';
-import { TransactionRunner, type OperationContext } from '@n8n/db';
-import { Service } from '@n8n/di';
+import type { NodeTypeAvailabilityScope } from '@MNI/api-types';
+import { Logger } from '@MNI/backend-common';
+import { Time } from '@MNI/constants';
+import { TransactionRunner, type OperationContext } from '@MNI/db';
+import { Service } from '@MNI/di';
 import { LRUCache } from 'lru-cache';
-import { OperationalError, UserError } from 'n8n-workflow';
+import { OperationalError, UserError } from 'MNI-workflow';
 
 import { ConflictError } from '@/errors/response-errors/conflict.error';
 import { NotFoundError } from '@/errors/response-errors/not-found.error';
@@ -39,7 +39,7 @@ const UNCONFIGURED_VERSION = 0;
 /**
  * A backstop, not the staleness control — every write drops the entry it changed, and a read
  * that raced that delete never publishes what it fetched. What is left for the TTL to heal is
- * operator-level: a process given its own cache with `N8N_CACHE_BACKEND=memory`, a delete that
+ * operator-level: a process given its own cache with `MNI_CACHE_BACKEND=memory`, a delete that
  * failed after its write committed, and a row edited outside this service.
  */
 const SCOPE_CACHE_TTL_MS = 10 * Time.minutes.toMilliseconds;

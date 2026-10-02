@@ -1,5 +1,5 @@
 import type { StoredMessage } from '@langchain/core/messages';
-import { JsonColumn, WithTimestamps } from '@n8n/db';
+import { JsonColumn, WithTimestamps } from '@MNI/db';
 import {
 	BeforeInsert,
 	Column,
@@ -8,8 +8,8 @@ import {
 	ManyToOne,
 	PrimaryColumn,
 	Unique,
-} from '@n8n/typeorm';
-import type { Relation } from '@n8n/typeorm';
+} from '@MNI/typeorm';
+import type { Relation } from '@MNI/typeorm';
 import { randomUUID } from 'node:crypto';
 
 export interface IWorkflowBuilderSession {

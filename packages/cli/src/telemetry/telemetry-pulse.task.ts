@@ -1,6 +1,6 @@
-import { ScheduledJobMisfirePolicy, Time } from '@n8n/constants';
-import { intervalFromSeconds, SystemTask } from '@n8n/decorators';
-import type { SystemTaskEffects, SystemTaskPlacement, SystemTaskSchedule } from '@n8n/decorators';
+import { ScheduledJobMisfirePolicy, Time } from '@MNI/constants';
+import { intervalFromSeconds, SystemTask } from '@MNI/decorators';
+import type { SystemTaskEffects, SystemTaskPlacement, SystemTaskSchedule } from '@MNI/decorators';
 
 import { Telemetry } from '@/telemetry';
 

@@ -1,5 +1,5 @@
-import type { IExecuteFunctions, IHookFunctions, INode, JsonObject } from 'n8n-workflow';
-import { NodeApiError } from 'n8n-workflow';
+import type { IExecuteFunctions, IHookFunctions, INode, JsonObject } from 'MNI-workflow';
+import { NodeApiError } from 'MNI-workflow';
 import type { Mock, Mocked } from 'vitest';
 import { mockDeep } from 'vitest-mock-extended';
 
@@ -30,7 +30,7 @@ describe('Microsoft Graph transport kernel', () => {
 		mockNode = {
 			id: 'test-node',
 			name: 'Test Teams Node',
-			type: 'n8n-nodes-base.microsoftTeams',
+			type: 'MNI-nodes-base.microsoftTeams',
 			typeVersion: 2,
 			position: [0, 0],
 			parameters: {},

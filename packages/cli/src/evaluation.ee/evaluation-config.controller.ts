@@ -1,6 +1,6 @@
-import { addDatasetRowSchema, upsertEvaluationConfigSchema } from '@n8n/api-types';
-import type { AuthenticatedRequest, User } from '@n8n/db';
-import { Delete, Get, Post, Put, RestController } from '@n8n/decorators';
+import { addDatasetRowSchema, upsertEvaluationConfigSchema } from '@MNI/api-types';
+import type { AuthenticatedRequest, User } from '@MNI/db';
+import { Delete, Get, Post, Put, RestController } from '@MNI/decorators';
 
 import { BadRequestError } from '@/errors/response-errors/bad-request.error';
 import { NotFoundError } from '@/errors/response-errors/not-found.error';

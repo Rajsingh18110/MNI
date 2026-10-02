@@ -1,11 +1,11 @@
 import { getLastSuccessfulExecution, getNewWorkflowData, getWorkflows } from './workflows';
 import { DEFAULT_NEW_WORKFLOW_NAME, DEFAULT_SETTINGS } from '@/app/constants/workflows';
-import * as apiUtils from '@n8n/rest-api-client';
-import type { IRestApiContext } from '@n8n/rest-api-client';
+import * as apiUtils from '@MNI/rest-api-client';
+import type { IRestApiContext } from '@MNI/rest-api-client';
 import { vi, describe, it, beforeEach, afterEach, expect } from 'vitest';
 import type { MockInstance } from 'vitest';
 
-vi.mock('@n8n/rest-api-client');
+vi.mock('@MNI/rest-api-client');
 
 describe('API: workflows', () => {
 	describe('getWorkflows', () => {

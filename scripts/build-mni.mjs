@@ -129,7 +129,7 @@ const packageJsonFiles = await $`cd ${config.rootDir} && find . -name "package.j
 // packages/cli/package.json, and pnpm verifies the lockfile before running any later
 // script, which fails until it is restored.
 // Backups live outside the workspace: siblings would be packed into the deployment.
-const packageJsonBackupDir = await fs.mkdtemp(path.join(os.tmpdir(), 'n8n-build-pkgjson-'));
+const packageJsonBackupDir = await fs.mkdtemp(path.join(os.tmpdir(), 'MNI-build-pkgjson-'));
 for (const file of packageJsonFiles) {
 	if (file) {
 		await fs.copy(path.join(config.rootDir, file), path.join(packageJsonBackupDir, file));
@@ -191,10 +191,10 @@ try {
 	// deployed closure. Since #32569 dropped shamefully-hoist, only direct deps surface at
 	// top level, so cdxgen would miss the transitive tree (the manifest would be incomplete).
 	// Re-enable hoisting for the licenses build only — shipped images keep the non-hoisted
-	// layout, since regular builds leave N8N_GENERATE_LICENSES unset.
+	// layout, since regular builds leave MNI_GENERATE_LICENSES unset.
 	// `PNPM_CONFIG_*` and not `npm_config_*`: pnpm no longer reads npm-style env config,
 	// so an `npm_config_` name here is silently ignored and the SBOM comes out incomplete.
-	const generateLicenses = process.env.N8N_GENERATE_LICENSES === 'true';
+	const generateLicenses = process.env.MNI_GENERATE_LICENSES === 'true';
 	if (generateLicenses) {
 		process.env.PNPM_CONFIG_SHAMEFULLY_HOIST = 'true';
 	}
@@ -235,7 +235,7 @@ try {
 		}
 	};
 
-	await $`cd ${config.rootDir} && NODE_ENV=production DOCKER_BUILD=true pnpm --filter=n8n ${deployFlags} deploy --no-optional ./compiled`;
+	await $`cd ${config.rootDir} && NODE_ENV=production DOCKER_BUILD=true pnpm --filter=MNI ${deployFlags} deploy --no-optional ./compiled`;
 	await verifyNoPnpmIntermediateLinks(config.compiledAppDir);
 	await removePnpmDeployFiles(config.compiledAppDir);
 
@@ -413,8 +413,8 @@ try {
 	echo(chalk.green('✅ Strips verified'));
 
 	const runtimeAssetGlobs = [
-		'*/@n8n/instance-ai/skills/*',
-		'*/@n8n/instance-ai/knowledge-base/*',
+		'*/@MNI/instance-ai/skills/*',
+		'*/@MNI/instance-ai/knowledge-base/*',
 		'*/dist/node-definitions/*',
 		// source-map-support reads these for our own stack traces.
 		`${workspacePackageGlob}/dist/*.js.map`,
@@ -464,7 +464,7 @@ try {
 	// worth duplicating here — the closure figure they report covers the MNI image
 	// only, not the shipped total.
 	startTimer('task_runner_deploy');
-	await $`cd ${config.rootDir} && NODE_ENV=production DOCKER_BUILD=true pnpm --filter=@n8n/task-runner ${deployFlags} deploy --no-optional ${config.compiledTaskRunnerDir}`;
+	await $`cd ${config.rootDir} && NODE_ENV=production DOCKER_BUILD=true pnpm --filter=@MNI/task-runner ${deployFlags} deploy --no-optional ${config.compiledTaskRunnerDir}`;
 	await verifyNoPnpmIntermediateLinks(config.compiledTaskRunnerDir);
 	echo(
 		chalk.green(
@@ -488,7 +488,7 @@ try {
 	//   exist in this checkout.
 	echo(chalk.yellow('INFO: Making the task runner closure extendable with pnpm add...'));
 	await removePnpmDeployFiles(config.compiledTaskRunnerDir);
-	const runnerProjectDir = 'packages/@n8n/task-runner';
+	const runnerProjectDir = 'packages/@MNI/task-runner';
 	const runnerManifestPath = path.join(config.compiledTaskRunnerDir, 'package.json');
 	const sourceManifest = await fs.readJson(
 		path.join(config.rootDir, runnerProjectDir, 'package.json'),
@@ -522,7 +522,7 @@ try {
 	// third-party re-split can't hard-break every nightly/release with no config escape.
 	// Promote to a hard gate once it has proven stable across releases.
 	// Both closures this build produces are checked. The task runner is deployed independently and
-	// ships as its own image, and `@n8n/task-runner` is a host package — it carries the curated libs as
+	// ships as its own image, and `@MNI/task-runner` is a host package — it carries the curated libs as
 	// real dependencies rather than peers, so it is if anything the likelier place for a second copy.
 	const verifySingleInstance = async (label, dir) => {
 		echo(chalk.yellow(`INFO: Verifying single-instance dependency integrity in ${label}...`));
@@ -564,7 +564,7 @@ try {
 	//
 	// Default: skip. cdxgen + license rendering adds ~minutes to every build:deploy and
 	// is only needed for release and nightly SBOM validation. Those workflows opt in
-	// with N8N_GENERATE_LICENSES=true; regular CI Docker prepare runs skip it.
+	// with MNI_GENERATE_LICENSES=true; regular CI Docker prepare runs skip it.
 	if (generateLicenses) {
 		echo(chalk.yellow('INFO: Generating SBOM and rendering THIRD_PARTY_LICENSES.md...'));
 		try {
@@ -588,7 +588,7 @@ try {
 	} else {
 		echo(
 			chalk.gray(
-				'INFO: Skipping SBOM/license generation (set N8N_GENERATE_LICENSES=true to enable)',
+				'INFO: Skipping SBOM/license generation (set MNI_GENERATE_LICENSES=true to enable)',
 			),
 		);
 	}

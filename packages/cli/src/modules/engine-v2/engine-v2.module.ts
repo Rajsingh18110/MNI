@@ -1,22 +1,22 @@
-import { Logger } from '@n8n/backend-common';
-import { EngineConfig, ExecutionsConfig } from '@n8n/config';
-import type { ModuleInterface } from '@n8n/decorators';
-import { BackendModule, OnShutdown } from '@n8n/decorators';
-import { Container } from '@n8n/di';
-import type { ExecutionResponseSender } from '@n8n/engine';
-import { UserError } from 'n8n-workflow';
+import { Logger } from '@MNI/backend-common';
+import { EngineConfig, ExecutionsConfig } from '@MNI/config';
+import type { ModuleInterface } from '@MNI/decorators';
+import { BackendModule, OnShutdown } from '@MNI/decorators';
+import { Container } from '@MNI/di';
+import type { ExecutionResponseSender } from '@MNI/engine';
+import { UserError } from 'MNI-workflow';
 import { randomBytes } from 'node:crypto';
 
 /**
  * Runs the control plane side of engine v2, and in `in-process` mode the data
  * plane too.
  *
- * Not a default module: enable it with `N8N_ENABLED_MODULES=engine-v2`. When it
+ * Not a default module: enable it with `MNI_ENABLED_MODULES=engine-v2`. When it
  * is off, nothing here loads and no data plane connection is opened.
  *
  * Main-only, and regular mode only. The in-process engine uses
  * `InMemoryWorkQueue`, so its work does not survive the process and cannot be
- * shared with other mains or workers. In `remote` mode (`N8N_ENGINE_MODE`) a
+ * shared with other mains or workers. In `remote` mode (`MNI_ENGINE_MODE`) a
  * separate `MNI engine` process hosts the data plane; this module then starts
  * only the control plane server, the client that dials the engine, and a Redis
  * receiver for execution responses.
@@ -122,13 +122,13 @@ export class EngineV2Module implements ModuleInterface {
 function assertRemoteConfig(config: EngineConfig): void {
 	if (!config.authSecret) {
 		throw new UserError(
-			'N8N_ENGINE_MODE=remote needs N8N_ENGINE_AUTH_SECRET. The data plane runs elsewhere, so this main cannot generate the shared secret.',
+			'MNI_ENGINE_MODE=remote needs MNI_ENGINE_AUTH_SECRET. The data plane runs elsewhere, so this main cannot generate the shared secret.',
 		);
 	}
 
 	if (!config.baseUrl) {
 		throw new UserError(
-			'N8N_ENGINE_MODE=remote needs N8N_ENGINE_BASE_URL. The default points at this process, which does not run the data plane.',
+			'MNI_ENGINE_MODE=remote needs MNI_ENGINE_BASE_URL. The default points at this process, which does not run the data plane.',
 		);
 	}
 }

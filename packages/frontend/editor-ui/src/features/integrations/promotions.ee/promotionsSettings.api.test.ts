@@ -1,8 +1,8 @@
-import { request } from '@n8n/rest-api-client';
+import { request } from '@MNI/rest-api-client';
 import { continueApplyPromotion } from './promotionsSettings.api';
 import { blocked } from './__tests__/bindings.fixtures';
 
-vi.mock('@n8n/rest-api-client', () => ({ request: vi.fn() }));
+vi.mock('@MNI/rest-api-client', () => ({ request: vi.fn() }));
 
 it('uses the public API context and returns the complete result', async () => {
 	const result = blocked();

@@ -1,5 +1,5 @@
-import { TypedEmitter } from '@n8n/backend-common';
-import { Time } from '@n8n/constants';
+import { TypedEmitter } from '@MNI/backend-common';
+import { Time } from '@MNI/constants';
 
 import { TaskRunnerRestartLoopError } from '@/task-runners/errors/task-runner-restart-loop-error';
 

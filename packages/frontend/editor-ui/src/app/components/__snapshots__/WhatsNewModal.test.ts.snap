@@ -6,14 +6,14 @@ exports[`WhatsNewModal > should not render update button when no version updates
   data-test-id="whats-new-item-1"
 >
   <h2
-    class="n8n-heading size-xlarge bold"
+    class="MNI-heading size-xlarge bold"
   >
     
     Convert to sub-workflow
     
   </h2>
   <div
-    class="n8n-markdown markdown"
+    class="MNI-markdown markdown"
   >
     <!-- Needed to support YouTube player embeds. HTML rendered here is sanitized. -->
     <!-- eslint-disable vue/no-v-html -->

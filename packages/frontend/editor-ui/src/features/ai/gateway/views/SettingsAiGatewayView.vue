@@ -9,10 +9,10 @@ import {
 	N8nText,
 	N8nTooltip,
 	N8nBadge,
-} from '@n8n/design-system';
-import type { TableHeader } from '@n8n/design-system';
-import type { AiGatewayUsageEntry } from '@n8n/api-types';
-import { useI18n } from '@n8n/i18n';
+} from '@MNI/design-system';
+import type { TableHeader } from '@MNI/design-system';
+import type { AiGatewayUsageEntry } from '@MNI/api-types';
+import { useI18n } from '@MNI/i18n';
 import { useRouter } from 'vue-router';
 import { useDocumentTitle } from '@/app/composables/useDocumentTitle';
 import { useAiGatewayStore } from '@/app/stores/aiGateway.store';

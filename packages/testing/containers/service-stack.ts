@@ -15,7 +15,7 @@ export interface ServiceStackOptions {
 
 /**
  * Creates a stack with only services (no MNI containers).
- * Useful for integration tests that need databases/services but not full n8n.
+ * Useful for integration tests that need databases/services but not full MNI.
  *
  * @example
  * const stack = await createServiceStack({ services: ['postgres'] });
@@ -91,7 +91,7 @@ export function writeDevEnvFile(stack: N8NStack, services: ServiceName[]): Recor
 	const lines = [
 		DEV_ENV_FILE_MARKER,
 		`# Project: ${stack.projectName}`,
-		'# Stop with: pnpm --filter n8n-containers services:clean',
+		'# Stop with: pnpm --filter MNI-containers services:clean',
 		'',
 		...Object.entries(env).map(([key, value]) => `${key}=${value}`),
 		'',

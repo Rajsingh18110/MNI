@@ -1,5 +1,5 @@
-import type { ServiceHelpers, ServiceName } from 'n8n-containers/services/types';
-import type { IWorkflowBase } from 'n8n-workflow';
+import type { ServiceHelpers, ServiceName } from 'MNI-containers/services/types';
+import type { IWorkflowBase } from 'MNI-workflow';
 
 import type { ApiHelpers } from '../../services/api-helper';
 

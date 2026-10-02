@@ -1,11 +1,11 @@
-import { inTest, Logger } from '@n8n/backend-common';
-import { InstanceSettingsConfig } from '@n8n/config';
-import type { InstanceRole, InstanceType } from '@n8n/constants';
-import { Memoized } from '@n8n/decorators';
-import { Service } from '@n8n/di';
-import { toResult } from '@n8n/utils/result';
+import { inTest, Logger } from '@MNI/backend-common';
+import { InstanceSettingsConfig } from '@MNI/config';
+import type { InstanceRole, InstanceType } from '@MNI/constants';
+import { Memoized } from '@MNI/decorators';
+import { Service } from '@MNI/di';
+import { toResult } from '@MNI/utils/result';
 import { createHash, randomBytes } from 'crypto';
-import { UserError, jsonParse, ALPHABET } from 'n8n-workflow';
+import { UserError, jsonParse, ALPHABET } from 'MNI-workflow';
 import { customAlphabet } from 'nanoid';
 import { chmodSync, existsSync, mkdirSync, readFileSync, statSync, writeFileSync } from 'node:fs';
 import os from 'node:os';
@@ -22,7 +22,7 @@ interface ReadOnlySettings {
 interface WritableSettings {
 	tunnelSubdomain?: string;
 
-	/** Whether `~/.n8n/binaryData` has been migrated to `~/.n8n/storage` */
+	/** Whether `~/.MNI/binaryData` has been migrated to `~/.MNI/storage` */
 	fsStorageMigrated?: boolean;
 }
 
@@ -30,8 +30,8 @@ type Settings = ReadOnlySettings & WritableSettings;
 
 /**
  * The subset of `DeploymentKeyRepository` the deployment-state initializers
- * use. Typed inline rather than imported from `@n8n/db` to avoid a circular
- * package dependency: `@n8n/db` depends on `n8n-core` at runtime.
+ * use. Typed inline rather than imported from `@MNI/db` to avoid a circular
+ * package dependency: `@MNI/db` depends on `MNI-core` at runtime.
  */
 export type DeploymentStateRepo = {
 	findActiveIdentifier(type: string): Promise<{ value: string } | null>;
@@ -117,8 +117,8 @@ export class InstanceSettings {
 	 * processes hold the deployment's encryption key, so a one-off CLI command
 	 * must not pin the identity for the whole deployment.
 	 *
-	 * The repo parameter is typed inline rather than imported from @n8n/db to
-	 * avoid a circular package dependency: @n8n/db depends on n8n-core at runtime.
+	 * The repo parameter is typed inline rather than imported from @MNI/db to
+	 * avoid a circular package dependency: @MNI/db depends on MNI-core at runtime.
 	 */
 	async initialize(
 		repo: DeploymentStateRepo,
@@ -128,7 +128,7 @@ export class InstanceSettings {
 		await this.initIdentifier(
 			repo,
 			'instance.id',
-			process.env.N8N_INSTANCE_ID,
+			process.env.MNI_INSTANCE_ID,
 			canSeed,
 			() => this.instanceId,
 			(v) => {
@@ -138,7 +138,7 @@ export class InstanceSettings {
 		await this.initSecret(
 			repo,
 			'signing.hmac',
-			process.env.N8N_HMAC_SIGNATURE_SECRET,
+			process.env.MNI_HMAC_SIGNATURE_SECRET,
 			canSeed,
 			() => this.hmacSignatureSecret,
 			(v) => {
@@ -322,7 +322,7 @@ export class InstanceSettings {
 			this.ensureSettingsFilePermissions();
 
 			const settings = jsonParse<Settings>(content, {
-				errorMessage: `Error parsing n8n-config file "${this.settingsFile}". It does not seem to be valid JSON.`,
+				errorMessage: `Error parsing MNI-config file "${this.settingsFile}". It does not seem to be valid JSON.`,
 			});
 
 			if (!inTest) this.logger.debug(`User settings loaded from: ${this.settingsFile}`);
@@ -331,7 +331,7 @@ export class InstanceSettings {
 
 			if (encryptionKeyFromEnv && encryptionKey !== encryptionKeyFromEnv) {
 				throw new UserError(
-					`Mismatching encryption keys. The encryption key in the settings file ${this.settingsFile} does not match the N8N_ENCRYPTION_KEY env var. Please make sure both keys match. More information: https://docs.n8n.io/deploy/host-n8n/configure-n8n/basic-configuration/configuration-examples/set-a-custom-encryption-key`,
+					`Mismatching encryption keys. The encryption key in the settings file ${this.settingsFile} does not match the MNI_ENCRYPTION_KEY env var. Please make sure both keys match. More information: https://docs.n8n.io/deploy/host-MNI/configure-MNI/basic-configuration/configuration-examples/set-a-custom-encryption-key`,
 				);
 			}
 
@@ -370,7 +370,7 @@ export class InstanceSettings {
 	}
 
 	private getOrGenerateHmacSignatureSecret() {
-		const hmacSignatureSecretFromEnv = process.env.N8N_HMAC_SIGNATURE_SECRET;
+		const hmacSignatureSecretFromEnv = process.env.MNI_HMAC_SIGNATURE_SECRET;
 		if (hmacSignatureSecretFromEnv) return hmacSignatureSecretFromEnv;
 
 		const { encryptionKey } = this;
@@ -390,11 +390,11 @@ export class InstanceSettings {
 		enforce: boolean;
 	} {
 		const { enforceSettingsFilePermissions } = this.config;
-		const isEnvVarSet = !!process.env.N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS;
+		const isEnvVarSet = !!process.env.MNI_ENFORCE_SETTINGS_FILE_PERMISSIONS;
 		if (this.isWindows()) {
 			if (isEnvVarSet) {
 				console.warn(
-					'Ignoring N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS as it is not supported on Windows.',
+					'Ignoring MNI_ENFORCE_SETTINGS_FILE_PERMISSIONS as it is not supported on Windows.',
 				);
 			}
 
@@ -426,7 +426,7 @@ export class InstanceSettings {
 		// If we can't determine the permissions, log a warning and skip the check
 		if (!permissionsResult.ok) {
 			this.logger.warn(
-				`Could not ensure settings file permissions: ${permissionsResult.error.message}. To skip this check, set N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=false.`,
+				`Could not ensure settings file permissions: ${permissionsResult.error.message}. To skip this check, set MNI_ENFORCE_SETTINGS_FILE_PERMISSIONS=false.`,
 			);
 			return;
 		}
@@ -446,7 +446,7 @@ export class InstanceSettings {
 			// error and ignore it. We might want to prevent the app startup in the
 			// future in this case.
 			this.logger.warn(
-				`Could not enforce settings file permissions: ${chmodResult.error.message}. To skip this check, set N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=false.`,
+				`Could not enforce settings file permissions: ${chmodResult.error.message}. To skip this check, set MNI_ENFORCE_SETTINGS_FILE_PERMISSIONS=false.`,
 			);
 		}
 	}

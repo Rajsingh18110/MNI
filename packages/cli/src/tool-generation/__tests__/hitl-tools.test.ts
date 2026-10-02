@@ -4,8 +4,8 @@ import type {
 	INodeProperties,
 	INodeTypeDescription,
 	NodeOutput,
-} from 'n8n-workflow';
-import { NodeConnectionTypes, SEND_AND_WAIT_OPERATION } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeConnectionTypes, SEND_AND_WAIT_OPERATION } from 'MNI-workflow';
 
 import { convertNodeToHitlTool, createHitlTools, hasSendAndWaitOperation } from '../hitl-tools';
 
@@ -214,7 +214,7 @@ describe('hitl-tools', () => {
 					displayName: 'Human review',
 					type: NodeConnectionTypes.AiTool,
 					filter: {
-						nodes: ['@n8n/n8n-nodes-langchain.agent', '@n8n/n8n-nodes-langchain.agentTool'],
+						nodes: ['@MNI/MNI-nodes-langchain.agent', '@MNI/MNI-nodes-langchain.agentTool'],
 					},
 				},
 			]);
@@ -409,7 +409,7 @@ describe('hitl-tools', () => {
 			types = {
 				nodes: [
 					{
-						name: 'n8n-nodes-base.slack',
+						name: 'MNI-nodes-base.slack',
 						displayName: 'Slack',
 						group: ['output'],
 						description: 'Send messages to Slack',
@@ -433,13 +433,13 @@ describe('hitl-tools', () => {
 
 			known = {
 				nodes: {
-					'n8n-nodes-base.slack': { className: 'Slack', sourcePath: '/path/to/slack' },
+					'MNI-nodes-base.slack': { className: 'Slack', sourcePath: '/path/to/slack' },
 				},
 				credentials: {
 					slackOAuth2Api: {
 						className: 'SlackOAuth2Api',
 						sourcePath: '/path/to/slackOAuth2Api',
-						supportedNodes: ['n8n-nodes-base.slack'],
+						supportedNodes: ['MNI-nodes-base.slack'],
 					},
 				},
 			};
@@ -449,7 +449,7 @@ describe('hitl-tools', () => {
 			createHitlTools(types as never, known as never);
 
 			expect(types.nodes).toHaveLength(2); // Original node + HITL tool
-			expect(types.nodes[1].name).toBe('n8n-nodes-base.slackHitlTool');
+			expect(types.nodes[1].name).toBe('MNI-nodes-base.slackHitlTool');
 			expect(types.nodes[1].displayName).toBe('Slack');
 			expect(types.nodes[1].subtitle).toBe('Send and wait');
 		});
@@ -457,7 +457,7 @@ describe('hitl-tools', () => {
 		it('should point to original node class for HITL tool', () => {
 			createHitlTools(types as never, known as never);
 
-			expect(known.nodes['n8n-nodes-base.slackHitlTool']).toEqual({
+			expect(known.nodes['MNI-nodes-base.slackHitlTool']).toEqual({
 				className: 'Slack',
 				sourcePath: '/path/to/slack',
 			});
@@ -468,7 +468,7 @@ describe('hitl-tools', () => {
 
 			expect(
 				(known.credentials.slackOAuth2Api as { supportedNodes: string[] }).supportedNodes,
-			).toEqual(['n8n-nodes-base.slack', 'n8n-nodes-base.slackHitlTool']);
+			).toEqual(['MNI-nodes-base.slack', 'MNI-nodes-base.slackHitlTool']);
 		});
 
 		it('should not create HITL tools for nodes without sendAndWait', () => {
@@ -476,7 +476,7 @@ describe('hitl-tools', () => {
 			createHitlTools(types as never, known as never);
 
 			expect(types.nodes).toHaveLength(1); // No HITL tool created
-			expect(types.nodes[0].name).toBe('n8n-nodes-base.slack');
+			expect(types.nodes[0].name).toBe('MNI-nodes-base.slack');
 		});
 
 		it('should set correct inputs and outputs on HITL tool', () => {
@@ -494,7 +494,7 @@ describe('hitl-tools', () => {
 					displayName: 'Human review',
 					type: NodeConnectionTypes.AiTool,
 					filter: {
-						nodes: ['@n8n/n8n-nodes-langchain.agent', '@n8n/n8n-nodes-langchain.agentTool'],
+						nodes: ['@MNI/MNI-nodes-langchain.agent', '@MNI/MNI-nodes-langchain.agentTool'],
 					},
 				},
 			]);

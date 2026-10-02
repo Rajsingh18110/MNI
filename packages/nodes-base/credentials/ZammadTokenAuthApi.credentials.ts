@@ -1,4 +1,4 @@
-import type { ICredentialType, INodeProperties } from 'n8n-workflow';
+import type { ICredentialType, INodeProperties } from 'MNI-workflow';
 
 export class ZammadTokenAuthApi implements ICredentialType {
 	name = 'zammadTokenAuthApi';
@@ -13,7 +13,7 @@ export class ZammadTokenAuthApi implements ICredentialType {
 			name: 'baseUrl',
 			type: 'string',
 			default: '',
-			placeholder: 'https://n8n-helpdesk.zammad.com',
+			placeholder: 'https://MNI-helpdesk.zammad.com',
 			required: true,
 		},
 		{

@@ -6,7 +6,7 @@ import { AuthError } from '@/errors/response-errors/auth.error';
 // only protected resource; clients registered via its DCR endpoint see this
 // message. Revisit once the OAuth server serves non-MCP resources.
 export const buildOAuthClientLimitReachedMessage = (limit: number): string =>
-	`This MNI instance has reached its maximum of ${limit} registered MCP clients. Ask an administrator to revoke unused clients or raise N8N_MCP_MAX_REGISTERED_CLIENTS.`;
+	`This MNI instance has reached its maximum of ${limit} registered MCP clients. Ask an administrator to revoke unused clients or raise MNI_MCP_MAX_REGISTERED_CLIENTS.`;
 
 /**
  * Thrown from the DCR registration path when the instance-wide registered-client

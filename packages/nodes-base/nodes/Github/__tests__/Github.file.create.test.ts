@@ -1,4 +1,4 @@
-import type { IExecuteFunctions } from 'n8n-workflow';
+import type { IExecuteFunctions } from 'MNI-workflow';
 
 import { Github } from '../Github.node';
 import * as GenericFunctions from '../GenericFunctions';
@@ -25,7 +25,7 @@ describe('Github Node - File Create/Edit Operations', () => {
 			getNode: vi.fn().mockReturnValue({
 				id: 'test-node-id',
 				name: 'Github',
-				type: 'n8n-nodes-base.github',
+				type: 'MNI-nodes-base.github',
 				typeVersion: 1,
 				position: [0, 0],
 				parameters: {},

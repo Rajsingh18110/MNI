@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { computed, nextTick, onBeforeUnmount, ref, watch, type Component } from 'vue';
-import { useI18n, type BaseTextKey } from '@n8n/i18n';
-import type { ITelemetryTrackProperties } from 'n8n-workflow';
+import { useI18n, type BaseTextKey } from '@MNI/i18n';
+import type { ITelemetryTrackProperties } from 'MNI-workflow';
 import ChatInputBase from '@/features/ai/shared/components/ChatInputBase.vue';
 import { EXTENDED_PROMPT_MAX_LENGTH } from '@/features/ai/shared/constants';
 import AttachmentPreview from './AttachmentPreview.vue';
@@ -12,8 +12,8 @@ import {
 	base64EncodedSize,
 	type InstanceAiAttachment,
 	type InstanceAiResourceAttachment,
-} from '@n8n/api-types';
-import { useToast } from '@n8n/composables/useToast';
+} from '@MNI/api-types';
+import { useToast } from '@MNI/composables/useToast';
 import AssistantAtMentionPicker from '@/features/ai/assistant-at-mentions/AssistantAtMentionPicker.vue';
 import { useAssistantAtMentions } from '@/features/ai/assistant-at-mentions/composables/useAssistantAtMentions';
 import { useAssistantMentionAttachments } from '@/features/ai/assistant-at-mentions/composables/useAssistantMentionAttachments';
@@ -241,7 +241,7 @@ function setTextIfEmpty(text: string) {
 }
 
 /**
- * Put n8n-authored text in the composer. Pre-fills must come through here
+ * Put MNI-authored text in the composer. Pre-fills must come through here
  * rather than `setText` so the submit can attribute them; `setText` and
  * friends stay for restoring a draft the user wrote.
  */

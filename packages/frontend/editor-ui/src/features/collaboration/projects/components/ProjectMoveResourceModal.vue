@@ -2,15 +2,15 @@
 import Modal from '@/app/components/Modal.vue';
 import ProjectMoveResourceModalCredentialsList from './ProjectMoveResourceModalCredentialsList.vue';
 import ProjectSharing from './ProjectSharing.vue';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
-import { useToast } from '@n8n/composables/useToast';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
+import { useToast } from '@MNI/composables/useToast';
 import { useMoveResourceToProjectToast } from '../composables/useMoveResourceToProjectToast';
 import type {
 	ICredentialsResponse,
 	IUsedCredential,
 } from '@/features/credentials/credentials.types';
 import type { IWorkflowDb } from '@/Interface';
-import { getResourcePermissions } from '@n8n/permissions';
+import { getResourcePermissions } from '@MNI/permissions';
 import { useCredentialsStore } from '@/features/credentials/credentials.store';
 import { usePrivateCredentials } from '@/features/resolvers/composables/usePrivateCredentials';
 import { useProjectsStore } from '../projects.store';
@@ -25,9 +25,9 @@ import {
 	ResourceType,
 	splitName,
 } from '../projects.utils';
-import { useI18n } from '@n8n/i18n';
-import type { EventBus } from '@n8n/utils/event-bus';
-import { truncate } from '@n8n/utils/string/truncate';
+import { useI18n } from '@MNI/i18n';
+import type { EventBus } from '@MNI/utils/event-bus';
+import { truncate } from '@MNI/utils/string/truncate';
 import { computed, onMounted, ref } from 'vue';
 import { I18nT } from 'vue-i18n';
 
@@ -38,7 +38,7 @@ import {
 	N8nHeading,
 	N8nText,
 	N8nTooltip,
-} from '@n8n/design-system';
+} from '@MNI/design-system';
 const props = defineProps<{
 	modalName: string;
 	data: {

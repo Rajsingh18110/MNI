@@ -1,5 +1,5 @@
-import type { ProxyServer } from 'n8n-containers/services/proxy';
-import type { IDataObject, IWorkflowBase } from 'n8n-workflow';
+import type { ProxyServer } from 'MNI-containers/services/proxy';
+import type { IDataObject, IWorkflowBase } from 'MNI-workflow';
 import { nanoid } from 'nanoid';
 
 import type { makePollTriggerWorkflow } from './poll-trigger-workflow';
@@ -81,7 +81,7 @@ export async function expectPollTriggerFires(
 	expect(execution.status).toBe('success');
 
 	const triggerNode = createdWorkflow.nodes.find(
-		(node) => node.type === 'n8n-nodes-base.e2eTestPollingTrigger',
+		(node) => node.type === 'MNI-nodes-base.e2eTestPollingTrigger',
 	);
 	if (!triggerNode) throw new Error('Poll trigger node not found in created workflow');
 

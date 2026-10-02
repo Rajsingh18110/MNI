@@ -1,8 +1,8 @@
-import type { InstanceAiEvent } from '@n8n/api-types';
-import { Logger } from '@n8n/backend-common';
-import { Service } from '@n8n/di';
-import { createSubAgentResourceIdPrefix, orchestratorAgentId } from '@n8n/instance-ai';
-import { InstanceSettings } from 'n8n-core';
+import type { InstanceAiEvent } from '@MNI/api-types';
+import { Logger } from '@MNI/backend-common';
+import { Service } from '@MNI/di';
+import { createSubAgentResourceIdPrefix, orchestratorAgentId } from '@MNI/instance-ai';
+import { InstanceSettings } from 'MNI-core';
 
 import { DurableLogMetrics } from './durable-log-metrics';
 import { InProcessEventBus } from './in-process-event-bus';

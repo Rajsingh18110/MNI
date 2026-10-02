@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
-import { useI18n } from '@n8n/i18n';
-import { type TableHeader } from '@n8n/design-system';
+import { useI18n } from '@MNI/i18n';
+import { type TableHeader } from '@MNI/design-system';
 import {
 	N8nEmptyState,
 	N8nActionToggle,
@@ -11,12 +11,12 @@ import {
 	N8nLoading,
 	N8nText,
 	N8nTooltip,
-} from '@n8n/design-system';
+} from '@MNI/design-system';
 import {
 	type ChatHubLLMProvider,
 	type ChatProviderSettingsDto,
 	PROVIDER_CREDENTIAL_TYPE_MAP,
-} from '@n8n/api-types';
+} from '@MNI/api-types';
 import { providerDisplayNames } from '../constants';
 import TimeAgo from '@/app/components/TimeAgo.vue';
 import CredentialIcon from '@/features/credentials/components/CredentialIcon.vue';

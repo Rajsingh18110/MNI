@@ -1,5 +1,5 @@
 import countryCodes from 'currency-codes';
-import { SEND_AND_WAIT_OPERATION, type INodeProperties } from 'n8n-workflow';
+import { SEND_AND_WAIT_OPERATION, type INodeProperties } from 'MNI-workflow';
 
 import {
 	cleanPhoneNumber,
@@ -872,7 +872,7 @@ export const messageTypeFields: INodeProperties[] = [
 				description: 'If you have already uploaded the audio to WhatsApp',
 			},
 			{
-				// eslint-disable-next-line n8n-nodes-base/node-param-display-name-miscased
+				// eslint-disable-next-line MNI-nodes-base/node-param-display-name-miscased
 				name: 'MNI',
 				value: 'useMedian8n',
 				description: 'Use binary data passed into this node',
@@ -904,7 +904,7 @@ export const messageTypeFields: INodeProperties[] = [
 				description: 'You can use an ID if you have already uploaded the document to WhatsApp',
 			},
 			{
-				// eslint-disable-next-line n8n-nodes-base/node-param-display-name-miscased
+				// eslint-disable-next-line MNI-nodes-base/node-param-display-name-miscased
 				name: 'MNI',
 				value: 'useMedian8n',
 				description: 'Upload a binary file on the item being processed in MNI',
@@ -936,7 +936,7 @@ export const messageTypeFields: INodeProperties[] = [
 				description: 'You can use an ID if you have already uploaded the image to WhatsApp',
 			},
 			{
-				// eslint-disable-next-line n8n-nodes-base/node-param-display-name-miscased
+				// eslint-disable-next-line MNI-nodes-base/node-param-display-name-miscased
 				name: 'MNI',
 				value: 'useMedian8n',
 				description: 'Upload a binary file on the item being processed in MNI',
@@ -968,7 +968,7 @@ export const messageTypeFields: INodeProperties[] = [
 				description: 'You can use an ID if you have already uploaded the video to WhatsApp',
 			},
 			{
-				// eslint-disable-next-line n8n-nodes-base/node-param-display-name-miscased
+				// eslint-disable-next-line MNI-nodes-base/node-param-display-name-miscased
 				name: 'MNI',
 				value: 'useMedian8n',
 				description: 'Upload a binary file on the item being processed in MNI',

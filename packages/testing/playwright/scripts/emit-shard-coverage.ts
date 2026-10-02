@@ -7,7 +7,7 @@
  *
  * - Frontend: browser V8 already in outputDir/.cache (inline maps w/ sources) —
  *   monocart resolves it with no extra inputs.
- * - Backend: Node V8 from the containers (N8N_COVERAGE_DIR). The repo isn't
+ * - Backend: Node V8 from the containers (MNI_COVERAGE_DIR). The repo isn't
  *   built on the shard, so .js/.map BYTES are read from the MNI image's dist
  *   (docker cp'd to IMAGE_DIST_ROOT — the exact executed files), while the map's
  *   `sources` are resolved to the checkout's `packages/<x>/src/*.ts`. No build.
@@ -34,7 +34,7 @@ const IMAGE_DIST_ROOT = process.env.IMAGE_DIST_ROOT;
 const stats = createBackendResolveStats();
 
 async function addBackendCoverage(report: CoverageReport): Promise<number> {
-	const dir = process.env.N8N_COVERAGE_DIR;
+	const dir = process.env.MNI_COVERAGE_DIR;
 	if (!dir || !existsSync(dir)) return 0;
 	const pkgMap = buildPackageMap();
 	let added = 0;

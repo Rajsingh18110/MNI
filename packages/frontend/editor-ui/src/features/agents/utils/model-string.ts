@@ -4,7 +4,7 @@
  * sub-agents panel) used to roll their own and drifted on naming + edge cases.
  */
 
-import { AGENT_MODEL_STRING_REGEX } from '@n8n/api-types';
+import { AGENT_MODEL_STRING_REGEX } from '@MNI/api-types';
 
 export interface ParsedModel {
 	provider: string;

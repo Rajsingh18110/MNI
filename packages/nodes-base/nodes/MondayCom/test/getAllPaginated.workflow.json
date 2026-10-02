@@ -3,7 +3,7 @@
 	"nodes": [
 		{
 			"parameters": {},
-			"type": "n8n-nodes-base.manualTrigger",
+			"type": "MNI-nodes-base.manualTrigger",
 			"typeVersion": 1,
 			"position": [0, 0],
 			"id": "trigger-1",
@@ -17,7 +17,7 @@
 				"groupId": "group1",
 				"returnAll": true
 			},
-			"type": "n8n-nodes-base.mondayCom",
+			"type": "MNI-nodes-base.mondayCom",
 			"typeVersion": 1,
 			"position": [200, 0],
 			"id": "monday-getall-paginated-1",
@@ -31,7 +31,7 @@
 		},
 		{
 			"parameters": {},
-			"type": "n8n-nodes-base.noOp",
+			"type": "MNI-nodes-base.noOp",
 			"typeVersion": 1,
 			"position": [400, 0],
 			"id": "output-1",

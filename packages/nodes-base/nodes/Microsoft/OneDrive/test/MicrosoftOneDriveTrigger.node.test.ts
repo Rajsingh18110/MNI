@@ -1,4 +1,4 @@
-import type { IDataObject, IPollFunctions, INode, NodeParameterValueType } from 'n8n-workflow';
+import type { IDataObject, IPollFunctions, INode, NodeParameterValueType } from 'MNI-workflow';
 import { mockDeep, type DeepMockProxy } from 'vitest-mock-extended';
 
 import { microsoftApiRequest, microsoftApiRequestAllItemsDelta } from '../GenericFunctions';

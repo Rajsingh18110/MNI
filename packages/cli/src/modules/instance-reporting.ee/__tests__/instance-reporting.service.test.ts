@@ -1,13 +1,13 @@
-import type { InsightsByTime } from '@n8n/api-types';
-import { mockLogger } from '@n8n/backend-test-utils';
+import type { InsightsByTime } from '@MNI/api-types';
+import { mockLogger } from '@MNI/backend-test-utils';
 import type {
 	HttpRequestClient,
 	HttpRequestClientOptions,
 	OutboundHttp,
-} from '@n8n/backend-network';
-import type { LicenseMetricsRepository, User } from '@n8n/db';
-import type { InstanceSettings } from 'n8n-core';
-import type { IHttpRequestOptions } from 'n8n-workflow';
+} from '@MNI/backend-network';
+import type { LicenseMetricsRepository, User } from '@MNI/db';
+import type { InstanceSettings } from 'MNI-core';
+import type { IHttpRequestOptions } from 'MNI-workflow';
 import type { Mocked } from 'vitest';
 import { mock } from 'vitest-mock-extended';
 
@@ -26,7 +26,7 @@ import {
 
 vi.mock('@/constants', async (importOriginal) => ({
 	...(await importOriginal<typeof import('@/constants')>()),
-	N8N_VERSION: '1.2.3',
+	MNI_VERSION: '1.2.3',
 }));
 
 interface ReportPayload {

@@ -7,8 +7,8 @@ import type {
 	IRequestOptions,
 	IHookFunctions,
 	INode,
-} from 'n8n-workflow';
-import { NodeApiError, NodeOperationError, UnexpectedError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeApiError, NodeOperationError, UnexpectedError } from 'MNI-workflow';
 
 import { capitalize } from '../utilities';
 

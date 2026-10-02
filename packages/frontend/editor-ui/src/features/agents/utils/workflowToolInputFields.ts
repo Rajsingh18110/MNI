@@ -1,5 +1,5 @@
-import { EXECUTE_WORKFLOW_TRIGGER_NODE_TYPE, type INode, type JsonValue } from 'n8n-workflow';
-import { SUPPORTED_WORKFLOW_TOOL_TRIGGERS } from '@n8n/api-types';
+import { EXECUTE_WORKFLOW_TRIGGER_NODE_TYPE, type INode, type JsonValue } from 'MNI-workflow';
+import { SUPPORTED_WORKFLOW_TOOL_TRIGGERS } from '@MNI/api-types';
 import type { IWorkflowDb } from '@/Interface';
 
 export type WorkflowToolInputFieldDef = {

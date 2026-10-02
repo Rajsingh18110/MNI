@@ -1,6 +1,6 @@
-import { LicenseState } from '@n8n/backend-common';
-import { EMPTY_CANVAS_GROUPS_FLAG } from '@n8n/api-types';
-import { GlobalConfig } from '@n8n/config';
+import { LicenseState } from '@MNI/backend-common';
+import { EMPTY_CANVAS_GROUPS_FLAG } from '@MNI/api-types';
+import { GlobalConfig } from '@MNI/config';
 import {
 	CredentialsRepository,
 	DbConnection,
@@ -9,12 +9,12 @@ import {
 	SharedWorkflowRepository,
 	WorkflowRepository,
 	type IWorkflowDb,
-} from '@n8n/db';
-import { Container, Service } from '@n8n/di';
-import { PROJECT_OWNER_ROLE_SLUG } from '@n8n/permissions';
-import { POLICY_KINDS, TELEMETRY_EVENT, type PolicyKind } from '@n8n/telemetry';
+} from '@MNI/db';
+import { Container, Service } from '@MNI/di';
+import { PROJECT_OWNER_ROLE_SLUG } from '@MNI/permissions';
+import { POLICY_KINDS, TELEMETRY_EVENT, type PolicyKind } from '@MNI/telemetry';
 import { snakeCase } from 'change-case';
-import { BinaryDataConfig, InstanceSettings } from 'n8n-core';
+import { BinaryDataConfig, InstanceSettings } from 'MNI-core';
 import type {
 	ExecutionStatus,
 	FeatureFlags,
@@ -23,19 +23,19 @@ import type {
 	ITelemetryTrackProperties,
 	IWorkflowBase,
 	JsonValue,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import {
 	getEmptyGroupAnchor,
 	hasCredentialChanges,
 	hasNonPositionalChanges,
 	TelemetryHelpers,
 	toExecutionContextEstablishmentHookParameter,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import os from 'node:os';
 import semver from 'semver';
 
 import config from '@/config';
-import { N8N_VERSION } from '@/constants';
+import { MNI_VERSION } from '@/constants';
 import { DynamicCredentialsProxy } from '@/credentials/dynamic-credentials-proxy';
 import { EventService } from '@/events/event.service';
 import type { RelayEventMap } from '@/events/maps/relay.event-map';
@@ -280,10 +280,10 @@ export class TelemetryEventRelay extends EventRelay {
 			'workflow-unarchived': (event) => this.workflowUnarchived(event),
 			'workflow-deleted': (event) => this.workflowDeleted(event),
 			'workflow-sharing-updated': (event) => this.workflowSharingUpdated(event),
-			'n8n-package-imported': (event) => this.packageImported(event),
-			'n8n-package-exported': (event) => this.packageExported(event),
-			'n8n-package-export-failed': (event) => this.packageExportFailed(event),
-			'n8n-package-import-failed': (event) => this.packageImportFailed(event),
+			'MNI-package-imported': (event) => this.packageImported(event),
+			'MNI-package-exported': (event) => this.packageExported(event),
+			'MNI-package-export-failed': (event) => this.packageExportFailed(event),
+			'MNI-package-import-failed': (event) => this.packageImportFailed(event),
 			'workflow-saved': async (event) => await this.workflowSaved(event),
 			'workflow-activated': async (event) => await this.workflowActivated(event),
 			'workflow-deactivated': (event) => this.workflowDeactivated(event),
@@ -1342,7 +1342,7 @@ export class TelemetryEventRelay extends EventRelay {
 		});
 	}
 
-	private packageImported({ user, options, counts }: RelayEventMap['n8n-package-imported']) {
+	private packageImported({ user, options, counts }: RelayEventMap['MNI-package-imported']) {
 		this.telemetry.track('User imported MNI package', {
 			user_id: user.id,
 			workflow_conflict_policy: options.workflowConflictPolicy,
@@ -1394,7 +1394,7 @@ export class TelemetryEventRelay extends EventRelay {
 		counts,
 		credentialExportPolicy,
 		includeArchivedWorkflows,
-	}: RelayEventMap['n8n-package-exported']) {
+	}: RelayEventMap['MNI-package-exported']) {
 		this.telemetry.track('User exported MNI package', {
 			user_id: user.id,
 			workflow_count: counts.workflows,
@@ -1414,7 +1414,7 @@ export class TelemetryEventRelay extends EventRelay {
 		workflowIds,
 		folderIds,
 		projectIds,
-	}: RelayEventMap['n8n-package-export-failed']) {
+	}: RelayEventMap['MNI-package-export-failed']) {
 		this.telemetry.track('User package export failed', {
 			user_id: user.id,
 			reason,
@@ -1424,7 +1424,7 @@ export class TelemetryEventRelay extends EventRelay {
 		});
 	}
 
-	private packageImportFailed({ user, reason }: RelayEventMap['n8n-package-import-failed']) {
+	private packageImportFailed({ user, reason }: RelayEventMap['MNI-package-import-failed']) {
 		this.telemetry.track('User package import failed', {
 			user_id: user.id,
 			reason,
@@ -1515,7 +1515,7 @@ export class TelemetryEventRelay extends EventRelay {
 			node_graph_string: limitNodeGraphStringSize(JSON.stringify(nodeGraph)),
 			notes_count_overlapping: overlappingCount,
 			notes_count_non_overlapping: notesCount - overlappingCount,
-			version_cli: N8N_VERSION,
+			version_cli: MNI_VERSION,
 			num_tags: workflow.tags?.length ?? 0,
 			public_api: publicApi,
 			sharing_role: userRole,
@@ -1566,7 +1566,7 @@ export class TelemetryEventRelay extends EventRelay {
 		const telemetryProperties: IExecutionTrackProperties = {
 			workflow_id: workflow.id,
 			is_manual: false,
-			version_cli: N8N_VERSION,
+			version_cli: MNI_VERSION,
 			success: false,
 			...executionTelemetryProperties,
 			used_end_user_credentials: privateCredentialsAttemptedCount > 0,
@@ -1770,11 +1770,11 @@ export class TelemetryEventRelay extends EventRelay {
 		const dbVersion = await this.dbConnection.getDbVersion();
 
 		const info = {
-			version_cli: N8N_VERSION,
+			version_cli: MNI_VERSION,
 			db_type: this.globalConfig.database.type,
 			db_version: dbVersion,
-			n8n_version_notifications_enabled: this.globalConfig.versionNotifications.enabled,
-			n8n_disable_production_main_process:
+			MNI_version_notifications_enabled: this.globalConfig.versionNotifications.enabled,
+			MNI_disable_production_main_process:
 				this.globalConfig.endpoints.disableProductionWebhooksOnMainProcess,
 			system_info: {
 				os: {
@@ -1808,8 +1808,8 @@ export class TelemetryEventRelay extends EventRelay {
 				compaction_trimming_time_window_days:
 					this.globalConfig.workflowHistoryCompaction.trimmingTimeWindowDays,
 			},
-			n8n_deployment_type: this.globalConfig.deployment.type,
-			n8n_binary_data_mode: this.binaryDataConfig.mode,
+			MNI_deployment_type: this.globalConfig.deployment.type,
+			MNI_binary_data_mode: this.binaryDataConfig.mode,
 			smtp_set_up: this.globalConfig.userManagement.emails.mode === 'smtp',
 			ldap_allowed: authenticationMethod === 'ldap',
 			saml_enabled: authenticationMethod === 'saml',
@@ -1845,19 +1845,19 @@ export class TelemetryEventRelay extends EventRelay {
 			},
 		};
 
-		const versionParts = getSemanticVersioning(N8N_VERSION);
+		const versionParts = getSemanticVersioning(MNI_VERSION);
 
 		// Instance information available at group level on PostHog & Rudderstack
 		const telemetryInstanceInfo = {
 			// Main instance settings
-			n8n_host: this.globalConfig.host,
-			version_cli: N8N_VERSION,
+			MNI_host: this.globalConfig.host,
+			version_cli: MNI_VERSION,
 			version_cli_major: versionParts.major,
 			version_cli_minor: versionParts.minor,
 			version_cli_patch: versionParts.patch,
 			release_channel: this.globalConfig.generic.releaseChannel,
 			executions_mode: this.globalConfig.executions.mode,
-			n8n_deployment_type: this.globalConfig.deployment.type,
+			MNI_deployment_type: this.globalConfig.deployment.type,
 			db_type: this.globalConfig.database.type,
 			db_version: dbVersion,
 

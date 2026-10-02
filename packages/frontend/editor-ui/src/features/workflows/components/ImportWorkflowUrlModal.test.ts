@@ -4,7 +4,7 @@ import { createTestingPinia } from '@pinia/testing';
 import { useUIStore } from '@/app/stores/ui.store';
 import { nodeViewEventBus } from '@/app/event-bus';
 import { IMPORT_WORKFLOW_URL_MODAL_KEY } from '@/app/constants';
-import { STORES } from '@n8n/stores';
+import { STORES } from '@MNI/stores';
 import userEvent from '@testing-library/user-event';
 
 const ModalStub = {

@@ -6,10 +6,10 @@ import userEvent from '@testing-library/user-event';
 import { fireEvent, within } from '@testing-library/vue';
 import * as workflowHelpers from '@/app/composables/useWorkflowHelpers';
 import AssignmentCollection from './AssignmentCollection.vue';
-import { STORES } from '@n8n/stores';
+import { STORES } from '@MNI/stores';
 import { SETTINGS_STORE_DEFAULT_STATE } from '@/__tests__/utils';
 import { createTestNodeProperties } from '@/__tests__/mocks';
-import type { AssignmentCollectionValue, AssignmentValue } from 'n8n-workflow';
+import type { AssignmentCollectionValue, AssignmentValue } from 'MNI-workflow';
 
 vi.mock('vue-router');
 
@@ -36,7 +36,7 @@ const DEFAULT_SETUP: RenderOptions<typeof AssignmentCollection> = {
 			parameters: {},
 			id: 'f63efb2d-3cc5-4500-89f9-b39aab19baf5',
 			name: 'Edit Fields',
-			type: 'n8n-nodes-base.set',
+			type: 'MNI-nodes-base.set',
 			typeVersion: 3.3,
 			position: [1120, 380],
 			credentials: {},
@@ -94,7 +94,7 @@ describe('AssignmentCollection.vue', () => {
 			parameters: {},
 			id: 'f63efb2d-3cc5-4500-89f9-b39aab19baf5',
 			name: 'Edit Fields',
-			type: 'n8n-nodes-base.set',
+			type: 'MNI-nodes-base.set',
 			typeVersion: 3.3,
 			position: [1120, 380] as [number, number],
 			credentials: {},

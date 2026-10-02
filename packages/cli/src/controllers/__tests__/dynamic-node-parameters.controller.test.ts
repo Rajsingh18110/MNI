@@ -3,15 +3,15 @@ import type {
 	ResourceLocatorRequestDto,
 	ResourceMapperFieldsRequestDto,
 	ActionResultRequestDto,
-} from '@n8n/api-types';
-import type { AuthenticatedRequest } from '@n8n/db';
-import type { ExecutionContextService } from 'n8n-core';
+} from '@MNI/api-types';
+import type { AuthenticatedRequest } from '@MNI/db';
+import type { ExecutionContextService } from 'MNI-core';
 import type {
 	ILoadOptions,
 	IWorkflowExecuteAdditionalData,
 	INodePropertyOptions,
 	NodeParameterValueType,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import type { Mocked } from 'vitest';
 import { mock } from 'vitest-mock-extended';
 
@@ -239,7 +239,7 @@ describe('DynamicNodeParametersController', () => {
 		it("seals the request's own auth cookie and request context", async () => {
 			// Design-time loading resolves end-user credentials against the requesting
 			// user's connection, so their identity has to travel with the request.
-			authService.getCookieToken.mockReturnValue('n8n-auth-cookie-jwt');
+			authService.getCookieToken.mockReturnValue('MNI-auth-cookie-jwt');
 			authService.getMethod.mockReturnValue('POST');
 			authService.getEndpoint.mockReturnValue('/rest/dynamic-node-parameters/options');
 			authService.getBrowserId.mockReturnValue('browser-abc');
@@ -253,7 +253,7 @@ describe('DynamicNodeParametersController', () => {
 			);
 
 			expect(executionContextService.buildRequestBoundCredentials).toHaveBeenCalledWith(
-				'n8n-auth-cookie-jwt',
+				'MNI-auth-cookie-jwt',
 				{
 					method: 'POST',
 					endpoint: '/rest/dynamic-node-parameters/options',

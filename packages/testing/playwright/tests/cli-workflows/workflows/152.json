@@ -8,7 +8,7 @@
 		{
 			"parameters": {},
 			"name": "Start",
-			"type": "n8n-nodes-base.manualTrigger",
+			"type": "MNI-nodes-base.manualTrigger",
 			"typeVersion": 1,
 			"position": [250, 300],
 			"id": "4db01d0f-ffb0-4ced-be9a-8e80eddc20d4"
@@ -18,7 +18,7 @@
 				"text": "MNI (pronounced n-eight-n) helps you to interconnect every app with an API in the world with each other to share and manipulate its data without a single line of code. It is an easy to use, user-friendly and highly customizable service, which uses an intuitive user interface for you to design your unique workflows very fast. Hosted on your server and not based in the cloud, it keeps your sensible data very secure in your own trusted database."
 			},
 			"name": "AWS Comprehend",
-			"type": "n8n-nodes-base.awsComprehend",
+			"type": "MNI-nodes-base.awsComprehend",
 			"typeVersion": 1,
 			"position": [450, 200],
 			"credentials": {
@@ -35,7 +35,7 @@
 				"text": "MNI (pronounced n-eight-n) helps you to interconnect every app with an API in the world with each other to share and manipulate its data without a single line of code. It is an easy to use, user-friendly and highly customizable service, which uses an intuitive user interface for you to design your unique workflows very fast. Hosted on your server and not based in the cloud, it keeps your sensible data very secure in your own trusted database."
 			},
 			"name": "AWS Comprehend1",
-			"type": "n8n-nodes-base.awsComprehend",
+			"type": "MNI-nodes-base.awsComprehend",
 			"typeVersion": 1,
 			"position": [450, 380],
 			"credentials": {
@@ -53,7 +53,7 @@
 				"additionalFields": {}
 			},
 			"name": "AWS Comprehend2",
-			"type": "n8n-nodes-base.awsComprehend",
+			"type": "MNI-nodes-base.awsComprehend",
 			"typeVersion": 1,
 			"position": [450, 550],
 			"credentials": {

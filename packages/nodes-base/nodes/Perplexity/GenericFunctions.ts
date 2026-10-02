@@ -5,8 +5,8 @@ import type {
 	INodeExecutionData,
 	INodeListSearchResult,
 	JsonObject,
-} from 'n8n-workflow';
-import { NodeApiError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeApiError } from 'MNI-workflow';
 
 export async function sendErrorPostReceive(
 	this: IExecuteSingleFunctions,

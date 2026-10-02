@@ -20,8 +20,8 @@ const SPDX = new Set([
 	'EUPL-1.1',
 	'Zlib',
 ]);
-const N8N_REF = 'LicenseRef-n8n-sustainable-use';
-const allow = new Set([N8N_REF]);
+const MNI_REF = 'LicenseRef-MNI-sustainable-use';
+const allow = new Set([MNI_REF]);
 
 const lic = (id) => ({ license: { id } });
 const named = (name) => ({ license: { name } });
@@ -78,8 +78,8 @@ describe('validateExpression', () => {
 	});
 
 	it('only accepts a LicenseRef when explicitly allowed', () => {
-		assert.equal(validateExpression(N8N_REF, SPDX, allow).valid, true);
-		assert.equal(validateExpression(N8N_REF, SPDX, new Set()).valid, false);
+		assert.equal(validateExpression(MNI_REF, SPDX, allow).valid, true);
+		assert.equal(validateExpression(MNI_REF, SPDX, new Set()).valid, false);
 	});
 
 	it('detects a copyleft alternative inside an OR', () => {
@@ -115,7 +115,7 @@ describe('validateComponentLicenses', () => {
 	});
 
 	it('passes an allowed LicenseRef carried in name (enriched first-party)', () => {
-		assert.equal(validateComponentLicenses({ licenses: [named(N8N_REF)] }, SPDX, allow).ok, true);
+		assert.equal(validateComponentLicenses({ licenses: [named(MNI_REF)] }, SPDX, allow).ok, true);
 	});
 
 	it('passes a valid expression and surfaces a dual-copyleft warning', () => {
@@ -146,7 +146,7 @@ describe('checkSbom (integration)', () => {
 		const sbom = {
 			components: [
 				{ name: 'a', version: '1', purl: 'pkg:npm/a@1', licenses: [lic('MIT')] },
-				{ name: 'b', version: '1', purl: 'pkg:npm/b@1', licenses: [named(N8N_REF)] },
+				{ name: 'b', version: '1', purl: 'pkg:npm/b@1', licenses: [named(MNI_REF)] },
 				{
 					name: 'c',
 					version: '1',

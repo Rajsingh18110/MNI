@@ -4,10 +4,10 @@ import type {
 	AgentChatQueueResponse,
 	AgentJsonConfig,
 	AgentSseEvent,
-} from '@n8n/api-types';
+} from '@MNI/api-types';
 
 import type { ApiHelpers } from './api-helper';
-import { N8N_AUTH_COOKIE } from '../config/constants';
+import { MNI_AUTH_COOKIE } from '../config/constants';
 import { TestError } from '../Types';
 
 export class AgentApiHelper {
@@ -124,7 +124,7 @@ export class AgentApiHelper {
 		payload: AgentChatMessageDto,
 	) {
 		const { cookies } = await this.api.request.storageState();
-		const cookie = cookies.find((entry) => entry.name === N8N_AUTH_COOKIE);
+		const cookie = cookies.find((entry) => entry.name === MNI_AUTH_COOKIE);
 		if (!cookie) throw new TestError('Missing authentication cookie');
 		const controller = new AbortController();
 		const response = await fetch(

@@ -1,7 +1,7 @@
-import type { CredentialListItem } from '@n8n/agents';
-import { mockInstance } from '@n8n/backend-test-utils';
-import type { CredentialsEntity, User } from '@n8n/db';
-import type { IWorkflowExecuteAdditionalData } from 'n8n-workflow';
+import type { CredentialListItem } from '@MNI/agents';
+import { mockInstance } from '@MNI/backend-test-utils';
+import type { CredentialsEntity, User } from '@MNI/db';
+import type { IWorkflowExecuteAdditionalData } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import type { CredentialsService } from '@/credentials/credentials.service';

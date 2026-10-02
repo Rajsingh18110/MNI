@@ -51,7 +51,7 @@ Run a spec verification pass:
    - Do API endpoints in spec match the controller?
    - Do config/env vars in spec match the config class?
    - Does the module structure in spec match the actual file tree?
-   - Do type definitions in spec match `@n8n/api-types`?
+   - Do type definitions in spec match `@MNI/api-types`?
    - Are all TODO items correctly checked/unchecked?
 3. **Update the spec** for any drift found. Common drift:
    - New files added that aren't listed in the structure section

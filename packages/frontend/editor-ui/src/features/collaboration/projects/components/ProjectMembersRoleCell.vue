@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-import type { AllRolesMap, Role } from '@n8n/permissions';
+import type { AllRolesMap, Role } from '@MNI/permissions';
 import { computed } from 'vue';
 import { VIEWS } from '@/app/constants';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { hasPermission } from '@/app/utils/rbac/permissions';
 import type { ProjectMemberData } from '../projects.types';
 import RoleSelectDropdown from '@/features/roles/components/RoleSelectDropdown.vue';

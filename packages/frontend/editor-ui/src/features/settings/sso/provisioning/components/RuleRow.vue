@@ -1,11 +1,11 @@
 <script lang="ts" setup>
 import { computed } from 'vue';
-import { N8nIcon, N8nOption, N8nSelect, N8nTooltip } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+import { N8nIcon, N8nOption, N8nSelect, N8nTooltip } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 import type {
 	RoleMappingRuleResponse,
 	RoleMappingRuleType,
-} from '@n8n/rest-api-client/api/roleMappingRule';
+} from '@MNI/rest-api-client/api/roleMappingRule';
 import InstanceRoleAssignmentSelect from './InstanceRoleAssignmentSelect.vue';
 import ProjectRoleAssignmentSelect from './ProjectRoleAssignmentSelect.vue';
 import RuleMappingExpressionInput from './RuleMappingExpressionInput.vue';

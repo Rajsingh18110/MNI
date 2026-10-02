@@ -1,4 +1,4 @@
-import { sleep } from '@n8n/utils/sleep';
+import { sleep } from '@MNI/utils/sleep';
 import type {
 	IExecuteFunctions,
 	ILoadOptionsFunctions,
@@ -6,8 +6,8 @@ import type {
 	JsonObject,
 	IHttpRequestMethods,
 	IRequestOptions,
-} from 'n8n-workflow';
-import { NodeApiError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeApiError } from 'MNI-workflow';
 
 export async function zoomApiRequest(
 	this: IExecuteFunctions | ILoadOptionsFunctions,

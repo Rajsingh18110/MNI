@@ -1,5 +1,5 @@
-import { DiscoverPublicDto, DiscoverQueryPublicDto } from '@n8n/api-types';
-import type { AuthenticatedRequest } from '@n8n/db';
+import { DiscoverPublicDto, DiscoverQueryPublicDto } from '@MNI/api-types';
+import type { AuthenticatedRequest } from '@MNI/db';
 import {
 	ApiDescription,
 	ApiResponse,
@@ -8,7 +8,7 @@ import {
 	Get,
 	PublicApiController,
 	Query,
-} from '@n8n/decorators';
+} from '@MNI/decorators';
 import type { Response } from 'express';
 
 import { UnauthenticatedError } from '@/errors/response-errors/unauthenticated.error';

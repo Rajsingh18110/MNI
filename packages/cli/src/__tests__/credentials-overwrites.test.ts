@@ -1,9 +1,9 @@
-import type { Logger } from '@n8n/backend-common';
-import { mockInstance } from '@n8n/backend-test-utils';
-import type { CommaSeparatedStringArray, GlobalConfig } from '@n8n/config';
-import { SettingsRepository } from '@n8n/db';
-import { Cipher, UnrecognizedCredentialTypeError } from 'n8n-core';
-import type { ICredentialType } from 'n8n-workflow';
+import type { Logger } from '@MNI/backend-common';
+import { mockInstance } from '@MNI/backend-test-utils';
+import type { CommaSeparatedStringArray, GlobalConfig } from '@MNI/config';
+import { SettingsRepository } from '@MNI/db';
+import { Cipher, UnrecognizedCredentialTypeError } from 'MNI-core';
+import type { ICredentialType } from 'MNI-workflow';
 import type { Mock, Mocked } from 'vitest';
 import { mock } from 'vitest-mock-extended';
 
@@ -152,7 +152,7 @@ describe('CredentialsOverwrites', () => {
 			}
 		});
 
-		describe('N8N_SKIP_CREDENTIAL_OVERWRITE', () => {
+		describe('MNI_SKIP_CREDENTIAL_OVERWRITE', () => {
 			beforeEach(() => {
 				globalConfig.credentials.overwrite.skipTypes = [
 					'test',

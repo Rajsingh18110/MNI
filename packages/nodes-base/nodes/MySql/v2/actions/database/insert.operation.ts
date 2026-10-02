@@ -3,8 +3,8 @@ import type {
 	IExecuteFunctions,
 	INodeExecutionData,
 	INodeProperties,
-} from 'n8n-workflow';
-import { NodeOperationError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeOperationError } from 'MNI-workflow';
 
 import { updateDisplayOptions } from '@utils/utilities';
 
@@ -77,11 +77,11 @@ const properties: INodeProperties[] = [
 				name: 'values',
 				values: [
 					{
-						// eslint-disable-next-line n8n-nodes-base/node-param-display-name-wrong-for-dynamic-options
+						// eslint-disable-next-line MNI-nodes-base/node-param-display-name-wrong-for-dynamic-options
 						displayName: 'Column',
 						name: 'column',
 						type: 'options',
-						// eslint-disable-next-line n8n-nodes-base/node-param-description-wrong-for-dynamic-options
+						// eslint-disable-next-line MNI-nodes-base/node-param-description-wrong-for-dynamic-options
 						description:
 							'Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code/expressions/" target="_blank">expression</a>',
 						typeOptions: {

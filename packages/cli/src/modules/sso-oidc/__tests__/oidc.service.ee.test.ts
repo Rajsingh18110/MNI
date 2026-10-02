@@ -1,15 +1,15 @@
 import type { Mock, Mocked } from 'vitest';
-import type { OidcConfigDto } from '@n8n/api-types';
-import type { Logger } from '@n8n/backend-common';
-import type { HttpTransport, SsrfProtectionService } from '@n8n/backend-network';
-import { OutboundHttp } from '@n8n/backend-network';
-import { type LocalServer, startServer } from '@n8n/backend-network/testing';
-import { mockInstance, mockLogger } from '@n8n/backend-test-utils';
-import type { GlobalConfig, SsrfProtectionConfig } from '@n8n/config';
-import type { AuthIdentityRepository, SettingsRepository, User, UserRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
+import type { OidcConfigDto } from '@MNI/api-types';
+import type { Logger } from '@MNI/backend-common';
+import type { HttpTransport, SsrfProtectionService } from '@MNI/backend-network';
+import { OutboundHttp } from '@MNI/backend-network';
+import { type LocalServer, startServer } from '@MNI/backend-network/testing';
+import { mockInstance, mockLogger } from '@MNI/backend-test-utils';
+import type { GlobalConfig, SsrfProtectionConfig } from '@MNI/config';
+import type { AuthIdentityRepository, SettingsRepository, User, UserRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
 import { mock } from 'vitest-mock-extended';
-import type { Cipher, InstanceSettings } from 'n8n-core';
+import type { Cipher, InstanceSettings } from 'MNI-core';
 import * as client from 'openid-client';
 
 vi.mock('openid-client', async (importOriginal) => {
@@ -27,7 +27,7 @@ import { ForbiddenError } from '@/errors/response-errors/forbidden.error';
 import { type ProvisioningService } from '@/modules/provisioning.ee/provisioning.service.ee';
 import { Publisher } from '@/scaling/pubsub/publisher.service';
 import type { JwtService } from '@/services/jwt.service';
-import type { UrlService } from '@n8n/backend-services';
+import type { UrlService } from '@MNI/backend-services';
 import * as ssoHelpers from '@/sso.ee/sso-helpers';
 
 import { OIDC_PREFERENCES_DB_KEY } from '../constants';
@@ -86,8 +86,8 @@ describe('OidcService', () => {
 		provisioningService = mock<ProvisioningService>();
 		// loginUser reads the provisioning config to extract the instance role claim
 		provisioningService.getConfig = vi.fn().mockResolvedValue({
-			scopesInstanceRoleClaimName: 'n8n_instance_role',
-			scopesProjectsRolesClaimName: 'n8n_projects',
+			scopesInstanceRoleClaimName: 'MNI_instance_role',
+			scopesProjectsRolesClaimName: 'MNI_projects',
 		});
 		userRepository = mock<UserRepository>();
 		authIdentityRepository = mock<AuthIdentityRepository>();
@@ -404,7 +404,7 @@ describe('OidcService', () => {
 			const { signed } = oidcService.generateState(false, '/workflow/abc?tab=1');
 
 			expect(oidcService.verifyState(signed)).toEqual({
-				state: expect.stringMatching(/^n8n_state:/),
+				state: expect.stringMatching(/^MNI_state:/),
 				redirectUrl: '/workflow/abc?tab=1',
 			});
 		});
@@ -417,7 +417,7 @@ describe('OidcService', () => {
 
 		it('ignores a destination that is not a string', () => {
 			const signed = JSON.stringify({
-				state: 'n8n_state:5d3a3f6e-1d2b-4c8a-9e1f-0a1b2c3d4e5f',
+				state: 'MNI_state:5d3a3f6e-1d2b-4c8a-9e1f-0a1b2c3d4e5f',
 				redirectUrl: 42,
 			});
 
@@ -715,7 +715,7 @@ describe('OidcService', () => {
 				access_token: 'valid-access-token',
 				token_type: 'bearer',
 				claims: () => {
-					return { sub: 'valid-subject', n8n_instance_role: 'global:unknown' };
+					return { sub: 'valid-subject', MNI_instance_role: 'global:unknown' };
 				},
 			} as unknown as client.TokenEndpointResponse & client.TokenEndpointResponseHelpers);
 			vi.spyOn(client, 'fetchUserInfo').mockResolvedValue({
@@ -810,7 +810,7 @@ describe('OidcService', () => {
 	});
 
 	describe('applySsoProvisioning', () => {
-		const claims = { sub: 'user-123', n8n_instance_role: 'global:member' };
+		const claims = { sub: 'user-123', MNI_instance_role: 'global:member' };
 		const userInfo = { email: 'test@example.com', email_verified: true };
 		const user = mock<User>({ id: 'user-id' });
 
@@ -850,8 +850,8 @@ describe('OidcService', () => {
 		it('falls through to direct-claim provisioning when expression mapping is disabled', async () => {
 			provisioningService.isExpressionMappingEnabled = vi.fn().mockResolvedValue(false);
 			provisioningService.getConfig = vi.fn().mockResolvedValue({
-				scopesInstanceRoleClaimName: 'n8n_instance_role',
-				scopesProjectsRolesClaimName: 'n8n_projects',
+				scopesInstanceRoleClaimName: 'MNI_instance_role',
+				scopesProjectsRolesClaimName: 'MNI_projects',
 			});
 			provisioningService.provisionInstanceRoleForUser = vi.fn().mockResolvedValue(undefined);
 			authIdentityRepository.findOne = vi.fn().mockResolvedValue({ user });

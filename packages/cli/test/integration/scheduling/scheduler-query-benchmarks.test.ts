@@ -1,14 +1,14 @@
-import { ScheduledJobMisfirePolicy } from '@n8n/constants';
-import { testDb } from '@n8n/backend-test-utils';
+import { ScheduledJobMisfirePolicy } from '@MNI/constants';
+import { testDb } from '@MNI/backend-test-utils';
 import {
 	ScheduledJob,
 	ScheduledJobRepository,
 	ScheduledTask,
 	ScheduledTaskRepository,
-} from '@n8n/db';
-import { Container } from '@n8n/di';
-import { DataSource } from '@n8n/typeorm';
-import type { QueryDeepPartialEntity } from '@n8n/typeorm/query-builder/QueryPartialEntity';
+} from '@MNI/db';
+import { Container } from '@MNI/di';
+import { DataSource } from '@MNI/typeorm';
+import type { QueryDeepPartialEntity } from '@MNI/typeorm/query-builder/QueryPartialEntity';
 import { performance } from 'node:perf_hooks';
 
 import { selfOwned } from './shared/job-factory';
@@ -28,11 +28,11 @@ import { selfOwned } from './shared/job-factory';
  * is a judgement call. Hard assertions cover only correctness and a loose latency
  * ceiling that trips on a catastrophic regression.
  *
- *   N8N_SCHEDULER_BENCHMARK=1 pnpm --filter MNI test:sqlite scheduler-query-benchmarks
- *   N8N_SCHEDULER_BENCHMARK=1 pnpm --filter MNI test:postgres:integration:tc scheduler-query-benchmarks
+ *   MNI_SCHEDULER_BENCHMARK=1 pnpm --filter MNI test:sqlite scheduler-query-benchmarks
+ *   MNI_SCHEDULER_BENCHMARK=1 pnpm --filter MNI test:postgres:integration:tc scheduler-query-benchmarks
  */
 
-const runBenchmarks = process.env.N8N_SCHEDULER_BENCHMARK === '1';
+const runBenchmarks = process.env.MNI_SCHEDULER_BENCHMARK === '1';
 
 const isPostgres = process.env.DB_TYPE === 'postgresdb';
 const dialect = isPostgres ? 'postgres' : 'sqlite';
@@ -45,25 +45,25 @@ const envInt = (name: string, fallback: number): number => {
 
 const TASK_TYPE = 'scheduleTrigger';
 
-const TASK_ROWS = envInt('N8N_SCHEDULER_QUERY_TASK_ROWS', 100_000);
-const JOB_ROWS = envInt('N8N_SCHEDULER_QUERY_JOB_ROWS', 50_000);
-const READ_ITERS = envInt('N8N_SCHEDULER_QUERY_ITERS', 50);
+const TASK_ROWS = envInt('MNI_SCHEDULER_QUERY_TASK_ROWS', 100_000);
+const JOB_ROWS = envInt('MNI_SCHEDULER_QUERY_JOB_ROWS', 50_000);
+const READ_ITERS = envInt('MNI_SCHEDULER_QUERY_ITERS', 50);
 // Writes mutate the table, so each iteration uses a fresh, conflict-free batch and
 // fewer iterations than reads. 25 keeps p95/p99 distinct without growing the table
 // enough to skew later iterations.
-const WRITE_ITERS = envInt('N8N_SCHEDULER_QUERY_WRITE_ITERS', 25);
-const BATCH = envInt('N8N_SCHEDULER_QUERY_BATCH', 100);
-const WRITE_BATCH = envInt('N8N_SCHEDULER_QUERY_WRITE_BATCH', 10_000);
+const WRITE_ITERS = envInt('MNI_SCHEDULER_QUERY_WRITE_ITERS', 25);
+const BATCH = envInt('MNI_SCHEDULER_QUERY_BATCH', 100);
+const WRITE_BATCH = envInt('MNI_SCHEDULER_QUERY_WRITE_BATCH', 10_000);
 
 // `insertMany` chunks its insert and `name IN (...)` read-back internally (dialect-aware,
 // clamped), so any batch is safe; these sizes just shape the benchmark's write workload.
-const WRITE_JOB_BATCH = envInt('N8N_SCHEDULER_QUERY_WRITE_JOB_BATCH', isPostgres ? 5_000 : 800);
+const WRITE_JOB_BATCH = envInt('MNI_SCHEDULER_QUERY_WRITE_JOB_BATCH', isPostgres ? 5_000 : 800);
 // Mirrors `advanceMany`'s own dialect-aware default (it clamps oversized values), sizing the
 // benchmark's advance batches.
 const ADVANCE_CHUNK = isPostgres ? 1_000 : 200;
 // Loose catastrophic-regression guards.
-const READ_MAX_P99_MS = envInt('N8N_SCHEDULER_QUERY_READ_MAX_P99_MS', 2_000);
-const WRITE_MIN_RPS = envInt('N8N_SCHEDULER_QUERY_WRITE_MIN_RPS', 500);
+const READ_MAX_P99_MS = envInt('MNI_SCHEDULER_QUERY_READ_MAX_P99_MS', 2_000);
+const WRITE_MIN_RPS = envInt('MNI_SCHEDULER_QUERY_WRITE_MIN_RPS', 500);
 
 const INSERT_CHUNK = 500;
 const TEST_TIMEOUT_MS = 600_000;

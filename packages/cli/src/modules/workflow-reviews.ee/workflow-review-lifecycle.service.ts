@@ -1,6 +1,6 @@
-import type { WorkflowReviewWorkflowCauseActivityType } from '@n8n/api-types';
-import type { OperationContext } from '@n8n/db';
-import { Logger } from '@n8n/backend-common';
+import type { WorkflowReviewWorkflowCauseActivityType } from '@MNI/api-types';
+import type { OperationContext } from '@MNI/db';
+import { Logger } from '@MNI/backend-common';
 import {
 	DbLock,
 	DbLockService,
@@ -8,8 +8,8 @@ import {
 	WorkflowReviewLifecycleRepository,
 	WorkflowReviewRequestRepository,
 	WorkflowReviewRequestWorkflowRepository,
-} from '@n8n/db';
-import { Service } from '@n8n/di';
+} from '@MNI/db';
+import { Service } from '@MNI/di';
 
 import { EventService } from '@/events/event.service';
 import type { WorkflowMutationHooks } from '@/workflows/workflow-mutation-hooks-proxy.service';

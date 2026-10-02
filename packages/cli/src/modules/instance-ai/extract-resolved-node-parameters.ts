@@ -6,14 +6,14 @@
  *
  * Lives in its own module to keep `instance-ai.adapter.service.ts` focused.
  */
-import { Container } from '@n8n/di';
+import { Container } from '@MNI/di';
 import {
 	wrapUntrustedData,
 	type EmptyExpressionResolution,
 	type ResolvedExpressionFailure,
 	type ResolvedNodeParametersResult,
-} from '@n8n/instance-ai';
-import { getErrorMessage } from '@n8n/utils/errors/get-error-message';
+} from '@MNI/instance-ai';
+import { getErrorMessage } from '@MNI/utils/errors/get-error-message';
 import {
 	type IExecuteData,
 	type INode,
@@ -24,7 +24,7 @@ import {
 	Workflow,
 	createEmptyRunExecutionData,
 	HTTP_REQUEST_NODE_TYPE,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { ExecutionPersistence } from '@/executions/execution-persistence';
 
@@ -361,7 +361,7 @@ export async function extractResolvedNodeParameters(
 	};
 
 	const parameters = (nodeJson.parameters ?? {}) as Record<string, unknown>;
-	// When N8N_EXPRESSION_ENGINE=vm, expression evaluation runs in a V8 isolate
+	// When MNI_EXPRESSION_ENGINE=vm, expression evaluation runs in a V8 isolate
 	// that must be acquired for this workflow's Expression instance before any
 	// `getParameterValue` call — otherwise the VM bridge throws "No bridge
 	// acquired". This throwaway workflow never goes through the execution engine,

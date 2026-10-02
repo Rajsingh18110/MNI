@@ -9,15 +9,15 @@ import type {
 	GenerateDraftCasesOptions,
 	GenerateDraftCasesResult,
 	UpdateAgentEvalDatasetPayload,
-} from '@n8n/api-types';
-import { ModuleRegistry } from '@n8n/backend-common';
-import type { AgentEvalDataset, AgentEvalRun, User } from '@n8n/db';
+} from '@MNI/api-types';
+import { ModuleRegistry } from '@MNI/backend-common';
+import type { AgentEvalDataset, AgentEvalRun, User } from '@MNI/db';
 import {
 	AgentEvalDatasetRepository,
 	AgentEvalResultRepository,
 	AgentEvalRunRepository,
-} from '@n8n/db';
-import { Service } from '@n8n/di';
+} from '@MNI/db';
+import { Service } from '@MNI/di';
 
 import { BadRequestError } from '@/errors/response-errors/bad-request.error';
 import { NotFoundError } from '@/errors/response-errors/not-found.error';

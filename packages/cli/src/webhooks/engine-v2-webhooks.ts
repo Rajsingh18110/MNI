@@ -1,4 +1,4 @@
-import { Service } from '@n8n/di';
+import { Service } from '@MNI/di';
 import type {
 	INode,
 	IRun,
@@ -7,7 +7,7 @@ import type {
 	IWorkflowBase,
 	WebhookResponseMode,
 	WorkflowExecuteMode,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import {
 	CHAT_TRIGGER_NODE_TYPE,
 	classifyTriggerIdentity,
@@ -18,7 +18,7 @@ import {
 	UserError,
 	WAIT_NODE_TYPE,
 	WorkflowOperationError,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { MCP_TRIGGER_NODE_TYPE } from '@/constants';
 import { EngineDataPlaneProxyService } from '@/services/engine-data-plane-proxy.service';
@@ -100,7 +100,7 @@ export class EngineV2Webhooks {
 		// that precedes that call can turn "module off" into a 400 instead of a 500.
 		if (!this.proxy.isAvailable()) {
 			throw new UserError(
-				'Engine v2 is not available. Enable the `engine-v2` module with N8N_ENABLED_MODULES.',
+				'Engine v2 is not available. Enable the `engine-v2` module with MNI_ENABLED_MODULES.',
 			);
 		}
 
@@ -142,7 +142,7 @@ export class EngineV2Webhooks {
 		let lastNodeExecuted = outcome.status === 'failed' ? outcome.nodeName : undefined;
 
 		if (outcome.status === 'completed' && outcome.lastNode) {
-			const { fromStepInputs } = await import('@n8n/node-engine-compatibility');
+			const { fromStepInputs } = await import('@MNI/node-engine-compatibility');
 			lastNodeExecuted = outcome.lastNode.nodeName;
 			runData[lastNodeExecuted] = [
 				{

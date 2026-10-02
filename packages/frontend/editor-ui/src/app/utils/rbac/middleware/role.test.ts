@@ -1,11 +1,11 @@
 import { roleMiddleware } from '@/app/utils/rbac/middleware/role';
-import { useUsersStore } from '@n8n/stores/users.store';
-import type { IUser } from '@n8n/rest-api-client/api/users';
+import { useUsersStore } from '@MNI/stores/users.store';
+import type { IUser } from '@MNI/rest-api-client/api/users';
 import type { RouteLocationNormalized } from 'vue-router';
-import { ROLE } from '@n8n/api-types';
+import { ROLE } from '@MNI/api-types';
 import { VIEWS } from '@/app/constants';
 
-vi.mock('@n8n/stores/users.store', () => ({
+vi.mock('@MNI/stores/users.store', () => ({
 	useUsersStore: vi.fn(),
 }));
 

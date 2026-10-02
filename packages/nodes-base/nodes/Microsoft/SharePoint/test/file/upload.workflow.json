@@ -2,7 +2,7 @@
 	"nodes": [
 		{
 			"parameters": {},
-			"type": "n8n-nodes-base.manualTrigger",
+			"type": "MNI-nodes-base.manualTrigger",
 			"typeVersion": 1,
 			"position": [0, 0],
 			"id": "37ab6212-d506-4b53-b63e-14b6a2a05907",
@@ -27,7 +27,7 @@
 				"fileContents": "data",
 				"requestOptions": {}
 			},
-			"type": "n8n-nodes-base.microsoftSharePoint",
+			"type": "MNI-nodes-base.microsoftSharePoint",
 			"typeVersion": 1,
 			"position": [660, 0],
 			"id": "f9037af8-4f52-4f9f-b8ae-de860f890792",
@@ -48,7 +48,7 @@
 				}
 			},
 			"name": "Move Binary Data",
-			"type": "n8n-nodes-base.moveBinaryData",
+			"type": "MNI-nodes-base.moveBinaryData",
 			"typeVersion": 1,
 			"position": [440, 0],
 			"id": "9cba2be3-50e0-4ae2-b7a6-2f0caefb50ef"
@@ -59,7 +59,7 @@
 				"jsonOutput": "{\n  \"data\": {\n    \"my_field_1\": \"value\",\n    \"my_field_2\": 1\n  }\n}\n",
 				"options": {}
 			},
-			"type": "n8n-nodes-base.set",
+			"type": "MNI-nodes-base.set",
 			"typeVersion": 3.4,
 			"position": [220, 0],
 			"id": "fdafc0d5-58dd-4f9e-a76b-0a3cb0e9a794",
@@ -110,7 +110,7 @@
 					"cTag": "\"c:{D86F89AB-378E-43BC-8D46-18D2F52BD603},2\"",
 					"createdBy": {
 						"application": {
-							"displayName": "sharepoint-n8n-test",
+							"displayName": "sharepoint-MNI-test",
 							"id": "b9c26603-3c9b-4050-b848-27dfab0a52fa"
 						},
 						"user": {
@@ -136,7 +136,7 @@
 					"id": "01SPEVVYFLRFX5RDRXXRBY2RQY2L2SXVQD",
 					"lastModifiedBy": {
 						"application": {
-							"displayName": "sharepoint-n8n-test",
+							"displayName": "sharepoint-MNI-test",
 							"id": "b9c26603-3c9b-4050-b848-27dfab0a52fa"
 						},
 						"user": {

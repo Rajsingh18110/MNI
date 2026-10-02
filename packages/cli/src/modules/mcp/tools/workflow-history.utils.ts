@@ -1,4 +1,4 @@
-import type { User, WorkflowHistory } from '@n8n/db';
+import type { User, WorkflowHistory } from '@MNI/db';
 
 import { WorkflowHistoryVersionNotFoundError } from '@/errors/workflow-history-version-not-found.error';
 import type { WorkflowHistoryService } from '@/workflows/workflow-history/workflow-history.service';

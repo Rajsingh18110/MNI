@@ -2,9 +2,9 @@ import {
 	CreateVariableRequestDto,
 	UpdateVariableRequestDto,
 	VariableListRequestDto,
-} from '@n8n/api-types';
-import { AuthenticatedRequest } from '@n8n/db';
-import { Body, Delete, Get, Licensed, Patch, Post, Query, RestController } from '@n8n/decorators';
+} from '@MNI/api-types';
+import { AuthenticatedRequest } from '@MNI/db';
+import { Body, Delete, Get, Licensed, Patch, Post, Query, RestController } from '@MNI/decorators';
 import type { Response } from 'express';
 
 import { BadRequestError } from '@/errors/response-errors/bad-request.error';

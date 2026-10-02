@@ -1,4 +1,4 @@
-import type { InstanceAiEvent } from '@n8n/api-types';
+import type { InstanceAiEvent } from '@MNI/api-types';
 
 import { buildInstanceAiRunTraceMetadata } from '../run-trace-metadata';
 

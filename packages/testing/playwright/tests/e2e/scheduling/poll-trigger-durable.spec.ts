@@ -6,17 +6,17 @@ import {
 import { makePollTriggerWorkflow, makeCronPollTriggerWorkflow } from './poll-trigger-workflow';
 import { test, expect } from '../../../fixtures/base';
 
-// All three scheduler flags are required: with only `N8N_SCHEDULER_ENABLED` set,
+// All three scheduler flags are required: with only `MNI_SCHEDULER_ENABLED` set,
 // activation falls back to the legacy in-memory poll cron; with all three, the
 // poll trigger runs as a `scheduled_job` row instead.
 test.use({
 	capability: {
 		services: ['proxy'],
 		env: {
-			N8N_SCHEDULER_ENABLED: 'true',
-			N8N_USE_WORKFLOW_PUBLICATION_SERVICE: 'true',
-			N8N_SCHEDULER_POLL_TRIGGERS_ENABLED: 'true',
-			N8N_SCHEDULER_EXECUTOR_INTERVAL: '1',
+			MNI_SCHEDULER_ENABLED: 'true',
+			MNI_USE_WORKFLOW_PUBLICATION_SERVICE: 'true',
+			MNI_SCHEDULER_POLL_TRIGGERS_ENABLED: 'true',
+			MNI_SCHEDULER_EXECUTOR_INTERVAL: '1',
 		},
 	},
 });

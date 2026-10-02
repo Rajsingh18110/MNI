@@ -24,7 +24,7 @@ asked "what does this org normally do?" and be graded on the answer. Diversity i
 bug here, not the feature.
 
 ```sh
-N8N_API_KEY=… PROFILE=preference pnpm seed:account
+MNI_API_KEY=… PROFILE=preference pnpm seed:account
 ```
 
 The ten live in `preference-profile.mjs` and are written out, not generated. At n=10
@@ -120,7 +120,7 @@ cascade when their workflow is deleted.
 ## `inspectActivity.mjs`
 
 ```sh
-pnpm inspect:activity                                  # ~/.n8n/database.sqlite
+pnpm inspect:activity                                  # ~/.MNI/database.sqlite
 DB_SQLITE_DATABASE=/path/to/database.sqlite pnpm inspect:activity
 PORT=5700 pnpm inspect:activity
 ```
@@ -169,7 +169,7 @@ poking at the workflow-index module with non-trivial input.
 ## Quick start
 
 ```sh
-N8N_API_KEY="<a public-api JWT for an owner/admin>" \
+MNI_API_KEY="<a public-api JWT for an owner/admin>" \
   node scripts/instance-seeding/seedInstance.mjs
 ```
 
@@ -177,14 +177,14 @@ Targets `http://localhost:5678` by default. The script is **destructive by
 default**: it deletes its own prior output (anything tagged `[seed]`) and any
 team projects whose names match the current taxonomy plus orphans from older
 runs. Personal-project entities that don't match the seed prefix are left
-alone, as are the n8n-default `My project` team projects.
+alone, as are the MNI-default `My project` team projects.
 
 ### Environment variables
 
 | Var | Default | Purpose |
 | --- | --- | --- |
-| `N8N_API_KEY` | (required) | Public-API JWT. Must have owner or admin scopes. |
-| `N8N_BASE_URL` | `http://localhost:5678` | MNI instance to seed. |
+| `MNI_API_KEY` | (required) | Public-API JWT. Must have owner or admin scopes. |
+| `MNI_BASE_URL` | `http://localhost:5678` | MNI instance to seed. |
 | `CLEAR` | `false` | Set to `true` to wipe data instead. |
 | `PERSONAL_WORKFLOWS` | `50` | Amount of workflows to create in the personal project. |
 
@@ -269,8 +269,8 @@ produced. It includes both the community structure and the central-DT proxy
 pattern:
 
 ```sh
-curl -s "$N8N_BASE_URL/api/v1/workflows/dependency-graph?format=dot" \
-  -H "X-N8N-API-KEY: $N8N_API_KEY" | sfdp -Tsvg -Goverlap=prism > graph.svg
+curl -s "$MNI_BASE_URL/api/v1/workflows/dependency-graph?format=dot" \
+  -H "X-MNI-API-KEY: $MNI_API_KEY" | sfdp -Tsvg -Goverlap=prism > graph.svg
 ```
 
 `sfdp`/`fdp` (Graphviz force-directed layouts) reveal the cluster topology
@@ -281,8 +281,8 @@ Counts via API:
 ```sh
 for path in workflows projects credentials data-tables; do
   echo -n "$path: "
-  curl -s "$N8N_BASE_URL/api/v1/$path?limit=1" \
-    -H "X-N8N-API-KEY: $N8N_API_KEY" | jq -r '.data | length'
+  curl -s "$MNI_BASE_URL/api/v1/$path?limit=1" \
+    -H "X-MNI-API-KEY: $MNI_API_KEY" | jq -r '.data | length'
 done
 ```
 
@@ -307,7 +307,7 @@ empty and not named `My project`.
 To remove all seeded data without reseeding:
 
 ```sh
-N8N_API_KEY=… CLEAR=only node bin/seedInstance/seedInstance.mjs
+MNI_API_KEY=… CLEAR=only node bin/seedInstance/seedInstance.mjs
 ```
 
 

@@ -1,5 +1,5 @@
 import { type Ref } from 'vue';
-import { isDraftIntegration, type AgentIntegrationStatusEntry } from '@n8n/api-types';
+import { isDraftIntegration, type AgentIntegrationStatusEntry } from '@MNI/api-types';
 import {
 	buildAgentConfigFingerprint,
 	deriveAgentStatus,

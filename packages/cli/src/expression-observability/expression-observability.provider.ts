@@ -1,6 +1,6 @@
-import { Logger } from '@n8n/backend-common';
-import { ExpressionEngineConfig, GlobalConfig } from '@n8n/config';
-import { Service } from '@n8n/di';
+import { Logger } from '@MNI/backend-common';
+import { ExpressionEngineConfig, GlobalConfig } from '@MNI/config';
+import { Service } from '@MNI/di';
 import type {
 	LogsAPI,
 	MetricDef,
@@ -8,10 +8,10 @@ import type {
 	ObservabilityProvider,
 	Span,
 	TracesAPI,
-} from '@n8n/expression-runtime';
-import { EXPRESSION_METRICS, NoOpProvider } from '@n8n/expression-runtime';
+} from '@MNI/expression-runtime';
+import { EXPRESSION_METRICS, NoOpProvider } from '@MNI/expression-runtime';
 import { SpanStatusCode } from '@opentelemetry/api';
-import { UnexpectedError } from 'n8n-workflow';
+import { UnexpectedError } from 'MNI-workflow';
 import promClient, { type Counter, type Gauge, type Histogram } from 'prom-client';
 
 import {

@@ -1,9 +1,9 @@
-import { Logger } from '@n8n/backend-common';
-import type { WorkflowEntity } from '@n8n/db';
-import { Container } from '@n8n/di';
-import type { Scope } from '@n8n/permissions';
-import { NodeApiError, NodeError, WorkflowActivationError } from 'n8n-workflow';
-import type { WorkflowSettings } from 'n8n-workflow';
+import { Logger } from '@MNI/backend-common';
+import type { WorkflowEntity } from '@MNI/db';
+import { Container } from '@MNI/di';
+import type { Scope } from '@MNI/permissions';
+import { NodeApiError, NodeError, WorkflowActivationError } from 'MNI-workflow';
+import type { WorkflowSettings } from 'MNI-workflow';
 
 import type { OwnershipService } from '@/services/ownership.service';
 

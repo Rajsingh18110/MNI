@@ -1,5 +1,5 @@
-import { safeJoinPath } from '@n8n/backend-common';
-import { UserError } from 'n8n-workflow';
+import { safeJoinPath } from '@MNI/backend-common';
+import { UserError } from 'MNI-workflow';
 import { existsSync, mkdirSync } from 'node:fs';
 import { dirname, isAbsolute } from 'node:path';
 
@@ -18,7 +18,7 @@ export interface ResolvedEventLogPath {
 }
 
 const LOG_FILE_EXTENSION = '.log';
-const ENV_VAR = 'N8N_EVENTBUS_LOGWRITER_LOGFULLPATH';
+const ENV_VAR = 'MNI_EVENTBUS_LOGWRITER_LOGFULLPATH';
 
 export function resolveEventLogPath(input: ResolveEventLogPathInput): ResolvedEventLogPath {
 	const { logFullPath, logBaseName, instanceDir, processType } = input;

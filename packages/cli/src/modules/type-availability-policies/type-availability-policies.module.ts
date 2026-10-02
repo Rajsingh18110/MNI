@@ -1,6 +1,6 @@
-import { LICENSE_FEATURES } from '@n8n/constants';
-import type { ModuleInterface } from '@n8n/decorators';
-import { BackendModule } from '@n8n/decorators';
+import { LICENSE_FEATURES } from '@MNI/constants';
+import type { ModuleInterface } from '@MNI/decorators';
+import { BackendModule } from '@MNI/decorators';
 
 /**
  * The module-level `licenseFlag` skips `init()` on an unlicensed instance, so neither the

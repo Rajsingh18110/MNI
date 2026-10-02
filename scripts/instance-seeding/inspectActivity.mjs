@@ -15,10 +15,10 @@ import path from 'node:path';
 import os from 'node:os';
 import { fileURLToPath } from 'node:url';
 
-// Mirrors `getN8nFolder()` in @n8n/config: `.n8n` sits inside N8N_USER_FOLDER.
+// Mirrors `getN8nFolder()` in @MNI/config: `.MNI` sits inside MNI_USER_FOLDER.
 const DB_PATH =
 	process.env.DB_SQLITE_DATABASE ??
-	path.join(process.env.N8N_USER_FOLDER ?? os.homedir(), '.n8n', 'database.sqlite');
+	path.join(process.env.MNI_USER_FOLDER ?? os.homedir(), '.MNI', 'database.sqlite');
 const PORT = Number(process.env.PORT) || 5699;
 const HOST = '127.0.0.1';
 const PAGE_SIZES = [25, 50, 100, 250];

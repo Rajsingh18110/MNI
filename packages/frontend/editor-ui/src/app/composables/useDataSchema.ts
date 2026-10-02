@@ -1,4 +1,4 @@
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import type {
 	BinaryMetadata,
 	INodeUi,
@@ -12,7 +12,7 @@ import { injectWorkflowDocumentStore } from '@/app/stores/workflowDocument.store
 import { generatePath, getNodeParentExpression } from '@/app/utils/mappingUtils';
 import { isObject } from '@/app/utils/objectUtils';
 import { isObj } from '@/app/utils/typeGuards';
-import { isBinary } from '@n8n/design-system';
+import { isBinary } from '@MNI/design-system';
 import { isPresent, shorten } from '@/app/utils/typesUtils';
 import type { JSONSchema7, JSONSchema7Definition, JSONSchema7TypeName } from 'json-schema';
 import merge from 'lodash/merge';
@@ -22,9 +22,9 @@ import {
 	type INodeTypeDescription,
 	type ITaskDataConnections,
 	NodeConnectionTypes,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import { ref } from 'vue';
-import { type IconName } from '@n8n/design-system';
+import { type IconName } from '@MNI/design-system';
 import { DATA_TYPE_ICON_MAP } from '@/app/constants';
 import { DEFAULT_SETTINGS } from '@/app/constants/workflows';
 
@@ -528,7 +528,7 @@ export const useFlattenSchema = () => {
 				return acc;
 			}
 
-			if (item.node.type === 'n8n-nodes-base.merge' && item.itemsCount > 1) {
+			if (item.node.type === 'MNI-nodes-base.merge' && item.itemsCount > 1) {
 				const mergeCallout: RenderCallout = {
 					id: `${item.node.name}-mergeNotice`,
 					type: 'callout',

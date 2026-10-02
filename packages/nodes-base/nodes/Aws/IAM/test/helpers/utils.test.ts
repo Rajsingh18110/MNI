@@ -1,5 +1,5 @@
-import type { IHttpRequestOptions } from 'n8n-workflow';
-import { NodeOperationError } from 'n8n-workflow';
+import type { IHttpRequestOptions } from 'MNI-workflow';
+import { NodeOperationError } from 'MNI-workflow';
 
 import {
 	preprocessTags,

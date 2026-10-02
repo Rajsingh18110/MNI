@@ -2,12 +2,12 @@ import type {
 	CredentialResolverConfiguration,
 	CredentialResolverHandle,
 	ICredentialResolver,
-} from '@n8n/decorators';
+} from '@MNI/decorators';
 import {
 	CredentialResolverDataNotFoundError,
 	CredentialResolverValidationError,
-} from '@n8n/decorators';
-import type { ICredentialContext, ICredentialDataDecryptedObject } from 'n8n-workflow';
+} from '@MNI/decorators';
+import type { ICredentialContext, ICredentialDataDecryptedObject } from 'MNI-workflow';
 
 /**
  * Configuration for resolver contract tests

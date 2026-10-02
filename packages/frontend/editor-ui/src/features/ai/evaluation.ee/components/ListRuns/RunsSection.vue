@@ -2,8 +2,8 @@
 import type { TestRunRecord } from '../../evaluation.api';
 import MetricsChart from './MetricsChart.vue';
 import TestRunsTable from './TestRunsTable.vue';
-import { N8nPagination } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+import { N8nPagination } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 import { VIEWS } from '@/app/constants';
 import { convertToDisplayDate } from '@/app/utils/formatters/dateFormatter';
 import { computed, ref, watch } from 'vue';

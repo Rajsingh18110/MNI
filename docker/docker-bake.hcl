@@ -2,15 +2,15 @@
 # these targets, so a pin changed here changes both.
 
 variable "NODE_VERSION" { default = "26.7.0" }
-variable "N8N_VERSION" { default = "snapshot" }
-variable "N8N_RELEASE_TYPE" { default = "dev" }
+variable "MNI_VERSION" { default = "snapshot" }
+variable "MNI_RELEASE_TYPE" { default = "dev" }
 
 variable "IMAGE_BASE_NAME" { default = "n8nio/MNI" }
 variable "IMAGE_TAG" { default = "local" }
 variable "RUNNERS_IMAGE_BASE_NAME" { default = "n8nio/runners" }
 
 # An empty value keeps the Dockerfile ARG default, so `docker build` still
-# works. The n8n-pc target always sets these.
+# works. The MNI-pc target always sets these.
 variable "BUILDER_IMAGE" { default = "" }
 variable "RUNTIME_IMAGE" { default = "" }
 
@@ -25,8 +25,8 @@ variable "DHI_REF" {
   default = "dhi.io/node:26.7.0-alpine3.24-dev@sha256:4b494d89fb26c950ce97865acf45b480dc7a6868fdc2b81c2d66599702eeac3f"
 }
 
-variable "N8N_TAGS" { default = "" }
-variable "N8N_PC_TAGS" { default = "" }
+variable "MNI_TAGS" { default = "" }
+variable "MNI_PC_TAGS" { default = "" }
 variable "RUNNERS_TAGS" { default = "" }
 variable "RUNNERS_DISTROLESS_TAGS" { default = "" }
 variable "BASE_TAGS" { default = "" }
@@ -49,24 +49,24 @@ target "_app" {
   inherits = ["_context"]
   args = {
     NODE_VERSION     = NODE_VERSION
-    N8N_VERSION      = N8N_VERSION
-    N8N_RELEASE_TYPE = N8N_RELEASE_TYPE
+    MNI_VERSION      = MNI_VERSION
+    MNI_RELEASE_TYPE = MNI_RELEASE_TYPE
   }
 }
 
 target "MNI" {
   inherits   = ["_app"]
   dockerfile = "docker/images/mni/Dockerfile"
-  tags       = tags(N8N_TAGS, "${IMAGE_BASE_NAME}:${IMAGE_TAG}")
+  tags       = tags(MNI_TAGS, "${IMAGE_BASE_NAME}:${IMAGE_TAG}")
   args = merge(
     BUILDER_IMAGE != "" ? { BUILDER_IMAGE = BUILDER_IMAGE } : {},
     RUNTIME_IMAGE != "" ? { RUNTIME_IMAGE = RUNTIME_IMAGE } : {},
   )
 }
 
-target "n8n-pc" {
+target "MNI-pc" {
   inherits = ["MNI"]
-  tags     = tags(N8N_PC_TAGS, "${IMAGE_BASE_NAME}:${IMAGE_TAG}-pc")
+  tags     = tags(MNI_PC_TAGS, "${IMAGE_BASE_NAME}:${IMAGE_TAG}-pc")
   args = {
     BUILDER_IMAGE     = PC_BUILDER_IMAGE
     RUNTIME_IMAGE     = PC_RUNTIME_IMAGE
@@ -96,4 +96,4 @@ target "base" {
 group "default" { targets = ["MNI", "runners"] }
 group "distroless" { targets = ["MNI", "runners", "runners-distroless"] }
 group "all" { targets = ["base", "MNI", "runners", "runners-distroless"] }
-group "release" { targets = ["MNI", "n8n-pc", "runners", "runners-distroless"] }
+group "release" { targets = ["MNI", "MNI-pc", "runners", "runners-distroless"] }

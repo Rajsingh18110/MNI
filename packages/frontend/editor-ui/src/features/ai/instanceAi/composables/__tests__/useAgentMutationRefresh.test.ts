@@ -4,7 +4,7 @@ import type {
 	InstanceAiMessage,
 	InstanceAiAgentNode,
 	InstanceAiToolCallState,
-} from '@n8n/api-types';
+} from '@MNI/api-types';
 import { useAgentMutationRefresh } from '../useAgentMutationRefresh';
 import { agentsEventBus } from '@/features/agents/agents.eventBus';
 import type { ThreadRuntime } from '../../instanceAi.store';

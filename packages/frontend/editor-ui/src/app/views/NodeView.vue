@@ -18,7 +18,7 @@ import FocusSidebar from '@/app/components/FocusSidebar.vue';
 import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';
 import { useUIStore } from '@/app/stores/ui.store';
 import CanvasRunWorkflowButton from '@/features/workflows/canvas/components/elements/buttons/CanvasRunWorkflowButton.vue';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import { useWorkflowsStore } from '@/app/stores/workflows.store';
 import { useWorkflowExecutionStateStore } from '@/app/stores/workflowExecutionState.store';
 import { useWorkflowsListStore } from '@/app/stores/workflowsList.store';
@@ -34,7 +34,7 @@ import type {
 	XYPosition,
 } from '@/Interface';
 import type { IExecutionResponse } from '@/features/execution/executions/executions.types';
-import type { WorkflowDataUpdate } from '@n8n/rest-api-client/api/workflows';
+import type { WorkflowDataUpdate } from '@MNI/rest-api-client/api/workflows';
 import type {
 	Connection,
 	Dimensions,
@@ -81,7 +81,7 @@ import {
 	isTriggerNode,
 	NodeHelpers,
 	NodeConnectionTypes,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import type {
 	NodeConnectionType,
 	IDataObject,
@@ -89,8 +89,8 @@ import type {
 	IConnection,
 	INodeParameters,
 	IWorkflowGroup,
-} from 'n8n-workflow';
-import { useToast } from '@n8n/composables/useToast';
+} from 'MNI-workflow';
+import { useToast } from '@MNI/composables/useToast';
 import { useCredentialsStore } from '@/features/credentials/credentials.store';
 import { useEnvironmentsStore } from '@/features/settings/environments.ee/environments.store';
 import { AddNodeGroupCommand, historyBus } from '@/app/models/history';
@@ -101,11 +101,11 @@ import { useCanvasNodeGroupTelemetry } from '@/features/workflows/canvas/composa
 import { useMessage } from '@/app/composables/useMessage';
 import { useDocumentTitle } from '@/app/composables/useDocumentTitle';
 import { useNpsSurveyStore } from '@/app/stores/npsSurvey.store';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
 import { useProjectsStore } from '@/features/collaboration/projects/projects.store';
-import { useTypeAvailabilityPoliciesStore } from '@n8n/frontend-module-type-availability-policies';
+import { useTypeAvailabilityPoliciesStore } from '@MNI/frontend-module-type-availability-policies';
 import { useNodeHelpers } from '@/app/composables/useNodeHelpers';
-import { useUsersStore } from '@n8n/stores/users.store';
+import { useUsersStore } from '@MNI/stores/users.store';
 import { sourceControlEventBus } from '@/features/integrations/sourceControl.ee/sourceControl.eventBus';
 import { useTagsStore } from '@/features/shared/tags/tags.store';
 
@@ -116,9 +116,9 @@ import CanvasStopCurrentExecutionButton from '@/features/workflows/canvas/compon
 import CanvasStopWaitingForWebhookButton from '@/features/workflows/canvas/components/elements/buttons/CanvasStopWaitingForWebhookButton.vue';
 import { nodeViewEventBus } from '@/app/event-bus';
 import type { PinDataSource } from '@/app/composables/usePinnedData';
-import { useClipboard } from '@n8n/composables/useClipboard';
+import { useClipboard } from '@MNI/composables/useClipboard';
 import { useBeforeUnload } from '@/app/composables/useBeforeUnload';
-import { getResourcePermissions } from '@n8n/permissions';
+import { getResourcePermissions } from '@MNI/permissions';
 import NodeViewUnfinishedWorkflowMessage from '@/app/components/NodeViewUnfinishedWorkflowMessage.vue';
 import {
 	parseCanvasConnectionHandleString,
@@ -131,7 +131,7 @@ import { useBuilderStore } from '@/features/ai/assistant/builder.store';
 import { useMcpJsonNudgeTrigger } from '@/experiments/mcpJsonNudge/composables/useMcpJsonNudgeTrigger';
 import KeyboardShortcutTooltip from '@/app/components/KeyboardShortcutTooltip.vue';
 import { useWorkflowExtraction } from '@/app/composables/useWorkflowExtraction';
-import { useAgentRequestStore } from '@n8n/stores/useAgentRequestStore';
+import { useAgentRequestStore } from '@MNI/stores/useAgentRequestStore';
 import { needsAgentInput } from '@/app/utils/nodes/nodeTransforms';
 import { useLogsStore } from '@/app/stores/logs.store';
 import { canvasEventBus } from '@/features/workflows/canvas/canvas.eventBus';
@@ -149,7 +149,7 @@ import { useCollaborationStore } from '@/features/collaboration/collaboration/co
 import { useInjectWorkflowId } from '@/app/composables/useInjectWorkflowId';
 import { injectWorkflowDocumentStore } from '@/app/stores/workflowDocument.store';
 
-import { N8nCallout, N8nCanvasThinkingPill, N8nCanvasCollaborationPill } from '@n8n/design-system';
+import { N8nCallout, N8nCanvasThinkingPill, N8nCanvasCollaborationPill } from '@MNI/design-system';
 import { useWorkflowHelpers } from '../composables/useWorkflowHelpers';
 import { useEmptyCanvasGroupsFlag } from '@/features/workflows/canvas/composables/useEmptyCanvasGroupsFlag';
 import { findTriggerNodeToAutoSelect } from '@/features/execution/executions/executions.utils';
@@ -2324,8 +2324,8 @@ onBeforeUnmount(() => {
 </template>
 
 <style lang="scss" module>
-@use '@n8n/design-system/css/mixins/breakpoints';
-@use '@n8n/design-system/css/common/var';
+@use '@MNI/design-system/css/mixins/breakpoints';
+@use '@MNI/design-system/css/common/var';
 
 .wrapper {
 	display: flex;

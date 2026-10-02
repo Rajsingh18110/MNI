@@ -168,7 +168,7 @@ describe('selectTests — fail-open contract', () => {
 	// here because the registry HAS an entry — just a partial one.
 	it('module-registry change → broad, even though the map has a (partial) entry', () => {
 		const map: ImpactMap = {
-			'packages/@n8n/backend-common/src/modules/module-registry.ts': {
+			'packages/@MNI/backend-common/src/modules/module-registry.ts': {
 				'17': ['tests/e2e/a.spec.ts'],
 			},
 		};
@@ -176,7 +176,7 @@ describe('selectTests — fail-open contract', () => {
 		fs.writeFileSync(mapPath, JSON.stringify(map));
 		const result = selectTests({
 			changedFiles: [
-				'packages/@n8n/backend-common/src/modules/module-registry.ts',
+				'packages/@MNI/backend-common/src/modules/module-registry.ts',
 				'packages/cli/src/modules/instance-ai/instance-ai.module.ts',
 			],
 			mapFile: mapPath,
@@ -189,9 +189,9 @@ describe('selectTests — fail-open contract', () => {
 	});
 
 	describe('config default change', () => {
-		const CONFIG = 'packages/@n8n/config/src/configs/ai.config.ts';
+		const CONFIG = 'packages/@MNI/config/src/configs/ai.config.ts';
 		const cfg = (init: string) =>
-			`@Config\nexport class C {\n\t@Env('N8N_AI')\n\ta: boolean = ${init};\n}`;
+			`@Config\nexport class C {\n\t@Env('MNI_AI')\n\ta: boolean = ${init};\n}`;
 
 		const select = (configs?: Record<string, { before: string; after: string }>) => {
 			const map: ImpactMap = { [CONFIG]: { '5': ['tests/e2e/a.spec.ts'] } };
@@ -212,7 +212,7 @@ describe('selectTests — fail-open contract', () => {
 		});
 
 		it('new field (additive) → falls through to the map, stays scoped', () => {
-			const after = cfg('false').replace('\n}', "\n\t@Env('N8N_NEW')\n\tb: number = 1;\n}");
+			const after = cfg('false').replace('\n}', "\n\t@Env('MNI_NEW')\n\tb: number = 1;\n}");
 			const result = select({ [CONFIG]: { before: cfg('false'), after } });
 			expect(result.mode).toBe('scoped');
 			expect(result.specs).toEqual(['tests/e2e/a.spec.ts']);
@@ -290,7 +290,7 @@ describe('selectTests — fail-open contract', () => {
 					before: JSON.stringify({ compilerOptions: { paths: { 'esprima-next': ['./x'] } } }),
 					after: JSON.stringify({
 						compilerOptions: {
-							paths: { 'n8n-workflow': ['./src/index.ts'], 'esprima-next': ['./x'] },
+							paths: { 'MNI-workflow': ['./src/index.ts'], 'esprima-next': ['./x'] },
 						},
 					}),
 				},

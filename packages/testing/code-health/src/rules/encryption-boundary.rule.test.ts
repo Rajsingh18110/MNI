@@ -7,19 +7,19 @@ import type { CodeHealthContext } from '../context.js';
 import { EncryptionBoundaryRule } from './encryption-boundary.rule.js';
 
 const BOUNDARY_CONFIG = `import { defineConfig } from 'eslint/config';
-import { backendConfig } from '@n8n/eslint-config/backend';
+import { backendConfig } from '@MNI/eslint-config/backend';
 
 export default defineConfig(backendConfig);
 `;
 
 const NODES_CONFIG = `import { defineConfig } from 'eslint/config';
-import { nodesConfig } from '@n8n/eslint-config/nodes';
+import { nodesConfig } from '@MNI/eslint-config/nodes';
 
 export default defineConfig(nodesConfig);
 `;
 
 const BASE_CONFIG = `import { defineConfig } from 'eslint/config';
-import { baseConfig } from '@n8n/eslint-config/base';
+import { baseConfig } from '@MNI/eslint-config/base';
 
 export default defineConfig(baseConfig);
 `;
@@ -65,19 +65,19 @@ describe('EncryptionBoundaryRule', () => {
 
 	describe('config coverage', () => {
 		it('accepts a package that extends backendConfig', async () => {
-			writePackage('packages/a', { 'n8n-core': 'workspace:*' });
+			writePackage('packages/a', { 'MNI-core': 'workspace:*' });
 
 			expect(await analyze()).toEqual([]);
 		});
 
 		it('accepts a package on nodesConfig', async () => {
-			writePackage('packages/a', { 'n8n-core': 'workspace:*' }, 'dependencies', NODES_CONFIG);
+			writePackage('packages/a', { 'MNI-core': 'workspace:*' }, 'dependencies', NODES_CONFIG);
 
 			expect(await analyze()).toEqual([]);
 		});
 
 		it('flags a package on baseConfig only', async () => {
-			writePackage('packages/a', { 'n8n-core': 'workspace:*' }, 'dependencies', BASE_CONFIG);
+			writePackage('packages/a', { 'MNI-core': 'workspace:*' }, 'dependencies', BASE_CONFIG);
 
 			const violations = await analyze();
 
@@ -87,14 +87,14 @@ describe('EncryptionBoundaryRule', () => {
 		});
 
 		it('flags a layer import that is never used', async () => {
-			const imported = `${BASE_CONFIG}import { backendConfig } from '@n8n/eslint-config/backend';\n`;
-			writePackage('packages/a', { 'n8n-core': 'workspace:*' }, 'dependencies', imported);
+			const imported = `${BASE_CONFIG}import { backendConfig } from '@MNI/eslint-config/backend';\n`;
+			writePackage('packages/a', { 'MNI-core': 'workspace:*' }, 'dependencies', imported);
 
 			expect(await analyze()).toHaveLength(1);
 		});
 
 		it('flags a package with no ESLint config at all', async () => {
-			writePackage('packages/a', { 'n8n-core': 'workspace:*' }, 'dependencies', null);
+			writePackage('packages/a', { 'MNI-core': 'workspace:*' }, 'dependencies', null);
 
 			const violations = await analyze();
 
@@ -103,14 +103,14 @@ describe('EncryptionBoundaryRule', () => {
 			expect(violations[0]).toContain('has no ESLint config');
 		});
 
-		it('treats @n8n/db and devDependencies as triggers too', async () => {
-			writePackage('packages/a', { '@n8n/db': 'workspace:*' }, 'devDependencies', BASE_CONFIG);
+		it('treats @MNI/db and devDependencies as triggers too', async () => {
+			writePackage('packages/a', { '@MNI/db': 'workspace:*' }, 'devDependencies', BASE_CONFIG);
 
 			expect(await analyze()).toHaveLength(1);
 		});
 
 		it('ignores packages that cannot reach the primitives', async () => {
-			writePackage('packages/a', { 'n8n-workflow': 'workspace:*' }, 'dependencies', BASE_CONFIG);
+			writePackage('packages/a', { 'MNI-workflow': 'workspace:*' }, 'dependencies', BASE_CONFIG);
 			write('packages/a/src/index.ts', '// eslint-disable-next-line\nexport const x = 1;\n');
 
 			expect(await analyze()).toEqual([]);
@@ -120,12 +120,12 @@ describe('EncryptionBoundaryRule', () => {
 			const downgraded = `${BOUNDARY_CONFIG.trimEnd()}
 export const extra = {
 	rules: {
-		'n8n-local-rules/no-encryption-guardrail-disable': ['warn'],
-		'n8n-local-rules/no-uncaught-json-parse': 'off',
+		'MNI-local-rules/no-encryption-guardrail-disable': ['warn'],
+		'MNI-local-rules/no-uncaught-json-parse': 'off',
 	},
 };
 `;
-			writePackage('packages/a', { 'n8n-core': 'workspace:*' }, 'dependencies', downgraded);
+			writePackage('packages/a', { 'MNI-core': 'workspace:*' }, 'dependencies', downgraded);
 
 			const violations = await analyze();
 
@@ -136,7 +136,7 @@ export const extra = {
 
 	describe('directives in source files', () => {
 		beforeEach(() => {
-			writePackage('packages/a', { 'n8n-core': 'workspace:*' });
+			writePackage('packages/a', { 'MNI-core': 'workspace:*' });
 		});
 
 		it('accepts directives that name unrelated rules', async () => {
@@ -181,10 +181,10 @@ export const extra = {
 			write(
 				'packages/a/src/index.ts',
 				[
-					'// oxlint-disable-next-line n8n-local-rules/no-encryption-guardrail-disable',
+					'// oxlint-disable-next-line MNI-local-rules/no-encryption-guardrail-disable',
 					'export const a = 1; // oxlint-disable-line no-console',
 					'/* oxlint-disable */',
-					'/* oxlint n8n-local-rules/no-encryption-guardrail-disable: "off" */',
+					'/* oxlint MNI-local-rules/no-encryption-guardrail-disable: "off" */',
 					'',
 				].join('\n'),
 			);
@@ -214,9 +214,9 @@ export const extra = {
 			write(
 				'packages/a/src/index.ts',
 				[
-					'// eslint-disable-next-line n8n-local-rules/no-encryption-guardrail-disable',
+					'// eslint-disable-next-line MNI-local-rules/no-encryption-guardrail-disable',
 					'export const a = 1; // eslint-disable-line no-console',
-					'/* eslint n8n-local-rules/no-encryption-guardrail-disable: "off" */',
+					'/* eslint MNI-local-rules/no-encryption-guardrail-disable: "off" */',
 					'',
 				].join('\n'),
 			);
@@ -265,7 +265,7 @@ export const extra = {
 		});
 
 		it('scans a file only once when packages nest', async () => {
-			writePackage('packages/a/nested', { 'n8n-core': 'workspace:*' });
+			writePackage('packages/a/nested', { 'MNI-core': 'workspace:*' });
 			write('packages/a/nested/src/index.ts', '// eslint-disable-next-line\nexport const a = 1;\n');
 
 			expect(await analyze()).toHaveLength(1);

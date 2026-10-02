@@ -1,12 +1,12 @@
 import { defineConfig } from 'eslint/config';
-import { baseConfig } from '@n8n/eslint-config/base';
+import { baseConfig } from '@MNI/eslint-config/base';
 
 export default defineConfig(
 	baseConfig,
 	{
 		rules: {
 			'import-x/no-extraneous-dependencies': 'error',
-			'n8n-local-rules/no-dynamic-regexp': 'error',
+			'MNI-local-rules/no-dynamic-regexp': 'error',
 			complexity: ['error', 23],
 
 			'id-denylist': 'warn',
@@ -33,7 +33,7 @@ export default defineConfig(
 			'@typescript-eslint/no-unsafe-assignment': 'warn',
 			'@typescript-eslint/no-unsafe-return': 'warn',
 			'@typescript-eslint/ban-ts-comment': 'off',
-			'n8n-local-rules/no-dynamic-regexp': 'off',
+			'MNI-local-rules/no-dynamic-regexp': 'off',
 		},
 	},
 );

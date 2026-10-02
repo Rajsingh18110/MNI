@@ -1,4 +1,4 @@
-export { OAUTH_JWE_PRIVATE_KEY_TYPE as JWE_PRIVATE_KEY_TYPE } from '@n8n/db';
+export { OAUTH_JWE_PRIVATE_KEY_TYPE as JWE_PRIVATE_KEY_TYPE } from '@MNI/db';
 
 /**
  * RSA `alg` values accepted in the public JWKS for `kty: 'RSA'`. Drives the

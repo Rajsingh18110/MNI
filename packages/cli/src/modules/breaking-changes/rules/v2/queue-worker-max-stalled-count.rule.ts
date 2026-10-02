@@ -1,4 +1,4 @@
-import { BreakingChangeRule } from '@n8n/decorators';
+import { BreakingChangeRule } from '@MNI/decorators';
 
 import type {
 	BreakingChangeRuleMetadata,

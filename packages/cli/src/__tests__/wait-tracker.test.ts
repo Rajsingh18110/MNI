@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/unbound-method */
-import type { Logger } from '@n8n/backend-common';
-import { mockLogger } from '@n8n/backend-test-utils';
-import type { Project, IExecutionResponse, ExecutionRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
-import { createDeferredPromise } from '@n8n/utils/promise/deferred-promise';
-import type { InstanceSettings } from 'n8n-core';
+import type { Logger } from '@MNI/backend-common';
+import { mockLogger } from '@MNI/backend-test-utils';
+import type { Project, IExecutionResponse, ExecutionRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
+import { createDeferredPromise } from '@MNI/utils/promise/deferred-promise';
+import type { InstanceSettings } from 'MNI-core';
 import type {
 	IWorkflowBase,
 	IRun,
@@ -12,13 +12,13 @@ import type {
 	IExecuteData,
 	IRunExecutionData,
 	ITaskData,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import {
 	createRunExecutionData,
 	UnexpectedError,
 	WAIT_INDEFINITELY,
 	WAIT_FOR_SUB_EXECUTION,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import type { Mock, MockInstance } from 'vitest';
 import { mock, captor } from 'vitest-mock-extended';
 

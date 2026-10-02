@@ -14,7 +14,7 @@ const renderComponent = createComponentRenderer(NoResults, {
 		stubs: {
 			N8nLink: {
 				template:
-					'<a :href="href" data-test-id="n8n-link" @click="$emit(\'click\', $event)"><slot /></a>',
+					'<a :href="href" data-test-id="MNI-link" @click="$emit(\'click\', $event)"><slot /></a>',
 				props: ['to'],
 				emits: ['click'],
 				computed: {

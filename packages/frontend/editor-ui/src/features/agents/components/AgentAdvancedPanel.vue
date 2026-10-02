@@ -2,9 +2,9 @@
 /** Advanced settings for memory and execution behavior. */
 import { ref, computed, watch } from 'vue';
 import { useDebounceFn } from '@vueuse/core';
-import { AGENT_REASONING_LEVELS, type AgentReasoningLevel } from '@n8n/api-types';
-import { N8nInputNumber, N8nOption, N8nSelect, N8nSwitch2, N8nText } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+import { AGENT_REASONING_LEVELS, type AgentReasoningLevel } from '@MNI/api-types';
+import { N8nInputNumber, N8nOption, N8nSelect, N8nSwitch2, N8nText } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 import AgentMemoryModelSetting from './AgentMemoryModelSetting.vue';
 import AgentPanel from './AgentPanel.vue';
 

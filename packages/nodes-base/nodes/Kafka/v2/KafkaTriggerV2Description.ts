@@ -1,9 +1,9 @@
-/* eslint-disable n8n-nodes-base/node-filename-against-convention */
+/* eslint-disable MNI-nodes-base/node-filename-against-convention */
 // The node class lives in KafkaTriggerV2.node.ts; this file only holds its UI
 // description, so the filename cannot match `description.name` as the rule
 // expects. Same exemption Notion, NocoDB and Webflow take for the same split.
-import type { INodeTypeDescription } from 'n8n-workflow';
-import { NodeConnectionTypes } from 'n8n-workflow';
+import type { INodeTypeDescription } from 'MNI-workflow';
+import { NodeConnectionTypes } from 'MNI-workflow';
 
 export const versionDescription: INodeTypeDescription = {
 	displayName: 'Kafka Trigger',
@@ -49,7 +49,7 @@ export const versionDescription: INodeTypeDescription = {
 			type: 'string',
 			default: '',
 			required: true,
-			placeholder: 'n8n-kafka',
+			placeholder: 'MNI-kafka',
 			description: 'ID of the consumer group',
 		},
 		{

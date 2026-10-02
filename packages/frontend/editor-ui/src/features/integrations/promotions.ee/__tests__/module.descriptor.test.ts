@@ -1,4 +1,4 @@
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { createTestingPinia } from '@pinia/testing';
 import { createMemoryHistory, createRouter, type RouteRecordRaw } from 'vue-router';
 
@@ -27,7 +27,7 @@ const setup = ({ flag = 'true' } = {}) => {
 
 	const settingsStore = useSettingsStore();
 	settingsStore.settings.activeModules = ['promotions'];
-	settingsStore.settings.envFeatureFlags = { N8N_ENV_FEAT_PROMOTIONS: flag };
+	settingsStore.settings.envFeatureFlags = { MNI_ENV_FEAT_PROMOTIONS: flag };
 };
 
 describe('PromotionsModule settings route', () => {

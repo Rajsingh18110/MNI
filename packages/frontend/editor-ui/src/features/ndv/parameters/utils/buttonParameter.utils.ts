@@ -1,9 +1,9 @@
 import type { Schema } from '@/Interface';
-import { UserError, type INode, type INodeExecutionData } from 'n8n-workflow';
+import { UserError, type INode, type INodeExecutionData } from 'MNI-workflow';
 import { useDataSchema } from '@/app/composables/useDataSchema';
 import { executionDataToJson } from '@/app/utils/nodeTypesUtils';
 import { generateCodeForPrompt } from '@/features/ai/assistant/assistant.api';
-import { useRootStore } from '@n8n/stores/useRootStore';
+import { useRootStore } from '@MNI/stores/useRootStore';
 import { type AskAiRequest } from '@/features/ai/assistant/assistant.types';
 import { format } from 'prettier';
 import jsParser from 'prettier/plugins/babel';

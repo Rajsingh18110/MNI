@@ -7,15 +7,15 @@ import {
 	testDb,
 	getWorkflowById,
 	setActiveVersion,
-} from '@n8n/backend-test-utils';
+} from '@MNI/backend-test-utils';
 import {
 	WorkflowRepository,
 	WorkflowDependencyRepository,
 	WorkflowDependencies,
 	WORKFLOW_DEPENDENCY_INDEX_VERSION,
-} from '@n8n/db';
-import { Container } from '@n8n/di';
-import type { Scope } from '@n8n/permissions';
+} from '@MNI/db';
+import { Container } from '@MNI/di';
+import type { Scope } from '@MNI/permissions';
 
 import { createWorkflowHistoryItem } from '@test-integration/db/workflow-history';
 
@@ -27,7 +27,7 @@ async function shareWorkflowsToProject(
 	projectId: string,
 	role: 'workflow:editor' | 'workflow:owner',
 ) {
-	const { SharedWorkflowRepository } = await import('@n8n/db');
+	const { SharedWorkflowRepository } = await import('@MNI/db');
 	const sharedWorkflowRepository = Container.get(SharedWorkflowRepository);
 	await sharedWorkflowRepository.save(
 		workflows.map((w) => ({
@@ -347,7 +347,7 @@ describe('WorkflowRepository', () => {
 					{
 						id: 'new-node',
 						name: 'New Node',
-						type: 'n8n-nodes-base.httpRequest',
+						type: 'MNI-nodes-base.httpRequest',
 						typeVersion: 1,
 						position: [0, 0],
 						parameters: {},
@@ -469,7 +469,7 @@ describe('WorkflowRepository', () => {
 			const dependencies3 = new WorkflowDependencies(workflow3.id, 15);
 			dependencies3.add({
 				dependencyType: 'nodeType',
-				dependencyKey: 'n8n-nodes-base.httpRequest',
+				dependencyKey: 'MNI-nodes-base.httpRequest',
 				dependencyInfo: null,
 			});
 			await workflowDependencyRepository.updateDependenciesForWorkflow(workflow3.id, dependencies3);
@@ -503,7 +503,7 @@ describe('WorkflowRepository', () => {
 				workflowVersionId: 3,
 				publishedVersionId: null,
 				dependencyType: 'nodeType',
-				dependencyKey: 'n8n-nodes-base.httpRequest',
+				dependencyKey: 'MNI-nodes-base.httpRequest',
 				dependencyInfo: null,
 				indexVersionId: WORKFLOW_DEPENDENCY_INDEX_VERSION - 1,
 			});
@@ -513,7 +513,7 @@ describe('WorkflowRepository', () => {
 			const dependencies = new WorkflowDependencies(currentWorkflow.id, 3);
 			dependencies.add({
 				dependencyType: 'nodeType',
-				dependencyKey: 'n8n-nodes-base.httpRequest',
+				dependencyKey: 'MNI-nodes-base.httpRequest',
 				dependencyInfo: null,
 			});
 			await workflowDependencyRepository.updateDependenciesForWorkflow(
@@ -577,7 +577,7 @@ describe('WorkflowRepository', () => {
 				workflowVersionId: 1,
 				publishedVersionId: outdatedWorkflow.activeVersionId,
 				dependencyType: 'nodeType',
-				dependencyKey: 'n8n-nodes-base.httpRequest',
+				dependencyKey: 'MNI-nodes-base.httpRequest',
 				dependencyInfo: null,
 				indexVersionId: WORKFLOW_DEPENDENCY_INDEX_VERSION - 1,
 			});
@@ -591,7 +591,7 @@ describe('WorkflowRepository', () => {
 			);
 			dependencies.add({
 				dependencyType: 'nodeType',
-				dependencyKey: 'n8n-nodes-base.httpRequest',
+				dependencyKey: 'MNI-nodes-base.httpRequest',
 				dependencyInfo: null,
 			});
 			await workflowDependencyRepository.updateDependenciesForWorkflow(
@@ -627,7 +627,7 @@ describe('WorkflowRepository', () => {
 				nodes: [
 					{
 						id: 'node1',
-						type: 'n8n-nodes-base.chatTrigger',
+						type: 'MNI-nodes-base.chatTrigger',
 						name: 'Chat',
 						parameters: {},
 						typeVersion: 1,
@@ -641,7 +641,7 @@ describe('WorkflowRepository', () => {
 				nodes: [
 					{
 						id: 'node2',
-						type: 'n8n-nodes-base.httpRequest',
+						type: 'MNI-nodes-base.httpRequest',
 						name: 'HTTP',
 						parameters: {},
 						typeVersion: 1,
@@ -655,7 +655,7 @@ describe('WorkflowRepository', () => {
 				nodes: [
 					{
 						id: 'node3',
-						type: 'n8n-nodes-base.chatTrigger',
+						type: 'MNI-nodes-base.chatTrigger',
 						name: 'Chat 2',
 						parameters: {},
 						typeVersion: 1,
@@ -668,7 +668,7 @@ describe('WorkflowRepository', () => {
 			// ACT
 			//
 			const workflows = await workflowRepository.findWorkflowsWithNodeType([
-				'n8n-nodes-base.chatTrigger',
+				'MNI-nodes-base.chatTrigger',
 			]);
 
 			//
@@ -692,7 +692,7 @@ describe('WorkflowRepository', () => {
 				nodes: [
 					{
 						id: 'node1',
-						type: 'n8n-nodes-base.chatTrigger',
+						type: 'MNI-nodes-base.chatTrigger',
 						name: 'Chat',
 						parameters: {},
 						typeVersion: 1,
@@ -706,7 +706,7 @@ describe('WorkflowRepository', () => {
 				nodes: [
 					{
 						id: 'node2',
-						type: 'n8n-nodes-base.webhook',
+						type: 'MNI-nodes-base.webhook',
 						name: 'Webhook',
 						parameters: {},
 						typeVersion: 1,
@@ -720,7 +720,7 @@ describe('WorkflowRepository', () => {
 				nodes: [
 					{
 						id: 'node3',
-						type: 'n8n-nodes-base.set',
+						type: 'MNI-nodes-base.set',
 						name: 'Set',
 						parameters: {},
 						typeVersion: 1,
@@ -733,8 +733,8 @@ describe('WorkflowRepository', () => {
 			// ACT
 			//
 			const workflows = await workflowRepository.findWorkflowsWithNodeType([
-				'n8n-nodes-base.chatTrigger',
-				'n8n-nodes-base.webhook',
+				'MNI-nodes-base.chatTrigger',
+				'MNI-nodes-base.webhook',
 			]);
 
 			//
@@ -757,7 +757,7 @@ describe('WorkflowRepository', () => {
 				nodes: [
 					{
 						id: 'node1',
-						type: 'n8n-nodes-base.httpRequest',
+						type: 'MNI-nodes-base.httpRequest',
 						name: 'HTTP',
 						parameters: {},
 						typeVersion: 1,
@@ -770,7 +770,7 @@ describe('WorkflowRepository', () => {
 			// ACT
 			//
 			const workflows = await workflowRepository.findWorkflowsWithNodeType([
-				'n8n-nodes-base.chatTrigger',
+				'MNI-nodes-base.chatTrigger',
 			]);
 
 			//
@@ -791,7 +791,7 @@ describe('WorkflowRepository', () => {
 			// ACT
 			//
 			const workflows = await workflowRepository.findWorkflowsWithNodeType([
-				'n8n-nodes-base.chatTrigger',
+				'MNI-nodes-base.chatTrigger',
 			]);
 
 			//
@@ -860,7 +860,7 @@ describe('WorkflowRepository', () => {
 		it('should fetch workflows using subquery for standard user with roles', async () => {
 			// ARRANGE
 			const { createMember } = await import('../../shared/db/users.js');
-			const { createTeamProject, linkUserToProject } = await import('@n8n/backend-test-utils');
+			const { createTeamProject, linkUserToProject } = await import('@MNI/backend-test-utils');
 
 			const member = await createMember();
 			const teamProject = await createTeamProject('test-project');
@@ -897,7 +897,7 @@ describe('WorkflowRepository', () => {
 		it('should handle personal project filtering correctly', async () => {
 			// ARRANGE
 			const { createOwner } = await import('../../shared/db/users.js');
-			const { getPersonalProject } = await import('@n8n/backend-test-utils');
+			const { getPersonalProject } = await import('@MNI/backend-test-utils');
 
 			const owner = await createOwner();
 			const personalProject = await getPersonalProject(owner);
@@ -924,7 +924,7 @@ describe('WorkflowRepository', () => {
 		it('should handle onlySharedWithMe filter correctly', async () => {
 			// ARRANGE
 			const { createMember } = await import('../../shared/db/users.js');
-			const { getPersonalProject } = await import('@n8n/backend-test-utils');
+			const { getPersonalProject } = await import('@MNI/backend-test-utils');
 
 			const member = await createMember();
 			const memberPersonalProject = await getPersonalProject(member);
@@ -948,7 +948,7 @@ describe('WorkflowRepository', () => {
 		it('should apply filters correctly with subquery approach', async () => {
 			// ARRANGE
 			const { createOwner } = await import('../../shared/db/users.js');
-			const { getPersonalProject } = await import('@n8n/backend-test-utils');
+			const { getPersonalProject } = await import('@MNI/backend-test-utils');
 
 			const owner = await createOwner();
 			const personalProject = await getPersonalProject(owner);
@@ -979,7 +979,7 @@ describe('WorkflowRepository', () => {
 		it('should handle pagination correctly with subquery approach', async () => {
 			// ARRANGE
 			const { createOwner } = await import('../../shared/db/users.js');
-			const { getPersonalProject } = await import('@n8n/backend-test-utils');
+			const { getPersonalProject } = await import('@MNI/backend-test-utils');
 
 			const owner = await createOwner();
 			const personalProject = await getPersonalProject(owner);
@@ -1049,7 +1049,7 @@ describe('WorkflowRepository', () => {
 		it('should fetch both workflows and folders using subquery approach', async () => {
 			// ARRANGE
 			const { createOwner } = await import('../../shared/db/users.js');
-			const { getPersonalProject } = await import('@n8n/backend-test-utils');
+			const { getPersonalProject } = await import('@MNI/backend-test-utils');
 			const { createFolder } = await import('../../shared/db/folders.js');
 
 			const owner = await createOwner();
@@ -1079,7 +1079,7 @@ describe('WorkflowRepository', () => {
 		it('should handle complex filtering in union query with subquery', async () => {
 			// ARRANGE
 			const { createOwner } = await import('../../shared/db/users.js');
-			const { getPersonalProject } = await import('@n8n/backend-test-utils');
+			const { getPersonalProject } = await import('@MNI/backend-test-utils');
 			const { createFolder } = await import('../../shared/db/folders.js');
 
 			const owner = await createOwner();
@@ -1130,7 +1130,7 @@ describe('WorkflowRepository', () => {
 		it('should return identical results for standard user with both approaches', async () => {
 			// ARRANGE
 			const { createMember } = await import('../../shared/db/users.js');
-			const { createTeamProject, linkUserToProject } = await import('@n8n/backend-test-utils');
+			const { createTeamProject, linkUserToProject } = await import('@MNI/backend-test-utils');
 			const { WorkflowSharingService } = await import('@/workflows/workflow-sharing.service.js');
 			const { RoleService } = await import('@/services/role.service.js');
 
@@ -1175,7 +1175,7 @@ describe('WorkflowRepository', () => {
 		it('should return identical results for personal project with both approaches', async () => {
 			// ARRANGE
 			const { createOwner } = await import('../../shared/db/users.js');
-			const { getPersonalProject } = await import('@n8n/backend-test-utils');
+			const { getPersonalProject } = await import('@MNI/backend-test-utils');
 			const { WorkflowSharingService } = await import('@/workflows/workflow-sharing.service.js');
 
 			const owner = await createOwner();
@@ -1216,7 +1216,7 @@ describe('WorkflowRepository', () => {
 		it('should return identical results with filters and pagination', async () => {
 			// ARRANGE
 			const { createOwner } = await import('../../shared/db/users.js');
-			const { getPersonalProject } = await import('@n8n/backend-test-utils');
+			const { getPersonalProject } = await import('@MNI/backend-test-utils');
 			const { WorkflowSharingService } = await import('@/workflows/workflow-sharing.service.js');
 
 			const owner = await createOwner();
@@ -1268,7 +1268,7 @@ describe('WorkflowRepository', () => {
 		it('should correctly filter workflows by project when workflows belong to multiple projects', async () => {
 			// ARRANGE
 			const { createMember } = await import('../../shared/db/users.js');
-			const { createTeamProject, linkUserToProject } = await import('@n8n/backend-test-utils');
+			const { createTeamProject, linkUserToProject } = await import('@MNI/backend-test-utils');
 			const { WorkflowSharingService } = await import('@/workflows/workflow-sharing.service.js');
 			const { RoleService } = await import('@/services/role.service.js');
 
@@ -1350,7 +1350,7 @@ describe('WorkflowRepository', () => {
 		it('should correctly isolate workflows by user - each user sees only their workflows', async () => {
 			// ARRANGE
 			const { createMember } = await import('../../shared/db/users.js');
-			const { createTeamProject, linkUserToProject } = await import('@n8n/backend-test-utils');
+			const { createTeamProject, linkUserToProject } = await import('@MNI/backend-test-utils');
 			const { WorkflowSharingService } = await import('@/workflows/workflow-sharing.service.js');
 			const { RoleService } = await import('@/services/role.service.js');
 

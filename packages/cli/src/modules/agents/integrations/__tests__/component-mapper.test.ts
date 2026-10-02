@@ -74,7 +74,7 @@ vi.mock('../esm-loader', () => {
 import { ComponentMapper } from '../component-mapper';
 import { ChatIntegrationRegistry } from '../agent-chat-integration';
 import { SlackIntegration } from '../platforms/slack/slack-integration';
-import { Container } from '@n8n/di';
+import { Container } from '@MNI/di';
 
 describe('ComponentMapper', () => {
 	let mapper: ComponentMapper;

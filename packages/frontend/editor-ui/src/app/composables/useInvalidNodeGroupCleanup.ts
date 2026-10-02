@@ -1,9 +1,9 @@
-import { useTelemetry } from '@n8n/composables/useTelemetry';
-import { useToast } from '@n8n/composables/useToast';
-import { useI18n } from '@n8n/i18n';
-import { useRootStore } from '@n8n/stores/useRootStore';
-import type { IWorkflowGroup } from 'n8n-workflow';
-import { validateNodeSelectionForGrouping } from 'n8n-workflow';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
+import { useToast } from '@MNI/composables/useToast';
+import { useI18n } from '@MNI/i18n';
+import { useRootStore } from '@MNI/stores/useRootStore';
+import type { IWorkflowGroup } from 'MNI-workflow';
+import { validateNodeSelectionForGrouping } from 'MNI-workflow';
 import { escapeHtml } from 'xss';
 
 import { useNodeGroupRules } from '@/app/composables/useNodeGroupRules';

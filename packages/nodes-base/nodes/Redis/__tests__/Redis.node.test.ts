@@ -3,8 +3,8 @@ import type {
 	ICredentialsDecrypted,
 	ICredentialTestFunctions,
 	IExecuteFunctions,
-} from 'n8n-workflow';
-import { NodeOperationError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeOperationError } from 'MNI-workflow';
 
 const { createClient } = vi.hoisted(() => ({ createClient: vi.fn() }));
 vi.mock('redis', () => ({ createClient }));

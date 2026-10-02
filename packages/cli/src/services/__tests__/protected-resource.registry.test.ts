@@ -1,4 +1,4 @@
-import type { Logger } from '@n8n/backend-common';
+import type { Logger } from '@MNI/backend-common';
 import { mock } from 'vitest-mock-extended';
 
 import type { ProtectedResource, ProtectedResourceResolver } from '../protected-resource.registry';
@@ -40,13 +40,13 @@ describe('ProtectedResourceRegistry', () => {
 		it('should resolve a resource by any of its declared resource URLs', async () => {
 			const multiUrlResource: ProtectedResource = {
 				id: 'instance-mcp-multi',
-				getResourceUrl: () => 'https://n8n-mcp.example.com/mcp-server/http',
+				getResourceUrl: () => 'https://MNI-mcp.example.com/mcp-server/http',
 				getResourceUrls: () => [
-					'https://n8n-mcp.example.com/mcp-server/http',
+					'https://MNI-mcp.example.com/mcp-server/http',
 					'https://n8n.example.com/mcp-server/http',
 				],
 				getAudiences: () => [
-					'https://n8n-mcp.example.com/mcp-server/http',
+					'https://MNI-mcp.example.com/mcp-server/http',
 					'https://n8n.example.com/mcp-server/http',
 				],
 				authorize: async () => true,
@@ -56,7 +56,7 @@ describe('ProtectedResourceRegistry', () => {
 			multiRegistry.register(multiUrlResource);
 
 			expect(
-				await multiRegistry.getByResourceUrl('https://n8n-mcp.example.com/mcp-server/http'),
+				await multiRegistry.getByResourceUrl('https://MNI-mcp.example.com/mcp-server/http'),
 			).toBe(multiUrlResource);
 			expect(await multiRegistry.getByResourceUrl('https://n8n.example.com/mcp-server/http/')).toBe(
 				multiUrlResource,

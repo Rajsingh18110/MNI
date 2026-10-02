@@ -50,7 +50,7 @@ vi.mock('@/app/stores/ui.store', () => ({
 	useUIStore: () => uiStoreMock,
 }));
 
-vi.mock('@n8n/composables/useTelemetry', () => ({
+vi.mock('@MNI/composables/useTelemetry', () => ({
 	useTelemetry: () => ({
 		track: telemetryTrackMock,
 	}),

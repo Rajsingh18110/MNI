@@ -1,8 +1,8 @@
-import { PublicCreateDestinationDto } from '@n8n/api-types';
-import { OutboundHttp } from '@n8n/backend-network';
-import { InstanceSettingsLoaderConfig } from '@n8n/config';
-import { Container } from '@n8n/di';
-import type { MessageEventBusDestinationOptions } from 'n8n-workflow';
+import { PublicCreateDestinationDto } from '@MNI/api-types';
+import { OutboundHttp } from '@MNI/backend-network';
+import { InstanceSettingsLoaderConfig } from '@MNI/config';
+import { Container } from '@MNI/di';
+import type { MessageEventBusDestinationOptions } from 'MNI-workflow';
 
 import { CredentialsFinderService } from '@/credentials/credentials-finder.service';
 import { BadRequestError } from '@/errors/response-errors/bad-request.error';

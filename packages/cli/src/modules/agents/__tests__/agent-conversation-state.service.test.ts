@@ -1,8 +1,8 @@
-import type { SerializableAgentState } from '@n8n/agents';
+import type { SerializableAgentState } from '@MNI/agents';
 import { mock } from 'vitest-mock-extended';
 
 import { AgentConversationStateService } from '../agent-conversation-state.service';
-import type { N8NCheckpointStorage } from '../integrations/n8n-checkpoint-storage';
+import type { N8NCheckpointStorage } from '../integrations/MNI-checkpoint-storage';
 import type { AgentExecutionRepository } from '../repositories/agent-execution.repository';
 
 const AGENT_ID = 'agent-1';

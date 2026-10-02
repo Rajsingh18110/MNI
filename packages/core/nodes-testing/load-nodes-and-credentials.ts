@@ -1,4 +1,4 @@
-import { Service } from '@n8n/di';
+import { Service } from '@MNI/di';
 import type {
 	ICredentialType,
 	INodeType,
@@ -6,7 +6,7 @@ import type {
 	KnownNodesAndCredentials,
 	LoadedClass,
 	LoadedNodesAndCredentials,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import path from 'node:path';
 
 import { UnrecognizedCredentialTypeError, UnrecognizedNodeTypeError } from '../dist/errors';
@@ -18,7 +18,7 @@ export class LoadNodesAndCredentials {
 	private loaders: Record<string, LazyPackageDirectoryLoader> = {};
 
 	private directNodes: Record<string, LoadedClass<INodeType>> = {
-		'n8n-nodes-testing.testData': {
+		'MNI-nodes-testing.testData': {
 			type: new TestDataNode(),
 			sourcePath: __filename,
 		},
@@ -26,7 +26,7 @@ export class LoadNodesAndCredentials {
 
 	readonly known: KnownNodesAndCredentials = {
 		nodes: {
-			'n8n-nodes-testing.testData': {
+			'MNI-nodes-testing.testData': {
 				className: 'TestDataNode',
 				sourcePath: __filename,
 			},

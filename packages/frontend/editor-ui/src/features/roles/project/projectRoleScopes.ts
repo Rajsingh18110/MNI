@@ -3,11 +3,11 @@
  * These are the scopes shown in the role editor checkboxes and used for
  * permission counting. Excludes auto-added scopes like :list, :execute, :listProject.
  *
- * Operations are type-checked against PROJECT_CUSTOM_ROLE_OPERATIONS from @n8n/permissions to ensure
+ * Operations are type-checked against PROJECT_CUSTOM_ROLE_OPERATIONS from @MNI/permissions to ensure
  * only valid resource:operation combinations can be specified.
  */
 
-import { COUPLED_HIDDEN_SCOPES, PROJECT_CUSTOM_ROLE_OPERATIONS } from '@n8n/permissions';
+import { COUPLED_HIDDEN_SCOPES, PROJECT_CUSTOM_ROLE_OPERATIONS } from '@MNI/permissions';
 
 type ProjectResource = keyof typeof PROJECT_CUSTOM_ROLE_OPERATIONS;
 

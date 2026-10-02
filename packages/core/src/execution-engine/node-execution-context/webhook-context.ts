@@ -1,4 +1,4 @@
-import { createDeferredPromise } from '@n8n/utils/promise/deferred-promise';
+import { createDeferredPromise } from '@MNI/utils/promise/deferred-promise';
 import type { Request, Response } from 'express';
 import type {
 	AINodeConnectionType,
@@ -20,8 +20,8 @@ import type {
 	WorkflowExecuteMode,
 	N8nOAuth2FlowResult,
 	N8nOAuth2RefreshResult,
-} from 'n8n-workflow';
-import { UnexpectedError, createEmptyRunExecutionData } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { UnexpectedError, createEmptyRunExecutionData } from 'MNI-workflow';
 
 import { NodeExecutionContext } from './node-execution-context';
 import {

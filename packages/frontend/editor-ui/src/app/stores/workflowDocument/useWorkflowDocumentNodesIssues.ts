@@ -1,8 +1,8 @@
 import { computed, effectScope, shallowReactive, type ComputedRef, type ShallowRef } from 'vue';
-import { structuralComputed } from '@n8n/composables/structuralComputed';
+import { structuralComputed } from '@MNI/composables/structuralComputed';
 import isEqual from 'lodash/isEqual';
 import type { INodeUi, WorkflowValidationIssue } from '@/Interface';
-import type { INodeConnections, INodeIssues, INode } from 'n8n-workflow';
+import type { INodeConnections, INodeIssues, INode } from 'MNI-workflow';
 import { CHANGE_ACTION } from './types';
 import type {
 	NodeAddedPayload,

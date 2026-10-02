@@ -1,8 +1,8 @@
 import type {
 	AgentApproval,
 	AgentIntegrationConfig,
-	N8N_CHAT_INTEGRATION_TYPE,
-} from '@n8n/api-types';
+	MNI_CHAT_INTEGRATION_TYPE,
+} from '@MNI/api-types';
 import type { z } from 'zod';
 
 import type { IntegrationErrorCode } from './integration-error-codes';
@@ -87,7 +87,7 @@ export interface IntegrationSubjectPerson {
  */
 export type IntegrationToolConnectionSource =
 	| AgentIntegrationConfig
-	| { type: typeof N8N_CHAT_INTEGRATION_TYPE; credentialId?: undefined };
+	| { type: typeof MNI_CHAT_INTEGRATION_TYPE; credentialId?: undefined };
 
 export type IntegrationContextQuery =
 	| 'get_current_message_context'

@@ -1,8 +1,8 @@
-import { OutboundHttp } from '@n8n/backend-network';
-import type { HttpRequestClient } from '@n8n/backend-network';
-import { Container } from '@n8n/di';
-import { RoutingNode, UnrecognizedNodeTypeError } from 'n8n-core';
-import type { ExecuteContext } from 'n8n-core';
+import { OutboundHttp } from '@MNI/backend-network';
+import type { HttpRequestClient } from '@MNI/backend-network';
+import { Container } from '@MNI/di';
+import { RoutingNode, UnrecognizedNodeTypeError } from 'MNI-core';
+import type { ExecuteContext } from 'MNI-core';
 import type {
 	ICredentialsHelper,
 	ICredentialTestFunctions,
@@ -10,8 +10,8 @@ import type {
 	INode,
 	INodeType,
 	IWorkflowExecuteAdditionalData,
-} from 'n8n-workflow';
-import { NodeApiError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeApiError } from 'MNI-workflow';
 import type { Mock } from 'vitest';
 import { mock } from 'vitest-mock-extended';
 
@@ -24,8 +24,8 @@ import {
 } from '@/services/credentials-tester.service';
 import * as WorkflowExecuteAdditionalData from '@/workflow-execute-additional-data';
 
-vi.mock('n8n-core', async (importOriginal) => {
-	const actual = await importOriginal<typeof import('n8n-core')>();
+vi.mock('MNI-core', async (importOriginal) => {
+	const actual = await importOriginal<typeof import('MNI-core')>();
 	return { ...actual, RoutingNode: vi.fn() };
 });
 
@@ -82,7 +82,7 @@ describe('CredentialsTester', () => {
 		const testRequest = { request: { url: '/me' } };
 		nodeTypes.getByName.mockImplementation((nodeName: string) => {
 			if (nodeName === 'graphqlTool') {
-				throw new UnrecognizedNodeTypeError('n8n-nodes-base', 'graphqlTool');
+				throw new UnrecognizedNodeTypeError('MNI-nodes-base', 'graphqlTool');
 			}
 			return mock<INodeType>({
 				description: { credentials: [{ name: 'httpHeaderAuth', testedBy: testRequest }] },
@@ -99,7 +99,7 @@ describe('CredentialsTester', () => {
 		credentialTypes.getSupportedNodes.mockReturnValue(['graphqlTool']);
 		credentialTypes.getParentTypes.mockReturnValue([]);
 		nodeTypes.getByName.mockImplementation(() => {
-			throw new UnrecognizedNodeTypeError('n8n-nodes-base', 'graphqlTool');
+			throw new UnrecognizedNodeTypeError('MNI-nodes-base', 'graphqlTool');
 		});
 
 		const result = await credentialsTester.testCredentials('user-1', 'httpHeaderAuth', {
@@ -313,7 +313,7 @@ describe('CredentialsTester', () => {
 			credentialsHelper.applyDefaultsAndOverwrites.mockImplementation(async (_base, data) => data);
 			nodeTypes.getByNameAndVersion.mockReturnValue(
 				mock<INodeType>({
-					description: { name: 'n8n-nodes-base.noOp', version: 1, properties: [] },
+					description: { name: 'MNI-nodes-base.noOp', version: 1, properties: [] },
 				}),
 			);
 			const storedGetDecrypted = vi.fn().mockResolvedValue(stored);
@@ -388,7 +388,7 @@ describe('CredentialsTester', () => {
 			credentialsHelper.applyDefaultsAndOverwrites.mockImplementation(async (_base, data) => data);
 			nodeTypes.getByNameAndVersion.mockReturnValue(
 				mock<INodeType>({
-					description: { name: 'n8n-nodes-base.noOp', version: 1, properties: [] },
+					description: { name: 'MNI-nodes-base.noOp', version: 1, properties: [] },
 				}),
 			);
 		});
@@ -489,7 +489,7 @@ describe('CredentialsTester', () => {
 			const node = {
 				id: 'temp',
 				name: 'Temp-Node',
-				type: 'n8n-nodes-base.noOp',
+				type: 'MNI-nodes-base.noOp',
 				typeVersion: 1,
 				position: [0, 0],
 				parameters: {},

@@ -2,16 +2,16 @@ import type {
 	AiAskRequestDto,
 	AiApplySuggestionRequestDto,
 	AiChatRequestDto,
-} from '@n8n/api-types';
-import type { Logger } from '@n8n/backend-common';
-import type { GlobalConfig } from '@n8n/config';
+} from '@MNI/api-types';
+import type { Logger } from '@MNI/backend-common';
+import type { GlobalConfig } from '@MNI/config';
 import { AiAssistantClient, type AiAssistantSDK } from '@n8n_io/ai-assistant-sdk';
-import type { ErrorReporter, InstanceSettings } from 'n8n-core';
-import type { IUser } from 'n8n-workflow';
+import type { ErrorReporter, InstanceSettings } from 'MNI-core';
+import type { IUser } from 'MNI-workflow';
 import type { Mock } from 'vitest';
 import { mock } from 'vitest-mock-extended';
 
-import { N8N_VERSION } from '@/constants';
+import { MNI_VERSION } from '@/constants';
 import type { License } from '@/license';
 
 import { AiService } from '../ai.service';
@@ -67,7 +67,7 @@ describe('AiService', () => {
 			expect(AiAssistantClient).toHaveBeenCalledWith({
 				licenseCert: 'mock-license-cert',
 				consumerId: 'mock-consumer-id',
-				n8nVersion: N8N_VERSION,
+				n8nVersion: MNI_VERSION,
 				baseUrl,
 				logLevel: 'info',
 				instanceId,

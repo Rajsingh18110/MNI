@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { i18n } from '@n8n/i18n';
+import { i18n } from '@MNI/i18n';
 
-import { N8nIcon, N8nLink, N8nText } from '@n8n/design-system';
+import { N8nIcon, N8nLink, N8nText } from '@MNI/design-system';
 export interface Props {
 	packageName: string;
 }

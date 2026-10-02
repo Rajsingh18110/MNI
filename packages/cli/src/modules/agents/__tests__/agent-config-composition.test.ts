@@ -1,4 +1,4 @@
-import type { AgentJsonConfig } from '@n8n/api-types';
+import type { AgentJsonConfig } from '@MNI/api-types';
 
 import type { Agent } from '../entities/agent.entity';
 import { composeJsonConfig, decomposeJsonConfig } from '../json-config/agent-config-composition';

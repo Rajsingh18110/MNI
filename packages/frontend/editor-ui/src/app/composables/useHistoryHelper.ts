@@ -7,10 +7,10 @@ import { useHistoryStore } from '@/app/stores/history.store';
 import { useUIStore } from '@/app/stores/ui.store';
 
 import { onMounted, onUnmounted, nextTick, computed, type Ref } from 'vue';
-import { useDeviceSupport } from '@n8n/composables/useDeviceSupport';
+import { useDeviceSupport } from '@MNI/composables/useDeviceSupport';
 import { getNodeViewTab } from '@/app/utils/nodeViewUtils';
 import type { RouteLocationNormalizedLoaded } from 'vue-router';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
 import { shouldIgnoreCanvasShortcut } from '@/features/workflows/canvas/canvas.utils';
 
 const ELEMENT_UI_OVERLAY_SELECTOR = '.el-overlay';

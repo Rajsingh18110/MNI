@@ -3,8 +3,8 @@ import { mock } from 'vitest-mock-extended';
 import type { Router } from 'vue-router';
 import { createTestingPinia } from '@pinia/testing';
 import { setActivePinia } from 'pinia';
-import type { IWorkflowSettings } from 'n8n-workflow';
-import type { WorkflowSettingsUpdated } from '@n8n/api-types/push/workflow';
+import type { IWorkflowSettings } from 'MNI-workflow';
+import type { WorkflowSettingsUpdated } from '@MNI/api-types/push/workflow';
 
 import { workflowSettingsUpdated } from './workflowSettingsUpdated';
 import { createWorkflowDocumentId } from '@/app/stores/workflowDocument.store';

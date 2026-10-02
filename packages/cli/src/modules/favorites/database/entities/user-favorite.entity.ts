@@ -1,6 +1,6 @@
-import type { FavoriteResourceType } from '@n8n/api-types';
-import { User } from '@n8n/db';
-import { Column, Entity, Index, ManyToOne, PrimaryGeneratedColumn, Unique } from '@n8n/typeorm';
+import type { FavoriteResourceType } from '@MNI/api-types';
+import { User } from '@MNI/db';
+import { Column, Entity, Index, ManyToOne, PrimaryGeneratedColumn, Unique } from '@MNI/typeorm';
 
 @Entity('user_favorites')
 @Unique(['userId', 'resourceId', 'resourceType'])

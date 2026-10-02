@@ -1,8 +1,8 @@
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { isEnterpriseFeatureEnabled } from '@/app/utils/rbac/checks/isEnterpriseFeatureEnabled';
 import { EnterpriseEditionFeature } from '@/app/constants';
 import { createPinia, setActivePinia } from 'pinia';
-import { defaultSettings } from '@n8n/frontend-test-utils';
+import { defaultSettings } from '@MNI/frontend-test-utils';
 
 describe('Checks', () => {
 	beforeEach(() => {

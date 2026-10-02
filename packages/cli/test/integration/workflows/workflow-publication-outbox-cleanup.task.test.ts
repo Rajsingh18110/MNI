@@ -1,18 +1,18 @@
-import type { Logger } from '@n8n/backend-common';
-import { testDb } from '@n8n/backend-test-utils';
-import { GlobalConfig, WorkflowsConfig } from '@n8n/config';
-import { Time } from '@n8n/constants';
+import type { Logger } from '@MNI/backend-common';
+import { testDb } from '@MNI/backend-test-utils';
+import { GlobalConfig, WorkflowsConfig } from '@MNI/config';
+import { Time } from '@MNI/constants';
 import {
 	DbConnectionOptions,
 	TransactionRunner,
 	WorkflowPublicationOutboxRepository,
-} from '@n8n/db';
-import type { WorkflowPublicationOutboxStatus } from '@n8n/db';
-import { Container } from '@n8n/di';
-import type { QueryRunner } from '@n8n/typeorm';
-import { DataSource, Like } from '@n8n/typeorm';
-import { sleep } from '@n8n/utils/sleep';
-import type { Span, Tracing } from 'n8n-core';
+} from '@MNI/db';
+import type { WorkflowPublicationOutboxStatus } from '@MNI/db';
+import { Container } from '@MNI/di';
+import type { QueryRunner } from '@MNI/typeorm';
+import { DataSource, Like } from '@MNI/typeorm';
+import { sleep } from '@MNI/utils/sleep';
+import type { Span, Tracing } from 'MNI-core';
 import { mock } from 'vitest-mock-extended';
 
 import type { EventService } from '@/events/event.service';

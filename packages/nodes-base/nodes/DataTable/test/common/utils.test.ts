@@ -1,6 +1,6 @@
 import { DateTime } from 'luxon';
-import type { INode } from 'n8n-workflow';
-import { NodeOperationError } from 'n8n-workflow';
+import type { INode } from 'MNI-workflow';
+import { NodeOperationError } from 'MNI-workflow';
 
 import { ANY_CONDITION, ALL_CONDITIONS, type FieldEntry } from '../../common/constants';
 import { dataObjectToApiInput, buildGetManyFilter } from '../../common/utils';

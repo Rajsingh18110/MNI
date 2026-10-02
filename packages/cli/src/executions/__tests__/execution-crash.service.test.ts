@@ -1,5 +1,5 @@
-import type { CrashedExecution, ExecutionRepository } from '@n8n/db';
-import type { InstanceSettings } from 'n8n-core';
+import type { CrashedExecution, ExecutionRepository } from '@MNI/db';
+import type { InstanceSettings } from 'MNI-core';
 import { mock } from 'vitest-mock-extended';
 
 import type { EventService } from '@/events/event.service';

@@ -1,4 +1,4 @@
-import type { IExecuteFunctions, IHookFunctions, ILoadOptionsFunctions, INode } from 'n8n-workflow';
+import type { IExecuteFunctions, IHookFunctions, ILoadOptionsFunctions, INode } from 'MNI-workflow';
 import type { Mock, Mocked } from 'vitest';
 import { mockDeep } from 'vitest-mock-extended';
 
@@ -32,7 +32,7 @@ describe('Microsoft Teams Transport', () => {
 		mockNode = {
 			id: 'test-node',
 			name: 'Test Teams Node',
-			type: 'n8n-nodes-base.microsoftTeams',
+			type: 'MNI-nodes-base.microsoftTeams',
 			typeVersion: 2,
 			position: [0, 0],
 			parameters: {},

@@ -3,8 +3,8 @@ import type {
 	IExecuteFunctions,
 	IHttpRequestOptions,
 	IPollFunctions,
-} from 'n8n-workflow';
-import { sanitizeXmlName } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { sanitizeXmlName } from 'MNI-workflow';
 import Parser from 'rss-parser';
 
 const DEFAULT_HEADERS = {

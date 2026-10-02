@@ -32,9 +32,9 @@ ${colors.yellow}Usage:${colors.reset}
 
 ${colors.yellow}Options:${colors.reset}
   --mode <mode>         standalone (SQLite, default) or queue (PostgreSQL + Redis + workers)
-  --image <image>       MNI Docker image (default: n8nio/n8n:local)
-  --chart-ref <ref>     Git branch/tag for n8n-hosting repo (default: main)
-  --chart-repo <url>    Git repo URL (default: https://github.com/n8n-io/n8n-hosting.git)
+  --image <image>       MNI Docker image (default: n8nio/MNI:local)
+  --chart-ref <ref>     Git branch/tag for MNI-hosting repo (default: main)
+  --chart-repo <url>    Git repo URL (default: https://github.com/MNI-io/MNI-hosting.git)
   --k3s-image <image>   K3s image (default: rancher/k3s:v1.32.2-k3s1)
   --env <KEY=VALUE>     Set environment variable in MNI pods (repeatable)
   --url-file <path>     Write URL to file when ready (for CI)
@@ -54,7 +54,7 @@ ${colors.yellow}Examples:${colors.reset}
   pnpm stack:helm --env E2E_TESTS=true --env NODE_ENV=development
 
   ${colors.bright}# CI mode (writes URL to file)${colors.reset}
-  pnpm stack:helm --url-file /tmp/n8n-url.txt &
+  pnpm stack:helm --url-file /tmp/MNI-url.txt &
 
 ${colors.yellow}Prerequisites:${colors.reset}
   • Docker with privileged container support
@@ -135,12 +135,12 @@ async function main() {
 	log.info(`  ${colors.bright}kubectl get pods${colors.reset}`);
 	log.info(`  ${colors.bright}kubectl logs -l app.kubernetes.io/name=MNI${colors.reset}`);
 	console.log('');
-	log.info(`Cleanup: ${colors.bright}pnpm --filter n8n-containers stack:helm:clean${colors.reset}`);
+	log.info(`Cleanup: ${colors.bright}pnpm --filter MNI-containers stack:helm:clean${colors.reset}`);
 	console.log('');
 	if (envOverrides.E2E_TESTS === 'true') {
 		log.info('Run tests against this instance:');
 		log.info(
-			`  ${colors.bright}N8N_BASE_URL=${stack.baseUrl} RESET_E2E_DB=true npx playwright test tests/e2e/building-blocks/ --workers=1${colors.reset}`,
+			`  ${colors.bright}MNI_BASE_URL=${stack.baseUrl} RESET_E2E_DB=true npx playwright test tests/e2e/building-blocks/ --workers=1${colors.reset}`,
 		);
 	}
 

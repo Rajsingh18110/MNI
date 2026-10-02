@@ -1,5 +1,5 @@
-import type { AiGatewayConfigDto } from '@n8n/api-types';
-import type { INode } from 'n8n-workflow';
+import type { AiGatewayConfigDto } from '@MNI/api-types';
+import type { INode } from 'MNI-workflow';
 
 import { checkAiGatewayEligibility } from '../ai-gateway-eligibility';
 
@@ -7,7 +7,7 @@ function makeNode(overrides: Partial<INode> = {}): INode {
 	return {
 		id: 'n1',
 		name: 'Test',
-		type: '@n8n/n8n-nodes-langchain.openAi',
+		type: '@MNI/MNI-nodes-langchain.openAi',
 		typeVersion: 1,
 		position: [0, 0],
 		parameters: {},
@@ -17,7 +17,7 @@ function makeNode(overrides: Partial<INode> = {}): INode {
 
 function makeConfig(overrides: Partial<AiGatewayConfigDto> = {}): AiGatewayConfigDto {
 	return {
-		nodes: ['@n8n/n8n-nodes-langchain.openAi'],
+		nodes: ['@MNI/MNI-nodes-langchain.openAi'],
 		credentialTypes: ['openAiApi'],
 		providerConfig: {
 			openAiApi: { gatewayPath: '/v1/gateway/openai/v1', urlField: 'url', apiKeyField: 'apiKey' },
@@ -30,7 +30,7 @@ describe('checkAiGatewayEligibility', () => {
 	describe('node coverage', () => {
 		it('returns nodeNotCovered when nodeType not in config.nodes (and stripped form also missing)', () => {
 			const result = checkAiGatewayEligibility(
-				makeNode({ type: 'n8n-nodes-base.slack' }),
+				makeNode({ type: 'MNI-nodes-base.slack' }),
 				'slackApi',
 				makeConfig(),
 			);
@@ -44,7 +44,7 @@ describe('checkAiGatewayEligibility', () => {
 
 		it('accepts a node when only its tool-suffix-stripped form is in config.nodes', () => {
 			const result = checkAiGatewayEligibility(
-				makeNode({ type: '@n8n/n8n-nodes-langchain.openAiTool' }),
+				makeNode({ type: '@MNI/MNI-nodes-langchain.openAiTool' }),
 				'openAiApi',
 				makeConfig(),
 			);
@@ -69,7 +69,7 @@ describe('checkAiGatewayEligibility', () => {
 				makeNode({ typeVersion: 1 }),
 				'openAiApi',
 				makeConfig({
-					minNodeTypeVersion: { '@n8n/n8n-nodes-langchain.openAi': 1.2 },
+					minNodeTypeVersion: { '@MNI/MNI-nodes-langchain.openAi': 1.2 },
 				}),
 			);
 			expect(result).toMatchObject({ eligible: false, reason: 'versionTooLow' });
@@ -80,7 +80,7 @@ describe('checkAiGatewayEligibility', () => {
 				makeNode({ typeVersion: 1.2 }),
 				'openAiApi',
 				makeConfig({
-					minNodeTypeVersion: { '@n8n/n8n-nodes-langchain.openAi': 1.2 },
+					minNodeTypeVersion: { '@MNI/MNI-nodes-langchain.openAi': 1.2 },
 				}),
 			);
 			expect(result).toEqual({ eligible: true });
@@ -97,10 +97,10 @@ describe('checkAiGatewayEligibility', () => {
 
 		it('uses stripToolSuffix fallback for minNodeTypeVersion lookup', () => {
 			const result = checkAiGatewayEligibility(
-				makeNode({ type: '@n8n/n8n-nodes-langchain.openAiTool', typeVersion: 1 }),
+				makeNode({ type: '@MNI/MNI-nodes-langchain.openAiTool', typeVersion: 1 }),
 				'openAiApi',
 				makeConfig({
-					minNodeTypeVersion: { '@n8n/n8n-nodes-langchain.openAi': 1.2 },
+					minNodeTypeVersion: { '@MNI/MNI-nodes-langchain.openAi': 1.2 },
 				}),
 			);
 			expect(result).toMatchObject({ eligible: false, reason: 'versionTooLow' });
@@ -113,7 +113,7 @@ describe('checkAiGatewayEligibility', () => {
 				makeNode({ parameters: { baseURL: 'https://custom.example.com' } }),
 				'openAiApi',
 				makeConfig({
-					hiddenNodeProperties: { '@n8n/n8n-nodes-langchain.openAi': ['baseURL'] },
+					hiddenNodeProperties: { '@MNI/MNI-nodes-langchain.openAi': ['baseURL'] },
 				}),
 			);
 			expect(result).toMatchObject({ eligible: false, reason: 'hiddenPropertySet' });
@@ -124,7 +124,7 @@ describe('checkAiGatewayEligibility', () => {
 				makeNode({ parameters: { model: 'gpt-4' } }),
 				'openAiApi',
 				makeConfig({
-					hiddenNodeProperties: { '@n8n/n8n-nodes-langchain.openAi': ['baseURL'] },
+					hiddenNodeProperties: { '@MNI/MNI-nodes-langchain.openAi': ['baseURL'] },
 				}),
 			);
 			expect(result).toEqual({ eligible: true });
@@ -135,7 +135,7 @@ describe('checkAiGatewayEligibility', () => {
 				makeNode({ parameters: {} }),
 				'openAiApi',
 				makeConfig({
-					hiddenNodeProperties: { '@n8n/n8n-nodes-langchain.openAi': ['baseURL'] },
+					hiddenNodeProperties: { '@MNI/MNI-nodes-langchain.openAi': ['baseURL'] },
 				}),
 				{ baseURL: 'https://api.openai.com/v1' },
 			);
@@ -145,14 +145,14 @@ describe('checkAiGatewayEligibility', () => {
 		it('returns hiddenPropertySet when a hidden property is nested inside a collection', () => {
 			const result = checkAiGatewayEligibility(
 				makeNode({
-					type: 'n8n-nodes-browserbase.browserbase',
+					type: 'MNI-nodes-browserbase.browserbase',
 					parameters: { modelOptions: { modelSource: 'openai' } },
 				}),
 				'browserbaseApi',
 				makeConfig({
-					nodes: ['n8n-nodes-browserbase.browserbase'],
+					nodes: ['MNI-nodes-browserbase.browserbase'],
 					credentialTypes: ['browserbaseApi'],
-					hiddenNodeProperties: { 'n8n-nodes-browserbase.browserbase': ['modelSource'] },
+					hiddenNodeProperties: { 'MNI-nodes-browserbase.browserbase': ['modelSource'] },
 				}),
 			);
 			expect(result).toMatchObject({ eligible: false, reason: 'hiddenPropertySet' });
@@ -161,7 +161,7 @@ describe('checkAiGatewayEligibility', () => {
 
 	describe('supportedActions (with resource/operation)', () => {
 		const supportedActions = {
-			'@n8n/n8n-nodes-langchain.openAi': {
+			'@MNI/MNI-nodes-langchain.openAi': {
 				text: ['message', 'response'],
 				image: ['generate'],
 			},
@@ -235,17 +235,17 @@ describe('checkAiGatewayEligibility', () => {
 
 	describe('supportedActions (flat __operation_only__ sentinel)', () => {
 		const supportedActions = {
-			'n8n-nodes-brave.braveSearch': {
+			'MNI-nodes-brave.braveSearch': {
 				__operation_only__: ['webSearch', 'imageSearch'],
 			},
 		};
 
 		it('passes when operation is in the flat allowlist', () => {
 			const result = checkAiGatewayEligibility(
-				makeNode({ type: 'n8n-nodes-brave.braveSearch', parameters: { operation: 'webSearch' } }),
+				makeNode({ type: 'MNI-nodes-brave.braveSearch', parameters: { operation: 'webSearch' } }),
 				'braveSearchApi',
 				makeConfig({
-					nodes: ['n8n-nodes-brave.braveSearch'],
+					nodes: ['MNI-nodes-brave.braveSearch'],
 					credentialTypes: ['braveSearchApi'],
 					supportedActions,
 				}),
@@ -255,10 +255,10 @@ describe('checkAiGatewayEligibility', () => {
 
 		it('reads operation from resolvedParameters (defaults) for operation-only nodes', () => {
 			const result = checkAiGatewayEligibility(
-				makeNode({ type: 'n8n-nodes-brave.braveSearch', parameters: {} }),
+				makeNode({ type: 'MNI-nodes-brave.braveSearch', parameters: {} }),
 				'braveSearchApi',
 				makeConfig({
-					nodes: ['n8n-nodes-brave.braveSearch'],
+					nodes: ['MNI-nodes-brave.braveSearch'],
 					credentialTypes: ['braveSearchApi'],
 					supportedActions,
 				}),
@@ -269,10 +269,10 @@ describe('checkAiGatewayEligibility', () => {
 
 		it('returns unsupportedAction when operation is not in the flat allowlist', () => {
 			const result = checkAiGatewayEligibility(
-				makeNode({ type: 'n8n-nodes-brave.braveSearch', parameters: { operation: 'newsSearch' } }),
+				makeNode({ type: 'MNI-nodes-brave.braveSearch', parameters: { operation: 'newsSearch' } }),
 				'braveSearchApi',
 				makeConfig({
-					nodes: ['n8n-nodes-brave.braveSearch'],
+					nodes: ['MNI-nodes-brave.braveSearch'],
 					credentialTypes: ['braveSearchApi'],
 					supportedActions,
 				}),

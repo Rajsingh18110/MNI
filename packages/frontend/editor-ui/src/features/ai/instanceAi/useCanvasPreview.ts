@@ -1,6 +1,6 @@
 import { computed, ref, watch } from 'vue';
-import type { InstanceAiAttachment } from '@n8n/api-types';
-import type { IconName } from '@n8n/design-system';
+import type { InstanceAiAttachment } from '@MNI/api-types';
+import type { IconName } from '@MNI/design-system';
 import {
 	getLatestBuildResult,
 	getLatestBuilderTarget,

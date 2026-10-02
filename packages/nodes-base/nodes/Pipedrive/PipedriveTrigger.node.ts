@@ -9,7 +9,7 @@ import {
 	type INodeTypeDescription,
 	type IWebhookResponseData,
 	NodeConnectionTypes,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { pipedriveApiRequest } from './v1/GenericFunctions';
 

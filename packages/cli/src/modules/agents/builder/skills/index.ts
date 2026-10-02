@@ -1,4 +1,4 @@
-import type { RuntimeSkill } from '@n8n/agents';
+import type { RuntimeSkill } from '@MNI/agents';
 
 import { customToolsSkill } from './custom-tools.skill';
 import { externalServicesSkill } from './external-services.skill';

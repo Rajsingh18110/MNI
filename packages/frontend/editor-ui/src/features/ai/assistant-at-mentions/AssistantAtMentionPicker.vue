@@ -8,16 +8,16 @@ import {
 	N8nTooltip,
 	type DropdownMenuExposed,
 	type DropdownMenuItemProps,
-} from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+} from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 import { useDebounceFn, useElementSize } from '@vueuse/core';
-import type { INodeTypeDescription } from 'n8n-workflow';
+import type { INodeTypeDescription } from 'MNI-workflow';
 import { computed, nextTick, onBeforeUnmount, ref, watch } from 'vue';
 
 import { DEBOUNCE_TIME } from '@/app/constants';
 import NodeIcon from '@/app/components/NodeIcon.vue';
 import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';
-import { getDebounceTime } from '@n8n/composables/useDebounce';
+import { getDebounceTime } from '@MNI/composables/useDebounce';
 
 import AssistantMentionBreadcrumbs from './AssistantMentionBreadcrumbs.vue';
 import type {
@@ -553,7 +553,7 @@ defineExpose({ handleExternalKeydown, getOpenMetrics, flushEmptySearch });
 
 <style module lang="scss">
 .menuContent {
-	width: var(--n8n--dropdown-menu-width);
+	width: var(--MNI--dropdown-menu-width);
 }
 
 .errorState {

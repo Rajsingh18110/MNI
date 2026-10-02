@@ -1,4 +1,4 @@
-import type { INodeProperties } from 'n8n-workflow';
+import type { INodeProperties } from 'MNI-workflow';
 
 export const DATA_TABLE_ID_FIELD = 'dataTableId';
 
@@ -12,7 +12,7 @@ export const DRY_RUN = {
 } satisfies INodeProperties;
 
 export const DATA_TABLE_RESOURCE_LOCATOR_BASE = {
-	// eslint-disable-next-line n8n-nodes-base/node-param-display-name-miscased
+	// eslint-disable-next-line MNI-nodes-base/node-param-display-name-miscased
 	displayName: 'Data table',
 	name: DATA_TABLE_ID_FIELD,
 	type: 'resourceLocator',

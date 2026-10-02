@@ -7,7 +7,7 @@
 	"nodes": [
 		{
 			"parameters": {},
-			"type": "n8n-nodes-base.manualTrigger",
+			"type": "MNI-nodes-base.manualTrigger",
 			"typeVersion": 1,
 			"position": [-1024, 432],
 			"id": "7a8be1ce-c648-4695-9075-9ae348da968f",
@@ -17,7 +17,7 @@
 			"parameters": {
 				"jsCode": "const result = [\n  'MNI',\n  'make',\n  'zappier',\n  'workato'\n].map(i => ({ json: {name: i}}))\n\nreturn result;"
 			},
-			"type": "n8n-nodes-base.code",
+			"type": "MNI-nodes-base.code",
 			"typeVersion": 2,
 			"position": [-800, 416],
 			"id": "39ce5cb4-b557-424c-97ad-1f9126e7c45b",
@@ -28,7 +28,7 @@
 				"aggregate": "aggregateAllItemData",
 				"options": {}
 			},
-			"type": "n8n-nodes-base.aggregate",
+			"type": "MNI-nodes-base.aggregate",
 			"typeVersion": 1,
 			"position": [-304, 176],
 			"id": "8e6d63b9-cb8b-4553-b3df-04424a51a5a2",
@@ -40,7 +40,7 @@
 				"height": 240,
 				"width": 560
 			},
-			"type": "n8n-nodes-base.stickyNote",
+			"type": "MNI-nodes-base.stickyNote",
 			"position": [-336, 96],
 			"typeVersion": 1,
 			"id": "93172a55-1b27-4e4a-8dce-def58cd08ebc",
@@ -52,7 +52,7 @@
 				"text": "=Search HackerNews for following: {{ $json.data.map(i => i.name).join(', ') }}",
 				"options": {}
 			},
-			"type": "@n8n/n8n-nodes-langchain.agent",
+			"type": "@MNI/MNI-nodes-langchain.agent",
 			"typeVersion": 2.2,
 			"position": [-96, 176],
 			"id": "1d29875c-b16b-4866-b262-ca6cadc416d2",
@@ -68,7 +68,7 @@
 				},
 				"options": {}
 			},
-			"type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+			"type": "@MNI/MNI-nodes-langchain.lmChatOpenAi",
 			"typeVersion": 1.2,
 			"position": [-128, 352],
 			"id": "25727c7c-0195-4405-918e-3fb9335933f4",
@@ -85,10 +85,10 @@
 				"resource": "all",
 				"limit": 1,
 				"additionalFields": {
-					"keyword": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Keyword', ``, 'string') }}"
+					"keyword": "={{ /*MNI-auto-generated-fromAI-override*/ $fromAI('Keyword', ``, 'string') }}"
 				}
 			},
-			"type": "n8n-nodes-base.hackerNewsTool",
+			"type": "MNI-nodes-base.hackerNewsTool",
 			"typeVersion": 1,
 			"position": [128, 352],
 			"id": "74491c5a-3d42-4a90-b716-085aae48d03b",
@@ -99,7 +99,7 @@
 				"aggregate": "aggregateAllItemData",
 				"options": {}
 			},
-			"type": "n8n-nodes-base.aggregate",
+			"type": "MNI-nodes-base.aggregate",
 			"typeVersion": 1,
 			"position": [-384, 592],
 			"id": "4d2ebdc0-4826-464d-baf2-244ef6ae5754",
@@ -111,7 +111,7 @@
 				"height": 240,
 				"width": 660
 			},
-			"type": "n8n-nodes-base.stickyNote",
+			"type": "MNI-nodes-base.stickyNote",
 			"position": [-400, 512],
 			"typeVersion": 1,
 			"id": "920bda61-45e0-4dda-9533-1118547cf03c",
@@ -123,7 +123,7 @@
 				"text": "=Search HackerNews for following: {{ $json.data.map(i => i.name).join(', ') }}",
 				"options": {}
 			},
-			"type": "@n8n/n8n-nodes-langchain.agent",
+			"type": "@MNI/MNI-nodes-langchain.agent",
 			"typeVersion": 2.2,
 			"position": [-160, 592],
 			"id": "db68e97c-807a-4e68-a765-8cd03b4bf0e4",
@@ -139,7 +139,7 @@
 				},
 				"options": {}
 			},
-			"type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+			"type": "@MNI/MNI-nodes-langchain.lmChatOpenAi",
 			"typeVersion": 1.2,
 			"position": [-192, 768],
 			"id": "b64d6fda-91f3-446c-ad38-0b226ac843d1",
@@ -162,7 +162,7 @@
 				"workflowInputs": {
 					"mappingMode": "defineBelow",
 					"value": {
-						"query": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('query', ``, 'string') }}"
+						"query": "={{ /*MNI-auto-generated-fromAI-override*/ $fromAI('query', ``, 'string') }}"
 					},
 					"matchingColumns": ["query"],
 					"schema": [
@@ -181,7 +181,7 @@
 					"convertFieldsToString": false
 				}
 			},
-			"type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+			"type": "@MNI/MNI-nodes-langchain.toolWorkflow",
 			"typeVersion": 2.2,
 			"position": [48, 784],
 			"id": "c9ad1851-dd8d-4ab8-b987-8649ae7bed6b",
@@ -197,7 +197,7 @@
 					]
 				}
 			},
-			"type": "n8n-nodes-base.executeWorkflowTrigger",
+			"type": "MNI-nodes-base.executeWorkflowTrigger",
 			"typeVersion": 1.1,
 			"position": [-560, -288],
 			"id": "9e3e729b-16a8-4ff2-af41-ad86c44daf89",
@@ -211,7 +211,7 @@
 					"keyword": "={{ $json.query }}"
 				}
 			},
-			"type": "n8n-nodes-base.hackerNews",
+			"type": "MNI-nodes-base.hackerNews",
 			"typeVersion": 1,
 			"position": [-352, -288],
 			"id": "8d01727b-50bd-4990-807b-91c8dd3942ad",

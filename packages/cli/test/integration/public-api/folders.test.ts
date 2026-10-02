@@ -1,8 +1,8 @@
-import { createTeamProject, linkUserToProject, testDb } from '@n8n/backend-test-utils';
-import type { Project, User } from '@n8n/db';
-import { ProjectRelationRepository, ProjectRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
-import type { ApiKeyScope } from '@n8n/permissions';
+import { createTeamProject, linkUserToProject, testDb } from '@MNI/backend-test-utils';
+import type { Project, User } from '@MNI/db';
+import { ProjectRelationRepository, ProjectRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
+import type { ApiKeyScope } from '@MNI/permissions';
 
 import { FolderNotFoundError } from '@/errors/folder-not-found.error';
 import { FolderService } from '@/services/folder.service';
@@ -70,7 +70,7 @@ const ISO_DATE_TIME = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z$/;
 
 const testWithAPIKey =
 	(method: 'get' | 'post' | 'patch' | 'delete', url: string, apiKey: string | null) => async () => {
-		void authOwnerAgent.set({ 'X-N8N-API-KEY': apiKey });
+		void authOwnerAgent.set({ 'X-MNI-API-KEY': apiKey });
 		const response = await authOwnerAgent[method](url);
 		expect(response.statusCode).toBe(401);
 	};

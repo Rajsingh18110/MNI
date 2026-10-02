@@ -1,10 +1,10 @@
-import type { WorkflowFailedToActivate } from '@n8n/api-types/push/workflow';
-import { useToast } from '@n8n/composables/useToast';
+import type { WorkflowFailedToActivate } from '@MNI/api-types/push/workflow';
+import { useToast } from '@MNI/composables/useToast';
 import { useActivationError } from '@/app/composables/useActivationError';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import { useWorkflowDocumentStore } from '@/app/stores/workflowDocument.store';
 import { useWorkflowsStore } from '@/app/stores/workflows.store';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { clearPendingActivationModal } from '@/app/composables/workflowPublicationConfirmation';
 import type { PushHandlerOptions } from './types';
 

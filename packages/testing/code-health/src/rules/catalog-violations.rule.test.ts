@@ -171,7 +171,7 @@ catalog: {}
 			JSON.stringify(
 				{
 					name: 'cli',
-					dependencies: { '@n8n/core': 'workspace:*' },
+					dependencies: { '@MNI/core': 'workspace:*' },
 				},
 				null,
 				2,

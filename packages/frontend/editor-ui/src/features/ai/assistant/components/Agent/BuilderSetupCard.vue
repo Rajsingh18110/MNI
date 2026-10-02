@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue';
-import { useI18n, type BaseTextKey } from '@n8n/i18n';
-import { N8nButton, N8nCallout, N8nIcon, N8nText } from '@n8n/design-system';
+import { useI18n, type BaseTextKey } from '@MNI/i18n';
+import { N8nButton, N8nCallout, N8nIcon, N8nText } from '@MNI/design-system';
 import { CHAT_TRIGGER_NODE_TYPE } from '@/app/constants/nodeTypes';
 
 import NodeIcon from '@/app/components/NodeIcon.vue';
@@ -17,7 +17,7 @@ import type {
 	CredentialDeselectedPayload,
 } from '@/features/setupPanel/setupPanel.types';
 import type { INodeUi } from '@/Interface';
-import type { INodeProperties } from 'n8n-workflow';
+import type { INodeProperties } from 'MNI-workflow';
 import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';
 import { useWorkflowsStore } from '@/app/stores/workflows.store';
 import { useWorkflowExecutionStateStore } from '@/app/stores/workflowExecutionState.store';

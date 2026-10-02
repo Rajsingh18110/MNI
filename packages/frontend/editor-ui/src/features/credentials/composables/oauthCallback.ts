@@ -1,4 +1,4 @@
-import { CREDENTIAL_EMPTY_VALUE } from 'n8n-workflow';
+import { CREDENTIAL_EMPTY_VALUE } from 'MNI-workflow';
 
 export const OAUTH_CALLBACK_SUCCESS = 'success';
 export const OAUTH_CALLBACK_ERROR = 'error';

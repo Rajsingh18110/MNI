@@ -1,5 +1,5 @@
-import type { WorkflowEntity, WorkflowHistory } from '@n8n/db';
-import { MANUAL_TRIGGER_NODE_TYPE, WEBHOOK_NODE_TYPE, type INode } from 'n8n-workflow';
+import type { WorkflowEntity, WorkflowHistory } from '@MNI/db';
+import { MANUAL_TRIGGER_NODE_TYPE, WEBHOOK_NODE_TYPE, type INode } from 'MNI-workflow';
 
 const testNodes: INode[] = [
 	{

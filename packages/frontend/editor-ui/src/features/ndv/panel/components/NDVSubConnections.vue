@@ -3,7 +3,7 @@ import type { INodeUi } from '@/Interface';
 import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';
 import { injectWorkflowDocumentStore } from '@/app/stores/workflowDocument.store';
 import { computed, ref, watch } from 'vue';
-import { NodeHelpers } from 'n8n-workflow';
+import { NodeHelpers } from 'MNI-workflow';
 import { useNodeHelpers } from '@/app/composables/useNodeHelpers';
 import NodeIcon from '@/app/components/NodeIcon.vue';
 import TitledList from '@/app/components/TitledList.vue';
@@ -11,13 +11,13 @@ import type {
 	NodeConnectionType,
 	INodeInputConfiguration,
 	INodeTypeDescription,
-} from 'n8n-workflow';
-import { useDebounce } from '@n8n/composables/useDebounce';
+} from 'MNI-workflow';
+import { useDebounce } from '@MNI/composables/useDebounce';
 import { OnClickOutside } from '@vueuse/components';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import { injectNDVStore } from '@/features/ndv/shared/ndv.store';
 
-import { N8nIconButton, N8nTooltip } from '@n8n/design-system';
+import { N8nIconButton, N8nTooltip } from '@MNI/design-system';
 interface Props {
 	rootNode: INodeUi;
 }
@@ -436,7 +436,7 @@ defineExpose({
 	user-select: none;
 	justify-content: space-between;
 	display: grid;
-	/* stylelint-disable-next-line @n8n/css-var-naming */
+	/* stylelint-disable-next-line @MNI/css-var-naming */
 	grid-template-columns: repeat(var(--possible-connections), 1fr);
 }
 .connectionType {
@@ -519,7 +519,7 @@ defineExpose({
 .connectedNodes {
 	display: flex;
 	justify-content: center;
-	/* stylelint-disable-next-line @n8n/css-var-naming */
+	/* stylelint-disable-next-line @MNI/css-var-naming */
 	margin-right: calc(
 		(var(--nodes-length) - 1) * (-1 * (var(--node--size) - var(--collapsed--offset)))
 	);
@@ -545,7 +545,7 @@ defineExpose({
 	}
 
 	&:not(:first-child) {
-		/* stylelint-disable-next-line @n8n/css-var-naming */
+		/* stylelint-disable-next-line @MNI/css-var-naming */
 		transform: translateX(
 			calc(var(--node-index) * (-1 * (var(--node--size) - var(--collapsed--offset))))
 		);

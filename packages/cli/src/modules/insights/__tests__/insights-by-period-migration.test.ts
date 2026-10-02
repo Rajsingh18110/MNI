@@ -3,10 +3,10 @@ import {
 	initDbUpToMigration,
 	runSingleMigration,
 	testModules,
-} from '@n8n/backend-test-utils';
-import { DbConnection } from '@n8n/db';
-import { Container } from '@n8n/di';
-import { DataSource } from '@n8n/typeorm';
+} from '@MNI/backend-test-utils';
+import { DbConnection } from '@MNI/db';
+import { Container } from '@MNI/di';
+import { DataSource } from '@MNI/typeorm';
 
 import { BOUNDARY_TEST_VALUES, insertPreMigrationPeriodData } from './migration-test-setup';
 

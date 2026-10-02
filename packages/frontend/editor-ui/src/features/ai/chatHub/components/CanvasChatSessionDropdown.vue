@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, inject, ref, watch } from 'vue';
-import { useI18n } from '@n8n/i18n';
-import { N8nIcon, N8nText } from '@n8n/design-system';
+import { useI18n } from '@MNI/i18n';
+import { N8nIcon, N8nText } from '@MNI/design-system';
 import {
 	DropdownMenuContent,
 	DropdownMenuGroup,
@@ -11,8 +11,8 @@ import {
 	DropdownMenuRoot,
 	DropdownMenuTrigger,
 } from 'reka-ui';
-import type { ChatHubSessionDto, ChatSessionId } from '@n8n/api-types';
-import { PopOutWindowKey } from '@n8n/composables/injectionKeys';
+import type { ChatHubSessionDto, ChatSessionId } from '@MNI/api-types';
+import { PopOutWindowKey } from '@MNI/composables/injectionKeys';
 import { useChatStore } from '../chat.store';
 import { groupConversationsByDate } from '../chat.utils';
 
@@ -178,7 +178,7 @@ watch(isOpen, (open, _oldValue, onCleanup) => {
 </template>
 
 <style lang="scss" module>
-@use '@n8n/design-system/css/mixins/motion';
+@use '@MNI/design-system/css/mixins/motion';
 
 .trigger {
 	display: inline-flex;

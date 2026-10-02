@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, inject, nextTick, ref, watch } from 'vue';
-import { N8nButton, N8nIcon, N8nInput, N8nPopover, N8nSpinner, N8nText } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+import { N8nButton, N8nIcon, N8nInput, N8nPopover, N8nSpinner, N8nText } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 import {
 	hasToolConnection,
 	TOOL_CONNECTION_CREDENTIAL_ADAPTER_KEY,

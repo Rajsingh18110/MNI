@@ -1,12 +1,12 @@
-# @n8n/rules-engine
+# @MNI/rules-engine
 
 Generic, typed rules engine for static analysis tools.
 
 ## Usage
 
 ```typescript
-import { BaseRule, RuleRunner, toJSON } from '@n8n/rules-engine';
-import type { Violation } from '@n8n/rules-engine';
+import { BaseRule, RuleRunner, toJSON } from '@MNI/rules-engine';
+import type { Violation } from '@MNI/rules-engine';
 
 // 1. Define a context type
 interface MyContext {
@@ -75,5 +75,5 @@ Incremental adoption — only flag new violations, not pre-existing ones.
 
 ## Consumers
 
-- `@n8n/code-health` — monorepo dependency and code quality checks
-- `@n8n/playwright-janitor` — Playwright test architecture enforcement (planned)
+- `@MNI/code-health` — monorepo dependency and code quality checks
+- `@MNI/playwright-janitor` — Playwright test architecture enforcement (planned)

@@ -1,9 +1,9 @@
-import type { CredentialProvider, EmbeddingProviderOptions } from '@n8n/agents';
-import { getProviderPrefix } from '@n8n/ai-utilities/agent-config';
+import type { CredentialProvider, EmbeddingProviderOptions } from '@MNI/agents';
+import { getProviderPrefix } from '@MNI/ai-utilities/agent-config';
 
 import { mapCredentialForProvider } from './credential-field-mapping';
 
-/** Re-exported so callers don't need to depend on `@n8n/agents` directly for this type. */
+/** Re-exported so callers don't need to depend on `@MNI/agents` directly for this type. */
 export type ManagedEmbeddingProviderOptions = EmbeddingProviderOptions;
 export type ManagedEmbeddingProviderOptionsResolver =
 	() => Promise<ManagedEmbeddingProviderOptions | null>;

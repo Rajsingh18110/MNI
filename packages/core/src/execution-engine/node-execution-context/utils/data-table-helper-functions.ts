@@ -3,7 +3,7 @@ import type {
 	INode,
 	Workflow,
 	IWorkflowExecuteAdditionalData,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 export function getDataTableHelperFunctions(
 	additionalData: IWorkflowExecuteAdditionalData,

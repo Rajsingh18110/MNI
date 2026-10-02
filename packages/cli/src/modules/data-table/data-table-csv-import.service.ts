@@ -1,8 +1,8 @@
-import type { CreateDataTableDto } from '@n8n/api-types';
-import { Logger } from '@n8n/backend-common';
-import { Service } from '@n8n/di';
-import type { DataTableRow } from 'n8n-workflow';
-import { DATA_TABLE_SYSTEM_COLUMNS } from 'n8n-workflow';
+import type { CreateDataTableDto } from '@MNI/api-types';
+import { Logger } from '@MNI/backend-common';
+import { Service } from '@MNI/di';
+import type { DataTableRow } from 'MNI-workflow';
+import { DATA_TABLE_SYSTEM_COLUMNS } from 'MNI-workflow';
 
 import type { CsvColumnMetadata } from './csv-parser.service';
 import { CsvParserService } from './csv-parser.service';

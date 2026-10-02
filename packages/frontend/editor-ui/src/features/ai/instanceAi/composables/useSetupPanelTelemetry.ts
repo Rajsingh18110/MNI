@@ -1,9 +1,9 @@
 import { onScopeDispose, ref, shallowReactive, toValue, watch, type MaybeRefOrGetter } from 'vue';
-import { TELEMETRY_EVENT, type InferTelemetryProps } from '@n8n/telemetry';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
-import { useRootStore } from '@n8n/stores/useRootStore';
+import { TELEMETRY_EVENT, type InferTelemetryProps } from '@MNI/telemetry';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
+import { useRootStore } from '@MNI/stores/useRootStore';
 import { useInstanceAiSetupPanelExperiment } from '@/experiments/instanceAiSetupPanel/useInstanceAiSetupPanelExperiment';
-import type { InstanceAiSetupItem } from '@n8n/api-types';
+import type { InstanceAiSetupItem } from '@MNI/api-types';
 import type { INodeUi, IWorkflowDb } from '@/Interface';
 import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';
 import type { SetupPanelGroup } from '../setupPanelGroups';

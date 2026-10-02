@@ -1,15 +1,15 @@
 <script setup lang="ts">
-import type { AllRolesMap, PermissionsRecord } from '@n8n/permissions';
+import type { AllRolesMap, PermissionsRecord } from '@MNI/permissions';
 import ProjectSharing from '@/features/collaboration/projects/components/ProjectSharing.vue';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import { usePageRedirectionHelper } from '@/app/composables/usePageRedirectionHelper';
 import { EnterpriseEditionFeature } from '@/app/constants';
 import type { ICredentialsDecryptedResponse, ICredentialsResponse } from '../../credentials.types';
 import { useProjectsStore } from '@/features/collaboration/projects/projects.store';
-import { useRolesStore } from '@n8n/stores/roles.store';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useRolesStore } from '@MNI/stores/roles.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { useUIStore } from '@/app/stores/ui.store';
-import { useUsersStore } from '@n8n/stores/users.store';
+import { useUsersStore } from '@MNI/stores/users.store';
 import type {
 	ProjectListItem,
 	ProjectSharingData,
@@ -19,12 +19,12 @@ import {
 	splitName,
 	useRemoteProjectSearch,
 } from '@/features/collaboration/projects/projects.utils';
-import type { EventBus } from '@n8n/utils/event-bus';
-import type { ICredentialDataDecryptedObject } from 'n8n-workflow';
+import type { EventBus } from '@MNI/utils/event-bus';
+import type { ICredentialDataDecryptedObject } from 'MNI-workflow';
 import { computed, ref, watch } from 'vue';
-import { getResourcePermissions } from '@n8n/permissions';
+import { getResourcePermissions } from '@MNI/permissions';
 
-import { N8nEmptyState, N8nInfoTip } from '@n8n/design-system';
+import { N8nEmptyState, N8nInfoTip } from '@MNI/design-system';
 type Props = {
 	credentialId: string;
 	credentialData: ICredentialDataDecryptedObject;

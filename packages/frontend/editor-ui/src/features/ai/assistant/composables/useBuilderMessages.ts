@@ -1,6 +1,6 @@
-import type { ChatUI } from '@n8n/design-system';
+import type { ChatUI } from '@MNI/design-system';
 import type { ChatRequest, PlanMode, WebFetchApproval } from '../assistant.types';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import {
 	isTextMessage,
 	isCodeDiffMessage,

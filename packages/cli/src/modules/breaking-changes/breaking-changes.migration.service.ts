@@ -1,9 +1,9 @@
-import type { WorkflowMigrationResult } from '@n8n/api-types';
-import { Logger } from '@n8n/backend-common';
-import type { User, WorkflowEntity } from '@n8n/db';
-import { Service } from '@n8n/di';
-import { calculateWorkflowChecksum } from 'n8n-workflow';
-import type { INode } from 'n8n-workflow';
+import type { WorkflowMigrationResult } from '@MNI/api-types';
+import { Logger } from '@MNI/backend-common';
+import type { User, WorkflowEntity } from '@MNI/db';
+import { Service } from '@MNI/di';
+import { calculateWorkflowChecksum } from 'MNI-workflow';
+import type { INode } from 'MNI-workflow';
 
 import { BadRequestError } from '@/errors/response-errors/bad-request.error';
 import { NotFoundError } from '@/errors/response-errors/not-found.error';

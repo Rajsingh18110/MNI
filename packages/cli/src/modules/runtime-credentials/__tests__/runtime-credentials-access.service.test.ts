@@ -1,5 +1,5 @@
-import type { Cipher } from 'n8n-core';
-import type { IRunExecutionData } from 'n8n-workflow';
+import type { Cipher } from 'MNI-core';
+import type { IRunExecutionData } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import { RuntimeCredentialsAccessService } from '../runtime-credentials-access.service';

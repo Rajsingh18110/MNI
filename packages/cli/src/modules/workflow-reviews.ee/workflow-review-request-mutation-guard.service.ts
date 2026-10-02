@@ -3,8 +3,8 @@ import {
 	WorkflowRepository,
 	type OperationContext,
 	type WorkflowReviewRequest,
-} from '@n8n/db';
-import { Service } from '@n8n/di';
+} from '@MNI/db';
+import { Service } from '@MNI/di';
 
 import { BadRequestError } from '@/errors/response-errors/bad-request.error';
 import { ConflictError } from '@/errors/response-errors/conflict.error';

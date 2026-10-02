@@ -1,5 +1,5 @@
-import { sleep } from '@n8n/utils/sleep';
-import type { Result } from '@n8n/utils/result';
+import { sleep } from '@MNI/utils/sleep';
+import type { Result } from '@MNI/utils/result';
 import get from 'lodash/get';
 import type {
 	Workflow,
@@ -30,7 +30,7 @@ import type {
 	ExecuteAgentWorkflowContext,
 	IDataObject,
 	StructuredChunk,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import {
 	UnexpectedError,
 	OperationalError,
@@ -44,7 +44,7 @@ import {
 	takeAttachedDynamicCredentialsUsage,
 	shouldRedactConsoleOutput,
 	CONSOLE_OUTPUT_REDACTED_MESSAGE,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import { randomUUID } from 'node:crypto';
 
 import { PLACEHOLDER_EMPTY_EXECUTION_ID } from '@/constants';

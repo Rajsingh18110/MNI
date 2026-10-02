@@ -1,4 +1,4 @@
-import type { ITag } from '@n8n/rest-api-client/api/tags';
+import type { ITag } from '@MNI/rest-api-client/api/tags';
 
 export interface ITagRow {
 	tag?: ITag;

@@ -1,5 +1,5 @@
-import type { ModuleRegistry } from '@n8n/backend-common';
-import type { GlobalConfig } from '@n8n/config';
+import type { ModuleRegistry } from '@MNI/backend-common';
+import type { GlobalConfig } from '@MNI/config';
 import type {
 	AgentEvalDataset,
 	AgentEvalResult,
@@ -7,8 +7,8 @@ import type {
 	AgentEvalResultRepository,
 	AgentEvalRunRepository,
 	User,
-} from '@n8n/db';
-import type { InstanceSettings } from 'n8n-core';
+} from '@MNI/db';
+import type { InstanceSettings } from 'MNI-core';
 import { mock, type MockProxy } from 'vitest-mock-extended';
 
 import type { ConcurrencyControlService } from '@/concurrency/concurrency-control.service';

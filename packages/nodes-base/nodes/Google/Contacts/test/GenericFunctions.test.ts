@@ -1,6 +1,6 @@
 import { mockDeep } from 'vitest-mock-extended';
-import type { IExecuteFunctions, ILoadOptionsFunctions, INode } from 'n8n-workflow';
-import { NodeApiError } from 'n8n-workflow';
+import type { IExecuteFunctions, ILoadOptionsFunctions, INode } from 'MNI-workflow';
+import { NodeApiError } from 'MNI-workflow';
 
 import * as GenericFunctions from '../GenericFunctions';
 import type { Mock, Mocked } from 'vitest';
@@ -16,7 +16,7 @@ describe('Google Contacts GenericFunctions', () => {
 		mockNode = {
 			id: 'test-node-id',
 			name: 'Google Contacts Test',
-			type: 'n8n-nodes-base.googleContacts',
+			type: 'MNI-nodes-base.googleContacts',
 			typeVersion: 1,
 			position: [0, 0],
 			parameters: {},

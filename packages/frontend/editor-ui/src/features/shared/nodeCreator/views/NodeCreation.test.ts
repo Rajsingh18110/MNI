@@ -2,8 +2,8 @@ import type * as Vue from 'vue';
 import { createTestingPinia } from '@pinia/testing';
 import { createComponentRenderer } from '@/__tests__/render';
 import { type MockedStore, mockedStore } from '@/__tests__/utils';
-import { defaultSettings } from '@n8n/frontend-test-utils';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { defaultSettings } from '@MNI/frontend-test-utils';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import NodeCreation from './NodeCreation.vue';
 import type { AddedNodesAndConnections } from '@/Interface';
 import { NODE_CREATOR_OPEN_SOURCES } from '@/app/constants';
@@ -34,7 +34,7 @@ vi.mock('vue', async (importOriginal) => {
 				return { emit };
 			},
 			template: `<>
-				<button data-test-id="node-creator-stub-select" @click="emit('node-type-selected', [{ type: 'n8n-nodes-base.slack' }])" />
+				<button data-test-id="node-creator-stub-select" @click="emit('node-type-selected', [{ type: 'MNI-nodes-base.slack' }])" />
 				<button data-test-id="node-creator-stub-group" @click="emit('empty-group-selected')" />
 			</>`,
 		}),
@@ -91,7 +91,7 @@ describe('NodeCreation', () => {
 
 	it('emits addNodes with the result of getAddedNodesAndConnections when a node type is selected', async () => {
 		const addedNodesAndConnections = {
-			nodes: [{ type: 'n8n-nodes-base.slack' }],
+			nodes: [{ type: 'MNI-nodes-base.slack' }],
 			connections: [],
 		};
 		mockGetAddedNodesAndConnections.mockReturnValue(addedNodesAndConnections);
@@ -106,7 +106,7 @@ describe('NodeCreation', () => {
 		});
 
 		expect(mockGetAddedNodesAndConnections).toHaveBeenCalledWith([
-			{ type: 'n8n-nodes-base.slack' },
+			{ type: 'MNI-nodes-base.slack' },
 		]);
 		expect(emitted('addNodes')).toEqual([[addedNodesAndConnections]]);
 	});

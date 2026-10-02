@@ -12,7 +12,7 @@ export interface RenderStats {
  * (see packages/frontend/editor-ui/src/app/dev/render-tracker.ts). Kept in sync
  * with `RENDER_TRACKING_STORAGE_KEY` there.
  */
-const RENDER_TRACKING_STORAGE_KEY = 'N8N_RENDER_TRACKING';
+const RENDER_TRACKING_STORAGE_KEY = 'MNI_RENDER_TRACKING';
 
 interface WindowWithRenderTracker {
 	n8nRenderTracker?: {

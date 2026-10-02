@@ -7,13 +7,13 @@ import type {
 	INodeTypeDescription,
 	IHttpRequestMethods,
 	JsonObject,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import {
 	BINARY_ENCODING,
 	SEND_AND_WAIT_OPERATION,
 	NodeConnectionTypes,
 	NodeOperationError,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import type { Readable } from 'stream';
 
 import {

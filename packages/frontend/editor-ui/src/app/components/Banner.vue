@@ -5,7 +5,7 @@
 import { computed, ref, useCssModule } from 'vue';
 
 import { ElTag } from 'element-plus';
-import { N8nButton, N8nIcon, N8nLink } from '@n8n/design-system';
+import { N8nButton, N8nIcon, N8nLink } from '@MNI/design-system';
 
 type Theme = 'success' | 'danger' | 'warning' | 'info';
 

@@ -1,7 +1,7 @@
-import { Logger } from '@n8n/backend-common';
-import { Time } from '@n8n/constants';
-import { Service } from '@n8n/di';
-import { ensureError } from '@n8n/utils/errors/ensure-error';
+import { Logger } from '@MNI/backend-common';
+import { Time } from '@MNI/constants';
+import { Service } from '@MNI/di';
+import { ensureError } from '@MNI/utils/errors/ensure-error';
 
 import { ExternalSecretsConfig } from './external-secrets.config';
 import { ExternalSecretsProviderRegistry } from './provider-registry.service';

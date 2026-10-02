@@ -5,12 +5,12 @@ import {
 	BuiltTool,
 	CredentialProvider,
 	ModelConfig,
-} from '@n8n/agents';
-import { getProviderPrefix } from '@n8n/ai-utilities/agent-config';
+} from '@MNI/agents';
+import { getProviderPrefix } from '@MNI/ai-utilities/agent-config';
 import {
-	N8N_CHAT_ACTION_TOOL_NAME,
-	N8N_CHAT_CONTEXT_TOOL_NAME,
-	N8N_CHAT_INTEGRATION_TYPE,
+	MNI_CHAT_ACTION_TOOL_NAME,
+	MNI_CHAT_CONTEXT_TOOL_NAME,
+	MNI_CHAT_INTEGRATION_TYPE,
 	SUB_AGENT_MAX_CHILDREN_DEFAULT,
 	SUB_AGENT_TASK_DIFFICULTIES,
 	buildProxyHeaders,
@@ -23,18 +23,18 @@ import {
 	type SubAgentRunPolicy,
 	type SubAgentSource,
 	type SubAgentTaskDifficulty,
-} from '@n8n/api-types';
-import { Logger } from '@n8n/backend-common';
-import { OutboundHttp } from '@n8n/backend-network';
-import { AgentsConfig } from '@n8n/config';
-import type { User } from '@n8n/db';
-import { WorkflowRepository } from '@n8n/db';
-import { Container, Service } from '@n8n/di';
-import { UserError } from 'n8n-workflow';
+} from '@MNI/api-types';
+import { Logger } from '@MNI/backend-common';
+import { OutboundHttp } from '@MNI/backend-network';
+import { AgentsConfig } from '@MNI/config';
+import type { User } from '@MNI/db';
+import { WorkflowRepository } from '@MNI/db';
+import { Container, Service } from '@MNI/di';
+import { UserError } from 'MNI-workflow';
 import { nanoid } from 'nanoid';
 
 import { ActiveExecutions } from '@/active-executions';
-import { N8N_VERSION } from '@/constants';
+import { MNI_VERSION } from '@/constants';
 import { CredentialsFinderService } from '@/credentials/credentials-finder.service';
 import { SubworkflowPolicyChecker } from '@/executions/pre-execution-checks';
 import type { AgentRunTelemetryType } from '@/interfaces';
@@ -66,8 +66,8 @@ import {
 	getIntegrationToolConnectionDescriptors,
 	type IntegrationToolConnectionDescriptor,
 } from './integrations/integration-tools';
-import { N8NCheckpointStorage } from './integrations/n8n-checkpoint-storage';
-import { N8nMemory } from './integrations/n8n-memory';
+import { N8NCheckpointStorage } from './integrations/MNI-checkpoint-storage';
+import { N8nMemory } from './integrations/MNI-memory';
 import {
 	buildFromJson,
 	buildProviderToolsForModel,
@@ -362,7 +362,7 @@ export class AgentRuntimeReconstructionService {
 	 * every credential baked into the ref. Filtering the config copy (rather
 	 * than the resolved tools) means a denied ref never reaches
 	 * `makeToolResolver`/`resolveToolRef`, so no inert marker tool is exposed to
-	 * the LLM. Custom tools are untouched — they run n8n-authored code, not a
+	 * the LLM. Custom tools are untouched — they run MNI-authored code, not a
 	 * caller-chosen node/workflow with baked credentials. Every dropped ref is
 	 * reported in `unavailable` so the build can log and track it.
 	 */
@@ -637,7 +637,7 @@ export class AgentRuntimeReconstructionService {
 				previewChat,
 				publishedN8nChat:
 					runType === 'production' &&
-					integrationType === N8N_CHAT_INTEGRATION_TYPE &&
+					integrationType === MNI_CHAT_INTEGRATION_TYPE &&
 					attributionUserId !== undefined,
 				// Sub-agent checkpoints are rejected on resume and inline agents have no
 				// checkpoint storage, so neither can be woken again.
@@ -757,7 +757,7 @@ export class AgentRuntimeReconstructionService {
 					headers.set(key, value);
 				}
 				for (const [key, value] of Object.entries(
-					buildProxyHeaders({ feature: 'agent-builder', n8nVersion: N8N_VERSION }),
+					buildProxyHeaders({ feature: 'agent-builder', n8nVersion: MNI_VERSION }),
 				)) {
 					headers.set(key, value);
 				}
@@ -929,7 +929,7 @@ export class AgentRuntimeReconstructionService {
 
 	private async attachIntegrationTools(params: RuntimeDependencies): Promise<void> {
 		const { agent, agentId, integrationType, credentialIntegrations } = params;
-		const includeN8nChat = integrationType === N8N_CHAT_INTEGRATION_TYPE;
+		const includeN8nChat = integrationType === MNI_CHAT_INTEGRATION_TYPE;
 		if (credentialIntegrations.length === 0 && !includeN8nChat) return;
 		const integrationRegistry = Container.get(ChatIntegrationRegistry);
 		const { messageContextStore, actionExecutor, queryExecutor } =
@@ -977,16 +977,16 @@ export class AgentRuntimeReconstructionService {
 		agentId: string,
 		integrationRegistry: ChatIntegrationRegistry,
 	): IntegrationToolConnectionDescriptor {
-		const n8nChat = integrationRegistry.require(N8N_CHAT_INTEGRATION_TYPE);
+		const n8nChat = integrationRegistry.require(MNI_CHAT_INTEGRATION_TYPE);
 		const n8nChatIntegration = {
-			type: N8N_CHAT_INTEGRATION_TYPE,
+			type: MNI_CHAT_INTEGRATION_TYPE,
 		} as unknown as IntegrationToolConnectionDescriptor['integration'];
 		return {
 			agentId,
 			integration: n8nChatIntegration,
-			integrationConnectionId: N8N_CHAT_INTEGRATION_TYPE,
-			contextToolName: N8N_CHAT_CONTEXT_TOOL_NAME,
-			actionToolName: N8N_CHAT_ACTION_TOOL_NAME,
+			integrationConnectionId: MNI_CHAT_INTEGRATION_TYPE,
+			contextToolName: MNI_CHAT_CONTEXT_TOOL_NAME,
+			actionToolName: MNI_CHAT_ACTION_TOOL_NAME,
 			contextQueries: [...n8nChat.contextQueries],
 			actions: [...n8nChat.actions],
 			contextToolDefinitions: [...n8nChat.contextToolDefinitions],

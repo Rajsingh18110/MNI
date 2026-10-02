@@ -5,7 +5,7 @@
 			"parameters": {},
 			"id": "d4d44444-e5e5-f6f6-a7a7-b8b888888888",
 			"name": "When clicking \"Execute Workflow\"",
-			"type": "n8n-nodes-base.manualTrigger",
+			"type": "MNI-nodes-base.manualTrigger",
 			"typeVersion": 1,
 			"position": [0, 0]
 		},
@@ -18,7 +18,7 @@
 			},
 			"id": "e5e55555-f6f6-a7a7-b8b8-c9c999999999",
 			"name": "Pipedrive",
-			"type": "n8n-nodes-base.pipedrive",
+			"type": "MNI-nodes-base.pipedrive",
 			"typeVersion": 2,
 			"position": [200, 0],
 			"credentials": {
@@ -32,7 +32,7 @@
 			"parameters": {},
 			"id": "f6f66666-a7a7-b8b8-c9c9-d0d000000000",
 			"name": "No Operation, do nothing",
-			"type": "n8n-nodes-base.noOp",
+			"type": "MNI-nodes-base.noOp",
 			"typeVersion": 1,
 			"position": [400, 0]
 		}

@@ -57,7 +57,7 @@ export function determineTrack(packageVersion) {
 
 	const rc_branch = tagVersionInfoToReleaseCandidateBranchName({
 		version: packageVersion,
-		tag: /** @type {import('./github-helpers.mjs').ReleaseVersion} */ (`n8n@${packageVersion}`),
+		tag: /** @type {import('./github-helpers.mjs').ReleaseVersion} */ (`MNI@${packageVersion}`),
 	});
 
 	const previousVersion = trackToReleaseMap[track]?.version;

@@ -8,7 +8,7 @@ import {
 } from '@/app/stores/workflowDocument.store';
 import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';
 import { useFocusPanelStore } from '@/app/stores/focusPanel.store';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { useNodeSettingsParameters } from './useNodeSettingsParameters';
 import * as nodeHelpers from '@/app/composables/useNodeHelpers';
 import * as workflowHelpers from '@/app/composables/useWorkflowHelpers';
@@ -19,7 +19,7 @@ import type {
 	INodeProperties,
 	INodeTypeDescription,
 	NodeParameterValue,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import type { MockedStore } from '@/__tests__/utils';
 import { mockedStore } from '@/__tests__/utils';
 import type { INodeUi } from '@/Interface';
@@ -116,7 +116,7 @@ describe('useNodeSettingsParameters', () => {
 	});
 
 	describe('updateNodeParameter $fromAI key reconciliation', () => {
-		const AUTO_MARKER = '/*n8n-auto-generated-fromAI-override*/';
+		const AUTO_MARKER = '/*MNI-auto-generated-fromAI-override*/';
 		const staleOverride = (desc: string) =>
 			`={{ ${AUTO_MARKER} $fromAI('Field_Value', \`${desc}\`, 'string') }}`;
 
@@ -373,7 +373,7 @@ describe('useNodeSettingsParameters', () => {
 				mockNodeHelpers();
 				settingsStore.settings = {
 					...settingsStore.settings,
-					envFeatureFlags: { N8N_ENV_FEAT_SOME_FEATURE: 'true' },
+					envFeatureFlags: { MNI_ENV_FEAT_SOME_FEATURE: 'true' },
 				};
 				displayParameterSpy.mockReturnValueOnce(true);
 
@@ -671,7 +671,7 @@ describe('useNodeSettingsParameters', () => {
 					name: 'Other Node',
 					position: [0, 0],
 					typeVersion: 1,
-					type: 'n8n-nodes-base.other',
+					type: 'MNI-nodes-base.other',
 					parameters: {},
 				};
 
@@ -850,7 +850,7 @@ describe('useNodeSettingsParameters', () => {
 					name: 'Other Node',
 					position: [0, 0],
 					typeVersion: 1,
-					type: 'n8n-nodes-base.other',
+					type: 'MNI-nodes-base.other',
 					parameters: {},
 				};
 
@@ -923,7 +923,7 @@ describe('useNodeSettingsParameters', () => {
 					name: 'Node1',
 					position: [0, 0],
 					typeVersion: 1,
-					type: 'n8n-nodes-base.set',
+					type: 'MNI-nodes-base.set',
 					parameters: nodeParameters,
 				};
 
@@ -959,7 +959,7 @@ describe('useNodeSettingsParameters', () => {
 					name: 'Node1',
 					position: [0, 0],
 					typeVersion: 1,
-					type: 'n8n-nodes-base.set',
+					type: 'MNI-nodes-base.set',
 					parameters: nodeParameters,
 				};
 
@@ -985,7 +985,7 @@ describe('useNodeSettingsParameters', () => {
 					name: 'Node1',
 					position: [0, 0],
 					typeVersion: 1,
-					type: 'n8n-nodes-base.set',
+					type: 'MNI-nodes-base.set',
 					parameters: nodeParameters,
 				};
 
@@ -1019,7 +1019,7 @@ describe('useNodeSettingsParameters', () => {
 					name: 'Node1',
 					position: [0, 0],
 					typeVersion: 1,
-					type: 'n8n-nodes-base.set',
+					type: 'MNI-nodes-base.set',
 					parameters: nodeParameters,
 				};
 
@@ -1061,7 +1061,7 @@ describe('useNodeSettingsParameters', () => {
 					name: 'Node1',
 					position: [0, 0],
 					typeVersion: 1,
-					type: 'n8n-nodes-base.set',
+					type: 'MNI-nodes-base.set',
 					parameters: nodeParameters,
 				};
 
@@ -1109,7 +1109,7 @@ describe('useNodeSettingsParameters', () => {
 					name: 'Node1',
 					position: [0, 0],
 					typeVersion: 1,
-					type: 'n8n-nodes-base.set',
+					type: 'MNI-nodes-base.set',
 					parameters: nodeParameters,
 				};
 
@@ -1167,7 +1167,7 @@ describe('useNodeSettingsParameters', () => {
 					name: 'Node1',
 					position: [0, 0],
 					typeVersion: 1,
-					type: 'n8n-nodes-base.set',
+					type: 'MNI-nodes-base.set',
 					parameters: nodeParameters,
 				};
 
@@ -1211,7 +1211,7 @@ describe('useNodeSettingsParameters', () => {
 					name: 'Node1',
 					position: [0, 0],
 					typeVersion: 1,
-					type: 'n8n-nodes-base.set',
+					type: 'MNI-nodes-base.set',
 					parameters: nodeParameters,
 				};
 
@@ -1247,7 +1247,7 @@ describe('useNodeSettingsParameters', () => {
 					name: 'Node1',
 					position: [0, 0],
 					typeVersion: 1,
-					type: 'n8n-nodes-base.set',
+					type: 'MNI-nodes-base.set',
 					parameters: nodeParameters,
 				};
 
@@ -1287,7 +1287,7 @@ describe('useNodeSettingsParameters', () => {
 					name: 'Node1',
 					position: [0, 0],
 					typeVersion: 1,
-					type: 'n8n-nodes-base.set',
+					type: 'MNI-nodes-base.set',
 					parameters: nodeParameters,
 				};
 
@@ -1334,7 +1334,7 @@ describe('useNodeSettingsParameters', () => {
 					name: 'Node1',
 					position: [0, 0],
 					typeVersion: 1,
-					type: 'n8n-nodes-base.set',
+					type: 'MNI-nodes-base.set',
 					parameters: nodeParameters,
 				};
 
@@ -1372,7 +1372,7 @@ describe('useNodeSettingsParameters', () => {
 					name: 'Node1',
 					position: [0, 0],
 					typeVersion: 1,
-					type: 'n8n-nodes-base.set',
+					type: 'MNI-nodes-base.set',
 					parameters: nodeParameters,
 				};
 
@@ -1408,7 +1408,7 @@ describe('useNodeSettingsParameters', () => {
 					name: 'Node1',
 					position: [0, 0],
 					typeVersion: 1,
-					type: 'n8n-nodes-base.set',
+					type: 'MNI-nodes-base.set',
 					parameters: nodeParameters,
 				};
 
@@ -1438,7 +1438,7 @@ describe('useNodeSettingsParameters', () => {
 					name: 'Node1',
 					position: [0, 0],
 					typeVersion: 1,
-					type: 'n8n-nodes-base.set',
+					type: 'MNI-nodes-base.set',
 					parameters: nodeParameters,
 				};
 
@@ -1480,7 +1480,7 @@ describe('useNodeSettingsParameters', () => {
 					name: 'Node1',
 					position: [0, 0],
 					typeVersion: 1,
-					type: 'n8n-nodes-base.set',
+					type: 'MNI-nodes-base.set',
 					parameters: {},
 				};
 
@@ -1502,7 +1502,7 @@ describe('useNodeSettingsParameters', () => {
 					name: 'Node1',
 					position: [0, 0],
 					typeVersion: 1,
-					type: 'n8n-nodes-base.set',
+					type: 'MNI-nodes-base.set',
 					parameters: nodeParameters,
 				};
 
@@ -1539,7 +1539,7 @@ describe('useNodeSettingsParameters', () => {
 					name: 'Node1',
 					position: [0, 0],
 					typeVersion: 1,
-					type: 'n8n-nodes-base.set',
+					type: 'MNI-nodes-base.set',
 					parameters: nodeParameters,
 				};
 
@@ -1581,7 +1581,7 @@ describe('useNodeSettingsParameters', () => {
 					name: 'Node1',
 					position: [0, 0],
 					typeVersion: 1,
-					type: 'n8n-nodes-base.set',
+					type: 'MNI-nodes-base.set',
 					parameters: nodeParameters,
 				};
 

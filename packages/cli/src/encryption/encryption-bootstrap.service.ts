@@ -1,7 +1,7 @@
-import { Logger } from '@n8n/backend-common';
-import { Service } from '@n8n/di';
-import { ensureError } from '@n8n/utils/errors/ensure-error';
-import { EncryptionKeyProxy, InstanceSettings } from 'n8n-core';
+import { Logger } from '@MNI/backend-common';
+import { Service } from '@MNI/di';
+import { ensureError } from '@MNI/utils/errors/ensure-error';
+import { EncryptionKeyProxy, InstanceSettings } from 'MNI-core';
 
 import { KeyManagerService } from './key-manager.service';
 import { isKeyRotationEnabled } from './key-rotation-flag';

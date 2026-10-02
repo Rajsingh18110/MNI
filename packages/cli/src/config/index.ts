@@ -1,9 +1,9 @@
-import { inTest } from '@n8n/backend-common';
-import { GlobalConfig } from '@n8n/config';
-import { Container } from '@n8n/di';
+import { inTest } from '@MNI/backend-common';
+import { GlobalConfig } from '@MNI/config';
+import { Container } from '@MNI/di';
 import convict from 'convict';
 import { readFileSync } from 'fs';
-import { setGlobalState, UserError } from 'n8n-workflow';
+import { setGlobalState, UserError } from 'MNI-workflow';
 
 import { inE2ETests } from '@/constants';
 import { setMicrosoftObservabilityDefaults } from '@/utils';
@@ -15,13 +15,13 @@ setMicrosoftObservabilityDefaults();
 if (inE2ETests) {
 	globalConfig.diagnostics.enabled = false;
 	process.env.EXTERNAL_FRONTEND_HOOKS_URLS = '';
-	process.env.N8N_PERSONALIZATION_ENABLED = 'false';
-	process.env.N8N_AI_ENABLED = 'true';
+	process.env.MNI_PERSONALIZATION_ENABLED = 'false';
+	process.env.MNI_AI_ENABLED = 'true';
 } else if (inTest) {
 	globalConfig.logging.level = 'silent';
 	process.env.SKIP_STATISTICS_EVENTS = 'true';
 	globalConfig.auth.cookie.secure = false;
-	process.env.N8N_SKIP_AUTH_ON_OAUTH_CALLBACK = 'false';
+	process.env.MNI_SKIP_AUTH_ON_OAUTH_CALLBACK = 'false';
 }
 
 // Load schema after process.env has been overwritten

@@ -1,17 +1,17 @@
-import { splitModelId } from '@n8n/ai-utilities/agent-config';
+import { splitModelId } from '@MNI/ai-utilities/agent-config';
 import {
 	UNLIMITED_CREDITS,
 	isMoonshotaiKimiK3ModelId,
 	type InstanceAiCredits,
 	type ProxyContext,
-} from '@n8n/api-types';
-import { OutboundHttp } from '@n8n/backend-network';
-import type { User } from '@n8n/db';
-import { Service } from '@n8n/di';
-import type { ModelConfig } from '@n8n/instance-ai';
+} from '@MNI/api-types';
+import { OutboundHttp } from '@MNI/backend-network';
+import type { User } from '@MNI/db';
+import { Service } from '@MNI/di';
+import type { ModelConfig } from '@MNI/instance-ai';
 import { nanoid } from 'nanoid';
 
-import { N8N_VERSION } from '@/constants';
+import { MNI_VERSION } from '@/constants';
 import { AiService } from '@/services/ai.service';
 import { ProxyTokenManager } from '@/services/proxy-token-manager';
 import { createAiProxyFetch } from '@/utils/ai-proxy-fetch';
@@ -59,7 +59,7 @@ export class InstanceAiModelService {
 	 * Call this instead of `settingsService.resolveModelConfig` directly so
 	 * the eval endpoint gets the same working model the chat endpoint uses.
 	 *
-	 * `proxyContext` is forwarded as `x-n8n-run-id` / `x-n8n-thread-id` on every
+	 * `proxyContext` is forwarded as `x-MNI-run-id` / `x-MNI-thread-id` on every
 	 * proxied model call when set (run-less callers like verification omit it).
 	 */
 	async resolveAgentModelConfig(user: User, proxyContext?: ProxyContext): Promise<ModelConfig> {
@@ -101,7 +101,7 @@ export class InstanceAiModelService {
 			modelId,
 			tokenManager,
 			feature: 'instance-ai',
-			n8nVersion: N8N_VERSION,
+			n8nVersion: MNI_VERSION,
 			outboundHttp: this.outboundHttp,
 			...proxyContext,
 		});

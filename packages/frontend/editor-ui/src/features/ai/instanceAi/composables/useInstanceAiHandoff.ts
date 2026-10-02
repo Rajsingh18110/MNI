@@ -11,14 +11,14 @@ import {
 	type InstanceAiThreadSource,
 	type InstanceAiResourceAttachment,
 	type InstanceAiWorkflowAttachment,
-} from '@n8n/api-types';
-import { useRootStore } from '@n8n/stores/useRootStore';
-import { jsonParse } from 'n8n-workflow';
+} from '@MNI/api-types';
+import { useRootStore } from '@MNI/stores/useRootStore';
+import { jsonParse } from 'MNI-workflow';
 
 import type { InstanceAiCredentialContext } from '@/app/composables/useInstanceAiEditorCapability';
 import type { IWorkflowDb } from '@/Interface';
-import { useToast } from '@n8n/composables/useToast';
-import { useI18n } from '@n8n/i18n';
+import { useToast } from '@MNI/composables/useToast';
+import { useI18n } from '@MNI/i18n';
 import { useProjectsStore } from '@/features/collaboration/projects/projects.store';
 
 import {
@@ -86,16 +86,16 @@ export function buildInstanceAiArtifactCredentialQuestion(
 	return `How do I set up the credentials for ${credential.displayName}?${node}${existingCredentialNote(credential)}${setupContext}`;
 }
 
-const pendingFirstMessageKey = (threadId: string) => `n8n-instance-ai-first-message:${threadId}`;
+const pendingFirstMessageKey = (threadId: string) => `MNI-instance-ai-first-message:${threadId}`;
 const pendingHandoffContextKey = (threadId: string) =>
-	`n8n-instance-ai-handoff-context:${threadId}`;
-const pendingComposerDraftKey = (threadId: string) => `n8n-instance-ai-composer-draft:${threadId}`;
+	`MNI-instance-ai-handoff-context:${threadId}`;
+const pendingComposerDraftKey = (threadId: string) => `MNI-instance-ai-composer-draft:${threadId}`;
 const pendingAgentAttachmentKey = (threadId: string) =>
-	`n8n-instance-ai-agent-attachment:${threadId}`;
+	`MNI-instance-ai-agent-attachment:${threadId}`;
 const pendingWorkflowAttachmentKey = (threadId: string) =>
-	`n8n-instance-ai-workflow-attachment:${threadId}`;
+	`MNI-instance-ai-workflow-attachment:${threadId}`;
 const pendingRedirectLandingKey = (threadId: string) =>
-	`n8n-instance-ai-redirect-landing:${threadId}`;
+	`MNI-instance-ai-redirect-landing:${threadId}`;
 
 export interface PendingFirstMessage {
 	message: string;
@@ -339,7 +339,7 @@ export function clearPendingFirstMessage(threadId: string): void {
 }
 
 const pendingDraftAttachmentKey = (threadId: string) =>
-	`n8n-instance-ai-draft-attachment:${threadId}`;
+	`MNI-instance-ai-draft-attachment:${threadId}`;
 
 export function stashPendingDraftAttachment(
 	threadId: string,

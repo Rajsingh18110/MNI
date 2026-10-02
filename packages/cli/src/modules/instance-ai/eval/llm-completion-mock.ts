@@ -5,13 +5,13 @@
  * a provider envelope the adapter can't read a tool call from.
  */
 
-import { Tool } from '@n8n/agents/tool';
-import { Logger } from '@n8n/backend-common';
-import { Container } from '@n8n/di';
-import { createEvalAgent, extractText } from '@n8n/instance-ai';
-import { isRecord } from '@n8n/utils/is-record';
-import { isUnknownArray } from '@n8n/utils/is-unknown-array';
-import type { EvalLlmMockHandler, EvalMockHttpResponse } from 'n8n-core';
+import { Tool } from '@MNI/agents/tool';
+import { Logger } from '@MNI/backend-common';
+import { Container } from '@MNI/di';
+import { createEvalAgent, extractText } from '@MNI/instance-ai';
+import { isRecord } from '@MNI/utils/is-record';
+import { isUnknownArray } from '@MNI/utils/is-unknown-array';
+import type { EvalLlmMockHandler, EvalMockHttpResponse } from 'MNI-core';
 import { z } from 'zod';
 
 import {

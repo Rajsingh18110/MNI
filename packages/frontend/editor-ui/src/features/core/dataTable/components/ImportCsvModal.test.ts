@@ -1,6 +1,6 @@
 import { createComponentRenderer } from '@/__tests__/render';
 import { createTestingPinia } from '@pinia/testing';
-import { mockedStore } from '@n8n/frontend-test-utils';
+import { mockedStore } from '@MNI/frontend-test-utils';
 import userEvent from '@testing-library/user-event';
 import { flushPromises } from '@vue/test-utils';
 import { vi } from 'vitest';
@@ -15,11 +15,11 @@ const { showError, showMessage, track } = vi.hoisted(() => ({
 	track: vi.fn(),
 }));
 
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: () => ({ showError, showMessage }),
 }));
 
-vi.mock('@n8n/composables/useTelemetry', () => ({
+vi.mock('@MNI/composables/useTelemetry', () => ({
 	useTelemetry: () => ({ track }),
 }));
 
@@ -34,7 +34,7 @@ const ModalStub = {
 	`,
 };
 
-vi.mock('@n8n/i18n', async (importOriginal) => ({
+vi.mock('@MNI/i18n', async (importOriginal) => ({
 	...(await importOriginal()),
 	useI18n: () => ({
 		baseText: (

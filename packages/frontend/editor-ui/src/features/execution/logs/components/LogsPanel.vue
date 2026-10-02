@@ -17,7 +17,7 @@ import { type KeyMap } from '@/app/composables/useKeybindings';
 import LogsViewKeyboardEventListener from './LogsViewKeyboardEventListener.vue';
 import { injectWorkflowDocumentStore } from '@/app/stores/workflowDocument.store';
 
-import { N8nResizeWrapper } from '@n8n/design-system';
+import { N8nResizeWrapper } from '@MNI/design-system';
 const props = withDefaults(defineProps<{ isReadOnly?: boolean }>(), { isReadOnly: false });
 
 const container = useTemplateRef('container');

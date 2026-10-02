@@ -8,7 +8,7 @@ import type {
 	IWorkflowExecuteAdditionalData,
 	Workflow,
 	WorkflowExpression,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import { LoadOptionsContext } from '../load-options-context';

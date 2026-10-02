@@ -6,8 +6,8 @@ import type {
 	INodeType,
 	INodeTypeDescription,
 	IWebhookResponseData,
-} from 'n8n-workflow';
-import { NodeConnectionTypes, randomString } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeConnectionTypes, randomString } from 'MNI-workflow';
 
 import { helpscoutApiRequest, helpscoutApiRequestAllItems } from './GenericFunctions';
 

@@ -1,4 +1,4 @@
-import type { InstanceSettings } from 'n8n-core';
+import type { InstanceSettings } from 'MNI-core';
 import {
 	mkdir,
 	mkdtemp,
@@ -12,7 +12,7 @@ import {
 } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
-import { mockLogger } from '@n8n/backend-test-utils';
+import { mockLogger } from '@MNI/backend-test-utils';
 import { mock } from 'vitest-mock-extended';
 
 vi.mock('node:fs/promises', async (importOriginal) => {
@@ -25,8 +25,8 @@ vi.mock('node:fs/promises', async (importOriginal) => {
 	};
 });
 
-import type { PackageManifest } from '@/modules/n8n-packages/spec/manifest.schema';
-import { packageManifestSchema } from '@/modules/n8n-packages/spec/manifest.schema';
+import type { PackageManifest } from '@/modules/MNI-packages/spec/manifest.schema';
+import { packageManifestSchema } from '@/modules/MNI-packages/spec/manifest.schema';
 
 import type { BranchLayout } from '../branch-placement';
 import { WorkingCopyUpdater } from '../working-copy-updater';
@@ -142,8 +142,8 @@ describe('WorkingCopyUpdater', () => {
 	};
 
 	beforeEach(async () => {
-		root = await mkdtemp(path.join(tmpdir(), 'n8n-working-copy-'));
-		exportFolder = path.join(root, 'repository', 'n8n-export');
+		root = await mkdtemp(path.join(tmpdir(), 'MNI-working-copy-'));
+		exportFolder = path.join(root, 'repository', 'MNI-export');
 		stagingFolder = path.join(root, 'staging');
 	});
 
@@ -740,7 +740,7 @@ describe('WorkingCopyUpdater', () => {
 			// e.g. a container volume mount or a symlinked home on the path.
 			const realHome = path.join(root, 'real-home');
 			const linkedHome = path.join(root, 'linked-home');
-			const linkedExport = path.join(linkedHome, 'repository', 'n8n-export');
+			const linkedExport = path.join(linkedHome, 'repository', 'MNI-export');
 			await mkdir(path.join(realHome, 'repository'), { recursive: true });
 			await symlink(realHome, linkedHome);
 			const staging = makeManifest({ projects: [alpha], workflows: [wf('w1')] });
@@ -759,7 +759,7 @@ describe('WorkingCopyUpdater', () => {
 
 			expect(
 				await readFile(
-					path.join(realHome, 'repository/n8n-export/projects/alpha/workflows/w1/workflow.json'),
+					path.join(realHome, 'repository/MNI-export/projects/alpha/workflows/w1/workflow.json'),
 					'utf-8',
 				),
 			).toBe(workflowFile('w1'));
@@ -781,11 +781,11 @@ describe('WorkingCopyUpdater', () => {
 
 			const tempCall = vi
 				.mocked(mkdtemp)
-				.mock.calls.find(([p]) => String(p).includes('n8n-export-'));
+				.mock.calls.find(([p]) => String(p).includes('MNI-export-'));
 			expect(tempCall).toBeDefined();
 			// temp dir sits above the git clone (root), not inside it (root/repository)
 			expect(path.dirname(String(tempCall![0]))).toBe(root);
-			expect(await readdir(path.dirname(exportFolder))).toEqual(['n8n-export']);
+			expect(await readdir(path.dirname(exportFolder))).toEqual(['MNI-export']);
 		});
 
 		it('removes the old directory of a renamed credential a selected workflow still uses', async () => {
@@ -1110,7 +1110,7 @@ describe('WorkingCopyUpdater', () => {
 				?.at(1);
 			expect(aside).toEqual(expect.any(String));
 			expect(path.dirname(String(aside))).toBe(path.dirname(path.dirname(exportFolder)));
-			expect(path.basename(String(aside))).toMatch(/^\.n8n-export-bak-[0-9a-f-]{36}$/);
+			expect(path.basename(String(aside))).toMatch(/^\.MNI-export-bak-[0-9a-f-]{36}$/);
 			expect(aside).not.toBe(`${exportFolder}.bak`);
 		});
 	});

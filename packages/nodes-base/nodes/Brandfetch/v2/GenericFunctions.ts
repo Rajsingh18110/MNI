@@ -7,8 +7,8 @@ import type {
 	ILoadOptionsFunctions,
 	INodeExecutionData,
 	JsonObject,
-} from 'n8n-workflow';
-import { NodeApiError, NodeOperationError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeApiError, NodeOperationError } from 'MNI-workflow';
 
 const ALLOWED_LOGO_HOSTNAME_SUFFIXES = ['.brandfetch.io', '.brandfetch.com'];
 

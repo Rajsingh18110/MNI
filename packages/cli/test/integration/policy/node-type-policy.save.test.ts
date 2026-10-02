@@ -7,12 +7,12 @@
  * to be an integration test: it depends on the stored workflow the host loads, which no unit
  * test supplies for real.
  */
-import { createTeamProject, createWorkflow, mockInstance, testDb } from '@n8n/backend-test-utils';
-import { LICENSE_FEATURES } from '@n8n/constants';
-import { WorkflowRepository, type Project, type User } from '@n8n/db';
-import { PolicyCheckMetadata } from '@n8n/decorators';
-import { Container } from '@n8n/di';
-import type { INode } from 'n8n-workflow';
+import { createTeamProject, createWorkflow, mockInstance, testDb } from '@MNI/backend-test-utils';
+import { LICENSE_FEATURES } from '@MNI/constants';
+import { WorkflowRepository, type Project, type User } from '@MNI/db';
+import { PolicyCheckMetadata } from '@MNI/decorators';
+import { Container } from '@MNI/di';
+import type { INode } from 'MNI-workflow';
 import { v4 as uuid } from 'uuid';
 
 import { ActiveWorkflowManager } from '@/active-workflow-manager';
@@ -24,11 +24,11 @@ import { clearPolicyCache } from './shared/policy-cache';
 
 const CHECK_ID = 'node-type-availability';
 
-const MANUAL_TRIGGER = 'n8n-nodes-base.manualTrigger';
-const SET = 'n8n-nodes-base.set';
-const GMAIL = 'n8n-nodes-base.gmail';
-const GMAIL_TOOL = 'n8n-nodes-base.gmailTool';
-const SCHEDULE_TRIGGER = 'n8n-nodes-base.scheduleTrigger';
+const MANUAL_TRIGGER = 'MNI-nodes-base.manualTrigger';
+const SET = 'MNI-nodes-base.set';
+const GMAIL = 'MNI-nodes-base.gmail';
+const GMAIL_TOOL = 'MNI-nodes-base.gmailTool';
+const SCHEDULE_TRIGGER = 'MNI-nodes-base.scheduleTrigger';
 
 // `endpointGroups` is load-bearing beyond the routes it mounts: `setupTestServer` only reaches
 // `ModuleRegistry.initModules` when it is set, and that init is what registers both the

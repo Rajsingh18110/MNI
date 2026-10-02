@@ -1,5 +1,5 @@
-import type { NodeTypeAvailabilityScope } from '@n8n/api-types';
-import type { BaseTextKey } from '@n8n/i18n';
+import type { NodeTypeAvailabilityScope } from '@MNI/api-types';
+import type { BaseTextKey } from '@MNI/i18n';
 
 /** Must stay the same as the backend module id: `settings.activeModules` is keyed by it. */
 export const TYPE_AVAILABILITY_POLICIES_MODULE_ID = 'type-availability-policies';

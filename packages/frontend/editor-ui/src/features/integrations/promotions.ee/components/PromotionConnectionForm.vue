@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import type { PromotionConfigCheckout, PromotionDirection } from '@n8n/api-types';
-import { useToast } from '@n8n/composables/useToast';
+import type { PromotionConfigCheckout, PromotionDirection } from '@MNI/api-types';
+import { useToast } from '@MNI/composables/useToast';
 import {
 	N8nButton,
 	N8nInput,
@@ -13,11 +13,11 @@ import {
 	N8nSettingsSaveBar,
 	N8nSwitch,
 	N8nText,
-} from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
-import { getResourcePermissions } from '@n8n/permissions';
-import { useRootStore } from '@n8n/stores/useRootStore';
-import { useUsersStore } from '@n8n/stores/users.store';
+} from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
+import { getResourcePermissions } from '@MNI/permissions';
+import { useRootStore } from '@MNI/stores/useRootStore';
+import { useUsersStore } from '@MNI/stores/users.store';
 import { computed, reactive, ref } from 'vue';
 
 import { usePromotionConnectionSave } from '../composables/usePromotionConnectionSave';

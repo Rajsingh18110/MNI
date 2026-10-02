@@ -1,7 +1,7 @@
-import type { RoleChangeRequestDto } from '@n8n/api-types';
-import { Logger } from '@n8n/backend-common';
-import { GlobalConfig } from '@n8n/config';
-import type { PublicUser } from '@n8n/db';
+import type { RoleChangeRequestDto } from '@MNI/api-types';
+import { Logger } from '@MNI/backend-common';
+import { GlobalConfig } from '@MNI/config';
+import type { PublicUser } from '@MNI/db';
 import {
 	AuthIdentity,
 	Project,
@@ -15,8 +15,8 @@ import {
 	In,
 	GLOBAL_ADMIN_ROLE,
 	GLOBAL_OWNER_ROLE,
-} from '@n8n/db';
-import { Container, Service } from '@n8n/di';
+} from '@MNI/db';
+import { Container, Service } from '@MNI/di';
 import {
 	getGlobalScopes,
 	isBuiltInRole,
@@ -24,9 +24,9 @@ import {
 	PROJECT_OWNER_ROLE_SLUG,
 	PROJECT_VIEWER_ROLE_SLUG,
 	type AssignableGlobalRole,
-} from '@n8n/permissions';
-import type { IUserSettings } from 'n8n-workflow';
-import { UserError } from 'n8n-workflow';
+} from '@MNI/permissions';
+import type { IUserSettings } from 'MNI-workflow';
+import { UserError } from 'MNI-workflow';
 import { validate as uuidValidate } from 'uuid';
 
 import { JwtService } from './jwt.service';
@@ -46,7 +46,7 @@ import type { Invitation } from '@/interfaces';
 import { License } from '@/license';
 import { PostHogClient } from '@/posthog';
 import type { UserRequest } from '@/requests';
-import { UrlService } from '@n8n/backend-services';
+import { UrlService } from '@MNI/backend-services';
 import { isSsoCurrentAuthenticationMethod } from '@/sso.ee/sso-helpers';
 import { UserManagementMailer } from '@/user-management/email';
 

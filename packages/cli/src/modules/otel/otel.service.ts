@@ -1,7 +1,7 @@
 import type { Metadata } from '@grpc/grpc-js';
-import { Logger } from '@n8n/backend-common';
-import { OutboundHttp } from '@n8n/backend-network';
-import { Service } from '@n8n/di';
+import { Logger } from '@MNI/backend-common';
+import { OutboundHttp } from '@MNI/backend-network';
+import { Service } from '@MNI/di';
 import type { DiagLogger, Tracer, TracerProvider } from '@opentelemetry/api';
 import { DiagLogLevel, ProxyTracerProvider, diag, trace } from '@opentelemetry/api';
 import { OTLPTraceExporter } from '@opentelemetry/exporter-trace-otlp-proto';
@@ -20,15 +20,15 @@ import {
 	type SpanProcessor,
 } from '@opentelemetry/sdk-trace-base';
 import { NodeTracerProvider, TraceIdRatioBasedSampler } from '@opentelemetry/sdk-trace-node';
-import { InstanceSettings } from 'n8n-core';
-import { OperationalError } from 'n8n-workflow';
+import { InstanceSettings } from 'MNI-core';
+import { OperationalError } from 'MNI-workflow';
 
 import type { OtelConnectionParams } from './otel-settings.service';
 import { OtelSettingsService } from './otel-settings.service';
 import { OtelConfig } from './otel.config';
 import { ATTR, OTEL_TEST_SPAN_NAME } from './otel.constants';
 
-import { N8N_VERSION } from '@/constants';
+import { MNI_VERSION } from '@/constants';
 
 export type OtelTestTraceResult = { success: true } | { success: false; error: string };
 
@@ -108,7 +108,7 @@ export class OtelService {
 					provider = new BasicTracerProvider({
 						resource: resourceFromAttributes({
 							[ATTR.OTEL_SERVICE_NAME]: connection.exporterServiceName,
-							[ATTR.OTEL_SERVICE_VERSION]: N8N_VERSION,
+							[ATTR.OTEL_SERVICE_VERSION]: MNI_VERSION,
 							[ATTR.INSTANCE_ID]: this.instanceSettings.instanceId,
 							[ATTR.INSTANCE_ROLE]: this.instanceSettings.instanceType,
 						}),
@@ -116,7 +116,7 @@ export class OtelService {
 						spanProcessors: [processor],
 					});
 					const span = provider
-						.getTracer('n8n-otel-test')
+						.getTracer('MNI-otel-test')
 						.startSpan(OTEL_TEST_SPAN_NAME, { attributes: { [ATTR.IS_TEST_TRACE]: true } });
 					span.end();
 				});
@@ -176,7 +176,7 @@ export class OtelService {
 	private buildResource(serviceName: string) {
 		return resourceFromAttributes({
 			[ATTR.OTEL_SERVICE_NAME]: serviceName,
-			[ATTR.OTEL_SERVICE_VERSION]: N8N_VERSION,
+			[ATTR.OTEL_SERVICE_VERSION]: MNI_VERSION,
 			[ATTR.INSTANCE_ID]: this.instanceSettings.instanceId,
 			[ATTR.INSTANCE_ROLE]: this.instanceSettings.instanceType,
 		}).merge(detectResources({ detectors: [envDetector, processDetector, hostDetector] }));

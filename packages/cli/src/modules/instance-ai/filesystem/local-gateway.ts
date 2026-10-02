@@ -4,7 +4,7 @@ import type {
 	McpTool,
 	InstanceAiGatewayCapabilities,
 	ToolCategory,
-} from '@n8n/api-types';
+} from '@MNI/api-types';
 import { nanoid } from 'nanoid';
 import { EventEmitter } from 'node:events';
 

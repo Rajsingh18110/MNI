@@ -1,9 +1,9 @@
-import { isResourceLocatorValue, BINARY_MODE_COMBINED } from 'n8n-workflow';
+import { isResourceLocatorValue, BINARY_MODE_COMBINED } from 'MNI-workflow';
 import type {
 	INodeProperties,
 	NodeParameterValueType,
 	WorkflowSettingsBinaryMode,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import { isExpression } from './expressions';
 
 const validJsIdNameRegex = /^[a-zA-Z_$][a-zA-Z0-9_$]*$/;

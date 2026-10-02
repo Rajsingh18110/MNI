@@ -1,4 +1,4 @@
-import type { CredentialCheckProxyFunctions, IWorkflowExecuteAdditionalData } from 'n8n-workflow';
+import type { CredentialCheckProxyFunctions, IWorkflowExecuteAdditionalData } from 'MNI-workflow';
 
 export function getCredentialCheckHelperFunctions(
 	additionalData: IWorkflowExecuteAdditionalData,

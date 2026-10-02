@@ -1,12 +1,12 @@
-import type { Logger } from '@n8n/backend-common';
-import type { OutboundHttp } from '@n8n/backend-network';
+import type { Logger } from '@MNI/backend-common';
+import type { OutboundHttp } from '@MNI/backend-network';
 import { diag } from '@opentelemetry/api';
 import { OTLPTraceExporter as OTLPGrpcTraceExporter } from '@opentelemetry/exporter-trace-otlp-grpc';
 import { OTLPTraceExporter } from '@opentelemetry/exporter-trace-otlp-proto';
 import { BasicTracerProvider } from '@opentelemetry/sdk-trace-base';
 import { NodeTracerProvider } from '@opentelemetry/sdk-trace-node';
 import { mock } from 'vitest-mock-extended';
-import type { InstanceSettings } from 'n8n-core';
+import type { InstanceSettings } from 'MNI-core';
 
 import type { OtelConnectionParams, OtelSettingsService } from '../otel-settings.service';
 import type { OtelConfig } from '../otel.config';
@@ -540,7 +540,7 @@ describe('OtelService', () => {
 
 	describe('getTracer', () => {
 		it('hands out a no-op tracer before a provider has started', () => {
-			const span = service.getTracer('n8n-workflow').startSpan('workflow.execute');
+			const span = service.getTracer('MNI-workflow').startSpan('workflow.execute');
 
 			expect(span.isRecording()).toBe(false);
 		});
@@ -551,8 +551,8 @@ describe('OtelService', () => {
 			otelSettingsService.loadSettings.mockResolvedValue(enabledSettings);
 			await service.init();
 
-			expect(service.getTracer('n8n-workflow')).toBe(tracer);
-			expect(providerGetTracer).toHaveBeenCalledWith('n8n-workflow');
+			expect(service.getTracer('MNI-workflow')).toBe(tracer);
+			expect(providerGetTracer).toHaveBeenCalledWith('MNI-workflow');
 		});
 	});
 
@@ -724,7 +724,7 @@ describe('OtelService', () => {
 			exporterProtocol: 'http/protobuf',
 			exporterEndpoint: 'https://collector.example.com',
 			exporterTracingPath: '/v1/traces',
-			exporterServiceName: 'n8n-prod',
+			exporterServiceName: 'MNI-prod',
 			exporterHeaders: 'auth=token',
 			startupConnectivityTimeoutMs: 3_000,
 		};

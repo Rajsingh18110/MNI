@@ -1,6 +1,6 @@
-import { GlobalConfig } from '@n8n/config';
-import { WorkflowRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
+import { GlobalConfig } from '@MNI/config';
+import { WorkflowRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
 import nock from 'nock';
 import { v4 as uuid } from 'uuid';
 
@@ -48,7 +48,7 @@ export async function saveManualTriggerWorkflow() {
 			{
 				id: uuid(),
 				name: 'My Node',
-				type: 'n8n-nodes-base.manualTrigger',
+				type: 'MNI-nodes-base.manualTrigger',
 				typeVersion: 1,
 				position: [0, 0] as [number, number],
 			},
@@ -58,11 +58,11 @@ export async function saveManualTriggerWorkflow() {
 	return await Container.get(WorkflowRepository).save(details);
 }
 
-export const MOCK_09990_N8N_VERSION = {
+export const MOCK_09990_MNI_VERSION = {
 	name: '0.999.0',
 	nodes: [
 		{
-			name: 'n8n-nodes-base.testNode',
+			name: 'MNI-nodes-base.testNode',
 			displayName: 'Test Node',
 			icon: 'file:testNode.svg',
 			defaults: {
@@ -80,7 +80,7 @@ export const MOCK_09990_N8N_VERSION = {
 	securityIssueFixVersion: null,
 };
 
-export const MOCK_01110_N8N_VERSION = {
+export const MOCK_01110_MNI_VERSION = {
 	name: '0.111.0',
 	nodes: [],
 	createdAt: '2022-01-01T00:00:00.000Z',
@@ -97,7 +97,7 @@ export const MOCK_PACKAGE: InstalledPackages[] = [
 	{
 		createdAt: new Date(),
 		updatedAt: new Date(),
-		packageName: 'n8n-nodes-test',
+		packageName: 'MNI-nodes-test',
 		installedVersion: '1.1.2',
 		authorName: 'test',
 		authorEmail: 'test@test.com',
@@ -112,20 +112,20 @@ export const MOCK_PACKAGE: InstalledPackages[] = [
 	},
 ];
 
-export function simulateOutdatedInstanceOnce(versionName = MOCK_01110_N8N_VERSION.name) {
+export function simulateOutdatedInstanceOnce(versionName = MOCK_01110_MNI_VERSION.name) {
 	const baseUrl = Container.get(GlobalConfig).versionNotifications.endpoint + '/';
 
 	// The ESM export is read-only under Vitest, so spy the getter instead of assigning.
-	vi.spyOn(constants, 'N8N_VERSION', 'get').mockReturnValue(versionName);
+	vi.spyOn(constants, 'MNI_VERSION', 'get').mockReturnValue(versionName);
 
-	nock(baseUrl).get(versionName).reply(200, [MOCK_01110_N8N_VERSION, MOCK_09990_N8N_VERSION]);
+	nock(baseUrl).get(versionName).reply(200, [MOCK_01110_MNI_VERSION, MOCK_09990_MNI_VERSION]);
 }
 
-export function simulateUpToDateInstance(versionName = MOCK_09990_N8N_VERSION.name) {
+export function simulateUpToDateInstance(versionName = MOCK_09990_MNI_VERSION.name) {
 	const baseUrl = Container.get(GlobalConfig).versionNotifications.endpoint + '/';
 
 	// The ESM export is read-only under Vitest, so spy the getter instead of assigning.
-	vi.spyOn(constants, 'N8N_VERSION', 'get').mockReturnValue(versionName);
+	vi.spyOn(constants, 'MNI_VERSION', 'get').mockReturnValue(versionName);
 
-	nock(baseUrl).persist().get(versionName).reply(200, [MOCK_09990_N8N_VERSION]);
+	nock(baseUrl).persist().get(versionName).reply(200, [MOCK_09990_MNI_VERSION]);
 }

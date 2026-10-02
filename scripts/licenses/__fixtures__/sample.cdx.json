@@ -8,8 +8,8 @@
 			"group": "",
 			"version": "2.25.2",
 			"description": "MNI workflow automation Tool",
-			"purl": "pkg:npm/n8n@2.25.2",
-			"bom-ref": "pkg:npm/n8n@2.25.2",
+			"purl": "pkg:npm/MNI@2.25.2",
+			"bom-ref": "pkg:npm/MNI@2.25.2",
 			"properties": [
 				{
 					"name": "cdx:npm:bin",
@@ -69,7 +69,7 @@
 		{
 			"type": "library",
 			"group": "",
-			"name": "n8n-workflow",
+			"name": "MNI-workflow",
 			"version": "2.25.0",
 			"scope": "required",
 			"licenses": [
@@ -77,11 +77,11 @@
 					"expression": "SEE LICENSE IN LICENSE.md"
 				}
 			],
-			"purl": "pkg:npm/n8n-workflow@2.25.0",
+			"purl": "pkg:npm/MNI-workflow@2.25.0",
 			"properties": [
 				{
 					"name": "SrcFile",
-					"value": "/home/runner/work/MNI/MNI/compiled/node_modules/n8n-workflow/package.json"
+					"value": "/home/runner/work/MNI/MNI/compiled/node_modules/MNI-workflow/package.json"
 				}
 			],
 			"evidence": {
@@ -93,10 +93,10 @@
 							{
 								"technique": "manifest-analysis",
 								"confidence": 0.7,
-								"value": "/home/runner/work/MNI/MNI/compiled/node_modules/n8n-workflow/package.json"
+								"value": "/home/runner/work/MNI/MNI/compiled/node_modules/MNI-workflow/package.json"
 							}
 						],
-						"concludedValue": "/home/runner/work/MNI/MNI/compiled/node_modules/n8n-workflow/package.json"
+						"concludedValue": "/home/runner/work/MNI/MNI/compiled/node_modules/MNI-workflow/package.json"
 					}
 				]
 			}
@@ -168,7 +168,7 @@
 		},
 		{
 			"type": "library",
-			"group": "@n8n",
+			"group": "@MNI",
 			"name": "tournament",
 			"version": "1.2.0",
 			"scope": "optional",
@@ -181,7 +181,7 @@
 			"properties": [
 				{
 					"name": "SrcFile",
-					"value": "/home/runner/work/MNI/MNI/compiled/node_modules/@n8n/tournament/package.json"
+					"value": "/home/runner/work/MNI/MNI/compiled/node_modules/@MNI/tournament/package.json"
 				}
 			],
 			"evidence": {
@@ -193,10 +193,10 @@
 							{
 								"technique": "manifest-analysis",
 								"confidence": 0.7,
-								"value": "/home/runner/work/MNI/MNI/compiled/node_modules/@n8n/tournament/package.json"
+								"value": "/home/runner/work/MNI/MNI/compiled/node_modules/@MNI/tournament/package.json"
 							}
 						],
-						"concludedValue": "/home/runner/work/MNI/MNI/compiled/node_modules/@n8n/tournament/package.json"
+						"concludedValue": "/home/runner/work/MNI/MNI/compiled/node_modules/@MNI/tournament/package.json"
 					}
 				]
 			}
@@ -233,7 +233,7 @@
 		},
 		{
 			"type": "library",
-			"group": "@n8n",
+			"group": "@MNI",
 			"name": "db",
 			"version": "1.25.0",
 			"scope": "required",
@@ -246,7 +246,7 @@
 			"properties": [
 				{
 					"name": "SrcFile",
-					"value": "/home/runner/work/MNI/MNI/compiled/node_modules/@n8n/db/package.json"
+					"value": "/home/runner/work/MNI/MNI/compiled/node_modules/@MNI/db/package.json"
 				}
 			],
 			"evidence": {
@@ -258,10 +258,10 @@
 							{
 								"technique": "manifest-analysis",
 								"confidence": 0.7,
-								"value": "/home/runner/work/MNI/MNI/compiled/node_modules/@n8n/db/package.json"
+								"value": "/home/runner/work/MNI/MNI/compiled/node_modules/@MNI/db/package.json"
 							}
 						],
-						"concludedValue": "/home/runner/work/MNI/MNI/compiled/node_modules/@n8n/db/package.json"
+						"concludedValue": "/home/runner/work/MNI/MNI/compiled/node_modules/@MNI/db/package.json"
 					}
 				]
 			}

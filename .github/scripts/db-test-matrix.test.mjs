@@ -85,7 +85,7 @@ describe('buildMatrix', () => {
 		const legs = buildMatrix(versions());
 
 		const checkingPostgresSchema = legs.filter(
-			(leg) => leg['schema-check-cmd'] === 'pnpm --filter=@n8n/db schema:check:postgres',
+			(leg) => leg['schema-check-cmd'] === 'pnpm --filter=@MNI/db schema:check:postgres',
 		);
 		assert.deepEqual(
 			checkingPostgresSchema.map((leg) => leg.name),
@@ -101,7 +101,7 @@ describe('buildMatrix', () => {
 	it('still checks the SQLite schema docs', () => {
 		const legs = buildMatrix(versions());
 
-		assert.equal(legs[0]['schema-check-cmd'], 'pnpm --filter=@n8n/db schema:check:sqlite');
+		assert.equal(legs[0]['schema-check-cmd'], 'pnpm --filter=@MNI/db schema:check:sqlite');
 	});
 
 	it('rejects a primary that is not the newest major', () => {

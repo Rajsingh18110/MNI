@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeEach } from 'vitest';
 import { createTestingPinia } from '@pinia/testing';
-import type { InstanceAiAgentNode, InstanceAiMessage } from '@n8n/api-types';
+import type { InstanceAiAgentNode, InstanceAiMessage } from '@MNI/api-types';
 import { createThreadComponentRenderer } from './createThreadComponentRenderer';
 import InstanceAiStatusBar from '../components/InstanceAiStatusBar.vue';
 import type { ThreadRuntime } from '../instanceAi.store';

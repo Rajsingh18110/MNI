@@ -11,15 +11,15 @@ import {
 	WORKFLOW_HISTORY_PUBLISH_TIMELINE_TAB,
 	EnterpriseEditionFeature,
 } from '@/app/constants';
-import { useI18n } from '@n8n/i18n';
-import { useToast } from '@n8n/composables/useToast';
+import { useI18n } from '@MNI/i18n';
+import { useToast } from '@MNI/composables/useToast';
 import type {
 	WorkflowHistoryActionTypes,
 	WorkflowVersionId,
 	WorkflowHistoryRequestParams,
 	WorkflowHistory,
 	WorkflowVersion,
-} from '@n8n/rest-api-client/api/workflowHistory';
+} from '@MNI/rest-api-client/api/workflowHistory';
 import WorkflowHistoryList from '../components/WorkflowHistoryList.vue';
 import WorkflowHistoryContent from '../components/WorkflowHistoryContent.vue';
 import WorkflowHistoryDiff from './WorkflowHistoryDiff.vue';
@@ -28,21 +28,21 @@ import Modal from '@/app/components/Modal.vue';
 import { useWorkflowHistoryStore } from '../workflowHistory.store';
 import { useUIStore } from '@/app/stores/ui.store';
 import { useWorkflowsListStore } from '@/app/stores/workflowsList.store';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { telemetry } from '@/app/plugins/telemetry';
-import { useRootStore } from '@n8n/stores/useRootStore';
+import { useRootStore } from '@MNI/stores/useRootStore';
 import { useWorkflowActivate } from '@/app/composables/useWorkflowActivate';
-import { getResourcePermissions } from '@n8n/permissions';
+import { getResourcePermissions } from '@MNI/permissions';
 import { usePageRedirectionHelper } from '@/app/composables/usePageRedirectionHelper';
-import type { IUser } from 'n8n-workflow';
+import type { IUser } from 'MNI-workflow';
 
-import { N8nBadge, N8nHeading, N8nIcon, N8nTabs } from '@n8n/design-system';
-import type { TabOptions } from '@n8n/design-system';
-import { createEventBus } from '@n8n/utils/event-bus';
+import { N8nBadge, N8nHeading, N8nIcon, N8nTabs } from '@MNI/design-system';
+import type { TabOptions } from '@MNI/design-system';
+import { createEventBus } from '@MNI/utils/event-bus';
 import type { WorkflowHistoryVersionUnpublishModalEventBusEvents } from '../components/WorkflowHistoryVersionUnpublishModal.vue';
 import type { WorkflowVersionFormModalEventBusEvents } from '../components/WorkflowVersionFormModal.vue';
 import type { WorkflowHistoryAction } from '@/features/workflows/workflowHistory/types';
-import { useUsersStore } from '@n8n/stores/users.store';
+import { useUsersStore } from '@MNI/stores/users.store';
 import { getPublishedVersionId } from '../utils';
 
 type WorkflowHistoryActionRecord = {

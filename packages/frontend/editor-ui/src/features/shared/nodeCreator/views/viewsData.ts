@@ -63,7 +63,7 @@ import {
 	XML_NODE_TYPE,
 } from '@/app/constants';
 import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import type { NodeIconSource } from '@/app/utils/nodeIcon';
 import { useEvaluationStore } from '@/features/ai/evaluation.ee/evaluation.store';
 import { useTemplatesStore } from '@/features/workflows/templates/templates.store';
@@ -73,11 +73,11 @@ import type {
 	SimplifiedNodeType,
 	ViewCreateElement,
 } from '@/Interface';
-import type { BaseTextKey } from '@n8n/i18n';
-import { useI18n } from '@n8n/i18n';
+import type { BaseTextKey } from '@MNI/i18n';
+import { useI18n } from '@MNI/i18n';
 import camelCase from 'lodash/camelCase';
-import type { INodeTypeDescription, NodeConnectionType, Themed } from 'n8n-workflow';
-import { EVALUATION_TRIGGER_NODE_TYPE, isHitlToolType, NodeConnectionTypes } from 'n8n-workflow';
+import type { INodeTypeDescription, NodeConnectionType, Themed } from 'MNI-workflow';
+import { EVALUATION_TRIGGER_NODE_TYPE, isHitlToolType, NodeConnectionTypes } from 'MNI-workflow';
 import { getAiTemplatesCallout, getSendAndWaitNodes } from '../nodeCreator.utils';
 
 export interface NodeViewItemSection {
@@ -165,7 +165,7 @@ function getEvaluationNode(
 	nodeTypesStore: ReturnType<typeof useNodeTypesStore>,
 	isEvaluationVariantEnabled: boolean,
 ) {
-	const evaluationNodeStore = nodeTypesStore.getNodeType('n8n-nodes-base.evaluation');
+	const evaluationNodeStore = nodeTypesStore.getNodeType('MNI-nodes-base.evaluation');
 
 	if (!isEvaluationVariantEnabled || !evaluationNodeStore) {
 		return [];

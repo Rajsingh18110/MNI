@@ -1,5 +1,5 @@
 import CanvasHandleRenderer from './CanvasHandleRenderer.vue';
-import { NodeConnectionTypes } from 'n8n-workflow';
+import { NodeConnectionTypes } from 'MNI-workflow';
 import { createComponentRenderer } from '@/__tests__/render';
 import { CanvasNodeHandleKey } from '@/app/constants';
 import { defineComponent, ref, type ComputedRef } from 'vue';

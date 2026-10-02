@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import { computed } from 'vue';
 
-import { N8nSegmentControl } from '@n8n/design-system';
+import { N8nSegmentControl } from '@MNI/design-system';
 
 type Props = {
 	isBuildMode: boolean;

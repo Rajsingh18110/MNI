@@ -3,24 +3,24 @@ import {
 	getAgentModelProviderCredentialTypes,
 	type AiGatewayUsageResponse,
 	type AiGatewayWalletResponse,
-} from '@n8n/api-types';
-import { LicenseState } from '@n8n/backend-common';
-import { OutboundHttp } from '@n8n/backend-network';
-import { GlobalConfig } from '@n8n/config';
-import { LICENSE_FEATURES } from '@n8n/constants';
-import { UserRepository } from '@n8n/db';
-import { Service } from '@n8n/di';
-import { InstanceSettings } from 'n8n-core';
-import type { ICredentialDataDecryptedObject, IHttpRequestMethods, INode } from 'n8n-workflow';
-import { OperationalError, UserError } from 'n8n-workflow';
+} from '@MNI/api-types';
+import { LicenseState } from '@MNI/backend-common';
+import { OutboundHttp } from '@MNI/backend-network';
+import { GlobalConfig } from '@MNI/config';
+import { LICENSE_FEATURES } from '@MNI/constants';
+import { UserRepository } from '@MNI/db';
+import { Service } from '@MNI/di';
+import { InstanceSettings } from 'MNI-core';
+import type { ICredentialDataDecryptedObject, IHttpRequestMethods, INode } from 'MNI-workflow';
+import { OperationalError, UserError } from 'MNI-workflow';
 
-import { N8N_VERSION, AI_ASSISTANT_SDK_VERSION } from '@/constants';
+import { MNI_VERSION, AI_ASSISTANT_SDK_VERSION } from '@/constants';
 import { FeatureNotLicensedError } from '@/errors/feature-not-licensed.error';
 import { BadRequestError } from '@/errors/response-errors/bad-request.error';
 import { License } from '@/license';
 import { checkAiGatewayEligibility } from '@/services/ai-gateway-eligibility';
 import { OwnershipService } from '@/services/ownership.service';
-import { UrlService } from '@n8n/backend-services';
+import { UrlService } from '@MNI/backend-services';
 
 interface GatewayTokenResponse {
 	token: string;
@@ -96,7 +96,7 @@ export class AiGatewayService {
 	): Promise<T> {
 		const response = await this.outboundHttp
 			.requests({
-				useDefaultSsrfPolicy: 'unsafe', // the gateway base URL is n8n-owned configuration
+				useDefaultSsrfPolicy: 'unsafe', // the gateway base URL is MNI-owned configuration
 			})
 			.request({
 				method: options.method,
@@ -498,7 +498,7 @@ export class AiGatewayService {
 		headers['x-user-id'] = userId;
 		headers['x-consumer-id'] = this.license.getConsumerId();
 		headers['x-sdk-version'] = AI_ASSISTANT_SDK_VERSION;
-		headers['x-n8n-version'] = N8N_VERSION;
+		headers['x-MNI-version'] = MNI_VERSION;
 		headers['x-instance-id'] = this.instanceSettings.instanceId;
 		return headers;
 	}

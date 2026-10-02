@@ -1,4 +1,4 @@
-import type { AllEntities, Entity, PropertiesOf } from 'n8n-workflow';
+import type { AllEntities, Entity, PropertiesOf } from 'MNI-workflow';
 
 type BambooHrMap = {
 	employee: 'create' | 'get' | 'getAll' | 'update';

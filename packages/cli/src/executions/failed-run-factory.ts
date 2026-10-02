@@ -1,12 +1,12 @@
-import { Service } from '@n8n/di';
-import { StorageConfig } from 'n8n-core';
+import { Service } from '@MNI/di';
+import { StorageConfig } from 'MNI-core';
 import {
 	createRunExecutionData,
 	type ExecutionError,
 	type INode,
 	type IRun,
 	type WorkflowExecuteMode,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 @Service()
 export class FailedRunFactory {

@@ -4,7 +4,7 @@ import userEvent from '@testing-library/user-event';
 import { defineComponent } from 'vue';
 import { createComponentRenderer } from '@/__tests__/render';
 import type { IWorkflowDb } from '@/Interface';
-import type { WorkflowHistory, WorkflowVersion } from '@n8n/rest-api-client/api/workflowHistory';
+import type { WorkflowHistory, WorkflowVersion } from '@MNI/rest-api-client/api/workflowHistory';
 import { useWorkflowHistoryStore } from '../workflowHistory.store';
 import { useWorkflowsListStore } from '@/app/stores/workflowsList.store';
 import WorkflowHistoryDiff from './WorkflowHistoryDiff.vue';

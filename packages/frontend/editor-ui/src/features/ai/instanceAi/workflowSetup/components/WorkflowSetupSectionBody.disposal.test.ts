@@ -18,7 +18,7 @@ import {
 import { useNDVStore } from '@/features/ndv/shared/ndv.store';
 import type { INodeUi } from '@/Interface';
 
-const displayNode = createTestNode({ name: 'Target', type: 'n8n-nodes-base.set' }) as INodeUi;
+const displayNode = createTestNode({ name: 'Target', type: 'MNI-nodes-base.set' }) as INodeUi;
 
 const mockContext = {
 	workflowId: computed(() => 'wf-setup'),
@@ -52,7 +52,7 @@ const section = {
 	credentialType: undefined,
 	credentialTargetNodes: [],
 	parameterNames: [],
-	node: { type: 'n8n-nodes-base.set', typeVersion: 1 },
+	node: { type: 'MNI-nodes-base.set', typeVersion: 1 },
 } as unknown as InstanceType<typeof WorkflowSetupSectionBody>['$props']['section'];
 
 describe('WorkflowSetupSectionBody store disposal', () => {

@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { ref, computed, watch, nextTick } from 'vue';
-import { N8nChatInput, N8nIconButton, N8nIcon, N8nPopover, N8nTooltip } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+import { N8nChatInput, N8nIconButton, N8nIcon, N8nPopover, N8nTooltip } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 import { useNodeMention } from '../../composables/useNodeMention';
 import { useFocusedNodesStore } from '../../focusedNodes.store';
 import { useFocusedNodesChipUI } from '../../composables/useFocusedNodesChipUI';

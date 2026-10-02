@@ -3,7 +3,7 @@
 	"nodes": [
 		{
 			"parameters": {},
-			"type": "n8n-nodes-base.manualTrigger",
+			"type": "MNI-nodes-base.manualTrigger",
 			"typeVersion": 1,
 			"position": [0, 0],
 			"id": "trigger-001",
@@ -22,7 +22,7 @@
 					"value": "default"
 				}
 			},
-			"type": "n8n-nodes-base.databricks",
+			"type": "MNI-nodes-base.databricks",
 			"typeVersion": 1,
 			"position": [220, -200],
 			"id": "uc-list-volumes-001",
@@ -50,7 +50,7 @@
 				"volumeType": "MANAGED",
 				"additionalFields": {}
 			},
-			"type": "n8n-nodes-base.databricks",
+			"type": "MNI-nodes-base.databricks",
 			"typeVersion": 1,
 			"position": [220, 0],
 			"id": "uc-create-volume-001",
@@ -76,7 +76,7 @@
 				},
 				"volumeName": "old_volume"
 			},
-			"type": "n8n-nodes-base.databricks",
+			"type": "MNI-nodes-base.databricks",
 			"typeVersion": 1,
 			"position": [220, 200],
 			"id": "uc-delete-volume-001",

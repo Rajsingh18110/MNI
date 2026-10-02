@@ -71,7 +71,7 @@ test.describe(
 			);
 
 			const apiKeyInput = adminN8n.credentials.credentialModal.getFieldInput('apiKey');
-			await expect(apiKeyInput).toHaveValue(/__n8n_BLANK_VALUE_/);
+			await expect(apiKeyInput).toHaveValue(/__MNI_BLANK_VALUE_/);
 
 			await adminN8n.credentials.credentialModal.changeTab('Sharing');
 			await expect(adminN8n.credentials.credentialModal.getUsersSelect()).toBeVisible();
@@ -96,7 +96,7 @@ test.describe(
 					{
 						id: 'manual-trigger',
 						name: 'Manual Trigger',
-						type: 'n8n-nodes-base.manualTrigger',
+						type: 'MNI-nodes-base.manualTrigger',
 						position: [100, 200],
 						parameters: {},
 						typeVersion: 1,

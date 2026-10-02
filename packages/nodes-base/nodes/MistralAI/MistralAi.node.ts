@@ -6,8 +6,8 @@ import type {
 	INodeExecutionData,
 	INodeType,
 	INodeTypeDescription,
-} from 'n8n-workflow';
-import { NodeApiError, NodeConnectionTypes } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeApiError, NodeConnectionTypes } from 'MNI-workflow';
 
 import { document } from './descriptions';
 import { encodeBinaryData, mistralApiRequest, processResponseData } from './GenericFunctions';

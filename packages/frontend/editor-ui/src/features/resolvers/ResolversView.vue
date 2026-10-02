@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import TimeAgo from '@/app/components/TimeAgo.vue';
-import type { CredentialResolver } from '@n8n/api-types';
+import type { CredentialResolver } from '@MNI/api-types';
 import {
 	N8nEmptyState,
 	N8nActionToggle,
@@ -11,8 +11,8 @@ import {
 	N8nLink,
 	N8nLoading2,
 	N8nText,
-} from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+} from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 import dateformat from 'dateformat';
 import { computed, onMounted } from 'vue';
 import { END_USER_CREDENTIALS_DOCS_URL } from '@/app/constants';
@@ -124,7 +124,7 @@ async function onAction(action: string, resolver: CredentialResolver) {
 				<template #additionalContent>
 					<N8nButton
 						variant="ghost"
-						class="mr-2xs n8n-button--highlight"
+						class="mr-2xs MNI-button--highlight"
 						:href="END_USER_CREDENTIALS_DOCS_URL"
 						target="_blank"
 					>

@@ -1,5 +1,5 @@
-import type { IExecuteFunctions, INode, INodeExecutionData, INodeProperties } from 'n8n-workflow';
-import { NodeOperationError } from 'n8n-workflow';
+import type { IExecuteFunctions, INode, INodeExecutionData, INodeProperties } from 'MNI-workflow';
+import { NodeOperationError } from 'MNI-workflow';
 
 import { processJsonInput, updateDisplayOptions } from '@utils/utilities';
 
@@ -119,7 +119,7 @@ const properties: INodeProperties[] = [
 				displayName: 'RAW Data',
 				name: 'rawData',
 				type: 'boolean',
-				// eslint-disable-next-line n8n-nodes-base/node-param-default-wrong-for-boolean
+				// eslint-disable-next-line MNI-nodes-base/node-param-default-wrong-for-boolean
 				default: 0,
 				description:
 					'Whether the data should be returned RAW instead of parsed into keys according to their header',

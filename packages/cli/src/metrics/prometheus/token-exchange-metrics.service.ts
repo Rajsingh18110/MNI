@@ -1,5 +1,5 @@
-import { PrometheusMetricsConfig } from '@n8n/config';
-import { Service } from '@n8n/di';
+import { PrometheusMetricsConfig } from '@MNI/config';
+import { Service } from '@MNI/di';
 import promClient from 'prom-client';
 
 import { EventService } from '@/events/event.service';
@@ -10,12 +10,12 @@ import type { PrometheusMetricsCollector } from './base';
  * Tracks token exchange (RFC 8693) and embed login flow metrics. Always enabled.
  *
  * Registers:
- * - `n8n_token_exchange_requests_total{result}` — success/failure rate
- * - `n8n_token_exchange_failures_total{reason}` — failure breakdown by reason
- * - `n8n_embed_login_requests_total{result}` — embed login success/failure rate
- * - `n8n_embed_login_failures_total{reason}` — embed login failure breakdown
- * - `n8n_token_exchange_jit_provisioning_total` — JIT-provisioned users
- * - `n8n_token_exchange_identity_linked_total` — identities linked to existing users
+ * - `MNI_token_exchange_requests_total{result}` — success/failure rate
+ * - `MNI_token_exchange_failures_total{reason}` — failure breakdown by reason
+ * - `MNI_embed_login_requests_total{result}` — embed login success/failure rate
+ * - `MNI_embed_login_failures_total{reason}` — embed login failure breakdown
+ * - `MNI_token_exchange_jit_provisioning_total` — JIT-provisioned users
+ * - `MNI_token_exchange_identity_linked_total` — identities linked to existing users
  */
 @Service()
 export class PrometheusTokenExchangeMetricsService implements PrometheusMetricsCollector {

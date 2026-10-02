@@ -1,4 +1,4 @@
-import { scrubSecretsInText } from '@n8n/utils/scrub-secrets';
+import { scrubSecretsInText } from '@MNI/utils/scrub-secrets';
 
 import {
 	renderAssistantDraft,

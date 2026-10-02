@@ -13,8 +13,8 @@ import type {
 	INodeTypeBaseDescription,
 	INodeTypeDescription,
 	JsonObject,
-} from 'n8n-workflow';
-import { NodeConnectionTypes, NodeOperationError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeConnectionTypes, NodeOperationError } from 'MNI-workflow';
 
 import { companyFields, companyOperations } from './CompanyDescription';
 import { contactFields, contactOperations } from './ContactDescription';
@@ -2355,17 +2355,17 @@ export class HubspotV1 implements INodeType {
 							const ticketName = this.getNodeParameter('ticketName', i) as string;
 							const body: IDataObject[] = [
 								{
-									// eslint-disable-next-line n8n-nodes-base/node-param-display-name-miscased
+									// eslint-disable-next-line MNI-nodes-base/node-param-display-name-miscased
 									name: 'hs_pipeline',
 									value: pipelineId,
 								},
 								{
-									// eslint-disable-next-line n8n-nodes-base/node-param-display-name-miscased
+									// eslint-disable-next-line MNI-nodes-base/node-param-display-name-miscased
 									name: 'hs_pipeline_stage',
 									value: stageId,
 								},
 								{
-									// eslint-disable-next-line n8n-nodes-base/node-param-display-name-miscased
+									// eslint-disable-next-line MNI-nodes-base/node-param-display-name-miscased
 									name: 'subject',
 									value: ticketName,
 								},

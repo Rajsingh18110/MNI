@@ -1,7 +1,7 @@
-import type { AgentChatQueueResponse } from '@n8n/api-types';
-import { TransactionRunner, type OperationContext } from '@n8n/db';
-import { Service } from '@n8n/di';
-import { OperationalError, UserError } from 'n8n-workflow';
+import type { AgentChatQueueResponse } from '@MNI/api-types';
+import { TransactionRunner, type OperationContext } from '@MNI/db';
+import { Service } from '@MNI/di';
+import { OperationalError, UserError } from 'MNI-workflow';
 
 import { ConflictError } from '@/errors/response-errors/conflict.error';
 import { BadRequestError } from '@/errors/response-errors/bad-request.error';
@@ -13,7 +13,7 @@ import { AgentExecutionService, type StartExecutionParams } from './agent-execut
 import type { AgentExecutionThread } from './entities/agent-execution-thread.entity';
 import type { AgentMessageQueue } from './entities/agent-message-queue.entity';
 import { ExecutionRecorder } from './execution-recorder';
-import { N8NCheckpointStorage } from './integrations/n8n-checkpoint-storage';
+import { N8NCheckpointStorage } from './integrations/MNI-checkpoint-storage';
 import { AgentExecutionRepository } from './repositories/agent-execution.repository';
 import { AgentExecutionThreadRepository } from './repositories/agent-execution-thread.repository';
 import { AgentMessageQueueRepository } from './repositories/agent-message-queue.repository';

@@ -1,7 +1,7 @@
-import { testDb } from '@n8n/backend-test-utils';
-import type { User } from '@n8n/db';
-import { TagRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
+import { testDb } from '@MNI/backend-test-utils';
+import type { User } from '@MNI/db';
+import { TagRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
 
 import { createTag } from '../shared/db/tags';
 import { createMemberWithApiKey, createOwnerWithApiKey } from '../shared/db/users';
@@ -29,7 +29,7 @@ beforeEach(async () => {
 
 const testWithAPIKey =
 	(method: 'get' | 'post' | 'put' | 'delete', url: string, apiKey: string | null) => async () => {
-		void authOwnerAgent.set({ 'X-N8N-API-KEY': apiKey });
+		void authOwnerAgent.set({ 'X-MNI-API-KEY': apiKey });
 		const response = await authOwnerAgent[method](url);
 		expect(response.statusCode).toBe(401);
 	};

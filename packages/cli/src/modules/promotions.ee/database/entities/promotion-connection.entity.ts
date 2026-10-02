@@ -1,6 +1,6 @@
-import type { PromotionConnectionScope, PromotionConnectionTarget } from '@n8n/api-types';
-import { JsonColumn, WithTimestampsAndStringId } from '@n8n/db';
-import { Column, Entity, Index, JoinColumn, ManyToOne, type Relation } from '@n8n/typeorm';
+import type { PromotionConnectionScope, PromotionConnectionTarget } from '@MNI/api-types';
+import { JsonColumn, WithTimestampsAndStringId } from '@MNI/db';
+import { Column, Entity, Index, JoinColumn, ManyToOne, type Relation } from '@MNI/typeorm';
 
 import { PromotionProvider } from './promotion-provider.entity';
 

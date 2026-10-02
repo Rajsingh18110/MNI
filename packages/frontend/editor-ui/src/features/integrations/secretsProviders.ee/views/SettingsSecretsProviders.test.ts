@@ -3,15 +3,15 @@ import merge from 'lodash/merge';
 import userEvent from '@testing-library/user-event';
 import { screen, within } from '@testing-library/vue';
 import { EnterpriseEditionFeature } from '@/app/constants';
-import { STORES } from '@n8n/stores';
+import { STORES } from '@MNI/stores';
 import { SETTINGS_STORE_DEFAULT_STATE } from '@/__tests__/utils';
 import SettingsSecretsProviders from './SettingsSecretsProviders.ee.vue';
 import { createComponentRenderer } from '@/__tests__/render';
-import { useSettingsStore } from '@n8n/stores/settings.store';
-import { useRBACStore } from '@n8n/stores/rbac.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
+import { useRBACStore } from '@MNI/stores/rbac.store';
 import { setupServer } from '@/__tests__/server';
 import { computed, ref } from 'vue';
-import type { SecretProviderConnection } from '@n8n/api-types';
+import type { SecretProviderConnection } from '@MNI/api-types';
 
 // The projects store is auto-stubbed by createTestingPinia, but its `currentProjectId`
 // computed calls `useRoute()` internally, which requires vue-router to be available.
@@ -32,7 +32,7 @@ vi.mock('vue-router', async () => {
 const mockShowMessage = vi.fn();
 const mockShowError = vi.fn();
 
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: vi.fn(() => ({
 		showMessage: mockShowMessage,
 		showError: mockShowError,

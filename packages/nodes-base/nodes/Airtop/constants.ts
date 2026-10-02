@@ -1,18 +1,18 @@
 import { readFileSync } from 'fs';
-import type { n8n } from 'n8n-core';
-import { jsonParse } from 'n8n-workflow';
+import type { MNI } from 'MNI-core';
+import { jsonParse } from 'MNI-workflow';
 import { join, resolve } from 'path';
 
-// Helper function to get n8n version that can be mocked in tests
+// Helper function to get MNI version that can be mocked in tests
 export const getN8NVersion = (): string => {
-	if (process.env.N8N_VERSION) {
-		return process.env.N8N_VERSION;
+	if (process.env.MNI_VERSION) {
+		return process.env.MNI_VERSION;
 	}
 
 	try {
 		const PACKAGE_DIR = resolve(__dirname, '../../../');
 		const packageJsonPath = join(PACKAGE_DIR, 'package.json');
-		const n8nPackageJson = jsonParse<n8n.PackageJson>(readFileSync(packageJsonPath, 'utf8'));
+		const n8nPackageJson = jsonParse<MNI.PackageJson>(readFileSync(packageJsonPath, 'utf8'));
 		return n8nPackageJson.version;
 	} catch (error) {
 		// Fallback version
@@ -20,7 +20,7 @@ export const getN8NVersion = (): string => {
 	}
 };
 
-export const N8N_VERSION = getN8NVersion();
+export const MNI_VERSION = getN8NVersion();
 
 export const BASE_URL = process.env.AIRTOP_BASE_URL ?? 'https://api.airtop.ai/api/v1';
 export const BASE_URL_V2 = process.env.AIRTOP_BASE_URL_V2 ?? 'https://api.airtop.ai/api/v2';

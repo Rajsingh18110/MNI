@@ -8,14 +8,14 @@ import {
 	VIEWS,
 	WORKFLOW_SHARE_MODAL_KEY,
 } from '@/app/constants';
-import { STORES } from '@n8n/stores';
+import { STORES } from '@MNI/stores';
 import { setActivePinia } from 'pinia';
 import { createTestingPinia } from '@pinia/testing';
 import userEvent from '@testing-library/user-event';
 import { useUIStore } from '@/app/stores/ui.store';
 import { useRoute, useRouter } from 'vue-router';
 import { useMessage } from '@/app/composables/useMessage';
-import { useToast } from '@n8n/composables/useToast';
+import { useToast } from '@MNI/composables/useToast';
 import { useWorkflowsStore } from '@/app/stores/workflows.store';
 import { useWorkflowsListStore } from '@/app/stores/workflowsList.store';
 import { useProjectsStore } from '@/features/collaboration/projects/projects.store';
@@ -76,7 +76,7 @@ vi.mock('@/app/stores/pushConnection.store', () => ({
 	}),
 }));
 
-vi.mock('@n8n/composables/useToast', () => {
+vi.mock('@MNI/composables/useToast', () => {
 	const showError = vi.fn();
 	const showMessage = vi.fn();
 	const showToast = vi.fn(() => ({ close: vi.fn() }));

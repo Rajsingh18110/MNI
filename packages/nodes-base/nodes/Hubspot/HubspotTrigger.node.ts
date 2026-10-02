@@ -8,8 +8,8 @@ import type {
 	INodeType,
 	INodeTypeDescription,
 	IWebhookResponseData,
-} from 'n8n-workflow';
-import { NodeConnectionTypes, NodeOperationError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeConnectionTypes, NodeOperationError } from 'MNI-workflow';
 
 import type { HubspotObjectType } from './V1/GenericFunctions';
 import { getAllProperties, hubspotApiRequest, propertyEvents } from './V1/GenericFunctions';

@@ -1,4 +1,4 @@
-import { LicenseState } from '@n8n/backend-common';
+import { LicenseState } from '@MNI/backend-common';
 import {
 	createTeamProject,
 	createWorkflow,
@@ -6,8 +6,8 @@ import {
 	mockInstance,
 	mockLogger,
 	testDb,
-} from '@n8n/backend-test-utils';
-import type { Project, User } from '@n8n/db';
+} from '@MNI/backend-test-utils';
+import type { Project, User } from '@MNI/db';
 import {
 	CredentialsRepository,
 	SharedCredentialsRepository,
@@ -24,10 +24,10 @@ import {
 	WorkflowPublishedVersionRepository,
 	WorkflowPublishHistoryRepository,
 	WorkflowRepository,
-} from '@n8n/db';
-import { Container } from '@n8n/di';
-import type { Cipher, InstanceSettings } from 'n8n-core';
-import { jsonParse } from 'n8n-workflow';
+} from '@MNI/db';
+import { Container } from '@MNI/di';
+import type { Cipher, InstanceSettings } from 'MNI-core';
+import { jsonParse } from 'MNI-workflow';
 import assert from 'node:assert';
 import { mkdir, mkdtemp, readdir, readFile, rename, rm, stat, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
@@ -46,17 +46,17 @@ import {
 	PACKAGE_ENTITY_LAYOUT,
 	entityFilePath,
 	type ManifestEntityCollection,
-} from '@/modules/n8n-packages/io/manifest-entry';
+} from '@/modules/MNI-packages/io/manifest-entry';
 import { saveCredential } from '@test-integration/db/credentials';
 import { createTag } from '@test-integration/db/tags';
 import { VariablesService } from '@/environments.ee/variables/variables.service.ee';
-import { buildWorkflowReferencingVariables } from '@/modules/n8n-packages/__tests__/utils/test-builders';
-import { N8nPackagesService } from '@/modules/n8n-packages/n8n-packages.service';
+import { buildWorkflowReferencingVariables } from '@/modules/MNI-packages/__tests__/utils/test-builders';
+import { N8nPackagesService } from '@/modules/MNI-packages/MNI-packages.service';
 import {
 	MissingWorkflowDependencyPolicy,
 	WorkflowVersionPolicy,
-} from '@/modules/n8n-packages/n8n-packages.types';
-import { packageManifestSchema } from '@/modules/n8n-packages/spec/manifest.schema';
+} from '@/modules/MNI-packages/MNI-packages.types';
+import { packageManifestSchema } from '@/modules/MNI-packages/spec/manifest.schema';
 import { ProjectService } from '@/services/project.service.ee';
 import { createFolder } from '@test-integration/db/folders';
 import { createOwnerWithApiKey } from '@test-integration/db/users';
@@ -83,7 +83,7 @@ type TestRemote = {
 
 const testServer = setupTestServer({
 	endpointGroups: ['publicApi'],
-	modules: ['n8n-packages', 'promotions', 'data-table'],
+	modules: ['MNI-packages', 'promotions', 'data-table'],
 	enabledFeatures: ['feat:gitConnections'],
 });
 const licenseMocker = testServer.license;
@@ -146,7 +146,7 @@ beforeEach(async () => {
 	mockDataTableSizeValidator();
 	licenseMocker.reset();
 	owner = await createOwnerWithApiKey();
-	testRoot = await mkdtemp(path.join(tmpdir(), 'n8n-promotions-roundtrip-'));
+	testRoot = await mkdtemp(path.join(tmpdir(), 'MNI-promotions-roundtrip-'));
 
 	// The stored payload is written in plaintext, so the identity cipher can read it back.
 	const cipher = mock<Cipher>();
@@ -193,7 +193,7 @@ async function createRemote(): Promise<TestRemote> {
 
 	const git = simpleGit(workingDir);
 	await git.addConfig('user.name', 'MNI test');
-	await git.addConfig('user.email', 'n8n-test@example.com');
+	await git.addConfig('user.email', 'MNI-test@example.com');
 	await writeFile(path.join(workingDir, 'README.md'), '# MNI promotions test\n');
 	await git.add(['README.md']);
 	await git.commit('Initial commit');
@@ -314,7 +314,7 @@ async function prepareBindingApply() {
 				{
 					id: 'n1',
 					name: 'HTTP',
-					type: 'n8n-nodes-base.httpRequest',
+					type: 'MNI-nodes-base.httpRequest',
 					typeVersion: 1,
 					position: [0, 0],
 					parameters: { url: '={{ $vars.API_URL }}' },
@@ -355,7 +355,7 @@ async function readBranchEntities(
 	inspectionDir: string,
 	fileName: 'workflow.json' | 'folder.json' | 'project.json',
 ): Promise<Array<{ id: string; name: string; target: string }>> {
-	const exportRoot = path.join(inspectionDir, 'n8n-export');
+	const exportRoot = path.join(inspectionDir, 'MNI-export');
 	const found: Array<{ id: string; name: string; target: string }> = [];
 	const walk = async (dir: string): Promise<void> => {
 		const entries = await readdir(dir, { withFileTypes: true });
@@ -383,7 +383,7 @@ async function readBranchWorkflowArchived(
 	inspectionDir: string,
 	workflowId: string,
 ): Promise<boolean | undefined> {
-	const exportRoot = path.join(inspectionDir, 'n8n-export');
+	const exportRoot = path.join(inspectionDir, 'MNI-export');
 	let archived: boolean | undefined;
 	const walk = async (dir: string): Promise<void> => {
 		const entries = await readdir(dir, { withFileTypes: true });
@@ -507,7 +507,7 @@ describe('Promote and Apply', () => {
 		const remoteHead = (await inspectionGit.revparse(['HEAD'])).trim();
 		const pushedCommit = (await inspectionGit.log({ maxCount: 1 })).latest;
 		const manifest = packageManifestSchema.parse(
-			jsonParse(await readFile(path.join(inspectionDir, 'n8n-export', 'manifest.json'), 'utf-8')),
+			jsonParse(await readFile(path.join(inspectionDir, 'MNI-export', 'manifest.json'), 'utf-8')),
 		);
 		const projectEntry = manifest.projects?.find(({ id }) => id === project.id);
 		const workflowEntry = manifest.workflows?.find(({ id }) => id === workflow.id);
@@ -527,10 +527,10 @@ describe('Promote and Apply', () => {
 			'MNI promotions test',
 		);
 		await expect(
-			readFile(path.join(inspectionDir, 'n8n-export', projectEntry.target, 'project.json')),
+			readFile(path.join(inspectionDir, 'MNI-export', projectEntry.target, 'project.json')),
 		).resolves.toBeDefined();
 		await expect(
-			readFile(path.join(inspectionDir, 'n8n-export', workflowEntry.target, 'workflow.json')),
+			readFile(path.join(inspectionDir, 'MNI-export', workflowEntry.target, 'workflow.json')),
 		).resolves.toBeDefined();
 		expect(result.git).toEqual({ commitSha: remoteHead, branchName: 'main' });
 		expect(result.counts.workflows).toBe(1);
@@ -560,7 +560,7 @@ describe('Promote and Apply', () => {
 		const remoteGit = simpleGit(remote.bareDir);
 
 		expect(first.git.branchName).toMatch(
-			/^n8n-promotion\/\d{4}-\d{2}-\d{2}T\d{2}-\d{2}-\d{2}-\d{3}Z$/,
+			/^MNI-promotion\/\d{4}-\d{2}-\d{2}T\d{2}-\d{2}-\d{2}-\d{3}Z$/,
 		);
 		expect((await remoteGit.revparse([first.git.branchName])).trim()).toBe(first.git.commitSha);
 		expect((await remoteGit.revparse([`${first.git.branchName}^`])).trim()).toBe(baseCommit);
@@ -678,7 +678,7 @@ describe('Promote and Apply', () => {
 				missingWorkflowDependencyPolicy: MissingWorkflowDependencyPolicy.Fail,
 				workflowVersionPolicy: WorkflowVersionPolicy.Latest,
 			},
-			{ targetDir: path.join(remote.workingDir, 'n8n-export') },
+			{ targetDir: path.join(remote.workingDir, 'MNI-export') },
 		);
 		await remote.git.add(['--all']);
 		await remote.git.commit('Export orders');
@@ -742,7 +742,7 @@ describe('Promote and Apply', () => {
 				missingWorkflowDependencyPolicy: MissingWorkflowDependencyPolicy.Fail,
 				workflowVersionPolicy: WorkflowVersionPolicy.Latest,
 			},
-			{ targetDir: path.join(remote.workingDir, 'n8n-export') },
+			{ targetDir: path.join(remote.workingDir, 'MNI-export') },
 		);
 		await remote.git.add(['--all']);
 		await remote.git.commit('Export nested orders');
@@ -972,7 +972,7 @@ describe('Promote and Apply', () => {
 		const remote = await createRemote();
 		const connection = await createInstanceConnection(remote.bareDir);
 		await service.clone(connection.id, 'apply');
-		await writeRemoteFile(remote, 'n8n-export/.gitkeep', '');
+		await writeRemoteFile(remote, 'MNI-export/.gitkeep', '');
 		await commitAndPushRemote(remote, 'Add package directory');
 		const before = await snapshotApplyState();
 		await expect(service.apply(connection.id, owner)).rejects.toThrow(/manifest/i);
@@ -1058,7 +1058,7 @@ describe('Promote and Apply', () => {
 		const inspectionDir = path.join(testRoot, 'main-inspection');
 		await simpleGit().clone(remote.bareDir, inspectionDir, ['--branch', 'main', '--single-branch']);
 		await expect(
-			readFile(path.join(inspectionDir, 'n8n-export', 'manifest.json')),
+			readFile(path.join(inspectionDir, 'MNI-export', 'manifest.json')),
 		).rejects.toThrow();
 	});
 });
@@ -1140,7 +1140,7 @@ describe('Promote a project selection — branch effects', () => {
 
 		const remoteGit = simpleGit(remote.bareDir);
 		expect(result.git.branchName).toMatch(
-			/^n8n-promotion\/\d{4}-\d{2}-\d{2}T\d{2}-\d{2}-\d{2}-\d{3}Z$/,
+			/^MNI-promotion\/\d{4}-\d{2}-\d{2}T\d{2}-\d{2}-\d{2}-\d{3}Z$/,
 		);
 		// The selection lands on the new branch, off the current base.
 		expect((await remoteGit.revparse([result.git.branchName])).trim()).toBe(result.git.commitSha);
@@ -1170,7 +1170,7 @@ describe('Promote a project selection — branch effects', () => {
 			(w) => w.id === workflows[0].id,
 		)!.target;
 		const w1FileBefore = await readFile(
-			path.join(before.dir, 'n8n-export', w1Target, 'workflow.json'),
+			path.join(before.dir, 'MNI-export', w1Target, 'workflow.json'),
 			'utf-8',
 		);
 
@@ -1181,7 +1181,7 @@ describe('Promote a project selection — branch effects', () => {
 				{
 					id: 'n1',
 					name: 'NoOp',
-					type: 'n8n-nodes-base.noOp',
+					type: 'MNI-nodes-base.noOp',
 					typeVersion: 1,
 					position: [0, 0],
 					parameters: {},
@@ -1204,7 +1204,7 @@ describe('Promote a project selection — branch effects', () => {
 
 		const w1Entry = onBranch.find((w) => w.id === workflows[0].id)!;
 		expect(w1Entry).toEqual({ id: workflows[0].id, name: 'w1', target: w1Target });
-		expect(await readFile(path.join(dir, 'n8n-export', w1Target, 'workflow.json'), 'utf-8')).toBe(
+		expect(await readFile(path.join(dir, 'MNI-export', w1Target, 'workflow.json'), 'utf-8')).toBe(
 			w1FileBefore,
 		);
 	});
@@ -1330,9 +1330,9 @@ describe('Promote a project selection — branch effects', () => {
 		expect(renamed.target).not.toBe(oldTarget);
 		expect(renamed.target).toMatch(new RegExp(`/workflows/renamed-${workflows[1].id}$`));
 		await expect(
-			stat(path.join(dir, 'n8n-export', renamed.target, 'workflow.json')),
+			stat(path.join(dir, 'MNI-export', renamed.target, 'workflow.json')),
 		).resolves.toBeDefined();
-		await expect(stat(path.join(dir, 'n8n-export', oldTarget))).rejects.toThrow();
+		await expect(stat(path.join(dir, 'MNI-export', oldTarget))).rejects.toThrow();
 		expect(onBranch).toHaveLength(2);
 	});
 
@@ -1381,10 +1381,10 @@ describe('Promote a project selection — branch effects', () => {
 			`${folderEntry.target}/workflows/unselected-${unselected.id}`,
 		);
 		await expect(
-			stat(path.join(dir, 'n8n-export', unselectedEntry.target, 'workflow.json')),
+			stat(path.join(dir, 'MNI-export', unselectedEntry.target, 'workflow.json')),
 		).resolves.toBeDefined();
 		const renamedTarget = folderEntry.target.replace(/[^/]+$/, `revenue-${folder.id}`);
-		await expect(stat(path.join(dir, 'n8n-export', renamedTarget))).rejects.toThrow();
+		await expect(stat(path.join(dir, 'MNI-export', renamedTarget))).rejects.toThrow();
 
 		const workflowRepository = Container.get(WorkflowRepository);
 		await workflowRepository.delete(unselected.id);
@@ -1586,7 +1586,7 @@ describe('Promotion base branch listing', () => {
 					{
 						id: 'n1',
 						name: 'HTTP',
-						type: 'n8n-nodes-base.httpRequest',
+						type: 'MNI-nodes-base.httpRequest',
 						typeVersion: 1,
 						position: [0, 0],
 						parameters: { url: '={{ $vars.API_URL }}' },
@@ -1595,7 +1595,7 @@ describe('Promotion base branch listing', () => {
 					...[projectTable, sharedTable].map((table, index) => ({
 						id: `table${index}`,
 						name: table.name,
-						type: 'n8n-nodes-base.dataTable',
+						type: 'MNI-nodes-base.dataTable',
 						typeVersion: 1,
 						position: [index * 200, 200] as [number, number],
 						parameters: { dataTableId: { __rl: true, mode: 'id', value: table.id } },
@@ -1613,7 +1613,7 @@ describe('Promotion base branch listing', () => {
 			commitMessage: 'Export projects',
 		});
 		const manifest = packageManifestSchema.parse(
-			jsonParse(await simpleGit(remote.bareDir).show(['main:n8n-export/manifest.json'])),
+			jsonParse(await simpleGit(remote.bareDir).show(['main:MNI-export/manifest.json'])),
 		);
 		const projectEntry = manifest.projects?.find(({ id }) => id === project.id);
 		assert(projectEntry);
@@ -1626,7 +1626,7 @@ describe('Promotion base branch listing', () => {
 						target === projectEntry.target ||
 						target.startsWith(`${projectEntry.target}/`),
 				)
-				.map(({ target }) => `n8n-export/${entityFilePath(collection, target)}`),
+				.map(({ target }) => `MNI-export/${entityFilePath(collection, target)}`),
 		);
 
 		const files = await listBaseBranchFiles(project.id);
@@ -1653,7 +1653,7 @@ describe('Promotion base branch listing', () => {
 
 	it('uses the project promote config instead of the instance or apply config', async () => {
 		const remote = await createRemote();
-		const projectPath = `n8n-export/projects/orders-${project.id}/project.json`;
+		const projectPath = `MNI-export/projects/orders-${project.id}/project.json`;
 		await writeRemoteFile(remote, projectPath, '{"name":"Main"}');
 		await commitAndPushRemote(remote, 'Export main project');
 		await remote.git.checkoutLocalBranch('production');
@@ -1708,8 +1708,8 @@ describe('Promotion base branch listing', () => {
 
 	it('reads remote updates without changing a dirty, detached checkout', async () => {
 		const remote = await createRemote();
-		const projectPath = `n8n-export/projects/ünïcode örders-${project.id}/project.json`;
-		const variablePath = 'n8n-export/variables/my "quoted" var-Va45zz67/variable.json';
+		const projectPath = `MNI-export/projects/ünïcode örders-${project.id}/project.json`;
+		const variablePath = 'MNI-export/variables/my "quoted" var-Va45zz67/variable.json';
 		await writeRemoteFile(remote, projectPath, '{"name":"Ünïcode örders"}');
 		await writeRemoteFile(remote, variablePath, '{"name":"my var"}');
 		await commitAndPushRemote(remote, 'Initial export');
@@ -1740,7 +1740,7 @@ describe('Promotion base branch listing', () => {
 			type: 'variable',
 		});
 
-		const workflowPath = `n8n-export/projects/ünïcode örders-${project.id}/workflows/my-hyphen-ated-slug-Wf99zz88/workflow.json`;
+		const workflowPath = `MNI-export/projects/ünïcode örders-${project.id}/workflows/my-hyphen-ated-slug-Wf99zz88/workflow.json`;
 		await writeRemoteFile(remote, workflowPath, '{"name":"My hyphen-ated workflow"}');
 		await commitAndPushRemote(remote, 'Add workflow');
 
@@ -1772,9 +1772,9 @@ describe('Promotion base branch listing', () => {
 
 	it('reads the package of the apply branch at one commit, contents included', async () => {
 		const remote = await createRemote();
-		const projectPath = `n8n-export/projects/orders-${project.id}/project.json`;
+		const projectPath = `MNI-export/projects/orders-${project.id}/project.json`;
 		await writeRemoteFile(remote, projectPath, '{"name":"Orders"}');
-		await writeRemoteFile(remote, 'n8n-export/manifest.json', '{"packageFormatVersion":"1"}');
+		await writeRemoteFile(remote, 'MNI-export/manifest.json', '{"packageFormatVersion":"1"}');
 		await commitAndPushRemote(remote, 'Export');
 		const connection = await createInstanceConnection(remote.bareDir);
 		await service.clone(connection.id, 'apply');
@@ -1785,10 +1785,10 @@ describe('Promotion base branch listing', () => {
 		expect(branch.files).toEqual([
 			expect.objectContaining({ entityId: project.id, path: projectPath }),
 		]);
-		await expect(branch.readFiles([projectPath, 'n8n-export/manifest.json'])).resolves.toEqual(
+		await expect(branch.readFiles([projectPath, 'MNI-export/manifest.json'])).resolves.toEqual(
 			new Map([
 				[projectPath, '{"name":"Orders"}'],
-				['n8n-export/manifest.json', '{"packageFormatVersion":"1"}'],
+				['MNI-export/manifest.json', '{"packageFormatVersion":"1"}'],
 			]),
 		);
 
@@ -1803,7 +1803,7 @@ describe('Promotion base branch listing', () => {
 
 	it('preserves files with matching IDs or variable slugs across collections and scopes', async () => {
 		const remote = await createRemote();
-		const projectRoot = `n8n-export/projects/orders-${project.id}`;
+		const projectRoot = `MNI-export/projects/orders-${project.id}`;
 		const entities = [
 			{
 				entityId: '42',
@@ -1843,15 +1843,15 @@ describe('Promotion base branch listing', () => {
 				projectId: null,
 				fileName: 'variable.json',
 				type: 'variable',
-				path: 'n8n-export/variables/apiurl-2/variable.json',
+				path: 'MNI-export/variables/apiurl-2/variable.json',
 			},
 		];
 		for (const entity of entities) {
 			await writeRemoteFile(remote, entity.path, '{}');
 		}
-		await writeRemoteFile(remote, 'n8n-export/manifest.json', 'Not used for this listing');
-		await writeRemoteFile(remote, 'n8n-export/workflows/standalone-Wf01/workflow.json', '{}');
-		await writeRemoteFile(remote, 'n8n-export/folders/standalone-Fo01/folder.json', '{}');
+		await writeRemoteFile(remote, 'MNI-export/manifest.json', 'Not used for this listing');
+		await writeRemoteFile(remote, 'MNI-export/workflows/standalone-Wf01/workflow.json', '{}');
+		await writeRemoteFile(remote, 'MNI-export/folders/standalone-Fo01/folder.json', '{}');
 		await writeRemoteFile(remote, `${projectRoot}/workflows/order-42/README.md`, 'Notes');
 		await commitAndPushRemote(remote, 'Export scoped entities');
 		const connection = await createInstanceConnection(remote.bareDir);
@@ -1878,7 +1878,7 @@ describe('Promotion base branch listing', () => {
 		const connection = await createInstanceConnection(remote.bareDir);
 		await service.clone(connection.id, 'promote');
 		await remote.git.checkoutLocalBranch('production');
-		const projectPath = `n8n-export/projects/orders-${project.id}/project.json`;
+		const projectPath = `MNI-export/projects/orders-${project.id}/project.json`;
 		await writeRemoteFile(remote, projectPath, '{}');
 		await remote.git.add(['--all']);
 		await remote.git.commit('Export production project');

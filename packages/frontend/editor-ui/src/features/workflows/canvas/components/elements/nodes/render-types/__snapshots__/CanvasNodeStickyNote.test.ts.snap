@@ -9,7 +9,7 @@ exports[`CanvasNodeStickyNote > should render node correctly 1`] = `
 <div class="vue-flow__resize-control top right handle nodrag" style="scale: 1;"></div>
 <div class="vue-flow__resize-control bottom left handle nodrag" style="scale: 1;"></div>
 <div class="vue-flow__resize-control bottom right handle nodrag" style="scale: 1;"></div>
-<div class="n8n-sticky sticky clickable color-1 sticky" style="height: 180px; width: 240px;" data-test-id="sticky">
+<div class="MNI-sticky sticky clickable color-1 sticky" style="height: 180px; width: 240px;" data-test-id="sticky">
   <div class="wrapper">
     <div class="">
       <!-- Needed to support YouTube player embeds. HTML rendered here is sanitized. -->
@@ -18,11 +18,11 @@ exports[`CanvasNodeStickyNote > should render node correctly 1`] = `
     </div>
   </div>
   <div class="sticky-textarea" style="display: none;">
-    <div class="n8n-input inputContainer large isTextarea">
+    <div class="MNI-input inputContainer large isTextarea">
       <!-- Prepend slot (outside input container, before) -->
       <!--v-if-->
       <!-- Input wrapper (holds border, contains prefix/input/suffix) -->
-      <div class="n8n-input__wrapper inputWrapper isTextarea">
+      <div class="MNI-input__wrapper inputWrapper isTextarea">
         <!-- Prefix slot -->
         <!--v-if-->
         <!-- Input element -->

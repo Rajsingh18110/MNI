@@ -1,18 +1,18 @@
 import get from 'lodash/get';
-import { constructExecutionMetaData } from 'n8n-core';
+import { constructExecutionMetaData } from 'MNI-core';
 import type {
 	IDataObject,
 	IExecuteFunctions,
 	IGetNodeParameterOptions,
 	INode,
 	INodeExecutionData,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 export const node: INode = {
 	id: '1',
 	name: 'Airtop node',
 	typeVersion: 1,
-	type: 'n8n-nodes-base.airtop',
+	type: 'MNI-nodes-base.airtop',
 	position: [10, 10],
 	parameters: {},
 };

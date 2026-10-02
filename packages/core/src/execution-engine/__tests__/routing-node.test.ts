@@ -1,5 +1,5 @@
 import get from 'lodash/get';
-import { Workflow, createEmptyRunExecutionData } from 'n8n-workflow';
+import { Workflow, createEmptyRunExecutionData } from 'MNI-workflow';
 import type {
 	DeclarativeRestApiSettings,
 	ICredentialDataDecryptedObject,
@@ -20,7 +20,7 @@ import type {
 	ITaskDataConnections,
 	IWorkflowExecuteAdditionalData,
 	ICredentialsDecrypted,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import * as executionContexts from '@/execution-engine/node-execution-context';
@@ -410,7 +410,7 @@ describe('RoutingNode', () => {
 								type: 'string',
 								routing: {
 									send: {
-										// eslint-disable-next-line n8n-local-rules/no-interpolation-in-regular-string
+										// eslint-disable-next-line MNI-local-rules/no-interpolation-in-regular-string
 										property: '={{ `value${5+1}A` }}',
 										type: 'query',
 										value: '={{$value.toUpperCase()}}',
@@ -424,7 +424,7 @@ describe('RoutingNode', () => {
 								type: 'string',
 								routing: {
 									send: {
-										// eslint-disable-next-line n8n-local-rules/no-interpolation-in-regular-string
+										// eslint-disable-next-line MNI-local-rules/no-interpolation-in-regular-string
 										property: '={{ `value${6+1}B` }}',
 										type: 'body',
 										value: "={{$value.split(',')}}",
@@ -2337,7 +2337,7 @@ describe('RoutingNode', () => {
 					}
 				}
 
-				const sleepModule = await import('@n8n/utils/sleep');
+				const sleepModule = await import('@MNI/utils/sleep');
 				const spy = vi.spyOn(sleepModule, 'sleep').mockReturnValue(
 					new Promise((resolve) => {
 						resolve();

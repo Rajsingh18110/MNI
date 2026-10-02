@@ -5,7 +5,7 @@
       "parameters": {},
       "id": "f1242de8-11fc-4849-a4a2-c82fa75731a7",
       "name": "When clicking \"Execute Workflow\"",
-      "type": "n8n-nodes-base.manualTrigger",
+      "type": "MNI-nodes-base.manualTrigger",
       "typeVersion": 1,
       "position": [
         120,
@@ -48,7 +48,7 @@
       },
       "id": "7208910f-fd33-42b9-bcf2-14bb0b0d157d",
       "name": "Set",
-      "type": "n8n-nodes-base.set",
+      "type": "MNI-nodes-base.set",
       "typeVersion": 2,
       "position": [
         320,
@@ -65,7 +65,7 @@
       },
       "id": "fb66a2cc-95b9-4917-999b-847ab61a7938",
       "name": "Date & Time6",
-      "type": "n8n-nodes-base.dateTime",
+      "type": "MNI-nodes-base.dateTime",
       "typeVersion": 2,
       "position": [
         700,
@@ -82,7 +82,7 @@
       },
       "id": "b94eb54a-1952-4f33-816a-8ffa47c7bb42",
       "name": "Date & Time",
-      "type": "n8n-nodes-base.dateTime",
+      "type": "MNI-nodes-base.dateTime",
       "typeVersion": 2,
       "position": [
         700,
@@ -99,7 +99,7 @@
       },
       "id": "7f0af92d-8064-4af0-8c2c-a21b70f69ac1",
       "name": "Date & Time1",
-      "type": "n8n-nodes-base.dateTime",
+      "type": "MNI-nodes-base.dateTime",
       "typeVersion": 2,
       "position": [
         700,
@@ -110,7 +110,7 @@
       "parameters": {},
       "id": "1e90549e-f4d4-46a1-bc9b-617befff2319",
       "name": "No Operation, do nothing",
-      "type": "n8n-nodes-base.noOp",
+      "type": "MNI-nodes-base.noOp",
       "typeVersion": 1,
       "position": [
         900,
@@ -121,7 +121,7 @@
       "parameters": {},
       "id": "ec07d232-e513-4f09-8cb1-e8e4853bcebc",
       "name": "No Operation, do nothing1",
-      "type": "n8n-nodes-base.noOp",
+      "type": "MNI-nodes-base.noOp",
       "typeVersion": 1,
       "position": [
         900,
@@ -132,7 +132,7 @@
       "parameters": {},
       "id": "f9839c73-ed5e-4ae0-bc1e-5a1914ac8b55",
       "name": "No Operation, do nothing2",
-      "type": "n8n-nodes-base.noOp",
+      "type": "MNI-nodes-base.noOp",
       "typeVersion": 1,
       "position": [
         900,
@@ -151,7 +151,7 @@
       },
       "id": "bfce6276-2de4-4783-bc7f-d82fab23c2af",
       "name": "Date & Time7",
-      "type": "n8n-nodes-base.dateTime",
+      "type": "MNI-nodes-base.dateTime",
       "typeVersion": 2,
       "position": [
         700,
@@ -170,7 +170,7 @@
       },
       "id": "a7aad9c9-20ff-4353-9445-80366fad9431",
       "name": "Date & Time2",
-      "type": "n8n-nodes-base.dateTime",
+      "type": "MNI-nodes-base.dateTime",
       "typeVersion": 2,
       "position": [
         700,
@@ -189,7 +189,7 @@
       },
       "id": "3b9e3ad7-0d00-4598-b796-23bb206e75db",
       "name": "Date & Time3",
-      "type": "n8n-nodes-base.dateTime",
+      "type": "MNI-nodes-base.dateTime",
       "typeVersion": 2,
       "position": [
         700,
@@ -200,7 +200,7 @@
       "parameters": {},
       "id": "8a3cdde0-b1de-46dc-a8c6-74cc174fd4a1",
       "name": "No Operation, do nothing3",
-      "type": "n8n-nodes-base.noOp",
+      "type": "MNI-nodes-base.noOp",
       "typeVersion": 1,
       "position": [
         900,
@@ -211,7 +211,7 @@
       "parameters": {},
       "id": "54b4d584-0874-411b-9c98-8194c0928588",
       "name": "No Operation, do nothing4",
-      "type": "n8n-nodes-base.noOp",
+      "type": "MNI-nodes-base.noOp",
       "typeVersion": 1,
       "position": [
         900,
@@ -222,7 +222,7 @@
       "parameters": {},
       "id": "4a4e7647-6c6e-4a24-9032-829e5f495337",
       "name": "No Operation, do nothing5",
-      "type": "n8n-nodes-base.noOp",
+      "type": "MNI-nodes-base.noOp",
       "typeVersion": 1,
       "position": [
         900,

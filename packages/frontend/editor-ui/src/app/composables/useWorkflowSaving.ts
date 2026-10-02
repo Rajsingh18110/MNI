@@ -4,8 +4,8 @@ import type { LocationQuery, NavigationGuardNext, useRouter } from 'vue-router';
 import { computed, getCurrentInstance, watch } from 'vue';
 import { useEditorContext } from '@/app/composables/useEditorContext';
 import { useMessage } from './useMessage';
-import { useI18n } from '@n8n/i18n';
-import { getDebounceTime } from '@n8n/composables/useDebounce';
+import { useI18n } from '@MNI/i18n';
+import { getDebounceTime } from '@MNI/composables/useDebounce';
 import {
 	MODAL_CANCEL,
 	MODAL_CLOSE,
@@ -20,12 +20,12 @@ import { useWorkflowsListStore } from '@/app/stores/workflowsList.store';
 import { useSourceControlStore } from '@/features/integrations/sourceControl.ee/sourceControl.store';
 import { useCanvasStore } from '@/app/stores/canvas.store';
 import type { IUpdateInformation, IWorkflowDb } from '@/Interface';
-import type { WorkflowDataCreate, WorkflowDataUpdate } from '@n8n/rest-api-client/api/workflows';
-import { ResponseError } from '@n8n/rest-api-client';
-import { isExpression, type IDataObject } from 'n8n-workflow';
-import { useToast } from '@n8n/composables/useToast';
+import type { WorkflowDataCreate, WorkflowDataUpdate } from '@MNI/rest-api-client/api/workflows';
+import { ResponseError } from '@MNI/rest-api-client';
+import { isExpression, type IDataObject } from 'MNI-workflow';
+import { useToast } from '@MNI/composables/useToast';
 import { useExternalHooks } from './useExternalHooks';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
 import { useNodeHelpers } from './useNodeHelpers';
 import { tryToParseNumber } from '@/app/utils/typesUtils';
 import { isDebouncedFunction } from '@/app/utils/typeGuards';
@@ -36,16 +36,16 @@ import {
 	createWorkflowDocumentId,
 	deriveHomeProject,
 } from '@/app/stores/workflowDocument.store';
-import { getResourcePermissions } from '@n8n/permissions';
+import { getResourcePermissions } from '@MNI/permissions';
 import { useDebounceFn } from '@vueuse/core';
 import { useBuilderStore } from '@/features/ai/assistant/builder.store';
 import { useWorkflowId } from '@/app/composables/useWorkflowId';
 import { useWorkflowSaveStore } from '@/app/stores/workflowSave.store';
 import { useBackendConnectionStore } from '@/app/stores/backendConnection.store';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { useInvalidNodeGroupCleanup } from '@/app/composables/useInvalidNodeGroupCleanup';
 import { usePolicyViolationToast } from '@/app/composables/usePolicyViolationToast';
-import { getPolicyViolations } from '@n8n/frontend-module-type-availability-policies';
+import { getPolicyViolations } from '@MNI/frontend-module-type-availability-policies';
 import { removeEmptyCanvasGroupsFromWorkflowData } from '@/features/workflows/canvas/emptyGroup.utils';
 
 function getErrorMessage(error: unknown): string {

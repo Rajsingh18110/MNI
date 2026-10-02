@@ -1,4 +1,4 @@
-import type { AgentJsonToolConfig } from '@n8n/api-types';
+import type { AgentJsonToolConfig } from '@MNI/api-types';
 
 import {
 	findHttpRequestToolUrlFromAiViolations,
@@ -9,7 +9,7 @@ const { mockValidateNodeConfig } = vi.hoisted(() => ({
 	mockValidateNodeConfig: vi.fn(),
 }));
 
-vi.mock('@n8n/workflow-sdk', () => ({
+vi.mock('@MNI/workflow-sdk', () => ({
 	getSchemaBaseDirs: () => [],
 	setSchemaBaseDirs: vi.fn(),
 	validateNodeConfig: (...args: unknown[]) => mockValidateNodeConfig(...args),
@@ -19,7 +19,7 @@ const nodeTool = (operation: string): AgentJsonToolConfig => ({
 	type: 'node',
 	name: 'Slack',
 	node: {
-		nodeType: 'n8n-nodes-base.slackTool',
+		nodeType: 'MNI-nodes-base.slackTool',
 		nodeTypeVersion: 2.2,
 		nodeParameters: { resource: 'message', operation },
 	},
@@ -39,13 +39,13 @@ describe('HTTP Request URL validation', () => {
 	it('finds $fromAI only in modern HTTP Request URL fields', () => {
 		expect(
 			findHttpRequestToolUrlFromAiViolations([
-				configuredNodeTool('HTTP Request Tool', 'n8n-nodes-base.httpRequestTool', {
-					url: "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('url') }}",
+				configuredNodeTool('HTTP Request Tool', 'MNI-nodes-base.httpRequestTool', {
+					url: "={{ /*MNI-auto-generated-fromAI-override*/ $fromAI('url') }}",
 				}),
-				configuredNodeTool('HTTP Request', 'n8n-nodes-base.httpRequest', {
+				configuredNodeTool('HTTP Request', 'MNI-nodes-base.httpRequest', {
 					url: "={{ $FromAI ('url') }}",
 				}),
-				configuredNodeTool('Malformed HTTP Request', 'n8n-nodes-base.httpRequestTool', {
+				configuredNodeTool('Malformed HTTP Request', 'MNI-nodes-base.httpRequestTool', {
 					url: "={{ $fromAI('url' }}",
 				}),
 			]),
@@ -69,14 +69,14 @@ describe('HTTP Request URL validation', () => {
 
 		expect(
 			findHttpRequestToolUrlFromAiViolations([
-				configuredNodeTool('Fixed HTTP Request', 'n8n-nodes-base.httpRequestTool', {
+				configuredNodeTool('Fixed HTTP Request', 'MNI-nodes-base.httpRequestTool', {
 					url: '={{ $json.url }}',
 					body: "={{ $fromAI('body') }}",
 				}),
-				configuredNodeTool('Legacy HTTP Request', '@n8n/n8n-nodes-langchain.toolHttpRequest', {
+				configuredNodeTool('Legacy HTTP Request', '@MNI/MNI-nodes-langchain.toolHttpRequest', {
 					url: "={{ $fromAI('url') }}",
 				}),
-				configuredNodeTool('Other Node', 'n8n-nodes-base.slackTool', {
+				configuredNodeTool('Other Node', 'MNI-nodes-base.slackTool', {
 					url: "={{ $fromAI('url') }}",
 				}),
 			]),

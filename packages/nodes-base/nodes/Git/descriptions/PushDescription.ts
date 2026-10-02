@@ -1,4 +1,4 @@
-import type { INodeProperties } from 'n8n-workflow';
+import type { INodeProperties } from 'MNI-workflow';
 
 export const pushFields: INodeProperties[] = [
 	{
@@ -27,7 +27,7 @@ export const pushFields: INodeProperties[] = [
 				name: 'targetRepository',
 				type: 'string',
 				default: '',
-				placeholder: 'https://github.com/n8n-io/n8n',
+				placeholder: 'https://github.com/MNI-io/MNI',
 				description: 'The URL or path of the repository to push to',
 			},
 		],

@@ -14,7 +14,7 @@ import {
 	type INodeListSearchResult,
 	type IPollFunctions,
 	type JsonObject,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import type { ITimeInterval } from './Interfaces';
 

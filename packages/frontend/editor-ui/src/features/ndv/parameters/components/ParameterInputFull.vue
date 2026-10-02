@@ -8,8 +8,8 @@ import ParameterOptions from './ParameterOptions.vue';
 import FromAiOverrideButton from './ParameterInputOverrides/FromAiOverrideButton.vue';
 import FromAiOverrideField from './ParameterInputOverrides/FromAiOverrideField.vue';
 import ParameterOverrideSelectableList from './ParameterInputOverrides/ParameterOverrideSelectableList.vue';
-import { useI18n } from '@n8n/i18n';
-import { useToast } from '@n8n/composables/useToast';
+import { useI18n } from '@MNI/i18n';
+import { useToast } from '@MNI/composables/useToast';
 import { injectNDVStore } from '@/features/ndv/shared/ndv.store';
 import { getMappedResult } from '@/app/utils/mappingUtils';
 import {
@@ -17,13 +17,13 @@ import {
 	hasOnlyListMode,
 	isValueExpression,
 } from '@/app/utils/nodeTypesUtils';
-import { createEventBus } from '@n8n/utils/event-bus';
+import { createEventBus } from '@MNI/utils/event-bus';
 import {
 	isResourceLocatorValue,
 	type INodeProperties,
 	type IParameterLabel,
 	type NodeParameterValueType,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import {
 	buildValueFromOverride,
 	canBeContentOverride,
@@ -32,11 +32,11 @@ import {
 	makeOverrideValue,
 	updateFromAIOverrideValues,
 } from '../utils/fromAIOverride.utils';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
 import { inject } from 'vue';
 import { ChatHubToolContextKey, ExpressionLocalResolveContextSymbol } from '@/app/constants';
 
-import { N8nInputLabel } from '@n8n/design-system';
+import { N8nInputLabel } from '@MNI/design-system';
 import { useCollectionOverhaul } from '@/app/composables/useCollectionOverhaul';
 import { useParameterInputContribution } from '@/features/ndv/parameters/composables/useParameterInputContribution';
 import type { ParameterOptionsOverrides } from '@/features/ndv/shared/ndv.utils';
@@ -310,7 +310,7 @@ const showOverrideButton = computed(
 watch(
 	() => props.isReadOnly,
 	(isReadOnly) => {
-		// Patch fix, see https://linear.app/n8n/issue/ADO-2974/resource-mapper-values-are-emptied-when-refreshing-the-columns
+		// Patch fix, see https://linear.app/MNI/issue/ADO-2974/resource-mapper-values-are-emptied-when-refreshing-the-columns
 		if (isReadOnly && props.parameter.disabledOptions !== undefined) {
 			valueChanged({ name: props.path, value: props.parameter.default });
 		}
@@ -617,7 +617,7 @@ function removeOverride(clearField = false) {
 	min-width: 0;
 	padding-left: var(--spacing--2xs);
 
-	:global(label.n8n-input-label) {
+	:global(label.MNI-input-label) {
 		padding-bottom: 0;
 	}
 }

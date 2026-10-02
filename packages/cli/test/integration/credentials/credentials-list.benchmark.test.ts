@@ -1,5 +1,5 @@
-import { testDb } from '@n8n/backend-test-utils';
-import type { User } from '@n8n/db';
+import { testDb } from '@MNI/backend-test-utils';
+import type { User } from '@MNI/db';
 import {
 	CredentialsEntity,
 	GLOBAL_MEMBER_ROLE,
@@ -7,11 +7,11 @@ import {
 	ProjectRelation,
 	SharedCredentials,
 	User as UserEntity,
-} from '@n8n/db';
-import { Container } from '@n8n/di';
-import { DataSource } from '@n8n/typeorm';
-import type { QueryDeepPartialEntity } from '@n8n/typeorm/query-builder/QueryPartialEntity';
-import { generateNanoId } from '@n8n/utils/generate-nano-id';
+} from '@MNI/db';
+import { Container } from '@MNI/di';
+import { DataSource } from '@MNI/typeorm';
+import type { QueryDeepPartialEntity } from '@MNI/typeorm/query-builder/QueryPartialEntity';
+import { generateNanoId } from '@MNI/utils/generate-nano-id';
 import { randomUUID } from 'node:crypto';
 import { appendFileSync, mkdirSync } from 'node:fs';
 import { dirname } from 'node:path';
@@ -39,23 +39,23 @@ import { initCredentialsTypes } from '../shared/utils';
  * Only the statement count is asserted, and only loosely, so the suite trips on a
  * regression to per-row queries but not on timing.
  *
- *   N8N_CREDENTIALS_BENCHMARK=1 pnpm --filter MNI test:sqlite credentials-list.benchmark
- *   N8N_CREDENTIALS_BENCHMARK=1 pnpm --filter MNI test:postgres:integration:tc credentials-list.benchmark
+ *   MNI_CREDENTIALS_BENCHMARK=1 pnpm --filter MNI test:sqlite credentials-list.benchmark
+ *   MNI_CREDENTIALS_BENCHMARK=1 pnpm --filter MNI test:postgres:integration:tc credentials-list.benchmark
  *
  * Knobs (all optional):
- *   N8N_CREDENTIALS_BENCH_TIERS         members per project for each tier, e.g. "50,200,800"
- *   N8N_CREDENTIALS_BENCH_SCALE         multiplier applied to every tier
- *   N8N_CREDENTIALS_BENCH_PROJECTS      team projects per tier
- *   N8N_CREDENTIALS_BENCH_CREDS         owned credentials per project
- *   N8N_CREDENTIALS_BENCH_SHARES        extra `credential:user` shares per credential (same tier)
- *   N8N_CREDENTIALS_BENCH_GLOBALS       global credentials
- *   N8N_CREDENTIALS_BENCH_SHARED_WITH_ME credentials per tier shared to the member's personal project
- *   N8N_CREDENTIALS_BENCH_ITERS         timed iterations per scenario
- *   N8N_CREDENTIALS_BENCH_TAKE          page size for paginated scenarios
- *   N8N_CREDENTIALS_BENCH_OUT           append one JSON line per scenario to this file
+ *   MNI_CREDENTIALS_BENCH_TIERS         members per project for each tier, e.g. "50,200,800"
+ *   MNI_CREDENTIALS_BENCH_SCALE         multiplier applied to every tier
+ *   MNI_CREDENTIALS_BENCH_PROJECTS      team projects per tier
+ *   MNI_CREDENTIALS_BENCH_CREDS         owned credentials per project
+ *   MNI_CREDENTIALS_BENCH_SHARES        extra `credential:user` shares per credential (same tier)
+ *   MNI_CREDENTIALS_BENCH_GLOBALS       global credentials
+ *   MNI_CREDENTIALS_BENCH_SHARED_WITH_ME credentials per tier shared to the member's personal project
+ *   MNI_CREDENTIALS_BENCH_ITERS         timed iterations per scenario
+ *   MNI_CREDENTIALS_BENCH_TAKE          page size for paginated scenarios
+ *   MNI_CREDENTIALS_BENCH_OUT           append one JSON line per scenario to this file
  */
 
-const runBenchmarks = process.env.N8N_CREDENTIALS_BENCHMARK === '1';
+const runBenchmarks = process.env.MNI_CREDENTIALS_BENCHMARK === '1';
 
 const dialect = process.env.DB_TYPE === 'postgresdb' ? 'postgres' : 'sqlite';
 
@@ -75,19 +75,19 @@ const envIntList = (name: string, fallback: number[]): number[] => {
 	return parsed.length > 0 ? parsed.map(Math.floor) : fallback;
 };
 
-const SCALE = envInt('N8N_CREDENTIALS_BENCH_SCALE', 1);
-const TIERS = envIntList('N8N_CREDENTIALS_BENCH_TIERS', [50, 200, 800]).map((n) => n * SCALE);
-const PROJECTS_PER_TIER = envInt('N8N_CREDENTIALS_BENCH_PROJECTS', 5);
-const CREDS_PER_PROJECT = envInt('N8N_CREDENTIALS_BENCH_CREDS', 25);
+const SCALE = envInt('MNI_CREDENTIALS_BENCH_SCALE', 1);
+const TIERS = envIntList('MNI_CREDENTIALS_BENCH_TIERS', [50, 200, 800]).map((n) => n * SCALE);
+const PROJECTS_PER_TIER = envInt('MNI_CREDENTIALS_BENCH_PROJECTS', 5);
+const CREDS_PER_PROJECT = envInt('MNI_CREDENTIALS_BENCH_CREDS', 25);
 const EXTRA_SHARES = Math.min(
-	envInt('N8N_CREDENTIALS_BENCH_SHARES', 3),
+	envInt('MNI_CREDENTIALS_BENCH_SHARES', 3),
 	Math.max(PROJECTS_PER_TIER - 1, 0),
 );
-const GLOBAL_CREDS = envInt('N8N_CREDENTIALS_BENCH_GLOBALS', 20);
-const SHARED_WITH_ME = envInt('N8N_CREDENTIALS_BENCH_SHARED_WITH_ME', 10);
-const ITERS = envInt('N8N_CREDENTIALS_BENCH_ITERS', 30);
-const TAKE = envInt('N8N_CREDENTIALS_BENCH_TAKE', 50);
-const OUT_FILE = process.env.N8N_CREDENTIALS_BENCH_OUT;
+const GLOBAL_CREDS = envInt('MNI_CREDENTIALS_BENCH_GLOBALS', 20);
+const SHARED_WITH_ME = envInt('MNI_CREDENTIALS_BENCH_SHARED_WITH_ME', 10);
+const ITERS = envInt('MNI_CREDENTIALS_BENCH_ITERS', 30);
+const TAKE = envInt('MNI_CREDENTIALS_BENCH_TAKE', 50);
+const OUT_FILE = process.env.MNI_CREDENTIALS_BENCH_OUT;
 
 // The tier the single-scenario suite runs against; the scale suite runs every tier.
 const REFERENCE_TIER_INDEX = Math.min(1, TIERS.length - 1);

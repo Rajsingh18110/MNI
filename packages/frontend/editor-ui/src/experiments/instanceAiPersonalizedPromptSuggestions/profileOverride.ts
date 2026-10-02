@@ -1,6 +1,6 @@
 import { computed } from 'vue';
 
-import { useStorage } from '@n8n/composables/useStorage';
+import { useStorage } from '@MNI/composables/useStorage';
 
 import { INSTANCE_AI_PERSONALIZED_PROMPT_SUGGESTIONS } from './prompts';
 import type { PersonalizedPromptRole, PersonalizedPromptUseCase } from './types';
@@ -8,7 +8,7 @@ import type { PersonalizedPromptRole, PersonalizedPromptUseCase } from './types'
 export const PERSONALIZED_PROMPT_PROFILE_OVERRIDE_QUERY_PARAM =
 	'instanceAiPersonalizedPromptProfile';
 export const PERSONALIZED_PROMPT_PROFILE_OVERRIDE_STORAGE_KEY =
-	'N8N_INSTANCE_AI_PERSONALIZED_PROMPT_PROFILE_OVERRIDE';
+	'MNI_INSTANCE_AI_PERSONALIZED_PROMPT_PROFILE_OVERRIDE';
 export const PERSONALIZED_PROMPT_PROFILE_OVERRIDE_CLEAR_VALUE = 'clear';
 export const PERSONALIZED_PROMPT_PROFILE_OVERRIDE_FALLBACK_VALUE = 'fallback';
 

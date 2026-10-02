@@ -1,5 +1,5 @@
-import type { TelemetryEventDef } from '@n8n/telemetry';
-import type { GenericValue } from 'n8n-workflow';
+import type { TelemetryEventDef } from '@MNI/telemetry';
+import type { GenericValue } from 'MNI-workflow';
 
 export type BuilderTrackFn = (
 	entry: TelemetryEventDef,

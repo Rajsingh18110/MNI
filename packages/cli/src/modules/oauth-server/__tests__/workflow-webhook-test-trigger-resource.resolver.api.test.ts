@@ -3,13 +3,13 @@ import {
 	setActiveVersion,
 	shareWorkflowWithUsers,
 	testDb,
-} from '@n8n/backend-test-utils';
-import { GlobalConfig } from '@n8n/config';
-import type { User } from '@n8n/db';
-import { WebhookRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
-import type { IHttpRequestMethods, INode, IWebhookData, IWorkflowBase } from 'n8n-workflow';
-import { WEBHOOK_NODE_TYPE } from 'n8n-workflow';
+} from '@MNI/backend-test-utils';
+import { GlobalConfig } from '@MNI/config';
+import type { User } from '@MNI/db';
+import { WebhookRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
+import type { IHttpRequestMethods, INode, IWebhookData, IWorkflowBase } from 'MNI-workflow';
+import { WEBHOOK_NODE_TYPE } from 'MNI-workflow';
 import { randomUUID } from 'node:crypto';
 
 import { createOwner, createMember } from '@test-integration/db/users';
@@ -18,7 +18,7 @@ import { setupTestServer } from '@test-integration/utils';
 import { OAuthTokenService } from '@/modules/oauth-server/oauth-token.service';
 import { CacheService } from '@/services/cache/cache.service';
 import { ProtectedResourceRegistry } from '@/services/protected-resource.registry';
-import { UrlService } from '@n8n/backend-services';
+import { UrlService } from '@MNI/backend-services';
 import { TestWebhookRegistrationsService } from '@/webhooks/test-webhook-registrations.service';
 
 const testServer = setupTestServer({ modules: ['oauth-server', 'mcp'], endpointGroups: ['mcp'] });
@@ -348,7 +348,7 @@ describe('method disambiguation', () => {
 });
 
 describe('dynamic webhooks', () => {
-	// `n8n-nodes-base.webhook` uses `isFullPath: true`, so `IWebhookData.path` on the
+	// `MNI-nodes-base.webhook` uses `isFullPath: true`, so `IWebhookData.path` on the
 	// registration is the raw configured template (`user/:id`, no `webhookId` prefix) —
 	// see `webhookResourcePath`. The served/resolved URL still carries the prefix.
 	test('should resolve a concrete request path to the templated resource identity', async () => {

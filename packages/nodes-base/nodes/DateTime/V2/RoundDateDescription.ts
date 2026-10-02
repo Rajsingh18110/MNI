@@ -1,4 +1,4 @@
-import type { INodeProperties } from 'n8n-workflow';
+import type { INodeProperties } from 'MNI-workflow';
 
 import { includeInputFields } from './common.descriptions';
 
@@ -52,7 +52,7 @@ export const RoundDateDescription: INodeProperties[] = [
 		displayName: 'To Nearest',
 		name: 'toNearest',
 		type: 'options',
-		// eslint-disable-next-line n8n-nodes-base/node-param-options-type-unsorted-items
+		// eslint-disable-next-line MNI-nodes-base/node-param-options-type-unsorted-items
 		options: [
 			{
 				name: 'Year',

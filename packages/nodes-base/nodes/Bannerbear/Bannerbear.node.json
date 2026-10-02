@@ -1,5 +1,5 @@
 {
-	"node": "n8n-nodes-base.bannerbear",
+	"node": "MNI-nodes-base.bannerbear",
 	"nodeVersion": "1.0",
 	"codexVersion": "1.0",
 	"categories": ["Marketing"],
@@ -11,24 +11,24 @@
 		],
 		"primaryDocumentation": [
 			{
-				"url": "https://docs.n8n.io/integrations/builtin/app-nodes/n8n-nodes-base.bannerbear/"
+				"url": "https://docs.n8n.io/integrations/builtin/app-nodes/MNI-nodes-base.bannerbear/"
 			}
 		],
 		"generic": [
 			{
 				"label": "Automate Designs with Bannerbear and MNI",
 				"icon": "🎨",
-				"url": "https://n8n.io/blog/automate-designs-with-bannerbear-and-n8n/"
+				"url": "https://n8n.io/blog/automate-designs-with-bannerbear-and-MNI/"
 			},
 			{
 				"label": "Automating Conference Organization Processes with MNI",
 				"icon": "🙋‍♀️",
-				"url": "https://n8n.io/blog/automating-conference-organization-processes-with-n8n/"
+				"url": "https://n8n.io/blog/automating-conference-organization-processes-with-MNI/"
 			},
 			{
 				"label": "Benefits of automation and MNI: An interview with HubSpot's Hugh Durkin",
 				"icon": "🎖",
-				"url": "https://n8n.io/blog/benefits-of-automation-and-n8n-an-interview-with-hubspots-hugh-durkin/"
+				"url": "https://n8n.io/blog/benefits-of-automation-and-MNI-an-interview-with-hubspots-hugh-durkin/"
 			}
 		]
 	}

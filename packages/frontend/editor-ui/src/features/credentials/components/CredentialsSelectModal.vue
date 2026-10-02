@@ -1,16 +1,16 @@
 <script setup lang="ts">
 import { useExternalHooks } from '@/app/composables/useExternalHooks';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
 import { useCredentialsStore } from '../credentials.store';
 import { useUIStore } from '@/app/stores/ui.store';
-import { createEventBus } from '@n8n/utils/event-bus';
+import { createEventBus } from '@MNI/utils/event-bus';
 import { computed, onMounted, ref } from 'vue';
 import { CREDENTIAL_SELECT_MODAL_KEY } from '../credentials.constants';
 import Modal from '@/app/components/Modal.vue';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import type { NewCredentialsModal } from '@/Interface';
 
-import { N8nButton, N8nIcon, N8nOption, N8nSelect } from '@n8n/design-system';
+import { N8nButton, N8nIcon, N8nOption, N8nSelect } from '@MNI/design-system';
 import { injectWorkflowDocumentStore } from '@/app/stores/workflowDocument.store';
 import { useInstanceAiCredentialHelp } from '@/features/ai/instanceAi/composables/useInstanceAiCredentialHelp';
 const externalHooks = useExternalHooks();

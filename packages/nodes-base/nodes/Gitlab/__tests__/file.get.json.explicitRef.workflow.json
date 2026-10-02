@@ -3,7 +3,7 @@
 	"nodes": [
 		{
 			"parameters": {},
-			"type": "n8n-nodes-base.manualTrigger",
+			"type": "MNI-nodes-base.manualTrigger",
 			"typeVersion": 1,
 			"position": [0, 0],
 			"id": "trigger-id",
@@ -21,7 +21,7 @@
 					"reference": "release-1.0"
 				}
 			},
-			"type": "n8n-nodes-base.gitlab",
+			"type": "MNI-nodes-base.gitlab",
 			"typeVersion": 1,
 			"position": [200, 0],
 			"id": "gitlab-node-id",
@@ -35,7 +35,7 @@
 		},
 		{
 			"parameters": {},
-			"type": "n8n-nodes-base.noOp",
+			"type": "MNI-nodes-base.noOp",
 			"typeVersion": 1,
 			"position": [400, 0],
 			"id": "noop-id",

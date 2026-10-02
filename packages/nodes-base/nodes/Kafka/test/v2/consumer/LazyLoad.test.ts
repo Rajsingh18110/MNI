@@ -11,7 +11,7 @@ import {
 vi.mock('@confluentinc/kafka-javascript', () => confluentKafkaModuleMock());
 
 const credentials: KafkaCredentials = {
-	clientId: 'n8n-test',
+	clientId: 'MNI-test',
 	brokers: 'localhost:9092',
 	ssl: false,
 	authentication: false,
@@ -20,7 +20,7 @@ const credentials: KafkaCredentials = {
 it('reaches the library only through the transport lazy loader', async () => {
 	expect(getConfluentKafkaAccessCount()).toBe(0);
 
-	await createKafkaConsumer(credentials, { groupId: 'n8n-kafka' });
+	await createKafkaConsumer(credentials, { groupId: 'MNI-kafka' });
 
 	expect(getConfluentKafkaAccessCount()).toBe(1);
 });

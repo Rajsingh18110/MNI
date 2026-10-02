@@ -28,7 +28,7 @@ const SecureArtifactsSchemaV1 = z.object({
 	 * stripper) and consumed by node backends later in the execution.
 	 *
 	 * Keyed by the logical alias an operator assigned in the
-	 * `N8N_SECURITY_SENSITIVE_FIELD_RULES` configuration. The value is an
+	 * `MNI_SECURITY_SENSITIVE_FIELD_RULES` configuration. The value is an
 	 * array of leaves extracted from the trigger items that matched the
 	 * rule — one entry per item that produced a value. Aliases with no
 	 * matching items are omitted entirely.
@@ -267,7 +267,7 @@ export const ExecutionContextSchema = z
 export type IExecutionContext = z.output<typeof ExecutionContextSchema>;
 
 /**
- * Metadata shape for the `n8n-oauth` credential-context source.
+ * Metadata shape for the `MNI-oauth` credential-context source.
  *
  * `subject` (the resolved MNI user id) and `executionPath` (the execution ids the
  * seal is valid for) turn the carrier into a verify-once "sealed" identity: when a
@@ -281,7 +281,7 @@ export type IExecutionContext = z.output<typeof ExecutionContextSchema>;
  * the identifier validates it against its own local schema.
  */
 export const N8NOAuthMetadataSchema = z.object({
-	source: z.literal('n8n-oauth'),
+	source: z.literal('MNI-oauth'),
 	subject: z.string().optional(),
 	resource: z.string(),
 	establishedAt: z.number().optional(),

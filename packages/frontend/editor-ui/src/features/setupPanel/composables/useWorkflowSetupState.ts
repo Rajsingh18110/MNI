@@ -1,7 +1,7 @@
 import { computed, ref, watch, type Ref } from 'vue';
 
 import type { INodeUi } from '@/Interface';
-import { type INode, isResourceLocatorValue } from 'n8n-workflow';
+import { type INode, isResourceLocatorValue } from 'MNI-workflow';
 import type { SetupCardItem, NodeSetupState } from '@/features/setupPanel/setupPanel.types';
 import { isCardComplete } from '@/features/setupPanel/setupPanel.utils';
 

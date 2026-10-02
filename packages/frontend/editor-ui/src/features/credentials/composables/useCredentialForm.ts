@@ -13,17 +13,17 @@ import type {
 	INodeCredentialTestResult,
 	INodeParameters,
 	INodeProperties,
-} from 'n8n-workflow';
-import { CREDENTIAL_EMPTY_VALUE, deepCopy, NodeHelpers } from 'n8n-workflow';
-import { getResourcePermissions } from '@n8n/permissions';
-import { useI18n } from '@n8n/i18n';
-import { useRootStore } from '@n8n/stores/useRootStore';
+} from 'MNI-workflow';
+import { CREDENTIAL_EMPTY_VALUE, deepCopy, NodeHelpers } from 'MNI-workflow';
+import { getResourcePermissions } from '@MNI/permissions';
+import { useI18n } from '@MNI/i18n';
+import { useRootStore } from '@MNI/stores/useRootStore';
 
-import type { InstanceAiCredentialSetupHint } from '@n8n/api-types';
+import type { InstanceAiCredentialSetupHint } from '@MNI/api-types';
 
 import type { IUpdateInformation } from '@/Interface';
 import { useNodeHelpers } from '@/app/composables/useNodeHelpers';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { setParameterValue } from '@/app/utils/parameterUtils';
 import { isExpression, isTestableExpression } from '@/app/utils/expressions';
 import {
@@ -32,7 +32,7 @@ import {
 } from '@/app/utils/nodeTypesUtils';
 import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';
 import { useProjectsStore } from '@/features/collaboration/projects/projects.store';
-import { useUsersStore } from '@n8n/stores/users.store';
+import { useUsersStore } from '@MNI/stores/users.store';
 
 import { probeCredential } from '../credentials.api';
 import { useCredentialsStore } from '../credentials.store';

@@ -7,8 +7,8 @@ import { useSourceControlStore } from '@/features/integrations/sourceControl.ee/
 import { useWorkflowsStore } from '@/app/stores/workflows.store';
 import { createTestingPinia } from '@pinia/testing';
 import { setActivePinia } from 'pinia';
-import type { INodeTypeDescription } from 'n8n-workflow';
-import { getResourcePermissions } from '@n8n/permissions';
+import type { INodeTypeDescription } from 'MNI-workflow';
+import { getResourcePermissions } from '@MNI/permissions';
 import { useCanvasOperations } from '@/app/composables/useCanvasOperations';
 import { canvasEventBus } from '@/features/workflows/canvas/canvas.eventBus';
 import {
@@ -48,12 +48,12 @@ vi.mock('@/features/shared/nodeCreator/composables/useActionsGeneration', () => 
 	}),
 }));
 
-vi.mock('@n8n/permissions', async (importOriginal) => ({
-	...(await importOriginal<typeof import('@n8n/permissions')>()),
+vi.mock('@MNI/permissions', async (importOriginal) => ({
+	...(await importOriginal<typeof import('@MNI/permissions')>()),
 	getResourcePermissions: vi.fn(),
 }));
 
-vi.mock('@n8n/i18n', async (importOriginal) => ({
+vi.mock('@MNI/i18n', async (importOriginal) => ({
 	...(await importOriginal()),
 	useI18n: () => ({
 		baseText: (key: string) => key,
@@ -204,8 +204,8 @@ describe('useNodeCommands', () => {
 
 		it('should populate add node children with node types from generateMergedNodesAndActions', () => {
 			const mockNodes = [
-				createMockNodeType('n8n-nodes-base.httpRequest', 'HTTP Request'),
-				createMockNodeType('n8n-nodes-base.slack', 'Slack'),
+				createMockNodeType('MNI-nodes-base.httpRequest', 'HTTP Request'),
+				createMockNodeType('MNI-nodes-base.slack', 'Slack'),
 			];
 
 			mockGenerateMergedNodesAndActionsFn.mockReturnValue({
@@ -219,8 +219,8 @@ describe('useNodeCommands', () => {
 
 			const addCommand = commands.value.find((cmd) => cmd.id === 'add-node');
 			expect(addCommand?.children).toHaveLength(2);
-			expect(addCommand?.children?.[0].id).toBe('n8n-nodes-base.httpRequest');
-			expect(addCommand?.children?.[1].id).toBe('n8n-nodes-base.slack');
+			expect(addCommand?.children?.[0].id).toBe('MNI-nodes-base.httpRequest');
+			expect(addCommand?.children?.[1].id).toBe('MNI-nodes-base.slack');
 
 			expect(mockGenerateMergedNodesAndActionsFn).toHaveBeenCalled();
 		});
@@ -228,11 +228,11 @@ describe('useNodeCommands', () => {
 		it('should list a restricted node last, disabled and locked, instead of hiding it', () => {
 			mockGenerateMergedNodesAndActionsFn.mockReturnValue({
 				mergedNodes: [
-					createMockNodeType('n8n-nodes-base.gmail', 'Gmail'),
-					createMockNodeType('n8n-nodes-base.slack', 'Slack'),
+					createMockNodeType('MNI-nodes-base.gmail', 'Gmail'),
+					createMockNodeType('MNI-nodes-base.slack', 'Slack'),
 				],
 			});
-			mockRestrictedNodeTypes({ 'n8n-nodes-base.gmail': 'instance' });
+			mockRestrictedNodeTypes({ 'MNI-nodes-base.gmail': 'instance' });
 
 			const { commands } = useNodeCommands({
 				lastQuery: ref(''),
@@ -241,8 +241,8 @@ describe('useNodeCommands', () => {
 
 			const children = commands.value.find((cmd) => cmd.id === 'add-node')?.children ?? [];
 			expect(children.map((child) => child.id)).toEqual([
-				'n8n-nodes-base.slack',
-				'n8n-nodes-base.gmail',
+				'MNI-nodes-base.slack',
+				'MNI-nodes-base.gmail',
 			]);
 			expect(children[0].disabled).toBe(false);
 			expect(children[1].disabled).toBe(true);
@@ -253,11 +253,11 @@ describe('useNodeCommands', () => {
 		it('should disable a credential-only node when HTTP Request is restricted', () => {
 			mockGenerateMergedNodesAndActionsFn.mockReturnValue({
 				mergedNodes: [
-					createMockNodeType('n8n-creds-base.sysdigApi', 'Sysdig'),
-					createMockNodeType('n8n-nodes-base.slack', 'Slack'),
+					createMockNodeType('MNI-creds-base.sysdigApi', 'Sysdig'),
+					createMockNodeType('MNI-nodes-base.slack', 'Slack'),
 				],
 			});
-			mockRestrictedNodeTypes({ 'n8n-nodes-base.httpRequest': 'instance' });
+			mockRestrictedNodeTypes({ 'MNI-nodes-base.httpRequest': 'instance' });
 
 			const { commands } = useNodeCommands({
 				lastQuery: ref(''),
@@ -266,19 +266,19 @@ describe('useNodeCommands', () => {
 
 			const children = commands.value.find((cmd) => cmd.id === 'add-node')?.children ?? [];
 			expect(children.map((child) => [child.id, child.disabled ?? false])).toEqual([
-				['n8n-nodes-base.slack', false],
-				['n8n-creds-base.sysdigApi', true],
+				['MNI-nodes-base.slack', false],
+				['MNI-creds-base.sysdigApi', true],
 			]);
 		});
 
 		it('should disable a node type the policy restricts', () => {
 			mockGenerateMergedNodesAndActionsFn.mockReturnValue({
 				mergedNodes: [
-					createMockNodeType('n8n-nodes-base.httpRequest', 'HTTP Request'),
-					createMockNodeType('n8n-nodes-base.slack', 'Slack'),
+					createMockNodeType('MNI-nodes-base.httpRequest', 'HTTP Request'),
+					createMockNodeType('MNI-nodes-base.slack', 'Slack'),
 				],
 			});
-			mockRestrictedNodeTypes({ 'n8n-nodes-base.slack': 'instance' });
+			mockRestrictedNodeTypes({ 'MNI-nodes-base.slack': 'instance' });
 
 			const { commands } = useNodeCommands({
 				lastQuery: ref(''),
@@ -287,8 +287,8 @@ describe('useNodeCommands', () => {
 
 			const children = commands.value.find((cmd) => cmd.id === 'add-node')?.children ?? [];
 			expect(children.map((child) => [child.id, child.disabled ?? false])).toEqual([
-				['n8n-nodes-base.httpRequest', false],
-				['n8n-nodes-base.slack', true],
+				['MNI-nodes-base.httpRequest', false],
+				['MNI-nodes-base.slack', true],
 			]);
 		});
 	});
@@ -311,13 +311,13 @@ describe('useNodeCommands', () => {
 				createTestNode({
 					id: 'node-1',
 					name: 'Start',
-					type: 'n8n-nodes-base.manualTrigger',
+					type: 'MNI-nodes-base.manualTrigger',
 					typeVersion: 1,
 				}),
 				createTestNode({
 					id: 'node-2',
 					name: 'HTTP Request',
-					type: 'n8n-nodes-base.httpRequest',
+					type: 'MNI-nodes-base.httpRequest',
 					typeVersion: 1,
 				}),
 			]);
@@ -392,7 +392,7 @@ describe('useNodeCommands', () => {
 				createTestNode({
 					id: 'node-1',
 					name: 'Start',
-					type: 'n8n-nodes-base.manualTrigger',
+					type: 'MNI-nodes-base.manualTrigger',
 					typeVersion: 1,
 				}),
 			]);

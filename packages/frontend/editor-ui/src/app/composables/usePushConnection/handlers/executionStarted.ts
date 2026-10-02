@@ -1,10 +1,10 @@
-import type { ExecutionStarted } from '@n8n/api-types/push/execution';
+import type { ExecutionStarted } from '@MNI/api-types/push/execution';
 import { useWorkflowDocumentStore } from '@/app/stores/workflowDocument.store';
 import { useWorkflowExecutionStateStore } from '@/app/stores/workflowExecutionState.store';
 import { createExecutionDataId, useExecutionDataStore } from '@/app/stores/executionData.store';
 import { parse } from 'flatted';
-import { createRunExecutionData } from 'n8n-workflow';
-import type { IRunExecutionData } from 'n8n-workflow';
+import { createRunExecutionData } from 'MNI-workflow';
+import type { IRunExecutionData } from 'MNI-workflow';
 import type { PushHandlerOptions } from './types';
 
 /**

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useToast } from '@n8n/composables/useToast';
+import { useToast } from '@MNI/composables/useToast';
 import {
 	LOCAL_STORAGE_CHAT_HUB_HAD_CONVERSATION_BEFORE,
 	LOCAL_STORAGE_CHAT_HUB_SELECTED_MODEL,
@@ -21,7 +21,7 @@ import {
 	CHAT_VIEW,
 	MOBILE_MEDIA_QUERY,
 } from '@/features/ai/chatHub/constants';
-import { useUsersStore } from '@n8n/stores/users.store';
+import { useUsersStore } from '@MNI/stores/users.store';
 import {
 	type ChatHubLLMProvider,
 	PROVIDER_CREDENTIAL_TYPE_MAP,
@@ -29,8 +29,8 @@ import {
 	type ChatHubSendMessageRequest,
 	type ChatModelDto,
 	chatHubConversationModelSchema,
-} from '@n8n/api-types';
-import { N8nIconButton, N8nResizeWrapper, N8nScrollArea, N8nText } from '@n8n/design-system';
+} from '@MNI/api-types';
+import { N8nIconButton, N8nResizeWrapper, N8nScrollArea, N8nText } from '@MNI/design-system';
 import { useElementSize, useLocalStorage, useMediaQuery } from '@vueuse/core';
 import { v4 as uuidv4 } from 'uuid';
 import { computed, onBeforeMount, ref, useTemplateRef, watch } from 'vue';
@@ -46,12 +46,12 @@ import {
 	chatHubConversationModelWithCachedDisplayNameSchema,
 	type ChatMessage as ChatMessageType,
 } from '@/features/ai/chatHub/chat.types';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import { useCustomAgent } from '@/features/ai/chatHub/composables/useCustomAgent';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { hasRole } from '@/app/utils/rbac/checks';
 import { useFreeAiCredits } from '@/app/composables/useFreeAiCredits';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
 import ChatGreetings from './components/ChatGreetings.vue';
 import { useChatSession } from './composables/useChatSession';
 import ChatArtifactViewer from './components/ChatArtifactViewer.vue';

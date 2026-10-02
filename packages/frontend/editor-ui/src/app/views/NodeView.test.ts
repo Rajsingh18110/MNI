@@ -7,7 +7,7 @@ import {
 	MANUAL_TRIGGER_NODE_TYPE,
 	NodeConnectionTypes,
 	isEmptyGroupAnchor,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import {
 	createWorkflowDocumentId,
 	useWorkflowDocumentStore,
@@ -42,7 +42,7 @@ import {
 import { useNodeCreatorStore } from '@/features/shared/nodeCreator/nodeCreator.store';
 import { useCanvasStore } from '@/app/stores/canvas.store';
 import { DEFAULT_NODE_SIZE, snapPositionToGrid } from '@/app/utils/nodeViewUtils';
-import { useTypeAvailabilityPoliciesStore } from '@n8n/frontend-module-type-availability-policies';
+import { useTypeAvailabilityPoliciesStore } from '@MNI/frontend-module-type-availability-policies';
 import { usePostHog } from '@/app/stores/posthog.store';
 
 const mockMcpJsonNudgeGate = vi.hoisted(() => vi.fn());

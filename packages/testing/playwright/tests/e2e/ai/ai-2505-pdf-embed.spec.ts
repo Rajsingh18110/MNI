@@ -5,7 +5,7 @@ import { test } from '../../../fixtures/base';
  * In-Memory Vector Store insert was throwing
  *   "Failed to load pdf-parse. This loader currently supports pdf-parse v1 only…"
  * because @langchain/community's PDFLoader resolved pdf-parse@2 in the
- * @n8n/ai-utilities install context.
+ * @MNI/ai-utilities install context.
  *
  * The fix replaces LangChain's PDFLoader with N8nPdfLoader (pdf-parse@2 backed).
  * This test exercises the end-to-end path on the real MNI runtime, using

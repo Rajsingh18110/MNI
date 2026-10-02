@@ -1,6 +1,6 @@
-import { testDb, testModules } from '@n8n/backend-test-utils';
-import { Container } from '@n8n/di';
-import type { PackageDirectoryLoader } from 'n8n-core';
+import { testDb, testModules } from '@MNI/backend-test-utils';
+import { Container } from '@MNI/di';
+import type { PackageDirectoryLoader } from 'MNI-core';
 
 import { NODE_PACKAGE_PREFIX } from '@/constants';
 

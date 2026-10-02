@@ -2,7 +2,7 @@
 import { ElSlider } from 'element-plus';
 
 // Feature-local slider for the parallel-evaluation concurrency control.
-// Lives here (not in `@n8n/design-system`) because it bakes in a single
+// Lives here (not in `@MNI/design-system`) because it bakes in a single
 // hard-coded brand-token theme — that bypasses the variant story DS
 // components are expected to support and would need design sign-off
 // before being promoted. Promote when both conditions hold.

@@ -1,4 +1,4 @@
-import type { INode } from 'n8n-workflow';
+import type { INode } from 'MNI-workflow';
 
 import type { HealNodeIdsResult } from '../heal-node-ids';
 import { healNodeIds } from '../heal-node-ids';
@@ -6,7 +6,7 @@ import { healNodeIds } from '../heal-node-ids';
 const node = (overrides: Partial<INode>): INode => ({
 	id: 'some-id',
 	name: 'Some Node',
-	type: 'n8n-nodes-base.set',
+	type: 'MNI-nodes-base.set',
 	typeVersion: 1,
 	position: [0, 0],
 	parameters: {},
@@ -14,10 +14,10 @@ const node = (overrides: Partial<INode>): INode => ({
 });
 
 const trigger = (overrides: Partial<INode>): INode =>
-	node({ type: 'n8n-nodes-base.scheduleTrigger', ...overrides });
+	node({ type: 'MNI-nodes-base.scheduleTrigger', ...overrides });
 
 const sticky = (overrides: Partial<INode>): INode =>
-	node({ type: 'n8n-nodes-base.stickyNote', ...overrides });
+	node({ type: 'MNI-nodes-base.stickyNote', ...overrides });
 
 const isTriggerLike = (n: INode) => n.type.toLowerCase().includes('trigger');
 

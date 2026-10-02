@@ -4,7 +4,7 @@ This module enables workflow level telemetry
 The module should work in complete isolation - plugging into MNI to add tracing. When switched off no otel items should be loaded
 
 It is based upon and an extension of the work done in the community by:
-@gabrielhmsantos - https://github.com/gabrielhmsantos/n8n-tracekit
+@gabrielhmsantos - https://github.com/gabrielhmsantos/MNI-tracekit
 
 ### Testing
 Given OTEL often involves events triggered from elsewhere within the MNI system integration testing is preferred.
@@ -175,12 +175,12 @@ exporters:
 Start MNI & point it at the jaeger instance
 ```
 cd packages/cli
-N8N_OTEL_ENABLED=true N8N_OTEL_EXPORTER_OTLP_ENDPOINT=http://127.0.0.1:4318 pnpm run dev
+MNI_OTEL_ENABLED=true MNI_OTEL_EXPORTER_OTLP_ENDPOINT=http://127.0.0.1:4318 pnpm run dev
 ```
 
 ### Wire protocol (OTLP/HTTP vs OTLP/gRPC)
 
-`N8N_OTEL_EXPORTER_OTLP_PROTOCOL` selects how spans are delivered. It mirrors the
+`MNI_OTEL_EXPORTER_OTLP_PROTOCOL` selects how spans are delivered. It mirrors the
 upstream `OTEL_EXPORTER_OTLP_PROTOCOL` spec and accepts:
 
 | Value                     | Exporter                                   | Conventional port |
@@ -190,9 +190,9 @@ upstream `OTEL_EXPORTER_OTLP_PROTOCOL` spec and accepts:
 
 ```
 cd packages/cli
-N8N_OTEL_ENABLED=true \
-  N8N_OTEL_EXPORTER_OTLP_PROTOCOL=grpc \
-  N8N_OTEL_EXPORTER_OTLP_ENDPOINT=http://127.0.0.1:4317 \
+MNI_OTEL_ENABLED=true \
+  MNI_OTEL_EXPORTER_OTLP_PROTOCOL=grpc \
+  MNI_OTEL_EXPORTER_OTLP_ENDPOINT=http://127.0.0.1:4317 \
   pnpm run dev
 ```
 
@@ -203,13 +203,13 @@ Notes:
   proxies and firewalls more reliably and is easier to debug.
 - The endpoint scheme controls TLS for **both** protocols: `https://` uses TLS,
   `http://` does not. There is no `grpc://` scheme.
-- Because the scheme is load-bearing, `N8N_OTEL_EXPORTER_OTLP_ENDPOINT` must be an
+- Because the scheme is load-bearing, `MNI_OTEL_EXPORTER_OTLP_ENDPOINT` must be an
   `http://` or `https://` URL. MNI logs a warning and uses the default endpoint if
   the value has another scheme or no scheme, e.g. `localhost:4318`. The scheme is
   matched case-insensitively, and MNI lowercases it before it reaches the exporter.
-- gRPC endpoints take **no URL path**, so `N8N_OTEL_EXPORTER_OTLP_TRACING_PATH` is
+- gRPC endpoints take **no URL path**, so `MNI_OTEL_EXPORTER_OTLP_TRACING_PATH` is
   ignored when the protocol is `grpc`.
-- `N8N_OTEL_EXPORTER_OTLP_HEADERS` entries are sent as gRPC metadata. Keys are
+- `MNI_OTEL_EXPORTER_OTLP_HEADERS` entries are sent as gRPC metadata. Keys are
   lowercased (gRPC metadata keys are lowercase ASCII); an entry grpc-js rejects is
   skipped with a warning instead of failing startup.
 - The startup connectivity check waits for a grpc-js channel to become ready for

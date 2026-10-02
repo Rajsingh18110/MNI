@@ -1,9 +1,9 @@
-import type { CommunityNodeType } from '@n8n/api-types';
-import { inProduction, Logger } from '@n8n/backend-common';
-import { Service } from '@n8n/di';
+import type { CommunityNodeType } from '@MNI/api-types';
+import { inProduction, Logger } from '@MNI/backend-common';
+import { Service } from '@MNI/di';
 import cloneDeep from 'lodash/cloneDeep';
-import { ensureError } from '@n8n/utils/errors/ensure-error';
-import { isToolType, NodeConnectionTypes } from 'n8n-workflow';
+import { ensureError } from '@MNI/utils/errors/ensure-error';
+import { isToolType, NodeConnectionTypes } from 'MNI-workflow';
 
 import { buildStrapiUpdateQuery } from '@/utils/strapi-utils';
 
@@ -214,7 +214,7 @@ export class CommunityNodeTypesService {
 
 		// Matched on the entry's own package name, not derived by splitting the
 		// node type on its first dot: npm allows dots in package names, so the
-		// split mis-parses a package like `n8n-nodes-chatwoot.io` and reports an
+		// split mis-parses a package like `MNI-nodes-chatwoot.io` and reports an
 		// installed package as missing.
 		return (nodeType: Pick<StrapiCommunityNodeType, 'packageName'>) =>
 			installedPackageNames.has(nodeType.packageName);

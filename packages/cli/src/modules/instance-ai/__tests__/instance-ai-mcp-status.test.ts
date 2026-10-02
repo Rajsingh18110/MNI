@@ -1,4 +1,4 @@
-import type { McpServerConfig } from '@n8n/instance-ai';
+import type { McpServerConfig } from '@MNI/instance-ai';
 import type { Mock } from 'vitest';
 
 import { InstanceAiService } from '../instance-ai.service';

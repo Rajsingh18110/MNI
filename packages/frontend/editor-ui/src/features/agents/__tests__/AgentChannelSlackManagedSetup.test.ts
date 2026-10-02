@@ -1,10 +1,10 @@
 import { mount } from '@vue/test-utils';
-import { ResponseError } from '@n8n/rest-api-client';
+import { ResponseError } from '@MNI/rest-api-client';
 import { describe, expect, it, vi } from 'vitest';
 
 import AgentChannelSlackManagedSetup from '../components/AgentChannelSlackManagedSetup.vue';
 
-vi.mock('@n8n/i18n', () => ({
+vi.mock('@MNI/i18n', () => ({
 	useI18n: () => ({ baseText: (key: string) => key }),
 }));
 

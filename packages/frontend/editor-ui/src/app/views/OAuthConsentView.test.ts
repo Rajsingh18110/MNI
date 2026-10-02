@@ -7,7 +7,7 @@ import userEvent from '@testing-library/user-event';
 import { within } from '@testing-library/vue';
 import { nextTick } from 'vue';
 
-vi.mock('@n8n/rest-api-client/api/consent');
+vi.mock('@MNI/rest-api-client/api/consent');
 
 const renderComponent = createComponentRenderer(OAuthConsentView);
 

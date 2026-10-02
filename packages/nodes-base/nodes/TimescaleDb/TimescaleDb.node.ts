@@ -3,8 +3,8 @@ import type {
 	INodeExecutionData,
 	INodeType,
 	INodeTypeDescription,
-} from 'n8n-workflow';
-import { NodeConnectionTypes, NodeOperationError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeConnectionTypes, NodeOperationError } from 'MNI-workflow';
 import pgPromise from 'pg-promise';
 
 import { getDateAsStringTypeParsers } from '@utils/postgres';
@@ -33,7 +33,7 @@ export class TimescaleDb implements INodeType {
 			},
 		],
 		properties: [
-			// eslint-disable-next-line n8n-nodes-base/node-param-operation-without-no-data-expression
+			// eslint-disable-next-line MNI-nodes-base/node-param-operation-without-no-data-expression
 			{
 				displayName: 'Operation',
 				name: 'operation',
@@ -169,7 +169,7 @@ export class TimescaleDb implements INodeType {
 				},
 				default: 'id',
 				required: true,
-				// eslint-disable-next-line n8n-nodes-base/node-param-description-miscased-id
+				// eslint-disable-next-line MNI-nodes-base/node-param-description-miscased-id
 				description:
 					'Name of the property which decides which rows in the database should be updated. Normally that would be "id".',
 			},
@@ -235,7 +235,7 @@ export class TimescaleDb implements INodeType {
 						],
 						default: 'multiple',
 						description:
-							'The way queries should be sent to database. Can be used in conjunction with <b>Continue on Fail</b>. See <a href="https://docs.n8n.io/integrations/builtin/app-nodes/n8n-nodes-base.timescaledb/">the docs</a> for more examples',
+							'The way queries should be sent to database. Can be used in conjunction with <b>Continue on Fail</b>. See <a href="https://docs.n8n.io/integrations/builtin/app-nodes/MNI-nodes-base.timescaledb/">the docs</a> for more examples',
 					},
 					{
 						displayName: 'Query Parameters',

@@ -1,5 +1,5 @@
-import { AgentJsonConfigBaseSchema, WORKFLOW_TOOL_TRIGGER_DISPLAY_NAME } from '@n8n/api-types';
-import { EXECUTE_WORKFLOW_TRIGGER_NODE_TYPE } from 'n8n-workflow';
+import { AgentJsonConfigBaseSchema, WORKFLOW_TOOL_TRIGGER_DISPLAY_NAME } from '@MNI/api-types';
+import { EXECUTE_WORKFLOW_TRIGGER_NODE_TYPE } from 'MNI-workflow';
 import { zodToJsonSchema } from 'zod-to-json-schema';
 
 export const AGENT_BUILDER_REFERENCE_URI = 'MNI://agents/reference';
@@ -104,11 +104,11 @@ directly on that object — there is no \`value\` wrapper. For example:
   back to the instance timezone.
 - task.delete: Set \`taskId\` to the task to delete; its config reference is removed.
 - customTool.upsert: Set \`code\` to the tool source; it is compiled, validated, stored, and attached.
-  Only \`@n8n/agents\` and \`zod\` imports are available. The default export must be a Tool builder
+  Only \`@MNI/agents\` and \`zod\` imports are available. The default export must be a Tool builder
   chain with \`description\`, \`input\` (a Zod schema), and \`handler\`; \`output\` is optional:
 
   \`\`\`typescript
-  import { Tool } from '@n8n/agents';
+  import { Tool } from '@MNI/agents';
   import { z } from 'zod';
 
   export default new Tool('get_current_datetime')
@@ -141,7 +141,7 @@ Tool references use these forms:
 
 Creating a resource does not give the Agent access to it. For example, a data table created with
 create_data_table is only usable by the Agent once it is attached as a node tool
-(n8n-nodes-base.dataTable); discover it with search_nodes usage="agentTool" like any other node.
+(MNI-nodes-base.dataTable); discover it with search_nodes usage="agentTool" like any other node.
 
 Sub-agents are not tool entries. Configure them under the top-level \`subAgents\` field:
 { "subAgents": { "agents": [{ "agentId": "...", "useWhen": "..." }] } }
@@ -171,7 +171,7 @@ The top-level \`mcpServers\` config array connects external MCP tool catalogs to
 registry-backed servers with discover_agent_assets kind=mcpServers, or use a URL the user provides.
 When the server requires authentication, resolve an accessible credential ID with list_credentials
 first; the same ID is passed to verification and stored in the config entry. Credentials cannot be
-created through these tools — when none exists, ask the user to create one in n8n.
+created through these tools — when none exists, ask the user to create one in MNI.
 
 Before writing an entry into mcpServers, call verify_agent_mcp_server with the same name, url,
 transport, authentication, and credential. The server does not need to be attached to the Agent

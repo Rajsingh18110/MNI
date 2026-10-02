@@ -1,5 +1,5 @@
-import type { UserRepository } from '@n8n/db';
-import type { EntityManager } from '@n8n/typeorm';
+import type { UserRepository } from '@MNI/db';
+import type { EntityManager } from '@MNI/typeorm';
 import { mock } from 'vitest-mock-extended';
 
 import type { CredentialsService } from '@/credentials/credentials.service';

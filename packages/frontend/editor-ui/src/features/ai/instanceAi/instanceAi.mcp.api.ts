@@ -1,10 +1,10 @@
-import { makeRestApiRequest } from '@n8n/rest-api-client';
-import type { IRestApiContext } from '@n8n/rest-api-client';
+import { makeRestApiRequest } from '@MNI/rest-api-client';
+import type { IRestApiContext } from '@MNI/rest-api-client';
 import type {
 	InstanceAiMcpConnectionResponse,
 	InstanceAiMcpConnectionToolsResponse,
 	McpRegistryServerResponse,
-} from '@n8n/api-types';
+} from '@MNI/api-types';
 
 export interface CreateMcpConnectionBody {
 	serverSlug: string;

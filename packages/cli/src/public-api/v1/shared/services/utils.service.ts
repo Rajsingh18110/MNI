@@ -1,6 +1,6 @@
-import { ProjectRepository, type User } from '@n8n/db';
-import { Container } from '@n8n/di';
-import type { Scope } from '@n8n/permissions';
+import { ProjectRepository, type User } from '@MNI/db';
+import { Container } from '@MNI/di';
+import type { Scope } from '@MNI/permissions';
 
 import { ForbiddenError } from '@/errors/response-errors/forbidden.error';
 import { NotFoundError } from '@/errors/response-errors/not-found.error';

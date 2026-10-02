@@ -1,11 +1,11 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest';
-import type { ClusterInfoResponse } from '@n8n/api-types';
+import type { ClusterInfoResponse } from '@MNI/api-types';
 import { useDebugInfo } from './useDebugInfo';
-import type { RootStoreState } from '@n8n/stores/useRootStore';
-import type { useSettingsStore as useSettingsStoreType } from '@n8n/stores/settings.store';
+import type { RootStoreState } from '@MNI/stores/useRootStore';
+import type { useSettingsStore as useSettingsStoreType } from '@MNI/stores/settings.store';
 import type { RecursivePartial } from '@/app/types/utils';
 
-vi.mock('@n8n/stores/useRootStore', () => ({
+vi.mock('@MNI/stores/useRootStore', () => ({
 	useRootStore: (): Partial<RootStoreState> => ({
 		versionCli: '0.123.0',
 	}),
@@ -47,11 +47,11 @@ const { useSettingsStore } = vi.hoisted(() => ({
 	useSettingsStore: vi.fn(),
 }));
 
-vi.mock('@n8n/stores/settings.store', () => ({
+vi.mock('@MNI/stores/settings.store', () => ({
 	useSettingsStore,
 }));
 
-vi.mock('@n8n/composables/useDeviceSupport', () => ({
+vi.mock('@MNI/composables/useDeviceSupport', () => ({
 	useDeviceSupport: () => ({
 		isTouchDevice: false,
 		userAgent: 'Mozilla/5.0',
@@ -62,7 +62,7 @@ const { mockClusterInfo } = vi.hoisted(() => ({
 	mockClusterInfo: { value: null as ClusterInfoResponse | null },
 }));
 
-vi.mock('@n8n/frontend-module-instance-registry', () => ({
+vi.mock('@MNI/frontend-module-instance-registry', () => ({
 	useInstanceRegistryStore: () => ({
 		get clusterInfo() {
 			return mockClusterInfo.value;

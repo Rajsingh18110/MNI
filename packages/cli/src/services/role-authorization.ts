@@ -1,5 +1,5 @@
-import type { User } from '@n8n/db';
-import { getAuthPrincipalScopes, type Role as RoleDTO, type RoleNamespace } from '@n8n/permissions';
+import type { User } from '@MNI/db';
+import { getAuthPrincipalScopes, type Role as RoleDTO, type RoleNamespace } from '@MNI/permissions';
 
 import { RESPONSE_ERROR_MESSAGES } from '@/constants';
 import { ForbiddenError } from '@/errors/response-errors/forbidden.error';

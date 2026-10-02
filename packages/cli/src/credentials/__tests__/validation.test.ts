@@ -1,4 +1,4 @@
-import { GLOBAL_OWNER_ROLE, GLOBAL_MEMBER_ROLE, type User } from '@n8n/db';
+import { GLOBAL_OWNER_ROLE, GLOBAL_MEMBER_ROLE, type User } from '@MNI/db';
 import type { Mock } from 'vitest';
 import { mock } from 'vitest-mock-extended';
 

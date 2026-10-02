@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import type { DateValue } from '@internationalized/date';
-import type { InsightsSummary } from '@n8n/api-types';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
-import { N8nIcon, N8nTooltip } from '@n8n/design-system';
-import { VIEWS } from '@n8n/frontend-constants/views';
-import { useI18n } from '@n8n/i18n';
-import { smartDecimal } from '@n8n/utils/number/smart-decimal';
+import type { InsightsSummary } from '@MNI/api-types';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
+import { N8nIcon, N8nTooltip } from '@MNI/design-system';
+import { VIEWS } from '@MNI/frontend-constants/views';
+import { useI18n } from '@MNI/i18n';
+import { smartDecimal } from '@MNI/utils/number/smart-decimal';
 import { computed, useCssModule } from 'vue';
 import { I18nT } from 'vue-i18n';
 import { useRoute } from 'vue-router';

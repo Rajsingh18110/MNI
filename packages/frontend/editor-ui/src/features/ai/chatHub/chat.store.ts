@@ -3,7 +3,7 @@ import { CHAT_SESSIONS_PAGE_SIZE } from './constants';
 import { EnterpriseEditionFeature } from '@/app/constants/enterprise';
 import { computed, ref } from 'vue';
 import { v4 as uuidv4 } from 'uuid';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import {
 	fetchChatModelsApi,
 	sendMessageApi,
@@ -35,8 +35,8 @@ import {
 	updateToolApi,
 	deleteToolApi,
 } from './chat.api';
-import { useRootStore } from '@n8n/stores/useRootStore';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useRootStore } from '@MNI/stores/useRootStore';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { useCredentialsStore } from '@/features/credentials/credentials.store';
 import { useWorkflowsStore } from '@/app/stores/workflows.store';
 import { useWorkflowExecutionStateStore } from '@/app/stores/workflowExecutionState.store';
@@ -75,7 +75,7 @@ import {
 	PROVIDER_CREDENTIAL_TYPE_MAP,
 	type ChatHubN8nModel,
 	type ChatHubSessionType,
-} from '@n8n/api-types';
+} from '@MNI/api-types';
 import type {
 	CredentialsMap,
 	ChatMessage,
@@ -85,7 +85,7 @@ import type {
 	SemanticSearchReadiness,
 	SemanticSearchCredentialIssue,
 } from './chat.types';
-import { retry } from '@n8n/utils/retry';
+import { retry } from '@MNI/utils/retry';
 import {
 	buildUiMessages,
 	createSessionFromStreamingState,
@@ -96,14 +96,14 @@ import {
 	createFakeAgent,
 	chunkFilesBySize,
 } from './chat.utils';
-import { useToast } from '@n8n/composables/useToast';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
-import { createRunExecutionData, deepCopy, type INode } from 'n8n-workflow';
+import { useToast } from '@MNI/composables/useToast';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
+import { createRunExecutionData, deepCopy, type INode } from 'MNI-workflow';
 import { IN_PROGRESS_EXECUTION_ID, CHAT_TRIGGER_NODE_TYPE } from '@/app/constants';
 import { convertFileToBinaryData } from '@/app/utils/fileUtils';
-import { ResponseError } from '@n8n/rest-api-client';
-import { STORES } from '@n8n/stores/constants';
-import { appendChunkToParsedMessageItems, DEFAULT_SEMANTIC_SEARCH_SETTINGS } from '@n8n/chat-hub';
+import { ResponseError } from '@MNI/rest-api-client';
+import { STORES } from '@MNI/stores/constants';
+import { appendChunkToParsedMessageItems, DEFAULT_SEMANTIC_SEARCH_SETTINGS } from '@MNI/chat-hub';
 
 export const useChatStore = defineStore(STORES.CHAT_HUB, () => {
 	const rootStore = useRootStore();

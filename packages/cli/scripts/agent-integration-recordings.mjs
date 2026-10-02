@@ -25,7 +25,7 @@ function parseArgs(argv) {
 function recordingDir(cliRecordingDir) {
 	return (
 		cliRecordingDir ??
-		process.env.N8N_AGENT_INTEGRATION_RECORDING_DIR ??
+		process.env.MNI_AGENT_INTEGRATION_RECORDING_DIR ??
 		resolve(process.cwd(), '.agent-recordings', 'channel-integrations')
 	);
 }
@@ -85,7 +85,7 @@ Options:
   --output-dir, -o     Directory to write exported JSON files. If omitted, export prints to stdout
 
 Environment:
-  N8N_AGENT_INTEGRATION_RECORDING_DIR  Directory containing recording JSONL files
+  MNI_AGENT_INTEGRATION_RECORDING_DIR  Directory containing recording JSONL files
 `);
 }
 

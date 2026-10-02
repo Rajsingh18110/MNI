@@ -1,4 +1,4 @@
-import type { User, WorkflowEntity } from '@n8n/db';
+import type { User, WorkflowEntity } from '@MNI/db';
 import { mock } from 'vitest-mock-extended';
 
 import type { WorkflowFinderService } from '@/workflows/workflow-finder.service';
@@ -17,10 +17,10 @@ function wf(overrides: Partial<WorkflowEntity>): WorkflowEntity {
 }
 
 const executeWorkflowTrigger = {
-	type: 'n8n-nodes-base.executeWorkflowTrigger',
+	type: 'MNI-nodes-base.executeWorkflowTrigger',
 } as WorkflowEntity['nodes'][number];
-const manualTrigger = { type: 'n8n-nodes-base.manualTrigger' } as WorkflowEntity['nodes'][number];
-const noTrigger = { type: 'n8n-nodes-base.set' } as WorkflowEntity['nodes'][number];
+const manualTrigger = { type: 'MNI-nodes-base.manualTrigger' } as WorkflowEntity['nodes'][number];
+const noTrigger = { type: 'MNI-nodes-base.set' } as WorkflowEntity['nodes'][number];
 
 function setup() {
 	const workflowFinderService = mock<WorkflowFinderService>();

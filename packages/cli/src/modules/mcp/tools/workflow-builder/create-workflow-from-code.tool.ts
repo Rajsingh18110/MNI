@@ -1,18 +1,18 @@
-import type { Logger } from '@n8n/backend-common';
+import type { Logger } from '@MNI/backend-common';
 import {
 	type Folder,
 	type Project,
 	type ProjectRepository,
 	type User,
 	WorkflowEntity,
-} from '@n8n/db';
+} from '@MNI/db';
 import z from 'zod';
 
 import type { CredentialsService } from '@/credentials/credentials.service';
 import type { DataTableUserOperations } from '@/modules/data-table/data-table-proxy.service';
 import type { NodeTypes } from '@/node-types';
 import type { AiGatewayService } from '@/services/ai-gateway.service';
-import type { UrlService } from '@n8n/backend-services';
+import type { UrlService } from '@MNI/backend-services';
 import type { WorkflowCreationService } from '@/workflows/workflow-creation.service';
 import type { WorkflowFinderService } from '@/workflows/workflow-finder.service';
 
@@ -397,7 +397,7 @@ export const createCreateWorkflowFromCodeTool = (
 
 		try {
 			const { ParseValidateHandler, stripImportStatements } = await import(
-				'@n8n/ai-workflow-builder'
+				'@MNI/ai-workflow-builder'
 			);
 
 			const handler = new ParseValidateHandler({
@@ -501,7 +501,7 @@ export const createCreateWorkflowFromCodeTool = (
 			const savedWorkflow = await workflowCreationService.createWorkflow(user, newWorkflow, {
 				projectId: effectiveProjectId,
 				parentFolderId: folderId,
-				source: 'n8n-mcp',
+				source: 'MNI-mcp',
 				versionName: versionMetadata.name,
 				versionDescription: versionMetadata.description,
 			});

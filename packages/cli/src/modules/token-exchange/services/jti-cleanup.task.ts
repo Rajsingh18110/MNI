@@ -1,6 +1,6 @@
-import { Logger } from '@n8n/backend-common';
-import { intervalFromSeconds, SystemTask } from '@n8n/decorators';
-import type { SystemTaskEffects, SystemTaskPlacement, SystemTaskSchedule } from '@n8n/decorators';
+import { Logger } from '@MNI/backend-common';
+import { intervalFromSeconds, SystemTask } from '@MNI/decorators';
+import type { SystemTaskEffects, SystemTaskPlacement, SystemTaskSchedule } from '@MNI/decorators';
 
 import { TokenExchangeJtiRepository } from '../database/repositories/token-exchange-jti.repository';
 import { TokenExchangeConfig } from '../token-exchange.config';

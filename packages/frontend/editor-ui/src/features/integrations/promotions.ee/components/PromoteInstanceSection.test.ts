@@ -1,6 +1,6 @@
 import { createTestingPinia } from '@pinia/testing';
-import type { IUser } from '@n8n/rest-api-client';
-import { useUsersStore } from '@n8n/stores/users.store';
+import type { IUser } from '@MNI/rest-api-client';
+import { useUsersStore } from '@MNI/stores/users.store';
 import { mock } from 'vitest-mock-extended';
 
 import { createComponentRenderer } from '@/__tests__/render';

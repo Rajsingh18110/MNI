@@ -1,7 +1,7 @@
 import { addInfoRenderer, escape } from '../utils';
 import { addVarType } from '@/features/settings/environments.ee/completions/variables.completions';
 import type { Completion, CompletionContext, CompletionResult } from '@codemirror/autocomplete';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import { matchBeforeCursor } from './utils';
 
 export function useExecutionCompletions() {

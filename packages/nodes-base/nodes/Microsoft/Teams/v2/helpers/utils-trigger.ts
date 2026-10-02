@@ -1,6 +1,6 @@
 import { randomBytes } from 'crypto';
-import type { IHookFunctions, IDataObject, IWebhookFunctions } from 'n8n-workflow';
-import { NodeOperationError } from 'n8n-workflow';
+import type { IHookFunctions, IDataObject, IWebhookFunctions } from 'MNI-workflow';
+import { NodeOperationError } from 'MNI-workflow';
 
 import type { TeamResponse, ChannelResponse, SubscriptionResponse } from './types';
 import { verifySignature as verifySignatureGeneric } from '../../../../../utils/webhook-signature-verification';

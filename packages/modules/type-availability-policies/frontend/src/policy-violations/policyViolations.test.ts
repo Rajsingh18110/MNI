@@ -3,17 +3,17 @@ import { describe, expect, it } from 'vitest';
 import { getPolicyViolations } from './policyViolations';
 
 const saveRefused403 = {
-	message: 'Node type "n8n-nodes-base.slack" is blocked by an instance policy',
+	message: 'Node type "MNI-nodes-base.slack" is blocked by an instance policy',
 	meta: {
 		violations: [
 			{
 				kind: 'node-type-unavailable',
 				checkId: 'node-type-availability',
-				message: 'Node type "n8n-nodes-base.slack" is blocked by an instance policy',
-				subject: 'n8n-nodes-base.slack',
+				message: 'Node type "MNI-nodes-base.slack" is blocked by an instance policy',
+				subject: 'MNI-nodes-base.slack',
 				subjectType: 'nodeType',
 				scope: 'instance',
-				matchedRuleId: 'deny-n8n-nodes-base.slack',
+				matchedRuleId: 'deny-MNI-nodes-base.slack',
 			},
 		],
 	},

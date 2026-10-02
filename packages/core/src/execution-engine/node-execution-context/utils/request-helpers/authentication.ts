@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
 
-import { OutboundHttp, removeEmptyBody } from '@n8n/backend-network';
-import { Container } from '@n8n/di';
+import { OutboundHttp, removeEmptyBody } from '@MNI/backend-network';
+import { Container } from '@MNI/di';
 import type {
 	IAdditionalCredentialOptions,
 	IAllExecuteFunctions,
@@ -12,8 +12,8 @@ import type {
 	IRequestOptions,
 	IWorkflowExecuteAdditionalData,
 	Workflow,
-} from 'n8n-workflow';
-import { ExecutionBaseError, NodeApiError, NodeOperationError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { ExecutionBaseError, NodeApiError, NodeOperationError } from 'MNI-workflow';
 
 import { callEvalMockHandler, normalizeLegacyRequest } from '@/execution-engine/eval-mock-helpers';
 

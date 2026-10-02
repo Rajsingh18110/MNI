@@ -42,7 +42,7 @@ test.describe(
 			);
 
 			// Restart the main container in place (same writable layer + DB).
-			const [main] = n8nContainer.findContainers(/-n8n(-main-\d+)?$/);
+			const [main] = n8nContainer.findContainers(/-MNI(-main-\d+)?$/);
 			expect(main, 'main MNI container should be found').toBeDefined();
 			await main.restart();
 

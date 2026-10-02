@@ -1,4 +1,4 @@
-import { i18n } from '@n8n/i18n';
+import { i18n } from '@MNI/i18n';
 import { register } from 'timeago.js';
 
 // index: position in the timeago.js locale table; each row is [past, future]

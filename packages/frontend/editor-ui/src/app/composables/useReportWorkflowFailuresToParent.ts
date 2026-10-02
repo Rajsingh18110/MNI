@@ -1,6 +1,6 @@
 import { onBeforeUnmount } from 'vue';
 import { useRoute } from 'vue-router';
-import type { IRunData } from 'n8n-workflow';
+import type { IRunData } from 'MNI-workflow';
 import { VIEWS } from '@/app/constants';
 import { createExecutionDataId, useExecutionDataStore } from '@/app/stores/executionData.store';
 import { usePushConnectionStore } from '@/app/stores/pushConnection.store';

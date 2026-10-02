@@ -1,4 +1,4 @@
-import { isRecord } from '@n8n/utils/is-record';
+import { isRecord } from '@MNI/utils/is-record';
 
 import { INTEGRATION_ERROR_CODES, type IntegrationErrorCode } from './integration-error-codes';
 import type { IntegrationActionResult } from './integration-tool-types';

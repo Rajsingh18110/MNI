@@ -1,7 +1,7 @@
-import { Logger } from '@n8n/backend-common';
-import { Service } from '@n8n/di';
+import { Logger } from '@MNI/backend-common';
+import { Service } from '@MNI/di';
 import { createHmac, timingSafeEqual } from 'crypto';
-import type { ICredentialContext } from 'n8n-workflow';
+import type { ICredentialContext } from 'MNI-workflow';
 import { parse as parseQueryString } from 'querystring';
 import { z } from 'zod';
 

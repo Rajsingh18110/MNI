@@ -1,4 +1,4 @@
-import type { IWebhookFunctions } from 'n8n-workflow';
+import type { IWebhookFunctions } from 'MNI-workflow';
 
 import { TaigaTrigger } from '../TaigaTrigger.node';
 import { verifySignature } from '../TaigaTriggerHelpers';

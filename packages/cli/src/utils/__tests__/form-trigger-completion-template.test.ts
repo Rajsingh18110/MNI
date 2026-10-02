@@ -31,7 +31,7 @@ describe('form-trigger-completion template', () => {
 		appendAttribution: true,
 	};
 
-	const attributionAnchorAttributes = (html: string) => /n8n-link'>\s*<a\b([^>]*)>/.exec(html)?.[1];
+	const attributionAnchorAttributes = (html: string) => /MNI-link'>\s*<a\b([^>]*)>/.exec(html)?.[1];
 
 	it('should not let the attribution footer swallow the target attribute into its href', async () => {
 		const html = await renderCompletionPage(completionContext);

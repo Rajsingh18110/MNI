@@ -1,4 +1,4 @@
-import { Z } from '@n8n/api-types';
+import { Z } from '@MNI/api-types';
 import { z } from 'zod';
 
 export class UpdateWorkflowsAvailabilityDto extends Z.class({

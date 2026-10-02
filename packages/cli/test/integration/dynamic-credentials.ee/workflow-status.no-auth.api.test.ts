@@ -1,14 +1,14 @@
-import { LicenseState } from '@n8n/backend-common';
-import { mockInstance, getPersonalProject, testDb } from '@n8n/backend-test-utils';
+import { LicenseState } from '@MNI/backend-common';
+import { mockInstance, getPersonalProject, testDb } from '@MNI/backend-test-utils';
 import {
 	GLOBAL_OWNER_ROLE,
 	WorkflowRepository,
 	SharedWorkflowRepository,
 	WorkflowEntity,
-} from '@n8n/db';
-import { Container } from '@n8n/di';
-import { InstanceSettings } from 'n8n-core';
-import type { INode } from 'n8n-workflow';
+} from '@MNI/db';
+import { Container } from '@MNI/di';
+import { InstanceSettings } from 'MNI-core';
+import type { INode } from 'MNI-workflow';
 import nock from 'nock';
 import { v4 as uuid } from 'uuid';
 import type { MockInstance } from 'vitest';
@@ -16,7 +16,7 @@ import { mock } from 'vitest-mock-extended';
 
 import { DynamicCredentialsConfig } from '@/modules/dynamic-credentials.ee/dynamic-credentials.config';
 import { DynamicCredentialResolverService } from '@/modules/dynamic-credentials.ee/services/credential-resolver.service';
-import { N8nResolverSeeder } from '@/modules/dynamic-credentials.ee/services/n8n-resolver-seeder.service';
+import { N8nResolverSeeder } from '@/modules/dynamic-credentials.ee/services/MNI-resolver-seeder.service';
 import { Telemetry } from '@/telemetry';
 
 import { createCredentials } from '../shared/db/credentials';
@@ -29,7 +29,7 @@ const licenseMock = mock<LicenseState>();
 licenseMock.isLicensed.mockReturnValue(true);
 Container.set(LicenseState, licenseMock);
 
-process.env.N8N_ENV_FEAT_DYNAMIC_CREDENTIALS = 'true';
+process.env.MNI_ENV_FEAT_DYNAMIC_CREDENTIALS = 'true';
 
 mockInstance(DynamicCredentialsConfig, {
 	corsOrigin: 'https://app.example.com',
@@ -75,7 +75,7 @@ const setupWorkflow = async () => {
 	const node: INode = {
 		id: uuid(),
 		name: 'Test Node',
-		type: 'n8n-nodes-base.httpRequest',
+		type: 'MNI-nodes-base.httpRequest',
 		typeVersion: 1,
 		position: [0, 0],
 		parameters: {},

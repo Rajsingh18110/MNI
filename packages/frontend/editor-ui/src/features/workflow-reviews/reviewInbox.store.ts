@@ -5,11 +5,11 @@ import type {
 	WorkflowReviewRequestDetail,
 	WorkflowReviewRequestState,
 	WorkflowReviewInboxItem,
-} from '@n8n/api-types';
-import { ResponseError } from '@n8n/rest-api-client';
+} from '@MNI/api-types';
+import { ResponseError } from '@MNI/rest-api-client';
 import { computed, ref } from 'vue';
 
-import { useRootStore } from '@n8n/stores/useRootStore';
+import { useRootStore } from '@MNI/stores/useRootStore';
 
 import {
 	decideWorkflowReviewRequest,

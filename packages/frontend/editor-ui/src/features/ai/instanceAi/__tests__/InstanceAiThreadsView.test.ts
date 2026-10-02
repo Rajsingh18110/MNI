@@ -1,4 +1,4 @@
-import { N8nInput } from '@n8n/design-system';
+import { N8nInput } from '@MNI/design-system';
 import userEvent from '@testing-library/user-event';
 import { shallowMount } from '@vue/test-utils';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
@@ -28,7 +28,7 @@ const { showError, showMessage } = vi.hoisted(() => ({
 	showMessage: vi.fn(),
 }));
 
-vi.mock('@n8n/composables/useToast', () => ({ useToast: () => ({ showError, showMessage }) }));
+vi.mock('@MNI/composables/useToast', () => ({ useToast: () => ({ showError, showMessage }) }));
 vi.mock('@/app/composables/useDocumentTitle', () => ({
 	useDocumentTitle: () => ({ set: vi.fn() }),
 }));

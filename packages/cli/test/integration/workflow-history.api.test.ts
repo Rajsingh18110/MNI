@@ -1,8 +1,8 @@
-import { LicenseState } from '@n8n/backend-common';
-import { createWorkflow, mockInstance, testDb } from '@n8n/backend-test-utils';
-import type { User, WorkflowHistory } from '@n8n/db';
-import { Container } from '@n8n/di';
-import type { IConnections, INode } from 'n8n-workflow';
+import { LicenseState } from '@MNI/backend-common';
+import { createWorkflow, mockInstance, testDb } from '@MNI/backend-test-utils';
+import type { User, WorkflowHistory } from '@MNI/db';
+import { Container } from '@MNI/di';
+import type { IConnections, INode } from 'MNI-workflow';
 
 import { ProjectService } from '@/services/project.service.ee';
 import { createOwner, createUser } from '@test-integration/db/users';
@@ -472,7 +472,7 @@ describe('PATCH /workflow-history/workflow/:workflowId/versions/:versionId', () 
 				name: 'Original Node',
 				parameters: {},
 				position: [0, 0],
-				type: 'n8n-nodes-base.test',
+				type: 'MNI-nodes-base.test',
 				typeVersion: 1,
 			},
 		];

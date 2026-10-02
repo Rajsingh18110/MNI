@@ -1,5 +1,5 @@
-import { Logger, safeJoinPath } from '@n8n/backend-common';
-import type { TagEntity, ICredentialsDb, User } from '@n8n/db';
+import { Logger, safeJoinPath } from '@MNI/backend-common';
+import type { TagEntity, ICredentialsDb, User } from '@MNI/db';
 import {
 	Project,
 	WorkflowEntity,
@@ -11,14 +11,14 @@ import {
 	UserRepository,
 	WorkflowHistory,
 	WorkflowRepository,
-} from '@n8n/db';
-import type { PolicyCleared, PolicyViolation } from '@n8n/decorators';
-import { Service } from '@n8n/di';
-import { DataSource, EntityManager, In, type EntityMetadata } from '@n8n/typeorm';
+} from '@MNI/db';
+import type { PolicyCleared, PolicyViolation } from '@MNI/decorators';
+import { Service } from '@MNI/di';
+import { DataSource, EntityManager, In, type EntityMetadata } from '@MNI/typeorm';
 import { readdir, readFile } from 'fs/promises';
-import { Cipher } from 'n8n-core';
-import { ensureError } from '@n8n/utils/errors/ensure-error';
-import { type INode, type INodeCredentialsDetails, type IWorkflowBase } from 'n8n-workflow';
+import { Cipher } from 'MNI-core';
+import { ensureError } from '@MNI/utils/errors/ensure-error';
+import { type INode, type INodeCredentialsDetails, type IWorkflowBase } from 'MNI-workflow';
 import { v4 as uuid } from 'uuid';
 import { z } from 'zod';
 
@@ -317,7 +317,7 @@ export class ImportService {
 			(nodesByWorkflowId.get(workflowId) ?? []).some(
 				(node) =>
 					!node.disabled &&
-					node.type === 'n8n-nodes-base.executeWorkflow' &&
+					node.type === 'MNI-nodes-base.executeWorkflow' &&
 					activateIds.has(this.extractSubworkflowId(node) ?? ''),
 			),
 		);
@@ -335,7 +335,7 @@ export class ImportService {
 
 		for (const { workflowId } of toActivate) {
 			for (const node of nodesByWorkflowId.get(workflowId) ?? []) {
-				if (node.disabled || node.type !== 'n8n-nodes-base.executeWorkflow') continue;
+				if (node.disabled || node.type !== 'MNI-nodes-base.executeWorkflow') continue;
 				const calleeId = this.extractSubworkflowId(node);
 				if (!calleeId || !activateIds.has(calleeId) || calleeId === workflowId) continue;
 				dependents.get(calleeId)!.add(workflowId);

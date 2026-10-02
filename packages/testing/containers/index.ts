@@ -10,7 +10,7 @@ export { createN8NStack } from './stack';
 export type { N8NConfig, N8NStack } from './stack';
 
 export { consumeStartupFailure } from './startup-diagnostics';
-export type { N8NStartupDiagnostics } from './services/n8n';
+export type { N8NStartupDiagnostics } from './services/MNI';
 
 // K3s + Helm chart stack - for Kubernetes deployment validation
 export { createHelmStack } from './helm-stack';

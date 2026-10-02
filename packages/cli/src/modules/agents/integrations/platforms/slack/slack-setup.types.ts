@@ -1,4 +1,4 @@
-import { isRecord } from '@n8n/utils/is-record';
+import { isRecord } from '@MNI/utils/is-record';
 
 import { BadRequestError } from '@/errors/response-errors/bad-request.error';
 

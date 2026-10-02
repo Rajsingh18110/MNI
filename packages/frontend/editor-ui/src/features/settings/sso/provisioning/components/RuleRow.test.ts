@@ -2,16 +2,16 @@ import { createTestingPinia } from '@pinia/testing';
 import { screen } from '@testing-library/vue';
 import userEvent from '@testing-library/user-event';
 import { vi } from 'vitest';
-import { BLOCK_ACCESS_ASSIGNMENT } from '@n8n/api-types';
-import type { AllRolesMap } from '@n8n/permissions';
-import type { RoleMappingRuleResponse } from '@n8n/rest-api-client/api/roleMappingRule';
+import { BLOCK_ACCESS_ASSIGNMENT } from '@MNI/api-types';
+import type { AllRolesMap } from '@MNI/permissions';
+import type { RoleMappingRuleResponse } from '@MNI/rest-api-client/api/roleMappingRule';
 import RuleRow from './RuleRow.vue';
 import { createComponentRenderer } from '@/__tests__/render';
 import { hasPermission } from '@/app/utils/rbac/permissions';
 
 // Expose the grouped instance-role dropdown's items as buttons. The project
 // select is a plain N8nSelect (element-plus) and is unaffected by this mock.
-vi.mock('@n8n/design-system', async (importOriginal) => {
+vi.mock('@MNI/design-system', async (importOriginal) => {
 	const original = await importOriginal<object>();
 	return {
 		...original,

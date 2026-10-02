@@ -28,8 +28,8 @@ describe('SingleInstanceLibsRule', () => {
 	const context = (): CodeHealthContext => ({ rootDir: tmpDir });
 
 	it('flags a curated lib declared as a runtime dependency', async () => {
-		writePackage(tmpDir, 'packages/@n8n/config', {
-			name: '@n8n/config',
+		writePackage(tmpDir, 'packages/@MNI/config', {
+			name: '@MNI/config',
 			dependencies: { zod: 'catalog:' },
 		});
 		const violations = await rule.analyze(context());
@@ -39,19 +39,19 @@ describe('SingleInstanceLibsRule', () => {
 	});
 
 	it('flags a curated lib in optionalDependencies', async () => {
-		writePackage(tmpDir, 'packages/@n8n/config', {
-			name: '@n8n/config',
+		writePackage(tmpDir, 'packages/@MNI/config', {
+			name: '@MNI/config',
 			optionalDependencies: { 'form-data': 'catalog:' },
 		});
 		const violations = await rule.analyze(context());
 		expect(violations.map((v) => v.message).join()).toContain('form-data');
 	});
 
-	// `@n8n/config` is a non-host package not in REQUIRED_CURATED_PEERS, so these exercise the
+	// `@MNI/config` is a non-host package not in REQUIRED_CURATED_PEERS, so these exercise the
 	// catalog-shape check in isolation from the dropped-peer guard below.
 	it('does not flag a curated lib declared as a catalog: peerDependency', async () => {
-		writePackage(tmpDir, 'packages/@n8n/config', {
-			name: '@n8n/config',
+		writePackage(tmpDir, 'packages/@MNI/config', {
+			name: '@MNI/config',
 			peerDependencies: { zod: 'catalog:' },
 			devDependencies: { zod: 'catalog:' },
 		});
@@ -59,8 +59,8 @@ describe('SingleInstanceLibsRule', () => {
 	});
 
 	it('flags a curated peerDependency that is not catalog:', async () => {
-		writePackage(tmpDir, 'packages/@n8n/config', {
-			name: '@n8n/config',
+		writePackage(tmpDir, 'packages/@MNI/config', {
+			name: '@MNI/config',
 			peerDependencies: { zod: '^3.25.0' },
 		});
 		const violations = await rule.analyze(context());
@@ -73,8 +73,8 @@ describe('SingleInstanceLibsRule', () => {
 	it.each(['@langchain/core', 'reflect-metadata'])(
 		'flags a non-zod curated peerDependency (%s) that is not catalog:',
 		async (lib) => {
-			writePackage(tmpDir, 'packages/@n8n/config', {
-				name: '@n8n/config',
+			writePackage(tmpDir, 'packages/@MNI/config', {
+				name: '@MNI/config',
 				peerDependencies: { [lib]: '^1.0.0' },
 			});
 			const violations = await rule.analyze(context());
@@ -84,10 +84,10 @@ describe('SingleInstanceLibsRule', () => {
 		},
 	);
 
-	// Dropped-peer guard: `@n8n/api-types` is in REQUIRED_CURATED_PEERS.zod.
+	// Dropped-peer guard: `@MNI/api-types` is in REQUIRED_CURATED_PEERS.zod.
 	it('flags a required package that dropped its curated peerDependency', async () => {
-		writePackage(tmpDir, 'packages/@n8n/api-types', {
-			name: '@n8n/api-types',
+		writePackage(tmpDir, 'packages/@MNI/api-types', {
+			name: '@MNI/api-types',
 			dependencies: { lodash: '^4.0.0' },
 		});
 		const violations = await rule.analyze(context());
@@ -97,8 +97,8 @@ describe('SingleInstanceLibsRule', () => {
 	});
 
 	it('does not flag a required package that still declares its curated peer', async () => {
-		writePackage(tmpDir, 'packages/@n8n/api-types', {
-			name: '@n8n/api-types',
+		writePackage(tmpDir, 'packages/@MNI/api-types', {
+			name: '@MNI/api-types',
 			peerDependencies: { zod: 'catalog:' },
 		});
 		expect(await rule.analyze(context())).toHaveLength(0);
@@ -111,23 +111,23 @@ describe('SingleInstanceLibsRule', () => {
 
 	it('exempts frontend packages', async () => {
 		writePackage(tmpDir, 'packages/frontend/editor-ui', {
-			name: 'n8n-editor-ui',
+			name: 'MNI-editor-ui',
 			dependencies: { zod: 'catalog:' },
 		});
 		expect(await rule.analyze(context())).toHaveLength(0);
 	});
 
 	it('exempts pin-only libs (reflect-metadata)', async () => {
-		writePackage(tmpDir, 'packages/@n8n/config', {
-			name: '@n8n/config',
+		writePackage(tmpDir, 'packages/@MNI/config', {
+			name: '@MNI/config',
 			dependencies: { 'reflect-metadata': 'catalog:' },
 		});
 		expect(await rule.analyze(context())).toHaveLength(0);
 	});
 
 	it('ignores curated libs in devDependencies (catalog-violations covers those)', async () => {
-		writePackage(tmpDir, 'packages/@n8n/config', {
-			name: '@n8n/config',
+		writePackage(tmpDir, 'packages/@MNI/config', {
+			name: '@MNI/config',
 			devDependencies: { zod: 'catalog:' },
 		});
 		expect(await rule.analyze(context())).toHaveLength(0);

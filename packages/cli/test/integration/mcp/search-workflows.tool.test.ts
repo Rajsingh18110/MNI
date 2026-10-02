@@ -1,4 +1,4 @@
-import { LicenseState } from '@n8n/backend-common';
+import { LicenseState } from '@MNI/backend-common';
 import {
 	createTeamProject,
 	createWorkflow,
@@ -6,10 +6,10 @@ import {
 	mockInstance,
 	shareWorkflowWithProjects,
 	testDb,
-} from '@n8n/backend-test-utils';
-import type { Folder, Project, User } from '@n8n/db';
-import { Container } from '@n8n/di';
-import { PROJECT_ROOT } from 'n8n-workflow';
+} from '@MNI/backend-test-utils';
+import type { Folder, Project, User } from '@MNI/db';
+import { Container } from '@MNI/di';
+import { PROJECT_ROOT } from 'MNI-workflow';
 
 import { ActiveWorkflowManager } from '@/active-workflow-manager';
 import { FolderNotFoundError } from '@/errors/folder-not-found.error';

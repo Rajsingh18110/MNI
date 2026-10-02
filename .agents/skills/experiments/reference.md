@@ -48,7 +48,7 @@ Use this guide for code under `packages/frontend/editor-ui/src/experiments/` and
 - Add the experiment constant in `packages/frontend/editor-ui/src/app/constants/experiments.ts`.
 - Add the experiment name to `EXPERIMENTS_TO_TRACK`.
 - Create `packages/frontend/editor-ui/src/experiments/<name>/`.
-- For store-backed experiments, add a `STORES.EXPERIMENT_*` entry in `packages/frontend/@n8n/stores/src/constants.ts`, then create `stores/<name>.store.ts` and `stores/<name>.store.test.ts`.
+- For store-backed experiments, add a `STORES.EXPERIMENT_*` entry in `packages/frontend/@MNI/stores/src/constants.ts`, then create `stores/<name>.store.ts` and `stores/<name>.store.test.ts`.
 - For tiny stateless experiments, create a focused composable such as `use<Name>Experiment.ts` with an adjacent test when the logic is non-trivial.
 - If persisted UI state, telemetry helpers, cross-component state, or reset behavior is needed, use the store path.
 

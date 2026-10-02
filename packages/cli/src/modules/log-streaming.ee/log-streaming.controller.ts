@@ -3,12 +3,12 @@ import {
 	DeleteDestinationQueryDto,
 	GetDestinationQueryDto,
 	TestDestinationQueryDto,
-} from '@n8n/api-types';
-import { OutboundHttp } from '@n8n/backend-network';
-import { InstanceSettingsLoaderConfig } from '@n8n/config';
-import type { AuthenticatedRequest } from '@n8n/db';
-import { Delete, Get, GlobalScope, Licensed, Post, Query, RestController } from '@n8n/decorators';
-import type { MessageEventBusDestinationOptions } from 'n8n-workflow';
+} from '@MNI/api-types';
+import { OutboundHttp } from '@MNI/backend-network';
+import { InstanceSettingsLoaderConfig } from '@MNI/config';
+import type { AuthenticatedRequest } from '@MNI/db';
+import { Delete, Get, GlobalScope, Licensed, Post, Query, RestController } from '@MNI/decorators';
+import type { MessageEventBusDestinationOptions } from 'MNI-workflow';
 
 import { CredentialsFinderService } from '@/credentials/credentials-finder.service';
 import { BadRequestError } from '@/errors/response-errors/bad-request.error';

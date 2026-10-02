@@ -1,5 +1,5 @@
-import type { WorkflowPublicationStatusMessage } from '@n8n/api-types';
-import { Logger } from '@n8n/backend-common';
+import type { WorkflowPublicationStatusMessage } from '@MNI/api-types';
+import { Logger } from '@MNI/backend-common';
 import {
 	WorkflowPublicationOutbox,
 	WorkflowPublicationOutboxRepository,
@@ -7,11 +7,11 @@ import {
 	WorkflowPublicationTriggerStatusRepository,
 	TransactionRunner,
 	type TriggerStatusRow,
-} from '@n8n/db';
-import { OnPubSubEvent } from '@n8n/decorators';
-import { Service } from '@n8n/di';
-import { ErrorReporter } from 'n8n-core';
-import { OperationalError } from 'n8n-workflow';
+} from '@MNI/db';
+import { OnPubSubEvent } from '@MNI/decorators';
+import { Service } from '@MNI/di';
+import { ErrorReporter } from 'MNI-core';
+import { OperationalError } from 'MNI-workflow';
 
 import { ActivationErrorsService } from '@/activation-errors.service';
 import { isPolicyRefusal } from '@/policy/policy-violation.error';

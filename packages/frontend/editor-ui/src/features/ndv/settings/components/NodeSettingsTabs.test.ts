@@ -3,7 +3,7 @@ import { createComponentRenderer } from '@/__tests__/render';
 import { createTestingPinia } from '@pinia/testing';
 import NodeSettingsTabs from './NodeSettingsTabs.vue';
 import { ref } from 'vue';
-import type { PublicInstalledPackage } from 'n8n-workflow';
+import type { PublicInstalledPackage } from 'MNI-workflow';
 
 const renderComponent = createComponentRenderer(NodeSettingsTabs);
 const installedPackage = ref<PublicInstalledPackage>();

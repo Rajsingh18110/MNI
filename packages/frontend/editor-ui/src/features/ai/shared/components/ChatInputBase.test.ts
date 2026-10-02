@@ -8,7 +8,7 @@ import {
 	MAX_ATTACHMENT_BASE64_BYTES,
 	MAX_TOTAL_ATTACHMENT_BASE64_BYTES,
 	MAX_TOTAL_ATTACHMENT_DECODED_BYTES,
-} from '@n8n/api-types';
+} from '@MNI/api-types';
 
 const mockStart = vi.fn();
 const mockStop = vi.fn();
@@ -18,7 +18,7 @@ const mockResult = ref('');
 const mockIsFinal = ref(false);
 
 const mockShowError = vi.fn();
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: () => ({ showError: mockShowError, showMessage: vi.fn() }),
 }));
 

@@ -1,6 +1,6 @@
 import flatted from 'flatted';
 import { readFileSync } from 'fs';
-import type { IWorkflowBase } from 'n8n-workflow';
+import type { IWorkflowBase } from 'MNI-workflow';
 
 import { test, expect } from '../../../../../fixtures/base';
 import type { ApiHelpers } from '../../../../../services/api-helper';
@@ -120,7 +120,7 @@ test.describe('CAT-1801: Parent receives correct data from child with wait node'
 
 		// Update Execute Workflow node to reference the child
 		const executeWorkflowNode = parentDefinition.nodes.find(
-			(n) => n.type === 'n8n-nodes-base.executeWorkflow',
+			(n) => n.type === 'MNI-nodes-base.executeWorkflow',
 		)!;
 		executeWorkflowNode.parameters.workflowId = { value: childWorkflowId, mode: 'list' };
 
@@ -184,7 +184,7 @@ test.describe('CAT-3263: Parent receives error from child with wait node', () =>
 		const parentDefinition = JSON.parse(parentContent) as IWorkflowBase;
 
 		const executeWorkflowNode = parentDefinition.nodes.find(
-			(n) => n.type === 'n8n-nodes-base.executeWorkflow',
+			(n) => n.type === 'MNI-nodes-base.executeWorkflow',
 		)!;
 		executeWorkflowNode.parameters.workflowId = { value: childWorkflowId, mode: 'list' };
 
@@ -231,7 +231,7 @@ test.describe('CAT-1929: Parent should not resume until child with multiple wait
 
 		// Update Execute Workflow node to reference the child
 		const executeWorkflowNode = parentDefinition.nodes.find(
-			(n) => n.type === 'n8n-nodes-base.executeWorkflow',
+			(n) => n.type === 'MNI-nodes-base.executeWorkflow',
 		)!;
 		executeWorkflowNode.parameters.workflowId = { value: childWorkflowId, mode: 'list' };
 

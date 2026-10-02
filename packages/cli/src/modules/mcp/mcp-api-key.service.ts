@@ -1,9 +1,9 @@
-import { ApiKey, ApiKeyRepository, User } from '@n8n/db';
-import { Service } from '@n8n/di';
-import { EntityManager } from '@n8n/typeorm';
+import { ApiKey, ApiKeyRepository, User } from '@MNI/db';
+import { Service } from '@MNI/di';
+import { EntityManager } from '@MNI/typeorm';
 import { randomUUID } from 'crypto';
-import { ensureError } from '@n8n/utils/errors/ensure-error';
-import { ApiKeyAudience } from 'n8n-workflow';
+import { ensureError } from '@MNI/utils/errors/ensure-error';
+import { ApiKeyAudience } from 'MNI-workflow';
 
 import { AuthStrategyRegistry } from '@/services/auth-strategy.registry';
 import { JwtService } from '@/services/jwt.service';

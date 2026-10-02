@@ -1,5 +1,5 @@
 import { createVerify, X509Certificate } from 'crypto';
-import type { IDataObject, IHttpRequestOptions, IWebhookFunctions } from 'n8n-workflow';
+import type { IDataObject, IHttpRequestOptions, IWebhookFunctions } from 'MNI-workflow';
 
 export interface AwsSnsMessage extends IDataObject {
 	Type: string;

@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Stale-branch cleanup for n8n-io/n8n.
+ * Stale-branch cleanup for MNI-io/MNI.
  *
  * Decides, per branch, whether to KEEP or DELETE and prints the reasoning
  * (age, ruleset protection, default branch). Dry-run is the DEFAULT — nothing
@@ -409,7 +409,7 @@ async function main() {
 			Authorization: `Bearer ${token}`,
 			Accept: 'application/vnd.github+json',
 			'X-GitHub-Api-Version': '2022-11-28',
-			'User-Agent': 'n8n-stale-branches',
+			'User-Agent': 'MNI-stale-branches',
 		},
 	};
 

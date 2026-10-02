@@ -9,8 +9,8 @@ export interface IAttachment {
  * button builder and the webhook consumer so a typo can't silently desync (which would
  * fail closed to "declined").
  */
-export const HITL_APPROVE_ACTION_ID = 'n8n_hitl_approve';
-export const HITL_DECLINE_ACTION_ID = 'n8n_hitl_decline';
+export const HITL_APPROVE_ACTION_ID = 'MNI_hitl_approve';
+export const HITL_DECLINE_ACTION_ID = 'MNI_hitl_decline';
 
 // Used for SendAndWaitMessage
 export interface TextBlock {

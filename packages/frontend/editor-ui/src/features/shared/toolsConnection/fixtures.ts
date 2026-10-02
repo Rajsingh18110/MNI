@@ -35,7 +35,7 @@ const connectedNotion: McpServerConnectionItem = {
 		excludedTools: ['notion.update-database'],
 	},
 	longDescription:
-		'Notion MCP helps you plug tools into your Notion workspace, allowing you to create, edit, search and organize content directly from n8n. Get contextual and relevant assistance from MNI, while keeping knowledge organized in Notion.',
+		'Notion MCP helps you plug tools into your Notion workspace, allowing you to create, edit, search and organize content directly from MNI. Get contextual and relevant assistance from MNI, while keeping knowledge organized in Notion.',
 	publisher: { name: 'Notion', url: 'https://www.notion.so' },
 	version: '1.24',
 	docsUrl: 'https://developers.notion.com/',
@@ -132,7 +132,7 @@ const availableGithub: McpServerConnectionItem = {
 	status: 'none',
 	credentials: [{ authType: 'mcpOAuth2Api', required: true }],
 	longDescription:
-		'The GitHub MCP server lets agents triage issues, draft pull requests, and run common repository workflows from inside n8n.',
+		'The GitHub MCP server lets agents triage issues, draft pull requests, and run common repository workflows from inside MNI.',
 	publisher: { name: 'GitHub', url: 'https://github.com' },
 	version: '0.3',
 	docsUrl: 'https://docs.github.com/en/rest',
@@ -200,7 +200,7 @@ const availableOpenAi: NodeConnectionItem = {
 	description: 'Message an assistant or GPT, analyze images, generate audio, etc.',
 	iconSource: { type: 'file', src: ICON.openai },
 	status: 'none',
-	nodeTypeName: '@n8n/n8n-nodes-langchain.openAi',
+	nodeTypeName: '@MNI/MNI-nodes-langchain.openAi',
 	credentials: [{ authType: 'openAiApi', required: true }],
 	longDescription:
 		"Talk to OpenAI from inside an agent run — message an assistant, transcribe audio, generate images, or call any of OpenAI's chat/completion endpoints. Best for one-off LLM calls inside multi-step flows; for the agent's primary model use the Model section instead.",
@@ -212,7 +212,7 @@ const availableMultiCredentialHttp: NodeConnectionItem = {
 	title: 'HTTP Request',
 	description: 'Make HTTP requests with OAuth2 or a bearer token.',
 	status: 'none',
-	nodeTypeName: 'n8n-nodes-base.httpRequestTool',
+	nodeTypeName: 'MNI-nodes-base.httpRequestTool',
 	credentials: [
 		{ authType: 'oAuth2Api', required: false },
 		{ authType: 'httpBearerAuth', required: false },
@@ -227,7 +227,7 @@ const availableGemini: NodeConnectionItem = {
 	description: 'Interact with Google Gemini AI models.',
 	iconSource: { type: 'file', src: ICON.gemini },
 	status: 'none',
-	nodeTypeName: '@n8n/n8n-nodes-langchain.googleGemini',
+	nodeTypeName: '@MNI/MNI-nodes-langchain.googleGemini',
 };
 
 const availableGoogleSheets: NodeConnectionItem = {
@@ -238,7 +238,7 @@ const availableGoogleSheets: NodeConnectionItem = {
 	description: 'Read, update and write data to Google Sheets.',
 	iconSource: { type: 'file', src: ICON.googleSheets },
 	status: 'none',
-	nodeTypeName: 'n8n-nodes-base.googleSheetsTool',
+	nodeTypeName: 'MNI-nodes-base.googleSheetsTool',
 	longDescription:
 		'Read or write rows in a Google Sheet. The agent can append new rows, look up data by query, update existing values, and delete rows when asked. Best for tabular data that needs to be shared with a team or kept in sync with other Sheets-based tools.',
 	credentials: [
@@ -254,7 +254,7 @@ const availableCommunityFirecrawl: NodeConnectionItem = {
 	title: 'Firecrawl',
 	description: 'Scrape and crawl sites into LLM-ready markdown.',
 	status: 'none',
-	nodeTypeName: 'n8n-nodes-firecrawl.firecrawlTool',
+	nodeTypeName: 'MNI-nodes-firecrawl.firecrawlTool',
 	verified: true,
 	communityPreview: true,
 	credentials: [{ authType: 'firecrawlApi', required: true }],

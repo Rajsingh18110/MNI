@@ -3,9 +3,9 @@ import {
 	BaseRepository,
 	TransactionRunner,
 	WorkflowEntity,
-} from '@n8n/db';
-import { Service } from '@n8n/di';
-import { DataSource, In, type EntityManager } from '@n8n/typeorm';
+} from '@MNI/db';
+import { Service } from '@MNI/di';
+import { DataSource, In, type EntityManager } from '@MNI/typeorm';
 
 import { AgentHistory } from '../entities/agent-history.entity';
 import { AgentWorkflowDependency } from '../entities/agent-workflow-dependency.entity';

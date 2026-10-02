@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { ref, computed, watch, nextTick } from 'vue';
-import { N8nCallout, N8nIcon, N8nOption, N8nSelect, N8nText } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
-import type { AgentTelegramIntegrationSettings } from '@n8n/api-types';
+import { N8nCallout, N8nIcon, N8nOption, N8nSelect, N8nText } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
+import type { AgentTelegramIntegrationSettings } from '@MNI/api-types';
 
 import AgentSessionIdleTimeoutField from './AgentSessionIdleTimeoutField.vue';
 import {

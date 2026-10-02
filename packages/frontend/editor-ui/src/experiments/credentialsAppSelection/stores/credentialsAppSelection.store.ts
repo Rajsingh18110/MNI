@@ -1,14 +1,14 @@
-import { useTelemetry } from '@n8n/composables/useTelemetry';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
 import { CREDENTIALS_APP_SELECTION_EXPERIMENT } from '@/app/constants';
-import { useCloudPlanStore } from '@n8n/stores/cloudPlan.store';
+import { useCloudPlanStore } from '@MNI/stores/cloudPlan.store';
 import { usePostHog } from '@/app/stores/posthog.store';
 import { useCredentialsStore } from '@/features/credentials/credentials.store';
-import { useStorage } from '@n8n/composables/useStorage';
-import { STORES } from '@n8n/stores';
+import { useStorage } from '@MNI/composables/useStorage';
+import { STORES } from '@MNI/stores';
 import { defineStore } from 'pinia';
 import { computed } from 'vue';
 
-const APP_SELECTION_DISMISSED_KEY = 'N8N_APP_SELECTION_DISMISSED';
+const APP_SELECTION_DISMISSED_KEY = 'MNI_APP_SELECTION_DISMISSED';
 
 export const useCredentialsAppSelectionStore = defineStore(
 	STORES.EXPERIMENT_CREDENTIALS_APP_SELECTION,

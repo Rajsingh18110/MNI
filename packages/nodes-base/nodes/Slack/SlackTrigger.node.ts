@@ -11,7 +11,7 @@ import {
 	type IWebhookResponseData,
 	type IBinaryKeyData,
 	NodeConnectionTypes,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { downloadFile, getChannelInfo, getUserInfo, verifySignature } from './SlackTriggerHelpers';
 import { formatUserLabel, slackApiRequestAllItems } from './V2/GenericFunctions';
@@ -53,7 +53,7 @@ export class SlackTrigger implements INodeType {
 			},
 			{
 				displayName:
-					'Set up a webhook in your Slack app to enable this node. <a href="https://docs.n8n.io/integrations/builtin/credentials/slack/#slack-trigger-configuration" target="_blank">More info</a>. We also recommend setting up a <a href="https://docs.n8n.io/integrations/builtin/trigger-nodes/n8n-nodes-base.slacktrigger/#verify-the-webhook" target="_blank">signing secret</a> to ensure the authenticity of requests.',
+					'Set up a webhook in your Slack app to enable this node. <a href="https://docs.n8n.io/integrations/builtin/credentials/slack/#slack-trigger-configuration" target="_blank">More info</a>. We also recommend setting up a <a href="https://docs.n8n.io/integrations/builtin/trigger-nodes/MNI-nodes-base.slacktrigger/#verify-the-webhook" target="_blank">signing secret</a> to ensure the authenticity of requests.',
 				name: 'notice',
 				type: 'notice',
 				default: '',

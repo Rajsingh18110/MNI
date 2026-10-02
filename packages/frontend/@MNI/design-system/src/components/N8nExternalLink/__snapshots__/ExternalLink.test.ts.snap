@@ -1,0 +1,15 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`components > N8nExternalLink > should render correctly with href 1`] = `
+"<a href="https://n8n.io" target="_blank" rel="noopener noreferrer" class="link">
+  <MNI-icon-stub icon="external-link" spin="false"></MNI-icon-stub>
+</a>"
+`;
+
+exports[`components > N8nExternalLink > should render correctly with slot content 1`] = `"<a href="https://n8n.io" target="_blank" rel="noopener noreferrer" class="link">Visit MNI<MNI-icon-stub icon="external-link" spin="false"></MNI-icon-stub></a>"`;
+
+exports[`components > N8nExternalLink > should render correctly without href 1`] = `
+"<button class="link">
+  <MNI-icon-stub icon="external-link" spin="false"></MNI-icon-stub>
+</button>"
+`;

@@ -4,14 +4,14 @@ import { EXPERIMENT_TEMPLATE_RECO_V2_KEY } from '@/app/constants';
 import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';
 import { useUIStore } from '@/app/stores/ui.store';
 import { useTemplatesStore } from '@/features/workflows/templates/templates.store';
-import type { ITemplatesWorkflowFull } from '@n8n/rest-api-client';
+import type { ITemplatesWorkflowFull } from '@MNI/rest-api-client';
 import { computed, ref, watchEffect } from 'vue';
 import { usePersonalizedTemplatesV2Store } from '../stores/templateRecoV2.store';
 import TemplateCard from './TemplateCard.vue';
 import YoutubeCard from './YoutubeCard.vue';
 import NodeIcon from '@/app/components/NodeIcon.vue';
-import { useI18n } from '@n8n/i18n';
-import { N8nLink, N8nSegmentControl, N8nSpinner, N8nText } from '@n8n/design-system';
+import { useI18n } from '@MNI/i18n';
+import { N8nLink, N8nSegmentControl, N8nSpinner, N8nText } from '@MNI/design-system';
 
 const props = defineProps<{
 	modalName: string;

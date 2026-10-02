@@ -1,4 +1,4 @@
-import type { INodeProperties } from 'n8n-workflow';
+import type { INodeProperties } from 'MNI-workflow';
 
 export const bucketOperations: INodeProperties[] = [
 	{
@@ -297,7 +297,7 @@ export const bucketFields: INodeProperties[] = [
 				name: 'fetchOwner',
 				type: 'boolean',
 				default: false,
-				// eslint-disable-next-line n8n-nodes-base/node-param-description-boolean-without-whether
+				// eslint-disable-next-line MNI-nodes-base/node-param-description-boolean-without-whether
 				description:
 					'The owner field is not present in listV2 by default, if you want to return owner field with each key in the result then set the fetch owner field to true',
 			},

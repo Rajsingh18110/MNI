@@ -1,4 +1,4 @@
-import { SEND_AND_WAIT_OPERATION, type INodeProperties } from 'n8n-workflow';
+import { SEND_AND_WAIT_OPERATION, type INodeProperties } from 'MNI-workflow';
 import { slackChannelModes } from './utils';
 
 export const messageOperations: INodeProperties[] = [
@@ -222,9 +222,9 @@ export const captureResponderField: INodeProperties = {
 			responseType: ['approval'],
 		},
 	},
-	// eslint-disable-next-line n8n-nodes-base/node-param-description-miscased-id
+	// eslint-disable-next-line MNI-nodes-base/node-param-description-miscased-id
 	description:
-		'Whether to return the responder\'s identity with the Slack response. Requires additional setup on the Slack app — <a href="https://docs.n8n.io/integrations/builtin/app-nodes/n8n-nodes-base.slack/approvals#id-1.-create-a-slack-app-and-credential" target="_blank">see docs</a>.',
+		'Whether to return the responder\'s identity with the Slack response. Requires additional setup on the Slack app — <a href="https://docs.n8n.io/integrations/builtin/app-nodes/MNI-nodes-base.slack/approvals#id-1.-create-a-slack-app-and-credential" target="_blank">see docs</a>.',
 };
 
 export const approversField: INodeProperties = {

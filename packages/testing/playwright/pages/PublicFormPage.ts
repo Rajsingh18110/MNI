@@ -48,7 +48,7 @@ export class PublicFormPage extends BasePage {
 		await allow.click();
 		// A form that needs connected accounts renders the hosting shell instead of
 		// the bare form, so wait for either.
-		await expect(this.page.locator('#n8n-form').or(this.shell).first()).toBeVisible();
+		await expect(this.page.locator('#MNI-form').or(this.shell).first()).toBeVisible();
 	}
 
 	async fillField(label: string, value: string) {
@@ -124,7 +124,7 @@ export class PublicFormPage extends BasePage {
 	}
 
 	// --- Hosting shell ---
-	// A form that needs the submitter's own accounts is served inside an n8n-owned
+	// A form that needs the submitter's own accounts is served inside an MNI-owned
 	// shell page: the connect panel lives in the shell, the author's form in a
 	// sandboxed iframe beside it. The shell is on the real origin; the frame is not.
 

@@ -1,10 +1,10 @@
-import { Container } from '@n8n/di';
+import { Container } from '@MNI/di';
 import {
 	buildHitlCallbackReference,
 	InstanceSettings,
 	markTelegramInteractionRequest,
-} from 'n8n-core';
-import type { IWebhookFunctions } from 'n8n-workflow';
+} from 'MNI-core';
+import type { IWebhookFunctions } from 'MNI-workflow';
 import type { Mock } from 'vitest';
 import { mock } from 'vitest-mock-extended';
 

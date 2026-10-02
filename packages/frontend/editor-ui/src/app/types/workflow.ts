@@ -1,4 +1,4 @@
-import type { Workflow } from 'n8n-workflow';
+import type { Workflow } from 'MNI-workflow';
 
 /**
  * Temporary interface describing the subset of the Workflow class used across the frontend.

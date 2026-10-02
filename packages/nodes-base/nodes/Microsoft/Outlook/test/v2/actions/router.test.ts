@@ -1,5 +1,5 @@
-import type { IExecuteFunctions, INode } from 'n8n-workflow';
-import { NodeOperationError } from 'n8n-workflow';
+import type { IExecuteFunctions, INode } from 'MNI-workflow';
+import { NodeOperationError } from 'MNI-workflow';
 import type { Mock, Mocked } from 'vitest';
 import { mockDeep } from 'vitest-mock-extended';
 
@@ -11,7 +11,7 @@ describe('MicrosoftOutlookV2 - router error attribution', () => {
 		const mockNode: INode = {
 			id: 'test-node',
 			name: 'Test Outlook Node',
-			type: 'n8n-nodes-base.microsoftOutlook',
+			type: 'MNI-nodes-base.microsoftOutlook',
 			typeVersion: 2,
 			position: [0, 0],
 			parameters: {},

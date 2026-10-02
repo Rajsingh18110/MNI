@@ -1,12 +1,12 @@
-import { constructExecutionMetaData, returnJsonArray } from 'n8n-core';
+import { constructExecutionMetaData, returnJsonArray } from 'MNI-core';
 import type {
 	ICredentialsDecrypted,
 	ICredentialTestFunctions,
 	IExecuteFunctions,
 	INode,
 	INodeExecutionData,
-} from 'n8n-workflow';
-import { NodeHelpers } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeHelpers } from 'MNI-workflow';
 import { mock, mockDeep } from 'vitest-mock-extended';
 
 import { gristApiRequest } from '../GenericFunctions';
@@ -321,7 +321,7 @@ describe('Grist authentication parameter', () => {
 		const node: INode = {
 			id: 'uuid-1234',
 			name: 'Grist',
-			type: 'n8n-nodes-base.grist',
+			type: 'MNI-nodes-base.grist',
 			typeVersion: 1,
 			position: [0, 0],
 			parameters: { operation: 'getAll', docId: 'doc1', tableId: 'Table1' },

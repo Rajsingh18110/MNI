@@ -1,4 +1,4 @@
-import type { IExecuteFunctions, INode } from 'n8n-workflow';
+import type { IExecuteFunctions, INode } from 'MNI-workflow';
 
 import { notionApiRequestV3 } from '../../v3/transport';
 
@@ -7,7 +7,7 @@ describe('Notion V3 transport', () => {
 		const httpRequestWithAuthentication = vi.fn().mockResolvedValue({});
 		const context = {
 			getNodeParameter: vi.fn().mockReturnValue('apiKey'),
-			getNode: () => ({ name: 'Notion', type: 'n8n-nodes-base.notion', typeVersion: 3 }) as INode,
+			getNode: () => ({ name: 'Notion', type: 'MNI-nodes-base.notion', typeVersion: 3 }) as INode,
 			helpers: {
 				httpRequestWithAuthentication,
 			},

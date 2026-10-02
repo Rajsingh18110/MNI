@@ -1,14 +1,14 @@
-import { binaryToBuffer } from '@n8n/backend-network';
+import { binaryToBuffer } from '@MNI/backend-network';
 import {
 	ByteStoreRegistry,
 	SkippedEntryDeletionError,
 	type ByteStore,
 	type PreWriteBlobMetadata,
 	type StorageLocation,
-} from '@n8n/blob-storage';
-import { BinaryDataRepository, type ExecutionDataStorageLocation } from '@n8n/db';
-import { Service } from '@n8n/di';
-import { ErrorReporter, FsByteStoreService, StorageConfig } from 'n8n-core';
+} from '@MNI/blob-storage';
+import { BinaryDataRepository, type ExecutionDataStorageLocation } from '@MNI/db';
+import { Service } from '@MNI/di';
+import { ErrorReporter, FsByteStoreService, StorageConfig } from 'MNI-core';
 import type { Readable } from 'node:stream';
 import { v4 as uuid } from 'uuid';
 

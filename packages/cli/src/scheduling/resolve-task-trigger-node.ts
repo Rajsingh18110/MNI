@@ -1,6 +1,6 @@
-import type { ClaimedTask } from '@n8n/scheduler';
-import type { INode, IWorkflowBase } from 'n8n-workflow';
-import { UnexpectedError } from 'n8n-workflow';
+import type { ClaimedTask } from '@MNI/scheduler';
+import type { INode, IWorkflowBase } from 'MNI-workflow';
+import { UnexpectedError } from 'MNI-workflow';
 
 /**
  * Finds the enabled trigger node that a due scheduler task points to.

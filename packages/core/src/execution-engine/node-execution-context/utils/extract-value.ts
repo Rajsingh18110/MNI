@@ -16,7 +16,7 @@ import {
 	type INodePropertyOptions,
 	type INodeType,
 	type NodeParameterValueType,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 function findPropertyFromParameterName(
 	parameterName: string,

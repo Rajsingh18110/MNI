@@ -40,7 +40,7 @@ vi.mock('@/app/composables/useNodeExecution', () => ({
 const createNode = (overrides: Partial<INodeUi> = {}): INodeUi =>
 	createTestNode({
 		name: 'SlackTrigger',
-		type: 'n8n-nodes-base.slackTrigger',
+		type: 'MNI-nodes-base.slackTrigger',
 		typeVersion: 1,
 		position: [0, 0],
 		...overrides,
@@ -316,7 +316,7 @@ describe('useTriggerExecution', () => {
 			mockExecutionState.isListening = true;
 			nodeTypesStore.getNodeType = vi.fn().mockReturnValue(
 				mockNodeTypeDescription({
-					name: 'n8n-nodes-base.slackTrigger',
+					name: 'MNI-nodes-base.slackTrigger',
 					displayName: 'Slack Trigger',
 					eventTriggerDescription: 'Go to Slack and send a message',
 				}),
@@ -331,7 +331,7 @@ describe('useTriggerExecution', () => {
 			mockExecutionState.isListening = true;
 			nodeTypesStore.getNodeType = vi.fn().mockReturnValue(
 				mockNodeTypeDescription({
-					name: 'n8n-nodes-base.slackTrigger',
+					name: 'MNI-nodes-base.slackTrigger',
 					displayName: 'Slack Trigger',
 				}),
 			);

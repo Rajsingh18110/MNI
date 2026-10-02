@@ -1,7 +1,7 @@
-import type { HttpRequestClient } from '@n8n/backend-network';
-import { Service } from '@n8n/di';
-import type { ICredentialDataDecryptedObject } from 'n8n-workflow';
-import { OperationalError } from 'n8n-workflow';
+import type { HttpRequestClient } from '@MNI/backend-network';
+import { Service } from '@MNI/di';
+import type { ICredentialDataDecryptedObject } from 'MNI-workflow';
+import { OperationalError } from 'MNI-workflow';
 
 import { EngineControlPlaneTransport } from './engine-control-plane-transport';
 import { isResolveCredentialResponse } from './engine-credentials.contract';

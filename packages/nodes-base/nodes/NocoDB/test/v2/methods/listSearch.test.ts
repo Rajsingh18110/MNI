@@ -1,4 +1,4 @@
-import type { ILoadOptionsFunctions } from 'n8n-workflow';
+import type { ILoadOptionsFunctions } from 'MNI-workflow';
 
 import { getWorkspaces, getBases, getRelatedTableFields } from '../../../v2/methods/listSearch';
 import * as transport from '../../../v2/transport';
@@ -17,7 +17,7 @@ describe('NocoDB List Search Methods', () => {
 				parameters: {},
 				id: 'node1',
 				name: 'NocoDB',
-				type: 'n8n-nodes-base.nocodb',
+				type: 'MNI-nodes-base.nocodb',
 				disabled: false,
 				json: true,
 				credentials: {},

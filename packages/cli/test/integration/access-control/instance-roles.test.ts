@@ -4,11 +4,11 @@ import {
 	mockInstance,
 	randomCredentialPayload,
 	testDb,
-} from '@n8n/backend-test-utils';
-import { InstanceSettingsLoaderConfig } from '@n8n/config';
-import { GLOBAL_MEMBER_ROLE, ScopeRepository } from '@n8n/db';
-import type { User } from '@n8n/db';
-import { Container } from '@n8n/di';
+} from '@MNI/backend-test-utils';
+import { InstanceSettingsLoaderConfig } from '@MNI/config';
+import { GLOBAL_MEMBER_ROLE, ScopeRepository } from '@MNI/db';
+import type { User } from '@MNI/db';
+import { Container } from '@MNI/di';
 
 import { InstanceRedactionEnforcementService } from '@/modules/redaction/instance-redaction-enforcement.service';
 import { SecuritySettingsService } from '@/services/security-settings.service';

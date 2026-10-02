@@ -1,4 +1,4 @@
-/* eslint-disable n8n-nodes-base/node-filename-against-convention */
+/* eslint-disable MNI-nodes-base/node-filename-against-convention */
 import type {
 	IDataObject,
 	IExecuteFunctions,
@@ -8,8 +8,8 @@ import type {
 	INodeType,
 	INodeTypeDescription,
 	IRequestOptions,
-} from 'n8n-workflow';
-import { NodeConnectionTypes, NodeOperationError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeConnectionTypes, NodeOperationError } from 'MNI-workflow';
 
 import {
 	getFields,
@@ -29,7 +29,7 @@ export class FileMaker implements INodeType {
 	description: INodeTypeDescription = {
 		displayName: 'FileMaker',
 		name: 'filemaker',
-		// eslint-disable-next-line n8n-nodes-base/node-class-description-icon-not-svg
+		// eslint-disable-next-line MNI-nodes-base/node-class-description-icon-not-svg
 		icon: 'file:filemaker.png',
 		group: ['input'],
 		version: 1,

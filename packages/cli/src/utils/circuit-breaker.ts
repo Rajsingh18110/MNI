@@ -1,5 +1,5 @@
-import { Logger } from '@n8n/backend-common';
-import { Container } from '@n8n/di';
+import { Logger } from '@MNI/backend-common';
+import { Container } from '@MNI/di';
 
 import { SlidingWindow } from './sliding-window';
 

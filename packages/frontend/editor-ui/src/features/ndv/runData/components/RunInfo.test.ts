@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from 'vitest';
-import type { ITaskData } from 'n8n-workflow';
+import type { ITaskData } from 'MNI-workflow';
 import RunInfo from './RunInfo.vue';
 import { createComponentRenderer } from '@/__tests__/render';
 import { getTooltip, hoverTooltipTrigger } from '@/__tests__/utils';
@@ -13,7 +13,7 @@ vi.mock('@/app/utils/formatters/dateFormatter', () => ({
 	})),
 }));
 
-vi.mock('@n8n/i18n', async (importOriginal) => {
+vi.mock('@MNI/i18n', async (importOriginal) => {
 	return {
 		...(await importOriginal()),
 		useI18n: () => ({

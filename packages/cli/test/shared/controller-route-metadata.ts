@@ -1,5 +1,5 @@
-import { ControllerRegistryMetadata } from '@n8n/decorators';
-import { Container } from '@n8n/di';
+import { ControllerRegistryMetadata } from '@MNI/decorators';
+import { Container } from '@MNI/di';
 
 type ControllerClass = new (...args: never[]) => unknown;
 

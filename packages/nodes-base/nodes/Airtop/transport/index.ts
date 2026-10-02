@@ -4,15 +4,15 @@ import type {
 	IHttpRequestMethods,
 	IHttpRequestOptions,
 	ILoadOptionsFunctions,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import type { IAirtopResponse } from './types';
-import { BASE_URL, N8N_VERSION } from '../constants';
+import { BASE_URL, MNI_VERSION } from '../constants';
 
 const defaultHeaders = {
 	'Content-Type': 'application/json',
 	'x-airtop-sdk-environment': 'MNI',
-	'x-airtop-sdk-version': N8N_VERSION,
+	'x-airtop-sdk-version': MNI_VERSION,
 };
 
 export async function apiRequest<T extends IAirtopResponse = IAirtopResponse>(

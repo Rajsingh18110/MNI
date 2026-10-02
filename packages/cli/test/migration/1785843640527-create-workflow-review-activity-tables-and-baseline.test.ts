@@ -4,11 +4,11 @@ import {
 	runSingleMigration,
 	undoLastSingleMigration,
 	type TestMigrationContext,
-} from '@n8n/backend-test-utils';
-import { DbConnection, WorkflowReviewActivity, WorkflowReviewActivityComment } from '@n8n/db';
-import { Container } from '@n8n/di';
-import { DataSource } from '@n8n/typeorm';
-import { generateNanoId } from '@n8n/utils/generate-nano-id';
+} from '@MNI/backend-test-utils';
+import { DbConnection, WorkflowReviewActivity, WorkflowReviewActivityComment } from '@MNI/db';
+import { Container } from '@MNI/di';
+import { DataSource } from '@MNI/typeorm';
+import { generateNanoId } from '@MNI/utils/generate-nano-id';
 import { randomUUID } from 'node:crypto';
 
 const MIGRATION_NAME = 'CreateWorkflowReviewActivityTablesAndBaseline1785843640527';

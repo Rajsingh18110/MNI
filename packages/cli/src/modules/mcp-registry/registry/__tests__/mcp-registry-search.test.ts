@@ -47,7 +47,7 @@ describe('searchMcpRegistryServers', () => {
 			authentication: 'githubMcpOAuth2Api',
 			credentialType: 'githubMcpOAuth2Api',
 			tools: [{ name: 'create_issue', title: 'Create issue' }],
-			metadata: { nodeTypeName: '@n8n/mcp-registry.github' },
+			metadata: { nodeTypeName: '@MNI/mcp-registry.github' },
 			isTemplated: false,
 		});
 	});
@@ -114,7 +114,7 @@ describe('searchMcpRegistryServers', () => {
 
 		expect(result.transport).toBe('streamableHttp');
 		expect(result.url).toBe('={{$self["host"]}}/api/2.0/mcp/genie');
-		expect(result.metadata).toEqual({ nodeTypeName: '@n8n/mcp-registry.databricksGenie' });
+		expect(result.metadata).toEqual({ nodeTypeName: '@MNI/mcp-registry.databricksGenie' });
 		// Marks the url as unresolved so a consumer that cannot resolve it can skip.
 		expect(result.isTemplated).toBe(true);
 	});

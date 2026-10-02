@@ -1,6 +1,6 @@
-import { Service } from '@n8n/di';
-import { DataSource, In, IsNull, LessThan, Not, Repository } from '@n8n/typeorm';
-import { OperationalError } from 'n8n-workflow';
+import { Service } from '@MNI/di';
+import { DataSource, In, IsNull, LessThan, Not, Repository } from '@MNI/typeorm';
+import { OperationalError } from 'MNI-workflow';
 
 import {
 	AgentBackgroundJob,

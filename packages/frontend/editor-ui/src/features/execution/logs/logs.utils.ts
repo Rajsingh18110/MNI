@@ -18,7 +18,7 @@ import {
 	createEmptyRunExecutionData,
 	createRunExecutionData,
 	isEmptyGroupAnchor,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import {
 	type GroupBoundaryRunData,
 	type LogEntry,
@@ -36,11 +36,11 @@ import type {
 	NodeExecutionSnapshot,
 } from '@/features/workflows/canvas/canvas.types';
 import { aggregateGroupExecution } from '@/features/workflows/canvas/composables/useCanvasMapping.groups';
-import { type ChatMessage } from '@n8n/chat/types';
+import { type ChatMessage } from '@MNI/chat/types';
 import get from 'lodash/get';
 import isEmpty from 'lodash/isEmpty';
 import { v4 as uuid } from 'uuid';
-import { TOOL_EXECUTOR_NODE_NAME } from '@n8n/constants';
+import { TOOL_EXECUTOR_NODE_NAME } from '@MNI/constants';
 
 export function getConsumedTokens(task: Array<INodeExecutionData | null>): LlmTokenUsageData {
 	const tokenUsage = task.reduce<LlmTokenUsageData>((acc, curr) => {

@@ -1,6 +1,6 @@
 import { createTestingPinia } from '@pinia/testing';
 import { flushPromises, mount } from '@vue/test-utils';
-import { createRunExecutionData, type IPinData } from 'n8n-workflow';
+import { createRunExecutionData, type IPinData } from 'MNI-workflow';
 import { setActivePinia } from 'pinia';
 import { defineComponent, h, inject, nextTick, reactive } from 'vue';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
@@ -51,7 +51,7 @@ vi.mock('../instanceAi.store', () => ({
 	useThread: () => thread,
 }));
 
-vi.mock('@n8n/i18n', async (importOriginal) => ({
+vi.mock('@MNI/i18n', async (importOriginal) => ({
 	...(await importOriginal()),
 	useI18n: () => ({
 		baseText: (key: string) => key,

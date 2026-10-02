@@ -1,7 +1,7 @@
 import { setActivePinia, createPinia } from 'pinia';
 import { vi } from 'vitest';
 import { useExternalSecretsStore } from './externalSecrets.ee.store';
-import type { ExternalSecretsProvider } from '@n8n/api-types';
+import type { ExternalSecretsProvider } from '@MNI/api-types';
 import { EnterpriseEditionFeature } from '@/app/constants/enterprise';
 
 // Hoisted mocks for API functions
@@ -33,7 +33,7 @@ const {
 const mockModuleSettings: Record<string, unknown> = {};
 
 // Mock API client module
-vi.mock('@n8n/rest-api-client', () => ({
+vi.mock('@MNI/rest-api-client', () => ({
 	getExternalSecrets,
 	getGlobalExternalSecrets,
 	getGlobalExternalSecretsForProject,
@@ -47,7 +47,7 @@ vi.mock('@n8n/rest-api-client', () => ({
 }));
 
 // Mock root store
-vi.mock('@n8n/stores/useRootStore', () => ({
+vi.mock('@MNI/stores/useRootStore', () => ({
 	useRootStore: vi.fn(() => ({
 		restApiContext: { baseUrl: 'http://localhost:5678', sessionId: 'test-session' },
 	})),
@@ -58,7 +58,7 @@ const mockRBACStore = {
 	hasScope: vi.fn(() => true), // Default: has permission
 };
 
-vi.mock('@n8n/stores/rbac.store', () => ({
+vi.mock('@MNI/stores/rbac.store', () => ({
 	useRBACStore: vi.fn(() => mockRBACStore),
 }));
 
@@ -74,7 +74,7 @@ vi.mock('@/features/collaboration/projects/projects.store', () => ({
 }));
 
 // Mock settings store
-vi.mock('@n8n/stores/settings.store', () => ({
+vi.mock('@MNI/stores/settings.store', () => ({
 	useSettingsStore: vi.fn(() => ({
 		isEnterpriseFeatureEnabled: {
 			[EnterpriseEditionFeature.ExternalSecrets]: true,

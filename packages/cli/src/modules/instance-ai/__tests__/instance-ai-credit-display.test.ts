@@ -1,4 +1,4 @@
-import { UNLIMITED_CREDITS } from '@n8n/api-types';
+import { UNLIMITED_CREDITS } from '@MNI/api-types';
 
 import { maskCreditsForDisplay } from '../instance-ai-credit-display';
 

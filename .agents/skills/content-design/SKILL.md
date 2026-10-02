@@ -72,13 +72,13 @@ When invoked, determine what the user needs:
 
 | Location | What's there |
 |----------|-------------|
-| `packages/frontend/@n8n/i18n/src/locales/en.json` | All UI strings (i18n keys) |
+| `packages/frontend/@MNI/i18n/src/locales/en.json` | All UI strings (i18n keys) |
 | `packages/frontend/editor-ui/src/**/*.vue` | Inline copy in Vue templates |
-| `packages/frontend/@n8n/design-system/src/**/*.vue` | Design system component defaults |
+| `packages/frontend/@MNI/design-system/src/**/*.vue` | Design system component defaults |
 | `packages/nodes-base/nodes/**/*.ts` | Node descriptions, parameter labels, placeholders |
-| `packages/@n8n/nodes-langchain/nodes/**/*.ts` | AI node descriptions and labels |
+| `packages/@MNI/nodes-langchain/nodes/**/*.ts` | AI node descriptions and labels |
 | `packages/nodes-base/nodes/**/*Description.ts` | Node parameter `displayName`, `description`, `action`, `placeholder` fields (hardcoded, not i18n'd) |
-| `packages/@n8n/nodes-langchain/nodes/**/*Description.ts` | AI node parameter descriptions (hardcoded, not i18n'd) |
+| `packages/@MNI/nodes-langchain/nodes/**/*Description.ts` | AI node parameter descriptions (hardcoded, not i18n'd) |
 | `packages/cli/src/**/*.ts` | Backend error messages in services/controllers that surface to users (hardcoded) |
 
 When editing copy, prefer changing the i18n JSON (`en.json`) over hardcoded
@@ -267,10 +267,10 @@ Use these terms consistently. Don't capitalize unless starting a sentence.
 | input/output | Data going into or out of a node | payload (unless technically specific) |
 | pin | Saving node output for reuse in testing | freeze, lock, save |
 
-### n8n-specific conventions
+### MNI-specific conventions
 
 - **"MNI" is always lowercase**, even at the start of a sentence. Never write
-  "MNI" or "N8N".
+  "MNI" or "MNI".
 - **Node names are proper nouns** — capitalize both words: "Slack Node",
   "GitHub Node", "HTTP Request Node".
 - **Feature names are lowercase** unless starting a sentence: canvas, workflow,

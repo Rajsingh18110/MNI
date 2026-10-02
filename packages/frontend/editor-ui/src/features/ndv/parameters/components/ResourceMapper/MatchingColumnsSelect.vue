@@ -4,12 +4,12 @@ import type {
 	INodePropertyTypeOptions,
 	ResourceMapperField,
 	ResourceMapperFields,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import { computed, reactive, watch } from 'vue';
-import { i18n as locale } from '@n8n/i18n';
+import { i18n as locale } from '@MNI/i18n';
 import { useNodeSpecificationValues } from '../../composables/useNodeSpecificationValues';
 import ParameterOptions from '../ParameterOptions.vue';
-import { N8nInputLabel, N8nNotice, N8nOption, N8nSelect, N8nText } from '@n8n/design-system';
+import { N8nInputLabel, N8nNotice, N8nOption, N8nSelect, N8nText } from '@MNI/design-system';
 interface Props {
 	parameter: INodeProperties;
 	initialValue: string[];

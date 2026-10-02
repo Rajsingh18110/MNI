@@ -2,10 +2,10 @@ import type {
 	PolicyCheckResult,
 	RegisteredPolicyCheck,
 	WorkflowExecuteBeforeContext,
-} from '@n8n/decorators';
-import { LifecycleMetadata, PolicyCheck } from '@n8n/decorators';
-import { Container } from '@n8n/di';
-import type { IWorkflowBase, Workflow } from 'n8n-workflow';
+} from '@MNI/decorators';
+import { LifecycleMetadata, PolicyCheck } from '@MNI/decorators';
+import { Container } from '@MNI/di';
+import type { IWorkflowBase, Workflow } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import { PolicyEnforcementService } from '@/policy/policy-enforcement.service';
@@ -19,7 +19,7 @@ import { PolicyLifecycleHandler } from '../policy-lifecycle-handler';
 const violation = {
 	kind: 'node-type-unavailable',
 	checkId: 'node-types',
-	message: 'n8n-nodes-base.slack is not available',
+	message: 'MNI-nodes-base.slack is not available',
 };
 
 const workflow = mock<IWorkflowBase>({

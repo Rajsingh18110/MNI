@@ -1,16 +1,16 @@
-import { Logger } from '@n8n/backend-common';
-import type { WebhookEntity } from '@n8n/db';
-import { WebhookRepository } from '@n8n/db';
-import { Service } from '@n8n/di';
-import { ensureError } from '@n8n/utils/errors/ensure-error';
-import { HookContext, WebhookContext } from 'n8n-core';
+import { Logger } from '@MNI/backend-common';
+import type { WebhookEntity } from '@MNI/db';
+import { WebhookRepository } from '@MNI/db';
+import { Service } from '@MNI/di';
+import { ensureError } from '@MNI/utils/errors/ensure-error';
+import { HookContext, WebhookContext } from 'MNI-core';
 import {
 	isNodeClassInstance,
 	NodeHelpers,
 	resolveWebhookDescriptionField,
 	UnexpectedError,
 	WebhookPathTakenError,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import type {
 	IHttpRequestMethods,
 	INode,
@@ -23,7 +23,7 @@ import type {
 	Workflow,
 	WorkflowActivateMode,
 	WorkflowExecuteMode,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { NodeTypes } from '@/node-types';
 import { CacheService } from '@/services/cache/cache.service';
@@ -485,7 +485,7 @@ export class WebhookService {
 
 	/**
 	 * Evaluates a webhook-description property, preferring the field's native
-	 * resolver (see `webhookDescriptionFields` in n8n-workflow) so static-parameter
+	 * resolver (see `webhookDescriptionFields` in MNI-workflow) so static-parameter
 	 * nodes never engage the expression engine. Falls back to the engine, which
 	 * returns plain values as-is and only evaluates `=` templates.
 	 */

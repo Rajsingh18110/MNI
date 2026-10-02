@@ -23,11 +23,11 @@ import {
 	GROUP_HEADER_HEIGHT,
 	GROUP_HEADER_WIDTH_COLLAPSED,
 } from '@/features/workflows/canvas/stores/canvasNodeGroups.constants';
-import type { NodeConnectionType } from 'n8n-workflow';
-import { NodeConnectionTypes } from 'n8n-workflow';
+import type { NodeConnectionType } from 'MNI-workflow';
+import { NodeConnectionTypes } from 'MNI-workflow';
 import type { GraphEdge, GraphNode, ViewportTransform } from '@vue-flow/core';
-import type { EventBus } from '@n8n/utils/event-bus';
-import { createEventBus } from '@n8n/utils/event-bus';
+import type { EventBus } from '@MNI/utils/event-bus';
+import { createEventBus } from '@MNI/utils/event-bus';
 
 export function createCanvasNodeData({
 	id = 'node',

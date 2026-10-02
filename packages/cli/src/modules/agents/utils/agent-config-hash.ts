@@ -1,5 +1,5 @@
-import type { AgentJsonConfig, AgentSkill } from '@n8n/api-types';
-import { isRecord } from '@n8n/utils/is-record';
+import type { AgentJsonConfig, AgentSkill } from '@MNI/api-types';
+import { isRecord } from '@MNI/utils/is-record';
 import { createHash } from 'node:crypto';
 
 function canonicalizeJson(value: unknown): unknown {

@@ -3,11 +3,11 @@ import ModalDrawer from './ModalDrawer.vue';
 import TimeAgo from './TimeAgo.vue';
 import VersionCard from './VersionCard.vue';
 import { VERSIONS_MODAL_KEY } from '../constants';
-import { useVersionsStore } from '@n8n/stores/versions.store';
-import { useI18n } from '@n8n/i18n';
+import { useVersionsStore } from '@MNI/stores/versions.store';
+import { useI18n } from '@MNI/i18n';
 import { usePageRedirectionHelper } from '@/app/composables/usePageRedirectionHelper';
 
-import { N8nButton, N8nIcon } from '@n8n/design-system';
+import { N8nButton, N8nIcon } from '@MNI/design-system';
 const versionsStore = useVersionsStore();
 const pageRedirectionHelper = usePageRedirectionHelper();
 

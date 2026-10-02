@@ -6,7 +6,7 @@ describe('useAgentConfigAutosave', () => {
 	afterEach(() => {
 		vi.useRealTimers();
 		vi.restoreAllMocks();
-		sessionStorage.removeItem('N8N_DEBOUNCE_MULTIPLIER');
+		sessionStorage.removeItem('MNI_DEBOUNCE_MULTIPLIER');
 	});
 
 	it('flushAutosave immediately saves a pending debounced snapshot', async () => {

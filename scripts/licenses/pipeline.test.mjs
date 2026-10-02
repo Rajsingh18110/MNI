@@ -25,8 +25,8 @@ const FIXTURE_OVERRIDES = path.join(scriptDir, '__fixtures__', 'license-override
 const ENRICH = path.join(scriptDir, 'enrich-sbom.mjs');
 const CHECK = path.join(scriptDir, 'check-sbom-licenses.mjs');
 const ALLOW_REFS = [
-	'--allow-ref=LicenseRef-n8n-sustainable-use',
-	'--allow-ref=LicenseRef-n8n-enterprise',
+	'--allow-ref=LicenseRef-MNI-sustainable-use',
+	'--allow-ref=LicenseRef-MNI-enterprise',
 ];
 
 const run = (script, args) => spawnSync(process.execPath, [script, ...args], { encoding: 'utf-8' });
@@ -62,7 +62,7 @@ describe('license-generation chain (real CLIs end-to-end)', () => {
 		// first-party -> LicenseRef
 		assert.equal(
 			byPurl['pkg:npm/%40n8n/db@1.25.0'].licenses[0].license.name,
-			'LicenseRef-n8n-sustainable-use',
+			'LicenseRef-MNI-sustainable-use',
 		);
 		// first-party published under a real OSI license -> kept (read from source package.json)
 		assert.equal(byPurl['pkg:npm/%40n8n/tournament@1.2.0'].licenses[0].license.id, 'Apache-2.0');

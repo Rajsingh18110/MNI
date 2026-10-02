@@ -1,10 +1,10 @@
 import type { KafkaJS } from '@confluentinc/kafka-javascript';
-import type { Logger } from 'n8n-workflow';
-import { UserError } from 'n8n-workflow';
+import type { Logger } from 'MNI-workflow';
+import { UserError } from 'MNI-workflow';
 
 /**
  * Conditions librdkafka will never recover from on its own, so the trigger has
- * to stop waiting and tell n8n. Everything else is left to its automatic retry,
+ * to stop waiting and tell MNI. Everything else is left to its automatic retry,
  * which the ENT-8 findings (section 8) describe as always on and not
  * configurable.
  *

@@ -1,4 +1,4 @@
-import { resolveSystemTaskSchedule } from '@n8n/decorators';
+import { resolveSystemTaskSchedule } from '@MNI/decorators';
 import { mock } from 'vitest-mock-extended';
 
 import type { InsightsPruningService } from '../insights-pruning.service';

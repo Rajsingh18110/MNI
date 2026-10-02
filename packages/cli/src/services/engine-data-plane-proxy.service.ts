@@ -1,12 +1,12 @@
-import { Service } from '@n8n/di';
+import { Service } from '@MNI/di';
 import type {
 	ExecutionSnapshot,
 	StartExecutionRequest,
 	StartExecutionResult,
 	SearchExecutionsRequest,
 	SearchExecutionsResponse,
-} from '@n8n/engine';
-import { UserError } from 'n8n-workflow';
+} from '@MNI/engine';
+import { UserError } from 'MNI-workflow';
 
 import type { ExecutionIdV2 } from '@/executions/execution-id';
 
@@ -59,7 +59,7 @@ export class EngineDataPlaneProxyService implements EngineDataPlaneProvider {
 	async startExecution(request: StartExecutionRequest): Promise<StartExecutionResult> {
 		if (!this.provider) {
 			throw new UserError(
-				'Engine v2 is not available. Enable the `engine-v2` module with N8N_ENABLED_MODULES.',
+				'Engine v2 is not available. Enable the `engine-v2` module with MNI_ENABLED_MODULES.',
 			);
 		}
 

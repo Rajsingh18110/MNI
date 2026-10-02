@@ -2,7 +2,7 @@ import type {
 	ExecuteAgentWorkflowContext,
 	IRunExecutionData,
 	INodeExecutionData,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { createInputDataTool } from '../input-data-tool';
 

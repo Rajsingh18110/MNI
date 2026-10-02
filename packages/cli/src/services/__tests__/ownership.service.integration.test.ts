@@ -1,6 +1,6 @@
-import { testDb } from '@n8n/backend-test-utils';
-import { GLOBAL_OWNER_ROLE } from '@n8n/db';
-import { Container } from '@n8n/di';
+import { testDb } from '@MNI/backend-test-utils';
+import { GLOBAL_OWNER_ROLE } from '@MNI/db';
+import { Container } from '@MNI/di';
 
 import { HooksService } from '@/services/hooks.service';
 import { OwnershipService } from '@/services/ownership.service';

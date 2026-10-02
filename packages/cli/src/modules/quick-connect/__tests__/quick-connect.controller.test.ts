@@ -1,5 +1,5 @@
-import type { GetQuickConnectApiKeyDto } from '@n8n/api-types';
-import type { AuthenticatedRequest, User } from '@n8n/db';
+import type { GetQuickConnectApiKeyDto } from '@MNI/api-types';
+import type { AuthenticatedRequest, User } from '@MNI/db';
 import { mock } from 'vitest-mock-extended';
 
 import { QuickConnectController } from '../quick-connect.controller';

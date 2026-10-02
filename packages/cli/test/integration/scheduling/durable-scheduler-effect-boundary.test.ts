@@ -1,16 +1,16 @@
-import { createWorkflow, testDb } from '@n8n/backend-test-utils';
-import type { ScheduledJob, WorkflowEntity } from '@n8n/db';
-import { DataSource, ScheduledJobRepository, ScheduledTaskRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
-import { createScheduler } from '@n8n/scheduler';
+import { createWorkflow, testDb } from '@MNI/backend-test-utils';
+import type { ScheduledJob, WorkflowEntity } from '@MNI/db';
+import { DataSource, ScheduledJobRepository, ScheduledTaskRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
+import { createScheduler } from '@MNI/scheduler';
 import type {
 	ClaimedTask,
 	DispatchReporter,
 	Scheduler,
 	SchedulerPasses,
 	TaskHandler,
-} from '@n8n/scheduler';
-import { createEmptyRunExecutionData } from 'n8n-workflow';
+} from '@MNI/scheduler';
+import { createEmptyRunExecutionData } from 'MNI-workflow';
 
 import { DuplicateExecutionError } from '@/errors/duplicate-execution.error';
 import { ExecutionPersistence } from '@/executions/execution-persistence';

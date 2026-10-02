@@ -1,7 +1,7 @@
-import type { LicenseState } from '@n8n/backend-common';
-import { markHttpRequestError } from '@n8n/backend-network';
-import type { HttpRequestClient, OutboundHttp } from '@n8n/backend-network';
-import type { WorkflowRepository } from '@n8n/db';
+import type { LicenseState } from '@MNI/backend-common';
+import { markHttpRequestError } from '@MNI/backend-network';
+import type { HttpRequestClient, OutboundHttp } from '@MNI/backend-network';
+import type { WorkflowRepository } from '@MNI/db';
 import type { TEntitlement } from '@n8n_io/license-sdk';
 import { AxiosError } from 'axios';
 import { mock } from 'vitest-mock-extended';

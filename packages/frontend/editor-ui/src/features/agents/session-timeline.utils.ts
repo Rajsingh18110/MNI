@@ -1,7 +1,7 @@
-import { WORKFLOW_WAIT_SUSPEND_TYPE, type AgentBackgroundJobSignal } from '@n8n/api-types';
-import type { BadgeVariant } from '@n8n/design-system';
-import type { BaseTextKey, useI18n } from '@n8n/i18n';
-import { isRecord } from '@n8n/utils/is-record';
+import { WORKFLOW_WAIT_SUSPEND_TYPE, type AgentBackgroundJobSignal } from '@MNI/api-types';
+import type { BadgeVariant } from '@MNI/design-system';
+import type { BaseTextKey, useI18n } from '@MNI/i18n';
+import { isRecord } from '@MNI/utils/is-record';
 import type {
 	EventKind,
 	HitlRequestType,

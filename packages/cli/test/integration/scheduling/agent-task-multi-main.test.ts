@@ -1,10 +1,10 @@
-import { createTeamProject, testDb, testModules } from '@n8n/backend-test-utils';
-import { GlobalConfig } from '@n8n/config';
-import { ScheduledJobOwnerType } from '@n8n/constants';
-import { DataSource, ScheduledJobRepository, ScheduledTaskRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
-import { createScheduler } from '@n8n/scheduler';
-import type { Scheduler, SchedulerPasses } from '@n8n/scheduler';
+import { createTeamProject, testDb, testModules } from '@MNI/backend-test-utils';
+import { GlobalConfig } from '@MNI/config';
+import { ScheduledJobOwnerType } from '@MNI/constants';
+import { DataSource, ScheduledJobRepository, ScheduledTaskRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
+import { createScheduler } from '@MNI/scheduler';
+import type { Scheduler, SchedulerPasses } from '@MNI/scheduler';
 import { v4 as uuid } from 'uuid';
 import { mock } from 'vitest-mock-extended';
 

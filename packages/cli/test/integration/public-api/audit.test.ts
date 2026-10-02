@@ -1,5 +1,5 @@
-import { createWorkflow, testDb } from '@n8n/backend-test-utils';
-import type { User } from '@n8n/db';
+import { createWorkflow, testDb } from '@MNI/backend-test-utils';
+import type { User } from '@MNI/db';
 import nock from 'nock';
 import { randomUUID } from 'node:crypto';
 
@@ -32,7 +32,7 @@ describe('POST /audit', () => {
 				{
 					id: randomUUID(),
 					name: 'Read file',
-					type: 'n8n-nodes-base.readBinaryFile',
+					type: 'MNI-nodes-base.readBinaryFile',
 					typeVersion: 1,
 					position: [0, 0],
 					parameters: {},
@@ -56,7 +56,7 @@ describe('POST /audit', () => {
 							expect.objectContaining({
 								kind: 'node',
 								nodeName: 'Read file',
-								nodeType: 'n8n-nodes-base.readBinaryFile',
+								nodeType: 'MNI-nodes-base.readBinaryFile',
 							}),
 						],
 					}),

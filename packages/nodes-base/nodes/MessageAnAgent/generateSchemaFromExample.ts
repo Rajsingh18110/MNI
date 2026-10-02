@@ -1,7 +1,7 @@
 import { json as generateJsonSchema } from 'generate-schema';
 import type { SchemaObject } from 'generate-schema';
 import type { JSONSchema7 } from 'json-schema';
-import { jsonParse } from 'n8n-workflow';
+import { jsonParse } from 'MNI-workflow';
 
 function makeAllPropertiesRequired(schema: JSONSchema7): JSONSchema7 {
 	function isPropertySchema(property: unknown): property is JSONSchema7 {

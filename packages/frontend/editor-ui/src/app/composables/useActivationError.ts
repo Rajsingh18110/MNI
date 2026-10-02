@@ -1,5 +1,5 @@
 import { computed, toValue, type MaybeRefOrGetter } from 'vue';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import { injectWorkflowDocumentStore } from '../stores/workflowDocument.store';
 
 /**

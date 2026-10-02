@@ -10,7 +10,7 @@ describe('calculateWorkflowChecksum', () => {
 			{
 				id: 'node1',
 				name: 'Start',
-				type: 'n8n-nodes-base.manualTrigger',
+				type: 'MNI-nodes-base.manualTrigger',
 				typeVersion: 1,
 				position: [250, 300],
 				parameters: {},
@@ -246,7 +246,7 @@ describe('calculateWorkflowChecksum', () => {
 				{
 					id: 'node1',
 					name: 'Start',
-					type: 'n8n-nodes-base.manualTrigger',
+					type: 'MNI-nodes-base.manualTrigger',
 					typeVersion: 1,
 					position: [250, 300],
 					parameters: { alpha: 1, beta: 2, gamma: { x: 'a', y: 'b' } },
@@ -254,7 +254,7 @@ describe('calculateWorkflowChecksum', () => {
 				{
 					id: 'node2',
 					name: 'Set',
-					type: 'n8n-nodes-base.set',
+					type: 'MNI-nodes-base.set',
 					typeVersion: 1,
 					position: [500, 300],
 					parameters: { foo: 'bar', baz: 'qux' },
@@ -269,7 +269,7 @@ describe('calculateWorkflowChecksum', () => {
 					parameters: { gamma: { y: 'b', x: 'a' }, beta: 2, alpha: 1 },
 					position: [250, 300],
 					typeVersion: 1,
-					type: 'n8n-nodes-base.manualTrigger',
+					type: 'MNI-nodes-base.manualTrigger',
 					name: 'Start',
 					id: 'node1',
 				},
@@ -277,7 +277,7 @@ describe('calculateWorkflowChecksum', () => {
 					parameters: { baz: 'qux', foo: 'bar' },
 					position: [500, 300],
 					typeVersion: 1,
-					type: 'n8n-nodes-base.set',
+					type: 'MNI-nodes-base.set',
 					name: 'Set',
 					id: 'node2',
 				},
@@ -296,7 +296,7 @@ describe('calculateWorkflowChecksum', () => {
 		const nodeA: INode = {
 			id: 'a',
 			name: 'A',
-			type: 'n8n-nodes-base.set',
+			type: 'MNI-nodes-base.set',
 			typeVersion: 1,
 			position: [0, 0],
 			parameters: {},
@@ -304,7 +304,7 @@ describe('calculateWorkflowChecksum', () => {
 		const nodeB: INode = {
 			id: 'b',
 			name: 'B',
-			type: 'n8n-nodes-base.set',
+			type: 'MNI-nodes-base.set',
 			typeVersion: 1,
 			position: [0, 0],
 			parameters: {},

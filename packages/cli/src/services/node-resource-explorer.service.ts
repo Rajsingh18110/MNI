@@ -1,9 +1,9 @@
-import { Logger } from '@n8n/backend-common';
-import { detectAuthenticationParameterValue } from '@n8n/ai-utilities/node-catalog';
-import { AI_GATEWAY_MANAGED_TAG } from '@n8n/api-types';
-import { ProjectRepository, type User } from '@n8n/db';
-import { Service } from '@n8n/di';
-import type { ExploreResourcesParams, ExploreResourcesResult } from '@n8n/instance-ai';
+import { Logger } from '@MNI/backend-common';
+import { detectAuthenticationParameterValue } from '@MNI/ai-utilities/node-catalog';
+import { AI_GATEWAY_MANAGED_TAG } from '@MNI/api-types';
+import { ProjectRepository, type User } from '@MNI/db';
+import { Service } from '@MNI/di';
+import type { ExploreResourcesParams, ExploreResourcesResult } from '@MNI/instance-ai';
 import type {
 	INodeCredentials,
 	INodeParameters,
@@ -12,8 +12,8 @@ import type {
 	INodePropertyMode,
 	INodePropertyOptions,
 	INodeTypeDescription,
-} from 'n8n-workflow';
-import { NodeHelpers } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeHelpers } from 'MNI-workflow';
 
 import { CredentialsFinderService } from '@/credentials/credentials-finder.service';
 import { NodeTypes } from '@/node-types';
@@ -29,7 +29,7 @@ import { getBase } from '@/workflow-execute-additional-data';
 const MAX_AVAILABILITY_PAGES = 5;
 
 /** Display name for the managed MNI Connect credential slot in explore-resources. */
-const N8N_CONNECT_DISPLAY_NAME = 'Gateway credits';
+const MNI_CONNECT_DISPLAY_NAME = 'Gateway credits';
 
 /**
  * Looks up dynamic resource locator and load-options values for a node on
@@ -156,7 +156,7 @@ export class NodeResourceExplorerService {
 			return {
 				[params.credentialType]: {
 					id: null,
-					name: N8N_CONNECT_DISPLAY_NAME,
+					name: MNI_CONNECT_DISPLAY_NAME,
 					__aiGatewayManaged: true,
 				},
 			};
@@ -363,7 +363,7 @@ const IDENTIFIER_LOCATOR_MODES = new Set(['list', 'id']);
  * runtime, so there is no single value to look up, and comparing the expression text to a
  * catalogue would mismatch every time. Reporting it would invite the caller to replace a
  * deliberate dynamic value with a static one. This mirrors `validateResourceLocatorParameter`
- * in n8n-workflow, which returns no errors as soon as the value starts with `=`.
+ * in MNI-workflow, which returns no errors as soon as the value starts with `=`.
  *
  * What keeps a typed-in id from being falsely reported is not the mode but the guards on
  * the list itself: a partial, empty or failed lookup never yields a verdict. The residual

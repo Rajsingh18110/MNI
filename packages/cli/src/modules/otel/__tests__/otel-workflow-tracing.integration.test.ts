@@ -1,8 +1,8 @@
-import { createTeamProject, createWorkflow, getPersonalProject } from '@n8n/backend-test-utils';
-import type { ExecutionRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
+import { createTeamProject, createWorkflow, getPersonalProject } from '@MNI/backend-test-utils';
+import type { ExecutionRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
 import { SpanStatusCode } from '@opentelemetry/api';
-import { NodeConnectionTypes } from 'n8n-workflow';
+import { NodeConnectionTypes } from 'MNI-workflow';
 import { v4 as uuid } from 'uuid';
 
 import { WaitTracker } from '@/wait-tracker';
@@ -32,9 +32,9 @@ let savedEnv: Record<string, string | undefined>;
 
 beforeAll(async () => {
 	savedEnv = saveAndSetEnv({
-		N8N_OTEL_ENABLED: 'true',
-		N8N_OTEL_TRACES_INCLUDE_NODE_SPANS: 'true',
-		N8N_OTEL_TRACES_PRODUCTION_ONLY: 'false',
+		MNI_OTEL_ENABLED: 'true',
+		MNI_OTEL_TRACES_INCLUDE_NODE_SPANS: 'true',
+		MNI_OTEL_TRACES_PRODUCTION_ONLY: 'false',
 	});
 	const env = await initOtelTestEnvironment();
 	otel = env.otel;
@@ -178,7 +178,7 @@ describe('Custom Telemetry Tags', () => {
 		nodes: [
 			{
 				parameters: {},
-				type: 'n8n-nodes-base.manualTrigger',
+				type: 'MNI-nodes-base.manualTrigger',
 				typeVersion: 1,
 				position: [0, 0] as [number, number],
 				id: uuid(),
@@ -186,7 +186,7 @@ describe('Custom Telemetry Tags', () => {
 			},
 			{
 				parameters: { category: 'doNothing' },
-				type: 'n8n-nodes-base.debugHelper',
+				type: 'MNI-nodes-base.debugHelper',
 				typeVersion: 1,
 				position: [200, 0] as [number, number],
 				id: uuid(),
@@ -219,7 +219,7 @@ describe('Custom Telemetry Tags', () => {
 		nodes: [
 			{
 				parameters: {},
-				type: 'n8n-nodes-base.manualTrigger',
+				type: 'MNI-nodes-base.manualTrigger',
 				typeVersion: 1,
 				position: [0, 0] as [number, number],
 				id: uuid(),
@@ -227,7 +227,7 @@ describe('Custom Telemetry Tags', () => {
 			},
 			{
 				parameters: { category: 'doNothing' },
-				type: 'n8n-nodes-base.debugHelper',
+				type: 'MNI-nodes-base.debugHelper',
 				typeVersion: 1,
 				position: [200, 0] as [number, number],
 				id: uuid(),
@@ -236,7 +236,7 @@ describe('Custom Telemetry Tags', () => {
 			},
 			{
 				parameters: { category: 'doNothing' },
-				type: 'n8n-nodes-base.debugHelper',
+				type: 'MNI-nodes-base.debugHelper',
 				typeVersion: 1,
 				position: [400, 0] as [number, number],
 				id: uuid(),

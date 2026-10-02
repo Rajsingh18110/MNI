@@ -16,7 +16,7 @@ vi.mock('vm', () => ({
 	Script: ScriptCtor,
 }));
 
-vi.mock('@n8n/backend-common', async (importActual) => {
+vi.mock('@MNI/backend-common', async (importActual) => {
 	return {
 		...(await importActual()),
 		inTest: false,

@@ -1,20 +1,20 @@
 <script setup lang="ts">
 import { computed, onMounted, ref } from 'vue';
 import { useRouter } from 'vue-router';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import {
 	N8nButton,
 	N8nSettingsLayout,
 	N8nSettingsPageHeader,
 	N8nTooltip,
-} from '@n8n/design-system';
-import type { TableOptions } from '@n8n/design-system';
+} from '@MNI/design-system';
+import type { TableOptions } from '@MNI/design-system';
 
 import { useDocumentTitle } from '@/app/composables/useDocumentTitle';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
-import { TELEMETRY_EVENT } from '@n8n/telemetry';
-import { useToast } from '@n8n/composables/useToast';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
+import { TELEMETRY_EVENT } from '@MNI/telemetry';
+import { useToast } from '@MNI/composables/useToast';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import type { McpAgent } from '@/features/ai/mcpAccess/mcp.types';
 import { useMCPStore } from '@/features/ai/mcpAccess/mcp.store';
 import {

@@ -1,8 +1,8 @@
-import { mockInstance, testDb } from '@n8n/backend-test-utils';
-import { DeploymentKey, DeploymentKeyRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
-import { DataSource, type Repository } from '@n8n/typeorm';
-import { Cipher, InstanceSettings } from 'n8n-core';
+import { mockInstance, testDb } from '@MNI/backend-test-utils';
+import { DeploymentKey, DeploymentKeyRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
+import { DataSource, type Repository } from '@MNI/typeorm';
+import { Cipher, InstanceSettings } from 'MNI-core';
 import { randomBytes } from 'node:crypto';
 
 import { EncryptionBootstrapService } from '../encryption-bootstrap.service';
@@ -14,7 +14,7 @@ let keyStore: Repository<DeploymentKey>;
 beforeAll(async () => {
 	mockInstance(InstanceSettings, {
 		encryptionKey: INSTANCE_ENCRYPTION_KEY,
-		n8nFolder: '/tmp/n8n-test',
+		n8nFolder: '/tmp/MNI-test',
 		instanceType: 'main',
 		canSeedDeploymentState: true,
 	});
@@ -113,7 +113,7 @@ describe('EncryptionBootstrapService (integration)', () => {
 
 	describe('end-to-end write path (real key store, real cipher)', () => {
 		beforeEach(() => {
-			delete process.env.N8N_ENV_FEAT_ENCRYPTION_KEY_ROTATION;
+			delete process.env.MNI_ENV_FEAT_ENCRYPTION_KEY_ROTATION;
 		});
 
 		it('writes the legacy no-prefix format while rotation is off', async () => {
@@ -129,7 +129,7 @@ describe('EncryptionBootstrapService (integration)', () => {
 
 		it('writes the keyId-prefixed GCM format while rotation is on, round-tripping through the seeded key', async () => {
 			await Container.get(EncryptionBootstrapService).run();
-			process.env.N8N_ENV_FEAT_ENCRYPTION_KEY_ROTATION = 'true';
+			process.env.MNI_ENV_FEAT_ENCRYPTION_KEY_ROTATION = 'true';
 			try {
 				const cipher = Container.get(Cipher);
 
@@ -141,7 +141,7 @@ describe('EncryptionBootstrapService (integration)', () => {
 				expect(encrypted.startsWith(`${active!.id}:`)).toBe(true);
 				expect(await cipher.decryptV2(encrypted)).toBe('e2e-on');
 			} finally {
-				delete process.env.N8N_ENV_FEAT_ENCRYPTION_KEY_ROTATION;
+				delete process.env.MNI_ENV_FEAT_ENCRYPTION_KEY_ROTATION;
 			}
 		});
 	});

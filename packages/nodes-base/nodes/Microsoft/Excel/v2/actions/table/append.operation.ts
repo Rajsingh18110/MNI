@@ -3,7 +3,7 @@ import type {
 	IExecuteFunctions,
 	INodeExecutionData,
 	INodeProperties,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { generatePairedItemData, processJsonInput, updateDisplayOptions } from '@utils/utilities';
 
@@ -73,7 +73,7 @@ const properties: INodeProperties[] = [
 				name: 'values',
 				values: [
 					{
-						// eslint-disable-next-line n8n-nodes-base/node-param-display-name-wrong-for-dynamic-options
+						// eslint-disable-next-line MNI-nodes-base/node-param-display-name-wrong-for-dynamic-options
 						displayName: 'Column',
 						name: 'column',
 						type: 'options',
@@ -118,7 +118,7 @@ const properties: INodeProperties[] = [
 				displayName: 'RAW Data',
 				name: 'rawData',
 				type: 'boolean',
-				// eslint-disable-next-line n8n-nodes-base/node-param-default-wrong-for-boolean
+				// eslint-disable-next-line MNI-nodes-base/node-param-default-wrong-for-boolean
 				default: 0,
 				description:
 					'Whether the data should be returned RAW instead of parsed into keys according to their header',

@@ -7,14 +7,14 @@ import {
 	RoleMembersResponseDto,
 	RoleProjectMembersResponseDto,
 	UpdateRoleDto,
-} from '@n8n/api-types';
+} from '@MNI/api-types';
 import type {
 	RoleAssignmentsResponse,
 	RoleMembersResponse,
 	RoleProjectMembersResponse,
-} from '@n8n/api-types';
-import { LICENSE_FEATURES } from '@n8n/constants';
-import { AuthenticatedRequest } from '@n8n/db';
+} from '@MNI/api-types';
+import { LICENSE_FEATURES } from '@MNI/constants';
+import { AuthenticatedRequest } from '@MNI/db';
 import {
 	Body,
 	Delete,
@@ -26,8 +26,8 @@ import {
 	Post,
 	Query,
 	RestController,
-} from '@n8n/decorators';
-import { Role as RoleDTO } from '@n8n/permissions';
+} from '@MNI/decorators';
+import { Role as RoleDTO } from '@MNI/permissions';
 
 import { NotFoundError } from '@/errors/response-errors/not-found.error';
 import { EventService } from '@/events/event.service';

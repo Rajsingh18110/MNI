@@ -1,7 +1,7 @@
 import isEqual from 'lodash/isEqual';
 import pick from 'lodash/pick';
-import type { INode } from 'n8n-workflow';
-import { compareWorkflowsNodes, NodeDiffStatus } from 'n8n-workflow';
+import type { INode } from 'MNI-workflow';
+import { compareWorkflowsNodes, NodeDiffStatus } from 'MNI-workflow';
 
 // Only these properties affect how a trigger is registered. Comparing more
 // (notes, error-handling settings, ...) would deregister and re-register live
@@ -17,10 +17,10 @@ function registrationEqual(base: INode | undefined, target: INode | undefined): 
 // new flow, we only re-register triggers that have been modified. However, these
 // triggers relied on the old behaviour, so we force it for them.
 const ALWAYS_REREGISTER_TRIGGER_TYPES: ReadonlySet<string> = new Set([
-	'n8n-nodes-base.n8nTrigger',
-	'n8n-nodes-base.workflowTrigger',
-	'n8n-nodes-base.emailReadImap',
-	'n8n-nodes-base.postgresTrigger',
+	'MNI-nodes-base.n8nTrigger',
+	'MNI-nodes-base.workflowTrigger',
+	'MNI-nodes-base.emailReadImap',
+	'MNI-nodes-base.postgresTrigger',
 ]);
 
 export interface TriggerDiffOptions {

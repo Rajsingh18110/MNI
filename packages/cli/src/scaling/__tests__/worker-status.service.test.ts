@@ -1,4 +1,4 @@
-import type { WorkerStatus } from '@n8n/api-types';
+import type { WorkerStatus } from '@MNI/api-types';
 import type { Mocked } from 'vitest';
 import { mock } from 'vitest-mock-extended';
 

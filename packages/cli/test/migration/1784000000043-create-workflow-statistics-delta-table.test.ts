@@ -4,16 +4,16 @@ import {
 	runSingleMigration,
 	undoLastSingleMigration,
 	type TestMigrationContext,
-} from '@n8n/backend-test-utils';
-import { DbConnection } from '@n8n/db';
-import { Container } from '@n8n/di';
-import { DataSource } from '@n8n/typeorm';
+} from '@MNI/backend-test-utils';
+import { DbConnection } from '@MNI/db';
+import { Container } from '@MNI/di';
+import { DataSource } from '@MNI/typeorm';
 
 const MIGRATION_NAME = 'CreateWorkflowStatisticsDeltaTable1784000000043';
 
 // The delta table + fold are Postgres-only; the migration is not registered for SQLite.
 const runOnPostgres = (process.env.DB_TYPE ?? 'sqlite') === 'postgresdb';
-// eslint-disable-next-line n8n-local-rules/no-skipped-tests -- Postgres-only migration, skipped on SQLite
+// eslint-disable-next-line MNI-local-rules/no-skipped-tests -- Postgres-only migration, skipped on SQLite
 const describePg = runOnPostgres ? describe : describe.skip;
 
 describePg('CreateWorkflowStatisticsDeltaTable migration (Postgres)', () => {

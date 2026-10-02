@@ -62,7 +62,7 @@ If you can't determine the endpoints confidently, ask the user to provide them.
 File: `packages/nodes-base/credentials/{NODE_NAME}OAuth2Api.credentials.ts`
 
 ```typescript
-import type { ICredentialType, INodeProperties } from 'n8n-workflow';
+import type { ICredentialType, INodeProperties } from 'MNI-workflow';
 
 const defaultScopes = [/* minimum scopes for existing node operations */];
 
@@ -230,7 +230,7 @@ Then in the main request function:
 The existing `uri: \`${domain}/rest${endpoint}\`` construction then produces the correct
 gateway URL automatically.
 
-Add `NodeOperationError` to the `n8n-workflow` import if not already present.
+Add `NodeOperationError` to the `MNI-workflow` import if not already present.
 
 ---
 
@@ -267,7 +267,7 @@ entries in that trigger node's credentials array.
 
 File: `packages/nodes-base/credentials/test/{NODE_NAME}OAuth2Api.credentials.test.ts`
 
-Use `ClientOAuth2` from `@n8n/client-oauth2` and `nock` for HTTP mocking. Follow the
+Use `ClientOAuth2` from `@MNI/client-oauth2` and `nock` for HTTP mocking. Follow the
 structure in `MicrosoftTeamsOAuth2Api.credentials.test.ts`.
 
 Required test cases:

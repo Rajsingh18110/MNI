@@ -1,4 +1,4 @@
-import type { WorkflowReviewRequestForWorkflow } from '@n8n/api-types';
+import type { WorkflowReviewRequestForWorkflow } from '@MNI/api-types';
 import userEvent from '@testing-library/user-event';
 import { within } from '@testing-library/vue';
 import { createPinia } from 'pinia';

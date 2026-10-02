@@ -29,7 +29,7 @@ vi.mock('../composables/useModelCatalog', () => ({
 	}),
 }));
 
-vi.mock('@n8n/i18n', () => ({
+vi.mock('@MNI/i18n', () => ({
 	useI18n: () => ({
 		baseText: (key: string) =>
 			({

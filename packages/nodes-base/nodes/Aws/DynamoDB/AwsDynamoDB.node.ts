@@ -1,4 +1,4 @@
-/* eslint-disable n8n-nodes-base/node-filename-against-convention */
+/* eslint-disable MNI-nodes-base/node-filename-against-convention */
 import {
 	type IExecuteFunctions,
 	type IDataObject,
@@ -8,7 +8,7 @@ import {
 	type INodeTypeDescription,
 	type NodeParameterValue,
 	NodeConnectionTypes,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { awsApiRequest, awsApiRequestAllItems } from './GenericFunctions';
 import { itemFields, itemOperations } from './ItemDescription';

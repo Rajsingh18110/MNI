@@ -1,12 +1,12 @@
-import type { FrontendSettings } from '@n8n/api-types';
-import { Expression } from 'n8n-workflow';
+import type { FrontendSettings } from '@MNI/api-types';
+import { Expression } from 'MNI-workflow';
 
 /**
  * Set up the editor's expression engine from the backend settings payload.
  *
  * The engine is read at runtime rather than baked in at build time, so the same
  * image serves either engine. It is independent of the backend's own
- * `N8N_EXPRESSION_ENGINE`: the editor can evaluate with quickjs while the
+ * `MNI_EXPRESSION_ENGINE`: the editor can evaluate with quickjs while the
  * backend evaluates with vm. `vm` is not an option here — isolated-vm is a
  * native module — so anything other than `quickjs` leaves the legacy evaluator
  * in place.
@@ -30,9 +30,9 @@ export async function initializeExpressionEngine(
 	// node:fs to read it from disk. Imported here rather than at module scope so
 	// the ~470KB asset is only fetched when the engine is enabled. The
 	// runtime-bundle.iife.js sub-path is aliased in vite.config.mts to the built
-	// file in @n8n/expression-runtime.
+	// file in @MNI/expression-runtime.
 	const { default: runtimeBundle } = await import(
-		'@n8n/expression-runtime/runtime-bundle.iife.js?raw'
+		'@MNI/expression-runtime/runtime-bundle.iife.js?raw'
 	);
 
 	await Expression.initExpressionEngine({

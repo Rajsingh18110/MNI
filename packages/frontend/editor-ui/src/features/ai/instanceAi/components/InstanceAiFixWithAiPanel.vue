@@ -4,9 +4,9 @@ import {
 	N8nIcon,
 	N8nText,
 	N8nAnimatedCollapsibleContent as AnimatedCollapsibleContent,
-} from '@n8n/design-system';
+} from '@MNI/design-system';
 import { computed, ref } from 'vue';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import { CollapsibleRoot, CollapsibleTrigger } from 'reka-ui';
 import ConfirmationFooter from './ConfirmationFooter.vue';
 

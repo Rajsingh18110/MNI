@@ -9,7 +9,7 @@ import {
 	type ShallowRef,
 } from 'vue';
 import { useScroll } from '@vueuse/core';
-import type { ChatSessionId, ChatMessageId } from '@n8n/api-types';
+import type { ChatSessionId, ChatMessageId } from '@MNI/api-types';
 import { useChatStore } from '../chat.store';
 import { isWaitingForApproval } from '../chat.utils';
 import { useChatPushHandler } from './useChatPushHandler';

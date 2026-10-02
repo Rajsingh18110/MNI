@@ -6,7 +6,7 @@ import type {
 	INodeTypeDescription,
 	IWebhookFunctions,
 	IWebhookResponseData,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import {
 	FORM_NODE_TYPE,
 	FORM_TRIGGER_NODE_TYPE,
@@ -14,7 +14,7 @@ import {
 	NodeConnectionTypes,
 	NodeOperationError,
 	updateDisplayOptions,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { configureWaitTillDate } from '../../utils/sendAndWait/configureWaitTillDate.util';
 import { limitWaitTimeProperties } from '../../utils/sendAndWait/descriptions';
@@ -84,7 +84,7 @@ export const formFieldsProperties: INodeProperties[] = [
 			'[\n  {\n    "fieldLabel": "Name",\n    "placeholder": "enter your name",\n    "requiredField": true\n  },\n  {\n    "fieldLabel": "Age",\n    "fieldType": "number",\n    "placeholder": "enter your age"\n  },\n  {\n    "fieldLabel": "Email",\n    "fieldType": "email",\n    "requiredField": true\n  },\n  {\n    "fieldLabel": "Textarea",\n    "fieldType": "textarea"\n  },\n  {\n    "fieldLabel": "Dropdown Options",\n    "fieldType": "dropdown",\n    "fieldOptions": {\n      "values": [\n        {\n          "option": "option 1"\n        },\n        {\n          "option": "option 2"\n        }\n      ]\n    },\n    "requiredField": true\n  },\n  {\n    "fieldLabel": "Checkboxes",\n    "fieldType": "checkbox",\n    "fieldOptions": {\n      "values": [\n        {\n          "option": "option 1"\n        },\n        {\n          "option": "option 2"\n        }\n      ]\n    }\n  },\n  {\n    "fieldLabel": "Radio",\n    "fieldType": "radio",\n    "fieldOptions": {\n      "values": [\n        {\n          "option": "option 1"\n        },\n        {\n          "option": "option 2"\n        }\n      ]\n    }\n  },\n  {\n    "fieldLabel": "Email",\n    "fieldType": "email",\n    "placeholder": "me@mail.con"\n  },\n  {\n    "fieldLabel": "File",\n    "fieldType": "file",\n    "multipleFiles": true,\n    "acceptFileTypes": ".jpg, .png"\n  },\n  {\n    "fieldLabel": "Number",\n    "fieldType": "number"\n  },\n  {\n    "fieldLabel": "Password",\n    "fieldType": "password"\n  }\n]\n',
 		validateType: 'form-fields',
 		ignoreValidationDuringExecution: true,
-		hint: '<a href="https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-base.form/" target="_blank">See docs</a> for field syntax',
+		hint: '<a href="https://docs.n8n.io/integrations/builtin/core-nodes/MNI-nodes-base.form/" target="_blank">See docs</a> for field syntax',
 		displayOptions: {
 			show: {
 				defineForm: ['json'],
@@ -153,7 +153,7 @@ const completionProperties = updateDisplayOptions(
 	},
 	[
 		{
-			// eslint-disable-next-line n8n-nodes-base/node-param-display-name-miscased
+			// eslint-disable-next-line MNI-nodes-base/node-param-display-name-miscased
 			displayName: 'On MNI Form Submission',
 			name: 'respondWith',
 			type: 'options',
@@ -305,7 +305,7 @@ export class Form extends Node {
 		builderHint: {
 			relatedNodes: [
 				{
-					nodeType: 'n8n-nodes-base.formTrigger',
+					nodeType: 'MNI-nodes-base.formTrigger',
 					relationHint: 'Creates additional pages/steps after the trigger',
 				},
 			],

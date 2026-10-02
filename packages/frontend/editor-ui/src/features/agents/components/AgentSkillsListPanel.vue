@@ -7,8 +7,8 @@ import {
 	N8nText,
 	N8nTooltip,
 	N8nCard,
-} from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+} from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 import type { AgentSkill } from '../types';
 import AgentPanelHeader from './AgentPanelHeader.vue';
 
@@ -144,7 +144,7 @@ const totalCount = computed(() => props.skills.length);
 .row {
 	--card--append--width: auto;
 
-	:global(.n8n-card-append) {
+	:global(.MNI-card-append) {
 		gap: var(--spacing--2xs);
 	}
 }

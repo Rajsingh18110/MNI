@@ -1,6 +1,6 @@
-import type { EpisodicMemoryCaptureKind } from '@n8n/agents';
-import { Service } from '@n8n/di';
-import { DataSource, In, Repository } from '@n8n/typeorm';
+import type { EpisodicMemoryCaptureKind } from '@MNI/agents';
+import { Service } from '@MNI/di';
+import { DataSource, In, Repository } from '@MNI/typeorm';
 
 import { AgentMemoryEntryCandidateEntity } from '../entities/agent-memory-entry-candidate.entity';
 

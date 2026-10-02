@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useToast } from '@n8n/composables/useToast';
+import { useToast } from '@MNI/composables/useToast';
 import {
 	N8nButton,
 	N8nCheckbox,
@@ -15,9 +15,9 @@ import {
 	N8nSelect,
 	N8nText,
 	useMessage,
-} from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
-import { useRootStore } from '@n8n/stores/useRootStore';
+} from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
+import { useRootStore } from '@MNI/stores/useRootStore';
 import { computed, nextTick, onMounted, reactive, ref, useTemplateRef } from 'vue';
 
 import { MODAL_CONFIRM } from '@/app/constants';

@@ -2,7 +2,7 @@ import type {
 	INodeCredentialDescription,
 	INodeProperties,
 	INodePropertyOptions,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { MicrosoftTeamsTrigger } from '../MicrosoftTeamsTrigger.node';
 import { versionDescription } from '../v2/actions/versionDescription';

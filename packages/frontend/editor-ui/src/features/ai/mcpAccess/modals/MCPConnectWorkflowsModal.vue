@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import MCPWorkflowsSelect from '@/features/ai/mcpAccess/components/MCPWorkflowsSelect.vue';
-import { N8nButton, N8nDialog, N8nDialogFooter } from '@n8n/design-system';
+import { N8nButton, N8nDialog, N8nDialogFooter } from '@MNI/design-system';
 import { computed, ref, watch } from 'vue';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
 
 type SelectRef = InstanceType<typeof MCPWorkflowsSelect>;
 

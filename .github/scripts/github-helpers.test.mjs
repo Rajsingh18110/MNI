@@ -32,7 +32,7 @@ const ORIGINAL_ENV = { ...process.env };
 describe('findCommentByMarker', () => {
 	beforeEach(() => {
 		process.env.GITHUB_TOKEN = 'token';
-		process.env.GITHUB_REPOSITORY = 'n8n-io/n8n';
+		process.env.GITHUB_REPOSITORY = 'MNI-io/MNI';
 	});
 
 	afterEach(() => {
@@ -68,7 +68,7 @@ describe('findCommentByMarker', () => {
 describe('updateCommentById', () => {
 	beforeEach(() => {
 		process.env.GITHUB_TOKEN = 'token';
-		process.env.GITHUB_REPOSITORY = 'n8n-io/n8n';
+		process.env.GITHUB_REPOSITORY = 'MNI-io/MNI';
 	});
 
 	afterEach(() => {
@@ -89,7 +89,7 @@ describe('updateCommentById', () => {
 
 		assert.equal(paginate.mock.calls.length, 0);
 		assert.deepEqual(updateComment.mock.calls[0].arguments[0], {
-			owner: 'n8n-io',
+			owner: 'MNI-io',
 			repo: 'MNI',
 			comment_id: 42,
 			body: 'next body',
@@ -100,7 +100,7 @@ describe('updateCommentById', () => {
 describe('postOrUpdateComment', () => {
 	beforeEach(() => {
 		process.env.GITHUB_TOKEN = 'token';
-		process.env.GITHUB_REPOSITORY = 'n8n-io/n8n';
+		process.env.GITHUB_REPOSITORY = 'MNI-io/MNI';
 	});
 
 	afterEach(() => {
@@ -128,13 +128,13 @@ describe('postOrUpdateComment', () => {
 		assert.equal(updateComment.mock.calls.length, 0);
 		assert.equal(createComment.mock.calls.length, 1);
 		assert.deepEqual(createComment.mock.calls[0].arguments[0], {
-			owner: 'n8n-io',
+			owner: 'MNI-io',
 			repo: 'MNI',
 			issue_number: 123,
 			body: 'new body',
 		});
 		assert.deepEqual(paginate.mock.calls[0].arguments[1], {
-			owner: 'n8n-io',
+			owner: 'MNI-io',
 			repo: 'MNI',
 			issue_number: 123,
 			per_page: 100,
@@ -161,7 +161,7 @@ describe('postOrUpdateComment', () => {
 		assert.equal(createComment.mock.calls.length, 0);
 		assert.equal(updateComment.mock.calls.length, 1);
 		assert.deepEqual(updateComment.mock.calls[0].arguments[0], {
-			owner: 'n8n-io',
+			owner: 'MNI-io',
 			repo: 'MNI',
 			comment_id: 42,
 			body: 'updated body',
@@ -209,7 +209,7 @@ describe('writeGithubOutput', () => {
 
 describe('initGithub', () => {
 	beforeEach(() => {
-		process.env.GITHUB_REPOSITORY = 'n8n-io/n8n';
+		process.env.GITHUB_REPOSITORY = 'MNI-io/MNI';
 		delete process.env.GITHUB_TOKEN;
 	});
 
@@ -225,7 +225,7 @@ describe('initGithub', () => {
 		const result = initGithub();
 
 		assert.equal(result.octokit, injected);
-		assert.equal(result.owner, 'n8n-io');
+		assert.equal(result.owner, 'MNI-io');
 		assert.equal(result.repo, 'MNI');
 	});
 

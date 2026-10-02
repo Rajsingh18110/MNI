@@ -8,7 +8,7 @@ import {
 	createRunStateFromTree,
 } from '../instanceAi.reducer';
 import type { InstanceAiReducerState } from '../instanceAi.reducer';
-import type { InstanceAiEvent } from '@n8n/api-types';
+import type { InstanceAiEvent } from '@MNI/api-types';
 
 // ---------------------------------------------------------------------------
 // Factory helpers

@@ -1,6 +1,6 @@
-import type { GlobalConfig } from '@n8n/config';
+import type { GlobalConfig } from '@MNI/config';
 import { promises as fs } from 'fs';
-import type { InstanceSettings } from 'n8n-core';
+import type { InstanceSettings } from 'MNI-core';
 import path from 'path';
 import type { Mock } from 'vitest';
 import { mock } from 'vitest-mock-extended';

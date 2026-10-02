@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { createEventBus } from '@n8n/utils/event-bus';
+import { createEventBus } from '@MNI/utils/event-bus';
 import Modal from '@/app/components/Modal.vue';
 import BrowserUseSetupContent from './BrowserUseSetupContent.vue';
 

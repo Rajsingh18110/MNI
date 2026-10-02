@@ -1,12 +1,12 @@
-import { createWorkflow, createWorkflowHistory, testDb } from '@n8n/backend-test-utils';
-import type { IWorkflowDb } from '@n8n/db';
+import { createWorkflow, createWorkflowHistory, testDb } from '@MNI/backend-test-utils';
+import type { IWorkflowDb } from '@MNI/db';
 import {
 	WorkflowHistoryRepository,
 	WorkflowPublicationOutboxRepository,
 	WorkflowPublicationTriggerStatusRepository,
 	WorkflowRepository,
-} from '@n8n/db';
-import { Container } from '@n8n/di';
+} from '@MNI/db';
+import { Container } from '@MNI/di';
 
 /** Seeds `workflow_history` rows so the trigger-status versionId FK is satisfiable. */
 async function seedVersions(workflow: IWorkflowDb, versionIds: string[]): Promise<void> {

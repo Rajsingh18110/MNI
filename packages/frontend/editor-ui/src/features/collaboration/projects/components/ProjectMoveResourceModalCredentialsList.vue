@@ -4,7 +4,7 @@ import type {
 	ICredentialsResponse,
 	IUsedCredential,
 } from '@/features/credentials/credentials.types';
-import { getResourcePermissions } from '@n8n/permissions';
+import { getResourcePermissions } from '@MNI/permissions';
 import { VIEWS } from '@/app/constants';
 
 const props = withDefaults(

@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import { N8nButton, N8nIcon, N8nText } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
-import type { InstanceAiMcpConnectServer, McpRegistryServerResponse } from '@n8n/api-types';
+import { N8nButton, N8nIcon, N8nText } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
+import type { InstanceAiMcpConnectServer, McpRegistryServerResponse } from '@MNI/api-types';
 import { computed, provide, ref, watch } from 'vue';
 import { useUIStore } from '@/app/stores/ui.store';
 import { INSTANCE_AI_TOOLS_CONNECTION_MODAL_KEY } from '../constants';

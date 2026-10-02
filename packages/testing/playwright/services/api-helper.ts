@@ -5,9 +5,9 @@ import type {
 	InstanceAiPermissions,
 	InstanceAiAdminSettingsUpdateRequest,
 	InstanceAiThreadInfo,
-} from '@n8n/api-types';
+} from '@MNI/api-types';
 import { request, type APIRequestContext } from '@playwright/test';
-import type { IWorkflowSettings } from 'n8n-workflow';
+import type { IWorkflowSettings } from 'MNI-workflow';
 
 import type { UserCredentials } from '../config/test-users';
 import {
@@ -384,7 +384,7 @@ export class ApiHelpers {
 
 	/**
 	 * The engine the editor evaluates expressions with
-	 * (`N8N_EXPRESSION_ENGINE_FRONTEND`). Read from the instance rather than the
+	 * (`MNI_EXPRESSION_ENGINE_FRONTEND`). Read from the instance rather than the
 	 * env, so a spec can skip when the instance does not run the engine it needs.
 	 */
 	async getFrontendExpressionEngine(): Promise<string | undefined> {

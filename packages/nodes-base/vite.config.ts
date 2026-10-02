@@ -1,6 +1,6 @@
 import { resolve } from 'path';
 import { mergeConfig } from 'vite';
-import { createVitestConfigWithDecorators } from '@n8n/vitest-config/node-decorators';
+import { createVitestConfigWithDecorators } from '@MNI/vitest-config/node-decorators';
 
 // Avoid tests failing because of difference between local and GitHub actions timezone.
 // Set before workers are forked so they inherit it.

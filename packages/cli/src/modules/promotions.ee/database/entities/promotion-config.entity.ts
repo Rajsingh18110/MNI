@@ -1,6 +1,6 @@
-import type { PromotionConfigSettings, PromotionDirection } from '@n8n/api-types';
-import { JsonColumn, WithTimestampsAndStringId } from '@n8n/db';
-import { Column, Entity, Index, JoinColumn, ManyToOne, type Relation } from '@n8n/typeorm';
+import type { PromotionConfigSettings, PromotionDirection } from '@MNI/api-types';
+import { JsonColumn, WithTimestampsAndStringId } from '@MNI/db';
+import { Column, Entity, Index, JoinColumn, ManyToOne, type Relation } from '@MNI/typeorm';
 
 import { PromotionConnection } from './promotion-connection.entity';
 

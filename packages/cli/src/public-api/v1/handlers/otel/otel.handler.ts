@@ -1,6 +1,6 @@
-import { TestOtelTraceDto, UpdateOtelSettingsDto } from '@n8n/api-types';
-import { ModuleRegistry } from '@n8n/backend-common';
-import { Container } from '@n8n/di';
+import { TestOtelTraceDto, UpdateOtelSettingsDto } from '@MNI/api-types';
+import { ModuleRegistry } from '@MNI/backend-common';
+import { Container } from '@MNI/di';
 
 import { BadRequestError } from '@/errors/response-errors/bad-request.error';
 import { ConflictError } from '@/errors/response-errors/conflict.error';

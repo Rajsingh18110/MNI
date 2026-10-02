@@ -1,5 +1,5 @@
-import { SecurityConfig } from '@n8n/config';
-import { Container } from '@n8n/di';
+import { SecurityConfig } from '@MNI/config';
+import { Container } from '@MNI/di';
 
 import type { Resolvers } from './system-credentials-utils';
 
@@ -119,7 +119,7 @@ export async function resolveWebIdentityViaSdk(region?: string): Promise<SystemC
 		fromWebToken({
 			webIdentityToken,
 			roleArn,
-			roleSessionName: 'n8n-web-identity-session',
+			roleSessionName: 'MNI-web-identity-session',
 			clientConfig: {
 				...(region ? { region } : {}),
 				maxAttempts: 1,

@@ -16,7 +16,7 @@ jobs:
     name: Check Changes
     if: >-
       github.event.review.state == 'approved' &&
-      github.repository == 'n8n-io/n8n'
+      github.repository == 'MNI-io/MNI'
     runs-on: ubuntu-slim
     outputs:
       design_system: ${{ fromJSON(steps.ci-filter.outputs.results)['design-system'] == true }}
@@ -37,8 +37,8 @@ jobs:
           mode: filter
           filters: |
             design-system:
-              packages/frontend/@n8n/design-system/**
-              packages/frontend/@n8n/storybook/**
+              packages/frontend/@MNI/design-system/**
+              packages/frontend/@MNI/storybook/**
               .github/workflows/release-chromatic.yml
 
   chromatic:

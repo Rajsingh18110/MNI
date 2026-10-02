@@ -3,7 +3,7 @@ import {
 	type IExecuteFunctions,
 	type INodeExecutionData,
 	NodeOperationError,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import * as file from './file';
 import * as item from './item';

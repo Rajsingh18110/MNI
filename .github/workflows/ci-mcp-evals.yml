@@ -48,7 +48,7 @@ concurrency:
 jobs:
   run-evals:
     name: MCP Workflow Evals
-    if: github.repository == 'n8n-io/n8n'
+    if: github.repository == 'MNI-io/MNI'
     uses: ./.github/workflows/test-evals-mcp.yml
     with:
       branch: ${{ github.sha }}
@@ -65,9 +65,9 @@ jobs:
     # Pass only the secrets the reusable workflow needs (not `secrets: inherit`).
     secrets:
       EVALS_ANTHROPIC_KEY: ${{ secrets.EVALS_ANTHROPIC_KEY }}
-      N8N_LICENSE_ACTIVATION_KEY: ${{ secrets.N8N_LICENSE_ACTIVATION_KEY }}
-      N8N_LICENSE_CERT: ${{ secrets.N8N_LICENSE_CERT }}
-      N8N_ENCRYPTION_KEY: ${{ secrets.N8N_ENCRYPTION_KEY }}
+      MNI_LICENSE_ACTIVATION_KEY: ${{ secrets.MNI_LICENSE_ACTIVATION_KEY }}
+      MNI_LICENSE_CERT: ${{ secrets.MNI_LICENSE_CERT }}
+      MNI_ENCRYPTION_KEY: ${{ secrets.MNI_ENCRYPTION_KEY }}
       EVALS_LANGSMITH_ENDPOINT: ${{ secrets.EVALS_LANGSMITH_ENDPOINT }}
       EVALS_LANGSMITH_API_KEY: ${{ secrets.EVALS_LANGSMITH_API_KEY }}
       EVALS_LANGTRACER_URL: ${{ secrets.EVALS_LANGTRACER_URL }}

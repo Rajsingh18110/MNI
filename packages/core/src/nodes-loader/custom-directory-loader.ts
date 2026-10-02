@@ -5,7 +5,7 @@ import { DirectoryLoader } from './directory-loader';
 
 /**
  * Loader for source files of nodes and credentials located in a custom dir,
- * e.g. `~/.n8n/custom`
+ * e.g. `~/.MNI/custom`
  */
 export class CustomDirectoryLoader extends DirectoryLoader {
 	packageName = CUSTOM_NODES_PACKAGE_NAME;

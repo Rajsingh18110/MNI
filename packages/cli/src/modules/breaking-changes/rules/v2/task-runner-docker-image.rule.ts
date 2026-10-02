@@ -1,5 +1,5 @@
-import { GlobalConfig } from '@n8n/config';
-import { BreakingChangeRule } from '@n8n/decorators';
+import { GlobalConfig } from '@MNI/config';
+import { BreakingChangeRule } from '@MNI/decorators';
 
 import type {
 	BreakingChangeRuleMetadata,
@@ -23,7 +23,7 @@ export class TaskRunnerDockerImageRule implements IBreakingChangeInstanceRule {
 			category: BreakingChangeCategory.infrastructure,
 			severity: 'medium',
 			documentationUrl:
-				'https://docs.n8n.io/2-0-breaking-changes/#remove-task-runner-from-n8nion8n-docker-image',
+				'https://docs.n8n.io/2-0-breaking-changes/#remove-task-runner-from-MNIioMNI-docker-image',
 		};
 	}
 
@@ -51,12 +51,12 @@ export class TaskRunnerDockerImageRule implements IBreakingChangeInstanceRule {
 				{
 					action: 'Update Docker configuration',
 					description:
-						'Change the task runner Docker image from n8nio/n8n to n8nio/runners in your docker-compose.yml or Kubernetes configuration',
+						'Change the task runner Docker image from n8nio/MNI to n8nio/runners in your docker-compose.yml or Kubernetes configuration',
 				},
 				{
 					action: 'Configure external task runners',
 					description:
-						'Set up external task runners using the n8nio/runners image and configure MNI to connect to them using N8N_RUNNERS_MODE=external',
+						'Set up external task runners using the n8nio/runners image and configure MNI to connect to them using MNI_RUNNERS_MODE=external',
 				},
 				{
 					action: 'Review task runner documentation',

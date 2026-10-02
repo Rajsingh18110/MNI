@@ -2,7 +2,7 @@
 import VueMarkdown from 'vue-markdown-render';
 import { useChatHubMarkdownOptions } from '@/features/ai/chatHub/composables/useChatHubMarkdownOptions';
 import { ref } from 'vue';
-import type { ChatMessageContentChunk } from '@n8n/api-types';
+import type { ChatMessageContentChunk } from '@MNI/api-types';
 import ChatButtons from './ChatButtons.vue';
 
 const {
@@ -19,9 +19,9 @@ const {
 
 const emit = defineEmits<{ openArtifact: [title: string] }>();
 
-const codeBlockActionsClassName = 'n8n-markdown-code-block-actions';
-const tableContainerClassName = 'n8n-markdown-table-container';
-const footnoteRefClassName = footnoteStyle === 'pill' ? 'n8n-markdown-footnote-ref' : null;
+const codeBlockActionsClassName = 'MNI-markdown-code-block-actions';
+const tableContainerClassName = 'MNI-markdown-table-container';
+const footnoteRefClassName = footnoteStyle === 'pill' ? 'MNI-markdown-footnote-ref' : null;
 
 const markdown = useChatHubMarkdownOptions(
 	codeBlockActionsClassName,
@@ -59,7 +59,7 @@ defineExpose({
 		v-if="source.type === 'text'"
 		:key="markdown.forceReRenderKey.value"
 		:source="source.content"
-		:class="['n8n-markdown', { 'n8n-markdown--single-pre': singlePre }]"
+		:class="['MNI-markdown', { 'MNI-markdown--single-pre': singlePre }]"
 		:options="markdown.options"
 		:plugins="markdown.plugins.value"
 		@mousemove="handleMouseMove"
@@ -69,7 +69,7 @@ defineExpose({
 		<VueMarkdown
 			:key="markdown.forceReRenderKey.value"
 			:source="source.content"
-			class="n8n-markdown"
+			class="MNI-markdown"
 			:options="markdown.options"
 			:plugins="markdown.plugins.value"
 			@mousemove="handleMouseMove"
@@ -95,7 +95,7 @@ defineExpose({
 </template>
 
 <style lang="scss">
-@use '@n8n/design-system/css/markdown.scss';
+@use '@MNI/design-system/css/markdown.scss';
 </style>
 
 <style lang="scss" module>

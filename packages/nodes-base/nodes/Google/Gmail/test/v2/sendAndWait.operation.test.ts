@@ -5,7 +5,7 @@ import {
 	type INodeTypeBaseDescription,
 	SEND_AND_WAIT_OPERATION,
 	type IExecuteFunctions,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import * as genericFunctions from '../../GenericFunctions';
 import { GmailV2 } from '../../v2/GmailV2.node';

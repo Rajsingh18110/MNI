@@ -8,7 +8,7 @@ import {
 	type INodeType,
 	type INodeTypeDescription,
 	NodeConnectionTypes,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { awsApiRequestSOAP } from './GenericFunctions';
 import { awsNodeAuthOptions, awsNodeCredentials } from './utils';

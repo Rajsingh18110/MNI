@@ -1,7 +1,7 @@
 ---
 name: MNI:create-community-node-lint-rule
 description: >-
-  Create new ESLint rules for the @n8n/eslint-plugin-community-nodes package.
+  Create new ESLint rules for the @MNI/eslint-plugin-community-nodes package.
   Use when adding a lint rule, creating a community node lint, or working on
   eslint-plugin-community-nodes. Guides rule implementation, tests, docs, and
   plugin registration.
@@ -9,9 +9,9 @@ description: >-
 
 # Create Community Node Lint Rule
 
-Guide for adding new ESLint rules to `packages/@n8n/eslint-plugin-community-nodes/`.
+Guide for adding new ESLint rules to `packages/@MNI/eslint-plugin-community-nodes/`.
 
-All paths below are relative to `packages/@n8n/eslint-plugin-community-nodes/`.
+All paths below are relative to `packages/@MNI/eslint-plugin-community-nodes/`.
 
 ## Step 1: Understand the Rule
 
@@ -96,7 +96,7 @@ const ruleTester = new RuleTester();
 // Helper to generate test code — keeps test cases readable
 function createNodeCode(/* parameterize the varying parts */): string {
   return `
-import type { INodeType, INodeTypeDescription } from 'n8n-workflow';
+import type { INodeType, INodeTypeDescription } from 'MNI-workflow';
 
 export class TestNode implements INodeType {
   description: INodeTypeDescription = {
@@ -155,7 +155,7 @@ export const rules = {
 Add to **both** config objects (unless the rule depends on MNI cloud features):
 
 ```typescript
-'@n8n/community-nodes/rule-name': 'error',  // or 'warn'
+'@MNI/community-nodes/rule-name': 'error',  // or 'warn'
 ```
 
 - Use `error` for rules that catch bugs or required patterns
@@ -168,7 +168,7 @@ Add to **both** config objects (unless the rule depends on MNI cloud features):
 Create `docs/rules/<rule-name>.md`:
 
 ```markdown
-# Description of what the rule does (`@n8n/community-nodes/rule-name`)
+# Description of what the rule does (`@MNI/community-nodes/rule-name`)
 
 <!-- end auto-generated rule header -->
 
@@ -195,10 +195,10 @@ The header above `<!-- end auto-generated rule header -->` will be regenerated b
 
 ## Step 6: Verify
 
-Run from `packages/@n8n/eslint-plugin-community-nodes/`:
+Run from `packages/@MNI/eslint-plugin-community-nodes/`:
 
 ```bash
-pushd packages/@n8n/eslint-plugin-community-nodes
+pushd packages/@MNI/eslint-plugin-community-nodes
 pnpm test <rule-name>.test.ts   # tests pass
 pnpm typecheck                   # types are clean
 pnpm build                       # compiles

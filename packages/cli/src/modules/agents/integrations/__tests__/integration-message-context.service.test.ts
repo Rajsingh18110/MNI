@@ -1,5 +1,5 @@
-import { mockLogger } from '@n8n/backend-test-utils';
-import { jsonParse } from 'n8n-workflow';
+import { mockLogger } from '@MNI/backend-test-utils';
+import { jsonParse } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import type { AgentResourceRepository } from '../../repositories/agent-resource.repository';

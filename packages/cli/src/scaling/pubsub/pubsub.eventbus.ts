@@ -1,5 +1,5 @@
-import { TypedEmitter } from '@n8n/backend-common';
-import { Service } from '@n8n/di';
+import { TypedEmitter } from '@MNI/backend-common';
+import { Service } from '@MNI/di';
 
 import type { PubSubEventMap } from './pubsub.event-map';
 

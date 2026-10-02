@@ -1,11 +1,11 @@
 import { buildUninstalledNodeWarnings } from '../tools/workflow-builder/uninstalled-node-warnings';
 
-const FIRECRAWL = '@mendable/n8n-nodes-firecrawl.firecrawl';
+const FIRECRAWL = '@mendable/MNI-nodes-firecrawl.firecrawl';
 
 describe('buildUninstalledNodeWarnings', () => {
 	const nodes = [
 		{ name: 'Scrape', type: FIRECRAWL },
-		{ name: 'Set Fields', type: 'n8n-nodes-base.set' },
+		{ name: 'Set Fields', type: 'MNI-nodes-base.set' },
 	];
 
 	const finder = (uninstalled: Array<{ nodeType: string; packageName: string }>) =>
@@ -14,7 +14,7 @@ describe('buildUninstalledNodeWarnings', () => {
 	test('warns per node, naming the package that ships it', async () => {
 		const warnings = await buildUninstalledNodeWarnings(
 			nodes,
-			finder([{ nodeType: FIRECRAWL, packageName: '@mendable/n8n-nodes-firecrawl' }]),
+			finder([{ nodeType: FIRECRAWL, packageName: '@mendable/MNI-nodes-firecrawl' }]),
 			true,
 		);
 
@@ -23,7 +23,7 @@ describe('buildUninstalledNodeWarnings', () => {
 			code: 'UNINSTALLED_COMMUNITY_NODE',
 			nodeName: 'Scrape',
 		});
-		expect(warnings[0].message).toContain('@mendable/n8n-nodes-firecrawl');
+		expect(warnings[0].message).toContain('@mendable/MNI-nodes-firecrawl');
 		expect(warnings[0].message).toContain('install_community_node');
 	});
 
@@ -32,11 +32,11 @@ describe('buildUninstalledNodeWarnings', () => {
 		// or have it promise an install this user cannot perform.
 		const warnings = await buildUninstalledNodeWarnings(
 			nodes,
-			finder([{ nodeType: FIRECRAWL, packageName: '@mendable/n8n-nodes-firecrawl' }]),
+			finder([{ nodeType: FIRECRAWL, packageName: '@mendable/MNI-nodes-firecrawl' }]),
 		);
 
 		expect(warnings).toHaveLength(1);
-		expect(warnings[0].message).toContain('@mendable/n8n-nodes-firecrawl');
+		expect(warnings[0].message).toContain('@mendable/MNI-nodes-firecrawl');
 		expect(warnings[0].message).not.toContain('install_community_node');
 		expect(warnings[0].message).toContain('administrator');
 	});
@@ -47,7 +47,7 @@ describe('buildUninstalledNodeWarnings', () => {
 				{ name: 'Scrape A', type: FIRECRAWL },
 				{ name: 'Scrape B', type: FIRECRAWL },
 			],
-			finder([{ nodeType: FIRECRAWL, packageName: '@mendable/n8n-nodes-firecrawl' }]),
+			finder([{ nodeType: FIRECRAWL, packageName: '@mendable/MNI-nodes-firecrawl' }]),
 		);
 
 		expect(warnings.map((w) => w.nodeName)).toEqual(['Scrape A', 'Scrape B']);
@@ -73,6 +73,6 @@ describe('buildUninstalledNodeWarnings', () => {
 
 		await buildUninstalledNodeWarnings(nodes, find);
 
-		expect(find).toHaveBeenCalledWith([FIRECRAWL, 'n8n-nodes-base.set']);
+		expect(find).toHaveBeenCalledWith([FIRECRAWL, 'MNI-nodes-base.set']);
 	});
 });

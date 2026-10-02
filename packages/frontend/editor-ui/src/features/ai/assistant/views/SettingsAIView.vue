@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import { ref, onMounted, computed } from 'vue';
-import { N8nHeading, N8nCheckbox, N8nText } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
-import { useToast } from '@n8n/composables/useToast';
+import { N8nHeading, N8nCheckbox, N8nText } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
+import { useToast } from '@MNI/composables/useToast';
 import { useDocumentTitle } from '@/app/composables/useDocumentTitle';
 import { useAssistantStore } from '@/features/ai/assistant/assistant.store';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { useMessage } from '@/app/composables/useMessage';
 import { MODAL_CONFIRM } from '@/app/constants';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
 
 const i18n = useI18n();
 const toast = useToast();
@@ -73,7 +73,7 @@ onMounted(async () => {
 	<div :class="$style.container" data-test-id="ai">
 		<div :class="$style.header">
 			<N8nHeading size="2xlarge">{{ i18n.baseText('settings.ai') }}</N8nHeading>
-			<N8nText v-n8n-html="aiSettingsDescription" size="small" color="text-light" />
+			<N8nText v-MNI-html="aiSettingsDescription" size="small" color="text-light" />
 		</div>
 		<div :class="$style.content">
 			<div :class="$style.checkboxContainer">
@@ -100,7 +100,7 @@ onMounted(async () => {
 		<div :class="$style.privacyNote">
 			<N8nText :bold="true">{{ i18n.baseText('settings.ai.privacyNote.heading') }}</N8nText>
 			<N8nText
-				v-n8n-html="
+				v-MNI-html="
 					i18n.baseText('settings.ai.privacyNote.content', {
 						interpolate: { docsLink: 'https://docs.n8n.io/manage-cloud/ai-assistant' },
 					})

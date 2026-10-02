@@ -1,5 +1,5 @@
-import type { IConnections, INodeTypeDescription } from 'n8n-workflow';
-import { NodeHelpers, resolveNodeWebhookId } from 'n8n-workflow';
+import type { IConnections, INodeTypeDescription } from 'MNI-workflow';
+import { NodeHelpers, resolveNodeWebhookId } from 'MNI-workflow';
 import type { INodeUi, IWorkflowDb } from '@/Interface';
 import { FORM_TRIGGER_NODE_TYPE, MCP_TRIGGER_NODE_TYPE, WEBHOOK_NODE_TYPE } from '@/app/constants';
 import { ensureNodePosition, sanitizeConnections } from '@/app/utils/workflowUtils';

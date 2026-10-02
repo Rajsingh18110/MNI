@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 import { computed } from 'vue';
-import type { OAuthClientResponseDto } from '@n8n/api-types';
-import { N8nAvatar, N8nText } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+import type { OAuthClientResponseDto } from '@MNI/api-types';
+import { N8nAvatar, N8nText } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 
 const props = defineProps<{
 	owner: NonNullable<OAuthClientResponseDto['owner']>;

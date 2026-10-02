@@ -3,8 +3,8 @@ import type {
 	INodeExecutionData,
 	INodeType,
 	INodeTypeDescription,
-} from 'n8n-workflow';
-import { NodeConnectionTypes } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeConnectionTypes } from 'MNI-workflow';
 
 import * as read from './actions/read.operation';
 import * as write from './actions/write.operation';
@@ -26,7 +26,7 @@ export class ReadWriteFile implements INodeType {
 		properties: [
 			{
 				displayName:
-					'Use this node to read and write files on the same computer running n8n. To handle files between different computers please use other nodes (e.g. FTP, HTTP Request, AWS).',
+					'Use this node to read and write files on the same computer running MNI. To handle files between different computers please use other nodes (e.g. FTP, HTTP Request, AWS).',
 				name: 'info',
 				type: 'notice',
 				default: '',

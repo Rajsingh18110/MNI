@@ -1,16 +1,16 @@
-import type { FrontendModuleDescription } from '@n8n/frontend-module-sdk';
+import type { FrontendModuleDescription } from '@MNI/frontend-module-sdk';
 import { DataTableModule } from '@/features/core/dataTable/module.descriptor';
 import { MCPModule } from '@/features/ai/mcpAccess/module.descriptor';
 import { ChatModule } from '@/features/ai/chatHub/module.descriptor';
 import { InstanceAiModule } from '@/features/ai/instanceAi/module.descriptor';
 import { AgentsModule } from '@/features/agents/module.descriptor';
 import { WorkflowReviewsModule } from '@/features/workflow-reviews/module.descriptor';
-import { InstanceRegistryModule } from '@n8n/frontend-module-instance-registry';
-import { OtelModule } from '@n8n/frontend-module-otel';
-import { InsightsModule } from '@n8n/frontend-module-insights/insights.module';
+import { InstanceRegistryModule } from '@MNI/frontend-module-instance-registry';
+import { OtelModule } from '@MNI/frontend-module-otel';
+import { InsightsModule } from '@MNI/frontend-module-insights/insights.module';
 import { PromotionsModule } from '@/features/integrations/promotions.ee/module.descriptor';
 import { ContextModule } from '@/features/settings/context/module.descriptor';
-import { TypeAvailabilityPoliciesModule } from '@n8n/frontend-module-type-availability-policies';
+import { TypeAvailabilityPoliciesModule } from '@MNI/frontend-module-type-availability-policies';
 
 /**
  * The static list is the design, not a placeholder (design §9). MNI self-hosted
@@ -26,7 +26,7 @@ import { TypeAvailabilityPoliciesModule } from '@n8n/frontend-module-type-availa
  * dynamic imports and Vite emits one chunk per module. That is decided at
  * wave-2 exit, with bundle-analysis data.
  *
- * Add a module here through the scaffolder (`pnpm n8n-module-sdk create`).
+ * Add a module here through the scaffolder (`pnpm MNI-module-sdk create`).
  */
 export const modules: FrontendModuleDescription[] = [
 	DataTableModule,

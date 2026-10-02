@@ -23,8 +23,8 @@ import { useNodeCreatorStore } from '../nodeCreator.store';
 import KeyboardShortcutTooltip from '@/app/components/KeyboardShortcutTooltip.vue';
 import NodeCreatorShortcutCoachmark from '../components/NodeCreatorShortcutCoachmark.vue';
 import { useNodeCreatorShortcutCoachmark } from '../composables/useNodeCreatorShortcutCoachmark';
-import { useI18n } from '@n8n/i18n';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
+import { useI18n } from '@MNI/i18n';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
 import { useAssistantStore } from '@/features/ai/assistant/assistant.store';
 import { useChatPanelStore } from '@/features/ai/assistant/chatPanel.store';
 
@@ -34,10 +34,10 @@ import {
 	N8nButtonList,
 	N8nIconButton,
 	N8nTooltip,
-} from '@n8n/design-system';
+} from '@MNI/design-system';
 import { useSetupPanelStore } from '@/features/setupPanel/setupPanel.store';
 import { useWorkflowId } from '@/app/composables/useWorkflowId';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 
 type Props = {
 	nodeViewScale: number;

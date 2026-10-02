@@ -1,26 +1,26 @@
 <script lang="ts" setup>
 import { computed, onBeforeUnmount, onMounted, ref } from 'vue';
 import { useDebounceFn } from '@vueuse/core';
-import { useToast } from '@n8n/composables/useToast';
+import { useToast } from '@MNI/composables/useToast';
 import { useDocumentTitle } from '@/app/composables/useDocumentTitle';
-import { getDebounceTime } from '@n8n/composables/useDebounce';
+import { getDebounceTime } from '@MNI/composables/useDebounce';
 import { DEBOUNCE_TIME } from '@/app/constants/durations';
 
-import { useSettingsStore } from '@n8n/stores/settings.store';
-import { useCloudPlanStore } from '@n8n/stores/cloudPlan.store';
-import { useUsersStore } from '@n8n/stores/users.store';
-import { useRBACStore } from '@n8n/stores/rbac.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
+import { useCloudPlanStore } from '@MNI/stores/cloudPlan.store';
+import { useUsersStore } from '@MNI/stores/users.store';
+import { useRBACStore } from '@MNI/stores/rbac.store';
 import { DOCS_DOMAIN } from '@/app/constants';
 import { API_KEY_CREATE_OR_EDIT_MODAL_KEY } from '../apiKeys.constants';
-import { useI18n } from '@n8n/i18n';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
+import { useI18n } from '@MNI/i18n';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
 import { usePageRedirectionHelper } from '@/app/composables/usePageRedirectionHelper';
 import { useUIStore } from '@/app/stores/ui.store';
 import { useApiKeysStore } from '../apiKeys.store';
 import { storeToRefs } from 'pinia';
-import { useRootStore } from '@n8n/stores/useRootStore';
-import type { ApiKey } from '@n8n/api-types';
-import type { IUser } from '@n8n/design-system';
+import { useRootStore } from '@MNI/stores/useRootStore';
+import type { ApiKey } from '@MNI/api-types';
+import type { IUser } from '@MNI/design-system';
 import {
 	N8nEmptyState,
 	N8nButton,
@@ -31,7 +31,7 @@ import {
 	N8nTabs,
 	N8nText,
 	N8nTooltip,
-} from '@n8n/design-system';
+} from '@MNI/design-system';
 import { I18nT } from 'vue-i18n';
 import ApiKeyOwnerFilter from '../components/ApiKeyOwnerFilter.vue';
 
@@ -220,7 +220,7 @@ onBeforeUnmount(() => {
 });
 
 function onUpgrade() {
-	void goToUpgrade('settings-n8n-api', 'upgrade-api', 'redirect');
+	void goToUpgrade('settings-MNI-api', 'upgrade-api', 'redirect');
 }
 
 async function getApiKeysAndScopes() {
@@ -319,7 +319,7 @@ function onOpenScopes(apiKey: ApiKey) {
 							<a
 								:class="$style.docLink"
 								data-test-id="webhook-docs-link"
-								href="https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-base.webhook/"
+								href="https://docs.n8n.io/integrations/builtin/core-nodes/MNI-nodes-base.webhook/"
 								target="_blank"
 								v-text="i18n.baseText('settings.api.view.info.webhook')"
 							/>

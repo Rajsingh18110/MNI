@@ -1,4 +1,4 @@
-import { NodeConnectionTypes, type IRunData } from 'n8n-workflow';
+import { NodeConnectionTypes, type IRunData } from 'MNI-workflow';
 
 import { toITaskData } from './helpers';
 import { getIncomingData } from '../get-incoming-data';

@@ -1,6 +1,6 @@
 ![MNI - Workflow Automation](https://raw.githubusercontent.com/Rajsingh18110/MNI/main/assets/mni-screenshot-readme.png)
 
-# n8n-editor-ui
+# MNI-editor-ui
 
 The UI to create and update MNI workflows
 
@@ -41,7 +41,7 @@ pnpm lint
 ### Run your end-to-end tests
 
 ```
-pnpm --filter=n8n-playwright test:local
+pnpm --filter=MNI-playwright test:local
 ```
 
 ### Run your unit tests
@@ -56,4 +56,4 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ## License
 
-You can find the license information [here](https://github.com/n8n-io/n8n/blob/master/README.md#license)
+You can find the license information [here](https://github.com/MNI-io/MNI/blob/master/README.md#license)

@@ -3,11 +3,11 @@ import ChangePasswordModal from './ChangePasswordModal.vue';
 import type { createPinia } from 'pinia';
 import { createComponentRenderer } from '@/__tests__/render';
 import { mockedStore } from '@/__tests__/utils';
-import { useSettingsStore } from '@n8n/stores/settings.store';
-import { createPasswordRules } from '@n8n/design-system';
+import { useSettingsStore } from '@MNI/stores/settings.store';
+import { createPasswordRules } from '@MNI/design-system';
 
-vi.mock('@n8n/design-system', async () => {
-	const actual = await vi.importActual('@n8n/design-system');
+vi.mock('@MNI/design-system', async () => {
+	const actual = await vi.importActual('@MNI/design-system');
 	const { createPasswordRules: originalCreatePasswordRules } = actual as {
 		createPasswordRules: typeof createPasswordRules;
 	};

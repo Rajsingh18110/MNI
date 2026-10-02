@@ -4,20 +4,20 @@ import { describe, expect, it, vi } from 'vitest';
 
 import AgentChannelSlackSetup from '../components/AgentChannelSlackSetup.vue';
 
-vi.mock('@n8n/i18n', async (importOriginal) => ({
+vi.mock('@MNI/i18n', async (importOriginal) => ({
 	...(await importOriginal()),
 	useI18n: () => ({
 		baseText: (key: string) => key,
 	}),
 }));
 
-vi.mock('@n8n/stores/useRootStore', () => ({
+vi.mock('@MNI/stores/useRootStore', () => ({
 	useRootStore: () => ({
 		restApiContext: {},
 	}),
 }));
 
-vi.mock('@n8n/design-system', async (importOriginal) => ({
+vi.mock('@MNI/design-system', async (importOriginal) => ({
 	...(await importOriginal()),
 	N8nCollapsiblePanel: {
 		template: '<section data-test-id="slack-manual-configuration"><slot /></section>',

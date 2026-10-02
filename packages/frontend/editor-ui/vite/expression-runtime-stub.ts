@@ -1,5 +1,5 @@
 /**
- * Browser shim for @n8n/expression-runtime.
+ * Browser shim for @MNI/expression-runtime.
  *
  * IsolatedVmBridge depends on isolated-vm (a Node.js-only native module),
  * so we stub it with a throwing class. QuickJsBridge runs on WASM and works
@@ -7,11 +7,11 @@
  */
 
 // Real exports from source — vite resolves these relative paths at build time.
-// The @n8n/expression-runtime alias in vite.config.mts points to THIS file,
+// The @MNI/expression-runtime alias in vite.config.mts points to THIS file,
 // so the relative paths here are relative to vite/expression-runtime-stub.ts,
 // not to the original package consumers' viewpoint.
-export { QuickJsBridge } from '../../../@n8n/expression-runtime/src/bridge/quickjs-bridge';
-export { ExpressionEvaluator } from '../../../@n8n/expression-runtime/src/evaluator/expression-evaluator';
+export { QuickJsBridge } from '../../../@MNI/expression-runtime/src/bridge/quickjs-bridge';
+export { ExpressionEvaluator } from '../../../@MNI/expression-runtime/src/evaluator/expression-evaluator';
 
 export {
 	ExpressionError,
@@ -19,19 +19,19 @@ export {
 	TimeoutError,
 	SecurityViolationError,
 	SyntaxError,
-} from '../../../@n8n/expression-runtime/src/types';
+} from '../../../@MNI/expression-runtime/src/types';
 
 export {
 	extend,
 	extendOptional,
 	EXTENSION_OBJECTS,
-} from '../../../@n8n/expression-runtime/src/extensions/extend';
-export { ExpressionExtensionError } from '../../../@n8n/expression-runtime/src/extensions/expression-extension-error';
-export { NoOpProvider } from '../../../@n8n/expression-runtime/src/observability/noop-provider';
-export { EXPRESSION_METRICS } from '../../../@n8n/expression-runtime/src/observability/metrics';
-export { classifyExpressionError } from '../../../@n8n/expression-runtime/src/evaluator/error-classification';
+} from '../../../@MNI/expression-runtime/src/extensions/extend';
+export { ExpressionExtensionError } from '../../../@MNI/expression-runtime/src/extensions/expression-extension-error';
+export { NoOpProvider } from '../../../@MNI/expression-runtime/src/observability/noop-provider';
+export { EXPRESSION_METRICS } from '../../../@MNI/expression-runtime/src/observability/metrics';
+export { classifyExpressionError } from '../../../@MNI/expression-runtime/src/evaluator/error-classification';
 
-export { DEFAULT_BRIDGE_CONFIG, RuntimeError } from '../../../@n8n/expression-runtime/src/types';
+export { DEFAULT_BRIDGE_CONFIG, RuntimeError } from '../../../@MNI/expression-runtime/src/types';
 
 export class IsolatedVmBridge {
 	constructor(_config?: unknown) {
@@ -39,7 +39,7 @@ export class IsolatedVmBridge {
 	}
 }
 
-export { IsolateError } from '../../../@n8n/errors/src/isolate.error';
+export { IsolateError } from '../../../@MNI/errors/src/isolate.error';
 
 // Type-only exports (resolved by TypeScript, erased at runtime)
 export type {
@@ -55,4 +55,4 @@ export type {
 	Span,
 	LogsAPI,
 	ExecuteOptions,
-} from '../../../@n8n/expression-runtime/src/types';
+} from '../../../@MNI/expression-runtime/src/types';

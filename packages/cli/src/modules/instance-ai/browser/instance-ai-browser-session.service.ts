@@ -2,20 +2,20 @@ import type {
 	InstanceAiBrowserCreateLinkResponse,
 	InstanceAiBrowserStatusResponse,
 	ToolCategory,
-} from '@n8n/api-types';
-import { Logger } from '@n8n/backend-common';
-import { GlobalConfig } from '@n8n/config';
-import { UserRepository } from '@n8n/db';
-import { Service } from '@n8n/di';
-import type { BrowserExtensionTraceContext } from '@n8n/instance-ai';
+} from '@MNI/api-types';
+import { Logger } from '@MNI/backend-common';
+import { GlobalConfig } from '@MNI/config';
+import { UserRepository } from '@MNI/db';
+import { Service } from '@MNI/di';
+import type { BrowserExtensionTraceContext } from '@MNI/instance-ai';
 import type {
 	BrowserConnection,
 	CDPRelayServer,
 	CreateCredentialPayload,
 	SecretsBuffer,
 	ToolContext,
-} from '@n8n/mcp-browser';
-import { UnexpectedError } from 'n8n-workflow';
+} from '@MNI/mcp-browser';
+import { UnexpectedError } from 'MNI-workflow';
 import { nanoid } from 'nanoid';
 import { timingSafeEqual } from 'node:crypto';
 import { mkdir } from 'node:fs/promises';
@@ -24,7 +24,7 @@ import { join } from 'node:path';
 
 import { CredentialsService } from '@/credentials/credentials.service';
 import { Push } from '@/push';
-import { UrlService } from '@n8n/backend-services';
+import { UrlService } from '@MNI/backend-services';
 import { Telemetry } from '@/telemetry';
 
 import { BrowserLocalMcpServer } from './browser-local-mcp-server';
@@ -81,7 +81,7 @@ export class InstanceAiBrowserSessionService {
 		session.relayAuthToken = `bu_${nanoid(32)}`;
 		session.tokenCreatedAt = Date.now();
 
-		const { buildExtensionConnectUrl } = await import('@n8n/mcp-browser');
+		const { buildExtensionConnectUrl } = await import('@MNI/mcp-browser');
 		const relayEndpoint = this.buildExtensionEndpoint(session);
 		const connectUrl = buildExtensionConnectUrl(relayEndpoint);
 		const expiresAt = new Date(session.tokenCreatedAt + CONNECT_TOKEN_TTL_MS);
@@ -165,7 +165,7 @@ export class InstanceAiBrowserSessionService {
 	}
 
 	private async createSession(userId: string): Promise<BrowserSession> {
-		const { CDPRelayServer, createBrowserTools } = await import('@n8n/mcp-browser');
+		const { CDPRelayServer, createBrowserTools } = await import('@MNI/mcp-browser');
 
 		const sessionId = nanoid();
 		const cdpToken = `cdp_${nanoid(32)}`;
@@ -182,7 +182,7 @@ export class InstanceAiBrowserSessionService {
 				cdpConnectHeaders: { [CDP_TOKEN_HEADER]: cdpToken },
 			},
 		);
-		const workDir = join(tmpdir(), 'n8n-instance-ai-browser', userId);
+		const workDir = join(tmpdir(), 'MNI-instance-ai-browser', userId);
 		await mkdir(workDir, { recursive: true });
 		const toolContext: ToolContext = {
 			dir: workDir,

@@ -1,16 +1,16 @@
-import type { BuiltTool } from '@n8n/agents';
-import { Tool } from '@n8n/agents/tool';
-import { createZodSchemaFromArgs, extractFromAIParameters } from '@n8n/ai-utilities/fromai-helpers';
-import type { AgentJsonToolConfig } from '@n8n/api-types';
-import { Container } from '@n8n/di';
+import type { BuiltTool } from '@MNI/agents';
+import { Tool } from '@MNI/agents/tool';
+import { createZodSchemaFromArgs, extractFromAIParameters } from '@MNI/ai-utilities/fromai-helpers';
+import type { AgentJsonToolConfig } from '@MNI/api-types';
+import { Container } from '@MNI/di';
 import type { JSONSchema7 } from 'json-schema';
 import type {
 	IDataObject,
 	INodeCredentialsDetails,
 	INodeParameters,
 	IWorkflowExecuteAdditionalData,
-} from 'n8n-workflow';
-import { isToolType, nodeNameToToolName } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { isToolType, nodeNameToToolName } from 'MNI-workflow';
 import { z } from 'zod';
 
 import type { EphemeralNodeExecutor } from '@/node-execution';

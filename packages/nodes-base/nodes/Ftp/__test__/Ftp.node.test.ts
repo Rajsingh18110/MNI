@@ -1,5 +1,5 @@
 import { mockDeep } from 'vitest-mock-extended';
-import type { IExecuteFunctions, NodeExecutionWithMetadata } from 'n8n-workflow';
+import type { IExecuteFunctions, NodeExecutionWithMetadata } from 'MNI-workflow';
 import type PromiseFtp from 'promise-ftp';
 import * as ftpModule from 'promise-ftp';
 import type sftp from 'ssh2-sftp-client';

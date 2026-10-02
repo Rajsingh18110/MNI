@@ -1,5 +1,5 @@
-import type { IExecuteResponsePromiseData } from 'n8n-workflow';
-import { CHAT_TRIGGER_NODE_TYPE, FORM_NODE_TYPE, FORM_TRIGGER_NODE_TYPE } from 'n8n-workflow';
+import type { IExecuteResponsePromiseData } from 'MNI-workflow';
+import { CHAT_TRIGGER_NODE_TYPE, FORM_NODE_TYPE, FORM_TRIGGER_NODE_TYPE } from 'MNI-workflow';
 
 export const WEBHOOK_CONFLICT_MESSAGE = 'There is a conflict with one of the webhooks.';
 

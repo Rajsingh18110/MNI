@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { computed, onBeforeUnmount, onMounted, watch } from 'vue';
-import { N8nIcon } from '@n8n/design-system';
+import { N8nIcon } from '@MNI/design-system';
 import type { IWorkflowDb } from '@/Interface';
 import type { IExecutionResponse } from '@/features/execution/executions/executions.types';
 import { injectStrict } from '@/app/utils/injectStrict';

@@ -6,9 +6,9 @@ import type {
 	SlackApiErrorMeta,
 	SlackManagedAppSettings,
 	SlackManagedSetupState,
-} from '@n8n/api-types';
-import type { IRestApiContext } from '@n8n/rest-api-client';
-import { makeRestApiRequest, ResponseError } from '@n8n/rest-api-client';
+} from '@MNI/api-types';
+import type { IRestApiContext } from '@MNI/rest-api-client';
+import { makeRestApiRequest, ResponseError } from '@MNI/rest-api-client';
 
 const integrationPath = (projectId: string, agentId: string) =>
 	`/projects/${projectId}/agents/v2/${agentId}/integrations/slack`;

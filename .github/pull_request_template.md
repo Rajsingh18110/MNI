@@ -17,7 +17,7 @@ Include an example workflow if the changes affect Workflow builder, execution or
 <!--
 Include links to **Linear ticket** or Github issue or Community forum post.
 Important in order to close *automatically* and provide context to reviewers.
-https://linear.app/n8n/issue/[TICKET-ID]
+https://linear.app/MNI/issue/[TICKET-ID]
 -->
 <!-- Use "closes #<issue-number>", "fixes #<issue-number>", or "resolves #<issue-number>" to automatically close issues when the PR is merged. -->
 
@@ -29,7 +29,7 @@ https://linear.app/n8n/issue/[TICKET-ID]
    **Remember, the title automatically goes into the changelog.
    Use `(no-changelog)` otherwise.**
 -->
-- [ ] [Docs updated](https://github.com/n8n-io/n8n-docs) or follow-up ticket created.
+- [ ] [Docs updated](https://github.com/MNI-io/MNI-docs) or follow-up ticket created.
 - [ ] Tests included. <!--
    A bug is not considered fixed, unless a test is added to prevent it from happening again.
    A feature is not complete without tests.

@@ -1,19 +1,19 @@
-import { createWorkflowWithHistory, setActiveVersion, testDb } from '@n8n/backend-test-utils';
-import { GlobalConfig } from '@n8n/config';
-import type { User } from '@n8n/db';
-import { WebhookRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
-import type { INode } from 'n8n-workflow';
+import { createWorkflowWithHistory, setActiveVersion, testDb } from '@MNI/backend-test-utils';
+import { GlobalConfig } from '@MNI/config';
+import type { User } from '@MNI/db';
+import { WebhookRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
+import type { INode } from 'MNI-workflow';
 import {
 	CHAT_TRIGGER_NODE_TYPE,
 	CHAT_TRIGGER_PATH_SUFFIX,
 	FORM_TRIGGER_NODE_TYPE,
 	UserError,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import { randomUUID } from 'node:crypto';
 
 import { CacheService } from '@/services/cache/cache.service';
-import { UrlService } from '@n8n/backend-services';
+import { UrlService } from '@MNI/backend-services';
 import { createOwner, createMember } from '@test-integration/db/users';
 import { setupTestServer } from '@test-integration/utils';
 

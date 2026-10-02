@@ -1,4 +1,4 @@
-import { McpServerConfigSchema } from '@n8n/api-types';
+import { McpServerConfigSchema } from '@MNI/api-types';
 import type { JSONSchema7 } from 'json-schema';
 import { zodToJsonSchema } from 'zod-to-json-schema';
 

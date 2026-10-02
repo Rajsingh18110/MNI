@@ -1,13 +1,13 @@
 import { DateTime } from 'luxon';
 import get from 'lodash/get';
-import { constructExecutionMetaData } from 'n8n-core';
+import { constructExecutionMetaData } from 'MNI-core';
 import {
 	NodeOperationError,
 	type IDataObject,
 	type IExecuteFunctions,
 	type IGetNodeParameterOptions,
 	type INode,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { type SetNodeOptions } from '../../v2/helpers/interfaces';
 import * as utils from '../../v2/helpers/utils';
@@ -16,7 +16,7 @@ import { execute } from '../../v2/raw.mode';
 const node: INode = {
 	id: '11',
 	name: 'Set Node',
-	type: 'n8n-nodes-base.set',
+	type: 'MNI-nodes-base.set',
 	typeVersion: 3,
 	position: [42, 42],
 	parameters: {
@@ -128,7 +128,7 @@ describe('test Set2, rawMode/json Mode', () => {
 	// The expression engine is a mock here, so these tests pin how raw mode turns
 	// each kind of resolved value into JSON text, not what the engine gives back.
 	// The engine's own contract for a date expression is tested in
-	// packages/@n8n/expression-runtime.
+	// packages/@MNI/expression-runtime.
 	describe('a resolved date value in the JSON template', () => {
 		const isoString = '2026-09-04T10:20:30.000+02:00';
 		const jsonOutputTemplate = '{\n  "time": {{ $now }}\n}\n';

@@ -1,6 +1,6 @@
-import { BaseRepository, TransactionRunner } from '@n8n/db';
-import { Service } from '@n8n/di';
-import { DataSource } from '@n8n/typeorm';
+import { BaseRepository, TransactionRunner } from '@MNI/db';
+import { Service } from '@MNI/di';
+import { DataSource } from '@MNI/typeorm';
 
 import { AgentThreadEntity } from '../entities/agent-thread.entity';
 

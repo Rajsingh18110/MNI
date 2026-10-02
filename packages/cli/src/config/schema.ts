@@ -1,8 +1,8 @@
-import { GlobalConfig } from '@n8n/config';
-import { Container } from '@n8n/di';
+import { GlobalConfig } from '@MNI/config';
+import { Container } from '@MNI/di';
 
 /**
- * @deprecated Do not add new environment variables to this file. Please use the `@n8n/config` package instead.
+ * @deprecated Do not add new environment variables to this file. Please use the `@MNI/config` package instead.
  */
 export const schema = {
 	userManagement: {

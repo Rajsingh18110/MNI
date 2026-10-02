@@ -1,5 +1,5 @@
-import type { IDataObject, IExecuteFunctions, INodeProperties } from 'n8n-workflow';
-import { jsonParse, NodeOperationError } from 'n8n-workflow';
+import type { IDataObject, IExecuteFunctions, INodeProperties } from 'MNI-workflow';
+import { jsonParse, NodeOperationError } from 'MNI-workflow';
 
 import { bodyProperties, readBodyEnvelope } from './bodyEnvelope';
 import { fetchPageForWrite, putPage } from './pageWrite';

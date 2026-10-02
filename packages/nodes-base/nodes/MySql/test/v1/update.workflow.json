@@ -5,7 +5,7 @@
 			"parameters": {},
 			"id": "e5f6a7b8-c9d0-1234-efab-345678901234",
 			"name": "When clicking \"Execute Workflow\"",
-			"type": "n8n-nodes-base.manualTrigger",
+			"type": "MNI-nodes-base.manualTrigger",
 			"typeVersion": 1,
 			"position": [460, 460]
 		},
@@ -28,7 +28,7 @@
 			},
 			"id": "f6a7b8c9-d0e1-2345-fabc-456789012345",
 			"name": "Edit Fields",
-			"type": "n8n-nodes-base.set",
+			"type": "MNI-nodes-base.set",
 			"typeVersion": 3.2,
 			"position": [680, 460]
 		},
@@ -44,7 +44,7 @@
 			},
 			"id": "a7b8c9d0-e1f2-3456-abcd-567890123456",
 			"name": "MySQL Update",
-			"type": "n8n-nodes-base.mySql",
+			"type": "MNI-nodes-base.mySql",
 			"typeVersion": 1,
 			"position": [900, 460],
 			"credentials": {

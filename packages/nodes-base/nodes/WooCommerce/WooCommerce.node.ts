@@ -8,7 +8,7 @@ import {
 	type INodeTypeDescription,
 	NodeConnectionTypes,
 	NodeOperationError,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { customerFields, customerOperations } from './descriptions';
 import {

@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { N8nIcon, N8nText } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+import { N8nIcon, N8nText } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 import { computed, ref } from 'vue';
 
 import type { CompareCaseCell, CompareCaseRow } from '../../composables/useCompareCases';
@@ -199,7 +199,7 @@ function deltas(row: CompareCaseRow) {
 </template>
 
 <style module lang="scss">
-@use '@n8n/design-system/css/mixins/motion';
+@use '@MNI/design-system/css/mixins/motion';
 
 .table {
 	width: 100%;

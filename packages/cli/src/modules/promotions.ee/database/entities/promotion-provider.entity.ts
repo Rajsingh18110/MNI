@@ -2,9 +2,9 @@ import type {
 	PromotionProviderAuthType,
 	PromotionProviderConfig,
 	PromotionProviderType,
-} from '@n8n/api-types';
-import { JsonColumn, WithTimestampsAndStringId } from '@n8n/db';
-import { Column, Entity } from '@n8n/typeorm';
+} from '@MNI/api-types';
+import { JsonColumn, WithTimestampsAndStringId } from '@MNI/db';
+import { Column, Entity } from '@MNI/typeorm';
 
 /**
  * Credentials for a remote, shared by any number of connections. The database

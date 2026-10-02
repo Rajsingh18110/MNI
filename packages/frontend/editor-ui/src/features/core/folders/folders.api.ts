@@ -4,9 +4,9 @@ import type {
 	FolderCreateResponse,
 	FolderTreeResponseItem,
 } from './folders.types';
-import type { IRestApiContext } from '@n8n/rest-api-client';
+import type { IRestApiContext } from '@MNI/rest-api-client';
 
-import { getFullApiResponse, makeRestApiRequest } from '@n8n/rest-api-client';
+import { getFullApiResponse, makeRestApiRequest } from '@MNI/rest-api-client';
 
 export async function createFolder(
 	context: IRestApiContext,

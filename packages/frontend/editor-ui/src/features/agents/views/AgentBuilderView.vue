@@ -18,8 +18,8 @@ import {
 	N8nTooltip,
 	type ActionDropdownItem,
 	type ResizeData,
-} from '@n8n/design-system';
-import { useI18n, type BaseTextKey } from '@n8n/i18n';
+} from '@MNI/design-system';
+import { useI18n, type BaseTextKey } from '@MNI/i18n';
 import {
 	MAX_AGENT_FILE_SIZE_BYTES,
 	MAX_AGENT_FILE_SIZE_MB,
@@ -31,24 +31,24 @@ import {
 	type InstanceAiHandoffContext,
 	type PushMessage,
 	type PushPayload,
-} from '@n8n/api-types';
-import { useRootStore } from '@n8n/stores/useRootStore';
-import { TELEMETRY_EVENT } from '@n8n/telemetry';
-import { ResponseError } from '@n8n/rest-api-client';
+} from '@MNI/api-types';
+import { useRootStore } from '@MNI/stores/useRootStore';
+import { TELEMETRY_EVENT } from '@MNI/telemetry';
+import { ResponseError } from '@MNI/rest-api-client';
 import { useProjectsStore } from '@/features/collaboration/projects/projects.store';
 import { useAgentProjectBreadcrumb } from '@/features/agents/composables/useAgentProjectBreadcrumb';
-import { useDeviceSupport } from '@n8n/composables/useDeviceSupport';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
-import { useToast } from '@n8n/composables/useToast';
+import { useDeviceSupport } from '@MNI/composables/useDeviceSupport';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
+import { useToast } from '@MNI/composables/useToast';
 import { useCredentialsStore } from '@/features/credentials/credentials.store';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { useUIStore } from '@/app/stores/ui.store';
 import { usePushConnectionStore } from '@/app/stores/pushConnection.store';
 import { useFavoritesStore } from '@/app/stores/favorites.store';
 import { useDocumentTitle } from '@/app/composables/useDocumentTitle';
 import { MODAL_CONFIRM } from '@/app/constants';
 import { AGENT_EXTERNAL_UPDATE_NOTICE_DURATION, TIME } from '@/app/constants/durations';
-import { deepCopy } from 'n8n-workflow';
+import { deepCopy } from 'MNI-workflow';
 import {
 	getAgent,
 	createAgent,
@@ -98,7 +98,7 @@ import {
 	OPEN_PREVIEW_PARAM,
 	PENDING_AGENT_ID_STATE,
 } from '../constants';
-import { getDebounceTime } from '@n8n/composables/useDebounce';
+import { getDebounceTime } from '@MNI/composables/useDebounce';
 import { agentsEventBus, type AgentUpdatedEvent } from '../agents.eventBus';
 import {
 	AGENT_TEMPLATES,
@@ -207,7 +207,7 @@ const AGENT_BUILDER_EDITOR_MIN_WIDTH = 480;
 const AGENT_BUILDER_SIDE_PANEL_MIN_WIDTH = 320;
 
 // Gates the Knowledge Base files table (upload, list, sandbox fetch/warmup) on
-// the backend: Daytona sandbox env vars (N8N_AGENTS_AI_SANDBOX_ENABLED +
+// the backend: Daytona sandbox env vars (MNI_AGENTS_AI_SANDBOX_ENABLED +
 // PROVIDER=daytona) OR AI Assistant proxy availability. The Knowledge tab and
 // vector store management are always available regardless of this flag.
 const isKnowledgeBaseEnabled = computed(() => settingsStore.isAgentsKnowledgeBaseFeatureEnabled);
@@ -244,7 +244,7 @@ const isRouteAgentPending = computed(() => {
 });
 const isAgentPending = computed(() => props.artifactAgentPending || isRouteAgentPending.value);
 const previewOpenStorageKey = computed(function getPreviewOpenStorageKey() {
-	return `N8N_AGENT_PREVIEW_OPEN:${projectId.value}:${agentId.value}`;
+	return `MNI_AGENT_PREVIEW_OPEN:${projectId.value}:${agentId.value}`;
 });
 const persistedPreviewOpen = useStorage(previewOpenStorageKey, false);
 const previewDockWidth = ref(480);
@@ -267,7 +267,7 @@ const isPreviewActive = computed(function isPreviewActive() {
 // null = no preference yet, so the default is derived instead of stored — see
 // `InstanceAiThreadView`'s `persistedArtifactPreviewOpen` for the same pattern.
 const aiPanelOpenStorageKey = computed(function getAiPanelOpenStorageKey() {
-	return `N8N_AGENT_AI_PANEL_OPEN:${projectId.value}:${agentId.value}`;
+	return `MNI_AGENT_AI_PANEL_OPEN:${projectId.value}:${agentId.value}`;
 });
 const storedAiPanelOpen = useLocalStorage<boolean | null>(aiPanelOpenStorageKey, null, {
 	serializer: StorageSerializers.boolean,
@@ -333,7 +333,7 @@ watch(aiPanelRef, (panel) => {
 	queuedAiHandoff.value = null;
 	panel.handoff(context, initialDraft);
 });
-const aiPanelWidth = useStorage('N8N_AGENT_AI_PANEL_WIDTH', 400);
+const aiPanelWidth = useStorage('MNI_AGENT_AI_PANEL_WIDTH', 400);
 type SidePanel = 'assistant' | 'preview';
 const preferredSidePanel = ref<SidePanel>('assistant');
 
@@ -2895,10 +2895,10 @@ function onSwitchAgent(nextAgentId: string) {
 </template>
 
 <style lang="scss" module>
-@use '@n8n/design-system/css/mixins/motion';
+@use '@MNI/design-system/css/mixins/motion';
 
 .root {
-	--n8n--agent-builder-header-height: var(--height--4xl);
+	--MNI--agent-builder-header-height: var(--height--4xl);
 
 	position: relative;
 	display: flex;
@@ -3027,7 +3027,7 @@ function onSwitchAgent(nextAgentId: string) {
 
 .aiToggleBar {
 	position: absolute;
-	top: calc(var(--n8n--agent-builder-header-height) + var(--spacing--2xs));
+	top: calc(var(--MNI--agent-builder-header-height) + var(--spacing--2xs));
 	left: var(--spacing--2xs);
 	z-index: 1;
 }

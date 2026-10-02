@@ -3,13 +3,13 @@ import {
 	setActiveVersion,
 	shareWorkflowWithUsers,
 	testDb,
-} from '@n8n/backend-test-utils';
-import { GlobalConfig } from '@n8n/config';
-import type { User } from '@n8n/db';
-import { WebhookRepository, WorkflowRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
-import type { INode } from 'n8n-workflow';
-import { FORM_TRIGGER_NODE_TYPE } from 'n8n-workflow';
+} from '@MNI/backend-test-utils';
+import { GlobalConfig } from '@MNI/config';
+import type { User } from '@MNI/db';
+import { WebhookRepository, WorkflowRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
+import type { INode } from 'MNI-workflow';
+import { FORM_TRIGGER_NODE_TYPE } from 'MNI-workflow';
 import { randomUUID } from 'node:crypto';
 
 import { createOwner, createMember } from '@test-integration/db/users';
@@ -18,7 +18,7 @@ import { setupTestServer } from '@test-integration/utils';
 import { OAuthTokenService } from '@/modules/oauth-server/oauth-token.service';
 import { CacheService } from '@/services/cache/cache.service';
 import { ProtectedResourceRegistry } from '@/services/protected-resource.registry';
-import { UrlService } from '@n8n/backend-services';
+import { UrlService } from '@MNI/backend-services';
 
 import { OAuthClientRepository } from '../database/repositories/oauth-client.repository';
 

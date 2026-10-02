@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
-import { Logger } from '@n8n/backend-common';
-import { WorkflowsConfig } from '@n8n/config';
-import type { WorkflowEntity, IWorkflowDb } from '@n8n/db';
-import { WorkflowRepository } from '@n8n/db';
-import { OnLeaderStepdown, OnLeaderTakeover, OnPubSubEvent, OnShutdown } from '@n8n/decorators';
-import { Service } from '@n8n/di';
-import { ensureError } from '@n8n/utils/errors/ensure-error';
+import { Logger } from '@MNI/backend-common';
+import { WorkflowsConfig } from '@MNI/config';
+import type { WorkflowEntity, IWorkflowDb } from '@MNI/db';
+import { WorkflowRepository } from '@MNI/db';
+import { OnLeaderStepdown, OnLeaderTakeover, OnPubSubEvent, OnShutdown } from '@MNI/decorators';
+import { Service } from '@MNI/di';
+import { ensureError } from '@MNI/utils/errors/ensure-error';
 import chunk from 'lodash/chunk';
 import {
 	ActiveWorkflowTriggers,
@@ -13,7 +13,7 @@ import {
 	InstanceSettings,
 	type IGetExecutePollFunctions,
 	type IGetExecuteTriggerFunctions,
-} from 'n8n-core';
+} from 'MNI-core';
 import type {
 	ExecutionError,
 	INode,
@@ -23,7 +23,7 @@ import type {
 	WorkflowExecuteMode,
 	INodeType,
 	WorkflowId,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import {
 	Workflow,
 	WorkflowActivationError,
@@ -31,7 +31,7 @@ import {
 	UnexpectedError,
 	IsolateError,
 	validateWorkflowHasTriggerLikeNode,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import { strict } from 'node:assert';
 
 import { ActivationErrorsService } from '@/activation-errors.service';
@@ -312,7 +312,7 @@ export class ActiveWorkflowManager {
 	}
 
 	/**
-	 * Return poll function which gets the global functions from n8n-core
+	 * Return poll function which gets the global functions from MNI-core
 	 * and overwrites the emit to be able to start it in subprocess
 	 */
 	getExecutePollFunctions(
@@ -332,7 +332,7 @@ export class ActiveWorkflowManager {
 	}
 
 	/**
-	 * Return trigger function which gets the global functions from n8n-core
+	 * Return trigger function which gets the global functions from MNI-core
 	 * and overwrites the emit to be able to start it in subprocess
 	 */
 	getExecuteTriggerFunctions(
@@ -841,7 +841,7 @@ export class ActiveWorkflowManager {
 	}
 
 	/**
-	 * Count all triggers in the workflow, excluding Manual Trigger and other n8n-internal triggers.
+	 * Count all triggers in the workflow, excluding Manual Trigger and other MNI-internal triggers.
 	 */
 	private countTriggers(workflow: Workflow, additionalData: IWorkflowExecuteAdditionalData) {
 		const triggerFilter = (nodeType: INodeType) =>
@@ -976,7 +976,7 @@ export class ActiveWorkflowManager {
 	 * @param {string} workflowId The id of the workflow to deactivate
 	 */
 	// TODO: this should happen in a transaction
-	// maybe, see: https://github.com/n8n-io/n8n/pull/8904#discussion_r1530150510
+	// maybe, see: https://github.com/MNI-io/MNI/pull/8904#discussion_r1530150510
 	async remove(workflowId: WorkflowId) {
 		if (this.instanceSettings.isMultiMain) {
 			try {
@@ -1150,7 +1150,7 @@ export class ActiveWorkflowManager {
 		// - workflow/folder transfer (workflow.service.ee.ts)
 		// - credential-resolver cleanup
 		//
-		// And with N8N_SCHEDULER_ENABLED the trigger context then hands schedule nodes
+		// And with MNI_SCHEDULER_ENABLED the trigger context then hands schedule nodes
 		// the durable collector on this path too.
 		// Persist or drop what it collected, exactly like the publication path does,
 		// or the rules leak uncommitted and the node's durable jobs are never reconciled.

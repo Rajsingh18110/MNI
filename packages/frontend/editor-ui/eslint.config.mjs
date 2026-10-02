@@ -1,6 +1,6 @@
 import { readFileSync } from 'node:fs';
 import { defineConfig } from 'eslint/config';
-import { frontendConfig } from '@n8n/eslint-config/frontend';
+import { frontendConfig } from '@MNI/eslint-config/frontend';
 import oxlint from 'eslint-plugin-oxlint';
 
 /**
@@ -32,17 +32,17 @@ const extractedFeatures = [
 	{
 		group: ['@/features/instanceRegistry', '@/features/instanceRegistry/*'],
 		message:
-			'instanceRegistry is the @n8n/frontend-module-instance-registry package. The shell registers a module through src/app/modules.manifest.ts.',
+			'instanceRegistry is the @MNI/frontend-module-instance-registry package. The shell registers a module through src/app/modules.manifest.ts.',
 	},
 	{
 		group: ['@/features/settings/otel', '@/features/settings/otel/*'],
 		message:
-			'otel is the @n8n/frontend-module-otel package. The shell registers a module through src/app/modules.manifest.ts.',
+			'otel is the @MNI/frontend-module-otel package. The shell registers a module through src/app/modules.manifest.ts.',
 	},
 	{
 		group: ['@/features/execution/insights', '@/features/execution/insights/*'],
 		message:
-			'insights is the @n8n/frontend-module-insights package. The shell registers a module through src/app/modules.manifest.ts.',
+			'insights is the @MNI/frontend-module-insights package. The shell registers a module through src/app/modules.manifest.ts.',
 	},
 ];
 
@@ -231,7 +231,7 @@ export default defineConfig(
 				},
 			],
 			// TODO: Remove these
-			'n8n-local-rules/no-internal-package-import': 'warn',
+			'MNI-local-rules/no-internal-package-import': 'warn',
 			'@typescript-eslint/ban-ts-comment': 'off',
 			'id-denylist': 'warn',
 			'no-case-declarations': 'warn',
@@ -348,17 +348,17 @@ export default defineConfig(
 			'src/**/__tests__/**/*.ts',
 		],
 		rules: {
-			'n8n-local-rules/no-dynamic-regexp': 'off',
+			'MNI-local-rules/no-dynamic-regexp': 'off',
 
 			// A stub component keeps its Vue template in a plain string, where
 			// `${...}` and backticks belong to the Vue expression and must stay
 			// uninterpolated. Both rules read them as JavaScript.
-			'n8n-local-rules/no-interpolation-in-regular-string': 'off',
-			'n8n-local-rules/no-unneeded-backticks': 'off',
+			'MNI-local-rules/no-interpolation-in-regular-string': 'off',
+			'MNI-local-rules/no-unneeded-backticks': 'off',
 
 			// A test parses fixtures it declares itself. An unexpected throw is
 			// the signal the test wants, so it needs no guard.
-			'n8n-local-rules/no-uncaught-json-parse': 'off',
+			'MNI-local-rules/no-uncaught-json-parse': 'off',
 		},
 	},
 	{
@@ -377,7 +377,7 @@ export default defineConfig(
 			'src/features/settings/environments.ee/completions/**',
 		],
 		rules: {
-			'n8n-local-rules/no-dynamic-regexp': 'off',
+			'MNI-local-rules/no-dynamic-regexp': 'off',
 		},
 	},
 	{

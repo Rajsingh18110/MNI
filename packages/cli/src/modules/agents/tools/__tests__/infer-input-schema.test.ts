@@ -1,4 +1,4 @@
-import type { INode } from 'n8n-workflow';
+import type { INode } from 'MNI-workflow';
 import { z } from 'zod';
 
 import {
@@ -13,7 +13,7 @@ function makeExecuteWorkflowTrigger(parameters: INode['parameters']): INode {
 	return {
 		id: 'trigger-1',
 		name: 'When Executed by Another Workflow',
-		type: 'n8n-nodes-base.executeWorkflowTrigger',
+		type: 'MNI-nodes-base.executeWorkflowTrigger',
 		typeVersion: 1.1,
 		position: [0, 0],
 		parameters,

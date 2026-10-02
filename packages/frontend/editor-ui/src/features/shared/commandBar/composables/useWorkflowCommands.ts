@@ -1,15 +1,15 @@
 import { computed } from 'vue';
 import { useRouter } from 'vue-router';
-import { isResourceLocatorValue } from 'n8n-workflow';
-import { useI18n } from '@n8n/i18n';
-import { N8nIcon } from '@n8n/design-system';
-import { getResourcePermissions } from '@n8n/permissions';
-import { useRootStore } from '@n8n/stores/useRootStore';
+import { isResourceLocatorValue } from 'MNI-workflow';
+import { useI18n } from '@MNI/i18n';
+import { N8nIcon } from '@MNI/design-system';
+import { getResourcePermissions } from '@MNI/permissions';
+import { useRootStore } from '@MNI/stores/useRootStore';
 import { useTagsStore } from '@/features/shared/tags/tags.store';
 import { useUIStore } from '@/app/stores/ui.store';
 import { useSourceControlStore } from '@/features/integrations/sourceControl.ee/sourceControl.store';
 import { useCollaborationStore } from '@/features/collaboration/collaboration/collaboration.store';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
 import { useRunWorkflow } from '@/app/composables/useRunWorkflow';
 import {
 	DUPLICATE_MODAL_KEY,

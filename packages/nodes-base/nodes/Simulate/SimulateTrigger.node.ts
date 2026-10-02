@@ -1,4 +1,4 @@
-import { NodeOperationError, jsonParse, NodeConnectionTypes } from 'n8n-workflow';
+import { NodeOperationError, jsonParse, NodeConnectionTypes } from 'MNI-workflow';
 import type {
 	IDataObject,
 	ITriggerFunctions,
@@ -6,9 +6,9 @@ import type {
 	INodeType,
 	INodeTypeDescription,
 	ITriggerResponse,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
-import { sleep } from '@n8n/utils/sleep';
+import { sleep } from '@MNI/utils/sleep';
 
 import {
 	executionDurationProperty,
@@ -35,7 +35,7 @@ export class SimulateTrigger implements INodeType {
 		inputs: [],
 		outputs: [NodeConnectionTypes.Main],
 		properties: [
-			{ ...iconSelector, default: 'n8n-nodes-base.manualTrigger' },
+			{ ...iconSelector, default: 'MNI-nodes-base.manualTrigger' },
 			subtitleProperty,
 			{ ...jsonOutputProperty, displayName: 'Output (JSON)' },
 			executionDurationProperty,

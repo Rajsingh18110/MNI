@@ -1,12 +1,12 @@
-import type { PromotionConfigSettings, PromotionDirection } from '@n8n/api-types';
+import type { PromotionConfigSettings, PromotionDirection } from '@MNI/api-types';
 import {
 	BaseRepository,
 	isUniqueConstraintError,
 	type OperationContext,
 	TransactionRunner,
-} from '@n8n/db';
-import { Service } from '@n8n/di';
-import { DataSource, In } from '@n8n/typeorm';
+} from '@MNI/db';
+import { Service } from '@MNI/di';
+import { DataSource, In } from '@MNI/typeorm';
 
 import { PromotionConfig } from '../entities/promotion-config.entity';
 import { PromotionConflictError } from '../promotion-conflict.error';

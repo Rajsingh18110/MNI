@@ -6,8 +6,8 @@ import type {
 	INodePropertyOptions,
 	INodeType,
 	INodeTypeDescription,
-} from 'n8n-workflow';
-import { NodeConnectionTypes, NodeOperationError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeConnectionTypes, NodeOperationError } from 'MNI-workflow';
 
 import { mediumApiRequest } from './GenericFunctions';
 
@@ -16,7 +16,7 @@ export class Medium implements INodeType {
 		displayName: 'Medium',
 		name: 'medium',
 		group: ['output'],
-		// eslint-disable-next-line n8n-nodes-base/node-class-description-icon-not-svg
+		// eslint-disable-next-line MNI-nodes-base/node-class-description-icon-not-svg
 		icon: 'file:medium.png',
 		version: 1,
 		description: 'Consume Medium API',

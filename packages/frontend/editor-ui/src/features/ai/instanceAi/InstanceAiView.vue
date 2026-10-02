@@ -2,14 +2,14 @@
 import { computed, onMounted, onUnmounted, ref, watch } from 'vue';
 import { RouterView, useRoute, useRouter } from 'vue-router';
 import { useEventListener, useSessionStorage } from '@vueuse/core';
-import { useI18n } from '@n8n/i18n';
-import { useDeviceSupport } from '@n8n/composables/useDeviceSupport';
+import { useI18n } from '@MNI/i18n';
+import { useDeviceSupport } from '@MNI/composables/useDeviceSupport';
 import { claimDocumentTitle, useDocumentTitle } from '@/app/composables/useDocumentTitle';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
-import { useRootStore } from '@n8n/stores/useRootStore';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
+import { useRootStore } from '@MNI/stores/useRootStore';
 import { useUIStore } from '@/app/stores/ui.store';
-import { useSettingsStore } from '@n8n/stores/settings.store';
-import { useUsersStore } from '@n8n/stores/users.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
+import { useUsersStore } from '@MNI/stores/users.store';
 import { useInstanceAiStore } from './instanceAi.store';
 import { useInstanceAiSettingsStore } from './instanceAiSettings.store';
 import { INSTANCE_AI_VIEW, isInstanceAiChatRoute } from './constants';
@@ -178,6 +178,6 @@ onUnmounted(() => {
 	overflow: hidden;
 
 	/** Sets background to be the page background in InstanceAiHeader **/
-	--n8n-ia-header--background: transparent;
+	--MNI-ia-header--background: transparent;
 }
 </style>

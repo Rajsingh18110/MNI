@@ -10,14 +10,14 @@
  * `coverage/by-spec/` so the impact map attributes backend source files to the
  * specs that exercise them.
  *
- * Thin wrapper over the generic @n8n/test-impact build kernel; the n8n-specific
+ * Thin wrapper over the generic @MNI/test-impact build kernel; the MNI-specific
  * dist→source resolution is injected via `feedRaws`. Best-effort: a spec with no
  * resolvable backend coverage is skipped (fail-open).
  */
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
-import { emitPerSpecLcovs } from '@n8n/test-impact';
+import { emitPerSpecLcovs } from '@MNI/test-impact';
 import type { CoverageReport } from 'monocart-coverage-reports';
 
 import {

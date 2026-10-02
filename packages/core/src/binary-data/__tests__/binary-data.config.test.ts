@@ -1,4 +1,4 @@
-import { Container } from '@n8n/di';
+import { Container } from '@MNI/di';
 import { existsSync } from 'node:fs';
 import type { Mock } from 'vitest';
 
@@ -37,9 +37,9 @@ describe('BinaryDataConfig', () => {
 	});
 
 	it('should use values from env variables when defined', () => {
-		process.env.N8N_DEFAULT_BINARY_DATA_MODE = 's3';
-		process.env.N8N_BINARY_DATA_STORAGE_PATH = '/custom/storage/path';
-		process.env.N8N_BINARY_DATA_SIGNING_SECRET = 'super-secret';
+		process.env.MNI_DEFAULT_BINARY_DATA_MODE = 's3';
+		process.env.MNI_BINARY_DATA_STORAGE_PATH = '/custom/storage/path';
+		process.env.MNI_BINARY_DATA_SIGNING_SECRET = 'super-secret';
 
 		const config = Container.get(BinaryDataConfig);
 
@@ -56,19 +56,19 @@ describe('BinaryDataConfig', () => {
 	});
 
 	it('should fallback to filesystem for invalid mode', () => {
-		process.env.N8N_DEFAULT_BINARY_DATA_MODE = 'invalid-mode';
+		process.env.MNI_DEFAULT_BINARY_DATA_MODE = 'invalid-mode';
 
 		const config = Container.get(BinaryDataConfig);
 
 		expect(config.mode).toEqual('filesystem');
 		expect(console.warn).toHaveBeenCalledWith(
-			expect.stringContaining('Invalid value for N8N_DEFAULT_BINARY_DATA_MODE'),
+			expect.stringContaining('Invalid value for MNI_DEFAULT_BINARY_DATA_MODE'),
 		);
 	});
 
 	describe('dbMaxFileSize', () => {
 		it('should coerce string env variable to number', () => {
-			process.env.N8N_BINARY_DATA_DATABASE_MAX_FILE_SIZE = '1024';
+			process.env.MNI_BINARY_DATA_DATABASE_MAX_FILE_SIZE = '1024';
 
 			const config = Container.get(BinaryDataConfig);
 
@@ -82,24 +82,24 @@ describe('BinaryDataConfig', () => {
 		});
 
 		it('should fallback to default for invalid value', () => {
-			process.env.N8N_BINARY_DATA_DATABASE_MAX_FILE_SIZE = 'not-a-number';
+			process.env.MNI_BINARY_DATA_DATABASE_MAX_FILE_SIZE = 'not-a-number';
 
 			const config = Container.get(BinaryDataConfig);
 
 			expect(config.dbMaxFileSize).toBe(512);
 			expect(console.warn).toHaveBeenCalledWith(
-				expect.stringContaining('Invalid value for N8N_BINARY_DATA_DATABASE_MAX_FILE_SIZE'),
+				expect.stringContaining('Invalid value for MNI_BINARY_DATA_DATABASE_MAX_FILE_SIZE'),
 			);
 		});
 
 		it('should fallback to default when value exceeds maximum', () => {
-			process.env.N8N_BINARY_DATA_DATABASE_MAX_FILE_SIZE = '2048';
+			process.env.MNI_BINARY_DATA_DATABASE_MAX_FILE_SIZE = '2048';
 
 			const config = Container.get(BinaryDataConfig);
 
 			expect(config.dbMaxFileSize).toBe(512);
 			expect(console.warn).toHaveBeenCalledWith(
-				expect.stringContaining('Invalid value for N8N_BINARY_DATA_DATABASE_MAX_FILE_SIZE'),
+				expect.stringContaining('Invalid value for MNI_BINARY_DATA_DATABASE_MAX_FILE_SIZE'),
 			);
 		});
 	});
@@ -115,11 +115,11 @@ describe('BinaryDataConfig', () => {
 			};
 
 		afterEach(() => {
-			delete process.env.N8N_BINARY_DATA_SIGNING_SECRET;
+			delete process.env.MNI_BINARY_DATA_SIGNING_SECRET;
 		});
 
-		it('should return early when N8N_BINARY_DATA_SIGNING_SECRET env var is set', async () => {
-			process.env.N8N_BINARY_DATA_SIGNING_SECRET = 'env-pinned-secret';
+		it('should return early when MNI_BINARY_DATA_SIGNING_SECRET env var is set', async () => {
+			process.env.MNI_BINARY_DATA_SIGNING_SECRET = 'env-pinned-secret';
 			const repo = makeRepo();
 			const config = Container.get(BinaryDataConfig);
 

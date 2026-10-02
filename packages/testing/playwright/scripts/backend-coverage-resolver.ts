@@ -18,17 +18,17 @@ import { dirname, join, resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
 
 export const REPO_ROOT = resolve(process.cwd(), '../../..');
-// Where `docker cp` placed the image's n8n package tree, and the in-image root
+// Where `docker cp` placed the image's MNI package tree, and the in-image root
 // those urls are prefixed with (see docker/images/mni/Dockerfile).
 const IMAGE_DIST_ROOT = process.env.IMAGE_DIST_ROOT;
 const IMAGE_ROOT_PREFIX = process.env.IMAGE_ROOT_PREFIX ?? '/usr/local/lib/node_modules/MNI';
 
-/** Map workspace package name → repo dir (e.g. n8n-core → core, MNI → cli). */
+/** Map workspace package name → repo dir (e.g. MNI-core → core, MNI → cli). */
 export function buildPackageMap(): Map<string, string> {
 	const map = new Map<string, string>();
 	const roots = [
 		join(REPO_ROOT, 'packages'),
-		join(REPO_ROOT, 'packages/@n8n'),
+		join(REPO_ROOT, 'packages/@MNI'),
 		join(REPO_ROOT, 'packages/frontend'),
 	];
 	for (const root of roots) {
@@ -146,6 +146,6 @@ export function formatBackendStats(stats: BackendResolveStats): string {
 	);
 }
 
-// forceSpecTn is owned by @n8n/test-impact's map-build kernel; re-exported here
+// forceSpecTn is owned by @MNI/test-impact's map-build kernel; re-exported here
 // so existing importers (and the test) keep their path.
-export { forceSpecTn } from '@n8n/test-impact';
+export { forceSpecTn } from '@MNI/test-impact';

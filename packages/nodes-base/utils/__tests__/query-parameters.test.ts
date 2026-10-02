@@ -1,8 +1,8 @@
-import type { INode } from 'n8n-workflow';
+import type { INode } from 'MNI-workflow';
 
 import { parseAndResolveQueryParameters } from '../query-parameters';
 
-const mockNode = { name: 'Test Node', type: 'n8n-nodes-base.test' } as INode;
+const mockNode = { name: 'Test Node', type: 'MNI-nodes-base.test' } as INode;
 
 describe('parseAndResolveQueryParameters', () => {
 	it('replaces placeholders with scalars and scalar arrays', () => {

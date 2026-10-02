@@ -1,13 +1,13 @@
 import { computed, type Component } from 'vue';
 import type { RouteLocationNormalized } from 'vue-router';
 import type { CommandBarItem } from '../types';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import { useRouter } from 'vue-router';
 import { useLocalStorage } from '@vueuse/core';
 import { VIEWS } from '@/app/constants';
 import { useWorkflowsListStore } from '@/app/stores/workflowsList.store';
 import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';
-import { N8nIcon } from '@n8n/design-system';
+import { N8nIcon } from '@MNI/design-system';
 import NodeIcon from '@/app/components/NodeIcon.vue';
 import { useCanvasOperations } from '@/app/composables/useCanvasOperations';
 import { injectWorkflowDocumentStore } from '@/app/stores/workflowDocument.store';
@@ -15,7 +15,7 @@ import { useRecentWorkflowsStore } from '@/app/stores/recentWorkflows.store';
 
 const MAX_RECENT_ITEMS = 5;
 const MAX_RECENT_WORKFLOWS_TO_DISPLAY = 3;
-const RECENT_NODES_STORAGE_KEY = 'n8n-recent-nodes';
+const RECENT_NODES_STORAGE_KEY = 'MNI-recent-nodes';
 
 interface RecentNode {
 	nodeId: string;

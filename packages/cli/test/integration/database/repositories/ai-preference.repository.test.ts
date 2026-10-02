@@ -1,7 +1,7 @@
-import { createTeamProject, testDb } from '@n8n/backend-test-utils';
-import type { AiPreference, Project, User } from '@n8n/db';
-import { AiPreferenceRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
+import { createTeamProject, testDb } from '@MNI/backend-test-utils';
+import type { AiPreference, Project, User } from '@MNI/db';
+import { AiPreferenceRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
 import { v4 as uuid } from 'uuid';
 
 import { createMember, createOwner } from '../../shared/db/users';

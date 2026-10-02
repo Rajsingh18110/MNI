@@ -1,4 +1,4 @@
-/* eslint-disable n8n-local-rules/no-interpolation-in-regular-string */
+/* eslint-disable MNI-local-rules/no-interpolation-in-regular-string */
 import { FROM_AI_AUTO_GENERATED_MARKER } from '../src/constants';
 import type { INodeProperties } from '../src/interfaces';
 import {

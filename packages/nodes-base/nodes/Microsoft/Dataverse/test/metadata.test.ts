@@ -1,4 +1,4 @@
-import type { IExecuteFunctions, INode } from 'n8n-workflow';
+import type { IExecuteFunctions, INode } from 'MNI-workflow';
 import { mockDeep } from 'vitest-mock-extended';
 
 import { dataverseApiRequest } from '../GenericFunctions';

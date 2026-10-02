@@ -1,5 +1,5 @@
-import { Service } from '@n8n/di';
-import { UnexpectedError, type ICredentialDataDecryptedObject } from 'n8n-workflow';
+import { Service } from '@MNI/di';
+import { UnexpectedError, type ICredentialDataDecryptedObject } from 'MNI-workflow';
 
 export interface InstanceCredentialUse {
 	readonly id: string;

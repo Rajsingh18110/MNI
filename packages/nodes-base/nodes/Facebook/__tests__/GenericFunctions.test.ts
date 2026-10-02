@@ -1,10 +1,10 @@
 import { createHmac } from 'crypto';
 
 import * as utils from '../GenericFunctions';
-import type * as _importType0 from 'n8n-workflow';
+import type * as _importType0 from 'MNI-workflow';
 
-vi.mock('n8n-workflow', async () => {
-	const original = await vi.importActual<typeof _importType0>('n8n-workflow');
+vi.mock('MNI-workflow', async () => {
+	const original = await vi.importActual<typeof _importType0>('MNI-workflow');
 	return {
 		...original,
 		NodeApiError: vi.fn().mockImplementation(function (

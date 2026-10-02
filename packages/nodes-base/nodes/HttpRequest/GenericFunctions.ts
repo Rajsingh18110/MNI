@@ -1,4 +1,4 @@
-import { formatPemBlock } from '@n8n/utils/format-pem-block';
+import { formatPemBlock } from '@MNI/utils/format-pem-block';
 import FormData from 'form-data';
 import get from 'lodash/get';
 import isPlainObject from 'lodash/isPlainObject';
@@ -12,7 +12,7 @@ import {
 	type INodeExecutionData,
 	type IOAuth2Options,
 	type IRequestOptions,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import { Stream, type Readable } from 'stream';
 import type { SecureContextOptions } from 'tls';
 

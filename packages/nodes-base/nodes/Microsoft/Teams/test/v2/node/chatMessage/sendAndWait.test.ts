@@ -1,6 +1,6 @@
 import type { MockProxy } from 'vitest-mock-extended';
 import { mock } from 'vitest-mock-extended';
-import { SEND_AND_WAIT_OPERATION, type IExecuteFunctions, type INode } from 'n8n-workflow';
+import { SEND_AND_WAIT_OPERATION, type IExecuteFunctions, type INode } from 'MNI-workflow';
 
 import { versionDescription } from '../../../../v2/actions/versionDescription';
 import { MicrosoftTeamsV2 } from '../../../../v2/MicrosoftTeamsV2.node';
@@ -63,7 +63,7 @@ describe('Test MicrosoftTeamsV2, chatMessage => sendAndWait', () => {
 			{
 				body: {
 					content:
-						'my message<br><br><a href="http://localhost/waiting-webhook/nodeID?approved=true&signature=abc">Approve</a><br><br><em>This message was sent automatically with <a href="https://n8n.io/?utm_source=n8n-internal&utm_medium=powered_by&utm_campaign=n8n-nodes-base.microsoftTeams_instanceId">MNI</a></em>',
+						'my message<br><br><a href="http://localhost/waiting-webhook/nodeID?approved=true&signature=abc">Approve</a><br><br><em>This message was sent automatically with <a href="https://n8n.io/?utm_source=MNI-internal&utm_medium=powered_by&utm_campaign=MNI-nodes-base.microsoftTeams_instanceId">MNI</a></em>',
 					contentType: 'html',
 				},
 			},

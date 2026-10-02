@@ -1,6 +1,6 @@
-import { Service } from '@n8n/di';
-import { DataSource, LessThan, Repository } from '@n8n/typeorm';
-import { InstanceSettings } from 'n8n-core';
+import { Service } from '@MNI/di';
+import { DataSource, LessThan, Repository } from '@MNI/typeorm';
+import { InstanceSettings } from 'MNI-core';
 
 import type { AgentChannelStatusValue } from '../entities/agent-channel-status.entity';
 import { AgentChannelStatus } from '../entities/agent-channel-status.entity';

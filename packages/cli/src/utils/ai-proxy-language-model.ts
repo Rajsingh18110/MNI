@@ -5,8 +5,8 @@ import {
 	isMoonshotaiKimiK3ModelId,
 	type N8nProxyFeature,
 	type ProxyContext,
-} from '@n8n/api-types';
-import type { OutboundHttp } from '@n8n/backend-network';
+} from '@MNI/api-types';
+import type { OutboundHttp } from '@MNI/backend-network';
 import type { LanguageModel } from 'ai';
 
 import type { ProxyTokenManager } from '@/services/proxy-token-manager';

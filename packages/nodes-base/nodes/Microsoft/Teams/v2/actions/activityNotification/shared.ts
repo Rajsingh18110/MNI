@@ -1,5 +1,5 @@
-import type { IExecuteFunctions } from 'n8n-workflow';
-import { NodeOperationError } from 'n8n-workflow';
+import type { IExecuteFunctions } from 'MNI-workflow';
+import { NodeOperationError } from 'MNI-workflow';
 
 import { type UserTargetMessages, validateUserTargetId } from '../../../../GenericFunctions';
 import { optionalText, readTextParameter } from '../../helpers/parameters';

@@ -16,7 +16,7 @@ SCRIPT="$(cd "$(dirname "$0")" && pwd)/get-mni.sh"
 # Install from the working copy of the stack definition, not the published one
 # on master — the harness must test this branch's compose file.
 COMPOSE_SRC="$(cd "$(dirname "$0")" && pwd)/get-mni-compose.yml"
-export N8N_COMPOSE_URL="$COMPOSE_SRC"
+export MNI_COMPOSE_URL="$COMPOSE_SRC"
 # Failure-path tests must not prompt for (or send) a failure report.
 export DO_NOT_TRACK=1
 E2E=0
@@ -55,17 +55,17 @@ SANDBOX_PIN="$(sed -n 's/^SANDBOX_VERSION="\(.*\)"$/\1/p' "$SCRIPT")"
 
 # Recreates what stack definition v1 wrote: fixed sandbox image tags and an
 # http runner URL. Installs made from it need the --upgrade migration.
-# shellcheck disable=SC2016  # matches the literal ${N8N_SANDBOX_VERSION}
+# shellcheck disable=SC2016  # matches the literal ${MNI_SANDBOX_VERSION}
 legacy_compose() { # legacy_compose <compose-file>  (stdout)
-	sed -e 's|n8n-sandbox-service-api:\${N8N_SANDBOX_VERSION}|n8n-sandbox-service-api:1.2.0|' \
-		-e 's|n8n-sandbox-service-runner-dind:\${N8N_SANDBOX_VERSION}|n8n-sandbox-service-runner-dind:1.2.0|' \
-		-e 's|n8n-sandbox-service-sandbox:\${N8N_SANDBOX_VERSION}|n8n-sandbox-service-sandbox:latest|' \
+	sed -e 's|MNI-sandbox-service-api:\${MNI_SANDBOX_VERSION}|MNI-sandbox-service-api:1.2.0|' \
+		-e 's|MNI-sandbox-service-runner-dind:\${MNI_SANDBOX_VERSION}|MNI-sandbox-service-runner-dind:1.2.0|' \
+		-e 's|MNI-sandbox-service-sandbox:\${MNI_SANDBOX_VERSION}|MNI-sandbox-service-sandbox:latest|' \
 		-e 's|SANDBOX_RUNNER_HTTP_BASE_URL: https://|SANDBOX_RUNNER_HTTP_BASE_URL: http://|' \
 		-e 's|^# compose-version: .*|# compose-version: 1|' "$1"
 }
-# A v1 install also has no N8N_SANDBOX_VERSION line in .env.
+# A v1 install also has no MNI_SANDBOX_VERSION line in .env.
 strip_sandbox_pin() { # strip_sandbox_pin <install-dir>
-	grep -v '^N8N_SANDBOX_VERSION=' "$1/.env" >"$1/.env.v1" && mv "$1/.env.v1" "$1/.env"
+	grep -v '^MNI_SANDBOX_VERSION=' "$1/.env" >"$1/.env.v1" && mv "$1/.env.v1" "$1/.env"
 }
 
 teardown() {
@@ -86,7 +86,7 @@ sh "$SCRIPT" --help | grep -q 'DO_NOT_TRACK' && pass "--help documents DO_NOT_TR
 check_not "unknown flag fails" sh "$SCRIPT" --bogus
 
 # fresh --no-start install
-check "--no-start install succeeds" env N8N_DIR="$WORK/a" sh "$SCRIPT" --no-start
+check "--no-start install succeeds" env MNI_DIR="$WORK/a" sh "$SCRIPT" --no-start
 check "compose.yml created" test -f "$WORK/a/compose.yml"
 check ".env created" test -f "$WORK/a/.env"
 check "searxng-settings.yml created" test -f "$WORK/a/searxng-settings.yml"
@@ -96,18 +96,18 @@ else
 	[ "$(find "$WORK/a/.env" -perm 0600)" = "$WORK/a/.env" ] && pass ".env is mode 600" || fail ".env is mode 600"
 fi
 check "compose.yml validates with generated .env" docker compose -f "$WORK/a/compose.yml" config -q
-case "$(env_value "$WORK/a" N8N_VERSION)" in
+case "$(env_value "$WORK/a" MNI_VERSION)" in
 [0-9]*.[0-9]*) pass "default install resolves a sane MNI version" ;;
 *) fail "default install resolves a sane MNI version" ;;
 esac
 
 # sandbox images follow one pin in .env; compose.yml carries no tags of its own
-[ -n "$SANDBOX_PIN" ] && [ "$(env_value "$WORK/a" N8N_SANDBOX_VERSION)" = "$SANDBOX_PIN" ] &&
-	pass "install pins N8N_SANDBOX_VERSION to the script's pin" || fail "install pins N8N_SANDBOX_VERSION to the script's pin"
-check_not "compose.yml hard-codes no sandbox image tag" grep -E 'n8n-sandbox-service-[a-z-]+:[0-9a-z]' "$WORK/a/compose.yml"
+[ -n "$SANDBOX_PIN" ] && [ "$(env_value "$WORK/a" MNI_SANDBOX_VERSION)" = "$SANDBOX_PIN" ] &&
+	pass "install pins MNI_SANDBOX_VERSION to the script's pin" || fail "install pins MNI_SANDBOX_VERSION to the script's pin"
+check_not "compose.yml hard-codes no sandbox image tag" grep -E 'MNI-sandbox-service-[a-z-]+:[0-9a-z]' "$WORK/a/compose.yml"
 resolved="$(docker compose -f "$WORK/a/compose.yml" config 2>/dev/null)"
 for img in api runner-dind sandbox; do
-	echo "$resolved" | grep -q "n8n-sandbox-service-${img}:${SANDBOX_PIN}\$" &&
+	echo "$resolved" | grep -q "MNI-sandbox-service-${img}:${SANDBOX_PIN}\$" &&
 		pass "compose resolves the ${img} image to the sandbox pin" || fail "compose resolves the ${img} image to the sandbox pin"
 done
 
@@ -116,20 +116,20 @@ runner_key="$(env_value "$WORK/a" SANDBOX_RUNNER_API_KEYS)"
 [ "${#api_key}" -ge 32 ] && pass "sandbox API key generated" || fail "sandbox API key generated"
 [ -n "$runner_key" ] && [ "$runner_key" != "$api_key" ] && pass "runner key generated and distinct" ||
 	fail "runner key generated and distinct"
-[ "$(env_value "$WORK/a" N8N_SANDBOX_SERVICE_API_KEY)" = "$api_key" ] &&
+[ "$(env_value "$WORK/a" MNI_SANDBOX_SERVICE_API_KEY)" = "$api_key" ] &&
 	pass "MNI sandbox key mirrors SANDBOX_API_KEYS" || fail "MNI sandbox key mirrors SANDBOX_API_KEYS"
 [ "$(env_value "$WORK/a" SANDBOX_API_RUNNER_API_KEY)" = "$runner_key" ] &&
 	pass "API-side runner key mirrors runner key" || fail "API-side runner key mirrors runner key"
 
 # second install must not share secrets with the first
-env N8N_DIR="$WORK/b" sh "$SCRIPT" --no-start >/dev/null 2>&1
+env MNI_DIR="$WORK/b" sh "$SCRIPT" --no-start >/dev/null 2>&1
 b_key="$(env_value "$WORK/b" SANDBOX_API_KEYS)"
 [ -n "$b_key" ] && [ "$b_key" != "$api_key" ] && pass "secrets unique per install" ||
 	fail "secrets unique per install"
 
 # idempotency: re-run leaves files byte-identical and tells the user the URL
 before="$(cat "$WORK/a/.env" "$WORK/a/compose.yml" "$WORK/a/searxng-settings.yml")"
-rerun_out="$(env N8N_DIR="$WORK/a" sh "$SCRIPT" 2>&1)" && pass "re-run on existing install is a no-op" ||
+rerun_out="$(env MNI_DIR="$WORK/a" sh "$SCRIPT" 2>&1)" && pass "re-run on existing install is a no-op" ||
 	fail "re-run on existing install is a no-op"
 [ "$(cat "$WORK/a/.env" "$WORK/a/compose.yml" "$WORK/a/searxng-settings.yml")" = "$before" ] && pass "re-run leaves files untouched" ||
 	fail "re-run leaves files untouched"
@@ -144,31 +144,31 @@ echo "$rerun_out" | grep -q 'To uninstall: docker compose' && pass "re-run shows
 echo "$rerun_out" | grep -q 'stack definition is now' && fail "up-to-date install gets no stack notice" ||
 	pass "up-to-date install gets no stack notice"
 sed 's/^# compose-version: .*/# compose-version: 999/' "$COMPOSE_SRC" >"$WORK/newer-compose.yml"
-notice_out="$(env N8N_DIR="$WORK/a" N8N_COMPOSE_URL="$WORK/newer-compose.yml" sh "$SCRIPT" 2>&1)"
+notice_out="$(env MNI_DIR="$WORK/a" MNI_COMPOSE_URL="$WORK/newer-compose.yml" sh "$SCRIPT" 2>&1)"
 echo "$notice_out" | grep -q 'stack definition is now v999' && pass "re-run notices a newer stack definition" ||
 	fail "re-run notices a newer stack definition"
 check_not "unreachable stack definition fails" \
-	env N8N_DIR="$WORK/nofetch" N8N_COMPOSE_URL="$WORK/does-not-exist.yml" sh "$SCRIPT" --no-start
+	env MNI_DIR="$WORK/nofetch" MNI_COMPOSE_URL="$WORK/does-not-exist.yml" sh "$SCRIPT" --no-start
 check "failed fetch writes no config" test ! -e "$WORK/nofetch/compose.yml"
 
 # version pinning
-env N8N_DIR="$WORK/pin" sh "$SCRIPT" --version 2.31.4 --no-start >/dev/null 2>&1
-[ "$(env_value "$WORK/pin" N8N_VERSION)" = "2.31.4" ] && pass "--version x.y.z pins in .env" ||
+env MNI_DIR="$WORK/pin" sh "$SCRIPT" --version 2.31.4 --no-start >/dev/null 2>&1
+[ "$(env_value "$WORK/pin" MNI_VERSION)" = "2.31.4" ] && pass "--version x.y.z pins in .env" ||
 	fail "--version x.y.z pins in .env"
 
-check_not "--upgrade without install fails" env N8N_DIR="$WORK/missing" sh "$SCRIPT" --upgrade
+check_not "--upgrade without install fails" env MNI_DIR="$WORK/missing" sh "$SCRIPT" --upgrade
 
 # malformed --version must fail before writing anything
-check_not "rejects malformed --version" env N8N_DIR="$WORK/badver" sh "$SCRIPT" --version banana --no-start
-check_not "rejects trailing-garbage --version" env N8N_DIR="$WORK/badver" sh "$SCRIPT" --version 2.3.4x --no-start
-check_not "rejects two-component --version" env N8N_DIR="$WORK/badver" sh "$SCRIPT" --version 2.32 --no-start
+check_not "rejects malformed --version" env MNI_DIR="$WORK/badver" sh "$SCRIPT" --version banana --no-start
+check_not "rejects trailing-garbage --version" env MNI_DIR="$WORK/badver" sh "$SCRIPT" --version 2.3.4x --no-start
+check_not "rejects two-component --version" env MNI_DIR="$WORK/badver" sh "$SCRIPT" --version 2.32 --no-start
 check "malformed --version writes nothing" test ! -e "$WORK/badver"
 
 # --upgrade --no-start bumps the pin but must not touch containers
-env N8N_DIR="$WORK/stage" sh "$SCRIPT" --version 2.31.4 --no-start >/dev/null 2>&1
-stage_out="$(env N8N_DIR="$WORK/stage" sh "$SCRIPT" --upgrade --version 2.32.0 --no-start 2>&1)" &&
+env MNI_DIR="$WORK/stage" sh "$SCRIPT" --version 2.31.4 --no-start >/dev/null 2>&1
+stage_out="$(env MNI_DIR="$WORK/stage" sh "$SCRIPT" --upgrade --version 2.32.0 --no-start 2>&1)" &&
 	pass "--upgrade --no-start succeeds" || fail "--upgrade --no-start succeeds"
-[ "$(env_value "$WORK/stage" N8N_VERSION)" = "2.32.0" ] && pass "--upgrade --no-start updates the pin" ||
+[ "$(env_value "$WORK/stage" MNI_VERSION)" = "2.32.0" ] && pass "--upgrade --no-start updates the pin" ||
 	fail "--upgrade --no-start updates the pin"
 echo "$stage_out" | grep -q "Not restarting" && pass "--upgrade --no-start skips the restart" ||
 	fail "--upgrade --no-start skips the restart"
@@ -176,19 +176,19 @@ echo "$stage_out" | grep -q "Not restarting" && pass "--upgrade --no-start skips
 # --upgrade migrates a v1 install: the pin moves into .env, compose.yml loses
 # its hard-coded tags and otherwise stays as it was.
 legacy_compose "$COMPOSE_SRC" >"$WORK/legacy-compose.yml"
-env N8N_DIR="$WORK/legacy" N8N_COMPOSE_URL="$WORK/legacy-compose.yml" sh "$SCRIPT" --version 2.31.4 --no-start >/dev/null 2>&1
+env MNI_DIR="$WORK/legacy" MNI_COMPOSE_URL="$WORK/legacy-compose.yml" sh "$SCRIPT" --version 2.31.4 --no-start >/dev/null 2>&1
 strip_sandbox_pin "$WORK/legacy"
-check "v1 install fixture has hard-coded sandbox tags" grep -q 'n8n-sandbox-service-api:1.2.0' "$WORK/legacy/compose.yml"
-legacy_out="$(env N8N_DIR="$WORK/legacy" sh "$SCRIPT" --upgrade --version 2.32.0 --no-start 2>&1)" &&
+check "v1 install fixture has hard-coded sandbox tags" grep -q 'MNI-sandbox-service-api:1.2.0' "$WORK/legacy/compose.yml"
+legacy_out="$(env MNI_DIR="$WORK/legacy" sh "$SCRIPT" --upgrade --version 2.32.0 --no-start 2>&1)" &&
 	pass "--upgrade --no-start on a v1 install succeeds" || fail "--upgrade --no-start on a v1 install succeeds"
 echo "$legacy_out" | grep -q 'sandbox service images pinned to fixed tags' &&
 	pass "--upgrade tells the user the fixed sandbox tags were replaced" ||
 	fail "--upgrade tells the user the fixed sandbox tags were replaced"
 echo "$legacy_out" | grep -q 'runner URL now uses https' &&
 	pass "--upgrade tells the user the runner URL changed" || fail "--upgrade tells the user the runner URL changed"
-[ "$(env_value "$WORK/legacy" N8N_SANDBOX_VERSION)" = "$SANDBOX_PIN" ] &&
-	pass "--upgrade adds N8N_SANDBOX_VERSION to a v1 .env" || fail "--upgrade adds N8N_SANDBOX_VERSION to a v1 .env"
-check_not "--upgrade removes hard-coded sandbox tags" grep -E 'n8n-sandbox-service-[a-z-]+:[0-9a-z]' "$WORK/legacy/compose.yml"
+[ "$(env_value "$WORK/legacy" MNI_SANDBOX_VERSION)" = "$SANDBOX_PIN" ] &&
+	pass "--upgrade adds MNI_SANDBOX_VERSION to a v1 .env" || fail "--upgrade adds MNI_SANDBOX_VERSION to a v1 .env"
+check_not "--upgrade removes hard-coded sandbox tags" grep -E 'MNI-sandbox-service-[a-z-]+:[0-9a-z]' "$WORK/legacy/compose.yml"
 grep -q 'SANDBOX_RUNNER_HTTP_BASE_URL: https://sandbox-runner-1:8080' "$WORK/legacy/compose.yml" &&
 	pass "--upgrade switches the runner URL to https" || fail "--upgrade switches the runner URL to https"
 grep -v '^#' "$WORK/legacy/compose.yml" >"$WORK/migrated.stripped"
@@ -198,7 +198,7 @@ cmp -s "$WORK/migrated.stripped" "$WORK/current.stripped" &&
 	fail "migrated v1 compose.yml matches the current stack definition"
 check "migrated compose.yml validates" docker compose -f "$WORK/legacy/compose.yml" config -q
 cp "$WORK/legacy/compose.yml" "$WORK/legacy-compose-migrated"
-second_out="$(env N8N_DIR="$WORK/legacy" sh "$SCRIPT" --upgrade --version 2.32.0 --no-start 2>&1)" &&
+second_out="$(env MNI_DIR="$WORK/legacy" sh "$SCRIPT" --upgrade --version 2.32.0 --no-start 2>&1)" &&
 	pass "second --upgrade succeeds" || fail "second --upgrade succeeds"
 cmp -s "$WORK/legacy-compose-migrated" "$WORK/legacy/compose.yml" &&
 	pass "second --upgrade leaves a migrated compose.yml untouched" || fail "second --upgrade leaves a migrated compose.yml untouched"
@@ -207,21 +207,21 @@ echo "$second_out" | grep -q 'Updated compose.yml' && fail "second --upgrade pri
 
 # images the user pointed elsewhere are not the script's to move
 # shellcheck disable=SC2016
-sed 's|ghcr.io/n8n-io/n8n-sandbox-service-api:${N8N_SANDBOX_VERSION}|docker.io/n8nio/n8n-sandbox-service-api:1.3.0|' \
+sed 's|ghcr.io/MNI-io/MNI-sandbox-service-api:${MNI_SANDBOX_VERSION}|docker.io/n8nio/MNI-sandbox-service-api:1.3.0|' \
 	"$COMPOSE_SRC" >"$WORK/custom-compose.yml"
-env N8N_DIR="$WORK/custom" N8N_COMPOSE_URL="$WORK/custom-compose.yml" sh "$SCRIPT" --version 2.31.4 --no-start >/dev/null 2>&1
-check "--upgrade with user-chosen images succeeds" env N8N_DIR="$WORK/custom" sh "$SCRIPT" --upgrade --version 2.32.0 --no-start
-check "--upgrade leaves user-chosen sandbox images alone" grep -q 'docker.io/n8nio/n8n-sandbox-service-api:1.3.0' "$WORK/custom/compose.yml"
+env MNI_DIR="$WORK/custom" MNI_COMPOSE_URL="$WORK/custom-compose.yml" sh "$SCRIPT" --version 2.31.4 --no-start >/dev/null 2>&1
+check "--upgrade with user-chosen images succeeds" env MNI_DIR="$WORK/custom" sh "$SCRIPT" --upgrade --version 2.32.0 --no-start
+check "--upgrade leaves user-chosen sandbox images alone" grep -q 'docker.io/n8nio/MNI-sandbox-service-api:1.3.0' "$WORK/custom/compose.yml"
 
 # refuses non-empty foreign directory
 mkdir -p "$WORK/dirty" && touch "$WORK/dirty/keep"
-check_not "refuses non-empty directory" env N8N_DIR="$WORK/dirty" sh "$SCRIPT"
+check_not "refuses non-empty directory" env MNI_DIR="$WORK/dirty" sh "$SCRIPT"
 check "foreign directory untouched" test -f "$WORK/dirty/keep"
 
 # a pull rate-limit failure must print recovery advice, not a raw error.
 # A fake docker on PATH passes the preflight checks and fails pulls the way
 # Docker Hub's limit does; --upgrade reaches the pull without the port probe.
-env N8N_DIR="$WORK/ratelimit" sh "$SCRIPT" --no-start >/dev/null 2>&1
+env MNI_DIR="$WORK/ratelimit" sh "$SCRIPT" --no-start >/dev/null 2>&1
 mkdir -p "$WORK/shim"
 cat >"$WORK/shim/docker" <<'EOF'
 #!/bin/sh
@@ -240,7 +240,7 @@ esac
 exit 0
 EOF
 chmod +x "$WORK/shim/docker"
-ratelimit_out="$(env PATH="$WORK/shim:$PATH" N8N_DIR="$WORK/ratelimit" sh "$SCRIPT" --upgrade 2>&1)" &&
+ratelimit_out="$(env PATH="$WORK/shim:$PATH" MNI_DIR="$WORK/ratelimit" sh "$SCRIPT" --upgrade 2>&1)" &&
 	fail "rate-limited run fails" || pass "rate-limited run fails"
 echo "$ratelimit_out" | grep -q 'pull rate limit reached' && pass "rate-limit failure prints recovery advice" ||
 	fail "rate-limit failure prints recovery advice"
@@ -277,13 +277,13 @@ EOF
 		fi
 	}
 	rm -f "$WORK/consent.log"
-	run_with_tty y env "PATH=$WORK/shim:$PATH" DO_NOT_TRACK= N8N_DIR="$WORK/ratelimit" \
+	run_with_tty y env "PATH=$WORK/shim:$PATH" DO_NOT_TRACK= MNI_DIR="$WORK/ratelimit" \
 		sh "$SCRIPT" --upgrade --version 2.32.0 >/dev/null 2>&1
 	grep -q '"event":"install_failed".*"step":"docker-hub-rate-limit"' "$WORK/consent.log" 2>/dev/null &&
 		pass "consented failure report carries the failed step" ||
 		fail "consented failure report carries the failed step"
 	rm -f "$WORK/consent.log"
-	run_with_tty '' env "PATH=$WORK/shim:$PATH" DO_NOT_TRACK= N8N_DIR="$WORK/ratelimit" \
+	run_with_tty '' env "PATH=$WORK/shim:$PATH" DO_NOT_TRACK= MNI_DIR="$WORK/ratelimit" \
 		sh "$SCRIPT" --upgrade --version 2.32.0 >/dev/null 2>&1
 	[ ! -s "$WORK/consent.log" ] && pass "declined failure report sends nothing" ||
 		fail "declined failure report sends nothing"
@@ -307,7 +307,7 @@ if [ "$E2E" -eq 1 ]; then
 	# install the previous release from stack definition v1, so --upgrade below
 	# is a real MNI version change and a real sandbox migration (1.2.0 + http)
 	legacy_compose "$COMPOSE_SRC" >"$WORK/e2e-legacy-compose.yml"
-	if env N8N_DIR="$E2E_DIR" N8N_COMPOSE_URL="$WORK/e2e-legacy-compose.yml" sh "$SCRIPT" --version 2.31.4; then
+	if env MNI_DIR="$E2E_DIR" MNI_COMPOSE_URL="$WORK/e2e-legacy-compose.yml" sh "$SCRIPT" --version 2.31.4; then
 		pass "fresh install boots and reaches /healthz"
 	else
 		fail "fresh install boots and reaches /healthz"
@@ -333,19 +333,19 @@ if [ "$E2E" -eq 1 ]; then
 		grep -q 'registration stream established' &&
 		pass "runner registered with sandbox-api" || fail "runner registered with sandbox-api"
 
-	check_not "fresh install fails while port is taken" env N8N_DIR="$WORK/conflict" sh "$SCRIPT"
+	check_not "fresh install fails while port is taken" env MNI_DIR="$WORK/conflict" sh "$SCRIPT"
 
 	# upgrade: only the version lines may change, and the new images must run.
 	# Pin the target explicitly so the assertion is deterministic (a bare
 	# --upgrade resolves the latest stable release at run time).
-	target="$(sed -n 's/^FALLBACK_N8N_VERSION="\(.*\)"$/\1/p' "$SCRIPT")"
+	target="$(sed -n 's/^FALLBACK_MNI_VERSION="\(.*\)"$/\1/p' "$SCRIPT")"
 	cp "$E2E_DIR/.env" "$WORK/env-before"
-	check "--upgrade succeeds" env N8N_DIR="$E2E_DIR" sh "$SCRIPT" --upgrade --version "$target"
+	check "--upgrade succeeds" env MNI_DIR="$E2E_DIR" sh "$SCRIPT" --upgrade --version "$target"
 	diff "$WORK/env-before" "$E2E_DIR/.env" >"$WORK/env.diff" 2>&1 || true
 	if [ "$(grep -c '^[<>]' "$WORK/env.diff")" = "3" ] &&
-		grep -q '^< N8N_VERSION=2.31.4$' "$WORK/env.diff" &&
-		grep -q "^> N8N_VERSION=${target}\$" "$WORK/env.diff" &&
-		grep -q "^> N8N_SANDBOX_VERSION=${SANDBOX_PIN}\$" "$WORK/env.diff"; then
+		grep -q '^< MNI_VERSION=2.31.4$' "$WORK/env.diff" &&
+		grep -q "^> MNI_VERSION=${target}\$" "$WORK/env.diff" &&
+		grep -q "^> MNI_SANDBOX_VERSION=${SANDBOX_PIN}\$" "$WORK/env.diff"; then
 		pass "--upgrade changes only the version lines in .env"
 	else
 		fail "--upgrade changes only the version lines in .env"

@@ -1,4 +1,4 @@
-import type { SourceControlledFile } from '@n8n/api-types';
+import type { SourceControlledFile } from '@MNI/api-types';
 import type {
 	Folder,
 	FolderRepository,
@@ -14,10 +14,10 @@ import type {
 	WorkflowTagMapping,
 	WorkflowTagMappingRepository,
 	Variables,
-} from '@n8n/db';
-import { GLOBAL_ADMIN_ROLE, In, User, WorkflowEntity } from '@n8n/db';
-import { Container } from '@n8n/di';
-import { Cipher, type InstanceSettings } from 'n8n-core';
+} from '@MNI/db';
+import { GLOBAL_ADMIN_ROLE, In, User, WorkflowEntity } from '@MNI/db';
+import { Container } from '@MNI/di';
+import { Cipher, type InstanceSettings } from 'MNI-core';
 import fsp from 'node:fs/promises';
 
 vi.mock('node:fs/promises');
@@ -696,7 +696,7 @@ describe('SourceControlExportService', () => {
 			const nodes = [
 				{
 					id: 'node-1',
-					type: 'n8n-nodes-base.noOp',
+					type: 'MNI-nodes-base.noOp',
 					name: 'NoOp',
 					typeVersion: 1,
 					position: [0, 0] as [number, number],

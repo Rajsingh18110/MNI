@@ -1,4 +1,4 @@
-import type { IDataObject, INode, INodeExecutionData } from 'n8n-workflow';
+import type { IDataObject, INode, INodeExecutionData } from 'MNI-workflow';
 
 import { applyDataTableReadParameters } from '../data-table-pin-filter';
 
@@ -6,7 +6,7 @@ function readNode(parameters: Record<string, unknown>): INode {
 	return {
 		id: 'node-1',
 		name: 'Read Rows',
-		type: 'n8n-nodes-base.dataTable',
+		type: 'MNI-nodes-base.dataTable',
 		typeVersion: 1.1,
 		position: [0, 0],
 		parameters: { resource: 'row', operation: 'get', ...parameters },

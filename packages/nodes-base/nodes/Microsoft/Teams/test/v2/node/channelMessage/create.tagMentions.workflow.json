@@ -5,7 +5,7 @@
 			"parameters": {},
 			"id": "6666-9999-77777",
 			"name": "When clicking \"Execute Workflow\"",
-			"type": "n8n-nodes-base.manualTrigger",
+			"type": "MNI-nodes-base.manualTrigger",
 			"typeVersion": 1,
 			"position": [880, 380]
 		},
@@ -55,7 +55,7 @@
 			},
 			"id": "6666-5555-77777",
 			"name": "Microsoft Teams",
-			"type": "n8n-nodes-base.microsoftTeams",
+			"type": "MNI-nodes-base.microsoftTeams",
 			"typeVersion": 2,
 			"position": [1100, 380],
 			"credentials": {
@@ -69,7 +69,7 @@
 			"parameters": {},
 			"id": "9d1a2e59-c71c-486c-b3ac-dec6adbc26b3",
 			"name": "No Operation, do nothing",
-			"type": "n8n-nodes-base.noOp",
+			"type": "MNI-nodes-base.noOp",
 			"typeVersion": 1,
 			"position": [1400, 380]
 		}

@@ -1,9 +1,9 @@
-import type { AgentJsonConfig } from '@n8n/api-types';
-import { User } from '@n8n/db';
-import { Service } from '@n8n/di';
-import type { EntityManager } from '@n8n/typeorm';
-import { DataSource, Repository } from '@n8n/typeorm';
-import type { QueryDeepPartialEntity } from '@n8n/typeorm/query-builder/QueryPartialEntity';
+import type { AgentJsonConfig } from '@MNI/api-types';
+import { User } from '@MNI/db';
+import { Service } from '@MNI/di';
+import type { EntityManager } from '@MNI/typeorm';
+import { DataSource, Repository } from '@MNI/typeorm';
+import type { QueryDeepPartialEntity } from '@MNI/typeorm/query-builder/QueryPartialEntity';
 
 import { AgentHistory } from '../entities/agent-history.entity';
 import type { Agent } from '../entities/agent.entity';

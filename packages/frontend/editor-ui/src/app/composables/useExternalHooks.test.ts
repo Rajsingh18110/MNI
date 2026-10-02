@@ -1,8 +1,8 @@
-import type { FrontendSettings } from '@n8n/api-types';
+import type { FrontendSettings } from '@MNI/api-types';
 import { createPinia, setActivePinia } from 'pinia';
 
 import { runExternalHook } from '@/app/composables/useExternalHooks';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 
 /**
  * Payload `GET /rest/settings` returns to unauthenticated callers: no `license`,

@@ -4,10 +4,10 @@ import {
 	randomName,
 	randomValidPassword,
 	testDb,
-} from '@n8n/backend-test-utils';
-import type { User } from '@n8n/db';
-import { GLOBAL_OWNER_ROLE, UserRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
+} from '@MNI/backend-test-utils';
+import type { User } from '@MNI/db';
+import { GLOBAL_OWNER_ROLE, UserRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
 import validator from 'validator';
 
 import { OwnershipService } from '@/services/ownership.service';

@@ -1,5 +1,5 @@
 import type { Mocked } from 'vitest';
-import type { AuthenticatedRequest, EvaluationConfig, User, WorkflowEntity } from '@n8n/db';
+import type { AuthenticatedRequest, EvaluationConfig, User, WorkflowEntity } from '@MNI/db';
 import { mock } from 'vitest-mock-extended';
 
 import { BadRequestError } from '@/errors/response-errors/bad-request.error';

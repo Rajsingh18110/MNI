@@ -5,8 +5,8 @@ import type {
 	INodeExecutionData,
 	IPairedItemData,
 	NodeExecutionWithMetadata,
-} from 'n8n-workflow';
-import { NodeOperationError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeOperationError } from 'MNI-workflow';
 
 import type {
 	Mysql2Pool,

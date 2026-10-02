@@ -1,5 +1,5 @@
-import { entityFilePath } from '@/modules/n8n-packages/io/manifest-entry';
-import type { ManifestEntry, PackageManifest } from '@/modules/n8n-packages/spec/manifest.schema';
+import { entityFilePath } from '@/modules/MNI-packages/io/manifest-entry';
+import type { ManifestEntry, PackageManifest } from '@/modules/MNI-packages/spec/manifest.schema';
 
 /**
  * Where each project, folder and workflow lives on the branch, read from the

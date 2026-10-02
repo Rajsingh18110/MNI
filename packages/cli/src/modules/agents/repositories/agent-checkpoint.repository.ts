@@ -1,6 +1,6 @@
-import { BaseRepository, TransactionRunner, type OperationContext } from '@n8n/db';
-import { Service } from '@n8n/di';
-import { DataSource, MoreThan } from '@n8n/typeorm';
+import { BaseRepository, TransactionRunner, type OperationContext } from '@MNI/db';
+import { Service } from '@MNI/di';
+import { DataSource, MoreThan } from '@MNI/typeorm';
 
 import { AgentCheckpoint } from '../entities/agent-checkpoint.entity';
 

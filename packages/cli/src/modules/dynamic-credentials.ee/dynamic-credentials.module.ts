@@ -1,8 +1,8 @@
-import { isEnvFeatureEnabled } from '@n8n/backend-common';
-import { LICENSE_FEATURES } from '@n8n/constants';
-import type { ModuleInterface } from '@n8n/decorators';
-import { BackendModule, OnShutdown } from '@n8n/decorators';
-import { Container } from '@n8n/di';
+import { isEnvFeatureEnabled } from '@MNI/backend-common';
+import { LICENSE_FEATURES } from '@MNI/constants';
+import type { ModuleInterface } from '@MNI/decorators';
+import { BackendModule, OnShutdown } from '@MNI/decorators';
+import { Container } from '@MNI/di';
 
 /**
  * Superset capability: external/custom credential resolvers (OAuth/Slack) plus
@@ -10,7 +10,7 @@ import { Container } from '@n8n/di';
  * credentials" capability is always on once the module is licensed.
  */
 function isExternalResolversEnabled(): boolean {
-	return isEnvFeatureEnabled('N8N_ENV_FEAT_DYNAMIC_CREDENTIALS');
+	return isEnvFeatureEnabled('MNI_ENV_FEAT_DYNAMIC_CREDENTIALS');
 }
 
 @BackendModule({ name: 'dynamic-credentials', licenseFlag: LICENSE_FEATURES.DYNAMIC_CREDENTIALS })
@@ -20,7 +20,7 @@ export class DynamicCredentialsModule implements ModuleInterface {
 
 		// System resolver powers private credentials; OAuth/Slack resolvers and
 		// their management/identity-extractor surfaces are external-only.
-		await import('./credential-resolvers/n8n-credential-resolver.js');
+		await import('./credential-resolvers/MNI-credential-resolver.js');
 		if (isExternalResolversEnabled()) {
 			await import('./credential-resolvers.controller.js');
 			await import('./context-establishment-hooks/index.js');
@@ -64,7 +64,7 @@ export class DynamicCredentialsModule implements ModuleInterface {
 		const { ExecutingUserIdentifierProxy } = await import(
 			'../../credentials/executing-user-identifier-proxy.js'
 		);
-		const { N8NIdentifier } = await import('./credential-resolvers/identifiers/n8n-identifier.js');
+		const { N8NIdentifier } = await import('./credential-resolvers/identifiers/MNI-identifier.js');
 		Container.get(ExecutingUserIdentifierProxy).setProvider(Container.get(N8NIdentifier));
 	}
 

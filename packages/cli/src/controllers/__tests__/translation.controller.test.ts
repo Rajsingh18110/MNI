@@ -1,4 +1,4 @@
-import type { GlobalConfig } from '@n8n/config';
+import type { GlobalConfig } from '@MNI/config';
 import { mock } from 'vitest-mock-extended';
 
 import type { TranslationRequest } from '@/controllers/translation.controller';
@@ -23,8 +23,8 @@ const { fixturePath } = vi.hoisted(() => {
 	return { fixturePath: p as string };
 });
 
-vi.mock('@n8n/backend-common', async (importOriginal) => {
-	const actual = await importOriginal<typeof import('@n8n/backend-common')>();
+vi.mock('@MNI/backend-common', async (importOriginal) => {
+	const actual = await importOriginal<typeof import('@MNI/backend-common')>();
 	return {
 		...actual,
 		safeJoinPath: vi.fn((...args: string[]) =>

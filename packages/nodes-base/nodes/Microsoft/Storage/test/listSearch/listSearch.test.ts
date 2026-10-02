@@ -1,4 +1,4 @@
-import type { ILoadOptionsFunctions, INodeParameterResourceLocator } from 'n8n-workflow';
+import type { ILoadOptionsFunctions, INodeParameterResourceLocator } from 'MNI-workflow';
 
 import { AzureStorage } from '../../AzureStorage.node';
 import { XMsVersion } from '../../GenericFunctions';
@@ -57,7 +57,7 @@ describe('Azure Storage Node', () => {
 				body: {},
 			});
 			expect(listSearchResult).toEqual({
-				// eslint-disable-next-line n8n-nodes-base/node-param-display-name-miscased
+				// eslint-disable-next-line MNI-nodes-base/node-param-display-name-miscased
 				results: [{ name: 'myblob1', value: 'myblob1' }],
 				paginationToken: 'myblob2',
 			});
@@ -106,7 +106,7 @@ describe('Azure Storage Node', () => {
 				body: {},
 			});
 			expect(listSearchResult).toEqual({
-				// eslint-disable-next-line n8n-nodes-base/node-param-display-name-miscased
+				// eslint-disable-next-line MNI-nodes-base/node-param-display-name-miscased
 				results: [{ name: 'mycontainer1', value: 'mycontainer1' }],
 				paginationToken: 'mycontainer2',
 			});

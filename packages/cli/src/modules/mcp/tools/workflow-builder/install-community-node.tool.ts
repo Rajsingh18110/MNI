@@ -1,5 +1,5 @@
-import type { User } from '@n8n/db';
-import { hasGlobalScope } from '@n8n/permissions';
+import type { User } from '@MNI/db';
+import { hasGlobalScope } from '@MNI/permissions';
 import z from 'zod';
 
 import type { CommunityNodeTypesService } from '@/modules/community-packages/community-node-types.service';
@@ -15,7 +15,7 @@ const inputSchema = {
 		.string()
 		.min(1)
 		.describe(
-			'Full node type of a verified community node reported by search_nodes as not installed, e.g. "@mendable/n8n-nodes-firecrawl.firecrawl". The package that ships it is installed.',
+			'Full node type of a verified community node reported by search_nodes as not installed, e.g. "@mendable/MNI-nodes-firecrawl.firecrawl". The package that ships it is installed.',
 		),
 } satisfies z.ZodRawShape;
 
@@ -159,7 +159,7 @@ export const createInstallCommunityNodeTool = (
 
 			// Read off the entry rather than derived from the node type: npm allows
 			// dots in package names, so splitting on the first dot mis-parses a
-			// package like `n8n-nodes-chatwoot.io` and refuses a vetted node.
+			// package like `MNI-nodes-chatwoot.io` and refuses a vetted node.
 			const packageName = catalogEntry.packageName;
 
 			if (!catalogEntry.isOfficialNode) {

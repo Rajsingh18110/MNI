@@ -2,8 +2,8 @@ import type {
 	CreateEncryptionKeyDto,
 	EncryptionKeysList,
 	EncryptionKeysSortOption,
-} from '@n8n/api-types';
-import { makeRestApiRequest, type IRestApiContext } from '@n8n/rest-api-client';
+} from '@MNI/api-types';
+import { makeRestApiRequest, type IRestApiContext } from '@MNI/rest-api-client';
 
 import type { EncryptionKey } from './encryption-keys.types';
 

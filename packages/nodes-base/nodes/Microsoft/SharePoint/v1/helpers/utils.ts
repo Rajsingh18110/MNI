@@ -6,8 +6,8 @@ import type {
 	INodeExecutionData,
 	JsonObject,
 	ResourceMapperValue,
-} from 'n8n-workflow';
-import { jsonParse, NodeApiError, NodeOperationError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { jsonParse, NodeApiError, NodeOperationError } from 'MNI-workflow';
 
 import { escapeODataValue } from '@utils/query-escaping';
 

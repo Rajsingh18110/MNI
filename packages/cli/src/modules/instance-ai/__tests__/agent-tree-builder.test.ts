@@ -1,5 +1,5 @@
-import type { InstanceAiEvent } from '@n8n/api-types';
-import { buildAgentTreeFromEvents, findAgentNodeInTree } from '@n8n/instance-ai';
+import type { InstanceAiEvent } from '@MNI/api-types';
+import { buildAgentTreeFromEvents, findAgentNodeInTree } from '@MNI/instance-ai';
 
 describe('buildAgentTreeFromEvents', () => {
 	it('should build a tree from run-start + text-delta + run-finish', () => {

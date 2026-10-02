@@ -1,4 +1,4 @@
-import { Container } from '@n8n/di';
+import { Container } from '@MNI/di';
 
 import { OtelConfig } from '../otel.config';
 import { OTEL_ENV_VARS } from '../otel.constants';

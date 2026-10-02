@@ -9,7 +9,7 @@ export type TSeaTableServerEdition = 'enterprise edition';
 //         dtable
 // ----------------------------------
 
-import type { ICredentialDataDecryptedObject } from 'n8n-workflow';
+import type { ICredentialDataDecryptedObject } from 'MNI-workflow';
 
 import type { IDtableMetadataColumn, IDtableMetadataTable, TDtableViewColumn } from './Interfaces';
 

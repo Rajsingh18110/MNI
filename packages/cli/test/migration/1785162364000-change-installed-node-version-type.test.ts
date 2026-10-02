@@ -3,10 +3,10 @@ import {
 	initDbUpToMigration,
 	runSingleMigration,
 	type TestMigrationContext,
-} from '@n8n/backend-test-utils';
-import { DbConnection } from '@n8n/db';
-import { Container } from '@n8n/di';
-import { DataSource } from '@n8n/typeorm';
+} from '@MNI/backend-test-utils';
+import { DbConnection } from '@MNI/db';
+import { Container } from '@MNI/di';
+import { DataSource } from '@MNI/typeorm';
 
 const MIGRATION_NAME = 'ChangeInstalledNodeVersionType1785162364000';
 
@@ -74,16 +74,16 @@ describe('ChangeInstalledNodeVersionType migration', () => {
 			await context.runQuery(
 				`INSERT INTO ${installedPackages} (${column('packageName')}, ${column('installedVersion')})
 				 VALUES (:packageName, :installedVersion)`,
-				{ packageName: 'n8n-nodes-test', installedVersion: '1.0.0' },
+				{ packageName: 'MNI-nodes-test', installedVersion: '1.0.0' },
 			);
 			await context.runQuery(
 				`INSERT INTO ${installedNodes} (${column('name')}, ${column('type')}, ${column('latestVersion')}, ${column('package')})
 				 VALUES (:name, :type, :latestVersion, :package)`,
 				{
 					name: 'Test Node',
-					type: 'n8n-nodes-test.testNode',
+					type: 'MNI-nodes-test.testNode',
 					latestVersion: 1,
-					package: 'n8n-nodes-test',
+					package: 'MNI-nodes-test',
 				},
 			);
 		});

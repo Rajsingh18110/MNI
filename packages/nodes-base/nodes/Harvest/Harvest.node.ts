@@ -7,8 +7,8 @@ import type {
 	INodeType,
 	INodeTypeDescription,
 	IHttpRequestMethods,
-} from 'n8n-workflow';
-import { NodeConnectionTypes, NodeOperationError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeConnectionTypes, NodeOperationError } from 'MNI-workflow';
 
 import { clientFields, clientOperations } from './ClientDescription';
 import { companyOperations } from './CompanyDescription';
@@ -26,7 +26,7 @@ export class Harvest implements INodeType {
 	description: INodeTypeDescription = {
 		displayName: 'Harvest',
 		name: 'harvest',
-		// eslint-disable-next-line n8n-nodes-base/node-class-description-icon-not-svg
+		// eslint-disable-next-line MNI-nodes-base/node-class-description-icon-not-svg
 		icon: 'file:harvest.png',
 		group: ['input'],
 		version: 1,

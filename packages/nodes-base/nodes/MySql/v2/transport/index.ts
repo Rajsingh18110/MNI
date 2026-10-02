@@ -1,4 +1,4 @@
-import { formatPemBlock } from '@n8n/utils/format-pem-block';
+import { formatPemBlock } from '@MNI/utils/format-pem-block';
 import { LOCALHOST } from '@utils/constants';
 import mysql2 from 'mysql2/promise';
 import type {
@@ -6,7 +6,7 @@ import type {
 	IDataObject,
 	IExecuteFunctions,
 	ILoadOptionsFunctions,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import { createServer, type AddressInfo } from 'node:net';
 
 import type { Mysql2Pool, MysqlNodeCredentials } from '../helpers/interfaces';

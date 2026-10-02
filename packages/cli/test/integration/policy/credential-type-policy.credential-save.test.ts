@@ -3,11 +3,11 @@
  * while a credential that predates the rule stays editable. The lock belongs at decryption,
  * so the refusal here is about not letting someone set up what can never work.
  */
-import { createTeamProject, randomCredentialPayload, testDb } from '@n8n/backend-test-utils';
-import { LICENSE_FEATURES } from '@n8n/constants';
-import { CredentialsRepository, type User } from '@n8n/db';
-import { PolicyCheckMetadata } from '@n8n/decorators';
-import { Container } from '@n8n/di';
+import { createTeamProject, randomCredentialPayload, testDb } from '@MNI/backend-test-utils';
+import { LICENSE_FEATURES } from '@MNI/constants';
+import { CredentialsRepository, type User } from '@MNI/db';
+import { PolicyCheckMetadata } from '@MNI/decorators';
+import { Container } from '@MNI/di';
 
 import { saveCredential } from '../shared/db/credentials';
 import { createOwner } from '../shared/db/users';

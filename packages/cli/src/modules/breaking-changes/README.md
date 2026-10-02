@@ -32,10 +32,10 @@ breaking-changes/
 ### Registration
 
 Rules are registered at startup using the `@BreakingChangeRule` decorator from
-`@n8n/decorators` (following the same pattern as `@BackendModule` / `ModuleMetadata`).
+`@MNI/decorators` (following the same pattern as `@BackendModule` / `ModuleMetadata`).
 Each rule file is explicitly imported in `rules/index.ts` as a side-effect
 import, which triggers the decorator and registers the rule class. Because the
-decorator lives in `@n8n/decorators`, rules can be defined anywhere in the codebase.
+decorator lives in `@MNI/decorators`, rules can be defined anywhere in the codebase.
 
 ```
 Module.init()
@@ -99,8 +99,8 @@ Returns:
       "lastExecutedAt": "2025-10-16T14:22:00.000Z",
       "issues": [
        {
-        "title": "Node 'n8n-nodes-base.spontit' with name 'Spontit' has been removed",
-        "description": "The node type 'n8n-nodes-base.spontit' is no longer available",
+        "title": "Node 'MNI-nodes-base.spontit' with name 'Spontit' has been removed",
+        "description": "The node type 'MNI-nodes-base.spontit' is no longer available",
         "level": "error",
         "nodeId": "node-123",
         "nodeName": "Spontit"
@@ -169,11 +169,11 @@ The `@BreakingChangeRule` decorator handles registration automatically on import
 Create `rules/v2/my-workflow-rule.rule.ts`:
 
 ```typescript
-import type { BreakingChangeAffectedWorkflow, BreakingChangeRecommendation } from '@n8n/api-types';
-import type { WorkflowEntity } from '@n8n/db';
-import type { INode } from 'n8n-workflow';
+import type { BreakingChangeAffectedWorkflow, BreakingChangeRecommendation } from '@MNI/api-types';
+import type { WorkflowEntity } from '@MNI/db';
+import type { INode } from 'MNI-workflow';
 
-import { BreakingChangeRule } from '@n8n/decorators';
+import { BreakingChangeRule } from '@MNI/decorators';
 import type {
   BreakingChangeRuleMetadata,
   IBreakingChangeWorkflowRule,
@@ -211,7 +211,7 @@ export class MyWorkflowRule implements IBreakingChangeWorkflowRule {
     _workflow: WorkflowEntity,
     nodesGroupedByType: Map<string, INode[]>,
   ): Promise<WorkflowDetectionReport> {
-    const affectedNodes = nodesGroupedByType.get('n8n-nodes-base.someNode') ?? [];
+    const affectedNodes = nodesGroupedByType.get('MNI-nodes-base.someNode') ?? [];
 
     if (affectedNodes.length === 0) {
       return { isAffected: false, issues: [] };
@@ -236,7 +236,7 @@ export class MyWorkflowRule implements IBreakingChangeWorkflowRule {
 Create `rules/v2/my-instance-rule.rule.ts`:
 
 ```typescript
-import { BreakingChangeRule } from '@n8n/decorators';
+import { BreakingChangeRule } from '@MNI/decorators';
 import type {
   BreakingChangeRuleMetadata,
   IBreakingChangeInstanceRule,

@@ -5,8 +5,8 @@ import {
 	ListCommunityPackagesQueryDto,
 	UpdateCommunityPackagePublicDto,
 	communityPackageNameParamSchema,
-} from '@n8n/api-types';
-import type { AuthenticatedRequest } from '@n8n/db';
+} from '@MNI/api-types';
+import type { AuthenticatedRequest } from '@MNI/db';
 import {
 	ApiDescription,
 	ApiErrorResponse,
@@ -22,7 +22,7 @@ import {
 	Post,
 	PublicApiController,
 	Query,
-} from '@n8n/decorators';
+} from '@MNI/decorators';
 import type { Response } from 'express';
 
 import { CommunityPackagesLifecycleService } from '@/modules/community-packages/community-packages.lifecycle.service';

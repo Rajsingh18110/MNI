@@ -1,5 +1,5 @@
 import type { StandardSchemaWithJSON } from '@modelcontextprotocol/server';
-import { zodToDraft202012 } from '@n8n/ai-utilities/json-schema';
+import { zodToDraft202012 } from '@MNI/ai-utilities/json-schema';
 import { z } from 'zod';
 
 /**
@@ -27,7 +27,7 @@ export function shapeToStandardSchema<Shape extends z.ZodRawShape>(
 	return {
 		'~standard': {
 			version: 1,
-			vendor: 'n8n-zod-classic',
+			vendor: 'MNI-zod-classic',
 			validate: (value) => {
 				const result = schema.safeParse(value);
 				return result.success

@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import type { SlackManagedAppSettings, SlackManagedAppSettingsErrorCode } from '@n8n/api-types';
-import { N8nFormInput, N8nIcon, N8nLink, N8nSwitch2, N8nText } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+import type { SlackManagedAppSettings, SlackManagedAppSettingsErrorCode } from '@MNI/api-types';
+import { N8nFormInput, N8nIcon, N8nLink, N8nSwitch2, N8nText } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 import { computed, ref, watch } from 'vue';
 
 import AgentChannelSlackServiceLimitError from '../channels/slack/AgentChannelSlackServiceLimitError.vue';

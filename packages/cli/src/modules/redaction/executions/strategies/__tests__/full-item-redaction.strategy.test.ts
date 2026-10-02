@@ -1,5 +1,5 @@
-import type { IRunExecutionData } from 'n8n-workflow';
-import { NodeApiError, NodeOperationError } from 'n8n-workflow';
+import type { IRunExecutionData } from 'MNI-workflow';
+import { NodeApiError, NodeOperationError } from 'MNI-workflow';
 
 import type { RedactableExecution } from '@/executions/execution-redaction';
 
@@ -269,7 +269,7 @@ describe('FullItemRedactionStrategy', () => {
 		const mockNode = {
 			id: 'node-1',
 			name: 'Test Node',
-			type: 'n8n-nodes-base.httpRequest',
+			type: 'MNI-nodes-base.httpRequest',
 			typeVersion: 1,
 			position: [0, 0] as [number, number],
 			parameters: {},
@@ -488,7 +488,7 @@ describe('FullItemRedactionStrategy', () => {
 		const stackNode = {
 			id: 'node-1',
 			name: 'Test Node',
-			type: 'n8n-nodes-base.httpRequest',
+			type: 'MNI-nodes-base.httpRequest',
 			typeVersion: 1,
 			position: [0, 0] as [number, number],
 			parameters: {},

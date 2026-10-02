@@ -12,8 +12,8 @@ import type {
 	INodeTypes,
 	ICredentialDataDecryptedObject,
 	WorkflowExpression,
-} from 'n8n-workflow';
-import { UnexpectedError, NodeConnectionTypes } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { UnexpectedError, NodeConnectionTypes } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import { describeCommonTests } from './shared-tests';

@@ -2,7 +2,7 @@
 
 ## Description
 
-Auto-generated from the SQLite migrations in @n8n/db. Do not edit by hand.
+Auto-generated from the SQLite migrations in @MNI/db. Do not edit by hand.
 
 ## Tables
 

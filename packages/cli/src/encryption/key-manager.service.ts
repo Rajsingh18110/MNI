@@ -1,19 +1,19 @@
-import type { ListEncryptionKeysQueryDto } from '@n8n/api-types';
-import { Logger } from '@n8n/backend-common';
+import type { ListEncryptionKeysQueryDto } from '@MNI/api-types';
+import { Logger } from '@MNI/backend-common';
 import {
 	DeploymentKeyRepository,
 	type DeploymentKey,
 	type DeploymentKeySortDirection,
 	type DeploymentKeySortField,
-} from '@n8n/db';
-import { Service } from '@n8n/di';
+} from '@MNI/db';
+import { Service } from '@MNI/di';
 import {
 	Cipher,
 	InstanceSettings,
 	type CipherAlgorithm,
 	type IEncryptionKeyProvider,
 	type KeyInfo,
-} from 'n8n-core';
+} from 'MNI-core';
 import { randomBytes } from 'node:crypto';
 
 import { NotFoundError } from '@/errors/response-errors/not-found.error';

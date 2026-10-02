@@ -1,7 +1,7 @@
 import type { Mock } from 'vitest';
-import type { SsrfProtectionService } from '@n8n/backend-network';
-import { mockInstance } from '@n8n/backend-test-utils';
-import { PrometheusMetricsConfig, SsrfProtectionConfig } from '@n8n/config';
+import type { SsrfProtectionService } from '@MNI/backend-network';
+import { mockInstance } from '@MNI/backend-test-utils';
+import { PrometheusMetricsConfig, SsrfProtectionConfig } from '@MNI/config';
 import promClient from 'prom-client';
 
 import { PrometheusSsrfMetricsService } from '../ssrf-metrics.service';
@@ -10,7 +10,7 @@ vi.mock('prom-client');
 
 describe('PrometheusSsrfMetricsService', () => {
 	const config = mockInstance(PrometheusMetricsConfig, {
-		prefix: 'n8n_',
+		prefix: 'MNI_',
 		includeSsrfMetrics: true,
 	});
 
@@ -28,7 +28,7 @@ describe('PrometheusSsrfMetricsService', () => {
 	let mockHistogramObserve: Mock;
 
 	beforeEach(() => {
-		Object.assign(config, { prefix: 'n8n_', includeSsrfMetrics: true });
+		Object.assign(config, { prefix: 'MNI_', includeSsrfMetrics: true });
 		Object.assign(ssrfConfig, { enabled: true });
 		service = new PrometheusSsrfMetricsService(ssrfProtectionService, config, ssrfConfig);
 		mockCounterInc = vi.fn();
@@ -71,7 +71,7 @@ describe('PrometheusSsrfMetricsService', () => {
 			service.init();
 
 			expect(promClient.Counter).toHaveBeenCalledWith({
-				name: 'n8n_ssrf_checks_total',
+				name: 'MNI_ssrf_checks_total',
 				help: 'Total number of SSRF checks by result and phase.',
 				labelNames: ['result', 'phase'],
 			});
@@ -81,7 +81,7 @@ describe('PrometheusSsrfMetricsService', () => {
 			service.init();
 
 			expect(promClient.Counter).toHaveBeenCalledWith({
-				name: 'n8n_ssrf_blocked_checks_total',
+				name: 'MNI_ssrf_blocked_checks_total',
 				help: 'Total number of blocked SSRF checks by phase and reason.',
 				labelNames: ['phase', 'reason'],
 			});
@@ -92,7 +92,7 @@ describe('PrometheusSsrfMetricsService', () => {
 
 			expect(promClient.Histogram).toHaveBeenCalledWith(
 				expect.objectContaining({
-					name: 'n8n_ssrf_check_duration_seconds',
+					name: 'MNI_ssrf_check_duration_seconds',
 					help: 'Duration of SSRF checks in seconds.',
 					labelNames: ['result', 'phase'],
 				}),

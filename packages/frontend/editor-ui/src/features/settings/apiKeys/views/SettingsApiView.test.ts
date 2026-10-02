@@ -1,32 +1,32 @@
 import { fireEvent, screen, waitFor, within } from '@testing-library/vue';
 import { flushPromises } from '@vue/test-utils';
-import { useSettingsStore } from '@n8n/stores/settings.store';
-import { useToast } from '@n8n/composables/useToast';
+import { useSettingsStore } from '@MNI/stores/settings.store';
+import { useToast } from '@MNI/composables/useToast';
 
 import { renderComponent } from '@/__tests__/render';
 import { mockedStore } from '@/__tests__/utils';
 import SettingsApiView from './SettingsApiView.vue';
-import { useCloudPlanStore } from '@n8n/stores/cloudPlan.store';
+import { useCloudPlanStore } from '@MNI/stores/cloudPlan.store';
 import { setActivePinia } from 'pinia';
 import { createTestingPinia } from '@pinia/testing';
 import { useApiKeysStore } from '../apiKeys.store';
 import { API_KEY_CREATE_OR_EDIT_MODAL_KEY } from '../apiKeys.constants';
 import { DateTime } from 'luxon';
-import { useRootStore } from '@n8n/stores/useRootStore';
-import { useUsersStore } from '@n8n/stores/users.store';
-import { useRBACStore } from '@n8n/stores/rbac.store';
+import { useRootStore } from '@MNI/stores/useRootStore';
+import { useUsersStore } from '@MNI/stores/users.store';
+import { useRBACStore } from '@MNI/stores/rbac.store';
 import { useUIStore } from '@/app/stores/ui.store';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
-import type { ApiKey, ApiKeyOwner, ApiKeyOwnerSummary } from '@n8n/api-types';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
+import type { ApiKey, ApiKeyOwner, ApiKeyOwnerSummary } from '@MNI/api-types';
 
-vi.mock('@n8n/composables/useTelemetry', () => {
+vi.mock('@MNI/composables/useTelemetry', () => {
 	const track = vi.fn();
 	return {
 		useTelemetry: () => ({ track }),
 	};
 });
 
-vi.mock('@n8n/composables/useToast', () => {
+vi.mock('@MNI/composables/useToast', () => {
 	const showError = vi.fn();
 	const showMessage = vi.fn();
 	const showToast = vi.fn();
@@ -82,7 +82,7 @@ vi.mock('../components/ApiKeyOwnerFilter.vue', async () => {
 // Reka UI's dropdown menu doesn't open in jsdom (no pointer-capture support), so the
 // row action menu can't be driven through the real component. Stub it to render its
 // items directly as buttons keyed by their testId, emitting `select` on click.
-vi.mock('@n8n/design-system', async (importOriginal) => {
+vi.mock('@MNI/design-system', async (importOriginal) => {
 	const original = await importOriginal<object>();
 	return {
 		...original,

@@ -5,7 +5,7 @@
 			"parameters": {},
 			"id": "f0857ec9-0709-4657-a2f4-059837c94060",
 			"name": "When clicking \"Execute Workflow\"",
-			"type": "n8n-nodes-base.manualTrigger",
+			"type": "MNI-nodes-base.manualTrigger",
 			"typeVersion": 1,
 			"position": [540, 220]
 		},
@@ -47,7 +47,7 @@
 			},
 			"id": "426ed055-0c9b-4ae2-a9fe-a6cce875d5ee",
 			"name": "Microsoft Excel 365",
-			"type": "n8n-nodes-base.microsoftExcel",
+			"type": "MNI-nodes-base.microsoftExcel",
 			"typeVersion": 2,
 			"position": [1020, 220],
 			"credentials": {
@@ -79,7 +79,7 @@
 			},
 			"id": "0b10bfae-4e15-48c5-a2e6-7bec1c2687ec",
 			"name": "Microsoft Excel 3651",
-			"type": "n8n-nodes-base.microsoftExcel",
+			"type": "MNI-nodes-base.microsoftExcel",
 			"typeVersion": 2,
 			"position": [1020, 460],
 			"credentials": {
@@ -100,7 +100,7 @@
 			},
 			"id": "93453ccb-5ac3-425b-8ac4-d20f0dfe9bab",
 			"name": "Code",
-			"type": "n8n-nodes-testing.testData",
+			"type": "MNI-nodes-testing.testData",
 			"typeVersion": 1,
 			"position": [820, 460]
 		}

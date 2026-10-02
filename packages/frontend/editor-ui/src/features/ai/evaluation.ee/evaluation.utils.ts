@@ -4,10 +4,10 @@ import {
 	ONE_TO_FIVE_METRIC_KEYS,
 	RESERVED_METRIC_KEYS,
 	type MetricScale,
-} from '@n8n/api-types';
-import type { BaseTextKey } from '@n8n/i18n';
-import type { JsonValue } from 'n8n-workflow';
-import type { IconName } from '@n8n/design-system';
+} from '@MNI/api-types';
+import type { BaseTextKey } from '@MNI/i18n';
+import type { JsonValue } from 'MNI-workflow';
+import type { IconName } from '@MNI/design-system';
 import type { IExecutionResponse } from '@/features/execution/executions/executions.types';
 import type { TestCaseExecutionRecord, TestRunRecord } from './evaluation.api';
 import type { TestTableColumn } from './components/shared/TestTableBase.vue';
@@ -196,9 +196,9 @@ export function buildScoreShapedMetricGroups(
 }
 
 // Mean of a metrics map's score values, normalized to [0, 1] by scale. Single
-// definition in @n8n/api-types so the FE compare surfaces and the BE insights
+// definition in @MNI/api-types so the FE compare surfaces and the BE insights
 // agent can't disagree on what a case/run scored.
-export { averageNormalizedScore } from '@n8n/api-types';
+export { averageNormalizedScore } from '@MNI/api-types';
 
 export function computeDelta(
 	current: number | undefined,

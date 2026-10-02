@@ -1,5 +1,5 @@
-import type { IExecuteFunctions, INodeProperties } from 'n8n-workflow';
-import { NodeOperationError } from 'n8n-workflow';
+import type { IExecuteFunctions, INodeProperties } from 'MNI-workflow';
+import { NodeOperationError } from 'MNI-workflow';
 
 import { chatRLC } from '../../descriptions';
 import { readTextParameter } from '../../helpers/parameters';

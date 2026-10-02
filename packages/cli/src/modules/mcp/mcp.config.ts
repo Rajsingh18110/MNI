@@ -1,4 +1,4 @@
-import { Config, Env } from '@n8n/config';
+import { Config, Env } from '@MNI/config';
 import { z } from 'zod';
 
 /** Normalized to origin + path without a trailing slash; query and fragment are dropped. */
@@ -27,22 +27,22 @@ export class McpConfig {
 	 * Maximum number of requests to the MCP server endpoint (`/mcp-server/http`)
 	 * per IP per 5 minutes. Set to `0` to disable IP rate limiting for the endpoint.
 	 */
-	@Env('N8N_MCP_SERVER_RATE_LIMIT', z.number({ coerce: true }).int().nonnegative())
+	@Env('MNI_MCP_SERVER_RATE_LIMIT', z.number({ coerce: true }).int().nonnegative())
 	rateLimitServer: number = 100;
 
 	/**
 	 * Public base URL at which MCP clients reach this instance's MCP server,
 	 * when it differs from the instance base URL — for split-hostname
 	 * deployments that front the same backend with a dedicated MCP hostname
-	 * (e.g. `https://n8n-mcp.example.com` while `N8N_EDITOR_BASE_URL` stays on
+	 * (e.g. `https://MNI-mcp.example.com` while `MNI_EDITOR_BASE_URL` stays on
 	 * the main UI hostname). When set, it becomes the canonical MCP resource
 	 * URL: advertised in discovery, accepted as an RFC 8707 resource indicator,
 	 * and used as the access-token audience. The instance-base-URL-derived
 	 * resource remains accepted so existing clients keep working.
 	 *
-	 * @example N8N_MCP_BASE_URL=https://n8n-mcp.example.com
+	 * @example MNI_MCP_BASE_URL=https://MNI-mcp.example.com
 	 */
-	@Env('N8N_MCP_BASE_URL', baseUrlSchema)
+	@Env('MNI_MCP_BASE_URL', baseUrlSchema)
 	baseUrl: string = '';
 
 	/**
@@ -55,6 +55,6 @@ export class McpConfig {
 	 * scope and the user to hold that global scope, so turning this on does not
 	 * by itself grant any client the ability to install packages.
 	 */
-	@Env('N8N_MCP_COMMUNITY_NODE_DISCOVERY_ENABLED')
+	@Env('MNI_MCP_COMMUNITY_NODE_DISCOVERY_ENABLED')
 	communityNodeDiscoveryEnabled: boolean = true;
 }

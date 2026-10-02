@@ -1,7 +1,7 @@
-import { createEmbeddingModel, type BuiltVectorStoreBackend } from '@n8n/agents';
-import type { AgentJsonVectorStoreConfig, VectorStoreTestResult } from '@n8n/api-types';
-import type { User } from '@n8n/db';
-import { Service } from '@n8n/di';
+import { createEmbeddingModel, type BuiltVectorStoreBackend } from '@MNI/agents';
+import type { AgentJsonVectorStoreConfig, VectorStoreTestResult } from '@MNI/api-types';
+import type { User } from '@MNI/db';
+import { Service } from '@MNI/di';
 
 import { CredentialsService } from '@/credentials/credentials.service';
 

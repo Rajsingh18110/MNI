@@ -26,7 +26,7 @@ vi.mock('../../composables/useActions', () => ({
 }));
 
 const nodeType = {
-	name: 'n8n-nodes-base.slack',
+	name: 'MNI-nodes-base.slack',
 	displayName: 'Slack',
 	description: '',
 	group: ['output'],
@@ -36,7 +36,7 @@ const nodeType = {
 } as SimplifiedNodeType;
 
 const action = {
-	name: 'n8n-nodes-base.slack',
+	name: 'MNI-nodes-base.slack',
 	displayName: 'Send Message',
 	description: '',
 	group: ['output'],
@@ -72,7 +72,7 @@ describe('ActionItem', () => {
 	});
 
 	it('sets the drag data to the result of getAddedNodesAndConnections', async () => {
-		const addedNodesAndConnections = { nodes: [{ type: 'n8n-nodes-base.slack' }], connections: [] };
+		const addedNodesAndConnections = { nodes: [{ type: 'MNI-nodes-base.slack' }], connections: [] };
 		mockGetAddedNodesAndConnections.mockReturnValue(addedNodesAndConnections);
 
 		const { container, findByText } = renderComponent();
@@ -83,7 +83,7 @@ describe('ActionItem', () => {
 		const dataTransfer = dispatchDragStart(draggable);
 
 		expect(mockGetAddedNodesAndConnections).toHaveBeenCalledWith([
-			{ type: 'n8n-nodes-base.slack' },
+			{ type: 'MNI-nodes-base.slack' },
 		]);
 		expect(dataTransfer.setData).toHaveBeenCalledWith(
 			DRAG_EVENT_DATA_KEY,

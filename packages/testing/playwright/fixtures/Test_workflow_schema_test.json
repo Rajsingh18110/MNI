@@ -8,7 +8,7 @@
 			},
 			"id": "39cd80ce-5a8f-4339-b3d5-c4af969dd330",
 			"name": "Customer Datastore (MNI training)",
-			"type": "n8n-nodes-base.n8nTrainingCustomerDatastore",
+			"type": "MNI-nodes-base.n8nTrainingCustomerDatastore",
 			"typeVersion": 1,
 			"position": [940, 680]
 		},
@@ -34,7 +34,7 @@
 			},
 			"id": "6e4490f6-ba95-4400-beec-2caefdd4895a",
 			"name": "Set",
-			"type": "n8n-nodes-base.set",
+			"type": "MNI-nodes-base.set",
 			"typeVersion": 1,
 			"position": [1300, 680]
 		},
@@ -42,7 +42,7 @@
 			"parameters": {},
 			"id": "58512a93-dabf-4584-817f-27c608c1bdd5",
 			"name": "When clicking ‘Execute workflow’",
-			"type": "n8n-nodes-base.manualTrigger",
+			"type": "MNI-nodes-base.manualTrigger",
 			"typeVersion": 1,
 			"position": [720, 680]
 		}

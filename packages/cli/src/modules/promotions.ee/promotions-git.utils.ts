@@ -1,5 +1,5 @@
-import type { PromotionConnectionTarget, PromotionSshKeyType } from '@n8n/api-types';
-import { resolveProxyUrl } from '@n8n/backend-network';
+import type { PromotionConnectionTarget, PromotionSshKeyType } from '@MNI/api-types';
+import { resolveProxyUrl } from '@MNI/backend-network';
 import { generateKeyPairSync } from 'node:crypto';
 
 import {
@@ -33,7 +33,7 @@ const quoteShellArg = (value: string) => `'${value.replace(/'/g, "'\"'\"'")}'`;
 export function buildHttpsGitConfig({ repositoryUrl }: { repositoryUrl: string }): string[] {
 	// Read credentials from the operation's environment to keep them out of process arguments.
 	const helper =
-		'!f() { printf \'%s\\n\' "username=$N8N_GIT_USERNAME" "password=$N8N_GIT_PASSWORD"; }; f';
+		'!f() { printf \'%s\\n\' "username=$MNI_GIT_USERNAME" "password=$MNI_GIT_PASSWORD"; }; f';
 	const config = [
 		`credential.helper=${helper}`,
 		'credential.useHttpPath=true',

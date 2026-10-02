@@ -1,7 +1,7 @@
-import type { PromotionBindingPreflightResult } from '@n8n/api-types';
-import type { Logger } from '@n8n/backend-common';
-import type { Project, ProjectRepository, SharedWorkflowRepository, User } from '@n8n/db';
-import type { InstanceSettings } from 'n8n-core';
+import type { PromotionBindingPreflightResult } from '@MNI/api-types';
+import type { Logger } from '@MNI/backend-common';
+import type { Project, ProjectRepository, SharedWorkflowRepository, User } from '@MNI/db';
+import type { InstanceSettings } from 'MNI-core';
 import { mkdir, mkdtemp, readFile, rm, stat, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
@@ -10,12 +10,12 @@ import { mock } from 'vitest-mock-extended';
 import { BadRequestError } from '@/errors/response-errors/bad-request.error';
 import { NotFoundError } from '@/errors/response-errors/not-found.error';
 import { ServiceUnavailableError } from '@/errors/response-errors/service-unavailable.error';
-import type { N8nPackagesService } from '@/modules/n8n-packages/n8n-packages.service';
+import type { N8nPackagesService } from '@/modules/MNI-packages/MNI-packages.service';
 import {
 	MissingWorkflowDependencyPolicy,
 	WorkflowVersionPolicy,
-} from '@/modules/n8n-packages/n8n-packages.types';
-import { packageManifestSchema } from '@/modules/n8n-packages/spec/manifest.schema';
+} from '@/modules/MNI-packages/MNI-packages.types';
+import { packageManifestSchema } from '@/modules/MNI-packages/spec/manifest.schema';
 import type { ProjectService } from '@/services/project.service.ee';
 
 import type { PromotionBindingPreflightService } from '../promotion-binding-preflight.service';
@@ -114,7 +114,7 @@ describe('PromotionsService', () => {
 	beforeEach(async () => {
 		vi.clearAllMocks();
 		logger.scoped.mockReturnValue(logger);
-		n8nFolder = await mkdtemp(path.join(tmpdir(), 'n8n-promotions-'));
+		n8nFolder = await mkdtemp(path.join(tmpdir(), 'MNI-promotions-'));
 		workingDirectory = new PromotionWorkingDirectoryService(mock<InstanceSettings>({ n8nFolder }));
 		service = new PromotionsService(
 			resolver,
@@ -235,9 +235,9 @@ describe('PromotionsService', () => {
 			);
 		});
 
-		it('writes the package into n8n-export and leaves the repository root alone', async () => {
+		it('writes the package into MNI-export and leaves the repository root alone', async () => {
 			const { repositoryFolder } = workingDirectory.paths(CONFIG_ID);
-			const packageFolder = path.join(repositoryFolder, 'n8n-export');
+			const packageFolder = path.join(repositoryFolder, 'MNI-export');
 			await mkdir(path.join(repositoryFolder, '.git'), { recursive: true });
 			await writeFile(path.join(repositoryFolder, '.git', 'HEAD'), 'ref: refs/heads/staging');
 			// A file the user keeps at the repository root must survive the export.
@@ -267,7 +267,7 @@ describe('PromotionsService', () => {
 				{ targetDir: stagingFolder },
 			);
 			expect(path.dirname(stagingFolder)).toBe(repositoryFolder);
-			expect(path.basename(stagingFolder)).toMatch(/^\.n8n-export-/);
+			expect(path.basename(stagingFolder)).toMatch(/^\.MNI-export-/);
 			expect(await readFile(path.join(packageFolder, 'manifest.json'), 'utf-8')).toBe(
 				'{"projects":[]}',
 			);
@@ -297,7 +297,7 @@ describe('PromotionsService', () => {
 					author: { name: 'Ada Lovelace', email: 'ada@example.com' },
 					commitMessage: 'sync projects',
 					force: false,
-					stagePathspec: 'n8n-export',
+					stagePathspec: 'MNI-export',
 					credentials: { authType: 'ssh-key', privateKey: 'PRIV' },
 				}),
 			);
@@ -308,7 +308,7 @@ describe('PromotionsService', () => {
 
 		it('keeps the previous package when the export fails', async () => {
 			const { repositoryFolder } = workingDirectory.paths(CONFIG_ID);
-			const packageFolder = path.join(repositoryFolder, 'n8n-export');
+			const packageFolder = path.join(repositoryFolder, 'MNI-export');
 			await mkdir(path.join(repositoryFolder, '.git'), { recursive: true });
 			await writeFile(path.join(repositoryFolder, '.git', 'HEAD'), 'ref: refs/heads/staging');
 			await writeFile(path.join(repositoryFolder, 'README.md'), '# my repo');
@@ -377,7 +377,7 @@ describe('PromotionsService', () => {
 			const targetBranchName = result.git.branchName;
 
 			expect(targetBranchName).toMatch(
-				/^n8n-promotion\/\d{4}-\d{2}-\d{2}T\d{2}-\d{2}-\d{2}-\d{3}Z$/,
+				/^MNI-promotion\/\d{4}-\d{2}-\d{2}T\d{2}-\d{2}-\d{2}-\d{3}Z$/,
 			);
 			expect(gitService.validateBranchName).toHaveBeenCalledWith(targetBranchName);
 			expect(gitService.prepareCheckoutForPromotion).toHaveBeenCalledWith(
@@ -449,7 +449,7 @@ describe('PromotionsService', () => {
 
 			expect(gitService.commitAndPush).toHaveBeenCalledWith(
 				expect.objectContaining({
-					author: { name: 'MNI user', email: 'n8n@example.com' },
+					author: { name: 'MNI user', email: 'MNI@example.com' },
 				}),
 			);
 		});
@@ -581,7 +581,7 @@ describe('PromotionsService', () => {
 			resolver.resolveForProject.mockResolvedValue(input);
 			await markCloned(input, 'staging');
 			repositoryFolder = workingDirectory.paths(CONFIG_ID).repositoryFolder;
-			packageFolder = path.join(repositoryFolder, 'n8n-export');
+			packageFolder = path.join(repositoryFolder, 'MNI-export');
 			projectRepository.findOneBy.mockResolvedValue({ id: 'p1', type: 'team' } as never);
 			gitService.commitAndPush.mockResolvedValue({ commitSha: 'selsha' });
 		});
@@ -643,7 +643,7 @@ describe('PromotionsService', () => {
 
 			const targetBranchName = result.git.branchName;
 			expect(targetBranchName).toMatch(
-				/^n8n-promotion\/\d{4}-\d{2}-\d{2}T\d{2}-\d{2}-\d{2}-\d{3}Z$/,
+				/^MNI-promotion\/\d{4}-\d{2}-\d{2}T\d{2}-\d{2}-\d{2}-\d{3}Z$/,
 			);
 			expect(gitService.validateBranchName).toHaveBeenCalledWith(targetBranchName);
 			expect(gitService.prepareCheckoutForPromotion).toHaveBeenCalledWith(
@@ -1071,7 +1071,7 @@ describe('PromotionsService', () => {
 
 	describe('readBranchPackage', () => {
 		const commitSha = 'c'.repeat(40);
-		const workflowPath = 'n8n-export/projects/orders-p1/workflows/order-w1/workflow.json';
+		const workflowPath = 'MNI-export/projects/orders-p1/workflows/order-w1/workflow.json';
 
 		beforeEach(async () => {
 			const input = applyInput();
@@ -1084,9 +1084,9 @@ describe('PromotionsService', () => {
 				commitSha,
 				lsTreeOutput:
 					[
-						'100644 blob p1\tn8n-export/projects/orders-p1/project.json',
+						'100644 blob p1\tMNI-export/projects/orders-p1/project.json',
 						`100644 blob w1\t${workflowPath}`,
-						'100644 blob x1\tn8n-export/projects/other-p2/project.json',
+						'100644 blob x1\tMNI-export/projects/other-p2/project.json',
 					].join('\0') + '\0',
 			});
 			gitService.readFilesAtCommit.mockResolvedValue(new Map([[workflowPath, '{"id":"w1"}']]));
@@ -1101,11 +1101,11 @@ describe('PromotionsService', () => {
 					configId: CONFIG_ID,
 					credentials: { authType: 'ssh-key', privateKey: 'PRIV' },
 					pathspecs: [
-						'n8n-export/projects/',
-						'n8n-export/credentials/',
-						'n8n-export/data-tables/',
-						'n8n-export/variables/',
-						'n8n-export/tags/',
+						'MNI-export/projects/',
+						'MNI-export/credentials/',
+						'MNI-export/data-tables/',
+						'MNI-export/variables/',
+						'MNI-export/tags/',
 					],
 				}),
 			);
@@ -1133,7 +1133,7 @@ describe('PromotionsService', () => {
 			const branch = await service.readBranchPackage('p1', 'apply');
 
 			expect(branch).toMatchObject({ commitSha: null, files: [] });
-			await expect(branch.readFiles(['n8n-export/manifest.json'])).rejects.toThrow(
+			await expect(branch.readFiles(['MNI-export/manifest.json'])).rejects.toThrow(
 				'no exported package',
 			);
 			expect(gitService.readFilesAtCommit).not.toHaveBeenCalled();
@@ -1189,13 +1189,13 @@ describe('PromotionsService', () => {
 			const input = applyInput();
 			resolver.resolveForConnection.mockResolvedValue(input);
 			await markCloned(input, 'dev');
-			packageFolder = path.join(workingDirectory.paths(CONFIG_ID).repositoryFolder, 'n8n-export');
+			packageFolder = path.join(workingDirectory.paths(CONFIG_ID).repositoryFolder, 'MNI-export');
 			gitService.refreshCheckout.mockResolvedValue({ commitSha: 'remotesha' });
 			n8nPackagesService.importPackageFromDirectory.mockResolvedValue(importResult());
 			projectRepository.findTeamProjectIds.mockResolvedValue(['p1', 'p2']);
 		});
 
-		it('imports n8n-export with the fixed policy and counts the result by status', async () => {
+		it('imports MNI-export with the fixed policy and counts the result by status', async () => {
 			await mkdir(packageFolder, { recursive: true });
 
 			const result = await service.apply('conn1', actor);

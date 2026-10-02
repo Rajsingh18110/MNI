@@ -4,10 +4,10 @@ import {
 	chunkIds,
 	generateNanoId,
 	type OperationContext,
-} from '@n8n/db';
-import { Service } from '@n8n/di';
-import { DataSource, In, IsNull, Not, type EntityManager } from '@n8n/typeorm';
-import { UnexpectedError } from 'n8n-workflow';
+} from '@MNI/db';
+import { Service } from '@MNI/di';
+import { DataSource, In, IsNull, Not, type EntityManager } from '@MNI/typeorm';
+import { UnexpectedError } from 'MNI-workflow';
 
 import type { PolicyAction, PolicyScopeKey } from '../../policy-rule.types';
 import { TypeAvailabilityPolicyScope } from '../entities/type-availability-policy-scope.entity';

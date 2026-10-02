@@ -1,6 +1,6 @@
 import { mock } from 'vitest-mock-extended';
-import { NodeOperationError } from 'n8n-workflow';
-import type { IExecuteFunctions, INode, AssignmentCollectionValue } from 'n8n-workflow';
+import { NodeOperationError } from 'MNI-workflow';
+import type { IExecuteFunctions, INode, AssignmentCollectionValue } from 'MNI-workflow';
 import type { BaseLanguageModel } from '@langchain/core/language_models/base';
 import { ChatPromptTemplate } from '@langchain/core/prompts';
 import type { Runnable } from '@langchain/core/runnables';
@@ -25,7 +25,7 @@ describe('metricHandlers', () => {
 		mockNode = {
 			id: 'test-node',
 			name: 'Test Node',
-			type: 'n8n-nodes-base.evaluation',
+			type: 'MNI-nodes-base.evaluation',
 			typeVersion: 1,
 			position: [0, 0],
 			parameters: {},

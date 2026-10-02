@@ -35,7 +35,7 @@ vi.mock('vue-router', () => ({
 	useRouter: () => ({ replace }),
 }));
 
-vi.mock('@n8n/i18n', () => ({
+vi.mock('@MNI/i18n', () => ({
 	useI18n: () => ({ baseText: (key: string) => key }),
 }));
 
@@ -43,7 +43,7 @@ vi.mock('@/app/composables/useMessage', () => ({
 	useMessage: () => ({ confirm }),
 }));
 
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: () => ({ showError, showMessage }),
 }));
 

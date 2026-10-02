@@ -10,9 +10,9 @@ import {
 	ListCredentialsQueryDto,
 	UpdateCredentialPublicDto,
 	TransferCredentialPublicDto,
-} from '@n8n/api-types';
-import { LicenseState } from '@n8n/backend-common';
-import type { AuthenticatedRequest, CredentialsEntity, ICredentialsDb, User } from '@n8n/db';
+} from '@MNI/api-types';
+import { LicenseState } from '@MNI/backend-common';
+import type { AuthenticatedRequest, CredentialsEntity, ICredentialsDb, User } from '@MNI/db';
 import {
 	ApiDescription,
 	ApiErrorResponse,
@@ -31,10 +31,10 @@ import {
 	PublicApiController,
 	Put,
 	Query,
-} from '@n8n/decorators';
-import { hasGlobalScope } from '@n8n/permissions';
+} from '@MNI/decorators';
+import { hasGlobalScope } from '@MNI/permissions';
 import type { NextFunction, Request, Response } from 'express';
-import type { ICredentialDataDecryptedObject } from 'n8n-workflow';
+import type { ICredentialDataDecryptedObject } from 'MNI-workflow';
 
 import { CredentialDescriptionsService } from '@/credentials/credential-descriptions.service';
 import { CredentialTypes } from '@/credential-types';

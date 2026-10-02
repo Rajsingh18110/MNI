@@ -62,7 +62,7 @@ vi.mock('../composables/useAgentConfirmationModal', () => ({
 
 // Renders interpolated values into the returned string as well as the key, so
 // assertions can pin the numbers the card computes and not just which key it picked.
-vi.mock('@n8n/i18n', async (importOriginal) => ({
+vi.mock('@MNI/i18n', async (importOriginal) => ({
 	...(await importOriginal()),
 	useI18n: () => ({
 		baseText: (key: string, options?: { interpolate?: Record<string, string> }) => {

@@ -1,4 +1,4 @@
-vi.mock('@n8n/instance-ai', () => ({
+vi.mock('@MNI/instance-ai', () => ({
 	createEvalAgent: vi.fn(),
 	extractText: vi.fn(),
 }));
@@ -7,9 +7,9 @@ vi.mock('../node-config', () => ({
 	extractNodeConfig: vi.fn(),
 }));
 
-import { createEvalAgent, extractText } from '@n8n/instance-ai';
-import type { IConnections, INode, INodeParameters, IWorkflowBase } from 'n8n-workflow';
-import { UserError } from 'n8n-workflow';
+import { createEvalAgent, extractText } from '@MNI/instance-ai';
+import type { IConnections, INode, INodeParameters, IWorkflowBase } from 'MNI-workflow';
+import { UserError } from 'MNI-workflow';
 
 import {
 	buildVendorLlmRouting,
@@ -52,7 +52,7 @@ function makeWorkflow(nodes: INode[], connections: IConnections = {}): IWorkflow
 
 describe('Data Table read predicates', () => {
 	function makeDataTableNode(parameters: INodeParameters): INode {
-		return makeNode({ name: 'Table', type: 'n8n-nodes-base.dataTable', parameters });
+		return makeNode({ name: 'Table', type: 'MNI-nodes-base.dataTable', parameters });
 	}
 
 	it.each(['get', 'rowExists', 'rowNotExists'])('treats %s as a read', (operation) => {
@@ -73,7 +73,7 @@ describe('Data Table read predicates', () => {
 	});
 
 	it('ignores non-Data-Table nodes', () => {
-		const node = makeNode({ name: 'HTTP', type: 'n8n-nodes-base.httpRequest' });
+		const node = makeNode({ name: 'HTTP', type: 'MNI-nodes-base.httpRequest' });
 		expect(isDataTableRead(node)).toBe(false);
 		expect(emitsDataTableRows(node)).toBe(false);
 	});
@@ -82,9 +82,9 @@ describe('Data Table read predicates', () => {
 describe('identifyNodesForPinData', () => {
 	it('should identify AI root nodes as needing pin data', () => {
 		const nodes = [
-			makeNode({ name: 'ChatOpenAI', type: '@n8n/n8n-nodes-langchain.lmChatOpenAi' }),
-			makeNode({ name: 'Agent', type: '@n8n/n8n-nodes-langchain.agent' }),
-			makeNode({ name: 'Set', type: 'n8n-nodes-base.set' }),
+			makeNode({ name: 'ChatOpenAI', type: '@MNI/MNI-nodes-langchain.lmChatOpenAi' }),
+			makeNode({ name: 'Agent', type: '@MNI/MNI-nodes-langchain.agent' }),
+			makeNode({ name: 'Set', type: 'MNI-nodes-base.set' }),
 		];
 		const connections: IConnections = {
 			ChatOpenAI: { ai_languageModel: [[{ node: 'Agent', type: 'ai_languageModel', index: 0 }]] },
@@ -100,11 +100,11 @@ describe('identifyNodesForPinData', () => {
 
 	it('should identify protocol/bypass nodes as needing pin data', () => {
 		const nodes = [
-			makeNode({ name: 'My Redis', type: 'n8n-nodes-base.redis' }),
-			makeNode({ name: 'My Postgres', type: 'n8n-nodes-base.postgres' }),
-			makeNode({ name: 'My Kafka', type: 'n8n-nodes-base.kafka' }),
-			makeNode({ name: 'HTTP Request', type: 'n8n-nodes-base.httpRequest' }),
-			makeNode({ name: 'Set', type: 'n8n-nodes-base.set' }),
+			makeNode({ name: 'My Redis', type: 'MNI-nodes-base.redis' }),
+			makeNode({ name: 'My Postgres', type: 'MNI-nodes-base.postgres' }),
+			makeNode({ name: 'My Kafka', type: 'MNI-nodes-base.kafka' }),
+			makeNode({ name: 'HTTP Request', type: 'MNI-nodes-base.httpRequest' }),
+			makeNode({ name: 'Set', type: 'MNI-nodes-base.set' }),
 		];
 
 		const result = identifyNodesForPinData(makeWorkflow(nodes));
@@ -119,8 +119,8 @@ describe('identifyNodesForPinData', () => {
 
 	it('should exclude disabled nodes', () => {
 		const nodes = [
-			makeNode({ name: 'My Redis', type: 'n8n-nodes-base.redis', disabled: true }),
-			makeNode({ name: 'Agent', type: '@n8n/n8n-nodes-langchain.agent', disabled: true }),
+			makeNode({ name: 'My Redis', type: 'MNI-nodes-base.redis', disabled: true }),
+			makeNode({ name: 'Agent', type: '@MNI/MNI-nodes-langchain.agent', disabled: true }),
 		];
 		const connections: IConnections = {
 			ChatOpenAI: { ai_languageModel: [[{ node: 'Agent', type: 'ai_languageModel', index: 0 }]] },
@@ -133,9 +133,9 @@ describe('identifyNodesForPinData', () => {
 
 	it('should return empty for workflow with only logic nodes', () => {
 		const nodes = [
-			makeNode({ name: 'Set', type: 'n8n-nodes-base.set' }),
-			makeNode({ name: 'IF', type: 'n8n-nodes-base.if' }),
-			makeNode({ name: 'Merge', type: 'n8n-nodes-base.merge' }),
+			makeNode({ name: 'Set', type: 'MNI-nodes-base.set' }),
+			makeNode({ name: 'IF', type: 'MNI-nodes-base.if' }),
+			makeNode({ name: 'Merge', type: 'MNI-nodes-base.merge' }),
 		];
 
 		const result = identifyNodesForPinData(makeWorkflow(nodes));
@@ -145,10 +145,10 @@ describe('identifyNodesForPinData', () => {
 
 	it('should handle Agent with multiple sub-nodes', () => {
 		const nodes = [
-			makeNode({ name: 'OpenAI', type: '@n8n/n8n-nodes-langchain.lmChatOpenAi' }),
-			makeNode({ name: 'Memory', type: '@n8n/n8n-nodes-langchain.memoryBufferWindow' }),
-			makeNode({ name: 'Calculator', type: '@n8n/n8n-nodes-langchain.toolCalculator' }),
-			makeNode({ name: 'Agent', type: '@n8n/n8n-nodes-langchain.agent' }),
+			makeNode({ name: 'OpenAI', type: '@MNI/MNI-nodes-langchain.lmChatOpenAi' }),
+			makeNode({ name: 'Memory', type: '@MNI/MNI-nodes-langchain.memoryBufferWindow' }),
+			makeNode({ name: 'Calculator', type: '@MNI/MNI-nodes-langchain.toolCalculator' }),
+			makeNode({ name: 'Agent', type: '@MNI/MNI-nodes-langchain.agent' }),
 		];
 		const connections: IConnections = {
 			OpenAI: { ai_languageModel: [[{ node: 'Agent', type: 'ai_languageModel', index: 0 }]] },
@@ -164,22 +164,22 @@ describe('identifyNodesForPinData', () => {
 
 	it('should identify all bypass node types', () => {
 		const bypassTypes = [
-			'n8n-nodes-base.redis',
-			'n8n-nodes-base.mongoDb',
-			'n8n-nodes-base.mySql',
-			'n8n-nodes-base.postgres',
-			'n8n-nodes-base.microsoftSql',
-			'n8n-nodes-base.snowflake',
-			'n8n-nodes-base.kafka',
-			'n8n-nodes-base.rabbitmq',
-			'n8n-nodes-base.mqtt',
-			'n8n-nodes-base.amqp',
-			'n8n-nodes-base.ftp',
-			'n8n-nodes-base.ssh',
-			'n8n-nodes-base.ldap',
-			'n8n-nodes-base.emailSend',
-			'n8n-nodes-base.rssFeedRead',
-			'n8n-nodes-base.git',
+			'MNI-nodes-base.redis',
+			'MNI-nodes-base.mongoDb',
+			'MNI-nodes-base.mySql',
+			'MNI-nodes-base.postgres',
+			'MNI-nodes-base.microsoftSql',
+			'MNI-nodes-base.snowflake',
+			'MNI-nodes-base.kafka',
+			'MNI-nodes-base.rabbitmq',
+			'MNI-nodes-base.mqtt',
+			'MNI-nodes-base.amqp',
+			'MNI-nodes-base.ftp',
+			'MNI-nodes-base.ssh',
+			'MNI-nodes-base.ldap',
+			'MNI-nodes-base.emailSend',
+			'MNI-nodes-base.rssFeedRead',
+			'MNI-nodes-base.git',
 		];
 
 		const nodes = bypassTypes.map((type, i) => makeNode({ name: `Node${i}`, type }));
@@ -190,8 +190,8 @@ describe('identifyNodesForPinData', () => {
 
 	describe('exclusionSet', () => {
 		const agentNodes = [
-			makeNode({ name: 'OpenAI', type: '@n8n/n8n-nodes-langchain.lmChatOpenAi' }),
-			makeNode({ name: 'Agent', type: '@n8n/n8n-nodes-langchain.agent' }),
+			makeNode({ name: 'OpenAI', type: '@MNI/MNI-nodes-langchain.lmChatOpenAi' }),
+			makeNode({ name: 'Agent', type: '@MNI/MNI-nodes-langchain.agent' }),
 		];
 		const agentConnections: IConnections = {
 			OpenAI: { ai_languageModel: [[{ node: 'Agent', type: 'ai_languageModel', index: 0 }]] },
@@ -211,7 +211,7 @@ describe('identifyNodesForPinData', () => {
 		});
 
 		it('ignores names not in the pin set (regular logic nodes)', () => {
-			const nodes = [...agentNodes, makeNode({ name: 'Set', type: 'n8n-nodes-base.set' })];
+			const nodes = [...agentNodes, makeNode({ name: 'Set', type: 'MNI-nodes-base.set' })];
 			const result = identifyNodesForPinData(
 				makeWorkflow(nodes, agentConnections),
 				new Set(['Set']),
@@ -228,7 +228,7 @@ describe('identifyNodesForPinData', () => {
 		});
 
 		it('keeps protocol-binary bypass nodes pinned even when present in the exclusion set', () => {
-			const nodes = [...agentNodes, makeNode({ name: 'Cache', type: 'n8n-nodes-base.redis' })];
+			const nodes = [...agentNodes, makeNode({ name: 'Cache', type: 'MNI-nodes-base.redis' })];
 			const result = identifyNodesForPinData(
 				makeWorkflow(nodes, agentConnections),
 				new Set(['Agent', 'Cache']),
@@ -241,9 +241,9 @@ describe('identifyNodesForPinData', () => {
 describe('partitionAiRoots', () => {
 	function agentWithMemory(memoryType: string) {
 		const nodes = [
-			makeNode({ name: 'OpenAI', type: '@n8n/n8n-nodes-langchain.lmChatOpenAi' }),
+			makeNode({ name: 'OpenAI', type: '@MNI/MNI-nodes-langchain.lmChatOpenAi' }),
 			makeNode({ name: 'Memory', type: memoryType }),
-			makeNode({ name: 'Agent', type: '@n8n/n8n-nodes-langchain.agent' }),
+			makeNode({ name: 'Agent', type: '@MNI/MNI-nodes-langchain.agent' }),
 		];
 		const connections: IConnections = {
 			OpenAI: { ai_languageModel: [[{ node: 'Agent', type: 'ai_languageModel', index: 0 }]] },
@@ -254,7 +254,7 @@ describe('partitionAiRoots', () => {
 
 	describe('explicit pin validation (typo guard)', () => {
 		it('throws when an explicit pin name does not exist in the workflow', () => {
-			const workflow = agentWithMemory('@n8n/n8n-nodes-langchain.memoryBufferWindow');
+			const workflow = agentWithMemory('@MNI/MNI-nodes-langchain.memoryBufferWindow');
 			let thrown: unknown;
 			try {
 				partitionAiRoots(workflow, ['Ghost']);
@@ -268,8 +268,8 @@ describe('partitionAiRoots', () => {
 
 		it('throws when an explicit pin name refers to a disabled root', () => {
 			const nodes = [
-				makeNode({ name: 'PgMem', type: '@n8n/n8n-nodes-langchain.memoryPostgresChat' }),
-				makeNode({ name: 'Agent', type: '@n8n/n8n-nodes-langchain.agent', disabled: true }),
+				makeNode({ name: 'PgMem', type: '@MNI/MNI-nodes-langchain.memoryPostgresChat' }),
+				makeNode({ name: 'Agent', type: '@MNI/MNI-nodes-langchain.agent', disabled: true }),
 			];
 			const connections: IConnections = {
 				PgMem: { ai_memory: [[{ node: 'Agent', type: 'ai_memory', index: 0 }]] },
@@ -287,8 +287,8 @@ describe('partitionAiRoots', () => {
 
 		it('throws when an explicit pin name refers to a non-AI-root node', () => {
 			const nodes = [
-				makeNode({ name: 'Set', type: 'n8n-nodes-base.set' }),
-				makeNode({ name: 'Agent', type: '@n8n/n8n-nodes-langchain.agent' }),
+				makeNode({ name: 'Set', type: 'MNI-nodes-base.set' }),
+				makeNode({ name: 'Agent', type: '@MNI/MNI-nodes-langchain.agent' }),
 			];
 			let thrown: unknown;
 			try {
@@ -304,7 +304,7 @@ describe('partitionAiRoots', () => {
 
 	describe('default partition (no explicit pin)', () => {
 		it('intercepts an Agent backed by a non-protocol-binary memory', () => {
-			const workflow = agentWithMemory('@n8n/n8n-nodes-langchain.memoryBufferWindow');
+			const workflow = agentWithMemory('@MNI/MNI-nodes-langchain.memoryBufferWindow');
 			const result = partitionAiRoots(workflow);
 			expect(result.unpinNodes).toEqual(['Agent']);
 			expect(result.pinNodes).toEqual([]);
@@ -312,7 +312,7 @@ describe('partitionAiRoots', () => {
 		});
 
 		it('returns an empty partition when the workflow has no AI roots', () => {
-			const nodes = [makeNode({ name: 'Set', type: 'n8n-nodes-base.set' })];
+			const nodes = [makeNode({ name: 'Set', type: 'MNI-nodes-base.set' })];
 			const result = partitionAiRoots(makeWorkflow(nodes));
 			expect(result.unpinNodes).toEqual([]);
 			expect(result.pinNodes).toEqual([]);
@@ -321,13 +321,13 @@ describe('partitionAiRoots', () => {
 
 		it('ignores disabled sub-nodes when partitioning', () => {
 			const nodes = [
-				makeNode({ name: 'OpenAI', type: '@n8n/n8n-nodes-langchain.lmChatOpenAi' }),
+				makeNode({ name: 'OpenAI', type: '@MNI/MNI-nodes-langchain.lmChatOpenAi' }),
 				makeNode({
 					name: 'PgMem',
-					type: '@n8n/n8n-nodes-langchain.memoryPostgresChat',
+					type: '@MNI/MNI-nodes-langchain.memoryPostgresChat',
 					disabled: true,
 				}),
-				makeNode({ name: 'Agent', type: '@n8n/n8n-nodes-langchain.agent' }),
+				makeNode({ name: 'Agent', type: '@MNI/MNI-nodes-langchain.agent' }),
 			];
 			const connections: IConnections = {
 				OpenAI: { ai_languageModel: [[{ node: 'Agent', type: 'ai_languageModel', index: 0 }]] },
@@ -342,8 +342,8 @@ describe('partitionAiRoots', () => {
 	describe('explicit pin opt-out', () => {
 		it('moves explicitly pinned roots to pinNodes', () => {
 			const nodes = [
-				makeNode({ name: 'OpenAI', type: '@n8n/n8n-nodes-langchain.lmChatOpenAi' }),
-				makeNode({ name: 'Agent', type: '@n8n/n8n-nodes-langchain.agent' }),
+				makeNode({ name: 'OpenAI', type: '@MNI/MNI-nodes-langchain.lmChatOpenAi' }),
+				makeNode({ name: 'Agent', type: '@MNI/MNI-nodes-langchain.agent' }),
 			];
 			const connections: IConnections = {
 				OpenAI: { ai_languageModel: [[{ node: 'Agent', type: 'ai_languageModel', index: 0 }]] },
@@ -357,9 +357,9 @@ describe('partitionAiRoots', () => {
 
 	describe('auto-pin on incompatible sub-nodes', () => {
 		it.each([
-			['Postgres memory', '@n8n/n8n-nodes-langchain.memoryPostgresChat'],
-			['Redis memory', '@n8n/n8n-nodes-langchain.memoryRedisChat'],
-			['MongoDB memory', '@n8n/n8n-nodes-langchain.memoryMongoDbChat'],
+			['Postgres memory', '@MNI/MNI-nodes-langchain.memoryPostgresChat'],
+			['Redis memory', '@MNI/MNI-nodes-langchain.memoryRedisChat'],
+			['MongoDB memory', '@MNI/MNI-nodes-langchain.memoryMongoDbChat'],
 		])('auto-pins an Agent backed by %s', (_label, memoryType) => {
 			const workflow = agentWithMemory(memoryType);
 			const result = partitionAiRoots(workflow);
@@ -374,16 +374,16 @@ describe('partitionAiRoots', () => {
 		});
 
 		it.each([
-			'@n8n/n8n-nodes-langchain.vectorStorePGVector',
-			'@n8n/n8n-nodes-langchain.vectorStoreMongoDBAtlas',
-			'@n8n/n8n-nodes-langchain.vectorStoreRedis',
-			'@n8n/n8n-nodes-langchain.vectorStoreMilvus',
-			'@n8n/n8n-nodes-langchain.chatHubVectorStorePGVector',
+			'@MNI/MNI-nodes-langchain.vectorStorePGVector',
+			'@MNI/MNI-nodes-langchain.vectorStoreMongoDBAtlas',
+			'@MNI/MNI-nodes-langchain.vectorStoreRedis',
+			'@MNI/MNI-nodes-langchain.vectorStoreMilvus',
+			'@MNI/MNI-nodes-langchain.chatHubVectorStorePGVector',
 		])('auto-pins an Agent backed by protocol-binary vector store %s', (vectorStoreType) => {
 			const nodes = [
-				makeNode({ name: 'OpenAI', type: '@n8n/n8n-nodes-langchain.lmChatOpenAi' }),
+				makeNode({ name: 'OpenAI', type: '@MNI/MNI-nodes-langchain.lmChatOpenAi' }),
 				makeNode({ name: 'Store', type: vectorStoreType }),
-				makeNode({ name: 'Agent', type: '@n8n/n8n-nodes-langchain.agent' }),
+				makeNode({ name: 'Agent', type: '@MNI/MNI-nodes-langchain.agent' }),
 			];
 			const connections: IConnections = {
 				OpenAI: { ai_languageModel: [[{ node: 'Agent', type: 'ai_languageModel', index: 0 }]] },
@@ -396,11 +396,11 @@ describe('partitionAiRoots', () => {
 
 		it('partitions independently across multiple roots — pin one, intercept the other', () => {
 			const nodes = [
-				makeNode({ name: 'OpenAI', type: '@n8n/n8n-nodes-langchain.lmChatOpenAi' }),
-				makeNode({ name: 'PgMem', type: '@n8n/n8n-nodes-langchain.memoryPostgresChat' }),
-				makeNode({ name: 'BufMem', type: '@n8n/n8n-nodes-langchain.memoryBufferWindow' }),
-				makeNode({ name: 'AgentA', type: '@n8n/n8n-nodes-langchain.agent' }),
-				makeNode({ name: 'AgentB', type: '@n8n/n8n-nodes-langchain.agent' }),
+				makeNode({ name: 'OpenAI', type: '@MNI/MNI-nodes-langchain.lmChatOpenAi' }),
+				makeNode({ name: 'PgMem', type: '@MNI/MNI-nodes-langchain.memoryPostgresChat' }),
+				makeNode({ name: 'BufMem', type: '@MNI/MNI-nodes-langchain.memoryBufferWindow' }),
+				makeNode({ name: 'AgentA', type: '@MNI/MNI-nodes-langchain.agent' }),
+				makeNode({ name: 'AgentB', type: '@MNI/MNI-nodes-langchain.agent' }),
 			];
 			const connections: IConnections = {
 				OpenAI: { ai_languageModel: [[{ node: 'AgentB', type: 'ai_languageModel', index: 0 }]] },
@@ -418,7 +418,7 @@ describe('partitionAiRoots', () => {
 		function agentWithLlm(llmType: string) {
 			const nodes = [
 				makeNode({ name: 'Llm', type: llmType }),
-				makeNode({ name: 'Agent', type: '@n8n/n8n-nodes-langchain.agent' }),
+				makeNode({ name: 'Agent', type: '@MNI/MNI-nodes-langchain.agent' }),
 			];
 			const connections: IConnections = {
 				Llm: { ai_languageModel: [[{ node: 'Agent', type: 'ai_languageModel', index: 0 }]] },
@@ -427,23 +427,23 @@ describe('partitionAiRoots', () => {
 		}
 
 		it('intercepts an Agent backed by lmChatOpenAi (the only mapped vendor for M1)', () => {
-			const result = partitionAiRoots(agentWithLlm('@n8n/n8n-nodes-langchain.lmChatOpenAi'));
+			const result = partitionAiRoots(agentWithLlm('@MNI/MNI-nodes-langchain.lmChatOpenAi'));
 			expect(result.unpinNodes).toEqual(['Agent']);
 			expect(result.autoPinned).toEqual([]);
 		});
 
 		it.each([
-			'@n8n/n8n-nodes-langchain.lmChatAnthropic',
-			'@n8n/n8n-nodes-langchain.lmChatGoogleGemini',
-			'@n8n/n8n-nodes-langchain.lmChatCohere',
-			'@n8n/n8n-nodes-langchain.lmChatGroq',
-			'@n8n/n8n-nodes-langchain.lmChatMistralCloud',
-			'@n8n/n8n-nodes-langchain.lmChatAzureOpenAi',
-			'@n8n/n8n-nodes-langchain.lmChatOpenRouter',
-			'@n8n/n8n-nodes-langchain.lmChatXAiGrok',
-			'@n8n/n8n-nodes-langchain.lmChatDeepSeek',
-			'@n8n/n8n-nodes-langchain.lmChatOllama',
-			'@n8n/n8n-nodes-langchain.lmOpenAi',
+			'@MNI/MNI-nodes-langchain.lmChatAnthropic',
+			'@MNI/MNI-nodes-langchain.lmChatGoogleGemini',
+			'@MNI/MNI-nodes-langchain.lmChatCohere',
+			'@MNI/MNI-nodes-langchain.lmChatGroq',
+			'@MNI/MNI-nodes-langchain.lmChatMistralCloud',
+			'@MNI/MNI-nodes-langchain.lmChatAzureOpenAi',
+			'@MNI/MNI-nodes-langchain.lmChatOpenRouter',
+			'@MNI/MNI-nodes-langchain.lmChatXAiGrok',
+			'@MNI/MNI-nodes-langchain.lmChatDeepSeek',
+			'@MNI/MNI-nodes-langchain.lmChatOllama',
+			'@MNI/MNI-nodes-langchain.lmOpenAi',
 		])('auto-pins an Agent backed by unmapped vendor LLM %s', (llmType) => {
 			const result = partitionAiRoots(agentWithLlm(llmType));
 			expect(result.pinNodes).toEqual(['Agent']);
@@ -455,17 +455,17 @@ describe('partitionAiRoots', () => {
 		});
 
 		it.each([
-			'@n8n/n8n-nodes-langchain.embeddingsOpenAi',
-			'@n8n/n8n-nodes-langchain.embeddingsCohere',
-			'@n8n/n8n-nodes-langchain.embeddingsGoogleGemini',
-			'@n8n/n8n-nodes-langchain.embeddingsAzureOpenAi',
+			'@MNI/MNI-nodes-langchain.embeddingsOpenAi',
+			'@MNI/MNI-nodes-langchain.embeddingsCohere',
+			'@MNI/MNI-nodes-langchain.embeddingsGoogleGemini',
+			'@MNI/MNI-nodes-langchain.embeddingsAzureOpenAi',
 		])('auto-pins a root backed by embeddings sub-node %s', (embeddingsType) => {
 			// Embeddings speak the vendor SDK, so the HTTP mock never sees them, and
 			// no `EVAL_PROVIDER_URL_FIELD` entry rewrites their credentials. Left
 			// unpinned the root reaches the real provider on real credentials.
 			const nodes = [
 				makeNode({ name: 'Embeddings', type: embeddingsType }),
-				makeNode({ name: 'Store', type: '@n8n/n8n-nodes-langchain.vectorStoreInMemory' }),
+				makeNode({ name: 'Store', type: '@MNI/MNI-nodes-langchain.vectorStoreInMemory' }),
 			];
 			const connections: IConnections = {
 				Embeddings: { ai_embedding: [[{ node: 'Store', type: 'ai_embedding', index: 0 }]] },
@@ -484,10 +484,10 @@ describe('partitionAiRoots', () => {
 			const nodes = [
 				makeNode({
 					name: 'Anthropic',
-					type: '@n8n/n8n-nodes-langchain.lmChatAnthropic',
+					type: '@MNI/MNI-nodes-langchain.lmChatAnthropic',
 					disabled: true,
 				}),
-				makeNode({ name: 'Agent', type: '@n8n/n8n-nodes-langchain.agent' }),
+				makeNode({ name: 'Agent', type: '@MNI/MNI-nodes-langchain.agent' }),
 			];
 			const connections: IConnections = {
 				Anthropic: {
@@ -503,10 +503,10 @@ describe('partitionAiRoots', () => {
 				const nodes = [
 					makeNode({
 						name: 'OpenAI',
-						type: '@n8n/n8n-nodes-langchain.lmChatOpenAi',
+						type: '@MNI/MNI-nodes-langchain.lmChatOpenAi',
 						parameters,
 					}),
-					makeNode({ name: 'Agent', type: '@n8n/n8n-nodes-langchain.agent' }),
+					makeNode({ name: 'Agent', type: '@MNI/MNI-nodes-langchain.agent' }),
 				];
 				const connections: IConnections = {
 					OpenAI: { ai_languageModel: [[{ node: 'Agent', type: 'ai_languageModel', index: 0 }]] },
@@ -540,11 +540,11 @@ describe('partitionAiRoots', () => {
 				const nodes = [
 					makeNode({
 						name: 'OpenAI',
-						type: '@n8n/n8n-nodes-langchain.lmChatOpenAi',
+						type: '@MNI/MNI-nodes-langchain.lmChatOpenAi',
 						parameters: { options: { baseURL: 'https://my-proxy.example.com/v1' } },
 						disabled: true,
 					}),
-					makeNode({ name: 'Agent', type: '@n8n/n8n-nodes-langchain.agent' }),
+					makeNode({ name: 'Agent', type: '@MNI/MNI-nodes-langchain.agent' }),
 				];
 				const connections: IConnections = {
 					OpenAI: { ai_languageModel: [[{ node: 'Agent', type: 'ai_languageModel', index: 0 }]] },
@@ -557,9 +557,9 @@ describe('partitionAiRoots', () => {
 		describe('shared vendor LLM sub-node across multiple roots', () => {
 			function workflowWithSharedSubNode(): IWorkflowBase {
 				const nodes = [
-					makeNode({ name: 'OpenAI', type: '@n8n/n8n-nodes-langchain.lmChatOpenAi' }),
-					makeNode({ name: 'AgentA', type: '@n8n/n8n-nodes-langchain.agent' }),
-					makeNode({ name: 'AgentB', type: '@n8n/n8n-nodes-langchain.agent' }),
+					makeNode({ name: 'OpenAI', type: '@MNI/MNI-nodes-langchain.lmChatOpenAi' }),
+					makeNode({ name: 'AgentA', type: '@MNI/MNI-nodes-langchain.agent' }),
+					makeNode({ name: 'AgentB', type: '@MNI/MNI-nodes-langchain.agent' }),
 				];
 				const connections: IConnections = {
 					OpenAI: {
@@ -593,11 +593,11 @@ describe('partitionAiRoots', () => {
 				const nodes = [
 					makeNode({
 						name: 'OpenAI',
-						type: '@n8n/n8n-nodes-langchain.lmChatOpenAi',
+						type: '@MNI/MNI-nodes-langchain.lmChatOpenAi',
 						disabled: true,
 					}),
-					makeNode({ name: 'AgentA', type: '@n8n/n8n-nodes-langchain.agent' }),
-					makeNode({ name: 'AgentB', type: '@n8n/n8n-nodes-langchain.agent' }),
+					makeNode({ name: 'AgentA', type: '@MNI/MNI-nodes-langchain.agent' }),
+					makeNode({ name: 'AgentB', type: '@MNI/MNI-nodes-langchain.agent' }),
 				];
 				const connections: IConnections = {
 					OpenAI: {
@@ -619,8 +619,8 @@ describe('partitionAiRoots', () => {
 describe('buildVendorLlmRouting', () => {
 	it('returns empty maps when unpinNodes is empty', () => {
 		const nodes = [
-			makeNode({ name: 'OpenAI', type: '@n8n/n8n-nodes-langchain.lmChatOpenAi' }),
-			makeNode({ name: 'Agent', type: '@n8n/n8n-nodes-langchain.agent' }),
+			makeNode({ name: 'OpenAI', type: '@MNI/MNI-nodes-langchain.lmChatOpenAi' }),
+			makeNode({ name: 'Agent', type: '@MNI/MNI-nodes-langchain.agent' }),
 		];
 		const connections: IConnections = {
 			OpenAI: { ai_languageModel: [[{ node: 'Agent', type: 'ai_languageModel', index: 0 }]] },
@@ -634,8 +634,8 @@ describe('buildVendorLlmRouting', () => {
 
 	it('maps a chat-model sub-node to its unpinned root and vice versa', () => {
 		const nodes = [
-			makeNode({ name: 'OpenAI', type: '@n8n/n8n-nodes-langchain.lmChatOpenAi' }),
-			makeNode({ name: 'Agent', type: '@n8n/n8n-nodes-langchain.agent' }),
+			makeNode({ name: 'OpenAI', type: '@MNI/MNI-nodes-langchain.lmChatOpenAi' }),
+			makeNode({ name: 'Agent', type: '@MNI/MNI-nodes-langchain.agent' }),
 		];
 		const connections: IConnections = {
 			OpenAI: { ai_languageModel: [[{ node: 'Agent', type: 'ai_languageModel', index: 0 }]] },
@@ -654,8 +654,8 @@ describe('buildVendorLlmRouting', () => {
 		// that name — without the self-map, the lookup would miss and the
 		// SDK would post to the wire server's loud-fail no-root route.
 		const nodes = [
-			makeNode({ name: 'OpenAI', type: '@n8n/n8n-nodes-langchain.lmChatOpenAi' }),
-			makeNode({ name: 'Agent', type: '@n8n/n8n-nodes-langchain.agent' }),
+			makeNode({ name: 'OpenAI', type: '@MNI/MNI-nodes-langchain.lmChatOpenAi' }),
+			makeNode({ name: 'Agent', type: '@MNI/MNI-nodes-langchain.agent' }),
 		];
 		const connections: IConnections = {
 			OpenAI: { ai_languageModel: [[{ node: 'Agent', type: 'ai_languageModel', index: 0 }]] },
@@ -668,8 +668,8 @@ describe('buildVendorLlmRouting', () => {
 
 	it('does not include sub-nodes feeding roots that are still pinned', () => {
 		const nodes = [
-			makeNode({ name: 'OpenAI', type: '@n8n/n8n-nodes-langchain.lmChatOpenAi' }),
-			makeNode({ name: 'PinnedAgent', type: '@n8n/n8n-nodes-langchain.agent' }),
+			makeNode({ name: 'OpenAI', type: '@MNI/MNI-nodes-langchain.lmChatOpenAi' }),
+			makeNode({ name: 'PinnedAgent', type: '@MNI/MNI-nodes-langchain.agent' }),
 		];
 		const connections: IConnections = {
 			OpenAI: {
@@ -689,10 +689,10 @@ describe('buildVendorLlmRouting', () => {
 		const nodes = [
 			makeNode({
 				name: 'OpenAI',
-				type: '@n8n/n8n-nodes-langchain.lmChatOpenAi',
+				type: '@MNI/MNI-nodes-langchain.lmChatOpenAi',
 				disabled: true,
 			}),
-			makeNode({ name: 'Agent', type: '@n8n/n8n-nodes-langchain.agent' }),
+			makeNode({ name: 'Agent', type: '@MNI/MNI-nodes-langchain.agent' }),
 		];
 		const connections: IConnections = {
 			OpenAI: { ai_languageModel: [[{ node: 'Agent', type: 'ai_languageModel', index: 0 }]] },
@@ -706,10 +706,10 @@ describe('buildVendorLlmRouting', () => {
 
 	it('skips non-LLM ai_* connections (memory, tools, vector stores)', () => {
 		const nodes = [
-			makeNode({ name: 'OpenAI', type: '@n8n/n8n-nodes-langchain.lmChatOpenAi' }),
-			makeNode({ name: 'Memory', type: '@n8n/n8n-nodes-langchain.memoryBufferWindow' }),
-			makeNode({ name: 'Calculator', type: '@n8n/n8n-nodes-langchain.toolCalculator' }),
-			makeNode({ name: 'Agent', type: '@n8n/n8n-nodes-langchain.agent' }),
+			makeNode({ name: 'OpenAI', type: '@MNI/MNI-nodes-langchain.lmChatOpenAi' }),
+			makeNode({ name: 'Memory', type: '@MNI/MNI-nodes-langchain.memoryBufferWindow' }),
+			makeNode({ name: 'Calculator', type: '@MNI/MNI-nodes-langchain.toolCalculator' }),
+			makeNode({ name: 'Agent', type: '@MNI/MNI-nodes-langchain.agent' }),
 		];
 		const connections: IConnections = {
 			OpenAI: { ai_languageModel: [[{ node: 'Agent', type: 'ai_languageModel', index: 0 }]] },
@@ -733,8 +733,8 @@ describe('buildVendorLlmRouting', () => {
 		// here is defence in depth so the helper never embeds a root whose
 		// sub-node lacks an interception path.
 		const nodes = [
-			makeNode({ name: 'Anthropic', type: '@n8n/n8n-nodes-langchain.lmChatAnthropic' }),
-			makeNode({ name: 'Agent', type: '@n8n/n8n-nodes-langchain.agent' }),
+			makeNode({ name: 'Anthropic', type: '@MNI/MNI-nodes-langchain.lmChatAnthropic' }),
+			makeNode({ name: 'Agent', type: '@MNI/MNI-nodes-langchain.agent' }),
 		];
 		const connections: IConnections = {
 			Anthropic: {
@@ -756,9 +756,9 @@ describe('buildVendorLlmRouting', () => {
 		// no overwrite mid-build) so the wire server doesn't see a
 		// half-mutated state.
 		const nodes = [
-			makeNode({ name: 'Shared OpenAI', type: '@n8n/n8n-nodes-langchain.lmChatOpenAi' }),
-			makeNode({ name: 'Agent A', type: '@n8n/n8n-nodes-langchain.agent' }),
-			makeNode({ name: 'Agent B', type: '@n8n/n8n-nodes-langchain.agent' }),
+			makeNode({ name: 'Shared OpenAI', type: '@MNI/MNI-nodes-langchain.lmChatOpenAi' }),
+			makeNode({ name: 'Agent A', type: '@MNI/MNI-nodes-langchain.agent' }),
+			makeNode({ name: 'Agent B', type: '@MNI/MNI-nodes-langchain.agent' }),
 		];
 		const connections: IConnections = {
 			'Shared OpenAI': {
@@ -781,10 +781,10 @@ describe('buildVendorLlmRouting', () => {
 
 	it('handles multiple unpinned roots independently', () => {
 		const nodes = [
-			makeNode({ name: 'OpenAI A', type: '@n8n/n8n-nodes-langchain.lmChatOpenAi' }),
-			makeNode({ name: 'OpenAI B', type: '@n8n/n8n-nodes-langchain.lmChatOpenAi' }),
-			makeNode({ name: 'Agent A', type: '@n8n/n8n-nodes-langchain.agent' }),
-			makeNode({ name: 'Agent B', type: '@n8n/n8n-nodes-langchain.agent' }),
+			makeNode({ name: 'OpenAI A', type: '@MNI/MNI-nodes-langchain.lmChatOpenAi' }),
+			makeNode({ name: 'OpenAI B', type: '@MNI/MNI-nodes-langchain.lmChatOpenAi' }),
+			makeNode({ name: 'Agent A', type: '@MNI/MNI-nodes-langchain.agent' }),
+			makeNode({ name: 'Agent B', type: '@MNI/MNI-nodes-langchain.agent' }),
 		];
 		const connections: IConnections = {
 			'OpenAI A': {
@@ -807,10 +807,10 @@ describe('buildVendorLlmRouting', () => {
 describe('detectBinaryDependencies', () => {
 	it('returns undefined when no node consumes a binary attachment', () => {
 		const nodes = [
-			makeNode({ name: 'Webhook', type: 'n8n-nodes-base.webhook' }),
+			makeNode({ name: 'Webhook', type: 'MNI-nodes-base.webhook' }),
 			makeNode({
 				name: 'Slack',
-				type: 'n8n-nodes-base.slack',
+				type: 'MNI-nodes-base.slack',
 				parameters: { resource: 'message', operation: 'post', text: 'hello' },
 			}),
 		];
@@ -819,10 +819,10 @@ describe('detectBinaryDependencies', () => {
 
 	it('detects $binary.<key> expressions in node parameters', () => {
 		const nodes = [
-			makeNode({ name: 'Webhook', type: 'n8n-nodes-base.webhook' }),
+			makeNode({ name: 'Webhook', type: 'MNI-nodes-base.webhook' }),
 			makeNode({
 				name: 'Send',
-				type: 'n8n-nodes-base.httpRequest',
+				type: 'MNI-nodes-base.httpRequest',
 				parameters: {
 					url: 'https://example.com/upload',
 					body: { value: '={{ $binary.attachment }}' },
@@ -835,10 +835,10 @@ describe('detectBinaryDependencies', () => {
 
 	it('detects Extract from File as a binary consumer (allowlist fallback)', () => {
 		const nodes = [
-			makeNode({ name: 'Webhook', type: 'n8n-nodes-base.webhook' }),
+			makeNode({ name: 'Webhook', type: 'MNI-nodes-base.webhook' }),
 			makeNode({
 				name: 'Extract',
-				type: 'n8n-nodes-base.extractFromFile',
+				type: 'MNI-nodes-base.extractFromFile',
 				parameters: { operation: 'pdf' },
 			}),
 		];
@@ -851,10 +851,10 @@ describe('detectBinaryDependencies', () => {
 
 	it('does NOT mark Telegram as a binary consumer unless $binary is referenced (sendVoice only sometimes uses binary)', () => {
 		const nodes = [
-			makeNode({ name: 'Webhook', type: 'n8n-nodes-base.webhook' }),
+			makeNode({ name: 'Webhook', type: 'MNI-nodes-base.webhook' }),
 			makeNode({
 				name: 'Telegram',
-				type: 'n8n-nodes-base.telegram',
+				type: 'MNI-nodes-base.telegram',
 				parameters: { resource: 'message', operation: 'sendVoice' },
 			}),
 		];
@@ -863,10 +863,10 @@ describe('detectBinaryDependencies', () => {
 
 	it('picks up Telegram sendVoice when it references $binary.data and uses OGG default', () => {
 		const nodes = [
-			makeNode({ name: 'Webhook', type: 'n8n-nodes-base.webhook' }),
+			makeNode({ name: 'Webhook', type: 'MNI-nodes-base.webhook' }),
 			makeNode({
 				name: 'Telegram',
-				type: 'n8n-nodes-base.telegram',
+				type: 'MNI-nodes-base.telegram',
 				parameters: {
 					resource: 'message',
 					operation: 'sendVoice',
@@ -882,10 +882,10 @@ describe('detectBinaryDependencies', () => {
 
 	it('prefers $binary.<key> expressions over the allowlist when both are present', () => {
 		const nodes = [
-			makeNode({ name: 'Webhook', type: 'n8n-nodes-base.webhook' }),
+			makeNode({ name: 'Webhook', type: 'MNI-nodes-base.webhook' }),
 			makeNode({
 				name: 'Extract',
-				type: 'n8n-nodes-base.extractFromFile',
+				type: 'MNI-nodes-base.extractFromFile',
 				parameters: {
 					operation: 'pdf',
 					binaryPropertyName: '={{ $binary.uploadedFile }}',
@@ -899,10 +899,10 @@ describe('detectBinaryDependencies', () => {
 
 	it('detects nested inputDataFieldName on HTTP Request multipart formBinaryData', () => {
 		const nodes = [
-			makeNode({ name: 'Submission Form', type: 'n8n-nodes-base.formTrigger' }),
+			makeNode({ name: 'Submission Form', type: 'MNI-nodes-base.formTrigger' }),
 			makeNode({
 				name: 'Upload Document',
-				type: 'n8n-nodes-base.httpRequest',
+				type: 'MNI-nodes-base.httpRequest',
 				parameters: {
 					method: 'POST',
 					url: 'https://api.example.com/v1/documents',
@@ -923,10 +923,10 @@ describe('detectBinaryDependencies', () => {
 
 	it('detects literal binaryPropertyName parameters on upload nodes (Slack files.upload)', () => {
 		const nodes = [
-			makeNode({ name: 'Webhook', type: 'n8n-nodes-base.webhook' }),
+			makeNode({ name: 'Webhook', type: 'MNI-nodes-base.webhook' }),
 			makeNode({
 				name: 'Slack',
-				type: 'n8n-nodes-base.slack',
+				type: 'MNI-nodes-base.slack',
 				parameters: {
 					resource: 'file',
 					operation: 'upload',
@@ -941,10 +941,10 @@ describe('detectBinaryDependencies', () => {
 
 	it('detects literal binaryPropertyName on S3 PutObject with default key name', () => {
 		const nodes = [
-			makeNode({ name: 'Webhook', type: 'n8n-nodes-base.webhook' }),
+			makeNode({ name: 'Webhook', type: 'MNI-nodes-base.webhook' }),
 			makeNode({
 				name: 'S3',
-				type: 'n8n-nodes-base.awsS3',
+				type: 'MNI-nodes-base.awsS3',
 				parameters: {
 					resource: 'file',
 					operation: 'upload',
@@ -958,10 +958,10 @@ describe('detectBinaryDependencies', () => {
 
 	it('extracts the literal from a quoted-string expression on binaryPropertyName', () => {
 		const nodes = [
-			makeNode({ name: 'Webhook', type: 'n8n-nodes-base.webhook' }),
+			makeNode({ name: 'Webhook', type: 'MNI-nodes-base.webhook' }),
 			makeNode({
 				name: 'Slack',
-				type: 'n8n-nodes-base.slack',
+				type: 'MNI-nodes-base.slack',
 				parameters: {
 					resource: 'file',
 					operation: 'upload',
@@ -974,10 +974,10 @@ describe('detectBinaryDependencies', () => {
 
 	it('falls back to `data` when binaryPropertyName is a dynamic expression', () => {
 		const nodes = [
-			makeNode({ name: 'Webhook', type: 'n8n-nodes-base.webhook' }),
+			makeNode({ name: 'Webhook', type: 'MNI-nodes-base.webhook' }),
 			makeNode({
 				name: 'Slack',
-				type: 'n8n-nodes-base.slack',
+				type: 'MNI-nodes-base.slack',
 				parameters: {
 					resource: 'file',
 					operation: 'upload',
@@ -990,10 +990,10 @@ describe('detectBinaryDependencies', () => {
 
 	it('ignores disabled nodes', () => {
 		const nodes = [
-			makeNode({ name: 'Webhook', type: 'n8n-nodes-base.webhook' }),
+			makeNode({ name: 'Webhook', type: 'MNI-nodes-base.webhook' }),
 			makeNode({
 				name: 'Extract',
-				type: 'n8n-nodes-base.extractFromFile',
+				type: 'MNI-nodes-base.extractFromFile',
 				disabled: true,
 				parameters: { operation: 'pdf' },
 			}),
@@ -1005,9 +1005,9 @@ describe('detectBinaryDependencies', () => {
 describe('identifyNodesForHints', () => {
 	it('should exclude AI sub-nodes from hints', () => {
 		const nodes = [
-			makeNode({ name: 'OpenAI', type: '@n8n/n8n-nodes-langchain.lmChatOpenAi' }),
-			makeNode({ name: 'Agent', type: '@n8n/n8n-nodes-langchain.agent' }),
-			makeNode({ name: 'Slack', type: 'n8n-nodes-base.slack' }),
+			makeNode({ name: 'OpenAI', type: '@MNI/MNI-nodes-langchain.lmChatOpenAi' }),
+			makeNode({ name: 'Agent', type: '@MNI/MNI-nodes-langchain.agent' }),
+			makeNode({ name: 'Slack', type: 'MNI-nodes-base.slack' }),
 		];
 		const connections: IConnections = {
 			OpenAI: { ai_languageModel: [[{ node: 'Agent', type: 'ai_languageModel', index: 0 }]] },
@@ -1023,10 +1023,10 @@ describe('identifyNodesForHints', () => {
 
 	it('should exclude pinned bypass nodes from hints', () => {
 		const nodes = [
-			makeNode({ name: 'Webhook', type: 'n8n-nodes-base.webhook' }),
-			makeNode({ name: 'Redis', type: 'n8n-nodes-base.redis' }),
-			makeNode({ name: 'Slack', type: 'n8n-nodes-base.slack' }),
-			makeNode({ name: 'Set', type: 'n8n-nodes-base.set' }),
+			makeNode({ name: 'Webhook', type: 'MNI-nodes-base.webhook' }),
+			makeNode({ name: 'Redis', type: 'MNI-nodes-base.redis' }),
+			makeNode({ name: 'Slack', type: 'MNI-nodes-base.slack' }),
+			makeNode({ name: 'Set', type: 'MNI-nodes-base.set' }),
 		];
 
 		const result = identifyNodesForHints(makeWorkflow(nodes));
@@ -1040,8 +1040,8 @@ describe('identifyNodesForHints', () => {
 
 	it('should exclude disabled nodes', () => {
 		const nodes = [
-			makeNode({ name: 'Slack', type: 'n8n-nodes-base.slack', disabled: true }),
-			makeNode({ name: 'Gmail', type: 'n8n-nodes-base.gmail' }),
+			makeNode({ name: 'Slack', type: 'MNI-nodes-base.slack', disabled: true }),
+			makeNode({ name: 'Gmail', type: 'MNI-nodes-base.gmail' }),
 		];
 
 		const result = identifyNodesForHints(makeWorkflow(nodes));
@@ -1053,12 +1053,12 @@ describe('identifyNodesForHints', () => {
 
 	it('should return only HTTP-interceptible nodes for a mixed workflow', () => {
 		const nodes = [
-			makeNode({ name: 'Webhook', type: 'n8n-nodes-base.webhook' }),
-			makeNode({ name: 'OpenAI', type: '@n8n/n8n-nodes-langchain.lmChatOpenAi' }),
-			makeNode({ name: 'Agent', type: '@n8n/n8n-nodes-langchain.agent' }),
-			makeNode({ name: 'Postgres', type: 'n8n-nodes-base.postgres' }),
-			makeNode({ name: 'Slack', type: 'n8n-nodes-base.slack' }),
-			makeNode({ name: 'Set', type: 'n8n-nodes-base.set' }),
+			makeNode({ name: 'Webhook', type: 'MNI-nodes-base.webhook' }),
+			makeNode({ name: 'OpenAI', type: '@MNI/MNI-nodes-langchain.lmChatOpenAi' }),
+			makeNode({ name: 'Agent', type: '@MNI/MNI-nodes-langchain.agent' }),
+			makeNode({ name: 'Postgres', type: 'MNI-nodes-base.postgres' }),
+			makeNode({ name: 'Slack', type: 'MNI-nodes-base.slack' }),
+			makeNode({ name: 'Set', type: 'MNI-nodes-base.set' }),
 		];
 		const connections: IConnections = {
 			OpenAI: { ai_languageModel: [[{ node: 'Agent', type: 'ai_languageModel', index: 0 }]] },
@@ -1080,8 +1080,8 @@ describe('identifyNodesForHints', () => {
 
 describe('generateMockHints', () => {
 	const workflow = makeWorkflow([
-		makeNode({ name: 'Schedule', type: 'n8n-nodes-base.scheduleTrigger' }),
-		makeNode({ name: 'Slack', type: 'n8n-nodes-base.slack' }),
+		makeNode({ name: 'Schedule', type: 'MNI-nodes-base.scheduleTrigger' }),
+		makeNode({ name: 'Slack', type: 'MNI-nodes-base.slack' }),
 	]);
 
 	function mockAgentResponses(...responses: Array<string | Error>) {

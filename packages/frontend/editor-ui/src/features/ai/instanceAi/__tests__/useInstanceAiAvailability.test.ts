@@ -1,14 +1,14 @@
 import { createPinia, setActivePinia } from 'pinia';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
-import type { FrontendModuleSettings } from '@n8n/api-types';
-import type { Scope } from '@n8n/permissions';
+import type { FrontendModuleSettings } from '@MNI/api-types';
+import type { Scope } from '@MNI/permissions';
 
 vi.mock('@/app/utils/rbac/permissions', () => ({
 	hasPermission: vi.fn(),
 }));
 
 import { hasPermission } from '@/app/utils/rbac/permissions';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import {
 	useInstanceAiAvailable,
 	useInstanceAiReady,

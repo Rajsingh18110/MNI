@@ -1,10 +1,10 @@
-import { Logger } from '@n8n/backend-common';
-import type { Project, User } from '@n8n/db';
-import { CredentialsRepository, SharedCredentialsRepository, UserRepository } from '@n8n/db';
-import { Service } from '@n8n/di';
-import { hasGlobalScope } from '@n8n/permissions';
-import type { INode, INodeTypeDescription } from 'n8n-workflow';
-import { getActiveCredentialTypes, UserError } from 'n8n-workflow';
+import { Logger } from '@MNI/backend-common';
+import type { Project, User } from '@MNI/db';
+import { CredentialsRepository, SharedCredentialsRepository, UserRepository } from '@MNI/db';
+import { Service } from '@MNI/di';
+import { hasGlobalScope } from '@MNI/permissions';
+import type { INode, INodeTypeDescription } from 'MNI-workflow';
+import { getActiveCredentialTypes, UserError } from 'MNI-workflow';
 
 import { isCredSharingEnabled } from '@/constants/credential-sharing';
 import {

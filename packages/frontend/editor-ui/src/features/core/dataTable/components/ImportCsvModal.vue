@@ -1,14 +1,14 @@
 <script lang="ts" setup>
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import { ref, computed, watch, onBeforeUnmount } from 'vue';
 import { useDataTableStore } from '@/features/core/dataTable/dataTable.store';
 import { useUIStore } from '@/app/stores/ui.store';
-import { useToast } from '@n8n/composables/useToast';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
+import { useToast } from '@MNI/composables/useToast';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
 import { useLatestFetch } from '@/app/composables/useLatestFetch';
-import { DATA_TABLE_SYSTEM_COLUMNS } from 'n8n-workflow';
+import { DATA_TABLE_SYSTEM_COLUMNS } from 'MNI-workflow';
 
-import { N8nButton, N8nIcon, N8nText, N8nCallout } from '@n8n/design-system';
+import { N8nButton, N8nIcon, N8nText, N8nCallout } from '@MNI/design-system';
 import Modal from '@/app/components/Modal.vue';
 import { ElUpload } from 'element-plus';
 import type { UploadFile } from 'element-plus';

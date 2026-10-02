@@ -1,8 +1,8 @@
-import type { CreateDataTableColumnDto } from '@n8n/api-types';
-import { randomName } from '@n8n/backend-test-utils';
-import type { Project } from '@n8n/db';
-import { Container } from '@n8n/di';
-import type { DataTableRows } from 'n8n-workflow';
+import type { CreateDataTableColumnDto } from '@MNI/api-types';
+import { randomName } from '@MNI/backend-test-utils';
+import type { Project } from '@MNI/db';
+import { Container } from '@MNI/di';
+import type { DataTableRows } from 'MNI-workflow';
 
 import { DataTableColumnRepository } from '@/modules/data-table/data-table-column.repository';
 import { DataTableRowsRepository } from '@/modules/data-table/data-table-rows.repository';

@@ -1,5 +1,5 @@
-import { SettingsRepository } from '@n8n/db';
-import { Service } from '@n8n/di';
+import { SettingsRepository } from '@MNI/db';
+import { Service } from '@MNI/di';
 
 /** Settings key written once by {@link WorkflowStatisticsService} at the instance's activation. */
 export const INSTANCE_ACTIVATED_SETTINGS_KEY = 'instance.firstProductionSuccess';

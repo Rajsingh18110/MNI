@@ -15,11 +15,11 @@ import { ASSISTANT_ENABLED_VIEWS, BUILDER_ENABLED_VIEWS } from './constants';
 import { VIEWS } from '@/app/constants';
 import { reactive, nextTick } from 'vue';
 import { mockedStore } from '@/__tests__/utils';
-import { useSettingsStore } from '@n8n/stores/settings.store';
-import { defaultSettings } from '@n8n/frontend-test-utils';
-import type { ICredentialType } from 'n8n-workflow';
+import { useSettingsStore } from '@MNI/stores/settings.store';
+import { defaultSettings } from '@MNI/frontend-test-utils';
+import type { ICredentialType } from 'MNI-workflow';
 import type { ChatRequest } from '@/features/ai/assistant/assistant.types';
-import type { ChatUI } from '@n8n/design-system';
+import type { ChatUI } from '@MNI/design-system';
 import merge from 'lodash-es/merge';
 
 // Mock vue-router
@@ -345,7 +345,7 @@ describe('chatPanel.store', () => {
 				node: {
 					id: 'node-1',
 					name: 'Test Node',
-					type: 'n8n-nodes-base.test',
+					type: 'MNI-nodes-base.test',
 					typeVersion: 1,
 					position: [0, 0],
 					parameters: {},

@@ -1,6 +1,6 @@
 import userEvent from '@testing-library/user-event';
 import { waitFor } from '@testing-library/vue';
-import type { ApiKeyScope } from '@n8n/permissions';
+import type { ApiKeyScope } from '@MNI/permissions';
 
 import { createComponentRenderer } from '@/__tests__/render';
 import ApiKeyScopes from './ApiKeyScopes.vue';

@@ -7,8 +7,8 @@ import type {
 	INodeProperties,
 	INodeExecutionData,
 	INodeParameterResourceLocator,
-} from 'n8n-workflow';
-import { displayParameter, NodeOperationError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { displayParameter, NodeOperationError } from 'MNI-workflow';
 
 import { SlackV2 } from '../../V2/SlackV2.node';
 import * as GenericFunctions from '../../V2/GenericFunctions';
@@ -23,7 +23,7 @@ describe('SlackV2', () => {
 	const mockNode: INode = {
 		id: 'test-node-id',
 		name: 'Slack Test',
-		type: 'n8n-nodes-base.slack',
+		type: 'MNI-nodes-base.slack',
 		typeVersion: 2,
 		position: [0, 0],
 		parameters: {},
@@ -2397,7 +2397,7 @@ describe('SlackV2', () => {
 		];
 
 		// as [label, value] tuples, to keep the assertions clear of `{ name, value }`
-		// literals that n8n-nodes-base/node-param-display-name-miscased reads as node params
+		// literals that MNI-nodes-base/node-param-display-name-miscased reads as node params
 		const asTuples = (options: Array<{ name: string; value?: string | number | boolean }>) =>
 			options.map((o) => [o.name, o.value]);
 

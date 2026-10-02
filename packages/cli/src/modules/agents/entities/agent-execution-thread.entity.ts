@@ -1,6 +1,6 @@
-import { AGENT_TASK_ID_MAX_LENGTH } from '@n8n/api-types';
-import { Project, User, WithTimestampsAndStringId } from '@n8n/db';
-import { Column, Entity, Index, JoinColumn, ManyToOne, type Relation } from '@n8n/typeorm';
+import { AGENT_TASK_ID_MAX_LENGTH } from '@MNI/api-types';
+import { Project, User, WithTimestampsAndStringId } from '@MNI/db';
+import { Column, Entity, Index, JoinColumn, ManyToOne, type Relation } from '@MNI/typeorm';
 
 import { AgentHistory } from './agent-history.entity';
 import { Agent } from './agent.entity';
@@ -15,7 +15,7 @@ import { Agent } from './agent.entity';
  * table) — see {@link AgentExecution}.
  *
  * Distinct from the SDK memory `AgentThreadEntity` (`agents_threads`),
- * which stores chat-history state owned by the n8n-memory integration.
+ * which stores chat-history state owned by the MNI-memory integration.
  * Both use the same `threadId` value but serve different layers.
  */
 @Entity({ name: 'agent_execution_threads' })

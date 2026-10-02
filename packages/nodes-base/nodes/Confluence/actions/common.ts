@@ -4,8 +4,8 @@ import type {
 	ILoadOptionsFunctions,
 	INodeParameterResourceLocator,
 	INodeProperties,
-} from 'n8n-workflow';
-import { jsonParse, NodeOperationError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { jsonParse, NodeOperationError } from 'MNI-workflow';
 
 import {
 	confluenceApiRequest,

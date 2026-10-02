@@ -1,4 +1,4 @@
-import type { IExecuteFunctions, INode } from 'n8n-workflow';
+import type { IExecuteFunctions, INode } from 'MNI-workflow';
 import { mock, mockDeep } from 'vitest-mock-extended';
 import type { Mocked } from 'vitest';
 
@@ -14,7 +14,7 @@ describe('Zoho > GenericFunctions', () => {
 		mockNode = mock<INode>({
 			id: 'test-node',
 			name: 'Create a lead',
-			type: 'n8n-nodes-base.zohoCrm',
+			type: 'MNI-nodes-base.zohoCrm',
 			typeVersion: 1,
 			position: [0, 0],
 			parameters: {},

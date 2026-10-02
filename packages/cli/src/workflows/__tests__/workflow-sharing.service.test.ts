@@ -1,5 +1,5 @@
-import type { Logger, LicenseState } from '@n8n/backend-common';
-import type { ProjectRelationRepository, SharedWorkflowRepository, UserRepository } from '@n8n/db';
+import type { Logger, LicenseState } from '@MNI/backend-common';
+import type { ProjectRelationRepository, SharedWorkflowRepository, UserRepository } from '@MNI/db';
 import { mock } from 'vitest-mock-extended';
 
 import type { RoleService } from '@/services/role.service';

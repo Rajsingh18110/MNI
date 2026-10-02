@@ -1,12 +1,12 @@
-import type { INode, INodeProperties } from 'n8n-workflow';
-import { NodeHelpers } from 'n8n-workflow';
+import type { INode, INodeProperties } from 'MNI-workflow';
+import { NodeHelpers } from 'MNI-workflow';
 
 import { tableRLC, workbookRLC, worksheetRLC } from '../../actions/common.descriptions';
 
 const node: INode = {
 	id: 'test-node',
 	name: 'Test Excel Node',
-	type: 'n8n-nodes-base.microsoftExcel',
+	type: 'MNI-nodes-base.microsoftExcel',
 	typeVersion: 2,
 	position: [0, 0],
 	parameters: {},

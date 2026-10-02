@@ -1,4 +1,4 @@
-import { passthroughEgressFilter } from '@n8n/backend-network';
+import { passthroughEgressFilter } from '@MNI/backend-network';
 import { SchemaRegistry } from '@kafkajs/confluent-schema-registry';
 import type {
 	IDataObject,
@@ -6,8 +6,8 @@ import type {
 	INode,
 	INodeExecutionData,
 	INodeTypeBaseDescription,
-} from 'n8n-workflow';
-import { NodeOperationError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeOperationError } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import { KafkaV2 } from '../../v2/KafkaV2.node';

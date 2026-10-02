@@ -1,4 +1,4 @@
-import { AI_ASSISTANT_AT_MENTIONS_FLAG, CANVAS_NODE_CONTEXT_FLAG } from '@n8n/api-types';
+import { AI_ASSISTANT_AT_MENTIONS_FLAG, CANVAS_NODE_CONTEXT_FLAG } from '@MNI/api-types';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { useIsNodeContextEnabled } from './useIsNodeContextEnabled';

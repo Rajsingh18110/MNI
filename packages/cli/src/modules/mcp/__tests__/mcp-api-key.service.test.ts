@@ -1,5 +1,5 @@
 import type { Mocked } from 'vitest';
-import type { ApiKeyRepository, User, TokenGrant } from '@n8n/db';
+import type { ApiKeyRepository, User, TokenGrant } from '@MNI/db';
 import { mock } from 'vitest-mock-extended';
 
 import type { AuthStrategyRegistry } from '@/services/auth-strategy.registry';

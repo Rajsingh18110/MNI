@@ -20,7 +20,7 @@ function getTunnelTarget(ctx: StartContext): string {
 	if (ctx.needsLoadBalancer) {
 		return `${ctx.projectName}-caddy-lb:80`;
 	}
-	return `${ctx.projectName}-n8n:5678`;
+	return `${ctx.projectName}-MNI:5678`;
 }
 
 export const ngrok: Service<NgrokResult> = {
@@ -37,7 +37,7 @@ export const ngrok: Service<NgrokResult> = {
 	env(result) {
 		return {
 			WEBHOOK_URL: result.meta.publicUrl,
-			N8N_PROXY_HOPS: String(result.meta.proxyHops),
+			MNI_PROXY_HOPS: String(result.meta.proxyHops),
 		};
 	},
 

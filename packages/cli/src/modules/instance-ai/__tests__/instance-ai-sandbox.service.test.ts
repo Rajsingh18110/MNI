@@ -1,11 +1,11 @@
 import type { Mock } from 'vitest';
-import { SandboxAcquisitionError, SandboxNotReadyError } from '@n8n/agents/sandbox';
-import type { InstanceAiConfig } from '@n8n/config';
-import type { User } from '@n8n/db';
-import type { ErrorReporter } from 'n8n-core';
-import { OperationalError } from 'n8n-workflow';
+import { SandboxAcquisitionError, SandboxNotReadyError } from '@MNI/agents/sandbox';
+import type { InstanceAiConfig } from '@MNI/config';
+import type { User } from '@MNI/db';
+import type { ErrorReporter } from 'MNI-core';
+import { OperationalError } from 'MNI-workflow';
 
-vi.mock('@n8n/instance-ai', () => ({
+vi.mock('@MNI/instance-ai', () => ({
 	createSandbox: vi.fn(),
 	createWorkspace: vi.fn(),
 	setupSandboxWorkspace: vi.fn(),
@@ -33,7 +33,7 @@ import {
 	withSandboxLifecycleTrace,
 	type InstanceAiContext,
 	type ManagedBackgroundTask,
-} from '@n8n/instance-ai';
+} from '@MNI/instance-ai';
 
 import {
 	InstanceAiSandboxService,
@@ -190,7 +190,7 @@ describe('InstanceAiSandboxService', () => {
 			const { service } = createSandboxService({
 				config: {
 					sandboxEnabled: true,
-					sandboxProvider: 'n8n-sandbox',
+					sandboxProvider: 'MNI-sandbox',
 					n8nSandboxServiceUrl: 'https://env.sandbox',
 				},
 				settingsService: { resolveN8nSandboxConfig },
@@ -199,14 +199,14 @@ describe('InstanceAiSandboxService', () => {
 
 			await expect(service.resolveSandboxConfig(fakeUser)).resolves.toMatchObject({
 				enabled: true,
-				provider: 'n8n-sandbox',
+				provider: 'MNI-sandbox',
 				serviceUrl: 'https://admin.sandbox',
 				apiKey: 'admin-key',
 			});
 			expect(getClient).not.toHaveBeenCalled();
 		});
 
-		it('merges admin n8n-sandbox credentials', async () => {
+		it('merges admin MNI-sandbox credentials', async () => {
 			const resolveN8nSandboxConfig = vi.fn(async () => ({
 				serviceUrl: 'https://admin.sandbox',
 				apiKey: 'admin-key',
@@ -214,7 +214,7 @@ describe('InstanceAiSandboxService', () => {
 			const { service } = createSandboxService({
 				config: {
 					sandboxEnabled: true,
-					sandboxProvider: 'n8n-sandbox',
+					sandboxProvider: 'MNI-sandbox',
 					n8nSandboxServiceUrl: 'https://env.sandbox',
 				},
 				settingsService: { resolveN8nSandboxConfig },
@@ -224,7 +224,7 @@ describe('InstanceAiSandboxService', () => {
 
 			expect(config).toMatchObject({
 				enabled: true,
-				provider: 'n8n-sandbox',
+				provider: 'MNI-sandbox',
 				serviceUrl: 'https://admin.sandbox',
 				apiKey: 'admin-key',
 			});
@@ -425,11 +425,11 @@ describe('InstanceAiSandboxService', () => {
 			});
 		});
 
-		it('marks n8n-sandbox sandboxes ephemeral when the env flag is set', () => {
+		it('marks MNI-sandbox sandboxes ephemeral when the env flag is set', () => {
 			const { service } = createSandboxService({
 				config: {
 					sandboxEnabled: true,
-					sandboxProvider: 'n8n-sandbox',
+					sandboxProvider: 'MNI-sandbox',
 					n8nSandboxServiceUrl: 'https://env.sandbox',
 					sandboxEphemeral: true,
 				},
@@ -437,7 +437,7 @@ describe('InstanceAiSandboxService', () => {
 
 			expect(service.getSandboxConfigFromEnv()).toMatchObject({
 				enabled: true,
-				provider: 'n8n-sandbox',
+				provider: 'MNI-sandbox',
 				ephemeral: true,
 			});
 		});
@@ -517,7 +517,7 @@ describe('InstanceAiSandboxService', () => {
 					id: 'instance-ai-thread-thread-1',
 					name: 'instance-ai-thread-thread-1',
 					labels: expect.objectContaining({
-						'n8n-builder': 'instance-ai-thread-thread-1',
+						'MNI-builder': 'instance-ai-thread-thread-1',
 						thread_id: 'thread-1',
 					}),
 				}),
@@ -529,10 +529,10 @@ describe('InstanceAiSandboxService', () => {
 			expect(setupSandboxWorkspace).toHaveBeenCalledTimes(1);
 		});
 
-		it('assigns a deterministic thread-scoped UUID for the n8n-sandbox provider', async () => {
+		it('assigns a deterministic thread-scoped UUID for the MNI-sandbox provider', async () => {
 			const n8nSandboxConfig: Overrides['config'] = {
 				sandboxEnabled: true,
-				sandboxProvider: 'n8n-sandbox',
+				sandboxProvider: 'MNI-sandbox',
 				n8nSandboxServiceUrl: 'https://env.sandbox',
 			};
 			const workspace = { init: vi.fn(async () => {}), destroy: vi.fn(async () => {}) };
@@ -546,7 +546,7 @@ describe('InstanceAiSandboxService', () => {
 			const uuidPattern = /^[0-9a-f]{8}-[0-9a-f]{4}-5[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/;
 			expect(createSandbox).toHaveBeenCalledWith(
 				expect.objectContaining({
-					provider: 'n8n-sandbox',
+					provider: 'MNI-sandbox',
 					id: expect.stringMatching(uuidPattern),
 				}),
 				expect.any(Object),
@@ -586,7 +586,7 @@ describe('InstanceAiSandboxService', () => {
 					id: 'acme-eval-instance-ai-thread-thread-1',
 					name: 'acme-eval-instance-ai-thread-thread-1',
 					labels: expect.objectContaining({
-						'n8n-builder': 'instance-ai-thread-thread-1',
+						'MNI-builder': 'instance-ai-thread-thread-1',
 						name_prefix: 'Acme-Eval',
 						thread_id: 'thread-1',
 					}),
@@ -935,7 +935,7 @@ describe('InstanceAiSandboxService', () => {
 				const { service } = createSandboxService({
 					config: {
 						sandboxEnabled: true,
-						sandboxProvider: 'n8n-sandbox',
+						sandboxProvider: 'MNI-sandbox',
 						n8nSandboxServiceUrl: 'http://sandbox.example',
 					},
 					resolveTracingConfig,
@@ -1011,13 +1011,13 @@ describe('InstanceAiSandboxService', () => {
 			await expect(service.destroySandbox('missing-thread')).resolves.toBeUndefined();
 		});
 
-		it('deletes the uncached remote sandbox for the n8n-sandbox provider', async () => {
+		it('deletes the uncached remote sandbox for the MNI-sandbox provider', async () => {
 			// No prior getOrCreateWorkspace call: simulates a thread deleted after
 			// a restart or idle eviction, when the in-process cache has no entry.
 			const { service } = createSandboxService({
 				config: {
 					sandboxEnabled: true,
-					sandboxProvider: 'n8n-sandbox',
+					sandboxProvider: 'MNI-sandbox',
 					n8nSandboxServiceUrl: 'https://env.sandbox',
 				},
 			});
@@ -1028,7 +1028,7 @@ describe('InstanceAiSandboxService', () => {
 
 			expect(createSandbox).toHaveBeenCalledWith(
 				expect.objectContaining({
-					provider: 'n8n-sandbox',
+					provider: 'MNI-sandbox',
 					id: expect.stringMatching(/^[0-9a-f-]{36}$/),
 				}),
 				expect.any(Object),
@@ -1038,7 +1038,7 @@ describe('InstanceAiSandboxService', () => {
 		});
 
 		it.each([
-			{ sandboxEnabled: false, sandboxProvider: 'n8n-sandbox' },
+			{ sandboxEnabled: false, sandboxProvider: 'MNI-sandbox' },
 			{ sandboxEnabled: false, sandboxProvider: 'daytona' },
 			{ sandboxEnabled: true, sandboxProvider: 'daytona' },
 		])('skips uncached cleanup and tracing for %j', async (config) => {
@@ -1052,7 +1052,7 @@ describe('InstanceAiSandboxService', () => {
 
 		it('traces uncached cleanup when required configuration is missing', async () => {
 			const { service, logger } = createSandboxService({
-				config: { sandboxEnabled: true, sandboxProvider: 'n8n-sandbox', n8nSandboxServiceUrl: '' },
+				config: { sandboxEnabled: true, sandboxProvider: 'MNI-sandbox', n8nSandboxServiceUrl: '' },
 			});
 			await service.destroySandbox('thread-1');
 			expect(withSandboxLifecycleTrace).toHaveBeenCalledTimes(1);
@@ -1061,7 +1061,7 @@ describe('InstanceAiSandboxService', () => {
 				threadId: 'thread-1',
 				reason: 'thread_cleanup',
 				error:
-					'N8N_SANDBOX_SERVICE_URL is required when Instance AI sandbox provider is n8n-sandbox.',
+					'MNI_SANDBOX_SERVICE_URL is required when Instance AI sandbox provider is MNI-sandbox.',
 			});
 		});
 
@@ -1069,7 +1069,7 @@ describe('InstanceAiSandboxService', () => {
 			const { service, logger } = createSandboxService({
 				config: {
 					sandboxEnabled: true,
-					sandboxProvider: 'n8n-sandbox',
+					sandboxProvider: 'MNI-sandbox',
 					n8nSandboxServiceUrl: 'https://env.sandbox',
 				},
 			});

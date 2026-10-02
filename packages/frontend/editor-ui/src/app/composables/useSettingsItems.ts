@@ -3,14 +3,14 @@ import { useUserHelpers } from './useUserHelpers';
 import { useAiGateway } from './useAiGateway';
 import { useAiGatewayTopUp } from './useAiGatewayTopUp';
 import { computed } from 'vue';
-import type { IMenuItem } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+import type { IMenuItem } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 import { VIEWS } from '../constants';
 import { isContextPreferencesEnabled } from '@/features/settings/context/context.utils';
 import { useUIStore } from '../stores/ui.store';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { hasPermission } from '../utils/rbac/permissions';
-import { MIGRATION_REPORT_TARGET_VERSION } from '@n8n/api-types';
+import { MIGRATION_REPORT_TARGET_VERSION } from '@MNI/api-types';
 import { PROMOTIONS_SETTINGS_VIEW } from '@/features/integrations/promotions.ee/promotions.constants';
 import { usePromotionsEnabled } from '@/features/shared/promotions/usePromotionsEnabled';
 
@@ -31,7 +31,7 @@ export function useSettingsItems() {
 				icon: 'chart-column-decreasing',
 				label: i18n.baseText('settings.usageAndPlan.title'),
 				position: 'top',
-				available: canUserAccessRouteByName(VIEWS.USAGE),
+				available: false,
 				route: { to: { name: VIEWS.USAGE } },
 			},
 			{
@@ -60,7 +60,7 @@ export function useSettingsItems() {
 				route: { to: { name: VIEWS.AI_SETTINGS } },
 			},
 			{
-				id: 'settings-n8n-connect',
+				id: 'settings-MNI-connect',
 				icon: 'plug-zap',
 				label: i18n.baseText(
 					settingsStore.isAiGatewayCloudUbbEnabled ? 'settings.n8nCredits' : 'settings.n8nConnect',
@@ -230,7 +230,7 @@ export function useSettingsItems() {
 	const visibleSettingsItems = computed(() => settingsItems.value.filter((item) => item.available));
 
 	const handleSettingsItemSelect = async (itemId: string) => {
-		if (itemId === 'settings-n8n-connect' && settingsStore.isAiGatewayCloudUbbEnabled) {
+		if (itemId === 'settings-MNI-connect' && settingsStore.isAiGatewayCloudUbbEnabled) {
 			await openTopUp({ source: 'settings_page' });
 		}
 	};

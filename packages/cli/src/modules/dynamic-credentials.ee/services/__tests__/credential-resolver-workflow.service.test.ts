@@ -1,9 +1,9 @@
 import type { Mocked } from 'vitest';
-import type { CredentialsRepository, User, WorkflowRepository } from '@n8n/db';
-import { CredentialsEntity, WorkflowEntity } from '@n8n/db';
-import type { ICredentialResolver } from '@n8n/decorators';
-import type { Cipher } from 'n8n-core';
-import type { INode, NodeParameterValueType } from 'n8n-workflow';
+import type { CredentialsRepository, User, WorkflowRepository } from '@MNI/db';
+import { CredentialsEntity, WorkflowEntity } from '@MNI/db';
+import type { ICredentialResolver } from '@MNI/decorators';
+import type { Cipher } from 'MNI-core';
+import type { INode, NodeParameterValueType } from 'MNI-workflow';
 
 import type { DynamicCredentialsProxy } from '@/credentials/dynamic-credentials-proxy';
 import type { WorkflowFinderService } from '@/workflows/workflow-finder.service';
@@ -65,7 +65,7 @@ const createMockNode = (overrides: Partial<INode> = {}): INode => {
 	return {
 		id: 'node-1',
 		name: 'Node1',
-		type: 'n8n-nodes-base.httpRequest',
+		type: 'MNI-nodes-base.httpRequest',
 		typeVersion: 1,
 		position: [0, 0],
 		parameters: {},
@@ -407,7 +407,7 @@ describe('CredentialResolverWorkflowService', () => {
 			mockCipher.decryptV2.mockResolvedValue('{"prefix":"test"}');
 
 			const result = await service.getWorkflowStatus('workflow-1', {
-				identity: 'n8n-session-jwt',
+				identity: 'MNI-session-jwt',
 				version: 1 as const,
 				metadata: { source: 'cookie-source', method: 'GET', endpoint: 'rest' },
 			});
@@ -447,7 +447,7 @@ describe('CredentialResolverWorkflowService', () => {
 			mockCipher.decryptV2.mockResolvedValue('{"prefix":"test"}');
 
 			const result = await service.getWorkflowStatus('workflow-1', {
-				identity: 'n8n-session-jwt',
+				identity: 'MNI-session-jwt',
 				version: 1 as const,
 				metadata: { source: 'cookie-source', method: 'GET', endpoint: 'rest' },
 			});
@@ -575,7 +575,7 @@ describe('CredentialResolverWorkflowService', () => {
 				createMockNode({
 					id: 'exec-node',
 					name: 'Execute Workflow',
-					type: 'n8n-nodes-base.executeWorkflow',
+					type: 'MNI-nodes-base.executeWorkflow',
 					parameters: { source: 'database', workflowId: subWorkflowId as NodeParameterValueType },
 					...overrides,
 				});
@@ -639,7 +639,7 @@ describe('CredentialResolverWorkflowService', () => {
 						nodes: [
 							createExecuteWorkflowNode(
 								{ value: 'sub-1' },
-								{ type: '@n8n/n8n-nodes-langchain.toolWorkflow' },
+								{ type: '@MNI/MNI-nodes-langchain.toolWorkflow' },
 							),
 						],
 						settings: { credentialResolverId: 'resolver-1' },
@@ -664,7 +664,7 @@ describe('CredentialResolverWorkflowService', () => {
 						nodes: [
 							createExecuteWorkflowNode(
 								{ value: 'sub-1' },
-								{ type: '@n8n/n8n-nodes-langchain.retrieverWorkflow' },
+								{ type: '@MNI/MNI-nodes-langchain.retrieverWorkflow' },
 							),
 						],
 						settings: { credentialResolverId: 'resolver-1' },

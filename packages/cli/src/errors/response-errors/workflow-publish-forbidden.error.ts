@@ -1,7 +1,7 @@
 import type {
 	WorkflowPublishForbiddenDetails,
 	WorkflowPublishForbiddenReason,
-} from '@n8n/api-types';
+} from '@MNI/api-types';
 
 import { ForbiddenError } from './forbidden.error';
 

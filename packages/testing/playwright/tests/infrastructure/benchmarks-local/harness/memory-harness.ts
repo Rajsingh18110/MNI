@@ -1,5 +1,5 @@
 import type { TestInfo } from '@playwright/test';
-import type { MetricsHelper } from 'n8n-containers';
+import type { MetricsHelper } from 'MNI-containers';
 
 import {
 	attachMetric,

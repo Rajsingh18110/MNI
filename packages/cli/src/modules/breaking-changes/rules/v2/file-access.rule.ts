@@ -1,7 +1,7 @@
-import type { BreakingChangeAffectedWorkflow, BreakingChangeRecommendation } from '@n8n/api-types';
-import type { WorkflowEntity } from '@n8n/db';
-import { BreakingChangeRule } from '@n8n/decorators';
-import type { INode } from 'n8n-workflow';
+import type { BreakingChangeAffectedWorkflow, BreakingChangeRecommendation } from '@MNI/api-types';
+import type { WorkflowEntity } from '@MNI/db';
+import { BreakingChangeRule } from '@MNI/decorators';
+import type { INode } from 'MNI-workflow';
 
 import type {
 	BreakingChangeRuleMetadata,
@@ -12,7 +12,7 @@ import { BreakingChangeCategory } from '../../types';
 
 @BreakingChangeRule({ version: 'v2' })
 export class FileAccessRule implements IBreakingChangeWorkflowRule {
-	private readonly FILE_NODES = ['n8n-nodes-base.readWriteFile', 'n8n-nodes-base.readBinaryFiles'];
+	private readonly FILE_NODES = ['MNI-nodes-base.readWriteFile', 'MNI-nodes-base.readBinaryFiles'];
 
 	id: string = 'file-access-restriction-v2';
 
@@ -24,7 +24,7 @@ export class FileAccessRule implements IBreakingChangeWorkflowRule {
 			category: BreakingChangeCategory.workflow,
 			severity: 'medium',
 			documentationUrl:
-				'https://docs.n8n.io/2-0-breaking-changes/#set-default-value-for-n8nrestrictfileaccessto',
+				'https://docs.n8n.io/2-0-breaking-changes/#set-default-value-for-MNIrestrictfileaccessto',
 		};
 	}
 
@@ -35,7 +35,7 @@ export class FileAccessRule implements IBreakingChangeWorkflowRule {
 			{
 				action: 'Configure file access paths',
 				description:
-					'Set N8N_RESTRICT_FILE_ACCESS_TO to a semicolon-separated list of allowed paths if workflows need to access files outside the default directory',
+					'Set MNI_RESTRICT_FILE_ACCESS_TO to a semicolon-separated list of allowed paths if workflows need to access files outside the default directory',
 			},
 		];
 	}

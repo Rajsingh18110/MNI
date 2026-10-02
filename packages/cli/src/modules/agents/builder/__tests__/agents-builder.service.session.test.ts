@@ -1,8 +1,8 @@
-import type { BuiltTelemetry, BuiltTool, CredentialProvider, StreamChunk } from '@n8n/agents';
-import type { Logger } from '@n8n/backend-common';
-import type { AiConfig } from '@n8n/config';
-import type { User } from '@n8n/db';
-import type { InstanceAiCredentialService } from '@n8n/instance-ai';
+import type { BuiltTelemetry, BuiltTool, CredentialProvider, StreamChunk } from '@MNI/agents';
+import type { Logger } from '@MNI/backend-common';
+import type { AiConfig } from '@MNI/config';
+import type { User } from '@MNI/db';
+import type { InstanceAiCredentialService } from '@MNI/instance-ai';
 import { mock } from 'vitest-mock-extended';
 
 import type { NodeCatalogService } from '@/node-catalog';
@@ -10,15 +10,15 @@ import type { NodeCatalogService } from '@/node-catalog';
 import type { InstanceAiCreditService } from '../../../instance-ai/instance-ai-credit.service';
 import type { AgentsService } from '../../agents.service';
 import type { Agent as AgentEntity } from '../../entities/agent.entity';
-import type { N8NCheckpointStorage } from '../../integrations/n8n-checkpoint-storage';
-import type { N8nMemory, N8nMemoryImpl } from '../../integrations/n8n-memory';
+import type { N8NCheckpointStorage } from '../../integrations/MNI-checkpoint-storage';
+import type { N8nMemory, N8nMemoryImpl } from '../../integrations/MNI-memory';
 import type { AgentsBuilderToolsService } from '../agents-builder-tools.service';
 import { AgentsBuilderService } from '../agents-builder.service';
 
 const aiConfigMock = mock<AiConfig>();
 
 // The `Agent`/`Memory` SDK classes and observational-memory factories are
-// imported inside `agents-builder.service.ts` from `@n8n/agents`. Stubbing
+// imported inside `agents-builder.service.ts` from `@MNI/agents`. Stubbing
 // them here lets us capture the persistence/memory options passed to the
 // runtime without standing up a real model/tool/telemetry stack.
 const agentsSdkMocks = vi.hoisted(() => {
@@ -145,8 +145,8 @@ const agentsSdkMocks = vi.hoisted(() => {
 	};
 });
 
-vi.mock('@n8n/agents', async (importOriginal) => ({
-	...(await importOriginal<typeof import('@n8n/agents')>()),
+vi.mock('@MNI/agents', async (importOriginal) => ({
+	...(await importOriginal<typeof import('@MNI/agents')>()),
 	Agent: agentsSdkMocks.MockAgent,
 	Memory: agentsSdkMocks.MockMemory,
 	createObservationLogObserveFn: agentsSdkMocks.createObservationLogObserveFn,

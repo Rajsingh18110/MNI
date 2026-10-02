@@ -1,6 +1,6 @@
 import { NodeTestHarness } from '@nodes-testing/node-test-harness';
 import { readFileSync } from 'fs';
-import { jsonParse, type IDataObject, type INode } from 'n8n-workflow';
+import { jsonParse, type IDataObject, type INode } from 'MNI-workflow';
 import nock from 'nock';
 import { join } from 'path';
 
@@ -118,7 +118,7 @@ describe('Test MicrosoftTeamsV2, channelMessage => create with mentions', () => 
 		const workflow = jsonParse<{ nodes: INode[] }>(
 			readFileSync(join(__dirname, 'create.mentions.workflow.json'), 'utf8'),
 		);
-		const teams = workflow.nodes.find((node) => node.type === 'n8n-nodes-base.microsoftTeams');
+		const teams = workflow.nodes.find((node) => node.type === 'MNI-nodes-base.microsoftTeams');
 		const rows = ((teams?.parameters.mentions as IDataObject)?.mention ?? []) as IDataObject[];
 
 		expect(rows).toHaveLength(2);

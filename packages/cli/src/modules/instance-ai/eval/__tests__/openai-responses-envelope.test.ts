@@ -1,4 +1,4 @@
-import type { EvalMockHttpResponse } from 'n8n-core';
+import type { EvalMockHttpResponse } from 'MNI-core';
 
 import {
 	buildResponsesErrorEnvelope,

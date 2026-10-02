@@ -1,4 +1,4 @@
-import type { INodeTypeDescription } from 'n8n-workflow';
+import type { INodeTypeDescription } from 'MNI-workflow';
 
 import { serverToNodeDescription } from '../node-description-transform';
 import { notionMockServer, linearMockServer } from '../registry/mock-servers';
@@ -82,7 +82,7 @@ describe('synthesizeNodeTypeDef', () => {
 		it('synthesizes a community node with constant expression connections', () => {
 			const description: INodeTypeDescription = {
 				...baseDescription,
-				name: 'n8n-nodes-firecrawl.firecrawl',
+				name: 'MNI-nodes-firecrawl.firecrawl',
 				displayName: 'Firecrawl',
 				inputs: '={{["main"]}}',
 				outputs: '={{["main"]}}',
@@ -98,7 +98,7 @@ describe('synthesizeNodeTypeDef', () => {
 		it('synthesizes a node with parameter-dependent expression inputs', () => {
 			const description: INodeTypeDescription = {
 				...baseDescription,
-				name: 'n8n-nodes-custom.customAgent',
+				name: 'MNI-nodes-custom.customAgent',
 				displayName: 'Custom Agent',
 				inputs: '={{ [{ type: "main" }, { type: "ai_languageModel", required: true }] }}',
 				outputs: ['main'],

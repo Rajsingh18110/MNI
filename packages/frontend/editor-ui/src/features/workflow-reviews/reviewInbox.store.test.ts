@@ -2,9 +2,9 @@ import type {
 	ListWorkflowReviewInboxResponse,
 	WorkflowReviewInboxItem,
 	WorkflowReviewRequestDetail,
-} from '@n8n/api-types';
+} from '@MNI/api-types';
 import { createPinia, setActivePinia } from 'pinia';
-import { ResponseError } from '@n8n/rest-api-client';
+import { ResponseError } from '@MNI/rest-api-client';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 import * as workflowReviewsApi from './workflowReviews.api';

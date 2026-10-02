@@ -1,10 +1,10 @@
-import { Logger } from '@n8n/backend-common';
-import { AgentsConfig } from '@n8n/config';
-import { Time } from '@n8n/constants';
-import { OnPubSubEvent } from '@n8n/decorators';
-import { Container, Service } from '@n8n/di';
-import type { ExecutionStatus, IRunData, ITaskData, TerminalExecutionStatus } from 'n8n-workflow';
-import { isTerminalExecutionStatus, WorkflowOperationError } from 'n8n-workflow';
+import { Logger } from '@MNI/backend-common';
+import { AgentsConfig } from '@MNI/config';
+import { Time } from '@MNI/constants';
+import { OnPubSubEvent } from '@MNI/decorators';
+import { Container, Service } from '@MNI/di';
+import type { ExecutionStatus, IRunData, ITaskData, TerminalExecutionStatus } from 'MNI-workflow';
+import { isTerminalExecutionStatus, WorkflowOperationError } from 'MNI-workflow';
 
 import { ExecutionPersistence } from '@/executions/execution-persistence';
 import { Publisher } from '@/scaling/pubsub/publisher.service';

@@ -1,12 +1,12 @@
-import { PrometheusMetricsConfig } from '@n8n/config';
-import { Service } from '@n8n/di';
+import { PrometheusMetricsConfig } from '@MNI/config';
+import { Service } from '@MNI/di';
 import { readFileSync } from 'node:fs';
 import promClient from 'prom-client';
 
 import type { PrometheusMetricsCollector } from './base';
 
 /**
- * Exposes `n8n_process_pss_bytes` — Proportional Set Size, a fairer memory metric than RSS
+ * Exposes `MNI_process_pss_bytes` — Proportional Set Size, a fairer memory metric than RSS
  * for containerized environments (shared pages split proportionally, not double-counted).
  * Only available on Linux kernel 4.14+ via `/proc/self/smaps_rollup`.
  */

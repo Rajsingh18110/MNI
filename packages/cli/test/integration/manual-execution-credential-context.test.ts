@@ -10,16 +10,16 @@
  *  - A blocklisted cookie (simulating logout) makes the resolver fail.
  */
 
-import { LicenseState } from '@n8n/backend-common';
-import { testDb, createWorkflow } from '@n8n/backend-test-utils';
-import { ExecutionRepository, InvalidAuthTokenRepository, type IWorkflowDb } from '@n8n/db';
-import { Container } from '@n8n/di';
-import { Cipher } from 'n8n-core';
-import { toCredentialContext, toExecutionContext, type IExecutionContext } from 'n8n-workflow';
+import { LicenseState } from '@MNI/backend-common';
+import { testDb, createWorkflow } from '@MNI/backend-test-utils';
+import { ExecutionRepository, InvalidAuthTokenRepository, type IWorkflowDb } from '@MNI/db';
+import { Container } from '@MNI/di';
+import { Cipher } from 'MNI-core';
+import { toCredentialContext, toExecutionContext, type IExecutionContext } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import { AuthService } from '@/auth/auth.service';
-import { N8NIdentifier } from '@/modules/dynamic-credentials.ee/credential-resolvers/identifiers/n8n-identifier';
+import { N8NIdentifier } from '@/modules/dynamic-credentials.ee/credential-resolvers/identifiers/MNI-identifier';
 import { WorkflowExecutionService } from '@/workflows/workflow-execution.service';
 
 import { createOwner, createMember } from './shared/db/users';
@@ -46,7 +46,7 @@ describe('Manual execution credential context (integration)', () => {
 	beforeAll(async () => {
 		await testDb.init();
 
-		const nodeTypes = loadNodesFromDist(['n8n-nodes-base.manualTrigger']);
+		const nodeTypes = loadNodesFromDist(['MNI-nodes-base.manualTrigger']);
 		await utils.initNodeTypes(nodeTypes);
 		await utils.initBinaryDataService();
 

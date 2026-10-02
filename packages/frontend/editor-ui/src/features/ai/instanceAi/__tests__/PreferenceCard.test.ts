@@ -2,14 +2,14 @@ import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { createTestingPinia } from '@pinia/testing';
 import userEvent from '@testing-library/user-event';
 import { screen, waitFor } from '@testing-library/vue';
-import type { InstanceAiEvent, InstanceAiToolCallState } from '@n8n/api-types';
-import { AI_PREFERENCE_CONTENT_MAX_LENGTH } from '@n8n/api-types';
-import { ResponseError } from '@n8n/rest-api-client';
-import { STORES } from '@n8n/stores';
-import { TELEMETRY_EVENT } from '@n8n/telemetry';
+import type { InstanceAiEvent, InstanceAiToolCallState } from '@MNI/api-types';
+import { AI_PREFERENCE_CONTENT_MAX_LENGTH } from '@MNI/api-types';
+import { ResponseError } from '@MNI/rest-api-client';
+import { STORES } from '@MNI/stores';
+import { TELEMETRY_EVENT } from '@MNI/telemetry';
 
 import { mockedStore } from '@/__tests__/utils';
-import { useUsersStore } from '@n8n/stores/users.store';
+import { useUsersStore } from '@MNI/stores/users.store';
 import { useProjectsStore } from '@/features/collaboration/projects/projects.store';
 import { useContextStore } from '@/features/settings/context/context.store';
 import type { Preference } from '@/features/settings/context/context.types';
@@ -25,16 +25,16 @@ vi.mock('../instanceAi.api', () => ({
 }));
 
 const track = vi.fn();
-vi.mock('@n8n/composables/useTelemetry', () => ({
+vi.mock('@MNI/composables/useTelemetry', () => ({
 	useTelemetry: () => ({ track }),
 }));
 
-vi.mock('@n8n/stores/useRootStore', () => ({
+vi.mock('@MNI/stores/useRootStore', () => ({
 	useRootStore: () => ({ restApiContext: { baseUrl: '/rest', pushRef: 'x' } }),
 }));
 
-vi.mock('@n8n/i18n', async (importOriginal) => ({
-	...(await importOriginal<typeof import('@n8n/i18n')>()),
+vi.mock('@MNI/i18n', async (importOriginal) => ({
+	...(await importOriginal<typeof import('@MNI/i18n')>()),
 	useI18n: () => ({
 		baseText: (key: string, opts?: { interpolate?: Record<string, unknown> }) =>
 			opts?.interpolate ? `${key}:${JSON.stringify(opts.interpolate)}` : key,

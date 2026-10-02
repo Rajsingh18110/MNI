@@ -1,18 +1,18 @@
-import { UpdateWorkflowHistoryVersionDto } from '@n8n/api-types';
-import { Logger } from '@n8n/backend-common';
-import type { User } from '@n8n/db';
+import { UpdateWorkflowHistoryVersionDto } from '@MNI/api-types';
+import { Logger } from '@MNI/backend-common';
+import type { User } from '@MNI/db';
 import {
 	WorkflowHistory,
 	WorkflowHistoryRepository,
 	WorkflowPublishHistoryRepository,
 	WorkflowRepository,
-} from '@n8n/db';
-import { Service } from '@n8n/di';
-import type { EntityManager } from '@n8n/typeorm';
-import { In } from '@n8n/typeorm';
-import type { IWorkflowBase } from 'n8n-workflow';
-import { ensureError } from '@n8n/utils/errors/ensure-error';
-import { UnexpectedError } from 'n8n-workflow';
+} from '@MNI/db';
+import { Service } from '@MNI/di';
+import type { EntityManager } from '@MNI/typeorm';
+import { In } from '@MNI/typeorm';
+import type { IWorkflowBase } from 'MNI-workflow';
+import { ensureError } from '@MNI/utils/errors/ensure-error';
+import { UnexpectedError } from 'MNI-workflow';
 
 import { SharedWorkflowNotFoundError } from '@/errors/shared-workflow-not-found.error';
 import { WorkflowHistoryVersionNotFoundError } from '@/errors/workflow-history-version-not-found.error';
@@ -186,7 +186,7 @@ export class WorkflowHistoryService {
 		}
 
 		const name = typeof user === 'string' ? user : `${user.firstName} ${user.lastName}`;
-		const authors = source === 'n8n-mcp' ? `${name} (via MCP)` : name;
+		const authors = source === 'MNI-mcp' ? `${name} (via MCP)` : name;
 
 		const repository = transactionManager
 			? transactionManager.getRepository(WorkflowHistory)

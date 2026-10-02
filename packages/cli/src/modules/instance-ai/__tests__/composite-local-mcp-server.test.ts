@@ -1,5 +1,5 @@
-import type { McpTool, McpToolCallRequest, McpToolCallResult } from '@n8n/api-types';
-import type { LocalMcpServer } from '@n8n/instance-ai';
+import type { McpTool, McpToolCallRequest, McpToolCallResult } from '@MNI/api-types';
+import type { LocalMcpServer } from '@MNI/instance-ai';
 
 import {
 	CompositeLocalMcpServer,

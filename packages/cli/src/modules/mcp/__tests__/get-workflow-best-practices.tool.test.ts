@@ -1,9 +1,9 @@
-import { User } from '@n8n/db';
+import { User } from '@MNI/db';
 import {
 	bestPracticesRegistry,
 	TechniqueDescription,
 	WorkflowTechnique,
-} from '@n8n/workflow-sdk/prompts/best-practices';
+} from '@MNI/workflow-sdk/prompts/best-practices';
 import type { Mocked } from 'vitest';
 import { mock } from 'vitest-mock-extended';
 
@@ -16,7 +16,7 @@ import { createGetWorkflowBestPracticesTool } from '../tools/workflow-builder/ge
 const structuredOf = (result: { structuredContent?: unknown }) =>
 	result.structuredContent as Record<string, unknown> | undefined;
 
-vi.mock('@n8n/ai-workflow-builder', () => ({
+vi.mock('@MNI/ai-workflow-builder', () => ({
 	MCP_GET_WORKFLOW_BEST_PRACTICES_TOOL: {
 		toolName: 'get_workflow_best_practices',
 		displayTitle: 'Getting workflow best practices',

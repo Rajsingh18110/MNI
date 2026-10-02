@@ -6,7 +6,7 @@ import {
 	type IExecuteFunctions,
 	type INodeTypes,
 	type NodeParameterValueType,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { GoogleSheet } from '../../Google/Sheet/v2/helpers/GoogleSheet';
 import { Evaluation } from '../Evaluation/Evaluation.node.ee';
@@ -30,7 +30,7 @@ describe('Test Evaluation', () => {
 		(mockExecuteFunctions.getInputData as Mock).mockReturnValue([{ json: {} }]);
 		(mockExecuteFunctions.getNode as Mock).mockReturnValue({ typeVersion: 4.6 });
 		(mockExecuteFunctions.getParentNodes as Mock).mockReturnValue([
-			{ type: 'n8n-nodes-base.evaluationTrigger', name: 'Evaluation' },
+			{ type: 'MNI-nodes-base.evaluationTrigger', name: 'Evaluation' },
 		]);
 		(mockExecuteFunctions.evaluateExpression as Mock).mockReturnValue({
 			row_number: 23,
@@ -481,7 +481,7 @@ describe('Test Evaluation', () => {
 
 		test('should return output in evaluation branch if evaluation execution', async () => {
 			(mockExecuteFunctions.getParentNodes as Mock).mockReturnValue([
-				{ type: 'n8n-nodes-base.evaluationTrigger', name: 'Evaluation' },
+				{ type: 'MNI-nodes-base.evaluationTrigger', name: 'Evaluation' },
 			]);
 
 			const result = await new Evaluation().execute.call(mockExecuteFunctions);

@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { computed, ref, useCssModule, watch } from 'vue';
 import { useNodeConnections } from '@/app/composables/useNodeConnections';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import { useCanvasNode } from '../../../../composables/useCanvasNode';
 import type { CanvasNodeDefaultRender } from '../../../../canvas.types';
 import { injectCanvasRenderData } from '@/features/workflows/canvas/canvas.utils';

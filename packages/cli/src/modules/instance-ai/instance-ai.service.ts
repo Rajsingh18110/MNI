@@ -1,4 +1,4 @@
-import { AgentEvent, createScopedWorkspace, filterRuntimeSkillSource } from '@n8n/agents';
+import { AgentEvent, createScopedWorkspace, filterRuntimeSkillSource } from '@MNI/agents';
 import type {
 	AgentDbMessage,
 	Message,
@@ -6,8 +6,8 @@ import type {
 	ScopedMemoryTaskEvent,
 	AgentEventData,
 	MemoryTaskUsageReport,
-} from '@n8n/agents';
-import { getPromptWorkspaceRoot, getWorkspaceRoot } from '@n8n/agents/sandbox';
+} from '@MNI/agents';
+import { getPromptWorkspaceRoot, getWorkspaceRoot } from '@MNI/agents/sandbox';
 import {
 	applyBranchReadOnlyOverrides,
 	buildProxyHeaders,
@@ -36,18 +36,18 @@ import {
 	INSTANCE_CONTEXT_SURFACE_DEPTH,
 	type InstanceAiEvalThreadMemoryResponse,
 	type InstanceAiThreadArtifactsContext,
-} from '@n8n/api-types';
-import { Logger, ModuleRegistry } from '@n8n/backend-common';
-import { SsrfProtectionService } from '@n8n/backend-network';
+} from '@MNI/api-types';
+import { Logger, ModuleRegistry } from '@MNI/backend-common';
+import { SsrfProtectionService } from '@MNI/backend-network';
 import {
 	GlobalConfig,
 	SsrfProtectionConfig,
 	type AiConfig,
 	type InstanceAiConfig,
-} from '@n8n/config';
-import { UserRepository, type User } from '@n8n/db';
-import { OnPubSubEvent } from '@n8n/decorators';
-import { Container, Service } from '@n8n/di';
+} from '@MNI/config';
+import { UserRepository, type User } from '@MNI/db';
+import { OnPubSubEvent } from '@MNI/decorators';
+import { Container, Service } from '@MNI/di';
 import {
 	CONCISE_PROMPT_VERSION,
 	MAX_STEPS,
@@ -139,19 +139,19 @@ import {
 	WorkflowTaskCoordinator,
 	WorkflowLoopStorage,
 	ThreadTaskStorage,
-} from '@n8n/instance-ai';
-import { buildResumeData, toConfirmationData } from '@n8n/instance-ai/confirmation-payload';
-import type { Scope } from '@n8n/permissions';
-import { redactTelemetryProperties, redactTelemetryText, TELEMETRY_EVENT } from '@n8n/telemetry';
-import { getErrorMessage } from '@n8n/utils/errors/get-error-message';
-import { isRecord } from '@n8n/utils/is-record';
-import { lazyImport } from '@n8n/utils/lazy-import';
-import { setSchemaBaseDirs } from '@n8n/workflow-sdk';
-import { ErrorReporter, InstanceSettings } from 'n8n-core';
-import { OperationalError, UnexpectedError, UserError } from 'n8n-workflow';
+} from '@MNI/instance-ai';
+import { buildResumeData, toConfirmationData } from '@MNI/instance-ai/confirmation-payload';
+import type { Scope } from '@MNI/permissions';
+import { redactTelemetryProperties, redactTelemetryText, TELEMETRY_EVENT } from '@MNI/telemetry';
+import { getErrorMessage } from '@MNI/utils/errors/get-error-message';
+import { isRecord } from '@MNI/utils/is-record';
+import { lazyImport } from '@MNI/utils/lazy-import';
+import { setSchemaBaseDirs } from '@MNI/workflow-sdk';
+import { ErrorReporter, InstanceSettings } from 'MNI-core';
+import { OperationalError, UnexpectedError, UserError } from 'MNI-workflow';
 import { nanoid } from 'nanoid';
 
-import { N8N_VERSION, WORKFLOW_SDK_VERSION } from '@/constants';
+import { MNI_VERSION, WORKFLOW_SDK_VERSION } from '@/constants';
 import { BadRequestError } from '@/errors/response-errors/bad-request.error';
 import { ForbiddenError } from '@/errors/response-errors/forbidden.error';
 import { EventService } from '@/events/event.service';
@@ -171,7 +171,7 @@ import {
 import { AiService } from '@/services/ai.service';
 import { InstanceWriteAccessService } from '@/services/instance-write-access.service';
 import { ProxyTokenManager } from '@/services/proxy-token-manager';
-import { UrlService } from '@n8n/backend-services';
+import { UrlService } from '@MNI/backend-services';
 import { Telemetry } from '@/telemetry';
 import { assertNever } from '@/utils';
 
@@ -327,7 +327,7 @@ function buildHandoffContextBlock(context: InstanceAiHandoffContext | undefined)
 	const prose = [
 		'The user opened this conversation from the credential setup modal and is asking for setup guidance.',
 		...lines,
-		'Use this metadata only as setup context. Never ask the user to paste credential secrets into chat. For credential setup docs, load `n8n-docs-assistant` and use `n8n-docs` with `intent: "credential-setup"`.',
+		'Use this metadata only as setup context. Never ask the user to paste credential secrets into chat. For credential setup docs, load `MNI-docs-assistant` and use `MNI-docs` with `intent: "credential-setup"`.',
 		placeholderTitles.length
 			? `Because the form is pre-filled, give step-by-step guidance on where to obtain the listed value(s) on the provider side${credential.docsUrl ? ' — direct the user to the provider page above rather than re-researching' : ' (research the provider if needed)'} — and do NOT suggest editing the auth template, test URL, or any other credential field.`
 			: '',
@@ -380,7 +380,7 @@ function isSandboxEndpointNotAllowedError(error: unknown): boolean {
 }
 
 function isStaleResumeError(error: unknown): boolean {
-	// Name check instead of instanceof: the class crosses the @n8n/agents package boundary.
+	// Name check instead of instanceof: the class crosses the @MNI/agents package boundary.
 	return error instanceof Error && error.name === 'StaleResumeError';
 }
 
@@ -661,7 +661,7 @@ type InstanceContextGates = Pick<
 type InstanceAgent = Awaited<ReturnType<typeof createInstanceAgent>>['agent'];
 
 /**
- * Normalises `N8N_INSTANCE_AI_PROMPT_VERSION`. Blank and absent both mean "no
+ * Normalises `MNI_INSTANCE_AI_PROMPT_VERSION`. Blank and absent both mean "no
  * pin" and must become `undefined`: passing `''` on to `resolvePromptProfile`
  * would report a fallback from an empty version instead of a clean default
  * selection.
@@ -975,7 +975,7 @@ export class InstanceAiService {
 		});
 		const featureHeaders = buildProxyHeaders({
 			feature: 'instance-ai',
-			n8nVersion: N8N_VERSION,
+			n8nVersion: MNI_VERSION,
 		});
 
 		return {
@@ -1421,7 +1421,7 @@ export class InstanceAiService {
 	 * instance for the confirmation timeout. To close it, run state must leave memory.
 	 *
 	 * Either cap is disabled by setting it to `-1` (unlimited), matching
-	 * `N8N_CONCURRENCY_PRODUCTION_LIMIT`. The config schema rejects `0`, so it can't reach
+	 * `MNI_CONCURRENCY_PRODUCTION_LIMIT`. The config schema rejects `0`, so it can't reach
 	 * here and be mistaken for either reading.
 	 */
 	private assertRunAdmissible(user: User): void {
@@ -3900,7 +3900,7 @@ export class InstanceAiService {
 					input: traceInput,
 					metadata: threadProvenance,
 					proxyConfig: proxyRunConfig.tracingProxyConfig,
-					n8nVersion: N8N_VERSION,
+					n8nVersion: MNI_VERSION,
 					workflowSdkVersion: WORKFLOW_SDK_VERSION,
 					browserExtension,
 				});
@@ -4039,8 +4039,8 @@ export class InstanceAiService {
 			// create a minimal context that only supports replay/record wrapping.
 			if (!tracing && process.env.E2E_TESTS === 'true') {
 				const { createTraceReplayOnlyContext } = await lazyImport<
-					typeof import('@n8n/instance-ai')
-				>(async () => await import('@n8n/instance-ai'));
+					typeof import('@MNI/instance-ai')
+				>(async () => await import('@MNI/instance-ai'));
 				tracing = createTraceReplayOnlyContext();
 			}
 
@@ -7143,7 +7143,7 @@ export class InstanceAiService {
 				},
 				proxyConfig: baseTracing?.proxyConfig,
 				metadata: {
-					n8n_version: N8N_VERSION || undefined,
+					MNI_version: MNI_VERSION || undefined,
 					operation_name: 'thread_title',
 					trigger: 'run_completed',
 				},

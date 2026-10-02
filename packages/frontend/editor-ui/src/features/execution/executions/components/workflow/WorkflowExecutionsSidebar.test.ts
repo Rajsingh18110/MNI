@@ -2,14 +2,14 @@ import { createTestingPinia } from '@pinia/testing';
 import { createComponentRenderer } from '@/__tests__/render';
 import type { MockedStore } from '@/__tests__/utils';
 import WorkflowExecutionsSidebar from './WorkflowExecutionsSidebar.vue';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { mockedStore, SETTINGS_STORE_DEFAULT_STATE } from '@/__tests__/utils';
-import { STORES } from '@n8n/stores';
+import { STORES } from '@MNI/stores';
 import merge from 'lodash/merge';
 import { expect, it, vi } from 'vitest';
 import { computed, nextTick } from 'vue';
 import { WorkflowIdKey } from '@/app/constants/injectionKeys';
-import type { ExecutionSummary } from 'n8n-workflow';
+import type { ExecutionSummary } from 'MNI-workflow';
 
 const observe = vi.fn();
 const disconnect = vi.fn();

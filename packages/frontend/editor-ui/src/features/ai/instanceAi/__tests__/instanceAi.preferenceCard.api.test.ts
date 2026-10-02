@@ -1,11 +1,11 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import type { MockInstance } from 'vitest';
-import * as apiUtils from '@n8n/rest-api-client';
-import type { IRestApiContext } from '@n8n/rest-api-client';
+import * as apiUtils from '@MNI/rest-api-client';
+import type { IRestApiContext } from '@MNI/rest-api-client';
 
 import { editPreferenceCard, undoPreferenceCard } from '../instanceAi.api';
 
-vi.mock('@n8n/rest-api-client');
+vi.mock('@MNI/rest-api-client');
 
 // The card tests mock these wrappers, so the endpoint paths and bodies are pinned here.
 describe('preference card API', () => {

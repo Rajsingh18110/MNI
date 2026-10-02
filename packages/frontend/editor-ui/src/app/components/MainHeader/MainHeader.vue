@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import TabBar from '@/app/components/MainHeader/TabBar.vue';
 import WorkflowDetails from '@/app/components/MainHeader/WorkflowDetails.vue';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import { usePushConnection } from '@/app/composables/usePushConnection';
 import { MAIN_HEADER_TABS, STICKY_NODE_TYPE, VIEWS } from '@/app/constants';
 import { useExecutionsStore } from '@/features/execution/executions/executions.store';
 import { injectNDVStoreIfProvided } from '@/features/ndv/shared/ndv.store';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { useUIStore } from '@/app/stores/ui.store';
 import { useWorkflowsListStore } from '@/app/stores/workflowsList.store';
 import { computed, inject, onBeforeMount, onBeforeUnmount, onMounted, ref, watch } from 'vue';
@@ -17,7 +17,7 @@ import { useInjectWorkflowId } from '@/app/composables/useInjectWorkflowId';
 
 import type { FolderShortInfo } from '@/features/core/folders/folders.types';
 
-import { useToast } from '@n8n/composables/useToast';
+import { useToast } from '@MNI/composables/useToast';
 const router = useRouter();
 const route = useRoute();
 const locale = useI18n();

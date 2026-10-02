@@ -1,5 +1,5 @@
-import type { INode, INodeExecutionData, IPinData, IRunExecutionData } from 'n8n-workflow';
-import { createRunExecutionData } from 'n8n-workflow';
+import type { INode, INodeExecutionData, IPinData, IRunExecutionData } from 'MNI-workflow';
+import { createRunExecutionData } from 'MNI-workflow';
 
 interface TriggerExecutionDataInput {
 	triggerNode: INode;

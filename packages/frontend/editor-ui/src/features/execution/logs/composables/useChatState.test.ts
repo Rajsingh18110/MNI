@@ -6,14 +6,14 @@ import { useChatState } from './useChatState';
 import { useWorkflowsStore } from '@/app/stores/workflows.store';
 import { useWorkflowExecutionStateStore } from '@/app/stores/workflowExecutionState.store';
 import { useLogsStore } from '@/app/stores/logs.store';
-import { useRootStore } from '@n8n/stores/useRootStore';
+import { useRootStore } from '@MNI/stores/useRootStore';
 import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';
 import {
 	useWorkflowDocumentStore,
 	createWorkflowDocumentId,
 } from '@/app/stores/workflowDocument.store';
 import { createTestWorkflow } from '@/__tests__/mocks';
-import type { INode } from 'n8n-workflow';
+import type { INode } from 'MNI-workflow';
 import * as useRunWorkflowModule from '@/app/composables/useRunWorkflow';
 
 vi.mock('@/app/composables/useRunWorkflow');
@@ -40,7 +40,7 @@ vi.mock('@/app/composables/useNodeHelpers', () => ({
 		updateNodesExecutionIssues: vi.fn(),
 	})),
 }));
-vi.mock('@n8n/i18n', async (importOriginal) => {
+vi.mock('@MNI/i18n', async (importOriginal) => {
 	const actual: Record<string, unknown> = await importOriginal();
 	return {
 		...actual,
@@ -74,7 +74,7 @@ describe('useChatState', () => {
 	// - Multiple 'responseMode' parameters with different defaults based on /availableInChat
 	const mockNodeType = {
 		group: [],
-		name: '@n8n/n8n-nodes-langchain.chatTrigger',
+		name: '@MNI/MNI-nodes-langchain.chatTrigger',
 		properties: [
 			{ name: 'public', type: 'boolean', default: false },
 			{ name: 'availableInChat', type: 'boolean', default: false },
@@ -128,7 +128,7 @@ describe('useChatState', () => {
 	const mockChatTriggerNode: INode = {
 		id: 'chat-trigger-id',
 		name: 'ChatTrigger',
-		type: '@n8n/n8n-nodes-langchain.chatTrigger',
+		type: '@MNI/MNI-nodes-langchain.chatTrigger',
 		typeVersion: 1,
 		position: [0, 0],
 		parameters: {

@@ -1,6 +1,6 @@
-import { sleep } from '@n8n/utils/sleep';
-import type { IExecuteFunctions, INode } from 'n8n-workflow';
-import { NodeApiError } from 'n8n-workflow';
+import { sleep } from '@MNI/utils/sleep';
+import type { IExecuteFunctions, INode } from 'MNI-workflow';
+import { NodeApiError } from 'MNI-workflow';
 import { mockDeep } from 'vitest-mock-extended';
 
 import {
@@ -10,7 +10,7 @@ import {
 } from '../GenericFunctions';
 
 // Neutralize the retry back-off so tests don't actually wait.
-vi.mock('@n8n/utils/sleep', () => ({ sleep: vi.fn().mockResolvedValue(undefined) }));
+vi.mock('@MNI/utils/sleep', () => ({ sleep: vi.fn().mockResolvedValue(undefined) }));
 
 const CREDENTIAL_TYPE = 'microsoftDataverseOAuth2Api';
 const BASE_URL = 'https://org.crm.dynamics.com';
@@ -23,7 +23,7 @@ describe('Microsoft Dataverse GenericFunctions', () => {
 	const node: INode = {
 		id: 'test-node',
 		name: 'Microsoft Dataverse',
-		type: 'n8n-nodes-base.microsoftDataverse',
+		type: 'MNI-nodes-base.microsoftDataverse',
 		typeVersion: 1,
 		position: [0, 0],
 		parameters: {},
@@ -62,7 +62,7 @@ describe('Microsoft Dataverse GenericFunctions', () => {
 				Accept: 'application/json',
 				'OData-MaxVersion': '4.0',
 				'OData-Version': '4.0',
-				'User-Agent': 'n8n-nodes-base.microsoftDataverse/1.0',
+				'User-Agent': 'MNI-nodes-base.microsoftDataverse/1.0',
 				'Content-Type': 'application/json; charset=utf-8',
 			});
 		});
@@ -437,7 +437,7 @@ describe('Microsoft Dataverse GenericFunctions', () => {
 
 			const [, options] = request.mock.calls[0];
 			expect(options.timeout).toBe(60_000);
-			expect(options.headers['User-Agent']).toBe('n8n-nodes-base.microsoftDataverse/2.0');
+			expect(options.headers['User-Agent']).toBe('MNI-nodes-base.microsoftDataverse/2.0');
 		});
 	});
 

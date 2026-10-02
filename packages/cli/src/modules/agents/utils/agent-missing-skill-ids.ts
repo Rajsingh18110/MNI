@@ -1,4 +1,4 @@
-import { type AgentJsonConfig, type AgentSkill } from '@n8n/api-types';
+import { type AgentJsonConfig, type AgentSkill } from '@MNI/api-types';
 
 export function getMissingSkillIds(
 	config: AgentJsonConfig | null,

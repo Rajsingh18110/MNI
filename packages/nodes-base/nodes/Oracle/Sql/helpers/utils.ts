@@ -7,8 +7,8 @@ import type {
 	INode,
 	IPairedItemData,
 	INodeExecutionData,
-} from 'n8n-workflow';
-import { NodeOperationError, safeRegex, UserError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeOperationError, safeRegex, UserError } from 'MNI-workflow';
 import oracledb from 'oracledb';
 
 import { routeBinaryProperties } from '@utils/binary';
@@ -929,7 +929,7 @@ export function checkItemAgainstSchema(
  * 		"SELECT * from dual where DUMMY in (:param1f8b29e29_edef_454a_b003_18fa1debff55,:param1bc8a5a46_5bfd_4ddb_851e_2ac4c243a26b)"
  *
  *  The logic is taken from here
- *  https://github.com/jgriffin1/n8n-nodes-oracle-database-parameterization
+ *  https://github.com/jgriffin1/MNI-nodes-oracle-database-parameterization
  *
  */
 function generateBindVariablesList(

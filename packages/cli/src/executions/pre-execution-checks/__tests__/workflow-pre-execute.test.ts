@@ -1,6 +1,6 @@
-import type { ExecutionsConfig } from '@n8n/config';
-import type { IConnections, IWorkflowBase, Workflow } from 'n8n-workflow';
-import { UserError } from 'n8n-workflow';
+import type { ExecutionsConfig } from '@MNI/config';
+import type { IConnections, IWorkflowBase, Workflow } from 'MNI-workflow';
+import { UserError } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import { WorkflowPreExecute } from '../workflow-pre-execute';
@@ -99,7 +99,7 @@ describe('WorkflowPreExecute', () => {
 		const startNode = {
 			id: 'start',
 			name: 'Start',
-			type: 'n8n-nodes-base.manualTrigger',
+			type: 'MNI-nodes-base.manualTrigger',
 			typeVersion: 1,
 			position: [0, 0] as [number, number],
 			parameters: {},
@@ -107,7 +107,7 @@ describe('WorkflowPreExecute', () => {
 		const addedNode = {
 			id: 'added',
 			name: 'Added',
-			type: 'n8n-nodes-base.noop',
+			type: 'MNI-nodes-base.noop',
 			typeVersion: 1,
 			position: [200, 0] as [number, number],
 			parameters: {},
@@ -165,7 +165,7 @@ describe('WorkflowPreExecute', () => {
 		expect(data.pinData).toBeUndefined();
 	});
 
-	it('skips the hook when N8N_PRE_EXECUTE_ERROR_CREATES_EXECUTION is true', async () => {
+	it('skips the hook when MNI_PRE_EXECUTE_ERROR_CREATES_EXECUTION is true', async () => {
 		executionsConfig.preExecuteErrorCreatesExecution = true;
 
 		await preExecute.run(workflowData, 'webhook');

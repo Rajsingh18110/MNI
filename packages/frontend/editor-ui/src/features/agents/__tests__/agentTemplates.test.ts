@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import type { AgentJsonConfig } from '@n8n/api-types';
+import type { AgentJsonConfig } from '@MNI/api-types';
 import { AGENT_TEMPLATES, applyAgentTemplate, isAgentConfigBlank } from '../agentTemplates';
 
 function blankConfig(overrides: Partial<AgentJsonConfig> = {}): AgentJsonConfig {
@@ -34,7 +34,7 @@ describe('isAgentConfigBlank', () => {
 							name: 'Gmail',
 							description: 'Read emails.',
 							node: {
-								nodeType: 'n8n-nodes-base.gmail',
+								nodeType: 'MNI-nodes-base.gmail',
 								nodeTypeVersion: 2,
 								nodeParameters: {},
 							},

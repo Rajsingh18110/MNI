@@ -1,7 +1,7 @@
 import { enableAutoUnmount, flushPromises, mount } from '@vue/test-utils';
 import { ref } from 'vue';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
-import type { AgentApproval, ChatIntegrationDescriptor } from '@n8n/api-types';
+import type { AgentApproval, ChatIntegrationDescriptor } from '@MNI/api-types';
 
 import AgentChannelModal, { type ChannelView } from '../components/AgentChannelModal.vue';
 
@@ -47,11 +47,11 @@ const runtimeErrors = ref<Record<string, string>>({});
 const errorIsConflict = ref<Record<string, boolean>>({});
 const credentialModalOpen = ref(false);
 
-vi.mock('@n8n/i18n', () => ({
+vi.mock('@MNI/i18n', () => ({
 	useI18n: () => ({ baseText: (key: string) => key }),
 }));
 
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: () => ({ showMessage: mocks.showMessage, showError: mocks.showError }),
 }));
 

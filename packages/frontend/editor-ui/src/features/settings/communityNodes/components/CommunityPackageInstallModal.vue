@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import Modal from '@/app/components/Modal.vue';
 import { useInstallNode } from '../composables/useInstallNode';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
 import {
 	COMMUNITY_PACKAGE_INSTALL_MODAL_KEY,
 	COMMUNITY_NODES_INSTALLATION_DOCS_URL,
@@ -9,8 +9,8 @@ import {
 	NPM_KEYWORD_SEARCH_URL,
 } from '../communityNodes.constants';
 import { useUIStore } from '@/app/stores/ui.store';
-import { useI18n } from '@n8n/i18n';
-import { createEventBus } from '@n8n/utils/event-bus';
+import { useI18n } from '@MNI/i18n';
+import { createEventBus } from '@MNI/utils/event-bus';
 import { computed, ref } from 'vue';
 import {
 	N8nButton,
@@ -19,7 +19,7 @@ import {
 	N8nInputLabel,
 	N8nLink,
 	N8nText,
-} from '@n8n/design-system';
+} from '@MNI/design-system';
 import { useQuickConnect } from '@/features/credentials/quickConnect/composables/useQuickConnect';
 
 interface ModalData {

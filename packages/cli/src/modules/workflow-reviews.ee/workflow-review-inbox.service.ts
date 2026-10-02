@@ -6,7 +6,7 @@ import type {
 	WorkflowReviewRequestDetail,
 	WorkflowReviewRequestWorkflowDetail,
 	WorkflowReviewVersionSnapshot,
-} from '@n8n/api-types';
+} from '@MNI/api-types';
 import {
 	WorkflowReviewInboxRepository,
 	WorkflowReviewRequestWorkflowRepository,
@@ -16,8 +16,8 @@ import {
 	type WorkflowReviewRequest,
 	type WorkflowReviewRequestLinkedWorkflow,
 	type WorkflowReviewRequestWorkflowDetailRow,
-} from '@n8n/db';
-import { Service } from '@n8n/di';
+} from '@MNI/db';
+import { Service } from '@MNI/di';
 
 import { BadRequestError } from '@/errors/response-errors/bad-request.error';
 import { WorkflowHistoryService } from '@/workflows/workflow-history/workflow-history.service';

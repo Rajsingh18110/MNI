@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { N8nDialog, N8nDialogHeader, N8nDialogTitle, N8nText } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+import { N8nDialog, N8nDialogHeader, N8nDialogTitle, N8nText } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 import { computed, ref } from 'vue';
 
 import { formatMetricLabel, getMetricDescriptionKey } from '../../evaluation.utils';

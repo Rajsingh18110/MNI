@@ -1,4 +1,4 @@
-import type { INodeTypeBaseDescription } from 'n8n-workflow';
+import type { INodeTypeBaseDescription } from 'MNI-workflow';
 
 import { HighLevelV1 } from './v1/HighLevelV1.node';
 import { HighLevelV2 } from './v2/HighLevelV2.node';

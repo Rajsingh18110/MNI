@@ -7,9 +7,9 @@ import {
 	RolePublicDto,
 	UpdateRolePublicDto,
 	roleSlugParamSchema,
-} from '@n8n/api-types';
-import { LICENSE_FEATURES } from '@n8n/constants';
-import { AuthenticatedRequest } from '@n8n/db';
+} from '@MNI/api-types';
+import { LICENSE_FEATURES } from '@MNI/constants';
+import { AuthenticatedRequest } from '@MNI/db';
 import {
 	ApiDescription,
 	ApiErrorResponse,
@@ -26,8 +26,8 @@ import {
 	PublicApiController,
 	Put,
 	Query,
-} from '@n8n/decorators';
-import { RoleNamespace, type Role as RoleDTO } from '@n8n/permissions';
+} from '@MNI/decorators';
+import { RoleNamespace, type Role as RoleDTO } from '@MNI/permissions';
 import type { Response } from 'express';
 
 import { NotFoundError } from '@/errors/response-errors/not-found.error';

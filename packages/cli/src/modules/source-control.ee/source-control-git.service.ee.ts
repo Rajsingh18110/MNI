@@ -1,8 +1,8 @@
-import { Logger } from '@n8n/backend-common';
-import type { User } from '@n8n/db';
-import { Service } from '@n8n/di';
+import { Logger } from '@MNI/backend-common';
+import type { User } from '@MNI/db';
+import { Service } from '@MNI/di';
 import { execSync } from 'child_process';
-import { UnexpectedError } from 'n8n-workflow';
+import { UnexpectedError } from 'MNI-workflow';
 import * as path from 'path';
 import type {
 	CommitResult,
@@ -139,8 +139,8 @@ export class SourceControlGitService {
 
 			this.git = simpleGit(httpsGitOptions)
 				.env('GIT_TERMINAL_PROMPT', '0')
-				.env('N8N_GIT_USERNAME', credentials.username)
-				.env('N8N_GIT_PASSWORD', credentials.password);
+				.env('MNI_GIT_USERNAME', credentials.username)
+				.env('MNI_GIT_PASSWORD', credentials.password);
 		} else if (preferences.connectionType === 'ssh') {
 			const privateKeyPath = await this.sourceControlPreferencesService.getPrivateKeyPath();
 			const sshCommand = buildSshCommand({

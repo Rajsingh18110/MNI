@@ -9,8 +9,8 @@ import {
 	type DeploymentCondition,
 	NodeHelpers,
 	deepCopy,
-} from 'n8n-workflow';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
+} from 'MNI-workflow';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
 import { useNodeHelpers } from '@/app/composables/useNodeHelpers';
 import { useWorkflowHelpers } from '@/app/composables/useWorkflowHelpers';
 import { useCanvasOperations } from '@/app/composables/useCanvasOperations';
@@ -32,7 +32,7 @@ import {
 	isAuthRelatedParameter,
 } from '@/app/utils/nodeTypesUtils';
 import { injectWorkflowDocumentStore } from '@/app/stores/workflowDocument.store';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { useEnvFeatureFlag } from '@/features/shared/envFeatureFlag/useEnvFeatureFlag';
 import { reconcileNodeFromAIKeys } from '@/features/ndv/parameters/utils/fromAIOverride.utils';
 

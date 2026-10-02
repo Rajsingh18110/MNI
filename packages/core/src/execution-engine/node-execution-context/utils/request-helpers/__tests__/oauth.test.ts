@@ -1,14 +1,14 @@
-import { LockAcquisitionTimeoutError, LockNamespace, LockService } from '@n8n/backend-common';
-import type { SsrfBridge } from '@n8n/backend-network';
-import { Container } from '@n8n/di';
+import { LockAcquisitionTimeoutError, LockNamespace, LockService } from '@MNI/backend-common';
+import type { SsrfBridge } from '@MNI/backend-network';
+import { Container } from '@MNI/di';
 import FormData from 'form-data';
 import type {
 	IAllExecuteFunctions,
 	ICredentialDataDecryptedObject,
 	INode,
 	IWorkflowExecuteAdditionalData,
-} from 'n8n-workflow';
-import { OperationalError, UserError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { OperationalError, UserError } from 'MNI-workflow';
 import nock from 'nock';
 import { Readable } from 'stream';
 import { mockDeep } from 'vitest-mock-extended';
@@ -140,7 +140,7 @@ describe('refreshOAuth2Token', () => {
 			access_token: 'new-token',
 			refresh_token: 'new-refresh-token',
 			expires_in: '3600',
-			n8n_expires_at: String(now + 3_600_000),
+			MNI_expires_at: String(now + 3_600_000),
 		});
 		expect(
 			mockAdditionalData.credentialsHelper.updateCredentialsOauthTokenData,
@@ -149,7 +149,7 @@ describe('refreshOAuth2Token', () => {
 			'test-credentials-type',
 			expect.objectContaining({
 				oauthTokenData: expect.objectContaining({
-					n8n_expires_at: String(now + 3_600_000),
+					MNI_expires_at: String(now + 3_600_000),
 				}),
 			}),
 			mockAdditionalData,
@@ -824,7 +824,7 @@ describe('requestOAuth2 - tokenExpiredStatusCode', () => {
 			async (status) => {
 				mockThis.getCredentials.mockResolvedValue(
 					makeCredentialData({
-						oauthTokenData: { access_token: 'live-token', n8n_expires_at: in10Minutes() },
+						oauthTokenData: { access_token: 'live-token', MNI_expires_at: in10Minutes() },
 					}),
 				);
 				// No nock interceptor: a token request here would fail the test
@@ -844,7 +844,7 @@ describe('requestOAuth2 - tokenExpiredStatusCode', () => {
 			async (status) => {
 				mockThis.getCredentials.mockResolvedValue(
 					makeCredentialData({
-						oauthTokenData: { access_token: 'expired-token', n8n_expires_at: tenMinutesAgo() },
+						oauthTokenData: { access_token: 'expired-token', MNI_expires_at: tenMinutesAgo() },
 					}),
 				);
 				nock(tokenUrl).post('/token').reply(200, {
@@ -862,7 +862,7 @@ describe('requestOAuth2 - tokenExpiredStatusCode', () => {
 		test('should still refresh on a 401, whatever the stored expiry says', async () => {
 			mockThis.getCredentials.mockResolvedValue(
 				makeCredentialData({
-					oauthTokenData: { access_token: 'live-token', n8n_expires_at: in10Minutes() },
+					oauthTokenData: { access_token: 'live-token', MNI_expires_at: in10Minutes() },
 				}),
 			);
 			nock(tokenUrl).post('/token').reply(200, {

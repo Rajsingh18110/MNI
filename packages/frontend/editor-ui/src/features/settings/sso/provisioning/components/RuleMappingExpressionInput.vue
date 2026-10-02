@@ -10,7 +10,7 @@ import {
 } from '@codemirror/view';
 import { EditorState, type Range } from '@codemirror/state';
 import { history, historyKeymap } from '@codemirror/commands';
-import { parserWithMetaData as n8nParser } from '@n8n/codemirror-lang';
+import { parserWithMetaData as n8nParser } from '@MNI/codemirror-lang';
 import {
 	LanguageSupport,
 	LRLanguage,
@@ -22,8 +22,8 @@ import { tags } from '@lezer/highlight';
 import { parseMixed, type SyntaxNodeRef } from '@lezer/common';
 import { javascriptLanguage } from '@codemirror/lang-javascript';
 import { ElDialog } from 'element-plus';
-import { N8nButton } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+import { N8nButton } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 
 const props = withDefaults(
 	defineProps<{

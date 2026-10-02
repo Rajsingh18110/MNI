@@ -2,7 +2,7 @@ import { createComponentRenderer } from '@/__tests__/render';
 import type { McpJsonNudgeAction } from '@/experiments/mcpJsonNudge/composables/useMcpJsonNudgeTrigger';
 import type { McpJsonNudgeSurface } from '@/experiments/mcpJsonNudge/constants';
 import { MCP_SETTINGS_VIEW } from '@/features/ai/mcpAccess/mcp.constants';
-import { TELEMETRY_EVENT } from '@n8n/telemetry';
+import { TELEMETRY_EVENT } from '@MNI/telemetry';
 import userEvent from '@testing-library/user-event';
 import type { Mock } from 'vitest';
 import { defineComponent } from 'vue';
@@ -22,7 +22,7 @@ vi.mock('@/experiments/mcpJsonNudge/composables/useMcpJsonNudgeEligibility', () 
 	useMcpJsonNudgeEligibility: () => ({ dismissForever: dismissForeverMock }),
 }));
 
-vi.mock('@n8n/composables/useTelemetry', () => ({
+vi.mock('@MNI/composables/useTelemetry', () => ({
 	useTelemetry: () => ({ track: trackMock }),
 }));
 

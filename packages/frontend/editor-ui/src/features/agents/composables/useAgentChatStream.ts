@@ -2,18 +2,18 @@ import { ref, reactive, computed, watch, onScopeDispose, type Ref } from 'vue';
 import { useDocumentVisibility } from '@vueuse/core';
 import { usePushConnectionStore } from '@/app/stores/pushConnection.store';
 import { TIME } from '@/app/constants/durations';
-import { useI18n } from '@n8n/i18n';
-import { useRootStore } from '@n8n/stores/useRootStore';
-import { isRecord } from '@n8n/utils/is-record';
+import { useI18n } from '@MNI/i18n';
+import { useRootStore } from '@MNI/stores/useRootStore';
+import { isRecord } from '@MNI/utils/is-record';
 import type {
 	AgentBuilderOpenSuspension,
 	AgentChatQueueItem,
 	AgentPersistedMessageDto,
 	AgentSseEvent,
 	CancellationResumeData,
-} from '@n8n/api-types';
-import { applyForwardedChildChunk, APPROVAL_TOOL_NAME, emptyChildTrace } from '@n8n/api-types';
-import { useToast } from '@n8n/composables/useToast';
+} from '@MNI/api-types';
+import { applyForwardedChildChunk, APPROVAL_TOOL_NAME, emptyChildTrace } from '@MNI/api-types';
+import { useToast } from '@MNI/composables/useToast';
 import { convertFileToBinaryData, resolveFileMimeType } from '@/app/utils/fileUtils';
 import {
 	cancelAgentChatExecution,
@@ -1062,7 +1062,7 @@ export function useAgentChatStream(params: UseAgentChatStreamParams) {
 		const isCurrent = () => !disposed && session.target === targetKey();
 
 		try {
-			const browserId = localStorage.getItem('n8n-browserId') ?? '';
+			const browserId = localStorage.getItem('MNI-browserId') ?? '';
 			const response = await fetch(url, {
 				method: 'POST',
 				headers: { 'Content-Type': 'application/json', 'browser-id': browserId },

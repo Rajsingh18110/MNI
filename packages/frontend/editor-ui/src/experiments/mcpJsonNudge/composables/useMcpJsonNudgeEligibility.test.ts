@@ -16,7 +16,7 @@ vi.mock('@/app/stores/posthog.store', () => ({
 	usePostHog: () => ({ isVariantEnabled: mockIsVariantEnabled }),
 }));
 
-vi.mock('@n8n/stores/users.store', () => ({
+vi.mock('@MNI/stores/users.store', () => ({
 	useUsersStore: () => ({
 		currentUser: mockCurrentUser,
 		isCalloutDismissed: mockIsCalloutDismissed,

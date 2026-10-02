@@ -11,8 +11,8 @@
  * This adapter deliberately keeps its own vocabulary so judge inputs remain byte-stable.
  */
 
-import { Logger } from '@n8n/backend-common';
-import { Container } from '@n8n/di';
+import { Logger } from '@MNI/backend-common';
+import { Container } from '@MNI/di';
 
 // ---------------------------------------------------------------------------
 // Constants

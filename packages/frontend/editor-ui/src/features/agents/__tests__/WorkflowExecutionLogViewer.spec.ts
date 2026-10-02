@@ -3,7 +3,7 @@ import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { mount, flushPromises } from '@vue/test-utils';
 import { createPinia, getActivePinia, setActivePinia } from 'pinia';
 import { shallowRef } from 'vue';
-import { createRunExecutionData, NodeConnectionTypes } from 'n8n-workflow';
+import { createRunExecutionData, NodeConnectionTypes } from 'MNI-workflow';
 import { createRouter, createMemoryHistory, type Router } from 'vue-router';
 import WorkflowExecutionLogViewer from '../components/WorkflowExecutionLogViewer.vue';
 import { WorkflowDocumentStoreKey } from '@/app/constants/injectionKeys';
@@ -145,7 +145,7 @@ function makeChildExecution(outputStatus = 200) {
 	const trigger = createTestNode({
 		id: 'trigger',
 		name: 'When Executed by Another Workflow',
-		type: 'n8n-nodes-base.executeWorkflowTrigger',
+		type: 'MNI-nodes-base.executeWorkflowTrigger',
 	});
 	const action = createTestNode({ id: 'http', name: 'HTTP Request' });
 

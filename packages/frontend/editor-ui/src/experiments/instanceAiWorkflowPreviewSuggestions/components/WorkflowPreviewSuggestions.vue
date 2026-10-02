@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-import { N8nIcon } from '@n8n/design-system';
-import { useI18n, type BaseTextKey } from '@n8n/i18n';
+import { N8nIcon } from '@MNI/design-system';
+import { useI18n, type BaseTextKey } from '@MNI/i18n';
 import { onUnmounted, ref } from 'vue';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
 import { useTemplatesStore } from '@/features/workflows/templates/templates.store';
 import { type WorkflowPreviewSuggestion } from '../suggestions';
 import type { InstanceAiPrefillDeclaration } from '@/features/ai/instanceAi/prefills';

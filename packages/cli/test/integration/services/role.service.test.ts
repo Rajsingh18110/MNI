@@ -1,14 +1,14 @@
-import type { CreateRoleDto, UpdateRoleDto } from '@n8n/api-types';
-import { LicenseState } from '@n8n/backend-common';
-import { testDb } from '@n8n/backend-test-utils';
-import { ProjectRepository } from '@n8n/db';
-import { RoleMappingRuleRepository, RoleRepository, UserRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
+import type { CreateRoleDto, UpdateRoleDto } from '@MNI/api-types';
+import { LicenseState } from '@MNI/backend-common';
+import { testDb } from '@MNI/backend-test-utils';
+import { ProjectRepository } from '@MNI/db';
+import { RoleMappingRuleRepository, RoleRepository, UserRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
 import {
 	ALL_ROLES,
 	GLOBAL_CUSTOM_ROLE_SCOPE_GROUPS,
 	MANDATORY_INSTANCE_SCOPES,
-} from '@n8n/permissions';
+} from '@MNI/permissions';
 
 import { BadRequestError } from '@/errors/response-errors/bad-request.error';
 import { NotFoundError } from '@/errors/response-errors/not-found.error';

@@ -1,4 +1,4 @@
-import { Service } from '@n8n/di';
+import { Service } from '@MNI/di';
 
 /**
  * Lets a module veto publishing a workflow without core depending on the module:

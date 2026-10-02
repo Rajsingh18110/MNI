@@ -6,10 +6,10 @@ import type {
 	DataTableColumnType,
 } from '@/features/core/dataTable/dataTable.types';
 import { DATA_TABLE_COLUMN_TYPES } from '@/features/core/dataTable/dataTable.types';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import { useDataTableTypes } from '@/features/core/dataTable/composables/useDataTableTypes';
 import { COLUMN_NAME_REGEX, MAX_COLUMN_NAME_LENGTH } from '@/features/core/dataTable/constants';
-import { useDebounce } from '@n8n/composables/useDebounce';
+import { useDebounce } from '@MNI/composables/useDebounce';
 
 import {
 	N8nButton,
@@ -22,7 +22,7 @@ import {
 	N8nSelect,
 	N8nText,
 	N8nTooltip,
-} from '@n8n/design-system';
+} from '@MNI/design-system';
 type FormError = {
 	message?: string;
 	description?: string;

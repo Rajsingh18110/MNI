@@ -1,6 +1,6 @@
-import { BaseRepository, TransactionRunner, type OperationContext } from '@n8n/db';
-import { Service } from '@n8n/di';
-import { DataSource } from '@n8n/typeorm';
+import { BaseRepository, TransactionRunner, type OperationContext } from '@MNI/db';
+import { Service } from '@MNI/di';
+import { DataSource } from '@MNI/typeorm';
 
 import { AccessToken } from '../entities/oauth-access-token.entity';
 

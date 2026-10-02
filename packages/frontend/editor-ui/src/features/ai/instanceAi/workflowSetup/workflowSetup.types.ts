@@ -1,5 +1,5 @@
-import type { InstanceAiCredentialSetupHint, InstanceAiWorkflowSetupNode } from '@n8n/api-types';
-import type { INodeParameters } from 'n8n-workflow';
+import type { InstanceAiCredentialSetupHint, InstanceAiWorkflowSetupNode } from '@MNI/api-types';
+import type { INodeParameters } from 'MNI-workflow';
 
 /**
  * One form unit (per `node × credential-or-parameters`) and one wizard step.

@@ -1,5 +1,5 @@
-import type { ProjectRelation } from '@n8n/api-types';
-import type { Logger, ModuleRegistry } from '@n8n/backend-common';
+import type { ProjectRelation } from '@MNI/api-types';
+import type { Logger, ModuleRegistry } from '@MNI/backend-common';
 import {
 	type Project,
 	type ProjectRepository,
@@ -12,9 +12,9 @@ import {
 	ProjectRelation as ProjectRelationEntity,
 	PROJECT_ADMIN_ROLE,
 	PROJECT_VIEWER_ROLE,
-} from '@n8n/db';
-import { PROJECT_OWNER_ROLE_SLUG } from '@n8n/permissions';
-import type { EntityManager } from '@n8n/typeorm';
+} from '@MNI/db';
+import { PROJECT_OWNER_ROLE_SLUG } from '@MNI/permissions';
+import type { EntityManager } from '@MNI/typeorm';
 import type { Mocked } from 'vitest';
 import { mock } from 'vitest-mock-extended';
 

@@ -6,7 +6,7 @@ import {
 	type INode,
 	type INodeExecutionData,
 	type INodeParameters,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import * as oracleDBTypes from 'oracledb';
 import type { Mock } from 'vitest';
 
@@ -160,7 +160,7 @@ const node: INode = {
 	id: '1',
 	typeVersion: 1,
 	name: 'Oracle Database node',
-	type: 'n8n-nodes-starter-oracledb',
+	type: 'MNI-nodes-starter-oracledb',
 	position: [60, 760],
 	parameters: {
 		operation: 'execute',
@@ -252,8 +252,8 @@ describe('Test All operations', () => {
 		operation: 'execute',
 	};
 	const mockThisDef = createMockExecuteFunction(nodeParametersDef);
-	const table = 'N8N_TEST_DEMO_TYPES';
-	const deptTable = 'N8N_TEST_DEPT';
+	const table = 'MNI_TEST_DEMO_TYPES';
+	const deptTable = 'MNI_TEST_DEPT';
 	const maxEmpName = 100;
 	const createTbl = `CREATE TABLE if not exists ${table} (
     id           NUMBER          NOT NULL,
@@ -966,7 +966,7 @@ VALUES (
 					Names2: { type: oracleDBTypes.DB_TYPE_VARCHAR, val: 'Bob', dir: 3002 },
 				},
 				expectedRegex:
-					/^SELECT \* FROM N8N_TEST_DEPT WHERE deptno = :Dno AND empname IN \(:Names[\w_]+(,:Names[\w_]+)*\)$/,
+					/^SELECT \* FROM MNI_TEST_DEPT WHERE deptno = :Dno AND empname IN \(:Names[\w_]+(,:Names[\w_]+)*\)$/,
 			},
 			{
 				title:
@@ -983,7 +983,7 @@ VALUES (
 					Names_2: { type: oracleDBTypes.DB_TYPE_VARCHAR, val: 'Bob', dir: 3002 },
 				},
 				expectedRegex:
-					/^SELECT \* FROM N8N_TEST_DEPT WHERE deptno = :Dno AND empname IN \(:Names_[\w_]+(,:Names_[\w_]+)*\)$/,
+					/^SELECT \* FROM MNI_TEST_DEPT WHERE deptno = :Dno AND empname IN \(:Names_[\w_]+(,:Names_[\w_]+)*\)$/,
 			},
 			{
 				title:
@@ -1005,7 +1005,7 @@ VALUES (
 					Names_ex2$2: { type: oracleDBTypes.DB_TYPE_VARCHAR, val: 'Bob', dir: 3002 },
 				},
 				expectedRegex:
-					/^SELECT \* FROM N8N_TEST_DEPT WHERE deptno = :Dno AND empname IN \(:Names_ex2\$[\w_]+(,:Names_ex2\$[\w_]+)*\)$/,
+					/^SELECT \* FROM MNI_TEST_DEPT WHERE deptno = :Dno AND empname IN \(:Names_ex2\$[\w_]+(,:Names_ex2\$[\w_]+)*\)$/,
 			},
 			{
 				title:
@@ -1022,7 +1022,7 @@ VALUES (
 					Names2: { type: oracleDBTypes.DB_TYPE_VARCHAR, val: 'Bob', dir: 3002 },
 				},
 				expectedRegex:
-					/^SELECT \* FROM N8N_TEST_DEPT WHERE deptno = :Names1 AND empname IN \(:Names[\w_]+(,:Names[\w_]+)*\)$/,
+					/^SELECT \* FROM MNI_TEST_DEPT WHERE deptno = :Names1 AND empname IN \(:Names[\w_]+(,:Names[\w_]+)*\)$/,
 			},
 			{
 				title:
@@ -1074,7 +1074,7 @@ VALUES (
 			const runQueries = getRunQueriesFn(mockThis, pool);
 			const result = await executeSQL.execute.call(mockThis, runQueries, items, nodeOptions, pool);
 
-			if (integratedTests && expectedQuery.includes('N8N_TEST_DEPT')) {
+			if (integratedTests && expectedQuery.includes('MNI_TEST_DEPT')) {
 				// Only check DB data when using the department table.
 				const normalize = (arr: any) =>
 					arr

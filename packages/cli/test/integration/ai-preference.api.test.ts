@@ -1,14 +1,14 @@
-import { AI_PREFERENCE_CONTENT_MAX_LENGTH, AI_PREFERENCE_MAX_PER_SCOPE } from '@n8n/api-types';
-import type { AiPreferenceSource } from '@n8n/api-types';
+import { AI_PREFERENCE_CONTENT_MAX_LENGTH, AI_PREFERENCE_MAX_PER_SCOPE } from '@MNI/api-types';
+import type { AiPreferenceSource } from '@MNI/api-types';
 import {
 	createTeamProject,
 	getPersonalProject,
 	linkUserToProject,
 	testDb,
-} from '@n8n/backend-test-utils';
-import type { Project, User } from '@n8n/db';
-import { AiPreferenceRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
+} from '@MNI/backend-test-utils';
+import type { Project, User } from '@MNI/db';
+import { AiPreferenceRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
 
 import { AiPreferenceService, renderAiPreferencesBlock } from '@/services/ai-preference.service';
 

@@ -10,8 +10,8 @@ import {
 	reconcileFromAIKeys,
 	reconcileNodeFromAIKeys,
 } from './fromAIOverride.utils';
-import type { INodeParameters, INodeProperties } from 'n8n-workflow';
-import type { INodeTypeDescription, NodePropertyTypes } from 'n8n-workflow';
+import type { INodeParameters, INodeProperties } from 'MNI-workflow';
+import type { INodeTypeDescription, NodePropertyTypes } from 'MNI-workflow';
 
 const getNodeType = vi.fn();
 
@@ -40,7 +40,7 @@ const makeContext = (
 	path: path ?? `parameters.${PARAMETER_NAME}`,
 });
 
-const FROM_AI_OVERRIDE_VALUE = `={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('${DISPLAY_NAME}', \`Pick a priority\`, 'number') }}`;
+const FROM_AI_OVERRIDE_VALUE = `={{ /*MNI-auto-generated-fromAI-override*/ $fromAI('${DISPLAY_NAME}', \`Pick a priority\`, 'number') }}`;
 
 const MOCK_NODE_TYPE_MIXIN = {
 	version: 1,
@@ -135,7 +135,7 @@ describe('makeOverrideValue', () => {
 	it('should create an fromAI override', () => {
 		getNodeType.mockReturnValue(AI_NODE_TYPE);
 		const result = makeOverrideValue(
-			makeContext(`={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('${DISPLAY_NAME}') }}`),
+			makeContext(`={{ /*MNI-auto-generated-fromAI-override*/ $fromAI('${DISPLAY_NAME}') }}`),
 			mockNodeFromType(AI_NODE_TYPE),
 		);
 
@@ -149,7 +149,7 @@ describe('makeOverrideValue', () => {
 		const description = 'a description';
 		const result = makeOverrideValue(
 			makeContext(
-				`={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('${DISPLAY_NAME}', \`${description}\`) }}`,
+				`={{ /*MNI-auto-generated-fromAI-override*/ $fromAI('${DISPLAY_NAME}', \`${description}\`) }}`,
 			),
 			mockNodeFromType(AI_NODE_TYPE),
 		);
@@ -162,7 +162,7 @@ describe('makeOverrideValue', () => {
 		getNodeType.mockReturnValue(AI_NODE_TYPE);
 
 		const result = makeOverrideValue(
-			makeContext("={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('aName', ``) }}"),
+			makeContext("={{ /*MNI-auto-generated-fromAI-override*/ $fromAI('aName', ``) }}"),
 			mockNodeFromType(AI_NODE_TYPE),
 		);
 
@@ -217,11 +217,11 @@ describe('makeOverrideValue', () => {
 
 	describe('legacy tool-name node denylist', () => {
 		test.each<[string, string, number, boolean]>([
-			['toolWorkflow v2.0 denied', '@n8n/n8n-nodes-langchain.toolWorkflow', 2.0, false],
-			['toolWorkflow v2.1 denied', '@n8n/n8n-nodes-langchain.toolWorkflow', 2.1, false],
-			['toolWorkflow v2.2 allowed', '@n8n/n8n-nodes-langchain.toolWorkflow', 2.2, true],
-			['toolVectorStore v1 denied', '@n8n/n8n-nodes-langchain.toolVectorStore', 1, false],
-			['toolVectorStore v1.1 allowed', '@n8n/n8n-nodes-langchain.toolVectorStore', 1.1, true],
+			['toolWorkflow v2.0 denied', '@MNI/MNI-nodes-langchain.toolWorkflow', 2.0, false],
+			['toolWorkflow v2.1 denied', '@MNI/MNI-nodes-langchain.toolWorkflow', 2.1, false],
+			['toolWorkflow v2.2 allowed', '@MNI/MNI-nodes-langchain.toolWorkflow', 2.2, true],
+			['toolVectorStore v1 denied', '@MNI/MNI-nodes-langchain.toolVectorStore', 1, false],
+			['toolVectorStore v1.1 allowed', '@MNI/MNI-nodes-langchain.toolVectorStore', 1.1, true],
 		])('%s', (_name, typeName, typeVersion, shouldOverride) => {
 			getNodeType.mockReturnValue(AI_TOOL_CODEX);
 			const result = makeOverrideValue(
@@ -241,7 +241,7 @@ describe('makeOverrideValue', () => {
 describe('FromAiOverride', () => {
 	it('correctly identifies override values', () => {
 		expect(isFromAIOverrideValue('={{ $fromAI() }}')).toBe(false);
-		expect(isFromAIOverrideValue('={{ /*n8n-auto-generated-fromAI-override*/ $fromAI() }}')).toBe(
+		expect(isFromAIOverrideValue('={{ /*MNI-auto-generated-fromAI-override*/ $fromAI() }}')).toBe(
 			true,
 		);
 	});
@@ -254,12 +254,12 @@ describe('FromAiOverride', () => {
 		expect(parseOverrides("={{ $fromAI('aKey', `a description`) }}")).toEqual({
 			description: 'a description',
 		});
-		expect(parseOverrides("={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('aKey') }}")).toEqual(
+		expect(parseOverrides("={{ /*MNI-auto-generated-fromAI-override*/ $fromAI('aKey') }}")).toEqual(
 			{ description: undefined },
 		);
 		expect(
 			parseOverrides(
-				"={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('aKey', `a description`) }}",
+				"={{ /*MNI-auto-generated-fromAI-override*/ $fromAI('aKey', `a description`) }}",
 			),
 		).toEqual({
 			description: 'a description',
@@ -284,7 +284,7 @@ describe('FromAiOverride', () => {
 			extraPropValues: {},
 		};
 		expect(buildValueFromOverride(override, makeContext(''), true)).toEqual(
-			`={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('${DISPLAY_NAME}', \`\`, 'string') }}`,
+			`={{ /*MNI-auto-generated-fromAI-override*/ $fromAI('${DISPLAY_NAME}', \`\`, 'string') }}`,
 		);
 		expect(buildValueFromOverride(override, makeContext(''), false)).toEqual(
 			`={{ $fromAI('${DISPLAY_NAME}', \`\`, 'string') }}`,
@@ -294,7 +294,7 @@ describe('FromAiOverride', () => {
 		override.extraPropValues.description = description;
 
 		expect(buildValueFromOverride(override, makeContext(''), true)).toEqual(
-			`={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('${DISPLAY_NAME}', \`${description}\`, 'string') }}`,
+			`={{ /*MNI-auto-generated-fromAI-override*/ $fromAI('${DISPLAY_NAME}', \`${description}\`, 'string') }}`,
 		);
 		expect(buildValueFromOverride(override, makeContext(''), false)).toEqual(
 			`={{ $fromAI('${DISPLAY_NAME}', \`${description}\`, 'string') }}`,
@@ -339,7 +339,7 @@ describe('buildUniqueName', () => {
 	});
 });
 
-const AUTO_GENERATED_MARKER = '/*n8n-auto-generated-fromAI-override*/';
+const AUTO_GENERATED_MARKER = '/*MNI-auto-generated-fromAI-override*/';
 const makeOverrideExpression = (key: string, desc = '', type = 'string') =>
 	`={{ ${AUTO_GENERATED_MARKER} $fromAI('${key}', \`${desc}\`, '${type}') }}`;
 

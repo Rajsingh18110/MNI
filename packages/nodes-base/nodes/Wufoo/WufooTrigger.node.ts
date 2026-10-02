@@ -8,8 +8,8 @@ import type {
 	INodeType,
 	INodeTypeDescription,
 	IWebhookResponseData,
-} from 'n8n-workflow';
-import { NodeConnectionTypes, jsonParse } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeConnectionTypes, jsonParse } from 'MNI-workflow';
 
 import { wufooApiRequest } from './GenericFunctions';
 import type { IField, IWebhook } from './Interface';
@@ -18,7 +18,7 @@ export class WufooTrigger implements INodeType {
 	description: INodeTypeDescription = {
 		displayName: 'Wufoo Trigger',
 		name: 'wufooTrigger',
-		// eslint-disable-next-line n8n-nodes-base/node-class-description-icon-not-svg
+		// eslint-disable-next-line MNI-nodes-base/node-class-description-icon-not-svg
 		icon: 'file:wufoo.png',
 		group: ['trigger'],
 		version: 1,

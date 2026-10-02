@@ -1,12 +1,12 @@
-import type { Logger } from '@n8n/backend-common';
-import { mockLogger, mockInstance } from '@n8n/backend-test-utils';
-import { GlobalConfig, WorkerPoolConfig } from '@n8n/config';
-import type { ExecutionRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
+import type { Logger } from '@MNI/backend-common';
+import { mockLogger, mockInstance } from '@MNI/backend-test-utils';
+import { GlobalConfig, WorkerPoolConfig } from '@MNI/config';
+import type { ExecutionRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
 import * as BullModule from 'bull';
-import { ENCODED_BUFFER_KEY, InstanceSettings } from 'n8n-core';
-import type { ErrorReporter } from 'n8n-core';
-import { UnexpectedError } from 'n8n-workflow';
+import { ENCODED_BUFFER_KEY, InstanceSettings } from 'MNI-core';
+import type { ErrorReporter } from 'MNI-core';
+import { UnexpectedError } from 'MNI-workflow';
 import type { MockInstance } from 'vitest';
 import { mock } from 'vitest-mock-extended';
 
@@ -44,7 +44,7 @@ const { mcpServer } = vi.hoisted(() => ({
 	},
 }));
 
-vi.mock('@n8n/n8n-nodes-langchain/mcp/core', () => ({
+vi.mock('@MNI/MNI-nodes-langchain/mcp/core', () => ({
 	McpServer: { instance: () => mcpServer },
 	RedisSessionStore: vi.fn(function () {
 		return {};

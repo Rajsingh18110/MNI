@@ -3,7 +3,7 @@ import type {
 	ICredentialTestRequest,
 	ICredentialType,
 	INodeProperties,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 export class N8nApi implements ICredentialType {
 	name = 'n8nApi';
@@ -35,7 +35,7 @@ export class N8nApi implements ICredentialType {
 		type: 'generic',
 		properties: {
 			headers: {
-				'X-N8N-API-KEY': '={{ $credentials.apiKey }}',
+				'X-MNI-API-KEY': '={{ $credentials.apiKey }}',
 			},
 		},
 	};

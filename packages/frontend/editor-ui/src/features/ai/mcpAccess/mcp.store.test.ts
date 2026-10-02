@@ -1,13 +1,13 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { setActivePinia, createPinia } from 'pinia';
-import { capabilities, capabilityRegistry } from '@n8n/frontend-module-sdk';
+import { capabilities, capabilityRegistry } from '@MNI/frontend-module-sdk';
 
 import * as mcpApi from './mcp.api';
 import { useMCPStore } from './mcp.store';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { createOAuthClient, createWorkflow } from './mcp.test.utils';
 
-vi.mock('@n8n/stores/useRootStore', () => ({
+vi.mock('@MNI/stores/useRootStore', () => ({
 	useRootStore: () => ({ restApiContext: {} }),
 }));
 

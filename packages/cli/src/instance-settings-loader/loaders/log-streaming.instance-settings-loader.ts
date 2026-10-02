@@ -1,14 +1,14 @@
-import { Logger } from '@n8n/backend-common';
-import { InstanceSettingsLoaderConfig } from '@n8n/config';
-import type { EntityManager } from '@n8n/db';
-import { Service } from '@n8n/di';
-import type { MessageEventBusDestinationOptions } from 'n8n-workflow';
+import { Logger } from '@MNI/backend-common';
+import { InstanceSettingsLoaderConfig } from '@MNI/config';
+import type { EntityManager } from '@MNI/db';
+import { Service } from '@MNI/di';
+import type { MessageEventBusDestinationOptions } from 'MNI-workflow';
 import {
 	MessageEventBusDestinationSentryOptionsSchema,
 	MessageEventBusDestinationSyslogOptionsSchema,
 	MessageEventBusDestinationTypeNames,
 	MessageEventBusDestinationWebhookOptionsSchema,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import { v4 as uuid } from 'uuid';
 import { z } from 'zod';
 
@@ -17,7 +17,7 @@ import { EventDestinationsRepository } from '@/modules/log-streaming.ee/database
 
 import { InstanceBootstrappingError } from '../instance-bootstrapping.error';
 
-// Env var format reuses the canonical destination DTOs from `n8n-workflow`,
+// Env var format reuses the canonical destination DTOs from `MNI-workflow`,
 // with three deliberate adjustments per variant:
 //  1. Replace the internal `__type: '$$MessageEventBusDestination…'` discriminator
 //     with a friendlier `type: 'webhook' | 'syslog' | 'sentry'`.
@@ -117,7 +117,7 @@ export class LogStreamingInstanceSettingsLoader {
 			parsed = JSON.parse(trimmed);
 		} catch (error) {
 			throw new Error(
-				`N8N_LOG_STREAMING_DESTINATIONS is not valid JSON: ${(error as Error).message}`,
+				`MNI_LOG_STREAMING_DESTINATIONS is not valid JSON: ${(error as Error).message}`,
 			);
 		}
 
@@ -126,7 +126,7 @@ export class LogStreamingInstanceSettingsLoader {
 			const issue = result.error.issues[0];
 			const path = issue.path.length > 0 ? issue.path.join('.') : '(root)';
 			throw new Error(
-				`N8N_LOG_STREAMING_DESTINATIONS validation failed at "${path}": ${issue.message}`,
+				`MNI_LOG_STREAMING_DESTINATIONS validation failed at "${path}": ${issue.message}`,
 			);
 		}
 
@@ -137,7 +137,7 @@ export class LogStreamingInstanceSettingsLoader {
 			if (item.id) {
 				if (seenIds.has(item.id)) {
 					throw new Error(
-						`N8N_LOG_STREAMING_DESTINATIONS has duplicate id "${item.id}" at index ${index}`,
+						`MNI_LOG_STREAMING_DESTINATIONS has duplicate id "${item.id}" at index ${index}`,
 					);
 				}
 				seenIds.add(item.id);

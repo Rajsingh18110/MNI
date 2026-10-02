@@ -3,19 +3,19 @@ import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { mount } from '@vue/test-utils';
 import { createTestingPinia } from '@pinia/testing';
 import { setActivePinia } from 'pinia';
-import type { ICredentialType, INodeProperties } from 'n8n-workflow';
+import type { ICredentialType, INodeProperties } from 'MNI-workflow';
 import type { INodeUi } from '@/Interface';
 
 import CredentialsSelect from './CredentialsSelect.vue';
 import { useCredentialsStore } from '../credentials.store';
 
-vi.mock('@n8n/i18n', () => ({
+vi.mock('@MNI/i18n', () => ({
 	useI18n: () => ({
 		baseText: (key: string) => key,
 	}),
 }));
 
-vi.mock('@n8n/design-system', async () => {
+vi.mock('@MNI/design-system', async () => {
 	const { defineComponent } = await import('vue');
 
 	return {
@@ -63,7 +63,7 @@ const restrictedCred = {
 	displayName: 'Restricted API',
 	authenticate: { type: 'generic' },
 	restrictToSupportedNodes: true,
-	supportedNodes: ['n8n-nodes-base.restrictedConsumer'],
+	supportedNodes: ['MNI-nodes-base.restrictedConsumer'],
 } as unknown as ICredentialType;
 
 const slackApi = {
@@ -101,7 +101,7 @@ describe('CredentialsSelect — restrictToSupportedNodes filter', () => {
 	});
 
 	it('hides a restricted credential when the current node is not in supportedNodes', () => {
-		const wrapper = mountSelect('n8n-nodes-base.httpRequest', [restrictedCred, slackApi]);
+		const wrapper = mountSelect('MNI-nodes-base.httpRequest', [restrictedCred, slackApi]);
 		const names = renderedCredentialNames(wrapper);
 
 		expect(names).toContain('slackApi');
@@ -109,14 +109,14 @@ describe('CredentialsSelect — restrictToSupportedNodes filter', () => {
 	});
 
 	it('shows a restricted credential when the current node IS in supportedNodes', () => {
-		const wrapper = mountSelect('n8n-nodes-base.restrictedConsumer', [restrictedCred, slackApi]);
+		const wrapper = mountSelect('MNI-nodes-base.restrictedConsumer', [restrictedCred, slackApi]);
 		const names = renderedCredentialNames(wrapper);
 
 		expect(names).toContain('restrictedApi');
 	});
 
 	it('does not affect credentials without restrictToSupportedNodes', () => {
-		const wrapper = mountSelect('n8n-nodes-base.httpRequest', [slackApi]);
+		const wrapper = mountSelect('MNI-nodes-base.httpRequest', [slackApi]);
 		const names = renderedCredentialNames(wrapper);
 
 		expect(names).toContain('slackApi');

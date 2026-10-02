@@ -1,7 +1,7 @@
-import type { SourceControlledFile } from '@n8n/api-types';
-import { mockInstance } from '@n8n/backend-test-utils';
-import type { User } from '@n8n/db';
-import { Container } from '@n8n/di';
+import type { SourceControlledFile } from '@MNI/api-types';
+import { mockInstance } from '@MNI/backend-test-utils';
+import type { User } from '@MNI/db';
+import { Container } from '@MNI/di';
 
 import { BadRequestError } from '@/errors/response-errors/bad-request.error';
 import { ForbiddenError } from '@/errors/response-errors/forbidden.error';

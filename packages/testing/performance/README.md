@@ -20,9 +20,9 @@ Microbenchmarks for measuring and tracking performance of critical code paths.
 ## Commands
 
 ```bash
-pnpm --filter=@n8n/performance bench          # Run benchmarks
-pnpm --filter=@n8n/performance bench:baseline  # Save baseline for local comparison
-pnpm --filter=@n8n/performance bench:compare   # Compare against baseline (>10% = fail)
+pnpm --filter=@MNI/performance bench          # Run benchmarks
+pnpm --filter=@MNI/performance bench:baseline  # Save baseline for local comparison
+pnpm --filter=@MNI/performance bench:compare   # Compare against baseline (>10% = fail)
 ```
 
 ## CI Regression Detection

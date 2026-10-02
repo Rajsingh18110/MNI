@@ -18,7 +18,7 @@ the same commands from the repo via `pnpm nathan`.
   still reports success even if the tunnel drops. (Redeploying a name that's
   *already up* skips the poll — it can't tell the old instance from the new — so
   it falls back to the tunnel; prefer a fresh name when you need the reliable report.)
-- **A token in `~/.n8n/dev/nathan-token`.** If a command reports no token, **ask the
+- **A token in `~/.MNI/dev/nathan-token`.** If a command reports no token, **ask the
   user for one** — point them at the form
   (`https://internal.users.n8n.cloud/form/d6d34a2f-4899-4ee8-afc8-f8c41a8a243d`),
   where they log in with their MNI account and copy the token from the response —
@@ -68,7 +68,7 @@ paths / feature area), then choose:
 
 | PR touches… | Suggest | Why |
 |---|---|---|
-| AI features — `@n8n/nodes-langchain`, `@n8n/instance-ai`, the AI assistant/builder, `N8N_AI_*`, "askAi"/agent code | `--ai` | Enables instance AI (and defaults the license to pro2) so the AI features actually run |
+| AI features — `@MNI/nodes-langchain`, `@MNI/instance-ai`, the AI assistant/builder, `MNI_AI_*`, "askAi"/agent code | `--ai` | Enables instance AI (and defaults the license to pro2) so the AI features actually run |
 | License-gated / enterprise features — `.ee.ts` files or `/ee/` dirs, license checks (`@n8n_io/license-sdk`, `hasFeature`), SSO/SAML/OIDC/LDAP, RBAC/roles/scopes, projects, variables, external secrets, source control/environments, log streaming, insights, folders | `--enterprise` | The feature is gated behind a license and won't be testable on community |
 | A specific gated feature/quota you want on/off | `--license pro2 --featureOverride <featureKey>:<value>` | Bakes the override into a generated license (community/enterprise can't be overridden) |
 | Anything else — core nodes, generic UI, non-gated bug fixes | *(nothing — community default)* | No license needed |
@@ -103,7 +103,7 @@ Key flags (after the deploy args): `--license community|enterprise|starter|pro1|
 ## `local` caveat
 
 `pnpm nathan local ...` generates a runnable `docker run` bundle, but Nathan
-delivers it as **Slack file attachments** (`run-n8n.sh` + `.env`), not to the
+delivers it as **Slack file attachments** (`run-MNI.sh` + `.env`), not to the
 terminal — they land in **#updates-pnpm-nathan**
 (https://n8nio.slack.com/archives/C0BGVHZ0SCW). `deploy` and `help` return fully
 in the terminal.

@@ -3,7 +3,7 @@ import { useRouter, useRoute } from 'vue-router';
 import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';
 import { useProjectsStore } from '@/features/collaboration/projects/projects.store';
 import { VIEWS } from '@/app/constants';
-import { type CommandBarItem } from '@n8n/design-system';
+import { type CommandBarItem } from '@MNI/design-system';
 import { useNodeCommands } from './useNodeCommands';
 import { useWorkflowCommands } from './useWorkflowCommands';
 import { useWorkflowNavigationCommands } from './useWorkflowNavigationCommands';
@@ -17,10 +17,10 @@ import { useRecentResources } from './useRecentResources';
 import { useChatHubCommands } from './useChatHubCommands';
 import { useInstanceAiCommands } from './useInstanceAiCommands';
 import type { CommandGroup } from '../types';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import { PROJECT_DATA_TABLES, DATA_TABLE_VIEW } from '@/features/core/dataTable/constants';
 import { injectWorkflowDocumentStore } from '@/app/stores/workflowDocument.store';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
 import {
 	CHAT_CONVERSATION_VIEW,
 	CHAT_PERSONAL_AGENTS_VIEW,

@@ -4,9 +4,9 @@ import {
 	type ILoadOptionsFunctions,
 	type INodeListSearchItems,
 	type INodeListSearchResult,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
-import { sleep } from '@n8n/utils/sleep';
+import { sleep } from '@MNI/utils/sleep';
 import { escapeODataSearchValue } from '@utils/query-escaping';
 import { filterSortSearchListItems, tagPermissionError } from '../helpers/utils';
 import {

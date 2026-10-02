@@ -1,10 +1,10 @@
-import { mockInstance, testDb } from '@n8n/backend-test-utils';
-import { DeploymentKey } from '@n8n/db';
-import { Container } from '@n8n/di';
-import { DataSource, type Repository } from '@n8n/typeorm';
+import { mockInstance, testDb } from '@MNI/backend-test-utils';
+import { DeploymentKey } from '@MNI/db';
+import { Container } from '@MNI/di';
+import { DataSource, type Repository } from '@MNI/typeorm';
 import type { CryptoKey } from 'jose';
 import { CompactEncrypt, compactDecrypt, exportJWK, generateKeyPair, importJWK } from 'jose';
-import { Cipher, InstanceSettings } from 'n8n-core';
+import { Cipher, InstanceSettings } from 'MNI-core';
 
 import { CacheService } from '@/services/cache/cache.service';
 
@@ -20,7 +20,7 @@ let keyStore: Repository<DeploymentKey>;
 beforeAll(async () => {
 	mockInstance(InstanceSettings, {
 		encryptionKey: 'oauth-jwe-test-encryption-key',
-		n8nFolder: '/tmp/n8n-test',
+		n8nFolder: '/tmp/MNI-test',
 	});
 	await testDb.init();
 	keyStore = Container.get(DataSource).getRepository(DeploymentKey);

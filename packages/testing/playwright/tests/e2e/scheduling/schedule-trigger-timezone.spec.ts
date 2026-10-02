@@ -1,4 +1,4 @@
-import type { IWorkflowBase } from 'n8n-workflow';
+import type { IWorkflowBase } from 'MNI-workflow';
 
 import { makeScheduleTriggerWorkflow } from './schedule-trigger-workflow';
 import { test, expect } from '../../../fixtures/base';
@@ -12,9 +12,9 @@ const INSTANCE_TIMEZONE = 'America/New_York';
 test.use({
 	capability: {
 		env: {
-			N8N_SCHEDULER_ENABLED: 'true',
-			N8N_USE_WORKFLOW_PUBLICATION_SERVICE: 'true',
-			N8N_SCHEDULER_EXECUTOR_INTERVAL: '1',
+			MNI_SCHEDULER_ENABLED: 'true',
+			MNI_USE_WORKFLOW_PUBLICATION_SERVICE: 'true',
+			MNI_SCHEDULER_EXECUTOR_INTERVAL: '1',
 			GENERIC_TIMEZONE: INSTANCE_TIMEZONE,
 		},
 	},

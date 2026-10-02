@@ -1,12 +1,12 @@
-import { ExecutionRepository } from '@n8n/db';
-import type { IExecutionResponse, Project } from '@n8n/db';
-import { Service } from '@n8n/di';
-import { ExecuteContext, isEngineRequest } from 'n8n-core';
+import { ExecutionRepository } from '@MNI/db';
+import type { IExecutionResponse, Project } from '@MNI/db';
+import { Service } from '@MNI/di';
+import { ExecuteContext, isEngineRequest } from 'MNI-core';
 import type {
 	IBinaryKeyData,
 	INodeExecutionData,
 	IWorkflowExecutionDataProcess,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import {
 	Workflow,
 	BINARY_ENCODING,
@@ -15,7 +15,7 @@ import {
 	CHAT_TOOL_NODE_TYPE,
 	NodeConnectionTypes,
 	isHitlToolType,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { NotFoundError } from '../errors/response-errors/not-found.error';
 import { ExecutionPersistence } from '../executions/execution-persistence';

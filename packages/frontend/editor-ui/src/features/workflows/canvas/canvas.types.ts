@@ -6,7 +6,7 @@ import {
 	type INodeParameterResourceLocator,
 	type IWorkflowGroup,
 	type NodeConnectionType,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import type {
 	Connection,
 	DefaultEdge,
@@ -17,11 +17,11 @@ import type {
 	OnConnectStartParams,
 	ViewportTransform,
 } from '@vue-flow/core';
-import type { AgentCapabilitySummary } from '@n8n/api-types';
+import type { AgentCapabilitySummary } from '@MNI/api-types';
 import type { INodeUi } from '@/Interface';
 import type { IExecutionResponse } from '@/features/execution/executions/executions.types';
 import type { ComputedRef, Ref } from 'vue';
-import type { EventBus } from '@n8n/utils/event-bus';
+import type { EventBus } from '@MNI/utils/event-bus';
 import type {
 	CanvasLayoutSource,
 	CanvasLayoutTarget,
@@ -58,10 +58,10 @@ export interface CanvasElementPortWithRenderData extends CanvasConnectionPort {
 
 export const enum CanvasNodeRenderType {
 	Default = 'default',
-	StickyNote = 'n8n-nodes-base.stickyNote',
-	AddNodes = 'n8n-nodes-internal.addNodes',
-	ChoicePrompt = 'n8n-nodes-internal.choicePrompt',
-	Agent = 'n8n-nodes-base.messageAnAgent',
+	StickyNote = 'MNI-nodes-base.stickyNote',
+	AddNodes = 'MNI-nodes-internal.addNodes',
+	ChoicePrompt = 'MNI-nodes-internal.choicePrompt',
+	Agent = 'MNI-nodes-base.messageAnAgent',
 }
 
 export type CanvasNodeDefaultRenderLabelSize = 'small' | 'medium' | 'large';

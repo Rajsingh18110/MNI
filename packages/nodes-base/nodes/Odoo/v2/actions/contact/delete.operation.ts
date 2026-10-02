@@ -1,4 +1,4 @@
-import type { IExecuteFunctions, INodeExecutionData, INodeProperties } from 'n8n-workflow';
+import type { IExecuteFunctions, INodeExecutionData, INodeProperties } from 'MNI-workflow';
 
 import { recordRLC } from '../../helpers/utils';
 import { odooApiRequest } from '../../transport';

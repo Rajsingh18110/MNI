@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import type { InstanceAiMessage } from '@n8n/api-types';
-import type { RatingFeedback } from '@n8n/design-system';
+import type { InstanceAiMessage } from '@MNI/api-types';
+import type { RatingFeedback } from '@MNI/design-system';
 import {
 	N8nButton,
 	N8nCallout,
@@ -10,11 +10,11 @@ import {
 	N8nIconButton,
 	N8nText,
 	N8nTooltip,
-} from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+} from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 import { computed, ref } from 'vue';
-import { useSettingsStore } from '@n8n/stores/settings.store';
-import { useAssistantTopUpEligibility } from '@n8n/stores/composables/useAssistantTopUpEligibility';
+import { useSettingsStore } from '@MNI/stores/settings.store';
+import { useAssistantTopUpEligibility } from '@MNI/stores/composables/useAssistantTopUpEligibility';
 import { usePageRedirectionHelper } from '@/app/composables/usePageRedirectionHelper';
 import { useInstanceAiStore, useThread } from '../instanceAi.store';
 import AgentActivityTree from './AgentActivityTree.vue';
@@ -278,7 +278,7 @@ function formatJson(value: unknown): string {
 </template>
 
 <style lang="scss" module>
-@use '@n8n/design-system/css/mixins/motion';
+@use '@MNI/design-system/css/mixins/motion';
 
 .userAttachments {
 	display: flex;

@@ -17,12 +17,12 @@ skipAuth: true      → no decorator + comment explaining alternate auth
 
 `@ProjectScope` succeeds if the user has the scope **globally OR in the project named in the URL**. `@GlobalScope` ignores project relations entirely.
 
-Both decorators come from `@n8n/decorators`. The middleware lives in `packages/cli/src/controller.registry.ts` (`createScopedMiddleware`) and resolves access via `userHasScopes` in `packages/cli/src/permissions.ee/check-access.ts`.
+Both decorators come from `@MNI/decorators`. The middleware lives in `packages/cli/src/controller.registry.ts` (`createScopedMiddleware`) and resolves access via `userHasScopes` in `packages/cli/src/permissions.ee/check-access.ts`.
 
 ## Apply the decorator
 
 ```ts
-import { Get, Post, ProjectScope, RestController } from '@n8n/decorators';
+import { Get, Post, ProjectScope, RestController } from '@MNI/decorators';
 
 @RestController('/projects/:projectId/widgets')
 export class WidgetsController {
@@ -55,7 +55,7 @@ Conventions:
 
 ## When the scope doesn't exist yet
 
-Add the resource and ops in `packages/@n8n/permissions/`:
+Add the resource and ops in `packages/@MNI/permissions/`:
 
 1. **`src/constants.ee.ts`** — add to `RESOURCES` (alphabetical):
    ```ts
@@ -71,10 +71,10 @@ Add the resource and ops in `packages/@n8n/permissions/`:
 5. **Personal-space publishing**: if you add a `<resource>:publish` scope, also append it to `PERSONAL_SPACE_PUBLISHING_SETTING.scopes` in `constants.ee.ts` so personal-owner gating matches `workflow:publish`.
 6. **`src/roles/custom-role-scopes.ee.ts`** — add the resource to `PROJECT_CUSTOM_ROLE_OPERATIONS` with the ops to render in the permissions matrix, in display order. The editor's `SCOPES`/`SCOPE_TYPES` and the save-time whitelist `PROJECT_CUSTOM_ROLE_SCOPES` both derive from it: a resource missing here cannot reach the UI, and a scope missing from it is rejected on save.
 7. **Frontend wiring** — three files; skipping any of them means the new scopes will not appear in the project-role configuration UI:
-   - `packages/frontend/@n8n/stores/src/rbac.store.ts` — add `<resource>: {}` to `scopesByResourceId` (typecheck will fail otherwise).
+   - `packages/frontend/@MNI/stores/src/rbac.store.ts` — add `<resource>: {}` to `scopesByResourceId` (typecheck will fail otherwise).
    - `packages/frontend/editor-ui/src/features/roles/project/projectRoleScopes.ts` — add the resource to `SCOPE_TYPES` (the order the resource group appears on the page).
-   - `packages/frontend/@n8n/i18n/src/locales/en.json` — add `projectRoles.<resource>:<op>` (column label) and `projectRoles.<resource>:<op>.tooltip` (hover description) for every op, plus `projectRoles.type.<resource>` (the group header).
-8. **Snapshot** — update `packages/@n8n/permissions/src/__tests__/__snapshots__/scope-information.test.ts.snap` to include the new `<resource>:*` entries.
+   - `packages/frontend/@MNI/i18n/src/locales/en.json` — add `projectRoles.<resource>:<op>` (column label) and `projectRoles.<resource>:<op>.tooltip` (hover description) for every op, plus `projectRoles.type.<resource>` (the group header).
+8. **Snapshot** — update `packages/@MNI/permissions/src/__tests__/__snapshots__/scope-information.test.ts.snap` to include the new `<resource>:*` entries.
 
 No DB migration needed — `AuthRolesService.init()` syncs scopes/roles on every startup. Custom team roles created in the UI are **not** auto-updated; mention this in the PR description.
 
@@ -100,8 +100,8 @@ async handleWebhook(...) { ... }
 Add a regression test that fails when a future route is added without a scope. Iterate every route on the controller via `ControllerRegistryMetadata` and assert the gate.
 
 ```ts
-import { ControllerRegistryMetadata } from '@n8n/decorators';
-import { Container } from '@n8n/di';
+import { ControllerRegistryMetadata } from '@MNI/decorators';
+import { Container } from '@MNI/di';
 import { WidgetsController } from '../widgets.controller';
 
 const UNAUTHENTICATED_HANDLERS = new Set<string>(); // add public handler names here

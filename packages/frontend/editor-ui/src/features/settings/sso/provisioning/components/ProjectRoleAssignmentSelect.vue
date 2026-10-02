@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 import { computed, ref } from 'vue';
-import { useI18n } from '@n8n/i18n';
-import { useSettingsStore } from '@n8n/stores/settings.store';
-import { useRolesStore } from '@n8n/stores/roles.store';
+import { useI18n } from '@MNI/i18n';
+import { useSettingsStore } from '@MNI/stores/settings.store';
+import { useRolesStore } from '@MNI/stores/roles.store';
 import { hasPermission } from '@/app/utils/rbac/permissions';
 import { VIEWS } from '@/app/constants';
 import RoleSelectDropdown from '@/features/roles/components/RoleSelectDropdown.vue';

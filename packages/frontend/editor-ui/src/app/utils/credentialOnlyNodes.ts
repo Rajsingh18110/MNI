@@ -1,6 +1,6 @@
-import { deepCopy, type ICredentialType, type INodeTypeDescription } from 'n8n-workflow';
+import { deepCopy, type ICredentialType, type INodeTypeDescription } from 'MNI-workflow';
 import { CREDENTIAL_ONLY_NODE_PREFIX, HTTP_REQUEST_NODE_TYPE } from '../constants';
-import { i18n } from '@n8n/i18n';
+import { i18n } from '@MNI/i18n';
 
 export function isCredentialOnlyNodeType(nodeTypeName: string): boolean {
 	return nodeTypeName?.startsWith(CREDENTIAL_ONLY_NODE_PREFIX) ?? false;

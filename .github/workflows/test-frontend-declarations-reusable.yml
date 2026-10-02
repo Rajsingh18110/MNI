@@ -32,11 +32,11 @@ jobs:
       - name: Setup and build in release mode
         uses: ./.github/actions/setup-nodejs
         with:
-          build-command: pnpm turbo run build --filter=@n8n/design-system --filter=@n8n/chat
+          build-command: pnpm turbo run build --filter=@MNI/design-system --filter=@MNI/chat
 
       - name: Verify the published frontend packages carry declarations
         run: |
-          for pkg in packages/frontend/@n8n/design-system packages/frontend/@n8n/chat; do
+          for pkg in packages/frontend/@MNI/design-system packages/frontend/@MNI/chat; do
             if [ -z "$(find "$pkg/dist" -name '*.d.ts' -print -quit 2>/dev/null)" ]; then
               echo "::error::$pkg/dist has no .d.ts — the RELEASE-gated declaration emit did not run"
               exit 1

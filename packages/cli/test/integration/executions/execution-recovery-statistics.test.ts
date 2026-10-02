@@ -1,8 +1,8 @@
-import { createWorkflow, mockLogger, testDb } from '@n8n/backend-test-utils';
-import { GlobalConfig } from '@n8n/config';
-import type { WorkflowEntity } from '@n8n/db';
-import { ExecutionRepository, StatisticsNames, WorkflowRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
+import { createWorkflow, mockLogger, testDb } from '@MNI/backend-test-utils';
+import { GlobalConfig } from '@MNI/config';
+import type { WorkflowEntity } from '@MNI/db';
+import { ExecutionRepository, StatisticsNames, WorkflowRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
 import { mock } from 'vitest-mock-extended';
 
 import { ExecutionCrashService } from '@/executions/execution-crash.service';

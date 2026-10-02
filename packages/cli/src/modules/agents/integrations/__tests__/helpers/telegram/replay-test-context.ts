@@ -1,12 +1,12 @@
-import type { StreamChunk } from '@n8n/agents';
-import type { AgentIntegrationConfig } from '@n8n/api-types';
-import type { Logger as BackendLogger } from '@n8n/backend-common';
-import type { OutboundHttp } from '@n8n/backend-network';
-import type { InstanceSettings } from 'n8n-core';
+import type { StreamChunk } from '@MNI/agents';
+import type { AgentIntegrationConfig } from '@MNI/api-types';
+import type { Logger as BackendLogger } from '@MNI/backend-common';
+import type { OutboundHttp } from '@MNI/backend-network';
+import type { InstanceSettings } from 'MNI-core';
 import type { Mock } from 'vitest';
 import { mock } from 'vitest-mock-extended';
 
-import type { UrlService } from '@n8n/backend-services';
+import type { UrlService } from '@MNI/backend-services';
 
 import type { AgentRepository } from '../../../../repositories/agent.repository';
 import type { ChatInstance } from '../../../chat-integration.service';
@@ -227,7 +227,7 @@ export async function createTelegramReplayContext(
 		apiBaseUrl: 'https://api.telegram.org',
 	});
 	const chat = new Chat({
-		userName: 'n8n-agent-agent-1',
+		userName: 'MNI-agent-agent-1',
 		adapters: { telegram: adapter } as unknown as Record<string, never>,
 		state: createMemoryState(),
 		concurrency: 'concurrent',

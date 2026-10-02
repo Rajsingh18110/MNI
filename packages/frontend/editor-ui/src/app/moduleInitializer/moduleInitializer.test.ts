@@ -3,9 +3,9 @@ import {
 	assertUniqueRouteNames,
 	modalRegistry,
 	pushHandlerRegistry,
-} from '@n8n/frontend-module-sdk';
-import type { FrontendModuleDescription } from '@n8n/frontend-module-sdk';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+} from '@MNI/frontend-module-sdk';
+import type { FrontendModuleDescription } from '@MNI/frontend-module-sdk';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import merge from 'lodash/merge';
 
 import router from '@/app/router';
@@ -20,7 +20,7 @@ import {
 	DOWNLOAD_DATA_TABLE_MODAL_KEY,
 	IMPORT_CSV_MODAL_KEY,
 } from '@/features/core/dataTable/constants';
-import { defaultSettings } from '@n8n/frontend-test-utils';
+import { defaultSettings } from '@MNI/frontend-test-utils';
 
 describe('registerModuleModals', () => {
 	beforeEach(() => {

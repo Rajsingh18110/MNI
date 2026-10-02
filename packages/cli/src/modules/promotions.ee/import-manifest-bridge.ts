@@ -1,12 +1,12 @@
-import { jsonParse } from 'n8n-workflow';
+import { jsonParse } from 'MNI-workflow';
 import * as fs from 'node:fs/promises';
 import path from 'node:path';
 
-import { N8N_VERSION } from '@/constants';
-import { MANIFEST_FILE } from '@/modules/n8n-packages/spec/constants';
-import type { ManifestEntry, PackageManifest } from '@/modules/n8n-packages/spec/manifest.schema';
-import { packageManifestSchema } from '@/modules/n8n-packages/spec/manifest.schema';
-import type { PackageRequirements } from '@/modules/n8n-packages/spec/requirements.schema';
+import { MNI_VERSION } from '@/constants';
+import { MANIFEST_FILE } from '@/modules/MNI-packages/spec/constants';
+import type { ManifestEntry, PackageManifest } from '@/modules/MNI-packages/spec/manifest.schema';
+import { packageManifestSchema } from '@/modules/MNI-packages/spec/manifest.schema';
+import type { PackageRequirements } from '@/modules/MNI-packages/spec/requirements.schema';
 
 /**
  * TEMPORARY bridge: import still inventories a directory package from
@@ -97,7 +97,7 @@ export async function writeImportManifest(options: {
 	const manifest = packageManifestSchema.parse({
 		packageFormatVersion: '1',
 		exportedAt: new Date().toISOString(),
-		sourceN8nVersion: N8N_VERSION,
+		sourceN8nVersion: MNI_VERSION,
 		sourceId,
 		...collections,
 		...(variables.length > 0 ? { variables } : {}),

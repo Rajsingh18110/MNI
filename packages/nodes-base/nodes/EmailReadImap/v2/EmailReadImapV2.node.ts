@@ -1,4 +1,4 @@
-import { imapErrorCode, ImapSimple } from '@n8n/imap';
+import { imapErrorCode, ImapSimple } from '@MNI/imap';
 import { DateTime } from 'luxon';
 import type {
 	ITriggerFunctions,
@@ -11,8 +11,8 @@ import type {
 	INodeTypeDescription,
 	ITriggerResponse,
 	INodeExecutionData,
-} from 'n8n-workflow';
-import { NodeConnectionTypes, NodeOperationError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeConnectionTypes, NodeOperationError } from 'MNI-workflow';
 
 import { isCredentialsDataImap } from '@credentials/Imap.credentials';
 

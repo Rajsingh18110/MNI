@@ -2,7 +2,7 @@ import { Node, SyntaxKind } from 'ts-morph';
 import type { ExportDeclaration, ImportDeclaration, SourceFile } from 'ts-morph';
 
 export interface ImportRef {
-	/** The module specifier, e.g. `./foo` or `@n8n/di`. */
+	/** The module specifier, e.g. `./foo` or `@MNI/di`. */
 	specifier: string;
 	/** True when the reference is erased by tsc (`import type` / `export type` / inline `type`). */
 	typeOnly: boolean;

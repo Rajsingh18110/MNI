@@ -2,10 +2,10 @@ import {
 	ChangePasswordRequestDto,
 	ForgotPasswordRequestDto,
 	ResolvePasswordTokenQueryDto,
-} from '@n8n/api-types';
-import { Logger } from '@n8n/backend-common';
-import { Time } from '@n8n/constants';
-import { GLOBAL_OWNER_ROLE, UserRepository } from '@n8n/db';
+} from '@MNI/api-types';
+import { Logger } from '@MNI/backend-common';
+import { Time } from '@MNI/constants';
+import { GLOBAL_OWNER_ROLE, UserRepository } from '@MNI/db';
 import {
 	Body,
 	createBodyKeyedRateLimiter,
@@ -13,10 +13,10 @@ import {
 	Post,
 	Query,
 	RestController,
-} from '@n8n/decorators';
-import { hasGlobalScope } from '@n8n/permissions';
+} from '@MNI/decorators';
+import { hasGlobalScope } from '@MNI/permissions';
 import { Response } from 'express';
-import { ErrorReporter } from 'n8n-core';
+import { ErrorReporter } from 'MNI-core';
 
 import { AuthService } from '@/auth/auth.service';
 import { RESPONSE_ERROR_MESSAGES } from '@/constants';

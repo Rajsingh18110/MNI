@@ -68,7 +68,7 @@ export function filterImpactfulChanges(files: string[]): string[] {
  * The module registry is the same boot-time class, but worse: it IS in the map,
  * so a scoped result looks correct. Boot code is attributed only to specs that
  * start their own container — i.e. the specs that already enable the module via
- * `N8N_ENABLED_MODULES` and so can't observe a default flip. The specs that
+ * `MNI_ENABLED_MODULES` and so can't observe a default flip. The specs that
  * break assert the off-branch, and no hit-coverage map reaches a branch that
  * stopped executing. Churn is low, so broad is cheap here too.
  */
@@ -77,7 +77,7 @@ const FORCES_BROAD: Array<(f: string) => boolean> = [
 	(f) => /(^|\/)Dockerfile(\.|$)|\.Dockerfile$/.test(f),
 	(f) => f.startsWith('packages/testing/containers/'),
 	(f) => f.startsWith('packages/nodes-base/credentials/'),
-	(f) => /^packages\/@n8n\/backend-common\/src\/modules\/[^/]+\.ts$/.test(f),
+	(f) => /^packages\/@MNI\/backend-common\/src\/modules\/[^/]+\.ts$/.test(f),
 ];
 
 /** True if a changed file defines the E2E runtime → the whole suite must run. */
@@ -283,7 +283,7 @@ export function tsconfigForcesBroad(before: string, after: string): boolean {
 }
 
 export const isBackendConfig = (f: string): boolean =>
-	/^packages\/@n8n\/config\/src\/configs\/[^/]+\.ts$/.test(f);
+	/^packages\/@MNI\/config\/src\/configs\/[^/]+\.ts$/.test(f);
 
 /** Every field default (`name=initializer`, empty when the field has none) and
  *  every `@Env` binding — the two inputs that decide a config's runtime value. */

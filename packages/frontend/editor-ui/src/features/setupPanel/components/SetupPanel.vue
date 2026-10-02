@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { useI18n } from '@n8n/i18n';
-import { N8nSwitch, N8nText } from '@n8n/design-system';
+import { useI18n } from '@MNI/i18n';
+import { N8nSwitch, N8nText } from '@MNI/design-system';
 import SetupPanelCards from '@/features/setupPanel/components/SetupPanelCards.vue';
 
 const i18n = useI18n();

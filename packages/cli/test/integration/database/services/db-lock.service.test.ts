@@ -1,16 +1,16 @@
-import { testDb } from '@n8n/backend-test-utils';
-import { GlobalConfig } from '@n8n/config';
+import { testDb } from '@MNI/backend-test-utils';
+import { GlobalConfig } from '@MNI/config';
 import {
 	CredentialsRepository,
 	DbConnectionOptions,
 	DbLock,
 	DbLockService,
 	SettingsRepository,
-} from '@n8n/db';
-import { Container } from '@n8n/di';
-import { DataSource } from '@n8n/typeorm';
-import { sleep } from '@n8n/utils/sleep';
-import { OperationalError } from 'n8n-workflow';
+} from '@MNI/db';
+import { Container } from '@MNI/di';
+import { DataSource } from '@MNI/typeorm';
+import { sleep } from '@MNI/utils/sleep';
+import { OperationalError } from 'MNI-workflow';
 import { randomUUID } from 'node:crypto';
 
 import { PolicyEnforcementService } from '@/policy/policy-enforcement.service';

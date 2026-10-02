@@ -12,8 +12,8 @@ import {
 	UpdateDataTableDto,
 	UpdateDataTableRowDto,
 	UpsertDataTableRowDto,
-} from '@n8n/api-types';
-import { AuthenticatedRequest } from '@n8n/db';
+} from '@MNI/api-types';
+import { AuthenticatedRequest } from '@MNI/db';
 import {
 	Body,
 	Delete,
@@ -25,9 +25,9 @@ import {
 	ProjectScope,
 	Query,
 	RestController,
-} from '@n8n/decorators';
+} from '@MNI/decorators';
 import { NextFunction, Response } from 'express';
-import { DataTableRowReturn } from 'n8n-workflow';
+import { DataTableRowReturn } from 'MNI-workflow';
 
 import { ResponseError } from '@/errors/response-errors/abstract/response.error';
 import { BadRequestError } from '@/errors/response-errors/bad-request.error';

@@ -1,5 +1,5 @@
-import { JsonColumn, WithTimestampsAndStringId } from '@n8n/db';
-import { Column, Entity, Index } from '@n8n/typeorm';
+import { JsonColumn, WithTimestampsAndStringId } from '@MNI/db';
+import { Column, Entity, Index } from '@MNI/typeorm';
 
 import type { PolicyRule } from '../../policy-rule.types';
 

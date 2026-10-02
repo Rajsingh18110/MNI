@@ -1,5 +1,5 @@
-import type { Message } from '@n8n/agents';
-import { MAX_AGENT_CHAT_ATTACHMENT_MIMETYPE_LENGTH } from '@n8n/api-types';
+import type { Message } from '@MNI/agents';
+import { MAX_AGENT_CHAT_ATTACHMENT_MIMETYPE_LENGTH } from '@MNI/api-types';
 
 import { buildInboundUserMessage, resolveInboundMimeType } from '../inbound-attachments';
 

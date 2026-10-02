@@ -1,7 +1,7 @@
 import { NodeTestHarness } from '@nodes-testing/node-test-harness';
 import { mockDeep } from 'vitest-mock-extended';
 import { Collection, Db, MongoBulkWriteError, MongoClient, ObjectId } from 'mongodb';
-import { constructExecutionMetaData, returnJsonArray } from 'n8n-core';
+import { constructExecutionMetaData, returnJsonArray } from 'MNI-core';
 import type {
 	IDataObject,
 	IExecuteFunctions,
@@ -9,7 +9,7 @@ import type {
 	INodeParameters,
 	NodeParameterValueType,
 	WorkflowTestData,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { MongoDb } from '../MongoDb.node';
 import type { MockInstance } from 'vitest';
@@ -19,7 +19,7 @@ const searchIndexName = 'my-index';
 
 MongoClient.connect = async function () {
 	const driverInfo = {
-		name: 'n8n_crud',
+		name: 'MNI_crud',
 		version: '1.2',
 	};
 	const client = new MongoClient('mongodb://localhost:27017', { driverInfo });
@@ -39,7 +39,7 @@ function buildWorkflow({
 						parameters: {},
 						id: '8b7bb389-e4ef-424a-bca1-e7ead60e43eb',
 						name: manualTriggerName,
-						type: 'n8n-nodes-base.manualTrigger',
+						type: 'MNI-nodes-base.manualTrigger',
 						typeVersion: 1,
 						position: [740, 380],
 					},
@@ -47,7 +47,7 @@ function buildWorkflow({
 						parameters,
 						id: '8b7bb389-e4ef-424a-bca1-e7ead60e43ec',
 						name: 'mongoDb',
-						type: 'n8n-nodes-base.mongoDb',
+						type: 'MNI-nodes-base.mongoDb',
 						typeVersion: 1.2,
 						position: [1260, 360],
 						credentials: {

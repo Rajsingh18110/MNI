@@ -3,8 +3,8 @@ import type {
 	IExecuteFunctions,
 	INodeProperties,
 	ResourceMapperField,
-} from 'n8n-workflow';
-import { NodeOperationError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeOperationError } from 'MNI-workflow';
 
 import * as create from './create.operation';
 import { updateDisplayOptions } from '../../../../../../utils/utilities';

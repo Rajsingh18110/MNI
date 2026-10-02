@@ -1,8 +1,8 @@
-import { testDb, mockInstance } from '@n8n/backend-test-utils';
-import type { User } from '@n8n/db';
-import { GLOBAL_OWNER_ROLE, UserRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
-import { randomString } from 'n8n-workflow';
+import { testDb, mockInstance } from '@MNI/backend-test-utils';
+import type { User } from '@MNI/db';
+import { GLOBAL_OWNER_ROLE, UserRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
+import { randomString } from 'MNI-workflow';
 
 import { AuthService } from '@/auth/auth.service';
 import config from '@/config';

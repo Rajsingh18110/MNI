@@ -7,12 +7,12 @@ import {
 } from '@/experiments/utils';
 import { useNodeCreatorStore } from '@/features/shared/nodeCreator/nodeCreator.store';
 import { useChatPanelStore } from '@/features/ai/assistant/chatPanel.store';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { useTemplatesStore } from '@/features/workflows/templates/templates.store';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import { computed } from 'vue';
 import { useRouter } from 'vue-router';
-import { N8nIcon, N8nLink } from '@n8n/design-system';
+import { N8nIcon, N8nLink } from '@MNI/design-system';
 import { useAssistantStore } from '@/features/ai/assistant/assistant.store';
 import { useEditorContext } from '@/app/composables/useEditorContext';
 import { useWorkflowId } from '@/app/composables/useWorkflowId';

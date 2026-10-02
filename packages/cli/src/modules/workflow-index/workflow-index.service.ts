@@ -1,17 +1,17 @@
-import { Logger } from '@n8n/backend-common';
-import { WorkflowsConfig } from '@n8n/config';
-import type { IWorkflowDb } from '@n8n/db';
-import { WorkflowDependencies, WorkflowDependencyRepository, WorkflowRepository } from '@n8n/db';
-import { Service } from '@n8n/di';
-import { ErrorReporter, SpanStatus, Tracing } from 'n8n-core';
-import { ensureError } from '@n8n/utils/errors/ensure-error';
+import { Logger } from '@MNI/backend-common';
+import { WorkflowsConfig } from '@MNI/config';
+import type { IWorkflowDb } from '@MNI/db';
+import { WorkflowDependencies, WorkflowDependencyRepository, WorkflowRepository } from '@MNI/db';
+import { Service } from '@MNI/di';
+import { ErrorReporter, SpanStatus, Tracing } from 'MNI-core';
+import { ensureError } from '@MNI/utils/errors/ensure-error';
 import {
 	DATA_TABLE_NODE_TYPES,
 	INode,
 	IWorkflowBase,
 	IWorkflowSettings,
 	isNodeWithWorkflowSelector,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { EventService } from '@/events/event.service';
 
@@ -199,7 +199,7 @@ export class WorkflowIndexService {
 	 * indexes any other column on `workflow_entity`, then update the trigger's gate
 	 * condition too. Otherwise the staleness check in `findWorkflowsNeedingIndexing`
 	 * will miss reindex work. See
-	 * `packages/@n8n/db/src/migrations/sqlite/1784000000003-LimitWorkflowVersionTriggerToContent.ts`
+	 * `packages/@MNI/db/src/migrations/sqlite/1784000000003-LimitWorkflowVersionTriggerToContent.ts`
 	 * (and the postgres equivalent) for the gate condition to extend.
 	 */
 	private async updateIndexInternal(
@@ -333,7 +333,7 @@ export class WorkflowIndexService {
 	}
 
 	private addWebhookPathDependencies(node: INode, dependencyUpdates: WorkflowDependencies): void {
-		if (node.type !== 'n8n-nodes-base.webhook') {
+		if (node.type !== 'MNI-nodes-base.webhook') {
 			return;
 		}
 		const webhookPath = node.parameters?.path as string;

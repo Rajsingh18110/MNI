@@ -1,6 +1,6 @@
-import type { Logger } from '@n8n/backend-common';
-import type { InstanceSettingsLoaderConfig } from '@n8n/config';
-import type { WorkflowRepository } from '@n8n/db';
+import type { Logger } from '@MNI/backend-common';
+import type { InstanceSettingsLoaderConfig } from '@MNI/config';
+import type { WorkflowRepository } from '@MNI/db';
 import { mock } from 'vitest-mock-extended';
 
 import type { CommunityNodeTypesService } from '@/modules/community-packages/community-node-types.service';
@@ -112,7 +112,7 @@ describe('CommunityPackagesInstanceSettingsLoader', () => {
 
 		it('throws when the top-level value is not an array', async () => {
 			const loader = createLoader({
-				communityPackages: JSON.stringify({ name: 'n8n-nodes-foo', version: '1.0.0' }),
+				communityPackages: JSON.stringify({ name: 'MNI-nodes-foo', version: '1.0.0' }),
 			});
 
 			await expectBootstrapError(loader, /validation failed/);
@@ -121,7 +121,7 @@ describe('CommunityPackagesInstanceSettingsLoader', () => {
 		it('throws on unknown top-level fields', async () => {
 			const loader = createLoader({
 				communityPackages: JSON.stringify([
-					{ name: 'n8n-nodes-foo', version: '1.0.0', extra: 'nope' },
+					{ name: 'MNI-nodes-foo', version: '1.0.0', extra: 'nope' },
 				]),
 			});
 
@@ -139,8 +139,8 @@ describe('CommunityPackagesInstanceSettingsLoader', () => {
 		it('throws on duplicate package names', async () => {
 			const loader = createLoader({
 				communityPackages: JSON.stringify([
-					{ name: 'n8n-nodes-foo', version: '1.0.0' },
-					{ name: 'n8n-nodes-foo', version: '2.0.0' },
+					{ name: 'MNI-nodes-foo', version: '1.0.0' },
+					{ name: 'MNI-nodes-foo', version: '2.0.0' },
 				]),
 			});
 
@@ -149,7 +149,7 @@ describe('CommunityPackagesInstanceSettingsLoader', () => {
 
 		it('throws on invalid version specifier', async () => {
 			const loader = createLoader({
-				communityPackages: JSON.stringify([{ name: 'n8n-nodes-foo', version: 'NOT VALID' }]),
+				communityPackages: JSON.stringify([{ name: 'MNI-nodes-foo', version: 'NOT VALID' }]),
 			});
 
 			await expectBootstrapError(loader, /invalid version/);
@@ -157,7 +157,7 @@ describe('CommunityPackagesInstanceSettingsLoader', () => {
 
 		it('throws when parseNpmPackageName rejects the name', async () => {
 			communityPackagesService.parseNpmPackageName.mockImplementation(() => {
-				throw new Error('Package name must start with n8n-nodes-');
+				throw new Error('Package name must start with MNI-nodes-');
 			});
 			const loader = createLoader({
 				communityPackages: JSON.stringify([{ name: 'wrong-prefix-foo', version: '1.0.0' }]),
@@ -168,13 +168,13 @@ describe('CommunityPackagesInstanceSettingsLoader', () => {
 
 		it('throws when name suffix and version field disagree', async () => {
 			communityPackagesService.parseNpmPackageName.mockImplementation((name?: string) => ({
-				packageName: 'n8n-nodes-foo',
+				packageName: 'MNI-nodes-foo',
 				scope: undefined,
 				version: '1.0.0',
 				rawString: name ?? '',
 			}));
 			const loader = createLoader({
-				communityPackages: JSON.stringify([{ name: 'n8n-nodes-foo@1.0.0', version: '2.0.0' }]),
+				communityPackages: JSON.stringify([{ name: 'MNI-nodes-foo@1.0.0', version: '2.0.0' }]),
 			});
 
 			await expectBootstrapError(loader, /conflicting versions/);
@@ -195,11 +195,11 @@ describe('CommunityPackagesInstanceSettingsLoader', () => {
 				};
 			});
 			communityPackagesService.getAllInstalledPackages.mockResolvedValue([
-				installedPackage('n8n-nodes-foo', '1.0.0'),
+				installedPackage('MNI-nodes-foo', '1.0.0'),
 			]);
 
 			const loader = createLoader({
-				communityPackages: JSON.stringify([{ name: 'n8n-nodes-foo@1.0.0' }]),
+				communityPackages: JSON.stringify([{ name: 'MNI-nodes-foo@1.0.0' }]),
 			});
 
 			await expect(loader.run()).resolves.toBe('skipped');
@@ -222,13 +222,13 @@ describe('CommunityPackagesInstanceSettingsLoader', () => {
 
 			const loader = createLoader({
 				communityPackages: JSON.stringify([
-					{ name: 'n8n-nodes-foo@1.2.3', checksum: 'sha512-from-env' },
+					{ name: 'MNI-nodes-foo@1.2.3', checksum: 'sha512-from-env' },
 				]),
 			});
 
 			await expect(loader.run()).resolves.toBe('created');
 			expect(communityPackagesService.installPackage).toHaveBeenCalledWith(
-				'n8n-nodes-foo',
+				'MNI-nodes-foo',
 				'1.2.3',
 				'sha512-from-env',
 			);
@@ -247,17 +247,17 @@ describe('CommunityPackagesInstanceSettingsLoader', () => {
 				};
 			});
 			communityPackagesService.getAllInstalledPackages.mockResolvedValue([
-				installedPackage('n8n-nodes-foo', '1.0.0'),
+				installedPackage('MNI-nodes-foo', '1.0.0'),
 			]);
 
 			const loader = createLoader({
-				communityPackages: JSON.stringify([{ name: 'n8n-nodes-foo@2.0.0' }]),
+				communityPackages: JSON.stringify([{ name: 'MNI-nodes-foo@2.0.0' }]),
 			});
 
 			await expect(loader.run()).resolves.toBe('created');
 			expect(communityPackagesService.updatePackage).toHaveBeenCalledWith(
-				'n8n-nodes-foo',
-				expect.objectContaining({ packageName: 'n8n-nodes-foo' }),
+				'MNI-nodes-foo',
+				expect.objectContaining({ packageName: 'MNI-nodes-foo' }),
 				'2.0.0',
 				undefined,
 			);
@@ -268,16 +268,16 @@ describe('CommunityPackagesInstanceSettingsLoader', () => {
 	describe('reconcile', () => {
 		it('installs missing packages, updates mismatched versions, removes extras', async () => {
 			communityPackagesService.getAllInstalledPackages.mockResolvedValue([
-				installedPackage('n8n-nodes-keep', '1.0.0'),
-				installedPackage('n8n-nodes-update', '1.0.0'),
-				installedPackage('n8n-nodes-extra', '0.5.0'),
+				installedPackage('MNI-nodes-keep', '1.0.0'),
+				installedPackage('MNI-nodes-update', '1.0.0'),
+				installedPackage('MNI-nodes-extra', '0.5.0'),
 			]);
 
 			const loader = createLoader({
 				communityPackages: JSON.stringify([
-					{ name: 'n8n-nodes-keep', version: '1.0.0' },
-					{ name: 'n8n-nodes-update', version: '2.0.0' },
-					{ name: 'n8n-nodes-new', version: '0.1.0' },
+					{ name: 'MNI-nodes-keep', version: '1.0.0' },
+					{ name: 'MNI-nodes-update', version: '2.0.0' },
+					{ name: 'MNI-nodes-new', version: '0.1.0' },
 				]),
 			});
 
@@ -285,33 +285,33 @@ describe('CommunityPackagesInstanceSettingsLoader', () => {
 
 			expect(communityPackagesService.installPackage).toHaveBeenCalledTimes(1);
 			expect(communityPackagesService.installPackage).toHaveBeenCalledWith(
-				'n8n-nodes-new',
+				'MNI-nodes-new',
 				'0.1.0',
 				undefined,
 			);
 
 			expect(communityPackagesService.updatePackage).toHaveBeenCalledTimes(1);
 			expect(communityPackagesService.updatePackage).toHaveBeenCalledWith(
-				'n8n-nodes-update',
-				expect.objectContaining({ packageName: 'n8n-nodes-update' }),
+				'MNI-nodes-update',
+				expect.objectContaining({ packageName: 'MNI-nodes-update' }),
 				'2.0.0',
 				undefined,
 			);
 
 			expect(communityPackagesService.removePackage).toHaveBeenCalledTimes(1);
 			expect(communityPackagesService.removePackage).toHaveBeenCalledWith(
-				'n8n-nodes-extra',
-				expect.objectContaining({ packageName: 'n8n-nodes-extra' }),
+				'MNI-nodes-extra',
+				expect.objectContaining({ packageName: 'MNI-nodes-extra' }),
 			);
 		});
 
 		it('returns "skipped" when no changes are needed', async () => {
 			communityPackagesService.getAllInstalledPackages.mockResolvedValue([
-				installedPackage('n8n-nodes-foo', '1.0.0'),
+				installedPackage('MNI-nodes-foo', '1.0.0'),
 			]);
 
 			const loader = createLoader({
-				communityPackages: JSON.stringify([{ name: 'n8n-nodes-foo', version: '1.0.0' }]),
+				communityPackages: JSON.stringify([{ name: 'MNI-nodes-foo', version: '1.0.0' }]),
 			});
 
 			await expect(loader.run()).resolves.toBe('skipped');
@@ -322,30 +322,30 @@ describe('CommunityPackagesInstanceSettingsLoader', () => {
 
 		it('continues with remaining items when one install fails', async () => {
 			communityPackagesService.installPackage.mockImplementation(async (name) => {
-				if (name === 'n8n-nodes-bad') throw new Error('npm boom');
+				if (name === 'MNI-nodes-bad') throw new Error('npm boom');
 				return installedPackage(name, '1.0.0');
 			});
 
 			const loader = createLoader({
 				communityPackages: JSON.stringify([
-					{ name: 'n8n-nodes-bad', version: '1.0.0' },
-					{ name: 'n8n-nodes-good', version: '1.0.0' },
+					{ name: 'MNI-nodes-bad', version: '1.0.0' },
+					{ name: 'MNI-nodes-good', version: '1.0.0' },
 				]),
 			});
 
 			await expect(loader.run()).resolves.toBe('created');
 
 			expect(communityPackagesService.installPackage).toHaveBeenCalledTimes(2);
-			expect(logger.error).toHaveBeenCalledWith(expect.stringContaining('n8n-nodes-bad'));
+			expect(logger.error).toHaveBeenCalledWith(expect.stringContaining('MNI-nodes-bad'));
 		});
 
 		it('continues with remaining items when one remove fails', async () => {
 			communityPackagesService.getAllInstalledPackages.mockResolvedValue([
-				installedPackage('n8n-nodes-stuck', '1.0.0'),
-				installedPackage('n8n-nodes-extra', '1.0.0'),
+				installedPackage('MNI-nodes-stuck', '1.0.0'),
+				installedPackage('MNI-nodes-extra', '1.0.0'),
 			]);
 			communityPackagesService.removePackage.mockImplementation(async (name) => {
-				if (name === 'n8n-nodes-stuck') throw new Error('rm boom');
+				if (name === 'MNI-nodes-stuck') throw new Error('rm boom');
 			});
 
 			const loader = createLoader({
@@ -355,7 +355,7 @@ describe('CommunityPackagesInstanceSettingsLoader', () => {
 			await expect(loader.run()).resolves.toBe('created');
 
 			expect(communityPackagesService.removePackage).toHaveBeenCalledTimes(2);
-			expect(logger.error).toHaveBeenCalledWith(expect.stringContaining('n8n-nodes-stuck'));
+			expect(logger.error).toHaveBeenCalledWith(expect.stringContaining('MNI-nodes-stuck'));
 		});
 	});
 
@@ -373,7 +373,7 @@ describe('CommunityPackagesInstanceSettingsLoader', () => {
 
 		it('includes affected workflow ids in the removal warning', async () => {
 			communityPackagesService.getAllInstalledPackages.mockResolvedValue([
-				installedPackageWithNodes('n8n-nodes-extra', '1.2.3', ['extraNode']),
+				installedPackageWithNodes('MNI-nodes-extra', '1.2.3', ['extraNode']),
 			]);
 			workflowRepository.findWorkflowsWithNodeType.mockResolvedValue([
 				{ id: 'wf-1', name: 'Workflow 1', active: true, activeVersionId: 'v1' },
@@ -386,23 +386,23 @@ describe('CommunityPackagesInstanceSettingsLoader', () => {
 
 			expect(workflowRepository.findWorkflowsWithNodeType).toHaveBeenCalledWith(['extraNode']);
 			expect(logger.warn).toHaveBeenCalledWith(
-				"Removed community package 'n8n-nodes-extra' (had 1 registered node type(s)) — not declared in N8N_COMMUNITY_PACKAGES",
+				"Removed community package 'MNI-nodes-extra' (had 1 registered node type(s)) — not declared in MNI_COMMUNITY_PACKAGES",
 				{
-					packageName: 'n8n-nodes-extra',
+					packageName: 'MNI-nodes-extra',
 					installedVersion: '1.2.3',
 					workflowIds: ['wf-1', 'wf-2'],
 					activeWorkflowIds: ['wf-1'],
 				},
 			);
 			expect(communityPackagesService.removePackage).toHaveBeenCalledWith(
-				'n8n-nodes-extra',
-				expect.objectContaining({ packageName: 'n8n-nodes-extra' }),
+				'MNI-nodes-extra',
+				expect.objectContaining({ packageName: 'MNI-nodes-extra' }),
 			);
 		});
 
 		it('emits empty workflow-id arrays when no workflows reference the package', async () => {
 			communityPackagesService.getAllInstalledPackages.mockResolvedValue([
-				installedPackageWithNodes('n8n-nodes-extra', '1.0.0', ['extraNode']),
+				installedPackageWithNodes('MNI-nodes-extra', '1.0.0', ['extraNode']),
 			]);
 			workflowRepository.findWorkflowsWithNodeType.mockResolvedValue([]);
 
@@ -411,7 +411,7 @@ describe('CommunityPackagesInstanceSettingsLoader', () => {
 			await expect(loader.run()).resolves.toBe('created');
 
 			expect(logger.warn).toHaveBeenCalledWith(
-				expect.stringContaining("Removed community package 'n8n-nodes-extra'"),
+				expect.stringContaining("Removed community package 'MNI-nodes-extra'"),
 				expect.objectContaining({ workflowIds: [], activeWorkflowIds: [] }),
 			);
 			expect(communityPackagesService.removePackage).toHaveBeenCalled();
@@ -419,7 +419,7 @@ describe('CommunityPackagesInstanceSettingsLoader', () => {
 
 		it('still removes the package when the workflow lookup fails', async () => {
 			communityPackagesService.getAllInstalledPackages.mockResolvedValue([
-				installedPackageWithNodes('n8n-nodes-extra', '1.0.0', ['extraNode']),
+				installedPackageWithNodes('MNI-nodes-extra', '1.0.0', ['extraNode']),
 			]);
 			workflowRepository.findWorkflowsWithNodeType.mockRejectedValue(new Error('db down'));
 
@@ -428,21 +428,21 @@ describe('CommunityPackagesInstanceSettingsLoader', () => {
 			await expect(loader.run()).resolves.toBe('created');
 
 			expect(logger.warn).toHaveBeenCalledWith(
-				"Failed to check workflows referencing community package 'n8n-nodes-extra' before removal",
-				expect.objectContaining({ packageName: 'n8n-nodes-extra' }),
+				"Failed to check workflows referencing community package 'MNI-nodes-extra' before removal",
+				expect.objectContaining({ packageName: 'MNI-nodes-extra' }),
 			);
 			expect(communityPackagesService.removePackage).toHaveBeenCalled();
 		});
 
 		it('does not query workflows for packages on the install/update paths', async () => {
 			communityPackagesService.getAllInstalledPackages.mockResolvedValue([
-				installedPackageWithNodes('n8n-nodes-update', '1.0.0', ['updateNode']),
+				installedPackageWithNodes('MNI-nodes-update', '1.0.0', ['updateNode']),
 			]);
 
 			const loader = createLoader({
 				communityPackages: JSON.stringify([
-					{ name: 'n8n-nodes-update', version: '2.0.0' },
-					{ name: 'n8n-nodes-new', version: '0.1.0' },
+					{ name: 'MNI-nodes-update', version: '2.0.0' },
+					{ name: 'MNI-nodes-new', version: '0.1.0' },
 				]),
 			});
 
@@ -456,7 +456,7 @@ describe('CommunityPackagesInstanceSettingsLoader', () => {
 		it('uses env-provided checksum when present', async () => {
 			const loader = createLoader({
 				communityPackages: JSON.stringify([
-					{ name: 'n8n-nodes-foo', version: '1.0.0', checksum: 'sha512-from-env' },
+					{ name: 'MNI-nodes-foo', version: '1.0.0', checksum: 'sha512-from-env' },
 				]),
 			});
 
@@ -464,7 +464,7 @@ describe('CommunityPackagesInstanceSettingsLoader', () => {
 
 			expect(communityNodeTypesService.findVetted).not.toHaveBeenCalled();
 			expect(communityPackagesService.installPackage).toHaveBeenCalledWith(
-				'n8n-nodes-foo',
+				'MNI-nodes-foo',
 				'1.0.0',
 				'sha512-from-env',
 			);
@@ -477,13 +477,13 @@ describe('CommunityPackagesInstanceSettingsLoader', () => {
 			} as unknown as Vetted as never);
 
 			const loader = createLoader({
-				communityPackages: JSON.stringify([{ name: 'n8n-nodes-foo', version: '1.0.0' }]),
+				communityPackages: JSON.stringify([{ name: 'MNI-nodes-foo', version: '1.0.0' }]),
 			});
 
 			await loader.run();
 
 			expect(communityPackagesService.installPackage).toHaveBeenCalledWith(
-				'n8n-nodes-foo',
+				'MNI-nodes-foo',
 				'1.0.0',
 				'sha512-vetted-latest',
 			);
@@ -497,13 +497,13 @@ describe('CommunityPackagesInstanceSettingsLoader', () => {
 			} as unknown as Vetted as never);
 
 			const loader = createLoader({
-				communityPackages: JSON.stringify([{ name: 'n8n-nodes-foo', version: '1.0.0' }]),
+				communityPackages: JSON.stringify([{ name: 'MNI-nodes-foo', version: '1.0.0' }]),
 			});
 
 			await loader.run();
 
 			expect(communityPackagesService.installPackage).toHaveBeenCalledWith(
-				'n8n-nodes-foo',
+				'MNI-nodes-foo',
 				'1.0.0',
 				'sha512-v1',
 			);
@@ -513,14 +513,14 @@ describe('CommunityPackagesInstanceSettingsLoader', () => {
 			communityNodeTypesService.findVetted.mockResolvedValue(undefined as never);
 
 			const loader = createLoader(
-				{ communityPackages: JSON.stringify([{ name: 'n8n-nodes-foo', version: '1.0.0' }]) },
+				{ communityPackages: JSON.stringify([{ name: 'MNI-nodes-foo', version: '1.0.0' }]) },
 				{ unverifiedEnabled: true },
 			);
 
 			await loader.run();
 
 			expect(communityPackagesService.installPackage).toHaveBeenCalledWith(
-				'n8n-nodes-foo',
+				'MNI-nodes-foo',
 				'1.0.0',
 				undefined,
 			);
@@ -530,7 +530,7 @@ describe('CommunityPackagesInstanceSettingsLoader', () => {
 			communityNodeTypesService.findVetted.mockResolvedValue(undefined as never);
 
 			const loader = createLoader(
-				{ communityPackages: JSON.stringify([{ name: 'n8n-nodes-foo', version: '1.0.0' }]) },
+				{ communityPackages: JSON.stringify([{ name: 'MNI-nodes-foo', version: '1.0.0' }]) },
 				{ unverifiedEnabled: false },
 			);
 
@@ -541,7 +541,7 @@ describe('CommunityPackagesInstanceSettingsLoader', () => {
 				thrown = e;
 			}
 			expect(thrown).toBeInstanceOf(InstanceBootstrappingError);
-			expect((thrown as Error).message).toContain('n8n-nodes-foo');
+			expect((thrown as Error).message).toContain('MNI-nodes-foo');
 			expect(communityPackagesService.installPackage).not.toHaveBeenCalled();
 		});
 	});
@@ -549,7 +549,7 @@ describe('CommunityPackagesInstanceSettingsLoader', () => {
 	describe('optional version', () => {
 		it('rejects entries with checksum but no version', async () => {
 			const loader = createLoader({
-				communityPackages: JSON.stringify([{ name: 'n8n-nodes-foo', checksum: 'sha512-orphan' }]),
+				communityPackages: JSON.stringify([{ name: 'MNI-nodes-foo', checksum: 'sha512-orphan' }]),
 			});
 
 			let thrown: unknown;
@@ -569,13 +569,13 @@ describe('CommunityPackagesInstanceSettingsLoader', () => {
 			} as unknown as Vetted as never);
 
 			const loader = createLoader({
-				communityPackages: JSON.stringify([{ name: 'n8n-nodes-foo' }]),
+				communityPackages: JSON.stringify([{ name: 'MNI-nodes-foo' }]),
 			});
 
 			await expect(loader.run()).resolves.toBe('created');
 
 			expect(communityPackagesService.installPackage).toHaveBeenCalledWith(
-				'n8n-nodes-foo',
+				'MNI-nodes-foo',
 				'2.5.0',
 				'sha512-vetted',
 			);
@@ -583,7 +583,7 @@ describe('CommunityPackagesInstanceSettingsLoader', () => {
 
 		it('skips update when installed version already matches vetted resolution', async () => {
 			communityPackagesService.getAllInstalledPackages.mockResolvedValue([
-				installedPackage('n8n-nodes-foo', '2.5.0'),
+				installedPackage('MNI-nodes-foo', '2.5.0'),
 			]);
 			communityNodeTypesService.findVetted.mockResolvedValue({
 				npmVersion: '2.5.0',
@@ -591,7 +591,7 @@ describe('CommunityPackagesInstanceSettingsLoader', () => {
 			} as unknown as Vetted as never);
 
 			const loader = createLoader({
-				communityPackages: JSON.stringify([{ name: 'n8n-nodes-foo' }]),
+				communityPackages: JSON.stringify([{ name: 'MNI-nodes-foo' }]),
 			});
 
 			await expect(loader.run()).resolves.toBe('skipped');
@@ -601,7 +601,7 @@ describe('CommunityPackagesInstanceSettingsLoader', () => {
 
 		it('updates when vetted resolves to a different version than what is installed', async () => {
 			communityPackagesService.getAllInstalledPackages.mockResolvedValue([
-				installedPackage('n8n-nodes-foo', '1.0.0'),
+				installedPackage('MNI-nodes-foo', '1.0.0'),
 			]);
 			communityNodeTypesService.findVetted.mockResolvedValue({
 				npmVersion: '2.5.0',
@@ -609,13 +609,13 @@ describe('CommunityPackagesInstanceSettingsLoader', () => {
 			} as unknown as Vetted as never);
 
 			const loader = createLoader({
-				communityPackages: JSON.stringify([{ name: 'n8n-nodes-foo' }]),
+				communityPackages: JSON.stringify([{ name: 'MNI-nodes-foo' }]),
 			});
 
 			await expect(loader.run()).resolves.toBe('created');
 			expect(communityPackagesService.updatePackage).toHaveBeenCalledWith(
-				'n8n-nodes-foo',
-				expect.objectContaining({ packageName: 'n8n-nodes-foo' }),
+				'MNI-nodes-foo',
+				expect.objectContaining({ packageName: 'MNI-nodes-foo' }),
 				'2.5.0',
 				'sha512-vetted',
 			);
@@ -625,14 +625,14 @@ describe('CommunityPackagesInstanceSettingsLoader', () => {
 			communityNodeTypesService.findVetted.mockResolvedValue(undefined as never);
 
 			const loader = createLoader(
-				{ communityPackages: JSON.stringify([{ name: 'n8n-nodes-foo' }]) },
+				{ communityPackages: JSON.stringify([{ name: 'MNI-nodes-foo' }]) },
 				{ unverifiedEnabled: true },
 			);
 
 			await expect(loader.run()).resolves.toBe('created');
 
 			expect(communityPackagesService.installPackage).toHaveBeenCalledWith(
-				'n8n-nodes-foo',
+				'MNI-nodes-foo',
 				undefined,
 				undefined,
 			);
@@ -643,12 +643,12 @@ describe('CommunityPackagesInstanceSettingsLoader', () => {
 
 		it('does not reinstall on next boot when version is omitted and package is already installed', async () => {
 			communityPackagesService.getAllInstalledPackages.mockResolvedValue([
-				installedPackage('n8n-nodes-foo', '1.2.3'),
+				installedPackage('MNI-nodes-foo', '1.2.3'),
 			]);
 			communityNodeTypesService.findVetted.mockResolvedValue(undefined as never);
 
 			const loader = createLoader(
-				{ communityPackages: JSON.stringify([{ name: 'n8n-nodes-foo' }]) },
+				{ communityPackages: JSON.stringify([{ name: 'MNI-nodes-foo' }]) },
 				{ unverifiedEnabled: true },
 			);
 
@@ -661,7 +661,7 @@ describe('CommunityPackagesInstanceSettingsLoader', () => {
 			communityNodeTypesService.findVetted.mockResolvedValue(undefined as never);
 
 			const loader = createLoader(
-				{ communityPackages: JSON.stringify([{ name: 'n8n-nodes-foo' }]) },
+				{ communityPackages: JSON.stringify([{ name: 'MNI-nodes-foo' }]) },
 				{ unverifiedEnabled: false },
 			);
 
@@ -672,7 +672,7 @@ describe('CommunityPackagesInstanceSettingsLoader', () => {
 				thrown = e;
 			}
 			expect(thrown).toBeInstanceOf(InstanceBootstrappingError);
-			expect((thrown as Error).message).toContain("'n8n-nodes-foo'");
+			expect((thrown as Error).message).toContain("'MNI-nodes-foo'");
 			expect((thrown as Error).message).not.toContain('@');
 			expect(communityPackagesService.installPackage).not.toHaveBeenCalled();
 		});

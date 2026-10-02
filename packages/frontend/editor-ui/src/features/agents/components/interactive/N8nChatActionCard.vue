@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { ElRadio } from 'element-plus';
-import { N8nButton, N8nOption, N8nSelect, N8nText } from '@n8n/design-system';
+import { N8nButton, N8nOption, N8nSelect, N8nText } from '@MNI/design-system';
 
 import type {
 	N8nChatCardComponent,
@@ -96,7 +96,7 @@ function selectedOptionValue(component: SelectComponent): string | undefined {
 </script>
 
 <template>
-	<div :class="$style.card" data-testid="n8n-chat-action-card">
+	<div :class="$style.card" data-testid="MNI-chat-action-card">
 		<N8nText v-if="input.card.title" :class="$style.title" bold>{{ input.card.title }}</N8nText>
 		<N8nText v-if="input.card.message" :class="$style.message" color="text-base">
 			{{ input.card.message }}
@@ -109,7 +109,7 @@ function selectedOptionValue(component: SelectComponent): string | undefined {
 			<div
 				v-if="block.kind === 'buttons'"
 				:class="$style.buttonRow"
-				data-testid="n8n-chat-card-button-row"
+				data-testid="MNI-chat-card-button-row"
 			>
 				<N8nButton
 					v-for="(button, buttonIdx) in block.buttons"
@@ -117,7 +117,7 @@ function selectedOptionValue(component: SelectComponent): string | undefined {
 					size="small"
 					:variant="buttonVariant(button)"
 					:disabled="disabled && !isButtonSelected(button)"
-					data-testid="n8n-chat-card-button"
+					data-testid="MNI-chat-card-button"
 					@click="submitButton(button)"
 				>
 					{{ button.label ?? button.text ?? button.value }}
@@ -138,7 +138,7 @@ function selectedOptionValue(component: SelectComponent): string | undefined {
 						size="small"
 						:variant="buttonVariant(block.component.button)"
 						:disabled="disabled && !isButtonSelected(block.component.button)"
-						data-testid="n8n-chat-card-section-button"
+						data-testid="MNI-chat-card-section-button"
 						@click="submitButton(block.component.button)"
 					>
 						{{
@@ -162,7 +162,7 @@ function selectedOptionValue(component: SelectComponent): string | undefined {
 						:model-value="selectedOptionValue(block.component) ?? ''"
 						:label="option.value"
 						:disabled="disabled"
-						data-testid="n8n-chat-card-radio"
+						data-testid="MNI-chat-card-radio"
 						@update:model-value="submitOption(block.component, option.value)"
 					>
 						<span>{{ option.label }}</span>
@@ -181,7 +181,7 @@ function selectedOptionValue(component: SelectComponent): string | undefined {
 						size="small"
 						:disabled="disabled"
 						:placeholder="block.component.placeholder"
-						data-testid="n8n-chat-card-select"
+						data-testid="MNI-chat-card-select"
 						@update:model-value="submitOption(block.component, $event)"
 					>
 						<N8nOption

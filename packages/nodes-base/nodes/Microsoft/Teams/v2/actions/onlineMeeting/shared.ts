@@ -1,6 +1,6 @@
 import { DateTime } from 'luxon';
-import type { IDataObject, IExecuteFunctions, IHttpRequestMethods } from 'n8n-workflow';
-import { NodeApiError, NodeOperationError } from 'n8n-workflow';
+import type { IDataObject, IExecuteFunctions, IHttpRequestMethods } from 'MNI-workflow';
+import { NodeApiError, NodeOperationError } from 'MNI-workflow';
 
 import {
 	buildTeamsPath,

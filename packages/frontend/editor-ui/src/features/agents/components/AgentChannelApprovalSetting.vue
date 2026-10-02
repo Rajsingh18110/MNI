@@ -8,9 +8,9 @@
  * there to narrow or widen that.
  */
 import { computed, ref, watch } from 'vue';
-import { N8nSwitch2, N8nText } from '@n8n/design-system';
-import { useI18n, type BaseTextKey } from '@n8n/i18n';
-import type { AgentApproval, ChatIntegrationApprovableAction } from '@n8n/api-types';
+import { N8nSwitch2, N8nText } from '@MNI/design-system';
+import { useI18n, type BaseTextKey } from '@MNI/i18n';
+import type { AgentApproval, ChatIntegrationApprovableAction } from '@MNI/api-types';
 
 import AgentApprovalSelector from './AgentApprovalSelector.vue';
 

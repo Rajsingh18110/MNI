@@ -1,6 +1,6 @@
-import { ProjectRelationRepository, type User } from '@n8n/db';
-import { Service } from '@n8n/di';
-import { hasGlobalScope, type Scope } from '@n8n/permissions';
+import { ProjectRelationRepository, type User } from '@MNI/db';
+import { Service } from '@MNI/di';
+import { hasGlobalScope, type Scope } from '@MNI/permissions';
 
 import { RoleService } from '@/services/role.service';
 

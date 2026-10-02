@@ -3,7 +3,7 @@ import {
 	CREDENTIAL_DESCRIPTIONS_FLAG,
 	INSTANCE_AI_PROGRESSIVE_BUILDING_FLAG,
 	INSTANCE_AI_SETUP_PANEL_FLAG,
-} from '@n8n/api-types';
+} from '@MNI/api-types';
 
 function createExperiment<
 	const TName extends string,

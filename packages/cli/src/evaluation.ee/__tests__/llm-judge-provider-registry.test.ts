@@ -3,26 +3,26 @@ import { LlmJudgeProviderRegistry } from '../llm-judge-provider-registry';
 describe('LlmJudgeProviderRegistry (fixed-list)', () => {
 	const registry = new LlmJudgeProviderRegistry();
 
-	it('exposes the canonical chat-model providers shipped by @n8n/n8n-nodes-langchain', () => {
+	it('exposes the canonical chat-model providers shipped by @MNI/MNI-nodes-langchain', () => {
 		const expectedNodeTypes = [
-			'@n8n/n8n-nodes-langchain.lmChatOpenAi',
-			'@n8n/n8n-nodes-langchain.lmChatAnthropic',
-			'@n8n/n8n-nodes-langchain.lmChatGoogleGemini',
-			'@n8n/n8n-nodes-langchain.lmChatGoogleVertex',
-			'@n8n/n8n-nodes-langchain.lmChatAzureOpenAi',
-			'@n8n/n8n-nodes-langchain.lmChatAwsBedrock',
-			'@n8n/n8n-nodes-langchain.lmChatOllama',
-			'@n8n/n8n-nodes-langchain.lmChatVercelAiGateway',
-			'@n8n/n8n-nodes-langchain.lmChatXAiGrok',
-			'@n8n/n8n-nodes-langchain.lmChatGroq',
-			'@n8n/n8n-nodes-langchain.lmChatOpenRouter',
-			'@n8n/n8n-nodes-langchain.lmChatDeepSeek',
-			'@n8n/n8n-nodes-langchain.lmChatCohere',
-			'@n8n/n8n-nodes-langchain.lmChatMistralCloud',
-			'@n8n/n8n-nodes-langchain.lmChatAlibabaCloud',
-			'@n8n/n8n-nodes-langchain.lmChatMinimax',
-			'@n8n/n8n-nodes-langchain.lmChatMoonshot',
-			'@n8n/n8n-nodes-langchain.lmChatLemonade',
+			'@MNI/MNI-nodes-langchain.lmChatOpenAi',
+			'@MNI/MNI-nodes-langchain.lmChatAnthropic',
+			'@MNI/MNI-nodes-langchain.lmChatGoogleGemini',
+			'@MNI/MNI-nodes-langchain.lmChatGoogleVertex',
+			'@MNI/MNI-nodes-langchain.lmChatAzureOpenAi',
+			'@MNI/MNI-nodes-langchain.lmChatAwsBedrock',
+			'@MNI/MNI-nodes-langchain.lmChatOllama',
+			'@MNI/MNI-nodes-langchain.lmChatVercelAiGateway',
+			'@MNI/MNI-nodes-langchain.lmChatXAiGrok',
+			'@MNI/MNI-nodes-langchain.lmChatGroq',
+			'@MNI/MNI-nodes-langchain.lmChatOpenRouter',
+			'@MNI/MNI-nodes-langchain.lmChatDeepSeek',
+			'@MNI/MNI-nodes-langchain.lmChatCohere',
+			'@MNI/MNI-nodes-langchain.lmChatMistralCloud',
+			'@MNI/MNI-nodes-langchain.lmChatAlibabaCloud',
+			'@MNI/MNI-nodes-langchain.lmChatMinimax',
+			'@MNI/MNI-nodes-langchain.lmChatMoonshot',
+			'@MNI/MNI-nodes-langchain.lmChatLemonade',
 		];
 		const actual = registry.listProviders().map((p) => p.nodeType);
 		expect(actual.sort()).toEqual([...expectedNodeTypes].sort());
@@ -31,7 +31,7 @@ describe('LlmJudgeProviderRegistry (fixed-list)', () => {
 	describe('shape', () => {
 		it('every entry has nodeType, displayName, and a non-empty credentialTypes array', () => {
 			for (const entry of registry.listProviders()) {
-				expect(entry.nodeType).toMatch(/^@n8n\/n8n-nodes-langchain\./);
+				expect(entry.nodeType).toMatch(/^@MNI\/MNI-nodes-langchain\./);
 				expect(typeof entry.displayName).toBe('string');
 				expect(entry.displayName.length).toBeGreaterThan(0);
 				expect(Array.isArray(entry.credentialTypes)).toBe(true);
@@ -48,18 +48,18 @@ describe('LlmJudgeProviderRegistry (fixed-list)', () => {
 
 	describe('get(nodeType)', () => {
 		it('returns the matching entry for a known provider', () => {
-			const entry = registry.get('@n8n/n8n-nodes-langchain.lmChatOpenAi');
+			const entry = registry.get('@MNI/MNI-nodes-langchain.lmChatOpenAi');
 			expect(entry).toBeDefined();
 			expect(entry?.displayName).toBe('OpenAI Chat Model');
 			expect(entry?.credentialTypes.map((c) => c.name)).toContain('openAiApi');
 		});
 
 		it('returns undefined for unknown providers', () => {
-			expect(registry.get('@n8n/n8n-nodes-langchain.lmChatNotARealNode')).toBeUndefined();
+			expect(registry.get('@MNI/MNI-nodes-langchain.lmChatNotARealNode')).toBeUndefined();
 		});
 
 		it('exposes Azure OpenAI with both api-key and Entra credential variants', () => {
-			const entry = registry.get('@n8n/n8n-nodes-langchain.lmChatAzureOpenAi');
+			const entry = registry.get('@MNI/MNI-nodes-langchain.lmChatAzureOpenAi');
 			const credNames = entry?.credentialTypes.map((c) => c.name) ?? [];
 			expect(credNames).toEqual(
 				expect.arrayContaining(['azureOpenAiApi', 'azureEntraCognitiveServicesOAuth2Api']),
@@ -70,19 +70,19 @@ describe('LlmJudgeProviderRegistry (fixed-list)', () => {
 	describe('getByCredentialType(credentialType)', () => {
 		it('resolves the provider selected by a credential type', () => {
 			expect(registry.getByCredentialType('openAiApi')?.nodeType).toBe(
-				'@n8n/n8n-nodes-langchain.lmChatOpenAi',
+				'@MNI/MNI-nodes-langchain.lmChatOpenAi',
 			);
 			expect(registry.getByCredentialType('anthropicApi')?.nodeType).toBe(
-				'@n8n/n8n-nodes-langchain.lmChatAnthropic',
+				'@MNI/MNI-nodes-langchain.lmChatAnthropic',
 			);
 		});
 
 		it('resolves both Azure credential variants to the Azure provider', () => {
 			expect(registry.getByCredentialType('azureOpenAiApi')?.nodeType).toBe(
-				'@n8n/n8n-nodes-langchain.lmChatAzureOpenAi',
+				'@MNI/MNI-nodes-langchain.lmChatAzureOpenAi',
 			);
 			expect(registry.getByCredentialType('azureEntraCognitiveServicesOAuth2Api')?.nodeType).toBe(
-				'@n8n/n8n-nodes-langchain.lmChatAzureOpenAi',
+				'@MNI/MNI-nodes-langchain.lmChatAzureOpenAi',
 			);
 		});
 

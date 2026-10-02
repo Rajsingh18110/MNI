@@ -1,5 +1,5 @@
-import { TOOL_EXECUTOR_NODE_NAME } from '@n8n/constants';
-import { type AiAgentRequest, type INode, NodeConnectionTypes } from 'n8n-workflow';
+import { TOOL_EXECUTOR_NODE_NAME } from '@MNI/constants';
+import { type AiAgentRequest, type INode, NodeConnectionTypes } from 'MNI-workflow';
 
 import { type DirectedGraph } from './directed-graph';
 
@@ -64,7 +64,7 @@ export function rewireGraph(
 	const toolExecutor: INode = {
 		name: TOOL_EXECUTOR_NODE_NAME,
 		disabled: false,
-		type: '@n8n/n8n-nodes-langchain.toolExecutor',
+		type: '@MNI/MNI-nodes-langchain.toolExecutor',
 		parameters: {
 			query: JSON.stringify(agentRequest?.query ?? {}),
 			toolName: agentRequest?.tool?.name ?? '',

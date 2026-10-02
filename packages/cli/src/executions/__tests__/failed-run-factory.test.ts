@@ -1,6 +1,6 @@
-import type { StorageConfig } from 'n8n-core';
-import { NodeOperationError } from 'n8n-workflow';
-import type { INode, WorkflowExecuteMode } from 'n8n-workflow';
+import type { StorageConfig } from 'MNI-core';
+import { NodeOperationError } from 'MNI-workflow';
+import type { INode, WorkflowExecuteMode } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import { FailedRunFactory } from '../failed-run-factory';

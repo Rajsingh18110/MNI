@@ -3,14 +3,14 @@ import { test, expect } from '../../../../fixtures/base';
 const MOCK_PACKAGE = {
 	createdAt: '2024-07-22T19:08:06.505Z',
 	updatedAt: '2024-07-22T19:08:06.505Z',
-	packageName: 'n8n-nodes-chatwork',
+	packageName: 'MNI-nodes-chatwork',
 	installedVersion: '1.0.0',
 	authorName: null,
 	authorEmail: null,
 	installedNodes: [
 		{
 			name: 'Chatwork',
-			type: 'n8n-nodes-chatwork.chatwork',
+			type: 'MNI-nodes-chatwork.chatwork',
 			latestVersion: 1,
 		},
 	],
@@ -44,7 +44,7 @@ test.describe(
 				}
 			});
 
-			await n8n.communityNodes.installPackage('n8n-nodes-chatwork@1.0.0');
+			await n8n.communityNodes.installPackage('MNI-nodes-chatwork@1.0.0');
 			await expect(n8n.communityNodes.getCommunityCards()).toHaveCount(1);
 			await expect(n8n.communityNodes.getCommunityCards().first()).toContainText('v1.0.0');
 

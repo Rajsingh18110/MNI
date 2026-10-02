@@ -1,6 +1,6 @@
-import { testDb } from '@n8n/backend-test-utils';
-import { WorkflowRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
+import { testDb } from '@MNI/backend-test-utils';
+import { WorkflowRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
 import { v4 as uuid } from 'uuid';
 import { mock } from 'vitest-mock-extended';
 

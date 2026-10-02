@@ -3,7 +3,7 @@ import { waitFor } from '@testing-library/vue';
 import { createComponentRenderer } from '@/__tests__/render';
 import { getTooltip, hoverTooltipTrigger } from '@/__tests__/utils';
 import ConcurrentExecutionsHeader from './ConcurrentExecutionsHeader.vue';
-import { ExecutionSummary } from 'n8n-workflow';
+import { ExecutionSummary } from 'MNI-workflow';
 
 vi.mock('vue-router', () => {
 	return {

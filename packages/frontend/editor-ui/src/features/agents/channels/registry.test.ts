@@ -1,5 +1,5 @@
 import { ref } from 'vue';
-import type { BaseTextKey } from '@n8n/i18n';
+import type { BaseTextKey } from '@MNI/i18n';
 import { describe, expect, it } from 'vitest';
 
 import { getAgentChannelPlatform, isRegisteredAgentChannelPlatform } from './registry';

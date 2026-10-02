@@ -1,12 +1,12 @@
-import { useTelemetry } from '@n8n/composables/useTelemetry';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
 import { PERSONALIZED_TEMPLATES_V3, VIEWS } from '@/app/constants';
-import { TELEMETRY_EVENT } from '@n8n/telemetry';
-import { useCloudPlanStore } from '@n8n/stores/cloudPlan.store';
+import { TELEMETRY_EVENT } from '@MNI/telemetry';
+import { useCloudPlanStore } from '@MNI/stores/cloudPlan.store';
 import { usePostHog } from '@/app/stores/posthog.store';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { useTemplatesStore } from '@/features/workflows/templates/templates.store';
 import { useWorkflowsListStore } from '@/app/stores/workflowsList.store';
-import { STORES } from '@n8n/stores';
+import { STORES } from '@MNI/stores';
 import { defineStore } from 'pinia';
 import { computed, ref, watch } from 'vue';
 
@@ -18,7 +18,7 @@ export const usePersonalizedTemplatesV3Store = defineStore(STORES.PERSONALIZED_T
 	const templatesStore = useTemplatesStore();
 	const workflowsListStore = useWorkflowsListStore();
 
-	const INTERACTION_STORAGE_KEY = 'n8n-personalizedTemplatesV3-hasInteracted';
+	const INTERACTION_STORAGE_KEY = 'MNI-personalizedTemplatesV3-hasInteracted';
 
 	const hasInteractedWithTemplateRecommendations = ref(
 		localStorage.getItem(INTERACTION_STORAGE_KEY) === 'true',
@@ -41,8 +41,8 @@ export const usePersonalizedTemplatesV3Store = defineStore(STORES.PERSONALIZED_T
 		}
 
 		return (
-			selectedApps.includes('n8n-nodes-base.hubspot') ||
-			selectedApps.includes('n8n-nodes-base.hubspotTrigger')
+			selectedApps.includes('MNI-nodes-base.hubspot') ||
+			selectedApps.includes('MNI-nodes-base.hubspotTrigger')
 		);
 	});
 

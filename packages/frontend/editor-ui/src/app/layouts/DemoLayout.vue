@@ -11,8 +11,8 @@ import { usePostMessageHandler } from '@/app/composables/usePostMessageHandler';
 import { useReportWorkflowFailuresToParent } from '@/app/composables/useReportWorkflowFailuresToParent';
 import { usePushConnection } from '@/app/composables/usePushConnection/usePushConnection';
 import { usePushConnectionStore } from '@/app/stores/pushConnection.store';
-import { useRootStore } from '@n8n/stores/useRootStore';
-import { randomString } from 'n8n-workflow';
+import { useRootStore } from '@MNI/stores/useRootStore';
+import { randomString } from 'MNI-workflow';
 
 const route = useRoute();
 const canExecute = computed(() => route.query.canExecute === 'true');

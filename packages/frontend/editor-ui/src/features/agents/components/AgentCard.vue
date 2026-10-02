@@ -9,14 +9,14 @@ import {
 	N8nIconButton,
 	N8nText,
 	N8nTooltip,
-} from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
-import { useRootStore } from '@n8n/stores/useRootStore';
+} from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
+import { useRootStore } from '@MNI/stores/useRootStore';
 import { MODAL_CONFIRM } from '@/app/constants';
 import PublicationIndicator from '@/app/components/PublicationIndicator.vue';
 import TimeAgo from '@/app/components/TimeAgo.vue';
-import { useToast } from '@n8n/composables/useToast';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useToast } from '@MNI/composables/useToast';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { useMcp } from '@/features/ai/mcpAccess/composables/useMcp';
 import { useMCPStore } from '@/features/ai/mcpAccess/mcp.store';
 import { deleteAgent } from '../composables/useAgentApi';
@@ -242,7 +242,7 @@ async function toggleMCPAccess(enabled: boolean) {
 </template>
 
 <style lang="scss" module>
-@use '@n8n/design-system/css/mixins/breakpoints';
+@use '@MNI/design-system/css/mixins/breakpoints';
 
 .cardLink {
 	transition: box-shadow 0.3s ease;

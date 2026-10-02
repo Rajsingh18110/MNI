@@ -1,6 +1,6 @@
-import type { Logger } from '@n8n/backend-common';
-import type { WorkflowPublishHistoryRepository } from '@n8n/db';
-import type { IWorkflowBase } from 'n8n-workflow';
+import type { Logger } from '@MNI/backend-common';
+import type { WorkflowPublishHistoryRepository } from '@MNI/db';
+import type { IWorkflowBase } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import * as credentialSharing from '@/constants/credential-sharing';

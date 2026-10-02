@@ -10,7 +10,7 @@ import {
 	type INodeTypeDescription,
 	type IHttpRequestMethods,
 	NodeConnectionTypes,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { oldVersionNotice } from '@utils/descriptions';
 

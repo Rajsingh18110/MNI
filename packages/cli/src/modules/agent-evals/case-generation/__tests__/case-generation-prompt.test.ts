@@ -1,4 +1,4 @@
-import type { AgentJsonConfig } from '@n8n/api-types';
+import type { AgentJsonConfig } from '@MNI/api-types';
 
 import {
 	buildAgentSummary,

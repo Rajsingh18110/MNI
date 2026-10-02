@@ -1,7 +1,7 @@
 import {
 	PACKAGE_ENTITY_LAYOUT,
 	type ManifestEntityCollection,
-} from '../n8n-packages/io/manifest-entry';
+} from '../MNI-packages/io/manifest-entry';
 
 const BASE_BRANCH_ENTITIES = {
 	projects: { ...PACKAGE_ENTITY_LAYOUT.projects, type: 'project', includeRoot: true },

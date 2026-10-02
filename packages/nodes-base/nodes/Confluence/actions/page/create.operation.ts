@@ -3,8 +3,8 @@ import type {
 	IExecuteFunctions,
 	INodeParameterResourceLocator,
 	INodeProperties,
-} from 'n8n-workflow';
-import { NodeApiError, NodeOperationError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeApiError, NodeOperationError } from 'MNI-workflow';
 
 import { bodyProperties, readBodyEnvelope } from './bodyEnvelope';
 import { pageRLC, spaceRLC } from '../common';

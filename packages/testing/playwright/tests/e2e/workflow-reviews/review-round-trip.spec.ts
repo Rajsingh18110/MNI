@@ -13,7 +13,7 @@ function scheduleTriggerNode() {
 	return {
 		id: nanoid(),
 		name: 'Schedule Trigger',
-		type: 'n8n-nodes-base.scheduleTrigger',
+		type: 'MNI-nodes-base.scheduleTrigger',
 		typeVersion: 1.2,
 		position: [0, 0] as [number, number],
 		parameters: { rule: { interval: [{ field: 'days' }] } },

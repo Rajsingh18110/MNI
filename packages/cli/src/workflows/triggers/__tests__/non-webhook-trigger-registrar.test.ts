@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/unbound-method */
-import type { WorkflowEntity } from '@n8n/db';
+import type { WorkflowEntity } from '@MNI/db';
 import { mock } from 'vitest-mock-extended';
-import type { ActiveWorkflowTriggers, Span, Tracing } from 'n8n-core';
-import type { IWorkflowBase, IWorkflowExecuteAdditionalData } from 'n8n-workflow';
-import { UserError, WorkflowDeactivationError } from 'n8n-workflow';
+import type { ActiveWorkflowTriggers, Span, Tracing } from 'MNI-core';
+import type { IWorkflowBase, IWorkflowExecuteAdditionalData } from 'MNI-workflow';
+import { UserError, WorkflowDeactivationError } from 'MNI-workflow';
 
 import type { PollTriggerJobRegistrar } from '@/scheduling/poll-trigger-node/poll-trigger-job-registrar';
 import type {

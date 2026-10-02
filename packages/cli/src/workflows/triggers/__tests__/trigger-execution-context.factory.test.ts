@@ -1,17 +1,17 @@
 /* eslint-disable @typescript-eslint/unbound-method */
-import type { Logger } from '@n8n/backend-common';
-import type { GlobalConfig } from '@n8n/config';
-import type { Project, WorkflowEntity } from '@n8n/db';
-import type { IDeferredPromise } from '@n8n/utils/promise/deferred-promise';
-import { createDeferredPromise } from '@n8n/utils/promise/deferred-promise';
-import { sleep } from '@n8n/utils/sleep';
+import type { Logger } from '@MNI/backend-common';
+import type { GlobalConfig } from '@MNI/config';
+import type { Project, WorkflowEntity } from '@MNI/db';
+import type { IDeferredPromise } from '@MNI/utils/promise/deferred-promise';
+import { createDeferredPromise } from '@MNI/utils/promise/deferred-promise';
+import { sleep } from '@MNI/utils/sleep';
 import type {
 	BinaryDataService,
 	ErrorReporter,
 	IGetExecutePollFunctions,
 	StorageConfig,
-} from 'n8n-core';
-import { UnexpectedError, UserError, Workflow } from 'n8n-workflow';
+} from 'MNI-core';
+import { UnexpectedError, UserError, Workflow } from 'MNI-workflow';
 import type {
 	Cron,
 	CronExpression,
@@ -27,7 +27,7 @@ import type {
 	IWorkflowExecuteAdditionalData,
 	WorkflowActivateMode,
 	WorkflowExecuteMode,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import { mock, type MockProxy } from 'vitest-mock-extended';
 
 import type { ActiveExecutions } from '@/active-executions';

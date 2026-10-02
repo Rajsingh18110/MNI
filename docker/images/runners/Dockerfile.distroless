@@ -18,7 +18,7 @@ ARG PYTHON_VERSION=3.13
 
 
 # ==============================================================================
-# STAGE 1: JavaScript runner (@n8n/task-runner) artifact from CI
+# STAGE 1: JavaScript runner (@MNI/task-runner) artifact from CI
 # ==============================================================================
 FROM node:${NODE_VERSION}-bookworm-slim AS javascript-runner-builder
 COPY ./dist/task-runner-javascript /app/task-runner-javascript
@@ -62,7 +62,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends python3 make g+
     rm -rf /var/lib/apt/lists/*
 
 # ==============================================================================
-# STAGE 2: Python runner build (@n8n/task-runner-python) with uv
+# STAGE 2: Python runner build (@MNI/task-runner-python) with uv
 # Produces a relocatable venv tied to the python version used
 # ==============================================================================
 FROM python:${PYTHON_VERSION}-slim-trixie AS python-runner-builder
@@ -92,9 +92,9 @@ RUN set -e; \
 
 WORKDIR /app/task-runner-python
 
-COPY packages/@n8n/task-runner-python/pyproject.toml \
-     packages/@n8n/task-runner-python/uv.lock** \
-     packages/@n8n/task-runner-python/.python-version** \
+COPY packages/@MNI/task-runner-python/pyproject.toml \
+     packages/@MNI/task-runner-python/uv.lock** \
+     packages/@MNI/task-runner-python/.python-version** \
      ./
 
 RUN uv venv
@@ -105,7 +105,7 @@ RUN uv sync \
 			--no-dev \
 			--all-extras
 
-COPY packages/@n8n/task-runner-python/ ./
+COPY packages/@MNI/task-runner-python/ ./
 RUN uv sync \
       --frozen \
 			--no-dev \
@@ -130,8 +130,8 @@ RUN set -e; \
         *) echo "Unsupported platform: $TARGETPLATFORM" && exit 1 ;; \
     esac; \
     mkdir /launcher-temp && cd /launcher-temp; \
-    wget -q "https://github.com/n8n-io/task-runner-launcher/releases/download/${LAUNCHER_VERSION}/task-runner-launcher-${LAUNCHER_VERSION}-linux-${ARCH_NAME}.tar.gz"; \
-    wget -q "https://github.com/n8n-io/task-runner-launcher/releases/download/${LAUNCHER_VERSION}/task-runner-launcher-${LAUNCHER_VERSION}-linux-${ARCH_NAME}.tar.gz.sha256"; \
+    wget -q "https://github.com/MNI-io/task-runner-launcher/releases/download/${LAUNCHER_VERSION}/task-runner-launcher-${LAUNCHER_VERSION}-linux-${ARCH_NAME}.tar.gz"; \
+    wget -q "https://github.com/MNI-io/task-runner-launcher/releases/download/${LAUNCHER_VERSION}/task-runner-launcher-${LAUNCHER_VERSION}-linux-${ARCH_NAME}.tar.gz.sha256"; \
     echo "$(cat task-runner-launcher-${LAUNCHER_VERSION}-linux-${ARCH_NAME}.tar.gz.sha256) task-runner-launcher-${LAUNCHER_VERSION}-linux-${ARCH_NAME}.tar.gz" > checksum.sha256; \
     sha256sum -c checksum.sha256; \
     mkdir -p /launcher-bin; \
@@ -184,7 +184,7 @@ COPY --from=python-runner-builder /app/task-runner-python /runtime/opt/runners/t
 COPY --from=launcher-downloader /launcher-bin/* /runtime/usr/local/bin/
 
 # Copy configuration
-COPY docker/images/runners/n8n-task-runners.json /runtime/etc/n8n-task-runners.json
+COPY docker/images/runners/MNI-task-runners.json /runtime/etc/MNI-task-runners.json
 
 # Create necessary directories with proper permissions
 RUN mkdir -p /runtime/home/runner && \
@@ -202,11 +202,11 @@ RUN mkdir -p /runtime/home/runner && \
 # - NO shell, NO package manager, NO system utilities
 # ==============================================================================
 FROM gcr.io/distroless/cc-debian13:latest AS runtime
-ARG N8N_VERSION=snapshot
-ARG N8N_RELEASE_TYPE=dev
+ARG MNI_VERSION=snapshot
+ARG MNI_RELEASE_TYPE=dev
 
 ENV NODE_ENV=production \
-    N8N_RELEASE_TYPE=${N8N_RELEASE_TYPE} \
+    MNI_RELEASE_TYPE=${MNI_RELEASE_TYPE} \
     HOME=/home/runner
 
 # Copy everything from the prepared runtime filesystem
@@ -224,6 +224,6 @@ CMD ["javascript", "python"]
 
 LABEL org.opencontainers.image.title="MNI task runners (distroless)" \
       org.opencontainers.image.description="Distroless sidecar image providing MNI task runners for JavaScript and Python code execution" \
-      org.opencontainers.image.source="https://github.com/n8n-io/n8n" \
+      org.opencontainers.image.source="https://github.com/MNI-io/MNI" \
       org.opencontainers.image.url="https://n8n.io" \
-      org.opencontainers.image.version="${N8N_VERSION}"
+      org.opencontainers.image.version="${MNI_VERSION}"

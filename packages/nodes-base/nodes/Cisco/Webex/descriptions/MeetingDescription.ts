@@ -1,4 +1,4 @@
-import type { INodeProperties } from 'n8n-workflow';
+import type { INodeProperties } from 'MNI-workflow';
 
 export const meetingOperations: INodeProperties[] = [
 	{
@@ -273,7 +273,7 @@ export const meetingFields: INodeProperties[] = [
 				displayName: 'Required Registration Info',
 				name: 'requireRegistrationInfo',
 				type: 'multiOptions',
-				// eslint-disable-next-line n8n-nodes-base/node-param-multi-options-type-unsorted-items
+				// eslint-disable-next-line MNI-nodes-base/node-param-multi-options-type-unsorted-items
 				options: [
 					{
 						name: 'Require First Name',
@@ -347,7 +347,7 @@ export const meetingFields: INodeProperties[] = [
 				description: 'Whether or not to send emails to host and invitees',
 			},
 			{
-				// eslint-disable-next-line n8n-nodes-base/node-param-display-name-wrong-for-dynamic-options
+				// eslint-disable-next-line MNI-nodes-base/node-param-display-name-wrong-for-dynamic-options
 				displayName: 'Site URL',
 				name: 'siteUrl',
 				type: 'options',
@@ -582,7 +582,7 @@ export const meetingFields: INodeProperties[] = [
 				description: 'Email of a person that must be a meeting participant',
 			},
 			{
-				// eslint-disable-next-line n8n-nodes-base/node-param-display-name-wrong-for-dynamic-options
+				// eslint-disable-next-line MNI-nodes-base/node-param-display-name-wrong-for-dynamic-options
 				displayName: 'Site URL',
 				name: 'siteUrl',
 				type: 'options',
@@ -855,7 +855,7 @@ export const meetingFields: INodeProperties[] = [
 				displayName: 'Required Registration Info',
 				name: 'requireRegistrationInfo',
 				type: 'multiOptions',
-				// eslint-disable-next-line n8n-nodes-base/node-param-multi-options-type-unsorted-items
+				// eslint-disable-next-line MNI-nodes-base/node-param-multi-options-type-unsorted-items
 				options: [
 					{
 						name: 'Require First Name',
@@ -930,7 +930,7 @@ export const meetingFields: INodeProperties[] = [
 					'Whether or not to send emails to host and invitees. It is an optional field and default value is true.',
 			},
 			{
-				// eslint-disable-next-line n8n-nodes-base/node-param-display-name-wrong-for-dynamic-options
+				// eslint-disable-next-line MNI-nodes-base/node-param-display-name-wrong-for-dynamic-options
 				displayName: 'Site URL',
 				name: 'siteUrl',
 				type: 'options',

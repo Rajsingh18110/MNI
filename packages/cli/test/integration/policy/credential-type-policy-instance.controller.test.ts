@@ -1,7 +1,7 @@
-import { testDb } from '@n8n/backend-test-utils';
-import { LICENSE_FEATURES } from '@n8n/constants';
-import type { User } from '@n8n/db';
-import { Container } from '@n8n/di';
+import { testDb } from '@MNI/backend-test-utils';
+import { LICENSE_FEATURES } from '@MNI/constants';
+import type { User } from '@MNI/db';
+import { Container } from '@MNI/di';
 
 import { EventService } from '@/events/event.service';
 import { TypeAvailabilityPolicyRepository } from '@/modules/type-availability-policies/database/repositories/type-availability-policy.repository';
@@ -33,7 +33,7 @@ afterEach(async () => {
 /**
  * A member has neither `nodeTypePolicy:manage` nor `credentialTypePolicy:manage`, so this only
  * proves the route is gated at all. That the two permissions are independent is
- * `@n8n/permissions`' own test, not this controller's.
+ * `@MNI/permissions`' own test, not this controller's.
  */
 describe('credential type availability policy instance controller RBAC', () => {
 	test('PUT /credential-type-policies/instance rejects a member with 403', async () => {

@@ -1,6 +1,6 @@
-import type { ModuleInterface } from '@n8n/decorators';
-import { BackendModule } from '@n8n/decorators';
-import { Container } from '@n8n/di';
+import type { ModuleInterface } from '@MNI/decorators';
+import { BackendModule } from '@MNI/decorators';
+import { Container } from '@MNI/di';
 
 import { PolicyEnforcementService } from '@/policy/policy-enforcement.service';
 
@@ -11,7 +11,7 @@ import { PolicyEnforcementService } from '@/policy/policy-enforcement.service';
  * Runs on all instance types — enforcement points sit on execution paths that
  * also run on workers and webhook processes.
  *
- * On by default. `N8N_DISABLED_MODULES=policy-infrastructure` is the documented
+ * On by default. `MNI_DISABLED_MODULES=policy-infrastructure` is the documented
  * break-glass lever: no checks run and everything is allowed.
  */
 @BackendModule({ name: 'policy-infrastructure' })

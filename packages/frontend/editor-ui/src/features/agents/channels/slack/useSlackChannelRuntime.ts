@@ -2,8 +2,8 @@ import type {
 	SlackManagedAppSettings,
 	SlackManagedAppSettingsErrorCode,
 	SlackManagedSetupState,
-} from '@n8n/api-types';
-import { useRootStore } from '@n8n/stores/useRootStore';
+} from '@MNI/api-types';
+import { useRootStore } from '@MNI/stores/useRootStore';
 import { computed, ref, watch, type Ref } from 'vue';
 
 import { useUIStore } from '@/app/stores/ui.store';

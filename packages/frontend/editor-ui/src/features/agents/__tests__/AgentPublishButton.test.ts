@@ -2,7 +2,7 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { mount, flushPromises } from '@vue/test-utils';
 import { ref } from 'vue';
-import type { AgentConfigValidationIssue } from '@n8n/api-types';
+import type { AgentConfigValidationIssue } from '@MNI/api-types';
 import type { AgentResource } from '../types';
 import type { AgentVersion } from '../agent.types';
 
@@ -24,15 +24,15 @@ vi.mock('../composables/useAgentPermissions', () => ({
 	useAgentPermissions: () => agentPermissionsMock,
 }));
 
-vi.mock('@n8n/stores/useRootStore', () => ({
+vi.mock('@MNI/stores/useRootStore', () => ({
 	useRootStore: () => ({ restApiContext: {} }),
 }));
 
-vi.mock('@n8n/i18n', () => ({
+vi.mock('@MNI/i18n', () => ({
 	useI18n: () => ({ baseText: (key: string) => key }),
 }));
 
-vi.mock('@n8n/composables/useToast', () => {
+vi.mock('@MNI/composables/useToast', () => {
 	const showMessage = vi.fn();
 	const showError = vi.fn();
 	return { useToast: () => ({ showMessage, showError }) };

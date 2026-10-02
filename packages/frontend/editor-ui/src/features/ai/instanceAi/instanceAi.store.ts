@@ -9,11 +9,11 @@ import {
 	type EffectScope,
 	type InjectionKey,
 } from 'vue';
-import { useRootStore } from '@n8n/stores/useRootStore';
-import { useToast } from '@n8n/composables/useToast';
-import { i18n } from '@n8n/i18n';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
-import { TELEMETRY_EVENT } from '@n8n/telemetry';
+import { useRootStore } from '@MNI/stores/useRootStore';
+import { useToast } from '@MNI/composables/useToast';
+import { i18n } from '@MNI/i18n';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
+import { TELEMETRY_EVENT } from '@MNI/telemetry';
 import {
 	UNLIMITED_CREDITS,
 	type InstanceAiThreadHistoryResponse,
@@ -22,7 +22,7 @@ import {
 	type InstanceAiAttachment,
 	type InstanceAiNodesAttachment,
 	type PushMessage,
-} from '@n8n/api-types';
+} from '@MNI/api-types';
 import {
 	ensureThread,
 	getInstanceAiCredits,

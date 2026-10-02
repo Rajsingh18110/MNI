@@ -1,5 +1,5 @@
-import { Service } from '@n8n/di';
-import { DataSource, Repository } from '@n8n/typeorm';
+import { Service } from '@MNI/di';
+import { DataSource, Repository } from '@MNI/typeorm';
 
 import { AgentMemoryEntrySourceEntity } from '../entities/agent-memory-entry-source.entity';
 

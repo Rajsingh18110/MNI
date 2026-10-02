@@ -1,4 +1,4 @@
-import { Config, Env, ExecutionsConfig } from '@n8n/config';
+import { Config, Env, ExecutionsConfig } from '@MNI/config';
 import { createHash } from 'node:crypto';
 import { z } from 'zod';
 
@@ -24,22 +24,22 @@ export class BinaryDataConfig {
 	availableModes: z.infer<typeof availableModesSchema> = ['filesystem', 's3', 'database'];
 
 	/** Storage mode for binary data. Defaults to 'filesystem' in regular mode, 'database' in scaling mode. */
-	@Env('N8N_DEFAULT_BINARY_DATA_MODE', binaryDataModesSchema)
+	@Env('MNI_DEFAULT_BINARY_DATA_MODE', binaryDataModesSchema)
 	mode!: z.infer<typeof binaryDataModesSchema>;
 
 	/** Path for binary data storage in "filesystem" mode. */
-	@Env('N8N_BINARY_DATA_STORAGE_PATH')
+	@Env('MNI_BINARY_DATA_STORAGE_PATH')
 	localStoragePath: string;
 
 	/**
 	 * Secret for creating publicly-accesible signed URLs for binary data.
 	 * When not passed in, this will be derived from the instances's encryption-key
 	 **/
-	@Env('N8N_BINARY_DATA_SIGNING_SECRET')
+	@Env('MNI_BINARY_DATA_SIGNING_SECRET')
 	signingSecret: string;
 
 	/** Maximum file size (in MiB) for binary data in `database` mode. **/
-	@Env('N8N_BINARY_DATA_DATABASE_MAX_FILE_SIZE', dbMaxFileSizeSchema)
+	@Env('MNI_BINARY_DATA_DATABASE_MAX_FILE_SIZE', dbMaxFileSizeSchema)
 	dbMaxFileSize: number = 512;
 
 	constructor(
@@ -50,11 +50,11 @@ export class BinaryDataConfig {
 		/**
 		 * Set the binary data storage path:
 		 *
-		 * - N8N_BINARY_DATA_STORAGE_PATH, else
-		 * - N8N_STORAGE_PATH, else
-		 * - ~/.n8n/storage
+		 * - MNI_BINARY_DATA_STORAGE_PATH, else
+		 * - MNI_STORAGE_PATH, else
+		 * - ~/.MNI/storage
 		 *
-		 * `~/.n8n/binaryData` is no longer the default if the env var is unset.
+		 * `~/.MNI/binaryData` is no longer the default if the env var is unset.
 		 */
 		this.localStoragePath ??= storageConfig.storagePath;
 		this.signingSecret = createHash('sha256')
@@ -67,12 +67,12 @@ export class BinaryDataConfig {
 	/**
 	 * Two-phase init: reads or creates the signing.binary_data deployment-key row.
 	 * Must be called after DB migrations complete, before any signed-URL generation.
-	 * Precedence: N8N_BINARY_DATA_SIGNING_SECRET env → DB active row → derive-from-key (and persist)
+	 * Precedence: MNI_BINARY_DATA_SIGNING_SECRET env → DB active row → derive-from-key (and persist)
 	 */
 	async initialize(
 		repo: Pick<DeploymentStateRepo, 'findActiveSigningSecret' | 'seedSigningSecret'>,
 	): Promise<void> {
-		if (process.env.N8N_BINARY_DATA_SIGNING_SECRET) {
+		if (process.env.MNI_BINARY_DATA_SIGNING_SECRET) {
 			return;
 		}
 		const existing = await repo.findActiveSigningSecret('signing.binary_data', {

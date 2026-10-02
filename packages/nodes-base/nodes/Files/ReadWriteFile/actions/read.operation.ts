@@ -1,11 +1,11 @@
 import glob from 'fast-glob';
-import { NodeApiError, NodeOperationError } from 'n8n-workflow';
+import { NodeApiError, NodeOperationError } from 'MNI-workflow';
 import type {
 	IExecuteFunctions,
 	INodeExecutionData,
 	INodeProperties,
 	JsonObject,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { updateDisplayOptions } from '@utils/utilities';
 

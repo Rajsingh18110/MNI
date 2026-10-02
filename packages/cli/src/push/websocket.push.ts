@@ -1,19 +1,19 @@
-import { heartbeatMessageSchema } from '@n8n/api-types';
-import type { User } from '@n8n/db';
-import { Service } from '@n8n/di';
-import { UnexpectedError } from 'n8n-workflow';
+import { heartbeatMessageSchema } from '@MNI/api-types';
+import type { User } from '@MNI/db';
+import { Service } from '@MNI/di';
+import { UnexpectedError } from 'MNI-workflow';
 import type WebSocket from 'ws';
 
 import { AbstractPush } from './abstract.push';
 
 function heartbeat(this: WebSocket) {
-	this.isAlive = true;
+	(this as any).isAlive = true;
 }
 
 @Service()
 export class WebSocketPush extends AbstractPush<WebSocket> {
 	add(pushRef: string, userId: User['id'], connection: WebSocket) {
-		connection.isAlive = true;
+		(connection as any).isAlive = true;
 		connection.on('pong', heartbeat);
 
 		super.add(pushRef, userId, connection);
@@ -78,10 +78,10 @@ export class WebSocketPush extends AbstractPush<WebSocket> {
 
 	protected ping(connection: WebSocket): void {
 		// If a connection did not respond with a `PONG` in the last 60 seconds, disconnect
-		if (!connection.isAlive) {
+		if (!(connection as any).isAlive) {
 			return connection.terminate();
 		}
-		connection.isAlive = false;
+		(connection as any).isAlive = false;
 		connection.ping();
 	}
 

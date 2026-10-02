@@ -1,8 +1,8 @@
-import type * as agents from '@n8n/agents';
-import type { CredentialProvider } from '@n8n/agents';
-import type { AgentJsonConfig } from '@n8n/api-types';
-import type { Logger } from '@n8n/backend-common';
-import type { CustomFetch, HttpTransport, OutboundHttp } from '@n8n/backend-network';
+import type * as agents from '@MNI/agents';
+import type { CredentialProvider } from '@MNI/agents';
+import type { AgentJsonConfig } from '@MNI/api-types';
+import type { Logger } from '@MNI/backend-common';
+import type { CustomFetch, HttpTransport, OutboundHttp } from '@MNI/backend-network';
 import { mock } from 'vitest-mock-extended';
 
 import type { ActiveExecutions } from '@/active-executions';
@@ -11,7 +11,7 @@ import type { EphemeralNodeExecutor } from '@/node-execution';
 import type { OauthService } from '@/oauth/oauth.service';
 import type { AiService } from '@/services/ai.service';
 import type { WorkflowFinderService } from '@/workflows/workflow-finder.service';
-import type { WorkflowRepository } from '@n8n/db';
+import type { WorkflowRepository } from '@MNI/db';
 
 import type { AgentChatAttachmentService } from '../agent-chat-attachment.service';
 import type { AgentKnowledgeMirrorService } from '../agent-knowledge-mirror.service';
@@ -21,8 +21,8 @@ import type {
 	AgentSandboxRuntimeService,
 } from '../agent-sandbox-runtime.service';
 import type { AgentWorkspaceService } from '../agent-workspace.service';
-import type { N8NCheckpointStorage } from '../integrations/n8n-checkpoint-storage';
-import type { N8nMemory } from '../integrations/n8n-memory';
+import type { N8NCheckpointStorage } from '../integrations/MNI-checkpoint-storage';
+import type { N8nMemory } from '../integrations/MNI-memory';
 import type * as FromJsonConfig from '../json-config/from-json-config';
 import type { ToolExecutor } from '../json-config/from-json-config';
 import type { AgentFileRepository } from '../repositories/agent-file.repository';

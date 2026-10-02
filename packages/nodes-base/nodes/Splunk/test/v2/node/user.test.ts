@@ -1,5 +1,5 @@
 import { mock } from 'vitest-mock-extended';
-import type { IExecuteFunctions } from 'n8n-workflow';
+import type { IExecuteFunctions } from 'MNI-workflow';
 
 import { SPLUNK } from '../../../v1/types';
 import * as user from '../../../v2/actions/user';

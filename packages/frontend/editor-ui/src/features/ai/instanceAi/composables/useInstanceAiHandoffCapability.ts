@@ -1,13 +1,13 @@
 import { nextTick } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
-import type { InstanceAiWorkflowAttachment } from '@n8n/api-types';
+import type { InstanceAiWorkflowAttachment } from '@MNI/api-types';
 
 import type {
 	InstanceAiCredentialContext,
 	InstanceAiEditorActionSource,
 	InstanceAiEditorCapability,
 } from '@/app/composables/useInstanceAiEditorCapability';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
 import { createExecutionDataId, useExecutionDataStore } from '@/app/stores/executionData.store';
 import { injectWorkflowDocumentStore } from '@/app/stores/workflowDocument.store';
 import { useWorkflowExecutionStateStore } from '@/app/stores/workflowExecutionState.store';

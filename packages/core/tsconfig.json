@@ -1,7 +1,7 @@
 {
 	"extends": [
-		"@n8n/typescript-config/tsconfig.common.go.json",
-		"@n8n/typescript-config/tsconfig.backend.go.json"
+		"@MNI/typescript-config/tsconfig.common.go.json",
+		"@MNI/typescript-config/tsconfig.backend.go.json"
 	],
 	"compilerOptions": {
 		"lib": ["es2022"],
@@ -18,13 +18,13 @@
 	"include": ["src/**/*.ts", "test/**/*.ts"],
 	"references": [
 		{ "path": "../workflow/tsconfig.build.esm.json" },
-		{ "path": "../@n8n/decorators/tsconfig.build.json" },
-		{ "path": "../@n8n/backend-common/tsconfig.build.json" },
-		{ "path": "../@n8n/backend-network/tsconfig.build.json" },
-		{ "path": "../@n8n/blob-storage/tsconfig.build.json" },
-		{ "path": "../@n8n/config/tsconfig.build.json" },
-		{ "path": "../@n8n/constants/tsconfig.build.json" },
-		{ "path": "../@n8n/di/tsconfig.build.json" },
-		{ "path": "../@n8n/client-oauth2/tsconfig.build.json" }
+		{ "path": "../@MNI/decorators/tsconfig.build.json" },
+		{ "path": "../@MNI/backend-common/tsconfig.build.json" },
+		{ "path": "../@MNI/backend-network/tsconfig.build.json" },
+		{ "path": "../@MNI/blob-storage/tsconfig.build.json" },
+		{ "path": "../@MNI/config/tsconfig.build.json" },
+		{ "path": "../@MNI/constants/tsconfig.build.json" },
+		{ "path": "../@MNI/di/tsconfig.build.json" },
+		{ "path": "../@MNI/client-oauth2/tsconfig.build.json" }
 	]
 }

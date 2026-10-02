@@ -2,7 +2,7 @@ export type DataTableColumnType = 'string' | 'number' | 'boolean' | 'date';
 
 /**
  * Data Table row operations
- * Used by the Data Table node (n8n-nodes-base.dataTable) for row-level CRUD operations
+ * Used by the Data Table node (MNI-nodes-base.dataTable) for row-level CRUD operations
  */
 export type DataTableRowOperation =
 	| 'insert'

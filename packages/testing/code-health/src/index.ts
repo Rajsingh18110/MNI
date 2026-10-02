@@ -1,5 +1,5 @@
-import { RuleRunner } from '@n8n/rules-engine';
-import type { RuleSettingsMap } from '@n8n/rules-engine';
+import { RuleRunner } from '@MNI/rules-engine';
+import type { RuleSettingsMap } from '@MNI/rules-engine';
 
 import type { CodeHealthContext } from './context.js';
 import { AdrConventionsRule } from './rules/adr-conventions.rule.js';
@@ -68,9 +68,9 @@ const defaultRuleSettings: RuleSettingsMap = {
 	'lint-config-layering': {
 		enabled: true,
 		severity: 'error',
-		// This package is a dependency of @n8n/eslint-config, so extending it
+		// This package is a dependency of @MNI/eslint-config, so extending it
 		// would be a cycle.
-		options: { exempt: ['packages/frontend/@n8n/eslint-plugin-design-system'] },
+		options: { exempt: ['packages/frontend/@MNI/eslint-plugin-design-system'] },
 	},
 	'stale-overrides': {
 		enabled: true,
@@ -90,18 +90,18 @@ const defaultRuleSettings: RuleSettingsMap = {
 		options: {
 			subpaths: [
 				{
-					name: '@n8n/backend-network/transport',
-					entry: 'packages/@n8n/backend-network/src/transport.ts',
-					forbidden: ['@n8n/di', '@n8n/backend-common', '@n8n/config', 'cache-manager', 'axios'],
-					allowedExternals: ['n8n-workflow', 'undici'],
+					name: '@MNI/backend-network/transport',
+					entry: 'packages/@MNI/backend-network/src/transport.ts',
+					forbidden: ['@MNI/di', '@MNI/backend-common', '@MNI/config', 'cache-manager', 'axios'],
+					allowedExternals: ['MNI-workflow', 'undici'],
 				},
 				{
-					name: '@n8n/backend-network/proxy',
-					entry: 'packages/@n8n/backend-network/src/proxy/index.ts',
+					name: '@MNI/backend-network/proxy',
+					entry: 'packages/@MNI/backend-network/src/proxy/index.ts',
 					forbidden: [
-						'@n8n/di',
-						'@n8n/backend-common',
-						'@n8n/config',
+						'@MNI/di',
+						'@MNI/backend-common',
+						'@MNI/config',
 						'cache-manager',
 						'axios',
 						'undici',
@@ -118,13 +118,13 @@ const defaultRuleSettings: RuleSettingsMap = {
 					// SSRF/DNS are the *guard* layers, not the transport layer. They may
 					// depend on DI/config/backend-common, but must never pull an HTTP
 					// client — that would mean the guard started doing the fetching.
-					name: '@n8n/backend-network/ssrf',
-					entry: 'packages/@n8n/backend-network/src/ssrf/index.ts',
+					name: '@MNI/backend-network/ssrf',
+					entry: 'packages/@MNI/backend-network/src/ssrf/index.ts',
 					forbidden: ['axios', 'undici'],
 				},
 				{
-					name: '@n8n/backend-network/dns',
-					entry: 'packages/@n8n/backend-network/src/dns/index.ts',
+					name: '@MNI/backend-network/dns',
+					entry: 'packages/@MNI/backend-network/src/dns/index.ts',
 					forbidden: ['axios', 'undici'],
 				},
 			],

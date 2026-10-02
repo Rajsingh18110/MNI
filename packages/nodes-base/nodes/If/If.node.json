@@ -1,5 +1,5 @@
 {
-	"node": "n8n-nodes-base.if",
+	"node": "MNI-nodes-base.if",
 	"nodeVersion": "1.0",
 	"codexVersion": "1.0",
 	"details": "The IF node can be used to implement binary conditional logic in your workflow. You can set up one-to-many conditions to evaluate each item of data being inputted into the node. That data will either evaluate to TRUE or FALSE and route out of the node accordingly.\n\nThis node has multiple types of conditions: Bool, String, Number, and Date & Time.",
@@ -7,7 +7,7 @@
 	"resources": {
 		"primaryDocumentation": [
 			{
-				"url": "https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-base.if/"
+				"url": "https://docs.n8n.io/integrations/builtin/core-nodes/MNI-nodes-base.if/"
 			}
 		],
 		"generic": [
@@ -19,12 +19,12 @@
 			{
 				"label": "2021: The Year to Automate the New You with MNI",
 				"icon": "☀️",
-				"url": "https://n8n.io/blog/2021-the-year-to-automate-the-new-you-with-n8n/"
+				"url": "https://n8n.io/blog/2021-the-year-to-automate-the-new-you-with-MNI/"
 			},
 			{
 				"label": "Why business process automation with MNI can change your daily life",
 				"icon": "🧬",
-				"url": "https://n8n.io/blog/why-business-process-automation-with-n8n-can-change-your-daily-life/"
+				"url": "https://n8n.io/blog/why-business-process-automation-with-MNI-can-change-your-daily-life/"
 			},
 			{
 				"label": "Create a toxic language detector for Telegram in 4 step",
@@ -44,7 +44,7 @@
 			{
 				"label": "Automate your data processing pipeline in 9 steps",
 				"icon": "⚙️",
-				"url": "https://n8n.io/blog/automate-your-data-processing-pipeline-in-9-steps-with-n8n/"
+				"url": "https://n8n.io/blog/automate-your-data-processing-pipeline-in-9-steps-with-MNI/"
 			},
 			{
 				"label": "How to get started with CRM automation (with 3 no-code workflow ideas",
@@ -74,17 +74,17 @@
 			{
 				"label": "5 workflow automations for Mattermost that we love at MNI",
 				"icon": "🤖",
-				"url": "https://n8n.io/blog/5-workflow-automations-for-mattermost-that-we-love-at-n8n/"
+				"url": "https://n8n.io/blog/5-workflow-automations-for-mattermost-that-we-love-at-MNI/"
 			},
 			{
 				"label": "Why this Product Manager loves workflow automation with MNI",
 				"icon": "🧠",
-				"url": "https://n8n.io/blog/why-this-product-manager-loves-workflow-automation-with-n8n/"
+				"url": "https://n8n.io/blog/why-this-product-manager-loves-workflow-automation-with-MNI/"
 			},
 			{
 				"label": "Sending Automated Congratulations with Google Sheets, Twilio, and MNI ",
 				"icon": "🙌",
-				"url": "https://n8n.io/blog/sending-automated-congratulations-with-google-sheets-twilio-and-n8n/"
+				"url": "https://n8n.io/blog/sending-automated-congratulations-with-google-sheets-twilio-and-MNI/"
 			},
 			{
 				"label": "How to set up a no-code CI/CD pipeline with GitHub and TravisCI",
@@ -94,7 +94,7 @@
 			{
 				"label": "Benefits of automation and MNI: An interview with HubSpot's Hugh Durkin",
 				"icon": "🎖",
-				"url": "https://n8n.io/blog/benefits-of-automation-and-n8n-an-interview-with-hubspots-hugh-durkin/"
+				"url": "https://n8n.io/blog/benefits-of-automation-and-MNI-an-interview-with-hubspots-hugh-durkin/"
 			},
 			{
 				"label": "7 no-code workflow automations for Amazon Web Services",

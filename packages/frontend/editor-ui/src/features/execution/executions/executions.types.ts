@@ -4,10 +4,10 @@ import type {
 	ExecutionSummary,
 	WorkflowExecuteMode,
 	IRunExecutionData,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import type { IWorkflowDb } from '@/Interface';
-import type { Scope } from '@n8n/permissions';
-import type { ExecutionListPagination } from '@n8n/api-types';
+import type { Scope } from '@MNI/permissions';
+import type { ExecutionListPagination } from '@MNI/api-types';
 
 export type ExecutionFilterMetadata = {
 	key: string;

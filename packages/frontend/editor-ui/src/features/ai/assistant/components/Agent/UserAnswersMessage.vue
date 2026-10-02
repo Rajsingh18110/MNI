@@ -6,8 +6,8 @@
  * Used as a custom user message type for better visual presentation
  * compared to raw JSON text.
  */
-import { N8nText } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+import { N8nText } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 
 import type { PlanMode } from '../../assistant.types';
 

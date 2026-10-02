@@ -1,11 +1,11 @@
-import { Container } from '@n8n/di';
-import { ensureError } from '@n8n/utils/errors/ensure-error';
+import { Container } from '@MNI/di';
+import { ensureError } from '@MNI/utils/errors/ensure-error';
 import type { Request, Response } from 'express';
 import { rm } from 'fs/promises';
 import isbot from 'isbot';
 import jwt from 'jsonwebtoken';
 import { DateTime } from 'luxon';
-import { getHtmlSandboxCSP, InstanceSettings, isFormHtmlSandboxingDisabled } from 'n8n-core';
+import { getHtmlSandboxCSP, InstanceSettings, isFormHtmlSandboxingDisabled } from 'MNI-core';
 import type {
 	CredentialCheckStatus,
 	INode,
@@ -17,7 +17,7 @@ import type {
 	FormFieldsParameter,
 	NodeTypeAndVersion,
 	CredentialCheckResult,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import {
 	FORM_NODE_TYPE,
 	FORM_TRIGGER_NODE_TYPE,
@@ -30,7 +30,7 @@ import {
 	tryToParseJsonToFormFields,
 	UnexpectedError,
 	buildCredentialConnectionsRequiredResponse,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import * as a from 'node:assert';
 import sanitize from 'sanitize-html';
 
@@ -249,7 +249,7 @@ function getFieldIdentifier(field: FormFieldsParameter[number], nodeVersion?: nu
 /** Target of the "Form automated with MNI" attribution footer. */
 export function getN8nWebsiteLink(instanceId?: string) {
 	const utm_campaign = instanceId ? `&utm_campaign=${encodeURIComponent(instanceId)}` : '';
-	return `https://n8n.io/?utm_source=n8n-internal&utm_medium=form-trigger${utm_campaign}`;
+	return `https://n8n.io/?utm_source=MNI-internal&utm_medium=form-trigger${utm_campaign}`;
 }
 
 export function prepareFormData({
@@ -389,7 +389,7 @@ export const validateResponseModeConfiguration = (context: IWebhookFunctions) =>
 	const nodeVersion = context.getNode().typeVersion;
 
 	const isRespondToWebhookConnected = connectedNodes.some(
-		(node) => node.type === 'n8n-nodes-base.respondToWebhook',
+		(node) => node.type === 'MNI-nodes-base.respondToWebhook',
 	);
 
 	if (!isRespondToWebhookConnected && responseMode === 'responseNode') {
@@ -790,7 +790,7 @@ export async function respondIfCredentialsNotReady(
 /**
  * Generate a form auth token for n8nUserAuth. The token embeds the user info
  * in a signed JWT so the POST handler can authenticate the submission without
- * relying on the `n8n-auth` cookie (cookies aren't sent on fetch requests from
+ * relying on the `MNI-auth` cookie (cookies aren't sent on fetch requests from
  * the sandboxed form page because the document has a null origin and the
  * cookie is `SameSite=Lax`).
  *
@@ -882,7 +882,7 @@ function trimTrailingSlash(url: string): string {
 // provider callback to the clean form URL, so `code`/`state` never reach the
 // sandboxed form page. The token is otherwise already embedded in the form HTML
 // (the page sends it back as `x-auth-token` on POST), so this is not a new exposure.
-const FORM_OAUTH_COOKIE_NAME = 'n8n-form-oauth';
+const FORM_OAUTH_COOKIE_NAME = 'MNI-form-oauth';
 
 /**
  * Derive `secure` from the request scheme (honouring x-forwarded-proto, as
@@ -925,7 +925,7 @@ function decodeCookieValue(value: string): string | null {
 }
 
 function readFormOAuthToken(req: Request): string | null {
-	const match = (req.headers.cookie ?? '').match(/(?:^|;\s*)n8n-form-oauth=([^;]+)/);
+	const match = (req.headers.cookie ?? '').match(/(?:^|;\s*)MNI-form-oauth=([^;]+)/);
 	return match ? decodeCookieValue(match[1]) : null;
 }
 
@@ -936,13 +936,13 @@ function clearFormOAuthToken(res: Response, req: Request, resourceUrl: string): 
 // Carries the submitter's identity to the follow-up pages of a multi-page form.
 // Those pages are reached by a navigation, which can present neither the
 // `x-auth-token` header nor — from a sandboxed, opaque-origin form document —
-// the `n8n-auth` session cookie.
+// the `MNI-auth` session cookie.
 //
 // The name carries the token's binding, so forms open in other tabs don't
 // overwrite each other's cookie: pages of a run use the run's id, and the
 // trigger — rendered before any run exists — uses the workflow's. Duplicated in
 // `packages/cli/src/constants.ts` (prefix only); keep both sides in step.
-const FORM_AUTH_COOKIE_PREFIX = 'n8n-form-auth';
+const FORM_AUTH_COOKIE_PREFIX = 'MNI-form-auth';
 
 function getFormAuthCookieName(binding: FormUserAuthTokenBinding): string {
 	return binding.executionId
@@ -1041,7 +1041,7 @@ async function isSessionForDifferentUser(
 	formCookieUser: IUser,
 ): Promise<boolean> {
 	const req = context.getRequestObject();
-	const match = (req.headers.cookie ?? '').match(/(?:^|;\s*)n8n-auth=([^;]+)/);
+	const match = (req.headers.cookie ?? '').match(/(?:^|;\s*)MNI-auth=([^;]+)/);
 	if (!match) return false;
 	try {
 		const sessionUser = await context.validateCookieAuth(match[1].trim());
@@ -1053,7 +1053,7 @@ async function isSessionForDifferentUser(
 
 /**
  * Authenticate an `n8nUserAuth` request via:
- * 1. the `n8n-auth` cookie (sent on top-level GET when the user is logged in), or
+ * 1. the `MNI-auth` cookie (sent on top-level GET when the user is logged in), or
  * 2. the `x-auth-token` form auth token (used on POST and multi-step page
  *    navigations from the sandboxed form page that can't send cookies).
  *
@@ -1180,7 +1180,7 @@ async function authenticateFormUserOrRespond(
 
 	// Parse the raw Cookie header rather than `req.cookies` because the webhook
 	// path may bypass cookie-parser middleware in some deployments.
-	const cookieMatch = (req.headers.cookie ?? '').match(/(?:^|;\s*)n8n-auth=([^;]+)/);
+	const cookieMatch = (req.headers.cookie ?? '').match(/(?:^|;\s*)MNI-auth=([^;]+)/);
 	if (cookieMatch) {
 		try {
 			return {
@@ -1243,7 +1243,7 @@ export async function validateFormPageAuth(
 }
 
 /**
- * Render the trusted hosting shell: an n8n-controlled page on the real origin
+ * Render the trusted hosting shell: an MNI-controlled page on the real origin
  * that shows the author's form inside a sandboxed (null-origin) iframe with a
  * credential-connect panel beside it. The form's submit stays disabled while any
  * required credential is missing; enforcement is server-side on POST regardless.
@@ -1497,7 +1497,7 @@ export async function formWebhook(
 
 		// A multi-page form hops to `/form-waiting/<execution>` by navigating, which
 		// carries neither the `x-auth-token` header nor — from the hosting shell's
-		// opaque-origin frame — the `n8n-auth` session cookie. Give the follow-up pages
+		// opaque-origin frame — the `MNI-auth` session cookie. Give the follow-up pages
 		// their own path-scoped token so they can authenticate the same submitter.
 		if (authentication === 'n8nUserAuth' && authedUser && hasNextPage) {
 			const binding = { workflowId: context.getWorkflow().id };

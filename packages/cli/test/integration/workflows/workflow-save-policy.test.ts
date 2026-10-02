@@ -1,9 +1,9 @@
-import { createWorkflow, mockInstance, testDb } from '@n8n/backend-test-utils';
-import type { User } from '@n8n/db';
-import { SharedWorkflowRepository, WorkflowHistoryRepository, WorkflowRepository } from '@n8n/db';
-import type { PolicyCheckResult, PolicyViolation, RegisteredPolicyCheck } from '@n8n/decorators';
-import { PolicyCheck, PolicyCheckMetadata } from '@n8n/decorators';
-import { Container } from '@n8n/di';
+import { createWorkflow, mockInstance, testDb } from '@MNI/backend-test-utils';
+import type { User } from '@MNI/db';
+import { SharedWorkflowRepository, WorkflowHistoryRepository, WorkflowRepository } from '@MNI/db';
+import type { PolicyCheckResult, PolicyViolation, RegisteredPolicyCheck } from '@MNI/decorators';
+import { PolicyCheck, PolicyCheckMetadata } from '@MNI/decorators';
+import { Container } from '@MNI/di';
 
 import { ActiveWorkflowManager } from '@/active-workflow-manager';
 
@@ -24,7 +24,7 @@ const DENIAL: PolicyViolation = {
 	kind: 'test-denial',
 	checkId: CHECK_ID,
 	message: 'Denied by the test policy check',
-	subject: 'n8n-nodes-base.manualTrigger',
+	subject: 'MNI-nodes-base.manualTrigger',
 	subjectType: 'nodeType',
 };
 
@@ -55,7 +55,7 @@ mockInstance(ActiveWorkflowManager);
 const triggerNode = {
 	id: 'a4e5d0e6-1a44-4f7e-9b7d-2c6a1f0b3c11',
 	name: 'Manual Trigger',
-	type: 'n8n-nodes-base.manualTrigger',
+	type: 'MNI-nodes-base.manualTrigger',
 	parameters: {},
 	typeVersion: 1,
 	position: [240, 300] as [number, number],

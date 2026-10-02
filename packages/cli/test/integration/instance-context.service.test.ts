@@ -3,10 +3,10 @@ import {
 	createTeamProject,
 	createWorkflow,
 	testDb,
-} from '@n8n/backend-test-utils';
-import type { Project, User } from '@n8n/db';
-import { ActivityEventRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
+} from '@MNI/backend-test-utils';
+import type { Project, User } from '@MNI/db';
+import { ActivityEventRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
 
 import type { InstanceContextScope } from '@/modules/instance-ai/instance-context.service';
 import { InstanceContextService } from '@/modules/instance-ai/instance-context.service';

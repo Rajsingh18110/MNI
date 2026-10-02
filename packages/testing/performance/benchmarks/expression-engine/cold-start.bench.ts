@@ -1,14 +1,14 @@
 /**
  * Tier 2: Synchronous isolate cold start
  *
- * Under lazy acquisition (N8N_EXPRESSION_ENGINE_LAZY_ACQUIRE) an evaluation
+ * Under lazy acquisition (MNI_EXPRESSION_ENGINE_LAZY_ACQUIRE) an evaluation
  * that finds the pool exhausted builds its bridge synchronously on the main
  * thread. This measures that build, one evaluation, and disposal, per engine
  * and for isolated-vm with and without the V8 compile cache.
  *
- * Run: pnpm --filter=@n8n/performance bench
+ * Run: pnpm --filter=@MNI/performance bench
  */
-import { IsolatedVmBridge, QuickJsBridge } from '@n8n/expression-runtime';
+import { IsolatedVmBridge, QuickJsBridge } from '@MNI/expression-runtime';
 
 import { defineBench } from '../bench-options';
 

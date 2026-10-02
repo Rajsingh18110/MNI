@@ -6,8 +6,8 @@ import {
 	AI_TRANSFORM_NODE_TYPE,
 	AI_TRANSFORM_CODE_GENERATED_FOR_PROMPT,
 	AI_TRANSFORM_JS_CODE,
-} from 'n8n-workflow';
-import type { INodeTypeDescription } from 'n8n-workflow';
+} from 'MNI-workflow';
+import type { INodeTypeDescription } from 'MNI-workflow';
 
 import { useNodeExecution } from '@/app/composables/useNodeExecution';
 import { useUIStore } from '@/app/stores/ui.store';
@@ -148,21 +148,21 @@ vi.mock('@/app/composables/useMessage', () => ({
 	useMessage: vi.fn().mockReturnValue(mockMessage),
 }));
 
-vi.mock('@n8n/composables/useTelemetry', () => ({
+vi.mock('@MNI/composables/useTelemetry', () => ({
 	useTelemetry: vi.fn().mockReturnValue({
 		track: vi.fn(),
 		trackAiTransform: vi.fn(),
 	}),
 }));
 
-vi.mock('@n8n/i18n', () => ({
+vi.mock('@MNI/i18n', () => ({
 	i18n: { baseText: vi.fn().mockImplementation((key: string) => key) },
 	useI18n: vi.fn().mockReturnValue({
 		baseText: vi.fn().mockImplementation((key: string) => key),
 	}),
 }));
 
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: vi.fn().mockReturnValue({
 		showMessage: vi.fn(),
 		showError: vi.fn(),
@@ -187,7 +187,7 @@ function createTestNode(overrides: Partial<INodeUi> = {}): INodeUi {
 	return {
 		id: 'test-id',
 		name: 'Test Node',
-		type: 'n8n-nodes-base.set',
+		type: 'MNI-nodes-base.set',
 		typeVersion: 1,
 		position: [0, 0],
 		parameters: {},
@@ -371,7 +371,7 @@ describe('useNodeExecution', () => {
 		it('should return false for schedule trigger nodes', () => {
 			mockNodeTypesStore.isTriggerNode.mockReturnValue(true);
 			mockNodeTypesStore.getNodeType.mockReturnValue({
-				name: 'n8n-nodes-base.scheduleTrigger',
+				name: 'MNI-nodes-base.scheduleTrigger',
 				group: ['schedule'],
 			} as INodeTypeDescription);
 			mockWorkflowExecutionStateStore.isWorkflowRunning = true;
@@ -519,7 +519,7 @@ describe('useNodeExecution', () => {
 
 		it('should return fetchEvent for polling type node', () => {
 			mockNodeTypesStore.getNodeType.mockReturnValue({
-				name: 'n8n-nodes-base.emailReadImap',
+				name: 'MNI-nodes-base.emailReadImap',
 				group: ['trigger'],
 				polling: true,
 			} as unknown as INodeTypeDescription);
@@ -532,7 +532,7 @@ describe('useNodeExecution', () => {
 
 		it('should return fetchEvent for mockManualExecution node', () => {
 			mockNodeTypesStore.getNodeType.mockReturnValue({
-				name: 'n8n-nodes-base.someNode',
+				name: 'MNI-nodes-base.someNode',
 				group: [],
 				mockManualExecution: true,
 			} as unknown as INodeTypeDescription);
@@ -545,7 +545,7 @@ describe('useNodeExecution', () => {
 
 		it('should return testNode as default', () => {
 			mockNodeTypesStore.getNodeType.mockReturnValue({
-				name: 'n8n-nodes-base.set',
+				name: 'MNI-nodes-base.set',
 				group: [] as string[],
 			} as INodeTypeDescription);
 			const node = ref(createTestNode());

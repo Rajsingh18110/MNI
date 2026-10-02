@@ -1,7 +1,7 @@
-import { Logger } from '@n8n/backend-common';
-import { Service } from '@n8n/di';
-import { InstanceSettings } from 'n8n-core';
-import { jsonParse } from 'n8n-workflow';
+import { Logger } from '@MNI/backend-common';
+import { Service } from '@MNI/di';
+import { InstanceSettings } from 'MNI-core';
+import { jsonParse } from 'MNI-workflow';
 import { randomUUID } from 'node:crypto';
 import * as fs from 'node:fs/promises';
 import path from 'node:path';
@@ -9,8 +9,8 @@ import { z } from 'zod';
 
 import { BadRequestError } from '@/errors/response-errors/bad-request.error';
 import { InternalServerError } from '@/errors/response-errors/internal-server.error';
-import { MANIFEST_FILE } from '@/modules/n8n-packages/spec/constants';
-import type { ManifestEntry, PackageManifest } from '@/modules/n8n-packages/spec/manifest.schema';
+import { MANIFEST_FILE } from '@/modules/MNI-packages/spec/constants';
+import type { ManifestEntry, PackageManifest } from '@/modules/MNI-packages/spec/manifest.schema';
 
 import { containerPlacement, isUnder, pinPath, staleWorkflowTargets } from './branch-placement';
 import type { BranchLayout, Placement } from './branch-placement';

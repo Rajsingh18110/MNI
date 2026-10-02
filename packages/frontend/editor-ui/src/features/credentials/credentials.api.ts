@@ -1,22 +1,22 @@
-import type { CreateCredentialPublicDto, CredentialPublicDto } from '@n8n/api-types';
-import { request, type PublicApiContext } from '@n8n/rest-api-client';
+import type { CreateCredentialPublicDto, CredentialPublicDto } from '@MNI/api-types';
+import { request, type PublicApiContext } from '@MNI/rest-api-client';
 import type {
 	CredentialFetchScope,
 	CredentialPayload,
 	ICredentialsDecryptedResponse,
 	ICredentialsResponse,
 } from './credentials.types';
-import type { IRestApiContext } from '@n8n/rest-api-client';
-import { makeRestApiRequest } from '@n8n/rest-api-client';
-import { sleep } from '@n8n/utils/sleep';
+import type { IRestApiContext } from '@MNI/rest-api-client';
+import { makeRestApiRequest } from '@MNI/rest-api-client';
+import { sleep } from '@MNI/utils/sleep';
 import type {
 	ICredentialType,
 	IDataObject,
 	INodeCredentialTestRequest,
 	INodeCredentialTestResult,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import axios from 'axios';
-import type { CreateCredentialDto } from '@n8n/api-types';
+import type { CreateCredentialDto } from '@MNI/api-types';
 
 async function fetchCredentialTypesJsonWithRetry(url: string, retries = 5, delay = 500) {
 	for (let attempt = 0; attempt < retries; attempt++) {
@@ -58,7 +58,7 @@ export interface GetAllCredentialsOptions {
 	 * the link to jump to this overview from the "Delete secret provider connection" modal.
 	 *
 	 * See RFC to improve its performance in the future:
-	 * https://www.notion.so/n8n/Querying-credential-dependencies-e-g-External-Secret-Store-stored-in-expressions-3035b6e0c94f80e78448ff08e5528c2a
+	 * https://www.notion.so/MNI/Querying-credential-dependencies-e-g-External-Secret-Store-stored-in-expressions-3035b6e0c94f80e78448ff08e5528c2a
 	 */
 	externalSecretsStore?: string;
 }

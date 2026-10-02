@@ -3,11 +3,11 @@ import { createEnvProvider, createEnvProviderState } from '../src/workflow-data-
 
 describe('createEnvProviderState', () => {
 	afterEach(() => {
-		delete process.env.N8N_BLOCK_ENV_ACCESS_IN_NODE;
+		delete process.env.MNI_BLOCK_ENV_ACCESS_IN_NODE;
 	});
 
 	it('should return the state with process available and env access allowed', () => {
-		process.env.N8N_BLOCK_ENV_ACCESS_IN_NODE = 'false';
+		process.env.MNI_BLOCK_ENV_ACCESS_IN_NODE = 'false';
 
 		expect(createEnvProviderState()).toEqual({
 			isProcessAvailable: true,
@@ -16,8 +16,8 @@ describe('createEnvProviderState', () => {
 		});
 	});
 
-	it('should block env access when N8N_BLOCK_ENV_ACCESS_IN_NODE is set to "true"', () => {
-		process.env.N8N_BLOCK_ENV_ACCESS_IN_NODE = 'true';
+	it('should block env access when MNI_BLOCK_ENV_ACCESS_IN_NODE is set to "true"', () => {
+		process.env.MNI_BLOCK_ENV_ACCESS_IN_NODE = 'true';
 
 		expect(createEnvProviderState()).toEqual({
 			isProcessAvailable: true,
@@ -26,7 +26,7 @@ describe('createEnvProviderState', () => {
 		});
 	});
 
-	it('should block env access when N8N_BLOCK_ENV_ACCESS_IN_NODE is not set', () => {
+	it('should block env access when MNI_BLOCK_ENV_ACCESS_IN_NODE is not set', () => {
 		expect(createEnvProviderState()).toEqual({
 			isProcessAvailable: true,
 			isEnvAccessBlocked: true,
@@ -53,7 +53,7 @@ describe('createEnvProviderState', () => {
 
 describe('createEnvProvider', () => {
 	afterEach(() => {
-		delete process.env.N8N_BLOCK_ENV_ACCESS_IN_NODE;
+		delete process.env.MNI_BLOCK_ENV_ACCESS_IN_NODE;
 	});
 
 	it('should return true when checking for a property using "has"', () => {
@@ -62,7 +62,7 @@ describe('createEnvProvider', () => {
 	});
 
 	it('should return the value from process.env if access is allowed', () => {
-		process.env.N8N_BLOCK_ENV_ACCESS_IN_NODE = 'false';
+		process.env.MNI_BLOCK_ENV_ACCESS_IN_NODE = 'false';
 
 		process.env.TEST_ENV_VAR = 'test_value';
 		const proxy = createEnvProvider(0, 0, createEnvProviderState());
@@ -94,13 +94,13 @@ describe('createEnvProvider', () => {
 		vi.useFakeTimers({ now: new Date() });
 
 		try {
-			process.env.N8N_BLOCK_ENV_ACCESS_IN_NODE = 'true';
+			process.env.MNI_BLOCK_ENV_ACCESS_IN_NODE = 'true';
 			const proxy = createEnvProvider(1, 1, createEnvProviderState());
 
 			expect(() => proxy.someEnvVar).toThrowError(
 				new ExpressionError('access to env vars denied', {
 					causeDetailed:
-						'If you need access please contact the administrator to remove the environment variable ‘N8N_BLOCK_ENV_ACCESS_IN_NODE‘',
+						'If you need access please contact the administrator to remove the environment variable ‘MNI_BLOCK_ENV_ACCESS_IN_NODE‘',
 					runIndex: 1,
 					itemIndex: 1,
 				}),

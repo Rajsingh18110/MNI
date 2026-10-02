@@ -8,8 +8,8 @@ import type {
 	INodeTypeDescription,
 	IWebhookResponseData,
 	JsonObject,
-} from 'n8n-workflow';
-import { NodeApiError, NodeConnectionTypes } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeApiError, NodeConnectionTypes } from 'MNI-workflow';
 
 import { payPalApiRequest, upperFist } from './GenericFunctions';
 

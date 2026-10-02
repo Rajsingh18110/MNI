@@ -1,5 +1,5 @@
-import { createTeamProject, testDb, testModules } from '@n8n/backend-test-utils';
-import { Container } from '@n8n/di';
+import { createTeamProject, testDb, testModules } from '@MNI/backend-test-utils';
+import { Container } from '@MNI/di';
 import { v4 as uuid } from 'uuid';
 
 import type { Agent } from '@/modules/agents/entities/agent.entity';

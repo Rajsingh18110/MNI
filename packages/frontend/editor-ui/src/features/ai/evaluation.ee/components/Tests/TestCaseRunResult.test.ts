@@ -6,7 +6,7 @@ import { createComponentRenderer } from '@/__tests__/render';
 import TestCaseRunResult from './TestCaseRunResult.vue';
 import { useEvaluationStore } from '../../evaluation.store';
 
-vi.mock('@n8n/i18n', async (importOriginal) => ({
+vi.mock('@MNI/i18n', async (importOriginal) => ({
 	...(await importOriginal()),
 	useI18n: () => ({
 		baseText: (key: string, opts?: { interpolate?: Record<string, string> }) => {

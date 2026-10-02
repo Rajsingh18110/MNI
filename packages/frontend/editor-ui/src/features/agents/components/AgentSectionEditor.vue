@@ -4,10 +4,10 @@ import { useDebounceFn } from '@vueuse/core';
 import { defaultKeymap, history } from '@codemirror/commands';
 import { json } from '@codemirror/lang-json';
 import { EditorView, lineNumbers, keymap } from '@codemirror/view';
-import { useI18n } from '@n8n/i18n';
-import { N8nIconButton, N8nTooltip } from '@n8n/design-system';
+import { useI18n } from '@MNI/i18n';
+import { N8nIconButton, N8nTooltip } from '@MNI/design-system';
 
-import { getDebounceTime } from '@n8n/composables/useDebounce';
+import { getDebounceTime } from '@MNI/composables/useDebounce';
 import { DEBOUNCE_TIME } from '@/app/constants';
 import { codeEditorTheme } from '@/features/shared/editors/components/CodeNodeEditor/theme';
 import { useCodeMirrorEditor } from '../composables/useCodeMirrorEditor';

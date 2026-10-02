@@ -1,6 +1,6 @@
 import { mock } from 'vitest-mock-extended';
-import type { CredentialProvider } from '@n8n/agents';
-import { AGENT_BUILDER_HIDDEN_AVAILABLE_TOOL_NODE_TYPES } from '@n8n/api-types';
+import type { CredentialProvider } from '@MNI/agents';
+import { AGENT_BUILDER_HIDDEN_AVAILABLE_TOOL_NODE_TYPES } from '@MNI/api-types';
 
 import type { NodeCatalogService } from '@/node-catalog';
 
@@ -143,24 +143,24 @@ describe('AgentsToolsService', () => {
 
 	describe('isExecutableNodeType', () => {
 		it('rejects trigger nodes only', () => {
-			expect(isExecutableNodeType('n8n-nodes-base.scheduleTrigger')).toBe(false);
-			expect(isExecutableNodeType('n8n-nodes-base.httpRequest')).toBe(true);
-			expect(isExecutableNodeType('n8n-nodes-base.httpRequestTool')).toBe(true);
+			expect(isExecutableNodeType('MNI-nodes-base.scheduleTrigger')).toBe(false);
+			expect(isExecutableNodeType('MNI-nodes-base.httpRequest')).toBe(true);
+			expect(isExecutableNodeType('MNI-nodes-base.httpRequestTool')).toBe(true);
 		});
 	});
 
 	describe('isAgentToolNodeType', () => {
 		it('allows tool node IDs and rejects base, trigger, or HITL tool node IDs', () => {
-			expect(isAgentToolNodeType('n8n-nodes-base.scheduleTrigger')).toBe(false);
-			expect(isAgentToolNodeType('n8n-nodes-base.httpRequest')).toBe(false);
-			expect(isAgentToolNodeType('n8n-nodes-base.httpRequestTool')).toBe(true);
-			expect(isAgentToolNodeType('n8n-nodes-base.slackHitlTool')).toBe(false);
+			expect(isAgentToolNodeType('MNI-nodes-base.scheduleTrigger')).toBe(false);
+			expect(isAgentToolNodeType('MNI-nodes-base.httpRequest')).toBe(false);
+			expect(isAgentToolNodeType('MNI-nodes-base.httpRequestTool')).toBe(true);
+			expect(isAgentToolNodeType('MNI-nodes-base.slackHitlTool')).toBe(false);
 		});
 
 		it('rejects non-provider langchain nodes that are not tool types', () => {
 			// Non-provider langchain nodes stay excluded.
-			expect(isAgentToolNodeType('@n8n/n8n-nodes-langchain.lmChatOpenAi')).toBe(false);
-			expect(isAgentToolNodeType('@n8n/n8n-nodes-langchain.agent')).toBe(false);
+			expect(isAgentToolNodeType('@MNI/MNI-nodes-langchain.lmChatOpenAi')).toBe(false);
+			expect(isAgentToolNodeType('@MNI/MNI-nodes-langchain.agent')).toBe(false);
 		});
 
 		it('rejects hidden agent-builder tool node IDs', () => {
@@ -170,8 +170,8 @@ describe('AgentsToolsService', () => {
 		});
 
 		it('does not allow MCP tool nodes', () => {
-			expect(isAgentToolNodeType('@n8n/n8n-nodes-langchain.mcpClientTool')).toBe(false);
-			expect(isAgentToolNodeType('@n8n/mcp-registry.notion')).toBe(false);
+			expect(isAgentToolNodeType('@MNI/MNI-nodes-langchain.mcpClientTool')).toBe(false);
+			expect(isAgentToolNodeType('@MNI/mcp-registry.notion')).toBe(false);
 		});
 	});
 
@@ -185,21 +185,21 @@ describe('AgentsToolsService', () => {
 		it('forwards string node IDs unchanged', async () => {
 			const { service, nodeCatalogService } = makeService();
 
-			await getTypesTool(service).handler!({ nodeIds: ['n8n-nodes-base.gmail'] }, ctx);
+			await getTypesTool(service).handler!({ nodeIds: ['MNI-nodes-base.gmail'] }, ctx);
 
-			expect(nodeCatalogService.getNodeTypes).toHaveBeenCalledWith(['n8n-nodes-base.gmail']);
+			expect(nodeCatalogService.getNodeTypes).toHaveBeenCalledWith(['MNI-nodes-base.gmail']);
 		});
 
 		it('stringifies object-style version before passing to the catalog', async () => {
 			const { service, nodeCatalogService } = makeService();
 
 			await getTypesTool(service).handler!(
-				{ nodeIds: [{ nodeId: 'n8n-nodes-base.gmail', version: 2.1, resource: 'message' }] },
+				{ nodeIds: [{ nodeId: 'MNI-nodes-base.gmail', version: 2.1, resource: 'message' }] },
 				ctx,
 			);
 
 			expect(nodeCatalogService.getNodeTypes).toHaveBeenCalledWith([
-				{ nodeId: 'n8n-nodes-base.gmail', version: '2.1', resource: 'message' },
+				{ nodeId: 'MNI-nodes-base.gmail', version: '2.1', resource: 'message' },
 			]);
 		});
 
@@ -212,7 +212,7 @@ describe('AgentsToolsService', () => {
 					{
 						nodeIds: [
 							{
-								nodeId: 'n8n-nodes-base.slackTool',
+								nodeId: 'MNI-nodes-base.slackTool',
 								version: 2.2,
 								resource: 'message',
 								operation,

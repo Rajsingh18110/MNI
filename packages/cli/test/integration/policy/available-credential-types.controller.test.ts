@@ -4,9 +4,9 @@ import {
 	linkUserToProject,
 	mockInstance,
 	testDb,
-} from '@n8n/backend-test-utils';
-import { LICENSE_FEATURES } from '@n8n/constants';
-import type { Project, User } from '@n8n/db';
+} from '@MNI/backend-test-utils';
+import { LICENSE_FEATURES } from '@MNI/constants';
+import type { Project, User } from '@MNI/db';
 
 import { CredentialTypes } from '@/credential-types';
 import { createMember, createOwner } from '@test-integration/db/users';

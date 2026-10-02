@@ -1,4 +1,4 @@
-import { ClientOAuth2 } from '@n8n/client-oauth2';
+import { ClientOAuth2 } from '@MNI/client-oauth2';
 import nock from 'nock';
 
 import { MicrosoftExcelOAuth2Api } from '../MicrosoftExcelOAuth2Api.credentials';

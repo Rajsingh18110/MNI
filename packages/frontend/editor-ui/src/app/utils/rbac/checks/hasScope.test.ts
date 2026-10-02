@@ -1,8 +1,8 @@
-import { useRBACStore } from '@n8n/stores/rbac.store';
+import { useRBACStore } from '@MNI/stores/rbac.store';
 import { hasScope } from '@/app/utils/rbac/checks/hasScope';
-import type { ScopeOptions } from '@n8n/permissions';
+import type { ScopeOptions } from '@MNI/permissions';
 
-vi.mock('@n8n/stores/rbac.store', () => ({
+vi.mock('@MNI/stores/rbac.store', () => ({
 	useRBACStore: vi.fn(),
 }));
 

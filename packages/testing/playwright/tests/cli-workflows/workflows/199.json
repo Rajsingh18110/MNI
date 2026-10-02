@@ -8,7 +8,7 @@
 		{
 			"parameters": {},
 			"name": "Start",
-			"type": "n8n-nodes-base.manualTrigger",
+			"type": "MNI-nodes-base.manualTrigger",
 			"typeVersion": 1,
 			"position": [250, 300],
 			"id": "77ccc40b-307c-479e-882d-6f2700b67b8d"
@@ -18,7 +18,7 @@
 				"email": "jan@n8n.io"
 			},
 			"name": "Mailcheck",
-			"type": "n8n-nodes-base.mailcheck",
+			"type": "MNI-nodes-base.mailcheck",
 			"typeVersion": 1,
 			"position": [470, 300],
 			"credentials": {

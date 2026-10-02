@@ -1,5 +1,5 @@
-import { Container } from '@n8n/di';
-import type { CredentialInformation } from 'n8n-workflow';
+import { Container } from '@MNI/di';
+import type { CredentialInformation } from 'MNI-workflow';
 import { AssertionError } from 'node:assert';
 import { mock } from 'vitest-mock-extended';
 

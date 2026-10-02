@@ -1,8 +1,8 @@
-import { testDb, testModules } from '@n8n/backend-test-utils';
-import { DbConnectionOptions } from '@n8n/db';
-import { Container } from '@n8n/di';
-import type { QueryRunner } from '@n8n/typeorm';
-import { DataSource, LessThan, MoreThanOrEqual } from '@n8n/typeorm';
+import { testDb, testModules } from '@MNI/backend-test-utils';
+import { DbConnectionOptions } from '@MNI/db';
+import { Container } from '@MNI/di';
+import type { QueryRunner } from '@MNI/typeorm';
+import { DataSource, LessThan, MoreThanOrEqual } from '@MNI/typeorm';
 
 import { TokenExchangeJtiRepository } from '@/modules/token-exchange/database/repositories/token-exchange-jti.repository';
 

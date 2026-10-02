@@ -1,7 +1,7 @@
-import { Logger } from '@n8n/backend-common';
-import { Time } from '@n8n/constants';
-import { Service } from '@n8n/di';
-import type { ICredentialContext } from 'n8n-workflow';
+import { Logger } from '@MNI/backend-common';
+import { Time } from '@MNI/constants';
+import { Service } from '@MNI/di';
+import type { ICredentialContext } from 'MNI-workflow';
 import { z } from 'zod';
 
 import { IdentifierValidationError, ITokenIdentifier } from './identifier-interface';

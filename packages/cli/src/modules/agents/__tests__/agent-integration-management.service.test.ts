@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/unbound-method -- mock-based tests intentionally reference unbound methods */
-import type { AgentIntegrationConfig } from '@n8n/api-types';
-import type { Logger } from '@n8n/backend-common';
-import { createDeferredPromise } from '@n8n/utils/promise/deferred-promise';
+import type { AgentIntegrationConfig } from '@MNI/api-types';
+import type { Logger } from '@MNI/backend-common';
+import { createDeferredPromise } from '@MNI/utils/promise/deferred-promise';
 import { mock } from 'vitest-mock-extended';
 
 import type { CredentialsService } from '@/credentials/credentials.service';

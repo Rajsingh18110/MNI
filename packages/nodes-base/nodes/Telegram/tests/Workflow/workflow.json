@@ -3,7 +3,7 @@
 	"nodes": [
 		{
 			"parameters": {},
-			"type": "n8n-nodes-base.manualTrigger",
+			"type": "MNI-nodes-base.manualTrigger",
 			"typeVersion": 1,
 			"position": [-60, 2000],
 			"id": "c4d16e3b-b442-4497-87ca-b946f7106da8",
@@ -11,7 +11,7 @@
 		},
 		{
 			"parameters": {},
-			"type": "n8n-nodes-base.noOp",
+			"type": "MNI-nodes-base.noOp",
 			"typeVersion": 1,
 			"position": [480, -760],
 			"id": "c9ff68b5-7b2c-4b7a-b7ff-03a8f5ffac0c",
@@ -22,7 +22,7 @@
 				"resource": "chat",
 				"chatId": "123456789"
 			},
-			"type": "n8n-nodes-base.telegram",
+			"type": "MNI-nodes-base.telegram",
 			"typeVersion": 1.2,
 			"position": [260, -760],
 			"id": "d6151630-28f8-4b08-9e84-8e43ace5465e",
@@ -30,7 +30,7 @@
 			"credentials": {
 				"telegramApi": {
 					"id": "2nAyfFQ9FBSmeiBn",
-					"name": "n8n_com_test_bot - 123456789"
+					"name": "MNI_com_test_bot - 123456789"
 				}
 			}
 		},
@@ -39,7 +39,7 @@
 				"resource": "chat",
 				"chatId": "FAIL"
 			},
-			"type": "n8n-nodes-base.telegram",
+			"type": "MNI-nodes-base.telegram",
 			"typeVersion": 1.2,
 			"position": [260, -580],
 			"id": "14a0a29a-e0cf-43c1-a8df-da60e90e7f54",
@@ -47,14 +47,14 @@
 			"credentials": {
 				"telegramApi": {
 					"id": "2nAyfFQ9FBSmeiBn",
-					"name": "n8n_com_test_bot - 123456789"
+					"name": "MNI_com_test_bot - 123456789"
 				}
 			},
 			"onError": "continueErrorOutput"
 		},
 		{
 			"parameters": {},
-			"type": "n8n-nodes-base.noOp",
+			"type": "MNI-nodes-base.noOp",
 			"typeVersion": 1,
 			"position": [480, -560],
 			"id": "855ec4d7-aca7-4070-adc1-b35ff4271072",
@@ -66,7 +66,7 @@
 				"text": "a",
 				"additionalFields": {}
 			},
-			"type": "n8n-nodes-base.telegram",
+			"type": "MNI-nodes-base.telegram",
 			"typeVersion": 1.2,
 			"position": [260, -380],
 			"id": "d1925d73-74b2-4208-ba61-40cec6ad3b1b",
@@ -74,13 +74,13 @@
 			"credentials": {
 				"telegramApi": {
 					"id": "2nAyfFQ9FBSmeiBn",
-					"name": "n8n_com_test_bot - 123456789"
+					"name": "MNI_com_test_bot - 123456789"
 				}
 			}
 		},
 		{
 			"parameters": {},
-			"type": "n8n-nodes-base.noOp",
+			"type": "MNI-nodes-base.noOp",
 			"typeVersion": 1,
 			"position": [540, -380],
 			"id": "e6dccee0-d653-46fd-989f-b808f46d8bc2",
@@ -88,7 +88,7 @@
 		},
 		{
 			"parameters": {},
-			"type": "n8n-nodes-base.noOp",
+			"type": "MNI-nodes-base.noOp",
 			"typeVersion": 1,
 			"position": [460, -200],
 			"id": "4020c961-b8a3-4887-8cf4-574a255eafca",
@@ -101,7 +101,7 @@
 				"media": {
 					"media": [
 						{
-							"media": "https://raw.githubusercontent.com/n8n-io/n8n/refs/heads/master/assets/mni-logo.png",
+							"media": "https://raw.githubusercontent.com/MNI-io/MNI/refs/heads/master/assets/mni-logo.png",
 							"additionalFields": {}
 						}
 					]
@@ -110,7 +110,7 @@
 					"disable_notification": true
 				}
 			},
-			"type": "n8n-nodes-base.telegram",
+			"type": "MNI-nodes-base.telegram",
 			"typeVersion": 1.2,
 			"position": [240, -200],
 			"id": "9f9615f1-1c64-4f45-aac1-666194ed4f1f",
@@ -118,7 +118,7 @@
 			"credentials": {
 				"telegramApi": {
 					"id": "2nAyfFQ9FBSmeiBn",
-					"name": "n8n_com_test_bot - 123456789"
+					"name": "MNI_com_test_bot - 123456789"
 				}
 			}
 		},
@@ -130,7 +130,7 @@
 					"reply_to_message_id": 40
 				}
 			},
-			"type": "n8n-nodes-base.telegram",
+			"type": "MNI-nodes-base.telegram",
 			"typeVersion": 1.2,
 			"position": [240, 0],
 			"id": "5c7de253-68b0-4046-9278-e432c4481679",
@@ -138,13 +138,13 @@
 			"credentials": {
 				"telegramApi": {
 					"id": "2nAyfFQ9FBSmeiBn",
-					"name": "n8n_com_test_bot - 123456789"
+					"name": "MNI_com_test_bot - 123456789"
 				}
 			}
 		},
 		{
 			"parameters": {},
-			"type": "n8n-nodes-base.noOp",
+			"type": "MNI-nodes-base.noOp",
 			"typeVersion": 1,
 			"position": [460, 0],
 			"id": "f237f864-1fa5-450d-b468-e688b3b3f3da",
@@ -156,7 +156,7 @@
 				"chatId": "123456789",
 				"messageId": "41"
 			},
-			"type": "n8n-nodes-base.telegram",
+			"type": "MNI-nodes-base.telegram",
 			"typeVersion": 1.2,
 			"position": [240, 180],
 			"id": "479b1be2-7f2d-4dfe-b687-e3da070a92ff",
@@ -164,13 +164,13 @@
 			"credentials": {
 				"telegramApi": {
 					"id": "2nAyfFQ9FBSmeiBn",
-					"name": "n8n_com_test_bot - 123456789"
+					"name": "MNI_com_test_bot - 123456789"
 				}
 			}
 		},
 		{
 			"parameters": {},
-			"type": "n8n-nodes-base.noOp",
+			"type": "MNI-nodes-base.noOp",
 			"typeVersion": 1,
 			"position": [480, 180],
 			"id": "8b26df1c-4afc-4fa2-bd4b-618dde510ce9",
@@ -185,7 +185,7 @@
 					"disable_notification": true
 				}
 			},
-			"type": "n8n-nodes-base.telegram",
+			"type": "MNI-nodes-base.telegram",
 			"typeVersion": 1.2,
 			"position": [240, 380],
 			"id": "a90a5b1e-aca1-4871-81f4-afe9f1b54ac3",
@@ -193,13 +193,13 @@
 			"credentials": {
 				"telegramApi": {
 					"id": "2nAyfFQ9FBSmeiBn",
-					"name": "n8n_com_test_bot - 123456789"
+					"name": "MNI_com_test_bot - 123456789"
 				}
 			}
 		},
 		{
 			"parameters": {},
-			"type": "n8n-nodes-base.noOp",
+			"type": "MNI-nodes-base.noOp",
 			"typeVersion": 1,
 			"position": [480, 380],
 			"id": "a8ab2e08-1aa6-46c3-bc9e-f5cc66d27c0d",
@@ -217,7 +217,7 @@
 				},
 				"additionalFields": {}
 			},
-			"type": "n8n-nodes-base.telegram",
+			"type": "MNI-nodes-base.telegram",
 			"typeVersion": 1.2,
 			"position": [240, 580],
 			"id": "6aad1200-b0f2-4783-b1e0-4f59d1251258",
@@ -225,13 +225,13 @@
 			"credentials": {
 				"telegramApi": {
 					"id": "2nAyfFQ9FBSmeiBn",
-					"name": "n8n_com_test_bot - 123456789"
+					"name": "MNI_com_test_bot - 123456789"
 				}
 			}
 		},
 		{
 			"parameters": {},
-			"type": "n8n-nodes-base.noOp",
+			"type": "MNI-nodes-base.noOp",
 			"typeVersion": 1,
 			"position": [480, 580],
 			"id": "e69ee02f-9b67-46c0-a628-c1affe0abdd7",
@@ -239,7 +239,7 @@
 		},
 		{
 			"parameters": {},
-			"type": "n8n-nodes-base.noOp",
+			"type": "MNI-nodes-base.noOp",
 			"typeVersion": 1,
 			"position": [480, 760],
 			"id": "ee592083-2274-4d38-be07-581828b2522d",
@@ -280,7 +280,7 @@
 					"parse_mode": "HTML"
 				}
 			},
-			"type": "n8n-nodes-base.telegram",
+			"type": "MNI-nodes-base.telegram",
 			"typeVersion": 1.2,
 			"position": [240, 760],
 			"id": "520c74fa-e332-485e-b02e-fa0f5c2e7078",
@@ -288,7 +288,7 @@
 			"credentials": {
 				"telegramApi": {
 					"id": "2nAyfFQ9FBSmeiBn",
-					"name": "n8n_com_test_bot - 123456789"
+					"name": "MNI_com_test_bot - 123456789"
 				}
 			}
 		},
@@ -299,7 +299,7 @@
 				"chatId": "-1000000000000",
 				"description": "Chat description"
 			},
-			"type": "n8n-nodes-base.telegram",
+			"type": "MNI-nodes-base.telegram",
 			"typeVersion": 1.2,
 			"position": [240, 960],
 			"id": "933dd9a4-ce49-4f35-85ec-6fd7820c2686",
@@ -307,13 +307,13 @@
 			"credentials": {
 				"telegramApi": {
 					"id": "2nAyfFQ9FBSmeiBn",
-					"name": "n8n_com_test_bot - 123456789"
+					"name": "MNI_com_test_bot - 123456789"
 				}
 			}
 		},
 		{
 			"parameters": {},
-			"type": "n8n-nodes-base.noOp",
+			"type": "MNI-nodes-base.noOp",
 			"typeVersion": 1,
 			"position": [480, 960],
 			"id": "791ca8fe-bd4f-4285-a89d-27f5567dcd11",
@@ -321,7 +321,7 @@
 		},
 		{
 			"parameters": {},
-			"type": "n8n-nodes-base.noOp",
+			"type": "MNI-nodes-base.noOp",
 			"typeVersion": 1,
 			"position": [500, 1140],
 			"id": "044d6f3e-b9cf-4a4c-b6d4-5d6afe03132a",
@@ -333,7 +333,7 @@
 				"operation": "administrators",
 				"chatId": "-1000000000000"
 			},
-			"type": "n8n-nodes-base.telegram",
+			"type": "MNI-nodes-base.telegram",
 			"typeVersion": 1.2,
 			"position": [240, 1320],
 			"id": "5b538ca7-dff1-4f6a-b0d9-aa5ce8ca8c7a",
@@ -341,7 +341,7 @@
 			"credentials": {
 				"telegramApi": {
 					"id": "2nAyfFQ9FBSmeiBn",
-					"name": "n8n_com_test_bot - 123456789 - -1000000000000"
+					"name": "MNI_com_test_bot - 123456789 - -1000000000000"
 				}
 			}
 		},
@@ -352,7 +352,7 @@
 				"chatId": "-1000000000000",
 				"title": "Test Chat Title"
 			},
-			"type": "n8n-nodes-base.telegram",
+			"type": "MNI-nodes-base.telegram",
 			"typeVersion": 1.2,
 			"position": [240, 1140],
 			"id": "8024fed5-f5c7-4cd0-8c16-0a29565b6d4b",
@@ -360,13 +360,13 @@
 			"credentials": {
 				"telegramApi": {
 					"id": "2nAyfFQ9FBSmeiBn",
-					"name": "n8n_com_test_bot - 123456789 - -1000000000000"
+					"name": "MNI_com_test_bot - 123456789 - -1000000000000"
 				}
 			}
 		},
 		{
 			"parameters": {},
-			"type": "n8n-nodes-base.noOp",
+			"type": "MNI-nodes-base.noOp",
 			"typeVersion": 1,
 			"position": [460, 1320],
 			"id": "3ad12afe-633e-4866-a243-eccde83d3e30",
@@ -374,7 +374,7 @@
 		},
 		{
 			"parameters": {},
-			"type": "n8n-nodes-base.noOp",
+			"type": "MNI-nodes-base.noOp",
 			"typeVersion": 1,
 			"position": [460, 1500],
 			"id": "79797b7d-85fd-4a46-b87e-ccd584b18177",
@@ -382,7 +382,7 @@
 		},
 		{
 			"parameters": {},
-			"type": "n8n-nodes-base.noOp",
+			"type": "MNI-nodes-base.noOp",
 			"typeVersion": 1,
 			"position": [460, 1680],
 			"id": "341f6b75-0773-45fc-8e5b-f5cb74ff3e7c",
@@ -394,7 +394,7 @@
 				"chatId": "123456789",
 				"messageId": "40"
 			},
-			"type": "n8n-nodes-base.telegram",
+			"type": "MNI-nodes-base.telegram",
 			"typeVersion": 1.2,
 			"position": [240, 1500],
 			"id": "975c435f-7a1d-46b8-8646-6df9fb457803",
@@ -402,7 +402,7 @@
 			"credentials": {
 				"telegramApi": {
 					"id": "2nAyfFQ9FBSmeiBn",
-					"name": "n8n_com_test_bot - 123456789 - -1000000000000"
+					"name": "MNI_com_test_bot - 123456789 - -1000000000000"
 				}
 			}
 		},
@@ -416,7 +416,7 @@
 					"disable_notification": true
 				}
 			},
-			"type": "n8n-nodes-base.telegram",
+			"type": "MNI-nodes-base.telegram",
 			"typeVersion": 1.2,
 			"position": [240, 1680],
 			"id": "1efff378-5d28-41c9-8011-e9337c1d0fa6",
@@ -424,7 +424,7 @@
 			"credentials": {
 				"telegramApi": {
 					"id": "2nAyfFQ9FBSmeiBn",
-					"name": "n8n_com_test_bot - 123456789 - -1000000000000"
+					"name": "MNI_com_test_bot - 123456789 - -1000000000000"
 				}
 			}
 		},
@@ -435,7 +435,7 @@
 				"file": "https://download.samplelib.com/mp3/sample-3s.mp3",
 				"additionalFields": {}
 			},
-			"type": "n8n-nodes-base.telegram",
+			"type": "MNI-nodes-base.telegram",
 			"typeVersion": 1.2,
 			"position": [240, 1860],
 			"id": "3ee62b00-8faa-4ed5-aa9a-91b381f6880f",
@@ -443,13 +443,13 @@
 			"credentials": {
 				"telegramApi": {
 					"id": "2nAyfFQ9FBSmeiBn",
-					"name": "n8n_com_test_bot - 123456789 - -1000000000000"
+					"name": "MNI_com_test_bot - 123456789 - -1000000000000"
 				}
 			}
 		},
 		{
 			"parameters": {},
-			"type": "n8n-nodes-base.noOp",
+			"type": "MNI-nodes-base.noOp",
 			"typeVersion": 1,
 			"position": [460, 1860],
 			"id": "ff9a84a7-5def-47c8-b29c-b0a3450a7661",
@@ -460,7 +460,7 @@
 				"operation": "sendChatAction",
 				"chatId": "123456789"
 			},
-			"type": "n8n-nodes-base.telegram",
+			"type": "MNI-nodes-base.telegram",
 			"typeVersion": 1.2,
 			"position": [220, 2020],
 			"id": "f8dd78ee-4090-47ab-9fb1-2fb5530c78db",
@@ -468,13 +468,13 @@
 			"credentials": {
 				"telegramApi": {
 					"id": "2nAyfFQ9FBSmeiBn",
-					"name": "n8n_com_test_bot - 123456789 - -1000000000000"
+					"name": "MNI_com_test_bot - 123456789 - -1000000000000"
 				}
 			}
 		},
 		{
 			"parameters": {},
-			"type": "n8n-nodes-base.noOp",
+			"type": "MNI-nodes-base.noOp",
 			"typeVersion": 1,
 			"position": [440, 2020],
 			"id": "47117767-0f12-4ecf-9a64-f0bda661c1aa",
@@ -486,7 +486,7 @@
 				"operation": "leave",
 				"chatId": "-1000000000000"
 			},
-			"type": "n8n-nodes-base.telegram",
+			"type": "MNI-nodes-base.telegram",
 			"typeVersion": 1.2,
 			"position": [220, 2200],
 			"id": "abc0591b-cd27-4603-8635-9cc90be1f87a",
@@ -494,13 +494,13 @@
 			"credentials": {
 				"telegramApi": {
 					"id": "2nAyfFQ9FBSmeiBn",
-					"name": "n8n_com_test_bot - 123456789 - -1000000000000"
+					"name": "MNI_com_test_bot - 123456789 - -1000000000000"
 				}
 			}
 		},
 		{
 			"parameters": {},
-			"type": "n8n-nodes-base.noOp",
+			"type": "MNI-nodes-base.noOp",
 			"typeVersion": 1,
 			"position": [440, 2200],
 			"id": "4222cedf-6267-46a2-a9da-542ff1f709c4",
@@ -513,7 +513,7 @@
 				"chatId": "-1000000000000",
 				"userId": "123456789"
 			},
-			"type": "n8n-nodes-base.telegram",
+			"type": "MNI-nodes-base.telegram",
 			"typeVersion": 1.2,
 			"position": [220, 2380],
 			"id": "2057b4b7-1bde-4dcd-9fb3-da3a1dae8afd",
@@ -521,13 +521,13 @@
 			"credentials": {
 				"telegramApi": {
 					"id": "2nAyfFQ9FBSmeiBn",
-					"name": "n8n_com_test_bot - 123456789 - -1000000000000"
+					"name": "MNI_com_test_bot - 123456789 - -1000000000000"
 				}
 			}
 		},
 		{
 			"parameters": {},
-			"type": "n8n-nodes-base.noOp",
+			"type": "MNI-nodes-base.noOp",
 			"typeVersion": 1,
 			"position": [440, 2380],
 			"id": "ff742218-5832-4f5b-8e2b-bf5cd4231dc1",
@@ -570,8 +570,8 @@
 						"from": {
 							"id": 9876543210,
 							"is_bot": true,
-							"first_name": "@n8n",
-							"username": "n8n_test_bot"
+							"first_name": "@MNI",
+							"username": "MNI_test_bot"
 						},
 						"chat": {
 							"id": 123456789,
@@ -592,7 +592,7 @@
 								"offset": 44,
 								"length": 3,
 								"type": "text_link",
-								"url": "https://n8n.io/?utm_source=n8n-internal&utm_medium=powered_by&utm_campaign=n8n-nodes-base.telegram_8c8c5237b8e37b006a7adce87f4369350c58e41f3ca9de16196d3197f69eabcd"
+								"url": "https://n8n.io/?utm_source=MNI-internal&utm_medium=powered_by&utm_campaign=MNI-nodes-base.telegram_8c8c5237b8e37b006a7adce87f4369350c58e41f3ca9de16196d3197f69eabcd"
 							}
 						],
 						"link_preview_options": {
@@ -612,8 +612,8 @@
 							"from": {
 								"id": 9876543210,
 								"is_bot": true,
-								"first_name": "@n8n",
-								"username": "n8n_test_bot"
+								"first_name": "@MNI",
+								"username": "MNI_test_bot"
 							},
 							"chat": {
 								"id": 123456789,
@@ -660,8 +660,8 @@
 						"from": {
 							"id": 9876543210,
 							"is_bot": true,
-							"first_name": "@n8n",
-							"username": "n8n_test_bot"
+							"first_name": "@MNI",
+							"username": "MNI_test_bot"
 						},
 						"chat": {
 							"id": 123456789,
@@ -676,8 +676,8 @@
 							"from": {
 								"id": 9876543210,
 								"is_bot": true,
-								"first_name": "@n8n",
-								"username": "n8n_test_bot"
+								"first_name": "@MNI",
+								"username": "MNI_test_bot"
 							},
 							"chat": {
 								"id": 123456789,
@@ -698,7 +698,7 @@
 									"offset": 44,
 									"length": 3,
 									"type": "text_link",
-									"url": "https://n8n.io/?utm_source=n8n-internal&utm_medium=powered_by&utm_campaign=n8n-nodes-base.telegram_8c8c5237b8e37b006a7adce87f4369350c58e41f3ca9de16196d3197f69eabcd"
+									"url": "https://n8n.io/?utm_source=MNI-internal&utm_medium=powered_by&utm_campaign=MNI-nodes-base.telegram_8c8c5237b8e37b006a7adce87f4369350c58e41f3ca9de16196d3197f69eabcd"
 								}
 							],
 							"link_preview_options": {
@@ -738,8 +738,8 @@
 						"from": {
 							"id": 9876543210,
 							"is_bot": true,
-							"first_name": "@n8n",
-							"username": "n8n_test_bot"
+							"first_name": "@MNI",
+							"username": "MNI_test_bot"
 						},
 						"chat": {
 							"id": 123456789,
@@ -783,8 +783,8 @@
 						"from": {
 							"id": 9876543210,
 							"is_bot": true,
-							"first_name": "@n8n",
-							"username": "n8n_test_bot"
+							"first_name": "@MNI",
+							"username": "MNI_test_bot"
 						},
 						"chat": {
 							"id": 123456789,
@@ -836,8 +836,8 @@
 					"user": {
 						"id": 9876543210,
 						"is_bot": true,
-						"first_name": "@n8n",
-						"username": "n8n_test_bot"
+						"first_name": "@MNI",
+						"username": "MNI_test_bot"
 					},
 					"status": "administrator",
 					"can_be_edited": false,
@@ -889,8 +889,8 @@
 						"from": {
 							"id": 9876543210,
 							"is_bot": true,
-							"first_name": "@n8n",
-							"username": "n8n_test_bot"
+							"first_name": "@MNI",
+							"username": "MNI_test_bot"
 						},
 						"chat": {
 							"id": 123456789,
@@ -959,8 +959,8 @@
 						"from": {
 							"id": 9876543210,
 							"is_bot": true,
-							"first_name": "@n8n",
-							"username": "n8n_test_bot"
+							"first_name": "@MNI",
+							"username": "MNI_test_bot"
 						},
 						"chat": {
 							"id": 123456789,

@@ -4,9 +4,9 @@ import type {
 	InstanceAiMcpConnectionResponse,
 	InstanceAiMcpConnectionToolsResponse,
 	McpRegistryServerResponse,
-} from '@n8n/api-types';
+} from '@MNI/api-types';
 
-vi.mock('@n8n/stores/useRootStore', () => ({
+vi.mock('@MNI/stores/useRootStore', () => ({
 	useRootStore: vi.fn().mockReturnValue({
 		restApiContext: { baseUrl: 'http://localhost:5678/rest' },
 	}),
@@ -14,7 +14,7 @@ vi.mock('@n8n/stores/useRootStore', () => ({
 
 const mockShowError = vi.fn();
 const mockShowMessage = vi.fn();
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: vi.fn().mockReturnValue({
 		showError: (...args: unknown[]) => mockShowError(...args),
 		showMessage: (...args: unknown[]) => mockShowMessage(...args),
@@ -38,7 +38,7 @@ function emitCredentialDeleted(id: string): void {
 	for (const listener of deletionListeners) listener(id);
 }
 
-vi.mock('@n8n/i18n', () => ({
+vi.mock('@MNI/i18n', () => ({
 	i18n: { baseText: (key: string) => key },
 }));
 

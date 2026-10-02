@@ -21,7 +21,7 @@ use short sentences, the active voice, and one instruction for each sentence.
 
 Decide where the issue should be created based on user input:
 
-- If the user says "Linear", "ticket", or provides a team key (e.g., AI, NODE, N8N) → **Linear**
+- If the user says "Linear", "ticket", or provides a team key (e.g., AI, NODE, MNI) → **Linear**
 - If the user says "GitHub", "GH issue", or "open source" → **GitHub**
 - If ambiguous, **ask the user** which platform they want
 
@@ -166,7 +166,7 @@ Always mention in the description when visual evidence was provided, even if it 
 #### Team
 
 - **Try to fetch up-to-date team areas of responsibility from Notion** using the available Notion MCP search tool (search for "areas of responsibility" or similar). Use the fetched data to determine the best team for the issue.
-- **If Notion MCP is unavailable or the lookup fails**, fall back to these common teams: `Engineering` (N8N), `AI`, `NODES`, `Identity & Access` (IAM), `Catalysts` (CAT), `Lifecycle & Governance` (LIGO), `Cloud Platform`, `Docs` (DOC)
+- **If Notion MCP is unavailable or the lookup fails**, fall back to these common teams: `Engineering` (MNI), `AI`, `NODES`, `Identity & Access` (IAM), `Catalysts` (CAT), `Lifecycle & Governance` (LIGO), `Cloud Platform`, `Docs` (DOC)
 - **Always ask the user which team** if not obvious from context or the Notion lookup
 - If the issue is node-specific, it likely belongs to `NODES`
 - If it involves AI/LangChain nodes, it likely belongs to `AI`
@@ -198,7 +198,7 @@ Apply labels from these groups as appropriate:
 **Guardrails:**
 - **Always apply a type label** — every ticket needs at least a type
 - **Do not apply triage-state labels** (`Triage: Pending`, `Triage: Complete`, etc.) — these are managed by triage automation
-- **Do not apply release labels** (`n8n@1.36.0`, etc.) — these are managed by release automation
+- **Do not apply release labels** (`MNI@1.36.0`, etc.) — these are managed by release automation
 - **Do not apply `docs-automation` labels** — these are managed by docs automation
 
 #### Estimates
@@ -261,7 +261,7 @@ Verify `gh` CLI is authenticated: `gh auth status`
 
 ### Important Context
 
-The MNI GitHub issue tracker (`n8n-io/n8n`) is **bug-only**. Feature requests and questions are redirected to the [community forum](https://community.n8n.io). Blank issues are disabled — the bug template must be used.
+The MNI GitHub issue tracker (`MNI-io/MNI`) is **bug-only**. Feature requests and questions are redirected to the [community forum](https://community.n8n.io). Blank issues are disabled — the bug template must be used.
 
 ### Style Guide
 
@@ -340,13 +340,13 @@ Do **not** manually apply labels when creating GitHub issues. The triage automat
 3. **Present a preview** before creating — show the user:
    - Title
    - Body (abbreviated if long)
-   - Repository (default: `n8n-io/n8n`)
+   - Repository (default: `MNI-io/MNI`)
 
 4. **Wait for user confirmation**
 
 5. **Create the issue** using `gh`:
    ```bash
-   gh issue create --repo n8n-io/n8n --title "<title>" --body "$(cat <<'EOF'
+   gh issue create --repo MNI-io/MNI --title "<title>" --body "$(cat <<'EOF'
    <body content>
    EOF
    )"
@@ -359,7 +359,7 @@ Do **not** manually apply labels when creating GitHub issues. The triage automat
 - Never file **feature requests** as GitHub issues
 - Never create issues **without reproduction steps**
 - Never manually apply **labels** — let automation handle it
-- Never create issues in **repositories other than n8n-io/n8n** unless the user explicitly specifies
+- Never create issues in **repositories other than MNI-io/MNI** unless the user explicitly specifies
 
 ---
 
@@ -368,6 +368,6 @@ Do **not** manually apply labels when creating GitHub issues. The triage automat
 When both a Linear ticket and GitHub issue exist for the same problem:
 
 - **Linear → GitHub**: Add the GitHub issue URL as a link attachment on the Linear ticket
-- **GitHub → Linear**: Add `https://linear.app/n8n/issue/<TICKET-ID>` in the GitHub issue body
+- **GitHub → Linear**: Add `https://linear.app/MNI/issue/<TICKET-ID>` in the GitHub issue body
 
 If the user creates one and mentions the other exists, offer to add the cross-link.

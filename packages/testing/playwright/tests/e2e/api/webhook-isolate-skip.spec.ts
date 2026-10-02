@@ -6,11 +6,11 @@ import type { ApiHelpers } from '../../../services/api-helper';
  * an expression isolate for the webhook phase (`LiveWebhooks`). That proof is a
  * scan of declared values — it cannot see an `evaluateExpression()` call added
  * to a node's `webhook()` or to a helper it calls. Such a call throws
- * `IsolateError: No bridge acquired` under `N8N_EXPRESSION_ENGINE=vm`, which is
+ * `IsolateError: No bridge acquired` under `MNI_EXPRESSION_ENGINE=vm`, which is
  * what these tests guard: a new evaluation on the webhook phase turns the
  * request into a 500.
  */
-const ACQUIRED_METRIC = 'n8n_expression_pool_acquired_total';
+const ACQUIRED_METRIC = 'MNI_expression_pool_acquired_total';
 
 // The acquire counter is instance-global, so the metric-delta tests must not
 // run concurrently with this file's other webhook-firing tests.

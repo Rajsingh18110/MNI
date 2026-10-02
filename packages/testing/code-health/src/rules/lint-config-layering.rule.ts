@@ -1,5 +1,5 @@
-import { BaseRule } from '@n8n/rules-engine';
-import type { Violation } from '@n8n/rules-engine';
+import { BaseRule } from '@MNI/rules-engine';
+import type { Violation } from '@MNI/rules-engine';
 import * as fs from 'node:fs';
 import * as path from 'node:path';
 import { Project, ScriptKind, SyntaxKind } from 'ts-morph';
@@ -19,15 +19,15 @@ const CONFIG_FILENAMES = ['eslint.config.mjs', 'eslint.config.js', 'eslint.confi
 const OXLINT_CONFIG_FILENAMES = ['oxlint.config.mts', 'oxlint.config.ts'];
 
 const LAYERS = ['base', 'backend', 'frontend', 'nodes'];
-const LAYER_IMPORT = /^@n8n\/eslint-config\/([a-z-]+)$/;
-const OXLINT_LAYER_IMPORT = /^@n8n\/oxlint-config\/([a-z-]+)$/;
+const LAYER_IMPORT = /^@MNI\/eslint-config\/([a-z-]+)$/;
+const OXLINT_LAYER_IMPORT = /^@MNI\/oxlint-config\/([a-z-]+)$/;
 
 /** Retired export paths, replaced by the four layers. */
 const REMOVED_SUBPATHS = new Set(['node', 'encryption-boundary']);
 
 /** What differs between an ESLint config and an oxlint one. */
 interface Flavour {
-	/** `@n8n/eslint-config` or `@n8n/oxlint-config`, as written in an import. */
+	/** `@MNI/eslint-config` or `@MNI/oxlint-config`, as written in an import. */
 	layerPackage: string;
 	layerImport: RegExp;
 	/** oxlint configs are TypeScript; ESLint ones are parsed as JavaScript. */
@@ -38,21 +38,21 @@ interface Flavour {
 }
 
 const ESLINT_FLAVOUR: Flavour = {
-	layerPackage: '@n8n/eslint-config',
+	layerPackage: '@MNI/eslint-config',
 	layerImport: LAYER_IMPORT,
 	scriptKind: ScriptKind.JS,
 	missingLayerMessage: (packageName) => `${packageName} does not extend a shared ESLint layer.`,
 	missingLayerSuggestion:
-		'Import baseConfig, backendConfig, frontendConfig or nodesConfig from @n8n/eslint-config and pass it to defineConfig.',
+		'Import baseConfig, backendConfig, frontendConfig or nodesConfig from @MNI/eslint-config and pass it to defineConfig.',
 };
 
 const OXLINT_FLAVOUR: Flavour = {
-	layerPackage: '@n8n/oxlint-config',
+	layerPackage: '@MNI/oxlint-config',
 	layerImport: OXLINT_LAYER_IMPORT,
 	scriptKind: ScriptKind.TS,
 	missingLayerMessage: (packageName) => `${packageName} does not extend a shared oxlint layer.`,
 	missingLayerSuggestion:
-		'Import a layer from @n8n/oxlint-config and pass it to defineConfig as `extends: [layer]`.',
+		'Import a layer from @MNI/oxlint-config and pass it to defineConfig as `extends: [layer]`.',
 };
 
 /**
@@ -92,7 +92,7 @@ export class LintConfigLayeringRule extends BaseRule<CodeHealthContext> {
 	readonly id = 'lint-config-layering';
 	readonly name = 'Lint Config Layering';
 	readonly description =
-		'Package ESLint configs must extend one shared layer from @n8n/eslint-config and scope every relaxation to a path, so rule policy stays in the shared layers.';
+		'Package ESLint configs must extend one shared layer from @MNI/eslint-config and scope every relaxation to a path, so rule policy stays in the shared layers.';
 	readonly severity = 'error' as const;
 
 	async analyze(context: CodeHealthContext): Promise<Violation[]> {
@@ -154,7 +154,7 @@ export class LintConfigLayeringRule extends BaseRule<CodeHealthContext> {
 						configPath,
 						line,
 						column,
-						`${packageName} imports '@n8n/eslint-config/${subpath}', which no longer exists.`,
+						`${packageName} imports '@MNI/eslint-config/${subpath}', which no longer exists.`,
 						'Use one of the four layers: base, backend, frontend or nodes. The boundary configs are part of backendConfig.',
 					),
 				);

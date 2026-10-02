@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 
-import { N8nOption, N8nPagination, N8nSelect } from '@n8n/design-system';
+import { N8nOption, N8nPagination, N8nSelect } from '@MNI/design-system';
 const { pageSize, total, currentPage } = defineProps<{
 	pageSize: number;
 	total: number;

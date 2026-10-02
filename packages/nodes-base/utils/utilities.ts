@@ -12,8 +12,8 @@ import type {
 	INodeExecutionData,
 	INodeProperties,
 	IPairedItemData,
-} from 'n8n-workflow';
-import { jsonParse, MYSQL_NODE_TYPE, POSTGRES_NODE_TYPE, randomInt, UserError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { jsonParse, MYSQL_NODE_TYPE, POSTGRES_NODE_TYPE, randomInt, UserError } from 'MNI-workflow';
 
 /**
  * Creates an array of elements split into groups the length of `size`.
@@ -439,7 +439,7 @@ export function sortItemKeysByPriorityList(data: INodeExecutionData[], priorityL
 }
 
 export function createUtmCampaignLink(nodeType: string, instanceId?: string) {
-	return `https://n8n.io/?utm_source=n8n-internal&utm_medium=powered_by&utm_campaign=${encodeURIComponent(
+	return `https://n8n.io/?utm_source=MNI-internal&utm_medium=powered_by&utm_campaign=${encodeURIComponent(
 		nodeType,
 	)}${instanceId ? '_' + instanceId : ''}`;
 }

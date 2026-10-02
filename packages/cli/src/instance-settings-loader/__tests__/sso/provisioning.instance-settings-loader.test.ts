@@ -1,8 +1,8 @@
-import { ProvisioningConfigDto } from '@n8n/api-types';
-import type { Logger } from '@n8n/backend-common';
-import type { GlobalConfig, InstanceSettingsLoaderConfig } from '@n8n/config';
-import type { SettingsRepository } from '@n8n/db';
-import { jsonParse } from 'n8n-workflow';
+import { ProvisioningConfigDto } from '@MNI/api-types';
+import type { Logger } from '@MNI/backend-common';
+import type { GlobalConfig, InstanceSettingsLoaderConfig } from '@MNI/config';
+import type { SettingsRepository } from '@MNI/db';
+import { jsonParse } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import { ProvisioningInstanceSettingsLoader } from '../../loaders/sso/provisioning.instance-settings-loader';
@@ -16,8 +16,8 @@ describe('ProvisioningInstanceSettingsLoader', () => {
 			sso: {
 				provisioning: {
 					scopesName: 'MNI',
-					scopesInstanceRoleClaimName: 'n8n_instance_role',
-					scopesProjectsRolesClaimName: 'n8n_projects',
+					scopesInstanceRoleClaimName: 'MNI_instance_role',
+					scopesProjectsRolesClaimName: 'MNI_projects',
 					scopesUseExpressionMapping,
 				},
 			},
@@ -47,7 +47,7 @@ describe('ProvisioningInstanceSettingsLoader', () => {
 	it('should throw when ssoUserRoleProvisioning has an invalid value', async () => {
 		const loader = createLoader({ ssoUserRoleProvisioning: 'invalid' });
 
-		await expect(loader.apply()).rejects.toThrow('N8N_SSO_USER_ROLE_PROVISIONING must be one of');
+		await expect(loader.apply()).rejects.toThrow('MNI_SSO_USER_ROLE_PROVISIONING must be one of');
 	});
 
 	it('should write disabled provisioning config', async () => {
@@ -63,8 +63,8 @@ describe('ProvisioningInstanceSettingsLoader', () => {
 					scopesProvisionProjectRoles: false,
 					scopesUseExpressionMapping: false,
 					scopesName: 'MNI',
-					scopesInstanceRoleClaimName: 'n8n_instance_role',
-					scopesProjectsRolesClaimName: 'n8n_projects',
+					scopesInstanceRoleClaimName: 'MNI_instance_role',
+					scopesProjectsRolesClaimName: 'MNI_projects',
 				}),
 				loadOnStartup: true,
 			},
@@ -85,8 +85,8 @@ describe('ProvisioningInstanceSettingsLoader', () => {
 					scopesProvisionProjectRoles: false,
 					scopesUseExpressionMapping: false,
 					scopesName: 'MNI',
-					scopesInstanceRoleClaimName: 'n8n_instance_role',
-					scopesProjectsRolesClaimName: 'n8n_projects',
+					scopesInstanceRoleClaimName: 'MNI_instance_role',
+					scopesProjectsRolesClaimName: 'MNI_projects',
 				}),
 				loadOnStartup: true,
 			},
@@ -107,8 +107,8 @@ describe('ProvisioningInstanceSettingsLoader', () => {
 					scopesProvisionProjectRoles: true,
 					scopesUseExpressionMapping: false,
 					scopesName: 'MNI',
-					scopesInstanceRoleClaimName: 'n8n_instance_role',
-					scopesProjectsRolesClaimName: 'n8n_projects',
+					scopesInstanceRoleClaimName: 'MNI_instance_role',
+					scopesProjectsRolesClaimName: 'MNI_projects',
 				}),
 				loadOnStartup: true,
 			},
@@ -116,7 +116,7 @@ describe('ProvisioningInstanceSettingsLoader', () => {
 		);
 	});
 
-	describe('N8N_SSO_SCOPES_USE_EXPRESSION_MAPPING', () => {
+	describe('MNI_SSO_SCOPES_USE_EXPRESSION_MAPPING', () => {
 		// It is the "role mapping method" dropdown: it picks how claims map to the roles the
 		// mode provisions, and clears the direct-claim flags because the two are exclusive.
 		it.each(['instance_role', 'instance_and_project_roles'] as const)(
@@ -134,8 +134,8 @@ describe('ProvisioningInstanceSettingsLoader', () => {
 							scopesProvisionProjectRoles: false,
 							scopesUseExpressionMapping: true,
 							scopesName: 'MNI',
-							scopesInstanceRoleClaimName: 'n8n_instance_role',
-							scopesProjectsRolesClaimName: 'n8n_projects',
+							scopesInstanceRoleClaimName: 'MNI_instance_role',
+							scopesProjectsRolesClaimName: 'MNI_projects',
 						}),
 						loadOnStartup: true,
 					},
@@ -163,7 +163,7 @@ describe('ProvisioningInstanceSettingsLoader', () => {
 			await loader.apply();
 
 			expect(logger.warn).toHaveBeenCalledWith(
-				expect.stringContaining('N8N_SSO_SCOPES_USE_EXPRESSION_MAPPING=true has no effect'),
+				expect.stringContaining('MNI_SSO_SCOPES_USE_EXPRESSION_MAPPING=true has no effect'),
 			);
 		});
 

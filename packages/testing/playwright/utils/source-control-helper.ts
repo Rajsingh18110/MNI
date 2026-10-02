@@ -1,6 +1,6 @@
-import type { GitCommitInfo, SourceControlledFile } from '@n8n/api-types';
+import type { GitCommitInfo, SourceControlledFile } from '@MNI/api-types';
 import { expect } from '@playwright/test';
-import type { GiteaHelper } from 'n8n-containers';
+import type { GiteaHelper } from 'MNI-containers';
 import { createHash } from 'node:crypto';
 
 import type { n8nPage } from '../pages/n8nPage';
@@ -13,7 +13,7 @@ async function getSourceControlPreferences(api: ApiHelpers) {
 	if (!contentType.includes('application/json')) {
 		throw new Error(
 			`Expected source-control preferences JSON, got ${response.status()} ${contentType}. ` +
-				'Ensure the test is tagged @licensed and N8N_LICENSE_TENANT_ID/N8N_LICENSE_ACTIVATION_KEY are available so source-control routes are registered at startup.',
+				'Ensure the test is tagged @licensed and MNI_LICENSE_TENANT_ID/MNI_LICENSE_ACTIVATION_KEY are available so source-control routes are registered at startup.',
 		);
 	}
 
@@ -64,7 +64,7 @@ const initSourceControlSSHKey = async ({ api, gitea }: { api: ApiHelpers; gitea:
 	const sshKeyHash = createHash('sha256').update(sshKey).digest('hex').slice(0, 12);
 
 	try {
-		await gitea.addSSHKey(`n8n-source-control-${sshKeyHash}`, sshKey);
+		await gitea.addSSHKey(`MNI-source-control-${sshKeyHash}`, sshKey);
 	} catch {
 		// Key might already exist in Gitea - this is fine if we're reusing keys
 	}
@@ -92,7 +92,7 @@ export const initSourceControl = async ({
 export function generateUniqueRepoName(): string {
 	const timestamp = Date.now();
 	const random = Math.random().toString(36).substring(2, 8);
-	return `n8n-test-${timestamp}-${random}`;
+	return `MNI-test-${timestamp}-${random}`;
 }
 
 export function buildRepoUrl(repoName: string): string {

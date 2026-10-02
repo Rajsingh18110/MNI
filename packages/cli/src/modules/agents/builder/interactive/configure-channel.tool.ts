@@ -1,13 +1,13 @@
-import type { BuiltTool, InterruptibleToolContext } from '@n8n/agents';
-import { Tool } from '@n8n/agents/tool';
+import type { BuiltTool, InterruptibleToolContext } from '@MNI/agents';
+import { Tool } from '@MNI/agents/tool';
 import {
 	CONFIGURE_CHANNEL_TOOL_NAME,
 	channelResumeSchema,
 	channelSuspendPayloadSchema,
 	type ChannelResumeData,
 	type ChannelSuspendPayload,
-} from '@n8n/api-types';
-import { TELEMETRY_EVENT } from '@n8n/telemetry';
+} from '@MNI/api-types';
+import { TELEMETRY_EVENT } from '@MNI/telemetry';
 import { nanoid } from 'nanoid';
 import { z } from 'zod';
 

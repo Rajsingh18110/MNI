@@ -8,7 +8,7 @@ describe('Freshservice > Change > Get Many', () => {
 	beforeAll(() => {
 		// the changes endpoint expects the filters as dedicated query params
 		// (view, order_type, updated_since), not inside a `query` string
-		nock('https://n8n-test.freshservice.com')
+		nock('https://MNI-test.freshservice.com')
 			.get('/api/v2/changes')
 			.query({
 				view: 'my_open',

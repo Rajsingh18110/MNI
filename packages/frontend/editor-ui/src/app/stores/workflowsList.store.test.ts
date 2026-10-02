@@ -2,9 +2,9 @@ import { setActivePinia, createPinia } from 'pinia';
 import * as workflowsApi from '@/app/api/workflows';
 import { useWorkflowsListStore } from '@/app/stores/workflowsList.store';
 import type { IWorkflowDb, WorkflowListResource, WorkflowResource } from '@/Interface';
-import * as apiUtils from '@n8n/rest-api-client';
+import * as apiUtils from '@MNI/rest-api-client';
 import { createTestWorkflow } from '@/__tests__/mocks';
-import type { WorkflowHistory } from '@n8n/rest-api-client';
+import type { WorkflowHistory } from '@MNI/rest-api-client';
 
 vi.mock('@/app/api/workflows', () => ({
 	getWorkflows: vi.fn(),
@@ -483,11 +483,11 @@ describe('useWorkflowsListStore', () => {
 			});
 
 			const result = await workflowsListStore.fetchWorkflowsWithNodesIncluded([
-				'n8n-nodes-base.httpRequest',
+				'MNI-nodes-base.httpRequest',
 			]);
 
 			expect(workflowsApi.getWorkflowsWithNodesIncluded).toHaveBeenCalledWith(expect.any(Object), [
-				'n8n-nodes-base.httpRequest',
+				'MNI-nodes-base.httpRequest',
 			]);
 			expect(result.data).toEqual(mockWorkflows);
 		});

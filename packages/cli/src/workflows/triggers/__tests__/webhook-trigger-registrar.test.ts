@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/unbound-method */
-import type { WebhookEntity } from '@n8n/db';
+import type { WebhookEntity } from '@MNI/db';
 import { mock, type MockProxy } from 'vitest-mock-extended';
-import type { ErrorReporter, Span, Tracing } from 'n8n-core';
-import type { IWebhookData, IWorkflowExecuteAdditionalData } from 'n8n-workflow';
-import { WebhookPathTakenError, WorkflowExpression } from 'n8n-workflow';
+import type { ErrorReporter, Span, Tracing } from 'MNI-core';
+import type { IWebhookData, IWorkflowExecuteAdditionalData } from 'MNI-workflow';
+import { WebhookPathTakenError, WorkflowExpression } from 'MNI-workflow';
 
 import * as WebhookHelpers from '@/webhooks/webhook-helpers';
 import type { WebhookService } from '@/webhooks/webhook.service';

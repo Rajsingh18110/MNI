@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { N8nHoverCard, N8nIcon, N8nIconButton, N8nLoading } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+import { N8nHoverCard, N8nIcon, N8nIconButton, N8nLoading } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 import {
 	ContextMenuContent,
 	ContextMenuItem,
@@ -12,8 +12,8 @@ import {
 } from 'reka-ui';
 import { computed, nextTick, ref, shallowRef, watch } from 'vue';
 import { useTimeoutFn } from '@vueuse/core';
-import { useClipboard } from '@n8n/composables/useClipboard';
-import { useToast } from '@n8n/composables/useToast';
+import { useClipboard } from '@MNI/composables/useClipboard';
+import { useToast } from '@MNI/composables/useToast';
 import TimeAgo from '@/app/components/TimeAgo.vue';
 import { HOVER_DELAY } from '@/app/constants/durations';
 import type { ArtifactTab } from '../useCanvasPreview';

@@ -1,4 +1,4 @@
-import type { Logger } from '@n8n/backend-common';
+import type { Logger } from '@MNI/backend-common';
 import type {
 	ICredentialDataDecryptedObject,
 	ICredentials,
@@ -10,8 +10,8 @@ import type {
 	INodeCredentialsDetails,
 	IWorkflowExecuteAdditionalData,
 	Workflow,
-} from 'n8n-workflow';
-import { UnexpectedError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { UnexpectedError } from 'MNI-workflow';
 
 import { CredentialMissingIdError } from '@/errors/credential-missing-id.error';
 import { CredentialNotFoundError } from '@/errors/credential-not-found.error';
@@ -167,7 +167,7 @@ describe('EvalMockedCredentialsHelper', () => {
 			const openAiNode = {
 				name: 'OpenAI Chat Model',
 				id: 'node-9',
-				type: '@n8n/n8n-nodes-langchain.lmChatOpenAi',
+				type: '@MNI/MNI-nodes-langchain.lmChatOpenAi',
 			} as INode;
 
 			it('rewrites the URL field on openAiApi credentials when serverUrl is set', async () => {
@@ -859,7 +859,7 @@ describe('EvalMockedCredentialsHelper', () => {
 		const lmNode = {
 			name: 'OpenAI Model',
 			id: 'node-lm',
-			type: '@n8n/n8n-nodes-langchain.lmChatOpenAi',
+			type: '@MNI/MNI-nodes-langchain.lmChatOpenAi',
 		} as INode;
 		const lmCreds: INodeCredentialsDetails = { id: 'cred-1', name: 'OpenAI cred' };
 
@@ -906,7 +906,7 @@ describe('EvalMockedCredentialsHelper', () => {
 
 			await fetchFor(
 				helper,
-				{ ...lmNode, type: '@n8n/n8n-nodes-langchain.lmChatAnthropic' },
+				{ ...lmNode, type: '@MNI/MNI-nodes-langchain.lmChatAnthropic' },
 				'anthropicApi',
 			);
 
@@ -936,7 +936,7 @@ describe('EvalMockedCredentialsHelper', () => {
 			// A Gmail/HTTP node reaching the same branches is fine — its traffic
 			// goes through the HTTP mock whatever its credential URL says.
 			const httpNode = new EvalMockedCredentialsHelper(innerWithUrl(), undefined, mockLogger);
-			await fetchFor(httpNode, { ...fakeNode, type: 'n8n-nodes-base.gmail' }, 'gmailOAuth2');
+			await fetchFor(httpNode, { ...fakeNode, type: 'MNI-nodes-base.gmail' }, 'gmailOAuth2');
 			expect(httpNode.interceptionGaps).toEqual([]);
 		});
 

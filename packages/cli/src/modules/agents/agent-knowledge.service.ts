@@ -2,12 +2,12 @@ import {
 	MAX_AGENT_KNOWLEDGE_BASE_SIZE_BYTES,
 	MAX_AGENT_KNOWLEDGE_BASE_SIZE_GB,
 	type AgentFileDto,
-} from '@n8n/api-types';
-import { N8nPdfLoader } from '@n8n/ai-utilities';
-import { Logger } from '@n8n/backend-common';
-import { isUniqueConstraintError } from '@n8n/db';
-import { Service } from '@n8n/di';
-import { generateNanoId } from '@n8n/utils/generate-nano-id';
+} from '@MNI/api-types';
+import { N8nPdfLoader } from '@MNI/ai-utilities';
+import { Logger } from '@MNI/backend-common';
+import { isUniqueConstraintError } from '@MNI/db';
+import { Service } from '@MNI/di';
+import { generateNanoId } from '@MNI/utils/generate-nano-id';
 import { createReadStream } from 'node:fs';
 import { unlink } from 'node:fs/promises';
 import path from 'node:path';

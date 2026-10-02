@@ -7,20 +7,20 @@ import {
 	CONTEXT_PREFERENCES_ENABLED_VARIANT,
 	CONTEXT_PREFERENCES_FLAG,
 	INSTANCE_ACTIVITY_CONTEXT_FLAG,
-} from '@n8n/api-types';
-import { LicenseState, ModuleRegistry, type Logger } from '@n8n/backend-common';
-import { mockInstance, mockLogger } from '@n8n/backend-test-utils';
-import { EndpointsConfig, ExecutionsConfig, GlobalConfig, WorkflowsConfig } from '@n8n/config';
+} from '@MNI/api-types';
+import { LicenseState, ModuleRegistry, type Logger } from '@MNI/backend-common';
+import { mockInstance, mockLogger } from '@MNI/backend-test-utils';
+import { EndpointsConfig, ExecutionsConfig, GlobalConfig, WorkflowsConfig } from '@MNI/config';
 import {
 	ExecutionRepository,
 	GLOBAL_MEMBER_ROLE,
 	ProjectRepository,
 	SharedWorkflowRepository,
 	User,
-} from '@n8n/db';
-import { InstanceSettings } from 'n8n-core';
-import type { IRun } from 'n8n-workflow';
-import { createEmptyRunExecutionData, ManualExecutionCancelledError } from 'n8n-workflow';
+} from '@MNI/db';
+import { InstanceSettings } from 'MNI-core';
+import type { IRun } from 'MNI-workflow';
+import { createEmptyRunExecutionData, ManualExecutionCancelledError } from 'MNI-workflow';
 import type { Mock, Mocked } from 'vitest';
 
 import { McpPostSaveMetricsService } from '../mcp-post-save-metrics.service';
@@ -44,7 +44,7 @@ import { NodeResourceExplorerService } from '@/services/node-resource-explorer.s
 import { ProjectService } from '@/services/project.service.ee';
 import { RoleService } from '@/services/role.service';
 import { TagService } from '@/services/tag.service';
-import { UrlService } from '@n8n/backend-services';
+import { UrlService } from '@MNI/backend-services';
 import { Telemetry } from '@/telemetry';
 import { WorkflowRunner } from '@/workflow-runner';
 import { WorkflowCreationService } from '@/workflows/workflow-creation.service';
@@ -53,7 +53,7 @@ import { WorkflowHistoryService } from '@/workflows/workflow-history/workflow-hi
 import { WorkflowPublishedDataService } from '@/workflows/workflow-published-data.service';
 import { WorkflowService } from '@/workflows/workflow.service';
 
-import { registerWorkflowPreviewApp, WORKFLOW_PREVIEW_APP_URI } from '@n8n/mcp-apps/server';
+import { registerWorkflowPreviewApp, WORKFLOW_PREVIEW_APP_URI } from '@MNI/mcp-apps/server';
 
 import { McpConfig } from '../mcp.config';
 import { MCP_DISCOVER_METHOD, MCP_PREVIEW_RENDER_REQUESTED_EVENT } from '../mcp.constants';
@@ -62,8 +62,8 @@ import type { McpAuthContext, McpClientInfo } from '../mcp.types';
 
 // Keep the real mcpAppToolMeta and constants; only the preview-app
 // registration is spied on so its wiring options can be asserted.
-vi.mock('@n8n/mcp-apps/server', async (importOriginal) => ({
-	...(await importOriginal<typeof import('@n8n/mcp-apps/server')>()),
+vi.mock('@MNI/mcp-apps/server', async (importOriginal) => ({
+	...(await importOriginal<typeof import('@MNI/mcp-apps/server')>()),
 	registerWorkflowPreviewApp: vi.fn(),
 }));
 

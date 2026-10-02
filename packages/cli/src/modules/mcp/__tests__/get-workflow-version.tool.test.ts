@@ -1,6 +1,6 @@
-import { mockInstance } from '@n8n/backend-test-utils';
-import { User } from '@n8n/db';
-import type { INode } from 'n8n-workflow';
+import { mockInstance } from '@MNI/backend-test-utils';
+import { User } from '@MNI/db';
+import type { INode } from 'MNI-workflow';
 import type { Mock } from 'vitest';
 
 import { WorkflowHistoryVersionNotFoundError } from '@/errors/workflow-history-version-not-found.error';
@@ -14,7 +14,7 @@ import { createGetWorkflowVersionTool } from '../tools/get-workflow-version.tool
 const nodeWithCredentials: INode = {
 	id: 'node-1',
 	name: 'HTTP Request',
-	type: 'n8n-nodes-base.httpRequest',
+	type: 'MNI-nodes-base.httpRequest',
 	typeVersion: 4.2,
 	position: [0, 0],
 	parameters: { url: 'https://example.com' },
@@ -91,7 +91,7 @@ describe('get-workflow-version MCP tool', () => {
 			const skeletonNode = {
 				id: 'node-1',
 				name: 'Webhook',
-				type: 'n8n-nodes-base.webhook',
+				type: 'MNI-nodes-base.webhook',
 				typeVersion: 1,
 				position: [0, 0],
 				webhookId: 'hook-1',

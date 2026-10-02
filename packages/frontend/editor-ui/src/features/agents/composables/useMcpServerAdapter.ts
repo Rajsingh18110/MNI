@@ -1,12 +1,12 @@
 import { v4 as uuidv4 } from 'uuid';
-import { NodeHelpers } from 'n8n-workflow';
-import type { INode, INodeCredentials, INodeParameters, INodeTypeDescription } from 'n8n-workflow';
+import { NodeHelpers } from 'MNI-workflow';
+import type { INode, INodeCredentials, INodeParameters, INodeTypeDescription } from 'MNI-workflow';
 
 import { AI_MCP_TOOL_NODE_TYPE } from '@/app/constants/nodeTypes';
 import type { AgentJsonMcpServerConfig } from '../types';
-import type { McpAuthenticationSchemaType } from '@n8n/api-types';
+import type { McpAuthenticationSchemaType } from '@MNI/api-types';
 
-const MCP_REGISTRY_NODE_PREFIX = '@n8n/mcp-registry.';
+const MCP_REGISTRY_NODE_PREFIX = '@MNI/mcp-registry.';
 const HTTP_STREAMABLE_TRANSPORT = 'httpStreamable';
 
 function pickLatestVersion(version: number | number[]): number {

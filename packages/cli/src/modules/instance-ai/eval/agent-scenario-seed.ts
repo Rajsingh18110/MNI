@@ -1,7 +1,7 @@
-import { extractJsonCandidate } from '@n8n/ai-utilities/llm-output';
-import type { InstanceAiEvalAgentScenarioSeed } from '@n8n/api-types';
-import { createEvalAgent, extractText } from '@n8n/instance-ai';
-import { jsonParse } from 'n8n-workflow';
+import { extractJsonCandidate } from '@MNI/ai-utilities/llm-output';
+import type { InstanceAiEvalAgentScenarioSeed } from '@MNI/api-types';
+import { createEvalAgent, extractText } from '@MNI/instance-ai';
+import { jsonParse } from 'MNI-workflow';
 
 import { buildDateAnchors } from './date-anchors';
 
@@ -17,7 +17,7 @@ export interface AgentSeedToolSummary {
 	name: string;
 	kind: 'node' | 'workflow' | 'custom' | 'mcp' | 'other';
 	description?: string;
-	/** Node type for node tools (e.g. n8n-nodes-base.slackTool). */
+	/** Node type for node tools (e.g. MNI-nodes-base.slackTool). */
 	nodeType?: string;
 }
 

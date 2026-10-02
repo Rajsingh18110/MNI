@@ -1,4 +1,4 @@
-import type { IPollFunctions, INode, NodeParameterValueType } from 'n8n-workflow';
+import type { IPollFunctions, INode, NodeParameterValueType } from 'MNI-workflow';
 import type { Mock } from 'vitest';
 import { mockDeep, type DeepMockProxy } from 'vitest-mock-extended';
 

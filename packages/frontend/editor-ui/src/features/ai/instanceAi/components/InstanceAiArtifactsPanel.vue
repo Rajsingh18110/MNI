@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import ProjectIcon from '@/features/collaboration/projects/components/ProjectIcon.vue';
-import type { InstanceAiHandoffContext, TaskItem } from '@n8n/api-types';
+import type { InstanceAiHandoffContext, TaskItem } from '@MNI/api-types';
 import {
 	isIconOrEmoji,
 	N8nHeading,
@@ -8,8 +8,8 @@ import {
 	N8nIconButton,
 	N8nLoading,
 	type IconName,
-} from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+} from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 import { computed, inject, type Ref } from 'vue';
 import { useBuildingArtifactIds } from '../composables/useBuildingArtifactIds';
 import { useInstanceAiStore, useThread } from '../instanceAi.store';

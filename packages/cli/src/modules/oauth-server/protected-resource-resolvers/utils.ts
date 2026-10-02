@@ -1,7 +1,7 @@
-import type { ConsentUiHints } from '@n8n/api-types';
-import type { Logger } from '@n8n/backend-common';
-import type { INode, N8nOAuth2BrowserFlowMode } from 'n8n-workflow';
-import { CHAT_TRIGGER_NODE_TYPE, resolveOAuthClientMode } from 'n8n-workflow';
+import type { ConsentUiHints } from '@MNI/api-types';
+import type { Logger } from '@MNI/backend-common';
+import type { INode, N8nOAuth2BrowserFlowMode } from 'MNI-workflow';
+import { CHAT_TRIGGER_NODE_TYPE, resolveOAuthClientMode } from 'MNI-workflow';
 
 /**
  * Scopes advertised for per-workflow MCP trigger resources. Empty on purpose:
@@ -33,7 +33,7 @@ export const CHAT_TRIGGER_CONSENT_HINTS: ConsentUiHints = {
 
 /**
  * A chat trigger is an OAuth protected resource only in the shape the hosted page can actually
- * serve: enabled, published publicly, on the n8n-hosted page rather than the embedded widget, and
+ * serve: enabled, published publicly, on the MNI-hosted page rather than the embedded widget, and
  * on `n8nUserAuth`. `mode` defaults to `hostedChat` and is stripped from a saved node when left at
  * its default, so an absent value counts as hosted. Shared by both chat resolvers so the
  * production and test gates can't drift.
@@ -72,8 +72,8 @@ export function trimSlashes(path: string): string {
  * Map an RFC 8707 resource URL to the instance-relative path it is served at, or
  * `undefined` if the URL is not under this instance's webhook base URL.
  *
- * The base URL may carry a path prefix (e.g. `WEBHOOK_URL=https://host/n8n/` or a
- * non-root `N8N_PATH`), so the prefix is stripped before the path is returned.
+ * The base URL may carry a path prefix (e.g. `WEBHOOK_URL=https://host/MNI/` or a
+ * non-root `MNI_PATH`), so the prefix is stripped before the path is returned.
  * This keeps `resolveByPath` — which matches against `/{endpoint}/…` — working the
  * same for sub-path deployments as for root deployments, and matches the path the
  * unauthenticated well-known route already receives (relative to the mount point).

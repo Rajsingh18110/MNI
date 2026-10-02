@@ -2,7 +2,7 @@
 import { useDocumentTitle } from '@/app/composables/useDocumentTitle';
 import { usePageRedirectionHelper } from '@/app/composables/usePageRedirectionHelper';
 import { useSSOStore, SupportedProtocols, type SupportedProtocolType } from '../sso.store';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import { computed, onMounted, ref, useTemplateRef } from 'vue';
 import { onBeforeRouteLeave, type NavigationGuardNext } from 'vue-router';
 import { ElDialog } from 'element-plus';
@@ -15,7 +15,7 @@ import {
 	N8nOption,
 	N8nSelect,
 	N8nText,
-} from '@n8n/design-system';
+} from '@MNI/design-system';
 import SamlSettingsForm from '../components/SamlSettingsForm.vue';
 import OidcSettingsForm from '../components/OidcSettingsForm.vue';
 import { useUserRoleProvisioningStore } from '../provisioning/composables/userRoleProvisioning.store';

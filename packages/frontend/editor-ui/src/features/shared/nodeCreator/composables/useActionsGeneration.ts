@@ -18,12 +18,12 @@ import {
 	type INodePropertyCollection,
 	type INodePropertyOptions,
 	type INodeTypeDescription,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
-import { i18n } from '@n8n/i18n';
+import { i18n } from '@MNI/i18n';
 
 import { getCredentialOnlyNodeType } from '@/app/utils/credentialOnlyNodes';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { formatTriggerActionName } from '../nodeCreator.utils';
 import { useEvaluationStore } from '@/features/ai/evaluation.ee/evaluation.store';
 
@@ -43,7 +43,7 @@ const customNodeActionsParsers: {
 		nodeTypeDescription: INodeTypeDescription,
 	) => ActionTypeDescription[] | undefined;
 } = {
-	['n8n-nodes-base.hubspotTrigger']: (matchedProperty, nodeTypeDescription) => {
+	['MNI-nodes-base.hubspotTrigger']: (matchedProperty, nodeTypeDescription) => {
 		const collection = matchedProperty?.options?.[0] as INodePropertyCollection;
 
 		return (collection?.values[0]?.options as INodePropertyOptions[])?.map(
@@ -59,7 +59,7 @@ const customNodeActionsParsers: {
 			}),
 		);
 	},
-	['n8n-nodes-base.code']: (matchedProperty, nodeTypeDescription) => {
+	['MNI-nodes-base.code']: (matchedProperty, nodeTypeDescription) => {
 		if (matchedProperty.name !== 'language') return;
 
 		const languageOptions = matchedProperty.options as INodePropertyOptions[] | undefined;
@@ -129,7 +129,7 @@ function operationsCategory(nodeTypeDescription: INodeTypeDescription): ActionTy
 	)
 		return [];
 
-	if (nodeTypeDescription.name === 'n8n-nodes-base.code') {
+	if (nodeTypeDescription.name === 'MNI-nodes-base.code') {
 		const languageProperty = nodeTypeDescription.properties.find(
 			(property) =>
 				property.name === 'language' && property.displayOptions?.show?.['@version']?.[0] === 2,

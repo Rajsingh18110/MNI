@@ -4,13 +4,13 @@ import { createTestingPinia } from '@pinia/testing';
 import userEvent from '@testing-library/user-event';
 import { useRouter, useRoute } from 'vue-router';
 import SigninView from './SigninView.vue';
-import { useUsersStore } from '@n8n/stores/users.store';
-import { useSettingsStore } from '@n8n/stores/settings.store';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
-import { useNotificationsStore } from '@n8n/stores/notifications.store';
+import { useUsersStore } from '@MNI/stores/users.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
+import { useNotificationsStore } from '@MNI/stores/notifications.store';
 import { useSSOStore } from '@/features/settings/sso/sso.store';
 import { VIEWS } from '@/app/constants';
-import { SSO_LOGIN_REQUIRED_ERROR_CODE } from '@n8n/api-types';
+import { SSO_LOGIN_REQUIRED_ERROR_CODE } from '@MNI/api-types';
 
 vi.mock('vue-router', () => {
 	const push = vi.fn();
@@ -29,7 +29,7 @@ vi.mock('vue-router', () => {
 	};
 });
 
-vi.mock('@n8n/composables/useTelemetry', () => {
+vi.mock('@MNI/composables/useTelemetry', () => {
 	const track = vi.fn();
 	return {
 		useTelemetry: () => ({
@@ -42,7 +42,7 @@ const showMessage = vi.fn();
 const showError = vi.fn();
 const clearAllStickyNotifications = vi.fn();
 
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: () => ({ showMessage, showError, clearAllStickyNotifications }),
 }));
 
@@ -117,7 +117,7 @@ describe('SigninView', () => {
 
 		expect(showMessage).toHaveBeenCalledWith({
 			title: 'Session expired',
-			message: 'Your session has expired. Please log in again to continue using n8n.',
+			message: 'Your session has expired. Please log in again to continue using MNI.',
 			type: 'info',
 		});
 		// Stepped around suppression to show this toast, then put it right back.
@@ -141,7 +141,7 @@ describe('SigninView', () => {
 		expect(showMessage).toHaveBeenCalledWith({
 			title: "You don't have access to MNI",
 			message:
-				'Your role or permissions do not currently give you access to n8n. Please speak to your administrator if you think this is incorrect.',
+				'Your role or permissions do not currently give you access to MNI. Please speak to your administrator if you think this is incorrect.',
 			type: 'error',
 			duration: 0,
 		});

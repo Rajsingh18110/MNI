@@ -3,7 +3,7 @@ import type {
 	INodeExecutionData,
 	INodeProperties,
 	IExecuteFunctions,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { generatePairedItemData, updateDisplayOptions } from '../../../../../utils/utilities';
 import type { IRecord } from '../../helpers/interfaces';
@@ -54,7 +54,7 @@ const properties: INodeProperties[] = [
 		placeholder: 'Add option',
 		options: [
 			{
-				// eslint-disable-next-line n8n-nodes-base/node-param-display-name-wrong-for-dynamic-multi-options
+				// eslint-disable-next-line MNI-nodes-base/node-param-display-name-wrong-for-dynamic-multi-options
 				displayName: 'Download Attachments',
 				name: 'downloadFields',
 				type: 'multiOptions',
@@ -63,11 +63,11 @@ const properties: INodeProperties[] = [
 					loadOptionsDependsOn: ['base.value', 'table.value'],
 				},
 				default: [],
-				// eslint-disable-next-line n8n-nodes-base/node-param-description-wrong-for-dynamic-multi-options
+				// eslint-disable-next-line MNI-nodes-base/node-param-description-wrong-for-dynamic-multi-options
 				description: "The fields of type 'attachment' that should be downloaded",
 			},
 			{
-				// eslint-disable-next-line n8n-nodes-base/node-param-display-name-wrong-for-dynamic-multi-options
+				// eslint-disable-next-line MNI-nodes-base/node-param-display-name-wrong-for-dynamic-multi-options
 				displayName: 'Output Fields',
 				name: 'fields',
 				type: 'multiOptions',
@@ -76,7 +76,7 @@ const properties: INodeProperties[] = [
 					loadOptionsDependsOn: ['base.value', 'table.value'],
 				},
 				default: [],
-				// eslint-disable-next-line n8n-nodes-base/node-param-description-wrong-for-dynamic-multi-options
+				// eslint-disable-next-line MNI-nodes-base/node-param-description-wrong-for-dynamic-multi-options
 				description: 'The fields you want to include in the output',
 			},
 			viewRLC,
@@ -98,7 +98,7 @@ const properties: INodeProperties[] = [
 				displayName: 'Property',
 				values: [
 					{
-						// eslint-disable-next-line n8n-nodes-base/node-param-display-name-wrong-for-dynamic-options
+						// eslint-disable-next-line MNI-nodes-base/node-param-display-name-wrong-for-dynamic-options
 						displayName: 'Field',
 						name: 'field',
 						type: 'options',

@@ -1,6 +1,6 @@
 import { mock } from 'vitest-mock-extended';
-import type { IWebhookFunctions } from 'n8n-workflow';
-import { NodeApiError } from 'n8n-workflow';
+import type { IWebhookFunctions } from 'MNI-workflow';
+import { NodeApiError } from 'MNI-workflow';
 
 import {
 	fetchAllTeams,

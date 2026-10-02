@@ -17,7 +17,7 @@ const testTemplate = JSON.parse(
 function createTemplateRequirements(): TestRequirements {
 	return {
 		storage: {
-			N8N_EXPERIMENT_OVERRIDES: JSON.stringify({
+			MNI_EXPERIMENT_OVERRIDES: JSON.stringify({
 				'055_template_setup_experience': 'variant',
 				'069_setup_panel': 'control',
 			}),

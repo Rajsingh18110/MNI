@@ -1,4 +1,4 @@
-import type { IconOrEmoji } from '@n8n/design-system';
+import type { IconOrEmoji } from '@MNI/design-system';
 
 export const PROJECT_MOVE_RESOURCE_MODAL = 'projectMoveResourceModal';
 

@@ -1,4 +1,4 @@
-import { Service } from '@n8n/di';
+import { Service } from '@MNI/di';
 
 /**
  * Contract for contributing reasons a custom role cannot be deleted. Optional

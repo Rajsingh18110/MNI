@@ -1,7 +1,7 @@
-import type { Logger } from '@n8n/backend-common';
+import type { Logger } from '@MNI/backend-common';
 import { mock } from 'vitest-mock-extended';
-import type { InstanceSettings } from 'n8n-core';
-import { ManualExecutionCancelledError } from 'n8n-workflow';
+import type { InstanceSettings } from 'MNI-core';
+import { ManualExecutionCancelledError } from 'MNI-workflow';
 
 import type { ActiveExecutions } from '@/active-executions';
 import { ExecutionStopService } from '@/scaling/execution-stop.service';

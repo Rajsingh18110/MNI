@@ -1,5 +1,5 @@
 import { type Response } from 'express';
-import { getHtmlSandboxCSP, isFormHtmlSandboxingDisabled } from 'n8n-core';
+import { getHtmlSandboxCSP, isFormHtmlSandboxingDisabled } from 'MNI-core';
 import {
 	type NodeTypeAndVersion,
 	type IUser,
@@ -8,7 +8,7 @@ import {
 	type IBinaryData,
 	type IDataObject,
 	OperationalError,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import {
 	generateFormUserAuthToken,
@@ -68,7 +68,7 @@ export const binaryResponse = async (context: IWebhookFunctions): Promise<Binary
 
 		responses.push({
 			// If a binaryData has an id, the following field is set:
-			// N8N_DEFAULT_BINARY_DATA_MODE=filesystem
+			// MNI_DEFAULT_BINARY_DATA_MODE=filesystem
 			data: binaryData.id
 				? await context.helpers.binaryToBuffer(await context.helpers.getBinaryStream(binaryData.id))
 				: atob(binaryData.data),

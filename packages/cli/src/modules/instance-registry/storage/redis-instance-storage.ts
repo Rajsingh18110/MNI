@@ -1,10 +1,10 @@
-import { instanceRegistrationSchema, type InstanceRegistration } from '@n8n/api-types';
-import { Logger } from '@n8n/backend-common';
-import { GlobalConfig } from '@n8n/config';
-import { Service } from '@n8n/di';
+import { instanceRegistrationSchema, type InstanceRegistration } from '@MNI/api-types';
+import { Logger } from '@MNI/backend-common';
+import { GlobalConfig } from '@MNI/config';
+import { Service } from '@MNI/di';
 import type { Cluster, Redis } from 'ioredis';
-import { ensureError } from '@n8n/utils/errors/ensure-error';
-import { jsonParse, jsonStringify } from 'n8n-workflow';
+import { ensureError } from '@MNI/utils/errors/ensure-error';
+import { jsonParse, jsonStringify } from 'MNI-workflow';
 
 import { RedisClientService } from '@/services/redis-client.service';
 

@@ -1,5 +1,5 @@
-import type { INode, ResolvedFilePath } from 'n8n-workflow';
-import { NodeOperationError, OperationalError } from 'n8n-workflow';
+import type { INode, ResolvedFilePath } from 'MNI-workflow';
+import { NodeOperationError, OperationalError } from 'MNI-workflow';
 import { isAbsolute, parse, sep } from 'node:path';
 import type { ConfigListSummary, SimpleGit } from 'simple-git';
 

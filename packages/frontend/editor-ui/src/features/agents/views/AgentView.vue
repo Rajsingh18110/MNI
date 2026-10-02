@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useDocumentTitle } from '@/app/composables/useDocumentTitle';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import { computed, onMounted } from 'vue';
 import { onBeforeRouteLeave, useRoute, useRouter } from 'vue-router';
 import { VIEWS } from '@/app/constants';

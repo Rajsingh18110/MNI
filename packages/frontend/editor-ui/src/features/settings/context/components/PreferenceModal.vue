@@ -1,10 +1,10 @@
 <script lang="ts" setup>
-import type { AiPreferenceScope } from '@n8n/api-types';
+import type { AiPreferenceScope } from '@MNI/api-types';
 import { computed, reactive, ref, watch } from 'vue';
-import { useI18n } from '@n8n/i18n';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
-import { useToast } from '@n8n/composables/useToast';
-import { TELEMETRY_EVENT } from '@n8n/telemetry';
+import { useI18n } from '@MNI/i18n';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
+import { useToast } from '@MNI/composables/useToast';
+import { TELEMETRY_EVENT } from '@MNI/telemetry';
 import {
 	N8nButton,
 	N8nDialog,
@@ -15,9 +15,9 @@ import {
 	N8nOption,
 	N8nSelect,
 	N8nText,
-} from '@n8n/design-system';
-import type { IconOrEmoji } from '@n8n/design-system';
-import { useUsersStore } from '@n8n/stores/users.store';
+} from '@MNI/design-system';
+import type { IconOrEmoji } from '@MNI/design-system';
+import { useUsersStore } from '@MNI/stores/users.store';
 import type { Rule, RuleGroup } from '@/Interface';
 
 import { DEFAULT_PROJECT_ICON } from '@/features/collaboration/projects/projects.constants';

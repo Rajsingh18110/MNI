@@ -1,4 +1,4 @@
-import type { BaseTextKey, I18nClass } from '@n8n/i18n';
+import type { BaseTextKey, I18nClass } from '@MNI/i18n';
 
 export const WEB_SEARCH_TOOL_NAME_KEY: BaseTextKey = 'agents.chat.toolNames.webSearch';
 export const FIND_FILE_TOOL_NAME_KEY: BaseTextKey = 'agents.chat.toolNames.findFile';

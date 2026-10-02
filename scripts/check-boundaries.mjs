@@ -53,7 +53,7 @@ const exemptedContainerHarness = (
 	output.match(/import `\.\.\/\.\.\/\.\.\/containers\/[^`]+` leaves the package/g) ?? []
 ).length;
 
-// The editor's browser shim for `@n8n/expression-runtime` re-exports that package's
+// The editor's browser shim for `@MNI/expression-runtime` re-exports that package's
 // source directly: the barrel reaches IsolatedVmBridge, which requires isolated-vm, a
 // native Node module that cannot be bundled for a browser. The shim is the sanctioned
 // way to keep it out of the editor bundle, so every export added to it would otherwise
@@ -72,7 +72,7 @@ const exemptedContainerHarness = (
 const unwrapped = output.replace(/\n[ \t]*\|[ \t]?/g, '');
 const exemptedBrowserShim = (
 	unwrapped.match(
-		/import `(?:\.\.\/)+@n8n\/(?:expression-runtime|errors)\/src\/[^`]*`\s*leaves\s*the\s*package\n\s*,-\[[^\]]*editor-ui\/vite\/expression-runtime-stub\.ts:/g,
+		/import `(?:\.\.\/)+@MNI\/(?:expression-runtime|errors)\/src\/[^`]*`\s*leaves\s*the\s*package\n\s*,-\[[^\]]*editor-ui\/vite\/expression-runtime-stub\.ts:/g,
 	) ?? []
 ).length;
 

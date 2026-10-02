@@ -1,8 +1,8 @@
-import type { TransferWorkflowBodyDto } from '@n8n/api-types';
+import type { TransferWorkflowBodyDto } from '@MNI/api-types';
 import type { IShareWorkflowsPayload, IWorkflowsShareResponse } from '@/Interface';
-import type { IRestApiContext } from '@n8n/rest-api-client';
-import { makeRestApiRequest } from '@n8n/rest-api-client';
-import type { IDataObject } from 'n8n-workflow';
+import type { IRestApiContext } from '@MNI/rest-api-client';
+import { makeRestApiRequest } from '@MNI/rest-api-client';
+import type { IDataObject } from 'MNI-workflow';
 
 export async function setWorkflowSharedWith(
 	context: IRestApiContext,

@@ -15,7 +15,7 @@ export class OidcComposer {
 	 * @param clientSecret - The OIDC client secret
 	 */
 	async configureOidc(discoveryUrl: string, clientId: string, clientSecret: string): Promise<void> {
-		const { settingsSso } = this.n8n;
+		const { settingsSso } = this.MNI;
 
 		await settingsSso.goto();
 		await settingsSso.selectOidcProtocol();

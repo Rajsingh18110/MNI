@@ -1,5 +1,5 @@
-import { getJwtExpiry } from '@n8n/utils/get-jwt-expiry';
-import { UnexpectedError } from 'n8n-workflow';
+import { getJwtExpiry } from '@MNI/utils/get-jwt-expiry';
+import { UnexpectedError } from 'MNI-workflow';
 
 interface CachedToken {
 	accessToken: string;

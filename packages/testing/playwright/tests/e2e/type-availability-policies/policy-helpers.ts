@@ -1,16 +1,16 @@
-import type { CreateCredentialDto } from '@n8n/api-types';
+import type { CreateCredentialDto } from '@MNI/api-types';
 import type { APIResponse } from '@playwright/test';
 import flatted from 'flatted';
 import { nanoid } from 'nanoid';
-import type { INode, IWorkflowBase } from 'n8n-workflow';
+import type { INode, IWorkflowBase } from 'MNI-workflow';
 
 import { expect } from '../../../fixtures/base';
 import type { ApiHelpers } from '../../../services/api-helper';
 import { resetAllTypePolicies } from '../../../services/type-policy-api-helper';
 
-export const NO_OP = { type: 'n8n-nodes-base.noOp', name: 'No Operation, do nothing' };
-export const SET = { type: 'n8n-nodes-base.set', name: 'Edit Fields' };
-export const POSTGRES = { type: 'n8n-nodes-base.postgres', name: 'Postgres' };
+export const NO_OP = { type: 'MNI-nodes-base.noOp', name: 'No Operation, do nothing' };
+export const SET = { type: 'MNI-nodes-base.set', name: 'Edit Fields' };
+export const POSTGRES = { type: 'MNI-nodes-base.postgres', name: 'Postgres' };
 export const SCHEDULE_TRIGGER_NAME = 'Schedule Trigger';
 
 /** A credential type is policed by its bare name, unlike a package-qualified node type. */
@@ -47,7 +47,7 @@ function scheduleTrigger(): INode {
 	return {
 		id: nanoid(),
 		name: SCHEDULE_TRIGGER_NAME,
-		type: 'n8n-nodes-base.scheduleTrigger',
+		type: 'MNI-nodes-base.scheduleTrigger',
 		typeVersion: 1.2,
 		position: [0, 0],
 		parameters: { rule: { interval: [{ field: 'days' }] } },
@@ -124,7 +124,7 @@ export function webhookToPostgresWorkflow(credential: {
 				id: nanoid(),
 				name: 'Webhook',
 				webhookId,
-				type: 'n8n-nodes-base.webhook',
+				type: 'MNI-nodes-base.webhook',
 				typeVersion: 2,
 				position: [0, 0],
 				parameters: { path: webhookId, options: {} },

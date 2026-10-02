@@ -3,7 +3,7 @@ import {
 	testDb,
 	createManyActiveWorkflows,
 	getWorkflowById,
-} from '@n8n/backend-test-utils';
+} from '@MNI/backend-test-utils';
 
 import { UnpublishWorkflowCommand } from '@/commands/unpublish/workflow';
 import { LoadNodesAndCredentials } from '@/load-nodes-and-credentials';

@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { WORKFLOW_REVIEW_TEXT_MAX_LENGTH } from '@n8n/api-types';
-import { N8nChatInput } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
-import { useToast } from '@n8n/composables/useToast';
+import { WORKFLOW_REVIEW_TEXT_MAX_LENGTH } from '@MNI/api-types';
+import { N8nChatInput } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
+import { useToast } from '@MNI/composables/useToast';
 import { storeToRefs } from 'pinia';
 import { computed } from 'vue';
 

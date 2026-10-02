@@ -1,6 +1,6 @@
-/* eslint-disable n8n-nodes-base/node-param-display-name-miscased */
+/* eslint-disable MNI-nodes-base/node-param-display-name-miscased */
 import mysql2 from 'mysql2/promise';
-import type { ILoadOptionsFunctions, INodeListSearchResult } from 'n8n-workflow';
+import type { ILoadOptionsFunctions, INodeListSearchResult } from 'MNI-workflow';
 
 import { searchTables } from '../../v1/GenericFunctions';
 import type { Mock } from 'vitest';

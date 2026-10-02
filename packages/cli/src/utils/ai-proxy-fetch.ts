@@ -1,5 +1,5 @@
-import type { CustomFetch, OutboundHttp } from '@n8n/backend-network';
-import { Time } from '@n8n/constants';
+import type { CustomFetch, OutboundHttp } from '@MNI/backend-network';
+import { Time } from '@MNI/constants';
 
 const DEFAULT_AI_REQUEST_TIMEOUT_MS = Time.hours.toMilliseconds;
 
@@ -7,9 +7,9 @@ const DEFAULT_AI_REQUEST_TIMEOUT_MS = Time.hours.toMilliseconds;
  * Timeout (ms) for outbound AI provider / AI-MCP HTTP calls. undici defaults
  * `headersTimeout` / `bodyTimeout` to 5 minutes, which is too short for long
  * LLM completions, so we align to the workflow execution timeout. Overridable
- * via `N8N_AI_TIMEOUT_MAX`; a non-numeric override falls back to the default.
+ * via `MNI_AI_TIMEOUT_MAX`; a non-numeric override falls back to the default.
  */
-export const AI_REQUEST_TIMEOUT_MS = resolveTimeoutMs(process.env.N8N_AI_TIMEOUT_MAX);
+export const AI_REQUEST_TIMEOUT_MS = resolveTimeoutMs(process.env.MNI_AI_TIMEOUT_MAX);
 
 function resolveTimeoutMs(raw: string | undefined): number {
 	if (raw === undefined) {
@@ -22,7 +22,7 @@ function resolveTimeoutMs(raw: string | undefined): number {
 /**
  * A proxy-aware (`HTTP(S)_PROXY` / `NO_PROXY`) `fetch` for outbound AI provider
  * and AI-MCP calls, built through the single transport implementer
- * (`@n8n/backend-network`).
+ * (`@MNI/backend-network`).
  *
  * The outbound network policy stays bypassed (`'unsafe'`): these targets are
  * fixed provider hosts plus user-configured `baseURL`s (self-hosted Ollama,

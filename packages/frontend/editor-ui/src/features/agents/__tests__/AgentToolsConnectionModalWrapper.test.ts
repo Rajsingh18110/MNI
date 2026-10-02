@@ -2,7 +2,7 @@ import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { defineComponent, watchEffect } from 'vue';
 import { createTestingPinia } from '@pinia/testing';
 import { flushPromises } from '@vue/test-utils';
-import { NodeConnectionTypes, type INodeTypeDescription } from 'n8n-workflow';
+import { NodeConnectionTypes, type INodeTypeDescription } from 'MNI-workflow';
 
 import { createComponentRenderer } from '@/__tests__/render';
 import { mockedStore } from '@/__tests__/utils';
@@ -14,11 +14,11 @@ import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';
 import { useUIStore } from '@/app/stores/ui.store';
 import { useWorkflowsListStore } from '@/app/stores/workflowsList.store';
 import { useAiGatewayStore } from '@/app/stores/aiGateway.store';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { useWorkflowsStore } from '@/app/stores/workflows.store';
 import { useProjectsStore } from '@/features/collaboration/projects/projects.store';
 import { useSourceControlStore } from '@/features/integrations/sourceControl.ee/sourceControl.store';
-import { useUsersStore } from '@n8n/stores/users.store';
+import { useUsersStore } from '@MNI/stores/users.store';
 import type { ToolConnectionItem } from '@/features/shared/toolsConnection/types';
 import type { IWorkflowDb } from '@/Interface';
 
@@ -31,7 +31,7 @@ const showMessageMock = vi.fn();
 const showErrorMock = vi.fn();
 const routerResolveMock = vi.hoisted(() => vi.fn(() => ({ href: '/workflow/new-workflow-id' })));
 
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: () => ({
 		showError: showErrorMock,
 		showMessage: showMessageMock,
@@ -52,7 +52,7 @@ const getWorkflowMock = vi.mocked(getWorkflow);
 
 vi.mock('virtual:node-popularity-data', () => ({
 	default: [
-		{ id: 'n8n-nodes-base.slack', popularity: 100 },
+		{ id: 'MNI-nodes-base.slack', popularity: 100 },
 		{ id: 'toolWikipedia', popularity: 40 },
 	],
 }));
@@ -80,7 +80,7 @@ vi.mock('@/features/shared/nodeCreator/nodeCreator.utils', async () => {
 /** Uninstalled verified community node, as the previews catalog exposes it. */
 const COMMUNITY_PREVIEW: INodeTypeDescription = {
 	displayName: 'Firecrawl',
-	name: 'n8n-nodes-firecrawl-preview.firecrawlTool',
+	name: 'MNI-nodes-firecrawl-preview.firecrawlTool',
 	group: ['output'],
 	version: 1,
 	description: 'Scrape sites into markdown',
@@ -93,12 +93,12 @@ const COMMUNITY_PREVIEW: INodeTypeDescription = {
 
 const COMMUNITY_INSTALLED: INodeTypeDescription = {
 	...COMMUNITY_PREVIEW,
-	name: 'n8n-nodes-firecrawl.firecrawlTool',
+	name: 'MNI-nodes-firecrawl.firecrawlTool',
 };
 
 const SLACK: INodeTypeDescription = {
 	displayName: 'Slack',
-	name: 'n8n-nodes-base.slack',
+	name: 'MNI-nodes-base.slack',
 	group: ['output'],
 	version: 1,
 	description: 'Send messages to Slack',
@@ -427,7 +427,7 @@ describe('AgentToolsConnectionModalWrapper', () => {
 		const recommended: INodeTypeDescription = {
 			...WIKIPEDIA,
 			displayName: 'Gmail',
-			name: 'n8n-nodes-base.gmail',
+			name: 'MNI-nodes-base.gmail',
 			codex: { subcategories: { Tools: ['Recommended Tools'] } },
 		};
 		nodeTypesStore.getNodeType = vi.fn().mockImplementation((name: string) => {
@@ -445,7 +445,7 @@ describe('AgentToolsConnectionModalWrapper', () => {
 		const categoryById = new Map(getItems().map((item) => [item.id, item.category]));
 
 		expect(categoryById.get(`nodeType:${SLACK.name}`)).toBe('app-action');
-		expect(categoryById.get('nodeType:n8n-nodes-base.gmail')).toBe('app-action');
+		expect(categoryById.get('nodeType:MNI-nodes-base.gmail')).toBe('app-action');
 		expect(modalAttrs.categories).toEqual(['all', 'mcp', 'app-action']);
 		expect(getItems().some((item) => item.category === 'workflows')).toBe(false);
 	});
@@ -456,7 +456,7 @@ describe('AgentToolsConnectionModalWrapper', () => {
 				id: 'wf-1',
 				name: 'Onboarding',
 				isArchived: false,
-				nodes: [{ type: 'n8n-nodes-base.executeWorkflowTrigger', name: 'When called' }],
+				nodes: [{ type: 'MNI-nodes-base.executeWorkflowTrigger', name: 'When called' }],
 			},
 		]);
 
@@ -484,7 +484,7 @@ describe('AgentToolsConnectionModalWrapper', () => {
 		});
 		nodeTypesStore.communityNodeType = vi.fn().mockReturnValue({
 			nodeDescription: COMMUNITY_PREVIEW,
-			packageName: 'n8n-nodes-firecrawl',
+			packageName: 'MNI-nodes-firecrawl',
 			isOfficialNode: true,
 		});
 		nodeTypesStore.visibleNodeTypesByOutputConnectionTypeNames = {
@@ -508,8 +508,8 @@ describe('AgentToolsConnectionModalWrapper', () => {
 		expect(installNodeMock).toHaveBeenCalledWith(
 			expect.objectContaining({
 				type: 'verified',
-				packageName: 'n8n-nodes-firecrawl',
-				nodeType: 'n8n-nodes-firecrawl-preview.firecrawl',
+				packageName: 'MNI-nodes-firecrawl',
+				nodeType: 'MNI-nodes-firecrawl-preview.firecrawl',
 			}),
 		);
 
@@ -526,7 +526,7 @@ describe('AgentToolsConnectionModalWrapper', () => {
 	it('does not install a community tool via the row body when the user cannot install', async () => {
 		nodeTypesStore.communityNodeType = vi.fn().mockReturnValue({
 			nodeDescription: COMMUNITY_PREVIEW,
-			packageName: 'n8n-nodes-firecrawl',
+			packageName: 'MNI-nodes-firecrawl',
 			isOfficialNode: true,
 		});
 		nodeTypesStore.visibleNodeTypesByOutputConnectionTypeNames = {
@@ -551,7 +551,7 @@ describe('AgentToolsConnectionModalWrapper', () => {
 		nodeTypesStore.communityNodeType = vi
 			.fn()
 			.mockImplementation((name: string) =>
-				name.startsWith('n8n-nodes-firecrawl')
+				name.startsWith('MNI-nodes-firecrawl')
 					? { nodeDescription: COMMUNITY_PREVIEW, isOfficialNode: true }
 					: undefined,
 			);
@@ -790,7 +790,7 @@ describe('AgentToolsConnectionModalWrapper', () => {
 			id: 'wf-1',
 			name: 'Daily sales digest',
 			isArchived: false,
-			nodes: [{ type: 'n8n-nodes-base.executeWorkflowTrigger', name: 'When called' }],
+			nodes: [{ type: 'MNI-nodes-base.executeWorkflowTrigger', name: 'When called' }],
 		};
 
 		async function renderWithWorkflow(onConfirm = vi.fn()) {
@@ -808,15 +808,15 @@ describe('AgentToolsConnectionModalWrapper', () => {
 					name: 'Has Form',
 					isArchived: false,
 					nodes: [
-						{ type: 'n8n-nodes-base.executeWorkflowTrigger', name: 'When called' },
-						{ type: 'n8n-nodes-base.form', name: 'Form' },
+						{ type: 'MNI-nodes-base.executeWorkflowTrigger', name: 'When called' },
+						{ type: 'MNI-nodes-base.form', name: 'Form' },
 					],
 				},
 				{
 					id: 'wf-no-trigger',
 					name: 'No Trigger',
 					isArchived: false,
-					nodes: [{ type: 'n8n-nodes-base.set', name: 'Set' }],
+					nodes: [{ type: 'MNI-nodes-base.set', name: 'Set' }],
 				},
 			]);
 			render([], vi.fn(), [], PROJECT_ID, 'workflows');
@@ -873,7 +873,7 @@ describe('AgentToolsConnectionModalWrapper', () => {
 					projectId: PROJECT_ID,
 					nodes: expect.arrayContaining([
 						expect.objectContaining({
-							type: 'n8n-nodes-base.executeWorkflowTrigger',
+							type: 'MNI-nodes-base.executeWorkflowTrigger',
 						}),
 					]),
 				}),
@@ -940,8 +940,8 @@ describe('AgentToolsConnectionModalWrapper', () => {
 			getWorkflowMock.mockResolvedValueOnce({
 				...WORKFLOW,
 				nodes: [
-					{ type: 'n8n-nodes-base.executeWorkflowTrigger', name: 'When called' },
-					{ type: 'n8n-nodes-base.form', name: 'Ask the user' },
+					{ type: 'MNI-nodes-base.executeWorkflowTrigger', name: 'When called' },
+					{ type: 'MNI-nodes-base.form', name: 'Ask the user' },
 				],
 			} as unknown as IWorkflowDb);
 
@@ -974,7 +974,7 @@ describe('AgentToolsConnectionModalWrapper', () => {
 		});
 		nodeTypesStore.communityNodeType = vi.fn().mockReturnValue({
 			nodeDescription: COMMUNITY_PREVIEW,
-			packageName: 'n8n-nodes-firecrawl',
+			packageName: 'MNI-nodes-firecrawl',
 			isOfficialNode: true,
 		});
 		nodeTypesStore.visibleNodeTypesByOutputConnectionTypeNames = {
@@ -998,7 +998,7 @@ describe('AgentToolsConnectionModalWrapper', () => {
 		nodeTypesStore.getNodeType = vi.fn().mockReturnValue(null);
 		nodeTypesStore.communityNodeType = vi.fn().mockReturnValue({
 			nodeDescription: COMMUNITY_PREVIEW,
-			packageName: 'n8n-nodes-firecrawl',
+			packageName: 'MNI-nodes-firecrawl',
 			isOfficialNode: true,
 		});
 		nodeTypesStore.visibleNodeTypesByOutputConnectionTypeNames = {
@@ -1080,16 +1080,16 @@ describe('AgentToolsConnectionModalWrapper', () => {
 			};
 		});
 
-		it('keeps All first and default, with the n8n-connect tab right after it', async () => {
+		it('keeps All first and default, with the MNI-connect tab right after it', async () => {
 			render();
 			await flushPromises();
 
 			// "All" stays the default tab; MNI Connect slots in right after it.
-			expect((modalAttrs.categories as string[]).slice(0, 2)).toEqual(['all', 'n8n-connect']);
+			expect((modalAttrs.categories as string[]).slice(0, 2)).toEqual(['all', 'MNI-connect']);
 
-			const gateway = getItems().find((item) => item.id === `n8n-connect:${SLACK.name}`);
+			const gateway = getItems().find((item) => item.id === `MNI-connect:${SLACK.name}`);
 			expect(gateway).toMatchObject({
-				category: 'n8n-connect',
+				category: 'MNI-connect',
 				freeCredits: true,
 				status: 'none',
 			});
@@ -1097,25 +1097,25 @@ describe('AgentToolsConnectionModalWrapper', () => {
 			expect(getItems().find((item) => item.id === `nodeType:${SLACK.name}`)).toBeDefined();
 			// A tool the gateway does not back must not leak into the section.
 			expect(
-				getItems().find((item) => item.id === `n8n-connect:${WIKIPEDIA.name}`),
+				getItems().find((item) => item.id === `MNI-connect:${WIKIPEDIA.name}`),
 			).toBeUndefined();
 		});
 
-		it('hides the n8n-connect tab when the gateway is disabled', async () => {
+		it('hides the MNI-connect tab when the gateway is disabled', async () => {
 			settingsStore.isAiGatewayEnabled = false;
 			render();
 			await flushPromises();
 
-			expect(modalAttrs.categories as string[]).not.toContain('n8n-connect');
-			expect(getItems().some((item) => item.id.startsWith('n8n-connect:'))).toBe(false);
+			expect(modalAttrs.categories as string[]).not.toContain('MNI-connect');
+			expect(getItems().some((item) => item.id.startsWith('MNI-connect:'))).toBe(false);
 		});
 
-		it('hides the n8n-connect tab when no available tool is gateway-eligible', async () => {
+		it('hides the MNI-connect tab when no available tool is gateway-eligible', async () => {
 			aiGatewayStore.isNodeSupported = vi.fn().mockReturnValue(false);
 			render();
 			await flushPromises();
 
-			expect(modalAttrs.categories as string[]).not.toContain('n8n-connect');
+			expect(modalAttrs.categories as string[]).not.toContain('MNI-connect');
 		});
 
 		it('opens the configure step with the managed credential pre-selected', async () => {
@@ -1123,7 +1123,7 @@ describe('AgentToolsConnectionModalWrapper', () => {
 			render([], onConfirm);
 			await flushPromises();
 
-			const gateway = getItems().find((item) => item.id === `n8n-connect:${SLACK.name}`);
+			const gateway = getItems().find((item) => item.id === `MNI-connect:${SLACK.name}`);
 			emitConnect(gateway!);
 			await flushPromises();
 
@@ -1146,7 +1146,7 @@ describe('AgentToolsConnectionModalWrapper', () => {
 			render([], onConfirm);
 			await flushPromises();
 
-			const gateway = getItems().find((item) => item.id === `n8n-connect:${SLACK.name}`);
+			const gateway = getItems().find((item) => item.id === `MNI-connect:${SLACK.name}`);
 			emitConnect(gateway!);
 			await flushPromises();
 

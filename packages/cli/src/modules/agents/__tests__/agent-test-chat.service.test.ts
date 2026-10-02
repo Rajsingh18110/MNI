@@ -2,7 +2,7 @@ import { mock } from 'vitest-mock-extended';
 
 import type { AgentChatAttachmentService } from '../agent-chat-attachment.service';
 import { AgentTestChatService, chatThreadId } from '../agent-test-chat.service';
-import type { N8nMemory } from '../integrations/n8n-memory';
+import type { N8nMemory } from '../integrations/MNI-memory';
 
 const agentId = 'agent-1';
 const userId = 'user-1';

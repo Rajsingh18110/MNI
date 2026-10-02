@@ -1,5 +1,5 @@
-import type { WorkflowReviewRequestForWorkflow, WorkflowReviewRequestList } from '@n8n/api-types';
-import { ResponseError } from '@n8n/rest-api-client';
+import type { WorkflowReviewRequestForWorkflow, WorkflowReviewRequestList } from '@MNI/api-types';
+import { ResponseError } from '@MNI/rest-api-client';
 import { createPinia, setActivePinia } from 'pinia';
 
 import { fetchWorkflowReviewRequests } from '@/features/workflow-reviews/workflowReviews.api';

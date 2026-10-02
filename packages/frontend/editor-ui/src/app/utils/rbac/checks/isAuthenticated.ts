@@ -1,5 +1,5 @@
-import { useUsersStore } from '@n8n/stores/users.store';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useUsersStore } from '@MNI/stores/users.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import type { RBACPermissionCheck, AuthenticatedPermissionOptions } from '@/app/types/rbac';
 
 export const isAuthenticated: RBACPermissionCheck<AuthenticatedPermissionOptions> = (options) => {

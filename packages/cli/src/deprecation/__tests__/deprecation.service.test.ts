@@ -1,8 +1,8 @@
-import type { Logger } from '@n8n/backend-common';
-import { mockInstance } from '@n8n/backend-test-utils';
-import { GlobalConfig } from '@n8n/config';
-import type { InstanceType } from '@n8n/constants';
-import { InstanceSettings } from 'n8n-core';
+import type { Logger } from '@MNI/backend-common';
+import { mockInstance } from '@MNI/backend-test-utils';
+import { GlobalConfig } from '@MNI/config';
+import type { InstanceType } from '@MNI/constants';
+import { InstanceSettings } from 'MNI-core';
 import { mock } from 'vitest-mock-extended';
 
 import { DeprecationService } from '../deprecation.service';
@@ -59,32 +59,32 @@ describe('DeprecationService', () => {
 	};
 
 	test.each([
-		['N8N_BINARY_DATA_TTL', '1', true],
-		['N8N_PERSISTED_BINARY_DATA_TTL', '1', true],
+		['MNI_BINARY_DATA_TTL', '1', true],
+		['MNI_PERSISTED_BINARY_DATA_TTL', '1', true],
 		['EXECUTIONS_DATA_PRUNE_TIMEOUT', '1', true],
-		['N8N_CONFIG_FILES', '1', true],
-		['N8N_SKIP_WEBHOOK_DEREGISTRATION_SHUTDOWN', '1', true],
-		['N8N_RUNNERS_ENABLED', '1', true],
-		['N8N_DB_PING_TIMEOUT', '1', true],
+		['MNI_CONFIG_FILES', '1', true],
+		['MNI_SKIP_WEBHOOK_DEREGISTRATION_SHUTDOWN', '1', true],
+		['MNI_RUNNERS_ENABLED', '1', true],
+		['MNI_DB_PING_TIMEOUT', '1', true],
 		['WEBHOOK_URL', 'https://example.com/', true],
-		['N8N_DEFAULT_BINARY_DATA_MODE', 'default', true],
-		['N8N_DEFAULT_BINARY_DATA_MODE', 'filesystem', false],
-		['N8N_EXPRESSION_ENGINE', 'legacy', true],
-		['N8N_EXPRESSION_ENGINE', 'vm', false],
-		['N8N_WORKFLOW_TAGS_DISABLED', 'true', true],
-		['N8N_WORKFLOW_TAGS_DISABLED', '1', true],
-		['N8N_WORKFLOW_TAGS_DISABLED', 'false', false],
-		['N8N_WORKFLOW_TAGS_DISABLED', undefined, false],
-		['N8N_OUTBOUND_PROXY_MODE', 'main-only', true],
-		['N8N_OUTBOUND_PROXY_MODE', 'all', false],
-		['N8N_OUTBOUND_PROXY_MODE', undefined, false],
-		['N8N_RUNNERS_MODE', 'internal', true],
-		['N8N_RUNNERS_MODE', 'external', false],
-		['N8N_RUNNERS_MODE', undefined, true],
-		['N8N_SSRF_PROTECTION_ENABLED', 'true', true],
-		['N8N_SSRF_PROTECTION_ENABLED', '1', true],
-		['N8N_SSRF_PROTECTION_ENABLED', 'false', false],
-		['N8N_SSRF_PROTECTION_ENABLED', undefined, false],
+		['MNI_DEFAULT_BINARY_DATA_MODE', 'default', true],
+		['MNI_DEFAULT_BINARY_DATA_MODE', 'filesystem', false],
+		['MNI_EXPRESSION_ENGINE', 'legacy', true],
+		['MNI_EXPRESSION_ENGINE', 'vm', false],
+		['MNI_WORKFLOW_TAGS_DISABLED', 'true', true],
+		['MNI_WORKFLOW_TAGS_DISABLED', '1', true],
+		['MNI_WORKFLOW_TAGS_DISABLED', 'false', false],
+		['MNI_WORKFLOW_TAGS_DISABLED', undefined, false],
+		['MNI_OUTBOUND_PROXY_MODE', 'main-only', true],
+		['MNI_OUTBOUND_PROXY_MODE', 'all', false],
+		['MNI_OUTBOUND_PROXY_MODE', undefined, false],
+		['MNI_RUNNERS_MODE', 'internal', true],
+		['MNI_RUNNERS_MODE', 'external', false],
+		['MNI_RUNNERS_MODE', undefined, true],
+		['MNI_SSRF_PROTECTION_ENABLED', 'true', true],
+		['MNI_SSRF_PROTECTION_ENABLED', '1', true],
+		['MNI_SSRF_PROTECTION_ENABLED', 'false', false],
+		['MNI_SSRF_PROTECTION_ENABLED', undefined, false],
 	])('should detect when %s is `%s`', (envVar, value, mustWarn) => {
 		toTest(envVar, value, mustWarn);
 	});
@@ -186,10 +186,10 @@ describe('DeprecationService', () => {
 
 	describe('default-flip warnings', () => {
 		test.each([
-			'N8N_UNVERIFIED_PACKAGES_ENABLED',
-			'N8N_RUNNERS_TASK_TIMEOUT',
-			'N8N_COMPRESSION_NODE_MAX_DECOMPRESSED_SIZE_BYTES',
-			'N8N_COMPRESSION_NODE_MAX_ZIP_ENTRIES',
+			'MNI_UNVERIFIED_PACKAGES_ENABLED',
+			'MNI_RUNNERS_TASK_TIMEOUT',
+			'MNI_COMPRESSION_NODE_MAX_DECOMPRESSED_SIZE_BYTES',
+			'MNI_COMPRESSION_NODE_MAX_ZIP_ENTRIES',
 		])('should warn when %s is unset', (envVar) => {
 			delete process.env[envVar];
 			deprecationService.warn();
@@ -197,10 +197,10 @@ describe('DeprecationService', () => {
 		});
 
 		test.each([
-			['N8N_UNVERIFIED_PACKAGES_ENABLED', 'false'],
-			['N8N_RUNNERS_TASK_TIMEOUT', '120'],
-			['N8N_COMPRESSION_NODE_MAX_DECOMPRESSED_SIZE_BYTES', '1048576'],
-			['N8N_COMPRESSION_NODE_MAX_ZIP_ENTRIES', '100'],
+			['MNI_UNVERIFIED_PACKAGES_ENABLED', 'false'],
+			['MNI_RUNNERS_TASK_TIMEOUT', '120'],
+			['MNI_COMPRESSION_NODE_MAX_DECOMPRESSED_SIZE_BYTES', '1048576'],
+			['MNI_COMPRESSION_NODE_MAX_ZIP_ENTRIES', '100'],
 		])('should not warn when %s is set explicitly', (envVar, value) => {
 			process.env[envVar] = value;
 			deprecationService.warn();
@@ -208,25 +208,25 @@ describe('DeprecationService', () => {
 		});
 	});
 
-	describe('N8N_SSRF_PROTECTION_ENABLED', () => {
+	describe('MNI_SSRF_PROTECTION_ENABLED', () => {
 		beforeEach(() => {
-			process.env.N8N_SSRF_PROTECTION_ENABLED = 'true';
+			process.env.MNI_SSRF_PROTECTION_ENABLED = 'true';
 		});
 
 		test.each([undefined, 'default', 'DEFAULT , 100.64.0.0/10'])(
-			'should warn when N8N_SSRF_BLOCKED_IP_RANGES is `%s`',
+			'should warn when MNI_SSRF_BLOCKED_IP_RANGES is `%s`',
 			(ranges) => {
-				if (ranges === undefined) delete process.env.N8N_SSRF_BLOCKED_IP_RANGES;
-				else process.env.N8N_SSRF_BLOCKED_IP_RANGES = ranges;
+				if (ranges === undefined) delete process.env.MNI_SSRF_BLOCKED_IP_RANGES;
+				else process.env.MNI_SSRF_BLOCKED_IP_RANGES = ranges;
 				deprecationService.warn();
-				expect(logger.warn.mock.lastCall?.[0] ?? '').toContain('N8N_SSRF_PROTECTION_ENABLED');
+				expect(logger.warn.mock.lastCall?.[0] ?? '').toContain('MNI_SSRF_PROTECTION_ENABLED');
 			},
 		);
 
-		test('should not warn when N8N_SSRF_BLOCKED_IP_RANGES lists literal ranges only', () => {
-			process.env.N8N_SSRF_BLOCKED_IP_RANGES = '10.0.0.0/8,192.168.0.0/16';
+		test('should not warn when MNI_SSRF_BLOCKED_IP_RANGES lists literal ranges only', () => {
+			process.env.MNI_SSRF_BLOCKED_IP_RANGES = '10.0.0.0/8,192.168.0.0/16';
 			deprecationService.warn();
-			expect(logger.warn.mock.lastCall?.[0] ?? '').not.toContain('N8N_SSRF_PROTECTION_ENABLED');
+			expect(logger.warn.mock.lastCall?.[0] ?? '').not.toContain('MNI_SSRF_PROTECTION_ENABLED');
 		});
 	});
 

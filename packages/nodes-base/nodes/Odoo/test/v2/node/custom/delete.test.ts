@@ -1,6 +1,6 @@
 import type { MockProxy } from 'vitest-mock-extended';
 import { mock } from 'vitest-mock-extended';
-import type { IExecuteFunctions } from 'n8n-workflow';
+import type { IExecuteFunctions } from 'MNI-workflow';
 
 import { OdooV2 } from '../../../../v2/OdooV2.node';
 import { versionDescription } from '../../../../v2/actions/versionDescription';

@@ -1,6 +1,6 @@
-import { BaseRepository, TransactionRunner, type OperationContext } from '@n8n/db';
-import { Service } from '@n8n/di';
-import { DataSource, MoreThanOrEqual } from '@n8n/typeorm';
+import { BaseRepository, TransactionRunner, type OperationContext } from '@MNI/db';
+import { Service } from '@MNI/di';
+import { DataSource, MoreThanOrEqual } from '@MNI/typeorm';
 
 import { RefreshToken } from '../entities/oauth-refresh-token.entity';
 

@@ -12,20 +12,20 @@ import {
 	createWorkflowWithHistory,
 	randomCredentialPayload,
 	testDb,
-} from '@n8n/backend-test-utils';
-import { WorkflowsConfig } from '@n8n/config';
-import { LICENSE_FEATURES } from '@n8n/constants';
+} from '@MNI/backend-test-utils';
+import { WorkflowsConfig } from '@MNI/config';
+import { LICENSE_FEATURES } from '@MNI/constants';
 import {
 	ExecutionRepository,
 	WorkflowRepository,
 	type IWorkflowDb,
 	type Project,
 	type User,
-} from '@n8n/db';
-import { PolicyCheckMetadata } from '@n8n/decorators';
-import { Container } from '@n8n/di';
-import { InstanceSettings } from 'n8n-core';
-import { createRunExecutionData, type INode } from 'n8n-workflow';
+} from '@MNI/db';
+import { PolicyCheckMetadata } from '@MNI/decorators';
+import { Container } from '@MNI/di';
+import { InstanceSettings } from 'MNI-core';
+import { createRunExecutionData, type INode } from 'MNI-workflow';
 import { v4 as uuid } from 'uuid';
 
 import { ActiveWorkflowManager } from '@/active-workflow-manager';
@@ -40,9 +40,9 @@ import { clearPolicyCache } from './shared/policy-cache';
 
 const CHECK_ID = 'credential-type-availability';
 
-const MANUAL_TRIGGER = 'n8n-nodes-base.manualTrigger';
-const SCHEDULE_TRIGGER = 'n8n-nodes-base.scheduleTrigger';
-const HTTP_REQUEST = 'n8n-nodes-base.httpRequest';
+const MANUAL_TRIGGER = 'MNI-nodes-base.manualTrigger';
+const SCHEDULE_TRIGGER = 'MNI-nodes-base.scheduleTrigger';
+const HTTP_REQUEST = 'MNI-nodes-base.httpRequest';
 
 // Both are credential types `initCredentialsTypes` registers, and neither belongs to the node
 // type asking for it — the case a node policy alone cannot catch.

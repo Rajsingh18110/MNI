@@ -3,7 +3,7 @@ import type {
 	IExecuteFunctions,
 	INodeExecutionData,
 	INodeProperties,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { configureWaitTillDate } from '../../../../../utils/sendAndWait/configureWaitTillDate.util';
 import { getSendAndWaitProperties } from '../../../../../utils/sendAndWait/utils';

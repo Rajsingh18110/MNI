@@ -1,4 +1,4 @@
-import type { PromotePackageResultDto } from '@n8n/api-types';
+import type { PromotePackageResultDto } from '@MNI/api-types';
 import { createTestingPinia } from '@pinia/testing';
 import { waitFor } from '@testing-library/vue';
 import userEvent from '@testing-library/user-event';
@@ -16,7 +16,7 @@ vi.mock('../promotionsSettings.api', () => api);
 const mockShowError = vi.fn();
 const mockShowMessage = vi.fn();
 
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: () => ({ showError: mockShowError, showMessage: mockShowMessage }),
 }));
 

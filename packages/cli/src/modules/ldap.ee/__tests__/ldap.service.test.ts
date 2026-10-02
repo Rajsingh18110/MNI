@@ -1,14 +1,14 @@
-import type { LicenseState } from '@n8n/backend-common';
-import { mockLogger, mockInstance } from '@n8n/backend-test-utils';
-import { GlobalConfig } from '@n8n/config';
-import { LDAP_FEATURE_NAME, type LdapConfig } from '@n8n/constants';
-import type { Settings, User } from '@n8n/db';
-import { AuthIdentityRepository, SettingsRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
-import { QueryFailedError } from '@n8n/typeorm';
+import type { LicenseState } from '@MNI/backend-common';
+import { mockLogger, mockInstance } from '@MNI/backend-test-utils';
+import { GlobalConfig } from '@MNI/config';
+import { LDAP_FEATURE_NAME, type LdapConfig } from '@MNI/constants';
+import type { Settings, User } from '@MNI/db';
+import { AuthIdentityRepository, SettingsRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
+import { QueryFailedError } from '@MNI/typeorm';
 import { Client } from 'ldapts';
-import type { Cipher } from 'n8n-core';
-import { CREDENTIAL_BLANKING_VALUE, randomString } from 'n8n-workflow';
+import type { Cipher } from 'MNI-core';
+import { CREDENTIAL_BLANKING_VALUE, randomString } from 'MNI-workflow';
 import type { Mock } from 'vitest';
 import { mock } from 'vitest-mock-extended';
 
@@ -58,8 +58,8 @@ vi.mock('../helpers.ee', async () => ({
 	createLdapUserOnLocalDb: vi.fn(),
 }));
 
-vi.mock('n8n-workflow', async () => ({
-	...(await vi.importActual<typeof import('n8n-workflow')>('n8n-workflow')),
+vi.mock('MNI-workflow', async () => ({
+	...(await vi.importActual<typeof import('MNI-workflow')>('MNI-workflow')),
 	randomString: vi.fn(),
 }));
 

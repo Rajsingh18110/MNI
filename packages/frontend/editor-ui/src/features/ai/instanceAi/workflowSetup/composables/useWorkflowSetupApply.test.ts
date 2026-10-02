@@ -8,7 +8,7 @@ const toast = vi.hoisted(() => ({
 	showError: vi.fn(),
 }));
 
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: () => toast,
 }));
 

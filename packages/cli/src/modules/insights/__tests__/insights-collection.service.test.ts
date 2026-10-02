@@ -1,14 +1,14 @@
-import { mockLogger } from '@n8n/backend-test-utils';
+import { mockLogger } from '@MNI/backend-test-utils';
 import type {
 	Project,
 	SharedWorkflow,
 	SharedWorkflowRepository,
 	IWorkflowDb,
 	WorkflowEntity,
-} from '@n8n/db';
-import type { WorkflowExecuteAfterContext } from '@n8n/decorators';
+} from '@MNI/db';
+import type { WorkflowExecuteAfterContext } from '@MNI/decorators';
 import { DateTime } from 'luxon';
-import type { IRun } from 'n8n-workflow';
+import type { IRun } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import type { InsightsMetadata } from '../database/entities/insights-metadata';

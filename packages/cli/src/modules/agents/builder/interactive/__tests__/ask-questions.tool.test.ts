@@ -1,5 +1,5 @@
-import type { InterruptibleToolContext } from '@n8n/agents';
-import { TELEMETRY_EVENT } from '@n8n/telemetry';
+import type { InterruptibleToolContext } from '@MNI/agents';
+import { TELEMETRY_EVENT } from '@MNI/telemetry';
 import type { Mock } from 'vitest';
 
 import { buildAskQuestionsTool } from '../ask-questions.tool';

@@ -1,7 +1,7 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { createComponentRenderer } from '@/__tests__/render';
 import { createTestingPinia } from '@pinia/testing';
-import type { AgentConfigValidationIssue } from '@n8n/api-types';
+import type { AgentConfigValidationIssue } from '@MNI/api-types';
 import { mockedStore } from '@/__tests__/utils';
 import { useUIStore } from '@/app/stores/ui.store';
 import { fireEvent, waitFor } from '@testing-library/vue';
@@ -12,7 +12,7 @@ import { AgentModalTestStub } from './utils/AgentModalTestStub';
 import AgentToolConfigModal from '../components/AgentToolConfigModal.vue';
 import type { AgentJsonToolRef, CustomToolEntry } from '../types';
 
-vi.mock('@n8n/i18n', () => {
+vi.mock('@MNI/i18n', () => {
 	const i18n = {
 		baseText: (key: string) => key,
 	};
@@ -30,8 +30,8 @@ vi.mock('uuid', () => ({ v4: () => 'mocked-uuid' }));
 // N8nDialog teleports out of the tree via Reka UI's DialogPortal, so its
 // content is unreachable from the render container. Swap it for an inline
 // pass-through; the header and footer wrappers render fine as-is.
-vi.mock('@n8n/design-system', async () => {
-	const actual = await vi.importActual<typeof import('@n8n/design-system')>('@n8n/design-system');
+vi.mock('@MNI/design-system', async () => {
+	const actual = await vi.importActual<typeof import('@MNI/design-system')>('@MNI/design-system');
 	const N8nDialog = {
 		name: 'N8nDialog',
 		props: {
@@ -81,7 +81,7 @@ function createToolSettingsStub(emitValid: boolean) {
 			expose({
 				getNode: () => node,
 				handleChangeName: vi.fn(),
-				getNodeTypeDescription: () => ({ name: 'n8n-nodes-base.slack', displayName: 'Slack' }),
+				getNodeTypeDescription: () => ({ name: 'MNI-nodes-base.slack', displayName: 'Slack' }),
 			});
 			onMounted(() => {
 				emit('update:valid', emitValid);
@@ -158,7 +158,7 @@ function toolRef(
 		name: 'Slack',
 		description: 'Send messages to Slack',
 		node: {
-			nodeType: 'n8n-nodes-base.slack',
+			nodeType: 'MNI-nodes-base.slack',
 			nodeTypeVersion: 1,
 			nodeParameters: { channel: 'general' },
 			credentials: { slackApi: { id: 'cred-1', name: 'Prod Slack' } },
@@ -326,9 +326,9 @@ describe('AgentToolConfigModal', () => {
 		const { container, getByTestId, queryByTestId } = renderModal({
 			valid: true,
 			ref: toolRef({
-				nodeType: 'n8n-nodes-base.httpRequestTool',
+				nodeType: 'MNI-nodes-base.httpRequestTool',
 				nodeParameters: {
-					url: "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('URL', ``, 'string') }}",
+					url: "={{ /*MNI-auto-generated-fromAI-override*/ $fromAI('URL', ``, 'string') }}",
 				},
 			}),
 			validationIssues: [

@@ -1,7 +1,7 @@
-import { createWorkflow, testDb } from '@n8n/backend-test-utils';
-import { ExecutionDataRepository, ExecutionRepository } from '@n8n/db';
-import type { EntityManager } from '@n8n/db';
-import { Container } from '@n8n/di';
+import { createWorkflow, testDb } from '@MNI/backend-test-utils';
+import { ExecutionDataRepository, ExecutionRepository } from '@MNI/db';
+import type { EntityManager } from '@MNI/db';
+import { Container } from '@MNI/di';
 
 import { DbStore } from '../db-store';
 import { MissingExecutionDataError } from '../missing-execution-data.error';

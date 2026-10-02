@@ -1,6 +1,6 @@
 import { createHash, randomBytes } from 'node:crypto';
 
-import { LockNamespace, type LockService } from '@n8n/backend-common';
+import { LockNamespace, type LockService } from '@MNI/backend-common';
 
 import type { CacheService } from '@/services/cache/cache.service';
 

@@ -12,25 +12,25 @@ describe('packageResolverFor', () => {
 	it('resolves a node type package by the segment before the first dot', () => {
 		const resolvePackage = packageResolverFor(NODE_TYPES_KIND, makeRegistry({}));
 
-		expect(resolvePackage('n8n-nodes-base.slack')).toBe('n8n-nodes-base');
-		expect(resolvePackage('@acme/n8n-nodes-acme.thing')).toBe('@acme/n8n-nodes-acme');
+		expect(resolvePackage('MNI-nodes-base.slack')).toBe('MNI-nodes-base');
+		expect(resolvePackage('@acme/MNI-nodes-acme.thing')).toBe('@acme/MNI-nodes-acme');
 	});
 
 	it('resolves a credential type package from the loader that loaded it', () => {
 		const registry = makeRegistry({
-			'n8n-nodes-base': {
-				packageName: 'n8n-nodes-base',
+			'MNI-nodes-base': {
+				packageName: 'MNI-nodes-base',
 				known: { nodes: {}, credentials: { slackApi: { className: 'SlackApi', sourcePath: '' } } },
 			} as unknown as LoadNodesAndCredentials['loaders'][string],
-			'@acme/n8n-nodes-acme': {
-				packageName: '@acme/n8n-nodes-acme',
+			'@acme/MNI-nodes-acme': {
+				packageName: '@acme/MNI-nodes-acme',
 				known: { nodes: {}, credentials: { acmeApi: { className: 'AcmeApi', sourcePath: '' } } },
 			} as unknown as LoadNodesAndCredentials['loaders'][string],
 		});
 		const resolvePackage = packageResolverFor(CREDENTIAL_TYPES_KIND, registry);
 
-		expect(resolvePackage('slackApi')).toBe('n8n-nodes-base');
-		expect(resolvePackage('acmeApi')).toBe('@acme/n8n-nodes-acme');
+		expect(resolvePackage('slackApi')).toBe('MNI-nodes-base');
+		expect(resolvePackage('acmeApi')).toBe('@acme/MNI-nodes-acme');
 	});
 
 	it('resolves an unknown credential type to null, so a package selector never matches it', () => {
@@ -41,8 +41,8 @@ describe('packageResolverFor', () => {
 
 	it('resolves a credential type named after an Object.prototype property to null', () => {
 		const registry = makeRegistry({
-			'n8n-nodes-base': {
-				packageName: 'n8n-nodes-base',
+			'MNI-nodes-base': {
+				packageName: 'MNI-nodes-base',
 				known: { nodes: {}, credentials: {} },
 			} as unknown as LoadNodesAndCredentials['loaders'][string],
 		});
@@ -74,14 +74,14 @@ describe('packageResolverFor', () => {
 describe('isPackageInstalled', () => {
 	it('is true for a package that has a registered loader', () => {
 		const registry = makeRegistry({
-			'n8n-nodes-base': {} as LoadNodesAndCredentials['loaders'][string],
+			'MNI-nodes-base': {} as LoadNodesAndCredentials['loaders'][string],
 		});
 
-		expect(isPackageInstalled(registry, 'n8n-nodes-base')).toBe(true);
+		expect(isPackageInstalled(registry, 'MNI-nodes-base')).toBe(true);
 	});
 
 	it('is false for a package with no registered loader', () => {
-		expect(isPackageInstalled(makeRegistry({}), 'n8n-nodes-not-installed')).toBe(false);
+		expect(isPackageInstalled(makeRegistry({}), 'MNI-nodes-not-installed')).toBe(false);
 	});
 
 	it('is false for a package named after an inherited Object.prototype property', () => {

@@ -5,7 +5,7 @@
 			"parameters": {},
 			"id": "trigger-id",
 			"name": "When clicking \"Execute Workflow\"",
-			"type": "n8n-nodes-base.manualTrigger",
+			"type": "MNI-nodes-base.manualTrigger",
 			"typeVersion": 1,
 			"position": [0, 0]
 		},
@@ -19,7 +19,7 @@
 			},
 			"id": "gitlab-node-id",
 			"name": "GitLab",
-			"type": "n8n-nodes-base.gitlab",
+			"type": "MNI-nodes-base.gitlab",
 			"typeVersion": 1,
 			"position": [200, 0],
 			"credentials": {

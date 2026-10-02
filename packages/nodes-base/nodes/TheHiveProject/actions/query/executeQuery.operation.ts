@@ -3,8 +3,8 @@ import type {
 	IExecuteFunctions,
 	INodeExecutionData,
 	INodeProperties,
-} from 'n8n-workflow';
-import { NodeOperationError, jsonParse } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeOperationError, jsonParse } from 'MNI-workflow';
 
 import { updateDisplayOptions, wrapData } from '@utils/utilities';
 

@@ -1,4 +1,4 @@
-import { DATA_TABLE_COLUMN_MAX_LENGTH, DATA_TABLE_COLUMN_REGEX } from '@n8n/api-types';
+import { DATA_TABLE_COLUMN_MAX_LENGTH, DATA_TABLE_COLUMN_REGEX } from '@MNI/api-types';
 import fs from 'fs';
 import path from 'path';
 import { parse } from 'yaml';
@@ -17,7 +17,7 @@ describe('dataTableColumnName OpenAPI fragment', () => {
 		pattern: DATA_TABLE_COLUMN_REGEX.source,
 	} as const;
 
-	it('matches column name validation constants from @n8n/api-types', () => {
+	it('matches column name validation constants from @MNI/api-types', () => {
 		const ymlPath = path.join(__dirname, '../spec/schemas/dataTableColumnName.yml');
 		const doc = columnNameYmlSchema.parse(parse(fs.readFileSync(ymlPath, 'utf8')));
 

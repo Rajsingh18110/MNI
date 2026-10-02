@@ -6,7 +6,7 @@ const mocks = vi.hoisted(() => ({
 	getProviderModels: vi.fn(),
 }));
 
-vi.mock('@n8n/stores/useRootStore', () => ({
+vi.mock('@MNI/stores/useRootStore', () => ({
 	useRootStore: () => ({
 		restApiContext: {},
 	}),

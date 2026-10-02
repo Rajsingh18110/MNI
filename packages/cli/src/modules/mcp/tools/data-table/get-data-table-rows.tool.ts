@@ -2,8 +2,8 @@ import {
 	dataTableColumnNameSchema,
 	dataTableFilterTypeSchema,
 	FilterConditionSchema,
-} from '@n8n/api-types';
-import type { User } from '@n8n/db';
+} from '@MNI/api-types';
+import type { User } from '@MNI/db';
 import z from 'zod';
 
 import type { DataTableUserOperations } from '@/modules/data-table/data-table-proxy.service';

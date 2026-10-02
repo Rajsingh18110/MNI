@@ -2,7 +2,7 @@
 
 Two opt-in suites, run against **both** SQLite (single-writer) and Postgres
 (SKIP LOCKED, dead-tuple churn), informing the
-[minimum-interval policy](https://linear.app/n8n/issue/CAT-3623) decision.
+[minimum-interval policy](https://linear.app/MNI/issue/CAT-3623) decision.
 
 - **`scheduler-benchmarks.test.ts`** — operator KPIs (capacity, punctuality,
   recovery, health).
@@ -10,7 +10,7 @@ Two opt-in suites, run against **both** SQLite (single-writer) and Postgres
   plans for `ScheduledJobRepository` / `ScheduledTaskRepository`.
 
 They live here beside the other scheduling integration tests, not in
-`@n8n/performance` or `@n8n/benchmark`.
+`@MNI/performance` or `@MNI/benchmark`.
 
 ## KPIs
 
@@ -28,20 +28,20 @@ so workers share one `DataSource` and claims queue on that writer.
 
 ## Running
 
-Set `N8N_SCHEDULER_BENCHMARK=1` (both suites are `describe.runIf`-skipped
+Set `MNI_SCHEDULER_BENCHMARK=1` (both suites are `describe.runIf`-skipped
 without it) and reuse the scheduling-integration scripts, filtered by file name.
 
 ```sh
 # SQLite
-N8N_SCHEDULER_BENCHMARK=1 pnpm --filter MNI test:sqlite scheduler-benchmarks
+MNI_SCHEDULER_BENCHMARK=1 pnpm --filter MNI test:sqlite scheduler-benchmarks
 
 # Postgres via testcontainers (needs Docker; on Colima add the socket override)
-N8N_SCHEDULER_BENCHMARK=1 \
+MNI_SCHEDULER_BENCHMARK=1 \
   TESTCONTAINERS_DOCKER_SOCKET_OVERRIDE=/var/run/docker.sock \
-  pnpm --filter n8n test:postgres:integration:tc scheduler-benchmarks
+  pnpm --filter MNI test:postgres:integration:tc scheduler-benchmarks
 
 # Postgres against a running instance (DB_POSTGRESDB_* set)
-N8N_SCHEDULER_BENCHMARK=1 pnpm --filter MNI test:postgres scheduler-benchmarks
+MNI_SCHEDULER_BENCHMARK=1 pnpm --filter MNI test:postgres scheduler-benchmarks
 ```
 
 Default run: ~50s SQLite, ~110s Postgres (laptop-class). Results print to stdout
@@ -49,7 +49,7 @@ via `console.log`, one block per benchmark; nothing is written to disk. Vitest
 buffers per-test logs, so capture with a redirect:
 
 ```sh
-N8N_SCHEDULER_BENCHMARK=1 pnpm --filter MNI test:sqlite scheduler-benchmarks > bench.log 2>&1
+MNI_SCHEDULER_BENCHMARK=1 pnpm --filter MNI test:sqlite scheduler-benchmarks > bench.log 2>&1
 grep -A20 'scheduler-benchmark ·' bench.log
 ```
 
@@ -59,24 +59,24 @@ The tables here and in `benchmark-baseline.md` are hand-captured from that stdou
 
 | Env var | Default | Meaning |
 |---------|---------|---------|
-| `N8N_SCHEDULER_BENCHMARK_BATCH` | 100 | rows per claim statement (all KPIs) |
-| `N8N_SCHEDULER_BENCHMARK_CAPACITY_WORKERS` | 8 | instances (KPI 1) |
-| `N8N_SCHEDULER_BENCHMARK_CAPACITY_BACKLOG` | 50000 | schedules to fire (KPI 1) |
-| `N8N_SCHEDULER_BENCHMARK_CAPACITY_MIN_FPS` | 50 | capacity floor (fires/sec) |
-| `N8N_SCHEDULER_BENCHMARK_PUNCTUALITY_WORKERS` | 8 | instances (KPI 2) |
-| `N8N_SCHEDULER_BENCHMARK_PUNCTUALITY_BURST` | 20000 | schedules due at once (KPI 2) |
-| `N8N_SCHEDULER_BENCHMARK_PUNCTUALITY_MAX_P99_MS` | 30000 | lateness ceiling (p99) |
-| `N8N_SCHEDULER_BENCHMARK_RECOVERY_WORKERS` | 8 | recovering instances (KPI 3) |
-| `N8N_SCHEDULER_BENCHMARK_RECOVERY_STRANDED` | 20000 | crashed-node backlog (KPI 3) |
-| `N8N_SCHEDULER_BENCHMARK_RECOVERY_MAX_SECONDS` | 120 | recovery-time budget |
-| `N8N_SCHEDULER_BENCHMARK_CHURN_WORKERS` | 8 | instances (KPI 4) |
-| `N8N_SCHEDULER_BENCHMARK_CHURN_CYCLES` | 20 | × batch = total fires (KPI 4) |
-| `N8N_SCHEDULER_BENCHMARK_CHURN_BATCH` | 5000 | fires per cycle; also the pending-backlog watermark |
-| `N8N_SCHEDULER_BENCHMARK_CHURN_MIN_FPS` | 50 | churn floor (fires/sec) |
-| `N8N_SCHEDULER_BENCHMARK_CHURN_RETENTION_LIMIT` | 1000 | rows pruned per retention sweep |
-| `N8N_SCHEDULER_BENCHMARK_CHURN_RETENTION_INTERVAL_MS` | 100 | delay between retention sweeps |
-| `N8N_SCHEDULER_BENCHMARK_CHURN_SAMPLE_INTERVAL_MS` | 50 | live/finished sampling interval |
-| `N8N_SCHEDULER_BENCHMARK_CHURN_MAX_FINISHED_ROWS` | 5000 | ceiling on finished-but-unpruned rows |
+| `MNI_SCHEDULER_BENCHMARK_BATCH` | 100 | rows per claim statement (all KPIs) |
+| `MNI_SCHEDULER_BENCHMARK_CAPACITY_WORKERS` | 8 | instances (KPI 1) |
+| `MNI_SCHEDULER_BENCHMARK_CAPACITY_BACKLOG` | 50000 | schedules to fire (KPI 1) |
+| `MNI_SCHEDULER_BENCHMARK_CAPACITY_MIN_FPS` | 50 | capacity floor (fires/sec) |
+| `MNI_SCHEDULER_BENCHMARK_PUNCTUALITY_WORKERS` | 8 | instances (KPI 2) |
+| `MNI_SCHEDULER_BENCHMARK_PUNCTUALITY_BURST` | 20000 | schedules due at once (KPI 2) |
+| `MNI_SCHEDULER_BENCHMARK_PUNCTUALITY_MAX_P99_MS` | 30000 | lateness ceiling (p99) |
+| `MNI_SCHEDULER_BENCHMARK_RECOVERY_WORKERS` | 8 | recovering instances (KPI 3) |
+| `MNI_SCHEDULER_BENCHMARK_RECOVERY_STRANDED` | 20000 | crashed-node backlog (KPI 3) |
+| `MNI_SCHEDULER_BENCHMARK_RECOVERY_MAX_SECONDS` | 120 | recovery-time budget |
+| `MNI_SCHEDULER_BENCHMARK_CHURN_WORKERS` | 8 | instances (KPI 4) |
+| `MNI_SCHEDULER_BENCHMARK_CHURN_CYCLES` | 20 | × batch = total fires (KPI 4) |
+| `MNI_SCHEDULER_BENCHMARK_CHURN_BATCH` | 5000 | fires per cycle; also the pending-backlog watermark |
+| `MNI_SCHEDULER_BENCHMARK_CHURN_MIN_FPS` | 50 | churn floor (fires/sec) |
+| `MNI_SCHEDULER_BENCHMARK_CHURN_RETENTION_LIMIT` | 1000 | rows pruned per retention sweep |
+| `MNI_SCHEDULER_BENCHMARK_CHURN_RETENTION_INTERVAL_MS` | 100 | delay between retention sweeps |
+| `MNI_SCHEDULER_BENCHMARK_CHURN_SAMPLE_INTERVAL_MS` | 50 | live/finished sampling interval |
+| `MNI_SCHEDULER_BENCHMARK_CHURN_MAX_FINISHED_ROWS` | 5000 | ceiling on finished-but-unpruned rows |
 
 ## Reading the results (min-interval decision)
 
@@ -111,7 +111,7 @@ corpus (default 100k tasks / 50k jobs: mostly terminal history, some
 pending/due, some running/expired) and reports latency p50/p95/p99 and the
 `EXPLAIN` plan, flagged index vs full scan. A full scan is reported as an
 optimization candidate, not asserted. Sizes override via
-`N8N_SCHEDULER_QUERY_TASK_ROWS`, `_JOB_ROWS`, `_ITERS`, `_BATCH`, `_WRITE_BATCH`,
+`MNI_SCHEDULER_QUERY_TASK_ROWS`, `_JOB_ROWS`, `_ITERS`, `_BATCH`, `_WRITE_BATCH`,
 `_WRITE_JOB_BATCH`.
 
 Reads — p99 (ms) and plan:

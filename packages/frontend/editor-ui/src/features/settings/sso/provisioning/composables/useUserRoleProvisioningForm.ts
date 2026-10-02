@@ -1,20 +1,20 @@
 import { computed, ref } from 'vue';
-import { ROLE, type ProvisioningModeFlags } from '@n8n/api-types';
+import { ROLE, type ProvisioningModeFlags } from '@MNI/api-types';
 import { useUserRoleProvisioningStore } from './userRoleProvisioning.store';
-import type { ProvisioningConfig } from '@n8n/rest-api-client/api/provisioning';
+import type { ProvisioningConfig } from '@MNI/rest-api-client/api/provisioning';
 import { useRoleMappingRulesApi } from './useRoleMappingRulesApi';
 import type {
 	RoleAssignmentSetting,
 	RoleMappingMethodSetting,
 } from '../components/UserRoleProvisioningDropdown.vue';
 import { type SupportedProtocolType } from '../../sso.store';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
-import { useRootStore } from '@n8n/stores/useRootStore';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
+import { useRootStore } from '@MNI/stores/useRootStore';
 import type { RoleMappingRulesSaveResult } from './useRoleMappingRules';
 
 type TelemetryAssignmentMethod = 'disabled' | 'instance_role' | 'instance_and_project_roles';
 
-type TelemetryRoleMappingMethod = 'idp_rule_mapping' | 'n8n_rule_mapping';
+type TelemetryRoleMappingMethod = 'idp_rule_mapping' | 'MNI_rule_mapping';
 
 export type RoleAssignmentTransitionType = 'none' | 'backup' | 'switchToManual';
 
@@ -79,7 +79,7 @@ function getTelemetryAssignmentMethod(
 function getTelemetryRoleMappingMethod(
 	mappingMethod: RoleMappingMethodSetting,
 ): TelemetryRoleMappingMethod {
-	return mappingMethod === 'rules_in_n8n' ? 'n8n_rule_mapping' : 'idp_rule_mapping';
+	return mappingMethod === 'rules_in_n8n' ? 'MNI_rule_mapping' : 'idp_rule_mapping';
 }
 
 export function useUserRoleProvisioningForm(protocol: SupportedProtocolType) {

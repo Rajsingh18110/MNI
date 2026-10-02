@@ -1,8 +1,8 @@
-import { mockInstance } from '@n8n/backend-test-utils';
-import { PrometheusMetricsConfig } from '@n8n/config';
-import { ScheduledJobMisfirePolicy } from '@n8n/constants';
-import type { ScheduledTaskMetricSnapshot, ScheduledTaskRepository } from '@n8n/db';
-import type { InstanceSettings } from 'n8n-core';
+import { mockInstance } from '@MNI/backend-test-utils';
+import { PrometheusMetricsConfig } from '@MNI/config';
+import { ScheduledJobMisfirePolicy } from '@MNI/constants';
+import type { ScheduledTaskMetricSnapshot, ScheduledTaskRepository } from '@MNI/db';
+import type { InstanceSettings } from 'MNI-core';
 import promClient from 'prom-client';
 import type { Mock } from 'vitest';
 import { mock } from 'vitest-mock-extended';
@@ -15,7 +15,7 @@ vi.mock('prom-client');
 
 describe('PrometheusSchedulerMetricsService', () => {
 	const config = mockInstance(PrometheusMetricsConfig, {
-		prefix: 'n8n_',
+		prefix: 'MNI_',
 		includeSchedulerMetrics: true,
 		schedulerMetricsInterval: 20,
 	});
@@ -41,7 +41,7 @@ describe('PrometheusSchedulerMetricsService', () => {
 
 	beforeEach(() => {
 		Object.assign(config, {
-			prefix: 'n8n_',
+			prefix: 'MNI_',
 			includeSchedulerMetrics: true,
 			schedulerMetricsInterval: 20,
 		});
@@ -116,33 +116,33 @@ describe('PrometheusSchedulerMetricsService', () => {
 			const counterNames = counterCtor.mock.calls.map((c) => c[0].name);
 			expect(counterNames).toEqual(
 				expect.arrayContaining([
-					'n8n_scheduler_tasks_dispatched_total',
-					'n8n_scheduler_tasks_completed_total',
-					'n8n_scheduler_task_retries_total',
-					'n8n_scheduler_occurrences_materialized_total',
-					'n8n_scheduler_jobs_deferred_total',
-					'n8n_scheduler_tasks_reclaimed_total',
-					'n8n_scheduler_tasks_dead_lettered_total',
-					'n8n_scheduler_tasks_pruned_total',
-					'n8n_scheduler_jobs_quarantined_total',
-					'n8n_scheduler_orphaned_jobs_deleted_total',
-					'n8n_scheduler_jobs_revived_total',
-					'n8n_scheduler_tasks_lease_lost_total',
+					'MNI_scheduler_tasks_dispatched_total',
+					'MNI_scheduler_tasks_completed_total',
+					'MNI_scheduler_task_retries_total',
+					'MNI_scheduler_occurrences_materialized_total',
+					'MNI_scheduler_jobs_deferred_total',
+					'MNI_scheduler_tasks_reclaimed_total',
+					'MNI_scheduler_tasks_dead_lettered_total',
+					'MNI_scheduler_tasks_pruned_total',
+					'MNI_scheduler_jobs_quarantined_total',
+					'MNI_scheduler_orphaned_jobs_deleted_total',
+					'MNI_scheduler_jobs_revived_total',
+					'MNI_scheduler_tasks_lease_lost_total',
 				]),
 			);
 
 			const histogramNames = (promClient.Histogram as unknown as Mock).mock.calls.map(
 				(c) => c[0].name,
 			);
-			expect(histogramNames).toContain('n8n_scheduler_dispatch_lag_seconds');
+			expect(histogramNames).toContain('MNI_scheduler_dispatch_lag_seconds');
 
 			const gaugeNames = (promClient.Gauge as unknown as Mock).mock.calls.map((c) => c[0].name);
 			expect(gaugeNames).toEqual(
 				expect.arrayContaining([
-					'n8n_scheduler_tasks_pending',
-					'n8n_scheduler_tasks_due',
-					'n8n_scheduler_tasks_running',
-					'n8n_scheduler_oldest_pending_age_seconds',
+					'MNI_scheduler_tasks_pending',
+					'MNI_scheduler_tasks_due',
+					'MNI_scheduler_tasks_running',
+					'MNI_scheduler_oldest_pending_age_seconds',
 				]),
 			);
 		});
@@ -159,16 +159,16 @@ describe('PrometheusSchedulerMetricsService', () => {
 			service.init();
 
 			for (const name of [
-				'n8n_scheduler_occurrences_materialized_total',
-				'n8n_scheduler_jobs_deferred_total',
-				'n8n_scheduler_occurrences_retired_total',
-				'n8n_scheduler_occurrences_missed_total',
-				'n8n_scheduler_tasks_reclaimed_total',
-				'n8n_scheduler_tasks_dead_lettered_total',
-				'n8n_scheduler_tasks_pruned_total',
-				'n8n_scheduler_jobs_quarantined_total',
-				'n8n_scheduler_orphaned_jobs_deleted_total',
-				'n8n_scheduler_jobs_revived_total',
+				'MNI_scheduler_occurrences_materialized_total',
+				'MNI_scheduler_jobs_deferred_total',
+				'MNI_scheduler_occurrences_retired_total',
+				'MNI_scheduler_occurrences_missed_total',
+				'MNI_scheduler_tasks_reclaimed_total',
+				'MNI_scheduler_tasks_dead_lettered_total',
+				'MNI_scheduler_tasks_pruned_total',
+				'MNI_scheduler_jobs_quarantined_total',
+				'MNI_scheduler_orphaned_jobs_deleted_total',
+				'MNI_scheduler_jobs_revived_total',
 			]) {
 				expect(counterIncFor(name)).toHaveBeenCalledWith(0);
 			}
@@ -183,9 +183,9 @@ describe('PrometheusSchedulerMetricsService', () => {
 
 		it('reports the pending, due and running counts from the snapshot', async () => {
 			for (const [name, expected] of [
-				['n8n_scheduler_tasks_pending', 4],
-				['n8n_scheduler_tasks_due', 2],
-				['n8n_scheduler_tasks_running', 1],
+				['MNI_scheduler_tasks_pending', 4],
+				['MNI_scheduler_tasks_due', 2],
+				['MNI_scheduler_tasks_running', 1],
 			] as const) {
 				const set = vi.fn();
 				await gaugeOptsFor(name).collect.call({ set });
@@ -195,7 +195,7 @@ describe('PrometheusSchedulerMetricsService', () => {
 
 		it('reports the oldest pending age in seconds', async () => {
 			const set = vi.fn();
-			await gaugeOptsFor('n8n_scheduler_oldest_pending_age_seconds').collect.call({ set });
+			await gaugeOptsFor('MNI_scheduler_oldest_pending_age_seconds').collect.call({ set });
 			expect(set).toHaveBeenCalledWith(10);
 		});
 
@@ -203,12 +203,12 @@ describe('PrometheusSchedulerMetricsService', () => {
 			cacheService.get.mockResolvedValueOnce({ ...snapshot, oldestPendingAgeMs: null });
 
 			const set = vi.fn();
-			await gaugeOptsFor('n8n_scheduler_oldest_pending_age_seconds').collect.call({ set });
+			await gaugeOptsFor('MNI_scheduler_oldest_pending_age_seconds').collect.call({ set });
 			expect(set).toHaveBeenCalledWith(0);
 		});
 
 		it('caches the snapshot query with the configured interval as TTL', async () => {
-			await gaugeOptsFor('n8n_scheduler_tasks_pending').collect.call({ set: vi.fn() });
+			await gaugeOptsFor('MNI_scheduler_tasks_pending').collect.call({ set: vi.fn() });
 
 			// 20s interval means a 20_000ms TTL.
 			expect(cacheService.set).toHaveBeenCalledWith(
@@ -222,7 +222,7 @@ describe('PrometheusSchedulerMetricsService', () => {
 			cacheService.get.mockResolvedValueOnce({ ...snapshot, pending: 99 });
 
 			const set = vi.fn();
-			await gaugeOptsFor('n8n_scheduler_tasks_pending').collect.call({ set });
+			await gaugeOptsFor('MNI_scheduler_tasks_pending').collect.call({ set });
 
 			expect(taskRepository.getMetricSnapshot).not.toHaveBeenCalled();
 			expect(set).toHaveBeenCalledWith(99);
@@ -240,7 +240,7 @@ describe('PrometheusSchedulerMetricsService', () => {
 		it('increments the dispatched counter by task type', () => {
 			service.recordDispatch('workflow');
 
-			const inc = counterIncFor('n8n_scheduler_tasks_dispatched_total');
+			const inc = counterIncFor('MNI_scheduler_tasks_dispatched_total');
 			expect(inc).toHaveBeenCalledWith({ task_type: 'workflow' }, 1);
 			expect(inc).toHaveBeenCalledTimes(1);
 		});
@@ -248,7 +248,7 @@ describe('PrometheusSchedulerMetricsService', () => {
 		it('increments the completed counter by task type and result', () => {
 			service.recordFireOutcome('workflow', 'failure');
 
-			const inc = counterIncFor('n8n_scheduler_tasks_completed_total');
+			const inc = counterIncFor('MNI_scheduler_tasks_completed_total');
 			expect(inc).toHaveBeenCalledWith({ task_type: 'workflow', result: 'failure' }, 1);
 			expect(inc).toHaveBeenCalledTimes(1);
 		});
@@ -256,7 +256,7 @@ describe('PrometheusSchedulerMetricsService', () => {
 		it('increments the retries counter by task type', () => {
 			service.recordRetry('workflow');
 
-			const inc = counterIncFor('n8n_scheduler_task_retries_total');
+			const inc = counterIncFor('MNI_scheduler_task_retries_total');
 			expect(inc).toHaveBeenCalledWith({ task_type: 'workflow' }, 1);
 			expect(inc).toHaveBeenCalledTimes(1);
 		});
@@ -269,8 +269,8 @@ describe('PrometheusSchedulerMetricsService', () => {
 		it('increments materialized occurrences and deferred jobs into their own counters', () => {
 			service.recordMaterialized(7, 2);
 
-			const materialized = counterIncFor('n8n_scheduler_occurrences_materialized_total');
-			const deferred = counterIncFor('n8n_scheduler_jobs_deferred_total');
+			const materialized = counterIncFor('MNI_scheduler_occurrences_materialized_total');
+			const deferred = counterIncFor('MNI_scheduler_jobs_deferred_total');
 			expect(materialized).toHaveBeenCalledWith(7);
 			expect(materialized).toHaveBeenCalledTimes(1);
 			expect(deferred).toHaveBeenCalledWith(2);
@@ -280,8 +280,8 @@ describe('PrometheusSchedulerMetricsService', () => {
 		it('increments reclaimed and dead-lettered into their own counters', () => {
 			service.recordReaped(3, 1, 0);
 
-			const reclaimed = counterIncFor('n8n_scheduler_tasks_reclaimed_total');
-			const deadLettered = counterIncFor('n8n_scheduler_tasks_dead_lettered_total');
+			const reclaimed = counterIncFor('MNI_scheduler_tasks_reclaimed_total');
+			const deadLettered = counterIncFor('MNI_scheduler_tasks_dead_lettered_total');
 			expect(reclaimed).toHaveBeenCalledWith(3);
 			expect(reclaimed).toHaveBeenCalledTimes(1);
 			expect(deadLettered).toHaveBeenCalledWith(1);
@@ -294,7 +294,7 @@ describe('PrometheusSchedulerMetricsService', () => {
 				{ taskType: 'poll', policy: ScheduledJobMisfirePolicy.Skip, discarded: 2 },
 			]);
 
-			const misfired = counterIncFor('n8n_scheduler_occurrences_misfired_total');
+			const misfired = counterIncFor('MNI_scheduler_occurrences_misfired_total');
 			expect(misfired).toHaveBeenCalledWith({ task_type: 'workflow', policy: 'coalesce' }, 4);
 			expect(misfired).toHaveBeenCalledWith({ task_type: 'poll', policy: 'skip' }, 2);
 		});
@@ -303,14 +303,14 @@ describe('PrometheusSchedulerMetricsService', () => {
 			service.recordRetired(2);
 			service.recordReaped(0, 0, 6);
 
-			expect(counterIncFor('n8n_scheduler_occurrences_retired_total')).toHaveBeenCalledWith(2);
-			expect(counterIncFor('n8n_scheduler_occurrences_missed_total')).toHaveBeenCalledWith(6);
+			expect(counterIncFor('MNI_scheduler_occurrences_retired_total')).toHaveBeenCalledWith(2);
+			expect(counterIncFor('MNI_scheduler_occurrences_missed_total')).toHaveBeenCalledWith(6);
 		});
 
 		it('increments the dead-lettered counter by one on the executor terminal-failure path', () => {
 			service.recordDeadLettered();
 
-			const deadLettered = counterIncFor('n8n_scheduler_tasks_dead_lettered_total');
+			const deadLettered = counterIncFor('MNI_scheduler_tasks_dead_lettered_total');
 			expect(deadLettered).toHaveBeenCalledWith(1);
 			expect(deadLettered).toHaveBeenCalledTimes(1);
 		});
@@ -318,7 +318,7 @@ describe('PrometheusSchedulerMetricsService', () => {
 		it('increments the pruned counter', () => {
 			service.recordPruned(5);
 
-			const inc = counterIncFor('n8n_scheduler_tasks_pruned_total');
+			const inc = counterIncFor('MNI_scheduler_tasks_pruned_total');
 			expect(inc).toHaveBeenCalledWith(5);
 			expect(inc).toHaveBeenCalledTimes(1);
 		});
@@ -326,15 +326,15 @@ describe('PrometheusSchedulerMetricsService', () => {
 		it('counts reconciliation outcomes on their own counters', () => {
 			service.recordReconciled(3, 2, 1);
 
-			expect(counterIncFor('n8n_scheduler_jobs_quarantined_total')).toHaveBeenCalledWith(3);
-			expect(counterIncFor('n8n_scheduler_orphaned_jobs_deleted_total')).toHaveBeenCalledWith(2);
-			expect(counterIncFor('n8n_scheduler_jobs_revived_total')).toHaveBeenCalledWith(1);
+			expect(counterIncFor('MNI_scheduler_jobs_quarantined_total')).toHaveBeenCalledWith(3);
+			expect(counterIncFor('MNI_scheduler_orphaned_jobs_deleted_total')).toHaveBeenCalledWith(2);
+			expect(counterIncFor('MNI_scheduler_jobs_revived_total')).toHaveBeenCalledWith(1);
 		});
 
 		it('increments the lease-lost counter by task type', () => {
 			service.recordLeaseLost('workflow:poll-trigger');
 
-			const inc = counterIncFor('n8n_scheduler_tasks_lease_lost_total');
+			const inc = counterIncFor('MNI_scheduler_tasks_lease_lost_total');
 			expect(inc).toHaveBeenCalledWith({ task_type: 'workflow:poll-trigger' }, 1);
 			expect(inc).toHaveBeenCalledTimes(1);
 		});

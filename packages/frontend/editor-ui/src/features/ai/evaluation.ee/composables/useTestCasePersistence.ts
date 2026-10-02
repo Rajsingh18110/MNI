@@ -1,10 +1,10 @@
 import { ref } from 'vue';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 
 import { useEvaluationsWizardSidepanelStore } from '../wizardSidepanel.store';
-import { useToast } from '@n8n/composables/useToast';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
-import { useRootStore } from '@n8n/stores/useRootStore';
+import { useToast } from '@MNI/composables/useToast';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
+import { useRootStore } from '@MNI/stores/useRootStore';
 import { injectWorkflowDocumentStore } from '@/app/stores/workflowDocument.store';
 import {
 	deleteDataTableRowsApi,
@@ -14,7 +14,7 @@ import {
 } from '@/features/core/dataTable/dataTable.api';
 import type { DataTableRow } from '@/features/core/dataTable/dataTable.types';
 import { listEvaluationConfigs } from '../evaluation.api';
-import type { UpsertEvaluationConfigDto } from '@n8n/api-types';
+import type { UpsertEvaluationConfigDto } from '@MNI/api-types';
 import { useEvaluationStore } from '../evaluation.store';
 import { useSliceInputs } from './useSliceInputs';
 import {

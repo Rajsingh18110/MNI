@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import { type Project, ProjectTypes } from '@/features/collaboration/projects/projects.types';
-import { isIconOrEmoji, type IconOrEmoji } from '@n8n/design-system';
+import { isIconOrEmoji, type IconOrEmoji } from '@MNI/design-system';
 
-import { N8nLink, N8nText } from '@n8n/design-system';
+import { N8nLink, N8nText } from '@MNI/design-system';
 import ProjectIcon from '@/features/collaboration/projects/components/ProjectIcon.vue';
 type Props = {
 	currentProject?: Project;
@@ -122,18 +122,18 @@ const onProjectMouseUp = () => {
 		}
 	}
 
-	&:hover :global(.n8n-text) {
+	&:hover :global(.MNI-text) {
 		color: var(--color--text--shade-1);
 	}
 }
 
-.project-link :global(.n8n-text) {
+.project-link :global(.MNI-text) {
 	display: flex;
 	align-items: center;
 	gap: var(--spacing--4xs);
 }
 
-:global(.n8n-text).project-label {
+:global(.MNI-text).project-label {
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;

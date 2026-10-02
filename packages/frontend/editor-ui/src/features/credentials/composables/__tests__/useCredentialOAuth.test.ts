@@ -1,14 +1,14 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { createTestingPinia } from '@pinia/testing';
 import { setActivePinia } from 'pinia';
-import { CREDENTIAL_DESCRIPTIONS_FLAG } from '@n8n/api-types';
+import { CREDENTIAL_DESCRIPTIONS_FLAG } from '@MNI/api-types';
 import { usePostHog } from '@/app/stores/posthog.store';
 import { useCredentialOAuth } from '../useCredentialOAuth';
 import { OAUTH_FLOW_TIMEOUT } from '../oauthCallback';
 import { useCredentialsStore } from '../../credentials.store';
-import { useRootStore } from '@n8n/stores/useRootStore';
+import { useRootStore } from '@MNI/stores/useRootStore';
 import { mockedStore } from '@/__tests__/utils';
-import type { ICredentialType } from 'n8n-workflow';
+import type { ICredentialType } from 'MNI-workflow';
 import type { ICredentialsResponse } from '../../credentials.types';
 
 const { mockShowError, mockShowMessage } = vi.hoisted(() => ({
@@ -16,7 +16,7 @@ const { mockShowError, mockShowMessage } = vi.hoisted(() => ({
 	mockShowMessage: vi.fn(),
 }));
 
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: () => ({
 		showError: mockShowError,
 		showMessage: mockShowMessage,
@@ -24,7 +24,7 @@ vi.mock('@n8n/composables/useToast', () => ({
 }));
 
 const mockTrack = vi.fn();
-vi.mock('@n8n/composables/useTelemetry', () => ({
+vi.mock('@MNI/composables/useTelemetry', () => ({
 	useTelemetry: () => ({ track: mockTrack }),
 }));
 
@@ -699,7 +699,7 @@ describe('useCredentialOAuth', () => {
 			credentialsStore.getCredentialData
 				.mockResolvedValueOnce(undefined) // pre-flow snapshot: no token yet
 				.mockResolvedValue({
-					data: { oauthTokenData: '__n8n_BLANK_VALUE' },
+					data: { oauthTokenData: '__MNI_BLANK_VALUE' },
 				} as unknown as ICredentialsResponse);
 
 			vi.useFakeTimers();
@@ -723,7 +723,7 @@ describe('useCredentialOAuth', () => {
 			MockBroadcastChannel.noopEventListener = true;
 			// Reconnect: old token data is present before the flow starts.
 			credentialsStore.getCredentialData.mockResolvedValue({
-				data: { oauthTokenData: '__n8n_BLANK_VALUE' },
+				data: { oauthTokenData: '__MNI_BLANK_VALUE' },
 			} as unknown as ICredentialsResponse);
 
 			vi.useFakeTimers();
@@ -753,7 +753,7 @@ describe('useCredentialOAuth', () => {
 			credentialsStore.getCredentialData
 				.mockResolvedValueOnce(undefined) // pre-flow snapshot: no token yet
 				.mockResolvedValue({
-					data: { oauthTokenData: '__n8n_BLANK_VALUE' },
+					data: { oauthTokenData: '__MNI_BLANK_VALUE' },
 				} as unknown as ICredentialsResponse);
 
 			vi.useFakeTimers();
@@ -779,7 +779,7 @@ describe('useCredentialOAuth', () => {
 			// resolvable credentials the shared blueprint data never carries the
 			// per-user token.
 			credentialsStore.getCredentialData.mockResolvedValue({
-				data: { oauthTokenData: '__n8n_BLANK_VALUE' },
+				data: { oauthTokenData: '__MNI_BLANK_VALUE' },
 			} as unknown as ICredentialsResponse);
 
 			vi.useFakeTimers();
@@ -927,7 +927,7 @@ describe('useCredentialOAuth', () => {
 		it('uses explicit workflow and project context with self-hosted client data', async () => {
 			const credentialsStore = setupSuccessfulOAuthFlow();
 			credentialsStore.fetchUsableCredentials.mockResolvedValue([]);
-			await useCredentialOAuth().createAndAuthorize('slackOAuth2Api', 'n8n-nodes-base.slack', {
+			await useCredentialOAuth().createAndAuthorize('slackOAuth2Api', 'MNI-nodes-base.slack', {
 				projectId: 'workflow-project',
 				workflowId: 'setup-workflow',
 				name: 'Custom account',
@@ -1069,12 +1069,12 @@ describe('useCredentialOAuth', () => {
 			setupSuccessfulOAuthFlow();
 
 			const { createAndAuthorize } = useCredentialOAuth();
-			await createAndAuthorize('slackOAuth2Api', 'n8n-nodes-base.slack');
+			await createAndAuthorize('slackOAuth2Api', 'MNI-nodes-base.slack');
 
 			expect(mockTrack).toHaveBeenCalledWith(
 				'User saved credentials',
 				expect.objectContaining({
-					node_type: 'n8n-nodes-base.slack',
+					node_type: 'MNI-nodes-base.slack',
 				}),
 			);
 		});
@@ -1228,7 +1228,7 @@ describe('useCredentialOAuth', () => {
 			credentialsStore.getCredentialData
 				.mockResolvedValueOnce(undefined) // pre-flow snapshot: no token yet
 				.mockResolvedValue({
-					data: { oauthTokenData: '__n8n_BLANK_VALUE' },
+					data: { oauthTokenData: '__MNI_BLANK_VALUE' },
 				} as unknown as ICredentialsResponse);
 
 			vi.useFakeTimers();
@@ -1256,7 +1256,7 @@ describe('useCredentialOAuth', () => {
 			credentialsStore.getCredentialData
 				.mockResolvedValueOnce(undefined) // pre-flow snapshot: no token yet
 				.mockResolvedValue({
-					data: { oauthTokenData: '__n8n_BLANK_VALUE' },
+					data: { oauthTokenData: '__MNI_BLANK_VALUE' },
 				} as unknown as ICredentialsResponse);
 
 			vi.useFakeTimers();

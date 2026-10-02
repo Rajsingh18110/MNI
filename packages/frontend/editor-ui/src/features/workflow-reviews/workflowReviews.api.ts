@@ -14,8 +14,8 @@ import type {
 	WorkflowReviewRequestList,
 	WorkflowReviewRequestState,
 	WorkflowReviewRequestSummary,
-} from '@n8n/api-types';
-import { makeRestApiRequest, type IRestApiContext } from '@n8n/rest-api-client';
+} from '@MNI/api-types';
+import { makeRestApiRequest, type IRestApiContext } from '@MNI/rest-api-client';
 
 export type FetchWorkflowReviewInboxParams = {
 	state?: WorkflowReviewRequestState;

@@ -1,11 +1,11 @@
-import type { PushMessage } from '@n8n/api-types';
-import { Logger } from '@n8n/backend-common';
-import { mockInstance } from '@n8n/backend-test-utils';
-import { ExecutionsConfig } from '@n8n/config';
-import type { Project, User } from '@n8n/db';
-import { ExecutionRepository, UserRepository } from '@n8n/db';
-import { LifecycleMetadata } from '@n8n/decorators';
-import { Container } from '@n8n/di';
+import type { PushMessage } from '@MNI/api-types';
+import { Logger } from '@MNI/backend-common';
+import { mockInstance } from '@MNI/backend-test-utils';
+import { ExecutionsConfig } from '@MNI/config';
+import type { Project, User } from '@MNI/db';
+import { ExecutionRepository, UserRepository } from '@MNI/db';
+import { LifecycleMetadata } from '@MNI/decorators';
+import { Container } from '@MNI/di';
 import { stringify } from 'flatted';
 import {
 	BinaryDataService,
@@ -13,8 +13,8 @@ import {
 	InstanceSettings,
 	ExecutionLifecycleHooks,
 	BinaryDataConfig,
-} from 'n8n-core';
-import { createRunExecutionData, ExpressionError, UnexpectedError } from 'n8n-workflow';
+} from 'MNI-core';
+import { createRunExecutionData, ExpressionError, UnexpectedError } from 'MNI-workflow';
 import type {
 	IRunExecutionData,
 	ITaskData,
@@ -25,7 +25,7 @@ import type {
 	IWorkflowBase,
 	WorkflowExecuteMode,
 	ITaskStartedData,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import {
@@ -78,7 +78,7 @@ describe('Execution Lifecycle Hooks', () => {
 	const flushErrorWorkflowDispatch = async () => await new Promise(process.nextTick);
 
 	const nodeName = 'Test Node';
-	const nodeType = 'n8n-nodes-base.testNode';
+	const nodeType = 'MNI-nodes-base.testNode';
 	const nodeId = 'test-node-id';
 	const node = mock<INode>();
 	const workflowId = 'test-workflow-id';

@@ -1,4 +1,4 @@
-import { NodeOperationError, type IExecuteFunctions, type INode } from 'n8n-workflow';
+import { NodeOperationError, type IExecuteFunctions, type INode } from 'MNI-workflow';
 
 import * as transport from '../../v2//transport/discord.api';
 import {
@@ -14,7 +14,7 @@ const node: INode = {
 	id: '1',
 	name: 'Discord node',
 	typeVersion: 2,
-	type: 'n8n-nodes-base.discord',
+	type: 'MNI-nodes-base.discord',
 	position: [60, 760],
 	parameters: {
 		resource: 'channel',

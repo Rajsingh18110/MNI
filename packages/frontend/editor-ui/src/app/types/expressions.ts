@@ -1,4 +1,4 @@
-import type { IWorkflowDataProxyAdditionalKeys } from 'n8n-workflow';
+import type { IWorkflowDataProxyAdditionalKeys } from 'MNI-workflow';
 
 type Range = { from: number; to: number };
 

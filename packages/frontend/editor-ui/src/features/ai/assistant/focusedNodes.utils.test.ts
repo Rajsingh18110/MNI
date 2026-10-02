@@ -2,9 +2,9 @@ import { describe, it, expect } from 'vitest';
 import { buildFocusedNodesPayload } from './focusedNodes.utils';
 import type { FocusedNode } from './focusedNodes.types';
 import type { INodeUi } from '@/Interface';
-import type { IConnections } from 'n8n-workflow';
+import type { IConnections } from 'MNI-workflow';
 
-const createMockNode = (id: string, name: string, type = 'n8n-nodes-base.httpRequest'): INodeUi =>
+const createMockNode = (id: string, name: string, type = 'MNI-nodes-base.httpRequest'): INodeUi =>
 	({
 		id,
 		name,
@@ -28,7 +28,7 @@ describe('buildFocusedNodesPayload', () => {
 	});
 
 	it('should return fallback payload when node not found in workflow', () => {
-		const confirmedNodes = [createFocusedNode('missing', 'Deleted Node', 'n8n-nodes-base.code')];
+		const confirmedNodes = [createFocusedNode('missing', 'Deleted Node', 'MNI-nodes-base.code')];
 
 		const result = buildFocusedNodesPayload(confirmedNodes, [], {}, {});
 
@@ -44,11 +44,11 @@ describe('buildFocusedNodesPayload', () => {
 	it('should build payload with connections', () => {
 		const allNodes = [
 			createMockNode('node-1', 'HTTP Request'),
-			createMockNode('node-2', 'Trigger', 'n8n-nodes-base.manualTrigger'),
-			createMockNode('node-3', 'Code', 'n8n-nodes-base.code'),
+			createMockNode('node-2', 'Trigger', 'MNI-nodes-base.manualTrigger'),
+			createMockNode('node-3', 'Code', 'MNI-nodes-base.code'),
 		];
 		const confirmedNodes = [
-			createFocusedNode('node-1', 'HTTP Request', 'n8n-nodes-base.httpRequest'),
+			createFocusedNode('node-1', 'HTTP Request', 'MNI-nodes-base.httpRequest'),
 		];
 
 		const connectionsByDestination: IConnections = {
@@ -78,7 +78,7 @@ describe('buildFocusedNodesPayload', () => {
 	it('should deduplicate connections', () => {
 		const allNodes = [createMockNode('node-1', 'HTTP Request')];
 		const confirmedNodes = [
-			createFocusedNode('node-1', 'HTTP Request', 'n8n-nodes-base.httpRequest'),
+			createFocusedNode('node-1', 'HTTP Request', 'MNI-nodes-base.httpRequest'),
 		];
 
 		const connectionsByDestination: IConnections = {
@@ -109,7 +109,7 @@ describe('buildFocusedNodesPayload', () => {
 		};
 
 		const confirmedNodes = [
-			createFocusedNode('node-1', 'HTTP Request', 'n8n-nodes-base.httpRequest'),
+			createFocusedNode('node-1', 'HTTP Request', 'MNI-nodes-base.httpRequest'),
 		];
 
 		const result = buildFocusedNodesPayload(confirmedNodes, [nodeWithIssues], {}, {});
@@ -125,7 +125,7 @@ describe('buildFocusedNodesPayload', () => {
 		(nodeWithEmptyIssues as INodeUi & { issues: unknown }).issues = {};
 
 		const confirmedNodes = [
-			createFocusedNode('node-1', 'HTTP Request', 'n8n-nodes-base.httpRequest'),
+			createFocusedNode('node-1', 'HTTP Request', 'MNI-nodes-base.httpRequest'),
 		];
 
 		const result = buildFocusedNodesPayload(confirmedNodes, [nodeWithEmptyIssues], {}, {});
@@ -136,7 +136,7 @@ describe('buildFocusedNodesPayload', () => {
 	it('should handle nodes with no connections', () => {
 		const allNodes = [createMockNode('node-1', 'HTTP Request')];
 		const confirmedNodes = [
-			createFocusedNode('node-1', 'HTTP Request', 'n8n-nodes-base.httpRequest'),
+			createFocusedNode('node-1', 'HTTP Request', 'MNI-nodes-base.httpRequest'),
 		];
 
 		const result = buildFocusedNodesPayload(confirmedNodes, allNodes, {}, {});
@@ -151,11 +151,11 @@ describe('buildFocusedNodesPayload', () => {
 	it('should handle multiple confirmed nodes', () => {
 		const allNodes = [
 			createMockNode('node-1', 'HTTP Request'),
-			createMockNode('node-2', 'Code', 'n8n-nodes-base.code'),
+			createMockNode('node-2', 'Code', 'MNI-nodes-base.code'),
 		];
 		const confirmedNodes = [
-			createFocusedNode('node-1', 'HTTP Request', 'n8n-nodes-base.httpRequest'),
-			createFocusedNode('node-2', 'Code', 'n8n-nodes-base.code'),
+			createFocusedNode('node-1', 'HTTP Request', 'MNI-nodes-base.httpRequest'),
+			createFocusedNode('node-2', 'Code', 'MNI-nodes-base.code'),
 		];
 
 		const result = buildFocusedNodesPayload(confirmedNodes, allNodes, {}, {});

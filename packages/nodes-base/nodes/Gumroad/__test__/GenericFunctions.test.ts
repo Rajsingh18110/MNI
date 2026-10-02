@@ -1,5 +1,5 @@
-import type { IHookFunctions } from 'n8n-workflow';
-import { NodeApiError } from 'n8n-workflow';
+import type { IHookFunctions } from 'MNI-workflow';
+import { NodeApiError } from 'MNI-workflow';
 
 import { gumroadApiRequest } from '../GenericFunctions';
 import type { Mock } from 'vitest';
@@ -19,7 +19,7 @@ describe('Gumroad GenericFunctions', () => {
 			getNode: vi.fn().mockReturnValue({
 				id: 'test-node-id',
 				name: 'Gumroad Trigger',
-				type: 'n8n-nodes-base.gumroadTrigger',
+				type: 'MNI-nodes-base.gumroadTrigger',
 				typeVersion: 1,
 			}),
 		}) as unknown as IHookFunctions;

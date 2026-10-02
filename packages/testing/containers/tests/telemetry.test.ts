@@ -10,16 +10,16 @@ afterEach(() => {
 describe('TelemetryRecorder', () => {
 	test('correlates stages and keeps failed elapsed time', async () => {
 		vi.stubEnv('CONTAINER_TELEMETRY_VERBOSE', '1');
-		vi.stubEnv('N8N_TEST_PROFILE', 'sqlite');
+		vi.stubEnv('MNI_TEST_PROFILE', 'sqlite');
 		vi.stubEnv('TEST_SHARD', '3');
 		vi.stubEnv('TEST_WORKER_INDEX', '2');
-		vi.stubEnv('N8N_TEST_RESTART_REASON', 'unexpected-value');
+		vi.stubEnv('MNI_TEST_RESTART_REASON', 'unexpected-value');
 		const log = vi.spyOn(console, 'log').mockImplementation(() => {});
 		const telemetry = new TelemetryRecorder({});
 
 		telemetry.startStage('network');
 		telemetry.finishStage();
-		telemetry.startStage('n8n-startup');
+		telemetry.startStage('MNI-startup');
 		await new Promise((resolve) => setTimeout(resolve, 2));
 		telemetry.finishStage('failure', new Error('readiness failed after 25ms'));
 		telemetry.flush(false, 'MNI startup failed');
@@ -46,10 +46,10 @@ describe('TelemetryRecorder', () => {
 		});
 		expect(record.stages).toEqual([
 			expect.objectContaining({ name: 'network', outcome: 'success' }),
-			expect.objectContaining({ name: 'n8n-startup', outcome: 'failure' }),
+			expect.objectContaining({ name: 'MNI-startup', outcome: 'failure' }),
 		]);
 		expect(record.stages[1].elapsedMs).toBeGreaterThan(0);
-		expect(record.failurePhase).toBe('n8n-startup');
+		expect(record.failurePhase).toBe('MNI-startup');
 	});
 
 	test('redacts secrets from failure evidence', () => {
@@ -82,7 +82,7 @@ describe('TelemetryRecorder', () => {
 			['sk-proj-', 'abcdefghijklmnopqrstuvwxyz123456'].join(''),
 		];
 
-		telemetry.startStage('n8n-startup');
+		telemetry.startStage('MNI-startup');
 		telemetry.finishStage('failure', new Error(credentials.join(' ')));
 		telemetry.flush(false, credentials.join(' '));
 

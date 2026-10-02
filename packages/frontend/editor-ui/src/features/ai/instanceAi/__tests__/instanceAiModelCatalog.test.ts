@@ -1,4 +1,4 @@
-import type { InstanceAiModelCatalogResponse } from '@n8n/api-types';
+import type { InstanceAiModelCatalogResponse } from '@MNI/api-types';
 
 import { INSTANCE_AI_CURATED_MODELS } from '../instanceAiConnection.constants';
 import { getAllInstanceAiModelOptions, getInstanceAiModelOptions } from '../instanceAiModelCatalog';

@@ -1,4 +1,4 @@
-import type { Logger } from '@n8n/backend-common';
+import type { Logger } from '@MNI/backend-common';
 import { mock } from 'vitest-mock-extended';
 
 import { createMcpMockFetch, type McpMockToolCall } from '../mcp-mock-fetch';
@@ -6,7 +6,7 @@ import { createMcpMockFetch, type McpMockToolCall } from '../mcp-mock-fetch';
 const generate = vi.fn();
 const extractText = vi.fn();
 
-vi.mock('@n8n/instance-ai', () => ({
+vi.mock('@MNI/instance-ai', () => ({
 	createEvalAgent: vi.fn(() => ({ generate })),
 	extractText: (result: unknown) => extractText(result) as string,
 }));
@@ -59,7 +59,7 @@ describe('createMcpMockFetch', () => {
 			...rpc('initialize', {
 				protocolVersion: '2025-06-18',
 				capabilities: {},
-				clientInfo: { name: '@n8n/agents', version: '0.1.0' },
+				clientInfo: { name: '@MNI/agents', version: '0.1.0' },
 			}),
 		});
 

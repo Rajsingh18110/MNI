@@ -1,9 +1,9 @@
-import type { RenameDataTableColumnDto } from '@n8n/api-types';
-import { Logger } from '@n8n/backend-common';
-import { mockInstance, testModules } from '@n8n/backend-test-utils';
-import { ProjectRelationRepository, ProjectRepository, type User } from '@n8n/db';
-import { In } from '@n8n/typeorm';
-import type { DataTableInfoById, DataTablesSizeData } from 'n8n-workflow';
+import type { RenameDataTableColumnDto } from '@MNI/api-types';
+import { Logger } from '@MNI/backend-common';
+import { mockInstance, testModules } from '@MNI/backend-test-utils';
+import { ProjectRelationRepository, ProjectRepository, type User } from '@MNI/db';
+import { In } from '@MNI/typeorm';
+import type { DataTableInfoById, DataTablesSizeData } from 'MNI-workflow';
 import type { Mocked } from 'vitest';
 
 import type { DataTableColumn } from '../data-table-column.entity';

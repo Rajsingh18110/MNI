@@ -1,11 +1,11 @@
 import { describe, it, expect, vi } from 'vitest';
 import { fireEvent } from '@testing-library/vue';
-import { NodeDiffStatus } from 'n8n-workflow';
+import { NodeDiffStatus } from 'MNI-workflow';
 
 import { renderComponent } from '@/__tests__/render';
 import ChatVersionCard from './ChatVersionCard.vue';
 import type { NodeChangeEntry } from '@/features/ai/assistant/composables/useReviewChanges';
-import type { INode } from 'n8n-workflow';
+import type { INode } from 'MNI-workflow';
 import type { SimplifiedNodeType } from '@/Interface';
 
 vi.mock('@vueuse/core', async () => {
@@ -23,19 +23,19 @@ vi.mock('@vueuse/core', async () => {
 const sampleNodeChanges: NodeChangeEntry[] = [
 	{
 		status: NodeDiffStatus.Added,
-		node: { id: 'node-1', name: 'HTTP Request', type: 'n8n-nodes-base.httpRequest' } as INode,
+		node: { id: 'node-1', name: 'HTTP Request', type: 'MNI-nodes-base.httpRequest' } as INode,
 		nodeType: {
 			displayName: 'HTTP Request',
-			name: 'n8n-nodes-base.httpRequest',
+			name: 'MNI-nodes-base.httpRequest',
 			icon: 'file:httprequest.svg',
 		} as unknown as SimplifiedNodeType,
 	},
 	{
 		status: NodeDiffStatus.Modified,
-		node: { id: 'node-2', name: 'Set', type: 'n8n-nodes-base.set' } as INode,
+		node: { id: 'node-2', name: 'Set', type: 'MNI-nodes-base.set' } as INode,
 		nodeType: {
 			displayName: 'Set',
-			name: 'n8n-nodes-base.set',
+			name: 'MNI-nodes-base.set',
 			icon: 'fa:pen',
 		} as unknown as SimplifiedNodeType,
 	},

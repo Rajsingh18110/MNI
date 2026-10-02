@@ -5,7 +5,7 @@
 			"parameters": {},
 			"id": "5cfa67ba-caba-40f6-b0c4-b54015b28bf0",
 			"name": "When clicking \"Execute Workflow\"",
-			"type": "n8n-nodes-base.manualTrigger",
+			"type": "MNI-nodes-base.manualTrigger",
 			"typeVersion": 1,
 			"position": [300, 580]
 		},
@@ -37,7 +37,7 @@
 			},
 			"id": "88a269af-c315-491c-b897-578cfb81268a",
 			"name": "Mock data",
-			"type": "n8n-nodes-testing.testData",
+			"type": "MNI-nodes-testing.testData",
 			"typeVersion": 1,
 			"position": [520, 580]
 		},
@@ -56,7 +56,7 @@
 			},
 			"id": "d674426f-e9de-473b-9225-1b29ddeb2bad",
 			"name": "Set",
-			"type": "n8n-nodes-base.set",
+			"type": "MNI-nodes-base.set",
 			"typeVersion": 1,
 			"position": [740, 680]
 		},
@@ -74,7 +74,7 @@
 			},
 			"id": "ad74d9ea-adf3-42b1-87c8-be1096356096",
 			"name": "HTML Extract (top level)",
-			"type": "n8n-nodes-base.htmlExtract",
+			"type": "MNI-nodes-base.htmlExtract",
 			"typeVersion": 1,
 			"position": [960, 680]
 		},
@@ -93,7 +93,7 @@
 			},
 			"id": "2a6bcc8e-31d3-4ca3-bb27-000c192f37b4",
 			"name": "HTML Extract (nested)",
-			"type": "n8n-nodes-base.htmlExtract",
+			"type": "MNI-nodes-base.htmlExtract",
 			"typeVersion": 1,
 			"position": [740, 480]
 		}

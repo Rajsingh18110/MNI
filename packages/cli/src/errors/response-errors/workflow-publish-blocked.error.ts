@@ -1,4 +1,4 @@
-import type { WorkflowReviewBlockedDetails, WorkflowReviewBlockedReason } from '@n8n/api-types';
+import type { WorkflowReviewBlockedDetails, WorkflowReviewBlockedReason } from '@MNI/api-types';
 
 import { ConflictError } from './conflict.error';
 

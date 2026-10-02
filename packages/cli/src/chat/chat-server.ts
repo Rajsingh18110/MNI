@@ -1,5 +1,5 @@
-import { OnShutdown } from '@n8n/decorators';
-import { Service } from '@n8n/di';
+import { OnShutdown } from '@MNI/decorators';
+import { Service } from '@MNI/di';
 import type { Application } from 'express';
 import type { Server as HttpServer } from 'http';
 import { ServerResponse } from 'http';

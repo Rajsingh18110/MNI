@@ -6,8 +6,8 @@ import type {
 	INodeTypeDescription,
 	IWebhookResponseData,
 	JsonObject,
-} from 'n8n-workflow';
-import { NodeApiError, NodeConnectionTypes, NodeOperationError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeApiError, NodeConnectionTypes, NodeOperationError } from 'MNI-workflow';
 
 import { eventDisplay, eventNameField } from './descriptions/OnfleetWebhookDescription';
 import { onfleetApiRequest } from './GenericFunctions';
@@ -84,10 +84,10 @@ export class OnfleetTrigger implements INodeType {
 					);
 				}
 				// Webhook name according to the field
-				let newWebhookName = `n8n-webhook:${webhookUrl}`;
+				let newWebhookName = `MNI-webhook:${webhookUrl}`;
 
 				if (name) {
-					newWebhookName = `n8n-webhook:${name}`;
+					newWebhookName = `MNI-webhook:${name}`;
 				}
 
 				const path = '/webhooks';

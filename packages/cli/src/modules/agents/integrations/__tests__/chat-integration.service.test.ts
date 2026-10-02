@@ -1,18 +1,18 @@
 import type { Mock, MockInstance } from 'vitest';
-import type { Logger } from '@n8n/backend-common';
-import { mockLogger } from '@n8n/backend-test-utils';
-import type { GlobalConfig } from '@n8n/config';
-import type { CredentialsEntity } from '@n8n/db';
-import { ShutdownMetadata } from '@n8n/decorators';
-import { Container } from '@n8n/di';
+import type { Logger } from '@MNI/backend-common';
+import { mockLogger } from '@MNI/backend-test-utils';
+import type { GlobalConfig } from '@MNI/config';
+import type { CredentialsEntity } from '@MNI/db';
+import { ShutdownMetadata } from '@MNI/decorators';
+import { Container } from '@MNI/di';
 import { mock } from 'vitest-mock-extended';
-import type { InstanceSettings } from 'n8n-core';
+import type { InstanceSettings } from 'MNI-core';
 import type { StateAdapter } from 'chat';
 
 import { LOWEST_SHUTDOWN_PRIORITY } from '@/constants';
 import type { CredentialsService } from '@/credentials/credentials.service';
 import type { Publisher } from '@/scaling/pubsub/publisher.service';
-import type { UrlService } from '@n8n/backend-services';
+import type { UrlService } from '@MNI/backend-services';
 
 import { AgentChangePublisher } from '../../agent-change-publisher.service';
 import { AgentExecutionOrchestratorService } from '../../agent-execution-orchestrator.service';
@@ -32,7 +32,7 @@ import {
 	LEADER_CHANNEL_REQUEST_TIMEOUT_MS,
 	type LeaderChannelRelayService,
 } from '../leader-channel-relay.service';
-import type { AgentIntegrationConfig } from '@n8n/api-types';
+import type { AgentIntegrationConfig } from '@MNI/api-types';
 
 /**
  * `@OnShutdown` registers at class-decoration time, so this has to be read
@@ -203,7 +203,7 @@ describe('ChatIntegrationService.syncToConfig — publish gate', () => {
 
 	it('does not start an external adapter for MNI Chat', async () => {
 		const agent = makeAgent({ activeVersionId: 'published-version-1' });
-		const n8nChatIntegration = { type: 'n8n_chat', credentialId: '' } as const;
+		const n8nChatIntegration = { type: 'MNI_chat', credentialId: '' } as const;
 
 		await service.syncToConfig(agent, [], [n8nChatIntegration]);
 		await service.syncToConfig(agent, [n8nChatIntegration], []);

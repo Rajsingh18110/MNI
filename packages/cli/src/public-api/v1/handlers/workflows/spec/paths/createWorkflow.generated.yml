@@ -64,7 +64,7 @@ requestBody:
                   type: string
                 type:
                   type: string
-                  example: n8n-nodes-base.jira
+                  example: MNI-nodes-base.jira
                 typeVersion:
                   type: number
                   example: 1
@@ -418,7 +418,7 @@ requestBody:
                       type: string
                     type:
                       type: string
-                      example: n8n-nodes-base.jira
+                      example: MNI-nodes-base.jira
                     typeVersion:
                       type: number
                       example: 1
@@ -622,7 +622,7 @@ responses:
                     type: string
                   type:
                     type: string
-                    example: n8n-nodes-base.jira
+                    example: MNI-nodes-base.jira
                   typeVersion:
                     type: number
                     example: 1
@@ -1011,7 +1011,7 @@ responses:
                         type: string
                       type:
                         type: string
-                        example: n8n-nodes-base.jira
+                        example: MNI-nodes-base.jira
                       typeVersion:
                         type: number
                         example: 1

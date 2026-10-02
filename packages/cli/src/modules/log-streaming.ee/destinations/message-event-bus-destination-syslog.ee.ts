@@ -1,14 +1,14 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
-import { Logger } from '@n8n/backend-common';
-import { Container } from '@n8n/di';
-import type { SyslogClient } from '@n8n/syslog-client';
-import { createClient, Facility, Transport, Severity } from '@n8n/syslog-client';
-import { sleep } from '@n8n/utils/sleep';
+import { Logger } from '@MNI/backend-common';
+import { Container } from '@MNI/di';
+import type { SyslogClient } from '@MNI/syslog-client';
+import { createClient, Facility, Transport, Severity } from '@MNI/syslog-client';
+import { sleep } from '@MNI/utils/sleep';
 import type {
 	MessageEventBusDestinationOptions,
 	MessageEventBusDestinationSyslogOptions,
-} from 'n8n-workflow';
-import { MessageEventBusDestinationTypeNames } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { MessageEventBusDestinationTypeNames } from 'MNI-workflow';
 
 import { eventMessageGenericDestinationTestEvent } from '@/eventbus/event-message-classes/event-message-generic';
 import type {

@@ -1,12 +1,12 @@
 import type {
 	InstanceAiMcpConnectionResponse,
 	InstanceAiMcpConnectionToolsResponse,
-} from '@n8n/api-types';
+} from '@MNI/api-types';
 import {
 	InstanceAiMcpCreateConnectionRequestDto,
 	InstanceAiMcpUpdateConnectionRequestDto,
-} from '@n8n/api-types';
-import { AuthenticatedRequest } from '@n8n/db';
+} from '@MNI/api-types';
+import { AuthenticatedRequest } from '@MNI/db';
 import {
 	Body,
 	Delete,
@@ -16,7 +16,7 @@ import {
 	Patch,
 	Post,
 	RestController,
-} from '@n8n/decorators';
+} from '@MNI/decorators';
 import type { Response } from 'express';
 
 import { CredentialsFinderService } from '@/credentials/credentials-finder.service';

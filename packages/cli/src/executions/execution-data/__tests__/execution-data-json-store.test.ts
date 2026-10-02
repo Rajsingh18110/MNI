@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/unbound-method */
-/* eslint-disable n8n-local-rules/no-uncaught-json-parse */
+/* eslint-disable MNI-local-rules/no-uncaught-json-parse */
 
-import type { ErrorReporter, FsByteStoreService } from 'n8n-core';
+import type { ErrorReporter, FsByteStoreService } from 'MNI-core';
 import { mock } from 'vitest-mock-extended';
 
 import { CorruptedExecutionDataError } from '../corrupted-execution-data.error';

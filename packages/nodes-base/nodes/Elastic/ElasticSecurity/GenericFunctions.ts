@@ -5,8 +5,8 @@ import type {
 	JsonObject,
 	IRequestOptions,
 	IHttpRequestMethods,
-} from 'n8n-workflow';
-import { toPathSegment, NodeApiError, NodeOperationError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { toPathSegment, NodeApiError, NodeOperationError } from 'MNI-workflow';
 
 import { removeTrailingSlash } from '@utils/utilities';
 

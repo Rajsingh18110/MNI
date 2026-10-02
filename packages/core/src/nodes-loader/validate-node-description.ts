@@ -3,8 +3,8 @@ import type {
 	INodePropertyCollection,
 	INodePropertyOptions,
 	INodeTypeDescription,
-} from 'n8n-workflow';
-import { UnexpectedError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { UnexpectedError } from 'MNI-workflow';
 
 const DISCRIMINATOR_NAMES = new Set(['operation', 'mode', 'resource']);
 

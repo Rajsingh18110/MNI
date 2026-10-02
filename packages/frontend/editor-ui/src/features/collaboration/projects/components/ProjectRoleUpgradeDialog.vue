@@ -1,11 +1,11 @@
 <script lang="ts" setup>
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import { usePageRedirectionHelper } from '@/app/composables/usePageRedirectionHelper';
 import { APP_MODALS_ELEMENT_ID } from '@/app/constants';
 import { I18nT } from 'vue-i18n';
 
 import { ElDialog } from 'element-plus';
-import { N8nButton } from '@n8n/design-system';
+import { N8nButton } from '@MNI/design-system';
 type Props = {
 	limit: number;
 	planName?: string;

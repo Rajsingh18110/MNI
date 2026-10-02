@@ -1,4 +1,4 @@
-import { EventMessageTypeNames } from 'n8n-workflow';
+import { EventMessageTypeNames } from 'MNI-workflow';
 
 import type { McpResolvedAuthType } from '@/services/oauth-token-verifier-proxy.service';
 

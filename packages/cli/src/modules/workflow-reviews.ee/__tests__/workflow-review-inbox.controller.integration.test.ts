@@ -5,8 +5,8 @@ import {
 	mockInstance,
 	shareWorkflowWithUsers,
 	testDb,
-} from '@n8n/backend-test-utils';
-import type { Project, User, WorkflowReviewRequestState } from '@n8n/db';
+} from '@MNI/backend-test-utils';
+import type { Project, User, WorkflowReviewRequestState } from '@MNI/db';
 import {
 	UserRepository,
 	WorkflowRepository,
@@ -14,8 +14,8 @@ import {
 	WorkflowReviewRequestRepository,
 	WorkflowReviewRequestReviewerRepository,
 	WorkflowReviewRequestWorkflowRepository,
-} from '@n8n/db';
-import { Container } from '@n8n/di';
+} from '@MNI/db';
+import { Container } from '@MNI/di';
 
 import { ActiveWorkflowManager } from '@/active-workflow-manager';
 import { WorkflowReviewPolicyService } from '@/services/workflow-review-policy.service';

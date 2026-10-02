@@ -1,4 +1,4 @@
-import type { ICredentialDataDecryptedObject, IExecuteFunctions, INode } from 'n8n-workflow';
+import type { ICredentialDataDecryptedObject, IExecuteFunctions, INode } from 'MNI-workflow';
 import { mock, mockDeep } from 'vitest-mock-extended';
 
 import { RundeckApi } from '../RundeckApi';

@@ -1,6 +1,6 @@
 import type { CryptoKey } from 'jose';
 import { compactDecrypt, errors as joseErrors } from 'jose';
-import { UserError } from 'n8n-workflow';
+import { UserError } from 'MNI-workflow';
 
 const JWE_SEGMENT_COUNT = 5;
 

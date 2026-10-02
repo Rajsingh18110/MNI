@@ -6,7 +6,7 @@ import {
 	type INodeType,
 	type INodeTypeDescription,
 	NodeConnectionTypes,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { triggerTargetDescription } from './descriptions/TargetDescription';
 import {

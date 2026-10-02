@@ -1,4 +1,4 @@
-import type { IWebhookResponseData } from 'n8n-workflow';
+import type { IWebhookResponseData } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import { extractWebhookOnReceivedResponse } from '@/webhooks/webhook-on-received-response-extractor';

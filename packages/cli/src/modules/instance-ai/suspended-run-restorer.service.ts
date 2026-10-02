@@ -1,14 +1,14 @@
-import type { InstanceAiConfirmResponse } from '@n8n/api-types';
-import type { Logger } from '@n8n/backend-common';
-import type { User } from '@n8n/db';
+import type { InstanceAiConfirmResponse } from '@MNI/api-types';
+import type { Logger } from '@MNI/backend-common';
+import type { User } from '@MNI/db';
 import {
 	orchestratorAgentId,
 	type ConfirmationData,
 	type RunStateRegistry,
 	type SuspendedRunState,
-} from '@n8n/instance-ai';
-import { getErrorMessage } from '@n8n/utils/errors/get-error-message';
-import { UserError } from 'n8n-workflow';
+} from '@MNI/instance-ai';
+import { getErrorMessage } from '@MNI/utils/errors/get-error-message';
+import { UserError } from 'MNI-workflow';
 
 import type { InstanceAiPendingConfirmation } from './entities/instance-ai-pending-confirmation.entity';
 import type { InProcessEventBus } from './event-bus/in-process-event-bus';

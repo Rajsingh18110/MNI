@@ -7,9 +7,9 @@ import {
 	AI_TRANSFORM_NODE_TYPE,
 	MESSAGE_AN_AGENT_NODE_TYPE,
 } from '@/app/constants';
-import type { INodeTypeDescription } from 'n8n-workflow';
-import { MANUAL_TRIGGER_NODE_TYPE } from 'n8n-workflow';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import type { INodeTypeDescription } from 'MNI-workflow';
+import { MANUAL_TRIGGER_NODE_TYPE } from 'MNI-workflow';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import {
 	AIView,
 	HitlToolView,

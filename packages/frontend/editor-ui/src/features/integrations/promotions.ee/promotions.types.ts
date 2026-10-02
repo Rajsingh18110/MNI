@@ -1,4 +1,4 @@
-import type { ApplyPackageResultDto, PromotionVariableScope } from '@n8n/api-types';
+import type { ApplyPackageResultDto, PromotionVariableScope } from '@MNI/api-types';
 
 export type BlockedApplyResult = Extract<ApplyPackageResultDto, { status: 'blocked' }>;
 export type AppliedResult = Extract<ApplyPackageResultDto, { status: 'applied' }>;

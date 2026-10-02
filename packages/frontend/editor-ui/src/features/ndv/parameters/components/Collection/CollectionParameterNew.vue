@@ -9,15 +9,15 @@ import type {
 	INodePropertyCollection,
 	INodePropertyOptions,
 	NodeParameterValueType,
-} from 'n8n-workflow';
-import { deepCopy, isINodeProperties, isINodePropertyCollection } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { deepCopy, isINodeProperties, isINodePropertyCollection } from 'MNI-workflow';
 
 import get from 'lodash/get';
 
 import { injectNDVStore } from '@/features/ndv/shared/ndv.store';
 import { useNodeHelpers } from '@/app/composables/useNodeHelpers';
 import { useAiGatewayStore } from '@/app/stores/aiGateway.store';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 
 import {
 	N8nButton,
@@ -27,8 +27,8 @@ import {
 	N8nSectionHeader,
 	N8nTooltip,
 	TOOLTIP_DELAY_MS,
-} from '@n8n/design-system';
-import type { DropdownMenuItemProps } from '@n8n/design-system';
+} from '@MNI/design-system';
+import type { DropdownMenuItemProps } from '@MNI/design-system';
 import { isPresent } from '@/app/utils/typesUtils';
 
 export interface Props {
@@ -59,7 +59,7 @@ const aiGatewayStore = useAiGatewayStore();
 const activeNode = computed(() => ndvStore.value.activeNode);
 
 const storageKey = computed(() => {
-	return `n8n-collection-parameter-expanded-${activeNode.value?.id ?? 'unknown'}-${props.path}`;
+	return `MNI-collection-parameter-expanded-${activeNode.value?.id ?? 'unknown'}-${props.path}`;
 });
 const isExpanded = ref(props.isNewlyAdded);
 const newlyAddedParameters = ref<Set<string>>(new Set());
@@ -317,7 +317,7 @@ function valueChanged(parameterData: IUpdateInformation) {
 				>
 					<template #trigger>
 						<N8nButton
-							class="n8n-button--highlightFill"
+							class="MNI-button--highlightFill"
 							variant="subtle"
 							size="small"
 							icon="plus"
@@ -385,7 +385,7 @@ function valueChanged(parameterData: IUpdateInformation) {
 				>
 					<template #trigger>
 						<N8nButton
-							class="n8n-button--highlightFill"
+							class="MNI-button--highlightFill"
 							variant="subtle"
 							size="small"
 							icon="plus"

@@ -1,4 +1,4 @@
-import type { ByteStore } from '@n8n/blob-storage';
+import type { ByteStore } from '@MNI/blob-storage';
 import { mock } from 'vitest-mock-extended';
 
 import { BinaryDataBlobManager, parseExecutionFileId } from '@/binary-data/blob.manager';

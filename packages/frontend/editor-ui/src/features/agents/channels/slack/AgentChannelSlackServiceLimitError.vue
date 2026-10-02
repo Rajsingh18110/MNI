@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { N8nLink, N8nText } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+import { N8nLink, N8nText } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 
 import { SLACK_APP_DASHBOARD_URL } from './constants';
 

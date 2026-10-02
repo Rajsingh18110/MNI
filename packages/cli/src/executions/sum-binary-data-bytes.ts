@@ -3,8 +3,8 @@ import type {
 	IBinaryKeyData,
 	IRunExecutionData,
 	ITaskDataConnections,
-} from 'n8n-workflow';
-import { BINARY_IN_JSON_PROPERTY } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { BINARY_IN_JSON_PROPERTY } from 'MNI-workflow';
 
 /**
  * Yield every binary ref in a set of connections, including binary nested in json under

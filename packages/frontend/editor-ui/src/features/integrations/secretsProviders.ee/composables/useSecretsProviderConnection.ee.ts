@@ -2,8 +2,8 @@ import { ref } from 'vue';
 import type {
 	SecretProviderConnection,
 	ReloadSecretProviderConnectionResponse,
-} from '@n8n/api-types';
-import { useRootStore } from '@n8n/stores/useRootStore';
+} from '@MNI/api-types';
+import { useRootStore } from '@MNI/stores/useRootStore';
 import {
 	getSecretProviderConnectionByKey,
 	createSecretProviderConnection,
@@ -15,7 +15,7 @@ import {
 	updateProjectSecretProviderConnection,
 	testProjectSecretProviderConnection,
 	enableSecretProviderConnection,
-} from '@n8n/rest-api-client';
+} from '@MNI/rest-api-client';
 
 /**
  * Low-level composable for secrets provider connection API operations.

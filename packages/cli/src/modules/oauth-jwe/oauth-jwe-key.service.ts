@@ -1,11 +1,11 @@
-import { Logger } from '@n8n/backend-common';
-import { DeploymentKeyRepository, isUniqueConstraintError } from '@n8n/db';
-import { Service } from '@n8n/di';
-import { generateNanoId } from '@n8n/utils/generate-nano-id';
+import { Logger } from '@MNI/backend-common';
+import { DeploymentKeyRepository, isUniqueConstraintError } from '@MNI/db';
+import { Service } from '@MNI/di';
+import { generateNanoId } from '@MNI/utils/generate-nano-id';
 import type { CryptoKey, JWK } from 'jose';
 import { exportJWK, generateKeyPair, importJWK } from 'jose';
-import { Cipher } from 'n8n-core';
-import { jsonParse, UnexpectedError } from 'n8n-workflow';
+import { Cipher } from 'MNI-core';
+import { jsonParse, UnexpectedError } from 'MNI-workflow';
 
 import { CacheService } from '@/services/cache/cache.service';
 

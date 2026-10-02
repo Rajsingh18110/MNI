@@ -1,7 +1,7 @@
 import { ref, watch, onUnmounted, type Ref } from 'vue';
-import type { InstanceAiToolCallState } from '@n8n/api-types';
-import { useToast } from '@n8n/composables/useToast';
-import { isRecord } from '@n8n/utils/is-record';
+import type { InstanceAiToolCallState } from '@MNI/api-types';
+import { useToast } from '@MNI/composables/useToast';
+import { isRecord } from '@MNI/utils/is-record';
 import type { ThreadRuntime } from '../../instanceAi.store';
 import type { TerminalState, WorkflowSetupApplyPayload } from '../workflowSetup.types';
 

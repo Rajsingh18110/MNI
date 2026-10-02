@@ -8,9 +8,9 @@ import {
 	N8nMarkdownEditor,
 	N8nText,
 	N8nTooltip,
-} from '@n8n/design-system';
-import { SUB_AGENT_USE_WHEN_MAX_LENGTH } from '@n8n/api-types';
-import { useI18n, type BaseTextKey } from '@n8n/i18n';
+} from '@MNI/design-system';
+import { SUB_AGENT_USE_WHEN_MAX_LENGTH } from '@MNI/api-types';
+import { useI18n, type BaseTextKey } from '@MNI/i18n';
 
 import { useUIStore } from '@/app/stores/ui.store';
 import ToolsConnectionModal from '@/features/shared/toolsConnection/ToolsConnectionModal.vue';

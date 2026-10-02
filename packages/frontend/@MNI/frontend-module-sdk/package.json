@@ -1,0 +1,39 @@
+{
+  "type": "module",
+  "name": "@MNI/frontend-module-sdk",
+  "version": "0.11.0",
+  "main": "src/index.ts",
+  "import": "src/index.ts",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "clean": "rimraf .turbo",
+    "typecheck": "vue-tsc --noEmit",
+    "test": "vitest run",
+    "test:dev": "vitest",
+    "lint": "eslint src --quiet",
+    "lint:fix": "eslint src --fix",
+    "format": "biome format --write . && prettier --write . --ignore-path ../../../../.prettierignore",
+    "format:check": "biome ci . && prettier --check . --ignore-path ../../../../.prettierignore"
+  },
+  "dependencies": {
+    "@MNI/api-types": "workspace:*",
+    "@MNI/design-system": "workspace:*",
+    "@MNI/utils": "workspace:*",
+    "MNI-workflow": "workspace:*",
+    "vue": "catalog:frontend",
+    "vue-router": "catalog:frontend"
+  },
+  "devDependencies": {
+    "@MNI/eslint-config": "workspace:*",
+    "@MNI/typescript-config": "workspace:*",
+    "@MNI/vitest-config": "workspace:*",
+    "typescript": "catalog:",
+    "unplugin-icons": "catalog:frontend",
+    "vite": "catalog:",
+    "vitest": "catalog:",
+    "vue-tsc": "catalog:frontend"
+  },
+  "license": "LicenseRef-MNI-sustainable-use"
+}

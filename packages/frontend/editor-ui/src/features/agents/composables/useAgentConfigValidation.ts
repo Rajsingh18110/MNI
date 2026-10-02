@@ -1,6 +1,6 @@
 import { ref } from 'vue';
-import type { AgentConfigValidationResponse } from '@n8n/api-types';
-import { useRootStore } from '@n8n/stores/useRootStore';
+import type { AgentConfigValidationResponse } from '@MNI/api-types';
+import { useRootStore } from '@MNI/stores/useRootStore';
 import { getAgentConfigValidation } from './useAgentApi';
 
 /**

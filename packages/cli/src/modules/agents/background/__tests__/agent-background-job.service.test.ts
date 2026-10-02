@@ -1,8 +1,8 @@
-import type { Logger } from '@n8n/backend-common';
-import type { AgentsConfig } from '@n8n/config';
-import { Container } from '@n8n/di';
+import type { Logger } from '@MNI/backend-common';
+import type { AgentsConfig } from '@MNI/config';
+import { Container } from '@MNI/di';
 import type { Mock } from 'vitest';
-import { WorkflowOperationError } from 'n8n-workflow';
+import { WorkflowOperationError } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import type { ExecutionPersistence } from '@/executions/execution-persistence';

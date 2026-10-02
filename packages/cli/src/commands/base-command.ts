@@ -1,5 +1,5 @@
 import 'reflect-metadata';
-import { N8N_VERSION, N8N_RELEASE_DATE } from '@/constants';
+import { MNI_VERSION, MNI_RELEASE_DATE } from '@/constants';
 import {
 	inDevelopment,
 	inTest,
@@ -8,16 +8,16 @@ import {
 	Logger,
 	ModuleRegistry,
 	ModulesConfig,
-} from '@n8n/backend-common';
-import { installGlobalProxyAgent } from '@n8n/backend-network';
-import { AzureBlobConfig, AzureByteStore, ObjectStoreConfig, S3ByteStore } from '@n8n/blob-storage';
-import { GlobalConfig } from '@n8n/config';
-import { LICENSE_FEATURES } from '@n8n/constants';
-import { DbConnection, DeploymentKeyRepository } from '@n8n/db';
-import { SystemTaskMetadata } from '@n8n/decorators';
-import type { SystemTaskClass } from '@n8n/decorators';
-import { Container } from '@n8n/di';
-import { ensureError } from '@n8n/utils/errors/ensure-error';
+} from '@MNI/backend-common';
+import { installGlobalProxyAgent } from '@MNI/backend-network';
+import { AzureBlobConfig, AzureByteStore, ObjectStoreConfig, S3ByteStore } from '@MNI/blob-storage';
+import { GlobalConfig } from '@MNI/config';
+import { LICENSE_FEATURES } from '@MNI/constants';
+import { DbConnection, DeploymentKeyRepository } from '@MNI/db';
+import { SystemTaskMetadata } from '@MNI/decorators';
+import type { SystemTaskClass } from '@MNI/decorators';
+import { Container } from '@MNI/di';
+import { ensureError } from '@MNI/utils/errors/ensure-error';
 import {
 	BinaryDataBlobManager,
 	BinaryDataConfig,
@@ -27,9 +27,9 @@ import {
 	ErrorReporter,
 	ExecutionContextHookRegistry,
 	StorageConfig,
-} from 'n8n-core';
-import { sleep } from '@n8n/utils/sleep';
-import { Expression, UnexpectedError } from 'n8n-workflow';
+} from 'MNI-core';
+import { sleep } from '@MNI/utils/sleep';
+import { Expression, UnexpectedError } from 'MNI-workflow';
 
 import type { AbstractServer } from '@/abstract-server';
 import * as CrashJournal from '@/crash-journal';
@@ -138,9 +138,9 @@ export abstract class BaseCommand<F = never> {
 			serverType: this.instanceSettings.instanceType,
 			dsn: backendDsn,
 			environment,
-			release: `n8n@${N8N_VERSION}`,
+			release: `MNI@${MNI_VERSION}`,
 			serverName: deploymentName,
-			releaseDate: N8N_RELEASE_DATE,
+			releaseDate: MNI_RELEASE_DATE,
 			withEventLoopBlockDetection: eventLoopBlockDetectionEnabled,
 			eventLoopBlockThreshold,
 			eventLoopBlockMaxEventsPerHour,
@@ -391,7 +391,7 @@ export abstract class BaseCommand<F = never> {
 			const isLicensed = Container.get(License).isLicensed(LICENSE_FEATURES.BINARY_DATA_S3);
 			if (!isLicensed) {
 				this.logger.error(
-					'S3 binary data storage requires a valid license. Either set `N8N_DEFAULT_BINARY_DATA_MODE` to something else, or upgrade to a license that supports this feature.',
+					'S3 binary data storage requires a valid license. Either set `MNI_DEFAULT_BINARY_DATA_MODE` to something else, or upgrade to a license that supports this feature.',
 				);
 				process.exit(1);
 			}
@@ -401,13 +401,13 @@ export abstract class BaseCommand<F = never> {
 			const isLicensed = Container.get(LicenseState).isBinaryDataAzureLicensed();
 			if (!isLicensed) {
 				this.logger.error(
-					'Azure Blob binary data storage requires a valid license. Either set `N8N_DEFAULT_BINARY_DATA_MODE` to something else, or upgrade to a license that supports this feature.',
+					'Azure Blob binary data storage requires a valid license. Either set `MNI_DEFAULT_BINARY_DATA_MODE` to something else, or upgrade to a license that supports this feature.',
 				);
 				process.exit(1);
 			}
 			if (Container.get(AzureBlobConfig).containerName === '') {
 				this.logger.error(
-					'Azure Blob binary data storage requires `N8N_EXTERNAL_STORAGE_AZURE_CONTAINER_NAME` to be set.',
+					'Azure Blob binary data storage requires `MNI_EXTERNAL_STORAGE_AZURE_CONTAINER_NAME` to be set.',
 				);
 				process.exit(1);
 			}
@@ -424,13 +424,13 @@ export abstract class BaseCommand<F = never> {
 		if (isExecutionDataS3Mode) {
 			if (!isExecutionDataS3Licensed) {
 				this.logger.error(
-					'S3 execution data storage requires a valid license. Either set `N8N_EXECUTION_DATA_STORAGE_MODE` to something else, or upgrade to a license that supports this feature.',
+					'S3 execution data storage requires a valid license. Either set `MNI_EXECUTION_DATA_STORAGE_MODE` to something else, or upgrade to a license that supports this feature.',
 				);
 				process.exit(1);
 			}
 			if (!isS3Configured) {
 				this.logger.error(
-					'S3 execution data storage requires `N8N_EXTERNAL_STORAGE_S3_BUCKET_NAME` to be set.',
+					'S3 execution data storage requires `MNI_EXTERNAL_STORAGE_S3_BUCKET_NAME` to be set.',
 				);
 				process.exit(1);
 			}
@@ -439,13 +439,13 @@ export abstract class BaseCommand<F = never> {
 		if (isExecutionDataAzureMode) {
 			if (!isExecutionDataAzureLicensed) {
 				this.logger.error(
-					'Azure Blob execution data storage requires a valid license. Either set `N8N_EXECUTION_DATA_STORAGE_MODE` to something else, or upgrade to a license that supports this feature.',
+					'Azure Blob execution data storage requires a valid license. Either set `MNI_EXECUTION_DATA_STORAGE_MODE` to something else, or upgrade to a license that supports this feature.',
 				);
 				process.exit(1);
 			}
 			if (!isAzureConfigured) {
 				this.logger.error(
-					'Azure Blob execution data storage requires `N8N_EXTERNAL_STORAGE_AZURE_CONTAINER_NAME` to be set.',
+					'Azure Blob execution data storage requires `MNI_EXTERNAL_STORAGE_AZURE_CONTAINER_NAME` to be set.',
 				);
 				process.exit(1);
 			}
@@ -489,7 +489,7 @@ export abstract class BaseCommand<F = never> {
 	protected async initObjectStoreIfConfigured() {
 		if (Container.get(ObjectStoreConfig).bucket.name === '') return undefined;
 
-		const { ObjectStoreService } = await import('@n8n/blob-storage/object-store');
+		const { ObjectStoreService } = await import('@MNI/blob-storage/object-store');
 		const objectStoreService = Container.get(ObjectStoreService);
 		await objectStoreService.init();
 
@@ -504,7 +504,7 @@ export abstract class BaseCommand<F = never> {
 	protected async initAzureStoreIfConfigured() {
 		if (Container.get(AzureBlobConfig).containerName === '') return;
 
-		const { AzureBlobService } = await import('@n8n/blob-storage/azure-blob');
+		const { AzureBlobService } = await import('@MNI/blob-storage/azure-blob');
 		const azureBlobService = Container.get(AzureBlobService);
 		await azureBlobService.init();
 

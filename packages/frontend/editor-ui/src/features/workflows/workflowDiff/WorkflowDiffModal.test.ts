@@ -3,7 +3,7 @@ import userEvent from '@testing-library/user-event';
 import { createComponentRenderer } from '@/__tests__/render';
 import WorkflowDiffModal from '@/features/workflows/workflowDiff/WorkflowDiffModal.vue';
 import { createTestingPinia } from '@pinia/testing';
-import { createEventBus } from '@n8n/utils/event-bus';
+import { createEventBus } from '@MNI/utils/event-bus';
 import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';
 import { useSourceControlStore } from '@/features/integrations/sourceControl.ee/sourceControl.store';
 import { useWorkflowsListStore } from '@/app/stores/workflowsList.store';
@@ -29,7 +29,7 @@ const mockRouterBack = vi.fn();
 const mockRouterReplace = vi.fn();
 const mockShowError = vi.fn();
 
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: vi.fn(() => ({
 		showError: mockShowError,
 	})),
@@ -91,7 +91,7 @@ const mockWorkflow = createTestWorkflow({
 		{
 			id: 'node1',
 			name: 'Start',
-			type: 'n8n-nodes-base.manualTrigger',
+			type: 'MNI-nodes-base.manualTrigger',
 			typeVersion: 1,
 			position: [250, 300],
 			parameters: {},
@@ -99,7 +99,7 @@ const mockWorkflow = createTestWorkflow({
 		{
 			id: 'node2',
 			name: 'End',
-			type: 'n8n-nodes-base.end',
+			type: 'MNI-nodes-base.end',
 			typeVersion: 1,
 			position: [450, 300],
 			parameters: {},

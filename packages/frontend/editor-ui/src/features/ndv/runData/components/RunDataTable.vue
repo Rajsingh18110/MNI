@@ -7,19 +7,19 @@ import { injectWorkflowDocumentStore } from '@/app/stores/workflowDocument.store
 import { getMappedExpression } from '@/app/utils/mappingUtils';
 import { getPairedItemId } from '@/app/utils/pairedItemUtils';
 import { shorten } from '@/app/utils/typesUtils';
-import type { GenericValue, IDataObject, INodeExecutionData } from 'n8n-workflow';
+import type { GenericValue, IDataObject, INodeExecutionData } from 'MNI-workflow';
 import { useTemplateRef, computed, onMounted, ref, watch } from 'vue';
 import Draggable from '@/app/components/Draggable.vue';
 import MappingPill from './MappingPill.vue';
 import TextWithHighlights from './TextWithHighlights.vue';
 import BinaryEntryDataTable from './BinaryEntryDataTable.vue';
-import { useI18n } from '@n8n/i18n';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
+import { useI18n } from '@MNI/i18n';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
 import { useExecutionHelpers } from '@/features/execution/executions/composables/useExecutionHelpers';
 import { I18nT } from 'vue-i18n';
 import { useTelemetryContext } from '@/app/composables/useTelemetryContext';
 
-import { N8nIcon, N8nIconButton, N8nInfoTip, N8nTooltip, N8nTree } from '@n8n/design-system';
+import { N8nIcon, N8nIconButton, N8nInfoTip, N8nTooltip, N8nTree } from '@MNI/design-system';
 const MAX_COLUMNS_LIMIT = 40;
 
 type DraggableRef = InstanceType<typeof Draggable>;
@@ -858,7 +858,7 @@ watch(
 			text-overflow: ellipsis;
 			white-space: nowrap;
 
-			& :global(.n8n-tree) {
+			& :global(.MNI-tree) {
 				height: 1.5em;
 				overflow: hidden;
 			}

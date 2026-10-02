@@ -3,8 +3,8 @@ import type {
 	InstanceAiAgentNode,
 	InstanceAiTimelineEntry,
 	InstanceAiToolCallState,
-} from '@n8n/api-types';
-import { N8nAiActivityStep } from '@n8n/design-system';
+} from '@MNI/api-types';
+import { N8nAiActivityStep } from '@MNI/design-system';
 import { computed } from 'vue';
 import AiReasoningBlock from '../../shared/components/AiReasoningBlock.vue';
 import AiThinkingBlock from '../../shared/components/AiThinkingBlock.vue';

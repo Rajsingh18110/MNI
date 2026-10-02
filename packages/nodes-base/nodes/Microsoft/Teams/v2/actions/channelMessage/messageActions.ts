@@ -1,5 +1,5 @@
-import type { IExecuteFunctions, INodeProperties } from 'n8n-workflow';
-import { NodeApiError, NodeOperationError } from 'n8n-workflow';
+import type { IExecuteFunctions, INodeProperties } from 'MNI-workflow';
+import { NodeApiError, NodeOperationError } from 'MNI-workflow';
 
 import { throwIfChannelMessageDeleteUnsupported } from './sharedGuard';
 import { channelRLC, teamRLC } from '../../descriptions';

@@ -4,8 +4,8 @@ import type {
 	INodeParameters,
 	INodeType,
 	INodeTypes,
-} from 'n8n-workflow';
-import { NodeHelpers, UserError, Workflow } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeHelpers, UserError, Workflow } from 'MNI-workflow';
 
 import { HeaderConstants } from '../../nodes/Microsoft/Storage/GenericFunctions';
 import { AzureStorageSharedKeyApi } from '../AzureStorageSharedKeyApi.credentials';
@@ -17,8 +17,8 @@ const { mockContainer, MockSecurityConfig } = vi.hoisted(() => {
 	return { mockContainer: { get: vi.fn() }, MockSecurityConfig };
 });
 
-vi.mock('@n8n/di', () => ({ Container: mockContainer }));
-vi.mock('@n8n/config', () => ({ SecurityConfig: MockSecurityConfig }));
+vi.mock('@MNI/di', () => ({ Container: mockContainer }));
+vi.mock('@MNI/config', () => ({ SecurityConfig: MockSecurityConfig }));
 
 describe('AzureStorageSharedKeyApi Credential', () => {
 	const credential = new AzureStorageSharedKeyApi();
@@ -49,7 +49,7 @@ describe('AzureStorageSharedKeyApi Credential', () => {
 			nodes: [
 				{
 					name: 'Credential',
-					type: 'n8n-nodes-base.noOp',
+					type: 'MNI-nodes-base.noOp',
 					typeVersion: 1,
 					id: 'credential-1',
 					position: [0, 0],

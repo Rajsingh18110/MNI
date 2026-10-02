@@ -1,7 +1,7 @@
-import { FsByteStore, SkippedEntryDeletionError } from '@n8n/blob-storage';
-import type { BinaryDataRepository } from '@n8n/db';
-import type { ErrorReporter, StorageConfig } from 'n8n-core';
-import { UnexpectedError } from 'n8n-workflow';
+import { FsByteStore, SkippedEntryDeletionError } from '@MNI/blob-storage';
+import type { BinaryDataRepository } from '@MNI/db';
+import type { ErrorReporter, StorageConfig } from 'MNI-core';
+import { UnexpectedError } from 'MNI-workflow';
 import { mkdtemp, readdir, rm } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
@@ -33,7 +33,7 @@ describe('AgentKnowledgeFileStore', () => {
 	}
 
 	beforeAll(async () => {
-		storagePath = await mkdtemp(join(tmpdir(), 'n8n-agent-knowledge-file-store-'));
+		storagePath = await mkdtemp(join(tmpdir(), 'MNI-agent-knowledge-file-store-'));
 	});
 
 	beforeEach(async () => {

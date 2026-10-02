@@ -2,9 +2,9 @@
 import { useUsageStore } from '@/features/settings/usage/usage.store';
 import { useAsyncState } from '@vueuse/core';
 import { EVALUATIONS_DOCS_URL, VIEWS } from '@/app/constants';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
-import { useToast } from '@n8n/composables/useToast';
-import { useI18n } from '@n8n/i18n';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
+import { useToast } from '@MNI/composables/useToast';
+import { useI18n } from '@MNI/i18n';
 import { useEvaluationStore } from '../evaluation.store';
 import { useSourceControlStore } from '@/features/integrations/sourceControl.ee/sourceControl.store';
 import { useWorkflowsStore } from '@/app/stores/workflows.store';
@@ -15,7 +15,7 @@ import EvaluationsPaywall from '../components/Paywall/EvaluationsPaywall.vue';
 import SetupWizard from '../components/SetupWizard/SetupWizard.vue';
 import EvaluationsEmptyState from '../components/EvaluationsEmptyState/EvaluationsEmptyState.vue';
 
-import { N8nCallout, N8nLink, N8nText } from '@n8n/design-system';
+import { N8nCallout, N8nLink, N8nText } from '@MNI/design-system';
 import { useWorkflowEvaluationState } from '../composables/useWorkflowEvaluationState';
 import { useEvaluationsWizardSidepanelExperiment } from '@/experiments/evaluationsWizardSidepanel/useEvaluationsWizardSidepanelExperiment';
 import { useEvaluationsLicense } from '../composables/useEvaluationsLicense';

@@ -1,11 +1,11 @@
-import type { UpdateCredentialPublicDto } from '@n8n/api-types';
-import type { CredentialsEntity } from '@n8n/db';
+import type { UpdateCredentialPublicDto } from '@MNI/api-types';
+import type { CredentialsEntity } from '@MNI/db';
 import { validate } from 'jsonschema';
 import {
 	type DisplayCondition,
 	type INodeProperties,
 	type INodePropertyOptions,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import type { CredentialsHelper } from '@/credentials-helper';
 import { BadRequestError } from '@/errors/response-errors/bad-request.error';

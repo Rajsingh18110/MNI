@@ -1,5 +1,5 @@
-import type { IDataObject, IWorkflowExecuteAdditionalData } from 'n8n-workflow';
-import { ExpressionError } from 'n8n-workflow';
+import type { IDataObject, IWorkflowExecuteAdditionalData } from 'MNI-workflow';
+import { ExpressionError } from 'MNI-workflow';
 
 function buildSecretsValueProxy(value: IDataObject): unknown {
 	return new Proxy(value, {

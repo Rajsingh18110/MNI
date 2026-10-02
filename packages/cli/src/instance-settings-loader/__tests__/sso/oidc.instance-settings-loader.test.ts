@@ -1,7 +1,7 @@
-import type { Logger } from '@n8n/backend-common';
-import type { InstanceSettingsLoaderConfig } from '@n8n/config';
-import type { SettingsRepository } from '@n8n/db';
-import type { Cipher } from 'n8n-core';
+import type { Logger } from '@MNI/backend-common';
+import type { InstanceSettingsLoaderConfig } from '@MNI/config';
+import type { SettingsRepository } from '@MNI/db';
+import type { Cipher } from 'MNI-core';
 import { mock } from 'vitest-mock-extended';
 
 import { OidcInstanceSettingsLoader } from '../../loaders/sso/oidc.instance-settings-loader';
@@ -47,22 +47,22 @@ describe('OidcInstanceSettingsLoader', () => {
 	describe('when OIDC login is enabled', () => {
 		it('should throw when clientId is missing', async () => {
 			const loader = createLoader({ ...validConfig, oidcClientId: '' });
-			await expect(loader.apply()).rejects.toThrow('N8N_SSO_OIDC_CLIENT_ID is required');
+			await expect(loader.apply()).rejects.toThrow('MNI_SSO_OIDC_CLIENT_ID is required');
 		});
 
 		it('should throw when clientSecret is missing', async () => {
 			const loader = createLoader({ ...validConfig, oidcClientSecret: '' });
-			await expect(loader.apply()).rejects.toThrow('N8N_SSO_OIDC_CLIENT_SECRET is required');
+			await expect(loader.apply()).rejects.toThrow('MNI_SSO_OIDC_CLIENT_SECRET is required');
 		});
 
 		it('should throw when discoveryEndpoint is not a valid URL', async () => {
 			const loader = createLoader({ ...validConfig, oidcDiscoveryEndpoint: 'not-a-url' });
-			await expect(loader.apply()).rejects.toThrow('N8N_SSO_OIDC_DISCOVERY_ENDPOINT');
+			await expect(loader.apply()).rejects.toThrow('MNI_SSO_OIDC_DISCOVERY_ENDPOINT');
 		});
 
 		it('should throw when oidcPrompt has an invalid value', async () => {
 			const loader = createLoader({ ...validConfig, oidcPrompt: 'invalid' });
-			await expect(loader.apply()).rejects.toThrow('N8N_SSO_OIDC_PROMPT');
+			await expect(loader.apply()).rejects.toThrow('MNI_SSO_OIDC_PROMPT');
 		});
 
 		it('should upsert preferences with encrypted clientSecret when valid config is provided', async () => {

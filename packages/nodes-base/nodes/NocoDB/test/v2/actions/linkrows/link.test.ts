@@ -1,4 +1,4 @@
-import type { IExecuteFunctions, INode } from 'n8n-workflow';
+import type { IExecuteFunctions, INode } from 'MNI-workflow';
 
 import { execute } from '../../../../v2/actions/linkrows/link.operation';
 import { apiRequest } from '../../../../v2/transport';

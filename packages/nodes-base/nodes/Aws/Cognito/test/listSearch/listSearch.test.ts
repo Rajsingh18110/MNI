@@ -2,7 +2,7 @@ import {
 	NodeOperationError,
 	type ILoadOptionsFunctions,
 	type INodeListSearchResult,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import type { IUserPool } from '../../helpers/interfaces';
 import {

@@ -6,11 +6,11 @@ vi.mock('@/modules/community-packages/npm-utils', async () => ({
 	verifyIntegrity: vi.fn(),
 }));
 
-import type { CommunityNodeType } from '@n8n/api-types';
-import { mockInstance, testDb } from '@n8n/backend-test-utils';
-import type { User } from '@n8n/db';
-import type { ApiKeyScope } from '@n8n/permissions';
-import { OWNER_API_KEY_SCOPES } from '@n8n/permissions';
+import type { CommunityNodeType } from '@MNI/api-types';
+import { mockInstance, testDb } from '@MNI/backend-test-utils';
+import type { User } from '@MNI/db';
+import type { ApiKeyScope } from '@MNI/permissions';
+import { OWNER_API_KEY_SCOPES } from '@MNI/permissions';
 import { mock } from 'vitest-mock-extended';
 
 import { LoadNodesAndCredentials } from '@/load-nodes-and-credentials';
@@ -417,7 +417,7 @@ describe('Community packages (Public API)', () => {
 		});
 
 		it('should pass a decoded scoped package name to the parser', async () => {
-			const name = '@author/n8n-nodes-foo';
+			const name = '@author/MNI-nodes-foo';
 			const pkg = mockPackage({ packageName: name });
 			communityPackagesService.parseNpmPackageName.mockReturnValue({
 				packageName: name,
@@ -456,7 +456,7 @@ describe('Community packages (Public API)', () => {
 		it('should return 400 when package name is invalid', async () => {
 			const name = 'invalid-package-name';
 			communityPackagesService.parseNpmPackageName.mockImplementation(() => {
-				throw new Error('Package name must start with n8n-nodes-');
+				throw new Error('Package name must start with MNI-nodes-');
 			});
 
 			const response = await testServer
@@ -464,7 +464,7 @@ describe('Community packages (Public API)', () => {
 				.delete(`/community-packages/${encodeURIComponent(name)}`);
 
 			expect(response.status).toBe(400);
-			expect(response.body).toStrictEqual({ message: 'Package name must start with n8n-nodes-' });
+			expect(response.body).toStrictEqual({ message: 'Package name must start with MNI-nodes-' });
 			expect(communityPackagesService.removePackage).not.toHaveBeenCalled();
 		});
 
@@ -502,7 +502,7 @@ describe('Community packages (Public API)', () => {
 		});
 
 		it('should pass a decoded scoped package name to the parser', async () => {
-			const name = '@author/n8n-nodes-foo';
+			const name = '@author/MNI-nodes-foo';
 			communityPackagesService.parseNpmPackageName.mockReturnValue({
 				packageName: name,
 				rawString: name,

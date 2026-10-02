@@ -1,5 +1,5 @@
-import type { User } from '@n8n/db';
-import type { MessageEventBusDestinationOptions } from 'n8n-workflow';
+import type { User } from '@MNI/db';
+import type { MessageEventBusDestinationOptions } from 'MNI-workflow';
 
 import type { CredentialsFinderService } from '@/credentials/credentials-finder.service';
 import { ForbiddenError } from '@/errors/response-errors/forbidden.error';

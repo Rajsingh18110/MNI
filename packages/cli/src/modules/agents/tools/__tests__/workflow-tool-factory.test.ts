@@ -1,17 +1,17 @@
-import { Logger } from '@n8n/backend-common';
-import { N8N_CHAT_INTEGRATION_TYPE } from '@n8n/api-types';
-import { GlobalConfig } from '@n8n/config';
-import type { WorkflowEntity } from '@n8n/db';
-import { Container } from '@n8n/di';
-import type { IDeferredPromise } from '@n8n/utils/promise/deferred-promise';
-import { sleep } from '@n8n/utils/sleep';
+import { Logger } from '@MNI/backend-common';
+import { MNI_CHAT_INTEGRATION_TYPE } from '@MNI/api-types';
+import { GlobalConfig } from '@MNI/config';
+import type { WorkflowEntity } from '@MNI/db';
+import { Container } from '@MNI/di';
+import type { IDeferredPromise } from '@MNI/utils/promise/deferred-promise';
+import { sleep } from '@MNI/utils/sleep';
 import type {
 	IExecuteResponsePromiseData,
 	INode,
 	IRun,
 	IWorkflowExecutionDataProcess,
-} from 'n8n-workflow';
-import { createRunExecutionData, WAIT_INDEFINITELY } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { createRunExecutionData, WAIT_INDEFINITELY } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import type { ActiveExecutions } from '@/active-executions';
@@ -32,14 +32,14 @@ import {
 } from '../workflow-tool-factory';
 import type { WorkflowToolWorkflowLoader } from '../workflow-tool-workflow-loader.service';
 
-vi.mock('@n8n/utils/sleep', () => ({ sleep: vi.fn().mockResolvedValue(undefined) }));
+vi.mock('@MNI/utils/sleep', () => ({ sleep: vi.fn().mockResolvedValue(undefined) }));
 
-const parentPrincipalHash = hashAgentSandboxPrincipal({ type: 'n8n-user', userId: 'user-1' });
+const parentPrincipalHash = hashAgentSandboxPrincipal({ type: 'MNI-user', userId: 'user-1' });
 
 const triggerNode: INode = {
 	id: 'trigger-1',
 	name: 'When Executed by Another Workflow',
-	type: 'n8n-nodes-base.executeWorkflowTrigger',
+	type: 'MNI-nodes-base.executeWorkflowTrigger',
 	typeVersion: 1.1,
 	position: [0, 0],
 	parameters: { inputSource: 'passthrough' },
@@ -766,10 +766,10 @@ describe('workflow tool → parentAgentRun stamping', () => {
 	});
 
 	// The preview marker cannot be inferred on wake-up: MCP and AI Assistant test
-	// runs are `n8n_chat` too, so it has to travel on the marker itself.
+	// runs are `MNI_chat` too, so it has to travel on the marker itself.
 	it('stamps the preview marker so the wake-up resumes in preview mode', async () => {
 		const executionData = await runToolWith(
-			{ agentId: 'agent-1', integrationType: N8N_CHAT_INTEGRATION_TYPE, previewChat: true },
+			{ agentId: 'agent-1', integrationType: MNI_CHAT_INTEGRATION_TYPE, previewChat: true },
 			agentCtx,
 		);
 
@@ -780,7 +780,7 @@ describe('workflow tool → parentAgentRun stamping', () => {
 		const executionData = await runToolWith(
 			{
 				agentId: 'agent-1',
-				integrationType: N8N_CHAT_INTEGRATION_TYPE,
+				integrationType: MNI_CHAT_INTEGRATION_TYPE,
 				userId: 'user-1',
 				publishedN8nChat: true,
 			},
@@ -794,7 +794,7 @@ describe('workflow tool → parentAgentRun stamping', () => {
 
 	it('omits the preview marker for every other draft surface', async () => {
 		const executionData = await runToolWith(
-			{ agentId: 'agent-1', integrationType: N8N_CHAT_INTEGRATION_TYPE },
+			{ agentId: 'agent-1', integrationType: MNI_CHAT_INTEGRATION_TYPE },
 			agentCtx,
 		);
 

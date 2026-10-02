@@ -1,5 +1,5 @@
-import { testModules } from '@n8n/backend-test-utils';
-import type { GlobalConfig } from '@n8n/config';
+import { testModules } from '@MNI/backend-test-utils';
+import type { GlobalConfig } from '@MNI/config';
 import { mkdtempSync, writeFileSync, rmSync } from 'fs';
 import { tmpdir } from 'os';
 import { join } from 'path';

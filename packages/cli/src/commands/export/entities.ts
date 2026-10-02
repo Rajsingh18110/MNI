@@ -1,6 +1,6 @@
-import { safeJoinPath } from '@n8n/backend-common';
-import { Command } from '@n8n/decorators';
-import { Container } from '@n8n/di';
+import { safeJoinPath } from '@MNI/backend-common';
+import { Command } from '@MNI/decorators';
+import { Container } from '@MNI/di';
 import { z } from 'zod';
 
 import { ExportService } from '@/services/export.service';

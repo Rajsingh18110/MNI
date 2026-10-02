@@ -4,11 +4,11 @@ import userEvent from '@testing-library/user-event';
 import { createTestingPinia } from '@pinia/testing';
 import merge from 'lodash/merge';
 import { reactive } from 'vue';
-import { STORES } from '@n8n/stores';
+import { STORES } from '@MNI/stores';
 import { SETTINGS_STORE_DEFAULT_STATE } from '@/__tests__/utils';
 import MainSidebarSourceControl from '@/app/components/MainSidebarSourceControl.vue';
 import { useSourceControlStore } from '@/features/integrations/sourceControl.ee/sourceControl.store';
-import { useRBACStore } from '@n8n/stores/rbac.store';
+import { useRBACStore } from '@MNI/stores/rbac.store';
 import { createComponentRenderer } from '@/__tests__/render';
 import { useProjectsStore } from '@/features/collaboration/projects/projects.store';
 

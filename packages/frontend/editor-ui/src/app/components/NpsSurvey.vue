@@ -1,16 +1,16 @@
 <script lang="ts" setup>
 import { NPS_SURVEY_MODAL_KEY } from '@/app/constants';
-import { useRootStore } from '@n8n/stores/useRootStore';
+import { useRootStore } from '@MNI/stores/useRootStore';
 import ModalDrawer from '@/app/components/ModalDrawer.vue';
-import { useToast } from '@n8n/composables/useToast';
-import { useI18n } from '@n8n/i18n';
+import { useToast } from '@MNI/composables/useToast';
+import { useI18n } from '@MNI/i18n';
 import { ref, computed, watch } from 'vue';
-import { createEventBus } from '@n8n/utils/event-bus';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
+import { createEventBus } from '@MNI/utils/event-bus';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
 import { useNpsSurveyStore } from '@/app/stores/npsSurvey.store';
-import { useStyles } from '@n8n/composables/useStyles';
+import { useStyles } from '@MNI/composables/useStyles';
 
-import { N8nButton, N8nHeading, N8nInput, N8nText } from '@n8n/design-system';
+import { N8nButton, N8nHeading, N8nInput, N8nText } from '@MNI/design-system';
 const props = defineProps<{
 	isActive?: boolean;
 }>();

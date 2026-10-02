@@ -1,7 +1,7 @@
-import { testDb } from '@n8n/backend-test-utils';
-import { DeploymentKey, type User } from '@n8n/db';
-import { Container } from '@n8n/di';
-import { DataSource, type Repository } from '@n8n/typeorm';
+import { testDb } from '@MNI/backend-test-utils';
+import { DeploymentKey, type User } from '@MNI/db';
+import { Container } from '@MNI/di';
+import { DataSource, type Repository } from '@MNI/typeorm';
 
 import { createMember, createOwner } from './shared/db/users';
 import type { SuperAgentTest } from './shared/types';

@@ -3,8 +3,8 @@ import type {
 	IDisplayOptions,
 	IExecuteFunctions,
 	INodeProperties,
-} from 'n8n-workflow';
-import { NodeApiError, NodeOperationError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeApiError, NodeOperationError } from 'MNI-workflow';
 
 import { bodyProperties, envelopeHasContent, readBodyEnvelope } from './bodyEnvelope';
 import { confluenceApiRequest } from '../../transport';

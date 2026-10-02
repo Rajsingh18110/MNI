@@ -1,5 +1,5 @@
-import type { IDataObject, IExecuteFunctions, INode } from 'n8n-workflow';
-import { BINARY_ENCODING, NodeApiError, NodeOperationError } from 'n8n-workflow';
+import type { IDataObject, IExecuteFunctions, INode } from 'MNI-workflow';
+import { BINARY_ENCODING, NodeApiError, NodeOperationError } from 'MNI-workflow';
 
 import { escapeODataValue } from '@utils/query-escaping';
 

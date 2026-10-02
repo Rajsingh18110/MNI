@@ -2,14 +2,14 @@ import { createComponentRenderer } from '@/__tests__/render';
 import { type MockedStore, mockedStore } from '@/__tests__/utils';
 import { createTestingPinia } from '@pinia/testing';
 import CredentialResolverEditModal from '@/features/resolvers/components/CredentialResolverEditModal.vue';
-import { useRootStore } from '@n8n/stores/useRootStore';
-import { useToast } from '@n8n/composables/useToast';
+import { useRootStore } from '@MNI/stores/useRootStore';
+import { useToast } from '@MNI/composables/useToast';
 import { CREDENTIAL_RESOLVER_EDIT_MODAL_KEY } from '@/app/constants';
-import * as restApiClient from '@n8n/rest-api-client';
-import type { CredentialResolverType } from '@n8n/api-types';
+import * as restApiClient from '@MNI/rest-api-client';
+import type { CredentialResolverType } from '@MNI/api-types';
 import { defineComponent, h, watch, toRefs } from 'vue';
 
-vi.mock('@n8n/composables/useToast', () => {
+vi.mock('@MNI/composables/useToast', () => {
 	const showError = vi.fn();
 	return {
 		useToast: () => ({
@@ -18,7 +18,7 @@ vi.mock('@n8n/composables/useToast', () => {
 	};
 });
 
-vi.mock('@n8n/rest-api-client', async (importOriginal) => {
+vi.mock('@MNI/rest-api-client', async (importOriginal) => {
 	const actual = await importOriginal<typeof restApiClient>();
 	return {
 		...actual,

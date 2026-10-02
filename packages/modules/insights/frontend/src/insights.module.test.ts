@@ -1,4 +1,4 @@
-import { VIEWS } from '@n8n/frontend-constants/views';
+import { VIEWS } from '@MNI/frontend-constants/views';
 import { createMemoryHistory, createRouter, type RouteRecordRaw } from 'vue-router';
 
 import { InsightsModule } from './insights.module';

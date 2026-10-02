@@ -1,6 +1,6 @@
-import { InviteUsersRequestDto } from '@n8n/api-types';
-import { mockInstance } from '@n8n/backend-test-utils';
-import { GlobalConfig } from '@n8n/config';
+import { InviteUsersRequestDto } from '@MNI/api-types';
+import { mockInstance } from '@MNI/backend-test-utils';
+import { GlobalConfig } from '@MNI/config';
 import {
 	Project,
 	GLOBAL_ADMIN_ROLE,
@@ -11,10 +11,10 @@ import {
 	Role,
 	User,
 	UserRepository,
-} from '@n8n/db';
-import { Container } from '@n8n/di';
-import { PROJECT_OWNER_ROLE_SLUG, PROJECT_VIEWER_ROLE_SLUG } from '@n8n/permissions';
-import type { EntityManager } from '@n8n/typeorm';
+} from '@MNI/db';
+import { Container } from '@MNI/di';
+import { PROJECT_OWNER_ROLE_SLUG, PROJECT_VIEWER_ROLE_SLUG } from '@MNI/permissions';
+import type { EntityManager } from '@MNI/typeorm';
 import { v4 as uuid } from 'uuid';
 import { mock } from 'vitest-mock-extended';
 
@@ -26,7 +26,7 @@ import type { EventService } from '@/events/event.service';
 import type { ExternalHooks } from '@/external-hooks';
 import type { License } from '@/license';
 import type { ProvisioningService } from '@/modules/provisioning.ee/provisioning.service.ee';
-import { UrlService } from '@n8n/backend-services';
+import { UrlService } from '@MNI/backend-services';
 import { UserService } from '@/services/user.service';
 import * as ssoHelpers from '@/sso.ee/sso-helpers';
 import type { UserManagementMailer } from '@/user-management/email';
@@ -250,7 +250,7 @@ describe('UserService', () => {
 
 	describe('update', () => {
 		// We need to use `save` so that that the subscriber in
-		// packages/@n8n/db/src/entities/Project.ts receives the full user.
+		// packages/@MNI/db/src/entities/Project.ts receives the full user.
 		// With `update` it would only receive the updated fields, e.g. the `id`
 		// would be missing.
 		it('should use `save` instead of `update`', async () => {

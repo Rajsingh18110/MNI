@@ -20,6 +20,6 @@ const trimPackageJson = (packageName, { keepRuntimeDeps = false } = {}) => {
 	writeFileSync(filePath, JSON.stringify(packageJson, null, 2) + '\n', 'utf-8');
 };
 
-trimPackageJson('frontend/@n8n/chat', { keepRuntimeDeps: true });
-trimPackageJson('frontend/@n8n/design-system', { keepRuntimeDeps: true });
+trimPackageJson('frontend/@MNI/chat', { keepRuntimeDeps: true });
+trimPackageJson('frontend/@MNI/design-system', { keepRuntimeDeps: true });
 trimPackageJson('frontend/editor-ui');

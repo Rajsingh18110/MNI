@@ -58,7 +58,7 @@ const {
 
 describe('teamHandleToSlug', () => {
 	it('strips the org prefix from an OWNERS team handle', () => {
-		assert.equal(teamHandleToSlug('@n8n-io/catalysts'), 'catalysts');
+		assert.equal(teamHandleToSlug('@MNI-io/catalysts'), 'catalysts');
 	});
 
 	it('leaves a bare slug untouched', () => {
@@ -66,7 +66,7 @@ describe('teamHandleToSlug', () => {
 	});
 
 	it('only strips the first segment', () => {
-		assert.equal(teamHandleToSlug('@n8n-io/migrations-review'), 'migrations-review');
+		assert.equal(teamHandleToSlug('@MNI-io/migrations-review'), 'migrations-review');
 	});
 });
 
@@ -93,8 +93,8 @@ describe('resolveOwnerTeamSlugs', () => {
 
 	it('maps allocations to team slugs in allocation order', () => {
 		ownershipsToAllocationsImpl = () => [
-			{ team: '@n8n-io/catalysts', fileCount: 3 },
-			{ team: '@n8n-io/qa-dx', fileCount: 1 },
+			{ team: '@MNI-io/catalysts', fileCount: 3 },
+			{ team: '@MNI-io/qa-dx', fileCount: 1 },
 		];
 
 		assert.deepEqual(resolveOwnerTeamSlugs(new Set(['a.ts'])), ['catalysts', 'qa-dx']);
@@ -115,7 +115,7 @@ describe('run', () => {
 		getChangedFilesImpl = async () => new Set(['a.ts']);
 		parseOwnersFileImpl = () => [];
 		assignOwnershipImpl = () => new Map();
-		ownershipsToAllocationsImpl = () => [{ team: '@n8n-io/catalysts', fileCount: 1 }];
+		ownershipsToAllocationsImpl = () => [{ team: '@MNI-io/catalysts', fileCount: 1 }];
 		requestTeamReviewers = mock.fn(async () => {});
 		requestTeamReviewersImpl = requestTeamReviewers;
 		addLabel = mock.fn(async () => {});
@@ -126,8 +126,8 @@ describe('run', () => {
 
 	it('requests review from the owning team slugs when the label is present', async () => {
 		ownershipsToAllocationsImpl = () => [
-			{ team: '@n8n-io/catalysts', fileCount: 2 },
-			{ team: '@n8n-io/qa-dx', fileCount: 1 },
+			{ team: '@MNI-io/catalysts', fileCount: 2 },
+			{ team: '@MNI-io/qa-dx', fileCount: 1 },
 		];
 
 		await run(42);

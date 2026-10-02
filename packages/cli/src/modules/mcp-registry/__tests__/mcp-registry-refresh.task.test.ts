@@ -1,4 +1,4 @@
-import type { SystemTask } from '@n8n/decorators';
+import type { SystemTask } from '@MNI/decorators';
 import { mock } from 'vitest-mock-extended';
 
 import { McpRegistryRefreshTask } from '../mcp-registry-refresh.task';

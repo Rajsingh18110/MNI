@@ -1,5 +1,5 @@
 import { computed, ref } from 'vue';
-import { SYSTEM_RESOLVER_ID } from '@n8n/api-types';
+import { SYSTEM_RESOLVER_ID } from '@MNI/api-types';
 import { useHistoryStore } from '@/app/stores/history.store';
 import { CUSTOM_API_CALL_KEY, EnterpriseEditionFeature } from '@/app/constants';
 
@@ -10,7 +10,7 @@ import {
 	getChildNodes,
 	getParentNodes,
 	nodeIssuesToString,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import type {
 	INodeProperties,
 	INodeCredentialDescription,
@@ -31,7 +31,7 @@ import type {
 	IRunExecutionData,
 	NodeHint,
 	INodeCredentials,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import type { ICredentialsResponse } from '@/features/credentials/credentials.types';
 import type { AddedNode, INodeUi, INodeUpdatePropertiesInformation } from '@/Interface';
@@ -44,12 +44,12 @@ import { getNodeSubtitle, hasProxyAuth } from '@/app/utils/nodeTypesUtils';
 import { assignNodeId } from '@/app/utils/nodes/nodeTransforms';
 import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';
 import { useCredentialsStore } from '@/features/credentials/credentials.store';
-import { type BaseTextKey, useI18n } from '@n8n/i18n';
+import { type BaseTextKey, useI18n } from '@MNI/i18n';
 import { EnableNodeToggleCommand } from '@/app/models/history';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
 import { hasPermission } from '@/app/utils/rbac/permissions';
 import { useCanvasStore } from '@/app/stores/canvas.store';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { injectWorkflowDocumentStore } from '@/app/stores/workflowDocument.store';
 import { injectWorkflowExecutionStateStore } from '@/app/stores/workflowExecutionState.store';
 import { usePrivateCredentials } from '@/features/resolvers/composables/usePrivateCredentials';
@@ -954,28 +954,28 @@ export function useNodeHelpers() {
 
 	/** nodes that would execute only once with such parameters add 'undefined' to parameters values if it is parameter's default value */
 	const SINGLE_EXECUTION_NODES: { [key: string]: { [key: string]: NodeParameterValue[] } } = {
-		'n8n-nodes-base.code': {
+		'MNI-nodes-base.code': {
 			mode: [undefined, 'runOnceForAllItems'],
 		},
-		'n8n-nodes-base.executeWorkflow': {
+		'MNI-nodes-base.executeWorkflow': {
 			mode: [undefined, 'once'],
 		},
-		'n8n-nodes-base.crateDb': {
+		'MNI-nodes-base.crateDb': {
 			operation: [undefined, 'update'], // default insert
 		},
-		'n8n-nodes-base.timescaleDb': {
+		'MNI-nodes-base.timescaleDb': {
 			operation: [undefined, 'update'], // default insert
 		},
-		'n8n-nodes-base.microsoftSql': {
+		'MNI-nodes-base.microsoftSql': {
 			operation: [undefined, 'update', 'delete'], // default insert
 		},
-		'n8n-nodes-base.questDb': {
+		'MNI-nodes-base.questDb': {
 			operation: [undefined], // default insert
 		},
-		'n8n-nodes-base.mongoDb': {
+		'MNI-nodes-base.mongoDb': {
 			operation: ['insert', 'update'],
 		},
-		'n8n-nodes-base.redis': {
+		'MNI-nodes-base.redis': {
 			operation: [undefined], // default info
 		},
 	};

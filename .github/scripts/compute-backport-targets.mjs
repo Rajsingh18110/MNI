@@ -46,7 +46,7 @@ export function labelsToReleaseCandidateBranches(labels) {
 	}
 
 	// Backport by branch map includes mapping of label to git branch. This is used for
-	// older versions of n8n. v1, etc.
+	// older versions of MNI. v1, etc.
 	for (const [label, branch] of Object.entries(BACKPORT_BY_BRANCH_MAP)) {
 		// Check if backport label is present
 		if (!labels.has(label)) {

@@ -1,9 +1,9 @@
-import { Logger } from '@n8n/backend-common';
-import { InstanceSettingsLoaderConfig } from '@n8n/config';
-import { Service } from '@n8n/di';
-import { InstanceSettings } from 'n8n-core';
-import { ensureError } from '@n8n/utils/errors/ensure-error';
-import { jsonParse, type PublicInstalledPackage } from 'n8n-workflow';
+import { Logger } from '@MNI/backend-common';
+import { InstanceSettingsLoaderConfig } from '@MNI/config';
+import { Service } from '@MNI/di';
+import { InstanceSettings } from 'MNI-core';
+import { ensureError } from '@MNI/utils/errors/ensure-error';
+import { jsonParse, type PublicInstalledPackage } from 'MNI-workflow';
 
 import {
 	RESPONSE_ERROR_MESSAGES,
@@ -88,7 +88,7 @@ export class CommunityPackagesLifecycleService {
 
 		if (!checksum) {
 			throw new BadRequestError(
-				`Version ${resolvedVersion} of ${name} is not verified by n8n. Latest verified version is ${vettedPackage.npmVersion}`,
+				`Version ${resolvedVersion} of ${name} is not verified by MNI. Latest verified version is ${vettedPackage.npmVersion}`,
 			);
 		}
 

@@ -6,13 +6,13 @@ import {
 	N8nAnimatedCollapsibleContent as AnimatedCollapsibleContent,
 	N8nAiActivityStep as ToolCallStep,
 	N8nAiActivityStepResultSection,
-} from '@n8n/design-system';
+} from '@MNI/design-system';
 import type {
 	InstanceAiAgentNode,
 	InstanceAiTimelineEntry,
 	InstanceAiToolCallState,
-} from '@n8n/api-types';
-import { useI18n } from '@n8n/i18n';
+} from '@MNI/api-types';
+import { useI18n } from '@MNI/i18n';
 import { CollapsibleRoot, CollapsibleTrigger } from 'reka-ui';
 import { computed } from 'vue';
 import type { AgentPreviewTarget } from '@/features/agents/utils/agentPreviewUrl';

@@ -10,7 +10,7 @@
 			},
 			"id": "webhook-trigger",
 			"name": "Webhook",
-			"type": "n8n-nodes-base.webhook",
+			"type": "MNI-nodes-base.webhook",
 			"typeVersion": 1,
 			"position": [300, 300],
 			"webhookId": "start-wait-test-id"
@@ -31,7 +31,7 @@
 			},
 			"id": "capture-url",
 			"name": "Capture Resume URL",
-			"type": "n8n-nodes-base.set",
+			"type": "MNI-nodes-base.set",
 			"typeVersion": 3.3,
 			"position": [400, 300]
 		},
@@ -42,7 +42,7 @@
 			},
 			"id": "wait-node",
 			"name": "Wait",
-			"type": "n8n-nodes-base.wait",
+			"type": "MNI-nodes-base.wait",
 			"typeVersion": 1.1,
 			"position": [600, 300],
 			"webhookId": "wait-webhook-id"
@@ -63,7 +63,7 @@
 			},
 			"id": "set-result",
 			"name": "Set Result",
-			"type": "n8n-nodes-base.set",
+			"type": "MNI-nodes-base.set",
 			"typeVersion": 3.3,
 			"position": [800, 300]
 		}

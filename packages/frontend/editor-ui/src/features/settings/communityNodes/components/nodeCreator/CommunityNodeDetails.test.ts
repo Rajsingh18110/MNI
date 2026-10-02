@@ -11,7 +11,7 @@ const getNodeTypes = vi.fn();
 const installPackage = vi.fn();
 const getAllNodeCreateElements = vi.fn(() => [
 	{
-		key: 'n8n-nodes-test.OtherNode',
+		key: 'MNI-nodes-test.OtherNode',
 		properties: {
 			defaults: {
 				name: 'OtherNode',
@@ -19,12 +19,12 @@ const getAllNodeCreateElements = vi.fn(() => [
 			description: 'Other node description',
 			displayName: 'Other Node',
 			group: ['transform'],
-			name: 'n8n-nodes-test.OtherNode',
+			name: 'MNI-nodes-test.OtherNode',
 			outputs: ['main'],
 		},
 		subcategory: '*',
 		type: 'node',
-		uuid: 'n8n-nodes-test.OtherNode-32f238f0-2b05-47ce-b43d-7fab6d7ba3cb',
+		uuid: 'MNI-nodes-test.OtherNode-32f238f0-2b05-47ce-b43d-7fab6d7ba3cb',
 	},
 ]);
 
@@ -75,11 +75,11 @@ vi.mock('../../communityNodes.store', () => ({
 	})),
 }));
 
-vi.mock('@n8n/stores/users.store', () => ({
+vi.mock('@MNI/stores/users.store', () => ({
 	useUsersStore: vi.fn(() => usersStore),
 }));
 
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: vi.fn(() => ({
 		showMessage: vi.fn(),
 		showError,
@@ -101,15 +101,15 @@ vi.mock('@/features/shared/nodeCreator/composables/useViewStacks', () => ({
 			communityNodeDetails: {
 				description: 'Other node description',
 				installed: false,
-				key: 'n8n-nodes-preview-test.OtherNode',
+				key: 'MNI-nodes-preview-test.OtherNode',
 				nodeIcon: undefined,
-				packageName: 'n8n-nodes-test',
+				packageName: 'MNI-nodes-test',
 				title: 'Other Node',
 			},
 			hasSearch: false,
 			items: [
 				{
-					key: 'n8n-nodes-preview-test.OtherNode',
+					key: 'MNI-nodes-preview-test.OtherNode',
 					properties: {
 						defaults: {
 							name: 'OtherNode',
@@ -117,12 +117,12 @@ vi.mock('@/features/shared/nodeCreator/composables/useViewStacks', () => ({
 						description: 'Other node description',
 						displayName: 'Other Node',
 						group: ['transform'],
-						name: 'n8n-nodes-preview-test.OtherNode',
+						name: 'MNI-nodes-preview-test.OtherNode',
 						outputs: ['main'],
 					},
 					subcategory: '*',
 					type: 'node',
-					uuid: 'n8n-nodes-preview-test.OtherNode-32f238f0-2b05-47ce-b43d-7fab6d7ba3cb',
+					uuid: 'MNI-nodes-preview-test.OtherNode-32f238f0-2b05-47ce-b43d-7fab6d7ba3cb',
 				},
 			],
 			mode: 'community-node',
@@ -162,8 +162,8 @@ describe('CommunityNodeDetails', () => {
 
 		await waitFor(() => expect(removeNodeFromMergedNodes).toHaveBeenCalled());
 
-		expect(getCommunityNodeAttributes).toHaveBeenCalledWith('n8n-nodes-preview-test.OtherNode');
-		expect(installPackage).toHaveBeenCalledWith('n8n-nodes-test', true, '1.0.0');
+		expect(getCommunityNodeAttributes).toHaveBeenCalledWith('MNI-nodes-preview-test.OtherNode');
+		expect(installPackage).toHaveBeenCalledWith('MNI-nodes-test', true, '1.0.0');
 		expect(fetchCredentialTypes).toHaveBeenCalledWith(true);
 		expect(getAllNodeCreateElements).toHaveBeenCalled();
 		expect(popViewStack).toHaveBeenCalled();
@@ -173,16 +173,16 @@ describe('CommunityNodeDetails', () => {
 				communityNodeDetails: {
 					description: 'Other node description',
 					installed: true,
-					key: 'n8n-nodes-test.OtherNode',
+					key: 'MNI-nodes-test.OtherNode',
 					nodeIcon: undefined,
-					packageName: 'n8n-nodes-test',
+					packageName: 'MNI-nodes-test',
 					title: 'Other Node',
 					official: true,
 				},
 				hasSearch: false,
 				items: [
 					{
-						key: 'n8n-nodes-test.OtherNode',
+						key: 'MNI-nodes-test.OtherNode',
 						properties: {
 							defaults: {
 								name: 'OtherNode',
@@ -190,12 +190,12 @@ describe('CommunityNodeDetails', () => {
 							description: 'Other node description',
 							displayName: 'Other Node',
 							group: ['transform'],
-							name: 'n8n-nodes-test.OtherNode',
+							name: 'MNI-nodes-test.OtherNode',
 							outputs: ['main'],
 						},
 						subcategory: '*',
 						type: 'node',
-						uuid: 'n8n-nodes-test.OtherNode-32f238f0-2b05-47ce-b43d-7fab6d7ba3cb',
+						uuid: 'MNI-nodes-test.OtherNode-32f238f0-2b05-47ce-b43d-7fab6d7ba3cb',
 					},
 				],
 				mode: 'community-node',

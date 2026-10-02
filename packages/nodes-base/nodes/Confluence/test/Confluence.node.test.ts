@@ -1,4 +1,4 @@
-import { NodeOperationError } from 'n8n-workflow';
+import { NodeOperationError } from 'MNI-workflow';
 
 import { Confluence } from '../Confluence.node';
 import { mockExecuteCtx } from './shared';

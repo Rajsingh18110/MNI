@@ -4,7 +4,7 @@ import { useDocumentTitle } from '@/app/composables/useDocumentTitle';
 import { useLoadingService } from '@/app/composables/useLoadingService';
 import { useMessage } from '@/app/composables/useMessage';
 import { usePageRedirectionHelper } from '@/app/composables/usePageRedirectionHelper';
-import { useToast } from '@n8n/composables/useToast';
+import { useToast } from '@MNI/composables/useToast';
 import { MODAL_CONFIRM } from '@/app/constants';
 import { useSourceControlStore } from '../sourceControl.store';
 import {
@@ -13,9 +13,9 @@ import {
 } from '../sourceControl.constants';
 import type { SshKeyTypes, SourceControlPreferences } from '../sourceControl.types';
 import type { TupleToUnion } from '@/app/utils/typeHelpers';
-import type { Rule, RuleGroup } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
-import type { Validatable } from '@n8n/design-system';
+import type { Rule, RuleGroup } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
+import type { Validatable } from '@MNI/design-system';
 import { computed, onMounted, reactive, ref, watch } from 'vue';
 import { I18nT } from 'vue-i18n';
 
@@ -29,7 +29,7 @@ import {
 	N8nHeading,
 	N8nNotice,
 	N8nTooltip,
-} from '@n8n/design-system';
+} from '@MNI/design-system';
 const locale = useI18n();
 const sourceControlStore = useSourceControlStore();
 const pageRedirectionHelper = usePageRedirectionHelper();

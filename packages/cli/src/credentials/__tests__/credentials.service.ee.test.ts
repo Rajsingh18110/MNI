@@ -1,11 +1,11 @@
-import type { LicenseState } from '@n8n/backend-common';
+import type { LicenseState } from '@MNI/backend-common';
 import type {
 	User,
 	CredentialsEntity,
 	Project,
 	SharedCredentials,
 	SharedCredentialsRepository,
-} from '@n8n/db';
+} from '@MNI/db';
 import { mock } from 'vitest-mock-extended';
 
 import type { CredentialConnectionStatusProxy } from '@/credentials/credential-connection-status-proxy';

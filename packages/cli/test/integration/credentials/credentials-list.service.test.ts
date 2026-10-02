@@ -4,14 +4,14 @@ import {
 	randomCredentialPayload,
 	randomCredentialPayloadWithOauthTokenData,
 	testDb,
-} from '@n8n/backend-test-utils';
-import type { CredentialsEntity, Project, User } from '@n8n/db';
+} from '@MNI/backend-test-utils';
+import type { CredentialsEntity, Project, User } from '@MNI/db';
 import {
 	CredentialDependencyRepository,
 	ProjectRepository,
 	SecretsProviderConnectionRepository,
-} from '@n8n/db';
-import { Container } from '@n8n/di';
+} from '@MNI/db';
+import { Container } from '@MNI/di';
 
 import { EXTERNAL_SECRET_PROVIDER_DEPENDENCY_TYPE } from '@/credentials/credential-dependency.service';
 import { CredentialsService } from '@/credentials/credentials.service';

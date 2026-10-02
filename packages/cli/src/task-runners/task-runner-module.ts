@@ -1,9 +1,9 @@
-import { inTest, Logger } from '@n8n/backend-common';
-import { TaskRunnersConfig } from '@n8n/config';
-import { OnShutdown } from '@n8n/decorators';
-import { Container, Service } from '@n8n/di';
-import { sleep } from '@n8n/utils/sleep';
-import { ErrorReporter } from 'n8n-core';
+import { inTest, Logger } from '@MNI/backend-common';
+import { TaskRunnersConfig } from '@MNI/config';
+import { OnShutdown } from '@MNI/decorators';
+import { Container, Service } from '@MNI/di';
+import { sleep } from '@MNI/utils/sleep';
+import { ErrorReporter } from 'MNI-core';
 import * as a from 'node:assert/strict';
 
 import { EventService } from '@/events/event.service';
@@ -158,7 +158,7 @@ export class TaskRunnerModule {
 		this.errorReporter.error(error);
 
 		// A restart loop is unrecoverable, so exit and let the process manager
-		// restart n8n. Skip in tests, where exiting would kill the vi worker.
+		// restart MNI. Skip in tests, where exiting would kill the vi worker.
 		if (inTest) return;
 
 		// Allow some time for the error to be flushed

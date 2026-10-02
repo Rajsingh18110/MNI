@@ -4,7 +4,7 @@ import type {
 	InstanceAiMessage,
 	InstanceAiAgentNode,
 	InstanceAiToolCallState,
-} from '@n8n/api-types';
+} from '@MNI/api-types';
 import { useResourceRegistry } from '../useResourceRegistry';
 import type { ResourceEntry, TransientWorkflowArtifactReference } from '../useResourceRegistry';
 

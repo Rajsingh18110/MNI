@@ -1,7 +1,7 @@
 import { watch } from 'vue';
 import { useRoute } from 'vue-router';
-import { createEventBus } from '@n8n/utils/event-bus';
-import { isSourceControlledFileStatus, type SourceControlledFileStatus } from '@n8n/api-types';
+import { createEventBus } from '@MNI/utils/event-bus';
+import { isSourceControlledFileStatus, type SourceControlledFileStatus } from '@MNI/api-types';
 import { useUIStore } from '@/app/stores/ui.store';
 import { WORKFLOW_DIFF_MODAL_KEY } from '@/app/constants';
 import {

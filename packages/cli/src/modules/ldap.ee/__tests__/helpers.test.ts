@@ -1,6 +1,6 @@
-import { mockInstance } from '@n8n/backend-test-utils';
-import { generateNanoId, AuthIdentity, User, UserRepository } from '@n8n/db';
-import type { EntityManager } from '@n8n/typeorm';
+import { mockInstance } from '@MNI/backend-test-utils';
+import { generateNanoId, AuthIdentity, User, UserRepository } from '@MNI/db';
+import type { EntityManager } from '@MNI/typeorm';
 import type { Mock } from 'vitest';
 import { mock } from 'vitest-mock-extended';
 
@@ -68,7 +68,7 @@ describe('Ldap/helpers', () => {
 
 	describe('updateLdapUserOnLocalDb', () => {
 		// We need to use `save` so that that the subscriber in
-		// packages/@n8n/db/src/entities/Project.ts receives the full user.
+		// packages/@MNI/db/src/entities/Project.ts receives the full user.
 		// With `update` it would only receive the updated fields, e.g. the `id`
 		// would be missing.
 		test('does not use `Repository.update`, but `Repository.save` instead', async () => {

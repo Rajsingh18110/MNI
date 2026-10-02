@@ -1,10 +1,10 @@
 import { computed, ref } from 'vue';
 import { createEventHook } from '@vueuse/core';
-import type { IConnection, IConnections, INodeConnections } from 'n8n-workflow';
+import type { IConnection, IConnections, INodeConnections } from 'MNI-workflow';
 import type { INodeUi } from '@/Interface';
 import { CHANGE_ACTION } from './types';
 import type { ChangeEvent } from './types';
-import * as workflowUtils from 'n8n-workflow/common';
+import * as workflowUtils from 'MNI-workflow/common';
 
 // --- Event types ---
 

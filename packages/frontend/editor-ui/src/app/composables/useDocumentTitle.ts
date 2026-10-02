@@ -1,8 +1,8 @@
 import {
 	useDocumentTitle as useDocumentTitleBase,
 	type WorkflowTitleStatus,
-} from '@n8n/composables/useDocumentTitle';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+} from '@MNI/composables/useDocumentTitle';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { onScopeDispose, ref, type Ref } from 'vue';
 
 export type { WorkflowTitleStatus };

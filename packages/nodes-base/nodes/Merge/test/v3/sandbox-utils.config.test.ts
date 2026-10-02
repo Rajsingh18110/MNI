@@ -1,5 +1,5 @@
-import { NodesConfig } from '@n8n/config';
-import { Container } from '@n8n/di';
+import { NodesConfig } from '@MNI/config';
+import { Container } from '@MNI/di';
 
 const { isolateInstances, MockIsolate } = vi.hoisted(() => {
 	const instances: Array<{ isDisposed: boolean; memoryLimit: number }> = [];

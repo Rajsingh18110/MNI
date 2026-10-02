@@ -49,8 +49,8 @@ const config: KnipConfig = {
 		'.': {
 			entry: ['scripts/**/*.{mjs,js,ts}'],
 			ignoreDependencies: [
-				// Invoked by path in the n8n-module-sdk script.
-				'@n8n/module-cli',
+				// Invoked by path in the MNI-module-sdk script.
+				'@MNI/module-cli',
 				// scripts/mutation-health runs stryker through a resolved binary path.
 				'@stryker-mutator/core',
 				'@stryker-mutator/vitest-runner',
@@ -78,7 +78,7 @@ const config: KnipConfig = {
 		},
 		'packages/**': pkg(),
 		// Only tsconfig files, so the shared entry pattern has nothing to match.
-		'packages/@n8n/typescript-config': pkg({ entry: [] }),
+		'packages/@MNI/typescript-config': pkg({ entry: [] }),
 		'packages/cli': pkg({
 			ignoreDependencies: [
 				// bin/MNI has no extension, so knip does not parse it.
@@ -88,29 +88,29 @@ const config: KnipConfig = {
 				'mjml',
 				'@redocly/cli',
 				// Declared so community nodes resolve it from the MNI install.
-				'@n8n/ai-node-sdk',
+				'@MNI/ai-node-sdk',
 				// psl is loaded with a dynamic import, which knip does not link to @types.
 				'@types/psl',
 			],
 		}),
-		'packages/@n8n/instance-ai': pkg({
+		'packages/@MNI/instance-ai': pkg({
 			// psl is loaded with a dynamic import, which knip does not link to @types.
 			ignoreDependencies: ['@types/psl'],
 		}),
-		'packages/@n8n/typeorm': pkg({
+		'packages/@MNI/typeorm': pkg({
 			// uuid is imported in src/query-builder; knip does not link it to @types here.
 			ignoreDependencies: ['@types/uuid'],
 		}),
-		'packages/@n8n/oxlint-config': pkg({
+		'packages/@MNI/oxlint-config': pkg({
 			// The exported config names these plugins as strings.
 			ignoreDependencies: [
-				'@n8n/eslint-config',
+				'@MNI/eslint-config',
 				'@stylistic/eslint-plugin',
 				'eslint-plugin-lodash',
 				'eslint-plugin-unused-imports',
 			],
 		}),
-		'packages/@n8n/nodes-langchain': pkg({
+		'packages/@MNI/nodes-langchain': pkg({
 			ignoreDependencies: [
 				// Pinned so npm installs of the published package resolve one langgraph version.
 				'@langchain/langgraph',
@@ -119,7 +119,7 @@ const config: KnipConfig = {
 				'uuid',
 			],
 		}),
-		'packages/@n8n/ai-workflow-builder.ee': pkg({
+		'packages/@MNI/ai-workflow-builder.ee': pkg({
 			// Pinned so npm installs of the published package resolve one langgraph version.
 			ignoreDependencies: ['@langchain/langgraph-checkpoint'],
 		}),
@@ -127,41 +127,41 @@ const config: KnipConfig = {
 			// Pins the pg version that pg-promise resolves for npm installs of the published package.
 			ignoreDependencies: ['pg'],
 		}),
-		'packages/@n8n/create-node': pkg({
-			// bin/create-node.cjs spawns the n8n-node binary through require.resolve.
-			ignoreDependencies: ['@n8n/node-cli'],
+		'packages/@MNI/create-node': pkg({
+			// bin/create-node.cjs spawns the MNI-node binary through require.resolve.
+			ignoreDependencies: ['@MNI/node-cli'],
 		}),
 		'packages/modules/instance-registry/frontend': pkg({
 			// tsconfig.json reaches into design-system/src through rootDirs and types.
-			ignoreDependencies: ['@n8n/design-system'],
+			ignoreDependencies: ['@MNI/design-system'],
 		}),
 		'packages/workflow': pkg({
 			// Only named in JSDoc type imports; @stryker-mutator/core provides it.
 			ignoreDependencies: ['@stryker-mutator/api'],
 		}),
-		'packages/@n8n/scheduler': pkg({
+		'packages/@MNI/scheduler': pkg({
 			// Only named in JSDoc type imports; @stryker-mutator/core provides it.
 			ignoreDependencies: ['@stryker-mutator/api'],
 		}),
-		'packages/@n8n/benchmark': pkg({
+		'packages/@MNI/benchmark': pkg({
 			// The k6 runtime provides its own modules; only @types/k6 is installed.
 			ignoreDependencies: ['k6'],
 		}),
-		'packages/@n8n/backend-common': pkg({
+		'packages/@MNI/backend-common': pkg({
 			// module-registry resolves the installed MNI package by path at runtime.
 			ignoreDependencies: ['MNI'],
 		}),
 		'packages/core': pkg({
 			// bin/generate-node-defs and bin/copy-static-files have no extension, so knip does not parse them.
-			ignoreDependencies: ['@n8n/workflow-sdk', 'p-limit'],
+			ignoreDependencies: ['@MNI/workflow-sdk', 'p-limit'],
 		}),
-		'packages/@n8n/node-cli': pkg({
+		'packages/@MNI/node-cli': pkg({
 			// Scaffold templates carry their own package.json and are not workspaces.
 			ignore: ['src/template/**', 'dist/**'],
 			// Imported only by the ignored AI scaffold templates.
-			ignoreDependencies: ['@n8n/ai-node-sdk'],
+			ignoreDependencies: ['@MNI/ai-node-sdk'],
 		}),
-		'packages/@n8n/mcp-apps': pkg({
+		'packages/@MNI/mcp-apps': pkg({
 			// vite.config.mts throws unless a MCP app mode is set; vitest.config.mts still loads.
 			vite: false,
 		}),
@@ -169,34 +169,34 @@ const config: KnipConfig = {
 			ignoreDependencies: [
 				// The wasm file is copied by path in vite.config.mts.
 				'web-tree-sitter',
-				// Target of the `stream` alias that @n8n/frontend-vite-config declares.
+				// Target of the `stream` alias that @MNI/frontend-vite-config declares.
 				'stream-browserify',
-				// .oxlintrc.json names these plugins; @n8n/oxlint-config provides them.
+				// .oxlintrc.json names these plugins; @MNI/oxlint-config provides them.
 				'@stylistic/eslint-plugin',
 				'eslint-plugin-lodash',
 				'eslint-plugin-unused-imports',
 			],
 		}),
-		'packages/frontend/@n8n/storybook': pkg({
+		'packages/frontend/@MNI/storybook': pkg({
 			ignoreDependencies: [
 				// Stories are resolved to the sibling packages' src through vite aliases.
-				'@n8n/chat',
-				'@n8n/composables',
-				'@n8n/stores',
-				'@n8n/utils',
+				'@MNI/chat',
+				'@MNI/composables',
+				'@MNI/stores',
+				'@MNI/utils',
 				// Runs in the typecheck script; knip does not link the binary to the package here.
 				'vue-tsc',
 			],
 		}),
-		'packages/frontend/@n8n/design-system': pkg({
+		'packages/frontend/@MNI/design-system': pkg({
 			// The compiled .mdx pages import storybook-addon-vue-mdx/jsx-runtime from this package.
 			ignoreDependencies: ['storybook-addon-vue-mdx'],
 		}),
-		'packages/@n8n/stylelint-config': pkg({
+		'packages/@MNI/stylelint-config': pkg({
 			// The exported config names plugins and syntaxes as strings.
 			ignoreDependencies: ['stylelint-scss', 'postcss-html', 'postcss-scss'],
 		}),
-		'packages/@n8n/mcp-browser': pkg({
+		'packages/@MNI/mcp-browser': pkg({
 			// Spawned as a binary through execFile.
 			ignoreDependencies: ['agent-browser'],
 		}),
@@ -204,7 +204,7 @@ const config: KnipConfig = {
 			ignoreDependencies: [
 				// The e2e suite runs against the built app; the edge orders the turbo build.
 				'MNI',
-				'n8n-core',
+				'MNI-core',
 				// Manual `pnpm exec playwright-cli` runs; .gitignore lists its .playwright-cli dir.
 				'@playwright/cli',
 			],

@@ -10,8 +10,8 @@ import {
 } from '@/features/execution/logs/logs.utils';
 import type { IExecutionResponse } from '@/features/execution/executions/executions.types';
 import { getScrollbarWidth } from '@/app/utils/htmlUtils';
-import { N8nButton, N8nSegmentControl, N8nText, N8nTooltip } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+import { N8nButton, N8nSegmentControl, N8nText, N8nTooltip } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 import { computed } from 'vue';
 
 const {

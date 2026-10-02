@@ -1,15 +1,15 @@
 <script lang="ts" setup>
 import ProjectCardBadge from '@/features/collaboration/projects/components/ProjectCardBadge.vue';
 import { useLoadingService } from '@/app/composables/useLoadingService';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
-import { useToast } from '@n8n/composables/useToast';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
+import { useToast } from '@MNI/composables/useToast';
 import { VIEWS } from '@/app/constants';
 import { SOURCE_CONTROL_PUSH_MODAL_KEY } from '../sourceControl.constants';
 import type { WorkflowResource } from '@/Interface';
 import { useProjectsStore } from '@/features/collaboration/projects/projects.store';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { useSourceControlStore } from '../sourceControl.store';
-import { useUsersStore } from '@n8n/stores/users.store';
+import { useUsersStore } from '@MNI/stores/users.store';
 import type {
 	ProjectListItem,
 	ProjectSharingData,
@@ -26,15 +26,15 @@ import {
 	getStatusTheme,
 } from '../sourceControl.utils';
 import type { SourceControlTreeRow } from '../sourceControl.types';
-import type { SourceControlledFile, SourceControlledFileStatus } from '@n8n/api-types';
+import type { SourceControlledFile, SourceControlledFileStatus } from '@MNI/api-types';
 import {
 	ROLE,
 	SOURCE_CONTROL_FILE_LOCATION,
 	SOURCE_CONTROL_FILE_STATUS,
 	SOURCE_CONTROL_FILE_TYPE,
-} from '@n8n/api-types';
-import { useI18n } from '@n8n/i18n';
-import type { EventBus } from '@n8n/utils/event-bus';
+} from '@MNI/api-types';
+import { useI18n } from '@MNI/i18n';
+import type { EventBus } from '@MNI/utils/event-bus';
 import { refDebounced, useStorage } from '@vueuse/core';
 import { computed, onBeforeMount, onMounted, reactive, ref, toRaw, watch, watchEffect } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
@@ -43,7 +43,7 @@ import 'vue-virtual-scroller/dist/vue-virtual-scroller.css';
 import Modal from '@/app/components/Modal.vue';
 import ProjectSharing from '@/features/collaboration/projects/components/ProjectSharing.vue';
 import { useAvailableProjectSearch } from '@/features/collaboration/projects/projects.utils';
-import { getResourcePermissions } from '@n8n/permissions';
+import { getResourcePermissions } from '@MNI/permissions';
 import {
 	N8nBadge,
 	N8nButton,
@@ -62,7 +62,7 @@ import {
 	N8nSelect,
 	N8nText,
 	N8nTooltip,
-} from '@n8n/design-system';
+} from '@MNI/design-system';
 const props = defineProps<{
 	data: { eventBus: EventBus; status?: SourceControlledFile[] };
 }>();

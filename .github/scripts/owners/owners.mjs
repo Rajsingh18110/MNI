@@ -25,7 +25,7 @@ const REPO_ROOT = join(import.meta.dirname, "..", "..", "..");
 // (workflow runs from repo root; `npm test` runs from .github/scripts).
 export const OWNERS_FILE = join(REPO_ROOT, "OWNERS");
 
-// GitHub team handle, e.g. `@n8n-io/catalysts`.
+// GitHub team handle, e.g. `@MNI-io/catalysts`.
 const TEAM_TOKEN = /^@[\w.-]+\/[\w.-]+$/;
 
 /**
@@ -160,7 +160,7 @@ export function validateOwners(entries, pathKind = getPathKind) {
 }
 
 /**
- * Convert an OWNERS team handle (`@n8n-io/catalysts`) into the GitHub team slug
+ * Convert an OWNERS team handle (`@MNI-io/catalysts`) into the GitHub team slug
  * (`catalysts`) expected by the teams API.
  *
  * @param { string } team

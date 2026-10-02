@@ -1,7 +1,7 @@
 import type {
 	WorkflowReviewRequestDetail,
 	WorkflowReviewRequestWorkflowDetail,
-} from '@n8n/api-types';
+} from '@MNI/api-types';
 import { createTestingPinia } from '@pinia/testing';
 import { createMemoryHistory, createRouter } from 'vue-router';
 

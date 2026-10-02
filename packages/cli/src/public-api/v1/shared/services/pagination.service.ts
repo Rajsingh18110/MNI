@@ -1,4 +1,4 @@
-import { jsonParse } from 'n8n-workflow';
+import { jsonParse } from 'MNI-workflow';
 
 import { BadRequestError } from '@/errors/response-errors/bad-request.error';
 

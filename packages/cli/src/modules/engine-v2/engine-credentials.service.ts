@@ -1,6 +1,6 @@
-import { Logger } from '@n8n/backend-common';
-import { Service } from '@n8n/di';
-import type { ICredentialDataDecryptedObject, IExecuteData } from 'n8n-workflow';
+import { Logger } from '@MNI/backend-common';
+import { Service } from '@MNI/di';
+import type { ICredentialDataDecryptedObject, IExecuteData } from 'MNI-workflow';
 
 import { CredentialsHelper } from '@/credentials-helper';
 import { CredentialNotFoundError } from '@/errors/credential-not-found.error';

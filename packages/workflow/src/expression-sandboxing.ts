@@ -4,7 +4,7 @@ import {
 	type TournamentHooks,
 	astBuilders as b,
 	astVisit,
-} from '@n8n/tournament';
+} from '@MNI/tournament';
 
 import {
 	ExpressionClassExtensionError,
@@ -19,7 +19,7 @@ import { isSafeObjectProperty } from './utils';
 export const sanitizerName = '__sanitize';
 const sanitizerIdentifier = b.identifier(sanitizerName);
 
-const DATA_NODE_NAME = '___n8n_data';
+const DATA_NODE_NAME = '___MNI_data';
 
 const RESERVED_VARIABLE_NAMES = new Set([DATA_NODE_NAME, sanitizerName]);
 

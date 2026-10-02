@@ -5,7 +5,7 @@
       "parameters": {},
       "id": "d6d9fbcc-d8bc-4f79-8e00-3acf8ffb12de",
       "name": "When clicking \"Execute Workflow\"",
-      "type": "n8n-nodes-base.manualTrigger",
+      "type": "MNI-nodes-base.manualTrigger",
       "typeVersion": 1,
       "position": [
         460,
@@ -19,7 +19,7 @@
       },
       "id": "faefc24c-91b4-4b10-85a6-b3cecbceee08",
       "name": "Get matching families",
-      "type": "n8n-nodes-base.mySql",
+      "type": "MNI-nodes-base.mySql",
       "typeVersion": 1,
       "position": [
         900,
@@ -36,7 +36,7 @@
       "parameters": {},
       "id": "29c30f6e-9f5f-4b3a-80c4-2da762e96bd9",
       "name": "No Operation, do nothing1",
-      "type": "n8n-nodes-base.noOp",
+      "type": "MNI-nodes-base.noOp",
       "typeVersion": 1,
       "position": [
         1120,
@@ -62,7 +62,7 @@
       },
       "id": "54c7bbf9-dabc-421b-85b2-7c3006f5ee61",
       "name": "Edit Fields",
-      "type": "n8n-nodes-base.set",
+      "type": "MNI-nodes-base.set",
       "typeVersion": 3.2,
       "position": [
         680,

@@ -7,9 +7,9 @@ import type {
 	ChatHubProvider,
 	ChatModelDto,
 	ChatSessionId,
-} from '@n8n/api-types';
-import { N8nButton, N8nIconButton } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+} from '@MNI/api-types';
+import { N8nButton, N8nIconButton } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 import { computed, useTemplateRef, watch, ref } from 'vue';
 import { useChatStore } from '../chat.store';
 

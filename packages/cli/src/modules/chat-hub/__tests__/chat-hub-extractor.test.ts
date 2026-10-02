@@ -1,7 +1,7 @@
-import type { Logger } from '@n8n/backend-common';
-import type { ContextEstablishmentOptions } from '@n8n/decorators';
-import type { Cipher } from 'n8n-core';
-import type { INodeExecutionData, PlaintextExecutionContext } from 'n8n-workflow';
+import type { Logger } from '@MNI/backend-common';
+import type { ContextEstablishmentOptions } from '@MNI/decorators';
+import type { Cipher } from 'MNI-core';
+import type { INodeExecutionData, PlaintextExecutionContext } from 'MNI-workflow';
 import type { Mocked } from 'vitest';
 import { mock } from 'vitest-mock-extended';
 

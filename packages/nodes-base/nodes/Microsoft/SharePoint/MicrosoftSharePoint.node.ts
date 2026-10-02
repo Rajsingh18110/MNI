@@ -1,5 +1,5 @@
-import type { INodeTypeBaseDescription, IVersionedNodeType } from 'n8n-workflow';
-import { VersionedNodeType } from 'n8n-workflow';
+import type { INodeTypeBaseDescription, IVersionedNodeType } from 'MNI-workflow';
+import { VersionedNodeType } from 'MNI-workflow';
 
 import { MicrosoftSharePointV1 } from './v1/MicrosoftSharePointV1.node';
 import { MicrosoftSharePointV2 } from './v2/MicrosoftSharePointV2.node';

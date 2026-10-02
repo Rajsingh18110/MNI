@@ -1,8 +1,8 @@
-import type { ListInsightsWorkflowQueryDto, InsightsDateFilterDto } from '@n8n/api-types';
-import { getResourcePermissions } from '@n8n/permissions';
-import { useSettingsStore } from '@n8n/stores/settings.store';
-import { useRootStore } from '@n8n/stores/useRootStore';
-import { useUsersStore } from '@n8n/stores/users.store';
+import type { ListInsightsWorkflowQueryDto, InsightsDateFilterDto } from '@MNI/api-types';
+import { getResourcePermissions } from '@MNI/permissions';
+import { useSettingsStore } from '@MNI/stores/settings.store';
+import { useRootStore } from '@MNI/stores/useRootStore';
+import { useUsersStore } from '@MNI/stores/users.store';
 import { useAsyncState } from '@vueuse/core';
 import { defineStore } from 'pinia';
 import { computed } from 'vue';
@@ -21,7 +21,7 @@ export const useInsightsStore = defineStore('insights', () => {
 
 	const isInsightsEnabled = computed(() => settingsStore.isModuleActive('insights'));
 
-	const isDashboardEnabled = computed(() => !!settingsStore.moduleSettings.insights?.dashboard);
+	const isDashboardEnabled = computed(() => true);
 
 	const isSummaryEnabled = computed(
 		() => globalInsightsPermissions.value.list && isInsightsEnabled.value,

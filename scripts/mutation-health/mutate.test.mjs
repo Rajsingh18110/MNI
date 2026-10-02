@@ -224,8 +224,8 @@ describe('isMutableSource', () => {
 		assert.ok(isMutableSource('packages/nodes-base/credentials/SlackApi.credentials.ts'));
 		assert.ok(isMutableSource('packages/frontend/editor-ui/src/stores/ui.store.ts'));
 		// `[cm]?` in the extension test is there for the ESM/CJS variants.
-		assert.ok(isMutableSource('packages/@n8n/db/src/index.mts'));
-		assert.ok(isMutableSource('packages/@n8n/db/src/index.cts'));
+		assert.ok(isMutableSource('packages/@MNI/db/src/index.mts'));
+		assert.ok(isMutableSource('packages/@MNI/db/src/index.cts'));
 	});
 
 	it('rejects tests, declarations, configs and build output', () => {
@@ -240,7 +240,7 @@ describe('isMutableSource', () => {
 		assert.equal(isMutableSource('packages/cli/vitest.config.ts'), false);
 		assert.equal(isMutableSource('packages/workflow/dist/cron.js'), false);
 		assert.equal(isMutableSource('packages/workflow/test/helper.ts'), false);
-		assert.equal(isMutableSource('packages/@n8n/db/src/migrations/sqlite/x.ts'), false);
+		assert.equal(isMutableSource('packages/@MNI/db/src/migrations/sqlite/x.ts'), false);
 		assert.equal(isMutableSource('packages/design-system/src/Button.stories.ts'), false);
 		// The extension test is anchored: `.ts` has to end the path, not merely
 		// appear in it. Committed snapshots sit next to their source and would
@@ -261,7 +261,7 @@ describe('isMutableSource', () => {
 describe('changedTestFilesForPackage', () => {
 	it('selects changed test files from the exact package', () => {
 		const changedFiles = [
-			'packages/@n8n/engine/src/runtime/__tests__/create-engine-runtime.test.ts',
+			'packages/@MNI/engine/src/runtime/__tests__/create-engine-runtime.test.ts',
 			'packages/cli/src/modules/engine-v2/__tests__/engine-v2.runtime.test.ts',
 			'packages/cli/src/modules/engine-v2/__tests__/in-memory-execution-response.test.ts',
 			'packages/cli/src/modules/engine-v2/engine-v2.runtime.ts',
@@ -598,7 +598,7 @@ describe('defaultConfigNameFor', () => {
 
 	it('gives every other package the shared default', () => {
 		assert.equal(defaultConfigNameFor('packages/workflow'), 'stryker.default.mjs');
-		assert.equal(defaultConfigNameFor('packages/@n8n/decorators'), 'stryker.default.mjs');
+		assert.equal(defaultConfigNameFor('packages/@MNI/decorators'), 'stryker.default.mjs');
 	});
 });
 

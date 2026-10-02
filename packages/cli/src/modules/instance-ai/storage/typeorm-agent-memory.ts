@@ -18,17 +18,17 @@ import {
 	type JSONValue,
 	type Thread,
 	type RuntimeSkillStateStore,
-} from '@n8n/agents';
-import { Logger } from '@n8n/backend-common';
-import { Service } from '@n8n/di';
-import { isRecord } from '@n8n/utils/is-record';
+} from '@MNI/agents';
+import { Logger } from '@MNI/backend-common';
+import { Service } from '@MNI/di';
+import { isRecord } from '@MNI/utils/is-record';
 import {
 	SUB_AGENT_RESOURCE_PREFIX,
 	createSubAgentResourceIdPrefix,
 	type ThreadPatch,
-} from '@n8n/instance-ai';
-import { In, LessThan, Like } from '@n8n/typeorm';
-import { UnexpectedError } from 'n8n-workflow';
+} from '@MNI/instance-ai';
+import { In, LessThan, Like } from '@MNI/typeorm';
+import { UnexpectedError } from 'MNI-workflow';
 import { z } from 'zod';
 
 import { ConflictError } from '@/errors/response-errors/conflict.error';

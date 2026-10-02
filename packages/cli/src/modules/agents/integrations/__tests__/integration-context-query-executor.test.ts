@@ -1,5 +1,5 @@
-import type { Logger } from '@n8n/backend-common';
-import type { OutboundHttp } from '@n8n/backend-network';
+import type { Logger } from '@MNI/backend-common';
+import type { OutboundHttp } from '@MNI/backend-network';
 import { mock } from 'vitest-mock-extended';
 
 import type { AgentRepository } from '../../repositories/agent.repository';
@@ -10,7 +10,7 @@ import { ChannelRateLimitGuard } from '../channel-rate-limit.guard';
 import { getIntegrationToolConnectionDescriptors } from '../integration-tools';
 import { LinearIntegration } from '../platforms/linear-integration';
 import { SlackIntegration } from '../platforms/slack/slack-integration';
-import type { AgentIntegrationConfig } from '@n8n/api-types';
+import type { AgentIntegrationConfig } from '@MNI/api-types';
 
 const slack: AgentIntegrationConfig = {
 	type: 'slack',
@@ -178,7 +178,7 @@ describe('ChatIntegrationContextQueryExecutor', () => {
 				app: false,
 				isAssignable: true,
 				isMentionable: true,
-				url: 'https://linear.app/n8n/profiles/user-1',
+				url: 'https://linear.app/MNI/profiles/user-1',
 			}),
 		};
 		const chat = mock<ChatInstance>();
@@ -217,7 +217,7 @@ describe('ChatIntegrationContextQueryExecutor', () => {
 				isBot: false,
 				isAssignable: true,
 				isMentionable: true,
-				url: 'https://linear.app/n8n/profiles/user-1',
+				url: 'https://linear.app/MNI/profiles/user-1',
 			},
 		});
 	});
@@ -235,7 +235,7 @@ describe('ChatIntegrationContextQueryExecutor', () => {
 						app: false,
 						isAssignable: true,
 						isMentionable: true,
-						url: 'https://linear.app/n8n/profiles/user-1',
+						url: 'https://linear.app/MNI/profiles/user-1',
 					},
 				],
 				pageInfo: { hasNextPage: false },
@@ -297,14 +297,14 @@ describe('ChatIntegrationContextQueryExecutor', () => {
 				key: 'ENG',
 				name: 'Engineering',
 				description: 'Product engineering',
-				url: 'https://linear.app/n8n/team/ENG',
+				url: 'https://linear.app/MNI/team/ENG',
 				private: false,
 			}),
 			project: vi.fn().mockResolvedValue({
 				id: 'project-1',
 				name: 'Signup',
 				description: 'Signup improvements',
-				url: 'https://linear.app/n8n/project/signup',
+				url: 'https://linear.app/MNI/project/signup',
 				state: 'started',
 			}),
 		};
@@ -329,7 +329,7 @@ describe('ChatIntegrationContextQueryExecutor', () => {
 				key: 'ENG',
 				name: 'Engineering',
 				description: 'Product engineering',
-				url: 'https://linear.app/n8n/team/ENG',
+				url: 'https://linear.app/MNI/team/ENG',
 				isPrivate: false,
 			},
 		});
@@ -345,7 +345,7 @@ describe('ChatIntegrationContextQueryExecutor', () => {
 				projectId: 'project-1',
 				name: 'Signup',
 				description: 'Signup improvements',
-				url: 'https://linear.app/n8n/project/signup',
+				url: 'https://linear.app/MNI/project/signup',
 				state: 'started',
 			},
 		});
@@ -362,7 +362,7 @@ describe('ChatIntegrationContextQueryExecutor', () => {
 						id: 'project-1',
 						name: 'Shopping List',
 						description: 'Grocery errands',
-						url: 'https://linear.app/n8n/project/shopping',
+						url: 'https://linear.app/MNI/project/shopping',
 						state: 'started',
 					},
 					{
@@ -400,7 +400,7 @@ describe('ChatIntegrationContextQueryExecutor', () => {
 						key: 'SHOP',
 						name: 'Shopping',
 						description: 'Personal errands',
-						url: 'https://linear.app/n8n/team/SHOP',
+						url: 'https://linear.app/MNI/team/SHOP',
 					},
 					{ id: 'team-2', key: 'ENG', name: 'Engineering' },
 				],
@@ -431,7 +431,7 @@ describe('ChatIntegrationContextQueryExecutor', () => {
 					key: 'SHOP',
 					name: 'Shopping',
 					description: 'Personal errands',
-					url: 'https://linear.app/n8n/team/SHOP',
+					url: 'https://linear.app/MNI/team/SHOP',
 				},
 			],
 			resultCount: 1,
@@ -450,7 +450,7 @@ describe('ChatIntegrationContextQueryExecutor', () => {
 					projectId: 'project-1',
 					name: 'Shopping List',
 					description: 'Grocery errands',
-					url: 'https://linear.app/n8n/project/shopping',
+					url: 'https://linear.app/MNI/project/shopping',
 					state: 'started',
 				},
 			],
@@ -519,14 +519,14 @@ describe('ChatIntegrationContextQueryExecutor', () => {
 			app: false,
 			isAssignable: true,
 			isMentionable: true,
-			url: 'https://linear.app/n8n/profiles/user-2',
+			url: 'https://linear.app/MNI/profiles/user-2',
 		};
 		const issue = {
 			id: 'issue-uuid',
 			identifier: 'ENG-123',
 			title: 'Fix signup',
 			description: 'Signup fails for invited users',
-			url: 'https://linear.app/n8n/issue/ENG-123/fix-signup',
+			url: 'https://linear.app/MNI/issue/ENG-123/fix-signup',
 			priority: 2,
 			priorityLabel: 'High',
 			createdAt,
@@ -542,7 +542,7 @@ describe('ChatIntegrationContextQueryExecutor', () => {
 					{
 						id: 'comment-1',
 						body: 'I can reproduce this.',
-						url: 'https://linear.app/n8n/issue/ENG-123#comment-1',
+						url: 'https://linear.app/MNI/issue/ENG-123#comment-1',
 						createdAt,
 						updatedAt,
 						user: Promise.resolve(commentAuthor),
@@ -580,7 +580,7 @@ describe('ChatIntegrationContextQueryExecutor', () => {
 				identifier: 'ENG-123',
 				title: 'Fix signup',
 				description: 'Signup fails for invited users',
-				url: 'https://linear.app/n8n/issue/ENG-123/fix-signup',
+				url: 'https://linear.app/MNI/issue/ENG-123/fix-signup',
 				priority: { value: 2, label: 'High' },
 				state: { id: 'state-1', name: 'In Progress', type: 'started' },
 				assignee: expect.objectContaining({ userId: 'user-2', name: 'Ada Lovelace' }),
@@ -594,7 +594,7 @@ describe('ChatIntegrationContextQueryExecutor', () => {
 					{
 						commentId: 'comment-1',
 						body: 'I can reproduce this.',
-						url: 'https://linear.app/n8n/issue/ENG-123#comment-1',
+						url: 'https://linear.app/MNI/issue/ENG-123#comment-1',
 						createdAt: '2026-05-18T10:00:00.000Z',
 						updatedAt: '2026-05-18T11:00:00.000Z',
 						author: expect.objectContaining({ userId: 'user-2', name: 'Ada Lovelace' }),
@@ -614,7 +614,7 @@ describe('ChatIntegrationContextQueryExecutor', () => {
 						identifier: 'ENG-123',
 						title: 'Fix signup',
 						description: 'Signup fails for invited users',
-						url: 'https://linear.app/n8n/issue/ENG-123/fix-signup',
+						url: 'https://linear.app/MNI/issue/ENG-123/fix-signup',
 						priority: 2,
 						priorityLabel: 'High',
 						createdAt: new Date('2026-05-18T10:00:00.000Z'),
@@ -663,7 +663,7 @@ describe('ChatIntegrationContextQueryExecutor', () => {
 					issueId: 'issue-uuid',
 					identifier: 'ENG-123',
 					title: 'Fix signup',
-					url: 'https://linear.app/n8n/issue/ENG-123/fix-signup',
+					url: 'https://linear.app/MNI/issue/ENG-123/fix-signup',
 					priority: { value: 2, label: 'High' },
 					createdAt: '2026-05-18T10:00:00.000Z',
 					updatedAt: '2026-05-18T11:00:00.000Z',
@@ -683,7 +683,7 @@ describe('ChatIntegrationContextQueryExecutor', () => {
 						id: 'issue-uuid',
 						identifier: 'ENG-124',
 						title: 'Add pagination',
-						url: 'https://linear.app/n8n/issue/ENG-124',
+						url: 'https://linear.app/MNI/issue/ENG-124',
 					},
 				],
 				pageInfo: { hasNextPage: true, endCursor: 'cursor-page-2' },
@@ -728,7 +728,7 @@ describe('ChatIntegrationContextQueryExecutor', () => {
 						id: 'issue-uuid',
 						identifier: 'ENG-200',
 						title: 'Last result',
-						url: 'https://linear.app/n8n/issue/ENG-200',
+						url: 'https://linear.app/MNI/issue/ENG-200',
 					},
 				],
 				pageInfo: { hasNextPage: false, endCursor: 'cursor-ignored' },

@@ -1,8 +1,8 @@
-import { UpdateWorkflowHistoryVersionDto } from '@n8n/api-types';
-import type { WorkflowListPublicationStatus } from '@n8n/api-types';
-import { LicenseState, Logger } from '@n8n/backend-common';
-import { GlobalConfig } from '@n8n/config';
-import type { User, ListQueryDb, Project, WorkflowFolderUnionFull, WorkflowHistory } from '@n8n/db';
+import { UpdateWorkflowHistoryVersionDto } from '@MNI/api-types';
+import type { WorkflowListPublicationStatus } from '@MNI/api-types';
+import { LicenseState, Logger } from '@MNI/backend-common';
+import { GlobalConfig } from '@MNI/config';
+import type { User, ListQueryDb, Project, WorkflowFolderUnionFull, WorkflowHistory } from '@MNI/db';
 import {
 	SharedWorkflow,
 	WorkflowEntity,
@@ -15,18 +15,18 @@ import {
 	WorkflowPublicationReason,
 	WorkflowPublishedVersionRepository,
 	ProjectRepository,
-} from '@n8n/db';
-import { Container, Service } from '@n8n/di';
-import type { ApiKeyScope, Scope } from '@n8n/permissions';
-import { hasGlobalScope } from '@n8n/permissions';
-import type { EntityManager } from '@n8n/typeorm';
-import { In, QueryFailedError } from '@n8n/typeorm';
-import type { QueryDeepPartialEntity } from '@n8n/typeorm/query-builder/QueryPartialEntity';
-import { ensureError } from '@n8n/utils/errors/ensure-error';
+} from '@MNI/db';
+import { Container, Service } from '@MNI/di';
+import type { ApiKeyScope, Scope } from '@MNI/permissions';
+import { hasGlobalScope } from '@MNI/permissions';
+import type { EntityManager } from '@MNI/typeorm';
+import { In, QueryFailedError } from '@MNI/typeorm';
+import type { QueryDeepPartialEntity } from '@MNI/typeorm/query-builder/QueryPartialEntity';
+import { ensureError } from '@MNI/utils/errors/ensure-error';
 import isEqual from 'lodash/isEqual';
 import pick from 'lodash/pick';
-import type { INode, INodes, IWorkflowSettings, JsonValue, IConnections } from 'n8n-workflow';
-import { PROJECT_ROOT, Workflow, assert, calculateWorkflowChecksum } from 'n8n-workflow';
+import type { INode, INodes, IWorkflowSettings, JsonValue, IConnections } from 'MNI-workflow';
+import { PROJECT_ROOT, Workflow, assert, calculateWorkflowChecksum } from 'MNI-workflow';
 import { v4 as uuid } from 'uuid';
 
 import { WorkflowPublicationNotifier } from './publication/workflow-publication-notifier';

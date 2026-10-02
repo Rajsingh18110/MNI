@@ -1,11 +1,11 @@
 <script lang="ts" setup>
 import { computed } from 'vue';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import { DateTime } from 'luxon';
-import type { ApiKey } from '@n8n/api-types';
-import type { TableHeader, TableOptions } from '@n8n/design-system';
-import { N8nActionDropdown, N8nDataTableServer, N8nText } from '@n8n/design-system';
-import type { ActionDropdownItem } from '@n8n/design-system';
+import type { ApiKey } from '@MNI/api-types';
+import type { TableHeader, TableOptions } from '@MNI/design-system';
+import { N8nActionDropdown, N8nDataTableServer, N8nText } from '@MNI/design-system';
+import type { ActionDropdownItem } from '@MNI/design-system';
 
 import ApiKeyLabelCell from './ApiKeyLabelCell.vue';
 import ApiKeyOwnerCell from './ApiKeyOwnerCell.vue';

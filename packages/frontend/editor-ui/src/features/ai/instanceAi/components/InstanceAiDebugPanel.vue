@@ -1,9 +1,9 @@
 <script lang="ts" setup>
-import { N8nIcon, N8nIconButton } from '@n8n/design-system';
-import { formatDebugJson } from '@n8n/api-types';
-import { useI18n } from '@n8n/i18n';
+import { N8nIcon, N8nIconButton } from '@MNI/design-system';
+import { formatDebugJson } from '@MNI/api-types';
+import { useI18n } from '@MNI/i18n';
 import { computed, nextTick, onMounted, ref, useTemplateRef, watch } from 'vue';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { useThread } from '../instanceAi.store';
 import { useInstanceAiDebugStore } from '../instanceAiDebug.store';
 import InstanceAiDebugWorkflowCodeSnapshot from './InstanceAiDebugWorkflowCodeSnapshot.vue';

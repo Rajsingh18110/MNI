@@ -3,36 +3,36 @@ import type {
 	PromotionChanges,
 	PromotionChangesQueryDto,
 	PromotionDirection,
-} from '@n8n/api-types';
-import { Logger } from '@n8n/backend-common';
-import { WorkflowRepository, type User, type WorkflowEntity } from '@n8n/db';
-import { Service } from '@n8n/di';
-import { hasGlobalScope, type Scope } from '@n8n/permissions';
-import { jsonParse } from 'n8n-workflow';
+} from '@MNI/api-types';
+import { Logger } from '@MNI/backend-common';
+import { WorkflowRepository, type User, type WorkflowEntity } from '@MNI/db';
+import { Service } from '@MNI/di';
+import { hasGlobalScope, type Scope } from '@MNI/permissions';
+import { jsonParse } from 'MNI-workflow';
 import { randomUUID } from 'node:crypto';
 
 import { BadRequestError } from '@/errors/response-errors/bad-request.error';
 import { ForbiddenError } from '@/errors/response-errors/forbidden.error';
-import { HashingPackageWriter } from '@/modules/n8n-packages/io/hashing-package-writer';
+import { HashingPackageWriter } from '@/modules/MNI-packages/io/hashing-package-writer';
 import {
 	PACKAGE_ENTITY_LAYOUT,
 	entityFilePath,
 	type ManifestEntityCollection,
-} from '@/modules/n8n-packages/io/manifest-entry';
-import { generateSlug } from '@/modules/n8n-packages/io/slug.utils';
-import { N8nPackagesService } from '@/modules/n8n-packages/n8n-packages.service';
+} from '@/modules/MNI-packages/io/manifest-entry';
+import { generateSlug } from '@/modules/MNI-packages/io/slug.utils';
+import { N8nPackagesService } from '@/modules/MNI-packages/MNI-packages.service';
 import {
 	MissingWorkflowDependencyPolicy,
 	WorkflowVersionPolicy,
-} from '@/modules/n8n-packages/n8n-packages.types';
-import { MANIFEST_FILE } from '@/modules/n8n-packages/spec/constants';
+} from '@/modules/MNI-packages/MNI-packages.types';
+import { MANIFEST_FILE } from '@/modules/MNI-packages/spec/constants';
 import {
 	packageManifestSchema,
 	type ManifestEntry,
 	type PackageManifest,
-} from '@/modules/n8n-packages/spec/manifest.schema';
-import type { PackageRequirements } from '@/modules/n8n-packages/spec/requirements.schema';
-import type { SerializedWorkflow } from '@/modules/n8n-packages/spec/serialized/workflow.schema';
+} from '@/modules/MNI-packages/spec/manifest.schema';
+import type { PackageRequirements } from '@/modules/MNI-packages/spec/requirements.schema';
+import type { SerializedWorkflow } from '@/modules/MNI-packages/spec/serialized/workflow.schema';
 
 import { parsePackageFiles, type PackageFile } from './base-branch-files';
 import { PACKAGE_SUBFOLDER } from './constants';

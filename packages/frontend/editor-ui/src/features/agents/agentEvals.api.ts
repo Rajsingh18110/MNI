@@ -8,9 +8,9 @@ import type {
 	CreateAgentEvalRatingPayload,
 	GenerateDraftCasesOptions,
 	GenerateDraftCasesResult,
-} from '@n8n/api-types';
-import type { IRestApiContext } from '@n8n/rest-api-client';
-import { makeRestApiRequest } from '@n8n/rest-api-client';
+} from '@MNI/api-types';
+import type { IRestApiContext } from '@MNI/rest-api-client';
+import { makeRestApiRequest } from '@MNI/rest-api-client';
 
 // REST path helper, kept inline so callers can't build a URL that drifts from
 // the routes in the agent-evals controller. Every route below it is gated

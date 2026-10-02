@@ -3,7 +3,7 @@ import type {
 	ChatHubLLMProvider,
 	EvaluationMetric,
 	UpsertEvaluationConfigDto,
-} from '@n8n/api-types';
+} from '@MNI/api-types';
 
 import {
 	CANNED_METRICS,

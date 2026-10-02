@@ -1,5 +1,5 @@
-import type { BaseTextKey } from '@n8n/i18n';
-import type { IconName } from '@n8n/design-system';
+import type { BaseTextKey } from '@MNI/i18n';
+import type { IconName } from '@MNI/design-system';
 
 export interface InstanceAiEmptyStateQuickExample {
 	id: string;

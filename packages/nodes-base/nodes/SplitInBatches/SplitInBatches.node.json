@@ -1,12 +1,12 @@
 {
-	"node": "n8n-nodes-base.splitInBatches",
+	"node": "MNI-nodes-base.splitInBatches",
 	"nodeVersion": "1.0",
 	"codexVersion": "1.0",
 	"categories": ["Core Nodes"],
 	"resources": {
 		"primaryDocumentation": [
 			{
-				"url": "https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-base.splitinbatches/"
+				"url": "https://docs.n8n.io/integrations/builtin/core-nodes/MNI-nodes-base.splitinbatches/"
 			}
 		],
 		"generic": [
@@ -18,7 +18,7 @@
 			{
 				"label": "Benefits of automation and MNI: An interview with HubSpot's Hugh Durkin",
 				"icon": "🎖",
-				"url": "https://n8n.io/blog/benefits-of-automation-and-n8n-an-interview-with-hubspots-hugh-durkin/"
+				"url": "https://n8n.io/blog/benefits-of-automation-and-MNI-an-interview-with-hubspots-hugh-durkin/"
 			}
 		]
 	},

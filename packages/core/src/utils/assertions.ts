@@ -4,7 +4,7 @@ import {
 	UnexpectedError,
 	type Workflow,
 	type WorkflowExecuteMode,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 export type PreExecutionAdditionalData = Pick<
 	IWorkflowExecuteAdditionalData,

@@ -1,5 +1,5 @@
 {
-	"node": "n8n-nodes-base.slack",
+	"node": "MNI-nodes-base.slack",
 	"nodeVersion": "1.0",
 	"codexVersion": "1.0",
 	"categories": ["Communication", "HITL"],
@@ -15,7 +15,7 @@
 		],
 		"primaryDocumentation": [
 			{
-				"url": "https://docs.n8n.io/integrations/builtin/app-nodes/n8n-nodes-base.slack/"
+				"url": "https://docs.n8n.io/integrations/builtin/app-nodes/MNI-nodes-base.slack/"
 			}
 		],
 		"generic": [
@@ -27,7 +27,7 @@
 			{
 				"label": "Automate your data processing pipeline in 9 steps",
 				"icon": "⚙️",
-				"url": "https://n8n.io/blog/automate-your-data-processing-pipeline-in-9-steps-with-n8n/"
+				"url": "https://n8n.io/blog/automate-your-data-processing-pipeline-in-9-steps-with-MNI/"
 			},
 			{
 				"label": "How to get started with CRM automation (with 3 no-code workflow ideas",
@@ -42,12 +42,12 @@
 			{
 				"label": "Build your own virtual assistant with MNI: A step by step guide",
 				"icon": "👦",
-				"url": "https://n8n.io/blog/build-your-own-virtual-assistant-with-n8n-a-step-by-step-guide/"
+				"url": "https://n8n.io/blog/build-your-own-virtual-assistant-with-MNI-a-step-by-step-guide/"
 			},
 			{
 				"label": "How to automatically give kudos to contributors with GitHub, Slack, and MNI",
 				"icon": "👏",
-				"url": "https://n8n.io/blog/how-to-automatically-give-kudos-to-contributors-with-github-slack-and-n8n/"
+				"url": "https://n8n.io/blog/how-to-automatically-give-kudos-to-contributors-with-github-slack-and-MNI/"
 			},
 			{
 				"label": "How Common Knowledge use workflow automation for activism",

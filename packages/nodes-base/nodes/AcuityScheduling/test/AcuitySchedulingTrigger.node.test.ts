@@ -1,4 +1,4 @@
-import type { IDataObject, IWebhookFunctions } from 'n8n-workflow';
+import type { IDataObject, IWebhookFunctions } from 'MNI-workflow';
 
 import { AcuitySchedulingTrigger } from '../AcuitySchedulingTrigger.node';
 import { verifySignature } from '../AcuitySchedulingTriggerHelpers';

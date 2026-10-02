@@ -5,7 +5,7 @@
 			"parameters": {},
 			"id": "9e2c2dc5-bd37-460b-a5a4-943860dcc03e",
 			"name": "When clicking \"Execute Workflow\"",
-			"type": "n8n-nodes-base.manualTrigger",
+			"type": "MNI-nodes-base.manualTrigger",
 			"typeVersion": 1,
 			"position": [-720, 160]
 		},
@@ -13,7 +13,7 @@
 			"parameters": {},
 			"id": "3184fda2-b1d0-400a-a882-5844bbe99ae3",
 			"name": "false",
-			"type": "n8n-nodes-base.noOp",
+			"type": "MNI-nodes-base.noOp",
 			"typeVersion": 1,
 			"position": [0, 260]
 		},
@@ -44,7 +44,7 @@
 			},
 			"id": "85de5f5c-0a4c-4da1-805b-9e056089bcd5",
 			"name": "Code",
-			"type": "n8n-nodes-testing.testData",
+			"type": "MNI-nodes-testing.testData",
 			"typeVersion": 1,
 			"position": [-500, 160]
 		},
@@ -52,7 +52,7 @@
 			"parameters": {},
 			"id": "8577ab3b-b9f8-4c4d-a3a1-abb6a9269473",
 			"name": "true",
-			"type": "n8n-nodes-base.noOp",
+			"type": "MNI-nodes-base.noOp",
 			"typeVersion": 1,
 			"position": [0, 100]
 		},
@@ -82,7 +82,7 @@
 				"looseTypeValidation": true,
 				"options": {}
 			},
-			"type": "n8n-nodes-base.if",
+			"type": "MNI-nodes-base.if",
 			"typeVersion": 2.2,
 			"position": [-280, 160],
 			"id": "d5d17556-45e6-44a1-8580-a08395ca38c4",

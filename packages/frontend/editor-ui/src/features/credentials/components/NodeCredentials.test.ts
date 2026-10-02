@@ -4,11 +4,11 @@ import { screen, within, waitFor } from '@testing-library/vue';
 import userEvent from '@testing-library/user-event';
 import { createTestingPinia } from '@pinia/testing';
 import { setActivePinia } from 'pinia';
-import type { ICredentialType, INodeTypeDescription } from 'n8n-workflow';
-import { NodeConnectionTypes } from 'n8n-workflow';
-import { SYSTEM_RESOLVER_ID } from '@n8n/api-types';
-import type { FrontendSettings } from '@n8n/api-types';
-import type { Scope } from '@n8n/permissions';
+import type { ICredentialType, INodeTypeDescription } from 'MNI-workflow';
+import { NodeConnectionTypes } from 'MNI-workflow';
+import { SYSTEM_RESOLVER_ID } from '@MNI/api-types';
+import type { FrontendSettings } from '@MNI/api-types';
+import type { Scope } from '@MNI/permissions';
 import NodeCredentials from './NodeCredentials.vue';
 import type { RenderOptions } from '@/__tests__/render';
 import { createComponentRenderer } from '@/__tests__/render';
@@ -20,11 +20,11 @@ import { useProjectsStore } from '@/features/collaboration/projects/projects.sto
 import type { Project } from '@/features/collaboration/projects/projects.types';
 import { useNDVStore } from '@/features/ndv/shared/ndv.store';
 import { useUIStore } from '@/app/stores/ui.store';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';
 import { useWorkflowsStore } from '@/app/stores/workflows.store';
-import { useUsersStore } from '@n8n/stores/users.store';
-import type { IUser } from '@n8n/rest-api-client/api/users';
+import { useUsersStore } from '@MNI/stores/users.store';
+import type { IUser } from '@MNI/rest-api-client/api/users';
 import { useAiGateway } from '@/app/composables/useAiGateway';
 import { AI_GATEWAY_TOP_UP_MODAL_KEY } from '@/app/constants';
 import { ChatHubToolContextKey, WorkflowDocumentStoreKey } from '@/app/constants/injectionKeys';
@@ -36,7 +36,7 @@ import {
 const trackMock = vi.hoisted(() => vi.fn());
 const authorizeMock = vi.hoisted(() => vi.fn().mockResolvedValue(true));
 
-vi.mock('@n8n/composables/useTelemetry', () => ({
+vi.mock('@MNI/composables/useTelemetry', () => ({
 	useTelemetry: () => ({ track: trackMock }),
 }));
 
@@ -79,7 +79,7 @@ const httpNode: INodeUi = {
 		options: {},
 		infoMessage: '',
 	},
-	type: 'n8n-nodes-base.httpRequest',
+	type: 'MNI-nodes-base.httpRequest',
 	typeVersion: 4.2,
 	position: [-200, -160],
 	id: '416988b5-e994-42c7-8576-6ef28a7619b2',
@@ -98,7 +98,7 @@ const openAiNode: INodeUi = {
 		jsonOutput: false,
 		options: {},
 	},
-	type: '@n8n/n8n-nodes-langchain.openAi',
+	type: '@MNI/MNI-nodes-langchain.openAi',
 	typeVersion: 1.8,
 	position: [440, 0],
 	id: '17241295-a277-4cdf-8c46-6c3f85b335e9',
@@ -140,8 +140,8 @@ const openAiApiCredentialType = {
 	test: { request: { baseURL: '={{$credentials?.url}}', url: '/models' } },
 	supportedNodes: ['openAi'],
 	iconUrl: {
-		light: 'icons/n8n-nodes-base/dist/nodes/OpenAi/openAi.svg',
-		dark: 'icons/n8n-nodes-base/dist/nodes/OpenAi/openAi.dark.svg',
+		light: 'icons/MNI-nodes-base/dist/nodes/OpenAi/openAi.svg',
+		dark: 'icons/MNI-nodes-base/dist/nodes/OpenAi/openAi.dark.svg',
 	},
 } satisfies ICredentialType;
 
@@ -237,7 +237,7 @@ describe('NodeCredentials', () => {
 		projectsStore.currentProject = { id: 'default', scopes: ['credential:create'] } as Project;
 		settingsStore.settings = {
 			envFeatureFlags: {
-				N8N_ENV_FEAT_DYNAMIC_CREDENTIALS: true,
+				MNI_ENV_FEAT_DYNAMIC_CREDENTIALS: true,
 			},
 			activeModules: ['dynamic-credentials'],
 		} as unknown as FrontendSettings;
@@ -759,7 +759,7 @@ describe('NodeCredentials', () => {
 			nodeTypesStore.setNodeTypes([
 				{
 					displayName: 'HTTP Request',
-					name: 'n8n-nodes-base.httpRequest',
+					name: 'MNI-nodes-base.httpRequest',
 					group: ['input'],
 					version: [4, 4.1, 4.2],
 					description: 'Makes an HTTP request',
@@ -789,7 +789,7 @@ describe('NodeCredentials', () => {
 					provideSslCertificates: false,
 					options: {},
 				},
-				type: 'n8n-nodes-base.httpRequest',
+				type: 'MNI-nodes-base.httpRequest',
 				typeVersion: 4.2,
 				position: [-200, -160],
 				id: 'e4b917b5-e994-42c7-8576-6ef28a7619b2',
@@ -834,7 +834,7 @@ describe('NodeCredentials', () => {
 					nodeCredentialType: 'openAiApi',
 					options: {},
 				},
-				type: 'n8n-nodes-base.httpRequest',
+				type: 'MNI-nodes-base.httpRequest',
 				typeVersion: 4.2,
 				position: [-200, -160],
 				id: 'f5c917b5-e994-42c7-8576-6ef28a7619b3',
@@ -876,7 +876,7 @@ describe('NodeCredentials', () => {
 			nodeTypesStore.setNodeTypes([
 				{
 					displayName: 'HTTP Request',
-					name: 'n8n-nodes-base.httpRequest',
+					name: 'MNI-nodes-base.httpRequest',
 					group: ['input'],
 					version: [4, 4.1, 4.2],
 					description: 'Makes an HTTP request',
@@ -899,7 +899,7 @@ describe('NodeCredentials', () => {
 					nodeCredentialType: 'anthropicApi',
 					options: {},
 				},
-				type: 'n8n-nodes-base.httpRequest',
+				type: 'MNI-nodes-base.httpRequest',
 				typeVersion: 4.2,
 				position: [-200, -160],
 				id: 'a1b917b5-e994-42c7-8576-6ef28a7619b4',
@@ -1026,7 +1026,7 @@ describe('NodeCredentials', () => {
 
 		const slackNode: INodeUi = {
 			parameters: {},
-			type: 'n8n-nodes-base.slack',
+			type: 'MNI-nodes-base.slack',
 			typeVersion: 2,
 			position: [0, 0],
 			id: 'slack-node-id',
@@ -1037,7 +1037,7 @@ describe('NodeCredentials', () => {
 		function setupQuickConnectStores() {
 			settingsStore.settings = {
 				envFeatureFlags: {
-					N8N_ENV_FEAT_DYNAMIC_CREDENTIALS: true,
+					MNI_ENV_FEAT_DYNAMIC_CREDENTIALS: true,
 				},
 				moduleSettings: {},
 			} as unknown as FrontendSettings;
@@ -1136,7 +1136,7 @@ describe('NodeCredentials', () => {
 
 			const linearMcpNode: INodeUi = {
 				parameters: {},
-				type: 'n8n-nodes-base.linearMcp',
+				type: 'MNI-nodes-base.linearMcp',
 				typeVersion: 1,
 				position: [0, 0],
 				id: 'linear-mcp-node-id',
@@ -1221,7 +1221,7 @@ describe('NodeCredentials', () => {
 
 			const mcpNode: INodeUi = {
 				parameters: {},
-				type: '@n8n/n8n-nodes-langchain.mcpClientTool',
+				type: '@MNI/MNI-nodes-langchain.mcpClientTool',
 				typeVersion: 1,
 				position: [0, 0],
 				id: 'mcp-node-id',
@@ -1333,7 +1333,7 @@ describe('NodeCredentials', () => {
 			nodeTypesStore.setNodeTypes([
 				{
 					displayName: 'Dropbox',
-					name: 'n8n-nodes-base.dropbox',
+					name: 'MNI-nodes-base.dropbox',
 					group: ['input'],
 					version: 1,
 					description: 'Access data on Dropbox',
@@ -1369,7 +1369,7 @@ describe('NodeCredentials', () => {
 
 			const dropboxNode: INodeUi = {
 				parameters: { authentication: 'accessToken' },
-				type: 'n8n-nodes-base.dropbox',
+				type: 'MNI-nodes-base.dropbox',
 				typeVersion: 1,
 				position: [0, 0],
 				id: 'dropbox-node-id',
@@ -1403,7 +1403,7 @@ describe('NodeCredentials', () => {
 			};
 			const discordNode: INodeUi = {
 				parameters: { authentication: 'botToken' },
-				type: 'n8n-nodes-base.discord',
+				type: 'MNI-nodes-base.discord',
 				typeVersion: 2,
 				position: [0, 0],
 				id: 'discord-node-id',
@@ -1423,7 +1423,7 @@ describe('NodeCredentials', () => {
 			mockedStore(useNodeTypesStore).setNodeTypes([
 				{
 					displayName: 'Discord',
-					name: 'n8n-nodes-base.discord',
+					name: 'MNI-nodes-base.discord',
 					group: ['output'],
 					version: 2,
 					description: '',
@@ -1486,7 +1486,7 @@ describe('NodeCredentials', () => {
 					authentication: 'apiToken',
 					incomingAuthentication: 'basicAuth',
 				},
-				type: 'n8n-nodes-base.pipedriveTrigger',
+				type: 'MNI-nodes-base.pipedriveTrigger',
 				typeVersion: 1,
 				position: [0, 0],
 				id: 'pipedrive-trigger-node-id',
@@ -1511,7 +1511,7 @@ describe('NodeCredentials', () => {
 			mockedStore(useNodeTypesStore).setNodeTypes([
 				{
 					displayName: 'Pipedrive Trigger',
-					name: 'n8n-nodes-base.pipedriveTrigger',
+					name: 'MNI-nodes-base.pipedriveTrigger',
 					group: ['trigger'],
 					version: 1,
 					description: '',
@@ -1962,7 +1962,7 @@ describe('NodeCredentials', () => {
 
 				await userEvent.click(screen.getByTestId('node-credentials-select'));
 
-				expect(screen.getByTestId('node-credentials-select-item-n8n-credits')).toBeInTheDocument();
+				expect(screen.getByTestId('node-credentials-select-item-MNI-credits')).toBeInTheDocument();
 				expect(screen.getByTestId('node-credentials-select-item-cred-1')).toBeInTheDocument();
 			});
 
@@ -2043,7 +2043,7 @@ describe('NodeCredentials', () => {
 				const emptyState = screen.getByTestId('node-credentials-empty-state');
 				expect(within(emptyState).queryByRole('combobox')).not.toBeInTheDocument();
 				expect(
-					screen.queryByTestId('node-credentials-select-item-n8n-credits'),
+					screen.queryByTestId('node-credentials-select-item-MNI-credits'),
 				).not.toBeInTheDocument();
 			});
 
@@ -2104,7 +2104,7 @@ describe('NodeCredentials', () => {
 
 				await userEvent.click(screen.getByTestId('node-credentials-select'));
 
-				const creditsOption = screen.getByTestId('node-credentials-select-item-n8n-credits');
+				const creditsOption = screen.getByTestId('node-credentials-select-item-MNI-credits');
 				expect(creditsOption).toBeInTheDocument();
 				// First row, above the user's own credentials.
 				const allOptions = screen.getAllByTestId(/node-credentials-select-item-/);
@@ -2135,7 +2135,7 @@ describe('NodeCredentials', () => {
 
 				expect(screen.queryByText('My Google Key')).toBeInTheDocument();
 				expect(
-					screen.queryByTestId('node-credentials-select-item-n8n-credits'),
+					screen.queryByTestId('node-credentials-select-item-MNI-credits'),
 				).not.toBeInTheDocument();
 			});
 
@@ -2145,7 +2145,7 @@ describe('NodeCredentials', () => {
 				});
 
 				await userEvent.click(screen.getByTestId('node-credentials-select'));
-				await userEvent.click(screen.getByTestId('node-credentials-select-item-n8n-credits'));
+				await userEvent.click(screen.getByTestId('node-credentials-select-item-MNI-credits'));
 
 				const payload = ((emitted('credentialSelected')?.at(-1) as unknown[]) ?? [])[0] as {
 					properties: { credentials: Record<string, unknown> };
@@ -2351,7 +2351,7 @@ describe('NodeCredentials', () => {
 					within(screen.getByTestId('node-credentials-empty-state')).getByRole('combobox'),
 				);
 
-				expect(screen.getByTestId('node-credentials-select-item-n8n-credits')).toBeInTheDocument();
+				expect(screen.getByTestId('node-credentials-select-item-MNI-credits')).toBeInTheDocument();
 			});
 
 			it('switches authentication to the supported credential type when MNI credits is chosen', async () => {
@@ -2364,7 +2364,7 @@ describe('NodeCredentials', () => {
 				await userEvent.click(
 					within(screen.getByTestId('node-credentials-empty-state')).getByRole('combobox'),
 				);
-				await userEvent.click(screen.getByTestId('node-credentials-select-item-n8n-credits'));
+				await userEvent.click(screen.getByTestId('node-credentials-select-item-MNI-credits'));
 
 				// Managed credential is attached to the supported (API-key) type, not the default OAuth2 type.
 				const credPayload = ((emitted('credentialSelected')?.[0] as unknown[]) ?? [])[0] as {
@@ -2398,7 +2398,7 @@ describe('NodeCredentials', () => {
 				await userEvent.click(
 					within(screen.getByTestId('node-credentials-empty-state')).getByRole('combobox'),
 				);
-				await userEvent.click(screen.getByTestId('node-credentials-select-item-n8n-credits'));
+				await userEvent.click(screen.getByTestId('node-credentials-select-item-MNI-credits'));
 
 				const credPayload = ((emitted('credentialSelected')?.[0] as unknown[]) ?? [])[0] as {
 					properties: { credentials: Record<string, unknown> };
@@ -2431,7 +2431,7 @@ describe('NodeCredentials', () => {
 				const emptyState = screen.getByTestId('node-credentials-empty-state');
 				expect(within(emptyState).queryByRole('combobox')).not.toBeInTheDocument();
 				expect(
-					screen.queryByTestId('node-credentials-select-item-n8n-credits'),
+					screen.queryByTestId('node-credentials-select-item-MNI-credits'),
 				).not.toBeInTheDocument();
 			});
 
@@ -2446,7 +2446,7 @@ describe('NodeCredentials', () => {
 				const emptyState = screen.getByTestId('node-credentials-empty-state');
 				expect(within(emptyState).queryByRole('combobox')).not.toBeInTheDocument();
 				expect(
-					screen.queryByTestId('node-credentials-select-item-n8n-credits'),
+					screen.queryByTestId('node-credentials-select-item-MNI-credits'),
 				).not.toBeInTheDocument();
 			});
 		});
@@ -2514,7 +2514,7 @@ describe('NodeCredentials', () => {
 				const emptyState = screen.getByTestId('node-credentials-empty-state');
 				expect(within(emptyState).queryByRole('combobox')).not.toBeInTheDocument();
 				expect(
-					screen.queryByTestId('node-credentials-select-item-n8n-credits'),
+					screen.queryByTestId('node-credentials-select-item-MNI-credits'),
 				).not.toBeInTheDocument();
 			});
 
@@ -2555,7 +2555,7 @@ describe('NodeCredentials', () => {
 					within(screen.getByTestId('node-credentials-empty-state')).getByRole('combobox'),
 				);
 
-				expect(screen.getByTestId('node-credentials-select-item-n8n-credits')).toBeInTheDocument();
+				expect(screen.getByTestId('node-credentials-select-item-MNI-credits')).toBeInTheDocument();
 			});
 
 			it('should emit credentialSelected clearing __aiGatewayManaged when version gate fails on mount', () => {
@@ -2639,7 +2639,7 @@ describe('NodeCredentials', () => {
 		describe('nodes with a parameter-selected credential type (HTTP Request, GraphQL)', () => {
 			const httpRequestNodeType: INodeTypeDescription = {
 				displayName: 'HTTP Request',
-				name: 'n8n-nodes-base.httpRequest',
+				name: 'MNI-nodes-base.httpRequest',
 				group: ['transform'],
 				version: 4.5,
 				description: '',
@@ -2687,7 +2687,7 @@ describe('NodeCredentials', () => {
 				const node: INodeUi = {
 					id: 'node-http',
 					name: 'HTTP Request',
-					type: 'n8n-nodes-base.httpRequest',
+					type: 'MNI-nodes-base.httpRequest',
 					typeVersion: 4.5,
 					position: [0, 0],
 					parameters: {
@@ -2705,7 +2705,7 @@ describe('NodeCredentials', () => {
 				);
 
 				expect(
-					screen.queryByTestId('node-credentials-select-item-n8n-credits'),
+					screen.queryByTestId('node-credentials-select-item-MNI-credits'),
 				).not.toBeInTheDocument();
 			});
 
@@ -2713,7 +2713,7 @@ describe('NodeCredentials', () => {
 				const node: INodeUi = {
 					id: 'node-http',
 					name: 'HTTP Request',
-					type: 'n8n-nodes-base.httpRequest',
+					type: 'MNI-nodes-base.httpRequest',
 					typeVersion: 4.5,
 					position: [0, 0],
 					parameters: {
@@ -2742,7 +2742,7 @@ describe('NodeCredentials', () => {
 			await userEvent.click(
 				within(screen.getByTestId('node-credentials-empty-state')).getByRole('combobox'),
 			);
-			await userEvent.click(screen.getByTestId('node-credentials-select-item-n8n-credits'));
+			await userEvent.click(screen.getByTestId('node-credentials-select-item-MNI-credits'));
 
 			expect(emitted('credentialSelected')).toBeTruthy();
 			const payload = ((emitted('credentialSelected')[0] as unknown[]) ?? [])[0] as {
@@ -3043,7 +3043,7 @@ describe('NodeCredentials', () => {
 		});
 
 		describe('telemetry', () => {
-			it('should track telemetry with mode "n8n_connect" when toggled ON by user', async () => {
+			it('should track telemetry with mode "MNI_connect" when toggled ON by user', async () => {
 				ndvStore.activeNode = googleAiNode;
 
 				renderComponent({
@@ -3053,12 +3053,12 @@ describe('NodeCredentials', () => {
 				await userEvent.click(
 					within(screen.getByTestId('node-credentials-empty-state')).getByRole('combobox'),
 				);
-				await userEvent.click(screen.getByTestId('node-credentials-select-item-n8n-credits'));
+				await userEvent.click(screen.getByTestId('node-credentials-select-item-MNI-credits'));
 
 				expect(trackMock).toHaveBeenCalledWith('User toggled MNI connect credential', {
 					credential_type: 'googlePalmApi',
 					node_type: googleAiNode.type,
-					mode: 'n8n_connect',
+					mode: 'MNI_connect',
 					workflow_id: expect.any(String),
 				});
 				expect(trackMock).toHaveBeenCalledWith('Node credential assigned', {
@@ -3066,7 +3066,7 @@ describe('NodeCredentials', () => {
 					node_type: googleAiNode.type,
 					workflow_id: expect.any(String),
 					credential_id: null,
-					credential_kind: 'n8n_connect',
+					credential_kind: 'MNI_connect',
 					source: 'user',
 				});
 			});
@@ -3096,7 +3096,7 @@ describe('NodeCredentials', () => {
 				await userEvent.click(
 					within(screen.getByTestId('node-credentials-empty-state')).getByRole('combobox'),
 				);
-				await userEvent.click(screen.getByTestId('node-credentials-select-item-n8n-credits'));
+				await userEvent.click(screen.getByTestId('node-credentials-select-item-MNI-credits'));
 
 				// The Instance AI setup card hosts NodeCredentials in standalone mode;
 				// the confirmed selection is counted server-side as source: 'instance-ai-*'.
@@ -3158,7 +3158,7 @@ describe('NodeCredentials', () => {
 			...httpNode,
 			id: 'notion-node-id',
 			name: 'Notion',
-			type: 'n8n-nodes-base.notion',
+			type: 'MNI-nodes-base.notion',
 			credentials: { openAiApi: { id: 'private-cred-id', name: 'My Slack' } },
 			parameters: {},
 		};

@@ -7,9 +7,9 @@ import ResourceFiltersDropdown from '@/app/components/forms/ResourceFiltersDropd
 import ResourcesListEmptyState, {
 	isEmptyStateResourceKey,
 } from '@/app/components/layouts/ResourcesListEmptyState.vue';
-import type { DatatableColumn } from '@n8n/design-system';
-import { useDebounce } from '@n8n/composables/useDebounce';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
+import type { DatatableColumn } from '@MNI/design-system';
+import { useDebounce } from '@MNI/composables/useDebounce';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
 import { useRoute, useRouter } from 'vue-router';
 
 import type { BaseFilters, Resource, SortingAndPaginationUpdates } from '@/Interface';
@@ -29,7 +29,7 @@ import {
 	N8nRecycleScroller,
 	N8nSelect,
 	N8nText,
-} from '@n8n/design-system';
+} from '@MNI/design-system';
 type UIConfig = {
 	searchEnabled: boolean;
 	showFiltersDropdown: boolean;
@@ -783,8 +783,8 @@ defineExpose({
 </template>
 
 <style lang="scss" module>
-@use '@n8n/design-system/css/mixins/breakpoints';
-@use '@n8n/design-system/css/mixins/mixins' as mixins;
+@use '@MNI/design-system/css/mixins/breakpoints';
+@use '@MNI/design-system/css/mixins/mixins' as mixins;
 
 .filters-row {
 	display: flex;

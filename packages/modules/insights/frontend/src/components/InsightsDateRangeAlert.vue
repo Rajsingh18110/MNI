@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import type { DateValue } from '@internationalized/date';
 import { getLocalTimeZone, parseDate } from '@internationalized/date';
-import { N8nAlert, N8nButton, N8nIcon, N8nText } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+import { N8nAlert, N8nButton, N8nIcon, N8nText } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 import { computed, ref } from 'vue';
 
 const props = defineProps<{

@@ -4,8 +4,8 @@ import type {
 	INodeExecutionData,
 	INodeType,
 	INodeTypeDescription,
-} from 'n8n-workflow';
-import { NodeConnectionTypes } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeConnectionTypes } from 'MNI-workflow';
 
 import { oneSimpleApiRequest } from './GenericFunctions';
 
@@ -290,7 +290,7 @@ export class OneSimpleApi implements INodeType {
 						name: 'force',
 						type: 'boolean',
 						default: false,
-						// eslint-disable-next-line n8n-nodes-base/node-param-description-boolean-without-whether
+						// eslint-disable-next-line MNI-nodes-base/node-param-description-boolean-without-whether
 						description:
 							"Normally the API will reuse a previously taken screenshot of the URL to give a faster response. This option allows you to retake the screenshot at that exact time, for those times when it's necessary.",
 					},
@@ -483,7 +483,7 @@ export class OneSimpleApi implements INodeType {
 						name: 'force',
 						type: 'boolean',
 						default: false,
-						// eslint-disable-next-line n8n-nodes-base/node-param-description-boolean-without-whether
+						// eslint-disable-next-line MNI-nodes-base/node-param-description-boolean-without-whether
 						description:
 							"Normally the API will reuse a previously taken screenshot of the URL to give a faster response. This option allows you to retake the screenshot at that exact time, for those times when it's necessary.",
 					},
@@ -492,7 +492,7 @@ export class OneSimpleApi implements INodeType {
 						name: 'fullpage',
 						type: 'boolean',
 						default: false,
-						// eslint-disable-next-line n8n-nodes-base/node-param-description-boolean-without-whether
+						// eslint-disable-next-line MNI-nodes-base/node-param-description-boolean-without-whether
 						description:
 							'The API takes a screenshot of the viewable area for the desired screen size. If you need a screenshot of the whole length of the page, use this option.',
 					},

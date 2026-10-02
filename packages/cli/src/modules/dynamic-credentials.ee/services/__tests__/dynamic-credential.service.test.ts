@@ -1,13 +1,13 @@
-import type { Logger } from '@n8n/backend-common';
-import type { AuthenticatedRequest } from '@n8n/db';
-import { CredentialResolverDataNotFoundError, type ICredentialResolver } from '@n8n/decorators';
+import type { Logger } from '@MNI/backend-common';
+import type { AuthenticatedRequest } from '@MNI/db';
+import { CredentialResolverDataNotFoundError, type ICredentialResolver } from '@MNI/decorators';
 import type { Response } from 'express';
-import type { Cipher } from 'n8n-core';
+import type { Cipher } from 'MNI-core';
 import type {
 	ICredentialContext,
 	ICredentialDataDecryptedObject,
 	IExecutionContext,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import type { Mocked } from 'vitest';
 
 import type {
@@ -24,7 +24,7 @@ import type { DynamicCredentialResolver } from '../../database/entities/credenti
 import type { DynamicCredentialResolverRepository } from '../../database/repositories/credential-resolver.repository';
 import type { DynamicCredentialsConfig } from '../../dynamic-credentials.config';
 import { CredentialResolutionError } from '../../errors/credential-resolution.error';
-import { N8nIdentityNotSupportedError } from '../../errors/n8n-identity-not-supported.error';
+import { N8nIdentityNotSupportedError } from '../../errors/MNI-identity-not-supported.error';
 import { CredentialResolverNotConfiguredError } from '../../errors/credential-resolver-not-configured.error';
 import { CredentialResolverNotFoundError } from '../../errors/credential-resolver-not-found.error';
 import { MissingExecutionContextError } from '../../errors/missing-execution-context.error';
@@ -507,7 +507,7 @@ describe('DynamicCredentialService', () => {
 
 			it('refuses to hand an MNI identity to an external-subject resolver', async () => {
 				const credentialsEntity = createMockCredentialsMetadata();
-				// Default resolver type is an external (non-n8n) resolver: its identifier reads
+				// Default resolver type is an external (non-MNI) resolver: its identifier reads
 				// `context.identity` as a token its own provider issued, so giving it an MNI
 				// session token would send that token to the provider.
 				const resolverEntity = createMockResolverEntity();
@@ -534,7 +534,7 @@ describe('DynamicCredentialService', () => {
 
 			it('external-identity resolver throws CredentialResolverDataNotFoundError keeps the generic message', async () => {
 				const credentialsEntity = createMockCredentialsMetadata();
-				// Default resolver type is an external (non-n8n) resolver
+				// Default resolver type is an external (non-MNI) resolver
 				const resolverEntity = createMockResolverEntity();
 				const mockResolver = createMockResolver(false, true); // Throws CredentialResolverDataNotFoundError
 				const executionContext = createMockExecutionContext('encrypted-credentials');
@@ -1328,7 +1328,7 @@ describe('DynamicCredentialService', () => {
 
 	describe('getSystemResolverId', () => {
 		it('returns the seeded system resolver id constant', () => {
-			expect(service.getSystemResolverId()).toBe('system-n8n');
+			expect(service.getSystemResolverId()).toBe('system-MNI');
 		});
 	});
 

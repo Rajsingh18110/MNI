@@ -1,6 +1,6 @@
 import { mockDeep } from 'vitest-mock-extended';
-import type { IExecuteFunctions, ILoadOptionsFunctions, IWebhookFunctions } from 'n8n-workflow';
-import { NodeApiError } from 'n8n-workflow';
+import type { IExecuteFunctions, ILoadOptionsFunctions, IWebhookFunctions } from 'MNI-workflow';
+import { NodeApiError } from 'MNI-workflow';
 
 import { awsApiRequest, awsApiRequestREST, awsApiRequestSOAP } from '../GenericFunctions';
 import type { Mock, Mocked } from 'vitest';
@@ -19,7 +19,7 @@ describe('AWS GenericFunctions', () => {
 		mockExecuteFunctions.getNode.mockReturnValue({
 			id: 'test-node',
 			name: 'Test Node',
-			type: 'n8n-nodes-base.aws',
+			type: 'MNI-nodes-base.aws',
 			typeVersion: 1,
 			position: [0, 0],
 			parameters: {},
@@ -140,7 +140,7 @@ describe('AWS GenericFunctions', () => {
 				mockLoadOptionsFunctions.getNode.mockReturnValue({
 					id: 'load-node',
 					name: 'Load Node',
-					type: 'n8n-nodes-base.aws',
+					type: 'MNI-nodes-base.aws',
 					typeVersion: 1,
 					position: [0, 0],
 					parameters: {},
@@ -167,7 +167,7 @@ describe('AWS GenericFunctions', () => {
 				mockWebhookFunctions.getNode.mockReturnValue({
 					id: 'webhook-node',
 					name: 'Webhook Node',
-					type: 'n8n-nodes-base.aws',
+					type: 'MNI-nodes-base.aws',
 					typeVersion: 1,
 					position: [0, 0],
 					parameters: {},
@@ -468,7 +468,7 @@ describe('AWS GenericFunctions', () => {
 				mockLoadOptionsFunctions.getNode.mockReturnValue({
 					id: 'load-node',
 					name: 'Load Node',
-					type: 'n8n-nodes-base.aws',
+					type: 'MNI-nodes-base.aws',
 					typeVersion: 1,
 					position: [0, 0],
 					parameters: {},
@@ -611,7 +611,7 @@ describe('AWS GenericFunctions', () => {
 				mockLoadOptionsFunctions.getNode.mockReturnValue({
 					id: 'load-node',
 					name: 'Load Node',
-					type: 'n8n-nodes-base.aws',
+					type: 'MNI-nodes-base.aws',
 					typeVersion: 1,
 					position: [0, 0],
 					parameters: {},

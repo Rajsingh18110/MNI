@@ -1,6 +1,6 @@
-import { binaryToBuffer } from '@n8n/backend-network';
-import { BinaryDataRepository, In, SourceTypeSchema, type SourceType } from '@n8n/db';
-import { Service } from '@n8n/di';
+import { binaryToBuffer } from '@MNI/backend-network';
+import { BinaryDataRepository, In, SourceTypeSchema, type SourceType } from '@MNI/db';
+import { Service } from '@MNI/di';
 import {
 	BinaryDataConfig,
 	type BinaryData,
@@ -9,7 +9,7 @@ import {
 	InvalidSourceTypeError,
 	MissingSourceIdError,
 	TEMP_EXECUTION_ID,
-} from 'n8n-core';
+} from 'MNI-core';
 import { readFile } from 'node:fs/promises';
 import { Readable } from 'node:stream';
 import { v4 as uuid } from 'uuid';

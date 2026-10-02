@@ -3,14 +3,14 @@ import type {
 	WorkflowReviewEligibleReviewer,
 	WorkflowReviewRequestForWorkflow,
 	WorkflowReviewRequestList,
-} from '@n8n/api-types';
+} from '@MNI/api-types';
 import {
 	UserRepository,
 	WorkflowReviewRequestRepository,
 	type User,
 	type WorkflowReviewRequestForWorkflowRow,
-} from '@n8n/db';
-import { Service } from '@n8n/di';
+} from '@MNI/db';
+import { Service } from '@MNI/di';
 
 import { NotFoundError } from '@/errors/response-errors/not-found.error';
 import { WorkflowFinderService } from '@/workflows/workflow-finder.service';

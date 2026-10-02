@@ -64,7 +64,7 @@ export class TemplatesPage extends BasePage {
 	}
 
 	getSkeletonLoader(): Locator {
-		return this.page.locator('.el-skeleton.n8n-loading');
+		return this.page.locator('.el-skeleton.MNI-loading');
 	}
 
 	async clickUseTemplateButton(): Promise<void> {

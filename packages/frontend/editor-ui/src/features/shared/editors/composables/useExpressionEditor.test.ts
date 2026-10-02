@@ -12,7 +12,7 @@ import { setActivePinia } from 'pinia';
 import { beforeEach, describe, vi } from 'vitest';
 import { defineComponent, h, ref, toValue } from 'vue';
 import { useExpressionEditor } from './useExpressionEditor';
-import { createRunExecutionData, Expression } from 'n8n-workflow';
+import { createRunExecutionData, Expression } from 'MNI-workflow';
 import * as completionUtils from '../plugins/codemirror/completions/utils';
 
 vi.mock('@/app/composables/useAutocompleteTelemetry', () => ({
@@ -20,7 +20,7 @@ vi.mock('@/app/composables/useAutocompleteTelemetry', () => ({
 }));
 
 const mockNdvStoreValue = {
-	activeNode: { type: 'n8n-nodes-base.test' },
+	activeNode: { type: 'MNI-nodes-base.test' },
 };
 
 vi.mock('@/features/ndv/shared/ndv.store', () => ({

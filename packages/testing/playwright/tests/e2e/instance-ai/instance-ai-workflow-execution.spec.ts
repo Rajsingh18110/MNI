@@ -1,4 +1,4 @@
-import type { IWorkflowBase } from 'n8n-workflow';
+import type { IWorkflowBase } from 'MNI-workflow';
 
 import { test, expect, instanceAiTestConfig } from './fixtures';
 
@@ -12,7 +12,7 @@ function seededExecutionWorkflow(name: string, setNodeName: string): Partial<IWo
 			{
 				id: 'manual-trigger',
 				name: 'Manual Trigger',
-				type: 'n8n-nodes-base.manualTrigger',
+				type: 'MNI-nodes-base.manualTrigger',
 				typeVersion: 1,
 				position: [0, 0],
 				parameters: {},
@@ -20,7 +20,7 @@ function seededExecutionWorkflow(name: string, setNodeName: string): Partial<IWo
 			{
 				id: 'set-node',
 				name: setNodeName,
-				type: 'n8n-nodes-base.set',
+				type: 'MNI-nodes-base.set',
 				typeVersion: 3.4,
 				position: [240, 0],
 				parameters: {
@@ -40,7 +40,7 @@ function seededExecutionWorkflow(name: string, setNodeName: string): Partial<IWo
 			{
 				id: 'terminal-node',
 				name: `${setNodeName} terminal`,
-				type: 'n8n-nodes-base.noOp',
+				type: 'MNI-nodes-base.noOp',
 				typeVersion: 1,
 				position: [480, 0],
 				parameters: {},

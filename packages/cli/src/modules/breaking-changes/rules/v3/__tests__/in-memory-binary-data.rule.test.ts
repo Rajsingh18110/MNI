@@ -1,4 +1,4 @@
-import type { BinaryDataConfig } from 'n8n-core';
+import type { BinaryDataConfig } from 'MNI-core';
 import { mock } from 'vitest-mock-extended';
 
 import { InMemoryBinaryDataRule } from '../in-memory-binary-data.rule';

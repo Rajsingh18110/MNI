@@ -1,21 +1,21 @@
 <script setup lang="ts">
 import { computed, ref, useTemplateRef } from 'vue';
-import { N8nAiModelSelectorDropdown } from '@n8n/design-system';
-import { PROVIDER_CREDENTIAL_TYPE_MAP } from '@n8n/api-types';
+import { N8nAiModelSelectorDropdown } from '@MNI/design-system';
+import { PROVIDER_CREDENTIAL_TYPE_MAP } from '@MNI/api-types';
 import type {
 	ChatHubProvider,
 	ChatHubLLMProvider,
 	ChatModelDto,
 	ChatHubConversationModel,
 	ChatModelsResponse,
-} from '@n8n/api-types';
+} from '@MNI/api-types';
 import {
 	CHAT_CREDENTIAL_SELECTOR_MODAL_KEY,
 	CHAT_MODEL_BY_ID_SELECTOR_MODAL_KEY,
 	NEW_AGENT_MENU_ID,
 	providerDisplayNames,
 } from '@/features/ai/chatHub/constants';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 
 import type { CredentialsMap } from '../chat.types';
 import { useUIStore } from '@/app/stores/ui.store';
@@ -26,9 +26,9 @@ import {
 	fromStringToModel,
 	isLlmProviderModel,
 } from '@/features/ai/chatHub/chat.utils';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
-import { useSettingsStore } from '@n8n/stores/settings.store';
-import { getResourcePermissions } from '@n8n/permissions';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
+import { useSettingsStore } from '@MNI/stores/settings.store';
+import { getResourcePermissions } from '@MNI/permissions';
 import { useProjectsStore } from '@/features/collaboration/projects/projects.store';
 import ChatProviderAvatar from './ChatProviderAvatar.vue';
 import { applySearch, buildModelSelectorMenuItems } from '../model-selector.utils';

@@ -1,9 +1,9 @@
 import { AuthenticationError } from '@azure/identity';
 import type { SecretClient } from '@azure/keyvault-secrets';
-import { Logger } from '@n8n/backend-common';
-import { Container } from '@n8n/di';
-import { ensureError } from '@n8n/utils/errors/ensure-error';
-import { type INodeProperties, UnexpectedError } from 'n8n-workflow';
+import { Logger } from '@MNI/backend-common';
+import { Container } from '@MNI/di';
+import { ensureError } from '@MNI/utils/errors/ensure-error';
+import { type INodeProperties, UnexpectedError } from 'MNI-workflow';
 
 import type { AzureKeyVaultContext, AzureKeyVaultEnvironment } from './types';
 import { DOCS_HELP_NOTICE } from '../../constants';

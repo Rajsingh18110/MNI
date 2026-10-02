@@ -1,5 +1,5 @@
 import * as XLSX from '@e965/xlsx';
-import type { IPollFunctions } from 'n8n-workflow';
+import type { IPollFunctions } from 'MNI-workflow';
 
 import type { Mock } from 'vitest';
 import {

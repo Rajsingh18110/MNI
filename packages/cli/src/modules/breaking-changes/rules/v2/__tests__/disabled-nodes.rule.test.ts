@@ -11,7 +11,7 @@ describe('DisabledNodesRule', () => {
 	describe('detectWorkflow()', () => {
 		it('should not be affected when no disabled nodes are found', async () => {
 			const { workflow, nodesGroupedByType } = createWorkflow('wf-1', 'Test Workflow', [
-				createNode('HTTP', 'n8n-nodes-base.httpRequest'),
+				createNode('HTTP', 'MNI-nodes-base.httpRequest'),
 			]);
 
 			const result = await rule.detectWorkflow(workflow, nodesGroupedByType);
@@ -22,7 +22,7 @@ describe('DisabledNodesRule', () => {
 
 		it('should detect ExecuteCommand node', async () => {
 			const { workflow, nodesGroupedByType } = createWorkflow('wf-1', 'Test Workflow', [
-				createNode('Execute', 'n8n-nodes-base.executeCommand'),
+				createNode('Execute', 'MNI-nodes-base.executeCommand'),
 			]);
 
 			const result = await rule.detectWorkflow(workflow, nodesGroupedByType);
@@ -35,7 +35,7 @@ describe('DisabledNodesRule', () => {
 
 		it('should detect LocalFileTrigger node', async () => {
 			const { workflow, nodesGroupedByType } = createWorkflow('wf-1', 'Test Workflow', [
-				createNode('FileTrigger', 'n8n-nodes-base.localFileTrigger'),
+				createNode('FileTrigger', 'MNI-nodes-base.localFileTrigger'),
 			]);
 
 			const result = await rule.detectWorkflow(workflow, nodesGroupedByType);

@@ -1,16 +1,16 @@
 {
 	"npm": {
 		"minimumPackageAgeExclusions": [
-			"@n8n/*",
+			"@MNI/*",
 			"@n8n_io/*",
 			"MNI",
-			"n8n-containers",
-			"n8n-core",
-			"n8n-editor-ui",
-			"n8n-node-dev",
-			"n8n-nodes-base",
-			"n8n-playwright",
-			"n8n-workflow"
+			"MNI-containers",
+			"MNI-core",
+			"MNI-editor-ui",
+			"MNI-node-dev",
+			"MNI-nodes-base",
+			"MNI-playwright",
+			"MNI-workflow"
 		]
 	}
 }

@@ -1,13 +1,13 @@
-import { Logger } from '@n8n/backend-common';
-import { Service } from '@n8n/di';
-import type { NeededNodeType } from '@n8n/task-runner';
-import { ensureError } from '@n8n/utils/errors/ensure-error';
+import { Logger } from '@MNI/backend-common';
+import { Service } from '@MNI/di';
+import type { NeededNodeType } from '@MNI/task-runner';
+import { ensureError } from '@MNI/utils/errors/ensure-error';
 import type { Dirent } from 'fs';
 import { readdir, readFile } from 'fs/promises';
-import { RoutingNode, UnrecognizedNodeTypeError } from 'n8n-core';
-import type { ExecuteContext } from 'n8n-core';
-import type { INodeType, INodeTypeDescription, INodeTypes, IVersionedNodeType } from 'n8n-workflow';
-import { deepCopy, isHitlToolType, NodeHelpers, UnexpectedError, UserError } from 'n8n-workflow';
+import { RoutingNode, UnrecognizedNodeTypeError } from 'MNI-core';
+import type { ExecuteContext } from 'MNI-core';
+import type { INodeType, INodeTypeDescription, INodeTypes, IVersionedNodeType } from 'MNI-workflow';
+import { deepCopy, isHitlToolType, NodeHelpers, UnexpectedError, UserError } from 'MNI-workflow';
 import { join, dirname } from 'path';
 
 import { LoadNodesAndCredentials } from './load-nodes-and-credentials';
@@ -169,7 +169,7 @@ export class NodeTypes implements INodeTypes {
 	 */
 	getSupportedVersions(nodeTypeName: string): number[] | undefined {
 		// The whole resolution runs fail-closed: name lookups use `in`, so a
-		// hostile name (e.g. `n8n-nodes-base.constructor`) can surface
+		// hostile name (e.g. `MNI-nodes-base.constructor`) can surface
 		// prototype-chain values that throw at any of the reads below. Fold any
 		// such failure into "unknown type" instead of failing the caller.
 		try {
@@ -211,7 +211,7 @@ export class NodeTypes implements INodeTypes {
 	}) {
 		const nodeDir = dirname(nodeSourcePath);
 		const maxVersion = await this.getMaxVersion(nodeDir);
-		const nodeType = longNodeType.replace('n8n-nodes-base.', '');
+		const nodeType = longNodeType.replace('MNI-nodes-base.', '');
 
 		return maxVersion
 			? join(nodeDir, `v${maxVersion}`, 'translations', locale, `${nodeType}.json`)
@@ -254,9 +254,9 @@ export class NodeTypes implements INodeTypes {
 				: { ...description };
 
 			// TODO: do we still need this?
-			descriptionCopy.name = descriptionCopy.name.startsWith('n8n-nodes')
+			descriptionCopy.name = descriptionCopy.name.startsWith('MNI-nodes')
 				? descriptionCopy.name
-				: `n8n-nodes-base.${descriptionCopy.name}`; // nodes-base nodes are unprefixed
+				: `MNI-nodes-base.${descriptionCopy.name}`; // nodes-base nodes are unprefixed
 
 			return descriptionCopy;
 		});

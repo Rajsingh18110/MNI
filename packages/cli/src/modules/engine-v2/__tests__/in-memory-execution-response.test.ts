@@ -1,6 +1,6 @@
-import { mockLogger } from '@n8n/backend-test-utils';
-import type { ExecutionResponse } from '@n8n/engine';
-import { ENCODED_BUFFER_KEY } from 'n8n-core';
+import { mockLogger } from '@MNI/backend-test-utils';
+import type { ExecutionResponse } from '@MNI/engine';
+import { ENCODED_BUFFER_KEY } from 'MNI-core';
 
 import { InMemoryExecutionResponseChannel } from '../response-channel/in-memory-execution-response-channel';
 import { InMemoryExecutionResponseReceiver } from '../response-channel/in-memory-execution-response-receiver';

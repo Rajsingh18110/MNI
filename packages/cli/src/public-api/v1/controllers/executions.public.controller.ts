@@ -14,9 +14,9 @@ import {
 	StoppedExecutionPublicDto,
 	StoppedExecutionsPublicDto,
 	TagIdsPublicDto,
-} from '@n8n/api-types';
-import { ExecutionsConfig } from '@n8n/config';
-import type { AuthenticatedRequest, IExecutionBase, IExecutionResponse } from '@n8n/db';
+} from '@MNI/api-types';
+import { ExecutionsConfig } from '@MNI/config';
+import type { AuthenticatedRequest, IExecutionBase, IExecutionResponse } from '@MNI/db';
 import {
 	ApiDescription,
 	ApiErrorResponse,
@@ -32,9 +32,9 @@ import {
 	PublicApiController,
 	Put,
 	Query,
-} from '@n8n/decorators';
+} from '@MNI/decorators';
 import type { Response } from 'express';
-import { replaceCircularReferences, WorkflowOperationError } from 'n8n-workflow';
+import { replaceCircularReferences, WorkflowOperationError } from 'MNI-workflow';
 
 import { AbortedExecutionRetryError } from '@/errors/aborted-execution-retry.error';
 import { MissingExecutionStopError } from '@/errors/missing-execution-stop.error';

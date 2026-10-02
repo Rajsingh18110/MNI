@@ -3,21 +3,21 @@ import {
 	setActiveVersion,
 	testDb,
 	mockInstance,
-} from '@n8n/backend-test-utils';
-import type { IWorkflowDb, Project, User, WebhookEntity } from '@n8n/db';
-import { WorkflowRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
-import { InstanceSettings, ExternalSecretsProxy } from 'n8n-core';
-import { FormTrigger } from 'n8n-nodes-base/nodes/Form/FormTrigger.node';
-import { ScheduleTrigger } from 'n8n-nodes-base/nodes/Schedule/ScheduleTrigger.node';
-import { NodeApiError, validateWorkflowHasTriggerLikeNode, Workflow } from 'n8n-workflow';
-import type * as N8nWorkflow from 'n8n-workflow';
+} from '@MNI/backend-test-utils';
+import type { IWorkflowDb, Project, User, WebhookEntity } from '@MNI/db';
+import { WorkflowRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
+import { InstanceSettings, ExternalSecretsProxy } from 'MNI-core';
+import { FormTrigger } from 'MNI-nodes-base/nodes/Form/FormTrigger.node';
+import { ScheduleTrigger } from 'MNI-nodes-base/nodes/Schedule/ScheduleTrigger.node';
+import { NodeApiError, validateWorkflowHasTriggerLikeNode, Workflow } from 'MNI-workflow';
+import type * as N8nWorkflow from 'MNI-workflow';
 import type {
 	IWebhookData,
 	IWorkflowBase,
 	WorkflowActivateMode,
 	INodeTypeData,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import { ActiveExecutions } from '@/active-executions';
@@ -56,8 +56,8 @@ let createActiveWorkflow: (
 let createInactiveWorkflow: () => Promise<IWorkflowBase>;
 let owner: User;
 
-vi.mock('n8n-workflow', async () => {
-	const actual = await vi.importActual<typeof N8nWorkflow>('n8n-workflow');
+vi.mock('MNI-workflow', async () => {
+	const actual = await vi.importActual<typeof N8nWorkflow>('MNI-workflow');
 	return {
 		...actual,
 		validateWorkflowHasTriggerLikeNode: vi.fn(
@@ -75,11 +75,11 @@ beforeAll(async () => {
 	activeWorkflowManager = Container.get(ActiveWorkflowManager);
 
 	const nodes: INodeTypeData = {
-		'n8n-nodes-base.scheduleTrigger': {
+		'MNI-nodes-base.scheduleTrigger': {
 			type: new ScheduleTrigger(),
 			sourcePath: '',
 		},
-		'n8n-nodes-base.formTrigger': {
+		'MNI-nodes-base.formTrigger': {
 			type: new FormTrigger(),
 			sourcePath: '',
 		},
@@ -207,7 +207,7 @@ describe('add()', () => {
 					id: 'uuid-1',
 					parameters: { path: 'test-webhook-path', options: {} },
 					name: 'Form Trigger',
-					type: 'n8n-nodes-base.formTrigger',
+					type: 'MNI-nodes-base.formTrigger',
 					typeVersion: 1,
 					position: [500, 300],
 				},

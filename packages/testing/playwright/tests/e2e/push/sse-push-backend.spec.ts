@@ -6,7 +6,7 @@ import { test, expect } from '../../../fixtures/base';
  * check this covers is gated on it, and the stack's base env otherwise forces
  * `development` — without the override the connection is accepted unchecked.
  */
-test.use({ capability: { env: { N8N_PUSH_BACKEND: 'sse', NODE_ENV: 'production' } } });
+test.use({ capability: { env: { MNI_PUSH_BACKEND: 'sse', NODE_ENV: 'production' } } });
 
 test.beforeEach(({ n8nContainer }) => {
 	test.skip(!n8nContainer, 'container-only: requires the SSE backend configuration');

@@ -2,11 +2,11 @@
 import { onMounted } from 'vue';
 import { ABOUT_MODAL_KEY } from '@/app/constants';
 
-import { N8nIcon, N8nLink, N8nMenuItem, N8nText } from '@n8n/design-system';
+import { N8nIcon, N8nLink, N8nMenuItem, N8nText } from '@MNI/design-system';
 import { useSettingsItems } from '../composables/useSettingsItems';
 import { useAiGateway } from '../composables/useAiGateway';
-import { useI18n } from '@n8n/i18n';
-import { useRootStore } from '@n8n/stores/useRootStore';
+import { useI18n } from '@MNI/i18n';
+import { useRootStore } from '@MNI/stores/useRootStore';
 import { useUIStore } from '../stores/ui.store';
 
 const emit = defineEmits<{

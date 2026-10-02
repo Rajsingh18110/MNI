@@ -1,8 +1,8 @@
-import { GlobalConfig } from '@n8n/config';
-import type { EntityClass, ModuleInterface } from '@n8n/decorators';
-import { BackendModule } from '@n8n/decorators';
-import { Container } from '@n8n/di';
-import { InstanceSettings, scanDirectoryForPackages } from 'n8n-core';
+import { GlobalConfig } from '@MNI/config';
+import type { EntityClass, ModuleInterface } from '@MNI/decorators';
+import { BackendModule } from '@MNI/decorators';
+import { Container } from '@MNI/di';
+import { InstanceSettings, scanDirectoryForPackages } from 'MNI-core';
 import path from 'node:path';
 
 @BackendModule({ name: 'community-packages' })

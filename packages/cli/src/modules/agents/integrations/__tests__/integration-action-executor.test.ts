@@ -43,9 +43,9 @@ vi.mock('../esm-loader', () => ({
 }));
 
 import type { Mock } from 'vitest';
-import type { Logger } from '@n8n/backend-common';
-import type { OutboundHttp } from '@n8n/backend-network';
-import { Container } from '@n8n/di';
+import type { Logger } from '@MNI/backend-common';
+import type { OutboundHttp } from '@MNI/backend-network';
+import { Container } from '@MNI/di';
 import { mock } from 'vitest-mock-extended';
 
 import type { AgentRepository } from '../../repositories/agent.repository';
@@ -61,8 +61,8 @@ import type { IntegrationMessageContext } from '../integration-tool-types';
 import { LinearIntegration } from '../platforms/linear-integration';
 import { SlackIntegration } from '../platforms/slack/slack-integration';
 import type { ChatIntegrationService, ChatInstance } from '../chat-integration.service';
-import type { AgentIntegrationConfig } from '@n8n/api-types';
-import type { RichCardComponentType } from '@n8n/api-types';
+import type { AgentIntegrationConfig } from '@MNI/api-types';
+import type { RichCardComponentType } from '@MNI/api-types';
 
 const slack: AgentIntegrationConfig = {
 	type: 'slack',
@@ -1000,7 +1000,7 @@ describe('ChatIntegrationActionExecutor', () => {
 			identifier: 'ENG-123',
 			title: 'Fix signup',
 			description: 'Signup fails for invited users',
-			url: 'https://linear.app/n8n/issue/ENG-123/fix-signup',
+			url: 'https://linear.app/MNI/issue/ENG-123/fix-signup',
 			createdAt: new Date('2026-05-18T10:00:00.000Z'),
 			updatedAt: new Date('2026-05-18T10:01:00.000Z'),
 			state: Promise.resolve({ id: 'state-1', name: 'Todo', type: 'unstarted' }),
@@ -1013,7 +1013,7 @@ describe('ChatIntegrationActionExecutor', () => {
 				app: false,
 				isAssignable: true,
 				isMentionable: true,
-				url: 'https://linear.app/n8n/profiles/user-1',
+				url: 'https://linear.app/MNI/profiles/user-1',
 			}),
 			labels: vi.fn().mockResolvedValue({ nodes: [{ id: 'label-1', name: 'Bug' }] }),
 		};
@@ -1069,7 +1069,7 @@ describe('ChatIntegrationActionExecutor', () => {
 				identifier: 'ENG-123',
 				title: 'Fix signup',
 				description: 'Signup fails for invited users',
-				url: 'https://linear.app/n8n/issue/ENG-123/fix-signup',
+				url: 'https://linear.app/MNI/issue/ENG-123/fix-signup',
 				state: { id: 'state-1', name: 'Todo', type: 'unstarted' },
 				assignee: {
 					userId: 'user-1',
@@ -1080,7 +1080,7 @@ describe('ChatIntegrationActionExecutor', () => {
 					isBot: false,
 					isAssignable: true,
 					isMentionable: true,
-					url: 'https://linear.app/n8n/profiles/user-1',
+					url: 'https://linear.app/MNI/profiles/user-1',
 				},
 				labels: [{ labelId: 'label-1', name: 'Bug' }],
 				createdAt: '2026-05-18T10:00:00.000Z',
@@ -1095,7 +1095,7 @@ describe('ChatIntegrationActionExecutor', () => {
 					id: 'ENG-123',
 					title: 'Fix signup',
 					description: 'Signup fails for invited users',
-					url: 'https://linear.app/n8n/issue/ENG-123/fix-signup',
+					url: 'https://linear.app/MNI/issue/ENG-123/fix-signup',
 					status: 'Todo',
 					labels: ['Bug'],
 					assignee: { id: 'user-1', name: 'Michael Drury' },
@@ -1109,7 +1109,7 @@ describe('ChatIntegrationActionExecutor', () => {
 		const comment = {
 			id: 'comment-1',
 			body: 'I can reproduce this.',
-			url: 'https://linear.app/n8n/issue/ENG-123#comment-1',
+			url: 'https://linear.app/MNI/issue/ENG-123#comment-1',
 			createdAt: new Date('2026-05-18T10:02:00.000Z'),
 			updatedAt: new Date('2026-05-18T10:03:00.000Z'),
 			user: Promise.resolve({
@@ -1159,7 +1159,7 @@ describe('ChatIntegrationActionExecutor', () => {
 			comment: {
 				commentId: 'comment-1',
 				body: 'I can reproduce this.',
-				url: 'https://linear.app/n8n/issue/ENG-123#comment-1',
+				url: 'https://linear.app/MNI/issue/ENG-123#comment-1',
 				createdAt: '2026-05-18T10:02:00.000Z',
 				updatedAt: '2026-05-18T10:03:00.000Z',
 				author: {
@@ -1188,7 +1188,7 @@ describe('ChatIntegrationActionExecutor', () => {
 			identifier: 'ENG-123',
 			title: 'Updated signup fix',
 			description: 'Updated description',
-			url: 'https://linear.app/n8n/issue/ENG-123/fix-signup',
+			url: 'https://linear.app/MNI/issue/ENG-123/fix-signup',
 			updatedAt: new Date('2026-05-18T10:05:00.000Z'),
 			state: Promise.resolve({ id: 'state-2', name: 'In Progress', type: 'started' }),
 			labels: vi.fn().mockResolvedValue({ nodes: [{ id: 'label-2', name: 'Customer' }] }),
@@ -1241,7 +1241,7 @@ describe('ChatIntegrationActionExecutor', () => {
 				identifier: 'ENG-123',
 				title: 'Updated signup fix',
 				description: 'Updated description',
-				url: 'https://linear.app/n8n/issue/ENG-123/fix-signup',
+				url: 'https://linear.app/MNI/issue/ENG-123/fix-signup',
 				state: { id: 'state-2', name: 'In Progress', type: 'started' },
 				labels: [{ labelId: 'label-2', name: 'Customer' }],
 				updatedAt: '2026-05-18T10:05:00.000Z',
@@ -1255,7 +1255,7 @@ describe('ChatIntegrationActionExecutor', () => {
 					id: 'ENG-123',
 					title: 'Updated signup fix',
 					description: 'Updated description',
-					url: 'https://linear.app/n8n/issue/ENG-123/fix-signup',
+					url: 'https://linear.app/MNI/issue/ENG-123/fix-signup',
 					status: 'In Progress',
 					labels: ['Customer'],
 				},

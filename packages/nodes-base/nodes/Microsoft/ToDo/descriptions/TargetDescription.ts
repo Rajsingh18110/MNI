@@ -1,4 +1,4 @@
-import type { INodeProperties } from 'n8n-workflow';
+import type { INodeProperties } from 'MNI-workflow';
 
 /**
  * App-only target selector for the Service Principal credential. App-only Microsoft

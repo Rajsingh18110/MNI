@@ -2,17 +2,17 @@
 import debounce from 'lodash/debounce';
 import { ref, computed, onMounted } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
-import { useI18n } from '@n8n/i18n';
-import { useRootStore } from '@n8n/stores/useRootStore';
-import { useToast } from '@n8n/composables/useToast';
+import { useI18n } from '@MNI/i18n';
+import { useRootStore } from '@MNI/stores/useRootStore';
+import { useToast } from '@MNI/composables/useToast';
 import { DEBOUNCE_TIME, DEFAULT_WORKFLOW_PAGE_SIZE } from '@/app/constants';
-import { getDebounceTime, useDebounce } from '@n8n/composables/useDebounce';
+import { getDebounceTime, useDebounce } from '@MNI/composables/useDebounce';
 import { useProjectsStore } from '@/features/collaboration/projects/projects.store';
 import { useUIStore } from '@/app/stores/ui.store';
 import ProjectHeader from '@/features/collaboration/projects/components/ProjectHeader.vue';
 import ResourcesListLayout from '@/app/components/layouts/ResourcesListLayout.vue';
 import ResourcesListEmptyState from '@/app/components/layouts/ResourcesListEmptyState.vue';
-import { InsightsSummary, useInsightsStore } from '@n8n/frontend-module-insights';
+import { InsightsSummary, useInsightsStore } from '@MNI/frontend-module-insights';
 import { useProjectPages } from '@/features/collaboration/projects/composables/useProjectPages';
 import { useDocumentTitle } from '@/app/composables/useDocumentTitle';
 import {

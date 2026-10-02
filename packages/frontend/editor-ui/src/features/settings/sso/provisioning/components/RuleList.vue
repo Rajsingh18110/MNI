@@ -1,12 +1,12 @@
 <script lang="ts" setup>
 import Draggable from 'vuedraggable';
-import { ROLE } from '@n8n/api-types';
-import { N8nIcon } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+import { ROLE } from '@MNI/api-types';
+import { N8nIcon } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 import type {
 	RoleMappingRuleResponse,
 	RoleMappingRuleType,
-} from '@n8n/rest-api-client/api/roleMappingRule';
+} from '@MNI/rest-api-client/api/roleMappingRule';
 import RuleRow from './RuleRow.vue';
 import DefaultConditionRow from './DefaultConditionRow.vue';
 

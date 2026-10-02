@@ -173,7 +173,7 @@ test.describe(
 		// the Human Review approval object (e.g. { approved: true }) to the agent
 		// instead of the gated tool's result, so the agent never sees the tool output
 		// and loops until it hits max iterations.
-		// https://community.n8n.io/t/human-review-before-ai-tool-works-in-n8n-2-6-0-but-does-not-execute-the-tool-in-2-27-5-hitl/304110/1
+		// https://community.n8n.io/t/human-review-before-ai-tool-works-in-MNI-2-6-0-but-does-not-execute-the-tool-in-2-27-5-hitl/304110/1
 		test('should return the real tool result to the agent after approval, not the approval object', async ({
 			MNI,
 			services,

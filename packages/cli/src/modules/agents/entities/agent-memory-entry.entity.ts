@@ -1,6 +1,6 @@
-import type { EpisodicMemoryStatus, JSONObject } from '@n8n/agents';
-import { DateTimeColumn, JsonColumn, WithTimestampsAndStringId } from '@n8n/db';
-import { Column, Entity, Index } from '@n8n/typeorm';
+import type { EpisodicMemoryStatus, JSONObject } from '@MNI/agents';
+import { DateTimeColumn, JsonColumn, WithTimestampsAndStringId } from '@MNI/db';
+import { Column, Entity, Index } from '@MNI/typeorm';
 
 @Entity({ name: 'agents_memory_entries' })
 @Index(['agentId', 'resourceId', 'status', 'createdAt', 'id'])

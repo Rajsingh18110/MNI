@@ -1,8 +1,8 @@
 import { watch, type ComputedRef, type Ref } from 'vue';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
-import { useRootStore } from '@n8n/stores/useRootStore';
-import { TELEMETRY_EVENT, type InferTelemetryProps } from '@n8n/telemetry';
-import { isRecord } from '@n8n/utils/is-record';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
+import { useRootStore } from '@MNI/stores/useRootStore';
+import { TELEMETRY_EVENT, type InferTelemetryProps } from '@MNI/telemetry';
+import { isRecord } from '@MNI/utils/is-record';
 import { useInstanceAiSetupPanelExperiment } from '@/experiments/instanceAiSetupPanel/useInstanceAiSetupPanelExperiment';
 import type { ThreadRuntime } from '../../instanceAi.store';
 import type { WorkflowSetupSection } from '../workflowSetup.types';

@@ -1,11 +1,11 @@
-import type { OutboundHttp } from '@n8n/backend-network';
+import type { OutboundHttp } from '@MNI/backend-network';
 import type {
 	MessageEventBusDestinationOptions,
 	MessageEventBusDestinationSentryOptions,
 	MessageEventBusDestinationSyslogOptions,
 	MessageEventBusDestinationWebhookOptions,
-} from 'n8n-workflow';
-import { MessageEventBusDestinationTypeNames, UnexpectedError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { MessageEventBusDestinationTypeNames, UnexpectedError } from 'MNI-workflow';
 
 import type { MessageEventBus } from '@/eventbus/message-event-bus/message-event-bus';
 

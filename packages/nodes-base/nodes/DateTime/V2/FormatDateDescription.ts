@@ -1,4 +1,4 @@
-import type { INodeProperties } from 'n8n-workflow';
+import type { INodeProperties } from 'MNI-workflow';
 
 import { includeInputFields } from './common.descriptions';
 
@@ -36,7 +36,7 @@ export const FormatDateDescription: INodeProperties[] = [
 				operation: ['formatDate'],
 			},
 		},
-		// eslint-disable-next-line n8n-nodes-base/node-param-options-type-unsorted-items
+		// eslint-disable-next-line MNI-nodes-base/node-param-options-type-unsorted-items
 		options: [
 			{
 				name: 'Custom Format',
@@ -126,7 +126,7 @@ export const FormatDateDescription: INodeProperties[] = [
 				type: 'string',
 				default: 'e.g yyyyMMdd',
 				hint: 'Tokens are case sensitive',
-				// eslint-disable-next-line n8n-nodes-base/node-param-description-miscased-id
+				// eslint-disable-next-line MNI-nodes-base/node-param-description-miscased-id
 				description:
 					'Format in which the input \'Date\' is, it\'s helpful when the format is not recognized automatically. Use those <a href="https://moment.github.io/luxon/#/formatting?id=table-of-tokens&id=table-of-tokens" target="_blank">tokens</a> to define the format.',
 			},

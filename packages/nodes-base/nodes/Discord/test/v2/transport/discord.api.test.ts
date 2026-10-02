@@ -1,12 +1,12 @@
-import type { IExecuteFunctions } from 'n8n-workflow';
+import type { IExecuteFunctions } from 'MNI-workflow';
 
-import { sleep } from '@n8n/utils/sleep';
+import { sleep } from '@MNI/utils/sleep';
 
 import { discordApiMultiPartRequest, discordApiRequest } from '../../../v2/transport/discord.api';
 import { handleRateLimitHeaders, requestApi } from '../../../v2/transport/helpers';
 import type { Mock, Mocked } from 'vitest';
 
-vi.mock('@n8n/utils/sleep', () => ({
+vi.mock('@MNI/utils/sleep', () => ({
 	sleep: vi.fn().mockResolvedValue(undefined),
 }));
 
@@ -19,7 +19,7 @@ function createMockContext(authentication = 'botToken') {
 		helpers: { requestWithAuthentication, request },
 		getCredentials: vi.fn(),
 		getNodeParameter: vi.fn().mockReturnValue(authentication),
-		getNode: vi.fn().mockReturnValue({ type: 'n8n-nodes-base.discord', typeVersion: 2 }),
+		getNode: vi.fn().mockReturnValue({ type: 'MNI-nodes-base.discord', typeVersion: 2 }),
 	} as unknown as Mocked<IExecuteFunctions>;
 	return { context, requestWithAuthentication, request };
 }

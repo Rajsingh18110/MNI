@@ -5,7 +5,7 @@
 			"parameters": {
 				"inputSource": "passthrough"
 			},
-			"type": "n8n-nodes-base.executeWorkflowTrigger",
+			"type": "MNI-nodes-base.executeWorkflowTrigger",
 			"typeVersion": 1.1,
 			"position": [0, 0],
 			"id": "execute-workflow-trigger",
@@ -25,7 +25,7 @@
 				},
 				"options": {}
 			},
-			"type": "n8n-nodes-base.set",
+			"type": "MNI-nodes-base.set",
 			"typeVersion": 3.4,
 			"position": [208, 0],
 			"id": "set-version",

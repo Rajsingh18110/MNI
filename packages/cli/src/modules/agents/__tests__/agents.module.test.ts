@@ -1,5 +1,5 @@
-import { AgentsConfig } from '@n8n/config';
-import { Container } from '@n8n/di';
+import { AgentsConfig } from '@MNI/config';
+import { Container } from '@MNI/di';
 import { mock } from 'vitest-mock-extended';
 
 import { AiService } from '@/services/ai.service';

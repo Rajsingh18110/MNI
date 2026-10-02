@@ -1,7 +1,7 @@
-import { mockInstance, mockLogger } from '@n8n/backend-test-utils';
-import { GlobalConfig } from '@n8n/config';
-import type { ExecutionRepository } from '@n8n/db';
-import type { WorkflowExecuteMode as ExecutionMode } from 'n8n-workflow';
+import { mockInstance, mockLogger } from '@MNI/backend-test-utils';
+import { GlobalConfig } from '@MNI/config';
+import type { ExecutionRepository } from '@MNI/db';
+import type { WorkflowExecuteMode as ExecutionMode } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import type { ConcurrencyQueueType } from '@/concurrency/concurrency-control.service';
@@ -48,13 +48,13 @@ describe('ConcurrencyControlService', () => {
 	// directly — that path mirrors an operator-set env var, so make the env
 	// look set throughout the suite. The new tier-default test toggles this
 	// off in its own `beforeEach`.
-	const originalEvalEnv = process.env.N8N_CONCURRENCY_EVALUATION_LIMIT;
+	const originalEvalEnv = process.env.MNI_CONCURRENCY_EVALUATION_LIMIT;
 	beforeAll(() => {
-		process.env.N8N_CONCURRENCY_EVALUATION_LIMIT = '-1';
+		process.env.MNI_CONCURRENCY_EVALUATION_LIMIT = '-1';
 	});
 	afterAll(() => {
-		if (originalEvalEnv === undefined) delete process.env.N8N_CONCURRENCY_EVALUATION_LIMIT;
-		else process.env.N8N_CONCURRENCY_EVALUATION_LIMIT = originalEvalEnv;
+		if (originalEvalEnv === undefined) delete process.env.MNI_CONCURRENCY_EVALUATION_LIMIT;
+		else process.env.MNI_CONCURRENCY_EVALUATION_LIMIT = originalEvalEnv;
 	});
 
 	afterEach(() => {
@@ -218,12 +218,12 @@ describe('ConcurrencyControlService', () => {
 		// The eval queue is built lazily on first eval-mode throttle so the
 		// license has time to activate after DI construction.
 		beforeEach(() => {
-			delete process.env.N8N_CONCURRENCY_EVALUATION_LIMIT;
+			delete process.env.MNI_CONCURRENCY_EVALUATION_LIMIT;
 		});
 		afterEach(() => {
 			// Restore the suite-level env so the surrounding tests still see
 			// an explicit env-set value (the path their assertions assume).
-			process.env.N8N_CONCURRENCY_EVALUATION_LIMIT = '-1';
+			process.env.MNI_CONCURRENCY_EVALUATION_LIMIT = '-1';
 		});
 
 		it('builds the eval queue on first throttle using the Business tier default (3)', async () => {
@@ -294,7 +294,7 @@ describe('ConcurrencyControlService', () => {
 		});
 
 		it('env override wins on the lazy path too', async () => {
-			process.env.N8N_CONCURRENCY_EVALUATION_LIMIT = '-1';
+			process.env.MNI_CONCURRENCY_EVALUATION_LIMIT = '-1';
 			globalConfig.executions.concurrency.evaluationLimit = -1;
 			license.getPlanName.mockReturnValue('Enterprise');
 

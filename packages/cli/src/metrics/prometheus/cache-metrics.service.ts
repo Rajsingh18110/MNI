@@ -1,5 +1,5 @@
-import { PrometheusMetricsConfig } from '@n8n/config';
-import { Service } from '@n8n/di';
+import { PrometheusMetricsConfig } from '@MNI/config';
+import { Service } from '@MNI/di';
 import promClient from 'prom-client';
 
 import { CacheService } from '@/services/cache/cache.service';
@@ -8,7 +8,7 @@ import type { PrometheusMetricsCollector } from './base';
 
 /**
  * Tracks cache hit, miss, and update counts by subscribing to CacheService events.
- * Registers: `n8n_cache_hits_total`, `n8n_cache_misses_total`, `n8n_cache_updates_total`.
+ * Registers: `MNI_cache_hits_total`, `MNI_cache_misses_total`, `MNI_cache_updates_total`.
  */
 @Service()
 export class PrometheusCacheMetricsService implements PrometheusMetricsCollector {

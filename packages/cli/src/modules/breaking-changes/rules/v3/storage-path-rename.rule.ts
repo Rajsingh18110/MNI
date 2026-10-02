@@ -1,5 +1,5 @@
-import { BreakingChangeRule } from '@n8n/decorators';
-import { InstanceSettings } from 'n8n-core';
+import { BreakingChangeRule } from '@MNI/decorators';
+import { InstanceSettings } from 'MNI-core';
 import { existsSync } from 'node:fs';
 import path from 'node:path';
 
@@ -21,7 +21,7 @@ export class StoragePathRenameRule implements IBreakingChangeInstanceRule {
 			version: 'v3',
 			title: 'Filesystem storage directory is renamed',
 			description:
-				'The filesystem storage directory `~/.n8n/binaryData` is renamed to `~/.n8n/storage` on the first start of the new version.',
+				'The filesystem storage directory `~/.MNI/binaryData` is renamed to `~/.MNI/storage` on the first start of the new version.',
 			category: BreakingChangeCategory.infrastructure,
 			severity: 'medium',
 		};
@@ -31,7 +31,7 @@ export class StoragePathRenameRule implements IBreakingChangeInstanceRule {
 		const notAffected = { isAffected: false, instanceIssues: [], recommendations: [] };
 
 		if (this.instanceSettings.fsStorageMigrated) return notAffected;
-		if (process.env.N8N_STORAGE_PATH || process.env.N8N_BINARY_DATA_STORAGE_PATH) {
+		if (process.env.MNI_STORAGE_PATH || process.env.MNI_BINARY_DATA_STORAGE_PATH) {
 			return notAffected;
 		}
 
@@ -54,7 +54,7 @@ export class StoragePathRenameRule implements IBreakingChangeInstanceRule {
 				recommendations: [
 					{
 						action: 'Resolve the directory conflict',
-						description: `Before you update, move the contents of "${oldPath}" into "${newPath}" and remove "${oldPath}", or set N8N_STORAGE_PATH to the directory you want to use.`,
+						description: `Before you update, move the contents of "${oldPath}" into "${newPath}" and remove "${oldPath}", or set MNI_STORAGE_PATH to the directory you want to use.`,
 					},
 				],
 			};
@@ -72,7 +72,7 @@ export class StoragePathRenameRule implements IBreakingChangeInstanceRule {
 			recommendations: [
 				{
 					action: 'Update volume mounts',
-					description: `If you mount a volume at "${oldPath}", mount it at "${newPath}" instead, or set N8N_STORAGE_PATH to the old path to keep it.`,
+					description: `If you mount a volume at "${oldPath}", mount it at "${newPath}" instead, or set MNI_STORAGE_PATH to the old path to keep it.`,
 				},
 			],
 		};

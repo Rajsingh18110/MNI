@@ -1,9 +1,9 @@
-import { testDb } from '@n8n/backend-test-utils';
-import type { ScheduledJob, ScheduledTask } from '@n8n/db';
-import { DataSource, ScheduledJobRepository, ScheduledTaskRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
-import { createScheduler } from '@n8n/scheduler';
-import type { SchedulerDeps } from '@n8n/scheduler';
+import { testDb } from '@MNI/backend-test-utils';
+import type { ScheduledJob, ScheduledTask } from '@MNI/db';
+import { DataSource, ScheduledJobRepository, ScheduledTaskRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
+import { createScheduler } from '@MNI/scheduler';
+import type { SchedulerDeps } from '@MNI/scheduler';
 
 import { buildMaterializerTransaction } from '@/scheduling/durable-scheduler';
 

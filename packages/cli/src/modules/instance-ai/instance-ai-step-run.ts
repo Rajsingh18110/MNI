@@ -8,14 +8,14 @@ import type {
 	IPinData,
 	IRunData,
 	ITaskData,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import {
 	mapConnectionsByDestination,
 	MCP_CLIENT_TOOL_NODE_TYPE,
 	NodeConnectionTypes,
 	nodeNameToToolName,
 	traverseNodeParameters,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { MCP_REGISTRY_PACKAGE_NAME } from '@/modules/mcp-registry/mcp-registry-connection';
 
@@ -385,7 +385,7 @@ function outputCarriedItems(runData: IRunData, nodeName: string, outputIndex: nu
 }
 
 /** Loop Over Items. The engine's `findStartNodes` matches the same literal. */
-const SPLIT_IN_BATCHES_NODE_TYPE = 'n8n-nodes-base.splitInBatches';
+const SPLIT_IN_BATCHES_NODE_TYPE = 'MNI-nodes-base.splitInBatches';
 
 /**
  * Whether `nodeName` can reach itself through main connections without
@@ -681,7 +681,7 @@ export function pinDataForStepRun(
 const TOOLKIT_NODE_TYPES = new Set<string>([MCP_CLIENT_TOOL_NODE_TYPE]);
 
 /**
- * The MCP registry saves a server as its own node type, `@n8n/mcp-registry.<slug>`,
+ * The MCP registry saves a server as its own node type, `@MNI/mcp-registry.<slug>`,
  * and routes every one of them to a single hidden runtime class. So the match is
  * on the package, the way `agents-tools.service.ts` decides the same question:
  * the class name never appears as a node type, and each slug is a type of its own.

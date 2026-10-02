@@ -1,7 +1,7 @@
-import type { Logger } from '@n8n/backend-common';
+import type { Logger } from '@MNI/backend-common';
 import express, { type Express, type Request, type Response } from 'express';
-import type { EvalLlmMockHandler, EvalMockHttpResponse } from 'n8n-core';
-import type { IHttpRequestOptions, INode } from 'n8n-workflow';
+import type { EvalLlmMockHandler, EvalMockHttpResponse } from 'MNI-core';
+import type { IHttpRequestOptions, INode } from 'MNI-workflow';
 import { type Server } from 'node:http';
 
 import { isMockErrorSentinel } from './mock-handler';
@@ -396,7 +396,7 @@ export class LlmWireServer {
 		return {
 			id: `eval-wire-server:${rootName}`,
 			name: rootName,
-			type: '@n8n/eval-wire-server.unknown-vendor-llm',
+			type: '@MNI/eval-wire-server.unknown-vendor-llm',
 			typeVersion: 1,
 			position: [0, 0],
 			parameters: {},

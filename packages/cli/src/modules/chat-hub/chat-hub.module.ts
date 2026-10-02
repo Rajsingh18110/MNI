@@ -1,8 +1,8 @@
-import { ExecutionsConfig, GlobalConfig } from '@n8n/config';
-import type { ModuleInterface } from '@n8n/decorators';
-import { BackendModule, OnShutdown } from '@n8n/decorators';
-import { Container } from '@n8n/di';
-import { InstanceSettings } from 'n8n-core';
+import { ExecutionsConfig, GlobalConfig } from '@MNI/config';
+import type { ModuleInterface } from '@MNI/decorators';
+import { BackendModule, OnShutdown } from '@MNI/decorators';
+import { Container } from '@MNI/di';
+import { InstanceSettings } from 'MNI-core';
 
 @BackendModule({ name: 'chat-hub' })
 export class ChatHubModule implements ModuleInterface {

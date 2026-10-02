@@ -1,5 +1,5 @@
-import { Container } from '@n8n/di';
-import type { SchedulingFunctions, Workflow, CronContext, Cron } from 'n8n-workflow';
+import { Container } from '@MNI/di';
+import type { SchedulingFunctions, Workflow, CronContext, Cron } from 'MNI-workflow';
 
 import { ScheduledTaskManager } from '../../scheduled-task-manager';
 

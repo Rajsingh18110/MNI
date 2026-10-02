@@ -1,6 +1,6 @@
-import { InMemoryDnsCache } from '@n8n/backend-network';
-import { PrometheusMetricsConfig, SsrfProtectionConfig } from '@n8n/config';
-import { Service } from '@n8n/di';
+import { InMemoryDnsCache } from '@MNI/backend-network';
+import { PrometheusMetricsConfig, SsrfProtectionConfig } from '@MNI/config';
+import { Service } from '@MNI/di';
 import promClient from 'prom-client';
 
 import type { PrometheusMetricsCollector } from './base';
@@ -10,10 +10,10 @@ import type { PrometheusMetricsCollector } from './base';
  * Only registered when SSRF protection is enabled.
  *
  * Registers:
- * - `n8n_ssrf_dns_cache_hits_total`: DNS cache hits
- * - `n8n_ssrf_dns_cache_misses_total`: DNS cache misses
- * - `n8n_ssrf_dns_cache_evictions_total`: LRU evictions due to capacity pressure
- * - `n8n_ssrf_dns_cache_size`: current number of entries in the cache
+ * - `MNI_ssrf_dns_cache_hits_total`: DNS cache hits
+ * - `MNI_ssrf_dns_cache_misses_total`: DNS cache misses
+ * - `MNI_ssrf_dns_cache_evictions_total`: LRU evictions due to capacity pressure
+ * - `MNI_ssrf_dns_cache_size`: current number of entries in the cache
  */
 @Service()
 export class PrometheusDnsCacheMetricsService implements PrometheusMetricsCollector {

@@ -1,10 +1,10 @@
-import type { Logger } from '@n8n/backend-common';
+import type { Logger } from '@MNI/backend-common';
 import type {
 	ICredentialContext,
 	ICredentialDataDecryptedObject,
 	IExecutionContext,
 	IWorkflowSettings,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import type { Mocked } from 'vitest';
 
 import type {
@@ -245,10 +245,10 @@ describe('DynamicCredentialsProxy', () => {
 		});
 
 		it('delegates to the resolver provider when set', () => {
-			mockResolverProvider.getSystemResolverId.mockReturnValue('system-n8n');
+			mockResolverProvider.getSystemResolverId.mockReturnValue('system-MNI');
 			proxy.setResolverProvider(mockResolverProvider);
 
-			expect(proxy.getSystemResolverId()).toBe('system-n8n');
+			expect(proxy.getSystemResolverId()).toBe('system-MNI');
 			expect(mockResolverProvider.getSystemResolverId).toHaveBeenCalled();
 		});
 	});

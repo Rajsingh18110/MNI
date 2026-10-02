@@ -4,8 +4,8 @@ import type {
 	INodeTypeDescription,
 	ITriggerFunctions,
 	ITriggerResponse,
-} from 'n8n-workflow';
-import { NodeConnectionTypes, NodeOperationError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeConnectionTypes, NodeOperationError } from 'MNI-workflow';
 import type { ConnectionOptions, EventContext, Receiver, ReceiverOptions } from 'rhea';
 import { create_container } from 'rhea';
 

@@ -3,11 +3,11 @@ import {
 	createWorkflow,
 	linkUserToProject,
 	testDb,
-} from '@n8n/backend-test-utils';
-import { DatabaseConfig, GlobalConfig } from '@n8n/config';
-import type { ExecutionSummaries, User } from '@n8n/db';
-import { ExecutionMetadataRepository, ExecutionRepository, WorkflowRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
+} from '@MNI/backend-test-utils';
+import { DatabaseConfig, GlobalConfig } from '@MNI/config';
+import type { ExecutionSummaries, User } from '@MNI/db';
+import { ExecutionMetadataRepository, ExecutionRepository, WorkflowRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
 import { mock } from 'vitest-mock-extended';
 
 import { COMPLETED_STATUSES, ExecutionListV1Service } from '@/executions/execution-list-v1.service';

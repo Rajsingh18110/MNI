@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 import { computed, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
-import { useI18n } from '@n8n/i18n';
-import { useToast } from '@n8n/composables/useToast';
+import { useI18n } from '@MNI/i18n';
+import { useToast } from '@MNI/composables/useToast';
 import {
 	N8nPreviewBadge,
 	N8nSettingsLayout,
@@ -10,7 +10,7 @@ import {
 	N8nSettingsRow,
 	N8nSettingsRowConfigure,
 	N8nSettingsRowGroup,
-} from '@n8n/design-system';
+} from '@MNI/design-system';
 
 import { useDocumentTitle } from '@/app/composables/useDocumentTitle';
 import { VIEWS } from '@/app/constants';

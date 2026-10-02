@@ -1,13 +1,13 @@
 <script lang="ts" setup>
 import type { ExternalSecretsProvider } from '../externalSecrets.types';
 import { useExternalSecretsStore } from '../externalSecrets.ee.store';
-import { useToast } from '@n8n/composables/useToast';
-import { useI18n } from '@n8n/i18n';
+import { useToast } from '@MNI/composables/useToast';
+import { useI18n } from '@MNI/i18n';
 import { computed, onMounted, ref } from 'vue';
-import type { EventBus } from '@n8n/utils/event-bus';
+import type { EventBus } from '@MNI/utils/event-bus';
 
 import { ElSwitch } from 'element-plus';
-import { N8nIcon, N8nText } from '@n8n/design-system';
+import { N8nIcon, N8nText } from '@MNI/design-system';
 const emit = defineEmits<{
 	change: [value: boolean];
 }>();

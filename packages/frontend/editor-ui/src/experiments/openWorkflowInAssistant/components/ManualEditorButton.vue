@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
-import { N8nButton } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+import { N8nButton } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 
 import type { ArtifactTab } from '@/features/ai/instanceAi/useCanvasPreview';
 import { useOpenWorkflowInAssistantStore } from '../stores/openWorkflowInAssistant.store';

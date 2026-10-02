@@ -1,6 +1,6 @@
-import { OtelModule } from '@n8n/frontend-module-otel';
-import { useRBACStore } from '@n8n/stores/rbac.store';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { OtelModule } from '@MNI/frontend-module-otel';
+import { useRBACStore } from '@MNI/stores/rbac.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { createPinia, setActivePinia } from 'pinia';
 
 import { useUIStore } from '@/app/stores/ui.store';

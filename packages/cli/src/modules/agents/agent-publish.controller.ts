@@ -3,9 +3,9 @@ import {
 	PaginationDto,
 	PublishAgentDto,
 	RevertAgentToVersionDto,
-} from '@n8n/api-types';
-import type { AuthenticatedRequest } from '@n8n/db';
-import { Body, Get, Param, Post, ProjectScope, Query, RestController } from '@n8n/decorators';
+} from '@MNI/api-types';
+import type { AuthenticatedRequest } from '@MNI/db';
+import { Body, Get, Param, Post, ProjectScope, Query, RestController } from '@MNI/decorators';
 import type { Response } from 'express';
 
 import { AgentPublishService } from './agent-publish.service';

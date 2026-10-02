@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { useI18n } from '@n8n/i18n';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useI18n } from '@MNI/i18n';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 
 const i18n = useI18n();
 const settingsStore = useSettingsStore();

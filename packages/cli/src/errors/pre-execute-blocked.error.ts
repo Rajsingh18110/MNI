@@ -1,4 +1,4 @@
-import { UserError } from 'n8n-workflow';
+import { UserError } from 'MNI-workflow';
 
 /**
  * Thrown when `workflow.preExecute` refuses the run. The original hook error

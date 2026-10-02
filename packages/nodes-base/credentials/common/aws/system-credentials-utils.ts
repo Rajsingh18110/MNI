@@ -1,6 +1,6 @@
-import { SecurityConfig } from '@n8n/config';
-import { Container } from '@n8n/di';
-import { UserError } from 'n8n-workflow';
+import { SecurityConfig } from '@MNI/config';
+import { Container } from '@MNI/di';
+import { UserError } from 'MNI-workflow';
 import { readFile } from 'fs/promises';
 
 import { getAwsDomain, type AWSRegion } from './regions';
@@ -113,7 +113,7 @@ async function getInstanceMetadataCredentials() {
 	try {
 		const baseUrl = 'http://169.254.169.254/latest';
 		const headers: Record<string, string> = {
-			'User-Agent': 'n8n-aws-credential',
+			'User-Agent': 'MNI-aws-credential',
 		};
 
 		// Try to obtain an IMDSv2 token
@@ -122,7 +122,7 @@ async function getInstanceMetadataCredentials() {
 				method: 'PUT',
 				headers: {
 					'X-aws-ec2-metadata-token-ttl-seconds': '21600',
-					'User-Agent': 'n8n-aws-credential',
+					'User-Agent': 'MNI-aws-credential',
 				},
 				signal: AbortSignal.timeout(2000),
 			});
@@ -201,7 +201,7 @@ async function getContainerMetadataCredentials() {
 
 		const authToken = envGetter('AWS_CONTAINER_AUTHORIZATION_TOKEN');
 		const headers: Record<string, string> = {
-			'User-Agent': 'n8n-aws-credential',
+			'User-Agent': 'MNI-aws-credential',
 		};
 
 		if (authToken) {
@@ -273,7 +273,7 @@ async function getPodIdentityCredentials() {
 		}
 
 		const headers: Record<string, string> = {
-			'User-Agent': 'n8n-aws-credential',
+			'User-Agent': 'MNI-aws-credential',
 		};
 
 		if (authToken) {
@@ -331,7 +331,7 @@ export async function getRoleForServiceAccountCredentials(region: AWSRegion) {
 		}
 
 		const headers: Record<string, string> = {
-			'User-Agent': 'n8n-aws-credential',
+			'User-Agent': 'MNI-aws-credential',
 			'Content-Type': 'application/x-www-form-urlencoded',
 			Accept: 'application/json',
 		};
@@ -339,7 +339,7 @@ export async function getRoleForServiceAccountCredentials(region: AWSRegion) {
 		const body = new URLSearchParams({
 			Action: 'AssumeRoleWithWebIdentity',
 			RoleArn: iamRole,
-			RoleSessionName: 'n8n-web-identity-session',
+			RoleSessionName: 'MNI-web-identity-session',
 			WebIdentityToken: token,
 			Version: '2011-06-15',
 		});

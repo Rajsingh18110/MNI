@@ -12,10 +12,10 @@ import {
 	Param,
 	Post,
 	Query,
-} from '@n8n/decorators';
-import type { Controller } from '@n8n/decorators';
-import { Container } from '@n8n/di';
-import { UnexpectedError } from 'n8n-workflow';
+} from '@MNI/decorators';
+import type { Controller } from '@MNI/decorators';
+import { Container } from '@MNI/di';
+import { UnexpectedError } from 'MNI-workflow';
 
 import {
 	markPublicApiController,

@@ -1,9 +1,9 @@
-import type { AgentJsonConfig } from '@n8n/api-types';
-import { mockLogger } from '@n8n/backend-test-utils';
-import type { User } from '@n8n/db';
-import { Container } from '@n8n/di';
-import { TELEMETRY_EVENT } from '@n8n/telemetry';
-import { QueryFailedError } from '@n8n/typeorm';
+import type { AgentJsonConfig } from '@MNI/api-types';
+import { mockLogger } from '@MNI/backend-test-utils';
+import type { User } from '@MNI/db';
+import { Container } from '@MNI/di';
+import { TELEMETRY_EVENT } from '@MNI/telemetry';
+import { QueryFailedError } from '@MNI/typeorm';
 import { mock } from 'vitest-mock-extended';
 
 import type { CredentialsService } from '@/credentials/credentials.service';
@@ -404,7 +404,7 @@ describe('AgentPublishService', () => {
 				tasks: [{ type: 'task', id: 'task-1', enabled: true }],
 			},
 			skills: configuredSkills,
-			integrations: [...integrations, { type: 'n8n_chat', credentialId: '' }],
+			integrations: [...integrations, { type: 'MNI_chat', credentialId: '' }],
 		});
 		const draftValidation = { status: 'valid' as const, issues: [] };
 		const task = {
@@ -435,7 +435,7 @@ describe('AgentPublishService', () => {
 			{
 				versionId,
 				agentId,
-				schema: { ...agent.schema, integrations: [{ type: 'n8n_chat', credentialId: '' }] },
+				schema: { ...agent.schema, integrations: [{ type: 'MNI_chat', credentialId: '' }] },
 				tools: configuredTools,
 				skills: configuredSkills,
 				publishedBy: user,
@@ -608,7 +608,7 @@ describe('AgentPublishService', () => {
 		const agent = makeAgent({
 			versionId: 'draft-v2',
 			activeVersionId: 'v0',
-			integrations: [{ type: 'n8n_chat', credentialId: '' }],
+			integrations: [{ type: 'MNI_chat', credentialId: '' }],
 		});
 		const target = makeHistory({ versionId: 'v1', schema: { ...schema, integrations: [] } });
 
@@ -623,7 +623,7 @@ describe('AgentPublishService', () => {
 		expect(agentHistoryRepository.findByVersionAndAgentId).toHaveBeenCalledWith('v1', agentId);
 		expect(agent.activeVersionId).toBe('v1');
 		expect(agent.activeVersion).toBe(target);
-		expect(agent.integrations).toEqual([{ type: 'n8n_chat', credentialId: '' }]);
+		expect(agent.integrations).toEqual([{ type: 'MNI_chat', credentialId: '' }]);
 		expect(target.schema?.integrations).toEqual([]);
 		expect(agentHistoryRepository.saveVersion).not.toHaveBeenCalled();
 		expect(agent.versionId).not.toBe('draft-v2');
@@ -713,7 +713,7 @@ describe('AgentPublishService', () => {
 		const agent = makeAgent({
 			activeVersionId: 'current-active',
 			activeVersion: makeHistory({ versionId: 'current-active' }),
-			integrations: [{ type: 'n8n_chat', credentialId: '' }],
+			integrations: [{ type: 'MNI_chat', credentialId: '' }],
 		});
 		const target = makeHistory({
 			versionId: 'older-version',
@@ -737,7 +737,7 @@ describe('AgentPublishService', () => {
 		expect(agent.schema).toEqual({ ...schema, name: 'Older Agent' });
 		expect(agent.name).toBe('Older Agent');
 		expect(agent.activeVersionId).toBe('current-active');
-		expect(agent.integrations).toEqual([{ type: 'n8n_chat', credentialId: '' }]);
+		expect(agent.integrations).toEqual([{ type: 'MNI_chat', credentialId: '' }]);
 		expect(agent.versionId).not.toBe('older-version');
 		expect(taskRepo.delete).toHaveBeenCalledWith(['draft-only']);
 		expect(taskRepo.update).toHaveBeenCalledWith(

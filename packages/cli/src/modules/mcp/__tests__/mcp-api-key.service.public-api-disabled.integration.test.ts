@@ -1,4 +1,4 @@
-import { Container } from '@n8n/di';
+import { Container } from '@MNI/di';
 
 import { createOwner } from '@test-integration/db/users';
 import * as utils from '@test-integration/utils';

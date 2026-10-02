@@ -1,4 +1,4 @@
-import type { Logger } from '@n8n/backend-common';
+import type { Logger } from '@MNI/backend-common';
 import { existsSync } from 'fs';
 import type ivm from 'isolated-vm';
 import path from 'path';
@@ -28,7 +28,7 @@ async function ensureLibraryBundle() {
 const logger = mock<Logger>();
 
 const SIMPLE_TOOL_CODE = `
-import { Tool } from '@n8n/agents';
+import { Tool } from '@MNI/agents';
 import { z } from 'zod';
 
 export default new Tool('double')
@@ -38,7 +38,7 @@ export default new Tool('double')
 `;
 
 const TOOL_WITH_MESSAGE_CODE = `
-import { Tool } from '@n8n/agents';
+import { Tool } from '@MNI/agents';
 import { z } from 'zod';
 
 export default new Tool('double_with_message')
@@ -52,7 +52,7 @@ export default new Tool('double_with_message')
 `;
 
 const TOOL_WITH_BINARY_MESSAGE_CODE = `
-import { Tool } from '@n8n/agents';
+import { Tool } from '@MNI/agents';
 import { z } from 'zod';
 
 export default new Tool('binary_message')

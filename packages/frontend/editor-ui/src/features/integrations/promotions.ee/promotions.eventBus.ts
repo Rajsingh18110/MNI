@@ -1,4 +1,4 @@
-import { createEventBus } from '@n8n/utils/event-bus';
+import { createEventBus } from '@MNI/utils/event-bus';
 import type { Project } from '@/features/collaboration/projects/projects.types';
 
 export interface PromotionEventBusEvents {

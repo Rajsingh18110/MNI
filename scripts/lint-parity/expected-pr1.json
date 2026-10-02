@@ -63,7 +63,7 @@
 		"reason": "retired in base: downgraded in 12 packages"
 	},
 	{
-		"rule": "n8n-local-rules/no-uncaught-json-parse",
+		"rule": "MNI-local-rules/no-uncaught-json-parse",
 		"pkg": "packages/",
 		"before": "error",
 		"after": "off",
@@ -114,65 +114,65 @@
 	},
 
 	{
-		"rule": "n8n-local-rules/no-uncentralized-http",
+		"rule": "MNI-local-rules/no-uncentralized-http",
 		"pkg": "packages/",
 		"before": "off",
 		"after": "error",
 		"reason": "package moved from base to the backend layer, which carries the network boundary"
 	},
 	{
-		"rule": "n8n-local-rules/no-encryption-guardrail-disable",
+		"rule": "MNI-local-rules/no-encryption-guardrail-disable",
 		"pkg": "packages/",
 		"before": "off",
 		"after": "error",
 		"reason": "package moved from base to the backend layer, which carries the encryption boundary"
 	},
 	{
-		"rule": "n8n-local-rules/no-uncentralized-http",
+		"rule": "MNI-local-rules/no-uncentralized-http",
 		"pkg": "packages/",
 		"before": "error",
 		"after": "error",
-		"reason": "the allow list gained @n8n/backend-network, which is the factory itself"
+		"reason": "the allow list gained @MNI/backend-network, which is the factory itself"
 	},
 
 	{
-		"rule": "n8n-local-rules/no-uncentralized-http",
-		"pkg": "packages/@n8n/utils",
+		"rule": "MNI-local-rules/no-uncentralized-http",
+		"pkg": "packages/@MNI/utils",
 		"before": "error",
 		"after": "off",
 		"reason": "runtime-agnostic library moved to base: no Node runtime, no HTTP imports"
 	},
 	{
-		"rule": "n8n-local-rules/no-encryption-guardrail-disable",
-		"pkg": "packages/@n8n/utils",
+		"rule": "MNI-local-rules/no-encryption-guardrail-disable",
+		"pkg": "packages/@MNI/utils",
 		"before": "error",
 		"after": "off",
 		"reason": "runtime-agnostic library moved to base"
 	},
 	{
-		"rule": "n8n-local-rules/no-uncentralized-http",
-		"pkg": "packages/@n8n/json-schema-to-zod",
+		"rule": "MNI-local-rules/no-uncentralized-http",
+		"pkg": "packages/@MNI/json-schema-to-zod",
 		"before": "error",
 		"after": "off",
 		"reason": "pure library moved to base: no Node APIs"
 	},
 	{
-		"rule": "n8n-local-rules/no-encryption-guardrail-disable",
-		"pkg": "packages/@n8n/json-schema-to-zod",
+		"rule": "MNI-local-rules/no-encryption-guardrail-disable",
+		"pkg": "packages/@MNI/json-schema-to-zod",
 		"before": "error",
 		"after": "off",
 		"reason": "pure library moved to base"
 	},
 	{
-		"rule": "n8n-local-rules/no-uncentralized-http",
-		"pkg": "packages/@n8n/crdt",
+		"rule": "MNI-local-rules/no-uncentralized-http",
+		"pkg": "packages/@MNI/crdt",
 		"before": "error",
 		"after": "off",
 		"reason": "yjs-only library moved to base: no Node APIs"
 	},
 	{
-		"rule": "n8n-local-rules/no-encryption-guardrail-disable",
-		"pkg": "packages/@n8n/crdt",
+		"rule": "MNI-local-rules/no-encryption-guardrail-disable",
+		"pkg": "packages/@MNI/crdt",
 		"before": "error",
 		"after": "off",
 		"reason": "yjs-only library moved to base"
@@ -185,8 +185,8 @@
 	},
 
 	{
-		"rule": "n8n-nodes-base/node-filename-against-convention",
-		"pkg": "packages/@n8n/nodes-langchain",
+		"rule": "MNI-nodes-base/node-filename-against-convention",
+		"pkg": "packages/@MNI/nodes-langchain",
 		"before": "error",
 		"after": "off",
 		"reason": "the nodes layer relaxes it for test files, which nodes-base already did and langchain did not"
@@ -198,7 +198,7 @@
 	},
 	{
 		"key": "(plugins)",
-		"pkg": "packages/@n8n/nodes-langchain",
+		"pkg": "packages/@MNI/nodes-langchain",
 		"reason": "the nodes layer registers eslint-plugin-n8n-nodes-base once, so it is visible to test files under credentials/ too"
 	}
 ]

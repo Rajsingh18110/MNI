@@ -26,11 +26,11 @@ minimumReleaseAge: 2880
 # for tens of seconds while aggregate throughput stays at ~1Gbit/s. The 60s
 # default turns those stalls into failed installs; a probe caught the same
 # request completing at 39.6s on one runner and aborting at exactly 60.0s on
-# another. See https://github.com/n8n-io/n8n/actions/runs/32991441403
+# another. See https://github.com/MNI-io/MNI/actions/runs/32991441403
 fetchTimeout: 300000
 
 minimumReleaseAgeExclude:
-  - '@n8n/*'
+  - '@MNI/*'
   - '@n8n_io/*'
   # Fresh Claude model IDs (e.g. Opus 5) ship in @ai-sdk/anthropic patches; allow
   # installing before the 2-day minimumReleaseAge so agents/evals aren't stuck on
@@ -38,10 +38,12 @@ minimumReleaseAgeExclude:
   - '@ai-sdk/anthropic'
   # Security patch (Aikido) newer than the minimumReleaseAge window; allow it in.
   - '@xmldom/xmldom'
+  - '@ai-sdk/provider-utils@5.0.53'
+  - '@ai-sdk/provider@4.0.21'
 
 packages:
   - packages/*
-  - packages/@n8n/*
+  - packages/@MNI/*
   - packages/frontend/**
   # `packages/*` stops one level short of `<module>/frontend`, so feature modules need their own
   # glob or they are not workspace packages at all.
@@ -89,7 +91,7 @@ catalog:
   '@codemirror/language': 6.12.1
   '@codemirror/lint': 6.9.2
   '@codemirror/search': 6.5.11
-  '@codemirror/state': 6.5.3
+  '@codemirror/state': 6.7.6
   '@codemirror/view': 6.39.8
   '@confluentinc/kafka-javascript': 1.9.1
   '@daytona/sdk': 0.205.1
@@ -132,6 +134,7 @@ catalog:
   '@testcontainers/redis': ^11.13.0
   '@tiptap/core': 3.27.0
   '@tiptap/extension-link': 3.27.0
+  "@tiptap/extension-list": 3.27.0
   '@tiptap/extension-placeholder': 3.27.0
   '@tiptap/extension-table': 3.27.0
   '@tiptap/extension-table-cell': 3.27.0
@@ -366,12 +369,19 @@ overrides:
   libphonenumber-js: npm:empty-npm-package@1.0.0
   '@browserbasehq/stagehand': npm:empty-npm-package@1.0.0
   sharp: npm:empty-npm-package@1.0.0
+  openai: 6.46.0
+  '@langchain/core': 1.2.8
+  '@langchain/classic': 1.0.27
+  '@types/express-serve-static-core': 5.0.6
+  '@types/ws': 8.18.1
+  reka-ui: 2.5.0
+  vue-tsc: 2.2.8
   ast-types: 0.16.1
   baseline-browser-mapping: ^2.10.31
   '@azure/identity': 4.13.0
   '@lezer/common': ^1.2.0
   '@mistralai/mistralai': ^2.2.1
-  '@n8n/typeorm>@sentry/node': catalog:sentry
+  '@MNI/typeorm>@sentry/node': catalog:sentry
   'mssql@12.7.0>tedious': 20.0.5
   '@opentelemetry/api': 'catalog:'
   '@opentelemetry/core': 2.10.0
@@ -385,7 +395,6 @@ overrides:
   semver: 'catalog:'
   tar-fs: 2.1.5
   tslib: ^2.6.2
-  vue-tsc: catalog:frontend
   gaxios: '>=7.1.1'
   google-gax: ^4.3.7
   ws: '>=8.21.1'
@@ -458,6 +467,26 @@ overrides:
   langsmith: 0.6.0
   hono: 4.12.34
   '@tiptap/core': 'catalog:'
+  '@tiptap/extension-list': 3.27.0
+  '@tiptap/extension-list-item': 3.27.0
+  '@tiptap/extension-list-keymap': 3.27.0
+  '@tiptap/extension-ordered-list': 3.27.0
+  '@tiptap/extension-bullet-list': 3.27.0
+  '@tiptap/extension-blockquote': 3.27.0
+  '@tiptap/extension-bold': 3.27.0
+  '@tiptap/extension-code': 3.27.0
+  '@tiptap/extension-code-block': 3.27.0
+  '@tiptap/extension-document': 3.27.0
+  '@tiptap/extension-dropcursor': 3.27.0
+  '@tiptap/extension-gapcursor': 3.27.0
+  '@tiptap/extension-hard-break': 3.27.0
+  '@tiptap/extension-heading': 3.27.0
+  '@tiptap/extension-history': 3.27.0
+  '@tiptap/extension-horizontal-rule': 3.27.0
+  '@tiptap/extension-italic': 3.27.0
+  '@tiptap/extension-paragraph': 3.27.0
+  '@tiptap/extension-strike': 3.27.0
+  '@tiptap/extension-text': 3.27.0
   pg: 'catalog:'
   file-type: 'catalog:'
   linkify-it@<=5.0.1: 5.0.2
@@ -479,6 +508,8 @@ overrides:
   '@zone-eu/mailsplit@<5.4.15': 5.4.15
   'strnum@<2.4.2': 2.4.2
 
+  react: 18.2.0
+  react-dom: 18.2.0
 patchedDependencies:
   axios: patches/axios.patch
   bull@4.16.4: patches/bull@4.16.4.patch
@@ -492,7 +523,7 @@ patchedDependencies:
   minifaker: patches/minifaker.patch
   z-vue-scan: patches/z-vue-scan.patch
   '@lezer/highlight': patches/@lezer__highlight.patch
-  v-code-diff: patches/v-code-diff.patch
+
   vuedraggable@4.1.0: patches/vuedraggable@4.1.0.patch
   assert@2.1.0: patches/assert@2.1.0.patch
   reka-ui@2.5.0: patches/reka-ui@2.5.0.patch
@@ -508,6 +539,7 @@ allowBuilds:
   '@confluentinc/kafka-javascript': true
   '@jitsi/robotjs': false
   '@parcel/watcher': false
+  '@scarf/scarf': true
   '@sentry-internal/node-cpu-profiler': false
   '@sentry-internal/node-native-stacktrace': false
   '@sentry/cli': false

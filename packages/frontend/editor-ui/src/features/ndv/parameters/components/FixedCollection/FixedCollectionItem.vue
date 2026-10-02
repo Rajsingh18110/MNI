@@ -1,17 +1,17 @@
 <script lang="ts" setup>
-import type { INodeParameters, INodeProperties, INodePropertyCollection } from 'n8n-workflow';
+import type { INodeParameters, INodeProperties, INodePropertyCollection } from 'MNI-workflow';
 import type { IUpdateInformation } from '@/Interface';
 
 import { computed } from 'vue';
-import { useI18n } from '@n8n/i18n';
-import type { ActionDropdownItem } from '@n8n/design-system';
+import { useI18n } from '@MNI/i18n';
+import type { ActionDropdownItem } from '@MNI/design-system';
 import {
 	N8nActionDropdown,
 	N8nButton,
 	N8nCollapsiblePanel,
 	N8nHeaderAction,
 	N8nIconButton,
-} from '@n8n/design-system';
+} from '@MNI/design-system';
 import ParameterInputList from '../ParameterInputList.vue';
 import { useCollectionOverhaul } from '@/app/composables/useCollectionOverhaul';
 import { useResolvedExpression } from '@/app/composables/useResolvedExpression';
@@ -163,7 +163,7 @@ const handleValueChanged = (parameterData: IUpdateInformation) =>
 			<N8nActionDropdown :items="pickerDropdownItems" @select="emit('toggleOptionalValue', $event)">
 				<template #activator>
 					<N8nButton
-						class="n8n-button--highlightFill"
+						class="MNI-button--highlightFill"
 						variant="subtle"
 						icon="plus"
 						size="small"

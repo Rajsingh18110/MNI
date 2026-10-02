@@ -1,8 +1,8 @@
 import type {
 	InstanceAiRunDebugStep,
 	InstanceAiRunDebugWorkflowCodeSnapshot,
-} from '@n8n/api-types';
-import { isRecord } from '@n8n/utils/is-record';
+} from '@MNI/api-types';
+import { isRecord } from '@MNI/utils/is-record';
 
 const WORKFLOW_CODE_TOOL_NAMES = new Set(['build-workflow']);
 

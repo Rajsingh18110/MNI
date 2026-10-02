@@ -8,7 +8,7 @@
  *  2. add a `runX(...)` function below
  *  3. add a `case 'x':` to `executeLoad` (TypeScript fails the build until done)
  */
-import type { MetricsHelper } from 'n8n-containers';
+import type { MetricsHelper } from 'MNI-containers';
 
 import { measureStageWindows, measureSteadyPhases, waitForThroughput } from './throughput-measure';
 import type { CompletionCounterReader, ThroughputResult } from './throughput-measure';

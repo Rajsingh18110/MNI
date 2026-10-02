@@ -55,10 +55,10 @@ describe('InstanceAiMarkdown', () => {
 		expect(result).toBe('Hello world');
 	});
 
-	it('should replace resource name with n8n-resource link', () => {
+	it('should replace resource name with MNI-resource link', () => {
 		const registry = makeRegistry([{ type: 'workflow', id: 'wf-1', name: 'My Workflow' }]);
 		const result = getProcessedContent('Check out My Workflow please', registry);
-		expect(result).toContain('[My Workflow](n8n-resource://workflow/wf-1)');
+		expect(result).toContain('[My Workflow](MNI-resource://workflow/wf-1)');
 	});
 
 	it('should not replace resource names that are only in the metadata index', () => {
@@ -80,7 +80,7 @@ describe('InstanceAiMarkdown', () => {
 		const registry = makeRegistry([{ type: 'workflow', id: 'wf-1', name: 'My Workflow' }]);
 		const result = getProcessedContent('Use `My Workflow` for this', registry);
 		// The name is surrounded by backticks — lookbehind/lookahead should prevent replacement
-		expect(result).not.toContain('n8n-resource://');
+		expect(result).not.toContain('MNI-resource://');
 		expect(result).toContain('`My Workflow`');
 	});
 
@@ -91,9 +91,9 @@ describe('InstanceAiMarkdown', () => {
 		]);
 		const result = getProcessedContent('Use the Slack Integration for notifications', registry);
 		// "Slack Integration" should be matched as a whole, not "Slack" alone
-		expect(result).toContain('[Slack Integration](n8n-resource://workflow/wf-2)');
+		expect(result).toContain('[Slack Integration](MNI-resource://workflow/wf-2)');
 		// "Slack" alone should NOT be replaced inside the already-replaced link
-		expect(result).not.toContain('[Slack](n8n-resource://workflow/wf-1)');
+		expect(result).not.toContain('[Slack](MNI-resource://workflow/wf-1)');
 	});
 
 	it('should escape special regex characters in resource names', () => {
@@ -102,13 +102,13 @@ describe('InstanceAiMarkdown', () => {
 		// like parentheses and dots. The regex \bTest \(v2\.0\)\b will never match
 		// because \b after ) requires a word-char neighbor, but ) is non-word.
 		const result = getProcessedContent('Use Test (v2.0) for this', registry);
-		expect(result).toContain('[Test (v2.0)](n8n-resource://workflow/wf-1)');
+		expect(result).toContain('[Test (v2.0)](MNI-resource://workflow/wf-1)');
 	});
 
 	it('should escape markdown link text and encode resource ids', () => {
 		const registry = makeRegistry([{ type: 'workflow', id: 'wf/1', name: 'Name [prod]' }]);
 		const result = getProcessedContent('Open Name [prod] now', registry);
-		expect(result).toContain('[Name \\[prod\\]](n8n-resource://workflow/wf%2F1)');
+		expect(result).toContain('[Name \\[prod\\]](MNI-resource://workflow/wf%2F1)');
 	});
 
 	it('should not replace overlapping names inside generated links with escaped link text', () => {
@@ -120,7 +120,7 @@ describe('InstanceAiMarkdown', () => {
 
 		const result = getProcessedContent('Open Name [prod] now', registry);
 
-		expect(result).toBe('Open [Name \\[prod\\]](n8n-resource://workflow/wf-full) now');
+		expect(result).toBe('Open [Name \\[prod\\]](MNI-resource://workflow/wf-full) now');
 		expect(result).not.toContain('wf-name');
 		expect(result).not.toContain('wf-prod');
 	});
@@ -128,7 +128,7 @@ describe('InstanceAiMarkdown', () => {
 	it('should replace resource name appearing multiple times', () => {
 		const registry = makeRegistry([{ type: 'workflow', id: 'wf-1', name: 'My Workflow' }]);
 		const result = getProcessedContent('Open My Workflow and then close My Workflow', registry);
-		const matches = result.match(/n8n-resource:\/\/workflow\/wf-1/g);
+		const matches = result.match(/MNI-resource:\/\/workflow\/wf-1/g);
 		expect(matches).toHaveLength(2);
 	});
 
@@ -138,8 +138,8 @@ describe('InstanceAiMarkdown', () => {
 			{ type: 'data-table', id: 'dt-1', name: 'User Data' },
 		]);
 		const result = getProcessedContent('Connect Slack API Key to User Data', registry);
-		expect(result).toContain('n8n-resource://credential/cred-1');
-		expect(result).toContain('n8n-resource://data-table/dt-1');
+		expect(result).toContain('MNI-resource://credential/cred-1');
+		expect(result).toContain('MNI-resource://data-table/dt-1');
 	});
 
 	it('should NOT replace names that are inside existing markdown links', () => {
@@ -148,7 +148,7 @@ describe('InstanceAiMarkdown', () => {
 			'See [My Workflow](https://example.com) for details',
 			registry,
 		);
-		expect(result).not.toContain('n8n-resource://');
+		expect(result).not.toContain('MNI-resource://');
 	});
 
 	it('should NOT replace names inside longer existing markdown link text', () => {
@@ -158,7 +158,7 @@ describe('InstanceAiMarkdown', () => {
 			registry,
 		);
 		expect(result).toContain('[the My Workflow docs](https://example.com)');
-		expect(result).not.toContain('n8n-resource://');
+		expect(result).not.toContain('MNI-resource://');
 	});
 
 	describe('streaming deferral', () => {
@@ -176,12 +176,12 @@ describe('InstanceAiMarkdown', () => {
 			thread.linkableResourceNameIndex = registry();
 			const { getByTestId, rerender } = renderComponent({ props: { content, streaming: true } });
 
-			expect(getByTestId('markdown-output').textContent).not.toContain('n8n-resource://');
+			expect(getByTestId('markdown-output').textContent).not.toContain('MNI-resource://');
 
 			await rerender({ content, streaming: false });
 
 			expect(getByTestId('markdown-output').textContent).toContain(
-				'[My Workflow](n8n-resource://workflow/wf-1)',
+				'[My Workflow](MNI-resource://workflow/wf-1)',
 			);
 		});
 
@@ -190,7 +190,7 @@ describe('InstanceAiMarkdown', () => {
 			const { getByTestId } = renderComponent({ props: { content } });
 
 			expect(getByTestId('markdown-output').textContent).toContain(
-				'[My Workflow](n8n-resource://workflow/wf-1)',
+				'[My Workflow](MNI-resource://workflow/wf-1)',
 			);
 		});
 	});
@@ -199,8 +199,8 @@ describe('InstanceAiMarkdown', () => {
 		// Pre-rendered anchor (as markdown-it would emit for a decorated link);
 		// the empty registry keeps decorateResourceNames a no-op so the rendered
 		// HTML is stable across re-renders.
-		const content = '<a href="n8n-resource://workflow/wf-1">Invoice Processing Pipeline</a>';
-		const agentContent = '<a href="n8n-resource://agent/agent-1">Artifact Agent Test</a>';
+		const content = '<a href="MNI-resource://workflow/wf-1">Invoice Processing Pipeline</a>';
+		const agentContent = '<a href="MNI-resource://agent/agent-1">Artifact Agent Test</a>';
 		const agentPreviewLinks = [
 			{
 				label: 'legacy',

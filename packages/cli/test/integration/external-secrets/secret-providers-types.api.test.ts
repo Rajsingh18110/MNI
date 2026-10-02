@@ -1,7 +1,7 @@
-import type { SecretProviderTypeResponse, SecretsProviderType } from '@n8n/api-types';
-import { LicenseState, Logger } from '@n8n/backend-common';
-import { mockInstance, mockLogger, testDb, testModules } from '@n8n/backend-test-utils';
-import { Container } from '@n8n/di';
+import type { SecretProviderTypeResponse, SecretsProviderType } from '@MNI/api-types';
+import { LicenseState, Logger } from '@MNI/backend-common';
+import { mockInstance, mockLogger, testDb, testModules } from '@MNI/backend-test-utils';
+import { Container } from '@MNI/di';
 import type { Response } from 'superagent';
 import { mock } from 'vitest-mock-extended';
 

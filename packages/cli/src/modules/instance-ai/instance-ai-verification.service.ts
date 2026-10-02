@@ -5,16 +5,16 @@ import type {
 	InstanceAiVerifyModelRequest,
 	InstanceAiVerifySandboxRequest,
 	InstanceAiVerifySearchRequest,
-} from '@n8n/api-types';
-import { Logger } from '@n8n/backend-common';
-import { OutboundHttp } from '@n8n/backend-network';
-import { GlobalConfig } from '@n8n/config';
-import type { User } from '@n8n/db';
-import { Service } from '@n8n/di';
-import type { ModelConfig, SandboxConfig } from '@n8n/instance-ai';
-import { TELEMETRY_EVENT } from '@n8n/telemetry';
-import { ensureError } from '@n8n/utils/errors/ensure-error';
-import { sanitizeErrorDetail } from '@n8n/utils/redaction/sanitize-error-detail';
+} from '@MNI/api-types';
+import { Logger } from '@MNI/backend-common';
+import { OutboundHttp } from '@MNI/backend-network';
+import { GlobalConfig } from '@MNI/config';
+import type { User } from '@MNI/db';
+import { Service } from '@MNI/di';
+import type { ModelConfig, SandboxConfig } from '@MNI/instance-ai';
+import { TELEMETRY_EVENT } from '@MNI/telemetry';
+import { ensureError } from '@MNI/utils/errors/ensure-error';
+import { sanitizeErrorDetail } from '@MNI/utils/redaction/sanitize-error-detail';
 
 import { Telemetry } from '@/telemetry';
 import { createAiProxyFetch } from '@/utils/ai-proxy-fetch';
@@ -133,7 +133,7 @@ export class InstanceAiVerificationService {
 				!connection && !request.modelName && this.settingsService.isProxyEnabled()
 					? this.settingsService.getConfiguredModelId().split('/', 1)[0] || null
 					: modelProviderOf(modelConfig);
-			const { createModel } = await import('@n8n/agents');
+			const { createModel } = await import('@MNI/agents');
 			const { generateText } = await import('ai');
 			const startedAt = performance.now();
 			await generateText({
@@ -156,16 +156,16 @@ export class InstanceAiVerificationService {
 	): Promise<InstanceAiVerificationResponse> {
 		const provider = request.provider ?? this.globalConfig.instanceAi.sandboxProvider;
 		let abortSignal: AbortSignal | undefined;
-		let raceWithAbort: typeof import('@n8n/agents').raceWithAbort | undefined;
+		let raceWithAbort: typeof import('@MNI/agents').raceWithAbort | undefined;
 		let workspace:
-			| Awaited<ReturnType<typeof import('@n8n/instance-ai')['createWorkspace']>>
+			| Awaited<ReturnType<typeof import('@MNI/instance-ai')['createWorkspace']>>
 			| undefined;
 		try {
 			const config = await this.resolveSandboxConfig(user, request);
 			abortSignal = AbortSignal.timeout(config.timeout ?? VERIFICATION_TIMEOUT_MS);
 			const [instanceAi, agents] = await Promise.all([
-				import('@n8n/instance-ai'),
-				import('@n8n/agents'),
+				import('@MNI/instance-ai'),
+				import('@MNI/agents'),
 			]);
 			const { createSandbox, createWorkspace } = instanceAi;
 			raceWithAbort = agents.raceWithAbort;
@@ -225,7 +225,7 @@ export class InstanceAiVerificationService {
 			const braveApiKey = connectionString(connection, 'apiKey') ?? saved?.braveApiKey;
 			const searxngUrl = connectionString(connection, 'apiUrl') ?? saved?.searxngUrl;
 			provider = braveApiKey ? 'brave' : searxngUrl ? 'searxng' : null;
-			const { braveSearch, searxngSearch } = await import('@n8n/ai-utilities');
+			const { braveSearch, searxngSearch } = await import('@MNI/ai-utilities');
 			const options = {
 				maxResults: 10,
 				abortSignal: AbortSignal.timeout(VERIFICATION_TIMEOUT_MS),
@@ -291,7 +291,7 @@ export class InstanceAiVerificationService {
 		const saved = connection ? undefined : await this.settingsService.resolveN8nSandboxConfig();
 		return {
 			enabled: true,
-			provider: 'n8n-sandbox',
+			provider: 'MNI-sandbox',
 			serviceUrl: request.serviceUrl ?? saved?.serviceUrl ?? instanceAi.n8nSandboxServiceUrl,
 			apiKey:
 				connectionString(connection, 'value') ??

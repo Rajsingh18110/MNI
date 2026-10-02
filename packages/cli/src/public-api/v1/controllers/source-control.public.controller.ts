@@ -6,9 +6,9 @@ import {
 	SourceControlPushResponsePublicDto,
 	SourceControlStatusPublicDto,
 	SourceControlStatusQueryPublicDto,
-} from '@n8n/api-types';
-import { LICENSE_FEATURES } from '@n8n/constants';
-import type { AuthenticatedRequest } from '@n8n/db';
+} from '@MNI/api-types';
+import { LICENSE_FEATURES } from '@MNI/constants';
+import type { AuthenticatedRequest } from '@MNI/db';
 import {
 	ApiDescription,
 	ApiErrorResponse,
@@ -22,7 +22,7 @@ import {
 	Post,
 	PublicApiController,
 	Query,
-} from '@n8n/decorators';
+} from '@MNI/decorators';
 import type { Response } from 'express';
 
 import { BadRequestError } from '@/errors/response-errors/bad-request.error';

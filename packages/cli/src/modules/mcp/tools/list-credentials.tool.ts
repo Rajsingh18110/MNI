@@ -1,8 +1,8 @@
 import {
 	CREDENTIAL_DESCRIPTION_PREVIEW_MAX_LENGTH,
 	getCredentialDescriptionPreview,
-} from '@n8n/ai-utilities/credential-description';
-import type { ListQueryDb, ScopesField, User } from '@n8n/db';
+} from '@MNI/ai-utilities/credential-description';
+import type { ListQueryDb, ScopesField, User } from '@MNI/db';
 import z from 'zod';
 
 import type { CredentialsService } from '@/credentials/credentials.service';
@@ -11,7 +11,7 @@ import type { AiGatewayService } from '@/services/ai-gateway.service';
 import type { Telemetry } from '@/telemetry';
 
 import { toN8nConnectCoverage } from '../mcp-ai-gateway.helper';
-import { LIST_N8N_GATEWAY_SERVICES_TOOL_NAME, USER_CALLED_MCP_TOOL_EVENT } from '../mcp.constants';
+import { LIST_MNI_GATEWAY_SERVICES_TOOL_NAME, USER_CALLED_MCP_TOOL_EVENT } from '../mcp.constants';
 import type {
 	N8nConnectCoverage,
 	ToolDefinition,
@@ -59,11 +59,11 @@ const n8nConnectSchema = z
 			.describe('Credential type names that Gateway credits can provide (e.g. "openAiApi").'),
 		nodes: z
 			.array(z.string())
-			.describe('Node types covered by Gateway credits (e.g. "@n8n/n8n-nodes-langchain.openAi").'),
+			.describe('Node types covered by Gateway credits (e.g. "@MNI/MNI-nodes-langchain.openAi").'),
 	})
 	.optional()
 	.describe(
-		`Present when Gateway credits are available for this instance. Omitted otherwise. Candidate coverage only — actual eligibility for a managed credential also depends on the node action, minimum type version, and hidden properties; call ${LIST_N8N_GATEWAY_SERVICES_TOOL_NAME} for the authoritative contract.`,
+		`Present when Gateway credits are available for this instance. Omitted otherwise. Candidate coverage only — actual eligibility for a managed credential also depends on the node action, minimum type version, and hidden properties; call ${LIST_MNI_GATEWAY_SERVICES_TOOL_NAME} for the authoritative contract.`,
 	);
 
 const createOutputSchema = (descriptionsEnabled: boolean) =>

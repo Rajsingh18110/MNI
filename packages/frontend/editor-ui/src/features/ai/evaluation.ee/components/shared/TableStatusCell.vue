@@ -1,9 +1,9 @@
 <script setup lang="ts" generic="T">
-import type { BaseTextKey } from '@n8n/i18n';
+import type { BaseTextKey } from '@MNI/i18n';
 import type { TestTableColumn } from './TestTableBase.vue';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import { useRouter } from 'vue-router';
-import { N8nBadge, N8nTooltip, type BadgeVariant } from '@n8n/design-system';
+import { N8nBadge, N8nTooltip, type BadgeVariant } from '@MNI/design-system';
 defineProps<{
 	column: TestTableColumn<T>;
 	row: T & { status: string };
@@ -96,7 +96,7 @@ function getErrorTooltipUrl(column: TestTableColumn<T>, row: T): string | undefi
 		:disabled="getErrorTooltip(column, row) === undefined"
 	>
 		<template #content>
-			<div v-n8n-html="getErrorTooltip(column, row)" />
+			<div v-MNI-html="getErrorTooltip(column, row)" />
 		</template>
 		<N8nBadge :variant="statusThemeMap[row.status]" class="mr-4xs">
 			{{ statusLabelMap[row.status] }}

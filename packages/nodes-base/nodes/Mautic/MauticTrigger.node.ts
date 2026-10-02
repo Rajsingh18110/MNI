@@ -10,7 +10,7 @@ import {
 	type INodeTypeDescription,
 	type IWebhookResponseData,
 	NodeConnectionTypes,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import { parse as urlParse } from 'url';
 
 import { mauticApiRequest } from './GenericFunctions';
@@ -151,7 +151,7 @@ export class MauticTrigger implements INodeType {
 				const urlParts = urlParse(webhookUrl);
 				const webhookSecret = randomBytes(32).toString('hex');
 				const body: IDataObject = {
-					name: `n8n-webhook:${urlParts.path}`,
+					name: `MNI-webhook:${urlParts.path}`,
 					description: 'MNI webhook',
 					webhookUrl,
 					secret: webhookSecret,

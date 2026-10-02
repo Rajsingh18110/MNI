@@ -1,6 +1,6 @@
-import { UpdateSamlConfigurationDto } from '@n8n/api-types';
-import { InstanceSettingsLoaderConfig } from '@n8n/config';
-import { Container } from '@n8n/di';
+import { UpdateSamlConfigurationDto } from '@MNI/api-types';
+import { InstanceSettingsLoaderConfig } from '@MNI/config';
+import { Container } from '@MNI/di';
 
 import { BadRequestError } from '@/errors/response-errors/bad-request.error';
 import { ConflictError } from '@/errors/response-errors/conflict.error';

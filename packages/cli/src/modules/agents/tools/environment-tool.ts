@@ -1,6 +1,6 @@
-import { Tool } from '@n8n/agents/tool';
-import { GlobalConfig } from '@n8n/config';
-import { Container } from '@n8n/di';
+import { Tool } from '@MNI/agents/tool';
+import { GlobalConfig } from '@MNI/config';
+import { Container } from '@MNI/di';
 import { DateTime } from 'luxon';
 import { z } from 'zod';
 

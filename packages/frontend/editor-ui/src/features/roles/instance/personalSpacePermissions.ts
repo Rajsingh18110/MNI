@@ -1,5 +1,5 @@
-import type { BaseTextKey } from '@n8n/i18n';
-import type { Scope } from '@n8n/permissions';
+import type { BaseTextKey } from '@MNI/i18n';
+import type { Scope } from '@MNI/permissions';
 
 /**
  * The "Personal space" block of the instance role editor. Every user owns a

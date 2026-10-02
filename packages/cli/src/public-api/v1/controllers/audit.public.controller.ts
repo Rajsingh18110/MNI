@@ -1,5 +1,5 @@
-import { AuditPublicDto, GenerateAuditPublicDto, type AuditPublic } from '@n8n/api-types';
-import type { AuthenticatedRequest } from '@n8n/db';
+import { AuditPublicDto, GenerateAuditPublicDto, type AuditPublic } from '@MNI/api-types';
+import type { AuthenticatedRequest } from '@MNI/db';
 import {
 	ApiDescription,
 	ApiErrorResponse,
@@ -10,7 +10,7 @@ import {
 	Body,
 	Post,
 	PublicApiController,
-} from '@n8n/decorators';
+} from '@MNI/decorators';
 import type { Response } from 'express';
 
 import { SecurityAuditService } from '@/security-audit/security-audit.service';

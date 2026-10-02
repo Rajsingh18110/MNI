@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/unbound-method */
-import type { CredentialsEntity, OperationContext, TransactionRunner } from '@n8n/db';
-import type { DataSource, SelectQueryBuilder } from '@n8n/typeorm';
+import type { CredentialsEntity, OperationContext, TransactionRunner } from '@MNI/db';
+import type { DataSource, SelectQueryBuilder } from '@MNI/typeorm';
 import { mock, type MockProxy } from 'vitest-mock-extended';
 
 import { mockEntityManager } from '@test/mocking';
@@ -45,7 +45,7 @@ const makePublishedVersion = (): AgentHistory =>
 					type: 'node',
 					name: 'OpenAI tool',
 					node: {
-						nodeType: 'n8n-nodes-base.openAiTool',
+						nodeType: 'MNI-nodes-base.openAiTool',
 						nodeTypeVersion: 1,
 						nodeParameters: {},
 						credentials: {

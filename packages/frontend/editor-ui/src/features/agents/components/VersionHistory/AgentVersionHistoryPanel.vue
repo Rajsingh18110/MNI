@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { computed, onMounted, toRef, watch } from 'vue';
-import type { UserAction } from '@n8n/design-system';
-import { N8nHeading, N8nIconButton, N8nTooltip } from '@n8n/design-system';
-import type { IUser } from 'n8n-workflow';
-import { useI18n } from '@n8n/i18n';
+import type { UserAction } from '@MNI/design-system';
+import { N8nHeading, N8nIconButton, N8nTooltip } from '@MNI/design-system';
+import type { IUser } from 'MNI-workflow';
+import { useI18n } from '@MNI/i18n';
 import { useAgentVersionHistory } from '../../composables/useAgentVersionHistory';
 import { useAgentPermissions } from '../../composables/useAgentPermissions';
 import { useAgentPublish } from '../../composables/useAgentPublish';

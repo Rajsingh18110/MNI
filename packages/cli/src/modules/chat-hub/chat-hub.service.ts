@@ -9,14 +9,14 @@ import {
 	ChatHubConversationModel,
 	type ChatHubUpdateConversationRequest,
 	type ChatHubSessionDto,
-} from '@n8n/api-types';
-import { Logger } from '@n8n/backend-common';
-import { parseMessage } from '@n8n/chat-hub';
-import { GlobalConfig } from '@n8n/config';
-import { User } from '@n8n/db';
-import type { EntityManager } from '@n8n/db';
-import { Service } from '@n8n/di';
-import { ErrorReporter } from 'n8n-core';
+} from '@MNI/api-types';
+import { Logger } from '@MNI/backend-common';
+import { parseMessage } from '@MNI/chat-hub';
+import { GlobalConfig } from '@MNI/config';
+import { User } from '@MNI/db';
+import type { EntityManager } from '@MNI/db';
+import { Service } from '@MNI/di';
+import { ErrorReporter } from 'MNI-core';
 import {
 	CHAT_TRIGGER_NODE_TYPE,
 	OperationalError,
@@ -24,7 +24,7 @@ import {
 	type INodeCredentials,
 	type IBinaryData,
 	UnexpectedError,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { ChatExecutionManager } from '@/chat/chat-execution-manager';
 import { BadRequestError } from '@/errors/response-errors/bad-request.error';
@@ -79,7 +79,7 @@ export class ChatHubService {
 		provider: ChatHubProvider,
 		credentials: INodeCredentials,
 	): string | null {
-		if (provider === 'n8n' || provider === 'custom-agent') {
+		if (provider === 'MNI' || provider === 'custom-agent') {
 			return null;
 		}
 
@@ -124,7 +124,7 @@ export class ChatHubService {
 		const { workflow, previousMessage, message, sessionId, user, messageId, model } = opts;
 
 		if (
-			model.provider !== 'n8n' ||
+			model.provider !== 'MNI' ||
 			workflow.responseMode !== 'responseNodes' ||
 			previousMessage?.status !== 'waiting' ||
 			!previousMessage?.executionId
@@ -203,7 +203,7 @@ export class ChatHubService {
 
 	private getModelCredential(model: ChatHubConversationModel, credentials: INodeCredentials) {
 		const credentialId =
-			model.provider !== 'n8n' ? this.pickCredentialId(model.provider, credentials) : null;
+			model.provider !== 'MNI' ? this.pickCredentialId(model.provider, credentials) : null;
 
 		return credentialId;
 	}
@@ -367,7 +367,7 @@ export class ChatHubService {
 			sessionUpdates.agentId = null;
 			sessionUpdates.workflowId = null;
 
-			if (updates.agent.model.provider === 'n8n') {
+			if (updates.agent.model.provider === 'MNI') {
 				sessionUpdates.workflowId = updates.agent.model.workflowId;
 			} else if (updates.agent.model.provider === 'custom-agent') {
 				sessionUpdates.agentId = updates.agent.model.agentId;
@@ -411,7 +411,7 @@ export class ChatHubService {
 			}
 		}
 
-		if (model.provider === 'n8n') {
+		if (model.provider === 'MNI') {
 			// Find the workflow to get its name
 			const workflowEntity = await this.workflowFinderService.findWorkflowForUser(
 				model.workflowId,
@@ -619,7 +619,7 @@ export class ChatHubService {
 		} = payload;
 		const tz = timeZone ?? this.globalConfig.generic.timezone;
 
-		if (model.provider !== 'n8n') {
+		if (model.provider !== 'MNI') {
 			throw new BadRequestError('Manual execution is only supported for MNI workflow agents');
 		}
 
@@ -901,7 +901,7 @@ export class ChatHubService {
 		const { sessionId, editId, messageId, message, model, credentials, timeZone } = payload;
 		const tz = timeZone ?? this.globalConfig.generic.timezone;
 
-		if (model.provider !== 'n8n') {
+		if (model.provider !== 'MNI') {
 			throw new BadRequestError('Manual execution is only supported for MNI workflow agents');
 		}
 
@@ -1136,7 +1136,7 @@ export class ChatHubService {
 		const { sessionId, retryId, model, credentials, timeZone } = payload;
 		const tz = timeZone ?? this.globalConfig.generic.timezone;
 
-		if (model.provider !== 'n8n') {
+		if (model.provider !== 'MNI') {
 			throw new BadRequestError('Manual execution is only supported for MNI workflow agents');
 		}
 

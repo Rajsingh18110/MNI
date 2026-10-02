@@ -1,6 +1,6 @@
-import { WithCreatedAt } from '@n8n/db';
-import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryColumn } from '@n8n/typeorm';
-import type { Relation } from '@n8n/typeorm';
+import { WithCreatedAt } from '@MNI/db';
+import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryColumn } from '@MNI/typeorm';
+import type { Relation } from '@MNI/typeorm';
 
 import { AgentExecution } from './agent-execution.entity';
 import { AgentMessageEntity } from './agent-message.entity';

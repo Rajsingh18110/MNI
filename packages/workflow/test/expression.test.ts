@@ -607,9 +607,9 @@ describe('Expression', () => {
 
 			const reservedVariablePayloads: Array<[string, string]> = [
 				[
-					'`___n8n_data` declaration',
+					'`___MNI_data` declaration',
 					`={{(() => {
-						const ___n8n_data = {__sanitize: a => a};
+						const ___MNI_data = {__sanitize: a => a};
 						return 1;
 					})()}}`,
 				],
@@ -623,58 +623,58 @@ describe('Expression', () => {
 				[
 					'array destructuring declaration',
 					`={{(() => {
-						const [___n8n_data] = [{ __sanitize: (v) => v }];
+						const [___MNI_data] = [{ __sanitize: (v) => v }];
 						return 1;
 					})()}}`,
 				],
 				[
 					'object destructuring declaration',
 					`={{(() => {
-						const {a: ___n8n_data} = { a: { __sanitize: (v) => v } };
+						const {a: ___MNI_data} = { a: { __sanitize: (v) => v } };
 						return 1;
 					})()}}`,
 				],
 				[
 					'function parameter identifier',
-					`={{((___n8n_data) => {
-						return ___n8n_data;
+					`={{((___MNI_data) => {
+						return ___MNI_data;
 					})({})}}`,
 				],
 				[
 					'function parameter object pattern',
-					`={{(({a: ___n8n_data}) => {
-						return ___n8n_data;
+					`={{(({a: ___MNI_data}) => {
+						return ___MNI_data;
 					})({ a: { __sanitize: (v) => v } })}}`,
 				],
 				[
 					'function parameter array pattern',
-					`={{(([___n8n_data]) => {
-						return ___n8n_data;
+					`={{(([___MNI_data]) => {
+						return ___MNI_data;
 					})([{ __sanitize: (v) => v }])}}`,
 				],
 				[
 					'function parameter default value',
-					`={{((___n8n_data = { __sanitize: (v) => v }) => {
-						return ___n8n_data;
+					`={{((___MNI_data = { __sanitize: (v) => v }) => {
+						return ___MNI_data;
 					})()}}`,
 				],
 				[
 					'function parameter rest element',
-					`={{((...___n8n_data) => {
-						return ___n8n_data;
+					`={{((...___MNI_data) => {
+						return ___MNI_data;
 					})(1)}}`,
 				],
 				[
 					'function declaration name',
 					`={{(() => {
-						function ___n8n_data() {}
+						function ___MNI_data() {}
 						return 1;
 					})()}}`,
 				],
 				[
 					'class declaration name',
 					`={{(() => {
-						class ___n8n_data {}
+						class ___MNI_data {}
 						return 1;
 					})()}}`,
 				],
@@ -683,8 +683,8 @@ describe('Expression', () => {
 					`={{(() => {
 						try {
 							throw { a: { __sanitize: (v) => v } };
-						} catch ({ a: ___n8n_data }) {
-							return ___n8n_data;
+						} catch ({ a: ___MNI_data }) {
+							return ___MNI_data;
 						}
 					})()}}`,
 				],
@@ -693,32 +693,32 @@ describe('Expression', () => {
 					`={{(() => {
 						try {
 							throw [{ __sanitize: (v) => v }];
-						} catch ([___n8n_data]) {
-							return ___n8n_data;
+						} catch ([___MNI_data]) {
+							return ___MNI_data;
 						}
 					})()}}`,
 				],
 				[
 					'for-of object pattern declaration',
 					`={{(() => {
-						for (const { a: ___n8n_data } of [{ a: { __sanitize: (v) => v } }]) {
-							return ___n8n_data;
+						for (const { a: ___MNI_data } of [{ a: { __sanitize: (v) => v } }]) {
+							return ___MNI_data;
 						}
 					})()}}`,
 				],
 				[
 					'for-of assignment pattern target',
 					`={{(() => {
-						for ([___n8n_data] of [[{ __sanitize: (v) => v }]]) {
-							return ___n8n_data;
+						for ([___MNI_data] of [[{ __sanitize: (v) => v }]]) {
+							return ___MNI_data;
 						}
 					})()}}`,
 				],
 				[
 					'destructuring assignment target',
 					`={{(() => {
-						[___n8n_data] = [{ __sanitize: (v) => v }];
-						return ___n8n_data;
+						[___MNI_data] = [{ __sanitize: (v) => v }];
+						return ___MNI_data;
 					})()}}`,
 				],
 				[
@@ -736,9 +736,9 @@ describe('Expression', () => {
 					})()}}`,
 				],
 				[
-					'class method named `___n8n_data`',
+					'class method named `___MNI_data`',
 					`={{(() => {
-						class A { ___n8n_data(v) { return v } }
+						class A { ___MNI_data(v) { return v } }
 						return 1;
 					})()}}`,
 				],
@@ -750,10 +750,10 @@ describe('Expression', () => {
 					})()}}`,
 				],
 				[
-					'class field with a computed string-literal key `___n8n_data`',
+					'class field with a computed string-literal key `___MNI_data`',
 					`={{(() => {
-						class A { ['___n8n_data'] = 1 }
-						return new A()['___n8n_data'];
+						class A { ['___MNI_data'] = 1 }
+						return new A()['___MNI_data'];
 					})()}}`,
 				],
 				[
@@ -1076,7 +1076,7 @@ describe('Expression', () => {
 					{
 						id: '1',
 						name: 'TestNode',
-						type: 'n8n-nodes-base.set',
+						type: 'MNI-nodes-base.set',
 						typeVersion: 1,
 						position: [0, 0],
 						parameters: {},
@@ -1120,7 +1120,7 @@ describe('Expression', () => {
 					{
 						id: '1',
 						name: 'TestNode',
-						type: 'n8n-nodes-base.set',
+						type: 'MNI-nodes-base.set',
 						typeVersion: 1,
 						position: [0, 0],
 						parameters: {},
@@ -1167,7 +1167,7 @@ describe('Expression', () => {
 					{
 						id: 'source-id',
 						name: 'source',
-						type: 'n8n-nodes-base.set',
+						type: 'MNI-nodes-base.set',
 						typeVersion: 1,
 						position: [0, 0],
 						parameters: {},
@@ -1175,7 +1175,7 @@ describe('Expression', () => {
 					{
 						id: 'consumer-id',
 						name: 'consumer',
-						type: 'n8n-nodes-base.set',
+						type: 'MNI-nodes-base.set',
 						typeVersion: 1,
 						position: [200, 0],
 						parameters: {},
@@ -1306,7 +1306,7 @@ describe('Expression', () => {
 				{
 					id: 'source-id',
 					name: 'source',
-					type: 'n8n-nodes-base.set',
+					type: 'MNI-nodes-base.set',
 					typeVersion: 1,
 					position: [0, 0],
 					parameters: {},
@@ -1314,7 +1314,7 @@ describe('Expression', () => {
 				{
 					id: 'consumer-id',
 					name: 'consumer',
-					type: 'n8n-nodes-base.set',
+					type: 'MNI-nodes-base.set',
 					typeVersion: 1,
 					position: [200, 0],
 					parameters: {},
@@ -1402,7 +1402,7 @@ describe('Expression', () => {
 				{
 					id: 'node-id',
 					name: 'node',
-					type: 'n8n-nodes-base.set',
+					type: 'MNI-nodes-base.set',
 					typeVersion: 1,
 					position: [0, 0],
 					parameters: {},
@@ -1462,7 +1462,7 @@ describe('Expression', () => {
 				{
 					id: 'node-id',
 					name: 'node',
-					type: 'n8n-nodes-base.set',
+					type: 'MNI-nodes-base.set',
 					typeVersion: 1,
 					position: [0, 0],
 					parameters: {},
@@ -1518,7 +1518,7 @@ describe('Expression', () => {
 					{
 						id: '1',
 						name: 'TestNode',
-						type: 'n8n-nodes-base.set',
+						type: 'MNI-nodes-base.set',
 						typeVersion: 1,
 						position: [0, 0],
 						parameters: {},

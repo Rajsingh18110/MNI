@@ -1,4 +1,4 @@
-import { isEnvFeatureEnabled } from '@n8n/backend-common';
+import { isEnvFeatureEnabled } from '@MNI/backend-common';
 
 /**
  * Whether encryption-key rotation is enabled: with it on, `getActiveKey()`
@@ -11,5 +11,5 @@ import { isEnvFeatureEnabled } from '@n8n/backend-common';
  * `EncryptionKeyManagerModule`).
  */
 export function isKeyRotationEnabled(): boolean {
-	return isEnvFeatureEnabled('N8N_ENV_FEAT_ENCRYPTION_KEY_ROTATION');
+	return isEnvFeatureEnabled('MNI_ENV_FEAT_ENCRYPTION_KEY_ROTATION');
 }

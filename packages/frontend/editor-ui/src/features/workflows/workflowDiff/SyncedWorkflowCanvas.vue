@@ -11,7 +11,7 @@ import type { CanvasLayoutEvent } from '@/features/workflows/canvas/composables/
 import { useVueFlow } from '@vue-flow/core';
 import { watch } from 'vue';
 import Canvas from '@/features/workflows/canvas/components/Canvas.vue';
-import { createEventBus } from '@n8n/utils/event-bus';
+import { createEventBus } from '@MNI/utils/event-bus';
 
 const props = defineProps<{
 	id: string;

@@ -3,14 +3,14 @@ import userEvent from '@testing-library/user-event';
 import { vi } from 'vitest';
 import { createTestingPinia } from '@pinia/testing';
 import { setActivePinia } from 'pinia';
-import type { SecretProviderConnection } from '@n8n/api-types';
+import type { SecretProviderConnection } from '@MNI/api-types';
 import ProjectExternalSecrets from './ProjectExternalSecrets.vue';
 import { createComponentRenderer } from '@/__tests__/render';
 import { useProjectsStore } from '../projects.store';
 import { useUIStore } from '@/app/stores/ui.store';
-import { ROLE } from '@n8n/api-types';
+import { ROLE } from '@MNI/api-types';
 import { SECRETS_PROVIDER_CONNECTION_MODAL_KEY } from '@/app/constants';
-import { useRBACStore } from '@n8n/stores/rbac.store';
+import { useRBACStore } from '@MNI/stores/rbac.store';
 
 // Mock vue-router
 const mockRouterPush = vi.fn();
@@ -29,7 +29,7 @@ vi.mock('vue-router', async () => {
 });
 
 // Mock design system components
-vi.mock('@n8n/design-system', async (importOriginal) => {
+vi.mock('@MNI/design-system', async (importOriginal) => {
 	const original = await importOriginal<object>();
 	return {
 		...original,
@@ -117,14 +117,14 @@ vi.mock(
 	}),
 );
 
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: vi.fn(() => ({
 		showError: vi.fn(),
 		showMessage: vi.fn(),
 	})),
 }));
 
-vi.mock('@n8n/stores/settings.store', () => ({
+vi.mock('@MNI/stores/settings.store', () => ({
 	useSettingsStore: vi.fn(() => ({
 		moduleSettings: {
 			'external-secrets': {
@@ -431,7 +431,7 @@ describe('ProjectExternalSecrets', () => {
 
 	describe('Error Handling', () => {
 		it('should show error toast when API call fails', async () => {
-			const { useToast } = await import('@n8n/composables/useToast');
+			const { useToast } = await import('@MNI/composables/useToast');
 			const showErrorSpy = vi.fn();
 			vi.mocked(useToast).mockReturnValue({
 				showError: showErrorSpy,
@@ -450,7 +450,7 @@ describe('ProjectExternalSecrets', () => {
 		});
 
 		it('should not fetch data when feature is disabled', async () => {
-			const { useSettingsStore } = await import('@n8n/stores/settings.store');
+			const { useSettingsStore } = await import('@MNI/stores/settings.store');
 			vi.mocked(useSettingsStore).mockReturnValue({
 				moduleSettings: {
 					'external-secrets': {

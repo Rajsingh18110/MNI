@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 import { computed, onMounted, onUnmounted, ref, watch } from 'vue';
 import { storeToRefs } from 'pinia';
-import type { WorkflowReviewRequestState } from '@n8n/api-types';
-import { useI18n } from '@n8n/i18n';
+import type { WorkflowReviewRequestState } from '@MNI/api-types';
+import { useI18n } from '@MNI/i18n';
 import {
 	N8nEmptyState,
 	N8nHeading,
@@ -10,13 +10,13 @@ import {
 	N8nResizeWrapper,
 	type EmptyStateIconCards,
 	type IconOrEmoji,
-} from '@n8n/design-system';
+} from '@MNI/design-system';
 import { useRoute, useRouter } from 'vue-router';
 import PageViewLayout from '@/app/components/layouts/PageViewLayout.vue';
 import { useDocumentTitle } from '@/app/composables/useDocumentTitle';
-import { useResizablePanel } from '@n8n/design-system';
+import { useResizablePanel } from '@MNI/design-system';
 import { LOCAL_STORAGE_WORKFLOW_REVIEW_SIDEBAR_WIDTH } from '@/app/constants/localStorage';
-import { useToast } from '@n8n/composables/useToast';
+import { useToast } from '@MNI/composables/useToast';
 
 import WorkflowReviewDetailTabs from '../components/WorkflowReviewDetailTabs.vue';
 import type { WorkflowReviewDetailTab } from '../components/WorkflowReviewDetailTabs.vue';

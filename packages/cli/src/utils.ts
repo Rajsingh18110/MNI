@@ -1,5 +1,5 @@
-import { CliWorkflowOperationError, isHitlToolType, SubworkflowOperationError } from 'n8n-workflow';
-import type { INode, INodeType, Workflow } from 'n8n-workflow';
+import { CliWorkflowOperationError, isHitlToolType, SubworkflowOperationError } from 'MNI-workflow';
+import type { INode, INodeType, Workflow } from 'MNI-workflow';
 
 import { STARTING_NODES } from '@/constants';
 
@@ -32,7 +32,7 @@ export function satisfiesToolCapability(syntheticToolName: string, nodeType: INo
 function findWorkflowStart(executionMode: 'integrated' | 'cli') {
 	return function (nodes: INode[]) {
 		const executeWorkflowTriggerNode = nodes.find(
-			(node) => node.type === 'n8n-nodes-base.executeWorkflowTrigger',
+			(node) => node.type === 'MNI-nodes-base.executeWorkflowTrigger',
 		);
 
 		if (executeWorkflowTriggerNode) return executeWorkflowTriggerNode;
@@ -167,7 +167,7 @@ export function isObject(value: unknown): value is Record<string, unknown> {
 }
 
 /**
- * When N8N_EXPRESSION_ENGINE=vm, expressions run in an isolate that must be acquired
+ * When MNI_EXPRESSION_ENGINE=vm, expressions run in an isolate that must be acquired
  * for this workflow before any code resolves {{ }} in parameters or credentials.
  */
 export async function withExpressionIsolate<T>(

@@ -1,5 +1,5 @@
-import { makeRestApiRequest } from '@n8n/rest-api-client';
-import type { IRestApiContext } from '@n8n/rest-api-client';
+import { makeRestApiRequest } from '@MNI/rest-api-client';
+import type { IRestApiContext } from '@MNI/rest-api-client';
 
 import type {
 	DataTableColumnCreatePayload,
@@ -7,8 +7,8 @@ import type {
 	DataTableColumn,
 	DataTableRow,
 } from '@/features/core/dataTable/dataTable.types';
-import type { DataTablesSizeResult } from 'n8n-workflow';
-import type { DataTableListSortBy } from '@n8n/api-types';
+import type { DataTablesSizeResult } from 'MNI-workflow';
+import type { DataTableListSortBy } from '@MNI/api-types';
 
 export const fetchDataTablesApi = async (
 	context: IRestApiContext,

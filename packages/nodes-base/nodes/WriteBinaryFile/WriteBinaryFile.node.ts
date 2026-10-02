@@ -1,10 +1,10 @@
-import { BINARY_ENCODING, NodeConnectionTypes } from 'n8n-workflow';
+import { BINARY_ENCODING, NodeConnectionTypes } from 'MNI-workflow';
 import type {
 	IExecuteFunctions,
 	INodeExecutionData,
 	INodeType,
 	INodeTypeDescription,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import { constants } from 'node:fs';
 import type { Readable } from 'stream';
 

@@ -16,7 +16,7 @@ export interface CustomToolEntry {
 	descriptor: ToolDescriptor;
 }
 
-import type { AgentVersionDto, AgentSkill, AgentJsonConfig } from '@n8n/api-types';
+import type { AgentVersionDto, AgentSkill, AgentJsonConfig } from '@MNI/api-types';
 import type { ProjectSharingData } from '@/features/collaboration/projects/projects.types';
 
 export type AgentVersion = AgentVersionDto;

@@ -2,11 +2,11 @@ import type {
 	BreakingChangeAffectedWorkflow,
 	BreakingChangeRecommendation,
 	BreakingChangeWorkflowIssue,
-} from '@n8n/api-types';
-import type { WorkflowEntity } from '@n8n/db';
-import { BreakingChangeRule } from '@n8n/decorators';
-import type { INode, INodeParameters } from 'n8n-workflow';
-import { SEND_AND_WAIT_OPERATION } from 'n8n-workflow';
+} from '@MNI/api-types';
+import type { WorkflowEntity } from '@MNI/db';
+import { BreakingChangeRule } from '@MNI/decorators';
+import type { INode, INodeParameters } from 'MNI-workflow';
+import { SEND_AND_WAIT_OPERATION } from 'MNI-workflow';
 
 import type {
 	BatchWorkflowDetectionReport,
@@ -34,30 +34,30 @@ export class WaitNodeSubworkflowRule implements IBreakingChangeBatchWorkflowRule
 		{
 			// Node types that always wait (no operation check needed)
 			nodeTypes: [
-				'n8n-nodes-base.wait',
-				'n8n-nodes-base.form',
-				'@n8n/n8n-nodes-langchain.chat',
-				'n8n-nodes-base.respondToWebhook',
+				'MNI-nodes-base.wait',
+				'MNI-nodes-base.form',
+				'@MNI/MNI-nodes-langchain.chat',
+				'MNI-nodes-base.respondToWebhook',
 			],
 		},
 		{
 			// Node types that only wait when using sendAndWait operation
 			nodeTypes: [
-				'n8n-nodes-base.slack',
-				'n8n-nodes-base.telegram',
-				'n8n-nodes-base.googleChat',
-				'n8n-nodes-base.gmail',
-				'n8n-nodes-base.emailSend',
-				'n8n-nodes-base.whatsApp',
-				'n8n-nodes-base.microsoftTeams',
-				'n8n-nodes-base.microsoftOutlook',
-				'n8n-nodes-base.discord',
+				'MNI-nodes-base.slack',
+				'MNI-nodes-base.telegram',
+				'MNI-nodes-base.googleChat',
+				'MNI-nodes-base.gmail',
+				'MNI-nodes-base.emailSend',
+				'MNI-nodes-base.whatsApp',
+				'MNI-nodes-base.microsoftTeams',
+				'MNI-nodes-base.microsoftOutlook',
+				'MNI-nodes-base.discord',
 			],
 			operation: SEND_AND_WAIT_OPERATION,
 		},
 		{
 			// Node types that wait when using dispatchAndWait operation
-			nodeTypes: ['n8n-nodes-base.github'],
+			nodeTypes: ['MNI-nodes-base.github'],
 			operation: 'dispatchAndWait',
 		},
 	];
@@ -103,7 +103,7 @@ export class WaitNodeSubworkflowRule implements IBreakingChangeBatchWorkflowRule
 	): Promise<void> {
 		// Check if this workflow IS a sub-workflow with waiting nodes
 		const hasExecuteWorkflowTrigger =
-			(nodesGroupedByType.get('n8n-nodes-base.executeWorkflowTrigger')?.length ?? 0) > 0;
+			(nodesGroupedByType.get('MNI-nodes-base.executeWorkflowTrigger')?.length ?? 0) > 0;
 		const hasWaitingNodes = this.findWaitingNodes(nodesGroupedByType).length > 0;
 
 		if (hasExecuteWorkflowTrigger && hasWaitingNodes) {
@@ -111,7 +111,7 @@ export class WaitNodeSubworkflowRule implements IBreakingChangeBatchWorkflowRule
 		}
 
 		// Check if this workflow CALLS sub-workflows with waitForSubWorkflow enabled
-		const executeWorkflowNodes = nodesGroupedByType.get('n8n-nodes-base.executeWorkflow') ?? [];
+		const executeWorkflowNodes = nodesGroupedByType.get('MNI-nodes-base.executeWorkflow') ?? [];
 		for (const node of executeWorkflowNodes) {
 			// Check if waitForSubWorkflow is enabled (default is true)
 			const options = node.parameters.options as INodeParameters | undefined;

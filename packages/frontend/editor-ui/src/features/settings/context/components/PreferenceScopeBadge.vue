@@ -1,9 +1,9 @@
 <script lang="ts" setup>
 import { computed } from 'vue';
-import { useI18n } from '@n8n/i18n';
-import { N8nBadge, N8nIcon, N8nText } from '@n8n/design-system';
-import type { IconOrEmoji } from '@n8n/design-system';
-import { useUsersStore } from '@n8n/stores/users.store';
+import { useI18n } from '@MNI/i18n';
+import { N8nBadge, N8nIcon, N8nText } from '@MNI/design-system';
+import type { IconOrEmoji } from '@MNI/design-system';
+import { useUsersStore } from '@MNI/stores/users.store';
 
 import { DEFAULT_PROJECT_ICON } from '@/features/collaboration/projects/projects.constants';
 

@@ -4,11 +4,11 @@ import {
 	getPersonalProject,
 	getAllSharedWorkflows,
 	getAllWorkflows,
-} from '@n8n/backend-test-utils';
-import { GlobalConfig } from '@n8n/config';
-import { WorkflowPublishHistoryRepository, WorkflowHistoryRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
-import type { INodeType } from 'n8n-workflow';
+} from '@MNI/backend-test-utils';
+import { GlobalConfig } from '@MNI/config';
+import { WorkflowPublishHistoryRepository, WorkflowHistoryRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
+import type { INodeType } from 'MNI-workflow';
 import { nanoid } from 'nanoid';
 
 import '@/zod-alias-support';
@@ -495,7 +495,7 @@ describe('--activeState flag', () => {
 		);
 
 		mockNodeTypes.getByNameAndVersion.mockImplementation((nodeType) => {
-			if (nodeType === 'n8n-nodes-base.webhook') {
+			if (nodeType === 'MNI-nodes-base.webhook') {
 				return {
 					description: { webhooks: undefined, properties: [] },
 					webhook: vi.fn(),

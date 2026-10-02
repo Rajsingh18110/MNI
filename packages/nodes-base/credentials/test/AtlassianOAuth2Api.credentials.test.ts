@@ -1,5 +1,5 @@
-import type { INodeProperties } from 'n8n-workflow';
-import { NodeHelpers } from 'n8n-workflow';
+import type { INodeProperties } from 'MNI-workflow';
+import { NodeHelpers } from 'MNI-workflow';
 
 import { AtlassianOAuth2Api } from '../AtlassianOAuth2Api.credentials';
 import { OAuth2Api } from '../OAuth2Api.credentials';

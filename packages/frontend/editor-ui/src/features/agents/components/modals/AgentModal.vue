@@ -10,8 +10,8 @@ import {
 	N8nInlineTextEdit,
 	N8nText,
 	type DialogSize,
-} from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+} from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 import { FocusScope } from 'reka-ui';
 import { computed, nextTick, useSlots, useTemplateRef } from 'vue';
 
@@ -225,7 +225,7 @@ function onOpenAutoFocus(event: Event) {
 </template>
 
 <style module lang="scss">
-@use '@n8n/design-system/css/mixins/mixins' as scrollbar-mixins;
+@use '@MNI/design-system/css/mixins/mixins' as scrollbar-mixins;
 
 .header {
 	display: flex;
@@ -315,7 +315,7 @@ function onOpenAutoFocus(event: Event) {
 	@include scrollbar-mixins.scroll-bar;
 }
 
-.body :global(.n8n-markdown) {
+.body :global(.MNI-markdown) {
 	@include scrollbar-mixins.scroll-bar;
 }
 

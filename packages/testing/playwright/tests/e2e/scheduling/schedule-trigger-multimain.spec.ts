@@ -1,4 +1,4 @@
-import { sleep } from '@n8n/utils/sleep';
+import { sleep } from '@MNI/utils/sleep';
 
 import { expectScheduleTriggerFires } from './schedule-trigger-helpers';
 import { makeScheduleTriggerWorkflow } from './schedule-trigger-workflow';
@@ -69,9 +69,9 @@ test.describe(
 			// Stop main-1. There is no leader, so the survivor (main-2) is already
 			// competing for the same ticks and its sweep/executor keep going; any tick
 			// main-1 had claimed but not completed is reclaimed once its lease expires.
-			const [stopped] = n8nContainer.findContainers(/-n8n-main-1$/);
+			const [stopped] = n8nContainer.findContainers(/-MNI-main-1$/);
 			expect(stopped, 'main-1 container should be found').toBeDefined();
-			await n8nContainer.stopContainer(/-n8n-main-1$/);
+			await n8nContainer.stopContainer(/-MNI-main-1$/);
 
 			// Query the survivor directly rather than via the load balancer, which
 			// keeps routing a share of requests to the stopped main until it drops it.

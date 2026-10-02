@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 
 import {
 	N8nBadge,
@@ -10,9 +10,9 @@ import {
 	N8nTooltip,
 	type IconName,
 	type SelectSize,
-} from '@n8n/design-system';
+} from '@MNI/design-system';
 import { nextTick, ref, computed } from 'vue';
-import type { PermissionsRecord } from '@n8n/permissions';
+import type { PermissionsRecord } from '@MNI/permissions';
 import type { ProjectSharingData } from '@/features/collaboration/projects/projects.types';
 
 export type CredentialOption = {
@@ -243,7 +243,7 @@ const onCreateNewCredential = async () => {
 	grid-template-areas: 'control';
 	width: 100%;
 
-	> :global(.n8n-select),
+	> :global(.MNI-select),
 	.balanceIndicator {
 		grid-area: control;
 	}

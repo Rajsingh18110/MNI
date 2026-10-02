@@ -1,6 +1,6 @@
-import { Time } from '@n8n/constants';
-import { intervalFromSeconds, SystemTask } from '@n8n/decorators';
-import type { SystemTaskEffects, SystemTaskPlacement, SystemTaskSchedule } from '@n8n/decorators';
+import { Time } from '@MNI/constants';
+import { intervalFromSeconds, SystemTask } from '@MNI/decorators';
+import type { SystemTaskEffects, SystemTaskPlacement, SystemTaskSchedule } from '@MNI/decorators';
 
 import { InsightsCompactionService } from './insights-compaction.service';
 import { InsightsConfig } from './insights.config';

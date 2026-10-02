@@ -9,7 +9,7 @@
  * check that is superlinear in the chain length and would otherwise dominate.
  */
 import { describe } from 'vitest';
-import { Workflow, WorkflowDataProxy } from 'n8n-workflow';
+import { Workflow, WorkflowDataProxy } from 'MNI-workflow';
 import type {
 	IConnections,
 	IExecuteData,
@@ -19,7 +19,7 @@ import type {
 	IPairedItemData,
 	IRunExecutionData,
 	ITaskData,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { defineBench } from '../bench-options';
 
@@ -49,7 +49,7 @@ function buildChain({ widths, pairing }: ChainSpec) {
 		nodes.push({
 			id: name,
 			name,
-			type: 'n8n-nodes-base.noOp',
+			type: 'MNI-nodes-base.noOp',
 			typeVersion: 1,
 			position: [d * 100, 0],
 			parameters: {},
@@ -123,7 +123,7 @@ function diamondProxy(diamonds: number) {
 		nodes.push({
 			id: name,
 			name,
-			type: 'n8n-nodes-base.noOp',
+			type: 'MNI-nodes-base.noOp',
 			typeVersion: 1,
 			position: [nodes.length * 100, 0],
 			parameters: {},

@@ -1,8 +1,8 @@
 import { describe, it, expect, beforeEach } from 'vitest';
 import { setActivePinia } from 'pinia';
 import { createTestingPinia } from '@pinia/testing';
-import type { ICredentialType, INodeTypeDescription } from 'n8n-workflow';
-import { NodeConnectionTypes } from 'n8n-workflow';
+import type { ICredentialType, INodeTypeDescription } from 'MNI-workflow';
+import { NodeConnectionTypes } from 'MNI-workflow';
 
 import type { INodeUi } from '@/Interface';
 import { mockedStore } from '@/__tests__/utils';
@@ -19,7 +19,7 @@ const openAiApiCredentialType = {
 
 const openAiNodeType = {
 	displayName: 'OpenAI',
-	name: '@n8n/n8n-nodes-langchain.openAi',
+	name: '@MNI/MNI-nodes-langchain.openAi',
 	group: ['transform'],
 	version: 1,
 	description: '',
@@ -48,7 +48,7 @@ function createNode(overrides: Partial<INodeUi> = {}): INodeUi {
 	return {
 		id: 'node-1',
 		name: 'OpenAI',
-		type: '@n8n/n8n-nodes-langchain.openAi',
+		type: '@MNI/MNI-nodes-langchain.openAi',
 		typeVersion: 1,
 		position: [0, 0],
 		parameters: {},
@@ -135,11 +135,11 @@ describe('getAutoSelectedCredential', () => {
 
 	it('returns undefined for a node type without credentials', () => {
 		nodeTypesStore.setNodeTypes([
-			{ ...openAiNodeType, name: 'n8n-nodes-base.noOp', credentials: undefined },
+			{ ...openAiNodeType, name: 'MNI-nodes-base.noOp', credentials: undefined },
 		]);
 		credentialsStore.usableCredentials = { older: createCredential() };
 
-		const node = createNode({ type: 'n8n-nodes-base.noOp' });
+		const node = createNode({ type: 'MNI-nodes-base.noOp' });
 
 		expect(getAutoSelectedCredential(node)).toBeUndefined();
 	});

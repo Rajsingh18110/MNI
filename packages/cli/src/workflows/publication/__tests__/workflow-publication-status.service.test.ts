@@ -3,7 +3,7 @@ import type {
 	WorkflowPublicationOutboxRepository,
 	WorkflowPublicationTriggerStatus,
 	WorkflowPublicationTriggerStatusRepository,
-} from '@n8n/db';
+} from '@MNI/db';
 import { mock } from 'vitest-mock-extended';
 
 import { WorkflowPublicationStatusService } from '@/workflows/publication/workflow-publication-status.service';

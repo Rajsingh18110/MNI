@@ -1,5 +1,5 @@
-import type { CreatePromotionProviderDto, UpdatePromotionProviderDto } from '@n8n/api-types';
-import type { Cipher } from 'n8n-core';
+import type { CreatePromotionProviderDto, UpdatePromotionProviderDto } from '@MNI/api-types';
+import type { Cipher } from 'MNI-core';
 import { mock } from 'vitest-mock-extended';
 
 import { BadRequestError } from '@/errors/response-errors/bad-request.error';

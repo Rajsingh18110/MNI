@@ -1,15 +1,15 @@
-import type { IConnection, IConnections, IWorkflowGroup } from 'n8n-workflow';
+import type { IConnection, IConnections, IWorkflowGroup } from 'MNI-workflow';
 import { computed, h } from 'vue';
 import type { NotificationHandle } from 'element-plus';
 import cloneDeep from 'lodash/cloneDeep';
 import uniq from 'lodash/uniq';
 
-import { useI18n, type BaseTextKey } from '@n8n/i18n';
+import { useI18n, type BaseTextKey } from '@MNI/i18n';
 import {
 	useSelectionValidation,
 	type GroupValidationResult,
 } from '@/app/composables/useSelectionValidation';
-import { useToast } from '@n8n/composables/useToast';
+import { useToast } from '@MNI/composables/useToast';
 import {
 	createWorkflowDocumentId,
 	useWorkflowDocumentStore,

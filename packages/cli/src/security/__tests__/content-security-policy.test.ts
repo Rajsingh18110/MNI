@@ -1,10 +1,10 @@
-import type { Logger } from '@n8n/backend-common';
+import type { Logger } from '@MNI/backend-common';
 import type {
 	ContentSecurityPolicyReportOnlySetting,
 	ContentSecurityPolicySetting,
-} from '@n8n/config';
-import { DEFAULT_CONTENT_SECURITY_POLICY } from '@n8n/config';
-import { NONCE_PLACEHOLDER } from '@n8n/constants';
+} from '@MNI/config';
+import { DEFAULT_CONTENT_SECURITY_POLICY } from '@MNI/config';
+import { NONCE_PLACEHOLDER } from '@MNI/constants';
 import { mock } from 'vitest-mock-extended';
 
 import type { ContentSecurityPolicies } from '../content-security-policy';
@@ -19,8 +19,8 @@ beforeEach(() => {
 	vi.clearAllMocks();
 });
 
-// `@n8n/config` turns each env var into these settings on its own; see
-// `packages/@n8n/config/test/content-security-policy.test.ts` for that half.
+// `@MNI/config` turns each env var into these settings on its own; see
+// `packages/@MNI/config/test/content-security-policy.test.ts` for that half.
 describe('resolveContentSecurityPolicies', () => {
 	const resolve = (
 		policy: ContentSecurityPolicySetting,

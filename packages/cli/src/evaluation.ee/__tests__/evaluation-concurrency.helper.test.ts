@@ -1,4 +1,4 @@
-import type { ExecutionsConfig } from '@n8n/config';
+import type { ExecutionsConfig } from '@MNI/config';
 import { mock } from 'vitest-mock-extended';
 
 import {
@@ -8,7 +8,7 @@ import {
 } from '@/evaluation.ee/evaluation-concurrency.helper';
 import type { License } from '@/license';
 
-const ENV_VAR = 'N8N_CONCURRENCY_EVALUATION_LIMIT';
+const ENV_VAR = 'MNI_CONCURRENCY_EVALUATION_LIMIT';
 const QUOTA_KEY = 'quota:evaluations:concurrencyLimit';
 
 const buildConfig = (evaluationLimit: number): ExecutionsConfig =>

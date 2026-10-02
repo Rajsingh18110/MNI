@@ -5,8 +5,8 @@ import type {
 	INodePropertyOptions,
 	ResourceMapperField,
 	ResourceMapperFields,
-} from 'n8n-workflow';
-import { NodeOperationError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeOperationError } from 'MNI-workflow';
 
 import { apiRequest } from '../transport';
 

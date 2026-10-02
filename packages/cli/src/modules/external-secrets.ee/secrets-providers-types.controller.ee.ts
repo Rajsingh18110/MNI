@@ -1,7 +1,7 @@
-import type { SecretProviderTypeResponse } from '@n8n/api-types';
-import { Logger } from '@n8n/backend-common';
-import type { AuthenticatedRequest } from '@n8n/db';
-import { Get, Middleware, Param, RestController } from '@n8n/decorators';
+import type { SecretProviderTypeResponse } from '@MNI/api-types';
+import { Logger } from '@MNI/backend-common';
+import type { AuthenticatedRequest } from '@MNI/db';
+import { Get, Middleware, Param, RestController } from '@MNI/decorators';
 import type { NextFunction, Request, Response } from 'express';
 
 import { ForbiddenError } from '@/errors/response-errors/forbidden.error';

@@ -1,7 +1,7 @@
 import { setActivePinia } from 'pinia';
 import { createTestingPinia } from '@pinia/testing';
 import { mock } from 'vitest-mock-extended';
-import { STORES } from '@n8n/stores';
+import { STORES } from '@MNI/stores';
 import {
 	createTestNode,
 	createTestNodeProperties,
@@ -124,7 +124,7 @@ describe('useWorkflowNormalization', () => {
 			const workflow = createTestWorkflow({
 				nodes: [
 					createTestNode({
-						type: 'n8n-nodes-community.unknown',
+						type: 'MNI-nodes-community.unknown',
 						parameters: { custom: 'value' },
 					}),
 				],

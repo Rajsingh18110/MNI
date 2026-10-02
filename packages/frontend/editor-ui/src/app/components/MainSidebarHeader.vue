@@ -11,12 +11,12 @@ import {
 	N8nIcon,
 	N8nIconButton,
 	N8nNavigationDropdown,
-} from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+} from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 import { VIEWS } from '@/app/constants';
 import { useSourceControlStore } from '@/features/integrations/sourceControl.ee/sourceControl.store';
 import KeyboardShortcutTooltip from '@/app/components/KeyboardShortcutTooltip.vue';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { useGlobalEntityCreation } from '@/app/composables/useGlobalEntityCreation';
 defineProps<{
 	isCollapsed: boolean;
@@ -79,7 +79,7 @@ const {
 						<I18nT keypath="readOnlyEnv.tooltip" scope="global">
 							<template #link>
 								<N8nLink
-									to="https://docs.n8n.io/source-control-environments/setup/#step-4-connect-n8n-and-configure-your-instance"
+									to="https://docs.n8n.io/source-control-environments/setup/#step-4-connect-MNI-and-configure-your-instance"
 									size="small"
 								>
 									{{ i18n.baseText('readOnlyEnv.tooltip.link') }}
@@ -104,7 +104,7 @@ const {
 			@select="handleMenuSelect"
 		>
 			<N8nIconButton
-				class="n8n-button--highlight"
+				class="MNI-button--highlight"
 				variant="ghost"
 				size="small"
 				icon="plus"
@@ -168,7 +168,7 @@ const {
 			:shortcut="{ keys: ['k'], metaKey: true }"
 		>
 			<N8nIconButton
-				class="n8n-button--highlight"
+				class="MNI-button--highlight"
 				variant="ghost"
 				size="small"
 				icon="search"
@@ -189,7 +189,7 @@ const {
 		>
 			<N8nIconButton
 				id="toggle-sidebar-button"
-				class="n8n-button--highlight"
+				class="MNI-button--highlight"
 				variant="ghost"
 				size="small"
 				icon="panel-left"

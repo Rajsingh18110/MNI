@@ -6,8 +6,8 @@
  * manifest fields: changing one produces a new app package either way.
  */
 import { computed, ref } from 'vue';
-import { N8nCollapsiblePanel, N8nIcon, N8nSwitch2, N8nText } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+import { N8nCollapsiblePanel, N8nIcon, N8nSwitch2, N8nText } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 
 export interface TeamsAvailability {
 	teamChannels: boolean;

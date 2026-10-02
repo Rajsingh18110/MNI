@@ -1,5 +1,5 @@
 import { useVueFlow, type GraphNode, type VueFlowStore } from '@vue-flow/core';
-import { NodeConnectionTypes } from 'n8n-workflow';
+import { NodeConnectionTypes } from 'MNI-workflow';
 import { computed, ref, shallowRef } from 'vue';
 import {
 	checkOverlap,
@@ -275,7 +275,7 @@ describe('useCanvasLayout', () => {
 				createCanvasGraphNode({
 					id: 'if',
 					position: { x: -64, y: -48 },
-					data: { type: 'n8n-nodes-base.if' },
+					data: { type: 'MNI-nodes-base.if' },
 				}),
 				createCanvasGraphNode({ id: 'true', position: { x: 160, y: trueY } }),
 				createCanvasGraphNode({ id: 'false', position: { x: 160, y: falseY } }),
@@ -513,7 +513,7 @@ describe('useCanvasLayout', () => {
 				id,
 				name: id,
 				position: [position.x, position.y],
-				type: 'n8n-nodes-base.noOp',
+				type: 'MNI-nodes-base.noOp',
 				typeVersion: 1,
 				parameters: {},
 			} as INodeUi;

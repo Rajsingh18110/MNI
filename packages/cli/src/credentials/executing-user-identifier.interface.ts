@@ -1,4 +1,4 @@
-import type { ICredentialContext } from 'n8n-workflow';
+import type { ICredentialContext } from 'MNI-workflow';
 
 /**
  * Resolves the MNI user an established identity carrier represents, best-effort.

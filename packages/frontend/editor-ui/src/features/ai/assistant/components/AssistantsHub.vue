@@ -2,8 +2,8 @@
 import { useBuilderStore } from '@/features/ai/assistant/builder.store';
 import { useChatPanelStore } from '@/features/ai/assistant/chatPanel.store';
 import { useAssistantStore } from '@/features/ai/assistant/assistant.store';
-import { useSettingsStore } from '@n8n/stores/settings.store';
-import { useDebounce } from '@n8n/composables/useDebounce';
+import { useSettingsStore } from '@MNI/stores/settings.store';
+import { useDebounce } from '@MNI/composables/useDebounce';
 import { ASK_AI_SLIDE_IN_DURATION_MS, ASK_AI_SLIDE_OUT_DURATION_MS } from '@/app/constants';
 import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue';
 import AskAssistantBuild from './Agent/AskAssistantBuild.vue';
@@ -11,7 +11,7 @@ import AskAssistantChat from './Chat/AskAssistantChat.vue';
 import AskModeCoachmark from './AskModeCoachmark.vue';
 import { useAskModeCoachmark } from '../composables/useAskModeCoachmark';
 
-import { N8nResizeWrapper } from '@n8n/design-system';
+import { N8nResizeWrapper } from '@MNI/design-system';
 import HubSwitcher from '@/features/ai/assistant/components/HubSwitcher.vue';
 import { useRoute } from 'vue-router';
 import { useWorkflowId } from '@/app/composables/useWorkflowId';

@@ -12,16 +12,16 @@ import type {
 } from '@/features/execution/executions/executions.types';
 import { DEFAULT_NEW_WORKFLOW_NAME, DEFAULT_SETTINGS } from '@/app/constants';
 import { isEmpty } from '@/app/utils/typesUtils';
-import type { ExecutionRedactionQueryDto } from '@n8n/api-types';
-import type { IRestApiContext } from '@n8n/rest-api-client';
+import type { ExecutionRedactionQueryDto } from '@MNI/api-types';
+import type { IRestApiContext } from '@MNI/rest-api-client';
 import type {
 	ExecutionFilters,
 	ExecutionOptions,
 	ExecutionSummary,
 	IDataObject,
 	IWorkflowSettings,
-} from 'n8n-workflow';
-import { getFullApiResponse, makeRestApiRequest } from '@n8n/rest-api-client';
+} from 'MNI-workflow';
+import { getFullApiResponse, makeRestApiRequest } from '@MNI/rest-api-client';
 
 export async function getNewWorkflow(context: IRestApiContext, data?: IDataObject) {
 	const response = await makeRestApiRequest<NewWorkflowResponse>(

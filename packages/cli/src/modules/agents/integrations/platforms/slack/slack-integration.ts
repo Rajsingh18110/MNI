@@ -2,9 +2,9 @@ import type {
 	AgentIntegrationConfig,
 	AgentIntegrationDisconnectWarning,
 	RichCardComponentType,
-} from '@n8n/api-types';
-import { Container, Service } from '@n8n/di';
-import { isRecord } from '@n8n/utils/is-record';
+} from '@MNI/api-types';
+import { Container, Service } from '@MNI/di';
+import { isRecord } from '@MNI/utils/is-record';
 import type { Thread } from 'chat';
 
 import { AgentRepository } from '../../../repositories/agent.repository';
@@ -208,7 +208,7 @@ export class SlackIntegration extends AgentChatIntegration {
 	/**
 	 * Echo Slack's `url_verification` challenge so the webhook URL can be
 	 * verified during manifest install — before the user has configured the
-	 * bot token + signing secret in n8n. Slack's docs:
+	 * bot token + signing secret in MNI. Slack's docs:
 	 * https://api.slack.com/events/url_verification
 	 */
 	handleUnauthenticatedWebhook(body: unknown): UnauthenticatedWebhookResponse | undefined {

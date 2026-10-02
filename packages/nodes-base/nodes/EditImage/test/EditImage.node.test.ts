@@ -1,6 +1,6 @@
 import { mockDeep } from 'vitest-mock-extended';
 
-import type { IDataObject, IExecuteFunctions, INode, INodeExecutionData } from 'n8n-workflow';
+import type { IDataObject, IExecuteFunctions, INode, INodeExecutionData } from 'MNI-workflow';
 import { EditImage, resolveGravity } from '../EditImage.node';
 
 const { mockGetSystemFonts } = vi.hoisted(() => ({
@@ -137,7 +137,7 @@ describe('EditImage Node', () => {
 		mockNode = {
 			id: 'test-node-id',
 			name: 'EditImage',
-			type: 'n8n-nodes-base.editImage',
+			type: 'MNI-nodes-base.editImage',
 			typeVersion: 1,
 			position: [0, 0],
 			parameters: {},

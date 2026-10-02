@@ -1,5 +1,5 @@
 import { SchemaRegistry } from '@kafkajs/confluent-schema-registry';
-import { passthroughEgressFilter } from '@n8n/backend-network';
+import { passthroughEgressFilter } from '@MNI/backend-network';
 import type * as _kafkajs from 'kafkajs';
 import type {
 	IDataObject,
@@ -7,7 +7,7 @@ import type {
 	INode,
 	INodeExecutionData,
 	INodeTypeBaseDescription,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import { Kafka } from '../Kafka.node';

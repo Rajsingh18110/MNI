@@ -1,5 +1,5 @@
-import { UserRepository } from '@n8n/db';
-import { Service } from '@n8n/di';
+import { UserRepository } from '@MNI/db';
+import { Service } from '@MNI/di';
 
 import { RoleService } from '@/services/role.service';
 

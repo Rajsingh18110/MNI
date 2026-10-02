@@ -1,5 +1,5 @@
 import { type LogDetailsPanelState } from '@/features/execution/logs/logs.types';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
 import {
 	LOCAL_STORAGE_LOGS_PANEL_DETAILS_PANEL,
 	LOCAL_STORAGE_LOGS_PANEL_DETAILS_PANEL_SUB_NODE,
@@ -13,7 +13,7 @@ import {
 	LOG_DETAILS_PANEL_STATE,
 	LOGS_PANEL_STATE,
 } from '@/features/execution/logs/logs.constants';
-import type { ChatMessage } from '@n8n/chat/types';
+import type { ChatMessage } from '@MNI/chat/types';
 import { v4 as uuid } from 'uuid';
 
 export const useLogsStore = defineStore('logs', () => {

@@ -13,7 +13,7 @@ interface MockAgent {
 	generate: Mock;
 }
 
-// Hoisted so the `vi.mock('@n8n/instance-ai')` factory below (which references
+// Hoisted so the `vi.mock('@MNI/instance-ai')` factory below (which references
 // mockAgent/mockExtractText) can resolve them — vi.mock factories are hoisted
 // above all module-level statements.
 const {
@@ -65,12 +65,12 @@ const {
 });
 const mockLogger = { info: vi.fn(), warn: vi.fn(), error: vi.fn(), debug: vi.fn() };
 
-vi.mock('@n8n/instance-ai', () => ({
+vi.mock('@MNI/instance-ai', () => ({
 	createEvalAgent: vi.fn(() => mockAgent),
 	extractText: mockExtractText,
 }));
 
-vi.mock('@n8n/agents/tool', () => ({
+vi.mock('@MNI/agents/tool', () => ({
 	Tool: vi.fn().mockImplementation(function (name: string) {
 		const built: { _name: string; _handler?: unknown } = { _name: name };
 		const builder = {
@@ -92,7 +92,7 @@ vi.mock('../node-config', () => ({
 	extractNodeConfig: vi.fn().mockReturnValue('{}'),
 }));
 
-vi.mock('@n8n/di', () => ({
+vi.mock('@MNI/di', () => ({
 	Container: {
 		get: vi.fn().mockReturnValue({
 			info: vi.fn(),
@@ -101,18 +101,18 @@ vi.mock('@n8n/di', () => ({
 			debug: vi.fn(),
 		}),
 	},
-	// No-op decorator factory so n8n-core's @Service-decorated classes load
+	// No-op decorator factory so MNI-core's @Service-decorated classes load
 	// without registering against a real DI container.
 	Service: () => (target: unknown) => target,
 }));
 
 import type { Mock } from 'vitest';
-import { Tool } from '@n8n/agents/tool';
-import { Container } from '@n8n/di';
-import { createEvalAgent } from '@n8n/instance-ai';
+import { Tool } from '@MNI/agents/tool';
+import { Container } from '@MNI/di';
+import { createEvalAgent } from '@MNI/instance-ai';
 import { fileTypeFromBuffer } from 'file-type';
 import FormData from 'form-data';
-import type { IHttpRequestOptions, INode } from 'n8n-workflow';
+import type { IHttpRequestOptions, INode } from 'MNI-workflow';
 
 import { fetchApiDocs } from '../api-docs';
 import {
@@ -190,7 +190,7 @@ const baseRequest = {
 	url: 'https://api.slack.com/chat.postMessage',
 	method: 'POST',
 } as IHttpRequestOptions;
-const baseNode = { name: 'Slack', type: 'n8n-nodes-base.slack' } as INode;
+const baseNode = { name: 'Slack', type: 'MNI-nodes-base.slack' } as INode;
 
 async function callHandler(
 	handler: ReturnType<typeof createLlmMockHandler>,
@@ -547,8 +547,8 @@ describe('createLlmMockHandler', () => {
 		llmSubmits({ type: 'json', body: {} });
 		const handler = createLlmMockHandler();
 
-		await handler(baseRequest, { name: 'Slack', type: 'n8n-nodes-base.slack' } as INode);
-		await handler(baseRequest, { name: 'Gmail', type: 'n8n-nodes-base.gmail' } as INode);
+		await handler(baseRequest, { name: 'Slack', type: 'MNI-nodes-base.slack' } as INode);
+		await handler(baseRequest, { name: 'Gmail', type: 'MNI-nodes-base.gmail' } as INode);
 
 		expect(extractNodeConfig).toHaveBeenCalledTimes(2);
 	});
@@ -563,13 +563,13 @@ describe('provider-shape normalization', () => {
 		url: 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent',
 		method: 'POST',
 	} as IHttpRequestOptions;
-	const geminiNode = { name: 'Gemini', type: 'n8n-nodes-base.httpRequest' } as INode;
+	const geminiNode = { name: 'Gemini', type: 'MNI-nodes-base.httpRequest' } as INode;
 
 	const imagesRequest = {
 		url: 'https://api.openai.com/v1/images/generations',
 		method: 'POST',
 	} as IHttpRequestOptions;
-	const imagesNode = { name: 'OpenAI', type: 'n8n-nodes-base.httpRequest' } as INode;
+	const imagesNode = { name: 'OpenAI', type: 'MNI-nodes-base.httpRequest' } as INode;
 
 	it('coerces a shape-wrong Gemini payload into the candidates envelope end-to-end', async () => {
 		llmSubmits({ type: 'json', body: { text: 'the answer' } });
@@ -688,7 +688,7 @@ describe('prompt construction', () => {
 				method: 'POST',
 				body: { query: '{ viewer { id } }' },
 			} as IHttpRequestOptions,
-			{ name: 'GitHub', type: 'n8n-nodes-base.github' } as INode,
+			{ name: 'GitHub', type: 'MNI-nodes-base.github' } as INode,
 		);
 
 		const prompt = mockGenerate.mock.calls[0][0];
@@ -705,7 +705,7 @@ describe('prompt construction', () => {
 				method: 'POST',
 				body: { query: '{ issues { nodes { id } } }' },
 			} as IHttpRequestOptions,
-			{ name: 'Linear', type: 'n8n-nodes-base.httpRequest' } as INode,
+			{ name: 'Linear', type: 'MNI-nodes-base.httpRequest' } as INode,
 		);
 
 		const prompt = mockGenerate.mock.calls[0][0];
@@ -793,7 +793,7 @@ describe('service name extraction (via prompt)', () => {
 
 		await handler(
 			{ url: 'https://www.googleapis.com/sheets/v4/spreadsheets' } as IHttpRequestOptions,
-			{ name: 'Sheets', type: 'n8n-nodes-base.googleSheets' } as INode,
+			{ name: 'Sheets', type: 'MNI-nodes-base.googleSheets' } as INode,
 		);
 
 		const prompt = mockGenerate.mock.calls[0][0];
@@ -969,7 +969,7 @@ describe('get_endpoint_quirks tool', () => {
 
 		await handler({ url: 'https://api.notion.com/v1/pages', method: 'POST' }, {
 			name: 'Notion',
-			type: 'n8n-nodes-base.notion',
+			type: 'MNI-nodes-base.notion',
 		} as INode);
 
 		expect(quirksCapture.handler).toBeDefined();
@@ -983,7 +983,7 @@ describe('get_endpoint_quirks tool', () => {
 
 		await handler({ url: 'https://api.github.com/repos/owner/name/issues', method: 'GET' }, {
 			name: 'GitHub',
-			type: 'n8n-nodes-base.github',
+			type: 'MNI-nodes-base.github',
 		} as INode);
 
 		expect(quirksCapture.handler).toBeDefined();
@@ -997,7 +997,7 @@ describe('get_endpoint_quirks tool', () => {
 // ---------------------------------------------------------------------------
 
 describe('normalizeDriveResumableInit', () => {
-	const driveNode = { name: 'Drive', type: 'n8n-nodes-base.googleDrive' } as INode;
+	const driveNode = { name: 'Drive', type: 'MNI-nodes-base.googleDrive' } as INode;
 
 	it('serves the resumable initiation deterministically with a location header', async () => {
 		llmSubmits({ type: 'json', body: { id: 'file123' } });
@@ -1053,7 +1053,7 @@ describe('normalizeDriveResumableInit', () => {
 });
 
 describe('substituteBinaryMimeParts (gmail raw attachments)', () => {
-	const gmailNode = { name: 'Get Invoice Email', type: 'n8n-nodes-base.gmail' } as INode;
+	const gmailNode = { name: 'Get Invoice Email', type: 'MNI-nodes-base.gmail' } as INode;
 	const gmailRequest = {
 		url: 'https://www.googleapis.com/gmail/v1/users/me/messages/m1',
 		method: 'GET',

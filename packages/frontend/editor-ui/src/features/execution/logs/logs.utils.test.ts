@@ -27,8 +27,8 @@ import {
 	createEmptyRunExecutionData,
 	createRunExecutionData,
 	NodeConnectionTypes,
-} from 'n8n-workflow';
-import type { ExecutionError, ITaskData, ITaskStartedData, IRunExecutionData } from 'n8n-workflow';
+} from 'MNI-workflow';
+import type { ExecutionError, ITaskData, ITaskStartedData, IRunExecutionData } from 'MNI-workflow';
 import {
 	aiAgentNode,
 	aiChatWorkflow,

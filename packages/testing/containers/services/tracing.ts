@@ -6,10 +6,10 @@ import type { HelperContext, Service, ServiceResult, StartContext } from './type
 
 const JAEGER_OTLP_PORT = 4318;
 const JAEGER_UI_PORT = 16686;
-const N8N_TRACER_INGEST_PORT = 8889;
-const N8N_TRACER_HEALTH_PORT = 8888;
+const MNI_TRACER_INGEST_PORT = 8889;
+const MNI_TRACER_HEALTH_PORT = 8888;
 const JAEGER_HOSTNAME = 'jaeger';
-const N8N_TRACER_HOSTNAME = 'n8n-tracer';
+const MNI_TRACER_HOSTNAME = 'MNI-tracer';
 
 export interface TracingConfig {
 	deploymentMode?: 'scaling';
@@ -38,7 +38,7 @@ export interface TracerWebhookConfig {
 }
 
 export const tracing: Service<TracingResult> = {
-	description: 'Tracing stack (Jaeger + n8n-tracer)',
+	description: 'Tracing stack (Jaeger + MNI-tracer)',
 
 	async start(
 		network: StartedNetwork,
@@ -72,24 +72,24 @@ export const tracing: Service<TracingResult> = {
 		const jaegerUiPort = jaegerContainer.getMappedPort(JAEGER_UI_PORT);
 		const internalOtlpEndpoint = `http://${JAEGER_HOSTNAME}:${JAEGER_OTLP_PORT}`;
 
-		// Start n8n-tracer pointing to Jaeger
+		// Start MNI-tracer pointing to Jaeger
 		const tracerContainer = await new GenericContainer(TEST_CONTAINER_IMAGES.n8nTracer)
-			.withName(`${projectName}-n8n-tracer`)
+			.withName(`${projectName}-MNI-tracer`)
 			.withNetwork(network)
-			.withNetworkAliases(N8N_TRACER_HOSTNAME)
+			.withNetworkAliases(MNI_TRACER_HOSTNAME)
 			.withLabels({
 				'com.docker.compose.project': projectName,
-				'com.docker.compose.service': 'n8n-tracer',
+				'com.docker.compose.service': 'MNI-tracer',
 			})
-			.withExposedPorts(N8N_TRACER_INGEST_PORT, N8N_TRACER_HEALTH_PORT)
+			.withExposedPorts(MNI_TRACER_INGEST_PORT, MNI_TRACER_HEALTH_PORT)
 			.withEnvironment({
-				N8N_DEPLOYMENT_MODE: deploymentMode,
+				MNI_DEPLOYMENT_MODE: deploymentMode,
 				OTEL_EXPORTER_OTLP_ENDPOINT: internalOtlpEndpoint,
-				HTTP_INGEST_PORT: String(N8N_TRACER_INGEST_PORT),
-				HEALTH_PORT: String(N8N_TRACER_HEALTH_PORT),
+				HTTP_INGEST_PORT: String(MNI_TRACER_INGEST_PORT),
+				HEALTH_PORT: String(MNI_TRACER_HEALTH_PORT),
 			})
 			.withWaitStrategy(
-				Wait.forHttp('/health', N8N_TRACER_HEALTH_PORT)
+				Wait.forHttp('/health', MNI_TRACER_HEALTH_PORT)
 					.forStatusCode(200)
 					.withStartupTimeout(60000),
 			)
@@ -97,7 +97,7 @@ export const tracing: Service<TracingResult> = {
 			.start();
 		ctx?.registerContainer?.(tracerContainer);
 
-		const internalIngestEndpoint = `http://${N8N_TRACER_HOSTNAME}:${N8N_TRACER_INGEST_PORT}`;
+		const internalIngestEndpoint = `http://${MNI_TRACER_HOSTNAME}:${MNI_TRACER_INGEST_PORT}`;
 
 		return {
 			container: jaegerContainer, // Primary container
@@ -117,7 +117,7 @@ export const tracing: Service<TracingResult> = {
 
 	env(): Record<string, string> {
 		return {
-			N8N_LOG_OUTPUT: 'console',
+			MNI_LOG_OUTPUT: 'console',
 		};
 	},
 };
@@ -129,7 +129,7 @@ export interface JaegerTraceQuery {
 	until?: Date;
 	/**
 	 * Service name(s) to fetch from Jaeger. MNI's OTEL exporter uses
-	 * `N8N_OTEL_EXPORTER_SERVICE_NAME` (default `MNI`). When unset, this method
+	 * `MNI_OTEL_EXPORTER_SERVICE_NAME` (default `MNI`). When unset, this method
 	 * fetches every service Jaeger has seen.
 	 */
 	services?: string[];
@@ -160,7 +160,7 @@ export class TracingHelper {
 		return this.meta.tracer.ingestUrl;
 	}
 
-	getWebhookConfig(label = 'n8n-tracer'): TracerWebhookConfig {
+	getWebhookConfig(label = 'MNI-tracer'): TracerWebhookConfig {
 		return {
 			url: this.meta.tracer.ingestUrl,
 			method: 'POST',

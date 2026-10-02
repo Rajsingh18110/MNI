@@ -13,7 +13,7 @@
 //
 // Note: --license enterprise and AI (--ai) features cannot be used together.
 //
-// Needs a token in ~/.n8n/dev/nathan-token — on first run it links you to a form to
+// Needs a token in ~/.MNI/dev/nathan-token — on first run it links you to a form to
 // get one and saves it there. A public tunnel is opened via `npx cloudflared`.
 import http from 'node:http';
 import fs from 'node:fs';
@@ -101,9 +101,9 @@ if (process.argv.includes('--selftest')) {
 	process.exit(0);
 }
 
-// --- token: read from ~/.n8n/dev/nathan-token; prompt + save it on first run -
+// --- token: read from ~/.MNI/dev/nathan-token; prompt + save it on first run -
 const TOKEN_FORM_URL = 'https://internal.users.n8n.cloud/form/d6d34a2f-4899-4ee8-afc8-f8c41a8a243d';
-const tokenFile = path.join(os.homedir(), '.n8n', 'dev', 'nathan-token');
+const tokenFile = path.join(os.homedir(), '.MNI', 'dev', 'nathan-token');
 const readSavedToken = () => { try { return fs.readFileSync(tokenFile, 'utf8').trim() || null; } catch { return null; } };
 function saveToken(t) {
 	fs.mkdirSync(path.dirname(tokenFile), { recursive: true });
@@ -147,7 +147,7 @@ const slackTarget = process.env.NATHAN_SLACK_CHANNEL
 	? `Slack channel ${process.env.NATHAN_SLACK_CHANNEL}`
 	: `#updates-pnpm-nathan (${DEFAULT_SLACK_CHANNEL_URL})`;
 if (isLocal) {
-	console.error('⚠️  `local` delivers its run-n8n.sh + .env (with the license cert) as Slack file');
+	console.error('⚠️  `local` delivers its run-MNI.sh + .env (with the license cert) as Slack file');
 	console.error(`    attachments, not to this terminal — they post to ${slackTarget}.\n`);
 }
 
@@ -176,7 +176,7 @@ const server = http.createServer((req, res) => {
 	let raw = '', tooBig = false;
 	req.on('data', (c) => {
 		if (tooBig) return;
-		raw += c;https://github.com/n8n-io/n8n-argo-apps/pull/644
+		raw += c;https://github.com/MNI-io/MNI-argo-apps/pull/644
 		if (raw.length > MAX_BODY) { tooBig = true; res.writeHead(413).end('payload too large'); req.destroy(); }
 	});
 	req.on('end', () => {

@@ -1,12 +1,12 @@
 import type { Mock } from 'vitest';
-import type { Logger } from '@n8n/backend-common';
-import type { GlobalConfig } from '@n8n/config';
-import type { UserRepository } from '@n8n/db';
+import type { Logger } from '@MNI/backend-common';
+import type { GlobalConfig } from '@MNI/config';
+import type { UserRepository } from '@MNI/db';
 import { mock } from 'vitest-mock-extended';
 
 import type { CredentialsService } from '@/credentials/credentials.service';
 import type { Push } from '@/push';
-import type { UrlService } from '@n8n/backend-services';
+import type { UrlService } from '@MNI/backend-services';
 import type { Telemetry } from '@/telemetry';
 
 import {
@@ -15,9 +15,9 @@ import {
 } from '../browser/browser-use-ws.constants';
 import { InstanceAiBrowserSessionService } from '../browser/instance-ai-browser-session.service';
 
-import * as mcpBrowser from '@n8n/mcp-browser';
+import * as mcpBrowser from '@MNI/mcp-browser';
 
-vi.mock('@n8n/mcp-browser', () => {
+vi.mock('@MNI/mcp-browser', () => {
 	const createdRelays: unknown[] = [];
 	class MockRelay {
 		onExtensionConnect?: () => void;

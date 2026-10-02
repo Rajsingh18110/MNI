@@ -1,7 +1,7 @@
 import { computed, type Ref } from 'vue';
 import { useRouter } from 'vue-router';
-import { useI18n } from '@n8n/i18n';
-import { N8nIcon } from '@n8n/design-system';
+import { useI18n } from '@MNI/i18n';
+import { N8nIcon } from '@MNI/design-system';
 import type { CommandGroup, CommandBarItem } from '../types';
 import { useInstanceAiStore } from '@/features/ai/instanceAi/instanceAi.store';
 import { INSTANCE_AI_VIEW, INSTANCE_AI_THREAD_VIEW } from '@/features/ai/instanceAi/constants';

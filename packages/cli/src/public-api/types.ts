@@ -10,8 +10,8 @@ import type {
 	UpdateSamlConfigurationDto,
 	UpdateLdapConfigurationDto,
 	LdapSyncDto,
-} from '@n8n/api-types';
-import type { AuthenticatedRequest } from '@n8n/db';
+} from '@MNI/api-types';
+import type { AuthenticatedRequest } from '@MNI/db';
 
 import type { AuthlessRequest } from '@/requests';
 

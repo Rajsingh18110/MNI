@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { N8nCallout, N8nCheckbox, N8nLink, N8nLoading, N8nTooltip } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+import { N8nCallout, N8nCheckbox, N8nLink, N8nLoading, N8nTooltip } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 import { I18nT } from 'vue-i18n';
 import { CUSTOM_ROLES_DOCS_URL } from '@/app/constants';
 import {
@@ -231,8 +231,8 @@ function onToggle(option: InstanceScopeOption, groupOptions: InstanceScopeOption
 /* The link keeps the warning text color; the underline marks it as a link.
    Both the callout (on the anchor) and N8nLink (on its span) set the purple
    secondary color, so both are reset. */
-.warning a:global(.n8n-link),
-.warning a:global(.n8n-link) > span {
+.warning a:global(.MNI-link),
+.warning a:global(.MNI-link) > span {
 	color: inherit;
 }
 </style>

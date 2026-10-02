@@ -1,7 +1,7 @@
 import { mockDeep } from 'vitest-mock-extended';
 import moment from 'moment-timezone';
-import type { IPollFunctions, INode } from 'n8n-workflow';
-import { NodeApiError } from 'n8n-workflow';
+import type { IPollFunctions, INode } from 'MNI-workflow';
+import { NodeApiError } from 'MNI-workflow';
 
 import * as GenericFunctions from '../GenericFunctions';
 import { GoogleCalendarTrigger } from '../GoogleCalendarTrigger.node';
@@ -29,7 +29,7 @@ describe('GoogleCalendarTrigger', () => {
 		mockNode = {
 			id: 'test-node-id',
 			name: 'Google Calendar Trigger Test',
-			type: 'n8n-nodes-base.googleCalendarTrigger',
+			type: 'MNI-nodes-base.googleCalendarTrigger',
 			typeVersion: 1,
 			position: [0, 0],
 			parameters: {},

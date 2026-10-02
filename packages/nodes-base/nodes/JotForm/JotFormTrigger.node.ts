@@ -8,8 +8,8 @@ import type {
 	INodeTypeDescription,
 	IWebhookResponseData,
 	MultiPartFormData,
-} from 'n8n-workflow';
-import { NodeConnectionTypes, jsonParse } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeConnectionTypes, jsonParse } from 'MNI-workflow';
 
 import { jotformApiRequest } from './GenericFunctions';
 
@@ -63,7 +63,7 @@ export class JotFormTrigger implements INodeType {
 				name: 'resolveData',
 				type: 'boolean',
 				default: true,
-				// eslint-disable-next-line n8n-nodes-base/node-param-description-boolean-without-whether
+				// eslint-disable-next-line MNI-nodes-base/node-param-description-boolean-without-whether
 				description:
 					'By default does the webhook-data use internal keys instead of the names. If this option gets activated, it will resolve the keys automatically to the actual names.',
 			},

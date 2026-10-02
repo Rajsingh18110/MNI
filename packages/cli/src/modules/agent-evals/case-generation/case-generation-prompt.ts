@@ -2,7 +2,7 @@ import {
 	agentEvalDraftCaseSchema,
 	type AgentJsonConfig,
 	type AgentJsonToolConfig,
-} from '@n8n/api-types';
+} from '@MNI/api-types';
 import { z } from 'zod';
 
 import {

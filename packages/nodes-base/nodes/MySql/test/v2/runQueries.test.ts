@@ -1,5 +1,5 @@
 import mysql2 from 'mysql2/promise';
-import type { IDataObject, INode } from 'n8n-workflow';
+import type { IDataObject, INode } from 'MNI-workflow';
 
 import { createMockExecuteFunction } from '@test/nodes/Helpers';
 
@@ -11,7 +11,7 @@ const mySqlMockNode: INode = {
 	id: '1',
 	name: 'MySQL node',
 	typeVersion: 2,
-	type: 'n8n-nodes-base.mySql',
+	type: 'MNI-nodes-base.mySql',
 	position: [60, 760],
 	parameters: {
 		operation: 'select',

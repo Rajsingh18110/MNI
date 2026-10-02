@@ -107,7 +107,7 @@ jobs:
         if: steps.verifier.outputs.present == 'true'
         uses: ./.github/actions/setup-nodejs
         with:
-          build-command: pnpm turbo run build --filter=@n8n/code-health...
+          build-command: pnpm turbo run build --filter=@MNI/code-health...
 
       # `--dir` rather than `--filter`: a filter matching nothing exits 0, so a renamed or moved
       # package would turn this into a green job that verified nothing.

@@ -6,13 +6,13 @@ import type {
 	INodeTypeBaseDescription,
 	INodeTypeDescription,
 	ITriggerResponse,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import {
 	NodeConnectionTypes,
 	NodeOperationError,
 	TriggerCloseError,
 	UnexpectedError,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import {
 	type KafkaTriggerOptions,
@@ -77,7 +77,7 @@ const versionDescription: INodeTypeDescription = {
 			type: 'string',
 			default: '',
 			required: true,
-			placeholder: 'n8n-kafka',
+			placeholder: 'MNI-kafka',
 			description: 'ID of the consumer group',
 		},
 		{

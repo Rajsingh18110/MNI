@@ -1,6 +1,6 @@
 import { createHmac } from 'crypto';
-import type { IHttpRequestOptions, IWebhookFunctions } from 'n8n-workflow';
-import { NodeOperationError } from 'n8n-workflow';
+import type { IHttpRequestOptions, IWebhookFunctions } from 'MNI-workflow';
+import { NodeOperationError } from 'MNI-workflow';
 
 import { slackApiRequest } from './V2/GenericFunctions';
 import { verifySignature as verifySignatureGeneric } from '../../utils/webhook-signature-verification';

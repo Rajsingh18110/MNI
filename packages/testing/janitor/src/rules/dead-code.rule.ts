@@ -1,5 +1,5 @@
-import { AstRule } from '@n8n/rules-engine/ast';
-import type { AstProjectConfig } from '@n8n/rules-engine/ast';
+import { AstRule } from '@MNI/rules-engine/ast';
+import type { AstProjectConfig } from '@MNI/rules-engine/ast';
 import { globSync } from 'glob';
 import * as fs from 'node:fs';
 import {
@@ -41,7 +41,7 @@ interface UsageIndex {
  *
  * Usage is traced from the raw text of the suite, not the ts-morph language
  * service. `findReferences` forces ts-morph to build a fully type-checked
- * program over the whole import closure (n8n-workflow + node_modules), and
+ * program over the whole import closure (MNI-workflow + node_modules), and
  * loading every spec as an AST just to read it costs multiple GB — together
  * that needed ~10GB of heap and minutes for this suite. Instead only the
  * declaration files (pages/flows/helpers/services) are parsed into an AST; the

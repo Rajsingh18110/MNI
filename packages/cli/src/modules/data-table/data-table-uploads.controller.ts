@@ -1,5 +1,5 @@
-import { Post, RestController } from '@n8n/decorators';
-import { Container } from '@n8n/di';
+import { Post, RestController } from '@MNI/decorators';
+import { Container } from '@MNI/di';
 import multer from 'multer';
 
 import { BadRequestError } from '@/errors/response-errors/bad-request.error';

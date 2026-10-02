@@ -1,6 +1,6 @@
-import type { SourceControlledFile } from '@n8n/api-types';
-import type { Logger } from '@n8n/backend-common';
-import type { PolicyCleared, PolicyViolation } from '@n8n/decorators';
+import type { SourceControlledFile } from '@MNI/api-types';
+import type { Logger } from '@MNI/backend-common';
+import type { PolicyCleared, PolicyViolation } from '@MNI/decorators';
 import {
 	type Variables,
 	type VariablesRepository,
@@ -22,11 +22,11 @@ import {
 	WorkflowEntity,
 	type WorkflowRepository,
 	type WorkflowPublishedVersionRepository,
-} from '@n8n/db';
-import { In } from '@n8n/typeorm';
-import type { EntityManager } from '@n8n/typeorm';
+} from '@MNI/db';
+import { In } from '@MNI/typeorm';
+import type { EntityManager } from '@MNI/typeorm';
 import * as fastGlob from 'fast-glob';
-import { type InstanceSettings } from 'n8n-core';
+import { type InstanceSettings } from 'MNI-core';
 import fsp from 'node:fs/promises';
 
 vi.mock('node:fs/promises');
@@ -287,7 +287,7 @@ describe('SourceControlImportService', () => {
 					{
 						id: 'node-1',
 						name: 'Node 1',
-						type: 'n8n-nodes-base.noOp',
+						type: 'MNI-nodes-base.noOp',
 						typeVersion: 1,
 						position: [0, 0],
 						parameters: {},
@@ -456,7 +456,7 @@ describe('SourceControlImportService', () => {
 					{
 						id: 'node-1',
 						name: 'Node 1',
-						type: 'n8n-nodes-base.noOp',
+						type: 'MNI-nodes-base.noOp',
 						typeVersion: 1,
 						position: [0, 0],
 						parameters: {},
@@ -1629,7 +1629,7 @@ describe('SourceControlImportService', () => {
 					{
 						id: 'node-1',
 						name: 'Node 1',
-						type: 'n8n-nodes-base.noOp',
+						type: 'MNI-nodes-base.noOp',
 						typeVersion: 1,
 						position: [0, 0],
 						parameters: {},

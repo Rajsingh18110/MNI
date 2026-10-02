@@ -1,18 +1,18 @@
-import { type BuiltTool, McpClient } from '@n8n/agents';
+import { type BuiltTool, McpClient } from '@MNI/agents';
 import type {
 	InstanceAiMcpConnectionFailureReason,
 	InstanceAiMcpConnectionToolResponse,
 	InstanceAiMcpConnectionToolsResponse,
 	InstanceAiMcpUpdateConnectionRequestDto,
-} from '@n8n/api-types';
-import { isObjectLiteral, Logger } from '@n8n/backend-common';
-import type { CustomFetch } from '@n8n/backend-network';
-import { OutboundHttp } from '@n8n/backend-network';
-import { isUniqueConstraintError, type CredentialsEntity, type User } from '@n8n/db';
-import { Service } from '@n8n/di';
-import type { McpServerConfig } from '@n8n/instance-ai';
-import { isRecord } from '@n8n/utils/is-record';
-import type { ICredentialDataDecryptedObject, LiteralMcpRegistryConnection } from 'n8n-workflow';
+} from '@MNI/api-types';
+import { isObjectLiteral, Logger } from '@MNI/backend-common';
+import type { CustomFetch } from '@MNI/backend-network';
+import { OutboundHttp } from '@MNI/backend-network';
+import { isUniqueConstraintError, type CredentialsEntity, type User } from '@MNI/db';
+import { Service } from '@MNI/di';
+import type { McpServerConfig } from '@MNI/instance-ai';
+import { isRecord } from '@MNI/utils/is-record';
+import type { ICredentialDataDecryptedObject, LiteralMcpRegistryConnection } from 'MNI-workflow';
 import { randomUUID } from 'node:crypto';
 
 import { CredentialTypes } from '@/credential-types';
@@ -504,13 +504,13 @@ export class InstanceAiMcpRegistryService {
 				const result = await this.oauthService.refreshOAuth2CredentialById(
 					config.credentialId,
 					projectId,
-					getBearerTokenRevision(currentHeaders, oauthTokenData?.n8n_expires_at),
+					getBearerTokenRevision(currentHeaders, oauthTokenData?.MNI_expires_at),
 				);
 				if (result && oauthTokenData) {
 					if (result.expiresAt === undefined) {
-						delete oauthTokenData.n8n_expires_at;
+						delete oauthTokenData.MNI_expires_at;
 					} else {
-						oauthTokenData.n8n_expires_at = String(result.expiresAt);
+						oauthTokenData.MNI_expires_at = String(result.expiresAt);
 					}
 					if (result.expiresInSeconds === undefined) {
 						delete oauthTokenData.expires_in;

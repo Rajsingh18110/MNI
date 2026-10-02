@@ -1,4 +1,4 @@
-import type { INodeListSearchResult } from 'n8n-workflow';
+import type { INodeListSearchResult } from 'MNI-workflow';
 import { createComponentRenderer } from '@/__tests__/render';
 import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';
 import { useProjectsStore } from '@/features/collaboration/projects/projects.store';
@@ -51,7 +51,7 @@ vi.mock('@/app/composables/useWorkflowHelpers', () => {
 		})),
 	};
 });
-vi.mock('@n8n/composables/useTelemetry', () => ({
+vi.mock('@MNI/composables/useTelemetry', () => ({
 	useTelemetry: () => ({ track: vi.fn() }),
 }));
 

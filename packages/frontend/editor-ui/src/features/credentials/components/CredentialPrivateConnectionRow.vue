@@ -6,9 +6,9 @@ import {
 	N8nCheckbox,
 	N8nIcon,
 	N8nTooltip,
-} from '@n8n/design-system';
-import type { ActionDropdownItem } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+} from '@MNI/design-system';
+import type { ActionDropdownItem } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 import { computed, ref } from 'vue';
 import { LOCAL_STORAGE_SKIP_DISCONNECT_CONFIRM } from '@/app/constants/localStorage';
 

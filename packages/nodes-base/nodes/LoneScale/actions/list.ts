@@ -1,4 +1,4 @@
-import type { IDataObject, IExecuteFunctions, INodeExecutionData } from 'n8n-workflow';
+import type { IDataObject, IExecuteFunctions, INodeExecutionData } from 'MNI-workflow';
 
 import { lonescaleApiRequest } from '../GenericFunctions';
 

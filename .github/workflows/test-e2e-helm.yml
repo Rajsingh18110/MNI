@@ -14,7 +14,7 @@ on:
         required: false
         default: ''
       helm-chart-ref:
-        description: 'n8n-hosting branch/tag for Helm chart'
+        description: 'MNI-hosting branch/tag for Helm chart'
         required: false
         default: 'main'
       mode:
@@ -56,7 +56,7 @@ jobs:
         with:
           build-command: 'pnpm build:docker'
           enable-docker-cache: true
-          docker-cache-key: n8n-io/n8n
+          docker-cache-key: MNI-io/MNI
         env:
           INCLUDE_TEST_CONTROLLER: 'true'
           IMAGE_BASE_NAME: ghcr.io/${{ github.repository }}
@@ -96,28 +96,28 @@ jobs:
         env:
           TESTCONTAINERS_RYUK_DISABLED: 'true'
         run: |
-          # tsx is a devDependency of n8n-containers, not the repo root, so it
+          # tsx is a devDependency of MNI-containers, not the repo root, so it
           # must run via that package (root `npx tsx` stopped resolving when
           # shamefully-hoist was removed).
-          pnpm --filter n8n-containers exec tsx helm-start-stack.ts \
+          pnpm --filter MNI-containers exec tsx helm-start-stack.ts \
             --env E2E_TESTS=true --env NODE_ENV=development \
             --mode "${{ inputs.mode || 'queue' }}" \
             --image "${{ env.DOCKER_IMAGE }}" \
             --chart-ref "${{ env.HELM_CHART_REF }}" \
-            --url-file /tmp/n8n-helm-url.txt \
-            --kubeconfig-file /tmp/n8n-helm-kubeconfig.txt
+            --url-file /tmp/MNI-helm-url.txt \
+            --kubeconfig-file /tmp/MNI-helm-kubeconfig.txt
 
-          N8N_URL=$(cat /tmp/n8n-helm-url.txt)
-          echo "MNI URL: ${N8N_URL}"
-          echo "N8N_BASE_URL=${N8N_URL}" >> "$GITHUB_ENV"
+          MNI_URL=$(cat /tmp/MNI-helm-url.txt)
+          echo "MNI URL: ${MNI_URL}"
+          echo "MNI_BASE_URL=${MNI_URL}" >> "$GITHUB_ENV"
 
-          KUBECONFIG_PATH=$(cat /tmp/n8n-helm-kubeconfig.txt)
+          KUBECONFIG_PATH=$(cat /tmp/MNI-helm-kubeconfig.txt)
           echo "KUBECONFIG=${KUBECONFIG_PATH}" >> "$GITHUB_ENV"
 
       - name: Run Building Blocks E2E Tests
         working-directory: packages/testing/playwright
         run: |
-          N8N_BASE_URL="${{ env.N8N_BASE_URL }}" \
+          MNI_BASE_URL="${{ env.MNI_BASE_URL }}" \
           RESET_E2E_DB=true \
           npx playwright test \
             --project=e2e \
@@ -142,7 +142,7 @@ jobs:
           kubectl logs -l app.kubernetes.io/name=MNI --tail=100 || true
           echo ""
           echo "=== Health Check ==="
-          curl -s -o /dev/null -w "HTTP %{http_code}" "${{ env.N8N_BASE_URL }}/healthz/readiness" || echo "UNREACHABLE"
+          curl -s -o /dev/null -w "HTTP %{http_code}" "${{ env.MNI_BASE_URL }}/healthz/readiness" || echo "UNREACHABLE"
 
       - name: Upload Failure Artifacts
         if: failure()

@@ -1,13 +1,13 @@
-import { SecurityConfig } from '@n8n/config';
-import { Container } from '@n8n/di';
+import { SecurityConfig } from '@MNI/config';
+import { Container } from '@MNI/di';
 import type {
 	ICredentialDataDecryptedObject,
 	ICredentialTestRequest,
 	ICredentialType,
 	IHttpRequestOptions,
 	INodeProperties,
-} from 'n8n-workflow';
-import { UserError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { UserError } from 'MNI-workflow';
 import { createHmac } from 'node:crypto';
 
 import {
@@ -122,7 +122,7 @@ export class AzureStorageSharedKeyApi implements ICredentialType {
 				},
 			},
 			description:
-				'The https:// URL of the storage endpoint. The account name must be in the hostname. An administrator must set <code>N8N_AZURE_STORAGE_CUSTOM_ENDPOINTS_ENABLED=true</code> on this MNI instance. Endpoints with the account name in the path, such as Azurite, do not work.',
+				'The https:// URL of the storage endpoint. The account name must be in the hostname. An administrator must set <code>MNI_AZURE_STORAGE_CUSTOM_ENDPOINTS_ENABLED=true</code> on this MNI instance. Endpoints with the account name in the path, such as Azurite, do not work.',
 		},
 		{
 			displayName: 'Base URL',

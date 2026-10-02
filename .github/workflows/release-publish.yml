@@ -57,7 +57,7 @@ jobs:
       - name: Setup and Build
         uses: ./.github/actions/setup-nodejs
         env:
-          N8N_FAIL_ON_POPULARITY_FETCH_ERROR: true
+          MNI_FAIL_ON_POPULARITY_FETCH_ERROR: true
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
 
       - name: Install script dependencies
@@ -108,7 +108,7 @@ jobs:
     needs: [determine-version-info]
     uses: ./.github/workflows/docker-build-push.yml
     with:
-      n8n_version: ${{ needs.determine-version-info.outputs.version }}
+      MNI_version: ${{ needs.determine-version-info.outputs.version }}
       release_type: ${{ needs.determine-version-info.outputs.release_type }}
       create_attestations: true
     secrets: inherit
@@ -119,7 +119,7 @@ jobs:
     if: github.event.pull_request.merged == true
     uses: ./.github/workflows/release-build-daytona-snapshot.yml
     with:
-      n8n_version: ${{ needs.determine-version-info.outputs.version }}
+      MNI_version: ${{ needs.determine-version-info.outputs.version }}
     secrets: inherit
 
   create-github-release:
@@ -129,7 +129,7 @@ jobs:
     uses: ./.github/workflows/release-create-github-releases.yml
     with:
       track: ${{ needs.determine-version-info.outputs.track }}
-      version-tag: 'n8n@${{ needs.determine-version-info.outputs.version }}'
+      version-tag: 'MNI@${{ needs.determine-version-info.outputs.version }}'
       body: ${{ github.event.pull_request.body }}
       commit: ${{ github.event.pull_request.base.ref }}
       is_experimental: ${{ needs.determine-version-info.outputs.release_type == 'rc' }}
@@ -144,7 +144,7 @@ jobs:
     uses: ./.github/workflows/release-update-pointer-tag.yml
     with:
       track: ${{ needs.determine-version-info.outputs.track }}
-      version-tag: 'n8n@${{ needs.determine-version-info.outputs.version }}'
+      version-tag: 'MNI@${{ needs.determine-version-info.outputs.version }}'
     secrets: inherit
 
   promote-stable-tag:
@@ -156,7 +156,7 @@ jobs:
     uses: ./.github/workflows/release-update-pointer-tag.yml
     with:
       track: stable
-      version-tag: 'n8n@${{ needs.determine-version-info.outputs.new_stable_version }}'
+      version-tag: 'MNI@${{ needs.determine-version-info.outputs.new_stable_version }}'
     secrets: inherit
 
   generate-and-attach-sbom:
@@ -164,8 +164,8 @@ jobs:
     needs: [determine-version-info, create-github-release]
     uses: ./.github/workflows/sbom-generation-callable.yml
     with:
-      n8n_version: ${{ needs.determine-version-info.outputs.version }}
-      release_tag_ref: 'n8n@${{ needs.determine-version-info.outputs.version }}'
+      MNI_version: ${{ needs.determine-version-info.outputs.version }}
+      release_tag_ref: 'MNI@${{ needs.determine-version-info.outputs.version }}'
     secrets: inherit
 
   merge-release-tag-to-master:
@@ -255,4 +255,4 @@ jobs:
         run: |
           node .github/scripts/slack/notify.mjs \
             --channel C036AELNMV0 \
-            --text '<${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|Release publish failed for n8n@${{ needs.determine-version-info.outputs.version }}>. Please go to the actions page and retry failed runs to recover a flake in the release pipeline. <!subteam^S08FYH9C9ME|@release-captain>'
+            --text '<${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|Release publish failed for MNI@${{ needs.determine-version-info.outputs.version }}>. Please go to the actions page and retry failed runs to recover a flake in the release pipeline. <!subteam^S08FYH9C9ME|@release-captain>'

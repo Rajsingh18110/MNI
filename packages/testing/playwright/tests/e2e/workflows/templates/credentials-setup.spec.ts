@@ -29,7 +29,7 @@ const ecommerceCollection = JSON.parse(
 function createTemplateRequirements(): TestRequirements {
 	return {
 		storage: {
-			N8N_EXPERIMENT_OVERRIDES: JSON.stringify({
+			MNI_EXPERIMENT_OVERRIDES: JSON.stringify({
 				'055_template_setup_experience': 'control',
 				'069_setup_panel': 'control',
 			}),
@@ -159,7 +159,7 @@ test.describe(
 		}) => {
 			await setupRequirements({
 				storage: {
-					N8N_EXPERIMENT_OVERRIDES: JSON.stringify({
+					MNI_EXPERIMENT_OVERRIDES: JSON.stringify({
 						'055_template_setup_experience': 'control',
 						'069_setup_panel': 'control',
 					}),

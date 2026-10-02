@@ -6,23 +6,23 @@
 		<title>Chat</title>
 		<style>
 			:root {
-				--n8n-connect-bg-card: #ffffff;
-				--n8n-connect-bar-bg: #f7f7f8;
-				--n8n-connect-border: #dbdfe7;
-				--n8n-connect-header: #525356;
-				--n8n-connect-label: #555555;
-				--n8n-connect-muted: #7e8186;
-				--n8n-connect-primary: #ff6d5a;
-				--n8n-connect-primary-text: #ffffff;
-				--n8n-connect-ok: #2e9e5b;
-				--n8n-connect-error: #c0392b;
-				--n8n-connect-error-bg: #fdeceb;
-				--n8n-connect-icon-bg: #f2f0ff;
-				--n8n-connect-icon-text: #6a5bdd;
-				--n8n-connect-radius-card: 8px;
-				--n8n-connect-radius-input: 6px;
-				--n8n-connect-shadow-dialog: 0px 12px 48px rgba(0, 0, 0, 0.18);
-				--n8n-connect-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+				--MNI-connect-bg-card: #ffffff;
+				--MNI-connect-bar-bg: #f7f7f8;
+				--MNI-connect-border: #dbdfe7;
+				--MNI-connect-header: #525356;
+				--MNI-connect-label: #555555;
+				--MNI-connect-muted: #7e8186;
+				--MNI-connect-primary: #ff6d5a;
+				--MNI-connect-primary-text: #ffffff;
+				--MNI-connect-ok: #2e9e5b;
+				--MNI-connect-error: #c0392b;
+				--MNI-connect-error-bg: #fdeceb;
+				--MNI-connect-icon-bg: #f2f0ff;
+				--MNI-connect-icon-text: #6a5bdd;
+				--MNI-connect-radius-card: 8px;
+				--MNI-connect-radius-input: 6px;
+				--MNI-connect-shadow-dialog: 0px 12px 48px rgba(0, 0, 0, 0.18);
+				--MNI-connect-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 			}
 
 			html, body { width: 100%; height: 100%; margin: 0; padding: 0; }
@@ -30,38 +30,38 @@
 			   the chat input it gates, and it stays outside the frame, where the author's
 			   content cannot reach it. */
 			body { display: flex; flex-direction: column; }
-			#n8n-chat-frame { display: block; flex: 1; width: 100%; border: 0; min-height: 0; }
+			#MNI-chat-frame { display: block; flex: 1; width: 100%; border: 0; min-height: 0; }
 
 			/* --- Status bar --- */
 			.connect-bar {
 				display: flex; align-items: center; gap: 12px; flex-shrink: 0;
 				padding: 14px 18px;
-				background: var(--n8n-connect-bar-bg);
-				border-top: 1px solid var(--n8n-connect-border);
-				font-family: var(--n8n-connect-font-family);
+				background: var(--MNI-connect-bar-bg);
+				border-top: 1px solid var(--MNI-connect-border);
+				font-family: var(--MNI-connect-font-family);
 				font-size: 13px;
-				color: var(--n8n-connect-header);
+				color: var(--MNI-connect-header);
 			}
 			.bar-text { flex: 1; min-width: 0; }
 			.bar-info { position: relative; display: flex; flex-shrink: 0; }
-			.bar-icon { display: flex; padding: 0; background: none; border: 0; cursor: pointer; color: var(--n8n-connect-muted); }
+			.bar-icon { display: flex; padding: 0; background: none; border: 0; cursor: pointer; color: var(--MNI-connect-muted); }
 			.bar-icon svg { display: block; }
 			.bar-icon .icon-ok, .connect-bar.all-connected .bar-icon .icon-pending { display: none; }
-			.connect-bar.all-connected .bar-icon { color: var(--n8n-connect-ok); }
+			.connect-bar.all-connected .bar-icon { color: var(--MNI-connect-ok); }
 			.connect-bar.all-connected .bar-icon .icon-ok { display: block; }
 			/* Opens upward: the bar is the last thing on the page, so downward is
 			   off-screen. `.open` is the tap toggle, since iOS Safari does not focus a
 			   tapped button and :focus-within alone never fires there. */
 			.bar-tooltip { display: none; position: absolute; bottom: 100%; left: -12px; padding-bottom: 8px; width: min(300px, calc(100vw - 32px)); z-index: 20; }
 			.bar-info:hover .bar-tooltip, .bar-info:focus-within .bar-tooltip, .bar-info.open .bar-tooltip { display: block; }
-			.bar-tooltip-body { display: block; background: var(--n8n-connect-bg-card); border: 1px solid var(--n8n-connect-border); border-radius: var(--n8n-connect-radius-card); box-shadow: var(--n8n-connect-shadow-dialog); padding: 10px 12px; font-size: 12px; line-height: 1.5; color: var(--n8n-connect-label); }
-			.bar-tooltip-body a { color: var(--n8n-connect-primary); font-weight: 600; text-decoration: none; white-space: nowrap; }
+			.bar-tooltip-body { display: block; background: var(--MNI-connect-bg-card); border: 1px solid var(--MNI-connect-border); border-radius: var(--MNI-connect-radius-card); box-shadow: var(--MNI-connect-shadow-dialog); padding: 10px 12px; font-size: 12px; line-height: 1.5; color: var(--MNI-connect-label); }
+			.bar-tooltip-body a { color: var(--MNI-connect-primary); font-weight: 600; text-decoration: none; white-space: nowrap; }
 			.bar-tooltip-body a:hover { text-decoration: underline; }
 			.bar-action { display: inline-flex; align-items: center; gap: 6px; }
-			.bar-action .dot { display: none; width: 7px; height: 7px; border-radius: 50%; background: var(--n8n-connect-ok); }
+			.bar-action .dot { display: none; width: 7px; height: 7px; border-radius: 50%; background: var(--MNI-connect-ok); }
 			/* Connected: the control drops to quiet, since nothing needs doing. */
-			.connect-bar.all-connected .bar-action { background: var(--n8n-connect-bg-card); color: var(--n8n-connect-label); border-color: var(--n8n-connect-border); }
-			.connect-bar.all-connected .bar-action:hover { opacity: 1; border-color: var(--n8n-connect-muted); }
+			.connect-bar.all-connected .bar-action { background: var(--MNI-connect-bg-card); color: var(--MNI-connect-label); border-color: var(--MNI-connect-border); }
+			.connect-bar.all-connected .bar-action:hover { opacity: 1; border-color: var(--MNI-connect-muted); }
 			.connect-bar.all-connected .bar-action .dot { display: block; }
 
 			/* --- "Connect your accounts" dialog --- */
@@ -69,56 +69,56 @@
 			.overlay {
 				display: none; position: fixed; inset: 0; background: rgba(20, 20, 30, 0.28);
 				align-items: center; justify-content: center; z-index: 30; padding: 16px;
-				font-family: var(--n8n-connect-font-family);
+				font-family: var(--MNI-connect-font-family);
 			}
 			.overlay.open { display: flex; }
-			.dialog { width: 448px; max-width: 100%; max-height: calc(100vh - 48px); display: flex; flex-direction: column; background: var(--n8n-connect-bg-card); border-radius: 12px; box-shadow: var(--n8n-connect-shadow-dialog); overflow: hidden; }
+			.dialog { width: 448px; max-width: 100%; max-height: calc(100vh - 48px); display: flex; flex-direction: column; background: var(--MNI-connect-bg-card); border-radius: 12px; box-shadow: var(--MNI-connect-shadow-dialog); overflow: hidden; }
 			.dialog-head { display: flex; align-items: center; justify-content: space-between; padding: 18px 20px 8px; }
-			.dialog-title { font-size: 16px; font-weight: 600; color: var(--n8n-connect-header); }
-			.dialog-close { background: none; border: 0; font-size: 20px; line-height: 1; color: var(--n8n-connect-muted); cursor: pointer; }
-			.dialog-sub { padding: 0 20px 16px; font-size: 13px; color: var(--n8n-connect-muted); }
+			.dialog-title { font-size: 16px; font-weight: 600; color: var(--MNI-connect-header); }
+			.dialog-close { background: none; border: 0; font-size: 20px; line-height: 1; color: var(--MNI-connect-muted); cursor: pointer; }
+			.dialog-sub { padding: 0 20px 16px; font-size: 13px; color: var(--MNI-connect-muted); }
 			.dialog-list { padding: 0 20px; overflow-y: auto; }
 			.dialog-foot { display: flex; align-items: center; justify-content: space-between; padding: 14px 20px; border-top: 1px solid #f0f1f4; }
-			.dialog-count { font-size: 13px; color: var(--n8n-connect-muted); }
+			.dialog-count { font-size: 13px; color: var(--MNI-connect-muted); }
 
 			/* --- Credential row --- */
 			.cred-row { display: flex; align-items: center; gap: 12px; padding: 10px 0; }
 			.cred-icon {
 				width: 28px; height: 28px; border-radius: 6px; flex-shrink: 0;
-				background: var(--n8n-connect-icon-bg); color: var(--n8n-connect-icon-text);
+				background: var(--MNI-connect-icon-bg); color: var(--MNI-connect-icon-text);
 				font-size: 13px; font-weight: 600; display: flex; align-items: center; justify-content: center;
 			}
 			img.cred-icon { background: none; object-fit: contain; }
 			.cred-meta { flex: 1; min-width: 0; }
-			.cred-name { display: block; font-size: 14px; font-weight: 600; color: var(--n8n-connect-label); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-			.cred-sub { display: block; font-size: 12px; color: var(--n8n-connect-muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-			.cred-sub.error { color: var(--n8n-connect-error); }
+			.cred-name { display: block; font-size: 14px; font-weight: 600; color: var(--MNI-connect-label); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+			.cred-sub { display: block; font-size: 12px; color: var(--MNI-connect-muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+			.cred-sub.error { color: var(--MNI-connect-error); }
 
 			/* --- Buttons --- */
 			.btn {
-				font-family: var(--n8n-connect-font-family); font-size: 13px; font-weight: 600;
-				padding: 8px 16px; border-radius: var(--n8n-connect-radius-input); border: 1px solid transparent; cursor: pointer;
+				font-family: var(--MNI-connect-font-family); font-size: 13px; font-weight: 600;
+				padding: 8px 16px; border-radius: var(--MNI-connect-radius-input); border: 1px solid transparent; cursor: pointer;
 				flex-shrink: 0;
 			}
-			.btn-primary { background: var(--n8n-connect-primary); color: var(--n8n-connect-primary-text); }
+			.btn-primary { background: var(--MNI-connect-primary); color: var(--MNI-connect-primary-text); }
 			.btn-primary:hover { opacity: 0.88; }
-			.btn-secondary { background: var(--n8n-connect-bg-card); color: var(--n8n-connect-label); border-color: var(--n8n-connect-border); }
-			.btn-secondary:hover { border-color: var(--n8n-connect-muted); }
+			.btn-secondary { background: var(--MNI-connect-bg-card); color: var(--MNI-connect-label); border-color: var(--MNI-connect-border); }
+			.btn-secondary:hover { border-color: var(--MNI-connect-muted); }
 
 			.cred-connected { position: relative; }
 			.btn-connected {
 				display: inline-flex; align-items: center; gap: 6px; cursor: pointer;
-				background: var(--n8n-connect-bg-card); border: 1px solid var(--n8n-connect-border); border-radius: var(--n8n-connect-radius-input);
-				color: var(--n8n-connect-label); font-size: 13px; font-weight: 600; padding: 8px 12px;
+				background: var(--MNI-connect-bg-card); border: 1px solid var(--MNI-connect-border); border-radius: var(--MNI-connect-radius-input);
+				color: var(--MNI-connect-label); font-size: 13px; font-weight: 600; padding: 8px 12px;
 			}
-			.btn-connected:hover { border-color: var(--n8n-connect-muted); }
-			.btn-connected .caret { color: var(--n8n-connect-muted); }
-			.btn-connected .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--n8n-connect-ok); }
-			.cred-menu { display: none; position: fixed; min-width: 150px; background: var(--n8n-connect-bg-card); border: 1px solid var(--n8n-connect-border); border-radius: 6px; box-shadow: var(--n8n-connect-shadow-dialog); z-index: 40; }
+			.btn-connected:hover { border-color: var(--MNI-connect-muted); }
+			.btn-connected .caret { color: var(--MNI-connect-muted); }
+			.btn-connected .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--MNI-connect-ok); }
+			.cred-menu { display: none; position: fixed; min-width: 150px; background: var(--MNI-connect-bg-card); border: 1px solid var(--MNI-connect-border); border-radius: 6px; box-shadow: var(--MNI-connect-shadow-dialog); z-index: 40; }
 			.cred-menu.open { display: block; }
-			.btn-disconnect { display: block; width: 100%; text-align: left; white-space: nowrap; background: none; border: 0; padding: 8px 14px; font-size: 13px; color: var(--n8n-connect-error); cursor: pointer; }
-			.btn-disconnect:hover { background: var(--n8n-connect-error-bg); }
-			.cred-blocked { font-size: 13px; color: var(--n8n-connect-muted); }
+			.btn-disconnect { display: block; width: 100%; text-align: left; white-space: nowrap; background: none; border: 0; padding: 8px 14px; font-size: 13px; color: var(--MNI-connect-error); cursor: pointer; }
+			.btn-disconnect:hover { background: var(--MNI-connect-error-bg); }
+			.cred-blocked { font-size: 13px; color: var(--MNI-connect-muted); }
 		</style>
 	</head>
 	<body>
@@ -155,7 +155,7 @@
 		{{/inline}}
 
 		<iframe
-			id='n8n-chat-frame'
+			id='MNI-chat-frame'
 			title='Chat'
 			sandbox='{{sandbox}}'
 			data-src='{{iframeSrc}}'
@@ -174,7 +174,7 @@
 			      announcement can't arrive before the listener exists. --}}
 			<script>
 				(function () {
-					var frame = document.getElementById('n8n-chat-frame');
+					var frame = document.getElementById('MNI-chat-frame');
 					var endpoint = frame.getAttribute('data-refresh-url') || '';
 					if (!endpoint) return;
 					var lifetime = parseFloat(frame.getAttribute('data-refresh-expires-in')) || 0;
@@ -201,7 +201,7 @@
 						// so the sender has to be the frame itself.
 						if (!frame || event.source !== frame.contentWindow) return;
 						var data = event.data;
-						if (!data || data.type !== 'n8n-chat-frame-ready') return;
+						if (!data || data.type !== 'MNI-chat-frame-ready') return;
 						latched = true;
 						if (event.ports && event.ports.length) port = event.ports[0];
 						if (portTimer) { clearTimeout(portTimer); portTimer = null; }
@@ -212,13 +212,13 @@
 							return;
 						}
 						if (pendingToken) {
-							port.postMessage({ type: 'n8n-chat-auth-token', token: pendingToken });
+							port.postMessage({ type: 'MNI-chat-auth-token', token: pendingToken });
 							pendingToken = '';
 						}
 					});
 
 					function deliver(token) {
-						if (port) { port.postMessage({ type: 'n8n-chat-auth-token', token: token }); return; }
+						if (port) { port.postMessage({ type: 'MNI-chat-auth-token', token: token }); return; }
 						// Hold the newest token rather than lose a one-shot post: a refresh can beat
 						// the frame's own bootstrap.
 						pendingToken = token;
@@ -278,7 +278,7 @@
 							cache: 'no-store',
 							// Custom header, so the request needs a preflight no other origin gets
 							// past. This is the CSRF guard on the leg.
-							headers: { 'x-n8n-chat-refresh': '1' },
+							headers: { 'x-MNI-chat-refresh': '1' },
 						})
 							.then(function (response) {
 								if (!response.ok) throw new Error('refresh failed: ' + response.status);
@@ -306,22 +306,22 @@
 		{{#if hasCredentials}}
 			<div
 				class='connect-bar{{#if ready}} all-connected{{/if}}'
-				id='n8n-connect-bar'
+				id='MNI-connect-bar'
 				data-test-mode='{{#if testMode}}true{{else}}false{{/if}}'
 				data-use-dialog='{{#if useDialog}}true{{else}}false{{/if}}'
 				data-visitor-email='{{visitorEmail}}'
 			>
-				<span class='bar-info' id='n8n-connect-bar-info'>
-					<button type='button' class='bar-icon' aria-describedby='n8n-connect-bar-tooltip' aria-label='About the accounts this chat uses'>
+				<span class='bar-info' id='MNI-connect-bar-info'>
+					<button type='button' class='bar-icon' aria-describedby='MNI-connect-bar-tooltip' aria-label='About the accounts this chat uses'>
 						<svg class='icon-pending' width='17' height='17' viewBox='0 0 16 16' fill='none' stroke='currentColor' stroke-width='1.3' aria-hidden='true'><circle cx='8' cy='8' r='6.7' /><path d='M8 7.3v3.5' stroke-linecap='round' /><circle cx='8' cy='5.1' r='.8' fill='currentColor' stroke='none' /></svg>
 						<svg class='icon-ok' width='17' height='17' viewBox='0 0 16 16' fill='none' stroke='currentColor' stroke-width='1.3' aria-hidden='true'><circle cx='8' cy='8' r='6.7' /><path d='m5.2 8.2 1.9 1.9 3.7-4' stroke-linecap='round' stroke-linejoin='round' /></svg>
 					</button>
-					<span class='bar-tooltip' role='tooltip' id='n8n-connect-bar-tooltip'>
+					<span class='bar-tooltip' role='tooltip' id='MNI-connect-bar-tooltip'>
 						<span class='bar-tooltip-body'>Chatting runs actions on your behalf, using accounts you connect. You can disconnect them at any time. <a href='https://docs.n8n.io/administer/manage-credentials/end-user-credentials' target='_blank' rel='noopener noreferrer'>Learn more</a></span>
 					</span>
 				</span>
-				<span class='bar-text' id='n8n-connect-bar-text'>{{barText}}</span>
-				<button class='btn btn-primary bar-action' id='n8n-connect-bar-action'><span class='dot'></span><span class='label'>{{#if ready}}Manage{{else}}Connect{{/if}}</span></button>
+				<span class='bar-text' id='MNI-connect-bar-text'>{{barText}}</span>
+				<button class='btn btn-primary bar-action' id='MNI-connect-bar-action'><span class='dot'></span><span class='label'>{{#if ready}}Manage{{else}}Connect{{/if}}</span></button>
 			</div>
 
 			{{!-- Holds the real per-credential authorize/revoke links, which is why it
@@ -330,11 +330,11 @@
 			      carrying a Disconnect control, so omitting it would leave the bar's
 			      Manage with nothing to open.
  --}}
-			<div class='overlay' id='n8n-connect-overlay'>
-				<div class='dialog' role='dialog' aria-modal='true' aria-labelledby='n8n-connect-dialog-title'>
+			<div class='overlay' id='MNI-connect-overlay'>
+				<div class='dialog' role='dialog' aria-modal='true' aria-labelledby='MNI-connect-dialog-title'>
 					<div class='dialog-head'>
-						<span class='dialog-title' id='n8n-connect-dialog-title'>Connect your accounts</span>
-						<button class='dialog-close' id='n8n-connect-close' aria-label='Close'>&times;</button>
+						<span class='dialog-title' id='MNI-connect-dialog-title'>Connect your accounts</span>
+						<button class='dialog-close' id='MNI-connect-close' aria-label='Close'>&times;</button>
 					</div>
 					<div class='dialog-sub'>Chatting uses these accounts on your behalf.</div>
 					<div class='dialog-list'>
@@ -343,8 +343,8 @@
 						{{/each}}
 					</div>
 					<div class='dialog-foot'>
-						<span class='dialog-count' id='n8n-connect-count'>{{footerText}}</span>
-						<button class='btn btn-primary' id='n8n-connect-done'>Done</button>
+						<span class='dialog-count' id='MNI-connect-count'>{{footerText}}</span>
+						<button class='btn btn-primary' id='MNI-connect-done'>Done</button>
 					</div>
 				</div>
 			</div>
@@ -354,7 +354,7 @@
 			(function () {
 				// Held here, not in the frame, whose storage dies with its opaque origin on
 				// every reload. Keyed by path so two chats don't share a conversation.
-				var key = 'n8n-chat-shell/sessionId' + window.location.pathname;
+				var key = 'MNI-chat-shell/sessionId' + window.location.pathname;
 				var sessionId = '';
 				try { sessionId = window.localStorage.getItem(key) || ''; } catch (error) {}
 				if (!sessionId) {
@@ -364,7 +364,7 @@
 							: String(Date.now()) + Math.random().toString(16).slice(2);
 					try { window.localStorage.setItem(key, sessionId); } catch (error) {}
 				}
-				var frame = document.getElementById('n8n-chat-frame');
+				var frame = document.getElementById('MNI-chat-frame');
 				frame.src = frame.getAttribute('data-src') + '#sessionId=' + encodeURIComponent(sessionId);
 			})();
 		</script>
@@ -372,12 +372,12 @@
 		{{#if hasCredentials}}
 			<script>
 				(function () {
-					var frame = document.getElementById('n8n-chat-frame');
-					var overlay = document.getElementById('n8n-connect-overlay');
-					var barEl = document.getElementById('n8n-connect-bar');
-					var barTextEl = document.getElementById('n8n-connect-bar-text');
-					var barLabelEl = document.querySelector('#n8n-connect-bar-action .label');
-					var countEl = document.getElementById('n8n-connect-count');
+					var frame = document.getElementById('MNI-chat-frame');
+					var overlay = document.getElementById('MNI-connect-overlay');
+					var barEl = document.getElementById('MNI-connect-bar');
+					var barTextEl = document.getElementById('MNI-connect-bar-text');
+					var barLabelEl = document.querySelector('#MNI-connect-bar-action .label');
+					var countEl = document.getElementById('MNI-connect-count');
 
 					// State comes from the rendered rows, never from an interpolated view
 					// model - that keeps script context free of server-supplied values.
@@ -441,13 +441,13 @@
 
 					// The frame only ever learns ready/count, never a name, icon or authorize
 					// URL - it uses this solely to disable its own input while accounts are
-					// outstanding. Must match `@n8n/chat/src/utils/credentialStatus.ts`.
+					// outstanding. Must match `@MNI/chat/src/utils/credentialStatus.ts`.
 					function notifyFrame() {
 						if (!frame || !frame.contentWindow) return;
 						var count = connectedCount();
 						frame.contentWindow.postMessage(
 							{
-								type: 'n8n-chat:credential-status',
+								type: 'MNI-chat:credential-status',
 								ready: total <= count,
 								missingCount: Math.max(total - count, 0),
 								testMode: TEST_MODE,
@@ -483,7 +483,7 @@
 						// opener.parent, so the sender has to be the frame itself.
 						if (!frame || event.source !== frame.contentWindow) return;
 						var data = event.data;
-						if (!data || data.type !== 'n8n-chat-credentials-rejected' || !Array.isArray(data.ids)) return;
+						if (!data || data.type !== 'MNI-chat-credentials-rejected' || !Array.isArray(data.ids)) return;
 
 						data.ids.forEach(function (credentialId) {
 							if (typeof credentialId !== 'string') return;
@@ -500,7 +500,7 @@
 					window.addEventListener('message', function (event) {
 						if (!frame || event.source !== frame.contentWindow) return;
 						var data = event.data;
-						if (!data || data.type !== 'n8n-chat-connect-requested') return;
+						if (!data || data.type !== 'MNI-chat-connect-requested') return;
 						if (overlay) overlay.classList.add('open');
 					});
 
@@ -674,14 +674,14 @@
 						pendingId = key;
 						clearError(key);
 						refresh();
-						watchPopup(window.open(url, 'n8n-credential-connect', popupFeatures()));
+						watchPopup(window.open(url, 'MNI-credential-connect', popupFeatures()));
 					}
 
 					// Session-cookie auth plus the browser-id the session was issued with
 					// (stored on this same origin by the editor/consent pages).
 					function authHeaders() {
 						try {
-							var browserId = localStorage.getItem('n8n-browserId');
+							var browserId = localStorage.getItem('MNI-browserId');
 							if (browserId) return { 'browser-id': browserId };
 						} catch (e) {}
 						return {};
@@ -704,7 +704,7 @@
 					// popup there. The popup opens synchronously so it isn't a pop-under.
 					function reconnect(key, mintUrl) {
 						if (!key || !mintUrl) return;
-						var popup = window.open('', 'n8n-credential-connect', popupFeatures());
+						var popup = window.open('', 'MNI-credential-connect', popupFeatures());
 						pendingId = key;
 						clearError(key);
 						refresh();
@@ -766,8 +766,8 @@
 					});
 
 					// No dialog is rendered in test mode, so every use of it tolerates null.
-					var closeBtn = document.getElementById('n8n-connect-close');
-					var doneBtn = document.getElementById('n8n-connect-done');
+					var closeBtn = document.getElementById('MNI-connect-close');
+					var doneBtn = document.getElementById('MNI-connect-done');
 					if (closeBtn) closeBtn.addEventListener('click', function () { overlay.classList.remove('open'); });
 					if (doneBtn) doneBtn.addEventListener('click', function () { overlay.classList.remove('open'); });
 					if (overlay) {
@@ -793,11 +793,11 @@
 						if (overlay) overlay.classList.add('open');
 					}
 
-					var barAction = document.getElementById('n8n-connect-bar-action');
+					var barAction = document.getElementById('MNI-connect-bar-action');
 					if (barAction) barAction.addEventListener('click', openConnectOrDialog);
 
 					// Tap toggle for the tooltip, for browsers that don't focus a tapped button.
-					var barInfo = document.getElementById('n8n-connect-bar-info');
+					var barInfo = document.getElementById('MNI-connect-bar-info');
 					var barIcon = barInfo && barInfo.querySelector('.bar-icon');
 					if (barIcon) {
 						barIcon.addEventListener('click', function (e) {

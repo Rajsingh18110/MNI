@@ -6,8 +6,8 @@ import type {
 	IHttpRequestHelper,
 	INodeProperties,
 	Icon,
-} from 'n8n-workflow';
-import { UserError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { UserError } from 'MNI-workflow';
 
 export class ZscalerZiaApi implements ICredentialType {
 	name = 'zscalerZiaApi';

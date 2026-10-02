@@ -1,6 +1,6 @@
-import { ModelStreamStallError } from '@n8n/agents';
-import { isDnsFailure, isTransportFailure } from '@n8n/backend-network';
-import { isQuotaExhaustedError } from '@n8n/instance-ai';
+import { ModelStreamStallError } from '@MNI/agents';
+import { isDnsFailure, isTransportFailure } from '@MNI/backend-network';
+import { isQuotaExhaustedError } from '@MNI/instance-ai';
 
 /**
  * True when a run died because the connection to the model provider broke.

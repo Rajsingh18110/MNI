@@ -1,10 +1,10 @@
 import type { Mock } from 'vitest';
-import type { SourceControlledFile } from '@n8n/api-types';
-import { isContainedWithin } from '@n8n/backend-common';
-import { GLOBAL_ADMIN_ROLE, GLOBAL_MEMBER_ROLE, User, type WorkflowEntity } from '@n8n/db';
-import { Container } from '@n8n/di';
+import type { SourceControlledFile } from '@MNI/api-types';
+import { isContainedWithin } from '@MNI/backend-common';
+import { GLOBAL_ADMIN_ROLE, GLOBAL_MEMBER_ROLE, User, type WorkflowEntity } from '@MNI/db';
+import { Container } from '@MNI/di';
 import { mock } from 'vitest-mock-extended';
-import { InstanceSettings } from 'n8n-core';
+import { InstanceSettings } from 'MNI-core';
 import type { CommitResult, PullResult, PushResult } from 'simple-git';
 
 import { SourceControlPreferencesService } from '@/modules/source-control.ee/source-control-preferences.service.ee';
@@ -29,8 +29,8 @@ const mockStatusService = {
 	getStatus: vi.fn(),
 };
 
-vi.mock('@n8n/backend-common', async () => ({
-	...(await vi.importActual<typeof import('@n8n/backend-common')>('@n8n/backend-common')),
+vi.mock('@MNI/backend-common', async () => ({
+	...(await vi.importActual<typeof import('@MNI/backend-common')>('@MNI/backend-common')),
 	isContainedWithin: vi.fn(() => true),
 }));
 

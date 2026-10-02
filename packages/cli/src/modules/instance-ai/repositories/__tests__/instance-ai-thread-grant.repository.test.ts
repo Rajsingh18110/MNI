@@ -1,4 +1,4 @@
-import type { InsertQueryBuilder } from '@n8n/typeorm';
+import type { InsertQueryBuilder } from '@MNI/typeorm';
 import { mock } from 'vitest-mock-extended';
 
 import type { InstanceAiThreadGrant } from '../../entities/instance-ai-thread-grant.entity';

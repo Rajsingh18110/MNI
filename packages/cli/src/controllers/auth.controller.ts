@@ -2,11 +2,11 @@ import {
 	LoginRequestDto,
 	ResolveSignupTokenQueryDto,
 	SSO_LOGIN_REQUIRED_ERROR_CODE,
-} from '@n8n/api-types';
-import { Logger } from '@n8n/backend-common';
-import { Time } from '@n8n/constants';
-import type { User, PublicUser, AuthProviderType } from '@n8n/db';
-import { UserRepository, AuthenticatedRequest, GLOBAL_OWNER_ROLE } from '@n8n/db';
+} from '@MNI/api-types';
+import { Logger } from '@MNI/backend-common';
+import { Time } from '@MNI/constants';
+import type { User, PublicUser, AuthProviderType } from '@MNI/db';
+import { UserRepository, AuthenticatedRequest, GLOBAL_OWNER_ROLE } from '@MNI/db';
 import {
 	Body,
 	createBodyKeyedRateLimiter,
@@ -14,7 +14,7 @@ import {
 	Post,
 	Query,
 	RestController,
-} from '@n8n/decorators';
+} from '@MNI/decorators';
 import { isEmail } from 'class-validator';
 import { Response } from 'express';
 

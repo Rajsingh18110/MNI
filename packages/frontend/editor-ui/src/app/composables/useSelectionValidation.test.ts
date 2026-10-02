@@ -1,6 +1,6 @@
 import { createTestingPinia } from '@pinia/testing';
-import { NodeConnectionTypes, NodeHelpers } from 'n8n-workflow';
-import type { IConnections, INodeTypeDescription } from 'n8n-workflow';
+import { NodeConnectionTypes, NodeHelpers } from 'MNI-workflow';
+import type { IConnections, INodeTypeDescription } from 'MNI-workflow';
 import { setActivePinia } from 'pinia';
 import { createApp, shallowRef } from 'vue';
 
@@ -32,7 +32,7 @@ function makeNode(overrides: Partial<INodeUi> = {}): INodeUi {
 	return {
 		id: overrides.id ?? overrides.name ?? 'a',
 		name: overrides.name ?? overrides.id ?? 'a',
-		type: overrides.type ?? 'n8n-nodes-base.set',
+		type: overrides.type ?? 'MNI-nodes-base.set',
 		typeVersion: overrides.typeVersion ?? 1,
 		position: overrides.position ?? [0, 0],
 		parameters: overrides.parameters ?? {},
@@ -43,7 +43,7 @@ function makeNode(overrides: Partial<INodeUi> = {}): INodeUi {
 function makeNodeType(overrides: Partial<INodeTypeDescription> = {}): INodeTypeDescription {
 	return {
 		displayName: overrides.displayName ?? 'Set',
-		name: overrides.name ?? 'n8n-nodes-base.set',
+		name: overrides.name ?? 'MNI-nodes-base.set',
 		group: overrides.group ?? ['transform'],
 		version: overrides.version ?? 1,
 		description: overrides.description ?? '',
@@ -61,11 +61,11 @@ type LinearGraphFixture = {
 };
 
 const triggerNodeTypes: Record<string, INodeTypeDescription> = {
-	'n8n-nodes-base.manualTrigger': makeNodeType({
-		name: 'n8n-nodes-base.manualTrigger',
+	'MNI-nodes-base.manualTrigger': makeNodeType({
+		name: 'MNI-nodes-base.manualTrigger',
 		group: ['trigger'],
 	}),
-	'n8n-nodes-base.set': makeNodeType({ name: 'n8n-nodes-base.set' }),
+	'MNI-nodes-base.set': makeNodeType({ name: 'MNI-nodes-base.set' }),
 };
 
 /** A feeds B and C, which each leave the selection: two exit nodes. */
@@ -190,7 +190,7 @@ describe('useSelectionValidation', () => {
 	it('returns valid for a 2-node connected non-trigger selection', () => {
 		const graph = makeLinearGraph();
 		const nodeTypes: Record<string, INodeTypeDescription> = {
-			'n8n-nodes-base.set': makeNodeType({ name: 'n8n-nodes-base.set' }),
+			'MNI-nodes-base.set': makeNodeType({ name: 'MNI-nodes-base.set' }),
 		};
 		setupGraph(graph, nodeTypes);
 
@@ -205,7 +205,7 @@ describe('useSelectionValidation', () => {
 		const injectedStore = setupGraph(
 			graph,
 			{
-				'n8n-nodes-base.set': makeNodeType({ name: 'n8n-nodes-base.set' }),
+				'MNI-nodes-base.set': makeNodeType({ name: 'MNI-nodes-base.set' }),
 			},
 			() => undefined,
 			INJECTED_WF_ID,
@@ -225,7 +225,7 @@ describe('useSelectionValidation', () => {
 	it('returns valid for a single-node extraction selection', () => {
 		const graph = makeLinearGraph();
 		setupGraph(graph, {
-			'n8n-nodes-base.set': makeNodeType({ name: 'n8n-nodes-base.set' }),
+			'MNI-nodes-base.set': makeNodeType({ name: 'MNI-nodes-base.set' }),
 		});
 
 		const { isSelectionExtractable } = useSelectionValidation();
@@ -237,7 +237,7 @@ describe('useSelectionValidation', () => {
 	it('returns node-already-grouped when a selection id belongs to an existing group', () => {
 		const graph = makeLinearGraph();
 		const workflowDocumentStore = setupGraph(graph, {
-			'n8n-nodes-base.set': makeNodeType({ name: 'n8n-nodes-base.set' }),
+			'MNI-nodes-base.set': makeNodeType({ name: 'MNI-nodes-base.set' }),
 		});
 		workflowDocumentStore.createGroup(['a', 'c'], 'Group');
 
@@ -249,13 +249,13 @@ describe('useSelectionValidation', () => {
 
 	it('returns trigger-selected when a trigger is part of the selection', () => {
 		const graph = makeLinearGraph();
-		graph.nodes.a.type = 'n8n-nodes-base.manualTrigger';
+		graph.nodes.a.type = 'MNI-nodes-base.manualTrigger';
 		const nodeTypes: Record<string, INodeTypeDescription> = {
-			'n8n-nodes-base.manualTrigger': makeNodeType({
-				name: 'n8n-nodes-base.manualTrigger',
+			'MNI-nodes-base.manualTrigger': makeNodeType({
+				name: 'MNI-nodes-base.manualTrigger',
 				group: ['trigger'],
 			}),
-			'n8n-nodes-base.set': makeNodeType({ name: 'n8n-nodes-base.set' }),
+			'MNI-nodes-base.set': makeNodeType({ name: 'MNI-nodes-base.set' }),
 		};
 		setupGraph(graph, nodeTypes);
 
@@ -278,7 +278,7 @@ describe('useSelectionValidation', () => {
 
 		it('accepts a selection that holds a trigger', () => {
 			const graph = makeLinearGraph();
-			graph.nodes.a.type = 'n8n-nodes-base.manualTrigger';
+			graph.nodes.a.type = 'MNI-nodes-base.manualTrigger';
 			setupGraph(graph, triggerNodeTypes);
 
 			const { isSelectionGroupable } = useSelectionValidation();
@@ -288,7 +288,7 @@ describe('useSelectionValidation', () => {
 
 		it('still refuses a selection with two entry nodes', () => {
 			const graph = makeTwoEntryGraph();
-			setupGraph(graph, { 'n8n-nodes-base.set': makeNodeType({ name: 'n8n-nodes-base.set' }) });
+			setupGraph(graph, { 'MNI-nodes-base.set': makeNodeType({ name: 'MNI-nodes-base.set' }) });
 
 			const { isSelectionGroupable } = useSelectionValidation();
 
@@ -303,7 +303,7 @@ describe('useSelectionValidation', () => {
 
 		it('accepts a selection with two entry nodes', () => {
 			const graph = makeTwoEntryGraph();
-			setupGraph(graph, { 'n8n-nodes-base.set': makeNodeType({ name: 'n8n-nodes-base.set' }) });
+			setupGraph(graph, { 'MNI-nodes-base.set': makeNodeType({ name: 'MNI-nodes-base.set' }) });
 
 			const { isSelectionGroupable } = useSelectionValidation();
 
@@ -312,7 +312,7 @@ describe('useSelectionValidation', () => {
 
 		it('accepts a selection with two exit nodes', () => {
 			const graph = makeTwoExitGraph();
-			setupGraph(graph, { 'n8n-nodes-base.set': makeNodeType({ name: 'n8n-nodes-base.set' }) });
+			setupGraph(graph, { 'MNI-nodes-base.set': makeNodeType({ name: 'MNI-nodes-base.set' }) });
 
 			const { isSelectionGroupable } = useSelectionValidation();
 
@@ -321,7 +321,7 @@ describe('useSelectionValidation', () => {
 
 		it('still refuses a selection that holds a trigger', () => {
 			const graph = makeLinearGraph();
-			graph.nodes.a.type = 'n8n-nodes-base.manualTrigger';
+			graph.nodes.a.type = 'MNI-nodes-base.manualTrigger';
 			setupGraph(graph, triggerNodeTypes);
 
 			const { isSelectionGroupable } = useSelectionValidation();
@@ -331,7 +331,7 @@ describe('useSelectionValidation', () => {
 
 		it('still refuses to extract a selection with two entry nodes', () => {
 			const graph = makeTwoEntryGraph();
-			setupGraph(graph, { 'n8n-nodes-base.set': makeNodeType({ name: 'n8n-nodes-base.set' }) });
+			setupGraph(graph, { 'MNI-nodes-base.set': makeNodeType({ name: 'MNI-nodes-base.set' }) });
 
 			const { isSelectionExtractable } = useSelectionValidation();
 
@@ -341,7 +341,7 @@ describe('useSelectionValidation', () => {
 
 	it('refuses a selection with two entry nodes while both rules are off', () => {
 		const graph = makeTwoEntryGraph();
-		setupGraph(graph, { 'n8n-nodes-base.set': makeNodeType({ name: 'n8n-nodes-base.set' }) });
+		setupGraph(graph, { 'MNI-nodes-base.set': makeNodeType({ name: 'MNI-nodes-base.set' }) });
 
 		const { isSelectionGroupable } = useSelectionValidation();
 
@@ -350,7 +350,7 @@ describe('useSelectionValidation', () => {
 
 	it('refuses a selection with two exit nodes while both rules are off', () => {
 		const graph = makeTwoExitGraph();
-		setupGraph(graph, { 'n8n-nodes-base.set': makeNodeType({ name: 'n8n-nodes-base.set' }) });
+		setupGraph(graph, { 'MNI-nodes-base.set': makeNodeType({ name: 'MNI-nodes-base.set' }) });
 
 		const { isSelectionGroupable } = useSelectionValidation();
 
@@ -362,7 +362,7 @@ describe('useSelectionValidation', () => {
 		// selection, so the subgraph parser rejects the selection.
 		const graph = makeLinearGraph();
 		setupGraph(graph, {
-			'n8n-nodes-base.set': makeNodeType({ name: 'n8n-nodes-base.set' }),
+			'MNI-nodes-base.set': makeNodeType({ name: 'MNI-nodes-base.set' }),
 		});
 
 		const { isSelectionGroupable } = useSelectionValidation();
@@ -376,7 +376,7 @@ describe('useSelectionValidation', () => {
 		const b = makeNode({ id: 'b', name: 'B' });
 		setupGraph(
 			{ nodes: { a, b }, connections: {} },
-			{ 'n8n-nodes-base.set': makeNodeType({ name: 'n8n-nodes-base.set' }) },
+			{ 'MNI-nodes-base.set': makeNodeType({ name: 'MNI-nodes-base.set' }) },
 		);
 
 		const { isSelectionGroupable } = useSelectionValidation();
@@ -391,7 +391,7 @@ describe('useSelectionValidation', () => {
 	it('validates against candidate connections when provided', () => {
 		const graph = makeLinearGraph();
 		setupGraph(graph, {
-			'n8n-nodes-base.set': makeNodeType({ name: 'n8n-nodes-base.set' }),
+			'MNI-nodes-base.set': makeNodeType({ name: 'MNI-nodes-base.set' }),
 		});
 
 		const candidateConnections: IConnections = {
@@ -414,7 +414,7 @@ describe('useSelectionValidation', () => {
 		it('returns the input ids unchanged when no node has sub-nodes', () => {
 			const graph = makeLinearGraph();
 			setupGraph(graph, {
-				'n8n-nodes-base.set': makeNodeType({ name: 'n8n-nodes-base.set' }),
+				'MNI-nodes-base.set': makeNodeType({ name: 'MNI-nodes-base.set' }),
 			});
 
 			const { expandSelectionWithSubNodes } = useSelectionValidation();
@@ -429,7 +429,7 @@ describe('useSelectionValidation', () => {
 			graph.nodes.tool = tool;
 
 			setupGraph(graph, {
-				'n8n-nodes-base.set': makeNodeType({ name: 'n8n-nodes-base.set' }),
+				'MNI-nodes-base.set': makeNodeType({ name: 'MNI-nodes-base.set' }),
 			});
 
 			const workflowDocumentStore = useWorkflowDocumentStore(createWorkflowDocumentId(TEST_WF_ID));
@@ -450,7 +450,7 @@ describe('useSelectionValidation', () => {
 			const memory = makeNode({ id: 'memory', name: 'Memory' });
 			graph.nodes.memory = memory;
 			setupGraph(graph, {
-				'n8n-nodes-base.set': makeNodeType({ name: 'n8n-nodes-base.set' }),
+				'MNI-nodes-base.set': makeNodeType({ name: 'MNI-nodes-base.set' }),
 			});
 
 			const workflowDocumentStore = useWorkflowDocumentStore(createWorkflowDocumentId(TEST_WF_ID));
@@ -469,7 +469,7 @@ describe('useSelectionValidation', () => {
 		it('drops ids that do not resolve to a node before validating', () => {
 			const graph = makeLinearGraph();
 			setupGraph(graph, {
-				'n8n-nodes-base.set': makeNodeType({ name: 'n8n-nodes-base.set' }),
+				'MNI-nodes-base.set': makeNodeType({ name: 'MNI-nodes-base.set' }),
 			});
 
 			const { resolveGroupableNodeIds } = useSelectionValidation();
@@ -484,7 +484,7 @@ describe('useSelectionValidation', () => {
 			graph.connections.Memory = { ai_memory: [[{ node: 'B', type: 'ai_memory', index: 0 }]] };
 
 			setupGraph(graph, {
-				'n8n-nodes-base.set': makeNodeType({ name: 'n8n-nodes-base.set' }),
+				'MNI-nodes-base.set': makeNodeType({ name: 'MNI-nodes-base.set' }),
 			});
 
 			const workflowDocumentStore = useWorkflowDocumentStore(createWorkflowDocumentId(TEST_WF_ID));
@@ -502,7 +502,7 @@ describe('useSelectionValidation', () => {
 		it('returns null when no id resolves to a node', () => {
 			const graph = makeLinearGraph();
 			setupGraph(graph, {
-				'n8n-nodes-base.set': makeNodeType({ name: 'n8n-nodes-base.set' }),
+				'MNI-nodes-base.set': makeNodeType({ name: 'MNI-nodes-base.set' }),
 			});
 
 			const { resolveGroupableNodeIds } = useSelectionValidation();
@@ -515,7 +515,7 @@ describe('useSelectionValidation', () => {
 			// A → B → C; selecting only A and C is an invalid subgraph
 			const graph = makeLinearGraph();
 			setupGraph(graph, {
-				'n8n-nodes-base.set': makeNodeType({ name: 'n8n-nodes-base.set' }),
+				'MNI-nodes-base.set': makeNodeType({ name: 'MNI-nodes-base.set' }),
 			});
 
 			const { resolveGroupableNodeIds } = useSelectionValidation();
@@ -527,7 +527,7 @@ describe('useSelectionValidation', () => {
 			const graph = makeLinearGraph();
 			graph.nodes.sticky = makeNode({ id: 'sticky', name: 'Sticky', type: STICKY_NODE_TYPE });
 			setupGraph(graph, {
-				'n8n-nodes-base.set': makeNodeType({ name: 'n8n-nodes-base.set' }),
+				'MNI-nodes-base.set': makeNodeType({ name: 'MNI-nodes-base.set' }),
 				[STICKY_NODE_TYPE]: makeNodeType({ name: STICKY_NODE_TYPE, group: ['input'] }),
 			});
 
@@ -546,7 +546,7 @@ describe('useSelectionValidation', () => {
 			graph.nodes.sticky = makeNode({ id: 'sticky', name: 'Sticky', type: STICKY_NODE_TYPE });
 			graph.nodes.sticky2 = makeNode({ id: 'sticky2', name: 'Sticky2', type: STICKY_NODE_TYPE });
 			setupGraph(graph, {
-				'n8n-nodes-base.set': makeNodeType({ name: 'n8n-nodes-base.set' }),
+				'MNI-nodes-base.set': makeNodeType({ name: 'MNI-nodes-base.set' }),
 				[STICKY_NODE_TYPE]: makeNodeType({ name: STICKY_NODE_TYPE, group: ['input'] }),
 			});
 
@@ -562,7 +562,7 @@ describe('useSelectionValidation', () => {
 			const graph = makeLinearGraph();
 			graph.nodes.sticky = makeNode({ id: 'sticky', name: 'Sticky', type: STICKY_NODE_TYPE });
 			setupGraph(graph, {
-				'n8n-nodes-base.set': makeNodeType({ name: 'n8n-nodes-base.set' }),
+				'MNI-nodes-base.set': makeNodeType({ name: 'MNI-nodes-base.set' }),
 				[STICKY_NODE_TYPE]: makeNodeType({ name: STICKY_NODE_TYPE, group: ['input'] }),
 			});
 
@@ -575,7 +575,7 @@ describe('useSelectionValidation', () => {
 		it('rejects a single connectable member when empty groups are disabled', () => {
 			const graph = makeLinearGraph();
 			setupGraph(graph, {
-				'n8n-nodes-base.set': makeNodeType({ name: 'n8n-nodes-base.set' }),
+				'MNI-nodes-base.set': makeNodeType({ name: 'MNI-nodes-base.set' }),
 			});
 			mockedStore(usePostHog).isFeatureEnabled.mockReturnValue(false);
 
@@ -593,7 +593,7 @@ describe('useSelectionValidation', () => {
 			graph.connections.Memory = { ai_memory: [[{ node: 'B', type: 'ai_memory', index: 0 }]] };
 
 			setupGraph(graph, {
-				'n8n-nodes-base.set': makeNodeType({ name: 'n8n-nodes-base.set' }),
+				'MNI-nodes-base.set': makeNodeType({ name: 'MNI-nodes-base.set' }),
 			});
 
 			const workflowDocumentStore = useWorkflowDocumentStore(createWorkflowDocumentId(TEST_WF_ID));
@@ -620,7 +620,7 @@ describe('useSelectionValidation', () => {
 		graph.connections.Memory = { ai_memory: [[{ node: 'B', type: 'ai_memory', index: 0 }]] };
 
 		setupGraph(graph, {
-			'n8n-nodes-base.set': makeNodeType({ name: 'n8n-nodes-base.set' }),
+			'MNI-nodes-base.set': makeNodeType({ name: 'MNI-nodes-base.set' }),
 		});
 
 		const workflowDocumentStore = useWorkflowDocumentStore(createWorkflowDocumentId(TEST_WF_ID));
@@ -651,7 +651,7 @@ describe('useSelectionValidation', () => {
 		};
 
 		setupGraph(graph, {
-			'n8n-nodes-base.set': makeNodeType({ name: 'n8n-nodes-base.set' }),
+			'MNI-nodes-base.set': makeNodeType({ name: 'MNI-nodes-base.set' }),
 		});
 
 		const { isSelectionExtractable, isSelectionGroupable } = useSelectionValidation();
@@ -679,7 +679,7 @@ describe('useSelectionValidation', () => {
 		};
 
 		setupGraph(graph, {
-			'n8n-nodes-base.set': makeNodeType({ name: 'n8n-nodes-base.set' }),
+			'MNI-nodes-base.set': makeNodeType({ name: 'MNI-nodes-base.set' }),
 		});
 
 		const { isSelectionGroupable } = useSelectionValidation();
@@ -699,7 +699,7 @@ describe('useSelectionValidation', () => {
 		};
 
 		setupGraph(graph, {
-			'n8n-nodes-base.set': makeNodeType({ name: 'n8n-nodes-base.set' }),
+			'MNI-nodes-base.set': makeNodeType({ name: 'MNI-nodes-base.set' }),
 		});
 
 		const candidateConnections: IConnections = {
@@ -728,13 +728,13 @@ describe('useSelectionValidation', () => {
 	it('allows grouping an end node with multiple main outputs', () => {
 		const graph = makeLinearGraph();
 		const nodeTypes: Record<string, INodeTypeDescription> = {
-			'n8n-nodes-base.set': makeNodeType({ name: 'n8n-nodes-base.set' }),
-			'n8n-nodes-base.if': makeNodeType({
-				name: 'n8n-nodes-base.if',
+			'MNI-nodes-base.set': makeNodeType({ name: 'MNI-nodes-base.set' }),
+			'MNI-nodes-base.if': makeNodeType({
+				name: 'MNI-nodes-base.if',
 				outputs: ['main', 'main'],
 			}),
 		};
-		graph.nodes.b.type = 'n8n-nodes-base.if';
+		graph.nodes.b.type = 'MNI-nodes-base.if';
 		setupGraph(graph, nodeTypes);
 
 		const { isSelectionGroupable } = useSelectionValidation();
@@ -746,13 +746,13 @@ describe('useSelectionValidation', () => {
 	it('returns multiple-output-branches for extraction when the end node has multiple main outputs', () => {
 		const graph = makeLinearGraph();
 		const nodeTypes: Record<string, INodeTypeDescription> = {
-			'n8n-nodes-base.set': makeNodeType({ name: 'n8n-nodes-base.set' }),
-			'n8n-nodes-base.if': makeNodeType({
-				name: 'n8n-nodes-base.if',
+			'MNI-nodes-base.set': makeNodeType({ name: 'MNI-nodes-base.set' }),
+			'MNI-nodes-base.if': makeNodeType({
+				name: 'MNI-nodes-base.if',
 				outputs: ['main', 'main'],
 			}),
 		};
-		graph.nodes.b.type = 'n8n-nodes-base.if';
+		graph.nodes.b.type = 'MNI-nodes-base.if';
 		setupGraph(graph, nodeTypes);
 
 		const { isSelectionExtractable } = useSelectionValidation();
@@ -767,13 +767,13 @@ describe('useSelectionValidation', () => {
 	it('resolves dynamic outputs before validating end node branch count for extraction', () => {
 		const graph = makeLinearGraph();
 		const nodeTypes: Record<string, INodeTypeDescription> = {
-			'n8n-nodes-base.set': makeNodeType({ name: 'n8n-nodes-base.set' }),
-			'n8n-nodes-base.switch': makeNodeType({
-				name: 'n8n-nodes-base.switch',
+			'MNI-nodes-base.set': makeNodeType({ name: 'MNI-nodes-base.set' }),
+			'MNI-nodes-base.switch': makeNodeType({
+				name: 'MNI-nodes-base.switch',
 				outputs: '={{ $parameter.rules }}',
 			}),
 		};
-		graph.nodes.b.type = 'n8n-nodes-base.switch';
+		graph.nodes.b.type = 'MNI-nodes-base.switch';
 		setupGraph(graph, nodeTypes, () => [NodeConnectionTypes.Main, NodeConnectionTypes.Main]);
 
 		const getNodeOutputsSpy = vi.spyOn(NodeHelpers, 'getNodeOutputs');
@@ -784,7 +784,7 @@ describe('useSelectionValidation', () => {
 		expect(getNodeOutputsSpy).toHaveBeenCalledWith(
 			expect.objectContaining({ expression: expect.any(Object) }),
 			graph.nodes.b,
-			nodeTypes['n8n-nodes-base.switch'],
+			nodeTypes['MNI-nodes-base.switch'],
 		);
 		expect(result.valid).toBe(false);
 		if (!result.valid) {
@@ -795,7 +795,7 @@ describe('useSelectionValidation', () => {
 	it('allows grouping when the end node has an error output branch', () => {
 		const graph = makeLinearGraph();
 		const nodeTypes: Record<string, INodeTypeDescription> = {
-			'n8n-nodes-base.set': makeNodeType({ name: 'n8n-nodes-base.set' }),
+			'MNI-nodes-base.set': makeNodeType({ name: 'MNI-nodes-base.set' }),
 		};
 		graph.nodes.b.onError = 'continueErrorOutput';
 		setupGraph(graph, nodeTypes);
@@ -809,7 +809,7 @@ describe('useSelectionValidation', () => {
 	it('returns multiple-output-branches for extraction when the end node has an error output branch', () => {
 		const graph = makeLinearGraph();
 		const nodeTypes: Record<string, INodeTypeDescription> = {
-			'n8n-nodes-base.set': makeNodeType({ name: 'n8n-nodes-base.set' }),
+			'MNI-nodes-base.set': makeNodeType({ name: 'MNI-nodes-base.set' }),
 		};
 		graph.nodes.b.onError = 'continueErrorOutput';
 		setupGraph(graph, nodeTypes);

@@ -9,8 +9,8 @@ import type {
 	WorkflowExecuteMode,
 	Workflow,
 	IWorkflowGroup,
-} from 'n8n-workflow';
-import { NodeConnectionTypes, NodeHelpers, UserError, TelemetryHelpers } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeConnectionTypes, NodeHelpers, UserError, TelemetryHelpers } from 'MNI-workflow';
 import type { CanvasConnection, CanvasNode } from '@/features/workflows/canvas/canvas.types';
 import { CanvasConnectionMode } from '@/features/workflows/canvas/canvas.types';
 import type {
@@ -25,8 +25,8 @@ import type {
 	ICredentialsResponse,
 	IUsedCredential,
 } from '@/features/credentials/credentials.types';
-import type { IWorkflowTemplate, IWorkflowTemplateNode } from '@n8n/rest-api-client/api/templates';
-import type { WorkflowDataUpdate } from '@n8n/rest-api-client/api/workflows';
+import type { IWorkflowTemplate, IWorkflowTemplateNode } from '@MNI/rest-api-client/api/templates';
+import type { WorkflowDataUpdate } from '@MNI/rest-api-client/api/workflows';
 import {
 	AddConnectionCommand,
 	AddNodeCommand,
@@ -56,7 +56,7 @@ import {
 } from '@/__tests__/mocks';
 import { mock } from 'vitest-mock-extended';
 import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';
-import { useTypeAvailabilityPoliciesStore } from '@n8n/frontend-module-type-availability-policies';
+import { useTypeAvailabilityPoliciesStore } from '@MNI/frontend-module-type-availability-policies';
 import { useCredentialsStore } from '@/features/credentials/credentials.store';
 import { useExecutionsStore } from '@/features/execution/executions/executions.store';
 import { useNodeCreatorStore } from '@/features/shared/nodeCreator/nodeCreator.store';
@@ -82,16 +82,16 @@ import {
 	WEBHOOK_NODE_TYPE,
 	EnterpriseEditionFeature,
 } from '@/app/constants';
-import { TELEMETRY_EVENT } from '@n8n/telemetry';
-import { STORES } from '@n8n/stores';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { TELEMETRY_EVENT } from '@MNI/telemetry';
+import { STORES } from '@MNI/stores';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import type { Connection } from '@vue-flow/core';
 import { useClipboard } from '@vueuse/core';
 import { createCanvasConnectionHandleString } from '@/features/workflows/canvas/canvas.utils';
 import { isVNode, nextTick, reactive, ref, shallowRef } from 'vue';
 import type { CanvasLayoutEvent } from '@/features/workflows/canvas/composables/useCanvasLayout';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
-import { useToast } from '@n8n/composables/useToast';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
+import { useToast } from '@MNI/composables/useToast';
 import * as nodeHelpers from '@/app/composables/useNodeHelpers';
 import * as workflowsApi from '@/app/api/workflows';
 import { useBuilderStore } from '@/features/ai/assistant/builder.store';
@@ -135,7 +135,7 @@ vi.mock('@/app/api/workflows', async (importOriginal) => {
 	};
 });
 
-vi.mock('@n8n/rest-api-client/api/workflowHistory', () => ({
+vi.mock('@MNI/rest-api-client/api/workflowHistory', () => ({
 	getWorkflowHistory: vi.fn().mockResolvedValue([]),
 	getWorkflowVersion: vi.fn().mockResolvedValue({ workflow: { nodes: [], connections: {} } }),
 }));
@@ -146,8 +146,8 @@ import * as nodeGroupOperationGuards from '@/features/workflows/canvas/composabl
 import { DEFAULT_NODE_SIZE, GRID_SIZE, HORIZONTAL_NODE_STEP } from '@/app/utils/nodeViewUtils';
 import { AGENT_NODE_SIZE } from '@/features/agents/utils/agentNode';
 
-vi.mock('n8n-workflow', async (importOriginal) => {
-	const actual = await importOriginal<typeof import('n8n-workflow')>();
+vi.mock('MNI-workflow', async (importOriginal) => {
+	const actual = await importOriginal<typeof import('MNI-workflow')>();
 	return {
 		...actual,
 		TelemetryHelpers: {
@@ -173,14 +173,14 @@ vi.mock('@vueuse/core', async (importOriginal) => {
 	};
 });
 
-vi.mock('@n8n/composables/useTelemetry', () => {
+vi.mock('@MNI/composables/useTelemetry', () => {
 	const track = vi.fn();
 	return {
 		useTelemetry: () => ({ track }),
 	};
 });
 
-vi.mock('@n8n/composables/useToast', () => {
+vi.mock('@MNI/composables/useToast', () => {
 	const showMessage = vi.fn();
 	const showError = vi.fn();
 	const showToast = vi.fn();
@@ -982,19 +982,19 @@ describe('useCanvasOperations', () => {
 				id: 'main',
 				name: 'Main Node',
 				position: [100, 100],
-				type: 'n8n-nodes-base.agent',
+				type: 'MNI-nodes-base.agent',
 			});
 
 			const toolNode = createTestNode({
 				id: 'tool',
 				name: 'Tool Node',
 				position: [100, 400],
-				type: 'n8n-nodes-base.searchTool',
+				type: 'MNI-nodes-base.searchTool',
 			});
 
 			const hitlNode = createTestNode({
 				id: 'hitl',
-				type: 'n8n-nodes-base.manualChatTriggerHitlTool',
+				type: 'MNI-nodes-base.manualChatTriggerHitlTool',
 			});
 
 			const nodeTypeDescription = mockNodeTypeDescription();
@@ -1039,7 +1039,7 @@ describe('useCanvasOperations', () => {
 				id: 'main',
 				name: 'Main Node',
 				position: [100, 100],
-				type: 'n8n-nodes-base.agent',
+				type: 'MNI-nodes-base.agent',
 			});
 
 			// Tool node is too close to main node (less than PUSH_NODES_OFFSET)
@@ -1047,12 +1047,12 @@ describe('useCanvasOperations', () => {
 				id: 'tool',
 				name: 'Tool Node',
 				position: [100, 150],
-				type: 'n8n-nodes-base.searchTool',
+				type: 'MNI-nodes-base.searchTool',
 			});
 
 			const hitlNode = createTestNode({
 				id: 'hitl',
-				type: 'n8n-nodes-base.manualChatTriggerHitlTool',
+				type: 'MNI-nodes-base.manualChatTriggerHitlTool',
 			});
 
 			const nodeTypeDescription = mockNodeTypeDescription();
@@ -1098,20 +1098,20 @@ describe('useCanvasOperations', () => {
 				id: 'main',
 				name: 'Main Node',
 				position: [100, 100],
-				type: 'n8n-nodes-base.agent',
+				type: 'MNI-nodes-base.agent',
 			});
 
 			const toolNode = createTestNode({
 				id: 'tool',
 				name: 'Tool Node',
 				position: [100, 300],
-				type: 'n8n-nodes-base.searchTool',
+				type: 'MNI-nodes-base.searchTool',
 			});
 
 			// Regular node, not a HITL tool
 			const regularNode = createTestNode({
 				id: 'regular',
-				type: 'n8n-nodes-base.set',
+				type: 'MNI-nodes-base.set',
 			});
 
 			const nodeTypeDescription = mockNodeTypeDescription();
@@ -1151,7 +1151,7 @@ describe('useCanvasOperations', () => {
 				id: 'main',
 				name: 'Main Node',
 				position: [100, 100],
-				type: 'n8n-nodes-base.agent',
+				type: 'MNI-nodes-base.agent',
 			});
 
 			// Not a tool node
@@ -1159,12 +1159,12 @@ describe('useCanvasOperations', () => {
 				id: 'regular',
 				name: 'Regular Node',
 				position: [100, 300],
-				type: 'n8n-nodes-base.set',
+				type: 'MNI-nodes-base.set',
 			});
 
 			const hitlNode = createTestNode({
 				id: 'hitl',
-				type: 'n8n-nodes-base.manualChatTriggerHitlTool',
+				type: 'MNI-nodes-base.manualChatTriggerHitlTool',
 			});
 
 			const nodeTypeDescription = mockNodeTypeDescription();
@@ -1780,8 +1780,8 @@ describe('useCanvasOperations', () => {
 	describe('addNodesAndConnections', () => {
 		it('keeps the replacement node aligned when an earlier batch item fails', async () => {
 			const nodeTypesStore = useNodeTypesStore();
-			const failedType = 'n8n-nodes-base.limited';
-			const replacementType = 'n8n-nodes-base.replacement';
+			const failedType = 'MNI-nodes-base.limited';
+			const replacementType = 'MNI-nodes-base.replacement';
 			const anchor = createTestNode({
 				id: 'anchor',
 				name: 'Empty Group Anchor',
@@ -4155,7 +4155,7 @@ describe('useCanvasOperations', () => {
 
 				const sourceNode = mockNode({
 					id: '1',
-					type: 'n8n-nodes-community.sourceType',
+					type: 'MNI-nodes-community.sourceType',
 					name: 'Source Node',
 					typeVersion: 1,
 				});
@@ -4167,7 +4167,7 @@ describe('useCanvasOperations', () => {
 
 				const targetNode = mockNode({
 					id: '2',
-					type: 'n8n-nodes-community.targetType',
+					type: 'MNI-nodes-community.targetType',
 					name: 'Target Node',
 					typeVersion: 1,
 				});
@@ -5096,11 +5096,11 @@ describe('useCanvasOperations', () => {
 
 		it('should not copy a selection that contains a restricted node type', async () => {
 			const nodes = buildImportNodes();
-			nodes[1].type = 'n8n-nodes-base.slack';
+			nodes[1].type = 'MNI-nodes-base.slack';
 			workflowDocumentStoreInstance.allNodes = nodes;
 			vi.spyOn(workflowDocumentStoreInstance, 'getNodesByIds').mockReturnValue(nodes);
 			mockedStore(useTypeAvailabilityPoliciesStore).getNodeTypeAvailability.mockImplementation(
-				(name) => ({ name, available: name !== 'n8n-nodes-base.slack' }),
+				(name) => ({ name, available: name !== 'MNI-nodes-base.slack' }),
 			);
 
 			const { copyNodes } = useCanvasOperations();
@@ -5562,8 +5562,8 @@ describe('useCanvasOperations', () => {
 		it('should initialize nodes', () => {
 			const updateNodeByIdSpy = vi.spyOn(workflowDocumentStoreInstance, 'updateNodeById');
 			const nodes = [
-				createTestNode({ type: 'n8n-nodes-community.testNode1', name: 'testNode1' }),
-				createTestNode({ type: 'n8n-nodes-community.testNode2', name: 'testNode2' }),
+				createTestNode({ type: 'MNI-nodes-community.testNode1', name: 'testNode1' }),
+				createTestNode({ type: 'MNI-nodes-community.testNode2', name: 'testNode2' }),
 			];
 			const workflow = createTestWorkflow({
 				nodes,
@@ -5584,7 +5584,7 @@ describe('useCanvasOperations', () => {
 		it('should remove preview token from node type when initializing', () => {
 			const updateNodeByIdSpy = vi.spyOn(workflowDocumentStoreInstance, 'updateNodeById');
 			const nodeWithPreview = createTestNode({
-				type: 'n8n-nodes-community.testNode-preview',
+				type: 'MNI-nodes-community.testNode-preview',
 				name: 'testNode',
 			});
 			const workflow = createTestWorkflow({
@@ -5598,7 +5598,7 @@ describe('useCanvasOperations', () => {
 
 			expect(updateNodeByIdSpy).toHaveBeenCalledTimes(1);
 			const updatedNode = updateNodeByIdSpy.mock.calls[0][1] as Record<string, unknown>;
-			expect(updatedNode.type).toBe('n8n-nodes-community.testNode');
+			expect(updatedNode.type).toBe('MNI-nodes-community.testNode');
 			expect(updatedNode.type).not.toContain('-preview');
 		});
 	});
@@ -5609,7 +5609,7 @@ describe('useCanvasOperations', () => {
 			nodeTypesStore.getIsNodeInstalled = vi.fn().mockReturnValue(true);
 
 			const nodeTypeDescription = mockNodeTypeDescription({
-				name: 'n8n-nodes-base.httpRequest',
+				name: 'MNI-nodes-base.httpRequest',
 				webhooks: [
 					{
 						name: 'default',
@@ -5623,14 +5623,14 @@ describe('useCanvasOperations', () => {
 			const { addNode } = useCanvasOperations();
 			const node = addNode(
 				{
-					type: 'n8n-nodes-base.httpRequest',
+					type: 'MNI-nodes-base.httpRequest',
 					typeVersion: 1,
 					position: [100, 100],
 				},
 				nodeTypeDescription,
 			);
 
-			expect(nodeTypesStore.getIsNodeInstalled).toHaveBeenCalledWith('n8n-nodes-base.httpRequest');
+			expect(nodeTypesStore.getIsNodeInstalled).toHaveBeenCalledWith('MNI-nodes-base.httpRequest');
 			expect(node).toBeDefined();
 		});
 
@@ -5639,13 +5639,13 @@ describe('useCanvasOperations', () => {
 			nodeTypesStore.getIsNodeInstalled = vi.fn().mockReturnValue(false);
 
 			const nodeTypeDescription = mockNodeTypeDescription({
-				name: 'n8n-nodes-community.notInstalled',
+				name: 'MNI-nodes-community.notInstalled',
 			});
 
 			const { addNode } = useCanvasOperations();
 			const node = addNode(
 				{
-					type: 'n8n-nodes-community.notInstalled',
+					type: 'MNI-nodes-community.notInstalled',
 					typeVersion: 1,
 					position: [100, 100],
 				},
@@ -5653,20 +5653,20 @@ describe('useCanvasOperations', () => {
 			);
 
 			expect(nodeTypesStore.getIsNodeInstalled).toHaveBeenCalledWith(
-				'n8n-nodes-community.notInstalled',
+				'MNI-nodes-community.notInstalled',
 			);
 			expect(node).toBeDefined();
 		});
 
 		it('should name a new Message an Agent node AI Agent V2 when inline agents are enabled', () => {
 			const nodeTypeDescription = {
-				...mockNodeTypeDescription({ name: 'n8n-nodes-base.messageAnAgent' }),
+				...mockNodeTypeDescription({ name: 'MNI-nodes-base.messageAnAgent' }),
 				defaults: { name: 'Message an Agent' },
 			};
 
 			const { addNode } = useCanvasOperations();
 			const node = addNode(
-				{ type: 'n8n-nodes-base.messageAnAgent', typeVersion: 2, position: [100, 100] },
+				{ type: 'MNI-nodes-base.messageAnAgent', typeVersion: 2, position: [100, 100] },
 				nodeTypeDescription,
 			);
 
@@ -5677,13 +5677,13 @@ describe('useCanvasOperations', () => {
 			mockedStore(usePostHog).isFeatureEnabled.mockReturnValue(false);
 			mockedStore(useNodeTypesStore).getNodeType = vi.fn().mockReturnValue(null);
 			const nodeTypeDescription = {
-				...mockNodeTypeDescription({ name: 'n8n-nodes-base.messageAnAgent' }),
+				...mockNodeTypeDescription({ name: 'MNI-nodes-base.messageAnAgent' }),
 				defaults: { name: 'Message an Agent' },
 			};
 
 			const { addNode } = useCanvasOperations();
 			const node = addNode(
-				{ type: 'n8n-nodes-base.messageAnAgent', typeVersion: 2, position: [100, 100] },
+				{ type: 'MNI-nodes-base.messageAnAgent', typeVersion: 2, position: [100, 100] },
 				nodeTypeDescription,
 			);
 
@@ -6988,7 +6988,7 @@ describe('useCanvasOperations', () => {
 					{
 						id: oldId1,
 						name: 'Node 1',
-						type: 'n8n-nodes-base.noOp',
+						type: 'MNI-nodes-base.noOp',
 						typeVersion: 1,
 						position: [0, 0] as [number, number],
 						parameters: {},
@@ -6996,7 +6996,7 @@ describe('useCanvasOperations', () => {
 					{
 						id: oldId2,
 						name: 'Node 2',
-						type: 'n8n-nodes-base.noOp',
+						type: 'MNI-nodes-base.noOp',
 						typeVersion: 1,
 						position: [200, 0] as [number, number],
 						parameters: {},
@@ -7056,7 +7056,7 @@ describe('useCanvasOperations', () => {
 					{
 						id: oldId1,
 						name: 'Node 1',
-						type: 'n8n-nodes-base.noOp',
+						type: 'MNI-nodes-base.noOp',
 						typeVersion: 1,
 						position: [0, 0] as [number, number],
 						parameters: {},
@@ -7064,7 +7064,7 @@ describe('useCanvasOperations', () => {
 					{
 						id: oldId2,
 						name: 'Node 2',
-						type: 'n8n-nodes-base.noOp',
+						type: 'MNI-nodes-base.noOp',
 						typeVersion: 1,
 						position: [200, 0] as [number, number],
 						parameters: {},
@@ -7114,7 +7114,7 @@ describe('useCanvasOperations', () => {
 					{
 						id: oldId1,
 						name: 'Node 1',
-						type: 'n8n-nodes-base.noOp',
+						type: 'MNI-nodes-base.noOp',
 						typeVersion: 1,
 						position: [0, 0] as [number, number],
 						parameters: {},
@@ -7122,7 +7122,7 @@ describe('useCanvasOperations', () => {
 					{
 						id: oldId2,
 						name: 'Node 2',
-						type: 'n8n-nodes-base.noOp',
+						type: 'MNI-nodes-base.noOp',
 						typeVersion: 1,
 						position: [200, 0] as [number, number],
 						parameters: {},
@@ -7166,7 +7166,7 @@ describe('useCanvasOperations', () => {
 					{
 						id: 'old-node-id-1',
 						name: 'Node 1',
-						type: 'n8n-nodes-base.noOp',
+						type: 'MNI-nodes-base.noOp',
 						typeVersion: 1,
 						position: [0, 0] as [number, number],
 						parameters: {},
@@ -7174,7 +7174,7 @@ describe('useCanvasOperations', () => {
 					{
 						id: 'old-node-id-2',
 						name: 'Node 2',
-						type: 'n8n-nodes-base.noOp',
+						type: 'MNI-nodes-base.noOp',
 						typeVersion: 1,
 						position: [200, 0] as [number, number],
 						parameters: {},
@@ -9021,14 +9021,14 @@ describe('useCanvasOperations', () => {
 			const toolNode = createTestNode({
 				id: 'tool',
 				name: 'Tool',
-				type: 'n8n-nodes-base.calculator',
+				type: 'MNI-nodes-base.calculator',
 				position: [300, 300],
 			});
 
 			const hitlNode = createTestNode({
 				id: 'hitl',
 				name: 'HITL',
-				type: 'n8n-nodes-base.manualChatTriggerHitlTool',
+				type: 'MNI-nodes-base.manualChatTriggerHitlTool',
 			});
 
 			const agentNodeTypeDescription = mockNodeTypeDescription({
@@ -9037,20 +9037,20 @@ describe('useCanvasOperations', () => {
 				outputs: [NodeConnectionTypes.AiTool],
 			});
 			const toolNodeTypeDescription = mockNodeTypeDescription({
-				name: 'n8n-nodes-base.calculator',
+				name: 'MNI-nodes-base.calculator',
 				inputs: [NodeConnectionTypes.AiTool],
 				outputs: [NodeConnectionTypes.Main],
 			});
 			const hitlNodeTypeDescription = mockNodeTypeDescription({
-				name: 'n8n-nodes-base.manualChatTriggerHitlTool',
+				name: 'MNI-nodes-base.manualChatTriggerHitlTool',
 				inputs: [NodeConnectionTypes.AiTool],
 				outputs: [NodeConnectionTypes.AiTool],
 			});
 
 			nodeTypesStore.getNodeType = vi.fn((type: string) => {
 				if (type === AGENT_NODE_TYPE) return agentNodeTypeDescription;
-				if (type === 'n8n-nodes-base.calculator') return toolNodeTypeDescription;
-				if (type === 'n8n-nodes-base.manualChatTriggerHitlTool') return hitlNodeTypeDescription;
+				if (type === 'MNI-nodes-base.calculator') return toolNodeTypeDescription;
+				if (type === 'MNI-nodes-base.manualChatTriggerHitlTool') return hitlNodeTypeDescription;
 				return null;
 			});
 
@@ -9164,7 +9164,7 @@ describe('useCanvasOperations', () => {
 
 		it('should open sub-workflow with static ID', async () => {
 			const node = createTestNode({
-				type: 'n8n-nodes-base.executeWorkflow',
+				type: 'MNI-nodes-base.executeWorkflow',
 				parameters: {
 					workflowId: {
 						__rl: true,
@@ -9193,7 +9193,7 @@ describe('useCanvasOperations', () => {
 			} as unknown as ReturnType<typeof workflowHelpersModule.useWorkflowHelpers>);
 
 			const node = createTestNode({
-				type: 'n8n-nodes-base.executeWorkflow',
+				type: 'MNI-nodes-base.executeWorkflow',
 				parameters: {
 					workflowId: {
 						__rl: true,
@@ -9227,7 +9227,7 @@ describe('useCanvasOperations', () => {
 			} as unknown as ReturnType<typeof workflowHelpersModule.useWorkflowHelpers>);
 
 			const node = createTestNode({
-				type: 'n8n-nodes-base.executeWorkflow',
+				type: 'MNI-nodes-base.executeWorkflow',
 				parameters: {
 					workflowId: {
 						__rl: true,
@@ -9253,7 +9253,7 @@ describe('useCanvasOperations', () => {
 			} as unknown as ReturnType<typeof workflowHelpersModule.useWorkflowHelpers>);
 
 			const node = createTestNode({
-				type: 'n8n-nodes-base.executeWorkflow',
+				type: 'MNI-nodes-base.executeWorkflow',
 				parameters: {
 					workflowId: {
 						__rl: true,

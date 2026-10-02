@@ -3,7 +3,7 @@ import {
 	type IExecuteFunctions,
 	type INode,
 	type ResourceMapperField,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { GOOGLE_SHEETS_SHEET_URL_REGEX } from '../../../../constants';
 import { GoogleSheet } from '../../../v2/helpers/GoogleSheet';
@@ -217,7 +217,7 @@ describe('Test Google Sheets, autoMapInputData', () => {
 		id: '1',
 		name: 'Postgres node',
 		typeVersion: 2,
-		type: 'n8n-nodes-base.postgres',
+		type: 'MNI-nodes-base.postgres',
 		position: [60, 760],
 		parameters: {
 			operation: 'executeQuery',
@@ -477,7 +477,7 @@ describe('Test Google Sheets, checkForSchemaChanges', () => {
 		id: '1',
 		name: 'Google Sheets',
 		typeVersion: 4.4,
-		type: 'n8n-nodes-base.googleSheets',
+		type: 'MNI-nodes-base.googleSheets',
 		position: [60, 760],
 		parameters: {
 			operation: 'append',

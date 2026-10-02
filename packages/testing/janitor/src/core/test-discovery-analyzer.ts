@@ -5,7 +5,7 @@
  * Replaces the Playwright `--list` + regex approach used by distribute-tests.mjs.
  */
 
-import type { DiscoveredSpec } from '@n8n/test-impact';
+import type { DiscoveredSpec } from '@MNI/test-impact';
 import {
 	Node,
 	SyntaxKind,
@@ -19,7 +19,7 @@ import { getConfig } from '../config.js';
 import { getSourceFiles } from './project-loader.js';
 import { getRelativePath } from '../utils/paths.js';
 
-// DiscoveredSpec is owned by @n8n/test-impact (the framework-free orchestrator
+// DiscoveredSpec is owned by @MNI/test-impact (the framework-free orchestrator
 // consumes it); re-exported here so this module's DiscoveryReport + existing
 // importers keep their API.
 

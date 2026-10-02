@@ -3,18 +3,18 @@ import type {
 	McpClient,
 	McpServerConfig,
 	McpConnectionFailedEvent,
-} from '@n8n/agents';
-import type { AgentJsonMcpServerConfig } from '@n8n/api-types';
-import type { CustomFetch } from '@n8n/backend-network';
-import { ensureError } from '@n8n/utils/errors/ensure-error';
-import { isRecord } from '@n8n/utils/is-record';
+} from '@MNI/agents';
+import type { AgentJsonMcpServerConfig } from '@MNI/api-types';
+import type { CustomFetch } from '@MNI/backend-network';
+import { ensureError } from '@MNI/utils/errors/ensure-error';
+import { isRecord } from '@MNI/utils/is-record';
 import {
 	getMcpAuthHeaders,
 	isMcpOAuth2Authentication,
 	OperationalError,
 	shouldRefreshMcpOAuth2Token,
-} from 'n8n-workflow';
-import type { ICredentialDataDecryptedObject, McpRegistryConnection } from 'n8n-workflow';
+} from 'MNI-workflow';
+import type { ICredentialDataDecryptedObject, McpRegistryConnection } from 'MNI-workflow';
 
 import {
 	prepareMcpRegistryConnection,
@@ -56,7 +56,7 @@ type DerivedAuth = {
  * Derive static (non-OAuth2) auth headers from a credential resolved through
  * the agents `CredentialProvider`. Mirrors the shape of `getAuthHeaders` in
  * the langchain MCP node — kept inline here so the agents module does not
- * have to depend on `@n8n/nodes-langchain`.
+ * have to depend on `@MNI/nodes-langchain`.
  *
  * For any supported OAuth2 credential type, the Bearer header is computed from
  * the already-stored `oauthTokenData.access_token`. `createAuthFetch` refreshes
@@ -159,7 +159,7 @@ export async function buildMcpClientForServer(
 		onConnectionFailed,
 		onToolCallSettled,
 	} = deps;
-	const { McpClient } = await import('@n8n/agents');
+	const { McpClient } = await import('@MNI/agents');
 
 	const derivedAuth = await deriveAuthHeaders(server, credentialProvider);
 	const { credentialData, credentialType } = derivedAuth;
@@ -217,15 +217,15 @@ export async function buildMcpClientForServer(
 					const result = await oauthService.refreshOAuth2CredentialById(
 						credentialId,
 						projectId,
-						getBearerTokenRevision(currentHeaders, oauthTokenData?.n8n_expires_at),
+						getBearerTokenRevision(currentHeaders, oauthTokenData?.MNI_expires_at),
 					);
 					if (!result) return null;
 
 					if (oauthTokenData) {
 						if (result.expiresAt === undefined) {
-							delete oauthTokenData.n8n_expires_at;
+							delete oauthTokenData.MNI_expires_at;
 						} else {
-							oauthTokenData.n8n_expires_at = String(result.expiresAt);
+							oauthTokenData.MNI_expires_at = String(result.expiresAt);
 						}
 						if (result.expiresInSeconds === undefined) {
 							delete oauthTokenData.expires_in;

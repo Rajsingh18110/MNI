@@ -2,7 +2,7 @@ import { createComponentRenderer } from '@/__tests__/render';
 import { createTestingPinia } from '@pinia/testing';
 import { setActivePinia } from 'pinia';
 import { fireEvent } from '@testing-library/vue';
-import type { AgentCapabilitySummary, InlineAgentConfig } from '@n8n/api-types';
+import type { AgentCapabilitySummary, InlineAgentConfig } from '@MNI/api-types';
 import CanvasNodeAgent from './CanvasNodeAgent.vue';
 import { createCanvasNodeProvide } from '@/features/workflows/canvas/__tests__/utils';
 import { CanvasNodeRenderType } from '@/features/workflows/canvas/canvas.types';
@@ -90,7 +90,7 @@ function renderWithAgent(value: string, cachedResultName?: string) {
 		global: {
 			provide: createCanvasNodeProvide({
 				data: {
-					type: 'n8n-nodes-base.messageAnAgent',
+					type: 'MNI-nodes-base.messageAnAgent',
 					render: {
 						type: CanvasNodeRenderType.Agent,
 						options: {
@@ -109,7 +109,7 @@ function renderWithInlineAgent(inlineAgent: InlineAgentConfig, agentIdValue = ''
 		global: {
 			provide: createCanvasNodeProvide({
 				data: {
-					type: 'n8n-nodes-base.messageAnAgent',
+					type: 'MNI-nodes-base.messageAnAgent',
 					render: {
 						type: CanvasNodeRenderType.Agent,
 						options: {

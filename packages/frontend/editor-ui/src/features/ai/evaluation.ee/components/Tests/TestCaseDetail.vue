@@ -2,7 +2,7 @@
 import { computed, ref, watch } from 'vue';
 import { storeToRefs } from 'pinia';
 import { useDebounceFn } from '@vueuse/core';
-import { useI18n, type BaseTextKey } from '@n8n/i18n';
+import { useI18n, type BaseTextKey } from '@MNI/i18n';
 import {
 	N8nActionDropdown,
 	N8nButton,
@@ -11,10 +11,10 @@ import {
 	N8nInlineTextEdit,
 	N8nInput,
 	N8nText,
-} from '@n8n/design-system';
-import { getParentNodes, mapConnectionsByDestination, NodeConnectionTypes } from 'n8n-workflow';
+} from '@MNI/design-system';
+import { getParentNodes, mapConnectionsByDestination, NodeConnectionTypes } from 'MNI-workflow';
 
-import { getDebounceTime } from '@n8n/composables/useDebounce';
+import { getDebounceTime } from '@MNI/composables/useDebounce';
 import { DEBOUNCE_TIME, MODAL_CONFIRM } from '@/app/constants';
 import { useMessage } from '@/app/composables/useMessage';
 import { injectWorkflowDocumentStore } from '@/app/stores/workflowDocument.store';
@@ -472,7 +472,7 @@ async function handleRun() {
 	padding: 0;
 	cursor: pointer;
 
-	&:hover :global(.n8n-text) {
+	&:hover :global(.MNI-text) {
 		text-decoration: underline;
 	}
 }

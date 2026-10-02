@@ -7,13 +7,13 @@ from anywhere with a terminal, resume tomorrow.
 This is a separate devcontainer config from the laptop one in
 `.devcontainer/` — it ships both agent CLIs, `tmux` for session persistence,
 Playwright system deps, and Docker-in-Docker (for testcontainers and
-`pnpm --filter n8n-containers services`), on the same Postgres sidecar setup.
+`pnpm --filter MNI-containers services`), on the same Postgres sidecar setup.
 
 ## One-time setup (~5 min)
 
 1. Add provider keys at [github.com/settings/codespaces](https://github.com/settings/codespaces).
    Add `ANTHROPIC_API_KEY` for Claude Code. Add `OPENROUTER_API_KEY` for OpenCode.
-   Give both secrets access to `n8n-io/n8n`.
+   Give both secrets access to `MNI-io/MNI`.
    (Alternative for Max subscriptions: `CLAUDE_CODE_OAUTH_TOKEN` from `claude setup-token`.)
 2. Give the GitHub CLI the codespace scope:
 
@@ -62,7 +62,7 @@ pnpm agent:harness
 ```
 
 The command verifies the release checksum. It caches the bundle under
-`~/.cache/n8n-agent-harness`. It then links the bundle plugin into
+`~/.cache/MNI-agent-harness`. It then links the bundle plugin into
 `~/.config/opencode/plugins`. Run the command again after the lock changes.
 Restart OpenCode after the command completes.
 
@@ -141,12 +141,12 @@ The web UI stores opened projects in browser storage. If a new-session page
 shows **New project**, open `/workspaces/MNI` there once. Keep the same browser
 port when you reconnect to preserve this selection.
 
-The server runs in the detached tmux session `n8n-opencode-server`. Its log is
-`/workspaces/.n8n-opencode/server.log`. That directory also holds the server
+The server runs in the detached tmux session `MNI-opencode-server`. Its log is
+`/workspaces/.MNI-opencode/server.log`. That directory also holds the server
 credentials. It is readable only by its owner.
 An unhealthy server produces an error without stopping active work. Inspect
 the log through `pnpm session:shell`. To restart it after checking active work,
-run `tmux kill-session -t '=n8n-opencode-server'` in that shell. Then reconnect.
+run `tmux kill-session -t '=MNI-opencode-server'` in that shell. Then reconnect.
 Restart the server after changing provider secrets, server configuration, or
 the pinned harness release.
 
@@ -200,7 +200,7 @@ needs `gh` with the codespace scope, the same as `pnpm session`.
   membership.
 - **Configure the instance with `preview:*` labels.** `preview:enterprise` serves
   it with a licence, so enterprise features such as SSO and source control are
-  present. `preview:debug` sets `N8N_LOG_LEVEL=debug`. Adding or removing one
+  present. `preview:debug` sets `MNI_LOG_LEVEL=debug`. Adding or removing one
   re-serves the box; it never creates or deletes one. From a laptop the labels
   apply the same way — `pnpm preview refresh <pr>` reads them from the PR. The
   toggles are defined in `scripts/codespace-preview/preview-labels.mjs`; add new ones there.
@@ -217,7 +217,7 @@ needs `gh` with the codespace scope, the same as `pnpm session`.
   with `up`. Removing and adding the label works too, but it deletes the box and
   builds a new one.
 - **A PR from a fork gets no preview.** A codespace's token is scoped to
-  `n8n-io/n8n`, so it cannot check out a fork head.
+  `MNI-io/MNI`, so it cannot check out a fork head.
 - **A PR that predates this tooling has no `scripts/codespace-preview/preview-serve.mjs`.** The
   serve step says so and stops; rebase the PR on master and retry.
 
@@ -248,7 +248,7 @@ secrets and uses three optional secrets. Add them at
 same way as `ANTHROPIC_API_KEY`:
 
 - `AGENT_WORKER_TOKEN` — the shared bearer token. The worker sends it on each poll.
-- `N8N_DEQUEUE_URL` — the MNI webhook that returns a pending turn.
+- `MNI_DEQUEUE_URL` — the MNI webhook that returns a pending turn.
 - `OPENROUTER_API_KEY` — the model provider key for Sol.
 - `SLACK_BOT_TOKEN` — optional bot token for progress messages. It needs `chat:write` only.
 - `FLAKY_MCP_URL` and `FLAKY_MCP_TOKEN` — optional Flaky MCP connection for OpenCode.
@@ -340,7 +340,7 @@ the tools assume.
 ## Quality and security skills (Claude plugins)
 
 Claude sessions can also load the private skills from the
-`n8n-io/n8n-agent-skills` repository. `post-start.mjs` installs both plugins on
+`MNI-io/MNI-agent-skills` repository. `post-start.mjs` installs both plugins on
 each container start, so every session gets the skills with no per-session step:
 
 - `quality` — bug insights, defect attribution, flaky test investigation,
@@ -356,7 +356,7 @@ every plugin.
 
 The private marketplace uses the codespace's own GitHub auth — no extra token.
 `devcontainer.json` grants the codespace read access to
-`n8n-io/n8n-agent-skills` via `customizations.codespaces.repositories`, and
+`MNI-io/MNI-agent-skills` via `customizations.codespaces.repositories`, and
 **each user authorizes that access once when they create the codespace** (GitHub
 prompts for it, then remembers). Both repos are in the same org, which is what
 lets this work.
@@ -376,7 +376,7 @@ need a recreate to get the prompt.
 
 - A failed `skills repo reachable` line means the grant was not authorized.
 - A `marketplace add` failure mentioning `File exists` is a clone that died
-  partway through `~/.claude/plugins/marketplaces/n8n-io-n8n-agent-skills`, the
+  partway through `~/.claude/plugins/marketplaces/MNI-io-MNI-agent-skills`, the
   path the loader stages into before renaming it to the cache. This has been
   seen once as a transient failure, so the script removes that path and retries
   the add once.
@@ -420,7 +420,7 @@ refused` means nothing is listening on that port in the codespace yet; it
 starts serving as soon as the dev server is up, no restart needed. Pass ports
 to override the defaults (`pnpm session tunnel 5678 8080 5679`), but always
 forward the pair together with matching numbers: the Vite dev UI points its
-API base at `localhost:5678` (the `N8N_PORT` default), so an asymmetric or
+API base at `localhost:5678` (the `MNI_PORT` default), so an asymmetric or
 partial mapping breaks it.
 
 ## What survives what
@@ -471,11 +471,11 @@ After a stop, `pnpm session <name>` restarts the codespace (~30–60 s); run
   stale. The image fixes both: a credential helper reads the current token
   on each `git push` (`gitcredential-refresh.sh`), and a shim at
   `/usr/local/bin/gh` does the same for `gh`. The token is scoped to
-  `n8n-io/n8n`: fork-based flows do not work, push branches directly. Do
+  `MNI-io/MNI`: fork-based flows do not work, push branches directly. Do
   not add SSH keys as a workaround — they have no per-repo granularity.
 - Codespaces created by org members on this repo are **org-owned and
   org-billed** (organization ownership + a monthly Codespaces budget are
-  enabled for n8n-io). Codespaces created before that change, or by
+  enabled for MNI-io). Codespaces created before that change, or by
   non-members, bill to the personal account (free tier: 120 core-hours/month).
   If creation unexpectedly falls back to personal billing, the org budget is
   exhausted for the period.

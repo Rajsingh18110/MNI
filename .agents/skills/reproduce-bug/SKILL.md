@@ -30,7 +30,7 @@ Based on the affected area, pick the test layer and pattern:
 | Binary data | Vitest unit | NodeTestHarness assertBinaryData | `packages/core/nodes-testing/` |
 | Execution engine | Vitest integration | WorkflowRunner + DI container | `packages/cli/src/__tests__/` |
 | CLI / API | Vitest integration | setupTestServer + supertest | `packages/cli/test/integration/` |
-| Config | Vitest unit | GlobalConfig + Container | `packages/@n8n/config/src/configs/__tests__/` |
+| Config | Vitest unit | GlobalConfig + Container | `packages/@MNI/config/src/configs/__tests__/` |
 | Editor UI | Vitest | Vue Test Utils + Pinia | `packages/frontend/editor-ui/src/**/__tests__/` |
 | E2E / Canvas | Playwright | Test containers + composables | `packages/testing/playwright/` |
 
@@ -76,7 +76,7 @@ Write a regression test that:
 Complete the test safety gate in `/AGENTS.md` before you run the test:
 - Trace side effects from imports, constructors, hooks, and mocked branches
 - Keep filesystem access in a test-owned temporary directory
-- Set `N8N_USER_FOLDER` before importing modules that resolve it
+- Set `MNI_USER_FOLDER` before importing modules that resolve it
 - When a mock changes a state check, inspect and isolate the branch that it activates
 
 ## Step 8: Run and Score

@@ -1,6 +1,6 @@
 import { ref, computed } from 'vue';
-import type { PromotableResource, PromotionDirection } from '@n8n/api-types';
-import { useRootStore } from '@n8n/stores/useRootStore';
+import type { PromotableResource, PromotionDirection } from '@MNI/api-types';
+import { useRootStore } from '@MNI/stores/useRootStore';
 import { getPromotableChanges } from '../promotions.api';
 
 export function usePromotionChanges(projectId: string, direction: PromotionDirection = 'promote') {

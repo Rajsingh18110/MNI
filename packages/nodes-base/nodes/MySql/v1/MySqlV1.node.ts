@@ -10,8 +10,8 @@ import type {
 	INodeType,
 	INodeTypeBaseDescription,
 	INodeTypeDescription,
-} from 'n8n-workflow';
-import { NodeConnectionTypes, NodeOperationError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeConnectionTypes, NodeOperationError } from 'MNI-workflow';
 
 import { oldVersionNotice } from '@utils/descriptions';
 import { getResolvables } from '@utils/utilities';
@@ -163,7 +163,7 @@ const versionDescription: INodeTypeDescription = {
 					default: '',
 					placeholder: 'e.g. value1,value2,value3',
 					description:
-						'Comma-separated list of the values you want to use as query parameters. You can drag the values from the input panel on the left. <a href="https://docs.n8n.io/integrations/builtin/app-nodes/n8n-nodes-base.mysql/" target="_blank">More info</a>',
+						'Comma-separated list of the values you want to use as query parameters. You can drag the values from the input panel on the left. <a href="https://docs.n8n.io/integrations/builtin/app-nodes/MNI-nodes-base.mysql/" target="_blank">More info</a>',
 					hint: 'Comma-separated list of values: reference them in your query as $1, $2, $3…',
 					displayOptions: {
 						show: {
@@ -260,7 +260,7 @@ const versionDescription: INodeTypeDescription = {
 			},
 			default: 'id',
 			required: true,
-			// eslint-disable-next-line n8n-nodes-base/node-param-description-miscased-id
+			// eslint-disable-next-line MNI-nodes-base/node-param-description-miscased-id
 			description:
 				'Name of the property which decides which rows in the database should be updated. Normally that would be "id".',
 		},

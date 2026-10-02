@@ -1,7 +1,7 @@
-import { testDb } from '@n8n/backend-test-utils';
-import { SettingsRepository, type User } from '@n8n/db';
-import { Container } from '@n8n/di';
-import { CREDENTIAL_BLANKING_VALUE } from 'n8n-workflow';
+import { testDb } from '@MNI/backend-test-utils';
+import { SettingsRepository, type User } from '@MNI/db';
+import { Container } from '@MNI/di';
+import { CREDENTIAL_BLANKING_VALUE } from 'MNI-workflow';
 import { vi } from 'vitest';
 
 import { OtelSettingsService, OTEL_SETTINGS_KEY } from '@/modules/otel/otel-settings.service';
@@ -16,7 +16,7 @@ const validSettings = {
 	exporterProtocol: 'http/protobuf',
 	exporterEndpoint: 'http://collector.example.com:4318',
 	exporterTracingPath: '/v1/traces',
-	exporterServiceName: 'n8n-prod',
+	exporterServiceName: 'MNI-prod',
 	exporterHeaders: 'authorization=Bearer my-token',
 	tracesSampleRate: 0.5,
 	startupConnectivityTimeoutMs: 3_000,
@@ -29,7 +29,7 @@ const testConnection = {
 	exporterProtocol: 'http/protobuf',
 	exporterEndpoint: 'http://collector.example.com:4318',
 	exporterTracingPath: '/v1/traces',
-	exporterServiceName: 'n8n-prod',
+	exporterServiceName: 'MNI-prod',
 	exporterHeaders: 'authorization=Bearer my-token',
 	startupConnectivityTimeoutMs: 3_000,
 };
@@ -176,10 +176,10 @@ describe('OpenTelemetry settings in Public API', () => {
 			const putResponse = await testServer
 				.publicApiAgentFor(owner)
 				.put('/settings/otel')
-				.send({ ...getResponse.body, exporterServiceName: 'n8n-updated' });
+				.send({ ...getResponse.body, exporterServiceName: 'MNI-updated' });
 
 			expect(putResponse.status).toBe(200);
-			expect(putResponse.body.exporterServiceName).toBe('n8n-updated');
+			expect(putResponse.body.exporterServiceName).toBe('MNI-updated');
 			expect(putResponse.body.exporterHeaders).toBe(`authorization=${CREDENTIAL_BLANKING_VALUE}`);
 		});
 
@@ -290,7 +290,7 @@ describe('OpenTelemetry settings in Public API', () => {
 		let originalServiceName: string;
 
 		beforeEach(async () => {
-			// Simulate `N8N_OTEL_EXPORTER_SERVICE_NAME` being set: mark it env-managed and
+			// Simulate `MNI_OTEL_EXPORTER_SERVICE_NAME` being set: mark it env-managed and
 			// pin its enforced value on the (singleton) config read at boot.
 			process.env[OTEL_ENV_VARS.exporterServiceName] = ENV_SERVICE_NAME;
 			originalServiceName = Container.get(OtelConfig).exporterServiceName;
@@ -399,7 +399,7 @@ describe('OpenTelemetry settings in Public API', () => {
 		let originalHeaders: string;
 
 		beforeEach(async () => {
-			// Simulate `N8N_OTEL_EXPORTER_OTLP_HEADERS_FILE` being set: mark it
+			// Simulate `MNI_OTEL_EXPORTER_OTLP_HEADERS_FILE` being set: mark it
 			// env-managed and pin the file-supplied value on the (singleton) config.
 			process.env[`${OTEL_ENV_VARS.exporterHeaders}_FILE`] = '/run/secrets/otel-headers';
 			originalHeaders = Container.get(OtelConfig).exporterHeaders;

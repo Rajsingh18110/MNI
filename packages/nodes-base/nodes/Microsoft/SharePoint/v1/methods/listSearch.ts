@@ -3,7 +3,7 @@ import type {
 	ILoadOptionsFunctions,
 	INodeListSearchItems,
 	INodeListSearchResult,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import type { IDriveItem, IList, IListItem, ISite } from '../helpers/interfaces';
 import { escapeFilterValue } from '../helpers/utils';

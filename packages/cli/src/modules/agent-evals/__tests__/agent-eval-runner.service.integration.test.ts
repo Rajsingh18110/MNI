@@ -1,16 +1,16 @@
-import { ModuleRegistry } from '@n8n/backend-common';
-import { createTeamProject, testDb, testModules } from '@n8n/backend-test-utils';
-import { GlobalConfig } from '@n8n/config';
+import { ModuleRegistry } from '@MNI/backend-common';
+import { createTeamProject, testDb, testModules } from '@MNI/backend-test-utils';
+import { GlobalConfig } from '@MNI/config';
 import {
 	AgentEvalDatasetRepository,
 	AgentEvalResultRepository,
 	AgentEvalRunRepository,
 	GLOBAL_OWNER_ROLE,
 	type User,
-} from '@n8n/db';
-import { Container } from '@n8n/di';
-import { DataSource } from '@n8n/typeorm';
-import type { InstanceSettings } from 'n8n-core';
+} from '@MNI/db';
+import { Container } from '@MNI/di';
+import { DataSource } from '@MNI/typeorm';
+import type { InstanceSettings } from 'MNI-core';
 import { mock } from 'vitest-mock-extended';
 
 import type { ConcurrencyControlService } from '@/concurrency/concurrency-control.service';
@@ -26,7 +26,7 @@ import { AgentEvalsFlagGate } from '../agent-evals-flag-gate';
 
 // The agent under test runs through the real reconstruction + live-model path,
 // which needs credentials/network and is covered by the instance-ai eval suite;
-// loading that module graph here also drags in @n8n/task-runner. Stub those two
+// loading that module graph here also drags in @MNI/task-runner. Stub those two
 // specifiers so the runner is exercised for real against the DB (real Data Table
 // row resolution, seeded result rows, per-case persistence, run aggregation)
 // with only the LLM-backed execution replaced.

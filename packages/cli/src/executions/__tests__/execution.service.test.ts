@@ -1,6 +1,6 @@
-import { DeleteExecutionsDto } from '@n8n/api-types';
-import { mockInstance } from '@n8n/backend-test-utils';
-import { GlobalConfig } from '@n8n/config';
+import { DeleteExecutionsDto } from '@MNI/api-types';
+import { mockInstance } from '@MNI/backend-test-utils';
+import { GlobalConfig } from '@MNI/config';
 import type {
 	AnnotationTagMappingRepository,
 	ExecutionAnnotationRepository,
@@ -11,11 +11,11 @@ import type {
 	Project,
 	User,
 	WorkflowHistoryRepository,
-} from '@n8n/db';
-import { Container } from '@n8n/di';
-import { QueryFailedError } from '@n8n/typeorm';
-import type { IRun, IRunData, IRunExecutionData, ITaskData } from 'n8n-workflow';
-import { ManualExecutionCancelledError, WorkflowOperationError } from 'n8n-workflow';
+} from '@MNI/db';
+import { Container } from '@MNI/di';
+import { QueryFailedError } from '@MNI/typeorm';
+import type { IRun, IRunData, IRunExecutionData, ITaskData } from 'MNI-workflow';
+import { ManualExecutionCancelledError, WorkflowOperationError } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import type { ActiveExecutions } from '@/active-executions';

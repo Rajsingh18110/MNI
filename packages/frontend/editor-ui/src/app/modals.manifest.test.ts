@@ -1,5 +1,5 @@
 import { createPinia, setActivePinia } from 'pinia';
-import { modalRegistry } from '@n8n/frontend-module-sdk';
+import { modalRegistry } from '@MNI/frontend-module-sdk';
 
 import { registerEagerModals, registerExperimentModals } from '@/app/modals.manifest';
 import { useUIStore } from '@/app/stores/ui.store';

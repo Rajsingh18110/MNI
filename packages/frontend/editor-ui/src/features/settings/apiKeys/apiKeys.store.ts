@@ -1,8 +1,8 @@
-import { STORES } from '@n8n/stores';
+import { STORES } from '@MNI/stores';
 import { defineStore } from 'pinia';
-import { useRootStore } from '@n8n/stores/useRootStore';
+import { useRootStore } from '@MNI/stores/useRootStore';
 
-import * as publicApiApi from '@n8n/rest-api-client/api/api-keys';
+import * as publicApiApi from '@MNI/rest-api-client/api/api-keys';
 import { computed, ref } from 'vue';
 import type {
 	ApiKey,
@@ -10,9 +10,9 @@ import type {
 	ApiKeyOwnership,
 	CreateApiKeyRequestDto,
 	UpdateApiKeyRequestDto,
-} from '@n8n/api-types';
-import type { ApiKeyScope } from '@n8n/permissions';
-import type { TableOptions } from '@n8n/design-system';
+} from '@MNI/api-types';
+import type { ApiKeyScope } from '@MNI/permissions';
+import type { TableOptions } from '@MNI/design-system';
 
 const DEFAULT_PAGE_SIZE = 10;
 const initialTableOptions = (): TableOptions => ({

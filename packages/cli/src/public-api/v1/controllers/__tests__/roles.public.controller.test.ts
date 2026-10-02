@@ -1,6 +1,6 @@
-import type { CreateRoleDto } from '@n8n/api-types';
-import type { AuthenticatedRequest } from '@n8n/db';
-import type { Role } from '@n8n/permissions';
+import type { CreateRoleDto } from '@MNI/api-types';
+import type { AuthenticatedRequest } from '@MNI/db';
+import type { Role } from '@MNI/permissions';
 import { mock } from 'vitest-mock-extended';
 
 import type { EventService } from '@/events/event.service';

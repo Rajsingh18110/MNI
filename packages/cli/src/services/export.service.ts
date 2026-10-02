@@ -1,9 +1,9 @@
-import { Logger, safeJoinPath } from '@n8n/backend-common';
-import { Service } from '@n8n/di';
+import { Logger, safeJoinPath } from '@MNI/backend-common';
+import { Service } from '@MNI/di';
 
-import { DataSource } from '@n8n/typeorm';
+import { DataSource } from '@MNI/typeorm';
 import { mkdir, rm, readdir, appendFile, readFile } from 'fs/promises';
-import { Cipher } from 'n8n-core';
+import { Cipher } from 'MNI-core';
 
 import { quoteIdentifier, toTableName } from '@/modules/data-table/utils/sql-utils';
 import { compressFolder } from '@/utils/compression.util';

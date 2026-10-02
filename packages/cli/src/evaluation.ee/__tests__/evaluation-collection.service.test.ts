@@ -1,6 +1,6 @@
-import type { CreateEvaluationCollectionPayload } from '@n8n/api-types';
-import type { Logger } from '@n8n/backend-common';
-import { DbLock } from '@n8n/db';
+import type { CreateEvaluationCollectionPayload } from '@MNI/api-types';
+import type { Logger } from '@MNI/backend-common';
+import { DbLock } from '@MNI/db';
 import type {
 	DbLockService,
 	EvaluationCollection,
@@ -14,9 +14,9 @@ import type {
 	WorkflowHistoryRepository,
 	WorkflowPublishedVersion,
 	WorkflowPublishedVersionRepository,
-} from '@n8n/db';
-import type { EntityManager } from '@n8n/typeorm';
-import { OperationalError } from 'n8n-workflow';
+} from '@MNI/db';
+import type { EntityManager } from '@MNI/typeorm';
+import { OperationalError } from 'MNI-workflow';
 import type { Mocked } from 'vitest';
 import { mock } from 'vitest-mock-extended';
 
@@ -766,7 +766,7 @@ describe('EvaluationCollectionService', () => {
 						type: 'llm_judge',
 						config: {
 							preset: 'correctness',
-							provider: '@n8n/n8n-nodes-langchain.lmChatOpenAi',
+							provider: '@MNI/MNI-nodes-langchain.lmChatOpenAi',
 							credentialId: 'cred-1',
 							model: 'gpt-4o',
 							outputType: 'numeric',
@@ -833,7 +833,7 @@ describe('EvaluationCollectionService', () => {
 									type: 'llm_judge',
 									config: {
 										preset: 'correctness',
-										provider: '@n8n/n8n-nodes-langchain.lmChatOpenAi',
+										provider: '@MNI/MNI-nodes-langchain.lmChatOpenAi',
 										credentialId: 'c',
 										model: 'gpt-4o',
 										outputType: 'numeric',

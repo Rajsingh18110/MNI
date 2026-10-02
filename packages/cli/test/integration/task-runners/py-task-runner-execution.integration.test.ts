@@ -1,6 +1,6 @@
-import { TaskRunnersConfig } from '@n8n/config';
+import { TaskRunnersConfig } from '@MNI/config';
 import { existsSync } from 'node:fs';
-import { Container } from '@n8n/di';
+import { Container } from '@MNI/di';
 import type {
 	IExecuteFunctions,
 	INode,
@@ -10,13 +10,13 @@ import type {
 	ITaskDataConnections,
 	IWorkflowExecuteAdditionalData,
 	WorkflowExecuteMode,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import {
 	createEnvProviderState,
 	createRunExecutionData,
 	NodeConnectionTypes,
 	Workflow,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import { LocalTaskRequester } from '@/task-runners/task-managers/local-task-requester';
@@ -29,10 +29,10 @@ import { PyTaskRunnerProcess } from '@/task-runners/task-runner-process-py';
  * and the build-time check all assert this, and nothing else proves it — the runner's
  * own suite drives the runner directly, never through MNI (INS-1222).
  *
- * Covers `N8N_RUNNERS_STDLIB_ALLOW` -> spawned runner env -> the runner permitting or
+ * Covers `MNI_RUNNERS_STDLIB_ALLOW` -> spawned runner env -> the runner permitting or
  * rejecting the import, so a change to the forwarding cannot pass unnoticed.
  *
- * Needs the runner's virtualenv (`uv sync` in packages/@n8n/task-runner-python).
+ * Needs the runner's virtualenv (`uv sync` in packages/@MNI/task-runner-python).
  * Skipped rather than failed where it is absent, which is most Node CI lanes today.
  */
 const venvPresent = existsSync(PyTaskRunnerProcess.getVenvPath());
@@ -43,8 +43,8 @@ describe.skipIf(!venvPresent)('Python TaskRunner execution on internal mode', ()
 	runnerConfig.port = 45679;
 	// MNI forwards these to the runner as it spawns. The whole point of the test is
 	// that the runner then enforces exactly this.
-	process.env.N8N_RUNNERS_STDLIB_ALLOW = 'json';
-	process.env.N8N_RUNNERS_EXTERNAL_ALLOW = '';
+	process.env.MNI_RUNNERS_STDLIB_ALLOW = 'json';
+	process.env.MNI_RUNNERS_EXTERNAL_ALLOW = '';
 
 	const taskRunnerModule = Container.get(TaskRunnerModule);
 	const taskRequester = Container.get(LocalTaskRequester);
@@ -54,7 +54,7 @@ describe.skipIf(!venvPresent)('Python TaskRunner execution on internal mode', ()
 
 		const codeNode: INode = {
 			parameters: { language: 'pythonNative', pythonCode },
-			type: 'n8n-nodes-base.code',
+			type: 'MNI-nodes-base.code',
 			typeVersion: 2,
 			position: [200, 80],
 			id: 'c1a2b3d4-0000-4000-8000-00000000py01',
@@ -67,7 +67,7 @@ describe.skipIf(!venvPresent)('Python TaskRunner execution on internal mode', ()
 			nodes: [
 				{
 					parameters: {},
-					type: 'n8n-nodes-base.manualTrigger',
+					type: 'MNI-nodes-base.manualTrigger',
 					typeVersion: 1,
 					position: [0, 0],
 					id: 'c1a2b3d4-0000-4000-8000-00000000py02',

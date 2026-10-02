@@ -3,8 +3,8 @@ import type {
 	INodeExecutionData,
 	INodeType,
 	INodeTypeDescription,
-} from 'n8n-workflow';
-import { NodeConnectionTypes, NodeOperationError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeConnectionTypes, NodeOperationError } from 'MNI-workflow';
 import pgPromise from 'pg-promise';
 
 import { getDateAsStringTypeParsers } from '@utils/postgres';
@@ -177,7 +177,7 @@ export class CrateDb implements INodeType {
 				},
 				default: 'id',
 				required: true,
-				// eslint-disable-next-line n8n-nodes-base/node-param-description-miscased-id
+				// eslint-disable-next-line MNI-nodes-base/node-param-description-miscased-id
 				description:
 					'Comma-separated list of the properties which decides which rows in the database should be updated. Normally that would be "id".',
 			},
@@ -239,7 +239,7 @@ export class CrateDb implements INodeType {
 						],
 						default: 'multiple',
 						description:
-							'The way queries should be sent to database. Can be used in conjunction with <b>Continue on Fail</b>. See <a href="https://docs.n8n.io/integrations/builtin/app-nodes/n8n-nodes-base.cratedb/">the docs</a> for more examples.',
+							'The way queries should be sent to database. Can be used in conjunction with <b>Continue on Fail</b>. See <a href="https://docs.n8n.io/integrations/builtin/app-nodes/MNI-nodes-base.cratedb/">the docs</a> for more examples.',
 					},
 					{
 						displayName: 'Query Parameters',
@@ -359,7 +359,7 @@ export class CrateDb implements INodeType {
 				const where =
 					' WHERE ' +
 					updateKeys
-						// eslint-disable-next-line n8n-local-rules/no-interpolation-in-regular-string
+						// eslint-disable-next-line MNI-local-rules/no-interpolation-in-regular-string
 						.map((updateKey) => pgp.as.name(updateKey) + ' = ${' + updateKey + '}')
 						.join(' AND ');
 				// updateKeyValue = item.json[updateKey] as string | number;

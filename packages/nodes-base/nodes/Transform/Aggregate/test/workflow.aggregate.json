@@ -5,7 +5,7 @@
 			"parameters": {},
 			"id": "6c90bf81-0c0e-4c5f-9f0c-297f06d9668a",
 			"name": "When clicking \"Execute Workflow\"",
-			"type": "n8n-nodes-base.manualTrigger",
+			"type": "MNI-nodes-base.manualTrigger",
 			"typeVersion": 1,
 			"position": [-440, 260]
 		},
@@ -36,7 +36,7 @@
 			},
 			"id": "2e0011d5-c6a0-4a40-ab8c-9d011cde40d5",
 			"name": "Code",
-			"type": "n8n-nodes-testing.testData",
+			"type": "MNI-nodes-testing.testData",
 			"typeVersion": 1,
 			"position": [-180, 260]
 		},
@@ -55,7 +55,7 @@
 			},
 			"id": "d95ca3a3-fb43-4037-846e-b87103dec1a3",
 			"name": "fields aggregate and rename",
-			"type": "n8n-nodes-base.aggregate",
+			"type": "MNI-nodes-base.aggregate",
 			"typeVersion": 1,
 			"position": [80, 0]
 		},
@@ -65,7 +65,7 @@
 			},
 			"id": "4c1bc7be-7611-418d-aad5-8642b1cc0781",
 			"name": "aggregate all fields into list",
-			"type": "n8n-nodes-base.aggregate",
+			"type": "MNI-nodes-base.aggregate",
 			"typeVersion": 1,
 			"position": [80, 320]
 		},
@@ -77,7 +77,7 @@
 			},
 			"id": "951de23c-2018-437b-961e-8ae7d7fd1a82",
 			"name": "aggregate selected fields into list",
-			"type": "n8n-nodes-base.aggregate",
+			"type": "MNI-nodes-base.aggregate",
 			"typeVersion": 1,
 			"position": [80, 500]
 		},
@@ -90,7 +90,7 @@
 			},
 			"id": "b62c02ee-5edb-473d-a755-7fb8700641fa",
 			"name": "aggregate all fields except selected into list",
-			"type": "n8n-nodes-base.aggregate",
+			"type": "MNI-nodes-base.aggregate",
 			"typeVersion": 1,
 			"position": [80, 700]
 		}

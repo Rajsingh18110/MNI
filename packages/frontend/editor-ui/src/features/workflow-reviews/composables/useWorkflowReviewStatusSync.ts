@@ -1,4 +1,4 @@
-import type { PushMessage } from '@n8n/api-types';
+import type { PushMessage } from '@MNI/api-types';
 import { onBeforeUnmount, onMounted, toValue, watch } from 'vue';
 import type { MaybeRefOrGetter } from 'vue';
 

@@ -9,12 +9,12 @@
  * expression handling fails here.
  */
 
-import { LicenseState } from '@n8n/backend-common';
-import { getPersonalProject, mockInstance, testDb } from '@n8n/backend-test-utils';
-import type { User } from '@n8n/db';
-import { Container } from '@n8n/di';
-import { ExternalSecretsProxy } from 'n8n-core';
-import { HttpBearerAuth } from 'n8n-nodes-base/credentials/HttpBearerAuth.credentials';
+import { LicenseState } from '@MNI/backend-common';
+import { getPersonalProject, mockInstance, testDb } from '@MNI/backend-test-utils';
+import type { User } from '@MNI/db';
+import { Container } from '@MNI/di';
+import { ExternalSecretsProxy } from 'MNI-core';
+import { HttpBearerAuth } from 'MNI-nodes-base/credentials/HttpBearerAuth.credentials';
 
 import { CredentialsService } from '@/credentials/credentials.service';
 import { LoadNodesAndCredentials } from '@/load-nodes-and-credentials';

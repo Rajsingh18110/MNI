@@ -8,7 +8,7 @@
 		{
 			"parameters": {},
 			"name": "Start",
-			"type": "n8n-nodes-base.manualTrigger",
+			"type": "MNI-nodes-base.manualTrigger",
 			"typeVersion": 1,
 			"position": [250, 300],
 			"id": "d6242130-9d76-4db0-8fc8-5b2cbd24b5fe"
@@ -21,7 +21,7 @@
 				"options": {}
 			},
 			"name": "Mandrill",
-			"type": "n8n-nodes-base.mandrill",
+			"type": "MNI-nodes-base.mandrill",
 			"typeVersion": 1,
 			"position": [500, 250],
 			"credentials": {
@@ -42,7 +42,7 @@
 				}
 			},
 			"name": "Mandrill1",
-			"type": "n8n-nodes-base.mandrill",
+			"type": "MNI-nodes-base.mandrill",
 			"typeVersion": 1,
 			"position": [500, 400],
 			"credentials": {

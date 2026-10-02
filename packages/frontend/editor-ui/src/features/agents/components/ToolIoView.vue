@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { computed } from 'vue';
-import { useI18n } from '@n8n/i18n';
-import type { IDataObject, INodeExecutionData, IRunData } from 'n8n-workflow';
+import { useI18n } from '@MNI/i18n';
+import type { IDataObject, INodeExecutionData, IRunData } from 'MNI-workflow';
 import StandaloneRunData from '@/features/ndv/runData/components/StandaloneRunData.vue';
 import StandaloneRunDataHost from '@/features/ndv/runData/components/StandaloneRunDataHost.vue';
 import type { IExecutionResponse } from '@/features/execution/executions/executions.types';
@@ -74,7 +74,7 @@ const synthExecution = computed<IExecutionResponse>(() => {
 	const inputNode: INodeUi = {
 		id: INPUT_NODE_NAME,
 		name: INPUT_NODE_NAME,
-		type: 'n8n-nodes-base.set',
+		type: 'MNI-nodes-base.set',
 		typeVersion: 1,
 		position: [0, 0],
 		parameters: {},
@@ -94,7 +94,7 @@ const synthExecution = computed<IExecutionResponse>(() => {
 	const toolNode: INodeUi = {
 		id: props.name,
 		name: props.name,
-		type: 'n8n-nodes-base.set',
+		type: 'MNI-nodes-base.set',
 		typeVersion: 1,
 		position: [220, 0],
 		// `nodeParameters` is typed loosely on the wire (Record<string, unknown>)

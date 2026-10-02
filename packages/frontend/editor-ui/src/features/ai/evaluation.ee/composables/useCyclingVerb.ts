@@ -1,6 +1,6 @@
 import { onBeforeUnmount, ref, watch, type Ref } from 'vue';
 
-import type { BaseTextKey } from '@n8n/i18n';
+import type { BaseTextKey } from '@MNI/i18n';
 
 /**
  * Pool of i18n keys for the progress verbs we cycle through while a test

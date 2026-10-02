@@ -1,5 +1,5 @@
 import { mock } from 'vitest-mock-extended';
-import type { IHookFunctions, IWebhookFunctions } from 'n8n-workflow';
+import type { IHookFunctions, IWebhookFunctions } from 'MNI-workflow';
 
 import { BoxTrigger } from '../BoxTrigger.node';
 

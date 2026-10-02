@@ -1,17 +1,17 @@
-import { inDevelopment, inTest, Logger } from '@n8n/backend-common';
-import { GlobalConfig } from '@n8n/config';
-import { DbConnection } from '@n8n/db';
-import { OnShutdown } from '@n8n/decorators';
-import { Container, Service } from '@n8n/di';
+import { inDevelopment, inTest, Logger } from '@MNI/backend-common';
+import { GlobalConfig } from '@MNI/config';
+import { DbConnection } from '@MNI/db';
+import { OnShutdown } from '@MNI/decorators';
+import { Container, Service } from '@MNI/di';
 import compression from 'compression';
 import express from 'express';
 import { readFile } from 'fs/promises';
 import type { Server } from 'http';
 import isbot from 'isbot';
-import { SLACK_HITL_WEBHOOK_SUFFIX, TELEGRAM_HITL_WEBHOOK_SUFFIX } from 'n8n-core';
+import { SLACK_HITL_WEBHOOK_SUFFIX, TELEGRAM_HITL_WEBHOOK_SUFFIX } from 'MNI-core';
 
 import config from '@/config';
-import { N8N_VERSION, TEMPLATES_DIR } from '@/constants';
+import { MNI_VERSION, TEMPLATES_DIR } from '@/constants';
 import { ServiceUnavailableError } from '@/errors/response-errors/service-unavailable.error';
 import { ExternalHooks } from '@/external-hooks';
 import { bodyParser, corsMiddleware, rawBodyReader } from '@/middlewares';
@@ -208,7 +208,7 @@ export abstract class AbstractServer {
 			} else if (error.code === 'EAFNOSUPPORT') {
 				// EAFNOSUPPORT is thrown when the address is not available
 				this.logger.error(
-					`MNI's address '${address}' is not available. Please run MNI with a different address, provide correct address in the environment variables N8N_LISTEN_ADDRESS and/or N8N_WORKER_SERVER_ADDRESS.`,
+					`MNI's address '${address}' is not available. Please run MNI with a different address, provide correct address in the environment variables MNI_LISTEN_ADDRESS and/or MNI_WORKER_SERVER_ADDRESS.`,
 				);
 			} else {
 				// Other errors are unexpected and should be logged
@@ -329,7 +329,7 @@ export abstract class AbstractServer {
 		await this.configure();
 
 		if (!inTest) {
-			this.logger.info(`Version: ${N8N_VERSION}`);
+			this.logger.info(`Version: ${MNI_VERSION}`);
 
 			const { defaultLocale } = this.globalConfig;
 			if (defaultLocale !== 'en') {

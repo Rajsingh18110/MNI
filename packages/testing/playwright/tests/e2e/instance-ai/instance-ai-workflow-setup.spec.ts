@@ -1,5 +1,5 @@
 import { generateKeyPairSync } from 'crypto';
-import type { IWorkflowBase } from 'n8n-workflow';
+import type { IWorkflowBase } from 'MNI-workflow';
 
 import { test, expect, instanceAiTestConfig } from './fixtures';
 
@@ -51,7 +51,7 @@ function createParameterOnlyWorkflow(name: string): Partial<IWorkflowBase> {
 			{
 				id: 'trigger',
 				name: 'Manual Trigger',
-				type: 'n8n-nodes-base.manualTrigger',
+				type: 'MNI-nodes-base.manualTrigger',
 				typeVersion: 1,
 				position: [0, 0],
 				parameters: {},
@@ -59,7 +59,7 @@ function createParameterOnlyWorkflow(name: string): Partial<IWorkflowBase> {
 			{
 				id: 'http',
 				name: 'HTTP Request',
-				type: 'n8n-nodes-base.httpRequest',
+				type: 'MNI-nodes-base.httpRequest',
 				typeVersion: 4.2,
 				position: [220, 0],
 				parameters: {
@@ -102,7 +102,7 @@ function createMixedGroupedCredentialWorkflow(name: string): Partial<IWorkflowBa
 			{
 				id: 'trigger',
 				name: 'Manual Trigger',
-				type: 'n8n-nodes-base.manualTrigger',
+				type: 'MNI-nodes-base.manualTrigger',
 				typeVersion: 1,
 				position: [0, 0],
 				parameters: {},
@@ -110,7 +110,7 @@ function createMixedGroupedCredentialWorkflow(name: string): Partial<IWorkflowBa
 			{
 				id: 'http-shared-a',
 				name: 'HTTP Request Shared A',
-				type: 'n8n-nodes-base.httpRequest',
+				type: 'MNI-nodes-base.httpRequest',
 				typeVersion: 4.2,
 				position: [220, 0],
 				parameters: {
@@ -123,7 +123,7 @@ function createMixedGroupedCredentialWorkflow(name: string): Partial<IWorkflowBa
 			{
 				id: 'google-leads',
 				name: 'Google Sheets Leads',
-				type: 'n8n-nodes-base.googleSheets',
+				type: 'MNI-nodes-base.googleSheets',
 				typeVersion: 4.7,
 				position: [440, -120],
 				parameters: {
@@ -137,7 +137,7 @@ function createMixedGroupedCredentialWorkflow(name: string): Partial<IWorkflowBa
 			{
 				id: 'http-shared-b',
 				name: 'HTTP Request Shared B',
-				type: 'n8n-nodes-base.httpRequest',
+				type: 'MNI-nodes-base.httpRequest',
 				typeVersion: 4.2,
 				position: [660, 0],
 				parameters: {
@@ -150,7 +150,7 @@ function createMixedGroupedCredentialWorkflow(name: string): Partial<IWorkflowBa
 			{
 				id: 'google-contacts',
 				name: 'Google Sheets Contacts',
-				type: 'n8n-nodes-base.googleSheets',
+				type: 'MNI-nodes-base.googleSheets',
 				typeVersion: 4.7,
 				position: [880, -120],
 				parameters: {
@@ -164,7 +164,7 @@ function createMixedGroupedCredentialWorkflow(name: string): Partial<IWorkflowBa
 			{
 				id: 'http-other',
 				name: 'HTTP Request Other URL',
-				type: 'n8n-nodes-base.httpRequest',
+				type: 'MNI-nodes-base.httpRequest',
 				typeVersion: 4.2,
 				position: [1100, 0],
 				parameters: {
@@ -204,7 +204,7 @@ function createTwoCardWorkflow(name: string): Partial<IWorkflowBase> {
 			{
 				id: 'trigger',
 				name: 'Manual Trigger',
-				type: 'n8n-nodes-base.manualTrigger',
+				type: 'MNI-nodes-base.manualTrigger',
 				typeVersion: 1,
 				position: [0, 0],
 				parameters: {},
@@ -212,7 +212,7 @@ function createTwoCardWorkflow(name: string): Partial<IWorkflowBase> {
 			{
 				id: 'basic',
 				name: 'HTTP Request Basic',
-				type: 'n8n-nodes-base.httpRequest',
+				type: 'MNI-nodes-base.httpRequest',
 				typeVersion: 4.2,
 				position: [220, 0],
 				parameters: {
@@ -225,7 +225,7 @@ function createTwoCardWorkflow(name: string): Partial<IWorkflowBase> {
 			{
 				id: 'basic-copy',
 				name: 'HTTP Request Basic Copy',
-				type: 'n8n-nodes-base.httpRequest',
+				type: 'MNI-nodes-base.httpRequest',
 				typeVersion: 4.2,
 				position: [440, 0],
 				parameters: {
@@ -238,7 +238,7 @@ function createTwoCardWorkflow(name: string): Partial<IWorkflowBase> {
 			{
 				id: 'header',
 				name: 'HTTP Request Header',
-				type: 'n8n-nodes-base.httpRequest',
+				type: 'MNI-nodes-base.httpRequest',
 				typeVersion: 4.2,
 				position: [660, 0],
 				parameters: {
@@ -272,7 +272,7 @@ function createSlackWorkflow(name: string): Partial<IWorkflowBase> {
 			{
 				id: 'trigger',
 				name: 'Manual Trigger',
-				type: 'n8n-nodes-base.manualTrigger',
+				type: 'MNI-nodes-base.manualTrigger',
 				typeVersion: 1,
 				position: [0, 0],
 				parameters: {},
@@ -280,7 +280,7 @@ function createSlackWorkflow(name: string): Partial<IWorkflowBase> {
 			{
 				id: 'slack',
 				name: 'Slack',
-				type: 'n8n-nodes-base.slack',
+				type: 'MNI-nodes-base.slack',
 				typeVersion: 2.2,
 				position: [220, 0],
 				parameters: {
@@ -314,7 +314,7 @@ function createSlackTriggerWorkflow(name: string): Partial<IWorkflowBase> {
 			{
 				id: 'slack-trigger',
 				name: 'Slack Trigger',
-				type: 'n8n-nodes-base.slackTrigger',
+				type: 'MNI-nodes-base.slackTrigger',
 				typeVersion: 1,
 				position: [0, 0],
 				parameters: {
@@ -342,7 +342,7 @@ function createAgentWithSubnodesWorkflow(name: string): Partial<IWorkflowBase> {
 			{
 				id: 'trigger',
 				name: 'Manual Trigger',
-				type: 'n8n-nodes-base.manualTrigger',
+				type: 'MNI-nodes-base.manualTrigger',
 				typeVersion: 1,
 				position: [0, 0],
 				parameters: {},
@@ -350,7 +350,7 @@ function createAgentWithSubnodesWorkflow(name: string): Partial<IWorkflowBase> {
 			{
 				id: 'agent',
 				name: 'AI Agent',
-				type: '@n8n/n8n-nodes-langchain.agent',
+				type: '@MNI/MNI-nodes-langchain.agent',
 				typeVersion: 3.1,
 				position: [220, 0],
 				parameters: { options: {} },
@@ -358,7 +358,7 @@ function createAgentWithSubnodesWorkflow(name: string): Partial<IWorkflowBase> {
 			{
 				id: 'openai',
 				name: 'OpenAI Chat Model',
-				type: '@n8n/n8n-nodes-langchain.lmChatOpenAi',
+				type: '@MNI/MNI-nodes-langchain.lmChatOpenAi',
 				typeVersion: 1.3,
 				position: [120, 220],
 				parameters: {
@@ -374,7 +374,7 @@ function createAgentWithSubnodesWorkflow(name: string): Partial<IWorkflowBase> {
 			{
 				id: 'linear-get',
 				name: 'Get an issue in Linear',
-				type: 'n8n-nodes-base.linearTool',
+				type: 'MNI-nodes-base.linearTool',
 				typeVersion: 1.1,
 				position: [280, 220],
 				parameters: { operation: 'get' },
@@ -382,7 +382,7 @@ function createAgentWithSubnodesWorkflow(name: string): Partial<IWorkflowBase> {
 			{
 				id: 'linear-update',
 				name: 'Update an issue in Linear',
-				type: 'n8n-nodes-base.linearTool',
+				type: 'MNI-nodes-base.linearTool',
 				typeVersion: 1.1,
 				position: [440, 220],
 				parameters: { operation: 'update', updateFields: {} },
@@ -390,7 +390,7 @@ function createAgentWithSubnodesWorkflow(name: string): Partial<IWorkflowBase> {
 			{
 				id: 'telegram',
 				name: 'Send a text message',
-				type: 'n8n-nodes-base.telegram',
+				type: 'MNI-nodes-base.telegram',
 				typeVersion: 1.2,
 				position: [600, 0],
 				parameters: {

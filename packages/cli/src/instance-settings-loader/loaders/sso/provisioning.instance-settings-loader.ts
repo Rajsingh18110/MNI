@@ -2,11 +2,11 @@ import {
 	ProvisioningConfigDto,
 	type ProvisioningMode,
 	type ProvisioningModeFlags,
-} from '@n8n/api-types';
-import { Logger } from '@n8n/backend-common';
-import { GlobalConfig, InstanceSettingsLoaderConfig } from '@n8n/config';
-import { SettingsRepository } from '@n8n/db';
-import { Service } from '@n8n/di';
+} from '@MNI/api-types';
+import { Logger } from '@MNI/backend-common';
+import { GlobalConfig, InstanceSettingsLoaderConfig } from '@MNI/config';
+import { SettingsRepository } from '@MNI/db';
+import { Service } from '@MNI/di';
 import { z } from 'zod';
 
 import { PROVISIONING_PREFERENCES_DB_KEY } from '@/modules/provisioning.ee/constants';
@@ -23,7 +23,7 @@ type EnvProvisioningMode = (typeof ENV_PROVISIONING_MODES)[number];
 
 /**
  * The two env vars are the two settings dropdowns: the mode picks which roles SSO provisions,
- * `N8N_SSO_SCOPES_USE_EXPRESSION_MAPPING` picks how claims map to them. Mirrors
+ * `MNI_SSO_SCOPES_USE_EXPRESSION_MAPPING` picks how claims map to them. Mirrors
  * `getProvisioningConfigFromDropdowns` in the UI, which collapses the same two choices into
  * these three flags because the two mapping methods are mutually exclusive code paths.
  */
@@ -61,7 +61,7 @@ function resolveModeFlags(
 const modeSchema = z.object({
 	ssoUserRoleProvisioning: z.enum(ENV_PROVISIONING_MODES, {
 		errorMap: () => ({
-			message: `N8N_SSO_USER_ROLE_PROVISIONING must be one of: ${ENV_PROVISIONING_MODES.join(', ')}`,
+			message: `MNI_SSO_USER_ROLE_PROVISIONING must be one of: ${ENV_PROVISIONING_MODES.join(', ')}`,
 		}),
 	}),
 });
@@ -88,7 +88,7 @@ export class ProvisioningInstanceSettingsLoader {
 
 		if (provisioning.scopesUseExpressionMapping && mode === 'disabled') {
 			this.logger.warn(
-				'N8N_SSO_SCOPES_USE_EXPRESSION_MAPPING=true has no effect while N8N_SSO_USER_ROLE_PROVISIONING is "disabled", which assigns roles manually. Set it to instance_role or instance_and_project_roles to map roles with rules.',
+				'MNI_SSO_SCOPES_USE_EXPRESSION_MAPPING=true has no effect while MNI_SSO_USER_ROLE_PROVISIONING is "disabled", which assigns roles manually. Set it to instance_role or instance_and_project_roles to map roles with rules.',
 			);
 		}
 

@@ -6,19 +6,19 @@ import { API_KEY_CREATE_OR_EDIT_MODAL_KEY } from '../apiKeys.constants';
 import { isApiKeyExpired } from '../apiKeys.utils';
 import { computed, onMounted, ref } from 'vue';
 import { useUIStore } from '@/app/stores/ui.store';
-import { useUsersStore } from '@n8n/stores/users.store';
-import { createEventBus } from '@n8n/utils/event-bus';
-import { useI18n } from '@n8n/i18n';
-import { useRootStore } from '@n8n/stores/useRootStore';
-import { useRBACStore } from '@n8n/stores/rbac.store';
+import { useUsersStore } from '@MNI/stores/users.store';
+import { createEventBus } from '@MNI/utils/event-bus';
+import { useI18n } from '@MNI/i18n';
+import { useRootStore } from '@MNI/stores/useRootStore';
+import { useRBACStore } from '@MNI/stores/rbac.store';
 import { useDocumentTitle } from '@/app/composables/useDocumentTitle';
 import { useApiKeysStore } from '../apiKeys.store';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
-import { useToast } from '@n8n/composables/useToast';
-import type { BaseTextKey } from '@n8n/i18n';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
+import { useToast } from '@MNI/composables/useToast';
+import type { BaseTextKey } from '@MNI/i18n';
 import { DateTime } from 'luxon';
-import type { ApiKey, ApiKeyWithRawValue, CreateApiKeyRequestDto } from '@n8n/api-types';
-import type { ApiKeyScope } from '@n8n/permissions';
+import type { ApiKey, ApiKeyWithRawValue, CreateApiKeyRequestDto } from '@MNI/api-types';
+import type { ApiKeyScope } from '@MNI/permissions';
 
 import { ElDatePicker } from 'element-plus';
 import {
@@ -29,7 +29,7 @@ import {
 	N8nOption,
 	N8nSelect,
 	N8nText,
-} from '@n8n/design-system';
+} from '@MNI/design-system';
 const EXPIRATION_OPTIONS = {
 	'7_DAYS': 7,
 	'30_DAYS': 30,

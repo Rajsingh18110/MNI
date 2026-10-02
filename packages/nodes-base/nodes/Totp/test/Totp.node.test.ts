@@ -1,5 +1,5 @@
 import { NodeTestHarness } from '@nodes-testing/node-test-harness';
-import type { WorkflowTestData } from 'n8n-workflow';
+import type { WorkflowTestData } from 'MNI-workflow';
 import * as OTPAuth from 'otpauth';
 
 describe('Execute TOTP node', () => {

@@ -1,15 +1,15 @@
-import type { ChatHubN8nModel } from '@n8n/api-types';
+import type { ChatHubN8nModel } from '@MNI/api-types';
 import {
 	createActiveWorkflow,
 	createWorkflow,
 	mockInstance,
 	testDb,
 	testModules,
-} from '@n8n/backend-test-utils';
-import type { User } from '@n8n/db';
-import { Container } from '@n8n/di';
-import { BinaryDataService } from 'n8n-core';
-import { CHAT_TRIGGER_NODE_TYPE } from 'n8n-workflow';
+} from '@MNI/backend-test-utils';
+import type { User } from '@MNI/db';
+import { Container } from '@MNI/di';
+import { BinaryDataService } from 'MNI-core';
+import { CHAT_TRIGGER_NODE_TYPE } from 'MNI-workflow';
 import { v4 as uuid } from 'uuid';
 
 import { createMember } from '@test-integration/db/users';
@@ -66,7 +66,7 @@ describe('ChatHubModelsService', () => {
 			it('should return empty models when user has no workflows', async () => {
 				const result = await chatHubModelsService.getModels(member, emptyCredentialIds);
 
-				expect(result.n8n).toBeDefined();
+				expect(result.MNI).toBeDefined();
 				expect(result.n8n.models).toEqual([]);
 			});
 
@@ -99,7 +99,7 @@ describe('ChatHubModelsService', () => {
 
 				const result = await chatHubModelsService.getModels(member, emptyCredentialIds);
 
-				expect(result.n8n).toBeDefined();
+				expect(result.MNI).toBeDefined();
 				expect(result.n8n.models).toHaveLength(1);
 
 				const model = result.n8n.models[0];
@@ -199,7 +199,7 @@ describe('ChatHubModelsService', () => {
 							{
 								id: uuid(),
 								name: 'Manual Trigger',
-								type: 'n8n-nodes-base.manualTrigger',
+								type: 'MNI-nodes-base.manualTrigger',
 								typeVersion: 1,
 								position: [0, 0],
 								parameters: {},

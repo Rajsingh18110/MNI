@@ -8,7 +8,7 @@ import type {
 	WorkflowReviewRequestReviewerRepository,
 	WorkflowReviewRequestWorkflowDetailRow,
 	WorkflowReviewRequestWorkflowRepository,
-} from '@n8n/db';
+} from '@MNI/db';
 import { mock } from 'vitest-mock-extended';
 
 import type { ProjectService } from '@/services/project.service.ee';

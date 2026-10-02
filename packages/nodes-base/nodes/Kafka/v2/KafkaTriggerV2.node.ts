@@ -1,12 +1,12 @@
-import { ensureError } from '@n8n/utils/errors/ensure-error';
+import { ensureError } from '@MNI/utils/errors/ensure-error';
 import type {
 	INodeTypeBaseDescription,
 	INodeTypeDescription,
 	INodeType,
 	ITriggerFunctions,
 	ITriggerResponse,
-} from 'n8n-workflow';
-import { NodeOperationError, TriggerCloseError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeOperationError, TriggerCloseError } from 'MNI-workflow';
 
 import { setSchemaRegistry, type KafkaCredentials } from '../utils';
 import { consumeTopic, createDataEmitter, createMessageParser } from './consumer';

@@ -1,4 +1,4 @@
-import { reconcileNativeWebSearch } from '@n8n/ai-utilities/agent-config';
+import { reconcileNativeWebSearch } from '@MNI/ai-utilities/agent-config';
 import {
 	AgentJsonConfigSchema,
 	findVectorStoreToolNameCollisions,
@@ -7,12 +7,12 @@ import {
 	type AgentConfigMutationResponse,
 	type AgentJsonConfig,
 	type AgentJsonToolConfig,
-} from '@n8n/api-types';
-import { Logger } from '@n8n/backend-common';
-import { WorkflowRepository, type User } from '@n8n/db';
-import { Service } from '@n8n/di';
-import { isRecord } from '@n8n/utils/is-record';
-import { UserError } from 'n8n-workflow';
+} from '@MNI/api-types';
+import { Logger } from '@MNI/backend-common';
+import { WorkflowRepository, type User } from '@MNI/db';
+import { Service } from '@MNI/di';
+import { isRecord } from '@MNI/utils/is-record';
+import { UserError } from 'MNI-workflow';
 
 import { CredentialsService } from '@/credentials/credentials.service';
 import { ConflictError } from '@/errors/response-errors/conflict.error';

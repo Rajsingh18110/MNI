@@ -19,8 +19,8 @@ import { useWorkflowExecutionStateStore } from '@/app/stores/workflowExecutionSt
 import { createComponentRenderer } from '@/__tests__/render';
 import { setupServer } from '@/__tests__/server';
 import { defaultNodeDescriptions, mockNodes } from '@/__tests__/mocks';
-import { useI18n } from '@n8n/i18n';
-import { createRunExecutionData } from 'n8n-workflow';
+import { useI18n } from '@MNI/i18n';
+import { createRunExecutionData } from 'MNI-workflow';
 
 vi.mock('vue-router', () => {
 	return {
@@ -31,7 +31,7 @@ vi.mock('vue-router', () => {
 });
 
 const copy = vi.fn();
-vi.mock('@n8n/composables/useClipboard', () => ({
+vi.mock('@MNI/composables/useClipboard', () => ({
 	useClipboard: () => ({
 		copy,
 	}),

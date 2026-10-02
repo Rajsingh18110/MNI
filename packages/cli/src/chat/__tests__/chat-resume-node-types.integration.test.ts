@@ -1,9 +1,9 @@
-import type { ExecutionRepository, IExecutionResponse } from '@n8n/db';
+import type { ExecutionRepository, IExecutionResponse } from '@MNI/db';
 import { mock } from 'vitest-mock-extended';
 import path from 'node:path';
 import { readFileSync } from 'node:fs';
-import type { INodeType, IVersionedNodeType, LoadedClass, NodeLoadingDetails } from 'n8n-workflow';
-import { CHAT_NODE_TYPE, CHAT_TOOL_NODE_TYPE, RESPOND_TO_WEBHOOK_NODE_TYPE } from 'n8n-workflow';
+import type { INodeType, IVersionedNodeType, LoadedClass, NodeLoadingDetails } from 'MNI-workflow';
+import { CHAT_NODE_TYPE, CHAT_TOOL_NODE_TYPE, RESPOND_TO_WEBHOOK_NODE_TYPE } from 'MNI-workflow';
 
 import type { ExecutionPersistence } from '@/executions/execution-persistence';
 
@@ -21,16 +21,16 @@ import type { ChatMessage } from '../chat-service.types';
  * `onMessage` inventory and the resulting `canResumeOverChat` decision.
  */
 
-const TELEGRAM = 'n8n-nodes-base.telegram';
-const WAIT = 'n8n-nodes-base.wait';
-const TELEGRAM_HITL = 'n8n-nodes-base.telegramHitlTool';
-const CHAT_HITL = '@n8n/n8n-nodes-langchain.chatHitlTool';
+const TELEGRAM = 'MNI-nodes-base.telegram';
+const WAIT = 'MNI-nodes-base.wait';
+const TELEGRAM_HITL = 'MNI-nodes-base.telegramHitlTool';
+const CHAT_HITL = '@MNI/MNI-nodes-langchain.chatHitlTool';
 
 /** Loads a real node class from a built package's dist using its known-nodes manifest. */
 function loadRealNode(fullType: string): LoadedClass<INodeType | IVersionedNodeType> {
-	const [pkg, shortName] = fullType.startsWith('@n8n/')
-		? ['@n8n/n8n-nodes-langchain', fullType.replace('@n8n/n8n-nodes-langchain.', '')]
-		: ['n8n-nodes-base', fullType.replace('n8n-nodes-base.', '')];
+	const [pkg, shortName] = fullType.startsWith('@MNI/')
+		? ['@MNI/MNI-nodes-langchain', fullType.replace('@MNI/MNI-nodes-langchain.', '')]
+		: ['MNI-nodes-base', fullType.replace('MNI-nodes-base.', '')];
 
 	const pkgRoot = path.dirname(require.resolve(`${pkg}/package.json`));
 	const known = JSON.parse(

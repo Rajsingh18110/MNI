@@ -1,5 +1,5 @@
-import type { IDataObject } from 'n8n-workflow';
-import { jsonParse, UserError } from 'n8n-workflow';
+import type { IDataObject } from 'MNI-workflow';
+import { jsonParse, UserError } from 'MNI-workflow';
 import { v4 as uuid } from 'uuid';
 
 import type { Section, TodoistResponse } from './Service';

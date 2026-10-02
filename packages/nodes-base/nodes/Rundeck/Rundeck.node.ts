@@ -4,8 +4,8 @@ import type {
 	INodeExecutionData,
 	INodeType,
 	INodeTypeDescription,
-} from 'n8n-workflow';
-import { NodeConnectionTypes, NodeOperationError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeConnectionTypes, NodeOperationError } from 'MNI-workflow';
 
 import { RundeckApi } from './RundeckApi';
 
@@ -13,7 +13,7 @@ export class Rundeck implements INodeType {
 	description: INodeTypeDescription = {
 		displayName: 'Rundeck',
 		name: 'rundeck',
-		// eslint-disable-next-line n8n-nodes-base/node-class-description-icon-not-svg
+		// eslint-disable-next-line MNI-nodes-base/node-class-description-icon-not-svg
 		icon: 'file:rundeck.png',
 		group: ['transform'],
 		version: [1, 1.1],

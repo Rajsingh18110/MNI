@@ -26,10 +26,10 @@ import type {
 	InstanceAiHandoffContext,
 	InstanceAiPrefillPayload,
 	InstanceAiThreadSummary,
-} from '@n8n/api-types';
-import { N8nHeading, N8nIconButton, N8nTooltip, TOOLTIP_DELAY_MS } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
-import { useToast } from '@n8n/composables/useToast';
+} from '@MNI/api-types';
+import { N8nHeading, N8nIconButton, N8nTooltip, TOOLTIP_DELAY_MS } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
+import { useToast } from '@MNI/composables/useToast';
 
 import { INSTANCE_AI_AGENT_PREVIEW_VIEW_METADATA_KEY, INSTANCE_AI_THREAD_VIEW } from '../constants';
 import { getThreadDisplayTitle } from '../instanceAi.threadRuntime';
@@ -168,7 +168,7 @@ function handoff(context: InstanceAiHandoffContext, initialDraft?: PendingCompos
 }
 
 /**
- * Puts n8n-authored text into the mounted conversation's composer without
+ * Puts MNI-authored text into the mounted conversation's composer without
  * sending it. The host (e.g. the agent builder) owns the wording and the
  * pre-fill tag. A no-op while no thread is mounted yet.
  */

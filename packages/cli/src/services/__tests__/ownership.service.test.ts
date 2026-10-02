@@ -1,5 +1,5 @@
-import { Logger } from '@n8n/backend-common';
-import { mockInstance } from '@n8n/backend-test-utils';
+import { Logger } from '@MNI/backend-common';
+import { mockInstance } from '@MNI/backend-test-utils';
 import {
 	Project,
 	SharedWorkflow,
@@ -12,9 +12,9 @@ import {
 	UserRepository,
 	GLOBAL_OWNER_ROLE,
 	PROJECT_OWNER_ROLE,
-} from '@n8n/db';
-import type { SharedCredentials, SettingsRepository } from '@n8n/db';
-import { PROJECT_OWNER_ROLE_SLUG } from '@n8n/permissions';
+} from '@MNI/db';
+import type { SharedCredentials, SettingsRepository } from '@MNI/db';
+import { PROJECT_OWNER_ROLE_SLUG } from '@MNI/permissions';
 import { v4 as uuid } from 'uuid';
 import { mock } from 'vitest-mock-extended';
 

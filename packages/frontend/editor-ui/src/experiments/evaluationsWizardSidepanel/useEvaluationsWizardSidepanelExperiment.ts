@@ -2,13 +2,13 @@ import { computed } from 'vue';
 
 import { EVALUATIONS_WIZARD_SIDEPANEL_EXPERIMENT } from '@/app/constants/experiments';
 import { usePostHog } from '@/app/stores/posthog.store';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 
 export function useEvaluationsWizardSidepanelExperiment() {
 	const posthogStore = usePostHog();
 	const settingsStore = useSettingsStore();
 
-	// Operator override (`N8N_CONFIG_EVALS_ENABLED`) wins; otherwise the
+	// Operator override (`MNI_CONFIG_EVALS_ENABLED`) wins; otherwise the
 	// `088_config_evaluations` PostHog flag remains the source of truth.
 	const isFeatureEnabled = computed(
 		() =>

@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { N8nTimeAgo } from '@n8n/design-system';
-import { useRootStore } from '@n8n/stores/useRootStore';
+import { N8nTimeAgo } from '@MNI/design-system';
+import { useRootStore } from '@MNI/stores/useRootStore';
 
 type Props = {
 	date: string;

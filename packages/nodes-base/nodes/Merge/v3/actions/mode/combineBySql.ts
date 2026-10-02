@@ -1,5 +1,5 @@
-import { Container } from '@n8n/di';
-import { ErrorReporter } from 'n8n-core';
+import { Container } from '@MNI/di';
+import { ErrorReporter } from 'MNI-core';
 
 import type {
 	IDataObject,
@@ -8,8 +8,8 @@ import type {
 	INodeExecutionData,
 	INodeProperties,
 	IPairedItemData,
-} from 'n8n-workflow';
-import { NodeOperationError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeOperationError } from 'MNI-workflow';
 import { getResolvables, updateDisplayOptions } from '@utils/utilities';
 
 import { numberInputsProperty } from '../../helpers/descriptions';
@@ -86,7 +86,7 @@ export const properties: INodeProperties[] = [
 				default: '',
 				placeholder: 'value1,value2,value3',
 				description:
-					'Comma-separated list of values to use as query parameters. Reference them in the query with ? placeholders. <a href="https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-base.merge/#use-query-parameters" target="_blank">More info</a>.',
+					'Comma-separated list of values to use as query parameters. Reference them in the query with ? placeholders. <a href="https://docs.n8n.io/integrations/builtin/core-nodes/MNI-nodes-base.merge/#use-query-parameters" target="_blank">More info</a>.',
 				hint: 'Reference query parameters with ? placeholders',
 			},
 		],

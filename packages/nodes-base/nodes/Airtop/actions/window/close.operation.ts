@@ -1,4 +1,4 @@
-import type { IExecuteFunctions, INodeExecutionData } from 'n8n-workflow';
+import type { IExecuteFunctions, INodeExecutionData } from 'MNI-workflow';
 
 import { validateAirtopApiResponse, validateSessionAndWindowId } from '../../GenericFunctions';
 import { apiRequest } from '../../transport';

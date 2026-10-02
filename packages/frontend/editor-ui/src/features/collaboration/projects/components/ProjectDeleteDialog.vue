@@ -4,12 +4,12 @@ import type { Project, ProjectListItem, ProjectSharingData } from '../projects.t
 import ProjectSharing from './ProjectSharing.vue';
 import { useAvailableProjectSearch } from '../projects.utils';
 import type { ProjectSearchFn } from '../projects.utils';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import type { ResourceCounts } from '../projects.store';
 import { APP_MODALS_ELEMENT_ID } from '@/app/constants';
 
 import { ElDialog, ElRadio } from 'element-plus';
-import { N8nButton, N8nInput, N8nInputLabel, N8nText } from '@n8n/design-system';
+import { N8nButton, N8nInput, N8nInputLabel, N8nText } from '@MNI/design-system';
 type Props = {
 	currentProject: Project | null;
 	searchFn?: ProjectSearchFn;

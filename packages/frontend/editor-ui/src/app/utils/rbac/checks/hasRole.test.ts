@@ -1,8 +1,8 @@
-import { useUsersStore } from '@n8n/stores/users.store';
+import { useUsersStore } from '@MNI/stores/users.store';
 import { hasRole } from '@/app/utils/rbac/checks';
-import { ROLE } from '@n8n/api-types';
+import { ROLE } from '@MNI/api-types';
 
-vi.mock('@n8n/stores/users.store', () => ({
+vi.mock('@MNI/stores/users.store', () => ({
 	useUsersStore: vi.fn(),
 }));
 

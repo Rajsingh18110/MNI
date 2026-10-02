@@ -1,4 +1,4 @@
-import type { InstanceAiQuestion } from '@n8n/api-types';
+import type { InstanceAiQuestion } from '@MNI/api-types';
 
 /** The opening of every onboarding thread: the copy shown before the agent's first turn. */
 interface OnboardingOpening {

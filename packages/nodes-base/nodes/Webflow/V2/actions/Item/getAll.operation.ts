@@ -3,7 +3,7 @@ import type {
 	INodeExecutionData,
 	INodeProperties,
 	IExecuteFunctions,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { updateDisplayOptions, wrapData } from '../../../../../utils/utilities';
 import { webflowApiRequest, webflowApiRequestAllItems } from '../../../GenericFunctions';

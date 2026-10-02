@@ -1,9 +1,9 @@
 import { setActivePinia } from 'pinia';
 import { createTestingPinia } from '@pinia/testing';
-import { NodeConnectionTypes } from 'n8n-workflow';
-import type { INodeTypeDescription } from 'n8n-workflow';
+import { NodeConnectionTypes } from 'MNI-workflow';
+import type { INodeTypeDescription } from 'MNI-workflow';
 import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';
-import * as nodeTypesApi from '@n8n/rest-api-client/api/nodeTypes';
+import * as nodeTypesApi from '@MNI/rest-api-client/api/nodeTypes';
 import { LOCAL_STORAGE_DATA_WORKER } from '@/app/constants/localStorage';
 
 const mocks = vi.hoisted(() => ({
@@ -17,7 +17,7 @@ const mocks = vi.hoisted(() => ({
 	getNodeType: vi.fn(),
 }));
 
-vi.mock('@n8n/stores/useRootStore', () => ({
+vi.mock('@MNI/stores/useRootStore', () => ({
 	useRootStore: vi.fn(() => mocks.rootStore),
 }));
 
@@ -27,7 +27,7 @@ vi.mock('@/app/workers', () => ({
 	getNodeType: mocks.getNodeType,
 }));
 
-vi.mock('@n8n/rest-api-client/api/nodeTypes');
+vi.mock('@MNI/rest-api-client/api/nodeTypes');
 
 function makeNodeType(
 	overrides: Partial<INodeTypeDescription> & Pick<INodeTypeDescription, 'name' | 'outputs'>,
@@ -55,7 +55,7 @@ describe('useNodeTypesStore', () => {
 	describe('isModelNode', () => {
 		it('should return true for a node that outputs AiLanguageModel', () => {
 			const nodeType = makeNodeType({
-				name: '@n8n/n8n-nodes-langchain.lmChatOpenRouter',
+				name: '@MNI/MNI-nodes-langchain.lmChatOpenRouter',
 				outputs: [NodeConnectionTypes.AiLanguageModel],
 			});
 
@@ -68,7 +68,7 @@ describe('useNodeTypesStore', () => {
 
 		it('should return true when outputs contain object format with AiLanguageModel type', () => {
 			const nodeType = makeNodeType({
-				name: '@n8n/n8n-nodes-langchain.lmChatOpenAi',
+				name: '@MNI/MNI-nodes-langchain.lmChatOpenAi',
 				outputs: [{ type: NodeConnectionTypes.AiLanguageModel, displayName: 'Model' }],
 			});
 
@@ -81,7 +81,7 @@ describe('useNodeTypesStore', () => {
 
 		it('should return false for a node that outputs Main', () => {
 			const nodeType = makeNodeType({
-				name: 'n8n-nodes-base.httpRequest',
+				name: 'MNI-nodes-base.httpRequest',
 				outputs: [NodeConnectionTypes.Main],
 			});
 
@@ -94,7 +94,7 @@ describe('useNodeTypesStore', () => {
 
 		it('should return false for a tool node', () => {
 			const nodeType = makeNodeType({
-				name: '@n8n/n8n-nodes-langchain.toolCalculator',
+				name: '@MNI/MNI-nodes-langchain.toolCalculator',
 				outputs: [NodeConnectionTypes.AiTool],
 			});
 
@@ -113,7 +113,7 @@ describe('useNodeTypesStore', () => {
 	describe('isToolNode', () => {
 		it('should return true for a node that outputs AiTool', () => {
 			const nodeType = makeNodeType({
-				name: '@n8n/n8n-nodes-langchain.toolCalculator',
+				name: '@MNI/MNI-nodes-langchain.toolCalculator',
 				outputs: [NodeConnectionTypes.AiTool],
 			});
 
@@ -126,7 +126,7 @@ describe('useNodeTypesStore', () => {
 
 		it('should return false for a model node', () => {
 			const nodeType = makeNodeType({
-				name: '@n8n/n8n-nodes-langchain.lmChatOpenRouter',
+				name: '@MNI/MNI-nodes-langchain.lmChatOpenRouter',
 				outputs: [NodeConnectionTypes.AiLanguageModel],
 			});
 
@@ -139,7 +139,7 @@ describe('useNodeTypesStore', () => {
 
 		it('should return false for a regular main node', () => {
 			const nodeType = makeNodeType({
-				name: 'n8n-nodes-base.httpRequest',
+				name: 'MNI-nodes-base.httpRequest',
 				outputs: [NodeConnectionTypes.Main],
 			});
 
@@ -157,7 +157,7 @@ describe('useNodeTypesStore', () => {
 
 	describe('setNodeTypes / removeNodeTypes', () => {
 		const nodeType = makeNodeType({
-			name: 'n8n-nodes-base.testNode',
+			name: 'MNI-nodes-base.testNode',
 			outputs: [NodeConnectionTypes.Main],
 		});
 
@@ -186,11 +186,11 @@ describe('useNodeTypesStore', () => {
 
 	describe('getNodeTypes', () => {
 		const restNode = makeNodeType({
-			name: 'n8n-nodes-base.restNode',
+			name: 'MNI-nodes-base.restNode',
 			outputs: [NodeConnectionTypes.Main],
 		});
 		const dbNode = makeNodeType({
-			name: 'n8n-nodes-base.dbNode',
+			name: 'MNI-nodes-base.dbNode',
 			outputs: [NodeConnectionTypes.Main],
 		});
 
@@ -250,8 +250,8 @@ describe('useNodeTypesStore', () => {
 	});
 
 	describe('getNodesInformation', () => {
-		const nodeInfo = { name: 'n8n-nodes-base.set', version: 1 };
-		const otherInfo = { name: 'n8n-nodes-base.if', version: 1 };
+		const nodeInfo = { name: 'MNI-nodes-base.set', version: 1 };
+		const otherInfo = { name: 'MNI-nodes-base.if', version: 1 };
 		const dbNode = makeNodeType({ name: nodeInfo.name, outputs: [NodeConnectionTypes.Main] });
 		const restNode = makeNodeType({ name: otherInfo.name, outputs: [NodeConnectionTypes.Main] });
 

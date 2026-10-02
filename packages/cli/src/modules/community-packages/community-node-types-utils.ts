@@ -1,4 +1,4 @@
-import type { INodeTypeDescription } from 'n8n-workflow';
+import type { INodeTypeDescription } from 'MNI-workflow';
 
 import { paginatedRequest, type StrapiFilters } from '@/utils/strapi-utils';
 
@@ -28,13 +28,13 @@ export type CommunityNodesMetadata = Pick<
 	'id' | 'name' | 'npmVersion' | 'updatedAt'
 >;
 
-const N8N_VETTED_NODE_TYPES_STAGING_URL = 'https://api-staging.n8n.io/api/community-nodes';
-const N8N_VETTED_NODE_TYPES_PRODUCTION_URL = 'https://api.n8n.io/api/community-nodes';
+const MNI_VETTED_NODE_TYPES_STAGING_URL = 'https://api-staging.n8n.io/api/community-nodes';
+const MNI_VETTED_NODE_TYPES_PRODUCTION_URL = 'https://api.n8n.io/api/community-nodes';
 
 function getUrl(environment: 'staging' | 'production'): string {
 	return environment === 'production'
-		? N8N_VETTED_NODE_TYPES_PRODUCTION_URL
-		: N8N_VETTED_NODE_TYPES_STAGING_URL;
+		? MNI_VETTED_NODE_TYPES_PRODUCTION_URL
+		: MNI_VETTED_NODE_TYPES_STAGING_URL;
 }
 
 export async function getCommunityNodeTypes(

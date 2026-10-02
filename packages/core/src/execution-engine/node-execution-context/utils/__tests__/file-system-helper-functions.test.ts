@@ -1,6 +1,6 @@
-import { SecurityConfig } from '@n8n/config';
-import { Container } from '@n8n/di';
-import type { INode, ResolvedFilePath } from 'n8n-workflow';
+import { SecurityConfig } from '@MNI/config';
+import { Container } from '@MNI/di';
+import type { INode, ResolvedFilePath } from 'MNI-workflow';
 import { constants } from 'node:fs';
 import {
 	access as fsAccess,
@@ -16,7 +16,7 @@ import type { Mock } from 'vitest';
 
 import {
 	BINARY_DATA_STORAGE_PATH,
-	BLOCK_FILE_ACCESS_TO_N8N_FILES,
+	BLOCK_FILE_ACCESS_TO_MNI_FILES,
 	CONFIG_FILES,
 	CUSTOM_EXTENSION_ENV,
 	UM_EMAIL_TEMPLATES_INVITE,
@@ -58,7 +58,7 @@ describe('isFilePathBlocked', () => {
 	const node = { type: 'TestNode' } as INode;
 	const { isFilePathBlocked, resolvePath } = getFileSystemHelperFunctions(node);
 	beforeEach(() => {
-		process.env[BLOCK_FILE_ACCESS_TO_N8N_FILES] = 'true';
+		process.env[BLOCK_FILE_ACCESS_TO_MNI_FILES] = 'true';
 	});
 
 	it('should return true for static cache dir', async () => {
@@ -95,8 +95,8 @@ describe('isFilePathBlocked', () => {
 		expect(isFilePathBlocked(await resolvePath(allowedPath))).toBe(false);
 	});
 
-	it('should return false when BLOCK_FILE_ACCESS_TO_N8N_FILES is false', async () => {
-		process.env[BLOCK_FILE_ACCESS_TO_N8N_FILES] = 'false';
+	it('should return false when BLOCK_FILE_ACCESS_TO_MNI_FILES is false', async () => {
+		process.env[BLOCK_FILE_ACCESS_TO_MNI_FILES] = 'false';
 		const restrictedPath = instanceSettings.n8nFolder;
 		expect(isFilePathBlocked(await resolvePath(restrictedPath))).toBe(false);
 	});
@@ -144,31 +144,31 @@ describe('isFilePathBlocked', () => {
 
 	it('should block access to MNI files if restrict and block are set', async () => {
 		const homeVarName = process.platform === 'win32' ? 'USERPROFILE' : 'HOME';
-		const userHome = process.env.N8N_USER_FOLDER ?? process.env[homeVarName] ?? process.cwd();
+		const userHome = process.env.MNI_USER_FOLDER ?? process.env[homeVarName] ?? process.cwd();
 
 		securityConfig.restrictFileAccessTo = userHome;
-		process.env[BLOCK_FILE_ACCESS_TO_N8N_FILES] = 'true';
+		process.env[BLOCK_FILE_ACCESS_TO_MNI_FILES] = 'true';
 		const restrictedPath = instanceSettings.n8nFolder;
 		expect(isFilePathBlocked(await resolvePath(restrictedPath))).toBe(true);
 	});
 
 	it('should allow access to parent folder if restrict and block are set', async () => {
 		const homeVarName = process.platform === 'win32' ? 'USERPROFILE' : 'HOME';
-		const userHome = process.env.N8N_USER_FOLDER ?? process.env[homeVarName] ?? process.cwd();
+		const userHome = process.env.MNI_USER_FOLDER ?? process.env[homeVarName] ?? process.cwd();
 
 		securityConfig.restrictFileAccessTo = userHome;
-		process.env[BLOCK_FILE_ACCESS_TO_N8N_FILES] = 'true';
+		process.env[BLOCK_FILE_ACCESS_TO_MNI_FILES] = 'true';
 		const restrictedPath = await resolvePath(join(userHome, 'somefile.txt'));
 		expect(isFilePathBlocked(restrictedPath)).toBe(false);
 	});
 
 	it('should not block similar paths', async () => {
 		const homeVarName = process.platform === 'win32' ? 'USERPROFILE' : 'HOME';
-		const userHome = process.env.N8N_USER_FOLDER ?? process.env[homeVarName] ?? process.cwd();
+		const userHome = process.env.MNI_USER_FOLDER ?? process.env[homeVarName] ?? process.cwd();
 
 		securityConfig.restrictFileAccessTo = userHome;
-		process.env[BLOCK_FILE_ACCESS_TO_N8N_FILES] = 'true';
-		const restrictedPath = await resolvePath(join(userHome, '.n8n_x'));
+		process.env[BLOCK_FILE_ACCESS_TO_MNI_FILES] = 'true';
+		const restrictedPath = await resolvePath(join(userHome, '.MNI_x'));
 		expect(isFilePathBlocked(restrictedPath)).toBe(false);
 	});
 
@@ -346,7 +346,7 @@ describe('getFileSystemHelperFunctions', () => {
 		});
 
 		it('should omit allowed paths from blocked access errors when none are configured', async () => {
-			process.env[BLOCK_FILE_ACCESS_TO_N8N_FILES] = 'true';
+			process.env[BLOCK_FILE_ACCESS_TO_MNI_FILES] = 'true';
 			const blockedPath = await helperFunctions.resolvePath(
 				join(instanceSettings.n8nFolder, 'config'),
 			);
@@ -416,7 +416,7 @@ describe('getFileSystemHelperFunctions', () => {
 		const mockFileStats = { dev: 123, ino: 456, isFile: () => true };
 
 		it('should throw error for blocked file path', async () => {
-			process.env[BLOCK_FILE_ACCESS_TO_N8N_FILES] = 'true';
+			process.env[BLOCK_FILE_ACCESS_TO_MNI_FILES] = 'true';
 
 			await expect(
 				helperFunctions.writeContentToFile(
@@ -583,7 +583,7 @@ describe('getFileSystemHelperFunctions', () => {
 
 	describe('symlinked ancestor directory', () => {
 		// Build a REAL symlinked dir via importActual (this file mocks node:fs/promises, but the
-		// symlink check in @n8n/backend-common runs against the real filesystem).
+		// symlink check in @MNI/backend-common runs against the real filesystem).
 		let realFs: {
 			realpath(path: string): Promise<string>;
 			mkdtemp(prefix: string): Promise<string>;

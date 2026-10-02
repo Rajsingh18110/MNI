@@ -9,7 +9,7 @@ import { useContextStore } from '../context.store';
 const push = vi.fn();
 const showErrorMock = vi.fn();
 
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: () => ({ showError: showErrorMock, showMessage: vi.fn() }),
 }));
 

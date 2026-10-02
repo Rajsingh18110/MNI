@@ -1,4 +1,4 @@
-import { jsonParse } from 'n8n-workflow';
+import { jsonParse } from 'MNI-workflow';
 
 /**
  * Best-effort extraction of the provider-side account an OAuth token belongs to

@@ -5,7 +5,7 @@ import {
 	type IExecuteFunctions,
 	type ILoadOptionsFunctions,
 	type INode,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import type { Mock, Mocked } from 'vitest';
 import { mockDeep } from 'vitest-mock-extended';
 
@@ -34,7 +34,7 @@ describe('Microsoft Excel Transport', () => {
 		mockNode = {
 			id: 'test-node',
 			name: 'Test Excel Node',
-			type: 'n8n-nodes-base.microsoftExcel',
+			type: 'MNI-nodes-base.microsoftExcel',
 			typeVersion: 2,
 			position: [0, 0],
 			parameters: {},

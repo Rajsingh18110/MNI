@@ -5,7 +5,7 @@ import { useProjectsStore } from './projects.store';
 import * as projectsApi from './projects.api';
 import type { Project, ProjectListItem, ProjectType } from './projects.types';
 import { ProjectTypes } from './projects.types';
-import type { ProjectRole, Scope } from '@n8n/permissions';
+import type { ProjectRole, Scope } from '@MNI/permissions';
 
 type MockRoute = {
 	params: Record<string, string>;

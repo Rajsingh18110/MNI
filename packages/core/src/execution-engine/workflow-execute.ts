@@ -2,10 +2,10 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/prefer-nullish-coalescing */
-import { isAxiosError } from '@n8n/backend-network';
-import { TOOL_EXECUTOR_NODE_NAME } from '@n8n/constants';
-import { Container } from '@n8n/di';
-import { sleep } from '@n8n/utils/sleep';
+import { isAxiosError } from '@MNI/backend-network';
+import { TOOL_EXECUTOR_NODE_NAME } from '@MNI/constants';
+import { Container } from '@MNI/di';
+import { sleep } from '@MNI/utils/sleep';
 import * as assert from 'assert/strict';
 import { setMaxListeners } from 'events';
 import get from 'lodash/get';
@@ -45,7 +45,7 @@ import type {
 	EngineRequest,
 	EngineResponse,
 	IDestinationNode,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import {
 	LoggerProxy as Logger,
 	NodeHelpers,
@@ -61,7 +61,7 @@ import {
 	ManualExecutionCancelledError,
 	createRunExecutionData,
 	applyDynamicCredentialsUsage,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import PCancelable, { type OnCancelFunction } from 'p-cancelable';
 
 import { ErrorReporter } from '@/errors/error-reporter';
@@ -955,7 +955,7 @@ export class WorkflowExecute {
 			// start over, but their `main` already holds the full set of output branches
 			// returned by `webhook()`. Forward all of them so items routed to outputs
 			// other than the first are not silently dropped.
-			// See https://github.com/n8n-io/n8n/issues/12823
+			// See https://github.com/MNI-io/MNI/issues/12823
 			if (forwardAllOutputs) {
 				return { data: inputData.main as INodeExecutionData[][] };
 			}
@@ -1880,7 +1880,7 @@ export class WorkflowExecute {
 			this.handleNodeErrorOutput(workflow, executionData, nodeSuccessData, runIndex);
 		}
 
-		// Explanation why we do this can be found in n8n-workflow/Workflow.ts -> runNode
+		// Explanation why we do this can be found in MNI-workflow/Workflow.ts -> runNode
 		const closeFunction = converted.closeFunction?.();
 
 		return { nodeSuccessData, closeFunction };

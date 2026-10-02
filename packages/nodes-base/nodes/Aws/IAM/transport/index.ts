@@ -5,8 +5,8 @@ import type {
 	ILoadOptionsFunctions,
 	IPollFunctions,
 	JsonObject,
-} from 'n8n-workflow';
-import { NodeApiError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeApiError } from 'MNI-workflow';
 
 import { getAwsCredentials } from '../../GenericFunctions';
 import { BASE_URL } from '../helpers/constants';

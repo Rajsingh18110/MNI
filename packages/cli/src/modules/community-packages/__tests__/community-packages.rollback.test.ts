@@ -1,8 +1,8 @@
-import type { Logger } from '@n8n/backend-common';
-import type { HttpRequestClient, OutboundHttp } from '@n8n/backend-network';
-import { mockInstance } from '@n8n/backend-test-utils';
-import type { InstanceSettings, PackageDirectoryLoader } from 'n8n-core';
-import { N8N_NODES_API_VERSION } from '@n8n/constants';
+import type { Logger } from '@MNI/backend-common';
+import type { HttpRequestClient, OutboundHttp } from '@MNI/backend-network';
+import { mockInstance } from '@MNI/backend-test-utils';
+import type { InstanceSettings, PackageDirectoryLoader } from 'MNI-core';
+import { MNI_NODES_API_VERSION } from '@MNI/constants';
 import { execFile } from 'node:child_process';
 import { existsSync } from 'node:fs';
 import { mkdir, mkdtemp, readdir, readFile, rm, writeFile } from 'node:fs/promises';
@@ -31,7 +31,7 @@ vi.mock('../npm-utils', async () => ({
 	verifyIntegrity: vi.fn().mockResolvedValue(undefined),
 }));
 
-const PACKAGE_NAME = 'n8n-nodes-test';
+const PACKAGE_NAME = 'MNI-nodes-test';
 const TARBALL_NAME = `${PACKAGE_NAME}-2.0.0.tgz`;
 
 /**
@@ -76,7 +76,7 @@ describe('CommunityPackagesService install rollback (real filesystem)', () => {
 	beforeEach(async () => {
 		vi.clearAllMocks();
 
-		nodesDownloadDir = await mkdtemp(path.join(tmpdir(), 'n8n-community-packages-'));
+		nodesDownloadDir = await mkdtemp(path.join(tmpdir(), 'MNI-community-packages-'));
 		packageDirectory = path.join(nodesDownloadDir, 'node_modules', PACKAGE_NAME);
 
 		// The ledger, plus a package already installed on disk at 1.0.0.
@@ -255,7 +255,7 @@ describe('CommunityPackagesService install rollback (real filesystem)', () => {
 		});
 
 		const updateToIncompatible = async (n8nNodesApiVersion: unknown) => {
-			downloadedPackageJson = { name: PACKAGE_NAME, version: '2.0.0', n8n: { n8nNodesApiVersion } };
+			downloadedPackageJson = { name: PACKAGE_NAME, version: '2.0.0', MNI: { n8nNodesApiVersion } };
 			return await communityPackagesService.updatePackage(
 				PACKAGE_NAME,
 				mock<InstalledPackages>({ packageName: PACKAGE_NAME, installedVersion: '1.0.0' }),
@@ -264,7 +264,7 @@ describe('CommunityPackagesService install rollback (real filesystem)', () => {
 		};
 
 		test('rejects an update and leaves directory, ledger, and database unchanged', async () => {
-			await expect(updateToIncompatible(N8N_NODES_API_VERSION + 1)).rejects.toThrow(
+			await expect(updateToIncompatible(MNI_NODES_API_VERSION + 1)).rejects.toThrow(
 				"isn't compatible with your version of MNI",
 			);
 
@@ -291,7 +291,7 @@ describe('CommunityPackagesService install rollback (real filesystem)', () => {
 		});
 
 		test('installs a package that declares the supported node API version', async () => {
-			await expect(updateToIncompatible(N8N_NODES_API_VERSION)).resolves.toBeDefined();
+			await expect(updateToIncompatible(MNI_NODES_API_VERSION)).resolves.toBeDefined();
 
 			// The new version replaced the old one, marker and all.
 			expect(existsSync(markerPath())).toBe(false);
@@ -314,7 +314,7 @@ describe('CommunityPackagesService install rollback (real filesystem)', () => {
 				downloadedPackageJson = {
 					name: PACKAGE_NAME,
 					version: '2.0.0',
-					n8n: { n8nNodesApiVersion: N8N_NODES_API_VERSION + 1 },
+					MNI: { n8nNodesApiVersion: MNI_NODES_API_VERSION + 1 },
 				};
 
 				await expect(communityPackagesService.installPackage(PACKAGE_NAME)).rejects.toThrow(
@@ -334,7 +334,7 @@ describe('CommunityPackagesService install rollback (real filesystem)', () => {
 				downloadedPackageJson = {
 					name: PACKAGE_NAME,
 					version: '2.0.0',
-					n8n: { n8nNodesApiVersion: N8N_NODES_API_VERSION + 1 },
+					MNI: { n8nNodesApiVersion: MNI_NODES_API_VERSION + 1 },
 				};
 				// The follower resolves the version to install from the leader's database record.
 				installedPackageRepository.findOne.mockResolvedValue(
@@ -359,8 +359,8 @@ describe('CommunityPackagesService install rollback (real filesystem)', () => {
 						packageName: PACKAGE_NAME,
 						reason: expect.stringContaining("isn't compatible with your version of MNI"),
 						// The operator log names both versions, unlike the user-facing message.
-						requiredNodesApiVersion: N8N_NODES_API_VERSION + 1,
-						supportedNodesApiVersion: N8N_NODES_API_VERSION,
+						requiredNodesApiVersion: MNI_NODES_API_VERSION + 1,
+						supportedNodesApiVersion: MNI_NODES_API_VERSION,
 					}),
 				);
 			});

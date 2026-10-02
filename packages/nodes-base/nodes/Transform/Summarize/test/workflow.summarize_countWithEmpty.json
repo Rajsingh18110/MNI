@@ -5,7 +5,7 @@
 			"parameters": {},
 			"id": "e46eed6e-4a6b-4e1f-bd7a-96cf579dd2ee",
 			"name": "When clicking \"Execute workflow\"",
-			"type": "n8n-nodes-base.manualTrigger",
+			"type": "MNI-nodes-base.manualTrigger",
 			"typeVersion": 1,
 			"position": [-900, 260]
 		},
@@ -21,7 +21,7 @@
 					{}
 				]
 			},
-			"type": "n8n-nodes-testing.testData",
+			"type": "MNI-nodes-testing.testData",
 			"typeVersion": 1,
 			"position": [-520, -80],
 			"id": "80f3462d-7ea5-4af1-bd13-f3f46b0ee43f",
@@ -38,7 +38,7 @@
 				},
 				"options": {}
 			},
-			"type": "n8n-nodes-base.summarize",
+			"type": "MNI-nodes-base.summarize",
 			"typeVersion": 1.1,
 			"position": [-280, -320],
 			"id": "98ff6686-bf9f-436a-8a64-3b3b1e648184",
@@ -56,7 +56,7 @@
 				},
 				"options": {}
 			},
-			"type": "n8n-nodes-base.summarize",
+			"type": "MNI-nodes-base.summarize",
 			"typeVersion": 1.1,
 			"position": [-280, -160],
 			"id": "aa094d4c-5e00-49a4-9799-e7692b49f204",
@@ -74,7 +74,7 @@
 				},
 				"options": {}
 			},
-			"type": "n8n-nodes-base.summarize",
+			"type": "MNI-nodes-base.summarize",
 			"typeVersion": 1.1,
 			"position": [-280, -40],
 			"id": "c4a439c9-4d25-4ebb-b36c-c72d0d738049",
@@ -93,7 +93,7 @@
 				},
 				"options": {}
 			},
-			"type": "n8n-nodes-base.summarize",
+			"type": "MNI-nodes-base.summarize",
 			"typeVersion": 1.1,
 			"position": [-280, 100],
 			"id": "e8abc054-5285-4dcc-980b-4bba4ef45ae0",
@@ -127,7 +127,7 @@
 					}
 				]
 			},
-			"type": "n8n-nodes-testing.testData",
+			"type": "MNI-nodes-testing.testData",
 			"typeVersion": 1,
 			"position": [-520, 500],
 			"id": "0de1d232-09c1-412f-9481-0120db0792bf",
@@ -147,7 +147,7 @@
 				},
 				"options": {}
 			},
-			"type": "n8n-nodes-base.summarize",
+			"type": "MNI-nodes-base.summarize",
 			"typeVersion": 1.1,
 			"position": [-260, 300],
 			"id": "b81e9c48-828c-4ac8-b7ca-818022384ca6",
@@ -168,7 +168,7 @@
 				},
 				"options": {}
 			},
-			"type": "n8n-nodes-base.summarize",
+			"type": "MNI-nodes-base.summarize",
 			"typeVersion": 1.1,
 			"position": [-260, 440],
 			"id": "22bd90da-9b57-4b38-9cc3-356901a6f666",
@@ -190,7 +190,7 @@
 				},
 				"options": {}
 			},
-			"type": "n8n-nodes-base.summarize",
+			"type": "MNI-nodes-base.summarize",
 			"typeVersion": 1.1,
 			"position": [-260, 580],
 			"id": "02bfe12f-eb71-483b-bef5-6007af739ace",
@@ -213,7 +213,7 @@
 				},
 				"options": {}
 			},
-			"type": "n8n-nodes-base.summarize",
+			"type": "MNI-nodes-base.summarize",
 			"typeVersion": 1.1,
 			"position": [-260, 720],
 			"id": "e67cd4b5-47ae-4d73-b933-905b04183db8",

@@ -1,6 +1,6 @@
-import type { ListDataTableQueryDto } from '@n8n/api-types';
-import type { INode } from 'n8n-workflow';
-import { isExpression, isResourceLocatorValue } from 'n8n-workflow';
+import type { ListDataTableQueryDto } from '@MNI/api-types';
+import type { INode } from 'MNI-workflow';
+import { isExpression, isResourceLocatorValue } from 'MNI-workflow';
 
 import {
 	isAllowedNode,

@@ -7,19 +7,19 @@ import {
 	mockInstance,
 	setActiveVersion,
 	testDb,
-} from '@n8n/backend-test-utils';
-import { WorkflowsConfig } from '@n8n/config';
-import { WorkflowPublicationOutboxRepository, WorkflowPublishedVersionRepository } from '@n8n/db';
-import { PubSubMetadata } from '@n8n/decorators';
-import { Container } from '@n8n/di';
+} from '@MNI/backend-test-utils';
+import { WorkflowsConfig } from '@MNI/config';
+import { WorkflowPublicationOutboxRepository, WorkflowPublishedVersionRepository } from '@MNI/db';
+import { PubSubMetadata } from '@MNI/decorators';
+import { Container } from '@MNI/di';
 import {
 	ActiveWorkflowTriggers,
 	ErrorReporter,
 	ExternalSecretsProxy,
 	InstanceSettings,
-} from 'n8n-core';
-import { ScheduleTrigger } from 'n8n-nodes-base/nodes/Schedule/ScheduleTrigger.node';
-import type { INode } from 'n8n-workflow';
+} from 'MNI-core';
+import { ScheduleTrigger } from 'MNI-nodes-base/nodes/Schedule/ScheduleTrigger.node';
+import type { INode } from 'MNI-workflow';
 
 import { ActiveExecutions } from '@/active-executions';
 import { ActiveWorkflowManager } from '@/active-workflow-manager';
@@ -63,7 +63,7 @@ const enqueuedExecutionRecovery = mockInstance(EnqueuedExecutionRecoveryService)
 beforeAll(async () => {
 	await testDb.init();
 	await utils.initNodeTypes({
-		'n8n-nodes-base.scheduleTrigger': { type: new ScheduleTrigger(), sourcePath: '' },
+		'MNI-nodes-base.scheduleTrigger': { type: new ScheduleTrigger(), sourcePath: '' },
 	});
 
 	Container.get(InstanceSettings).markAsLeader();
@@ -121,7 +121,7 @@ describe('Start.run() with workflow publication service', () => {
 		const trigger: INode = {
 			id: 'trigger',
 			name: 'Schedule',
-			type: 'n8n-nodes-base.scheduleTrigger',
+			type: 'MNI-nodes-base.scheduleTrigger',
 			typeVersion: 1,
 			position: [0, 0],
 			parameters: {},

@@ -1,12 +1,12 @@
-import { N8N_NODES_API_VERSION } from '@n8n/constants';
-import { inProduction } from '@n8n/backend-common';
+import { MNI_NODES_API_VERSION } from '@MNI/constants';
+import { inProduction } from '@MNI/backend-common';
 import type { Mock } from 'vitest';
 
 import { getCommunityNodeTypes, getCommunityNodesMetadata } from '../community-node-types-utils';
 import { CommunityNodeTypesService } from '../community-node-types.service';
 
-vi.mock('@n8n/backend-common', async () => ({
-	...(await vi.importActual<typeof import('@n8n/backend-common')>('@n8n/backend-common')),
+vi.mock('@MNI/backend-common', async () => ({
+	...(await vi.importActual<typeof import('@MNI/backend-common')>('@MNI/backend-common')),
 	inProduction: vi.fn().mockReturnValue(false),
 }));
 
@@ -34,7 +34,7 @@ describe('CommunityNodeTypesService', () => {
 			enabled: true,
 			verifiedEnabled: true,
 			aiNodeSdkVersion: 1,
-			nodesApiVersion: N8N_NODES_API_VERSION,
+			nodesApiVersion: MNI_NODES_API_VERSION,
 		};
 		communityPackagesServiceMock = {};
 
@@ -53,7 +53,7 @@ describe('CommunityNodeTypesService', () => {
 		it('should use staging environment when ENVIRONMENT=staging', async () => {
 			process.env.ENVIRONMENT = 'staging';
 			await (service as any).fetchNodeTypes();
-			expect(getCommunityNodeTypes).toHaveBeenCalledWith('staging', {}, 1, N8N_NODES_API_VERSION);
+			expect(getCommunityNodeTypes).toHaveBeenCalledWith('staging', {}, 1, MNI_NODES_API_VERSION);
 		});
 
 		it('should use production environment when inProduction=true', async () => {
@@ -63,7 +63,7 @@ describe('CommunityNodeTypesService', () => {
 				'production',
 				{},
 				1,
-				N8N_NODES_API_VERSION,
+				MNI_NODES_API_VERSION,
 			);
 		});
 
@@ -74,7 +74,7 @@ describe('CommunityNodeTypesService', () => {
 				'production',
 				{},
 				1,
-				N8N_NODES_API_VERSION,
+				MNI_NODES_API_VERSION,
 			);
 		});
 
@@ -82,7 +82,7 @@ describe('CommunityNodeTypesService', () => {
 			process.env.ENVIRONMENT = 'staging';
 			(inProduction as unknown as Mock).mockReturnValue(true);
 			await (service as any).fetchNodeTypes();
-			expect(getCommunityNodeTypes).toHaveBeenCalledWith('staging', {}, 1, N8N_NODES_API_VERSION);
+			expect(getCommunityNodeTypes).toHaveBeenCalledWith('staging', {}, 1, MNI_NODES_API_VERSION);
 		});
 
 		it('should call setTimestampForRetry when detectUpdates returns scheduleRetry', async () => {
@@ -302,25 +302,25 @@ describe('CommunityNodeTypesService', () => {
 		beforeEach(() => {
 			const mockNodeTypes = [
 				{
-					name: 'n8n-nodes-air.air',
-					packageName: 'n8n-nodes-air',
+					name: 'MNI-nodes-air.air',
+					packageName: 'MNI-nodes-air',
 					checksum: 'checksum-air',
 					npmVersion: '1.0.0',
-					nodeDescription: { name: 'n8n-nodes-air.air', usableAsTool: false },
+					nodeDescription: { name: 'MNI-nodes-air.air', usableAsTool: false },
 				},
 				{
-					name: 'n8n-nodes-airparser.airparser',
-					packageName: 'n8n-nodes-airparser',
+					name: 'MNI-nodes-airparser.airparser',
+					packageName: 'MNI-nodes-airparser',
 					checksum: 'checksum-airparser',
 					npmVersion: '2.0.0',
-					nodeDescription: { name: 'n8n-nodes-airparser.airparser', usableAsTool: false },
+					nodeDescription: { name: 'MNI-nodes-airparser.airparser', usableAsTool: false },
 				},
 				{
-					name: 'n8n-nodes-example.example',
-					packageName: 'n8n-nodes-example',
+					name: 'MNI-nodes-example.example',
+					packageName: 'MNI-nodes-example',
 					checksum: 'checksum-example',
 					npmVersion: '3.0.0',
-					nodeDescription: { name: 'n8n-nodes-example.example', usableAsTool: false },
+					nodeDescription: { name: 'MNI-nodes-example.example', usableAsTool: false },
 				},
 			];
 
@@ -328,44 +328,44 @@ describe('CommunityNodeTypesService', () => {
 		});
 
 		it('should return the correct package when exact packageName match is found', async () => {
-			const result = await service.findVetted('n8n-nodes-air');
+			const result = await service.findVetted('MNI-nodes-air');
 
 			expect(result).toBeDefined();
-			expect(result?.packageName).toBe('n8n-nodes-air');
+			expect(result?.packageName).toBe('MNI-nodes-air');
 			expect(result?.checksum).toBe('checksum-air');
 			expect(result?.npmVersion).toBe('1.0.0');
 		});
 
 		it('should return undefined when package is not found', async () => {
-			const result = await service.findVetted('n8n-nodes-nonexistent');
+			const result = await service.findVetted('MNI-nodes-nonexistent');
 
 			expect(result).toBeUndefined();
 		});
 
 		it('should not match similar package names with substring matching', async () => {
-			const result = await service.findVetted('n8n-nodes-air');
+			const result = await service.findVetted('MNI-nodes-air');
 
 			expect(result).toBeDefined();
-			expect(result?.packageName).toBe('n8n-nodes-air');
-			// Should NOT match 'n8n-nodes-airparser' even though it contains 'n8n-nodes-air'
-			expect(result?.packageName).not.toBe('n8n-nodes-airparser');
+			expect(result?.packageName).toBe('MNI-nodes-air');
+			// Should NOT match 'MNI-nodes-airparser' even though it contains 'MNI-nodes-air'
+			expect(result?.packageName).not.toBe('MNI-nodes-airparser');
 		});
 
 		it('should return the correct package from multiple similar names', async () => {
-			const airResult = await service.findVetted('n8n-nodes-air');
-			const airparserResult = await service.findVetted('n8n-nodes-airparser');
+			const airResult = await service.findVetted('MNI-nodes-air');
+			const airparserResult = await service.findVetted('MNI-nodes-airparser');
 
-			expect(airResult?.packageName).toBe('n8n-nodes-air');
+			expect(airResult?.packageName).toBe('MNI-nodes-air');
 			expect(airResult?.checksum).toBe('checksum-air');
 
-			expect(airparserResult?.packageName).toBe('n8n-nodes-airparser');
+			expect(airparserResult?.packageName).toBe('MNI-nodes-airparser');
 			expect(airparserResult?.checksum).toBe('checksum-airparser');
 		});
 
 		it('should return undefined when communityNodeTypes is empty', async () => {
 			(service as any).communityNodeTypes.clear();
 
-			const result = await service.findVetted('n8n-nodes-air');
+			const result = await service.findVetted('MNI-nodes-air');
 
 			expect(result).toBeUndefined();
 		});
@@ -373,34 +373,34 @@ describe('CommunityNodeTypesService', () => {
 		it('should handle packages with similar prefixes correctly', async () => {
 			const mockNodeTypes = [
 				{
-					name: 'n8n-nodes-test.test',
-					packageName: 'n8n-nodes-test',
+					name: 'MNI-nodes-test.test',
+					packageName: 'MNI-nodes-test',
 					checksum: 'checksum-test',
-					nodeDescription: { name: 'n8n-nodes-test.test', usableAsTool: false },
+					nodeDescription: { name: 'MNI-nodes-test.test', usableAsTool: false },
 				},
 				{
-					name: 'n8n-nodes-testing.testing',
-					packageName: 'n8n-nodes-testing',
+					name: 'MNI-nodes-testing.testing',
+					packageName: 'MNI-nodes-testing',
 					checksum: 'checksum-testing',
-					nodeDescription: { name: 'n8n-nodes-testing.testing', usableAsTool: false },
+					nodeDescription: { name: 'MNI-nodes-testing.testing', usableAsTool: false },
 				},
 				{
-					name: 'n8n-nodes-tester.tester',
-					packageName: 'n8n-nodes-tester',
+					name: 'MNI-nodes-tester.tester',
+					packageName: 'MNI-nodes-tester',
 					checksum: 'checksum-tester',
-					nodeDescription: { name: 'n8n-nodes-tester.tester', usableAsTool: false },
+					nodeDescription: { name: 'MNI-nodes-tester.tester', usableAsTool: false },
 				},
 			];
 
 			(service as any).updateCommunityNodeTypes(mockNodeTypes);
 
-			const testResult = await service.findVetted('n8n-nodes-test');
-			const testingResult = await service.findVetted('n8n-nodes-testing');
-			const testerResult = await service.findVetted('n8n-nodes-tester');
+			const testResult = await service.findVetted('MNI-nodes-test');
+			const testingResult = await service.findVetted('MNI-nodes-testing');
+			const testerResult = await service.findVetted('MNI-nodes-tester');
 
-			expect(testResult?.packageName).toBe('n8n-nodes-test');
-			expect(testingResult?.packageName).toBe('n8n-nodes-testing');
-			expect(testerResult?.packageName).toBe('n8n-nodes-tester');
+			expect(testResult?.packageName).toBe('MNI-nodes-test');
+			expect(testingResult?.packageName).toBe('MNI-nodes-testing');
+			expect(testerResult?.packageName).toBe('MNI-nodes-tester');
 		});
 	});
 
@@ -412,8 +412,8 @@ describe('CommunityNodeTypesService', () => {
 		it('should create AI tool versions for nodes with usableAsTool flag', async () => {
 			const mockNodeTypes = [
 				{
-					name: 'n8n-nodes-test.test',
-					packageName: 'n8n-nodes-test',
+					name: 'MNI-nodes-test.test',
+					packageName: 'MNI-nodes-test',
 					nodeDescription: {
 						name: 'test-node-preview',
 						displayName: 'Test Node',
@@ -436,12 +436,12 @@ describe('CommunityNodeTypesService', () => {
 
 			expect(result.length).toBe(2); // original + tool version
 
-			const originalNode = result.find((n) => n.name === 'n8n-nodes-test.test');
-			const toolNode = result.find((n) => n.name === 'n8n-nodes-test.testTool');
+			const originalNode = result.find((n) => n.name === 'MNI-nodes-test.test');
+			const toolNode = result.find((n) => n.name === 'MNI-nodes-test.testTool');
 
 			expect(originalNode).toBeDefined();
 			expect(toolNode).toBeDefined();
-			expect(toolNode?.name).toBe('n8n-nodes-test.testTool');
+			expect(toolNode?.name).toBe('MNI-nodes-test.testTool');
 			expect(toolNode?.nodeDescription.name).toBe('test-node-previewTool');
 			expect(toolNode?.nodeDescription.displayName).toBe('Test Node Tool');
 			expect(toolNode?.nodeDescription.inputs).toEqual([]);
@@ -456,8 +456,8 @@ describe('CommunityNodeTypesService', () => {
 		it('should not create AI tool versions for nodes without usableAsTool flag', async () => {
 			const mockNodeTypes = [
 				{
-					name: 'n8n-nodes-test.test',
-					packageName: 'n8n-nodes-test',
+					name: 'MNI-nodes-test.test',
+					packageName: 'MNI-nodes-test',
 					nodeDescription: {
 						name: 'test-node-preview',
 						displayName: 'Test Node',
@@ -474,15 +474,15 @@ describe('CommunityNodeTypesService', () => {
 
 			expect(result.length).toBe(1); // only original
 
-			const toolNode = result.find((n) => n.name === 'n8n-nodes-test.testTool');
+			const toolNode = result.find((n) => n.name === 'MNI-nodes-test.testTool');
 			expect(toolNode).toBeUndefined();
 		});
 
 		it('should not create AI tool version for node with tool in type', async () => {
 			const mockNodeTypes = [
 				{
-					name: 'n8n-nodes-test.testTool',
-					packageName: 'n8n-nodes-test',
+					name: 'MNI-nodes-test.testTool',
+					packageName: 'MNI-nodes-test',
 					nodeDescription: {
 						name: 'test-node-previewTool',
 						displayName: 'Test Node',
@@ -499,15 +499,15 @@ describe('CommunityNodeTypesService', () => {
 
 			expect(result.length).toBe(1); // only original
 
-			const toolNode = result.find((n) => n.name === 'n8n-nodes-test.testToolTool');
+			const toolNode = result.find((n) => n.name === 'MNI-nodes-test.testToolTool');
 			expect(toolNode).toBeUndefined();
 		});
 
 		it('should use default "Other Tools" when codex subcategories are not defined', async () => {
 			const mockNodeTypes = [
 				{
-					name: 'n8n-nodes-test.test',
-					packageName: 'n8n-nodes-test',
+					name: 'MNI-nodes-test.test',
+					packageName: 'MNI-nodes-test',
 					nodeDescription: {
 						name: 'test-node-preview',
 						displayName: 'Test Node',
@@ -521,7 +521,7 @@ describe('CommunityNodeTypesService', () => {
 			(getCommunityNodeTypes as Mock).mockResolvedValueOnce(mockNodeTypes);
 
 			const result = await service.getCommunityNodeTypes();
-			const toolNode = result.find((n) => n.name === 'n8n-nodes-test.testTool');
+			const toolNode = result.find((n) => n.name === 'MNI-nodes-test.testTool');
 
 			expect(toolNode).toBeDefined();
 			expect(toolNode?.nodeDescription.codex?.subcategories?.Tools).toEqual(['Other Tools']);
@@ -534,8 +534,8 @@ describe('CommunityNodeTypesService', () => {
 
 			const mockNodeTypes = [
 				{
-					name: 'n8n-nodes-test.test',
-					packageName: 'n8n-nodes-test',
+					name: 'MNI-nodes-test.test',
+					packageName: 'MNI-nodes-test',
 					nodeDescription: {
 						name: 'test-node-preview',
 						displayName: 'Test Node',
@@ -552,7 +552,7 @@ describe('CommunityNodeTypesService', () => {
 			(getCommunityNodeTypes as Mock).mockResolvedValueOnce(mockNodeTypes);
 
 			const result = await service.getCommunityNodeTypes();
-			const toolNode = result.find((n) => n.name === 'n8n-nodes-test.testTool');
+			const toolNode = result.find((n) => n.name === 'MNI-nodes-test.testTool');
 
 			expect(toolNode?.nodeDescription.codex?.resources).toEqual(mockResources);
 		});
@@ -560,8 +560,8 @@ describe('CommunityNodeTypesService', () => {
 		it('should not include Recommended Tools subcategory in tool version', async () => {
 			const mockNodeTypes = [
 				{
-					name: 'n8n-nodes-test.test',
-					packageName: 'n8n-nodes-test',
+					name: 'MNI-nodes-test.test',
+					packageName: 'MNI-nodes-test',
 					nodeDescription: {
 						name: 'test-node-preview',
 						displayName: 'Test Node',
@@ -584,7 +584,7 @@ describe('CommunityNodeTypesService', () => {
 			(getCommunityNodeTypes as Mock).mockResolvedValueOnce(mockNodeTypes);
 
 			const result = await service.getCommunityNodeTypes();
-			const toolNode = result.find((n) => n.name === 'n8n-nodes-test.testTool');
+			const toolNode = result.find((n) => n.name === 'MNI-nodes-test.testTool');
 
 			expect(toolNode?.nodeDescription.codex?.subcategories?.Tools).not.toContain(
 				'Recommended Tools',
@@ -594,8 +594,8 @@ describe('CommunityNodeTypesService', () => {
 		it('should handle multiple nodes with usableAsTool flag', async () => {
 			const mockNodeTypes = [
 				{
-					name: 'n8n-nodes-test1.test1',
-					packageName: 'n8n-nodes-test1',
+					name: 'MNI-nodes-test1.test1',
+					packageName: 'MNI-nodes-test1',
 					nodeDescription: {
 						name: 'test-node-1-preview',
 						displayName: 'Test Node 1',
@@ -605,8 +605,8 @@ describe('CommunityNodeTypesService', () => {
 					},
 				},
 				{
-					name: 'n8n-nodes-test2.test2',
-					packageName: 'n8n-nodes-test2',
+					name: 'MNI-nodes-test2.test2',
+					packageName: 'MNI-nodes-test2',
 					nodeDescription: {
 						name: 'test-node-2-preview',
 						displayName: 'Test Node 2',
@@ -616,8 +616,8 @@ describe('CommunityNodeTypesService', () => {
 					},
 				},
 				{
-					name: 'n8n-nodes-test3.test3',
-					packageName: 'n8n-nodes-test3',
+					name: 'MNI-nodes-test3.test3',
+					packageName: 'MNI-nodes-test3',
 					nodeDescription: {
 						name: 'test-node-3-preview',
 						displayName: 'Test Node 3',
@@ -634,18 +634,18 @@ describe('CommunityNodeTypesService', () => {
 
 			expect(result.length).toBe(5); // 3 original + 2 tool versions
 
-			expect(result.find((n) => n.name === 'n8n-nodes-test1.test1Tool')).toBeDefined();
-			expect(result.find((n) => n.name === 'n8n-nodes-test2.test2Tool')).toBeDefined();
-			expect(result.find((n) => n.name === 'n8n-nodes-test3.test3Tool')).toBeUndefined();
+			expect(result.find((n) => n.name === 'MNI-nodes-test1.test1Tool')).toBeDefined();
+			expect(result.find((n) => n.name === 'MNI-nodes-test2.test2Tool')).toBeDefined();
+			expect(result.find((n) => n.name === 'MNI-nodes-test3.test3Tool')).toBeUndefined();
 		});
 
 		it('should not create AI tool version for nodes with trigger group', async () => {
 			const mockNodeTypes = [
 				{
-					name: 'n8n-nodes-wcrm.wCRMTrigger',
-					packageName: 'n8n-nodes-wcrm',
+					name: 'MNI-nodes-wcrm.wCRMTrigger',
+					packageName: 'MNI-nodes-wcrm',
 					nodeDescription: {
-						name: 'n8n-nodes-wcrm.wCRMTrigger',
+						name: 'MNI-nodes-wcrm.wCRMTrigger',
 						displayName: 'wCRM Trigger',
 						group: ['trigger'],
 						inputs: [],
@@ -660,17 +660,17 @@ describe('CommunityNodeTypesService', () => {
 			const result = await service.getCommunityNodeTypes();
 
 			expect(result.length).toBe(1); // only original, no tool version
-			expect(result.find((n) => n.name === 'n8n-nodes-wcrm.wCRMTriggerTool')).toBeUndefined();
+			expect(result.find((n) => n.name === 'MNI-nodes-wcrm.wCRMTriggerTool')).toBeUndefined();
 		});
 
 		it('should create AI tool version for nodes with "trigger" in the name but not in the group', async () => {
 			// e.g. a node for the trigger.dev service — name contains "trigger" but it's not a trigger node
 			const mockNodeTypes = [
 				{
-					name: 'n8n-nodes-triggerdev.triggerDevAction',
-					packageName: 'n8n-nodes-triggerdev',
+					name: 'MNI-nodes-triggerdev.triggerDevAction',
+					packageName: 'MNI-nodes-triggerdev',
 					nodeDescription: {
-						name: 'n8n-nodes-triggerdev.triggerDevAction',
+						name: 'MNI-nodes-triggerdev.triggerDevAction',
 						displayName: 'Trigger.dev Action',
 						group: [],
 						inputs: ['main'],
@@ -686,15 +686,15 @@ describe('CommunityNodeTypesService', () => {
 
 			expect(result.length).toBe(2); // original + tool version
 			expect(
-				result.find((n) => n.name === 'n8n-nodes-triggerdev.triggerDevActionTool'),
+				result.find((n) => n.name === 'MNI-nodes-triggerdev.triggerDevActionTool'),
 			).toBeDefined();
 		});
 
 		it('should not mutate original node type when creating tool version', async () => {
 			const mockNodeTypes = [
 				{
-					name: 'n8n-nodes-test.test',
-					packageName: 'n8n-nodes-test',
+					name: 'MNI-nodes-test.test',
+					packageName: 'MNI-nodes-test',
 					nodeDescription: {
 						name: 'test-node-preview',
 						displayName: 'Test Node',
@@ -709,18 +709,18 @@ describe('CommunityNodeTypesService', () => {
 
 			const result = await service.getCommunityNodeTypes();
 
-			const originalNode = result.find((n) => n.name === 'n8n-nodes-test.test');
-			const toolNode = result.find((n) => n.name === 'n8n-nodes-test.testTool');
+			const originalNode = result.find((n) => n.name === 'MNI-nodes-test.test');
+			const toolNode = result.find((n) => n.name === 'MNI-nodes-test.testTool');
 
 			// Ensure original node is not modified
-			expect(originalNode?.name).toBe('n8n-nodes-test.test');
+			expect(originalNode?.name).toBe('MNI-nodes-test.test');
 			expect(originalNode?.nodeDescription.name).toBe('test-node-preview');
 			expect(originalNode?.nodeDescription.displayName).toBe('Test Node');
 			expect(originalNode?.nodeDescription.inputs).toEqual(['main']);
 			expect(originalNode?.nodeDescription.outputs).toEqual(['main']);
 
 			// Ensure tool node has correct modifications
-			expect(toolNode?.name).toBe('n8n-nodes-test.testTool');
+			expect(toolNode?.name).toBe('MNI-nodes-test.testTool');
 			expect(toolNode?.nodeDescription.name).toBe('test-node-previewTool');
 			expect(toolNode?.nodeDescription.displayName).toBe('Test Node Tool');
 		});
@@ -979,14 +979,14 @@ describe('CommunityNodeTypesService', () => {
 
 		it('should match a package name containing a dot', async () => {
 			// Splitting the node type on its first dot would look up
-			// 'n8n-nodes-chatwoot' and report the installed package as missing.
+			// 'MNI-nodes-chatwoot' and report the installed package as missing.
 			communityPackagesServiceMock.getAllInstalledPackages = vi
 				.fn()
-				.mockResolvedValue([{ packageName: 'n8n-nodes-chatwoot.io' }]);
+				.mockResolvedValue([{ packageName: 'MNI-nodes-chatwoot.io' }]);
 
 			const isInstalled = await (service as any).createIsInstalled();
 
-			expect(isInstalled({ packageName: 'n8n-nodes-chatwoot.io' })).toBe(true);
+			expect(isInstalled({ packageName: 'MNI-nodes-chatwoot.io' })).toBe(true);
 		});
 
 		it('should handle empty package list', async () => {

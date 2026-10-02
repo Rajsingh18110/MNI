@@ -1,5 +1,5 @@
-import * as n8nWorkflow from 'n8n-workflow';
-import { NodeHelpers, type INodeProperties } from 'n8n-workflow';
+import * as n8nWorkflow from 'MNI-workflow';
+import { NodeHelpers, type INodeProperties } from 'MNI-workflow';
 
 import { testTriggerNode } from '@test/nodes/TriggerHelpers';
 

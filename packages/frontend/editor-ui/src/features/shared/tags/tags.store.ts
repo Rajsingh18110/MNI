@@ -1,12 +1,12 @@
 import { createTagsApi } from './tags.api';
-import { STORES } from '@n8n/stores';
-import type { ITag } from '@n8n/rest-api-client/api/tags';
+import { STORES } from '@MNI/stores';
+import type { ITag } from '@MNI/rest-api-client/api/tags';
 import { defineStore } from 'pinia';
-import { useRootStore } from '@n8n/stores/useRootStore';
+import { useRootStore } from '@MNI/stores/useRootStore';
 import { computed, ref } from 'vue';
 import { hasPermission } from '@/app/utils/rbac/permissions';
 import { injectWorkflowDocumentStore } from '@/app/stores/workflowDocument.store';
-import type { Scope } from '@n8n/permissions';
+import type { Scope } from '@MNI/permissions';
 
 const apiMapping = {
 	[STORES.TAGS]: createTagsApi('/tags'),

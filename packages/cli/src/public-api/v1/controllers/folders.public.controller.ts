@@ -11,13 +11,13 @@ import {
 	folderIdParamSchema,
 	folderProjectIdParamSchema,
 	projectIdParamSchema,
-} from '@n8n/api-types';
-import { LICENSE_FEATURES } from '@n8n/constants';
+} from '@MNI/api-types';
+import { LICENSE_FEATURES } from '@MNI/constants';
 import type {
 	AuthenticatedRequest,
 	Folder,
 	FolderWithWorkflowAndSubFolderCountAndPath,
-} from '@n8n/db';
+} from '@MNI/db';
 import {
 	ApiDescription,
 	ApiErrorResponse,
@@ -34,9 +34,9 @@ import {
 	Post,
 	PublicApiController,
 	Query,
-} from '@n8n/decorators';
+} from '@MNI/decorators';
 import type { Response } from 'express';
-import { UserError } from 'n8n-workflow';
+import { UserError } from 'MNI-workflow';
 
 import { FolderNotFoundError } from '@/errors/folder-not-found.error';
 import { BadRequestError } from '@/errors/response-errors/bad-request.error';

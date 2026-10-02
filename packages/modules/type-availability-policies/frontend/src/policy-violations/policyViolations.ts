@@ -1,5 +1,5 @@
-import { policyViolationSchema, type PolicyViolation } from '@n8n/api-types';
-import { isRecord } from '@n8n/utils/is-record';
+import { policyViolationSchema, type PolicyViolation } from '@MNI/api-types';
+import { isRecord } from '@MNI/utils/is-record';
 
 const violationsSchema = policyViolationSchema.array().nonempty();
 

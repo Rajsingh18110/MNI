@@ -6,7 +6,7 @@ import AgentSectionEditor from '../components/AgentSectionEditor.vue';
 import { tryParseConfig } from '../utils/agentSectionEditor.utils';
 import type { AgentJsonConfig } from '../types';
 
-vi.mock('@n8n/i18n', () => ({
+vi.mock('@MNI/i18n', () => ({
 	useI18n: () => ({ baseText: (k: string) => k }),
 }));
 

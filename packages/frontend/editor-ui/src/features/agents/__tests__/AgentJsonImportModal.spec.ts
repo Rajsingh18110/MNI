@@ -13,7 +13,7 @@ vi.mock('@/app/stores/ui.store', () => ({
 	}),
 }));
 
-vi.mock('@n8n/i18n', () => ({
+vi.mock('@MNI/i18n', () => ({
 	useI18n: () => ({
 		baseText: (key: string) =>
 			({
@@ -32,7 +32,7 @@ vi.mock('../components/modals/AgentModal.vue', async () => ({
 	default: (await import('./utils/AgentModalTestStub')).AgentModalTestStub,
 }));
 
-vi.mock('@n8n/design-system', () => ({
+vi.mock('@MNI/design-system', () => ({
 	N8nButton: {
 		template:
 			'<button :disabled="disabled" v-bind="$attrs" @click="$emit(\'click\')"><slot /></button>',

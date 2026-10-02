@@ -5,9 +5,9 @@ import type {
 	ChatSessionId,
 	ChatAttachment,
 	ChatHubLLMProvider,
-} from '@n8n/api-types';
-import type { INodeCredentials, IRunExecutionData, IWorkflowBase } from 'n8n-workflow';
-import { IconOrEmojiSchema } from 'n8n-workflow';
+} from '@MNI/api-types';
+import type { INodeCredentials, IRunExecutionData, IWorkflowBase } from 'MNI-workflow';
+import { IconOrEmojiSchema } from 'MNI-workflow';
 import { z } from 'zod';
 
 export interface ModelWithCredentials {
@@ -51,7 +51,7 @@ export type ContentBlock =
 	| { type: 'text'; text: string }
 	| { type: 'image_url'; image_url: string };
 
-// From packages/@n8n/nodes-langchain/nodes/memory/MemoryManager/MemoryManager.node.ts
+// From packages/@MNI/nodes-langchain/nodes/memory/MemoryManager/MemoryManager.node.ts
 export type MessageRole = 'ai' | 'system' | 'user';
 
 export interface MessageRecord {

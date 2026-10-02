@@ -1,8 +1,8 @@
-import { Logger } from '@n8n/backend-common';
-import { AgentsConfig } from '@n8n/config';
-import { Time } from '@n8n/constants';
-import { Service } from '@n8n/di';
-import { scrubSecretsInText } from '@n8n/utils/scrub-secrets';
+import { Logger } from '@MNI/backend-common';
+import { AgentsConfig } from '@MNI/config';
+import { Time } from '@MNI/constants';
+import { Service } from '@MNI/di';
+import { scrubSecretsInText } from '@MNI/utils/scrub-secrets';
 
 import type { AgentChannelRef } from '../utils/agent-channel';
 import type { AgentChannelStatus } from '../entities/agent-channel-status.entity';

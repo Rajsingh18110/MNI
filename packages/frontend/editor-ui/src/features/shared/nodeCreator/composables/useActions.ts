@@ -4,7 +4,7 @@ import {
 	NodeConnectionTypes,
 	type IDataObject,
 	type INodeParameters,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import type {
 	ActionTypeDescription,
 	AddedNode,
@@ -37,7 +37,7 @@ import {
 	WEBHOOK_NODE_TYPE,
 } from '@/app/constants';
 
-import type { BaseTextKey } from '@n8n/i18n';
+import type { BaseTextKey } from '@MNI/i18n';
 import type { Telemetry } from '@/app/plugins/telemetry';
 import { useNodeCreatorStore } from '@/features/shared/nodeCreator/nodeCreator.store';
 import { injectWorkflowDocumentStore } from '@/app/stores/workflowDocument.store';
@@ -51,7 +51,7 @@ import {
 	transformNodeType,
 	isNodeItemRestricted,
 } from '../nodeCreator.utils';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import { PUSH_NODES_OFFSET } from '@/app/utils/nodeViewUtils';
 import { CHANGE_ACTION } from '@/app/stores/workflowDocument/types';
 
@@ -78,7 +78,7 @@ export const useActions = () => {
 				const transformed = transformNodeType(node, subcategory, 'action');
 
 				if (transformed.type === 'action') {
-					const nameBase = node.name.replace('n8n-nodes-base.', '');
+					const nameBase = node.name.replace('MNI-nodes-base.', '');
 					const localeKey = `nodeCreator.actionsPlaceholderNode.${nameBase}` as BaseTextKey;
 					const overwriteLocale = i18n.baseText(localeKey);
 

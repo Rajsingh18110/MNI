@@ -1,4 +1,4 @@
-import { Container } from '@n8n/di';
+import { Container } from '@MNI/di';
 
 import type { QuickConnectConfig } from '../quick-connect.config';
 import { QuickConnectModule } from '../quick-connect.module';
@@ -12,14 +12,14 @@ describe('QuickConnectModule', () => {
 	});
 
 	afterEach(() => {
-		delete process.env.N8N_QUICK_CONNECT_OPTIONS;
+		delete process.env.MNI_QUICK_CONNECT_OPTIONS;
 	});
 
 	describe('settings()', () => {
 		it('should not expose backendFlowConfig', async () => {
 			const testConfig = [
 				{
-					packageName: '@n8n/test-service',
+					packageName: '@MNI/test-service',
 					credentialType: 'testApi',
 					text: 'Test Service Integration',
 					quickConnectType: 'firecrawl',
@@ -29,7 +29,7 @@ describe('QuickConnectModule', () => {
 					},
 				},
 			];
-			process.env.N8N_QUICK_CONNECT_OPTIONS = JSON.stringify(testConfig);
+			process.env.MNI_QUICK_CONNECT_OPTIONS = JSON.stringify(testConfig);
 
 			const settings = (await module.settings()) as QuickConnectConfig;
 
@@ -46,25 +46,25 @@ describe('QuickConnectModule', () => {
 		it('should handle options without backendFlowConfig', async () => {
 			const testConfig = [
 				{
-					packageName: '@n8n/oauth-service',
+					packageName: '@MNI/oauth-service',
 					credentialType: 'oauthApi',
 					text: 'OAuth Service Integration',
 					quickConnectType: 'oauth',
 				},
 			];
-			process.env.N8N_QUICK_CONNECT_OPTIONS = JSON.stringify(testConfig);
+			process.env.MNI_QUICK_CONNECT_OPTIONS = JSON.stringify(testConfig);
 
 			const settings = (await module.settings()) as QuickConnectConfig;
 
 			expect(settings.options).toHaveLength(1);
 			expect(settings.options[0].backendFlowConfig).toBeUndefined();
-			expect(settings.options[0].packageName).toBe('@n8n/oauth-service');
+			expect(settings.options[0].packageName).toBe('@MNI/oauth-service');
 		});
 
 		it('should handle mixed options with and without backendFlowConfig', async () => {
 			const testConfig = [
 				{
-					packageName: '@n8n/backend-service',
+					packageName: '@MNI/backend-service',
 					credentialType: 'backendApi',
 					text: 'Backend Service Integration',
 					quickConnectType: 'firecrawl',
@@ -74,13 +74,13 @@ describe('QuickConnectModule', () => {
 					},
 				},
 				{
-					packageName: '@n8n/frontend-service',
+					packageName: '@MNI/frontend-service',
 					credentialType: 'frontendApi',
 					text: 'Frontend Service Integration',
 					quickConnectType: 'oauth',
 				},
 			];
-			process.env.N8N_QUICK_CONNECT_OPTIONS = JSON.stringify(testConfig);
+			process.env.MNI_QUICK_CONNECT_OPTIONS = JSON.stringify(testConfig);
 
 			const settings = (await module.settings()) as QuickConnectConfig;
 
@@ -92,7 +92,7 @@ describe('QuickConnectModule', () => {
 		it('should return all non-sensitive option fields', async () => {
 			const testConfig = [
 				{
-					packageName: '@n8n/test-service',
+					packageName: '@MNI/test-service',
 					credentialType: 'testApi',
 					text: 'Test Service Integration',
 					quickConnectType: 'firecrawl',
@@ -102,12 +102,12 @@ describe('QuickConnectModule', () => {
 					},
 				},
 			];
-			process.env.N8N_QUICK_CONNECT_OPTIONS = JSON.stringify(testConfig);
+			process.env.MNI_QUICK_CONNECT_OPTIONS = JSON.stringify(testConfig);
 
 			const settings = await module.settings();
 
 			const option = settings.options[0];
-			expect(option.packageName).toBe('@n8n/test-service');
+			expect(option.packageName).toBe('@MNI/test-service');
 			expect(option.credentialType).toBe('testApi');
 			expect(option.text).toBe('Test Service Integration');
 			expect(option.quickConnectType).toBe('firecrawl');
@@ -117,7 +117,7 @@ describe('QuickConnectModule', () => {
 		it('should strip secret from multiple options with backendFlowConfig', async () => {
 			const testConfig = [
 				{
-					packageName: '@n8n/service-1',
+					packageName: '@MNI/service-1',
 					credentialType: 'api1',
 					text: 'Service 1',
 					quickConnectType: 'firecrawl',
@@ -127,7 +127,7 @@ describe('QuickConnectModule', () => {
 					},
 				},
 				{
-					packageName: '@n8n/service-2',
+					packageName: '@MNI/service-2',
 					credentialType: 'api2',
 					text: 'Service 2',
 					quickConnectType: 'firecrawl',
@@ -137,7 +137,7 @@ describe('QuickConnectModule', () => {
 					},
 				},
 			];
-			process.env.N8N_QUICK_CONNECT_OPTIONS = JSON.stringify(testConfig);
+			process.env.MNI_QUICK_CONNECT_OPTIONS = JSON.stringify(testConfig);
 
 			const settings = (await module.settings()) as QuickConnectConfig;
 

@@ -1,5 +1,5 @@
 import { isBaseTextKey } from '@/app/utils/typeGuards';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 
 /**
  * Composable for handling i18n in ResourcesListLayout with dynamic resource keys

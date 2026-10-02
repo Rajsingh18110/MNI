@@ -4,8 +4,8 @@
  * Guards against a broken `npm install MNI`: a publishable (non-private)
  * workspace package must not depend at runtime on a `private` one.
  *
- * The `MNI` cli depends on `n8n-editor-ui` (published), which depended on
- * `@n8n/frontend-constants`, `@n8n/frontend-utils` and `@n8n/telemetry` — all
+ * The `MNI` cli depends on `MNI-editor-ui` (published), which depended on
+ * `@MNI/frontend-constants`, `@MNI/frontend-utils` and `@MNI/telemetry` — all
  * marked `"private": true`. Publishing `MNI` then produces an install graph
  * pointing at packages that were never published. Marking any package private
  * (or adding a private package as a runtime dependency of a published one)

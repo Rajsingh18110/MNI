@@ -1,5 +1,5 @@
-import { NodeOperationError } from 'n8n-workflow';
-import type { IDataObject } from 'n8n-workflow';
+import { NodeOperationError } from 'MNI-workflow';
+import type { IDataObject } from 'MNI-workflow';
 import type { Mock } from 'vitest';
 
 import * as GenericFunctions from '../GenericFunctions';

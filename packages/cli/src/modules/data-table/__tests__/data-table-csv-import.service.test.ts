@@ -1,5 +1,5 @@
-import { Logger } from '@n8n/backend-common';
-import { mockInstance, testModules } from '@n8n/backend-test-utils';
+import { Logger } from '@MNI/backend-common';
+import { mockInstance, testModules } from '@MNI/backend-test-utils';
 import type { Mocked } from 'vitest';
 
 import { CsvParserService } from '../csv-parser.service';

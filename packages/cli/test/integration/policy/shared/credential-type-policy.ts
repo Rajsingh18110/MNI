@@ -1,4 +1,4 @@
-import type { PolicyAction, PolicyRule } from '@n8n/api-types';
+import type { PolicyAction, PolicyRule } from '@MNI/api-types';
 
 import type { SuperAgentTest } from '../../shared/types';
 

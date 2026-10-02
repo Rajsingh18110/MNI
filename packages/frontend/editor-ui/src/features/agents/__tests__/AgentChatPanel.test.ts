@@ -3,8 +3,8 @@ import { flushPromises, mount } from '@vue/test-utils';
 import { computed, defineComponent, h, ref, nextTick } from 'vue';
 import { createMemoryHistory, createRouter } from 'vue-router';
 import { AGENT_SESSION_DETAIL_VIEW } from '../constants';
-import { APPROVAL_TOOL_NAME, N8N_CHAT_ACTION_TOOL_NAME, WAIT_TOOL_NAME } from '@n8n/api-types';
-import type { AgentChatQueueItem, AgentBackgroundJobDto } from '@n8n/api-types';
+import { APPROVAL_TOOL_NAME, MNI_CHAT_ACTION_TOOL_NAME, WAIT_TOOL_NAME } from '@MNI/api-types';
+import type { AgentChatQueueItem, AgentBackgroundJobDto } from '@MNI/api-types';
 import type { ChatMessage } from '@/features/ai/shared/agentsChat/types';
 import AgentChatPanel from '../components/AgentChatPanel.vue';
 import AgentPreviewDock from '../components/AgentPreviewDock.vue';
@@ -44,7 +44,7 @@ const defaultAgentConfig: AgentJsonConfig = {
 	instructions: 'Help.',
 };
 
-vi.mock('@n8n/i18n', () => {
+vi.mock('@MNI/i18n', () => {
 	const baseText = (
 		key: string,
 		options?: { interpolate?: Record<string, string | number>; adjustToNumber?: number },
@@ -82,13 +82,13 @@ vi.mock('../components/AgentSessionTimelinePanel.vue', () => ({
 	},
 }));
 
-vi.mock('@n8n/design-system', async (importOriginal) => ({
-	N8nAiActivityStepGroup: (await importOriginal<typeof import('@n8n/design-system')>())
+vi.mock('@MNI/design-system', async (importOriginal) => ({
+	N8nAiActivityStepGroup: (await importOriginal<typeof import('@MNI/design-system')>())
 		.N8nAiActivityStepGroup,
-	N8nLink: (await importOriginal<typeof import('@n8n/design-system')>()).N8nLink,
-	useDropdownSearch: (await importOriginal<typeof import('@n8n/design-system')>())
+	N8nLink: (await importOriginal<typeof import('@MNI/design-system')>()).N8nLink,
+	useDropdownSearch: (await importOriginal<typeof import('@MNI/design-system')>())
 		.useDropdownSearch,
-	N8nInput: (await importOriginal<typeof import('@n8n/design-system')>()).N8nInput,
+	N8nInput: (await importOriginal<typeof import('@MNI/design-system')>()).N8nInput,
 	N8nButton: { template: '<button><slot name="icon" /><slot /></button>' },
 	N8nCallout: { template: '<div><slot /><slot name="trailingContent" /></div>' },
 	N8nDropdownMenu: { template: '<div><slot name="trigger" /></div>' },
@@ -140,7 +140,7 @@ vi.mock('../composables/useAgentSessionLangSmithExport', () => ({
 }));
 
 // Reads a Pinia store for notifications — irrelevant to panel behavior.
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: () => ({ showMessage: vi.fn() }),
 }));
 
@@ -816,7 +816,7 @@ describe('AgentChatPanel', () => {
 			content: '',
 			status: 'awaitingUser',
 			interactive: {
-				toolName: N8N_CHAT_ACTION_TOOL_NAME,
+				toolName: MNI_CHAT_ACTION_TOOL_NAME,
 				toolCallId: 'tc-1',
 				runId: 'run-1',
 				input: {
@@ -1321,7 +1321,7 @@ describe('AgentChatPanel', () => {
 					{ tool: 'chat_action', toolCallId: 'tc-2', runId: 'run-2', state: 'suspended' },
 				],
 				interactive: {
-					toolName: N8N_CHAT_ACTION_TOOL_NAME,
+					toolName: MNI_CHAT_ACTION_TOOL_NAME,
 					toolCallId: 'tc-2',
 					runId: 'run-2',
 					input: {

@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { useI18n } from '@n8n/i18n';
-import { N8nButton, N8nIcon } from '@n8n/design-system';
+import { useI18n } from '@MNI/i18n';
+import { N8nButton, N8nIcon } from '@MNI/design-system';
 import NodeIcon from '@/app/components/NodeIcon.vue';
 import DiffBadge from '@/features/workflows/workflowDiff/DiffBadge.vue';
 import type { NodeChangeEntry } from '@/features/ai/assistant/composables/useReviewChanges';

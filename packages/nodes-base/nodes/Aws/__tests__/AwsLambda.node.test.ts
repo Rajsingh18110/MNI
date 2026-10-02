@@ -1,6 +1,6 @@
 import { mockDeep } from 'vitest-mock-extended';
-import type { IExecuteFunctions, ILoadOptionsFunctions } from 'n8n-workflow';
-import { NodeApiError } from 'n8n-workflow';
+import type { IExecuteFunctions, ILoadOptionsFunctions } from 'MNI-workflow';
+import { NodeApiError } from 'MNI-workflow';
 
 import { AwsLambda } from '../AwsLambda.node';
 import * as GenericFunctions from '../GenericFunctions';
@@ -23,7 +23,7 @@ describe('AwsLambda', () => {
 		mockExecuteFunctions.getNode.mockReturnValue({
 			id: 'test-node',
 			name: 'AWS Lambda',
-			type: 'n8n-nodes-base.awsLambda',
+			type: 'MNI-nodes-base.awsLambda',
 			typeVersion: 1,
 			position: [0, 0],
 			parameters: {},

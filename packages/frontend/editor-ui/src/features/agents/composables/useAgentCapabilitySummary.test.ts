@@ -1,6 +1,6 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { effectScope, ref, type EffectScope, type Ref } from 'vue';
-import type { AgentCapabilitySummary } from '@n8n/api-types';
+import type { AgentCapabilitySummary } from '@MNI/api-types';
 import { agentsEventBus } from '../agents.eventBus';
 import {
 	useAgentCapabilitySummary,
@@ -15,7 +15,7 @@ vi.mock('@/features/agents/composables/useAgentApi', () => ({
 	getAgentCapabilitySummary,
 }));
 
-vi.mock('@n8n/stores/useRootStore', () => ({
+vi.mock('@MNI/stores/useRootStore', () => ({
 	useRootStore: () => ({ restApiContext: { baseUrl: '', pushRef: '' } }),
 }));
 

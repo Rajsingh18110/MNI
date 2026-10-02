@@ -1,20 +1,20 @@
-import { LockNamespace, LockService, Logger, SingleFlightLease } from '@n8n/backend-common';
+import { LockNamespace, LockService, Logger, SingleFlightLease } from '@MNI/backend-common';
 import {
 	OutboundHttp,
 	SsrfProtectionService,
 	type HttpRequestClient,
 	type SsrfBridge,
-} from '@n8n/backend-network';
-import { GlobalConfig, SsrfProtectionConfig } from '@n8n/config';
-import type { AuthenticatedRequest, CredentialsEntity, ICredentialsDb } from '@n8n/db';
-import { CredentialsRepository } from '@n8n/db';
-import { Service } from '@n8n/di';
-import { isRecord } from '@n8n/utils/is-record';
+} from '@MNI/backend-network';
+import { GlobalConfig, SsrfProtectionConfig } from '@MNI/config';
+import type { AuthenticatedRequest, CredentialsEntity, ICredentialsDb } from '@MNI/db';
+import { CredentialsRepository } from '@MNI/db';
+import { Service } from '@MNI/di';
+import { isRecord } from '@MNI/utils/is-record';
 import Csrf from 'csrf';
 import type { Request, Response } from 'express';
-import { Credentials, Cipher } from 'n8n-core';
-import type { ICredentialDataDecryptedObject, IWorkflowExecuteAdditionalData } from 'n8n-workflow';
-import { jsonParse, OperationalError, UnexpectedError, UserError } from 'n8n-workflow';
+import { Credentials, Cipher } from 'MNI-core';
+import type { ICredentialDataDecryptedObject, IWorkflowExecuteAdditionalData } from 'MNI-workflow';
+import { jsonParse, OperationalError, UnexpectedError, UserError } from 'MNI-workflow';
 
 import {
 	GENERIC_OAUTH2_CREDENTIALS_WITH_EDITABLE_SCOPE,
@@ -29,7 +29,7 @@ import { NotFoundError } from '@/errors/response-errors/not-found.error';
 import type { OAuthRequest } from '@/requests';
 import { extractAccountIdentifierFromData } from '@/oauth/account-identifier';
 import { validateOAuthUrl } from '@/oauth/validate-oauth-url';
-import { UrlService } from '@n8n/backend-services';
+import { UrlService } from '@MNI/backend-services';
 import * as WorkflowExecuteAdditionalData from '@/workflow-execute-additional-data';
 import {
 	AuthError as OAuth2AuthError,
@@ -40,7 +40,7 @@ import {
 	type OAuth2AuthenticationMethod,
 	type OAuth2CredentialData,
 	type OAuth2GrantType,
-} from '@n8n/client-oauth2';
+} from '@MNI/client-oauth2';
 import {
 	oAuthAuthorizationServerMetadataSchema,
 	dynamicClientRegistrationResponseSchema,
@@ -70,7 +70,7 @@ import { EventService } from '@/events/event.service';
 import { OAuthJweServiceProxy } from '@/oauth/oauth-jwe-service.proxy';
 import { OAuthBrowserBindingService } from '@/oauth/oauth-browser-binding.service';
 import { CacheService } from '@/services/cache/cache.service';
-import { Time } from '@n8n/constants';
+import { Time } from '@MNI/constants';
 
 /**
  * Per-flow OAuth state stored in CacheService, keyed by the CSRF state token.
@@ -107,7 +107,7 @@ export interface OAuth2CredentialTokenRevision {
 }
 
 export function shouldSkipAuthOnOAuthCallback() {
-	const value = process.env.N8N_SKIP_AUTH_ON_OAUTH_CALLBACK?.toLowerCase() ?? 'false';
+	const value = process.env.MNI_SKIP_AUTH_ON_OAUTH_CALLBACK?.toLowerCase() ?? 'false';
 	return value === 'true';
 }
 
@@ -524,7 +524,7 @@ export class OauthService {
 		}
 
 		// Browser binding check runs before any origin-specific branch, so that
-		// dynamic-credential and N8N_SKIP_AUTH_ON_OAUTH_CALLBACK flows — which
+		// dynamic-credential and MNI_SKIP_AUTH_ON_OAUTH_CALLBACK flows — which
 		// otherwise have no user-identity check at callback time — are also
 		// protected. A bindingHash is only set when binding was enabled at /auth;
 		// states without it pre-date the feature and are accepted.
@@ -561,7 +561,7 @@ export class OauthService {
 			];
 		}
 
-		// Static credentials: skip user validation only when N8N_SKIP_AUTH_ON_OAUTH_CALLBACK is true (e.g. embed/iframe)
+		// Static credentials: skip user validation only when MNI_SKIP_AUTH_ON_OAUTH_CALLBACK is true (e.g. embed/iframe)
 		if (skipAuthOnOAuthCallback) {
 			return [
 				{ ...decoded, ...decryptedState },
@@ -748,7 +748,7 @@ export class OauthService {
 		return Number.isFinite(expiresInSeconds) && expiresInSeconds > 0
 			? {
 					...merged,
-					n8n_expires_at: String(Date.now() + expiresInSeconds * 1000),
+					MNI_expires_at: String(Date.now() + expiresInSeconds * 1000),
 				}
 			: merged;
 	}
@@ -761,7 +761,7 @@ export class OauthService {
 
 	private getOAuth2TokenRevision(tokenData: unknown): OAuth2CredentialTokenRevision {
 		const accessToken = this.getOAuth2AccessToken(tokenData);
-		const expiresAt = isRecord(tokenData) ? Number(tokenData.n8n_expires_at) : Number.NaN;
+		const expiresAt = isRecord(tokenData) ? Number(tokenData.MNI_expires_at) : Number.NaN;
 		return {
 			...(accessToken ? { accessToken } : {}),
 			...(Number.isFinite(expiresAt) ? { expiresAt } : {}),
@@ -785,7 +785,7 @@ export class OauthService {
 	): OAuth2CredentialRefreshResult | null {
 		if (!accessToken) return null;
 
-		const expiresAt = Number(tokenData.n8n_expires_at);
+		const expiresAt = Number(tokenData.MNI_expires_at);
 		const expiresInSeconds = Number(tokenData.expires_in);
 		return {
 			headers: { Authorization: `Bearer ${accessToken}` },

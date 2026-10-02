@@ -1,9 +1,9 @@
-import type { INodeTypeDescription } from 'n8n-workflow';
+import type { INodeTypeDescription } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 export const nodeTypeTwitter = mock<INodeTypeDescription>({
 	displayName: 'X (Formerly Twitter)',
-	name: 'n8n-nodes-base.twitter',
+	name: 'MNI-nodes-base.twitter',
 	version: 1,
 	credentials: [{ name: 'twitterOAuth1Api' }],
 	properties: [],
@@ -11,7 +11,7 @@ export const nodeTypeTwitter = mock<INodeTypeDescription>({
 
 export const nodeTypeReadImap = mock<INodeTypeDescription>({
 	displayName: 'Email Trigger (IMAP)',
-	name: 'n8n-nodes-base.emailReadImap',
+	name: 'MNI-nodes-base.emailReadImap',
 	version: 1,
 	credentials: [{ name: 'imap' }],
 	properties: [],
@@ -19,14 +19,14 @@ export const nodeTypeReadImap = mock<INodeTypeDescription>({
 
 export const nodeTypeNextCloud = mock<INodeTypeDescription>({
 	displayName: 'Nextcloud',
-	name: 'n8n-nodes-base.nextCloud',
+	name: 'MNI-nodes-base.nextCloud',
 	version: 1,
 	credentials: [{ name: 'nextCloudApi' }],
 	properties: [],
 });
 
 export const nodeTypeTelegram = mock<INodeTypeDescription>({
-	name: 'n8n-nodes-base.telegram',
+	name: 'MNI-nodes-base.telegram',
 	version: 1,
 	credentials: [{ name: 'telegramApi', required: true }],
 	properties: [],
@@ -34,7 +34,7 @@ export const nodeTypeTelegram = mock<INodeTypeDescription>({
 
 export const nodeTypeHttpRequest = mock<INodeTypeDescription>({
 	displayName: 'HTTP Request',
-	name: 'n8n-nodes-base.httpRequest',
+	name: 'MNI-nodes-base.httpRequest',
 	version: 1,
 	credentials: [
 		{

@@ -1,7 +1,7 @@
-import { mockInstance } from '@n8n/backend-test-utils';
-import { DbConnection, DeploymentKeyRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
-import { BinaryDataConfig } from 'n8n-core';
+import { mockInstance } from '@MNI/backend-test-utils';
+import { DbConnection, DeploymentKeyRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
+import { BinaryDataConfig } from 'MNI-core';
 import type { Mock, MockInstance } from 'vitest';
 
 import { DeprecationService } from '@/deprecation/deprecation.service';

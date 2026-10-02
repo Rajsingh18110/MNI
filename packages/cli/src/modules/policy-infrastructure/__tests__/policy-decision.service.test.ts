@@ -1,4 +1,4 @@
-import { mockLogger } from '@n8n/backend-test-utils';
+import { mockLogger } from '@MNI/backend-test-utils';
 import {
 	type CredentialDecryptContext,
 	type CredentialSaveContext,
@@ -10,9 +10,9 @@ import {
 	type WorkflowStartContext,
 	type WorkflowTransferContext,
 	workflowContentSubject,
-} from '@n8n/decorators';
-import { Container, Service } from '@n8n/di';
-import { OperationalError } from 'n8n-workflow';
+} from '@MNI/decorators';
+import { Container, Service } from '@MNI/di';
+import { OperationalError } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import { classifyHttpError } from '@/errors/http-error-classifier';
@@ -26,8 +26,8 @@ import { PolicyDecisionService, withDeadline } from '../policy-decision.service'
 const slackBlocked = {
 	kind: 'node-type-unavailable',
 	checkId: 'node-types',
-	message: 'n8n-nodes-base.slack is not available',
-	subject: 'n8n-nodes-base.slack',
+	message: 'MNI-nodes-base.slack is not available',
+	subject: 'MNI-nodes-base.slack',
 	subjectType: 'nodeType',
 	scope: 'instance',
 	matchedRuleId: 'rule-7',
@@ -37,7 +37,7 @@ const slackBlocked = {
 const slackAudited = {
 	kind: 'node-type-unavailable',
 	checkId: 'node-types',
-	subject: 'n8n-nodes-base.slack',
+	subject: 'MNI-nodes-base.slack',
 	subjectType: 'nodeType',
 	scope: 'instance',
 	matchedRuleId: 'rule-7',
@@ -46,7 +46,7 @@ const slackAudited = {
 const codeBlocked = {
 	kind: 'node-type-unavailable',
 	checkId: 'other',
-	message: 'n8n-nodes-base.code is not available',
+	message: 'MNI-nodes-base.code is not available',
 };
 
 const saveContext: WorkflowSaveContext = {
@@ -100,7 +100,7 @@ const credentialUpdateContext: CredentialSaveContext = {
 const decryptContext: CredentialDecryptContext = {
 	credentialType: 'slackApi',
 	credentialId: 'cred-1',
-	consumer: { nodeType: 'n8n-nodes-base.slack' },
+	consumer: { nodeType: 'MNI-nodes-base.slack' },
 	projectId: 'proj-1',
 };
 
@@ -455,7 +455,7 @@ describe('PolicyDecisionService', () => {
 			expect(audit.mock.calls[0][1]).toMatchObject({
 				credentialId: 'cred-1',
 				credentialType: 'slackApi',
-				consumerNodeType: 'n8n-nodes-base.slack',
+				consumerNodeType: 'MNI-nodes-base.slack',
 				projectId: 'proj-1',
 			});
 			expect(audit.mock.calls[0][1]).not.toHaveProperty('workflowId');

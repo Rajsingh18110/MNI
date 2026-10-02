@@ -9,7 +9,7 @@ describe('AWS DynamoDB Node', () => {
 	beforeAll(() => {
 		dynamoDbNock
 			.post('/', {
-				TableName: 'n8n-testing',
+				TableName: 'MNI-testing',
 				KeyConditionExpression: 'id = :idVal',
 				ExpressionAttributeValues: {
 					':idVal': { S: 'foo' },
@@ -33,7 +33,7 @@ describe('AWS DynamoDB Node', () => {
 			.post(
 				'/',
 				(body) =>
-					body?.TableName === 'n8n-testing' &&
+					body?.TableName === 'MNI-testing' &&
 					body?.Key?.id?.S === 'foo' &&
 					body?.Key?.timestamp?.S === '2025-01-01' &&
 					body?.ExpressionAttributeNames?.['#time'] === 'timestamp' &&
@@ -49,7 +49,7 @@ describe('AWS DynamoDB Node', () => {
 			.post(
 				'/',
 				(body) =>
-					body?.TableName === 'n8n-testing' &&
+					body?.TableName === 'MNI-testing' &&
 					body?.Item?.id?.S === 'foo' &&
 					body?.Item?.timestamp?.S === '2025-01-01' &&
 					body?.Item?.data?.S === 'payload' &&
@@ -63,7 +63,7 @@ describe('AWS DynamoDB Node', () => {
 			.post(
 				'/',
 				(body) =>
-					body?.TableName === 'n8n-testing' &&
+					body?.TableName === 'MNI-testing' &&
 					body?.Key?.id?.S === 'foo' &&
 					body?.Key?.timestamp?.S === '2025-01-01' &&
 					body?.ConditionExpression === '#d = :v' &&

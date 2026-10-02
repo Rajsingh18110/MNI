@@ -1,6 +1,6 @@
-import type { Logger } from '@n8n/backend-common';
-import type { DbLockService } from '@n8n/db';
-import type { EntityManager } from '@n8n/typeorm';
+import type { Logger } from '@MNI/backend-common';
+import type { DbLockService } from '@MNI/db';
+import type { EntityManager } from '@MNI/typeorm';
 import { mock } from 'vitest-mock-extended';
 
 import { TrustedKeySourceEntity } from '../../database/entities/trusted-key-source.entity';

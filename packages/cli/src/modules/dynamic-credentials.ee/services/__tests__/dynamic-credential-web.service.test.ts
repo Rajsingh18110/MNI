@@ -1,7 +1,7 @@
-import type { Logger } from '@n8n/backend-common';
+import type { Logger } from '@MNI/backend-common';
 import type { Request } from 'express';
-import { ExecutionContextService } from 'n8n-core';
-import type { Cipher, ExecutionContextHookRegistry } from 'n8n-core';
+import { ExecutionContextService } from 'MNI-core';
+import type { Cipher, ExecutionContextHookRegistry } from 'MNI-core';
 import type { Mocked } from 'vitest';
 import { mock } from 'vitest-mock-extended';
 

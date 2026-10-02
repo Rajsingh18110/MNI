@@ -4,20 +4,20 @@ import {
 	testDb,
 	mockInstance,
 	getWorkflowById,
-} from '@n8n/backend-test-utils';
-import { GlobalConfig } from '@n8n/config';
+} from '@MNI/backend-test-utils';
+import { GlobalConfig } from '@MNI/config';
 import {
 	ExecutionRepository,
 	WorkflowRepository,
 	ProjectRelationRepository,
 	WorkflowPublicationOutboxRepository,
 	WorkflowPublishHistoryRepository,
-} from '@n8n/db';
-import type { Project, User } from '@n8n/db';
-import { Container } from '@n8n/di';
+} from '@MNI/db';
+import type { Project, User } from '@MNI/db';
+import { Container } from '@MNI/di';
 import { stringify } from 'flatted';
-import { InstanceSettings } from 'n8n-core';
-import { randomInt } from 'n8n-workflow';
+import { InstanceSettings } from 'MNI-core';
+import { randomInt } from 'MNI-workflow';
 import assert from 'node:assert';
 import { v4 as uuid } from 'uuid';
 import { mock } from 'vitest-mock-extended';
@@ -499,7 +499,7 @@ describe('ExecutionRecoveryService', () => {
 							executionId: execution.id,
 							workflowName: workflow.name,
 							nodeName: 'DebugHelper',
-							nodeType: 'n8n-nodes-base.debugHelper',
+							nodeType: 'MNI-nodes-base.debugHelper',
 							nodeId: '123',
 						},
 					}),

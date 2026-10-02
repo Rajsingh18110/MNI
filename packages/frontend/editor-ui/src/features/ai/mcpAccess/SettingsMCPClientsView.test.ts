@@ -6,14 +6,14 @@ import { createComponentRenderer } from '@/__tests__/render';
 import { mockedStore, type MockedStore } from '@/__tests__/utils';
 import SettingsMCPClientsView from '@/features/ai/mcpAccess/SettingsMCPClientsView.vue';
 import { useMCPStore } from '@/features/ai/mcpAccess/mcp.store';
-import { useSettingsStore } from '@n8n/stores/settings.store';
-import { useUsersStore } from '@n8n/stores/users.store';
-import { useRBACStore } from '@n8n/stores/rbac.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
+import { useUsersStore } from '@MNI/stores/users.store';
+import { useRBACStore } from '@MNI/stores/rbac.store';
 import { mock } from 'vitest-mock-extended';
-import type { IUser } from '@n8n/rest-api-client/api/users';
-import type { FrontendSettings } from '@n8n/api-types';
+import type { IUser } from '@MNI/rest-api-client/api/users';
+import type { FrontendSettings } from '@MNI/api-types';
 import { MCP_SETTINGS_VIEW } from '@/features/ai/mcpAccess/mcp.constants';
-import { TELEMETRY_EVENT } from '@n8n/telemetry';
+import { TELEMETRY_EVENT } from '@MNI/telemetry';
 
 const { routerPush, routerReplace, route } = vi.hoisted(() => ({
 	routerPush: vi.fn(),
@@ -23,7 +23,7 @@ const { routerPush, routerReplace, route } = vi.hoisted(() => ({
 
 const { trackSpy } = vi.hoisted(() => ({ trackSpy: vi.fn() }));
 
-vi.mock('@n8n/composables/useTelemetry', () => ({
+vi.mock('@MNI/composables/useTelemetry', () => ({
 	useTelemetry: () => ({ track: trackSpy }),
 }));
 

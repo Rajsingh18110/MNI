@@ -1,4 +1,4 @@
-import type { IExecuteSingleFunctions } from 'n8n-workflow';
+import type { IExecuteSingleFunctions } from 'MNI-workflow';
 
 import { awsApiRequest } from '../../transport';
 

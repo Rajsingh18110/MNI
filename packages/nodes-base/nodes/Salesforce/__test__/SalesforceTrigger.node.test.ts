@@ -1,7 +1,7 @@
 import { mockDeep } from 'vitest-mock-extended';
 import { DateTime } from 'luxon';
-import type { IPollFunctions, INode, ILoadOptionsFunctions, IDataObject } from 'n8n-workflow';
-import { NodeApiError } from 'n8n-workflow';
+import type { IPollFunctions, INode, ILoadOptionsFunctions, IDataObject } from 'MNI-workflow';
+import { NodeApiError } from 'MNI-workflow';
 
 import * as GenericFunctions from '../GenericFunctions';
 import { SalesforceTrigger } from '../SalesforceTrigger.node';
@@ -40,7 +40,7 @@ describe('SalesforceTrigger', () => {
 		mockNode = {
 			id: 'test-node-id',
 			name: 'Salesforce Trigger Test',
-			type: 'n8n-nodes-base.salesforceTrigger',
+			type: 'MNI-nodes-base.salesforceTrigger',
 			typeVersion: 1,
 			position: [0, 0],
 			parameters: {},

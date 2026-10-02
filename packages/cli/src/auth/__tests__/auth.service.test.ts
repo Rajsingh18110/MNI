@@ -1,13 +1,13 @@
-import type { Logger } from '@n8n/backend-common';
-import type { GlobalConfig } from '@n8n/config';
-import { Time } from '@n8n/constants';
+import type { Logger } from '@MNI/backend-common';
+import type { GlobalConfig } from '@MNI/config';
+import { Time } from '@MNI/constants';
 import type {
 	AuthenticatedRequest,
 	User,
 	InvalidAuthTokenRepository,
 	UserRepository,
-} from '@n8n/db';
-import { GLOBAL_MEMBER_ROLE, GLOBAL_OWNER_ROLE } from '@n8n/db';
+} from '@MNI/db';
+import { GLOBAL_MEMBER_ROLE, GLOBAL_OWNER_ROLE } from '@MNI/db';
 import type { NextFunction, Response } from 'express';
 import jwt from 'jsonwebtoken';
 import { mock } from 'vitest-mock-extended';
@@ -17,7 +17,7 @@ import { AUTH_COOKIE_NAME } from '@/constants';
 import type { License } from '@/license';
 import type { MfaService } from '@/mfa/mfa.service';
 import { JwtService } from '@/services/jwt.service';
-import type { UrlService } from '@n8n/backend-services';
+import type { UrlService } from '@MNI/backend-services';
 
 describe('AuthService', () => {
 	const browserId = 'test-browser-id';
@@ -203,7 +203,7 @@ describe('AuthService', () => {
 			await middleware(req, res, next);
 
 			expect(next).toHaveBeenCalled();
-			expect(res.cookie).toHaveBeenCalledWith('n8n-auth', expect.any(String), {
+			expect(res.cookie).toHaveBeenCalledWith('MNI-auth', expect.any(String), {
 				httpOnly: true,
 				maxAge: 604800000,
 				sameSite: 'lax',
@@ -216,7 +216,7 @@ describe('AuthService', () => {
 
 			beforeEach(() => {
 				// Store original value
-				originalPreviewMode = process.env.N8N_PREVIEW_MODE;
+				originalPreviewMode = process.env.MNI_PREVIEW_MODE;
 				// Reset mocks
 				vi.resetAllMocks();
 				res.status.mockReturnThis();
@@ -225,14 +225,14 @@ describe('AuthService', () => {
 			afterEach(() => {
 				// Restore original value
 				if (originalPreviewMode === undefined) {
-					delete process.env.N8N_PREVIEW_MODE;
+					delete process.env.MNI_PREVIEW_MODE;
 				} else {
-					process.env.N8N_PREVIEW_MODE = originalPreviewMode;
+					process.env.MNI_PREVIEW_MODE = originalPreviewMode;
 				}
 			});
 
 			it('should skip authentication when allowSkipPreviewAuth is true and preview mode is enabled', async () => {
-				process.env.N8N_PREVIEW_MODE = 'true';
+				process.env.MNI_PREVIEW_MODE = 'true';
 				const req = mockReq();
 				req.cookies[AUTH_COOKIE_NAME] = undefined;
 
@@ -250,7 +250,7 @@ describe('AuthService', () => {
 			});
 
 			it('should NOT skip authentication when allowSkipPreviewAuth is false even in preview mode', async () => {
-				process.env.N8N_PREVIEW_MODE = 'true';
+				process.env.MNI_PREVIEW_MODE = 'true';
 				const req = mockReq();
 				req.cookies[AUTH_COOKIE_NAME] = undefined;
 
@@ -268,7 +268,7 @@ describe('AuthService', () => {
 			});
 
 			it('should NOT skip authentication when allowSkipPreviewAuth is true but preview mode is disabled', async () => {
-				process.env.N8N_PREVIEW_MODE = 'false';
+				process.env.MNI_PREVIEW_MODE = 'false';
 				const req = mockReq();
 				req.cookies[AUTH_COOKIE_NAME] = undefined;
 
@@ -286,7 +286,7 @@ describe('AuthService', () => {
 			});
 
 			it('should NOT skip authentication when allowSkipPreviewAuth is true but preview mode is undefined', async () => {
-				delete process.env.N8N_PREVIEW_MODE;
+				delete process.env.MNI_PREVIEW_MODE;
 				const req = mockReq();
 				req.cookies[AUTH_COOKIE_NAME] = undefined;
 
@@ -304,7 +304,7 @@ describe('AuthService', () => {
 			});
 
 			it('should still process valid authentication normally in preview mode with allowSkipPreviewAuth true', async () => {
-				process.env.N8N_PREVIEW_MODE = 'true';
+				process.env.MNI_PREVIEW_MODE = 'true';
 				const req = mockReq();
 				req.cookies[AUTH_COOKIE_NAME] = validToken;
 				invalidAuthTokenRepository.existsBy.mockResolvedValue(false);
@@ -325,7 +325,7 @@ describe('AuthService', () => {
 			});
 
 			it('should handle authentication errors normally in preview mode with allowSkipPreviewAuth true', async () => {
-				process.env.N8N_PREVIEW_MODE = 'true';
+				process.env.MNI_PREVIEW_MODE = 'true';
 				const req = mockReq();
 				req.cookies[AUTH_COOKIE_NAME] = 'invalid-token';
 				invalidAuthTokenRepository.existsBy.mockResolvedValue(false);
@@ -489,8 +489,8 @@ describe('AuthService', () => {
 			});
 
 			it('should work correctly when both allowUnauthenticated and allowSkipPreviewAuth are true in preview mode', async () => {
-				const originalPreviewMode = process.env.N8N_PREVIEW_MODE;
-				process.env.N8N_PREVIEW_MODE = 'true';
+				const originalPreviewMode = process.env.MNI_PREVIEW_MODE;
+				process.env.MNI_PREVIEW_MODE = 'true';
 
 				const req = mockReq();
 				req.cookies[AUTH_COOKIE_NAME] = undefined;
@@ -511,9 +511,9 @@ describe('AuthService', () => {
 
 				// Restore original value
 				if (originalPreviewMode === undefined) {
-					delete process.env.N8N_PREVIEW_MODE;
+					delete process.env.MNI_PREVIEW_MODE;
 				} else {
-					process.env.N8N_PREVIEW_MODE = originalPreviewMode;
+					process.env.MNI_PREVIEW_MODE = originalPreviewMode;
 				}
 			});
 		});
@@ -524,7 +524,7 @@ describe('AuthService', () => {
 		it('should issue a cookie with the correct options', () => {
 			authService.issueCookie(res, user, false, browserId);
 
-			expect(res.cookie).toHaveBeenCalledWith('n8n-auth', validToken, {
+			expect(res.cookie).toHaveBeenCalledWith('MNI-auth', validToken, {
 				httpOnly: true,
 				maxAge: 604800000,
 				sameSite: 'lax',
@@ -547,7 +547,7 @@ describe('AuthService', () => {
 				expect(() => {
 					authService.issueCookie(res, user, false, browserId);
 				}).not.toThrowError('Maximum number of users reached');
-				expect(res.cookie).toHaveBeenCalledWith('n8n-auth', validToken, {
+				expect(res.cookie).toHaveBeenCalledWith('MNI-auth', validToken, {
 					httpOnly: true,
 					maxAge: 604800000,
 					sameSite: 'lax',
@@ -559,7 +559,7 @@ describe('AuthService', () => {
 		it('should issue a cookie with the correct options, when 2FA was used', () => {
 			authService.issueCookie(res, user, true, browserId);
 
-			expect(res.cookie).toHaveBeenCalledWith('n8n-auth', validTokenWithMfa, {
+			expect(res.cookie).toHaveBeenCalledWith('MNI-auth', validTokenWithMfa, {
 				httpOnly: true,
 				maxAge: 604800000,
 				sameSite: 'lax',
@@ -572,7 +572,7 @@ describe('AuthService', () => {
 
 			authService.issueCookie(res, user, false, browserId);
 
-			expect(res.cookie).toHaveBeenCalledWith('n8n-auth', validToken, {
+			expect(res.cookie).toHaveBeenCalledWith('MNI-auth', validToken, {
 				httpOnly: true,
 				maxAge: 604800000,
 				sameSite: 'none',
@@ -802,7 +802,7 @@ describe('AuthService', () => {
 				user,
 				{ usedMfa: false },
 			]);
-			expect(res.cookie).toHaveBeenCalledWith('n8n-auth', expect.any(String), {
+			expect(res.cookie).toHaveBeenCalledWith('MNI-auth', expect.any(String), {
 				httpOnly: true,
 				maxAge: 604800000,
 				sameSite: 'lax',
@@ -847,7 +847,7 @@ describe('AuthService', () => {
 			vi.advanceTimersByTime(6 * Time.days.toMilliseconds);
 			await authService.resolveJwt(embedToken, req, res);
 
-			expect(res.cookie).toHaveBeenCalledWith('n8n-auth', expect.any(String), {
+			expect(res.cookie).toHaveBeenCalledWith('MNI-auth', expect.any(String), {
 				httpOnly: true,
 				maxAge: 604800000,
 				sameSite: 'none',

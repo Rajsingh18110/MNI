@@ -1,4 +1,4 @@
-import type { N8NConfig } from 'n8n-containers/stack';
+import type { N8NConfig } from 'MNI-containers/stack';
 
 /**
  * Capability definitions for `test.use({ capability: 'email' })`.
@@ -18,16 +18,16 @@ export const CAPABILITIES = {
 		env: {
 			// Enable project-scoped external secrets feature at startup
 			// (required for secret-providers-connections API)
-			N8N_ENV_FEAT_EXTERNAL_SECRETS_FOR_PROJECTS: 'true',
+			MNI_ENV_FEAT_EXTERNAL_SECRETS_FOR_PROJECTS: 'true',
 		},
 	},
 	kent: { services: ['kent'] },
 	'dynamic-credentials': {
 		services: ['keycloak'],
 		env: {
-			N8N_ENV_FEAT_DYNAMIC_CREDENTIALS: 'true',
+			MNI_ENV_FEAT_DYNAMIC_CREDENTIALS: 'true',
 			// Static token required to allow unauthenticated (external) requests to dynamic credential endpoints
-			N8N_DYNAMIC_CREDENTIALS_ENDPOINT_AUTH_TOKEN: 'e2e-test-endpoint-token',
+			MNI_DYNAMIC_CREDENTIALS_ENDPOINT_AUTH_TOKEN: 'e2e-test-endpoint-token',
 		},
 	},
 } as const satisfies Record<string, Partial<N8NConfig>>;
@@ -35,7 +35,7 @@ export const CAPABILITIES = {
 // Community package requests add unrelated traffic to proxy recordings.
 export const PROXY_WITHOUT_COMMUNITY_PACKAGES = {
 	services: ['proxy'],
-	env: { N8N_COMMUNITY_PACKAGES_ENABLED: 'false' },
+	env: { MNI_COMMUNITY_PACKAGES_ENABLED: 'false' },
 } as const satisfies Partial<N8NConfig>;
 
 export type Capability = keyof typeof CAPABILITIES;

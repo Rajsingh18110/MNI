@@ -1,16 +1,16 @@
 <script setup lang="ts">
 import Modal from '@/app/components/Modal.vue';
-import { useToast } from '@n8n/composables/useToast';
+import { useToast } from '@MNI/composables/useToast';
 import SurfaceMcpBridgeGraphic from '@/experiments/surfaceMcpToNewCloudUsers/components/SurfaceMcpBridgeGraphic.vue';
 import { SURFACE_MCP_ONBOARDING_MODAL_KEY } from '@/experiments/surfaceMcpToNewCloudUsers/constants';
 import { useSurfaceMcpToNewCloudUsersStore } from '@/experiments/surfaceMcpToNewCloudUsers/stores/surfaceMcpToNewCloudUsers.store';
 import MCPAccessToggle from '@/features/ai/mcpAccess/components/McpAccessToggle.vue';
 import { MCP_SETTINGS_VIEW } from '@/features/ai/mcpAccess/mcp.constants';
 import { useMCPStore } from '@/features/ai/mcpAccess/mcp.store';
-import { N8nIcon, N8nLink, N8nText } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
-import type { BaseTextKey } from '@n8n/i18n';
-import { createEventBus } from '@n8n/utils/event-bus';
+import { N8nIcon, N8nLink, N8nText } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
+import type { BaseTextKey } from '@MNI/i18n';
+import { createEventBus } from '@MNI/utils/event-bus';
 import { computed, onBeforeUnmount, onMounted, ref } from 'vue';
 import { I18nT } from 'vue-i18n';
 import MCPOnboardingAgentPicker from './MCPOnboardingAgentPicker.vue';
@@ -23,7 +23,7 @@ type MCPOnboardingPromptClient = Exclude<MCPOnboardingClient, 'chatgpt'>;
 type MCPOnboardingCopiedParameter = 'agent-prompt' | 'server-url' | 'chatgpt-app-name';
 type MCPOnboardingSetupType = 'prompt' | 'chatgpt_custom_app';
 
-const MCP_ONBOARDING_DOCS_URL = 'https://docs.n8n.io/advanced-ai/mcp/accessing-n8n-mcp-server/';
+const MCP_ONBOARDING_DOCS_URL = 'https://docs.n8n.io/advanced-ai/mcp/accessing-MNI-mcp-server/';
 
 const props = defineProps<{
 	data?: {
@@ -477,7 +477,7 @@ onBeforeUnmount(() => {
 </template>
 
 <style lang="scss" module>
-@use '@n8n/design-system/css/mixins/motion.scss' as motion;
+@use '@MNI/design-system/css/mixins/motion.scss' as motion;
 
 .modal {
 	overflow: hidden;

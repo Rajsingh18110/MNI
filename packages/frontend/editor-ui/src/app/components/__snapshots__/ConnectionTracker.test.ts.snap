@@ -56,14 +56,14 @@ exports[`ConnectionTracker > should render network error when both offline and p
           class="connection-lost-content"
           data-v-f4a2fe1d=""
         >
-          <n8n-icon-stub
+          <MNI-icon-stub
             color="warning"
             data-v-f4a2fe1d=""
             icon="triangle-alert"
             spin="false"
           />
           <span
-            class="n8n-text size-small regular"
+            class="MNI-text size-small regular"
             data-v-f4a2fe1d=""
           >
             
@@ -106,14 +106,14 @@ exports[`ConnectionTracker > should render network error when offline 1`] = `
           class="connection-lost-content"
           data-v-f4a2fe1d=""
         >
-          <n8n-icon-stub
+          <MNI-icon-stub
             color="warning"
             data-v-f4a2fe1d=""
             icon="triangle-alert"
             spin="false"
           />
           <span
-            class="n8n-text size-small regular"
+            class="MNI-text size-small regular"
             data-v-f4a2fe1d=""
           >
             
@@ -156,14 +156,14 @@ exports[`ConnectionTracker > should render push error when push disconnected and
           class="connection-lost-content"
           data-v-f4a2fe1d=""
         >
-          <n8n-icon-stub
+          <MNI-icon-stub
             color="warning"
             data-v-f4a2fe1d=""
             icon="triangle-alert"
             spin="false"
           />
           <span
-            class="n8n-text size-small regular"
+            class="MNI-text size-small regular"
             data-v-f4a2fe1d=""
           >
             

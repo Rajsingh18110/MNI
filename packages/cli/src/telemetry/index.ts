@@ -1,22 +1,22 @@
-import { Logger } from '@n8n/backend-common';
-import { OutboundHttp } from '@n8n/backend-network';
-import { GlobalConfig } from '@n8n/config';
+import { Logger } from '@MNI/backend-common';
+import { OutboundHttp } from '@MNI/backend-network';
+import { GlobalConfig } from '@MNI/config';
 import {
 	ProjectRelationRepository,
 	ProjectRepository,
 	WorkflowRepository,
 	UserRepository,
-} from '@n8n/db';
-import { OnShutdown } from '@n8n/decorators';
-import { Container, Service } from '@n8n/di';
-import type { InferTelemetryProps, TelemetryEventDef } from '@n8n/telemetry';
-import { TELEMETRY_EVENT } from '@n8n/telemetry';
+} from '@MNI/db';
+import { OnShutdown } from '@MNI/decorators';
+import { Container, Service } from '@MNI/di';
+import type { InferTelemetryProps, TelemetryEventDef } from '@MNI/telemetry';
+import { TELEMETRY_EVENT } from '@MNI/telemetry';
 import type RudderStack from '@rudderstack/rudder-sdk-node';
 import type { AxiosRequestConfig } from 'axios';
-import { ErrorReporter, InstanceSettings } from 'n8n-core';
-import type { ITelemetryTrackProperties } from 'n8n-workflow';
+import { ErrorReporter, InstanceSettings } from 'MNI-core';
+import type { ITelemetryTrackProperties } from 'MNI-workflow';
 
-import { LOWEST_SHUTDOWN_PRIORITY, N8N_VERSION } from '@/constants';
+import { LOWEST_SHUTDOWN_PRIORITY, MNI_VERSION } from '@/constants';
 import type {
 	AgentRunTelemetryType,
 	IAgentConfigurationTelemetryProperties,
@@ -413,7 +413,7 @@ export class Telemetry {
 			if (
 				!properties.success &&
 				properties.is_manual &&
-				properties.error_node_type?.startsWith('n8n-nodes-base')
+				properties.error_node_type?.startsWith('MNI-nodes-base')
 			) {
 				this.track('Workflow execution errored', properties);
 			}
@@ -601,7 +601,7 @@ export class Telemetry {
 			...properties,
 			instance_id: instanceId,
 			user_id: user_id ?? undefined,
-			version_cli: N8N_VERSION,
+			version_cli: MNI_VERSION,
 		};
 
 		const payload = {

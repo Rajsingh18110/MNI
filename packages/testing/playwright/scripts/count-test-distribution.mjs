@@ -91,7 +91,7 @@ const shards = Number.parseInt(option('shards', '20'), 10);
 const project = option('project', 'multi-main:e2e');
 const grepInvert = option('grep-invert', '');
 const pr = option('pr', '');
-const repo = option('repo', 'n8n-io/n8n');
+const repo = option('repo', 'MNI-io/MNI');
 const files = changedFiles(option('files', ''));
 const base = option('base', '');
 if (!Number.isInteger(shards) || shards < 1) throw new Error('--shards must be a positive integer');

@@ -1,5 +1,5 @@
-import type { Logger } from '@n8n/backend-common';
-import type { IContextEstablishmentHook } from '@n8n/decorators';
+import type { Logger } from '@MNI/backend-common';
+import type { IContextEstablishmentHook } from '@MNI/decorators';
 import type {
 	IExecuteData,
 	IExecutionContext,
@@ -8,7 +8,7 @@ import type {
 	ISecureArtifacts,
 	PlaintextExecutionContext,
 	Workflow,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import type { Mocked } from 'vitest';
 import { mock } from 'vitest-mock-extended';
 
@@ -17,15 +17,15 @@ import type { Cipher } from '@/encryption';
 import type { ExecutionContextHookRegistry } from '../execution-context-hook-registry.service';
 import { ExecutionContextService } from '../execution-context.service';
 
-// Mock the helper functions from n8n-workflow
+// Mock the helper functions from MNI-workflow
 const mocks = vi.hoisted(() => ({
 	toCredentialContext: vi.fn((data: string) => JSON.parse(data)),
 	toSecureArtifacts: vi.fn((data: string) => JSON.parse(data)),
 	toExecutionContextEstablishmentHookParameter: vi.fn(),
 }));
 
-vi.mock('n8n-workflow', async () => ({
-	...(await vi.importActual('n8n-workflow')),
+vi.mock('MNI-workflow', async () => ({
+	...(await vi.importActual('MNI-workflow')),
 	toCredentialContext: mocks.toCredentialContext,
 	toSecureArtifacts: mocks.toSecureArtifacts,
 	toExecutionContextEstablishmentHookParameter: mocks.toExecutionContextEstablishmentHookParameter,
@@ -310,11 +310,11 @@ describe('ExecutionContextService', () => {
 		it('should encrypt the credential context with the cookie as identity', async () => {
 			mockCipher.encryptV2.mockResolvedValue('encrypted-credential-blob');
 
-			const result = await service.buildManualExecutionCredentials('n8n-auth-cookie-jwt');
+			const result = await service.buildManualExecutionCredentials('MNI-auth-cookie-jwt');
 
 			expect(mockCipher.encryptV2).toHaveBeenCalledWith({
 				version: 1,
-				identity: 'n8n-auth-cookie-jwt',
+				identity: 'MNI-auth-cookie-jwt',
 				metadata: { source: 'manual-execution' },
 			});
 			expect(result).toBe('encrypted-credential-blob');
@@ -333,7 +333,7 @@ describe('ExecutionContextService', () => {
 		it('should encrypt the credential context with the request context in metadata', async () => {
 			mockCipher.encryptV2.mockResolvedValue('encrypted-credential-blob');
 
-			const result = await service.buildRequestBoundCredentials('n8n-auth-cookie-jwt', {
+			const result = await service.buildRequestBoundCredentials('MNI-auth-cookie-jwt', {
 				method: 'POST',
 				endpoint: '/rest/dynamic-node-parameters/resource-locator-results',
 				browserId: 'browser-abc',
@@ -341,7 +341,7 @@ describe('ExecutionContextService', () => {
 
 			expect(mockCipher.encryptV2).toHaveBeenCalledWith({
 				version: 1,
-				identity: 'n8n-auth-cookie-jwt',
+				identity: 'MNI-auth-cookie-jwt',
 				metadata: {
 					source: 'cookie-source',
 					method: 'POST',
@@ -387,7 +387,7 @@ describe('ExecutionContextService', () => {
 				version: 1,
 				identity: 'oauth-token-jwt',
 				metadata: {
-					source: 'n8n-oauth',
+					source: 'MNI-oauth',
 					subject: 'user-123',
 					resource: 'https://api.example.com/resource',
 					establishedAt: expect.any(Number),
@@ -415,7 +415,7 @@ describe('ExecutionContextService', () => {
 				version: 1,
 				identity: 'oauth-token-jwt',
 				metadata: {
-					source: 'n8n-oauth',
+					source: 'MNI-oauth',
 					resource: 'https://api.example.com/resource',
 					establishedAt: expect.any(Number),
 					executionPath: [],
@@ -433,7 +433,7 @@ describe('ExecutionContextService', () => {
 				version: 1,
 				identity: 'oauth-token-jwt',
 				metadata: {
-					source: 'n8n-oauth',
+					source: 'MNI-oauth',
 					resource: 'https://api/r',
 					establishedAt: expect.any(Number),
 					executionPath: [],
@@ -471,7 +471,7 @@ describe('ExecutionContextService', () => {
 
 		it('stamps the current execution id onto a freshly sealed carrier', async () => {
 			const bound = await service.maybeBindExecutionId(
-				contextWith({ source: 'n8n-oauth', resource: 'r', subject: 'user-123' }),
+				contextWith({ source: 'MNI-oauth', resource: 'r', subject: 'user-123' }),
 				'exec-root',
 			);
 
@@ -481,7 +481,7 @@ describe('ExecutionContextService', () => {
 		it('appends a child execution id, preserving the inherited path', async () => {
 			const bound = await service.maybeBindExecutionId(
 				contextWith({
-					source: 'n8n-oauth',
+					source: 'MNI-oauth',
 					resource: 'r',
 					subject: 'user-123',
 					executionPath: ['exec-root'],
@@ -495,7 +495,7 @@ describe('ExecutionContextService', () => {
 
 		it('leaves a populated path untouched for an unrelated execution', async () => {
 			const context = contextWith({
-				source: 'n8n-oauth',
+				source: 'MNI-oauth',
 				resource: 'r',
 				subject: 'user-123',
 				executionPath: ['exec-other'],
@@ -509,7 +509,7 @@ describe('ExecutionContextService', () => {
 
 		it('is idempotent when the execution id is already in the path (retry/resume)', async () => {
 			const context = contextWith({
-				source: 'n8n-oauth',
+				source: 'MNI-oauth',
 				resource: 'r',
 				subject: 'user-123',
 				executionPath: ['exec-root'],
@@ -522,7 +522,7 @@ describe('ExecutionContextService', () => {
 		});
 
 		it('is a no-op for a non-sealed carrier (no subject)', async () => {
-			const context = contextWith({ source: 'n8n-oauth', resource: 'r' });
+			const context = contextWith({ source: 'MNI-oauth', resource: 'r' });
 
 			const bound = await service.maybeBindExecutionId(context, 'exec-root');
 
@@ -531,7 +531,7 @@ describe('ExecutionContextService', () => {
 		});
 
 		it('is a no-op when no execution id is provided', async () => {
-			const context = contextWith({ source: 'n8n-oauth', resource: 'r', subject: 'user-123' });
+			const context = contextWith({ source: 'MNI-oauth', resource: 'r', subject: 'user-123' });
 
 			const bound = await service.maybeBindExecutionId(context, undefined);
 
@@ -539,7 +539,7 @@ describe('ExecutionContextService', () => {
 			expect(mockCipher.decryptV2).not.toHaveBeenCalled();
 		});
 
-		it('is a no-op for a non-n8n-oauth carrier (schema mismatch)', async () => {
+		it('is a no-op for a non-MNI-oauth carrier (schema mismatch)', async () => {
 			const context = contextWith({ source: 'manual-execution' });
 
 			const bound = await service.maybeBindExecutionId(context, 'exec-root');
@@ -581,7 +581,7 @@ describe('ExecutionContextService', () => {
 			mockCipher.decryptV2.mockImplementation(async (data: string) => data);
 
 			// Use the real toSecureArtifacts so the round-trip exercises actual schema parsing.
-			const realToSecureArtifacts = (await vi.importActual('n8n-workflow')).toSecureArtifacts;
+			const realToSecureArtifacts = (await vi.importActual('MNI-workflow')).toSecureArtifacts;
 			// @ts-expect-error - Mocking
 			toSecureArtifacts.mockImplementation(realToSecureArtifacts);
 
@@ -782,7 +782,7 @@ describe('ExecutionContextService', () => {
 
 		it('should handle node with contextEstablishmentHooks but undefined hooks array', async () => {
 			// Temporarily use real parsing function
-			const realModule = await vi.importActual('n8n-workflow');
+			const realModule = await vi.importActual('MNI-workflow');
 			toExecutionContextEstablishmentHookParameter.mockImplementationOnce(
 				// @ts-expect-error - Mocking
 				realModule.toExecutionContextEstablishmentHookParameter,

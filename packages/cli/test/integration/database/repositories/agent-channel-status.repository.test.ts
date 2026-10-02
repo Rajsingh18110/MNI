@@ -1,7 +1,7 @@
 import type { AgentChannelRef } from '@/modules/agents/utils/agent-channel';
-import { createTeamProject, testDb, testModules } from '@n8n/backend-test-utils';
-import { Container } from '@n8n/di';
-import { InstanceSettings } from 'n8n-core';
+import { createTeamProject, testDb, testModules } from '@MNI/backend-test-utils';
+import { Container } from '@MNI/di';
+import { InstanceSettings } from 'MNI-core';
 import { v4 as uuid } from 'uuid';
 
 import type { Agent } from '@/modules/agents/entities/agent.entity';

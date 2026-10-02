@@ -1,4 +1,4 @@
-import type { IDataObject, IExecuteFunctions } from 'n8n-workflow';
+import type { IDataObject, IExecuteFunctions } from 'MNI-workflow';
 
 vi.mock('../../v2/GenericFunctions', async () => {
 	const actual = await vi.importActual<typeof _importType0>('../../v2/GenericFunctions');

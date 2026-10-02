@@ -1,9 +1,9 @@
-import type { IRestApiContext } from '@n8n/rest-api-client';
-import { getFullApiResponse, makeRestApiRequest } from '@n8n/rest-api-client';
+import type { IRestApiContext } from '@MNI/rest-api-client';
+import { getFullApiResponse, makeRestApiRequest } from '@MNI/rest-api-client';
 
 import { fetchMcpAgents, fetchMcpExposedWorkflows, updateMcpSettings } from './mcp.api';
 
-vi.mock('@n8n/rest-api-client', () => ({
+vi.mock('@MNI/rest-api-client', () => ({
 	getFullApiResponse: vi.fn(),
 	makeRestApiRequest: vi.fn(),
 }));

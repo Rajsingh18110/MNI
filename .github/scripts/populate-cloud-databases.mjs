@@ -2,7 +2,7 @@ import { ensureEnvVar } from './github-helpers.mjs';
 
 async function populateCloudDatabases() {
 	const payload = ensureEnvVar('PAYLOAD');
-	const webhookData = ensureEnvVar('N8N_POPULATE_CLOUD_WEBHOOK_DATA');
+	const webhookData = ensureEnvVar('MNI_POPULATE_CLOUD_WEBHOOK_DATA');
 
 	const { user, secret, url } = JSON.parse(webhookData);
 

@@ -6,7 +6,7 @@ import InstanceAiPreviewCanvas from './InstanceAiPreviewCanvas.vue';
 
 const telemetryTrack = vi.fn();
 
-vi.mock('@n8n/composables/useTelemetry', () => ({
+vi.mock('@MNI/composables/useTelemetry', () => ({
 	useTelemetry: () => ({ track: telemetryTrack }),
 }));
 

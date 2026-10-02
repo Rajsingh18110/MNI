@@ -1,8 +1,8 @@
 import { describe, test, expect, vi } from 'vitest';
 import { getToolIcon, useToolLabel } from '../toolLabels';
-import type { InstanceAiToolCallState } from '@n8n/api-types';
+import type { InstanceAiToolCallState } from '@MNI/api-types';
 
-vi.mock('@n8n/i18n', () => ({
+vi.mock('@MNI/i18n', () => ({
 	useI18n: () => ({
 		baseText: (key: string) => {
 			const translations: Record<string, string> = {
@@ -25,10 +25,10 @@ vi.mock('@n8n/i18n', () => ({
 				'instanceAi.tools.workspace_execute_command': 'Running command',
 				'instanceAi.tools.workspace_execute_command.skill': 'Running skill script',
 				'instanceAi.tools.workspace_execute_command.skillScript': 'Running',
-				'instanceAi.tools.n8n-docs': 'Reading MNI docs',
-				'instanceAi.tools.n8n-docs.lookup': 'Reading MNI docs',
-				'instanceAi.tools.n8n-docs.search': 'Searching MNI docs',
-				'instanceAi.tools.n8n-docs.read': 'Opening MNI docs',
+				'instanceAi.tools.MNI-docs': 'Reading MNI docs',
+				'instanceAi.tools.MNI-docs.lookup': 'Reading MNI docs',
+				'instanceAi.tools.MNI-docs.search': 'Searching MNI docs',
+				'instanceAi.tools.MNI-docs.read': 'Opening MNI docs',
 				'instanceAi.tools.list_skills': 'Checking available skills',
 				'instanceAi.tools.load_skill': 'Opening skill',
 				'instanceAi.tools.load_skill.asset': 'Opening',
@@ -130,7 +130,7 @@ describe('getToolIcon', () => {
 	});
 
 	test('returns book-open for MNI docs tool', () => {
-		expect(getToolIcon('n8n-docs')).toBe('book-open');
+		expect(getToolIcon('MNI-docs')).toBe('book-open');
 	});
 
 	test('returns history for the activity tool', () => {
@@ -199,7 +199,7 @@ describe('useToolLabel', () => {
 		).toBe('Running import rows script');
 		expect(
 			getToolLabel('workspace_execute_command', {
-				command: 'node $N8N_SKILL_DIR/scripts/import-rows.mjs',
+				command: 'node $MNI_SKILL_DIR/scripts/import-rows.mjs',
 			}),
 		).toBe('Running import rows script');
 	});
@@ -211,10 +211,10 @@ describe('useToolLabel', () => {
 
 	test('getToolLabel returns action-specific MNI docs labels', () => {
 		const { getToolLabel } = useToolLabel();
-		expect(getToolLabel('n8n-docs')).toBe('Reading MNI docs');
-		expect(getToolLabel('n8n-docs', { action: 'lookup' })).toBe('Reading MNI docs');
-		expect(getToolLabel('n8n-docs', { action: 'search' })).toBe('Searching MNI docs');
-		expect(getToolLabel('n8n-docs', { action: 'read' })).toBe('Opening MNI docs');
+		expect(getToolLabel('MNI-docs')).toBe('Reading MNI docs');
+		expect(getToolLabel('MNI-docs', { action: 'lookup' })).toBe('Reading MNI docs');
+		expect(getToolLabel('MNI-docs', { action: 'search' })).toBe('Searching MNI docs');
+		expect(getToolLabel('MNI-docs', { action: 'read' })).toBe('Opening MNI docs');
 	});
 
 	test('getToolLabel returns action-specific activity and conversation-history labels', () => {

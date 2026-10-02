@@ -21,9 +21,9 @@ export interface Props {
 	hideHeader?: boolean;
 }
 
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 
-import { N8nIcon, N8nTooltip } from '@n8n/design-system';
+import { N8nIcon, N8nTooltip } from '@MNI/design-system';
 import { injectWorkflowDocumentStore } from '@/app/stores/workflowDocument.store';
 const props = withDefaults(defineProps<Props>(), {
 	elements: () => [],
@@ -124,7 +124,7 @@ registerKeyHook(`CategoryLeft_${props.category}`, {
 				<N8nTooltip placement="top" :content-class="$style.tooltipPopper">
 					<N8nIcon icon="circle-help" size="small" />
 					<template #content>
-						<div v-n8n-html="mouseOverTooltip" />
+						<div v-MNI-html="mouseOverTooltip" />
 					</template>
 				</N8nTooltip>
 			</span>

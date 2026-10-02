@@ -1,9 +1,9 @@
-import { GlobalConfig } from '@n8n/config';
-import { Service } from '@n8n/di';
+import { GlobalConfig } from '@MNI/config';
+import { Service } from '@MNI/di';
 import { createHash, randomBytes, timingSafeEqual } from 'crypto';
 import type { CookieOptions, Request, Response } from 'express';
 
-export const OAUTH_BINDING_COOKIE_NAME = 'n8n-oauth-binding';
+export const OAUTH_BINDING_COOKIE_NAME = 'MNI-oauth-binding';
 
 const NONCE_BYTES = 32;
 

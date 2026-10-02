@@ -1,11 +1,11 @@
-import type { Logger } from '@n8n/backend-common';
-import type { ICredentialResolver } from '@n8n/decorators';
-import type { Cipher } from 'n8n-core';
+import type { Logger } from '@MNI/backend-common';
+import type { ICredentialResolver } from '@MNI/decorators';
+import type { Cipher } from 'MNI-core';
 import type {
 	ICredentialContext,
 	ICredentialDataDecryptedObject,
 	IWorkflowSettings,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import type { Mocked } from 'vitest';
 
 import type { CredentialStoreMetadata } from '@/credentials/dynamic-credential-storage.interface';
@@ -209,7 +209,7 @@ describe('DynamicCredentialStorageService', () => {
 					service.storeIfNeeded(
 						metadata,
 						dynamicData,
-						{ version: 1, identity: 'n8n-session-jwt', metadata: { source: 'cookie-source' } },
+						{ version: 1, identity: 'MNI-session-jwt', metadata: { source: 'cookie-source' } },
 						staticData,
 						{ credentialResolverId: 'workflow-resolver-789' },
 					),

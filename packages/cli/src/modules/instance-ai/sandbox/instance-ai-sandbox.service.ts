@@ -1,8 +1,8 @@
 import { createHash } from 'node:crypto';
 
-import { SandboxAcquisitionError } from '@n8n/agents/sandbox';
-import type { InstanceAiConfig } from '@n8n/config';
-import type { User } from '@n8n/db';
+import { SandboxAcquisitionError } from '@MNI/agents/sandbox';
+import type { InstanceAiConfig } from '@MNI/config';
+import type { User } from '@MNI/db';
 import {
 	createSandbox,
 	createWorkspace,
@@ -14,13 +14,13 @@ import {
 	type Logger,
 	type ManagedBackgroundTask,
 	type SandboxConfig,
-} from '@n8n/instance-ai';
-import type { ErrorReporter } from 'n8n-core';
-import { OperationalError, UnexpectedError } from 'n8n-workflow';
+} from '@MNI/instance-ai';
+import type { ErrorReporter } from 'MNI-core';
+import { OperationalError, UnexpectedError } from 'MNI-workflow';
 import { nanoid } from 'nanoid';
 import { v5 as uuidv5 } from 'uuid';
 
-import { N8N_VERSION } from '@/constants';
+import { MNI_VERSION } from '@/constants';
 import { callAiServiceWithRetry } from '@/utils/ai-service-retry';
 
 import { normalizeSandboxProvider, requireN8nSandboxServiceUrl } from '../sandbox-provider';
@@ -87,7 +87,7 @@ function buildThreadScopedSandboxLabels(
 ): Record<string, string> {
 	const baseName = getThreadScopedSandboxName(threadId);
 	const labels: Record<string, string> = {
-		'n8n-builder': slugifySandboxLabel(baseName, SANDBOX_LABEL_MAX_LEN),
+		'MNI-builder': slugifySandboxLabel(baseName, SANDBOX_LABEL_MAX_LEN),
 		thread_id: slugifySandboxLabel(threadId, SANDBOX_LABEL_MAX_LEN),
 	};
 	if (namePrefix) labels.name_prefix = slugifySandboxLabel(namePrefix, SANDBOX_LABEL_MAX_LEN);
@@ -95,15 +95,15 @@ function buildThreadScopedSandboxLabels(
 }
 
 /**
- * Fixed UUIDv5 namespace for deriving thread-scoped n8n-sandbox ids. Never
+ * Fixed UUIDv5 namespace for deriving thread-scoped MNI-sandbox ids. Never
  * change it: any main must be able to recompute the id of a sandbox created
  * by an older process to reattach to it.
  */
-const N8N_SANDBOX_THREAD_ID_NAMESPACE = '5e6c2f7a-93a1-4b0e-8f27-c1d6a3b9e514';
+const MNI_SANDBOX_THREAD_ID_NAMESPACE = '5e6c2f7a-93a1-4b0e-8f27-c1d6a3b9e514';
 
 /** The MNI sandbox service only accepts lowercase UUID ids, so hash the thread-scoped name into a stable UUIDv5. */
 function buildThreadScopedSandboxUuid(threadId: string): string {
-	return uuidv5(getThreadScopedSandboxName(threadId), N8N_SANDBOX_THREAD_ID_NAMESPACE);
+	return uuidv5(getThreadScopedSandboxName(threadId), MNI_SANDBOX_THREAD_ID_NAMESPACE);
 }
 
 /**
@@ -114,7 +114,7 @@ function buildThreadScopedSandboxUuid(threadId: string): string {
 function withThreadScopedSandboxIdentity(config: SandboxConfig, threadId: string): SandboxConfig {
 	if (!config.enabled) return config;
 
-	if (config.provider === 'n8n-sandbox') {
+	if (config.provider === 'MNI-sandbox') {
 		return { ...config, id: buildThreadScopedSandboxUuid(threadId) };
 	}
 
@@ -248,7 +248,7 @@ export class InstanceAiSandboxService {
 				daytonaApiKey: daytonaApiKey || undefined,
 				image: sandboxImage || undefined,
 				snapshot: sandboxSnapshot || undefined,
-				n8nVersion: N8N_VERSION || undefined,
+				n8nVersion: MNI_VERSION || undefined,
 				timeout: sandboxTimeout,
 				namePrefix: sandboxNamePrefix || undefined,
 				ephemeral: sandboxEphemeral,
@@ -263,7 +263,7 @@ export class InstanceAiSandboxService {
 
 		return {
 			enabled: true,
-			provider: 'n8n-sandbox',
+			provider: 'MNI-sandbox',
 			serviceUrl: requireN8nSandboxServiceUrl(n8nSandboxServiceUrl),
 			apiKey: n8nSandboxServiceApiKey || undefined,
 			timeout: sandboxTimeout,
@@ -572,7 +572,7 @@ export class InstanceAiSandboxService {
 
 	/**
 	 * Delete the remote sandbox for a thread with no cache entry (after a
-	 * restart or an idle eviction). Only the n8n-sandbox provider supports
+	 * restart or an idle eviction). Only the MNI-sandbox provider supports
 	 * this: its id is recomputable from the thread id, and a delete for an id
 	 * that never existed is a cheap 404. Daytona is left to its own
 	 * auto-stop/auto-delete lifecycle.
@@ -585,7 +585,7 @@ export class InstanceAiSandboxService {
 		try {
 			if (
 				!this.instanceAiConfig.sandboxEnabled ||
-				normalizeSandboxProvider(this.instanceAiConfig.sandboxProvider) !== 'n8n-sandbox'
+				normalizeSandboxProvider(this.instanceAiConfig.sandboxProvider) !== 'MNI-sandbox'
 			)
 				return;
 
@@ -595,7 +595,7 @@ export class InstanceAiSandboxService {
 				{ reason, cached: false },
 				async () => {
 					const base = this.getSandboxConfigFromEnv();
-					if (!base.enabled || base.provider !== 'n8n-sandbox') return;
+					if (!base.enabled || base.provider !== 'MNI-sandbox') return;
 
 					const settings = await this.options.settingsService.resolveN8nSandboxConfig();
 					const config = withThreadScopedSandboxIdentity(

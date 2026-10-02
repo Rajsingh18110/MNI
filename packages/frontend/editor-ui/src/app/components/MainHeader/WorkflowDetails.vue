@@ -9,16 +9,16 @@ import { useSourceControlStore } from '@/features/integrations/sourceControl.ee/
 import { useDocumentTitle } from '@/app/composables/useDocumentTitle';
 import { useInjectWorkflowId } from '@/app/composables/useInjectWorkflowId';
 import { useMessage } from '@/app/composables/useMessage';
-import { useToast, type NotificationHandle } from '@n8n/composables/useToast';
+import { useToast, type NotificationHandle } from '@MNI/composables/useToast';
 import { nodeViewEventBus } from '@/app/event-bus';
 import type { IWorkflowDb } from '@/Interface';
 import type { FolderShortInfo } from '@/features/core/folders/folders.types';
 import { useFoldersStore } from '@/features/core/folders/folders.store';
-import type { PathItem } from '@n8n/design-system';
+import type { PathItem } from '@MNI/design-system';
 import ActionsDropdownMenu from '@/app/components/MainHeader/ActionsDropdownMenu.vue';
 import WorkflowHeaderDraftPublishActions from '@/app/components/MainHeader/WorkflowHeaderDraftPublishActions.vue';
-import { useI18n } from '@n8n/i18n';
-import { getResourcePermissions } from '@n8n/permissions';
+import { useI18n } from '@MNI/i18n';
+import { getResourcePermissions } from '@MNI/permissions';
 import {
 	computed,
 	inject,
@@ -30,7 +30,7 @@ import {
 } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 
-import { N8nBadge, N8nInlineTextEdit } from '@n8n/design-system';
+import { N8nBadge, N8nInlineTextEdit } from '@MNI/design-system';
 import { useUIStore } from '@/app/stores/ui.store';
 import { useWorkflowsStore } from '@/app/stores/workflows.store';
 import { useWorkflowsListStore } from '@/app/stores/workflowsList.store';
@@ -473,7 +473,7 @@ $--header-spacing: 20px;
 	}
 
 	.container :global([data-test-id='home-project']),
-	.container :global(.n8n-breadcrumbs) ul {
+	.container :global(.MNI-breadcrumbs) ul {
 		display: none;
 	}
 }

@@ -3,11 +3,11 @@ name: 'CI: Python'
 on:
   pull_request:
     paths:
-      - packages/@n8n/task-runner-python/**
+      - packages/@MNI/task-runner-python/**
       - .github/workflows/ci-python.yml
   push:
     paths:
-      - packages/@n8n/task-runner-python/**
+      - packages/@MNI/task-runner-python/**
 
 jobs:
   checks:
@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: packages/@n8n/task-runner-python
+        working-directory: packages/@MNI/task-runner-python
     steps:
       - name: Check out project
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -50,7 +50,7 @@ jobs:
         uses: codecov/codecov-action@671740ac38dd9b0130fbe1cec585b89eea48d3de # v5.5.2
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
-          files: packages/@n8n/task-runner-python/coverage.xml
+          files: packages/@MNI/task-runner-python/coverage.xml
           flags: python
           name: task-runner-python
           fail_ci_if_error: false

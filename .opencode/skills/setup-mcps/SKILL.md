@@ -2,7 +2,7 @@
 name: MNI:setup-mcps
 description: >-
   Configure MCP servers for MNI development in OpenCode. Use when the user says
-  /setup-mcps or asks to set up MCP servers for n8n.
+  /setup-mcps or asks to set up MCP servers for MNI.
 ---
 
 # MCP Setup for MNI Development in OpenCode

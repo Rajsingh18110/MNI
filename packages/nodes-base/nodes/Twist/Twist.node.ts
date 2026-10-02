@@ -8,8 +8,8 @@ import type {
 	INodePropertyOptions,
 	INodeType,
 	INodeTypeDescription,
-} from 'n8n-workflow';
-import { NodeConnectionTypes } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeConnectionTypes } from 'MNI-workflow';
 import { v4 as uuid } from 'uuid';
 
 import { channelFields, channelOperations } from './ChannelDescription';
@@ -26,7 +26,7 @@ export class Twist implements INodeType {
 	description: INodeTypeDescription = {
 		displayName: 'Twist',
 		name: 'twist',
-		// eslint-disable-next-line n8n-nodes-base/node-class-description-icon-not-svg
+		// eslint-disable-next-line MNI-nodes-base/node-class-description-icon-not-svg
 		icon: 'file:twist.png',
 		group: ['input'],
 		version: 1,

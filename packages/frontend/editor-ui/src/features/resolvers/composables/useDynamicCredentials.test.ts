@@ -1,8 +1,8 @@
 import { createTestingPinia } from '@pinia/testing';
 import { setActivePinia } from 'pinia';
 import { useDynamicCredentials } from './useDynamicCredentials';
-import { useSettingsStore } from '@n8n/stores/settings.store';
-import type { FrontendSettings } from '@n8n/api-types';
+import { useSettingsStore } from '@MNI/stores/settings.store';
+import type { FrontendSettings } from '@MNI/api-types';
 
 describe('useDynamicCredentials', () => {
 	let settingsStore: ReturnType<typeof useSettingsStore>;
@@ -20,7 +20,7 @@ describe('useDynamicCredentials', () => {
 		settingsStore = useSettingsStore();
 		settingsStore.settings = {
 			envFeatureFlags: {
-				N8N_ENV_FEAT_DYNAMIC_CREDENTIALS: featureFlag,
+				MNI_ENV_FEAT_DYNAMIC_CREDENTIALS: featureFlag,
 			},
 			activeModules: moduleActive ? ['dynamic-credentials'] : [],
 		} as unknown as FrontendSettings;

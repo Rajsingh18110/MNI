@@ -1,14 +1,14 @@
-import { Logger } from '@n8n/backend-common';
-import { Container, Service } from '@n8n/di';
-import { Cipher } from 'n8n-core';
+import { Logger } from '@MNI/backend-common';
+import { Container, Service } from '@MNI/di';
+import { Cipher } from 'MNI-core';
 import type {
 	ICredentialContext,
 	ICredentialDataDecryptedObject,
 	IDataObject,
 	IExecutionContext,
 	IWorkflowSettings,
-} from 'n8n-workflow';
-import { toCredentialContext, UnexpectedError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { toCredentialContext, UnexpectedError } from 'MNI-workflow';
 
 import type {
 	CredentialResolutionResult,

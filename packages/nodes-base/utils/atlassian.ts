@@ -7,8 +7,8 @@ import type {
 	IPollFunctions,
 	IWebhookFunctions,
 	JsonObject,
-} from 'n8n-workflow';
-import { NodeApiError, NodeOperationError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeApiError, NodeOperationError } from 'MNI-workflow';
 
 type AtlassianContext =
 	| IHookFunctions

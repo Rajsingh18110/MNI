@@ -92,21 +92,21 @@ jobs:
         uses: extractions/setup-just@e33e0265a09d6d736e2ee1e0eb685ef1de4669ff # v3.0.0
 
       - name: Install Python
-        working-directory: packages/@n8n/ai-workflow-builder.ee/evaluations/programmatic/python
+        working-directory: packages/@MNI/ai-workflow-builder.ee/evaluations/programmatic/python
         run: uv python install 3.11
 
       - name: Install workflow comparison dependencies
-        working-directory: packages/@n8n/ai-workflow-builder.ee/evaluations/programmatic/python
+        working-directory: packages/@MNI/ai-workflow-builder.ee/evaluations/programmatic/python
         run: just sync-all
 
       - name: Export Node Types
         run: |
-          ./packages/cli/bin/MNI export:nodes --output ./packages/@n8n/ai-workflow-builder.ee/evaluations/nodes.json
+          ./packages/cli/bin/MNI export:nodes --output ./packages/@MNI/ai-workflow-builder.ee/evaluations/nodes.json
 
       - name: Run Evaluations
-        working-directory: packages/@n8n/ai-workflow-builder.ee/evaluations
+        working-directory: packages/@MNI/ai-workflow-builder.ee/evaluations
         env:
-          N8N_AI_ANTHROPIC_KEY: ${{ secrets.EVALS_ANTHROPIC_KEY }}
+          MNI_AI_ANTHROPIC_KEY: ${{ secrets.EVALS_ANTHROPIC_KEY }}
           LANGSMITH_TRACING: true
           LANGSMITH_ENDPOINT: ${{ secrets.EVALS_LANGSMITH_ENDPOINT }}
           LANGSMITH_API_KEY: ${{ secrets.EVALS_LANGSMITH_API_KEY }}

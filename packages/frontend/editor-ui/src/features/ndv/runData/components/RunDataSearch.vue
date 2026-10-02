@@ -1,15 +1,15 @@
 <script setup lang="ts">
 import { computed, inject, ref, type StyleValue, watch } from 'vue';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import type { IRunDataDisplayMode } from '@/Interface';
 import type { NodePanelType } from '@/features/ndv/shared/ndv.types';
-import { useDebounce } from '@n8n/composables/useDebounce';
-import { useDeviceSupport } from '@n8n/composables/useDeviceSupport';
+import { useDebounce } from '@MNI/composables/useDebounce';
+import { useDeviceSupport } from '@MNI/composables/useDeviceSupport';
 import { useEventListener } from '@vueuse/core';
-import { PopOutWindowKey } from '@n8n/composables/injectionKeys';
+import { PopOutWindowKey } from '@MNI/composables/injectionKeys';
 import { type SearchShortcut } from '@/features/workflows/canvas/canvas.types';
 
-import { N8nIcon, N8nInput } from '@n8n/design-system';
+import { N8nIcon, N8nInput } from '@MNI/design-system';
 type Props = {
 	modelValue: string;
 	paneType?: NodePanelType;

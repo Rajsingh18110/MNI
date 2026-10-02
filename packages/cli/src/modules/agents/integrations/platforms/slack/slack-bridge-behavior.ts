@@ -1,5 +1,5 @@
-import { isRecord } from '@n8n/utils/is-record';
-import { sleep } from '@n8n/utils/sleep';
+import { isRecord } from '@MNI/utils/is-record';
+import { sleep } from '@MNI/utils/sleep';
 import type { Message, Thread } from 'chat';
 import escapeRegExp from 'lodash/escapeRegExp';
 

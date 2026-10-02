@@ -1,7 +1,7 @@
 {
 	"extends": [
-		"@n8n/typescript-config/tsconfig.common.go.json",
-		"@n8n/typescript-config/tsconfig.backend.go.json"
+		"@MNI/typescript-config/tsconfig.common.go.json",
+		"@MNI/typescript-config/tsconfig.backend.go.json"
 	],
 	"compilerOptions": {
 		"emitDecoratorMetadata": true,
@@ -9,9 +9,9 @@
 		"lib": ["es2023", "dom"],
 		"types": ["node", "vitest/globals", "vite/client"],
 		"paths": {
-			// Direct cli checks should not require @n8n/telemetry to be built first.
-			"@n8n/telemetry": ["../@n8n/telemetry/src/index.ts"],
-			"@n8n/telemetry/*": ["../@n8n/telemetry/src/*"],
+			// Direct cli checks should not require @MNI/telemetry to be built first.
+			"@MNI/telemetry": ["../@MNI/telemetry/src/index.ts"],
+			"@MNI/telemetry/*": ["../@MNI/telemetry/src/*"],
 			"@/*": ["./src/*"],
 			"@test/*": ["./test/shared/*"],
 			"@test-integration/*": ["./test/integration/shared/*"]
@@ -27,22 +27,22 @@
 		{ "path": "../core/tsconfig.build.json" },
 		{ "path": "../nodes-base/tsconfig.build.cjs.json" },
 		{ "path": "../workflow/tsconfig.build.esm.json" },
-		{ "path": "../@n8n/ai-utilities/tsconfig.build.cjs.json" },
-		{ "path": "../@n8n/ai-workflow-builder.ee/tsconfig.build.json" },
-		{ "path": "../@n8n/instance-ai/tsconfig.build.json" },
-		{ "path": "../@n8n/api-types/tsconfig.build.json" },
-		{ "path": "../@n8n/client-oauth2/tsconfig.build.json" },
-		{ "path": "../@n8n/config/tsconfig.build.json" },
-		{ "path": "../@n8n/constants/tsconfig.build.json" },
-		{ "path": "../@n8n/decorators/tsconfig.build.json" },
-		{ "path": "../@n8n/db/tsconfig.build.json" },
-		{ "path": "../@n8n/errors/tsconfig.build.json" },
-		{ "path": "../@n8n/backend-common/tsconfig.build.json" },
-		{ "path": "../@n8n/backend-test-utils/tsconfig.build.json" },
-		{ "path": "../@n8n/blob-storage/tsconfig.build.json" },
-		{ "path": "../@n8n/di/tsconfig.build.json" },
-		{ "path": "../@n8n/nodes-langchain/tsconfig.build.json" },
-		{ "path": "../@n8n/permissions/tsconfig.build.json" },
-		{ "path": "../@n8n/scheduler/tsconfig.build.json" }
+		{ "path": "../@MNI/ai-utilities/tsconfig.build.cjs.json" },
+		{ "path": "../@MNI/ai-workflow-builder.ee/tsconfig.build.json" },
+		{ "path": "../@MNI/instance-ai/tsconfig.build.json" },
+		{ "path": "../@MNI/api-types/tsconfig.build.json" },
+		{ "path": "../@MNI/client-oauth2/tsconfig.build.json" },
+		{ "path": "../@MNI/config/tsconfig.build.json" },
+		{ "path": "../@MNI/constants/tsconfig.build.json" },
+		{ "path": "../@MNI/decorators/tsconfig.build.json" },
+		{ "path": "../@MNI/db/tsconfig.build.json" },
+		{ "path": "../@MNI/errors/tsconfig.build.json" },
+		{ "path": "../@MNI/backend-common/tsconfig.build.json" },
+		{ "path": "../@MNI/backend-test-utils/tsconfig.build.json" },
+		{ "path": "../@MNI/blob-storage/tsconfig.build.json" },
+		{ "path": "../@MNI/di/tsconfig.build.json" },
+		{ "path": "../@MNI/nodes-langchain/tsconfig.build.json" },
+		{ "path": "../@MNI/permissions/tsconfig.build.json" },
+		{ "path": "../@MNI/scheduler/tsconfig.build.json" }
 	]
 }

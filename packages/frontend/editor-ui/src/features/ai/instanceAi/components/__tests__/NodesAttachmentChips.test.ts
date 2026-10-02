@@ -2,11 +2,11 @@ import { fireEvent, screen, waitFor } from '@testing-library/vue';
 import { describe, it, expect, beforeEach } from 'vitest';
 import { setActivePinia, createPinia } from 'pinia';
 import { mock } from 'vitest-mock-extended';
-import type { INodeTypeDescription } from 'n8n-workflow';
+import type { INodeTypeDescription } from 'MNI-workflow';
 import { renderComponent } from '@/__tests__/render';
 import NodesAttachmentChips from '../NodesAttachmentChips.vue';
-import type { InstanceAiNodesAttachment } from '@n8n/api-types';
-import { sleep } from '@n8n/utils/sleep';
+import type { InstanceAiNodesAttachment } from '@MNI/api-types';
+import { sleep } from '@MNI/utils/sleep';
 import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';
 import {
 	useWorkflowDocumentStore,
@@ -82,16 +82,16 @@ describe('NodesAttachmentChips', () => {
 		useNodeTypesStore().setNodeTypes([
 			mock<INodeTypeDescription>({
 				version: 1,
-				name: 'n8n-nodes-base.set',
+				name: 'MNI-nodes-base.set',
 				displayName: 'Edit Fields',
-				iconUrl: 'icons/n8n-nodes-base/dist/nodes/Set/set.svg',
+				iconUrl: 'icons/MNI-nodes-base/dist/nodes/Set/set.svg',
 			}),
 		]);
 		useWorkflowDocumentStore(createWorkflowDocumentId('w1')).setNodes(
 			nodeRefs('A', 'B', 'C', 'D').map((node) => ({
 				id: node.id,
 				name: node.name,
-				type: 'n8n-nodes-base.set',
+				type: 'MNI-nodes-base.set',
 				typeVersion: 1,
 				position: [0, 0] as [number, number],
 				parameters: {},
@@ -107,7 +107,7 @@ describe('NodesAttachmentChips', () => {
 		expect(rows).toHaveLength(4);
 		for (const row of rows) {
 			expect(row.querySelector('[data-icon="crosshair"]')).toBeNull();
-			expect(row.querySelector('.n8n-node-icon img')).toBeTruthy();
+			expect(row.querySelector('.MNI-node-icon img')).toBeTruthy();
 		}
 	});
 

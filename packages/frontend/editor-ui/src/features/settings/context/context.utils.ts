@@ -1,17 +1,17 @@
-import type { AiPreferenceScope, AiPreferenceSource, AiPreferenceUserDto } from '@n8n/api-types';
+import type { AiPreferenceScope, AiPreferenceSource, AiPreferenceUserDto } from '@MNI/api-types';
 import {
 	aiPreferenceScopeOf,
 	CONTEXT_PREFERENCES_ENABLED_VARIANT,
 	CONTEXT_PREFERENCES_FLAG,
-} from '@n8n/api-types';
-import type { BaseTextKey } from '@n8n/i18n';
-import { getResourcePermissions } from '@n8n/permissions';
-import { ResponseError } from '@n8n/rest-api-client';
+} from '@MNI/api-types';
+import type { BaseTextKey } from '@MNI/i18n';
+import { getResourcePermissions } from '@MNI/permissions';
+import { ResponseError } from '@MNI/rest-api-client';
 
 import { usePostHog } from '@/app/stores/posthog.store';
 import { useProjectsStore } from '@/features/collaboration/projects/projects.store';
 import { splitName } from '@/features/collaboration/projects/projects.utils';
-import { useUsersStore } from '@n8n/stores/users.store';
+import { useUsersStore } from '@MNI/stores/users.store';
 
 import type { Preference, PreferencePermissions } from './context.types';
 

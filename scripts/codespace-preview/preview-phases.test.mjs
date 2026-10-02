@@ -133,6 +133,6 @@ describe('createPhaseScanner', () => {
 	it('returns nothing for plain build output', () => {
 		const scan = createPhaseScanner();
 
-		assert.deepEqual(scan('> n8n@1.0.0 build /workspaces/MNI\nTasks: 112 total\n'), []);
+		assert.deepEqual(scan('> MNI@1.0.0 build /workspaces/MNI\nTasks: 112 total\n'), []);
 	});
 });

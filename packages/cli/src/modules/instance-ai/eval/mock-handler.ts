@@ -8,12 +8,12 @@
  * CLI test suite.
  */
 
-import { Tool } from '@n8n/agents/tool';
-import { Logger } from '@n8n/backend-common';
-import { Container } from '@n8n/di';
-import { createEvalAgent, extractText } from '@n8n/instance-ai';
-import type { EvalLlmMockHandler, EvalMockHttpResponse, FixtureSizeHint } from 'n8n-core';
-import { buildPdfWithText, synthesizeBinaryFixture } from 'n8n-core';
+import { Tool } from '@MNI/agents/tool';
+import { Logger } from '@MNI/backend-common';
+import { Container } from '@MNI/di';
+import { createEvalAgent, extractText } from '@MNI/instance-ai';
+import type { EvalLlmMockHandler, EvalMockHttpResponse, FixtureSizeHint } from 'MNI-core';
+import { buildPdfWithText, synthesizeBinaryFixture } from 'MNI-core';
 import { z } from 'zod';
 
 import { fetchApiDocs } from './api-docs';
@@ -306,7 +306,7 @@ async function generateMockResponse(
 	// A request without a URL is un-mockable and never comes from a correctly
 	// configured node. Declarative (routing) nodes emit one when the selected
 	// resource/operation doesn't exist on the node type — routing then
-	// contributes neither URL nor method (observed: n8n-nodes-base.openAi
+	// contributes neither URL nor method (observed: MNI-nodes-base.openAi
 	// configured with audio/transcribe, which only the LangChain OpenAI node
 	// supports). Answer with a descriptive 400 so the node fails with a real
 	// API-shaped error the verifier can trace to the node's configuration.

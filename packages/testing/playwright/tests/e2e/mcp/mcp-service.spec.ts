@@ -28,7 +28,7 @@ async function activateAndWaitForPublishedVersion(
  * - publish_workflow: Publish (activate) a workflow
  * - unpublish_workflow: Unpublish (deactivate) a workflow
  *
- * Builder tools (enabled via N8N_MCP_BUILDER_ENABLED):
+ * Builder tools (enabled via MNI_MCP_BUILDER_ENABLED):
  * - search_nodes: Search for MNI nodes by service name/trigger type
  * - get_node_types: Get TypeScript type definitions for nodes
  * - get_workflow_best_practices: Get best-practices guidance for a workflow technique

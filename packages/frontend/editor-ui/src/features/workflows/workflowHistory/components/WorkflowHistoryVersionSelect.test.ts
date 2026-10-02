@@ -14,8 +14,8 @@ vi.mock('../workflowHistory.store', () => ({
 	}),
 }));
 
-vi.mock('@n8n/design-system', async () => {
-	const actual = await vi.importActual('@n8n/design-system');
+vi.mock('@MNI/design-system', async () => {
+	const actual = await vi.importActual('@MNI/design-system');
 	return {
 		...actual,
 		N8nSelect: {

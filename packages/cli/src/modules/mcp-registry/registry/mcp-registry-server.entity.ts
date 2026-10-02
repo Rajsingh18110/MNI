@@ -1,5 +1,5 @@
-import { datetimeColumnType, JsonColumn, WithTimestamps } from '@n8n/db';
-import { Column, Entity, PrimaryColumn } from '@n8n/typeorm';
+import { datetimeColumnType, JsonColumn, WithTimestamps } from '@MNI/db';
+import { Column, Entity, PrimaryColumn } from '@MNI/typeorm';
 
 export type McpRegistryServerData = {
 	name: string;

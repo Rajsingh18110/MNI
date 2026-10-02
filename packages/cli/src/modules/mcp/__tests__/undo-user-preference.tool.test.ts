@@ -1,7 +1,7 @@
-import type { AiPreferenceDto } from '@n8n/api-types';
-import { mockInstance, mockLogger } from '@n8n/backend-test-utils';
-import { User } from '@n8n/db';
-import { TELEMETRY_EVENT } from '@n8n/telemetry';
+import type { AiPreferenceDto } from '@MNI/api-types';
+import { mockInstance, mockLogger } from '@MNI/backend-test-utils';
+import { User } from '@MNI/db';
+import { TELEMETRY_EVENT } from '@MNI/telemetry';
 
 import { ForbiddenError } from '@/errors/response-errors/forbidden.error';
 import { NotFoundError } from '@/errors/response-errors/not-found.error';

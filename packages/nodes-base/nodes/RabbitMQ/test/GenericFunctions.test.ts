@@ -6,7 +6,7 @@ import type {
 	IRun,
 	ITriggerFunctions,
 	IWorkflowMetadata,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 const { connect } = vi.hoisted(() => ({ connect: vi.fn() }));
 vi.mock('amqplib', () => ({ connect }));

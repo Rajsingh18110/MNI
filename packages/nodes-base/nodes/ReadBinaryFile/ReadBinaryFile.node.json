@@ -1,19 +1,19 @@
 {
-	"node": "n8n-nodes-base.readBinaryFile",
+	"node": "MNI-nodes-base.readBinaryFile",
 	"nodeVersion": "1.0",
 	"codexVersion": "1.0",
 	"categories": ["Core Nodes"],
 	"resources": {
 		"primaryDocumentation": [
 			{
-				"url": "https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-base.readwritefile/"
+				"url": "https://docs.n8n.io/integrations/builtin/core-nodes/MNI-nodes-base.readwritefile/"
 			}
 		],
 		"generic": [
 			{
 				"label": "Build your own virtual assistant with MNI: A step by step guide",
 				"icon": "👦",
-				"url": "https://n8n.io/blog/build-your-own-virtual-assistant-with-n8n-a-step-by-step-guide/"
+				"url": "https://n8n.io/blog/build-your-own-virtual-assistant-with-MNI-a-step-by-step-guide/"
 			},
 			{
 				"label": "How uProc scraped a multi-page website with a low-code workflow",

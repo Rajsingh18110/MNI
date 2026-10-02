@@ -11,7 +11,7 @@
 			},
 			"id": "b1e1c9b0-0000-4000-8000-000000000001",
 			"name": "Webhook",
-			"type": "n8n-nodes-base.webhook",
+			"type": "MNI-nodes-base.webhook",
 			"typeVersion": 2,
 			"position": [0, 0],
 			"webhookId": "b1e1c9b0-0000-4000-8000-000000000001"
@@ -32,7 +32,7 @@
 			},
 			"id": "b1e1c9b0-0000-4000-8000-000000000002",
 			"name": "Set Result",
-			"type": "n8n-nodes-base.set",
+			"type": "MNI-nodes-base.set",
 			"typeVersion": 3.3,
 			"position": [220, 0]
 		}

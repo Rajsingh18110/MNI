@@ -5,7 +5,7 @@ import type {
 	IDataObject,
 	IHttpRequestMethods,
 	IRequestOptions,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 export async function clockifyApiRequest(
 	this: ILoadOptionsFunctions | IPollFunctions | IExecuteFunctions,

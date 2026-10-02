@@ -1,10 +1,10 @@
-import type { INodeTypeDescription } from 'n8n-workflow';
+import type { INodeTypeDescription } from 'MNI-workflow';
 
 import { omitOperationOptions } from '../toolConfig.utils';
 
 const makeDescription = (): INodeTypeDescription => ({
 	displayName: 'Test Tool',
-	name: 'n8n-nodes-base.testTool',
+	name: 'MNI-nodes-base.testTool',
 	group: ['transform'],
 	version: 1,
 	description: 'A test tool',

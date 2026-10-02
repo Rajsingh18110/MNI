@@ -1,6 +1,6 @@
-import { defineFrontendModule } from '@n8n/frontend-module-sdk';
-import { useI18n } from '@n8n/i18n';
-import { useRBACStore } from '@n8n/stores/rbac.store';
+import { defineFrontendModule } from '@MNI/frontend-module-sdk';
+import { useI18n } from '@MNI/i18n';
+import { useRBACStore } from '@MNI/stores/rbac.store';
 
 import { OTEL_SETTINGS_VIEW } from './otel.constants';
 

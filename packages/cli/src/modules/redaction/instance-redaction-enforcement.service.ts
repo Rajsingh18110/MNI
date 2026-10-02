@@ -1,10 +1,10 @@
-import { REDACTION_FLOOR_DEFAULT, redactionFloorSchema, type RedactionFloor } from '@n8n/api-types';
-import { Logger } from '@n8n/backend-common';
-import { GlobalConfig } from '@n8n/config';
-import { SettingsRepository } from '@n8n/db';
-import { OnPubSubEvent } from '@n8n/decorators';
-import { Service } from '@n8n/di';
-import { UserError } from 'n8n-workflow';
+import { REDACTION_FLOOR_DEFAULT, redactionFloorSchema, type RedactionFloor } from '@MNI/api-types';
+import { Logger } from '@MNI/backend-common';
+import { GlobalConfig } from '@MNI/config';
+import { SettingsRepository } from '@MNI/db';
+import { OnPubSubEvent } from '@MNI/decorators';
+import { Service } from '@MNI/di';
+import { UserError } from 'MNI-workflow';
 
 import { Publisher } from '@/scaling/pubsub/publisher.service';
 import { CacheService } from '@/services/cache/cache.service';
@@ -28,7 +28,7 @@ export class InstanceRedactionEnforcementService {
 	 *
 	 * Read on every instance type, since workers and webhook instances resolve the floor
 	 * while establishing an execution context. In queue mode the cache is shared Redis;
-	 * `N8N_CACHE_BACKEND=memory` gives each process its own copy, stale until its TTL.
+	 * `MNI_CACHE_BACKEND=memory` gives each process its own copy, stale until its TTL.
 	 */
 	async get(): Promise<RedactionFloor> {
 		return await this.load();

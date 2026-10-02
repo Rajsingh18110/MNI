@@ -1,11 +1,11 @@
-import type { User } from '@n8n/db';
+import type { User } from '@MNI/db';
 import type {
 	INode,
 	INodeTypeDescription,
 	INodeCredentialDescription,
 	IWorkflowBase,
-} from 'n8n-workflow';
-import { NodeHelpers } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeHelpers } from 'MNI-workflow';
 
 import type { CredentialsService } from '@/credentials/credentials.service';
 import type { NodeTypes } from '@/node-types';
@@ -24,7 +24,7 @@ function makeNode(overrides: Partial<INode> = {}): INode {
 	return {
 		id: 'node-1',
 		name: 'Test Node',
-		type: 'n8n-nodes-base.slack',
+		type: 'MNI-nodes-base.slack',
 		typeVersion: 1,
 		position: [0, 0],
 		parameters: {},
@@ -47,7 +47,7 @@ function makeNodeTypeDescription(
 ): INodeTypeDescription {
 	return {
 		displayName: 'Slack',
-		name: 'n8n-nodes-base.slack',
+		name: 'MNI-nodes-base.slack',
 		group: ['transform'],
 		version: 1,
 		description: '',
@@ -91,7 +91,7 @@ describe('autoPopulateNodeCredentials', () => {
 		const desc = makeNodeTypeDescription();
 		const { credentialsService, nodeTypes } = createMocks({
 			usableCredentials: [{ id: 'cred-1', name: 'My Slack Token', type: 'slackApi' }],
-			nodeTypeDescriptions: new Map([['n8n-nodes-base.slack', desc]]),
+			nodeTypeDescriptions: new Map([['MNI-nodes-base.slack', desc]]),
 		});
 
 		vi.spyOn(NodeHelpers, 'displayParameter').mockReturnValue(true);
@@ -122,7 +122,7 @@ describe('autoPopulateNodeCredentials', () => {
 		const desc = makeNodeTypeDescription();
 		const { credentialsService, nodeTypes } = createMocks({
 			usableCredentials: [],
-			nodeTypeDescriptions: new Map([['n8n-nodes-base.slack', desc]]),
+			nodeTypeDescriptions: new Map([['MNI-nodes-base.slack', desc]]),
 		});
 
 		vi.spyOn(NodeHelpers, 'displayParameter').mockReturnValue(true);
@@ -160,9 +160,9 @@ describe('autoPopulateNodeCredentials', () => {
 
 	test('skips HTTP Request nodes and reports them', async () => {
 		const httpNodes = [
-			makeNode({ id: '1', name: 'HTTP 1', type: 'n8n-nodes-base.httpRequest' }),
-			makeNode({ id: '2', name: 'HTTP 2', type: '@n8n/n8n-nodes-langchain.toolHttpRequest' }),
-			makeNode({ id: '3', name: 'HTTP 3', type: 'n8n-nodes-base.httpRequestTool' }),
+			makeNode({ id: '1', name: 'HTTP 1', type: 'MNI-nodes-base.httpRequest' }),
+			makeNode({ id: '2', name: 'HTTP 2', type: '@MNI/MNI-nodes-langchain.toolHttpRequest' }),
+			makeNode({ id: '3', name: 'HTTP 3', type: 'MNI-nodes-base.httpRequestTool' }),
 		];
 		const workflow = makeWorkflow(httpNodes);
 		const { credentialsService, nodeTypes } = createMocks({
@@ -189,7 +189,7 @@ describe('autoPopulateNodeCredentials', () => {
 		const desc = makeNodeTypeDescription();
 		const { credentialsService, nodeTypes } = createMocks({
 			usableCredentials: [{ id: 'cred-1', name: 'Another Slack Token', type: 'slackApi' }],
-			nodeTypeDescriptions: new Map([['n8n-nodes-base.slack', desc]]),
+			nodeTypeDescriptions: new Map([['MNI-nodes-base.slack', desc]]),
 		});
 
 		vi.spyOn(NodeHelpers, 'displayParameter').mockReturnValue(true);
@@ -207,7 +207,7 @@ describe('autoPopulateNodeCredentials', () => {
 	});
 
 	test('skips node when nodeType is unknown', async () => {
-		const node = makeNode({ type: 'n8n-nodes-base.unknown' });
+		const node = makeNode({ type: 'MNI-nodes-base.unknown' });
 		const workflow = makeWorkflow([node]);
 		const { credentialsService, nodeTypes } = createMocks({
 			usableCredentials: [{ id: 'cred-1', name: 'Cred', type: 'someApi' }],
@@ -226,15 +226,15 @@ describe('autoPopulateNodeCredentials', () => {
 	});
 
 	test('skips node when nodeType has no credential descriptions', async () => {
-		const node = makeNode({ type: 'n8n-nodes-base.set' });
+		const node = makeNode({ type: 'MNI-nodes-base.set' });
 		const workflow = makeWorkflow([node]);
 		const desc = makeNodeTypeDescription({
-			name: 'n8n-nodes-base.set',
+			name: 'MNI-nodes-base.set',
 			credentials: undefined,
 		});
 		const { credentialsService, nodeTypes } = createMocks({
 			usableCredentials: [{ id: 'cred-1', name: 'Cred', type: 'someApi' }],
-			nodeTypeDescriptions: new Map([['n8n-nodes-base.set', desc]]),
+			nodeTypeDescriptions: new Map([['MNI-nodes-base.set', desc]]),
 		});
 
 		const result = await autoPopulateNodeCredentials(
@@ -254,7 +254,7 @@ describe('autoPopulateNodeCredentials', () => {
 		const desc = makeNodeTypeDescription();
 		const { credentialsService, nodeTypes } = createMocks({
 			usableCredentials: [{ id: 'cred-1', name: 'My Slack Token', type: 'slackApi' }],
-			nodeTypeDescriptions: new Map([['n8n-nodes-base.slack', desc]]),
+			nodeTypeDescriptions: new Map([['MNI-nodes-base.slack', desc]]),
 		});
 
 		vi.spyOn(NodeHelpers, 'displayParameter').mockReturnValue(false);
@@ -279,7 +279,7 @@ describe('autoPopulateNodeCredentials', () => {
 				{ id: 'cred-1', name: 'Slack Token A', type: 'slackApi' },
 				{ id: 'cred-2', name: 'Slack Token B', type: 'slackApi' },
 			],
-			nodeTypeDescriptions: new Map([['n8n-nodes-base.slack', desc]]),
+			nodeTypeDescriptions: new Map([['MNI-nodes-base.slack', desc]]),
 		});
 
 		vi.spyOn(NodeHelpers, 'displayParameter').mockReturnValue(true);
@@ -298,16 +298,16 @@ describe('autoPopulateNodeCredentials', () => {
 	});
 
 	test('handles multiple nodes with different credential types', async () => {
-		const slackNode = makeNode({ id: '1', name: 'Slack', type: 'n8n-nodes-base.slack' });
-		const gmailNode = makeNode({ id: '2', name: 'Gmail', type: 'n8n-nodes-base.gmail' });
+		const slackNode = makeNode({ id: '1', name: 'Slack', type: 'MNI-nodes-base.slack' });
+		const gmailNode = makeNode({ id: '2', name: 'Gmail', type: 'MNI-nodes-base.gmail' });
 		const workflow = makeWorkflow([slackNode, gmailNode]);
 
 		const slackDesc = makeNodeTypeDescription({
-			name: 'n8n-nodes-base.slack',
+			name: 'MNI-nodes-base.slack',
 			credentials: [makeCredentialDescription({ name: 'slackApi' })],
 		});
 		const gmailDesc = makeNodeTypeDescription({
-			name: 'n8n-nodes-base.gmail',
+			name: 'MNI-nodes-base.gmail',
 			credentials: [makeCredentialDescription({ name: 'gmailOAuth2' })],
 		});
 
@@ -317,8 +317,8 @@ describe('autoPopulateNodeCredentials', () => {
 				{ id: 'cred-2', name: 'My Gmail', type: 'gmailOAuth2' },
 			],
 			nodeTypeDescriptions: new Map([
-				['n8n-nodes-base.slack', slackDesc],
-				['n8n-nodes-base.gmail', gmailDesc],
+				['MNI-nodes-base.slack', slackDesc],
+				['MNI-nodes-base.gmail', gmailDesc],
 			]),
 		});
 
@@ -361,7 +361,7 @@ describe('autoPopulateNodeCredentials', () => {
 
 	describe('AI Gateway fallback', () => {
 		const gatewayConfig = {
-			nodes: ['n8n-nodes-base.slack'],
+			nodes: ['MNI-nodes-base.slack'],
 			credentialTypes: ['slackApi'],
 			providerConfig: {
 				slackApi: { gatewayPath: '/v1/gateway/slack', urlField: 'url', apiKeyField: 'apiKey' },
@@ -383,7 +383,7 @@ describe('autoPopulateNodeCredentials', () => {
 			const desc = makeNodeTypeDescription();
 			const { credentialsService, nodeTypes } = createMocks({
 				usableCredentials: [],
-				nodeTypeDescriptions: new Map([['n8n-nodes-base.slack', desc]]),
+				nodeTypeDescriptions: new Map([['MNI-nodes-base.slack', desc]]),
 			});
 			vi.spyOn(NodeHelpers, 'displayParameter').mockReturnValue(true);
 
@@ -420,9 +420,9 @@ describe('autoPopulateNodeCredentials', () => {
 
 		test('switches auth to a supported sibling type when the default auth type is unsupported', async () => {
 			// Node defaults to an unsupported auth (oAuth2 → serviceOAuth2Api) while a
-			// sibling (apiKey → serviceApiKey) is n8n-credits-eligible.
+			// sibling (apiKey → serviceApiKey) is MNI-credits-eligible.
 			const desc = {
-				...makeNodeTypeDescription({ name: 'n8n-nodes-base.service' }),
+				...makeNodeTypeDescription({ name: 'MNI-nodes-base.service' }),
 				credentials: [
 					{ name: 'serviceOAuth2Api', displayOptions: { show: { authentication: ['oAuth2'] } } },
 					{ name: 'serviceApiKey', displayOptions: { show: { authentication: ['apiKey'] } } },
@@ -440,17 +440,17 @@ describe('autoPopulateNodeCredentials', () => {
 					},
 				],
 			} as unknown as INodeTypeDescription;
-			const node = makeNode({ type: 'n8n-nodes-base.service', parameters: {} });
+			const node = makeNode({ type: 'MNI-nodes-base.service', parameters: {} });
 			const workflow = makeWorkflow([node]);
 			const { credentialsService, nodeTypes } = createMocks({
 				usableCredentials: [],
-				nodeTypeDescriptions: new Map([['n8n-nodes-base.service', desc]]),
+				nodeTypeDescriptions: new Map([['MNI-nodes-base.service', desc]]),
 			});
 			const aiGatewayService = {
 				isAvailable: vi.fn().mockResolvedValue({
 					available: true,
 					config: {
-						nodes: ['n8n-nodes-base.service'],
+						nodes: ['MNI-nodes-base.service'],
 						credentialTypes: ['serviceApiKey'],
 						providerConfig: {
 							serviceApiKey: {
@@ -490,7 +490,7 @@ describe('autoPopulateNodeCredentials', () => {
 			// Mirrors a real inserted node: `authentication` is NOT stored (defaults are
 			// not persisted), and an unrelated `operation` param IS present.
 			const desc = {
-				...makeNodeTypeDescription({ name: 'n8n-nodes-base.service' }),
+				...makeNodeTypeDescription({ name: 'MNI-nodes-base.service' }),
 				credentials: [
 					{ name: 'serviceOAuth2Api', displayOptions: { show: { authentication: ['oAuth2'] } } },
 					{ name: 'serviceApiKey', displayOptions: { show: { authentication: ['apiKey'] } } },
@@ -516,19 +516,19 @@ describe('autoPopulateNodeCredentials', () => {
 				],
 			} as unknown as INodeTypeDescription;
 			const node = makeNode({
-				type: 'n8n-nodes-base.service',
+				type: 'MNI-nodes-base.service',
 				parameters: { operation: 'Split PDF' },
 			});
 			const workflow = makeWorkflow([node]);
 			const { credentialsService, nodeTypes } = createMocks({
 				usableCredentials: [],
-				nodeTypeDescriptions: new Map([['n8n-nodes-base.service', desc]]),
+				nodeTypeDescriptions: new Map([['MNI-nodes-base.service', desc]]),
 			});
 			const aiGatewayService = {
 				isAvailable: vi.fn().mockResolvedValue({
 					available: true,
 					config: {
-						nodes: ['n8n-nodes-base.service'],
+						nodes: ['MNI-nodes-base.service'],
 						credentialTypes: ['serviceApiKey'],
 						providerConfig: {
 							serviceApiKey: {
@@ -560,7 +560,7 @@ describe('autoPopulateNodeCredentials', () => {
 			// The credential is shown for several auth values; the node already uses
 			// the second one, so assigning MNI credits must not flip it to the first.
 			const desc = {
-				...makeNodeTypeDescription({ name: 'n8n-nodes-base.service' }),
+				...makeNodeTypeDescription({ name: 'MNI-nodes-base.service' }),
 				credentials: [
 					{
 						name: 'serviceApiKey',
@@ -581,19 +581,19 @@ describe('autoPopulateNodeCredentials', () => {
 				],
 			} as unknown as INodeTypeDescription;
 			const node = makeNode({
-				type: 'n8n-nodes-base.service',
+				type: 'MNI-nodes-base.service',
 				parameters: { authentication: 'apiKeyLegacy' },
 			});
 			const workflow = makeWorkflow([node]);
 			const { credentialsService, nodeTypes } = createMocks({
 				usableCredentials: [],
-				nodeTypeDescriptions: new Map([['n8n-nodes-base.service', desc]]),
+				nodeTypeDescriptions: new Map([['MNI-nodes-base.service', desc]]),
 			});
 			const aiGatewayService = {
 				isAvailable: vi.fn().mockResolvedValue({
 					available: true,
 					config: {
-						nodes: ['n8n-nodes-base.service'],
+						nodes: ['MNI-nodes-base.service'],
 						credentialTypes: ['serviceApiKey'],
 						providerConfig: {
 							serviceApiKey: {
@@ -627,7 +627,7 @@ describe('autoPopulateNodeCredentials', () => {
 			const desc = makeNodeTypeDescription();
 			const { credentialsService, nodeTypes } = createMocks({
 				usableCredentials: [{ id: 'cred-1', name: 'My Slack', type: 'slackApi' }],
-				nodeTypeDescriptions: new Map([['n8n-nodes-base.slack', desc]]),
+				nodeTypeDescriptions: new Map([['MNI-nodes-base.slack', desc]]),
 			});
 			vi.spyOn(NodeHelpers, 'displayParameter').mockReturnValue(true);
 
@@ -658,7 +658,7 @@ describe('autoPopulateNodeCredentials', () => {
 			const desc = makeNodeTypeDescription();
 			const { credentialsService, nodeTypes } = createMocks({
 				usableCredentials: [],
-				nodeTypeDescriptions: new Map([['n8n-nodes-base.slack', desc]]),
+				nodeTypeDescriptions: new Map([['MNI-nodes-base.slack', desc]]),
 			});
 			vi.spyOn(NodeHelpers, 'displayParameter').mockReturnValue(true);
 
@@ -685,15 +685,15 @@ describe('autoPopulateNodeCredentials', () => {
 		});
 
 		test('leaves slot empty when gateway is available but node is not covered', async () => {
-			const node = makeNode({ type: 'n8n-nodes-base.gmail' });
+			const node = makeNode({ type: 'MNI-nodes-base.gmail' });
 			const workflow = makeWorkflow([node]);
 			const desc = makeNodeTypeDescription({
-				name: 'n8n-nodes-base.gmail',
+				name: 'MNI-nodes-base.gmail',
 				credentials: [makeCredentialDescription({ name: 'gmailOAuth2' })],
 			});
 			const { credentialsService, nodeTypes } = createMocks({
 				usableCredentials: [],
-				nodeTypeDescriptions: new Map([['n8n-nodes-base.gmail', desc]]),
+				nodeTypeDescriptions: new Map([['MNI-nodes-base.gmail', desc]]),
 			});
 			vi.spyOn(NodeHelpers, 'displayParameter').mockReturnValue(true);
 
@@ -725,7 +725,7 @@ describe('autoPopulateNodeCredentials', () => {
 			const desc = makeNodeTypeDescription();
 			const { credentialsService, nodeTypes } = createMocks({
 				usableCredentials: [],
-				nodeTypeDescriptions: new Map([['n8n-nodes-base.slack', desc]]),
+				nodeTypeDescriptions: new Map([['MNI-nodes-base.slack', desc]]),
 			});
 			vi.spyOn(NodeHelpers, 'displayParameter').mockReturnValue(true);
 
@@ -756,7 +756,7 @@ describe('autoPopulateNodeCredentials', () => {
 			const desc = makeNodeTypeDescription();
 			const { credentialsService, nodeTypes } = createMocks({
 				usableCredentials: [],
-				nodeTypeDescriptions: new Map([['n8n-nodes-base.slack', desc]]),
+				nodeTypeDescriptions: new Map([['MNI-nodes-base.slack', desc]]),
 			});
 			vi.spyOn(NodeHelpers, 'displayParameter').mockReturnValue(true);
 
@@ -791,7 +791,7 @@ describe('autoPopulateNodeCredentials', () => {
 				const desc = makeNodeTypeDescription();
 				const { credentialsService, nodeTypes } = createMocks({
 					usableCredentials: [{ id: 'cred-1', name: 'My Slack', type: 'slackApi' }],
-					nodeTypeDescriptions: new Map([['n8n-nodes-base.slack', desc]]),
+					nodeTypeDescriptions: new Map([['MNI-nodes-base.slack', desc]]),
 				});
 				vi.spyOn(NodeHelpers, 'displayParameter').mockReturnValue(true);
 
@@ -815,17 +815,17 @@ describe('autoPopulateNodeCredentials', () => {
 
 			test('strips an ineligible incoming marker when the node is not covered', async () => {
 				const node = makeNode({
-					type: 'n8n-nodes-base.gmail',
+					type: 'MNI-nodes-base.gmail',
 					credentials: { gmailOAuth2: { ...suppliedMarker } },
 				});
 				const workflow = makeWorkflow([node]);
 				const desc = makeNodeTypeDescription({
-					name: 'n8n-nodes-base.gmail',
+					name: 'MNI-nodes-base.gmail',
 					credentials: [makeCredentialDescription({ name: 'gmailOAuth2' })],
 				});
 				const { credentialsService, nodeTypes } = createMocks({
 					usableCredentials: [],
-					nodeTypeDescriptions: new Map([['n8n-nodes-base.gmail', desc]]),
+					nodeTypeDescriptions: new Map([['MNI-nodes-base.gmail', desc]]),
 				});
 				vi.spyOn(NodeHelpers, 'displayParameter').mockReturnValue(true);
 
@@ -848,7 +848,7 @@ describe('autoPopulateNodeCredentials', () => {
 			test('strips a marker on an HTTP Request node', async () => {
 				const node = makeNode({
 					name: 'HTTP',
-					type: 'n8n-nodes-base.httpRequest',
+					type: 'MNI-nodes-base.httpRequest',
 					credentials: { slackApi: { ...suppliedMarker } },
 				});
 				const workflow = makeWorkflow([node]);
@@ -877,7 +877,7 @@ describe('autoPopulateNodeCredentials', () => {
 				const workflow = makeWorkflow([node]);
 				const desc = makeNodeTypeDescription();
 				const { credentialsService, nodeTypes } = createMocks({
-					nodeTypeDescriptions: new Map([['n8n-nodes-base.slack', desc]]),
+					nodeTypeDescriptions: new Map([['MNI-nodes-base.slack', desc]]),
 				});
 				vi.spyOn(NodeHelpers, 'displayParameter').mockReturnValue(true);
 
@@ -901,7 +901,7 @@ describe('autoPopulateNodeCredentials', () => {
 				const desc = makeNodeTypeDescription();
 				const { credentialsService, nodeTypes } = createMocks({
 					usableCredentials: [],
-					nodeTypeDescriptions: new Map([['n8n-nodes-base.slack', desc]]),
+					nodeTypeDescriptions: new Map([['MNI-nodes-base.slack', desc]]),
 				});
 				vi.spyOn(NodeHelpers, 'displayParameter').mockReturnValue(true);
 
@@ -950,7 +950,7 @@ describe('trackAutoassignOutcomes', () => {
 		reasonNotAiGateway: 'notAvailable',
 	};
 
-	it("emits 'Node credential assigned' with source mcp and kind n8n_connect for a gateway slot", () => {
+	it("emits 'Node credential assigned' with source mcp and kind MNI_connect for a gateway slot", () => {
 		const telemetry = makeTelemetry();
 
 		trackAutoassignOutcomes(
@@ -966,7 +966,7 @@ describe('trackAutoassignOutcomes', () => {
 			credential_type: 'slackApi',
 			node_type: 'Slack',
 			workflow_id: 'wf-1',
-			credential_kind: 'n8n_connect',
+			credential_kind: 'MNI_connect',
 			source: 'mcp',
 		});
 	});
@@ -999,7 +999,7 @@ describe('trackAutoassignOutcomes', () => {
 
 	it('resolves node_type from the map and defaults workflow_id to empty when omitted', () => {
 		const telemetry = makeTelemetry();
-		const nodesByName = new Map([['Slack', 'n8n-nodes-base.slack']]);
+		const nodesByName = new Map([['Slack', 'MNI-nodes-base.slack']]);
 
 		trackAutoassignOutcomes(
 			telemetry,
@@ -1011,7 +1011,7 @@ describe('trackAutoassignOutcomes', () => {
 
 		expect(telemetry.track).toHaveBeenCalledWith(
 			'Node credential assigned',
-			expect.objectContaining({ node_type: 'n8n-nodes-base.slack', workflow_id: '' }),
+			expect.objectContaining({ node_type: 'MNI-nodes-base.slack', workflow_id: '' }),
 		);
 	});
 

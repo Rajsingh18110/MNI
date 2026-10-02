@@ -7,9 +7,9 @@ import type {
 	EvaluationCollectionRecord,
 	GenerateInsightsPayload,
 	UpdateEvaluationCollectionPayload,
-} from '@n8n/api-types';
-import type { IRestApiContext } from '@n8n/rest-api-client';
-import { makeRestApiRequest } from '@n8n/rest-api-client';
+} from '@MNI/api-types';
+import type { IRestApiContext } from '@MNI/rest-api-client';
+import { makeRestApiRequest } from '@MNI/rest-api-client';
 
 // REST path helper, kept inline so callers can't build a URL that drifts from
 // the backend routes in the evaluation-collections / eval-insights controllers.

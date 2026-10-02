@@ -1,7 +1,7 @@
-import { TELEMETRY_EVENT } from '@n8n/telemetry';
-import type { InferTelemetryProps, TelemetryEventDef } from '@n8n/telemetry';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
-import { useRootStore } from '@n8n/stores/useRootStore';
+import { TELEMETRY_EVENT } from '@MNI/telemetry';
+import type { InferTelemetryProps, TelemetryEventDef } from '@MNI/telemetry';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
+import { useRootStore } from '@MNI/stores/useRootStore';
 import type { AgentConfigFingerprint, AgentTelemetryStatus } from './agentTelemetry.utils';
 
 export type AgentCreateSource = 'button' | 'dropdown' | 'card';

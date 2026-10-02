@@ -1,4 +1,4 @@
-import { NodeApiError, NodeOperationError } from 'n8n-workflow';
+import { NodeApiError, NodeOperationError } from 'MNI-workflow';
 
 import { execute } from '../../../actions/attachment/delete.operation';
 import { confluenceApiRequest } from '../../../transport';

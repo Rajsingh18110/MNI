@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import type { AgentBackgroundJobSignal } from '@n8n/api-types';
-import { N8nAiActivityStep, N8nIcon, N8nText } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+import type { AgentBackgroundJobSignal } from '@MNI/api-types';
+import { N8nAiActivityStep, N8nIcon, N8nText } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 import { BACKGROUND_JOB_STATUS_LABEL_KEYS } from '../utils/background-job-labels';
 
 const props = defineProps<{ signal: AgentBackgroundJobSignal }>();
@@ -34,7 +34,7 @@ const i18n = useI18n();
 </template>
 
 <style module lang="scss">
-@use '@n8n/design-system/css/mixins/motion';
+@use '@MNI/design-system/css/mixins/motion';
 
 .jobs {
 	list-style: none;

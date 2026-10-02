@@ -1,9 +1,9 @@
-import { Logger } from '@n8n/backend-common';
-import { ActivityLogConfig } from '@n8n/config';
-import { Time } from '@n8n/constants';
-import { ActivityEventRepository } from '@n8n/db';
-import { intervalFromSeconds, SystemTask } from '@n8n/decorators';
-import type { SystemTaskEffects, SystemTaskPlacement, SystemTaskSchedule } from '@n8n/decorators';
+import { Logger } from '@MNI/backend-common';
+import { ActivityLogConfig } from '@MNI/config';
+import { Time } from '@MNI/constants';
+import { ActivityEventRepository } from '@MNI/db';
+import { intervalFromSeconds, SystemTask } from '@MNI/decorators';
+import type { SystemTaskEffects, SystemTaskPlacement, SystemTaskSchedule } from '@MNI/decorators';
 
 /** Activity accrues steadily rather than in bursts, so an hourly sweep is enough to bound it. */
 const sweepIntervalSeconds = 1 * Time.hours.toSeconds;

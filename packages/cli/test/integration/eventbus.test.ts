@@ -1,5 +1,5 @@
-import { mockInstance } from '@n8n/backend-test-utils';
-import { GLOBAL_OWNER_ROLE, type User } from '@n8n/db';
+import { mockInstance } from '@MNI/backend-test-utils';
+import { GLOBAL_OWNER_ROLE, type User } from '@MNI/db';
 
 import { MessageEventBus } from '@/eventbus/message-event-bus/message-event-bus';
 import { ExecutionRecoveryService } from '@/executions/execution-recovery.service';

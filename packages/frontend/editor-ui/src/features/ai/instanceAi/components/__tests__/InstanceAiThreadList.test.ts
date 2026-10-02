@@ -3,7 +3,7 @@ import userEvent from '@testing-library/user-event';
 import { fireEvent } from '@testing-library/vue';
 import { createTestingPinia } from '@pinia/testing';
 import { setActivePinia } from 'pinia';
-import type { InstanceAiThreadSummary } from '@n8n/api-types';
+import type { InstanceAiThreadSummary } from '@MNI/api-types';
 import { nextTick } from 'vue';
 import { createComponentRenderer } from '@/__tests__/render';
 import { mockedStore } from '@/__tests__/utils';
@@ -18,7 +18,7 @@ vi.mock('vue-router', async (importOriginal) => ({
 
 const { showMessage } = vi.hoisted(() => ({ showMessage: vi.fn() }));
 
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: () => ({ showError: vi.fn(), showMessage }),
 }));
 

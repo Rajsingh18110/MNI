@@ -1,5 +1,5 @@
-import type { McpScope } from '@n8n/api-types';
-import { MCP_INSTANCE_SCOPES } from '@n8n/api-types';
+import type { McpScope } from '@MNI/api-types';
+import { MCP_INSTANCE_SCOPES } from '@MNI/api-types';
 
 import {
 	MCP_GET_USER_PREFERENCES_TOOL_NAME,
@@ -86,7 +86,7 @@ export const TOOLS_BY_SCOPE: Record<McpScope, readonly string[]> = {
 	'agent:execute': ['call_agent'],
 	// explore_node_resources queries external services with stored credentials,
 	// so it must sit behind the credential scope rather than a workflow one.
-	'credential:read': ['list_credentials', 'list_n8n_gateway_services', 'explore_node_resources'],
+	'credential:read': ['list_credentials', 'list_MNI_gateway_services', 'explore_node_resources'],
 	'dataTable:read': ['search_data_tables', 'get_data_table_rows'],
 	// Writing requires finding tables, so search rides along.
 	'dataTable:write': [
@@ -137,7 +137,7 @@ export const FOLDER_FEATURE_TOOLS: ReadonlySet<string> = new Set([
 
 /**
  * Tools only registered when the workflow builder is enabled
- * (`N8N_MCP_BUILDER_ENABLED`). Keep in sync with `registerBuilderTools` in
+ * (`MNI_MCP_BUILDER_ENABLED`). Keep in sync with `registerBuilderTools` in
  * `mcp.service.ts` — covered by the same drift-guard test as TOOLS_BY_SCOPE.
  */
 export const BUILDER_TOOLS: ReadonlySet<string> = new Set([

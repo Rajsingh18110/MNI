@@ -1,7 +1,7 @@
-import type { AiPreferenceDto, AiPreferenceScope, AiPreferenceSource } from '@n8n/api-types';
-import type { Logger } from '@n8n/backend-common';
-import type { User } from '@n8n/db';
-import { TELEMETRY_EVENT } from '@n8n/telemetry';
+import type { AiPreferenceDto, AiPreferenceScope, AiPreferenceSource } from '@MNI/api-types';
+import type { Logger } from '@MNI/backend-common';
+import type { User } from '@MNI/db';
+import { TELEMETRY_EVENT } from '@MNI/telemetry';
 
 import { ResponseError } from '@/errors/response-errors/abstract/response.error';
 import { AiPreferenceScopeFullError } from '@/errors/response-errors/ai-preference-scope-full.error';

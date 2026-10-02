@@ -47,7 +47,7 @@ describe('ChatSidebar', () => {
 					BottomMenu: {
 						emits: ['select'],
 						template:
-							'<button data-test-id="select-credits" @click="$emit(\'select\', \'settings-n8n-connect\')" />',
+							'<button data-test-id="select-credits" @click="$emit(\'select\', \'settings-MNI-connect\')" />',
 					},
 				},
 			},
@@ -56,6 +56,6 @@ describe('ChatSidebar', () => {
 		const { getByTestId } = renderComponent();
 		getByTestId('select-credits').click();
 
-		expect(handleSettingsItemSelectMock).toHaveBeenCalledWith('settings-n8n-connect');
+		expect(handleSettingsItemSelectMock).toHaveBeenCalledWith('settings-MNI-connect');
 	});
 });

@@ -1,13 +1,13 @@
-import type { ModuleRegistry } from '@n8n/backend-common';
-import { User } from '@n8n/db';
-import * as permissions from '@n8n/permissions';
+import type { ModuleRegistry } from '@MNI/backend-common';
+import { User } from '@MNI/db';
+import * as permissions from '@MNI/permissions';
 import { mock } from 'vitest-mock-extended';
 
 import type { CommunityPackagesConfig } from '@/modules/community-packages/community-packages.config';
 
 import { isCommunityNodeInstallAvailable } from '../mcp-tool-availability';
 
-vi.mock('@n8n/permissions', async (importOriginal) => ({
+vi.mock('@MNI/permissions', async (importOriginal) => ({
 	...(await importOriginal<typeof permissions>()),
 	hasGlobalScope: vi.fn(),
 }));

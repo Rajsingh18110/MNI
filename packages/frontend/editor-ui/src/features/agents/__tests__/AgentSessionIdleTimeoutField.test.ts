@@ -7,11 +7,11 @@ import AgentSessionIdleTimeoutField from '../components/AgentSessionIdleTimeoutF
 /** The component's own fallback when the timeout is switched on: one day. */
 const DEFAULT_MINUTES = 60 * 24;
 
-vi.mock('@n8n/i18n', () => ({
+vi.mock('@MNI/i18n', () => ({
 	useI18n: () => ({ baseText: (key: string) => key }),
 }));
 
-vi.mock('@n8n/design-system', async () => {
+vi.mock('@MNI/design-system', async () => {
 	const { defineComponent } = await import('vue');
 
 	// Both stand-ins render a single root element and set no data-testid of

@@ -1,4 +1,4 @@
-import type { NpsSurveyState } from 'n8n-workflow';
+import type { NpsSurveyState } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import { UserSettingsController } from '@/controllers/user-settings.controller';

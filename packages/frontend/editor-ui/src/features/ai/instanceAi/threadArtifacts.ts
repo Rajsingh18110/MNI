@@ -1,4 +1,4 @@
-import type { InstanceAiThreadArtifact, InstanceAiThreadArtifactsContext } from '@n8n/api-types';
+import type { InstanceAiThreadArtifact, InstanceAiThreadArtifactsContext } from '@MNI/api-types';
 
 import type { ResourceEntry } from './useResourceRegistry';
 

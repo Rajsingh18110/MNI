@@ -3,16 +3,16 @@ import type { ComponentPublicInstance } from 'vue';
 import { computed, ref, onMounted, onUnmounted, watch } from 'vue';
 import { useWorkflowsStore } from '@/app/stores/workflows.store';
 import { useWorkflowsListStore } from '@/app/stores/workflowsList.store';
-import type { EventBus } from '@n8n/utils/event-bus';
-import { createEventBus } from '@n8n/utils/event-bus';
-import { isPlaceholderValue } from '@n8n/utils/placeholder';
+import type { EventBus } from '@MNI/utils/event-bus';
+import { createEventBus } from '@MNI/utils/event-bus';
+import { isPlaceholderValue } from '@MNI/utils/placeholder';
 import type {
 	INodeParameterResourceLocator,
 	INodeProperties,
 	NodeParameterValue,
 	ResourceLocatorModes,
-} from 'n8n-workflow';
-import { useI18n } from '@n8n/i18n';
+} from 'MNI-workflow';
+import { useI18n } from '@MNI/i18n';
 import DraggableTarget from '@/app/components/DraggableTarget.vue';
 import ExpressionParameterInput from '../ExpressionParameterInput.vue';
 import ResourceLocatorDropdown from '../ResourceLocator/ResourceLocatorDropdown.vue';
@@ -23,15 +23,15 @@ import { useResourceLocatorDropdown } from '../../composables/useResourceLocator
 import { useResourceLocatorModes } from '../../composables/useResourceLocatorModes';
 import { useWorkflowResourcesLocator } from '../../composables/useWorkflowResourcesLocator';
 import { useProjectsStore } from '@/features/collaboration/projects/projects.store';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
 import { VIEWS } from '@/app/constants';
 import {
 	SAMPLE_SUBWORKFLOW_TRIGGER_ID,
 	SAMPLE_SUBWORKFLOW_WORKFLOW,
 } from '@/app/constants/samples';
-import type { WorkflowDataCreate } from '@n8n/rest-api-client/api/workflows';
+import type { WorkflowDataCreate } from '@MNI/rest-api-client/api/workflows';
 import { useDocumentVisibility } from '@/app/composables/useDocumentVisibility';
-import { useToast } from '@n8n/composables/useToast';
+import { useToast } from '@MNI/composables/useToast';
 
 import {
 	N8nIcon,
@@ -41,7 +41,7 @@ import {
 	N8nSelect,
 	N8nText,
 	N8nTooltip,
-} from '@n8n/design-system';
+} from '@MNI/design-system';
 export interface Props {
 	modelValue: INodeParameterResourceLocator;
 	eventBus?: EventBus;

@@ -1,4 +1,4 @@
-import type { ContextEstablishmentResult } from '@n8n/decorators';
+import type { ContextEstablishmentResult } from '@MNI/decorators';
 import type { Mocked } from 'vitest';
 
 import { BearerTokenExtractor } from '../bearer-token-extractor';
@@ -32,10 +32,10 @@ describe('BearerTokenExtractor', () => {
 		it('should delegate to HttpHeaderExtractor', () => {
 			mockHttpHeaderExtractor.isApplicableToTriggerNode.mockReturnValue(true);
 
-			const result = bearerTokenExtractor.isApplicableToTriggerNode('n8n-nodes-base.webhook');
+			const result = bearerTokenExtractor.isApplicableToTriggerNode('MNI-nodes-base.webhook');
 
 			expect(mockHttpHeaderExtractor.isApplicableToTriggerNode).toHaveBeenCalledWith(
-				'n8n-nodes-base.webhook',
+				'MNI-nodes-base.webhook',
 			);
 			expect(result).toBe(true);
 		});
@@ -43,7 +43,7 @@ describe('BearerTokenExtractor', () => {
 		it('should return false for non-webhook nodes', () => {
 			mockHttpHeaderExtractor.isApplicableToTriggerNode.mockReturnValue(false);
 
-			const result = bearerTokenExtractor.isApplicableToTriggerNode('n8n-nodes-base.httpRequest');
+			const result = bearerTokenExtractor.isApplicableToTriggerNode('MNI-nodes-base.httpRequest');
 
 			expect(result).toBe(false);
 		});

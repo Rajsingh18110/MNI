@@ -1,5 +1,5 @@
-import type { AgentJsonConfig, AgentJsonWorkflowToolConfig } from '@n8n/api-types';
-import type { WorkflowEntity, WorkflowRepository } from '@n8n/db';
+import type { AgentJsonConfig, AgentJsonWorkflowToolConfig } from '@MNI/api-types';
+import type { WorkflowEntity, WorkflowRepository } from '@MNI/db';
 
 import { extractAgentWorkflowRefs } from '../utils/extract-agent-workflow-refs';
 

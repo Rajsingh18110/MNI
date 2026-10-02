@@ -2,7 +2,7 @@ import { createPinia, setActivePinia } from 'pinia';
 import { nextTick } from 'vue';
 
 import { LOCAL_STORAGE_WORKFLOW_REVIEW_INBOX_COLLAPSED_SECTIONS } from '@/app/constants/localStorage';
-import { useUsersStore } from '@n8n/stores/users.store';
+import { useUsersStore } from '@MNI/stores/users.store';
 import { useReviewInboxSectionCollapse } from './useReviewInboxSectionCollapse';
 
 describe('useReviewInboxSectionCollapse', () => {

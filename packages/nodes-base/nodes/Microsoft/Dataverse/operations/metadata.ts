@@ -1,4 +1,4 @@
-import type { IExecuteFunctions } from 'n8n-workflow';
+import type { IExecuteFunctions } from 'MNI-workflow';
 
 import { escapeODataValue } from '../../../../utils/query-escaping';
 import { dataverseApiRequest, type DataverseQuery } from '../GenericFunctions';

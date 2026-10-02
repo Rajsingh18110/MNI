@@ -3,7 +3,7 @@
 	"nodes": [
 		{
 			"parameters": {},
-			"type": "n8n-nodes-base.manualTrigger",
+			"type": "MNI-nodes-base.manualTrigger",
 			"typeVersion": 1,
 			"position": [0, 0],
 			"id": "trigger-001",
@@ -14,7 +14,7 @@
 				"resource": "unityCatalog",
 				"operation": "listCatalogs"
 			},
-			"type": "n8n-nodes-base.databricks",
+			"type": "MNI-nodes-base.databricks",
 			"typeVersion": 1,
 			"position": [220, -300],
 			"id": "uc-list-catalogs-001",
@@ -35,7 +35,7 @@
 					"value": "main"
 				}
 			},
-			"type": "n8n-nodes-base.databricks",
+			"type": "MNI-nodes-base.databricks",
 			"typeVersion": 1,
 			"position": [220, -100],
 			"id": "uc-get-catalog-001",
@@ -57,7 +57,7 @@
 				},
 				"comment": "Test catalog"
 			},
-			"type": "n8n-nodes-base.databricks",
+			"type": "MNI-nodes-base.databricks",
 			"typeVersion": 1,
 			"position": [220, 100],
 			"id": "uc-create-catalog-001",
@@ -79,7 +79,7 @@
 				},
 				"comment": "Updated catalog description"
 			},
-			"type": "n8n-nodes-base.databricks",
+			"type": "MNI-nodes-base.databricks",
 			"typeVersion": 1,
 			"position": [220, 300],
 			"id": "uc-update-catalog-001",
@@ -100,7 +100,7 @@
 					"value": "old-catalog"
 				}
 			},
-			"type": "n8n-nodes-base.databricks",
+			"type": "MNI-nodes-base.databricks",
 			"typeVersion": 1,
 			"position": [220, 500],
 			"id": "uc-delete-catalog-001",

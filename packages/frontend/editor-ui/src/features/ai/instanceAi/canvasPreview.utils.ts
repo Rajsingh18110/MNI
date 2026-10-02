@@ -1,5 +1,5 @@
-import type { InstanceAiAgentNode, InstanceAiToolCallState } from '@n8n/api-types';
-import { isRecord } from '@n8n/utils/is-record';
+import type { InstanceAiAgentNode, InstanceAiToolCallState } from '@MNI/api-types';
+import { isRecord } from '@MNI/utils/is-record';
 
 export interface ExecutionResult {
 	executionId: string;

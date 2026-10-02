@@ -1,5 +1,5 @@
-import { compareExecutionListItems } from '@n8n/api-types';
-import type { ExecutionSummary } from 'n8n-workflow';
+import { compareExecutionListItems } from '@MNI/api-types';
+import type { ExecutionSummary } from 'MNI-workflow';
 
 import { encodeExecutionCursor, type ExecutionCursor } from './execution-cursor';
 import { isExecutionIdV2 } from './execution-id';

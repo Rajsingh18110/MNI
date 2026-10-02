@@ -1,6 +1,6 @@
-import { Logger } from '@n8n/backend-common';
-import { WorkflowsConfig } from '@n8n/config';
-import { Service } from '@n8n/di';
+import { Logger } from '@MNI/backend-common';
+import { WorkflowsConfig } from '@MNI/config';
+import { Service } from '@MNI/di';
 
 import { AgentRuntimeCacheService } from './agent-runtime-cache.service';
 import { AgentCredentialDependencyRepository } from './repositories/agent-credential-dependency.repository';

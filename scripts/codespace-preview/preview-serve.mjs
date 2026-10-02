@@ -19,7 +19,7 @@ import { phaseMarkerLine } from './preview-phases.mjs';
 import { fetchRemoteEnv } from './preview-remote-env.mjs';
 import { serveHealthPath, servePort, waitForHealth, waitForReady } from './serve-ready.mjs';
 
-const SESSION = 'n8n-preview';
+const SESSION = 'MNI-preview';
 const BUILD_LOG = '/tmp/preview-build.log';
 const BE_LOG = '/tmp/preview-be.log';
 // The preview box has 2 cores and 8gb. Cap both, for the reason spelled out in
@@ -74,7 +74,7 @@ try {
 }
 
 // One-click sign-in, so a reviewer lands in the editor rather than a login form.
-// N8N_ADDITIONAL_NON_UI_ROUTES is required: `n8n.ready` runs after the SPA catch-all
+// MNI_ADDITIONAL_NON_UI_ROUTES is required: `n8n.ready` runs after the SPA catch-all
 // is registered, so without it historyApiHandler answers /preview-signin with
 // index.html. dev:be runs turbo with --env-mode=loose, which passes these through.
 //
@@ -84,8 +84,8 @@ try {
 const SIGNIN_ROUTE = 'preview-signin';
 const signinEnv = [
 	`EXTERNAL_HOOK_FILES=${repoRoot}/.devcontainer/preview/preview-signin-hook.cjs`,
-	`N8N_ADDITIONAL_NON_UI_ROUTES=${SIGNIN_ROUTE}`,
-	'N8N_PREVIEW_SIGNIN=1',
+	`MNI_ADDITIONAL_NON_UI_ROUTES=${SIGNIN_ROUTE}`,
+	'MNI_PREVIEW_SIGNIN=1',
 	`PREVIEW_OWNER_EMAIL=${OWNER_EMAIL}`,
 	`PREVIEW_OWNER_PASSWORD=${OWNER_PASSWORD}`,
 ].flatMap((pair) => ['-e', pair]);

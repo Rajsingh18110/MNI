@@ -1,18 +1,18 @@
 <script setup lang="ts">
 import { onMounted } from 'vue';
-import { createEventBus } from '@n8n/utils/event-bus';
+import { createEventBus } from '@MNI/utils/event-bus';
 import Modal from './Modal.vue';
 import { ABOUT_MODAL_KEY } from '../constants';
-import { useRootStore } from '@n8n/stores/useRootStore';
-import { useToast } from '@n8n/composables/useToast';
-import { useClipboard } from '@n8n/composables/useClipboard';
+import { useRootStore } from '@MNI/stores/useRootStore';
+import { useToast } from '@MNI/composables/useToast';
+import { useClipboard } from '@MNI/composables/useClipboard';
 import { useDebugInfo } from '@/app/composables/useDebugInfo';
-import { useInstanceRegistryStore } from '@n8n/frontend-module-instance-registry';
-import { useI18n } from '@n8n/i18n';
-import { getThirdPartyLicenses } from '@n8n/rest-api-client';
+import { useInstanceRegistryStore } from '@MNI/frontend-module-instance-registry';
+import { useI18n } from '@MNI/i18n';
+import { getThirdPartyLicenses } from '@MNI/rest-api-client';
 
 import { ElCol, ElRow } from 'element-plus';
-import { N8nButton, N8nLink, N8nText } from '@n8n/design-system';
+import { N8nButton, N8nLink, N8nText } from '@MNI/design-system';
 const modalBus = createEventBus();
 const toast = useToast();
 const i18n = useI18n();
@@ -80,7 +80,7 @@ const copyDebugInfoToClipboard = async () => {
 						<N8nText>{{ i18n.baseText('about.sourceCode') }}</N8nText>
 					</ElCol>
 					<ElCol :span="16">
-						<N8nLink to="https://github.com/n8n-io/n8n">https://github.com/n8n-io/n8n</N8nLink>
+						<N8nLink to="https://github.com/MNI-io/MNI">https://github.com/MNI-io/MNI</N8nLink>
 					</ElCol>
 				</ElRow>
 				<ElRow>
@@ -88,7 +88,7 @@ const copyDebugInfoToClipboard = async () => {
 						<N8nText>{{ i18n.baseText('about.license') }}</N8nText>
 					</ElCol>
 					<ElCol :span="16">
-						<N8nLink to="https://github.com/n8n-io/n8n/blob/master/LICENSE.md">
+						<N8nLink to="https://github.com/MNI-io/MNI/blob/master/LICENSE.md">
 							{{ i18n.baseText('about.n8nLicense') }}
 						</N8nLink>
 					</ElCol>

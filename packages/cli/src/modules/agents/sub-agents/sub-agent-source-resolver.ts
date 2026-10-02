@@ -3,9 +3,9 @@ import {
 	type AgentJsonConfig,
 	type ResolvedSubAgentSource,
 	type SubAgentSource,
-} from '@n8n/api-types';
-import { Service } from '@n8n/di';
-import { UserError } from 'n8n-workflow';
+} from '@MNI/api-types';
+import { Service } from '@MNI/di';
+import { UserError } from 'MNI-workflow';
 
 import { NotFoundError } from '@/errors/response-errors/not-found.error';
 

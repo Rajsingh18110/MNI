@@ -1,7 +1,7 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { setActivePinia, createPinia } from 'pinia';
 import { useResourceCenterStore } from '../resourceCenter.store';
-import { TELEMETRY_EVENT } from '@n8n/telemetry';
+import { TELEMETRY_EVENT } from '@MNI/telemetry';
 
 const mocks = vi.hoisted(() => ({
 	track: vi.fn(),
@@ -26,7 +26,7 @@ const storage = vi.hoisted(() => {
 	};
 });
 
-vi.mock('@n8n/composables/useTelemetry', () => ({
+vi.mock('@MNI/composables/useTelemetry', () => ({
 	useTelemetry: () => ({ track: mocks.track }),
 }));
 

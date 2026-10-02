@@ -1,5 +1,5 @@
-import type { Logger } from '@n8n/backend-common';
-import { Container } from '@n8n/di';
+import type { Logger } from '@MNI/backend-common';
+import { Container } from '@MNI/di';
 import {
 	createEmptyRunExecutionData,
 	createRunExecutionData,
@@ -11,7 +11,7 @@ import {
 	type RelatedExecution,
 	type Workflow,
 	type WorkflowExecuteMode,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import type { Cipher } from '@/encryption';
@@ -34,7 +34,7 @@ describe('establishExecutionContext', () => {
 
 	describe('successful context establishment', () => {
 		it('should establish context with version 1 and timestamp', async () => {
-			const startNode = mock<INode>({ name: 'Start', type: 'n8n-nodes-base.manualTrigger' });
+			const startNode = mock<INode>({ name: 'Start', type: 'MNI-nodes-base.manualTrigger' });
 			const runExecutionData = createRunExecutionData({
 				startData: {},
 				resultData: {
@@ -72,7 +72,7 @@ describe('establishExecutionContext', () => {
 		});
 
 		it('should mutate the provided runExecutionData object', async () => {
-			const startNode = mock<INode>({ name: 'Start', type: 'n8n-nodes-base.manualTrigger' });
+			const startNode = mock<INode>({ name: 'Start', type: 'MNI-nodes-base.manualTrigger' });
 			const runExecutionData = createRunExecutionData({
 				startData: {},
 				resultData: {
@@ -105,8 +105,8 @@ describe('establishExecutionContext', () => {
 		});
 
 		it('should establish context when execution stack has multiple nodes', async () => {
-			const startNode = mock<INode>({ name: 'Start', type: 'n8n-nodes-base.manualTrigger' });
-			const secondNode = mock<INode>({ name: 'Second', type: 'n8n-nodes-base.set' });
+			const startNode = mock<INode>({ name: 'Start', type: 'MNI-nodes-base.manualTrigger' });
+			const secondNode = mock<INode>({ name: 'Second', type: 'MNI-nodes-base.set' });
 			const runExecutionData = createRunExecutionData({
 				startData: {},
 				resultData: {
@@ -224,7 +224,7 @@ describe('establishExecutionContext', () => {
 
 	describe('context structure validation', () => {
 		it('should create context with correct structure', async () => {
-			const startNode = mock<INode>({ name: 'Webhook', type: 'n8n-nodes-base.webhook' });
+			const startNode = mock<INode>({ name: 'Webhook', type: 'MNI-nodes-base.webhook' });
 			const runExecutionData = createRunExecutionData({
 				startData: {},
 				resultData: {
@@ -259,7 +259,7 @@ describe('establishExecutionContext', () => {
 		});
 
 		it('should create unique timestamps for different executions', async () => {
-			const startNode = mock<INode>({ name: 'Start', type: 'n8n-nodes-base.manualTrigger' });
+			const startNode = mock<INode>({ name: 'Start', type: 'MNI-nodes-base.manualTrigger' });
 
 			const runExecutionData1 = createRunExecutionData({
 				startData: {},
@@ -319,7 +319,7 @@ describe('establishExecutionContext', () => {
 		});
 
 		it('should work with different execution modes', async () => {
-			const startNode = mock<INode>({ name: 'Trigger', type: 'n8n-nodes-base.cron' });
+			const startNode = mock<INode>({ name: 'Trigger', type: 'MNI-nodes-base.cron' });
 			const modes: WorkflowExecuteMode[] = ['manual', 'trigger', 'webhook'];
 
 			for (const mode of modes) {
@@ -359,7 +359,7 @@ describe('establishExecutionContext', () => {
 				credentials: 'encrypted-credentials-data',
 			};
 
-			const startNode = mock<INode>({ name: 'Wait', type: 'n8n-nodes-base.wait' });
+			const startNode = mock<INode>({ name: 'Wait', type: 'MNI-nodes-base.wait' });
 			const runExecutionData = createRunExecutionData({
 				startData: {},
 				resultData: {
@@ -475,7 +475,7 @@ describe('establishExecutionContext', () => {
 
 			const webhookNode = mock<INode>({
 				name: 'Webhook',
-				type: 'n8n-nodes-base.webhook',
+				type: 'MNI-nodes-base.webhook',
 				parameters: {},
 			});
 
@@ -545,7 +545,7 @@ describe('establishExecutionContext', () => {
 				executionContext: parentContext,
 			};
 
-			const startNode = mock<INode>({ name: 'Start', type: 'n8n-nodes-base.manualTrigger' });
+			const startNode = mock<INode>({ name: 'Start', type: 'MNI-nodes-base.manualTrigger' });
 			const runExecutionData = createRunExecutionData({
 				startData: {},
 				resultData: {
@@ -604,7 +604,7 @@ describe('establishExecutionContext', () => {
 				// executionContext is undefined
 			};
 
-			const startNode = mock<INode>({ name: 'Start', type: 'n8n-nodes-base.manualTrigger' });
+			const startNode = mock<INode>({ name: 'Start', type: 'MNI-nodes-base.manualTrigger' });
 			const runExecutionData = createRunExecutionData({
 				startData: {},
 				resultData: {
@@ -752,7 +752,7 @@ describe('establishExecutionContext', () => {
 								{
 									node: mock<INode>({
 										name: 'Execute Workflow Trigger',
-										type: 'n8n-nodes-base.executeWorkflowTrigger',
+										type: 'MNI-nodes-base.executeWorkflowTrigger',
 									}),
 									data: { main: [[{ json: { fromParent: true } }]] },
 									source: null,
@@ -846,7 +846,7 @@ describe('establishExecutionContext', () => {
 						{
 							node: mock<INode>({
 								name: 'Error Trigger',
-								type: 'n8n-nodes-base.errorTrigger',
+								type: 'MNI-nodes-base.errorTrigger',
 							}),
 							data: { main: [[{ json: {} }]] },
 							source: null,
@@ -900,7 +900,7 @@ describe('establishExecutionContext', () => {
 
 			const errorTriggerNode = mock<INode>({
 				name: 'ErrorTrigger',
-				type: 'n8n-nodes-base.errorTrigger',
+				type: 'MNI-nodes-base.errorTrigger',
 			});
 			const runExecutionData = createRunExecutionData({
 				startData: {},
@@ -956,7 +956,7 @@ describe('establishExecutionContext', () => {
 		it('should handle error workflow without parent context', async () => {
 			const errorTriggerNode = mock<INode>({
 				name: 'ErrorTrigger',
-				type: 'n8n-nodes-base.errorTrigger',
+				type: 'MNI-nodes-base.errorTrigger',
 			});
 			const runExecutionData = createRunExecutionData({
 				startData: {},
@@ -1004,7 +1004,7 @@ describe('establishExecutionContext', () => {
 
 			const errorTriggerNode = mock<INode>({
 				name: 'ErrorTrigger',
-				type: 'n8n-nodes-base.errorTrigger',
+				type: 'MNI-nodes-base.errorTrigger',
 			});
 			const runExecutionData = createRunExecutionData({
 				startData: {},
@@ -1068,7 +1068,7 @@ describe('establishExecutionContext', () => {
 				credentials: 'metadata-credentials',
 			};
 
-			const startNode = mock<INode>({ name: 'Start', type: 'n8n-nodes-base.manualTrigger' });
+			const startNode = mock<INode>({ name: 'Start', type: 'MNI-nodes-base.manualTrigger' });
 			const runExecutionData = createRunExecutionData({
 				startData: {},
 				resultData: {
@@ -1268,7 +1268,7 @@ describe('establishExecutionContext', () => {
 					contextData: {},
 					nodeExecutionStack: [
 						{
-							node: mock<INode>({ name: 'Manual', type: 'n8n-nodes-base.manualTrigger' }),
+							node: mock<INode>({ name: 'Manual', type: 'MNI-nodes-base.manualTrigger' }),
 							data: { main: [[{ json: {} }]] },
 							source: null,
 						},

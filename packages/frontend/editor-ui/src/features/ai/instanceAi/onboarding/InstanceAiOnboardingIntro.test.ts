@@ -4,7 +4,7 @@ import { createComponentRenderer } from '@/__tests__/render';
 
 import InstanceAiOnboardingIntro from './InstanceAiOnboardingIntro.vue';
 
-vi.mock('@n8n/i18n', async (importOriginal) => ({
+vi.mock('@MNI/i18n', async (importOriginal) => ({
 	...(await importOriginal()),
 	useI18n: () => ({ baseText: (key: string) => key }),
 }));

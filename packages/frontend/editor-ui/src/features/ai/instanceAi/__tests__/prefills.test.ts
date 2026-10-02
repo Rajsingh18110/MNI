@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { INSTANCE_AI_THREAD_SOURCE_FALLBACK } from '@n8n/api-types';
-import { TELEMETRY_EVENT } from '@n8n/telemetry';
+import { INSTANCE_AI_THREAD_SOURCE_FALLBACK } from '@MNI/api-types';
+import { TELEMETRY_EVENT } from '@MNI/telemetry';
 import {
 	INSTANCE_AI_PREFILL_TYPE_FALLBACK,
 	INSTANCE_AI_PREFILL_TYPES,
@@ -55,7 +55,7 @@ describe('isMessageAuthorship', () => {
 	);
 });
 
-// `@n8n/api-types` owns the list and the registry builds its enum from it, so
+// `@MNI/api-types` owns the list and the registry builds its enum from it, so
 // these check the wiring rather than guarding drift: that `prefill_type` really
 // is the shared enum (not a loose string), that it admits the read-path
 // fallback, and that it still rejects a value nobody defines.

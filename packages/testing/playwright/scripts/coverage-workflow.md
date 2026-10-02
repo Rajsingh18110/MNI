@@ -18,7 +18,7 @@ First, build the editor-ui with coverage enabled:
 
 ```bash
 # From the project root
-pnpm --filter n8n-editor-ui build:coverage
+pnpm --filter MNI-editor-ui build:coverage
 ```
 
 This will:
@@ -130,10 +130,10 @@ For automated coverage reporting:
   run: pnpm build:docker:coverage
 
 - name: Run Container Coverage Tests
-  run: pnpm --filter n8n-playwright test:container:coverage
+  run: pnpm --filter MNI-playwright test:container:coverage
 
 - name: Generate Coverage Report
-  run: pnpm --filter n8n-playwright coverage:report
+  run: pnpm --filter MNI-playwright coverage:report
 ```
 
 ### Coverage Thresholds

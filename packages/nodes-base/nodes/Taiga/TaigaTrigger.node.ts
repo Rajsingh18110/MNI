@@ -8,7 +8,7 @@ import {
 	type IWebhookFunctions,
 	type IWebhookResponseData,
 	NodeConnectionTypes,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { getAutomaticSecret, taigaApiRequest } from './GenericFunctions';
 import { verifySignature } from './TaigaTriggerHelpers';
@@ -174,7 +174,7 @@ export class TaigaTrigger implements INodeType {
 				const key = getAutomaticSecret(credentials);
 
 				const body: IDataObject = {
-					name: `n8n-webhook:${webhookUrl}`,
+					name: `MNI-webhook:${webhookUrl}`,
 					url: webhookUrl,
 					key,
 					project: projectId,

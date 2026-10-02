@@ -1,4 +1,4 @@
-import type { TestMigrationContext } from '@n8n/backend-test-utils';
+import type { TestMigrationContext } from '@MNI/backend-test-utils';
 
 /**
  * Columns of an index, in the order the index declares them.

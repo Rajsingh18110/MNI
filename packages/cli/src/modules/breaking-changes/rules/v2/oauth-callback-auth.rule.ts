@@ -1,4 +1,4 @@
-import { BreakingChangeRule } from '@n8n/decorators';
+import { BreakingChangeRule } from '@MNI/decorators';
 
 import { NOT_AFFECTED_INSTANCE } from '../../detection-report';
 import type {
@@ -28,7 +28,7 @@ export class OAuthCallbackAuthRule implements IBreakingChangeInstanceRule {
 	async detect(): Promise<InstanceDetectionReport> {
 		// If the env var is set explicitly, then the instance is not affected
 		// because the user has already made a choice
-		if (process.env.N8N_SKIP_AUTH_ON_OAUTH_CALLBACK) {
+		if (process.env.MNI_SKIP_AUTH_ON_OAUTH_CALLBACK) {
 			return NOT_AFFECTED_INSTANCE;
 		}
 
@@ -38,7 +38,7 @@ export class OAuthCallbackAuthRule implements IBreakingChangeInstanceRule {
 				{
 					title: 'OAuth callback authentication now required',
 					description:
-						'OAuth callbacks will now enforce MNI user authentication by default unless N8N_SKIP_AUTH_ON_OAUTH_CALLBACK is explicitly set to true.',
+						'OAuth callbacks will now enforce MNI user authentication by default unless MNI_SKIP_AUTH_ON_OAUTH_CALLBACK is explicitly set to true.',
 					level: 'warning',
 				},
 			],
@@ -46,7 +46,7 @@ export class OAuthCallbackAuthRule implements IBreakingChangeInstanceRule {
 				{
 					action: 'Review OAuth workflows',
 					description:
-						'If you need to skip authentication on OAuth callbacks (e.g., for embed mode), set N8N_SKIP_AUTH_ON_OAUTH_CALLBACK=true',
+						'If you need to skip authentication on OAuth callbacks (e.g., for embed mode), set MNI_SKIP_AUTH_ON_OAUTH_CALLBACK=true',
 				},
 			],
 		};

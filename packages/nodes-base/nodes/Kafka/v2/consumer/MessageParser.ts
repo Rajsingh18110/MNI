@@ -7,8 +7,8 @@ import type {
 	INodeExecutionData,
 	ITriggerFunctions,
 	Logger,
-} from 'n8n-workflow';
-import { jsonParse, OperationalError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { jsonParse, OperationalError } from 'MNI-workflow';
 
 import { sanitizeRegistryError } from '../../utils';
 

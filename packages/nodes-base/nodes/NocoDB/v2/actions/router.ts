@@ -1,4 +1,4 @@
-import { type IExecuteFunctions, type INodeExecutionData } from 'n8n-workflow';
+import { type IExecuteFunctions, type INodeExecutionData } from 'MNI-workflow';
 
 import * as base from './base/base.resource';
 import * as linkrows from './linkrows/linkrows.resource';

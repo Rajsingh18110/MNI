@@ -150,7 +150,7 @@ echo "$MATRIX_SPECS" | janitor filter-shard
 CURRENTS_API_KEY=<key> node packages/testing/playwright/scripts/fetch-currents-metrics.mjs --project=nHHLA5
 ```
 
-This fetches the last 7 days of test durations from Currents, aggregates by spec, and writes to `.github/test-metrics/playwright.json`. The PR-CI project is `nHHLA5` (n8n-ci); the legacy `LRxcNt` project still backs the nightly e2e workflows.
+This fetches the last 7 days of test durations from Currents, aggregates by spec, and writes to `.github/test-metrics/playwright.json`. The PR-CI project is `nHHLA5` (MNI-ci); the legacy `LRxcNt` project still backs the nightly e2e workflows.
 
 **When to refresh:**
 - Weekly (recommended)
@@ -197,7 +197,7 @@ capabilities only to select the Docker images for each shard.
 # Janitor orchestration (generic output)
 pnpm janitor orchestrate --shards=14
 
-# CI adapter (n8n-specific output with Docker images)
+# CI adapter (MNI-specific output with Docker images)
 node scripts/distribute-tests.mjs --matrix 14 --orchestrate
 
 # Get specs for shard 0

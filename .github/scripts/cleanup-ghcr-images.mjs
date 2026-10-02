@@ -15,7 +15,7 @@ import { exec } from 'node:child_process';
 import { promisify } from 'node:util';
 
 const execAsync = promisify(exec);
-const ORG = process.env.GHCR_ORG || 'n8n-io';
+const ORG = process.env.GHCR_ORG || 'MNI-io';
 const REPO = process.env.GHCR_REPO || 'MNI';
 const PACKAGES = [REPO, 'runners'];
 const [mode, rawValue] = process.argv.slice(2);

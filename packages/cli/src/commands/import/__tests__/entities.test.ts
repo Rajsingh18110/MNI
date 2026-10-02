@@ -1,4 +1,4 @@
-import { mockInstance } from '@n8n/backend-test-utils';
+import { mockInstance } from '@MNI/backend-test-utils';
 
 import { ImportService } from '@/services/import.service';
 

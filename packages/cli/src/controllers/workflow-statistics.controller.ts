@@ -1,7 +1,7 @@
-import { Logger } from '@n8n/backend-common';
-import type { WorkflowStatistics } from '@n8n/db';
-import { StatisticsNames, WorkflowStatisticsRepository } from '@n8n/db';
-import { Get, Middleware, RestController } from '@n8n/decorators';
+import { Logger } from '@MNI/backend-common';
+import type { WorkflowStatistics } from '@MNI/db';
+import { StatisticsNames, WorkflowStatisticsRepository } from '@MNI/db';
+import { Get, Middleware, RestController } from '@MNI/decorators';
 import { Response, NextFunction } from 'express';
 
 import { NotFoundError } from '@/errors/response-errors/not-found.error';

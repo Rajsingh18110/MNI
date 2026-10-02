@@ -1,6 +1,6 @@
 /** Compute per-package scope and dispatch to vitest with the right flags. */
 
-import { changedCoverageIncludes } from '@n8n/vitest-config/changed-file-coverage';
+import { changedCoverageIncludes } from '@MNI/vitest-config/changed-file-coverage';
 import { spawnSync } from 'node:child_process';
 import { isAbsolute, resolve } from 'node:path';
 
@@ -20,7 +20,7 @@ export interface TestScopedOptions {
 /**
  * Build the vitest coverage flags for a run with a CHANGED_FILES signal.
  *
- * `@n8n/vitest-config/changed-file-coverage` decides which files count. The
+ * `@MNI/vitest-config/changed-file-coverage` decides which files count. The
  * shared vitest configs apply the same rule. The flags also cover packages
  * whose config does not use the shared helper, because CLI flags win.
  * When the package has no changed source files, coverage is turned off.

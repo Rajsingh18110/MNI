@@ -1,11 +1,11 @@
 <script lang="ts" setup>
 import { ref, computed } from 'vue';
 import { onClickOutside } from '@vueuse/core';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
-import { useI18n } from '@n8n/i18n';
-import { TELEMETRY_EVENT } from '@n8n/telemetry';
-import { N8nButton, N8nIcon, N8nTooltip } from '@n8n/design-system';
-import type { ButtonSize } from '@n8n/design-system';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
+import { useI18n } from '@MNI/i18n';
+import { TELEMETRY_EVENT } from '@MNI/telemetry';
+import { N8nButton, N8nIcon, N8nTooltip } from '@MNI/design-system';
+import type { ButtonSize } from '@MNI/design-system';
 import { round2 } from './creditFormatting';
 
 const props = withDefaults(
@@ -36,7 +36,7 @@ onClickOutside(
 	() => {
 		isOpen.value = false;
 	},
-	{ ignore: ['.n8n-tooltip'] },
+	{ ignore: ['.MNI-tooltip'] },
 );
 
 const hasCredits = computed(() => {

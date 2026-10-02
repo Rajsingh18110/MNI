@@ -1,6 +1,6 @@
-import { GetResourceDependenciesDto, GetResourceDependencyCountsDto } from '@n8n/api-types';
-import { AuthenticatedRequest } from '@n8n/db';
-import { Body, Post, RestController } from '@n8n/decorators';
+import { GetResourceDependenciesDto, GetResourceDependencyCountsDto } from '@MNI/api-types';
+import { AuthenticatedRequest } from '@MNI/db';
+import { Body, Post, RestController } from '@MNI/decorators';
 
 import { WorkflowDependencyQueryService } from './workflow-dependency-query.service';
 

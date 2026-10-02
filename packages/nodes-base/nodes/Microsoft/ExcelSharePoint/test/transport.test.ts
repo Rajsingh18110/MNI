@@ -1,5 +1,5 @@
-import type { IExecuteFunctions, INode } from 'n8n-workflow';
-import { NodeApiError } from 'n8n-workflow';
+import type { IExecuteFunctions, INode } from 'MNI-workflow';
+import { NodeApiError } from 'MNI-workflow';
 import type { Mock, Mocked } from 'vitest';
 import { mockDeep } from 'vitest-mock-extended';
 
@@ -25,7 +25,7 @@ describe('Microsoft Excel (SharePoint) Transport', () => {
 		ctx.getNode.mockReturnValue({
 			id: 'test-node',
 			name: 'Test Node',
-			type: 'n8n-nodes-base.microsoftExcelSharePoint',
+			type: 'MNI-nodes-base.microsoftExcelSharePoint',
 			typeVersion: 1,
 			position: [0, 0],
 			parameters: {},

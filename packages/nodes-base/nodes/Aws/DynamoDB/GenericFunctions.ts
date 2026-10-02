@@ -6,8 +6,8 @@ import type {
 	IHttpRequestOptions,
 	ILoadOptionsFunctions,
 	IWebhookFunctions,
-} from 'n8n-workflow';
-import { OperationalError, UserError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { OperationalError, UserError } from 'MNI-workflow';
 
 import { getAwsCredentials } from '../GenericFunctions';
 import type { IRequestBody } from './types';

@@ -1,13 +1,13 @@
-import type { BreakingChangeWorkflowRuleResult } from '@n8n/api-types';
-import { mockLogger } from '@n8n/backend-test-utils';
-import type { WorkflowRepository, WorkflowStatisticsRepository } from '@n8n/db';
-import type { ErrorReporter } from 'n8n-core';
+import type { BreakingChangeWorkflowRuleResult } from '@MNI/api-types';
+import { mockLogger } from '@MNI/backend-test-utils';
+import type { WorkflowRepository, WorkflowStatisticsRepository } from '@MNI/db';
+import type { ErrorReporter } from 'MNI-core';
 import type { Mocked } from 'vitest';
 import { mock } from 'vitest-mock-extended';
 
 import type { CacheService } from '@/services/cache/cache.service';
 
-import { N8N_VERSION } from '../../../constants';
+import { MNI_VERSION } from '../../../constants';
 import { MigrationRegistry } from '../breaking-changes.migration-registry.service';
 import { RuleRegistry } from '../breaking-changes.rule-registry.service';
 import { BreakingChangeService } from '../breaking-changes.service';
@@ -73,7 +73,7 @@ describe('BreakingChangeService', () => {
 
 			expect(report.report).toMatchObject({
 				targetVersion: 'v2',
-				currentVersion: N8N_VERSION,
+				currentVersion: MNI_VERSION,
 				instanceResults: [],
 				workflowResults: [],
 			});
@@ -83,11 +83,11 @@ describe('BreakingChangeService', () => {
 		it('should aggregate results from multiple rules', async () => {
 			// Create a workflow that triggers all three rules
 			const { workflow } = createWorkflow('wf-1', 'Complex Workflow', [
-				createNode('Spontit Node', 'n8n-nodes-base.spontit'), // Triggers RemovedNodesRule
-				createNode('Code Node', 'n8n-nodes-base.code', {
+				createNode('Spontit Node', 'MNI-nodes-base.spontit'), // Triggers RemovedNodesRule
+				createNode('Code Node', 'MNI-nodes-base.code', {
 					code: 'const key = process.env.KEY;', // Triggers ProcessEnvAccessRule
 				}),
-				createNode('File Node', 'n8n-nodes-base.readWriteFile'), // Triggers FileAccessRule
+				createNode('File Node', 'MNI-nodes-base.readWriteFile'), // Triggers FileAccessRule
 			]);
 
 			workflowRepository.find.mockResolvedValue([workflow as never]);
@@ -97,7 +97,7 @@ describe('BreakingChangeService', () => {
 
 			// Verify report structure
 			expect(report.report.targetVersion).toBe('v2');
-			expect(report.report.currentVersion).toBe(N8N_VERSION);
+			expect(report.report.currentVersion).toBe(MNI_VERSION);
 			expect(report.report.generatedAt).toBeInstanceOf(Date);
 
 			// Verify each rule's result is in the report
@@ -125,7 +125,7 @@ describe('BreakingChangeService', () => {
 
 			expect(report.report).toHaveProperty('generatedAt');
 			expect(report.report).toHaveProperty('targetVersion', 'v2');
-			expect(report.report).toHaveProperty('currentVersion', N8N_VERSION);
+			expect(report.report).toHaveProperty('currentVersion', MNI_VERSION);
 			expect(report.report).toHaveProperty('workflowResults');
 			expect(Array.isArray(report.report.workflowResults)).toBe(true);
 		});
@@ -137,13 +137,13 @@ describe('BreakingChangeService', () => {
 
 			// Create a sub-workflow with ExecuteWorkflowTrigger and Wait node
 			const { workflow: subWorkflow } = createWorkflow('sub-wf-1', 'Sub Workflow', [
-				createNode('Execute Workflow Trigger', 'n8n-nodes-base.executeWorkflowTrigger'),
-				createNode('Wait', 'n8n-nodes-base.wait'),
+				createNode('Execute Workflow Trigger', 'MNI-nodes-base.executeWorkflowTrigger'),
+				createNode('Wait', 'MNI-nodes-base.wait'),
 			]);
 
 			// Create a parent workflow that calls the sub-workflow
 			const { workflow: parentWorkflow } = createWorkflow('parent-wf-1', 'Parent Workflow', [
-				createNode('Execute Workflow', 'n8n-nodes-base.executeWorkflow', {
+				createNode('Execute Workflow', 'MNI-nodes-base.executeWorkflow', {
 					source: 'database',
 					workflowId: 'sub-wf-1',
 				}),
@@ -189,7 +189,7 @@ describe('BreakingChangeService', () => {
 
 		it('should skip a rule that throws for a workflow and keep the other results', async () => {
 			const { workflow } = createWorkflow('wf-1', 'Test Workflow', [
-				createNode('Spontit Node', 'n8n-nodes-base.spontit'),
+				createNode('Spontit Node', 'MNI-nodes-base.spontit'),
 			]);
 			workflowRepository.find.mockResolvedValue([workflow as never]);
 			workflowRepository.count.mockResolvedValue(1);
@@ -244,7 +244,7 @@ describe('BreakingChangeService', () => {
 
 		it('should return correct report for a known workflow-level rule', async () => {
 			const { workflow } = createWorkflow('wf-1', 'Test Workflow', [
-				createNode('Spontit Node', 'n8n-nodes-base.spontit'),
+				createNode('Spontit Node', 'MNI-nodes-base.spontit'),
 			]);
 
 			workflowRepository.find.mockResolvedValue([workflow as never]);

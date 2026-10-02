@@ -1,6 +1,6 @@
 import type { MockProxy } from 'vitest-mock-extended';
 import { mock } from 'vitest-mock-extended';
-import type { ILoadOptionsFunctions } from 'n8n-workflow';
+import type { ILoadOptionsFunctions } from 'MNI-workflow';
 
 import { MicrosoftSharePointV1, versionDescription } from '../../v1/MicrosoftSharePointV1.node';
 import { credentials } from '../credentials';

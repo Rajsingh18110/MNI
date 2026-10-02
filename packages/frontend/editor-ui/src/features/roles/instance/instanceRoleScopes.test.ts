@@ -5,7 +5,7 @@ import {
 	GLOBAL_CHAT_USER_SCOPES,
 	GLOBAL_MEMBER_SCOPES,
 	MANDATORY_INSTANCE_SCOPES,
-} from '@n8n/permissions';
+} from '@MNI/permissions';
 import {
 	INSTANCE_SCOPE_GROUPS,
 	INSTANCE_SCOPE_GROUP_LIST,

@@ -6,13 +6,13 @@ import { useUsageStore } from '../usage.store';
 import SettingsUsageAndPlan from './SettingsUsageAndPlan.vue';
 import { useUIStore } from '@/app/stores/ui.store';
 import { COMMUNITY_PLUS_ENROLLMENT_MODAL } from '../usage.constants';
-import { useUsersStore } from '@n8n/stores/users.store';
-import type { IUser } from '@n8n/rest-api-client/api/users';
-import { useToast } from '@n8n/composables/useToast';
+import { useUsersStore } from '@MNI/stores/users.store';
+import type { IUser } from '@MNI/rest-api-client/api/users';
+import { useToast } from '@MNI/composables/useToast';
 import { waitFor } from '@testing-library/vue';
-import { useRBACStore } from '@n8n/stores/rbac.store';
+import { useRBACStore } from '@MNI/stores/rbac.store';
 
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: vi.fn(),
 }));
 
@@ -104,7 +104,7 @@ describe('SettingsUsageAndPlan', () => {
 		} as IUser;
 		const { getByRole, container } = renderComponent();
 		expect(getByRole('heading', { level: 3 })).toHaveTextContent('Community');
-		expect(container.querySelector('.n8n-badge')).toBeNull();
+		expect(container.querySelector('.MNI-badge')).toBeNull();
 
 		expect(getByRole('button', { name: 'Unlock' })).toBeVisible();
 
@@ -129,7 +129,7 @@ describe('SettingsUsageAndPlan', () => {
 		usageStore.planName = 'Registered Community';
 		const { container } = renderComponent();
 
-		const badge = container.querySelector('.n8n-badge');
+		const badge = container.querySelector('.MNI-badge');
 		// The element that centers the badge against the heading text
 		// (`display: flex; align-items: center`).
 		const centeringContainer = container.querySelector('.titleTooltip');

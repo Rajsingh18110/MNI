@@ -1,5 +1,5 @@
-import { Service } from '@n8n/di';
-import { DataSource, EntityManager, Repository } from '@n8n/typeorm';
+import { Service } from '@MNI/di';
+import { DataSource, EntityManager, Repository } from '@MNI/typeorm';
 
 import { ChatHubAgent } from './chat-hub-agent.entity';
 import { ChatHubSession } from './chat-hub-session.entity';

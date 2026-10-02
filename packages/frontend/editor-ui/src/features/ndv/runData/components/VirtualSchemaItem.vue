@@ -1,16 +1,16 @@
 <script lang="ts" setup>
 import TextWithHighlights from './TextWithHighlights.vue';
-import { type IconName } from '@n8n/design-system';
+import { type IconName } from '@MNI/design-system';
 import { saveAs } from 'file-saver';
 import { useUIStore } from '@/app/stores/ui.store';
 import { useWorkflowsStore } from '@/app/stores/workflows.store';
 import { BINARY_DATA_VIEW_MODAL_KEY } from '@/app/constants';
-import type { BinaryMetadata } from '@n8n/design-system';
-import { useToast } from '@n8n/composables/useToast';
-import { useI18n } from '@n8n/i18n';
+import type { BinaryMetadata } from '@MNI/design-system';
+import { useToast } from '@MNI/composables/useToast';
+import { useI18n } from '@MNI/i18n';
 import { getBinaryDataFileName } from '@/app/utils/fileUtils';
 
-import { N8nIcon, N8nTooltip } from '@n8n/design-system';
+import { N8nIcon, N8nTooltip } from '@MNI/design-system';
 type Props = {
 	title?: string;
 	path?: string;
@@ -103,7 +103,7 @@ const emit = defineEmits<{
 
 		<N8nTooltip v-if="locked" :disabled="!lockedTooltip" :content-class="$style.tooltip">
 			<template #content>
-				<span v-n8n-html="lockedTooltip" />
+				<span v-MNI-html="lockedTooltip" />
 			</template>
 			<N8nIcon class="locked-icon" icon="lock" size="small" />
 		</N8nTooltip>

@@ -1,7 +1,7 @@
-import { useI18n } from '@n8n/i18n';
-import type { BaseTextKey } from '@n8n/i18n';
-import type { IconName } from '@n8n/design-system';
-import type { InstanceAiToolCallState } from '@n8n/api-types';
+import { useI18n } from '@MNI/i18n';
+import type { BaseTextKey } from '@MNI/i18n';
+import type { IconName } from '@MNI/design-system';
+import type { InstanceAiToolCallState } from '@MNI/api-types';
 
 const NO_TOGGLE_TOOLS = new Set(['updateWorkingMemory', 'task-control']);
 const SKILL_TOOLS = new Set([
@@ -11,7 +11,7 @@ const SKILL_TOOLS = new Set([
 	'update_skill',
 	'load_skill',
 ]);
-const N8N_SKILL_DIR_TEMPLATE = '$' + '{N8N_SKILL_DIR}';
+const MNI_SKILL_DIR_TEMPLATE = '$' + '{MNI_SKILL_DIR}';
 type I18n = ReturnType<typeof useI18n>;
 type SkillFileGroup = 'references' | 'scripts' | 'templates' | 'examples' | 'assets';
 
@@ -94,7 +94,7 @@ function getSkillFileLabel(i18n: I18n, filePath: string): string | undefined {
 
 function extractSkillScriptPath(command: string): string | undefined {
 	const envSkillDirMatch = command.match(
-		/\$(?:\{N8N_SKILL_DIR\}|N8N_SKILL_DIR)\/scripts\/([^\s"'`;|&]+)/,
+		/\$(?:\{MNI_SKILL_DIR\}|MNI_SKILL_DIR)\/scripts\/([^\s"'`;|&]+)/,
 	);
 	if (envSkillDirMatch?.[1]) return envSkillDirMatch[1];
 
@@ -121,7 +121,7 @@ export function getToolIcon(toolName: string): IconName {
 	if (toolName === 'complete-checkpoint') return 'circle-check';
 	if (toolName.endsWith('-with-agent')) return 'share';
 	if (toolName === 'resolve_integration') return 'share';
-	if (SKILL_TOOLS.has(toolName) || toolName === 'n8n-docs') return 'book-open';
+	if (SKILL_TOOLS.has(toolName) || toolName === 'MNI-docs') return 'book-open';
 	if (toolName === 'data-tables') return 'table';
 	if (toolName === 'activity') return 'history';
 	if (toolName === 'conversation-history') return 'message-square';
@@ -186,8 +186,8 @@ export function useToolLabel() {
 		if (
 			toolName === 'workspace_execute_command' &&
 			typeof args?.command === 'string' &&
-			(args.command.includes(N8N_SKILL_DIR_TEMPLATE) ||
-				args.command.includes('$N8N_SKILL_DIR') ||
+			(args.command.includes(MNI_SKILL_DIR_TEMPLATE) ||
+				args.command.includes('$MNI_SKILL_DIR') ||
 				args.command.includes('/skills/'))
 		) {
 			const scriptPath = extractSkillScriptPath(args.command);

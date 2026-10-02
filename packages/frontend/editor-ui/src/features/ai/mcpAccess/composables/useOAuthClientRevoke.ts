@@ -1,8 +1,8 @@
 import { ref } from 'vue';
-import type { OAuthClientResponseDto } from '@n8n/api-types';
-import { useI18n } from '@n8n/i18n';
-import { useToast } from '@n8n/composables/useToast';
-import { useUsersStore } from '@n8n/stores/users.store';
+import type { OAuthClientResponseDto } from '@MNI/api-types';
+import { useI18n } from '@MNI/i18n';
+import { useToast } from '@MNI/composables/useToast';
+import { useUsersStore } from '@MNI/stores/users.store';
 
 import { useMcp } from '@/features/ai/mcpAccess/composables/useMcp';
 import { useMCPStore } from '@/features/ai/mcpAccess/mcp.store';

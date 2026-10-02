@@ -1,8 +1,8 @@
-import type { Logger } from '@n8n/backend-common';
-import type { User } from '@n8n/db';
-import type { SuspendedRunState } from '@n8n/instance-ai';
+import type { Logger } from '@MNI/backend-common';
+import type { User } from '@MNI/db';
+import type { SuspendedRunState } from '@MNI/instance-ai';
 import { mock, type MockProxy } from 'vitest-mock-extended';
-import { UserError } from 'n8n-workflow';
+import { UserError } from 'MNI-workflow';
 
 import type { InstanceAiPendingConfirmation } from '../entities/instance-ai-pending-confirmation.entity';
 import {

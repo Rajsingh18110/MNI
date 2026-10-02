@@ -1,6 +1,6 @@
-import { Logger } from '@n8n/backend-common';
-import { CredentialResolverEntryMetadata, ICredentialResolver } from '@n8n/decorators';
-import { Container, Service } from '@n8n/di';
+import { Logger } from '@MNI/backend-common';
+import { CredentialResolverEntryMetadata, ICredentialResolver } from '@MNI/decorators';
+import { Container, Service } from '@MNI/di';
 
 /**
  * Registry service for discovering, instantiating, and managing credential resolver implementations.

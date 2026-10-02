@@ -25,8 +25,8 @@ describe('SubpathPurityRule', () => {
 	const SPEC: SubpathSpec = {
 		name: 'pkg/transport',
 		entry: 'src/transport.ts',
-		forbidden: ['@n8n/di', '@n8n/config'],
-		allowedExternals: ['undici', 'n8n-workflow'],
+		forbidden: ['@MNI/di', '@MNI/config'],
+		allowedExternals: ['undici', 'MNI-workflow'],
 	};
 
 	beforeEach(() => {
@@ -46,12 +46,12 @@ describe('SubpathPurityRule', () => {
 
 	it('flags a forbidden package reached transitively through a value import', () => {
 		write('src/transport.ts', "export { send } from './client';");
-		write('src/client.ts', "import { Container } from '@n8n/di';\nexport const send = Container;");
+		write('src/client.ts', "import { Container } from '@MNI/di';\nexport const send = Container;");
 
 		const violations = analyze(SPEC);
 
 		expect(violations.map((v) => v.message)).toContainEqual(
-			expect.stringContaining('forbidden runtime dependency "@n8n/di"'),
+			expect.stringContaining('forbidden runtime dependency "@MNI/di"'),
 		);
 		// Points at the file that actually imports it, not the entry.
 		expect(violations[0].file).toBe(path.join(rootDir, 'src/client.ts'));
@@ -59,27 +59,27 @@ describe('SubpathPurityRule', () => {
 
 	it('reports a forbidden package once, not also as an unexpected external', () => {
 		write('src/transport.ts', "export { send } from './client';");
-		write('src/client.ts', "import { Container } from '@n8n/di';\nexport const send = Container;");
+		write('src/client.ts', "import { Container } from '@MNI/di';\nexport const send = Container;");
 
 		const messages = analyze(SPEC).map((v) => v.message);
 
-		expect(messages).toEqual([expect.stringContaining('forbidden runtime dependency "@n8n/di"')]);
+		expect(messages).toEqual([expect.stringContaining('forbidden runtime dependency "@MNI/di"')]);
 		expect(messages).not.toContainEqual(expect.stringContaining('unexpected runtime dependency'));
 	});
 
 	it('ignores a forbidden package imported only as a type', () => {
-		write('src/transport.ts', "import type { Container } from '@n8n/di';\nexport const x = 1;");
+		write('src/transport.ts', "import type { Container } from '@MNI/di';\nexport const x = 1;");
 
 		expect(analyze(SPEC)).toEqual([]);
 	});
 
 	it('catches a forbidden package behind a dynamic import', () => {
-		write('src/transport.ts', "export async function load() { return import('@n8n/config'); }");
+		write('src/transport.ts', "export async function load() { return import('@MNI/config'); }");
 
 		const violations = analyze(SPEC);
 
 		expect(violations.map((v) => v.message)).toContainEqual(
-			expect.stringContaining('forbidden runtime dependency "@n8n/config"'),
+			expect.stringContaining('forbidden runtime dependency "@MNI/config"'),
 		);
 	});
 

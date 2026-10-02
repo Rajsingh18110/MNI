@@ -1,4 +1,4 @@
-import { SECURITY_AUDIT_CATEGORIES } from '@n8n/api-types';
+import { SECURITY_AUDIT_CATEGORIES } from '@MNI/api-types';
 
 /**
  * Risk categories
@@ -11,45 +11,45 @@ export const RISK_CATEGORIES = [...SECURITY_AUDIT_CATEGORIES];
  */
 
 export const SQL_NODE_TYPES_WITH_QUERY_PARAMS = new Set([
-	'n8n-nodes-base.postgres',
-	'n8n-nodes-base.crateDb',
-	'n8n-nodes-base.questDb',
-	'n8n-nodes-base.timescaleDb',
+	'MNI-nodes-base.postgres',
+	'MNI-nodes-base.crateDb',
+	'MNI-nodes-base.questDb',
+	'MNI-nodes-base.timescaleDb',
 ]);
 
 export const SQL_NODE_TYPES = new Set([
 	...SQL_NODE_TYPES_WITH_QUERY_PARAMS,
-	'n8n-nodes-base.mySql',
-	'n8n-nodes-base.microsoftSql',
-	'n8n-nodes-base.snowflake',
+	'MNI-nodes-base.mySql',
+	'MNI-nodes-base.microsoftSql',
+	'MNI-nodes-base.snowflake',
 ]);
 
-export const WEBHOOK_NODE_TYPE = 'n8n-nodes-base.webhook';
+export const WEBHOOK_NODE_TYPE = 'MNI-nodes-base.webhook';
 
 export const WEBHOOK_VALIDATOR_NODE_TYPES = new Set([
-	'n8n-nodes-base.if',
-	'n8n-nodes-base.switch',
-	'n8n-nodes-base.code',
-	'n8n-nodes-base.function',
-	'n8n-nodes-base.functionItem',
+	'MNI-nodes-base.if',
+	'MNI-nodes-base.switch',
+	'MNI-nodes-base.code',
+	'MNI-nodes-base.function',
+	'MNI-nodes-base.functionItem',
 ]);
 
 export const FILESYSTEM_INTERACTION_NODE_TYPES = new Set([
-	'n8n-nodes-base.readPdf',
-	'n8n-nodes-base.readBinaryFile',
-	'n8n-nodes-base.readBinaryFiles',
-	'n8n-nodes-base.spreadsheetFile',
-	'n8n-nodes-base.writeBinaryFile',
+	'MNI-nodes-base.readPdf',
+	'MNI-nodes-base.readBinaryFile',
+	'MNI-nodes-base.readBinaryFiles',
+	'MNI-nodes-base.spreadsheetFile',
+	'MNI-nodes-base.writeBinaryFile',
 ]);
 
 export const OFFICIAL_RISKY_NODE_TYPES = new Set([
-	'n8n-nodes-base.executeCommand',
-	'n8n-nodes-base.code',
-	'n8n-nodes-base.function',
-	'n8n-nodes-base.functionItem',
-	'n8n-nodes-base.httpRequest',
-	'n8n-nodes-base.ssh',
-	'n8n-nodes-base.ftp',
+	'MNI-nodes-base.executeCommand',
+	'MNI-nodes-base.code',
+	'MNI-nodes-base.function',
+	'MNI-nodes-base.functionItem',
+	'MNI-nodes-base.httpRequest',
+	'MNI-nodes-base.ssh',
+	'MNI-nodes-base.ftp',
 ]);
 
 /**
@@ -106,7 +106,7 @@ export const INSTANCE_REPORT = {
 export const ENV_VARS_DOCS_URL = 'https://docs.n8n.io/hosting/configuration/environment-variables/';
 
 export const DB_QUERY_PARAMS_DOCS_URL =
-	'https://docs.n8n.io/integrations/builtin/app-nodes/n8n-nodes-base.postgres#use-query-parameters';
+	'https://docs.n8n.io/integrations/builtin/app-nodes/MNI-nodes-base.postgres#use-query-parameters';
 
 export const COMMUNITY_NODES_RISKS_URL = 'https://docs.n8n.io/integrations/community-nodes/risks';
 

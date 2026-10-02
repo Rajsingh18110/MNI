@@ -1,12 +1,12 @@
-import { inTest, LicenseState } from '@n8n/backend-common';
-import { DeploymentKeyRepository } from '@n8n/db';
-import { Command } from '@n8n/decorators';
-import { Container } from '@n8n/di';
-import { BinaryDataConfig } from 'n8n-core';
+import { inTest, LicenseState } from '@MNI/backend-common';
+import { DeploymentKeyRepository } from '@MNI/db';
+import { Command } from '@MNI/decorators';
+import { Container } from '@MNI/di';
+import { BinaryDataConfig } from 'MNI-core';
 import { z } from 'zod';
 
 import { ActiveExecutions } from '@/active-executions';
-import { N8N_VERSION } from '@/constants';
+import { MNI_VERSION } from '@/constants';
 import { CredentialsOverwrites } from '@/credentials-overwrites';
 import { DeprecationService } from '@/deprecation/deprecation.service';
 import { EventMessageGeneric } from '@/eventbus/event-message-classes/event-message-generic';
@@ -39,7 +39,7 @@ export class Worker extends BaseCommand<z.infer<typeof flagsSchema>> {
 	/**
 	 * How many jobs this worker may run concurrently.
 	 *
-	 * Taken from env var `N8N_CONCURRENCY_PRODUCTION_LIMIT` if set to a value
+	 * Taken from env var `MNI_CONCURRENCY_PRODUCTION_LIMIT` if set to a value
 	 * other than -1, else taken from `--concurrency` flag.
 	 */
 	private concurrency: number;
@@ -88,7 +88,7 @@ export class Worker extends BaseCommand<z.infer<typeof flagsSchema>> {
 		const { QUEUE_WORKER_TIMEOUT } = process.env;
 		if (QUEUE_WORKER_TIMEOUT) {
 			// Accept a whole positive number only, the way the config layer parses
-			// `N8N_GRACEFUL_SHUTDOWN_TIMEOUT`, so a malformed value cannot shorten the
+			// `MNI_GRACEFUL_SHUTDOWN_TIMEOUT`, so a malformed value cannot shorten the
 			// shutdown window.
 			const parsed = Number(QUEUE_WORKER_TIMEOUT);
 			const isValid = Number.isInteger(parsed) && parsed > 0;
@@ -104,7 +104,7 @@ export class Worker extends BaseCommand<z.infer<typeof flagsSchema>> {
 			this.gracefulShutdownTimeoutInS = timeout;
 			this.globalConfig.generic.gracefulShutdownTimeout = timeout;
 			this.logger.warn(
-				'QUEUE_WORKER_TIMEOUT has been deprecated. Rename it to N8N_GRACEFUL_SHUTDOWN_TIMEOUT.',
+				'QUEUE_WORKER_TIMEOUT has been deprecated. Rename it to MNI_GRACEFUL_SHUTDOWN_TIMEOUT.',
 			);
 		}
 		await this.initCrashJournal();
@@ -128,7 +128,7 @@ export class Worker extends BaseCommand<z.infer<typeof flagsSchema>> {
 			!Container.get(LicenseState).isWorkerPoolsLicensed()
 		) {
 			this.logger.error(
-				'A worker pool is configured (`N8N_WORKER_POOL_NAME`), but worker pools are not licensed. Either remove the worker pool configuration, or upgrade to a license that supports this feature.',
+				'A worker pool is configured (`MNI_WORKER_POOL_NAME`), but worker pools are not licensed. Either remove the worker pool configuration, or upgrade to a license that supports this feature.',
 			);
 			process.exit(1);
 		}
@@ -240,7 +240,7 @@ export class Worker extends BaseCommand<z.infer<typeof flagsSchema>> {
 		const queueName = resolveQueueName('worker', poolName);
 
 		this.logger.info('\nn8n worker is now ready');
-		this.logger.info(` * Version: ${N8N_VERSION}`);
+		this.logger.info(` * Version: ${MNI_VERSION}`);
 		this.logger.info(` * Concurrency: ${this.concurrency}`);
 		this.logger.info(` * Pool: ${poolName === '' ? '(default)' : poolName}`);
 		this.logger.info(` * Queue: ${queueName}`);

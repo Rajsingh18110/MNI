@@ -1,9 +1,9 @@
 // Fixtures and expected values below mirror Dataverse API responses (lowercase
 // logical names, `{ name, value }` option shapes) — not node display-name params.
-/* eslint-disable n8n-nodes-base/node-param-display-name-miscased */
+/* eslint-disable MNI-nodes-base/node-param-display-name-miscased */
 
-import type { ILoadOptionsFunctions, INode, JsonObject } from 'n8n-workflow';
-import { NodeApiError } from 'n8n-workflow';
+import type { ILoadOptionsFunctions, INode, JsonObject } from 'MNI-workflow';
+import { NodeApiError } from 'MNI-workflow';
 import { mockDeep } from 'vitest-mock-extended';
 
 import {
@@ -19,7 +19,7 @@ const BASE_URL = 'https://org.crm.dynamics.com';
 const node: INode = {
 	id: 'test-node',
 	name: 'Microsoft Dataverse',
-	type: 'n8n-nodes-base.microsoftDataverse',
+	type: 'MNI-nodes-base.microsoftDataverse',
 	typeVersion: 1,
 	position: [0, 0],
 	parameters: {},

@@ -4,11 +4,11 @@ vi.hoisted(() => {
 	process.argv[2] = 'worker';
 });
 
-import { ModuleRegistry } from '@n8n/backend-common';
-import { mockInstance } from '@n8n/backend-test-utils';
-import { ExecutionsConfig } from '@n8n/config';
-import { Container } from '@n8n/di';
-import { BinaryDataService, DataDeduplicationService } from 'n8n-core';
+import { ModuleRegistry } from '@MNI/backend-common';
+import { mockInstance } from '@MNI/backend-test-utils';
+import { ExecutionsConfig } from '@MNI/config';
+import { Container } from '@MNI/di';
+import { BinaryDataService, DataDeduplicationService } from 'MNI-core';
 
 import { Worker } from '@/commands/worker';
 import config from '@/config';

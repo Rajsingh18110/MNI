@@ -2,7 +2,7 @@ import { shallowRef } from 'vue';
 import { createTestingPinia } from '@pinia/testing';
 import { setActivePinia } from 'pinia';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { NodeConnectionTypes, NodeHelpers, type INodeInputConfiguration } from 'n8n-workflow';
+import { NodeConnectionTypes, NodeHelpers, type INodeInputConfiguration } from 'MNI-workflow';
 import { AGENT_NODE_TYPE, AGENT_TOOL_NODE_TYPE } from '@/app/constants';
 import type { INodeUi, INodeCreateElement } from '@/Interface';
 import { mockedStore, type MockedStore } from '@/__tests__/utils';
@@ -261,7 +261,7 @@ describe('useGetNodeCreatorFilter', () => {
 				type: NodeConnectionTypes.AiTool,
 				filter,
 			};
-			const sourceNode = mockNode({ name: 'regular-node', type: 'n8n-nodes-base.set' });
+			const sourceNode = mockNode({ name: 'regular-node', type: 'MNI-nodes-base.set' });
 
 			mockGetNodeByName.mockReturnValue(workflowNode);
 			mockUseNodeTypesStore.getNodeType = vi.fn().mockReturnValue(nodeType);
@@ -300,7 +300,7 @@ describe('useGetNodeCreatorFilter', () => {
 				type: NodeConnectionTypes.AiTool,
 				filter: existingFilter,
 			};
-			const sourceNode = mockNode({ name: 'regular-node', type: 'n8n-nodes-base.set' });
+			const sourceNode = mockNode({ name: 'regular-node', type: 'MNI-nodes-base.set' });
 
 			mockGetNodeByName.mockReturnValue(workflowNode);
 			mockUseNodeTypesStore.getNodeType = vi.fn().mockReturnValue(nodeType);
@@ -325,7 +325,7 @@ describe('useGetNodeCreatorFilter', () => {
 			const inputConfig: INodeInputConfiguration = {
 				type: NodeConnectionTypes.AiTool,
 			};
-			const sourceNode = mockNode({ name: 'regular-node', type: 'n8n-nodes-base.set' });
+			const sourceNode = mockNode({ name: 'regular-node', type: 'MNI-nodes-base.set' });
 
 			mockGetNodeByName.mockReturnValue(workflowNode);
 			mockUseNodeTypesStore.getNodeType = vi.fn().mockReturnValue(nodeType);

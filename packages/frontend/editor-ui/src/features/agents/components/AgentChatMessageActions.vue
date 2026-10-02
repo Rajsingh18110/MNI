@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { N8nChatActions, N8nIconButton, N8nTooltip } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+import { N8nChatActions, N8nIconButton, N8nTooltip } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 
 const props = defineProps<{
 	content: string;

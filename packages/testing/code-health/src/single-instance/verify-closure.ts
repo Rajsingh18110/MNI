@@ -41,7 +41,7 @@ export function runVerifyClosure(dir: string): number {
 
 	console.log('');
 	if (failures.length > 0) {
-		// stdout, not stderr: the streams interleave in CI logs, and build-n8n.mjs pipes stdout — a
+		// stdout, not stderr: the streams interleave in CI logs, and build-MNI.mjs pipes stdout — a
 		// verdict on stderr can land in the middle of the list it summarises, or out of view.
 		console.log(
 			`FAIL: ${describeFailureCount(failures.length)}: ${failures.map((f) => f.name).join(', ')}`,

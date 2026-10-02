@@ -2,8 +2,8 @@ import {
 	CreateApiKeyRequestDto,
 	ListApiKeysQueryDto,
 	UpdateApiKeyRequestDto,
-} from '@n8n/api-types';
-import { AuthenticatedRequest } from '@n8n/db';
+} from '@MNI/api-types';
+import { AuthenticatedRequest } from '@MNI/db';
 import {
 	Body,
 	Delete,
@@ -14,8 +14,8 @@ import {
 	Post,
 	Query,
 	RestController,
-} from '@n8n/decorators';
-import { getApiKeyScopesForRole } from '@n8n/permissions';
+} from '@MNI/decorators';
+import { getApiKeyScopesForRole } from '@MNI/permissions';
 import type { RequestHandler } from 'express';
 
 import { BadRequestError } from '@/errors/response-errors/bad-request.error';

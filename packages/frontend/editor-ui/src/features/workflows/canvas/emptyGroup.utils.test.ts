@@ -1,6 +1,6 @@
-import type { IConnections } from 'n8n-workflow';
-import { NodeConnectionTypes } from 'n8n-workflow';
-import type { WorkflowDataUpdate } from '@n8n/rest-api-client/api/workflows';
+import type { IConnections } from 'MNI-workflow';
+import { NodeConnectionTypes } from 'MNI-workflow';
+import type { WorkflowDataUpdate } from '@MNI/rest-api-client/api/workflows';
 import type { INodeUi } from '@/Interface';
 import {
 	mapConnectionsToVisibleNodes,
@@ -64,7 +64,7 @@ describe('removeEmptyCanvasGroupsFromWorkflowData', () => {
 		const anchor = {
 			id: 'anchor',
 			name: 'Empty group anchor',
-			type: 'n8n-nodes-base.noOp',
+			type: 'MNI-nodes-base.noOp',
 			parameters: { emptyGroupAnchor: true },
 		} as unknown as INodeUi;
 		const source = { id: 'source', name: 'Source' } as INodeUi;

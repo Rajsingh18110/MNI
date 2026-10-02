@@ -1,11 +1,11 @@
-import { Logger } from '@n8n/backend-common';
+import { Logger } from '@MNI/backend-common';
 import {
 	CredentialsEntity,
 	InstanceCredentialAssignmentRepository,
 	type OperationContext,
-} from '@n8n/db';
-import { Service } from '@n8n/di';
-import type { ICredentialDataDecryptedObject } from 'n8n-workflow';
+} from '@MNI/db';
+import { Service } from '@MNI/di';
+import type { ICredentialDataDecryptedObject } from 'MNI-workflow';
 
 import { UnprocessableRequestError } from '@/errors/response-errors/unprocessable.error';
 

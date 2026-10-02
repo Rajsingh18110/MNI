@@ -1,6 +1,6 @@
-import { Container } from '@n8n/di';
-import { buildHitlCallbackReference, InstanceSettings } from 'n8n-core';
-import { type INode, SEND_AND_WAIT_OPERATION, type IExecuteFunctions } from 'n8n-workflow';
+import { Container } from '@MNI/di';
+import { buildHitlCallbackReference, InstanceSettings } from 'MNI-core';
+import { type INode, SEND_AND_WAIT_OPERATION, type IExecuteFunctions } from 'MNI-workflow';
 import type { MockInstance } from 'vitest';
 import type { MockProxy } from 'vitest-mock-extended';
 import { mock } from 'vitest-mock-extended';
@@ -21,7 +21,7 @@ describe('Test SlackV2, message => sendAndWait', () => {
 	const mockNode: INode = {
 		id: 'test-node-id',
 		name: 'Slack',
-		type: 'n8n-nodes-base.slack',
+		type: 'MNI-nodes-base.slack',
 		typeVersion: 2.3,
 		position: [0, 0],
 		parameters: {},

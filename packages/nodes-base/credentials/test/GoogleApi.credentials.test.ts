@@ -1,7 +1,7 @@
-import { OutboundHttp } from '@n8n/backend-network';
-import { Container } from '@n8n/di';
+import { OutboundHttp } from '@MNI/backend-network';
+import { Container } from '@MNI/di';
 import jwt from 'jsonwebtoken';
-import type { IHttpRequestOptions } from 'n8n-workflow';
+import type { IHttpRequestOptions } from 'MNI-workflow';
 import type { Mock } from 'vitest';
 
 import { GoogleApi } from '../GoogleApi.credentials';

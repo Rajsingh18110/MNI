@@ -1,4 +1,4 @@
-import { DATA_TABLE_SYSTEM_COLUMN_TYPE_MAP, NodeOperationError } from 'n8n-workflow';
+import { DATA_TABLE_SYSTEM_COLUMN_TYPE_MAP, NodeOperationError } from 'MNI-workflow';
 import type {
 	DataTableFilter,
 	DataTableRowReturn,
@@ -7,7 +7,7 @@ import type {
 	IExecuteFunctions,
 	INodeProperties,
 	DataTableColumnType,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { ALL_CONDITIONS, ANY_CONDITION, ROWS_LIMIT_DEFAULT, type FilterType } from './constants';
 import { DATA_TABLE_ID_FIELD } from './fields';
@@ -81,11 +81,11 @@ export function getSelectFields(
 					name: 'conditions',
 					values: [
 						{
-							// eslint-disable-next-line n8n-nodes-base/node-param-display-name-wrong-for-dynamic-options
+							// eslint-disable-next-line MNI-nodes-base/node-param-display-name-wrong-for-dynamic-options
 							displayName: 'Column',
 							name: 'keyName',
 							type: 'options',
-							// eslint-disable-next-line n8n-nodes-base/node-param-description-wrong-for-dynamic-options
+							// eslint-disable-next-line MNI-nodes-base/node-param-description-wrong-for-dynamic-options
 							description:
 								'Choose from the list, or specify using an <a href="https://docs.n8n.io/code/expressions/">expression</a>',
 							typeOptions: {
@@ -95,10 +95,10 @@ export function getSelectFields(
 							default: 'id',
 						},
 						{
-							// eslint-disable-next-line n8n-nodes-base/node-param-display-name-wrong-for-dynamic-options
+							// eslint-disable-next-line MNI-nodes-base/node-param-display-name-wrong-for-dynamic-options
 							displayName: 'Condition',
 							name: 'condition',
-							// eslint-disable-next-line n8n-nodes-base/node-param-description-missing-from-dynamic-options
+							// eslint-disable-next-line MNI-nodes-base/node-param-description-missing-from-dynamic-options
 							type: 'options',
 							typeOptions: {
 								loadOptionsDependsOn: ['&keyName'],

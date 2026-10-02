@@ -1,6 +1,6 @@
 import { mock } from 'vitest-mock-extended';
-import type { ILocalLoadOptionsFunctions, ISupplyDataFunctions } from 'n8n-workflow';
-import { EXECUTE_WORKFLOW_TRIGGER_NODE_TYPE } from 'n8n-workflow';
+import type { ILocalLoadOptionsFunctions, ISupplyDataFunctions } from 'MNI-workflow';
+import { EXECUTE_WORKFLOW_TRIGGER_NODE_TYPE } from 'MNI-workflow';
 
 import { getWorkflowInputValues, loadWorkflowInputMappings } from '../GenericFunctions';
 

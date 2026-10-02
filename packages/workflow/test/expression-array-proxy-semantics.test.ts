@@ -86,7 +86,7 @@ describe('Expression — array proxy semantics (engine parity)', () => {
 	// evaluation-scoped copy (fixture untouched), the legacy engine writes
 	// through to the underlying workflow data.
 	describe('mutating array methods follow native semantics', () => {
-		const isVm = process.env.N8N_EXPRESSION_ENGINE !== 'legacy';
+		const isVm = process.env.MNI_EXPRESSION_ENGINE !== 'legacy';
 
 		it('sort() returns the sorted array', () => {
 			const json = { arr: ['Mango', 'Apple', 'Kiwi', 'Orange'] };
@@ -192,7 +192,7 @@ describe('Expression — array proxy semantics (engine parity)', () => {
 	// engine writes through to the underlying workflow data (long-standing
 	// behaviour for non-scripting nodes, where data is not augmented).
 	describe('direct writes on $json data', () => {
-		const isVm = process.env.N8N_EXPRESSION_ENGINE !== 'legacy';
+		const isVm = process.env.MNI_EXPRESSION_ENGINE !== 'legacy';
 
 		it('index assignment is visible to a later read in the same evaluation', () => {
 			const json = { arr: ['a', 'b', 'c'] };

@@ -1,15 +1,15 @@
-import type { StreamChunk } from '@n8n/agents';
+import type { StreamChunk } from '@MNI/agents';
 import {
 	applyForwardedChildChunk,
 	emptyChildTrace,
 	settleChildTrace,
 	type PersistedChildTrace,
 	type AgentBackgroundJobSignal,
-} from '@n8n/api-types';
-import { isRecord } from '@n8n/utils/is-record';
-import { isSensitiveKey } from '@n8n/utils/redaction/sensitive-key';
-import { scrubSecretsInText } from '@n8n/utils/scrub-secrets';
-import { extractFromAICalls, isFromAIOnlyExpression } from 'n8n-workflow';
+} from '@MNI/api-types';
+import { isRecord } from '@MNI/utils/is-record';
+import { isSensitiveKey } from '@MNI/utils/redaction/sensitive-key';
+import { scrubSecretsInText } from '@MNI/utils/scrub-secrets';
+import { extractFromAICalls, isFromAIOnlyExpression } from 'MNI-workflow';
 
 import type { ToolRegistry, ToolRegistryEntry } from './tool-registry';
 

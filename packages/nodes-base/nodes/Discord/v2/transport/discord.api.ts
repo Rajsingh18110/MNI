@@ -7,8 +7,8 @@ import type {
 	IHttpRequestMethods,
 	ILoadOptionsFunctions,
 	IRequestOptions,
-} from 'n8n-workflow';
-import { NodeApiError, jsonParse } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeApiError, jsonParse } from 'MNI-workflow';
 
 import { getCredentialsType, handleRateLimitHeaders, requestApi } from './helpers';
 

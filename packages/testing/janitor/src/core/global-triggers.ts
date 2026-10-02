@@ -19,13 +19,13 @@ export const GLOBAL_TRIGGER_FILES = new Set(['pnpm-lock.yaml', 'package.json']);
  * a way the test runner's import-graph walk can see. A change here is invisible
  * to `vitest related` on the test file, so we bail
  * the workspace to full rather than silently skip:
- *   - `packages/@n8n/db/` — schema + entities resolved through the DI container
+ *   - `packages/@MNI/db/` — schema + entities resolved through the DI container
  *     by every consuming package's integration tests.
  *   - `packages/workflow/`, `packages/core/` — universal sinks imported by
  *     ~everything; a behaviour change that keeps the same type signature is not
  *     visible to a downstream import-graph walk (typecheck only catches the
  *     contract). DEVP-195.
- *   - `packages/@n8n/vitest-config/` — the shared vitest config and the shared
+ *   - `packages/@MNI/vitest-config/` — the shared vitest config and the shared
  *     jsdom harness (`setup/frontend.ts`) that every frontend package's
  *     `src/__tests__/setup.ts` imports. A per-package setup file is already a
  *     bail-to-full-run trigger below; once the harness body lives here, editing
@@ -36,10 +36,10 @@ export const GLOBAL_TRIGGER_FILES = new Set(['pnpm-lock.yaml', 'package.json']);
  * much" rather than "ran nothing"), which is the intended trade-off.
  */
 export const GLOBAL_TRIGGER_PREFIXES = [
-	'packages/@n8n/db/',
+	'packages/@MNI/db/',
 	'packages/workflow/',
 	'packages/core/',
-	'packages/@n8n/vitest-config/',
+	'packages/@MNI/vitest-config/',
 ];
 
 /** True when a repo-root-relative path forces a full workspace run. */

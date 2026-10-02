@@ -1,9 +1,9 @@
-import { Service } from '@n8n/di';
+import { Service } from '@MNI/di';
 
 import { AgentChatAttachmentService } from './agent-chat-attachment.service';
 import { AGENT_BACKGROUND_WAKE_OPEN_TAG } from './background/background-job-messages';
 import { AGENT_THREAD_PREFIX } from './builder/builder-tool-names';
-import { N8nMemory } from './integrations/n8n-memory';
+import { N8nMemory } from './integrations/MNI-memory';
 import { draftChatMemoryResourceId } from './utils/agent-memory-scope';
 
 /** Derive a stable thread ID for the test-chat of a given agent and user. */

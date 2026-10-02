@@ -3,21 +3,21 @@ import { appendFileSync, readFileSync } from 'node:fs';
 import { RestClient } from './api';
 import type { CycleContext } from './harness';
 import { fail, ok, step } from './harness';
-import { N8NStartupError } from 'n8n-containers/services/MNI';
-import { createN8NStack } from 'n8n-containers/stack';
+import { N8NStartupError } from 'MNI-containers/services/MNI';
+import { createN8NStack } from 'MNI-containers/stack';
 
 /** Env every phase shares; the rotation flag is the only per-phase change. */
 const CYCLE_ENV: Record<string, string> = {
 	HOME: '/home/node',
-	N8N_LOG_LEVEL: 'info',
-	N8N_RUNNERS_ENABLED: 'false',
-	N8N_RUNNERS_MODE: 'internal',
-	N8N_VERSION_NOTIFICATIONS_ENABLED: 'false',
-	N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS: 'false',
+	MNI_LOG_LEVEL: 'info',
+	MNI_RUNNERS_ENABLED: 'false',
+	MNI_RUNNERS_MODE: 'internal',
+	MNI_VERSION_NOTIFICATIONS_ENABLED: 'false',
+	MNI_ENFORCE_SETTINGS_FILE_PERMISSIONS: 'false',
 };
 
 const flagEnv = (rotationFlag: boolean): Record<string, string> => ({
-	N8N_ENV_FEAT_ENCRYPTION_KEY_ROTATION: rotationFlag ? 'true' : 'false',
+	MNI_ENV_FEAT_ENCRYPTION_KEY_ROTATION: rotationFlag ? 'true' : 'false',
 });
 
 const hostUser = () => `${process.getuid?.() ?? 1000}:${process.getgid?.() ?? 1000}`;
@@ -103,7 +103,7 @@ function bootFailure(ctx: CycleContext, label: string, error: unknown): never {
 
 /** Appends the running main's docker logs to the backend's n8n.log. */
 export async function collectCurrentLogs(ctx: CycleContext): Promise<void> {
-	const container = ctx.stack?.findContainers(/-n8n$/)[0];
+	const container = ctx.stack?.findContainers(/-MNI$/)[0];
 	if (!container) return;
 	try {
 		const stream = await container.logs();
@@ -122,7 +122,7 @@ export async function collectCurrentLogs(ctx: CycleContext): Promise<void> {
 }
 
 export async function readInstanceVersion(ctx: CycleContext): Promise<string> {
-	const container = ctx.stack?.findContainers(/-n8n$/)[0];
+	const container = ctx.stack?.findContainers(/-MNI$/)[0];
 	if (!container) return '?';
 	try {
 		const result = await container.exec(['MNI', '--version']);

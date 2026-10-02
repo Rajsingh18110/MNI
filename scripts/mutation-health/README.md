@@ -75,10 +75,10 @@ pnpm mutate --diff
 pnpm mutate --diff --base upstream/master
 
 # One file, whole.
-pnpm mutate packages/@n8n/crdt/src/utils.ts
+pnpm mutate packages/@MNI/crdt/src/utils.ts
 
 # One file, only lines 40-75.
-pnpm mutate packages/@n8n/crdt/src/utils.ts:40-75
+pnpm mutate packages/@MNI/crdt/src/utils.ts:40-75
 
 # Package-relative target.
 pnpm mutate src/cron.ts --package-dir packages/workflow
@@ -105,7 +105,7 @@ Two things do the work:
 
 On top of that, Stryker's vitest runner only loads the tests *related* to the mutated files, so
 cost tracks the related suite rather than package size. Measured end-to-end, whole-file:
-`@n8n/decorators` 1s · `@n8n/scheduler` 3s · `packages/workflow` 13s · `nodes-base` 26s ·
+`@MNI/decorators` 1s · `@MNI/scheduler` 3s · `packages/workflow` 13s · `nodes-base` 26s ·
 `packages/cli` 88s. Line-scoping cuts these further.
 
 ### Scoping the tests with `--test-files`
@@ -124,8 +124,8 @@ The flag repeats and it also takes a comma-separated list. Paths may be repo-rel
 type) or package-relative (what Stryker matches); `mutate.mjs` converts them. Globs work.
 
 ```bash
-pnpm mutate packages/@n8n/crdt/src/utils.ts --test-files packages/@n8n/crdt/src/__tests__/utils.test.ts
-pnpm mutate src/utils.ts --package-dir packages/@n8n/crdt --test-files 'src/__tests__/*.test.ts'
+pnpm mutate packages/@MNI/crdt/src/utils.ts --test-files packages/@MNI/crdt/src/__tests__/utils.test.ts
+pnpm mutate src/utils.ts --package-dir packages/@MNI/crdt --test-files 'src/__tests__/*.test.ts'
 ```
 
 `--test-files` needs a single target, so it does not combine with `--diff`.
@@ -157,7 +157,7 @@ existing covering tests passed through `--test-files`.
 
 Runs use Stryker's `--inPlace`. Its default sandbox copy breaks on any package whose vitest
 config resolves a workspace dependency through a path alias — the alias doesn't survive the
-copy, and `packages/cli` dies on `ERR_LOAD_URL … .stryker-tmp/@n8n/backend-test-utils`.
+copy, and `packages/cli` dies on `ERR_LOAD_URL … .stryker-tmp/@MNI/backend-test-utils`.
 
 Stryker restores your files on a clean exit and on `Ctrl-C`, but not after a crash, a timeout or
 a `SIGTERM` — and its preprocessing reaches past the mutate targets, so a target-only snapshot
@@ -187,7 +187,7 @@ maintain.
 
 Not scored:
 
-- `@n8n/expression-runtime` — Stryker's dry run SIGABRTs on the isolated-vm engine ([DEVP-257](https://linear.app/n8n/issue/DEVP-257)).
+- `@MNI/expression-runtime` — Stryker's dry run SIGABRTs on the isolated-vm engine ([DEVP-257](https://linear.app/MNI/issue/DEVP-257)).
 - `.vue` single-file components — every SFC package crashed Stryker's mutate step in the 2026-06 sweep, and the component layer is low-value to mutate.
 - Tests, declarations, stories, configs, migrations and build output.
 
@@ -201,7 +201,7 @@ A run passes only when **both**:
 1. Mutation score meets `STRYKER_THRESHOLD` (default `80`), **and**
 2. Zero `Survived` / `NoCoverage` mutants remain — every unkilled mutant must be explicitly justified as `Ignored` via a `// Stryker disable next-line <Mutator>: <reason>` comment in the source.
 
-Stryker excludes `Ignored` mutants from both numerator and denominator of the score (see `scoreFromCounts` in `mutate.mjs`), so marking a genuine equivalent as ignored is **not** padding — it's the documented mechanism for "this mutant is equivalent / not behaviour-bearing, here's why". The score becomes a coarse floor; the real gate is "no unjustified survivors". This stops agents from padding the suite with trivial tests to clear `80%` while leaving real behaviour gaps unasserted. See [DEVP-442](https://linear.app/n8n/issue/DEVP-442) for the motivation.
+Stryker excludes `Ignored` mutants from both numerator and denominator of the score (see `scoreFromCounts` in `mutate.mjs`), so marking a genuine equivalent as ignored is **not** padding — it's the documented mechanism for "this mutant is equivalent / not behaviour-bearing, here's why". The score becomes a coarse floor; the real gate is "no unjustified survivors". This stops agents from padding the suite with trivial tests to clear `80%` while leaving real behaviour gaps unasserted. See [DEVP-442](https://linear.app/MNI/issue/DEVP-442) for the motivation.
 
 `summary.json` surfaces every `Ignored` mutant alongside its disable-comment reason so reviewers can spot-check the justifications — those become the high-signal review artifact rather than N padding tests.
 

@@ -2,7 +2,7 @@ import { computed } from 'vue';
 import { defineStore } from 'pinia';
 import { saveAs } from 'file-saver';
 import type { IWorkflowDb } from '@/Interface';
-import type { WorkflowDataUpdate } from '@n8n/rest-api-client/api/workflows';
+import type { WorkflowDataUpdate } from '@MNI/rest-api-client/api/workflows';
 import type {
 	WorkflowHistory,
 	WorkflowVersion,
@@ -10,11 +10,11 @@ import type {
 	WorkflowVersionId,
 	UpdateWorkflowHistoryVersion,
 	PublishTimelineEvent,
-} from '@n8n/rest-api-client/api/workflowHistory';
-import * as whApi from '@n8n/rest-api-client/api/workflowHistory';
-import { getFirstAdoptionDate } from '@n8n/rest-api-client/api/instance-version-history';
-import { useRootStore } from '@n8n/stores/useRootStore';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+} from '@MNI/rest-api-client/api/workflowHistory';
+import * as whApi from '@MNI/rest-api-client/api/workflowHistory';
+import { getFirstAdoptionDate } from '@MNI/rest-api-client/api/instance-version-history';
+import { useRootStore } from '@MNI/stores/useRootStore';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { useWorkflowsStore } from '@/app/stores/workflows.store';
 import { useWorkflowsListStore } from '@/app/stores/workflowsList.store';
 import { getNewWorkflow } from '@/app/api/workflows';

@@ -3,18 +3,18 @@ import type {
 	CredentialResolver,
 	CredentialResolverAffectedWorkflow,
 	CredentialResolverType,
-} from '@n8n/api-types';
+} from '@MNI/api-types';
 import {
 	getCredentialResolvers,
 	getCredentialResolverTypes,
 	getCredentialResolverWorkflows,
 	deleteCredentialResolver,
-} from '@n8n/rest-api-client';
-import { useRootStore } from '@n8n/stores/useRootStore';
+} from '@MNI/rest-api-client';
+import { useRootStore } from '@MNI/stores/useRootStore';
 import { useUIStore } from '@/app/stores/ui.store';
 import { useMessage } from '@/app/composables/useMessage';
-import { useToast } from '@n8n/composables/useToast';
-import { useI18n } from '@n8n/i18n';
+import { useToast } from '@MNI/composables/useToast';
+import { useI18n } from '@MNI/i18n';
 import { CREDENTIAL_RESOLVER_EDIT_MODAL_KEY, MODAL_CONFIRM } from '@/app/constants';
 import ResolverDeleteConfirmMessage from '@/features/resolvers/components/ResolverDeleteConfirmMessage.vue';
 

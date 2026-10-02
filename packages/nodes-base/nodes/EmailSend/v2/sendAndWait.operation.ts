@@ -4,7 +4,7 @@ import type {
 	INodeExecutionData,
 	INodeProperties,
 	JsonObject,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { fromEmailProperty, toEmailProperty } from './descriptions';
 import { configureTransport } from './utils';

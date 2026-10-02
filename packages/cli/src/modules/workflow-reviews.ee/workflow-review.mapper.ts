@@ -8,14 +8,14 @@ import {
 	type WorkflowReviewActivityEntry,
 	type WorkflowReviewEligibleReviewer,
 	type WorkflowReviewRequestSummary,
-} from '@n8n/api-types';
-import type { Logger } from '@n8n/backend-common';
+} from '@MNI/api-types';
+import type { Logger } from '@MNI/backend-common';
 import type {
 	User,
 	WorkflowReviewActivity,
 	WorkflowReviewActivityComment,
 	WorkflowReviewRequest,
-} from '@n8n/db';
+} from '@MNI/db';
 import type { z } from 'zod';
 
 /**

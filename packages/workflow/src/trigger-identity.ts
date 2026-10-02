@@ -65,7 +65,7 @@ export function classifyTriggerIdentity(
 	nodeType: string,
 	parameters: INodeParameters | undefined,
 ): TriggerIdentityCapabilities {
-	// Sub-workflows inherit identity from the parent; Chat Hub and MCP-over-n8nOAuth2
+	// Sub-workflows inherit identity from the parent; Chat Hub and MCP-over-MNIOAuth2
 	// inject it. All provide both identity families.
 	const isSubWorkflowTrigger = nodeType === EXECUTE_WORKFLOW_TRIGGER_NODE_TYPE;
 	const isChatHubTrigger =

@@ -1,6 +1,6 @@
-import { mockInstance } from '@n8n/backend-test-utils';
-import type { AuthenticatedRequest, User, ApiKey } from '@n8n/db';
-import { Container } from '@n8n/di';
+import { mockInstance } from '@MNI/backend-test-utils';
+import type { AuthenticatedRequest, User, ApiKey } from '@MNI/db';
+import { Container } from '@MNI/di';
 import { mock } from 'vitest-mock-extended';
 
 import { EventService } from '@/events/event.service';

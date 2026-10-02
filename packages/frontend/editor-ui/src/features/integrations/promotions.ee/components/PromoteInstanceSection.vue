@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { N8nButton, N8nSettingsSection, N8nText } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
-import { getResourcePermissions } from '@n8n/permissions';
-import { useUsersStore } from '@n8n/stores/users.store';
+import { N8nButton, N8nSettingsSection, N8nText } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
+import { getResourcePermissions } from '@MNI/permissions';
+import { useUsersStore } from '@MNI/stores/users.store';
 import { computed, ref } from 'vue';
 
 import PromoteInstanceDialog from './PromoteInstanceDialog.vue';

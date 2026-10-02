@@ -1,5 +1,5 @@
-import { AGENT_TASK_CRON_EXPRESSION_MAX_LENGTH, AGENT_TASK_ID_MAX_LENGTH } from '@n8n/api-types';
-import { WithTimestamps } from '@n8n/db';
+import { AGENT_TASK_CRON_EXPRESSION_MAX_LENGTH, AGENT_TASK_ID_MAX_LENGTH } from '@MNI/api-types';
+import { WithTimestamps } from '@MNI/db';
 import {
 	Column,
 	Entity,
@@ -8,7 +8,7 @@ import {
 	ManyToOne,
 	PrimaryColumn,
 	type Relation,
-} from '@n8n/typeorm';
+} from '@MNI/typeorm';
 
 import { Agent } from './agent.entity';
 

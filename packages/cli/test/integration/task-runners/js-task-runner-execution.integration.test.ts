@@ -1,5 +1,5 @@
-import { TaskRunnersConfig } from '@n8n/config';
-import { Container } from '@n8n/di';
+import { TaskRunnersConfig } from '@MNI/config';
+import { Container } from '@MNI/di';
 import type {
 	IExecuteFunctions,
 	INode,
@@ -9,13 +9,13 @@ import type {
 	ITaskDataConnections,
 	IWorkflowExecuteAdditionalData,
 	WorkflowExecuteMode,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import {
 	createEnvProviderState,
 	createRunExecutionData,
 	NodeConnectionTypes,
 	Workflow,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import { LocalTaskRequester } from '@/task-runners/task-managers/local-task-requester';
@@ -67,7 +67,7 @@ describe('JS TaskRunner execution on internal mode', () => {
 			parameters: {
 				jsCode,
 			},
-			type: 'n8n-nodes-base.code',
+			type: 'MNI-nodes-base.code',
 			typeVersion: 2,
 			position: [200, 80],
 			id: 'b35fd455-32e4-4d52-b840-36aa28dd1910',
@@ -80,7 +80,7 @@ describe('JS TaskRunner execution on internal mode', () => {
 			nodes: [
 				{
 					parameters: {},
-					type: 'n8n-nodes-base.manualTrigger',
+					type: 'MNI-nodes-base.manualTrigger',
 					typeVersion: 1,
 					position: [0, 0],
 					id: 'a39a566a-283a-433e-88bc-b3857aab706f',

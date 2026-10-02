@@ -8,7 +8,7 @@ import type {
 	UpdatePromotionProviderDto,
 	UpsertPromotionApplyConfigDto,
 	UpsertPromotionPromoteConfigDto,
-} from '@n8n/api-types';
+} from '@MNI/api-types';
 
 import type { PromotionConnection, PromotionProvider } from './promotionsSettings.api';
 

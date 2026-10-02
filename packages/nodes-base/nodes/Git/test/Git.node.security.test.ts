@@ -1,11 +1,11 @@
-import { DeploymentConfig, SecurityConfig } from '@n8n/config';
-import { Container } from '@n8n/di';
+import { DeploymentConfig, SecurityConfig } from '@MNI/config';
+import { Container } from '@MNI/di';
 import type {
 	IExecuteFunctions,
 	INodeExecutionData,
 	NodeParameterValueType,
 	ResolvedFilePath,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import { execFileSync } from 'node:child_process';
 import type { PathLike } from 'node:fs';
 import {
@@ -76,7 +76,7 @@ const blockedFilePattern = new RegExp(new SecurityConfig().blockFilePatterns);
 
 /**
  * Context for the reference-validation suite. `allowedRoot` stands in for
- * `N8N_RESTRICT_FILE_ACCESS_TO`, and the block predicate also applies the default `.git`
+ * `MNI_RESTRICT_FILE_ACCESS_TO`, and the block predicate also applies the default `.git`
  * pattern, which is what makes the git-directory checks load bearing. Omit `allowedRoot` to
  * block nothing. The config-handling suite has its own, simpler `buildContext`.
  */
@@ -94,7 +94,7 @@ const buildAllowedRootContext = (
 		helpers: {
 			returnJsonArray: vi.fn((data: any[]) => data.map((item: any) => ({ json: item }))),
 			resolvePath: vi.fn(resolveRealPath),
-			// The configured `N8N_BLOCK_FILE_PATTERNS`, which by default rejects every path with
+			// The configured `MNI_BLOCK_FILE_PATTERNS`, which by default rejects every path with
 			// a `.git` component, on top of the opt-in allowed root.
 			isFilePathBlocked: vi.fn(
 				(path: string) =>
@@ -198,7 +198,7 @@ describe('Git Node command-config handling', () => {
 			}),
 		);
 		// git reports realpath'd directories, so the fixture root has to be one too.
-		repoDir = await realpath(await mkdtemp(join(tmpdir(), 'n8n-git-cfg-')));
+		repoDir = await realpath(await mkdtemp(join(tmpdir(), 'MNI-git-cfg-')));
 		marker = join(repoDir, 'command-ran');
 		additionalDirs = [];
 		initRepository(repoDir);
@@ -321,7 +321,7 @@ describe('Git Node command-config handling', () => {
 	});
 
 	it('rejects a filesystem path where a remote name is expected', async () => {
-		const outsideDir = await realpath(await mkdtemp(join(tmpdir(), 'n8n-git-outside-')));
+		const outsideDir = await realpath(await mkdtemp(join(tmpdir(), 'MNI-git-outside-')));
 		additionalDirs.push(outsideDir);
 		git('commit', '-q', '--allow-empty', '-m', 'init');
 
@@ -337,7 +337,7 @@ describe('Git Node command-config handling', () => {
 	});
 
 	it('rejects a branch remote outside the allowed paths before fetching', async () => {
-		const outsideDir = await realpath(await mkdtemp(join(tmpdir(), 'n8n-git-outside-')));
+		const outsideDir = await realpath(await mkdtemp(join(tmpdir(), 'MNI-git-outside-')));
 		additionalDirs.push(outsideDir);
 		execFileSync('git', ['init', '-q', '-b', 'main', outsideDir]);
 		gitConfig(outsideDir, 'user.email', 'test@example.com');
@@ -400,8 +400,8 @@ describe('Git Node command-config handling', () => {
 		git('add', '.');
 		git('commit', '-q', '-m', 'base');
 
-		const remoteDir = await realpath(await mkdtemp(join(tmpdir(), 'n8n-git-remote-')));
-		const otherDir = await realpath(await mkdtemp(join(tmpdir(), 'n8n-git-other-')));
+		const remoteDir = await realpath(await mkdtemp(join(tmpdir(), 'MNI-git-remote-')));
+		const otherDir = await realpath(await mkdtemp(join(tmpdir(), 'MNI-git-other-')));
 		additionalDirs.push(remoteDir, otherDir);
 		runGit(['init', '--bare', '-q', '-b', 'main', remoteDir]);
 		git('remote', 'add', 'origin', remoteDir);
@@ -456,7 +456,7 @@ describe('Git Node repository reference validation', () => {
 				enableGitNodeAllConfigKeys: false,
 			}),
 		);
-		tmpRoot = await realpath(await mkdtemp(join(tmpdir(), 'n8n-git-ref-')));
+		tmpRoot = await realpath(await mkdtemp(join(tmpdir(), 'MNI-git-ref-')));
 		allowedRoot = join(tmpRoot, 'sandbox');
 		outsideDir = join(tmpRoot, 'outside');
 		repoDir = join(allowedRoot, 'repo');
@@ -945,7 +945,7 @@ describe('Git Node repository reference validation', () => {
 
 		expect(errorOf(result)).toContain(SOURCE_DENIED);
 		// The rejection has to land before the staging directory is created.
-		expect(readdirSync(allowedRoot).filter((entry) => entry.startsWith('.n8n-clone-'))).toEqual([]);
+		expect(readdirSync(allowedRoot).filter((entry) => entry.startsWith('.MNI-clone-'))).toEqual([]);
 		expect(existsSync(target)).toBe(false);
 	});
 

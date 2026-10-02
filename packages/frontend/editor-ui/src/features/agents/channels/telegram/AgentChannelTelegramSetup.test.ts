@@ -3,14 +3,14 @@ import { describe, expect, it, vi } from 'vitest';
 
 import AgentChannelTelegramSetup from './AgentChannelTelegramSetup.vue';
 
-vi.mock('@n8n/i18n', async (importOriginal) => ({
+vi.mock('@MNI/i18n', async (importOriginal) => ({
 	...(await importOriginal()),
 	useI18n: () => ({
 		baseText: (key: string) => key,
 	}),
 }));
 
-vi.mock('@n8n/design-system', async (importOriginal) => ({
+vi.mock('@MNI/design-system', async (importOriginal) => ({
 	...(await importOriginal()),
 	N8nStepper: {
 		template: `<div><slot :step="{ id: 'connect' }" /></div>`,

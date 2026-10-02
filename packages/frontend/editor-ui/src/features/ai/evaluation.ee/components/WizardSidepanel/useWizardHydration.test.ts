@@ -1,6 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { createPinia, setActivePinia } from 'pinia';
-import type { EvaluationConfigDto } from '@n8n/api-types';
+import type { EvaluationConfigDto } from '@MNI/api-types';
 
 import { useEvaluationsWizardSidepanelStore } from '../../wizardSidepanel.store';
 
@@ -40,7 +40,7 @@ vi.mock('@/app/stores/workflowDocument.store', () => ({
 	useWorkflowDocumentStore: () => ({}),
 }));
 
-vi.mock('@n8n/stores/useRootStore', () => ({
+vi.mock('@MNI/stores/useRootStore', () => ({
 	useRootStore: () => ({ restApiContext: {} }),
 }));
 
@@ -64,11 +64,11 @@ vi.mock('@/app/stores/focusPanel.store', () => ({
 	}),
 }));
 
-vi.mock('@n8n/i18n', () => ({
+vi.mock('@MNI/i18n', () => ({
 	useI18n: () => ({ baseText: (key: string) => key }),
 }));
 
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: () => ({ showError: mocks.showError }),
 }));
 
@@ -112,9 +112,9 @@ describe('useWizardHydration', () => {
 		setActivePinia(createPinia());
 		mocks.workflowId = 'workflow-id';
 		mocks.allNodes = [
-			{ name: 'Trigger', type: 'n8n-nodes-base.manualTrigger' },
-			{ name: 'Pre-process', type: 'n8n-nodes-base.set' },
-			{ name: 'AI Agent', type: '@n8n/n8n-nodes-langchain.agent' },
+			{ name: 'Trigger', type: 'MNI-nodes-base.manualTrigger' },
+			{ name: 'Pre-process', type: 'MNI-nodes-base.set' },
+			{ name: 'AI Agent', type: '@MNI/MNI-nodes-langchain.agent' },
 		];
 		mocks.isNewWorkflow = false;
 		mocks.listEvaluationConfigs.mockReset();
@@ -256,7 +256,7 @@ describe('useWizardHydration', () => {
 						type: 'llm_judge',
 						config: {
 							preset: 'correctness',
-							provider: '@n8n/n8n-nodes-langchain.lmChatOpenAi',
+							provider: '@MNI/MNI-nodes-langchain.lmChatOpenAi',
 							credentialId: 'cred-1',
 							model: 'gpt-4o-mini',
 							outputType: 'numeric',
@@ -342,7 +342,7 @@ describe('useWizardHydration', () => {
 						type: 'llm_judge',
 						config: {
 							preset: 'helpfulness',
-							provider: '@n8n/n8n-nodes-langchain.lmChatAnthropic',
+							provider: '@MNI/MNI-nodes-langchain.lmChatAnthropic',
 							credentialId: 'cred-anthropic',
 							model: 'claude-opus',
 							outputType: 'numeric',
@@ -409,7 +409,7 @@ describe('useWizardHydration', () => {
 						type: 'llm_judge',
 						config: {
 							preset: 'correctness',
-							provider: '@n8n/n8n-nodes-langchain.lmChatOpenAi',
+							provider: '@MNI/MNI-nodes-langchain.lmChatOpenAi',
 							credentialId: 'c',
 							model: 'm',
 							outputType: 'numeric',
@@ -450,7 +450,7 @@ describe('useWizardHydration', () => {
 						type: 'llm_judge',
 						config: {
 							preset: 'correctness',
-							provider: '@n8n/n8n-nodes-langchain.lmChatOpenAi',
+							provider: '@MNI/MNI-nodes-langchain.lmChatOpenAi',
 							credentialId: 'c',
 							model: 'm',
 							outputType: 'numeric',
@@ -491,7 +491,7 @@ describe('useWizardHydration', () => {
 						type: 'llm_judge',
 						config: {
 							preset: 'correctness',
-							provider: '@n8n/n8n-nodes-langchain.lmChatOpenAi',
+							provider: '@MNI/MNI-nodes-langchain.lmChatOpenAi',
 							credentialId: 'c',
 							model: 'm',
 							outputType: 'numeric',

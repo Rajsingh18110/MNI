@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { I18nT } from 'vue-i18n';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 
 const props = withDefaults(
 	defineProps<{

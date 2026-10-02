@@ -1,9 +1,9 @@
-import { Logger } from '@n8n/backend-common';
-import { mockInstance } from '@n8n/backend-test-utils';
-import type { DeploymentKey } from '@n8n/db';
-import { DeploymentKeyRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
-import { Cipher, type EncryptionKeyProxy, InstanceSettings } from 'n8n-core';
+import { Logger } from '@MNI/backend-common';
+import { mockInstance } from '@MNI/backend-test-utils';
+import type { DeploymentKey } from '@MNI/db';
+import { DeploymentKeyRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
+import { Cipher, type EncryptionKeyProxy, InstanceSettings } from 'MNI-core';
 import { randomBytes } from 'node:crypto';
 import { mock } from 'vitest-mock-extended';
 
@@ -50,11 +50,11 @@ describe('KeyManagerService', () => {
 
 	describe('getActiveKey() with rotation enabled', () => {
 		beforeEach(() => {
-			process.env.N8N_ENV_FEAT_ENCRYPTION_KEY_ROTATION = 'true';
+			process.env.MNI_ENV_FEAT_ENCRYPTION_KEY_ROTATION = 'true';
 		});
 
 		afterEach(() => {
-			delete process.env.N8N_ENV_FEAT_ENCRYPTION_KEY_ROTATION;
+			delete process.env.MNI_ENV_FEAT_ENCRYPTION_KEY_ROTATION;
 		});
 
 		it('returns the active key as a prefixed descriptor', async () => {
@@ -98,7 +98,7 @@ describe('KeyManagerService', () => {
 	describe('getActiveKey() with rotation disabled', () => {
 		beforeEach(() => {
 			// The disabled path must not depend on the ambient environment.
-			delete process.env.N8N_ENV_FEAT_ENCRYPTION_KEY_ROTATION;
+			delete process.env.MNI_ENV_FEAT_ENCRYPTION_KEY_ROTATION;
 		});
 
 		// Fresh instances: the legacy descriptor is memoized per service instance.
@@ -217,11 +217,11 @@ describe('KeyManagerService', () => {
 
 	describe('active-key memo', () => {
 		beforeEach(() => {
-			process.env.N8N_ENV_FEAT_ENCRYPTION_KEY_ROTATION = 'true';
+			process.env.MNI_ENV_FEAT_ENCRYPTION_KEY_ROTATION = 'true';
 		});
 
 		afterEach(() => {
-			delete process.env.N8N_ENV_FEAT_ENCRYPTION_KEY_ROTATION;
+			delete process.env.MNI_ENV_FEAT_ENCRYPTION_KEY_ROTATION;
 		});
 
 		it('memoizes the database view and refreshes it after the memo expires', async () => {
@@ -413,11 +413,11 @@ describe('KeyManagerService', () => {
 
 		describe('active-key memo effects (rotation on)', () => {
 			beforeEach(() => {
-				process.env.N8N_ENV_FEAT_ENCRYPTION_KEY_ROTATION = 'true';
+				process.env.MNI_ENV_FEAT_ENCRYPTION_KEY_ROTATION = 'true';
 			});
 
 			afterEach(() => {
-				delete process.env.N8N_ENV_FEAT_ENCRYPTION_KEY_ROTATION;
+				delete process.env.MNI_ENV_FEAT_ENCRYPTION_KEY_ROTATION;
 			});
 
 			it('switches the very next write to the new key after the insert commits', async () => {
@@ -576,11 +576,11 @@ describe('KeyManagerService', () => {
 
 	describe('setActiveKey()', () => {
 		beforeEach(() => {
-			process.env.N8N_ENV_FEAT_ENCRYPTION_KEY_ROTATION = 'true';
+			process.env.MNI_ENV_FEAT_ENCRYPTION_KEY_ROTATION = 'true';
 		});
 
 		afterEach(() => {
-			delete process.env.N8N_ENV_FEAT_ENCRYPTION_KEY_ROTATION;
+			delete process.env.MNI_ENV_FEAT_ENCRYPTION_KEY_ROTATION;
 		});
 
 		it('activates the key and invalidates the memo', async () => {
@@ -615,11 +615,11 @@ describe('KeyManagerService', () => {
 
 	describe('markInactive()', () => {
 		beforeEach(() => {
-			process.env.N8N_ENV_FEAT_ENCRYPTION_KEY_ROTATION = 'true';
+			process.env.MNI_ENV_FEAT_ENCRYPTION_KEY_ROTATION = 'true';
 		});
 
 		afterEach(() => {
-			delete process.env.N8N_ENV_FEAT_ENCRYPTION_KEY_ROTATION;
+			delete process.env.MNI_ENV_FEAT_ENCRYPTION_KEY_ROTATION;
 		});
 
 		it('sets status to inactive and invalidates the memo', async () => {

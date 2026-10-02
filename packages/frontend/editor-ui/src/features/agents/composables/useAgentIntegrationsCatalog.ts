@@ -1,6 +1,6 @@
 import { ref } from 'vue';
-import type { ChatIntegrationDescriptor } from '@n8n/api-types';
-import { useRootStore } from '@n8n/stores/useRootStore';
+import type { ChatIntegrationDescriptor } from '@MNI/api-types';
+import { useRootStore } from '@MNI/stores/useRootStore';
 import { listAgentIntegrations } from './useAgentApi';
 
 const catalog = ref<ChatIntegrationDescriptor[] | null>(null);

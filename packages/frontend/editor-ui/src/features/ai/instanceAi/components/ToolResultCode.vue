@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
-import { N8nIconButton } from '@n8n/design-system';
-import { useClipboard } from '@n8n/composables/useClipboard';
+import { N8nIconButton } from '@MNI/design-system';
+import { useClipboard } from '@MNI/composables/useClipboard';
 
 const props = defineProps<{
 	code: string;

@@ -1,6 +1,6 @@
 import { createComponentRenderer } from '@/__tests__/render';
 import { mockedStore, type MockedStore } from '@/__tests__/utils';
-import { useToast } from '@n8n/composables/useToast';
+import { useToast } from '@MNI/composables/useToast';
 import { useExposeAllWorkflowsToMcpStore } from '@/experiments/exposeAllWorkflowsToMcp/stores/exposeAllWorkflowsToMcp.store';
 import { useMCPStore } from '@/features/ai/mcpAccess/mcp.store';
 import { createTestingPinia } from '@pinia/testing';
@@ -16,7 +16,7 @@ vi.mock('@/features/ai/mcpAccess/composables/useMcp', () => ({
 	useMcp: () => ({ trackAutoExposeToggled: trackAutoExposeToggledSpy }),
 }));
 
-vi.mock('@n8n/composables/useToast', () => {
+vi.mock('@MNI/composables/useToast', () => {
 	const showMessage = vi.fn();
 	const showError = vi.fn();
 	return {

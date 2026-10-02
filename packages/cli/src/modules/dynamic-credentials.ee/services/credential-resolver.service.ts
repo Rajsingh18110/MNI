@@ -1,15 +1,15 @@
-import { Logger } from '@n8n/backend-common';
-import { User, WorkflowRepository } from '@n8n/db';
+import { Logger } from '@MNI/backend-common';
+import { User, WorkflowRepository } from '@MNI/db';
 import {
 	CredentialResolverConfiguration,
 	CredentialResolverValidationError,
 	ICredentialResolver,
-} from '@n8n/decorators';
-import { Service } from '@n8n/di';
-import { hasGlobalScope } from '@n8n/permissions';
-import { Not } from '@n8n/typeorm';
-import { Cipher } from 'n8n-core';
-import { jsonParse, UnexpectedError } from 'n8n-workflow';
+} from '@MNI/decorators';
+import { Service } from '@MNI/di';
+import { hasGlobalScope } from '@MNI/permissions';
+import { Not } from '@MNI/typeorm';
+import { Cipher } from 'MNI-core';
+import { jsonParse, UnexpectedError } from 'MNI-workflow';
 
 import { ActiveWorkflowManager } from '@/active-workflow-manager';
 
@@ -109,7 +109,7 @@ export class DynamicCredentialResolverService {
 		return this.registry.getAllResolvers();
 	}
 
-	/** Same as getAvailableTypes() but excludes the system N8N resolver type. */
+	/** Same as getAvailableTypes() but excludes the system MNI resolver type. */
 	getAvailablePublicTypes(): ICredentialResolver[] {
 		return this.getAvailableTypes().filter((r) => r.metadata.name !== SYSTEM_RESOLVER_TYPE);
 	}

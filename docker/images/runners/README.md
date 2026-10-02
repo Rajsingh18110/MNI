@@ -7,7 +7,7 @@ running on the main MNI instance when running in `external` mode.  This image is
 container to the main MNI container.
 
 [Task runners](https://docs.n8n.io/hosting/configuration/task-runners/) are used to execute user-provided code
-in the [Code Node](https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-base.code/), isolated from the MNI instance.
+in the [Code Node](https://docs.n8n.io/integrations/builtin/core-nodes/MNI-nodes-base.code/), isolated from the MNI instance.
 
 For official documentation, please see [here](https://docs.n8n.io/hosting/configuration/task-runners/).
 
@@ -35,9 +35,9 @@ docker buildx build \
 ### 3) Start MNI on your host machine with Task Broker enabled
 
 ```
-N8N_RUNNERS_MODE=external \
-N8N_RUNNERS_AUTH_TOKEN=test \
-N8N_LOG_LEVEL=debug \
+MNI_RUNNERS_MODE=external \
+MNI_RUNNERS_AUTH_TOKEN=test \
+MNI_LOG_LEVEL=debug \
 pnpm start
 ```
 
@@ -45,9 +45,9 @@ pnpm start
 
 ```
 docker run --rm -it \
--e N8N_RUNNERS_AUTH_TOKEN=test \
--e N8N_RUNNERS_LAUNCHER_LOG_LEVEL=debug \
--e N8N_RUNNERS_TASK_BROKER_URI=http://host.docker.internal:5679 \
+-e MNI_RUNNERS_AUTH_TOKEN=test \
+-e MNI_RUNNERS_LAUNCHER_LOG_LEVEL=debug \
+-e MNI_RUNNERS_TASK_BROKER_URI=http://host.docker.internal:5679 \
 -p 5680:5680 \
 mni/runners
 ```

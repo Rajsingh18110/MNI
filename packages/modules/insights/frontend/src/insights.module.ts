@@ -1,5 +1,5 @@
-import { VIEWS } from '@n8n/frontend-constants/views';
-import { defineFrontendModule } from '@n8n/frontend-module-sdk';
+import { VIEWS } from '@MNI/frontend-constants/views';
+import { defineFrontendModule } from '@MNI/frontend-module-sdk';
 import { RouterView } from 'vue-router';
 
 const InsightsDashboard = async () => await import('./components/InsightsDashboard.vue');

@@ -1,5 +1,5 @@
-import type { IHookFunctions } from 'n8n-workflow';
-import { NodeApiError } from 'n8n-workflow';
+import type { IHookFunctions } from 'MNI-workflow';
+import { NodeApiError } from 'MNI-workflow';
 
 import { calApiRequestV2 } from '../GenericFunctions';
 

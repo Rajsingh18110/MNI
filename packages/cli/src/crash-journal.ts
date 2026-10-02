@@ -1,9 +1,9 @@
-import { inProduction, Logger } from '@n8n/backend-common';
-import { Container } from '@n8n/di';
+import { inProduction, Logger } from '@MNI/backend-common';
+import { Container } from '@MNI/di';
 import { existsSync } from 'fs';
 import { mkdir, utimes, open, rm } from 'fs/promises';
-import { sleep } from '@n8n/utils/sleep';
-import { InstanceSettings } from 'n8n-core';
+import { sleep } from '@MNI/utils/sleep';
+import { InstanceSettings } from 'MNI-core';
 import { join, dirname } from 'path';
 
 export const touchFile = async (filePath: string): Promise<void> => {
@@ -21,7 +21,7 @@ const { n8nFolder } = Container.get(InstanceSettings);
 const journalFile = join(n8nFolder, 'crash.journal');
 
 export const init = async () => {
-	if (!inProduction || process.env.N8N_DEV_RELOAD === 'true') return;
+	if (!inProduction || process.env.MNI_DEV_RELOAD === 'true') return;
 
 	if (existsSync(journalFile)) {
 		// Crash detected

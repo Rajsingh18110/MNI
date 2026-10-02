@@ -1,7 +1,7 @@
-import type { Thread } from '@n8n/agents';
-import { BaseRepository, TransactionRunner, escapeLike, LIKE_ESCAPE_CLAUSE } from '@n8n/db';
-import { Service } from '@n8n/di';
-import { DataSource, LessThan, Raw } from '@n8n/typeorm';
+import type { Thread } from '@MNI/agents';
+import { BaseRepository, TransactionRunner, escapeLike, LIKE_ESCAPE_CLAUSE } from '@MNI/db';
+import { Service } from '@MNI/di';
+import { DataSource, LessThan, Raw } from '@MNI/typeorm';
 
 import { InstanceAiThread } from '../entities/instance-ai-thread.entity';
 

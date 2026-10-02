@@ -1,4 +1,4 @@
-import type { INodeType } from 'n8n-workflow';
+import type { INodeType } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import type { NodeTypes } from '@/node-types';
@@ -19,14 +19,14 @@ describe('WorkflowHookContextService', () => {
 		it('returns true when the resolved node type is a trigger', () => {
 			nodeTypes.getByNameAndVersion.mockReturnValue(nodeTypeWithGroups(['trigger']));
 
-			expect(service.resolveIsTriggerNodeType('n8n-nodes-base.manualTrigger', 1)).toBe(true);
-			expect(nodeTypes.getByNameAndVersion).toHaveBeenCalledWith('n8n-nodes-base.manualTrigger', 1);
+			expect(service.resolveIsTriggerNodeType('MNI-nodes-base.manualTrigger', 1)).toBe(true);
+			expect(nodeTypes.getByNameAndVersion).toHaveBeenCalledWith('MNI-nodes-base.manualTrigger', 1);
 		});
 
 		it('returns false when the resolved node type is not a trigger', () => {
 			nodeTypes.getByNameAndVersion.mockReturnValue(nodeTypeWithGroups(['transform']));
 
-			expect(service.resolveIsTriggerNodeType('n8n-nodes-base.set')).toBe(false);
+			expect(service.resolveIsTriggerNodeType('MNI-nodes-base.set')).toBe(false);
 		});
 
 		it('returns false when the node type cannot be resolved', () => {
@@ -34,7 +34,7 @@ describe('WorkflowHookContextService', () => {
 				throw new Error('Unrecognized node type');
 			});
 
-			expect(service.resolveIsTriggerNodeType('n8n-nodes-base.unknown')).toBe(false);
+			expect(service.resolveIsTriggerNodeType('MNI-nodes-base.unknown')).toBe(false);
 		});
 	});
 });

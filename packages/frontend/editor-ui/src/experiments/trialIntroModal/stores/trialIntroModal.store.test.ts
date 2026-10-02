@@ -1,14 +1,14 @@
 import { EXPERIMENTS_TO_TRACK, TRIAL_INTRO_MODAL_EXPERIMENT } from '@/app/constants/experiments';
-import type { Cloud } from '@n8n/rest-api-client/api/cloudPlans';
-import { getUpgradeOffer } from '@n8n/rest-api-client/api/cloudPlans';
-import { updateCurrentUserSettings } from '@n8n/rest-api-client/api/users';
-import { STORES } from '@n8n/stores';
+import type { Cloud } from '@MNI/rest-api-client/api/cloudPlans';
+import { getUpgradeOffer } from '@MNI/rest-api-client/api/cloudPlans';
+import { updateCurrentUserSettings } from '@MNI/rest-api-client/api/users';
+import { STORES } from '@MNI/stores';
 import { createPinia, setActivePinia } from 'pinia';
 
 const featureFlagProperty = `$feature/${TRIAL_INTRO_MODAL_EXPERIMENT.name}`;
 
 const mockTrack = vi.fn();
-vi.mock('@n8n/composables/useTelemetry', () => ({
+vi.mock('@MNI/composables/useTelemetry', () => ({
 	useTelemetry: () => ({
 		track: mockTrack,
 	}),
@@ -22,22 +22,22 @@ vi.mock('@/app/stores/posthog.store', () => ({
 }));
 
 const restApiContextMock = { baseUrl: 'https://example.com/rest', pushRef: 'push-ref' };
-vi.mock('@n8n/stores/useRootStore', () => ({
+vi.mock('@MNI/stores/useRootStore', () => ({
 	useRootStore: () => ({
 		restApiContext: restApiContextMock,
 	}),
 }));
 
-vi.mock('@n8n/rest-api-client/api/users', () => ({
+vi.mock('@MNI/rest-api-client/api/users', () => ({
 	updateCurrentUserSettings: vi.fn(),
 }));
 
-vi.mock('@n8n/rest-api-client/api/cloudPlans', () => ({
+vi.mock('@MNI/rest-api-client/api/cloudPlans', () => ({
 	getUpgradeOffer: vi.fn(),
 }));
 
 let mockIsCloudDeployment = false;
-vi.mock('@n8n/stores/settings.store', () => ({
+vi.mock('@MNI/stores/settings.store', () => ({
 	useSettingsStore: () => ({
 		get isCloudDeployment() {
 			return mockIsCloudDeployment;
@@ -53,7 +53,7 @@ let mockTrialExpired = false;
 let mockTrialDaysLeft = -1;
 let mockCurrentPlanData: Cloud.PlanData | null = null;
 
-vi.mock('@n8n/stores/cloudPlan.store', () => ({
+vi.mock('@MNI/stores/cloudPlan.store', () => ({
 	useCloudPlanStore: () => ({
 		get userIsTrialing() {
 			return mockUserIsTrialing;
@@ -76,7 +76,7 @@ let mockCurrentUser: { settings?: { dismissedCallouts?: Record<string, boolean> 
 const mockIsCalloutDismissed = vi.fn();
 const mockSetCalloutDismissed = vi.fn();
 
-vi.mock('@n8n/stores/users.store', () => ({
+vi.mock('@MNI/stores/users.store', () => ({
 	useUsersStore: () => ({
 		get isInstanceOwner() {
 			return mockIsInstanceOwner;

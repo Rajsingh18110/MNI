@@ -8,9 +8,9 @@
  * permission" and mounts modal/credential machinery a summary never needs.
  */
 import { computed, inject, watch } from 'vue';
-import type { AgentCapabilitySummary } from '@n8n/api-types';
-import { N8nLoading, N8nMarkdown, N8nText, N8nButton } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+import type { AgentCapabilitySummary } from '@MNI/api-types';
+import { N8nLoading, N8nMarkdown, N8nText, N8nButton } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 
 import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';
 import {
@@ -183,7 +183,7 @@ async function onEditInBuilder() {
 </template>
 
 <style module lang="scss">
-@use '@n8n/design-system/css/mixins/mixins' as scrollbar-mixins;
+@use '@MNI/design-system/css/mixins/mixins' as scrollbar-mixins;
 
 .header {
 	display: flex;

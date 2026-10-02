@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/unbound-method */
-import { type OperationContext, type TransactionRunner, WorkflowEntity } from '@n8n/db';
-import { type DataSource, In, type SelectQueryBuilder } from '@n8n/typeorm';
+import { type OperationContext, type TransactionRunner, WorkflowEntity } from '@MNI/db';
+import { type DataSource, In, type SelectQueryBuilder } from '@MNI/typeorm';
 import { mock, type MockProxy } from 'vitest-mock-extended';
 
 import { mockEntityManager } from '@test/mocking';

@@ -1,9 +1,9 @@
-import type { Logger } from '@n8n/backend-common';
-import type { HttpRequestClient, OutboundHttp } from '@n8n/backend-network';
-import { mockInstance, randomName } from '@n8n/backend-test-utils';
-import { LICENSE_FEATURES } from '@n8n/constants';
-import type { InstanceSettings, PackageDirectoryLoader } from 'n8n-core';
-import { N8N_NODES_API_VERSION, type PublicInstalledPackage } from 'n8n-workflow';
+import type { Logger } from '@MNI/backend-common';
+import type { HttpRequestClient, OutboundHttp } from '@MNI/backend-network';
+import { mockInstance, randomName } from '@MNI/backend-test-utils';
+import { LICENSE_FEATURES } from '@MNI/constants';
+import type { InstanceSettings, PackageDirectoryLoader } from 'MNI-core';
+import { MNI_NODES_API_VERSION, type PublicInstalledPackage } from 'MNI-workflow';
 import { execFile } from 'node:child_process';
 import { access, mkdir, readFile, rename, rm, writeFile } from 'node:fs/promises';
 import path, { join } from 'node:path';
@@ -62,14 +62,14 @@ describe('CommunityPackagesService', () => {
 		unverifiedEnabled: true,
 		authToken: '',
 		aiNodeSdkVersion: 1,
-		nodesApiVersion: N8N_NODES_API_VERSION,
+		nodesApiVersion: MNI_NODES_API_VERSION,
 	};
 	const config = mock<CommunityPackagesConfig>({ ...configDefaults });
 	const loadNodesAndCredentials = mock<LoadNodesAndCredentials>();
 	const installedNodesRepository = mockInstance(InstalledNodesRepository);
 	const installedPackageRepository = mockInstance(InstalledPackagesRepository);
 
-	const nodesDownloadDir = path.join('tmp', 'n8n-vi-global-downloads');
+	const nodesDownloadDir = path.join('tmp', 'MNI-vi-global-downloads');
 	const instanceSettings = mock<InstanceSettings>({ nodesDownloadDir });
 
 	const logger = mock<Logger>();
@@ -127,19 +127,19 @@ describe('CommunityPackagesService', () => {
 			'should fail with invalid version',
 			(version) => {
 				expect(() =>
-					communityPackagesService.parseNpmPackageName(`n8n-nodes-test@${version}`),
+					communityPackagesService.parseNpmPackageName(`MNI-nodes-test@${version}`),
 				).toThrow(`Invalid version: ${version}`);
 			},
 		);
 
-		test.each(['n8n-nodes-base', '@n8n/n8n-nodes-langchain'])(
+		test.each(['MNI-nodes-base', '@MNI/MNI-nodes-langchain'])(
 			'should reject reserved package name %s',
 			(name) => {
 				expect(() => communityPackagesService.parseNpmPackageName(name)).toThrow(/reserved/);
 			},
 		);
 
-		test.each(['n8n-nodes-base@1.2.3', '@n8n/n8n-nodes-langchain@1.2.3'])(
+		test.each(['MNI-nodes-base@1.2.3', '@MNI/MNI-nodes-langchain@1.2.3'])(
 			'should reject reserved package name with version specifier %s',
 			(name) => {
 				expect(() => communityPackagesService.parseNpmPackageName(name)).toThrow(/reserved/);
@@ -147,19 +147,19 @@ describe('CommunityPackagesService', () => {
 		);
 
 		test('should accept a package name that merely starts with a reserved name', () => {
-			const parsed = communityPackagesService.parseNpmPackageName('n8n-nodes-base-extended');
-			expect(parsed.packageName).toBe('n8n-nodes-base-extended');
+			const parsed = communityPackagesService.parseNpmPackageName('MNI-nodes-base-extended');
+			expect(parsed.packageName).toBe('MNI-nodes-base-extended');
 		});
 
 		test.each(['beta', 'next', 'latest', 'canary', 'rc-1'])(
 			'should accept npm dist-tag as version',
 			(tag) => {
-				const parsed = communityPackagesService.parseNpmPackageName(`n8n-nodes-test@${tag}`);
+				const parsed = communityPackagesService.parseNpmPackageName(`MNI-nodes-test@${tag}`);
 				expect(parsed.version).toBe(tag);
 			},
 		);
 
-		test.each(['../n8n-nodes-test', 'n8n-nodes-test/n8n-nodes-test'])(
+		test.each(['../MNI-nodes-test', 'MNI-nodes-test/MNI-nodes-test'])(
 			'should fail with an invalid scope segment',
 			(name) => {
 				expect(() => communityPackagesService.parseNpmPackageName(name)).toThrowError();
@@ -167,10 +167,10 @@ describe('CommunityPackagesService', () => {
 		);
 
 		test.each([
-			'@scope/n8n-nodes-test/..',
-			'@scope/n8n-nodes-test/../..',
-			'n8n-nodes-test/..',
-			'n8n-nodes-test/../../node_modules/n8n-nodes-other',
+			'@scope/MNI-nodes-test/..',
+			'@scope/MNI-nodes-test/../..',
+			'MNI-nodes-test/..',
+			'MNI-nodes-test/../../node_modules/MNI-nodes-other',
 		])('should fail when the name carries extra path segments (%s)', (name) => {
 			expect(() => communityPackagesService.parseNpmPackageName(name)).toThrowError();
 		});
@@ -198,7 +198,7 @@ describe('CommunityPackagesService', () => {
 		});
 
 		test('should parse valid package name, scope and version', () => {
-			const scope = '@n8n';
+			const scope = '@MNI';
 			const name = mockPackageName();
 			const version = '0.1.1';
 			const fullPackageName = `${scope}/${name}@${version}`;
@@ -217,14 +217,14 @@ describe('CommunityPackagesService', () => {
 		const resolvePackageDirectory = (packageName: string) =>
 			communityPackagesService['resolvePackageDirectory'](packageName);
 
-		test.each(['@scope/n8n-nodes-test/..', 'n8n-nodes-test/..', '../../etc', '..', '.', ''])(
+		test.each(['@scope/MNI-nodes-test/..', 'MNI-nodes-test/..', '../../etc', '..', '.', ''])(
 			'should reject the name "%s"',
 			(packageName) => {
 				expect(() => resolvePackageDirectory(packageName)).toThrowError('Invalid package name');
 			},
 		);
 
-		test.each(['n8n-nodes-test', '@scope/n8n-nodes-test'])(
+		test.each(['MNI-nodes-test', '@scope/MNI-nodes-test'])(
 			'should resolve the directory for "%s"',
 			(packageName) => {
 				expect(resolvePackageDirectory(packageName)).toBe(
@@ -405,7 +405,7 @@ describe('CommunityPackagesService', () => {
 	});
 
 	describe('updatePackage', () => {
-		const PACKAGE_NAME = 'n8n-nodes-test';
+		const PACKAGE_NAME = 'MNI-nodes-test';
 		const installedPackageForUpdateTest = mock<InstalledPackages>({
 			packageName: PACKAGE_NAME,
 			installedVersion: COMMUNITY_PACKAGE_VERSION.CURRENT,
@@ -468,7 +468,7 @@ describe('CommunityPackagesService', () => {
 					devDependencies: { 'a-dev-dep': '1.0.0' },
 					peerDependencies: { 'a-peer-dep': '2.0.0' },
 					optionalDependencies: { 'an-optional-dep': '3.0.0' },
-					n8n: { n8nNodesApiVersion: N8N_NODES_API_VERSION },
+					MNI: { n8nNodesApiVersion: MNI_NODES_API_VERSION },
 				}),
 			);
 			vi.mocked(writeFile).mockResolvedValue(undefined);
@@ -532,7 +532,7 @@ describe('CommunityPackagesService', () => {
 						devDependencies: {},
 						peerDependencies: {},
 						optionalDependencies: {},
-						n8n: { n8nNodesApiVersion: N8N_NODES_API_VERSION },
+						MNI: { n8nNodesApiVersion: MNI_NODES_API_VERSION },
 					}),
 				)
 				.mockResolvedValueOnce(
@@ -548,7 +548,7 @@ describe('CommunityPackagesService', () => {
 						name: PACKAGE_NAME,
 						version: '2.0.0',
 						dependencies: { 'some-actual-dep': '1.2.3' },
-						n8n: { n8nNodesApiVersion: N8N_NODES_API_VERSION },
+						MNI: { n8nNodesApiVersion: MNI_NODES_API_VERSION },
 					}),
 				)
 				.mockResolvedValueOnce(
@@ -649,7 +649,7 @@ describe('CommunityPackagesService', () => {
 						name: PACKAGE_NAME,
 						version: '2.0.0',
 						dependencies: { 'some-actual-dep': '1.2.3' },
-						n8n: { n8nNodesApiVersion },
+						MNI: { n8nNodesApiVersion },
 					}),
 				);
 				return await communityPackagesService.updatePackage(
@@ -661,8 +661,8 @@ describe('CommunityPackagesService', () => {
 			test('should reject the update when the package requires a newer node API version', async () => {
 				license.isCustomNpmRegistryEnabled.mockReturnValue(true);
 
-				await expect(updateToIncompatible(N8N_NODES_API_VERSION + 1)).rejects.toThrow(
-					"This community node isn't compatible with your version of n8n. Update MNI to use it.",
+				await expect(updateToIncompatible(MNI_NODES_API_VERSION + 1)).rejects.toThrow(
+					"This community node isn't compatible with your version of MNI. Update MNI to use it.",
 				);
 
 				expect(loadNodesAndCredentials.loadPackage).not.toHaveBeenCalled();
@@ -682,7 +682,7 @@ describe('CommunityPackagesService', () => {
 			test('should update to a package that declares the supported node API version', async () => {
 				license.isCustomNpmRegistryEnabled.mockReturnValue(true);
 
-				await expect(updateToIncompatible(N8N_NODES_API_VERSION)).resolves.toBe(packageAfterUpdate);
+				await expect(updateToIncompatible(MNI_NODES_API_VERSION)).resolves.toBe(packageAfterUpdate);
 
 				expect(loadNodesAndCredentials.loadPackage).toHaveBeenCalledWith(PACKAGE_NAME);
 				expect(installedPackageRepository.replaceInstalledPackageWithNodes).toHaveBeenCalled();
@@ -709,7 +709,7 @@ describe('CommunityPackagesService', () => {
 						devDependencies: {},
 						peerDependencies: {},
 						optionalDependencies: {},
-						n8n: { n8nNodesApiVersion: N8N_NODES_API_VERSION },
+						MNI: { n8nNodesApiVersion: MNI_NODES_API_VERSION },
 					}),
 				)
 				.mockResolvedValueOnce(
@@ -725,7 +725,7 @@ describe('CommunityPackagesService', () => {
 						name: PACKAGE_NAME,
 						version: '1.0.0',
 						dependencies: {},
-						n8n: { n8nNodesApiVersion: N8N_NODES_API_VERSION },
+						MNI: { n8nNodesApiVersion: MNI_NODES_API_VERSION },
 					}),
 				)
 				.mockResolvedValueOnce(
@@ -885,7 +885,7 @@ describe('CommunityPackagesService', () => {
 			expect(rm).toHaveBeenCalledTimes(2);
 			expect(rm).toHaveBeenNthCalledWith(
 				1,
-				path.join(nodesDownloadDir, 'n8n-nodes-test-latest.tgz'),
+				path.join(nodesDownloadDir, 'MNI-nodes-test-latest.tgz'),
 			);
 			expect(rm).toHaveBeenNthCalledWith(2, backupDirectory, {
 				recursive: true,
@@ -927,7 +927,7 @@ describe('CommunityPackagesService', () => {
 						dependencies: { 'some-actual-dep': '1.2.3' },
 						// The dependency-stripping rewrite must keep the `MNI` section: the
 						// compatibility guard reads it from the rewritten file.
-						n8n: { n8nNodesApiVersion: N8N_NODES_API_VERSION },
+						MNI: { n8nNodesApiVersion: MNI_NODES_API_VERSION },
 					},
 					null,
 					2,
@@ -1055,7 +1055,7 @@ describe('CommunityPackagesService', () => {
 
 	describe('removePackage', () => {
 		test('should remove a broken package that cannot be loaded', async () => {
-			const PACKAGE_NAME = 'n8n-nodes-broken';
+			const PACKAGE_NAME = 'MNI-nodes-broken';
 			const installedPackage = mock<InstalledPackages>({ packageName: PACKAGE_NAME });
 
 			// A broken package fails to load, but removal must not depend on loading it
@@ -1081,7 +1081,7 @@ describe('CommunityPackagesService', () => {
 		});
 
 		test('should log and not throw when publishing the uninstall event fails', async () => {
-			const PACKAGE_NAME = 'n8n-nodes-test';
+			const PACKAGE_NAME = 'MNI-nodes-test';
 			const installedPackage = mock<InstalledPackages>({ packageName: PACKAGE_NAME });
 
 			loadNodesAndCredentials.unloadPackage.mockResolvedValue(undefined);
@@ -1105,7 +1105,7 @@ describe('CommunityPackagesService', () => {
 
 	describe('restorePackageFiles', () => {
 		test('restores the package directory before updating the package.json manifest, so a crash mid-restore leaves the directory intact', async () => {
-			const packageName = 'n8n-nodes-test';
+			const packageName = 'MNI-nodes-test';
 			const backupDirectory = `${nodesDownloadDir}/node_modules/${packageName}.backup-123`;
 			const callOrder: string[] = [];
 
@@ -1128,7 +1128,7 @@ describe('CommunityPackagesService', () => {
 		});
 
 		test('rolls the package.json dependency back even when restoring the directory fails', async () => {
-			const packageName = 'n8n-nodes-test';
+			const packageName = 'MNI-nodes-test';
 			const backupDirectory = `${nodesDownloadDir}/node_modules/${packageName}.backup-123`;
 
 			vi.mocked(rm).mockResolvedValue(undefined);
@@ -1148,7 +1148,7 @@ describe('CommunityPackagesService', () => {
 		});
 
 		test('drops the manifest entry when a fresh install fails and the directory restore fails', async () => {
-			const packageName = 'n8n-nodes-test';
+			const packageName = 'MNI-nodes-test';
 
 			vi.mocked(rm).mockRejectedValue(new Error('EBUSY'));
 			vi.mocked(readFile).mockResolvedValue(
@@ -1166,7 +1166,7 @@ describe('CommunityPackagesService', () => {
 	});
 
 	describe('restoreLoadedPackage', () => {
-		const packageName = 'n8n-nodes-test';
+		const packageName = 'MNI-nodes-test';
 
 		beforeEach(() => {
 			loadNodesAndCredentials.unloadPackage.mockResolvedValue(undefined);
@@ -1290,15 +1290,15 @@ describe('CommunityPackagesService', () => {
 			// package silently loses its available-update indicator.
 			vi.mocked(readFile).mockResolvedValue('{ "name": "installed-nodes", "depende');
 			installedPackageRepository.find.mockResolvedValue([
-				mock<InstalledPackages>({ packageName: 'n8n-nodes-a', installedVersion: '1.2.3' }),
-				mock<InstalledPackages>({ packageName: 'n8n-nodes-b', installedVersion: '4.5.6' }),
+				mock<InstalledPackages>({ packageName: 'MNI-nodes-a', installedVersion: '1.2.3' }),
+				mock<InstalledPackages>({ packageName: 'MNI-nodes-b', installedVersion: '4.5.6' }),
 			]);
 
 			await communityPackagesService.ensurePackageJson();
 
 			expect(writeFile).toHaveBeenCalledWith(
 				packageJsonPath,
-				packageJsonWith({ 'n8n-nodes-a': '1.2.3', 'n8n-nodes-b': '4.5.6' }),
+				packageJsonWith({ 'MNI-nodes-a': '1.2.3', 'MNI-nodes-b': '4.5.6' }),
 				'utf-8',
 			);
 		});
@@ -1404,7 +1404,7 @@ describe('CommunityPackagesService', () => {
 				JSON.stringify({
 					name: 'package-1',
 					version: '1.0.0',
-					n8n: { n8nNodesApiVersion: N8N_NODES_API_VERSION + 1 },
+					MNI: { n8nNodesApiVersion: MNI_NODES_API_VERSION + 1 },
 				}),
 			);
 
@@ -1424,7 +1424,7 @@ describe('CommunityPackagesService', () => {
 			loadNodesAndCredentials.isKnownNode.mockReturnValue(false);
 			config.reinstallMissing = true;
 			vi.mocked(readFile).mockResolvedValue(
-				JSON.stringify({ name: 'package-1', version: '1.0.0', n8n: { n8nNodesApiVersion: '3' } }),
+				JSON.stringify({ name: 'package-1', version: '1.0.0', MNI: { n8nNodesApiVersion: '3' } }),
 			);
 
 			await communityPackagesService.checkForMissingPackages();
@@ -1445,7 +1445,7 @@ describe('CommunityPackagesService', () => {
 				JSON.stringify({
 					name: 'package-1',
 					version: '1.0.0',
-					n8n: { n8nNodesApiVersion: N8N_NODES_API_VERSION },
+					MNI: { n8nNodesApiVersion: MNI_NODES_API_VERSION },
 				}),
 			);
 
@@ -1738,16 +1738,16 @@ describe('CommunityPackagesService', () => {
 		test('should rebuild an unreadable ledger from the database and still apply the mutation', async () => {
 			// Without this the mutation throws on the corrupt file, so every install and
 			// uninstall stays broken until the process restarts.
-			vi.mocked(readFile).mockResolvedValue('{ "dependencies": { "n8n-nodes-a": "1.0.0"');
+			vi.mocked(readFile).mockResolvedValue('{ "dependencies": { "MNI-nodes-a": "1.0.0"');
 			installedPackageRepository.find.mockResolvedValue([
-				mock<InstalledPackages>({ packageName: 'n8n-nodes-a', installedVersion: '1.0.0' }),
+				mock<InstalledPackages>({ packageName: 'MNI-nodes-a', installedVersion: '1.0.0' }),
 			]);
 
 			const rebuiltPackageJson = JSON.stringify(
 				{
 					name: 'installed-nodes',
 					private: true,
-					dependencies: { 'n8n-nodes-a': '1.0.0', 'test-package': '1.0.0' },
+					dependencies: { 'MNI-nodes-a': '1.0.0', 'test-package': '1.0.0' },
 				},
 				null,
 				2,

@@ -1,6 +1,6 @@
-import { TaskRunnersConfig } from '@n8n/config';
-import { Time } from '@n8n/constants';
-import { Service } from '@n8n/di';
+import { TaskRunnersConfig } from '@MNI/config';
+import { Time } from '@MNI/constants';
+import { Service } from '@MNI/di';
 import { randomBytes, timingSafeEqual } from 'crypto';
 
 import { CacheService } from '@/services/cache/cache.service';

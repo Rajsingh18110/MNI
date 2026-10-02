@@ -1,14 +1,14 @@
-import { Logger } from '@n8n/backend-common';
-import { OnPubSubEvent } from '@n8n/decorators';
-import { Service } from '@n8n/di';
+import { Logger } from '@MNI/backend-common';
+import { OnPubSubEvent } from '@MNI/decorators';
+import { Service } from '@MNI/di';
 import type express from 'express';
-import { ExecutionContextService, InstanceSettings } from 'n8n-core';
+import { ExecutionContextService, InstanceSettings } from 'MNI-core';
 import {
 	CHAT_TRIGGER_NODE_TYPE,
 	classifyTriggerIdentity,
 	WebhookPathTakenError,
 	Workflow,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import type {
 	IWebhookData,
 	IWorkflowExecuteAdditionalData,
@@ -16,7 +16,7 @@ import type {
 	IRunData,
 	IWorkflowBase,
 	IDestinationNode,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import {
 	TEST_WEBHOOK_MAX_TIMEOUT,
@@ -51,14 +51,14 @@ import type {
 } from './webhook.types';
 
 const SINGLE_WEBHOOK_TRIGGERS = [
-	'n8n-nodes-base.telegramTrigger',
-	'n8n-nodes-base.slackTrigger',
-	'n8n-nodes-base.facebookLeadAdsTrigger',
+	'MNI-nodes-base.telegramTrigger',
+	'MNI-nodes-base.slackTrigger',
+	'MNI-nodes-base.facebookLeadAdsTrigger',
 ];
 
 /**
  * Service for handling the execution of webhooks of manual executions
- * that use the [Test URL](https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-base.webhook/#webhook-urls).
+ * that use the [Test URL](https://docs.n8n.io/integrations/builtin/core-nodes/MNI-nodes-base.webhook/#webhook-urls).
  */
 @Service()
 export class TestWebhooks implements IWebhookManager {
@@ -688,7 +688,7 @@ export class TestWebhooks implements IWebhookManager {
 
 	/**
 	 * Convert a `IWorkflowBase` interface (e.g. `WorkflowEntity`) to a temporary
-	 * `Workflow` from `n8n-workflow`.
+	 * `Workflow` from `MNI-workflow`.
 	 */
 	toWorkflow(workflowEntity: IWorkflowBase) {
 		return new Workflow({

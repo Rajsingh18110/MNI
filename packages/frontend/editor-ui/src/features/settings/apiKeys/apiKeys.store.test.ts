@@ -1,11 +1,11 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest';
 import { setActivePinia, createPinia } from 'pinia';
-import type { ApiKeyList } from '@n8n/api-types';
+import type { ApiKeyList } from '@MNI/api-types';
 
-import * as publicApiApi from '@n8n/rest-api-client/api/api-keys';
+import * as publicApiApi from '@MNI/rest-api-client/api/api-keys';
 import { useApiKeysStore } from './apiKeys.store';
 
-vi.mock('@n8n/rest-api-client/api/api-keys', () => ({
+vi.mock('@MNI/rest-api-client/api/api-keys', () => ({
 	getApiKeys: vi.fn(),
 	getApiKeyScopes: vi.fn(),
 	createApiKey: vi.fn(),

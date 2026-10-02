@@ -1,5 +1,5 @@
 import type { Project } from '@playwright/test';
-import type { N8NConfig } from 'n8n-containers/stack';
+import type { N8NConfig } from 'MNI-containers/stack';
 
 import { ALLOW_CONTAINER_ONLY, CONTAINER_ONLY_MODES, LICENSED_TAG } from './fixtures/capabilities';
 import { ENGINE_TAG_PREFIX } from './fixtures/engine-parity';
@@ -58,14 +58,14 @@ const BENCHMARK_CONFIG: N8NConfig = {
 	// autocannon's long-lived connections across 2+ procs. UI tests use `first`.
 	lbPolicy: 'least_conn',
 	env: {
-		N8N_LOG_LEVEL: 'error',
-		N8N_DIAGNOSTICS_ENABLED: 'false',
-		N8N_METRICS_INCLUDE_MESSAGE_EVENT_BUS_METRICS: 'true',
-		N8N_METRICS_INCLUDE_QUEUE_METRICS: 'true',
+		MNI_LOG_LEVEL: 'error',
+		MNI_DIAGNOSTICS_ENABLED: 'false',
+		MNI_METRICS_INCLUDE_MESSAGE_EVENT_BUS_METRICS: 'true',
+		MNI_METRICS_INCLUDE_QUEUE_METRICS: 'true',
 		DB_POSTGRESDB_POOL_SIZE: '10',
 		DB_POSTGRESDB_CONNECTION_TIMEOUT: '300000',
 		DB_PING_INTERVAL_SECONDS: '5',
-		N8N_CONCURRENCY_PRODUCTION_LIMIT: '20',
+		MNI_CONCURRENCY_PRODUCTION_LIMIT: '20',
 		QUEUE_BULL_REDIS_KEEP_ALIVE: 'true',
 		QUEUE_BULL_REDIS_TIMEOUT_THRESHOLD: '60000',
 		QUEUE_WORKER_LOCK_DURATION: '300000',
@@ -86,7 +86,7 @@ export interface BenchOptions {
 	/** Dedicated `MNI webhook` procs. Forces queue mode when > 0. */
 	webhooks?: number;
 	/**
-	 * Adds the `tracing` service (Jaeger + n8n-tracer) and turns on OTEL emission.
+	 * Adds the `tracing` service (Jaeger + MNI-tracer) and turns on OTEL emission.
 	 * Adds ~5-10% per-request overhead — opt in only when measuring OTEL cost or
 	 * collecting flamegraph data, not for clean ceiling numbers.
 	 */
@@ -121,15 +121,15 @@ export function benchConfig(isolation: string, opts: BenchOptions = {}): N8NConf
 	const env: Record<string, string> = {
 		...BENCHMARK_CONFIG.env,
 		...(opts.tracing && {
-			N8N_OTEL_ENABLED: 'true',
-			N8N_OTEL_EXPORTER_OTLP_ENDPOINT: 'http://jaeger:4318',
-			N8N_OTEL_EXPORTER_SERVICE_NAME: `n8n-bench-${isolation}`,
-			N8N_OTEL_TRACES_INCLUDE_NODE_SPANS: 'true',
+			MNI_OTEL_ENABLED: 'true',
+			MNI_OTEL_EXPORTER_OTLP_ENDPOINT: 'http://jaeger:4318',
+			MNI_OTEL_EXPORTER_SERVICE_NAME: `MNI-bench-${isolation}`,
+			MNI_OTEL_TRACES_INCLUDE_NODE_SPANS: 'true',
 		}),
 		...opts.env,
 		TEST_ISOLATION: `bench-${isolation}`,
 	};
-	if ((opts.mains ?? 1) > 1) env.N8N_MULTI_MAIN_SETUP_ENABLED = 'true';
+	if ((opts.mains ?? 1) > 1) env.MNI_MULTI_MAIN_SETUP_ENABLED = 'true';
 
 	return {
 		...BENCHMARK_CONFIG,
@@ -161,12 +161,12 @@ const LOCAL_ONLY_BENCHMARK_PROFILES: BenchmarkProfile[] = [
 			env: {
 				...BENCHMARK_CONFIG.env,
 				// Instance-AI module & model config
-				N8N_ENABLED_MODULES: 'instance-ai',
-				N8N_INSTANCE_AI_MODEL: process.env.N8N_INSTANCE_AI_MODEL ?? 'openai/gpt-4o-mini',
+				MNI_ENABLED_MODULES: 'instance-ai',
+				MNI_INSTANCE_AI_MODEL: process.env.MNI_INSTANCE_AI_MODEL ?? 'openai/gpt-4o-mini',
 				// Forward API keys to the container
-				...(process.env.N8N_AI_OPENAI_API_KEY && {
-					N8N_AI_OPENAI_API_KEY: process.env.N8N_AI_OPENAI_API_KEY,
-					OPENAI_API_KEY: process.env.N8N_AI_OPENAI_API_KEY,
+				...(process.env.MNI_AI_OPENAI_API_KEY && {
+					MNI_AI_OPENAI_API_KEY: process.env.MNI_AI_OPENAI_API_KEY,
+					OPENAI_API_KEY: process.env.MNI_AI_OPENAI_API_KEY,
 				}),
 				...(process.env.LANGSMITH_API_KEY && {
 					LANGSMITH_API_KEY: process.env.LANGSMITH_API_KEY,
@@ -181,11 +181,11 @@ const LOCAL_ONLY_BENCHMARK_PROFILES: BenchmarkProfile[] = [
 					CEREBRAS_API_KEY: process.env.CEREBRAS_API_KEY,
 				}),
 				// Sandbox config — forwarded from host env if present
-				...(process.env.N8N_INSTANCE_AI_SANDBOX_ENABLED && {
-					N8N_INSTANCE_AI_SANDBOX_ENABLED: process.env.N8N_INSTANCE_AI_SANDBOX_ENABLED,
-					N8N_INSTANCE_AI_SANDBOX_PROVIDER:
-						process.env.N8N_INSTANCE_AI_SANDBOX_PROVIDER ?? 'daytona',
-					N8N_INSTANCE_AI_SANDBOX_IMAGE: process.env.N8N_INSTANCE_AI_SANDBOX_IMAGE ?? '',
+				...(process.env.MNI_INSTANCE_AI_SANDBOX_ENABLED && {
+					MNI_INSTANCE_AI_SANDBOX_ENABLED: process.env.MNI_INSTANCE_AI_SANDBOX_ENABLED,
+					MNI_INSTANCE_AI_SANDBOX_PROVIDER:
+						process.env.MNI_INSTANCE_AI_SANDBOX_PROVIDER ?? 'daytona',
+					MNI_INSTANCE_AI_SANDBOX_IMAGE: process.env.MNI_INSTANCE_AI_SANDBOX_IMAGE ?? '',
 				}),
 				...(process.env.DAYTONA_API_URL && {
 					DAYTONA_API_URL: process.env.DAYTONA_API_URL,

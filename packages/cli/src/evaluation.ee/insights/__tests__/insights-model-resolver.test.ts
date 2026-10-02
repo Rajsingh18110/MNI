@@ -3,7 +3,7 @@ import type {
 	EvaluationConfig,
 	EvaluationConfigRepository,
 	User,
-} from '@n8n/db';
+} from '@MNI/db';
 import type { Mocked } from 'vitest';
 import { mock } from 'vitest-mock-extended';
 
@@ -26,7 +26,7 @@ function configWithJudge(over: { provider?: string; model?: string; credentialId
 				type: 'llm_judge',
 				config: {
 					preset: 'correctness',
-					provider: over.provider ?? '@n8n/n8n-nodes-langchain.lmChatAnthropic',
+					provider: over.provider ?? '@MNI/MNI-nodes-langchain.lmChatAnthropic',
 					credentialId: over.credentialId ?? 'cred-1',
 					model: over.model ?? 'claude-sonnet-4-5',
 				},
@@ -67,7 +67,7 @@ describe('InsightsModelResolver', () => {
 	it('does not forward the credential base URL for Google (SDK default has the version path)', async () => {
 		evalConfigRepo.findByIdAndWorkflowId.mockResolvedValueOnce(
 			configWithJudge({
-				provider: '@n8n/n8n-nodes-langchain.lmChatGoogleGemini',
+				provider: '@MNI/MNI-nodes-langchain.lmChatGoogleGemini',
 				model: 'gemini-2.5-pro',
 			}),
 		);
@@ -87,7 +87,7 @@ describe('InsightsModelResolver', () => {
 
 	it('does not forward the credential base URL for Cohere (default omits the /v2 path)', async () => {
 		evalConfigRepo.findByIdAndWorkflowId.mockResolvedValueOnce(
-			configWithJudge({ provider: '@n8n/n8n-nodes-langchain.lmChatCohere', model: 'command-r' }),
+			configWithJudge({ provider: '@MNI/MNI-nodes-langchain.lmChatCohere', model: 'command-r' }),
 		);
 		// Cohere's hidden `url` defaults to api.cohere.ai, which the SDK can't use.
 		credentialsService.decrypt.mockResolvedValueOnce({
@@ -127,7 +127,7 @@ describe('InsightsModelResolver', () => {
 
 	it('returns null for an unmapped provider (falls back to deterministic)', async () => {
 		evalConfigRepo.findByIdAndWorkflowId.mockResolvedValueOnce(
-			configWithJudge({ provider: '@n8n/n8n-nodes-langchain.lmChatOllama' }),
+			configWithJudge({ provider: '@MNI/MNI-nodes-langchain.lmChatOllama' }),
 		);
 		expect(await resolver.resolve(user, 'wf-1', 'cfg-1')).toBeNull();
 	});

@@ -5,8 +5,8 @@ import type {
 	IWebhookFunctions,
 	IHttpRequestOptions,
 	IHttpRequestMethods,
-} from 'n8n-workflow';
-import { sanitizeXmlName } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { sanitizeXmlName } from 'MNI-workflow';
 import { parseString } from 'xml2js';
 import { getAwsCredentials } from '../GenericFunctions';
 

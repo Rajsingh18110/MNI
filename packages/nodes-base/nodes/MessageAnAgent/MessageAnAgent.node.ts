@@ -1,5 +1,5 @@
-import type { INodeTypeBaseDescription, IVersionedNodeType } from 'n8n-workflow';
-import { VersionedNodeType } from 'n8n-workflow';
+import type { INodeTypeBaseDescription, IVersionedNodeType } from 'MNI-workflow';
+import { VersionedNodeType } from 'MNI-workflow';
 
 import { MessageAnAgentV1 } from './v1/MessageAnAgentV1.node';
 import { MessageAnAgentV2 } from './v2/MessageAnAgentV2.node';

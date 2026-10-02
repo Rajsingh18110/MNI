@@ -1,4 +1,4 @@
-import { generateNanoId } from '@n8n/utils/generate-nano-id';
+import { generateNanoId } from '@MNI/utils/generate-nano-id';
 
 type AgentResourceIdPrefix = 'skill' | 'task';
 

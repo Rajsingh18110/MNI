@@ -1,11 +1,11 @@
-import { httpRequest } from '@n8n/backend-network/testing';
+import { httpRequest } from '@MNI/backend-network/testing';
 import {
 	buildRfcStyleUserAgent,
 	getDefaultN8nOutboundUserAgent,
-} from '@n8n/backend-network/testing';
-import { HttpRequestConfig } from '@n8n/config';
-import { Container } from '@n8n/di';
-import type { INode, IWorkflowExecuteAdditionalData, Workflow } from 'n8n-workflow';
+} from '@MNI/backend-network/testing';
+import { HttpRequestConfig } from '@MNI/config';
+import { Container } from '@MNI/di';
+import type { INode, IWorkflowExecuteAdditionalData, Workflow } from 'MNI-workflow';
 import nock from 'nock';
 import { mock } from 'vitest-mock-extended';
 

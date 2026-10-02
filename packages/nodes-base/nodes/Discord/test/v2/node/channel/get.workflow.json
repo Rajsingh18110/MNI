@@ -5,7 +5,7 @@
       "parameters": {},
       "id": "fe1dd916-f466-40c7-9dfa-dfec59219a86",
       "name": "When clicking \"Execute Workflow\"",
-      "type": "n8n-nodes-base.manualTrigger",
+      "type": "MNI-nodes-base.manualTrigger",
       "typeVersion": 1,
       "position": [
         -560,
@@ -33,7 +33,7 @@
       },
       "id": "09cccc50-10d2-49a1-9b9a-9ba1a11a3657",
       "name": "OAuth test",
-      "type": "n8n-nodes-base.discord",
+      "type": "MNI-nodes-base.discord",
       "typeVersion": 2,
       "position": [
         -320,
@@ -50,7 +50,7 @@
       "parameters": {},
       "id": "7f367512-810f-4d5d-9020-0f01a47039f7",
       "name": "No Operation, do nothing",
-      "type": "n8n-nodes-base.noOp",
+      "type": "MNI-nodes-base.noOp",
       "typeVersion": 1,
       "position": [
         -80,

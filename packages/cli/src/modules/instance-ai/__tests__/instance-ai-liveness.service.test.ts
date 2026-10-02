@@ -1,10 +1,10 @@
-import type { InstanceAiEvent } from '@n8n/api-types';
-import type { Logger } from '@n8n/backend-common';
+import type { InstanceAiEvent } from '@MNI/api-types';
+import type { Logger } from '@MNI/backend-common';
 import { mock } from 'vitest-mock-extended';
 
-vi.mock('@n8n/instance-ai', async () => ({
+vi.mock('@MNI/instance-ai', async () => ({
 	...(await vi.importActual<Record<string, unknown>>(
-		'../../../../../@n8n/instance-ai/src/runtime/liveness-policy',
+		'../../../../../@MNI/instance-ai/src/runtime/liveness-policy',
 	)),
 	orchestratorAgentId: (runId: string) => `orchestrator-${runId}`,
 }));
@@ -13,7 +13,7 @@ import {
 	createInstanceAiLivenessPolicyConfig,
 	InstanceAiLivenessPolicy,
 	type InstanceAiLivenessTimeoutReason,
-} from '@n8n/instance-ai';
+} from '@MNI/instance-ai';
 
 import {
 	INSTANCE_AI_RUN_TIMEOUT_REASON,

@@ -1,7 +1,7 @@
 import { describe, it, expect, vi } from 'vitest';
 import { ref, computed } from 'vue';
 import type { IWorkflowDb, INodeUi } from '@/Interface';
-import { NodeDiffStatus } from 'n8n-workflow';
+import { NodeDiffStatus } from 'MNI-workflow';
 
 // Mock stores
 vi.mock('@/app/stores/nodeTypes.store', () => ({
@@ -10,7 +10,7 @@ vi.mock('@/app/stores/nodeTypes.store', () => ({
 	}),
 }));
 
-vi.mock('@n8n/i18n', () => ({
+vi.mock('@MNI/i18n', () => ({
 	useI18n: () => ({
 		baseText: (key: string) => key,
 	}),
@@ -48,7 +48,7 @@ describe('useWorkflowDiffUI', () => {
 		return {
 			id: 'node-1',
 			name: 'Test Node',
-			type: 'n8n-nodes-base.noOp',
+			type: 'MNI-nodes-base.noOp',
 			typeVersion: 1,
 			position: [0, 0],
 			parameters: {},
@@ -326,12 +326,12 @@ describe('useWorkflowDiffUI', () => {
 			const baseNode = createMockNode({
 				id: 'node-1',
 				name: 'Edit Fields',
-				type: 'n8n-nodes-base.set',
+				type: 'MNI-nodes-base.set',
 			});
 			const targetNode = createMockNode({
 				id: 'node-1',
 				name: 'Get Calendar Events',
-				type: 'n8n-nodes-base.googleCalendar',
+				type: 'MNI-nodes-base.googleCalendar',
 			});
 			const nodesDiff = ref(
 				new Map([['node-1', { status: NodeDiffStatus.Modified, node: baseNode }]]),
@@ -352,7 +352,7 @@ describe('useWorkflowDiffUI', () => {
 			const deletedNode = createMockNode({
 				id: 'node-1',
 				name: 'Removed Node',
-				type: 'n8n-nodes-base.slack',
+				type: 'MNI-nodes-base.slack',
 			});
 			const nodesDiff = ref(
 				new Map([['node-1', { status: NodeDiffStatus.Deleted, node: deletedNode }]]),

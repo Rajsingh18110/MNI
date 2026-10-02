@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { useRoute } from 'vue-router';
-import { N8nCard, N8nHeading, N8nIcon, N8nText } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+import { N8nCard, N8nHeading, N8nIcon, N8nText } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 import { useBannersStore } from '@/features/shared/banners/banners.store';
 import { useProjectsStore } from '@/features/collaboration/projects/projects.store';
 import { useProjectPages } from '@/features/collaboration/projects/composables/useProjectPages';
@@ -11,7 +11,7 @@ import { useSurfaceMcpEmptyState } from '@/experiments/surfaceMcpToNewCloudUsers
 import { useCredentialsAppSelectionStore } from '@/experiments/credentialsAppSelection/stores/credentialsAppSelection.store';
 import { useReadyToRunStore } from '@/features/workflows/readyToRun/stores/readyToRun.store';
 import AppSelectionPage from '@/experiments/credentialsAppSelection/components/AppSelectionPage.vue';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { useCreateAgent } from '@/features/agents/composables/useCreateAgent';
 import { useAgentPermissions } from '@/features/agents/composables/useAgentPermissions';
 import SurfaceMcpEmptyStateTile from '@/experiments/surfaceMcpToNewCloudUsers/components/SurfaceMcpEmptyStateTile.vue';

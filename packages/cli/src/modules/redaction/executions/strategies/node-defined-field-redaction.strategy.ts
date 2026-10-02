@@ -1,6 +1,6 @@
-import { Logger } from '@n8n/backend-common';
-import { Service } from '@n8n/di';
-import type { INodeExecutionData, IRedactedFieldMarker, ITaskDataConnections } from 'n8n-workflow';
+import { Logger } from '@MNI/backend-common';
+import { Service } from '@MNI/di';
+import type { INodeExecutionData, IRedactedFieldMarker, ITaskDataConnections } from 'MNI-workflow';
 
 import type { RedactableExecution } from '@/executions/execution-redaction';
 import { NodeTypes } from '@/node-types';

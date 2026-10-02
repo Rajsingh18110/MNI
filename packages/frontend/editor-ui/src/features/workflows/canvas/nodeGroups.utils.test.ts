@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from 'vitest';
-import type { IWorkflowGroup } from 'n8n-workflow';
+import type { IWorkflowGroup } from 'MNI-workflow';
 
 import { snapshotGroup, deleteGroupWithHistory, findGroupIdsWithTrigger } from './nodeGroups.utils';
 import { RemoveNodeGroupCommand } from '@/app/models/history';
@@ -78,12 +78,12 @@ describe('deleteGroupWithHistory', () => {
 
 describe('findGroupIdsWithTrigger', () => {
 	const nodes: Record<string, { type: string }> = {
-		trigger: { type: 'n8n-nodes-base.manualTrigger' },
-		step: { type: 'n8n-nodes-base.noOp' },
+		trigger: { type: 'MNI-nodes-base.manualTrigger' },
+		step: { type: 'MNI-nodes-base.noOp' },
 		gone: undefined as unknown as { type: string },
 	};
 	const getNodeById = (nodeId: string) => nodes[nodeId];
-	const isTriggerNode = (nodeType: string) => nodeType === 'n8n-nodes-base.manualTrigger';
+	const isTriggerNode = (nodeType: string) => nodeType === 'MNI-nodes-base.manualTrigger';
 
 	it('returns the groups that hold a trigger', () => {
 		const withTrigger = createGroup({ id: 'g1', nodeIds: ['trigger', 'step'] });

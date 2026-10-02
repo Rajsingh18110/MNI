@@ -1,5 +1,5 @@
-import type { FetchFn } from '@n8n/agents';
-import type { Logger } from '@n8n/backend-common';
+import type { FetchFn } from '@MNI/agents';
+import type { Logger } from '@MNI/backend-common';
 import { mock } from 'vitest-mock-extended';
 
 import { createAgentModelTurnRecorder } from '../agent-model-turn-recorder';

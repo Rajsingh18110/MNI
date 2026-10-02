@@ -1,4 +1,4 @@
-import type { ICredentialType, INodeProperties } from 'n8n-workflow';
+import type { ICredentialType, INodeProperties } from 'MNI-workflow';
 
 //https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-permissions-and-consent
 const defaultScopes = [

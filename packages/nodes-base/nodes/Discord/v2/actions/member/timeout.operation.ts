@@ -1,5 +1,5 @@
 import { DateTime } from 'luxon';
-import type { IExecuteFunctions, INodeExecutionData, INodeProperties } from 'n8n-workflow';
+import type { IExecuteFunctions, INodeExecutionData, INodeProperties } from 'MNI-workflow';
 
 import { updateDisplayOptions } from '../../../../../utils/utilities';
 import { getAuditLogReasonHeaders, parseDiscordError, prepareErrorData } from '../../helpers/utils';

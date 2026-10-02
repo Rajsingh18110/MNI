@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach } from 'vitest';
-import { NodeConnectionTypes } from 'n8n-workflow';
+import { NodeConnectionTypes } from 'MNI-workflow';
 import { createTestNode } from '@/__tests__/mocks';
 import type { INodeUi } from '@/Interface';
 import {

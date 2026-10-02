@@ -90,11 +90,11 @@ describe('isPublished', () => {
 
 	it('encodes a scoped package name', async () => {
 		let requested;
-		await isPublished('@n8n/db', '1.0.0', async (url) => {
+		await isPublished('@MNI/db', '1.0.0', async (url) => {
 			requested = url;
 			return { status: 200 };
 		});
-		assert.equal(requested, 'https://registry.npmjs.org/@n8n%2fdb/1.0.0');
+		assert.equal(requested, 'https://registry.npmjs.org/@MNI%2fdb/1.0.0');
 	});
 });
 
@@ -141,7 +141,7 @@ describe('buildChangelogEntry', () => {
 		const entry = buildChangelogEntry('2.27.2', '2.27.3', '2026-08-27');
 		assert.equal(
 			entry.split('\n')[0],
-			'## [2.27.3](https://github.com/n8n-io/n8n/compare/n8n@2.27.2...n8n@2.27.3) (2026-08-27)',
+			'## [2.27.3](https://github.com/MNI-io/MNI/compare/MNI@2.27.2...MNI@2.27.3) (2026-08-27)',
 		);
 		assert.match(entry, /Re-release of 2\.27\.2/);
 		assert.ok(entry.endsWith('\n'));

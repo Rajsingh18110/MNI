@@ -1,5 +1,5 @@
-import type { BaseTextKey, I18nClass } from '@n8n/i18n';
-import { scrubSecretsInText } from '@n8n/utils/scrub-secrets';
+import type { BaseTextKey, I18nClass } from '@MNI/i18n';
+import { scrubSecretsInText } from '@MNI/utils/scrub-secrets';
 
 import { EXTENDED_PROMPT_MAX_LENGTH } from '@/features/ai/shared/constants';
 import type { AgentFixWithAssistantFailure } from '../types';
@@ -180,7 +180,7 @@ function buildDiagnosticPayload(
 	};
 }
 
-const BODY_SENTINEL = '__N8N_ASSISTANT_DRAFT_BODY__';
+const BODY_SENTINEL = '__MNI_ASSISTANT_DRAFT_BODY__';
 
 /**
  * Put caller-supplied text into an assistant draft template. The body goes in

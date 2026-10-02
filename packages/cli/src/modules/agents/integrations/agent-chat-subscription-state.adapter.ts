@@ -1,4 +1,4 @@
-import type { AgentIntegrationConfig } from '@n8n/api-types';
+import type { AgentIntegrationConfig } from '@MNI/api-types';
 import type { Lock, QueueEntry, StateAdapter } from 'chat';
 
 import type { PubSubCommandMap } from '@/scaling/pubsub/pubsub.event-map';

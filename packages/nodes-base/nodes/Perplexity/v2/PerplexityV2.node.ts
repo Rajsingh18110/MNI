@@ -1,5 +1,5 @@
-import type { INodeType, INodeTypeBaseDescription, INodeTypeDescription } from 'n8n-workflow';
-import { NodeConnectionTypes } from 'n8n-workflow';
+import type { INodeType, INodeTypeBaseDescription, INodeTypeDescription } from 'MNI-workflow';
+import { NodeConnectionTypes } from 'MNI-workflow';
 
 import { agent, chat, embeddings, search } from '../descriptions';
 import { getAgentModels } from '../GenericFunctions';

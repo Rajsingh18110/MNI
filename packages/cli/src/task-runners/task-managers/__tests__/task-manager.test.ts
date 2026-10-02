@@ -1,7 +1,7 @@
-import type { GlobalConfig, TaskRunnersConfig } from '@n8n/config';
+import type { GlobalConfig, TaskRunnersConfig } from '@MNI/config';
 import get from 'lodash/get';
 import set from 'lodash/set';
-import type { ErrorReporter } from 'n8n-core';
+import type { ErrorReporter } from 'MNI-core';
 import { mock } from 'vitest-mock-extended';
 
 import type { EventService } from '@/events/event.service';

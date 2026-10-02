@@ -30,14 +30,14 @@ const fast = { timeoutMs: 50, intervalMs: 1 };
 
 describe('fetchRemoteEnv', () => {
 	it('does nothing when the webhook is not configured', async () => {
-		const fetchImpl = stubFetch(jsonResponse({ N8N_LOG_LEVEL: 'debug' }));
+		const fetchImpl = stubFetch(jsonResponse({ MNI_LOG_LEVEL: 'debug' }));
 
 		assert.deepEqual(await fetchRemoteEnv({ fetchImpl }), { env: [], warnings: [] });
 		assert.equal(fetchImpl.calls.length, 0);
 	});
 
 	it('warns and does not call the webhook when the password is missing', async () => {
-		const fetchImpl = stubFetch(jsonResponse({ N8N_LOG_LEVEL: 'debug' }));
+		const fetchImpl = stubFetch(jsonResponse({ MNI_LOG_LEVEL: 'debug' }));
 
 		const { env, warnings } = await fetchRemoteEnv({ url: URL_SECRET, fetchImpl });
 
@@ -48,7 +48,7 @@ describe('fetchRemoteEnv', () => {
 
 	it('turns the response into KEY=VALUE pairs', async () => {
 		const fetchImpl = stubFetch(
-			jsonResponse({ N8N_LOG_LEVEL: 'debug', N8N_PORT: 5679, N8N_METRICS: true }),
+			jsonResponse({ MNI_LOG_LEVEL: 'debug', MNI_PORT: 5679, MNI_METRICS: true }),
 		);
 
 		const { env, warnings } = await fetchRemoteEnv({
@@ -57,7 +57,7 @@ describe('fetchRemoteEnv', () => {
 			fetchImpl,
 		});
 
-		assert.deepEqual(env, ['N8N_LOG_LEVEL=debug', 'N8N_PORT=5679', 'N8N_METRICS=true']);
+		assert.deepEqual(env, ['MNI_LOG_LEVEL=debug', 'MNI_PORT=5679', 'MNI_METRICS=true']);
 		assert.deepEqual(warnings, []);
 	});
 
@@ -109,7 +109,7 @@ describe('fetchRemoteEnv', () => {
 	});
 
 	it('retries a 5xx and succeeds', async () => {
-		const fetchImpl = stubFetch(jsonResponse({}, 503), jsonResponse({ N8N_LOG_LEVEL: 'debug' }));
+		const fetchImpl = stubFetch(jsonResponse({}, 503), jsonResponse({ MNI_LOG_LEVEL: 'debug' }));
 
 		const { env, warnings } = await fetchRemoteEnv({
 			url: URL_SECRET,
@@ -118,13 +118,13 @@ describe('fetchRemoteEnv', () => {
 			...fast,
 		});
 
-		assert.deepEqual(env, ['N8N_LOG_LEVEL=debug']);
+		assert.deepEqual(env, ['MNI_LOG_LEVEL=debug']);
 		assert.deepEqual(warnings, []);
 		assert.equal(fetchImpl.calls.length, 2);
 	});
 
 	it('retries a network error', async () => {
-		const fetchImpl = stubFetch(new Error('fetch failed'), jsonResponse({ N8N_METRICS: 'true' }));
+		const fetchImpl = stubFetch(new Error('fetch failed'), jsonResponse({ MNI_METRICS: 'true' }));
 
 		const { env } = await fetchRemoteEnv({
 			url: URL_SECRET,
@@ -133,7 +133,7 @@ describe('fetchRemoteEnv', () => {
 			...fast,
 		});
 
-		assert.deepEqual(env, ['N8N_METRICS=true']);
+		assert.deepEqual(env, ['MNI_METRICS=true']);
 	});
 
 	it('serves without remote env when the webhook never answers', async () => {
@@ -182,7 +182,7 @@ describe('fetchRemoteEnv', () => {
 	});
 
 	it('warns on a body that is not an object', async () => {
-		for (const body of [['N8N_LOG_LEVEL=debug'], 'debug', null]) {
+		for (const body of [['MNI_LOG_LEVEL=debug'], 'debug', null]) {
 			const fetchImpl = stubFetch(jsonResponse(body));
 
 			const { env, warnings } = await fetchRemoteEnv({

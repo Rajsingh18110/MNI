@@ -126,7 +126,7 @@ describe('Coordinator loadNodeTypes Operation', () => {
 
 			const testUrls = [
 				'http://localhost:5678',
-				'https://my-n8n.example.com',
+				'https://my-MNI.example.com',
 				'http://192.168.1.100:5678',
 				'https://n8n.cloud.example.com/api',
 			];
@@ -185,7 +185,7 @@ describe('Coordinator loadNodeTypes Operation', () => {
 		});
 
 		it('should return node types from the active data worker', async () => {
-			const nodeTypes = [{ name: 'n8n-nodes-base.set' }];
+			const nodeTypes = [{ name: 'MNI-nodes-base.set' }];
 			const state = createStateWithActiveTab({
 				getAllNodeTypes: vi.fn().mockResolvedValue(nodeTypes),
 			});
@@ -222,22 +222,22 @@ describe('Coordinator loadNodeTypes Operation', () => {
 		it('should throw error when no active data worker is available', async () => {
 			const state = createMockState({ version: '1.0.0' });
 
-			await expect(getNodeType(state, 'n8n-nodes-base.set', 1)).rejects.toThrow(
+			await expect(getNodeType(state, 'MNI-nodes-base.set', 1)).rejects.toThrow(
 				'[Coordinator] No active data worker available',
 			);
 		});
 
 		it('should pass name and version to the active data worker and return its result', async () => {
-			const nodeType = { name: 'n8n-nodes-base.set', version: 2 };
+			const nodeType = { name: 'MNI-nodes-base.set', version: 2 };
 			const state = createStateWithActiveTab({
 				getNodeType: vi.fn().mockResolvedValue(nodeType),
 			});
 			state.initialized = true;
 			const worker = state.tabs.get('active-tab')?.dataWorker;
 
-			const result = await getNodeType(state, 'n8n-nodes-base.set', 2);
+			const result = await getNodeType(state, 'MNI-nodes-base.set', 2);
 
-			expect(worker?.getNodeType).toHaveBeenCalledWith('n8n-nodes-base.set', 2);
+			expect(worker?.getNodeType).toHaveBeenCalledWith('MNI-nodes-base.set', 2);
 			expect(result).toEqual(nodeType);
 		});
 

@@ -8,7 +8,7 @@ import { useEvaluationStore } from '../evaluation.store';
 import { useParallelEvalStore } from '../parallelEval.store';
 import userEvent from '@testing-library/user-event';
 import type { TestRunRecord } from '../evaluation.api';
-import type { EvaluationConfigDto } from '@n8n/api-types';
+import type { EvaluationConfigDto } from '@MNI/api-types';
 import { waitFor } from '@testing-library/vue';
 
 vi.mock('vue-router', () => {

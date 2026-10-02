@@ -1,5 +1,5 @@
-import type { ExecutionSummaries, User } from '@n8n/db';
-import { Container } from '@n8n/di';
+import type { ExecutionSummaries, User } from '@MNI/db';
+import { Container } from '@MNI/di';
 import { mock } from 'vitest-mock-extended';
 
 import type { EngineDataPlaneProxyService } from '@/services/engine-data-plane-proxy.service';

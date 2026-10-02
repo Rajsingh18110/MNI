@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed, ref, useTemplateRef } from 'vue';
-import { AgentJsonConfigSchema } from '@n8n/api-types';
-import { N8nButton, N8nCallout, N8nText } from '@n8n/design-system';
-import { useI18n, type BaseTextKey } from '@n8n/i18n';
+import { AgentJsonConfigSchema } from '@MNI/api-types';
+import { N8nButton, N8nCallout, N8nText } from '@MNI/design-system';
+import { useI18n, type BaseTextKey } from '@MNI/i18n';
 
 import { useUIStore } from '@/app/stores/ui.store';
 import type { AgentJsonConfig } from '../types';

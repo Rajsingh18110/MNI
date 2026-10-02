@@ -2,10 +2,10 @@ import {
 	InvalidGrantError,
 	InvalidTargetError,
 } from '@modelcontextprotocol/sdk/server/auth/errors.js';
-import { Logger, type LicenseState, type ModuleRegistry } from '@n8n/backend-common';
-import { mockInstance } from '@n8n/backend-test-utils';
-import { GlobalConfig } from '@n8n/config';
-import type { User } from '@n8n/db';
+import { Logger, type LicenseState, type ModuleRegistry } from '@MNI/backend-common';
+import { mockInstance } from '@MNI/backend-test-utils';
+import { GlobalConfig } from '@MNI/config';
+import type { User } from '@MNI/db';
 import type { Response } from 'express';
 import type { Mock, Mocked } from 'vitest';
 import { mock } from 'vitest-mock-extended';
@@ -17,7 +17,7 @@ import { McpProtectedResource } from '@/modules/mcp/mcp-protected-resource';
 import type { McpConfig } from '@/modules/mcp/mcp.config';
 import type { McpSettingsService } from '@/modules/mcp/mcp.settings.service';
 import { ProtectedResourceRegistry } from '@/services/protected-resource.registry';
-import type { UrlService } from '@n8n/backend-services';
+import type { UrlService } from '@MNI/backend-services';
 import { UserManagementMailer } from '@/user-management/email';
 
 import type { AuthorizationCode } from '../database/entities/oauth-authorization-code.entity';
@@ -1876,7 +1876,7 @@ describe('OAuthServerService', () => {
 			const urlService = mock<UrlService>();
 			urlService.getInstanceBaseUrl.mockReturnValue('https://n8n.example.com');
 			const mcpConfig = mock<McpConfig>();
-			mcpConfig.baseUrl = 'https://n8n-mcp.example.com';
+			mcpConfig.baseUrl = 'https://MNI-mcp.example.com';
 			const mcpResource = new McpProtectedResource(
 				urlService,
 				mock<McpSettingsService>(),
@@ -1886,7 +1886,7 @@ describe('OAuthServerService', () => {
 				mock<LicenseState>(),
 				mock<PostHogClient>(),
 			);
-			expect(mcpResource.getResourceUrl()).toBe('https://n8n-mcp.example.com/mcp-server/http');
+			expect(mcpResource.getResourceUrl()).toBe('https://MNI-mcp.example.com/mcp-server/http');
 
 			const configuredRegistry = new ProtectedResourceRegistry(mock<Logger>());
 			configuredRegistry.register(mcpResource);
@@ -1912,9 +1912,9 @@ describe('OAuthServerService', () => {
 			const configuredService = makeConfiguredService();
 			expect(
 				await (configuredService as any).resolveAndValidateResourceIndicator(
-					'https://n8n-mcp.example.com/mcp-server/http',
+					'https://MNI-mcp.example.com/mcp-server/http',
 				),
-			).toBe('https://n8n-mcp.example.com/mcp-server/http');
+			).toBe('https://MNI-mcp.example.com/mcp-server/http');
 		});
 
 		it('should keep accepting the instance-base-URL-derived resource', async () => {

@@ -1,6 +1,6 @@
-import { isRecord } from '@n8n/utils/is-record';
-import type { IExecuteFunctions, INodeProperties, INodePropertyCollection } from 'n8n-workflow';
-import { NodeOperationError } from 'n8n-workflow';
+import { isRecord } from '@MNI/utils/is-record';
+import type { IExecuteFunctions, INodeProperties, INodePropertyCollection } from 'MNI-workflow';
+import { NodeOperationError } from 'MNI-workflow';
 
 import { isSet } from './shared';
 import { userRLC } from '../../descriptions';

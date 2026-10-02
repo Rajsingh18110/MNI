@@ -1,5 +1,5 @@
-/* eslint-disable n8n-nodes-base/node-param-display-name-miscased */
-import { NodeApiError } from 'n8n-workflow';
+/* eslint-disable MNI-nodes-base/node-param-display-name-miscased */
+import { NodeApiError } from 'MNI-workflow';
 
 import {
 	baserowApiRequest,

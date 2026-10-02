@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
 
-/* eslint-disable n8n-local-rules/no-interpolation-in-regular-string -- `${...}` is literal corpus data, not a template */
+/* eslint-disable MNI-local-rules/no-interpolation-in-regular-string -- `${...}` is literal corpus data, not a template */
 
 import * as Helpers from './helpers';
 import { createRunExecutionData } from '../src';
@@ -251,7 +251,7 @@ describe('Expression — compatibility corpus', () => {
 		$pageCount: 2,
 	};
 
-	const ENGINE = process.env.N8N_EXPRESSION_ENGINE ?? 'vm';
+	const ENGINE = process.env.MNI_EXPRESSION_ENGINE ?? 'vm';
 
 	const evaluate = (expr: string) =>
 		expression.getParameterValue(

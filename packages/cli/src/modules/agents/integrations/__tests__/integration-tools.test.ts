@@ -1,6 +1,6 @@
-import type { InterruptibleToolContext } from '@n8n/agents';
-import { zodToJsonSchema } from '@n8n/ai-utilities/json-schema';
-import type { AgentIntegrationConfig } from '@n8n/api-types';
+import type { InterruptibleToolContext } from '@MNI/agents';
+import { zodToJsonSchema } from '@MNI/ai-utilities/json-schema';
+import type { AgentIntegrationConfig } from '@MNI/api-types';
 import { mock } from 'vitest-mock-extended';
 import {
 	encodeIntegrationMessageContext,
@@ -160,7 +160,7 @@ describe('integration tools', () => {
 				title: 'Fix signup',
 				description: 'Signup fails for invited users',
 				status: 'In Progress',
-				url: 'https://linear.app/n8n/issue/ENG-123/fix-signup',
+				url: 'https://linear.app/MNI/issue/ENG-123/fix-signup',
 				labels: ['Bug'],
 				assignee: { id: 'user-1', name: 'Michael Drury' },
 				author: { id: 'user-2', name: 'Ada Lovelace' },
@@ -197,7 +197,7 @@ describe('integration tools', () => {
 				title: 'Fix signup',
 				description: 'Signup fails for invited users',
 				status: 'In Progress',
-				url: 'https://linear.app/n8n/issue/ENG-123/fix-signup',
+				url: 'https://linear.app/MNI/issue/ENG-123/fix-signup',
 				labels: ['Bug'],
 				assignee: { id: 'user-1', name: 'Michael Drury' },
 				author: { id: 'user-2', name: 'Ada Lovelace' },

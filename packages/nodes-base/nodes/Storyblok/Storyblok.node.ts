@@ -6,8 +6,8 @@ import type {
 	INodePropertyOptions,
 	INodeType,
 	INodeTypeDescription,
-} from 'n8n-workflow';
-import { NodeConnectionTypes } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeConnectionTypes } from 'MNI-workflow';
 
 import { storyblokApiRequest, storyblokApiRequestAllItems } from './GenericFunctions';
 import { storyContentFields, storyContentOperations } from './StoryContentDescription';

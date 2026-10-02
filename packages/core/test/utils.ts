@@ -1,5 +1,5 @@
-import type { Constructable } from '@n8n/di';
-import { Container } from '@n8n/di';
+import type { Constructable } from '@MNI/di';
+import { Container } from '@MNI/di';
 import { Duplex } from 'stream';
 
 import { mock } from '../nodes-testing/mock-extended';

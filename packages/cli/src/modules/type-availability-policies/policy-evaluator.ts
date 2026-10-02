@@ -1,4 +1,4 @@
-import type { NodeTypeAvailabilityScope } from '@n8n/api-types';
+import type { NodeTypeAvailabilityScope } from '@MNI/api-types';
 
 import type {
 	PolicyAction,

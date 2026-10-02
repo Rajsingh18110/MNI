@@ -5,7 +5,7 @@
 			"parameters": {},
 			"id": "6666-9999-77777",
 			"name": "When clicking \"Execute Workflow\"",
-			"type": "n8n-nodes-base.manualTrigger",
+			"type": "MNI-nodes-base.manualTrigger",
 			"typeVersion": 1,
 			"position": [880, 380]
 		},
@@ -37,7 +37,7 @@
 			},
 			"id": "6666-5555-77777",
 			"name": "Microsoft Teams",
-			"type": "n8n-nodes-base.microsoftTeams",
+			"type": "MNI-nodes-base.microsoftTeams",
 			"typeVersion": 2,
 			"position": [1100, 380],
 			"credentials": {
@@ -51,7 +51,7 @@
 			"parameters": {},
 			"id": "9d1a2e59-c71c-486c-b3ac-dec6adbc26b3",
 			"name": "No Operation, do nothing",
-			"type": "n8n-nodes-base.noOp",
+			"type": "MNI-nodes-base.noOp",
 			"typeVersion": 1,
 			"position": [1400, 380]
 		}
@@ -68,7 +68,7 @@
 					"locale": "en-us",
 					"body": {
 						"contentType": "html",
-						"content": "<at id=\"0\">Ada &amp; Byron</at> Hello!<br>\n<br>\n<em> Powered by <a href=\"http://localhost:5678/workflow/i3NYGF0LXV4qDFV9?utm_source=n8n-internal&amp;utm_medium=powered_by&amp;utm_campaign=n8n-nodes-base.microsoftTeams\">this MNI workflow</a> </em>"
+						"content": "<at id=\"0\">Ada &amp; Byron</at> Hello!<br>\n<br>\n<em> Powered by <a href=\"http://localhost:5678/workflow/i3NYGF0LXV4qDFV9?utm_source=MNI-internal&amp;utm_medium=powered_by&amp;utm_campaign=MNI-nodes-base.microsoftTeams\">this MNI workflow</a> </em>"
 					},
 					"attachments": [],
 					"mentions": [

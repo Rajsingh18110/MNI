@@ -1,5 +1,5 @@
-import { Service } from '@n8n/di';
-import { UnexpectedError } from 'n8n-workflow';
+import { Service } from '@MNI/di';
+import { UnexpectedError } from 'MNI-workflow';
 
 /** Whether ciphertext produced with this key carries a `keyId:` prefix. */
 export type KeyFormat = 'prefixed' | 'no-prefix';

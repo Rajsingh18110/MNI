@@ -1,4 +1,4 @@
-import type { INodeProperties } from 'n8n-workflow';
+import type { INodeProperties } from 'MNI-workflow';
 
 const field: INodeProperties[] = [
 	{
@@ -15,7 +15,7 @@ const field: INodeProperties[] = [
 		},
 	},
 	{
-		// eslint-disable-next-line n8n-nodes-base/node-param-display-name-wrong-for-dynamic-options
+		// eslint-disable-next-line MNI-nodes-base/node-param-display-name-wrong-for-dynamic-options
 		displayName: 'Field',
 		name: 'field',
 		type: 'options',
@@ -32,7 +32,7 @@ const field: INodeProperties[] = [
 		},
 	},
 	{
-		// eslint-disable-next-line n8n-nodes-base/node-param-display-name-wrong-for-dynamic-options
+		// eslint-disable-next-line MNI-nodes-base/node-param-display-name-wrong-for-dynamic-options
 		displayName: 'Field',
 		name: 'field',
 		type: 'options',
@@ -49,7 +49,7 @@ const field: INodeProperties[] = [
 		},
 	},
 	{
-		// eslint-disable-next-line n8n-nodes-base/node-param-display-name-wrong-for-dynamic-options
+		// eslint-disable-next-line MNI-nodes-base/node-param-display-name-wrong-for-dynamic-options
 		displayName: 'Field',
 		name: 'field',
 		type: 'options',
@@ -66,7 +66,7 @@ const field: INodeProperties[] = [
 		},
 	},
 	{
-		// eslint-disable-next-line n8n-nodes-base/node-param-display-name-wrong-for-dynamic-options
+		// eslint-disable-next-line MNI-nodes-base/node-param-display-name-wrong-for-dynamic-options
 		displayName: 'Field',
 		name: 'field',
 		type: 'options',

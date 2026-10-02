@@ -1,4 +1,4 @@
-/* eslint-disable n8n-local-rules/no-dynamic-regexp -- safeRegex worker */
+/* eslint-disable MNI-local-rules/no-dynamic-regexp -- safeRegex worker */
 type RegexOperation = 'exec' | 'test' | 'replace' | 'matchAll' | 'split';
 
 type RegexRequest = {

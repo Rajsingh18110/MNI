@@ -1,6 +1,6 @@
 import { flushPromises, mount } from '@vue/test-utils';
 import userEvent from '@testing-library/user-event';
-import type { AgentJsonTaskConfig } from '@n8n/api-types';
+import type { AgentJsonTaskConfig } from '@MNI/api-types';
 import { ref } from 'vue';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
@@ -51,7 +51,7 @@ vi.mock('../composables/useAgentPermissions', () => ({
 }));
 
 const showErrorSpy = vi.fn();
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: () => ({ showError: showErrorSpy }),
 }));
 
@@ -73,7 +73,7 @@ vi.mock('../composables/useAgentIntegrationsCatalog', () => ({
 	}),
 }));
 
-vi.mock('@n8n/i18n', () => ({
+vi.mock('@MNI/i18n', () => ({
 	useI18n: () => ({
 		baseText: (key: string) => key,
 	}),
@@ -196,7 +196,7 @@ describe('AgentCapabilitiesSection', () => {
 					type: 'node',
 					name: 'fetch_webpage',
 					node: {
-						nodeType: 'n8n-nodes-base.httpRequestTool',
+						nodeType: 'MNI-nodes-base.httpRequestTool',
 						nodeTypeVersion: 4.4,
 						nodeParameters: {},
 					},
@@ -231,8 +231,8 @@ describe('AgentCapabilitiesSection', () => {
 
 	it('keeps a single tool of the same type ungrouped', () => {
 		getNodeType.mockImplementation((type: string) => {
-			if (type === 'n8n-nodes-base.gmailTool') {
-				return createNodeType('n8n-nodes-base.gmailTool', 'Gmail Tool');
+			if (type === 'MNI-nodes-base.gmailTool') {
+				return createNodeType('MNI-nodes-base.gmailTool', 'Gmail Tool');
 			}
 
 			return null;
@@ -243,7 +243,7 @@ describe('AgentCapabilitiesSection', () => {
 				type: 'node',
 				name: 'inbox_triage',
 				node: {
-					nodeType: 'n8n-nodes-base.gmailTool',
+					nodeType: 'MNI-nodes-base.gmailTool',
 					nodeTypeVersion: 1,
 					nodeParameters: {},
 				},
@@ -256,8 +256,8 @@ describe('AgentCapabilitiesSection', () => {
 
 	it('groups tools once the same node type reaches the threshold', () => {
 		getNodeType.mockImplementation((type: string) => {
-			if (type === 'n8n-nodes-base.gmailTool') {
-				return createNodeType('n8n-nodes-base.gmailTool', 'Gmail Tool');
+			if (type === 'MNI-nodes-base.gmailTool') {
+				return createNodeType('MNI-nodes-base.gmailTool', 'Gmail Tool');
 			}
 
 			return null;
@@ -268,7 +268,7 @@ describe('AgentCapabilitiesSection', () => {
 				type: 'node',
 				name: 'inbox_triage',
 				node: {
-					nodeType: 'n8n-nodes-base.gmailTool',
+					nodeType: 'MNI-nodes-base.gmailTool',
 					nodeTypeVersion: 1,
 					nodeParameters: {},
 				},
@@ -277,7 +277,7 @@ describe('AgentCapabilitiesSection', () => {
 				type: 'node',
 				name: 'send_follow_up',
 				node: {
-					nodeType: 'n8n-nodes-base.gmailTool',
+					nodeType: 'MNI-nodes-base.gmailTool',
 					nodeTypeVersion: 1,
 					nodeParameters: {},
 				},
@@ -291,8 +291,8 @@ describe('AgentCapabilitiesSection', () => {
 
 	it('groups more than two tools of the same node type', () => {
 		getNodeType.mockImplementation((type: string) => {
-			if (type === 'n8n-nodes-base.gmailTool') {
-				return createNodeType('n8n-nodes-base.gmailTool', 'Gmail Tool');
+			if (type === 'MNI-nodes-base.gmailTool') {
+				return createNodeType('MNI-nodes-base.gmailTool', 'Gmail Tool');
 			}
 
 			return null;
@@ -303,7 +303,7 @@ describe('AgentCapabilitiesSection', () => {
 				type: 'node',
 				name: 'inbox_triage',
 				node: {
-					nodeType: 'n8n-nodes-base.gmailTool',
+					nodeType: 'MNI-nodes-base.gmailTool',
 					nodeTypeVersion: 1,
 					nodeParameters: {},
 				},
@@ -312,7 +312,7 @@ describe('AgentCapabilitiesSection', () => {
 				type: 'node',
 				name: 'send_follow_up',
 				node: {
-					nodeType: 'n8n-nodes-base.gmailTool',
+					nodeType: 'MNI-nodes-base.gmailTool',
 					nodeTypeVersion: 1,
 					nodeParameters: {},
 				},
@@ -321,7 +321,7 @@ describe('AgentCapabilitiesSection', () => {
 				type: 'node',
 				name: 'archive_message',
 				node: {
-					nodeType: 'n8n-nodes-base.gmailTool',
+					nodeType: 'MNI-nodes-base.gmailTool',
 					nodeTypeVersion: 1,
 					nodeParameters: {},
 				},
@@ -336,8 +336,8 @@ describe('AgentCapabilitiesSection', () => {
 
 	it('shows MCP servers in the tools row even without regular tools', () => {
 		getNodeType.mockImplementation((type: string) => {
-			if (type === '@n8n/n8n-nodes-langchain.mcpClientTool') {
-				return createNodeType('@n8n/n8n-nodes-langchain.mcpClientTool', 'MCP Client Tool');
+			if (type === '@MNI/MNI-nodes-langchain.mcpClientTool') {
+				return createNodeType('@MNI/MNI-nodes-langchain.mcpClientTool', 'MCP Client Tool');
 			}
 
 			return null;
@@ -719,8 +719,8 @@ describe('AgentCapabilitiesSection', () => {
 
 	it('disables the grouped-tool dropdown menu when disabled (read-only host)', async () => {
 		getNodeType.mockImplementation((type: string) => {
-			if (type === 'n8n-nodes-base.gmailTool') {
-				return createNodeType('n8n-nodes-base.gmailTool', 'Gmail Tool');
+			if (type === 'MNI-nodes-base.gmailTool') {
+				return createNodeType('MNI-nodes-base.gmailTool', 'Gmail Tool');
 			}
 
 			return null;
@@ -731,7 +731,7 @@ describe('AgentCapabilitiesSection', () => {
 				type: 'node',
 				name: 'inbox_triage',
 				node: {
-					nodeType: 'n8n-nodes-base.gmailTool',
+					nodeType: 'MNI-nodes-base.gmailTool',
 					nodeTypeVersion: 1,
 					nodeParameters: {},
 				},
@@ -740,7 +740,7 @@ describe('AgentCapabilitiesSection', () => {
 				type: 'node',
 				name: 'send_follow_up',
 				node: {
-					nodeType: 'n8n-nodes-base.gmailTool',
+					nodeType: 'MNI-nodes-base.gmailTool',
 					nodeTypeVersion: 1,
 					nodeParameters: {},
 				},
@@ -762,7 +762,7 @@ describe('AgentCapabilitiesSection', () => {
 					type: 'node',
 					name: 'create_issue',
 					node: {
-						nodeType: 'n8n-nodes-base.linearTool',
+						nodeType: 'MNI-nodes-base.linearTool',
 						nodeTypeVersion: 1,
 						nodeParameters: {},
 					},
@@ -812,8 +812,8 @@ describe('AgentCapabilitiesSection', () => {
 
 		it('marks only the invalid member of a grouped tool inside the dropdown menu', async () => {
 			getNodeType.mockImplementation((type: string) => {
-				if (type === 'n8n-nodes-base.gmailTool') {
-					return createNodeType('n8n-nodes-base.gmailTool', 'Gmail Tool');
+				if (type === 'MNI-nodes-base.gmailTool') {
+					return createNodeType('MNI-nodes-base.gmailTool', 'Gmail Tool');
 				}
 				return null;
 			});
@@ -821,7 +821,7 @@ describe('AgentCapabilitiesSection', () => {
 			const gmailTool = (name: string): AgentJsonToolRef => ({
 				type: 'node',
 				name,
-				node: { nodeType: 'n8n-nodes-base.gmailTool', nodeTypeVersion: 1, nodeParameters: {} },
+				node: { nodeType: 'MNI-nodes-base.gmailTool', nodeTypeVersion: 1, nodeParameters: {} },
 			});
 
 			const wrapper = mountSection(
@@ -1009,7 +1009,7 @@ describe('AgentCapabilitiesSection', () => {
 					type: 'node',
 					name: 'create_issue',
 					node: {
-						nodeType: 'n8n-nodes-base.linearTool',
+						nodeType: 'MNI-nodes-base.linearTool',
 						nodeTypeVersion: 1,
 						nodeParameters: {},
 					},

@@ -1,6 +1,6 @@
-import { folderIdSchema } from '@n8n/api-types';
-import type { Folder, User } from '@n8n/db';
-import { PROJECT_ROOT } from 'n8n-workflow';
+import { folderIdSchema } from '@MNI/api-types';
+import type { Folder, User } from '@MNI/db';
+import { PROJECT_ROOT } from 'MNI-workflow';
 import z from 'zod';
 
 import { FolderNotFoundError } from '@/errors/folder-not-found.error';
@@ -118,7 +118,7 @@ export const createMoveWorkflowsToFolderTool = (
 					// workflow's owning project) changes.
 					await workflowService.update(user, createWorkflowEntityFromPayload({}), workflowId, {
 						parentFolderId: folderId,
-						source: 'n8n-mcp',
+						source: 'MNI-mcp',
 					});
 					moved.push({ workflowId, name: workflow.name });
 				} catch (error) {

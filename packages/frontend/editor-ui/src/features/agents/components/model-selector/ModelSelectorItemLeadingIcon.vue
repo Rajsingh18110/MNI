@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { N8nIcon, type AiModelSelectorMenuItem } from '@n8n/design-system';
+import { N8nIcon, type AiModelSelectorMenuItem } from '@MNI/design-system';
 import CredentialIcon from '@/features/credentials/components/CredentialIcon.vue';
 
 defineProps<{

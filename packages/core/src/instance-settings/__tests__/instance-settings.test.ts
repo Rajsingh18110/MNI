@@ -1,5 +1,5 @@
-import type { Logger } from '@n8n/backend-common';
-import { InstanceSettingsConfig } from '@n8n/config';
+import type { Logger } from '@MNI/backend-common';
+import { InstanceSettingsConfig } from '@MNI/config';
 import * as fs from 'node:fs';
 import { mock } from 'vitest-mock-extended';
 
@@ -36,7 +36,7 @@ describe('InstanceSettings', () => {
 		mockFs.statSync.mockReturnValue({ mode: 0o600 } as fs.Stats);
 
 		process.argv[2] = 'main';
-		process.env = { N8N_USER_FOLDER: userFolder };
+		process.env = { MNI_USER_FOLDER: userFolder };
 	});
 
 	describe('If the settings file exists', () => {
@@ -74,7 +74,7 @@ describe('InstanceSettings', () => {
 			expect(settings.instanceId).toEqual(
 				'6ce26c63596f0cc4323563c529acfca0cccb0e57f6533d79a60a42c9ff862ae7',
 			);
-			expect(mockFs.statSync).toHaveBeenCalledWith('/test/.n8n/config');
+			expect(mockFs.statSync).toHaveBeenCalledWith('/test/.MNI/config');
 		});
 
 		it('should check the permissions and fix them if settings file has incorrect permissions by default', () => {
@@ -83,12 +83,12 @@ describe('InstanceSettings', () => {
 			createInstanceSettings({
 				enforceSettingsFilePermissions: true,
 			});
-			expect(mockFs.statSync).toHaveBeenCalledWith('/test/.n8n/config');
-			expect(mockFs.chmodSync).toHaveBeenCalledWith('/test/.n8n/config', 0o600);
+			expect(mockFs.statSync).toHaveBeenCalledWith('/test/.MNI/config');
+			expect(mockFs.chmodSync).toHaveBeenCalledWith('/test/.MNI/config', 0o600);
 		});
 
-		it("should not check the permissions if 'N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS' is false", () => {
-			process.env.N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS = 'false';
+		it("should not check the permissions if 'MNI_ENFORCE_SETTINGS_FILE_PERMISSIONS' is false", () => {
+			process.env.MNI_ENFORCE_SETTINGS_FILE_PERMISSIONS = 'false';
 			mockFs.readFileSync.mockReturnValueOnce(JSON.stringify({ encryptionKey: 'test_key' }));
 			createInstanceSettings({
 				enforceSettingsFilePermissions: false,
@@ -97,15 +97,15 @@ describe('InstanceSettings', () => {
 			expect(mockFs.chmodSync).not.toHaveBeenCalled();
 		});
 
-		it("should fix the permissions of the settings file if 'N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS' is true", () => {
-			process.env.N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS = 'true';
+		it("should fix the permissions of the settings file if 'MNI_ENFORCE_SETTINGS_FILE_PERMISSIONS' is true", () => {
+			process.env.MNI_ENFORCE_SETTINGS_FILE_PERMISSIONS = 'true';
 			mockFs.readFileSync.mockReturnValueOnce(JSON.stringify({ encryptionKey: 'test_key' }));
 			mockFs.statSync.mockReturnValueOnce({ mode: 0o644 } as fs.Stats);
 			createInstanceSettings({
 				enforceSettingsFilePermissions: true,
 			});
-			expect(mockFs.statSync).toHaveBeenCalledWith('/test/.n8n/config');
-			expect(mockFs.chmodSync).toHaveBeenCalledWith('/test/.n8n/config', 0o600);
+			expect(mockFs.statSync).toHaveBeenCalledWith('/test/.MNI/config');
+			expect(mockFs.chmodSync).toHaveBeenCalledWith('/test/.MNI/config', 0o600);
 		});
 	});
 
@@ -116,15 +116,15 @@ describe('InstanceSettings', () => {
 			mockFs.writeFileSync.mockReturnValue();
 		});
 
-		it('should create a new settings file with explicit permissions if N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS is not set', () => {
+		it('should create a new settings file with explicit permissions if MNI_ENFORCE_SETTINGS_FILE_PERMISSIONS is not set', () => {
 			const settings = createInstanceSettings({
 				encryptionKey: 'key_2',
 				enforceSettingsFilePermissions: true,
 			});
 			expect(settings.encryptionKey).not.toEqual('test_key');
-			expect(mockFs.mkdirSync).toHaveBeenCalledWith('/test/.n8n', { recursive: true });
+			expect(mockFs.mkdirSync).toHaveBeenCalledWith('/test/.MNI', { recursive: true });
 			expect(mockFs.writeFileSync).toHaveBeenCalledWith(
-				'/test/.n8n/config',
+				'/test/.MNI/config',
 				expect.stringContaining('"encryptionKey":'),
 				{
 					encoding: 'utf-8',
@@ -133,16 +133,16 @@ describe('InstanceSettings', () => {
 			);
 		});
 
-		it('should create a new settings file without explicit permissions if N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=false', () => {
-			process.env.N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS = 'false';
+		it('should create a new settings file without explicit permissions if MNI_ENFORCE_SETTINGS_FILE_PERMISSIONS=false', () => {
+			process.env.MNI_ENFORCE_SETTINGS_FILE_PERMISSIONS = 'false';
 			const settings = createInstanceSettings({
 				encryptionKey: 'key_2',
 				enforceSettingsFilePermissions: false,
 			});
 			expect(settings.encryptionKey).not.toEqual('test_key');
-			expect(mockFs.mkdirSync).toHaveBeenCalledWith('/test/.n8n', { recursive: true });
+			expect(mockFs.mkdirSync).toHaveBeenCalledWith('/test/.MNI', { recursive: true });
 			expect(mockFs.writeFileSync).toHaveBeenCalledWith(
-				'/test/.n8n/config',
+				'/test/.MNI/config',
 				expect.stringContaining('"encryptionKey":'),
 				{
 					encoding: 'utf-8',
@@ -151,16 +151,16 @@ describe('InstanceSettings', () => {
 			);
 		});
 
-		it('should create a new settings file with explicit permissions if N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=true', () => {
-			process.env.N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS = 'true';
+		it('should create a new settings file with explicit permissions if MNI_ENFORCE_SETTINGS_FILE_PERMISSIONS=true', () => {
+			process.env.MNI_ENFORCE_SETTINGS_FILE_PERMISSIONS = 'true';
 			const settings = createInstanceSettings({
 				enforceSettingsFilePermissions: true,
 				encryptionKey: 'key_2',
 			});
 			expect(settings.encryptionKey).not.toEqual('test_key');
-			expect(mockFs.mkdirSync).toHaveBeenCalledWith('/test/.n8n', { recursive: true });
+			expect(mockFs.mkdirSync).toHaveBeenCalledWith('/test/.MNI', { recursive: true });
 			expect(mockFs.writeFileSync).toHaveBeenCalledWith(
-				'/test/.n8n/config',
+				'/test/.MNI/config',
 				expect.stringContaining('"encryptionKey":'),
 				{
 					encoding: 'utf-8',
@@ -179,9 +179,9 @@ describe('InstanceSettings', () => {
 				'2c70e12b7a0646f92279f427c7b38e7334d8e5389cff167a1dc30e73f826b683',
 			);
 			expect(settings.encryptionKey).not.toEqual('test_key');
-			expect(mockFs.mkdirSync).toHaveBeenCalledWith('/test/.n8n', { recursive: true });
+			expect(mockFs.mkdirSync).toHaveBeenCalledWith('/test/.MNI', { recursive: true });
 			expect(mockFs.writeFileSync).toHaveBeenCalledWith(
-				'/test/.n8n/config',
+				'/test/.MNI/config',
 				expect.stringContaining('"encryptionKey":'),
 				{
 					encoding: 'utf-8',
@@ -229,7 +229,7 @@ describe('InstanceSettings', () => {
 
 			const settings = createInstanceSettings({ encryptionKey });
 
-			expect(settings.nodeDefinitionsDir).toEqual('/test/.n8n/node-definitions');
+			expect(settings.nodeDefinitionsDir).toEqual('/test/.MNI/node-definitions');
 		});
 	});
 
@@ -258,8 +258,8 @@ describe('InstanceSettings', () => {
 		});
 
 		describe('instance.id', () => {
-			it('should use N8N_INSTANCE_ID env var and skip DB entirely', async () => {
-				process.env.N8N_INSTANCE_ID = 'env-pinned-id';
+			it('should use MNI_INSTANCE_ID env var and skip DB entirely', async () => {
+				process.env.MNI_INSTANCE_ID = 'env-pinned-id';
 
 				await settings.initialize(mockRepo);
 
@@ -298,7 +298,7 @@ describe('InstanceSettings', () => {
 				const derived = settings.derivedInstanceId;
 				expect(derived).toEqual(settings.instanceId);
 
-				process.env.N8N_INSTANCE_ID = 'env-pinned-id';
+				process.env.MNI_INSTANCE_ID = 'env-pinned-id';
 				await settings.initialize(mockRepo);
 
 				expect(settings.instanceId).toEqual('env-pinned-id');
@@ -320,8 +320,8 @@ describe('InstanceSettings', () => {
 		});
 
 		describe('signing.hmac', () => {
-			it('should use N8N_HMAC_SIGNATURE_SECRET env var and skip DB entirely', async () => {
-				process.env.N8N_HMAC_SIGNATURE_SECRET = 'env-pinned-hmac';
+			it('should use MNI_HMAC_SIGNATURE_SECRET env var and skip DB entirely', async () => {
+				process.env.MNI_HMAC_SIGNATURE_SECRET = 'env-pinned-hmac';
 
 				await settings.initialize(mockRepo);
 
@@ -400,7 +400,7 @@ describe('InstanceSettings', () => {
 			});
 
 			it('should still adopt env vars and existing DB rows', async () => {
-				process.env.N8N_INSTANCE_ID = 'env-pinned-id';
+				process.env.MNI_INSTANCE_ID = 'env-pinned-id';
 				mockRepo.findActiveSigningSecret.mockImplementation(async (type: string) =>
 					type === 'signing.hmac' ? 'db-stored-hmac' : null,
 				);

@@ -1,4 +1,4 @@
-import type { INode, TriggerTime } from 'n8n-workflow';
+import type { INode, TriggerTime } from 'MNI-workflow';
 
 import { PollJobManager } from './poll-job-manager';
 

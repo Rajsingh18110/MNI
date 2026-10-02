@@ -3,8 +3,8 @@ import userEvent from '@testing-library/user-event';
 import { fireEvent, waitFor, within } from '@testing-library/vue';
 import { setActivePinia, createPinia } from 'pinia';
 import { defineComponent, h, ref, type Component, type PropType } from 'vue';
-import type { BaseTextKey } from '@n8n/i18n';
-import type { ITelemetryTrackProperties } from 'n8n-workflow';
+import type { BaseTextKey } from '@MNI/i18n';
+import type { ITelemetryTrackProperties } from 'MNI-workflow';
 import { createComponentRenderer } from '@/__tests__/render';
 import { EMPTY_ASSISTANT_MENTION_COUNTS } from '@/features/ai/assistant-at-mentions/assistantAtMentions.types';
 import InstanceAiInput from '../components/InstanceAiInput.vue';
@@ -58,7 +58,7 @@ function emittedArgument(args: unknown, index: number): unknown {
 	return Array.isArray(args) ? args[index] : undefined;
 }
 
-vi.mock('@n8n/composables/useTelemetry', () => ({
+vi.mock('@MNI/composables/useTelemetry', () => ({
 	useTelemetry: vi.fn(() => ({ track: telemetryTrack })),
 }));
 

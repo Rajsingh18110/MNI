@@ -8,23 +8,23 @@ import type { ICredentialsResponse, ICredentialTypeMap } from '../credentials.ty
 import ProjectHeader from '@/features/collaboration/projects/components/ProjectHeader.vue';
 import { useDocumentTitle } from '@/app/composables/useDocumentTitle';
 import { useProjectPages } from '@/features/collaboration/projects/composables/useProjectPages';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
 import { CREDENTIAL_EDIT_MODAL_KEY, CREDENTIAL_SELECT_MODAL_KEY } from '../credentials.constants';
 import { EnterpriseEditionFeature, VIEWS } from '@/app/constants';
-import { InsightsSummary, useInsightsStore } from '@n8n/frontend-module-insights';
+import { InsightsSummary, useInsightsStore } from '@MNI/frontend-module-insights';
 import { useExternalSecretsStore } from '@/features/integrations/externalSecrets.ee/externalSecrets.ee.store';
 import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';
 import { useProjectsStore } from '@/features/collaboration/projects/projects.store';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { useSourceControlStore } from '@/features/integrations/sourceControl.ee/sourceControl.store';
 import { listenForModalChanges, useUIStore } from '@/app/stores/ui.store';
 import type { Project } from '@/features/collaboration/projects/projects.types';
 import { isCredentialsResource } from '@/app/utils/typeGuards';
-import { useI18n } from '@n8n/i18n';
-import { getResourcePermissions } from '@n8n/permissions';
+import { useI18n } from '@MNI/i18n';
+import { getResourcePermissions } from '@MNI/permissions';
 import pickBy from 'lodash/pickBy';
-import type { ICredentialType, ICredentialsDecrypted } from 'n8n-workflow';
-import { CREDENTIAL_EMPTY_VALUE } from 'n8n-workflow';
+import type { ICredentialType, ICredentialsDecrypted } from 'MNI-workflow';
+import { CREDENTIAL_EMPTY_VALUE } from 'MNI-workflow';
 import { computed, onMounted, ref, watch } from 'vue';
 import { useRoute, useRouter, type LocationQueryRaw } from 'vue-router';
 import { useCredentialsStore } from '../credentials.store';
@@ -32,7 +32,7 @@ import { useEnvironmentsStore } from '@/features/settings/environments.ee/enviro
 import { useDependencies } from '@/app/composables/useDependencies';
 import { useInstanceAiCredentialHelp } from '@/features/ai/instanceAi/composables/useInstanceAiCredentialHelp';
 
-import { N8nCheckbox, N8nInputLabel, N8nOption, N8nSelect } from '@n8n/design-system';
+import { N8nCheckbox, N8nInputLabel, N8nOption, N8nSelect } from '@MNI/design-system';
 const props = defineProps<{
 	credentialId?: string;
 }>();

@@ -4,8 +4,8 @@ const files = [
   './.github/WORKFLOWS.md',
   './.github/workflows/docker-build-smoke.yml',
   './.github/workflows/build-base-image.yml',
-  './scripts/dockerize-n8n.mjs',
-  './scripts/build-n8n.mjs',
+  './scripts/dockerize-MNI.mjs',
+  './scripts/build-MNI.mjs',
   './docker/images/mni/Dockerfile',
   './docker/docker-bake.hcl',
   './.dockerignore',
@@ -17,8 +17,8 @@ const files = [
 files.forEach(file => {
   if (fs.existsSync(file)) {
     let content = fs.readFileSync(file, 'utf8');
-    content = content.replace(/docker\/images\/n8n-base/g, 'docker/images/mni-base');
-    content = content.replace(/docker\/images\/n8n/g, 'docker/images/mni');
+    content = content.replace(/docker\/images\/MNI-base/g, 'docker/images/mni-base');
+    content = content.replace(/docker\/images\/MNI/g, 'docker/images/mni');
     content = content.replace(/images\/MNI/g, 'images/mni');
     fs.writeFileSync(file, content);
     console.log(`Updated ${file}`);

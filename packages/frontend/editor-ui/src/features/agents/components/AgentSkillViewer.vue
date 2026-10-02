@@ -5,7 +5,7 @@ import {
 	AGENT_SKILL_REFERENCE_CONTENT_MAX_LENGTH,
 	AGENT_SKILL_REFERENCE_MAX_COUNT,
 	AGENT_SKILL_REFERENCES_TOTAL_MAX_LENGTH,
-} from '@n8n/api-types';
+} from '@MNI/api-types';
 import {
 	N8nButton,
 	N8nFormInput,
@@ -14,10 +14,10 @@ import {
 	N8nMarkdownEditor,
 	N8nText,
 	N8nTooltip,
-} from '@n8n/design-system';
-import type { IconName } from '@n8n/design-system';
-import type { IValidator, Validatable } from '@n8n/design-system';
-import { useI18n, type BaseTextKey } from '@n8n/i18n';
+} from '@MNI/design-system';
+import type { IconName } from '@MNI/design-system';
+import type { IValidator, Validatable } from '@MNI/design-system';
+import { useI18n, type BaseTextKey } from '@MNI/i18n';
 
 import type { Rule, RuleGroup } from '@/Interface';
 import type { AgentSkill, AgentSkillReference } from '../types';
@@ -523,13 +523,13 @@ watch(formIsValid, (valid) => emit('update:valid', valid), { immediate: true });
 }
 
 .editor {
-	:global(.n8n-markdown) {
+	:global(.MNI-markdown) {
 		min-height: calc(var(--height--5xl) + var(--spacing--sm));
 	}
 }
 
 .referenceEditor {
-	:global(.n8n-markdown) {
+	:global(.MNI-markdown) {
 		min-height: calc(var(--height--5xl) + var(--height--4xl));
 	}
 }

@@ -1,4 +1,4 @@
-import type { IDataObject } from 'n8n-workflow';
+import type { IDataObject } from 'MNI-workflow';
 
 import type { SheetRow } from '../../Excel/v2/helpers/interfaces';
 

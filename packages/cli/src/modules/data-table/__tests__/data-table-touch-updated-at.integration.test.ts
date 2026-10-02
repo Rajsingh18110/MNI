@@ -1,7 +1,7 @@
-import type { AddDataTableColumnDto } from '@n8n/api-types';
-import { createTeamProject, testDb, testModules } from '@n8n/backend-test-utils';
-import type { Project } from '@n8n/db';
-import { Container } from '@n8n/di';
+import type { AddDataTableColumnDto } from '@MNI/api-types';
+import { createTeamProject, testDb, testModules } from '@MNI/backend-test-utils';
+import type { Project } from '@MNI/db';
+import { Container } from '@MNI/di';
 
 import { DataTableRepository } from '../data-table.repository';
 import { DataTableService } from '../data-table.service';

@@ -5,12 +5,12 @@ import {
 	ChatProviderSettingsDto,
 	VECTOR_STORE_PROVIDER_CREDENTIAL_TYPE_MAP,
 	type ChatHubSemanticSearchSettings,
-} from '@n8n/api-types';
-import { DEFAULT_SEMANTIC_SEARCH_SETTINGS } from '@n8n/chat-hub';
-import { SettingsRepository } from '@n8n/db';
-import type { EntityManager } from '@n8n/db';
-import { Service } from '@n8n/di';
-import { jsonParse } from 'n8n-workflow';
+} from '@MNI/api-types';
+import { DEFAULT_SEMANTIC_SEARCH_SETTINGS } from '@MNI/chat-hub';
+import { SettingsRepository } from '@MNI/db';
+import type { EntityManager } from '@MNI/db';
+import { Service } from '@MNI/di';
+import { jsonParse } from 'MNI-workflow';
 
 import { BadRequestError } from '@/errors/response-errors/bad-request.error';
 
@@ -53,8 +53,8 @@ export class ChatHubSettingsService {
 	}
 
 	async ensureModelIsAllowed(model: ChatHubConversationModel, trx?: EntityManager): Promise<void> {
-		if (model.provider === 'custom-agent' || model.provider === 'n8n') {
-			// Custom agents and n8n models are always allowed, for now
+		if (model.provider === 'custom-agent' || model.provider === 'MNI') {
+			// Custom agents and MNI models are always allowed, for now
 			return;
 		}
 

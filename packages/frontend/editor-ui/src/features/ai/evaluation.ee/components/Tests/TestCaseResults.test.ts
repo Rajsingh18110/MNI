@@ -7,12 +7,12 @@ import { createComponentRenderer } from '@/__tests__/render';
 import TestCaseResults from './TestCaseResults.vue';
 import { useEvaluationsWizardSidepanelStore } from '../../wizardSidepanel.store';
 
-vi.mock('@n8n/i18n', async (importOriginal) => ({
+vi.mock('@MNI/i18n', async (importOriginal) => ({
 	...(await importOriginal()),
 	useI18n: () => ({ baseText: (key: string) => key }),
 }));
 
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: () => ({ showError: vi.fn(), showMessage: vi.fn() }),
 }));
 

@@ -1,14 +1,14 @@
 import type { Component } from 'vue';
 
-import { MCP_CLIENT_BRAND_MATCHERS, MCP_INSTANCE_SCOPES } from '@n8n/api-types';
+import { MCP_CLIENT_BRAND_MATCHERS, MCP_INSTANCE_SCOPES } from '@MNI/api-types';
 import type {
 	McpClientBrandName,
 	McpClientConnectedPeriod,
 	McpClientType,
 	McpClientTypeFilter,
 	OAuthClientResponseDto,
-} from '@n8n/api-types';
-import type { BaseTextKey, I18nClass } from '@n8n/i18n';
+} from '@MNI/api-types';
+import type { BaseTextKey, I18nClass } from '@MNI/i18n';
 
 import ClaudeIcon from './assets/client-icons/claude.svg?component';
 import CursorIcon from './assets/client-icons/cursor.svg?component';

@@ -172,16 +172,16 @@ These only run if specific files changed:
 
 | Files Changed                                                          | Workflow                    | Branch     |
 |------------------------------------------------------------------------|-----------------------------|------------|
-| `packages/@n8n/task-runner-python/**`                                  | `ci-python.yml`             | any        |
+| `packages/@MNI/task-runner-python/**`                                  | `ci-python.yml`             | any        |
 | `packages/cli/src/databases/**`, `*.entity.ts`, `*.repository.ts`      | `test-db.yml`               | any        |
-| `packages/frontend/@n8n/storybook/**`, design-system, chat             | `release-storybook.yml` | master     |
+| `packages/frontend/@MNI/storybook/**`, design-system, chat             | `release-storybook.yml` | master     |
 | `docker/images/mni-base/Dockerfile`                                    | `build-base-image.yml`      | any        |
 | `**/package.json`, `**/turbo.json`                                     | `build-windows.yml`         | master     |
-| `packages/@n8n/ai-workflow-builder.ee/evaluations/programmatic/python/**` | `test-evals-python.yml`  | any        |
-| `packages/@n8n/benchmark/**`                                           | `build-benchmark-image.yml` | master     |
+| `packages/@MNI/ai-workflow-builder.ee/evaluations/programmatic/python/**` | `test-evals-python.yml`  | any        |
+| `packages/@MNI/benchmark/**`                                           | `build-benchmark-image.yml` | master     |
 | `packages/cli/src/public-api/**/*.yml`, `packages/cli/src/public-api/**/*.yaml`, `packages/cli/src/public-api/**/*.css`, `packages/cli/src/public-api/v1/openapi-gen/**/*.ts`, `packages/cli/scripts/build.mjs`, `packages/cli/package.json` | `util-publish-api-schema.yml` | master   |
-| `packages/@n8n/instance-ai/src/**`, `packages/@n8n/instance-ai/skills/**`, `packages/@n8n/instance-ai/knowledge-base/**`, `packages/@n8n/instance-ai/evaluations/**`, `packages/cli/src/modules/instance-ai/**`, `packages/core/src/execution-engine/eval-mock-helpers.ts`, `packages/@n8n/agents/src/**` | `ci-instance-ai-evals.yml` | on PR `opened` / `reopened` / `ready_for_review` |
-| `docker/get-n8n.sh`, `docker/get-n8n-compose.yml`, `docker/test-get-n8n.sh` | `test-get-n8n.yml`          | any        |
+| `packages/@MNI/instance-ai/src/**`, `packages/@MNI/instance-ai/skills/**`, `packages/@MNI/instance-ai/knowledge-base/**`, `packages/@MNI/instance-ai/evaluations/**`, `packages/cli/src/modules/instance-ai/**`, `packages/core/src/execution-engine/eval-mock-helpers.ts`, `packages/@MNI/agents/src/**` | `ci-instance-ai-evals.yml` | on PR `opened` / `reopened` / `ready_for_review` |
+| `docker/get-MNI.sh`, `docker/get-MNI-compose.yml`, `docker/test-get-MNI.sh` | `test-get-MNI.yml`          | any        |
 
 ### On PR Review
 
@@ -227,7 +227,7 @@ the isolated `mcp-workflow-evals` LangSmith dataset, so there is no shard/merge
 step. Dispatch from the Actions tab (set `experiment-name=mcp-baseline` to
 refresh the baseline, `filter=<slug>` to run a single case, or `lanes` to widen
 parallelism). See the `--build-via-mcp` section in
-`packages/@n8n/instance-ai/evaluations/README.md`.
+`packages/@MNI/instance-ai/evaluations/README.md`.
 
 ### On PR Close/Merge
 
@@ -251,7 +251,7 @@ parallelism). See the `--build-via-mcp` section in
 |-----------------------|------------------------------|----------------------------------------------------|
 | `codespace-preview`   | `util-codespace-preview.yml` | Runs the PR in a Codespace, comments the URL        |
 | `preview:enterprise`  | `util-codespace-preview.yml` | Re-serves the instance with an enterprise licence   |
-| `preview:debug`       | `util-codespace-preview.yml` | Re-serves the instance with `N8N_LOG_LEVEL=debug`   |
+| `preview:debug`       | `util-codespace-preview.yml` | Re-serves the instance with `MNI_LOG_LEVEL=debug`   |
 
 **Why:** A reviewer gets a running instance of the PR without a Docker build or a
 cloud deploy. The workflow calls `scripts/codespace-preview/preview.mjs`, which keeps one codespace
@@ -260,7 +260,7 @@ organization. A later push serves the new head in the same box. Removing the
 label, or closing the PR, deletes the box.
 
 Only a PR from a branch in this repository is eligible: a codespace token is
-scoped to `n8n-io/n8n` and cannot check out a fork head.
+scoped to `MNI-io/MNI` and cannot check out a fork head.
 
 #### Live progress on the PR
 
@@ -321,7 +321,7 @@ a value is never passed through it — `preview:enterprise` resolves to a licenc
 inside the box, not on the runner.
 
 `preview:enterprise` needs a **Codespaces** secret named
-`N8N_LICENSE_ACTIVATION_KEY`, scoped to `n8n-io/n8n`. That is a Codespaces
+`MNI_LICENSE_ACTIVATION_KEY`, scoped to `MNI-io/MNI`. That is a Codespaces
 secret, not an Actions secret, and it is unrelated to `CODESPACE_PREVIEW_TOKEN`.
 Use the sandbox key: the preview sets tenant `1001` to match, and the default
 tenant (`1`) rejects it. Without the secret the preview still serves, unlicensed,
@@ -339,7 +339,7 @@ A preview can also take environment from an MNI webhook we control, so a value
 can change without a commit and a merge. `scripts/codespace-preview/preview-remote-env.mjs` fetches
 it, and `preview-serve.mjs` hands the result to the backend.
 
-It needs three **Codespaces** secrets on `n8n-io/n8n`, again not Actions secrets:
+It needs three **Codespaces** secrets on `MNI-io/MNI`, again not Actions secrets:
 
 | Secret | Purpose |
 | ------------------------ | ------------------------------------------------- |
@@ -369,8 +369,8 @@ password is not retried: it cannot fix itself.
 #### The `CODESPACE_PREVIEW_TOKEN` secret
 
 The job needs `CODESPACE_PREVIEW_TOKEN`, a **fine-grained** personal access token,
-held in the `codespaces` environment. Set the resource owner to `n8n-io` and limit
-repository access to `n8n-io/n8n`. Grant these repository permissions:
+held in the `codespaces` environment. Set the resource owner to `MNI-io` and limit
+repository access to `MNI-io/MNI`. Grant these repository permissions:
 
 | Permission | Level | What it unlocks |
 |---|---|---|
@@ -394,7 +394,7 @@ No other credential can do this:
 - A GitHub App **installation** token cannot create a codespace at all. The
   Codespaces API belongs to a user, not to an installation.
 - A **classic** token is refused by org policy:
-  `` `n8n-io` forbids access via a personal access token (classic) ``. So no
+  `` `MNI-io` forbids access via a personal access token (classic) ``. So no
   combination of classic scopes works, whatever the API reference says about the
   `codespace` scope.
 
@@ -520,7 +520,7 @@ test-workflows-pr-comment.yml
 
 ### Recovering a failed release
 
-If the pipeline publishes `n8n@X.Y.Z` to npm and then fails, that version is
+If the pipeline publishes `MNI@X.Y.Z` to npm and then fails, that version is
 burned — npm versions are immutable. Recovery depends on how far it got:
 
 | Failure point | Recovery |
@@ -536,22 +536,22 @@ fires `release-publish.yml` as normal — `release-publish.yml` has no
 
 Only those two `package.json` files move: the root version drives every publish
 output (git tag, Docker tags, GitHub Release, SBOM) and `packages/cli` drives
-the runtime `N8N_VERSION`. Every other package keeps its version, so the publish
+the runtime `MNI_VERSION`. Every other package keeps its version, so the publish
 step skips the ones already on npm and publishes whichever ones the failed run
 never reached.
 
-It refuses to run unless `n8n@X.Y.Z` is on npm and `n8n@X.Y.(Z+1)` is not. That
+It refuses to run unless `MNI@X.Y.Z` is on npm and `MNI@X.Y.(Z+1)` is not. That
 check fails closed: if the registry can't be reached, the run stops rather than
 guessing. Dispatch with `force: true` to skip it.
 
 The burned version stays on npm. Deprecate it by hand once the re-release is
-out: `npm deprecate n8n@X.Y.Z "Failed release, use X.Y.(Z+1)"`.
+out: `npm deprecate MNI@X.Y.Z "Failed release, use X.Y.(Z+1)"`.
 
 ### Other Release Workflows
 
 | Workflow                                  | Trigger         | Purpose                                        |
 |-------------------------------------------|-----------------|------------------------------------------------|
-| `release-standalone-package.yml`           | Manual dispatch | Release individual packages (@n8n/codemirror-lang, @n8n/create-node, etc.) |
+| `release-standalone-package.yml`           | Manual dispatch | Release individual packages (@MNI/codemirror-lang, @MNI/create-node, etc.) |
 | `release-create-patch-pr.yml`              | Manual dispatch | Open a patch release PR for one track          |
 | `release-recreate-failed-release.yml`      | Manual dispatch | Re-release a version whose publish failed after it reached npm |
 
@@ -603,7 +603,7 @@ Push to master
 | Daily 00:00               | `release-chromatic.yml`       | Visual regression        |
 | Daily 00:00               | `util-check-docs-urls.yml`        | Doc link validation      |
 | Daily 01:30, 02:30, 03:30 | `test-benchmark-nightly.yml`      | Performance benchmarks   |
-| Daily 02:00               | `test-get-n8n.yml`                | get.n8n.io installer health |
+| Daily 02:00               | `test-get-MNI.yml`                | get.n8n.io installer health |
 | Daily 02:00               | `test-e2e-pc-nightly.yml`         | E2E on the `-pc` image   |
 | Daily 04:00               | `test-sbom-nightly.yml`           | Release and image SBOM license validation |
 | Daily 05:00               | `test-benchmark-destroy-nightly.yml`| Cleanup benchmark env  |
@@ -689,7 +689,7 @@ The Blacksmith layer cache lives on a sticky disk identified by
 image would avoid that, but Blacksmith currently never populates a
 newly created sticky disk - it stays at 0 bytes however many runs commit to it,
 while the build reports a successful commit. Every job therefore shares the
-`n8n-io/n8n` key, which is the only disk that actually retains layers. Revisit
+`MNI-io/MNI` key, which is the only disk that actually retains layers. Revisit
 once new-disk retention works.
 
 ### run-workflow-script
@@ -727,12 +727,12 @@ inputs:
 
 ### External actions
 
-Actions consumed from other n8n-io repositories, SHA-pinned like any third-party
+Actions consumed from other MNI-io repositories, SHA-pinned like any third-party
 action:
 
 | Action                            | Purpose                                                                       | Used By            |
 |-----------------------------------|-------------------------------------------------------------------------------|--------------------|
-| `n8n-io/github-actions/cla-check` | CLA signature check: `CLA Check` commit status, in-place PR comment, `cla-signed` label | `ci-cla-check.yml` |
+| `MNI-io/github-actions/cla-check` | CLA signature check: `CLA Check` commit status, in-place PR comment, `cla-signed` label | `ci-cla-check.yml` |
 
 Behaviour changes belong in that repo; bumping the pin here is what picks them up.
 A `/cla-check` comment on a PR re-runs the check without a push.
@@ -749,12 +749,12 @@ Workflows with `workflow_call` trigger:
 | `test-linting-reusable.yml`        | `ref`, `nodeVersion`                          | ESLint                |
 | `test-e2e-reusable.yml`            | `branch`, `test-mode`, `shards`, `runner`     | Core E2E executor     |
 | `test-workflows-callable.yml`      | `git_ref`, `compare_schemas`                  | Workflow tests        |
-| `docker-build-push.yml`            | `n8n_version`, `release_type`, `push_enabled`, `ref`, `date_tag`, `create_attestations` | Docker build |
+| `docker-build-push.yml`            | `MNI_version`, `release_type`, `push_enabled`, `ref`, `date_tag`, `create_attestations` | Docker build |
 | `sec-ci-reusable.yml`              | `ref`                                         | Security orchestrator |
 | `sec-poutine-reusable.yml`         | `ref`                                         | Poutine scanner       |
 | `sec-sync-retarget-prs.yml`        | none                                          | Move bundle PRs back onto `bundle/*` |
 | `security-trivy-scan-callable.yml` | `image_ref`                                   | Trivy scan            |
-| `sbom-generation-callable.yml`     | `n8n_version`, `release_tag_ref`              | SBOM generation       |
+| `sbom-generation-callable.yml`     | `MNI_version`, `release_tag_ref`              | SBOM generation       |
 | `sbom-validation-callable.yml`     | `sha`                                         | Read-only SBOM validation |
 | `test-single-instance-npm.yml`     | `scope`, `base-ref`, `base-branch`, `blocking`, `timeout-minutes` | Dependency duplication |
 
@@ -823,7 +823,7 @@ rewrite safe.
 |----------------------------|----------------------------------------------------------------------|------------------------------------|
 | `branch-replay.mjs`        | Shared primitives: merge-tree, tree guard, marker scan               | the two scripts below              |
 | `sync-master-to-3x.mjs`    | master → `3.x`, rebased; auto-resolves mechanical files, opens a conflict PR | `util-sync-master-to-3x.yml`       |
-| `sync-bundle-branch.mjs`   | base → `bundle/*` in n8n-private, merged; skips while the base is unpublished; fail-loud, never resolves conflicts | `sec-sync-bundle-branches.yml`   |
+| `sync-bundle-branch.mjs`   | base → `bundle/*` in MNI-private, merged; skips while the base is unpublished; fail-loud, never resolves conflicts | `sec-sync-bundle-branches.yml`   |
 
 ### Slack Scripts
 
@@ -1015,7 +1015,7 @@ Supply chain security ensures artifacts haven't been tampered with. We provide t
 ### Trivy (Container)
 
 - **Runs on:** stable/nightly/rc Docker builds
-- **Scans:** n8n image, runners image
+- **Scans:** MNI image, runners image
 - **Output:** GitHub Actions step summary (`$GITHUB_STEP_SUMMARY`) and run logs
 
 ### SBOM
@@ -1085,11 +1085,11 @@ uses: slsa-framework/slsa-github-generator/.github/workflows/generator_container
 **Verify provenance:**
 ```bash
 # Docker
-slsa-verifier verify-image ghcr.io/n8n-io/n8n:VERSION \
-  --source-uri github.com/n8n-io/n8n
+slsa-verifier verify-image ghcr.io/MNI-io/MNI:VERSION \
+  --source-uri github.com/MNI-io/MNI
 
 # npm
-npm audit signatures n8n@VERSION
+npm audit signatures MNI@VERSION
 ```
 
 ### VEX (Vulnerability Exploitability eXchange)
@@ -1112,9 +1112,9 @@ VEX documents which CVEs actually affect MNI vs false positives from scanners.
 **Verify VEX attestation:**
 ```bash
 cosign verify-attestation --type openvex \
-  --certificate-identity-regexp '.*github.com/n8n-io/n8n.*' \
+  --certificate-identity-regexp '.*github.com/MNI-io/MNI.*' \
   --certificate-oidc-issuer https://token.actions.githubusercontent.com \
-  ghcr.io/n8n-io/n8n:VERSION
+  ghcr.io/MNI-io/MNI:VERSION
 ```
 
 **Adding a CVE statement to security/vex.openvex.json:**
@@ -1123,7 +1123,7 @@ cosign verify-attestation --type openvex \
   "statements": [
     {
       "vulnerability": { "name": "CVE-2024-XXXXX" },
-      "products": [{ "@id": "pkg:github/n8n-io/n8n" }],
+      "products": [{ "@id": "pkg:github/MNI-io/MNI" }],
       "status": "not_affected",
       "justification": "vulnerable_code_not_in_execute_path",
       "statement": "MNI does not use the affected code path in this dependency"
@@ -1134,7 +1134,7 @@ cosign verify-attestation --type openvex \
 
 ### Public ↔ private sync (bundle branches)
 
-Embargoed security work happens in `n8n-io/n8n-private`. `sec-sync-public-to-private.yml`
+Embargoed security work happens in `MNI-io/MNI-private`. `sec-sync-public-to-private.yml`
 runs hourly there (and on `workflow_dispatch` with `force` for conflict recovery),
 mirroring public `master` and `1.x` into private with `reset --hard` +
 `--force-with-lease` — skipping a branch when private is ahead, ignoring `chore: Bundle`
@@ -1160,7 +1160,7 @@ forcing. Every push is verified to carry exactly the tree a merge of the two sid
 produce (`git merge-tree`); a mismatch, or a conflict marker, fails the run instead of pushing.
 
 **A bundle branch is only ever built on published history.** Before it creates or merges
-anything, the sync fetches the same-named branch from `https://github.com/n8n-io/n8n.git`
+anything, the sync fetches the same-named branch from `https://github.com/MNI-io/n8n.git`
 (anonymously — its token is scoped to the private repo) and checks that the private base tip is
 contained in it. This matters because the `chore: Bundle/*` squash on private `master` is
 *private-only*: the mirror above discards it in favour of the public cherry-pick of the same
@@ -1254,7 +1254,7 @@ If notify is a step inside an existing checked-out job, skip the `checkout` and 
 | `QBOT_SLACK_TOKEN`           | QBot           | Default — engineering / build / security                    |
 | `RELEASE_HELPER_SLACK_TOKEN` | Release Helper | `#releases` (C036AELNMV0)                                   |
 
-Adding a new channel requires inviting the bot first; the first run otherwise fails loudly with `not_in_channel`. Private-repo workflows (`sec-publish-fix*.yml`, `sec-sync-public-to-private.yml`, and the bundle-PR alert in `ci-pull-requests.yml`) need `QBOT_SLACK_TOKEN` set in `n8n-io/n8n-private`; the scripts themselves are mirrored by `sec-sync-public-to-private.yml`.
+Adding a new channel requires inviting the bot first; the first run otherwise fails loudly with `not_in_channel`. Private-repo workflows (`sec-publish-fix*.yml`, `sec-sync-public-to-private.yml`, and the bundle-PR alert in `ci-pull-requests.yml`) need `QBOT_SLACK_TOKEN` set in `MNI-io/MNI-private`; the scripts themselves are mirrored by `sec-sync-public-to-private.yml`.
 
 ---
 
@@ -1269,8 +1269,8 @@ Adding a new channel requires inviting the bot first; the first run otherwise fa
 | Code Quality        | `CODECOV_TOKEN`, `CHROMATIC_PROJECT_TOKEN`, `CURRENTS_RECORD_KEY` |
 | Error Tracking      | `SENTRY_AUTH_TOKEN`, `SENTRY_ORG`, `SENTRY_*_PROJECT`       |
 | Cloud/CDN           | `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID`             |
-| GitHub Automation   | `N8N_ASSISTANT_APP_ID`, `N8N_ASSISTANT_PRIVATE_KEY`         |
-| Benchmarking        | `BENCHMARK_ARM_*`, `N8N_BENCHMARK_LICENSE_CERT`             |
+| GitHub Automation   | `MNI_ASSISTANT_APP_ID`, `MNI_ASSISTANT_PRIVATE_KEY`         |
+| Benchmarking        | `BENCHMARK_ARM_*`, `MNI_BENCHMARK_LICENSE_CERT`             |
 | AI/Evals            | `EVALS_ANTHROPIC_KEY`, `EVALS_OPENAI_KEY`, `EVALS_OPENROUTER_KEY`, `EVALS_XAI_KEY`, `EVALS_BASETEN_KEY`, `EVALS_FIREWORKS_KEY`, `EVALS_TOGETHER_KEY`, `EVALS_DATABRICKS_KEY`, `EVALS_MODAL_KEY`, `EVALS_LYCEUM_KEY`, `EVALS_AZURE_FOUNDRY_KEY`, `EVALS_VERTEX_KEY`, `EVALS_VERTEX_PROJECT_ID`, `EVALS_VERTEX_LOCATION`, `EVALS_LANGSMITH_*` |
 
 ### Scoping

@@ -1,5 +1,5 @@
 import { mock } from 'vitest-mock-extended';
-import type { IWebhookData, IWorkflowExecuteAdditionalData } from 'n8n-workflow';
+import type { IWebhookData, IWorkflowExecuteAdditionalData } from 'MNI-workflow';
 
 import * as WebhookHelpers from '@/webhooks/webhook-helpers';
 import { TriggerCountService } from '@/workflows/triggers/trigger-count.service';

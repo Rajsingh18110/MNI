@@ -1,20 +1,20 @@
 import { createTestingPinia } from '@pinia/testing';
 import { setActivePinia } from 'pinia';
-import type { CommunityNodeType } from '@n8n/api-types';
-import type { PublicInstalledPackage } from 'n8n-workflow';
+import type { CommunityNodeType } from '@MNI/api-types';
+import type { PublicInstalledPackage } from 'MNI-workflow';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { mock } from 'vitest-mock-extended';
 import { nextTick, ref } from 'vue';
 
 import { mockedStore } from '@/__tests__/utils';
 import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';
-import { useSettingsStore } from '@n8n/stores/settings.store';
-import { useUsersStore } from '@n8n/stores/users.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
+import { useUsersStore } from '@MNI/stores/users.store';
 import { useCommunityNodesStore } from '../communityNodes.store';
 import { useInstalledCommunityPackage } from './useInstalledCommunityPackage';
-import type * as n8nWorkflow from 'n8n-workflow';
+import type * as n8nWorkflow from 'MNI-workflow';
 
-vi.mock('n8n-workflow', async (importOriginal) => {
+vi.mock('MNI-workflow', async (importOriginal) => {
 	const original = await importOriginal();
 	return {
 		...(original as typeof n8nWorkflow),
@@ -22,11 +22,11 @@ vi.mock('n8n-workflow', async (importOriginal) => {
 	};
 });
 
-import { isCommunityPackageName } from 'n8n-workflow';
+import { isCommunityPackageName } from 'MNI-workflow';
 
 const mockIsCommunityPackageName = vi.mocked(isCommunityPackageName);
 const communityPackage = (): PublicInstalledPackage => ({
-	packageName: '@test/n8n-nodes-test',
+	packageName: '@test/MNI-nodes-test',
 	installedVersion: '1.0.0',
 	installedNodes: [],
 	createdAt: new Date(),
@@ -42,16 +42,16 @@ describe('useInstalledCommunityPackage', () => {
 	it('identifies community nodes', () => {
 		mockIsCommunityPackageName.mockReturnValue(true);
 
-		const { isCommunityNode } = useInstalledCommunityPackage('@test/n8n-nodes-test.TestNode');
+		const { isCommunityNode } = useInstalledCommunityPackage('@test/MNI-nodes-test.TestNode');
 
 		expect(isCommunityNode.value).toBe(true);
-		expect(mockIsCommunityPackageName).toHaveBeenCalledWith('@test/n8n-nodes-test.TestNode');
+		expect(mockIsCommunityPackageName).toHaveBeenCalledWith('@test/MNI-nodes-test.TestNode');
 	});
 
 	it('does not identify built-in or missing node types as community nodes', () => {
 		mockIsCommunityPackageName.mockReturnValue(false);
 
-		expect(useInstalledCommunityPackage('n8n-nodes-base.HttpRequest').isCommunityNode.value).toBe(
+		expect(useInstalledCommunityPackage('MNI-nodes-base.HttpRequest').isCommunityNode.value).toBe(
 			false,
 		);
 		expect(useInstalledCommunityPackage().isCommunityNode.value).toBe(false);
@@ -62,7 +62,7 @@ describe('useInstalledCommunityPackage', () => {
 		usersStore.isAdminOrOwner = true;
 		mockIsCommunityPackageName.mockReturnValue(true);
 
-		const { canUpdatePackage } = useInstalledCommunityPackage('@test/n8n-nodes-test.TestNode');
+		const { canUpdatePackage } = useInstalledCommunityPackage('@test/MNI-nodes-test.TestNode');
 
 		expect(canUpdatePackage.value).toBe(true);
 	});
@@ -72,7 +72,7 @@ describe('useInstalledCommunityPackage', () => {
 		usersStore.isAdminOrOwner = false;
 		mockIsCommunityPackageName.mockReturnValue(true);
 
-		const { canUpdatePackage } = useInstalledCommunityPackage('@test/n8n-nodes-test.TestNode');
+		const { canUpdatePackage } = useInstalledCommunityPackage('@test/MNI-nodes-test.TestNode');
 
 		expect(canUpdatePackage.value).toBe(false);
 	});
@@ -97,7 +97,7 @@ describe('useInstalledCommunityPackage', () => {
 		settingsStore.settings.communityNodesManagedByEnv = false;
 
 		const { hasUpdateAvailable, initInstalledPackage } = useInstalledCommunityPackage(
-			'@test/n8n-nodes-test.TestNode',
+			'@test/MNI-nodes-test.TestNode',
 		);
 		await initInstalledPackage();
 		expect(hasUpdateAvailable.value).toBe(false);
@@ -115,11 +115,11 @@ describe('useInstalledCommunityPackage', () => {
 		communityNodesStore.getInstalledPackage.mockResolvedValue(installed);
 
 		const { initInstalledPackage, installedPackage } = useInstalledCommunityPackage(
-			'@test/n8n-nodes-test.TestNode',
+			'@test/MNI-nodes-test.TestNode',
 		);
 		const result = await initInstalledPackage();
 
-		expect(communityNodesStore.getInstalledPackage).toHaveBeenCalledWith('@test/n8n-nodes-test');
+		expect(communityNodesStore.getInstalledPackage).toHaveBeenCalledWith('@test/MNI-nodes-test');
 		expect(result).toStrictEqual(installed);
 		expect(installedPackage.value).toStrictEqual(installed);
 	});
@@ -130,7 +130,7 @@ describe('useInstalledCommunityPackage', () => {
 
 		expect(await useInstalledCommunityPackage().initInstalledPackage()).toBeUndefined();
 		expect(
-			await useInstalledCommunityPackage('n8n-nodes-base.HttpRequest').initInstalledPackage(),
+			await useInstalledCommunityPackage('MNI-nodes-base.HttpRequest').initInstalledPackage(),
 		).toBeUndefined();
 		expect(communityNodesStore.getInstalledPackage).not.toHaveBeenCalled();
 	});
@@ -141,9 +141,9 @@ describe('useInstalledCommunityPackage', () => {
 		mockIsCommunityPackageName.mockReturnValue(true);
 		communityNodesStore.getInstalledPackage.mockResolvedValue(installed);
 
-		const { installedPackage } = useInstalledCommunityPackage('@test/n8n-nodes-test.TestNode');
+		const { installedPackage } = useInstalledCommunityPackage('@test/MNI-nodes-test.TestNode');
 		communityNodesStore.installedPackages = {
-			'@test/n8n-nodes-test': installed,
+			'@test/MNI-nodes-test': installed,
 		};
 		await nextTick();
 
@@ -153,18 +153,18 @@ describe('useInstalledCommunityPackage', () => {
 	it('clears the installed package when the node type changes', async () => {
 		const communityNodesStore = mockedStore(useCommunityNodesStore);
 		const installed = communityPackage();
-		const nodeTypeName = ref('@test/n8n-nodes-test.TestNode');
+		const nodeTypeName = ref('@test/MNI-nodes-test.TestNode');
 		mockIsCommunityPackageName.mockReturnValue(true);
 		communityNodesStore.getInstalledPackage.mockResolvedValue(installed);
 		communityNodesStore.installedPackages = {
-			'@test/n8n-nodes-test': installed,
+			'@test/MNI-nodes-test': installed,
 		};
 
 		const { installedPackage, initInstalledPackage } = useInstalledCommunityPackage(nodeTypeName);
 		await initInstalledPackage();
 		expect(installedPackage.value).toStrictEqual(installed);
 
-		nodeTypeName.value = '@test/n8n-nodes-other.OtherNode';
+		nodeTypeName.value = '@test/MNI-nodes-other.OtherNode';
 		await nextTick();
 
 		expect(installedPackage.value).toBeUndefined();

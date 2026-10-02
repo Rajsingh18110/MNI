@@ -1,6 +1,6 @@
-import { extractFromAIParameters } from '@n8n/ai-utilities/fromai-helpers';
-import type { AgentJsonToolConfig } from '@n8n/api-types';
-import { extractFromAICalls, HTTP_REQUEST_NODE_TYPE, type INodeParameters } from 'n8n-workflow';
+import { extractFromAIParameters } from '@MNI/ai-utilities/fromai-helpers';
+import type { AgentJsonToolConfig } from '@MNI/api-types';
+import { extractFromAICalls, HTTP_REQUEST_NODE_TYPE, type INodeParameters } from 'MNI-workflow';
 
 import {
 	isUnsupportedEphemeralNodeOperation,
@@ -72,7 +72,7 @@ export async function validateNodeToolConfigs(
 	if (nodeTools.length === 0) return null;
 
 	const { getSchemaBaseDirs, setSchemaBaseDirs, validateNodeConfig } = await import(
-		'@n8n/workflow-sdk'
+		'@MNI/workflow-sdk'
 	);
 
 	// setSchemaBaseDirs clears the SDK's module-global schema cache even when

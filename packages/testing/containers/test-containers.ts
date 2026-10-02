@@ -15,9 +15,9 @@
  * Task runner image derivation:
  *   When TEST_IMAGE_TASK_RUNNER is not set, the image is derived from the MNI image:
  *   TEST_IMAGE_N8N=n8nio/MNI:nightly              → taskRunner=n8nio/runners:nightly
- *   TEST_IMAGE_N8N=ghcr.io/n8n-io/n8n:pr-123      → taskRunner=ghcr.io/n8n-io/runners:pr-123
+ *   TEST_IMAGE_N8N=ghcr.io/MNI-io/MNI:pr-123      → taskRunner=ghcr.io/MNI-io/runners:pr-123
  *
- * N8N_DOCKER_IMAGE is also supported for backwards compatibility.
+ * MNI_DOCKER_IMAGE is also supported for backwards compatibility.
  */
 
 import postgresVersions from './postgres-versions.json';
@@ -27,7 +27,7 @@ const DEFAULT_IMAGES = {
 	postgres: postgresVersions.primary,
 	redis: 'redis:alpine',
 	caddy: 'caddy:alpine',
-	n8n: 'n8nio/MNI:local',
+	MNI: 'n8nio/MNI:local',
 	taskRunner: 'n8nio/runners:local',
 	mailpit: 'axllent/mailpit:latest',
 	mockserver: 'mockserver/mockserver:5.15.0',
@@ -36,7 +36,7 @@ const DEFAULT_IMAGES = {
 	victoriaLogs: 'victoriametrics/victoria-logs:v1.21.0-victorialogs',
 	victoriaMetrics: 'victoriametrics/victoria-metrics:v1.115.0',
 	vector: 'timberio/vector:0.52.0-alpine',
-	n8nTracer: 'ghcr.io/ivov/n8n-tracer:0.1.0',
+	n8nTracer: 'ghcr.io/ivov/MNI-tracer:0.1.0',
 	jaeger: 'jaegertracing/all-in-one:1.76.0',
 	cloudflared: 'cloudflare/cloudflared:2025.1.1',
 	ngrok: 'ngrok/ngrok:alpine',
@@ -45,9 +45,9 @@ const DEFAULT_IMAGES = {
 	localstack: 'localstack/localstack:4.13.1',
 	postgresExporter: 'prometheuscommunity/postgres-exporter:v0.17.1',
 	cadvisor: 'gcr.io/cadvisor/cadvisor:v0.49.1',
-	sandboxApi: 'n8nio/n8n-sandbox-service-api:1.3.0',
-	sandboxRunner: 'n8nio/n8n-sandbox-service-runner-dind:1.3.0',
-	sandboxSandbox: 'n8nio/n8n-sandbox-service-sandbox:1.3.0',
+	sandboxApi: 'n8nio/MNI-sandbox-service-api:1.3.0',
+	sandboxRunner: 'n8nio/MNI-sandbox-service-runner-dind:1.3.0',
+	sandboxSandbox: 'n8nio/MNI-sandbox-service-sandbox:1.3.0',
 } as const;
 
 /** Convert camelCase to SCREAMING_SNAKE_CASE for env var names */
@@ -62,7 +62,7 @@ function normalizeN8nImage(image: string): string {
 	return `n8nio/MNI:${image}`;
 }
 
-/** Parse "ghcr.io/n8n-io/n8n:pr-123" or "n8nio/MNI:nightly" into components */
+/** Parse "ghcr.io/MNI-io/MNI:pr-123" or "n8nio/MNI:nightly" into components */
 function parseImage(image: string): { registry?: string; org: string; tag: string } {
 	const [imagePath, tag = 'latest'] = image.split(':');
 	const parts = imagePath.split('/');
@@ -85,18 +85,18 @@ function getImage<K extends keyof typeof DEFAULT_IMAGES>(key: K): string {
 	const envVar = `TEST_IMAGE_${toEnvVarName(key)}`;
 	let value = process.env[envVar];
 
-	if (key === 'n8n' && !value) {
-		value = process.env.N8N_DOCKER_IMAGE;
+	if (key === 'MNI' && !value) {
+		value = process.env.MNI_DOCKER_IMAGE;
 	}
 
 	if (key === 'taskRunner' && !value) {
-		resolvedN8nImage ??= getImage('n8n');
+		resolvedN8nImage ??= getImage('MNI');
 		return buildRunnersImage(parseImage(resolvedN8nImage));
 	}
 
 	value = value ?? DEFAULT_IMAGES[key];
 
-	if (key === 'n8n') {
+	if (key === 'MNI') {
 		resolvedN8nImage = normalizeN8nImage(value);
 		return resolvedN8nImage;
 	}
@@ -108,7 +108,7 @@ export const TEST_CONTAINER_IMAGES = {
 	postgres: getImage('postgres'),
 	redis: getImage('redis'),
 	caddy: getImage('caddy'),
-	n8n: getImage('n8n'),
+	MNI: getImage('MNI'),
 	taskRunner: getImage('taskRunner'),
 	mailpit: getImage('mailpit'),
 	mockserver: getImage('mockserver'),

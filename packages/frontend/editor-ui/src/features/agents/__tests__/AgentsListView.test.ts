@@ -45,11 +45,11 @@ vi.mock('vue-router', async (importOriginal) => {
 	};
 });
 
-vi.mock('@n8n/stores/useRootStore', () => ({
+vi.mock('@MNI/stores/useRootStore', () => ({
 	useRootStore: () => ({ restApiContext: { baseUrl: '/rest', pushRef: 'push-ref' } }),
 }));
 
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: () => ({ showMessage: mocks.toastShowMessage, showError: mocks.toastShowError }),
 }));
 
@@ -57,7 +57,7 @@ vi.mock('@/app/stores/ui.store', () => ({
 	useUIStore: () => ({ openModalWithData: mocks.openModalWithData }),
 }));
 
-vi.mock('@n8n/i18n', () => ({
+vi.mock('@MNI/i18n', () => ({
 	useI18n: () => ({ baseText: (key: string) => key }),
 }));
 
@@ -68,8 +68,8 @@ vi.mock('@/features/collaboration/projects/projects.store', () => ({
 	}),
 }));
 
-vi.mock('@n8n/frontend-module-insights', async (importOriginal) => ({
-	...(await importOriginal<typeof import('@n8n/frontend-module-insights')>()),
+vi.mock('@MNI/frontend-module-insights', async (importOriginal) => ({
+	...(await importOriginal<typeof import('@MNI/frontend-module-insights')>()),
 	useInsightsStore: () => ({
 		isSummaryEnabled: false,
 		weeklySummary: { isLoading: false, state: null },

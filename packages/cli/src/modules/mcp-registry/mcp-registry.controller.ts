@@ -1,5 +1,5 @@
-import type { McpRegistryServerResponse } from '@n8n/api-types';
-import { Get, RestController } from '@n8n/decorators';
+import type { McpRegistryServerResponse } from '@MNI/api-types';
+import { Get, RestController } from '@MNI/decorators';
 
 import { resolveMcpRegistryConnection } from './mcp-registry-connection';
 import { getMcpRegistryCredentialOptions } from './node-description-transform';

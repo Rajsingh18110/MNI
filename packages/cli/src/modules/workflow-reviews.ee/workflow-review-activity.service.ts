@@ -4,8 +4,8 @@ import type {
 	ListWorkflowReviewActivityResponse,
 	WorkflowReviewActivityEntry,
 	WorkflowReviewEligibleReviewer,
-} from '@n8n/api-types';
-import { Logger } from '@n8n/backend-common';
+} from '@MNI/api-types';
+import { Logger } from '@MNI/backend-common';
 import {
 	TransactionRunner,
 	UserRepository,
@@ -14,8 +14,8 @@ import {
 	WorkflowReviewRequestRepository,
 	type User,
 	type WorkflowReviewActivityFeedEntry,
-} from '@n8n/db';
-import { Service } from '@n8n/di';
+} from '@MNI/db';
+import { Service } from '@MNI/di';
 
 import { BadRequestError } from '@/errors/response-errors/bad-request.error';
 import { ConflictError } from '@/errors/response-errors/conflict.error';

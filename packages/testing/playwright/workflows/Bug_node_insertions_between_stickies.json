@@ -5,7 +5,7 @@
 			"parameters": {
 				"options": {}
 			},
-			"type": "n8n-nodes-base.splitInBatches",
+			"type": "MNI-nodes-base.splitInBatches",
 			"typeVersion": 3,
 			"position": [3872, 3056],
 			"id": "e8bf4c20-c8e8-4fa6-9466-bf63548c7a7a",
@@ -15,7 +15,7 @@
 			"parameters": {
 				"options": {}
 			},
-			"type": "n8n-nodes-base.set",
+			"type": "MNI-nodes-base.set",
 			"typeVersion": 3.4,
 			"position": [4096, 3056],
 			"id": "544c42bd-155e-416c-abf5-5f15e6a4c0f9",
@@ -25,7 +25,7 @@
 			"parameters": {
 				"options": {}
 			},
-			"type": "n8n-nodes-base.set",
+			"type": "MNI-nodes-base.set",
 			"typeVersion": 3.4,
 			"position": [4528, 3056],
 			"id": "08735c37-aae9-4dd0-afea-4c4f08e37f72",
@@ -37,7 +37,7 @@
 				"height": 224,
 				"width": 160
 			},
-			"type": "n8n-nodes-base.stickyNote",
+			"type": "MNI-nodes-base.stickyNote",
 			"position": [4496, 2992],
 			"typeVersion": 1,
 			"id": "1ae636b2-eeae-4378-88a0-b4d49c38a4d8",
@@ -45,7 +45,7 @@
 		},
 		{
 			"parameters": {},
-			"type": "n8n-nodes-base.noOp",
+			"type": "MNI-nodes-base.noOp",
 			"typeVersion": 1,
 			"position": [4528, 3296],
 			"id": "13d29e35-b6f1-4128-b656-db970718543d",
@@ -53,7 +53,7 @@
 		},
 		{
 			"parameters": {},
-			"type": "n8n-nodes-base.noOp",
+			"type": "MNI-nodes-base.noOp",
 			"typeVersion": 1,
 			"position": [3872, 3328],
 			"id": "a822d276-6391-49ce-bd15-7eb41b2c5a36",
@@ -65,7 +65,7 @@
 				"width": 246,
 				"color": 3
 			},
-			"type": "n8n-nodes-base.stickyNote",
+			"type": "MNI-nodes-base.stickyNote",
 			"position": [4176, 3024],
 			"typeVersion": 1,
 			"id": "17b0cc51-d867-4a55-b9a1-68625839759f",
@@ -75,7 +75,7 @@
 			"parameters": {
 				"operation": "get"
 			},
-			"type": "n8n-nodes-base.reddit",
+			"type": "MNI-nodes-base.reddit",
 			"typeVersion": 1,
 			"position": [4304, 3056],
 			"id": "e1129855-44a1-4967-b271-79c949e9a365",

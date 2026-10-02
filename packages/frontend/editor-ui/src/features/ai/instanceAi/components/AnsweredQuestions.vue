@@ -6,8 +6,8 @@
  * after the user submits answers via the questions wizard.
  * Styled to match the AI builder's UserAnswersMessage.
  */
-import type { InstanceAiToolCallState } from '@n8n/api-types';
-import { N8nText } from '@n8n/design-system';
+import type { InstanceAiToolCallState } from '@MNI/api-types';
+import { N8nText } from '@MNI/design-system';
 
 const props = defineProps<{
 	toolCall: InstanceAiToolCallState;

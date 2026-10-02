@@ -2,14 +2,14 @@ import { createComponentRenderer } from '@/__tests__/render';
 import DataTableDetailsView from '@/features/core/dataTable/DataTableDetailsView.vue';
 import { createTestingPinia } from '@pinia/testing';
 import { useDataTableStore } from '@/features/core/dataTable/dataTable.store';
-import { useToast } from '@n8n/composables/useToast';
+import { useToast } from '@MNI/composables/useToast';
 import { useRouter } from 'vue-router';
 import type { DataTable } from '@/features/core/dataTable/dataTable.types';
 import { waitFor } from '@testing-library/vue';
 import { flushPromises } from '@vue/test-utils';
 import { sourceControlEventBus } from '@/features/integrations/sourceControl.ee/sourceControl.eventBus';
 
-vi.mock('@n8n/composables/useToast');
+vi.mock('@MNI/composables/useToast');
 vi.mock('vue-router');
 vi.mock('@/app/api/workflow-dependencies', () => ({
 	getResourceDependencyCounts: vi.fn().mockResolvedValue({}),
@@ -20,7 +20,7 @@ vi.mock('@/app/composables/useDocumentTitle', () => ({
 		set: vi.fn(),
 	})),
 }));
-vi.mock('@n8n/i18n', () => {
+vi.mock('@MNI/i18n', () => {
 	const baseText = (key: string) => {
 		const translations: Record<string, string> = {
 			'dataTable.getDetails.error': 'Error fetching data table details',

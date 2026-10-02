@@ -1,6 +1,6 @@
-import { ListAgentsQueryDto, UpdateAgentsMcpAvailabilityDto } from '@n8n/api-types';
-import type { AuthenticatedRequest } from '@n8n/db';
-import { Body, Get, Patch, Query, RestController } from '@n8n/decorators';
+import { ListAgentsQueryDto, UpdateAgentsMcpAvailabilityDto } from '@MNI/api-types';
+import type { AuthenticatedRequest } from '@MNI/db';
+import { Body, Get, Patch, Query, RestController } from '@MNI/decorators';
 import type { Response } from 'express';
 
 import { AgentMcpAccessService } from './agent-mcp-access.service';

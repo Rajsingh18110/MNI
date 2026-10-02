@@ -1,7 +1,7 @@
-import { formatPemBlock } from '@n8n/utils/format-pem-block';
+import { formatPemBlock } from '@MNI/utils/format-pem-block';
 import { generatePairedItemData } from '@utils/utilities';
 import { createWriteStream } from 'fs';
-import { BINARY_ENCODING, deepCopy, NodeApiError, NodeConnectionTypes } from 'n8n-workflow';
+import { BINARY_ENCODING, deepCopy, NodeApiError, NodeConnectionTypes } from 'MNI-workflow';
 import type {
 	ICredentialDataDecryptedObject,
 	ICredentialsDecrypted,
@@ -14,7 +14,7 @@ import type {
 	INodeType,
 	INodeTypeDescription,
 	JsonObject,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import { basename, dirname } from 'path';
 import ftpClient from 'promise-ftp';
 import sftpClient from 'ssh2-sftp-client';
@@ -426,7 +426,7 @@ export class Ftp implements INodeType {
 				name: 'binaryData',
 				type: 'boolean',
 				default: true,
-				// eslint-disable-next-line n8n-nodes-base/node-param-description-boolean-without-whether
+				// eslint-disable-next-line MNI-nodes-base/node-param-description-boolean-without-whether
 				description: 'The text content of the file to upload',
 			},
 			{
@@ -731,7 +731,7 @@ export class Ftp implements INodeType {
 						if (operation === 'download') {
 							const path = this.getNodeParameter('path', i) as string;
 							const options = this.getNodeParameter('options', i);
-							const binaryFile = await tmpFile({ prefix: 'n8n-sftp-' });
+							const binaryFile = await tmpFile({ prefix: 'MNI-sftp-' });
 							try {
 								if (!options.enableConcurrentReads) {
 									await sftp!.get(path, createWriteStream(binaryFile.path));
@@ -841,7 +841,7 @@ export class Ftp implements INodeType {
 
 						if (operation === 'download') {
 							const path = this.getNodeParameter('path', i) as string;
-							const binaryFile = await tmpFile({ prefix: 'n8n-sftp-' });
+							const binaryFile = await tmpFile({ prefix: 'MNI-sftp-' });
 							try {
 								const stream = await ftp!.get(path);
 								await pipeline(stream, createWriteStream(binaryFile.path));

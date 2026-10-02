@@ -1,5 +1,5 @@
 import { injectWorkflowExecutionStateStore } from '@/app/stores/workflowExecutionState.store';
-import type { INode } from 'n8n-workflow';
+import type { INode } from 'MNI-workflow';
 import { computed, type ComputedRef } from 'vue';
 
 export function useExecutionData({ node }: { node: ComputedRef<INode | undefined> }) {

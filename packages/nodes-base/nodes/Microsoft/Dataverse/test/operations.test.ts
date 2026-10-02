@@ -1,4 +1,4 @@
-import type { IDataObject, IExecuteFunctions, INode } from 'n8n-workflow';
+import type { IDataObject, IExecuteFunctions, INode } from 'MNI-workflow';
 import { mockDeep } from 'vitest-mock-extended';
 
 import {
@@ -54,7 +54,7 @@ const ROW_ID = '00000000-0000-0000-0000-000000000001';
 const node: INode = {
 	id: 'test-node',
 	name: 'Microsoft Dataverse',
-	type: 'n8n-nodes-base.microsoftDataverse',
+	type: 'MNI-nodes-base.microsoftDataverse',
 	typeVersion: 1,
 	position: [0, 0],
 	parameters: {},

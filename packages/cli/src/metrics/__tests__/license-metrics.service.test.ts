@@ -1,4 +1,4 @@
-import type { LicenseMetricsRepository, WorkflowRepository } from '@n8n/db';
+import type { LicenseMetricsRepository, WorkflowRepository } from '@MNI/db';
 import { mock } from 'vitest-mock-extended';
 
 import { LicenseMetricsService } from '@/metrics/license-metrics.service';

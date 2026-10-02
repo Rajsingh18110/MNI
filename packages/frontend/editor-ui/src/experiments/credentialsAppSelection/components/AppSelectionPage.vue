@@ -1,15 +1,15 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, onUnmounted, watch } from 'vue';
-import { N8nButton, N8nHeading, N8nInput, N8nText, N8nIcon } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
-import { useDebounce } from '@n8n/composables/useDebounce';
+import { N8nButton, N8nHeading, N8nInput, N8nText, N8nIcon } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
+import { useDebounce } from '@MNI/composables/useDebounce';
 import { useCredentialsStore } from '@/features/credentials/credentials.store';
 import { useUIStore } from '@/app/stores/ui.store';
 import { CREDENTIAL_EDIT_MODAL_KEY } from '@/features/credentials/credentials.constants';
 import { useCredentialsAppSelectionStore } from '../stores/credentialsAppSelection.store';
 import { useAppCredentials, type AppEntry } from '../composables/useAppCredentials';
-import { useUsersStore } from '@n8n/stores/users.store';
-import type { ICredentialsDecrypted } from 'n8n-workflow';
+import { useUsersStore } from '@MNI/stores/users.store';
+import type { ICredentialsDecrypted } from 'MNI-workflow';
 import AppSelectionGrid from './AppSelectionGrid.vue';
 import AppInstallModal from './AppInstallModal.vue';
 

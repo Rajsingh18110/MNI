@@ -1,4 +1,4 @@
-import { OperationalError } from 'n8n-workflow';
+import { OperationalError } from 'MNI-workflow';
 
 export class TaskRequestTimeoutError extends OperationalError {
 	description: string;
@@ -20,7 +20,7 @@ export class TaskRequestTimeoutError extends OperationalError {
 
 		if (isSelfHosted) {
 			description.push(
-				'If needed, you can increase the timeout using the N8N_RUNNERS_TASK_REQUEST_TIMEOUT environment variable.',
+				'If needed, you can increase the timeout using the MNI_RUNNERS_TASK_REQUEST_TIMEOUT environment variable.',
 			);
 		}
 

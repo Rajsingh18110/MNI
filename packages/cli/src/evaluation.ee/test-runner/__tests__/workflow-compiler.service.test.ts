@@ -1,11 +1,11 @@
-import type { EvaluationConfig } from '@n8n/db';
+import type { EvaluationConfig } from '@MNI/db';
 import { createRequire } from 'module';
 import type {
 	INodeType,
 	INodeTypeDescription,
 	IWorkflowBase,
 	NodeLoadingDetails,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import { join } from 'path';
 
 import type { NodeTypes } from '@/node-types';
@@ -13,16 +13,16 @@ import type { NodeTypes } from '@/node-types';
 import { LlmJudgeProviderRegistry } from '../../llm-judge-provider-registry';
 import { WorkflowCompilerService } from '../workflow-compiler.service';
 
-const EVALUATION_TRIGGER_NODE_TYPE = 'n8n-nodes-base.evaluationTrigger';
+const EVALUATION_TRIGGER_NODE_TYPE = 'MNI-nodes-base.evaluationTrigger';
 
-// Load the REAL chat-model node descriptions from the built @n8n/n8n-nodes-langchain
+// Load the REAL chat-model node descriptions from the built @MNI/MNI-nodes-langchain
 // package (via absolute-path require, the same mechanism as test-integration's
 // loadNodesFromDist) so these tests bind to the actual node contract the compiler
 // introspects. If a provider node changes its version array or `@version`-gated
 // `model` shape, these tests reflect that change instead of passing against a stale
 // hand-authored replica. Requires the langchain package to be built.
 const nodeRequire = createRequire(__filename);
-const LANGCHAIN_DIR = join(__dirname, '../../../../../@n8n/nodes-langchain');
+const LANGCHAIN_DIR = join(__dirname, '../../../../../@MNI/nodes-langchain');
 
 function realNodeDescription(shortName: string): INodeTypeDescription {
 	const known = nodeRequire(join(LANGCHAIN_DIR, 'dist/known/nodes.json')) as Record<
@@ -45,10 +45,10 @@ const OLLAMA_DESCRIPTION = realNodeDescription('lmChatOllama');
 
 const nodeTypes = {
 	getByNameAndVersion: (nodeType: string) => {
-		if (nodeType === '@n8n/n8n-nodes-langchain.lmChatAnthropic') {
+		if (nodeType === '@MNI/MNI-nodes-langchain.lmChatAnthropic') {
 			return { description: ANTHROPIC_DESCRIPTION };
 		}
-		if (nodeType === '@n8n/n8n-nodes-langchain.lmChatOllama') {
+		if (nodeType === '@MNI/MNI-nodes-langchain.lmChatOllama') {
 			return { description: OLLAMA_DESCRIPTION };
 		}
 		throw new Error(`unknown node type ${nodeType}`);
@@ -68,7 +68,7 @@ function baseWorkflow(): IWorkflowBase {
 			{
 				id: 'n-trigger',
 				name: 'UserTrigger',
-				type: 'n8n-nodes-base.manualTrigger',
+				type: 'MNI-nodes-base.manualTrigger',
 				typeVersion: 1,
 				position: [0, 0],
 				parameters: {},
@@ -76,7 +76,7 @@ function baseWorkflow(): IWorkflowBase {
 			{
 				id: 'n-agent',
 				name: 'Agent',
-				type: '@n8n/n8n-nodes-langchain.agent',
+				type: '@MNI/MNI-nodes-langchain.agent',
 				typeVersion: 1,
 				position: [200, 0],
 				parameters: {},
@@ -144,7 +144,7 @@ describe('WorkflowCompilerService', () => {
 
 		// User trigger preserved as-is.
 		const userTrigger = compiled.nodes.find((n) => n.name === 'UserTrigger')!;
-		expect(userTrigger.type).toBe('n8n-nodes-base.manualTrigger');
+		expect(userTrigger.type).toBe('MNI-nodes-base.manualTrigger');
 
 		const evalTrigger = compiled.nodes.find((n) => n.name === '__eval_trigger')!;
 		expect(evalTrigger.type).toBe(EVALUATION_TRIGGER_NODE_TYPE);
@@ -219,7 +219,7 @@ describe('WorkflowCompilerService', () => {
 				config: {
 					preset: 'correctness',
 					prompt: 'You are a judge',
-					provider: '@n8n/n8n-nodes-langchain.lmChatAnthropic',
+					provider: '@MNI/MNI-nodes-langchain.lmChatAnthropic',
 					credentialId: 'cred-anth',
 					model: 'claude-sonnet-4-6',
 					outputType: 'numeric',
@@ -242,7 +242,7 @@ describe('WorkflowCompilerService', () => {
 		expect(metric.parameters.options).toEqual({ metricName: 'Answer correctness' });
 
 		const model = compiled.nodes.find((n) => n.name === '__eval_model_m-judge')!;
-		expect(model.type).toBe('@n8n/n8n-nodes-langchain.lmChatAnthropic');
+		expect(model.type).toBe('@MNI/MNI-nodes-langchain.lmChatAnthropic');
 		expect(model.typeVersion).toBe(ANTHROPIC_DESCRIPTION.defaultVersion);
 		expect(model.parameters.model).toEqual({
 			__rl: true,
@@ -268,7 +268,7 @@ describe('WorkflowCompilerService', () => {
 					preset: 'correctness',
 					// prompt intentionally omitted — node should fall back to the
 					// canned prompt declared on the Set Metrics node schema.
-					provider: '@n8n/n8n-nodes-langchain.lmChatOpenAi',
+					provider: '@MNI/MNI-nodes-langchain.lmChatOpenAi',
 					credentialId: 'cred',
 					model: 'gpt-4o-mini',
 					outputType: 'numeric',
@@ -287,7 +287,7 @@ describe('WorkflowCompilerService', () => {
 		it('emits the sub-node at the provider default version with a resource-locator model when the node expects one', () => {
 			const compiled = compiler.compile(
 				baseWorkflow(),
-				llmJudgeConfig('@n8n/n8n-nodes-langchain.lmChatAnthropic', 'claude-sonnet-4-6'),
+				llmJudgeConfig('@MNI/MNI-nodes-langchain.lmChatAnthropic', 'claude-sonnet-4-6'),
 			);
 			const model = compiled.nodes.find((n) => n.name === '__eval_model_m-judge')!;
 			expect(model.typeVersion).toBe(ANTHROPIC_DESCRIPTION.defaultVersion);
@@ -302,7 +302,7 @@ describe('WorkflowCompilerService', () => {
 		it('emits a plain-string model at the provider default version when the node model is not a resource locator', () => {
 			const compiled = compiler.compile(
 				baseWorkflow(),
-				llmJudgeConfig('@n8n/n8n-nodes-langchain.lmChatOllama', 'llama3'),
+				llmJudgeConfig('@MNI/MNI-nodes-langchain.lmChatOllama', 'llama3'),
 			);
 			const model = compiled.nodes.find((n) => n.name === '__eval_model_m-judge')!;
 			expect(model.typeVersion).toBe(OLLAMA_DESCRIPTION.version);
@@ -313,7 +313,7 @@ describe('WorkflowCompilerService', () => {
 			// lmChatOpenAi is a registered provider but absent from the node-type double.
 			const compiled = compiler.compile(
 				baseWorkflow(),
-				llmJudgeConfig('@n8n/n8n-nodes-langchain.lmChatOpenAi', 'gpt-4o'),
+				llmJudgeConfig('@MNI/MNI-nodes-langchain.lmChatOpenAi', 'gpt-4o'),
 			);
 			const model = compiled.nodes.find((n) => n.name === '__eval_model_m-judge')!;
 			expect(model.typeVersion).toBe(1);
@@ -410,7 +410,7 @@ describe('WorkflowCompilerService', () => {
 				type: 'llm_judge',
 				config: {
 					preset: 'helpfulness',
-					provider: '@n8n/n8n-nodes-langchain.lmChatOpenAi',
+					provider: '@MNI/MNI-nodes-langchain.lmChatOpenAi',
 					credentialId: 'cred',
 					model: 'gpt-4o',
 					outputType: 'numeric',
@@ -438,7 +438,7 @@ describe('WorkflowCompilerService', () => {
 				type: 'llm_judge',
 				config: {
 					preset: 'helpfulness',
-					provider: '@n8n/n8n-nodes-langchain.lmChatOpenAi',
+					provider: '@MNI/MNI-nodes-langchain.lmChatOpenAi',
 					credentialId: 'cred',
 					model: 'gpt-4o',
 					outputType: 'numeric',
@@ -483,7 +483,7 @@ describe('WorkflowCompilerService', () => {
 		wf.nodes.push({
 			id: 'n-post',
 			name: 'Post',
-			type: 'n8n-nodes-base.set',
+			type: 'MNI-nodes-base.set',
 			typeVersion: 1,
 			position: [400, 0],
 			parameters: {},
@@ -498,7 +498,7 @@ describe('WorkflowCompilerService', () => {
 
 		// UserTrigger stays as-is; __eval_trigger is inserted and now feeds Agent directly.
 		const userTrigger = compiled.nodes.find((n) => n.name === 'UserTrigger')!;
-		expect(userTrigger.type).toBe('n8n-nodes-base.manualTrigger');
+		expect(userTrigger.type).toBe('MNI-nodes-base.manualTrigger');
 		expect(compiled.connections.UserTrigger).toBeUndefined();
 		expect(compiled.connections.__eval_trigger).toEqual({
 			main: [[{ node: 'Agent', type: 'main', index: 0 }]],
@@ -526,7 +526,7 @@ describe('WorkflowCompilerService', () => {
 				config: {
 					preset: 'correctness',
 					prompt: 'p',
-					provider: '@n8n/n8n-nodes-langchain.lmChatOpenAi',
+					provider: '@MNI/MNI-nodes-langchain.lmChatOpenAi',
 					credentialId: 'c',
 					model: 'gpt-4o',
 					outputType: 'numeric',
@@ -564,7 +564,7 @@ describe('WorkflowCompilerService', () => {
 		wf.nodes.push({
 			id: 'n-after-end',
 			name: 'AfterEnd',
-			type: 'n8n-nodes-base.httpRequest',
+			type: 'MNI-nodes-base.httpRequest',
 			typeVersion: 1,
 			position: [400, 0],
 			parameters: {},
@@ -603,7 +603,7 @@ describe('WorkflowCompilerService', () => {
 		wf.nodes.push({
 			id: 'x',
 			name: '__eval_something',
-			type: 'n8n-nodes-base.noOp',
+			type: 'MNI-nodes-base.noOp',
 			typeVersion: 1,
 			position: [0, 0],
 			parameters: {},
@@ -616,7 +616,7 @@ describe('WorkflowCompilerService', () => {
 		wf.nodes.push({
 			id: 'n-b',
 			name: 'Branch',
-			type: 'n8n-nodes-base.noOp',
+			type: 'MNI-nodes-base.noOp',
 			typeVersion: 1,
 			position: [200, 100],
 			parameters: {},
@@ -658,7 +658,7 @@ describe('WorkflowCompilerService', () => {
 				{
 					id: 'n-unrelated',
 					name: 'UnrelatedNode',
-					type: 'n8n-nodes-base.noOp',
+					type: 'MNI-nodes-base.noOp',
 					typeVersion: 1,
 					position: [0, 400],
 					parameters: {},
@@ -686,7 +686,7 @@ describe('WorkflowCompilerService', () => {
 					config: {
 						preset: 'correctness',
 						prompt: 'Judge it',
-						provider: '@n8n/n8n-nodes-langchain.lmChatGroq',
+						provider: '@MNI/MNI-nodes-langchain.lmChatGroq',
 						credentialId: 'cred-grok',
 						model: 'llama3-8b-8192',
 						outputType: 'numeric',
@@ -712,7 +712,7 @@ describe('WorkflowCompilerService', () => {
 					config: {
 						preset: 'correctness',
 						prompt: 'Judge it',
-						provider: '@n8n/n8n-nodes-langchain.lmChatNotReal',
+						provider: '@MNI/MNI-nodes-langchain.lmChatNotReal',
 						credentialId: 'cred',
 						model: 'm',
 						outputType: 'numeric',
@@ -752,7 +752,7 @@ describe('WorkflowCompilerService', () => {
 					{
 						id: 'n-true',
 						name: 'AfterTrue',
-						type: 'n8n-nodes-base.set',
+						type: 'MNI-nodes-base.set',
 						typeVersion: 1,
 						position: [400, -50],
 						parameters: {},
@@ -760,7 +760,7 @@ describe('WorkflowCompilerService', () => {
 					{
 						id: 'n-false',
 						name: 'AfterFalse',
-						type: 'n8n-nodes-base.set',
+						type: 'MNI-nodes-base.set',
 						typeVersion: 1,
 						position: [400, 50],
 						parameters: {},
@@ -819,7 +819,7 @@ describe('WorkflowCompilerService', () => {
 					{
 						id: 'n-old-metrics',
 						name: 'Old Set Metrics',
-						type: 'n8n-nodes-base.evaluation',
+						type: 'MNI-nodes-base.evaluation',
 						typeVersion: 4.7,
 						position: [400, 0],
 						parameters: { operation: 'setMetrics' },
@@ -827,7 +827,7 @@ describe('WorkflowCompilerService', () => {
 					{
 						id: 'n-is-eval',
 						name: 'Is Eval Run',
-						type: 'n8n-nodes-base.evaluation',
+						type: 'MNI-nodes-base.evaluation',
 						typeVersion: 4.7,
 						position: [200, 200],
 						parameters: { operation: 'checkIfEvaluating' },
@@ -961,7 +961,7 @@ describe('WorkflowCompilerService', () => {
 					{
 						id: 'n-second-trigger',
 						name: 'SecondTrigger',
-						type: 'n8n-nodes-base.manualTrigger',
+						type: 'MNI-nodes-base.manualTrigger',
 						typeVersion: 1,
 						position: [0, 400],
 						parameters: {},
@@ -1224,7 +1224,7 @@ describe('WorkflowCompilerService', () => {
 					{
 						id: 'n-html',
 						name: 'Build Report',
-						type: 'n8n-nodes-base.html',
+						type: 'MNI-nodes-base.html',
 						typeVersion: 1,
 						position: [400, 0],
 						parameters: {
@@ -1250,7 +1250,7 @@ describe('WorkflowCompilerService', () => {
 					{
 						id: 'n-form',
 						name: 'Show Form',
-						type: 'n8n-nodes-base.form',
+						type: 'MNI-nodes-base.form',
 						typeVersion: 1,
 						position: [400, 0],
 						parameters: {

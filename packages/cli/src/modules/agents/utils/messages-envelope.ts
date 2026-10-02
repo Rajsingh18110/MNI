@@ -1,5 +1,5 @@
-import type { SerializableAgentState } from '@n8n/agents';
-import type { AgentChatMessagesResponse, AgentPersistedMessageDto } from '@n8n/api-types';
+import type { SerializableAgentState } from '@MNI/agents';
+import type { AgentChatMessagesResponse, AgentPersistedMessageDto } from '@MNI/api-types';
 
 import { messagesToDto } from '../agent-message-mapper';
 

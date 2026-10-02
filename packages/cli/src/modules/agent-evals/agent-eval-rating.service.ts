@@ -1,13 +1,13 @@
-import type { AgentEvalRatingRecord, CreateAgentEvalRatingPayload } from '@n8n/api-types';
-import { AGENT_EVAL_MAX_COMMENT_CHARS, AGENT_EVAL_MAX_CORRECTION_TEXT_CHARS } from '@n8n/api-types';
-import { Logger, ModuleRegistry } from '@n8n/backend-common';
-import type { AgentEvalResult, User } from '@n8n/db';
+import type { AgentEvalRatingRecord, CreateAgentEvalRatingPayload } from '@MNI/api-types';
+import { AGENT_EVAL_MAX_COMMENT_CHARS, AGENT_EVAL_MAX_CORRECTION_TEXT_CHARS } from '@MNI/api-types';
+import { Logger, ModuleRegistry } from '@MNI/backend-common';
+import type { AgentEvalResult, User } from '@MNI/db';
 import {
 	AgentEvalRatingRepository,
 	AgentEvalResultRepository,
 	AgentEvalRunRepository,
-} from '@n8n/db';
-import { Service } from '@n8n/di';
+} from '@MNI/db';
+import { Service } from '@MNI/di';
 
 import { BadRequestError } from '@/errors/response-errors/bad-request.error';
 import { NotFoundError } from '@/errors/response-errors/not-found.error';

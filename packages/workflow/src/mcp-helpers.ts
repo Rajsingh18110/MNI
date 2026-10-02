@@ -1,4 +1,4 @@
-import { isRecord } from '@n8n/utils/is-record';
+import { isRecord } from '@MNI/utils/is-record';
 
 import type { ICredentialDataDecryptedObject } from './interfaces';
 
@@ -119,7 +119,7 @@ export function shouldRefreshMcpOAuth2Token(tokenData: unknown, grantType?: unkn
 		return false;
 	}
 
-	const expiresAt = Number(tokenData.n8n_expires_at);
+	const expiresAt = Number(tokenData.MNI_expires_at);
 	if (!Number.isFinite(expiresAt)) return false;
 
 	const expiresInMs = Number(tokenData.expires_in) * 1000;

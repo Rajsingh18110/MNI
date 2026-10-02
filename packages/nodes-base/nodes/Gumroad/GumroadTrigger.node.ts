@@ -5,17 +5,17 @@ import type {
 	INodeType,
 	INodeTypeDescription,
 	IWebhookResponseData,
-} from 'n8n-workflow';
-import { NodeConnectionTypes } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeConnectionTypes } from 'MNI-workflow';
 
 import { gumroadApiRequest } from './GenericFunctions';
 
 export class GumroadTrigger implements INodeType {
-	// eslint-disable-next-line n8n-nodes-base/node-class-description-missing-subtitle
+	// eslint-disable-next-line MNI-nodes-base/node-class-description-missing-subtitle
 	description: INodeTypeDescription = {
 		displayName: 'Gumroad Trigger',
 		name: 'gumroadTrigger',
-		// eslint-disable-next-line n8n-nodes-base/node-class-description-icon-not-svg
+		// eslint-disable-next-line MNI-nodes-base/node-class-description-icon-not-svg
 		icon: 'file:gumroad.png',
 		group: ['trigger'],
 		version: 1,

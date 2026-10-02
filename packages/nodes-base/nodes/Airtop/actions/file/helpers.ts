@@ -1,6 +1,6 @@
 import pick from 'lodash/pick';
-import type { IExecuteFunctions } from 'n8n-workflow';
-import { NodeApiError } from 'n8n-workflow';
+import type { IExecuteFunctions } from 'MNI-workflow';
+import { NodeApiError } from 'MNI-workflow';
 
 import { ERROR_MESSAGES, OPERATION_TIMEOUT } from '../../constants';
 import { waitForSessionEvent } from '../../GenericFunctions';

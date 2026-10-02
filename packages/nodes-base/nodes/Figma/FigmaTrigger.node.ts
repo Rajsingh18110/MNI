@@ -7,8 +7,8 @@ import type {
 	INodeType,
 	INodeTypeDescription,
 	IWebhookResponseData,
-} from 'n8n-workflow';
-import { NodeConnectionTypes } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeConnectionTypes } from 'MNI-workflow';
 
 import { verifySignature } from './FigmaTriggerHelpers';
 import { figmaApiRequest } from './GenericFunctions';
@@ -160,7 +160,7 @@ export class FigmaTrigger implements INodeType {
 				const body: IDataObject = {
 					event_type: snakeCase(triggerOn).toUpperCase(),
 					team_id: teamId,
-					description: `n8n-webhook:${webhookUrl}`,
+					description: `MNI-webhook:${webhookUrl}`,
 					endpoint: webhookUrl,
 					passcode,
 				};

@@ -1,14 +1,14 @@
-import { WorkflowExecutionStatus } from '@n8n/api-types';
-import { GlobalConfig } from '@n8n/config';
-import { Time } from '@n8n/constants';
-import { isAuthenticatedRequest } from '@n8n/db';
-import { Get, Options, RestController } from '@n8n/decorators';
-import { Container } from '@n8n/di';
+import { WorkflowExecutionStatus } from '@MNI/api-types';
+import { GlobalConfig } from '@MNI/config';
+import { Time } from '@MNI/constants';
+import { isAuthenticatedRequest } from '@MNI/db';
+import { Get, Options, RestController } from '@MNI/decorators';
+import { Container } from '@MNI/di';
 import { Request, Response } from 'express';
 
 import { BadRequestError } from '@/errors/response-errors/bad-request.error';
 import { NotFoundError } from '@/errors/response-errors/not-found.error';
-import { UrlService } from '@n8n/backend-services';
+import { UrlService } from '@MNI/backend-services';
 import { WorkflowFinderService } from '@/workflows/workflow-finder.service';
 
 import { DynamicCredentialsConfig } from './dynamic-credentials.config';

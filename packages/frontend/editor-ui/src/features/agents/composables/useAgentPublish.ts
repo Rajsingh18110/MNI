@@ -1,7 +1,7 @@
 import { ref } from 'vue';
-import { useI18n } from '@n8n/i18n';
-import { useRootStore } from '@n8n/stores/useRootStore';
-import { useToast } from '@n8n/composables/useToast';
+import { useI18n } from '@MNI/i18n';
+import { useRootStore } from '@MNI/stores/useRootStore';
+import { useToast } from '@MNI/composables/useToast';
 import { MODAL_CONFIRM } from '@/app/constants';
 import { publishAgent, revertAgentToPublished, unpublishAgent } from './useAgentApi';
 import { useAgentConfirmationModal } from './useAgentConfirmationModal';

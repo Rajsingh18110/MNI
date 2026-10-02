@@ -3,10 +3,10 @@ import {
 	PushWorkFolderRequestDto,
 	type GitCommitInfo,
 	type SourceControlledFile,
-} from '@n8n/api-types';
-import { AuthenticatedRequest } from '@n8n/db';
-import { Get, Post, Patch, RestController, GlobalScope, Body } from '@n8n/decorators';
-import { hasGlobalScope } from '@n8n/permissions';
+} from '@MNI/api-types';
+import { AuthenticatedRequest } from '@MNI/db';
+import { Get, Post, Patch, RestController, GlobalScope, Body } from '@MNI/decorators';
+import { hasGlobalScope } from '@MNI/permissions';
 import * as express from 'express';
 import type { PullResult } from 'simple-git';
 

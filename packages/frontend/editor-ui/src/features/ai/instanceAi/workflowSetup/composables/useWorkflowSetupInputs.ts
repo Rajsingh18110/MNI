@@ -1,6 +1,6 @@
 import { computed, ref, watch, type ComputedRef, type Ref } from 'vue';
 import type { INodeUi } from '@/Interface';
-import { deepCopy, type INodeParameters } from 'n8n-workflow';
+import { deepCopy, type INodeParameters } from 'MNI-workflow';
 import { setParameterValue as setParameterValueByPath } from '@/app/utils/parameterUtils';
 import { useCredentialsStore } from '@/features/credentials/credentials.store';
 import { useCredentialTestInBackground } from '@/features/credentials/composables/useCredentialTestInBackground';

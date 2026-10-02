@@ -2,10 +2,10 @@ import { createTestingPinia } from '@pinia/testing';
 import { setActivePinia } from 'pinia';
 import { ref } from 'vue';
 import { createMemoryHistory, createRouter, type RouteRecordRaw } from 'vue-router';
-import { GLOBAL_MEMBER_SCOPES, GLOBAL_OWNER_SCOPES, type Scope } from '@n8n/permissions';
-import type { FrontendModuleSettings } from '@n8n/api-types';
-import { useRBACStore } from '@n8n/stores/rbac.store';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { GLOBAL_MEMBER_SCOPES, GLOBAL_OWNER_SCOPES, type Scope } from '@MNI/permissions';
+import type { FrontendModuleSettings } from '@MNI/api-types';
+import { useRBACStore } from '@MNI/stores/rbac.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { mockedStore } from '@/__tests__/utils';
 import { VIEWS } from '@/app/constants';
 import { usePostHog } from '@/app/stores/posthog.store';
@@ -17,7 +17,7 @@ vi.mock('../composables/useInstanceAiAvailability', () => ({
 	useInstanceAiReady: () => ref(true),
 }));
 
-vi.mock('@n8n/composables/useTelemetry', () => ({
+vi.mock('@MNI/composables/useTelemetry', () => ({
 	useTelemetry: () => ({ track: vi.fn() }),
 }));
 

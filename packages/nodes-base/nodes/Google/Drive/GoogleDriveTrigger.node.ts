@@ -8,8 +8,8 @@ import type {
 	INodeType,
 	INodeTypeDescription,
 	Failure,
-} from 'n8n-workflow';
-import { NodeConnectionTypes, NodeApiError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeConnectionTypes, NodeApiError } from 'MNI-workflow';
 
 import { escapeBackslashQuotedValue } from '@utils/query-escaping';
 
@@ -59,7 +59,7 @@ export class GoogleDriveTrigger implements INodeType {
 				type: 'options',
 				options: [
 					{
-						// eslint-disable-next-line n8n-nodes-base/node-param-display-name-miscased
+						// eslint-disable-next-line MNI-nodes-base/node-param-display-name-miscased
 						name: 'OAuth2 (recommended)',
 						value: 'oAuth2',
 					},
@@ -282,7 +282,7 @@ export class GoogleDriveTrigger implements INodeType {
 				default: '',
 			},
 			{
-				// eslint-disable-next-line n8n-nodes-base/node-param-display-name-wrong-for-dynamic-options
+				// eslint-disable-next-line MNI-nodes-base/node-param-display-name-wrong-for-dynamic-options
 				displayName: 'Drive To Watch',
 				name: 'driveToWatch',
 				type: 'options',

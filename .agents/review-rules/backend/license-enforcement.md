@@ -6,7 +6,7 @@ Nothing fails the build when a paid feature ships ungated, so this is review-onl
 
 - Endpoints in `*.ee.ts` reaching licensed features without `@Licensed` — a
   scope decorator is a permission check, not a license check
-- `@Licensed` not matching the feature (`LICENSE_FEATURES` in `@n8n/constants`)
+- `@Licensed` not matching the feature (`LICENSE_FEATURES` in `@MNI/constants`)
 - Bypassed quota checks, or missing `FeatureNotLicensedError` on an unlicensed
   path
 - Custom licensing middleware where the `@Licensed` decorator fits

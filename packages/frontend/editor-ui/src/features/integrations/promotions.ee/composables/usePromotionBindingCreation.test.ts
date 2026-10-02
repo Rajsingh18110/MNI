@@ -1,11 +1,11 @@
-vi.mock('@n8n/stores/settings.store', () => ({
+vi.mock('@MNI/stores/settings.store', () => ({
 	useSettingsStore: () => ({ isEnterpriseFeatureEnabled: { variables: true } }),
 }));
 import { effectScope, reactive, nextTick } from 'vue';
 import { flushPromises } from '@vue/test-utils';
 import { mock } from 'vitest-mock-extended';
-import { ResponseError } from '@n8n/rest-api-client';
-import type { CredentialPublicDto, CreatedProjectPublicDto } from '@n8n/api-types';
+import { ResponseError } from '@MNI/rest-api-client';
+import type { CredentialPublicDto, CreatedProjectPublicDto } from '@MNI/api-types';
 import type { NewCredentialsModal } from '@/Interface';
 import type { Project } from '@/features/collaboration/projects/projects.types';
 import type { VariableModalOptions } from '@/features/settings/environments.ee/environments.types';
@@ -42,10 +42,10 @@ vi.mock('@/features/credentials/credentials.store', () => ({
 vi.mock('@/features/settings/environments.ee/environments.store', () => ({
 	useEnvironmentsStore: () => stores.environments,
 }));
-vi.mock('@n8n/stores/useRootStore', () => ({
+vi.mock('@MNI/stores/useRootStore', () => ({
 	useRootStore: () => ({ publicApiContext: { baseUrl: '/custom/api/v1' } }),
 }));
-vi.mock('@n8n/composables/useToast', () => ({ useToast: () => ({ showError: vi.fn() }) }));
+vi.mock('@MNI/composables/useToast', () => ({ useToast: () => ({ showError: vi.fn() }) }));
 vi.mock('@/features/collaboration/projects/projects.api', () => ({ createPublicProject: vi.fn() }));
 vi.mock('@/features/credentials/credentials.api', () => ({ createPublicCredential: vi.fn() }));
 

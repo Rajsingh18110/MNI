@@ -2,7 +2,7 @@
 	"nodes": [
 		{
 			"parameters": {},
-			"type": "n8n-nodes-base.manualTrigger",
+			"type": "MNI-nodes-base.manualTrigger",
 			"typeVersion": 1,
 			"position": [-200, -40],
 			"id": "64686c0a-64a4-4a33-9e70-038c9d23c25b",
@@ -14,7 +14,7 @@
 				"binaryPropertyName": "myfile",
 				"options": {}
 			},
-			"type": "n8n-nodes-base.extractFromFile",
+			"type": "MNI-nodes-base.extractFromFile",
 			"typeVersion": 1,
 			"position": [420, -40],
 			"id": "aaac18d3-1e99-4c47-9de8-2dc8bf95abd7",
@@ -34,7 +34,7 @@
 				},
 				"options": {}
 			},
-			"type": "n8n-nodes-base.set",
+			"type": "MNI-nodes-base.set",
 			"typeVersion": 3.4,
 			"position": [-20, -40],
 			"id": "e74c67f1-171a-42a7-be12-b6687935988f",
@@ -49,7 +49,7 @@
 					"encoding": "windows1256"
 				}
 			},
-			"type": "n8n-nodes-base.convertToFile",
+			"type": "MNI-nodes-base.convertToFile",
 			"typeVersion": 1.1,
 			"position": [180, -40],
 			"id": "77ddd6d4-1d75-4ad2-8301-e70213d8371e",

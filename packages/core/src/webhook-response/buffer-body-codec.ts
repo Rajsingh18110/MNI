@@ -1,5 +1,5 @@
-import type { IN8nHttpFullResponse } from 'n8n-workflow';
-import { BINARY_ENCODING } from 'n8n-workflow';
+import type { IN8nHttpFullResponse } from 'MNI-workflow';
+import { BINARY_ENCODING } from 'MNI-workflow';
 
 /**
  * Sentinel key that marks a base64-encoded Buffer body sent inline through a

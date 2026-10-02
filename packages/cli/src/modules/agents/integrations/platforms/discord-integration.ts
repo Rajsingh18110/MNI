@@ -1,12 +1,12 @@
-import type { RichCardComponentType } from '@n8n/api-types';
-import { Logger } from '@n8n/backend-common';
-import { type HttpRequestClient, OutboundHttp } from '@n8n/backend-network';
-import { OnLeaderStepdown, OnLeaderTakeover, OnShutdown } from '@n8n/decorators';
-import { Service } from '@n8n/di';
-import { isRecord } from '@n8n/utils/is-record';
+import type { RichCardComponentType } from '@MNI/api-types';
+import { Logger } from '@MNI/backend-common';
+import { type HttpRequestClient, OutboundHttp } from '@MNI/backend-network';
+import { OnLeaderStepdown, OnLeaderTakeover, OnShutdown } from '@MNI/decorators';
+import { Service } from '@MNI/di';
+import { isRecord } from '@MNI/utils/is-record';
 import type { Message, Thread } from 'chat';
 import escapeRegExp from 'lodash/escapeRegExp';
-import { InstanceSettings } from 'n8n-core';
+import { InstanceSettings } from 'MNI-core';
 
 import { BadRequestError } from '@/errors/response-errors/bad-request.error';
 import { ConflictError } from '@/errors/response-errors/conflict.error';
@@ -480,7 +480,7 @@ export class DiscordIntegration extends AgentChatIntegration {
 
 	/**
 	 * Validated by us rather than left to the adapter: its own error tells the
-	 * user to set `DISCORD_PUBLIC_KEY`, which is misleading advice inside n8n.
+	 * user to set `DISCORD_PUBLIC_KEY`, which is misleading advice inside MNI.
 	 * Runs during `createAdapter`, so a credential predating the agent-channel
 	 * fields fails the connect before the agent is published.
 	 */

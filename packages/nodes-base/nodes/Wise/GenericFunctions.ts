@@ -6,8 +6,8 @@ import type {
 	IHttpRequestOptions,
 	ILoadOptionsFunctions,
 	JsonObject,
-} from 'n8n-workflow';
-import { NodeApiError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeApiError } from 'MNI-workflow';
 
 /**
  * Make an authenticated API request to Wise.

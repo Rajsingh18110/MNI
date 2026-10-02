@@ -3,7 +3,7 @@
 	"nodes": [
 		{
 			"parameters": {},
-			"type": "n8n-nodes-base.manualTrigger",
+			"type": "MNI-nodes-base.manualTrigger",
 			"typeVersion": 1,
 			"position": [0, 0],
 			"id": "trigger-id",
@@ -30,7 +30,7 @@
 					}
 				}
 			},
-			"type": "n8n-nodes-base.awsElb",
+			"type": "MNI-nodes-base.awsElb",
 			"typeVersion": 1,
 			"position": [200, 0],
 			"id": "node-id",

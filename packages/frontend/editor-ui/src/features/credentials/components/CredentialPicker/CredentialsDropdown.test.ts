@@ -1,4 +1,4 @@
-import { N8nSelect } from '@n8n/design-system';
+import { N8nSelect } from '@MNI/design-system';
 import { createTestingPinia } from '@pinia/testing';
 import { mount } from '@vue/test-utils';
 import { nextTick } from 'vue';

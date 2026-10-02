@@ -121,13 +121,13 @@ describe('check — properties', () => {
 // every subset (powerset below) is fully resolvable — the enrich<->gate oracle.
 const RESOLVABLE = [
 	{
-		group: '@n8n',
+		group: '@MNI',
 		name: 'db',
 		version: '1.0.0',
 		purl: 'pkg:npm/%40n8n/db@1.0.0',
 		licenses: [{ expression: 'SEE LICENSE IN LICENSE.md' }],
 	}, // first-party ref
-	{ group: '@n8n', name: 'tournament', version: '9.9.9', purl: 'pkg:npm/%40n8n/tournament@9.9.9' }, // first-party OSI (Apache-2.0)
+	{ group: '@MNI', name: 'tournament', version: '9.9.9', purl: 'pkg:npm/%40n8n/tournament@9.9.9' }, // first-party OSI (Apache-2.0)
 	{ name: 'binascii', version: '0.0.2', purl: 'pkg:npm/binascii@0.0.2' }, // purl-pinned override (fixture config)
 	{
 		name: 'ssh2',
@@ -255,7 +255,7 @@ describe('isPhantomNpm — properties', () => {
 			],
 		});
 		assert.equal(isPhantomNpm(node('', 'ssh2')), false);
-		assert.equal(isPhantomNpm(node('@n8n', 'db')), false);
+		assert.equal(isPhantomNpm(node('@MNI', 'db')), false);
 	});
 
 	it('SUBPATH-NAME-ALWAYS-PHANTOM: a slash past the scope is never a real npm name', () => {

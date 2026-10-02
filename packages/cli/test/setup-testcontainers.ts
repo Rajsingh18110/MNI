@@ -1,12 +1,12 @@
 /**
  * Vitest global setup for integration/migration tests using testcontainers.
- * Starts postgres and redis containers via n8n-containers and exposes their
+ * Starts postgres and redis containers via MNI-containers and exposes their
  * connection details through `process.env`, which the forked test workers inherit.
  *
  * Note: Ryuk handles container cleanup on process exit (crashes/timeouts);
  * `teardown` is the secondary cleanup path.
  */
-import { createServiceStack } from 'n8n-containers';
+import { createServiceStack } from 'MNI-containers';
 import { randomBytes } from 'node:crypto';
 
 let stack: Awaited<ReturnType<typeof createServiceStack>> | undefined;
@@ -15,7 +15,7 @@ export async function setup() {
 	const suffix = randomBytes(4).toString('hex');
 	stack = await createServiceStack({
 		services: ['postgres', 'redis'],
-		projectName: `n8n-integration-test-${suffix}`,
+		projectName: `MNI-integration-test-${suffix}`,
 	});
 
 	const pgResult = stack.serviceResults.postgres;
@@ -44,22 +44,22 @@ export async function setup() {
 	if (!redisResult) {
 		throw new Error('Failed to start redis container');
 	}
-	process.env.N8N_TEST_REDIS_HOST = redisResult.container.getHost();
-	process.env.N8N_TEST_REDIS_PORT = String(redisResult.container.getMappedPort(6379));
+	process.env.MNI_TEST_REDIS_HOST = redisResult.container.getHost();
+	process.env.MNI_TEST_REDIS_PORT = String(redisResult.container.getMappedPort(6379));
 	console.log(
-		`✓ Redis ready at ${process.env.N8N_TEST_REDIS_HOST}:${process.env.N8N_TEST_REDIS_PORT}\n`,
+		`✓ Redis ready at ${process.env.MNI_TEST_REDIS_HOST}:${process.env.MNI_TEST_REDIS_PORT}\n`,
 	);
 
 	// Build a template DB once, then each test file's testDb.init() clones it via
 	// CREATE DATABASE ... TEMPLATE instead of replaying the full migration history.
-	// Set N8N_TEST_DISABLE_TEMPLATE_DB=1 to opt out (e.g. when bisecting migration bugs).
-	if (process.env.N8N_TEST_DISABLE_TEMPLATE_DB !== '1') {
-		const templateName = `n8n_test_template_${suffix}`;
+	// Set MNI_TEST_DISABLE_TEMPLATE_DB=1 to opt out (e.g. when bisecting migration bugs).
+	if (process.env.MNI_TEST_DISABLE_TEMPLATE_DB !== '1') {
+		const templateName = `MNI_test_template_${suffix}`;
 		const tplStart = Date.now();
 		// Dynamic import so the module's DI lookups resolve GlobalConfig after the DB_* env vars are set.
-		const { testDb } = await import('@n8n/backend-test-utils');
+		const { testDb } = await import('@MNI/backend-test-utils');
 		await testDb.initTemplateDb(templateName);
-		process.env.N8N_TEST_TEMPLATE_DB = templateName;
+		process.env.MNI_TEST_TEMPLATE_DB = templateName;
 		console.log(
 			`✓ Template DB ${templateName} ready (${Date.now() - tplStart}ms) — workers will clone instead of migrate\n`,
 		);

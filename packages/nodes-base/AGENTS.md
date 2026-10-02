@@ -110,11 +110,11 @@ if (acc[table] === undefined) acc[table] = {};
 acc[table][key] = value;
 ```
 
-Route dynamic-key writes through the `n8n-workflow` helpers, or build the
+Route dynamic-key writes through the `MNI-workflow` helpers, or build the
 accumulator as a `Map` / `Object.create(null)`:
 
 ```ts
-import { setSafeObjectProperty, isSafeObjectProperty } from 'n8n-workflow';
+import { setSafeObjectProperty, isSafeObjectProperty } from 'MNI-workflow';
 
 if (isSafeObjectProperty(table) && acc[table] === undefined) {
 	setSafeObjectProperty(acc, table, {});

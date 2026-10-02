@@ -1,14 +1,14 @@
-import { CREDENTIAL_DESCRIPTIONS_FLAG, INSTANCE_ACTIVITY_CONTEXT_FLAG } from '@n8n/api-types';
-import { mockInstance } from '@n8n/backend-test-utils';
-import type { GlobalConfig } from '@n8n/config';
+import { CREDENTIAL_DESCRIPTIONS_FLAG, INSTANCE_ACTIVITY_CONTEXT_FLAG } from '@MNI/api-types';
+import { mockInstance } from '@MNI/backend-test-utils';
+import type { GlobalConfig } from '@MNI/config';
 import type { Application, Request, RequestHandler, Response } from 'express';
-import { InstanceSettings } from 'n8n-core';
-import type { FeatureFlagPayloads, FeatureFlags } from 'n8n-workflow';
+import { InstanceSettings } from 'MNI-core';
+import type { FeatureFlagPayloads, FeatureFlags } from 'MNI-workflow';
 import { PostHog } from 'posthog-node';
 import type { Mock } from 'vitest';
 import { mock } from 'vitest-mock-extended';
 
-import { N8N_VERSION } from '@/constants';
+import { MNI_VERSION } from '@/constants';
 import { PostHogClient } from '@/posthog';
 
 vi.mock('posthog-node');
@@ -271,7 +271,7 @@ describe('PostHog', () => {
 				personProperties: {
 					created_at_timestamp: createdAt.getTime().toString(),
 					instance_id: instanceId,
-					version_cli: N8N_VERSION,
+					version_cli: MNI_VERSION,
 				},
 				groups: { company: instanceId },
 			});
@@ -363,7 +363,7 @@ describe('PostHog', () => {
 				globalConfig.featureFlags.override = {};
 			});
 
-			it('force-enables the eval-collections flag when N8N_EVAL_COLLECTIONS_ENABLED is set', async () => {
+			it('force-enables the eval-collections flag when MNI_EVAL_COLLECTIONS_ENABLED is set', async () => {
 				(PostHog.prototype.evaluateFlags as Mock).mockResolvedValue(mockEvaluatedFlags({}));
 				globalConfig.evaluation.collectionsEnabled = true;
 
@@ -375,7 +375,7 @@ describe('PostHog', () => {
 				expect(flags).toMatchObject({ '084_eval_collections': true });
 			});
 
-			it('force-enables the config-evaluations variant when N8N_CONFIG_EVALS_ENABLED is set', async () => {
+			it('force-enables the config-evaluations variant when MNI_CONFIG_EVALS_ENABLED is set', async () => {
 				(PostHog.prototype.evaluateFlags as Mock).mockResolvedValue(mockEvaluatedFlags({}));
 				globalConfig.evaluation.configEvalsEnabled = true;
 
@@ -398,7 +398,7 @@ describe('PostHog', () => {
 				expect(flags['114_instance_activity_context']).toBeUndefined();
 			});
 
-			it('force-enables the folder-exploration flag when N8N_INSTANCE_AI_FOLDER_EXPLORATION_ENABLED is set', async () => {
+			it('force-enables the folder-exploration flag when MNI_INSTANCE_AI_FOLDER_EXPLORATION_ENABLED is set', async () => {
 				(PostHog.prototype.evaluateFlags as Mock).mockResolvedValue(mockEvaluatedFlags({}));
 				globalConfig.instanceAi.folderExplorationEnabled = true;
 
@@ -592,7 +592,7 @@ describe('PostHog', () => {
 				});
 			});
 
-			it('force-enables the agent-evals flag when N8N_AGENT_EVALS_ENABLED is set', async () => {
+			it('force-enables the agent-evals flag when MNI_AGENT_EVALS_ENABLED is set', async () => {
 				(PostHog.prototype.evaluateFlags as Mock).mockResolvedValue(mockEvaluatedFlags({}));
 				globalConfig.evaluation.agentEvalsEnabled = true;
 
@@ -616,7 +616,7 @@ describe('PostHog', () => {
 				expect(flags).toEqual({ [CREDENTIAL_DESCRIPTIONS_FLAG]: false, '101_agent_evals': true });
 			});
 
-			it('force-enables the canvas-node-context flag when N8N_INSTANCE_AI_NODE_CONTEXT_ENABLED is set', async () => {
+			it('force-enables the canvas-node-context flag when MNI_INSTANCE_AI_NODE_CONTEXT_ENABLED is set', async () => {
 				(PostHog.prototype.evaluateFlags as Mock).mockResolvedValue(mockEvaluatedFlags({}));
 
 				globalConfig.instanceAi.canvasNodeContextEnabled = true;

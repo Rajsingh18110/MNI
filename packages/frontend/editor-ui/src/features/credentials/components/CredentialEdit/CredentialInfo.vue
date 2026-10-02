@@ -2,11 +2,11 @@
 import { useCredentialDescriptionsExperiment } from '@/experiments/credentialDescriptions/useCredentialDescriptionsExperiment';
 import TimeAgo from '@/app/components/TimeAgo.vue';
 import CharacterCount from '@/app/components/CharacterCount.vue';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import type { ICredentialsDecryptedResponse, ICredentialsResponse } from '../../credentials.types';
 import { ElCol, ElRow } from 'element-plus';
-import { N8nInput, N8nInputLabel, N8nText } from '@n8n/design-system';
-import { CREDENTIAL_DESCRIPTION_MAX_LENGTH } from '@n8n/api-types';
+import { N8nInput, N8nInputLabel, N8nText } from '@MNI/design-system';
+import { CREDENTIAL_DESCRIPTION_MAX_LENGTH } from '@MNI/api-types';
 import { useId } from 'vue';
 type Props = {
 	currentCredential: ICredentialsResponse | ICredentialsDecryptedResponse | null;

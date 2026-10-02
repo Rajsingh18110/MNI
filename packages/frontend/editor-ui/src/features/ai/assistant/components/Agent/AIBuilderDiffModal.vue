@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import Modal from '@/app/components/Modal.vue';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
 import { AI_BUILDER_DIFF_MODAL_KEY } from '@/app/constants';
 import WorkflowDiffView from '@/features/workflows/workflowDiff/WorkflowDiffView.vue';
 import type { IWorkflowDb } from '@/Interface';
-import type { EventBus } from '@n8n/utils/event-bus';
+import type { EventBus } from '@MNI/utils/event-bus';
 import { onMounted, useCssModule } from 'vue';
 import { useBuilderStore } from '../../builder.store';
 import { useUIStore } from '@/app/stores/ui.store';

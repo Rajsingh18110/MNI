@@ -17,8 +17,8 @@ import {
 	CanvasNodeDirtiness,
 	type CanvasNodeDirtinessType,
 } from '@/features/workflows/canvas/canvas.types';
-import type { INodeConnections, NodeConnectionType } from 'n8n-workflow';
-import { NodeConnectionTypes } from 'n8n-workflow';
+import type { INodeConnections, NodeConnectionType } from 'MNI-workflow';
+import { NodeConnectionTypes } from 'MNI-workflow';
 import { computed, toValue, type MaybeRefOrGetter } from 'vue';
 
 /**

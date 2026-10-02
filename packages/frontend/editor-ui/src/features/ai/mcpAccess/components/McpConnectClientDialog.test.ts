@@ -5,7 +5,7 @@ import { createComponentRenderer } from '@/__tests__/render';
 import { mockedStore, type MockedStore } from '@/__tests__/utils';
 import McpConnectClientDialog from '@/features/ai/mcpAccess/components/McpConnectClientDialog.vue';
 import { useMCPStore } from '@/features/ai/mcpAccess/mcp.store';
-import { useRootStore } from '@n8n/stores/useRootStore';
+import { useRootStore } from '@MNI/stores/useRootStore';
 
 let pinia: ReturnType<typeof createTestingPinia>;
 let mcpStore: MockedStore<typeof useMCPStore>;
@@ -43,7 +43,7 @@ describe('McpConnectClientDialog', () => {
 		// Web client: one-click connector + mandatory server URL, no CLI/auth steps.
 		expect(body().getByTestId('mcp-connect-one-click')).toHaveAttribute(
 			'href',
-			'https://claude.ai/directory/connectors/n8n',
+			'https://claude.ai/directory/connectors/MNI',
 		);
 		expect(body().getByText('Server URL')).toBeInTheDocument();
 		expect(body().queryByText('Or configure manually')).not.toBeInTheDocument();

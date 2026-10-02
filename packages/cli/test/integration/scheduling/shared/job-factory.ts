@@ -1,4 +1,4 @@
-import type { ScheduledJob, ScheduledJobRepository, ScheduledTaskRepository } from '@n8n/db';
+import type { ScheduledJob, ScheduledJobRepository, ScheduledTaskRepository } from '@MNI/db';
 
 /**
  * A due, enabled interval job. Each call gets a distinct sequential name.

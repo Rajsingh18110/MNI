@@ -3,8 +3,8 @@ import type {
 	InsightsByTime,
 	InsightsByWorkflow,
 	InsightsSummaryType,
-} from '@n8n/api-types';
-import { componentRegistry } from '@n8n/frontend-module-sdk';
+} from '@MNI/api-types';
+import { componentRegistry } from '@MNI/frontend-module-sdk';
 import {
 	createComponentRenderer,
 	defaultSettings,
@@ -12,8 +12,8 @@ import {
 	useEmitters,
 	waitAllPromises,
 	type MockedStore,
-} from '@n8n/frontend-test-utils';
-import { ResponseError } from '@n8n/rest-api-client/utils';
+} from '@MNI/frontend-test-utils';
+import { ResponseError } from '@MNI/rest-api-client/utils';
 import { createTestingPinia } from '@pinia/testing';
 import userEvent from '@testing-library/user-event';
 import { within, screen, waitFor } from '@testing-library/vue';
@@ -26,7 +26,7 @@ import { useInsightsStore } from '../insights.store';
 import type { InsightsSummaryDisplay } from '../insights.types';
 
 // Called in a hook, not at module scope: the design-system mock below is hoisted above the
-// imports, and `@n8n/frontend-test-utils` reaches design-system through its renderer.
+// imports, and `@MNI/frontend-test-utils` reaches design-system through its renderer.
 let emitterHandles: ReturnType<typeof useEmitters<'n8nDataTableServer'>>;
 
 beforeAll(() => {
@@ -55,12 +55,12 @@ vi.mock('vue-chartjs', () => ({
 	},
 }));
 
-vi.mock('@n8n/design-system', async (importOriginal) => {
+vi.mock('@MNI/design-system', async (importOriginal) => {
 	const original = await importOriginal<object>();
 	return {
 		...original,
 		// A plain options object, not `defineComponent`. This factory is hoisted above the
-		// imports and runs while `@n8n/frontend-test-utils` is still initialising — it reaches
+		// imports and runs while `@MNI/frontend-test-utils` is still initialising — it reaches
 		// design-system through its renderer — so calling anything imported from `vue` here
 		// throws a TDZ error on an import that has not been evaluated yet.
 		N8nDataTableServer: {
@@ -83,11 +83,11 @@ const mockTelemetry = {
 
 const showError = vi.fn();
 
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: () => ({ showError }),
 }));
 
-vi.mock('@n8n/composables/useTelemetry', () => ({
+vi.mock('@MNI/composables/useTelemetry', () => ({
 	useTelemetry: () => mockTelemetry,
 }));
 

@@ -5,8 +5,8 @@ import type {
 	IN8nHttpFullResponse,
 	INodeExecutionData,
 	JsonObject,
-} from 'n8n-workflow';
-import { NodeApiError, NodeOperationError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeApiError, NodeOperationError } from 'MNI-workflow';
 
 import { CURRENT_VERSION } from './constants';
 import type {

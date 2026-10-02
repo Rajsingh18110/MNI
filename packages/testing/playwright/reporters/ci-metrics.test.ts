@@ -68,7 +68,7 @@ describe('ciMetricsContext', () => {
 
 	test('leaves out a run url when the run id is empty', () => {
 		vi.stubEnv('GITHUB_RUN_ID', '');
-		vi.stubEnv('GITHUB_REPOSITORY', 'n8n-io/n8n');
+		vi.stubEnv('GITHUB_REPOSITORY', 'MNI-io/MNI');
 
 		expect(ciMetricsContext().ci).toMatchObject({ runId: null, runUrl: null });
 	});

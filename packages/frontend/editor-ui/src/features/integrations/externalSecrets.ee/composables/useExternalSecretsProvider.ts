@@ -1,4 +1,4 @@
-import type { DisplayCondition, NodeParameterValue } from 'n8n-workflow';
+import type { DisplayCondition, NodeParameterValue } from 'MNI-workflow';
 
 import type { IUpdateInformation } from '@/Interface';
 import type {
@@ -10,7 +10,7 @@ import type {
 import type { ComputedRef, Ref } from 'vue';
 import { computed, ref } from 'vue';
 import { useExternalSecretsStore } from '@/features/integrations/externalSecrets.ee/externalSecrets.ee.store';
-import { useToast } from '@n8n/composables/useToast';
+import { useToast } from '@MNI/composables/useToast';
 
 export function useExternalSecretsProvider(
 	provider:

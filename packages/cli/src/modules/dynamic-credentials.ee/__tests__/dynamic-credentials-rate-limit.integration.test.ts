@@ -1,17 +1,17 @@
-vi.mock('@n8n/backend-common', async () => {
-	const actual = await vi.importActual<typeof import('@n8n/backend-common')>('@n8n/backend-common');
+vi.mock('@MNI/backend-common', async () => {
+	const actual = await vi.importActual<typeof import('@MNI/backend-common')>('@MNI/backend-common');
 	return {
 		...actual,
 		inProduction: true,
 	};
 });
 
-import { LicenseState } from '@n8n/backend-common';
-import { mockInstance, testDb } from '@n8n/backend-test-utils';
-import { CredentialsRepository } from '@n8n/db';
-import type { ICredentialResolver } from '@n8n/decorators';
-import { Container } from '@n8n/di';
-import { Cipher } from 'n8n-core';
+import { LicenseState } from '@MNI/backend-common';
+import { mockInstance, testDb } from '@MNI/backend-test-utils';
+import { CredentialsRepository } from '@MNI/db';
+import type { ICredentialResolver } from '@MNI/decorators';
+import { Container } from '@MNI/di';
+import { Cipher } from 'MNI-core';
 import { mock } from 'vitest-mock-extended';
 
 import { EnterpriseCredentialsService } from '@/credentials/credentials.service.ee';
@@ -24,7 +24,7 @@ import { DynamicCredentialResolverRegistry } from '../services';
 import type { CredentialResolverWorkflowService } from '../services/credential-resolver-workflow.service';
 
 // Enable dynamic credentials feature flag
-process.env.N8N_ENV_FEAT_DYNAMIC_CREDENTIALS = 'true';
+process.env.MNI_ENV_FEAT_DYNAMIC_CREDENTIALS = 'true';
 
 // Mock license
 const licenseMock = mock<LicenseState>();

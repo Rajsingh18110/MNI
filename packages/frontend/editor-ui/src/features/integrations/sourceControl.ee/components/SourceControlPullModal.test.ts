@@ -1,15 +1,15 @@
 import SourceControlPullModalEe from './SourceControlPullModal.vue';
 import { createComponentRenderer } from '@/__tests__/render';
 import { createTestingPinia } from '@pinia/testing';
-import { createEventBus } from '@n8n/utils/event-bus';
+import { createEventBus } from '@MNI/utils/event-bus';
 import userEvent from '@testing-library/user-event';
 import { useSourceControlStore } from '../sourceControl.store';
 import { mockedStore } from '@/__tests__/utils';
 import { waitFor } from '@testing-library/dom';
 import { reactive } from 'vue';
-import { useSettingsStore } from '@n8n/stores/settings.store';
-import { defaultSettings } from '@n8n/frontend-test-utils';
-import type { SourceControlledFile } from '@n8n/api-types';
+import { useSettingsStore } from '@MNI/stores/settings.store';
+import { defaultSettings } from '@MNI/frontend-test-utils';
+import type { SourceControlledFile } from '@MNI/api-types';
 
 const eventBus = createEventBus();
 
@@ -44,7 +44,7 @@ vi.mock('@/app/composables/useLoadingService', () => ({
 }));
 
 // Mock the toast composable to prevent Element Plus DOM errors
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: () => ({
 		showMessage: vi.fn(),
 		showError: vi.fn(),

@@ -1,21 +1,21 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
-import { HTML_NONCE_PLACEHOLDER, LICENSE_FEATURES } from '@n8n/constants';
+import { HTML_NONCE_PLACEHOLDER, LICENSE_FEATURES } from '@MNI/constants';
 import {
 	AuthRolesService,
 	DeploymentKeyRepository,
 	ExecutionRepository,
 	SettingsRepository,
-} from '@n8n/db';
-import { Command } from '@n8n/decorators';
-import { Container } from '@n8n/di';
-import { McpServer } from '@n8n/n8n-nodes-langchain/mcp/core';
-import { sleep } from '@n8n/utils/sleep';
+} from '@MNI/db';
+import { Command } from '@MNI/decorators';
+import { Container } from '@MNI/di';
+import { McpServer } from '@MNI/MNI-nodes-langchain/mcp/core';
+import { sleep } from '@MNI/utils/sleep';
 import glob from 'fast-glob';
 import { createReadStream, createWriteStream, existsSync } from 'fs';
 import { mkdir } from 'fs/promises';
-import { BinaryDataConfig } from 'n8n-core';
-import { jsonParse } from 'n8n-workflow';
+import { BinaryDataConfig } from 'MNI-core';
+import { jsonParse } from 'MNI-workflow';
 import path from 'path';
 import replaceStream from 'replacestream';
 import { pipeline } from 'stream/promises';
@@ -24,7 +24,7 @@ import { z } from 'zod';
 import { ActiveExecutions } from '@/active-executions';
 import { ActiveWorkflowManager } from '@/active-workflow-manager';
 import config from '@/config';
-import { EDITOR_UI_DIST_DIR, N8N_VERSION } from '@/constants';
+import { EDITOR_UI_DIST_DIR, MNI_VERSION } from '@/constants';
 import { CredentialsOverwrites } from '@/credentials-overwrites';
 import { DeprecationService } from '@/deprecation/deprecation.service';
 import { FeatureNotLicensedError } from '@/errors/feature-not-licensed.error';
@@ -43,7 +43,7 @@ import { JwtService } from '@/services/jwt.service';
 import { ExecutionsPruningService } from '@/services/pruning/executions-pruning.service';
 import { WorkflowHistoryCompactionService } from '@/services/pruning/workflow-history-compaction.service';
 import { RoleCacheService } from '@/services/role-cache.service';
-import { UrlService } from '@n8n/backend-services';
+import { UrlService } from '@MNI/backend-services';
 import { WorkflowStatisticsRollupService } from '@/services/workflow-statistics-rollup.service';
 import { WaitTracker } from '@/wait-tracker';
 
@@ -58,7 +58,7 @@ const flagsSchema = z.object({
 
 @Command({
 	name: 'start',
-	description: 'Starts n8n. Makes Web-UI available and starts active workflows',
+	description: 'Starts MNI. Makes Web-UI available and starts active workflows',
 	examples: ['', '-o'],
 	flagsSchema,
 })
@@ -141,7 +141,7 @@ export class Start extends BaseCommand<z.infer<typeof flagsSchema>> {
 			dsn: this.globalConfig.sentry.frontendDsn,
 			environment: process.env.ENVIRONMENT || 'development',
 			serverName: process.env.DEPLOYMENT_NAME,
-			release: `n8n@${N8N_VERSION}`,
+			release: `MNI@${MNI_VERSION}`,
 		});
 		const b64Encode = (value: string) => Buffer.from(value).toString('base64');
 
@@ -161,7 +161,7 @@ export class Start extends BaseCommand<z.infer<typeof flagsSchema>> {
 
 	private async generateStaticAssets() {
 		// Read the index file and replace the path placeholder
-		const n8nPath = this.globalConfig.path;
+		const MNIPath = this.globalConfig.path;
 		const hooksUrls = this.globalConfig.externalFrontendHooksUrls;
 
 		let scriptsString = '';
@@ -182,9 +182,9 @@ export class Start extends BaseCommand<z.infer<typeof flagsSchema>> {
 				const streams = [
 					createReadStream(filePath, 'utf-8'),
 					replaceStream('%CONFIG_TAGS%', this.generateConfigTags(), { ignoreCase: false }),
-					replaceStream('/{{BASE_PATH}}/', n8nPath, { ignoreCase: false }),
-					replaceStream('/%7B%7BBASE_PATH%7D%7D/', n8nPath, { ignoreCase: false }),
-					replaceStream('/%257B%257BBASE_PATH%257D%257D/', n8nPath, { ignoreCase: false }),
+					replaceStream('/{{BASE_PATH}}/', MNIPath, { ignoreCase: false }),
+					replaceStream('/%7B%7BBASE_PATH%7D%7D/', MNIPath, { ignoreCase: false }),
+					replaceStream('/%257B%257BBASE_PATH%257D%257D/', MNIPath, { ignoreCase: false }),
 				];
 				if (filePath.endsWith('index.html')) {
 					streams.push(

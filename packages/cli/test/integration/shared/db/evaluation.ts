@@ -1,13 +1,13 @@
-import { TestRunRepository, TestCaseExecutionRepository } from '@n8n/db';
+import { TestRunRepository, TestCaseExecutionRepository } from '@MNI/db';
 import type {
 	TestRun,
 	TestCaseExecution,
 	AggregatedTestRunMetrics,
 	TestCaseExecutionErrorCode,
 	TestRunErrorCode,
-} from '@n8n/db';
-import { Container } from '@n8n/di';
-import type { IDataObject, JsonObject } from 'n8n-workflow';
+} from '@MNI/db';
+import { Container } from '@MNI/di';
+import type { IDataObject, JsonObject } from 'MNI-workflow';
 
 /**
  * Creates a test run for a workflow

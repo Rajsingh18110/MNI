@@ -1,4 +1,4 @@
-import type { IExecuteFunctions, INode } from 'n8n-workflow';
+import type { IExecuteFunctions, INode } from 'MNI-workflow';
 import { mockDeep } from 'vitest-mock-extended';
 
 import { execute } from '../../actions/workbook/getAll.operation';
@@ -9,7 +9,7 @@ describe('Microsoft Excel workbook:getAll under the Service Principal credential
 	const mockNode: INode = {
 		id: 'test-node',
 		name: 'Test Excel Node',
-		type: 'n8n-nodes-base.microsoftExcel',
+		type: 'MNI-nodes-base.microsoftExcel',
 		typeVersion: 2,
 		position: [0, 0],
 		parameters: {},

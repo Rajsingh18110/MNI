@@ -6,20 +6,20 @@ import type {
 	ResumeOptions,
 	SerializableAgentState,
 	StreamChunk,
-} from '@n8n/agents';
+} from '@MNI/agents';
 import {
-	N8N_CHAT_INTEGRATION_TYPE,
+	MNI_CHAT_INTEGRATION_TYPE,
 	type AgentBackgroundJobSignal,
 	type AgentJsonConfig,
-} from '@n8n/api-types';
-import { mockLogger } from '@n8n/backend-test-utils';
-import { LockService } from '@n8n/backend-common';
-import type { AiConfig } from '@n8n/config';
-import type { User } from '@n8n/db';
-import { Container } from '@n8n/di';
-import { createDeferredPromise } from '@n8n/utils/promise/deferred-promise';
-import { OperationalError, UserError } from 'n8n-workflow';
-import type { InstanceSettings } from 'n8n-core';
+} from '@MNI/api-types';
+import { mockLogger } from '@MNI/backend-test-utils';
+import { LockService } from '@MNI/backend-common';
+import type { AiConfig } from '@MNI/config';
+import type { User } from '@MNI/db';
+import { Container } from '@MNI/di';
+import { createDeferredPromise } from '@MNI/utils/promise/deferred-promise';
+import { OperationalError, UserError } from 'MNI-workflow';
+import type { InstanceSettings } from 'MNI-core';
 import type { Mock } from 'vitest';
 import { mock } from 'vitest-mock-extended';
 
@@ -55,7 +55,7 @@ import type { AgentChatBridge } from '../integrations/agent-chat-bridge';
 import { ChatIntegrationService } from '../integrations/chat-integration.service';
 import { IntegrationMessageContextService } from '../integrations/integration-message-context.service';
 import type { IntegrationMessageContext } from '../integrations/integration-tool-types';
-import type { N8NCheckpointStorage } from '../integrations/n8n-checkpoint-storage';
+import type { N8NCheckpointStorage } from '../integrations/MNI-checkpoint-storage';
 import type { AgentThreadRepository } from '../repositories/agent-thread.repository';
 import type { AgentResourceRepository } from '../repositories/agent-resource.repository';
 import {
@@ -77,7 +77,7 @@ const agentId = 'agent-1';
 const projectId = 'project-1';
 const userId = 'user-1';
 const user = mock<User>({ id: userId });
-const userPrincipalHash = hashAgentSandboxPrincipal({ type: 'n8n-user', userId });
+const userPrincipalHash = hashAgentSandboxPrincipal({ type: 'MNI-user', userId });
 const integrationPrincipalHash = hashAgentSandboxPrincipal({
 	type: 'integration-thread',
 	connectionId: 'credential-1',
@@ -1272,7 +1272,7 @@ describe('AgentExecutionOrchestratorService', () => {
 		expect(runtimeCacheService.getRuntime).toHaveBeenCalledWith({
 			agentId,
 			projectId,
-			integrationType: N8N_CHAT_INTEGRATION_TYPE,
+			integrationType: MNI_CHAT_INTEGRATION_TYPE,
 			user,
 			sandboxPrincipalHash: userPrincipalHash,
 		});
@@ -1280,8 +1280,8 @@ describe('AgentExecutionOrchestratorService', () => {
 			'thread-1',
 			'draft-chat:user-1',
 			expect.objectContaining({
-				integrationConnectionId: N8N_CHAT_INTEGRATION_TYPE,
-				platform: N8N_CHAT_INTEGRATION_TYPE,
+				integrationConnectionId: MNI_CHAT_INTEGRATION_TYPE,
+				platform: MNI_CHAT_INTEGRATION_TYPE,
 				target: { type: 'dm', userId, threadId: 'thread-1' },
 				interactingUserId: userId,
 				updatedAt: expect.any(String),
@@ -1363,7 +1363,7 @@ describe('AgentExecutionOrchestratorService', () => {
 				'check_ledger',
 				{
 					kind: 'node',
-					nodeType: 'n8n-nodes-base.dataTableTool',
+					nodeType: 'MNI-nodes-base.dataTableTool',
 					nodeParameters: { resource: 'row', operation: 'get', returnAll: true },
 				},
 			],
@@ -1402,7 +1402,7 @@ describe('AgentExecutionOrchestratorService', () => {
 					toolName: 'check_ledger',
 					input: {},
 					node: {
-						type: 'n8n-nodes-base.dataTableTool',
+						type: 'MNI-nodes-base.dataTableTool',
 						parameters: { resource: 'row', operation: 'get', returnAll: true },
 					},
 				},
@@ -1498,13 +1498,13 @@ describe('AgentExecutionOrchestratorService', () => {
 				projectId,
 				user,
 				message: 'Hello',
-				memory: { threadId: 'thread-1', resourceId: 'n8n-chat-production:user-1' },
+				memory: { threadId: 'thread-1', resourceId: 'MNI-chat-production:user-1' },
 			}),
 		);
 
 		expect(runtimeCacheService.getRuntime).toHaveBeenCalledWith(
 			expect.objectContaining({
-				integrationType: N8N_CHAT_INTEGRATION_TYPE,
+				integrationType: MNI_CHAT_INTEGRATION_TYPE,
 				usePublishedVersion: true,
 				allowBackgroundTasks: false,
 				attributionUserId: user.id,
@@ -1512,9 +1512,9 @@ describe('AgentExecutionOrchestratorService', () => {
 		);
 		expect(integrationMessageContextService.setLatest).toHaveBeenCalledWith(
 			'thread-1',
-			'n8n-chat-production:user-1',
+			'MNI-chat-production:user-1',
 			expect.objectContaining({
-				platform: N8N_CHAT_INTEGRATION_TYPE,
+				platform: MNI_CHAT_INTEGRATION_TYPE,
 				interactingUserId: user.id,
 				target: { type: 'dm', userId: user.id, threadId: 'thread-1' },
 			}),
@@ -1522,7 +1522,7 @@ describe('AgentExecutionOrchestratorService', () => {
 		expect(executionService.startExecutionRecording).toHaveBeenCalledWith(
 			expect.objectContaining({
 				access: { accessScope: 'user', ownerId: user.id },
-				source: 'n8n_chat_production',
+				source: 'MNI_chat_production',
 				telemetry: expect.objectContaining({ runType: 'production', userId: user.id }),
 			}),
 			expect.any(Date),
@@ -1532,7 +1532,7 @@ describe('AgentExecutionOrchestratorService', () => {
 	it('rejects a production turn with a foreign thread or memory scope', async () => {
 		const { service, agentRepository, runtimeCacheService, executionService } = makeService();
 		agentRepository.isN8nChatPublished.mockResolvedValue(true);
-		for (const resourceId of ['draft-chat:user-1', 'n8n-chat-production:other-user']) {
+		for (const resourceId of ['draft-chat:user-1', 'MNI-chat-production:other-user']) {
 			await expect(
 				collect(
 					service.executeForN8nChatPublished({
@@ -1553,7 +1553,7 @@ describe('AgentExecutionOrchestratorService', () => {
 					projectId,
 					user,
 					message: 'Hello',
-					memory: { threadId: 'thread-1', resourceId: 'n8n-chat-production:user-1' },
+					memory: { threadId: 'thread-1', resourceId: 'MNI-chat-production:user-1' },
 				}),
 			),
 		).rejects.toThrow('Session not found');
@@ -1571,7 +1571,7 @@ describe('AgentExecutionOrchestratorService', () => {
 				{},
 				{
 					threadId: 'thread-1',
-					resourceId: 'n8n-chat-production:user-1',
+					resourceId: 'MNI-chat-production:user-1',
 					hostMetadata: encodeAgentSandboxHostMetadata({
 						projectId,
 						principalHash: integrationPrincipalHash,
@@ -1590,8 +1590,8 @@ describe('AgentExecutionOrchestratorService', () => {
 					toolCallId: 'call-1',
 					resumeData: { approved: true },
 					usePublishedVersion: true,
-					integrationType: N8N_CHAT_INTEGRATION_TYPE,
-					source: 'n8n_chat_production',
+					integrationType: MNI_CHAT_INTEGRATION_TYPE,
+					source: 'MNI_chat_production',
 				}),
 			),
 		).rejects.toThrow('unavailable');
@@ -2078,7 +2078,7 @@ describe('AgentExecutionOrchestratorService', () => {
 		expect(runtimeCacheService.getRuntime).toHaveBeenCalledWith({
 			agentId,
 			projectId,
-			integrationType: N8N_CHAT_INTEGRATION_TYPE,
+			integrationType: MNI_CHAT_INTEGRATION_TYPE,
 			usePublishedVersion: false,
 			user,
 			sandboxPrincipalHash: userPrincipalHash,
@@ -2237,10 +2237,10 @@ describe('AgentExecutionOrchestratorService', () => {
 			agentId,
 			projectId,
 			message: 'The job is done.',
-			memory: { threadId: 'thread-1', resourceId: 'n8n-chat-production:user-1' },
+			memory: { threadId: 'thread-1', resourceId: 'MNI-chat-production:user-1' },
 			identity: {
 				type: 'published',
-				integrationType: N8N_CHAT_INTEGRATION_TYPE,
+				integrationType: MNI_CHAT_INTEGRATION_TYPE,
 				principalHash: userPrincipalHash,
 			},
 			abortSignal: new AbortController().signal,
@@ -2248,14 +2248,14 @@ describe('AgentExecutionOrchestratorService', () => {
 
 		expect(runtimeCacheService.getRuntime).toHaveBeenCalledWith(
 			expect.objectContaining({
-				integrationType: N8N_CHAT_INTEGRATION_TYPE,
+				integrationType: MNI_CHAT_INTEGRATION_TYPE,
 				usePublishedVersion: true,
 				attributionUserId: userId,
 			}),
 		);
 		expect(executionService.startExecutionRecording).toHaveBeenCalledWith(
 			expect.objectContaining({
-				source: 'n8n_chat_production',
+				source: 'MNI_chat_production',
 				access: { accessScope: 'user', ownerId: userId },
 			}),
 			expect.any(Date),
@@ -2739,7 +2739,7 @@ describe('AgentExecutionOrchestratorService', () => {
 					hostMetadata: encodeAgentSandboxHostMetadata({
 						projectId,
 						principalHash: hashAgentSandboxPrincipal({
-							type: 'n8n-user',
+							type: 'MNI-user',
 							userId: 'user-2',
 						}),
 					}),
@@ -2758,7 +2758,7 @@ describe('AgentExecutionOrchestratorService', () => {
 					resumeData: { value: 'yes' },
 					user,
 					usePublishedVersion: false,
-					integrationType: N8N_CHAT_INTEGRATION_TYPE,
+					integrationType: MNI_CHAT_INTEGRATION_TYPE,
 				}),
 			),
 		).rejects.toThrow('unavailable');

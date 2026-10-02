@@ -1,6 +1,6 @@
-import { ListAgentsQueryDto } from '@n8n/api-types';
-import type { AuthenticatedRequest } from '@n8n/db';
-import { Get, Query, RestController } from '@n8n/decorators';
+import { ListAgentsQueryDto } from '@MNI/api-types';
+import type { AuthenticatedRequest } from '@MNI/db';
+import { Get, Query, RestController } from '@MNI/decorators';
 import type { Response } from 'express';
 
 import { AgentsService } from './agents.service';

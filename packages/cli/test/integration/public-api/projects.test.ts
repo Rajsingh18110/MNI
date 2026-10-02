@@ -6,15 +6,15 @@ import {
 	getProjectRoleForUser,
 	testDb,
 	mockInstance,
-} from '@n8n/backend-test-utils';
-import { EntityManager } from '@n8n/typeorm';
+} from '@MNI/backend-test-utils';
+import { EntityManager } from '@MNI/typeorm';
 import {
 	GLOBAL_MEMBER_ROLE,
 	ProjectRepository,
 	ProjectRelationRepository,
 	ProjectRelation,
-} from '@n8n/db';
-import { Container } from '@n8n/di';
+} from '@MNI/db';
+import { Container } from '@MNI/di';
 import type { MockInstance } from 'vitest';
 
 import { FeatureNotLicensedError } from '@/errors/feature-not-licensed.error';

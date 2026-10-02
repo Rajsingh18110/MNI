@@ -1,5 +1,5 @@
-import { Container } from '@n8n/di';
-import { buildHitlCallbackReference, InstanceSettings } from 'n8n-core';
+import { Container } from '@MNI/di';
+import { buildHitlCallbackReference, InstanceSettings } from 'MNI-core';
 import type {
 	IDataObject,
 	IExecuteFunctions,
@@ -9,8 +9,8 @@ import type {
 	IRequestOptions,
 	IWebhookFunctions,
 	JsonObject,
-} from 'n8n-workflow';
-import { NodeApiError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeApiError } from 'MNI-workflow';
 
 import { getSendAndWaitConfig } from '../../utils/sendAndWait/utils';
 import { createUtmCampaignLink } from '../../utils/utilities';
@@ -95,7 +95,7 @@ export function addAdditionalFields(
 
 	if (operation === 'sendMessage') {
 		const attributionText = 'This message was sent automatically with ';
-		const link = createUtmCampaignLink('n8n-nodes-base.telegram', instanceId);
+		const link = createUtmCampaignLink('MNI-nodes-base.telegram', instanceId);
 
 		if (nodeVersion && nodeVersion >= 1.1 && additionalFields.appendAttribution === undefined) {
 			additionalFields.appendAttribution = true;
@@ -289,7 +289,7 @@ export function createSendAndWaitMessageBody(context: IExecuteFunctions, chatApp
 	if (config.appendAttribution !== false) {
 		const instanceId = context.getInstanceId();
 		const attributionText = 'This message was sent automatically with ';
-		const link = createUtmCampaignLink('n8n-nodes-base.telegram', instanceId);
+		const link = createUtmCampaignLink('MNI-nodes-base.telegram', instanceId);
 		text = `${text}\n\n_${attributionText}_[MNI](${link})`;
 	}
 

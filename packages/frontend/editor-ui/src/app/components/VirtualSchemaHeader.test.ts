@@ -5,10 +5,10 @@ import { setActivePinia } from 'pinia';
 import { waitFor } from '@testing-library/vue';
 import userEvent from '@testing-library/user-event';
 import { SET_NODE_TYPE } from '@/app/constants';
-import { NodeConnectionTypes } from 'n8n-workflow';
+import { NodeConnectionTypes } from 'MNI-workflow';
 import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';
-import { defaultSettings } from '@n8n/frontend-test-utils';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { defaultSettings } from '@MNI/frontend-test-utils';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import VirtualSchemaHeader from '@/features/ndv/runData/components/VirtualSchemaHeader.vue';
 
 describe('VirtualSchemaHeader.vue', () => {
@@ -39,7 +39,7 @@ describe('VirtualSchemaHeader.vue', () => {
 				outputs: [NodeConnectionTypes.Main],
 			}),
 			mockNodeTypeDescription({
-				name: 'n8n-nodes-base.manualTrigger',
+				name: 'MNI-nodes-base.manualTrigger',
 				group: ['trigger'],
 				outputs: [NodeConnectionTypes.Main],
 			}),
@@ -116,7 +116,7 @@ describe('VirtualSchemaHeader.vue', () => {
 
 		it('should render trigger icon for trigger nodes', () => {
 			const nodeTypesStore = useNodeTypesStore();
-			const triggerNode = nodeTypesStore.getNodeType('n8n-nodes-base.manualTrigger');
+			const triggerNode = nodeTypesStore.getNodeType('MNI-nodes-base.manualTrigger');
 
 			const { getByTestId } = renderComponent({
 				props: {
@@ -328,7 +328,7 @@ describe('VirtualSchemaHeader.vue', () => {
 	describe('CSS class binding', () => {
 		it('should apply icon-trigger class to trigger node icons', () => {
 			const nodeTypesStore = useNodeTypesStore();
-			const triggerNode = nodeTypesStore.getNodeType('n8n-nodes-base.manualTrigger');
+			const triggerNode = nodeTypesStore.getNodeType('MNI-nodes-base.manualTrigger');
 
 			const { container } = renderComponent({
 				props: {

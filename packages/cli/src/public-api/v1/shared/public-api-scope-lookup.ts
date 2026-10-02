@@ -1,7 +1,7 @@
-import type { ApiKeyScopeRequirement } from '@n8n/decorators';
-import { ControllerRegistryMetadata } from '@n8n/decorators';
-import { Container } from '@n8n/di';
-import type { ApiKeyScope } from '@n8n/permissions';
+import type { ApiKeyScopeRequirement } from '@MNI/decorators';
+import { ControllerRegistryMetadata } from '@MNI/decorators';
+import { Container } from '@MNI/di';
+import type { ApiKeyScope } from '@MNI/permissions';
 
 import type { ScopeTaggedMiddleware } from './middlewares/global.middleware';
 

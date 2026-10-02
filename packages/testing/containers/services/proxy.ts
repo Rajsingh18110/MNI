@@ -83,8 +83,8 @@ export const proxy: Service<ProxyResult> = {
 
 	env(result: ProxyResult, external?: boolean): Record<string, string> {
 		return {
-			N8N_PROXY_HOST: external ? result.container.getHost() : result.meta.host,
-			N8N_PROXY_PORT: external
+			MNI_PROXY_HOST: external ? result.container.getHost() : result.meta.host,
+			MNI_PROXY_PORT: external
 				? String(result.container.getMappedPort(PORT))
 				: String(result.meta.port),
 		};

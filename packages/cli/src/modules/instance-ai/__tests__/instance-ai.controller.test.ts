@@ -1,7 +1,7 @@
 import type { Mock } from 'vitest';
 import { z } from 'zod';
 
-vi.mock('@n8n/instance-ai', () => {
+vi.mock('@MNI/instance-ai', () => {
 	return {
 		workflowLoopStateSchema: z.string(),
 		attemptRecordSchema: z.object({}),
@@ -30,7 +30,7 @@ vi.mock('@n8n/instance-ai', () => {
 
 // The controller imports validation helpers via the parsers subpath so they
 // don't pull in native agent. Re-export the real implementation for the test.
-vi.mock('@n8n/instance-ai/parsers', async () => await vi.importActual('@n8n/instance-ai/parsers'));
+vi.mock('@MNI/instance-ai/parsers', async () => await vi.importActual('@MNI/instance-ai/parsers'));
 
 vi.mock('../eval/execution.service', () => ({
 	EvalExecutionService: vi.fn(),
@@ -55,21 +55,21 @@ import type {
 	InstanceAiThreadInfo,
 	InstanceAiRichMessagesResponse,
 	InstanceAiThreadMessagesResponse,
-} from '@n8n/api-types';
-import type { ModuleRegistry } from '@n8n/backend-common';
-import type { GlobalConfig } from '@n8n/config';
-import { buildAgentTreeFromEvents, seedAgentBuilderTargetMetadata } from '@n8n/instance-ai';
+} from '@MNI/api-types';
+import type { ModuleRegistry } from '@MNI/backend-common';
+import type { GlobalConfig } from '@MNI/config';
+import { buildAgentTreeFromEvents, seedAgentBuilderTargetMetadata } from '@MNI/instance-ai';
 import {
 	InstanceAiPersistPendingAgentRequest,
 	MAX_ATTACHMENT_BASE64_BYTES,
 	MAX_TOTAL_ATTACHMENT_BASE64_BYTES,
-} from '@n8n/api-types';
-import type { AuthenticatedRequest, User, UserRepository } from '@n8n/db';
-import { ControllerRegistryMetadata } from '@n8n/decorators';
-import { Container } from '@n8n/di';
-import type { Scope } from '@n8n/permissions';
+} from '@MNI/api-types';
+import type { AuthenticatedRequest, User, UserRepository } from '@MNI/db';
+import { ControllerRegistryMetadata } from '@MNI/decorators';
+import { Container } from '@MNI/di';
+import type { Scope } from '@MNI/permissions';
 import type { Request, Response } from 'express';
-import { UserError } from 'n8n-workflow';
+import { UserError } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import { BadRequestError } from '@/errors/response-errors/bad-request.error';
@@ -80,7 +80,7 @@ import type { CredentialsService } from '@/credentials/credentials.service';
 import type { Push } from '@/push';
 import type { Publisher } from '@/scaling/pubsub/publisher.service';
 import type { ProjectService } from '@/services/project.service.ee';
-import type { UrlService } from '@n8n/backend-services';
+import type { UrlService } from '@MNI/backend-services';
 
 import type { InstanceAiBrowserSessionService } from '../browser/instance-ai-browser-session.service';
 import type { EvalAgentExecutionService } from '../eval/agent-execution.service';
@@ -2286,7 +2286,7 @@ describe('InstanceAiController', () => {
 
 			expect(result).toEqual({
 				token: 'pairing-token',
-				command: 'npx @n8n/computer-use https://myinstance.n8n.cloud pairing-token',
+				command: 'npx @MNI/computer-use https://myinstance.n8n.cloud pairing-token',
 				expiresAt: '2026-01-01T00:05:00.000Z',
 				ttlSeconds: 300,
 			});

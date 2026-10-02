@@ -1,5 +1,5 @@
-import { mockInstance } from '@n8n/backend-test-utils';
-import { User, WorkflowEntity } from '@n8n/db';
+import { mockInstance } from '@MNI/backend-test-utils';
+import { User, WorkflowEntity } from '@MNI/db';
 import type { Mock } from 'vitest';
 
 import { CollaborationService } from '@/collaboration/collaboration.service';
@@ -9,7 +9,7 @@ import { WorkflowService } from '@/workflows/workflow.service';
 
 import { createArchiveWorkflowTool } from '../tools/workflow-builder/delete-workflow.tool';
 
-vi.mock('@n8n/ai-workflow-builder', () => ({
+vi.mock('@MNI/ai-workflow-builder', () => ({
 	MCP_ARCHIVE_WORKFLOW_TOOL: { toolName: 'archive_workflow', displayTitle: 'Archive Workflow' },
 	CODE_BUILDER_VALIDATE_TOOL: { toolName: 'validate_workflow_code', displayTitle: 'Validate' },
 	MCP_CREATE_WORKFLOW_FROM_CODE_TOOL: {

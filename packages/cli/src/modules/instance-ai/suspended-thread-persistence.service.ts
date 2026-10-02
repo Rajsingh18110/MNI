@@ -1,7 +1,7 @@
-import type { Logger } from '@n8n/backend-common';
-import type { InstanceAiConfig } from '@n8n/config';
-import type { DeepPartial } from '@n8n/typeorm';
-import { getErrorMessage } from '@n8n/utils/errors/get-error-message';
+import type { Logger } from '@MNI/backend-common';
+import type { InstanceAiConfig } from '@MNI/config';
+import type { DeepPartial } from '@MNI/typeorm';
+import { getErrorMessage } from '@MNI/utils/errors/get-error-message';
 
 import type { InstanceAiPendingConfirmation } from './entities/instance-ai-pending-confirmation.entity';
 

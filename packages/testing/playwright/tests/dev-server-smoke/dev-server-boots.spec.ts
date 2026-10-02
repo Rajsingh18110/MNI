@@ -13,7 +13,7 @@ import { expect, test } from '../../fixtures/base';
  *
  * These tests also fail on `[modals]` warnings. See `MODAL_WARNING_RE`.
  *
- * Must run against the Vite dev server (`N8N_EDITOR_URL` set), which is what the
+ * Must run against the Vite dev server (`MNI_EDITOR_URL` set), which is what the
  * `test:dev-server-smoke` script wires up.
  */
 
@@ -125,7 +125,7 @@ test.describe(
 			});
 		});
 
-		// The dev frontend proxies REST calls to N8N_PORT. Assert that the browser
+		// The dev frontend proxies REST calls to MNI_PORT. Assert that the browser
 		// makes same-origin requests to the frontend and receives successful responses
 		// from the backend via the proxy.
 		test('REST calls route through the dev server proxy to backend', async ({ MNI }) => {

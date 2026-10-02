@@ -1,14 +1,14 @@
-import { createWorkflow, testDb } from '@n8n/backend-test-utils';
-import { StatisticsNames, WorkflowStatistics, WorkflowStatisticsRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
-import { type InsertResult, QueryFailedError } from '@n8n/typeorm';
+import { createWorkflow, testDb } from '@MNI/backend-test-utils';
+import { StatisticsNames, WorkflowStatistics, WorkflowStatisticsRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
+import { type InsertResult, QueryFailedError } from '@MNI/typeorm';
 import { mock, mockClear } from 'vitest-mock-extended';
 
 import { mockEntityManager } from '@test/mocking';
 
 // `upsertWorkflowStatistics` is SQLite-only; on Postgres, recording goes through appendIncrement + rollup.
 const runOnSqlite = (process.env.DB_TYPE ?? 'sqlite') === 'sqlite';
-// eslint-disable-next-line n8n-local-rules/no-skipped-tests -- SQLite-only method
+// eslint-disable-next-line MNI-local-rules/no-skipped-tests -- SQLite-only method
 const describeSqlite = runOnSqlite ? describe : describe.skip;
 
 describe('insertWorkflowStatistics', () => {

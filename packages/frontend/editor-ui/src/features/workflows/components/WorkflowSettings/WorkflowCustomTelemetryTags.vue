@@ -13,9 +13,9 @@ import {
 	N8nInputLabel,
 	N8nText,
 	N8nTooltip,
-} from '@n8n/design-system';
-import { useI18n, type BaseTextKey } from '@n8n/i18n';
-import type { ICustomTelemetryTag } from 'n8n-workflow';
+} from '@MNI/design-system';
+import { useI18n, type BaseTextKey } from '@MNI/i18n';
+import type { ICustomTelemetryTag } from 'MNI-workflow';
 import { ElCol, ElRow } from 'element-plus';
 
 const OPEN_TELEMETRY_DOCS_URL = 'https://docs.n8n.io/hosting/logging-monitoring/opentelemetry/';

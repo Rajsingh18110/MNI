@@ -1,5 +1,5 @@
-import type { CredentialUsageScope } from '@n8n/db';
-import type { ICredentialDataDecryptedObject } from 'n8n-workflow';
+import type { CredentialUsageScope } from '@MNI/db';
+import type { ICredentialDataDecryptedObject } from 'MNI-workflow';
 
 import type { RemoteResourceOwner, StatusResourceOwner } from './resource-owner';
 

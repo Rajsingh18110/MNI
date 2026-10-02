@@ -22,7 +22,7 @@ Given a PR number or branch name, determine whether it is ready for human review
 
 ## Decision tree
 
-1. **Bot author** (`n8n-cat-bot` / `aikido-autofix`) → cleanup-only, no review. See "Internal automation PRs" below.
+1. **Bot author** (`MNI-cat-bot` / `aikido-autofix`) → cleanup-only, no review. See "Internal automation PRs" below.
 2. **Auto-rejection screen matches** (typo-only / unsanctioned new node / low-value) → action path **D — close** with the matching template.
 3. **All checks pass** (`readyForReview === true`) → action path **B — triage to team**.
 4. **One or more checks fail** → action path **A** (if title is minor-fix only) then **C — post comment**.
@@ -32,29 +32,29 @@ Given a PR number or branch name, determine whether it is ready for human review
 If given a branch name, find the PR number first:
 
 ```bash
-gh pr view <branch> --repo n8n-io/n8n --json number --jq .number
+gh pr view <branch> --repo MNI-io/MNI --json number --jq .number
 ```
 
 ## Step 2 — Fetch and pre-process
 
 ```bash
-gh pr view <number> --repo n8n-io/n8n \
+gh pr view <number> --repo MNI-io/MNI \
   --json number,title,body,author,headRefName,headRefOid,files,isDraft,state,labels
 ```
 
 ### Internal automation PRs (bot authors)
 
-If `author.login` is one of MNI's internal bots — `n8n-cat-bot` / `app/n8n-cat-bot` or `aikido-autofix` / `app/aikido-autofix` — skip the PR entirely and perform the cleanup actions below. Do **not** emit any JSON output.
+If `author.login` is one of MNI's internal bots — `MNI-cat-bot` / `app/MNI-cat-bot` or `aikido-autofix` / `app/aikido-autofix` — skip the PR entirely and perform the cleanup actions below. Do **not** emit any JSON output.
 
 1. Relabel the PR (both bots): swap `community` → `MNI team`:
    ```bash
-   gh pr edit <number> --repo n8n-io/n8n --remove-label community --add-label "MNI team"
+   gh pr edit <number> --repo MNI-io/MNI --remove-label community --add-label "MNI team"
    ```
 2. Update the linked Linear ticket (extract `GHC-XXXX` per step 5):
-   - **`n8n-cat-bot`** — cancel: use the available Linear MCP issue-update tool with `state: "Canceled"`, no labels.
+   - **`MNI-cat-bot`** — cancel: use the available Linear MCP issue-update tool with `state: "Canceled"`, no labels.
    - **`aikido-autofix`** — route to Dev Platform: use the available Linear MCP issue-update tool with `team: "Developer Platform"`, `state: "Triage"`, no labels.
 
-When reviewing a batch, omit the skipped PR from the output. For a single PR, emit a one-line note (e.g. `Skipped & cleaned up #30591 (n8n-cat-bot): relabeled to MNI team, cancelled GHC-8398.`).
+When reviewing a batch, omit the skipped PR from the output. For a single PR, emit a one-line note (e.g. `Skipped & cleaned up #30591 (MNI-cat-bot): relabeled to MNI team, cancelled GHC-8398.`).
 
 ### Collision guard
 
@@ -67,7 +67,7 @@ If the user explicitly asks to re-process a PR that's stuck on `triage:in-progre
 Strip any existing `triage:*` state label before adding `triage:in-progress`, so the single-state invariant holds even when re-reviewing a PR that was previously sent back with `triage:needs-info` or `triage:tests-needed`:
 
 ```bash
-gh pr edit <number> --repo n8n-io/n8n \
+gh pr edit <number> --repo MNI-io/MNI \
   --remove-label "triage:pending" \
   --remove-label "triage:needs-info" \
   --remove-label "triage:tests-needed" \
@@ -81,12 +81,12 @@ Only one of those `triage:*` labels will actually be present; `--remove-label` e
 
 ```bash
 # cubic-dev-ai PR review comments (for check E)
-gh api --paginate "repos/n8n-io/n8n/pulls/<number>/comments" \
+gh api --paginate "repos/MNI-io/MNI/pulls/<number>/comments" \
   --jq '.[] | select(.user.login == "cubic-dev-ai[bot]") | {body: .body, path: .path}'
 
-# n8n-assistant issue comments (for the Linear ticket reference)
-gh api --paginate "repos/n8n-io/n8n/issues/<number>/comments" \
-  --jq '[.[] | select(.user.login == "n8n-assistant[bot]" or .user.login == "n8n-assistant") | .body] | join("\n")'
+# MNI-assistant issue comments (for the Linear ticket reference)
+gh api --paginate "repos/MNI-io/MNI/issues/<number>/comments" \
+  --jq '[.[] | select(.user.login == "MNI-assistant[bot]" or .user.login == "MNI-assistant") | .body] | join("\n")'
 ```
 
 ## Step 2.5 — Auto-rejection screen
@@ -117,18 +117,18 @@ Run `node .github/scripts/owners.mjs` against the changed file list and map the 
 
 ## Step 5 — Extract the Linear ticket
 
-n8n-assistant leaves a comment on every community PR containing `This PR has been added to our internal tracker as "GHC-XXXX"`. Search the concatenated n8n-assistant comment body for `\bGHC-\d+\b`, take the first match.
+MNI-assistant leaves a comment on every community PR containing `This PR has been added to our internal tracker as "GHC-XXXX"`. Search the concatenated MNI-assistant comment body for `\bGHC-\d+\b`, take the first match.
 
-If no n8n-assistant comment exists (older PRs that predate the automation), `linearTicket` is `null`.
+If no MNI-assistant comment exists (older PRs that predate the automation), `linearTicket` is `null`.
 
 ## Step 5b — Find related issue tickets and detect duplicates
 
-The PR body often says `Fixes #NNNN` / `Closes #NNNN` / `Resolves #NNNN` (or links to `https://github.com/n8n-io/n8n/issues/NNNN`). Each of those issues usually has its own GHC ticket (or has already been triaged to a team). When a PR references an issue, that **issue ticket** becomes the source of truth: the action paths link the PR onto it and (when ready) cancel the PR's own review ticket. Surface the related tickets and any duplicate PRs here so the action paths can act on them.
+The PR body often says `Fixes #NNNN` / `Closes #NNNN` / `Resolves #NNNN` (or links to `https://github.com/MNI-io/MNI/issues/NNNN`). Each of those issues usually has its own GHC ticket (or has already been triaged to a team). When a PR references an issue, that **issue ticket** becomes the source of truth: the action paths link the PR onto it and (when ready) cancel the PR's own review ticket. Surface the related tickets and any duplicate PRs here so the action paths can act on them.
 
 ### Related issue tickets
 
-1. Extract every issue number from the PR body matching `\b(?:fix(?:es)?|close[sd]?|resolve[sd]?)\s+#?(\d+)\b` (case-insensitive) **or** URLs matching `github\.com/n8n-io/n8n/issues/(\d+)`. Deduplicate.
-2. For each issue number, search Linear with the available Linear MCP issue-search tool (query `github.com/n8n-io/n8n/issues/<num>`, limit 50) and filter the result to issues whose `description` contains the exact URL `https://github.com/n8n-io/n8n/issues/<num>`. The n8n-assistant bot embeds that URL in the description of every community-issue ticket it creates, so the match is reliable. Use the default limit of 50 (not a smaller value): the `query` is a substring search ordered by `updatedAt`, so `issues/<num>` also matches longer issue numbers (e.g. searching `123` matches `1234`) and the exact ticket can sit anywhere in the result set — a tight limit would silently drop it. If 50 results come back full, paginate with `cursor` until the exact match is found or results are exhausted.
+1. Extract every issue number from the PR body matching `\b(?:fix(?:es)?|close[sd]?|resolve[sd]?)\s+#?(\d+)\b` (case-insensitive) **or** URLs matching `github\.com/MNI-io/MNI/issues/(\d+)`. Deduplicate.
+2. For each issue number, search Linear with the available Linear MCP issue-search tool (query `github.com/MNI-io/MNI/issues/<num>`, limit 50) and filter the result to issues whose `description` contains the exact URL `https://github.com/MNI-io/MNI/issues/<num>`. The MNI-assistant bot embeds that URL in the description of every community-issue ticket it creates, so the match is reliable. Use the default limit of 50 (not a smaller value): the `query` is a substring search ordered by `updatedAt`, so `issues/<num>` also matches longer issue numbers (e.g. searching `123` matches `1234`) and the exact ticket can sit anywhere in the result set — a tight limit would silently drop it. If 50 results come back full, paginate with `cursor` until the exact match is found or results are exhausted.
 3. Collect the matching ticket IDs (e.g. `GHC-1234`, or wherever they've been routed since — `NODE-5678`, `CAT-3338`). Include cancelled/duplicate tickets too — the link is still useful for traceability.
 
 Emit the result as `relatedIssueTickets` in the JSON. If no `Fixes/Closes/Resolves` references exist, return `relatedIssueTickets: []`. The linking action itself lives in step 7 (see "Linking a PR to its issue ticket").
@@ -139,11 +139,11 @@ When a PR references an issue, another contributor may already have an open PR f
 
 ```bash
 # Other open PRs mentioning the same issue
-gh pr list --repo n8n-io/n8n --state open \
+gh pr list --repo MNI-io/MNI --state open \
   --search "#<num> in:body" --json number,title,author
 
 # PRs cross-referenced / linked on the GitHub issue itself
-gh api --paginate "repos/n8n-io/n8n/issues/<num>/timeline" \
+gh api --paginate "repos/MNI-io/MNI/issues/<num>/timeline" \
   --jq '[.[] | select(.event=="cross-referenced") | .source.issue
          | select(.pull_request) | {number, title}]'
 ```
@@ -188,7 +188,7 @@ Invoked from **B** and **C** whenever `relatedIssueTickets` is non-empty. The re
 
 ```text
 id    = <issue ticket>
-links = [{ url: "https://github.com/n8n-io/n8n/pull/<pr>",
+links = [{ url: "https://github.com/MNI-io/MNI/pull/<pr>",
            title: "Community PR #<pr>" }]   # append-only — existing links are preserved
 ```
 
@@ -211,7 +211,7 @@ A title issue is **minor** if it can be repaired by a deterministic transformati
 If the *only* failing check is `Title` (or `Title` + `CubicIssues`) and the issue is minor, propose the fix and ask `Apply proposed / Edit before applying / Skip`. Apply with:
 
 ```bash
-gh pr edit <number> --repo n8n-io/n8n --title "<new title>"
+gh pr edit <number> --repo MNI-io/MNI --title "<new title>"
 ```
 
 Then re-evaluate `Title` (now passes) and continue to **B** or **C**. Non-minor title problems (wrong/missing type, no colon, hyphenated scope) need contributor input — skip A and go to **C**.
@@ -229,7 +229,7 @@ Destination state: `Review` for NODES, `Triage` for every other team — keyed o
 3. Cancel the PR's own review ticket: Linear MCP issue-update with `id = linearTicket`, `state = "Canceled"` (skip if `linearTicket` is `null`).
 4. Apply the GitHub PR labels (only if the Linear updates succeeded), so reviewers still find the PR:
    ```bash
-   gh pr edit <number> --repo n8n-io/n8n \
+   gh pr edit <number> --repo MNI-io/MNI \
      --remove-label "triage:in-progress" \
      --remove-label "status:pending-assignment" \
      --add-label "team:<slug>" \
@@ -246,7 +246,7 @@ Destination state: `Review` for NODES, `Triage` for every other team — keyed o
 #      state  = <destination>
 #      labels = <computed labels>
 # 2. GitHub (only if Linear succeeded) — see reference/label-flow.md
-gh pr edit <number> --repo n8n-io/n8n \
+gh pr edit <number> --repo MNI-io/MNI \
   --remove-label "triage:in-progress" \
   --remove-label "status:pending-assignment" \
   --add-label "team:<slug>" \
@@ -254,7 +254,7 @@ gh pr edit <number> --repo n8n-io/n8n \
   --add-label "triage:complete"
 ```
 
-The PR's own review ticket is **not** canceled in the classic path — it remains the tracking ticket. If `linearTicket` is `null`, ask whether to create a new Linear ticket before triaging (older PRs predating n8n-assistant). Otherwise skip B and ask the user.
+The PR's own review ticket is **not** canceled in the classic path — it remains the tracking ticket. If `linearTicket` is `null`, ask whether to create a new Linear ticket before triaging (older PRs predating MNI-assistant). Otherwise skip B and ask the user.
 
 ### C — Post contributor comment (`readyForReview === false`, no auto-reject)
 
@@ -265,7 +265,7 @@ If `relatedIssueTickets` is non-empty, run "Linking a PR to its issue ticket" (n
 Show `messageForUser` and ask `Post as-is / Edit before posting / Skip`. On post:
 
 ```bash
-gh pr comment <number> --repo n8n-io/n8n --body "<final message>"
+gh pr comment <number> --repo MNI-io/MNI --body "<final message>"
 ```
 
 Then apply the right terminal triage label — exactly one, priority `triage:tests-needed` > `triage:needs-info` (a missing linked issue/forum topic or an oversized PR maps to `triage:needs-info`). See `reference/label-flow.md`. On `Skip`, leave the PR on `triage:in-progress` so the next loop picks it up.
@@ -300,9 +300,9 @@ Ask `Close + comment / Edit before closing / Skip`. Templates below; pick one an
 Close action (same for every reason):
 
 ```bash
-gh pr comment <number> --repo n8n-io/n8n --body "<final message>"
-gh pr close <number> --repo n8n-io/n8n
-gh pr edit <number> --repo n8n-io/n8n \
+gh pr comment <number> --repo MNI-io/MNI --body "<final message>"
+gh pr close <number> --repo MNI-io/MNI
+gh pr edit <number> --repo MNI-io/MNI \
   --remove-label "triage:in-progress" \
   --remove-label "status:pending-assignment" \
   --add-label "status:internal-closed" \

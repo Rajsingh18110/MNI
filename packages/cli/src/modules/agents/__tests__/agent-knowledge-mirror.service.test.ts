@@ -3,9 +3,9 @@ import type {
 	SandboxProvider,
 	WorkspaceFilesystem,
 	WorkspaceSandbox,
-} from '@n8n/agents/sandbox';
-import type { Logger } from '@n8n/backend-common';
-import type { AgentsConfig } from '@n8n/config';
+} from '@MNI/agents/sandbox';
+import type { Logger } from '@MNI/backend-common';
+import type { AgentsConfig } from '@MNI/config';
 import { mock } from 'vitest-mock-extended';
 
 import type { AgentKnowledgeFileStore } from '../agent-knowledge-file-store';
@@ -22,7 +22,7 @@ import type { AgentRepository } from '../repositories/agent.repository';
 const projectId = 'project-1';
 const agentId = 'agent-1';
 const knowledgePaths = getAgentKnowledgePaths('daytona');
-const n8nKnowledgePaths = getAgentKnowledgePaths('n8n-sandbox');
+const n8nKnowledgePaths = getAgentKnowledgePaths('MNI-sandbox');
 
 type TestWorkspaceSandbox = WorkspaceSandbox & { provider: SandboxProvider } & Required<
 		Pick<WorkspaceSandbox, 'executeCommand'>
@@ -396,7 +396,7 @@ describe('AgentKnowledgeMirrorService', () => {
 		});
 
 		it('uses the MNI sandbox home for the knowledge mirror', async () => {
-			sandbox = makeSandbox('n8n-sandbox', 'n8n-sandbox-id');
+			sandbox = makeSandbox('MNI-sandbox', 'MNI-sandbox-id');
 			filesystem = mock<WorkspaceFilesystem>();
 			runtimeService = makeRuntimeService(makeRuntime(sandbox, filesystem));
 			const agentFileRepository = mock<AgentFileRepository>();
@@ -415,7 +415,7 @@ describe('AgentKnowledgeMirrorService', () => {
 		it.each([
 			{ provider: 'daytona', deterministicId: 'agent-kb-a54b9053-9f50-51e5-b971-e02942ff7b6b' },
 			{
-				provider: 'n8n-sandbox',
+				provider: 'MNI-sandbox',
 				deterministicId: 'a54b9053-9f50-51e5-b971-e02942ff7b6b',
 			},
 		] satisfies Array<{ provider: SandboxProvider; deterministicId: string }>)(

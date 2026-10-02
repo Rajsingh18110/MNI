@@ -1,5 +1,5 @@
-import type { InstanceAiAgentPreviewHandoffContext } from '@n8n/api-types';
-import { UserError } from 'n8n-workflow';
+import type { InstanceAiAgentPreviewHandoffContext } from '@MNI/api-types';
+import { UserError } from 'MNI-workflow';
 
 import {
 	AGENT_PREVIEW_CONTEXT_CLOSE_TAG,

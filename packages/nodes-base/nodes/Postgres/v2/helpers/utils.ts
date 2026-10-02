@@ -5,8 +5,8 @@ import type {
 	INodeExecutionData,
 	INodePropertyOptions,
 	NodeParameterValueType,
-} from 'n8n-workflow';
-import { NodeOperationError, deepCopy, jsonParse } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeOperationError, deepCopy, jsonParse } from 'MNI-workflow';
 
 import type {
 	ColumnInfo,

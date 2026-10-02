@@ -4,14 +4,14 @@ import {
 	createWorkflow,
 	testDb,
 	testModules,
-} from '@n8n/backend-test-utils';
-import type { Project, WorkflowEntity, IWorkflowDb, SharedWorkflowRepository } from '@n8n/db';
-import type { WorkflowExecuteAfterContext } from '@n8n/decorators';
-import { Container } from '@n8n/di';
-import { In } from '@n8n/typeorm';
-import { createDeferredPromise } from '@n8n/utils/promise/deferred-promise';
+} from '@MNI/backend-test-utils';
+import type { Project, WorkflowEntity, IWorkflowDb, SharedWorkflowRepository } from '@MNI/db';
+import type { WorkflowExecuteAfterContext } from '@MNI/decorators';
+import { Container } from '@MNI/di';
+import { In } from '@MNI/typeorm';
+import { createDeferredPromise } from '@MNI/utils/promise/deferred-promise';
 import { DateTime } from 'luxon';
-import { type ExecutionStatus, type IRun, type WorkflowExecuteMode } from 'n8n-workflow';
+import { type ExecutionStatus, type IRun, type WorkflowExecuteMode } from 'MNI-workflow';
 import assert from 'node:assert';
 import { mock } from 'vitest-mock-extended';
 

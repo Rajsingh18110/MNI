@@ -1,4 +1,4 @@
-import type { TestCaseExecutionRepository, WorkflowHistoryRepository } from '@n8n/db';
+import type { TestCaseExecutionRepository, WorkflowHistoryRepository } from '@MNI/db';
 import type { Mocked } from 'vitest';
 import { mock } from 'vitest-mock-extended';
 
@@ -29,10 +29,10 @@ describe('InsightsContextBuilder', () => {
 		}) => {
 			const nodes =
 				options.where.versionId === 'v-b'
-					? [node('n1', 'Start', 'n8n-nodes-base.start')]
+					? [node('n1', 'Start', 'MNI-nodes-base.start')]
 					: [
-							node('n1', 'Start', 'n8n-nodes-base.start'),
-							node('n2', 'Extra', 'n8n-nodes-base.set'),
+							node('n1', 'Start', 'MNI-nodes-base.start'),
+							node('n2', 'Extra', 'MNI-nodes-base.set'),
 						];
 			return { nodes };
 		}) as unknown as WorkflowHistoryRepository['findOne']);
@@ -97,7 +97,7 @@ describe('InsightsContextBuilder', () => {
 		const versionA = context.versions.find((v) => v.label === 'A')!;
 		expect(versionA.isBase).toBe(false);
 		// A adds a Set node vs base B.
-		expect(versionA.workflowDiff?.added).toContain('Extra (n8n-nodes-base.set)');
+		expect(versionA.workflowDiff?.added).toContain('Extra (MNI-nodes-base.set)');
 		expect(versionA.regressedCases).toHaveLength(1);
 		expect(versionA.regressedCases[0]).toMatchObject({
 			caseNumber: 1,
@@ -153,7 +153,7 @@ describe('InsightsContextBuilder', () => {
 		const agent = (systemMessage: string) => ({
 			id: 'agent-1',
 			name: 'Facts Q&A Agent',
-			type: '@n8n/n8n-nodes-langchain.agent',
+			type: '@MNI/MNI-nodes-langchain.agent',
 			parameters: { options: { systemMessage } },
 		});
 		// Same node id on both versions, only the system prompt differs → Modified.
@@ -191,7 +191,7 @@ describe('InsightsContextBuilder', () => {
 
 		const modified = context.versions.find((v) => v.label === 'A')!.workflowDiff?.modified ?? [];
 		expect(modified).toHaveLength(1);
-		expect(modified[0].node).toBe('Facts Q&A Agent (@n8n/n8n-nodes-langchain.agent)');
+		expect(modified[0].node).toBe('Facts Q&A Agent (@MNI/MNI-nodes-langchain.agent)');
 		expect(modified[0].promptChanges).toHaveLength(1);
 		expect(modified[0].promptChanges[0].field).toBe('options.systemMessage');
 		expect(modified[0].promptChanges[0].before).toContain('accurately');

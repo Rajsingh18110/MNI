@@ -1,9 +1,9 @@
 <script lang="ts" setup>
 import { computed, onMounted } from 'vue';
-import { N8nButton } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
-import { useRBACStore } from '@n8n/stores/rbac.store';
-import { useRolesStore } from '@n8n/stores/roles.store';
+import { N8nButton } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
+import { useRBACStore } from '@MNI/stores/rbac.store';
+import { useRolesStore } from '@MNI/stores/roles.store';
 import { useProjectsStore } from '@/features/collaboration/projects/projects.store';
 import { useRoleMappingRules } from '../composables/useRoleMappingRules';
 import RuleSectionHeader from './RuleSectionHeader.vue';

@@ -5,8 +5,8 @@ import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { Readable } from 'node:stream';
 
-import { MAX_AGENT_KNOWLEDGE_BASE_SIZE_BYTES } from '@n8n/api-types';
-import type { Logger } from '@n8n/backend-common';
+import { MAX_AGENT_KNOWLEDGE_BASE_SIZE_BYTES } from '@MNI/api-types';
+import type { Logger } from '@MNI/backend-common';
 
 import type { AgentKnowledgeFileStore } from '../agent-knowledge-file-store';
 import type { AgentKnowledgeMirrorService } from '../agent-knowledge-mirror.service';
@@ -20,7 +20,7 @@ vi.unmock('node:fs');
 vi.unmock('node:fs/promises');
 
 const loadMock = vi.fn();
-vi.mock('@n8n/ai-utilities', () => ({
+vi.mock('@MNI/ai-utilities', () => ({
 	N8nPdfLoader: vi.fn().mockImplementation(function () {
 		return {
 			load: loadMock,

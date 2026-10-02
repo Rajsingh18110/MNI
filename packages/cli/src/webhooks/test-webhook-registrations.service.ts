@@ -1,12 +1,12 @@
-import { isObjectLiteral } from '@n8n/backend-common';
-import { Service } from '@n8n/di';
-import { InstanceSettings } from 'n8n-core';
+import { isObjectLiteral } from '@MNI/backend-common';
+import { Service } from '@MNI/di';
+import { InstanceSettings } from 'MNI-core';
 import {
 	type IWebhookData,
 	type IWorkflowBase,
 	type IDestinationNode,
 	UserError,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import {
 	TEST_WEBHOOK_MAX_TIMEOUT,

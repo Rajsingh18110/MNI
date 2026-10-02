@@ -1,17 +1,17 @@
 <script setup lang="ts">
 import { ref, computed, reactive, watch } from 'vue';
-import type { UserAction } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+import type { UserAction } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 import type {
 	WorkflowHistory,
 	WorkflowVersionId,
 	WorkflowHistoryRequestParams,
-} from '@n8n/rest-api-client/api/workflowHistory';
+} from '@MNI/rest-api-client/api/workflowHistory';
 import WorkflowHistoryListItem from './WorkflowHistoryListItem.vue';
 import WorkflowHistoryUpgradeFooter from './WorkflowHistoryUpgradeFooter.vue';
-import type { IUser } from 'n8n-workflow';
+import type { IUser } from 'MNI-workflow';
 import { useIntersectionObserver } from '@/app/composables/useIntersectionObserver';
-import { N8nLoading, N8nIcon, N8nText } from '@n8n/design-system';
+import { N8nLoading, N8nIcon, N8nText } from '@MNI/design-system';
 import type { WorkflowHistoryAction } from '@/features/workflows/workflowHistory/types';
 import {
 	computeTimelineEntries,

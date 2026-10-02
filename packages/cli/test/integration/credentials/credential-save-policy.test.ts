@@ -1,14 +1,14 @@
-import { createTeamProject, randomCredentialPayload, testDb } from '@n8n/backend-test-utils';
-import type { User } from '@n8n/db';
-import { CredentialsRepository, SharedCredentialsRepository } from '@n8n/db';
+import { createTeamProject, randomCredentialPayload, testDb } from '@MNI/backend-test-utils';
+import type { User } from '@MNI/db';
+import { CredentialsRepository, SharedCredentialsRepository } from '@MNI/db';
 import type {
 	CredentialSaveContext,
 	PolicyCheckResult,
 	PolicyViolation,
 	RegisteredPolicyCheck,
-} from '@n8n/decorators';
-import { PolicyCheck, PolicyCheckMetadata } from '@n8n/decorators';
-import { Container } from '@n8n/di';
+} from '@MNI/decorators';
+import { PolicyCheck, PolicyCheckMetadata } from '@MNI/decorators';
+import { Container } from '@MNI/di';
 
 import { saveCredential } from '../shared/db/credentials';
 import { createOwnerWithApiKey } from '../shared/db/users';

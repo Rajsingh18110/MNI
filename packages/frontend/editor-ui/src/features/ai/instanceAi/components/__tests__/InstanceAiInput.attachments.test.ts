@@ -11,8 +11,8 @@ import { useInstanceAiStore } from '../../instanceAi.store';
 import { useWorkflowsListStore } from '@/app/stores/workflowsList.store';
 import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';
 import type { AssistantMentionSelection } from '@/features/ai/assistant-at-mentions/assistantAtMentions.types';
-import { TELEMETRY_EVENT } from '@n8n/telemetry';
-import type { INodeTypeDescription } from 'n8n-workflow';
+import { TELEMETRY_EVENT } from '@MNI/telemetry';
+import type { INodeTypeDescription } from 'MNI-workflow';
 
 const telemetryTrack = vi.hoisted(() => vi.fn());
 
@@ -22,7 +22,7 @@ vi.mock('vue-router', async (importOriginal) => ({
 	useRouter: () => ({ push: vi.fn() }),
 }));
 
-vi.mock('@n8n/composables/useTelemetry', () => ({
+vi.mock('@MNI/composables/useTelemetry', () => ({
 	useTelemetry: vi.fn(() => ({ track: telemetryTrack })),
 }));
 
@@ -362,7 +362,7 @@ describe('InstanceAiInput — mention attachments', () => {
 	it('tracks an empty search with the redacted query, its node type match and the tab count', async () => {
 		useNodeTypesStore().setNodeTypes([
 			// A plain object: a mock proxy answers `hidden` with a truthy function.
-			{ name: 'n8n-nodes-base.slack', displayName: 'Slack', version: 1 } as INodeTypeDescription,
+			{ name: 'MNI-nodes-base.slack', displayName: 'Slack', version: 1 } as INodeTypeDescription,
 		]);
 		const { getByRole, getByTestId } = renderMentionsInput();
 		await userEvent.type(getByRole('textbox'), '@sla');
@@ -376,7 +376,7 @@ describe('InstanceAiInput — mention attachments', () => {
 				source: 'typed',
 				query: 'Slack',
 				query_length: 5,
-				matched_node_type: 'n8n-nodes-base.slack',
+				matched_node_type: 'MNI-nodes-base.slack',
 				artifact_count: 1,
 			},
 		);

@@ -1,5 +1,5 @@
-import { isStringArray } from '@n8n/db';
-import { jsonParse, UnexpectedError } from 'n8n-workflow';
+import { isStringArray } from '@MNI/db';
+import { jsonParse, UnexpectedError } from 'MNI-workflow';
 
 export class BaseSelect {
 	static selectableFields: Set<string>;

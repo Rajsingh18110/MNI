@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/unbound-method */
-import type { Logger } from '@n8n/backend-common';
-import { ExpressionEngineConfig, type GlobalConfig } from '@n8n/config';
-import { EXPRESSION_METRICS } from '@n8n/expression-runtime';
+import type { Logger } from '@MNI/backend-common';
+import { ExpressionEngineConfig, type GlobalConfig } from '@MNI/config';
+import { EXPRESSION_METRICS } from '@MNI/expression-runtime';
 import type { Tracer } from '@opentelemetry/api';
 import promClient from 'prom-client';
 import { mock } from 'vitest-mock-extended';
@@ -34,7 +34,7 @@ function buildLogger(): Logger {
 	return logger;
 }
 
-function buildGlobalConfig(prefix = 'n8n_'): GlobalConfig {
+function buildGlobalConfig(prefix = 'MNI_'): GlobalConfig {
 	return { endpoints: { metrics: { prefix } } } as GlobalConfig;
 }
 
@@ -74,7 +74,7 @@ describe('ExpressionObservabilityProvider', () => {
 			provider.metrics.counter(EXPRESSION_METRICS.poolAcquired.name, 1);
 
 			const output = await promClient.register.metrics();
-			expect(output).not.toContain('n8n_expression_');
+			expect(output).not.toContain('MNI_expression_');
 		});
 	});
 
@@ -88,10 +88,10 @@ describe('ExpressionObservabilityProvider', () => {
 			);
 			provider.metrics.counter(EXPRESSION_METRICS.poolAcquired.name, 2);
 
-			const metric = promClient.register.getSingleMetric('n8n_expression_pool_acquired_total');
+			const metric = promClient.register.getSingleMetric('MNI_expression_pool_acquired_total');
 			expect(metric).toBeDefined();
 			const output = await promClient.register.metrics();
-			expect(output).toContain('n8n_expression_pool_acquired_total 2');
+			expect(output).toContain('MNI_expression_pool_acquired_total 2');
 		});
 
 		it('registers a prom gauge with the cleaned name', async () => {
@@ -104,7 +104,7 @@ describe('ExpressionObservabilityProvider', () => {
 			provider.metrics.gauge(EXPRESSION_METRICS.codeCacheSize.name, 42);
 
 			const output = await promClient.register.metrics();
-			expect(output).toContain('n8n_expression_code_cache_size 42');
+			expect(output).toContain('MNI_expression_code_cache_size 42');
 		});
 
 		it('registers a prom histogram with bucketed observations', async () => {
@@ -120,8 +120,8 @@ describe('ExpressionObservabilityProvider', () => {
 			});
 
 			const output = await promClient.register.metrics();
-			expect(output).toContain('n8n_expression_evaluation_duration_seconds_bucket');
-			expect(output).toContain('n8n_expression_evaluation_duration_seconds_count');
+			expect(output).toContain('MNI_expression_evaluation_duration_seconds_bucket');
+			expect(output).toContain('MNI_expression_evaluation_duration_seconds_count');
 		});
 	});
 
@@ -146,9 +146,9 @@ describe('ExpressionObservabilityProvider', () => {
 			expect(scopedLogger.warn).not.toHaveBeenCalled();
 
 			const output = await promClient.register.metrics();
-			expect(output).toContain('n8n_expression_pool_acquired_total 3');
-			expect(output).toContain('n8n_expression_code_cache_size 7');
-			expect(output).toContain('n8n_expression_evaluation_duration_seconds_count');
+			expect(output).toContain('MNI_expression_pool_acquired_total 3');
+			expect(output).toContain('MNI_expression_code_cache_size 7');
+			expect(output).toContain('MNI_expression_evaluation_duration_seconds_count');
 		});
 
 		it('still warns for genuinely unknown metric names after a clear', () => {
@@ -279,7 +279,7 @@ describe('ExpressionObservabilityProvider', () => {
 			const output = await promClient.register.metrics();
 			const countLines = output
 				.split('\n')
-				.filter((line) => line.startsWith('n8n_expression_evaluation_duration_seconds_count{'));
+				.filter((line) => line.startsWith('MNI_expression_evaluation_duration_seconds_count{'));
 			expect(countLines.length).toBeGreaterThan(0);
 			for (const line of countLines) {
 				expect(line).toContain('status=');

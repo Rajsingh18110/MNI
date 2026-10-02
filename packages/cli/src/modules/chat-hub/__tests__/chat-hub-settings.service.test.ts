@@ -1,6 +1,6 @@
-import type { ChatProviderSettingsDto } from '@n8n/api-types';
-import type { Settings, SettingsRepository } from '@n8n/db';
-import type { EntityManager } from '@n8n/typeorm';
+import type { ChatProviderSettingsDto } from '@MNI/api-types';
+import type { Settings, SettingsRepository } from '@MNI/db';
+import type { EntityManager } from '@MNI/typeorm';
 import { mock } from 'vitest-mock-extended';
 
 import { BadRequestError } from '@/errors/response-errors/bad-request.error';

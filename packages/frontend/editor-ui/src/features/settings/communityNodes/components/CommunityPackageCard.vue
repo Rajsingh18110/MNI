@@ -1,12 +1,12 @@
 <script lang="ts" setup>
 import { useUIStore } from '@/app/stores/ui.store';
-import type { IUser, PublicInstalledPackage } from 'n8n-workflow';
+import type { IUser, PublicInstalledPackage } from 'MNI-workflow';
 import { COMMUNITY_PACKAGE_MANAGE_ACTIONS } from '../communityNodes.constants';
 import { NPM_PACKAGE_DOCS_BASE_URL } from '@/app/constants';
-import { useI18n } from '@n8n/i18n';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
-import { useSettingsStore } from '@n8n/stores/settings.store';
-import type { UserAction } from '@n8n/design-system';
+import { useI18n } from '@MNI/i18n';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
+import { useSettingsStore } from '@MNI/stores/settings.store';
+import type { UserAction } from '@MNI/design-system';
 import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';
 import { computed, ref, watch } from 'vue';
 import {
@@ -21,7 +21,7 @@ import {
 	N8nLoading,
 	N8nText,
 	N8nTooltip,
-} from '@n8n/design-system';
+} from '@MNI/design-system';
 interface Props {
 	communityPackage?: PublicInstalledPackage | null;
 	loading?: boolean;

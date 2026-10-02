@@ -70,11 +70,11 @@ CREATE TABLE activity_event (
 const NODES = JSON.stringify([
 	{
 		name: 'Schedule Trigger',
-		type: 'n8n-nodes-base.scheduleTrigger',
+		type: 'MNI-nodes-base.scheduleTrigger',
 		typeVersion: 1.4,
 		parameters: {},
 	},
-	{ name: 'Notify', type: 'n8n-nodes-base.slack', typeVersion: 2.7, parameters: {} },
+	{ name: 'Notify', type: 'MNI-nodes-base.slack', typeVersion: 2.7, parameters: {} },
 ]);
 
 /**

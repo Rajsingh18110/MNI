@@ -1,4 +1,4 @@
-import type { WorkflowReviewActivityEntry } from '@n8n/api-types';
+import type { WorkflowReviewActivityEntry } from '@MNI/api-types';
 import { createTestingPinia } from '@pinia/testing';
 import { createComponentRenderer } from '@/__tests__/render';
 import { mockedStore } from '@/__tests__/utils';
@@ -109,7 +109,7 @@ describe('WorkflowReviewActivityFeed', () => {
 
 		const { container, queryByTestId } = renderComponent();
 
-		expect(container.querySelector('.n8n-loading')).toBeInTheDocument();
+		expect(container.querySelector('.MNI-loading')).toBeInTheDocument();
 		expect(queryByTestId('workflow-review-activity-empty')).not.toBeInTheDocument();
 	});
 
@@ -152,7 +152,7 @@ describe('WorkflowReviewActivityFeed', () => {
 		const { container } = renderComponent();
 		await nextTick();
 
-		expect(container.querySelector('.n8n-loading')).toBeInTheDocument();
+		expect(container.querySelector('.MNI-loading')).toBeInTheDocument();
 	});
 
 	it('keeps a loaded feed and offers a retry when load-more failed', async () => {

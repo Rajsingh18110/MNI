@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { ChatSymbol } from '@n8n/chat/constants';
-import type { Chat } from '@n8n/chat/types';
-import { deepCopy, type IRunExecutionData } from 'n8n-workflow';
+import { ChatSymbol } from '@MNI/chat/constants';
+import type { Chat } from '@MNI/chat/types';
+import { deepCopy, type IRunExecutionData } from 'MNI-workflow';
 import {
 	computed,
 	nextTick,

@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/require-await, @typescript-eslint/unbound-method -- async mock stubs, unbound-method references and short `cb` names are acceptable test idioms */
 
-import { DEFAULT_AGENT_PERSONALISATION } from '@n8n/api-types';
-import { mockLogger } from '@n8n/backend-test-utils';
-import type { ProjectRelationRepository, User } from '@n8n/db';
-import { Container } from '@n8n/di';
-import { QueryFailedError } from '@n8n/typeorm';
+import { DEFAULT_AGENT_PERSONALISATION } from '@MNI/api-types';
+import { mockLogger } from '@MNI/backend-test-utils';
+import type { ProjectRelationRepository, User } from '@MNI/db';
+import { Container } from '@MNI/di';
+import { QueryFailedError } from '@MNI/typeorm';
 import { mock } from 'vitest-mock-extended';
 
 import { ConflictError } from '@/errors/response-errors/conflict.error';
@@ -641,7 +641,7 @@ describe('AgentsService', () => {
 							{
 								type: 'node',
 								name: 'HTTP Request',
-								node: { nodeType: 'n8n-nodes-base.httpRequestTool', nodeTypeVersion: 1 },
+								node: { nodeType: 'MNI-nodes-base.httpRequestTool', nodeTypeVersion: 1 },
 							},
 						],
 						skills: [{ type: 'skill', id: 's1' }],
@@ -680,7 +680,7 @@ describe('AgentsService', () => {
 					{
 						type: 'node',
 						name: 'HTTP Request',
-						nodeType: 'n8n-nodes-base.httpRequestTool',
+						nodeType: 'MNI-nodes-base.httpRequestTool',
 						nodeTypeVersion: 1,
 					},
 				],

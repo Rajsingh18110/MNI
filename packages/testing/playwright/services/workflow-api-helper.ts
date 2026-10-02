@@ -1,7 +1,7 @@
-import type { WorkflowPublicationStatus } from '@n8n/api-types';
+import type { WorkflowPublicationStatus } from '@MNI/api-types';
 import type { APIResponse } from '@playwright/test';
 import { readFileSync } from 'fs';
-import { isTerminalExecutionStatus, type IWorkflowBase, type ExecutionSummary } from 'n8n-workflow';
+import { isTerminalExecutionStatus, type IWorkflowBase, type ExecutionSummary } from 'MNI-workflow';
 import { nanoid } from 'nanoid';
 
 // Type for execution responses from the MNI API
@@ -370,7 +370,7 @@ export class WorkflowApiHelper {
 
 		if (workflow.nodes) {
 			for (const node of workflow.nodes) {
-				if (node.type === 'n8n-nodes-base.webhook') {
+				if (node.type === 'MNI-nodes-base.webhook') {
 					webhookId = nanoid(idLength);
 					webhookPath = `${webhookPrefix}-${webhookId}`;
 					node.webhookId = webhookId;
@@ -382,7 +382,7 @@ export class WorkflowApiHelper {
 				// Handle MCP Trigger nodes - make their paths unique
 				// Note: webhookId is required for isFullPath: true webhooks to work correctly.
 				// Without it, the webhook path becomes workflowId/nodeName/path instead of just path.
-				if (node.type === '@n8n/n8n-nodes-langchain.mcpTrigger') {
+				if (node.type === '@MNI/MNI-nodes-langchain.mcpTrigger') {
 					const mcpId = nanoid(idLength);
 					const currentPath = (node.parameters.path as string) ?? 'mcp';
 					node.parameters.path = `${currentPath}-${mcpId}`;

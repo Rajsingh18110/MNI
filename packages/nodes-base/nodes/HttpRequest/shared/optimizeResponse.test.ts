@@ -1,4 +1,4 @@
-import { type IExecuteFunctions, NodeOperationError } from 'n8n-workflow';
+import { type IExecuteFunctions, NodeOperationError } from 'MNI-workflow';
 
 import { configureResponseOptimizer } from './optimizeResponse';
 import type { Mocked } from 'vitest';

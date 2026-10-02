@@ -45,7 +45,7 @@ vi.mock('@/features/collaboration/projects/projects.store', () => ({
 	}),
 }));
 
-vi.mock('@n8n/composables/useTelemetry', () => ({
+vi.mock('@MNI/composables/useTelemetry', () => ({
 	useTelemetry: () => ({ track: mocks.telemetryTrack }),
 }));
 

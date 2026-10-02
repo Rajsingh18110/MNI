@@ -1,4 +1,4 @@
-import type { WorkflowReviewRequest, WorkflowReviewRequestRepository } from '@n8n/db';
+import type { WorkflowReviewRequest, WorkflowReviewRequestRepository } from '@MNI/db';
 import { mock } from 'vitest-mock-extended';
 
 import type { WorkflowPublishBlockedError } from '@/errors/response-errors/workflow-publish-blocked.error';

@@ -4,8 +4,8 @@ import type {
 	IPollFunctions,
 	JsonObject,
 	NodeParameterValueType,
-} from 'n8n-workflow';
-import { NodeApiError, NodeOperationError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeApiError, NodeOperationError } from 'MNI-workflow';
 import { mock, mockDeep } from 'vitest-mock-extended';
 
 import type { DatabricksJobRun } from '../actions/interfaces';
@@ -51,7 +51,7 @@ const jobParameter = (name: string, values: Pick<JobParameter, 'value' | 'defaul
 const listedRun = (overrides: RunOverrides = {}): DatabricksJobRun => ({
 	job_id: JOB_ID,
 	run_id: RUN_ID,
-	run_name: 'n8n-spike-webhook-test',
+	run_name: 'MNI-spike-webhook-test',
 	run_page_url: RUN_URL,
 	trigger: 'ONE_TIME',
 	creator_user_name: 'service-principal@example.com',
@@ -105,7 +105,7 @@ const mixedPage = [
 
 const simplifiedRun = {
 	id: RUN_ID,
-	name: 'n8n-spike-webhook-test',
+	name: 'MNI-spike-webhook-test',
 	url: RUN_URL,
 	trigger: 'ONE_TIME',
 	creator: 'service-principal@example.com',

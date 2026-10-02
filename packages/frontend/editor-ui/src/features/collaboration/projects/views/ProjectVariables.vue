@@ -1,12 +1,12 @@
 <script lang="ts" setup>
 import { useDocumentTitle } from '@/app/composables/useDocumentTitle';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import { useMessage } from '@/app/composables/useMessage';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
-import { useToast } from '@n8n/composables/useToast';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
+import { useToast } from '@MNI/composables/useToast';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { useUIStore } from '@/app/stores/ui.store';
-import { useUsersStore } from '@n8n/stores/users.store';
+import { useUsersStore } from '@MNI/stores/users.store';
 import { computed, onMounted, ref, useTemplateRef } from 'vue';
 import { useRoute, useRouter, type LocationQueryRaw } from 'vue-router';
 
@@ -16,7 +16,7 @@ import type { BaseFilters, Resource, VariableResource, DatatableColumn } from '@
 import { usePageRedirectionHelper } from '@/app/composables/usePageRedirectionHelper';
 import { EnterpriseEditionFeature, MODAL_CONFIRM } from '@/app/constants';
 import { VARIABLE_MODAL_KEY } from '@/features/settings/environments.ee/environments.constants';
-import { getResourcePermissions } from '@n8n/permissions';
+import { getResourcePermissions } from '@MNI/permissions';
 import {
 	N8nEmptyState,
 	N8nBadge,
@@ -29,11 +29,11 @@ import {
 	N8nSelect,
 	N8nText,
 	N8nTooltip,
-} from '@n8n/design-system';
+} from '@MNI/design-system';
 import { useAsyncState } from '@vueuse/core';
 import pickBy from 'lodash/pickBy';
 import type { ComponentExposed } from 'vue-component-type-helpers';
-import { InsightsSummary, useInsightsStore } from '@n8n/frontend-module-insights';
+import { InsightsSummary, useInsightsStore } from '@MNI/frontend-module-insights';
 import { useEnvironmentsStore } from '@/features/settings/environments.ee/environments.store';
 import type { EnvironmentVariable } from '@/features/settings/environments.ee/environments.types';
 import VariablesUsageBadge from '@/features/settings/environments.ee/components/VariablesUsageBadge.vue';
@@ -42,7 +42,7 @@ import { useProjectPages } from '@/features/collaboration/projects/composables/u
 import { useProjectsStore } from '@/features/collaboration/projects/projects.store';
 import ProjectHeader from '@/features/collaboration/projects/components/ProjectHeader.vue';
 import { isVariableResource } from '@/app/utils/typeGuards';
-import type { IconOrEmoji } from '@n8n/design-system';
+import type { IconOrEmoji } from '@MNI/design-system';
 
 const settingsStore = useSettingsStore();
 const environmentsStore = useEnvironmentsStore();
@@ -403,7 +403,7 @@ onMounted(() => {
 				</td>
 				<td>
 					<template v-if="data.value">
-						<span v-n8n-truncate:20="data.value" />
+						<span v-MNI-truncate:20="data.value" />
 					</template>
 					<N8nBadge v-else variant="warning"> Value missing </N8nBadge>
 				</td>

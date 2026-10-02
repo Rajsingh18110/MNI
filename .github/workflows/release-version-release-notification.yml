@@ -1,5 +1,5 @@
 name: 'Release: Send version release notification'
-run-name: 'Send version release notification for n8n@${{ inputs.version }}'
+run-name: 'Send version release notification for MNI@${{ inputs.version }}'
 
 on:
   workflow_dispatch:
@@ -42,7 +42,7 @@ jobs:
 
       - name: Send release notification
         env:
-          N8N_VERSION_RELEASE_NOTIFICATION_DATA: ${{ secrets.N8N_VERSION_RELEASE_NOTIFICATION_DATA }}
+          MNI_VERSION_RELEASE_NOTIFICATION_DATA: ${{ secrets.MNI_VERSION_RELEASE_NOTIFICATION_DATA }}
           PAYLOAD: |
             {
               "previous_version": "${{ inputs.previous-version }}",

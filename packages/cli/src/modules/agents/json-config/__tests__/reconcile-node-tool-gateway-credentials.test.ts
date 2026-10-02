@@ -1,5 +1,5 @@
-import type { AgentJsonToolConfig, AiGatewayConfigDto } from '@n8n/api-types';
-import type { INodeType, INodeTypeDescription } from 'n8n-workflow';
+import type { AgentJsonToolConfig, AiGatewayConfigDto } from '@MNI/api-types';
+import type { INodeType, INodeTypeDescription } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import type { NodeTypes } from '@/node-types';
@@ -10,13 +10,13 @@ import {
 } from '../reconcile-node-tool-gateway-credentials';
 
 const GATEWAY_CONFIG = {
-	nodes: ['n8n-nodes-base.slack'],
+	nodes: ['MNI-nodes-base.slack'],
 	credentialTypes: ['slackApi'],
 	providerConfig: {},
 } as unknown as AiGatewayConfigDto;
 
 const SERVICE_GATEWAY_CONFIG = {
-	nodes: ['n8n-nodes-base.service'],
+	nodes: ['MNI-nodes-base.service'],
 	credentialTypes: ['serviceApiKey'],
 	providerConfig: {},
 } as unknown as AiGatewayConfigDto;
@@ -48,7 +48,7 @@ function nodeTypesWithCredentials(credentialNames: string[]): NodeTypes {
 
 const multiAuthNodeDescription = {
 	displayName: 'Service',
-	name: 'n8n-nodes-base.service',
+	name: 'MNI-nodes-base.service',
 	group: [],
 	version: 1,
 	description: '',
@@ -86,7 +86,7 @@ function nodeTool(
 
 describe('reconcileNodeToolGatewayCredentials', () => {
 	it('auto-assigns the managed credential to a covered, empty, required slot', () => {
-		const tools = [nodeTool('n8n-nodes-base.slackTool')];
+		const tools = [nodeTool('MNI-nodes-base.slackTool')];
 		reconcileNodeToolGatewayCredentials(
 			tools,
 			nodeTypesWithCredentials(['slackApi']),
@@ -98,7 +98,7 @@ describe('reconcileNodeToolGatewayCredentials', () => {
 
 	it('leaves a real credential untouched (BYOK wins)', () => {
 		const tools = [
-			nodeTool('n8n-nodes-base.slackTool', { slackApi: { id: 'c1', name: 'My Slack' } }),
+			nodeTool('MNI-nodes-base.slackTool', { slackApi: { id: 'c1', name: 'My Slack' } }),
 		];
 		reconcileNodeToolGatewayCredentials(
 			tools,
@@ -113,7 +113,7 @@ describe('reconcileNodeToolGatewayCredentials', () => {
 		// sanitizeUnknownAgentCredentials clears an inaccessible id to '' — the
 		// slot is effectively empty (validation flags it missing) and must pick
 		// up the managed credential like any other empty slot.
-		const tools = [nodeTool('n8n-nodes-base.slackTool', { slackApi: { id: '', name: 'Old' } })];
+		const tools = [nodeTool('MNI-nodes-base.slackTool', { slackApi: { id: '', name: 'Old' } })];
 		reconcileNodeToolGatewayCredentials(
 			tools,
 			nodeTypesWithCredentials(['slackApi']),
@@ -124,7 +124,7 @@ describe('reconcileNodeToolGatewayCredentials', () => {
 	});
 
 	it('does not assign for a service the gateway does not cover', () => {
-		const tools = [nodeTool('n8n-nodes-base.notionTool')];
+		const tools = [nodeTool('MNI-nodes-base.notionTool')];
 		reconcileNodeToolGatewayCredentials(
 			tools,
 			nodeTypesWithCredentials(['notionApi']),
@@ -137,12 +137,12 @@ describe('reconcileNodeToolGatewayCredentials', () => {
 	it('does not auto-assign to an HTTP request tool even when the gateway covers it', () => {
 		// Defense-in-depth mirroring MCP: an HTTP node calls a user-controlled
 		// URL, so a managed credential is never attached automatically.
-		const tools = [nodeTool('n8n-nodes-base.httpRequestTool')];
+		const tools = [nodeTool('MNI-nodes-base.httpRequestTool')];
 		reconcileNodeToolGatewayCredentials(
 			tools,
 			nodeTypesWithCredentials(['httpBasicAuth']),
 			{
-				nodes: ['n8n-nodes-base.httpRequest'],
+				nodes: ['MNI-nodes-base.httpRequest'],
 				credentialTypes: ['httpBasicAuth'],
 				providerConfig: {},
 			} as unknown as AiGatewayConfigDto,
@@ -152,12 +152,12 @@ describe('reconcileNodeToolGatewayCredentials', () => {
 	});
 
 	it('keeps an eligible inbound managed marker on an HTTP request tool (explicit opt-in)', () => {
-		const tools = [nodeTool('n8n-nodes-base.httpRequestTool', { httpBasicAuth: { ...SENTINEL } })];
+		const tools = [nodeTool('MNI-nodes-base.httpRequestTool', { httpBasicAuth: { ...SENTINEL } })];
 		reconcileNodeToolGatewayCredentials(
 			tools,
 			nodeTypesWithCredentials(['httpBasicAuth']),
 			{
-				nodes: ['n8n-nodes-base.httpRequest'],
+				nodes: ['MNI-nodes-base.httpRequest'],
 				credentialTypes: ['httpBasicAuth'],
 				providerConfig: {},
 			} as unknown as AiGatewayConfigDto,
@@ -167,7 +167,7 @@ describe('reconcileNodeToolGatewayCredentials', () => {
 	});
 
 	it('does not auto-assign when the project already has a credential of the type (own credential wins)', () => {
-		const tools = [nodeTool('n8n-nodes-base.slackTool')];
+		const tools = [nodeTool('MNI-nodes-base.slackTool')];
 		reconcileNodeToolGatewayCredentials(
 			tools,
 			nodeTypesWithCredentials(['slackApi']),
@@ -180,7 +180,7 @@ describe('reconcileNodeToolGatewayCredentials', () => {
 	it('keeps an explicit inbound managed marker even when the project has a credential of the type', () => {
 		// An inbound marker is an explicit choice (manual toggle or the user
 		// asking the builder for MNI credits) — own credentials must not veto it.
-		const tools = [nodeTool('n8n-nodes-base.slackTool', { slackApi: { ...SENTINEL } })];
+		const tools = [nodeTool('MNI-nodes-base.slackTool', { slackApi: { ...SENTINEL } })];
 		reconcileNodeToolGatewayCredentials(
 			tools,
 			nodeTypesWithCredentials(['slackApi']),
@@ -191,7 +191,7 @@ describe('reconcileNodeToolGatewayCredentials', () => {
 	});
 
 	it('does not switch auth to a sibling type the project has a credential for', () => {
-		const tools = [nodeTool('n8n-nodes-base.serviceTool')];
+		const tools = [nodeTool('MNI-nodes-base.serviceTool')];
 		reconcileNodeToolGatewayCredentials(
 			tools,
 			nodeTypesWithDescription(multiAuthNodeDescription),
@@ -203,7 +203,7 @@ describe('reconcileNodeToolGatewayCredentials', () => {
 	});
 
 	it('switches auth to a supported sibling credential type when the displayed type is unsupported', () => {
-		const tools = [nodeTool('n8n-nodes-base.serviceTool')];
+		const tools = [nodeTool('MNI-nodes-base.serviceTool')];
 
 		reconcileNodeToolGatewayCredentials(
 			tools,
@@ -217,7 +217,7 @@ describe('reconcileNodeToolGatewayCredentials', () => {
 	});
 
 	it('switches auth while preserving unrelated parameters when the auth selector relies on its default', () => {
-		const tools = [nodeTool('n8n-nodes-base.serviceTool')];
+		const tools = [nodeTool('MNI-nodes-base.serviceTool')];
 		tools[0].node.nodeParameters = { operation: 'split' };
 
 		reconcileNodeToolGatewayCredentials(
@@ -247,7 +247,7 @@ describe('reconcileNodeToolGatewayCredentials', () => {
 	});
 
 	it('does not rewrite an auth parameter that already activates the supported credential', () => {
-		const tools = [nodeTool('n8n-nodes-base.serviceTool')];
+		const tools = [nodeTool('MNI-nodes-base.serviceTool')];
 		tools[0].node.nodeParameters = { authentication: 'apiKeyLegacy' };
 
 		reconcileNodeToolGatewayCredentials(
@@ -273,7 +273,7 @@ describe('reconcileNodeToolGatewayCredentials', () => {
 		// Marker on the API-key slot while `authentication` still defaults to
 		// OAuth (and the project owns the OAuth type): without activation the
 		// marker is inert and the tool cannot run.
-		const tools = [nodeTool('n8n-nodes-base.serviceTool', { serviceApiKey: { ...SENTINEL } })];
+		const tools = [nodeTool('MNI-nodes-base.serviceTool', { serviceApiKey: { ...SENTINEL } })];
 		reconcileNodeToolGatewayCredentials(
 			tools,
 			nodeTypesWithDescription(multiAuthNodeDescription),
@@ -285,7 +285,7 @@ describe('reconcileNodeToolGatewayCredentials', () => {
 	});
 
 	it('leaves parameters untouched when the marked slot is already active', () => {
-		const tools = [nodeTool('n8n-nodes-base.serviceTool', { serviceApiKey: { ...SENTINEL } })];
+		const tools = [nodeTool('MNI-nodes-base.serviceTool', { serviceApiKey: { ...SENTINEL } })];
 		tools[0].node.nodeParameters = { authentication: 'apiKey' };
 		reconcileNodeToolGatewayCredentials(
 			tools,
@@ -300,12 +300,12 @@ describe('reconcileNodeToolGatewayCredentials', () => {
 	it('keeps an eligible marker on a slot the node description does not declare', () => {
 		// HTTP predefined credential types are not in description.credentials, so
 		// no activation resolves; the explicit marker must survive untouched.
-		const tools = [nodeTool('n8n-nodes-base.httpRequestTool', { serviceApiKey: { ...SENTINEL } })];
+		const tools = [nodeTool('MNI-nodes-base.httpRequestTool', { serviceApiKey: { ...SENTINEL } })];
 		reconcileNodeToolGatewayCredentials(
 			tools,
 			nodeTypesWithCredentials([]),
 			{
-				nodes: ['n8n-nodes-base.httpRequest'],
+				nodes: ['MNI-nodes-base.httpRequest'],
 				credentialTypes: ['serviceApiKey'],
 				providerConfig: {},
 			} as unknown as AiGatewayConfigDto,
@@ -316,7 +316,7 @@ describe('reconcileNodeToolGatewayCredentials', () => {
 	});
 
 	it('deletes an inbound managed marker on an uncovered slot (trust gate)', () => {
-		const tools = [nodeTool('n8n-nodes-base.notionTool', { notionApi: { ...SENTINEL } })];
+		const tools = [nodeTool('MNI-nodes-base.notionTool', { notionApi: { ...SENTINEL } })];
 		reconcileNodeToolGatewayCredentials(
 			tools,
 			nodeTypesWithCredentials(['notionApi']),
@@ -328,7 +328,7 @@ describe('reconcileNodeToolGatewayCredentials', () => {
 
 	it('canonicalizes an eligible managed marker, dropping smuggled fields', () => {
 		const tools = [
-			nodeTool('n8n-nodes-base.slackTool', {
+			nodeTool('MNI-nodes-base.slackTool', {
 				slackApi: {
 					id: null,
 					name: 'hacked',
@@ -347,7 +347,7 @@ describe('reconcileNodeToolGatewayCredentials', () => {
 	});
 
 	it('drops all managed markers when no gateway config is available', () => {
-		const tools = [nodeTool('n8n-nodes-base.slackTool', { slackApi: { ...SENTINEL } })];
+		const tools = [nodeTool('MNI-nodes-base.slackTool', { slackApi: { ...SENTINEL } })];
 		reconcileNodeToolGatewayCredentials(
 			tools,
 			nodeTypesWithCredentials(['slackApi']),
@@ -362,7 +362,7 @@ describe('reconcileNodeToolGatewayCredentials', () => {
 		nodeTypes.getByNameAndVersion.mockImplementation(() => {
 			throw new Error('unknown node type');
 		});
-		const tools = [nodeTool('n8n-nodes-base.slackTool', { slackApi: { ...SENTINEL } })];
+		const tools = [nodeTool('MNI-nodes-base.slackTool', { slackApi: { ...SENTINEL } })];
 		reconcileNodeToolGatewayCredentials(tools, nodeTypes, GATEWAY_CONFIG, NO_OWNED);
 		expect(tools[0].node.credentials).toEqual({});
 	});
@@ -370,7 +370,7 @@ describe('reconcileNodeToolGatewayCredentials', () => {
 
 describe('listAiGatewayManagedCredentialTypes', () => {
 	it('returns a type whose every required slot is served by a managed credential', () => {
-		const tools = [nodeTool('n8n-nodes-base.slackTool', { slackApi: { ...SENTINEL } })];
+		const tools = [nodeTool('MNI-nodes-base.slackTool', { slackApi: { ...SENTINEL } })];
 		expect(
 			listAiGatewayManagedCredentialTypes(tools, nodeTypesWithCredentials(['slackApi'])),
 		).toEqual(['slackApi']);
@@ -378,8 +378,8 @@ describe('listAiGatewayManagedCredentialTypes', () => {
 
 	it('treats a real credential of the type as satisfying the slot', () => {
 		const tools = [
-			nodeTool('n8n-nodes-base.slackTool', { slackApi: { ...SENTINEL } }),
-			nodeTool('n8n-nodes-base.slackTool', { slackApi: { id: 'c1', name: 'My Slack' } }),
+			nodeTool('MNI-nodes-base.slackTool', { slackApi: { ...SENTINEL } }),
+			nodeTool('MNI-nodes-base.slackTool', { slackApi: { id: 'c1', name: 'My Slack' } }),
 		];
 		expect(
 			listAiGatewayManagedCredentialTypes(tools, nodeTypesWithCredentials(['slackApi'])),
@@ -391,8 +391,8 @@ describe('listAiGatewayManagedCredentialTypes', () => {
 		// another needs a real credential for an uncovered one — so the type must
 		// keep prompting rather than be suppressed globally.
 		const tools = [
-			nodeTool('n8n-nodes-base.slackTool', { slackApi: { ...SENTINEL } }),
-			nodeTool('n8n-nodes-base.slackTool'),
+			nodeTool('MNI-nodes-base.slackTool', { slackApi: { ...SENTINEL } }),
+			nodeTool('MNI-nodes-base.slackTool'),
 		];
 		expect(
 			listAiGatewayManagedCredentialTypes(tools, nodeTypesWithCredentials(['slackApi'])),
@@ -404,7 +404,7 @@ describe('listAiGatewayManagedCredentialTypes', () => {
 		nodeTypes.getByNameAndVersion.mockImplementation(() => {
 			throw new Error('unknown node type');
 		});
-		const tools = [nodeTool('n8n-nodes-base.slackTool', { slackApi: { ...SENTINEL } })];
+		const tools = [nodeTool('MNI-nodes-base.slackTool', { slackApi: { ...SENTINEL } })];
 		expect(listAiGatewayManagedCredentialTypes(tools, nodeTypes)).toEqual([]);
 	});
 });

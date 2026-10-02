@@ -11,8 +11,8 @@ import {
 	randomCredentialPayload,
 	testDb,
 	mockInstance,
-} from '@n8n/backend-test-utils';
-import type { Project, User, WorkflowWithSharingsMetaDataAndCredentials } from '@n8n/db';
+} from '@MNI/backend-test-utils';
+import type { Project, User, WorkflowWithSharingsMetaDataAndCredentials } from '@MNI/db';
 import {
 	ProjectRepository,
 	WorkflowHistoryRepository,
@@ -20,16 +20,16 @@ import {
 	WorkflowRepository,
 	WorkflowPublishedVersionRepository,
 	GLOBAL_MEMBER_ROLE,
-} from '@n8n/db';
-import { Container } from '@n8n/di';
-import type { ProjectRole } from '@n8n/permissions';
-import { PERSONAL_SPACE_SHARING_SETTING } from '@n8n/permissions';
+} from '@MNI/db';
+import { Container } from '@MNI/di';
+import type { ProjectRole } from '@MNI/permissions';
+import { PERSONAL_SPACE_SHARING_SETTING } from '@MNI/permissions';
 import {
 	UnexpectedError,
 	WorkflowActivationError,
 	calculateWorkflowChecksum,
 	type INode,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import { v4 as uuid } from 'uuid';
 
 import { ActiveWorkflowManager } from '@/active-workflow-manager';
@@ -987,7 +987,7 @@ describe('POST /workflows', () => {
 					id: 'uuid-1234',
 					parameters: {},
 					name: 'Start',
-					type: 'n8n-nodes-base.manualTrigger',
+					type: 'MNI-nodes-base.manualTrigger',
 					typeVersion: 1,
 					position: [240, 300],
 				},
@@ -1058,7 +1058,7 @@ describe('PATCH /workflows/:workflowId', () => {
 						name: 'Start',
 						parameters: {},
 						position: [-20, 260],
-						type: 'n8n-nodes-base.manualTrigger',
+						type: 'MNI-nodes-base.manualTrigger',
 						typeVersion: 1,
 						credentials: {
 							default: {
@@ -1093,7 +1093,7 @@ describe('PATCH /workflows/:workflowId', () => {
 						name: 'Start',
 						parameters: {},
 						position: [-20, 260],
-						type: 'n8n-nodes-base.manualTrigger',
+						type: 'MNI-nodes-base.manualTrigger',
 						typeVersion: 1,
 						credentials: {
 							default: {
@@ -1116,7 +1116,7 @@ describe('PATCH /workflows/:workflowId', () => {
 						name: 'Start',
 						parameters: {},
 						position: [-20, 260],
-						type: 'n8n-nodes-base.manualTrigger',
+						type: 'MNI-nodes-base.manualTrigger',
 						typeVersion: 1,
 						credentials: {
 							default: {
@@ -1208,7 +1208,7 @@ describe('PATCH /workflows/:workflowId', () => {
 							name: 'Start',
 							parameters: {},
 							position: [-20, 260],
-							type: 'n8n-nodes-base.manualTrigger',
+							type: 'MNI-nodes-base.manualTrigger',
 							typeVersion: 1,
 							credentials: {
 								default: {
@@ -1241,7 +1241,7 @@ describe('PATCH /workflows/:workflowId', () => {
 						firstParam: 123,
 					},
 					position: [-20, 260],
-					type: 'n8n-nodes-base.manualTrigger',
+					type: 'MNI-nodes-base.manualTrigger',
 					typeVersion: 1,
 					credentials: {
 						default: {
@@ -1260,7 +1260,7 @@ describe('PATCH /workflows/:workflowId', () => {
 						firstParam: 456,
 					},
 					position: [-20, 555],
-					type: 'n8n-nodes-base.no-op',
+					type: 'MNI-nodes-base.no-op',
 					typeVersion: 1,
 					credentials: {
 						default: {
@@ -1280,7 +1280,7 @@ describe('PATCH /workflows/:workflowId', () => {
 						firstParam: 123,
 					},
 					position: [-20, 555],
-					type: 'n8n-nodes-base.manualTrigger',
+					type: 'MNI-nodes-base.manualTrigger',
 					typeVersion: 1,
 					credentials: {
 						default: {
@@ -1535,7 +1535,7 @@ describe('PATCH /workflows/:workflowId', () => {
 						id: 'uuid-1234',
 						parameters: {},
 						name: 'Start',
-						type: 'n8n-nodes-base.manualTrigger',
+						type: 'MNI-nodes-base.manualTrigger',
 						typeVersion: 1,
 						position: [240, 300],
 					},
@@ -1543,7 +1543,7 @@ describe('PATCH /workflows/:workflowId', () => {
 						id: 'uuid-5678',
 						parameters: {},
 						name: 'Cron',
-						type: 'n8n-nodes-base.cron',
+						type: 'MNI-nodes-base.cron',
 						typeVersion: 1,
 						position: [400, 300],
 					},
@@ -2319,7 +2319,7 @@ describe('POST /workflows/:workflowId/run', () => {
 		const dbNode: INode = {
 			id: uuid(),
 			name: 'Start',
-			type: 'n8n-nodes-base.start',
+			type: 'MNI-nodes-base.start',
 			parameters: {},
 			typeVersion: 1,
 			position: [240, 300],
@@ -2335,7 +2335,7 @@ describe('POST /workflows/:workflowId/run', () => {
 				{
 					id: uuid(),
 					name: 'Injected',
-					type: 'n8n-nodes-base.noOp',
+					type: 'MNI-nodes-base.noOp',
 					parameters: {},
 					typeVersion: 1,
 					position: [500, 300],
@@ -2403,7 +2403,7 @@ describe('PATCH /workflows/:workflowId as an editor who may not publish', () => 
 		const response = await authMemberAgent.patch(`/workflows/${workflow.id}`).send({
 			versionId: workflow.versionId,
 			nodes: workflow.nodes.map((node) =>
-				node.type === 'n8n-nodes-base.cron'
+				node.type === 'MNI-nodes-base.cron'
 					? { ...node, parameters: { triggerTimes: { item: [{ mode: 'everyMinute' }] } } }
 					: node,
 			),

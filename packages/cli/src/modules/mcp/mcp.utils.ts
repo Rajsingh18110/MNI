@@ -1,7 +1,7 @@
-import type { AuthenticatedRequest } from '@n8n/db';
-import { isRecord } from '@n8n/utils/is-record';
+import type { AuthenticatedRequest } from '@MNI/db';
+import { isRecord } from '@MNI/utils/is-record';
 import type { Request } from 'express';
-import type { INode } from 'n8n-workflow';
+import type { INode } from 'MNI-workflow';
 
 import {
 	MCP_CLIENT_INFO_META_KEY,

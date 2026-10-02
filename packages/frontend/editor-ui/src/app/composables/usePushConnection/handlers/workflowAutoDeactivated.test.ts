@@ -1,7 +1,7 @@
 import { createPinia, setActivePinia } from 'pinia';
 import { mock } from 'vitest-mock-extended';
 import type { Router } from 'vue-router';
-import type { WorkflowAutoDeactivated } from '@n8n/api-types/push/workflow';
+import type { WorkflowAutoDeactivated } from '@MNI/api-types/push/workflow';
 import { workflowAutoDeactivated } from './workflowAutoDeactivated';
 import {
 	createWorkflowDocumentId,

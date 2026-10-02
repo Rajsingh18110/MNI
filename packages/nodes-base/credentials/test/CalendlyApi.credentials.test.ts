@@ -1,4 +1,4 @@
-import type { ICredentialDataDecryptedObject, IHttpRequestOptions } from 'n8n-workflow';
+import type { ICredentialDataDecryptedObject, IHttpRequestOptions } from 'MNI-workflow';
 
 import { CalendlyApi } from '../CalendlyApi.credentials';
 

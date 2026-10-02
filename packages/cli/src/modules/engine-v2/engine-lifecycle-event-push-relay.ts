@@ -1,9 +1,9 @@
-import { Logger } from '@n8n/backend-common';
-import { Service } from '@n8n/di';
-import type { LifecycleEvent } from '@n8n/engine';
-import { fromStepInputs } from '@n8n/node-engine-compatibility';
-import type { ExecutionStatus, INodeExecutionData, ITaskData } from 'n8n-workflow';
-import { WorkflowOperationError } from 'n8n-workflow';
+import { Logger } from '@MNI/backend-common';
+import { Service } from '@MNI/di';
+import type { LifecycleEvent } from '@MNI/engine';
+import { fromStepInputs } from '@MNI/node-engine-compatibility';
+import type { ExecutionStatus, INodeExecutionData, ITaskData } from 'MNI-workflow';
+import { WorkflowOperationError } from 'MNI-workflow';
 
 import { Push } from '@/push';
 import { EngineV2PushRegistry } from '@/services/engine-v2-push-registry.service';

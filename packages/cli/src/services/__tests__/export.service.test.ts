@@ -1,7 +1,7 @@
-import { type Logger } from '@n8n/backend-common';
-import { type DataSource } from '@n8n/typeorm';
+import { type Logger } from '@MNI/backend-common';
+import { type DataSource } from '@MNI/typeorm';
 import { mkdir, rm, readdir, appendFile, readFile } from 'fs/promises';
-import type { Cipher } from 'n8n-core';
+import type { Cipher } from 'MNI-core';
 import { mock } from 'vitest-mock-extended';
 
 import { compressFolder } from '@/utils/compression.util';
@@ -27,11 +27,11 @@ vi.mock('@/utils/validate-database-type', () => ({
 	validateDbTypeForExportEntities: vi.fn(),
 }));
 
-// Mock @n8n/db
-// Use the real `@n8n/db` exports; the test injects a mock DataSource via the
+// Mock @MNI/db
+// Use the real `@MNI/db` exports; the test injects a mock DataSource via the
 // constructor, so the real classes are never instantiated.
-vi.mock('@n8n/db', async (importOriginal) => ({
-	...(await importOriginal<typeof import('@n8n/db')>()),
+vi.mock('@MNI/db', async (importOriginal) => ({
+	...(await importOriginal<typeof import('@MNI/db')>()),
 }));
 
 describe('ExportService', () => {

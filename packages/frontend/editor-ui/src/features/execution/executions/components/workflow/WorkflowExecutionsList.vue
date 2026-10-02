@@ -5,7 +5,7 @@ import { MAIN_HEADER_TABS } from '@/app/constants';
 import type { IWorkflowDb } from '@/Interface';
 import type { ExecutionFilterType } from '../../executions.types';
 import { getNodeViewTab } from '@/app/utils/nodeViewUtils';
-import type { ExecutionSummary } from 'n8n-workflow';
+import type { ExecutionSummary } from 'MNI-workflow';
 import { computed } from 'vue';
 import { onBeforeRouteLeave, useRouter } from 'vue-router';
 
@@ -108,7 +108,7 @@ onBeforeRouteLeave(async (to, _, next) => {
 </template>
 
 <style module lang="scss">
-@use '@n8n/design-system/css/mixins/breakpoints';
+@use '@MNI/design-system/css/mixins/breakpoints';
 
 .container {
 	display: flex;

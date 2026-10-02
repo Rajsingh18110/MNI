@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/unbound-method -- mock-based tests intentionally reference unbound methods */
-import type { AgentIntegrationConfig } from '@n8n/api-types';
+import type { AgentIntegrationConfig } from '@MNI/api-types';
 import type { Thread } from 'chat';
 import { mock } from 'vitest-mock-extended';
 

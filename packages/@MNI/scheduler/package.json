@@ -1,0 +1,56 @@
+{
+  "name": "@MNI/scheduler",
+  "version": "1.10.0",
+  "scripts": {
+    "clean": "rimraf dist .turbo",
+    "dev": "pnpm watch",
+    "typecheck": "tsc --noEmit",
+    "build": "tsc -p tsconfig.build.json",
+    "build:unchecked": "tsc -p tsconfig.build.json --noCheck",
+    "format": "biome format --write .",
+    "format:check": "biome ci .",
+    "lint": "oxlint --quiet",
+    "lint:fix": "oxlint --fix",
+    "mutate": "node ../../../scripts/mutation-health/mutate.mjs --package-dir packages/@MNI/scheduler",
+    "watch": "tsc -p tsconfig.build.json --watch",
+    "test": "vitest run --passWithNoTests",
+    "test:unit": "vitest run --passWithNoTests",
+    "test:dev": "vitest --silent=false"
+  },
+  "main": "dist/index.js",
+  "module": "src/index.ts",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist/**/*"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "dependencies": {
+    "@MNI/constants": "workspace:*",
+    "@MNI/utils": "workspace:*",
+    "cron-parser": "catalog:",
+    "luxon": "catalog:",
+    "MNI-workflow": "workspace:*"
+  },
+  "devDependencies": {
+    "@MNI/oxlint-config": "workspace:*",
+    "@MNI/typescript-config": "workspace:*",
+    "@MNI/vitest-config": "workspace:*",
+    "@stryker-mutator/core": "catalog:",
+    "@stryker-mutator/vitest-runner": "catalog:",
+    "@types/luxon": "catalog:",
+    "@vitest/coverage-v8": "catalog:",
+    "fast-check": "catalog:",
+    "oxlint": "catalog:",
+    "oxlint-tsgolint": "catalog:",
+    "typescript": "catalog:typescript",
+    "vite": "catalog:",
+    "vitest": "catalog:",
+    "vitest-mock-extended": "catalog:"
+  },
+  "license": "LicenseRef-MNI-sustainable-use"
+}

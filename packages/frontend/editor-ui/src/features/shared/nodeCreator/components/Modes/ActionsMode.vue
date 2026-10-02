@@ -15,7 +15,7 @@ import {
 	OPEN_AI_NODE_TYPE,
 } from '@/app/constants';
 
-import { useUsersStore } from '@n8n/stores/users.store';
+import { useUsersStore } from '@MNI/stores/users.store';
 import { useExternalHooks } from '@/app/composables/useExternalHooks';
 
 import { useActions } from '../../composables/useActions';
@@ -24,9 +24,9 @@ import { useViewStacks } from '../../composables/useViewStacks';
 
 import ItemsRenderer from '../Renderers/ItemsRenderer.vue';
 import CategorizedItemsRenderer from '../Renderers/CategorizedItemsRenderer.vue';
-import type { IDataObject } from 'n8n-workflow';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
-import { useI18n } from '@n8n/i18n';
+import type { IDataObject } from 'MNI-workflow';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
+import { useI18n } from '@MNI/i18n';
 import { useNodeCreatorStore } from '@/features/shared/nodeCreator/nodeCreator.store';
 import OrderSwitcher from './../OrderSwitcher.vue';
 import { isNodePreviewKey } from '../../nodeCreator.utils';
@@ -37,7 +37,7 @@ import { useCalloutHelpers } from '@/app/composables/useCalloutHelpers';
 import { useQuickConnect } from '@/features/credentials/quickConnect/composables/useQuickConnect';
 import QuickConnectBanner from '@/features/credentials/quickConnect/components/QuickConnectBanner.vue';
 
-import { N8nCallout, N8nInfoTip } from '@n8n/design-system';
+import { N8nCallout, N8nInfoTip } from '@MNI/design-system';
 const emit = defineEmits<{
 	nodeTypeSelected: [value: NodeTypeSelectedPayload[]];
 }>();
@@ -298,7 +298,7 @@ const callouts = computed<INodeCreateElement[]>(() => []);
 							data-test-id="actions-panel-no-triggers-callout"
 						>
 							<span
-								v-n8n-html="
+								v-MNI-html="
 									i18n.baseText('nodeCreator.actionsCallout.noTriggerItems', {
 										interpolate: { nodeName: subcategory ?? '' },
 									})
@@ -309,7 +309,7 @@ const callouts = computed<INodeCreateElement[]>(() => []);
 					</template>
 					<template v-else #empty>
 						<p
-							v-n8n-html="i18n.baseText('nodeCreator.actionsCategory.noMatchingTriggers')"
+							v-MNI-html="i18n.baseText('nodeCreator.actionsCategory.noMatchingTriggers')"
 							:class="$style.resetSearch"
 							@click="resetSearch"
 						/>
@@ -333,13 +333,13 @@ const callouts = computed<INodeCreateElement[]>(() => []);
 						slim
 						data-test-id="actions-panel-activation-callout"
 					>
-						<span v-n8n-html="i18n.baseText('nodeCreator.actionsCallout.triggersStartWorkflow')" />
+						<span v-MNI-html="i18n.baseText('nodeCreator.actionsCallout.triggersStartWorkflow')" />
 					</N8nCallout>
 					<!-- Empty state -->
 					<template #empty>
 						<N8nInfoTip v-if="!search" theme="info" type="note" :class="$style.actionsEmpty">
 							<span
-								v-n8n-html="
+								v-MNI-html="
 									i18n.baseText('nodeCreator.actionsCallout.noActionItems', {
 										interpolate: { nodeName: subcategory ?? '' },
 									})
@@ -348,7 +348,7 @@ const callouts = computed<INodeCreateElement[]>(() => []);
 						</N8nInfoTip>
 						<p
 							v-else
-							v-n8n-html="i18n.baseText('nodeCreator.actionsCategory.noMatchingActions')"
+							v-MNI-html="i18n.baseText('nodeCreator.actionsCategory.noMatchingActions')"
 							:class="$style.resetSearch"
 							data-test-id="actions-panel-no-matching-actions"
 							@click="resetSearch"
@@ -359,7 +359,7 @@ const callouts = computed<INodeCreateElement[]>(() => []);
 		</OrderSwitcher>
 		<div v-if="containsAPIAction && !communityNodeDetails" :class="$style.apiHint">
 			<span
-				v-n8n-html="
+				v-MNI-html="
 					i18n.baseText('nodeCreator.actionsList.apiCall', {
 						interpolate: { node: subcategory ?? '' },
 					})

@@ -1,7 +1,7 @@
-import { UrlService } from '@n8n/backend-services';
-import type { User } from '@n8n/db';
-import { Container } from '@n8n/di';
-import type { Scope } from '@n8n/permissions';
+import { UrlService } from '@MNI/backend-services';
+import type { User } from '@MNI/db';
+import { Container } from '@MNI/di';
+import type { Scope } from '@MNI/permissions';
 
 import type { WorkflowFinderService } from '@/workflows/workflow-finder.service';
 

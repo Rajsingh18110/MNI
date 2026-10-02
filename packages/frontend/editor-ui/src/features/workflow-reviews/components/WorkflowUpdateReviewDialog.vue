@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import type { WorkflowReviewRequestForWorkflow } from '@n8n/api-types';
-import { useRootStore } from '@n8n/stores/useRootStore';
+import type { WorkflowReviewRequestForWorkflow } from '@MNI/api-types';
+import { useRootStore } from '@MNI/stores/useRootStore';
 import {
 	N8nButton,
 	N8nDialog,
@@ -12,12 +12,12 @@ import {
 	N8nInputLabel,
 	N8nLink,
 	N8nText,
-} from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+} from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 import { computed, ref, watch } from 'vue';
 import { I18nT } from 'vue-i18n';
 
-import { useToast } from '@n8n/composables/useToast';
+import { useToast } from '@MNI/composables/useToast';
 import CharacterCount from '@/app/components/CharacterCount.vue';
 import WorkflowVersionForm from '@/app/components/WorkflowVersionForm.vue';
 import { useLatestFetch } from '@/app/composables/useLatestFetch';

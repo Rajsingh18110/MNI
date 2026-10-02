@@ -10,7 +10,7 @@ import { autocompletableNodeNames, longestCommonPrefix } from '../../completions
 import { typescriptWorkerFacet } from './facet';
 import { blockCommentSnippet, snippets } from './snippets';
 import { TARGET_NODE_PARAMETER_FACET, WORKFLOW_DOCUMENT_FACET } from '../../completions/constants';
-import type { AliasCompletion, Alias } from 'n8n-workflow';
+import type { AliasCompletion, Alias } from 'MNI-workflow';
 import { sortCompletionsByInput } from '../../completions/datatype.completions';
 
 const START_CHARACTERS = ['"', "'", '(', '.', '@'];

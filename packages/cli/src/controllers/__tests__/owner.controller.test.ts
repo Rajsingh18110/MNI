@@ -1,4 +1,4 @@
-import type { DismissBannerRequestDto } from '@n8n/api-types';
+import type { DismissBannerRequestDto } from '@MNI/api-types';
 import { mock } from 'vitest-mock-extended';
 
 import type { AuthService } from '@/auth/auth.service';

@@ -1,6 +1,6 @@
-import { i18nInstance, setLanguage } from '@n8n/i18n';
-import type { Scope } from '@n8n/permissions';
-import { useRBACStore } from '@n8n/stores/rbac.store';
+import { i18nInstance, setLanguage } from '@MNI/i18n';
+import type { Scope } from '@MNI/permissions';
+import { useRBACStore } from '@MNI/stores/rbac.store';
 import { createPinia, setActivePinia } from 'pinia';
 
 import {

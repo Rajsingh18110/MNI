@@ -1,6 +1,6 @@
-import type { INode } from 'n8n-workflow';
+import type { INode } from 'MNI-workflow';
 
-export const AGENT_NODE_TYPE = '@n8n/n8n-nodes-langchain.agent';
+export const AGENT_NODE_TYPE = '@MNI/MNI-nodes-langchain.agent';
 const FIRST_SUPPORTED_VERSION = 2;
 
 /** Agent modes that only versions below 2 offered, mapped to their display name. */

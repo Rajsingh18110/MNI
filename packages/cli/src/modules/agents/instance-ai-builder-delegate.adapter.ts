@@ -1,6 +1,6 @@
-import type { CredentialProvider, StreamChunk } from '@n8n/agents';
-import type { User } from '@n8n/db';
-import { Service } from '@n8n/di';
+import type { CredentialProvider, StreamChunk } from '@MNI/agents';
+import type { User } from '@MNI/db';
+import { Service } from '@MNI/di';
 import {
 	instanceAiBuilderThreadPrefix,
 	type BuilderDelegateSession,
@@ -8,10 +8,10 @@ import {
 	type BuilderTurnStream,
 	type InstanceAiBuilderDelegate,
 	type InstanceAiCredentialService,
-} from '@n8n/instance-ai';
-import { type Scope } from '@n8n/permissions';
-import { Like } from '@n8n/typeorm';
-import { UserError } from 'n8n-workflow';
+} from '@MNI/instance-ai';
+import { type Scope } from '@MNI/permissions';
+import { Like } from '@MNI/typeorm';
+import { UserError } from 'MNI-workflow';
 
 import { ForbiddenError } from '@/errors/response-errors/forbidden.error';
 import { userHasScopes } from '@/permissions.ee/check-access';
@@ -21,7 +21,7 @@ import { AgentSkillsService } from './agent-skills.service';
 import { AgentsService } from './agents.service';
 import { AgentsBuilderService } from './builder/agents-builder.service';
 import type { InstanceAiBuilderSessionOptions } from './builder/agents-builder.service';
-import { N8nMemory } from './integrations/n8n-memory';
+import { N8nMemory } from './integrations/MNI-memory';
 import { AgentThreadRepository } from './repositories/agent-thread.repository';
 import { getAgentConfigHash } from './utils/agent-config-hash';
 

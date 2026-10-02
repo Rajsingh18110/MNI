@@ -1,6 +1,6 @@
 import { computed, ref, type ComputedRef } from 'vue';
-import { useI18n } from '@n8n/i18n';
-import type { AiModelSelectorMenuItem, AiModelSelectorMenuItemData } from '@n8n/design-system';
+import { useI18n } from '@MNI/i18n';
+import type { AiModelSelectorMenuItem, AiModelSelectorMenuItemData } from '@MNI/design-system';
 
 const MAX_SEARCH_RESULTS_PER_PROVIDER = 10;
 

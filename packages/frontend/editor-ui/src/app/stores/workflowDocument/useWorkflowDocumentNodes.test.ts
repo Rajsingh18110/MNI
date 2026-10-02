@@ -19,7 +19,7 @@ import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { computed, nextTick, ref } from 'vue';
 import { setActivePinia, createPinia } from 'pinia';
 import { mock } from 'vitest-mock-extended';
-import { NodeConnectionTypes, type INodeTypeDescription, type Workflow } from 'n8n-workflow';
+import { NodeConnectionTypes, type INodeTypeDescription, type Workflow } from 'MNI-workflow';
 import { createTestNode, mockNodeTypeDescription } from '@/__tests__/mocks';
 import { MESSAGE_AN_AGENT_NODE_TYPE } from '@/app/constants/nodeTypes';
 import type { INodeUi } from '@/Interface';
@@ -377,14 +377,14 @@ describe('useWorkflowDocumentNodes', () => {
 		it('setLastNodeParameters does nothing when node type is not found', () => {
 			const node = createNode({
 				name: 'Target',
-				type: 'n8n-nodes-base.set',
+				type: 'MNI-nodes-base.set',
 				parameters: { old: 'value' },
 			});
 
 			const workflowDocumentNodes = useWorkflowDocumentNodes(deps);
 			workflowDocumentNodes.setNodes([node]);
 			workflowDocumentNodes.setLastNodeParameters({
-				key: 'n8n-nodes-base.set',
+				key: 'MNI-nodes-base.set',
 				name: '',
 				value: { new: 'value' },
 			});
@@ -396,7 +396,7 @@ describe('useWorkflowDocumentNodes', () => {
 		it('setLastNodeParameters finds latest node by type and sets parameters', () => {
 			const node = createNode({
 				name: 'Target',
-				type: 'n8n-nodes-base.set',
+				type: 'MNI-nodes-base.set',
 				parameters: { existing: 'keep' },
 			});
 
@@ -411,12 +411,12 @@ describe('useWorkflowDocumentNodes', () => {
 			const workflowDocumentNodes = useWorkflowDocumentNodes(customDeps);
 			workflowDocumentNodes.setNodes([node]);
 			workflowDocumentNodes.setLastNodeParameters({
-				key: 'n8n-nodes-base.set',
+				key: 'MNI-nodes-base.set',
 				name: '',
 				value: { value: 'hello' },
 			});
 
-			expect(customDeps.getNodeType).toHaveBeenCalledWith('n8n-nodes-base.set');
+			expect(customDeps.getNodeType).toHaveBeenCalledWith('MNI-nodes-base.set');
 		});
 	});
 
@@ -784,9 +784,9 @@ describe('useWorkflowDocumentNodes', () => {
 
 			const workflowDocumentNodes = useWorkflowDocumentNodes(deps);
 			workflowDocumentNodes.setNodes([
-				createNode({ name: 'Current Node', type: 'n8n-nodes-base.slack', typeVersion: 1 }),
-				createNode({ name: 'Slack Node 1', type: 'n8n-nodes-base.slack', typeVersion: 1 }),
-				createNode({ name: 'Slack Node 2', type: 'n8n-nodes-base.slack', typeVersion: 1 }),
+				createNode({ name: 'Current Node', type: 'MNI-nodes-base.slack', typeVersion: 1 }),
+				createNode({ name: 'Slack Node 1', type: 'MNI-nodes-base.slack', typeVersion: 1 }),
+				createNode({ name: 'Slack Node 2', type: 'MNI-nodes-base.slack', typeVersion: 1 }),
 			]);
 
 			const result = workflowDocumentNodes.assignCredentialToMatchingNodes({
@@ -819,16 +819,16 @@ describe('useWorkflowDocumentNodes', () => {
 
 			const workflowDocumentNodes = useWorkflowDocumentNodes(deps);
 			workflowDocumentNodes.setNodes([
-				createNode({ name: 'Current Node', type: 'n8n-nodes-base.slack', typeVersion: 1 }),
+				createNode({ name: 'Current Node', type: 'MNI-nodes-base.slack', typeVersion: 1 }),
 				createNode({
 					name: 'Node With Existing Cred',
-					type: 'n8n-nodes-base.slack',
+					type: 'MNI-nodes-base.slack',
 					typeVersion: 1,
 					credentials: { slackApi: existingCredential },
 				}),
 				createNode({
 					name: 'Node Without Cred',
-					type: 'n8n-nodes-base.slack',
+					type: 'MNI-nodes-base.slack',
 					typeVersion: 1,
 				}),
 			]);
@@ -851,7 +851,7 @@ describe('useWorkflowDocumentNodes', () => {
 			const credentialType = 'slackApi';
 
 			getNodeType.mockImplementation((nodeType: string) => {
-				if (nodeType === 'n8n-nodes-base.slack') {
+				if (nodeType === 'MNI-nodes-base.slack') {
 					return {
 						credentials: [{ name: 'slackApi', required: true }],
 						inputs: [],
@@ -871,11 +871,11 @@ describe('useWorkflowDocumentNodes', () => {
 
 			const workflowDocumentNodes = useWorkflowDocumentNodes(deps);
 			workflowDocumentNodes.setNodes([
-				createNode({ name: 'Current Node', type: 'n8n-nodes-base.slack', typeVersion: 1 }),
-				createNode({ name: 'Slack Node', type: 'n8n-nodes-base.slack', typeVersion: 1 }),
+				createNode({ name: 'Current Node', type: 'MNI-nodes-base.slack', typeVersion: 1 }),
+				createNode({ name: 'Slack Node', type: 'MNI-nodes-base.slack', typeVersion: 1 }),
 				createNode({
 					name: 'HTTP Node',
-					type: 'n8n-nodes-base.httpRequest',
+					type: 'MNI-nodes-base.httpRequest',
 					typeVersion: 1,
 				}),
 			]);
@@ -896,7 +896,7 @@ describe('useWorkflowDocumentNodes', () => {
 			const credentialType = 'slackApi';
 
 			getNodeType.mockImplementation((nodeType: string) => {
-				if (nodeType === 'n8n-nodes-base.slack') {
+				if (nodeType === 'MNI-nodes-base.slack') {
 					return {
 						credentials: [{ name: 'slackApi', required: true }],
 						inputs: [],
@@ -910,10 +910,10 @@ describe('useWorkflowDocumentNodes', () => {
 
 			const workflowDocumentNodes = useWorkflowDocumentNodes(deps);
 			workflowDocumentNodes.setNodes([
-				createNode({ name: 'Current Node', type: 'n8n-nodes-base.slack', typeVersion: 1 }),
+				createNode({ name: 'Current Node', type: 'MNI-nodes-base.slack', typeVersion: 1 }),
 				createNode({
 					name: 'Node Without Creds Support',
-					type: 'n8n-nodes-base.noOp',
+					type: 'MNI-nodes-base.noOp',
 					typeVersion: 1,
 				}),
 			]);
@@ -933,7 +933,7 @@ describe('useWorkflowDocumentNodes', () => {
 			const credentialType = 'httpHeaderAuth';
 
 			getNodeType.mockImplementation((nodeType: string) => {
-				if (nodeType === 'n8n-nodes-base.httpRequest') {
+				if (nodeType === 'MNI-nodes-base.httpRequest') {
 					return {
 						credentials: [{ name: 'httpHeaderAuth', required: false }],
 						inputs: [],
@@ -972,12 +972,12 @@ describe('useWorkflowDocumentNodes', () => {
 			workflowDocumentNodes.setNodes([
 				createNode({
 					name: 'HTTP Request',
-					type: 'n8n-nodes-base.httpRequest',
+					type: 'MNI-nodes-base.httpRequest',
 					typeVersion: 1,
 				}),
 				createNode({
 					name: 'Webhook',
-					type: 'n8n-nodes-base.webhook',
+					type: 'MNI-nodes-base.webhook',
 					typeVersion: 1,
 					parameters: { authentication: 'none' },
 				}),
@@ -1007,7 +1007,7 @@ describe('useWorkflowDocumentNodes', () => {
 
 			const workflowDocumentNodes = useWorkflowDocumentNodes(deps);
 			workflowDocumentNodes.setNodes([
-				createNode({ name: 'Current Node', type: 'n8n-nodes-base.slack', typeVersion: 1 }),
+				createNode({ name: 'Current Node', type: 'MNI-nodes-base.slack', typeVersion: 1 }),
 			]);
 
 			const result = workflowDocumentNodes.assignCredentialToMatchingNodes({

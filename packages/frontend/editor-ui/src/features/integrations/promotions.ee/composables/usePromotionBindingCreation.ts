@@ -1,11 +1,11 @@
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { EnterpriseEditionFeature } from '@/app/constants';
-import { useToast } from '@n8n/composables/useToast';
+import { useToast } from '@MNI/composables/useToast';
 import { computed, onScopeDispose, shallowRef, watch } from 'vue';
-import { getResourcePermissions } from '@n8n/permissions';
-import { useRootStore } from '@n8n/stores/useRootStore';
-import { useI18n } from '@n8n/i18n';
-import { ResponseError } from '@n8n/rest-api-client';
+import { getResourcePermissions } from '@MNI/permissions';
+import { useRootStore } from '@MNI/stores/useRootStore';
+import { useI18n } from '@MNI/i18n';
+import { ResponseError } from '@MNI/rest-api-client';
 import { useUIStore } from '@/app/stores/ui.store';
 import { useProjectsStore } from '@/features/collaboration/projects/projects.store';
 import type { ResourceEditorDestination } from '@/features/collaboration/projects/projects.types';

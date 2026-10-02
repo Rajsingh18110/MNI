@@ -1,5 +1,5 @@
-import type { CredentialProvider, ResolvedCredential } from '@n8n/agents';
-import { UserError } from 'n8n-workflow';
+import type { CredentialProvider, ResolvedCredential } from '@MNI/agents';
+import { UserError } from 'MNI-workflow';
 
 /**
  * MNI credential type the AI Gateway serves each fallback web-search provider

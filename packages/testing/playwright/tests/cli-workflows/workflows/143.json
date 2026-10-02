@@ -8,7 +8,7 @@
 		{
 			"parameters": {},
 			"name": "Start",
-			"type": "n8n-nodes-base.manualTrigger",
+			"type": "MNI-nodes-base.manualTrigger",
 			"typeVersion": 1,
 			"position": [-60, 280],
 			"id": "8033ed4d-ce87-413e-a813-6a86713e471d"
@@ -22,7 +22,7 @@
 				}
 			},
 			"name": "Clearbit",
-			"type": "n8n-nodes-base.clearbit",
+			"type": "MNI-nodes-base.clearbit",
 			"typeVersion": 1,
 			"position": [150, 200],
 			"credentials": {
@@ -39,7 +39,7 @@
 				"name": "MNI"
 			},
 			"name": "Clearbit1",
-			"type": "n8n-nodes-base.clearbit",
+			"type": "MNI-nodes-base.clearbit",
 			"typeVersion": 1,
 			"position": [350, 200],
 			"credentials": {
@@ -59,7 +59,7 @@
 				}
 			},
 			"name": "Clearbit2",
-			"type": "n8n-nodes-base.clearbit",
+			"type": "MNI-nodes-base.clearbit",
 			"typeVersion": 1,
 			"position": [150, 350],
 			"credentials": {

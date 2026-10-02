@@ -4,21 +4,21 @@ import {
 	getInlineDelegateSubAgentToolOptions,
 	WRITE_TODOS_TOOL_NAME,
 	Workspace,
-} from '@n8n/agents';
-import type * as agents from '@n8n/agents';
-import type { CredentialProvider, BuiltTool } from '@n8n/agents';
+} from '@MNI/agents';
+import type * as agents from '@MNI/agents';
+import type { CredentialProvider, BuiltTool } from '@MNI/agents';
 import {
-	N8N_CHAT_ACTION_TOOL_NAME,
-	N8N_CHAT_CONTEXT_TOOL_NAME,
-	N8N_CHAT_INTEGRATION_TYPE,
+	MNI_CHAT_ACTION_TOOL_NAME,
+	MNI_CHAT_CONTEXT_TOOL_NAME,
+	MNI_CHAT_INTEGRATION_TYPE,
 	SUB_AGENT_MAX_CHILDREN_DEFAULT,
 	type AgentJsonConfig,
-} from '@n8n/api-types';
-import type { Logger } from '@n8n/backend-common';
-import type { CustomFetch, HttpTransport, OutboundHttp } from '@n8n/backend-network';
-import { AgentsConfig } from '@n8n/config';
-import type { UserRepository, WorkflowRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
+} from '@MNI/api-types';
+import type { Logger } from '@MNI/backend-common';
+import type { CustomFetch, HttpTransport, OutboundHttp } from '@MNI/backend-network';
+import { AgentsConfig } from '@MNI/config';
+import type { UserRepository, WorkflowRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
 import { mock } from 'vitest-mock-extended';
 
 import type { ActiveExecutions } from '@/active-executions';
@@ -47,9 +47,9 @@ import { ChatIntegrationRegistry } from '../integrations/agent-chat-integration'
 import { ChatIntegrationActionExecutor } from '../integrations/integration-action-executor';
 import { ChatIntegrationContextQueryExecutor } from '../integrations/integration-context-query-executor';
 import { IntegrationMessageContextService } from '../integrations/integration-message-context.service';
-import type { N8NCheckpointStorage } from '../integrations/n8n-checkpoint-storage';
-import type { N8nMemory } from '../integrations/n8n-memory';
-import { N8nChatIntegration } from '../integrations/platforms/n8n-chat-integration';
+import type { N8NCheckpointStorage } from '../integrations/MNI-checkpoint-storage';
+import type { N8nMemory } from '../integrations/MNI-memory';
+import { N8nChatIntegration } from '../integrations/platforms/MNI-chat-integration';
 import type * as FromJsonConfig from '../json-config/from-json-config';
 import type { ToolExecutor } from '../json-config/from-json-config';
 import type { AgentFileRepository } from '../repositories/agent-file.repository';
@@ -262,7 +262,7 @@ describe('AgentRuntimeReconstructionService.reconstructFromAgentEntity — MCP w
 });
 
 describe('AgentRuntimeReconstructionService — workspace attachment', () => {
-	const principalHash = hashAgentSandboxPrincipal({ type: 'n8n-user', userId: 'user-1' });
+	const principalHash = hashAgentSandboxPrincipal({ type: 'MNI-user', userId: 'user-1' });
 	const reconstructWithWorkspace = async (service: AgentRuntimeReconstructionService) =>
 		await service.reconstructFromAgentEntity(
 			makeAgentEntity(),
@@ -756,7 +756,7 @@ describe('AgentRuntimeReconstructionService.reconstructFromAgentEntity — MNI c
 		return { service, credentialProvider };
 	}
 
-	it('injects n8n_chat tools when integrationType is n8n_chat', async () => {
+	it('injects MNI_chat tools when integrationType is MNI_chat', async () => {
 		const { service, credentialProvider } = setup();
 		// Agent entity with NO credential integrations connected.
 		const entity = makeAgentEntity();
@@ -765,15 +765,15 @@ describe('AgentRuntimeReconstructionService.reconstructFromAgentEntity — MNI c
 			entity,
 			credentialProvider,
 			'production',
-			N8N_CHAT_INTEGRATION_TYPE,
+			MNI_CHAT_INTEGRATION_TYPE,
 		);
 
 		const toolNames = getInjectedToolNames();
-		expect(toolNames).toContain(N8N_CHAT_ACTION_TOOL_NAME);
-		expect(toolNames).toContain(N8N_CHAT_CONTEXT_TOOL_NAME);
+		expect(toolNames).toContain(MNI_CHAT_ACTION_TOOL_NAME);
+		expect(toolNames).toContain(MNI_CHAT_CONTEXT_TOOL_NAME);
 	});
 
-	it('does not inject n8n_chat tools when integrationType is absent', async () => {
+	it('does not inject MNI_chat tools when integrationType is absent', async () => {
 		const { service, credentialProvider } = setup();
 		// Same entity, reconstruct WITHOUT integrationType.
 		const entity = makeAgentEntity();
@@ -781,19 +781,19 @@ describe('AgentRuntimeReconstructionService.reconstructFromAgentEntity — MNI c
 		await service.reconstructFromAgentEntity(entity, credentialProvider, 'production');
 
 		const toolNames = getInjectedToolNames();
-		expect(toolNames).not.toContain(N8N_CHAT_ACTION_TOOL_NAME);
-		expect(toolNames).not.toContain(N8N_CHAT_CONTEXT_TOOL_NAME);
+		expect(toolNames).not.toContain(MNI_CHAT_ACTION_TOOL_NAME);
+		expect(toolNames).not.toContain(MNI_CHAT_CONTEXT_TOOL_NAME);
 	});
 
-	it('does not inject n8n_chat tools for credential-backed integration runs', async () => {
+	it('does not inject MNI_chat tools for credential-backed integration runs', async () => {
 		const { service, credentialProvider } = setup();
 		const entity = makeAgentEntity();
 
 		await service.reconstructFromAgentEntity(entity, credentialProvider, 'production', 'slack');
 
 		const toolNames = getInjectedToolNames();
-		expect(toolNames).not.toContain(N8N_CHAT_ACTION_TOOL_NAME);
-		expect(toolNames).not.toContain(N8N_CHAT_CONTEXT_TOOL_NAME);
+		expect(toolNames).not.toContain(MNI_CHAT_ACTION_TOOL_NAME);
+		expect(toolNames).not.toContain(MNI_CHAT_CONTEXT_TOOL_NAME);
 	});
 });
 
@@ -941,7 +941,7 @@ describe('AgentRuntimeReconstructionService.reconstructFromAgentEntity — backg
 
 	it('forwards the parent workspace handle to a background spawn', async () => {
 		Container.get(AgentsConfig).backgroundTasksEnabled = true;
-		const principalHash = hashAgentSandboxPrincipal({ type: 'n8n-user', userId: 'user-1' });
+		const principalHash = hashAgentSandboxPrincipal({ type: 'MNI-user', userId: 'user-1' });
 		const handle = mock<AgentSandboxRuntime>();
 		const agentWorkspaceService = mock<AgentWorkspaceService>();
 		agentWorkspaceService.getAgentWorkspace.mockResolvedValue({

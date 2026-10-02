@@ -1,7 +1,7 @@
 import type { MicrosoftGraphForbiddenHint } from '@utils/microsoft/transport';
 
 export const ACTIVITY_NOTIFICATION_SETUP_URL =
-	'https://docs.n8n.io/integrations/builtin/app-nodes/n8n-nodes-base.microsoftteams/#send-an-activity-notification';
+	'https://docs.n8n.io/integrations/builtin/app-nodes/MNI-nodes-base.microsoftteams/#send-an-activity-notification';
 
 const ACTIVITY_NOTIFICATION_ENDPOINT = '/teamwork/sendActivityNotification';
 

@@ -1,10 +1,10 @@
-import { AGENT_MODEL_PROVIDER_CREDENTIAL_TYPES, type AgentModelProvider } from '@n8n/api-types';
+import { AGENT_MODEL_PROVIDER_CREDENTIAL_TYPES, type AgentModelProvider } from '@MNI/api-types';
 
 export {
 	AGENT_MODEL_PROVIDERS,
 	isAgentModelProvider,
 	type AgentModelProvider,
-} from '@n8n/api-types';
+} from '@MNI/api-types';
 
 export interface AgentModelOption {
 	provider: AgentModelProvider;
@@ -34,7 +34,7 @@ export interface AgentModelSelection {
 
 /**
  * Presentation only. The provider's credential types live in
- * `AGENT_MODEL_PROVIDER_CREDENTIAL_TYPES` (`@n8n/api-types`) so the backend's
+ * `AGENT_MODEL_PROVIDER_CREDENTIAL_TYPES` (`@MNI/api-types`) so the backend's
  * MNI Connect gate and this picker cannot drift apart.
  */
 export const AGENT_MODEL_PROVIDER_DEFINITIONS = {

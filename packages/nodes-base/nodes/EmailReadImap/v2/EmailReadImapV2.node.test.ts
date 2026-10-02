@@ -5,8 +5,8 @@ import type {
 	INode,
 	INodeTypeBaseDescription,
 	ITriggerFunctions,
-} from 'n8n-workflow';
-import { NodeOperationError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeOperationError } from 'MNI-workflow';
 import type { Mock } from 'vitest';
 import { mock } from 'vitest-mock-extended';
 
@@ -17,15 +17,15 @@ import { getNewEmails } from './utils';
 
 const { connectMock } = vi.hoisted(() => ({ connectMock: vi.fn() }));
 
-vi.mock('@n8n/imap', async (importOriginal) => ({
-	...(await importOriginal<typeof import('@n8n/imap')>()),
+vi.mock('@MNI/imap', async (importOriginal) => ({
+	...(await importOriginal<typeof import('@MNI/imap')>()),
 	ImapSimple: { connect: connectMock },
 }));
 vi.mock('./utils', () => ({ getNewEmails: vi.fn() }));
 
 const fetched = vi.mocked(getNewEmails);
 
-/** Stands in for a connection; the real one's own behaviour is covered in @n8n/imap. */
+/** Stands in for a connection; the real one's own behaviour is covered in @MNI/imap. */
 const createConnection = () => {
 	const handlers: {
 		arrival?: (arrival: { count: number | 'unknown' }) => Promise<void>;
@@ -268,7 +268,7 @@ describe('EmailReadImapV2', () => {
 		});
 	});
 
-	// Reconnecting itself belongs to @n8n/imap and is covered there; the node only asks for it.
+	// Reconnecting itself belongs to @MNI/imap and is covered there; the node only asks for it.
 	describe('reconnection', () => {
 		it('asks the connection to watch the mailbox and hold it open', async () => {
 			connectMock.mockResolvedValueOnce(createConnection());

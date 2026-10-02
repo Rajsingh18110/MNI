@@ -3,12 +3,12 @@ import {
 	mockInstance,
 	shareWorkflowWithUsers,
 	testDb,
-} from '@n8n/backend-test-utils';
-import { LICENSE_QUOTAS, UNLIMITED_LICENSE_QUOTA } from '@n8n/constants';
-import type { User } from '@n8n/db';
-import { ErrorReporter } from 'n8n-core';
-import { EVALUATION_TRIGGER_NODE_TYPE } from 'n8n-workflow';
-import type { INode } from 'n8n-workflow';
+} from '@MNI/backend-test-utils';
+import { LICENSE_QUOTAS, UNLIMITED_LICENSE_QUOTA } from '@MNI/constants';
+import type { User } from '@MNI/db';
+import { ErrorReporter } from 'MNI-core';
+import { EVALUATION_TRIGGER_NODE_TYPE } from 'MNI-workflow';
+import type { INode } from 'MNI-workflow';
 
 import { TestRunnerService } from '@/evaluation.ee/test-runner/test-runner.service.ee';
 import { Telemetry } from '@/telemetry';

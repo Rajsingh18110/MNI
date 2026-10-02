@@ -2,18 +2,18 @@ import { mkdirSync, mkdtempSync, writeFileSync } from 'fs';
 import { tmpdir } from 'os';
 import { join } from 'path';
 
-process.env.N8N_ENCRYPTION_KEY = 'test_key';
+process.env.MNI_ENCRYPTION_KEY = 'test_key';
 
-const baseDir = join(tmpdir(), 'n8n-tests/');
+const baseDir = join(tmpdir(), 'MNI-tests/');
 mkdirSync(baseDir, { recursive: true });
 
 const testDir = mkdtempSync(baseDir);
-mkdirSync(join(testDir, '.n8n'));
-process.env.N8N_USER_FOLDER = testDir;
-process.env.N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS = 'true';
+mkdirSync(join(testDir, '.MNI'));
+process.env.MNI_USER_FOLDER = testDir;
+process.env.MNI_ENFORCE_SETTINGS_FILE_PERMISSIONS = 'true';
 
 writeFileSync(
-	join(testDir, '.n8n/config'),
+	join(testDir, '.MNI/config'),
 	JSON.stringify({ encryptionKey: 'test_key', instanceId: '123' }),
 	{
 		encoding: 'utf-8',

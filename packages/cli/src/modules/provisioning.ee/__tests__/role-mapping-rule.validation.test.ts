@@ -1,4 +1,4 @@
-import type { Role } from '@n8n/db';
+import type { Role } from '@MNI/db';
 
 import { BadRequestError } from '@/errors/response-errors/bad-request.error';
 

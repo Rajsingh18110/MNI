@@ -2,19 +2,19 @@
 export const PROMOTION_KEY_COMMENT = 'MNI promotions';
 
 export const GIT_DEFAULT_COMMIT_NAME = 'MNI user';
-export const GIT_DEFAULT_COMMIT_EMAIL = 'n8n@example.com';
+export const GIT_DEFAULT_COMMIT_EMAIL = 'MNI@example.com';
 
 /** Default commit message for a project-scoped selective promote, used when the client sends none. */
 export const PROMOTE_SELECTION_COMMIT_MESSAGE = 'Promote a selection of project changes';
 
-export const PROMOTION_BRANCH_PREFIX = 'n8n-promotion/';
+export const PROMOTION_BRANCH_PREFIX = 'MNI-promotion/';
 
 /**
- * Subfolder of the checkout that holds the n8n-managed package. Keeping it
+ * Subfolder of the checkout that holds the MNI-managed package. Keeping it
  * separate from the repository root leaves `.git` and any files the user commits
  * at the root untouched, and scopes cleanup to a single directory.
  */
-export const PACKAGE_SUBFOLDER = 'n8n-export';
+export const PACKAGE_SUBFOLDER = 'MNI-export';
 
 /** Config name used when a config write leaves `name` out. */
 export const DIRECTION_LABELS = { apply: 'Apply', promote: 'Promote' } as const;

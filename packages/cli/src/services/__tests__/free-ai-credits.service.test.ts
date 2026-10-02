@@ -1,6 +1,6 @@
-import type { LicenseState } from '@n8n/backend-common';
-import type { GlobalConfig } from '@n8n/config';
-import type { User } from '@n8n/db';
+import type { LicenseState } from '@MNI/backend-common';
+import type { GlobalConfig } from '@MNI/config';
+import type { User } from '@MNI/db';
 import { mock } from 'vitest-mock-extended';
 
 import { FREE_AI_CREDITS_CREDENTIAL_NAME } from '@/constants';

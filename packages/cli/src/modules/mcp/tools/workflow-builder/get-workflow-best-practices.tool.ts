@@ -1,11 +1,11 @@
-import type { User } from '@n8n/db';
+import type { User } from '@MNI/db';
 import {
 	bestPracticesRegistry,
 	TechniqueDescription,
 	WorkflowTechnique,
 	type WorkflowTechniqueType,
-} from '@n8n/workflow-sdk/prompts/best-practices';
-import { GROUPING_GUIDANCE } from '@n8n/workflow-sdk/prompts/sdk-reference';
+} from '@MNI/workflow-sdk/prompts/best-practices';
+import { GROUPING_GUIDANCE } from '@MNI/workflow-sdk/prompts/sdk-reference';
 import z from 'zod';
 
 import type { Telemetry } from '@/telemetry';
@@ -105,7 +105,7 @@ function buildTechniqueResponse(technique: WorkflowTechniqueType) {
 
 /**
  * MCP tool that returns workflow design best-practices for a given workflow technique.
- * Sources guidance directly from `bestPracticesRegistry` in `@n8n/workflow-sdk`.
+ * Sources guidance directly from `bestPracticesRegistry` in `@MNI/workflow-sdk`.
  */
 export const createGetWorkflowBestPracticesTool = (
 	user: User,

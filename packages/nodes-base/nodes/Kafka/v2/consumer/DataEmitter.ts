@@ -1,7 +1,7 @@
-import { ensureError } from '@n8n/utils/errors/ensure-error';
-import { sleep } from '@n8n/utils/sleep';
-import type { INodeExecutionData, IRun, ITriggerFunctions } from 'n8n-workflow';
-import { NodeOperationError, OperationalError } from 'n8n-workflow';
+import { ensureError } from '@MNI/utils/errors/ensure-error';
+import { sleep } from '@MNI/utils/sleep';
+import type { INodeExecutionData, IRun, ITriggerFunctions } from 'MNI-workflow';
+import { NodeOperationError, OperationalError } from 'MNI-workflow';
 
 import { MAX_TIMER_DELAY_MS, resolveRetryDelay } from '../../utils';
 

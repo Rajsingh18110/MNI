@@ -2,7 +2,7 @@ import { createPinia, setActivePinia } from 'pinia';
 import { defineComponent, nextTick, reactive, shallowRef } from 'vue';
 import { mount } from '@vue/test-utils';
 import { useReviewChanges } from './useReviewChanges';
-import type { INode, IConnections } from 'n8n-workflow';
+import type { INode, IConnections } from 'MNI-workflow';
 
 const canvasEventBusEmitMock = vi.fn();
 
@@ -13,8 +13,8 @@ vi.mock('@/features/workflows/canvas/canvas.eventBus', () => ({
 const compareWorkflowsNodesMock = vi.fn();
 const getNodeParametersMock = vi.fn();
 
-vi.mock('n8n-workflow', async () => {
-	const actual = await vi.importActual<Record<string, unknown>>('n8n-workflow');
+vi.mock('MNI-workflow', async () => {
+	const actual = await vi.importActual<Record<string, unknown>>('MNI-workflow');
 	const actualNodeHelpers = actual.NodeHelpers as Record<string, unknown>;
 	return {
 		...actual,
@@ -34,11 +34,11 @@ vi.mock('n8n-workflow', async () => {
 	};
 });
 
-vi.mock('@n8n/utils/event-bus', () => ({
+vi.mock('@MNI/utils/event-bus', () => ({
 	createEventBus: () => ({ emit: vi.fn(), on: vi.fn(), off: vi.fn() }),
 }));
 
-vi.mock('@n8n/i18n', () => {
+vi.mock('@MNI/i18n', () => {
 	const baseText = (key: string) => key;
 	return {
 		i18n: { baseText },
@@ -125,7 +125,7 @@ function makeNode(overrides: Partial<INode> = {}): INode {
 	return {
 		id: 'node-1',
 		name: 'Node 1',
-		type: 'n8n-nodes-base.noOp',
+		type: 'MNI-nodes-base.noOp',
 		typeVersion: 1,
 		position: [0, 0],
 		parameters: {},

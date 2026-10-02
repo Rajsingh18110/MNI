@@ -1,11 +1,11 @@
-import { MailpitHelper } from 'n8n-containers/services/mailpit';
-import type { N8NStack } from 'n8n-containers/stack';
+import { MailpitHelper } from 'MNI-containers/services/mailpit';
+import type { N8NStack } from 'MNI-containers/stack';
 import { randomUUID } from 'node:crypto';
 import { once } from 'node:events';
 import { appendFileSync } from 'node:fs';
 import { createServer, type Server } from 'node:http';
 
-import { N8N_AUTH_COOKIE } from '../../config/constants';
+import { MNI_AUTH_COOKIE } from '../../config/constants';
 
 export interface Evidence {
 	type: string;
@@ -59,7 +59,7 @@ export async function provision() {
 				const cookie = req.headers.cookie ?? '';
 				const token = cookie
 					.split('; ')
-					.find((part) => part.startsWith(`${N8N_AUTH_COOKIE}=`))
+					.find((part) => part.startsWith(`${MNI_AUTH_COOKIE}=`))
 					?.split('=')[1];
 				let email = sessions.get(token ?? '');
 				res.on('finish', () =>
@@ -99,7 +99,7 @@ export async function provision() {
 						sessions.set(session, email);
 						res.setHeader(
 							'Set-Cookie',
-							`${N8N_AUTH_COOKIE}=${session}; Path=/; HttpOnly; SameSite=Lax`,
+							`${MNI_AUTH_COOKIE}=${session}; Path=/; HttpOnly; SameSite=Lax`,
 						);
 						res.end(JSON.stringify({ data: { id: email } }));
 					} else if (name === 'backend' && route === 'DELETE /api/v1/messages') {

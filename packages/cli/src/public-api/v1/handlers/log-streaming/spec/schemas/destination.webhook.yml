@@ -15,7 +15,7 @@ allOf:
         type: string
         format: uri
         description: Target URL that receives the event payload.
-        example: https://example.com/n8n-events
+        example: https://example.com/MNI-events
       method:
         type: string
         description: HTTP method used for the request.

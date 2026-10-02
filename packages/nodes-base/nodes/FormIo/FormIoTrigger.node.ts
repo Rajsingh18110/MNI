@@ -8,7 +8,7 @@ import {
 	type INodeTypeDescription,
 	type IWebhookResponseData,
 	NodeConnectionTypes,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { formIoApiRequest } from './GenericFunctions';
 
@@ -159,7 +159,7 @@ export class FormIoTrigger implements INodeType {
 				const payload = {
 					data: {
 						name: 'webhook',
-						title: `webhook-n8n:${webhookUrl}`,
+						title: `webhook-MNI:${webhookUrl}`,
 						method,
 						handler: ['after'],
 						priority: 0,

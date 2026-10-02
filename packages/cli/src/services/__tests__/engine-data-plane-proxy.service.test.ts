@@ -1,5 +1,5 @@
-import type { ExecutionSnapshot, StartExecutionRequest } from '@n8n/engine';
-import { UserError } from 'n8n-workflow';
+import type { ExecutionSnapshot, StartExecutionRequest } from '@MNI/engine';
+import { UserError } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import type { ExecutionIdV2 } from '@/executions/execution-id';
@@ -34,7 +34,7 @@ describe('EngineDataPlaneProxyService', () => {
 
 	it('explains how to enable the engine when no provider is registered', async () => {
 		await expect(proxy.startExecution(request)).rejects.toThrow(UserError);
-		await expect(proxy.startExecution(request)).rejects.toThrow('N8N_ENABLED_MODULES');
+		await expect(proxy.startExecution(request)).rejects.toThrow('MNI_ENABLED_MODULES');
 	});
 
 	it('delegates to the registered provider', async () => {

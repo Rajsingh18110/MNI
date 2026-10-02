@@ -1,15 +1,15 @@
 import { createTestingPinia } from '@pinia/testing';
 import { waitFor, within } from '@testing-library/vue';
 import userEvent from '@testing-library/user-event';
-import { ROLE } from '@n8n/api-types';
+import { ROLE } from '@MNI/api-types';
 import { createComponentRenderer } from '@/__tests__/render';
 import { mockedStore, type MockedStore } from '@/__tests__/utils';
 import { INVITE_USER_MODAL_KEY } from '../users.constants';
-import type { IInviteResponse } from '@n8n/stores/invitation.api';
+import type { IInviteResponse } from '@MNI/stores/invitation.api';
 import InviteUsersModal from './InviteUsersModal.vue';
-import { useUsersStore } from '@n8n/stores/users.store';
-import { useSettingsStore } from '@n8n/stores/settings.store';
-import { useRolesStore } from '@n8n/stores/roles.store';
+import { useUsersStore } from '@MNI/stores/users.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
+import { useRolesStore } from '@MNI/stores/roles.store';
 
 const ModalStub = {
 	template: `
@@ -31,11 +31,11 @@ const mockToast = {
 	showError: vi.fn(),
 };
 
-vi.mock('@n8n/composables/useClipboard', () => ({
+vi.mock('@MNI/composables/useClipboard', () => ({
 	useClipboard: vi.fn(() => mockClipboard),
 }));
 
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: vi.fn(() => mockToast),
 }));
 

@@ -2,10 +2,10 @@
 import { onMounted, onBeforeUnmount, computed, watch } from 'vue';
 import { useDocumentVisibility } from '@vueuse/core';
 
-import { useUsersStore } from '@n8n/stores/users.store';
+import { useUsersStore } from '@MNI/stores/users.store';
 import { useCollaborationStore } from '../collaboration.store';
 
-import { N8nUserStack } from '@n8n/design-system';
+import { N8nUserStack } from '@MNI/design-system';
 import { useWorkflowId } from '@/app/composables/useWorkflowId';
 
 const collaborationStore = useCollaborationStore();

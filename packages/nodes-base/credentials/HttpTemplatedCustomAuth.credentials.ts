@@ -1,7 +1,7 @@
-/* eslint-disable n8n-nodes-base/cred-class-name-unsuffixed */
-/* eslint-disable n8n-nodes-base/cred-class-field-name-unsuffixed */
-/* eslint-disable n8n-nodes-base/cred-class-field-documentation-url-missing */
-import type { IAuthenticate, ICredentialType, INodeProperties, Icon } from 'n8n-workflow';
+/* eslint-disable MNI-nodes-base/cred-class-name-unsuffixed */
+/* eslint-disable MNI-nodes-base/cred-class-field-name-unsuffixed */
+/* eslint-disable MNI-nodes-base/cred-class-field-documentation-url-missing */
+import type { IAuthenticate, ICredentialType, INodeProperties, Icon } from 'MNI-workflow';
 
 import { applyTemplatedAuth } from '../utils/templated-auth';
 
@@ -18,7 +18,7 @@ export class HttpTemplatedCustomAuth implements ICredentialType {
 
 	genericAuth = true;
 
-	icon: Icon = 'node:n8n-nodes-base.httpRequest';
+	icon: Icon = 'node:MNI-nodes-base.httpRequest';
 
 	properties: INodeProperties[] = [
 		{

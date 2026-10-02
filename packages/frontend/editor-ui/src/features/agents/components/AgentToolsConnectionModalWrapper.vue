@@ -1,17 +1,17 @@
 <script setup lang="ts">
 import { computed, onMounted, provide, ref, shallowRef, watch } from 'vue';
 import { v4 as uuidv4 } from 'uuid';
-import { useI18n, type BaseTextKey } from '@n8n/i18n';
-import { N8nButton, N8nIcon } from '@n8n/design-system';
-import { getResourcePermissions } from '@n8n/permissions';
-import { useRootStore } from '@n8n/stores/useRootStore';
-import { INCOMPATIBLE_WORKFLOW_TOOL_BODY_NODE_TYPES } from '@n8n/api-types';
+import { useI18n, type BaseTextKey } from '@MNI/i18n';
+import { N8nButton, N8nIcon } from '@MNI/design-system';
+import { getResourcePermissions } from '@MNI/permissions';
+import { useRootStore } from '@MNI/stores/useRootStore';
+import { INCOMPATIBLE_WORKFLOW_TOOL_BODY_NODE_TYPES } from '@MNI/api-types';
 import {
 	NodeConnectionTypes,
 	isCommunityPackageName,
 	resolveSupportedCredentialActivation,
-} from 'n8n-workflow';
-import type { INode, INodeTypeDescription } from 'n8n-workflow';
+} from 'MNI-workflow';
+import type { INode, INodeTypeDescription } from 'MNI-workflow';
 import { useRouter } from 'vue-router';
 
 import { getWorkflow } from '@/app/api/workflows';
@@ -22,16 +22,16 @@ import {
 } from '@/app/constants/samples';
 import { DEFAULT_NEW_WORKFLOW_NAME } from '@/app/constants/workflows';
 import { AI_MCP_TOOL_NODE_TYPE } from '@/app/constants/nodeTypes';
-import { useToast } from '@n8n/composables/useToast';
+import { useToast } from '@MNI/composables/useToast';
 import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';
 import { useUIStore } from '@/app/stores/ui.store';
 import { stripToolSuffix, useAiGatewayStore } from '@/app/stores/aiGateway.store';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { useWorkflowsStore } from '@/app/stores/workflows.store';
 import { useProjectsStore } from '@/features/collaboration/projects/projects.store';
 import { useSourceControlStore } from '@/features/integrations/sourceControl.ee/sourceControl.store';
 import { useInstallNode } from '@/features/settings/communityNodes/composables/useInstallNode';
-import { useUsersStore } from '@n8n/stores/users.store';
+import { useUsersStore } from '@MNI/stores/users.store';
 import {
 	filterAndSearchNodes,
 	isAiGatewayEligibleNode,
@@ -70,7 +70,7 @@ import {
 } from '../composables/useMcpServerAdapter';
 import type { AgentJsonMcpServerConfig, AgentJsonToolRef } from '../types';
 import type { ToolPickerMode } from './AgentCapabilitiesSection.types';
-import type { WorkflowToolIncompatibilityReason } from '@n8n/api-types';
+import type { WorkflowToolIncompatibilityReason } from '@MNI/api-types';
 import { toToolIconSource } from '../utils/toolIconSource';
 import { workflowToolTriggerLabel } from '../utils/workflowToolTriggers';
 import AgentToolConfigForm, { type AgentToolConfigModalData } from './AgentToolConfigForm.vue';
@@ -78,7 +78,7 @@ import AgentModalMultiStep from './modals/AgentModalMultiStep.vue';
 
 const BASE_CATEGORIES: ToolCategoryKey[] = ['all', 'mcp', 'app-action', 'workflows'];
 /** Prefix for the synthetic ids of gateway-backed rows in the MNI Connect section. */
-const N8N_CONNECT_ID_PREFIX = 'n8n-connect:';
+const MNI_CONNECT_ID_PREFIX = 'MNI-connect:';
 const incompatibleWorkflowToolBodyNodeTypes = new Set<string>(
 	INCOMPATIBLE_WORKFLOW_TOOL_BODY_NODE_TYPES,
 );
@@ -697,8 +697,8 @@ function availableNodeItem(nodeType: INodeTypeDescription): NodeConnectionItem {
 function n8nConnectNodeItem(nodeType: INodeTypeDescription): NodeConnectionItem {
 	return {
 		...availableNodeItem(nodeType),
-		id: `${N8N_CONNECT_ID_PREFIX}${nodeType.name}`,
-		category: 'n8n-connect',
+		id: `${MNI_CONNECT_ID_PREFIX}${nodeType.name}`,
+		category: 'MNI-connect',
 		freeCredits: true,
 	};
 }
@@ -793,7 +793,7 @@ const categories = computed<ToolCategoryKey[]>(() => {
 	const baseCategories = BASE_CATEGORIES.filter((category) => category !== 'workflows');
 	if (n8nConnectItems.value.length === 0) return baseCategories;
 	const [all, ...rest] = baseCategories;
-	return [all, 'n8n-connect', ...rest];
+	return [all, 'MNI-connect', ...rest];
 });
 
 const items = computed<ToolConnectionItem[]>(() => {
@@ -887,8 +887,8 @@ function handleRowActivate(item: ToolConnectionItem) {
 		return;
 	}
 
-	if (item.kind === 'node' && item.id.startsWith(N8N_CONNECT_ID_PREFIX)) {
-		const nodeTypeName = item.id.slice(N8N_CONNECT_ID_PREFIX.length);
+	if (item.kind === 'node' && item.id.startsWith(MNI_CONNECT_ID_PREFIX)) {
+		const nodeTypeName = item.id.slice(MNI_CONNECT_ID_PREFIX.length);
 		const nodeType = availableToolTypes.value.find((nt) => nt.name === nodeTypeName);
 		if (nodeType) addManagedNodeTool(nodeType);
 		return;

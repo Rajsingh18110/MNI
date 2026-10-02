@@ -1,4 +1,4 @@
-import { PROJECT_SCOPE_MAP } from '@n8n/permissions';
+import { PROJECT_SCOPE_MAP } from '@MNI/permissions';
 
 import {
 	PERSONAL_SPACE_GROUPS,

@@ -1,16 +1,16 @@
-import type { RedactionFloor } from '@n8n/api-types';
+import type { RedactionFloor } from '@MNI/api-types';
 import {
 	SettingsRepository,
 	SharedCredentialsRepository,
 	SharedWorkflowRepository,
 	WorkflowRepository,
-} from '@n8n/db';
-import { Service } from '@n8n/di';
+} from '@MNI/db';
+import { Service } from '@MNI/di';
 import {
 	PERSONAL_SPACE_PUBLISHING_SETTING,
 	PERSONAL_SPACE_SHARING_SETTING,
-} from '@n8n/permissions';
-import type { DistributiveOmit } from '@n8n/utils/types';
+} from '@MNI/permissions';
+import type { DistributiveOmit } from '@MNI/utils/types';
 
 import { EventService } from '@/events/event.service';
 import type { RelayEventMap, UserLike } from '@/events/maps/relay.event-map';

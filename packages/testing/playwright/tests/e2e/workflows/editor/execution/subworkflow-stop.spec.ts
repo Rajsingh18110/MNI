@@ -24,7 +24,7 @@ test.describe(
 				await api.workflows.importWorkflowFromFile('cat-2662-parent.json', {
 					transform: (workflow) => {
 						const executeNode = workflow.nodes!.find(
-							(n) => n.type === 'n8n-nodes-base.executeWorkflow',
+							(n) => n.type === 'MNI-nodes-base.executeWorkflow',
 						)!;
 						executeNode.parameters.workflowId = { __rl: true, value: childWorkflowId, mode: 'id' };
 						return workflow;

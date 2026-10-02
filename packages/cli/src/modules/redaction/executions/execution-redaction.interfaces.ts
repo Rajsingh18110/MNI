@@ -1,4 +1,4 @@
-import type { User } from '@n8n/db';
+import type { User } from '@MNI/db';
 
 import type { RedactableExecution } from '@/executions/execution-redaction';
 

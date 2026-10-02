@@ -2,11 +2,11 @@ import type {
 	DependencyResourceType,
 	DependencyTypeCounts,
 	ResolvedDependenciesResult,
-} from '@n8n/api-types';
+} from '@MNI/api-types';
 import { ref } from 'vue';
 
 import * as workflowDependenciesApi from '@/app/api/workflow-dependencies';
-import { useRootStore } from '@n8n/stores/useRootStore';
+import { useRootStore } from '@MNI/stores/useRootStore';
 
 const dependenciesMap = ref<Record<string, ResolvedDependenciesResult>>({});
 const countsMap = ref<Record<string, DependencyTypeCounts>>({});

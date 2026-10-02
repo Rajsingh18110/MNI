@@ -1,13 +1,13 @@
-import { createActiveWorkflow, createWorkflowWithHistory, testDb } from '@n8n/backend-test-utils';
-import type { SecurityConfig } from '@n8n/config';
+import { createActiveWorkflow, createWorkflowWithHistory, testDb } from '@MNI/backend-test-utils';
+import type { SecurityConfig } from '@MNI/config';
 import {
 	generateNanoId,
 	CredentialsRepository,
 	ExecutionDataRepository,
 	ExecutionRepository,
 	WorkflowRepository,
-} from '@n8n/db';
-import { Container } from '@n8n/di';
+} from '@MNI/db';
+import { Container } from '@MNI/di';
 import { v4 as uuid } from 'uuid';
 import { mock } from 'vitest-mock-extended';
 
@@ -59,7 +59,7 @@ test('should report credentials not in any use', async () => {
 			{
 				id: uuid(),
 				name: 'My Node',
-				type: 'n8n-nodes-base.slack',
+				type: 'MNI-nodes-base.slack',
 				typeVersion: 1,
 				position: [0, 0] as [number, number],
 				parameters: {},
@@ -105,7 +105,7 @@ test('should report credentials not in active use', async () => {
 			{
 				id: uuid(),
 				name: 'My Node',
-				type: 'n8n-nodes-base.slack',
+				type: 'MNI-nodes-base.slack',
 				typeVersion: 1,
 				position: [0, 0] as [number, number],
 				parameters: {},
@@ -148,7 +148,7 @@ test('should report credential in not recently executed workflow', async () => {
 			{
 				id: uuid(),
 				name: 'My Node',
-				type: 'n8n-nodes-base.slack',
+				type: 'MNI-nodes-base.slack',
 				typeVersion: 1,
 				position: [0, 0] as [number, number],
 				credentials: {
@@ -216,7 +216,7 @@ test('should not report credentials in recently executed workflow', async () => 
 			{
 				id: uuid(),
 				name: 'My Node',
-				type: 'n8n-nodes-base.slack',
+				type: 'MNI-nodes-base.slack',
 				typeVersion: 1,
 				position: [0, 0] as [number, number],
 				credentials: {
@@ -275,7 +275,7 @@ test('should detect recent execution from the execution row alone, without its d
 			{
 				id: uuid(),
 				name: 'My Node',
-				type: 'n8n-nodes-base.slack',
+				type: 'MNI-nodes-base.slack',
 				typeVersion: 1,
 				position: [0, 0] as [number, number],
 				credentials: {

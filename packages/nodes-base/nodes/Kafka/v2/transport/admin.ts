@@ -1,6 +1,6 @@
-import { sleep } from '@n8n/utils/sleep';
-import type { Logger } from 'n8n-workflow';
-import { UserError } from 'n8n-workflow';
+import { sleep } from '@MNI/utils/sleep';
+import type { Logger } from 'MNI-workflow';
+import { UserError } from 'MNI-workflow';
 
 import { createKafkaClient, getKafkaLibrary } from './client';
 import { createLibraryLogger } from './LibraryLogger';

@@ -1,9 +1,9 @@
 import type { Mocked } from 'vitest';
-import { mockLogger } from '@n8n/backend-test-utils';
-import type { TransactionRunner } from '@n8n/db';
-import { createDeferredPromise } from '@n8n/utils/promise/deferred-promise';
+import { mockLogger } from '@MNI/backend-test-utils';
+import type { TransactionRunner } from '@MNI/db';
+import { createDeferredPromise } from '@MNI/utils/promise/deferred-promise';
 import { mock } from 'vitest-mock-extended';
-import type { ErrorReporter, StorageConfig } from 'n8n-core';
+import type { ErrorReporter, StorageConfig } from 'MNI-core';
 
 import type { Telemetry } from '@/telemetry';
 
@@ -18,8 +18,8 @@ import type { AgentExecution } from '../entities/agent-execution.entity';
 import { AgentMessageEntity } from '../entities/agent-message.entity';
 import type { MessageRecord, TimelineEvent } from '../execution-recorder';
 import type { AgentExecutionLogStore } from '../execution-log/agent-execution-log-store';
-import type { N8NCheckpointStorage } from '../integrations/n8n-checkpoint-storage';
-import type { N8nMemory } from '../integrations/n8n-memory';
+import type { N8NCheckpointStorage } from '../integrations/MNI-checkpoint-storage';
+import type { N8nMemory } from '../integrations/MNI-memory';
 import type { AgentExecutionThreadRepository } from '../repositories/agent-execution-thread.repository';
 import type { AgentExecutionRepository } from '../repositories/agent-execution.repository';
 import type { AgentMessageRepository } from '../repositories/agent-message.repository';
@@ -1255,8 +1255,8 @@ describe('AgentExecutionService', () => {
 
 	describe('canUseProductionChatThread', () => {
 		it.each([
-			{ source: 'n8n_chat_production', allowed: true },
-			{ source: 'n8n_chat', allowed: false },
+			{ source: 'MNI_chat_production', allowed: true },
+			{ source: 'MNI_chat', allowed: false },
 			{ source: 'chat', allowed: false },
 		])('checks the first source: $source', async ({ source, allowed }) => {
 			agentExecutionThreadRepository.findOneBy.mockResolvedValue(makeThread());

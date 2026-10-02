@@ -4,21 +4,21 @@ import type {
 	CreateApiKeyRequestDto,
 	UnixTimestamp,
 	UpdateApiKeyRequestDto,
-} from '@n8n/api-types';
-import { LIST_API_KEYS_SORT_OPTIONS } from '@n8n/api-types';
-import { Logger } from '@n8n/backend-common';
-import type { User } from '@n8n/db';
-import { ApiKey, ApiKeyRepository, escapeLike, LIKE_ESCAPE_CLAUSE, withTransaction } from '@n8n/db';
-import { Service } from '@n8n/di';
-import type { ApiKeyScope, AuthPrincipal } from '@n8n/permissions';
-import { getApiKeyScopesForRole, getOwnerOnlyApiKeyScopes, hasGlobalScope } from '@n8n/permissions';
+} from '@MNI/api-types';
+import { LIST_API_KEYS_SORT_OPTIONS } from '@MNI/api-types';
+import { Logger } from '@MNI/backend-common';
+import type { User } from '@MNI/db';
+import { ApiKey, ApiKeyRepository, escapeLike, LIKE_ESCAPE_CLAUSE, withTransaction } from '@MNI/db';
+import { Service } from '@MNI/di';
+import type { ApiKeyScope, AuthPrincipal } from '@MNI/permissions';
+import { getApiKeyScopesForRole, getOwnerOnlyApiKeyScopes, hasGlobalScope } from '@MNI/permissions';
 import {
 	In,
 	Raw,
 	type EntityManager,
 	type FindOptionsWhere,
 	type SelectQueryBuilder,
-} from '@n8n/typeorm';
+} from '@MNI/typeorm';
 import { randomUUID } from 'crypto';
 
 import { BadRequestError } from '@/errors/response-errors/bad-request.error';
@@ -31,7 +31,7 @@ export const API_KEY_AUDIENCE: ApiKeyAudience = 'public-api';
 export const API_KEY_ISSUER = 'MNI';
 const REDACT_API_KEY_REVEAL_COUNT = 4;
 const REDACT_API_KEY_MAX_LENGTH = 10;
-export const PREFIX_LEGACY_API_KEY = 'n8n_api_';
+export const PREFIX_LEGACY_API_KEY = 'MNI_api_';
 
 @Service()
 export class PublicApiKeyService {

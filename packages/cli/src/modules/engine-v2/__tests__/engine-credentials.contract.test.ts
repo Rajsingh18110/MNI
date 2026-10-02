@@ -5,7 +5,7 @@ const fullRequest = {
 	credential: { id: 'cred-1', name: 'Header Auth account', type: 'httpHeaderAuth' },
 	execution: { executionId: 'exec-1', workflowId: 'wf-1', mode: 'manual' },
 	context: { userId: 'user-1', projectId: 'project-1' },
-	consumer: { nodeType: 'n8n-nodes-base.httpRequest' },
+	consumer: { nodeType: 'MNI-nodes-base.httpRequest' },
 };
 
 describe('resolveCredentialRequestSchema', () => {

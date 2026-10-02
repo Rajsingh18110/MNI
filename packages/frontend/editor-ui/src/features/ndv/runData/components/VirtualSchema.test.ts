@@ -7,7 +7,7 @@ import {
 import { createComponentRenderer } from '@/__tests__/render';
 import VirtualSchema from './VirtualSchema.vue';
 import * as nodeHelpers from '@/app/composables/useNodeHelpers';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
 import * as calloutHelpers from '@/app/composables/useCalloutHelpers';
 import {
 	IF_NODE_TYPE,
@@ -28,14 +28,14 @@ import { userEvent } from '@testing-library/user-event';
 import { cleanup, waitFor } from '@testing-library/vue';
 import { computed, shallowRef } from 'vue';
 import { WorkflowDocumentStoreKey } from '@/app/constants/injectionKeys';
-import { createResultOk } from '@n8n/utils/result';
-import { NodeConnectionTypes, type IBinaryData, type INodeExecutionData } from 'n8n-workflow';
+import { createResultOk } from '@MNI/utils/result';
+import { NodeConnectionTypes, type IBinaryData, type INodeExecutionData } from 'MNI-workflow';
 import { setActivePinia } from 'pinia';
 import { mock } from 'vitest-mock-extended';
-import { defaultSettings } from '@n8n/frontend-test-utils';
+import { defaultSettings } from '@MNI/frontend-test-utils';
 import { usePostHog } from '@/app/stores/posthog.store';
 import { useSchemaPreviewStore } from '@/features/ndv/runData/schemaPreview.store';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 
 // Instantiates a store that derives the workflow id from the route. These tests run
 // without a router, so resolve the id directly.
@@ -78,14 +78,14 @@ const ifNode = createTestNode({
 
 const aiTool = createTestNode({
 	name: 'AI Tool',
-	type: '@n8n/n8n-nodes-langchain.memoryBufferWindow',
+	type: '@MNI/MNI-nodes-langchain.memoryBufferWindow',
 	typeVersion: 1,
 	disabled: false,
 });
 
 const nodeWithCredential = createTestNode({
 	name: 'Notion',
-	type: 'n8n-nodes-base.notion',
+	type: 'MNI-nodes-base.notion',
 	typeVersion: 1,
 	credentials: { notionApi: { id: 'testId', name: 'testName' } },
 	disabled: false,
@@ -105,14 +105,14 @@ const splitInBatchesNode = createTestNode({
 
 const customerDatastoreNode = createTestNode({
 	name: 'Customer Datastore',
-	type: 'n8n-nodes-base.n8nTrainingCustomerDatastore',
+	type: 'MNI-nodes-base.n8nTrainingCustomerDatastore',
 	typeVersion: 1,
 	disabled: false,
 });
 
 const mergeNode = createTestNode({
 	name: 'Merge',
-	type: 'n8n-nodes-base.merge',
+	type: 'MNI-nodes-base.merge',
 	typeVersion: 3,
 	disabled: false,
 });
@@ -192,7 +192,7 @@ async function setupStore() {
 			outputs: [NodeConnectionTypes.Main, NodeConnectionTypes.Main],
 		}),
 		mockNodeTypeDescription({
-			name: 'n8n-nodes-base.notion',
+			name: 'MNI-nodes-base.notion',
 			outputs: [NodeConnectionTypes.Main],
 		}),
 		mockNodeTypeDescription({
@@ -200,11 +200,11 @@ async function setupStore() {
 			outputs: [NodeConnectionTypes.Main, NodeConnectionTypes.Main],
 		}),
 		mockNodeTypeDescription({
-			name: 'n8n-nodes-base.n8nTrainingCustomerDatastore',
+			name: 'MNI-nodes-base.n8nTrainingCustomerDatastore',
 			outputs: [NodeConnectionTypes.Main],
 		}),
 		mockNodeTypeDescription({
-			name: 'n8n-nodes-base.merge',
+			name: 'MNI-nodes-base.merge',
 			outputs: [NodeConnectionTypes.Main],
 		}),
 	]);
@@ -269,7 +269,7 @@ describe('VirtualSchema.vue', () => {
 
 	const N8nCalloutStub = {
 		template:
-			'<div class="n8n-callout" v-bind="$attrs"><slot></slot><slot name="trailingContent"></slot></div>',
+			'<div class="MNI-callout" v-bind="$attrs"><slot></slot><slot name="trailingContent"></slot></div>',
 	};
 
 	const NodeIconStub = {
@@ -664,7 +664,7 @@ describe('VirtualSchema.vue', () => {
 						src_view: 'schema',
 						src_field_name: 'name',
 						src_field_nest_level: 0,
-						src_node_type: 'n8n-nodes-base.manualTrigger',
+						src_node_type: 'MNI-nodes-base.manualTrigger',
 						src_nodes_back: '1',
 						src_has_credential: false,
 					}),

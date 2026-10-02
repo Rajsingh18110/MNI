@@ -1,4 +1,4 @@
-import type { AuthenticatedRequest } from '@n8n/db';
+import type { AuthenticatedRequest } from '@MNI/db';
 import type { RequestHandler } from 'express';
 
 export interface UploadMiddleware {

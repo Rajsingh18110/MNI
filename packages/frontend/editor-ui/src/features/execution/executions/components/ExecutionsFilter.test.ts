@@ -2,20 +2,20 @@ import { reactive } from 'vue';
 import { createTestingPinia } from '@pinia/testing';
 import { waitFor } from '@testing-library/vue';
 import { mockedStore, getTooltip, hoverTooltipTrigger } from '@/__tests__/utils';
-import { useSettingsStore } from '@n8n/stores/settings.store';
-import type { FrontendSettings } from '@n8n/api-types';
+import { useSettingsStore } from '@MNI/stores/settings.store';
+import type { FrontendSettings } from '@MNI/api-types';
 import userEvent from '@testing-library/user-event';
 import { faker } from '@faker-js/faker';
 import ExecutionsFilter from '../components/ExecutionsFilter.vue';
 import type { IWorkflowShortResponse } from '@/Interface';
 import type { ExecutionFilterType } from '../executions.types';
 import { createComponentRenderer } from '@/__tests__/render';
-import * as telemetryModule from '@n8n/composables/useTelemetry';
+import * as telemetryModule from '@MNI/composables/useTelemetry';
 import type { Telemetry } from '@/app/plugins/telemetry';
 import type { MockInstance } from 'vitest';
-import * as restApiClient from '@n8n/rest-api-client';
+import * as restApiClient from '@MNI/rest-api-client';
 
-vi.mock('@n8n/rest-api-client');
+vi.mock('@MNI/rest-api-client');
 
 vi.mock('vue-router', () => ({
 	useRoute: () =>
@@ -364,7 +364,7 @@ describe('ExecutionsFilter', () => {
 				const select = getByTestId('executions-filter-version-select');
 				expect(select).toBeInTheDocument();
 				expect(select.querySelector('.is-disabled')).toBeTruthy();
-				expect(select.querySelector('.n8n-icon')).toBeInTheDocument();
+				expect(select.querySelector('.MNI-icon')).toBeInTheDocument();
 			});
 
 			// Resolve the request

@@ -1,3 +1,3 @@
-import { UserError } from 'n8n-workflow';
+import { UserError } from 'MNI-workflow';
 
 export class VariableCountLimitReachedError extends UserError {}

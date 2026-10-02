@@ -1,4 +1,4 @@
-import type { INodeProperties } from 'n8n-workflow';
+import type { INodeProperties } from 'MNI-workflow';
 
 export const lightOperations: INodeProperties[] = [
 	{
@@ -144,7 +144,7 @@ export const lightFields: INodeProperties[] = [
 			},
 		},
 		default: true,
-		// eslint-disable-next-line n8n-nodes-base/node-param-description-boolean-without-whether
+		// eslint-disable-next-line MNI-nodes-base/node-param-description-boolean-without-whether
 		description: 'On/Off state of the light',
 	},
 	{

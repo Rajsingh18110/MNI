@@ -6,14 +6,14 @@ import type {
 	WorkflowPublishedVersionRepository,
 	WorkflowHistoryRepository,
 	WorkflowRepository,
-} from '@n8n/db';
-import type { Logger } from '@n8n/backend-common';
+} from '@MNI/db';
+import type { Logger } from '@MNI/backend-common';
 import { mock } from 'vitest-mock-extended';
-import { UnrecognizedNodeTypeError } from 'n8n-core';
-import type { INode, INodeType } from 'n8n-workflow';
-import { WebhookPathTakenError } from 'n8n-workflow';
+import { UnrecognizedNodeTypeError } from 'MNI-core';
+import type { INode, INodeType } from 'MNI-workflow';
+import { WebhookPathTakenError } from 'MNI-workflow';
 
-import { TELEMETRY_EVENT } from '@n8n/telemetry';
+import { TELEMETRY_EVENT } from '@MNI/telemetry';
 
 import type { NodeTypes } from '@/node-types';
 import type { PolicyEnforcementService } from '@/policy/policy-enforcement.service';
@@ -101,7 +101,7 @@ describe('WorkflowPublicationApplier', () => {
 		return {
 			id,
 			name: id,
-			type: 'n8n-nodes-base.scheduleTrigger',
+			type: 'MNI-nodes-base.scheduleTrigger',
 			typeVersion: 1,
 			position: [0, 0],
 			parameters: {},
@@ -439,8 +439,8 @@ describe('WorkflowPublicationApplier', () => {
 	});
 
 	test('stamps each trigger status with its execution kind', async () => {
-		const hook = triggerNode('hook', { type: 'n8n-nodes-base.webhook' });
-		const poll = triggerNode('poll', { type: 'n8n-nodes-base.rssFeedReadTrigger' });
+		const hook = triggerNode('hook', { type: 'MNI-nodes-base.webhook' });
+		const poll = triggerNode('poll', { type: 'MNI-nodes-base.rssFeedReadTrigger' });
 		setTriggerSets([], [hook, poll]);
 		workflowTriggerActivator.getTriggerKinds.mockReturnValue(
 			new Map([
@@ -762,7 +762,7 @@ describe('WorkflowPublicationApplier', () => {
 		// Emits "Published Workflow Updated" from `trigger()` itself, so it only fires
 		// when re-registered: the diff must re-apply it on every version change.
 		const n8nTrigger = triggerNode('MNI', {
-			type: 'n8n-nodes-base.n8nTrigger',
+			type: 'MNI-nodes-base.n8nTrigger',
 			parameters: { events: ['update'] },
 		});
 
@@ -1144,7 +1144,7 @@ describe('WorkflowPublicationApplier', () => {
 		const unknownNode: INode = {
 			id: 'x',
 			name: 'Execute Command',
-			type: 'n8n-nodes-base.executeCommand',
+			type: 'MNI-nodes-base.executeCommand',
 			typeVersion: 1,
 			position: [0, 0],
 			parameters: {},
@@ -1155,7 +1155,7 @@ describe('WorkflowPublicationApplier', () => {
 		beforeEach(() => {
 			nodeTypes.getByNameAndVersion.mockImplementation((type) => {
 				if (type === unknownNode.type) {
-					throw new UnrecognizedNodeTypeError('n8n-nodes-base', 'executeCommand');
+					throw new UnrecognizedNodeTypeError('MNI-nodes-base', 'executeCommand');
 				}
 				return mock<INodeType>();
 			});
@@ -1175,7 +1175,7 @@ describe('WorkflowPublicationApplier', () => {
 			expect(result).toMatchObject({
 				type: 'failed',
 				error: expect.objectContaining({
-					message: expect.stringContaining('n8n-nodes-base.executeCommand'),
+					message: expect.stringContaining('MNI-nodes-base.executeCommand'),
 				}),
 				triggerStatuses: [
 					{
@@ -1183,14 +1183,14 @@ describe('WorkflowPublicationApplier', () => {
 						nodeName: 'a',
 						status: 'failed',
 						triggerKind: 'in-memory',
-						errorMessage: expect.stringContaining('n8n-nodes-base.executeCommand'),
+						errorMessage: expect.stringContaining('MNI-nodes-base.executeCommand'),
 					},
 					{
 						nodeId: 'x',
 						nodeName: 'Execute Command',
 						status: 'failed',
 						triggerKind: 'persisted',
-						errorMessage: 'Unrecognized node type: n8n-nodes-base.executeCommand',
+						errorMessage: 'Unrecognized node type: MNI-nodes-base.executeCommand',
 					},
 				],
 			});
@@ -1417,7 +1417,7 @@ describe('WorkflowPublicationApplier', () => {
 				versionId: 'v-2',
 				workflowId: 'wf-1',
 				nodes: [
-					triggerNode('shared', { name: 'Set', type: 'n8n-nodes-base.set' }),
+					triggerNode('shared', { name: 'Set', type: 'MNI-nodes-base.set' }),
 					triggerNode('shared', { name: 'Trigger' }),
 				],
 				connections: {},

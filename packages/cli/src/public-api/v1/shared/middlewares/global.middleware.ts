@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-invalid-void-type */
-import { type BooleanLicenseFeature, UNLIMITED_LICENSE_QUOTA } from '@n8n/constants';
-import type { AuthenticatedRequest } from '@n8n/db';
-import type { DeprecationInfo } from '@n8n/decorators';
-import { Container } from '@n8n/di';
-import type { ApiKeyScope, Scope } from '@n8n/permissions';
+import { type BooleanLicenseFeature, UNLIMITED_LICENSE_QUOTA } from '@MNI/constants';
+import type { AuthenticatedRequest } from '@MNI/db';
+import type { DeprecationInfo } from '@MNI/decorators';
+import { Container } from '@MNI/di';
+import type { ApiKeyScope, Scope } from '@MNI/permissions';
 import type express from 'express';
 import type { NextFunction, Request, Response } from 'express';
 

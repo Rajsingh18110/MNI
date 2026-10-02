@@ -1,6 +1,6 @@
-import { useUsersStore } from '@n8n/stores/users.store';
+import { useUsersStore } from '@MNI/stores/users.store';
 import type { RBACPermissionCheck, RolePermissionOptions } from '@/app/types/rbac';
-import { ROLE, type Role } from '@n8n/api-types';
+import { ROLE, type Role } from '@MNI/api-types';
 
 export const hasRole: RBACPermissionCheck<RolePermissionOptions> = (checkRoles) => {
 	const usersStore = useUsersStore();

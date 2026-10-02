@@ -1,6 +1,6 @@
-import { OutboundHttp } from '@n8n/backend-network';
-import type { User } from '@n8n/db';
-import { Container } from '@n8n/di';
+import { OutboundHttp } from '@MNI/backend-network';
+import type { User } from '@MNI/db';
+import { Container } from '@MNI/di';
 import { mock } from 'vitest-mock-extended';
 import nock from 'nock';
 
@@ -29,7 +29,7 @@ describe('FirecrawlHandler', () => {
 	describe('setConfig', () => {
 		it('should set configuration', () => {
 			const config: FirecrawlQuickConnect = {
-				packageName: '@n8n/firecrawl',
+				packageName: '@MNI/firecrawl',
 				credentialType: 'firecrawlApi',
 				text: 'Firecrawl Integration',
 				quickConnectType: 'firecrawl',
@@ -47,7 +47,7 @@ describe('FirecrawlHandler', () => {
 
 	describe('getCredentialData', () => {
 		const mockConfig: FirecrawlQuickConnect = {
-			packageName: '@n8n/firecrawl',
+			packageName: '@MNI/firecrawl',
 			credentialType: 'firecrawlApi',
 			text: 'Firecrawl Integration',
 			quickConnectType: 'firecrawl',

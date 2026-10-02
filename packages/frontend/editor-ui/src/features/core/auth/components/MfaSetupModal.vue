@@ -7,17 +7,17 @@ import {
 } from '@/app/constants';
 import { MFA_SETUP_MODAL_KEY } from '../auth.constants';
 import { ref, onMounted } from 'vue';
-import { useUsersStore } from '@n8n/stores/users.store';
+import { useUsersStore } from '@MNI/stores/users.store';
 import { mfaEventBus } from '../auth.eventBus';
-import { useToast } from '@n8n/composables/useToast';
+import { useToast } from '@MNI/composables/useToast';
 import QrcodeVue from 'qrcode.vue';
-import { useClipboard } from '@n8n/composables/useClipboard';
-import { useI18n } from '@n8n/i18n';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useClipboard } from '@MNI/composables/useClipboard';
+import { useI18n } from '@MNI/i18n';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import router from '@/app/router';
 import { I18nT } from 'vue-i18n';
 
-import { N8nButton, N8nInfoTip, N8nInput, N8nInputLabel, N8nText } from '@n8n/design-system';
+import { N8nButton, N8nInfoTip, N8nInput, N8nInputLabel, N8nText } from '@MNI/design-system';
 
 // DynamicModalLoader's modal-state props must not reach the dialog root.
 defineOptions({ inheritAttrs: false });
@@ -90,7 +90,7 @@ const onSaveClick = () => {
 };
 
 const onDownloadClick = () => {
-	const filename = 'n8n-recovery-codes.txt';
+	const filename = 'MNI-recovery-codes.txt';
 	const temporalElement = document.createElement('a');
 	temporalElement.setAttribute(
 		'href',

@@ -1,13 +1,13 @@
-import { Logger } from '@n8n/backend-common';
-import { GlobalConfig } from '@n8n/config';
-import type { Project } from '@n8n/db';
-import { Service } from '@n8n/di';
-import { type INode, type IWorkflowBase, type WorkflowSettings } from 'n8n-workflow';
+import { Logger } from '@MNI/backend-common';
+import { GlobalConfig } from '@MNI/config';
+import type { Project } from '@MNI/db';
+import { Service } from '@MNI/di';
+import { type INode, type IWorkflowBase, type WorkflowSettings } from 'MNI-workflow';
 
 import { SubworkflowPolicyDenialError } from '@/errors/subworkflow-policy-denial.error';
 import { AccessService } from '@/services/access.service';
 import { OwnershipService } from '@/services/ownership.service';
-import { UrlService } from '@n8n/backend-services';
+import { UrlService } from '@MNI/backend-services';
 
 type Policy = WorkflowSettings.CallerPolicy;
 type DenialPolicy = Exclude<Policy, 'any'>;

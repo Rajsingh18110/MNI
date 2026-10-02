@@ -13,9 +13,9 @@ recorded as `cdx:license:elected` in the SBOM. No copyleft license is in force.
 
 | Scope | License | Notes |
 |---|---|---|
-| `@n8n/*`, `MNI`, `n8n-core`, `n8n-nodes-base`, `n8n-workflow`, `n8n-editor-ui` | `LicenseRef-n8n-sustainable-use` | Full text at https://docs.n8n.io/sustainable-use-license/ |
+| `@MNI/*`, `MNI`, `MNI-core`, `MNI-nodes-base`, `MNI-workflow`, `MNI-editor-ui` | `LicenseRef-MNI-sustainable-use` | Full text at https://docs.n8n.io/sustainable-use-license/ |
 | Community tooling, codemirror extensions | `MIT` / `Apache-2.0` / `ISC` | Intentionally OSI-licensed |
-| `@n8n_io/license-sdk`, `@n8n_io/ai-assistant-sdk` | `LicenseRef-n8n-enterprise` | EE-only runtime components; require enterprise contract |
+| `@n8n_io/license-sdk`, `@n8n_io/ai-assistant-sdk` | `LicenseRef-MNI-enterprise` | EE-only runtime components; require enterprise contract |
 | All third-party npm dependencies | Permissive OSI | No copyleft; dual-licensed packages elect MIT |
 
 A human-readable rendering is at `/rest/third-party-licenses` on any running
@@ -31,7 +31,7 @@ Produced by `sbom-generation-callable.yml` on every release. This is the
 artifact to use for compliance review.
 
 ```
-pnpm build:deploy (N8N_GENERATE_LICENSES=true)
+pnpm build:deploy (MNI_GENERATE_LICENSES=true)
   └─ cdxgen          →  sbom-source.cdx.json
   └─ enrich-sbom.mjs →  resolves first-party + override licenses
   └─ check-sbom-licenses.mjs  →  SPDX gate (release-blocking)
@@ -78,9 +78,9 @@ cosign. Pull it once and run all checks against the file.
 # Resolve the tag to an immutable digest first, and use $IMAGE everywhere below.
 # A moving tag such as `latest` or `nightly` can point at a different image
 # between two commands, so you would verify one image and scan another.
-DIGEST=$(docker buildx imagetools inspect ghcr.io/n8n-io/n8n:<version> \
+DIGEST=$(docker buildx imagetools inspect ghcr.io/MNI-io/MNI:<version> \
   --format '{{println .Manifest.Digest}}')
-IMAGE="ghcr.io/n8n-io/n8n@${DIGEST}"
+IMAGE="ghcr.io/MNI-io/MNI@${DIGEST}"
 
 # Pull the attested SBOM
 cosign download attestation "$IMAGE" \
@@ -91,14 +91,14 @@ cosign download attestation "$IMAGE" \
 cosign verify-attestation "$IMAGE" \
   --type cyclonedx \
   --certificate-oidc-issuer https://token.actions.githubusercontent.com \
-  --certificate-identity-regexp "https://github.com/n8n-io/n8n/.github/workflows/"
+  --certificate-identity-regexp "https://github.com/MNI-io/MNI/.github/workflows/"
 
 # MNI's SPDX gate — expect 0 failures.
 # This is the authoritative check: every npm component carries a valid SPDX
 # identifier or an allowed MNI LicenseRef. It is release-blocking in CI.
 node scripts/licenses/check-sbom-licenses.mjs sbom.cdx.json \
-  --allow-ref=LicenseRef-n8n-sustainable-use \
-  --allow-ref=LicenseRef-n8n-enterprise \
+  --allow-ref=LicenseRef-MNI-sustainable-use \
+  --allow-ref=LicenseRef-MNI-enterprise \
   --enforce-prefix=pkg:npm/
 
 # Full license list
@@ -144,8 +144,8 @@ Use the same `$IMAGE` digest resolved above, so the scan covers the image the
 SBOM describes.
 
 Replace `<version>` with `nightly`, `latest`, or a specific version tag
-(e.g. `2.37.4`). The same image is available on both `ghcr.io/n8n-io/n8n` and
-`docker.io/n8nio/n8n`.
+(e.g. `2.37.4`). The same image is available on both `ghcr.io/MNI-io/MNI` and
+`docker.io/n8nio/MNI`.
 
 ---
 
@@ -185,13 +185,13 @@ this election is recorded as `cdx:license:elected` in the SBOM.
 For source-level compliance review, download from the GitHub release page:
 
 ```bash
-gh release download n8n@<version> \
-  --repo n8n-io/n8n \
+gh release download MNI@<version> \
+  --repo MNI-io/MNI \
   --pattern sbom-source.cdx.json
 
 gh attestation verify sbom-source.cdx.json \
-  --repo n8n-io/n8n \
-  --owner n8n-io
+  --repo MNI-io/MNI \
+  --owner MNI-io
 ```
 
 ---

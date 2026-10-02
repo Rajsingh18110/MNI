@@ -1,11 +1,11 @@
 import { DEFAULT_WORKFLOW_PAGE_SIZE } from '@/app/constants';
-import { STORES } from '@n8n/stores';
+import { STORES } from '@MNI/stores';
 import type { IWorkflowDb, IWorkflowsMap, WorkflowListResource } from '@/Interface';
 import { defineStore } from 'pinia';
-import { deepCopy } from 'n8n-workflow';
-import { useRootStore } from '@n8n/stores/useRootStore';
+import { deepCopy } from 'MNI-workflow';
+import { useRootStore } from '@MNI/stores/useRootStore';
 import * as workflowsApi from '@/app/api/workflows';
-import { makeRestApiRequest, type WorkflowHistory } from '@n8n/rest-api-client';
+import { makeRestApiRequest, type WorkflowHistory } from '@MNI/rest-api-client';
 import { computed, ref } from 'vue';
 import { isPresent } from '@/app/utils/typesUtils';
 import { useFavoritesStore } from '@/app/stores/favorites.store';

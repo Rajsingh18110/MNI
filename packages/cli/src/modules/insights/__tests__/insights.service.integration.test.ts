@@ -1,4 +1,4 @@
-import type { LicenseState } from '@n8n/backend-common';
+import type { LicenseState } from '@MNI/backend-common';
 import {
 	createTeamProject,
 	createWorkflow,
@@ -6,14 +6,14 @@ import {
 	mockLogger,
 	testDb,
 	testModules,
-} from '@n8n/backend-test-utils';
-import type { InstanceType } from '@n8n/constants';
-import type { IWorkflowDb, Project, User, WorkflowEntity } from '@n8n/db';
-import { WorkflowRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
+} from '@MNI/backend-test-utils';
+import type { InstanceType } from '@MNI/constants';
+import type { IWorkflowDb, Project, User, WorkflowEntity } from '@MNI/db';
+import { WorkflowRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
 import { DateTime } from 'luxon';
-import type { InstanceSettings } from 'n8n-core';
-import { UserError } from 'n8n-workflow';
+import type { InstanceSettings } from 'MNI-core';
+import { UserError } from 'MNI-workflow';
 import type { MockInstance, Mocked } from 'vitest';
 import type { MockProxy } from 'vitest-mock-extended';
 import { mock } from 'vitest-mock-extended';

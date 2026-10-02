@@ -9,8 +9,8 @@
  * `executionData.store.test.ts`. These tests verify the shape of the canvas
  * output and that renderData values flow into the right fields.
  */
-import type { ITaskData, IConnections, IWorkflowGroup } from 'n8n-workflow';
-import { NodeConnectionTypes } from 'n8n-workflow';
+import type { ITaskData, IConnections, IWorkflowGroup } from 'MNI-workflow';
+import { NodeConnectionTypes } from 'MNI-workflow';
 import { createPinia, setActivePinia } from 'pinia';
 import { computed, ref, shallowRef } from 'vue';
 import {
@@ -26,7 +26,7 @@ import { MarkerType } from '@vue-flow/core';
 import { AGENT_NODE_SIZE } from '@/features/agents/utils/agentNode';
 import { NO_OP_NODE_TYPE } from '@/app/constants/nodeTypes';
 
-vi.mock('@n8n/i18n', async (importOriginal) => ({
+vi.mock('@MNI/i18n', async (importOriginal) => ({
 	...(await importOriginal()),
 	useI18n: () => ({
 		baseText: (key: string, options?: { interpolate: { count: number | string } }) => {

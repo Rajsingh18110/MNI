@@ -3,7 +3,7 @@ import {
 	type INode,
 	type INodeProperties,
 	type INodeTypeDescription,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 export const WORKFLOW_INPUTS_TEST_PARAMETER_PATH = 'parameters.workflowInputs';
 
@@ -75,7 +75,7 @@ export const WORKFLOW_INPUTS_TEST_NODE: INode = {
 		mode: 'once',
 		options: {},
 	},
-	type: 'n8n-nodes-base.executeWorkflow',
+	type: 'MNI-nodes-base.executeWorkflow',
 	typeVersion: 1.2,
 	position: [220, 0],
 	id: 'test-123',
@@ -207,7 +207,7 @@ export const EXECUTE_WORKFLOW_NODE_TYPE_TEST: INodeTypeDescription = {
 		},
 		{
 			displayName:
-				'Any data you pass into this node will be output by the Execute Workflow Trigger. <a href="https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-base.executeworkflow/" target="_blank">More info</a>',
+				'Any data you pass into this node will be output by the Execute Workflow Trigger. <a href="https://docs.n8n.io/integrations/builtin/core-nodes/MNI-nodes-base.executeworkflow/" target="_blank">More info</a>',
 			name: 'executeWorkflowNotice',
 			type: 'notice',
 			default: '',
@@ -282,10 +282,10 @@ export const EXECUTE_WORKFLOW_NODE_TYPE_TEST: INodeTypeDescription = {
 		resources: {
 			primaryDocumentation: [
 				{
-					url: 'https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-base.executeworkflow/',
+					url: 'https://docs.n8n.io/integrations/builtin/core-nodes/MNI-nodes-base.executeworkflow/',
 				},
 			],
 		},
 	},
-	name: 'n8n-nodes-base.executeWorkflow',
+	name: 'MNI-nodes-base.executeWorkflow',
 };

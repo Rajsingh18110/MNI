@@ -9,8 +9,8 @@ import type {
 	INodeType,
 	INodeTypeBaseDescription,
 	INodeTypeDescription,
-} from 'n8n-workflow';
-import { BaseError, NodeConnectionTypes, NodeOperationError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { BaseError, NodeConnectionTypes, NodeOperationError } from 'MNI-workflow';
 
 import { capitalize } from '@utils/utilities';
 
@@ -168,7 +168,7 @@ export default workflow('id', 'name')
 							mode: ['expression'],
 						},
 					},
-					// eslint-disable-next-line n8n-nodes-base/node-param-default-wrong-for-number
+					// eslint-disable-next-line MNI-nodes-base/node-param-default-wrong-for-number
 					default: '={{}}',
 					description:
 						'The output index to send the input item to. Use an expression to calculate which input item should be routed to which output. The expression must return a number.',
@@ -279,7 +279,7 @@ export default workflow('id', 'name')
 					},
 					options: [
 						{
-							// eslint-disable-next-line n8n-nodes-base/node-param-display-name-wrong-for-dynamic-options
+							// eslint-disable-next-line MNI-nodes-base/node-param-display-name-wrong-for-dynamic-options
 							displayName: 'Fallback Output',
 							name: 'fallbackOutput',
 							type: 'options',
@@ -292,7 +292,7 @@ export default workflow('id', 'name')
 									"Set this to `'extra'` before wiring a catch-all/default branch. In rules mode, `'extra'` creates a fallback output at index `rules.values.length`; default `'none'` creates no fallback output and drops unmatched items. Numeric values route unmatched items to an existing rule output and do not create a new port.",
 							},
 							default: 'none',
-							// eslint-disable-next-line n8n-nodes-base/node-param-description-wrong-for-dynamic-options
+							// eslint-disable-next-line MNI-nodes-base/node-param-description-wrong-for-dynamic-options
 							description:
 								'If no rule matches the item will be sent to this output, by default they will be ignored',
 						},
@@ -328,7 +328,7 @@ export default workflow('id', 'name')
 							},
 						},
 						{
-							// eslint-disable-next-line n8n-nodes-base/node-param-display-name-miscased
+							// eslint-disable-next-line MNI-nodes-base/node-param-display-name-miscased
 							displayName: 'Send data to all matching outputs',
 							name: 'allMatchingOutputs',
 							type: 'boolean',
@@ -349,7 +349,7 @@ export default workflow('id', 'name')
 
 				const outputOptions: INodePropertyOptions[] = [
 					{
-						// eslint-disable-next-line n8n-nodes-base/node-param-display-name-miscased
+						// eslint-disable-next-line MNI-nodes-base/node-param-display-name-miscased
 						name: 'None (default)',
 						value: 'none',
 						description: 'Items will be ignored',

@@ -1,4 +1,4 @@
-import { UserError } from 'n8n-workflow';
+import { UserError } from 'MNI-workflow';
 
 const SYSTEM_RESOLVER_MESSAGE =
 	"End-user credentials aren't supported by this workflow's trigger. Supported triggers: Manual, Sub-workflow, Chat available in MNI Chat Hub or using MNI user authentication in hosted chat mode, and MCP, Form, or Webhook with MNI user authentication. To use another trigger, switch this credential to Fixed.";

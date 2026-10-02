@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import type { AgentConfigValidationIssue } from '@n8n/api-types';
-import { N8nButton, N8nToggle } from '@n8n/design-system';
-import { useI18n, type BaseTextKey } from '@n8n/i18n';
+import type { AgentConfigValidationIssue } from '@MNI/api-types';
+import { N8nButton, N8nToggle } from '@MNI/design-system';
+import { useI18n, type BaseTextKey } from '@MNI/i18n';
 
 import AgentValidationTooltip from './AgentValidationTooltip.vue';
 

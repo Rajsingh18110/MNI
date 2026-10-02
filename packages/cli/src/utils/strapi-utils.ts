@@ -1,8 +1,8 @@
-import { Logger } from '@n8n/backend-common';
-import { OutboundHttp } from '@n8n/backend-network';
-import { Container } from '@n8n/di';
-import { ErrorReporter } from 'n8n-core';
-import type { IDataObject } from 'n8n-workflow';
+import { Logger } from '@MNI/backend-common';
+import { OutboundHttp } from '@MNI/backend-network';
+import { Container } from '@MNI/di';
+import { ErrorReporter } from 'MNI-core';
+import type { IDataObject } from 'MNI-workflow';
 
 interface ResponseData<T> {
 	data: Array<StrapiEntity<T>>;
@@ -89,7 +89,7 @@ export async function paginatedRequest<T>(
 		try {
 			response = await Container.get(OutboundHttp)
 				.requests({
-					useDefaultSsrfPolicy: 'unsafe', // n8n-controlled templates/Strapi host
+					useDefaultSsrfPolicy: 'unsafe', // MNI-controlled templates/Strapi host
 					timeout: REQUEST_TIMEOUT_MS,
 				})
 				.request<ResponseData<T>>({

@@ -1,4 +1,4 @@
-import { truncate } from '@n8n/utils/string/truncate';
+import { truncate } from '@MNI/utils/string/truncate';
 import type { ProjectListItem } from './projects.types';
 import { useProjectsStore } from './projects.store';
 

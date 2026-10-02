@@ -2,7 +2,7 @@ import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { createTestingPinia } from '@pinia/testing';
 import userEvent from '@testing-library/user-event';
 import { ref } from 'vue';
-import type { PushMessage } from '@n8n/api-types';
+import type { PushMessage } from '@MNI/api-types';
 
 import { createComponentRenderer } from '@/__tests__/render';
 import TestsPanel from './TestsPanel.vue';
@@ -29,7 +29,7 @@ vi.mock('@/app/stores/pushConnection.store', () => ({
 
 // ─── Module mocks ────────────────────────────────────────────────────────────
 
-vi.mock('@n8n/i18n', async (importOriginal) => ({
+vi.mock('@MNI/i18n', async (importOriginal) => ({
 	...(await importOriginal()),
 	useI18n: () => ({ baseText: (key: string) => key }),
 }));

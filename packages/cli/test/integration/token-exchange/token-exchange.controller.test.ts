@@ -1,9 +1,9 @@
-import { testDb } from '@n8n/backend-test-utils';
-import { AuthIdentityRepository, ProjectRepository, UserRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
+import { testDb } from '@MNI/backend-test-utils';
+import { AuthIdentityRepository, ProjectRepository, UserRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
 import { generateKeyPairSync, randomUUID } from 'crypto';
 import jwt from 'jsonwebtoken';
-import { InstanceSettings } from 'n8n-core';
+import { InstanceSettings } from 'MNI-core';
 
 import { qualifiedProviderId } from '@/modules/token-exchange/services/identity-resolution.service';
 import { TrustedKeyService } from '@/modules/token-exchange/services/trusted-key.service';
@@ -20,7 +20,7 @@ import { createUser } from '../shared/db/users';
 import * as utils from '../shared/utils';
 
 // Must be set before module init reads the env var.
-process.env.N8N_ENV_FEAT_TOKEN_EXCHANGE = 'true';
+process.env.MNI_ENV_FEAT_TOKEN_EXCHANGE = 'true';
 
 const { privateKey, publicKey } = generateKeyPairSync('rsa', {
 	modulusLength: 2048,

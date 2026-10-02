@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { VIEWS } from '@/app/constants';
-import { useRolesStore } from '@n8n/stores/roles.store';
-import { N8nLoading, N8nTableBase, N8nText } from '@n8n/design-system';
-import type { RoleProjectAssignment } from '@n8n/api-types';
-import { useI18n } from '@n8n/i18n';
+import { useRolesStore } from '@MNI/stores/roles.store';
+import { N8nLoading, N8nTableBase, N8nText } from '@MNI/design-system';
+import type { RoleProjectAssignment } from '@MNI/api-types';
+import { useI18n } from '@MNI/i18n';
 import { useAsyncState } from '@vueuse/core';
 import dateformat from 'dateformat';
 import { computed, ref, watch } from 'vue';

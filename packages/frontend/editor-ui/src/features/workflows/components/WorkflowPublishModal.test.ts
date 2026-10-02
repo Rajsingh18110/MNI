@@ -6,10 +6,10 @@ import { useWorkflowsStore } from '@/app/stores/workflows.store';
 import { useWorkflowsListStore } from '@/app/stores/workflowsList.store';
 import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';
 import { WORKFLOW_PUBLISH_MODAL_KEY } from '@/app/constants';
-import { STORES } from '@n8n/stores';
+import { STORES } from '@MNI/stores';
 import { waitFor } from '@testing-library/vue';
 import userEvent from '@testing-library/user-event';
-import { WEBHOOK_NODE_TYPE, NodeConnectionTypes, type INodeTypeDescription } from 'n8n-workflow';
+import { WEBHOOK_NODE_TYPE, NodeConnectionTypes, type INodeTypeDescription } from 'MNI-workflow';
 import {
 	useWorkflowDocumentStore,
 	createWorkflowDocumentId,
@@ -27,7 +27,7 @@ vi.mock('@/app/composables/useWorkflowActivate', () => ({
 	}),
 }));
 
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: () => ({
 		showMessage: mockShowMessage,
 		showError: mockShowError,

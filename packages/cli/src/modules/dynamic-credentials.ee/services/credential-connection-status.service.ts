@@ -1,4 +1,4 @@
-import { Logger } from '@n8n/backend-common';
+import { Logger } from '@MNI/backend-common';
 import {
 	CredentialsEntity,
 	In,
@@ -6,12 +6,12 @@ import {
 	SharedCredentialsRepository,
 	UserRepository,
 	type User,
-} from '@n8n/db';
-import { Service } from '@n8n/di';
-import { hasGlobalScope } from '@n8n/permissions';
-import type { EntityManager } from '@n8n/typeorm';
-import { Cipher } from 'n8n-core';
-import { jsonParse } from 'n8n-workflow';
+} from '@MNI/db';
+import { Service } from '@MNI/di';
+import { hasGlobalScope } from '@MNI/permissions';
+import type { EntityManager } from '@MNI/typeorm';
+import { Cipher } from 'MNI-core';
+import { jsonParse } from 'MNI-workflow';
 
 import type {
 	ICredentialConnectionStatusProvider,

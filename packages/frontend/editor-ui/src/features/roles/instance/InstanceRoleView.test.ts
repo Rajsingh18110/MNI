@@ -3,15 +3,15 @@ import { createTestingPinia } from '@pinia/testing';
 import userEvent from '@testing-library/user-event';
 import { waitFor } from '@testing-library/vue';
 import { VIEWS } from '@/app/constants';
-import { useRolesStore } from '@n8n/stores/roles.store';
+import { useRolesStore } from '@MNI/stores/roles.store';
 import { mockedStore, type MockedStore } from '@/__tests__/utils';
-import { GLOBAL_ADMIN_SCOPES } from '@n8n/permissions';
+import { GLOBAL_ADMIN_SCOPES } from '@MNI/permissions';
 import InstanceRoleView from './InstanceRoleView.vue';
 import {
 	BASELINE_INSTANCE_SCOPES,
 	GLOBAL_MEMBER_SCOPES,
 	MANDATORY_INSTANCE_SCOPES,
-} from '@n8n/permissions';
+} from '@MNI/permissions';
 
 const mockShowError = vi.fn();
 const mockShowMessage = vi.fn();
@@ -19,7 +19,7 @@ const mockConfirm = vi.fn();
 const mockPush = vi.fn();
 const mockReplace = vi.fn();
 
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: () => ({ showError: mockShowError, showMessage: mockShowMessage }),
 }));
 

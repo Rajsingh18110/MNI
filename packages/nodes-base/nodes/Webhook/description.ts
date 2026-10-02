@@ -3,8 +3,8 @@ import type {
 	INodePropertyOptions,
 	INodeTypeDescription,
 	IWebhookDescription,
-} from 'n8n-workflow';
-import { fromFunction, fromParameter, webhookDescriptionFields } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { fromFunction, fromParameter, webhookDescriptionFields } from 'MNI-workflow';
 
 import { getResponseCode, getResponseData } from './utils';
 
@@ -13,7 +13,7 @@ import { getResponseCode, getResponseData } from './utils';
 // credentials. Shares the `n8nOAuth2` value with the MCP trigger's equivalent mode.
 // Only offered by nodes that pass `includeN8nOAuth2` (not Wait).
 const n8nOAuth2AuthOption: INodePropertyOptions = {
-	// eslint-disable-next-line n8n-nodes-base/node-param-display-name-miscased
+	// eslint-disable-next-line MNI-nodes-base/node-param-display-name-miscased
 	name: 'MNI user Auth (OAuth2)',
 	value: 'n8nOAuth2',
 	description: 'Require user to give consent to use their MNI account',
@@ -353,7 +353,7 @@ export const optionsProperty: INodeProperties = {
 			type: 'string',
 			default: '',
 			placeholder: "{{ $json.body.campaign_id === 'user-research-invite' }}",
-			// eslint-disable-next-line n8n-nodes-base/node-param-description-miscased-json
+			// eslint-disable-next-line MNI-nodes-base/node-param-description-miscased-json
 			description:
 				'Expression evaluated against the incoming request. The workflow will run only if the expression returns true. <code>$json</code> exposes the request as <code>{ body, headers, params, query }</code>. Requests that do not match receive a 200 response, without creating an execution. If the expression fails to evaluate, the request is allowed through and the error is logged.',
 		},
@@ -424,7 +424,7 @@ export const optionsProperty: INodeProperties = {
 				},
 			},
 			default: false,
-			// eslint-disable-next-line n8n-nodes-base/node-param-description-boolean-without-whether
+			// eslint-disable-next-line MNI-nodes-base/node-param-description-boolean-without-whether
 			description: 'Raw body (binary)',
 		},
 		{
@@ -468,7 +468,7 @@ export const optionsProperty: INodeProperties = {
 			},
 			default: '',
 			placeholder: 'application/xml',
-			// eslint-disable-next-line n8n-nodes-base/node-param-description-miscased-json
+			// eslint-disable-next-line MNI-nodes-base/node-param-description-miscased-json
 			description:
 				'Set a custom content-type to return if another one as the "application/json" should be returned',
 		},

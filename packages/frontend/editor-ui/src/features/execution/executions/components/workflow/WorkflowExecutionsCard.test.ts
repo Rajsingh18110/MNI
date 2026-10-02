@@ -2,9 +2,9 @@ import { createComponentRenderer } from '@/__tests__/render';
 import WorkflowExecutionsCard from './WorkflowExecutionsCard.vue';
 import { setActivePinia } from 'pinia';
 import { createTestingPinia } from '@pinia/testing';
-import { STORES } from '@n8n/stores';
+import { STORES } from '@MNI/stores';
 import type { ComponentProps } from 'vue-component-type-helpers';
-import type { ExecutionSummary } from 'n8n-workflow';
+import type { ExecutionSummary } from 'MNI-workflow';
 import { WorkflowIdKey } from '@/app/constants/injectionKeys';
 import { computed } from 'vue';
 

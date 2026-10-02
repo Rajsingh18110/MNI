@@ -1,8 +1,8 @@
-import { LLM_JUDGE_PROVIDERS, type LlmJudgeProvider } from '@n8n/api-types';
-import { Service } from '@n8n/di';
+import { LLM_JUDGE_PROVIDERS, type LlmJudgeProvider } from '@MNI/api-types';
+import { Service } from '@MNI/di';
 
 // Re-export the shared shapes so existing importers keep their types.
-export type { ProviderCredentialType } from '@n8n/api-types';
+export type { ProviderCredentialType } from '@MNI/api-types';
 export type ProviderEntry = LlmJudgeProvider;
 
 const PROVIDERS_BY_NODE_TYPE = new Map(LLM_JUDGE_PROVIDERS.map((p) => [p.nodeType, p]));

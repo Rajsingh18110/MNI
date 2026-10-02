@@ -1,14 +1,14 @@
 import { createTestingPinia } from '@pinia/testing';
 import { screen } from '@testing-library/vue';
 import { vi } from 'vitest';
-import type { AllRolesMap } from '@n8n/permissions';
+import type { AllRolesMap } from '@MNI/permissions';
 import { createComponentRenderer } from '@/__tests__/render';
 import UserRoleProvisioningDropdown from './UserRoleProvisioningDropdown.vue';
 
 // The default-condition row embeds the grouped role dropdown, which pulls in a
 // router-backed footer + hover popovers/modals. Expose items as buttons and
 // stub the heavy sub-components so we can assert the row's presence per mode.
-vi.mock('@n8n/design-system', async (importOriginal) => {
+vi.mock('@MNI/design-system', async (importOriginal) => {
 	const original = await importOriginal<object>();
 	return {
 		...original,

@@ -3,7 +3,7 @@ import {
 	createWorkflowWithHistory,
 	setActiveVersion,
 	testDb,
-} from '@n8n/backend-test-utils';
+} from '@MNI/backend-test-utils';
 import {
 	type PollerCursor,
 	PollerStateRepository,
@@ -12,8 +12,8 @@ import {
 	TransactionRunner,
 	WorkflowPublishedVersionRepository,
 	WorkflowRepository,
-} from '@n8n/db';
-import { Container } from '@n8n/di';
+} from '@MNI/db';
+import { Container } from '@MNI/di';
 
 describe('PollerStateRepository', () => {
 	let repository: PollerStateRepository;

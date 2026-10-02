@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import { computed, onMounted, reactive, ref, watch } from 'vue';
-import type { AgentJsonVectorStoreConfig, AgentVectorStoreProvider } from '@n8n/api-types';
-import { VECTOR_STORE_NAME_REGEX, VECTOR_STORE_USE_WHEN_MAX_LENGTH } from '@n8n/api-types';
-import { N8nButton, N8nFormInput, N8nIcon, N8nInputLabel, N8nText } from '@n8n/design-system';
-import type { Rule, RuleGroup } from '@n8n/design-system';
-import { useI18n, type BaseTextKey } from '@n8n/i18n';
-import { getResourcePermissions } from '@n8n/permissions';
-import { useRootStore } from '@n8n/stores/useRootStore';
+import type { AgentJsonVectorStoreConfig, AgentVectorStoreProvider } from '@MNI/api-types';
+import { VECTOR_STORE_NAME_REGEX, VECTOR_STORE_USE_WHEN_MAX_LENGTH } from '@MNI/api-types';
+import { N8nButton, N8nFormInput, N8nIcon, N8nInputLabel, N8nText } from '@MNI/design-system';
+import type { Rule, RuleGroup } from '@MNI/design-system';
+import { useI18n, type BaseTextKey } from '@MNI/i18n';
+import { getResourcePermissions } from '@MNI/permissions';
+import { useRootStore } from '@MNI/stores/useRootStore';
 
-import { useToast } from '@n8n/composables/useToast';
+import { useToast } from '@MNI/composables/useToast';
 import { useUIStore } from '@/app/stores/ui.store';
 import CredentialIcon from '@/features/credentials/components/CredentialIcon.vue';
 import { CREDENTIAL_EDIT_MODAL_KEY } from '@/features/credentials/credentials.constants';

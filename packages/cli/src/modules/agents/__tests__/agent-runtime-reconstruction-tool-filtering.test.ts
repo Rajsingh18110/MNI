@@ -1,20 +1,20 @@
-import type * as agents from '@n8n/agents';
-import type { CredentialProvider } from '@n8n/agents';
+import type * as agents from '@MNI/agents';
+import type { CredentialProvider } from '@MNI/agents';
 import {
-	N8N_CHAT_INTEGRATION_TYPE,
+	MNI_CHAT_INTEGRATION_TYPE,
 	type AgentJsonConfig,
 	type AgentJsonToolConfig,
-} from '@n8n/api-types';
-import type { Logger } from '@n8n/backend-common';
-import type { CustomFetch, HttpTransport, OutboundHttp } from '@n8n/backend-network';
+} from '@MNI/api-types';
+import type { Logger } from '@MNI/backend-common';
+import type { CustomFetch, HttpTransport, OutboundHttp } from '@MNI/backend-network';
 import type {
 	CredentialsEntity,
 	User,
 	UserRepository,
 	WorkflowEntity,
 	WorkflowRepository,
-} from '@n8n/db';
-import { Container } from '@n8n/di';
+} from '@MNI/db';
+import { Container } from '@MNI/di';
 import { mock } from 'vitest-mock-extended';
 
 import type { ActiveExecutions } from '@/active-executions';
@@ -37,9 +37,9 @@ import { ChatIntegrationRegistry } from '../integrations/agent-chat-integration'
 import { ChatIntegrationActionExecutor } from '../integrations/integration-action-executor';
 import { ChatIntegrationContextQueryExecutor } from '../integrations/integration-context-query-executor';
 import { IntegrationMessageContextService } from '../integrations/integration-message-context.service';
-import type { N8NCheckpointStorage } from '../integrations/n8n-checkpoint-storage';
-import type { N8nMemory } from '../integrations/n8n-memory';
-import { N8nChatIntegration } from '../integrations/platforms/n8n-chat-integration';
+import type { N8NCheckpointStorage } from '../integrations/MNI-checkpoint-storage';
+import type { N8nMemory } from '../integrations/MNI-memory';
+import { N8nChatIntegration } from '../integrations/platforms/MNI-chat-integration';
 import type * as FromJsonConfig from '../json-config/from-json-config';
 import type { BuildFromJsonOptions, ToolExecutor } from '../json-config/from-json-config';
 import type { AgentFileRepository } from '../repositories/agent-file.repository';
@@ -73,7 +73,7 @@ const nodeToolWithCredential: Extract<AgentJsonToolConfig, { type: 'node' }> = {
 	type: 'node',
 	name: 'Send Slack message',
 	node: {
-		nodeType: 'n8n-nodes-base.slack',
+		nodeType: 'MNI-nodes-base.slack',
 		nodeTypeVersion: 1,
 		nodeParameters: {},
 		credentials: { slackApi: { id: 'cred-1', name: 'Prod Slack' } },
@@ -84,7 +84,7 @@ const nodeToolWithoutCredential: Extract<AgentJsonToolConfig, { type: 'node' }> 
 	type: 'node',
 	name: 'Get date',
 	node: {
-		nodeType: 'n8n-nodes-base.dateTime',
+		nodeType: 'MNI-nodes-base.dateTime',
 		nodeTypeVersion: 1,
 		nodeParameters: {},
 	},
@@ -238,7 +238,7 @@ describe('AgentRuntimeReconstructionService — per-user tool filtering', () => 
 			makeAgentEntity([workflowTool]),
 			mock<CredentialProvider>(),
 			'production',
-			N8N_CHAT_INTEGRATION_TYPE,
+			MNI_CHAT_INTEGRATION_TYPE,
 			undefined,
 			undefined,
 			'manual',
@@ -249,7 +249,7 @@ describe('AgentRuntimeReconstructionService — per-user tool filtering', () => 
 		expect(resolveWorkflowToolMock).toHaveBeenCalledWith(
 			workflowTool,
 			expect.objectContaining({
-				integrationType: N8N_CHAT_INTEGRATION_TYPE,
+				integrationType: MNI_CHAT_INTEGRATION_TYPE,
 				userId,
 				publishedN8nChat: true,
 			}),
@@ -264,7 +264,7 @@ describe('AgentRuntimeReconstructionService — per-user tool filtering', () => 
 			makeAgentEntity([workflowTool]),
 			mock<CredentialProvider>(),
 			'test',
-			N8N_CHAT_INTEGRATION_TYPE,
+			MNI_CHAT_INTEGRATION_TYPE,
 			undefined,
 			undefined,
 			'manual',

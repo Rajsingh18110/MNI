@@ -1,6 +1,6 @@
-import { JsonStore } from '@n8n/blob-storage';
-import { Service } from '@n8n/di';
-import { ErrorReporter, FsByteStoreService } from 'n8n-core';
+import { JsonStore } from '@MNI/blob-storage';
+import { Service } from '@MNI/di';
+import { ErrorReporter, FsByteStoreService } from 'MNI-core';
 
 import { AgentExecutionLogWriteError } from './agent-execution-log-write.error';
 import { CorruptedAgentExecutionLogError } from './corrupted-agent-execution-log.error';

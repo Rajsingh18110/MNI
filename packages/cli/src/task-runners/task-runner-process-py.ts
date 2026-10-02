@@ -1,6 +1,6 @@
-import { Logger } from '@n8n/backend-common';
-import { TaskRunnersConfig } from '@n8n/config';
-import { Service } from '@n8n/di';
+import { Logger } from '@MNI/backend-common';
+import { TaskRunnersConfig } from '@MNI/config';
+import { Service } from '@MNI/di';
 import { exec, spawn } from 'node:child_process';
 import { access } from 'node:fs/promises';
 import path from 'node:path';
@@ -30,7 +30,7 @@ export class PyTaskRunnerProcess extends TaskRunnerProcessBase {
 	}
 
 	startProcess(grantToken: string, taskBrokerUri: string, runnerId: string) {
-		const pythonDir = path.join(__dirname, '../../../@n8n/task-runner-python');
+		const pythonDir = path.join(__dirname, '../../../@MNI/task-runner-python');
 		const venvPath = PyTaskRunnerProcess.getVenvPath();
 
 		return spawn(venvPath, ['-m', 'src.main'], {
@@ -41,20 +41,20 @@ export class PyTaskRunnerProcess extends TaskRunnerProcessBase {
 				HOME: process.env.HOME ?? process.env.USERPROFILE,
 
 				// runner
-				N8N_RUNNERS_ID: runnerId,
-				N8N_RUNNERS_GRANT_TOKEN: grantToken,
-				N8N_RUNNERS_TASK_BROKER_URI: taskBrokerUri,
-				N8N_RUNNERS_MAX_PAYLOAD: this.runnerConfig.maxPayload.toString(),
-				N8N_RUNNERS_MAX_CONCURRENCY: this.runnerConfig.maxConcurrency.toString(),
-				N8N_RUNNERS_TASK_TIMEOUT: this.runnerConfig.taskTimeout.toString(),
-				N8N_RUNNERS_HEARTBEAT_INTERVAL: this.runnerConfig.heartbeatInterval.toString(),
+				MNI_RUNNERS_ID: runnerId,
+				MNI_RUNNERS_GRANT_TOKEN: grantToken,
+				MNI_RUNNERS_TASK_BROKER_URI: taskBrokerUri,
+				MNI_RUNNERS_MAX_PAYLOAD: this.runnerConfig.maxPayload.toString(),
+				MNI_RUNNERS_MAX_CONCURRENCY: this.runnerConfig.maxConcurrency.toString(),
+				MNI_RUNNERS_TASK_TIMEOUT: this.runnerConfig.taskTimeout.toString(),
+				MNI_RUNNERS_HEARTBEAT_INTERVAL: this.runnerConfig.heartbeatInterval.toString(),
 
 				// MNI
-				N8N_RUNNERS_STDLIB_ALLOW: process.env.N8N_RUNNERS_STDLIB_ALLOW,
-				N8N_RUNNERS_EXTERNAL_ALLOW: process.env.N8N_RUNNERS_EXTERNAL_ALLOW,
-				N8N_RUNNERS_ALLOW_TRANSITIVE_IMPORTS: process.env.N8N_RUNNERS_ALLOW_TRANSITIVE_IMPORTS,
-				N8N_RUNNERS_BUILTINS_DENY: process.env.N8N_RUNNERS_BUILTINS_DENY,
-				N8N_BLOCK_RUNNER_ENV_ACCESS: process.env.N8N_BLOCK_RUNNER_ENV_ACCESS,
+				MNI_RUNNERS_STDLIB_ALLOW: process.env.MNI_RUNNERS_STDLIB_ALLOW,
+				MNI_RUNNERS_EXTERNAL_ALLOW: process.env.MNI_RUNNERS_EXTERNAL_ALLOW,
+				MNI_RUNNERS_ALLOW_TRANSITIVE_IMPORTS: process.env.MNI_RUNNERS_ALLOW_TRANSITIVE_IMPORTS,
+				MNI_RUNNERS_BUILTINS_DENY: process.env.MNI_RUNNERS_BUILTINS_DENY,
+				MNI_BLOCK_RUNNER_ENV_ACCESS: process.env.MNI_BLOCK_RUNNER_ENV_ACCESS,
 			}),
 		});
 	}
@@ -90,7 +90,7 @@ export class PyTaskRunnerProcess extends TaskRunnerProcessBase {
 
 	/** Public so tests can decide synchronously whether the runner can be started. */
 	static getVenvPath() {
-		const pythonDir = path.join(__dirname, '../../../@n8n/task-runner-python');
+		const pythonDir = path.join(__dirname, '../../../@MNI/task-runner-python');
 		const isWindows = process.platform === 'win32';
 		const venvBin = isWindows ? 'Scripts' : 'bin';
 		const pythonExe = isWindows ? 'python.exe' : 'python';

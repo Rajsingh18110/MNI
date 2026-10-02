@@ -1,14 +1,14 @@
-import { Logger } from '@n8n/backend-common';
-import { mockInstance, mockLogger, testDb } from '@n8n/backend-test-utils';
-import { GlobalConfig } from '@n8n/config';
-import { HTML_NONCE_PLACEHOLDER } from '@n8n/constants';
-import { Container } from '@n8n/di';
+import { Logger } from '@MNI/backend-common';
+import { mockInstance, mockLogger, testDb } from '@MNI/backend-test-utils';
+import { GlobalConfig } from '@MNI/config';
+import { HTML_NONCE_PLACEHOLDER } from '@MNI/constants';
+import { Container } from '@MNI/di';
 import { mkdirSync, mkdtempSync, writeFileSync } from 'node:fs';
 import http from 'node:http';
 import type { AddressInfo } from 'node:net';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
-import { InstanceSettings } from 'n8n-core';
+import { InstanceSettings } from 'MNI-core';
 import { mock } from 'vitest-mock-extended';
 
 import { AuthService } from '@/auth/auth.service';
@@ -82,7 +82,7 @@ describe('Server static assets', () => {
 		await request('GET', requestPath, port, headers);
 
 	beforeAll(async () => {
-		const staticCacheDir = mkdtempSync(path.join(tmpdir(), 'n8n-static-cache-'));
+		const staticCacheDir = mkdtempSync(path.join(tmpdir(), 'MNI-static-cache-'));
 		mkdirSync(path.join(staticCacheDir, 'types'));
 		writeFileSync(path.join(staticCacheDir, 'types', 'nodes.json'), '[{"name":"a-node"}]');
 		writeFileSync(path.join(staticCacheDir, 'types', 'credentials.json'), '[{"name":"a-cred"}]');

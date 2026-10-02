@@ -1,19 +1,19 @@
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue';
 import type { IWorkflowDb } from '@/Interface';
-import { useToast } from '@n8n/composables/useToast';
-import { useI18n } from '@n8n/i18n';
-import { N8nText } from '@n8n/design-system';
+import { useToast } from '@MNI/composables/useToast';
+import { useI18n } from '@MNI/i18n';
+import { N8nText } from '@MNI/design-system';
 import { useWorkflowHistoryStore } from '../workflowHistory.store';
 import { useWorkflowsListStore } from '@/app/stores/workflowsList.store';
 import WorkflowDiffView from '@/features/workflows/workflowDiff/WorkflowDiffView.vue';
 import omit from 'lodash/omit';
-import type { WorkflowHistory } from '@n8n/rest-api-client/api/workflowHistory';
-import { useUsersStore } from '@n8n/stores/users.store';
+import type { WorkflowHistory } from '@MNI/rest-api-client/api/workflowHistory';
+import { useUsersStore } from '@MNI/stores/users.store';
 import WorkflowHistoryVersionSelect from '../components/WorkflowHistoryVersionSelect.vue';
 import { useWorkflowHistoryVersionOptions } from '../useWorkflowHistoryVersionOptions';
 import { telemetry } from '@/app/plugins/telemetry';
-import { useRootStore } from '@n8n/stores/useRootStore';
+import { useRootStore } from '@MNI/stores/useRootStore';
 
 const props = defineProps<{
 	workflowId: string;

@@ -6,18 +6,18 @@ import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';
 import { useCredentialsStore } from '@/features/credentials/credentials.store';
 import { useProjectsStore } from '@/features/collaboration/projects/projects.store';
 import useEnvironmentsStore from '@/features/settings/environments.ee/environments.store';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { ToolConfigCredentialSelectedKey } from '@/app/constants';
 import { createWorkflowDocumentId } from '@/app/stores/workflowDocument.store';
 import { useNDVStore } from '@/features/ndv/shared/ndv.store';
 import { useAiGatewayStore } from '@/app/stores/aiGateway.store';
 import NodeToolSettingsContent from '../NodeToolSettingsContent.vue';
-import { NodeHelpers, type INode, type INodeTypeDescription } from 'n8n-workflow';
+import { NodeHelpers, type INode, type INodeTypeDescription } from 'MNI-workflow';
 import { waitFor } from '@testing-library/vue';
 import userEvent from '@testing-library/user-event';
 import { defineComponent, inject, type PropType } from 'vue';
 
-vi.mock('@n8n/i18n', () => {
+vi.mock('@MNI/i18n', () => {
 	const i18n = {
 		baseText: (key: string) => key,
 		nodeText: () => ({
@@ -53,7 +53,7 @@ vi.mock('vue-router', () => ({
 
 const MOCK_NODE_TYPE: INodeTypeDescription = {
 	displayName: 'Test Tool',
-	name: 'n8n-nodes-base.testTool',
+	name: 'MNI-nodes-base.testTool',
 	group: ['transform'],
 	version: 1,
 	description: 'A test tool',
@@ -96,7 +96,7 @@ const MOCK_NODE_TYPE: INodeTypeDescription = {
 
 const MOCK_NODE_TYPE_NO_PARAMS: INodeTypeDescription = {
 	...MOCK_NODE_TYPE,
-	name: 'n8n-nodes-base.noParamsTool',
+	name: 'MNI-nodes-base.noParamsTool',
 	displayName: 'No Params Tool',
 	defaults: { name: 'No Params Tool' },
 	properties: [
@@ -114,7 +114,7 @@ function createMockNode(overrides: Partial<INode> = {}): INode {
 	return {
 		id: 'test-node-id',
 		name: 'Test Tool',
-		type: 'n8n-nodes-base.testTool',
+		type: 'MNI-nodes-base.testTool',
 		typeVersion: 1,
 		position: [0, 0],
 		parameters: {
@@ -291,7 +291,7 @@ describe('NodeToolSettingsContent', () => {
 		const { getByText } = renderComponent({
 			props: {
 				initialNode: createMockNode({
-					type: 'n8n-nodes-base.noParamsTool',
+					type: 'MNI-nodes-base.noParamsTool',
 					parameters: {},
 				}),
 			},
@@ -872,7 +872,7 @@ describe('NodeToolSettingsContent', () => {
 				credentialTypes: ['testApi'],
 				providerConfig: {},
 				supportedActions: {
-					'n8n-nodes-base.testTool': { record: ['create'] },
+					'MNI-nodes-base.testTool': { record: ['create'] },
 				},
 			};
 

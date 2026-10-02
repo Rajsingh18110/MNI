@@ -6,8 +6,8 @@ import type {
 	INodePropertyOptions,
 	INodeType,
 	INodeTypeDescription,
-} from 'n8n-workflow';
-import { NodeConnectionTypes } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeConnectionTypes } from 'MNI-workflow';
 
 import { pushcutApiRequest } from './GenericFunctions';
 
@@ -15,7 +15,7 @@ export class Pushcut implements INodeType {
 	description: INodeTypeDescription = {
 		displayName: 'Pushcut',
 		name: 'pushcut',
-		// eslint-disable-next-line n8n-nodes-base/node-class-description-icon-not-svg
+		// eslint-disable-next-line MNI-nodes-base/node-class-description-icon-not-svg
 		icon: 'file:pushcut.png',
 		group: ['input'],
 		version: 1,

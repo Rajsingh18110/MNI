@@ -4,11 +4,11 @@ import { vi } from 'vitest';
 import * as vcApi from './sourceControl.api';
 import { useSourceControlStore } from './sourceControl.store';
 import type { SourceControlPreferences } from './sourceControl.types';
-import type { SourceControlledFile } from '@n8n/api-types';
+import type { SourceControlledFile } from '@MNI/api-types';
 
 vi.mock('./sourceControl.api');
 
-vi.mock('@n8n/stores/useRootStore', () => ({
+vi.mock('@MNI/stores/useRootStore', () => ({
 	useRootStore: vi.fn(() => ({
 		restApiContext: {},
 	})),

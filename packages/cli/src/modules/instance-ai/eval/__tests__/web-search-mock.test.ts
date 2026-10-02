@@ -1,4 +1,4 @@
-import type { Logger } from '@n8n/backend-common';
+import type { Logger } from '@MNI/backend-common';
 import { mock } from 'vitest-mock-extended';
 
 import type { WebSearchMockArgs, WebSearchMockResult } from '../web-search-mock';
@@ -7,7 +7,7 @@ import { createWebSearchMock } from '../web-search-mock';
 const generate = vi.fn();
 const extractText = vi.fn();
 
-vi.mock('@n8n/instance-ai', () => ({
+vi.mock('@MNI/instance-ai', () => ({
 	createEvalAgent: vi.fn(() => ({ generate })),
 	extractText: (result: unknown) => extractText(result) as string,
 }));

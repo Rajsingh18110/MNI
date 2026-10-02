@@ -1,11 +1,11 @@
-import { N8N_CHAT_INTEGRATION_TYPE } from '@n8n/api-types';
-import type { Logger } from '@n8n/backend-common';
-import type { User, UserRepository } from '@n8n/db';
-import type { WorkflowExecuteAfterContext } from '@n8n/decorators';
-import { createDeferredPromise } from '@n8n/utils/promise/deferred-promise';
-import type { InstanceSettings } from 'n8n-core';
-import type { IRun, RelatedAgentRun } from 'n8n-workflow';
-import { createRunExecutionData } from 'n8n-workflow';
+import { MNI_CHAT_INTEGRATION_TYPE } from '@MNI/api-types';
+import type { Logger } from '@MNI/backend-common';
+import type { User, UserRepository } from '@MNI/db';
+import type { WorkflowExecuteAfterContext } from '@MNI/decorators';
+import { createDeferredPromise } from '@MNI/utils/promise/deferred-promise';
+import type { InstanceSettings } from 'MNI-core';
+import type { IRun, RelatedAgentRun } from 'MNI-workflow';
+import { createRunExecutionData } from 'MNI-workflow';
 import type { Mock } from 'vitest';
 import { mock } from 'vitest-mock-extended';
 
@@ -21,7 +21,7 @@ import type { AgentChatBridge } from '../integrations/agent-chat-bridge';
 import type { ChatIntegrationService } from '../integrations/chat-integration.service';
 import type { IntegrationMessageContextService } from '../integrations/integration-message-context.service';
 import { encodeIntegrationMessageContext } from '../integrations/integration-message-context';
-import type { N8NCheckpointStorage } from '../integrations/n8n-checkpoint-storage';
+import type { N8NCheckpointStorage } from '../integrations/MNI-checkpoint-storage';
 
 const agentRun: RelatedAgentRun = {
 	agentId: 'agent-1',
@@ -34,7 +34,7 @@ const agentRun: RelatedAgentRun = {
 
 const previewRun: RelatedAgentRun = {
 	...agentRun,
-	integrationType: N8N_CHAT_INTEGRATION_TYPE,
+	integrationType: MNI_CHAT_INTEGRATION_TYPE,
 	userId: 'user-1',
 };
 
@@ -106,11 +106,11 @@ describe('AgentWorkflowToolResumeService production MNI Chat', () => {
 		expect(orchestratorService.resumeForChat).toHaveBeenCalledWith(
 			expect.objectContaining({
 				usePublishedVersion: true,
-				source: 'n8n_chat_production',
+				source: 'MNI_chat_production',
 				user: expect.objectContaining({ id: 'user-1' }),
 				expectedMemory: {
 					threadId: previewRun.threadId,
-					resourceId: 'n8n-chat-production:user-1',
+					resourceId: 'MNI-chat-production:user-1',
 				},
 			}),
 		);
@@ -408,7 +408,7 @@ describe('AgentWorkflowToolResumeService → preview chat', () => {
 		);
 	});
 
-	// MCP and AI Assistant test runs are `n8n_chat` too. They must resume on the
+	// MCP and AI Assistant test runs are `MNI_chat` too. They must resume on the
 	// runtime they started on, without the preview chat's extra instructions.
 	it.each([
 		['the preview chat', { ...previewRun, previewChat: true }, true],

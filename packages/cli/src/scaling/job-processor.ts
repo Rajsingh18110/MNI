@@ -1,17 +1,17 @@
 import type { Tool } from '@langchain/core/tools';
-import type { RunningJobSummary } from '@n8n/api-types';
-import { Logger } from '@n8n/backend-common';
-import { ExecutionsConfig } from '@n8n/config';
-import { MAX_INTEGER_32BITS_SIGNED } from '@n8n/constants';
-import { ExecutionRepository, WorkflowRepository } from '@n8n/db';
-import { Service } from '@n8n/di';
+import type { RunningJobSummary } from '@MNI/api-types';
+import { Logger } from '@MNI/backend-common';
+import { ExecutionsConfig } from '@MNI/config';
+import { MAX_INTEGER_32BITS_SIGNED } from '@MNI/constants';
+import { ExecutionRepository, WorkflowRepository } from '@MNI/db';
+import { Service } from '@MNI/di';
 import {
 	WorkflowHasIssuesError,
 	InstanceSettings,
 	WorkflowExecute,
 	SupplyDataContext,
 	StructuredToolkit,
-} from 'n8n-core';
+} from 'MNI-core';
 import {
 	ManualExecutionCancelledError,
 	NodeConnectionTypes,
@@ -22,7 +22,7 @@ import {
 	createRunExecutionData,
 	runDataAttemptedDynamicCredentials,
 	runDataUsedDynamicCredentials,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import type {
 	CancellationReason,
 	ExecutionStatus,
@@ -37,7 +37,7 @@ import type {
 	StructuredChunk,
 	CloseFunction,
 	GenericValue,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import type PCancelable from 'p-cancelable';
 
 import { EventService } from '@/events/event.service';

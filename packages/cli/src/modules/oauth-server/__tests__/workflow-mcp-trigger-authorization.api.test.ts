@@ -3,12 +3,12 @@ import {
 	setActiveVersion,
 	shareWorkflowWithUsers,
 	testDb,
-} from '@n8n/backend-test-utils';
-import { GlobalConfig } from '@n8n/config';
-import type { User } from '@n8n/db';
-import { WebhookRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
-import type { INode } from 'n8n-workflow';
+} from '@MNI/backend-test-utils';
+import { GlobalConfig } from '@MNI/config';
+import type { User } from '@MNI/db';
+import { WebhookRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
+import type { INode } from 'MNI-workflow';
 import { randomUUID } from 'node:crypto';
 
 import { createOwner, createMember, createAdmin } from '@test-integration/db/users';
@@ -17,7 +17,7 @@ import { setupTestServer } from '@test-integration/utils';
 import { MCP_TRIGGER_NODE_TYPE } from '@/constants';
 import { OAuthTokenService } from '@/modules/oauth-server/oauth-token.service';
 import { CacheService } from '@/services/cache/cache.service';
-import { UrlService } from '@n8n/backend-services';
+import { UrlService } from '@MNI/backend-services';
 import { JwtService } from '@/services/jwt.service';
 
 import { OAuthClientRepository } from '../database/repositories/oauth-client.repository';
@@ -197,7 +197,7 @@ describe('consent gate: workflow name and authorization code require execute acc
 		const response = await testServer
 			.authAgentFor(memberNoAccess)
 			.get('/consent/details')
-			.set('Cookie', `n8n-oauth-session=${sessionToken}`);
+			.set('Cookie', `MNI-oauth-session=${sessionToken}`);
 
 		expect(JSON.stringify(response.body)).not.toContain(workflowName);
 	});
@@ -210,7 +210,7 @@ describe('consent gate: workflow name and authorization code require execute acc
 		const response = await testServer
 			.authAgentFor(owner)
 			.get('/consent/details')
-			.set('Cookie', `n8n-oauth-session=${sessionToken}`);
+			.set('Cookie', `MNI-oauth-session=${sessionToken}`);
 
 		expect(response.body.data.resourceName).toBe(workflowName);
 	});
@@ -222,7 +222,7 @@ describe('consent gate: workflow name and authorization code require execute acc
 		const response = await testServer
 			.authAgentFor(memberNoAccess)
 			.post('/consent/approve')
-			.set('Cookie', `n8n-oauth-session=${sessionToken}`)
+			.set('Cookie', `MNI-oauth-session=${sessionToken}`)
 			.send({ approved: true })
 			.expect(403);
 

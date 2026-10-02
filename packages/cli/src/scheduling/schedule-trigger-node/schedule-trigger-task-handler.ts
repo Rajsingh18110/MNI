@@ -1,10 +1,10 @@
-import { Logger } from '@n8n/backend-common';
-import { GlobalConfig } from '@n8n/config';
-import { ExecutionRepository } from '@n8n/db';
-import { Service } from '@n8n/di';
-import type { ClaimedTask, DispatchDecision, DispatchReporter, TaskHandler } from '@n8n/scheduler';
-import { ErrorReporter } from 'n8n-core';
-import { UnexpectedError } from 'n8n-workflow';
+import { Logger } from '@MNI/backend-common';
+import { GlobalConfig } from '@MNI/config';
+import { ExecutionRepository } from '@MNI/db';
+import { Service } from '@MNI/di';
+import type { ClaimedTask, DispatchDecision, DispatchReporter, TaskHandler } from '@MNI/scheduler';
+import { ErrorReporter } from 'MNI-core';
+import { UnexpectedError } from 'MNI-workflow';
 
 import { DuplicateExecutionError } from '@/errors/duplicate-execution.error';
 import { EventService } from '@/events/event.service';

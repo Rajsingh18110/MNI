@@ -1,5 +1,5 @@
-// Re-exports from @n8n/api-types so eval-collections FE callers don't reach
-// across packages. New shared type? Export it from `@n8n/api-types` first.
+// Re-exports from @MNI/api-types so eval-collections FE callers don't reach
+// across packages. New shared type? Export it from `@MNI/api-types` first.
 
 export type {
 	AddRunToCollectionPayload,
@@ -20,6 +20,6 @@ export type {
 	GenerateInsightsPayload,
 	MetricScale,
 	UpdateEvaluationCollectionPayload,
-} from '@n8n/api-types';
+} from '@MNI/api-types';
 
 export type { CreateCollectionResponse } from './evalCollections.api';

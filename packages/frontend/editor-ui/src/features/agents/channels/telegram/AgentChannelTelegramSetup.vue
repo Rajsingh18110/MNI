@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
-import { N8nButton, N8nStepper, N8nText } from '@n8n/design-system';
+import { N8nButton, N8nStepper, N8nText } from '@MNI/design-system';
 import type {
 	AgentIntegrationSettings,
 	AgentTelegramIntegrationSettings,
 	ChatIntegrationDescriptor,
-} from '@n8n/api-types';
-import { useI18n } from '@n8n/i18n';
-import type { PermissionsRecord } from '@n8n/permissions';
+} from '@MNI/api-types';
+import { useI18n } from '@MNI/i18n';
+import type { PermissionsRecord } from '@MNI/permissions';
 import { resolveSavedTelegramSettings } from '../../utils/telegramAccessSettings';
 import AgentIntegrationCredentialConnection from '../../components/AgentIntegrationCredentialConnection.vue';
 import AgentTelegramAccessSettingsForm from '../../components/AgentTelegramAccessSettingsForm.vue';

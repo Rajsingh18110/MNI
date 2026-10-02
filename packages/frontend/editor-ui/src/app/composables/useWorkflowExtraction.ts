@@ -6,15 +6,15 @@ import {
 	NodeConnectionTypes,
 	NodeHelpers,
 	EXECUTE_WORKFLOW_NODE_TYPE,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import type {
 	ExtractableSubgraphData,
 	ExtractableErrorResult,
 	IConnections,
 	INode,
 	IWorkflowGroup,
-} from 'n8n-workflow';
-import { useToast } from '@n8n/composables/useToast';
+} from 'MNI-workflow';
+import { useToast } from '@MNI/composables/useToast';
 import { useRouter } from 'vue-router';
 import { VIEWS, WORKFLOW_EXTRACTION_NAME_MODAL_KEY } from '@/app/constants';
 import { useHistoryStore } from '@/app/stores/history.store';
@@ -25,13 +25,13 @@ import { useCanvasOperations } from './useCanvasOperations';
 import { useSelectionValidation } from './useSelectionValidation';
 
 import type { AddedNode, INodeUi, IWorkflowDb } from '@/Interface';
-import type { WorkflowDataCreate } from '@n8n/rest-api-client/api/workflows';
-import { useI18n } from '@n8n/i18n';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import type { WorkflowDataCreate } from '@MNI/rest-api-client/api/workflows';
+import { useI18n } from '@MNI/i18n';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { PUSH_NODES_OFFSET } from '@/app/utils/nodeViewUtils';
 import { useUIStore } from '@/app/stores/ui.store';
 import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
 import { checkExhaustive } from '@/app/utils/typeGuards';
 import isEqual from 'lodash/isEqual';
 import uniq from 'lodash/uniq';
@@ -262,7 +262,7 @@ export function useWorkflowExtraction() {
 							},
 							options: {},
 						},
-						type: 'n8n-nodes-base.set',
+						type: 'MNI-nodes-base.set',
 						typeVersion: 3.4,
 						position: endNodePosition,
 						id: uuidv4(),

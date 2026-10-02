@@ -5,7 +5,7 @@
       "parameters": {},
       "id": "8fb04834-2c97-4f21-9300-0f38b0e82f08",
       "name": "When clicking \"Execute Workflow\"",
-      "type": "n8n-nodes-base.manualTrigger",
+      "type": "MNI-nodes-base.manualTrigger",
       "typeVersion": 1,
       "position": [
         -660,
@@ -37,7 +37,7 @@
       },
       "id": "61f96217-f6b3-4989-be70-77b723e8e169",
       "name": "Bot test",
-      "type": "n8n-nodes-base.discord",
+      "type": "MNI-nodes-base.discord",
       "typeVersion": 2,
       "position": [
         -420,
@@ -54,7 +54,7 @@
       "parameters": {},
       "id": "c9c936f7-7dee-40d2-bcf6-255cc9d6d5e8",
       "name": "No Operation, do nothing",
-      "type": "n8n-nodes-base.noOp",
+      "type": "MNI-nodes-base.noOp",
       "typeVersion": 1,
       "position": [
         -200,

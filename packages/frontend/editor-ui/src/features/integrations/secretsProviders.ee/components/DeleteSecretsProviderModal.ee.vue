@@ -1,17 +1,17 @@
 <script lang="ts" setup>
 import { computed, onMounted, ref } from 'vue';
-import { useI18n } from '@n8n/i18n';
-import { useToast } from '@n8n/composables/useToast';
-import { useRootStore } from '@n8n/stores/useRootStore';
+import { useI18n } from '@MNI/i18n';
+import { useToast } from '@MNI/composables/useToast';
+import { useRootStore } from '@MNI/stores/useRootStore';
 import { useUIStore } from '@/app/stores/ui.store';
-import { createEventBus } from '@n8n/utils/event-bus';
+import { createEventBus } from '@MNI/utils/event-bus';
 import { getAllCredentials } from '@/features/credentials/credentials.api';
 import {
 	deleteSecretProviderConnection,
 	deleteProjectSecretProviderConnection,
-} from '@n8n/rest-api-client';
+} from '@MNI/rest-api-client';
 import Modal from '@/app/components/Modal.vue';
-import { N8nButton, N8nInput, N8nLink, N8nInputLabel, N8nText } from '@n8n/design-system';
+import { N8nButton, N8nInput, N8nLink, N8nInputLabel, N8nText } from '@MNI/design-system';
 import { SECRETS_PROVIDER_CONNECTION_MODAL_KEY, VIEWS } from '@/app/constants';
 
 interface Props {

@@ -1,4 +1,4 @@
-import type { INodeProperties } from 'n8n-workflow';
+import type { INodeProperties } from 'MNI-workflow';
 
 const parametersDescription =
 	'JSON array of values to use for $1, $2, and so on, in order. Values can be strings, numbers, booleans, null, or arrays of these values. You can also use an expression that returns an array.';
@@ -193,7 +193,7 @@ export const nodeProperties: INodeProperties[] = [
 					minValue: 1,
 				},
 				default: 0,
-				// eslint-disable-next-line n8n-nodes-base/node-param-description-wrong-for-limit
+				// eslint-disable-next-line MNI-nodes-base/node-param-description-wrong-for-limit
 				description:
 					'Use limit to specify the maximum number of documents or 0 for unlimited documents',
 			},
@@ -331,7 +331,7 @@ export const nodeProperties: INodeProperties[] = [
 		},
 		default: 'id',
 		required: true,
-		// eslint-disable-next-line n8n-nodes-base/node-param-description-miscased-id
+		// eslint-disable-next-line MNI-nodes-base/node-param-description-miscased-id
 		description:
 			'Name of the property which decides which rows in the database should be updated. Normally that would be "id".',
 	},

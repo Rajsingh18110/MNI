@@ -6,7 +6,7 @@ import { describe, it, beforeEach, vi, expect } from 'vitest';
 import { useCommandBar } from './useCommandBar';
 import { VIEWS } from '@/app/constants';
 
-vi.mock('@n8n/i18n', async (importOriginal) => ({
+vi.mock('@MNI/i18n', async (importOriginal) => ({
 	...(await importOriginal()),
 	useI18n: () => ({ baseText: (key: string) => key }),
 }));
@@ -50,7 +50,7 @@ vi.mock('@/app/stores/workflowDocument.store', () => ({
 	}),
 	createWorkflowDocumentId: (id: string) => `${id}@latest`,
 }));
-vi.mock('@n8n/composables/useTelemetry', () => ({
+vi.mock('@MNI/composables/useTelemetry', () => ({
 	useTelemetry: () => ({ track: vi.fn() }),
 }));
 

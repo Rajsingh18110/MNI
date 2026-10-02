@@ -1,9 +1,9 @@
 import { useCredentialDescriptionsExperiment } from '@/experiments/credentialDescriptions/useCredentialDescriptionsExperiment';
-import { useToast } from '@n8n/composables/useToast';
+import { useToast } from '@MNI/composables/useToast';
 import { useProjectsStore } from '@/features/collaboration/projects/projects.store';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import { ref } from 'vue';
-import { createResultError, createResultOk, type Result } from '@n8n/utils/result';
+import { createResultError, createResultOk, type Result } from '@MNI/utils/result';
 import {
 	NodeHelpers,
 	type CredentialInformation,
@@ -11,13 +11,13 @@ import {
 	type ICredentialDataDecryptedObject,
 	type ICredentialType,
 	type INodeProperties,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { useCredentialsStore, type CredentialFetchScope } from '../credentials.store';
 import type { ICredentialsResponse } from '../credentials.types';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
 import { useWorkflowsStore } from '@/app/stores/workflows.store';
-import { useRootStore } from '@n8n/stores/useRootStore';
+import { useRootStore } from '@MNI/stores/useRootStore';
 import {
 	getTrustedOAuthOrigins,
 	hasOAuthTokenData,

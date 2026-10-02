@@ -1,6 +1,6 @@
-import { Logger } from '@n8n/backend-common';
-import { Memoized } from '@n8n/decorators';
-import { Container } from '@n8n/di';
+import { Logger } from '@MNI/backend-common';
+import { Memoized } from '@MNI/decorators';
+import { Container } from '@MNI/di';
 import get from 'lodash/get';
 import type {
 	FunctionsBase,
@@ -25,7 +25,7 @@ import type {
 	NodeTypeAndVersion,
 	Workflow,
 	WorkflowExecuteMode,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import {
 	UnexpectedError,
 	CHAT_TRIGGER_NODE_TYPE,
@@ -34,7 +34,7 @@ import {
 	NodeHelpers,
 	NodeOperationError,
 	UserError,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { FULL_ACCESS_NODE_TYPES, WAITING_TOKEN_QUERY_PARAM } from '@/constants';
 import { InstanceSettings } from '@/instance-settings';
@@ -572,9 +572,9 @@ export abstract class NodeExecutionContext implements Omit<FunctionsBase, 'getCr
 			if (
 				e instanceof ExpressionError &&
 				node.continueOnFail &&
-				node.type === 'n8n-nodes-base.set'
+				node.type === 'MNI-nodes-base.set'
 			) {
-				// https://linear.app/n8n/issue/PAY-684
+				// https://linear.app/MNI/issue/PAY-684
 				returnData = [{ name: undefined, value: undefined }];
 			} else {
 				// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access

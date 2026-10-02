@@ -1,7 +1,7 @@
-import type { StreamChunk } from '@n8n/agents';
-import { isRecord } from '@n8n/utils/is-record';
+import type { StreamChunk } from '@MNI/agents';
+import { isRecord } from '@MNI/utils/is-record';
 import type { Thread } from 'chat';
-import { OperationalError, type Logger } from 'n8n-workflow';
+import { OperationalError, type Logger } from 'MNI-workflow';
 
 import type { BridgeStatusHandle } from './agent-chat-integration';
 import { isIntegrationActionSuspendPayload } from './agent-chat-suspension-cards';

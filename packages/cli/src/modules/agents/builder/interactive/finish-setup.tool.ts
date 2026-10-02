@@ -1,5 +1,5 @@
-import type { BuiltTool, CredentialListItem, InterruptibleToolContext } from '@n8n/agents';
-import { Tool } from '@n8n/agents/tool';
+import type { BuiltTool, CredentialListItem, InterruptibleToolContext } from '@MNI/agents';
+import { Tool } from '@MNI/agents/tool';
 import {
 	channelSuspendPayloadSchema,
 	credentialSuspendPayloadSchema,
@@ -8,9 +8,9 @@ import {
 	questionsSuspendPayloadSchema,
 	shouldAutoResolveCredential,
 	type InteractionQuestion,
-} from '@n8n/api-types';
-import type { InstanceAiCredentialService } from '@n8n/instance-ai';
-import { TELEMETRY_EVENT } from '@n8n/telemetry';
+} from '@MNI/api-types';
+import type { InstanceAiCredentialService } from '@MNI/instance-ai';
+import { TELEMETRY_EVENT } from '@MNI/telemetry';
 import { nanoid } from 'nanoid';
 import { z } from 'zod';
 

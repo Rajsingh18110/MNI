@@ -6,7 +6,7 @@ import { TOOL_CALL_STATE } from '../constants';
 import { DELEGATE_SUB_AGENT_TOOL_NAME } from '../utils/delegate-tool';
 import { WRITE_TODOS_TOOL_NAME } from '../utils/write-todos-tool';
 
-vi.mock('@n8n/design-system', () => ({
+vi.mock('@MNI/design-system', () => ({
 	N8nAiActivityStep: {
 		props: ['label', 'hasContent', 'loading', 'error', 'hideErrorCallout'],
 		data: () => ({ isOpen: false }),
@@ -33,7 +33,7 @@ vi.mock('@n8n/design-system', () => ({
 	N8nAiActivityStepGroup: {
 		props: ['label', 'size', 'loading'],
 		template:
-			'<div data-test-id="n8n-ai-activity-step-group" :data-loading="String(loading)"><slot /></div>',
+			'<div data-test-id="MNI-ai-activity-step-group" :data-loading="String(loading)"><slot /></div>',
 	},
 	N8nButton: {
 		props: ['size', 'variant'],
@@ -56,7 +56,7 @@ vi.mock('@n8n/design-system', () => ({
 	N8nTooltip: { template: '<div><slot /></div>', props: ['content', 'placement'] },
 }));
 
-vi.mock('@n8n/i18n', () => {
+vi.mock('@MNI/i18n', () => {
 	const i18n = {
 		translations: {
 			'agents.chat.toolNames.webSearch': 'Web search',
@@ -128,7 +128,7 @@ describe('AgentChatToolSteps', () => {
 		]);
 
 		expect(
-			wrapper.find('[data-test-id="n8n-ai-activity-step-group"]').attributes('data-loading'),
+			wrapper.find('[data-test-id="MNI-ai-activity-step-group"]').attributes('data-loading'),
 		).toBe(expectedLoading);
 	});
 
@@ -344,7 +344,7 @@ describe('AgentChatToolSteps', () => {
 		expect(callout.find('ul').exists()).toBe(false);
 		expect(callout.text()).toContain('Tool failed');
 
-		const group = wrapper.find('[data-test-id="n8n-ai-activity-step-group"]');
+		const group = wrapper.find('[data-test-id="MNI-ai-activity-step-group"]');
 		expect(group.exists()).toBe(true);
 		expect(group.find('[data-test-id="agent-chat-tool-fix-with-assistant-callout"]').exists()).toBe(
 			false,
@@ -458,7 +458,7 @@ describe('AgentChatToolSteps', () => {
 
 		// The child's steps render through this same component, so they get the
 		// parent chat's tool labels and its multi-step grouping.
-		expect(wrapper.find('[data-test-id="n8n-ai-activity-step-group"]').exists()).toBe(true);
+		expect(wrapper.find('[data-test-id="MNI-ai-activity-step-group"]').exists()).toBe(true);
 		expect(wrapper.text()).toContain('Web search');
 		expect(wrapper.text()).toContain('Search nodes');
 	});

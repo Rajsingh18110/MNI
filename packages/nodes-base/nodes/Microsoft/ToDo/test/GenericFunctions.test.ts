@@ -5,7 +5,7 @@ import {
 	type IExecuteFunctions,
 	type ILoadOptionsFunctions,
 	type INode,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import type { Mock, Mocked } from 'vitest';
 import { mockDeep } from 'vitest-mock-extended';
 
@@ -32,7 +32,7 @@ describe('Microsoft ToDo GenericFunctions', () => {
 		mockNode = {
 			id: 'test-node',
 			name: 'Test ToDo Node',
-			type: 'n8n-nodes-base.microsoftToDo',
+			type: 'MNI-nodes-base.microsoftToDo',
 			typeVersion: 1,
 			position: [0, 0],
 			parameters: {},

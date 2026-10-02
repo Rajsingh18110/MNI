@@ -7,13 +7,13 @@ import type {
 	INodeProperties,
 	INodePropertyOptions,
 	NodeParameterValueType,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import {
 	ADD_FORM_NOTICE,
 	getParameterValueByPath,
 	NodeHelpers,
 	resolveRelativePath,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import { computed, defineAsyncComponent, nextTick, onErrorCaptured, ref, watch } from 'vue';
 
 import type { INodeUi, IUpdateInformation } from '@/Interface';
@@ -31,7 +31,7 @@ import {
 import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';
 import { useNodeSettingsParameters } from '@/features/ndv/settings/composables/useNodeSettingsParameters';
 import { injectNDVStore } from '@/features/ndv/shared/ndv.store';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import AssignmentCollection from './AssignmentCollection/AssignmentCollection.vue';
 import ButtonParameter from './ButtonParameter/ButtonParameter.vue';
 import FilterConditions from './FilterConditions/FilterConditions.vue';
@@ -47,7 +47,7 @@ import {
 	getParameterTypeOption,
 	type ParameterOptionsOverrides,
 } from '@/features/ndv/shared/ndv.utils';
-import type { IconName } from '@n8n/design-system';
+import type { IconName } from '@MNI/design-system';
 import { captureException } from '@sentry/vue';
 import { throttledWatch } from '@vueuse/core';
 import get from 'lodash/get';
@@ -62,7 +62,7 @@ import {
 	N8nSectionHeader,
 	N8nText,
 	N8nTooltip,
-} from '@n8n/design-system';
+} from '@MNI/design-system';
 import { injectWorkflowDocumentStore } from '@/app/stores/workflowDocument.store';
 const LazyFixedCollectionParameter = defineAsyncComponent(
 	async () => await import('./FixedCollection/FixedCollectionParameter.vue'),
@@ -822,7 +822,7 @@ watch(
 				>
 					<N8nText size="small">
 						<N8nText
-							v-n8n-html="
+							v-MNI-html="
 								i18n.nodeText(activeNode?.type).inputLabelDisplayName(item.parameter, path)
 							"
 							size="small"

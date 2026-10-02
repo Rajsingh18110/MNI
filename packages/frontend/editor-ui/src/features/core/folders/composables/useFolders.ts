@@ -4,7 +4,7 @@ import {
 	FOLDER_NAME_ONLY_DOTS_REGEX,
 	ILLEGAL_FOLDER_CHARACTERS,
 } from '../folders.constants';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import { useFoldersStore } from '../folders.store';
 import { computed } from 'vue';
 import type { DragTarget, DropTarget } from '../folders.types';

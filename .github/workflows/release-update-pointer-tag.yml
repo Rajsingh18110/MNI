@@ -18,7 +18,7 @@ on:
         type: choice
         options: [stable, beta, v1]
       version-tag:
-        description: 'Version tag (e.g. n8n@2.7.0). Track tag will point to this version tag.'
+        description: 'Version tag (e.g. MNI@2.7.0). Track tag will point to this version tag.'
         required: true
         type: string
 
@@ -58,8 +58,8 @@ jobs:
 
       - name: Configure git author
         run: |
-          git config user.name "n8n-release-tag-merge[bot]"
-          git config user.email "256767729+n8n-release-tag-merge[bot]@users.noreply.github.com"
+          git config user.name "MNI-release-tag-merge[bot]"
+          git config user.email "256767729+MNI-release-tag-merge[bot]@users.noreply.github.com"
 
       - name: Move track tag
         env:

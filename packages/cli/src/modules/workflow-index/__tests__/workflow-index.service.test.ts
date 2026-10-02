@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/unbound-method */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import { Logger } from '@n8n/backend-common';
-import { mockInstance } from '@n8n/backend-test-utils';
-import type { WorkflowsConfig } from '@n8n/config';
-import { WorkflowDependencyRepository, WorkflowEntity, WorkflowRepository } from '@n8n/db';
-import type { Span } from 'n8n-core';
-import { ErrorReporter, Tracing } from 'n8n-core';
-import type { INode, IWorkflowBase } from 'n8n-workflow';
+import { Logger } from '@MNI/backend-common';
+import { mockInstance } from '@MNI/backend-test-utils';
+import type { WorkflowsConfig } from '@MNI/config';
+import { WorkflowDependencyRepository, WorkflowEntity, WorkflowRepository } from '@MNI/db';
+import type { Span } from 'MNI-core';
+import { ErrorReporter, Tracing } from 'MNI-core';
+import type { INode, IWorkflowBase } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import { EventService } from '@/events/event.service';
@@ -77,12 +77,12 @@ describe('WorkflowIndexService', () => {
 			const workflow = createWorkflow([
 				createNode({
 					id: 'node-1',
-					type: 'n8n-nodes-base.webhook',
+					type: 'MNI-nodes-base.webhook',
 					parameters: { path: 'webhook-1' },
 				}),
 				createNode({
 					id: 'node-2',
-					type: 'n8n-nodes-base.httpRequest',
+					type: 'MNI-nodes-base.httpRequest',
 					credentials: {
 						httpAuth: { id: 'cred-1', name: 'Auth 1' },
 						apiKey: { id: 'cred-2', name: 'Auth 2' },
@@ -90,12 +90,12 @@ describe('WorkflowIndexService', () => {
 				}),
 				createNode({
 					id: 'node-3',
-					type: 'n8n-nodes-base.executeWorkflow',
+					type: 'MNI-nodes-base.executeWorkflow',
 					parameters: { workflowId: 'sub-workflow-1' },
 				}),
 				createNode({
 					id: 'node-4',
-					type: 'n8n-nodes-base.executeWorkflow',
+					type: 'MNI-nodes-base.executeWorkflow',
 					parameters: { workflowId: { value: 'sub-workflow-2' } },
 				}),
 			]);
@@ -109,22 +109,22 @@ describe('WorkflowIndexService', () => {
 						// nodeType dependencies
 						expect.objectContaining({
 							dependencyType: 'nodeType',
-							dependencyKey: 'n8n-nodes-base.webhook',
+							dependencyKey: 'MNI-nodes-base.webhook',
 							dependencyInfo: { nodeId: 'node-1', nodeVersion: 1 },
 						}),
 						expect.objectContaining({
 							dependencyType: 'nodeType',
-							dependencyKey: 'n8n-nodes-base.httpRequest',
+							dependencyKey: 'MNI-nodes-base.httpRequest',
 							dependencyInfo: { nodeId: 'node-2', nodeVersion: 1 },
 						}),
 						expect.objectContaining({
 							dependencyType: 'nodeType',
-							dependencyKey: 'n8n-nodes-base.executeWorkflow',
+							dependencyKey: 'MNI-nodes-base.executeWorkflow',
 							dependencyInfo: { nodeId: 'node-3', nodeVersion: 1 },
 						}),
 						expect.objectContaining({
 							dependencyType: 'nodeType',
-							dependencyKey: 'n8n-nodes-base.executeWorkflow',
+							dependencyKey: 'MNI-nodes-base.executeWorkflow',
 							dependencyInfo: { nodeId: 'node-4', nodeVersion: 1 },
 						}),
 						// webhookPath dependencies
@@ -167,7 +167,7 @@ describe('WorkflowIndexService', () => {
 			const workflow = createWorkflow([
 				createNode({
 					id: 'node-1',
-					type: 'n8n-nodes-base.manualTrigger',
+					type: 'MNI-nodes-base.manualTrigger',
 				}),
 			]);
 
@@ -185,17 +185,17 @@ describe('WorkflowIndexService', () => {
 			const workflow = createWorkflow([
 				createNode({
 					id: 'node-1',
-					type: 'n8n-nodes-base.executeWorkflow',
+					type: 'MNI-nodes-base.executeWorkflow',
 					parameters: { source: 'parameter' },
 				}),
 				createNode({
 					id: 'node-2',
-					type: 'n8n-nodes-base.executeWorkflow',
+					type: 'MNI-nodes-base.executeWorkflow',
 					parameters: { source: 'localFile' },
 				}),
 				createNode({
 					id: 'node-3',
-					type: 'n8n-nodes-base.executeWorkflow',
+					type: 'MNI-nodes-base.executeWorkflow',
 					parameters: { source: 'url' },
 				}),
 			]);
@@ -220,7 +220,7 @@ describe('WorkflowIndexService', () => {
 			const workflow = createWorkflow([
 				createNode({
 					id: 'node-1',
-					type: 'n8n-nodes-base.executeWorkflow',
+					type: 'MNI-nodes-base.executeWorkflow',
 					parameters: {}, // No workflowId — node was just added to canvas
 				}),
 			]);
@@ -245,20 +245,20 @@ describe('WorkflowIndexService', () => {
 			const workflow = createWorkflow([
 				createNode({
 					id: 'node-1',
-					type: '@n8n/n8n-nodes-langchain.toolWorkflow',
+					type: '@MNI/MNI-nodes-langchain.toolWorkflow',
 					typeVersion: 2.2,
 					parameters: { source: 'database', workflowId: { mode: 'list', value: 'sub-workflow-1' } },
 				}),
 				// toolWorkflow <= 1.1 stores the workflowId as a plain string.
 				createNode({
 					id: 'node-2',
-					type: '@n8n/n8n-nodes-langchain.toolWorkflow',
+					type: '@MNI/MNI-nodes-langchain.toolWorkflow',
 					typeVersion: 1,
 					parameters: { source: 'database', workflowId: 'sub-workflow-2' },
 				}),
 				createNode({
 					id: 'node-3',
-					type: '@n8n/n8n-nodes-langchain.retrieverWorkflow',
+					type: '@MNI/MNI-nodes-langchain.retrieverWorkflow',
 					parameters: { source: 'database', workflowId: 'sub-workflow-3' },
 				}),
 			]);
@@ -295,7 +295,7 @@ describe('WorkflowIndexService', () => {
 			const workflow = createWorkflow([
 				createNode({
 					id: 'node-1',
-					type: '@n8n/n8n-nodes-langchain.toolWorkflow',
+					type: '@MNI/MNI-nodes-langchain.toolWorkflow',
 					parameters: { source: 'parameter', workflowJson: '{}' },
 				}),
 			]);
@@ -320,12 +320,12 @@ describe('WorkflowIndexService', () => {
 			const workflow = createWorkflow([
 				createNode({
 					id: 'node-1',
-					type: 'n8n-nodes-base.executeWorkflow',
+					type: 'MNI-nodes-base.executeWorkflow',
 					parameters: { workflowId: '={{ $json.workflowId }}' },
 				}),
 				createNode({
 					id: 'node-2',
-					type: '@n8n/n8n-nodes-langchain.toolWorkflow',
+					type: '@MNI/MNI-nodes-langchain.toolWorkflow',
 					parameters: {
 						source: 'database',
 						workflowId: { mode: 'id', value: '={{ $json.workflowId }}' },
@@ -353,7 +353,7 @@ describe('WorkflowIndexService', () => {
 			const workflow = createWorkflow([
 				createNode({
 					id: 'node-1',
-					type: 'n8n-nodes-base.httpRequest',
+					type: 'MNI-nodes-base.httpRequest',
 					credentials: {
 						httpAuth: { id: 'cred-1', name: 'Basic Auth' },
 						apiKey: { id: 'cred-2', name: 'API Key' },
@@ -394,7 +394,7 @@ describe('WorkflowIndexService', () => {
 			const workflow = createWorkflow([
 				createNode({
 					id: 'node-1',
-					type: 'n8n-nodes-base.httpRequest',
+					type: 'MNI-nodes-base.httpRequest',
 					credentials: {
 						httpAuth: { id: 'cred-1', name: 'Valid Auth' },
 						apiKey: { id: null, name: 'Invalid API Key' },
@@ -414,7 +414,7 @@ describe('WorkflowIndexService', () => {
 				expect.arrayContaining([
 					expect.objectContaining({
 						dependencyType: 'nodeType',
-						dependencyKey: 'n8n-nodes-base.httpRequest',
+						dependencyKey: 'MNI-nodes-base.httpRequest',
 						dependencyInfo: { nodeId: 'node-1', nodeVersion: 1 },
 					}),
 					expect.objectContaining({
@@ -432,7 +432,7 @@ describe('WorkflowIndexService', () => {
 			const workflow = createWorkflow([
 				createNode({
 					id: 'node-1',
-					type: 'n8n-nodes-base.httpRequest',
+					type: 'MNI-nodes-base.httpRequest',
 				}),
 				{
 					id: 'node-2',
@@ -452,7 +452,7 @@ describe('WorkflowIndexService', () => {
 			expect(dependencies[0]).toEqual(
 				expect.objectContaining({
 					dependencyType: 'nodeType',
-					dependencyKey: 'n8n-nodes-base.httpRequest',
+					dependencyKey: 'MNI-nodes-base.httpRequest',
 					dependencyInfo: { nodeId: 'node-1', nodeVersion: 1 },
 				}),
 			);
@@ -464,12 +464,12 @@ describe('WorkflowIndexService', () => {
 			const workflow = createWorkflow([
 				createNode({
 					id: 'node-1',
-					type: 'n8n-nodes-base.webhook',
+					type: 'MNI-nodes-base.webhook',
 					parameters: { path: 'valid-path' },
 				}),
 				createNode({
 					id: 'node-2',
-					type: 'n8n-nodes-base.webhook',
+					type: 'MNI-nodes-base.webhook',
 					parameters: {},
 				}),
 			]);
@@ -484,12 +484,12 @@ describe('WorkflowIndexService', () => {
 				expect.arrayContaining([
 					expect.objectContaining({
 						dependencyType: 'nodeType',
-						dependencyKey: 'n8n-nodes-base.webhook',
+						dependencyKey: 'MNI-nodes-base.webhook',
 						dependencyInfo: { nodeId: 'node-1', nodeVersion: 1 },
 					}),
 					expect.objectContaining({
 						dependencyType: 'nodeType',
-						dependencyKey: 'n8n-nodes-base.webhook',
+						dependencyKey: 'MNI-nodes-base.webhook',
 						dependencyInfo: { nodeId: 'node-2', nodeVersion: 1 },
 					}),
 					expect.objectContaining({
@@ -508,7 +508,7 @@ describe('WorkflowIndexService', () => {
 				{
 					id: 'node-1',
 					name: 'node-1',
-					type: 'n8n-nodes-base.webhook',
+					type: 'MNI-nodes-base.webhook',
 					typeVersion: 1,
 					position: [0, 0],
 					parameters: undefined as unknown as INode['parameters'],
@@ -531,22 +531,22 @@ describe('WorkflowIndexService', () => {
 			const workflow = createWorkflow([
 				createNode({
 					id: 'node-1',
-					type: 'n8n-nodes-base.dataTable',
+					type: 'MNI-nodes-base.dataTable',
 					parameters: { dataTableId: { mode: 'name', value: 'My Table 1' } },
 				}),
 				createNode({
 					id: 'node-2',
-					type: 'n8n-nodes-base.dataTableTool',
+					type: 'MNI-nodes-base.dataTableTool',
 					parameters: { dataTableId: { mode: 'id', value: 'table-2' } },
 				}),
 				createNode({
 					id: 'node-3',
-					type: 'n8n-nodes-base.evaluationTrigger',
+					type: 'MNI-nodes-base.evaluationTrigger',
 					parameters: { source: 'dataTable', dataTableId: { mode: 'list', value: 'table-3' } },
 				}),
 				createNode({
 					id: 'node-4',
-					type: 'n8n-nodes-base.evaluation',
+					type: 'MNI-nodes-base.evaluation',
 					parameters: { source: 'dataTable', dataTableId: { mode: 'list', value: 'table-4' } },
 				}),
 			]);
@@ -651,13 +651,13 @@ describe('WorkflowIndexService', () => {
 			const draftNodes = [
 				createNode({
 					id: 'node-1',
-					type: 'n8n-nodes-base.manualTrigger',
+					type: 'MNI-nodes-base.manualTrigger',
 				}),
 			];
 			const publishedNodes = [
 				createNode({
 					id: 'node-2',
-					type: 'n8n-nodes-base.httpRequest',
+					type: 'MNI-nodes-base.httpRequest',
 				}),
 			];
 			const workflow = createWorkflow(draftNodes);
@@ -672,7 +672,7 @@ describe('WorkflowIndexService', () => {
 					dependencies: expect.arrayContaining([
 						expect.objectContaining({
 							dependencyType: 'nodeType',
-							dependencyKey: 'n8n-nodes-base.httpRequest',
+							dependencyKey: 'MNI-nodes-base.httpRequest',
 						}),
 					]),
 				}),
@@ -683,7 +683,7 @@ describe('WorkflowIndexService', () => {
 				expect.objectContaining({
 					dependencies: expect.not.arrayContaining([
 						expect.objectContaining({
-							dependencyKey: 'n8n-nodes-base.manualTrigger',
+							dependencyKey: 'MNI-nodes-base.manualTrigger',
 						}),
 					]),
 				}),
@@ -694,7 +694,7 @@ describe('WorkflowIndexService', () => {
 			mockWorkflowDependencyRepository.updateDependenciesForWorkflow.mockResolvedValue(true);
 
 			const workflow = createWorkflow([
-				createNode({ id: 'node-1', type: 'n8n-nodes-base.manualTrigger' }),
+				createNode({ id: 'node-1', type: 'MNI-nodes-base.manualTrigger' }),
 			]);
 			workflow.settings = { errorWorkflow: 'error-wf-1' };
 
@@ -720,7 +720,7 @@ describe('WorkflowIndexService', () => {
 			const workflow = createWorkflow([
 				createNode({
 					id: 'node-1',
-					type: 'n8n-nodes-base.manualTrigger',
+					type: 'MNI-nodes-base.manualTrigger',
 				}),
 			]);
 
@@ -753,7 +753,7 @@ describe('WorkflowIndexService', () => {
 			mockWorkflowRepository.findWorkflowsNeedingIndexing.mockResolvedValue([]);
 
 			const workflow = createWorkflowEntity([
-				createNode({ id: 'node-1', type: 'n8n-nodes-base.manualTrigger' }),
+				createNode({ id: 'node-1', type: 'MNI-nodes-base.manualTrigger' }),
 			]);
 			workflow.activeVersionId = 'some-version-id';
 			workflow.activeVersion = null;
@@ -771,10 +771,10 @@ describe('WorkflowIndexService', () => {
 
 		it('should retrieve unindexed workflows and update their dependencies', async () => {
 			const workflow1 = createWorkflowEntity([
-				createNode({ id: 'node-1', type: 'n8n-nodes-base.manualTrigger' }),
+				createNode({ id: 'node-1', type: 'MNI-nodes-base.manualTrigger' }),
 			]);
 			const workflow2 = createWorkflowEntity([
-				createNode({ id: 'node-2', type: 'n8n-nodes-base.webhook', parameters: { path: 'test' } }),
+				createNode({ id: 'node-2', type: 'MNI-nodes-base.webhook', parameters: { path: 'test' } }),
 			]);
 			workflow2.id = 'workflow-456';
 
@@ -823,7 +823,7 @@ describe('WorkflowIndexService', () => {
 			// Create 5 workflows to test multiple batches
 			const workflows = Array.from({ length: 5 }, (_, i) => {
 				const workflow = createWorkflowEntity([
-					createNode({ id: `node-${i}`, type: 'n8n-nodes-base.manualTrigger' }),
+					createNode({ id: `node-${i}`, type: 'MNI-nodes-base.manualTrigger' }),
 				]);
 				workflow.id = `workflow-${i}`;
 				return workflow;

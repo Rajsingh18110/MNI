@@ -4,7 +4,7 @@ import { useNodeHelpers } from '@/app/composables/useNodeHelpers';
 import { telemetry } from '@/app/plugins/telemetry';
 import { injectNDVStore } from '@/features/ndv/shared/ndv.store';
 import type { IUpdateInformation } from '@/Interface';
-import type { DropdownMenuItemProps } from '@n8n/design-system';
+import type { DropdownMenuItemProps } from '@MNI/design-system';
 import {
 	N8nButton,
 	N8nCollapsiblePanel,
@@ -13,8 +13,8 @@ import {
 	N8nSectionHeader,
 	N8nTooltip,
 	TOOLTIP_DELAY_MS,
-} from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+} from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 import get from 'lodash/get';
 import isEqual from 'lodash/isEqual';
 import type {
@@ -22,8 +22,8 @@ import type {
 	INodeProperties,
 	INodePropertyCollection,
 	NodeParameterValueType,
-} from 'n8n-workflow';
-import { deepCopy, isINodePropertyCollectionList } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { deepCopy, isINodePropertyCollectionList } from 'MNI-workflow';
 import { computed, nextTick, onBeforeMount, ref, useTemplateRef, watch } from 'vue';
 import ParameterInputList from '../ParameterInputList.vue';
 import FixedCollectionItemList from './FixedCollectionItemList.vue';
@@ -674,7 +674,7 @@ const onAddButtonClick = () => {
 
 			<div v-if="shouldShowAddAtBottom" :class="$style.controls">
 				<N8nButton
-					class="n8n-button--highlightFill"
+					class="MNI-button--highlightFill"
 					variant="subtle"
 					v-if="hasSingleOption"
 					icon="plus"
@@ -694,7 +694,7 @@ const onAddButtonClick = () => {
 				>
 					<template #trigger>
 						<N8nButton
-							class="n8n-button--highlightFill"
+							class="MNI-button--highlightFill"
 							variant="subtle"
 							icon="plus"
 							size="small"
@@ -776,7 +776,7 @@ const onAddButtonClick = () => {
 
 					<div v-if="shouldShowAddAtBottom" :class="$style.controls">
 						<N8nButton
-							class="n8n-button--highlightFill"
+							class="MNI-button--highlightFill"
 							variant="subtle"
 							v-if="hasSingleOption"
 							icon="plus"
@@ -794,7 +794,7 @@ const onAddButtonClick = () => {
 						>
 							<template #trigger>
 								<N8nButton
-									class="n8n-button--highlightFill"
+									class="MNI-button--highlightFill"
 									variant="subtle"
 									icon="plus"
 									size="small"

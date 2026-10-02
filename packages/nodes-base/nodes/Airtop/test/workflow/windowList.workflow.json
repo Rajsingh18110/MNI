@@ -5,7 +5,7 @@
 			"parameters": {},
 			"id": "9c9a3f6e-3d7e-4a6d-8f51-4d5e6f708192",
 			"name": "When clicking \"Execute Workflow\"",
-			"type": "n8n-nodes-base.manualTrigger",
+			"type": "MNI-nodes-base.manualTrigger",
 			"typeVersion": 1,
 			"position": [0, 0]
 		},
@@ -17,7 +17,7 @@
 			},
 			"id": "adab4a7f-4e8f-4b7e-9062-5e6f70819203",
 			"name": "Airtop",
-			"type": "n8n-nodes-base.airtop",
+			"type": "MNI-nodes-base.airtop",
 			"typeVersion": 1.1,
 			"position": [220, 0],
 			"credentials": {
@@ -31,7 +31,7 @@
 			"parameters": {},
 			"id": "bebc5b80-5f90-4c8f-a173-6f7081920314",
 			"name": "No Operation, do nothing",
-			"type": "n8n-nodes-base.noOp",
+			"type": "MNI-nodes-base.noOp",
 			"typeVersion": 1,
 			"position": [440, 0]
 		}

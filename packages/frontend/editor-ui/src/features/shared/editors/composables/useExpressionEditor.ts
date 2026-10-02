@@ -14,8 +14,8 @@ import {
 } from 'vue';
 
 import { ensureSyntaxTree } from '@codemirror/language';
-import type { IDataObject } from 'n8n-workflow';
-import { Expression, ExpressionExtensions } from 'n8n-workflow';
+import type { IDataObject } from 'MNI-workflow';
+import { Expression, ExpressionExtensions } from 'MNI-workflow';
 
 import {
 	EXPRESSION_EDITOR_PARSER_TIMEOUT,
@@ -58,7 +58,7 @@ import {
 import { EditorView, type ViewUpdate } from '@codemirror/view';
 import debounce from 'lodash/debounce';
 import isEqual from 'lodash/isEqual';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import { injectWorkflowExecutionStateStore } from '@/app/stores/workflowExecutionState.store';
 import { useAutocompleteTelemetry } from '@/app/composables/useAutocompleteTelemetry';
 import { ignoreUpdateAnnotation } from '@/app/utils/forceParse';
@@ -66,7 +66,7 @@ import {
 	TARGET_NODE_PARAMETER_FACET,
 	WORKFLOW_DOCUMENT_FACET,
 } from '../plugins/codemirror/completions/constants';
-import { useDeviceSupport } from '@n8n/composables/useDeviceSupport';
+import { useDeviceSupport } from '@MNI/composables/useDeviceSupport';
 import { isEventTargetContainedBy } from '@/app/utils/htmlUtils';
 import { injectWorkflowDocumentStore } from '@/app/stores/workflowDocument.store';
 

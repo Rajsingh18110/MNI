@@ -2,13 +2,13 @@ import { nextTick } from 'vue';
 import type { useNDVStore } from '@/features/ndv/shared/ndv.store';
 import { createTestingPinia } from '@pinia/testing';
 import type { useNodeTypesStore } from '@/app/stores/nodeTypes.store';
-import type { useSettingsStore } from '@n8n/stores/settings.store';
+import type { useSettingsStore } from '@MNI/stores/settings.store';
 import ParameterInputFull from './ParameterInputFull.vue';
-import { FROM_AI_AUTO_GENERATED_MARKER } from 'n8n-workflow';
+import { FROM_AI_AUTO_GENERATED_MARKER } from 'MNI-workflow';
 import { fireEvent } from '@testing-library/vue';
 import { createComponentRenderer } from '@/__tests__/render';
 import { createTestNodeProperties } from '@/__tests__/mocks';
-import { parameterInputRegistry } from '@n8n/frontend-module-sdk';
+import { parameterInputRegistry } from '@MNI/frontend-module-sdk';
 
 // Instantiates a store that derives the workflow id from the route. These tests run
 // without a router, so resolve the id directly.
@@ -76,7 +76,7 @@ vi.mock('@/app/stores/nodeTypes.store', () => {
 	};
 });
 
-vi.mock('@n8n/stores/settings.store', () => {
+vi.mock('@MNI/stores/settings.store', () => {
 	return {
 		useSettingsStore: vi.fn(() => mockSettingsState),
 	};

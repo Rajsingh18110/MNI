@@ -5,14 +5,14 @@
 | Name | Type | Default | Nullable | Children | Parents | Comment |
 | ---- | ---- | ------- | -------- | -------- | ------- | ------- |
 | action | varchar(64) |  | false |  |  | What happened, as a verb: created, saved, published, unpublished, deleted, archived, unarchived, version-updated |
-| category | varchar(32) |  | false |  |  | Kind of happening, not kind of resource — see ActivityEventCategory in @n8n/db. The unit a reader caps and collapses by: workflow, credential. Executions are absent on purpose; execution_entity already records and indexes them |
+| category | varchar(32) |  | false |  |  | Kind of happening, not kind of resource — see ActivityEventCategory in @MNI/db. The unit a reader caps and collapses by: workflow, credential. Executions are absent on purpose; execution_entity already records and indexes them |
 | createdAt | timestamp(3) with time zone | CURRENT_TIMESTAMP(3) | false |  |  |  |
 | data | json |  | true |  |  | Minimal detail that makes an entry meaningful unexpanded (a save node delta, and whether the assistant or the user changed it). Size-capped on write; no user ids |
 | id | integer |  | false |  |  |  |
 | projectId | varchar(36) |  | false |  | [public.project](public.project.md) | The access boundary; every read filters on it, so an entry without a project could never be shown and is not worth writing |
 | resourceId | varchar(36) |  | true |  |  | Id of the resource, for fetching the full record. No FK: entries outlive it |
 | resourceName | text |  | true |  |  | Name at the time of the entry, denormalised so a row reads without a join and survives the resource being deleted. Truncated on write |
-| resourceType | varchar(32) |  | true |  |  | What `resourceId` points at; see ActivityResourceType in @n8n/db. NULL when an entry is about the instance rather than a resource |
+| resourceType | varchar(32) |  | true |  |  | What `resourceId` points at; see ActivityResourceType in @MNI/db. NULL when an entry is about the instance rather than a resource |
 | typeVersion | integer | 1 | false |  |  | Schema version of `data` for this category/action pair |
 | userId | uuid |  | true |  | [public.user](public.user.md) | Who acted. Never NULL on insert — every event carries a user. Goes NULL when that user is deleted |
 

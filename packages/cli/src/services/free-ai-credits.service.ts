@@ -1,8 +1,8 @@
-import { LicenseState } from '@n8n/backend-common';
-import { GlobalConfig } from '@n8n/config';
-import type { User } from '@n8n/db';
-import { Service } from '@n8n/di';
-import { OPEN_AI_API_CREDENTIAL_TYPE } from 'n8n-workflow';
+import { LicenseState } from '@MNI/backend-common';
+import { GlobalConfig } from '@MNI/config';
+import type { User } from '@MNI/db';
+import { Service } from '@MNI/di';
+import { OPEN_AI_API_CREDENTIAL_TYPE } from 'MNI-workflow';
 
 import { FREE_AI_CREDITS_CREDENTIAL_NAME } from '@/constants';
 import { CredentialsService } from '@/credentials/credentials.service';

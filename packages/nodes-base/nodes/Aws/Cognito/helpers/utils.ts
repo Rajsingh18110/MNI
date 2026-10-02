@@ -5,8 +5,8 @@ import type {
 	IExecuteSingleFunctions,
 	IN8nHttpFullResponse,
 	INodeExecutionData,
-} from 'n8n-workflow';
-import { jsonParse, NodeApiError, NodeOperationError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { jsonParse, NodeApiError, NodeOperationError } from 'MNI-workflow';
 
 import type {
 	IGroup,

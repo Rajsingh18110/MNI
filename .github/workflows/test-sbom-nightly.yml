@@ -16,7 +16,7 @@ concurrency:
 jobs:
   resolve-nightly-build:
     name: Resolve nightly Docker build
-    if: github.repository == 'n8n-io/n8n'
+    if: github.repository == 'MNI-io/MNI'
     runs-on: ubuntu-slim
     timeout-minutes: 130
     permissions:
@@ -98,18 +98,18 @@ jobs:
       - name: Resolve nightly image digests
         id: digests
         env:
-          N8N_TAG: ghcr.io/n8n-io/n8n:${{ needs.resolve-nightly-build.outputs.image_tag }}
-          N8N_PC_TAG: ghcr.io/n8n-io/n8n:${{ needs.resolve-nightly-build.outputs.image_tag }}-pc
-          RUNNERS_TAG: ghcr.io/n8n-io/runners:${{ needs.resolve-nightly-build.outputs.image_tag }}
-          DISTROLESS_TAG: ghcr.io/n8n-io/runners:${{ needs.resolve-nightly-build.outputs.image_tag }}-distroless
+          MNI_TAG: ghcr.io/MNI-io/MNI:${{ needs.resolve-nightly-build.outputs.image_tag }}
+          MNI_PC_TAG: ghcr.io/MNI-io/MNI:${{ needs.resolve-nightly-build.outputs.image_tag }}-pc
+          RUNNERS_TAG: ghcr.io/MNI-io/runners:${{ needs.resolve-nightly-build.outputs.image_tag }}
+          DISTROLESS_TAG: ghcr.io/MNI-io/runners:${{ needs.resolve-nightly-build.outputs.image_tag }}-distroless
         run: node .github/scripts/docker/get-manifest-digests.mjs
 
       - name: Generate and validate image SBOMs
         env:
-          N8N_IMAGE: ${{ steps.digests.outputs.n8n_image }}
-          N8N_DIGEST: ${{ steps.digests.outputs.n8n_digest }}
-          N8N_PC_IMAGE: ${{ steps.digests.outputs.n8n_pc_image }}
-          N8N_PC_DIGEST: ${{ steps.digests.outputs.n8n_pc_digest }}
+          MNI_IMAGE: ${{ steps.digests.outputs.MNI_image }}
+          MNI_DIGEST: ${{ steps.digests.outputs.MNI_digest }}
+          MNI_PC_IMAGE: ${{ steps.digests.outputs.MNI_pc_image }}
+          MNI_PC_DIGEST: ${{ steps.digests.outputs.MNI_pc_digest }}
           RUNNERS_IMAGE: ${{ steps.digests.outputs.runners_image }}
           RUNNERS_DIGEST: ${{ steps.digests.outputs.runners_digest }}
           DISTROLESS_IMAGE: ${{ steps.digests.outputs.runners_distroless_image }}

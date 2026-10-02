@@ -6,13 +6,13 @@ import type {
 	INodeTypeBaseDescription,
 	INodeTypeDescription,
 	NodeParameterValue,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import {
 	NodeConnectionTypes,
 	NodeOperationError,
 	parseRegexLiteral,
 	safeRegex,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 export function matchesRegex(value1: NodeParameterValue, value2: NodeParameterValue): boolean {
 	const { source, flags } = parseRegexLiteral((value2 || '').toString());
@@ -127,7 +127,7 @@ export class SwitchV1 implements INodeType {
 						},
 					},
 					default: false,
-					// eslint-disable-next-line n8n-nodes-base/node-param-description-boolean-without-whether
+					// eslint-disable-next-line MNI-nodes-base/node-param-description-boolean-without-whether
 					description: 'The value to compare with the first one',
 				},
 				{
@@ -150,7 +150,7 @@ export class SwitchV1 implements INodeType {
 							name: 'rules',
 							displayName: 'Boolean',
 							values: [
-								// eslint-disable-next-line n8n-nodes-base/node-param-operation-without-no-data-expression
+								// eslint-disable-next-line MNI-nodes-base/node-param-operation-without-no-data-expression
 								{
 									displayName: 'Operation',
 									name: 'operation',
@@ -173,7 +173,7 @@ export class SwitchV1 implements INodeType {
 									name: 'value2',
 									type: 'boolean',
 									default: false,
-									// eslint-disable-next-line n8n-nodes-base/node-param-description-boolean-without-whether
+									// eslint-disable-next-line MNI-nodes-base/node-param-description-boolean-without-whether
 									description: 'The value to compare with the first one',
 								},
 								{
@@ -228,7 +228,7 @@ export class SwitchV1 implements INodeType {
 							name: 'rules',
 							displayName: 'Dates',
 							values: [
-								// eslint-disable-next-line n8n-nodes-base/node-param-operation-without-no-data-expression
+								// eslint-disable-next-line MNI-nodes-base/node-param-operation-without-no-data-expression
 								{
 									displayName: 'Operation',
 									name: 'operation',
@@ -305,12 +305,12 @@ export class SwitchV1 implements INodeType {
 							name: 'rules',
 							displayName: 'Numbers',
 							values: [
-								// eslint-disable-next-line n8n-nodes-base/node-param-operation-without-no-data-expression
+								// eslint-disable-next-line MNI-nodes-base/node-param-operation-without-no-data-expression
 								{
 									displayName: 'Operation',
 									name: 'operation',
 									type: 'options',
-									// eslint-disable-next-line n8n-nodes-base/node-param-options-type-unsorted-items
+									// eslint-disable-next-line MNI-nodes-base/node-param-options-type-unsorted-items
 									options: [
 										{
 											name: 'Smaller',
@@ -399,12 +399,12 @@ export class SwitchV1 implements INodeType {
 							name: 'rules',
 							displayName: 'Strings',
 							values: [
-								// eslint-disable-next-line n8n-nodes-base/node-param-operation-without-no-data-expression
+								// eslint-disable-next-line MNI-nodes-base/node-param-operation-without-no-data-expression
 								{
 									displayName: 'Operation',
 									name: 'operation',
 									type: 'options',
-									// eslint-disable-next-line n8n-nodes-base/node-param-options-type-unsorted-items
+									// eslint-disable-next-line MNI-nodes-base/node-param-options-type-unsorted-items
 									options: [
 										{
 											name: 'Contains',
@@ -500,7 +500,7 @@ export class SwitchV1 implements INodeType {
 							mode: ['rules'],
 						},
 					},
-					// eslint-disable-next-line n8n-nodes-base/node-param-options-type-unsorted-items
+					// eslint-disable-next-line MNI-nodes-base/node-param-options-type-unsorted-items
 					options: [
 						{
 							name: 'None',

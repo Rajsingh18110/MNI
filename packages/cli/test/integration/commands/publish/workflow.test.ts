@@ -3,7 +3,7 @@ import {
 	testDb,
 	createWorkflowWithTriggerAndHistory,
 	getWorkflowById,
-} from '@n8n/backend-test-utils';
+} from '@MNI/backend-test-utils';
 
 import { PublishWorkflowCommand } from '@/commands/publish/workflow';
 import { LoadNodesAndCredentials } from '@/load-nodes-and-credentials';

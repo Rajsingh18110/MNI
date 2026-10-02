@@ -1,8 +1,8 @@
-import type { ListDataTableQueryDto } from '@n8n/api-types';
-import type { Logger } from '@n8n/backend-common';
-import { createTeamProject, testDb, testModules } from '@n8n/backend-test-utils';
-import type { Project, User } from '@n8n/db';
-import { Container } from '@n8n/di';
+import type { ListDataTableQueryDto } from '@MNI/api-types';
+import type { Logger } from '@MNI/backend-common';
+import { createTeamProject, testDb, testModules } from '@MNI/backend-test-utils';
+import type { Project, User } from '@MNI/db';
+import { Container } from '@MNI/di';
 import type {
 	AddDataTableColumnOptions,
 	INode,
@@ -10,8 +10,8 @@ import type {
 	MoveDataTableColumnOptions,
 	UpsertDataTableRowOptions,
 	Workflow,
-} from 'n8n-workflow';
-import { NodeOperationError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeOperationError } from 'MNI-workflow';
 import type { MockInstance } from 'vitest';
 import { mock } from 'vitest-mock-extended';
 
@@ -64,7 +64,7 @@ describe('DataTableProxyService', () => {
 			id: PROJECT_ID,
 		});
 		node = mock<INode>({
-			type: 'n8n-nodes-base.dataTable',
+			type: 'MNI-nodes-base.dataTable',
 		});
 
 		ownershipServiceMock.getWorkflowProjectCached.mockResolvedValueOnce(project);
@@ -295,7 +295,7 @@ describe('DataTableProxyService', () => {
 });
 
 describe('DataTableProxyService (with database)', () => {
-	const node = mock<INode>({ type: 'n8n-nodes-base.dataTable' });
+	const node = mock<INode>({ type: 'MNI-nodes-base.dataTable' });
 	const workflow = mock<Workflow>({ id: 'workflow-id' });
 
 	afterEach(async () => {

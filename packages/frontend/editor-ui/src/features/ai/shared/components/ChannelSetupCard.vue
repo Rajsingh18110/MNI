@@ -15,10 +15,10 @@ import {
 	N8nText,
 	updatedIconSet,
 	type IconName,
-} from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
-import type { ChatIntegrationDescriptor } from '@n8n/api-types';
-import { useRootStore } from '@n8n/stores/useRootStore';
+} from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
+import type { ChatIntegrationDescriptor } from '@MNI/api-types';
+import { useRootStore } from '@MNI/stores/useRootStore';
 import { computed, ref, watch } from 'vue';
 
 import { agentsEventBus } from '@/features/agents/agents.eventBus';

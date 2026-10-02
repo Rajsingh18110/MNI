@@ -1,6 +1,6 @@
-import type { ModuleInterface, SystemTaskClass } from '@n8n/decorators';
-import { BackendModule, OnShutdown } from '@n8n/decorators';
-import { Container } from '@n8n/di';
+import type { ModuleInterface, SystemTaskClass } from '@MNI/decorators';
+import { BackendModule, OnShutdown } from '@MNI/decorators';
+import { Container } from '@MNI/di';
 
 /**
  * Instance Registry Module

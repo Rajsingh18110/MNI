@@ -1,7 +1,7 @@
-import type { PromotionDirection } from '@n8n/api-types';
-import { promotionConnectionTargetSchema, promotionProviderTypeSchema } from '@n8n/api-types';
-import { ProjectRepository } from '@n8n/db';
-import { Service } from '@n8n/di';
+import type { PromotionDirection } from '@MNI/api-types';
+import { promotionConnectionTargetSchema, promotionProviderTypeSchema } from '@MNI/api-types';
+import { ProjectRepository } from '@MNI/db';
+import { Service } from '@MNI/di';
 
 import { BadRequestError } from '@/errors/response-errors/bad-request.error';
 import { NotFoundError } from '@/errors/response-errors/not-found.error';

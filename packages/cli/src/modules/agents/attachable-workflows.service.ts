@@ -1,6 +1,6 @@
-import { SUPPORTED_WORKFLOW_TOOL_TRIGGERS } from '@n8n/api-types';
-import type { User } from '@n8n/db';
-import { Service } from '@n8n/di';
+import { SUPPORTED_WORKFLOW_TOOL_TRIGGERS } from '@MNI/api-types';
+import type { User } from '@MNI/db';
+import { Service } from '@MNI/di';
 
 import { WorkflowFinderService } from '@/workflows/workflow-finder.service';
 

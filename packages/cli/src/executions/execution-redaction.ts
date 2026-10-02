@@ -1,6 +1,6 @@
-import type { ExecutionRedactionQueryDto } from '@n8n/api-types';
-import type { IExecutionBase, User } from '@n8n/db';
-import type { IRunExecutionData, IWorkflowBase, WorkflowExecuteMode } from 'n8n-workflow';
+import type { ExecutionRedactionQueryDto } from '@MNI/api-types';
+import type { IExecutionBase, User } from '@MNI/db';
+import type { IRunExecutionData, IWorkflowBase, WorkflowExecuteMode } from 'MNI-workflow';
 
 export type ExecutionRedactionOptions = {
 	user: User;

@@ -1,6 +1,6 @@
 import type { INodeUi } from '@/Interface';
-import type { INodeProperties, INodeTypeDescription } from 'n8n-workflow';
-import { NodeHelpers } from 'n8n-workflow';
+import type { INodeProperties, INodeTypeDescription } from 'MNI-workflow';
+import { NodeHelpers } from 'MNI-workflow';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { getWorkflowSetupParameterIssues } from './workflowSetupParameterIssues';
 
@@ -8,7 +8,7 @@ function makeNode(overrides: Partial<INodeUi> = {}): INodeUi {
 	return {
 		id: 'http-request',
 		name: 'HTTP Request',
-		type: 'n8n-nodes-base.httpRequest',
+		type: 'MNI-nodes-base.httpRequest',
 		typeVersion: 4.2,
 		position: [0, 0],
 		parameters: {},
@@ -19,7 +19,7 @@ function makeNode(overrides: Partial<INodeUi> = {}): INodeUi {
 function makeNodeType(properties: INodeProperties[]): INodeTypeDescription {
 	return {
 		displayName: 'HTTP Request',
-		name: 'n8n-nodes-base.httpRequest',
+		name: 'MNI-nodes-base.httpRequest',
 		group: ['transform'],
 		version: 4.2,
 		description: 'Makes HTTP requests',

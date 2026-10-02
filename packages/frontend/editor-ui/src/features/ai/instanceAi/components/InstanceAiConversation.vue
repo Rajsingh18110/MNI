@@ -11,30 +11,30 @@ import {
 	watch,
 } from 'vue';
 import { storeToRefs } from 'pinia';
-import { N8nChatMessage, N8nIconButton, N8nScrollArea, N8nText } from '@n8n/design-system';
+import { N8nChatMessage, N8nIconButton, N8nScrollArea, N8nText } from '@MNI/design-system';
 import { useScroll } from '@vueuse/core';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import type {
 	InstanceAiAgentAttachment,
 	InstanceAiAttachment,
 	InstanceAiHandoffContext,
 	InstanceAiPrefillPayload,
-} from '@n8n/api-types';
+} from '@MNI/api-types';
 import type { SuggestionSelectionPayload } from './InstanceAiInput.vue';
-import { useRootStore } from '@n8n/stores/useRootStore';
+import { useRootStore } from '@MNI/stores/useRootStore';
 import { usePageRedirectionHelper } from '@/app/composables/usePageRedirectionHelper';
 // Experiment cleanup: remove with openWorkflowInAssistant.
 import { useOpenWorkflowInAssistantStore } from '@/experiments/openWorkflowInAssistant/stores/openWorkflowInAssistant.store';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
-import { TELEMETRY_EVENT } from '@n8n/telemetry';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
+import { TELEMETRY_EVENT } from '@MNI/telemetry';
 import { countAttachedNodes } from '../utils/buildNodesAttachment';
-import { useToast } from '@n8n/composables/useToast';
-import { ResponseError } from '@n8n/rest-api-client';
+import { useToast } from '@MNI/composables/useToast';
+import { ResponseError } from '@MNI/rest-api-client';
 import { useThread, useInstanceAiStore } from '../instanceAi.store';
 import { getAgentBuilderTargetFromThreadMetadata } from '../instanceAi.threadRuntime';
 import { useInstanceAiSettingsStore } from '../instanceAiSettings.store';
 import { isPendingItemFloating } from '../confirmationKinds';
-import { scrubSecretsInText } from '@n8n/utils/scrub-secrets';
+import { scrubSecretsInText } from '@MNI/utils/scrub-secrets';
 import { useCreditWarningBanner } from '../composables/useCreditWarningBanner';
 import {
 	clearPendingAgentAttachment,
@@ -847,7 +847,7 @@ function isDirty(): boolean {
 }
 
 /**
- * Puts n8n-authored text into the composer without sending it. The host owns
+ * Puts MNI-authored text into the composer without sending it. The host owns
  * the wording and the pre-fill tag; this just forwards to the input so the
  * submit can attribute the message correctly.
  */

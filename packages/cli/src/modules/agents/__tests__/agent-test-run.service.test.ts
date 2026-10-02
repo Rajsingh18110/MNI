@@ -2,17 +2,17 @@ import {
 	type CredentialProvider,
 	type SerializableAgentState,
 	type StreamChunk,
-} from '@n8n/agents';
-import { APPROVAL_RESUME_SCHEMA } from '@n8n/agents/tool';
-import { zodToJsonSchema } from '@n8n/ai-utilities/json-schema';
-import type { User } from '@n8n/db';
+} from '@MNI/agents';
+import { APPROVAL_RESUME_SCHEMA } from '@MNI/agents/tool';
+import { zodToJsonSchema } from '@MNI/ai-utilities/json-schema';
+import type { User } from '@MNI/db';
 import { mock } from 'vitest-mock-extended';
 
 import type { AgentExecutionOrchestratorService } from '../agent-execution-orchestrator.service';
 import type { AgentExecutionService } from '../agent-execution.service';
 import { AgentTestRunService } from '../agent-test-run.service';
 import type { AgentValidationService } from '../agent-validation.service';
-import type { N8NCheckpointStorage } from '../integrations/n8n-checkpoint-storage';
+import type { N8NCheckpointStorage } from '../integrations/MNI-checkpoint-storage';
 
 const agentId = 'agent-1';
 const projectId = 'project-1';

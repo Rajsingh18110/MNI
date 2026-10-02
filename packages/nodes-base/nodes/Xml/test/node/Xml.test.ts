@@ -1,6 +1,6 @@
 import { mockDeep } from 'vitest-mock-extended';
-import type { IExecuteFunctions } from 'n8n-workflow';
-import { NodeOperationError } from 'n8n-workflow';
+import type { IExecuteFunctions } from 'MNI-workflow';
+import { NodeOperationError } from 'MNI-workflow';
 
 import { NodeTestHarness } from '@nodes-testing/node-test-harness';
 
@@ -22,7 +22,7 @@ describe('Xml Node - options validation', () => {
 		mockExecuteFunctions.getNode.mockReturnValue({
 			id: 'xml-node',
 			name: 'XML',
-			type: 'n8n-nodes-base.xml',
+			type: 'MNI-nodes-base.xml',
 			typeVersion: 1,
 			position: [0, 0],
 			parameters: {},

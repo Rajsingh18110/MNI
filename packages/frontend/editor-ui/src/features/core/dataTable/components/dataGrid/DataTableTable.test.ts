@@ -58,11 +58,11 @@ vi.mock('ag-grid-community', () => ({
 
 // Mock the MNI theme
 vi.mock('@/features/core/dataTable/components/dataGrid/n8nTheme', () => ({
-	n8nTheme: 'n8n-theme',
+	n8nTheme: 'MNI-theme',
 }));
 
 // Mock composables
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: () => ({
 		showError: vi.fn(),
 		showSuccess: vi.fn(),
@@ -80,7 +80,7 @@ vi.mock('@/features/core/dataTable/composables/useDataTablePagination', () => ({
 	}),
 }));
 
-vi.mock('@n8n/i18n', async (importOriginal) => ({
+vi.mock('@MNI/i18n', async (importOriginal) => ({
 	...(await importOriginal()),
 	useI18n: () => ({
 		baseText: (key: string) => {

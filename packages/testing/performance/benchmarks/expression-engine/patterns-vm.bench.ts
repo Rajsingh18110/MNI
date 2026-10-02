@@ -4,10 +4,10 @@
  * Benchmarks expression evaluation through the full Workflow.expression path
  * using the VM (isolated-vm) engine.
  *
- * Run: pnpm --filter=@n8n/performance bench
+ * Run: pnpm --filter=@MNI/performance bench
  */
 import { afterAll } from 'vitest';
-import { Expression } from 'n8n-workflow';
+import { Expression } from 'MNI-workflow';
 
 import {
 	createWorkflow,

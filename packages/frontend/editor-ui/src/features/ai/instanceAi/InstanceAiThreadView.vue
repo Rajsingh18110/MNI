@@ -8,7 +8,7 @@ import {
 	N8nText,
 	N8nTooltip,
 	TOOLTIP_DELAY_MS,
-} from '@n8n/design-system';
+} from '@MNI/design-system';
 import {
 	StorageSerializers,
 	onClickOutside,
@@ -17,9 +17,9 @@ import {
 	useLocalStorage,
 	useWindowSize,
 } from '@vueuse/core';
-import { useI18n } from '@n8n/i18n';
-import type { InstanceAiAgentAttachment } from '@n8n/api-types';
-import { useRootStore } from '@n8n/stores/useRootStore';
+import { useI18n } from '@MNI/i18n';
+import type { InstanceAiAgentAttachment } from '@MNI/api-types';
+import { useRootStore } from '@MNI/stores/useRootStore';
 import {
 	DEBOUNCE_TIME,
 	LOCAL_STORAGE_INSTANCE_AI_ARTIFACT_PREVIEW_OPEN,
@@ -27,8 +27,8 @@ import {
 } from '@/app/constants';
 import { useDocumentTitle } from '@/app/composables/useDocumentTitle';
 import { COLLAPSED_MAIN_SIDEBAR_WIDTH, useSidebarLayout } from '@/app/composables/useSidebarLayout';
-import { getDebounceTime } from '@n8n/composables/useDebounce';
-import { useToast } from '@n8n/composables/useToast';
+import { getDebounceTime } from '@MNI/composables/useDebounce';
+import { useToast } from '@MNI/composables/useToast';
 import { provideThread, useInstanceAiStore } from './instanceAi.store';
 import {
 	getAgentBuilderTargetFromThreadMetadata,
@@ -594,7 +594,7 @@ onClickOutside(
 		if (isArtifactsPanelInLayout.value) return;
 		isArtifactsPanelRevealed.value = false;
 	},
-	{ ignore: ['[data-test-id="instance-ai-artifacts-panel-toggle"]', '.n8n-tooltip'] },
+	{ ignore: ['[data-test-id="instance-ai-artifacts-panel-toggle"]', '.MNI-tooltip'] },
 );
 
 watch(
@@ -1024,7 +1024,7 @@ function handleNewThreadClick() {
 </template>
 
 <style lang="scss" module>
-@use '@n8n/design-system/css/mixins/motion' as motion;
+@use '@MNI/design-system/css/mixins/motion' as motion;
 
 .threadArea {
 	--instance-ai-artifacts-panel-width: 280px;
@@ -1160,7 +1160,7 @@ function handleNewThreadClick() {
 </style>
 
 <style lang="scss">
-@use '@n8n/design-system/css/mixins/motion';
+@use '@MNI/design-system/css/mixins/motion';
 
 .fade-enter-from,
 .fade-leave-to {

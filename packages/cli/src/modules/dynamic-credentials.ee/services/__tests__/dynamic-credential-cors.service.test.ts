@@ -116,8 +116,8 @@ describe('DynamicCredentialCorsService', () => {
 
 			// Expected: throws error with message about wildcard + credentials
 			expect(() => new DynamicCredentialCorsService(mockCorsService, mockConfig)).toThrow(
-				'N8N_DYNAMIC_CREDENTIALS_CORS_ORIGIN cannot use wildcard (*) when ' +
-					'N8N_DYNAMIC_CREDENTIALS_CORS_ALLOW_CREDENTIALS is true. Specify explicit origins instead.',
+				'MNI_DYNAMIC_CREDENTIALS_CORS_ORIGIN cannot use wildcard (*) when ' +
+					'MNI_DYNAMIC_CREDENTIALS_CORS_ALLOW_CREDENTIALS is true. Specify explicit origins instead.',
 			);
 		});
 

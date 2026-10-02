@@ -1,7 +1,7 @@
-import { useTelemetry } from '@n8n/composables/useTelemetry';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
 
 import { INSTANCE_AI_EMPTY_STATE_SUGGESTIONS_VERSION } from './emptyStateSuggestions';
-import type { ITelemetryTrackProperties } from 'n8n-workflow';
+import type { ITelemetryTrackProperties } from 'MNI-workflow';
 
 export type TelemetryTracker = Pick<ReturnType<typeof useTelemetry>, 'track'>;
 

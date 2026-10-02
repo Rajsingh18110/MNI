@@ -1,4 +1,4 @@
-import type { WorkflowHistoryCompactionConfig } from '@n8n/config';
+import type { WorkflowHistoryCompactionConfig } from '@MNI/config';
 import { mock } from 'vitest-mock-extended';
 
 import { WorkflowHistoryCompactionOptimizeTask } from '../workflow-history-compaction-optimize.task';

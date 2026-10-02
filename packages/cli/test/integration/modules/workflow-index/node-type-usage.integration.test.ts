@@ -3,10 +3,10 @@ import {
 	createWorkflow,
 	linkUserToProject,
 	testDb,
-} from '@n8n/backend-test-utils';
-import { LicenseState } from '@n8n/backend-common';
-import type { Project } from '@n8n/db';
-import { Container } from '@n8n/di';
+} from '@MNI/backend-test-utils';
+import { LicenseState } from '@MNI/backend-common';
+import type { Project } from '@MNI/db';
+import { Container } from '@MNI/di';
 
 import { WorkflowDependencyQueryService } from '@/modules/workflow-index/workflow-dependency-query.service';
 import { WorkflowService } from '@/workflows/workflow.service';
@@ -14,8 +14,8 @@ import { WorkflowService } from '@/workflows/workflow.service';
 import { createMember, createOwner } from '../../shared/db/users';
 import { LicenseMocker } from '../../shared/license';
 
-const ANTHROPIC = '@n8n/n8n-nodes-langchain.lmChatAnthropic';
-const SLACK = 'n8n-nodes-base.slack';
+const ANTHROPIC = '@MNI/MNI-nodes-langchain.lmChatAnthropic';
+const SLACK = 'MNI-nodes-base.slack';
 
 /**
  * The repository tests pass role slugs in directly. This one goes through the service, so the
@@ -148,7 +148,7 @@ describe('WorkflowDependencyQueryService.getNodeTypeUsage', () => {
 
 			await seedWorkflow(project, [ANTHROPIC], 'anthropic only');
 			await seedWorkflow(project, [SLACK], 'slack only');
-			await seedWorkflow(project, ['n8n-nodes-base.noOp'], 'neither');
+			await seedWorkflow(project, ['MNI-nodes-base.noOp'], 'neither');
 
 			const { count } = await workflowService.getMany(member, {
 				filter: { nodeTypes: [ANTHROPIC, SLACK] },

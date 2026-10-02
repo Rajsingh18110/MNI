@@ -1,4 +1,4 @@
-import { INSTANCE_AI_THREAD_SOURCES, type InstanceAiThreadSource } from '@n8n/api-types';
+import { INSTANCE_AI_THREAD_SOURCES, type InstanceAiThreadSource } from '@MNI/api-types';
 
 export const INSTANCE_AI_VIEW = 'InstanceAi';
 export const INSTANCE_AI_THREAD_VIEW = 'InstanceAiThread';
@@ -11,31 +11,31 @@ export const INSTANCE_AI_SOURCE_QUERY = 'source';
 /** Brand names, deliberately not translated; single source for dialogs and settings rows. */
 export const SANDBOX_PROVIDER_LABELS = {
 	daytona: 'Daytona',
-	'n8n-sandbox': 'MNI Sandbox Service',
+	'MNI-sandbox': 'MNI Sandbox Service',
 } as const;
 
 export type InstanceAiConnectionKind = 'model' | 'sandbox' | 'search';
 export const INSTANCE_AI_NEW_VIEW = 'InstanceAiNew';
 export const INSTANCE_AI_AGENT_BUILDER_TARGET_METADATA_KEY = 'instanceAiAgentBuilderTarget';
 export const INSTANCE_AI_AGENT_PREVIEW_VIEW_METADATA_KEY = 'instanceAiAgentPreviewView';
-/** Mirrors `AGENT_PREVIEW_SESSION_METADATA_KEY` in `@n8n/instance-ai`. */
+/** Mirrors `AGENT_PREVIEW_SESSION_METADATA_KEY` in `@MNI/instance-ai`. */
 export const INSTANCE_AI_AGENT_PREVIEW_SESSION_METADATA_KEY = 'instanceAiAgentPreviewSession';
 /**
  * A new-agent artifact the user opened but has not configured yet, so no agent
  * row exists. Carries the id minted for it, which whichever path persists the
  * agent first creates it under. Mirrors `PENDING_AGENT_METADATA_KEY` in
- * `@n8n/instance-ai`.
+ * `@MNI/instance-ai`.
  */
 export const INSTANCE_AI_PENDING_AGENT_METADATA_KEY = 'instanceAiPendingAgentTarget';
 /** Every agent the model has addressed in this conversation. Mirrors `REGISTRY_METADATA_KEY` in `agent-target-binding.ts` (backend-only). */
 export const INSTANCE_AI_AGENT_BUILDER_TARGETS_METADATA_KEY = 'instanceAiAgentBuilderTargets';
 export const NEW_CONVERSATION_TITLE = 'New conversation';
-export { AI_GATEWAY_MANAGED_TAG } from '@n8n/api-types';
+export { AI_GATEWAY_MANAGED_TAG } from '@MNI/api-types';
 export const BROWSER_USE_CONNECTION_TYPE = 'browser-use';
 export const COMPUTER_USE_CONNECTION_TYPE = 'computer-use';
 
 export const BROWSER_USE_EXTENSION_ID = 'cegmdpndekdfpnafgacidejijecomlhh';
-export const CHROME_EXTENSION_URL = `https://chromewebstore.google.com/detail/n8n-browser-use/${BROWSER_USE_EXTENSION_ID}`;
+export const CHROME_EXTENSION_URL = `https://chromewebstore.google.com/detail/MNI-browser-use/${BROWSER_USE_EXTENSION_ID}`;
 
 const INSTANCE_AI_THREAD_SOURCE_SET: ReadonlySet<string> = new Set(INSTANCE_AI_THREAD_SOURCES);
 

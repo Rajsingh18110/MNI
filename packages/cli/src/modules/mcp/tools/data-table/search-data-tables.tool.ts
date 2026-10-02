@@ -1,5 +1,5 @@
-import type { ListDataTableQueryDto } from '@n8n/api-types';
-import type { User } from '@n8n/db';
+import type { ListDataTableQueryDto } from '@MNI/api-types';
+import type { User } from '@MNI/db';
 import z from 'zod';
 
 import type { DataTableUserOperations } from '@/modules/data-table/data-table-proxy.service';

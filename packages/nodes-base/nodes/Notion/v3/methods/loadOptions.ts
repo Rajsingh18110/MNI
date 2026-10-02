@@ -1,6 +1,6 @@
 import moment from 'moment-timezone';
-import type { IDataObject, ILoadOptionsFunctions, INodePropertyOptions } from 'n8n-workflow';
-import { toPathSegment } from 'n8n-workflow';
+import type { IDataObject, ILoadOptionsFunctions, INodePropertyOptions } from 'MNI-workflow';
+import { toPathSegment } from 'MNI-workflow';
 
 import { extractPageId, getBlockTypesOptions } from '../../shared/GenericFunctions';
 import { splitPropertyKey } from '../helpers/utils';

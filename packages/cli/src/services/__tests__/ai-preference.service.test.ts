@@ -7,9 +7,9 @@ import type {
 	ProjectRepository,
 	User,
 	UserRepository,
-} from '@n8n/db';
-import { AI_PREFERENCE_MAX_PER_SCOPE } from '@n8n/api-types';
-import { GLOBAL_MEMBER_ROLE, GLOBAL_OWNER_ROLE } from '@n8n/db';
+} from '@MNI/db';
+import { AI_PREFERENCE_MAX_PER_SCOPE } from '@MNI/api-types';
+import { GLOBAL_MEMBER_ROLE, GLOBAL_OWNER_ROLE } from '@MNI/db';
 import { mock } from 'vitest-mock-extended';
 
 import { AiPreferenceScopeFullError } from '@/errors/response-errors/ai-preference-scope-full.error';

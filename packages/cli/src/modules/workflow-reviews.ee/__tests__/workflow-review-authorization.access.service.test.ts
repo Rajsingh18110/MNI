@@ -9,7 +9,7 @@ import type {
 	WorkflowReviewRequestRepository,
 	WorkflowReviewRequestReviewerRepository,
 	WorkflowReviewRequestWorkflowRepository,
-} from '@n8n/db';
+} from '@MNI/db';
 import { mock } from 'vitest-mock-extended';
 
 import { WorkflowReviewAuthorizationService } from '../workflow-review-authorization.service';

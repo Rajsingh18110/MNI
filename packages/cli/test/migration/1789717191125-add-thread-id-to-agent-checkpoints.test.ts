@@ -4,17 +4,17 @@ import {
 	runSingleMigration,
 	undoLastSingleMigration,
 	type TestMigrationContext,
-} from '@n8n/backend-test-utils';
-import { DbConnection } from '@n8n/db';
-import { Container } from '@n8n/di';
-import { DataSource } from '@n8n/typeorm';
+} from '@MNI/backend-test-utils';
+import { DbConnection } from '@MNI/db';
+import { Container } from '@MNI/di';
+import { DataSource } from '@MNI/typeorm';
 import { randomUUID } from 'node:crypto';
 
 import { indexColumnsInOrder } from './shared/index-columns';
 
 vi.hoisted(() => {
-	const { GlobalConfig } = require('@n8n/config') as typeof import('@n8n/config');
-	const { Container } = require('@n8n/di') as typeof import('@n8n/di');
+	const { GlobalConfig } = require('@MNI/config') as typeof import('@MNI/config');
+	const { Container } = require('@MNI/di') as typeof import('@MNI/di');
 	const { database } = Container.get(GlobalConfig);
 	// PostgreSQL truncates long index names. Set the prefix before migration helpers capture it.
 	if (database.type === 'postgresdb') database.tablePrefix = 'test_long_prefix_';

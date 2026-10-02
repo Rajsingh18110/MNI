@@ -5,8 +5,8 @@ import type {
 	INodeType,
 	INodeTypeBaseDescription,
 	INodeTypeDescription,
-} from 'n8n-workflow';
-import { NodeConnectionTypes } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeConnectionTypes } from 'MNI-workflow';
 import { createTransport } from 'nodemailer';
 import type SMTPTransport from 'nodemailer/lib/smtp-transport';
 import { prepareBinariesDataList } from '../../../utils/binary';

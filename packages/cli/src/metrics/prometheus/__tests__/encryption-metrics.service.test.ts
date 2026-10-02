@@ -1,6 +1,6 @@
-import { mockInstance } from '@n8n/backend-test-utils';
-import { PrometheusMetricsConfig } from '@n8n/config';
-import type { Cipher } from 'n8n-core';
+import { mockInstance } from '@MNI/backend-test-utils';
+import { PrometheusMetricsConfig } from '@MNI/config';
+import type { Cipher } from 'MNI-core';
 import promClient from 'prom-client';
 import type { Mock } from 'vitest';
 
@@ -10,7 +10,7 @@ vi.mock('prom-client');
 
 describe('PrometheusEncryptionMetricsService', () => {
 	const config = mockInstance(PrometheusMetricsConfig, {
-		prefix: 'n8n_',
+		prefix: 'MNI_',
 		includeEncryptionMetrics: true,
 	});
 
@@ -21,7 +21,7 @@ describe('PrometheusEncryptionMetricsService', () => {
 	let mockHistogramObserve: Mock;
 
 	beforeEach(() => {
-		Object.assign(config, { prefix: 'n8n_', includeEncryptionMetrics: true });
+		Object.assign(config, { prefix: 'MNI_', includeEncryptionMetrics: true });
 		service = new PrometheusEncryptionMetricsService(cipher, config);
 		mockHistogramObserve = vi.fn();
 		promClient.Histogram.prototype.observe = mockHistogramObserve;
@@ -52,7 +52,7 @@ describe('PrometheusEncryptionMetricsService', () => {
 
 			expect(promClient.Histogram).toHaveBeenCalledWith(
 				expect.objectContaining({
-					name: 'n8n_encryption_decrypt_duration_seconds',
+					name: 'MNI_encryption_decrypt_duration_seconds',
 					help: 'Duration of a full decryptV2 operation (key lookup and decryption) in seconds.',
 					labelNames: ['algorithm'],
 				}),
@@ -64,7 +64,7 @@ describe('PrometheusEncryptionMetricsService', () => {
 
 			expect(promClient.Histogram).toHaveBeenCalledWith(
 				expect.objectContaining({
-					name: 'n8n_encryption_key_lookup_duration_seconds',
+					name: 'MNI_encryption_key_lookup_duration_seconds',
 					help: 'Duration of encryption key lookups in seconds.',
 					labelNames: ['source'],
 				}),

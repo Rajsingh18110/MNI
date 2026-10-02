@@ -4,8 +4,8 @@ import {
 	type INode,
 	type IDataObject,
 	jsonParse,
-} from 'n8n-workflow';
-import { NodeOperationError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeOperationError } from 'MNI-workflow';
 import type Stream from 'node:stream';
 
 import { SESSION_MODE } from './actions/common/fields';

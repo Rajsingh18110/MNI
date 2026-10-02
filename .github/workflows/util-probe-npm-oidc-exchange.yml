@@ -6,7 +6,7 @@ on:
       package-name:
         description: 'Published npm package to test'
         required: true
-        default: '@n8n/typeorm'
+        default: '@MNI/typeorm'
         type: string
 
 permissions: {}

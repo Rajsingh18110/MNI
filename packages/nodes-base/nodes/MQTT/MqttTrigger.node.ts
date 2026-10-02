@@ -7,8 +7,8 @@ import type {
 	INodeTypeDescription,
 	ITriggerResponse,
 	IRun,
-} from 'n8n-workflow';
-import { NodeConnectionTypes, NodeOperationError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeConnectionTypes, NodeOperationError } from 'MNI-workflow';
 
 import { createClient, type MqttCredential } from './GenericFunctions';
 

@@ -1,7 +1,7 @@
 import { mock } from 'vitest-mock-extended';
 import get from 'lodash/get';
-import { constructExecutionMetaData } from 'n8n-core';
-import type { IDataObject, IExecuteFunctions, IGetNodeParameterOptions, INode } from 'n8n-workflow';
+import { constructExecutionMetaData } from 'MNI-core';
+import type { IDataObject, IExecuteFunctions, IGetNodeParameterOptions, INode } from 'MNI-workflow';
 
 import {
 	checkRange,
@@ -17,7 +17,7 @@ const node: INode = {
 	id: '1',
 	name: 'Microsoft Excel 365',
 	typeVersion: 2,
-	type: 'n8n-nodes-base.microsoftExcel',
+	type: 'MNI-nodes-base.microsoftExcel',
 	position: [60, 760],
 	parameters: {},
 };

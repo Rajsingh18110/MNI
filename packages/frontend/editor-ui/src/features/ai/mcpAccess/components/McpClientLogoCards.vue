@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { onMounted, onUnmounted, ref } from 'vue';
 import type { Component } from 'vue';
-import { N8nIcon } from '@n8n/design-system';
+import { N8nIcon } from '@MNI/design-system';
 
 import ClaudeIcon from '../assets/client-icons/claude.svg?component';
 import CursorIcon from '../assets/client-icons/cursor.svg?component';

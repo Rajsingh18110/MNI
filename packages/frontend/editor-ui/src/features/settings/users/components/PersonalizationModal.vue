@@ -83,22 +83,22 @@ import {
 	REPORTED_SOURCE_LLM,
 } from '../users.constants';
 import { COMMUNITY_PLUS_ENROLLMENT_MODAL } from '@/features/settings/usage/usage.constants';
-import { useToast } from '@n8n/composables/useToast';
+import { useToast } from '@MNI/composables/useToast';
 import Modal from '@/app/components/Modal.vue';
 import type { IFormInputs } from '@/Interface';
-import type { IPersonalizationLatestVersion } from '@n8n/rest-api-client/api/users';
-import { useRootStore } from '@n8n/stores/useRootStore';
-import { useUsersStore } from '@n8n/stores/users.store';
-import { createFormEventBus } from '@n8n/design-system';
-import { createEventBus } from '@n8n/utils/event-bus';
+import type { IPersonalizationLatestVersion } from '@MNI/rest-api-client/api/users';
+import { useRootStore } from '@MNI/stores/useRootStore';
+import { useUsersStore } from '@MNI/stores/users.store';
+import { createFormEventBus } from '@MNI/design-system';
+import { createEventBus } from '@MNI/utils/event-bus';
 import { usePostHog } from '@/app/stores/posthog.store';
 import { useExternalHooks } from '@/app/composables/useExternalHooks';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import { useRoute, useRouter } from 'vue-router';
 import { useUIStore } from '@/app/stores/ui.store';
-import { getResourcePermissions } from '@n8n/permissions';
+import { getResourcePermissions } from '@MNI/permissions';
 
-import { N8nButton, N8nFormInputs } from '@n8n/design-system';
+import { N8nButton, N8nFormInputs } from '@MNI/design-system';
 const SURVEY_VERSION = 'v4';
 
 const externalHooks = useExternalHooks();
@@ -595,7 +595,7 @@ const onSubmit = async (values: object) => {
 			...values,
 			version: SURVEY_VERSION,
 			personalization_survey_submitted_at: new Date().toISOString(),
-			personalization_survey_n8n_version: rootStore.versionCli,
+			personalization_survey_MNI_version: rootStore.versionCli,
 		};
 
 		await externalHooks.run('personalizationModal.onSubmit', completedSurvey);

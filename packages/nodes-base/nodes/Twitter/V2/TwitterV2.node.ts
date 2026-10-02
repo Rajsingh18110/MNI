@@ -12,7 +12,7 @@ import {
 	type INodeTypeBaseDescription,
 	type INodeTypeDescription,
 	type JsonObject,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { directMessageFields, directMessageOperations } from './DirectMessageDescription';
 import {

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, inject, ref, onMounted, watch } from 'vue';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import { useRouter } from 'vue-router';
 import { useEvaluationStore } from '@/features/ai/evaluation.ee/evaluation.store';
 import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';
@@ -17,13 +17,13 @@ import {
 	TIME_SAVED_NODE_TYPE,
 	ERROR_TRIGGER_NODE_TYPE,
 } from '@/app/constants';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
 import { useSourceControlStore } from '@/features/integrations/sourceControl.ee/sourceControl.store';
 import { MCP_DOCS_PAGE_URL, MCP_SETTINGS_VIEW } from '@/features/ai/mcpAccess/mcp.constants';
 
-import { N8nSuggestedActions } from '@n8n/design-system';
-import { useSettingsStore } from '@n8n/stores/settings.store';
-import { useUsersStore } from '@n8n/stores/users.store';
+import { N8nSuggestedActions } from '@MNI/design-system';
+import { useSettingsStore } from '@MNI/stores/settings.store';
+import { useUsersStore } from '@MNI/stores/users.store';
 import { WorkflowDocumentStoreKey } from '@/app/constants/injectionKeys';
 import { useWorkflowEvaluationState } from '@/features/ai/evaluation.ee/composables/useWorkflowEvaluationState';
 

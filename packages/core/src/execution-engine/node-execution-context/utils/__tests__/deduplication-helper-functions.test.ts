@@ -1,4 +1,4 @@
-import type { Workflow, INode } from 'n8n-workflow';
+import type { Workflow, INode } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import { getDeduplicationHelperFunctions } from '../deduplication-helper-functions';

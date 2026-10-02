@@ -1,10 +1,10 @@
-import type { IRestApiContext } from '@n8n/rest-api-client';
-import { makeRestApiRequest } from '@n8n/rest-api-client';
+import type { IRestApiContext } from '@MNI/rest-api-client';
+import { makeRestApiRequest } from '@MNI/rest-api-client';
 
 import { getOtelSettings, updateOtelSettings, sendOtelTestTrace } from './otel.api';
 import type { OtelSettingsResponse, OtelTestConnection } from './otel.api';
 
-vi.mock('@n8n/rest-api-client', () => ({
+vi.mock('@MNI/rest-api-client', () => ({
 	makeRestApiRequest: vi.fn(),
 }));
 

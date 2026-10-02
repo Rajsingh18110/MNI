@@ -1,6 +1,6 @@
 import type { McpWorkflow } from '@/features/ai/mcpAccess/mcp.types';
 import type { ProjectSharingData } from '@/features/collaboration/projects/projects.types';
-import type { OAuthClientResponseDto } from '@n8n/api-types';
+import type { OAuthClientResponseDto } from '@MNI/api-types';
 
 export const createHomeProject = (
 	overrides: Partial<ProjectSharingData> = {},

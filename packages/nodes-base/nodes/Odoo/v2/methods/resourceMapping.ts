@@ -3,7 +3,7 @@ import type {
 	ILoadOptionsFunctions,
 	ResourceMapperField,
 	ResourceMapperFields,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { odooApiRequest } from '../transport';
 

@@ -1,4 +1,4 @@
-import { createInMemoryProject } from '@n8n/rules-engine/ast';
+import { createInMemoryProject } from '@MNI/rules-engine/ast';
 import { describe, it, expect } from 'vitest';
 
 import { EndpointScopeCoverageRule } from './endpoint-scope-coverage.rule.js';

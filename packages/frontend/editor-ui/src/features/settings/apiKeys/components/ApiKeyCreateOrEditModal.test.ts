@@ -1,7 +1,7 @@
 import { createComponentRenderer } from '@/__tests__/render';
 import { createTestingPinia } from '@pinia/testing';
 import { API_KEY_CREATE_OR_EDIT_MODAL_KEY } from '../apiKeys.constants';
-import { STORES } from '@n8n/stores';
+import { STORES } from '@MNI/stores';
 import { mockedStore, retry } from '@/__tests__/utils';
 import ApiKeyEditModal from './ApiKeyCreateOrEditModal.vue';
 import userEvent from '@testing-library/user-event';
@@ -10,14 +10,14 @@ import { nextTick } from 'vue';
 
 import { useApiKeysStore } from '../apiKeys.store';
 import { useUIStore } from '@/app/stores/ui.store';
-import { useUsersStore } from '@n8n/stores/users.store';
-import { useRBACStore } from '@n8n/stores/rbac.store';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
+import { useUsersStore } from '@MNI/stores/users.store';
+import { useRBACStore } from '@MNI/stores/rbac.store';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
 import { DateTime } from 'luxon';
-import type { ApiKeyWithRawValue } from '@n8n/api-types';
-import { useRootStore } from '@n8n/stores/useRootStore';
+import type { ApiKeyWithRawValue } from '@MNI/api-types';
+import { useRootStore } from '@MNI/stores/useRootStore';
 
-vi.mock('@n8n/composables/useTelemetry', () => {
+vi.mock('@MNI/composables/useTelemetry', () => {
 	const track = vi.fn();
 	return {
 		useTelemetry: () => ({ track }),

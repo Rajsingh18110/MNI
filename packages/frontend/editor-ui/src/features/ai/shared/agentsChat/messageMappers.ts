@@ -1,11 +1,11 @@
 import {
 	APPROVAL_TOOL_NAME,
-	N8N_CHAT_ACTION_TOOL_NAME,
+	MNI_CHAT_ACTION_TOOL_NAME,
 	WAIT_TOOL_NAME,
 	type AgentBuilderOpenSuspension,
 	type AgentPersistedMessageDto,
-} from '@n8n/api-types';
-import { isRecord } from '@n8n/utils/is-record';
+} from '@MNI/api-types';
+import { isRecord } from '@MNI/utils/is-record';
 import {
 	isAwaitingCard,
 	n8nChatResumeValueSchema,
@@ -205,7 +205,7 @@ export function rebuildInteractiveFromHistory(tc: ToolCall): InteractivePayload 
 		};
 	}
 
-	if (tc.tool === N8N_CHAT_ACTION_TOOL_NAME) {
+	if (tc.tool === MNI_CHAT_ACTION_TOOL_NAME) {
 		const input = parseN8nChatActionInput(tc.input);
 		if (!input) return undefined;
 		// Display-only cards never suspend: only resolved ones render a card here.
@@ -215,7 +215,7 @@ export function rebuildInteractiveFromHistory(tc: ToolCall): InteractivePayload 
 			toolCallId: tc.toolCallId,
 			...(tc.output !== undefined && { resolvedAt: 1 }),
 			...(tc.canceled === true && { cancelled: true }),
-			toolName: N8N_CHAT_ACTION_TOOL_NAME,
+			toolName: MNI_CHAT_ACTION_TOOL_NAME,
 			input,
 			...(tc.canceled !== true && resolved?.success && { resolvedValue: resolved.data }),
 		};

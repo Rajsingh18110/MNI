@@ -170,7 +170,7 @@ function getErrorMessage(error: unknown): string | undefined {
 
 function getCorrelationContext(config: StackConfig): StackTelemetryRecord['correlation'] {
 	const retry = Number(process.env.GITHUB_RUN_ATTEMPT ?? '');
-	const restartReason = process.env.N8N_TEST_RESTART_REASON;
+	const restartReason = process.env.MNI_TEST_RESTART_REASON;
 	const knownRestartReasons = new Set([
 		'initial-start',
 		'retry',
@@ -193,7 +193,7 @@ function getCorrelationContext(config: StackConfig): StackTelemetryRecord['corre
 }
 
 function resolveProfile(config: StackConfig): string {
-	const configured = process.env.N8N_TEST_PROFILE ?? process.env.TEST_PROFILE;
+	const configured = process.env.MNI_TEST_PROFILE ?? process.env.TEST_PROFILE;
 	if (configured && /^[a-z0-9_.:-]{1,64}$/i.test(configured)) return configured;
 	if ((config.mains ?? 1) > 1) return 'multi-main';
 	if ((config.workers ?? 0) > 0 || (config.webhooks ?? 0) > 0) return 'queue';
@@ -388,7 +388,7 @@ export class TelemetryRecorder {
 				dimensions: { stack_type: record.stack.type },
 			},
 			{
-				metric_name: 'stack-startup-n8n',
+				metric_name: 'stack-startup-MNI',
 				value: record.timing.n8nStartup,
 				unit: 'ms',
 				dimensions: { stack_type: record.stack.type },

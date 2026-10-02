@@ -6,7 +6,7 @@ import {
 	type INodeProperties,
 	type JsonObject,
 	NodeApiError,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import { Readable } from 'stream';
 
 import { fetchServiceAccountToken } from './GenericFunctions';

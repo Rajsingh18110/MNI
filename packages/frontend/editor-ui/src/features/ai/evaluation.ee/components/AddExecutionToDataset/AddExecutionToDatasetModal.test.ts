@@ -2,7 +2,7 @@ import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { createTestingPinia } from '@pinia/testing';
 import userEvent from '@testing-library/user-event';
 import { waitFor } from '@testing-library/vue';
-import type { DatasetCandidateResponse, EvaluationConfigDto } from '@n8n/api-types';
+import type { DatasetCandidateResponse, EvaluationConfigDto } from '@MNI/api-types';
 
 import { createComponentRenderer } from '@/__tests__/render';
 import AddExecutionToDatasetModal from './AddExecutionToDatasetModal.vue';
@@ -28,15 +28,15 @@ vi.mock('../../evaluation.store', () => ({
 	useEvaluationStore: () => ({ getDatasetCandidate, addExecutionToDataset }),
 }));
 
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: () => ({ showError, showMessage }),
 }));
 
-vi.mock('@n8n/composables/useTelemetry', () => ({
+vi.mock('@MNI/composables/useTelemetry', () => ({
 	useTelemetry: () => ({ track }),
 }));
 
-vi.mock('@n8n/i18n', async (importOriginal) => ({
+vi.mock('@MNI/i18n', async (importOriginal) => ({
 	...(await importOriginal()),
 	useI18n: () => ({ baseText: (key: string) => key }),
 }));

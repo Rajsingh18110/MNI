@@ -2,10 +2,10 @@ import {
 	OutboundHttp,
 	type HttpRequestClient,
 	type HttpRequestClientOptions,
-} from '@n8n/backend-network';
-import { startServer, type LocalServer } from '@n8n/backend-network/testing';
-import { Container } from '@n8n/di';
-import type { IHttpRequestOptions } from 'n8n-workflow';
+} from '@MNI/backend-network';
+import { startServer, type LocalServer } from '@MNI/backend-network/testing';
+import { Container } from '@MNI/di';
+import type { IHttpRequestOptions } from 'MNI-workflow';
 import type { IncomingHttpHeaders } from 'node:http';
 
 import { GoogleApi } from '../GoogleApi.credentials';

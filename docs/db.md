@@ -2,7 +2,7 @@
 
 MNI persists its state in a relational database, accessed through TypeORM. The
 schema supports both SQLite (the default) and PostgreSQL, and is defined by the
-**migrations** in `@n8n/db` rather than the entities (entities run with
+**migrations** in `@MNI/db` rather than the entities (entities run with
 `synchronize: false`).
 
 ## Schema reference
@@ -19,7 +19,7 @@ vs `json`/`jsonb`, `boolean` representation).
 
 ### How it's generated
 
-The generator spins up an empty database, runs the full `@n8n/db` migration set
+The generator spins up an empty database, runs the full `@MNI/db` migration set
 against it, and points [tbls](https://github.com/k1LoW/tbls) at the result.
 SQLite uses a throwaway file; PostgreSQL uses a throwaway testcontainer, so
 **Docker is required**.

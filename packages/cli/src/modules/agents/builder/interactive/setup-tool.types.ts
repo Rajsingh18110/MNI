@@ -1,4 +1,4 @@
-import type { InstanceAiCredentialService } from '@n8n/instance-ai';
+import type { InstanceAiCredentialService } from '@MNI/instance-ai';
 
 import type { BuilderTrackFn } from '../builder-config-telemetry';
 

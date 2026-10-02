@@ -3,8 +3,8 @@ import type {
 	IExecuteFunctions,
 	INodeExecutionData,
 	INodeProperties,
-} from 'n8n-workflow';
-import { toPathSegment } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { toPathSegment } from 'MNI-workflow';
 
 import { handleOperationError, simplifyObjects } from '../../helpers/utils';
 import { notionApiRequestV3 } from '../../transport';

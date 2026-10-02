@@ -5,8 +5,8 @@ import type {
 	IHttpRequestOptions,
 	INode,
 	INodeExecutionData,
-} from 'n8n-workflow';
-import { NodeApiError, NodeOperationError, OperationalError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeApiError, NodeOperationError, OperationalError } from 'MNI-workflow';
 
 const { azureCosmosDbApiRequest } = vi.hoisted(() => ({ azureCosmosDbApiRequest: vi.fn() }));
 vi.mock('../../transport', () => ({ azureCosmosDbApiRequest }));

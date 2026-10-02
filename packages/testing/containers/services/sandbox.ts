@@ -15,7 +15,7 @@ const RUNNER_HOSTNAME = 'sandbox-runner-1';
 const API_HTTP_PORT = 8080;
 const API_GRPC_PORT = 9090;
 
-const API_KEY = 'n8n-sandbox-ci-key';
+const API_KEY = 'MNI-sandbox-ci-key';
 const RUNNER_API_KEY = 'ci-runner-key';
 const REGISTRATION_TOKEN = 'ci-reg-token';
 const SANDBOX_READY_TIMEOUT_MS = 120_000;
@@ -160,8 +160,8 @@ async function generateMtlsCerts(
 function hostedSandboxConfig(): SandboxMeta | undefined {
 	// Trailing slash stripped once, here: everything downstream appends `/sandboxes`
 	// and would otherwise build `//sandboxes`.
-	const apiUrl = process.env.N8N_SANDBOX_SERVICE_URL?.trim().replace(/\/+$/, '');
-	const apiKey = process.env.N8N_SANDBOX_SERVICE_API_KEY?.trim();
+	const apiUrl = process.env.MNI_SANDBOX_SERVICE_URL?.trim().replace(/\/+$/, '');
+	const apiKey = process.env.MNI_SANDBOX_SERVICE_API_KEY?.trim();
 	if (!apiUrl || !apiKey) return undefined;
 	return { apiUrl, apiKey };
 }
@@ -289,11 +289,11 @@ export const sandbox: Service<SandboxResult> = {
 			return undefined;
 		}
 
-		// One URL for both n8n-in-network and host callers — it isn't stack-local.
+		// One URL for both MNI-in-network and host callers — it isn't stack-local.
 		return {
-			N8N_INSTANCE_AI_SANDBOX_PROVIDER: 'n8n-sandbox',
-			N8N_SANDBOX_SERVICE_URL: hosted.apiUrl,
-			N8N_SANDBOX_SERVICE_API_KEY: hosted.apiKey,
+			MNI_INSTANCE_AI_SANDBOX_PROVIDER: 'MNI-sandbox',
+			MNI_SANDBOX_SERVICE_URL: hosted.apiUrl,
+			MNI_SANDBOX_SERVICE_API_KEY: hosted.apiKey,
 		};
 	},
 
@@ -408,15 +408,15 @@ export const sandbox: Service<SandboxResult> = {
 			const host = result.container.getHost();
 			const port = result.container.getMappedPort(API_HTTP_PORT);
 			return {
-				N8N_INSTANCE_AI_SANDBOX_PROVIDER: 'n8n-sandbox',
-				N8N_SANDBOX_SERVICE_URL: `http://${host}:${port}`,
-				N8N_SANDBOX_SERVICE_API_KEY: API_KEY,
+				MNI_INSTANCE_AI_SANDBOX_PROVIDER: 'MNI-sandbox',
+				MNI_SANDBOX_SERVICE_URL: `http://${host}:${port}`,
+				MNI_SANDBOX_SERVICE_API_KEY: API_KEY,
 			};
 		}
 		return {
-			N8N_INSTANCE_AI_SANDBOX_PROVIDER: 'n8n-sandbox',
-			N8N_SANDBOX_SERVICE_URL: result.meta.apiUrl,
-			N8N_SANDBOX_SERVICE_API_KEY: result.meta.apiKey,
+			MNI_INSTANCE_AI_SANDBOX_PROVIDER: 'MNI-sandbox',
+			MNI_SANDBOX_SERVICE_URL: result.meta.apiUrl,
+			MNI_SANDBOX_SERVICE_API_KEY: result.meta.apiKey,
 		};
 	},
 };

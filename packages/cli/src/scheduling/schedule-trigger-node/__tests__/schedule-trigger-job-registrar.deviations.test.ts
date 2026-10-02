@@ -13,14 +13,14 @@
  * `recurring_cron`'s own edge deviations (leap-year / 24h+ / week-53 arithmetic
  * fixes, Sunday-start weeks, wall-clock hour steps, the 10k-candidate throw) are
  * owned and pinned by the scheduler package; see
- * `packages/@n8n/scheduler/RECURRING_CRON_DEVIATIONS.md`.
+ * `packages/@MNI/scheduler/RECURRING_CRON_DEVIATIONS.md`.
  */
-import { mockLogger } from '@n8n/backend-test-utils';
-import type { GlobalConfig, WorkflowsConfig } from '@n8n/config';
-import type { Schedule, ScheduleDefinition } from '@n8n/scheduler';
-import { computeFirstRunAt, computeNextRunAt } from '@n8n/scheduler';
-import type { Cron, CronExpression, INode, Workflow } from 'n8n-workflow';
-import { SCHEDULE_TRIGGER_NODE_TYPE } from 'n8n-workflow';
+import { mockLogger } from '@MNI/backend-test-utils';
+import type { GlobalConfig, WorkflowsConfig } from '@MNI/config';
+import type { Schedule, ScheduleDefinition } from '@MNI/scheduler';
+import { computeFirstRunAt, computeNextRunAt } from '@MNI/scheduler';
+import type { Cron, CronExpression, INode, Workflow } from 'MNI-workflow';
+import { SCHEDULE_TRIGGER_NODE_TYPE } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import type { DurableJobProvisioner } from '../../durable-job-provisioner';

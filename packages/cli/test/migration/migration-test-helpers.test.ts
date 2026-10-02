@@ -1,9 +1,9 @@
-import { initDbUpToMigration, runSingleMigration } from '@n8n/backend-test-utils';
-import { GlobalConfig } from '@n8n/config';
-import { DbConnection } from '@n8n/db';
-import { Container } from '@n8n/di';
-import { DataSource } from '@n8n/typeorm';
-import { UnexpectedError } from 'n8n-workflow';
+import { initDbUpToMigration, runSingleMigration } from '@MNI/backend-test-utils';
+import { GlobalConfig } from '@MNI/config';
+import { DbConnection } from '@MNI/db';
+import { Container } from '@MNI/di';
+import { DataSource } from '@MNI/typeorm';
+import { UnexpectedError } from 'MNI-workflow';
 
 describe('Migration Test Helpers', () => {
 	let dataSource: DataSource;

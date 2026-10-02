@@ -6,10 +6,10 @@ import {
 	createCanvasProvide,
 } from '@/features/workflows/canvas/__tests__/utils';
 import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';
-import { useTypeAvailabilityPoliciesStore } from '@n8n/frontend-module-type-availability-policies';
+import { useTypeAvailabilityPoliciesStore } from '@MNI/frontend-module-type-availability-policies';
 import { createTestingPinia } from '@pinia/testing';
 import { fireEvent } from '@testing-library/vue';
-import { NodeConnectionTypes, type IPinData } from 'n8n-workflow';
+import { NodeConnectionTypes, type IPinData } from 'MNI-workflow';
 import { computed, type ComputedRef } from 'vue';
 import { setActivePinia } from 'pinia';
 import type * as actualVueRouter from 'vue-router';
@@ -149,7 +149,7 @@ describe('CanvasNodeDefault', () => {
 	describe('restricted node type', () => {
 		beforeEach(() => {
 			typeAvailabilityPoliciesStore.getNodeTypeAvailability.mockReturnValue({
-				name: 'n8n-nodes-base.slack',
+				name: 'MNI-nodes-base.slack',
 				available: false,
 				scope: 'instance',
 			});
@@ -161,7 +161,7 @@ describe('CanvasNodeDefault', () => {
 					stubs,
 					provide: {
 						...createCanvasNodeProvide({
-							data: { type: 'n8n-nodes-base.slack', subtitle: 'send: message' },
+							data: { type: 'MNI-nodes-base.slack', subtitle: 'send: message' },
 						}),
 					},
 				},
@@ -181,7 +181,7 @@ describe('CanvasNodeDefault', () => {
 					stubs,
 					provide: {
 						...createCanvasNodeProvide({
-							data: { type: 'n8n-nodes-base.slack', disabled: true },
+							data: { type: 'MNI-nodes-base.slack', disabled: true },
 						}),
 					},
 				},
@@ -286,7 +286,7 @@ describe('CanvasNodeDefault', () => {
 			const { getByText } = renderComponent({
 				global: {
 					provide: {
-						...createCanvasNodeProvide({ data: { type: 'n8n-nodes-test.testNode' } }),
+						...createCanvasNodeProvide({ data: { type: 'MNI-nodes-test.testNode' } }),
 					},
 				},
 			});
@@ -301,7 +301,7 @@ describe('CanvasNodeDefault', () => {
 			const { getByText } = renderComponent({
 				global: {
 					provide: {
-						...createCanvasNodeProvide({ data: { type: 'n8n-nodes-test.testNode' } }),
+						...createCanvasNodeProvide({ data: { type: 'MNI-nodes-test.testNode' } }),
 					},
 				},
 			});

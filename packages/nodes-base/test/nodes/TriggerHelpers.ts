@@ -1,12 +1,12 @@
-import { passthroughEgressFilter, type SsrfBridge } from '@n8n/backend-network';
-import { createDeferredPromise } from '@n8n/utils/promise/deferred-promise';
+import { passthroughEgressFilter, type SsrfBridge } from '@MNI/backend-network';
+import { createDeferredPromise } from '@MNI/utils/promise/deferred-promise';
 import type * as express from 'express';
 import { type IncomingHttpHeaders } from 'http';
 import get from 'lodash/get';
 import merge from 'lodash/merge';
 import set from 'lodash/set';
-import { PollContext, returnJsonArray, ScheduledTaskManager } from 'n8n-core';
-import type { InstanceSettings, ExecutionLifecycleHooks } from 'n8n-core';
+import { PollContext, returnJsonArray, ScheduledTaskManager } from 'MNI-core';
+import type { InstanceSettings, ExecutionLifecycleHooks } from 'MNI-core';
 import {
 	type IBinaryData,
 	type ICredentialDataDecryptedObject,
@@ -24,7 +24,7 @@ import {
 	type Workflow,
 	type CronContext,
 	type Cron,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 import type { MockedFunction } from 'vitest';
 import { mock } from 'vitest-mock-extended';
 

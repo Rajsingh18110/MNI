@@ -1,5 +1,5 @@
 import { mergeConfig } from 'vite';
-import { createVitestConfigWithDecorators } from '@n8n/vitest-config/node-decorators';
+import { createVitestConfigWithDecorators } from '@MNI/vitest-config/node-decorators';
 import path from 'node:path';
 
 export default mergeConfig(
@@ -8,10 +8,10 @@ export default mergeConfig(
 			globalSetup: ['./test/setup.ts'],
 			setupFiles: ['./test/setup-mocks.ts'],
 		},
-		// Pin `zod` and `n8n-workflow` to their CJS build so cross-boundary `instanceof`
+		// Pin `zod` and `MNI-workflow` to their CJS build so cross-boundary `instanceof`
 		// (`ZodType`, `UserError`) holds against the externalized CJS dist. See
-		// `cjsPinAliases` in @n8n/vitest-config/node for the rationale.
-		{ pinCjs: ['zod', 'n8n-workflow'] },
+		// `cjsPinAliases` in @MNI/vitest-config/node for the rationale.
+		{ pinCjs: ['zod', 'MNI-workflow'] },
 	),
 	{
 		resolve: {
@@ -22,7 +22,7 @@ export default mergeConfig(
 		},
 		oxc: {
 			// OXC's TS transform ignores tsconfig's `emitDecoratorMetadata` — must be enabled
-			// explicitly here so `@n8n/config`'s `@Env(name, zodSchema) field: z.infer<...>`
+			// explicitly here so `@MNI/config`'s `@Env(name, zodSchema) field: z.infer<...>`
 			// pattern works (the decorator reads `design:type` via `Reflect.getMetadata`).
 			decorator: {
 				legacy: true,

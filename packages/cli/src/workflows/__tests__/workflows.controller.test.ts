@@ -1,9 +1,9 @@
 import type { Mock } from 'vitest';
-import type { ImportWorkflowFromUrlDto } from '@n8n/api-types';
-import type { Logger } from '@n8n/backend-common';
-import type { HttpRequestClient, OutboundHttp } from '@n8n/backend-network';
-import { SsrfBlockedIpError } from '@n8n/backend-network';
-import type { AuthenticatedRequest, IExecutionResponse } from '@n8n/db';
+import type { ImportWorkflowFromUrlDto } from '@MNI/api-types';
+import type { Logger } from '@MNI/backend-common';
+import type { HttpRequestClient, OutboundHttp } from '@MNI/backend-network';
+import { SsrfBlockedIpError } from '@MNI/backend-network';
+import type { AuthenticatedRequest, IExecutionResponse } from '@MNI/db';
 import type { Response } from 'express';
 import { mock } from 'vitest-mock-extended';
 

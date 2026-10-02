@@ -9,7 +9,7 @@ export interface PredefinedNodeData {
 }
 
 export const NODE_DATA: Record<string, PredefinedNodeData> = {
-	'@n8n/n8n-nodes-langchain.agent': {
+	'@MNI/MNI-nodes-langchain.agent': {
 		starter: [6270, 5462, 3100],
 		popular: [2465, 2326, 2006],
 		youtube: [
@@ -23,11 +23,11 @@ export const NODE_DATA: Record<string, PredefinedNodeData> = {
 				id: '77Z07QnLlB8',
 				title: 'Building AI Agents: Prompt Engineering for Beginners [Part 3]',
 				description:
-					'In Part 3 of our Building AI Agents series, we focus on the essentials of prompt engineering—specifically for single-task agents in n8n.',
+					'In Part 3 of our Building AI Agents series, we focus on the essentials of prompt engineering—specifically for single-task agents in MNI.',
 			},
 		],
 	},
-	'@n8n/n8n-nodes-langchain.openAi': {
+	'@MNI/MNI-nodes-langchain.openAi': {
 		starter: [3100, 2722, 5462],
 		popular: [2462, 2783, 2187],
 		youtube: [
@@ -41,11 +41,11 @@ export const NODE_DATA: Record<string, PredefinedNodeData> = {
 				id: '77Z07QnLlB8',
 				title: 'Building AI Agents: Prompt Engineering for Beginners [Part 3]',
 				description:
-					'In Part 3 of our Building AI Agents series, we focus on the essentials of prompt engineering—specifically for single-task agents in n8n.',
+					'In Part 3 of our Building AI Agents series, we focus on the essentials of prompt engineering—specifically for single-task agents in MNI.',
 			},
 		],
 	},
-	'n8n-nodes-base.googleSheets': {
+	'MNI-nodes-base.googleSheets': {
 		starter: [2581, 5462, 1751],
 		popular: [5690, 2819, 6468],
 		youtube: [
@@ -63,7 +63,7 @@ export const NODE_DATA: Record<string, PredefinedNodeData> = {
 			},
 		],
 	},
-	'n8n-nodes-base.gmail': {
+	'MNI-nodes-base.gmail': {
 		starter: [1953, 6277, 2722],
 		popular: [3686, 3123, 3905],
 		youtube: [
@@ -81,7 +81,7 @@ export const NODE_DATA: Record<string, PredefinedNodeData> = {
 			},
 		],
 	},
-	'n8n-nodes-base.httpRequest': {
+	'MNI-nodes-base.httpRequest': {
 		starter: [1748, 3858, 5171],
 		popular: [2035, 4110, 3100],
 		youtube: [
@@ -99,7 +99,7 @@ export const NODE_DATA: Record<string, PredefinedNodeData> = {
 			},
 		],
 	},
-	'@n8n/n8n-nodes-langchain.googleGemini': {
+	'@MNI/MNI-nodes-langchain.googleGemini': {
 		starter: [6270, 4365, 3905],
 		popular: [5993, 2753, 2466],
 		youtube: [
@@ -117,7 +117,7 @@ export const NODE_DATA: Record<string, PredefinedNodeData> = {
 			},
 		],
 	},
-	'n8n-nodes-base.googleDrive': {
+	'MNI-nodes-base.googleDrive': {
 		starter: [6611, 1960, 2782],
 		popular: [2753, 4767, 3135],
 		youtube: [
@@ -135,7 +135,7 @@ export const NODE_DATA: Record<string, PredefinedNodeData> = {
 			},
 		],
 	},
-	'n8n-nodes-base.telegram': {
+	'MNI-nodes-base.telegram': {
 		starter: [2462, 2114, 4365],
 		popular: [3654, 2783, 3686],
 		youtube: [

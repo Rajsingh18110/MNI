@@ -1,6 +1,6 @@
-import type { Logger } from '@n8n/backend-common';
-import type { ChatHubConfig, ExecutionsConfig, GlobalConfig } from '@n8n/config';
-import type { InstanceSettings } from 'n8n-core';
+import type { Logger } from '@MNI/backend-common';
+import type { ChatHubConfig, ExecutionsConfig, GlobalConfig } from '@MNI/config';
+import type { InstanceSettings } from 'MNI-core';
 import { mock } from 'vitest-mock-extended';
 
 import {
@@ -86,7 +86,7 @@ describe('ChatHubExecutionStore', () => {
 
 				await store.register(context);
 
-				// Fast-forward 1 hour (N8N_CHAT_HUB_EXECUTION_CONTEXT_TTL)
+				// Fast-forward 1 hour (MNI_CHAT_HUB_EXECUTION_CONTEXT_TTL)
 				vi.advanceTimersByTime(60 * 60 * 1000);
 
 				const retrieved = await store.get(EXECUTION_ID);
@@ -197,7 +197,7 @@ describe('ChatHubExecutionStore', () => {
 				// Verify it exists
 				expect(await store.get(EXECUTION_ID)).not.toBeNull();
 
-				// Fast-forward 1 hour (N8N_CHAT_HUB_EXECUTION_CONTEXT_TTL)
+				// Fast-forward 1 hour (MNI_CHAT_HUB_EXECUTION_CONTEXT_TTL)
 				vi.advanceTimersByTime(60 * 60 * 1000);
 
 				// Should be cleaned up

@@ -1,5 +1,5 @@
-import type { IBinaryData } from 'n8n-workflow';
-import { NodeOperationError } from 'n8n-workflow';
+import type { IBinaryData } from 'MNI-workflow';
+import { NodeOperationError } from 'MNI-workflow';
 
 import { description, execute } from '../../../actions/attachment/upload.operation';
 import { confluenceApiRequestUpload } from '../../../transport';

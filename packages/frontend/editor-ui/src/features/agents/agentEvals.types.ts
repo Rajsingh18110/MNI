@@ -1,7 +1,7 @@
-// Re-exports from @n8n/api-types so agent-eval FE callers don't reach across
-// packages. New shared type? Export it from `@n8n/api-types` first.
+// Re-exports from @MNI/api-types so agent-eval FE callers don't reach across
+// packages. New shared type? Export it from `@MNI/api-types` first.
 
-import type { AgentEvalDatasetRecord, DataTableDatasetRef } from '@n8n/api-types';
+import type { AgentEvalDatasetRecord, DataTableDatasetRef } from '@MNI/api-types';
 
 export type {
 	AgentEvalColumnMapping,
@@ -24,7 +24,7 @@ export type {
 	// A result's `toolCalls` blob holds records of this shape under `calls`; the
 	// review view narrows to it rather than re-describing the runner's output.
 	InstanceAiEvalAgentToolCallRecord,
-} from '@n8n/api-types';
+} from '@MNI/api-types';
 
 // Values, not types: the page size the run-detail route defaults to, and the
 // per-field bounds the rating service enforces, so the editor caps its inputs at
@@ -36,7 +36,7 @@ export {
 	// The server clamps `take` to this rather than rejecting it, so a re-read asking
 	// for more silently returns fewer rows than the caller had.
 	MAX_ITEMS_PER_PAGE,
-} from '@n8n/api-types';
+} from '@MNI/api-types';
 
 /**
  * A case as the cases view renders it: the two mapped columns plus the Data Table

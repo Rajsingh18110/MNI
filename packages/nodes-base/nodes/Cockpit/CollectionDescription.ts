@@ -1,4 +1,4 @@
-import type { INodeProperties } from 'n8n-workflow';
+import type { INodeProperties } from 'MNI-workflow';
 
 export const collectionOperations: INodeProperties[] = [
 	{
@@ -19,7 +19,7 @@ export const collectionOperations: INodeProperties[] = [
 				action: 'Create a collection entry',
 			},
 			{
-				// eslint-disable-next-line n8n-nodes-base/node-param-option-name-wrong-for-get-many
+				// eslint-disable-next-line MNI-nodes-base/node-param-option-name-wrong-for-get-many
 				name: 'Get Many Entries',
 				value: 'getAll',
 				description: 'Get many collection entries',

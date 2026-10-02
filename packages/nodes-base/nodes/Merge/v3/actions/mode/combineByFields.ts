@@ -3,7 +3,7 @@ import type {
 	IExecuteFunctions,
 	INodeExecutionData,
 	INodeProperties,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { updateDisplayOptions } from '@utils/utilities';
 
@@ -54,7 +54,7 @@ export const properties: INodeProperties[] = [
 		displayName: 'Fields to Match',
 		name: 'fieldsToMatchString',
 		type: 'string',
-		// eslint-disable-next-line n8n-nodes-base/node-param-placeholder-miscased-id
+		// eslint-disable-next-line MNI-nodes-base/node-param-placeholder-miscased-id
 		placeholder: 'e.g. id, name',
 		default: '',
 		requiresDataPath: 'multiple',
@@ -91,7 +91,7 @@ export const properties: INodeProperties[] = [
 						name: 'field1',
 						type: 'string',
 						default: '',
-						// eslint-disable-next-line n8n-nodes-base/node-param-placeholder-miscased-id
+						// eslint-disable-next-line MNI-nodes-base/node-param-placeholder-miscased-id
 						placeholder: 'e.g. id',
 						hint: 'Drag or type the input field name',
 						requiresDataPath: 'single',
@@ -101,7 +101,7 @@ export const properties: INodeProperties[] = [
 						name: 'field2',
 						type: 'string',
 						default: '',
-						// eslint-disable-next-line n8n-nodes-base/node-param-placeholder-miscased-id
+						// eslint-disable-next-line MNI-nodes-base/node-param-placeholder-miscased-id
 						placeholder: 'e.g. id',
 						hint: 'Drag or type the input field name',
 						requiresDataPath: 'single',
@@ -115,7 +115,7 @@ export const properties: INodeProperties[] = [
 		name: 'joinMode',
 		type: 'options',
 		description: 'How to select the items to send to output',
-		// eslint-disable-next-line n8n-nodes-base/node-param-options-type-unsorted-items
+		// eslint-disable-next-line MNI-nodes-base/node-param-options-type-unsorted-items
 		options: [
 			{
 				name: 'Keep Matches',

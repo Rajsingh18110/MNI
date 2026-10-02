@@ -1,6 +1,6 @@
-import type { SourceControlledFile } from '@n8n/api-types';
-import { Logger } from '@n8n/backend-common';
-import type { IWorkflowDb, Project, SharedCredentials } from '@n8n/db';
+import type { SourceControlledFile } from '@MNI/api-types';
+import { Logger } from '@MNI/backend-common';
+import type { IWorkflowDb, Project, SharedCredentials } from '@MNI/db';
 import {
 	FolderRepository,
 	ProjectRelationRepository,
@@ -10,12 +10,12 @@ import {
 	TagRepository,
 	WorkflowRepository,
 	WorkflowTagMappingRepository,
-} from '@n8n/db';
-import { Service } from '@n8n/di';
-import { In } from '@n8n/typeorm';
+} from '@MNI/db';
+import { Service } from '@MNI/di';
+import { In } from '@MNI/typeorm';
 import chunk from 'lodash/chunk';
-import { Credentials, InstanceSettings } from 'n8n-core';
-import { UnexpectedError } from 'n8n-workflow';
+import { Credentials, InstanceSettings } from 'MNI-core';
+import { UnexpectedError } from 'MNI-workflow';
 import { rm as fsRm, writeFile as fsWriteFile } from 'node:fs/promises';
 import path from 'path';
 

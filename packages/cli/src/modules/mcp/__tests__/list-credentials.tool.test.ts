@@ -1,7 +1,7 @@
-import type { AiGatewayConfigDto } from '@n8n/api-types';
-import { mockInstance } from '@n8n/backend-test-utils';
-import { User } from '@n8n/db';
-import type { CredentialsEntity } from '@n8n/db';
+import type { AiGatewayConfigDto } from '@MNI/api-types';
+import { mockInstance } from '@MNI/backend-test-utils';
+import { User } from '@MNI/db';
+import type { CredentialsEntity } from '@MNI/db';
 import type { Mock } from 'vitest';
 import { mock } from 'vitest-mock-extended';
 import { z } from 'zod';
@@ -54,7 +54,7 @@ describe('list-credentials MCP tool', () => {
 			aiGatewayService.isAvailable.mockResolvedValue({
 				available: true,
 				config: {
-					nodes: ['@n8n/n8n-nodes-langchain.openAi'],
+					nodes: ['@MNI/MNI-nodes-langchain.openAi'],
 					credentialTypes: ['openAiApi'],
 					providerConfig: {
 						openAiApi: {
@@ -407,7 +407,7 @@ describe('list-credentials MCP tool', () => {
 				const structured = await callHandler({ available: true });
 				expect(structured.gatewayCredits).toEqual({
 					credentialTypes: ['openAiApi'],
-					nodes: ['@n8n/n8n-nodes-langchain.openAi'],
+					nodes: ['@MNI/MNI-nodes-langchain.openAi'],
 				});
 			});
 

@@ -1,6 +1,6 @@
 import { mock, mockDeep } from 'vitest-mock-extended';
-import type { IExecuteFunctions, ILoadOptionsFunctions, INode } from 'n8n-workflow';
-import { NodeApiError } from 'n8n-workflow';
+import type { IExecuteFunctions, ILoadOptionsFunctions, INode } from 'MNI-workflow';
+import { NodeApiError } from 'MNI-workflow';
 
 import { googleApiRequest } from '../GenericFunctions';
 import type { Mocked } from 'vitest';
@@ -16,7 +16,7 @@ describe('GoogleFirebaseRealtimeDatabase > GenericFunctions', () => {
 		mockNode = mock<INode>({
 			id: 'test-node',
 			name: 'Test RealtimeDatabase Node',
-			type: 'n8n-nodes-base.googleFirebaseRealtimeDatabase',
+			type: 'MNI-nodes-base.googleFirebaseRealtimeDatabase',
 			typeVersion: 1,
 			position: [0, 0],
 			parameters: {},

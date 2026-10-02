@@ -1,7 +1,7 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { createPinia, setActivePinia } from 'pinia';
-import type { IConnections, INode, INodeTypeDescription, IWorkflowGroup } from 'n8n-workflow';
-import { NodeConnectionTypes } from 'n8n-workflow';
+import type { IConnections, INode, INodeTypeDescription, IWorkflowGroup } from 'MNI-workflow';
+import { NodeConnectionTypes } from 'MNI-workflow';
 import { shallowRef } from 'vue';
 
 import { useInvalidNodeGroupCleanup } from './useInvalidNodeGroupCleanup';
@@ -16,11 +16,11 @@ import { createTestNode, createTestWorkflow } from '@/__tests__/mocks';
 const trackSpy = vi.hoisted(() => vi.fn());
 const showMessageSpy = vi.hoisted(() => vi.fn());
 
-vi.mock('@n8n/composables/useTelemetry', () => ({
+vi.mock('@MNI/composables/useTelemetry', () => ({
 	useTelemetry: vi.fn(() => ({ track: trackSpy })),
 }));
 
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: () => ({ showMessage: showMessageSpy }),
 }));
 
@@ -58,7 +58,7 @@ function setupDocumentStore({
 function setupTriggeredGroup() {
 	const store = setupDocumentStore({
 		nodes: [
-			createTestNode({ id: 'node-a', name: 'Node A', type: 'n8n-nodes-base.manualTrigger' }),
+			createTestNode({ id: 'node-a', name: 'Node A', type: 'MNI-nodes-base.manualTrigger' }),
 			createTestNode({ id: 'node-b', name: 'Node B' }),
 		],
 		connections: createConnection('Node A', 'Node B'),
@@ -70,7 +70,7 @@ function setupTriggeredGroup() {
 	vi.spyOn(useNodeTypesStore() as any, 'getNodeType', 'get').mockReturnValue(
 		(type: string) =>
 			({
-				group: type === 'n8n-nodes-base.manualTrigger' ? ['trigger'] : ['transform'],
+				group: type === 'MNI-nodes-base.manualTrigger' ? ['trigger'] : ['transform'],
 			}) as unknown as INodeTypeDescription,
 	);
 

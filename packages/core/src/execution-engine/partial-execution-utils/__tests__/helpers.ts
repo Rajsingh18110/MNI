@@ -1,4 +1,4 @@
-import { NodeConnectionTypes } from 'n8n-workflow';
+import { NodeConnectionTypes } from 'MNI-workflow';
 import type {
 	INodeParameters,
 	INode,
@@ -6,20 +6,20 @@ import type {
 	IDataObject,
 	IConnections,
 	NodeConnectionType,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 interface StubNode {
 	name: string;
 	parameters?: INodeParameters;
 	disabled?: boolean;
-	type?: 'n8n-nodes-base.manualTrigger' | 'n8n-nodes-base.splitInBatches' | (string & {});
+	type?: 'MNI-nodes-base.manualTrigger' | 'MNI-nodes-base.splitInBatches' | (string & {});
 }
 
 export function createNodeData(stubData: StubNode): INode {
 	return {
 		name: stubData.name,
 		parameters: stubData.parameters ?? {},
-		type: stubData.type ?? 'n8n-nodes-base.set',
+		type: stubData.type ?? 'MNI-nodes-base.set',
 		typeVersion: 1,
 		id: 'uuid-1234',
 		position: [100, 100],

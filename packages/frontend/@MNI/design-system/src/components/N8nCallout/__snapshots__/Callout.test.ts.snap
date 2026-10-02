@@ -1,0 +1,79 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`components > N8nCallout > should render additional slots correctly 1`] = `
+"<div class="MNI-callout callout custom round" role="alert">
+  <div class="messageSection">
+    <div class="icon">
+      <MNI-icon-stub icon="git-branch" size="medium" spin="false"></MNI-icon-stub>
+    </div>
+    <MNI-text-stub bold="false" size="small" compact="false" tag="span"></MNI-text-stub> &nbsp; <MNI-link-stub size="small"></MNI-link-stub>
+  </div>
+  <MNI-link-stub theme="secondary" size="small" bold="true" underline="true" to="https://n8n.io"></MNI-link-stub>
+</div>"
+`;
+
+exports[`components > N8nCallout > should render custom theme correctly 1`] = `
+"<div class="MNI-callout callout custom round" role="alert">
+  <div class="messageSection">
+    <div class="icon">
+      <MNI-icon-stub icon="git-branch" size="medium" spin="false"></MNI-icon-stub>
+    </div>
+    <MNI-text-stub bold="false" size="small" compact="false" tag="span"></MNI-text-stub> &nbsp;
+  </div>
+</div>"
+`;
+
+exports[`components > N8nCallout > should render danger theme correctly 1`] = `
+"<div class="MNI-callout callout danger round" role="alert">
+  <div class="messageSection">
+    <div class="icon">
+      <MNI-icon-stub icon="triangle-alert" size="medium" spin="false"></MNI-icon-stub>
+    </div>
+    <MNI-text-stub bold="false" size="small" compact="false" tag="span"></MNI-text-stub> &nbsp;
+  </div>
+</div>"
+`;
+
+exports[`components > N8nCallout > should render info theme correctly 1`] = `
+"<div class="MNI-callout callout info round" role="alert">
+  <div class="messageSection">
+    <div class="icon">
+      <MNI-icon-stub icon="info" size="medium" spin="false"></MNI-icon-stub>
+    </div>
+    <MNI-text-stub bold="false" size="small" compact="false" tag="span"></MNI-text-stub> &nbsp;
+  </div>
+</div>"
+`;
+
+exports[`components > N8nCallout > should render secondary theme correctly 1`] = `
+"<div class="MNI-callout callout secondary round" role="alert">
+  <div class="messageSection">
+    <div class="icon">
+      <MNI-icon-stub icon="info" size="medium" spin="false"></MNI-icon-stub>
+    </div>
+    <MNI-text-stub bold="false" size="small" compact="false" tag="span"></MNI-text-stub> &nbsp;
+  </div>
+</div>"
+`;
+
+exports[`components > N8nCallout > should render success theme correctly 1`] = `
+"<div class="MNI-callout callout success round" role="alert">
+  <div class="messageSection">
+    <div class="icon">
+      <MNI-icon-stub icon="circle-check" size="medium" spin="false"></MNI-icon-stub>
+    </div>
+    <MNI-text-stub bold="false" size="small" compact="false" tag="span"></MNI-text-stub> &nbsp;
+  </div>
+</div>"
+`;
+
+exports[`components > N8nCallout > should render warning theme correctly 1`] = `
+"<div class="MNI-callout callout warning round" role="alert">
+  <div class="messageSection">
+    <div class="icon">
+      <MNI-icon-stub icon="triangle-alert" size="medium" spin="false"></MNI-icon-stub>
+    </div>
+    <MNI-text-stub bold="false" size="small" compact="false" tag="span"></MNI-text-stub> &nbsp;
+  </div>
+</div>"
+`;

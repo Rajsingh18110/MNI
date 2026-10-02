@@ -1,5 +1,5 @@
-import { DateTimeColumn, User, WithTimestamps } from '@n8n/db';
-import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryColumn } from '@n8n/typeorm';
+import { DateTimeColumn, User, WithTimestamps } from '@MNI/db';
+import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryColumn } from '@MNI/typeorm';
 
 import { InstanceAiCheckpoint } from './instance-ai-checkpoint.entity';
 import { InstanceAiThread } from './instance-ai-thread.entity';

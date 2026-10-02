@@ -14,8 +14,8 @@ describe('OAuthCallbackAuthRule', () => {
 	});
 
 	describe('detect()', () => {
-		it('should be affected when N8N_SKIP_AUTH_ON_OAUTH_CALLBACK is not set', async () => {
-			delete process.env.N8N_SKIP_AUTH_ON_OAUTH_CALLBACK;
+		it('should be affected when MNI_SKIP_AUTH_ON_OAUTH_CALLBACK is not set', async () => {
+			delete process.env.MNI_SKIP_AUTH_ON_OAUTH_CALLBACK;
 
 			const result = await rule.detect();
 
@@ -25,9 +25,9 @@ describe('OAuthCallbackAuthRule', () => {
 		});
 
 		it.each(['true', 'false', '1', '0'])(
-			'should not be affected when N8N_SKIP_AUTH_ON_OAUTH_CALLBACK is set to %s',
+			'should not be affected when MNI_SKIP_AUTH_ON_OAUTH_CALLBACK is set to %s',
 			async (value) => {
-				process.env.N8N_SKIP_AUTH_ON_OAUTH_CALLBACK = value;
+				process.env.MNI_SKIP_AUTH_ON_OAUTH_CALLBACK = value;
 
 				const result = await rule.detect();
 

@@ -1,10 +1,10 @@
-import type { INodeProperties } from 'n8n-workflow';
+import type { INodeProperties } from 'MNI-workflow';
 import {
 	LOGSTREAMING_CB_DEFAULT_FAILURE_WINDOW_MS,
 	LOGSTREAMING_CB_DEFAULT_MAX_FAILURES,
 	LOGSTREAMING_DEFAULT_MAX_FREE_SOCKETS,
 	LOGSTREAMING_DEFAULT_MAX_SOCKETS,
-} from '@n8n/constants';
+} from '@MNI/constants';
 
 export const circuitBreakerOptions = {
 	displayName: 'Circuit Breaker Options',

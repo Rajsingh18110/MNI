@@ -20,7 +20,7 @@ exports[`RunDataJson.vue > renders json values properly 1`] = `
         <transition-stub
           appear="false"
           css="true"
-          name="n8n-button-fade"
+          name="MNI-button-fade"
           persisted="false"
         >
           <!--v-if-->
@@ -31,7 +31,7 @@ exports[`RunDataJson.vue > renders json values properly 1`] = `
           
           <svg
             aria-hidden="true"
-            class="n8n-icon"
+            class="MNI-icon"
             data-icon="files"
             focusable="false"
             height="14px"

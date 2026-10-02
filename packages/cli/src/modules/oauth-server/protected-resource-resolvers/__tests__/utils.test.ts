@@ -1,4 +1,4 @@
-import type { Logger } from '@n8n/backend-common';
+import type { Logger } from '@MNI/backend-common';
 import { mock } from 'vitest-mock-extended';
 
 import {
@@ -40,7 +40,7 @@ describe('resourceUrlToWebhookPath', () => {
 
 	test('should strip the base URL path prefix for a sub-path deployment', () => {
 		expect(
-			resourceUrlToWebhookPath('https://host.example/n8n/mcp/abc', 'https://host.example/n8n/'),
+			resourceUrlToWebhookPath('https://host.example/MNI/mcp/abc', 'https://host.example/MNI/'),
 		).toBe('/mcp/abc');
 	});
 
@@ -48,7 +48,7 @@ describe('resourceUrlToWebhookPath', () => {
 		// without the `/MNI` prefix the URL is not actually served by this instance,
 		// so it must not resolve to the prefixed resource
 		expect(
-			resourceUrlToWebhookPath('https://host.example/mcp/abc', 'https://host.example/n8n/'),
+			resourceUrlToWebhookPath('https://host.example/mcp/abc', 'https://host.example/MNI/'),
 		).toBeUndefined();
 	});
 
@@ -90,8 +90,8 @@ describe('webhookPathFromResourceUrl', () => {
 	test('should return the path and not log for a URL under the base URL', () => {
 		expect(
 			webhookPathFromResourceUrl(
-				'https://host.example/n8n/webhook/abc?method=GET',
-				'https://host.example/n8n/',
+				'https://host.example/MNI/webhook/abc?method=GET',
+				'https://host.example/MNI/',
 				logger,
 			),
 		).toBe('/webhook/abc');

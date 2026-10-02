@@ -272,7 +272,7 @@ responses:
                             workflowName: My Workflow
                             nodeId: 51eb5852-ce0b-4806-b4ff-e41322a4041a
                             nodeName: MySQL
-                            nodeType: n8n-nodes-base.mySql
+                            nodeType: MNI-nodes-base.mySql
                 Filesystem Risk Report:
                   type: object
                   properties:
@@ -391,7 +391,7 @@ responses:
                             workflowName: My Workflow
                             nodeId: 51eb5852-ce0b-4806-b4ff-e41322a4041a
                             nodeName: Ready Binary file
-                            nodeType: n8n-nodes-base.readBinaryFile
+                            nodeType: MNI-nodes-base.readBinaryFile
                 Nodes Risk Report:
                   type: object
                   properties:
@@ -506,8 +506,8 @@ responses:
                         recommendation: Consider reviewing the source code in any community nodes installed in this MNI instance, and uninstalling any community nodes no longer used.
                         location:
                           - kind: community
-                            nodeType: n8n-nodes-test.test
-                            packageUrl: https://www.npmjs.com/package/n8n-nodes-test
+                            nodeType: MNI-nodes-test.test
+                            packageUrl: https://www.npmjs.com/package/MNI-nodes-test
                 Instance Risk Report:
                   type: object
                   properties:
@@ -626,7 +626,7 @@ responses:
                             workflowName: My Workflow
                             nodeId: 51eb5852-ce0b-4806-b4ff-e41322a4041a
                             nodeName: Webhook
-                            nodeType: n8n-nodes-base.webhook
+                            nodeType: MNI-nodes-base.webhook
             - type: array
               items:
                 nullable: true

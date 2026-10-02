@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import type { PolicyViolation } from '@n8n/api-types';
-import { N8nText } from '@n8n/design-system';
-import { useI18n, type BaseTextKey } from '@n8n/i18n';
+import type { PolicyViolation } from '@MNI/api-types';
+import { N8nText } from '@MNI/design-system';
+import { useI18n, type BaseTextKey } from '@MNI/i18n';
 
 import { isRestrictionScope, SCOPE_LABEL_KEY } from '../type-availability-policies.constants';
 

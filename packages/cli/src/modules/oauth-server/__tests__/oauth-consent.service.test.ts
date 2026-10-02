@@ -1,6 +1,6 @@
 import type { Mocked } from 'vitest';
-import { mockInstance } from '@n8n/backend-test-utils';
-import { Logger } from '@n8n/backend-common';
+import { mockInstance } from '@MNI/backend-test-utils';
+import { Logger } from '@MNI/backend-common';
 import type { OAuthClient } from '../database/entities/oauth-client.entity';
 import { mock } from 'vitest-mock-extended';
 
@@ -14,8 +14,8 @@ import {
 	ProtectedResourceRegistry,
 	type ProtectedResource,
 } from '@/services/protected-resource.registry';
-import { UrlService } from '@n8n/backend-services';
-import type { User } from '@n8n/db';
+import { UrlService } from '@MNI/backend-services';
+import type { User } from '@MNI/db';
 import { ForbiddenError } from '@/errors/response-errors/forbidden.error';
 
 const issuer = 'https://n8n.example.com';

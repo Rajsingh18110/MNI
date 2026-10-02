@@ -7,7 +7,7 @@ import {
 	NodeConnectionTypes,
 	type INodeTypeBaseDescription,
 	type IDataObject,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import type {
 	ICtx,
@@ -73,7 +73,7 @@ export class SeaTableTriggerV2 implements INodeType {
 					default: 'newRow',
 				},
 				{
-					// eslint-disable-next-line n8n-nodes-base/node-param-display-name-wrong-for-dynamic-options
+					// eslint-disable-next-line MNI-nodes-base/node-param-display-name-wrong-for-dynamic-options
 					displayName: 'Table Name',
 					name: 'tableName',
 					type: 'options',
@@ -82,12 +82,12 @@ export class SeaTableTriggerV2 implements INodeType {
 						loadOptionsMethod: 'getTableNames',
 					},
 					default: '',
-					// eslint-disable-next-line n8n-nodes-base/node-param-description-wrong-for-dynamic-options
+					// eslint-disable-next-line MNI-nodes-base/node-param-description-wrong-for-dynamic-options
 					description:
 						'The name of SeaTable table to access. Choose from the list, or specify the name using an <a href="https://docs.n8n.io/code-examples/expressions/">expression</a>.',
 				},
 				{
-					// eslint-disable-next-line n8n-nodes-base/node-param-display-name-wrong-for-dynamic-options
+					// eslint-disable-next-line MNI-nodes-base/node-param-display-name-wrong-for-dynamic-options
 					displayName: 'View Name',
 					name: 'viewName',
 					type: 'options',
@@ -101,12 +101,12 @@ export class SeaTableTriggerV2 implements INodeType {
 						loadOptionsMethod: 'getTableViews',
 					},
 					default: '',
-					// eslint-disable-next-line n8n-nodes-base/node-param-description-wrong-for-dynamic-options
+					// eslint-disable-next-line MNI-nodes-base/node-param-description-wrong-for-dynamic-options
 					description:
 						'The name of SeaTable view to access. Choose from the list, or specify the name using an <a href="https://docs.n8n.io/code-examples/expressions/">expression</a>.',
 				},
 				{
-					// eslint-disable-next-line n8n-nodes-base/node-param-display-name-wrong-for-dynamic-options
+					// eslint-disable-next-line MNI-nodes-base/node-param-display-name-wrong-for-dynamic-options
 					displayName: 'Signature Column',
 					name: 'assetColumn',
 					type: 'options',
@@ -121,7 +121,7 @@ export class SeaTableTriggerV2 implements INodeType {
 						loadOptionsMethod: 'getSignatureColumns',
 					},
 					default: '',
-					// eslint-disable-next-line n8n-nodes-base/node-param-description-wrong-for-dynamic-options
+					// eslint-disable-next-line MNI-nodes-base/node-param-description-wrong-for-dynamic-options
 					description:
 						'Select the digital-signature column that should be tracked. Choose from the list, or specify the name using an <a href="https://docs.n8n.io/code-examples/expressions/">expression</a>.',
 				},

@@ -5,7 +5,7 @@
 			"parameters": {},
 			"id": "b9c0d1e2-f3a4-5678-9012-cdef00012345",
 			"name": "When clicking \"Execute Workflow\"",
-			"type": "n8n-nodes-base.manualTrigger",
+			"type": "MNI-nodes-base.manualTrigger",
 			"typeVersion": 1,
 			"position": [460, 460]
 		},
@@ -28,7 +28,7 @@
 			},
 			"id": "c0d1e2f3-a4b5-6789-0123-def000123456",
 			"name": "Edit Fields",
-			"type": "n8n-nodes-base.set",
+			"type": "MNI-nodes-base.set",
 			"typeVersion": 3.2,
 			"position": [680, 460]
 		},
@@ -44,7 +44,7 @@
 			},
 			"id": "d1e2f3a4-b5c6-7890-1234-ef0001234567",
 			"name": "MySQL Update With Backtick",
-			"type": "n8n-nodes-base.mySql",
+			"type": "MNI-nodes-base.mySql",
 			"typeVersion": 1,
 			"position": [900, 460],
 			"credentials": {

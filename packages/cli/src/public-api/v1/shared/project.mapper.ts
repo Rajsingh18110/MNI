@@ -1,5 +1,5 @@
-import type { ProjectPublic } from '@n8n/api-types';
-import type { Project } from '@n8n/db';
+import type { ProjectPublic } from '@MNI/api-types';
+import type { Project } from '@MNI/db';
 
 /** A cached entity is read back as JSON, so a date can already be an ISO string. */
 function toIsoString(value: Date | string): string {

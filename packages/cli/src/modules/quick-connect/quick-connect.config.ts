@@ -1,4 +1,4 @@
-import { Config, Env } from '@n8n/config';
+import { Config, Env } from '@MNI/config';
 import { z } from 'zod';
 
 const disclaimerSchema = z.object({
@@ -61,6 +61,6 @@ export type QuickConnectOptions = z.infer<typeof quickConnectOptionsSchema>;
 @Config
 export class QuickConnectConfig {
 	/** Promoted quick connect options */
-	@Env('N8N_QUICK_CONNECT_OPTIONS', quickConnectOptionsSchema)
+	@Env('MNI_QUICK_CONNECT_OPTIONS', quickConnectOptionsSchema)
 	options: QuickConnectOptions = [];
 }

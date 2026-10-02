@@ -1,4 +1,4 @@
-import { EventMessageTypeNames } from 'n8n-workflow';
+import { EventMessageTypeNames } from 'MNI-workflow';
 
 import type { AbstractEventMessage } from '../abstract-event-message';
 import { EventMessageAiNode } from '../event-message-ai-node';

@@ -1,5 +1,5 @@
-import type { INodeProperties } from 'n8n-workflow';
-import { DEFAULT_EVALUATION_METRIC } from 'n8n-workflow';
+import type { INodeProperties } from 'MNI-workflow';
+import { DEFAULT_EVALUATION_METRIC } from 'MNI-workflow';
 
 import {
 	CORRECTNESS_PROMPT,
@@ -90,7 +90,7 @@ export const setOutputProperties: INodeProperties[] = [
 		},
 	},
 	{
-		// eslint-disable-next-line n8n-nodes-base/node-param-display-name-miscased
+		// eslint-disable-next-line MNI-nodes-base/node-param-display-name-miscased
 		displayName: 'Data table',
 		name: 'dataTableId',
 		type: 'resourceLocator',
@@ -270,7 +270,7 @@ function optionsForMetric(
 					default: defaultName,
 					description: 'Set this parameter if you want to set a custom name to the metric',
 				},
-				// eslint-disable-next-line n8n-nodes-base/node-param-default-missing
+				// eslint-disable-next-line MNI-nodes-base/node-param-default-missing
 				{
 					displayName: 'Input Prompt',
 					name: 'inputPrompt',
@@ -379,17 +379,17 @@ export const setMetricsProperties: INodeProperties[] = [
 		name: 'metric',
 		type: 'options',
 		noDataExpression: true,
-		// eslint-disable-next-line n8n-nodes-base/node-param-options-type-unsorted-items
+		// eslint-disable-next-line MNI-nodes-base/node-param-options-type-unsorted-items
 		options: [
 			{
-				// eslint-disable-next-line n8n-nodes-base/node-param-display-name-miscased
+				// eslint-disable-next-line MNI-nodes-base/node-param-display-name-miscased
 				name: 'Correctness (AI-based)',
 				value: 'correctness',
 				description:
 					'Whether the answer’s meaning is consistent with a reference answer. Uses a scale of 1 (worst) to 5 (best).',
 			},
 			{
-				// eslint-disable-next-line n8n-nodes-base/node-param-display-name-miscased
+				// eslint-disable-next-line MNI-nodes-base/node-param-display-name-miscased
 				name: 'Helpfulness (AI-based)',
 				value: 'helpfulness',
 				description:
@@ -432,7 +432,7 @@ export const setMetricsProperties: INodeProperties[] = [
 	...promptFieldForMetric('correctness', CORRECTNESS_PROMPT),
 	...promptFieldForMetric('helpfulness', HELPFULNESS_PROMPT),
 	{
-		// eslint-disable-next-line n8n-nodes-base/node-param-display-name-miscased-id -- the docs anchor contains "id"
+		// eslint-disable-next-line MNI-nodes-base/node-param-display-name-miscased-id -- the docs anchor contains "id"
 		displayName:
 			"Calculate the custom metrics before this node, then map them below. <a href='https://docs.n8n.io/build/integrate-ai/test-and-improve-ai-workflows/use-metrics-to-measure-quality#id-2-add-metrics-to-workflow' target='_blank'>View metric examples</a>",
 		name: 'notice',
@@ -484,7 +484,7 @@ export const sourcePicker: INodeProperties = {
 	type: 'options',
 	options: [
 		{
-			// eslint-disable-next-line n8n-nodes-base/node-param-display-name-miscased
+			// eslint-disable-next-line MNI-nodes-base/node-param-display-name-miscased
 			name: 'Data table',
 			value: 'dataTable',
 			description: 'Load the test dataset from a local Data table',

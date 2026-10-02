@@ -1,9 +1,9 @@
 <script lang="ts" setup>
 import { computed, ref, watch } from 'vue';
 import { ElDialog } from 'element-plus';
-import { N8nButton, N8nHeading, N8nOption, N8nSelect, N8nText } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
-import type { Role } from '@n8n/permissions';
+import { N8nButton, N8nHeading, N8nOption, N8nSelect, N8nText } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
+import type { Role } from '@MNI/permissions';
 import { APP_MODALS_ELEMENT_ID } from '@/app/constants';
 
 const props = defineProps<{

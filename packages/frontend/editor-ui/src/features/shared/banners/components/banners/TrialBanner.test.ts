@@ -1,17 +1,17 @@
 import { createComponentRenderer } from '@/__tests__/render';
 import TrialBanner from './TrialBanner.vue';
 import { createPinia, setActivePinia } from 'pinia';
-import { useCloudPlanStore } from '@n8n/stores/cloudPlan.store';
+import { useCloudPlanStore } from '@MNI/stores/cloudPlan.store';
 import { vi } from 'vitest';
 
-vi.mock('@n8n/stores/useRootStore', () => ({
+vi.mock('@MNI/stores/useRootStore', () => ({
 	useRootStore: vi.fn(() => ({
 		restApiContext: {},
 		baseUrl: 'http://localhost:5678',
 	})),
 }));
 
-vi.mock('@n8n/stores/settings.store', () => ({
+vi.mock('@MNI/stores/settings.store', () => ({
 	useSettingsStore: vi.fn(() => ({
 		settings: { n8nMetadata: { userId: 'test-user-id' } },
 		isCloudDeployment: true,
@@ -22,7 +22,7 @@ vi.mock('@/app/utils/rbac/permissions', () => ({
 	hasPermission: vi.fn(() => true),
 }));
 
-vi.mock('@n8n/rest-api-client/api/cloudPlans', () => ({
+vi.mock('@MNI/rest-api-client/api/cloudPlans', () => ({
 	getAdminPanelLoginCode: vi.fn(),
 	getCurrentPlan: vi.fn(),
 	getCurrentUsage: vi.fn(),

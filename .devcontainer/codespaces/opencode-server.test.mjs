@@ -31,7 +31,7 @@ function fixture(t) {
 	// prepareOpenCode spawns the shims in this process. Log every call before the shim body runs.
 	Object.assign(process.env, fake.env, {
 		AGENT_WORKER_TOKEN: 'test-worker',
-		N8N_DEQUEUE_URL: 'test-queue',
+		MNI_DEQUEUE_URL: 'test-queue',
 		SLACK_BOT_TOKEN: 'test-slack',
 	});
 	const bin = (name, body) =>
@@ -73,9 +73,9 @@ if (args[0] === 'has-session') {
 		`
 if (args[0] === '--version') { console.log('1.2.3'); process.exit(0); }
 fs.writeFileSync(file('server-env.json'), JSON.stringify({
-  worker: !!process.env.AGENT_WORKER_TOKEN, queue: !!process.env.N8N_DEQUEUE_URL, slack: !!process.env.SLACK_BOT_TOKEN,
+  worker: !!process.env.AGENT_WORKER_TOKEN, queue: !!process.env.MNI_DEQUEUE_URL, slack: !!process.env.SLACK_BOT_TOKEN,
   cache: process.env.TURBO_CACHE_DIR, config: JSON.parse(process.env.OPENCODE_CONFIG_CONTENT),
-  runtime: process.env.N8N_AGENT_RUNTIME, profile: process.env.N8N_AGENT_PROFILE ?? null,
+  runtime: process.env.MNI_AGENT_RUNTIME, profile: process.env.MNI_AGENT_PROFILE ?? null,
 }));
 let sessions = fs.existsSync(file('sessions.json')) ? JSON.parse(fs.readFileSync(file('sessions.json'), 'utf8')) : {};
 const server = require('node:http').createServer(async (req, res) => {
@@ -196,9 +196,9 @@ test(
 		assert.equal(env.config.provider.openrouter.options.apiKey, '{env:OPENROUTER_API_KEY}');
 		assert.deepEqual(env.config.enabled_providers, ['openrouter']);
 		assert.deepEqual([env.runtime, env.profile], ['sandbox', null]);
-		assert.equal(statSync(join(f.dir, '.n8n-opencode')).mode & 0o777, 0o700);
+		assert.equal(statSync(join(f.dir, '.MNI-opencode')).mode & 0o777, 0o700);
 		for (const file of ['serve.sh', 'server.json']) {
-			assert.equal(statSync(join(f.dir, '.n8n-opencode', file)).mode & 0o777, 0o600);
+			assert.equal(statSync(join(f.dir, '.MNI-opencode', file)).mode & 0o777, 0o600);
 		}
 		assert.ok(!f.commands().some((entry) => JSON.stringify(entry.args).includes(first.password)));
 		assert.equal(f.commands().filter((entry) => entry.command === 'pnpm').length, 2);

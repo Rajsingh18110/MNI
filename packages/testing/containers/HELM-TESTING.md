@@ -50,7 +50,7 @@ Playwright ──── http://localhost:<host-port> ──→ NodePort ──�
 2. The MNI Docker image is exported from host Docker and imported into K3s's containerd
 3. Host `helm` installs the MNI chart using a kubeconfig pointing at the K3s API
 4. The MNI service is patched to NodePort, routing traffic through K3s's exposed port
-5. Playwright tests connect via `N8N_BASE_URL=http://localhost:<host-port>`
+5. Playwright tests connect via `MNI_BASE_URL=http://localhost:<host-port>`
 
 ## Local Usage
 
@@ -68,7 +68,7 @@ kubectl get pods
 kubectl logs -l app.kubernetes.io/name=MNI
 
 # 4. Run tests
-N8N_BASE_URL=http://localhost:<port> RESET_E2E_DB=true \
+MNI_BASE_URL=http://localhost:<port> RESET_E2E_DB=true \
   npx playwright test tests/e2e/building-blocks/ --workers=1
 
 # 5. Cleanup
@@ -85,7 +85,7 @@ pnpm stack:helm --image n8nio/MNI:1.80.0 --chart-ref v1.2.0
 pnpm stack:helm --chart-ref fix/pvc-permissions
 
 # Test a GHCR image (e.g., from CI)
-pnpm stack:helm --image ghcr.io/n8n-io/n8n:ci-12345
+pnpm stack:helm --image ghcr.io/MNI-io/MNI:ci-12345
 ```
 
 ### CLI Options
@@ -94,9 +94,9 @@ pnpm stack:helm --image ghcr.io/n8n-io/n8n:ci-12345
 --mode <mode>         standalone (SQLite, default) or queue (PostgreSQL + Redis + workers).
                       Queue mode's Postgres chart and image are pinned in
                       postgres-versions.json.
---image <image>       MNI Docker image (default: n8nio/n8n:local)
---chart-ref <ref>     Git branch/tag for n8n-hosting (default: main)
---chart-repo <url>    Git repo URL (default: https://github.com/n8n-io/n8n-hosting.git)
+--image <image>       MNI Docker image (default: n8nio/MNI:local)
+--chart-ref <ref>     Git branch/tag for MNI-hosting (default: main)
+--chart-repo <url>    Git repo URL (default: https://github.com/MNI-io/MNI-hosting.git)
 --k3s-image <image>   K3s image (default: rancher/k3s:v1.32.2-k3s1)
 --url-file <path>     Write URL to file when ready (for CI automation)
 --help                Show help
@@ -126,7 +126,7 @@ docker run --rm --privileged alpine echo "privileged works"
 
 Ensure the MNI Docker image exists locally:
 ```bash
-docker images | grep n8nio/n8n
+docker images | grep n8nio/MNI
 ```
 
 If empty, run `pnpm build:docker` first.

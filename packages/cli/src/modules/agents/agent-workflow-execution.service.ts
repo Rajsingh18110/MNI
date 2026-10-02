@@ -4,18 +4,18 @@ import type {
 	BuiltTool,
 	CredentialProvider,
 	StreamChunk,
-} from '@n8n/agents';
-import type { AgentJsonConfig, AgentSkill } from '@n8n/api-types';
+} from '@MNI/agents';
+import type { AgentJsonConfig, AgentSkill } from '@MNI/api-types';
 import {
 	AGENT_WORKFLOW_TRIGGER_TYPE,
 	formatAgentConfigZodError,
 	RunnableInlineAgentConfigSchema,
 	sanitizeAgentJsonConfig,
 	sanitizeAgentSkillBodies,
-} from '@n8n/api-types';
-import { Logger } from '@n8n/backend-common';
-import { AiConfig } from '@n8n/config';
-import { Service } from '@n8n/di';
+} from '@MNI/api-types';
+import { Logger } from '@MNI/backend-common';
+import { AiConfig } from '@MNI/config';
+import { Service } from '@MNI/di';
 import { context } from '@opentelemetry/api';
 import type { JSONSchema7 } from 'json-schema';
 import {
@@ -24,7 +24,7 @@ import {
 	type ExecuteAgentWorkflowContext,
 	type InlineAgentPayload,
 	UserError,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { CredentialsService } from '@/credentials/credentials.service';
 import type { AgentRunTelemetryType } from '@/interfaces';

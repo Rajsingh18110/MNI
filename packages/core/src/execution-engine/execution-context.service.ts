@@ -1,5 +1,5 @@
-import { Logger } from '@n8n/backend-common';
-import { Service } from '@n8n/di';
+import { Logger } from '@MNI/backend-common';
+import { Service } from '@MNI/di';
 import {
 	ICredentialContext,
 	IExecuteData,
@@ -13,7 +13,7 @@ import {
 	toExecutionContextEstablishmentHookParameter,
 	toSecureArtifacts,
 	Workflow,
-} from 'n8n-workflow';
+} from 'MNI-workflow';
 
 import { Cipher } from '@/encryption';
 import { deepMerge } from '@/utils/deep-merge';
@@ -49,7 +49,7 @@ export class ExecutionContextService {
 	/**
 	 * Builds and encrypts a credential context for a manual editor-triggered execution.
 	 *
-	 * @param n8nAuthCookie - The JWT string extracted from the `n8n-auth` browser cookie.
+	 * @param n8nAuthCookie - The JWT string extracted from the `MNI-auth` browser cookie.
 	 * @returns Encrypted credential context string for storage in `IExecutionContext.credentials`.
 	 */
 	async buildManualExecutionCredentials(n8nAuthCookie: string): Promise<string> {
@@ -71,7 +71,7 @@ export class ExecutionContextService {
 	 * running execution no longer has a request to check against. The single definition
 	 * of that shape lives here, so it cannot drift from what the resolver validates.
 	 *
-	 * @param n8nAuthCookie - The JWT string extracted from the `n8n-auth` browser cookie.
+	 * @param n8nAuthCookie - The JWT string extracted from the `MNI-auth` browser cookie.
 	 * @param request - Method, endpoint and browser id of the originating request.
 	 */
 	buildRequestBoundCredentialContext(
@@ -114,7 +114,7 @@ export class ExecutionContextService {
 			if (decryptedContext.credentials.metadata) {
 				const metadata = N8NOAuthMetadataSchema.safeParse(decryptedContext.credentials.metadata);
 				// Only sealed carriers (a resolved subject) need execution binding; a
-				// non-sealed n8n-oauth carrier has nothing that reads its executionPath.
+				// non-sealed MNI-oauth carrier has nothing that reads its executionPath.
 				if (metadata.success && metadata.data.subject) {
 					const executionPath = metadata.data.executionPath ?? [];
 					// Seed an empty path at mint, or extend it only for a legitimate re-run of
@@ -148,7 +148,7 @@ export class ExecutionContextService {
 		subject?: string,
 	): Promise<string> {
 		const metadata: IN8NOAuthMetadata = {
-			source: 'n8n-oauth',
+			source: 'MNI-oauth',
 			resource,
 			establishedAt: Date.now(),
 			executionPath: [],

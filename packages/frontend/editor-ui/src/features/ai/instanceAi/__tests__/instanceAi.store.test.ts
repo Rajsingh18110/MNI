@@ -13,11 +13,11 @@ import {
 	UNLIMITED_CREDITS,
 	type InstanceAiThreadHistoryResponse,
 	type InstanceAiThreadSummary,
-} from '@n8n/api-types';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
-import { TELEMETRY_EVENT } from '@n8n/telemetry';
+} from '@MNI/api-types';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
+import { TELEMETRY_EVENT } from '@MNI/telemetry';
 
-vi.mock('@n8n/stores/useRootStore', () => ({
+vi.mock('@MNI/stores/useRootStore', () => ({
 	useRootStore: vi.fn().mockReturnValue({
 		restApiContext: { baseUrl: 'http://localhost:5678/api' },
 		instanceId: 'instance-1',
@@ -28,13 +28,13 @@ vi.mock('@/app/stores/pushConnection.store', () => ({
 	usePushConnectionStore: vi.fn(() => ({ addEventListener: vi.fn(() => () => {}) })),
 }));
 
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: vi.fn().mockReturnValue({
 		showError: vi.fn(),
 	}),
 }));
 
-vi.mock('@n8n/composables/useTelemetry', () => ({
+vi.mock('@MNI/composables/useTelemetry', () => ({
 	useTelemetry: vi.fn().mockReturnValue({
 		track: vi.fn(),
 	}),

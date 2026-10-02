@@ -1,6 +1,6 @@
 /**
  * Parse pnpm-lock.yaml's `importers` section into the
- * `@n8n/test-impact` dep-graph selector's input: each workspace package dir
+ * `@MNI/test-impact` dep-graph selector's input: each workspace package dir
  * mapped to the *runtime* dependency names it declares.
  *
  * devDependencies are excluded — a devDep can't reach the runtime bundle, so it
@@ -13,7 +13,7 @@ import {
 	runtimeClosure,
 	type LockfileImporters,
 	type LockfileSnapshots,
-} from '@n8n/test-impact';
+} from '@MNI/test-impact';
 import { existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { parseAllDocuments } from 'yaml';

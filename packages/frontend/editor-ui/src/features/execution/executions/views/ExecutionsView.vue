@@ -4,11 +4,11 @@ import ProjectHeader from '@/features/collaboration/projects/components/ProjectH
 import GlobalExecutionsList from '../components/global/GlobalExecutionsList.vue';
 import { useDocumentTitle } from '@/app/composables/useDocumentTitle';
 import { useExternalHooks } from '@/app/composables/useExternalHooks';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 import { useProjectPages } from '@/features/collaboration/projects/composables/useProjectPages';
-import { useTelemetry } from '@n8n/composables/useTelemetry';
-import { useToast } from '@n8n/composables/useToast';
-import { InsightsSummary, useInsightsStore } from '@n8n/frontend-module-insights';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
+import { useToast } from '@MNI/composables/useToast';
+import { InsightsSummary, useInsightsStore } from '@MNI/frontend-module-insights';
 import { useExecutionsStore } from '../executions.store';
 import { useWorkflowsListStore } from '@/app/stores/workflowsList.store';
 import { storeToRefs } from 'pinia';

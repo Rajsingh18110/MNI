@@ -1,10 +1,10 @@
-import type { ICredentialsDb } from '@n8n/db';
-import { CredentialsRepository } from '@n8n/db';
-import { Command } from '@n8n/decorators';
-import { Container } from '@n8n/di';
+import type { ICredentialsDb } from '@MNI/db';
+import { CredentialsRepository } from '@MNI/db';
+import { Command } from '@MNI/decorators';
+import { Container } from '@MNI/di';
 import fs from 'fs';
-import { Credentials } from 'n8n-core';
-import { UserError } from 'n8n-workflow';
+import { Credentials } from 'MNI-core';
+import { UserError } from 'MNI-workflow';
 import path from 'path';
 import z from 'zod';
 

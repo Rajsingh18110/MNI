@@ -1,4 +1,4 @@
-import type { IDataObject, INodeExecutionData, IPinData } from 'n8n-workflow';
+import type { IDataObject, INodeExecutionData, IPinData } from 'MNI-workflow';
 
 export type PinScenario = 'none' | 'small-spread' | 'medium-cluster' | 'heavy-concentrated';
 

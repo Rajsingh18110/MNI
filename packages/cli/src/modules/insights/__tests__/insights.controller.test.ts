@@ -1,7 +1,7 @@
-import { LicenseState } from '@n8n/backend-common';
-import { mockInstance, testDb } from '@n8n/backend-test-utils';
-import type { AuthenticatedRequest } from '@n8n/db';
-import { Container } from '@n8n/di';
+import { LicenseState } from '@MNI/backend-common';
+import { mockInstance, testDb } from '@MNI/backend-test-utils';
+import type { AuthenticatedRequest } from '@MNI/db';
+import { Container } from '@MNI/di';
 import { DateTime } from 'luxon';
 import { mock } from 'vitest-mock-extended';
 

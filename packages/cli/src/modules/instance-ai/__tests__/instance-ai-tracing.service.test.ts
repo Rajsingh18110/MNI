@@ -1,15 +1,15 @@
 import type { Mock } from 'vitest';
-import type { InstanceAiEvent } from '@n8n/api-types';
-import type { Logger } from '@n8n/backend-common';
-import type { User } from '@n8n/db';
-import type { InstanceAiTraceContext } from '@n8n/instance-ai';
+import type { InstanceAiEvent } from '@MNI/api-types';
+import type { Logger } from '@MNI/backend-common';
+import type { User } from '@MNI/db';
+import type { InstanceAiTraceContext } from '@MNI/instance-ai';
 import { mock } from 'vitest-mock-extended';
 
 const continueInstanceAiTraceContext = vi.fn();
 const releaseTraceClient = vi.fn();
 const submitLangsmithUserFeedback = vi.fn();
 
-vi.mock('@n8n/instance-ai', () => ({
+vi.mock('@MNI/instance-ai', () => ({
 	continueInstanceAiTraceContext: (...args: unknown[]) => continueInstanceAiTraceContext(...args),
 	orchestratorAgentId: (runId: string) => `orchestrator:${runId}`,
 	releaseTraceClient: (...args: unknown[]) => releaseTraceClient(...args),

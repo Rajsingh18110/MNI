@@ -1,16 +1,16 @@
-import { EndpointsConfig, PrometheusMetricsConfig } from '@n8n/config';
-import { Service } from '@n8n/di';
+import { EndpointsConfig, PrometheusMetricsConfig } from '@MNI/config';
+import { Service } from '@MNI/di';
 import type express from 'express';
 import promBundle from 'express-prom-bundle';
 import { DateTime } from 'luxon';
-import { assert } from 'n8n-workflow';
+import { assert } from 'MNI-workflow';
 import promClient, { Gauge } from 'prom-client';
 
 import type { PrometheusMetricsCollector } from './base';
 
 /**
  * Instruments Express routes with `express-prom-bundle` for HTTP request duration metrics,
- * and tracks last backend activity time via `n8n_last_activity` gauge.
+ * and tracks last backend activity time via `MNI_last_activity` gauge.
  */
 @Service()
 export class PrometheusRouteMetricsService implements PrometheusMetricsCollector {

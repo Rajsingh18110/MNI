@@ -1,15 +1,15 @@
 import type { Mocked } from 'vitest';
-import type { Logger } from '@n8n/backend-common';
+import type { Logger } from '@MNI/backend-common';
 import type {
 	CustomFetch,
 	HttpTransport,
 	SsrfBridge,
 	SsrfProtectionService,
-} from '@n8n/backend-network';
-import { OutboundHttp } from '@n8n/backend-network';
-import type { SsrfProtectionConfig } from '@n8n/config';
+} from '@MNI/backend-network';
+import { OutboundHttp } from '@MNI/backend-network';
+import type { SsrfProtectionConfig } from '@MNI/config';
 import { mock } from 'vitest-mock-extended';
-import { createResultError, createResultOk } from '@n8n/utils/result';
+import { createResultError, createResultOk } from '@MNI/utils/result';
 import dns from 'node:dns';
 import { createServer, type IncomingMessage, type ServerResponse } from 'node:http';
 import type { AddressInfo, LookupFunction } from 'node:net';

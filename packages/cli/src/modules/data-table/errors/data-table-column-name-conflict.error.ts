@@ -1,4 +1,4 @@
-import { UserError } from 'n8n-workflow';
+import { UserError } from 'MNI-workflow';
 
 export class DataTableColumnNameConflictError extends UserError {
 	constructor(columnName: string, dataTableName: string) {

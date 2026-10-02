@@ -157,12 +157,12 @@ describe('classifyTriggerIdentity', () => {
 	describe('Webhook node', () => {
 		it('provides both identities when authentication is n8nOAuth2', () => {
 			expect(
-				classifyTriggerIdentity('n8n-nodes-base.webhook', { authentication: 'n8nOAuth2' }),
+				classifyTriggerIdentity('MNI-nodes-base.webhook', { authentication: 'n8nOAuth2' }),
 			).toEqual({ providesN8nIdentity: true, providesExternalIdentity: true });
 		});
 
 		it('provides no identity for other authentication modes', () => {
-			expect(classifyTriggerIdentity('n8n-nodes-base.webhook', { authentication: 'none' })).toEqual(
+			expect(classifyTriggerIdentity('MNI-nodes-base.webhook', { authentication: 'none' })).toEqual(
 				{ providesN8nIdentity: false, providesExternalIdentity: false },
 			);
 		});
@@ -170,7 +170,7 @@ describe('classifyTriggerIdentity', () => {
 
 	describe('other triggers', () => {
 		it('provides the external identity only when a context establishment hook is configured', () => {
-			expect(classifyTriggerIdentity('n8n-nodes-base.webhook', hooksParameters)).toEqual({
+			expect(classifyTriggerIdentity('MNI-nodes-base.webhook', hooksParameters)).toEqual({
 				providesN8nIdentity: false,
 				providesExternalIdentity: true,
 			});
@@ -180,21 +180,21 @@ describe('classifyTriggerIdentity', () => {
 			// `executionsHooksVersion` is a hidden default and is not serialized into
 			// saved workflows, so the hooks must still be recognized without it.
 			const { executionsHooksVersion, ...withoutVersion } = hooksParameters;
-			expect(classifyTriggerIdentity('n8n-nodes-base.webhook', withoutVersion)).toEqual({
+			expect(classifyTriggerIdentity('MNI-nodes-base.webhook', withoutVersion)).toEqual({
 				providesN8nIdentity: false,
 				providesExternalIdentity: true,
 			});
 		});
 
 		it('provides no identity without hooks', () => {
-			expect(classifyTriggerIdentity('n8n-nodes-base.scheduleTrigger', {})).toEqual({
+			expect(classifyTriggerIdentity('MNI-nodes-base.scheduleTrigger', {})).toEqual({
 				providesN8nIdentity: false,
 				providesExternalIdentity: false,
 			});
 		});
 
 		it('provides no identity when parameters are undefined', () => {
-			expect(classifyTriggerIdentity('n8n-nodes-base.webhook', undefined)).toEqual({
+			expect(classifyTriggerIdentity('MNI-nodes-base.webhook', undefined)).toEqual({
 				providesN8nIdentity: false,
 				providesExternalIdentity: false,
 			});

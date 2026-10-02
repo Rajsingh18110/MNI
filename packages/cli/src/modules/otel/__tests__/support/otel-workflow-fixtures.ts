@@ -1,4 +1,4 @@
-import { NodeConnectionTypes } from 'n8n-workflow';
+import { NodeConnectionTypes } from 'MNI-workflow';
 import { v4 as uuid } from 'uuid';
 
 export function createMultiNodeWorkflowFixture() {
@@ -6,7 +6,7 @@ export function createMultiNodeWorkflowFixture() {
 		nodes: [
 			{
 				parameters: {},
-				type: 'n8n-nodes-base.manualTrigger',
+				type: 'MNI-nodes-base.manualTrigger',
 				typeVersion: 1,
 				position: [0, 0] as [number, number],
 				id: uuid(),
@@ -14,7 +14,7 @@ export function createMultiNodeWorkflowFixture() {
 			},
 			{
 				parameters: { category: 'doNothing' },
-				type: 'n8n-nodes-base.debugHelper',
+				type: 'MNI-nodes-base.debugHelper',
 				typeVersion: 1,
 				position: [200, 0] as [number, number],
 				id: uuid(),
@@ -44,7 +44,7 @@ export function createWaitWorkflowFixture() {
 		nodes: [
 			{
 				parameters: {},
-				type: 'n8n-nodes-base.manualTrigger',
+				type: 'MNI-nodes-base.manualTrigger',
 				typeVersion: 1,
 				position: [0, 0] as [number, number],
 				id: uuid(),
@@ -52,7 +52,7 @@ export function createWaitWorkflowFixture() {
 			},
 			{
 				parameters: { resume: 'timeInterval', amount: 10, unit: 'minutes' },
-				type: 'n8n-nodes-base.wait',
+				type: 'MNI-nodes-base.wait',
 				typeVersion: 1.1,
 				position: [200, 0] as [number, number],
 				id: uuid(),
@@ -60,7 +60,7 @@ export function createWaitWorkflowFixture() {
 			},
 			{
 				parameters: { category: 'doNothing' },
-				type: 'n8n-nodes-base.debugHelper',
+				type: 'MNI-nodes-base.debugHelper',
 				typeVersion: 1,
 				position: [400, 0] as [number, number],
 				id: uuid(),
@@ -84,7 +84,7 @@ export function createFailingWorkflowFixture() {
 		nodes: [
 			{
 				parameters: {},
-				type: 'n8n-nodes-base.manualTrigger',
+				type: 'MNI-nodes-base.manualTrigger',
 				typeVersion: 1,
 				position: [0, 0] as [number, number],
 				id: uuid(),
@@ -95,7 +95,7 @@ export function createFailingWorkflowFixture() {
 					throwErrorType: 'Error',
 					throwErrorMessage: 'Test error',
 				},
-				type: 'n8n-nodes-base.debugHelper',
+				type: 'MNI-nodes-base.debugHelper',
 				typeVersion: 1,
 				position: [208, 0] as [number, number],
 				id: uuid(),
@@ -124,7 +124,7 @@ export function createTracingMetadataWorkflowFixture() {
 		nodes: [
 			{
 				parameters: {},
-				type: 'n8n-nodes-base.manualTrigger',
+				type: 'MNI-nodes-base.manualTrigger',
 				typeVersion: 1,
 				position: [0, 0] as [number, number],
 				id: uuid(),
@@ -132,7 +132,7 @@ export function createTracingMetadataWorkflowFixture() {
 			},
 			{
 				parameters: {},
-				type: 'n8n-nodes-base.tracingTestNode',
+				type: 'MNI-nodes-base.tracingTestNode',
 				typeVersion: 1,
 				position: [200, 0] as [number, number],
 				id: uuid(),
@@ -161,7 +161,7 @@ export function createSubWorkflowTriggerFixture() {
 		nodes: [
 			{
 				parameters: {},
-				type: 'n8n-nodes-base.executeWorkflowTrigger',
+				type: 'MNI-nodes-base.executeWorkflowTrigger',
 				typeVersion: 1,
 				position: [0, 0] as [number, number],
 				id: uuid(),
@@ -178,7 +178,7 @@ export function createParentWithSubWorkflowFixture(childWorkflowId: string) {
 		nodes: [
 			{
 				parameters: {},
-				type: 'n8n-nodes-base.manualTrigger',
+				type: 'MNI-nodes-base.manualTrigger',
 				typeVersion: 1,
 				position: [0, 0] as [number, number],
 				id: uuid(),
@@ -189,7 +189,7 @@ export function createParentWithSubWorkflowFixture(childWorkflowId: string) {
 					source: 'database',
 					workflowId: childWorkflowId,
 				},
-				type: 'n8n-nodes-base.executeWorkflow',
+				type: 'MNI-nodes-base.executeWorkflow',
 				typeVersion: 1,
 				position: [200, 0] as [number, number],
 				id: uuid(),
@@ -218,7 +218,7 @@ export function createSimpleWorkflowFixture() {
 		nodes: [
 			{
 				parameters: {},
-				type: 'n8n-nodes-base.manualTrigger',
+				type: 'MNI-nodes-base.manualTrigger',
 				typeVersion: 1,
 				position: [0, 0] as [number, number],
 				id: uuid(),

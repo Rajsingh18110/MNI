@@ -13,11 +13,11 @@ import type {
 	PromotionDirection,
 	PromotionPromoteConfigPublicDto,
 	UpdatePromotionConnectionDto,
-} from '@n8n/api-types';
-import { promotionConnectionTargetSchema } from '@n8n/api-types';
-import { Logger } from '@n8n/backend-common';
-import { ProjectRepository, TransactionRunner, type OperationContext, type User } from '@n8n/db';
-import { Service } from '@n8n/di';
+} from '@MNI/api-types';
+import { promotionConnectionTargetSchema } from '@MNI/api-types';
+import { Logger } from '@MNI/backend-common';
+import { ProjectRepository, TransactionRunner, type OperationContext, type User } from '@MNI/db';
+import { Service } from '@MNI/di';
 
 import { BadRequestError } from '@/errors/response-errors/bad-request.error';
 import { ConflictError } from '@/errors/response-errors/conflict.error';

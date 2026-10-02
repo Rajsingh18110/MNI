@@ -1,7 +1,7 @@
-import type { SourceControlledFile } from '@n8n/api-types';
-import { createTeamProject, mockInstance } from '@n8n/backend-test-utils';
-import { GLOBAL_ADMIN_ROLE, GLOBAL_MEMBER_ROLE, GLOBAL_OWNER_ROLE, type User } from '@n8n/db';
-import { Container } from '@n8n/di';
+import type { SourceControlledFile } from '@MNI/api-types';
+import { createTeamProject, mockInstance } from '@MNI/backend-test-utils';
+import { GLOBAL_ADMIN_ROLE, GLOBAL_MEMBER_ROLE, GLOBAL_OWNER_ROLE, type User } from '@MNI/db';
+import { Container } from '@MNI/di';
 
 import { SourceControlPreferencesService } from '@/modules/source-control.ee/source-control-preferences.service.ee';
 import { SourceControlStatusService } from '@/modules/source-control.ee/source-control-status.service.ee';
@@ -49,7 +49,7 @@ describe('Source Control API', () => {
 		sourceControlPreferencesService = Container.get(SourceControlPreferencesService);
 		await sourceControlPreferencesService.setPreferences({
 			connected: true,
-			repositoryUrl: 'git@github.com:n8n-io/source-control-test.git',
+			repositoryUrl: 'git@github.com:MNI-io/source-control-test.git',
 			branchName: 'main',
 			branchColor: '#ff6d5a',
 			branchReadOnly: false,
@@ -70,7 +70,7 @@ describe('Source Control API', () => {
 			const data = res.body.data ?? res.body;
 
 			expect(data).toMatchObject({
-				repositoryUrl: 'git@github.com:n8n-io/source-control-test.git',
+				repositoryUrl: 'git@github.com:MNI-io/source-control-test.git',
 				branchName: 'main',
 				branchColor: '#ff6d5a',
 				branchReadOnly: false,
@@ -105,7 +105,7 @@ describe('Source Control API', () => {
 		test('should reject members', async () => {
 			await authMemberAgent
 				.post('/source-control/preferences')
-				.send({ repositoryUrl: 'git@github.com:n8n-io/test.git' })
+				.send({ repositoryUrl: 'git@github.com:MNI-io/test.git' })
 				.expect(403);
 		});
 	});
@@ -178,7 +178,7 @@ describe('Source Control API', () => {
 					status: 'modified',
 					location: 'local',
 					conflict: false,
-					file: '/Users/michael/.n8n/git/workflows/workflow-1.json',
+					file: '/Users/michael/.MNI/git/workflows/workflow-1.json',
 					updatedAt: '2023-07-14T11:24:41.000Z',
 				},
 			];
@@ -207,7 +207,7 @@ describe('Source Control API', () => {
 					status: 'modified',
 					location: 'local',
 					conflict: true,
-					file: '/Users/michael/.n8n/git/workflows/haQetoXq9GxHSkft.json',
+					file: '/Users/michael/.MNI/git/workflows/haQetoXq9GxHSkft.json',
 					updatedAt: '2023-07-14T11:24:41.000Z',
 				},
 			] as SourceControlledFile[]);
@@ -254,7 +254,7 @@ describe('Source Control API', () => {
 						status: 'modified',
 						location: 'local',
 						conflict: false,
-						file: '/Users/michael/.n8n/git/workflows/workflow-1.json',
+						file: '/Users/michael/.MNI/git/workflows/workflow-1.json',
 						updatedAt: '2023-07-14T11:24:41.000Z',
 					},
 				];

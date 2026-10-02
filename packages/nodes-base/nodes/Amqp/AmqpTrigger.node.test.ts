@@ -1,7 +1,7 @@
 import { testTriggerNode } from '@test/nodes/TriggerHelpers';
 import { mockDeep } from 'vitest-mock-extended';
-import { NodeOperationError } from 'n8n-workflow';
-import type { IDataObject, IRun, ITriggerFunctions } from 'n8n-workflow';
+import { NodeOperationError } from 'MNI-workflow';
+import type { IDataObject, IRun, ITriggerFunctions } from 'MNI-workflow';
 
 import { AmqpTrigger } from './AmqpTrigger.node';
 

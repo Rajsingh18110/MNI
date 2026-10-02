@@ -1,14 +1,14 @@
-import type { AgentTaskDto, CreateAgentTaskDto, UpdateAgentTaskDto } from '@n8n/api-types';
-import { isValidTimeZone } from '@n8n/api-types';
-import { Logger } from '@n8n/backend-common';
-import { GlobalConfig } from '@n8n/config';
-import type { User } from '@n8n/db';
-import { OnLeaderStepdown, OnLeaderTakeover, OnPubSubEvent, OnShutdown } from '@n8n/decorators';
-import { Service } from '@n8n/di';
-import { IsNull, Not } from '@n8n/typeorm';
+import type { AgentTaskDto, CreateAgentTaskDto, UpdateAgentTaskDto } from '@MNI/api-types';
+import { isValidTimeZone } from '@MNI/api-types';
+import { Logger } from '@MNI/backend-common';
+import { GlobalConfig } from '@MNI/config';
+import type { User } from '@MNI/db';
+import { OnLeaderStepdown, OnLeaderTakeover, OnPubSubEvent, OnShutdown } from '@MNI/decorators';
+import { Service } from '@MNI/di';
+import { IsNull, Not } from '@MNI/typeorm';
 import { randomUUID } from 'crypto';
 import { DateTime } from 'luxon';
-import { InstanceSettings, ScheduledTaskManager, type ScheduledTaskGroup } from 'n8n-core';
+import { InstanceSettings, ScheduledTaskManager, type ScheduledTaskGroup } from 'MNI-core';
 
 import { BadRequestError } from '@/errors/response-errors/bad-request.error';
 import { NotFoundError } from '@/errors/response-errors/not-found.error';

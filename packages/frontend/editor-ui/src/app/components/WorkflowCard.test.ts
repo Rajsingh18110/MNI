@@ -6,18 +6,18 @@ import { type MockedStore, mockedStore } from '@/__tests__/utils';
 import { MODAL_CONFIRM, VIEWS } from '@/app/constants';
 import WorkflowCard from '@/app/components/WorkflowCard.vue';
 import type { WorkflowResource } from '@/Interface';
-import type { IUser } from '@n8n/rest-api-client/api/users';
-import type { FrontendSettings } from '@n8n/api-types';
+import type { IUser } from '@MNI/rest-api-client/api/users';
+import type { FrontendSettings } from '@MNI/api-types';
 import * as vueRouter from 'vue-router';
 import { useProjectsStore } from '@/features/collaboration/projects/projects.store';
 import type { ProjectListItem } from '@/features/collaboration/projects/projects.types';
 import { useMessage } from '@/app/composables/useMessage';
-import { useToast } from '@n8n/composables/useToast';
+import { useToast } from '@MNI/composables/useToast';
 import { useWorkflowsStore } from '@/app/stores/workflows.store';
 import { useWorkflowsListStore } from '@/app/stores/workflowsList.store';
 import { createTestingPinia } from '@pinia/testing';
-import { useSettingsStore } from '@n8n/stores/settings.store';
-import { useUsersStore } from '@n8n/stores/users.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
+import { useUsersStore } from '@MNI/stores/users.store';
 import { useMCPStore } from '@/features/ai/mcpAccess/mcp.store';
 import { useUIStore } from '@/app/stores/ui.store';
 import { SURFACE_MCP_ONBOARDING_MODAL_KEY } from '@/experiments/surfaceMcpToNewCloudUsers/constants';
@@ -41,7 +41,7 @@ vi.mock('vue-router', () => {
 	};
 });
 
-vi.mock('@n8n/composables/useToast', () => {
+vi.mock('@MNI/composables/useToast', () => {
 	const showError = vi.fn();
 	const showMessage = vi.fn();
 	const showToast = vi.fn();
@@ -72,7 +72,7 @@ vi.mock('@/app/composables/useWorkflowActivate', () => {
 	};
 });
 
-vi.mock('@n8n/utils/event-bus', () => ({
+vi.mock('@MNI/utils/event-bus', () => ({
 	createEventBus: () => ({
 		once: vi.fn((event, callback) => {
 			// Auto-trigger the callback for testing
@@ -128,7 +128,7 @@ describe('WorkflowCard', () => {
 
 		settingsStore.settings = {
 			envFeatureFlags: {
-				N8N_ENV_FEAT_DYNAMIC_CREDENTIALS: true,
+				MNI_ENV_FEAT_DYNAMIC_CREDENTIALS: true,
 			},
 			activeModules: ['dynamic-credentials'],
 		} as unknown as FrontendSettings;

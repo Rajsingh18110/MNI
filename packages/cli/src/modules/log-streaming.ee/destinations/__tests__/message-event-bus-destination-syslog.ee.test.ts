@@ -1,5 +1,5 @@
-import { MessageEventBusDestinationTypeNames } from 'n8n-workflow';
-import type { MessageEventBusDestinationSyslogOptions } from 'n8n-workflow';
+import { MessageEventBusDestinationTypeNames } from 'MNI-workflow';
+import type { MessageEventBusDestinationSyslogOptions } from 'MNI-workflow';
 
 import {
 	MessageEventBusDestinationSyslog,

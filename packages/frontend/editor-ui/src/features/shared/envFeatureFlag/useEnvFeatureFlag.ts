@@ -1,12 +1,12 @@
 import { computed } from 'vue';
-import type { N8nEnvFeatFlags } from '@n8n/api-types';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import type { N8nEnvFeatFlags } from '@MNI/api-types';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 
 export const useEnvFeatureFlag = () => {
 	const settingsStore = useSettingsStore();
 
 	const check = computed(() => (flag: Uppercase<string>): boolean => {
-		const key = `N8N_ENV_FEAT_${flag}` as const;
+		const key = `MNI_ENV_FEAT_${flag}` as const;
 
 		// Settings provided by the backend take precedence over build-time or runtime flags
 		const settingsProvidedEnvFeatFlag = settingsStore.settings.envFeatureFlags?.[key];

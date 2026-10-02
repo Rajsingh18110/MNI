@@ -1,6 +1,6 @@
-import { useTelemetry } from '@n8n/composables/useTelemetry';
-import { TELEMETRY_EVENT } from '@n8n/telemetry';
-import { getMcpClientBrand, getMcpClientType } from '@n8n/api-types';
+import { useTelemetry } from '@MNI/composables/useTelemetry';
+import { TELEMETRY_EVENT } from '@MNI/telemetry';
+import { getMcpClientBrand, getMcpClientType } from '@MNI/api-types';
 
 export function useMcp() {
 	const telemetry = useTelemetry();

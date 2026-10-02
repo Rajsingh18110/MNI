@@ -14,11 +14,11 @@ import {
 describe('parseTargets', () => {
 	it('builds a target per image when both ref and digest are present', () => {
 		const targets = parseTargets({
-			N8N_IMAGE: 'ghcr.io/n8n-io/n8n',
-			N8N_DIGEST: 'sha256:aaa',
-			RUNNERS_IMAGE: 'ghcr.io/n8n-io/runners',
+			MNI_IMAGE: 'ghcr.io/MNI-io/MNI',
+			MNI_DIGEST: 'sha256:aaa',
+			RUNNERS_IMAGE: 'ghcr.io/MNI-io/runners',
 			RUNNERS_DIGEST: 'sha256:bbb',
-			DISTROLESS_IMAGE: 'ghcr.io/n8n-io/runners',
+			DISTROLESS_IMAGE: 'ghcr.io/MNI-io/runners',
 			DISTROLESS_DIGEST: 'sha256:ccc',
 		});
 		assert.deepEqual(
@@ -29,9 +29,9 @@ describe('parseTargets', () => {
 
 	it('skips an image with no digest (not built for this release type)', () => {
 		const targets = parseTargets({
-			N8N_IMAGE: 'ghcr.io/n8n-io/n8n',
-			N8N_DIGEST: 'sha256:aaa',
-			RUNNERS_IMAGE: 'ghcr.io/n8n-io/runners',
+			MNI_IMAGE: 'ghcr.io/MNI-io/MNI',
+			MNI_DIGEST: 'sha256:aaa',
+			RUNNERS_IMAGE: 'ghcr.io/MNI-io/runners',
 			RUNNERS_DIGEST: '',
 		});
 		assert.deepEqual(
@@ -91,8 +91,8 @@ describe('assertSbomIsUsable', () => {
 
 describe('processTarget', () => {
 	const target = {
-		label: 'n8n-pc',
-		image: 'ghcr.io/n8n-io/n8n',
+		label: 'MNI-pc',
+		image: 'ghcr.io/MNI-io/MNI',
 		digest: 'sha256:aaa',
 	};
 
@@ -103,7 +103,7 @@ describe('processTarget', () => {
 			shouldAttest: false,
 			runCommand: (command, args) => calls.push([command, args]),
 			assertUsable: (_sbomPath, label) => {
-				assert.equal(label, 'n8n-pc');
+				assert.equal(label, 'MNI-pc');
 				asserted = true;
 			},
 		});
@@ -113,7 +113,7 @@ describe('processTarget', () => {
 			['docker', 'syft', 'node', 'node'],
 		);
 		assert.equal(calls[0][1][0], 'pull');
-		assert.equal(calls[1][1][0], 'docker:ghcr.io/n8n-io/n8n@sha256:aaa');
+		assert.equal(calls[1][1][0], 'docker:ghcr.io/MNI-io/MNI@sha256:aaa');
 		assert.ok(calls[2][1].includes('--drop-phantom-npm'));
 		assert.ok(calls[3][1].includes('--enforce-prefix=pkg:npm/'));
 		assert.equal(asserted, true);
@@ -143,16 +143,16 @@ describe('processTargets', () => {
 		const attempted = [];
 		assert.throws(
 			() =>
-				processTargets([{ label: 'MNI' }, { label: 'n8n-pc' }, { label: 'runners' }], {
+				processTargets([{ label: 'MNI' }, { label: 'MNI-pc' }, { label: 'runners' }], {
 					shouldAttest: false,
 					processTarget: (target) => {
 						attempted.push(target.label);
-						if (target.label !== 'n8n-pc') throw new Error('missing license');
+						if (target.label !== 'MNI-pc') throw new Error('missing license');
 					},
 				}),
 			/2 of 3 image\(s\) failed/,
 		);
-		assert.deepEqual(attempted, ['MNI', 'n8n-pc', 'runners']);
+		assert.deepEqual(attempted, ['MNI', 'MNI-pc', 'runners']);
 	});
 });
 
@@ -161,8 +161,8 @@ describe('main', () => {
 		let received;
 		main({
 			env: {
-				N8N_IMAGE: 'ghcr.io/n8n-io/n8n',
-				N8N_DIGEST: 'sha256:aaa',
+				MNI_IMAGE: 'ghcr.io/MNI-io/MNI',
+				MNI_DIGEST: 'sha256:aaa',
 			},
 			args: ['--validate-only'],
 			processAll: (targets, options) => {

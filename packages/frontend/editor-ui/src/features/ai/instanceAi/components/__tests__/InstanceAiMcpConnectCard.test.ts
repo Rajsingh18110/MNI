@@ -8,7 +8,7 @@ import { INSTANCE_AI_TOOLS_CONNECTION_MODAL_KEY } from '../../constants';
 import type { ToolConnectionCredentialAdapter } from '@/features/shared/toolsConnection/types';
 import InstanceAiMcpConnectCard from '../InstanceAiMcpConnectCard.vue';
 
-vi.mock('@n8n/i18n', async (importOriginal) => ({
+vi.mock('@MNI/i18n', async (importOriginal) => ({
 	...(await importOriginal()),
 	useI18n: () => ({ baseText: (key: string) => key }),
 }));

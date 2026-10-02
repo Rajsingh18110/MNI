@@ -1,8 +1,8 @@
-import { createTeamProject, linkUserToProject, testDb } from '@n8n/backend-test-utils';
-import { UNLIMITED_LICENSE_QUOTA } from '@n8n/constants';
-import { VariablesRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
-import type { AssignableProjectRole } from '@n8n/permissions';
+import { createTeamProject, linkUserToProject, testDb } from '@MNI/backend-test-utils';
+import { UNLIMITED_LICENSE_QUOTA } from '@MNI/constants';
+import { VariablesRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
+import type { AssignableProjectRole } from '@MNI/permissions';
 import type { Mock } from 'vitest';
 import { mock } from 'vitest-mock-extended';
 

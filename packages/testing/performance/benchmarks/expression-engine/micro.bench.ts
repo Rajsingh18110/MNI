@@ -8,10 +8,10 @@
  *
  * These use ExpressionEvaluator and IsolatedVmBridge directly.
  *
- * Run: pnpm --filter=@n8n/performance bench
+ * Run: pnpm --filter=@MNI/performance bench
  */
-import { ExpressionEvaluator, IsolatedVmBridge } from '@n8n/expression-runtime';
-import { expressionSandboxHooks } from 'n8n-workflow/expression-sandboxing';
+import { ExpressionEvaluator, IsolatedVmBridge } from '@MNI/expression-runtime';
+import { expressionSandboxHooks } from 'MNI-workflow/expression-sandboxing';
 
 import { defineBench } from '../bench-options';
 

@@ -1,4 +1,4 @@
-import type { IDataObject } from 'n8n-workflow';
+import type { IDataObject } from 'MNI-workflow';
 
 /**
  * Parses a Pipedrive v1 search API response into a flat array of result objects.

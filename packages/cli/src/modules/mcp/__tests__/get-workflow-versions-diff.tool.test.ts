@@ -1,6 +1,6 @@
-import { mockInstance } from '@n8n/backend-test-utils';
-import { User } from '@n8n/db';
-import type { INode } from 'n8n-workflow';
+import { mockInstance } from '@MNI/backend-test-utils';
+import { User } from '@MNI/db';
+import type { INode } from 'MNI-workflow';
 import type { Mock } from 'vitest';
 
 import { WorkflowHistoryVersionNotFoundError } from '@/errors/workflow-history-version-not-found.error';
@@ -14,7 +14,7 @@ import { createGetWorkflowVersionsDiffTool } from '../tools/get-workflow-version
 const makeNode = (overrides: Partial<INode>): INode => ({
 	id: 'node-1',
 	name: 'HTTP Request',
-	type: 'n8n-nodes-base.httpRequest',
+	type: 'MNI-nodes-base.httpRequest',
 	typeVersion: 4.2,
 	position: [0, 0],
 	parameters: { url: 'https://example.com' },
@@ -86,7 +86,7 @@ describe('get-workflow-versions-diff MCP tool', () => {
 			const added = makeNode({
 				id: 'node-new',
 				name: 'New Node',
-				type: 'n8n-nodes-base.set',
+				type: 'MNI-nodes-base.set',
 				parameters: { mode: 'manual', assignments: { assignments: [] } },
 				credentials: { httpHeaderAuth: { id: 'cred-1', name: 'Secret' } },
 			});
@@ -110,7 +110,7 @@ describe('get-workflow-versions-diff MCP tool', () => {
 					{
 						id: 'node-new',
 						name: 'New Node',
-						type: 'n8n-nodes-base.set',
+						type: 'MNI-nodes-base.set',
 						parameters: { mode: 'manual', assignments: { assignments: [] } },
 						credentials: { httpHeaderAuth: { id: 'cred-1', name: 'Secret' } },
 					},
@@ -155,9 +155,9 @@ describe('get-workflow-versions-diff MCP tool', () => {
 		test('does not report a missing parameters key against empty parameters as a modification', async () => {
 			// Regression (ADO-5355): a node persisted without a `parameters` key is
 			// semantically identical to one persisted with `parameters: {}`.
-			const before = makeNode({ type: 'n8n-nodes-base.webhook' });
+			const before = makeNode({ type: 'MNI-nodes-base.webhook' });
 			delete (before as Partial<INode>).parameters;
-			const after = makeNode({ type: 'n8n-nodes-base.webhook', parameters: {} });
+			const after = makeNode({ type: 'MNI-nodes-base.webhook', parameters: {} });
 
 			mockVersions([before], [after]);
 
@@ -176,7 +176,7 @@ describe('get-workflow-versions-diff MCP tool', () => {
 		});
 
 		test('added nodes persisted without a parameters key carry a normalized parameters object', async () => {
-			const added = makeNode({ type: 'n8n-nodes-base.webhook' });
+			const added = makeNode({ type: 'MNI-nodes-base.webhook' });
 			delete (added as Partial<INode>).parameters;
 
 			mockVersions([], [added]);
@@ -321,7 +321,7 @@ describe('get-workflow-versions-diff MCP tool', () => {
 			});
 
 			test('empty output slots do not register as connection changes', async () => {
-				const ifNode = makeNode({ id: 'node-if', name: 'If', type: 'n8n-nodes-base.if' });
+				const ifNode = makeNode({ id: 'node-if', name: 'If', type: 'MNI-nodes-base.if' });
 				const connections = {
 					[ifNode.name]: { main: [null, [{ node: slack.name, type: 'main', index: 0 }]] },
 				};
@@ -336,7 +336,7 @@ describe('get-workflow-versions-diff MCP tool', () => {
 		});
 
 		test('distinguishes a rewire between two outputs of the same node', async () => {
-			const ifNode = makeNode({ id: 'node-if', name: 'If', type: 'n8n-nodes-base.if' });
+			const ifNode = makeNode({ id: 'node-if', name: 'If', type: 'MNI-nodes-base.if' });
 			const slack = makeNode({ id: 'node-s', name: 'Slack' });
 			const target = [{ node: slack.name, type: 'main', index: 0 }];
 

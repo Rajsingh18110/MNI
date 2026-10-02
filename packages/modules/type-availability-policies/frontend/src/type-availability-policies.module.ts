@@ -1,4 +1,4 @@
-import { defineFrontendModule } from '@n8n/frontend-module-sdk';
+import { defineFrontendModule } from '@MNI/frontend-module-sdk';
 
 import { TYPE_AVAILABILITY_POLICIES_MODULE_ID } from './type-availability-policies.constants';
 

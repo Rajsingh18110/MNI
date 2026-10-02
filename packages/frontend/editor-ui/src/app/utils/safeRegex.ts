@@ -1,4 +1,4 @@
-import type { RegexEngineAsync } from 'n8n-workflow';
+import type { RegexEngineAsync } from 'MNI-workflow';
 
 const REGEX_TIMEOUT_MS = 250;
 const REGEX_TIMEOUT_ERROR_MESSAGE = 'Regular expression execution timed out';

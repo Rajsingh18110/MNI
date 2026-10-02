@@ -1,4 +1,4 @@
-import type { IHttpRequestOptions } from 'n8n-workflow';
+import type { IHttpRequestOptions } from 'MNI-workflow';
 
 import { AwsAssumeRole } from '../AwsAssumeRole.credentials';
 import type { AwsAssumeRoleCredentialsType } from '../common/aws/types';
@@ -27,7 +27,7 @@ vi.mock('@smithy/signature-v4', () => ({
 	SignatureV4: MockSignatureV4,
 }));
 
-vi.mock('@n8n/backend-network/proxy', () => ({
+vi.mock('@MNI/backend-network/proxy', () => ({
 	resolveProxyUrl: vi.fn().mockReturnValue(undefined),
 	createHttpsProxyAgent: vi.fn(),
 }));
@@ -48,7 +48,7 @@ describe('AwsAssumeRole Credential', () => {
 		customEndpoints: false,
 		roleArn: 'arn:aws:iam::123456789012:role/MyRole',
 		externalId: 'ext-id',
-		roleSessionName: 'n8n-session',
+		roleSessionName: 'MNI-session',
 		stsAccessKeyId: 'sts-key',
 		stsSecretAccessKey: 'sts-secret',
 		useSystemCredentialsForRole: false,

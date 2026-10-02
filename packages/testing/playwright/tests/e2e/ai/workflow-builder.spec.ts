@@ -27,7 +27,7 @@ test.use({
 	capability: {
 		services: ['proxy'],
 		env: {
-			N8N_AI_ANTHROPIC_KEY: 'sk-ant-test-key-for-mocked-tests',
+			MNI_AI_ANTHROPIC_KEY: 'sk-ant-test-key-for-mocked-tests',
 		},
 	},
 });

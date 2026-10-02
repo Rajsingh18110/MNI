@@ -1,7 +1,7 @@
-import { mockLogger } from '@n8n/backend-test-utils';
-import type { GlobalConfig } from '@n8n/config';
-import { Time } from '@n8n/constants';
-import type { AuthenticatedRequest, User, UserRepository } from '@n8n/db';
+import { mockLogger } from '@MNI/backend-test-utils';
+import type { GlobalConfig } from '@MNI/config';
+import { Time } from '@MNI/constants';
+import type { AuthenticatedRequest, User, UserRepository } from '@MNI/db';
 import type { NextFunction, Response } from 'express';
 import { DateTime } from 'luxon';
 import type { Mock } from 'vitest';

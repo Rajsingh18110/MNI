@@ -1,14 +1,14 @@
-import { BaseRule } from '@n8n/rules-engine';
-import type { Violation } from '@n8n/rules-engine';
+import { BaseRule } from '@MNI/rules-engine';
+import type { Violation } from '@MNI/rules-engine';
 import fg from 'fast-glob';
 import * as path from 'node:path';
 
 import type { CodeHealthContext } from '../context.js';
 
 const DEFAULT_MIGRATION_GLOBS = [
-	'packages/@n8n/db/src/migrations/common/*.ts',
-	'packages/@n8n/db/src/migrations/postgresdb/*.ts',
-	'packages/@n8n/db/src/migrations/sqlite/*.ts',
+	'packages/@MNI/db/src/migrations/common/*.ts',
+	'packages/@MNI/db/src/migrations/postgresdb/*.ts',
+	'packages/@MNI/db/src/migrations/sqlite/*.ts',
 ];
 
 const MIGRATION_FILENAME = /^(\d{10,16})-(.+\.ts)$/;

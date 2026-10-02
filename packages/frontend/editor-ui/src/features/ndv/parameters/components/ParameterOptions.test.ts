@@ -60,7 +60,7 @@ describe('ParameterOptions', () => {
 			},
 		});
 
-		expect(container.querySelector('.n8n-segment-control')).toHaveClass('mini');
+		expect(container.querySelector('.MNI-segment-control')).toHaveClass('mini');
 		expect(getByTestId('action-toggle')).toHaveAttribute('data-size', 'xsmall');
 		expect(getByTestId('parameter-delete-button')).toHaveAttribute('data-size', 'xsmall');
 	});

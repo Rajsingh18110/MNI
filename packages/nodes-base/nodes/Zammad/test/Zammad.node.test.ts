@@ -3,8 +3,8 @@ import type {
 	ICredentialTestFunctions,
 	IExecuteFunctions,
 	ILoadOptionsFunctions,
-} from 'n8n-workflow';
-import { NodeOperationError } from 'n8n-workflow';
+} from 'MNI-workflow';
+import { NodeOperationError } from 'MNI-workflow';
 
 import * as GenericFunctions from '../GenericFunctions';
 import { Zammad } from '../Zammad.node';

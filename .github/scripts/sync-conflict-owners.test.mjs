@@ -85,7 +85,7 @@ test('gatherAttribution resolves both sides of the conflict in a single call', a
 	};
 
 	const { owners, masterCommits } = await gatherAttribution({
-		repo: 'n8n-io/n8n',
+		repo: 'MNI-io/MNI',
 		token: 't',
 		files: ['a.ts'],
 		base: 'MASTER',
@@ -146,7 +146,7 @@ test('resolveCommitAuthors maps SHAs to logins in one call, dropping unlinked/bo
 			}),
 		};
 	};
-	const authors = await resolveCommitAuthors('n8n-io/n8n', ['sha1', 'sha2', 'sha3'], 't', fetchFn);
+	const authors = await resolveCommitAuthors('MNI-io/MNI', ['sha1', 'sha2', 'sha3'], 't', fetchFn);
 	assert.equal(calls, 1); // single batched request
 	assert.deepEqual(
 		[...authors],

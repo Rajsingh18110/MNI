@@ -1,9 +1,9 @@
 import type { Mocked } from 'vitest';
-import { mockInstance } from '@n8n/backend-test-utils';
-import type { User } from '@n8n/db';
+import { mockInstance } from '@MNI/backend-test-utils';
+import type { User } from '@MNI/db';
 import type { Request, Response, NextFunction } from 'express';
 import { mock, mockDeep } from 'vitest-mock-extended';
-import type { InstanceSettings } from 'n8n-core';
+import type { InstanceSettings } from 'MNI-core';
 
 import { JwtService } from '@/services/jwt.service';
 import type { McpCallerAuth } from '@/services/oauth-token-verifier-proxy.service';
@@ -424,7 +424,7 @@ describe('McpServerMiddlewareService', () => {
 		it('should authenticate with a delegated scoped JWT and set req.user to the actor', async () => {
 			const actor = mock<User>({ id: 'actor-1' });
 			const scopedJwt = jwtService.sign({
-				iss: 'n8n-token-exchange',
+				iss: 'MNI-token-exchange',
 				sub: 'subject-1',
 				act: { sub: 'actor-1' },
 				jti: 'test-jti',

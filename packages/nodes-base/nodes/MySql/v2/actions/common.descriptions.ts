@@ -1,4 +1,4 @@
-import type { INodeProperties, INodePropertyOptions } from 'n8n-workflow';
+import type { INodeProperties, INodePropertyOptions } from 'MNI-workflow';
 
 import { BATCH_MODE, SINGLE } from '../helpers/interfaces';
 
@@ -129,18 +129,18 @@ export const optionsCollection: INodeProperties = {
 			default: '',
 			placeholder: 'e.g. value1,value2,value3',
 			description:
-				'Comma-separated list of the values you want to use as query parameters. You can drag the values from the input panel on the left. <a href="https://docs.n8n.io/integrations/builtin/app-nodes/n8n-nodes-base.mysql/" target="_blank">More info</a>',
+				'Comma-separated list of the values you want to use as query parameters. You can drag the values from the input panel on the left. <a href="https://docs.n8n.io/integrations/builtin/app-nodes/MNI-nodes-base.mysql/" target="_blank">More info</a>',
 			hint: 'Comma-separated list of values: reference them in your query as $1, $2, $3…',
 			displayOptions: {
 				show: { '/operation': ['executeQuery'] },
 			},
 		},
 		{
-			// eslint-disable-next-line n8n-nodes-base/node-param-display-name-wrong-for-dynamic-multi-options
+			// eslint-disable-next-line MNI-nodes-base/node-param-display-name-wrong-for-dynamic-multi-options
 			displayName: 'Output Columns',
 			name: 'outputColumns',
 			type: 'multiOptions',
-			// eslint-disable-next-line n8n-nodes-base/node-param-description-wrong-for-dynamic-multi-options
+			// eslint-disable-next-line MNI-nodes-base/node-param-description-wrong-for-dynamic-multi-options
 			description:
 				'Choose from the list, or specify IDs using an <a href="https://docs.n8n.io/code/expressions/" target="_blank">expression</a>',
 			typeOptions: {
@@ -275,11 +275,11 @@ export const selectRowsFixedCollection: INodeProperties = {
 			name: 'values',
 			values: [
 				{
-					// eslint-disable-next-line n8n-nodes-base/node-param-display-name-wrong-for-dynamic-options
+					// eslint-disable-next-line MNI-nodes-base/node-param-display-name-wrong-for-dynamic-options
 					displayName: 'Column',
 					name: 'column',
 					type: 'options',
-					// eslint-disable-next-line n8n-nodes-base/node-param-description-wrong-for-dynamic-options
+					// eslint-disable-next-line MNI-nodes-base/node-param-description-wrong-for-dynamic-options
 					description:
 						'Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code/expressions/" target="_blank">expression</a>',
 					default: '',
@@ -295,7 +295,7 @@ export const selectRowsFixedCollection: INodeProperties = {
 					type: 'options',
 					description:
 						"The operator to check the column against. When using 'LIKE' operator percent sign ( %) matches zero or more characters, underscore ( _ ) matches any single character.",
-					// eslint-disable-next-line n8n-nodes-base/node-param-options-type-unsorted-items
+					// eslint-disable-next-line MNI-nodes-base/node-param-options-type-unsorted-items
 					options: operatorOptions,
 					default: 'equal',
 				},
@@ -330,11 +330,11 @@ export const sortFixedCollection: INodeProperties = {
 			name: 'values',
 			values: [
 				{
-					// eslint-disable-next-line n8n-nodes-base/node-param-display-name-wrong-for-dynamic-options
+					// eslint-disable-next-line MNI-nodes-base/node-param-display-name-wrong-for-dynamic-options
 					displayName: 'Column',
 					name: 'column',
 					type: 'options',
-					// eslint-disable-next-line n8n-nodes-base/node-param-description-wrong-for-dynamic-options
+					// eslint-disable-next-line MNI-nodes-base/node-param-description-wrong-for-dynamic-options
 					description:
 						'Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code/expressions/" target="_blank">expression</a>',
 					default: '',

@@ -2,12 +2,12 @@ import type {
 	PolicyEffectiveWriteResultPublicDto,
 	PutInstancePolicyDto,
 	PutProjectPolicyDto,
-} from '@n8n/api-types';
-import type { ModuleRegistry } from '@n8n/backend-common';
-import { LICENSE_FEATURES } from '@n8n/constants';
-import type { AuthenticatedRequest, User } from '@n8n/db';
-import { ControllerRegistryMetadata } from '@n8n/decorators';
-import { Container } from '@n8n/di';
+} from '@MNI/api-types';
+import type { ModuleRegistry } from '@MNI/backend-common';
+import { LICENSE_FEATURES } from '@MNI/constants';
+import type { AuthenticatedRequest, User } from '@MNI/db';
+import { ControllerRegistryMetadata } from '@MNI/decorators';
+import { Container } from '@MNI/di';
 import type { Response } from 'express';
 import { mock } from 'vitest-mock-extended';
 

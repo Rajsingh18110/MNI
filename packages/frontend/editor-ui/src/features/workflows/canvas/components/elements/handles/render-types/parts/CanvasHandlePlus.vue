@@ -164,14 +164,14 @@ function onClick(event: MouseEvent) {
 		width: 200%;
 		height: 120%;
 		pointer-events: auto;
-		/* stylelint-disable-next-line @n8n/css-var-naming */
+		/* stylelint-disable-next-line @MNI/css-var-naming */
 		transform: translate(-50%, -50%) scale(var(--canvas-zoom-compensation-factor, 1));
 	}
 }
 
 .wrapper {
 	position: relative;
-	/* stylelint-disable-next-line @n8n/css-var-naming */
+	/* stylelint-disable-next-line @MNI/css-var-naming */
 	transform: scale(var(--canvas-zoom-compensation-factor, 1));
 
 	&.right {

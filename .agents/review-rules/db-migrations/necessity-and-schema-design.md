@@ -1,6 +1,6 @@
 # Necessity and schema design
 
-Applies to: `packages/@n8n/db/src/migrations/**`.
+Applies to: `packages/@MNI/db/src/migrations/**`.
 
 ## Should it exist?
 
@@ -36,6 +36,6 @@ Also flag:
   partial index with a `WHERE` clause is correct. Do not flag it;
 - an ID type that does not match the column it joins to.
 
-Read the entity in `packages/@n8n/db/src/entities/`. Its type, nullability,
+Read the entity in `packages/@MNI/db/src/entities/`. Its type, nullability,
 default, `@Index` and FK must agree with the migration. If you cannot read it, say
 parity is unverified rather than guess.

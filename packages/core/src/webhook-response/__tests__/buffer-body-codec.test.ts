@@ -1,5 +1,5 @@
-import type { IN8nHttpFullResponse } from 'n8n-workflow';
-import { deepCopy } from 'n8n-workflow';
+import type { IN8nHttpFullResponse } from 'MNI-workflow';
+import { deepCopy } from 'MNI-workflow';
 
 import { decodeBufferBody, ENCODED_BUFFER_KEY, encodeBufferBody } from '../buffer-body-codec';
 

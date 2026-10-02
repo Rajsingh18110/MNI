@@ -1,12 +1,12 @@
 import { computed, onBeforeUnmount, nextTick, watch, type ComputedRef } from 'vue';
 import { useRouter } from 'vue-router';
-import { useI18n } from '@n8n/i18n';
+import { useI18n } from '@MNI/i18n';
 
 import { useWorkflowExecutionStateStore } from '@/app/stores/workflowExecutionState.store';
 import { useNodeTypesStore } from '@/app/stores/nodeTypes.store';
 import { useLogsStore } from '@/app/stores/logs.store';
 import { useRunWorkflow } from '@/app/composables/useRunWorkflow';
-import { useToast } from '@n8n/composables/useToast';
+import { useToast } from '@MNI/composables/useToast';
 import { isChatNode } from '@/app/utils/aiUtils';
 import { injectWorkflowDocumentStore } from '@/app/stores/workflowDocument.store';
 

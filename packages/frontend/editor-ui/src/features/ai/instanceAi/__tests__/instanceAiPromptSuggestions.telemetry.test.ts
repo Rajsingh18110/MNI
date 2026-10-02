@@ -3,7 +3,7 @@ import { describe, expect, test, vi } from 'vitest';
 import { INSTANCE_AI_EMPTY_STATE_SUGGESTIONS_VERSION } from '../emptyStateSuggestions';
 import { createInstanceAiPromptSuggestionsTelemetry } from '../instanceAiPromptSuggestions.telemetry';
 
-vi.mock('@n8n/composables/useTelemetry', () => ({
+vi.mock('@MNI/composables/useTelemetry', () => ({
 	useTelemetry: () => ({ track: vi.fn() }),
 }));
 

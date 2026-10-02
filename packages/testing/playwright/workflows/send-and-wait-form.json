@@ -5,7 +5,7 @@
 			"parameters": {},
 			"id": "manual-trigger",
 			"name": "Manual Trigger",
-			"type": "n8n-nodes-base.manualTrigger",
+			"type": "MNI-nodes-base.manualTrigger",
 			"typeVersion": 1,
 			"position": [300, 300]
 		},
@@ -51,7 +51,7 @@
 			},
 			"id": "slack-send-wait",
 			"name": "Slack",
-			"type": "n8n-nodes-base.slack",
+			"type": "MNI-nodes-base.slack",
 			"typeVersion": 2.2,
 			"position": [500, 300],
 			"credentials": {
@@ -89,7 +89,7 @@
 			},
 			"id": "capture-result",
 			"name": "Capture Result",
-			"type": "n8n-nodes-base.set",
+			"type": "MNI-nodes-base.set",
 			"typeVersion": 3.3,
 			"position": [700, 300]
 		}

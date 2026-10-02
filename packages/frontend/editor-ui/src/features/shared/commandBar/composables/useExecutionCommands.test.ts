@@ -2,11 +2,11 @@ import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { useExecutionCommands } from './useExecutionCommands';
 import { useExecutionsStore } from '@/features/execution/executions/executions.store';
 import { useWorkflowsStore } from '@/app/stores/workflows.store';
-import { useSettingsStore } from '@n8n/stores/settings.store';
+import { useSettingsStore } from '@MNI/stores/settings.store';
 import { createTestingPinia } from '@pinia/testing';
-import { getResourcePermissions } from '@n8n/permissions';
+import { getResourcePermissions } from '@MNI/permissions';
 import { setActivePinia } from 'pinia';
-import type { ExecutionSummary } from 'n8n-workflow';
+import type { ExecutionSummary } from 'MNI-workflow';
 import { EnterpriseEditionFeature, MODAL_CONFIRM, VIEWS } from '@/app/constants';
 
 const routerPushMock = vi.fn();
@@ -23,7 +23,7 @@ vi.mock('vue-router', () => ({
 	RouterLink: vi.fn(),
 }));
 
-vi.mock('@n8n/i18n', async (importOriginal) => ({
+vi.mock('@MNI/i18n', async (importOriginal) => ({
 	...(await importOriginal()),
 	useI18n: () => ({
 		baseText: (key: string, opts?: { interpolate?: Record<string, string> }) => {
@@ -41,7 +41,7 @@ vi.mock('@n8n/i18n', async (importOriginal) => ({
 
 const mockToastShowMessage = vi.fn();
 const mockToastShowError = vi.fn();
-vi.mock('@n8n/composables/useToast', () => ({
+vi.mock('@MNI/composables/useToast', () => ({
 	useToast: () => ({
 		showMessage: mockToastShowMessage,
 		showError: mockToastShowError,
@@ -56,14 +56,14 @@ vi.mock('@/app/composables/useMessage', () => ({
 }));
 
 const mockTelemetryTrack = vi.fn();
-vi.mock('@n8n/composables/useTelemetry', () => ({
+vi.mock('@MNI/composables/useTelemetry', () => ({
 	useTelemetry: () => ({
 		track: mockTelemetryTrack,
 	}),
 }));
 
-vi.mock('@n8n/permissions', async (importOriginal) => ({
-	...(await importOriginal<typeof import('@n8n/permissions')>()),
+vi.mock('@MNI/permissions', async (importOriginal) => ({
+	...(await importOriginal<typeof import('@MNI/permissions')>()),
 	getResourcePermissions: vi.fn(() => ({
 		workflow: {
 			update: true,

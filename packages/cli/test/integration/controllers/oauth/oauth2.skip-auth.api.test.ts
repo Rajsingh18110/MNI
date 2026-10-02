@@ -1,5 +1,5 @@
 /**
- * Integration tests for OAuth2 callback with N8N_SKIP_AUTH_ON_OAUTH_CALLBACK=true
+ * Integration tests for OAuth2 callback with MNI_SKIP_AUTH_ON_OAUTH_CALLBACK=true
  *
  * IMPORTANT: Environment variable must be set before module imports
  * because skipAuthOnOAuthCallback is evaluated at module load time.
@@ -9,12 +9,12 @@
 // assignment would run *after* the oauth module reads `skipAuthOnOAuthCallback`. `vi.hoisted` runs
 // before the imports.
 vi.hoisted(() => {
-	process.env.N8N_SKIP_AUTH_ON_OAUTH_CALLBACK = 'true';
+	process.env.MNI_SKIP_AUTH_ON_OAUTH_CALLBACK = 'true';
 });
 
-import { testDb } from '@n8n/backend-test-utils';
-import type { CredentialsEntity, User } from '@n8n/db';
-import { Container } from '@n8n/di';
+import { testDb } from '@MNI/backend-test-utils';
+import type { CredentialsEntity, User } from '@MNI/db';
+import { Container } from '@MNI/di';
 import { response as Response } from 'express';
 import nock from 'nock';
 import { parse as parseQs } from 'querystring';
@@ -71,7 +71,7 @@ describe('OAuth2 API with skipAuthOnOAuthCallback enabled', () => {
 
 	afterAll(async () => {
 		// Clean up environment variable
-		delete process.env.N8N_SKIP_AUTH_ON_OAUTH_CALLBACK;
+		delete process.env.MNI_SKIP_AUTH_ON_OAUTH_CALLBACK;
 	});
 
 	describe('OAuth callback without authentication', () => {

@@ -1,5 +1,5 @@
 {
-  "name": "@n8n/performance",
+  "name": "@MNI/performance",
   "version": "1.0.0",
   "private": true,
   "type": "module",
@@ -12,11 +12,11 @@
     "bench:compare": "vitest bench --run --reporter=default --reporter=json --outputFile.json=./profiles/benchmark-results.json && node scripts/check-regression.mjs"
   },
   "devDependencies": {
-    "@n8n/expression-runtime": "workspace:*",
+    "@MNI/expression-runtime": "workspace:*",
     "vite": "catalog:",
     "vitest": "catalog:",
-    "n8n-workflow": "workspace:*",
+    "MNI-workflow": "workspace:*",
     "typescript": "catalog:typescript"
   },
-  "license": "LicenseRef-n8n-sustainable-use"
+  "license": "LicenseRef-MNI-sustainable-use"
 }

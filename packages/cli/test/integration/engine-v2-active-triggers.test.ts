@@ -7,12 +7,12 @@
  * these tests drive that funnel and assert what reaches the data plane.
  */
 
-import { createWorkflow, mockInstance, testDb } from '@n8n/backend-test-utils';
-import { UUID_V7_PATTERN } from '@n8n/constants';
-import type { User, WorkflowEntity } from '@n8n/db';
-import { Container } from '@n8n/di';
-import type { INode, INodeExecutionData } from 'n8n-workflow';
-import { NodeConnectionTypes, SCHEDULE_TRIGGER_NODE_TYPE } from 'n8n-workflow';
+import { createWorkflow, mockInstance, testDb } from '@MNI/backend-test-utils';
+import { UUID_V7_PATTERN } from '@MNI/constants';
+import type { User, WorkflowEntity } from '@MNI/db';
+import { Container } from '@MNI/di';
+import type { INode, INodeExecutionData } from 'MNI-workflow';
+import { NodeConnectionTypes, SCHEDULE_TRIGGER_NODE_TYPE } from 'MNI-workflow';
 import { randomUUID } from 'node:crypto';
 
 import { EngineDataPlaneProxyService } from '@/services/engine-data-plane-proxy.service';
@@ -49,7 +49,7 @@ const triggerNode = (): INode => ({
 const setNode = (): INode => ({
 	id: randomUUID(),
 	name: SET_NAME,
-	type: 'n8n-nodes-base.set',
+	type: 'MNI-nodes-base.set',
 	typeVersion: 3.4,
 	position: [220, 0],
 	parameters: { options: {} },

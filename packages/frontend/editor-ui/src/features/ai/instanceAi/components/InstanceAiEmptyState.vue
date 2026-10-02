@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { N8nText, N8nIcon } from '@n8n/design-system';
-import { useI18n, type BaseTextKey } from '@n8n/i18n';
+import { N8nText, N8nIcon } from '@MNI/design-system';
+import { useI18n, type BaseTextKey } from '@MNI/i18n';
 
 const i18n = useI18n();
 

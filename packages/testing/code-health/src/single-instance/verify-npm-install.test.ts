@@ -65,16 +65,16 @@ describe('closureOf', () => {
 
 describe('matchChangedFiles', () => {
 	const dirs: Array<[string, string]> = [
-		['pkg', 'packages/@n8n/pkg/'],
-		['pkg-sub', 'packages/@n8n/pkg/sub/'],
+		['pkg', 'packages/@MNI/pkg/'],
+		['pkg-sub', 'packages/@MNI/pkg/sub/'],
 	];
 
 	it('maps a file to its owning package', () => {
-		expect(matchChangedFiles(['packages/@n8n/pkg/src/x.ts'], dirs)).toEqual(['pkg']);
+		expect(matchChangedFiles(['packages/@MNI/pkg/src/x.ts'], dirs)).toEqual(['pkg']);
 	});
 
 	it('prefers the longest matching prefix when packages nest', () => {
-		expect(matchChangedFiles(['packages/@n8n/pkg/sub/x.ts'], dirs)).toEqual(['pkg-sub']);
+		expect(matchChangedFiles(['packages/@MNI/pkg/sub/x.ts'], dirs)).toEqual(['pkg-sub']);
 	});
 
 	it('returns nothing for files outside any package', () => {

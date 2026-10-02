@@ -1,12 +1,12 @@
-import { Logger } from '@n8n/backend-common';
-import { testDb } from '@n8n/backend-test-utils';
-import { GlobalConfig } from '@n8n/config';
-import type { AuthenticatedRequest, User } from '@n8n/db';
-import { ApiKey, ApiKeyRepository, UserRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
+import { Logger } from '@MNI/backend-common';
+import { testDb } from '@MNI/backend-test-utils';
+import { GlobalConfig } from '@MNI/config';
+import type { AuthenticatedRequest, User } from '@MNI/db';
+import { ApiKey, ApiKeyRepository, UserRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
 import { randomUUID } from 'crypto';
 import { DateTime } from 'luxon';
-import { randomString } from 'n8n-workflow';
+import { randomString } from 'MNI-workflow';
 import { mock } from 'vitest-mock-extended';
 
 import { TOKEN_EXCHANGE_ISSUER } from '@/modules/token-exchange/token-exchange.types';
@@ -21,7 +21,7 @@ const mockReqWith = (apiKey: string): AuthenticatedRequest =>
 	mock<AuthenticatedRequest>({
 		path: '/test',
 		method: 'GET',
-		headers: { 'x-n8n-api-key': apiKey },
+		headers: { 'x-MNI-api-key': apiKey },
 	});
 
 const mockReqWithoutApiKey = (): AuthenticatedRequest => {
@@ -89,7 +89,7 @@ describe('ApiKeyAuthStrategy', () => {
 		});
 
 		it('accepts legacy (non-JWT) api keys by looking up the record directly', async () => {
-			const legacyApiKey = `n8n_api_${randomString(10)}`;
+			const legacyApiKey = `MNI_api_${randomString(10)}`;
 			const owner = await createOwnerWithApiKey();
 			const [{ apiKey }] = owner.apiKeys;
 			await Container.get(ApiKeyRepository).update({ apiKey }, { apiKey: legacyApiKey });
@@ -203,7 +203,7 @@ describe('ApiKeyAuthStrategy', () => {
 	});
 
 	describe('authenticate (wrapper)', () => {
-		it('returns null when no x-n8n-api-key header is present', async () => {
+		it('returns null when no x-MNI-api-key header is present', async () => {
 			expect(await strategy.authenticate(mockReqWithoutApiKey())).toBeNull();
 		});
 
@@ -217,7 +217,7 @@ describe('ApiKeyAuthStrategy', () => {
 			expect(req.tokenGrant?.subject.id).toBe(owner.id);
 		});
 
-		it('abstains (returns null) when N8N_PUBLIC_API_DISABLED is set, even with a valid API key', async () => {
+		it('abstains (returns null) when MNI_PUBLIC_API_DISABLED is set, even with a valid API key', async () => {
 			const globalConfig = Container.get(GlobalConfig);
 			globalConfig.publicApi.disabled = true;
 

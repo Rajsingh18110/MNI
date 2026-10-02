@@ -6,7 +6,7 @@ import {
 	createWorkflowDocumentId,
 	useWorkflowDocumentStore,
 } from '@/app/stores/workflowDocument.store';
-import type { ExecutionStarted } from '@n8n/api-types/push/execution';
+import type { ExecutionStarted } from '@MNI/api-types/push/execution';
 import { useWorkflowExecutionStateStore } from '@/app/stores/workflowExecutionState.store';
 import { createExecutionDataId, useExecutionDataStore } from '@/app/stores/executionData.store';
 import type { PushHandlerOptions } from './types';

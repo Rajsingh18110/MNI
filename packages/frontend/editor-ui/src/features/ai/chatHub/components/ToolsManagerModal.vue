@@ -12,25 +12,25 @@ import {
 	N8nInlineTextEdit,
 	N8nInput,
 	N8nText,
-} from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+} from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 import { useDebounceFn } from '@vueuse/core';
-import { NodeConnectionTypes, type INode, type INodeTypeDescription } from 'n8n-workflow';
+import { NodeConnectionTypes, type INode, type INodeTypeDescription } from 'MNI-workflow';
 import {
 	ALWAYS_BLOCKED_CHAT_HUB_TOOL_TYPES,
 	CHAT_USER_BLOCKED_CHAT_HUB_TOOL_TYPES,
-} from '@n8n/api-types';
-import type { ChatHubToolDto } from '@n8n/api-types';
+} from '@MNI/api-types';
+import type { ChatHubToolDto } from '@MNI/api-types';
 import { computed, onMounted, ref, watch } from 'vue';
-import { getDebounceTime } from '@n8n/composables/useDebounce';
+import { getDebounceTime } from '@MNI/composables/useDebounce';
 import { DEBOUNCE_TIME, MODAL_CONFIRM } from '@/app/constants';
 import { useChatStore } from '@/features/ai/chatHub/chat.store';
-import { useToast } from '@n8n/composables/useToast';
+import { useToast } from '@MNI/composables/useToast';
 import { useMessage } from '@/app/composables/useMessage';
 import { hasRole } from '@/app/utils/rbac/checks/hasRole';
 import nodePopularity from 'virtual:node-popularity-data';
 import { useInstallNode } from '@/features/settings/communityNodes/composables/useInstallNode';
-import { useUsersStore } from '@n8n/stores/users.store';
+import { useUsersStore } from '@MNI/stores/users.store';
 import {
 	filterAndSearchNodes,
 	isNodePreviewKey,

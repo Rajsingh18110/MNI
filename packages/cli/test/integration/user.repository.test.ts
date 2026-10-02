@@ -1,7 +1,7 @@
-import type { UsersListFilterDto } from '@n8n/api-types';
-import { createTeamProject, linkUserToProject, randomEmail, testDb } from '@n8n/backend-test-utils';
-import { ProjectRelationRepository, ProjectRepository, type User, UserRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
+import type { UsersListFilterDto } from '@MNI/api-types';
+import { createTeamProject, linkUserToProject, randomEmail, testDb } from '@MNI/backend-test-utils';
+import { ProjectRelationRepository, ProjectRepository, type User, UserRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
 
 import { createAdmin, createChatUser, createMember, createOwner } from './shared/db/users';
 

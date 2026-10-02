@@ -1,6 +1,6 @@
-import type { CredentialDependencyRepository, SecretsProviderConnectionRepository } from '@n8n/db';
-import { In } from '@n8n/typeorm';
-import type { EntityManager } from '@n8n/typeorm';
+import type { CredentialDependencyRepository, SecretsProviderConnectionRepository } from '@MNI/db';
+import { In } from '@MNI/typeorm';
+import type { EntityManager } from '@MNI/typeorm';
 import { mock } from 'vitest-mock-extended';
 
 import {

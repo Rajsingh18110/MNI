@@ -4,7 +4,7 @@ import { ref } from 'vue';
 import type { EvaluationCollectionDetail } from '../evalCollections.types';
 import { useCompareData } from './useCompareData';
 
-vi.mock('@n8n/i18n', () => ({
+vi.mock('@MNI/i18n', () => ({
 	useI18n: () => ({ baseText: (key: string) => key }),
 }));
 

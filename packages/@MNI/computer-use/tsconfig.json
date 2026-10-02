@@ -1,0 +1,7 @@
+{
+	"extends": "@MNI/typescript-config/tsconfig.common.go.json",
+	"compilerOptions": {
+		"types": ["node", "vitest/globals", "vite/client"]
+	},
+	"include": ["src/**/*.ts"]
+}

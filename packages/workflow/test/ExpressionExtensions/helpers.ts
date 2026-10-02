@@ -50,7 +50,7 @@ export const evaluate = (value: string, values?: IDataObject[]) =>
  * Both engines give back Luxon instances. The VM engine sends each Luxon value
  * across the isolate boundary as a marker object and rebuilds an instance from
  * it. More than one copy of Luxon is in play: the runtime bundle inlines its
- * own, because packages/@n8n/expression-runtime/esbuild.config.js sets
+ * own, because packages/@MNI/expression-runtime/esbuild.config.js sets
  * `external: []`. An instance from another copy fails `instanceof` against the
  * Luxon this file imports, but still passes the Luxon `is*` check. The helpers
  * below re-hydrate such an instance through ISO to get one of the local copy.

@@ -520,7 +520,7 @@ export function useCanvasLayout(
 	function sortEdgesByPosition(edgeA: LayoutConnection, edgeB: LayoutConnection): number {
 		if (
 			edgeA.source === edgeB.source &&
-			findNode<CanvasNodeData>(edgeA.source)?.data.type === 'n8n-nodes-base.if'
+			findNode<CanvasNodeData>(edgeA.source)?.data.type === 'MNI-nodes-base.if'
 		) {
 			const indexA = parseCanvasConnectionHandleString(edgeA.sourceHandle).index;
 			const indexB = parseCanvasConnectionHandleString(edgeB.sourceHandle).index;

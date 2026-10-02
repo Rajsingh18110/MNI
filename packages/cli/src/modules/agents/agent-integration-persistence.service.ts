@@ -3,10 +3,10 @@ import {
 	isDraftIntegration,
 	type AgentIntegrationConfig,
 	type ChatIntegrationDescriptor,
-} from '@n8n/api-types';
-import type { User } from '@n8n/db';
-import { Service } from '@n8n/di';
-import { OperationalError, UserError } from 'n8n-workflow';
+} from '@MNI/api-types';
+import type { User } from '@MNI/db';
+import { Service } from '@MNI/di';
+import { OperationalError, UserError } from 'MNI-workflow';
 import { v4 as uuid } from 'uuid';
 
 import { CredentialsService } from '@/credentials/credentials.service';

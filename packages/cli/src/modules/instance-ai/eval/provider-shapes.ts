@@ -20,8 +20,8 @@
  * data before the normalizer falls back to a minimal envelope.
  */
 
-import { isRecord } from '@n8n/utils/is-record';
-import { evalCanvasPng } from 'n8n-core';
+import { isRecord } from '@MNI/utils/is-record';
+import { evalCanvasPng } from 'MNI-core';
 
 /** The subset of the mock response spec these normalizers read/mutate. */
 interface NormalizableSpec {

@@ -4,13 +4,13 @@ import {
 	getBuilderCredits,
 	truncateBuilderMessages,
 } from './assistant.api';
-import * as apiUtils from '@n8n/rest-api-client';
-import type { IRestApiContext } from '@n8n/rest-api-client';
+import * as apiUtils from '@MNI/rest-api-client';
+import type { IRestApiContext } from '@MNI/rest-api-client';
 import type { ChatRequest } from '@/features/ai/assistant/assistant.types';
 import { vi, describe, it, beforeEach, afterEach, expect } from 'vitest';
 import type { Mock, MockInstance } from 'vitest';
 
-vi.mock('@n8n/rest-api-client');
+vi.mock('@MNI/rest-api-client');
 
 describe('API: ai', () => {
 	describe('chatWithBuilder', () => {

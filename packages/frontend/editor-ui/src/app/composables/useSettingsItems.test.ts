@@ -29,7 +29,7 @@ vi.mock('./useAiGateway', () => ({
 vi.mock('./useAiGatewayTopUp', () => ({
 	useAiGatewayTopUp: vi.fn(() => ({ openTopUp: openTopUpMock })),
 }));
-vi.mock('@n8n/i18n', () => ({ useI18n: vi.fn(() => ({ baseText: (key: string) => key })) }));
+vi.mock('@MNI/i18n', () => ({ useI18n: vi.fn(() => ({ baseText: (key: string) => key })) }));
 vi.mock('../stores/ui.store', () => ({
 	useUIStore: vi.fn(() => ({
 		get settingsSidebarItems() {
@@ -37,7 +37,7 @@ vi.mock('../stores/ui.store', () => ({
 		},
 	})),
 }));
-vi.mock('@n8n/stores/settings.store', () => ({
+vi.mock('@MNI/stores/settings.store', () => ({
 	useSettingsStore: vi.fn(() => ({
 		isAiAssistantEnabled: false,
 		get isAiGatewayEnabled() {
@@ -50,7 +50,7 @@ vi.mock('@n8n/stores/settings.store', () => ({
 		isQueueModeEnabled: false,
 		isModuleActive: (name: string) => activeModules.value.includes(name),
 		get settings() {
-			return { envFeatureFlags: { N8N_ENV_FEAT_PROMOTIONS: promotionsFlag.value } };
+			return { envFeatureFlags: { MNI_ENV_FEAT_PROMOTIONS: promotionsFlag.value } };
 		},
 		get moduleSettings() {
 			return moduleSettings.value;
@@ -173,7 +173,7 @@ describe('useSettingsItems', () => {
 
 	it('links to the MNI Connect settings page for the legacy cohort', () => {
 		const item = useSettingsItems().settingsItems.value.find(
-			({ id }) => id === 'settings-n8n-connect',
+			({ id }) => id === 'settings-MNI-connect',
 		);
 
 		expect(item).toMatchObject({
@@ -187,7 +187,7 @@ describe('useSettingsItems', () => {
 		balance.value = 1.23;
 
 		const item = useSettingsItems().settingsItems.value.find(
-			({ id }) => id === 'settings-n8n-connect',
+			({ id }) => id === 'settings-MNI-connect',
 		);
 
 		expect(item).toMatchObject({
@@ -202,7 +202,7 @@ describe('useSettingsItems', () => {
 		isAiGatewayCloudUbbEnabled.value = true;
 
 		const item = useSettingsItems().settingsItems.value.find(
-			({ id }) => id === 'settings-n8n-connect',
+			({ id }) => id === 'settings-MNI-connect',
 		);
 
 		expect(item).toBeUndefined();
@@ -211,14 +211,14 @@ describe('useSettingsItems', () => {
 	it('opens the top-up flow only for the Cloud UBB credits item', async () => {
 		const { handleSettingsItemSelect } = useSettingsItems();
 
-		await handleSettingsItemSelect('settings-n8n-connect');
+		await handleSettingsItemSelect('settings-MNI-connect');
 		expect(openTopUpMock).not.toHaveBeenCalled();
 
 		isAiGatewayCloudUbbEnabled.value = true;
 		await handleSettingsItemSelect('settings-users');
 		expect(openTopUpMock).not.toHaveBeenCalled();
 
-		await handleSettingsItemSelect('settings-n8n-connect');
+		await handleSettingsItemSelect('settings-MNI-connect');
 		expect(openTopUpMock).toHaveBeenCalledWith({ source: 'settings_page' });
 	});
 });

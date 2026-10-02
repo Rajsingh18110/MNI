@@ -1,7 +1,7 @@
-import { createChildSubAgentTaskPath } from '@n8n/agents';
-import type { SubAgentSource, SubAgentTaskDifficulty } from '@n8n/api-types';
-import { Logger } from '@n8n/backend-common';
-import { Service } from '@n8n/di';
+import { createChildSubAgentTaskPath } from '@MNI/agents';
+import type { SubAgentSource, SubAgentTaskDifficulty } from '@MNI/api-types';
+import { Logger } from '@MNI/backend-common';
+import { Service } from '@MNI/di';
 import { v4 as uuid } from 'uuid';
 
 import {

@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import type { MetricScale } from '@n8n/api-types';
-import { N8nTabs, N8nText } from '@n8n/design-system';
-import type { TabOptions } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+import type { MetricScale } from '@MNI/api-types';
+import { N8nTabs, N8nText } from '@MNI/design-system';
+import type { TabOptions } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 import { computed, ref } from 'vue';
 
 import type { CompareCaseRow } from '../../composables/useCompareCases';

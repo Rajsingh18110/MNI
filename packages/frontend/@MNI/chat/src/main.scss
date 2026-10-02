@@ -1,0 +1,6 @@
+@use 'sass:meta';
+@use 'css';
+
+.MNI-chat {
+	@include meta.load-css('highlight.js/styles/github');
+}

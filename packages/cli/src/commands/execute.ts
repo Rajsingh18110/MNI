@@ -1,8 +1,8 @@
-import { WorkflowRepository } from '@n8n/db';
-import { Command } from '@n8n/decorators';
-import { Container } from '@n8n/di';
-import type { IWorkflowBase, IWorkflowExecutionDataProcess } from 'n8n-workflow';
-import { ExecutionBaseError, UnexpectedError, UserError } from 'n8n-workflow';
+import { WorkflowRepository } from '@MNI/db';
+import { Command } from '@MNI/decorators';
+import { Container } from '@MNI/di';
+import type { IWorkflowBase, IWorkflowExecutionDataProcess } from 'MNI-workflow';
+import { ExecutionBaseError, UnexpectedError, UserError } from 'MNI-workflow';
 import { z } from 'zod';
 
 import { ActiveExecutions } from '@/active-executions';

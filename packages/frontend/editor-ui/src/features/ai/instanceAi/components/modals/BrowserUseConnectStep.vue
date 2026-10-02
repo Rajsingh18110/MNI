@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { computed, onBeforeUnmount, onMounted, ref } from 'vue';
-import { N8nButton, N8nIcon, N8nText } from '@n8n/design-system';
-import { useI18n } from '@n8n/i18n';
+import { N8nButton, N8nIcon, N8nText } from '@MNI/design-system';
+import { useI18n } from '@MNI/i18n';
 import { useInstanceAiSettingsStore } from '../../instanceAiSettings.store';
 import { useInstanceAiBrowserUseTelemetry } from '../../instanceAiBrowserUse.telemetry';
 import {
@@ -106,7 +106,7 @@ function openConnectPage(): void {
 	);
 	window.open(
 		connectUrl.value,
-		'n8n-browser-use-connect',
+		'MNI-browser-use-connect',
 		`popup,width=${CONNECT_POPUP_WIDTH},height=${CONNECT_POPUP_HEIGHT},left=${left},top=${top}`,
 	);
 }

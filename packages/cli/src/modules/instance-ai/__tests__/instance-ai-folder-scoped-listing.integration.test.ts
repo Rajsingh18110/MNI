@@ -1,8 +1,8 @@
-import { LicenseState } from '@n8n/backend-common';
-import { createWorkflow, mockInstance, testDb } from '@n8n/backend-test-utils';
-import type { Project, User } from '@n8n/db';
-import { ProjectRepository } from '@n8n/db';
-import { Container } from '@n8n/di';
+import { LicenseState } from '@MNI/backend-common';
+import { createWorkflow, mockInstance, testDb } from '@MNI/backend-test-utils';
+import type { Project, User } from '@MNI/db';
+import { ProjectRepository } from '@MNI/db';
+import { Container } from '@MNI/di';
 
 import { ActiveWorkflowManager } from '@/active-workflow-manager';
 import { License } from '@/license';

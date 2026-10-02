@@ -1,7 +1,7 @@
-import { Logger } from '@n8n/backend-common';
-import { createTeamProject, testDb, testModules } from '@n8n/backend-test-utils';
-import { TransactionRunner, type OperationContext } from '@n8n/db';
-import { Container } from '@n8n/di';
+import { Logger } from '@MNI/backend-common';
+import { createTeamProject, testDb, testModules } from '@MNI/backend-test-utils';
+import { TransactionRunner, type OperationContext } from '@MNI/db';
+import { Container } from '@MNI/di';
 
 import { EventService } from '@/events/event.service';
 import { LoadNodesAndCredentials } from '@/load-nodes-and-credentials';
@@ -25,7 +25,7 @@ import { clearPolicyCache } from './shared/policy-cache';
 
 const KIND = 'node-types';
 const ROOT: OperationContext = {};
-const SLACK = 'n8n-nodes-base.slack';
+const SLACK = 'MNI-nodes-base.slack';
 
 const DENY_SLACK: PolicyRule = {
 	id: 'rule-1',
@@ -135,11 +135,11 @@ describe('node type policy document fan-out', () => {
 	});
 
 	/**
-	 * Multi-main needs queue mode, where `N8N_CACHE_BACKEND=auto` is Redis — so two mains share
+	 * Multi-main needs queue mode, where `MNI_CACHE_BACKEND=auto` is Redis — so two mains share
 	 * one cache, and the entry one drops is the entry the other was reading. A second service
 	 * over that shared cache and database models this. Its own 1-second read window is the one
 	 * thing the invalidation cannot close, so the edit is served as soon as that lapses. Two
-	 * mains given unshared caches (`N8N_CACHE_BACKEND=memory`) stay stale until the TTL instead,
+	 * mains given unshared caches (`MNI_CACHE_BACKEND=memory`) stay stale until the TTL instead,
 	 * which is out of scope here.
 	 */
 	it('serves the committed edit to a second main that had already read the old one', async () => {
